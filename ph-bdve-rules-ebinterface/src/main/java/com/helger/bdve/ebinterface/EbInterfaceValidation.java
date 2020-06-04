@@ -19,10 +19,10 @@ package com.helger.bdve.ebinterface;
 import javax.annotation.Nonnull;
 import javax.annotation.concurrent.Immutable;
 
-import com.helger.bdve.execute.ValidationExecutorXSD;
-import com.helger.bdve.executorset.VESID;
-import com.helger.bdve.executorset.ValidationExecutorSet;
-import com.helger.bdve.executorset.ValidationExecutorSetRegistry;
+import com.helger.bdve.api.vesid.VESID;
+import com.helger.bdve.engine.execute.ValidationExecutorXSD;
+import com.helger.bdve.engine.executorset.ValidationExecutorSet;
+import com.helger.bdve.engine.executorset.ValidationExecutorSetRegistry;
 import com.helger.commons.ValueEnforcer;
 import com.helger.ebinterface.builder.EEbInterfaceDocumentType;
 

@@ -34,13 +34,14 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+import com.helger.bdve.api.execute.IValidationExecutionManager;
+import com.helger.bdve.api.executorset.IValidationExecutorSet;
+import com.helger.bdve.api.result.ValidationResultList;
+import com.helger.bdve.api.sources.IValidationSource;
 import com.helger.bdve.en16931.mock.CTestFiles;
-import com.helger.bdve.execute.ValidationExecutionManager;
-import com.helger.bdve.executorset.IValidationExecutorSet;
-import com.helger.bdve.mock.MockFile;
-import com.helger.bdve.result.ValidationResultList;
-import com.helger.bdve.source.IValidationSource;
-import com.helger.bdve.source.ValidationSource;
+import com.helger.bdve.engine.execute.ValidationExecutionManager;
+import com.helger.bdve.engine.mock.MockFile;
+import com.helger.bdve.engine.source.ValidationSource;
 import com.helger.cii.d16b.CIID16BNamespaceContext;
 import com.helger.commons.error.IError;
 import com.helger.commons.io.resource.FileSystemResource;
@@ -66,7 +67,7 @@ public final class ValidationExecutionManagerFuncTest
     {
       final IValidationExecutorSet aExecutors = CTestFiles.VES_REGISTRY.getOfID (aTestFile.getVESID ());
       assertNotNull (aExecutors);
-      final ValidationExecutionManager aValidator = aExecutors.createExecutionManager ();
+      final IValidationExecutionManager aValidator = aExecutors.createExecutionManager ();
 
       LOGGER.info ("Validating " +
                    aTestFile.getResource ().getPath () +
@@ -79,9 +80,7 @@ public final class ValidationExecutionManagerFuncTest
       final IValidationSource aSource = ValidationSource.createXMLSource (aTestFile.getResource ());
       final ValidationResultList aErrors = aValidator.executeValidation (aSource, Locale.US);
       if (aTestFile.isGoodCase ())
-        assertTrue (aErrors.getAllCount (IError::isError) +
-                    " error(s):\n" +
-                    StringHelper.getImploded ('\n', aErrors.getAllErrors ()),
+        assertTrue (aErrors.getAllCount (IError::isError) + " error(s):\n" + StringHelper.getImploded ('\n', aErrors.getAllErrors ()),
                     aErrors.containsNoError ());
       else
         assertTrue (aErrors.containsAtLeastOneError ());
@@ -135,8 +134,7 @@ public final class ValidationExecutionManagerFuncTest
         System.out.println (aXP.evaluate (sSum1, aCurMatch, XPathConstants.NUMBER));
         System.out.println (aXP.evaluate (sSum2, aCurMatch, XPathConstants.NUMBER));
         System.out.println (aXP.evaluate (sSum3, aCurMatch, XPathConstants.NUMBER));
-        System.out.println ("SUM: " +
-                            aXP.evaluate (sSum1 + " +  " + sSum2 + " - " + sSum3, aCurMatch, XPathConstants.NUMBER));
+        System.out.println ("SUM: " + aXP.evaluate (sSum1 + " +  " + sSum2 + " - " + sSum3, aCurMatch, XPathConstants.NUMBER));
         System.out.println ("Equals: " +
                             aXP.evaluate ("../ram:BasisAmount = " + sSum1 + " +  " + sSum2 + " - " + sSum3,
                                           aCurMatch,
@@ -170,14 +168,7 @@ public final class ValidationExecutionManagerFuncTest
     final String sSum1 = "(round(sum(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeSettlement[ram:ApplicableTradeTax/ram:CategoryCode = 'O']/ram:SpecifiedTradeSettlementLineMonetarySummation/ram:LineTotalAmount)*10*10)div 100) ";
     final String sSum2 = "(round(sum(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeAllowanceCharge[ram:ChargeIndicator/udt:Indicator='true' and ram:CategoryTradeTax/ram:CategoryCode='O']/ram:ActualAmount)*10*10)div 100)";
     final String sSum3 = "(round(sum(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeAllowanceCharge[ram:ChargeIndicator/udt:Indicator='false' and ram:CategoryTradeTax/ram:CategoryCode='O']/ram:ActualAmount)*10*10)div 100)";
-    final XPathExpression aXE2 = aXP.compile ("ram:BasisAmount = " +
-                                              "   " +
-                                              sSum1 +
-                                              " +  " +
-                                              sSum2 +
-                                              " - " +
-                                              sSum3 +
-                                              "");
+    final XPathExpression aXE2 = aXP.compile ("ram:BasisAmount = " + "   " + sSum1 + " +  " + sSum2 + " - " + sSum3 + "");
 
     for (int i = 0; i < aMatches.getLength (); ++i)
     {

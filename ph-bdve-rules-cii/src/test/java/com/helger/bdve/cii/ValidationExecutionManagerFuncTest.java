@@ -25,13 +25,14 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.helger.bdve.api.execute.IValidationExecutionManager;
+import com.helger.bdve.api.executorset.IValidationExecutorSet;
+import com.helger.bdve.api.result.ValidationResultList;
+import com.helger.bdve.api.sources.IValidationSource;
 import com.helger.bdve.cii.mock.CTestFiles;
-import com.helger.bdve.execute.ValidationExecutionManager;
-import com.helger.bdve.executorset.IValidationExecutorSet;
-import com.helger.bdve.mock.MockFile;
-import com.helger.bdve.result.ValidationResultList;
-import com.helger.bdve.source.IValidationSource;
-import com.helger.bdve.source.ValidationSource;
+import com.helger.bdve.engine.execute.ValidationExecutionManager;
+import com.helger.bdve.engine.mock.MockFile;
+import com.helger.bdve.engine.source.ValidationSource;
 
 /**
  * Test class for class {@link ValidationExecutionManager}.
@@ -49,7 +50,7 @@ public final class ValidationExecutionManagerFuncTest
     {
       final IValidationExecutorSet aExecutors = CTestFiles.VES_REGISTRY.getOfID (aTestFile.getVESID ());
       assertNotNull (aExecutors);
-      final ValidationExecutionManager aValidator = aExecutors.createExecutionManager ();
+      final IValidationExecutionManager aValidator = aExecutors.createExecutionManager ();
 
       LOGGER.info ("Validating " +
                    aTestFile.getResource ().getPath () +

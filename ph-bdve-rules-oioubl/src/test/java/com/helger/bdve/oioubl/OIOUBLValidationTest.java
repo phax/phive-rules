@@ -20,9 +20,9 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
-import com.helger.bdve.artefact.IValidationArtefact;
-import com.helger.bdve.execute.IValidationExecutor;
-import com.helger.bdve.executorset.IValidationExecutorSet;
+import com.helger.bdve.api.artefact.IValidationArtefact;
+import com.helger.bdve.api.execute.IValidationExecutor;
+import com.helger.bdve.api.executorset.IValidationExecutorSet;
 import com.helger.bdve.oioubl.mock.CTestFiles;
 import com.helger.commons.io.resource.IReadableResource;
 import com.helger.schematron.pure.SchematronResourcePure;

@@ -19,9 +19,9 @@ package com.helger.bdve.simplerinvoicing.mock;
 import javax.annotation.Nonnull;
 import javax.annotation.concurrent.Immutable;
 
-import com.helger.bdve.executorset.VESID;
-import com.helger.bdve.executorset.ValidationExecutorSetRegistry;
-import com.helger.bdve.mock.MockFile;
+import com.helger.bdve.api.vesid.VESID;
+import com.helger.bdve.engine.executorset.ValidationExecutorSetRegistry;
+import com.helger.bdve.engine.mock.MockFile;
 import com.helger.bdve.simplerinvoicing.SimplerInvoicingValidation;
 import com.helger.commons.ValueEnforcer;
 import com.helger.commons.annotation.ReturnsMutableCopy;

@@ -23,12 +23,12 @@ import javax.annotation.Nullable;
 
 import org.w3c.dom.Document;
 
+import com.helger.bdve.api.executorset.IValidationExecutorSet;
+import com.helger.bdve.api.result.ValidationResultList;
+import com.helger.bdve.api.sources.IValidationSource;
+import com.helger.bdve.api.vesid.VESID;
 import com.helger.bdve.ehf.mock.CTestFiles;
-import com.helger.bdve.executorset.IValidationExecutorSet;
-import com.helger.bdve.executorset.VESID;
-import com.helger.bdve.result.ValidationResultList;
-import com.helger.bdve.source.IValidationSource;
-import com.helger.bdve.source.ValidationSource;
+import com.helger.bdve.engine.source.ValidationSource;
 import com.helger.xml.serialize.read.DOMReader;
 
 /**
