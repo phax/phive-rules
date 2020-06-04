@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (C) 2014-2020 Philip Helger (www.helger.com)
+    philip[at]helger[dot]com
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+            http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.helger</groupId>
+    <artifactId>parent-pom</artifactId>
+    <version>1.11.1</version>
+  </parent>
+  <groupId>com.helger.bdve.rules</groupId>
+  <artifactId>ph-bdve-rules-parent-pom</artifactId>
+  <version>6.0.0-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  <name>ph-bdve-rules-parent-pom</name>
+  <description>Base POM to build the BDVE rules projects</description>
+  <url>https://github.com/phax/ph-bdve-rules</url>
+  <inceptionYear>2020</inceptionYear>
+ 
+  <licenses>
+    <license>
+      <name>Apache 2</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+  
+  <scm>
+    <connection>scm:git:git@github.com:phax/ph-bdve-rules.git</connection>
+    <developerConnection>scm:git:git@github.com:phax/ph-bdve-rules.git</developerConnection>
+    <url>http://github.com/phax/ph-bdve-rules</url>
+    <tag>HEAD</tag>
+  </scm>
+
+  <organization>
+    <name>Philip Helger</name>
+    <url>http://www.helger.com</url>
+  </organization>
+
+  <developers>
+    <developer>
+      <id>philip</id>
+      <name>Philip Helger</name>
+      <email>ph(at)helger.com</email>
+      <url>http://www.helger.com</url>
+    </developer>
+  </developers>
+  
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>com.helger</groupId>
+        <artifactId>ph-commons-parent-pom</artifactId>
+        <version>9.4.4</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+      <dependency>
+        <groupId>com.helger</groupId>
+        <artifactId>ph-schematron-parent-pom</artifactId>
+        <version>5.6.0</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+      <dependency>
+        <groupId>com.helger.bdve</groupId>
+        <artifactId>ph-bdve-parent-pom</artifactId>
+        <version>6.0.0-SNAPSHOT</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+      <dependency>
+        <groupId>com.helger.ubl</groupId>
+        <artifactId>ph-ubl-parent-pom</artifactId>
+        <version>6.3.0</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+      <dependency>
+        <groupId>com.helger.cii</groupId>
+        <artifactId>ph-cii-parent-pom</artifactId>
+        <version>2.2.0</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+      <dependency>
+        <groupId>com.helger</groupId>
+        <artifactId>ph-genericode</artifactId>
+        <version>6.1.0</version>
+      </dependency>
+      <!-- this is only needed for the test files -->
+      <dependency>
+        <groupId>com.helger.web</groupId>
+        <artifactId>ph-web-parent-pom</artifactId>
+        <version>9.3.0</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+      <!-- this is only needed for the test files -->
+      <dependency>
+        <groupId>com.helger.peppol</groupId>
+        <artifactId>peppol-commons-parent-pom</artifactId>
+        <version>8.1.1</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+      <dependency>
+        <groupId>com.helger.en16931</groupId>
+        <artifactId>en16931-parent-pom</artifactId>
+        <version>2.0.1</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+      <dependency>
+        <groupId>com.helger</groupId>
+        <artifactId>ph-ebinterface</artifactId>
+        <version>6.1.5</version>
+      </dependency>
+
+      <dependency>
+        <groupId>com.helger.bdve.rules</groupId>
+        <artifactId>ph-bdve-rules-ubl</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.helger.bdve.rules</groupId>
+        <artifactId>ph-bdve-rules-cii</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.helger.bdve.rules</groupId>
+        <artifactId>ph-bdve-rules-peppol</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.helger.bdve.rules</groupId>
+        <artifactId>ph-bdve-rules-simplerinvoicing</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.helger.bdve.rules</groupId>
+        <artifactId>ph-bdve-rules-en16931</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.helger.bdve.rules</groupId>
+        <artifactId>ph-bdve-rules-ehf</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.helger.bdve.rules</groupId>
+        <artifactId>ph-bdve-rules-energieefactuur</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.helger.bdve.rules</groupId>
+        <artifactId>ph-bdve-rules-oioubl</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.helger.bdve.rules</groupId>
+        <artifactId>ph-bdve-rules-ebinterface</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.helger.bdve.rules</groupId>
+        <artifactId>ph-bdve-rules-teapps</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.helger.bdve.rules</groupId>
+        <artifactId>ph-bdve-rules-ublbe</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.helger.bdve.rules</groupId>
+        <artifactId>ph-bdve-rules-xrechnung</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.helger.bdve</groupId>
+      <artifactId>ph-bdve-engine</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-simple</artifactId>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+  
+  <modules>
+    <module>ph-bdve-rules-ubl</module>
+    <module>ph-bdve-rules-cii</module>
+    <module>ph-bdve-rules-peppol</module>
+    <module>ph-bdve-rules-simplerinvoicing</module>
+    <module>ph-bdve-rules-en16931</module>
+    <module>ph-bdve-rules-ehf</module>
+    <module>ph-bdve-rules-energieefactuur</module>
+    <module>ph-bdve-rules-oioubl</module>
+    <module>ph-bdve-rules-ebinterface</module>
+    <module>ph-bdve-rules-teapps</module>
+    <module>ph-bdve-rules-ublbe</module>
+    <module>ph-bdve-rules-xrechnung</module>
+  </modules>
+</project>
