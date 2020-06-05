@@ -20,13 +20,14 @@ import javax.annotation.Nonnull;
 import javax.annotation.concurrent.Immutable;
 
 import com.helger.bdve.api.EValidationType;
-import com.helger.bdve.api.vesid.VESID;
-import com.helger.bdve.engine.artefact.ValidationArtefact;
-import com.helger.bdve.engine.execute.ValidationExecutorSchematron;
-import com.helger.bdve.engine.execute.ValidationExecutorXSD;
-import com.helger.bdve.engine.executorset.ValidationExecutorSet;
-import com.helger.bdve.engine.executorset.ValidationExecutorSetRegistry;
-import com.helger.bdve.engine.spi.LocationBeautifierSPI;
+import com.helger.bdve.api.artefact.ValidationArtefact;
+import com.helger.bdve.api.executorset.IValidationExecutorSetRegistry;
+import com.helger.bdve.api.executorset.VESID;
+import com.helger.bdve.api.executorset.ValidationExecutorSet;
+import com.helger.bdve.engine.schematron.SchematronNamespaceBeautifier;
+import com.helger.bdve.engine.schematron.ValidationExecutorSchematron;
+import com.helger.bdve.engine.source.IValidationSourceXML;
+import com.helger.bdve.engine.xsd.ValidationExecutorXSD;
 import com.helger.commons.ValueEnforcer;
 import com.helger.commons.io.resource.ClassPathResource;
 import com.helger.commons.io.resource.IReadableResource;
@@ -49,17 +50,13 @@ public final class PeppolValidationAUNZ
 
   // 1.0.0
   @Deprecated
-  public static final VESID VID_OPENPEPPOL_BIS3_AUNZ_UBL_INVOICE_100 = new VESID ("eu.peppol.bis3.aunz.ubl",
-                                                                                  "invoice",
-                                                                                  "1.0.0");
+  public static final VESID VID_OPENPEPPOL_BIS3_AUNZ_UBL_INVOICE_100 = new VESID ("eu.peppol.bis3.aunz.ubl", "invoice", "1.0.0");
   @Deprecated
   public static final VESID VID_OPENPEPPOL_BIS3_AUNZ_UBL_INVOICE_SELF_BILLING_100 = new VESID ("eu.peppol.bis3.aunz.ubl",
                                                                                                "invoice-self-billing",
                                                                                                "1.0.0");
   @Deprecated
-  public static final VESID VID_OPENPEPPOL_BIS3_AUNZ_UBL_CREDIT_NOTE_100 = new VESID ("eu.peppol.bis3.aunz.ubl",
-                                                                                      "creditnote",
-                                                                                      "1.0.0");
+  public static final VESID VID_OPENPEPPOL_BIS3_AUNZ_UBL_CREDIT_NOTE_100 = new VESID ("eu.peppol.bis3.aunz.ubl", "creditnote", "1.0.0");
   @Deprecated
   public static final VESID VID_OPENPEPPOL_BIS3_AUNZ_UBL_CREDIT_NOTE_SELF_BILLING_100 = new VESID ("eu.peppol.bis3.aunz.ubl",
                                                                                                    "creditnote-self-billing",
@@ -77,17 +74,13 @@ public final class PeppolValidationAUNZ
 
   // 1.0.1
   @Deprecated
-  public static final VESID VID_OPENPEPPOL_BIS3_AUNZ_UBL_INVOICE_101 = new VESID ("eu.peppol.bis3.aunz.ubl",
-                                                                                  "invoice",
-                                                                                  "1.0.1");
+  public static final VESID VID_OPENPEPPOL_BIS3_AUNZ_UBL_INVOICE_101 = new VESID ("eu.peppol.bis3.aunz.ubl", "invoice", "1.0.1");
   @Deprecated
   public static final VESID VID_OPENPEPPOL_BIS3_AUNZ_UBL_INVOICE_SELF_BILLING_101 = new VESID ("eu.peppol.bis3.aunz.ubl",
                                                                                                "invoice-self-billing",
                                                                                                "1.0.1");
   @Deprecated
-  public static final VESID VID_OPENPEPPOL_BIS3_AUNZ_UBL_CREDIT_NOTE_101 = new VESID ("eu.peppol.bis3.aunz.ubl",
-                                                                                      "creditnote",
-                                                                                      "1.0.1");
+  public static final VESID VID_OPENPEPPOL_BIS3_AUNZ_UBL_CREDIT_NOTE_101 = new VESID ("eu.peppol.bis3.aunz.ubl", "creditnote", "1.0.1");
   @Deprecated
   public static final VESID VID_OPENPEPPOL_BIS3_AUNZ_UBL_CREDIT_NOTE_SELF_BILLING_101 = new VESID ("eu.peppol.bis3.aunz.ubl",
                                                                                                    "creditnote-self-billing",
@@ -104,15 +97,11 @@ public final class PeppolValidationAUNZ
                                                                                            _getCL ());
 
   // 1.0.2
-  public static final VESID VID_OPENPEPPOL_BIS3_AUNZ_UBL_INVOICE_102 = new VESID ("eu.peppol.bis3.aunz.ubl",
-                                                                                  "invoice",
-                                                                                  "1.0.2");
+  public static final VESID VID_OPENPEPPOL_BIS3_AUNZ_UBL_INVOICE_102 = new VESID ("eu.peppol.bis3.aunz.ubl", "invoice", "1.0.2");
   public static final VESID VID_OPENPEPPOL_BIS3_AUNZ_UBL_INVOICE_SELF_BILLING_102 = new VESID ("eu.peppol.bis3.aunz.ubl",
                                                                                                "invoice-self-billing",
                                                                                                "1.0.2");
-  public static final VESID VID_OPENPEPPOL_BIS3_AUNZ_UBL_CREDIT_NOTE_102 = new VESID ("eu.peppol.bis3.aunz.ubl",
-                                                                                      "creditnote",
-                                                                                      "1.0.2");
+  public static final VESID VID_OPENPEPPOL_BIS3_AUNZ_UBL_CREDIT_NOTE_102 = new VESID ("eu.peppol.bis3.aunz.ubl", "creditnote", "1.0.2");
   public static final VESID VID_OPENPEPPOL_BIS3_AUNZ_UBL_CREDIT_NOTE_SELF_BILLING_102 = new VESID ("eu.peppol.bis3.aunz.ubl",
                                                                                                    "creditnote-self-billing",
                                                                                                    "1.0.2");
@@ -127,7 +116,7 @@ public final class PeppolValidationAUNZ
   private PeppolValidationAUNZ ()
   {}
 
-  public static void init (@Nonnull final ValidationExecutorSetRegistry aRegistry)
+  public static void init (@Nonnull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
   {
     ValueEnforcer.notNull (aRegistry, "Registry");
 
@@ -135,7 +124,7 @@ public final class PeppolValidationAUNZ
     final MapBasedNamespaceContext aNSCtxCreditNote = PeppolValidation.createUBLNSContext (EUBL21DocumentType.CREDIT_NOTE.getNamespaceURI ());
 
     // For better error messages (merge both)
-    LocationBeautifierSPI.addMappings (aNSCtxCreditNote.getClone ().setMappings (aNSCtxInvoice));
+    SchematronNamespaceBeautifier.addMappings (aNSCtxCreditNote.getClone ().setMappings (aNSCtxInvoice));
 
     final boolean bDeprecated = true;
     final boolean bNotDeprecated = false;
@@ -143,8 +132,7 @@ public final class PeppolValidationAUNZ
     // 1.0.0
     final String sVersion100 = VID_OPENPEPPOL_BIS3_AUNZ_UBL_INVOICE_100.getVersion ();
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_BIS3_AUNZ_UBL_INVOICE_100,
-                                                                           "A-NZ PEPPOL BIS3 Invoice (UBL) " +
-                                                                                                                     sVersion100,
+                                                                           "A-NZ PEPPOL BIS3 Invoice (UBL) " + sVersion100,
                                                                            bDeprecated,
                                                                            ValidationExecutorXSD.create (EUBL21DocumentType.INVOICE),
                                                                            new ValidationExecutorSchematron (new ValidationArtefact (EValidationType.SCHEMATRON_XSLT,
@@ -156,8 +144,7 @@ public final class PeppolValidationAUNZ
                                                                                                              null,
                                                                                                              aNSCtxInvoice)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_BIS3_AUNZ_UBL_CREDIT_NOTE_100,
-                                                                           "A-NZ PEPPOL BIS3 CreditNote (UBL) " +
-                                                                                                                         sVersion100,
+                                                                           "A-NZ PEPPOL BIS3 CreditNote (UBL) " + sVersion100,
                                                                            bDeprecated,
                                                                            ValidationExecutorXSD.create (EUBL21DocumentType.CREDIT_NOTE),
                                                                            new ValidationExecutorSchematron (new ValidationArtefact (EValidationType.SCHEMATRON_XSLT,
@@ -171,8 +158,7 @@ public final class PeppolValidationAUNZ
 
     // Self-billing
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_BIS3_AUNZ_UBL_INVOICE_SELF_BILLING_100,
-                                                                           "A-NZ PEPPOL BIS3 Invoice Self-Billing (UBL) " +
-                                                                                                                                  sVersion100,
+                                                                           "A-NZ PEPPOL BIS3 Invoice Self-Billing (UBL) " + sVersion100,
                                                                            bDeprecated,
                                                                            ValidationExecutorXSD.create (EUBL21DocumentType.INVOICE),
                                                                            new ValidationExecutorSchematron (new ValidationArtefact (EValidationType.SCHEMATRON_XSLT,
@@ -184,8 +170,7 @@ public final class PeppolValidationAUNZ
                                                                                                              null,
                                                                                                              aNSCtxInvoice)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_BIS3_AUNZ_UBL_CREDIT_NOTE_SELF_BILLING_100,
-                                                                           "A-NZ PEPPOL BIS3 CreditNote Self-Billing (UBL) " +
-                                                                                                                                      sVersion100,
+                                                                           "A-NZ PEPPOL BIS3 CreditNote Self-Billing (UBL) " + sVersion100,
                                                                            bDeprecated,
                                                                            ValidationExecutorXSD.create (EUBL21DocumentType.CREDIT_NOTE),
                                                                            new ValidationExecutorSchematron (new ValidationArtefact (EValidationType.SCHEMATRON_XSLT,
@@ -200,8 +185,7 @@ public final class PeppolValidationAUNZ
     // 1.0.1
     final String sVersion101 = VID_OPENPEPPOL_BIS3_AUNZ_UBL_INVOICE_101.getVersion ();
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_BIS3_AUNZ_UBL_INVOICE_101,
-                                                                           "A-NZ PEPPOL BIS3 Invoice (UBL) " +
-                                                                                                                     sVersion101,
+                                                                           "A-NZ PEPPOL BIS3 Invoice (UBL) " + sVersion101,
                                                                            bDeprecated,
                                                                            ValidationExecutorXSD.create (EUBL21DocumentType.INVOICE),
                                                                            new ValidationExecutorSchematron (new ValidationArtefact (EValidationType.SCHEMATRON_XSLT,
@@ -213,8 +197,7 @@ public final class PeppolValidationAUNZ
                                                                                                              null,
                                                                                                              aNSCtxInvoice)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_BIS3_AUNZ_UBL_CREDIT_NOTE_101,
-                                                                           "A-NZ PEPPOL BIS3 CreditNote (UBL) " +
-                                                                                                                         sVersion101,
+                                                                           "A-NZ PEPPOL BIS3 CreditNote (UBL) " + sVersion101,
                                                                            bDeprecated,
                                                                            ValidationExecutorXSD.create (EUBL21DocumentType.CREDIT_NOTE),
                                                                            new ValidationExecutorSchematron (new ValidationArtefact (EValidationType.SCHEMATRON_XSLT,
@@ -228,8 +211,7 @@ public final class PeppolValidationAUNZ
 
     // Self-billing
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_BIS3_AUNZ_UBL_INVOICE_SELF_BILLING_101,
-                                                                           "A-NZ PEPPOL BIS3 Invoice Self-Billing (UBL) " +
-                                                                                                                                  sVersion101,
+                                                                           "A-NZ PEPPOL BIS3 Invoice Self-Billing (UBL) " + sVersion101,
                                                                            bDeprecated,
                                                                            ValidationExecutorXSD.create (EUBL21DocumentType.INVOICE),
                                                                            new ValidationExecutorSchematron (new ValidationArtefact (EValidationType.SCHEMATRON_XSLT,
@@ -241,8 +223,7 @@ public final class PeppolValidationAUNZ
                                                                                                              null,
                                                                                                              aNSCtxInvoice)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_BIS3_AUNZ_UBL_CREDIT_NOTE_SELF_BILLING_101,
-                                                                           "A-NZ PEPPOL BIS3 CreditNote Self-Billing (UBL) " +
-                                                                                                                                      sVersion101,
+                                                                           "A-NZ PEPPOL BIS3 CreditNote Self-Billing (UBL) " + sVersion101,
                                                                            bDeprecated,
                                                                            ValidationExecutorXSD.create (EUBL21DocumentType.CREDIT_NOTE),
                                                                            new ValidationExecutorSchematron (new ValidationArtefact (EValidationType.SCHEMATRON_XSLT,
@@ -257,8 +238,7 @@ public final class PeppolValidationAUNZ
     // 1.0.2
     final String sVersion102 = VID_OPENPEPPOL_BIS3_AUNZ_UBL_INVOICE_102.getVersion ();
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_BIS3_AUNZ_UBL_INVOICE_102,
-                                                                           "A-NZ PEPPOL BIS3 Invoice (UBL) " +
-                                                                                                                     sVersion102,
+                                                                           "A-NZ PEPPOL BIS3 Invoice (UBL) " + sVersion102,
                                                                            bNotDeprecated,
                                                                            ValidationExecutorXSD.create (EUBL21DocumentType.INVOICE),
                                                                            new ValidationExecutorSchematron (new ValidationArtefact (EValidationType.SCHEMATRON_XSLT,
@@ -270,8 +250,7 @@ public final class PeppolValidationAUNZ
                                                                                                              null,
                                                                                                              aNSCtxInvoice)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_BIS3_AUNZ_UBL_CREDIT_NOTE_102,
-                                                                           "A-NZ PEPPOL BIS3 CreditNote (UBL) " +
-                                                                                                                         sVersion102,
+                                                                           "A-NZ PEPPOL BIS3 CreditNote (UBL) " + sVersion102,
                                                                            bNotDeprecated,
                                                                            ValidationExecutorXSD.create (EUBL21DocumentType.CREDIT_NOTE),
                                                                            new ValidationExecutorSchematron (new ValidationArtefact (EValidationType.SCHEMATRON_XSLT,
@@ -285,8 +264,7 @@ public final class PeppolValidationAUNZ
 
     // Self-billing
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_BIS3_AUNZ_UBL_INVOICE_SELF_BILLING_102,
-                                                                           "A-NZ PEPPOL BIS3 Invoice Self-Billing (UBL) " +
-                                                                                                                                  sVersion102,
+                                                                           "A-NZ PEPPOL BIS3 Invoice Self-Billing (UBL) " + sVersion102,
                                                                            bNotDeprecated,
                                                                            ValidationExecutorXSD.create (EUBL21DocumentType.INVOICE),
                                                                            new ValidationExecutorSchematron (new ValidationArtefact (EValidationType.SCHEMATRON_XSLT,
@@ -298,8 +276,7 @@ public final class PeppolValidationAUNZ
                                                                                                              null,
                                                                                                              aNSCtxInvoice)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_BIS3_AUNZ_UBL_CREDIT_NOTE_SELF_BILLING_102,
-                                                                           "A-NZ PEPPOL BIS3 CreditNote Self-Billing (UBL) " +
-                                                                                                                                      sVersion102,
+                                                                           "A-NZ PEPPOL BIS3 CreditNote Self-Billing (UBL) " + sVersion102,
                                                                            bNotDeprecated,
                                                                            ValidationExecutorXSD.create (EUBL21DocumentType.CREDIT_NOTE),
                                                                            new ValidationExecutorSchematron (new ValidationArtefact (EValidationType.SCHEMATRON_XSLT,

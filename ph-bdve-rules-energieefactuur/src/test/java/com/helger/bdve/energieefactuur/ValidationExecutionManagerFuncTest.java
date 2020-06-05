@@ -25,14 +25,13 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.helger.bdve.api.execute.IValidationExecutionManager;
+import com.helger.bdve.api.execute.ValidationExecutionManager;
 import com.helger.bdve.api.executorset.IValidationExecutorSet;
 import com.helger.bdve.api.result.ValidationResultList;
-import com.helger.bdve.api.sources.IValidationSource;
 import com.helger.bdve.energieefactuur.mock.CTestFiles;
-import com.helger.bdve.engine.execute.ValidationExecutionManager;
 import com.helger.bdve.engine.mock.MockFile;
-import com.helger.bdve.engine.source.ValidationSource;
+import com.helger.bdve.engine.source.IValidationSourceXML;
+import com.helger.bdve.engine.source.ValidationSourceXML;
 import com.helger.commons.error.IError;
 import com.helger.commons.string.StringHelper;
 
@@ -50,20 +49,19 @@ public final class ValidationExecutionManagerFuncTest
   {
     for (final MockFile aTestFile : CTestFiles.getAllTestFiles ())
     {
-      final IValidationExecutorSet aExecutors = CTestFiles.VES_REGISTRY.getOfID (aTestFile.getVESID ());
+      final IValidationExecutorSet <IValidationSourceXML> aExecutors = CTestFiles.VES_REGISTRY.getOfID (aTestFile.getVESID ());
       assertNotNull (aExecutors);
-      final IValidationExecutionManager aValidator = aExecutors.createExecutionManager ();
 
       LOGGER.info ("Validating " +
                    aTestFile.getResource ().getPath () +
                    " against " +
-                   aExecutors.getExecutorCount () +
+                   aExecutors.executors ().size () +
                    " validation layers using " +
                    aTestFile.getVESID ().getAsSingleID ());
 
       // Read as desired type
-      final IValidationSource aSource = ValidationSource.createXMLSource (aTestFile.getResource ());
-      final ValidationResultList aErrors = aValidator.executeValidation (aSource, Locale.US);
+      final IValidationSourceXML aSource = ValidationSourceXML.create (aTestFile.getResource ());
+      final ValidationResultList aErrors = ValidationExecutionManager.executeValidation (aExecutors, aSource, Locale.US);
       if (aTestFile.isGoodCase ())
         assertTrue (aErrors.getAllCount (IError::isError) + " error(s):\n" + StringHelper.getImploded ('\n', aErrors.getAllErrors ()),
                     aErrors.containsNoError ());

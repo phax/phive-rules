@@ -23,13 +23,13 @@ import javax.annotation.Nonnull;
 import javax.annotation.concurrent.Immutable;
 
 import com.helger.bdve.api.EValidationType;
-import com.helger.bdve.api.execute.IValidationExecutor;
-import com.helger.bdve.api.vesid.VESID;
-import com.helger.bdve.engine.artefact.ValidationArtefact;
-import com.helger.bdve.engine.execute.ValidationExecutorSchematron;
-import com.helger.bdve.engine.execute.ValidationExecutorXSD;
-import com.helger.bdve.engine.executorset.ValidationExecutorSet;
-import com.helger.bdve.engine.executorset.ValidationExecutorSetRegistry;
+import com.helger.bdve.api.artefact.ValidationArtefact;
+import com.helger.bdve.api.executorset.IValidationExecutorSetRegistry;
+import com.helger.bdve.api.executorset.VESID;
+import com.helger.bdve.api.executorset.ValidationExecutorSet;
+import com.helger.bdve.engine.schematron.ValidationExecutorSchematron;
+import com.helger.bdve.engine.source.IValidationSourceXML;
+import com.helger.bdve.engine.xsd.ValidationExecutorXSD;
 import com.helger.commons.ValueEnforcer;
 import com.helger.commons.datetime.PDTFactory;
 import com.helger.commons.io.resource.ClassPathResource;
@@ -89,35 +89,23 @@ public final class PeppolValidation350
     return PeppolValidation350.class.getClassLoader ();
   }
 
-  private static final IReadableResource ORDER_RULES = new ClassPathResource (ORDER +
-                                                                              BII_RULES +
-                                                                              "BIIRULES-UBL-T01.sch",
-                                                                              _getCL ());
-  private static final IReadableResource ORDER_OPENPEPPOL = new ClassPathResource (ORDER +
-                                                                                   OPENPEPPOL +
-                                                                                   "OPENPEPPOL-UBL-T01.sch",
+  private static final IReadableResource ORDER_RULES = new ClassPathResource (ORDER + BII_RULES + "BIIRULES-UBL-T01.sch", _getCL ());
+  private static final IReadableResource ORDER_OPENPEPPOL = new ClassPathResource (ORDER + OPENPEPPOL + "OPENPEPPOL-UBL-T01.sch",
                                                                                    _getCL ());
   private static final IReadableResource ORDER_OPENPEPPOL_CORE = new ClassPathResource (ORDER +
                                                                                         OPENPEPPOL_CORE +
                                                                                         "OPENPEPPOLCORE-UBL-T01.sch",
                                                                                         _getCL ());
 
-  private static final IReadableResource INVOICE_RULES = new ClassPathResource (INVOICE +
-                                                                                BII_RULES +
-                                                                                "BIIRULES-UBL-T10.sch",
-                                                                                _getCL ());
-  private static final IReadableResource INVOICE_OPENPEPPOL = new ClassPathResource (INVOICE +
-                                                                                     OPENPEPPOL +
-                                                                                     "OPENPEPPOL-UBL-T10.sch",
+  private static final IReadableResource INVOICE_RULES = new ClassPathResource (INVOICE + BII_RULES + "BIIRULES-UBL-T10.sch", _getCL ());
+  private static final IReadableResource INVOICE_OPENPEPPOL = new ClassPathResource (INVOICE + OPENPEPPOL + "OPENPEPPOL-UBL-T10.sch",
                                                                                      _getCL ());
   private static final IReadableResource INVOICE_OPENPEPPOL_CORE = new ClassPathResource (INVOICE +
                                                                                           OPENPEPPOL_CORE +
                                                                                           "OPENPEPPOLCORE-UBL-T10.sch",
                                                                                           _getCL ());
 
-  private static final IReadableResource CREDIT_NOTE_RULES = new ClassPathResource (CREDIT_NOTE +
-                                                                                    BII_RULES +
-                                                                                    "BIIRULES-UBL-T14.sch",
+  private static final IReadableResource CREDIT_NOTE_RULES = new ClassPathResource (CREDIT_NOTE + BII_RULES + "BIIRULES-UBL-T14.sch",
                                                                                     _getCL ());
   private static final IReadableResource CREDIT_NOTE_OPENPEPPOL = new ClassPathResource (CREDIT_NOTE +
                                                                                          OPENPEPPOL +
@@ -141,13 +129,9 @@ public final class PeppolValidation350
                                                                                                   "OPENPEPPOLCORE-UBL-T16.sch",
                                                                                                   _getCL ());
 
-  private static final IReadableResource CATALOGUE_RULES = new ClassPathResource (CATALOGUE +
-                                                                                  BII_RULES +
-                                                                                  "BIIRULES-UBL-T19.sch",
+  private static final IReadableResource CATALOGUE_RULES = new ClassPathResource (CATALOGUE + BII_RULES + "BIIRULES-UBL-T19.sch",
                                                                                   _getCL ());
-  private static final IReadableResource CATALOGUE_OPENPEPPOL = new ClassPathResource (CATALOGUE +
-                                                                                       OPENPEPPOL +
-                                                                                       "OPENPEPPOL-UBL-T19.sch",
+  private static final IReadableResource CATALOGUE_OPENPEPPOL = new ClassPathResource (CATALOGUE + OPENPEPPOL + "OPENPEPPOL-UBL-T19.sch",
                                                                                        _getCL ());
   private static final IReadableResource CATALOGUE_OPENPEPPOL_CORE = new ClassPathResource (CATALOGUE +
                                                                                             OPENPEPPOL_CORE +
@@ -167,20 +151,12 @@ public final class PeppolValidation350
                                                                                                      "OPENPEPPOLCORE-UBL-T58.sch",
                                                                                                      _getCL ());
 
-  private static final IReadableResource MLR_RULES = new ClassPathResource (MLR + BII_RULES + "BIIRULES-UBL-T71.sch",
-                                                                            _getCL ());
-  private static final IReadableResource MLR_OPENPEPPOL = new ClassPathResource (MLR +
-                                                                                 OPENPEPPOL +
-                                                                                 "OPENPEPPOL-UBL-T71.sch",
-                                                                                 _getCL ());
-  private static final IReadableResource MLR_OPENPEPPOL_CORE = new ClassPathResource (MLR +
-                                                                                      OPENPEPPOL_CORE +
-                                                                                      "OPENPEPPOLCORE-UBL-T71.sch",
+  private static final IReadableResource MLR_RULES = new ClassPathResource (MLR + BII_RULES + "BIIRULES-UBL-T71.sch", _getCL ());
+  private static final IReadableResource MLR_OPENPEPPOL = new ClassPathResource (MLR + OPENPEPPOL + "OPENPEPPOL-UBL-T71.sch", _getCL ());
+  private static final IReadableResource MLR_OPENPEPPOL_CORE = new ClassPathResource (MLR + OPENPEPPOL_CORE + "OPENPEPPOLCORE-UBL-T71.sch",
                                                                                       _getCL ());
 
-  private static final IReadableResource ORDER_RESPONSE_RULES = new ClassPathResource (ORDER_RESPONSE +
-                                                                                       BII_RULES +
-                                                                                       "BIIRULES-UBL-T76.sch",
+  private static final IReadableResource ORDER_RESPONSE_RULES = new ClassPathResource (ORDER_RESPONSE + BII_RULES + "BIIRULES-UBL-T76.sch",
                                                                                        _getCL ());
   private static final IReadableResource ORDER_RESPONSE_OPENPEPPOL = new ClassPathResource (ORDER_RESPONSE +
                                                                                             OPENPEPPOL +
@@ -191,13 +167,9 @@ public final class PeppolValidation350
                                                                                                  "OPENPEPPOLCORE-UBL-T76.sch",
                                                                                                  _getCL ());
 
-  private static final IReadableResource PUNCH_OUT_RULES = new ClassPathResource (PUNCH_OUT +
-                                                                                  BII_RULES +
-                                                                                  "BIIRULES-UBL-T77.sch",
+  private static final IReadableResource PUNCH_OUT_RULES = new ClassPathResource (PUNCH_OUT + BII_RULES + "BIIRULES-UBL-T77.sch",
                                                                                   _getCL ());
-  private static final IReadableResource PUNCH_OUT_OPENPEPPOL = new ClassPathResource (PUNCH_OUT +
-                                                                                       OPENPEPPOL +
-                                                                                       "OPENPEPPOL-UBL-T77.sch",
+  private static final IReadableResource PUNCH_OUT_OPENPEPPOL = new ClassPathResource (PUNCH_OUT + OPENPEPPOL + "OPENPEPPOL-UBL-T77.sch",
                                                                                        _getCL ());
 
   private static final IReadableResource ORDER_AGREEMENT_RULES = new ClassPathResource (ORDER_AGREEMENT +
@@ -213,7 +185,7 @@ public final class PeppolValidation350
   {}
 
   @Nonnull
-  private static IValidationExecutor _createPure (@Nonnull final IReadableResource aRes)
+  private static ValidationExecutorSchematron _createPure (@Nonnull final IReadableResource aRes)
   {
     return new ValidationExecutorSchematron (new ValidationArtefact (EValidationType.SCHEMATRON_PURE, aRes),
                                              null,
@@ -221,14 +193,14 @@ public final class PeppolValidation350
   }
 
   @Nonnull
-  private static IValidationExecutor _createSCH (@Nonnull final IReadableResource aRes)
+  private static ValidationExecutorSchematron _createSCH (@Nonnull final IReadableResource aRes)
   {
     return new ValidationExecutorSchematron (new ValidationArtefact (EValidationType.SCHEMATRON_SCH, aRes),
                                              null,
                                              UBL21NamespaceContext.getInstance ());
   }
 
-  public static void init (@Nonnull final ValidationExecutorSetRegistry aRegistry)
+  public static void init (@Nonnull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
   {
     ValueEnforcer.notNull (aRegistry, "Registry");
 

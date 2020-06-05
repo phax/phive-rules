@@ -19,9 +19,10 @@ package com.helger.bdve.peppol.mock;
 import javax.annotation.Nonnull;
 import javax.annotation.concurrent.Immutable;
 
-import com.helger.bdve.api.vesid.VESID;
-import com.helger.bdve.engine.executorset.ValidationExecutorSetRegistry;
+import com.helger.bdve.api.executorset.VESID;
+import com.helger.bdve.api.executorset.ValidationExecutorSetRegistry;
 import com.helger.bdve.engine.mock.MockFile;
+import com.helger.bdve.engine.source.IValidationSourceXML;
 import com.helger.bdve.peppol.PeppolValidation;
 import com.helger.bdve.peppol.PeppolValidation370;
 import com.helger.bdve.peppol.PeppolValidation381;
@@ -42,7 +43,7 @@ import com.helger.peppol.testfiles.official.OfficialTestFiles;
 @SuppressWarnings ("deprecation")
 public final class CTestFiles
 {
-  public static final ValidationExecutorSetRegistry VES_REGISTRY = new ValidationExecutorSetRegistry ();
+  public static final ValidationExecutorSetRegistry <IValidationSourceXML> VES_REGISTRY = new ValidationExecutorSetRegistry <> ();
   static
   {
     PeppolValidation.initStandard (VES_REGISTRY);

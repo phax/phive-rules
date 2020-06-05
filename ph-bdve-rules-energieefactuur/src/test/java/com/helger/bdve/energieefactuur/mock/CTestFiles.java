@@ -19,10 +19,11 @@ package com.helger.bdve.energieefactuur.mock;
 import javax.annotation.Nonnull;
 import javax.annotation.concurrent.Immutable;
 
-import com.helger.bdve.api.vesid.VESID;
+import com.helger.bdve.api.executorset.VESID;
+import com.helger.bdve.api.executorset.ValidationExecutorSetRegistry;
 import com.helger.bdve.energieefactuur.EnergieEFactuurValidation;
-import com.helger.bdve.engine.executorset.ValidationExecutorSetRegistry;
 import com.helger.bdve.engine.mock.MockFile;
+import com.helger.bdve.engine.source.IValidationSourceXML;
 import com.helger.commons.ValueEnforcer;
 import com.helger.commons.annotation.ReturnsMutableCopy;
 import com.helger.commons.collection.impl.CommonsArrayList;
@@ -34,7 +35,7 @@ import com.helger.commons.io.resource.IReadableResource;
 @Immutable
 public final class CTestFiles
 {
-  public static final ValidationExecutorSetRegistry VES_REGISTRY = new ValidationExecutorSetRegistry ();
+  public static final ValidationExecutorSetRegistry <IValidationSourceXML> VES_REGISTRY = new ValidationExecutorSetRegistry <> ();
   static
   {
     EnergieEFactuurValidation.initEnergieEFactuur (VES_REGISTRY);
@@ -122,9 +123,7 @@ public final class CTestFiles
           ret.add (new MockFile (new ClassPathResource ("/test-files/2.0.0/bad/bad-meternumber-twice.xml"),
                                  aVESID,
                                  new CommonsHashSet <> ("")));
-          ret.add (new MockFile (new ClassPathResource ("/test-files/2.0.0/bad/bad-no-extension.xml"),
-                                 aVESID,
-                                 new CommonsHashSet <> ("")));
+          ret.add (new MockFile (new ClassPathResource ("/test-files/2.0.0/bad/bad-no-extension.xml"), aVESID, new CommonsHashSet <> ("")));
           ret.add (new MockFile (new ClassPathResource ("/test-files/2.0.0/bad/bad-two-extensions.xml"),
                                  aVESID,
                                  new CommonsHashSet <> ("")));

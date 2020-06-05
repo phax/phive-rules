@@ -20,14 +20,14 @@ import javax.annotation.Nonnull;
 import javax.annotation.concurrent.Immutable;
 
 import com.helger.bdve.api.EValidationType;
-import com.helger.bdve.api.execute.IValidationExecutor;
-import com.helger.bdve.api.vesid.VESID;
-import com.helger.bdve.engine.artefact.ValidationArtefact;
-import com.helger.bdve.engine.execute.ValidationExecutorSchematron;
-import com.helger.bdve.engine.execute.ValidationExecutorXSD;
-import com.helger.bdve.engine.executorset.ValidationExecutorSet;
-import com.helger.bdve.engine.executorset.ValidationExecutorSetRegistry;
-import com.helger.bdve.engine.spi.LocationBeautifierSPI;
+import com.helger.bdve.api.artefact.ValidationArtefact;
+import com.helger.bdve.api.executorset.IValidationExecutorSetRegistry;
+import com.helger.bdve.api.executorset.VESID;
+import com.helger.bdve.api.executorset.ValidationExecutorSet;
+import com.helger.bdve.engine.schematron.SchematronNamespaceBeautifier;
+import com.helger.bdve.engine.schematron.ValidationExecutorSchematron;
+import com.helger.bdve.engine.source.IValidationSourceXML;
+import com.helger.bdve.engine.xsd.ValidationExecutorXSD;
 import com.helger.commons.ValueEnforcer;
 import com.helger.commons.io.resource.ClassPathResource;
 import com.helger.commons.io.resource.IReadableResource;
@@ -50,9 +50,7 @@ public final class OIOUBLValidation
   public static final VESID VID_OIOUBL_CATALOGUE_ITEM_SPECIFICATION_UPDATE = new VESID (GROUPID,
                                                                                         "catalogue-item-specification-update",
                                                                                         VERSION);
-  public static final VESID VID_OIOUBL_CATALOGUE_PRICING_UPDATE = new VESID (GROUPID,
-                                                                             "catalogue-pricing-update",
-                                                                             VERSION);
+  public static final VESID VID_OIOUBL_CATALOGUE_PRICING_UPDATE = new VESID (GROUPID, "catalogue-pricing-update", VERSION);
   public static final VESID VID_OIOUBL_CATALOGUE_REQUEST = new VESID (GROUPID, "catalogue-request", VERSION);
   public static final VESID VID_OIOUBL_CREDIT_NOTE = new VESID (GROUPID, "credit-note", VERSION);
   public static final VESID VID_OIOUBL_INVOICE = new VESID (GROUPID, "invoice", VERSION);
@@ -84,10 +82,8 @@ public final class OIOUBLValidation
                                                                                            _getCL ());
   private static final IReadableResource OIOUBL_CREDIT_NOTE = new ClassPathResource ("/oioubl/2.0.2/OIOUBL_CreditNote_Schematron.xsl",
                                                                                      _getCL ());
-  private static final IReadableResource OIOUBL_INVOICE = new ClassPathResource ("/oioubl/2.0.2/OIOUBL_Invoice_Schematron.xsl",
-                                                                                 _getCL ());
-  private static final IReadableResource OIOUBL_ORDER = new ClassPathResource ("/oioubl/2.0.2/OIOUBL_Order_Schematron.xsl",
-                                                                               _getCL ());
+  private static final IReadableResource OIOUBL_INVOICE = new ClassPathResource ("/oioubl/2.0.2/OIOUBL_Invoice_Schematron.xsl", _getCL ());
+  private static final IReadableResource OIOUBL_ORDER = new ClassPathResource ("/oioubl/2.0.2/OIOUBL_Order_Schematron.xsl", _getCL ());
   private static final IReadableResource OIOUBL_ORDER_CANCELLATION = new ClassPathResource ("/oioubl/2.0.2/OIOUBL_OrderCancellation_Schematron.xsl",
                                                                                             _getCL ());
   private static final IReadableResource OIOUBL_ORDER_CHANGE = new ClassPathResource ("/oioubl/2.0.2/OIOUBL_OrderChange_Schematron.xsl",
@@ -105,10 +101,9 @@ public final class OIOUBLValidation
   {}
 
   @Nonnull
-  private static IValidationExecutor _createTVR (@Nonnull final IReadableResource aRes)
+  private static ValidationExecutorSchematron _createTVR (@Nonnull final IReadableResource aRes)
   {
-    return new ValidationExecutorSchematron (new ValidationArtefact (EValidationType.SCHEMATRON_OIOUBL,
-                                                                     aRes),
+    return new ValidationExecutorSchematron (new ValidationArtefact (EValidationType.SCHEMATRON_OIOUBL, aRes),
                                              null,
                                              UBL21NamespaceContext.getInstance ());
   }
@@ -120,12 +115,12 @@ public final class OIOUBLValidation
    * @param aRegistry
    *        The registry to add the artefacts. May not be <code>null</code>.
    */
-  public static void initOIOUBL (@Nonnull final ValidationExecutorSetRegistry aRegistry)
+  public static void initOIOUBL (@Nonnull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
   {
     ValueEnforcer.notNull (aRegistry, "Registry");
 
     // For better error messages
-    LocationBeautifierSPI.addMappings (UBL21NamespaceContext.getInstance ());
+    SchematronNamespaceBeautifier.addMappings (UBL21NamespaceContext.getInstance ());
 
     final boolean bNotDeprecated = false;
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OIOUBL_APPLICATION_RESPONSE,
@@ -135,8 +130,7 @@ public final class OIOUBLValidation
                                                                            ValidationExecutorXSD.create (EUBL21DocumentType.APPLICATION_RESPONSE),
                                                                            _createTVR (OIOUBL_APPLICATION_RESPONSE)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OIOUBL_CATALOGUE,
-                                                                           "OIOUBL Catalogue " +
-                                                                                                 VID_OIOUBL_CATALOGUE.getVersion (),
+                                                                           "OIOUBL Catalogue " + VID_OIOUBL_CATALOGUE.getVersion (),
                                                                            bNotDeprecated,
                                                                            ValidationExecutorXSD.create (EUBL21DocumentType.CATALOGUE),
                                                                            _createTVR (OIOUBL_CATALOGUE)));
@@ -165,20 +159,17 @@ public final class OIOUBLValidation
                                                                            ValidationExecutorXSD.create (EUBL21DocumentType.CATALOGUE_REQUEST),
                                                                            _createTVR (OIOUBL_CATALOGUE_REQUEST)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OIOUBL_CREDIT_NOTE,
-                                                                           "OIOUBL Credit Note " +
-                                                                                                   VID_OIOUBL_CREDIT_NOTE.getVersion (),
+                                                                           "OIOUBL Credit Note " + VID_OIOUBL_CREDIT_NOTE.getVersion (),
                                                                            bNotDeprecated,
                                                                            ValidationExecutorXSD.create (EUBL21DocumentType.CREDIT_NOTE),
                                                                            _createTVR (OIOUBL_CREDIT_NOTE)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OIOUBL_INVOICE,
-                                                                           "OIOUBL Invoice " +
-                                                                                               VID_OIOUBL_INVOICE.getVersion (),
+                                                                           "OIOUBL Invoice " + VID_OIOUBL_INVOICE.getVersion (),
                                                                            bNotDeprecated,
                                                                            ValidationExecutorXSD.create (EUBL21DocumentType.INVOICE),
                                                                            _createTVR (OIOUBL_INVOICE)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OIOUBL_ORDER,
-                                                                           "OIOUBL Order " +
-                                                                                             VID_OIOUBL_ORDER.getVersion (),
+                                                                           "OIOUBL Order " + VID_OIOUBL_ORDER.getVersion (),
                                                                            bNotDeprecated,
                                                                            ValidationExecutorXSD.create (EUBL21DocumentType.ORDER),
                                                                            _createTVR (OIOUBL_ORDER)));
@@ -189,8 +180,7 @@ public final class OIOUBLValidation
                                                                            ValidationExecutorXSD.create (EUBL21DocumentType.ORDER_CANCELLATION),
                                                                            _createTVR (OIOUBL_ORDER_CANCELLATION)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OIOUBL_ORDER_CHANGE,
-                                                                           "OIOUBL Order Change " +
-                                                                                                    VID_OIOUBL_ORDER_CHANGE.getVersion (),
+                                                                           "OIOUBL Order Change " + VID_OIOUBL_ORDER_CHANGE.getVersion (),
                                                                            bNotDeprecated,
                                                                            ValidationExecutorXSD.create (EUBL21DocumentType.ORDER_CHANGE),
                                                                            _createTVR (OIOUBL_ORDER_CHANGE)));
@@ -207,14 +197,12 @@ public final class OIOUBLValidation
                                                                            ValidationExecutorXSD.create (EUBL21DocumentType.ORDER_RESPONSE_SIMPLE),
                                                                            _createTVR (OIOUBL_ORDER_RESPONSE_SIMPLE)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OIOUBL_REMINDER,
-                                                                           "OIOUBL Reminder " +
-                                                                                                VID_OIOUBL_REMINDER.getVersion (),
+                                                                           "OIOUBL Reminder " + VID_OIOUBL_REMINDER.getVersion (),
                                                                            bNotDeprecated,
                                                                            ValidationExecutorXSD.create (EUBL21DocumentType.REMINDER),
                                                                            _createTVR (OIOUBL_REMINDER)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OIOUBL_STATEMENT,
-                                                                           "OIOUBL Statement " +
-                                                                                                 VID_OIOUBL_STATEMENT.getVersion (),
+                                                                           "OIOUBL Statement " + VID_OIOUBL_STATEMENT.getVersion (),
                                                                            bNotDeprecated,
                                                                            ValidationExecutorXSD.create (EUBL21DocumentType.STATEMENT),
                                                                            _createTVR (OIOUBL_STATEMENT)));

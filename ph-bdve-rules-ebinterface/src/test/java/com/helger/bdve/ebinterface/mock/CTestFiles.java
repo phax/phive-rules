@@ -19,10 +19,11 @@ package com.helger.bdve.ebinterface.mock;
 import javax.annotation.Nonnull;
 import javax.annotation.concurrent.Immutable;
 
-import com.helger.bdve.api.vesid.VESID;
+import com.helger.bdve.api.executorset.VESID;
+import com.helger.bdve.api.executorset.ValidationExecutorSetRegistry;
 import com.helger.bdve.ebinterface.EbInterfaceValidation;
-import com.helger.bdve.engine.executorset.ValidationExecutorSetRegistry;
 import com.helger.bdve.engine.mock.MockFile;
+import com.helger.bdve.engine.source.IValidationSourceXML;
 import com.helger.commons.ValueEnforcer;
 import com.helger.commons.annotation.ReturnsMutableCopy;
 import com.helger.commons.collection.impl.CommonsArrayList;
@@ -32,7 +33,7 @@ import com.helger.commons.io.resource.IReadableResource;
 @Immutable
 public final class CTestFiles
 {
-  public static final ValidationExecutorSetRegistry VES_REGISTRY = new ValidationExecutorSetRegistry ();
+  public static final ValidationExecutorSetRegistry <IValidationSourceXML> VES_REGISTRY = new ValidationExecutorSetRegistry <> ();
   static
   {
     EbInterfaceValidation.initEbInterface (VES_REGISTRY);

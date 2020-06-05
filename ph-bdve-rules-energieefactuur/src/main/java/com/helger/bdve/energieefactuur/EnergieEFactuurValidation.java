@@ -23,15 +23,16 @@ import javax.xml.xpath.XPathExpression;
 import javax.xml.xpath.XPathFactory;
 
 import com.helger.bdve.api.EValidationType;
-import com.helger.bdve.api.vesid.VESID;
-import com.helger.bdve.engine.artefact.ValidationArtefact;
-import com.helger.bdve.engine.execute.ValidationExecutorSchematron;
-import com.helger.bdve.engine.execute.ValidationExecutorXSD;
-import com.helger.bdve.engine.execute.ValidationExecutorXSDPartial;
-import com.helger.bdve.engine.execute.XSDPartialContext;
-import com.helger.bdve.engine.executorset.ValidationExecutorSet;
-import com.helger.bdve.engine.executorset.ValidationExecutorSetRegistry;
-import com.helger.bdve.engine.spi.LocationBeautifierSPI;
+import com.helger.bdve.api.artefact.ValidationArtefact;
+import com.helger.bdve.api.executorset.IValidationExecutorSetRegistry;
+import com.helger.bdve.api.executorset.VESID;
+import com.helger.bdve.api.executorset.ValidationExecutorSet;
+import com.helger.bdve.engine.schematron.SchematronNamespaceBeautifier;
+import com.helger.bdve.engine.schematron.ValidationExecutorSchematron;
+import com.helger.bdve.engine.source.IValidationSourceXML;
+import com.helger.bdve.engine.xsd.ValidationExecutorXSD;
+import com.helger.bdve.engine.xsd.ValidationExecutorXSDPartial;
+import com.helger.bdve.engine.xsd.XSDPartialContext;
 import com.helger.bdve.simplerinvoicing.SimplerInvoicingValidation;
 import com.helger.commons.ValueEnforcer;
 import com.helger.commons.io.resource.ClassPathResource;
@@ -90,12 +91,12 @@ public final class EnergieEFactuurValidation
    *        The registry to add the artefacts. May not be <code>null</code>.
    */
   @SuppressWarnings ("deprecation")
-  public static void initEnergieEFactuur (@Nonnull final ValidationExecutorSetRegistry aRegistry)
+  public static void initEnergieEFactuur (@Nonnull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
   {
     ValueEnforcer.notNull (aRegistry, "Registry");
 
     // For better error messages
-    LocationBeautifierSPI.addMappings (UBL21NamespaceContext.getInstance ());
+    SchematronNamespaceBeautifier.addMappings (UBL21NamespaceContext.getInstance ());
 
     final boolean bNotDeprecated = false;
 
@@ -112,8 +113,7 @@ public final class EnergieEFactuurValidation
 
       // Same Schematrons as SimplerInvoicing - and same classloader!
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_ENERGIE_EFACTUUR_1_0_0,
-                                                                             "Energie eFactuur " +
-                                                                                                         VID_ENERGIE_EFACTUUR_1_0_0.getVersion (),
+                                                                             "Energie eFactuur " + VID_ENERGIE_EFACTUUR_1_0_0.getVersion (),
                                                                              bNotDeprecated,
                                                                              ValidationExecutorXSD.create (EUBL21DocumentType.INVOICE),
                                                                              new ValidationExecutorXSDPartial (new ValidationArtefact (EValidationType.PARTIAL_XSD,
@@ -140,8 +140,7 @@ public final class EnergieEFactuurValidation
 
       // Same Schematrons as SimplerInvoicing - and same classloader!
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_ENERGIE_EFACTUUR_1_0_1,
-                                                                             "Energie eFactuur " +
-                                                                                                         VID_ENERGIE_EFACTUUR_1_0_1.getVersion (),
+                                                                             "Energie eFactuur " + VID_ENERGIE_EFACTUUR_1_0_1.getVersion (),
                                                                              bNotDeprecated,
                                                                              ValidationExecutorXSD.create (EUBL21DocumentType.INVOICE),
                                                                              new ValidationExecutorXSDPartial (new ValidationArtefact (EValidationType.PARTIAL_XSD,
@@ -168,8 +167,7 @@ public final class EnergieEFactuurValidation
 
       // Same Schematrons as SimplerInvoicing - and same classloader!
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_ENERGIE_EFACTUUR_2_0_0,
-                                                                             "Energie eFactuur " +
-                                                                                                         VID_ENERGIE_EFACTUUR_2_0_0.getVersion (),
+                                                                             "Energie eFactuur " + VID_ENERGIE_EFACTUUR_2_0_0.getVersion (),
                                                                              bNotDeprecated,
                                                                              ValidationExecutorXSD.create (EUBL21DocumentType.INVOICE),
                                                                              new ValidationExecutorXSDPartial (new ValidationArtefact (EValidationType.PARTIAL_XSD,
@@ -196,8 +194,7 @@ public final class EnergieEFactuurValidation
 
       // Same Schematrons as SimplerInvoicing - and same classloader!
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_ENERGIE_EFACTUUR_3_0_0,
-                                                                             "Energie eFactuur " +
-                                                                                                         VID_ENERGIE_EFACTUUR_3_0_0.getVersion (),
+                                                                             "Energie eFactuur " + VID_ENERGIE_EFACTUUR_3_0_0.getVersion (),
                                                                              bNotDeprecated,
                                                                              ValidationExecutorXSD.create (EUBL21DocumentType.INVOICE),
                                                                              new ValidationExecutorXSDPartial (new ValidationArtefact (EValidationType.PARTIAL_XSD,

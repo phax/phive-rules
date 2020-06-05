@@ -24,6 +24,7 @@ import com.helger.bdve.api.artefact.IValidationArtefact;
 import com.helger.bdve.api.execute.IValidationExecutor;
 import com.helger.bdve.api.executorset.IValidationExecutorSet;
 import com.helger.bdve.energieefactuur.mock.CTestFiles;
+import com.helger.bdve.engine.source.IValidationSourceXML;
 import com.helger.commons.io.resource.IReadableResource;
 import com.helger.schematron.pure.SchematronResourcePure;
 import com.helger.schematron.xslt.SchematronResourceSCH;
@@ -39,8 +40,8 @@ public final class EnergieEFactuurValidationTest
   @Test
   public void testFilesExist ()
   {
-    for (final IValidationExecutorSet aVES : CTestFiles.VES_REGISTRY.getAll ())
-      for (final IValidationExecutor aVE : aVES)
+    for (final IValidationExecutorSet <IValidationSourceXML> aVES : CTestFiles.VES_REGISTRY.getAll ())
+      for (final IValidationExecutor <IValidationSourceXML> aVE : aVES)
       {
         final IReadableResource aRes = aVE.getValidationArtefact ().getRuleResource ();
         assertTrue (aRes.toString (), aRes.exists ());
@@ -50,8 +51,8 @@ public final class EnergieEFactuurValidationTest
   @Test
   public void testSchematronsValid ()
   {
-    for (final IValidationExecutorSet aVES : CTestFiles.VES_REGISTRY.getAll ())
-      for (final IValidationExecutor aVE : aVES)
+    for (final IValidationExecutorSet <IValidationSourceXML> aVES : CTestFiles.VES_REGISTRY.getAll ())
+      for (final IValidationExecutor <IValidationSourceXML> aVE : aVES)
       {
         final IValidationArtefact aVA = aVE.getValidationArtefact ();
         // Check that the passed Schematron is valid

@@ -20,13 +20,14 @@ import javax.annotation.Nonnull;
 import javax.annotation.concurrent.Immutable;
 
 import com.helger.bdve.api.EValidationType;
-import com.helger.bdve.api.vesid.VESID;
-import com.helger.bdve.engine.artefact.ValidationArtefact;
-import com.helger.bdve.engine.execute.ValidationExecutorSchematron;
-import com.helger.bdve.engine.execute.ValidationExecutorXSD;
-import com.helger.bdve.engine.executorset.ValidationExecutorSet;
-import com.helger.bdve.engine.executorset.ValidationExecutorSetRegistry;
-import com.helger.bdve.engine.spi.LocationBeautifierSPI;
+import com.helger.bdve.api.artefact.ValidationArtefact;
+import com.helger.bdve.api.executorset.IValidationExecutorSetRegistry;
+import com.helger.bdve.api.executorset.VESID;
+import com.helger.bdve.api.executorset.ValidationExecutorSet;
+import com.helger.bdve.engine.schematron.SchematronNamespaceBeautifier;
+import com.helger.bdve.engine.schematron.ValidationExecutorSchematron;
+import com.helger.bdve.engine.source.IValidationSourceXML;
+import com.helger.bdve.engine.xsd.ValidationExecutorXSD;
 import com.helger.commons.ValueEnforcer;
 import com.helger.commons.io.resource.ClassPathResource;
 import com.helger.commons.io.resource.IReadableResource;
@@ -49,13 +50,9 @@ public final class PeppolValidationSG
 
   // 1.0.0 aka 1
   @Deprecated
-  public static final VESID VID_OPENPEPPOL_BIS3_SG_UBL_INVOICE_100 = new VESID ("eu.peppol.bis3.sg.ubl",
-                                                                                "invoice",
-                                                                                "1");
+  public static final VESID VID_OPENPEPPOL_BIS3_SG_UBL_INVOICE_100 = new VESID ("eu.peppol.bis3.sg.ubl", "invoice", "1");
   @Deprecated
-  public static final VESID VID_OPENPEPPOL_BIS3_SG_UBL_CREDIT_NOTE_100 = new VESID ("eu.peppol.bis3.sg.ubl",
-                                                                                    "creditnote",
-                                                                                    "1");
+  public static final VESID VID_OPENPEPPOL_BIS3_SG_UBL_CREDIT_NOTE_100 = new VESID ("eu.peppol.bis3.sg.ubl", "creditnote", "1");
   @Deprecated
   public static final IReadableResource BIS3_BILLING_SG_CEN_100 = new ClassPathResource ("/sg-peppol/1.0.0/xslt/CEN-EN16931-UBL-SG-Conformant.xslt",
                                                                                          _getCL ());
@@ -64,12 +61,8 @@ public final class PeppolValidationSG
                                                                                             _getCL ());
 
   // 1.0.2
-  public static final VESID VID_OPENPEPPOL_BIS3_SG_UBL_INVOICE_102 = new VESID ("eu.peppol.bis3.sg.ubl",
-                                                                                "invoice",
-                                                                                "1.0.2");
-  public static final VESID VID_OPENPEPPOL_BIS3_SG_UBL_CREDIT_NOTE_102 = new VESID ("eu.peppol.bis3.sg.ubl",
-                                                                                    "creditnote",
-                                                                                    "1.0.2");
+  public static final VESID VID_OPENPEPPOL_BIS3_SG_UBL_INVOICE_102 = new VESID ("eu.peppol.bis3.sg.ubl", "invoice", "1.0.2");
+  public static final VESID VID_OPENPEPPOL_BIS3_SG_UBL_CREDIT_NOTE_102 = new VESID ("eu.peppol.bis3.sg.ubl", "creditnote", "1.0.2");
   public static final IReadableResource BIS3_BILLING_SG_CEN_102 = new ClassPathResource ("/sg-peppol/1.0.2/xslt/CEN-EN16931-UBL-SG-Conformant.xslt",
                                                                                          _getCL ());
   public static final IReadableResource BIS3_BILLING_SG_PEPPOL_102 = new ClassPathResource ("/sg-peppol/1.0.2/xslt/PEPPOL-EN16931-UBL-SG-Conformant.xslt",
@@ -78,7 +71,7 @@ public final class PeppolValidationSG
   private PeppolValidationSG ()
   {}
 
-  public static void init (@Nonnull final ValidationExecutorSetRegistry aRegistry)
+  public static void init (@Nonnull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
   {
     ValueEnforcer.notNull (aRegistry, "Registry");
 
@@ -86,7 +79,7 @@ public final class PeppolValidationSG
     final MapBasedNamespaceContext aNSCtxCreditNote = PeppolValidation.createUBLNSContext (EUBL21DocumentType.CREDIT_NOTE.getNamespaceURI ());
 
     // For better error messages (merge both)
-    LocationBeautifierSPI.addMappings (aNSCtxCreditNote);
+    SchematronNamespaceBeautifier.addMappings (aNSCtxCreditNote);
 
     final boolean bDeprecated = true;
     final boolean bNotDeprecated = false;

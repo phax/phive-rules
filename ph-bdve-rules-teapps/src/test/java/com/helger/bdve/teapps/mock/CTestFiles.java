@@ -19,9 +19,10 @@ package com.helger.bdve.teapps.mock;
 import javax.annotation.Nonnull;
 import javax.annotation.concurrent.Immutable;
 
-import com.helger.bdve.api.vesid.VESID;
-import com.helger.bdve.engine.executorset.ValidationExecutorSetRegistry;
+import com.helger.bdve.api.executorset.VESID;
+import com.helger.bdve.api.executorset.ValidationExecutorSetRegistry;
 import com.helger.bdve.engine.mock.MockFile;
+import com.helger.bdve.engine.source.IValidationSourceXML;
 import com.helger.bdve.teapps.TEAPPSValidation;
 import com.helger.commons.ValueEnforcer;
 import com.helger.commons.annotation.ReturnsMutableCopy;
@@ -33,7 +34,7 @@ import com.helger.commons.io.resource.IReadableResource;
 @Immutable
 public final class CTestFiles
 {
-  public static final ValidationExecutorSetRegistry VES_REGISTRY = new ValidationExecutorSetRegistry ();
+  public static final ValidationExecutorSetRegistry <IValidationSourceXML> VES_REGISTRY = new ValidationExecutorSetRegistry <> ();
   static
   {
     TEAPPSValidation.initTEAPPS (VES_REGISTRY);
@@ -67,8 +68,7 @@ public final class CTestFiles
     }
     if (aVESID.equals (TEAPPSValidation.VID_TEAPPS_30))
     {
-      return new CommonsArrayList <> (new String [] { "empty.xml" },
-                                      x -> new ClassPathResource ("/test-files/3.0/" + x));
+      return new CommonsArrayList <> (new String [] { "empty.xml" }, x -> new ClassPathResource ("/test-files/3.0/" + x));
     }
 
     throw new IllegalArgumentException ("Invalid VESID: " + aVESID);

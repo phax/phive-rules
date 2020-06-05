@@ -23,13 +23,13 @@ import javax.annotation.Nonnull;
 import javax.annotation.concurrent.Immutable;
 
 import com.helger.bdve.api.EValidationType;
-import com.helger.bdve.api.execute.IValidationExecutor;
-import com.helger.bdve.api.vesid.VESID;
-import com.helger.bdve.engine.artefact.ValidationArtefact;
-import com.helger.bdve.engine.execute.ValidationExecutorSchematron;
-import com.helger.bdve.engine.execute.ValidationExecutorXSD;
-import com.helger.bdve.engine.executorset.ValidationExecutorSet;
-import com.helger.bdve.engine.executorset.ValidationExecutorSetRegistry;
+import com.helger.bdve.api.artefact.ValidationArtefact;
+import com.helger.bdve.api.executorset.IValidationExecutorSetRegistry;
+import com.helger.bdve.api.executorset.VESID;
+import com.helger.bdve.api.executorset.ValidationExecutorSet;
+import com.helger.bdve.engine.schematron.ValidationExecutorSchematron;
+import com.helger.bdve.engine.source.IValidationSourceXML;
+import com.helger.bdve.engine.xsd.ValidationExecutorXSD;
 import com.helger.commons.ValueEnforcer;
 import com.helger.commons.datetime.PDTFactory;
 import com.helger.commons.io.resource.ClassPathResource;
@@ -78,95 +78,61 @@ public final class PeppolValidation370
     return PeppolValidation370.class.getClassLoader ();
   }
 
-  public static final IReadableResource ORDER_RULES = new ClassPathResource (PREFIX_XSLT + "BIIRULES-UBL-T01.xsl",
-                                                                             _getCL ());
-  public static final IReadableResource ORDER_OPENPEPPOL = new ClassPathResource (PREFIX_XSLT +
-                                                                                  "OPENPEPPOL-UBL-T01.xsl",
-                                                                                  _getCL ());
-  public static final IReadableResource ORDER_OPENPEPPOL_CORE = new ClassPathResource (PREFIX_XSLTCORE +
-                                                                                       "OPENPEPPOLCORE-UBL-T01.xsl",
+  public static final IReadableResource ORDER_RULES = new ClassPathResource (PREFIX_XSLT + "BIIRULES-UBL-T01.xsl", _getCL ());
+  public static final IReadableResource ORDER_OPENPEPPOL = new ClassPathResource (PREFIX_XSLT + "OPENPEPPOL-UBL-T01.xsl", _getCL ());
+  public static final IReadableResource ORDER_OPENPEPPOL_CORE = new ClassPathResource (PREFIX_XSLTCORE + "OPENPEPPOLCORE-UBL-T01.xsl",
                                                                                        _getCL ());
 
-  public static final IReadableResource INVOICE_RULES = new ClassPathResource (PREFIX_XSLT + "BIIRULES-UBL-T10.xsl",
-                                                                               _getCL ());
-  public static final IReadableResource INVOICE_OPENPEPPOL = new ClassPathResource (PREFIX_XSLT +
-                                                                                    "OPENPEPPOL-UBL-T10.xsl",
-                                                                                    _getCL ());
-  public static final IReadableResource INVOICE_OPENPEPPOL_CORE = new ClassPathResource (PREFIX_XSLTCORE +
-                                                                                         "OPENPEPPOLCORE-UBL-T10.xsl",
+  public static final IReadableResource INVOICE_RULES = new ClassPathResource (PREFIX_XSLT + "BIIRULES-UBL-T10.xsl", _getCL ());
+  public static final IReadableResource INVOICE_OPENPEPPOL = new ClassPathResource (PREFIX_XSLT + "OPENPEPPOL-UBL-T10.xsl", _getCL ());
+  public static final IReadableResource INVOICE_OPENPEPPOL_CORE = new ClassPathResource (PREFIX_XSLTCORE + "OPENPEPPOLCORE-UBL-T10.xsl",
                                                                                          _getCL ());
 
-  public static final IReadableResource CREDIT_NOTE_RULES = new ClassPathResource (PREFIX_XSLT + "BIIRULES-UBL-T14.xsl",
-                                                                                   _getCL ());
-  public static final IReadableResource CREDIT_NOTE_OPENPEPPOL = new ClassPathResource (PREFIX_XSLT +
-                                                                                        "OPENPEPPOL-UBL-T14.xsl",
-                                                                                        _getCL ());
-  public static final IReadableResource CREDIT_NOTE_OPENPEPPOL_CORE = new ClassPathResource (PREFIX_XSLTCORE +
-                                                                                             "OPENPEPPOLCORE-UBL-T14.xsl",
+  public static final IReadableResource CREDIT_NOTE_RULES = new ClassPathResource (PREFIX_XSLT + "BIIRULES-UBL-T14.xsl", _getCL ());
+  public static final IReadableResource CREDIT_NOTE_OPENPEPPOL = new ClassPathResource (PREFIX_XSLT + "OPENPEPPOL-UBL-T14.xsl", _getCL ());
+  public static final IReadableResource CREDIT_NOTE_OPENPEPPOL_CORE = new ClassPathResource (PREFIX_XSLTCORE + "OPENPEPPOLCORE-UBL-T14.xsl",
                                                                                              _getCL ());
 
-  public static final IReadableResource DESPATCH_ADVICE_RULES = new ClassPathResource (PREFIX_XSLT +
-                                                                                       "BIIRULES-UBL-T16.xsl",
-                                                                                       _getCL ());
-  public static final IReadableResource DESPATCH_ADVICE_OPENPEPPOL = new ClassPathResource (PREFIX_XSLT +
-                                                                                            "OPENPEPPOL-UBL-T16.xsl",
+  public static final IReadableResource DESPATCH_ADVICE_RULES = new ClassPathResource (PREFIX_XSLT + "BIIRULES-UBL-T16.xsl", _getCL ());
+  public static final IReadableResource DESPATCH_ADVICE_OPENPEPPOL = new ClassPathResource (PREFIX_XSLT + "OPENPEPPOL-UBL-T16.xsl",
                                                                                             _getCL ());
   public static final IReadableResource DESPATCH_ADVICE_OPENPEPPOL_CORE = new ClassPathResource (PREFIX_XSLTCORE +
                                                                                                  "OPENPEPPOLCORE-UBL-T16.xsl",
                                                                                                  _getCL ());
 
-  public static final IReadableResource CATALOGUE_RULES = new ClassPathResource (PREFIX_XSLT + "BIIRULES-UBL-T19.xsl",
-                                                                                 _getCL ());
-  public static final IReadableResource CATALOGUE_OPENPEPPOL_XSLT = new ClassPathResource (PREFIX_XSLT +
-                                                                                           "OPENPEPPOL-UBL-T19.xsl",
+  public static final IReadableResource CATALOGUE_RULES = new ClassPathResource (PREFIX_XSLT + "BIIRULES-UBL-T19.xsl", _getCL ());
+  public static final IReadableResource CATALOGUE_OPENPEPPOL_XSLT = new ClassPathResource (PREFIX_XSLT + "OPENPEPPOL-UBL-T19.xsl",
                                                                                            _getCL ());
-  public static final IReadableResource CATALOGUE_OPENPEPPOL_CORE = new ClassPathResource (PREFIX_XSLTCORE +
-                                                                                           "OPENPEPPOLCORE-UBL-T19.xsl",
+  public static final IReadableResource CATALOGUE_OPENPEPPOL_CORE = new ClassPathResource (PREFIX_XSLTCORE + "OPENPEPPOLCORE-UBL-T19.xsl",
                                                                                            _getCL ());
 
-  public static final IReadableResource CATALOGUE_RESPONSE_RULES = new ClassPathResource (PREFIX_XSLT +
-                                                                                          "BIIRULES-UBL-T58.xsl",
-                                                                                          _getCL ());
-  public static final IReadableResource CATALOGUE_RESPONSE_OPENPEPPOL = new ClassPathResource (PREFIX_XSLT +
-                                                                                               "OPENPEPPOL-UBL-T58.xsl",
+  public static final IReadableResource CATALOGUE_RESPONSE_RULES = new ClassPathResource (PREFIX_XSLT + "BIIRULES-UBL-T58.xsl", _getCL ());
+  public static final IReadableResource CATALOGUE_RESPONSE_OPENPEPPOL = new ClassPathResource (PREFIX_XSLT + "OPENPEPPOL-UBL-T58.xsl",
                                                                                                _getCL ());
   public static final IReadableResource CATALOGUE_RESPONSE_OPENPEPPOL_CORE = new ClassPathResource (PREFIX_XSLTCORE +
                                                                                                     "OPENPEPPOLCORE-UBL-T58.xsl",
                                                                                                     _getCL ());
 
-  public static final IReadableResource MLR_RULES = new ClassPathResource (PREFIX_XSLT + "BIIRULES-UBL-T71.xsl",
-                                                                           _getCL ());
-  public static final IReadableResource MLR_OPENPEPPOL = new ClassPathResource (PREFIX_XSLT + "OPENPEPPOL-UBL-T71.xsl",
-                                                                                _getCL ());
-  public static final IReadableResource MLR_OPENPEPPOL_CORE = new ClassPathResource (PREFIX_XSLTCORE +
-                                                                                     "OPENPEPPOLCORE-UBL-T71.xsl",
+  public static final IReadableResource MLR_RULES = new ClassPathResource (PREFIX_XSLT + "BIIRULES-UBL-T71.xsl", _getCL ());
+  public static final IReadableResource MLR_OPENPEPPOL = new ClassPathResource (PREFIX_XSLT + "OPENPEPPOL-UBL-T71.xsl", _getCL ());
+  public static final IReadableResource MLR_OPENPEPPOL_CORE = new ClassPathResource (PREFIX_XSLTCORE + "OPENPEPPOLCORE-UBL-T71.xsl",
                                                                                      _getCL ());
 
-  public static final IReadableResource ORDER_RESPONSE_RULES = new ClassPathResource (PREFIX_XSLT +
-                                                                                      "BIIRULES-UBL-T76.xsl",
-                                                                                      _getCL ());
-  public static final IReadableResource ORDER_RESPONSE_OPENPEPPOL = new ClassPathResource (PREFIX_XSLT +
-                                                                                           "OPENPEPPOL-UBL-T76.xsl",
+  public static final IReadableResource ORDER_RESPONSE_RULES = new ClassPathResource (PREFIX_XSLT + "BIIRULES-UBL-T76.xsl", _getCL ());
+  public static final IReadableResource ORDER_RESPONSE_OPENPEPPOL = new ClassPathResource (PREFIX_XSLT + "OPENPEPPOL-UBL-T76.xsl",
                                                                                            _getCL ());
   public static final IReadableResource ORDER_RESPONSE_OPENPEPPOL_CORE = new ClassPathResource (PREFIX_XSLTCORE +
                                                                                                 "OPENPEPPOLCORE-UBL-T76.xsl",
                                                                                                 _getCL ());
 
-  public static final IReadableResource PUNCH_OUT_RULES = new ClassPathResource (PREFIX_XSLT + "BIIRULES-UBL-T77.xsl",
-                                                                                 _getCL ());
-  public static final IReadableResource PUNCH_OUT_OPENPEPPOL = new ClassPathResource (PREFIX_XSLT +
-                                                                                      "OPENPEPPOL-UBL-T77.xsl",
-                                                                                      _getCL ());
+  public static final IReadableResource PUNCH_OUT_RULES = new ClassPathResource (PREFIX_XSLT + "BIIRULES-UBL-T77.xsl", _getCL ());
+  public static final IReadableResource PUNCH_OUT_OPENPEPPOL = new ClassPathResource (PREFIX_XSLT + "OPENPEPPOL-UBL-T77.xsl", _getCL ());
 
-  public static final IReadableResource ORDER_AGREEMENT_RULES = new ClassPathResource (PREFIX_XSLT +
-                                                                                       "BIIRULES-UBL-T110.xsl",
-                                                                                       _getCL ());
-  public static final IReadableResource ORDER_AGREEMENT_OPENPEPPOL = new ClassPathResource (PREFIX_XSLT +
-                                                                                            "OPENPEPPOL-UBL-T110.xsl",
+  public static final IReadableResource ORDER_AGREEMENT_RULES = new ClassPathResource (PREFIX_XSLT + "BIIRULES-UBL-T110.xsl", _getCL ());
+  public static final IReadableResource ORDER_AGREEMENT_OPENPEPPOL = new ClassPathResource (PREFIX_XSLT + "OPENPEPPOL-UBL-T110.xsl",
                                                                                             _getCL ());
 
-  public static final IReadableResource INVOICE_MESSAGE_RESPONSE_RULES = new ClassPathResource (PREFIX_XSLT +
-                                                                                                "BIIRULES-UBL-T111.xsl",
+  public static final IReadableResource INVOICE_MESSAGE_RESPONSE_RULES = new ClassPathResource (PREFIX_XSLT + "BIIRULES-UBL-T111.xsl",
                                                                                                 _getCL ());
   public static final IReadableResource INVOICE_MESSAGE_RESPONSE_OPENPEPPOL = new ClassPathResource (PREFIX_XSLT +
                                                                                                      "OPENPEPPOL-UBL-T111.xsl",
@@ -181,14 +147,14 @@ public final class PeppolValidation370
   {}
 
   @Nonnull
-  private static IValidationExecutor _createXSLT (@Nonnull final IReadableResource aRes)
+  private static ValidationExecutorSchematron _createXSLT (@Nonnull final IReadableResource aRes)
   {
     return new ValidationExecutorSchematron (new ValidationArtefact (EValidationType.SCHEMATRON_XSLT, aRes),
                                              null,
                                              UBL21NamespaceContext.getInstance ());
   }
 
-  public static void init (@Nonnull final ValidationExecutorSetRegistry aRegistry)
+  public static void init (@Nonnull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
   {
     ValueEnforcer.notNull (aRegistry, "Registry");
 
@@ -210,18 +176,14 @@ public final class PeppolValidation370
                                                                            _createXSLT (INVOICE_OPENPEPPOL),
                                                                            _createXSLT (INVOICE_OPENPEPPOL_CORE)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_T14_V2,
-                                                                           "OpenPEPPOL Credit Note" +
-                                                                                                  sVersion +
-                                                                                                  sAkaBIS2,
+                                                                           "OpenPEPPOL Credit Note" + sVersion + sAkaBIS2,
                                                                            bDeprecated,
                                                                            ValidationExecutorXSD.create (EUBL21DocumentType.CREDIT_NOTE),
                                                                            _createXSLT (CREDIT_NOTE_RULES),
                                                                            _createXSLT (CREDIT_NOTE_OPENPEPPOL),
                                                                            _createXSLT (CREDIT_NOTE_OPENPEPPOL_CORE)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_T16_V2,
-                                                                           "OpenPEPPOL Despatch Advice" +
-                                                                                                  sVersion +
-                                                                                                  sAkaBIS2,
+                                                                           "OpenPEPPOL Despatch Advice" + sVersion + sAkaBIS2,
                                                                            bDeprecated,
                                                                            ValidationExecutorXSD.create (EUBL21DocumentType.DESPATCH_ADVICE),
                                                                            _createXSLT (DESPATCH_ADVICE_RULES),
@@ -235,9 +197,7 @@ public final class PeppolValidation370
                                                                            _createXSLT (CATALOGUE_OPENPEPPOL_XSLT),
                                                                            _createXSLT (CATALOGUE_OPENPEPPOL_CORE)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_T58_V2,
-                                                                           "OpenPEPPOL Catalogue Response" +
-                                                                                                  sVersion +
-                                                                                                  sAkaBIS2,
+                                                                           "OpenPEPPOL Catalogue Response" + sVersion + sAkaBIS2,
                                                                            bDeprecated,
                                                                            ValidationExecutorXSD.create (EUBL21DocumentType.APPLICATION_RESPONSE),
                                                                            _createXSLT (CATALOGUE_RESPONSE_RULES),
@@ -251,9 +211,7 @@ public final class PeppolValidation370
                                                                            _createXSLT (MLR_OPENPEPPOL),
                                                                            _createXSLT (MLR_OPENPEPPOL_CORE)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_T76_V2,
-                                                                           "OpenPEPPOL Order Response" +
-                                                                                                  sVersion +
-                                                                                                  sAkaBIS2,
+                                                                           "OpenPEPPOL Order Response" + sVersion + sAkaBIS2,
                                                                            bDeprecated,
                                                                            ValidationExecutorXSD.create (EUBL21DocumentType.ORDER_RESPONSE),
                                                                            _createXSLT (ORDER_RESPONSE_RULES),
@@ -266,17 +224,13 @@ public final class PeppolValidation370
                                                                            _createXSLT (PUNCH_OUT_RULES),
                                                                            _createXSLT (PUNCH_OUT_OPENPEPPOL)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_T110_V1,
-                                                                           "OpenPEPPOL Order Agreement" +
-                                                                                                   sVersion +
-                                                                                                   sAkaBIS2,
+                                                                           "OpenPEPPOL Order Agreement" + sVersion + sAkaBIS2,
                                                                            bDeprecated,
                                                                            ValidationExecutorXSD.create (EUBL21DocumentType.ORDER_RESPONSE),
                                                                            _createXSLT (ORDER_AGREEMENT_RULES),
                                                                            _createXSLT (ORDER_AGREEMENT_OPENPEPPOL)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_T111_V1,
-                                                                           "OpenPEPPOL Invoice Message Response" +
-                                                                                                   sVersion +
-                                                                                                   sAkaBIS2,
+                                                                           "OpenPEPPOL Invoice Message Response" + sVersion + sAkaBIS2,
                                                                            bDeprecated,
                                                                            ValidationExecutorXSD.create (EUBL21DocumentType.APPLICATION_RESPONSE),
                                                                            _createXSLT (INVOICE_MESSAGE_RESPONSE_RULES),

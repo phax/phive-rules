@@ -23,6 +23,7 @@ import org.junit.Test;
 import com.helger.bdve.api.artefact.IValidationArtefact;
 import com.helger.bdve.api.execute.IValidationExecutor;
 import com.helger.bdve.api.executorset.IValidationExecutorSet;
+import com.helger.bdve.engine.source.IValidationSourceXML;
 import com.helger.bdve.ublbe.mock.CTestFiles;
 import com.helger.commons.io.resource.IReadableResource;
 import com.helger.schematron.pure.SchematronResourcePure;
@@ -39,8 +40,8 @@ public final class UBLBEValidationTest
   @Test
   public void testFilesExist ()
   {
-    for (final IValidationExecutorSet aVES : CTestFiles.VES_REGISTRY.getAll ())
-      for (final IValidationExecutor aVE : aVES)
+    for (final IValidationExecutorSet <IValidationSourceXML> aVES : CTestFiles.VES_REGISTRY.getAll ())
+      for (final IValidationExecutor <IValidationSourceXML> aVE : aVES)
       {
         final IReadableResource aRes = aVE.getValidationArtefact ().getRuleResource ();
         assertTrue (aRes.toString (), aRes.exists ());
@@ -50,8 +51,8 @@ public final class UBLBEValidationTest
   @Test
   public void testSchematronsValid ()
   {
-    for (final IValidationExecutorSet aVES : CTestFiles.VES_REGISTRY.getAll ())
-      for (final IValidationExecutor aVE : aVES)
+    for (final IValidationExecutorSet <IValidationSourceXML> aVES : CTestFiles.VES_REGISTRY.getAll ())
+      for (final IValidationExecutor <IValidationSourceXML> aVE : aVES)
       {
         final IValidationArtefact aVA = aVE.getValidationArtefact ();
         final IReadableResource aRes = aVA.getRuleResource ();

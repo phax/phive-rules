@@ -19,10 +19,11 @@ package com.helger.bdve.ehf.mock;
 import javax.annotation.Nonnull;
 import javax.annotation.concurrent.Immutable;
 
-import com.helger.bdve.api.vesid.VESID;
+import com.helger.bdve.api.executorset.VESID;
+import com.helger.bdve.api.executorset.ValidationExecutorSetRegistry;
 import com.helger.bdve.ehf.EHFValidation;
-import com.helger.bdve.engine.executorset.ValidationExecutorSetRegistry;
 import com.helger.bdve.engine.mock.MockFile;
+import com.helger.bdve.engine.source.IValidationSourceXML;
 import com.helger.bdve.peppol.PeppolValidation;
 import com.helger.commons.ValueEnforcer;
 import com.helger.commons.annotation.ReturnsMutableCopy;
@@ -34,7 +35,7 @@ import com.helger.commons.io.resource.IReadableResource;
 @Immutable
 public final class CTestFiles
 {
-  public static final ValidationExecutorSetRegistry VES_REGISTRY = new ValidationExecutorSetRegistry ();
+  public static final ValidationExecutorSetRegistry <IValidationSourceXML> VES_REGISTRY = new ValidationExecutorSetRegistry <> ();
   static
   {
     PeppolValidation.initStandard (VES_REGISTRY);
@@ -141,8 +142,7 @@ public final class CTestFiles
     }
     if (aVESID.equals (EHFValidation.VID_EHF_REMINDER_1_1_0))
     {
-      return new CommonsArrayList <> (new ClassPathResource (sPath +
-                                                             "T17 biixy gyldig purring med alle elementer.xml"));
+      return new CommonsArrayList <> (new ClassPathResource (sPath + "T17 biixy gyldig purring med alle elementer.xml"));
     }
 
     // 2019-06

@@ -20,17 +20,16 @@ import javax.annotation.Nonnull;
 import javax.annotation.concurrent.Immutable;
 
 import com.helger.bdve.api.EValidationType;
-import com.helger.bdve.api.execute.IValidationExecutor;
-import com.helger.bdve.api.vesid.VESID;
-import com.helger.bdve.engine.artefact.ValidationArtefact;
-import com.helger.bdve.engine.execute.ValidationExecutorSchematron;
-import com.helger.bdve.engine.execute.ValidationExecutorXSD;
-import com.helger.bdve.engine.executorset.ValidationExecutorSet;
-import com.helger.bdve.engine.executorset.ValidationExecutorSetRegistry;
-import com.helger.bdve.engine.spi.LocationBeautifierSPI;
+import com.helger.bdve.api.artefact.ValidationArtefact;
+import com.helger.bdve.api.executorset.IValidationExecutorSetRegistry;
+import com.helger.bdve.api.executorset.VESID;
+import com.helger.bdve.api.executorset.ValidationExecutorSet;
+import com.helger.bdve.engine.schematron.SchematronNamespaceBeautifier;
+import com.helger.bdve.engine.schematron.ValidationExecutorSchematron;
+import com.helger.bdve.engine.source.IValidationSourceXML;
+import com.helger.bdve.engine.xsd.ValidationExecutorXSD;
 import com.helger.commons.ValueEnforcer;
 import com.helger.commons.io.resource.ClassPathResource;
-import com.helger.commons.io.resource.IReadableResource;
 import com.helger.ubl21.EUBL21DocumentType;
 import com.helger.ubl21.UBL21NamespaceContext;
 
@@ -72,36 +71,29 @@ public final class SimplerInvoicingValidation
   // SimplerInvoicing
   // 1.0
   @Deprecated
-  public static final IReadableResource INVOICE_SI10 = new ClassPathResource ("/simplerinvoicing/si-ubl-1.0.xslt",
-                                                                              _getCL ());
+  public static final ClassPathResource INVOICE_SI10 = new ClassPathResource ("/simplerinvoicing/si-ubl-1.0.xslt", _getCL ());
   // 1.1
-  public static final IReadableResource INVOICE_SI11 = new ClassPathResource ("/simplerinvoicing/si-ubl-1.1.xslt",
-                                                                              _getCL ());
+  public static final ClassPathResource INVOICE_SI11 = new ClassPathResource ("/simplerinvoicing/si-ubl-1.1.xslt", _getCL ());
   // 1.2
-  public static final IReadableResource INVOICE_SI12 = new ClassPathResource ("/simplerinvoicing/si-ubl-1.2.xslt",
-                                                                              _getCL ());
-  public static final IReadableResource ORDER_SI12 = new ClassPathResource ("/simplerinvoicing/si-ubl-1.2-purchaseorder.xslt",
-                                                                            _getCL ());
+  public static final ClassPathResource INVOICE_SI12 = new ClassPathResource ("/simplerinvoicing/si-ubl-1.2.xslt", _getCL ());
+  public static final ClassPathResource ORDER_SI12 = new ClassPathResource ("/simplerinvoicing/si-ubl-1.2-purchaseorder.xslt", _getCL ());
 
   // 2.0
   @Deprecated
-  public static final IReadableResource INVOICE_SI20 = new ClassPathResource ("/simplerinvoicing/si-ubl-2.0.xslt",
-                                                                              _getCL ());
+  public static final ClassPathResource INVOICE_SI20 = new ClassPathResource ("/simplerinvoicing/si-ubl-2.0.xslt", _getCL ());
 
   // 2.0.1
   @Deprecated
-  public static final IReadableResource INVOICE_SI201 = new ClassPathResource ("/simplerinvoicing/si-ubl-2.0.1.xslt",
-                                                                               _getCL ());
+  public static final ClassPathResource INVOICE_SI201 = new ClassPathResource ("/simplerinvoicing/si-ubl-2.0.1.xslt", _getCL ());
 
   // 2.0.2
-  public static final IReadableResource INVOICE_SI202 = new ClassPathResource ("/simplerinvoicing/si-ubl-2.0.2.xslt",
-                                                                               _getCL ());
+  public static final ClassPathResource INVOICE_SI202 = new ClassPathResource ("/simplerinvoicing/si-ubl-2.0.2.xslt", _getCL ());
 
   private SimplerInvoicingValidation ()
   {}
 
   @Nonnull
-  private static IValidationExecutor _createXSLT (@Nonnull final IReadableResource aRes)
+  private static ValidationExecutorSchematron _createXSLT (@Nonnull final ClassPathResource aRes)
   {
     return new ValidationExecutorSchematron (new ValidationArtefact (EValidationType.SCHEMATRON_XSLT, aRes),
                                              null,
@@ -115,12 +107,12 @@ public final class SimplerInvoicingValidation
    * @param aRegistry
    *        The registry to add the artefacts. May not be <code>null</code>.
    */
-  public static void initSimplerInvoicing (@Nonnull final ValidationExecutorSetRegistry aRegistry)
+  public static void initSimplerInvoicing (@Nonnull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
   {
     ValueEnforcer.notNull (aRegistry, "Registry");
 
     // For better error messages
-    LocationBeautifierSPI.addMappings (UBL21NamespaceContext.getInstance ());
+    SchematronNamespaceBeautifier.addMappings (UBL21NamespaceContext.getInstance ());
 
     // SimplerInvoicing is self-contained
     final boolean bDeprecated = true;

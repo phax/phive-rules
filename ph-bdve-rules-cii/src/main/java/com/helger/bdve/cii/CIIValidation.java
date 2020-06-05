@@ -21,11 +21,12 @@ import java.util.Locale;
 import javax.annotation.Nonnull;
 import javax.annotation.concurrent.Immutable;
 
-import com.helger.bdve.api.vesid.VESID;
-import com.helger.bdve.engine.execute.ValidationExecutorXSD;
-import com.helger.bdve.engine.executorset.ValidationExecutorSet;
-import com.helger.bdve.engine.executorset.ValidationExecutorSetRegistry;
-import com.helger.bdve.engine.spi.LocationBeautifierSPI;
+import com.helger.bdve.api.executorset.IValidationExecutorSetRegistry;
+import com.helger.bdve.api.executorset.VESID;
+import com.helger.bdve.api.executorset.ValidationExecutorSet;
+import com.helger.bdve.engine.schematron.SchematronNamespaceBeautifier;
+import com.helger.bdve.engine.source.IValidationSourceXML;
+import com.helger.bdve.engine.xsd.ValidationExecutorXSD;
 import com.helger.cii.d16b.CIID16BNamespaceContext;
 import com.helger.cii.d16b.ECIID16BDocumentType;
 import com.helger.commons.ValueEnforcer;
@@ -41,9 +42,7 @@ public final class CIIValidation
   public static final String GROUP_ID = "un.unece.uncefact";
   public static final String VERSION_D16B = "D16B";
 
-  public static final VESID VID_CII_D16B_CROSSINDUSTRYINVOICE = new VESID (GROUP_ID,
-                                                                           "crossindustryinvoice",
-                                                                           VERSION_D16B);
+  public static final VESID VID_CII_D16B_CROSSINDUSTRYINVOICE = new VESID (GROUP_ID, "crossindustryinvoice", VERSION_D16B);
 
   private CIIValidation ()
   {}
@@ -55,12 +54,12 @@ public final class CIIValidation
    * @param aRegistry
    *        The registry to add the artefacts. May not be <code>null</code>.
    */
-  public static void initCIID16B (@Nonnull final ValidationExecutorSetRegistry aRegistry)
+  public static void initCIID16B (@Nonnull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
   {
     ValueEnforcer.notNull (aRegistry, "Registry");
 
     // For better error messages
-    LocationBeautifierSPI.addMappings (CIID16BNamespaceContext.getInstance ());
+    SchematronNamespaceBeautifier.addMappings (CIID16BNamespaceContext.getInstance ());
 
     final boolean bNotDeprecated = false;
     for (final ECIID16BDocumentType e : ECIID16BDocumentType.values ())
