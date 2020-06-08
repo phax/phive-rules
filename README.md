@@ -113,7 +113,7 @@ Alternate usage as a Maven BOM:
   
 # News and noteworthy
 
-* v6.0.0 - work in progress
+* v1.0.0 - work in progress
     * Extracted from ph-bdve to allow for a clear separation between the engine and rules
     * Therefore a new Maven group was created `com.helger.bdve.rules`
 
