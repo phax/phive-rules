@@ -5,18 +5,18 @@ A set of preconfigured rules for the Business Document Validation Engine (BDVE).
 All projects found in here rely on the validation engine provided by https://github.com/phax/ph-bdve
 
 This project is divided into sub-projects each keeping tracking of one document type set:
-  * ph-bdve-cii - Validation rules for pure CII (without any Schematron) - since 4.0.1
-  * ph-bdve-ebinterface - Validation rules for Austrian ebInterface - since 5.0.0
-  * ph-bdve-ehf - Validation rules for EHF (Norwegian public procurement) - since 4.0.1
+  * ph-bdve-cii - Validation rules for pure CII (without any Schematron)
+  * ph-bdve-ebinterface - Validation rules for Austrian ebInterface
+  * ph-bdve-ehf - Validation rules for EHF (Norwegian public procurement)
   * ph-bdve-en16931 - Validation rules for the EN 16931 (European e-Invoicing norm based on CEN TC 434)
-  * ph-bdve-energieefactuur - Validation rules for Dutch Energie eFactuur - since 4.0.2
-  * ph-bdve-oioubl - Validation rules for Danish OIOUBL - since 4.0.3
+  * ph-bdve-energieefactuur - Validation rules for Dutch Energie eFactuur
+  * ph-bdve-oioubl - Validation rules for Danish OIOUBL
   * ph-bdve-peppol - the Peppol specific setup etc
   * ph-bdve-simplerinvoicing - Dutch SimplerInvoicing 1.x support from https://github.com/SimplerInvoicing/validation
-  * ph-bdve-teapps - Validation rules for Tieto TEAPPSXML - since 5.0.0
-  * ph-bdve-ubl - Validation rules for pure UBL (without any Schematron) - since 4.0.1
-  * ph-bdve-ublbe - Validation rules for e-FFF/UBL.BE - since 5.0.5
-  * ph-bdve-xrechnung - Validation rules for German XRechnung - since 5.1.9
+  * ph-bdve-teapps - Validation rules for Tieto TEAPPSXML
+  * ph-bdve-ubl - Validation rules for pure UBL (without any Schematron)
+  * ph-bdve-ublbe - Validation rules for e-FFF/UBL.BE
+  * ph-bdve-xrechnung - Validation rules for German XRechnung
 
 The Java code in this project is licensed under the Apache 2 license.
 The code of the validation artefacts used may use a different license. 
@@ -113,9 +113,9 @@ Alternate usage as a Maven BOM:
   
 # News and noteworthy
 
-* v1.0.0 - work in progress
+* v1.0.0 - 2020-06-08
     * Extracted from ph-bdve to allow for a clear separation between the engine and rules
-    * Therefore a new Maven group was created `com.helger.bdve.rules`
+    * Therefore a new Maven group `com.helger.bdve.rules` was created
 
 ---
 
