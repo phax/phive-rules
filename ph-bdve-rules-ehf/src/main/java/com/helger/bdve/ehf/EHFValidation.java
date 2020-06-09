@@ -17,18 +17,28 @@
 package com.helger.bdve.ehf;
 
 import javax.annotation.Nonnull;
+import javax.annotation.concurrent.Immutable;
 
 import com.helger.bdve.api.executorset.IValidationExecutorSetRegistry;
 import com.helger.bdve.engine.source.IValidationSourceXML;
 
 /**
+ * EHF validation G2 and G3.
+ *
  * @author Philip Helger
  */
+@Immutable
 public final class EHFValidation
 {
   private EHFValidation ()
   {}
 
+  /**
+   * Register G2 and G3 artefacts.
+   *
+   * @param aRegistry
+   *        The registry to register to. May not be <code>null</code>.
+   */
   public static void initEHF (@Nonnull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
   {
     EHFValidationG2.initEHF (aRegistry);

@@ -17,6 +17,7 @@
 package com.helger.bdve.ehf;
 
 import javax.annotation.Nonnull;
+import javax.annotation.concurrent.Immutable;
 
 import com.helger.bdve.api.EValidationType;
 import com.helger.bdve.api.artefact.ValidationArtefact;
@@ -34,10 +35,11 @@ import com.helger.ubl22.EUBL22DocumentType;
 import com.helger.ubl22.UBL22NamespaceContext;
 
 /**
- * EHF G3 Validation
+ * EHF G3 Validation configuration
  *
  * @author Philip Helger
  */
+@Immutable
 public final class EHFValidationG3
 {
   // 2020-03-23

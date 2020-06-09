@@ -36,7 +36,7 @@ import com.helger.ubl21.EUBL21DocumentType;
 import com.helger.ubl21.UBL21NamespaceContext;
 
 /**
- * Generic EHF G2 validation configuration
+ * EHF G2 validation configuration
  *
  * @author Philip Helger
  */
@@ -174,7 +174,7 @@ public class EHFValidationG2
                                                                                              _getCL ());
   private static final IReadableResource EHF_PUNCH_OUT_V1_0_3 = new ClassPathResource ("/ehf/2019-12/xslt/EHF-UBL-T77.xslt", _getCL ());
 
-  EHFValidationG2 ()
+  private EHFValidationG2 ()
   {}
 
   @Nonnull
