@@ -31,7 +31,7 @@ import com.helger.schematron.xslt.SchematronResourceSCH;
 import com.helger.schematron.xslt.SchematronResourceXSLT;
 
 /**
- * Test class for class {@link EHFValidation}.
+ * Test class for class {@link EHFValidationG2}.
  *
  * @author Philip Helger
  */
