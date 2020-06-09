@@ -21,7 +21,9 @@ import javax.annotation.concurrent.Immutable;
 
 import com.helger.bdve.api.executorset.VESID;
 import com.helger.bdve.api.executorset.ValidationExecutorSetRegistry;
+import com.helger.bdve.ehf.EHFValidation;
 import com.helger.bdve.ehf.EHFValidationG2;
+import com.helger.bdve.ehf.EHFValidationG3;
 import com.helger.bdve.engine.mock.MockFile;
 import com.helger.bdve.engine.source.IValidationSourceXML;
 import com.helger.bdve.peppol.PeppolValidation;
@@ -40,7 +42,7 @@ public final class CTestFiles
   static
   {
     PeppolValidation.initStandard (VES_REGISTRY);
-    EHFValidationG2.initEHF (VES_REGISTRY);
+    EHFValidation.initEHF (VES_REGISTRY);
   }
 
   private CTestFiles ()
@@ -81,7 +83,23 @@ public final class CTestFiles
                                             EHFValidationG2.VID_EHF_ORDER_1_0_13,
                                             EHFValidationG2.VID_EHF_ORDER_AGREEMENT_1_0_4,
                                             EHFValidationG2.VID_EHF_ORDER_RESPONSE_1_0_13,
-                                            EHFValidationG2.VID_EHF_PUNCH_OUT_1_0_3 })
+                                            EHFValidationG2.VID_EHF_PUNCH_OUT_1_0_3,
+                                            /* 2020-03 */
+                                            EHFValidationG3.VID_EHF_ADVANCED_ORDER_CANCELLATION_300,
+                                            EHFValidationG3.VID_EHF_ADVANCED_ORDER_CHANGE_300,
+                                            EHFValidationG3.VID_EHF_ADVANCED_ORDER_INITIATION_300,
+                                            EHFValidationG3.VID_EHF_ADVANCED_ORDER_RESPONSE_300,
+                                            EHFValidationG3.VID_EHF_CATALOGUE_300,
+                                            EHFValidationG3.VID_EHF_CATALOGUE_RESPONSE_300,
+                                            EHFValidationG3.VID_EHF_DESPATCH_ADVICE_300,
+                                            EHFValidationG3.VID_EHF_FORWARD_BILLING_INVOICE_300,
+                                            EHFValidationG3.VID_EHF_FORWARD_BILLING_CREDIT_NOTE_300,
+                                            EHFValidationG3.VID_EHF_ORDER_AGREEMENT_300,
+                                            EHFValidationG3.VID_EHF_ORDER_300,
+                                            EHFValidationG3.VID_EHF_ORDER_RESPONSE_300,
+                                            EHFValidationG3.VID_EHF_PAYMENT_REQUEST_300,
+                                            EHFValidationG3.VID_EHF_PUNCH_OUT_300,
+                                            EHFValidationG3.VID_EHF_REMINDER_300 })
       for (final IReadableResource aRes : getAllMatchingTestFiles (aESID))
         ret.add (MockFile.createGoodCase (aRes, aESID));
 
@@ -242,6 +260,70 @@ public final class CTestFiles
                                       new ClassPathResource (sPath + "T77 ehf-po-full.xml"));
     }
 
+    // 2020-03
+    sPath = "/ehf/2020-03/examples/";
+    if (aVESID.equals (EHFValidationG3.VID_EHF_ADVANCED_ORDER_CANCELLATION_300))
+    {
+      return new CommonsArrayList <> ();
+    }
+    if (aVESID.equals (EHFValidationG3.VID_EHF_ADVANCED_ORDER_CHANGE_300))
+    {
+      return new CommonsArrayList <> ();
+    }
+    if (aVESID.equals (EHFValidationG3.VID_EHF_ADVANCED_ORDER_INITIATION_300))
+    {
+      return new CommonsArrayList <> (new ClassPathResource (sPath + "advanced-ordering-3.0/Advanced_Order_Example.xml"));
+    }
+    if (aVESID.equals (EHFValidationG3.VID_EHF_ADVANCED_ORDER_RESPONSE_300))
+    {
+      return new CommonsArrayList <> (new ClassPathResource (sPath + "advanced-ordering-3.0/Advanced_OrderResponse_Example.xml"));
+    }
+    if (aVESID.equals (EHFValidationG3.VID_EHF_CATALOGUE_300))
+    {
+      return new CommonsArrayList <> (new ClassPathResource (sPath + "catalogue-3.0/Catalogue_Example.xml"));
+    }
+    if (aVESID.equals (EHFValidationG3.VID_EHF_CATALOGUE_RESPONSE_300))
+    {
+      return new CommonsArrayList <> (new ClassPathResource (sPath + "catalogue-3.0/CatalogueResponse_Example.xml"));
+    }
+    if (aVESID.equals (EHFValidationG3.VID_EHF_DESPATCH_ADVICE_300))
+    {
+      return new CommonsArrayList <> (new ClassPathResource (sPath + "despatch-advice-3.0/DespatchAdvice_Example.xml"));
+    }
+    if (aVESID.equals (EHFValidationG3.VID_EHF_FORWARD_BILLING_INVOICE_300))
+    {
+      return new CommonsArrayList <> (new ClassPathResource (sPath + "forward-billing-3.0/forward-billing-nettleie-business.xml"),
+                                      new ClassPathResource (sPath + "forward-billing-3.0/forward-billing-nettleie-consumer.xml"));
+    }
+    if (aVESID.equals (EHFValidationG3.VID_EHF_FORWARD_BILLING_CREDIT_NOTE_300))
+    {
+      return new CommonsArrayList <> ();
+    }
+    if (aVESID.equals (EHFValidationG3.VID_EHF_ORDER_AGREEMENT_300))
+    {
+      return new CommonsArrayList <> (new ClassPathResource (sPath + "order-agreement-3.0/OrderAgreement_Example.xml"));
+    }
+    if (aVESID.equals (EHFValidationG3.VID_EHF_ORDER_300))
+    {
+      return new CommonsArrayList <> (new ClassPathResource (sPath + "ordering-3.0/Order_Example.xml"));
+    }
+    if (aVESID.equals (EHFValidationG3.VID_EHF_ORDER_RESPONSE_300))
+    {
+      return new CommonsArrayList <> (new ClassPathResource (sPath + "ordering-3.0/OrderResponse_Example.xml"));
+    }
+    if (aVESID.equals (EHFValidationG3.VID_EHF_PAYMENT_REQUEST_300))
+    {
+      return new CommonsArrayList <> (new ClassPathResource (sPath + "payment-request-3.0/PaymentRequest-example-1.xml"),
+                                      new ClassPathResource (sPath + "payment-request-3.0/PaymentRequest-example-2.xml"));
+    }
+    if (aVESID.equals (EHFValidationG3.VID_EHF_PUNCH_OUT_300))
+    {
+      return new CommonsArrayList <> (new ClassPathResource (sPath + "punch-out-3.0/PunchOut_Example.xml"));
+    }
+    if (aVESID.equals (EHFValidationG3.VID_EHF_REMINDER_300))
+    {
+      return new CommonsArrayList <> (new ClassPathResource (sPath + "reminder-3.0/Reminder-Example.xml"));
+    }
     throw new IllegalArgumentException ("Invalid VESID: " + aVESID);
   }
 }

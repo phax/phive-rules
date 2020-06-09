@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+This file is distributes as part of EHF Post-Award G3.
+
+Release: 2020-03-23
+Timestamp: 2020-03-23 11:08z
+
+Repository for releases and issues:
+  https://github.com/anskaffelser/ehf-postaward-g3
+-->
+
+
+
+<ubl:Invoice
+    xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+    xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+    xmlns:ubl="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2">
+
+    <cbc:CustomizationID>urn:fdc:anskaffelser.no:2019:ehf:spec:payment-request:3.0</cbc:CustomizationID>
+    <cbc:ProfileID>urn:fdc:anskaffelser.no:2019:ehf:postaward:g3:07:1.0</cbc:ProfileID>
+    <cbc:ID>Snippet1</cbc:ID>
+    <cbc:IssueDate>2017-11-13</cbc:IssueDate>
+    <cbc:DueDate>2017-12-01</cbc:DueDate>
+    <cbc:DocumentCurrencyCode>NOK</cbc:DocumentCurrencyCode>
+    <cbc:AccountingCost>4025:123:4343</cbc:AccountingCost>
+    <cbc:BuyerReference>0150abc</cbc:BuyerReference>
+
+    <cac:AccountingSupplierParty>
+        <cac:Party>
+            <cac:PartyIdentification>
+                <cbc:ID schemeID="0192">123456785</cbc:ID>
+            </cac:PartyIdentification>
+            <cac:PartyName>
+                <cbc:Name>SupplierTradingName Ltd.</cbc:Name>
+            </cac:PartyName>
+            <cac:PostalAddress>
+                <cbc:StreetName>Vestlisvingen 3</cbc:StreetName>
+                <cbc:AdditionalStreetName>Postbox 123</cbc:AdditionalStreetName>
+                <cbc:CityName>Oslo</cbc:CityName>
+                <cbc:PostalZone>0152</cbc:PostalZone>
+                <cac:Country>
+                    <cbc:IdentificationCode>NO</cbc:IdentificationCode>
+                </cac:Country>
+            </cac:PostalAddress>
+        </cac:Party>
+    </cac:AccountingSupplierParty>
+
+    <cac:AccountingCustomerParty>
+        <cac:Party>
+            <cbc:EndpointID schemeID="0192">123456785</cbc:EndpointID>
+            <cac:PartyIdentification>
+                <cbc:ID schemeID="0192">123456785</cbc:ID>
+            </cac:PartyIdentification>
+            <cac:PartyName>
+                <cbc:Name>BuyerTradingName AS</cbc:Name>
+            </cac:PartyName>
+            <cac:PostalAddress>
+                <cbc:StreetName>Hovedveien 32</cbc:StreetName>
+                <cbc:AdditionalStreetName>Postboks 111</cbc:AdditionalStreetName>
+                <cbc:CityName>Oslo</cbc:CityName>
+                <cbc:PostalZone>0135</cbc:PostalZone>
+                <cac:Country>
+                    <cbc:IdentificationCode>NO</cbc:IdentificationCode>
+                </cac:Country>
+            </cac:PostalAddress>
+            <cac:Contact>
+                <cbc:Name>Lisa Johnson</cbc:Name>
+                <cbc:Telephone>23434234</cbc:Telephone>
+                <cbc:ElectronicMail>lj@buyer.no</cbc:ElectronicMail>
+            </cac:Contact>
+        </cac:Party>
+    </cac:AccountingCustomerParty>
+
+    <cac:PaymentMeans>
+        <cbc:PaymentMeansCode name="Credit transfer">30</cbc:PaymentMeansCode>
+        <cbc:PaymentID>Snippet1</cbc:PaymentID>
+        <cac:PayeeFinancialAccount>
+            <cbc:ID>IBAN32423940</cbc:ID>
+            <cbc:Name>AccountName</cbc:Name>
+            <cac:FinancialInstitutionBranch>
+                <cbc:ID>BIC324098</cbc:ID>
+            </cac:FinancialInstitutionBranch>
+        </cac:PayeeFinancialAccount>
+    </cac:PaymentMeans>
+
+    <cac:LegalMonetaryTotal>
+        <cbc:LineExtensionAmount currencyID="EUR">1300</cbc:LineExtensionAmount>
+        <cbc:PayableAmount currencyID="EUR">1300</cbc:PayableAmount>
+    </cac:LegalMonetaryTotal>
+
+    <cac:InvoiceLine>
+        <cbc:ID>1</cbc:ID>
+        <cbc:InvoicedQuantity unitCode="DAY">7</cbc:InvoicedQuantity>
+        <cbc:LineExtensionAmount currencyID= "NOK">2800</cbc:LineExtensionAmount>
+        <cbc:AccountingCost>Konteringsstreng</cbc:AccountingCost>
+        <cac:Item>
+            <cbc:Description>Description of item</cbc:Description>
+            <cbc:Name>item name</cbc:Name>
+        </cac:Item>
+        <cac:Price>
+            <cbc:PriceAmount currencyID="NOK">2800</cbc:PriceAmount>
+        </cac:Price>
+    </cac:InvoiceLine>
+
+    <cac:InvoiceLine>
+        <cbc:ID>2</cbc:ID>
+        <cbc:InvoicedQuantity unitCode="DAY">-3</cbc:InvoicedQuantity>
+        <cbc:LineExtensionAmount currencyID="NOK">-1500</cbc:LineExtensionAmount>
+
+        <cac:Item>
+            <cbc:Description>Description 2</cbc:Description>
+            <cbc:Name>item name 2</cbc:Name>
+        </cac:Item>
+        <cac:Price>
+            <cbc:PriceAmount currencyID="NOK">-1500</cbc:PriceAmount>
+        </cac:Price>
+    </cac:InvoiceLine>
+
+</ubl:Invoice>

@@ -1,11 +1,21 @@
 package com.helger.bdve.ehf;
 
+import javax.annotation.Nonnull;
+
+import com.helger.bdve.api.executorset.IValidationExecutorSetRegistry;
+import com.helger.bdve.engine.source.IValidationSourceXML;
+
 /**
  * @author Philip Helger
- * @deprecated Use {@link EHFValidationG2} instead
  */
-@Deprecated
-public class EHFValidation extends EHFValidationG2
+public final class EHFValidation
 {
-  /* empty */
+  private EHFValidation ()
+  {}
+
+  public static void initEHF (@Nonnull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
+  {
+    EHFValidationG2.initEHF (aRegistry);
+    EHFValidationG3.initEHF (aRegistry);
+  }
 }

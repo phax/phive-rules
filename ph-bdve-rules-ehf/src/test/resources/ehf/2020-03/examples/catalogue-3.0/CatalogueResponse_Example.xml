@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+This file is distributes as part of EHF Post-Award G3.
+
+Release: 2020-03-23
+Timestamp: 2020-03-23 11:08z
+
+Repository for releases and issues:
+  https://github.com/anskaffelser/ehf-postaward-g3
+-->
+
+<ApplicationResponse xmlns="urn:oasis:names:specification:ubl:schema:xsd:ApplicationResponse-2"
+					 xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+					 xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
+	<cbc:CustomizationID>urn:fdc:peppol.eu:poacc:trns:catalogue_response:3:extended:urn:fdc:anskaffelser.no:2019:ehf:spec:3.0</cbc:CustomizationID>
+	<cbc:ProfileID>urn:fdc:anskaffelser.no:2019:ehf:postaward:g3:01:1.0</cbc:ProfileID>
+	<cbc:ID>imrid001</cbc:ID>
+	<cbc:IssueDate>2017-12-01</cbc:IssueDate>
+	<cbc:IssueTime>12:00:00</cbc:IssueTime>
+	<cbc:Note>text</cbc:Note>
+	<cac:SenderParty>
+		<cbc:EndpointID schemeID="0192">987654325</cbc:EndpointID>
+		<cac:PartyIdentification>
+			<cbc:ID schemeID="0192">987654325</cbc:ID>
+		</cac:PartyIdentification>
+		<cac:PartyLegalEntity>
+			<cbc:RegistrationName>Buyer organization</cbc:RegistrationName>
+		</cac:PartyLegalEntity>
+	</cac:SenderParty>
+	<cac:ReceiverParty>
+		<cbc:EndpointID schemeID="0192">123456785</cbc:EndpointID>
+		<cac:PartyIdentification>
+			<cbc:ID schemeID="0192">123456785</cbc:ID>
+		</cac:PartyIdentification>
+		<cac:PartyLegalEntity>
+			<cbc:RegistrationName>Seller company</cbc:RegistrationName>
+		</cac:PartyLegalEntity>
+	</cac:ReceiverParty>
+	<cac:DocumentResponse>
+		<cac:Response>
+			<cbc:ResponseCode>AP</cbc:ResponseCode>
+		</cac:Response>
+		<cac:DocumentReference>
+			<cbc:ID>Cat-1</cbc:ID>
+			<cbc:VersionID>2.0</cbc:VersionID>
+		</cac:DocumentReference>
+	</cac:DocumentResponse>
+</ApplicationResponse>

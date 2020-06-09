@@ -63,6 +63,10 @@
       <artifactId>ph-ubl21</artifactId>
     </dependency>
     <dependency>
+      <groupId>com.helger.ubl</groupId>
+      <artifactId>ph-ubl22</artifactId>
+    </dependency>
+    <dependency>
       <groupId>com.helger</groupId>
       <artifactId>ph-schematron</artifactId>
     </dependency>
@@ -143,6 +147,18 @@
             <configuration>
               <schematronDirectory>${basedir}/src/test/resources/ehf/2019-12/sch</schematronDirectory>
               <xsltDirectory>${basedir}/src/main/resources/ehf/2019-12/xslt</xsltDirectory>
+            </configuration>
+          </execution>
+      -->
+      <!--
+          <execution>
+            <id>2020-03</id>
+            <goals>
+              <goal>convert</goal>
+            </goals>
+            <configuration>
+              <schematronDirectory>${basedir}/src/test/resources/ehf/2020-03/sch</schematronDirectory>
+              <xsltDirectory>${basedir}/src/main/resources/ehf/2020-03/xslt</xsltDirectory>
             </configuration>
           </execution>
       -->
