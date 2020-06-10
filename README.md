@@ -113,8 +113,9 @@ Alternate usage as a Maven BOM:
   
 # News and noteworthy
 
-* v1.0.1 - work in progress
+* v1.0.1 - 2020-06-10
     * Added support for EHF G3 version 2020-03-23
+    * Updated the Peppol 3.10.0 VESIDs to contain the document types
 * v1.0.0 - 2020-06-08
     * Extracted from ph-bdve to allow for a clear separation between the engine and rules
     * Therefore a new Maven group `com.helger.bdve.rules` was created
