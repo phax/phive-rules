@@ -65,7 +65,7 @@
 		<cbc:ID>113</cbc:ID>
 		<cbc:ActionCode listID="ACTIONCODE:BII2">Add</cbc:ActionCode>
 		<cbc:OrderableIndicator>true</cbc:OrderableIndicator>
-		<cbc:OrderableUnit>XPK</cbc:OrderableUnit>
+		<cbc:OrderableUnit>PK</cbc:OrderableUnit>
 		<cbc:MinimumOrderQuantity unitCode="EA" unitCodeListID="UNECERec20"
 			>1</cbc:MinimumOrderQuantity>
 		<cac:ComponentRelatedItem>

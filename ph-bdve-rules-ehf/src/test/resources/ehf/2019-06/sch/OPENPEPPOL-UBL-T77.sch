@@ -34,7 +34,9 @@
     <assert test="((cbc:LeadTimeMeasure/@unitCode)= 'DAY') or (not(cbc:LeadTimeMeasure))" flag="fatal" id="EUGEN-T77-R011">[EUGEN-T77-R011]-LeadTimeMeasure unitCode shall only be DAY</assert>
   </rule>
   <rule context="/ubl:Catalogue">
+  <!-- 
     <assert test="(cbc:CustomizationID) = 'urn:www.cenbii.eu:transaction:biitrns077:ver2.0:extended:www.peppol.eu:bis:peppol18a:ver1.0'" flag="fatal" id="EUGEN-T77-R001">[EUGEN-T77-R001]-CustomizationID shall be urn:www.cenbii.eu:transaction:biitrns077:ver2.0:extended:www.peppol.eu:bis:peppol18a:ver1.0</assert>
+     -->
     <assert test="(cbc:ProfileID)= 'urn:www.cenbii.eu:profile:bii18:ver1.0'" flag="fatal" id="EUGEN-T77-R002">[EUGEN-T77-R002]-ProfileID shall be urn:www.cenbii.eu:profile:bii18:ver1.0</assert>
     <assert test="(cac:ValidityPeriod/cbc:EndDate) and (number(translate(cac:ValidityPeriod/cbc:EndDate,'-','')) &gt;= number(translate(cbc:IssueDate,'-','')))  " flag="fatal" id="EUGEN-T77-R003">[EUGEN-T77-R003]-The validity period end date may not be earlier than the issue date.</assert>
     <assert test="((cbc:ActionCode) = 'true') or ((cbc:ActionCode) = 'false') or (not(cbc:ActionCode))" flag="fatal" id="EUGEN-T77-R004">[EUGEN-T77-R004]-Complete cart indicator may only be "true" or "false"</assert>

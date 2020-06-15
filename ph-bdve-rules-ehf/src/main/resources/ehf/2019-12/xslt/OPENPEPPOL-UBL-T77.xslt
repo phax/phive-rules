@@ -346,21 +346,6 @@
 
 		<!--ASSERT -->
 <xsl:choose>
-      <xsl:when test="(cbc:CustomizationID) = 'urn:www.cenbii.eu:transaction:biitrns077:ver2.0:extended:www.peppol.eu:bis:peppol18a:ver1.0'" />
-      <xsl:otherwise>
-        <svrl:failed-assert test="(cbc:CustomizationID) = 'urn:www.cenbii.eu:transaction:biitrns077:ver2.0:extended:www.peppol.eu:bis:peppol18a:ver1.0'">
-          <xsl:attribute name="id">EUGEN-T77-R001</xsl:attribute>
-          <xsl:attribute name="flag">fatal</xsl:attribute>
-          <xsl:attribute name="location">
-            <xsl:apply-templates mode="schematron-select-full-path" select="." />
-          </xsl:attribute>
-          <svrl:text>[EUGEN-T77-R001]-CustomizationID shall be urn:www.cenbii.eu:transaction:biitrns077:ver2.0:extended:www.peppol.eu:bis:peppol18a:ver1.0</svrl:text>
-        </svrl:failed-assert>
-      </xsl:otherwise>
-    </xsl:choose>
-
-		<!--ASSERT -->
-<xsl:choose>
       <xsl:when test="(cbc:ProfileID)= 'urn:www.cenbii.eu:profile:bii18:ver1.0'" />
       <xsl:otherwise>
         <svrl:failed-assert test="(cbc:ProfileID)= 'urn:www.cenbii.eu:profile:bii18:ver1.0'">
