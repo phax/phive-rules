@@ -50,12 +50,13 @@ public final class ValidationExecutionManagerFuncTest
       final IValidationExecutorSet <IValidationSourceXML> aExecutors = CTestFiles.VES_REGISTRY.getOfID (aTestFile.getVESID ());
       assertNotNull (aExecutors);
 
-      LOGGER.info ("Validating " +
+      LOGGER.info ("Validating '" +
                    aTestFile.getResource ().getPath () +
-                   " against " +
+                   "' against " +
                    aExecutors.executors ().size () +
-                   " validation layers using " +
-                   aTestFile.getVESID ().getAsSingleID ());
+                   " validation layers using '" +
+                   aTestFile.getVESID ().getAsSingleID () +
+                   "'");
 
       // Read as desired type
       final IValidationSourceXML aSource = ValidationSourceXML.create (aTestFile.getResource ());

@@ -28,7 +28,6 @@ import com.helger.bdve.engine.schematron.SchematronNamespaceBeautifier;
 import com.helger.bdve.engine.schematron.ValidationExecutorSchematron;
 import com.helger.bdve.engine.source.IValidationSourceXML;
 import com.helger.bdve.engine.xsd.ValidationExecutorXSD;
-import com.helger.bdve.peppol.PeppolValidation370;
 import com.helger.commons.ValueEnforcer;
 import com.helger.commons.io.resource.ClassPathResource;
 import com.helger.commons.io.resource.IReadableResource;
@@ -41,7 +40,6 @@ import com.helger.ubl21.UBL21NamespaceContext;
  * @author Philip Helger
  */
 @Immutable
-@SuppressWarnings ("deprecation")
 public class EHFValidationG2
 {
   // 2018-11
@@ -105,74 +103,68 @@ public class EHFValidationG2
   }
 
   // 2018-11
+  private static final String PATH_201811 = "/ehf/2018-11/xslt/";
   @Deprecated
-  private static final IReadableResource EHF_COMMON_V1_0_4 = new ClassPathResource ("/ehf/2018-11/xslt/EHF-UBL-COMMON.xslt", _getCL ());
+  private static final IReadableResource EHF_COMMON_V1_0_4 = new ClassPathResource (PATH_201811 + "EHF-UBL-COMMON.xslt", _getCL ());
   @Deprecated
-  private static final IReadableResource EHF_CATALOGUE_V1_0_13 = new ClassPathResource ("/ehf/2018-11/xslt/EHF-UBL-T19.xslt", _getCL ());
+  private static final IReadableResource EHF_CATALOGUE_V1_0_13 = new ClassPathResource (PATH_201811 + "EHF-UBL-T19.xslt", _getCL ());
   @Deprecated
-  private static final IReadableResource EHF_CATALOGUE_RESPONSE_V1_0_13 = new ClassPathResource ("/ehf/2018-11/xslt/EHF-UBL-T58.xslt",
+  private static final IReadableResource EHF_CATALOGUE_RESPONSE_V1_0_13 = new ClassPathResource (PATH_201811 + "EHF-UBL-T58.xslt",
                                                                                                  _getCL ());
   @Deprecated
-  private static final IReadableResource EHF_CREDITNOTE_V2_0_15 = new ClassPathResource ("/ehf/2018-11/xslt/EHF-UBL-T14.xslt", _getCL ());
+  private static final IReadableResource EHF_CREDITNOTE_V2_0_15 = new ClassPathResource (PATH_201811 + "EHF-UBL-T14.xslt", _getCL ());
   @Deprecated
-  private static final IReadableResource EHF_DESPATCH_ADVICE_V1_0_10 = new ClassPathResource ("/ehf/2018-11/xslt/EHF-UBL-T16.xslt",
-                                                                                              _getCL ());
+  private static final IReadableResource EHF_DESPATCH_ADVICE_V1_0_10 = new ClassPathResource (PATH_201811 + "EHF-UBL-T16.xslt", _getCL ());
   @Deprecated
-  private static final IReadableResource EHF_INVOICE_V2_0_15 = new ClassPathResource ("/ehf/2018-11/xslt/EHF-UBL-T10.xslt", _getCL ());
+  private static final IReadableResource EHF_INVOICE_V2_0_15 = new ClassPathResource (PATH_201811 + "EHF-UBL-T10.xslt", _getCL ());
   @Deprecated
-  private static final IReadableResource EHF_ORDER_V1_0_11 = new ClassPathResource ("/ehf/2018-11/xslt/EHF-UBL-T01.xslt", _getCL ());
+  private static final IReadableResource EHF_ORDER_V1_0_11 = new ClassPathResource (PATH_201811 + "EHF-UBL-T01.xslt", _getCL ());
   @Deprecated
-  private static final IReadableResource EHF_ORDER_AGREEMENT_V1_0_2 = new ClassPathResource ("/ehf/2018-11/xslt/EHF-UBL-T110.xslt",
-                                                                                             _getCL ());
+  private static final IReadableResource EHF_ORDER_AGREEMENT_V1_0_2 = new ClassPathResource (PATH_201811 + "EHF-UBL-T110.xslt", _getCL ());
   @Deprecated
-  private static final IReadableResource EHF_ORDER_RESPONSE_V1_0_11 = new ClassPathResource ("/ehf/2018-11/xslt/EHF-UBL-T76.xslt",
-                                                                                             _getCL ());
+  private static final IReadableResource EHF_ORDER_RESPONSE_V1_0_11 = new ClassPathResource (PATH_201811 + "EHF-UBL-T76.xslt", _getCL ());
   @Deprecated
-  private static final IReadableResource EHF_PUNCH_OUT_V1_0_1 = new ClassPathResource ("/ehf/2018-11/xslt/EHF-UBL-T77.xslt", _getCL ());
-  private static final IReadableResource EHF_REMINDER_V1_1_0 = new ClassPathResource ("/ehf/2018-11/xslt/EHF-UBL-T17.xslt", _getCL ());
+  private static final IReadableResource EHF_PUNCH_OUT_V1_0_1 = new ClassPathResource (PATH_201811 + "EHF-UBL-T77.xslt", _getCL ());
+  private static final IReadableResource EHF_REMINDER_V1_1_0 = new ClassPathResource (PATH_201811 + "EHF-UBL-T17.xslt", _getCL ());
 
   // 2019-06
+  private static final String PATH_201906 = "/ehf/2019-06/xslt/";
   // Has the same version but is different
   @Deprecated
-  private static final IReadableResource EHF_COMMON_V1_0_4B = new ClassPathResource ("/ehf/2019-06/xslt/EHF-UBL-COMMON.xslt", _getCL ());
+  private static final IReadableResource EHF_COMMON_V1_0_4B = new ClassPathResource (PATH_201906 + "EHF-UBL-COMMON.xslt", _getCL ());
   @Deprecated
-  private static final IReadableResource EHF_CATALOGUE_V1_0_14 = new ClassPathResource ("/ehf/2019-06/xslt/EHF-UBL-T19.xslt", _getCL ());
+  private static final IReadableResource EHF_CATALOGUE_V1_0_14 = new ClassPathResource (PATH_201906 + "EHF-UBL-T19.xslt", _getCL ());
   @Deprecated
-  private static final IReadableResource EHF_CATALOGUE_RESPONSE_V1_0_14 = new ClassPathResource ("/ehf/2019-06/xslt/EHF-UBL-T58.xslt",
+  private static final IReadableResource EHF_CATALOGUE_RESPONSE_V1_0_14 = new ClassPathResource (PATH_201906 + "EHF-UBL-T58.xslt",
                                                                                                  _getCL ());
   @Deprecated
-  private static final IReadableResource EHF_CREDITNOTE_V2_0_16 = new ClassPathResource ("/ehf/2019-06/xslt/EHF-UBL-T14.xslt", _getCL ());
+  private static final IReadableResource EHF_CREDITNOTE_V2_0_16 = new ClassPathResource (PATH_201906 + "EHF-UBL-T14.xslt", _getCL ());
   @Deprecated
-  private static final IReadableResource EHF_DESPATCH_ADVICE_V1_0_11 = new ClassPathResource ("/ehf/2019-06/xslt/EHF-UBL-T16.xslt",
-                                                                                              _getCL ());
+  private static final IReadableResource EHF_DESPATCH_ADVICE_V1_0_11 = new ClassPathResource (PATH_201906 + "EHF-UBL-T16.xslt", _getCL ());
   @Deprecated
-  private static final IReadableResource EHF_INVOICE_V2_0_16 = new ClassPathResource ("/ehf/2019-06/xslt/EHF-UBL-T10.xslt", _getCL ());
+  private static final IReadableResource EHF_INVOICE_V2_0_16 = new ClassPathResource (PATH_201906 + "EHF-UBL-T10.xslt", _getCL ());
   @Deprecated
-  private static final IReadableResource EHF_ORDER_V1_0_12 = new ClassPathResource ("/ehf/2019-06/xslt/EHF-UBL-T01.xslt", _getCL ());
+  private static final IReadableResource EHF_ORDER_V1_0_12 = new ClassPathResource (PATH_201906 + "EHF-UBL-T01.xslt", _getCL ());
   @Deprecated
-  private static final IReadableResource EHF_ORDER_AGREEMENT_V1_0_3 = new ClassPathResource ("/ehf/2019-06/xslt/EHF-UBL-T110.xslt",
-                                                                                             _getCL ());
+  private static final IReadableResource EHF_ORDER_AGREEMENT_V1_0_3 = new ClassPathResource (PATH_201906 + "EHF-UBL-T110.xslt", _getCL ());
   @Deprecated
-  private static final IReadableResource EHF_ORDER_RESPONSE_V1_0_12 = new ClassPathResource ("/ehf/2019-06/xslt/EHF-UBL-T76.xslt",
-                                                                                             _getCL ());
+  private static final IReadableResource EHF_ORDER_RESPONSE_V1_0_12 = new ClassPathResource (PATH_201906 + "EHF-UBL-T76.xslt", _getCL ());
   @Deprecated
-  private static final IReadableResource EHF_PUNCH_OUT_V1_0_2 = new ClassPathResource ("/ehf/2019-06/xslt/EHF-UBL-T77.xslt", _getCL ());
+  private static final IReadableResource EHF_PUNCH_OUT_V1_0_2 = new ClassPathResource (PATH_201906 + "EHF-UBL-T77.xslt", _getCL ());
 
   // 2019-12
-  private static final IReadableResource EHF_COMMON_V1_0_4C = new ClassPathResource ("/ehf/2019-12/xslt/EHF-UBL-COMMON.xslt", _getCL ());
-  private static final IReadableResource EHF_CATALOGUE_V1_0_15 = new ClassPathResource ("/ehf/2019-12/xslt/EHF-UBL-T19.xslt", _getCL ());
-  private static final IReadableResource EHF_CATALOGUE_RESPONSE_V1_0_15 = new ClassPathResource ("/ehf/2019-12/xslt/EHF-UBL-T58.xslt",
+  private static final String PATH_201912 = "/ehf/2019-12/xslt/";
+  private static final IReadableResource EHF_COMMON_V1_0_4C = new ClassPathResource (PATH_201912 + "EHF-UBL-COMMON.xslt", _getCL ());
+  private static final IReadableResource EHF_CATALOGUE_V1_0_15 = new ClassPathResource (PATH_201912 + "EHF-UBL-T19.xslt", _getCL ());
+  private static final IReadableResource EHF_CATALOGUE_RESPONSE_V1_0_15 = new ClassPathResource (PATH_201912 + "EHF-UBL-T58.xslt",
                                                                                                  _getCL ());
-  private static final IReadableResource EHF_CREDITNOTE_V2_0_17 = new ClassPathResource ("/ehf/2019-12/xslt/EHF-UBL-T14.xslt", _getCL ());
-  private static final IReadableResource EHF_DESPATCH_ADVICE_V1_0_12 = new ClassPathResource ("/ehf/2019-12/xslt/EHF-UBL-T16.xslt",
-                                                                                              _getCL ());
-  private static final IReadableResource EHF_INVOICE_V2_0_17 = new ClassPathResource ("/ehf/2019-12/xslt/EHF-UBL-T10.xslt", _getCL ());
-  private static final IReadableResource EHF_ORDER_V1_0_13 = new ClassPathResource ("/ehf/2019-12/xslt/EHF-UBL-T01.xslt", _getCL ());
-  private static final IReadableResource EHF_ORDER_AGREEMENT_V1_0_4 = new ClassPathResource ("/ehf/2019-12/xslt/EHF-UBL-T110.xslt",
-                                                                                             _getCL ());
-  private static final IReadableResource EHF_ORDER_RESPONSE_V1_0_13 = new ClassPathResource ("/ehf/2019-12/xslt/EHF-UBL-T76.xslt",
-                                                                                             _getCL ());
-  private static final IReadableResource EHF_PUNCH_OUT_V1_0_3 = new ClassPathResource ("/ehf/2019-12/xslt/EHF-UBL-T77.xslt", _getCL ());
+  private static final IReadableResource EHF_CREDITNOTE_V2_0_17 = new ClassPathResource (PATH_201912 + "EHF-UBL-T14.xslt", _getCL ());
+  private static final IReadableResource EHF_DESPATCH_ADVICE_V1_0_12 = new ClassPathResource (PATH_201912 + "EHF-UBL-T16.xslt", _getCL ());
+  private static final IReadableResource EHF_INVOICE_V2_0_17 = new ClassPathResource (PATH_201912 + "EHF-UBL-T10.xslt", _getCL ());
+  private static final IReadableResource EHF_ORDER_V1_0_13 = new ClassPathResource (PATH_201912 + "EHF-UBL-T01.xslt", _getCL ());
+  private static final IReadableResource EHF_ORDER_AGREEMENT_V1_0_4 = new ClassPathResource (PATH_201912 + "EHF-UBL-T110.xslt", _getCL ());
+  private static final IReadableResource EHF_ORDER_RESPONSE_V1_0_13 = new ClassPathResource (PATH_201912 + "EHF-UBL-T76.xslt", _getCL ());
+  private static final IReadableResource EHF_PUNCH_OUT_V1_0_3 = new ClassPathResource (PATH_201912 + "EHF-UBL-T77.xslt", _getCL ());
 
   private EHFValidationG2 ()
   {}
@@ -207,7 +199,12 @@ public class EHFValidationG2
                                                                            "EHF Catalogue " + VID_EHF_CATALOGUE_1_0_13.getVersion (),
                                                                            bDeprecated,
                                                                            ValidationExecutorXSD.create (EUBL21DocumentType.CATALOGUE),
-                                                                           _createXSLT (PeppolValidation370.CATALOGUE_RULES),
+                                                                           _createXSLT (new ClassPathResource (PATH_201811 +
+                                                                                                               "BIIRULES-UBL-T19.xslt",
+                                                                                                               _getCL ())),
+                                                                           _createXSLT (new ClassPathResource (PATH_201811 +
+                                                                                                               "OPENPEPPOL-UBL-T19.xslt",
+                                                                                                               _getCL ())),
                                                                            _createXSLT (EHF_COMMON_V1_0_4),
                                                                            _createXSLT (EHF_CATALOGUE_V1_0_13)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_EHF_CATALOGUE_RESPONSE_1_0_13,
@@ -215,14 +212,24 @@ public class EHFValidationG2
                                                                                                               VID_EHF_CATALOGUE_RESPONSE_1_0_13.getVersion (),
                                                                            bDeprecated,
                                                                            ValidationExecutorXSD.create (EUBL21DocumentType.APPLICATION_RESPONSE),
-                                                                           _createXSLT (PeppolValidation370.CATALOGUE_RESPONSE_RULES),
+                                                                           _createXSLT (new ClassPathResource (PATH_201811 +
+                                                                                                               "BIIRULES-UBL-T58.xslt",
+                                                                                                               _getCL ())),
+                                                                           _createXSLT (new ClassPathResource (PATH_201811 +
+                                                                                                               "OPENPEPPOL-UBL-T58.xslt",
+                                                                                                               _getCL ())),
                                                                            _createXSLT (EHF_COMMON_V1_0_4),
                                                                            _createXSLT (EHF_CATALOGUE_RESPONSE_V1_0_13)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_EHF_CREDITNOTE_2_0_15,
                                                                            "EHF Creditnote " + VID_EHF_CREDITNOTE_2_0_15.getVersion (),
                                                                            bDeprecated,
                                                                            ValidationExecutorXSD.create (EUBL21DocumentType.CREDIT_NOTE),
-                                                                           _createXSLT (PeppolValidation370.CREDIT_NOTE_RULES),
+                                                                           _createXSLT (new ClassPathResource (PATH_201811 +
+                                                                                                               "BIIRULES-UBL-T14.xslt",
+                                                                                                               _getCL ())),
+                                                                           _createXSLT (new ClassPathResource (PATH_201811 +
+                                                                                                               "OPENPEPPOL-UBL-T14.xslt",
+                                                                                                               _getCL ())),
                                                                            _createXSLT (EHF_COMMON_V1_0_4),
                                                                            _createXSLT (EHF_CREDITNOTE_V2_0_15)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_EHF_DESPATCH_ADVICE_1_0_10,
@@ -230,21 +237,36 @@ public class EHFValidationG2
                                                                                                            VID_EHF_DESPATCH_ADVICE_1_0_10.getVersion (),
                                                                            bDeprecated,
                                                                            ValidationExecutorXSD.create (EUBL21DocumentType.DESPATCH_ADVICE),
-                                                                           _createXSLT (PeppolValidation370.DESPATCH_ADVICE_RULES),
+                                                                           _createXSLT (new ClassPathResource (PATH_201811 +
+                                                                                                               "BIIRULES-UBL-T16.xslt",
+                                                                                                               _getCL ())),
+                                                                           _createXSLT (new ClassPathResource (PATH_201811 +
+                                                                                                               "OPENPEPPOL-UBL-T16.xslt",
+                                                                                                               _getCL ())),
                                                                            _createXSLT (EHF_COMMON_V1_0_4),
                                                                            _createXSLT (EHF_DESPATCH_ADVICE_V1_0_10)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_EHF_INVOICE_2_0_15,
                                                                            "EHF Invoice " + VID_EHF_INVOICE_2_0_15.getVersion (),
                                                                            bDeprecated,
                                                                            ValidationExecutorXSD.create (EUBL21DocumentType.INVOICE),
-                                                                           _createXSLT (PeppolValidation370.INVOICE_RULES),
+                                                                           _createXSLT (new ClassPathResource (PATH_201811 +
+                                                                                                               "BIIRULES-UBL-T10.xslt",
+                                                                                                               _getCL ())),
+                                                                           _createXSLT (new ClassPathResource (PATH_201811 +
+                                                                                                               "OPENPEPPOL-UBL-T10.xslt",
+                                                                                                               _getCL ())),
                                                                            _createXSLT (EHF_COMMON_V1_0_4),
                                                                            _createXSLT (EHF_INVOICE_V2_0_15)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_EHF_ORDER_1_0_11,
                                                                            "EHF Ordering " + VID_EHF_ORDER_1_0_11.getVersion (),
                                                                            bDeprecated,
                                                                            ValidationExecutorXSD.create (EUBL21DocumentType.ORDER),
-                                                                           _createXSLT (PeppolValidation370.ORDER_RULES),
+                                                                           _createXSLT (new ClassPathResource (PATH_201811 +
+                                                                                                               "BIIRULES-UBL-T01.xslt",
+                                                                                                               _getCL ())),
+                                                                           _createXSLT (new ClassPathResource (PATH_201811 +
+                                                                                                               "OPENPEPPOL-UBL-T01.xslt",
+                                                                                                               _getCL ())),
                                                                            _createXSLT (EHF_COMMON_V1_0_4),
                                                                            _createXSLT (EHF_ORDER_V1_0_11)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_EHF_ORDER_AGREEMENT_1_0_2,
@@ -252,7 +274,12 @@ public class EHFValidationG2
                                                                                                           VID_EHF_ORDER_AGREEMENT_1_0_2.getVersion (),
                                                                            bDeprecated,
                                                                            ValidationExecutorXSD.create (EUBL21DocumentType.ORDER_RESPONSE),
-                                                                           _createXSLT (PeppolValidation370.ORDER_AGREEMENT_RULES),
+                                                                           _createXSLT (new ClassPathResource (PATH_201811 +
+                                                                                                               "BIIRULES-UBL-T110.xslt",
+                                                                                                               _getCL ())),
+                                                                           _createXSLT (new ClassPathResource (PATH_201811 +
+                                                                                                               "OPENPEPPOL-UBL-T110.xslt",
+                                                                                                               _getCL ())),
                                                                            _createXSLT (EHF_COMMON_V1_0_4),
                                                                            _createXSLT (EHF_ORDER_AGREEMENT_V1_0_2)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_EHF_ORDER_RESPONSE_1_0_11,
@@ -260,14 +287,24 @@ public class EHFValidationG2
                                                                                                           VID_EHF_ORDER_RESPONSE_1_0_11.getVersion (),
                                                                            bDeprecated,
                                                                            ValidationExecutorXSD.create (EUBL21DocumentType.ORDER_RESPONSE),
-                                                                           _createXSLT (PeppolValidation370.ORDER_RESPONSE_RULES),
+                                                                           _createXSLT (new ClassPathResource (PATH_201811 +
+                                                                                                               "BIIRULES-UBL-T76.xslt",
+                                                                                                               _getCL ())),
+                                                                           _createXSLT (new ClassPathResource (PATH_201811 +
+                                                                                                               "OPENPEPPOL-UBL-T76.xslt",
+                                                                                                               _getCL ())),
                                                                            _createXSLT (EHF_COMMON_V1_0_4),
                                                                            _createXSLT (EHF_ORDER_RESPONSE_V1_0_11)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_EHF_PUNCH_OUT_1_0_1,
                                                                            "EHF Punch Out " + VID_EHF_PUNCH_OUT_1_0_1.getVersion (),
                                                                            bDeprecated,
                                                                            ValidationExecutorXSD.create (EUBL21DocumentType.CATALOGUE),
-                                                                           _createXSLT (PeppolValidation370.PUNCH_OUT_RULES),
+                                                                           _createXSLT (new ClassPathResource (PATH_201811 +
+                                                                                                               "BIIRULES-UBL-T77.xslt",
+                                                                                                               _getCL ())),
+                                                                           _createXSLT (new ClassPathResource (PATH_201811 +
+                                                                                                               "OPENPEPPOL-UBL-T77.xslt",
+                                                                                                               _getCL ())),
                                                                            _createXSLT (EHF_COMMON_V1_0_4),
                                                                            _createXSLT (EHF_PUNCH_OUT_V1_0_1)));
 
@@ -284,7 +321,12 @@ public class EHFValidationG2
                                                                            "EHF Catalogue " + VID_EHF_CATALOGUE_1_0_14.getVersion (),
                                                                            bDeprecated,
                                                                            ValidationExecutorXSD.create (EUBL21DocumentType.CATALOGUE),
-                                                                           _createXSLT (PeppolValidation370.CATALOGUE_RULES),
+                                                                           _createXSLT (new ClassPathResource (PATH_201906 +
+                                                                                                               "BIIRULES-UBL-T19.xslt",
+                                                                                                               _getCL ())),
+                                                                           _createXSLT (new ClassPathResource (PATH_201906 +
+                                                                                                               "OPENPEPPOL-UBL-T19.xslt",
+                                                                                                               _getCL ())),
                                                                            _createXSLT (EHF_COMMON_V1_0_4B),
                                                                            _createXSLT (EHF_CATALOGUE_V1_0_14)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_EHF_CATALOGUE_RESPONSE_1_0_14,
@@ -292,14 +334,24 @@ public class EHFValidationG2
                                                                                                               VID_EHF_CATALOGUE_RESPONSE_1_0_14.getVersion (),
                                                                            bDeprecated,
                                                                            ValidationExecutorXSD.create (EUBL21DocumentType.APPLICATION_RESPONSE),
-                                                                           _createXSLT (PeppolValidation370.CATALOGUE_RESPONSE_RULES),
+                                                                           _createXSLT (new ClassPathResource (PATH_201906 +
+                                                                                                               "BIIRULES-UBL-T58.xslt",
+                                                                                                               _getCL ())),
+                                                                           _createXSLT (new ClassPathResource (PATH_201906 +
+                                                                                                               "OPENPEPPOL-UBL-T58.xslt",
+                                                                                                               _getCL ())),
                                                                            _createXSLT (EHF_COMMON_V1_0_4B),
                                                                            _createXSLT (EHF_CATALOGUE_RESPONSE_V1_0_14)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_EHF_CREDITNOTE_2_0_16,
                                                                            "EHF Creditnote " + VID_EHF_CREDITNOTE_2_0_16.getVersion (),
                                                                            bDeprecated,
                                                                            ValidationExecutorXSD.create (EUBL21DocumentType.CREDIT_NOTE),
-                                                                           _createXSLT (PeppolValidation370.CREDIT_NOTE_RULES),
+                                                                           _createXSLT (new ClassPathResource (PATH_201906 +
+                                                                                                               "BIIRULES-UBL-T14.xslt",
+                                                                                                               _getCL ())),
+                                                                           _createXSLT (new ClassPathResource (PATH_201906 +
+                                                                                                               "OPENPEPPOL-UBL-T14.xslt",
+                                                                                                               _getCL ())),
                                                                            _createXSLT (EHF_COMMON_V1_0_4B),
                                                                            _createXSLT (EHF_CREDITNOTE_V2_0_16)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_EHF_DESPATCH_ADVICE_1_0_11,
@@ -307,21 +359,36 @@ public class EHFValidationG2
                                                                                                            VID_EHF_DESPATCH_ADVICE_1_0_11.getVersion (),
                                                                            bDeprecated,
                                                                            ValidationExecutorXSD.create (EUBL21DocumentType.DESPATCH_ADVICE),
-                                                                           _createXSLT (PeppolValidation370.DESPATCH_ADVICE_RULES),
+                                                                           _createXSLT (new ClassPathResource (PATH_201906 +
+                                                                                                               "BIIRULES-UBL-T16.xslt",
+                                                                                                               _getCL ())),
+                                                                           _createXSLT (new ClassPathResource (PATH_201906 +
+                                                                                                               "OPENPEPPOL-UBL-T16.xslt",
+                                                                                                               _getCL ())),
                                                                            _createXSLT (EHF_COMMON_V1_0_4B),
                                                                            _createXSLT (EHF_DESPATCH_ADVICE_V1_0_11)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_EHF_INVOICE_2_0_16,
                                                                            "EHF Invoice " + VID_EHF_INVOICE_2_0_16.getVersion (),
                                                                            bDeprecated,
                                                                            ValidationExecutorXSD.create (EUBL21DocumentType.INVOICE),
-                                                                           _createXSLT (PeppolValidation370.INVOICE_RULES),
+                                                                           _createXSLT (new ClassPathResource (PATH_201906 +
+                                                                                                               "BIIRULES-UBL-T10.xslt",
+                                                                                                               _getCL ())),
+                                                                           _createXSLT (new ClassPathResource (PATH_201906 +
+                                                                                                               "OPENPEPPOL-UBL-T10.xslt",
+                                                                                                               _getCL ())),
                                                                            _createXSLT (EHF_COMMON_V1_0_4B),
                                                                            _createXSLT (EHF_INVOICE_V2_0_16)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_EHF_ORDER_1_0_12,
                                                                            "EHF Ordering " + VID_EHF_ORDER_1_0_12.getVersion (),
                                                                            bDeprecated,
                                                                            ValidationExecutorXSD.create (EUBL21DocumentType.ORDER),
-                                                                           _createXSLT (PeppolValidation370.ORDER_RULES),
+                                                                           _createXSLT (new ClassPathResource (PATH_201906 +
+                                                                                                               "BIIRULES-UBL-T01.xslt",
+                                                                                                               _getCL ())),
+                                                                           _createXSLT (new ClassPathResource (PATH_201906 +
+                                                                                                               "OPENPEPPOL-UBL-T01.xslt",
+                                                                                                               _getCL ())),
                                                                            _createXSLT (EHF_COMMON_V1_0_4B),
                                                                            _createXSLT (EHF_ORDER_V1_0_12)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_EHF_ORDER_AGREEMENT_1_0_3,
@@ -329,7 +396,12 @@ public class EHFValidationG2
                                                                                                           VID_EHF_ORDER_AGREEMENT_1_0_3.getVersion (),
                                                                            bDeprecated,
                                                                            ValidationExecutorXSD.create (EUBL21DocumentType.ORDER_RESPONSE),
-                                                                           _createXSLT (PeppolValidation370.ORDER_AGREEMENT_RULES),
+                                                                           _createXSLT (new ClassPathResource (PATH_201906 +
+                                                                                                               "BIIRULES-UBL-T110.xslt",
+                                                                                                               _getCL ())),
+                                                                           _createXSLT (new ClassPathResource (PATH_201906 +
+                                                                                                               "OPENPEPPOL-UBL-T110.xslt",
+                                                                                                               _getCL ())),
                                                                            _createXSLT (EHF_COMMON_V1_0_4B),
                                                                            _createXSLT (EHF_ORDER_AGREEMENT_V1_0_3)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_EHF_ORDER_RESPONSE_1_0_12,
@@ -337,14 +409,24 @@ public class EHFValidationG2
                                                                                                           VID_EHF_ORDER_RESPONSE_1_0_12.getVersion (),
                                                                            bDeprecated,
                                                                            ValidationExecutorXSD.create (EUBL21DocumentType.ORDER_RESPONSE),
-                                                                           _createXSLT (PeppolValidation370.ORDER_RESPONSE_RULES),
+                                                                           _createXSLT (new ClassPathResource (PATH_201906 +
+                                                                                                               "BIIRULES-UBL-T76.xslt",
+                                                                                                               _getCL ())),
+                                                                           _createXSLT (new ClassPathResource (PATH_201906 +
+                                                                                                               "OPENPEPPOL-UBL-T76.xslt",
+                                                                                                               _getCL ())),
                                                                            _createXSLT (EHF_COMMON_V1_0_4B),
                                                                            _createXSLT (EHF_ORDER_RESPONSE_V1_0_12)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_EHF_PUNCH_OUT_1_0_2,
                                                                            "EHF Punch Out " + VID_EHF_PUNCH_OUT_1_0_2.getVersion (),
                                                                            bDeprecated,
                                                                            ValidationExecutorXSD.create (EUBL21DocumentType.CATALOGUE),
-                                                                           _createXSLT (PeppolValidation370.PUNCH_OUT_RULES),
+                                                                           _createXSLT (new ClassPathResource (PATH_201906 +
+                                                                                                               "BIIRULES-UBL-T77.xslt",
+                                                                                                               _getCL ())),
+                                                                           _createXSLT (new ClassPathResource (PATH_201906 +
+                                                                                                               "OPENPEPPOL-UBL-T77.xslt",
+                                                                                                               _getCL ())),
                                                                            _createXSLT (EHF_COMMON_V1_0_4B),
                                                                            _createXSLT (EHF_PUNCH_OUT_V1_0_2)));
     // Reminder is from 2018-11
@@ -354,7 +436,12 @@ public class EHFValidationG2
                                                                            "EHF Catalogue " + VID_EHF_CATALOGUE_1_0_15.getVersion (),
                                                                            bNotDeprecated,
                                                                            ValidationExecutorXSD.create (EUBL21DocumentType.CATALOGUE),
-                                                                           _createXSLT (PeppolValidation370.CATALOGUE_RULES),
+                                                                           _createXSLT (new ClassPathResource (PATH_201912 +
+                                                                                                               "BIIRULES-UBL-T19.xslt",
+                                                                                                               _getCL ())),
+                                                                           _createXSLT (new ClassPathResource (PATH_201912 +
+                                                                                                               "OPENPEPPOL-UBL-T19.xslt",
+                                                                                                               _getCL ())),
                                                                            _createXSLT (EHF_COMMON_V1_0_4C),
                                                                            _createXSLT (EHF_CATALOGUE_V1_0_15)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_EHF_CATALOGUE_RESPONSE_1_0_15,
@@ -362,14 +449,24 @@ public class EHFValidationG2
                                                                                                               VID_EHF_CATALOGUE_RESPONSE_1_0_15.getVersion (),
                                                                            bNotDeprecated,
                                                                            ValidationExecutorXSD.create (EUBL21DocumentType.APPLICATION_RESPONSE),
-                                                                           _createXSLT (PeppolValidation370.CATALOGUE_RESPONSE_RULES),
+                                                                           _createXSLT (new ClassPathResource (PATH_201912 +
+                                                                                                               "BIIRULES-UBL-T58.xslt",
+                                                                                                               _getCL ())),
+                                                                           _createXSLT (new ClassPathResource (PATH_201912 +
+                                                                                                               "OPENPEPPOL-UBL-T58.xslt",
+                                                                                                               _getCL ())),
                                                                            _createXSLT (EHF_COMMON_V1_0_4C),
                                                                            _createXSLT (EHF_CATALOGUE_RESPONSE_V1_0_15)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_EHF_CREDITNOTE_2_0_17,
                                                                            "EHF Creditnote " + VID_EHF_CREDITNOTE_2_0_17.getVersion (),
                                                                            bNotDeprecated,
                                                                            ValidationExecutorXSD.create (EUBL21DocumentType.CREDIT_NOTE),
-                                                                           _createXSLT (PeppolValidation370.CREDIT_NOTE_RULES),
+                                                                           _createXSLT (new ClassPathResource (PATH_201912 +
+                                                                                                               "BIIRULES-UBL-T14.xslt",
+                                                                                                               _getCL ())),
+                                                                           _createXSLT (new ClassPathResource (PATH_201912 +
+                                                                                                               "OPENPEPPOL-UBL-T14.xslt",
+                                                                                                               _getCL ())),
                                                                            _createXSLT (EHF_COMMON_V1_0_4C),
                                                                            _createXSLT (EHF_CREDITNOTE_V2_0_17)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_EHF_DESPATCH_ADVICE_1_0_12,
@@ -377,21 +474,36 @@ public class EHFValidationG2
                                                                                                            VID_EHF_DESPATCH_ADVICE_1_0_12.getVersion (),
                                                                            bNotDeprecated,
                                                                            ValidationExecutorXSD.create (EUBL21DocumentType.DESPATCH_ADVICE),
-                                                                           _createXSLT (PeppolValidation370.DESPATCH_ADVICE_RULES),
+                                                                           _createXSLT (new ClassPathResource (PATH_201912 +
+                                                                                                               "BIIRULES-UBL-T16.xslt",
+                                                                                                               _getCL ())),
+                                                                           _createXSLT (new ClassPathResource (PATH_201912 +
+                                                                                                               "OPENPEPPOL-UBL-T16.xslt",
+                                                                                                               _getCL ())),
                                                                            _createXSLT (EHF_COMMON_V1_0_4C),
                                                                            _createXSLT (EHF_DESPATCH_ADVICE_V1_0_12)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_EHF_INVOICE_2_0_17,
                                                                            "EHF Invoice " + VID_EHF_INVOICE_2_0_17.getVersion (),
                                                                            bNotDeprecated,
                                                                            ValidationExecutorXSD.create (EUBL21DocumentType.INVOICE),
-                                                                           _createXSLT (PeppolValidation370.INVOICE_RULES),
+                                                                           _createXSLT (new ClassPathResource (PATH_201912 +
+                                                                                                               "BIIRULES-UBL-T10.xslt",
+                                                                                                               _getCL ())),
+                                                                           _createXSLT (new ClassPathResource (PATH_201912 +
+                                                                                                               "OPENPEPPOL-UBL-T10.xslt",
+                                                                                                               _getCL ())),
                                                                            _createXSLT (EHF_COMMON_V1_0_4C),
                                                                            _createXSLT (EHF_INVOICE_V2_0_17)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_EHF_ORDER_1_0_13,
                                                                            "EHF Ordering " + VID_EHF_ORDER_1_0_13.getVersion (),
                                                                            bNotDeprecated,
                                                                            ValidationExecutorXSD.create (EUBL21DocumentType.ORDER),
-                                                                           _createXSLT (PeppolValidation370.ORDER_RULES),
+                                                                           _createXSLT (new ClassPathResource (PATH_201912 +
+                                                                                                               "BIIRULES-UBL-T01.xslt",
+                                                                                                               _getCL ())),
+                                                                           _createXSLT (new ClassPathResource (PATH_201912 +
+                                                                                                               "OPENPEPPOL-UBL-T01.xslt",
+                                                                                                               _getCL ())),
                                                                            _createXSLT (EHF_COMMON_V1_0_4C),
                                                                            _createXSLT (EHF_ORDER_V1_0_13)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_EHF_ORDER_AGREEMENT_1_0_4,
@@ -399,7 +511,12 @@ public class EHFValidationG2
                                                                                                           VID_EHF_ORDER_AGREEMENT_1_0_4.getVersion (),
                                                                            bNotDeprecated,
                                                                            ValidationExecutorXSD.create (EUBL21DocumentType.ORDER_RESPONSE),
-                                                                           _createXSLT (PeppolValidation370.ORDER_AGREEMENT_RULES),
+                                                                           _createXSLT (new ClassPathResource (PATH_201912 +
+                                                                                                               "BIIRULES-UBL-T110.xslt",
+                                                                                                               _getCL ())),
+                                                                           _createXSLT (new ClassPathResource (PATH_201912 +
+                                                                                                               "OPENPEPPOL-UBL-T110.xslt",
+                                                                                                               _getCL ())),
                                                                            _createXSLT (EHF_COMMON_V1_0_4C),
                                                                            _createXSLT (EHF_ORDER_AGREEMENT_V1_0_4)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_EHF_ORDER_RESPONSE_1_0_13,
@@ -407,14 +524,24 @@ public class EHFValidationG2
                                                                                                           VID_EHF_ORDER_RESPONSE_1_0_13.getVersion (),
                                                                            bNotDeprecated,
                                                                            ValidationExecutorXSD.create (EUBL21DocumentType.ORDER_RESPONSE),
-                                                                           _createXSLT (PeppolValidation370.ORDER_RESPONSE_RULES),
+                                                                           _createXSLT (new ClassPathResource (PATH_201912 +
+                                                                                                               "BIIRULES-UBL-T76.xslt",
+                                                                                                               _getCL ())),
+                                                                           _createXSLT (new ClassPathResource (PATH_201912 +
+                                                                                                               "OPENPEPPOL-UBL-T76.xslt",
+                                                                                                               _getCL ())),
                                                                            _createXSLT (EHF_COMMON_V1_0_4C),
                                                                            _createXSLT (EHF_ORDER_RESPONSE_V1_0_13)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_EHF_PUNCH_OUT_1_0_3,
                                                                            "EHF Punch Out " + VID_EHF_PUNCH_OUT_1_0_3.getVersion (),
                                                                            bNotDeprecated,
                                                                            ValidationExecutorXSD.create (EUBL21DocumentType.CATALOGUE),
-                                                                           _createXSLT (PeppolValidation370.PUNCH_OUT_RULES),
+                                                                           _createXSLT (new ClassPathResource (PATH_201912 +
+                                                                                                               "BIIRULES-UBL-T77.xslt",
+                                                                                                               _getCL ())),
+                                                                           _createXSLT (new ClassPathResource (PATH_201912 +
+                                                                                                               "OPENPEPPOL-UBL-T77.xslt",
+                                                                                                               _getCL ())),
                                                                            _createXSLT (EHF_COMMON_V1_0_4C),
                                                                            _createXSLT (EHF_PUNCH_OUT_V1_0_3)));
     // Reminder is from 2018-11

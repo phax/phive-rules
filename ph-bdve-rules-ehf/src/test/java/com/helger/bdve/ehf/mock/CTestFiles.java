@@ -26,7 +26,6 @@ import com.helger.bdve.ehf.EHFValidationG2;
 import com.helger.bdve.ehf.EHFValidationG3;
 import com.helger.bdve.engine.mock.MockFile;
 import com.helger.bdve.engine.source.IValidationSourceXML;
-import com.helger.bdve.peppol.PeppolValidation;
 import com.helger.commons.ValueEnforcer;
 import com.helger.commons.annotation.ReturnsMutableCopy;
 import com.helger.commons.collection.impl.CommonsArrayList;
@@ -41,7 +40,6 @@ public final class CTestFiles
   public static final ValidationExecutorSetRegistry <IValidationSourceXML> VES_REGISTRY = new ValidationExecutorSetRegistry <> ();
   static
   {
-    PeppolValidation.initStandard (VES_REGISTRY);
     EHFValidation.initEHF (VES_REGISTRY);
   }
 
