@@ -113,6 +113,8 @@ Alternate usage as a Maven BOM:
   
 # News and noteworthy
 
+* v1.0.2 - work in progress
+    * EHF G2 rules no longer directly use the Peppol rules but the provided subsets
 * v1.0.1 - 2020-06-10
     * Added support for EHF G3 version 2020-03-23
     * Updated the Peppol 3.10.0 VESIDs to contain the document types
