@@ -113,7 +113,7 @@ Alternate usage as a Maven BOM:
   
 # News and noteworthy
 
-* v1.0.2 - work in progress
+* v1.0.2 - 2020-06-15
     * EHF G2 rules no longer directly use the Peppol rules but the provided subsets
 * v1.0.1 - 2020-06-10
     * Added support for EHF G3 version 2020-03-23
