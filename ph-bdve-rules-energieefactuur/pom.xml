@@ -22,7 +22,7 @@
   <parent>
     <groupId>com.helger.bdve.rules</groupId>
     <artifactId>ph-bdve-rules-parent-pom</artifactId>
-    <version>1.0.2</version>
+    <version>1.0.3-SNAPSHOT</version>
   </parent>
   <artifactId>ph-bdve-rules-energieefactuur</artifactId>
   <packaging>bundle</packaging>
