@@ -22,7 +22,7 @@
   <parent>
     <groupId>com.helger.bdve.rules</groupId>
     <artifactId>ph-bdve-rules-parent-pom</artifactId>
-    <version>1.0.3</version>
+    <version>1.0.4-SNAPSHOT</version>
   </parent>
   <artifactId>ph-bdve-rules-ubl</artifactId>
   <packaging>bundle</packaging>
