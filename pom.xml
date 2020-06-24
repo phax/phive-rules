@@ -130,7 +130,12 @@
       <dependency>
         <groupId>com.helger</groupId>
         <artifactId>ph-ebinterface</artifactId>
-        <version>6.1.5</version>
+        <version>6.1.6</version>
+      </dependency>
+      <dependency>
+        <groupId>com.helger</groupId>
+        <artifactId>ph-fatturapa</artifactId>
+        <version>1.0.0</version>
       </dependency>
 
       <dependency>
