@@ -140,12 +140,37 @@
 
       <dependency>
         <groupId>com.helger.bdve.rules</groupId>
-        <artifactId>ph-bdve-rules-ubl</artifactId>
+        <artifactId>ph-bdve-rules-cii</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
         <groupId>com.helger.bdve.rules</groupId>
-        <artifactId>ph-bdve-rules-cii</artifactId>
+        <artifactId>ph-bdve-rules-ebinterface</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.helger.bdve.rules</groupId>
+        <artifactId>ph-bdve-rules-ehf</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.helger.bdve.rules</groupId>
+        <artifactId>ph-bdve-rules-en16931</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.helger.bdve.rules</groupId>
+        <artifactId>ph-bdve-rules-energieefactuur</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.helger.bdve.rules</groupId>
+        <artifactId>ph-bdve-rules-fatturapa</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.helger.bdve.rules</groupId>
+        <artifactId>ph-bdve-rules-oioubl</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
@@ -160,32 +185,12 @@
       </dependency>
       <dependency>
         <groupId>com.helger.bdve.rules</groupId>
-        <artifactId>ph-bdve-rules-en16931</artifactId>
-        <version>${project.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.helger.bdve.rules</groupId>
-        <artifactId>ph-bdve-rules-ehf</artifactId>
-        <version>${project.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.helger.bdve.rules</groupId>
-        <artifactId>ph-bdve-rules-energieefactuur</artifactId>
-        <version>${project.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.helger.bdve.rules</groupId>
-        <artifactId>ph-bdve-rules-oioubl</artifactId>
-        <version>${project.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.helger.bdve.rules</groupId>
-        <artifactId>ph-bdve-rules-ebinterface</artifactId>
-        <version>${project.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.helger.bdve.rules</groupId>
         <artifactId>ph-bdve-rules-teapps</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.helger.bdve.rules</groupId>
+        <artifactId>ph-bdve-rules-ubl</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
