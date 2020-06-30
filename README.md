@@ -10,6 +10,7 @@ This project is divided into sub-projects each keeping tracking of one document 
   * ph-bdve-ehf - Validation rules for EHF (Norwegian public procurement)
   * ph-bdve-en16931 - Validation rules for the EN 16931 (European e-Invoicing norm based on CEN TC 434)
   * ph-bdve-energieefactuur - Validation rules for Dutch Energie eFactuur
+  * ph-bdve-fatturapa - Validation rules for Italian fattura PA (since v1.0.4)
   * ph-bdve-oioubl - Validation rules for Danish OIOUBL
   * ph-bdve-peppol - the Peppol specific setup etc
   * ph-bdve-simplerinvoicing - Dutch SimplerInvoicing 1.x support from https://github.com/SimplerInvoicing/validation
@@ -53,6 +54,12 @@ Add the following to your `pom.xml` to use this artifact, replacing `x.y.z` with
 <dependency>
   <groupId>com.helger.bdve.rules</groupId>
   <artifactId>ph-bdve-rules-energieefactuur</artifactId>
+  <version>x.y.z</version>
+</dependency>
+
+<dependency>
+  <groupId>com.helger.bdve.rules</groupId>
+  <artifactId>ph-bdve-rules-fatturapa</artifactId>
   <version>x.y.z</version>
 </dependency>
 
@@ -113,6 +120,8 @@ Alternate usage as a Maven BOM:
   
 # News and noteworthy
 
+* v1.0.4 - work in progress
+    * Added support for Italian fatturaPA 1.2 and 1.2.1
 * v1.0.3 - 2020-06-16
     * Added Peppol Spring 2020 Hotfix release as version 3.10.1
 * v1.0.2 - 2020-06-15

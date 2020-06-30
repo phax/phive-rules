@@ -135,7 +135,7 @@
       <dependency>
         <groupId>com.helger</groupId>
         <artifactId>ph-fatturapa</artifactId>
-        <version>1.0.0</version>
+        <version>1.0.1</version>
       </dependency>
 
       <dependency>
@@ -224,16 +224,18 @@
   </dependencies>
   
   <modules>
-    <module>ph-bdve-rules-ubl</module>
     <module>ph-bdve-rules-cii</module>
+    <module>ph-bdve-rules-ebinterface</module>
+    <module>ph-bdve-rules-ehf</module>
+    <module>ph-bdve-rules-en16931</module>
+    <module>ph-bdve-rules-energieefactuur</module>
+    <module>ph-bdve-rules-fatturapa</module>
+    <module>ph-bdve-rules-oioubl</module>
     <module>ph-bdve-rules-peppol</module>
     <module>ph-bdve-rules-simplerinvoicing</module>
-    <module>ph-bdve-rules-en16931</module>
-    <module>ph-bdve-rules-ehf</module>
-    <module>ph-bdve-rules-energieefactuur</module>
-    <module>ph-bdve-rules-oioubl</module>
-    <module>ph-bdve-rules-ebinterface</module>
     <module>ph-bdve-rules-teapps</module>
+    <module>ph-bdve-rules-ubl</module>
+    <!-- depends on peppol -->
     <module>ph-bdve-rules-ublbe</module>
     <module>ph-bdve-rules-xrechnung</module>
   </modules>
