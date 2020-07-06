@@ -120,10 +120,10 @@ Alternate usage as a Maven BOM:
   
 # News and noteworthy
 
-* v1.0.4 - work in progress
+* v1.0.4 - 2020-07-06
     * Added support for Italian fatturaPA 1.2 and 1.2.1
     * Deprecated Peppol 3.10.0 rules
-    * A Hotfix to the Peppol 3.10.1 rules, only relevant for 0208 usage, was included
+    * A Hotfix to the Peppol 3.10.1 rules, only relevant for "0208" participant identifier scheme usage, was included
     * Added SG-PEPPOL 1.0.3 rules
     * Added A-NZ-PEPPOL 1.0.3 rules
 * v1.0.3 - 2020-06-16
