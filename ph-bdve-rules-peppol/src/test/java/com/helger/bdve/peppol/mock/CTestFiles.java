@@ -80,6 +80,9 @@ public final class CTestFiles
                                             PeppolValidationSG.VID_OPENPEPPOL_BIS3_SG_UBL_INVOICE_102,
                                             PeppolValidationSG.VID_OPENPEPPOL_BIS3_SG_UBL_CREDIT_NOTE_102,
 
+                                            PeppolValidationSG.VID_OPENPEPPOL_BIS3_SG_UBL_INVOICE_103,
+                                            PeppolValidationSG.VID_OPENPEPPOL_BIS3_SG_UBL_CREDIT_NOTE_103,
+
                                             PeppolValidation370.VID_OPENPEPPOL_T19_V2,
                                             PeppolValidation370.VID_OPENPEPPOL_T58_V2,
                                             PeppolValidation370.VID_OPENPEPPOL_T01_V2,
@@ -256,6 +259,16 @@ public final class CTestFiles
     }
 
     if (aVESID.equals (PeppolValidationSG.VID_OPENPEPPOL_BIS3_SG_UBL_CREDIT_NOTE_102))
+      return new CommonsArrayList <> ();
+
+    if (aVESID.equals (PeppolValidationSG.VID_OPENPEPPOL_BIS3_SG_UBL_INVOICE_103))
+    {
+      final String sBase = "src/test/resources/test-files/sg-peppol/1.0.3/";
+      return new CommonsArrayList <> (new FileSystemResource (sBase + "Singapore invoice valid 1.xml"),
+                                      new FileSystemResource (sBase + "Singapore invoice valid 1 - NG tax code.xml"));
+    }
+
+    if (aVESID.equals (PeppolValidationSG.VID_OPENPEPPOL_BIS3_SG_UBL_CREDIT_NOTE_103))
       return new CommonsArrayList <> ();
 
     // 3.7.0

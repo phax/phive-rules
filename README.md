@@ -124,6 +124,7 @@ Alternate usage as a Maven BOM:
     * Added support for Italian fatturaPA 1.2 and 1.2.1
     * Deprecated Peppol 3.10.0 rules
     * A Hotfix to the Peppol 3.10.1 rules, only relevant for 0208 usage, was included
+    * Added SG-PEPPOL 1.0.3 rules
 * v1.0.3 - 2020-06-16
     * Added Peppol Spring 2020 Hotfix release as version 3.10.1
 * v1.0.2 - 2020-06-15
