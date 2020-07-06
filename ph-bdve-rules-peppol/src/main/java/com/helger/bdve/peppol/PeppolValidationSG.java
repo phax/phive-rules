@@ -54,11 +54,11 @@ public final class PeppolValidationSG
   @Deprecated
   public static final VESID VID_OPENPEPPOL_BIS3_SG_UBL_CREDIT_NOTE_100 = new VESID ("eu.peppol.bis3.sg.ubl", "creditnote", "1");
   @Deprecated
-  private static final IReadableResource BIS3_BILLING_SG_CEN_100 = new ClassPathResource ("/sg-peppol/1.0.0/xslt/CEN-EN16931-UBL-SG-Conformant.xslt",
-                                                                                          _getCL ());
+  public static final IReadableResource BIS3_BILLING_SG_CEN_100 = new ClassPathResource ("/sg-peppol/1.0.0/xslt/CEN-EN16931-UBL-SG-Conformant.xslt",
+                                                                                         _getCL ());
   @Deprecated
-  private static final IReadableResource BIS3_BILLING_SG_PEPPOL_100 = new ClassPathResource ("/sg-peppol/1.0.0/xslt/PEPPOL-EN16931-UBL-SG-Conformant.xslt",
-                                                                                             _getCL ());
+  public static final IReadableResource BIS3_BILLING_SG_PEPPOL_100 = new ClassPathResource ("/sg-peppol/1.0.0/xslt/PEPPOL-EN16931-UBL-SG-Conformant.xslt",
+                                                                                            _getCL ());
 
   // 1.0.2
   @Deprecated
