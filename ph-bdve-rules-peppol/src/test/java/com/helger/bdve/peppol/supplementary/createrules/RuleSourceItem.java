@@ -95,8 +95,7 @@ public final class RuleSourceItem implements IHasID <String>
   }
 
   @Nonnull
-  public RuleSourceItem addBussinessRule (@Nonnull @Nonempty final String sSourceFilename,
-                                          @Nullable final String sCodeListTransaction)
+  public RuleSourceItem addBussinessRule (@Nonnull @Nonempty final String sSourceFilename, @Nullable final String sCodeListTransaction)
   {
     m_aBusinessRules.add (new RuleSourceBusinessRule (new File (m_aRuleSrcDir, sSourceFilename),
                                                       m_aOutputSchematronDir,

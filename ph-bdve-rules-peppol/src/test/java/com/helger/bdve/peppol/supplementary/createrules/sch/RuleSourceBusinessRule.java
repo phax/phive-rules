@@ -92,8 +92,7 @@ public final class RuleSourceBusinessRule
   @Nonnull
   public File getSchematronBindingFile (@Nonnull @Nonempty final String sBindingName)
   {
-    return new File (m_aOutputSchematronDirectory,
-                     "include/" + m_sID + "-" + sBindingName.toLowerCase (Locale.US) + "-test.sch");
+    return new File (m_aOutputSchematronDirectory, "include/" + m_sID + "-" + sBindingName.toLowerCase (Locale.US) + "-test.sch");
   }
 
   @Nonnull

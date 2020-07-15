@@ -235,11 +235,7 @@ public final class CodeListCreator
 
       // Build column set
       final ColumnSet aColumnSet = new ColumnSet ();
-      final Column aCodeColumn = Genericode10Helper.createColumn ("code",
-                                                                  UseType.REQUIRED,
-                                                                  "Code",
-                                                                  null,
-                                                                  "normalizedString");
+      final Column aCodeColumn = Genericode10Helper.createColumn ("code", UseType.REQUIRED, "Code", null, "normalizedString");
       final Column aNameColumn = Genericode10Helper.createColumn ("name", UseType.OPTIONAL, "Name", null, "string");
       aColumnSet.getColumnChoice ().add (aCodeColumn);
       aColumnSet.getColumnChoice ().add (aNameColumn);
@@ -343,8 +339,7 @@ public final class CodeListCreator
     // Create only once (caching)
     if (s_aCVA2SCH == null)
     {
-      final TransformerFactory aTF = XMLTransformerFactory.createTransformerFactory (null,
-                                                                                     new DefaultTransformURIResolver ());
+      final TransformerFactory aTF = XMLTransformerFactory.createTransformerFactory (null, new DefaultTransformURIResolver ());
       s_aCVA2SCH = aTF.newTemplates (TransformSourceFactory.create (new File ("src/test/resources/rule-utils/Crane-cva2schXSLT.xsl")));
     }
     // Convert the CVA files for all transactions

@@ -73,8 +73,7 @@ public final class XSLTCreator
           }
           final Document aXSLTDoc = aXSLTProvider.getXSLTDocument ();
 
-          final File aXSLTFile = new File (aBusinessRule.getOutputXSLTDirectory (),
-                                           FilenameHelper.getBaseName (aSCHFile) + ".xslt");
+          final File aXSLTFile = new File (aBusinessRule.getOutputXSLTDirectory (), FilenameHelper.getBaseName (aSCHFile) + ".xslt");
 
           final MapBasedNamespaceContext aNSCtx = new MapBasedNamespaceContext ();
           aNSCtx.addMapping ("xsl", "http://www.w3.org/1999/XSL/Transform");
@@ -82,8 +81,7 @@ public final class XSLTCreator
           aNSCtx.addMapping (aSCH.getPrefix (), aSCH.getNamespaceURI ());
           aNSCtx.addMappings (aDefaultNamespaces);
 
-          final IXMLWriterSettings aXWS = new XMLWriterSettings ().setNamespaceContext (aNSCtx)
-                                                                  .setPutNamespaceContextPrefixesInRoot (true);
+          final IXMLWriterSettings aXWS = new XMLWriterSettings ().setNamespaceContext (aNSCtx).setPutNamespaceContextPrefixesInRoot (true);
 
           if (SimpleFileIO.writeFile (aXSLTFile, XMLWriter.getNodeAsBytes (aXSLTDoc, aXWS)).isFailure ())
             throw new IllegalStateException ("Failed to write " + aXSLTFile);

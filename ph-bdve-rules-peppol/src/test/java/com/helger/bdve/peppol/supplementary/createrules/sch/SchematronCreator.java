@@ -112,9 +112,7 @@ public final class SchematronCreator
 
       // Create the XML content
       final IMicroDocument aDoc = new MicroDocument ();
-      aDoc.appendComment ("This file is generated automatically! Do NOT edit!\n" +
-                          "Abstract Schematron rules for " +
-                          sTransaction);
+      aDoc.appendComment ("This file is generated automatically! Do NOT edit!\n" + "Abstract Schematron rules for " + sTransaction);
       final IMicroElement ePattern = aDoc.appendElement (NS_SCHEMATRON, "pattern");
       ePattern.setAttribute ("abstract", "true");
       ePattern.setAttribute ("id", sTransaction);
@@ -139,8 +137,7 @@ public final class SchematronCreator
     }
   }
 
-  private static boolean _containsRuleID (@Nonnull final ICommonsList <RuleParam> aRuleParams,
-                                          @Nullable final String sRuleID)
+  private static boolean _containsRuleID (@Nonnull final ICommonsList <RuleParam> aRuleParams, @Nullable final String sRuleID)
   {
     return aRuleParams.containsAny (x -> x.getRuleID ().equals (sRuleID));
   }
@@ -183,12 +180,8 @@ public final class SchematronCreator
       final String sTransaction = aEntryTransaction.getKey ();
       final ICommonsList <RuleParam> aFoundRules = aRules.get (sTransaction);
       if (aFoundRules == null)
-        throw new IllegalStateException ("Found no rules for transaction " +
-                                         sTransaction +
-                                         " and binding " +
-                                         sBindingName);
-      for (final Map.Entry <String, ICommonsList <RuleAssertion>> aEntryContext : aEntryTransaction.getValue ()
-                                                                                                   .entrySet ())
+        throw new IllegalStateException ("Found no rules for transaction " + sTransaction + " and binding " + sBindingName);
+      for (final Map.Entry <String, ICommonsList <RuleAssertion>> aEntryContext : aEntryTransaction.getValue ().entrySet ())
       {
         final String sContext = aEntryContext.getKey ();
         if (!_containsRuleID (aFoundRules, Utils.makeID (sContext)))
@@ -239,8 +232,7 @@ public final class SchematronCreator
       // Longest name must come first (ensure that in the ODS)
       final ICommonsList <RuleParam> aRuleParams = aRuleEntry.getValue ();
       if (false)
-        aRuleParams.getSorted (Comparator.comparing (RuleParam::getRuleID,
-                                                     IComparator.getComparatorStringLongestFirst ()));
+        aRuleParams.getSorted (Comparator.comparing (RuleParam::getRuleID, IComparator.getComparatorStringLongestFirst ()));
       for (final RuleParam aRuleParam : aRuleParams)
       {
         final IMicroElement eParam = ePattern.appendElement (NS_SCHEMATRON, "param");
@@ -301,13 +293,10 @@ public final class SchematronCreator
                           aBusinessRule.getSourceFile ().getName ());
       final IMicroElement eSchema = aDoc.appendElement (NS_SCHEMATRON, "schema");
       eSchema.setAttribute ("queryBinding", "xslt2");
-      eSchema.appendElement (NS_SCHEMATRON, "title")
-             .appendText (aBusinessRule.getID () + " " + sTransaction + " bound to " + sBindingName);
+      eSchema.appendElement (NS_SCHEMATRON, "title").appendText (aBusinessRule.getID () + " " + sTransaction + " bound to " + sBindingName);
 
       for (final Map.Entry <String, String> aEntry : aNsMap.entrySet ())
-        eSchema.appendElement (NS_SCHEMATRON, "ns")
-               .setAttribute ("prefix", aEntry.getKey ())
-               .setAttribute ("uri", aEntry.getValue ());
+        eSchema.appendElement (NS_SCHEMATRON, "ns").setAttribute ("prefix", aEntry.getKey ()).setAttribute ("uri", aEntry.getValue ());
 
       // Phases
       IMicroElement ePhase = eSchema.appendElement (NS_SCHEMATRON, "phase");
@@ -329,9 +318,7 @@ public final class SchematronCreator
         eInclude.setAttribute ("href", "include/" + aBusinessRule.getSchematronCodeListFile ().getName ());
       }
       eInclude = eSchema.appendElement (NS_SCHEMATRON, "include");
-      eInclude.setAttribute ("href",
-                             "include/" +
-                                     aBusinessRule.getSchematronBindingFile (sBindingName).getName ());
+      eInclude.setAttribute ("href", "include/" + aBusinessRule.getSchematronBindingFile (sBindingName).getName ());
 
       final IXMLWriterSettings aXWS = new XMLWriterSettings ().setNamespaceContext (new MapBasedNamespaceContext (aNsMap));
       if (SimpleFileIO.writeFile (aSCHFile, MicroWriter.getNodeAsBytes (aDoc, aXWS)).isFailure ())
