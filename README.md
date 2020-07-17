@@ -120,6 +120,8 @@ Alternate usage as a Maven BOM:
   
 # News and noteworthy
 
+* v1.0.5 - work in progress
+    * Added support for UBL.BE 1.2.3 rules
 * v1.0.4 - 2020-07-06
     * Added support for Italian fatturaPA 1.2 and 1.2.1
     * Deprecated Peppol 3.10.0 rules

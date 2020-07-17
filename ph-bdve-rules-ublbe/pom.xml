@@ -136,11 +136,11 @@
             <goals>
               <goal>convert</goal>
             </goals>
-            <id>v1.2</id>
+            <id>v1.2.3</id>
             <configuration>
-              <schematronDirectory>${basedir}/src/test/resources/sch/en16931/v1.2</schematronDirectory>
+              <schematronDirectory>${basedir}/src/test/resources/sch/en16931/v1.2.3</schematronDirectory>
               <schematronPattern>*.sch</schematronPattern>
-              <xsltDirectory>${basedir}/src/main/resources/ublbe/en16931/v1.2</xsltDirectory>
+              <xsltDirectory>${basedir}/src/main/resources/ublbe/en16931/v1.2.3</xsltDirectory>
             </configuration>
           </execution>
        -->
