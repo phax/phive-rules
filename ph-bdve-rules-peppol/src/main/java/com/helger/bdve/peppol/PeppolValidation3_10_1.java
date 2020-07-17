@@ -111,7 +111,9 @@ public final class PeppolValidation3_10_1
     ValueEnforcer.notNull (aRegistry, "Registry");
 
     final String sVersion = " (" + VERSION_STR + ")";
-    final String sAkaVersionBilling = " (aka BIS Billing 3.0.6 + Hotfix 2)";
+    // See https://docs.peppol.eu/poacc/billing/3.0/release-notes/
+    final String sAkaVersionBilling = " (aka BIS Billing 3.0.7)";
+    // See https://docs.peppol.eu/poacc/upgrade-3/release-notes/
     final String sAkaVersionBIS = " (aka BIS 3.0.4)";
 
     final boolean bNotDeprecated = false;
