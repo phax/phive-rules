@@ -81,7 +81,7 @@ public final class PeppolValidation
    */
   @Nonnull
   @Nonempty
-  public static final String getVersionToUse ()
+  public static String getVersionToUse ()
   {
     final LocalDate aNow = PDTFactory.getCurrentLocalDate ();
     if (aNow.isBefore (PeppolValidation3_10_1.VALID_PER))

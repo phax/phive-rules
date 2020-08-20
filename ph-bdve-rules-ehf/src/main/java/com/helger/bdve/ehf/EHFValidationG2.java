@@ -42,58 +42,60 @@ import com.helger.ubl21.UBL21NamespaceContext;
 @Immutable
 public class EHFValidationG2
 {
+  private static final String GROUP_ID = "no.ehf";
+
   // 2018-11
   @Deprecated
-  public static final VESID VID_EHF_CATALOGUE_1_0_13 = new VESID ("no.ehf", "catalogue", "1.0.13");
+  public static final VESID VID_EHF_CATALOGUE_1_0_13 = new VESID (GROUP_ID, "catalogue", "1.0.13");
   @Deprecated
-  public static final VESID VID_EHF_CATALOGUE_RESPONSE_1_0_13 = new VESID ("no.ehf", "catalogue-response", "1.0.13");
+  public static final VESID VID_EHF_CATALOGUE_RESPONSE_1_0_13 = new VESID (GROUP_ID, "catalogue-response", "1.0.13");
   @Deprecated
-  public static final VESID VID_EHF_CREDITNOTE_2_0_15 = new VESID ("no.ehf", "creditnote", "2.0.15");
+  public static final VESID VID_EHF_CREDITNOTE_2_0_15 = new VESID (GROUP_ID, "creditnote", "2.0.15");
   @Deprecated
-  public static final VESID VID_EHF_DESPATCH_ADVICE_1_0_10 = new VESID ("no.ehf", "despatch-advice", "1.0.10");
+  public static final VESID VID_EHF_DESPATCH_ADVICE_1_0_10 = new VESID (GROUP_ID, "despatch-advice", "1.0.10");
   @Deprecated
-  public static final VESID VID_EHF_INVOICE_2_0_15 = new VESID ("no.ehf", "invoice", "2.0.15");
+  public static final VESID VID_EHF_INVOICE_2_0_15 = new VESID (GROUP_ID, "invoice", "2.0.15");
   @Deprecated
-  public static final VESID VID_EHF_ORDER_1_0_11 = new VESID ("no.ehf", "order", "1.0.11");
+  public static final VESID VID_EHF_ORDER_1_0_11 = new VESID (GROUP_ID, "order", "1.0.11");
   @Deprecated
-  public static final VESID VID_EHF_ORDER_AGREEMENT_1_0_2 = new VESID ("no.ehf", "order-agreement", "1.0.2");
+  public static final VESID VID_EHF_ORDER_AGREEMENT_1_0_2 = new VESID (GROUP_ID, "order-agreement", "1.0.2");
   @Deprecated
-  public static final VESID VID_EHF_ORDER_RESPONSE_1_0_11 = new VESID ("no.ehf", "order-response", "1.0.11");
+  public static final VESID VID_EHF_ORDER_RESPONSE_1_0_11 = new VESID (GROUP_ID, "order-response", "1.0.11");
   @Deprecated
-  public static final VESID VID_EHF_PUNCH_OUT_1_0_1 = new VESID ("no.ehf", "punch-out", "1.0.1");
-  public static final VESID VID_EHF_REMINDER_1_1_0 = new VESID ("no.ehf", "reminder", "1.1.0");
+  public static final VESID VID_EHF_PUNCH_OUT_1_0_1 = new VESID (GROUP_ID, "punch-out", "1.0.1");
+  public static final VESID VID_EHF_REMINDER_1_1_0 = new VESID (GROUP_ID, "reminder", "1.1.0");
 
   // 2019-06
   @Deprecated
-  public static final VESID VID_EHF_CATALOGUE_1_0_14 = new VESID ("no.ehf", "catalogue", "1.0.14");
+  public static final VESID VID_EHF_CATALOGUE_1_0_14 = new VESID (GROUP_ID, "catalogue", "1.0.14");
   @Deprecated
-  public static final VESID VID_EHF_CATALOGUE_RESPONSE_1_0_14 = new VESID ("no.ehf", "catalogue-response", "1.0.14");
+  public static final VESID VID_EHF_CATALOGUE_RESPONSE_1_0_14 = new VESID (GROUP_ID, "catalogue-response", "1.0.14");
   @Deprecated
-  public static final VESID VID_EHF_CREDITNOTE_2_0_16 = new VESID ("no.ehf", "creditnote", "2.0.16");
+  public static final VESID VID_EHF_CREDITNOTE_2_0_16 = new VESID (GROUP_ID, "creditnote", "2.0.16");
   @Deprecated
-  public static final VESID VID_EHF_DESPATCH_ADVICE_1_0_11 = new VESID ("no.ehf", "despatch-advice", "1.0.11");
+  public static final VESID VID_EHF_DESPATCH_ADVICE_1_0_11 = new VESID (GROUP_ID, "despatch-advice", "1.0.11");
   @Deprecated
-  public static final VESID VID_EHF_INVOICE_2_0_16 = new VESID ("no.ehf", "invoice", "2.0.16");
+  public static final VESID VID_EHF_INVOICE_2_0_16 = new VESID (GROUP_ID, "invoice", "2.0.16");
   @Deprecated
-  public static final VESID VID_EHF_ORDER_1_0_12 = new VESID ("no.ehf", "order", "1.0.12");
+  public static final VESID VID_EHF_ORDER_1_0_12 = new VESID (GROUP_ID, "order", "1.0.12");
   @Deprecated
-  public static final VESID VID_EHF_ORDER_AGREEMENT_1_0_3 = new VESID ("no.ehf", "order-agreement", "1.0.3");
+  public static final VESID VID_EHF_ORDER_AGREEMENT_1_0_3 = new VESID (GROUP_ID, "order-agreement", "1.0.3");
   @Deprecated
-  public static final VESID VID_EHF_ORDER_RESPONSE_1_0_12 = new VESID ("no.ehf", "order-response", "1.0.12");
+  public static final VESID VID_EHF_ORDER_RESPONSE_1_0_12 = new VESID (GROUP_ID, "order-response", "1.0.12");
   @Deprecated
-  public static final VESID VID_EHF_PUNCH_OUT_1_0_2 = new VESID ("no.ehf", "punch-out", "1.0.2");
+  public static final VESID VID_EHF_PUNCH_OUT_1_0_2 = new VESID (GROUP_ID, "punch-out", "1.0.2");
   // Reminder is unchanged 1.1.0
 
   // 2019-12
-  public static final VESID VID_EHF_CATALOGUE_1_0_15 = new VESID ("no.ehf", "catalogue", "1.0.15");
-  public static final VESID VID_EHF_CATALOGUE_RESPONSE_1_0_15 = new VESID ("no.ehf", "catalogue-response", "1.0.15");
-  public static final VESID VID_EHF_CREDITNOTE_2_0_17 = new VESID ("no.ehf", "creditnote", "2.0.17");
-  public static final VESID VID_EHF_DESPATCH_ADVICE_1_0_12 = new VESID ("no.ehf", "despatch-advice", "1.0.12");
-  public static final VESID VID_EHF_INVOICE_2_0_17 = new VESID ("no.ehf", "invoice", "2.0.17");
-  public static final VESID VID_EHF_ORDER_1_0_13 = new VESID ("no.ehf", "order", "1.0.13");
-  public static final VESID VID_EHF_ORDER_AGREEMENT_1_0_4 = new VESID ("no.ehf", "order-agreement", "1.0.4");
-  public static final VESID VID_EHF_ORDER_RESPONSE_1_0_13 = new VESID ("no.ehf", "order-response", "1.0.13");
-  public static final VESID VID_EHF_PUNCH_OUT_1_0_3 = new VESID ("no.ehf", "punch-out", "1.0.3");
+  public static final VESID VID_EHF_CATALOGUE_1_0_15 = new VESID (GROUP_ID, "catalogue", "1.0.15");
+  public static final VESID VID_EHF_CATALOGUE_RESPONSE_1_0_15 = new VESID (GROUP_ID, "catalogue-response", "1.0.15");
+  public static final VESID VID_EHF_CREDITNOTE_2_0_17 = new VESID (GROUP_ID, "creditnote", "2.0.17");
+  public static final VESID VID_EHF_DESPATCH_ADVICE_1_0_12 = new VESID (GROUP_ID, "despatch-advice", "1.0.12");
+  public static final VESID VID_EHF_INVOICE_2_0_17 = new VESID (GROUP_ID, "invoice", "2.0.17");
+  public static final VESID VID_EHF_ORDER_1_0_13 = new VESID (GROUP_ID, "order", "1.0.13");
+  public static final VESID VID_EHF_ORDER_AGREEMENT_1_0_4 = new VESID (GROUP_ID, "order-agreement", "1.0.4");
+  public static final VESID VID_EHF_ORDER_RESPONSE_1_0_13 = new VESID (GROUP_ID, "order-response", "1.0.13");
+  public static final VESID VID_EHF_PUNCH_OUT_1_0_3 = new VESID (GROUP_ID, "punch-out", "1.0.3");
   // Reminder is unchanged 1.1.0
 
   @Nonnull

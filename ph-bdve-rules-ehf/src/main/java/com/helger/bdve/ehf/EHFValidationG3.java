@@ -42,8 +42,9 @@ import com.helger.ubl22.UBL22NamespaceContext;
 @Immutable
 public final class EHFValidationG3
 {
+  private static final String GROUP_ID = "no.ehf.g3";
+
   // 2020-03-23
-  private static String GROUP_ID = "no.ehf.g3";
   public static final VESID VID_EHF_ADVANCED_ORDER_CANCELLATION_300 = new VESID (GROUP_ID, "advanced-order-cancellation", "3.0.0");
   public static final VESID VID_EHF_ADVANCED_ORDER_CHANGE_300 = new VESID (GROUP_ID, "advanced-order-change", "3.0.0");
   public static final VESID VID_EHF_ADVANCED_ORDER_INITIATION_300 = new VESID (GROUP_ID, "advanced-order-initiation", "3.0.0");
