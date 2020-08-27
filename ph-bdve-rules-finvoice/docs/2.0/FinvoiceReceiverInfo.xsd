@@ -1,0 +1,388 @@
+<?xml version="1.0" encoding="ISO-8859-15"?>
+<!-- Modified 15.4.2013 -->
+<!-- For Finvoice version 2.01 -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	<xs:element name="FinvoiceReceiverInfo">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="MessageDetails" type="MessageDetailsType"/>
+				<xs:element name="SellerPartyDetails" type="SellerPartyDetailsType"/>
+				<xs:element name="SellerOrganisationUnitNumber" type="genericStringType5_35" minOccurs="0"/>
+				<xs:element name="InvoiceSenderInformationDetails" type="InvoiceSenderInformationDetailsType"/>
+				<xs:element name="SellerAccountDetails" type="SellerAccountDetailsType" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element name="SellerInvoiceDetails" type="SellerInvoiceDetailsType"/>
+				<xs:element name="ReceiverInfoTimeStamp" type="genericStringType0_22"/>
+				<xs:element name="BuyerPartyDetails" type="BuyerPartyDetailsType"/>
+				<xs:element name="InvoiceRecipientDetails" type="InvoiceRecipientDetailsType"/>
+				<xs:element name="ProposedDueDate" minOccurs="0">
+					<xs:simpleType>
+						<xs:restriction base="xs:integer">
+							<xs:minInclusive value="1"/>
+							<xs:maxInclusive value="31"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="ProposedInvoicePeriod" minOccurs="0">
+					<xs:simpleType>
+						<xs:restriction base="xs:integer">
+							<xs:enumeration value="1"/>
+							<xs:enumeration value="2"/>
+							<xs:enumeration value="4"/>
+							<xs:enumeration value="6"/>
+							<xs:enumeration value="12"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="BuyerServiceCode">
+					<xs:simpleType>
+						<xs:restriction base="xs:NMTOKEN">
+							<xs:enumeration value="00"/>
+							<xs:enumeration value="01"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="ConversionDetails" type="ConversionDetailsType" minOccurs="0"/>
+			</xs:sequence>
+			<xs:attribute name="Version" use="required">
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="1.0"/>
+						<xs:enumeration value="2.0"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="BuyerPartyDetailsType">
+		<xs:sequence>
+			<xs:element name="BuyerPartyIdentifier" type="genericStringType1_48" minOccurs="0"/>
+			<xs:element name="BuyerOrganisationName" type="genericStringType2_70"/>
+			<xs:element name="BuyerPostalAddressDetails" type="BuyerPostalAddressDetailsType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="BuyerPostalAddressDetailsType">
+		<xs:sequence>
+			<xs:element name="BuyerStreetName" type="genericStringType2_35"/>
+			<xs:element name="BuyerTownName" type="genericStringType2_35"/>
+			<xs:element name="BuyerPostCodeIdentifier" type="genericStringType1_48"/>
+			<xs:element name="CountryCode" type="CountryCodeType" minOccurs="0"/>
+			<xs:element name="CountryName" type="genericStringType2_35" minOccurs="0"/>
+			<xs:element name="BuyerPostOfficeBoxIdentifier" type="genericStringType1_48" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ConversionDetailsType">
+		<xs:sequence>
+			<xs:element name="ConversionID" type="genericStringType0_30" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="InvoiceRecipientDetailsType">
+		<xs:sequence>
+			<xs:element name="InvoiceRecipientAddress" type="genericStringType0_35" minOccurs="0"/>
+			<xs:element name="InvoiceRecipientIntermediatorAddress" type="genericNMtokenType8_11"/>
+			<xs:element name="SellerInvoiceIdentifier" minOccurs="0" maxOccurs="2">
+				<xs:complexType>
+					<xs:simpleContent>
+						<xs:extension base="genericStringType1_35">
+							<xs:attribute name="SellerInvoiceIdentifierType" type="SellerInvoiceIdentifierTypeCode" use="optional"/>
+						</xs:extension>
+					</xs:simpleContent>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="EpiRemittanceIdentifier" type="genericStringType2_35" minOccurs="0"/>
+			<xs:element name="InvoiceRecipientLanguageCode" type="LanguageCodeType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="InvoiceSenderInformationDetailsType">
+		<xs:sequence>
+			<xs:element name="SellerWebaddressNameText" type="genericStringType0_70" minOccurs="0"/>
+			<xs:element name="SellerWebaddressText" type="genericStringType0_512" minOccurs="0"/>
+			<xs:element name="InvoiceSenderAddress" type="genericStringType0_35"/>
+			<xs:element name="InvoiceSenderIntermediatorAddress" type="genericNMtokenType8_11"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="MessageDetailsType">
+		<xs:sequence>
+			<xs:element name="MessageTypeCode" type="xs:string" fixed="RECEIVERINFO"/>
+			<xs:element name="MessageTypeText" type="genericStringType0_35"/>
+			<xs:element name="MessageActionCode">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="ADD"/>
+						<xs:enumeration value="CHANGE"/>
+						<xs:enumeration value="DELETE"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="MessageActionCodeIdentifier" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="00"/>
+						<xs:enumeration value="01"/>
+						<xs:enumeration value="02"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="MessageDate" type="date"/>
+			<xs:element name="SenderInfoIdentifier" type="genericStringType1_48"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="SellerAccountDetailsType">
+		<xs:sequence>
+			<xs:element name="SellerAccountID">
+				<xs:complexType>
+					<xs:simpleContent>
+						<xs:restriction base="SellerAccountIDType">
+							<xs:maxLength value="35"/>
+						</xs:restriction>
+					</xs:simpleContent>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="SellerBic">
+				<xs:complexType>
+					<xs:simpleContent>
+						<xs:restriction base="SellerBicType">
+							<xs:minLength value="8"/>
+							<xs:maxLength value="11"/>
+						</xs:restriction>
+					</xs:simpleContent>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="SellerAccountIDType">
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+				<xs:attribute name="IdentificationSchemeName" use="required">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="IBAN"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:attribute>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="SellerBicType">
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+				<xs:attribute name="IdentificationSchemeName" type="xs:string" use="required" fixed="BIC"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="SellerInvoiceDetailsType">
+		<xs:sequence>
+			<xs:element name="SellerDirectDebitIdentifier" type="genericStringType0_35" minOccurs="0"/>
+			<xs:element name="PaymentInstructionIdentifier" type="genericStringType1_35"/>
+			<xs:element name="SellerInstructionFreeText" minOccurs="0" maxOccurs="3">
+				<xs:complexType>
+					<xs:simpleContent>
+						<xs:restriction base="TextLanguageOptional">
+							<xs:minLength value="1"/>
+							<xs:maxLength value="420"/>
+						</xs:restriction>
+					</xs:simpleContent>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="SellerInvoiceTypeDetails" maxOccurs="3">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="SellerInvoiceTypeText" minOccurs="0">
+							<xs:complexType>
+								<xs:simpleContent>
+									<xs:restriction base="TextLanguageRequired">
+										<xs:maxLength value="35"/>
+									</xs:restriction>
+								</xs:simpleContent>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="SellerInvoiceIdentifierText" maxOccurs="2">
+							<xs:complexType>
+								<xs:simpleContent>
+									<xs:restriction base="SellerInvoiceIdentifierTextType">
+										<xs:minLength value="4"/>
+										<xs:maxLength value="70"/>
+									</xs:restriction>
+								</xs:simpleContent>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="SellerInvoiceIdentifierTextType">
+		<xs:simpleContent>
+			<xs:extension base="TextLanguageRequired">
+				<xs:attribute name="SellerInvoiceIdentifierType" type="SellerInvoiceIdentifierTypeCode" use="optional"/>
+				<xs:attribute name="SellerInvoiceIdentifierMinLength" type="xs:integer" use="optional" default="1"/>
+				<xs:attribute name="SellerInvoiceIdentifierMaxLength" type="xs:integer" use="optional" default="35"/>
+				<xs:attribute name="SellerInvoiceIdentifierSpaces" type="xs:boolean" use="optional" default="false"/>
+				<xs:attribute name="SellerInvoiceIdentifierHyphens" type="xs:boolean" use="optional" default="false"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:simpleType name="SellerInvoiceIdentifierTypeCode">
+		<xs:restriction base="xs:NMTOKEN">
+			<xs:enumeration value="01"/>
+			<xs:enumeration value="02"/>
+			<xs:enumeration value="03"/>
+			<xs:enumeration value="04"/>
+			<xs:enumeration value="05"/>
+			<xs:enumeration value="06"/>
+			<xs:enumeration value="07"/>
+			<xs:enumeration value="08"/>
+			<xs:enumeration value="09"/>
+			<xs:enumeration value="99"/>
+			<!-- 01 = Kansallinen viite -->
+			<!-- 02 = Kansainvalinen RF-viite -->
+			<!-- 03 = Suomalainen henkilotunnus -->
+			<!-- 04 = Y-tunnus -->
+			<!-- 05 = Puhelinnumero kotimaisessa muodossa -->
+			<!-- 06 = Puhelinnumero kansainvalisessa muodossa -->
+			<!-- 07 = Tunniste IBAN-tarkistuksella -->
+			<!-- 08 = Muu numeerinen tunniste -->
+			<!-- 09 = Muu aakkosnumeerinen tunniste -->
+			<!-- 99 = Muu tunniste -->
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="SellerPartyDetailsType">
+		<xs:sequence>
+			<xs:element name="SellerPartyIdentifier" type="genericStringType1_48"/>
+			<xs:element name="SellerOrganisationNames" type="SellerOrganisationNamesType" maxOccurs="3"/>
+			<xs:element name="SellerOrganisationBankName" type="genericStringType1_35" minOccurs="0" maxOccurs="2"/>
+			<xs:element name="SellerPostalAddressDetails" type="SellerPostalAddressDetailsType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="SellerOrganisationNamesType">
+		<xs:sequence>
+			<xs:element name="SellerOrganisationName" type="genericStringType2_70" maxOccurs="2"/>
+		</xs:sequence>
+		<xs:attribute name="LanguageCode" type="LanguageCodeType" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="SellerPostalAddressDetailsType">
+		<xs:sequence>
+			<xs:element name="SellerStreetName" type="genericStringType2_35"/>
+			<xs:element name="SellerTownName" type="genericStringType2_35"/>
+			<xs:element name="SellerPostCodeIdentifier" type="genericStringType1_48"/>
+			<xs:element name="CountryCode" type="CountryCodeType" minOccurs="0"/>
+			<xs:element name="CountryName" type="genericStringType2_35" minOccurs="0"/>
+			<xs:element name="SellerPostOfficeBoxIdentifier" type="genericStringType1_48" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="date">
+		<xs:simpleContent>
+			<xs:extension base="dateType">
+				<xs:attribute name="Format" type="xs:string" use="optional" fixed="CCYYMMDD"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:simpleType name="dateType">
+		<xs:restriction base="xs:integer">
+			<xs:pattern value="[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="LanguageCodeType">
+		<xs:restriction base="xs:NMTOKEN">
+			<xs:enumeration value="FI"/>
+			<xs:enumeration value="SV"/>
+			<xs:enumeration value="SE"/>
+			<xs:enumeration value="EN"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="genericStringType0_22">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+			<xs:maxLength value="22"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="genericStringType0_30">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+			<xs:maxLength value="30"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="genericStringType0_35">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+			<xs:maxLength value="35"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="genericStringType1_35">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="35"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="genericStringType2_35">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="2"/>
+			<xs:maxLength value="35"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="genericStringType5_35">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="5"/>
+			<xs:maxLength value="35"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="genericStringType1_48">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="48"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="genericStringType0_70">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+			<xs:maxLength value="70"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="genericStringType2_70">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="2"/>
+			<xs:maxLength value="70"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="genericStringType0_512">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="0"/>
+			<xs:maxLength value="512"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="TextLanguageOptional">
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+				<xs:attribute name="LanguageCode" type="LanguageCodeType" use="optional"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="TextLanguageRequired">
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+				<xs:attribute name="LanguageCode" type="LanguageCodeType" use="required"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:simpleType name="genericNMtokenType">
+		<xs:restriction base="xs:token">
+			<xs:pattern value="\c*"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="genericNMtokenType8_11">
+		<xs:restriction base="genericNMtokenType">
+			<xs:minLength value="8"/>
+			<xs:maxLength value="11"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="genericNMtokenType1_35">
+		<xs:restriction base="genericNMtokenType">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="35"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="CountryCodeType">
+		<xs:restriction base="xs:NMTOKEN">
+			<xs:length value="2"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

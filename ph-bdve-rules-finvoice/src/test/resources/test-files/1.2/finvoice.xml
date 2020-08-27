@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="ISO-8859-15"?>
+<Finvoice Version="1.2">
+<SellerPartyDetails>
+<SellerPartyIdentifier>0199920-7</SellerPartyIdentifier>
+<SellerOrganisationName>Pullin Musiikki Oy (Laajat tiedot)</SellerOrganisationName>
+<SellerOrganisationName>Pullis Musiken</SellerOrganisationName>
+<SellerOrganisationTaxCode>0199920-7</SellerOrganisationTaxCode>
+<SellerOrganisationTaxCodeUrlText>http://europa.eu.int/comm/taxation_customs/vies/fi/vieshome.htm</SellerOrganisationTaxCodeUrlText>
+<SellerPostalAddressDetails>
+<SellerStreetName>Puukatu 2 F</SellerStreetName>
+<SellerTownName>HELSINKI</SellerTownName>
+<SellerPostCodeIdentifier>00112</SellerPostCodeIdentifier>
+</SellerPostalAddressDetails>
+</SellerPartyDetails>
+<SellerContactPersonName>Hanna Paananen</SellerContactPersonName>
+<SellerCommunicationDetails>
+<SellerEmailaddressIdentifier>hanna.paananen@pullinmusiikki.fi</SellerEmailaddressIdentifier>
+</SellerCommunicationDetails>
+<SellerInformationDetails>
+<SellerHomeTownName>Helsinki</SellerHomeTownName>
+<SellerPhoneNumber>(09) 1231</SellerPhoneNumber>
+<SellerFaxNumber>(09) 1232500</SellerFaxNumber>
+<SellerCommonEmailaddressIdentifier>webmaster@pullinmusiikki.fi</SellerCommonEmailaddressIdentifier>
+<SellerWebaddressIdentifier>www.pullinmusiikki.fi</SellerWebaddressIdentifier>
+<SellerFreeText>Meidän kanssa kannattaa tehdä kauppaa</SellerFreeText>
+<SellerAccountDetails>
+<SellerAccountID IdentificationSchemeName="IBAN">FI2757800750155448</SellerAccountID>
+<SellerBic IdentificationSchemeName="BIC">OKOYFIHH</SellerBic>
+</SellerAccountDetails>
+<SellerAccountDetails>
+<SellerAccountID IdentificationSchemeName="IBAN">FI2721221222212227</SellerAccountID>
+<SellerBic IdentificationSchemeName="BIC">NDEAFIHH</SellerBic>
+</SellerAccountDetails>
+<SellerAccountDetails>
+<SellerAccountID IdentificationSchemeName="IBAN">FI2781232323312334</SellerAccountID>
+<SellerBic IdentificationSchemeName="BIC">PSPBFIHH</SellerBic>
+</SellerAccountDetails>
+<InvoiceRecipientDetails>
+<InvoiceRecipientAddress>FI2757800750155448</InvoiceRecipientAddress>
+<InvoiceRecipientIntermediatorAddress>OKOYFIHH</InvoiceRecipientIntermediatorAddress>
+</InvoiceRecipientDetails>
+</SellerInformationDetails>
+<InvoiceSenderPartyDetails>
+<InvoiceSenderPartyIdentifier>765432-1</InvoiceSenderPartyIdentifier>
+<InvoiceSenderOrganisationName>Tilitoimisto Pakkala Oy</InvoiceSenderOrganisationName>
+<InvoiceSenderOrganisationName>ESPOO</InvoiceSenderOrganisationName>
+</InvoiceSenderPartyDetails>
+<InvoiceRecipientPartyDetails>
+<InvoiceRecipientPartyIdentifier/>
+<InvoiceRecipientOrganisationName>Tilitoimisto Ryynänen</InvoiceRecipientOrganisationName>
+<InvoiceRecipientOrganisationName>Accounting Company Ryynänen</InvoiceRecipientOrganisationName>
+<InvoiceRecipientPostalAddressDetails>
+<InvoiceRecipientStreetName>Mäkelänkatu 2</InvoiceRecipientStreetName>
+<InvoiceRecipientTownName>Helsinki</InvoiceRecipientTownName>
+<InvoiceRecipientPostCodeIdentifier>00102</InvoiceRecipientPostCodeIdentifier>
+<CountryCode>FI</CountryCode>
+<CountryName>FINLAND</CountryName>
+<InvoiceRecipientPostOfficeBoxIdentifier>PL 22</InvoiceRecipientPostOfficeBoxIdentifier>
+</InvoiceRecipientPostalAddressDetails>
+</InvoiceRecipientPartyDetails>
+<BuyerPartyDetails>
+<BuyerPartyIdentifier>0123456-7</BuyerPartyIdentifier>
+<BuyerOrganisationName>Sensorit Oy</BuyerOrganisationName>
+<BuyerOrganisationTaxCode>0123456-7</BuyerOrganisationTaxCode>
+<BuyerPostalAddressDetails>
+<BuyerStreetName>Sempalokatu 2</BuyerStreetName>
+<BuyerTownName>HELSINKI</BuyerTownName>
+<BuyerPostCodeIdentifier>00122</BuyerPostCodeIdentifier>
+</BuyerPostalAddressDetails>
+</BuyerPartyDetails>
+<BuyerContactPersonName>Hannes Puumalainen</BuyerContactPersonName>
+<BuyerCommunicationDetails>
+<BuyerPhoneNumberIdentifier>050-543 2658</BuyerPhoneNumberIdentifier>
+<BuyerEmailaddressIdentifier>hannes.puumalainen@sensorit.fi</BuyerEmailaddressIdentifier>
+</BuyerCommunicationDetails>
+<DeliveryPartyDetails>
+<DeliveryPartyIdentifier/>
+<DeliveryOrganisationName>Helsingin Tanssihalli</DeliveryOrganisationName>
+<DeliveryPostalAddressDetails>
+<DeliveryStreetName>Satamakatu 2</DeliveryStreetName>
+<DeliveryTownName>Helsinki</DeliveryTownName>
+<DeliveryPostCodeIdentifier>00100</DeliveryPostCodeIdentifier>
+<CountryName/>
+<DeliveryPostofficeBoxIdentifier/>
+</DeliveryPostalAddressDetails>
+</DeliveryPartyDetails>
+<DeliveryDetails>
+<DeliveryDate Format="CCYYMMDD">20041205</DeliveryDate>
+<DeliveryMethodText>Noudetaan</DeliveryMethodText>
+<DeliveryTermsText>Vapaasti varastosta VOB</DeliveryTermsText>
+<TerminalAddressText>Vantaan postiterminaali</TerminalAddressText>
+<WaybillIdentifier>419/2004</WaybillIdentifier>
+<WaybillTypeCode>WBGF</WaybillTypeCode>
+<DelivererIdentifier>DeliID12222</DelivererIdentifier>
+<DelivererName>Oy Lähettifirma Ab</DelivererName>
+<DelivererName>Packgage Ltd.</DelivererName>
+<DelivererCountryCode>FI</DelivererCountryCode>
+<DelivererCountryName>FINLAND</DelivererCountryName>
+<ManufacturerIdentifier>13331231233</ManufacturerIdentifier>
+<ManufacturerName>AKG International</ManufacturerName>
+<ManufacturerCountryCode>DE</ManufacturerCountryCode>
+<ManufacturerCountryName>Germany</ManufacturerCountryName>
+</DeliveryDetails>
+<InvoiceDetails>
+<InvoiceTypeCode>INV01</InvoiceTypeCode>
+<InvoiceTypeText>LASKU</InvoiceTypeText>
+<OriginCode>Original</OriginCode>
+<InvoiceNumber>159</InvoiceNumber>
+<InvoiceDate Format="CCYYMMDD">20041215</InvoiceDate>
+<SellerReferenceIdentifier>MYY21231</SellerReferenceIdentifier>
+<OrderIdentifier>TIL21222</OrderIdentifier>
+<InvoiceTotalVatExcludedAmount AmountCurrencyIdentifier="EUR">2830,30</InvoiceTotalVatExcludedAmount>
+<InvoiceTotalVatAmount AmountCurrencyIdentifier="EUR">622,68</InvoiceTotalVatAmount>
+<InvoiceTotalVatIncludedAmount AmountCurrencyIdentifier="EUR">3352,98</InvoiceTotalVatIncludedAmount>
+<VatSpecificationDetails>
+<VatBaseAmount AmountCurrencyIdentifier="EUR">2830,30</VatBaseAmount>
+<VatRatePercent>22</VatRatePercent>
+<VatRateAmount AmountCurrencyIdentifier="EUR">622,68</VatRateAmount>
+</VatSpecificationDetails>
+<PaymentTermsDetails>
+<PaymentTermsFreeText>5 pävää ./.2%, 14 päivää netto</PaymentTermsFreeText>
+<InvoiceDueDate Format="CCYYMMDD">20041229</InvoiceDueDate>
+<CashDiscountDate Format="CCYYMMDD">20041220</CashDiscountDate>
+<CashDiscountBaseAmount AmountCurrencyIdentifier="EUR">3352,98</CashDiscountBaseAmount>
+<CashDiscountPercent>2</CashDiscountPercent>
+<CashDiscountAmount AmountCurrencyIdentifier="EUR">67,06</CashDiscountAmount>
+<PaymentOverDueFineDetails>
+<PaymentOverDueFineFreeText>Viivästyskorko 16%</PaymentOverDueFineFreeText>
+<PaymentOverDueFinePercent>16</PaymentOverDueFinePercent>
+</PaymentOverDueFineDetails>
+</PaymentTermsDetails>
+</InvoiceDetails>
+<PaymentStatusDetails>
+<PaymentStatusCode>PARTLYPAID</PaymentStatusCode>
+</PaymentStatusDetails>
+<VirtualBankBarcode>257800750155447003352980000000000000200448604122900008</VirtualBankBarcode>
+<InvoiceRow>
+<RowSubIdentifier>221</RowSubIdentifier>
+<ArticleIdentifier>123123</ArticleIdentifier>
+<ArticleName>TUURA</ArticleName>
+<DeliveredQuantity QuantityUnitCode="kpl">10</DeliveredQuantity>
+<OrderedQuantity QuantityUnitCode="kpl">10</OrderedQuantity>
+<UnitPriceAmount AmountCurrencyIdentifier="EUR">28,69</UnitPriceAmount>
+<RowIdentifier>TIL2122</RowIdentifier>
+<RowDeliveryDate Format="CCYYMMDD">20041213</RowDeliveryDate>
+<RowAgreementIdentifier>233</RowAgreementIdentifier>
+<RowRequestOfQuotationIdentifier>222333</RowRequestOfQuotationIdentifier>
+<RowPriceListIdentifier>111222</RowPriceListIdentifier>
+<RowDeliveryDetails>
+<RowWaybillIdentifier>777</RowWaybillIdentifier>
+<RowDelivererIdentifier>1676218-8</RowDelivererIdentifier>
+<RowDelivererName>Oy Lähettifirma Ab</RowDelivererName>
+<RowDelivererName>Packgage Ltd.</RowDelivererName>
+<RowDelivererCountryCode>FI</RowDelivererCountryCode>
+<RowDelivererCountryName>FINLAND</RowDelivererCountryName>
+<RowManufacturerIdentifier>13331231233</RowManufacturerIdentifier>
+<RowManufacturerName>AKG International</RowManufacturerName>
+<RowManufacturerCountryCode>DE</RowManufacturerCountryCode>
+<RowManufacturerCountryName>Germany</RowManufacturerCountryName>
+</RowDeliveryDetails>
+<RowShortProposedAccountIdentifier>400</RowShortProposedAccountIdentifier>
+<RowNormalProposedAccountIdentifier>4000</RowNormalProposedAccountIdentifier>
+<RowFreeText>Tuote myydään varsien ja ohjeen kanssa.</RowFreeText>
+<RowVatRatePercent>22</RowVatRatePercent>
+<RowVatAmount AmountCurrencyIdentifier="EUR">63,12</RowVatAmount>
+<RowVatExcludedAmount AmountCurrencyIdentifier="EUR">286,90</RowVatExcludedAmount>
+<RowAmount AmountCurrencyIdentifier="EUR">350,02</RowAmount>
+</InvoiceRow>
+<InvoiceRow>
+<RowSubIdentifier>221</RowSubIdentifier>
+<ArticleIdentifier>8768217637</ArticleIdentifier>
+<ArticleName>Tussi</ArticleName>
+<DeliveredQuantity QuantityUnitCode="kpl">120</DeliveredQuantity>
+<OrderedQuantity>100</OrderedQuantity>
+<UnitPriceAmount AmountCurrencyIdentifier="EUR">1,64</UnitPriceAmount>
+<RowIdentifier>TI22122</RowIdentifier>
+<RowIdentifierDate Format="CCYYMMDD">20041202</RowIdentifierDate>
+<RowShortProposedAccountIdentifier>400</RowShortProposedAccountIdentifier>
+<RowNormalProposedAccountIdentifier>4000</RowNormalProposedAccountIdentifier>
+<RowVatRatePercent>22</RowVatRatePercent>
+<RowVatAmount AmountCurrencyIdentifier="EUR">43,30</RowVatAmount>
+<RowVatExcludedAmount AmountCurrencyIdentifier="EUR">196,80</RowVatExcludedAmount>
+<RowAmount AmountCurrencyIdentifier="EUR">240,10</RowAmount>
+</InvoiceRow>
+<InvoiceRow>
+<SubInvoiceRow>
+<SubArticleIdentifier/>
+<SubArticleName>Toimitusyhteenveto</SubArticleName>
+<SubRowIdentifier>22221</SubRowIdentifier>
+<SubRowIdentifierDate Format="CCYYMMDD">20041204</SubRowIdentifierDate>
+<SubOriginalInvoiceNumber>29/2004</SubOriginalInvoiceNumber>
+<SubRowDeliveryIdentifier>TIL12312</SubRowDeliveryIdentifier>
+<SubRowDeliveryDate Format="CCYYMMDD">20041206</SubRowDeliveryDate>
+<SubRowAgreementIdentifier>233</SubRowAgreementIdentifier>
+<SubRowRequestOfQuotationIdentifier>222333</SubRowRequestOfQuotationIdentifier>
+<SubRowPriceListIdentifier>111222</SubRowPriceListIdentifier>
+<SubRowDeliveryDetails>
+<SubRowWaybillIdentifier>777</SubRowWaybillIdentifier>
+<SubRowDelivererIdentifier>1676218-8</SubRowDelivererIdentifier>
+<SubRowDelivererName>Oy Lähettifirma Ab</SubRowDelivererName>
+<SubRowDelivererName>Packgage Ltd.</SubRowDelivererName>
+<SubRowDelivererCountryCode>FI</SubRowDelivererCountryCode>
+<SubRowDelivererCountryName>FINLAND</SubRowDelivererCountryName>
+<SubRowManufacturerIdentifier>13331231233</SubRowManufacturerIdentifier>
+<SubRowManufacturerName>AKG International</SubRowManufacturerName>
+<SubRowManufacturerCountryCode>DE</SubRowManufacturerCountryCode>
+<SubRowManufacturerCountryName>Germany</SubRowManufacturerCountryName>
+</SubRowDeliveryDetails>
+<SubRowShortProposedAccountIdentifier>400</SubRowShortProposedAccountIdentifier>
+<SubRowNormalProposedAccountIdentifier>4000</SubRowNormalProposedAccountIdentifier>
+<SubRowAccountDimensionText>4500</SubRowAccountDimensionText>
+<SubRowVatRatePercent>22</SubRowVatRatePercent>
+<SubRowVatAmount AmountCurrencyIdentifier="EUR">106,42</SubRowVatAmount>
+<SubRowVatExcludedAmount AmountCurrencyIdentifier="EUR">483,70</SubRowVatExcludedAmount>
+<SubRowAmount AmountCurrencyIdentifier="EUR">590,12</SubRowAmount>
+</SubInvoiceRow>
+</InvoiceRow>
+<InvoiceRow>
+<RowFreeText>Finvoice on pankkien suosittelema verkkolaskun standardi, joka on luonteva jatko kehitykselle kohti automatisoitua laskujen</RowFreeText>
+<RowFreeText>käsittelyä, ostajan ja myyjän reskontrien hoitoa ja automaattista Kirjanpidon hoitoa.</RowFreeText>
+<RowFreeText>Tavoitteena on, että Finvoice-laskumallia käyttävät yritykset voivat hyödyntää laskun konekielisesti käsiteltäviä tietoja</RowFreeText>
+<RowFreeText>suoraan omissa taloushallinnon järjestelmissä ilman ylimääräisiä muunnoksia. Yhteisestä mallista hyötyy kaikki osapuolet.</RowFreeText>
+</InvoiceRow>
+<InvoiceRow>
+<ArticleIdentifier>213123123123</ArticleIdentifier>
+<ArticleName>Mehu</ArticleName>
+<DeliveredQuantity QuantityUnitCode="l">100</DeliveredQuantity>
+<UnitPriceAmount AmountCurrencyIdentifier="EUR">0,65</UnitPriceAmount>
+<RowShortProposedAccountIdentifier>400</RowShortProposedAccountIdentifier>
+<RowNormalProposedAccountIdentifier>4000</RowNormalProposedAccountIdentifier>
+<RowVatRatePercent>22</RowVatRatePercent>
+<RowVatAmount AmountCurrencyIdentifier="EUR">14,30</RowVatAmount>
+<RowVatExcludedAmount AmountCurrencyIdentifier="EUR">65,00</RowVatExcludedAmount>
+<RowAmount AmountCurrencyIdentifier="EUR">79,30</RowAmount>
+</InvoiceRow>
+<InvoiceRow>
+<ArticleIdentifier>44213213</ArticleIdentifier>
+<ArticleName>Mikseri</ArticleName>
+<ArticleInfoUrlText>http://www.netzmarkt.de/thomann/artikel-151284.html</ArticleInfoUrlText>
+<DeliveredQuantity QuantityUnitCode="kpl">12</DeliveredQuantity>
+<UnitPriceAmount AmountCurrencyIdentifier="EUR">192,62</UnitPriceAmount>
+<RowIdentifier>TIL3123</RowIdentifier>
+<RowDeliveryDate Format="CCYYMMDD">20041214</RowDeliveryDate>
+<RowShortProposedAccountIdentifier>400</RowShortProposedAccountIdentifier>
+<RowNormalProposedAccountIdentifier>4000</RowNormalProposedAccountIdentifier>
+<RowAccountDimensionText>4500</RowAccountDimensionText>
+<RowDiscountPercent>2</RowDiscountPercent>
+<RowVatRatePercent>22</RowVatRatePercent>
+<RowVatAmount AmountCurrencyIdentifier="EUR">498,35</RowVatAmount>
+<RowVatExcludedAmount AmountCurrencyIdentifier="EUR">2265,21</RowVatExcludedAmount>
+<RowAmount AmountCurrencyIdentifier="EUR">2763,56</RowAmount>
+</InvoiceRow>
+<InvoiceRow>
+<ArticleIdentifier>8726817267</ArticleIdentifier>
+<ArticleName>Kukkakimppu</ArticleName>
+<DeliveredQuantity QuantityUnitCode="kpl">1</DeliveredQuantity>
+<UnitPriceAmount AmountCurrencyIdentifier="EUR">16,39</UnitPriceAmount>
+<RowIdentifier>2122</RowIdentifier>
+<RowVatRatePercent>22</RowVatRatePercent>
+<RowVatAmount AmountCurrencyIdentifier="EUR">3,61</RowVatAmount>
+<RowVatExcludedAmount AmountCurrencyIdentifier="EUR">16,39</RowVatExcludedAmount>
+<RowAmount AmountCurrencyIdentifier="EUR">20,00</RowAmount>
+</InvoiceRow>
+<InvoiceRow>
+<ArticleName>Ennakkomaksu</ArticleName>
+<RowAmount AmountCurrencyIdentifier="EUR">-100,00</RowAmount>
+</InvoiceRow>
+<SpecificationDetails>
+<SpecificationFreeText>LASKUN VAPAAMUOTOISET ERITTELYTIEDOT:</SpecificationFreeText>
+<SpecificationFreeText>Sarake-1              Sarake-2                                          Sarake-3</SpecificationFreeText>
+<SpecificationFreeText>--------------------------------------------------------------------------------</SpecificationFreeText>
+<SpecificationFreeText>1.sarakkeen tieto     2.sarakkeen tieto                                    10,00</SpecificationFreeText>
+<SpecificationFreeText>Toinen rivi           Toinen rivi                                       1 000,00</SpecificationFreeText>
+<SpecificationFreeText>Kolmas rivi           3/2                                                   1,00</SpecificationFreeText>
+<SpecificationFreeText>Muotoituja tietoja voidaan käyttää mm.tarkemman erittelyn esittämiseen:</SpecificationFreeText>
+</SpecificationDetails>
+<EpiDetails>
+<EpiIdentificationDetails>
+<EpiDate Format="CCYYMMDD">20041215</EpiDate>
+<EpiReference>2004486</EpiReference>
+</EpiIdentificationDetails>
+<EpiPartyDetails>
+<EpiBfiPartyDetails>
+<EpiBfiIdentifier IdentificationSchemeName="BIC">OKOYFIHH</EpiBfiIdentifier>
+</EpiBfiPartyDetails>
+<EpiBeneficiaryPartyDetails>
+<EpiNameAddressDetails>Pullin Musiikki Oy</EpiNameAddressDetails>
+<EpiBei>0199920-7</EpiBei>
+<EpiAccountID IdentificationSchemeName="BBAN">50001520000081</EpiAccountID>
+</EpiBeneficiaryPartyDetails>
+</EpiPartyDetails>
+<EpiPaymentInstructionDetails>
+<EpiRemittanceInfoIdentifier IdentificationSchemeName="SPY">00000000000002004486</EpiRemittanceInfoIdentifier>
+<EpiInstructedAmount AmountCurrencyIdentifier="EUR">3352,98</EpiInstructedAmount>
+<EpiCharge ChargeOption="SHA">SHA</EpiCharge>
+<EpiDateOptionDate Format="CCYYMMDD">20041229</EpiDateOptionDate>
+</EpiPaymentInstructionDetails>
+</EpiDetails>
+<InvoiceUrlNameText>LIITE 1 (Nettitilasto)</InvoiceUrlNameText>
+<InvoiceUrlNameText>LIITE 2 (Pankkiyhdistys)</InvoiceUrlNameText>
+<InvoiceUrlText>http://www.pankkiyhdistys.fi/verkkolasku/nettitilasto.pdf</InvoiceUrlText>
+<InvoiceUrlText>http://www.pankkiyhdistys.fi/verkkolasku</InvoiceUrlText>
+</Finvoice>

@@ -170,6 +170,11 @@
       </dependency>
       <dependency>
         <groupId>com.helger.bdve.rules</groupId>
+        <artifactId>ph-bdve-rules-finvoice</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.helger.bdve.rules</groupId>
         <artifactId>ph-bdve-rules-oioubl</artifactId>
         <version>${project.version}</version>
       </dependency>
@@ -235,6 +240,7 @@
     <module>ph-bdve-rules-en16931</module>
     <module>ph-bdve-rules-energieefactuur</module>
     <module>ph-bdve-rules-fatturapa</module>
+    <module>ph-bdve-rules-finvoice</module>
     <module>ph-bdve-rules-oioubl</module>
     <module>ph-bdve-rules-peppol</module>
     <module>ph-bdve-rules-simplerinvoicing</module>

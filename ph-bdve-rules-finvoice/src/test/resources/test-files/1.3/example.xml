@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Finvoice Version="1.3">
+  <SellerPartyDetails>
+    <SellerPartyIdentifier>000000-1</SellerPartyIdentifier>
+    <SellerOrganisationName>Example Oy</SellerOrganisationName>
+    <SellerPostalAddressDetails>
+      <SellerStreetName>StreetName</SellerStreetName>
+      <SellerTownName>HELSINKI</SellerTownName>
+      <SellerPostCodeIdentifier>00560</SellerPostCodeIdentifier>
+      <CountryCode>FI</CountryCode>
+    </SellerPostalAddressDetails>
+  </SellerPartyDetails>
+  <BuyerPartyDetails>
+    <BuyerPartyIdentifier>000000-1</BuyerPartyIdentifier>
+    <BuyerOrganisationName>Example Oy</BuyerOrganisationName>
+    <BuyerPostalAddressDetails>
+      <BuyerStreetName>StreetName</BuyerStreetName>
+      <BuyerTownName>HELSINKI</BuyerTownName>
+      <BuyerPostCodeIdentifier>00560</BuyerPostCodeIdentifier>
+      <CountryCode>FI</CountryCode>
+    </BuyerPostalAddressDetails>
+  </BuyerPartyDetails>
+  <DeliveryPartyDetails>
+    <DeliveryOrganisationName>DeliveryOrganization</DeliveryOrganisationName>
+    <DeliveryPostalAddressDetails>
+      <DeliveryStreetName>DeliveryStreetName</DeliveryStreetName>
+      <DeliveryTownName>HELSINKI</DeliveryTownName>
+      <DeliveryPostCodeIdentifier>00560</DeliveryPostCodeIdentifier>
+      <CountryCode>FI</CountryCode>
+    </DeliveryPostalAddressDetails>
+  </DeliveryPartyDetails>
+  <InvoiceDetails>
+    <InvoiceTypeCode CodeListAgencyIdentifier="SPY">INV00</InvoiceTypeCode>
+    <InvoiceTypeText>bla</InvoiceTypeText>
+    <OriginCode>Original</OriginCode>
+    <InvoiceNumber>Test123</InvoiceNumber>
+    <InvoiceDate Format="CCYYMMDD">20190304</InvoiceDate>
+    <InvoiceTotalVatExcludedAmount AmountCurrencyIdentifier="EUR">24500,00</InvoiceTotalVatExcludedAmount>
+    <InvoiceTotalVatAmount AmountCurrencyIdentifier="EUR">5635,00</InvoiceTotalVatAmount>
+    <InvoiceTotalVatIncludedAmount AmountCurrencyIdentifier="EUR">30135,00</InvoiceTotalVatIncludedAmount>
+    <InvoiceFreeText>Free text here!</InvoiceFreeText>
+    <PaymentTermsDetails>
+      <PaymentTermsFreeText>Whatsoever</PaymentTermsFreeText>
+      <InvoiceDueDate Format="CCYYMMDD">20190905</InvoiceDueDate>
+      <PaymentOverDueFineDetails>
+        <PaymentOverDueFinePercent>10,5</PaymentOverDueFinePercent>
+      </PaymentOverDueFineDetails>
+    </PaymentTermsDetails>
+  </InvoiceDetails>
+  <InvoiceRow>
+    <ArticleIdentifier>MacBook</ArticleIdentifier>
+    <ArticleName>Apple MacBook</ArticleName>
+    <OrderedQuantity QuantityUnitCode="Kpl">1</OrderedQuantity>
+    <UnitPriceAmount AmountCurrencyIdentifier="EUR" UnitPriceUnitCode="kpl">2000,00</UnitPriceAmount>
+    <RowVatRatePercent>24</RowVatRatePercent>
+    <RowVatAmount AmountCurrencyIdentifier="EUR">480,00</RowVatAmount>
+    <RowVatExcludedAmount AmountCurrencyIdentifier="EUR">2000,00</RowVatExcludedAmount>
+    <RowAmount AmountCurrencyIdentifier="EUR">2480,00</RowAmount>
+  </InvoiceRow>
+  <InvoiceRow>
+    <ArticleIdentifier>iPad</ArticleIdentifier>
+    <ArticleName>Apple iPad</ArticleName>
+    <OrderedQuantity QuantityUnitCode="Kpl">10</OrderedQuantity>
+    <UnitPriceAmount AmountCurrencyIdentifier="EUR" UnitPriceUnitCode="kpl">680,00</UnitPriceAmount>
+    <RowVatRatePercent>24</RowVatRatePercent>
+    <RowVatAmount AmountCurrencyIdentifier="EUR">163,20</RowVatAmount>
+    <RowVatExcludedAmount AmountCurrencyIdentifier="EUR">680,00</RowVatExcludedAmount>
+    <RowAmount AmountCurrencyIdentifier="EUR">843,20</RowAmount>
+  </InvoiceRow>
+  <EpiDetails>
+    <EpiIdentificationDetails>
+      <EpiDate Format="CCYYMMDD">20190304</EpiDate>
+      <EpiReference>Whatsoever</EpiReference>
+    </EpiIdentificationDetails>
+    <EpiPartyDetails>
+      <EpiBfiPartyDetails />
+      <EpiBeneficiaryPartyDetails>
+        <EpiAccountID IdentificationSchemeName="IBAN">1234567</EpiAccountID>
+      </EpiBeneficiaryPartyDetails>
+    </EpiPartyDetails>
+    <EpiPaymentInstructionDetails>
+      <EpiRemittanceInfoIdentifier IdentificationSchemeName="SPY">54654654</EpiRemittanceInfoIdentifier>
+      <EpiInstructedAmount AmountCurrencyIdentifier="EUR">15,00</EpiInstructedAmount>
+      <EpiCharge ChargeOption="SHA">abc</EpiCharge>
+      <EpiDateOptionDate Format="CCYYMMDD">20190304</EpiDateOptionDate>
+    </EpiPaymentInstructionDetails>
+  </EpiDetails>
+</Finvoice>

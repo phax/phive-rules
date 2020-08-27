@@ -1,0 +1,224 @@
+/* V. 28.2.2011 19:41 */
+
+body
+{
+	margin:5px;
+	padding:0;
+	background-color:#ffffff;
+	color:#000000;
+	width:99%;
+}
+
+table
+{
+	margin:0px;
+	padding:0px;
+	border-collapse:collapse;
+}
+
+td
+{
+	margin:0px;
+	padding:0px;
+	vertical-align:top;
+	text-align:left;
+}
+
+.title { font-weight:bold; }
+
+.data {}
+
+td.title { padding-right: 0.4em; }
+
+div.InvoiceTypeText
+{
+	margin:0mm 0mm 6mm 0mm;
+	padding:0;
+	text-align:center;
+	letter-spacing:8px;
+	font-size:200%;
+	font-weight:bold;
+}
+
+table.invoiceTop { width:99%; }
+
+td.invoiceTopLeft { padding:0px 1em 0px 0px; }
+
+td.invoiceTopRight {}
+
+table.invoiceTopRight, table.invoiceTotal
+{
+	margin-left:auto;
+	margin-right:0px;
+}
+
+table.InvoiceDetails { width:100%; }
+
+table.VatSpecificationDetails {}
+
+div.InvoiceFreeText { margin: 2ex 0px 0px 0px; }
+
+div.SellerPartyDetails {}
+
+.invoiceTopGroupSeparator { margin:1em 0px 0px 0px; }
+
+div.InvoiceRecipient { margin:7mm 0mm 0mm 0mm; }
+
+div.BuyerPartyDetails { margin:7mm 0mm 0mm 0mm; }
+
+div.InvoiceRecipientPartyDetails {}
+
+div.InvoiceRecipientContact { margin:7mm 0mm 0mm 0mm; }
+
+.EpiInstructedAmount, .EpiDateOptionDate, .EpiNameAddressDetails, .EpiAccountID,
+.EpiBfiIdentifier, .EpiRemittanceInfoIdentifier, .InvoiceTotalVatIncludedAmount
+{
+	font-weight:bold;
+}
+
+div.colTitle, span.colTitle {
+	font-weight:bold;
+	white-space:nowrap;
+}
+
+div.colData { margin:0ex 0ex 0.8ex 0ex; }
+
+.multiData div.data { margin:0ex 0ex 0.8ex 0ex; }
+
+table.invoiceRows
+{
+	width:100%;
+	border-top:2px solid black;
+	border-bottom:2px solid black;
+	margin:2ex 0em 2ex 0em;
+	border-collapse:collapse;
+}
+
+table.invoiceRows td
+{
+	margin:0px;
+	padding:3px 3px 0px 3px;
+	vertical-align:top;
+}
+
+tr.InvoiceRow {}
+
+tr.InvoiceRow.details {}
+
+tr.InvoiceRow.freeText {}
+
+tr.InvoiceRow.AnyPartyDetails {}
+
+tr.SubInvoiceRow
+{
+	background-color:rgb(243,243,243);
+}
+
+tr.SubInvoiceRow.details {}
+
+tr.SubInvoiceRow.freeText {}
+
+tr.SubInvoiceRow.AnyPartyDetails {}
+
+td.InvoiceRow,  td.SubInvoiceRow {}
+
+td.RowAmount { text-align:right; }
+
+tr.groupSeparator td
+{
+	height:1em;
+}
+
+tr.rowSeparator td
+{
+	height:0.5em;
+	border-top:1px dashed black;
+}
+
+tr.rowBottom td
+{
+	height:0.5em;
+}
+
+div.DefinitionDetails
+{
+	border:1px solid black;
+	margin:2ex 0ex 0ex 0ex;
+	padding:1ex 1ex 1ex 1ex;
+}
+
+table.DefinitionDetails {}
+
+table.DefinitionDetails td.title
+{
+	font-weight:bold;
+}
+
+table.DefinitionValue {}
+
+table.DefinitionDetails td.DefinitionValue
+{
+	padding:0px 2em 0px 0px;
+}
+
+table.accounting {}
+
+table.AnyPartyDetails td { padding:0px 2em 0px 0px; }
+
+table.AnyParty td.title { padding:0px 1em 0px 0px; }
+
+table.AnyParty td.data { padding:0px; }
+
+td.VatFreeText {}
+
+div.VatCodeText {}
+
+div.InvoiceUrlText {	margin:2ex 0ex 0ex 0ex; }
+
+table.deliveryDetails { margin:2ex 0ex 0ex 0ex; }
+
+table.deliveryDetails td { padding:0px 2em 0px 0px; }
+
+div.virtualBankBarcodeBlock
+{
+	margin:2ex 0ex 0ex 0ex;
+	text-align:center;
+}
+
+div.VirtualBankBarcode {}
+
+div.SpecificationDetails
+{
+	margin:2ex 0ex 0ex 0ex;
+	padding:3px 0px 3px 0px;
+	font-family:monospace;
+	white-space:pre-wrap;
+	border-top:1px solid black;
+	border-bottom:1px solid black;
+}
+
+div.invoiceAnyPartyDetails { margin:2ex 0ex 0ex 0ex; }
+
+div.PartialPaymentDetails { margin:2ex 0ex 0ex 0ex; }
+
+div.partialPaymentDetailsSeparator { height:1ex; }
+
+table.PartialPaymentDetails td { padding:0px 2em 0px 0px; }
+
+.alignRight { text-align:right; }
+
+div.sellerDetails
+{
+	margin:2ex 0ex 0ex 0ex;
+	border-top:2px solid black;
+}
+
+div.sellerDetails.afterSpecificationDetails
+{
+	margin:3ex 0ex 0ex 0ex;
+	/*border-top-style:none;*/
+}
+
+table.sellerDetails { width:100%; } 
+
+table.sellerDetails td { padding:0px 1em 0px 0px; }

@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="ISO-8859-15"?>
+<Finvoice Version="2.01" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="Finvoice2.01.xsd">
+	<MessageTransmissionDetails>
+		<MessageSenderDetails>
+			<FromIdentifier>1234567890</FromIdentifier>
+			<FromIntermediator>PTSAFIFF</FromIntermediator>
+		</MessageSenderDetails>
+		<MessageReceiverDetails>
+			<ToIdentifier>0987654321</ToIdentifier>
+			<ToIntermediator>DABAFIHH</ToIntermediator>
+		</MessageReceiverDetails>
+		<MessageDetails>
+			<MessageIdentifier>123</MessageIdentifier>
+			<MessageTimeStamp>2013-08-14T12:17:50</MessageTimeStamp>
+			<RefToMessageIdentifier>456</RefToMessageIdentifier>
+		</MessageDetails>
+	</MessageTransmissionDetails>
+	<SellerPartyDetails>
+		<SellerPartyIdentifier>9876543-0</SellerPartyIdentifier>
+		<SellerPartyIdentifierUrlText/>
+		<SellerOrganisationName>Pullin Musiikki oy </SellerOrganisationName>
+		<SellerOrganisationName>Pullis Musik Ab</SellerOrganisationName>
+		<SellerOrganisationDepartment/>
+		<SellerOrganisationDepartment/>
+		<SellerOrganisationTaxCode>FI98765430</SellerOrganisationTaxCode>
+		<SellerPostalAddressDetails>	
+			<SellerStreetName>StreetName 99</SellerStreetName>
+			<SellerTownName>Helsinki</SellerTownName>
+			<SellerPostCodeIdentifier>00100</SellerPostCodeIdentifier>
+			<CountryCode>FI</CountryCode>
+		</SellerPostalAddressDetails>
+	</SellerPartyDetails>
+	<SellerInformationDetails>
+		<SellerAccountDetails>
+			<SellerAccountID IdentificationSchemeName="IBAN">FI2757800750155448</SellerAccountID>
+			<SellerBic IdentificationSchemeName="BIC">BANKFIHH</SellerBic>
+		</SellerAccountDetails>
+		<SellerAccountDetails>
+			<SellerAccountID IdentificationSchemeName="IBAN">FI2721221222212227</SellerAccountID>
+			<SellerBic IdentificationSchemeName="BIC">BANKFIHH</SellerBic>
+		</SellerAccountDetails>
+		<SellerAccountDetails>
+			<SellerAccountID IdentificationSchemeName="IBAN">FI2781232323312334</SellerAccountID>
+			<SellerBic IdentificationSchemeName="BIC">BANKFIHH</SellerBic>
+		</SellerAccountDetails>
+	</SellerInformationDetails>
+	<BuyerPartyDetails>
+		<BuyerPartyIdentifier>7654321-2</BuyerPartyIdentifier>                             
+		<BuyerOrganisationName>Purjehdusseura Bitti ja Baatti ry</BuyerOrganisationName>
+		<BuyerOrganisationDepartment/>
+		<BuyerOrganisationDepartment/>
+		<BuyerOrganisationTaxCode>FI76543212</BuyerOrganisationTaxCode>
+		<BuyerPostalAddressDetails>
+			<BuyerStreetName>Sempalokatu 2</BuyerStreetName>
+			<BuyerTownName>Tampere</BuyerTownName>
+			<BuyerPostCodeIdentifier>00122</BuyerPostCodeIdentifier>
+			<CountryCode>FI</CountryCode>
+			<CountryName>Suomi</CountryName>
+			<BuyerPostOfficeBoxIdentifier/>
+		</BuyerPostalAddressDetails>
+	</BuyerPartyDetails>
+	<DeliveryDetails>
+		<DeliveryDate Format="CCYYMMDD">20130812</DeliveryDate>
+	</DeliveryDetails>
+	<InvoiceDetails>
+		<InvoiceTypeCode>INV01</InvoiceTypeCode>
+		<InvoiceTypeText>Invoice</InvoiceTypeText>	
+		<OriginCode>Original</OriginCode>
+		<InvoiceNumber>2013000018</InvoiceNumber>
+		<InvoiceDate Format="CCYYMMDD">20130814</InvoiceDate>
+		<OrderIdentifier>20130801</OrderIdentifier>
+		<InvoiceTotalVatExcludedAmount AmountCurrencyIdentifier="EUR">133,50</InvoiceTotalVatExcludedAmount>
+		<InvoiceTotalVatAmount AmountCurrencyIdentifier="EUR">32,04</InvoiceTotalVatAmount>
+		<InvoiceTotalVatIncludedAmount AmountCurrencyIdentifier="EUR">165,54</InvoiceTotalVatIncludedAmount>
+		<VatSpecificationDetails>
+			<VatBaseAmount AmountCurrencyIdentifier="EUR">133,50</VatBaseAmount>
+			<VatRatePercent>24</VatRatePercent>
+			<VatRateAmount AmountCurrencyIdentifier="EUR">32,04</VatRateAmount>
+		</VatSpecificationDetails>
+		<PaymentTermsDetails>
+			<PaymentTermsFreeText>14 päivää netto</PaymentTermsFreeText>
+			<InvoiceDueDate Format="CCYYMMDD">20130828</InvoiceDueDate>
+			<PaymentOverDueFineDetails>
+				<PaymentOverDueFineFreeText>Viivästyskorko</PaymentOverDueFineFreeText>
+				<PaymentOverDueFinePercent>7,5</PaymentOverDueFinePercent>
+			</PaymentOverDueFineDetails>
+		</PaymentTermsDetails>
+	</InvoiceDetails>
+	<PaymentStatusDetails>
+		<PaymentStatusCode>NOTPAID</PaymentStatusCode>
+	</PaymentStatusDetails>
+	<InvoiceRow>
+		<ArticleIdentifier>12</ArticleIdentifier>
+		<ArticleName>Nuottivihko</ArticleName>
+		<DeliveredQuantity>89</DeliveredQuantity>
+		<OrderedQuantity>100</OrderedQuantity>
+		<InvoicedQuantity QuantityUnitCode="EUR">165,54</InvoicedQuantity>
+		<UnitPriceAmount AmountCurrencyIdentifier="EUR">1,50</UnitPriceAmount>
+		<RowFreeText>Puuttuvat toimitetaan mahdollisimman pian</RowFreeText>
+		<RowVatAmount AmountCurrencyIdentifier="EUR">32,04</RowVatAmount>
+		<RowVatExcludedAmount AmountCurrencyIdentifier="EUR">133,50</RowVatExcludedAmount>
+	</InvoiceRow>
+	<EpiDetails>
+		<EpiIdentificationDetails>
+			<EpiDate Format="CCYYMMDD">20130814</EpiDate>
+			<EpiReference>0</EpiReference>
+		</EpiIdentificationDetails>
+		<EpiPartyDetails>
+			<EpiBfiPartyDetails>
+				<EpiBfiIdentifier IdentificationSchemeName="BIC">BANKFIHH</EpiBfiIdentifier>
+			</EpiBfiPartyDetails>
+			<EpiBeneficiaryPartyDetails>
+				<EpiNameAddressDetails>Pullin Musiikki Oy</EpiNameAddressDetails>
+				<EpiBei>5647382910</EpiBei>
+				<EpiAccountID IdentificationSchemeName="IBAN">FI2757800750155448</EpiAccountID>
+			</EpiBeneficiaryPartyDetails>
+		</EpiPartyDetails>
+		<EpiPaymentInstructionDetails>
+			<EpiPaymentInstructionId>192837465</EpiPaymentInstructionId>
+			<EpiRemittanceInfoIdentifier IdentificationSchemeName="ISO">RF471234567890</EpiRemittanceInfoIdentifier>
+			<EpiInstructedAmount AmountCurrencyIdentifier="EUR">165,54</EpiInstructedAmount>
+			<EpiCharge ChargeOption="SLEV"/>
+			<EpiDateOptionDate Format="CCYYMMDD">20130828</EpiDateOptionDate>
+		</EpiPaymentInstructionDetails>
+	</EpiDetails>
+</Finvoice>

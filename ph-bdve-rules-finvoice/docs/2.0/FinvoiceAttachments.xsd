@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="ISO-8859-15"?>
+<!-- Modified 26.10.2015 18:11 -->
+<!-- For Finvoice version 2 -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	<xs:element name="FinvoiceAttachments">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="MessageTransmissionDetails" type="MessageTransmissionDetailsType"/>
+				<xs:element name="AttachmentDetails" type="AttachmentDetailsType" maxOccurs="unbounded"/>
+			</xs:sequence>
+			<xs:attribute name="Version" use="required">
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="1.0"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="MessageTransmissionDetailsType">
+		<xs:sequence>
+			<xs:element name="MessageSenderDetails">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="FromIdentifier" type="genericStringType2_35"/>
+						<xs:element name="FromIntermediator" type="genericStringType2_35"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="MessageReceiverDetails">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="ToIdentifier" type="genericStringType2_35"/>
+						<xs:element name="ToIntermediator" type="genericStringType2_35"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="MessageDetails">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="MessageIdentifier" type="genericStringType15_61"/>
+						<xs:element name="MessageTimeStamp" type="genericStringType2_35"/>
+						<xs:element name="RefToMessageIdentifier" type="genericStringType2_48"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="AttachmentDetailsType">
+		<xs:sequence>
+			<xs:element name="AttachmentIdentifier" type="genericStringType56_103"/>
+			<xs:element name="AttachmentContent" type="xs:base64Binary"/>
+			<xs:element name="AttachmentName" type="genericStringType3_50"/>
+			<xs:element name="AttachmentSecurityClass" type="SecurityClassType" minOccurs="0"/>
+			<xs:element name="AttachmentMimeType" type="genericStringType1_80"/>
+			<xs:element name="AttachmentSecureHash" type="genericStringType40"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="genericStringType2_35">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="2"/>
+			<xs:maxLength value="35"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="genericStringType2_48">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="2"/>
+			<xs:maxLength value="48"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="genericStringType3_50">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="3"/>
+			<xs:maxLength value="50"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="genericStringType15_61">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="15"/>
+			<xs:maxLength value="61"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="genericStringType40">
+		<xs:restriction base="xs:string">
+			<xs:length value="40"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="genericStringType1_80">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="80"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="genericStringType56_103">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="56"/>
+			<xs:maxLength value="103"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="SecurityClassType">
+		<xs:restriction base="xs:NMTOKEN">
+			<xs:pattern value="SEI[0-9]{2}"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="ISO-8859-15"?>
+<!-- Modified 28.1.2013 10:51 -->
+<!-- For Finvoice version 2 -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:eb="http://www.oasis-open.org/committees/ebxml-msg/schema/msg-header-2_0.xsd" targetNamespace="http://www.pankkiyhdistys.fi/verkkolasku/finvoice/finvoiceack.xsd" xmlns="http://www.pankkiyhdistys.fi/verkkolasku/finvoice/finvoiceack.xsd" elementFormDefault="qualified">
+	<xs:import namespace="http://www.oasis-open.org/committees/ebxml-msg/schema/msg-header-2_0.xsd" schemaLocation="FinvoiceackEb.xsd"/>
+	<xs:element name="Finvoiceack">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Acknowledgement">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element ref="eb:From" minOccurs="2" maxOccurs="2"/>
+							<xs:element ref="eb:To" minOccurs="2" maxOccurs="2"/>
+							<xs:element ref="MessageData"/>
+							<xs:element ref="Reason"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="RefToCounterpartMessage" type="genericStringType2_61" minOccurs="0"/>
+				<xs:element name="MessageTransmissionDetails" type="MessageTransmissionDetailsType" minOccurs="0"/>
+				<xs:element name="Error" type="ErrorType" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+			<xs:attribute name="Version" use="required">
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="1.0"/>
+						<xs:enumeration value="2.0"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="MessageData">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="eb:MessageId"/>
+				<xs:element ref="eb:Timestamp"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Reason">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Code" type="xs:integer"/>
+				<xs:element name="Text" type="non-empty-string" maxOccurs="2"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="MessageTransmissionDetailsType">
+		<xs:sequence>
+			<xs:element name="MessageSenderDetails">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="FromIdentifier" type="genericStringType2_35"/>
+						<xs:element name="FromIntermediator" type="genericStringType2_35"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="MessageReceiverDetails">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="ToIdentifier" type="genericStringType2_35"/>
+						<xs:element name="ToIntermediator" type="genericStringType2_35"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="MessageDetails">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="MessageIdentifier" type="genericStringType6_98"/>
+						<xs:element name="MessageTimeStamp" type="genericStringType2_35"/>
+						<xs:element name="RefToMessageIdentifier" type="genericStringType6_98"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ErrorType">
+		<xs:sequence>
+			<xs:element name="Code" type="non-empty-string"/>
+			<xs:element name="Text" type="non-empty-string" maxOccurs="2"/>
+			<xs:element name="Severity" type="SeverityType" minOccurs="0"/>
+			<xs:element name="Location" type="non-empty-string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="SeverityType">
+		<xs:restriction base="xs:NMTOKEN">
+			<xs:enumeration value="WARNING"/>
+			<xs:enumeration value="ERROR"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="non-empty-string">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="genericStringType2_35">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="2"/>
+			<xs:maxLength value="35"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="genericStringType2_48">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="2"/>
+			<xs:maxLength value="48"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="genericStringType2_61">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="2"/>
+			<xs:maxLength value="61"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="genericStringType6_98">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="6"/>
+			<xs:maxLength value="98"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>
