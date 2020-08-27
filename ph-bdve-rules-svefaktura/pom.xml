@@ -93,6 +93,7 @@
             <exclude>**/NOTICE</exclude>
             <exclude>docs/**</exclude>
             <exclude>src/main/resources/schemas/**</exclude>
+            <exclude>src/test/resources/test-files/**</exclude>
           </excludes>
         </configuration>
       </plugin>
