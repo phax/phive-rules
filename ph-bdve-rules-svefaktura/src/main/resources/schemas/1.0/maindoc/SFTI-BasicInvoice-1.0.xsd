@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSPY (http://www.xmlspy.com) by Martin Forsberg (-) -->
+<!--
+
+  SFTI enkel efaktura
+
+  Document Type:     Invoice
+-->
+<xsd:schema targetNamespace="urn:sfti:documents:BasicInvoice:1:0" xmlns:cur="urn:oasis:names:tc:ubl:codelist:CurrencyCode:1:0" xmlns:sdt="urn:oasis:names:tc:ubl:SpecializedDatatypes:1:0" xmlns:udt="urn:oasis:names:tc:ubl:UnspecializedDatatypes:1:0" xmlns:cac="urn:sfti:CommonAggregateComponents:1:0" xmlns:cbc="urn:oasis:names:tc:ubl:CommonBasicComponents:1:0" xmlns:ccts="urn:oasis:names:tc:ubl:CoreComponentParameters:1:0" xmlns="urn:sfti:documents:BasicInvoice:1:0" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1:0">
+	<xsd:import namespace="urn:oasis:names:tc:ubl:CoreComponentParameters:1:0" schemaLocation="../common/UBL-CoreComponentParameters-1.0.xsd"/>
+	<xsd:import namespace="urn:oasis:names:tc:ubl:CommonBasicComponents:1:0" schemaLocation="../common/UBL-CommonBasicComponents-1.0.xsd"/>
+	<xsd:import namespace="urn:sfti:CommonAggregateComponents:1:0" schemaLocation="../common/SFTI-CommonAggregateComponents-1.0.xsd"/>
+	<xsd:import namespace="urn:oasis:names:tc:ubl:UnspecializedDatatypes:1:0" schemaLocation="../common/UBL-UnspecializedDatatypes-1.0.xsd"/>
+	<xsd:import namespace="urn:oasis:names:tc:ubl:SpecializedDatatypes:1:0" schemaLocation="../common/UBL-SpecializedDatatypes-1.0.xsd"/>
+	<xsd:import namespace="urn:oasis:names:tc:ubl:codelist:CurrencyCode:1:0" schemaLocation="../codelist/UBL-CodeList-CurrencyCode-1.0.xsd"/>
+	<xsd:complexType name="SFTIInvoiceType">
+		<xsd:sequence>
+			<xsd:element name="ID" type="cac:SFTISimpleIdentifierType"/>
+			<xsd:element ref="cbc:IssueDate"/>
+			<xsd:element name="InvoiceTypeCode" type="udt:CodeType"/>
+			<xsd:element ref="cbc:Note" minOccurs="0"/>
+			<xsd:element ref="TaxPointDate" minOccurs="0"/>
+			<xsd:element name="InvoiceCurrencyCode" type="cur:CurrencyCodeType" minOccurs="0"/>
+			<xsd:element name="TaxCurrencyCode" type="cur:CurrencyCodeType" minOccurs="0"/>
+			<xsd:element ref="LineItemCountNumeric"/>
+			<xsd:element ref="AdditionalDocumentReference" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="cac:BuyerParty"/>
+			<xsd:element ref="cac:SellerParty"/>
+			<xsd:element ref="cac:Delivery" minOccurs="0"/>
+			<xsd:element ref="cac:PaymentMeans" minOccurs="0" maxOccurs="3"/>
+			<xsd:element ref="cac:PaymentTerms" minOccurs="0"/>
+			<xsd:element name="AllowanceCharge" type="cac:SFTIAllowanceChargeType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="cac:ExchangeRate" minOccurs="0"/>
+			<xsd:element ref="cac:TaxTotal" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="cac:LegalTotal"/>
+			<xsd:element ref="cac:InvoiceLine" maxOccurs="unbounded"/>
+			<xsd:element ref="RequisitionistDocumentReference" maxOccurs="2"/>
+			<xsd:element ref="InitialInvoiceDocumentReference" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="cac:DeliveryTerms" minOccurs="0"/>
+			<xsd:element name="InvoicingPeriod" type="cac:SFTIPeriodType" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="Invoice" type="SFTIInvoiceType"/>
+	<xsd:element name="DespatchDocumentReference" type="cac:SFTIDocumentReferenceType"/>
+	<xsd:element name="ReceiptDocumentReference" type="cac:SFTIDocumentReferenceType"/>
+	<xsd:element name="LineItemCountNumeric" type="LineItemCountNumericType"/>
+	<xsd:element name="TaxPointDate" type="TaxPointDateType"/>
+	<xsd:complexType name="LineItemCountNumericType">
+		<xsd:simpleContent>
+			<xsd:extension base="udt:NumericType"/>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="TaxPointDateType">
+		<xsd:simpleContent>
+			<xsd:extension base="udt:DateType"/>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:element name="AdditionalDocumentReference" type="cac:SFTIDocumentReferenceType"/>
+	<xsd:element name="RequisitionistDocumentReference" type="cac:SFTIDocumentReferenceType"/>
+	<xsd:element name="InitialInvoiceDocumentReference" type="cac:SFTIDocumentReferenceType"/>
+</xsd:schema>

@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.helger.bdve.finvoice.mock;
+package com.helger.bdve.svefaktura.mock;
 
 import javax.annotation.Nonnull;
 import javax.annotation.concurrent.Immutable;
@@ -23,7 +23,7 @@ import com.helger.bdve.api.executorset.VESID;
 import com.helger.bdve.api.executorset.ValidationExecutorSetRegistry;
 import com.helger.bdve.engine.mock.MockFile;
 import com.helger.bdve.engine.source.IValidationSourceXML;
-import com.helger.bdve.finvoice.FinvoiceValidation;
+import com.helger.bdve.svefaktura.SvefakturaValidation;
 import com.helger.commons.ValueEnforcer;
 import com.helger.commons.annotation.ReturnsMutableCopy;
 import com.helger.commons.collection.impl.CommonsArrayList;
@@ -37,7 +37,7 @@ public final class CTestFiles
   public static final ValidationExecutorSetRegistry <IValidationSourceXML> VES_REGISTRY = new ValidationExecutorSetRegistry <> ();
   static
   {
-    FinvoiceValidation.initFinvoice (VES_REGISTRY);
+    SvefakturaValidation.initSvefaktura (VES_REGISTRY);
   }
 
   private CTestFiles ()
@@ -48,10 +48,7 @@ public final class CTestFiles
   public static ICommonsList <MockFile> getAllTestFiles ()
   {
     final ICommonsList <MockFile> ret = new CommonsArrayList <> ();
-    for (final VESID aESID : new VESID [] { FinvoiceValidation.VID_FINVOICE_13,
-                                            FinvoiceValidation.VID_FINVOICE_20,
-                                            FinvoiceValidation.VID_FINVOICE_201,
-                                            FinvoiceValidation.VID_FINVOICE_30 })
+    for (final VESID aESID : new VESID [] { SvefakturaValidation.VID_SVEFAKTURA_10, SvefakturaValidation.VID_OBJECT_ENVELOPE_10 })
       for (final IReadableResource aRes : getAllMatchingTestFiles (aESID))
         ret.add (MockFile.createGoodCase (aRes, aESID));
 
@@ -64,22 +61,18 @@ public final class CTestFiles
   {
     ValueEnforcer.notNull (aVESID, "VESID");
 
-    if (aVESID.equals (FinvoiceValidation.VID_FINVOICE_13))
+    if (aVESID.equals (SvefakturaValidation.VID_SVEFAKTURA_10))
     {
-      return new CommonsArrayList <> (new String [] { "example.xml", "sample.xml" }, x -> new ClassPathResource ("/test-files/1.3/" + x));
+      return new CommonsArrayList <> (new String [] { "svefaktura.xml",
+                                                      "svefaktura bas.xml",
+                                                      "svefaktura m ext ref.xml",
+                                                      "svefaktura m koder.xml",
+                                                      "svefaktura moms.xml" },
+                                      x -> new ClassPathResource ("/test-files/1.0/" + x));
     }
-    if (aVESID.equals (FinvoiceValidation.VID_FINVOICE_20))
+    if (aVESID.equals (SvefakturaValidation.VID_OBJECT_ENVELOPE_10))
     {
-      return new CommonsArrayList <> (new String [] {}, x -> new ClassPathResource ("/test-files/2.01/" + x));
-    }
-    if (aVESID.equals (FinvoiceValidation.VID_FINVOICE_201))
-    {
-      return new CommonsArrayList <> (new String [] { "finvoice_201_example.xml", "Finvoice 2.01 example.xml" },
-                                      x -> new ClassPathResource ("/test-files/2.01/" + x));
-    }
-    if (aVESID.equals (FinvoiceValidation.VID_FINVOICE_30))
-    {
-      return new CommonsArrayList <> (new String [] { "finvoice_30_example.xml" }, x -> new ClassPathResource ("/test-files/3.0/" + x));
+      return new CommonsArrayList <> (new String [] { "ObjectEnvelope.xml" }, x -> new ClassPathResource ("/test-files/1.0/" + x));
     }
 
     throw new IllegalArgumentException ("Invalid VESID: " + aVESID);

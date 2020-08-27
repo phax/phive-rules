@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSPY (http://www.xmlspy.com) by Martin Forsberg (-) -->
+<!--
+
+  SFTI enkel efaktura - aggregate components
+
+  Document Type:     CommonAggregateComponents
+
+-->
+<xsd:schema targetNamespace="urn:sfti:CommonAggregateComponents:1:0" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1:0" xmlns="urn:sfti:CommonAggregateComponents:1:0" xmlns:sdt="urn:oasis:names:tc:ubl:SpecializedDatatypes:1:0" xmlns:sst="urn:oasis:names:tc:ubl:codelist:SubstitutionStatusCode:1:0" xmlns:pty="urn:oasis:names:tc:ubl:codelist:PaymentMeansCode:1:0" xmlns:lon="urn:oasis:names:tc:ubl:codelist:LongitudeDirectionCode:1:0" xmlns:lstat="urn:oasis:names:tc:ubl:codelist:LineStatusCode:1:0" xmlns:lat="urn:oasis:names:tc:ubl:codelist:LatitudeDirectionCode:1:0" xmlns:stat="urn:oasis:names:tc:ubl:codelist:DocumentStatusCode:1:0" xmlns:cur="urn:oasis:names:tc:ubl:codelist:CurrencyCode:1:0" xmlns:cnt="urn:oasis:names:tc:ubl:codelist:CountryIdentificationCode:1:0" xmlns:chc="urn:oasis:names:tc:ubl:codelist:ChipCode:1:0" xmlns:chn="urn:oasis:names:tc:ubl:codelist:ChannelCode:1:0" xmlns:rsn="urn:oasis:names:tc:ubl:codelist:AllowanceChargeReasonCode:1:0" xmlns:udt="urn:oasis:names:tc:ubl:UnspecializedDatatypes:1:0" xmlns:cbc="urn:oasis:names:tc:ubl:CommonBasicComponents:1:0" xmlns:ccts="urn:oasis:names:tc:ubl:CoreComponentParameters:1:0" xmlns:cac="urn:oasis:names:tc:ubl:CommonAggregateComponents:1:0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<xsd:import namespace="urn:oasis:names:tc:ubl:CoreComponentParameters:1:0" schemaLocation="UBL-CoreComponentParameters-1.0.xsd"/>
+	<xsd:import namespace="urn:oasis:names:tc:ubl:CommonBasicComponents:1:0" schemaLocation="UBL-CommonBasicComponents-1.0.xsd"/>
+	<xsd:import namespace="urn:oasis:names:tc:ubl:UnspecializedDatatypes:1:0" schemaLocation="UBL-UnspecializedDatatypes-1.0.xsd"/>
+	<xsd:import namespace="urn:oasis:names:tc:ubl:codelist:AllowanceChargeReasonCode:1:0" schemaLocation="../codelist/UBL-CodeList-AllowanceChargeReasonCode-1.0.xsd"/>
+	<xsd:import namespace="urn:oasis:names:tc:ubl:codelist:ChannelCode:1:0" schemaLocation="../codelist/UBL-CodeList-ChannelCode-1.0.xsd"/>
+	<xsd:import namespace="urn:oasis:names:tc:ubl:codelist:ChipCode:1:0" schemaLocation="../codelist/UBL-CodeList-ChipCode-1.0.xsd"/>
+	<xsd:import namespace="urn:oasis:names:tc:ubl:codelist:CountryIdentificationCode:1:0" schemaLocation="../codelist/UBL-CodeList-CountryIdentificationCode-1.0.xsd"/>
+	<xsd:import namespace="urn:oasis:names:tc:ubl:codelist:CurrencyCode:1:0" schemaLocation="../codelist/UBL-CodeList-CurrencyCode-1.0.xsd"/>
+	<xsd:import namespace="urn:oasis:names:tc:ubl:codelist:DocumentStatusCode:1:0" schemaLocation="../codelist/UBL-CodeList-DocumentStatusCode-1.0.xsd"/>
+	<xsd:import namespace="urn:oasis:names:tc:ubl:codelist:LatitudeDirectionCode:1:0" schemaLocation="../codelist/UBL-CodeList-LatitudeDirectionCode-1.0.xsd"/>
+	<xsd:import namespace="urn:oasis:names:tc:ubl:codelist:LongitudeDirectionCode:1:0" schemaLocation="../codelist/UBL-CodeList-LongitudeDirectionCode-1.0.xsd"/>
+	<xsd:import namespace="urn:oasis:names:tc:ubl:codelist:LineStatusCode:1:0" schemaLocation="../codelist/UBL-CodeList-LineStatusCode-1.0.xsd"/>
+	<xsd:import namespace="urn:oasis:names:tc:ubl:codelist:PaymentMeansCode:1:0" schemaLocation="../codelist/UBL-CodeList-PaymentMeansCode-1.0.xsd"/>
+	<xsd:import namespace="urn:oasis:names:tc:ubl:codelist:SubstitutionStatusCode:1:0" schemaLocation="../codelist/UBL-CodeList-SubstitutionStatusCode-1.0.xsd"/>
+	<xsd:import namespace="urn:oasis:names:tc:ubl:CommonAggregateComponents:1:0" schemaLocation="../common/UBL-CommonAggregateComponents-1.0.xsd"/>
+	<xsd:import namespace="urn:oasis:names:tc:ubl:SpecializedDatatypes:1:0" schemaLocation="UBL-SpecializedDatatypes-1.0.xsd"/>
+	<xsd:complexType name="SFTIAddressType">
+		<xsd:sequence>
+			<xsd:element name="ID" type="udt:IdentifierType" minOccurs="0"/>
+			<xsd:element ref="cbc:Postbox" minOccurs="0"/>
+			<xsd:element ref="cbc:StreetName" minOccurs="0"/>
+			<xsd:element ref="cbc:Department" minOccurs="0"/>
+			<xsd:element ref="cbc:CityName" minOccurs="0"/>
+			<xsd:element ref="cbc:PostalZone" minOccurs="0"/>
+			<xsd:element ref="AddressLine" minOccurs="0"/>
+			<xsd:element ref="Country" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="SFTIAddressLineType">
+		<xsd:sequence>
+			<xsd:element ref="cbc:Line" maxOccurs="7"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="SFTIAllowanceChargeType">
+		<xsd:sequence>
+			<xsd:element ref="cbc:ChargeIndicator"/>
+			<xsd:element name="ReasonCode" type="rsn:AllowanceChargeReasonCodeType" minOccurs="0"/>
+			<xsd:element ref="cbc:MultiplierFactorNumeric" minOccurs="0"/>
+			<xsd:element ref="cbc:Amount"/>
+			<xsd:element ref="TaxCategory" maxOccurs="unbounded"/>
+			<xsd:element name="AllowanceChargeBaseAmount" type="cbc:AmountType" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="SFTIBasePriceType">
+		<xsd:sequence>
+			<xsd:element ref="cbc:PriceAmount"/>
+			<xsd:element ref="cbc:BaseQuantity" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="SFTIBranchType">
+		<xsd:sequence>
+			<xsd:element ref="FinancialInstitution" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="SFTIBuyerPartyType">
+		<xsd:sequence>
+			<xsd:element ref="Party" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="SFTIContactType">
+		<xsd:sequence>
+			<xsd:element ref="cbc:Name" minOccurs="0"/>
+			<xsd:element ref="cbc:Telephone" minOccurs="0"/>
+			<xsd:element ref="cbc:Telefax" minOccurs="0"/>
+			<xsd:element ref="cbc:ElectronicMail" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="SFTICountryType">
+		<xsd:sequence>
+			<xsd:element name="IdentificationCode" type="cnt:CountryIdentificationCodeType" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="SFTIDeliveryType">
+		<xsd:sequence>
+			<xsd:element ref="cbc:ActualDeliveryDateTime" minOccurs="0"/>
+			<xsd:element ref="DeliveryAddress" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="SFTIDeliveryTermsType">
+		<xsd:sequence>
+			<xsd:element ref="cbc:SpecialTerms" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="SFTIDespatchLineType">
+		<xsd:sequence>
+			<xsd:element name="ID" type="udt:IdentifierType"/>
+			<xsd:element ref="cbc:Note" minOccurs="0"/>
+			<xsd:element ref="OrderLineReference" maxOccurs="unbounded"/>
+			<xsd:element ref="Item"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="SFTIDocumentReferenceType">
+		<xsd:sequence>
+			<xsd:element name="ID" type="udt:IdentifierType"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="SFTIExchangeRateType">
+		<xsd:sequence>
+			<xsd:element name="SourceCurrencyCode" type="cur:CurrencyCodeType"/>
+			<xsd:element ref="cbc:SourceCurrencyBaseRate" minOccurs="0"/>
+			<xsd:element name="TargetCurrencyCode" type="cur:CurrencyCodeType"/>
+			<xsd:element ref="cbc:TargetUnitBaseRate" minOccurs="0"/>
+			<xsd:element ref="cbc:CalculationRate" minOccurs="0"/>
+			<xsd:element ref="cbc:Date" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="SFTIFinancialAccountType">
+		<xsd:sequence>
+			<xsd:element name="ID" type="udt:IdentifierType" minOccurs="0"/>
+			<xsd:element ref="FinancialInstitutionBranch" minOccurs="0"/>
+			<xsd:element name="PaymentInstructionID" type="SFTISimpleIdentifierType" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="SFTIFinancialInstitutionType">
+		<xsd:sequence>
+			<xsd:element name="ID" type="udt:IdentifierType" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="SFTIInvoiceLineType">
+		<xsd:sequence>
+			<xsd:element name="ID" type="SFTISimpleIdentifierType"/>
+			<xsd:element ref="cbc:InvoicedQuantity" minOccurs="0"/>
+			<xsd:element ref="cbc:LineExtensionAmount"/>
+			<xsd:element ref="cbc:Note" minOccurs="0"/>
+			<xsd:element ref="OrderLineReference" minOccurs="0"/>
+			<xsd:element ref="DespatchLineReference" minOccurs="0"/>
+			<xsd:element name="Delivery" type="SFTIInvoiceLineDeliveryType" minOccurs="0"/>
+			<xsd:element ref="AllowanceCharge" minOccurs="0"/>
+			<xsd:element ref="Item"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="SFTIInvoiceLineAllowanceCharge">
+		<xsd:sequence>
+			<xsd:element ref="cbc:ChargeIndicator"/>
+			<xsd:element ref="cbc:Amount" minOccurs="0"/>
+			<xsd:element name="AllowanceChargeBaseAmount" type="cbc:AmountType" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="SFTIInvoiceLineDeliveryType">
+		<xsd:sequence>
+			<xsd:element ref="cbc:ActualDeliveryDateTime" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="SFTIItemType">
+		<xsd:sequence>
+			<xsd:element ref="cbc:Description" minOccurs="0"/>
+			<xsd:element ref="BuyersItemIdentification" minOccurs="0"/>
+			<xsd:element ref="SellersItemIdentification" minOccurs="0"/>
+			<xsd:element ref="StandardItemIdentification" minOccurs="0"/>
+			<xsd:element ref="TaxCategory" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="BasePrice" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="SFTIItemIdentificationType">
+		<xsd:sequence>
+			<xsd:element name="ID" type="udt:IdentifierType"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="SFTILanguageType">
+		<xsd:sequence>
+			<xsd:element ref="cbc:Name" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="SFTILegalTotalType">
+		<xsd:sequence>
+			<xsd:element ref="cbc:LineExtensionTotalAmount"/>
+			<xsd:element ref="cbc:TaxExclusiveTotalAmount" minOccurs="0"/>
+			<xsd:element ref="cbc:TaxInclusiveTotalAmount"/>
+			<xsd:element name="RoundOffAmount" type="cbc:AmountType" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="SFTILineReferenceType">
+		<xsd:sequence>
+			<xsd:element name="LineID" type="udt:IdentifierType"/>
+			<xsd:element ref="DocumentReference" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="SFTILocationCoordinateType">
+		<xsd:sequence>
+			<xsd:element name="CoordinateSystemCode" type="udt:CodeType" minOccurs="0"/>
+			<xsd:element ref="cbc:LatitudeDegreesMeasure" minOccurs="0"/>
+			<xsd:element ref="cbc:LatitudeMinutesMeasure" minOccurs="0"/>
+			<xsd:element name="LatitudeDirectionCode" type="lat:LatitudeDirectionCodeType" minOccurs="0"/>
+			<xsd:element ref="cbc:LongitudeDegreesMeasure" minOccurs="0"/>
+			<xsd:element ref="cbc:LongitudeMinutesMeasure" minOccurs="0"/>
+			<xsd:element name="LongitudeDirectionCode" type="lon:LongitudeDirectionCodeType" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="SFTIOrderReferenceType">
+		<xsd:sequence>
+			<xsd:element name="BuyersID" type="udt:IdentifierType" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="SFTIOrderLineReferenceType">
+		<xsd:sequence>
+			<xsd:element name="BuyersLineID" type="udt:IdentifierType" minOccurs="0"/>
+			<xsd:element ref="OrderReference" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="SFTIPartyType">
+		<xsd:sequence>
+			<xsd:element ref="PartyIdentification" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="PartyName"/>
+			<xsd:element ref="Address"/>
+			<xsd:element ref="PartyTaxScheme" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="Contact" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="SFTIPartyIdentificationType">
+		<xsd:sequence>
+			<xsd:element name="ID" type="udt:IdentifierType"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="SFTIPartyNameType">
+		<xsd:sequence>
+			<xsd:element ref="cbc:Name" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="SFTIPartyTaxSchemeType">
+		<xsd:sequence>
+			<xsd:element ref="cbc:RegistrationName" minOccurs="0"/>
+			<xsd:element name="CompanyID" type="udt:IdentifierType"/>
+			<xsd:element ref="cbc:ExemptionReason" minOccurs="0"/>
+			<xsd:element ref="RegistrationAddress" minOccurs="0"/>
+			<xsd:element ref="TaxScheme"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="SFTIPaymentType">
+		<xsd:sequence>
+			<xsd:element name="ID" type="udt:IdentifierType" minOccurs="0"/>
+			<xsd:element ref="cbc:PaidAmount" minOccurs="0"/>
+			<xsd:element ref="cbc:ReceivedDate" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="SFTIPaymentMeansType">
+		<xsd:sequence>
+			<xsd:element name="PaymentMeansTypeCode" type="pty:PaymentMeansCodeType"/>
+			<xsd:element ref="cbc:DuePaymentDate" minOccurs="0"/>
+			<xsd:element ref="PayeeFinancialAccount" minOccurs="0"/>
+			<xsd:element name="PayeePartyName" type="SFTIPartyNameType" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="SFTIPaymentTermsType">
+		<xsd:sequence>
+			<xsd:element ref="cbc:Note" minOccurs="0"/>
+			<xsd:element ref="cbc:PenaltySurchargePercent" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="SFTIPeriodType">
+		<xsd:sequence>
+			<xsd:element ref="cbc:StartDateTime" minOccurs="0"/>
+			<xsd:element ref="cbc:EndDateTime" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="SFTISellerPartyType">
+		<xsd:sequence>
+			<xsd:element ref="Party" minOccurs="0"/>
+			<xsd:element ref="AccountsContact" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="SFTISimpleIdentifierType">
+		<xsd:simpleContent>
+			<xsd:extension base="xsd:normalizedString"/>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="SFTITaxCategoryType">
+		<xsd:sequence>
+			<xsd:element name="ID" type="udt:IdentifierType"/>
+			<xsd:element ref="cbc:Percent" minOccurs="0"/>
+			<xsd:element ref="cbc:ExemptionReason" minOccurs="0"/>
+			<xsd:element ref="TaxScheme"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="SFTITaxSchemeType">
+		<xsd:sequence>
+			<xsd:element name="ID" type="udt:IdentifierType"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="SFTITaxSubTotalType">
+		<xsd:sequence>
+			<xsd:element ref="cbc:TaxableAmount"/>
+			<xsd:element ref="cbc:TaxAmount"/>
+			<xsd:element ref="TaxCategory"/>
+			<xsd:element name="TaxCurrencyTaxAmount" type="cbc:TaxAmountType" minOccurs="0"/>
+			<xsd:element name="InitialInvoiceTaxAmount" type="cbc:TaxAmountType" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="SFTITaxTotalType">
+		<xsd:sequence>
+			<xsd:element ref="cbc:TotalTaxAmount"/>
+			<xsd:element ref="TaxSubTotal" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="AccountsContact" type="SFTIContactType"/>
+	<xsd:element name="AdditionalItemIdentification" type="SFTIItemIdentificationType"/>
+	<xsd:element name="BasePrice" type="SFTIBasePriceType"/>
+	<xsd:element name="Address" type="SFTIAddressType"/>
+	<xsd:element name="AddressLine" type="SFTIAddressLineType"/>
+	<xsd:element name="AllowanceCharge" type="SFTIInvoiceLineAllowanceCharge"/>
+	<xsd:element name="BuyersItemIdentification" type="SFTIItemIdentificationType"/>
+	<xsd:element name="BuyerParty" type="SFTIBuyerPartyType"/>
+	<xsd:element name="Contact" type="SFTIContactType"/>
+	<xsd:element name="Country" type="SFTICountryType"/>
+	<xsd:element name="Delivery" type="SFTIDeliveryType"/>
+	<xsd:element name="DeliveryAddress" type="SFTIAddressType"/>
+	<xsd:element name="DeliveryTerms" type="SFTIDeliveryTermsType"/>
+	<xsd:element name="DespatchLineReference" type="SFTILineReferenceType"/>
+	<xsd:element name="DocumentReference" type="SFTIDocumentReferenceType"/>
+	<xsd:element name="ExchangeRate" type="SFTIExchangeRateType"/>
+	<xsd:element name="FinancialInstitution" type="SFTIFinancialInstitutionType"/>
+	<xsd:element name="FinancialInstitutionBranch" type="SFTIBranchType"/>
+	<xsd:element name="InvoiceLine" type="SFTIInvoiceLineType"/>
+	<xsd:element name="Item" type="SFTIItemType"/>
+	<xsd:element name="ItemIdentification" type="SFTIItemIdentificationType"/>
+	<xsd:element name="JurisdictionAddress" type="SFTIAddressType"/>
+	<xsd:element name="Language" type="SFTILanguageType"/>
+	<xsd:element name="LegalTotal" type="SFTILegalTotalType"/>
+	<xsd:element name="LineReference" type="SFTILineReferenceType"/>
+	<xsd:element name="LocationCoordinate" type="SFTILocationCoordinateType"/>
+	<xsd:element name="OrderContact" type="SFTIContactType"/>
+	<xsd:element name="OrderReference" type="SFTIOrderReferenceType"/>
+	<xsd:element name="OrderLineReference" type="SFTIOrderLineReferenceType"/>
+	<xsd:element name="Party" type="SFTIPartyType"/>
+	<xsd:element name="PartyIdentification" type="SFTIPartyIdentificationType"/>
+	<xsd:element name="PartyName" type="SFTIPartyNameType"/>
+	<xsd:element name="PartyTaxScheme" type="SFTIPartyTaxSchemeType"/>
+	<xsd:element name="PayeeFinancialAccount" type="SFTIFinancialAccountType"/>
+	<xsd:element name="Payment" type="SFTIPaymentType"/>
+	<xsd:element name="PaymentMeans" type="SFTIPaymentMeansType"/>
+	<xsd:element name="PaymentTerms" type="SFTIPaymentTermsType"/>
+	<xsd:element name="Period" type="SFTIPeriodType"/>
+	<xsd:element name="RegistrationAddress" type="SFTIAddressType"/>
+	<xsd:element name="SellerParty" type="SFTISellerPartyType"/>
+	<xsd:element name="SellersItemIdentification" type="SFTIItemIdentificationType"/>
+	<xsd:element name="StandardItemIdentification" type="SFTIItemIdentificationType"/>
+	<xsd:element name="TaxCategory" type="SFTITaxCategoryType"/>
+	<xsd:element name="TaxScheme" type="SFTITaxSchemeType"/>
+	<xsd:element name="TaxSubTotal" type="SFTITaxSubTotalType"/>
+	<xsd:element name="TaxTotal" type="SFTITaxTotalType"/>
+</xsd:schema>

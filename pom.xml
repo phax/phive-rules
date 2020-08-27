@@ -190,6 +190,11 @@
       </dependency>
       <dependency>
         <groupId>com.helger.bdve.rules</groupId>
+        <artifactId>ph-bdve-rules-svefaktura</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.helger.bdve.rules</groupId>
         <artifactId>ph-bdve-rules-teapps</artifactId>
         <version>${project.version}</version>
       </dependency>
@@ -244,6 +249,7 @@
     <module>ph-bdve-rules-oioubl</module>
     <module>ph-bdve-rules-peppol</module>
     <module>ph-bdve-rules-simplerinvoicing</module>
+    <module>ph-bdve-rules-svefaktura</module>
     <module>ph-bdve-rules-teapps</module>
     <module>ph-bdve-rules-ubl</module>
     <!-- depends on peppol -->

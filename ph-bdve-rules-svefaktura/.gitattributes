@@ -1,0 +1,3 @@
+*.sch     text eol=lf
+*.xsl     text eol=lf
+*.xslt    text eol=lf

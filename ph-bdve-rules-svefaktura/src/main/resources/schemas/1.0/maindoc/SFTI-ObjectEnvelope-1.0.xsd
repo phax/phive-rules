@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSPY v2004 rel. 4 U (http://www.xmlspy.com) by Martin Forsberg (Amnis Consulting AB) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="urn:sfti:documents:ObjectEnvelope:1:0" xmlns:cbc="urn:oasis:names:tc:ubl:CommonBasicComponents:1:0" xmlns:udt="urn:oasis:names:tc:ubl:UnspecializedDatatypes:1:0" xmlns:cct="urn:oasis:names:tc:ubl:CoreComponentTypes:1:0" xmlns:cac="urn:sfti:CommonAggregateComponents:1:0" targetNamespace="urn:sfti:documents:ObjectEnvelope:1:0" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:import namespace="urn:oasis:names:tc:ubl:CommonBasicComponents:1:0" schemaLocation="../common/UBL-CommonBasicComponents-1.0.xsd"/>
+	<xs:import namespace="urn:oasis:names:tc:ubl:CoreComponentTypes:1:0" schemaLocation="../common/UBL-CoreComponentTypes-1.0.xsd"/>
+	<xs:import namespace="urn:sfti:CommonAggregateComponents:1:0" schemaLocation="../common/SFTI-CommonAggregateComponents-1.0.xsd"/>
+	<xs:import namespace="urn:oasis:names:tc:ubl:UnspecializedDatatypes:1:0" schemaLocation="../common/UBL-UnspecializedDatatypes-1.0.xsd"/>
+	<xs:element name="ObjectEnvelope" type="ObjectEnvelopeType"/>
+	<xs:element name="DocumentReference" type="ReferenceType"/>
+	<xs:element name="DocumentID" type="udt:IdentifierType"/>
+	<xs:element name="IssueDate" type="cbc:DateType"/>
+	<xs:element name="IssuerID" type="udt:IdentifierType"/>
+	<xs:element name="DocumentType" type="udt:CodeType"/>
+	<xs:element name="CreationDateTime" type="udt:DateTimeType"/>
+	<xs:element name="EncodedObject" type="EncodedObjectType"/>
+	<xs:element name="ObjectID" type="udt:IdentifierType"/>
+	<xs:element name="EncodedData" type="cct:BinaryObjectType"/>
+	<xs:complexType name="ObjectEnvelopeType">
+		<xs:sequence>
+			<xs:element ref="DocumentReference" minOccurs="0"/>
+			<xs:element ref="CreationDateTime"/>
+			<xs:element ref="EncodedObject" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="EncodedObjectType">
+		<xs:sequence>
+			<xs:element ref="ObjectID"/>
+			<xs:element ref="EncodedData"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ReferenceType">
+		<xs:sequence>
+			<xs:element ref="DocumentID"/>
+			<xs:element ref="IssueDate" minOccurs="0"/>
+			<xs:element ref="IssuerID" minOccurs="0"/>
+			<xs:element ref="DocumentType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSPY (http://www.xmlspy.com) by Martin Forsberg (-) -->
+<Invoice xmlns="urn:sfti:documents:BasicInvoice:1:0" xmlns:cac="urn:sfti:CommonAggregateComponents:1:0" xmlns:cbc="urn:oasis:names:tc:ubl:CommonBasicComponents:1:0" xmlns:ccts="urn:oasis:names:tc:ubl:CoreComponentParameters:1:0" xmlns:cur="urn:oasis:names:tc:ubl:codelist:CurrencyCode:1:0" xmlns:sdt="urn:oasis:names:tc:ubl:SpecializedDatatypes:1:0" xmlns:udt="urn:oasis:names:tc:ubl:UnspecializedDatatypes:1:0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<ID>15</ID>
+	<cbc:IssueDate>2003-09-11</cbc:IssueDate>
+	<InvoiceTypeCode>380</InvoiceTypeCode>
+	<cbc:Note>Här kan jag beskriva fakturan med fritext</cbc:Note>
+	<InvoiceCurrencyCode>SEK</InvoiceCurrencyCode>
+	<LineItemCountNumeric>2</LineItemCountNumeric>
+	<AdditionalDocumentReference>
+		<cac:ID identificationSchemeID="ATS" identificationSchemeAgencyName="SFTI">urn:sfti:documents:object:271</cac:ID>
+	</AdditionalDocumentReference>
+	<cac:BuyerParty>
+		<cac:Party>
+			<cac:PartyName>
+				<cbc:Name>Johnssons byggvaror</cbc:Name>
+			</cac:PartyName>
+			<cac:Address>
+				<cbc:StreetName>Rådhusgatan 5</cbc:StreetName>
+				<cbc:CityName>Stockholm</cbc:CityName>
+				<cbc:PostalZone>11000</cbc:PostalZone>
+			</cac:Address>
+			<cac:Contact>
+				<cbc:Name>Pelle Svensson</cbc:Name>
+			</cac:Contact>
+		</cac:Party>
+	</cac:BuyerParty>
+	<cac:SellerParty>
+		<cac:Party>
+			<cac:PartyName>
+				<cbc:Name>Moderna Produkter AB</cbc:Name>
+			</cac:PartyName>
+			<cac:Address>
+				<cbc:StreetName>Storgatan 5</cbc:StreetName>
+				<cbc:CityName>Hägersten</cbc:CityName>
+				<cbc:PostalZone>12652</cbc:PostalZone>
+			</cac:Address>
+			<cac:PartyTaxScheme>
+				<cac:CompanyID>5565624223</cac:CompanyID>
+				<cbc:ExemptionReason>F-skattebevis finns</cbc:ExemptionReason>
+				<cac:RegistrationAddress>
+					<cbc:CityName>Stockholm</cbc:CityName>
+					<cac:Country>
+						<cac:IdentificationCode>SE</cac:IdentificationCode>
+					</cac:Country>
+				</cac:RegistrationAddress>
+				<cac:TaxScheme>
+					<cac:ID>SWT</cac:ID>
+				</cac:TaxScheme>
+			</cac:PartyTaxScheme>
+			<cac:PartyTaxScheme>
+				<cac:CompanyID>SE556562422301</cac:CompanyID>
+				<cac:TaxScheme>
+					<cac:ID>VAT</cac:ID>
+				</cac:TaxScheme>
+			</cac:PartyTaxScheme>
+		</cac:Party>
+	</cac:SellerParty>
+	<cac:Delivery>
+		<cbc:ActualDeliveryDateTime>2003-11-01T00:00:00</cbc:ActualDeliveryDateTime>
+		<cac:DeliveryAddress>
+			<cbc:StreetName>Rådhusgatan 5</cbc:StreetName>
+			<cbc:CityName>Stockholm</cbc:CityName>
+			<cbc:PostalZone>11000</cbc:PostalZone>
+		</cac:DeliveryAddress>
+	</cac:Delivery>
+	<cac:PaymentMeans>
+		<cac:PaymentMeansTypeCode>1</cac:PaymentMeansTypeCode>
+		<cbc:DuePaymentDate>2003-10-11</cbc:DuePaymentDate>
+		<cac:PayeeFinancialAccount>
+			<cac:ID>3338929</cac:ID>
+			<cac:FinancialInstitutionBranch>
+				<cac:FinancialInstitution>
+					<cac:ID>BGABSESS</cac:ID>
+				</cac:FinancialInstitution>
+			</cac:FinancialInstitutionBranch>
+			<cac:PaymentInstructionID>54225485</cac:PaymentInstructionID>
+		</cac:PayeeFinancialAccount>
+	</cac:PaymentMeans>
+	<cac:PaymentTerms>
+		<cbc:Note>30 dagars netto</cbc:Note>
+		<cbc:PenaltySurchargePercent>23</cbc:PenaltySurchargePercent>
+	</cac:PaymentTerms>
+	<cac:TaxTotal>
+		<cbc:TotalTaxAmount amountCurrencyID="SEK">1556.25</cbc:TotalTaxAmount>
+		<cac:TaxSubTotal>
+			<cbc:TaxableAmount amountCurrencyID="SEK">6225</cbc:TaxableAmount>
+			<cbc:TaxAmount amountCurrencyID="SEK">1556.25</cbc:TaxAmount>
+			<cac:TaxCategory>
+				<cac:ID>S</cac:ID>
+				<cbc:Percent>25</cbc:Percent>
+				<cac:TaxScheme>
+					<cac:ID>VAT</cac:ID>
+				</cac:TaxScheme>
+			</cac:TaxCategory>
+		</cac:TaxSubTotal>
+	</cac:TaxTotal>
+	<cac:LegalTotal>
+		<cbc:LineExtensionTotalAmount amountCurrencyID="SEK">6225</cbc:LineExtensionTotalAmount>
+		<cbc:TaxExclusiveTotalAmount amountCurrencyID="SEK">6225</cbc:TaxExclusiveTotalAmount>
+		<cbc:TaxInclusiveTotalAmount amountCurrencyID="SEK">7781.50</cbc:TaxInclusiveTotalAmount>
+		<cac:RoundOffAmount amountCurrencyID="SEK">0.25</cac:RoundOffAmount>
+	</cac:LegalTotal>
+	<cac:InvoiceLine>
+		<cac:ID>1</cac:ID>
+		<cbc:InvoicedQuantity quantityUnitCode="liter">120</cbc:InvoicedQuantity>
+		<cbc:LineExtensionAmount amountCurrencyID="SEK">6000</cbc:LineExtensionAmount>
+		<cbc:Note>Fritext på fakturaraden</cbc:Note>
+		<cac:Item>
+			<cbc:Description>Falu rödfärg</cbc:Description>
+			<cac:BasePrice>
+				<cbc:PriceAmount amountCurrencyID="SEK">50</cbc:PriceAmount>
+			</cac:BasePrice>
+		</cac:Item>
+	</cac:InvoiceLine>
+	<cac:InvoiceLine>
+		<cac:ID>2</cac:ID>
+		<cbc:InvoicedQuantity quantityUnitCode="styck">15</cbc:InvoicedQuantity>
+		<cbc:LineExtensionAmount amountCurrencyID="SEK">225</cbc:LineExtensionAmount>
+		<cac:Item>
+			<cbc:Description>Pensel 20 mm</cbc:Description>
+			<cac:BasePrice>
+				<cbc:PriceAmount amountCurrencyID="SEK">15</cbc:PriceAmount>
+			</cac:BasePrice>
+		</cac:Item>
+	</cac:InvoiceLine>
+	<RequisitionistDocumentReference>
+		<cac:ID>50</cac:ID>
+	</RequisitionistDocumentReference>
+	<RequisitionistDocumentReference>
+		<cac:ID>Pelle</cac:ID>
+	</RequisitionistDocumentReference>
+</Invoice>

@@ -52,7 +52,7 @@ public final class FinvoiceValidation
    * @param aRegistry
    *        The registry to add the artefacts. May not be <code>null</code>.
    */
-  public static void initTEAPPS (@Nonnull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
+  public static void initFinvoice (@Nonnull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
   {
     ValueEnforcer.notNull (aRegistry, "Registry");
 
