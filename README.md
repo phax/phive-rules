@@ -123,6 +123,7 @@ Alternate usage as a Maven BOM:
 * v1.0.6 - 2020-08-30
     * Added support for Finvoice 1.3, 2.0, 2.01 and 3.0
     * Added Svefaktura 1.0 and Svefaktura ObjectEnvelope 1.0
+    * Updated to UBL 2.3 CSD03
 * v1.0.5 - 2020-07-22
     * Added support for UBL.BE 1.2.3 rules
 * v1.0.4 - 2020-07-06

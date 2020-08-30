@@ -49,7 +49,7 @@ public final class UBLValidation
   public static final String VERSION_20 = "2.0";
   public static final String VERSION_21 = "2.1";
   public static final String VERSION_22 = "2.2";
-  public static final String VERSION_23 = "2.3-csprd02";
+  public static final String VERSION_23 = "2.3-csd03";
 
   // UBL 2.0
   public static final VESID VID_UBL_20_APPLICATIONRESPONSE = new VESID (GROUP_ID, "applicationresponse", VERSION_20);
@@ -292,6 +292,7 @@ public final class UBLValidation
   public static final VESID VID_UBL_23_GOODSITEMITINERARY = new VESID (GROUP_ID, "goodsitemitinerary", VERSION_23);
   public static final VESID VID_UBL_23_GOODSITEMPASSPORT = new VESID (GROUP_ID, "goodsitempassport", VERSION_23);
   public static final VESID VID_UBL_23_GUARANTEECERTIFICATE = new VESID (GROUP_ID, "guaranteecertificate", VERSION_23);
+  public static final VESID VID_UBL_23_IMPORTCUSTOMSDECLARATION = new VESID (GROUP_ID, "importcustomsdeclaration", VERSION_23);
   public static final VESID VID_UBL_23_INSTRUCTIONFORRETURNS = new VESID (GROUP_ID, "instructionforreturns", VERSION_23);
   public static final VESID VID_UBL_23_INVENTORYREPORT = new VESID (GROUP_ID, "inventoryreport", VERSION_23);
   public static final VESID VID_UBL_23_INVOICE = new VESID (GROUP_ID, "invoice", VERSION_23);
@@ -305,6 +306,7 @@ public final class UBLValidation
   public static final VESID VID_UBL_23_PRIORINFORMATIONNOTICE = new VESID (GROUP_ID, "priorinformationnotice", VERSION_23);
   public static final VESID VID_UBL_23_PRODUCTACTIVITY = new VESID (GROUP_ID, "productactivity", VERSION_23);
   public static final VESID VID_UBL_23_PROOFOFREEXPORTATION = new VESID (GROUP_ID, "proofofreexportation", VERSION_23);
+  public static final VESID VID_UBL_23_PROOFOFREEXPORTATIONREMINDER = new VESID (GROUP_ID, "proofofreexportationreminder", VERSION_23);
   public static final VESID VID_UBL_23_PROOFOFREEXPORTATIONREQUEST = new VESID (GROUP_ID, "proofofreexportationrequest", VERSION_23);
   public static final VESID VID_UBL_23_QUALIFICATIONAPPLICATIONREQUEST = new VESID (GROUP_ID,
                                                                                     "qualificationapplicationrequest",
@@ -331,6 +333,7 @@ public final class UBLValidation
   public static final VESID VID_UBL_23_TENDERSTATUSREQUEST = new VESID (GROUP_ID, "tenderstatusrequest", VERSION_23);
   public static final VESID VID_UBL_23_TENDERWITHDRAWAL = new VESID (GROUP_ID, "tenderwithdrawal", VERSION_23);
   public static final VESID VID_UBL_23_TRADEITEMLOCATIONPROFILE = new VESID (GROUP_ID, "tradeitemlocationprofile", VERSION_23);
+  public static final VESID VID_UBL_23_TRANSITCUSTOMSDECLARATION = new VESID (GROUP_ID, "transitcustomsdeclaration", VERSION_23);
   public static final VESID VID_UBL_23_TRANSPORTATIONSTATUS = new VESID (GROUP_ID, "transportationstatus", VERSION_23);
   public static final VESID VID_UBL_23_TRANSPORTATIONSTATUSREQUEST = new VESID (GROUP_ID, "transportationstatusrequest", VERSION_23);
   public static final VESID VID_UBL_23_TRANSPORTEXECUTIONPLAN = new VESID (GROUP_ID, "transportexecutionplan", VERSION_23);
