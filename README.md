@@ -11,9 +11,11 @@ This project is divided into sub-projects each keeping tracking of one document 
   * ph-bdve-en16931 - Validation rules for the EN 16931 (European e-Invoicing norm based on CEN TC 434)
   * ph-bdve-energieefactuur - Validation rules for Dutch Energie eFactuur
   * ph-bdve-fatturapa - Validation rules for Italian fattura PA (since v1.0.4)
+  * ph-bdve-finvoice - Validation rules for Finvoice (since v1.0.6)
   * ph-bdve-oioubl - Validation rules for Danish OIOUBL
   * ph-bdve-peppol - the Peppol specific setup etc
   * ph-bdve-simplerinvoicing - Dutch SimplerInvoicing 1.x support from https://github.com/SimplerInvoicing/validation
+  * ph-bdve-svefaktura - Validation rules for Svefaktura (since v1.0.6)
   * ph-bdve-teapps - Validation rules for Tieto TEAPPSXML
   * ph-bdve-ubl - Validation rules for pure UBL (without any Schematron)
   * ph-bdve-ublbe - Validation rules for e-FFF/UBL.BE
@@ -65,6 +67,12 @@ Add the following to your `pom.xml` to use this artifact, replacing `x.y.z` with
 
 <dependency>
   <groupId>com.helger.bdve.rules</groupId>
+  <artifactId>ph-bdve-rules-finvoice</artifactId>
+  <version>x.y.z</version>
+</dependency>
+
+<dependency>
+  <groupId>com.helger.bdve.rules</groupId>
   <artifactId>ph-bdve-rules-oioubl</artifactId>
   <version>x.y.z</version>
 </dependency>
@@ -78,6 +86,12 @@ Add the following to your `pom.xml` to use this artifact, replacing `x.y.z` with
 <dependency>
   <groupId>com.helger.bdve.rules</groupId>
   <artifactId>ph-bdve-rules-simplerinvoicing</artifactId>
+  <version>x.y.z</version>
+</dependency>
+
+<dependency>
+  <groupId>com.helger.bdve.rules</groupId>
+  <artifactId>ph-bdve-rules-svefaktura</artifactId>
   <version>x.y.z</version>
 </dependency>
 
