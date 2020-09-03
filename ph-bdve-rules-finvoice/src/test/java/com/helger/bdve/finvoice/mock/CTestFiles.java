@@ -79,7 +79,15 @@ public final class CTestFiles
     }
     if (aVESID.equals (FinvoiceValidation.VID_FINVOICE_30))
     {
-      return new CommonsArrayList <> (new String [] { "finvoice_30_example.xml" }, x -> new ClassPathResource ("/test-files/3.0/" + x));
+      return new CommonsArrayList <> (new String [] { "finvoice_30_example.xml",
+                                                      "Verkkoyhtion_kulutuslaskuesimerkki_Ennakko_PaidAmount_20190405.xml",
+                                                      "Verkkoyhtion_kulutuslaskuesimerkki_Vakiokorvaus_20190405.xml",
+                                                      "Verkkoyhtiön_kulutuslaskuesimerkki_20190405.xml",
+                                                      "Verkkoyhtiön_loppulaskuesimerkki_yritys_20190405.xml",
+                                                      "Verkkoyhtiön_läpilaskutuksen_erillislaskuesimerkki_20190405.xml",
+                                                      "Verkkoyhtiö_yrityslaskuesimerkki_20190405.xml",
+                                                      "Verkkoyhtiö_yrityslaskuesimerkki_siirtyvä_veloitus_20190405.xml" },
+                                      x -> new ClassPathResource ("/test-files/3.0/" + x));
     }
 
     throw new IllegalArgumentException ("Invalid VESID: " + aVESID);

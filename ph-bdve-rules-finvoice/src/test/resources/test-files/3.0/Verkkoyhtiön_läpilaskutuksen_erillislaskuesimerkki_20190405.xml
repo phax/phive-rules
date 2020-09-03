@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="ISO-8859-15"?>
+<?xml-stylesheet type="text/xsl" href="Finvoice.xsl"?>
+<Finvoice xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="3.0" xsi:noNamespaceSchemaLocation="Finvoice3.0.xsd">
+	<MessageTransmissionDetails>
+		<MessageSenderDetails>
+			<FromIdentifier SchemeID="0037">00379876543001</FromIdentifier>
+			<FromIntermediator>OPERAATTORI1</FromIntermediator>
+		</MessageSenderDetails>
+		<MessageReceiverDetails>
+			<ToIdentifier SchemeID="0037">003797531974</ToIdentifier>
+			<ToIntermediator>OPERAATTORI2</ToIntermediator>
+		</MessageReceiverDetails>
+		<MessageDetails>
+			<MessageIdentifier>Inv900375418</MessageIdentifier>
+			<MessageTimeStamp>2018-01-14T15:48:03+03:00</MessageTimeStamp>
+			<ImplementationCode>ET30</ImplementationCode>
+			<SpecificationIdentifier>EN16931</SpecificationIdentifier>
+		</MessageDetails>
+	</MessageTransmissionDetails>
+	<SellerPartyDetails>
+		<SellerPartyIdentifier>9876543-0</SellerPartyIdentifier>
+		<SellerOrganisationName>LASKUTUSYRITYS OY</SellerOrganisationName>
+		<SellerOrganisationDepartment>Taloushallinto</SellerOrganisationDepartment>
+		<SellerOrganisationTaxCode>FI98765430</SellerOrganisationTaxCode>
+		<SellerPostalAddressDetails>
+			<SellerStreetName>PL 9983</SellerStreetName>
+			<SellerTownName>LAPPEENRANTA</SellerTownName>
+			<SellerPostCodeIdentifier>53101</SellerPostCodeIdentifier>
+			<CountryCode>FI</CountryCode>
+			<CountryName>Finland</CountryName>
+		</SellerPostalAddressDetails>
+	</SellerPartyDetails>
+	<SellerOrganisationUnitNumber>00379876543001</SellerOrganisationUnitNumber>
+	<SellerContactPersonName>Lasse Laskuttaja</SellerContactPersonName>
+	<SellerCommunicationDetails>
+		<SellerPhoneNumberIdentifier>0100 98765 (pvm/mpm) ma-pe 8-16</SellerPhoneNumberIdentifier>
+		<SellerEmailaddressIdentifier>asiakastuki@laskuttaja.fi</SellerEmailaddressIdentifier>
+	</SellerCommunicationDetails>
+	<SellerInformationDetails>
+		<SellerHomeTownName>Lappeenranta</SellerHomeTownName>
+		<SellerPhoneNumber>0800 9876543 (24h)</SellerPhoneNumber>
+		<SellerWebaddressIdentifier>www.laskutusyritys.fi</SellerWebaddressIdentifier>
+		<SellerAccountDetails>
+			<SellerAccountID IdentificationSchemeName="IBAN">FI0050000198765432</SellerAccountID>
+			<SellerBic IdentificationSchemeName="BIC">OKOYFIHH</SellerBic>
+			<SellerAccountName>OP</SellerAccountName>
+		</SellerAccountDetails>
+	</SellerInformationDetails>
+	<InvoiceRecipientLanguageCode>FI</InvoiceRecipientLanguageCode>
+	<BuyerPartyDetails>
+		<BuyerPartyIdentifier>9753197-4</BuyerPartyIdentifier>
+		<BuyerOrganisationName>Sähkönmyyntiyhtiö Ky</BuyerOrganisationName>
+		<BuyerOrganisationTaxCode>FI97531974</BuyerOrganisationTaxCode>
+		<BuyerPostalAddressDetails>
+			<BuyerStreetName>PL 99887</BuyerStreetName>
+			<BuyerTownName>VANTAA</BuyerTownName>
+			<BuyerPostCodeIdentifier>01201</BuyerPostCodeIdentifier>
+			<BuyerCountrySubdivision>Uusimaa</BuyerCountrySubdivision>
+			<CountryCode>FI</CountryCode>
+			<CountryName>Finland</CountryName>
+		</BuyerPostalAddressDetails>
+	</BuyerPartyDetails>
+	<DeliveryPartyDetails>
+		<DeliveryPartyIdentifier>9101197-8</DeliveryPartyIdentifier>
+		<DeliveryOrganisationName>Asiakasyritys Oy</DeliveryOrganisationName>
+		<DeliveryPostalAddressDetails>
+			<DeliveryStreetName>Valtakatu 1</DeliveryStreetName>
+			<DeliveryTownName>LAPPEENRANTA</DeliveryTownName>
+			<DeliveryPostCodeIdentifier>53100</DeliveryPostCodeIdentifier>
+			<CountryCode>FI</CountryCode>
+			<CountryName>Finland</CountryName>
+		</DeliveryPostalAddressDetails>
+	</DeliveryPartyDetails>
+	<DeliverySiteCode>88793200</DeliverySiteCode>
+	<AnyPartyDetails>
+		<AnyPartyText AnyPartyCode="3513">Sähkön jakelu</AnyPartyText>
+		<AnyPartyIdentifier>7531975-0</AnyPartyIdentifier>
+		<AnyPartyOrganisationName>ENERGIAYHTIÖ OY</AnyPartyOrganisationName>
+		<AnyPartyOrganisationDepartment>Taloushallinto</AnyPartyOrganisationDepartment>
+		<AnyPartyOrganisationTaxCode>FI75319750</AnyPartyOrganisationTaxCode>
+		<AnyPartyContactPersonName>Tiina Myyjä</AnyPartyContactPersonName>
+		<AnyPartyContactPersonFunction>Laskutussihteeri</AnyPartyContactPersonFunction>
+		<AnyPartyContactPersonDepartment>Taloushallinto</AnyPartyContactPersonDepartment>
+		<AnyPartyCommunicationDetails>
+			<AnyPartyPhoneNumberIdentifier>020 987 299</AnyPartyPhoneNumberIdentifier>
+			<AnyPartyEmailAddressIdentifier>Asiakastuki@verkko.fi</AnyPartyEmailAddressIdentifier>
+		</AnyPartyCommunicationDetails>
+		<AnyPartyPostalAddressDetails>
+			<AnyPartyStreetName>PL 1</AnyPartyStreetName>
+			<AnyPartyTownName>ENERGIAYHTIÖ</AnyPartyTownName>
+			<AnyPartyPostCodeIdentifier>00096</AnyPartyPostCodeIdentifier>
+			<CountryCode>FI</CountryCode>
+			<CountryName>FINLAND</CountryName>
+		</AnyPartyPostalAddressDetails>
+	</AnyPartyDetails>
+	<InvoiceDetails>
+		<InvoiceTypeCode>INV01</InvoiceTypeCode>
+		<InvoiceTypeCodeUN>380</InvoiceTypeCodeUN>
+		<InvoiceTypeText>Lasku</InvoiceTypeText>
+		<OriginCode>Original</OriginCode>
+		<InvoiceNumber>900375418</InvoiceNumber>
+		<InvoiceDate Format="CCYYMMDD">20180114</InvoiceDate>
+		<InvoicingPeriodStartDate Format="CCYYMMDD">20171201</InvoicingPeriodStartDate>
+		<InvoicingPeriodEndDate Format="CCYYMMDD">20171231</InvoicingPeriodEndDate>
+		<SellerReferenceIdentifier>300136009</SellerReferenceIdentifier>
+		<SellersBuyerIdentifier>55585309</SellersBuyerIdentifier>
+		<AgreementIdentifier>22793385</AgreementIdentifier>
+		<AgreementTypeText>ThirdPartyInvoice</AgreementTypeText>
+		<BuyerReferenceIdentifier>Ostajan viite</BuyerReferenceIdentifier>
+		<DefinitionDetails>
+			<DefinitionHeaderText DefinitionCode="E1001">Asiakasnumero</DefinitionHeaderText>
+			<DefinitionValue>11185309</DefinitionValue>
+		</DefinitionDetails>
+		<DefinitionDetails>
+			<DefinitionHeaderText DefinitionCode="E1002">Käyttöpaikkatunnus</DefinitionHeaderText>
+			<DefinitionValue>88793200</DefinitionValue>
+		</DefinitionDetails>
+		<DefinitionDetails>
+			<DefinitionHeaderText DefinitionCode="E1003">Vuosikäyttöarvio</DefinitionHeaderText>
+			<DefinitionValue QuantityUnitCode="kWh" QuantityUnitCodeUN="KWH">106000</DefinitionValue>
+		</DefinitionDetails>
+		<DefinitionDetails>
+			<DefinitionHeaderText DefinitionCode="E1003G">Vuosikäyttöarvio, Talvipäivä</DefinitionHeaderText>
+			<DefinitionValue QuantityUnitCode="kWh" QuantityUnitCodeUN="KWH">38000</DefinitionValue>
+		</DefinitionDetails>
+		<DefinitionDetails>
+			<DefinitionHeaderText DefinitionCode="E1003D">Vuosikäyttöarvio, Muu aika</DefinitionHeaderText>
+			<DefinitionValue QuantityUnitCode="kWh" QuantityUnitCodeUN="KWH">68000</DefinitionValue>
+		</DefinitionDetails>
+		<DefinitionDetails>
+			<DefinitionHeaderText DefinitionCode="E1004">Käyttöpaikan osoite</DefinitionHeaderText>
+			<DefinitionValue>Valtakatu 1 53100 LAPPEENRANTA</DefinitionValue>
+		</DefinitionDetails>
+		<DefinitionDetails>
+			<DefinitionHeaderText DefinitionCode="E1008">Lämmitysriippuvuus sähköstä</DefinitionHeaderText>
+			<DefinitionValue>Kyllä</DefinitionValue>
+		</DefinitionDetails>
+		<RowsTotalVatExcludedAmount AmountCurrencyIdentifier="EUR">490,23</RowsTotalVatExcludedAmount>
+		<InvoiceTotalVatExcludedAmount AmountCurrencyIdentifier="EUR">490,23</InvoiceTotalVatExcludedAmount>
+		<InvoiceTotalVatAmount AmountCurrencyIdentifier="EUR">117,66</InvoiceTotalVatAmount>
+		<InvoiceTotalVatIncludedAmount AmountCurrencyIdentifier="EUR">607,89</InvoiceTotalVatIncludedAmount>
+		<VatSpecificationDetails>
+			<VatBaseAmount AmountCurrencyIdentifier="EUR">490,23</VatBaseAmount>
+			<VatRatePercent>24</VatRatePercent>
+			<VatCode>S</VatCode>
+			<VatRateAmount AmountCurrencyIdentifier="EUR">117,66</VatRateAmount>
+		</VatSpecificationDetails>
+		<PaymentTermsDetails>
+			<InvoiceDueDate Format="CCYYMMDD">20180130</InvoiceDueDate>
+			<PaymentOverDueFineDetails>
+				<PaymentOverDueFinePercent>7,0</PaymentOverDueFinePercent>
+			</PaymentOverDueFineDetails>
+		</PaymentTermsDetails>
+		<TenderReference>Tarjous123</TenderReference>
+	</InvoiceDetails>
+	<VirtualBankBarcode>400500001987654320006078900000000000000000000000180130</VirtualBankBarcode>
+	<InvoiceRow>
+		<SubInvoiceRow>
+			<SubArticleName>KULUTUSLASKU 1.12.2017 - 31.12.2017</SubArticleName>
+			<SubInvoicedQuantity QuantityUnitCode="kWh" QuantityUnitCodeUN="KWH">9389,60</SubInvoicedQuantity>
+			<SubStartDate Format="CCYYMMDD">20171201</SubStartDate>
+			<SubEndDate Format="CCYYMMDD">20171231</SubEndDate>
+			<SubRowAmount AmountCurrencyIdentifier="EUR">607,89</SubRowAmount>
+		</SubInvoiceRow>
+	</InvoiceRow>
+	<InvoiceRow>
+		<SubInvoiceRow>
+			<SubArticleName>Sähkönsiirto, ENERGIAYHTIÖ OY, Tehosiirto</SubArticleName>
+			<SubRowAmount AmountCurrencyIdentifier="EUR">607,89</SubRowAmount>
+		</SubInvoiceRow>
+	</InvoiceRow>
+	<InvoiceRow>
+		<SubInvoiceRow>
+			<SubArticleName>LASKUN LOPPUSUMMA YHTEENSÄ</SubArticleName>
+			<SubRowAmount AmountCurrencyIdentifier="EUR">607,89</SubRowAmount>
+		</SubInvoiceRow>
+	</InvoiceRow>
+	<InvoiceRow>
+		<SubInvoiceRow>
+			<SubArticleName>MAKSETTAVA YHTEENSÄ</SubArticleName>
+			<SubRowAmount AmountCurrencyIdentifier="EUR">607,89</SubRowAmount>
+		</SubInvoiceRow>
+	</InvoiceRow>
+	<InvoiceRow>
+		<SubInvoiceRow>
+			<SubArticleName>Sähkönsiirto ENERGIAYHTIÖ OY, Tehosiirto</SubArticleName>
+			<SubStartDate Format="CCYYMMDD">20171201</SubStartDate>
+			<SubEndDate Format="CCYYMMDD">20171231</SubEndDate>
+			<SubRowFreeText>KULUTUSLASKU</SubRowFreeText>
+			<SubRowAmount AmountCurrencyIdentifier="EUR">607,89</SubRowAmount>
+		</SubInvoiceRow>
+	</InvoiceRow>
+	<InvoiceRow>
+		<ArticleName>Perusmaksu</ArticleName>
+		<ArticleDescription>TimeBase</ArticleDescription>
+		<InvoicedQuantity QuantityUnitCode="kk" QuantityUnitCodeUN="MON">1</InvoicedQuantity>
+		<StartDate Format="CCYYMMDD">20171201</StartDate>
+		<EndDate Format="CCYYMMDD">20171231</EndDate>
+		<UnitPriceAmount AmountCurrencyIdentifier="EUR" UnitPriceUnitCode="EUR/kk" QuantityUnitCodeUN="MON">42,50</UnitPriceAmount>
+		<UnitPriceNetAmount AmountCurrencyIdentifier="EUR">42,50</UnitPriceNetAmount>
+		<RowPositionIdentifier>1</RowPositionIdentifier>
+		<RowAccountDimensionText>30500</RowAccountDimensionText>
+		<RowVatRatePercent>24</RowVatRatePercent>
+		<RowVatCode>S</RowVatCode>
+		<RowVatAmount AmountCurrencyIdentifier="EUR">10,20</RowVatAmount>
+		<RowVatExcludedAmount AmountCurrencyIdentifier="EUR">42,50</RowVatExcludedAmount>
+		<RowAmount AmountCurrencyIdentifier="EUR">52,70</RowAmount>
+	</InvoiceRow>
+	<InvoiceRow>
+		<ArticleName>Päiväsiirto, talvi</ArticleName>
+		<ArticleDescription>WinterDa</ArticleDescription>
+		<RowDefinitionDetails>
+			<RowDefinitionHeaderText DefinitionCode="E0005">Mittarin numero</RowDefinitionHeaderText>
+			<RowDefinitionValue>98765432104602248632</RowDefinitionValue>
+		</RowDefinitionDetails>
+		<InvoicedQuantity QuantityUnitCode="kWh" QuantityUnitCodeUN="KWH">0,00</InvoicedQuantity>
+		<StartDate Format="CCYYMMDD">20171201</StartDate>
+		<EndDate Format="CCYYMMDD">20171231</EndDate>
+		<UnitPriceAmount AmountCurrencyIdentifier="EUR" UnitPriceUnitCode="snt/kWh" QuantityUnitCodeUN="ZZ">2,42</UnitPriceAmount>
+		<UnitPriceNetAmount AmountCurrencyIdentifier="EUR">2,42</UnitPriceNetAmount>
+		<RowPositionIdentifier>2</RowPositionIdentifier>
+		<RowAccountDimensionText>30500</RowAccountDimensionText>
+		<RowVatRatePercent>24</RowVatRatePercent>
+		<RowVatCode>S</RowVatCode>
+		<RowVatAmount AmountCurrencyIdentifier="EUR">0,00</RowVatAmount>
+		<RowVatExcludedAmount AmountCurrencyIdentifier="EUR">0,00</RowVatExcludedAmount>
+		<RowAmount AmountCurrencyIdentifier="EUR">0,00</RowAmount>
+	</InvoiceRow>
+	<InvoiceRow>
+		<ArticleName>Muun ajan siirto</ArticleName>
+		<ArticleDescription>OtherTim</ArticleDescription>
+		<RowDefinitionDetails>
+			<RowDefinitionHeaderText DefinitionCode="E0005">Mittarin numero</RowDefinitionHeaderText>
+			<RowDefinitionValue>98765432104602248632</RowDefinitionValue>
+		</RowDefinitionDetails>
+		<InvoicedQuantity QuantityUnitCode="kWh" QuantityUnitCodeUN="KWH">9389,60</InvoicedQuantity>
+		<StartDate Format="CCYYMMDD">20171201</StartDate>
+		<EndDate Format="CCYYMMDD">20171231</EndDate>
+		<UnitPriceAmount AmountCurrencyIdentifier="EUR" UnitPriceUnitCode="snt/kWh" QuantityUnitCodeUN="ZZ">1,15</UnitPriceAmount>
+		<UnitPriceNetAmount AmountCurrencyIdentifier="EUR">1,15</UnitPriceNetAmount>
+		<RowPositionIdentifier>3</RowPositionIdentifier>
+		<RowAccountDimensionText>30500</RowAccountDimensionText>
+		<RowVatRatePercent>24</RowVatRatePercent>
+		<RowVatCode>S</RowVatCode>
+		<RowVatAmount AmountCurrencyIdentifier="EUR">25,92</RowVatAmount>
+		<RowVatExcludedAmount AmountCurrencyIdentifier="EUR">107,98</RowVatExcludedAmount>
+		<RowAmount AmountCurrencyIdentifier="EUR">133,90</RowAmount>
+	</InvoiceRow>
+	<InvoiceRow>
+		<ArticleName>Tehomaksu</ArticleName>
+		<ArticleDescription>AllTime</ArticleDescription>
+		<InvoicedQuantity QuantityUnitCode="kW" QuantityUnitCodeUN="KWT">61,34</InvoicedQuantity>
+		<StartDate Format="CCYYMMDD">20171201</StartDate>
+		<EndDate Format="CCYYMMDD">20171231</EndDate>
+		<UnitPriceAmount AmountCurrencyIdentifier="EUR" UnitPriceUnitCode="EUR/kW" QuantityUnitCodeUN="KWT">2,09</UnitPriceAmount>
+		<UnitPriceNetAmount AmountCurrencyIdentifier="EUR">2,09</UnitPriceNetAmount>
+		<RowPositionIdentifier>4</RowPositionIdentifier>
+		<RowAccountDimensionText>30500</RowAccountDimensionText>
+		<RowFreeText>Jakson 1.12.2017 - 31.12.2017 pätötehohuippu 61,34 kW</RowFreeText>
+		<RowVatRatePercent>24</RowVatRatePercent>
+		<RowVatCode>S</RowVatCode>
+		<RowVatAmount AmountCurrencyIdentifier="EUR">30,77</RowVatAmount>
+		<RowVatExcludedAmount AmountCurrencyIdentifier="EUR">128,20</RowVatExcludedAmount>
+		<RowAmount AmountCurrencyIdentifier="EUR">158,97</RowAmount>
+	</InvoiceRow>
+	<InvoiceRow>
+		<ArticleName>Loistehomaksu, otto</ArticleName>
+		<ArticleDescription>AllTime</ArticleDescription>
+		<InvoicedQuantity QuantityUnitCode="kvar" QuantityUnitCodeUN="KVR">0,00</InvoicedQuantity>
+		<StartDate Format="CCYYMMDD">20171201</StartDate>
+		<EndDate Format="CCYYMMDD">20171231</EndDate>
+		<UnitPriceAmount AmountCurrencyIdentifier="EUR" UnitPriceUnitCode="EUR/kvar" QuantityUnitCodeUN="KVR">4,05</UnitPriceAmount>
+		<UnitPriceNetAmount AmountCurrencyIdentifier="EUR">4,05</UnitPriceNetAmount>
+		<RowPositionIdentifier>5</RowPositionIdentifier>
+		<RowAccountDimensionText>30500</RowAccountDimensionText>
+		<RowFreeText>Jakson 1.12.2017 - 31.12.2017 loistehohuippu 10,92 kvar</RowFreeText>
+		<RowVatRatePercent>24</RowVatRatePercent>
+		<RowVatCode>S</RowVatCode>
+		<RowVatAmount AmountCurrencyIdentifier="EUR">0,00</RowVatAmount>
+		<RowVatExcludedAmount AmountCurrencyIdentifier="EUR">0,00</RowVatExcludedAmount>
+		<RowAmount AmountCurrencyIdentifier="EUR">0,00</RowAmount>
+	</InvoiceRow>
+	<InvoiceRow>
+		<ArticleName>Loistehomaksu, anto</ArticleName>
+		<ArticleDescription>AllTime</ArticleDescription>
+		<InvoicedQuantity QuantityUnitCode="kvar" QuantityUnitCodeUN="KVR">0,00</InvoicedQuantity>
+		<StartDate Format="CCYYMMDD">20171201</StartDate>
+		<EndDate Format="CCYYMMDD">20171231</EndDate>
+		<UnitPriceAmount AmountCurrencyIdentifier="EUR" UnitPriceUnitCode="EUR/kvar" QuantityUnitCodeUN="KVR">4,05</UnitPriceAmount>
+		<UnitPriceNetAmount AmountCurrencyIdentifier="EUR">4,05</UnitPriceNetAmount>
+		<RowPositionIdentifier>6</RowPositionIdentifier>
+		<RowAccountDimensionText>30500</RowAccountDimensionText>
+		<RowFreeText>Jakson 1.12.2017 - 31.12.2017 loistehohuippu (anto) 0,00 kvar</RowFreeText>
+		<RowVatRatePercent>24</RowVatRatePercent>
+		<RowVatCode>S</RowVatCode>
+		<RowVatAmount AmountCurrencyIdentifier="EUR">0,00</RowVatAmount>
+		<RowVatExcludedAmount AmountCurrencyIdentifier="EUR">0,00</RowVatExcludedAmount>
+		<RowAmount AmountCurrencyIdentifier="EUR">0,00</RowAmount>
+	</InvoiceRow>
+	<InvoiceRow>
+		<ArticleName>Sähkövero 1</ArticleName>
+		<ArticleDescription>Tax</ArticleDescription>
+		<InvoicedQuantity QuantityUnitCode="kWh" QuantityUnitCodeUN="KWH">9389,60</InvoicedQuantity>
+		<StartDate Format="CCYYMMDD">20171201</StartDate>
+		<EndDate Format="CCYYMMDD">20171231</EndDate>
+		<UnitPriceAmount AmountCurrencyIdentifier="EUR" UnitPriceUnitCode="snt/kWh" QuantityUnitCodeUN="ZZ">2,253</UnitPriceAmount>
+		<UnitPriceNetAmount AmountCurrencyIdentifier="EUR">2,253</UnitPriceNetAmount>
+		<RowPositionIdentifier>7</RowPositionIdentifier>
+		<RowVatRatePercent>24</RowVatRatePercent>
+		<RowVatCode>S</RowVatCode>
+		<RowVatAmount AmountCurrencyIdentifier="EUR">50,77</RowVatAmount>
+		<RowVatExcludedAmount AmountCurrencyIdentifier="EUR">211,55</RowVatExcludedAmount>
+		<RowAmount AmountCurrencyIdentifier="EUR">262,32</RowAmount>
+	</InvoiceRow>
+	<InvoiceRow>
+		<SubInvoiceRow>
+			<SubArticleName>YHTEENSÄ</SubArticleName>
+			<SubRowFreeText>ALV Erittely</SubRowFreeText>
+			<SubRowFreeText>ENERGIAYHTIÖ OY, veroton summa 490,23 EUR, ALV 24 % 117,66 EUR</SubRowFreeText>
+			<SubRowAmount AmountCurrencyIdentifier="EUR">607,89</SubRowAmount>
+		</SubInvoiceRow>
+	</InvoiceRow>
+	<EpiDetails>
+		<EpiIdentificationDetails>
+			<EpiDate Format="CCYYMMDD">20180114</EpiDate>
+			<EpiReference>-</EpiReference>
+		</EpiIdentificationDetails>
+		<EpiPartyDetails>
+			<EpiBfiPartyDetails>
+				<EpiBfiIdentifier IdentificationSchemeName="BIC">OKOYFIHH</EpiBfiIdentifier>
+				<EpiBfiName>OP</EpiBfiName>
+			</EpiBfiPartyDetails>
+			<EpiBeneficiaryPartyDetails>
+				<EpiNameAddressDetails>LASKUTUSYRITYS OY</EpiNameAddressDetails>
+				<EpiBei>9876543-0</EpiBei>
+				<EpiAccountID IdentificationSchemeName="IBAN">FI0050000198765432</EpiAccountID>
+			</EpiBeneficiaryPartyDetails>
+		</EpiPartyDetails>
+		<EpiPaymentInstructionDetails>
+			<EpiRemittanceInfoIdentifier IdentificationSchemeName="SPY">00000000000000000000</EpiRemittanceInfoIdentifier>
+			<EpiInstructedAmount AmountCurrencyIdentifier="EUR">607,89</EpiInstructedAmount>
+			<EpiCharge ChargeOption="SHA"/>
+			<EpiDateOptionDate Format="CCYYMMDD">20180130</EpiDateOptionDate>
+			<EpiPaymentMeansCode>58</EpiPaymentMeansCode>
+			<EpiPaymentMeansText>SEPA credit transfer</EpiPaymentMeansText>
+		</EpiPaymentInstructionDetails>
+	</EpiDetails>
+</Finvoice>
