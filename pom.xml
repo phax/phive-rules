@@ -67,48 +67,65 @@
       <dependency>
         <groupId>com.helger</groupId>
         <artifactId>ph-commons-parent-pom</artifactId>
-        <version>9.4.8</version>
+        <version>9.5.0</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
       <dependency>
         <groupId>com.helger</groupId>
         <artifactId>ph-schematron-parent-pom</artifactId>
-        <version>5.6.1</version>
+        <version>5.6.2</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
       <dependency>
         <groupId>com.helger.bdve</groupId>
         <artifactId>ph-bdve-parent-pom</artifactId>
-        <version>6.0.2</version>
+        <version>6.0.3</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
       <dependency>
         <groupId>com.helger.ubl</groupId>
         <artifactId>ph-ubl-parent-pom</artifactId>
-        <version>6.4.0</version>
+        <version>6.4.1</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
       <dependency>
         <groupId>com.helger.cii</groupId>
         <artifactId>ph-cii-parent-pom</artifactId>
-        <version>2.3.0</version>
+        <version>2.3.1</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
       <dependency>
         <groupId>com.helger</groupId>
+        <artifactId>ph-ebinterface</artifactId>
+        <version>6.2.1</version>
+      </dependency>
+      <dependency>
+        <groupId>com.helger</groupId>
+        <artifactId>ph-fatturapa</artifactId>
+        <version>1.0.3</version>
+      </dependency>
+      <dependency>
+        <groupId>com.helger</groupId>
         <artifactId>ph-genericode</artifactId>
-        <version>6.1.0</version>
+        <version>6.1.1</version>
+      </dependency>
+      <dependency>
+        <groupId>com.helger.en16931</groupId>
+        <artifactId>en16931-parent-pom</artifactId>
+        <version>2.0.2</version>
+        <type>pom</type>
+        <scope>import</scope>
       </dependency>
       <!-- this is only needed for the test files -->
       <dependency>
         <groupId>com.helger.web</groupId>
         <artifactId>ph-web-parent-pom</artifactId>
-        <version>9.3.3</version>
+        <version>9.3.4</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
@@ -116,26 +133,9 @@
       <dependency>
         <groupId>com.helger.peppol</groupId>
         <artifactId>peppol-commons-parent-pom</artifactId>
-        <version>8.1.8</version>
+        <version>8.2.2</version>
         <type>pom</type>
         <scope>import</scope>
-      </dependency>
-      <dependency>
-        <groupId>com.helger.en16931</groupId>
-        <artifactId>en16931-parent-pom</artifactId>
-        <version>2.0.1</version>
-        <type>pom</type>
-        <scope>import</scope>
-      </dependency>
-      <dependency>
-        <groupId>com.helger</groupId>
-        <artifactId>ph-ebinterface</artifactId>
-        <version>6.2.0</version>
-      </dependency>
-      <dependency>
-        <groupId>com.helger</groupId>
-        <artifactId>ph-fatturapa</artifactId>
-        <version>1.0.2</version>
       </dependency>
 
       <dependency>
@@ -256,4 +256,16 @@
     <module>ph-bdve-rules-ublbe</module>
     <module>ph-bdve-rules-xrechnung</module>
   </modules>
+  
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <configuration>
+          <source>8</source>
+        </configuration>
+      </plugin> 
+    </plugins>
+  </build>
 </project>
