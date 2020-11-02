@@ -11,7 +11,7 @@
 	<cbc:VersionID>v1.0</cbc:VersionID>
 	<cac:ValidityPeriod>
 		<cbc:StartDate>2018-10-20</cbc:StartDate>
-		<cbc:EndDate>2020-10-30</cbc:EndDate>
+		<cbc:EndDate>2021-10-30</cbc:EndDate>
 	</cac:ValidityPeriod>
 	<cac:ReferencedContract>
 		<cbc:ID>123123</cbc:ID>
@@ -153,7 +153,7 @@
 		<cbc:PackLevelCode listID="GS17009:PEPPOL">CU</cbc:PackLevelCode>
 		<cac:LineValidityPeriod>
 			<cbc:StartDate>2018-10-20</cbc:StartDate>
-			<cbc:EndDate>2020-10-30</cbc:EndDate>
+			<cbc:EndDate>2021-10-30</cbc:EndDate>
 		</cac:LineValidityPeriod>
 		<cac:RequiredItemLocationQuantity>
 			<cbc:LeadTimeMeasure unitCode="DAY">13</cbc:LeadTimeMeasure>
