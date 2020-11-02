@@ -625,9 +625,7 @@ public final class CTestFiles
                                         new FileSystemResource (sBase2 + "T111-uc006a-Under query missing information.xml"),
                                         new FileSystemResource (sBase2 + "T111-uc006b-Missing PO.xml"),
                                         new FileSystemResource (sBase2 + "T111-uc006c-Wrong detail partial credit.xml"),
-                                        // new FileSystemResource (sBase2 +
-                                        // "T111-uc007-Payment has been
-                                        // initiated.xml"),
+                                        new FileSystemResource (sBase2 + "T111-uc007-Payment has been initiated.xml"),
                                         new FileSystemResource (sBase2 + "T111-uc008-Invoice is accepted by third party.xml"));
     }
 

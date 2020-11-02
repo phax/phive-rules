@@ -47,7 +47,7 @@
 			<cbc:ResponseCode>RE</cbc:ResponseCode>
 			<cbc:EffectiveDate>2018-09-24</cbc:EffectiveDate>
 			<cac:Status>
-				<cbc:StatusReasonCode listID="OPStatusAction">REF</cbc:StatusReasonCode>
+				<cbc:StatusReasonCode listID="OPStatusAction">NOA</cbc:StatusReasonCode>
 				<cbc:StatusReason>VAT Reference not found</cbc:StatusReason>
 				<cac:Condition>
 					<cbc:AttributeID>BT-48</cbc:AttributeID>

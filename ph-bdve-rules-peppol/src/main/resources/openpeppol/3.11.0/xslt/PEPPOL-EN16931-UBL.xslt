@@ -41,6 +41,12 @@
 		<xsl:variable name="weightedSum" select="sum(for $i in (0 to $length - 1) return $digits[$i + 1] * (($i mod 6) + 2))" />
 		<xsl:value-of select="number($val) > 0 and (11 - ($weightedSum mod 11)) mod 11 = number(substring($val, $length + 1, 1))" />
 	</xsl:function>
+  <xsl:function as="xs:boolean" name="u:TinVerification">
+		<xsl:param as="xs:string" name="val" />
+		<xsl:variable name="digits" select="    for $ch in string-to-codepoints($val)    return codepoints-to-string($ch)" />
+		<xsl:variable name="checksum" select="    (number($digits[8])*2) +    (number($digits[7])*4) +    (number($digits[6])*8) +    (number($digits[5])*16) +    (number($digits[4])*32) +    (number($digits[3])*64) +    (number($digits[2])*128) +    (number($digits[1])*256) " />
+		<xsl:value-of select="($checksum  mod 11) mod 10 = number($digits[9])" />
+	</xsl:function>
 
 <!--DEFAULT RULES-->
 
@@ -191,13 +197,6 @@
         </xsl:attribute>
         <xsl:apply-templates />
       </svrl:active-pattern>
-      <xsl:apply-templates mode="M13" select="/" />
-      <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
-        <xsl:apply-templates />
-      </svrl:active-pattern>
       <xsl:apply-templates mode="M14" select="/" />
       <svrl:active-pattern>
         <xsl:attribute name="document">
@@ -234,6 +233,27 @@
         <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M19" select="/" />
+      <svrl:active-pattern>
+        <xsl:attribute name="document">
+          <xsl:value-of select="document-uri(/)" />
+        </xsl:attribute>
+        <xsl:apply-templates />
+      </svrl:active-pattern>
+      <xsl:apply-templates mode="M24" select="/" />
+      <svrl:active-pattern>
+        <xsl:attribute name="document">
+          <xsl:value-of select="document-uri(/)" />
+        </xsl:attribute>
+        <xsl:apply-templates />
+      </svrl:active-pattern>
+      <xsl:apply-templates mode="M25" select="/" />
+      <svrl:active-pattern>
+        <xsl:attribute name="document">
+          <xsl:value-of select="document-uri(/)" />
+        </xsl:attribute>
+        <xsl:apply-templates />
+      </svrl:active-pattern>
+      <xsl:apply-templates mode="M26" select="/" />
     </svrl:schematron-output>
   </xsl:template>
 
@@ -241,13 +261,14 @@
 <svrl:text>Rules for PEPPOL BIS 3.0 Billing</svrl:text>
   <xsl:param name="profile" select="       if (/*/cbc:ProfileID and matches(normalize-space(/*/cbc:ProfileID), 'urn:fdc:peppol.eu:2017:poacc:billing:([0-9]{2}):1.0')) then         tokenize(normalize-space(/*/cbc:ProfileID), ':')[7]       else         'Unknown'" />
   <xsl:param name="supplierCountry" select="       if (/*/cac:AccountingSupplierParty/cac:Party/cac:PartyTaxScheme[cac:TaxScheme/cbc:ID = 'VAT']/substring(cbc:CompanyID, 1, 2)) then         upper-case(normalize-space(/*/cac:AccountingSupplierParty/cac:Party/cac:PartyTaxScheme[cac:TaxScheme/cbc:ID = 'VAT']/substring(cbc:CompanyID, 1, 2)))       else         if (/*/cac:TaxRepresentativeParty/cac:PartyTaxScheme[cac:TaxScheme/cbc:ID = 'VAT']/substring(cbc:CompanyID, 1, 2)) then           upper-case(normalize-space(/*/cac:TaxRepresentativeParty/cac:PartyTaxScheme[cac:TaxScheme/cbc:ID = 'VAT']/substring(cbc:CompanyID, 1, 2)))         else           if (/*/cac:AccountingSupplierParty/cac:Party/cac:PostalAddress/cac:Country/cbc:IdentificationCode) then             upper-case(normalize-space(/*/cac:AccountingSupplierParty/cac:Party/cac:PostalAddress/cac:Country/cbc:IdentificationCode))           else             'XX'" />
+  <xsl:param name="customerCountry" select="   if (/*/cac:AccountingCustomerParty/cac:Party/cac:PartyTaxScheme[cac:TaxScheme/cbc:ID = 'VAT']/substring(cbc:CompanyID, 1, 2)) then   upper-case(normalize-space(/*/cac:AccountingCustomerParty/cac:Party/cac:PartyTaxScheme[cac:TaxScheme/cbc:ID = 'VAT']/substring(cbc:CompanyID, 1, 2)))   else   if (/*/cac:AccountingCustomerParty/cac:Party/cac:PostalAddress/cac:Country/cbc:IdentificationCode) then   upper-case(normalize-space(/*/cac:AccountingCustomerParty/cac:Party/cac:PostalAddress/cac:Country/cbc:IdentificationCode))   else   'XX'" />
   <xsl:param name="documentCurrencyCode" select="/*/cbc:DocumentCurrencyCode" />
 
 <!--PATTERN -->
 
 
 	<!--RULE -->
-<xsl:template match="//*[not(*) and not(normalize-space())]" mode="M13" priority="1000">
+<xsl:template match="//*[not(*) and not(normalize-space())]" mode="M14" priority="1000">
     <svrl:fired-rule context="//*[not(*) and not(normalize-space())]" />
 
 		<!--ASSERT -->
@@ -264,18 +285,18 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M13" select="*" />
+    <xsl:apply-templates mode="M14" select="*" />
   </xsl:template>
-  <xsl:template match="text()" mode="M13" priority="-1" />
-  <xsl:template match="@*|node()" mode="M13" priority="-2">
-    <xsl:apply-templates mode="M13" select="*" />
+  <xsl:template match="text()" mode="M14" priority="-1" />
+  <xsl:template match="@*|node()" mode="M14" priority="-2">
+    <xsl:apply-templates mode="M14" select="*" />
   </xsl:template>
 
 <!--PATTERN -->
 
 
 	<!--RULE -->
-<xsl:template match="ubl-creditnote:CreditNote | ubl-invoice:Invoice" mode="M14" priority="1016">
+<xsl:template match="ubl-creditnote:CreditNote | ubl-invoice:Invoice" mode="M15" priority="1016">
     <svrl:fired-rule context="ubl-creditnote:CreditNote | ubl-invoice:Invoice" />
 
 		<!--ASSERT -->
@@ -427,11 +448,11 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M14" select="*" />
+    <xsl:apply-templates mode="M15" select="*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="cbc:TaxCurrencyCode" mode="M14" priority="1015">
+<xsl:template match="cbc:TaxCurrencyCode" mode="M15" priority="1015">
     <svrl:fired-rule context="cbc:TaxCurrencyCode" />
 
 		<!--ASSERT -->
@@ -448,11 +469,11 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M14" select="*" />
+    <xsl:apply-templates mode="M15" select="*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="cac:AccountingCustomerParty/cac:Party" mode="M14" priority="1014">
+<xsl:template match="cac:AccountingCustomerParty/cac:Party" mode="M15" priority="1014">
     <svrl:fired-rule context="cac:AccountingCustomerParty/cac:Party" />
 
 		<!--ASSERT -->
@@ -469,11 +490,11 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M14" select="*" />
+    <xsl:apply-templates mode="M15" select="*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="cac:AccountingSupplierParty/cac:Party" mode="M14" priority="1013">
+<xsl:template match="cac:AccountingSupplierParty/cac:Party" mode="M15" priority="1013">
     <svrl:fired-rule context="cac:AccountingSupplierParty/cac:Party" />
 
 		<!--ASSERT -->
@@ -490,11 +511,11 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M14" select="*" />
+    <xsl:apply-templates mode="M15" select="*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="ubl-invoice:Invoice/cac:AllowanceCharge[cbc:MultiplierFactorNumeric and not(cbc:BaseAmount)] | ubl-invoice:Invoice/cac:InvoiceLine/cac:AllowanceCharge[cbc:MultiplierFactorNumeric and not(cbc:BaseAmount)] | ubl-creditnote:CreditNote/cac:AllowanceCharge[cbc:MultiplierFactorNumeric and not(cbc:BaseAmount)] | ubl-creditnote:CreditNote/cac:CreditNoteLine/cac:AllowanceCharge[cbc:MultiplierFactorNumeric and not(cbc:BaseAmount)]" mode="M14" priority="1012">
+<xsl:template match="ubl-invoice:Invoice/cac:AllowanceCharge[cbc:MultiplierFactorNumeric and not(cbc:BaseAmount)] | ubl-invoice:Invoice/cac:InvoiceLine/cac:AllowanceCharge[cbc:MultiplierFactorNumeric and not(cbc:BaseAmount)] | ubl-creditnote:CreditNote/cac:AllowanceCharge[cbc:MultiplierFactorNumeric and not(cbc:BaseAmount)] | ubl-creditnote:CreditNote/cac:CreditNoteLine/cac:AllowanceCharge[cbc:MultiplierFactorNumeric and not(cbc:BaseAmount)]" mode="M15" priority="1012">
     <svrl:fired-rule context="ubl-invoice:Invoice/cac:AllowanceCharge[cbc:MultiplierFactorNumeric and not(cbc:BaseAmount)] | ubl-invoice:Invoice/cac:InvoiceLine/cac:AllowanceCharge[cbc:MultiplierFactorNumeric and not(cbc:BaseAmount)] | ubl-creditnote:CreditNote/cac:AllowanceCharge[cbc:MultiplierFactorNumeric and not(cbc:BaseAmount)] | ubl-creditnote:CreditNote/cac:CreditNoteLine/cac:AllowanceCharge[cbc:MultiplierFactorNumeric and not(cbc:BaseAmount)]" />
 
 		<!--ASSERT -->
@@ -511,11 +532,11 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M14" select="*" />
+    <xsl:apply-templates mode="M15" select="*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="ubl-invoice:Invoice/cac:AllowanceCharge[not(cbc:MultiplierFactorNumeric) and cbc:BaseAmount] | ubl-invoice:Invoice/cac:InvoiceLine/cac:AllowanceCharge[not(cbc:MultiplierFactorNumeric) and cbc:BaseAmount] | ubl-creditnote:CreditNote/cac:AllowanceCharge[not(cbc:MultiplierFactorNumeric) and cbc:BaseAmount] | ubl-creditnote:CreditNote/cac:CreditNoteLine/cac:AllowanceCharge[not(cbc:MultiplierFactorNumeric) and cbc:BaseAmount]" mode="M14" priority="1011">
+<xsl:template match="ubl-invoice:Invoice/cac:AllowanceCharge[not(cbc:MultiplierFactorNumeric) and cbc:BaseAmount] | ubl-invoice:Invoice/cac:InvoiceLine/cac:AllowanceCharge[not(cbc:MultiplierFactorNumeric) and cbc:BaseAmount] | ubl-creditnote:CreditNote/cac:AllowanceCharge[not(cbc:MultiplierFactorNumeric) and cbc:BaseAmount] | ubl-creditnote:CreditNote/cac:CreditNoteLine/cac:AllowanceCharge[not(cbc:MultiplierFactorNumeric) and cbc:BaseAmount]" mode="M15" priority="1011">
     <svrl:fired-rule context="ubl-invoice:Invoice/cac:AllowanceCharge[not(cbc:MultiplierFactorNumeric) and cbc:BaseAmount] | ubl-invoice:Invoice/cac:InvoiceLine/cac:AllowanceCharge[not(cbc:MultiplierFactorNumeric) and cbc:BaseAmount] | ubl-creditnote:CreditNote/cac:AllowanceCharge[not(cbc:MultiplierFactorNumeric) and cbc:BaseAmount] | ubl-creditnote:CreditNote/cac:CreditNoteLine/cac:AllowanceCharge[not(cbc:MultiplierFactorNumeric) and cbc:BaseAmount]" />
 
 		<!--ASSERT -->
@@ -532,11 +553,11 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M14" select="*" />
+    <xsl:apply-templates mode="M15" select="*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="ubl-invoice:Invoice/cac:AllowanceCharge | ubl-invoice:Invoice/cac:InvoiceLine/cac:AllowanceCharge | ubl-creditnote:CreditNote/cac:AllowanceCharge | ubl-creditnote:CreditNote/cac:CreditNoteLine/cac:AllowanceCharge" mode="M14" priority="1010">
+<xsl:template match="ubl-invoice:Invoice/cac:AllowanceCharge | ubl-invoice:Invoice/cac:InvoiceLine/cac:AllowanceCharge | ubl-creditnote:CreditNote/cac:AllowanceCharge | ubl-creditnote:CreditNote/cac:CreditNoteLine/cac:AllowanceCharge" mode="M15" priority="1010">
     <svrl:fired-rule context="ubl-invoice:Invoice/cac:AllowanceCharge | ubl-invoice:Invoice/cac:InvoiceLine/cac:AllowanceCharge | ubl-creditnote:CreditNote/cac:AllowanceCharge | ubl-creditnote:CreditNote/cac:CreditNoteLine/cac:AllowanceCharge" />
 
 		<!--ASSERT -->
@@ -568,11 +589,11 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M14" select="*" />
+    <xsl:apply-templates mode="M15" select="*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="         cac:PaymentMeans[some $code in tokenize('49 59', '\s')           satisfies normalize-space(cbc:PaymentMeansCode) = $code]" mode="M14" priority="1009">
+<xsl:template match="         cac:PaymentMeans[some $code in tokenize('49 59', '\s')           satisfies normalize-space(cbc:PaymentMeansCode) = $code]" mode="M15" priority="1009">
     <svrl:fired-rule context="         cac:PaymentMeans[some $code in tokenize('49 59', '\s')           satisfies normalize-space(cbc:PaymentMeansCode) = $code]" />
 
 		<!--ASSERT -->
@@ -589,11 +610,11 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M14" select="*" />
+    <xsl:apply-templates mode="M15" select="*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="cbc:Amount | cbc:BaseAmount | cbc:PriceAmount | cac:TaxTotal[cac:TaxSubtotal]/cbc:TaxAmount | cbc:TaxableAmount | cbc:LineExtensionAmount | cbc:TaxExclusiveAmount | cbc:TaxInclusiveAmount | cbc:AllowanceTotalAmount | cbc:ChargeTotalAmount | cbc:PrepaidAmount | cbc:PayableRoundingAmount | cbc:PayableAmount" mode="M14" priority="1008">
+<xsl:template match="cbc:Amount | cbc:BaseAmount | cbc:PriceAmount | cac:TaxTotal[cac:TaxSubtotal]/cbc:TaxAmount | cbc:TaxableAmount | cbc:LineExtensionAmount | cbc:TaxExclusiveAmount | cbc:TaxInclusiveAmount | cbc:AllowanceTotalAmount | cbc:ChargeTotalAmount | cbc:PrepaidAmount | cbc:PayableRoundingAmount | cbc:PayableAmount" mode="M15" priority="1008">
     <svrl:fired-rule context="cbc:Amount | cbc:BaseAmount | cbc:PriceAmount | cac:TaxTotal[cac:TaxSubtotal]/cbc:TaxAmount | cbc:TaxableAmount | cbc:LineExtensionAmount | cbc:TaxExclusiveAmount | cbc:TaxInclusiveAmount | cbc:AllowanceTotalAmount | cbc:ChargeTotalAmount | cbc:PrepaidAmount | cbc:PayableRoundingAmount | cbc:PayableAmount" />
 
 		<!--ASSERT -->
@@ -610,11 +631,11 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M14" select="*" />
+    <xsl:apply-templates mode="M15" select="*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="ubl-invoice:Invoice[cac:InvoicePeriod/cbc:StartDate]/cac:InvoiceLine/cac:InvoicePeriod/cbc:StartDate | ubl-creditnote:CreditNote[cac:InvoicePeriod/cbc:StartDate]/cac:CreditNoteLine/cac:InvoicePeriod/cbc:StartDate" mode="M14" priority="1007">
+<xsl:template match="ubl-invoice:Invoice[cac:InvoicePeriod/cbc:StartDate]/cac:InvoiceLine/cac:InvoicePeriod/cbc:StartDate | ubl-creditnote:CreditNote[cac:InvoicePeriod/cbc:StartDate]/cac:CreditNoteLine/cac:InvoicePeriod/cbc:StartDate" mode="M15" priority="1007">
     <svrl:fired-rule context="ubl-invoice:Invoice[cac:InvoicePeriod/cbc:StartDate]/cac:InvoiceLine/cac:InvoicePeriod/cbc:StartDate | ubl-creditnote:CreditNote[cac:InvoicePeriod/cbc:StartDate]/cac:CreditNoteLine/cac:InvoicePeriod/cbc:StartDate" />
 
 		<!--ASSERT -->
@@ -631,11 +652,11 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M14" select="*" />
+    <xsl:apply-templates mode="M15" select="*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="ubl-invoice:Invoice[cac:InvoicePeriod/cbc:EndDate]/cac:InvoiceLine/cac:InvoicePeriod/cbc:EndDate | ubl-creditnote:CreditNote[cac:InvoicePeriod/cbc:EndDate]/cac:CreditNoteLine/cac:InvoicePeriod/cbc:EndDate" mode="M14" priority="1006">
+<xsl:template match="ubl-invoice:Invoice[cac:InvoicePeriod/cbc:EndDate]/cac:InvoiceLine/cac:InvoicePeriod/cbc:EndDate | ubl-creditnote:CreditNote[cac:InvoicePeriod/cbc:EndDate]/cac:CreditNoteLine/cac:InvoicePeriod/cbc:EndDate" mode="M15" priority="1006">
     <svrl:fired-rule context="ubl-invoice:Invoice[cac:InvoicePeriod/cbc:EndDate]/cac:InvoiceLine/cac:InvoicePeriod/cbc:EndDate | ubl-creditnote:CreditNote[cac:InvoicePeriod/cbc:EndDate]/cac:CreditNoteLine/cac:InvoicePeriod/cbc:EndDate" />
 
 		<!--ASSERT -->
@@ -652,11 +673,11 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M14" select="*" />
+    <xsl:apply-templates mode="M15" select="*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="cac:InvoiceLine | cac:CreditNoteLine" mode="M14" priority="1005">
+<xsl:template match="cac:InvoiceLine | cac:CreditNoteLine" mode="M15" priority="1005">
     <svrl:fired-rule context="cac:InvoiceLine | cac:CreditNoteLine" />
     <xsl:variable name="lineExtensionAmount" select="           if (cbc:LineExtensionAmount) then             xs:decimal(cbc:LineExtensionAmount)           else             0" />
     <xsl:variable name="quantity" select="           if (/ubl-invoice:Invoice) then             (if (cbc:InvoicedQuantity) then               xs:decimal(cbc:InvoicedQuantity)             else               1)           else             (if (cbc:CreditedQuantity) then               xs:decimal(cbc:CreditedQuantity)             else               1)" />
@@ -724,11 +745,11 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M14" select="*" />
+    <xsl:apply-templates mode="M15" select="*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="cac:Price/cac:AllowanceCharge" mode="M14" priority="1004">
+<xsl:template match="cac:Price/cac:AllowanceCharge" mode="M15" priority="1004">
     <svrl:fired-rule context="cac:Price/cac:AllowanceCharge" />
 
 		<!--ASSERT -->
@@ -760,11 +781,11 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M14" select="*" />
+    <xsl:apply-templates mode="M15" select="*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="cac:Price/cbc:BaseQuantity[@unitCode]" mode="M14" priority="1003">
+<xsl:template match="cac:Price/cbc:BaseQuantity[@unitCode]" mode="M15" priority="1003">
     <svrl:fired-rule context="cac:Price/cbc:BaseQuantity[@unitCode]" />
     <xsl:variable name="hasQuantity" select="../../cbc:InvoicedQuantity or ../../cbc:CreditedQuantity" />
     <xsl:variable name="quantity" select="           if (/ubl-invoice:Invoice) then             ../../cbc:InvoicedQuantity           else             ../../cbc:CreditedQuantity" />
@@ -783,11 +804,11 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M14" select="*" />
+    <xsl:apply-templates mode="M15" select="*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="cbc:EndpointID[@schemeID = '0088'] | cac:PartyIdentification/cbc:ID[@schemeID = '0088'] | cbc:CompanyID[@schemeID = '0088']" mode="M14" priority="1002">
+<xsl:template match="cbc:EndpointID[@schemeID = '0088'] | cac:PartyIdentification/cbc:ID[@schemeID = '0088'] | cbc:CompanyID[@schemeID = '0088']" mode="M15" priority="1002">
     <svrl:fired-rule context="cbc:EndpointID[@schemeID = '0088'] | cac:PartyIdentification/cbc:ID[@schemeID = '0088'] | cbc:CompanyID[@schemeID = '0088']" />
 
 		<!--ASSERT -->
@@ -804,11 +825,11 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M14" select="*" />
+    <xsl:apply-templates mode="M15" select="*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="cbc:EndpointID[@schemeID = '0192'] | cac:PartyIdentification/cbc:ID[@schemeID = '0192'] | cbc:CompanyID[@schemeID = '0192']" mode="M14" priority="1001">
+<xsl:template match="cbc:EndpointID[@schemeID = '0192'] | cac:PartyIdentification/cbc:ID[@schemeID = '0192'] | cbc:CompanyID[@schemeID = '0192']" mode="M15" priority="1001">
     <svrl:fired-rule context="cbc:EndpointID[@schemeID = '0192'] | cac:PartyIdentification/cbc:ID[@schemeID = '0192'] | cbc:CompanyID[@schemeID = '0192']" />
 
 		<!--ASSERT -->
@@ -825,11 +846,11 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M14" select="*" />
+    <xsl:apply-templates mode="M15" select="*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="cbc:EndpointID[@schemeID = '0184'] | cac:PartyIdentification/cbc:ID[@schemeID = '0184'] | cbc:CompanyID[@schemeID = '0184']" mode="M14" priority="1000">
+<xsl:template match="cbc:EndpointID[@schemeID = '0184'] | cac:PartyIdentification/cbc:ID[@schemeID = '0184'] | cbc:CompanyID[@schemeID = '0184']" mode="M15" priority="1000">
     <svrl:fired-rule context="cbc:EndpointID[@schemeID = '0184'] | cac:PartyIdentification/cbc:ID[@schemeID = '0184'] | cbc:CompanyID[@schemeID = '0184']" />
 
 		<!--ASSERT -->
@@ -846,18 +867,18 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M14" select="*" />
+    <xsl:apply-templates mode="M15" select="*" />
   </xsl:template>
-  <xsl:template match="text()" mode="M14" priority="-1" />
-  <xsl:template match="@*|node()" mode="M14" priority="-2">
-    <xsl:apply-templates mode="M14" select="*" />
+  <xsl:template match="text()" mode="M15" priority="-1" />
+  <xsl:template match="@*|node()" mode="M15" priority="-2">
+    <xsl:apply-templates mode="M15" select="*" />
   </xsl:template>
 
 <!--PATTERN -->
 
 
 	<!--RULE -->
-<xsl:template match="cac:AccountingSupplierParty/cac:Party[$supplierCountry = 'NO']" mode="M15" priority="1000">
+<xsl:template match="cac:AccountingSupplierParty/cac:Party[$supplierCountry = 'NO']" mode="M16" priority="1000">
     <svrl:fired-rule context="cac:AccountingSupplierParty/cac:Party[$supplierCountry = 'NO']" />
 
 		<!--ASSERT -->
@@ -892,11 +913,11 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M15" select="*" />
+    <xsl:apply-templates mode="M16" select="*" />
   </xsl:template>
-  <xsl:template match="text()" mode="M15" priority="-1" />
-  <xsl:template match="@*|node()" mode="M15" priority="-2">
-    <xsl:apply-templates mode="M15" select="*" />
+  <xsl:template match="text()" mode="M16" priority="-1" />
+  <xsl:template match="@*|node()" mode="M16" priority="-2">
+    <xsl:apply-templates mode="M16" select="*" />
   </xsl:template>
 
 <!--PATTERN -->
@@ -904,7 +925,7 @@
   <xsl:variable name="DKCustomerCountry" select="concat(ubl-creditnote:CreditNote/cac:AccountingCustomerParty/cac:Party/cac:PostalAddress/cac:Country/cbc:IdentificationCode, ubl-invoice:Invoice/cac:AccountingCustomerParty/cac:Party/cac:PostalAddress/cac:Country/cbc:IdentificationCode)" />
 
 	<!--RULE -->
-<xsl:template match="ubl-creditnote:CreditNote[$DKSupplierCountry = 'DK'] | ubl-invoice:Invoice[$DKSupplierCountry = 'DK']" mode="M16" priority="1004">
+<xsl:template match="ubl-creditnote:CreditNote[$DKSupplierCountry = 'DK'] | ubl-invoice:Invoice[$DKSupplierCountry = 'DK']" mode="M17" priority="1004">
     <svrl:fired-rule context="ubl-creditnote:CreditNote[$DKSupplierCountry = 'DK'] | ubl-invoice:Invoice[$DKSupplierCountry = 'DK']" />
 
 		<!--ASSERT -->
@@ -966,11 +987,11 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M16" select="*" />
+    <xsl:apply-templates mode="M17" select="*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="ubl-creditnote:CreditNote[$DKSupplierCountry = 'DK' and $DKCustomerCountry = 'DK']/cac:AccountingSupplierParty/cac:Party/cac:PartyIdentification | ubl-creditnote:CreditNote[$DKSupplierCountry = 'DK' and $DKCustomerCountry = 'DK']/cac:AccountingCustomerParty/cac:Party/cac:PartyIdentification | ubl-invoice:Invoice[$DKSupplierCountry = 'DK' and $DKCustomerCountry = 'DK']/cac:AccountingSupplierParty/cac:Party/cac:PartyIdentification | ubl-invoice:Invoice[$DKSupplierCountry = 'DK' and $DKCustomerCountry = 'DK']/cac:AccountingCustomerParty/cac:Party/cac:PartyIdentification" mode="M16" priority="1003">
+<xsl:template match="ubl-creditnote:CreditNote[$DKSupplierCountry = 'DK' and $DKCustomerCountry = 'DK']/cac:AccountingSupplierParty/cac:Party/cac:PartyIdentification | ubl-creditnote:CreditNote[$DKSupplierCountry = 'DK' and $DKCustomerCountry = 'DK']/cac:AccountingCustomerParty/cac:Party/cac:PartyIdentification | ubl-invoice:Invoice[$DKSupplierCountry = 'DK' and $DKCustomerCountry = 'DK']/cac:AccountingSupplierParty/cac:Party/cac:PartyIdentification | ubl-invoice:Invoice[$DKSupplierCountry = 'DK' and $DKCustomerCountry = 'DK']/cac:AccountingCustomerParty/cac:Party/cac:PartyIdentification" mode="M17" priority="1003">
     <svrl:fired-rule context="ubl-creditnote:CreditNote[$DKSupplierCountry = 'DK' and $DKCustomerCountry = 'DK']/cac:AccountingSupplierParty/cac:Party/cac:PartyIdentification | ubl-creditnote:CreditNote[$DKSupplierCountry = 'DK' and $DKCustomerCountry = 'DK']/cac:AccountingCustomerParty/cac:Party/cac:PartyIdentification | ubl-invoice:Invoice[$DKSupplierCountry = 'DK' and $DKCustomerCountry = 'DK']/cac:AccountingSupplierParty/cac:Party/cac:PartyIdentification | ubl-invoice:Invoice[$DKSupplierCountry = 'DK' and $DKCustomerCountry = 'DK']/cac:AccountingCustomerParty/cac:Party/cac:PartyIdentification" />
 
 		<!--ASSERT -->
@@ -987,11 +1008,11 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M16" select="*" />
+    <xsl:apply-templates mode="M17" select="*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="ubl-invoice:Invoice[$DKSupplierCountry = 'DK' and $DKCustomerCountry = 'DK']/cac:PaymentMeans" mode="M16" priority="1002">
+<xsl:template match="ubl-invoice:Invoice[$DKSupplierCountry = 'DK' and $DKCustomerCountry = 'DK']/cac:PaymentMeans" mode="M17" priority="1002">
     <svrl:fired-rule context="ubl-invoice:Invoice[$DKSupplierCountry = 'DK' and $DKCustomerCountry = 'DK']/cac:PaymentMeans" />
 
 		<!--ASSERT -->
@@ -1098,11 +1119,11 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M16" select="*" />
+    <xsl:apply-templates mode="M17" select="*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="ubl-creditnote:CreditNote[$DKSupplierCountry = 'DK' and $DKCustomerCountry = 'DK']/cac:CreditNoteLine | ubl-invoice:Invoice[$DKSupplierCountry = 'DK' and $DKCustomerCountry = 'DK']/cac:InvoiceLine" mode="M16" priority="1001">
+<xsl:template match="ubl-creditnote:CreditNote[$DKSupplierCountry = 'DK' and $DKCustomerCountry = 'DK']/cac:CreditNoteLine | ubl-invoice:Invoice[$DKSupplierCountry = 'DK' and $DKCustomerCountry = 'DK']/cac:InvoiceLine" mode="M17" priority="1001">
     <svrl:fired-rule context="ubl-creditnote:CreditNote[$DKSupplierCountry = 'DK' and $DKCustomerCountry = 'DK']/cac:CreditNoteLine | ubl-invoice:Invoice[$DKSupplierCountry = 'DK' and $DKCustomerCountry = 'DK']/cac:InvoiceLine" />
 
 		<!--ASSERT -->
@@ -1119,11 +1140,11 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M16" select="*" />
+    <xsl:apply-templates mode="M17" select="*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="cac:AllowanceCharge[$DKSupplierCountry = 'DK' and $DKCustomerCountry = 'DK']" mode="M16" priority="1000">
+<xsl:template match="cac:AllowanceCharge[$DKSupplierCountry = 'DK' and $DKCustomerCountry = 'DK']" mode="M17" priority="1000">
     <svrl:fired-rule context="cac:AllowanceCharge[$DKSupplierCountry = 'DK' and $DKCustomerCountry = 'DK']" />
 
 		<!--ASSERT -->
@@ -1140,18 +1161,18 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M16" select="*" />
+    <xsl:apply-templates mode="M17" select="*" />
   </xsl:template>
-  <xsl:template match="text()" mode="M16" priority="-1" />
-  <xsl:template match="@*|node()" mode="M16" priority="-2">
-    <xsl:apply-templates mode="M16" select="*" />
+  <xsl:template match="text()" mode="M17" priority="-1" />
+  <xsl:template match="@*|node()" mode="M17" priority="-2">
+    <xsl:apply-templates mode="M17" select="*" />
   </xsl:template>
 
 <!--PATTERN -->
 
 
 	<!--RULE -->
-<xsl:template match="cac:AccountingSupplierParty/cac:Party[$supplierCountry = 'IT']/cac:PartyTaxScheme[normalize-space(cac:TaxScheme/cbc:ID) != 'VAT']" mode="M17" priority="1001">
+<xsl:template match="cac:AccountingSupplierParty/cac:Party[$supplierCountry = 'IT']/cac:PartyTaxScheme[normalize-space(cac:TaxScheme/cbc:ID) != 'VAT']" mode="M18" priority="1001">
     <svrl:fired-rule context="cac:AccountingSupplierParty/cac:Party[$supplierCountry = 'IT']/cac:PartyTaxScheme[normalize-space(cac:TaxScheme/cbc:ID) != 'VAT']" />
 
 		<!--ASSERT -->
@@ -1168,11 +1189,11 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M17" select="*" />
+    <xsl:apply-templates mode="M18" select="*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="cac:AccountingSupplierParty/cac:Party[$supplierCountry = 'IT']" mode="M17" priority="1000">
+<xsl:template match="cac:AccountingSupplierParty/cac:Party[$supplierCountry = 'IT']" mode="M18" priority="1000">
     <svrl:fired-rule context="cac:AccountingSupplierParty/cac:Party[$supplierCountry = 'IT']" />
 
 		<!--ASSERT -->
@@ -1219,18 +1240,18 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M17" select="*" />
+    <xsl:apply-templates mode="M18" select="*" />
   </xsl:template>
-  <xsl:template match="text()" mode="M17" priority="-1" />
-  <xsl:template match="@*|node()" mode="M17" priority="-2">
-    <xsl:apply-templates mode="M17" select="*" />
+  <xsl:template match="text()" mode="M18" priority="-1" />
+  <xsl:template match="@*|node()" mode="M18" priority="-2">
+    <xsl:apply-templates mode="M18" select="*" />
   </xsl:template>
 
 <!--PATTERN -->
 
 
 	<!--RULE -->
-<xsl:template match="//cac:AccountingSupplierParty/cac:Party[cac:PostalAddress/cac:Country/cbc:IdentificationCode = 'SE' and cac:PartyTaxScheme[cac:TaxScheme/cbc:ID = 'VAT']/substring(cbc:CompanyID, 1, 2) = 'SE']" mode="M18" priority="1007">
+<xsl:template match="//cac:AccountingSupplierParty/cac:Party[cac:PostalAddress/cac:Country/cbc:IdentificationCode = 'SE' and cac:PartyTaxScheme[cac:TaxScheme/cbc:ID = 'VAT']/substring(cbc:CompanyID, 1, 2) = 'SE']" mode="M19" priority="1007">
     <svrl:fired-rule context="//cac:AccountingSupplierParty/cac:Party[cac:PostalAddress/cac:Country/cbc:IdentificationCode = 'SE' and cac:PartyTaxScheme[cac:TaxScheme/cbc:ID = 'VAT']/substring(cbc:CompanyID, 1, 2) = 'SE']" />
 
 		<!--ASSERT -->
@@ -1262,11 +1283,11 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M18" select="*" />
+    <xsl:apply-templates mode="M19" select="*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="//cac:AccountingSupplierParty/cac:Party/cac:PartyLegalEntity[../cac:PostalAddress/cac:Country/cbc:IdentificationCode = 'SE' and cbc:CompanyID]" mode="M18" priority="1006">
+<xsl:template match="//cac:AccountingSupplierParty/cac:Party/cac:PartyLegalEntity[../cac:PostalAddress/cac:Country/cbc:IdentificationCode = 'SE' and cbc:CompanyID]" mode="M19" priority="1006">
     <svrl:fired-rule context="//cac:AccountingSupplierParty/cac:Party/cac:PartyLegalEntity[../cac:PostalAddress/cac:Country/cbc:IdentificationCode = 'SE' and cbc:CompanyID]" />
 
 		<!--ASSERT -->
@@ -1298,11 +1319,11 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M18" select="*" />
+    <xsl:apply-templates mode="M19" select="*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="//cac:AccountingSupplierParty/cac:Party[cac:PostalAddress/cac:Country/cbc:IdentificationCode = 'SE' and exists(cac:PartyLegalEntity/cbc:CompanyID)]/cac:PartyTaxScheme[normalize-space(upper-case(cac:TaxScheme/cbc:ID)) != 'VAT']/cbc:CompanyID" mode="M18" priority="1005">
+<xsl:template match="//cac:AccountingSupplierParty/cac:Party[cac:PostalAddress/cac:Country/cbc:IdentificationCode = 'SE' and exists(cac:PartyLegalEntity/cbc:CompanyID)]/cac:PartyTaxScheme[normalize-space(upper-case(cac:TaxScheme/cbc:ID)) != 'VAT']/cbc:CompanyID" mode="M19" priority="1005">
     <svrl:fired-rule context="//cac:AccountingSupplierParty/cac:Party[cac:PostalAddress/cac:Country/cbc:IdentificationCode = 'SE' and exists(cac:PartyLegalEntity/cbc:CompanyID)]/cac:PartyTaxScheme[normalize-space(upper-case(cac:TaxScheme/cbc:ID)) != 'VAT']/cbc:CompanyID" />
 
 		<!--ASSERT -->
@@ -1319,11 +1340,11 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M18" select="*" />
+    <xsl:apply-templates mode="M19" select="*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="//cac:TaxCategory[//cac:AccountingSupplierParty/cac:Party[cac:PostalAddress/cac:Country/cbc:IdentificationCode = 'SE' and cac:PartyTaxScheme[cac:TaxScheme/cbc:ID = 'VAT']/substring(cbc:CompanyID, 1, 2) = 'SE'] and cbc:ID = 'S'] | //cac:ClassifiedTaxCategory[//cac:AccountingSupplierParty/cac:Party[cac:PostalAddress/cac:Country/cbc:IdentificationCode = 'SE' and cac:PartyTaxScheme[cac:TaxScheme/cbc:ID = 'VAT']/substring(cbc:CompanyID, 1, 2) = 'SE'] and cbc:ID = 'S']" mode="M18" priority="1004">
+<xsl:template match="//cac:TaxCategory[//cac:AccountingSupplierParty/cac:Party[cac:PostalAddress/cac:Country/cbc:IdentificationCode = 'SE' and cac:PartyTaxScheme[cac:TaxScheme/cbc:ID = 'VAT']/substring(cbc:CompanyID, 1, 2) = 'SE'] and cbc:ID = 'S'] | //cac:ClassifiedTaxCategory[//cac:AccountingSupplierParty/cac:Party[cac:PostalAddress/cac:Country/cbc:IdentificationCode = 'SE' and cac:PartyTaxScheme[cac:TaxScheme/cbc:ID = 'VAT']/substring(cbc:CompanyID, 1, 2) = 'SE'] and cbc:ID = 'S']" mode="M19" priority="1004">
     <svrl:fired-rule context="//cac:TaxCategory[//cac:AccountingSupplierParty/cac:Party[cac:PostalAddress/cac:Country/cbc:IdentificationCode = 'SE' and cac:PartyTaxScheme[cac:TaxScheme/cbc:ID = 'VAT']/substring(cbc:CompanyID, 1, 2) = 'SE'] and cbc:ID = 'S'] | //cac:ClassifiedTaxCategory[//cac:AccountingSupplierParty/cac:Party[cac:PostalAddress/cac:Country/cbc:IdentificationCode = 'SE' and cac:PartyTaxScheme[cac:TaxScheme/cbc:ID = 'VAT']/substring(cbc:CompanyID, 1, 2) = 'SE'] and cbc:ID = 'S']" />
 
 		<!--ASSERT -->
@@ -1340,11 +1361,11 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M18" select="*" />
+    <xsl:apply-templates mode="M19" select="*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="//cac:PaymentMeans[//cac:AccountingSupplierParty/cac:Party[cac:PostalAddress/cac:Country/cbc:IdentificationCode = 'SE'] and normalize-space(cbc:PaymentMeansCode) = '30' and normalize-space(cac:PayeeFinancialAccount/cac:FinancialInstitutionBranch/cbc:ID) = 'SE:PLUSGIRO']/cac:PayeeFinancialAccount/cbc:ID" mode="M18" priority="1003">
+<xsl:template match="//cac:PaymentMeans[//cac:AccountingSupplierParty/cac:Party[cac:PostalAddress/cac:Country/cbc:IdentificationCode = 'SE'] and normalize-space(cbc:PaymentMeansCode) = '30' and normalize-space(cac:PayeeFinancialAccount/cac:FinancialInstitutionBranch/cbc:ID) = 'SE:PLUSGIRO']/cac:PayeeFinancialAccount/cbc:ID" mode="M19" priority="1003">
     <svrl:fired-rule context="//cac:PaymentMeans[//cac:AccountingSupplierParty/cac:Party[cac:PostalAddress/cac:Country/cbc:IdentificationCode = 'SE'] and normalize-space(cbc:PaymentMeansCode) = '30' and normalize-space(cac:PayeeFinancialAccount/cac:FinancialInstitutionBranch/cbc:ID) = 'SE:PLUSGIRO']/cac:PayeeFinancialAccount/cbc:ID" />
 
 		<!--ASSERT -->
@@ -1376,11 +1397,11 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M18" select="*" />
+    <xsl:apply-templates mode="M19" select="*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="//cac:PaymentMeans[//cac:AccountingSupplierParty/cac:Party[cac:PostalAddress/cac:Country/cbc:IdentificationCode = 'SE'] and normalize-space(cbc:PaymentMeansCode) = '30' and normalize-space(cac:PayeeFinancialAccount/cac:FinancialInstitutionBranch/cbc:ID) = 'SE:BANKGIRO']/cac:PayeeFinancialAccount/cbc:ID" mode="M18" priority="1002">
+<xsl:template match="//cac:PaymentMeans[//cac:AccountingSupplierParty/cac:Party[cac:PostalAddress/cac:Country/cbc:IdentificationCode = 'SE'] and normalize-space(cbc:PaymentMeansCode) = '30' and normalize-space(cac:PayeeFinancialAccount/cac:FinancialInstitutionBranch/cbc:ID) = 'SE:BANKGIRO']/cac:PayeeFinancialAccount/cbc:ID" mode="M19" priority="1002">
     <svrl:fired-rule context="//cac:PaymentMeans[//cac:AccountingSupplierParty/cac:Party[cac:PostalAddress/cac:Country/cbc:IdentificationCode = 'SE'] and normalize-space(cbc:PaymentMeansCode) = '30' and normalize-space(cac:PayeeFinancialAccount/cac:FinancialInstitutionBranch/cbc:ID) = 'SE:BANKGIRO']/cac:PayeeFinancialAccount/cbc:ID" />
 
 		<!--ASSERT -->
@@ -1412,11 +1433,11 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M18" select="*" />
+    <xsl:apply-templates mode="M19" select="*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="//cac:PaymentMeans[//cac:AccountingSupplierParty/cac:Party[cac:PostalAddress/cac:Country/cbc:IdentificationCode = 'SE'] and (cbc:PaymentMeansCode = normalize-space('50') or cbc:PaymentMeansCode = normalize-space('56'))]" mode="M18" priority="1001">
+<xsl:template match="//cac:PaymentMeans[//cac:AccountingSupplierParty/cac:Party[cac:PostalAddress/cac:Country/cbc:IdentificationCode = 'SE'] and (cbc:PaymentMeansCode = normalize-space('50') or cbc:PaymentMeansCode = normalize-space('56'))]" mode="M19" priority="1001">
     <svrl:fired-rule context="//cac:PaymentMeans[//cac:AccountingSupplierParty/cac:Party[cac:PostalAddress/cac:Country/cbc:IdentificationCode = 'SE'] and (cbc:PaymentMeansCode = normalize-space('50') or cbc:PaymentMeansCode = normalize-space('56'))]" />
 
 		<!--ASSERT -->
@@ -1433,11 +1454,11 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M18" select="*" />
+    <xsl:apply-templates mode="M19" select="*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="//cac:PaymentMeans[//cac:AccountingSupplierParty/cac:Party[cac:PostalAddress/cac:Country/cbc:IdentificationCode = 'SE']  and //cac:AccountingCustomerParty/cac:Party[cac:PostalAddress/cac:Country/cbc:IdentificationCode = 'SE'] and (cbc:PaymentMeansCode = normalize-space('31'))]" mode="M18" priority="1000">
+<xsl:template match="//cac:PaymentMeans[//cac:AccountingSupplierParty/cac:Party[cac:PostalAddress/cac:Country/cbc:IdentificationCode = 'SE']  and //cac:AccountingCustomerParty/cac:Party[cac:PostalAddress/cac:Country/cbc:IdentificationCode = 'SE'] and (cbc:PaymentMeansCode = normalize-space('31'))]" mode="M19" priority="1000">
     <svrl:fired-rule context="//cac:PaymentMeans[//cac:AccountingSupplierParty/cac:Party[cac:PostalAddress/cac:Country/cbc:IdentificationCode = 'SE']  and //cac:AccountingCustomerParty/cac:Party[cac:PostalAddress/cac:Country/cbc:IdentificationCode = 'SE'] and (cbc:PaymentMeansCode = normalize-space('31'))]" />
 
 		<!--ASSERT -->
@@ -1454,25 +1475,425 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M18" select="*" />
+    <xsl:apply-templates mode="M19" select="*" />
   </xsl:template>
-  <xsl:template match="text()" mode="M18" priority="-1" />
-  <xsl:template match="@*|node()" mode="M18" priority="-2">
-    <xsl:apply-templates mode="M18" select="*" />
+  <xsl:template match="text()" mode="M19" priority="-1" />
+  <xsl:template match="@*|node()" mode="M19" priority="-2">
+    <xsl:apply-templates mode="M19" select="*" />
+  </xsl:template>
+  <xsl:param name="isGreekSender" select="($supplierCountry ='GR') or ($supplierCountry ='EL')" />
+  <xsl:param name="isGreekReceiver" select="($customerCountry ='GR') or ($customerCountry ='EL')" />
+  <xsl:param name="isGreekSenderandReceiver" select="$isGreekSender and $isGreekReceiver" />
+
+<!--PATTERN -->
+<xsl:variable name="dateRegExp" select="'^(0?[1-9]|[12][0-9]|3[01])[-\\/ ]?(0?[1-9]|1[0-2])[-/ ]?(?:19|20)[0-9]{2}'" />
+  <xsl:variable name="greekDocumentType" select="tokenize('1.1 1.2 1.3 1.4 1.5 1.6 2.1 2.2 2.3 2.4 3.1 3.2 4 5.1 5.2 6.1 6.2 7.1 8.1 8.2 11.1 11.2 11.3 11.4 11.5','\s')" />
+  <xsl:variable name="tokenizedUblIssueDate" select="tokenize(/*/cbc:IssueDate,'-')" />
+
+	<!--RULE -->
+<xsl:template match="(/ubl-invoice:Invoice | /ubl-creditnote:CreditNote)/cbc:ID[$isGreekSender]" mode="M24" priority="1008">
+    <svrl:fired-rule context="(/ubl-invoice:Invoice | /ubl-creditnote:CreditNote)/cbc:ID[$isGreekSender]" />
+    <xsl:variable name="IdSegments" select="tokenize(.,'\|')" />
+
+		<!--ASSERT -->
+<xsl:choose>
+      <xsl:when test="count($IdSegments) = 6" />
+      <xsl:otherwise>
+        <svrl:failed-assert test="count($IdSegments) = 6">
+          <xsl:attribute name="id">GR-R-001-1</xsl:attribute>
+          <xsl:attribute name="flag">fatal</xsl:attribute>
+          <xsl:attribute name="location">
+            <xsl:apply-templates mode="schematron-select-full-path" select="." />
+          </xsl:attribute>
+          <svrl:text> When the Supplier is Greek, the Invoice Id should consist of 6 segments</svrl:text>
+        </svrl:failed-assert>
+      </xsl:otherwise>
+    </xsl:choose>
+
+		<!--ASSERT -->
+<xsl:choose>
+      <xsl:when test="string-length(normalize-space($IdSegments[1])) = 9                                   and u:TinVerification($IdSegments[1])                                  and ($IdSegments[1] = /*/cac:AccountingSupplierParty/cac:Party/cac:PartyTaxScheme[cac:TaxScheme/cbc:ID = 'VAT']/substring(cbc:CompanyID, 3, 9)                                  or $IdSegments[1] = /*/cac:TaxRepresentativeParty/cac:PartyTaxScheme[cac:TaxScheme/cbc:ID = 'VAT']/substring(cbc:CompanyID, 3, 9) )" />
+      <xsl:otherwise>
+        <svrl:failed-assert test="string-length(normalize-space($IdSegments[1])) = 9 and u:TinVerification($IdSegments[1]) and ($IdSegments[1] = /*/cac:AccountingSupplierParty/cac:Party/cac:PartyTaxScheme[cac:TaxScheme/cbc:ID = 'VAT']/substring(cbc:CompanyID, 3, 9) or $IdSegments[1] = /*/cac:TaxRepresentativeParty/cac:PartyTaxScheme[cac:TaxScheme/cbc:ID = 'VAT']/substring(cbc:CompanyID, 3, 9) )">
+          <xsl:attribute name="id">GR-R-001-2</xsl:attribute>
+          <xsl:attribute name="flag">fatal</xsl:attribute>
+          <xsl:attribute name="location">
+            <xsl:apply-templates mode="schematron-select-full-path" select="." />
+          </xsl:attribute>
+          <svrl:text>When the Supplier is Greek, the Invoice Id first segment must be a valid TIN Number and match either the Supplier's or the Tax Representative's Tin Number</svrl:text>
+        </svrl:failed-assert>
+      </xsl:otherwise>
+    </xsl:choose>
+    <xsl:variable name="tokenizedIdDate" select="tokenize($IdSegments[2],'/')" />
+
+		<!--ASSERT -->
+<xsl:choose>
+      <xsl:when test="string-length(normalize-space($IdSegments[2]))>0                                   and matches($IdSegments[2],$dateRegExp)                                  and ($tokenizedIdDate[1] = $tokenizedUblIssueDate[3]                                     and $tokenizedIdDate[2] = $tokenizedUblIssueDate[2]                                    and $tokenizedIdDate[3] = $tokenizedUblIssueDate[1])" />
+      <xsl:otherwise>
+        <svrl:failed-assert test="string-length(normalize-space($IdSegments[2]))>0 and matches($IdSegments[2],$dateRegExp) and ($tokenizedIdDate[1] = $tokenizedUblIssueDate[3] and $tokenizedIdDate[2] = $tokenizedUblIssueDate[2] and $tokenizedIdDate[3] = $tokenizedUblIssueDate[1])">
+          <xsl:attribute name="id">GR-R-001-3</xsl:attribute>
+          <xsl:attribute name="flag">fatal</xsl:attribute>
+          <xsl:attribute name="location">
+            <xsl:apply-templates mode="schematron-select-full-path" select="." />
+          </xsl:attribute>
+          <svrl:text>When the Supplier is Greek, the Invoice Id second segment must be a valid Date that matches the invoice Issue Date</svrl:text>
+        </svrl:failed-assert>
+      </xsl:otherwise>
+    </xsl:choose>
+
+		<!--ASSERT -->
+<xsl:choose>
+      <xsl:when test="string-length(normalize-space($IdSegments[3]))>0 and string(number($IdSegments[3])) != 'NaN' and xs:integer($IdSegments[3]) >= 0" />
+      <xsl:otherwise>
+        <svrl:failed-assert test="string-length(normalize-space($IdSegments[3]))>0 and string(number($IdSegments[3])) != 'NaN' and xs:integer($IdSegments[3]) >= 0">
+          <xsl:attribute name="id">GR-R-001-4</xsl:attribute>
+          <xsl:attribute name="flag">fatal</xsl:attribute>
+          <xsl:attribute name="location">
+            <xsl:apply-templates mode="schematron-select-full-path" select="." />
+          </xsl:attribute>
+          <svrl:text>When Supplier is Greek, the Invoice Id third segment must be a positive integer</svrl:text>
+        </svrl:failed-assert>
+      </xsl:otherwise>
+    </xsl:choose>
+
+		<!--ASSERT -->
+<xsl:choose>
+      <xsl:when test="string-length(normalize-space($IdSegments[4]))>0 and (some $c in $greekDocumentType satisfies $IdSegments[4] = $c)" />
+      <xsl:otherwise>
+        <svrl:failed-assert test="string-length(normalize-space($IdSegments[4]))>0 and (some $c in $greekDocumentType satisfies $IdSegments[4] = $c)">
+          <xsl:attribute name="id">GR-R-001-5</xsl:attribute>
+          <xsl:attribute name="flag">fatal</xsl:attribute>
+          <xsl:attribute name="location">
+            <xsl:apply-templates mode="schematron-select-full-path" select="." />
+          </xsl:attribute>
+          <svrl:text>When Supplier is Greek, the Invoice Id in the fourth segment must be a valid greek document type</svrl:text>
+        </svrl:failed-assert>
+      </xsl:otherwise>
+    </xsl:choose>
+
+		<!--ASSERT -->
+<xsl:choose>
+      <xsl:when test="string-length($IdSegments[5]) > 0 " />
+      <xsl:otherwise>
+        <svrl:failed-assert test="string-length($IdSegments[5]) > 0">
+          <xsl:attribute name="id">GR-R-001-6</xsl:attribute>
+          <xsl:attribute name="flag">fatal</xsl:attribute>
+          <xsl:attribute name="location">
+            <xsl:apply-templates mode="schematron-select-full-path" select="." />
+          </xsl:attribute>
+          <svrl:text>When Supplier is Greek, the Invoice Id fifth segment must not be empty</svrl:text>
+        </svrl:failed-assert>
+      </xsl:otherwise>
+    </xsl:choose>
+
+		<!--ASSERT -->
+<xsl:choose>
+      <xsl:when test="string-length($IdSegments[6]) > 0 " />
+      <xsl:otherwise>
+        <svrl:failed-assert test="string-length($IdSegments[6]) > 0">
+          <xsl:attribute name="id">GR-R-001-7</xsl:attribute>
+          <xsl:attribute name="flag">fatal</xsl:attribute>
+          <xsl:attribute name="location">
+            <xsl:apply-templates mode="schematron-select-full-path" select="." />
+          </xsl:attribute>
+          <svrl:text>When Supplier is Greek, the Invoice Id sixth segment must not be empty</svrl:text>
+        </svrl:failed-assert>
+      </xsl:otherwise>
+    </xsl:choose>
+    <xsl:apply-templates mode="M24" select="*" />
+  </xsl:template>
+
+	<!--RULE -->
+<xsl:template match="cac:AccountingSupplierParty[$isGreekSender]/cac:Party" mode="M24" priority="1007">
+    <svrl:fired-rule context="cac:AccountingSupplierParty[$isGreekSender]/cac:Party" />
+
+		<!--ASSERT -->
+<xsl:choose>
+      <xsl:when test="string-length(./cac:PartyName/cbc:Name)>0" />
+      <xsl:otherwise>
+        <svrl:failed-assert test="string-length(./cac:PartyName/cbc:Name)>0">
+          <xsl:attribute name="id">GR-R-002</xsl:attribute>
+          <xsl:attribute name="flag">fatal</xsl:attribute>
+          <xsl:attribute name="location">
+            <xsl:apply-templates mode="schematron-select-full-path" select="." />
+          </xsl:attribute>
+          <svrl:text>Greek Suppliers must provide their full name as they are registered in the  Greek Business Registry (G.E.MH.) as a legal entity or in the Tax Registry as a natural person </svrl:text>
+        </svrl:failed-assert>
+      </xsl:otherwise>
+    </xsl:choose>
+
+		<!--ASSERT -->
+<xsl:choose>
+      <xsl:when test="     count(cac:PartyTaxScheme[normalize-space(cac:TaxScheme/cbc:ID) = 'VAT']/cbc:CompanyID) = 1 or     count(/ubl-invoice:Invoice/cac:TaxRepresentativeParty) = 1" />
+      <xsl:otherwise>
+        <svrl:failed-assert test="count(cac:PartyTaxScheme[normalize-space(cac:TaxScheme/cbc:ID) = 'VAT']/cbc:CompanyID) = 1 or count(/ubl-invoice:Invoice/cac:TaxRepresentativeParty) = 1">
+          <xsl:attribute name="id">GR-R-007-1</xsl:attribute>
+          <xsl:attribute name="flag">fatal</xsl:attribute>
+          <xsl:attribute name="location">
+            <xsl:apply-templates mode="schematron-select-full-path" select="." />
+          </xsl:attribute>
+          <svrl:text>When greek supplier does not have a VAT number, the tax representative must be present</svrl:text>
+        </svrl:failed-assert>
+      </xsl:otherwise>
+    </xsl:choose>
+    <xsl:apply-templates mode="M24" select="*" />
+  </xsl:template>
+
+	<!--RULE -->
+<xsl:template match="cac:TaxRepresentativeParty[$isGreekSender]" mode="M24" priority="1006">
+    <svrl:fired-rule context="cac:TaxRepresentativeParty[$isGreekSender]" />
+
+		<!--ASSERT -->
+<xsl:choose>
+      <xsl:when test="string-length(normalize-space(cac:PartyName/cbc:Name))>0" />
+      <xsl:otherwise>
+        <svrl:failed-assert test="string-length(normalize-space(cac:PartyName/cbc:Name))>0">
+          <xsl:attribute name="id">GR-R-007-2</xsl:attribute>
+          <xsl:attribute name="location">
+            <xsl:apply-templates mode="schematron-select-full-path" select="." />
+          </xsl:attribute>
+          <svrl:text>If the Greek Suppliers do not have Greek VAT they must provide the full name of their tax representative in Greece</svrl:text>
+        </svrl:failed-assert>
+      </xsl:otherwise>
+    </xsl:choose>
+
+		<!--ASSERT -->
+<xsl:choose>
+      <xsl:when test="count(cac:PartyTaxScheme[normalize-space(cac:TaxScheme/cbc:ID) = 'VAT']/cbc:CompanyID)=1 and     substring(cac:PartyTaxScheme[normalize-space(cac:TaxScheme/cbc:ID) = 'VAT']/cbc:CompanyID,1,2) = 'EL' and     u:TinVerification(substring(cac:PartyTaxScheme[normalize-space(cac:TaxScheme/cbc:ID) = 'VAT']/cbc:CompanyID,3))" />
+      <xsl:otherwise>
+        <svrl:failed-assert test="count(cac:PartyTaxScheme[normalize-space(cac:TaxScheme/cbc:ID) = 'VAT']/cbc:CompanyID)=1 and substring(cac:PartyTaxScheme[normalize-space(cac:TaxScheme/cbc:ID) = 'VAT']/cbc:CompanyID,1,2) = 'EL' and u:TinVerification(substring(cac:PartyTaxScheme[normalize-space(cac:TaxScheme/cbc:ID) = 'VAT']/cbc:CompanyID,3))">
+          <xsl:attribute name="id">GR-R-007-3</xsl:attribute>
+          <xsl:attribute name="flag">fatal</xsl:attribute>
+          <xsl:attribute name="location">
+            <xsl:apply-templates mode="schematron-select-full-path" select="." />
+          </xsl:attribute>
+          <svrl:text>If the Greek Suppliers do not have Greek VAT, they must provide the VAT number of their tax representative</svrl:text>
+        </svrl:failed-assert>
+      </xsl:otherwise>
+    </xsl:choose>
+    <xsl:apply-templates mode="M24" select="*" />
+  </xsl:template>
+
+	<!--RULE -->
+<xsl:template match="cac:AccountingSupplierParty[$isGreekSender]/cac:Party/cac:PartyTaxScheme[normalize-space(cac:TaxScheme/cbc:ID) = 'VAT']/cbc:CompanyID" mode="M24" priority="1005">
+    <svrl:fired-rule context="cac:AccountingSupplierParty[$isGreekSender]/cac:Party/cac:PartyTaxScheme[normalize-space(cac:TaxScheme/cbc:ID) = 'VAT']/cbc:CompanyID" />
+
+		<!--ASSERT -->
+<xsl:choose>
+      <xsl:when test="substring(.,1,2) = 'EL' and u:TinVerification(substring(.,3))" />
+      <xsl:otherwise>
+        <svrl:failed-assert test="substring(.,1,2) = 'EL' and u:TinVerification(substring(.,3))">
+          <xsl:attribute name="id">GR-R-003</xsl:attribute>
+          <xsl:attribute name="flag">fatal</xsl:attribute>
+          <xsl:attribute name="location">
+            <xsl:apply-templates mode="schematron-select-full-path" select="." />
+          </xsl:attribute>
+          <svrl:text>Bad VAT Number for Greek Supplier</svrl:text>
+        </svrl:failed-assert>
+      </xsl:otherwise>
+    </xsl:choose>
+    <xsl:apply-templates mode="M24" select="*" />
+  </xsl:template>
+
+	<!--RULE -->
+<xsl:template match="/ubl-invoice:Invoice[$isGreekSender] | /ubl-creditnote:CreditNote[$isGreekSender]" mode="M24" priority="1004">
+    <svrl:fired-rule context="/ubl-invoice:Invoice[$isGreekSender] | /ubl-creditnote:CreditNote[$isGreekSender]" />
+
+		<!--ASSERT -->
+<xsl:choose>
+      <xsl:when test="count(cac:AdditionalDocumentReference[cbc:DocumentDescription = '##M.AR.K##'])=1" />
+      <xsl:otherwise>
+        <svrl:failed-assert test="count(cac:AdditionalDocumentReference[cbc:DocumentDescription = '##M.AR.K##'])=1">
+          <xsl:attribute name="id">GR-R-004-1</xsl:attribute>
+          <xsl:attribute name="flag">fatal</xsl:attribute>
+          <xsl:attribute name="location">
+            <xsl:apply-templates mode="schematron-select-full-path" select="." />
+          </xsl:attribute>
+          <svrl:text> When Supplier is Greek, there must be one MARK Number</svrl:text>
+        </svrl:failed-assert>
+      </xsl:otherwise>
+    </xsl:choose>
+
+		<!--ASSERT -->
+<xsl:choose>
+      <xsl:when test="count(cac:AdditionalDocumentReference[cbc:DocumentDescription = '##INVOICE-URL##'])=1" />
+      <xsl:otherwise>
+        <svrl:failed-assert test="count(cac:AdditionalDocumentReference[cbc:DocumentDescription = '##INVOICE-URL##'])=1">
+          <xsl:attribute name="id">GR-S-008-1</xsl:attribute>
+          <xsl:attribute name="flag">warning</xsl:attribute>
+          <xsl:attribute name="location">
+            <xsl:apply-templates mode="schematron-select-full-path" select="." />
+          </xsl:attribute>
+          <svrl:text> When Supplier is Greek, there should be one invoice url</svrl:text>
+        </svrl:failed-assert>
+      </xsl:otherwise>
+    </xsl:choose>
+
+		<!--ASSERT -->
+<xsl:choose>
+      <xsl:when test="(count(cac:AdditionalDocumentReference[cbc:DocumentDescription = '##INVOICE-URL##']) = 0 ) or (count(cac:AdditionalDocumentReference[cbc:DocumentDescription = '##INVOICE-URL##']) = 1 )  " />
+      <xsl:otherwise>
+        <svrl:failed-assert test="(count(cac:AdditionalDocumentReference[cbc:DocumentDescription = '##INVOICE-URL##']) = 0 ) or (count(cac:AdditionalDocumentReference[cbc:DocumentDescription = '##INVOICE-URL##']) = 1 )">
+          <xsl:attribute name="id">GR-R-008-2</xsl:attribute>
+          <xsl:attribute name="location">
+            <xsl:apply-templates mode="schematron-select-full-path" select="." />
+          </xsl:attribute>
+          <svrl:text> When Supplier is Greek, there should be no more than one invoice url</svrl:text>
+        </svrl:failed-assert>
+      </xsl:otherwise>
+    </xsl:choose>
+    <xsl:apply-templates mode="M24" select="*" />
+  </xsl:template>
+
+	<!--RULE -->
+<xsl:template match="cac:AdditionalDocumentReference[$isGreekSender and cbc:DocumentDescription = '##M.AR.K##']/cbc:ID" mode="M24" priority="1003">
+    <svrl:fired-rule context="cac:AdditionalDocumentReference[$isGreekSender and cbc:DocumentDescription = '##M.AR.K##']/cbc:ID" />
+
+		<!--ASSERT -->
+<xsl:choose>
+      <xsl:when test="matches(.,'^[1-9]([0-9]*)')" />
+      <xsl:otherwise>
+        <svrl:failed-assert test="matches(.,'^[1-9]([0-9]*)')">
+          <xsl:attribute name="id">GR-R-004-2</xsl:attribute>
+          <xsl:attribute name="flag">fatal</xsl:attribute>
+          <xsl:attribute name="location">
+            <xsl:apply-templates mode="schematron-select-full-path" select="." />
+          </xsl:attribute>
+          <svrl:text> When Supplier is Greek, the MARK Number must be a positive integer</svrl:text>
+        </svrl:failed-assert>
+      </xsl:otherwise>
+    </xsl:choose>
+    <xsl:apply-templates mode="M24" select="*" />
+  </xsl:template>
+
+	<!--RULE -->
+<xsl:template match="cac:AdditionalDocumentReference[$isGreekSender and cbc:DocumentDescription = '##INVOICE-URL##']" mode="M24" priority="1002">
+    <svrl:fired-rule context="cac:AdditionalDocumentReference[$isGreekSender and cbc:DocumentDescription = '##INVOICE-URL##']" />
+
+		<!--ASSERT -->
+<xsl:choose>
+      <xsl:when test="string-length(normalize-space(cac:Attachment/cac:ExternalReference/cbc:URI))>0" />
+      <xsl:otherwise>
+        <svrl:failed-assert test="string-length(normalize-space(cac:Attachment/cac:ExternalReference/cbc:URI))>0">
+          <xsl:attribute name="id">GR-R-008-3</xsl:attribute>
+          <xsl:attribute name="flag">fatal</xsl:attribute>
+          <xsl:attribute name="location">
+            <xsl:apply-templates mode="schematron-select-full-path" select="." />
+          </xsl:attribute>
+          <svrl:text>When Supplier is Greek and the INVOICE URL Document reference exists, the External Reference URI should be present</svrl:text>
+        </svrl:failed-assert>
+      </xsl:otherwise>
+    </xsl:choose>
+    <xsl:apply-templates mode="M24" select="*" />
+  </xsl:template>
+
+	<!--RULE -->
+<xsl:template match="cac:AccountingCustomerParty[$isGreekSender]/cac:Party" mode="M24" priority="1001">
+    <svrl:fired-rule context="cac:AccountingCustomerParty[$isGreekSender]/cac:Party" />
+
+		<!--ASSERT -->
+<xsl:choose>
+      <xsl:when test="string-length(./cac:PartyName/cbc:Name)>0" />
+      <xsl:otherwise>
+        <svrl:failed-assert test="string-length(./cac:PartyName/cbc:Name)>0">
+          <xsl:attribute name="id">GR-R-005</xsl:attribute>
+          <xsl:attribute name="flag">fatal</xsl:attribute>
+          <xsl:attribute name="location">
+            <xsl:apply-templates mode="schematron-select-full-path" select="." />
+          </xsl:attribute>
+          <svrl:text>Greek Suppliers must provide the full name of the buyer</svrl:text>
+        </svrl:failed-assert>
+      </xsl:otherwise>
+    </xsl:choose>
+    <xsl:apply-templates mode="M24" select="*" />
+  </xsl:template>
+
+	<!--RULE -->
+<xsl:template match="cac:AccountingSupplierParty[$isGreekSender]/cac:Party/cbc:EndpointID" mode="M24" priority="1000">
+    <svrl:fired-rule context="cac:AccountingSupplierParty[$isGreekSender]/cac:Party/cbc:EndpointID" />
+
+		<!--ASSERT -->
+<xsl:choose>
+      <xsl:when test="./@schemeID='9933'and u:TinVerification(.)" />
+      <xsl:otherwise>
+        <svrl:failed-assert test="./@schemeID='9933'and u:TinVerification(.)">
+          <xsl:attribute name="id">GR-R-009</xsl:attribute>
+          <xsl:attribute name="flag">fatal</xsl:attribute>
+          <xsl:attribute name="location">
+            <xsl:apply-templates mode="schematron-select-full-path" select="." />
+          </xsl:attribute>
+          <svrl:text>Greek suppliers that send an invoice through the PEPPOL network must use their TIN number as an electronic address according to PEPPOL Electronic Address Identifier scheme (schemeID 9933).</svrl:text>
+        </svrl:failed-assert>
+      </xsl:otherwise>
+    </xsl:choose>
+    <xsl:apply-templates mode="M24" select="*" />
+  </xsl:template>
+  <xsl:template match="text()" mode="M24" priority="-1" />
+  <xsl:template match="@*|node()" mode="M24" priority="-2">
+    <xsl:apply-templates mode="M24" select="*" />
+  </xsl:template>
+
+<!--PATTERN -->
+
+
+	<!--RULE -->
+<xsl:template match="cac:AccountingCustomerParty[$isGreekSenderandReceiver]/cac:Party" mode="M25" priority="1001">
+    <svrl:fired-rule context="cac:AccountingCustomerParty[$isGreekSenderandReceiver]/cac:Party" />
+
+		<!--ASSERT -->
+<xsl:choose>
+      <xsl:when test="count(cac:PartyTaxScheme[normalize-space(cac:TaxScheme/cbc:ID) = 'VAT']/cbc:CompanyID)=1 and                             substring(cac:PartyTaxScheme[normalize-space(cac:TaxScheme/cbc:ID) = 'VAT']/cbc:CompanyID,1,2) = 'EL' and                             u:TinVerification(substring(cac:PartyTaxScheme[normalize-space(cac:TaxScheme/cbc:ID) = 'VAT']/cbc:CompanyID,3))" />
+      <xsl:otherwise>
+        <svrl:failed-assert test="count(cac:PartyTaxScheme[normalize-space(cac:TaxScheme/cbc:ID) = 'VAT']/cbc:CompanyID)=1 and substring(cac:PartyTaxScheme[normalize-space(cac:TaxScheme/cbc:ID) = 'VAT']/cbc:CompanyID,1,2) = 'EL' and u:TinVerification(substring(cac:PartyTaxScheme[normalize-space(cac:TaxScheme/cbc:ID) = 'VAT']/cbc:CompanyID,3))">
+          <xsl:attribute name="id">GR-R-006</xsl:attribute>
+          <xsl:attribute name="flag">fatal</xsl:attribute>
+          <xsl:attribute name="location">
+            <xsl:apply-templates mode="schematron-select-full-path" select="." />
+          </xsl:attribute>
+          <svrl:text>Greek Suppliers must provide the VAT number of the buyer, if the buyer is Greek </svrl:text>
+        </svrl:failed-assert>
+      </xsl:otherwise>
+    </xsl:choose>
+    <xsl:apply-templates mode="M25" select="*" />
+  </xsl:template>
+
+	<!--RULE -->
+<xsl:template match="cac:AccountingCustomerParty[$isGreekSenderandReceiver]/cac:Party/cbc:EndpointID" mode="M25" priority="1000">
+    <svrl:fired-rule context="cac:AccountingCustomerParty[$isGreekSenderandReceiver]/cac:Party/cbc:EndpointID" />
+
+		<!--ASSERT -->
+<xsl:choose>
+      <xsl:when test="./@schemeID='9933'and u:TinVerification(.)" />
+      <xsl:otherwise>
+        <svrl:failed-assert test="./@schemeID='9933'and u:TinVerification(.)">
+          <xsl:attribute name="id">GR-R-010</xsl:attribute>
+          <xsl:attribute name="flag">fatal</xsl:attribute>
+          <xsl:attribute name="location">
+            <xsl:apply-templates mode="schematron-select-full-path" select="." />
+          </xsl:attribute>
+          <svrl:text>Greek Suppliers that send an invoice through the PEPPOL network to a greek buyer must use the buyer's TIN number as an electronic address according to PEPPOL Electronic Address Identifier scheme (SchemeID 9933)</svrl:text>
+        </svrl:failed-assert>
+      </xsl:otherwise>
+    </xsl:choose>
+    <xsl:apply-templates mode="M25" select="*" />
+  </xsl:template>
+  <xsl:template match="text()" mode="M25" priority="-1" />
+  <xsl:template match="@*|node()" mode="M25" priority="-2">
+    <xsl:apply-templates mode="M25" select="*" />
   </xsl:template>
 
 <!--PATTERN -->
 <xsl:variable name="ISO3166" select="tokenize('AD AE AF AG AI AL AM AO AQ AR AS AT AU AW AX AZ BA BB BD BE BF BG BH BI BJ BL BM BN BO BQ BR BS BT BV BW BY BZ CA CC CD CF CG CH CI CK CL CM CN CO CR CU CV CW CX CY CZ DE DJ DK DM DO DZ EC EE EG EH ER ES ET FI FJ FK FM FO FR GA GB GD GE GF GG GH GI GL GM GN GP GQ GR GS GT GU GW GY HK HM HN HR HT HU ID IE IL IM IN IO IQ IR IS IT JE JM JO JP KE KG KH KI KM KN KP KR KW KY KZ LA LB LC LI LK LR LS LT LU LV LY MA MC MD ME MF MG MH MK ML MM MN MO MP MQ MR MS MT MU MV MW MX MY MZ NA NC NE NF NG NI NL NO NP NR NU NZ OM PA PE PF PG PH PK PL PM PN PR PS PT PW PY QA RE RO RS RU RW SA SB SC SD SE SG SH SI SJ SK SL SM SN SO SR SS ST SV SX SY SZ TC TD TF TG TH TJ TK TL TM TN TO TR TT TV TW TZ UA UG UM US UY UZ VA VC VE VG VI VN VU WF WS YE YT ZA ZM ZW', '\s')" />
-  <xsl:variable name="ISO4217" select="tokenize('AFN EUR ALL DZD USD AOA XCD XCD ARS AMD AWG AUD AZN BSD BHD BDT BBD BYN BZD XOF BMD INR BTN BOB BOV USD BAM BWP NOK BRL USD BND BGN XOF BIF CVE KHR XAF CAD KYD XAF XAF CLP CLF CNY AUD AUD COP COU KMF CDF XAF NZD CRC XOF HRK CUP CUC ANG CZK DKK DJF XCD DOP USD EGP SVC USD XAF ERN ETB FKP DKK FJD XPF XAF GMD GEL GHS GIP DKK XCD USD GTQ GBP GNF XOF GYD HTG USD AUD HNL HKD HUF ISK INR IDR XDR IRR IQD GBP ILS JMD JPY GBP JOD KZT KES AUD KPW KRW KWD KGS LAK LBP LSL ZAR LRD LYD CHF MOP MKD MGA MWK MYR MVR XOF USD MRO MUR XUA MXN MXV USD MDL MNT XCD MAD MZN MMK NAD ZAR AUD NPR XPF NZD NIO XOF NGN NZD AUD USD NOK OMR PKR USD PAB USD PGK PYG PEN PHP NZD PLN USD QAR RON RUB RWF SHP XCD XCD XCD WST STD SAR XOF RSD SCR SLL SGD ANG XSU SBD SOS ZAR SSP LKR SDG SRD NOK SZL SEK CHF CHE CHW SYP TWD TJS TZS THB USD XOF NZD TOP TTD TND TRY TMT USD AUD UGX UAH AED GBP USD USD USN UYU UYI UZS VUV VEF VND USD USD XPF MAD YER ZMW ZWL XBA XBB XBC XBD XTS XXX XAU XPD XPT XAG', '\s')" />
+  <xsl:variable name="ISO4217" select="tokenize('AED AFN ALL AMD ANG AOA ARS AUD AWG AZN BAM BBD BDT BGN BHD BIF BMD BND BOB BOV BRL BSD BTN BWP BYN BZD CAD CDF CHE CHF CHW CLF CLP CNY COP COU CRC CUC CUP CVE CZK DJF DKK DOP DZD EGP ERN ETB EUR FJD FKP GBP GEL GHS GIP GMD GNF GTQ GYD HKD HNL HRK HTG HUF IDR ILS INR IQD IRR ISK JMD JOD JPY KES KGS KHR KMF KPW KRW KWD KYD KZT LAK LBP LKR LRD LSL LYD MAD MDL MGA MKD MMK MNT MOP MRO MUR MVR MWK MXN MXV MYR MZN NAD NGN NIO NOK NPR NZD OMR PAB PEN PGK PHP PKR PLN PYG QAR RON RSD RUB RWF SAR SBD SCR SDG SEK SGD SHP SLL SOS SRD SSP STD SVC SYP SZL THB TJS TMT TND TOP TRY TTD TWD TZS UAH UGX USD USN UYI UYU UZS VEF VND VUV WST XAF XAG XAU XBA XBB XBC XBD XCD XDR XOF XPD XPF XPT XSU XTS XUA XXX YER ZAR ZMW ZWL', '\s')" />
   <xsl:variable name="MIMECODE" select="tokenize('application/pdf image/png image/jpeg text/csv application/vnd.openxmlformats-officedocument.spreadsheetml.sheet application/vnd.oasis.opendocument.spreadsheet', '\s')" />
   <xsl:variable name="UNCL2005" select="tokenize('3 35 432', '\s')" />
   <xsl:variable name="UNCL5189" select="tokenize('41 42 60 62 63 64 65 66 67 68 70 71 88 95 100 102 103 104 105', '\s')" />
   <xsl:variable name="UNCL7161" select="tokenize('AA AAA AAC AAD AAE AAF AAH AAI AAS AAT AAV AAY AAZ ABA ABB ABC ABD ABF ABK ABL ABN ABR ABS ABT ABU ACF ACG ACH ACI ACJ ACK ACL ACM ACS ADC ADE ADJ ADK ADL ADM ADN ADO ADP ADQ ADR ADT ADW ADY ADZ AEA AEB AEC AED AEF AEH AEI AEJ AEK AEL AEM AEN AEO AEP AES AET AEU AEV AEW AEX AEY AEZ AJ AU CA CAB CAD CAE CAF CAI CAJ CAK CAL CAM CAN CAO CAP CAQ CAR CAS CAT CAU CAV CAW CD CG CS CT DAB DAD DL EG EP ER FAA FAB FAC FC FH FI GAA HAA HD HH IAA IAB ID IF IR IS KO L1 LA LAA LAB LF MAE MI ML NAA OA PA PAA PC PL RAB RAC RAD RAF RE RF RH RV SA SAA SAD SAE SAI SG SH SM SU TAB TAC TT TV V1 V2 WH XAA YY ZZZ', '\s')" />
   <xsl:variable name="UNCL5305" select="tokenize('AE E S Z G O K L M', '\s')" />
-  <xsl:variable name="eaid" select="tokenize('0002 0007 0009 0037 0060 0088 0096 0097 0106 0130 0135 0142 0151 0183 0184 0190 0191 0192 0193 0195 0196 0198 0199 0200 0201 0202 0204 0208 9901 9906 9907 9910 9913 9914 9915 9918 9919 9920 9922 9923 9924 9925 9926 9927 9928 9929 9930 9931 9932 9933 9934 9935 9936 9937 9938 9939 9940 9941 9942 9943 9944 9945 9946 9947 9948 9949 9950 9951 9952 9953 9955 9956 9957 9958', '\s')" />
+  <xsl:variable name="eaid" select="tokenize('0002 0007 0009 0037 0060 0088 0096 0097 0106 0130 0135 0142 0151 0183 0184 0190 0191 0192 0193 0195 0196 0198 0199 0200 0201 0202 0204 0208 0209 9901 9906 9907 9910 9913 9914 9915 9918 9919 9920 9922 9923 9924 9925 9926 9927 9928 9929 9930 9931 9932 9933 9934 9935 9936 9937 9938 9939 9940 9941 9942 9943 9944 9945 9946 9947 9948 9949 9950 9951 9952 9953 9955 9956 9957', '\s')" />
 
 	<!--RULE -->
-<xsl:template match="cbc:EmbeddedDocumentBinaryObject[@mimeCode]" mode="M19" priority="1016">
+<xsl:template match="cbc:EmbeddedDocumentBinaryObject[@mimeCode]" mode="M26" priority="1016">
     <svrl:fired-rule context="cbc:EmbeddedDocumentBinaryObject[@mimeCode]" />
 
 		<!--ASSERT -->
@@ -1489,11 +1910,11 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M19" select="*" />
+    <xsl:apply-templates mode="M26" select="*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="cac:AllowanceCharge[cbc:ChargeIndicator = 'false']/cbc:AllowanceChargeReasonCode" mode="M19" priority="1015">
+<xsl:template match="cac:AllowanceCharge[cbc:ChargeIndicator = 'false']/cbc:AllowanceChargeReasonCode" mode="M26" priority="1015">
     <svrl:fired-rule context="cac:AllowanceCharge[cbc:ChargeIndicator = 'false']/cbc:AllowanceChargeReasonCode" />
 
 		<!--ASSERT -->
@@ -1510,11 +1931,11 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M19" select="*" />
+    <xsl:apply-templates mode="M26" select="*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="cac:AllowanceCharge[cbc:ChargeIndicator = 'true']/cbc:AllowanceChargeReasonCode" mode="M19" priority="1014">
+<xsl:template match="cac:AllowanceCharge[cbc:ChargeIndicator = 'true']/cbc:AllowanceChargeReasonCode" mode="M26" priority="1014">
     <svrl:fired-rule context="cac:AllowanceCharge[cbc:ChargeIndicator = 'true']/cbc:AllowanceChargeReasonCode" />
 
 		<!--ASSERT -->
@@ -1531,11 +1952,11 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M19" select="*" />
+    <xsl:apply-templates mode="M26" select="*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="cac:InvoicePeriod/cbc:DescriptionCode" mode="M19" priority="1013">
+<xsl:template match="cac:InvoicePeriod/cbc:DescriptionCode" mode="M26" priority="1013">
     <svrl:fired-rule context="cac:InvoicePeriod/cbc:DescriptionCode" />
 
 		<!--ASSERT -->
@@ -1552,11 +1973,11 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M19" select="*" />
+    <xsl:apply-templates mode="M26" select="*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="cbc:Amount | cbc:BaseAmount | cbc:PriceAmount | cbc:TaxAmount | cbc:TaxableAmount | cbc:LineExtensionAmount | cbc:TaxExclusiveAmount | cbc:TaxInclusiveAmount | cbc:AllowanceTotalAmount | cbc:ChargeTotalAmount | cbc:PrepaidAmount | cbc:PayableRoundingAmount | cbc:PayableAmount" mode="M19" priority="1012">
+<xsl:template match="cbc:Amount | cbc:BaseAmount | cbc:PriceAmount | cbc:TaxAmount | cbc:TaxableAmount | cbc:LineExtensionAmount | cbc:TaxExclusiveAmount | cbc:TaxInclusiveAmount | cbc:AllowanceTotalAmount | cbc:ChargeTotalAmount | cbc:PrepaidAmount | cbc:PayableRoundingAmount | cbc:PayableAmount" mode="M26" priority="1012">
     <svrl:fired-rule context="cbc:Amount | cbc:BaseAmount | cbc:PriceAmount | cbc:TaxAmount | cbc:TaxableAmount | cbc:LineExtensionAmount | cbc:TaxExclusiveAmount | cbc:TaxInclusiveAmount | cbc:AllowanceTotalAmount | cbc:ChargeTotalAmount | cbc:PrepaidAmount | cbc:PayableRoundingAmount | cbc:PayableAmount" />
 
 		<!--ASSERT -->
@@ -1573,11 +1994,11 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M19" select="*" />
+    <xsl:apply-templates mode="M26" select="*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="cbc:InvoiceTypeCode" mode="M19" priority="1011">
+<xsl:template match="cbc:InvoiceTypeCode" mode="M26" priority="1011">
     <svrl:fired-rule context="cbc:InvoiceTypeCode" />
 
 		<!--ASSERT -->
@@ -1594,11 +2015,11 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M19" select="*" />
+    <xsl:apply-templates mode="M26" select="*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="cbc:CreditNoteTypeCode" mode="M19" priority="1010">
+<xsl:template match="cbc:CreditNoteTypeCode" mode="M26" priority="1010">
     <svrl:fired-rule context="cbc:CreditNoteTypeCode" />
 
 		<!--ASSERT -->
@@ -1615,11 +2036,11 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M19" select="*" />
+    <xsl:apply-templates mode="M26" select="*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="cbc:IssueDate | cbc:DueDate | cbc:TaxPointDate | cbc:StartDate | cbc:EndDate | cbc:ActualDeliveryDate" mode="M19" priority="1009">
+<xsl:template match="cbc:IssueDate | cbc:DueDate | cbc:TaxPointDate | cbc:StartDate | cbc:EndDate | cbc:ActualDeliveryDate" mode="M26" priority="1009">
     <svrl:fired-rule context="cbc:IssueDate | cbc:DueDate | cbc:TaxPointDate | cbc:StartDate | cbc:EndDate | cbc:ActualDeliveryDate" />
 
 		<!--ASSERT -->
@@ -1637,11 +2058,11 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M19" select="*" />
+    <xsl:apply-templates mode="M26" select="*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="cbc:EndpointID[@schemeID]" mode="M19" priority="1008">
+<xsl:template match="cbc:EndpointID[@schemeID]" mode="M26" priority="1008">
     <svrl:fired-rule context="cbc:EndpointID[@schemeID]" />
 
 		<!--ASSERT -->
@@ -1658,11 +2079,11 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M19" select="*" />
+    <xsl:apply-templates mode="M26" select="*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="cac:TaxCategory[upper-case(cbc:TaxExemptionReasonCode)='VATEX-EU-G']" mode="M19" priority="1007">
+<xsl:template match="cac:TaxCategory[upper-case(cbc:TaxExemptionReasonCode)='VATEX-EU-G']" mode="M26" priority="1007">
     <svrl:fired-rule context="cac:TaxCategory[upper-case(cbc:TaxExemptionReasonCode)='VATEX-EU-G']" />
 
 		<!--ASSERT -->
@@ -1679,11 +2100,11 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M19" select="*" />
+    <xsl:apply-templates mode="M26" select="*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="cac:TaxCategory[upper-case(cbc:TaxExemptionReasonCode)='VATEX-EU-O']" mode="M19" priority="1006">
+<xsl:template match="cac:TaxCategory[upper-case(cbc:TaxExemptionReasonCode)='VATEX-EU-O']" mode="M26" priority="1006">
     <svrl:fired-rule context="cac:TaxCategory[upper-case(cbc:TaxExemptionReasonCode)='VATEX-EU-O']" />
 
 		<!--ASSERT -->
@@ -1700,11 +2121,11 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M19" select="*" />
+    <xsl:apply-templates mode="M26" select="*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="cac:TaxCategory[upper-case(cbc:TaxExemptionReasonCode)='VATEX-EU-IC']" mode="M19" priority="1005">
+<xsl:template match="cac:TaxCategory[upper-case(cbc:TaxExemptionReasonCode)='VATEX-EU-IC']" mode="M26" priority="1005">
     <svrl:fired-rule context="cac:TaxCategory[upper-case(cbc:TaxExemptionReasonCode)='VATEX-EU-IC']" />
 
 		<!--ASSERT -->
@@ -1721,11 +2142,11 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M19" select="*" />
+    <xsl:apply-templates mode="M26" select="*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="cac:TaxCategory[upper-case(cbc:TaxExemptionReasonCode)='VATEX-EU-AE']" mode="M19" priority="1004">
+<xsl:template match="cac:TaxCategory[upper-case(cbc:TaxExemptionReasonCode)='VATEX-EU-AE']" mode="M26" priority="1004">
     <svrl:fired-rule context="cac:TaxCategory[upper-case(cbc:TaxExemptionReasonCode)='VATEX-EU-AE']" />
 
 		<!--ASSERT -->
@@ -1742,11 +2163,11 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M19" select="*" />
+    <xsl:apply-templates mode="M26" select="*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="cac:TaxCategory[upper-case(cbc:TaxExemptionReasonCode)='VATEX-EU-D']" mode="M19" priority="1003">
+<xsl:template match="cac:TaxCategory[upper-case(cbc:TaxExemptionReasonCode)='VATEX-EU-D']" mode="M26" priority="1003">
     <svrl:fired-rule context="cac:TaxCategory[upper-case(cbc:TaxExemptionReasonCode)='VATEX-EU-D']" />
 
 		<!--ASSERT -->
@@ -1763,11 +2184,11 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M19" select="*" />
+    <xsl:apply-templates mode="M26" select="*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="cac:TaxCategory[upper-case(cbc:TaxExemptionReasonCode)='VATEX-EU-F']" mode="M19" priority="1002">
+<xsl:template match="cac:TaxCategory[upper-case(cbc:TaxExemptionReasonCode)='VATEX-EU-F']" mode="M26" priority="1002">
     <svrl:fired-rule context="cac:TaxCategory[upper-case(cbc:TaxExemptionReasonCode)='VATEX-EU-F']" />
 
 		<!--ASSERT -->
@@ -1784,11 +2205,11 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M19" select="*" />
+    <xsl:apply-templates mode="M26" select="*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="cac:TaxCategory[upper-case(cbc:TaxExemptionReasonCode)='VATEX-EU-I']" mode="M19" priority="1001">
+<xsl:template match="cac:TaxCategory[upper-case(cbc:TaxExemptionReasonCode)='VATEX-EU-I']" mode="M26" priority="1001">
     <svrl:fired-rule context="cac:TaxCategory[upper-case(cbc:TaxExemptionReasonCode)='VATEX-EU-I']" />
 
 		<!--ASSERT -->
@@ -1805,11 +2226,11 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M19" select="*" />
+    <xsl:apply-templates mode="M26" select="*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="cac:TaxCategory[upper-case(cbc:TaxExemptionReasonCode)='VATEX-EU-J']" mode="M19" priority="1000">
+<xsl:template match="cac:TaxCategory[upper-case(cbc:TaxExemptionReasonCode)='VATEX-EU-J']" mode="M26" priority="1000">
     <svrl:fired-rule context="cac:TaxCategory[upper-case(cbc:TaxExemptionReasonCode)='VATEX-EU-J']" />
 
 		<!--ASSERT -->
@@ -1826,10 +2247,10 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M19" select="*" />
+    <xsl:apply-templates mode="M26" select="*" />
   </xsl:template>
-  <xsl:template match="text()" mode="M19" priority="-1" />
-  <xsl:template match="@*|node()" mode="M19" priority="-2">
-    <xsl:apply-templates mode="M19" select="*" />
+  <xsl:template match="text()" mode="M26" priority="-1" />
+  <xsl:template match="@*|node()" mode="M26" priority="-2">
+    <xsl:apply-templates mode="M26" select="*" />
   </xsl:template>
 </xsl:stylesheet>
