@@ -59,7 +59,9 @@ public final class CTestFiles
                                             XRechnungValidation.VID_XRECHNUNG_UBL_INVOICE_121,
                                             XRechnungValidation.VID_XRECHNUNG_CII_122,
                                             XRechnungValidation.VID_XRECHNUNG_UBL_CREDITNOTE_122,
-                                            XRechnungValidation.VID_XRECHNUNG_UBL_INVOICE_122 })
+                                            XRechnungValidation.VID_XRECHNUNG_UBL_INVOICE_122,
+                                            XRechnungValidation.VID_XRECHNUNG_CII_200,
+                                            XRechnungValidation.VID_XRECHNUNG_UBL_CREDITNOTE_200 })
       for (final IReadableResource aRes : getAllMatchingTestFiles (aESID))
         ret.add (MockFile.createGoodCase (aRes, aESID));
 
@@ -89,120 +91,164 @@ public final class CTestFiles
                                             "CII_example9.xml" })
         ret.add (new ClassPathResource (sPrefix + s));
     }
+    else if (aVESID.equals (XRechnungValidation.VID_XRECHNUNG_UBL_CREDITNOTE_120))
+    {
+      // None atm
+    }
+    else if (aVESID.equals (XRechnungValidation.VID_XRECHNUNG_UBL_INVOICE_120))
+    {
+      final String sPrefix = "/test-files/1.2.0/ubl/";
+      for (final String s : new String [] { "ubl-tc434-example1.xml",
+                                            "ubl-tc434-example2.xml",
+                                            "ubl-tc434-example3.xml",
+                                            "ubl-tc434-example4.xml",
+                                            "ubl-tc434-example5.xml",
+                                            "ubl-tc434-example6.xml",
+                                            // "ubl-tc434-example7.xml",
+                                            "ubl-tc434-example8.xml",
+                                            "ubl-tc434-example9.xml" })
+        ret.add (new ClassPathResource (sPrefix + s));
+    }
+    else if (aVESID.equals (XRechnungValidation.VID_XRECHNUNG_CII_121))
+    {
+      final String sPrefix = "/test-files/1.2.1/cii/";
+      for (final String s : new String [] { "CII_business_example_01.xml",
+                                            "CII_business_example_02.xml",
+                                            "CII_example1.xml",
+                                            "CII_example2.xml",
+                                            "CII_example3.xml",
+                                            "CII_example4.xml",
+                                            "CII_example5.xml",
+                                            "CII_example6.xml",
+                                            // "CII_example7.xml",
+                                            "CII_example8.xml",
+                                            "CII_example9.xml" })
+        ret.add (new ClassPathResource (sPrefix + s));
+    }
+    else if (aVESID.equals (XRechnungValidation.VID_XRECHNUNG_UBL_CREDITNOTE_121))
+    {
+      // None atm
+    }
+    else if (aVESID.equals (XRechnungValidation.VID_XRECHNUNG_UBL_INVOICE_121))
+    {
+      final String sPrefix = "/test-files/1.2.1/ubl/";
+      for (final String s : new String [] { "ubl-tc434-example1.xml",
+                                            "ubl-tc434-example2.xml",
+                                            "ubl-tc434-example3.xml",
+                                            "ubl-tc434-example4.xml",
+                                            "ubl-tc434-example5.xml",
+                                            "ubl-tc434-example6.xml",
+                                            // "ubl-tc434-example7.xml",
+                                            "ubl-tc434-example8.xml",
+                                            "ubl-tc434-example9.xml" })
+        ret.add (new ClassPathResource (sPrefix + s));
+    }
+    else if (aVESID.equals (XRechnungValidation.VID_XRECHNUNG_CII_122))
+    {
+      final String sPrefix = "/test-files/1.2.2/cii/";
+      for (final String s : new String [] { "01.01a-INVOICE_uncefact.xml",
+                                            "01.02a-INVOICE_uncefact.xml",
+                                            "01.03a-INVOICE_uncefact.xml",
+                                            "01.04a-INVOICE_uncefact.xml",
+                                            "01.05a-INVOICE_uncefact.xml",
+                                            "01.06a-INVOICE_uncefact.xml",
+                                            "01.07a-INVOICE_uncefact.xml",
+                                            "01.08a-INVOICE_uncefact.xml",
+                                            "01.09a-INVOICE_uncefact.xml",
+                                            "01.10a-INVOICE_uncefact.xml",
+                                            "01.11a-INVOICE_uncefact.xml",
+                                            "01.12a-INVOICE_uncefact.xml",
+                                            "01.13a-INVOICE_uncefact.xml",
+                                            "01.14a-INVOICE_uncefact.xml",
+                                            "01.15a-INVOICE_uncefact.xml",
+                                            "02.01a-INVOICE_uncefact.xml",
+                                            "02.02a-INVOICE_uncefact.xml",
+                                            "03.01a-INVOICE_uncefact.xml",
+                                            "03.02a-INVOICE_uncefact.xml" })
+        ret.add (new ClassPathResource (sPrefix + s));
+    }
+    else if (aVESID.equals (XRechnungValidation.VID_XRECHNUNG_UBL_CREDITNOTE_122))
+    {
+      // None atm
+    }
+    else if (aVESID.equals (XRechnungValidation.VID_XRECHNUNG_UBL_INVOICE_122))
+    {
+      final String sPrefix = "/test-files/1.2.2/ubl/";
+      for (final String s : new String [] { "01.01a-INVOICE_ubl.xml",
+                                            "01.02a-INVOICE_ubl.xml",
+                                            "01.03a-INVOICE_ubl.xml",
+                                            "01.04a-INVOICE_ubl.xml",
+                                            "01.05a-INVOICE_ubl.xml",
+                                            "01.06a-INVOICE_ubl.xml",
+                                            "01.07a-INVOICE_ubl.xml",
+                                            "01.08a-INVOICE_ubl.xml",
+                                            "01.09a-INVOICE_ubl.xml",
+                                            "01.10a-INVOICE_ubl.xml",
+                                            "01.11a-INVOICE_ubl.xml",
+                                            "01.12a-INVOICE_ubl.xml",
+                                            "01.13a-INVOICE_ubl.xml",
+                                            "01.14a-INVOICE_ubl.xml",
+                                            "01.15a-INVOICE_ubl.xml",
+                                            "02.01a-INVOICE_ubl.xml",
+                                            "02.02a-INVOICE_ubl.xml",
+                                            "03.01a-INVOICE_ubl.xml",
+                                            "03.02a-INVOICE_ubl.xml" })
+        ret.add (new ClassPathResource (sPrefix + s));
+    }
+    else if (aVESID.equals (XRechnungValidation.VID_XRECHNUNG_CII_200))
+    {
+      final String sPrefix = "/test-files/2.0.0/cii/";
+      for (final String s : new String [] { "01.01a-INVOICE_uncefact.xml",
+          "01.02a-INVOICE_uncefact.xml",
+          "01.03a-INVOICE_uncefact.xml",
+          "01.04a-INVOICE_uncefact.xml",
+          "01.05a-INVOICE_uncefact.xml",
+          "01.06a-INVOICE_uncefact.xml",
+          "01.07a-INVOICE_uncefact.xml",
+          "01.08a-INVOICE_uncefact.xml",
+          "01.09a-INVOICE_uncefact.xml",
+          "01.10a-INVOICE_uncefact.xml",
+          "01.11a-INVOICE_uncefact.xml",
+          "01.12a-INVOICE_uncefact.xml",
+          "01.13a-INVOICE_uncefact.xml",
+          "01.14a-INVOICE_uncefact.xml",
+          "01.15a-INVOICE_uncefact.xml",
+          "02.01a-INVOICE_uncefact.xml",
+          "02.02a-INVOICE_uncefact.xml",
+          "03.01a-INVOICE_uncefact.xml",
+          "03.02a-INVOICE_uncefact.xml" })
+        ret.add (new ClassPathResource (sPrefix + s));
+    }
+    else if (aVESID.equals (XRechnungValidation.VID_XRECHNUNG_UBL_CREDITNOTE_200))
+    {
+      // None atm
+    }
+    else if (aVESID.equals (XRechnungValidation.VID_XRECHNUNG_UBL_INVOICE_200))
+    {
+      final String sPrefix = "/test-files/2.0.0/ubl/";
+      for (final String s : new String [] { "01.01a-INVOICE_ubl.xml",
+          "01.02a-INVOICE_ubl.xml",
+          "01.03a-INVOICE_ubl.xml",
+          "01.04a-INVOICE_ubl.xml",
+          "01.05a-INVOICE_ubl.xml",
+          "01.06a-INVOICE_ubl.xml",
+          "01.07a-INVOICE_ubl.xml",
+          "01.08a-INVOICE_ubl.xml",
+          "01.09a-INVOICE_ubl.xml",
+          "01.10a-INVOICE_ubl.xml",
+          "01.11a-INVOICE_ubl.xml",
+          "01.12a-INVOICE_ubl.xml",
+          "01.13a-INVOICE_ubl.xml",
+          "01.14a-INVOICE_ubl.xml",
+          "01.15a-INVOICE_ubl.xml",
+          "02.01a-INVOICE_ubl.xml",
+          "02.02a-INVOICE_ubl.xml",
+          "03.01a-INVOICE_ubl.xml",
+          "03.02a-INVOICE_ubl.xml" })
+        ret.add (new ClassPathResource (sPrefix + s));
+    }
     else
-      if (aVESID.equals (XRechnungValidation.VID_XRECHNUNG_UBL_CREDITNOTE_120))
-      {
-        // None atm
-      }
-      else
-        if (aVESID.equals (XRechnungValidation.VID_XRECHNUNG_UBL_INVOICE_120))
-        {
-          final String sPrefix = "/test-files/1.2.0/ubl/";
-          for (final String s : new String [] { "ubl-tc434-example1.xml",
-                                                "ubl-tc434-example2.xml",
-                                                "ubl-tc434-example3.xml",
-                                                "ubl-tc434-example4.xml",
-                                                "ubl-tc434-example5.xml",
-                                                "ubl-tc434-example6.xml",
-                                                // "ubl-tc434-example7.xml",
-                                                "ubl-tc434-example8.xml",
-                                                "ubl-tc434-example9.xml" })
-            ret.add (new ClassPathResource (sPrefix + s));
-        }
-        else
-          if (aVESID.equals (XRechnungValidation.VID_XRECHNUNG_CII_121))
-          {
-            final String sPrefix = "/test-files/1.2.1/cii/";
-            for (final String s : new String [] { "CII_business_example_01.xml",
-                                                  "CII_business_example_02.xml",
-                                                  "CII_example1.xml",
-                                                  "CII_example2.xml",
-                                                  "CII_example3.xml",
-                                                  "CII_example4.xml",
-                                                  "CII_example5.xml",
-                                                  "CII_example6.xml",
-                                                  // "CII_example7.xml",
-                                                  "CII_example8.xml",
-                                                  "CII_example9.xml" })
-              ret.add (new ClassPathResource (sPrefix + s));
-          }
-          else
-            if (aVESID.equals (XRechnungValidation.VID_XRECHNUNG_UBL_CREDITNOTE_121))
-            {
-              // None atm
-            }
-            else
-              if (aVESID.equals (XRechnungValidation.VID_XRECHNUNG_UBL_INVOICE_121))
-              {
-                final String sPrefix = "/test-files/1.2.1/ubl/";
-                for (final String s : new String [] { "ubl-tc434-example1.xml",
-                                                      "ubl-tc434-example2.xml",
-                                                      "ubl-tc434-example3.xml",
-                                                      "ubl-tc434-example4.xml",
-                                                      "ubl-tc434-example5.xml",
-                                                      "ubl-tc434-example6.xml",
-                                                      // "ubl-tc434-example7.xml",
-                                                      "ubl-tc434-example8.xml",
-                                                      "ubl-tc434-example9.xml" })
-                  ret.add (new ClassPathResource (sPrefix + s));
-              }
-              else
-                if (aVESID.equals (XRechnungValidation.VID_XRECHNUNG_CII_122))
-                {
-                  final String sPrefix = "/test-files/1.2.2/cii/";
-                  for (final String s : new String [] { "01.01a-INVOICE_uncefact.xml",
-                                                        "01.02a-INVOICE_uncefact.xml",
-                                                        "01.03a-INVOICE_uncefact.xml",
-                                                        "01.04a-INVOICE_uncefact.xml",
-                                                        "01.05a-INVOICE_uncefact.xml",
-                                                        "01.06a-INVOICE_uncefact.xml",
-                                                        "01.07a-INVOICE_uncefact.xml",
-                                                        "01.08a-INVOICE_uncefact.xml",
-                                                        "01.09a-INVOICE_uncefact.xml",
-                                                        "01.10a-INVOICE_uncefact.xml",
-                                                        "01.11a-INVOICE_uncefact.xml",
-                                                        "01.12a-INVOICE_uncefact.xml",
-                                                        "01.13a-INVOICE_uncefact.xml",
-                                                        "01.14a-INVOICE_uncefact.xml",
-                                                        "01.15a-INVOICE_uncefact.xml",
-                                                        "02.01a-INVOICE_uncefact.xml",
-                                                        "02.02a-INVOICE_uncefact.xml",
-                                                        "03.01a-INVOICE_uncefact.xml",
-                                                        "03.02a-INVOICE_uncefact.xml" })
-                    ret.add (new ClassPathResource (sPrefix + s));
-                }
-                else
-                  if (aVESID.equals (XRechnungValidation.VID_XRECHNUNG_UBL_CREDITNOTE_122))
-                  {
-                    // None atm
-                  }
-                  else
-                    if (aVESID.equals (XRechnungValidation.VID_XRECHNUNG_UBL_INVOICE_122))
-                    {
-                      final String sPrefix = "/test-files/1.2.2/ubl/";
-                      for (final String s : new String [] { "01.01a-INVOICE_ubl.xml",
-                                                            "01.02a-INVOICE_ubl.xml",
-                                                            "01.03a-INVOICE_ubl.xml",
-                                                            "01.04a-INVOICE_ubl.xml",
-                                                            "01.05a-INVOICE_ubl.xml",
-                                                            "01.06a-INVOICE_ubl.xml",
-                                                            "01.07a-INVOICE_ubl.xml",
-                                                            "01.08a-INVOICE_ubl.xml",
-                                                            "01.09a-INVOICE_ubl.xml",
-                                                            "01.10a-INVOICE_ubl.xml",
-                                                            "01.11a-INVOICE_ubl.xml",
-                                                            "01.12a-INVOICE_ubl.xml",
-                                                            "01.13a-INVOICE_ubl.xml",
-                                                            "01.14a-INVOICE_ubl.xml",
-                                                            "01.15a-INVOICE_ubl.xml",
-                                                            "02.01a-INVOICE_ubl.xml",
-                                                            "02.02a-INVOICE_ubl.xml",
-                                                            "03.01a-INVOICE_ubl.xml",
-                                                            "03.02a-INVOICE_ubl.xml" })
-                        ret.add (new ClassPathResource (sPrefix + s));
-                    }
-                    else
-                      throw new IllegalArgumentException ("Invalid VESID: " + aVESID);
+      throw new IllegalArgumentException ("Invalid VESID: " + aVESID);
 
     return ret;
   }
