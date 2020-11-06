@@ -134,6 +134,8 @@ Alternate usage as a Maven BOM:
   
 # News and noteworthy
 
+* v1.0.10 - 2020-11-06
+    * Added support for XRechnung 2.0.0 - thanks to [@yleider](https://github.com/yleider) for the PR
 * v1.0.9 - 2020-11-02
     * Added Peppol Fall 2020 release as version 3.11.0
 * v1.0.8 - 2020-10-05
