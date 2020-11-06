@@ -49,6 +49,7 @@ public final class XRechnungValidation
 
   public static final String GROUP_ID = "de.xrechnung";
 
+  // Valid from 1.7.20219- 31.12.2019
   @Deprecated
   public static final VESID VID_XRECHNUNG_CII_120 = new VESID (GROUP_ID, "cii", "1.2.0");
   @Deprecated
@@ -56,6 +57,7 @@ public final class XRechnungValidation
   @Deprecated
   public static final VESID VID_XRECHNUNG_UBL_INVOICE_120 = new VESID (GROUP_ID, "ubl-invoice", "1.2.0");
 
+  // Valid from 1.1.2020 - 30.6.2020
   @Deprecated
   public static final VESID VID_XRECHNUNG_CII_121 = new VESID (GROUP_ID, "cii", "1.2.1");
   @Deprecated
@@ -63,10 +65,12 @@ public final class XRechnungValidation
   @Deprecated
   public static final VESID VID_XRECHNUNG_UBL_INVOICE_121 = new VESID (GROUP_ID, "ubl-invoice", "1.2.1");
 
+  // Valid from 1.7.2020 - 31.12.2020
   public static final VESID VID_XRECHNUNG_CII_122 = new VESID (GROUP_ID, "cii", "1.2.2");
   public static final VESID VID_XRECHNUNG_UBL_CREDITNOTE_122 = new VESID (GROUP_ID, "ubl-creditnote", "1.2.2");
   public static final VESID VID_XRECHNUNG_UBL_INVOICE_122 = new VESID (GROUP_ID, "ubl-invoice", "1.2.2");
 
+  // Valid from 01.01.2021
   public static final VESID VID_XRECHNUNG_CII_200 = new VESID (GROUP_ID, "cii", "2.0.0");
   public static final VESID VID_XRECHNUNG_UBL_CREDITNOTE_200 = new VESID (GROUP_ID, "ubl-creditnote", "2.0.0");
   public static final VESID VID_XRECHNUNG_UBL_INVOICE_200 = new VESID (GROUP_ID, "ubl-invoice", "2.0.0");
@@ -189,13 +193,13 @@ public final class XRechnungValidation
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.createDerived (aVESUBLCreditNote132,
                                                                                   VID_XRECHNUNG_UBL_CREDITNOTE_200,
                                                                                   "XRechnung UBL CrediteNote " +
-                                                                                  VID_XRECHNUNG_UBL_CREDITNOTE_200.getVersion (),
+                                                                                                                    VID_XRECHNUNG_UBL_CREDITNOTE_200.getVersion (),
                                                                                   bNotDeprecated,
                                                                                   _createXSLT (new ClassPathResource ("/schematron/2.0.0/XRechnung-UBL-validation-CreditNote.xslt"))));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.createDerived (aVESUBLInvoice132,
                                                                                   VID_XRECHNUNG_UBL_INVOICE_200,
                                                                                   "XRechnung UBL Invoice " +
-                                                                                  VID_XRECHNUNG_UBL_INVOICE_200.getVersion (),
+                                                                                                                 VID_XRECHNUNG_UBL_INVOICE_200.getVersion (),
                                                                                   bNotDeprecated,
                                                                                   _createXSLT (new ClassPathResource ("/schematron/2.0.0/XRechnung-UBL-validation-Invoice.xslt"))));
   }
