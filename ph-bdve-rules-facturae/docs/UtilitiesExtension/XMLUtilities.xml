@@ -1,0 +1,485 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?> 
+<utilities:UtilitiesExtension xmlns:utilities="http://www.facturae.es/Facturae/Extensions/Utilities">
+	<Version>1.0</Version>
+	<DatosDelSuministro>
+		<CUPS>abcdeabcdeabcdeabcde1234</CUPS>
+		<DireccionSuministro>
+			<Direccion>C/ Mayor de Argamasilla de Alba 57 1 B</Direccion>
+			<CodigoPostal>12345</CodigoPostal>
+			<Poblacion>Argamasilla de Alba</Poblacion>
+			<Provincia>Ciudad Real</Provincia>
+			<Pais>ESP</Pais>
+			<RefCatastral>A8887BCDijoP</RefCatastral>
+		</DireccionSuministro>
+		<Contrato>
+			<RefContratoEmpresa>A888736-9990</RefContratoEmpresa>
+			<ReferenciaPropiaCliente>ABC1111282773737372888-2009-222AAA</ReferenciaPropiaCliente>
+		</Contrato>
+		<PotenciasCaudales>
+			<PotenciaCaudal>
+				<Tipo>TipoC</Tipo>
+				<Valor>5.9987</Valor>
+				<UnidadMedida>Litros</UnidadMedida>
+			</PotenciaCaudal>
+			<PotenciaCaudal>
+				<Tipo>TipoD</Tipo>
+				<Valor>5.9155</Valor>
+				<UnidadMedida>Litros</UnidadMedida>
+			</PotenciaCaudal>
+		</PotenciasCaudales>
+		<Distribuidora>Distribuidora Rivas</Distribuidora>
+		<ReferenciaLegal>
+			<BOEBOCA>BOE num. 305</BOEBOCA>
+			<FechaBOEBOCA>2009-01-19</FechaBOEBOCA>
+		</ReferenciaLegal>
+		<Tarifa>
+			<CodigoTarifa>123456789A</CodigoTarifa>
+			<FechaCambioTarifa>2008-11-24</FechaCambioTarifa>
+			<TipoTarifa>5</TipoTarifa>
+		</Tarifa>
+		<Usos>
+			<NumeroViviendas>2</NumeroViviendas>
+			<NumeroLocales>0</NumeroLocales>
+			<NumeroAsimilados>3</NumeroAsimilados>
+		</Usos>
+		<Bonificaciones>
+			<FamiliasNumerosasA>0</FamiliasNumerosasA>
+			<FamiliasNumerosasB>4</FamiliasNumerosasB>
+			<ViviendasNumerosasA>0</ViviendasNumerosasA>
+			<ViviendasNumerosasB>2</ViviendasNumerosasB>
+			<ExencionSocial>1</ExencionSocial>
+		</Bonificaciones>
+		<NumeroMeses>4.5532</NumeroMeses>
+		<TitularRed>Fernando Manzano Munoz</TitularRed>
+		<TipoInstalacionTP>ABC</TipoInstalacionTP>
+		<ContratoTP>3</ContratoTP>
+		<ConsumoReparto>Consumo</ConsumoReparto>
+		<NumeroServicio>1123AB-44</NumeroServicio>
+		<ZonaUrbana>S</ZonaUrbana>
+		<OT>Operacion Triunfo</OT>
+		<Saneamiento>N</Saneamiento>
+		<SaldoContrato>29.99</SaldoContrato>
+		<NombreBanco>Banco Santander</NombreBanco>
+		<TitularBancario>Fernando Manzano Munoz</TitularBancario>
+		<OrigenFactura>ES</OrigenFactura>
+		<IDDocumento>65</IDDocumento>
+		<TotalAPagar>48.75</TotalAPagar>
+		<ImporteCanal>24.99</ImporteCanal>
+		<ImporteNoCanal>45.33</ImporteNoCanal>
+		<Agrupacion>Coros y danzas</Agrupacion>
+		<CoefK>2.83774658</CoefK>
+		<ModoCalculoConsumo>DFI</ModoCalculoConsumo>
+	</DatosDelSuministro>
+	<UtilitiesMedida>
+		<MedidasSobreEquipo>
+			<MedidaSobreEquipo>
+				<TipoMedida>Medida mensual</TipoMedida>
+				<IndAltaMedidoEnBaja>D</IndAltaMedidoEnBaja>
+				<TipoAparatoDeMedida>CO</TipoAparatoDeMedida>
+				<TipoDeMedicionDelAparatoDeMedida>PTZ</TipoDeMedicionDelAparatoDeMedida>
+				<Marca>Toshiba</Marca>
+				<NumeroSerie>1239993847AZXX</NumeroSerie>
+				<CodigoDH>DH Llana</CodigoDH>
+				<Magnitud>Nanovoltio</Magnitud>
+				<ConstanteMultiplicadora>3.99382217</ConstanteMultiplicadora>
+				<NumeroRuedasEnteras>5</NumeroRuedasEnteras>
+				<NumeroRuedasDecimales>2</NumeroRuedasDecimales>
+				<LecturaDesde>21.33</LecturaDesde>
+				<FechaHoraDesde>2008-11-24T09:00:00</FechaHoraDesde>
+				<ProcedenciaDesde>Madrid</ProcedenciaDesde>
+				<LecturaHasta>22.01</LecturaHasta>
+				<FechaHoraHasta>2009-01-24T09:00:00</FechaHoraHasta>
+				<ProcedenciaHasta>Madrid</ProcedenciaHasta>
+				<TipoDeLecturaActual>Estimada</TipoDeLecturaActual>
+				<TipoDeLecturaAnterior>Real</TipoDeLecturaAnterior>
+				<ConsumoLeido>44.81</ConsumoLeido>
+				<ConsumoCalculado>51.23</ConsumoCalculado>
+				<RegularizacionConsumoDelPeriodo>0.95</RegularizacionConsumoDelPeriodo>
+				<CoeficienteConversorkWh>2.31416554</CoeficienteConversorkWh>
+				<CoeficientePresion>0.98887611</CoeficientePresion>
+				<FactorK>1.00221211</FactorK>
+				<UnidadDePresion>1.91227776</UnidadDePresion>
+				<PresionAtmosferica>1.98765432</PresionAtmosferica>
+				<PresionRelativa>0.54119998</PresionRelativa>
+				<Temperatura>21.91882777</Temperatura>
+				<PCS>0.15001222</PCS>
+				<Zeta>1.98771234</Zeta>
+				<PCI>12.99121111</PCI>
+				<Densidad>0.98117253</Densidad>
+				<Nitrogeno>0.01221111</Nitrogeno>
+				<CO2>0.00019987</CO2>
+				<H2>0.01221119</H2>
+				<RelevanciaDelAparatoMedidor>Relevante</RelevanciaDelAparatoMedidor>
+				<CaudalMedio>25.11</CaudalMedio>
+				<Ajuste>
+					<MotivoAjuste>Ajuste por necesidad inherente</MotivoAjuste>
+					<AjustePorIntegrador>0.81</AjustePorIntegrador>
+				</Ajuste>
+				<Anomalia>
+					<MotivoAnomalia>Se ha detectado una anomalia en la normalidad</MotivoAnomalia>
+					<AjusteAnomalia>0.05</AjusteAnomalia>
+				</Anomalia>
+				<Calibre>15</Calibre>
+				<FechaProximaLectura>2009-02-19</FechaProximaLectura>
+				<Serializada>ACDD3</Serializada>
+				<RestaDeserializada>ABCDEABCDEABCDEABCD4</RestaDeserializada>
+				<CUPSresta>000001111100000111111B3D</CUPSresta>
+				<ConsumosNocturnos>
+					<LecturasConsumosNocturnos>
+						<LecturaConsumosNocturnos>
+							<HoraInicio>2000-11-09</HoraInicio>
+							<LecturaInicio>21.33</LecturaInicio>
+							<HoraFin>2000-11-09</HoraFin>
+							<LecturaFin>24.19</LecturaFin>
+						</LecturaConsumosNocturnos>
+						<LecturaConsumosNocturnos>
+							<HoraInicio>2000-11-09</HoraInicio>
+							<LecturaInicio>21.33</LecturaInicio>
+							<HoraFin>2000-11-09</HoraFin>
+							<LecturaFin>24.19</LecturaFin>
+						</LecturaConsumosNocturnos>
+					</LecturasConsumosNocturnos>
+					<ConsumoNocturnoLeido>3.18</ConsumoNocturnoLeido>
+					<ConsumoNocturnoCalculado>4.05</ConsumoNocturnoCalculado>
+				</ConsumosNocturnos>
+			</MedidaSobreEquipo>
+			<MedidaSobreEquipo>
+				<TipoMedida>Medida mensual</TipoMedida>
+				<IndAltaMedidoEnBaja>D</IndAltaMedidoEnBaja>
+				<TipoAparatoDeMedida>CO</TipoAparatoDeMedida>
+				<TipoDeMedicionDelAparatoDeMedida>PTZ</TipoDeMedicionDelAparatoDeMedida>
+				<Marca>Toshiba</Marca>
+				<NumeroSerie>1239993847AZXX</NumeroSerie>
+				<CodigoDH>DH Llana</CodigoDH>
+				<Magnitud>Nanovoltio</Magnitud>
+				<ConstanteMultiplicadora>3.99382217</ConstanteMultiplicadora>
+				<NumeroRuedasEnteras>5</NumeroRuedasEnteras>
+				<NumeroRuedasDecimales>2</NumeroRuedasDecimales>
+				<LecturaDesde>21.33</LecturaDesde>
+				<FechaHoraDesde>2008-11-24T09:00:00</FechaHoraDesde>
+				<ProcedenciaDesde>Madrid</ProcedenciaDesde>
+				<LecturaHasta>22.01</LecturaHasta>
+				<FechaHoraHasta>2009-01-24T09:00:00</FechaHoraHasta>
+				<ProcedenciaHasta>Madrid</ProcedenciaHasta>
+				<TipoDeLecturaActual>Estimada</TipoDeLecturaActual>
+				<TipoDeLecturaAnterior>Real</TipoDeLecturaAnterior>
+				<ConsumoLeido>44.81</ConsumoLeido>
+				<ConsumoCalculado>51.23</ConsumoCalculado>
+				<RegularizacionConsumoDelPeriodo>0.95</RegularizacionConsumoDelPeriodo>
+				<CoeficienteConversorkWh>2.31416554</CoeficienteConversorkWh>
+				<CoeficientePresion>0.98887611</CoeficientePresion>
+				<FactorK>1.00221211</FactorK>
+				<UnidadDePresion>1.91227776</UnidadDePresion>
+				<PresionAtmosferica>1.98765432</PresionAtmosferica>
+				<PresionRelativa>0.54119998</PresionRelativa>
+				<Temperatura>21.91882777</Temperatura>
+				<PCS>0.15001222</PCS>
+				<Zeta>1.98771234</Zeta>
+				<PCI>12.99121111</PCI>
+				<Densidad>0.98117253</Densidad>
+				<Nitrogeno>0.01221111</Nitrogeno>
+				<CO2>0.00019987</CO2>
+				<H2>0.01221119</H2>
+				<RelevanciaDelAparatoMedidor>Relevante</RelevanciaDelAparatoMedidor>
+				<CaudalMedio>25.11</CaudalMedio>
+				<Ajuste>
+					<MotivoAjuste>Ajuste por necesidad inherente</MotivoAjuste>
+					<AjustePorIntegrador>0.81</AjustePorIntegrador>
+				</Ajuste>
+				<Anomalia>
+					<MotivoAnomalia>Se ha detectado una anomalia en la normalidad</MotivoAnomalia>
+					<AjusteAnomalia>0.05</AjusteAnomalia>
+				</Anomalia>
+				<Calibre>15</Calibre>
+				<FechaProximaLectura>2009-02-19</FechaProximaLectura>
+				<Serializada>ACDD3</Serializada>
+				<RestaDeserializada>ABCDEABCDEABCDEABCD4</RestaDeserializada>
+				<CUPSresta>000001111100000111111B3D</CUPSresta>
+				<ConsumosNocturnos>
+					<LecturasConsumosNocturnos>
+						<LecturaConsumosNocturnos>
+							<HoraInicio>2008-11-08</HoraInicio>
+							<LecturaInicio>21.33</LecturaInicio>
+							<HoraFin>2008-11-08</HoraFin>
+							<LecturaFin>24.19</LecturaFin>
+						</LecturaConsumosNocturnos>
+					</LecturasConsumosNocturnos>
+					<ConsumoNocturnoLeido>3.18</ConsumoNocturnoLeido>
+					<ConsumoNocturnoCalculado>4.05</ConsumoNocturnoCalculado>
+				</ConsumosNocturnos>
+			</MedidaSobreEquipo>
+		</MedidasSobreEquipo>
+		<Cisternas>
+			<Cisterna>
+				<FechaEntrega>2009-01-19</FechaEntrega>
+				<NumAlbaran>ALB-22111002938476333</NumAlbaran>
+				<PlantaSuministro>Planta 33 Suministradora</PlantaSuministro>
+				<Peso>855.22</Peso>
+				<PCS>12.88229911</PCS>
+				<kWh>15.96</kWh>
+			</Cisterna>
+			<Cisterna>
+				<FechaEntrega>2009-01-19</FechaEntrega>
+				<NumAlbaran>ALB-22111002938476333</NumAlbaran>
+				<PlantaSuministro>Planta 33 Suministradora</PlantaSuministro>
+				<Peso>855.22</Peso>
+				<PCS>12.88229911</PCS>
+				<kWh>15.96</kWh>
+			</Cisterna>
+		</Cisternas>
+		<DatosCalculoDeLaQd>
+			<TotalConsumo>55.61</TotalConsumo>
+			<TipoDeAjuste>Ajuste a la alta</TipoDeAjuste>
+			<QdContratada>21.55</QdContratada>
+			<QdMedia>19.05</QdMedia>
+			<QdAplicada>20.03</QdAplicada>
+			<QdMaxima>21.54</QdMaxima>
+			<DiaQdMaxima>13.82</DiaQdMaxima>
+			<QdMaximaCalculada>21.58</QdMaximaCalculada>
+			<QdMaximaPenalizacion>21.58</QdMaximaPenalizacion>
+		</DatosCalculoDeLaQd>
+	</UtilitiesMedida>
+	<UtilitiesDesgloseConsumos>
+		<DesglosesConsumos>
+			<DesgloseConsumos>
+				<Tipo>Activa llana</Tipo>
+				<ConsumoLeido>33.98</ConsumoLeido>
+				<ConsumoCalculado>21.99</ConsumoCalculado>
+				<UnidadMedida>KWh</UnidadMedida>
+				<ConsumoMedio>25.66</ConsumoMedio>
+				<ImporteMedio>22.98</ImporteMedio>
+				<ConsumoMaximo>38.51</ConsumoMaximo>
+				<ConsumoMinimo>9.16</ConsumoMinimo>
+			</DesgloseConsumos>
+			<DesgloseConsumos>
+				<Tipo>Activa llana</Tipo>
+				<ConsumoLeido>33.98</ConsumoLeido>
+				<ConsumoCalculado>21.99</ConsumoCalculado>
+				<UnidadMedida>KWh</UnidadMedida>
+				<ConsumoMedio>25.66</ConsumoMedio>
+				<ImporteMedio>22.98</ImporteMedio>
+				<ConsumoMaximo>38.51</ConsumoMaximo>
+				<ConsumoMinimo>9.16</ConsumoMinimo>
+			</DesgloseConsumos>
+		</DesglosesConsumos>
+		<CurvasDeCarga>
+			<CurvaDeCarga>
+				<FechaCurva>2009-01-05</FechaCurva>
+				<DatosCurva>sadfasdfasdfsdfasdf</DatosCurva>
+			</CurvaDeCarga>
+			<CurvaDeCarga>
+				<FechaCurva>2009-01-05</FechaCurva>
+				<DatosCurva>sadfasdfasdfsdfasdf</DatosCurva>
+			</CurvaDeCarga>
+		</CurvasDeCarga>
+		<ComentariosDesgloseConsumos>
+			<ComentarioDesgloseConsumos>Este es un comentario al desglose efectuado</ComentarioDesgloseConsumos>
+			<ComentarioDesgloseConsumos>Este es otro comentario al desglose efectuado</ComentarioDesgloseConsumos>
+		</ComentariosDesgloseConsumos>
+	</UtilitiesDesgloseConsumos>
+	<UtilitiesDesglosePrecios>
+		<DesglosesPrecios>
+			<DesglosePrecios>
+				<Tipo>TipoA</Tipo>
+				<Unidad>KWh</Unidad>
+				<Medida>23.11</Medida>
+				<Excesos>0.15</Excesos>
+				<AFacturar>24.24</AFacturar>
+				<Precio>25.66</Precio>
+				<PrecioMedio>21.46</PrecioMedio>
+			</DesglosePrecios>
+			<DesglosePrecios>
+				<Tipo>TipoA</Tipo>
+				<Unidad>KWh</Unidad>
+				<Medida>23.11</Medida>
+				<Excesos>0.15</Excesos>
+				<AFacturar>24.24</AFacturar>
+				<Precio>25.66</Precio>
+				<PrecioMedio>21.46</PrecioMedio>
+			</DesglosePrecios>
+		</DesglosesPrecios>
+		<TotalesTipo>
+			<TotalTipo>
+				<Tipo>TipoA</Tipo>
+				<TotalMedida>23.11</TotalMedida>
+				<TotalExcesos>0.15</TotalExcesos>
+				<TotalAFacturar>24.24</TotalAFacturar>
+			</TotalTipo>
+			<TotalTipo>
+				<Tipo>TipoA</Tipo>
+				<TotalMedida>23.11</TotalMedida>
+				<TotalExcesos>0.15</TotalExcesos>
+				<TotalAFacturar>24.24</TotalAFacturar>
+			</TotalTipo>
+		</TotalesTipo>
+		<ComentariosDesglosePrecios>
+			<ComentarioDesglosePrecios>Solo hay un desglose de precios asi que coincide con los totales</ComentarioDesglosePrecios>
+			<ComentarioDesglosePrecios>Solo hay un desglose de precios asi que coincide con los totales</ComentarioDesglosePrecios>
+		</ComentariosDesglosePrecios>
+	</UtilitiesDesglosePrecios>
+	<UtilitiesHistoricoConsumos>
+		<HistoricoConsumo>
+			<Periodo>Periodo cretacico</Periodo>
+			<Descripcion>Periodo de los dinosaurios</Descripcion>
+			<Valor>15.19</Valor>
+			<UnidadMedida>KWh</UnidadMedida>
+			<FechaIniPeriodo>1248-11-25</FechaIniPeriodo>
+			<FechaFinPeriodo>1524-11-24</FechaFinPeriodo>
+			<TipoCalculo>Exacto</TipoCalculo>
+			<ComentariosHistConsumos>
+				<ComentarioHistConsumos>Esta incluido en el registro del Historico</ComentarioHistConsumos>
+				<ComentarioHistConsumos>Otro mas que esta incluido en el registro del Historico</ComentarioHistConsumos>
+			</ComentariosHistConsumos>
+		</HistoricoConsumo>
+		<HistoricoConsumo>
+			<Periodo>Periodo cretacico</Periodo>
+			<Descripcion>Periodo de los dinosaurios</Descripcion>
+			<Valor>15.19</Valor>
+			<UnidadMedida>KWh</UnidadMedida>
+			<FechaIniPeriodo>1248-11-25</FechaIniPeriodo>
+			<FechaFinPeriodo>1524-11-24</FechaFinPeriodo>
+			<TipoCalculo>Exacto</TipoCalculo>
+			<ComentariosHistConsumos>
+				<ComentarioHistConsumos>Esta incluido en el registro del Historico</ComentarioHistConsumos>
+				<ComentarioHistConsumos>Otro mas que esta incluido en el registro del Historico</ComentarioHistConsumos>
+			</ComentariosHistConsumos>
+		</HistoricoConsumo>
+	</UtilitiesHistoricoConsumos>
+	<UtilitiesMensajesReglamentarios>
+		<ListaMensajes>
+			<Mensaje>
+				<Fecha>2007-10-08</Fecha>
+				<MensajeID>1222738291</MensajeID>
+				<Contenido>Una de las obras maestras de Nacho Vegas, incluida en su disco "Cajas de musica dificiles de parar"</Contenido>
+			</Mensaje>
+			<Mensaje>
+				<Fecha>2007-10-08</Fecha>
+				<MensajeID>1222738291</MensajeID>
+				<Contenido>Una de las obras maestras de Nacho Vegas, incluida en su disco "Cajas de musica dificiles de parar"</Contenido>
+			</Mensaje>
+		</ListaMensajes>
+	</UtilitiesMensajesReglamentarios>
+	<UtilitiesMensajesNoReglamentarios>
+		<ListaMensajes>
+			<Mensaje>
+				<Fecha>2006-05-19</Fecha>
+				<MensajeID>11122043921</MensajeID>
+				<Contenido>Srinivas Sandur Madhu Murthy has been kind enough to provide a tutorial for users who want to install the Flex Builder plugin for use with MyEclipse. It incorporates text, video and graphical formats. Thanks Srinivas!</Contenido>
+			</Mensaje>
+			<Mensaje>
+				<Fecha>2006-05-19</Fecha>
+				<MensajeID>11122043921</MensajeID>
+				<Contenido>Srinivas Sandur Madhu Murthy has been kind enough to provide a tutorial for users who want to install the Flex Builder plugin for use with MyEclipse. It incorporates text, video and graphical formats. Thanks Srinivas!</Contenido>
+			</Mensaje>
+		</ListaMensajes>
+		<CodigoBarrasCobroVentanilla>0001119298281821818924732268127183722</CodigoBarrasCobroVentanilla>
+	</UtilitiesMensajesNoReglamentarios>
+	<UtilitiesAtrAsociado>
+		<TarifaDeAccesoATR>Tarifa ATR</TarifaDeAccesoATR>
+		<ContratoDeAcceso>Contrato de acceso</ContratoDeAcceso>
+		<FechaFinContratoAcceso>2008-11-22</FechaFinContratoAcceso>
+		<DatosTecnicosATR>Es un ATR muy particular, cuando llueve se moja, como los demás ATR</DatosTecnicosATR>
+		<Importes>
+			<Importe>
+				<Tipo>TipoA</Tipo>
+				<Codigo>CodigoA</Codigo>
+				<AFacturar>21.99</AFacturar>
+				<Unidad>KWh</Unidad>
+				<Precio>21.29883657</Precio>
+				<ImporteSinImpuestos>21.31</ImporteSinImpuestos>
+			</Importe>
+			<Importe>
+				<Tipo>TipoB</Tipo>
+				<Codigo>CodigoB</Codigo>
+				<AFacturar>21.39</AFacturar>
+				<Unidad>KWh</Unidad>
+				<Precio>21.22883657</Precio>
+				<ImporteSinImpuestos>21.21</ImporteSinImpuestos>
+			</Importe>
+		</Importes>
+		<TotalesImportes>
+			<TotalImportes>
+				<Tipo>TipoA</Tipo>
+				<ImporteSinImpuestos>21.31</ImporteSinImpuestos>
+			</TotalImportes>
+			<TotalImportes>
+				<Tipo>TipoB</Tipo>
+				<ImporteSinImpuestos>21.21</ImporteSinImpuestos>
+			</TotalImportes>
+		</TotalesImportes>
+		<DatosTUR>
+			<DescuentoSobreTarifaTUR>15.98</DescuentoSobreTarifaTUR>
+			<DescuentoPorcSobreTarifaTUR>5.77</DescuentoPorcSobreTarifaTUR>
+		</DatosTUR>
+		<Decreto>Decreto Real 3 seccion 4 hoja 5</Decreto>
+		<ComentariosATRAsociado>
+			<ComentarioATRAsociado>Este es el conocido ATR porque todo el mundo sabe lo que es un ATR</ComentarioATRAsociado>
+		</ComentariosATRAsociado>
+	</UtilitiesAtrAsociado>
+	<UtilitiesConformidades>
+		<Conformidad>
+			<PCT>Este es un PCT comun</PCT>
+			<Fase>Fase 8 de la fusion nuclear inminente</Fase>
+			<DireccionConformidad>
+				<Direccion>C/ Mayor 33</Direccion>
+				<CodigoPostal>28001</CodigoPostal>
+				<Poblacion>Madrid</Poblacion>
+				<Provincia>Madrid</Provincia>
+				<Pais>ESP</Pais>
+			</DireccionConformidad>
+		</Conformidad>
+		<Conformidad>
+			<PCT>Este es un PCT comun</PCT>
+			<Fase>Fase 8 de la fusion nuclear inminente</Fase>
+			<DireccionConformidad>
+				<Direccion>C/ Mayor 33</Direccion>
+				<CodigoPostal>28001</CodigoPostal>
+				<Poblacion>Madrid</Poblacion>
+				<Provincia>Madrid</Provincia>
+				<Pais>ESP</Pais>
+			</DireccionConformidad>
+		</Conformidad>
+	</UtilitiesConformidades>
+	<CYIIRecapFactura>
+		<Conceptos>
+			<Concepto>
+				<Descripcion>Concepto1</Descripcion>
+				<Importe>17.15</Importe>
+				<IVA>1.15</IVA>
+				<Total>18.30</Total>
+			</Concepto>
+			<Concepto>
+				<Descripcion>Concepto2</Descripcion>
+				<Importe>2.01</Importe>
+				<IVA>0.09</IVA>
+				<Total>2.10</Total>
+			</Concepto>
+		</Conceptos>
+		<Totales>
+			<Importe>19.16</Importe>
+			<IVA>1.24</IVA>
+			<Total>20.40</Total>
+		</Totales>
+	</CYIIRecapFactura>
+	<ConceptosFacturaAgrupada>
+		<ConceptoFacturaAgrupada>
+			<ConceptoFacturado>Concepto agrupado 1</ConceptoFacturado>
+			<Cantidad>11.09</Cantidad>
+			<Unidades>KWh</Unidades>
+			<NumeroDeMeses>12.87</NumeroDeMeses>
+			<PrecioUnitario>12.02991121</PrecioUnitario>
+			<ImporteParcial>25.32</ImporteParcial>
+		</ConceptoFacturaAgrupada>
+		<ConceptoFacturaAgrupada>
+			<ConceptoFacturado>Concepto agrupado 2</ConceptoFacturado>
+			<Cantidad>1.09</Cantidad>
+			<Unidades>KWh</Unidades>
+			<NumeroDeMeses>3.87</NumeroDeMeses>
+			<PrecioUnitario>12.02991121</PrecioUnitario>
+			<ImporteParcial>9.32</ImporteParcial>
+		</ConceptoFacturaAgrupada>
+	</ConceptosFacturaAgrupada>
+	<DatosPagoAdicionales>
+		<Ubicacion>Pago en ventanilla</Ubicacion>
+	</DatosPagoAdicionales>
+</utilities:UtilitiesExtension>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<n1:CorreosExtension xmlns:n1="http://www.facturae.es/Facturae/Extensions/Correos" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Version>1.0</Version>
+	<Trazabilidad>
+		<Traza>
+			<Zona>Alicante</Zona>
+			<Albaranes>
+				<Albaran>
+					<Entregas>20067564728 / AE600009736000000000100</Entregas>
+					<Fecha>2009-07-17</Fecha>
+				</Albaran>
+				<Albaran>
+					<Entregas>2006543853 / AE530000928080000000377</Entregas>
+					<RefCliente>5</RefCliente>
+					<Fecha>2009-07-11</Fecha>
+				</Albaran>
+				<Albaran>
+					<Entregas>2006889582234 / AE530000928080000000266</Entregas>
+					<Fecha>2009-07-09</Fecha>
+				</Albaran>
+			</Albaranes>
+		</Traza>
+		<Traza>
+			<Zona>Madrid</Zona>
+			<Albaranes>
+				<Albaran>
+					<Entregas>2006221724 / AE600009970000000000100</Entregas>
+					<RefCliente>BAN TOO NIKA</RefCliente>
+					<Fecha>2009-07-14</Fecha>
+				</Albaran>
+				<Albaran>
+					<Entregas>2006227324 / AE600009950000000000120</Entregas>
+					<RefCliente>0001</RefCliente>
+					<Fecha>2009-07-14</Fecha>
+				</Albaran>
+			</Albaranes>
+		</Traza>
+	</Trazabilidad>
+</n1:CorreosExtension>

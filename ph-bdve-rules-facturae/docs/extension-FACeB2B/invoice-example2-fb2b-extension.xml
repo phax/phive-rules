@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fe:Facturae xmlns:ds="http://www.w3.org/2000/09/xmldsig#" 
+xmlns:fe="http://www.facturae.gob.es/formato/Versiones/Facturaev3_2_2.xml" 
+xmlns:fb2b="http://www.facturae.es/Facturae/Extensions/FaceB2BExtensionv1_1"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation=
+     "http://www.facturae.gob.es/formato/Versiones/Facturaev3_2_2.xml ../../facturae/Facturaev3_2_2.xsd
+      http://www.facturae.es/Facturae/Extensions/FaceB2BExtensionv1_1 ../../facturae/fb2b_extensionv1_1.xsd">
+<FileHeader>
+	<SchemaVersion>3.2.2</SchemaVersion>
+	<Modality>I</Modality>
+	<InvoiceIssuerType>EM</InvoiceIssuerType>
+	<Batch>
+		<BatchIdentifier>B1234567422FC</BatchIdentifier>
+		<InvoicesCount>1</InvoicesCount>
+		<TotalInvoicesAmount><TotalAmount>1384.58</TotalAmount></TotalInvoicesAmount>
+		<TotalOutstandingAmount><TotalAmount>1384.58</TotalAmount></TotalOutstandingAmount>
+		<TotalExecutableAmount><TotalAmount>1384.58</TotalAmount></TotalExecutableAmount>
+		<InvoiceCurrencyCode>EUR</InvoiceCurrencyCode>
+	</Batch>
+</FileHeader>
+<Parties>
+	<SellerParty>
+		<TaxIdentification>
+			<PersonTypeCode>F</PersonTypeCode>
+			<ResidenceTypeCode>R</ResidenceTypeCode>
+			<TaxIdentificationNumber>12345678Z</TaxIdentificationNumber>
+		</TaxIdentification>
+		<Individual>
+			<Name>Emisor</Name>
+			<FirstSurname>primer_apellido_E</FirstSurname>
+			<SecondSurname>segundo_apellido_E</SecondSurname>
+			<AddressInSpain>
+				<Address>direccion_E</Address>
+				<PostCode>18230</PostCode>
+				<Town>problacion_E</Town>
+				<Province>provincia_E</Province>
+				<CountryCode>ESP</CountryCode>
+			</AddressInSpain>
+		</Individual>
+	</SellerParty>
+	<BuyerParty>
+		<TaxIdentification>
+			<PersonTypeCode>J</PersonTypeCode>
+			<ResidenceTypeCode>R</ResidenceTypeCode>
+			<TaxIdentificationNumber>B12345674</TaxIdentificationNumber>
+		</TaxIdentification>
+		<AdministrativeCentres>
+			<AdministrativeCentre>
+				<CentreCode>P00000010</CentreCode>
+				<RoleTypeCode>03</RoleTypeCode>
+				<Name>nombre_UT</Name>
+				<FirstSurname>primer_apellido_U</FirstSurname>
+				<SecondSurname>segundo_Apellido_U</SecondSurname>
+				<AddressInSpain><Address>direccion_U</Address><PostCode>18230</PostCode><Town>poblacion_U</Town><Province>provincia_U</Province><CountryCode>ESP</CountryCode></AddressInSpain>
+				<CentreDescription>Unidad tramitacion</CentreDescription>
+			</AdministrativeCentre>
+			<AdministrativeCentre>
+				<CentreCode>P00000010</CentreCode>
+				<RoleTypeCode>02</RoleTypeCode>
+				<Name>nombre_OG</Name>
+				<FirstSurname>primer_apellido_OG</FirstSurname>
+				<SecondSurname>segundo_apellido_OG</SecondSurname>
+				<AddressInSpain><Address>direccion_OG</Address><PostCode>18230</PostCode><Town>poblacion_OG</Town><Province>provincia_OG</Province><CountryCode>ESP</CountryCode></AddressInSpain>
+				<CentreDescription>Descripcion Organo Gestor</CentreDescription>
+			</AdministrativeCentre>
+			<AdministrativeCentre>
+				<CentreCode>P00000010</CentreCode>
+				<RoleTypeCode>01</RoleTypeCode>
+				<Name>nombre_OC</Name>
+				<FirstSurname>primer_apellido_OC</FirstSurname>
+				<SecondSurname>segundo_apellido_OC</SecondSurname>
+				<AddressInSpain><Address>direccion_OC</Address><PostCode>18230</PostCode><Town>poblacion_OC</Town><Province>provincia_OC</Province><CountryCode>ESP</CountryCode></AddressInSpain>
+				<CentreDescription>Descripcion Oficina Contable</CentreDescription>
+			</AdministrativeCentre>
+		</AdministrativeCentres>
+		<LegalEntity>
+			<CorporateName>receptor</CorporateName>
+			<TradeName>nombre_comercial_R</TradeName>
+			<AddressInSpain><Address>direccion_R</Address><PostCode>18230</PostCode><Town>poblacion_R</Town><Province>provincia_R</Province><CountryCode>ESP</CountryCode></AddressInSpain>
+		</LegalEntity>
+	</BuyerParty>
+</Parties>
+<Invoices>
+	<Invoice>
+		<InvoiceHeader>
+			<InvoiceNumber>2</InvoiceNumber>
+			<InvoiceSeriesCode>PACOP</InvoiceSeriesCode>
+			<InvoiceDocumentType>FC</InvoiceDocumentType>
+			<InvoiceClass>OO</InvoiceClass>
+		</InvoiceHeader>
+		<InvoiceIssueData>
+			<IssueDate>2013-01-17</IssueDate>
+			<InvoicingPeriod>
+				<StartDate>2013-01-17</StartDate>
+				<EndDate>2013-01-17</EndDate>
+			</InvoicingPeriod>
+			<InvoiceCurrencyCode>EUR</InvoiceCurrencyCode>
+			<TaxCurrencyCode>EUR</TaxCurrencyCode>
+			<LanguageName>es</LanguageName>
+		</InvoiceIssueData>
+		<TaxesOutputs>
+			<Tax>
+				<TaxTypeCode>02</TaxTypeCode>
+				<TaxRate>3.00</TaxRate>
+				<TaxableBase><TotalAmount>1163.52</TotalAmount></TaxableBase>
+				<TaxAmount><TotalAmount>34.91</TotalAmount></TaxAmount>
+				<EquivalenceSurcharge>3.00</EquivalenceSurcharge>
+				<EquivalenceSurchargeAmount><TotalAmount>34.91</TotalAmount></EquivalenceSurchargeAmount>
+			</Tax>
+			<Tax>
+				<TaxTypeCode>01</TaxTypeCode>
+				<TaxRate>18.00</TaxRate>
+				<TaxableBase><TotalAmount>1163.52</TotalAmount></TaxableBase>
+				<TaxAmount><TotalAmount>209.43</TotalAmount></TaxAmount>
+			</Tax>
+		</TaxesOutputs>
+		<TaxesWithheld>
+			<Tax>
+				<TaxTypeCode>03</TaxTypeCode>
+				<TaxRate>5.00</TaxRate>
+				<TaxableBase><TotalAmount>1163.52</TotalAmount></TaxableBase>
+				<TaxAmount><TotalAmount>58.18</TotalAmount></TaxAmount>
+			</Tax>
+		</TaxesWithheld>
+		<InvoiceTotals>
+			<TotalGrossAmount>1212.00</TotalGrossAmount>
+			<GeneralDiscounts>
+				<Discount>
+					<DiscountReason>descuento_general</DiscountReason>
+					<DiscountRate>4.0000</DiscountRate>
+					<DiscountAmount>48.480000</DiscountAmount>
+				</Discount>
+			</GeneralDiscounts>
+			<TotalGeneralDiscounts>48.48</TotalGeneralDiscounts>
+			<TotalGeneralSurcharges>0.00</TotalGeneralSurcharges>
+			<TotalGrossAmountBeforeTaxes>1163.52</TotalGrossAmountBeforeTaxes>
+			<TotalTaxOutputs>279.24</TotalTaxOutputs>
+			<TotalTaxesWithheld>58.18</TotalTaxesWithheld>
+			<InvoiceTotal>1384.58</InvoiceTotal>
+			<TotalOutstandingAmount>1384.58</TotalOutstandingAmount>
+			<TotalExecutableAmount>1384.58</TotalExecutableAmount>
+		</InvoiceTotals>
+		<Items>
+			<InvoiceLine>
+				<ItemDescription>Descripcion de factura de mesas</ItemDescription>
+				<Quantity>4.0</Quantity>
+				<UnitOfMeasure>01</UnitOfMeasure>
+				<UnitPriceWithoutTax>300.000000</UnitPriceWithoutTax>
+				<TotalCost>1200.000000</TotalCost>
+				<DiscountsAndRebates>
+					<Discount>
+						<DiscountReason>descuento </DiscountReason>
+						<DiscountRate>3.0000</DiscountRate>
+						<DiscountAmount>36.000000</DiscountAmount>
+					</Discount>
+				</DiscountsAndRebates>
+				<Charges>
+					<Charge>
+						<ChargeReason>cargo</ChargeReason>
+						<ChargeRate>4.0000</ChargeRate>
+						<ChargeAmount>48.000000</ChargeAmount>
+					</Charge>
+				</Charges>
+				<GrossAmount>1212.000000</GrossAmount>
+				<TaxesWithheld>
+					<Tax>
+						<TaxTypeCode>03</TaxTypeCode>
+						<TaxRate>5.00</TaxRate>
+						<TaxableBase><TotalAmount>1212.00</TotalAmount></TaxableBase>
+						<TaxAmount><TotalAmount>60.60</TotalAmount></TaxAmount>
+					</Tax>
+				</TaxesWithheld>
+				<TaxesOutputs>
+					<Tax>
+						<TaxTypeCode>01</TaxTypeCode>
+						<TaxRate>18.00</TaxRate>
+						<TaxableBase><TotalAmount>1212.00</TotalAmount></TaxableBase>
+						<TaxAmount><TotalAmount>218.16</TotalAmount></TaxAmount>
+						<EquivalenceSurcharge>0.00</EquivalenceSurcharge>
+						<EquivalenceSurchargeAmount><TotalAmount>0.00</TotalAmount></EquivalenceSurchargeAmount>
+					</Tax>
+					<Tax>
+						<TaxTypeCode>02</TaxTypeCode>
+						<TaxRate>3.00</TaxRate>
+						<TaxableBase><TotalAmount>1212.00</TotalAmount></TaxableBase>
+						<TaxAmount><TotalAmount>36.36</TotalAmount></TaxAmount>
+						<EquivalenceSurcharge>3.00</EquivalenceSurcharge>
+						<EquivalenceSurchargeAmount><TotalAmount>36.36</TotalAmount></EquivalenceSurchargeAmount>
+					</Tax>
+				</TaxesOutputs>
+				<AdditionalLineItemInformation>Informacion adicional de la factura de la mesas</AdditionalLineItemInformation>
+			</InvoiceLine>
+		</Items>
+		<AdditionalData>
+			<Extensions>
+				<fb2b:FaceB2BExtension>
+					<publicSectorInformation>
+						<publicOrganismCode>E00003301</publicOrganismCode>
+						<contractReference>333000</contractReference>
+					</publicSectorInformation>
+					<buyerCentres>
+						<receiverAdministrativeCentre>
+							<code>ESB123456740001</code>
+						</receiverAdministrativeCentre>
+						<administrativeCentres>
+							<centre>
+								<code>ESB123456740002</code>
+								<name>Unidad DIRe Compradora 0002</name>
+								<role>Buyer</role>
+							</centre>
+							<centre>
+								<code>ESB123456740003</code>
+								<name>Unidad DIRe Fiscal 0003</name>
+								<role>Fiscal</role>
+							</centre>
+							<centre>
+								<code>ESB123456740004</code>
+								<role>Collector</role>
+							</centre>																		
+						</administrativeCentres>
+					</buyerCentres>
+					<sellerCentres>
+						<administrativeCentres>
+							<centre>
+								<code>ES12345678Z0002</code>
+								<name>Unidad DIRe Compradora 0002</name>
+								<role>Seller</role>
+							</centre>
+							<centre>
+								<code>ES12345678Z0003</code>
+								<name>Unidad DIRe Fiscal 0003</name>
+								<role>Fiscal</role>
+							</centre>
+						</administrativeCentres>
+					</sellerCentres>
+				</fb2b:FaceB2BExtension>
+			</Extensions>
+		</AdditionalData>
+	</Invoice>
+</Invoices>
+</fe:Facturae>
