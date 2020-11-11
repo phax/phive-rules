@@ -22,8 +22,6 @@ import javax.xml.xpath.XPath;
 import javax.xml.xpath.XPathExpression;
 import javax.xml.xpath.XPathFactory;
 
-import com.helger.bdve.api.EValidationType;
-import com.helger.bdve.api.artefact.ValidationArtefact;
 import com.helger.bdve.api.executorset.IValidationExecutorSetRegistry;
 import com.helger.bdve.api.executorset.VESID;
 import com.helger.bdve.api.executorset.ValidationExecutorSet;
@@ -116,15 +114,12 @@ public final class EnergieEFactuurValidation
                                                                              "Energie eFactuur " + VID_ENERGIE_EFACTUUR_1_0_0.getVersion (),
                                                                              bNotDeprecated,
                                                                              ValidationExecutorXSD.create (EUBL21DocumentType.INVOICE),
-                                                                             new ValidationExecutorXSDPartial (new ValidationArtefact (EValidationType.PARTIAL_XSD,
-                                                                                                                                       SEEF_EXT_XSD_1_0_0),
-                                                                                                               new XSDPartialContext (aXE100,
-                                                                                                                                      Integer.valueOf (1),
-                                                                                                                                      Integer.valueOf (1))),
-                                                                             new ValidationExecutorSchematron (new ValidationArtefact (EValidationType.SCHEMATRON_XSLT,
-                                                                                                                                       SimplerInvoicingValidation.INVOICE_SI11),
-                                                                                                               null,
-                                                                                                               aCtx)));
+                                                                             ValidationExecutorXSDPartial.create (SEEF_EXT_XSD_1_0_0,
+                                                                                                                  XSDPartialContext.create (aXE100,
+                                                                                                                                            1,
+                                                                                                                                            1)),
+                                                                             ValidationExecutorSchematron.createXSLT (SimplerInvoicingValidation.INVOICE_SI11,
+                                                                                                                      aCtx)));
     }
 
     {
@@ -143,15 +138,12 @@ public final class EnergieEFactuurValidation
                                                                              "Energie eFactuur " + VID_ENERGIE_EFACTUUR_1_0_1.getVersion (),
                                                                              bNotDeprecated,
                                                                              ValidationExecutorXSD.create (EUBL21DocumentType.INVOICE),
-                                                                             new ValidationExecutorXSDPartial (new ValidationArtefact (EValidationType.PARTIAL_XSD,
-                                                                                                                                       SEEF_EXT_XSD_1_0_1),
-                                                                                                               new XSDPartialContext (aXE101,
-                                                                                                                                      Integer.valueOf (1),
-                                                                                                                                      Integer.valueOf (1))),
-                                                                             new ValidationExecutorSchematron (new ValidationArtefact (EValidationType.SCHEMATRON_XSLT,
-                                                                                                                                       SimplerInvoicingValidation.INVOICE_SI11),
-                                                                                                               null,
-                                                                                                               aCtx)));
+                                                                             ValidationExecutorXSDPartial.create (SEEF_EXT_XSD_1_0_1,
+                                                                                                                  XSDPartialContext.create (aXE101,
+                                                                                                                                            1,
+                                                                                                                                            1)),
+                                                                             ValidationExecutorSchematron.createXSLT (SimplerInvoicingValidation.INVOICE_SI11,
+                                                                                                                      aCtx)));
     }
 
     {
@@ -170,15 +162,12 @@ public final class EnergieEFactuurValidation
                                                                              "Energie eFactuur " + VID_ENERGIE_EFACTUUR_2_0_0.getVersion (),
                                                                              bNotDeprecated,
                                                                              ValidationExecutorXSD.create (EUBL21DocumentType.INVOICE),
-                                                                             new ValidationExecutorXSDPartial (new ValidationArtefact (EValidationType.PARTIAL_XSD,
-                                                                                                                                       SEEF_EXT_XSD_2_0_0),
-                                                                                                               new XSDPartialContext (aXE200,
-                                                                                                                                      Integer.valueOf (1),
-                                                                                                                                      Integer.valueOf (1))),
-                                                                             new ValidationExecutorSchematron (new ValidationArtefact (EValidationType.SCHEMATRON_XSLT,
-                                                                                                                                       SimplerInvoicingValidation.INVOICE_SI12),
-                                                                                                               null,
-                                                                                                               aCtx)));
+                                                                             ValidationExecutorXSDPartial.create (SEEF_EXT_XSD_2_0_0,
+                                                                                                                  XSDPartialContext.create (aXE200,
+                                                                                                                                            1,
+                                                                                                                                            1)),
+                                                                             ValidationExecutorSchematron.createXSLT (SimplerInvoicingValidation.INVOICE_SI12,
+                                                                                                                      aCtx)));
     }
 
     {
@@ -197,15 +186,12 @@ public final class EnergieEFactuurValidation
                                                                              "Energie eFactuur " + VID_ENERGIE_EFACTUUR_3_0_0.getVersion (),
                                                                              bNotDeprecated,
                                                                              ValidationExecutorXSD.create (EUBL21DocumentType.INVOICE),
-                                                                             new ValidationExecutorXSDPartial (new ValidationArtefact (EValidationType.PARTIAL_XSD,
-                                                                                                                                       SEEF_EXT_XSD_3_0_0),
-                                                                                                               new XSDPartialContext (aXE300,
-                                                                                                                                      Integer.valueOf (1),
-                                                                                                                                      Integer.valueOf (1))),
-                                                                             new ValidationExecutorSchematron (new ValidationArtefact (EValidationType.SCHEMATRON_XSLT,
-                                                                                                                                       SimplerInvoicingValidation.INVOICE_SI20),
-                                                                                                               null,
-                                                                                                               aCtx)));
+                                                                             ValidationExecutorXSDPartial.create (SEEF_EXT_XSD_3_0_0,
+                                                                                                                  XSDPartialContext.create (aXE300,
+                                                                                                                                            1,
+                                                                                                                                            1)),
+                                                                             ValidationExecutorSchematron.createXSLT (SimplerInvoicingValidation.INVOICE_SI20,
+                                                                                                                      aCtx)));
     }
   }
 }

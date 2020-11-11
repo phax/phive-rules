@@ -19,8 +19,6 @@ package com.helger.bdve.xrechnung;
 import javax.annotation.Nonnull;
 import javax.annotation.concurrent.Immutable;
 
-import com.helger.bdve.api.EValidationType;
-import com.helger.bdve.api.artefact.ValidationArtefact;
 import com.helger.bdve.api.executorset.IValidationExecutorSet;
 import com.helger.bdve.api.executorset.IValidationExecutorSetRegistry;
 import com.helger.bdve.api.executorset.VESID;
@@ -28,9 +26,10 @@ import com.helger.bdve.api.executorset.ValidationExecutorSet;
 import com.helger.bdve.en16931.EN16931Validation;
 import com.helger.bdve.engine.schematron.ValidationExecutorSchematron;
 import com.helger.bdve.engine.source.IValidationSourceXML;
+import com.helger.cii.d16b.CIID16BNamespaceContext;
 import com.helger.commons.ValueEnforcer;
 import com.helger.commons.io.resource.ClassPathResource;
-import com.helger.commons.io.resource.IReadableResource;
+import com.helger.ubl21.UBL21NamespaceContext;
 
 /**
  * Generic XRechnung validation configuration. It is based on the EN16931
@@ -76,13 +75,6 @@ public final class XRechnungValidation
   private static ClassLoader _getCL ()
   {
     return XRechnungValidation.class.getClassLoader ();
-  }
-
-  @Nonnull
-  private static ValidationExecutorSchematron _createXSLT (@Nonnull final IReadableResource aRes)
-  {
-    final ValidationArtefact aVA = new ValidationArtefact (EValidationType.SCHEMATRON_XSLT, aRes);
-    return new ValidationExecutorSchematron (aVA, null, null);
   }
 
   /**
@@ -132,87 +124,99 @@ public final class XRechnungValidation
                                                                                   VID_XRECHNUNG_CII_120,
                                                                                   "XRechnung CII " + VID_XRECHNUNG_CII_120.getVersion (),
                                                                                   bDeprecated,
-                                                                                  _createXSLT (new ClassPathResource ("/schematron/1.2.0/XRechnung-CII-validation.xslt",
-                                                                                                                      _getCL ()))));
+                                                                                  ValidationExecutorSchematron.createXSLT (new ClassPathResource ("/schematron/1.2.0/XRechnung-CII-validation.xslt",
+                                                                                                                                                  _getCL ()),
+                                                                                                                           CIID16BNamespaceContext.getInstance ())));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.createDerived (aVESUBLCreditNote110,
                                                                                   VID_XRECHNUNG_UBL_CREDITNOTE_120,
                                                                                   "XRechnung UBL CrediteNote " +
                                                                                                                     VID_XRECHNUNG_UBL_CREDITNOTE_120.getVersion (),
                                                                                   bDeprecated,
-                                                                                  _createXSLT (new ClassPathResource ("/schematron/1.2.0/XRechnung-UBL-validation-CreditNote.xslt",
-                                                                                                                      _getCL ()))));
+                                                                                  ValidationExecutorSchematron.createXSLT (new ClassPathResource ("/schematron/1.2.0/XRechnung-UBL-validation-CreditNote.xslt",
+                                                                                                                                                  _getCL ()),
+                                                                                                                           UBL21NamespaceContext.getInstance ())));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.createDerived (aVESUBLInvoice110,
                                                                                   VID_XRECHNUNG_UBL_INVOICE_120,
                                                                                   "XRechnung UBL Invoice " +
                                                                                                                  VID_XRECHNUNG_UBL_INVOICE_120.getVersion (),
                                                                                   bDeprecated,
-                                                                                  _createXSLT (new ClassPathResource ("/schematron/1.2.0/XRechnung-UBL-validation-Invoice.xslt",
-                                                                                                                      _getCL ()))));
+                                                                                  ValidationExecutorSchematron.createXSLT (new ClassPathResource ("/schematron/1.2.0/XRechnung-UBL-validation-Invoice.xslt",
+                                                                                                                                                  _getCL ()),
+                                                                                                                           UBL21NamespaceContext.getInstance ())));
 
     // v1.2.1 (based on 1.2.1)
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.createDerived (aVESCII121,
                                                                                   VID_XRECHNUNG_CII_121,
                                                                                   "XRechnung CII " + VID_XRECHNUNG_CII_121.getVersion (),
                                                                                   bDeprecated,
-                                                                                  _createXSLT (new ClassPathResource ("/schematron/1.2.1/XRechnung-CII-validation.xslt",
-                                                                                                                      _getCL ()))));
+                                                                                  ValidationExecutorSchematron.createXSLT (new ClassPathResource ("/schematron/1.2.1/XRechnung-CII-validation.xslt",
+                                                                                                                                                  _getCL ()),
+                                                                                                                           CIID16BNamespaceContext.getInstance ())));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.createDerived (aVESUBLCreditNote121,
                                                                                   VID_XRECHNUNG_UBL_CREDITNOTE_121,
                                                                                   "XRechnung UBL CrediteNote " +
                                                                                                                     VID_XRECHNUNG_UBL_CREDITNOTE_121.getVersion (),
                                                                                   bDeprecated,
-                                                                                  _createXSLT (new ClassPathResource ("/schematron/1.2.1/XRechnung-UBL-validation-CreditNote.xslt",
-                                                                                                                      _getCL ()))));
+                                                                                  ValidationExecutorSchematron.createXSLT (new ClassPathResource ("/schematron/1.2.1/XRechnung-UBL-validation-CreditNote.xslt",
+                                                                                                                                                  _getCL ()),
+                                                                                                                           UBL21NamespaceContext.getInstance ())));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.createDerived (aVESUBLInvoice121,
                                                                                   VID_XRECHNUNG_UBL_INVOICE_121,
                                                                                   "XRechnung UBL Invoice " +
                                                                                                                  VID_XRECHNUNG_UBL_INVOICE_121.getVersion (),
                                                                                   bDeprecated,
-                                                                                  _createXSLT (new ClassPathResource ("/schematron/1.2.1/XRechnung-UBL-validation-Invoice.xslt",
-                                                                                                                      _getCL ()))));
+                                                                                  ValidationExecutorSchematron.createXSLT (new ClassPathResource ("/schematron/1.2.1/XRechnung-UBL-validation-Invoice.xslt",
+                                                                                                                                                  _getCL ()),
+                                                                                                                           UBL21NamespaceContext.getInstance ())));
 
     // v1.2.2 (based on 1.3.0)
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.createDerived (aVESCII130,
                                                                                   VID_XRECHNUNG_CII_122,
                                                                                   "XRechnung CII " + VID_XRECHNUNG_CII_122.getVersion (),
                                                                                   bNotDeprecated,
-                                                                                  _createXSLT (new ClassPathResource ("/schematron/1.2.2/XRechnung-CII-validation.xslt",
-                                                                                                                      _getCL ()))));
+                                                                                  ValidationExecutorSchematron.createXSLT (new ClassPathResource ("/schematron/1.2.2/XRechnung-CII-validation.xslt",
+                                                                                                                                                  _getCL ()),
+                                                                                                                           CIID16BNamespaceContext.getInstance ())));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.createDerived (aVESUBLCreditNote130,
                                                                                   VID_XRECHNUNG_UBL_CREDITNOTE_122,
                                                                                   "XRechnung UBL CrediteNote " +
                                                                                                                     VID_XRECHNUNG_UBL_CREDITNOTE_122.getVersion (),
                                                                                   bNotDeprecated,
-                                                                                  _createXSLT (new ClassPathResource ("/schematron/1.2.2/XRechnung-UBL-validation-CreditNote.xslt",
-                                                                                                                      _getCL ()))));
+                                                                                  ValidationExecutorSchematron.createXSLT (new ClassPathResource ("/schematron/1.2.2/XRechnung-UBL-validation-CreditNote.xslt",
+                                                                                                                                                  _getCL ()),
+                                                                                                                           UBL21NamespaceContext.getInstance ())));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.createDerived (aVESUBLInvoice130,
                                                                                   VID_XRECHNUNG_UBL_INVOICE_122,
                                                                                   "XRechnung UBL Invoice " +
                                                                                                                  VID_XRECHNUNG_UBL_INVOICE_122.getVersion (),
                                                                                   bNotDeprecated,
-                                                                                  _createXSLT (new ClassPathResource ("/schematron/1.2.2/XRechnung-UBL-validation-Invoice.xslt",
-                                                                                                                      _getCL ()))));
+                                                                                  ValidationExecutorSchematron.createXSLT (new ClassPathResource ("/schematron/1.2.2/XRechnung-UBL-validation-Invoice.xslt",
+                                                                                                                                                  _getCL ()),
+                                                                                                                           UBL21NamespaceContext.getInstance ())));
 
     // v2.0.0 (based on 1.4.0)
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.createDerived (aVESCII132,
                                                                                   VID_XRECHNUNG_CII_200,
                                                                                   "XRechnung CII " + VID_XRECHNUNG_CII_200.getVersion (),
                                                                                   bNotDeprecated,
-                                                                                  _createXSLT (new ClassPathResource ("/schematron/2.0.0/XRechnung-CII-validation.xslt",
-                                                                                                                      _getCL ()))));
+                                                                                  ValidationExecutorSchematron.createXSLT (new ClassPathResource ("/schematron/2.0.0/XRechnung-CII-validation.xslt",
+                                                                                                                                                  _getCL ()),
+                                                                                                                           CIID16BNamespaceContext.getInstance ())));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.createDerived (aVESUBLCreditNote132,
                                                                                   VID_XRECHNUNG_UBL_CREDITNOTE_200,
                                                                                   "XRechnung UBL CrediteNote " +
                                                                                                                     VID_XRECHNUNG_UBL_CREDITNOTE_200.getVersion (),
                                                                                   bNotDeprecated,
-                                                                                  _createXSLT (new ClassPathResource ("/schematron/2.0.0/XRechnung-UBL-validation-CreditNote.xslt",
-                                                                                                                      _getCL ()))));
+                                                                                  ValidationExecutorSchematron.createXSLT (new ClassPathResource ("/schematron/2.0.0/XRechnung-UBL-validation-CreditNote.xslt",
+                                                                                                                                                  _getCL ()),
+                                                                                                                           UBL21NamespaceContext.getInstance ())));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.createDerived (aVESUBLInvoice132,
                                                                                   VID_XRECHNUNG_UBL_INVOICE_200,
                                                                                   "XRechnung UBL Invoice " +
                                                                                                                  VID_XRECHNUNG_UBL_INVOICE_200.getVersion (),
                                                                                   bNotDeprecated,
-                                                                                  _createXSLT (new ClassPathResource ("/schematron/2.0.0/XRechnung-UBL-validation-Invoice.xslt",
-                                                                                                                      _getCL ()))));
+                                                                                  ValidationExecutorSchematron.createXSLT (new ClassPathResource ("/schematron/2.0.0/XRechnung-UBL-validation-Invoice.xslt",
+                                                                                                                                                  _getCL ()),
+                                                                                                                           UBL21NamespaceContext.getInstance ())));
   }
 }

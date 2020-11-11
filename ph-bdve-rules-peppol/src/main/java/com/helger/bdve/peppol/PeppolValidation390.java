@@ -22,8 +22,6 @@ import java.time.Month;
 import javax.annotation.Nonnull;
 import javax.annotation.concurrent.Immutable;
 
-import com.helger.bdve.api.EValidationType;
-import com.helger.bdve.api.artefact.ValidationArtefact;
 import com.helger.bdve.api.executorset.IValidationExecutorSetRegistry;
 import com.helger.bdve.api.executorset.VESID;
 import com.helger.bdve.api.executorset.ValidationExecutorSet;
@@ -102,9 +100,7 @@ public final class PeppolValidation390
   @Nonnull
   private static ValidationExecutorSchematron _createXSLT (@Nonnull final IReadableResource aRes)
   {
-    return new ValidationExecutorSchematron (new ValidationArtefact (EValidationType.SCHEMATRON_XSLT, aRes),
-                                             null,
-                                             UBL21NamespaceContext.getInstance ());
+    return ValidationExecutorSchematron.createXSLT (aRes, UBL21NamespaceContext.getInstance ());
   }
 
   public static void init (@Nonnull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)

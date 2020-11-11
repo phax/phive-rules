@@ -19,8 +19,6 @@ package com.helger.bdve.ublbe;
 import javax.annotation.Nonnull;
 import javax.annotation.concurrent.Immutable;
 
-import com.helger.bdve.api.EValidationType;
-import com.helger.bdve.api.artefact.ValidationArtefact;
 import com.helger.bdve.api.executorset.IValidationExecutorSet;
 import com.helger.bdve.api.executorset.IValidationExecutorSetRegistry;
 import com.helger.bdve.api.executorset.VESID;
@@ -93,9 +91,7 @@ public final class UBLBEValidation
   @Nonnull
   private static ValidationExecutorSchematron _createXSLT (@Nonnull final IReadableResource aRes)
   {
-    return new ValidationExecutorSchematron (new ValidationArtefact (EValidationType.SCHEMATRON_XSLT, aRes),
-                                             null,
-                                             UBL21NamespaceContext.getInstance ());
+    return ValidationExecutorSchematron.createXSLT (aRes, UBL21NamespaceContext.getInstance ());
   }
 
   /**

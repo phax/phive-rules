@@ -19,8 +19,6 @@ package com.helger.bdve.oioubl;
 import javax.annotation.Nonnull;
 import javax.annotation.concurrent.Immutable;
 
-import com.helger.bdve.api.EValidationType;
-import com.helger.bdve.api.artefact.ValidationArtefact;
 import com.helger.bdve.api.executorset.IValidationExecutorSetRegistry;
 import com.helger.bdve.api.executorset.VESID;
 import com.helger.bdve.api.executorset.ValidationExecutorSet;
@@ -103,9 +101,7 @@ public final class OIOUBLValidation
   @Nonnull
   private static ValidationExecutorSchematron _createTVR (@Nonnull final IReadableResource aRes)
   {
-    return new ValidationExecutorSchematron (new ValidationArtefact (EValidationType.SCHEMATRON_OIOUBL, aRes),
-                                             null,
-                                             UBL21NamespaceContext.getInstance ());
+    return ValidationExecutorSchematron.createOIOUBL (aRes, UBL21NamespaceContext.getInstance ());
   }
 
   /**

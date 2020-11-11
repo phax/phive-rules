@@ -19,8 +19,6 @@ package com.helger.bdve.svefaktura;
 import javax.annotation.Nonnull;
 import javax.annotation.concurrent.Immutable;
 
-import com.helger.bdve.api.EValidationType;
-import com.helger.bdve.api.artefact.ValidationArtefact;
 import com.helger.bdve.api.executorset.IValidationExecutorSetRegistry;
 import com.helger.bdve.api.executorset.VESID;
 import com.helger.bdve.api.executorset.ValidationExecutorSet;
@@ -76,7 +74,7 @@ public final class SvefakturaValidation
   @Nonnull
   private static ValidationExecutorSchematron _createXSLT (@Nonnull final ClassPathResource aRes)
   {
-    return new ValidationExecutorSchematron (new ValidationArtefact (EValidationType.SCHEMATRON_XSLT, aRes), null, NS_CTX);
+    return ValidationExecutorSchematron.createXSLT (aRes, NS_CTX);
   }
 
   /**

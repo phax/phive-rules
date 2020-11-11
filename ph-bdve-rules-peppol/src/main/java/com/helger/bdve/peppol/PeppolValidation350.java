@@ -22,8 +22,6 @@ import java.time.Month;
 import javax.annotation.Nonnull;
 import javax.annotation.concurrent.Immutable;
 
-import com.helger.bdve.api.EValidationType;
-import com.helger.bdve.api.artefact.ValidationArtefact;
 import com.helger.bdve.api.executorset.IValidationExecutorSetRegistry;
 import com.helger.bdve.api.executorset.VESID;
 import com.helger.bdve.api.executorset.ValidationExecutorSet;
@@ -187,17 +185,13 @@ public final class PeppolValidation350
   @Nonnull
   private static ValidationExecutorSchematron _createPure (@Nonnull final IReadableResource aRes)
   {
-    return new ValidationExecutorSchematron (new ValidationArtefact (EValidationType.SCHEMATRON_PURE, aRes),
-                                             null,
-                                             UBL21NamespaceContext.getInstance ());
+    return ValidationExecutorSchematron.createPure (aRes, UBL21NamespaceContext.getInstance ());
   }
 
   @Nonnull
   private static ValidationExecutorSchematron _createSCH (@Nonnull final IReadableResource aRes)
   {
-    return new ValidationExecutorSchematron (new ValidationArtefact (EValidationType.SCHEMATRON_SCH, aRes),
-                                             null,
-                                             UBL21NamespaceContext.getInstance ());
+    return ValidationExecutorSchematron.createSCH (aRes, UBL21NamespaceContext.getInstance ());
   }
 
   public static void init (@Nonnull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)

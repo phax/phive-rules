@@ -19,12 +19,9 @@ package com.helger.bdve.peppol;
 import java.time.LocalDate;
 
 import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 import javax.annotation.concurrent.Immutable;
 import javax.xml.XMLConstants;
 
-import com.helger.bdve.api.EValidationType;
-import com.helger.bdve.api.artefact.ValidationArtefact;
 import com.helger.bdve.api.executorset.IValidationExecutorSet;
 import com.helger.bdve.api.executorset.IValidationExecutorSetRegistry;
 import com.helger.bdve.api.executorset.VESID;
@@ -37,10 +34,8 @@ import com.helger.commons.annotation.Nonempty;
 import com.helger.commons.annotation.ReturnsMutableObject;
 import com.helger.commons.datetime.PDTFactory;
 import com.helger.commons.io.resource.ClassPathResource;
-import com.helger.commons.io.resource.IReadableResource;
 import com.helger.ubl21.EUBL21DocumentType;
 import com.helger.ubl21.UBL21NamespaceContext;
-import com.helger.xml.namespace.IIterableNamespaceContext;
 import com.helger.xml.namespace.MapBasedNamespaceContext;
 
 /**
@@ -123,16 +118,6 @@ public final class PeppolValidation
   }
 
   @Nonnull
-  private static ValidationExecutorSchematron _createXSLT (@Nonnull final IReadableResource aRes,
-                                                           @Nullable final String sPrerequisiteXPath,
-                                                           @Nullable final IIterableNamespaceContext aNamespaceContext)
-  {
-    return new ValidationExecutorSchematron (new ValidationArtefact (EValidationType.SCHEMATRON_XSLT, aRes),
-                                             sPrerequisiteXPath,
-                                             aNamespaceContext);
-  }
-
-  @Nonnull
   @ReturnsMutableObject
   static MapBasedNamespaceContext createUBLNSContext (@Nonnull final String sNamespaceURI)
   {
@@ -168,33 +153,33 @@ public final class PeppolValidation
                                                                                                              VID_OPENPEPPOL_T10_V2_5_AT,
                                                                                                              "OpenPEPPOL Invoice (Austria)",
                                                                                                              bNotDeprecated,
-                                                                                                             _createXSLT (INVOICE_AT_NAT,
-                                                                                                                          sPreReqInvoice,
-                                                                                                                          createUBLNSContext (EUBL21DocumentType.INVOICE.getNamespaceURI ())));
+                                                                                                             ValidationExecutorSchematron.createXSLT (INVOICE_AT_NAT,
+                                                                                                                                                      sPreReqInvoice,
+                                                                                                                                                      createUBLNSContext (EUBL21DocumentType.INVOICE.getNamespaceURI ())));
     aRegistry.registerValidationExecutorSet (aVESInvoiceAT);
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.createDerived (aVESInvoiceAT,
                                                                                   VID_OPENPEPPOL_T10_V2_7_AT_GOV,
                                                                                   "OpenPEPPOL Invoice (Austrian Government)",
                                                                                   bNotDeprecated,
-                                                                                  _createXSLT (INVOICE_AT_GOV,
-                                                                                               sPreReqInvoice,
-                                                                                               createUBLNSContext (EUBL21DocumentType.INVOICE.getNamespaceURI ()))));
+                                                                                  ValidationExecutorSchematron.createXSLT (INVOICE_AT_GOV,
+                                                                                                                           sPreReqInvoice,
+                                                                                                                           createUBLNSContext (EUBL21DocumentType.INVOICE.getNamespaceURI ()))));
 
     // CreditNote
     final IValidationExecutorSet <IValidationSourceXML> aVESCreditNoteAT = ValidationExecutorSet.createDerived (aVESCreditNote,
                                                                                                                 VID_OPENPEPPOL_T14_V2_5_AT,
                                                                                                                 "OpenPEPPOL Credit Note (Austria)",
                                                                                                                 bNotDeprecated,
-                                                                                                                _createXSLT (CREDIT_NOTE_AT_NAT,
-                                                                                                                             sPreReqCreditNote,
-                                                                                                                             createUBLNSContext (EUBL21DocumentType.CREDIT_NOTE.getNamespaceURI ())));
+                                                                                                                ValidationExecutorSchematron.createXSLT (CREDIT_NOTE_AT_NAT,
+                                                                                                                                                         sPreReqCreditNote,
+                                                                                                                                                         createUBLNSContext (EUBL21DocumentType.CREDIT_NOTE.getNamespaceURI ())));
     aRegistry.registerValidationExecutorSet (aVESCreditNoteAT);
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.createDerived (aVESCreditNoteAT,
                                                                                   VID_OPENPEPPOL_T14_V2_7_AT_GOV,
                                                                                   "OpenPEPPOL Credit Note (Austrian Government)",
                                                                                   bNotDeprecated,
-                                                                                  _createXSLT (CREDIT_NOTE_AT_GOV,
-                                                                                               sPreReqCreditNote,
-                                                                                               createUBLNSContext (EUBL21DocumentType.CREDIT_NOTE.getNamespaceURI ()))));
+                                                                                  ValidationExecutorSchematron.createXSLT (CREDIT_NOTE_AT_GOV,
+                                                                                                                           sPreReqCreditNote,
+                                                                                                                           createUBLNSContext (EUBL21DocumentType.CREDIT_NOTE.getNamespaceURI ()))));
   }
 }
