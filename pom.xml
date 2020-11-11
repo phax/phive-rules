@@ -165,6 +165,11 @@
       </dependency>
       <dependency>
         <groupId>com.helger.bdve.rules</groupId>
+        <artifactId>ph-bdve-rules-facturae</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.helger.bdve.rules</groupId>
         <artifactId>ph-bdve-rules-fatturapa</artifactId>
         <version>${project.version}</version>
       </dependency>
@@ -244,6 +249,7 @@
     <module>ph-bdve-rules-ehf</module>
     <module>ph-bdve-rules-en16931</module>
     <module>ph-bdve-rules-energieefactuur</module>
+    <module>ph-bdve-rules-facturae</module>
     <module>ph-bdve-rules-fatturapa</module>
     <module>ph-bdve-rules-finvoice</module>
     <module>ph-bdve-rules-oioubl</module>
