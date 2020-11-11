@@ -41,12 +41,6 @@ import com.helger.commons.io.resource.IReadableResource;
 @Immutable
 public final class XRechnungValidation
 {
-  @Nonnull
-  private static ClassLoader _getCL ()
-  {
-    return XRechnungValidation.class.getClassLoader ();
-  }
-
   public static final String GROUP_ID = "de.xrechnung";
 
   // Valid from 1.7.20219- 31.12.2019
@@ -77,6 +71,12 @@ public final class XRechnungValidation
 
   private XRechnungValidation ()
   {}
+
+  @Nonnull
+  private static ClassLoader _getCL ()
+  {
+    return XRechnungValidation.class.getClassLoader ();
+  }
 
   @Nonnull
   private static ValidationExecutorSchematron _createXSLT (@Nonnull final IReadableResource aRes)
@@ -132,75 +132,87 @@ public final class XRechnungValidation
                                                                                   VID_XRECHNUNG_CII_120,
                                                                                   "XRechnung CII " + VID_XRECHNUNG_CII_120.getVersion (),
                                                                                   bDeprecated,
-                                                                                  _createXSLT (new ClassPathResource ("/schematron/1.2.0/XRechnung-CII-validation.xslt"))));
+                                                                                  _createXSLT (new ClassPathResource ("/schematron/1.2.0/XRechnung-CII-validation.xslt",
+                                                                                                                      _getCL ()))));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.createDerived (aVESUBLCreditNote110,
                                                                                   VID_XRECHNUNG_UBL_CREDITNOTE_120,
                                                                                   "XRechnung UBL CrediteNote " +
                                                                                                                     VID_XRECHNUNG_UBL_CREDITNOTE_120.getVersion (),
                                                                                   bDeprecated,
-                                                                                  _createXSLT (new ClassPathResource ("/schematron/1.2.0/XRechnung-UBL-validation-CreditNote.xslt"))));
+                                                                                  _createXSLT (new ClassPathResource ("/schematron/1.2.0/XRechnung-UBL-validation-CreditNote.xslt",
+                                                                                                                      _getCL ()))));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.createDerived (aVESUBLInvoice110,
                                                                                   VID_XRECHNUNG_UBL_INVOICE_120,
                                                                                   "XRechnung UBL Invoice " +
                                                                                                                  VID_XRECHNUNG_UBL_INVOICE_120.getVersion (),
                                                                                   bDeprecated,
-                                                                                  _createXSLT (new ClassPathResource ("/schematron/1.2.0/XRechnung-UBL-validation-Invoice.xslt"))));
+                                                                                  _createXSLT (new ClassPathResource ("/schematron/1.2.0/XRechnung-UBL-validation-Invoice.xslt",
+                                                                                                                      _getCL ()))));
 
     // v1.2.1 (based on 1.2.1)
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.createDerived (aVESCII121,
                                                                                   VID_XRECHNUNG_CII_121,
                                                                                   "XRechnung CII " + VID_XRECHNUNG_CII_121.getVersion (),
                                                                                   bDeprecated,
-                                                                                  _createXSLT (new ClassPathResource ("/schematron/1.2.1/XRechnung-CII-validation.xslt"))));
+                                                                                  _createXSLT (new ClassPathResource ("/schematron/1.2.1/XRechnung-CII-validation.xslt",
+                                                                                                                      _getCL ()))));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.createDerived (aVESUBLCreditNote121,
                                                                                   VID_XRECHNUNG_UBL_CREDITNOTE_121,
                                                                                   "XRechnung UBL CrediteNote " +
                                                                                                                     VID_XRECHNUNG_UBL_CREDITNOTE_121.getVersion (),
                                                                                   bDeprecated,
-                                                                                  _createXSLT (new ClassPathResource ("/schematron/1.2.1/XRechnung-UBL-validation-CreditNote.xslt"))));
+                                                                                  _createXSLT (new ClassPathResource ("/schematron/1.2.1/XRechnung-UBL-validation-CreditNote.xslt",
+                                                                                                                      _getCL ()))));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.createDerived (aVESUBLInvoice121,
                                                                                   VID_XRECHNUNG_UBL_INVOICE_121,
                                                                                   "XRechnung UBL Invoice " +
                                                                                                                  VID_XRECHNUNG_UBL_INVOICE_121.getVersion (),
                                                                                   bDeprecated,
-                                                                                  _createXSLT (new ClassPathResource ("/schematron/1.2.1/XRechnung-UBL-validation-Invoice.xslt"))));
+                                                                                  _createXSLT (new ClassPathResource ("/schematron/1.2.1/XRechnung-UBL-validation-Invoice.xslt",
+                                                                                                                      _getCL ()))));
 
     // v1.2.2 (based on 1.3.0)
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.createDerived (aVESCII130,
                                                                                   VID_XRECHNUNG_CII_122,
                                                                                   "XRechnung CII " + VID_XRECHNUNG_CII_122.getVersion (),
                                                                                   bNotDeprecated,
-                                                                                  _createXSLT (new ClassPathResource ("/schematron/1.2.2/XRechnung-CII-validation.xslt"))));
+                                                                                  _createXSLT (new ClassPathResource ("/schematron/1.2.2/XRechnung-CII-validation.xslt",
+                                                                                                                      _getCL ()))));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.createDerived (aVESUBLCreditNote130,
                                                                                   VID_XRECHNUNG_UBL_CREDITNOTE_122,
                                                                                   "XRechnung UBL CrediteNote " +
                                                                                                                     VID_XRECHNUNG_UBL_CREDITNOTE_122.getVersion (),
                                                                                   bNotDeprecated,
-                                                                                  _createXSLT (new ClassPathResource ("/schematron/1.2.2/XRechnung-UBL-validation-CreditNote.xslt"))));
+                                                                                  _createXSLT (new ClassPathResource ("/schematron/1.2.2/XRechnung-UBL-validation-CreditNote.xslt",
+                                                                                                                      _getCL ()))));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.createDerived (aVESUBLInvoice130,
                                                                                   VID_XRECHNUNG_UBL_INVOICE_122,
                                                                                   "XRechnung UBL Invoice " +
                                                                                                                  VID_XRECHNUNG_UBL_INVOICE_122.getVersion (),
                                                                                   bNotDeprecated,
-                                                                                  _createXSLT (new ClassPathResource ("/schematron/1.2.2/XRechnung-UBL-validation-Invoice.xslt"))));
+                                                                                  _createXSLT (new ClassPathResource ("/schematron/1.2.2/XRechnung-UBL-validation-Invoice.xslt",
+                                                                                                                      _getCL ()))));
 
     // v2.0.0 (based on 1.4.0)
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.createDerived (aVESCII132,
                                                                                   VID_XRECHNUNG_CII_200,
                                                                                   "XRechnung CII " + VID_XRECHNUNG_CII_200.getVersion (),
                                                                                   bNotDeprecated,
-                                                                                  _createXSLT (new ClassPathResource ("/schematron/2.0.0/XRechnung-CII-validation.xslt"))));
+                                                                                  _createXSLT (new ClassPathResource ("/schematron/2.0.0/XRechnung-CII-validation.xslt",
+                                                                                                                      _getCL ()))));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.createDerived (aVESUBLCreditNote132,
                                                                                   VID_XRECHNUNG_UBL_CREDITNOTE_200,
                                                                                   "XRechnung UBL CrediteNote " +
                                                                                                                     VID_XRECHNUNG_UBL_CREDITNOTE_200.getVersion (),
                                                                                   bNotDeprecated,
-                                                                                  _createXSLT (new ClassPathResource ("/schematron/2.0.0/XRechnung-UBL-validation-CreditNote.xslt"))));
+                                                                                  _createXSLT (new ClassPathResource ("/schematron/2.0.0/XRechnung-UBL-validation-CreditNote.xslt",
+                                                                                                                      _getCL ()))));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.createDerived (aVESUBLInvoice132,
                                                                                   VID_XRECHNUNG_UBL_INVOICE_200,
                                                                                   "XRechnung UBL Invoice " +
                                                                                                                  VID_XRECHNUNG_UBL_INVOICE_200.getVersion (),
                                                                                   bNotDeprecated,
-                                                                                  _createXSLT (new ClassPathResource ("/schematron/2.0.0/XRechnung-UBL-validation-Invoice.xslt"))));
+                                                                                  _createXSLT (new ClassPathResource ("/schematron/2.0.0/XRechnung-UBL-validation-Invoice.xslt",
+                                                                                                                      _getCL ()))));
   }
 }

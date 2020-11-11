@@ -68,6 +68,12 @@ public final class SvefakturaValidation
                                                                                                       "urn:oasis:names:tc:ubl:codelist:CurrencyCode:1:0");
 
   @Nonnull
+  private static ClassLoader _getCL ()
+  {
+    return SvefakturaValidation.class.getClassLoader ();
+  }
+
+  @Nonnull
   private static ValidationExecutorSchematron _createXSLT (@Nonnull final ClassPathResource aRes)
   {
     return new ValidationExecutorSchematron (new ValidationArtefact (EValidationType.SCHEMATRON_XSLT, aRes), null, NS_CTX);
@@ -89,14 +95,17 @@ public final class SvefakturaValidation
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_SVEFAKTURA_10,
                                                                            "SvefakturaXML " + VID_SVEFAKTURA_10.getVersion (),
                                                                            bNotDeprecated,
-                                                                           ValidationExecutorXSD.create (new ClassPathResource ("/schemas/1.0/maindoc/SFTI-BasicInvoice-1.0.xsd")),
-                                                                           _createXSLT (new ClassPathResource ("/schemas/1.0/svenfaktura-1.0-sch.xslt"))));
+                                                                           ValidationExecutorXSD.create (new ClassPathResource ("/schemas/1.0/maindoc/SFTI-BasicInvoice-1.0.xsd",
+                                                                                                                                _getCL ())),
+                                                                           _createXSLT (new ClassPathResource ("/schemas/1.0/svenfaktura-1.0-sch.xslt",
+                                                                                                               _getCL ()))));
 
     // No Schematrons here
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OBJECT_ENVELOPE_10,
                                                                            "SvefakturaXML ObjectEnvelope " +
                                                                                                    VID_OBJECT_ENVELOPE_10.getVersion (),
                                                                            bNotDeprecated,
-                                                                           ValidationExecutorXSD.create (new ClassPathResource ("/schemas/1.0/maindoc/SFTI-ObjectEnvelope-1.0.xsd"))));
+                                                                           ValidationExecutorXSD.create (new ClassPathResource ("/schemas/1.0/maindoc/SFTI-ObjectEnvelope-1.0.xsd",
+                                                                                                                                _getCL ()))));
   }
 }

@@ -43,6 +43,12 @@ public final class TEAPPSValidation
   private TEAPPSValidation ()
   {}
 
+  @Nonnull
+  private static ClassLoader _getCL ()
+  {
+    return TEAPPSValidation.class.getClassLoader ();
+  }
+
   /**
    * Register all standard TEAPPS validation execution sets to the provided
    * registry.
@@ -60,10 +66,12 @@ public final class TEAPPSValidation
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_TEAPPS_272,
                                                                            "TEAPPSXML " + VID_TEAPPS_272.getVersion (),
                                                                            bNotDeprecated,
-                                                                           ValidationExecutorXSD.create (new ClassPathResource ("/schemas/TEAPPSXMLv272_schema_INVOICES.xsd"))));
+                                                                           ValidationExecutorXSD.create (new ClassPathResource ("/schemas/TEAPPSXMLv272_schema_INVOICES.xsd",
+                                                                                                                                _getCL ()))));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_TEAPPS_30,
                                                                            "TEAPPSXML " + VID_TEAPPS_30.getVersion (),
                                                                            bNotDeprecated,
-                                                                           ValidationExecutorXSD.create (new ClassPathResource ("/schemas/teappsxmlv30_schema_invoices_0.xsd"))));
+                                                                           ValidationExecutorXSD.create (new ClassPathResource ("/schemas/teappsxmlv30_schema_invoices_0.xsd",
+                                                                                                                                _getCL ()))));
   }
 }

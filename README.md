@@ -134,6 +134,8 @@ Alternate usage as a Maven BOM:
   
 # News and noteworthy
 
+* v1.0.11 - 2020-11-11
+    * Fixed an error with the XRechnung 2.0.0 validation artefacts
 * v1.0.10 - 2020-11-06
     * Added support for XRechnung 2.0.0 - thanks to [@yleider](https://github.com/yleider) for the PR
 * v1.0.9 - 2020-11-02
