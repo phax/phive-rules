@@ -134,10 +134,11 @@ Alternate usage as a Maven BOM:
   
 # News and noteworthy
 
-* v1.0.11 - 2020-11-11
+* v1.0.11 - 2020-11-12
+    * Updated to ph-bdve engine 6.0.4
     * Fixed an error with the XRechnung 2.0.0 validation artefacts
     * Added support for Spanish Facturae (version 3.0, 3.1, 3.2, 3.2.1 and 3.2.2)
-    * Updated to ph-bdve engine 6.0.4
+    * Added support for Portuguese CIUS-PT (version 2.0.0)
 * v1.0.10 - 2020-11-06
     * Added support for XRechnung 2.0.0 - thanks to [@yleider](https://github.com/yleider) for the PR
 * v1.0.9 - 2020-11-02
