@@ -134,6 +134,8 @@ Alternate usage as a Maven BOM:
   
 # News and noteworthy
 
+* v1.0.12 - 2020-11-12
+    * Same as 1.0.11 - just re-released because I thought it was lost on the way to Maven Central
 * v1.0.11 - 2020-11-12
     * Updated to ph-bdve engine 6.0.4
     * Fixed an error with the XRechnung 2.0.0 validation artefacts
