@@ -81,7 +81,7 @@
       <dependency>
         <groupId>com.helger.bdve</groupId>
         <artifactId>ph-bdve-parent-pom</artifactId>
-        <version>6.0.4-SNAPSHOT</version>
+        <version>6.0.4</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
@@ -141,6 +141,11 @@
       <dependency>
         <groupId>com.helger.bdve.rules</groupId>
         <artifactId>ph-bdve-rules-cii</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.helger.bdve.rules</groupId>
+        <artifactId>ph-bdve-rules-cius-pt</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
@@ -245,6 +250,7 @@
   
   <modules>
     <module>ph-bdve-rules-cii</module>
+    <module>ph-bdve-rules-cius-pt</module>
     <module>ph-bdve-rules-ebinterface</module>
     <module>ph-bdve-rules-ehf</module>
     <module>ph-bdve-rules-en16931</module>
@@ -258,9 +264,10 @@
     <module>ph-bdve-rules-svefaktura</module>
     <module>ph-bdve-rules-teapps</module>
     <module>ph-bdve-rules-ubl</module>
+    <!-- depends on en16931 -->
+    <module>ph-bdve-rules-xrechnung</module>
     <!-- depends on peppol -->
     <module>ph-bdve-rules-ublbe</module>
-    <module>ph-bdve-rules-xrechnung</module>
   </modules>
   
   <build>
