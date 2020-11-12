@@ -26,7 +26,7 @@
   </parent>
   <groupId>com.helger.bdve.rules</groupId>
   <artifactId>ph-bdve-rules-parent-pom</artifactId>
-  <version>1.0.12-SNAPSHOT</version>
+  <version>1.0.12</version>
   <packaging>pom</packaging>
   <name>ph-bdve-rules-parent-pom</name>
   <description>Base POM to build the BDVE rules projects</description>
@@ -45,7 +45,7 @@
     <connection>scm:git:git@github.com:phax/ph-bdve-rules.git</connection>
     <developerConnection>scm:git:git@github.com:phax/ph-bdve-rules.git</developerConnection>
     <url>http://github.com/phax/ph-bdve-rules</url>
-    <tag>HEAD</tag>
+    <tag>ph-bdve-rules-parent-pom-1.0.12</tag>
   </scm>
 
   <organization>
