@@ -103,6 +103,17 @@
         <executions>
         <!-- 
           <execution>
+            <id>en</id>
+            <goals>
+              <goal>convert</goal>
+            </goals>
+            <configuration>
+              <schematronDirectory>${basedir}/src/test/resources/schematron-src/2.0.0/en</schematronDirectory>
+              <xsltDirectory>${basedir}/src/main/resources/schematron/2.0.0</xsltDirectory>
+              <schematronPattern>*.sch</schematronPattern>
+            </configuration>
+          </execution>
+          <execution>
             <id>cii</id>
             <goals>
               <goal>convert</goal>
