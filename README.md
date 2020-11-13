@@ -134,6 +134,8 @@ Alternate usage as a Maven BOM:
   
 # News and noteworthy
 
+* v1.0.13 - 2020-11-13
+    * Added Peppol Fall 2020 release corrigendum as version 3.11.1
 * v1.0.12 - 2020-11-12
     * Same as 1.0.11 - just re-released because I thought it was lost on the way to Maven Central
 * v1.0.11 - 2020-11-12

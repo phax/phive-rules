@@ -37,18 +37,16 @@ import com.helger.ubl21.EUBL21DocumentType;
 import com.helger.ubl21.UBL21NamespaceContext;
 
 /**
- * OpenPEPPOL validation artefacts release 3.11.0. Fall 2020 release candidate
- * 2020-10-26. Valid per November 16th, 2020.<br/>
- * This is superseded by 3.11.1
+ * OpenPEPPOL validation artefacts release 3.11.1. Fall 2020 release hotfix
+ * 2020-11-12. Valid per November 16th, 2020
  *
  * @author Philip Helger
  */
 @Immutable
-@Deprecated
-public final class PeppolValidation3_11_0
+public final class PeppolValidation3_11_1
 {
   // Standard resources
-  public static final Version PEPPOL_VALIDATION_ARTEFACT_VERSION = new Version (3, 11, 0);
+  public static final Version PEPPOL_VALIDATION_ARTEFACT_VERSION = new Version (3, 11, 1);
   public static final String VERSION_STR = PEPPOL_VALIDATION_ARTEFACT_VERSION.getAsString (true);
   public static final LocalDate VALID_PER = PDTFactory.createLocalDate (2020, Month.NOVEMBER, 16);
 
@@ -69,7 +67,7 @@ public final class PeppolValidation3_11_0
   @Nonnull
   private static ClassLoader _getCL ()
   {
-    return PeppolValidation3_11_0.class.getClassLoader ();
+    return PeppolValidation3_11_1.class.getClassLoader ();
   }
 
   // Previously T10 and T14
@@ -95,7 +93,7 @@ public final class PeppolValidation3_11_0
 
   public static final IReadableResource INVOICE_MESSAGE_RESPONSE = new ClassPathResource (PREFIX_XSLT + "PEPPOLBIS-T111.xslt", _getCL ());
 
-  private PeppolValidation3_11_0 ()
+  private PeppolValidation3_11_1 ()
   {}
 
   @Nonnull
@@ -110,9 +108,9 @@ public final class PeppolValidation3_11_0
 
     final String sVersion = " (" + VERSION_STR + ")";
     // See https://docs.peppol.eu/poacc/billing/3.0/release-notes/
-    final String sAkaVersionBilling = " (aka BIS Billing 3.0.8)";
+    final String sAkaVersionBilling = " (aka BIS Billing 3.0.8 corrigendum)";
     // See https://docs.peppol.eu/poacc/upgrade-3/release-notes/
-    final String sAkaVersionBIS = " (aka BIS 3.0.5)";
+    final String sAkaVersionBIS = " (aka BIS 3.0.5 corrigendum)";
 
     final boolean bNotDeprecated = false;
 
