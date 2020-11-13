@@ -38,7 +38,7 @@ import com.helger.ubl21.UBL21NamespaceContext;
 
 /**
  * OpenPEPPOL validation artefacts release 3.11.0. Fall 2020 release candidate
- * 2020-10-26. Valid per November 16th, 2020.<br/>
+ * 2020-10-26. Valid per November 16th, 2020.<br>
  * This is superseded by 3.11.1
  *
  * @author Philip Helger
