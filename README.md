@@ -134,6 +134,8 @@ Alternate usage as a Maven BOM:
   
 # News and noteworthy
 
+* v1.0.14 - work in progress
+    * Added support for UBL.BE 1.2.5, deprecated version 1.2.3
 * v1.0.13 - 2020-11-13
     * Added Peppol Fall 2020 release corrigendum as version 3.11.1
 * v1.0.12 - 2020-11-12

@@ -114,33 +114,11 @@
             <goals>
               <goal>convert</goal>
             </goals>
-            <id>v1</id>
+            <id>v1.2.5</id>
             <configuration>
-              <schematronDirectory>${basedir}/src/test/resources/sch/en16931/v1</schematronDirectory>
+              <schematronDirectory>${basedir}/src/test/resources/sch/en16931/v1.2.5</schematronDirectory>
               <schematronPattern>*.sch</schematronPattern>
-              <xsltDirectory>${basedir}/src/main/resources/ublbe/en16931/v1</xsltDirectory>
-            </configuration>
-          </execution>
-          <execution>
-            <goals>
-              <goal>convert</goal>
-            </goals>
-            <id>v1.1</id>
-            <configuration>
-              <schematronDirectory>${basedir}/src/test/resources/sch/en16931/v1.1</schematronDirectory>
-              <schematronPattern>*.sch</schematronPattern>
-              <xsltDirectory>${basedir}/src/main/resources/ublbe/en16931/v1.1</xsltDirectory>
-            </configuration>
-          </execution>
-          <execution>
-            <goals>
-              <goal>convert</goal>
-            </goals>
-            <id>v1.2.3</id>
-            <configuration>
-              <schematronDirectory>${basedir}/src/test/resources/sch/en16931/v1.2.3</schematronDirectory>
-              <schematronPattern>*.sch</schematronPattern>
-              <xsltDirectory>${basedir}/src/main/resources/ublbe/en16931/v1.2.3</xsltDirectory>
+              <xsltDirectory>${basedir}/src/main/resources/ublbe/en16931/v1.2.5</xsltDirectory>
             </configuration>
           </execution>
        -->
