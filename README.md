@@ -37,6 +37,12 @@ Add the following to your `pom.xml` to use this artifact, replacing `x.y.z` with
 
 <dependency>
   <groupId>com.helger.bdve.rules</groupId>
+  <artifactId>ph-bdve-rules-cius-pt</artifactId>
+  <version>x.y.z</version>
+</dependency>
+
+<dependency>
+  <groupId>com.helger.bdve.rules</groupId>
   <artifactId>ph-bdve-rules-ebinterface</artifactId>
   <version>x.y.z</version>
 </dependency>
@@ -56,6 +62,12 @@ Add the following to your `pom.xml` to use this artifact, replacing `x.y.z` with
 <dependency>
   <groupId>com.helger.bdve.rules</groupId>
   <artifactId>ph-bdve-rules-energieefactuur</artifactId>
+  <version>x.y.z</version>
+</dependency>
+
+<dependency>
+  <groupId>com.helger.bdve.rules</groupId>
+  <artifactId>ph-bdve-rules-facturae</artifactId>
   <version>x.y.z</version>
 </dependency>
 
@@ -136,6 +148,7 @@ Alternate usage as a Maven BOM:
 
 * v1.0.14 - work in progress
     * Added support for UBL.BE 1.2.5, deprecated version 1.2.3
+    * Deprecated Peppol validation artefacts 3.10.1 and 3.11.0
 * v1.0.13 - 2020-11-13
     * Added Peppol Fall 2020 release corrigendum as version 3.11.1
 * v1.0.12 - 2020-11-12

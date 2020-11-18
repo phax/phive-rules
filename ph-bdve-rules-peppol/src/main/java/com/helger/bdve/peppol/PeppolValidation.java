@@ -79,13 +79,13 @@ public final class PeppolValidation
   public static String getVersionToUse ()
   {
     final LocalDate aNow = PDTFactory.getCurrentLocalDate ();
-    if (aNow.isBefore (PeppolValidation3_11_0.VALID_PER))
+    if (aNow.isBefore (PeppolValidation3_11_1.VALID_PER))
     {
       // Previous version
       return PeppolValidation3_10_1.VERSION_STR;
     }
     // Latest version
-    return PeppolValidation3_11_0.VERSION_STR;
+    return PeppolValidation3_11_1.VERSION_STR;
   }
 
   private PeppolValidation ()
