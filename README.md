@@ -5,21 +5,23 @@ A set of preconfigured rules for the Business Document Validation Engine (BDVE).
 All projects found in here rely on the validation engine provided by https://github.com/phax/ph-bdve
 
 This project is divided into sub-projects each keeping tracking of one document type set:
-  * ph-bdve-cii - Validation rules for pure CII (without any Schematron)
-  * ph-bdve-ebinterface - Validation rules for Austrian ebInterface
-  * ph-bdve-ehf - Validation rules for EHF (Norwegian public procurement)
-  * ph-bdve-en16931 - Validation rules for the EN 16931 (European e-Invoicing norm based on CEN TC 434)
-  * ph-bdve-energieefactuur - Validation rules for Dutch Energie eFactuur
-  * ph-bdve-fatturapa - Validation rules for Italian fattura PA (since v1.0.4)
-  * ph-bdve-finvoice - Validation rules for Finvoice (since v1.0.6)
-  * ph-bdve-oioubl - Validation rules for Danish OIOUBL
-  * ph-bdve-peppol - the Peppol specific setup etc
-  * ph-bdve-simplerinvoicing - Dutch SimplerInvoicing 1.x support from https://github.com/SimplerInvoicing/validation
-  * ph-bdve-svefaktura - Validation rules for Svefaktura (since v1.0.6)
-  * ph-bdve-teapps - Validation rules for Tieto TEAPPSXML
-  * ph-bdve-ubl - Validation rules for pure UBL (without any Schematron)
-  * ph-bdve-ublbe - Validation rules for e-FFF/UBL.BE
-  * ph-bdve-xrechnung - Validation rules for German XRechnung
+  * ph-bdve-rules-cii - Validation rules for pure CII (without any Schematron)
+  * ph-bdve-rules-cius-pt - Validation rules for the Portuguese EN 16931 CIUS (since v1.0.11)
+  * ph-bdve-rules-ebinterface - Validation rules for Austrian ebInterface
+  * ph-bdve-rules-ehf - Validation rules for EHF (Norwegian public procurement)
+  * ph-bdve-rules-en16931 - Validation rules for the EN 16931 (European e-Invoicing norm based on CEN TC 434)
+  * ph-bdve-rules-energieefactuur - Validation rules for Dutch Energie eFactuur
+  * ph-bdve-rules-facturae - Validation rules for the Spanisch Facturae (since v1.0.11)
+  * ph-bdve-rules-fatturapa - Validation rules for Italian fattura PA (since v1.0.4)
+  * ph-bdve-rules-finvoice - Validation rules for Finvoice (since v1.0.6)
+  * ph-bdve-rules-oioubl - Validation rules for Danish OIOUBL
+  * ph-bdve-rules-peppol - the Peppol specific setup etc
+  * ph-bdve-rules-simplerinvoicing - Dutch SimplerInvoicing 1.x support from https://github.com/SimplerInvoicing/validation
+  * ph-bdve-rules-svefaktura - Validation rules for Svefaktura (since v1.0.6)
+  * ph-bdve-rules-teapps - Validation rules for Tieto TEAPPSXML
+  * ph-bdve-rules-ubl - Validation rules for pure UBL (without any Schematron)
+  * ph-bdve-rules-ublbe - Validation rules for e-FFF/UBL.BE
+  * ph-bdve-rules-xrechnung - Validation rules for German XRechnung
 
 The Java code in this project is licensed under the Apache 2 license.
 The code of the validation artefacts used may use a different license. 
@@ -146,7 +148,7 @@ Alternate usage as a Maven BOM:
   
 # News and noteworthy
 
-* v1.0.14 - work in progress
+* v1.0.14 - 2020-11-18
     * Added support for UBL.BE 1.2.5, deprecated version 1.2.3
     * Deprecated Peppol validation artefacts 3.10.1 and 3.11.0
 * v1.0.13 - 2020-11-13
@@ -156,8 +158,8 @@ Alternate usage as a Maven BOM:
 * v1.0.11 - 2020-11-12
     * Updated to ph-bdve engine 6.0.4
     * Fixed an error with the XRechnung 2.0.0 validation artefacts
-    * Added support for Spanish Facturae (version 3.0, 3.1, 3.2, 3.2.1 and 3.2.2)
-    * Added support for Portuguese CIUS-PT (version 2.0.0)
+    * Added support for Spanish Facturae (version 3.0, 3.1, 3.2, 3.2.1 and 3.2.2) - in the submodule `ph-bdve-rules-facturae`
+    * Added support for Portuguese CIUS-PT (version 2.0.0) - in the submodule `ph-bdve-rules-cius-pt`
 * v1.0.10 - 2020-11-06
     * Added support for XRechnung 2.0.0 - thanks to [@yleider](https://github.com/yleider) for the PR
 * v1.0.9 - 2020-11-02
