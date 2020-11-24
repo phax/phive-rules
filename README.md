@@ -148,7 +148,7 @@ Alternate usage as a Maven BOM:
   
 # News and noteworthy
 
-* v1.0.15 - work in progress
+* v1.0.15 - 2020-11-24
     * Added A-NZ-PEPPOL 1.0.4 rules
 * v1.0.14 - 2020-11-18
     * Added support for UBL.BE 1.2.5, deprecated version 1.2.3
