@@ -81,6 +81,11 @@ public final class CTestFiles
                                             PeppolValidationAUNZ.VID_OPENPEPPOL_BIS3_AUNZ_UBL_INVOICE_SELF_BILLING_103,
                                             PeppolValidationAUNZ.VID_OPENPEPPOL_BIS3_AUNZ_UBL_CREDIT_NOTE_SELF_BILLING_103,
 
+                                            PeppolValidationAUNZ.VID_OPENPEPPOL_BIS3_AUNZ_UBL_INVOICE_104,
+                                            PeppolValidationAUNZ.VID_OPENPEPPOL_BIS3_AUNZ_UBL_CREDIT_NOTE_104,
+                                            PeppolValidationAUNZ.VID_OPENPEPPOL_BIS3_AUNZ_UBL_INVOICE_SELF_BILLING_104,
+                                            PeppolValidationAUNZ.VID_OPENPEPPOL_BIS3_AUNZ_UBL_CREDIT_NOTE_SELF_BILLING_104,
+
                                             PeppolValidationSG.VID_OPENPEPPOL_BIS3_SG_UBL_INVOICE_100,
                                             PeppolValidationSG.VID_OPENPEPPOL_BIS3_SG_UBL_CREDIT_NOTE_100,
 
@@ -305,7 +310,35 @@ public final class CTestFiles
       return new CommonsArrayList <> (new FileSystemResource (sBase + "NZ Self Billed Credit note.xml"));
     }
 
-    // SG
+    // AUNZ 1.0.4
+    if (aVESID.equals (PeppolValidationAUNZ.VID_OPENPEPPOL_BIS3_AUNZ_UBL_INVOICE_104))
+    {
+      final String sBase = "src/test/resources/test-files/aunz-peppol/1.0.4/";
+      return new CommonsArrayList <> (new FileSystemResource (sBase + "AU Invoice.xml"),
+                                      new FileSystemResource (sBase + "NZ Allowance On Invoice Line.xml"),
+                                      new FileSystemResource (sBase + "NZ Invoice Level Allowance.xml"),
+                                      new FileSystemResource (sBase + "NZ Invoice Level Charge.xml"),
+                                      new FileSystemResource (sBase + "NZ No Allowances.xml"),
+                                      new FileSystemResource (sBase + "NZ Prepaid Amount.xml"));
+    }
+    if (aVESID.equals (PeppolValidationAUNZ.VID_OPENPEPPOL_BIS3_AUNZ_UBL_CREDIT_NOTE_104))
+    {
+      final String sBase = "src/test/resources/test-files/aunz-peppol/1.0.4/";
+      return new CommonsArrayList <> (new FileSystemResource (sBase + "NZ Credit note.xml"));
+    }
+    if (aVESID.equals (PeppolValidationAUNZ.VID_OPENPEPPOL_BIS3_AUNZ_UBL_INVOICE_SELF_BILLING_104))
+    {
+      final String sBase = "src/test/resources/test-files/aunz-peppol/1.0.4/";
+      return new CommonsArrayList <> (new FileSystemResource (sBase + "AU Self Billing.xml"),
+                                      new FileSystemResource (sBase + "NZ Self Billing.xml"));
+    }
+    if (aVESID.equals (PeppolValidationAUNZ.VID_OPENPEPPOL_BIS3_AUNZ_UBL_CREDIT_NOTE_SELF_BILLING_104))
+    {
+      final String sBase = "src/test/resources/test-files/aunz-peppol/1.0.4/";
+      return new CommonsArrayList <> (new FileSystemResource (sBase + "NZ Self Billed Credit note.xml"));
+    }
+
+    // SG 1.0.0
     if (aVESID.equals (PeppolValidationSG.VID_OPENPEPPOL_BIS3_SG_UBL_INVOICE_100))
     {
       final String sBase = "src/test/resources/test-files/sg-peppol/1.0.0/";

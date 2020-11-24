@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Despatch Advice: Spring 2020 release compliant
+-->
+<DespatchAdvice xmlns="urn:oasis:names:specification:ubl:schema:xsd:DespatchAdvice-2" xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2">
+	<cbc:CustomizationID>urn:fdc:peppol.eu:poacc:trns:despatch_advice:3</cbc:CustomizationID>
+	<cbc:ProfileID>urn:fdc:peppol.eu:poacc:bis:despatch_advice:3</cbc:ProfileID>
+	<cbc:ID>565899</cbc:ID>
+	<cbc:IssueDate>2018-09-20</cbc:IssueDate>
+	<cbc:IssueTime>12:00:00</cbc:IssueTime>
+	<cbc:Note>sample</cbc:Note>
+	<cac:OrderReference>
+		<cbc:ID>AEG012345</cbc:ID>
+	</cac:OrderReference>
+	<cac:DespatchSupplierParty>
+		<cac:Party>
+			<cbc:EndpointID schemeID="0088">9429033821733</cbc:EndpointID>
+			<cac:PartyIdentification>
+				<cbc:ID schemeID="0088">9429033821733</cbc:ID>
+			</cac:PartyIdentification>
+			<cac:PostalAddress>
+				<cbc:StreetName>22 Alfredton Rd</cbc:StreetName>
+				<cbc:CityName>Eketahuna</cbc:CityName>
+				<cbc:PostalZone>4900</cbc:PostalZone>
+				<cbc:CountrySubentity>Tararua</cbc:CountrySubentity>
+				<cac:AddressLine>
+					<cbc:Line>Warehouse 5</cbc:Line>
+				</cac:AddressLine>
+				<cac:Country>
+					<cbc:IdentificationCode>NZ</cbc:IdentificationCode>
+				</cac:Country>
+			</cac:PostalAddress>
+			<cac:PartyLegalEntity>
+				<cbc:RegistrationName>ACME Home Supplies Limited</cbc:RegistrationName>
+			</cac:PartyLegalEntity>
+			<cac:Contact>
+				<cbc:Name>Marion Smithston</cbc:Name>
+				<cbc:Telephone>026 345 6722</cbc:Telephone>
+				<cbc:ElectronicMail>msmithston@acmehs.co.nz</cbc:ElectronicMail>
+			</cac:Contact>
+		</cac:Party>
+	</cac:DespatchSupplierParty>
+	<cac:DeliveryCustomerParty>
+		<cac:Party>
+			<cbc:EndpointID schemeID="0088">9429033591476</cbc:EndpointID>
+			<cac:PartyIdentification>
+				<cbc:ID schemeID="0088">9429033591476</cbc:ID>
+			</cac:PartyIdentification>
+			<cac:PostalAddress>
+				<cbc:StreetName>230 New Brighton Rd</cbc:StreetName>
+				<cbc:AdditionalStreetName>New Brighton</cbc:AdditionalStreetName>
+				<cbc:CityName>Christchurch</cbc:CityName>
+				<cbc:PostalZone>8842</cbc:PostalZone>
+				<cbc:CountrySubentity>South Island</cbc:CountrySubentity>
+				<cac:AddressLine>
+					<cbc:Line>Block 7A</cbc:Line>
+				</cac:AddressLine>
+				<cac:Country>
+					<cbc:IdentificationCode>NZ</cbc:IdentificationCode>
+				</cac:Country>
+			</cac:PostalAddress>
+			<cac:PartyLegalEntity>
+				<cbc:RegistrationName>Avon Kitchen Specialists (NZ) Ltd</cbc:RegistrationName>
+			</cac:PartyLegalEntity>
+		</cac:Party>
+		<cac:DeliveryContact>
+			<cbc:Name>Sam Anderson</cbc:Name>
+			<cbc:Telephone>023 6654234</cbc:Telephone>
+			<cbc:ElectronicMail>sam@avonkitchens.co.nz</cbc:ElectronicMail>
+		</cac:DeliveryContact>
+	</cac:DeliveryCustomerParty>
+	<cac:BuyerCustomerParty>
+		<cac:Party>
+			<cac:PartyIdentification>
+				<cbc:ID schemeID="0088">9429033591476</cbc:ID>
+			</cac:PartyIdentification>
+			<cac:PartyName>
+				<cbc:Name>Avon Kitchen Specialists (NZ) Ltd</cbc:Name>
+			</cac:PartyName>
+			<cac:PostalAddress>
+				<cbc:StreetName>230 New Brighton Rd</cbc:StreetName>
+				<cbc:AdditionalStreetName>New Brighton</cbc:AdditionalStreetName>
+				<cbc:CityName>Christchurch</cbc:CityName>
+				<cbc:PostalZone>8842</cbc:PostalZone>
+				<cbc:CountrySubentity>South Island</cbc:CountrySubentity>
+				<cac:AddressLine>
+					<cbc:Line>Block 7A</cbc:Line>
+				</cac:AddressLine>
+				<cac:Country>
+					<cbc:IdentificationCode>NZ</cbc:IdentificationCode>
+				</cac:Country>
+			</cac:PostalAddress>
+		</cac:Party>
+	</cac:BuyerCustomerParty>
+	<cac:SellerSupplierParty>
+		<cac:Party>
+			<cac:PartyIdentification>
+				<cbc:ID schemeID="0088">9429033821733</cbc:ID>
+			</cac:PartyIdentification>
+			<cac:PartyName>
+				<cbc:Name>ACME Home Supp</cbc:Name>
+			</cac:PartyName>
+			<cac:PostalAddress>
+				<cbc:StreetName>22 Alfredton Rd</cbc:StreetName>
+				<cbc:CityName>Eketahuna</cbc:CityName>
+				<cbc:PostalZone>4900</cbc:PostalZone>
+				<cbc:CountrySubentity>Tararua</cbc:CountrySubentity>
+				<cac:AddressLine>
+					<cbc:Line>Warehouse 5</cbc:Line>
+				</cac:AddressLine>
+				<cac:Country>
+					<cbc:IdentificationCode>NZ</cbc:IdentificationCode>
+				</cac:Country>
+			</cac:PostalAddress>
+		</cac:Party>
+	</cac:SellerSupplierParty>
+	<cac:OriginatorCustomerParty>
+		<cac:Party>
+			<cac:PartyIdentification>
+				<cbc:ID schemeID="0088">9429033591476</cbc:ID>
+			</cac:PartyIdentification>
+			<cac:PartyName>
+				<cbc:Name>Avon Kitchen Specialists (NZ) Ltd</cbc:Name>
+			</cac:PartyName>
+			<cac:PostalAddress>
+				<cbc:StreetName>230 New Brighton Rd</cbc:StreetName>
+				<cbc:AdditionalStreetName>New Brighton</cbc:AdditionalStreetName>
+				<cbc:CityName>Christchurch</cbc:CityName>
+				<cbc:PostalZone>8842</cbc:PostalZone>
+				<cbc:CountrySubentity>South Island</cbc:CountrySubentity>
+				<cac:AddressLine>
+					<cbc:Line>Block 7A</cbc:Line>
+				</cac:AddressLine>
+				<cac:Country>
+					<cbc:IdentificationCode>NZ</cbc:IdentificationCode>
+				</cac:Country>
+			</cac:PostalAddress>				
+		</cac:Party>
+	</cac:OriginatorCustomerParty>
+	<cac:Shipment>
+		<cbc:ID>1</cbc:ID>
+		<cbc:Information>Misc Items</cbc:Information>
+		<cbc:GrossWeightMeasure unitCode="C62">1</cbc:GrossWeightMeasure>
+		<cbc:GrossVolumeMeasure unitCode="C62">1</cbc:GrossVolumeMeasure>
+		<cbc:TotalTransportHandlingUnitQuantity>3</cbc:TotalTransportHandlingUnitQuantity>
+		<cac:Consignment>
+			<cbc:ID>1</cbc:ID>
+			<cbc:Information>Truck</cbc:Information>
+			<cac:CarrierParty>
+				<cac:PartyName>
+					<cbc:Name>PCC Couriers</cbc:Name>
+				</cac:PartyName>
+				<cac:Person>
+					<cac:IdentityDocumentReference>
+						<cbc:ID>1234</cbc:ID>
+						<cbc:DocumentType>Inv</cbc:DocumentType>
+					</cac:IdentityDocumentReference>
+				</cac:Person>
+			</cac:CarrierParty>
+		</cac:Consignment>
+		<cac:Delivery>
+			<cbc:TrackingID>456789</cbc:TrackingID>
+			<cac:EstimatedDeliveryPeriod>
+				<cbc:StartDate>2020-06-25</cbc:StartDate>
+				<cbc:StartTime>12:00:00</cbc:StartTime>
+				<cbc:EndDate>2020-07-27</cbc:EndDate>
+				<cbc:EndTime>12:00:00</cbc:EndTime>
+			</cac:EstimatedDeliveryPeriod>
+			<cac:Despatch>
+				<cbc:ActualDespatchDate>2020-06-25</cbc:ActualDespatchDate>
+				<cbc:ActualDespatchTime>13:00:00</cbc:ActualDespatchTime>
+				<cac:DespatchAddress>
+					<cbc:StreetName>22 Alfredton Rd</cbc:StreetName>
+					<cbc:CityName>Eketahuna</cbc:CityName>
+					<cbc:PostalZone>4900</cbc:PostalZone>
+					<cbc:CountrySubentity>Tararua</cbc:CountrySubentity>
+					<cac:AddressLine>
+						<cbc:Line>Warehouse 5</cbc:Line>
+					</cac:AddressLine>
+					<cac:Country>
+						<cbc:IdentificationCode>NZ</cbc:IdentificationCode>
+					</cac:Country>
+				</cac:DespatchAddress>
+			</cac:Despatch>
+		</cac:Delivery>
+	</cac:Shipment>
+	<cac:DespatchLine>
+		<cbc:ID>1</cbc:ID>
+		<cbc:Note>Ensure kept upright</cbc:Note>
+		<cbc:DeliveredQuantity unitCode="C62">10</cbc:DeliveredQuantity>
+		<cbc:OutstandingQuantity unitCode="C62">2</cbc:OutstandingQuantity>
+		<cbc:OutstandingReason>out of stock</cbc:OutstandingReason>
+		<cac:OrderLineReference>
+			<cbc:LineID>1</cbc:LineID>
+			<cac:OrderReference>
+				<cbc:ID>AEG012345</cbc:ID>
+			</cac:OrderReference>
+		</cac:OrderLineReference>
+		<cac:Item>
+			<cbc:Name>Kitchen Bowls Assorted</cbc:Name>
+			<cac:BuyersItemIdentification>
+				<cbc:ID>6578489</cbc:ID>
+			</cac:BuyersItemIdentification>
+			<cac:SellersItemIdentification>
+				<cbc:ID>17589683</cbc:ID>
+			</cac:SellersItemIdentification>
+			<cac:StandardItemIdentification>
+				<cbc:ID schemeID="0160">3998-99233</cbc:ID>
+				<cbc:ExtendedID>8395345</cbc:ExtendedID>
+			</cac:StandardItemIdentification>
+			<cac:HazardousItem>
+				<cbc:UNDGCode>ADR</cbc:UNDGCode>
+				<cbc:HazardClassID>Code</cbc:HazardClassID>
+			</cac:HazardousItem>
+			<cac:AdditionalItemProperty>
+				<cbc:Name>Colour</cbc:Name>
+				<cbc:Value>Blue</cbc:Value>
+			</cac:AdditionalItemProperty>
+			<cac:ItemInstance>
+				<cbc:ManufactureDate>2020-01-01</cbc:ManufactureDate>
+				<cbc:BestBeforeDate>2020-12-01</cbc:BestBeforeDate>
+				<cbc:SerialID>4A8974</cbc:SerialID>
+				<cac:LotIdentification>
+					<cbc:LotNumberID>BN:7889</cbc:LotNumberID>
+					<cbc:ExpiryDate>2020-12-01</cbc:ExpiryDate>
+				</cac:LotIdentification>
+			</cac:ItemInstance>
+		</cac:Item>
+		<cac:Shipment>
+			<cbc:ID>NA</cbc:ID>
+			<cac:TransportHandlingUnit>
+				<cbc:ID>5454</cbc:ID>
+				<cbc:TransportHandlingUnitTypeCode>4H</cbc:TransportHandlingUnitTypeCode>
+				<cbc:HazardousRiskIndicator>false</cbc:HazardousRiskIndicator>
+				<cbc:ShippingMarks>text</cbc:ShippingMarks>
+				<cac:MeasurementDimension>
+					<cbc:AttributeID>AAW</cbc:AttributeID>
+					<cbc:Measure unitCode="C62">1</cbc:Measure>
+				</cac:MeasurementDimension>
+				<cac:Package>	
+					<cbc:ID>PKR:889</cbc:ID>
+					<cbc:PackagingTypeCode>OF</cbc:PackagingTypeCode>
+				</cac:Package>
+			</cac:TransportHandlingUnit>
+		</cac:Shipment>
+	</cac:DespatchLine>
+</DespatchAdvice>
+
