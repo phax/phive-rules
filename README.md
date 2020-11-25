@@ -149,8 +149,9 @@ Alternate usage as a Maven BOM:
 # News and noteworthy
 
 * v2.0.0 - 2020-11-25
-    * Renamed from "ph-bdve-rules-*" to "phive-rules*"
-    * Changed the Maven group from "com.helger.bdve.rules.*" to "com.helger.phive.rules.*"
+    * Renamed modules from `ph-bdve-rules-*` to `phive-rules*`
+    * Changed the Maven group from `com.helger.bdve.rules.*` to `com.helger.phive.rules.*`
+    * Named the Maven artefacts from `ph-bdve-rules-*` to `phive-rules-*`
     * Updated to ph-schematron 6.0.0
 * v1.0.15 - 2020-11-24
     * Added A-NZ-PEPPOL 1.0.4 rules
