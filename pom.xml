@@ -24,13 +24,13 @@
     <artifactId>parent-pom</artifactId>
     <version>1.11.2</version>
   </parent>
-  <groupId>com.helger.bdve.rules</groupId>
-  <artifactId>ph-bdve-rules-parent-pom</artifactId>
-  <version>1.0.16-SNAPSHOT</version>
+  <groupId>com.helger.phive.rules</groupId>
+  <artifactId>phive-rules-parent-pom</artifactId>
+  <version>2.0.0-SNAPSHOT</version>
   <packaging>pom</packaging>
-  <name>ph-bdve-rules-parent-pom</name>
-  <description>Base POM to build the BDVE rules projects</description>
-  <url>https://github.com/phax/ph-bdve-rules</url>
+  <name>phive-rules-parent-pom</name>
+  <description>Base POM to build the phive rules projects</description>
+  <url>https://github.com/phax/phive-rules</url>
   <inceptionYear>2020</inceptionYear>
  
   <licenses>
@@ -42,9 +42,9 @@
   </licenses>
   
   <scm>
-    <connection>scm:git:git@github.com:phax/ph-bdve-rules.git</connection>
-    <developerConnection>scm:git:git@github.com:phax/ph-bdve-rules.git</developerConnection>
-    <url>http://github.com/phax/ph-bdve-rules</url>
+    <connection>scm:git:git@github.com:phax/phive-rules.git</connection>
+    <developerConnection>scm:git:git@github.com:phax/phive-rules.git</developerConnection>
+    <url>http://github.com/phax/phive-rules</url>
     <tag>HEAD</tag>
   </scm>
 
@@ -79,9 +79,9 @@
         <scope>import</scope>
       </dependency>
       <dependency>
-        <groupId>com.helger.bdve</groupId>
-        <artifactId>ph-bdve-parent-pom</artifactId>
-        <version>6.0.4</version>
+        <groupId>com.helger.phive</groupId>
+        <artifactId>phive-parent-pom</artifactId>
+        <version>7.0.0</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
@@ -125,7 +125,7 @@
       <dependency>
         <groupId>com.helger.web</groupId>
         <artifactId>ph-web-parent-pom</artifactId>
-        <version>9.5.0</version>
+        <version>9.5.1</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
@@ -133,94 +133,94 @@
       <dependency>
         <groupId>com.helger.peppol</groupId>
         <artifactId>peppol-commons-parent-pom</artifactId>
-        <version>8.2.6</version>
+        <version>8.3.0</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
 
       <dependency>
-        <groupId>com.helger.bdve.rules</groupId>
-        <artifactId>ph-bdve-rules-cii</artifactId>
+        <groupId>com.helger.phive.rules</groupId>
+        <artifactId>phive-rules-cii</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
-        <groupId>com.helger.bdve.rules</groupId>
-        <artifactId>ph-bdve-rules-cius-pt</artifactId>
+        <groupId>com.helger.phive.rules</groupId>
+        <artifactId>phive-rules-cius-pt</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
-        <groupId>com.helger.bdve.rules</groupId>
-        <artifactId>ph-bdve-rules-ebinterface</artifactId>
+        <groupId>com.helger.phive.rules</groupId>
+        <artifactId>phive-rules-ebinterface</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
-        <groupId>com.helger.bdve.rules</groupId>
-        <artifactId>ph-bdve-rules-ehf</artifactId>
+        <groupId>com.helger.phive.rules</groupId>
+        <artifactId>phive-rules-ehf</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
-        <groupId>com.helger.bdve.rules</groupId>
-        <artifactId>ph-bdve-rules-en16931</artifactId>
+        <groupId>com.helger.phive.rules</groupId>
+        <artifactId>phive-rules-en16931</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
-        <groupId>com.helger.bdve.rules</groupId>
-        <artifactId>ph-bdve-rules-energieefactuur</artifactId>
+        <groupId>com.helger.phive.rules</groupId>
+        <artifactId>phive-rules-energieefactuur</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
-        <groupId>com.helger.bdve.rules</groupId>
-        <artifactId>ph-bdve-rules-facturae</artifactId>
+        <groupId>com.helger.phive.rules</groupId>
+        <artifactId>phive-rules-facturae</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
-        <groupId>com.helger.bdve.rules</groupId>
-        <artifactId>ph-bdve-rules-fatturapa</artifactId>
+        <groupId>com.helger.phive.rules</groupId>
+        <artifactId>phive-rules-fatturapa</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
-        <groupId>com.helger.bdve.rules</groupId>
-        <artifactId>ph-bdve-rules-finvoice</artifactId>
+        <groupId>com.helger.phive.rules</groupId>
+        <artifactId>phive-rules-finvoice</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
-        <groupId>com.helger.bdve.rules</groupId>
-        <artifactId>ph-bdve-rules-oioubl</artifactId>
+        <groupId>com.helger.phive.rules</groupId>
+        <artifactId>phive-rules-oioubl</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
-        <groupId>com.helger.bdve.rules</groupId>
-        <artifactId>ph-bdve-rules-peppol</artifactId>
+        <groupId>com.helger.phive.rules</groupId>
+        <artifactId>phive-rules-peppol</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
-        <groupId>com.helger.bdve.rules</groupId>
-        <artifactId>ph-bdve-rules-simplerinvoicing</artifactId>
+        <groupId>com.helger.phive.rules</groupId>
+        <artifactId>phive-rules-simplerinvoicing</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
-        <groupId>com.helger.bdve.rules</groupId>
-        <artifactId>ph-bdve-rules-svefaktura</artifactId>
+        <groupId>com.helger.phive.rules</groupId>
+        <artifactId>phive-rules-svefaktura</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
-        <groupId>com.helger.bdve.rules</groupId>
-        <artifactId>ph-bdve-rules-teapps</artifactId>
+        <groupId>com.helger.phive.rules</groupId>
+        <artifactId>phive-rules-teapps</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
-        <groupId>com.helger.bdve.rules</groupId>
-        <artifactId>ph-bdve-rules-ubl</artifactId>
+        <groupId>com.helger.phive.rules</groupId>
+        <artifactId>phive-rules-ubl</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
-        <groupId>com.helger.bdve.rules</groupId>
-        <artifactId>ph-bdve-rules-ublbe</artifactId>
+        <groupId>com.helger.phive.rules</groupId>
+        <artifactId>phive-rules-ublbe</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
-        <groupId>com.helger.bdve.rules</groupId>
-        <artifactId>ph-bdve-rules-xrechnung</artifactId>
+        <groupId>com.helger.phive.rules</groupId>
+        <artifactId>phive-rules-xrechnung</artifactId>
         <version>${project.version}</version>
       </dependency>
     </dependencies>
@@ -232,8 +232,8 @@
       <artifactId>slf4j-api</artifactId>
     </dependency>
     <dependency>
-      <groupId>com.helger.bdve</groupId>
-      <artifactId>ph-bdve-engine</artifactId>
+      <groupId>com.helger.phive</groupId>
+      <artifactId>phive-engine</artifactId>
     </dependency>
 
     <dependency>
@@ -249,25 +249,25 @@
   </dependencies>
   
   <modules>
-    <module>ph-bdve-rules-cii</module>
-    <module>ph-bdve-rules-cius-pt</module>
-    <module>ph-bdve-rules-ebinterface</module>
-    <module>ph-bdve-rules-ehf</module>
-    <module>ph-bdve-rules-en16931</module>
-    <module>ph-bdve-rules-energieefactuur</module>
-    <module>ph-bdve-rules-facturae</module>
-    <module>ph-bdve-rules-fatturapa</module>
-    <module>ph-bdve-rules-finvoice</module>
-    <module>ph-bdve-rules-oioubl</module>
-    <module>ph-bdve-rules-peppol</module>
-    <module>ph-bdve-rules-simplerinvoicing</module>
-    <module>ph-bdve-rules-svefaktura</module>
-    <module>ph-bdve-rules-teapps</module>
-    <module>ph-bdve-rules-ubl</module>
+    <module>phive-rules-cii</module>
+    <module>phive-rules-cius-pt</module>
+    <module>phive-rules-ebinterface</module>
+    <module>phive-rules-ehf</module>
+    <module>phive-rules-en16931</module>
+    <module>phive-rules-energieefactuur</module>
+    <module>phive-rules-facturae</module>
+    <module>phive-rules-fatturapa</module>
+    <module>phive-rules-finvoice</module>
+    <module>phive-rules-oioubl</module>
+    <module>phive-rules-peppol</module>
+    <module>phive-rules-simplerinvoicing</module>
+    <module>phive-rules-svefaktura</module>
+    <module>phive-rules-teapps</module>
+    <module>phive-rules-ubl</module>
     <!-- depends on en16931 -->
-    <module>ph-bdve-rules-xrechnung</module>
+    <module>phive-rules-xrechnung</module>
     <!-- depends on peppol -->
-    <module>ph-bdve-rules-ublbe</module>
+    <module>phive-rules-ublbe</module>
   </modules>
   
   <build>
