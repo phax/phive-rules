@@ -1,27 +1,27 @@
-# BDVE rules
+# PHIVE rules
 
-A set of preconfigured rules for the Business Document Validation Engine (BDVE).
+A set of preconfigured rules for PHIVE (Philip Helger Integrative Validation Engine).
 
-All projects found in here rely on the validation engine provided by https://github.com/phax/ph-bdve
+All projects found in here rely on the PHIVE validation engine provided by https://github.com/phax/phive (formerly ph-bdve)
 
 This project is divided into sub-projects each keeping tracking of one document type set:
-  * ph-bdve-rules-cii - Validation rules for pure CII (without any Schematron)
-  * ph-bdve-rules-cius-pt - Validation rules for the Portuguese EN 16931 CIUS (since v1.0.11)
-  * ph-bdve-rules-ebinterface - Validation rules for Austrian ebInterface
-  * ph-bdve-rules-ehf - Validation rules for EHF (Norwegian public procurement)
-  * ph-bdve-rules-en16931 - Validation rules for the EN 16931 (European e-Invoicing norm based on CEN TC 434)
-  * ph-bdve-rules-energieefactuur - Validation rules for Dutch Energie eFactuur
-  * ph-bdve-rules-facturae - Validation rules for the Spanisch Facturae (since v1.0.11)
-  * ph-bdve-rules-fatturapa - Validation rules for Italian fattura PA (since v1.0.4)
-  * ph-bdve-rules-finvoice - Validation rules for Finvoice (since v1.0.6)
-  * ph-bdve-rules-oioubl - Validation rules for Danish OIOUBL
-  * ph-bdve-rules-peppol - the Peppol specific setup etc
-  * ph-bdve-rules-simplerinvoicing - Dutch SimplerInvoicing 1.x support from https://github.com/SimplerInvoicing/validation
-  * ph-bdve-rules-svefaktura - Validation rules for Svefaktura (since v1.0.6)
-  * ph-bdve-rules-teapps - Validation rules for Tieto TEAPPSXML
-  * ph-bdve-rules-ubl - Validation rules for pure UBL (without any Schematron)
-  * ph-bdve-rules-ublbe - Validation rules for e-FFF/UBL.BE
-  * ph-bdve-rules-xrechnung - Validation rules for German XRechnung
+  * phive-rules-cii - Validation rules for pure CII (without any Schematron)
+  * phive-rules-cius-pt - Validation rules for the Portuguese EN 16931 CIUS (since v1.0.11)
+  * phive-rules-ebinterface - Validation rules for Austrian ebInterface
+  * phive-rules-ehf - Validation rules for EHF (Norwegian public procurement)
+  * phive-rules-en16931 - Validation rules for the EN 16931 (European e-Invoicing norm based on CEN TC 434)
+  * phive-rules-energieefactuur - Validation rules for Dutch Energie eFactuur
+  * phive-rules-facturae - Validation rules for the Spanisch Facturae (since v1.0.11)
+  * phive-rules-fatturapa - Validation rules for Italian fattura PA (since v1.0.4)
+  * phive-rules-finvoice - Validation rules for Finvoice (since v1.0.6)
+  * phive-rules-oioubl - Validation rules for Danish OIOUBL
+  * phive-rules-peppol - the Peppol specific setup etc
+  * phive-rules-simplerinvoicing - Dutch SimplerInvoicing 1.x support from https://github.com/SimplerInvoicing/validation
+  * phive-rules-svefaktura - Validation rules for Svefaktura (since v1.0.6)
+  * phive-rules-teapps - Validation rules for Tieto TEAPPSXML
+  * phive-rules-ubl - Validation rules for pure UBL (without any Schematron)
+  * phive-rules-ublbe - Validation rules for e-FFF/UBL.BE
+  * phive-rules-xrechnung - Validation rules for German XRechnung
 
 The Java code in this project is licensed under the Apache 2 license.
 The code of the validation artefacts used may use a different license. 
@@ -32,104 +32,104 @@ Add the following to your `pom.xml` to use this artifact, replacing `x.y.z` with
 
 ```xml
 <dependency>
-  <groupId>com.helger.bdve.rules</groupId>
-  <artifactId>ph-bdve-rules-cii</artifactId>
+  <groupId>com.helger.phive.rules</groupId>
+  <artifactId>phive-rules-cii</artifactId>
   <version>x.y.z</version>
 </dependency>
 
 <dependency>
-  <groupId>com.helger.bdve.rules</groupId>
-  <artifactId>ph-bdve-rules-cius-pt</artifactId>
+  <groupId>com.helger.phive.rules</groupId>
+  <artifactId>phive-rules-cius-pt</artifactId>
   <version>x.y.z</version>
 </dependency>
 
 <dependency>
-  <groupId>com.helger.bdve.rules</groupId>
-  <artifactId>ph-bdve-rules-ebinterface</artifactId>
+  <groupId>com.helger.phive.rules</groupId>
+  <artifactId>phive-rules-ebinterface</artifactId>
   <version>x.y.z</version>
 </dependency>
 
 <dependency>
-  <groupId>com.helger.bdve.rules</groupId>
-  <artifactId>ph-bdve-rules-ehf</artifactId>
+  <groupId>com.helger.phive.rules</groupId>
+  <artifactId>phive-rules-ehf</artifactId>
   <version>x.y.z</version>
 </dependency>
 
 <dependency>
-  <groupId>com.helger.bdve.rules</groupId>
-  <artifactId>ph-bdve-rules-en16931</artifactId>
+  <groupId>com.helger.phive.rules</groupId>
+  <artifactId>phive-rules-en16931</artifactId>
   <version>x.y.z</version>
 </dependency>
 
 <dependency>
-  <groupId>com.helger.bdve.rules</groupId>
-  <artifactId>ph-bdve-rules-energieefactuur</artifactId>
+  <groupId>com.helger.phive.rules</groupId>
+  <artifactId>phive-rules-energieefactuur</artifactId>
   <version>x.y.z</version>
 </dependency>
 
 <dependency>
-  <groupId>com.helger.bdve.rules</groupId>
-  <artifactId>ph-bdve-rules-facturae</artifactId>
+  <groupId>com.helger.phive.rules</groupId>
+  <artifactId>phive-rules-facturae</artifactId>
   <version>x.y.z</version>
 </dependency>
 
 <dependency>
-  <groupId>com.helger.bdve.rules</groupId>
-  <artifactId>ph-bdve-rules-fatturapa</artifactId>
+  <groupId>com.helger.phive.rules</groupId>
+  <artifactId>phive-rules-fatturapa</artifactId>
   <version>x.y.z</version>
 </dependency>
 
 <dependency>
-  <groupId>com.helger.bdve.rules</groupId>
-  <artifactId>ph-bdve-rules-finvoice</artifactId>
+  <groupId>com.helger.phive.rules</groupId>
+  <artifactId>phive-rules-finvoice</artifactId>
   <version>x.y.z</version>
 </dependency>
 
 <dependency>
-  <groupId>com.helger.bdve.rules</groupId>
-  <artifactId>ph-bdve-rules-oioubl</artifactId>
+  <groupId>com.helger.phive.rules</groupId>
+  <artifactId>phive-rules-oioubl</artifactId>
   <version>x.y.z</version>
 </dependency>
 
 <dependency>
-  <groupId>com.helger.bdve.rules</groupId>
-  <artifactId>ph-bdve-rules-peppol</artifactId>
+  <groupId>com.helger.phive.rules</groupId>
+  <artifactId>phive-rules-peppol</artifactId>
   <version>x.y.z</version>
 </dependency>
 
 <dependency>
-  <groupId>com.helger.bdve.rules</groupId>
-  <artifactId>ph-bdve-rules-simplerinvoicing</artifactId>
+  <groupId>com.helger.phive.rules</groupId>
+  <artifactId>phive-rules-simplerinvoicing</artifactId>
   <version>x.y.z</version>
 </dependency>
 
 <dependency>
-  <groupId>com.helger.bdve.rules</groupId>
-  <artifactId>ph-bdve-rules-svefaktura</artifactId>
+  <groupId>com.helger.phive.rules</groupId>
+  <artifactId>phive-rules-svefaktura</artifactId>
   <version>x.y.z</version>
 </dependency>
 
 <dependency>
-  <groupId>com.helger.bdve.rules</groupId>
-  <artifactId7>ph-bdve-rules-teapps</artifactId>
+  <groupId>com.helger.phive.rules</groupId>
+  <artifactId7>phive-rules-teapps</artifactId>
   <version>x.y.z</version>
 </dependency>
 
 <dependency>
-  <groupId>com.helger.bdve.rules</groupId>
-  <artifactId>ph-bdve-rules-ubl</artifactId>
+  <groupId>com.helger.phive.rules</groupId>
+  <artifactId>phive-rules-ubl</artifactId>
   <version>x.y.z</version>
 </dependency>
 
 <dependency>
-  <groupId>com.helger.bdve.rules</groupId>
-  <artifactId>ph-bdve-rules-ublbe</artifactId>
+  <groupId>com.helger.phive.rules</groupId>
+  <artifactId>phive-rules-ublbe</artifactId>
   <version>x.y.z</version>
 </dependency>
 
 <dependency>
-  <groupId>com.helger.bdve.rules</groupId>
-  <artifactId>ph-bdve-rules-xrechnung</artifactId>
+  <groupId>com.helger.phive.rules</groupId>
+  <artifactId>phive-rules-xrechnung</artifactId>
   <version>x.y.z</version>
 </dependency>
 ```
@@ -138,8 +138,8 @@ Alternate usage as a Maven BOM:
 
 ```xml
 <dependency>
-  <groupId>com.helger.bdve.rules</groupId>
-  <artifactId>ph-bdve-rules-parent-pom</artifactId>
+  <groupId>com.helger.phive.rules</groupId>
+  <artifactId>phive-rules-parent-pom</artifactId>
   <version>x.y.z</version>
   <type>pom</type>
   <scope>import</scope>
@@ -148,6 +148,10 @@ Alternate usage as a Maven BOM:
   
 # News and noteworthy
 
+* v2.0.0 - 2020-11-25
+    * Renamed from "ph-bdve-rules-*" to "phive-rules*"
+    * Changed the Maven group from "com.helger.bdve.rules.*" to "com.helger.phive.rules.*"
+    * Updated to ph-schematron 6.0.0
 * v1.0.15 - 2020-11-24
     * Added A-NZ-PEPPOL 1.0.4 rules
 * v1.0.14 - 2020-11-18
