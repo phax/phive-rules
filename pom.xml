@@ -72,9 +72,9 @@
         <scope>import</scope>
       </dependency>
       <dependency>
-        <groupId>com.helger</groupId>
+        <groupId>com.helger.schematron</groupId>
         <artifactId>ph-schematron-parent-pom</artifactId>
-        <version>5.6.4</version>
+        <version>6.0.0</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
@@ -117,7 +117,7 @@
       <dependency>
         <groupId>com.helger.en16931</groupId>
         <artifactId>en16931-parent-pom</artifactId>
-        <version>2.0.2</version>
+        <version>2.0.3</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>

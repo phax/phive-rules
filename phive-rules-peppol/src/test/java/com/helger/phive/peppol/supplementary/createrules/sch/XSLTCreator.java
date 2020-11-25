@@ -31,10 +31,10 @@ import com.helger.commons.io.file.FilenameHelper;
 import com.helger.commons.io.file.SimpleFileIO;
 import com.helger.commons.io.resource.FileSystemResource;
 import com.helger.phive.peppol.supplementary.createrules.RuleSourceItem;
+import com.helger.schematron.sch.SchematronProviderXSLTFromSCH;
+import com.helger.schematron.sch.SchematronResourceSCHCache;
+import com.helger.schematron.sch.TransformerCustomizerSCH;
 import com.helger.schematron.svrl.CSVRL;
-import com.helger.schematron.xslt.SCHTransformerCustomizer;
-import com.helger.schematron.xslt.SchematronProviderXSLTFromSCH;
-import com.helger.schematron.xslt.SchematronResourceSCHCache;
 import com.helger.xml.namespace.MapBasedNamespaceContext;
 import com.helger.xml.serialize.write.IXMLWriterSettings;
 import com.helger.xml.serialize.write.XMLWriter;
@@ -63,7 +63,7 @@ public final class XSLTCreator
           final File aSCHFile = aSCH.getSchematronFile ();
           LOGGER.info ("  Creating XSLT for " + aSCHFile.getName ());
 
-          final SCHTransformerCustomizer aCustomizer = new SCHTransformerCustomizer ().setForceCacheResult (false);
+          final TransformerCustomizerSCH aCustomizer = new TransformerCustomizerSCH ().setForceCacheResult (false);
           final SchematronProviderXSLTFromSCH aXSLTProvider = SchematronResourceSCHCache.createSchematronXSLTProvider (new FileSystemResource (aSCHFile),
                                                                                                                        aCustomizer);
           if (aXSLTProvider == null)

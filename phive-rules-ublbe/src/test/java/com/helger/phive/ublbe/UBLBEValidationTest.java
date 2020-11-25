@@ -26,8 +26,6 @@ import com.helger.phive.api.execute.IValidationExecutor;
 import com.helger.phive.api.executorset.IValidationExecutorSet;
 import com.helger.phive.engine.source.IValidationSourceXML;
 import com.helger.phive.ublbe.mock.CTestFiles;
-import com.helger.schematron.pure.SchematronResourcePure;
-import com.helger.schematron.xslt.SchematronResourceSCH;
 import com.helger.schematron.xslt.SchematronResourceXSLT;
 
 /**
@@ -60,12 +58,6 @@ public final class UBLBEValidationTest
         // Check that the passed Schematron is valid
         switch (aVA.getValidationArtefactType ())
         {
-          case SCHEMATRON_PURE:
-            assertTrue (aRes.toString (), new SchematronResourcePure (aRes).isValidSchematron ());
-            break;
-          case SCHEMATRON_SCH:
-            assertTrue (aRes.toString (), new SchematronResourceSCH (aRes).isValidSchematron ());
-            break;
           case SCHEMATRON_XSLT:
             assertTrue (aRes.toString (), new SchematronResourceXSLT (aRes).isValidSchematron ());
             break;
