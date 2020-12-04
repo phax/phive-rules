@@ -108,9 +108,9 @@ public final class PeppolValidation3_11_1
 
     final String sVersion = " (" + VERSION_STR + ")";
     // See https://docs.peppol.eu/poacc/billing/3.0/release-notes/
-    final String sAkaVersionBilling = " (aka BIS Billing 3.0.8 corrigendum)";
+    final String sAkaVersionBilling = " (aka BIS Billing 3.0.9)";
     // See https://docs.peppol.eu/poacc/upgrade-3/release-notes/
-    final String sAkaVersionBIS = " (aka BIS 3.0.5 corrigendum)";
+    final String sAkaVersionBIS = " (aka BIS 3.0.6)";
 
     final boolean bNotDeprecated = false;
 
