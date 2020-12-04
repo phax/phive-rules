@@ -148,6 +148,11 @@ Alternate usage as a Maven BOM:
   
 # News and noteworthy
 
+* v2.0.1 - 2020-12-04
+    * Updated to ph-schematron 6.0.1
+    * Updated to phive 7.0.1
+    * Fixed the XRechnung 2.0.0 rules to ignore certain base EN16931 rules
+    * Fixed the display names of the Peppol rules to use the correct versioning
 * v2.0.0 - 2020-11-25
     * Renamed modules from `ph-bdve-rules-*` to `phive-rules*`
     * Changed the Maven group from `com.helger.bdve.rules.*` to `com.helger.phive.rules.*`
