@@ -122,19 +122,19 @@ public final class UBLBEValidation
     // For better error messages
     SchematronNamespaceBeautifier.addMappings (UBL21NamespaceContext.getInstance ());
 
-    final IValidationExecutorSet <IValidationSourceXML> aVESInvoice = aRegistry.getOfID (PeppolValidation370.VID_OPENPEPPOL_T10_V2);
-    final IValidationExecutorSet <IValidationSourceXML> aVESCreditNote = aRegistry.getOfID (PeppolValidation370.VID_OPENPEPPOL_T14_V2);
-    if (aVESInvoice == null || aVESCreditNote == null)
+    final IValidationExecutorSet <IValidationSourceXML> aVESInvoiceBIS2 = aRegistry.getOfID (PeppolValidation370.VID_OPENPEPPOL_T10_V2);
+    final IValidationExecutorSet <IValidationSourceXML> aVESCreditNoteBIS2 = aRegistry.getOfID (PeppolValidation370.VID_OPENPEPPOL_T14_V2);
+    if (aVESInvoiceBIS2 == null || aVESCreditNoteBIS2 == null)
       throw new IllegalStateException ("Standard Peppol artefacts must be registered before e-FFF artefacts!");
 
     final boolean bDeprecated = true;
     final boolean bNotDeprecated = false;
-    aRegistry.registerValidationExecutorSet (ValidationExecutorSet.createDerived (aVESInvoice,
+    aRegistry.registerValidationExecutorSet (ValidationExecutorSet.createDerived (aVESInvoiceBIS2,
                                                                                   VID_EFFF_INVOICE,
                                                                                   "e-FFF Invoice " + VID_EFFF_INVOICE.getVersion (),
                                                                                   bDeprecated,
                                                                                   _createXSLT (BE_EFFF_300)));
-    aRegistry.registerValidationExecutorSet (ValidationExecutorSet.createDerived (aVESCreditNote,
+    aRegistry.registerValidationExecutorSet (ValidationExecutorSet.createDerived (aVESCreditNoteBIS2,
                                                                                   VID_EFFF_CREDIT_NOTE,
                                                                                   "e-FFF Credit Note " + VID_EFFF_CREDIT_NOTE.getVersion (),
                                                                                   bDeprecated,
