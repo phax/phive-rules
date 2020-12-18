@@ -49,7 +49,7 @@ public final class UBLValidation
   public static final String VERSION_20 = "2.0";
   public static final String VERSION_21 = "2.1";
   public static final String VERSION_22 = "2.2";
-  public static final String VERSION_23 = "2.3-csd03";
+  public static final String VERSION_23 = "2.3-csd04";
 
   // UBL 2.0
   public static final VESID VID_UBL_20_APPLICATIONRESPONSE = new VESID (GROUP_ID, "applicationresponse", VERSION_20);
@@ -252,7 +252,7 @@ public final class UBLValidation
   public static final VESID VID_UBL_22_WAYBILL = new VESID (GROUP_ID, "waybill", VERSION_22);
   public static final VESID VID_UBL_22_WEIGHTSTATEMENT = new VESID (GROUP_ID, "weightstatement", VERSION_22);
 
-  // UBL 2.3
+  // UBL 2.3-CSD04
   public static final VESID VID_UBL_23_APPLICATIONRESPONSE = new VESID (GROUP_ID, "applicationresponse", VERSION_23);
   public static final VESID VID_UBL_23_ATTACHEDDOCUMENT = new VESID (GROUP_ID, "attacheddocument", VERSION_23);
   public static final VESID VID_UBL_23_AWARDEDNOTIFICATION = new VESID (GROUP_ID, "awardednotification", VERSION_23);
@@ -267,6 +267,7 @@ public final class UBLValidation
   public static final VESID VID_UBL_23_CATALOGUEPRICINGUPDATE = new VESID (GROUP_ID, "cataloguepricingupdate", VERSION_23);
   public static final VESID VID_UBL_23_CATALOGUEREQUEST = new VESID (GROUP_ID, "cataloguerequest", VERSION_23);
   public static final VESID VID_UBL_23_CERTIFICATEOFORIGIN = new VESID (GROUP_ID, "certificateoforigin", VERSION_23);
+  public static final VESID VID_UBL_23_COMMONTRANSPORTATIONREPORT = new VESID (GROUP_ID, "commontransportationreport", VERSION_23);
   public static final VESID VID_UBL_23_CONTRACTAWARDNOTICE = new VESID (GROUP_ID, "contractawardnotice", VERSION_23);
   public static final VESID VID_UBL_23_CONTRACTNOTICE = new VESID (GROUP_ID, "contractnotice", VERSION_23);
   public static final VESID VID_UBL_23_CREDITNOTE = new VESID (GROUP_ID, "creditnote", VERSION_23);
@@ -297,6 +298,7 @@ public final class UBLValidation
   public static final VESID VID_UBL_23_INVENTORYREPORT = new VESID (GROUP_ID, "inventoryreport", VERSION_23);
   public static final VESID VID_UBL_23_INVOICE = new VESID (GROUP_ID, "invoice", VERSION_23);
   public static final VESID VID_UBL_23_ITEMINFORMATIONREQUEST = new VESID (GROUP_ID, "iteminformationrequest", VERSION_23);
+  public static final VESID VID_UBL_23_MANIFEST = new VESID (GROUP_ID, "manifest", VERSION_23);
   public static final VESID VID_UBL_23_ORDER = new VESID (GROUP_ID, "order", VERSION_23);
   public static final VESID VID_UBL_23_ORDERCANCELLATION = new VESID (GROUP_ID, "ordercancellation", VERSION_23);
   public static final VESID VID_UBL_23_ORDERCHANGE = new VESID (GROUP_ID, "orderchange", VERSION_23);
