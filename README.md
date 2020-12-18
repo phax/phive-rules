@@ -150,6 +150,7 @@ Alternate usage as a Maven BOM:
 
 * v2.0.2 - work in progress
     * Updated to UBL 2.3-CSD04
+    * Added support for XRechnung 2.0.1 rules v1.5.0
 * v2.0.1 - 2020-12-04
     * Updated to ph-schematron 6.0.1
     * Updated to phive 7.0.1
