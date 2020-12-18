@@ -221,11 +221,6 @@
   </cac:TaxTotal>
   
   
-  <cac:TaxTotal>
-      <cbc:TaxAmount currencyID="EUR">2048.44</cbc:TaxAmount>
-  </cac:TaxTotal>
-  
-  
   <cac:LegalMonetaryTotal>
       <cbc:LineExtensionAmount currencyID="EUR">10781.25</cbc:LineExtensionAmount>
       <cbc:TaxExclusiveAmount currencyID="EUR">10781.25</cbc:TaxExclusiveAmount>

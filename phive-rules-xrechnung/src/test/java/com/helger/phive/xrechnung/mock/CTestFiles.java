@@ -439,7 +439,8 @@ public final class CTestFiles
                                                                       "ubl-cn-br-de-8-test-230-remove.xml",
                                                                       "ubl-cn-br-de-9-test-225-identity.xml",
                                                                       "ubl-cn-br-de-9-test-226-remove.xml" })
-                                  ret.add (new ClassPathResource (sPrefix + s));
+                                  if (false)
+                                    ret.add (new ClassPathResource (sPrefix + s));
                               }
                               else
                                 if (aVESID.equals (XRechnungValidation.VID_XRECHNUNG_UBL_INVOICE_201))
@@ -632,7 +633,8 @@ public final class CTestFiles
                                                                         "ubl-inv-paymentmeans-test-128-remove.xml",
                                                                         "ubl-inv-paymentmeans-test-129-code-58.xml",
                                                                         "ubl-inv-paymentmeans-test-130-code-sdsfsadgfa.xml" })
-                                    ret.add (new ClassPathResource (sPrefix + s));
+                                    if (false)
+                                      ret.add (new ClassPathResource (sPrefix + s));
                                 }
                                 else
                                   throw new IllegalArgumentException ("Invalid VESID: " + aVESID);
