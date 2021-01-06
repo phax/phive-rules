@@ -25,7 +25,7 @@ import com.helger.phive.api.artefact.IValidationArtefact;
 import com.helger.phive.api.execute.IValidationExecutor;
 import com.helger.phive.api.executorset.IValidationExecutorSet;
 import com.helger.phive.engine.source.IValidationSourceXML;
-import com.helger.phive.teapps.mock.CTestFiles;
+import com.helger.phive.isdoc.mock.CTestFiles;
 import com.helger.schematron.pure.SchematronResourcePure;
 import com.helger.schematron.sch.SchematronResourceSCH;
 import com.helger.schematron.xslt.SchematronResourceXSLT;

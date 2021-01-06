@@ -31,7 +31,7 @@ import com.helger.phive.api.result.ValidationResultList;
 import com.helger.phive.engine.mock.MockFile;
 import com.helger.phive.engine.source.IValidationSourceXML;
 import com.helger.phive.engine.source.ValidationSourceXML;
-import com.helger.phive.teapps.mock.CTestFiles;
+import com.helger.phive.isdoc.mock.CTestFiles;
 
 /**
  * Test class for class {@link ValidationExecutionManager}.
