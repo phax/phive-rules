@@ -1,0 +1,744 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+
+  Schéma pro neplatební dokument ISDOC
+  Schema for ISDOC nonpayment document
+  
+  (c) 2014 ICT UNIE o.s., http://www.ictu.cz/
+  (c) 2014 ICT UNIE o.s. - ASSOCIATION FOR INFORMATION TECHNOLOGIES AND TELECOMMUNICATIONS, http://www.ictu.cz/ 
+  
+  Permission to use, copy, modify and distribute this schema and its
+  documentation for any purpose and without fee is hereby granted in
+  perpetuity, provided that the above copyright notice and this paragraph
+  appear in all copies. The copyright holders make no representation about the
+  suitability of the schema for any purpose. It is provided "as is" without
+  expressed or implied warranty.
+  
+  Neither the name of the SPIS, ICT UNIE, nor the name ISDOC may be used to 
+  endorse or promote products derived from this software without specific 
+  prior written permission.
+
+  $Id: isdoc-commondocument-6.0.1.xsd,v 1.1 2014/03/20 17:20:22 jkj Exp $
+
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://isdoc.cz/namespace/2013" xmlns:isdoc="http://isdoc.cz/namespace/2013" targetNamespace="http://isdoc.cz/namespace/2013" elementFormDefault="qualified" version="6.0.1" xml:lang="cs">
+  
+  <xs:group name="Signature">
+    <xs:annotation>
+      <xs:documentation xml:lang="cs">Digitální podpis dokladu ve formátu Enveloped XML Signature (http://www.w3.org/TR/xmldsig-core/)</xs:documentation>
+      <xs:documentation xml:lang="en">Document digital signature in the Enveloped XML Signature format (http://www.w3.org/TR/xmldsig-core/)</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:any namespace="http://www.w3.org/2000/09/xmldsig#" processContents="lax"/>
+    </xs:sequence>
+  </xs:group>
+
+  <xs:simpleType name="VersionType">
+    <xs:annotation>
+      <xs:documentation xml:lang="cs">Číslo verze ISDOC</xs:documentation>
+      <xs:documentation xml:lang="en">ISDOC version number</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[0-9]+\.[0-9]+(\.[0-9]+)?"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="SubDocumentTypeType">
+    <xs:annotation>
+      <xs:documentation xml:lang="cs">Podrobnější typ dokumentu. Číselník udržuje a zveřejňuje subjekt identifikovaný v SubDocumentTypeOrigin.</xs:documentation>
+      <xs:documentation xml:lang="en">Document subtype. Codelist is maintained and published by subject specified in SubDocumentTypeOrigin.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+
+  <xs:simpleType name="SubDocumentTypeOriginType">
+    <xs:annotation>
+      <xs:documentation xml:lang="cs">Správce číselníku podrobnějšího typu dokumentu.</xs:documentation>
+      <xs:documentation xml:lang="en">Maintainer of subdocument type code list.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  
+  <xs:simpleType name="TargetConsolidatorType">
+    <xs:annotation>
+      <xs:documentation xml:lang="cs">Identifikace cílového konsolidátora. Číselník je rozšířený číselník kódů bank a udržuje a zveřejňuje ho ČBA, používá se převážně v B2C systémech velkých výstavců faktur.</xs:documentation>
+      <xs:documentation xml:lang="en">Identification of target consolidator. Values are extended list of bank codes maintained and published by ČBA.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+
+  <xs:simpleType name="ClientOnTargetConsolidatorType">
+    <xs:annotation>
+      <xs:documentation xml:lang="cs">Identifikace klienta v systému výstavce, používá se převážně v B2C systémech velkých výstavců faktur.</xs:documentation>
+      <xs:documentation xml:lang="en">Client identification in the issuer system. Used mainly in B2C systems of companies issuing large volume of invoices.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  
+  <xs:simpleType name="ClientBankAccountType">
+    <xs:annotation>
+      <xs:documentation xml:lang="cs">Kompletní číslo bankovního účtu příjemce faktury včetně kódu banky. Používá se převážně v B2C systémech velkých výstavců faktur.</xs:documentation>
+      <xs:documentation xml:lang="en">Complete bank account number of invoice receiver. Used mainly in B2C systems of companies issuing large volume of invoices.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+
+  <xs:simpleType name="IDType">
+    <xs:annotation>
+      <xs:documentation xml:lang="cs">Unikátní identifikátor</xs:documentation>
+      <xs:documentation xml:lang="en">Unique identifier</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+
+  <xs:simpleType name="UUIDType">
+    <xs:annotation>
+      <xs:documentation xml:lang="cs">Unikátní identifikátor GUID</xs:documentation>
+      <xs:documentation xml:lang="en">Unique GUID identifier</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{12}"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="IssueDateType">
+    <xs:annotation>
+      <xs:documentation xml:lang="cs">Datum vystavení</xs:documentation>
+      <xs:documentation xml:lang="en">Issue date</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:date"/>
+  </xs:simpleType>
+
+  <xs:complexType name="NoteType">
+    <xs:annotation>
+      <xs:documentation xml:lang="cs">Poznámka</xs:documentation>
+      <xs:documentation xml:lang="en">Note</xs:documentation>
+    </xs:annotation>
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute name="languageID" type="xs:language" use="optional">
+          <xs:annotation>
+            <xs:documentation xml:lang="cs">Identifikátor použitého jazyka (např. "cs" pro češtinu)</xs:documentation>
+            <xs:documentation xml:lang="en">Language identifier (e.g. "en" for English)</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <xs:simpleType name="LastValidDateType">
+    <xs:annotation>
+      <xs:documentation xml:lang="cs">Datum konce platnosti smlouvy</xs:documentation>
+      <xs:documentation xml:lang="en">Date until contract is valid</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:date"/>
+  </xs:simpleType>
+
+  <xs:complexType name="SupplementsListType">
+    <xs:annotation>
+      <xs:documentation xml:lang="cs">Kolekce příloh dokladu. Jedna z nich může být náhled, je označena pomocí preview="true"</xs:documentation>
+      <xs:documentation xml:lang="en">Collection of document attachments. Exactly one attachment can be document preview marked by preview="true"</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" name="Supplement" type="SupplementType">
+        <xs:annotation>
+          <xs:documentation xml:lang="cs">Příloha dokladu</xs:documentation>
+          <xs:documentation xml:lang="en">Document attachment</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="SupplementType">
+    <xs:annotation>
+      <xs:documentation xml:lang="cs">Příloha dokladu</xs:documentation>
+      <xs:documentation xml:lang="en">Document attachment</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="Filename" type="FilenameType">
+        <xs:annotation>
+          <xs:documentation xml:lang="cs">Jméno a cesta k souboru</xs:documentation>
+          <xs:documentation xml:lang="en">File name and path</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="DigestMethod" type="DigestMethodType">
+        <xs:annotation>
+          <xs:documentation xml:lang="cs">Identifikace metody použité při výpočtu otisku přílohy</xs:documentation>
+          <xs:documentation xml:lang="en">Attachment digest method identification</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="DigestValue" type="DigestValueType">
+        <xs:annotation>
+          <xs:documentation xml:lang="cs">Hodnota otisku přílohy</xs:documentation>
+          <xs:documentation xml:lang="en">Attachment digest value</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="preview" type="BooleanType">
+      <xs:annotation>
+        <xs:documentation xml:lang="cs">Je daná příloha náhledem dokladu</xs:documentation>
+        <xs:documentation xml:lang="en">Is this attachment document preview</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+
+  <xs:simpleType name="FilenameType">
+    <xs:annotation>
+      <xs:documentation xml:lang="cs">Jméno a cesta k souboru</xs:documentation>
+      <xs:documentation xml:lang="en">File name and path</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+
+  <xs:complexType name="DigestMethodType">
+    <xs:annotation>
+      <xs:documentation xml:lang="cs">Identifikace metody použité při výpočtu otisku přílohy</xs:documentation>
+      <xs:documentation xml:lang="en">Attachment digest method identification</xs:documentation>
+    </xs:annotation>
+    <xs:attribute name="Algorithm" use="required" type="xs:anyURI">
+      <xs:annotation>
+        <xs:documentation xml:lang="cs">Identifikátory jednotlivých algoritmů jsou definovány v http://www.w3.org/TR/xmldsig-core/#sec-AlgID</xs:documentation>
+        <xs:documentation xml:lang="en">Algorithm identifiers are defined in http://www.w3.org/TR/xmldsig-core/#sec-AlgID</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+
+  <xs:simpleType name="DigestValueType">
+    <xs:annotation>
+      <xs:documentation xml:lang="cs">Hodnota otisku přílohy</xs:documentation>
+      <xs:documentation xml:lang="en">Attachment digest value</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+
+  <xs:simpleType name="BooleanType">
+    <xs:annotation>
+      <xs:documentation xml:lang="cs">Typ boolean, dovolené hodnoty jsou jen "true" a "false", tj. není podporováno "0" a "1" jako u zabudovaného typu xs:boolean</xs:documentation>
+      <xs:documentation xml:lang="en">Boolean datatype. Permitted values are only "true" and "false". Values "0" and "1" which are in a value space of built-in xs:boolean type are not supported</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:boolean">
+      <xs:pattern value="true|false"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:complexType name="ExtensionsType">
+    <xs:annotation>
+      <xs:documentation xml:lang="cs">Jakákoliv struktura uživatelských elementů. Elementy musí používat vlastní jmenný prostor.</xs:documentation>
+      <xs:documentation xml:lang="en">Arbitrary fragment of user-defined elements. Elements must use their own namespace.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:any minOccurs="1" maxOccurs="unbounded" namespace="##other" processContents="lax"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="AccountingSupplierPartyType">
+    <xs:annotation>
+      <xs:documentation xml:lang="cs">Dodavatel, účetní jednotka</xs:documentation>
+      <xs:documentation xml:lang="en">Supplier, accounting entity in Commercial Register</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="Party" type="PartyType">
+        <xs:annotation>
+          <xs:documentation xml:lang="cs">Identifikace subjektu</xs:documentation>
+          <xs:documentation xml:lang="en">Information about an organization, sub-organization, or individual fulfilling a role in a business process.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="PartyType">
+    <xs:annotation>
+      <xs:documentation xml:lang="cs">Identifikace subjektu</xs:documentation>
+      <xs:documentation xml:lang="en">Information about an organization, sub-organization, or individual fulfilling a role in a business process.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="PartyIdentification" type="PartyIdentificationType">
+        <xs:annotation>
+          <xs:documentation xml:lang="cs">Element identifikačních položek subjektu (firmy)</xs:documentation>
+          <xs:documentation xml:lang="en">Information about a party's identification.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="PartyName" type="PartyNameType">
+        <xs:annotation>
+          <xs:documentation xml:lang="cs">Název subjektu</xs:documentation>
+          <xs:documentation xml:lang="en">Information about a party's name.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="PostalAddress" type="PostalAddressType">
+        <xs:annotation>
+          <xs:documentation xml:lang="cs">Poštovní adresa</xs:documentation>
+          <xs:documentation xml:lang="en">Postal address</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="PartyTaxScheme" type="PartyTaxSchemeType" minOccurs="0" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation xml:lang="cs">Daňové údaje. Element je možné použít vícekrát a určit více identifikátorů, např. DIČ a IČ DPH na Slovensku.</xs:documentation>
+          <xs:documentation xml:lang="en">Information about a party's tax scheme</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="RegisterIdentification" type="RegisterIdentificationType">
+        <xs:annotation>
+          <xs:documentation xml:lang="cs">Identifikace zápisu v rejstříku</xs:documentation>
+          <xs:documentation xml:lang="en">Commercial Register record identification (in the Czech Republic)</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Contact" type="ContactType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="cs">Kontaktní osoba</xs:documentation>
+          <xs:documentation xml:lang="en">Information about a contactable person or organization department</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="PartyIdentificationType">
+    <xs:annotation>
+      <xs:documentation xml:lang="cs">Element identifikačních položek subjektu (firmy)</xs:documentation>
+      <xs:documentation xml:lang="en">Information about a party's identification.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="UserID" type="UserIDType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="cs">Uživatelské číslo firmy/provozovny</xs:documentation>
+          <xs:documentation xml:lang="en">User defined company/workplace number</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="CatalogFirmIdentification" type="CatalogFirmIdentificationType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="cs">Mezinárodní číslo firmy/provozovny, např. EAN</xs:documentation>
+          <xs:documentation xml:lang="en">International company/workplace number, e.g. EAN</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ID" type="IDType">
+        <xs:annotation>
+          <xs:documentation xml:lang="cs">IČ</xs:documentation>
+          <xs:documentation xml:lang="en">Company identification number</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:simpleType name="UserIDType">
+    <xs:annotation>
+      <xs:documentation xml:lang="cs">Uživatelské číslo firmy/provozovny</xs:documentation>
+      <xs:documentation xml:lang="en">User defined company/workplace number</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+
+  <xs:simpleType name="CatalogFirmIdentificationType">
+    <xs:annotation>
+      <xs:documentation xml:lang="cs">Mezinárodní číslo firmy/provozovny, např. EAN</xs:documentation>
+      <xs:documentation xml:lang="en">International company/workplace number, e.g. EAN</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+
+  <xs:complexType name="PartyNameType">
+    <xs:annotation>
+      <xs:documentation xml:lang="cs">Název subjektu</xs:documentation>
+      <xs:documentation xml:lang="en">Information about a party's name.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="Name" type="NameType">
+        <xs:annotation>
+          <xs:documentation xml:lang="cs">Název</xs:documentation>
+          <xs:documentation xml:lang="en">A character string that constitutes the distinctive designation of a person, place, thing or concept</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:simpleType name="NameType">
+    <xs:annotation>
+      <xs:documentation xml:lang="cs">Název</xs:documentation>
+      <xs:documentation xml:lang="en">A character string that constitutes the distinctive designation of a person, place, thing or concept</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+
+  <xs:complexType name="PostalAddressType">
+    <xs:annotation>
+      <xs:documentation xml:lang="cs">Poštovní adresa</xs:documentation>
+      <xs:documentation xml:lang="en">Postal address</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="StreetName" type="StreetNameType">
+        <xs:annotation>
+          <xs:documentation xml:lang="cs">Ulice</xs:documentation>
+          <xs:documentation xml:lang="en">Street</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="BuildingNumber" type="BuildingNumberType">
+        <xs:annotation>
+          <xs:documentation xml:lang="cs">Číslo popisné/orientační</xs:documentation>
+          <xs:documentation xml:lang="en">Building number</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="CityName" type="CityNameType">
+        <xs:annotation>
+          <xs:documentation xml:lang="cs">Město</xs:documentation>
+          <xs:documentation xml:lang="en">City</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="PostalZone" type="PostalZoneType">
+        <xs:annotation>
+          <xs:documentation xml:lang="cs">PSČ</xs:documentation>
+          <xs:documentation xml:lang="en">ZIP/postal zone</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Country" type="CountryType">
+        <xs:annotation>
+          <xs:documentation xml:lang="cs">Země</xs:documentation>
+          <xs:documentation xml:lang="en">Country</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:simpleType name="StreetNameType">
+    <xs:annotation>
+      <xs:documentation xml:lang="cs">Ulice</xs:documentation>
+      <xs:documentation xml:lang="en">Street</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+
+  <xs:simpleType name="BuildingNumberType">
+    <xs:annotation>
+      <xs:documentation xml:lang="cs">Číslo popisné/orientační</xs:documentation>
+      <xs:documentation xml:lang="en">Building number</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+
+  <xs:simpleType name="CityNameType">
+    <xs:annotation>
+      <xs:documentation xml:lang="cs">Město</xs:documentation>
+      <xs:documentation xml:lang="en">City</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+
+  <xs:simpleType name="PostalZoneType">
+    <xs:annotation>
+      <xs:documentation xml:lang="cs">PSČ</xs:documentation>
+      <xs:documentation xml:lang="en">ZIP/postal zone</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+
+  <xs:complexType name="CountryType">
+    <xs:annotation>
+      <xs:documentation xml:lang="cs">Země</xs:documentation>
+      <xs:documentation xml:lang="en">Country</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="IdentificationCode" type="IdentificationCodeType">
+        <xs:annotation>
+          <xs:documentation xml:lang="cs">Kód země podle ISO 3166</xs:documentation>
+          <xs:documentation xml:lang="en">ISO 3166 country code</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Name" type="NameType">
+        <xs:annotation>
+          <xs:documentation xml:lang="cs">Název země</xs:documentation>
+          <xs:documentation xml:lang="en">Country name</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:simpleType name="IdentificationCodeType">
+    <xs:annotation>
+      <xs:documentation xml:lang="cs">Kód země podle ISO 3166</xs:documentation>
+      <xs:documentation xml:lang="en">ISO 3166 country code</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+
+  <xs:complexType name="PartyTaxSchemeType">
+    <xs:annotation>
+      <xs:documentation xml:lang="cs">Daňové údaje. Element je možné použít vícekrát a určit více identifikátorů, např. DIČ a IČ DPH na Slovensku.</xs:documentation>
+      <xs:documentation xml:lang="en">Information about a party's tax scheme</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="CompanyID" type="CompanyIDType">
+        <xs:annotation>
+          <xs:documentation xml:lang="cs">DIČ</xs:documentation>
+          <xs:documentation xml:lang="en">VAT number</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="TaxScheme" type="TaxSchemeType">
+        <xs:annotation>
+          <xs:documentation xml:lang="cs">Daňové schéma. Nejpoužívanější schémata jsou: VAT (daň z přidané hodnoty, používá se v ČR pro DIČ a na Slovensku pro IČ DPH) a TIN (používá se na Slovensku pro DIČ).</xs:documentation>
+          <xs:documentation xml:lang="en">Information about a tax scheme. The most common values are VAT (Value Added Tax) and TIN (Tax Identification Number).</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:simpleType name="CompanyIDType">
+    <xs:annotation>
+      <xs:documentation xml:lang="cs">DIČ</xs:documentation>
+      <xs:documentation xml:lang="en">VAT number</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+
+  <xs:simpleType name="TaxSchemeType">
+    <xs:annotation>
+      <xs:documentation xml:lang="cs">Daňové schéma. Nejpoužívanější schémata jsou: VAT (daň z přidané hodnoty, používá se v ČR pro DIČ a na Slovensku pro IČ DPH) a TIN (používá se na Slovensku pro DIČ).</xs:documentation>
+      <xs:documentation xml:lang="en">Information about a tax scheme. The most common values are VAT (Value Added Tax) and TIN (Tax Identification Number).</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+
+  <xs:complexType name="RegisterIdentificationType">
+    <xs:annotation>
+      <xs:documentation xml:lang="cs">Identifikace zápisu v rejstříku</xs:documentation>
+      <xs:documentation xml:lang="en">Commercial Register record identification (in the Czech Republic)</xs:documentation>
+    </xs:annotation>
+    <xs:choice>
+      <xs:sequence>
+        <xs:element name="RegisterKeptAt" type="RegisterKeptAtType">
+          <xs:annotation>
+            <xs:documentation xml:lang="cs">Správce rejstříku</xs:documentation>
+            <xs:documentation xml:lang="en">Commercial Register administrator</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="RegisterFileRef" type="RegisterFileRefType">
+          <xs:annotation>
+            <xs:documentation xml:lang="cs">Číslo registrace</xs:documentation>
+            <xs:documentation xml:lang="en">Commercial Register number</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="RegisterDate" type="RegisterDateType">
+          <xs:annotation>
+            <xs:documentation xml:lang="cs">Datum registrace</xs:documentation>
+            <xs:documentation xml:lang="en">Registration date</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+      </xs:sequence>
+      <xs:element name="Preformatted" type="PreformattedType">
+        <xs:annotation>
+          <xs:documentation xml:lang="cs">Předformátovaná informace o zápisu do rejstříku</xs:documentation>
+          <xs:documentation xml:lang="en">Preformatted information about registration in the Commerical Register</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:choice>
+  </xs:complexType>
+
+  <xs:simpleType name="RegisterKeptAtType">
+    <xs:annotation>
+      <xs:documentation xml:lang="cs">Správce rejstříku</xs:documentation>
+      <xs:documentation xml:lang="en">Commercial Register administrator</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+
+  <xs:simpleType name="RegisterFileRefType">
+    <xs:annotation>
+      <xs:documentation xml:lang="cs">Číslo registrace</xs:documentation>
+      <xs:documentation xml:lang="en">Commercial Register number</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+
+  <xs:simpleType name="RegisterDateType">
+    <xs:annotation>
+      <xs:documentation xml:lang="cs">Datum registrace</xs:documentation>
+      <xs:documentation xml:lang="en">Registration date</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:date"/>
+  </xs:simpleType>
+
+  <xs:simpleType name="PreformattedType">
+    <xs:annotation>
+      <xs:documentation xml:lang="cs">Předformátovaná informace o zápisu do rejstříku</xs:documentation>
+      <xs:documentation xml:lang="en">Preformatted information about registration in the Commerical Register</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+
+  <xs:complexType name="ContactType">
+    <xs:annotation>
+      <xs:documentation xml:lang="cs">Kontaktní osoba</xs:documentation>
+      <xs:documentation xml:lang="en">Information about a contactable person or organization department</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="Name" type="NameType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="cs">Jméno kontaktu</xs:documentation>
+          <xs:documentation xml:lang="en">Contact name</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Telephone" type="TelephoneType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="cs">Telefonní číslo</xs:documentation>
+          <xs:documentation xml:lang="en">Phone number</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ElectronicMail" type="ElectronicMailType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="cs">E-mailová adresa</xs:documentation>
+          <xs:documentation xml:lang="en">E-mail address</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:simpleType name="TelephoneType">
+    <xs:annotation>
+      <xs:documentation xml:lang="cs">Telefonní číslo</xs:documentation>
+      <xs:documentation xml:lang="en">Phone number</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+
+  <xs:simpleType name="ElectronicMailType">
+    <xs:annotation>
+      <xs:documentation xml:lang="cs">E-mailová adresa</xs:documentation>
+      <xs:documentation xml:lang="en">E-mail address</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+
+  <xs:complexType name="AccountingCustomerPartyType">
+    <xs:annotation>
+      <xs:documentation xml:lang="cs">Příjemce, účetní jednotka</xs:documentation>
+      <xs:documentation xml:lang="en">Customer, accounting entity in Commercial Register</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="Party" type="PartyType">
+        <xs:annotation>
+          <xs:documentation xml:lang="cs">Identifikace subjektu</xs:documentation>
+          <xs:documentation xml:lang="en">Information about an organization, sub-organization, or individual fulfilling a role in a business process.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  
+
+  <xs:attributeGroup name="RefAttribute">
+    <xs:attribute name="ref" type="IDType" use="required">
+      <xs:annotation>
+        <xs:documentation xml:lang="cs">Odkaz na elementem s daným Id</xs:documentation>
+        <xs:documentation xml:lang="en">Reference to element with a particular Id</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+
+  <xs:attributeGroup name="IdAttribute">
+    <xs:attribute name="id" type="IDType">
+      <xs:annotation>
+        <xs:documentation xml:lang="cs">Identifikátor elementu pro tvorbu odkazů</xs:documentation>
+        <xs:documentation xml:lang="en">Element identifier used as a target for linking</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+
+  <xs:element name="CommonDocument">
+    <xs:annotation>
+      <xs:documentation xml:lang="cs">Hlavní element dokumentu, jeho subtyp viz položka DocumentType</xs:documentation>
+      <xs:documentation xml:lang="en">Document root element, subtype is stored in DocumentType element</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="SubDocumentType" type="SubDocumentTypeType">
+          <xs:annotation>
+            <xs:documentation xml:lang="cs">Podrobnější typ dokumentu. Číselník udržuje a zveřejňuje subjekt identifikovaný v SubDocumentTypeOrigin.</xs:documentation>
+            <xs:documentation xml:lang="en">Document subtype. Codelist is maintained and published by subject specified in SubDocumentTypeOrigin.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="SubDocumentTypeOrigin" type="SubDocumentTypeOriginType">
+          <xs:annotation>
+            <xs:documentation xml:lang="cs">Správce číselníku podrobnějšího typu dokumentu.</xs:documentation>
+            <xs:documentation xml:lang="en">Maintainer of subdocument type code list.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="TargetConsolidator" type="TargetConsolidatorType" minOccurs="0">
+          <xs:annotation>
+            <xs:documentation xml:lang="cs">Identifikace cílového konsolidátora. Číselník je rozšířený číselník kódů bank a udržuje a zveřejňuje ho ČBA, používá se převážně v B2C systémech velkých výstavců faktur.</xs:documentation>
+            <xs:documentation xml:lang="en">Identification of target consolidator. Values are extended list of bank codes maintained and published by ČBA.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="ClientOnTargetConsolidator" type="ClientOnTargetConsolidatorType" minOccurs="0">
+          <xs:annotation>
+            <xs:documentation xml:lang="cs">Identifikace klienta v systému výstavce, používá se převážně v B2C systémech velkých výstavců faktur.</xs:documentation>
+            <xs:documentation xml:lang="en">Client identification in the issuer system. Used mainly in B2C systems of companies issuing large volume of invoices.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="ClientBankAccount" type="ClientBankAccountType" minOccurs="0">
+          <xs:annotation>
+            <xs:documentation xml:lang="cs">Kompletní číslo bankovního účtu příjemce faktury včetně kódu banky. Používá se převážně v B2C systémech velkých výstavců faktur.</xs:documentation>
+            <xs:documentation xml:lang="en">Complete bank account number of invoice receiver. Used mainly in B2C systems of companies issuing large volume of invoices.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="ID" type="IDType">
+          <xs:annotation>
+            <xs:documentation xml:lang="cs">Lidsky čitelné číslo dokladu</xs:documentation>
+            <xs:documentation xml:lang="en">Human readable document number</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="UUID" type="UUIDType">
+          <xs:annotation>
+            <xs:documentation xml:lang="cs">GUID identifikace od emitujícího systému</xs:documentation>
+            <xs:documentation xml:lang="en">GUID identifier produced by emitting system</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="IssueDate" type="IssueDateType">
+          <xs:annotation>
+            <xs:documentation xml:lang="cs">Datum vystavení</xs:documentation>
+            <xs:documentation xml:lang="en">Issue date</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="LastValidDate" type="LastValidDateType" minOccurs="0">
+          <xs:annotation>
+            <xs:documentation xml:lang="cs">Datum konce platnosti dokumentu</xs:documentation>
+            <xs:documentation xml:lang="en">Date until document is valid</xs:documentation>
+          </xs:annotation>          
+        </xs:element>
+        <xs:element name="Note" type="NoteType" minOccurs="0">
+          <xs:annotation>
+            <xs:documentation xml:lang="cs">Poznámka</xs:documentation>
+            <xs:documentation xml:lang="en">Note</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="Extensions" type="ExtensionsType" minOccurs="0">
+          <xs:annotation>
+            <xs:documentation xml:lang="cs">Jakákoliv struktura uživatelských elementů. Elementy musí používat vlastní jmenný prostor.</xs:documentation>
+            <xs:documentation xml:lang="en">Arbitrary fragment of user-defined elements. Elements must use their own namespace.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="AccountingSupplierParty" type="AccountingSupplierPartyType">
+          <xs:annotation>
+            <xs:documentation xml:lang="cs">Dodavatel, účetní jednotka</xs:documentation>
+            <xs:documentation xml:lang="en">Supplier, accounting entity in Commercial Register</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="AccountingCustomerParty" type="AccountingCustomerPartyType">
+          <xs:annotation>
+            <xs:documentation xml:lang="cs">Příjemce, účetní jednotka</xs:documentation>
+            <xs:documentation xml:lang="en">Customer, accounting entity in Commercial Register</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="SupplementsList" type="SupplementsListType" minOccurs="0">
+          <xs:annotation>
+            <xs:documentation xml:lang="cs">Kolekce příloh dokladu. Jedna z nich může být náhled, je označena pomocí preview="true"</xs:documentation>
+            <xs:documentation xml:lang="en">Collection of document attachments. Exactly one attachment can be document preview marked by preview="true"</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:group ref="Signature" minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>
+      <xs:attribute name="version" use="required" type="VersionType">
+        <xs:annotation>
+          <xs:documentation xml:lang="cs">Číslo verze ISDOC</xs:documentation>
+          <xs:documentation xml:lang="en">ISDOC version number</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  
+</xs:schema>

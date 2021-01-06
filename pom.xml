@@ -185,6 +185,11 @@
       </dependency>
       <dependency>
         <groupId>com.helger.phive.rules</groupId>
+        <artifactId>phive-rules-isdoc</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.helger.phive.rules</groupId>
         <artifactId>phive-rules-oioubl</artifactId>
         <version>${project.version}</version>
       </dependency>
@@ -258,6 +263,7 @@
     <module>phive-rules-facturae</module>
     <module>phive-rules-fatturapa</module>
     <module>phive-rules-finvoice</module>
+    <module>phive-rules-isdoc</module>
     <module>phive-rules-oioubl</module>
     <module>phive-rules-peppol</module>
     <module>phive-rules-simplerinvoicing</module>
