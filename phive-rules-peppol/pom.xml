@@ -91,11 +91,6 @@
       <artifactId>ph-poi</artifactId>
       <scope>test</scope>
     </dependency>
-    <dependency>
-      <groupId>com.helger</groupId>
-      <artifactId>ph-genericode</artifactId>
-      <scope>test</scope>
-    </dependency>
   </dependencies>
 
   <build>
