@@ -79,7 +79,7 @@ public final class ISDOCValidation
     final boolean bNotDeprecated = false;
 
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_ISDOC_601,
-                                                                           "ISDOCXML " + VID_ISDOC_601.getVersion (),
+                                                                           "ISDOC " + VID_ISDOC_601.getVersion (),
                                                                            bNotDeprecated,
                                                                            ValidationExecutorXSD.create (CXMLDSig.getXSDResource (),
                                                                                                          new ClassPathResource ("/isdoc/6.0.1/xsd/isdoc-invoice-dsig-6.0.1.xsd",
