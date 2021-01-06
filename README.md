@@ -14,6 +14,7 @@ This project is divided into sub-projects each keeping tracking of one document 
   * phive-rules-facturae - Validation rules for the Spanisch Facturae (since v1.0.11)
   * phive-rules-fatturapa - Validation rules for Italian fattura PA (since v1.0.4)
   * phive-rules-finvoice - Validation rules for Finvoice (since v1.0.6)
+  * phive-rules-isdoc - Validation rules for ISDOC (since v2.0.2)
   * phive-rules-oioubl - Validation rules for Danish OIOUBL
   * phive-rules-peppol - the Peppol specific setup etc
   * phive-rules-simplerinvoicing - Dutch SimplerInvoicing 1.x support from https://github.com/SimplerInvoicing/validation
@@ -87,6 +88,12 @@ Add the following to your `pom.xml` to use this artifact, replacing `x.y.z` with
 
 <dependency>
   <groupId>com.helger.phive.rules</groupId>
+  <artifactId>phive-rules-isdoc</artifactId>
+  <version>x.y.z</version>
+</dependency>
+
+<dependency>
+  <groupId>com.helger.phive.rules</groupId>
   <artifactId>phive-rules-oioubl</artifactId>
   <version>x.y.z</version>
 </dependency>
@@ -152,6 +159,7 @@ Alternate usage as a Maven BOM:
     * Updated to UBL 2.3-CSD04
     * Added support for XRechnung 2.0.1 rules v1.5.0
     * Deprecated XRechnung 1.2.2 rules as they were valid only until December 31, 2020
+    * Added support for Czech ISDOC (version 6.0.1) - in the submodule `phive-rules-isdoc`
 * v2.0.1 - 2020-12-04
     * Updated to ph-schematron 6.0.1
     * Updated to phive 7.0.1
