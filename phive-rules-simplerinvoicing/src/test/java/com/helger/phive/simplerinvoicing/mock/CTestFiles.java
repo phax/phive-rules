@@ -53,10 +53,18 @@ public final class CTestFiles
                                              SimplerInvoicingValidation.VID_SI_INVOICE_V11,
                                              SimplerInvoicingValidation.VID_SI_INVOICE_V12,
                                              SimplerInvoicingValidation.VID_SI_ORDER_V12,
+                                             SimplerInvoicingValidation.VID_SI_INVOICE_V123,
+                                             SimplerInvoicingValidation.VID_SI_ORDER_V123,
                                              SimplerInvoicingValidation.VID_SI_INVOICE_V20,
                                              SimplerInvoicingValidation.VID_SI_CREDIT_NOTE_V20,
+                                             SimplerInvoicingValidation.VID_SI_INVOICE_V201,
+                                             SimplerInvoicingValidation.VID_SI_CREDIT_NOTE_V201,
                                              SimplerInvoicingValidation.VID_SI_INVOICE_V202,
-                                             SimplerInvoicingValidation.VID_SI_CREDIT_NOTE_V202 })
+                                             SimplerInvoicingValidation.VID_SI_CREDIT_NOTE_V202,
+                                             SimplerInvoicingValidation.VID_SI_INVOICE_V203,
+                                             SimplerInvoicingValidation.VID_SI_CREDIT_NOTE_V203,
+                                             SimplerInvoicingValidation.VID_SI_INVOICE_V2031,
+                                             SimplerInvoicingValidation.VID_SI_CREDIT_NOTE_V2031 })
       for (final IReadableResource aRes : getAllMatchingTestFiles (aVESID))
         ret.add (MockFile.createGoodCase (aRes, aVESID));
 
@@ -74,6 +82,7 @@ public final class CTestFiles
     final String sPath12 = "/test-files/simplerinvoicing/SI-UBL-1.2/";
     final String sPath200 = "/test-files/simplerinvoicing/SI-UBL-2.0/";
     final String sPath202 = "/test-files/simplerinvoicing/SI-UBL-2.0.2/";
+    final String sPath203 = "/test-files/simplerinvoicing/SI-UBL-2.0.3/";
 
     final ICommonsList <IReadableResource> ret = new CommonsArrayList <> ();
     if (aVESID.equals (SimplerInvoicingValidation.VID_SI_INVOICE_V10))
@@ -113,7 +122,7 @@ public final class CTestFiles
         ret.add (new ClassPathResource (sPath + "SI-UBL-1.1-ok-taxes.xml"));
       }
       else
-        if (aVESID.equals (SimplerInvoicingValidation.VID_SI_INVOICE_V12))
+        if (aVESID.equals (SimplerInvoicingValidation.VID_SI_INVOICE_V12) || aVESID.equals (SimplerInvoicingValidation.VID_SI_INVOICE_V123))
         {
           final String sPath = sPath12;
           ret.add (new ClassPathResource (sPath + "SI-UBL-INV-1.2-ok-BII2-T10-R034.xml"));
@@ -145,7 +154,7 @@ public final class CTestFiles
           ret.add (new ClassPathResource (sPath + "SI-UBL-INV-1.2-ok-taxes-ae.xml"));
         }
         else
-          if (aVESID.equals (SimplerInvoicingValidation.VID_SI_ORDER_V12))
+          if (aVESID.equals (SimplerInvoicingValidation.VID_SI_ORDER_V12) || aVESID.equals (SimplerInvoicingValidation.VID_SI_ORDER_V123))
           {
             final String sPath = sPath12;
             ret.add (new ClassPathResource (sPath + "SI-UBL-PO-1.2-ok-minimal.xml"));
@@ -193,7 +202,8 @@ public final class CTestFiles
                 ret.add (new ClassPathResource (sPath + "SI-UBL-2.0_BR-NL-8_ok_381.xml"));
               }
               else
-                if (aVESID.equals (SimplerInvoicingValidation.VID_SI_INVOICE_V202))
+                if (aVESID.equals (SimplerInvoicingValidation.VID_SI_INVOICE_V201) ||
+                    aVESID.equals (SimplerInvoicingValidation.VID_SI_INVOICE_V202))
                 {
                   final String sPath = sPath202;
                   ret.add (new ClassPathResource (sPath + "SI-UBL-2.0_BR-NL-10_ok_both_nl.xml"));
@@ -229,13 +239,91 @@ public final class CTestFiles
                   ret.add (new ClassPathResource (sPath + "SI-UBL-2.0_ok_unitcode.xml"));
                 }
                 else
-                  if (aVESID.equals (SimplerInvoicingValidation.VID_SI_CREDIT_NOTE_V202))
+                  if (aVESID.equals (SimplerInvoicingValidation.VID_SI_CREDIT_NOTE_V201) ||
+                      aVESID.equals (SimplerInvoicingValidation.VID_SI_CREDIT_NOTE_V202))
                   {
                     final String sPath = sPath202;
                     ret.add (new ClassPathResource (sPath + "SI-UBL-2.0_BR-NL-8_ok_381.xml"));
                   }
                   else
-                    throw new IllegalArgumentException ("Invalid VESID: " + aVESID);
+                    if (aVESID.equals (SimplerInvoicingValidation.VID_SI_INVOICE_V203) ||
+                        aVESID.equals (SimplerInvoicingValidation.VID_SI_INVOICE_V2031))
+                    {
+                      for (final String s : new String [] { "SI-UBL-2.0_BR-NL-10_ok_both_nl.xml",
+                                                            "SI-UBL-2.0_BR-NL-10_ok_customer_not_nl.xml",
+                                                            "SI-UBL-2.0_BR-NL-10_ok_customer_not_nl_no_companyid.xml",
+                                                            "SI-UBL-2.0_BR-NL-10_ok_supplier_not_nl.xml",
+                                                            "SI-UBL-2.0_BR-NL-11_ok_negative_payment.xml",
+                                                            "SI-UBL-2.0_BR-NL-11_ok_no_payment.xml",
+                                                            "SI-UBL-2.0_BR-NL-12_ok.xml",
+                                                            "SI-UBL-2.0_BR-NL-13_ok.xml",
+                                                            "SI-UBL-2.0_BR-NL-19_warning_tax_currency.xml",
+                                                            "SI-UBL-2.0_BR-NL-1_ok_supplier_not_nl.xml",
+                                                            "SI-UBL-2.0_BR-NL-1_ok_supplier_oin.xml",
+                                                            "SI-UBL-2.0_BR-NL-20_warning_taxpointdate.xml",
+                                                            "SI-UBL-2.0_BR-NL-21_warning_descriptioncode.xml",
+                                                            "SI-UBL-2.0_BR-NL-24_warning_ref_issuedate.xml",
+                                                            "SI-UBL-2.0_BR-NL-25_warning_companyid_novat.xml",
+                                                            "SI-UBL-2.0_BR-NL-26_warning_legalform.xml",
+                                                            "SI-UBL-2.0_BR-NL-27_warning_addressline_customer.xml",
+                                                            "SI-UBL-2.0_BR-NL-27_warning_addressline_delivery.xml",
+                                                            "SI-UBL-2.0_BR-NL-27_warning_addressline_representative.xml",
+                                                            "SI-UBL-2.0_BR-NL-27_warning_addressline_seller.xml",
+                                                            "SI-UBL-2.0_BR-NL-28_warning_countrysub_customer.xml",
+                                                            "SI-UBL-2.0_BR-NL-28_warning_countrysub_delivery.xml",
+                                                            "SI-UBL-2.0_BR-NL-28_warning_countrysub_representative.xml",
+                                                            "SI-UBL-2.0_BR-NL-28_warning_countrysub_seller.xml",
+                                                            "SI-UBL-2.0_BR-NL-29_warning_paymentmeansname.xml",
+                                                            "SI-UBL-2.0_BR-NL-2_ok_supplier_not_nl.xml",
+                                                            "SI-UBL-2.0_BR-NL-30_warning_financialaccount.xml",
+                                                            "SI-UBL-2.0_BR-NL-31_ok_notsepa.xml",
+                                                            "SI-UBL-2.0_BR-NL-31_warning_branchid.xml",
+                                                            "SI-UBL-2.0_BR-NL-32_warning_linereasoncode.xml",
+                                                            "SI-UBL-2.0_BR-NL-32_warning_reasoncode.xml",
+                                                            "SI-UBL-2.0_BR-NL-33_warning_taxcurrency.xml",
+                                                            "SI-UBL-2.0_BR-NL-34_warning_reasoncode.xml",
+                                                            "SI-UBL-2.0_BR-NL-34_warning_reasoncode_line.xml",
+                                                            "SI-UBL-2.0_BR-NL-35_warning_taxexemptionreason.xml",
+                                                            "SI-UBL-2.0_BR-NL-3_ok_not_nl.xml",
+                                                            "SI-UBL-2.0_BR-NL-4_ok_customer_not_nl.xml",
+                                                            "SI-UBL-2.0_BR-NL-4_ok_supplier_not_nl.xml",
+                                                            "SI-UBL-2.0_BR-NL-5_ok.xml",
+                                                            "SI-UBL-2.0_BR-NL-5_ok_supplier_not_nl.xml",
+                                                            "SI-UBL-2.0_BR-NL-5_ok_taxpart_not_nl.xml",
+                                                            "SI-UBL-2.0_BR-NL-7_ok_384.xml",
+                                                            "SI-UBL-2.0_BR-NL-7_ok_389.xml",
+                                                            "SI-UBL-2.0_BR-NL-9_ok.xml",
+                                                            "SI-UBL-2.0_ok_additionaldocumentreference.xml",
+                                                            "SI-UBL-2.0_ok_allowance.xml",
+                                                            "SI-UBL-2.0_ok_allowance_line.xml",
+                                                            "SI-UBL-2.0_ok_base.xml",
+                                                            "SI-UBL-2.0_ok_charge.xml",
+                                                            "SI-UBL-2.0_ok_charge_line.xml",
+                                                            "SI-UBL-2.0_ok_full.xml",
+                                                            "SI-UBL-2.0_ok_full_negative_zero.xml",
+                                                            "SI-UBL-2.0_ok_minimal.xml",
+                                                            "SI-UBL-2.0_ok_negative.xml",
+                                                            "SI-UBL-2.0_ok_quantities.xml",
+                                                            "SI-UBL-2.0_ok_quantities_linevalues_wrong.xml",
+                                                            "SI-UBL-2.0_ok_tax_category_O.xml",
+                                                            "SI-UBL-2.0_ok_unitcode.xml",
+                                                            "SI-UBL-2.0_UBL-CR-561_warning.xml",
+                                                            "SI-UBL-2.0_UBL-SR-09_warning_multiple_legalentity_registrationname.xml",
+                                                            "SI-UBL-2.0_UBL-SR-11_warning_multiple_legalentity_companyid.xml",
+                                                            "SI-UBL-2.0_UBL-SR-15_warning_multiple_legalentity_registrationname.xml",
+                                                            "SI-UBL-2.0_UBL-SR-17_warning_multiple_legalentity_companyid.xml",
+                                                            "SI-UBL-2.0_warning_empty_elements.xml" })
+                        ret.add (new ClassPathResource (sPath203 + s));
+                    }
+                    else
+                      if (aVESID.equals (SimplerInvoicingValidation.VID_SI_CREDIT_NOTE_V203) ||
+                          aVESID.equals (SimplerInvoicingValidation.VID_SI_CREDIT_NOTE_V2031))
+                      {
+                        for (final String s : new String [] { "SI-UBL-2.0_BR-NL-8_ok_381.xml" })
+                          ret.add (new ClassPathResource (sPath203 + s));
+                      }
+                      else
+                        throw new IllegalArgumentException ("Invalid VESID: " + aVESID);
     return ret;
   }
 }

@@ -59,14 +59,14 @@ public final class ValidationExecutionManagerFuncTest
 
       // Read as desired type
       final IValidationSourceXML aSource = ValidationSourceXML.create (aTestFile.getResource ());
-      final ValidationResultList aErrors = ValidationExecutionManager.executeValidation (aExecutors, aSource, Locale.US);
+      final ValidationResultList aValidationResultList = ValidationExecutionManager.executeValidation (aExecutors, aSource, Locale.US);
       if (aTestFile.isGoodCase ())
       {
-        aErrors.getAllErrors ().forEach (x -> LOGGER.info (x.getErrorLevel () + " " + x.getErrorText (Locale.US)));
-        assertTrue (aErrors.getAllErrors ().toString (), aErrors.containsNoError ());
+        aValidationResultList.getAllErrors ().forEach (x -> LOGGER.info (x.getErrorLevel () + " " + x.getAsString (Locale.US)));
+        assertTrue (aValidationResultList.getAllErrors ().toString (), aValidationResultList.containsNoError ());
       }
       else
-        assertTrue (aErrors.containsAtLeastOneError ());
+        assertTrue (aValidationResultList.containsAtLeastOneError ());
     }
   }
 }
