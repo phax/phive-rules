@@ -155,7 +155,7 @@ Alternate usage as a Maven BOM:
   
 # News and noteworthy
 
-* v2.0.3 - work in progress
+* v2.0.3 - 2020-01-07
     * Added support for SimplerInvoicing 1.2.3
     * Added support for SimplerInvoicing 2.0.3
     * Added support for SimplerInvoicing 2.0.3.1
