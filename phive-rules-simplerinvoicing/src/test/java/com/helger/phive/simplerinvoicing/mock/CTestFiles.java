@@ -65,6 +65,8 @@ public final class CTestFiles
                                              SimplerInvoicingValidation.VID_SI_CREDIT_NOTE_V203,
                                              SimplerInvoicingValidation.VID_SI_INVOICE_V2031,
                                              SimplerInvoicingValidation.VID_SI_CREDIT_NOTE_V2031,
+                                             SimplerInvoicingValidation.VID_SI_INVOICE_20_GACCOUNT_V10,
+                                             SimplerInvoicingValidation.VID_SI_INVOICE_20_GACCOUNT_V101,
                                              SimplerInvoicingValidation.VID_SI_NLCIUS_CII_V103 })
       for (final IReadableResource aRes : getAllMatchingTestFiles (aVESID))
         ret.add (MockFile.createGoodCase (aRes, aVESID));
@@ -84,6 +86,7 @@ public final class CTestFiles
     final String sPath200 = "/test-files/simplerinvoicing/SI-UBL-2.0/";
     final String sPath202 = "/test-files/simplerinvoicing/SI-UBL-2.0.2/";
     final String sPath203 = "/test-files/simplerinvoicing/SI-UBL-2.0.3/";
+    final String sPathGAccount10 = "/test-files/simplerinvoicing/si-ubl-2.0-ext-gaccount-1.0/";
 
     final ICommonsList <IReadableResource> ret = new CommonsArrayList <> ();
     if (aVESID.equals (SimplerInvoicingValidation.VID_SI_INVOICE_V10))
@@ -324,12 +327,19 @@ public final class CTestFiles
                           ret.add (new ClassPathResource (sPath203 + s));
                       }
                       else
-                        if (aVESID.equals (SimplerInvoicingValidation.VID_SI_NLCIUS_CII_V103))
+                        if (aVESID.equals (SimplerInvoicingValidation.VID_SI_INVOICE_20_GACCOUNT_V10) ||
+                            aVESID.equals (SimplerInvoicingValidation.VID_SI_INVOICE_20_GACCOUNT_V101))
                         {
-                          // no test files
+                          for (final String s : new String [] { "si-ubl-2.0-ext-gaccount_ok_sample.xml" })
+                            ret.add (new ClassPathResource (sPathGAccount10 + s));
                         }
                         else
-                          throw new IllegalArgumentException ("Invalid VESID: " + aVESID);
+                          if (aVESID.equals (SimplerInvoicingValidation.VID_SI_NLCIUS_CII_V103))
+                          {
+                            // no test files
+                          }
+                          else
+                            throw new IllegalArgumentException ("Invalid VESID: " + aVESID);
     return ret;
   }
 }
