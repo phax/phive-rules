@@ -92,7 +92,9 @@
           <excludes>
             <exclude>**/LICENSE</exclude>
             <exclude>**/NOTICE</exclude>
+            <exclude>src/main/resources/nlcius/**</exclude>
             <exclude>src/main/resources/simplerinvoicing/**</exclude>
+            <exclude>src/test/resources/nlcius/**</exclude>
             <exclude>src/test/resources/simplerinvoicing/**</exclude>
             <exclude>src/test/resources/test-files/**</exclude>
           </excludes>
@@ -118,11 +120,22 @@
             <goals>
               <goal>convert</goal>
             </goals>
-            <id>convert</id>
+            <id>convert-si</id>
             <configuration>
               <schematronDirectory>${basedir}/src/test/resources/simplerinvoicing/2.0.3</schematronDirectory>
               <schematronPattern>si-ubl-*.sch</schematronPattern>
               <xsltDirectory>${basedir}/src/main/resources/simplerinvoicing</xsltDirectory>
+            </configuration>
+          </execution>
+          <execution>
+            <goals>
+              <goal>convert</goal>
+            </goals>
+            <id>convert-nlcius</id>
+            <configuration>
+              <schematronDirectory>${basedir}/src/test/resources/nlcius/1.0.3</schematronDirectory>
+              <schematronPattern>nlcius-*.sch</schematronPattern>
+              <xsltDirectory>${basedir}/src/main/resources/nlcius</xsltDirectory>
             </configuration>
           </execution>
        -->
