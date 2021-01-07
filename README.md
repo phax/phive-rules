@@ -155,6 +155,11 @@ Alternate usage as a Maven BOM:
   
 # News and noteworthy
 
+* v2.0.3 - work in progress
+    * Added support for SimplerInvoicing 1.2.3
+    * Added support for SimplerInvoicing 2.0.3
+    * Added support for SimplerInvoicing 2.0.3.1
+    * Added support for SimplerInvoicing NLCIUS-CII 1.0.3
 * v2.0.2 - 2020-01-06
     * Updated to UBL 2.3-CSD04 (adding 2 new document types)
     * Added support for XRechnung 2.0.1 rules v1.5.0
