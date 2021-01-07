@@ -58,6 +58,10 @@
       <groupId>com.helger.ubl</groupId>
       <artifactId>ph-ubl21</artifactId>
     </dependency>
+    <dependency>
+      <groupId>com.helger.cii</groupId>
+      <artifactId>ph-cii-d16b</artifactId>
+    </dependency>
     
     <dependency>
       <groupId>com.helger.peppol</groupId>

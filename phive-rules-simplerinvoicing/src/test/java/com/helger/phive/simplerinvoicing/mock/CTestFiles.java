@@ -64,7 +64,8 @@ public final class CTestFiles
                                              SimplerInvoicingValidation.VID_SI_INVOICE_V203,
                                              SimplerInvoicingValidation.VID_SI_CREDIT_NOTE_V203,
                                              SimplerInvoicingValidation.VID_SI_INVOICE_V2031,
-                                             SimplerInvoicingValidation.VID_SI_CREDIT_NOTE_V2031 })
+                                             SimplerInvoicingValidation.VID_SI_CREDIT_NOTE_V2031,
+                                             SimplerInvoicingValidation.VID_SI_NLCIUS_CII_V103 })
       for (final IReadableResource aRes : getAllMatchingTestFiles (aVESID))
         ret.add (MockFile.createGoodCase (aRes, aVESID));
 
@@ -323,7 +324,12 @@ public final class CTestFiles
                           ret.add (new ClassPathResource (sPath203 + s));
                       }
                       else
-                        throw new IllegalArgumentException ("Invalid VESID: " + aVESID);
+                        if (aVESID.equals (SimplerInvoicingValidation.VID_SI_NLCIUS_CII_V103))
+                        {
+                          // no test files
+                        }
+                        else
+                          throw new IllegalArgumentException ("Invalid VESID: " + aVESID);
     return ret;
   }
 }
