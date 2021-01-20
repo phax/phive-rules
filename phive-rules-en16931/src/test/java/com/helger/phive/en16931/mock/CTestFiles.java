@@ -58,6 +58,7 @@ public final class CTestFiles
                                              EN16931Validation.VID_CII_131,
                                              EN16931Validation.VID_CII_132,
                                              EN16931Validation.VID_CII_133,
+                                             EN16931Validation.VID_CII_134,
                                              EN16931Validation.VID_EDIFACT_100,
                                              EN16931Validation.VID_UBL_INVOICE_100,
                                              EN16931Validation.VID_UBL_INVOICE_110,
@@ -71,7 +72,9 @@ public final class CTestFiles
                                              EN16931Validation.VID_UBL_INVOICE_132,
                                              EN16931Validation.VID_UBL_CREDIT_NOTE_132,
                                              EN16931Validation.VID_UBL_INVOICE_133,
-                                             EN16931Validation.VID_UBL_CREDIT_NOTE_133 })
+                                             EN16931Validation.VID_UBL_CREDIT_NOTE_133,
+                                             EN16931Validation.VID_UBL_INVOICE_134,
+                                             EN16931Validation.VID_UBL_CREDIT_NOTE_134 })
       for (final IReadableResource aRes : getAllMatchingTestFiles (aVESID))
         ret.add (MockFile.createGoodCase (aRes, aVESID));
 
@@ -231,39 +234,39 @@ public final class CTestFiles
                         ret.add (new ClassPathResource (sPrefix + s));
                     }
                     else
-                      if (aVESID.equals (EN16931Validation.VID_EDIFACT_100))
+                      if (aVESID.equals (EN16931Validation.VID_CII_134))
                       {
-                        final String sPrefix = "/test-files/1.0.0/edifact/";
-                        for (final String s : new String [] { "EDIFACT_EXAMPLE1.xml",
-                                                              "EDIFACT_EXAMPLE2.xml",
-                                                              "EDIFACT_EXAMPLE3.xml",
-                                                              "EDIFACT_EXAMPLE4.xml",
-                                                              "EDIFACT_EXAMPLE5.xml",
-                                                              "EDIFACT_EXAMPLE6.xml",
-                                                              "EDIFACT_EXAMPLE7.xml",
-                                                              "EDIFACT_EXAMPLE8.xml",
-                                                              "EDIFACT_EXAMPLE9.xml" })
+                        final String sPrefix = "/test-files/1.3.4/cii/";
+                        for (final String s : new String [] { "CII_business_example_01.xml",
+                                                              "CII_business_example_02.xml",
+                                                              "CII_example1.xml",
+                                                              "CII_example3.xml",
+                                                              "CII_example4.xml",
+                                                              "CII_example6.xml",
+                                                              "CII_example7.xml",
+                                                              "CII_example8.xml",
+                                                              "CII_example9.xml" })
                           ret.add (new ClassPathResource (sPrefix + s));
                       }
                       else
-                        if (aVESID.equals (EN16931Validation.VID_UBL_INVOICE_100))
+                        if (aVESID.equals (EN16931Validation.VID_EDIFACT_100))
                         {
-                          final String sPrefix = "/test-files/1.0.0/ubl/";
-                          for (final String s : new String [] { "ubl-tc434-example1.xml",
-                                                                "ubl-tc434-example2.xml",
-                                                                "ubl-tc434-example3.xml",
-                                                                "ubl-tc434-example4.xml",
-                                                                "ubl-tc434-example5.xml",
-                                                                "ubl-tc434-example6.xml",
-                                                                "ubl-tc434-example7.xml",
-                                                                "ubl-tc434-example8.xml",
-                                                                "ubl-tc434-example9.xml" })
+                          final String sPrefix = "/test-files/1.0.0/edifact/";
+                          for (final String s : new String [] { "EDIFACT_EXAMPLE1.xml",
+                                                                "EDIFACT_EXAMPLE2.xml",
+                                                                "EDIFACT_EXAMPLE3.xml",
+                                                                "EDIFACT_EXAMPLE4.xml",
+                                                                "EDIFACT_EXAMPLE5.xml",
+                                                                "EDIFACT_EXAMPLE6.xml",
+                                                                "EDIFACT_EXAMPLE7.xml",
+                                                                "EDIFACT_EXAMPLE8.xml",
+                                                                "EDIFACT_EXAMPLE9.xml" })
                             ret.add (new ClassPathResource (sPrefix + s));
                         }
                         else
-                          if (aVESID.equals (EN16931Validation.VID_UBL_INVOICE_110))
+                          if (aVESID.equals (EN16931Validation.VID_UBL_INVOICE_100))
                           {
-                            final String sPrefix = "/test-files/1.1.0/ubl/";
+                            final String sPrefix = "/test-files/1.0.0/ubl/";
                             for (final String s : new String [] { "ubl-tc434-example1.xml",
                                                                   "ubl-tc434-example2.xml",
                                                                   "ubl-tc434-example3.xml",
@@ -276,9 +279,9 @@ public final class CTestFiles
                               ret.add (new ClassPathResource (sPrefix + s));
                           }
                           else
-                            if (aVESID.equals (EN16931Validation.VID_UBL_INVOICE_120))
+                            if (aVESID.equals (EN16931Validation.VID_UBL_INVOICE_110))
                             {
-                              final String sPrefix = "/test-files/1.2.0/ubl/";
+                              final String sPrefix = "/test-files/1.1.0/ubl/";
                               for (final String s : new String [] { "ubl-tc434-example1.xml",
                                                                     "ubl-tc434-example2.xml",
                                                                     "ubl-tc434-example3.xml",
@@ -291,9 +294,9 @@ public final class CTestFiles
                                 ret.add (new ClassPathResource (sPrefix + s));
                             }
                             else
-                              if (aVESID.equals (EN16931Validation.VID_UBL_INVOICE_121))
+                              if (aVESID.equals (EN16931Validation.VID_UBL_INVOICE_120))
                               {
-                                final String sPrefix = "/test-files/1.2.1/ubl/";
+                                final String sPrefix = "/test-files/1.2.0/ubl/";
                                 for (final String s : new String [] { "ubl-tc434-example1.xml",
                                                                       "ubl-tc434-example2.xml",
                                                                       "ubl-tc434-example3.xml",
@@ -306,9 +309,9 @@ public final class CTestFiles
                                   ret.add (new ClassPathResource (sPrefix + s));
                               }
                               else
-                                if (aVESID.equals (EN16931Validation.VID_UBL_INVOICE_123))
+                                if (aVESID.equals (EN16931Validation.VID_UBL_INVOICE_121))
                                 {
-                                  final String sPrefix = "/test-files/1.2.3/ubl/";
+                                  final String sPrefix = "/test-files/1.2.1/ubl/";
                                   for (final String s : new String [] { "ubl-tc434-example1.xml",
                                                                         "ubl-tc434-example2.xml",
                                                                         "ubl-tc434-example3.xml",
@@ -321,9 +324,9 @@ public final class CTestFiles
                                     ret.add (new ClassPathResource (sPrefix + s));
                                 }
                                 else
-                                  if (aVESID.equals (EN16931Validation.VID_UBL_INVOICE_130))
+                                  if (aVESID.equals (EN16931Validation.VID_UBL_INVOICE_123))
                                   {
-                                    final String sPrefix = "/test-files/1.3.0/ubl/";
+                                    final String sPrefix = "/test-files/1.2.3/ubl/";
                                     for (final String s : new String [] { "ubl-tc434-example1.xml",
                                                                           "ubl-tc434-example2.xml",
                                                                           "ubl-tc434-example3.xml",
@@ -332,88 +335,126 @@ public final class CTestFiles
                                                                           "ubl-tc434-example6.xml",
                                                                           "ubl-tc434-example7.xml",
                                                                           "ubl-tc434-example8.xml",
-                                                                          "ubl-tc434-example9.xml",
-                                                                          "ubl-tc434-example10.xml" })
+                                                                          "ubl-tc434-example9.xml" })
                                       ret.add (new ClassPathResource (sPrefix + s));
                                   }
                                   else
-                                    if (aVESID.equals (EN16931Validation.VID_UBL_CREDIT_NOTE_130))
+                                    if (aVESID.equals (EN16931Validation.VID_UBL_INVOICE_130))
                                     {
                                       final String sPrefix = "/test-files/1.3.0/ubl/";
-                                      for (final String s : new String [] { "ubl-tc434-creditnote1.xml" })
+                                      for (final String s : new String [] { "ubl-tc434-example1.xml",
+                                                                            "ubl-tc434-example2.xml",
+                                                                            "ubl-tc434-example3.xml",
+                                                                            "ubl-tc434-example4.xml",
+                                                                            "ubl-tc434-example5.xml",
+                                                                            "ubl-tc434-example6.xml",
+                                                                            "ubl-tc434-example7.xml",
+                                                                            "ubl-tc434-example8.xml",
+                                                                            "ubl-tc434-example9.xml",
+                                                                            "ubl-tc434-example10.xml" })
                                         ret.add (new ClassPathResource (sPrefix + s));
                                     }
                                     else
-                                      if (aVESID.equals (EN16931Validation.VID_UBL_INVOICE_131))
+                                      if (aVESID.equals (EN16931Validation.VID_UBL_CREDIT_NOTE_130))
                                       {
-                                        final String sPrefix = "/test-files/1.3.1/ubl/";
-                                        for (final String s : new String [] { "ubl-tc434-example1.xml",
-                                                                              "ubl-tc434-example2.xml",
-                                                                              "ubl-tc434-example3.xml",
-                                                                              "ubl-tc434-example4.xml",
-                                                                              "ubl-tc434-example5.xml",
-                                                                              "ubl-tc434-example6.xml",
-                                                                              "ubl-tc434-example7.xml",
-                                                                              "ubl-tc434-example8.xml",
-                                                                              "ubl-tc434-example9.xml",
-                                                                              "ubl-tc434-example10.xml" })
+                                        final String sPrefix = "/test-files/1.3.0/ubl/";
+                                        for (final String s : new String [] { "ubl-tc434-creditnote1.xml" })
                                           ret.add (new ClassPathResource (sPrefix + s));
                                       }
                                       else
-                                        if (aVESID.equals (EN16931Validation.VID_UBL_CREDIT_NOTE_131))
+                                        if (aVESID.equals (EN16931Validation.VID_UBL_INVOICE_131))
                                         {
                                           final String sPrefix = "/test-files/1.3.1/ubl/";
-                                          for (final String s : new String [] { "ubl-tc434-creditnote1.xml" })
+                                          for (final String s : new String [] { "ubl-tc434-example1.xml",
+                                                                                "ubl-tc434-example2.xml",
+                                                                                "ubl-tc434-example3.xml",
+                                                                                "ubl-tc434-example4.xml",
+                                                                                "ubl-tc434-example5.xml",
+                                                                                "ubl-tc434-example6.xml",
+                                                                                "ubl-tc434-example7.xml",
+                                                                                "ubl-tc434-example8.xml",
+                                                                                "ubl-tc434-example9.xml",
+                                                                                "ubl-tc434-example10.xml" })
                                             ret.add (new ClassPathResource (sPrefix + s));
                                         }
                                         else
-                                          if (aVESID.equals (EN16931Validation.VID_UBL_INVOICE_132))
+                                          if (aVESID.equals (EN16931Validation.VID_UBL_CREDIT_NOTE_131))
                                           {
-                                            final String sPrefix = "/test-files/1.3.2/ubl/";
-                                            for (final String s : new String [] { "ubl-tc434-example1.xml",
-                                                                                  "ubl-tc434-example2.xml",
-                                                                                  "ubl-tc434-example3.xml",
-                                                                                  "ubl-tc434-example4.xml",
-                                                                                  "ubl-tc434-example5.xml",
-                                                                                  "ubl-tc434-example6.xml",
-                                                                                  "ubl-tc434-example7.xml",
-                                                                                  "ubl-tc434-example8.xml",
-                                                                                  "ubl-tc434-example9.xml",
-                                                                                  "ubl-tc434-example10.xml" })
+                                            final String sPrefix = "/test-files/1.3.1/ubl/";
+                                            for (final String s : new String [] { "ubl-tc434-creditnote1.xml" })
                                               ret.add (new ClassPathResource (sPrefix + s));
                                           }
                                           else
-                                            if (aVESID.equals (EN16931Validation.VID_UBL_CREDIT_NOTE_132))
+                                            if (aVESID.equals (EN16931Validation.VID_UBL_INVOICE_132))
                                             {
                                               final String sPrefix = "/test-files/1.3.2/ubl/";
-                                              for (final String s : new String [] { "ubl-tc434-creditnote1.xml" })
+                                              for (final String s : new String [] { "ubl-tc434-example1.xml",
+                                                                                    "ubl-tc434-example2.xml",
+                                                                                    "ubl-tc434-example3.xml",
+                                                                                    "ubl-tc434-example4.xml",
+                                                                                    "ubl-tc434-example5.xml",
+                                                                                    "ubl-tc434-example6.xml",
+                                                                                    "ubl-tc434-example7.xml",
+                                                                                    "ubl-tc434-example8.xml",
+                                                                                    "ubl-tc434-example9.xml",
+                                                                                    "ubl-tc434-example10.xml" })
                                                 ret.add (new ClassPathResource (sPrefix + s));
                                             }
                                             else
-                                              if (aVESID.equals (EN16931Validation.VID_UBL_INVOICE_133))
+                                              if (aVESID.equals (EN16931Validation.VID_UBL_CREDIT_NOTE_132))
                                               {
-                                                final String sPrefix = "/test-files/1.3.3/ubl/";
-                                                for (final String s : new String [] { "ubl-tc434-example1.xml",
-                                                                                      "ubl-tc434-example2.xml",
-                                                                                      "ubl-tc434-example3.xml",
-                                                                                      "ubl-tc434-example4.xml",
-                                                                                      "ubl-tc434-example5.xml",
-                                                                                      "ubl-tc434-example6.xml",
-                                                                                      "ubl-tc434-example7.xml",
-                                                                                      "ubl-tc434-example8.xml",
-                                                                                      "ubl-tc434-example9.xml",
-                                                                                      "ubl-tc434-example10.xml" })
+                                                final String sPrefix = "/test-files/1.3.2/ubl/";
+                                                for (final String s : new String [] { "ubl-tc434-creditnote1.xml" })
                                                   ret.add (new ClassPathResource (sPrefix + s));
                                               }
                                               else
-                                                if (aVESID.equals (EN16931Validation.VID_UBL_CREDIT_NOTE_133))
+                                                if (aVESID.equals (EN16931Validation.VID_UBL_INVOICE_133))
                                                 {
                                                   final String sPrefix = "/test-files/1.3.3/ubl/";
-                                                  for (final String s : new String [] { "ubl-tc434-creditnote1.xml" })
+                                                  for (final String s : new String [] { "ubl-tc434-example1.xml",
+                                                                                        "ubl-tc434-example2.xml",
+                                                                                        "ubl-tc434-example3.xml",
+                                                                                        "ubl-tc434-example4.xml",
+                                                                                        "ubl-tc434-example5.xml",
+                                                                                        "ubl-tc434-example6.xml",
+                                                                                        "ubl-tc434-example7.xml",
+                                                                                        "ubl-tc434-example8.xml",
+                                                                                        "ubl-tc434-example9.xml",
+                                                                                        "ubl-tc434-example10.xml" })
                                                     ret.add (new ClassPathResource (sPrefix + s));
                                                 }
                                                 else
-                                                  throw new IllegalArgumentException ("Invalid VESID: " + aVESID);
+                                                  if (aVESID.equals (EN16931Validation.VID_UBL_CREDIT_NOTE_133))
+                                                  {
+                                                    final String sPrefix = "/test-files/1.3.3/ubl/";
+                                                    for (final String s : new String [] { "ubl-tc434-creditnote1.xml" })
+                                                      ret.add (new ClassPathResource (sPrefix + s));
+                                                  }
+                                                  else
+                                                    if (aVESID.equals (EN16931Validation.VID_UBL_INVOICE_134))
+                                                    {
+                                                      final String sPrefix = "/test-files/1.3.4/ubl/";
+                                                      for (final String s : new String [] { "FT G2G_TD01 con Allegato, Bonifico e Split Payment.xml",
+                                                                                            "ubl-tc434-example1.xml",
+                                                                                            "ubl-tc434-example2.xml",
+                                                                                            "ubl-tc434-example3.xml",
+                                                                                            "ubl-tc434-example4.xml",
+                                                                                            "ubl-tc434-example5.xml",
+                                                                                            "ubl-tc434-example6.xml",
+                                                                                            "ubl-tc434-example7.xml",
+                                                                                            "ubl-tc434-example8.xml",
+                                                                                            "ubl-tc434-example9.xml" })
+                                                        ret.add (new ClassPathResource (sPrefix + s));
+                                                    }
+                                                    else
+                                                      if (aVESID.equals (EN16931Validation.VID_UBL_CREDIT_NOTE_134))
+                                                      {
+                                                        final String sPrefix = "/test-files/1.3.4/ubl/";
+                                                        for (final String s : new String [] { "ubl-tc434-creditnote1.xml" })
+                                                          ret.add (new ClassPathResource (sPrefix + s));
+                                                      }
+                                                      else
+                                                        throw new IllegalArgumentException ("Invalid VESID: " + aVESID);
     return ret;
   }
 }
