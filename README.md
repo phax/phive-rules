@@ -155,7 +155,8 @@ Alternate usage as a Maven BOM:
   
 # News and noteworthy
 
-* v2.0.4 - 2021-01-20
+* v2.0.4 - work in progress
+    * Updated to phive 7.1.0
     * Added support for EN 16931 1.3.4 format (deprecated version 1.3.3)
 * v2.0.3 - 2021-01-07
     * Added support for SimplerInvoicing 1.2.3
