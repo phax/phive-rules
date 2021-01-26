@@ -21,7 +21,6 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 
 import com.helger.commons.io.resource.IReadableResource;
-import com.helger.phive.api.EValidationType;
 import com.helger.phive.api.artefact.IValidationArtefact;
 import com.helger.phive.api.execute.IValidationExecutor;
 import com.helger.phive.api.executorset.IValidationExecutorSet;
@@ -57,7 +56,7 @@ public final class EHFValidationTest
         final IReadableResource aRes = aVA.getRuleResource ();
 
         // Check that the passed Schematron is valid
-        if (aVA.getValidationArtefactType () == EValidationType.SCHEMATRON_XSLT)
+        if (aVA.getValidationArtefactType ().isSchematron ())
           assertTrue (aRes.toString (), new SchematronResourceXSLT (aRes).isValidSchematron ());
       }
   }
