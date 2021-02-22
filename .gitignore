@@ -20,3 +20,4 @@ target/
 ~*.xlsx
 release.properties
 zz
+base-example-large-*.xml
