@@ -195,6 +195,11 @@
       </dependency>
       <dependency>
         <groupId>com.helger.phive.rules</groupId>
+        <artifactId>phive-rules-peppol-legacy</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.helger.phive.rules</groupId>
         <artifactId>phive-rules-peppol</artifactId>
         <version>${project.version}</version>
       </dependency>
@@ -265,6 +270,7 @@
     <module>phive-rules-finvoice</module>
     <module>phive-rules-isdoc</module>
     <module>phive-rules-oioubl</module>
+    <module>phive-rules-peppol-legacy</module>
     <module>phive-rules-peppol</module>
     <module>phive-rules-simplerinvoicing</module>
     <module>phive-rules-svefaktura</module>

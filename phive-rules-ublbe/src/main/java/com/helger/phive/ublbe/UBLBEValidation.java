@@ -30,7 +30,7 @@ import com.helger.phive.engine.schematron.SchematronNamespaceBeautifier;
 import com.helger.phive.engine.schematron.ValidationExecutorSchematron;
 import com.helger.phive.engine.source.IValidationSourceXML;
 import com.helger.phive.engine.xsd.ValidationExecutorXSD;
-import com.helger.phive.peppol.PeppolValidation370;
+import com.helger.phive.peppol.legacy.PeppolValidation370;
 import com.helger.ubl21.EUBL21DocumentType;
 import com.helger.ubl21.UBL21NamespaceContext;
 

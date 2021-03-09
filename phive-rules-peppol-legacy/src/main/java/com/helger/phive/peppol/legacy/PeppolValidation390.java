@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.helger.phive.peppol;
+package com.helger.phive.peppol.legacy;
 
 import java.time.LocalDate;
 import java.time.Month;
@@ -37,19 +37,19 @@ import com.helger.ubl21.EUBL21DocumentType;
 import com.helger.ubl21.UBL21NamespaceContext;
 
 /**
- * OpenPEPPOL validation artefacts release 3.8.1. Spring 2019 release hotfix.
- * Valid per August 15th, 2019
+ * OpenPEPPOL validation artefacts release 3.9.0. Fall 2019 release. Valid per
+ * November 15th, 2019
  *
  * @author Philip Helger
  */
 @Immutable
 @Deprecated
-public final class PeppolValidation381
+public final class PeppolValidation390
 {
   // Standard resources
-  public static final Version PEPPOL_VALIDATION_ARTEFACT_VERSION = new Version (3, 8, 1);
+  public static final Version PEPPOL_VALIDATION_ARTEFACT_VERSION = new Version (3, 9, 0);
   public static final String VERSION_STR = PEPPOL_VALIDATION_ARTEFACT_VERSION.getAsString (true);
-  public static final LocalDate VALID_PER = PDTFactory.createLocalDate (2019, Month.AUGUST, 15);
+  public static final LocalDate VALID_PER = PDTFactory.createLocalDate (2019, Month.NOVEMBER, 15);
 
   // Standard
   public static final VESID VID_OPENPEPPOL_INVOICE_V3 = new VESID ("eu.peppol.bis3", "invoice", VERSION_STR);
@@ -69,7 +69,7 @@ public final class PeppolValidation381
   @Nonnull
   private static ClassLoader _getCL ()
   {
-    return PeppolValidation381.class.getClassLoader ();
+    return PeppolValidation390.class.getClassLoader ();
   }
 
   // Previously T10 and T14
@@ -94,7 +94,7 @@ public final class PeppolValidation381
 
   public static final IReadableResource INVOICE_MESSAGE_RESPONSE = new ClassPathResource (PREFIX_XSLT + "PEPPOLBIS-T111.xslt", _getCL ());
 
-  private PeppolValidation381 ()
+  private PeppolValidation390 ()
   {}
 
   @Nonnull
@@ -108,8 +108,8 @@ public final class PeppolValidation381
     ValueEnforcer.notNull (aRegistry, "Registry");
 
     final String sVersion = " (" + VERSION_STR + ")";
-    final String sAkaVersionBilling = " (aka BIS Billing 3.0.4)";
-    final String sAkaVersionBIS = " (aka BIS 3.0.2)";
+    final String sAkaVersionBilling = " (aka BIS Billing 3.0.5)";
+    final String sAkaVersionBIS = " (aka BIS 3.0.3)";
     final boolean bDeprecated = true;
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_INVOICE_V3,
                                                                            "OpenPEPPOL Invoice" + sVersion + sAkaVersionBilling,
