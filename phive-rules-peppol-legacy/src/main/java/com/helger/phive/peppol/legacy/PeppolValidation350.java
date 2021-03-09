@@ -199,7 +199,7 @@ public final class PeppolValidation350
     ValueEnforcer.notNull (aRegistry, "Registry");
 
     final String sVersion = " (" + VERSION_STR + ")";
-    final boolean bIsDeprecated = PDTFactory.getCurrentLocalDate ().compareTo (PeppolValidation360.VALID_PER) >= 0;
+    final boolean bIsDeprecated = true;
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_T01_V2,
                                                                            "OpenPEPPOL Order" + sVersion,
                                                                            bIsDeprecated,

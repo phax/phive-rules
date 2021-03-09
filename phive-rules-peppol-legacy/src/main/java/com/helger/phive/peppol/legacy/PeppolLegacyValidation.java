@@ -18,11 +18,14 @@ package com.helger.phive.peppol.legacy;
 
 import javax.annotation.Nonnull;
 import javax.annotation.concurrent.Immutable;
+import javax.xml.XMLConstants;
 
+import com.helger.commons.annotation.ReturnsMutableObject;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
 import com.helger.phive.engine.schematron.SchematronNamespaceBeautifier;
 import com.helger.phive.engine.source.IValidationSourceXML;
 import com.helger.ubl21.UBL21NamespaceContext;
+import com.helger.xml.namespace.MapBasedNamespaceContext;
 
 /**
  * Generic Legacy Peppol validation configuration. It contains only the old
@@ -50,7 +53,7 @@ public final class PeppolLegacyValidation
    * @param aRegistry
    *        The registry to add the artefacts. May not be <code>null</code>.
    */
-  public static void initStandard (@Nonnull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
+  public static void init (@Nonnull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
   {
     // For better error messages
     SchematronNamespaceBeautifier.addMappings (UBL21NamespaceContext.getInstance ());
@@ -64,5 +67,19 @@ public final class PeppolLegacyValidation
     PeppolValidation391.init (aRegistry);
     PeppolValidation3_10_0.init (aRegistry);
     PeppolValidation3_10_1.init (aRegistry);
+  }
+
+  @Nonnull
+  @ReturnsMutableObject
+  static MapBasedNamespaceContext createUBLNSContext (@Nonnull final String sNamespaceURI)
+  {
+    final MapBasedNamespaceContext aNSContext = UBL21NamespaceContext.getInstance ().getClone ();
+
+    // Add the default mapping for the root namespace
+    aNSContext.addMapping (XMLConstants.DEFAULT_NS_PREFIX, sNamespaceURI);
+    // For historical reasons, the "ubl" prefix is also mapped to this
+    // namespace URI
+    aNSContext.addMapping ("ubl", sNamespaceURI);
+    return aNSContext;
   }
 }

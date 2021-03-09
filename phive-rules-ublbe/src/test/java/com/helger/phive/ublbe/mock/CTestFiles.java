@@ -41,7 +41,7 @@ public final class CTestFiles
   static
   {
     // Peppol is a prerequisite
-    PeppolLegacyValidation.initStandard (VES_REGISTRY);
+    PeppolLegacyValidation.init (VES_REGISTRY);
     UBLBEValidation.initUBLBE (VES_REGISTRY);
   }
 
