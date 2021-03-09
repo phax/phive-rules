@@ -30,7 +30,7 @@ import com.helger.phive.api.executorset.VESID;
 import com.helger.phive.api.executorset.ValidationExecutorSetRegistry;
 import com.helger.phive.engine.mock.MockFile;
 import com.helger.phive.engine.source.IValidationSourceXML;
-import com.helger.phive.peppol.PeppolValidation;
+import com.helger.phive.peppol.legacy.PeppolLegacyValidation;
 import com.helger.phive.ublbe.UBLBEValidation;
 
 @Immutable
@@ -41,7 +41,7 @@ public final class CTestFiles
   static
   {
     // Peppol is a prerequisite
-    PeppolValidation.initStandard (VES_REGISTRY);
+    PeppolLegacyValidation.initStandard (VES_REGISTRY);
     UBLBEValidation.initUBLBE (VES_REGISTRY);
   }
 

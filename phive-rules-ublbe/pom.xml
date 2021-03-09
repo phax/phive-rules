@@ -68,7 +68,7 @@
     </dependency>
     <dependency>
       <groupId>com.helger.phive.rules</groupId>
-      <artifactId>phive-rules-peppol</artifactId>
+      <artifactId>phive-rules-peppol-legacy</artifactId>
     </dependency>
 
     <dependency>

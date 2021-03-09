@@ -155,6 +155,8 @@ Alternate usage as a Maven BOM:
   
 # News and noteworthy
 
+* v2.0.5 - work in progress
+    * Extracted new submodule `phive-rules-peppol-legacy` to reduce the size of the default library. Only the latest 2 versions are contained in the main `phive-rules-peppol` module - older versions will be moved to `phive-rules-peppol-legacy`. Currently `3.11.0` and `3.11.1` are in `phive-rules-peppol`
 * v2.0.4 - 2021-01-27
     * Updated to phive 7.1.0
     * Added support for EN 16931 1.3.4 format (deprecated version 1.3.3)

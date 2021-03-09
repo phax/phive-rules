@@ -46,7 +46,7 @@ public final class CTestFiles
   public static final ValidationExecutorSetRegistry <IValidationSourceXML> VES_REGISTRY = new ValidationExecutorSetRegistry <> ();
   static
   {
-    PeppolLegacyValidation.initLegacy (VES_REGISTRY);
+    PeppolLegacyValidation.initStandard (VES_REGISTRY);
     PeppolLegacyThirdpartyValidation.initThirdParty (VES_REGISTRY);
   }
 
