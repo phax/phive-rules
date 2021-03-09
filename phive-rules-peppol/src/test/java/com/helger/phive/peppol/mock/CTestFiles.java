@@ -53,7 +53,8 @@ public final class CTestFiles
   public static ICommonsList <MockFile> getAllTestFiles ()
   {
     final ICommonsList <MockFile> ret = new CommonsArrayList <> ();
-    for (final VESID aESID : new VESID [] { PeppolValidationAUNZ.VID_OPENPEPPOL_BIS3_AUNZ_UBL_INVOICE_103,
+    for (final VESID aESID : new VESID [] { /* AU_NZ */
+                                            PeppolValidationAUNZ.VID_OPENPEPPOL_BIS3_AUNZ_UBL_INVOICE_103,
                                             PeppolValidationAUNZ.VID_OPENPEPPOL_BIS3_AUNZ_UBL_CREDIT_NOTE_103,
                                             PeppolValidationAUNZ.VID_OPENPEPPOL_BIS3_AUNZ_UBL_INVOICE_SELF_BILLING_103,
                                             PeppolValidationAUNZ.VID_OPENPEPPOL_BIS3_AUNZ_UBL_CREDIT_NOTE_SELF_BILLING_103,
@@ -63,15 +64,14 @@ public final class CTestFiles
                                             PeppolValidationAUNZ.VID_OPENPEPPOL_BIS3_AUNZ_UBL_INVOICE_SELF_BILLING_104,
                                             PeppolValidationAUNZ.VID_OPENPEPPOL_BIS3_AUNZ_UBL_CREDIT_NOTE_SELF_BILLING_104,
 
-                                            PeppolValidationSG.VID_OPENPEPPOL_BIS3_SG_UBL_INVOICE_100,
-                                            PeppolValidationSG.VID_OPENPEPPOL_BIS3_SG_UBL_CREDIT_NOTE_100,
-
+                                            /* Singapore */
                                             PeppolValidationSG.VID_OPENPEPPOL_BIS3_SG_UBL_INVOICE_102,
                                             PeppolValidationSG.VID_OPENPEPPOL_BIS3_SG_UBL_CREDIT_NOTE_102,
 
                                             PeppolValidationSG.VID_OPENPEPPOL_BIS3_SG_UBL_INVOICE_103,
                                             PeppolValidationSG.VID_OPENPEPPOL_BIS3_SG_UBL_CREDIT_NOTE_103,
 
+                                            /* OpenPeppol */
                                             PeppolValidation3_11_0.VID_OPENPEPPOL_INVOICE_V3,
                                             PeppolValidation3_11_0.VID_OPENPEPPOL_CREDIT_NOTE_V3,
                                             PeppolValidation3_11_0.VID_OPENPEPPOL_ORDER_V3,
@@ -107,10 +107,12 @@ public final class CTestFiles
   {
     ValueEnforcer.notNull (aVESID, "VESID");
 
+    final String sTestFiles = "src/test/resources/test-files/";
+
     // AUNZ 1.0.3
     if (aVESID.equals (PeppolValidationAUNZ.VID_OPENPEPPOL_BIS3_AUNZ_UBL_INVOICE_103))
     {
-      final String sBase = "src/test/resources/test-files/aunz-peppol/1.0.3/";
+      final String sBase = sTestFiles + "aunz-peppol/1.0.3/";
       return new CommonsArrayList <> (new FileSystemResource (sBase + "AU Invoice.xml"),
                                       new FileSystemResource (sBase + "NZ Allowance On Invoice Line.xml"),
                                       new FileSystemResource (sBase + "NZ Invoice Level Allowance.xml"),
@@ -120,25 +122,25 @@ public final class CTestFiles
     }
     if (aVESID.equals (PeppolValidationAUNZ.VID_OPENPEPPOL_BIS3_AUNZ_UBL_CREDIT_NOTE_103))
     {
-      final String sBase = "src/test/resources/test-files/aunz-peppol/1.0.3/";
+      final String sBase = sTestFiles + "aunz-peppol/1.0.3/";
       return new CommonsArrayList <> (new FileSystemResource (sBase + "NZ Credit note.xml"));
     }
     if (aVESID.equals (PeppolValidationAUNZ.VID_OPENPEPPOL_BIS3_AUNZ_UBL_INVOICE_SELF_BILLING_103))
     {
-      final String sBase = "src/test/resources/test-files/aunz-peppol/1.0.3/";
+      final String sBase = sTestFiles + "aunz-peppol/1.0.3/";
       return new CommonsArrayList <> (new FileSystemResource (sBase + "AU Self Billing.xml"),
                                       new FileSystemResource (sBase + "NZ Self Billing.xml"));
     }
     if (aVESID.equals (PeppolValidationAUNZ.VID_OPENPEPPOL_BIS3_AUNZ_UBL_CREDIT_NOTE_SELF_BILLING_103))
     {
-      final String sBase = "src/test/resources/test-files/aunz-peppol/1.0.3/";
+      final String sBase = sTestFiles + "aunz-peppol/1.0.3/";
       return new CommonsArrayList <> (new FileSystemResource (sBase + "NZ Self Billed Credit note.xml"));
     }
 
     // AUNZ 1.0.4
     if (aVESID.equals (PeppolValidationAUNZ.VID_OPENPEPPOL_BIS3_AUNZ_UBL_INVOICE_104))
     {
-      final String sBase = "src/test/resources/test-files/aunz-peppol/1.0.4/";
+      final String sBase = sTestFiles + "aunz-peppol/1.0.4/";
       return new CommonsArrayList <> (new FileSystemResource (sBase + "AU Invoice.xml"),
                                       new FileSystemResource (sBase + "NZ Allowance On Invoice Line.xml"),
                                       new FileSystemResource (sBase + "NZ Invoice Level Allowance.xml"),
@@ -148,43 +150,35 @@ public final class CTestFiles
     }
     if (aVESID.equals (PeppolValidationAUNZ.VID_OPENPEPPOL_BIS3_AUNZ_UBL_CREDIT_NOTE_104))
     {
-      final String sBase = "src/test/resources/test-files/aunz-peppol/1.0.4/";
+      final String sBase = sTestFiles + "aunz-peppol/1.0.4/";
       return new CommonsArrayList <> (new FileSystemResource (sBase + "NZ Credit note.xml"));
     }
     if (aVESID.equals (PeppolValidationAUNZ.VID_OPENPEPPOL_BIS3_AUNZ_UBL_INVOICE_SELF_BILLING_104))
     {
-      final String sBase = "src/test/resources/test-files/aunz-peppol/1.0.4/";
+      final String sBase = sTestFiles + "aunz-peppol/1.0.4/";
       return new CommonsArrayList <> (new FileSystemResource (sBase + "AU Self Billing.xml"),
                                       new FileSystemResource (sBase + "NZ Self Billing.xml"));
     }
     if (aVESID.equals (PeppolValidationAUNZ.VID_OPENPEPPOL_BIS3_AUNZ_UBL_CREDIT_NOTE_SELF_BILLING_104))
     {
-      final String sBase = "src/test/resources/test-files/aunz-peppol/1.0.4/";
+      final String sBase = sTestFiles + "aunz-peppol/1.0.4/";
       return new CommonsArrayList <> (new FileSystemResource (sBase + "NZ Self Billed Credit note.xml"));
     }
 
-    // SG 1.0.0
-    if (aVESID.equals (PeppolValidationSG.VID_OPENPEPPOL_BIS3_SG_UBL_INVOICE_100))
-    {
-      final String sBase = "src/test/resources/test-files/sg-peppol/1.0.0/";
-      return new CommonsArrayList <> (new FileSystemResource (sBase + "Singapore invoice valid 1.xml"));
-    }
-
-    if (aVESID.equals (PeppolValidationSG.VID_OPENPEPPOL_BIS3_SG_UBL_CREDIT_NOTE_100))
-      return new CommonsArrayList <> ();
-
+    // SG 1.0.2
     if (aVESID.equals (PeppolValidationSG.VID_OPENPEPPOL_BIS3_SG_UBL_INVOICE_102))
     {
-      final String sBase = "src/test/resources/test-files/sg-peppol/1.0.2/";
+      final String sBase = sTestFiles + "sg-peppol/1.0.2/";
       return new CommonsArrayList <> (new FileSystemResource (sBase + "Singapore invoice valid 1.xml"));
     }
 
     if (aVESID.equals (PeppolValidationSG.VID_OPENPEPPOL_BIS3_SG_UBL_CREDIT_NOTE_102))
       return new CommonsArrayList <> ();
 
+    // SG 1.0.3
     if (aVESID.equals (PeppolValidationSG.VID_OPENPEPPOL_BIS3_SG_UBL_INVOICE_103))
     {
-      final String sBase = "src/test/resources/test-files/sg-peppol/1.0.3/";
+      final String sBase = sTestFiles + "sg-peppol/1.0.3/";
       return new CommonsArrayList <> (new FileSystemResource (sBase + "Singapore invoice valid 1.xml"),
                                       new FileSystemResource (sBase + "Singapore invoice valid 1 - NG tax code.xml"));
     }
@@ -194,7 +188,7 @@ public final class CTestFiles
 
     // 3.11.0
     {
-      final String sBase = "src/test/resources/test-files/3.11.0/";
+      final String sBase = sTestFiles + "openpeppol/3.11.0/";
       // https://github.com/OpenPEPPOL/peppol-bis-invoice-3/tree/master/rules/examples
       if (aVESID.equals (PeppolValidation3_11_0.VID_OPENPEPPOL_INVOICE_V3))
         return new CommonsArrayList <> (new FileSystemResource (sBase + "billing/Allowance-example.xml"),
@@ -243,7 +237,7 @@ public final class CTestFiles
 
     // 3.11.1
     {
-      final String sBase = "src/test/resources/test-files/3.11.1/";
+      final String sBase = sTestFiles + "openpeppol/3.11.1/";
       // https://github.com/OpenPEPPOL/peppol-bis-invoice-3/tree/master/rules/examples
       if (aVESID.equals (PeppolValidation3_11_1.VID_OPENPEPPOL_INVOICE_V3))
         return new CommonsArrayList <> (new FileSystemResource (sBase + "billing/Allowance-example.xml"),
