@@ -16,7 +16,8 @@ This project is divided into sub-projects each keeping tracking of one document 
   * phive-rules-finvoice - Validation rules for Finvoice (since v1.0.6)
   * phive-rules-isdoc - Validation rules for ISDOC (since v2.0.2)
   * phive-rules-oioubl - Validation rules for Danish OIOUBL
-  * phive-rules-peppol - the Peppol specific setup etc
+  * phive-rules-peppol - the Peppol specific rules - always the latest two rule sets
+  * phive-rules-peppol-legacy - older Peppol specific rules that are out of date (since v2.0.5)
   * phive-rules-simplerinvoicing - Dutch SimplerInvoicing 1.x support from https://github.com/SimplerInvoicing/validation
   * phive-rules-svefaktura - Validation rules for Svefaktura (since v1.0.6)
   * phive-rules-teapps - Validation rules for Tieto TEAPPSXML
@@ -106,6 +107,12 @@ Add the following to your `pom.xml` to use this artifact, replacing `x.y.z` with
 
 <dependency>
   <groupId>com.helger.phive.rules</groupId>
+  <artifactId>phive-rules-peppol-legacy</artifactId>
+  <version>x.y.z</version>
+</dependency>
+
+<dependency>
+  <groupId>com.helger.phive.rules</groupId>
   <artifactId>phive-rules-simplerinvoicing</artifactId>
   <version>x.y.z</version>
 </dependency>
@@ -156,7 +163,7 @@ Alternate usage as a Maven BOM:
 # News and noteworthy
 
 * v2.0.5 - work in progress
-    * Extracted new submodule `phive-rules-peppol-legacy` to reduce the size of the default library. Only the latest 2 versions are contained in the main `phive-rules-peppol` module - older versions will be moved to `phive-rules-peppol-legacy`. Currently `3.11.0` and `3.11.1` are in `phive-rules-peppol`
+    * Extracted new submodule `phive-rules-peppol-legacy` to reduce the size of the default library. Only the latest two versions are contained in the main `phive-rules-peppol` module - older versions will be moved to `phive-rules-peppol-legacy`.
 * v2.0.4 - 2021-01-27
     * Updated to phive 7.1.0
     * Added support for EN 16931 1.3.4 format (deprecated version 1.3.3)
