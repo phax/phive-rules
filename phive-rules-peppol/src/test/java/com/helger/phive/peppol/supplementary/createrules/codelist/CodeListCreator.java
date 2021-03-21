@@ -37,7 +37,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
 
-import com.helger.collection.multimap.MultiTreeMapTreeSetBased;
+import com.helger.commons.collection.impl.CommonsTreeMap;
+import com.helger.commons.collection.impl.CommonsTreeSet;
+import com.helger.commons.collection.impl.ICommonsMap;
+import com.helger.commons.collection.impl.ICommonsSet;
 import com.helger.commons.io.file.FileHelper;
 import com.helger.commons.io.file.FilenameHelper;
 import com.helger.commons.io.file.SimpleFileIO;
@@ -82,7 +85,7 @@ public final class CodeListCreator
   // From transaction to CVAData
   private final Map <String, CVAData> m_aCVAs = new TreeMap <> ();
   // From code list name to Set<Code>
-  private final MultiTreeMapTreeSetBased <String, String> m_aAllCodes = new MultiTreeMapTreeSetBased <> ();
+  private final ICommonsMap <String, ICommonsSet <String>> m_aAllCodes = new CommonsTreeMap <> ();
 
   public CodeListCreator ()
   {}
@@ -235,7 +238,11 @@ public final class CodeListCreator
 
       // Build column set
       final ColumnSet aColumnSet = new ColumnSet ();
-      final Column aCodeColumn = Genericode10Helper.createColumn ("code", UseType.REQUIRED, "Code", null, "normalizedString");
+      final Column aCodeColumn = Genericode10Helper.createColumn ("code",
+                                                                  UseType.REQUIRED,
+                                                                  "Code",
+                                                                  null,
+                                                                  "normalizedString");
       final Column aNameColumn = Genericode10Helper.createColumn ("name", UseType.OPTIONAL, "Name", null, "string");
       aColumnSet.getColumnChoice ().add (aCodeColumn);
       aColumnSet.getColumnChoice ().add (aNameColumn);
@@ -270,7 +277,7 @@ public final class CodeListCreator
         aSimpleCodeList.addRow (aRow);
 
         // In code list name, a code is used
-        if (m_aAllCodes.putSingle (sCodeListName, sCode).isUnchanged ())
+        if (m_aAllCodes.computeIfAbsent (sCodeListName, k -> new CommonsTreeSet <> ()).addObject (sCode).isUnchanged ())
           throw new IllegalStateException ("Found duplicate value '" + sCode + "' in code list " + sCodeListName);
       }
       aGC.setSimpleCodeList (aSimpleCodeList);
@@ -339,7 +346,8 @@ public final class CodeListCreator
     // Create only once (caching)
     if (s_aCVA2SCH == null)
     {
-      final TransformerFactory aTF = XMLTransformerFactory.createTransformerFactory (null, new DefaultTransformURIResolver ());
+      final TransformerFactory aTF = XMLTransformerFactory.createTransformerFactory (null,
+                                                                                     new DefaultTransformURIResolver ());
       s_aCVA2SCH = aTF.newTemplates (TransformSourceFactory.create (new File ("src/test/resources/rule-utils/Crane-cva2schXSLT.xsl")));
     }
     // Convert the CVA files for all transactions

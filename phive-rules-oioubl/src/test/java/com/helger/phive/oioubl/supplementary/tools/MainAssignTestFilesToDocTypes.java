@@ -66,9 +66,9 @@ public class MainAssignTestFilesToDocTypes
         continue;
       }
 
-      System.out.println ("aMap.putSingle (OIOUBLValidation.VID_OIOUBL_" +
+      System.out.println ("aMap.computeIfAbsent (OIOUBLValidation.VID_OIOUBL_" +
                           sBestMatch +
-                          ", new ClassPathResource (\"/oioubl/2.0.2/" +
+                          ", k -> new CommonsArrayList<> ()).add (new ClassPathResource (\"/oioubl/2.0.2/" +
                           f.getName () +
                           "\"));");
     }

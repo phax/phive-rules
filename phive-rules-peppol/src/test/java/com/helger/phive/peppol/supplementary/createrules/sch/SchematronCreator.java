@@ -30,9 +30,8 @@ import org.apache.poi.ss.usermodel.Workbook;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.helger.collection.multimap.IMultiMapListBased;
-import com.helger.collection.multimap.MultiHashMapArrayListBased;
-import com.helger.collection.multimap.MultiTreeMapArrayListBased;
+import com.helger.commons.collection.impl.CommonsArrayList;
+import com.helger.commons.collection.impl.CommonsHashMap;
 import com.helger.commons.collection.impl.CommonsTreeMap;
 import com.helger.commons.collection.impl.ICommonsList;
 import com.helger.commons.collection.impl.ICommonsMap;
@@ -61,7 +60,7 @@ public final class SchematronCreator
   private static final String NS_SCHEMATRON = CSchematron.NAMESPACE_SCHEMATRON;
 
   // Map from transaction to Map from context to list of assertions
-  final ICommonsMap <String, IMultiMapListBased <String, RuleAssertion>> m_aAbstractRules = new CommonsTreeMap <> ();
+  final ICommonsMap <String, ICommonsMap <String, ICommonsList <RuleAssertion>>> m_aAbstractRules = new CommonsTreeMap <> ();
 
   private SchematronCreator ()
   {}
@@ -91,8 +90,9 @@ public final class SchematronCreator
       else
       {
         // Save in nested maps
-        m_aAbstractRules.computeIfAbsent (sTransaction, k -> new MultiTreeMapArrayListBased <> ())
-                        .putSingle (sContext, new RuleAssertion (sRuleID, sMessage, sSeverity));
+        m_aAbstractRules.computeIfAbsent (sTransaction, k -> new CommonsTreeMap <> ())
+                        .computeIfAbsent (sContext, k -> new CommonsArrayList <> ())
+                        .add (new RuleAssertion (sRuleID, sMessage, sSeverity));
       }
     }
 
@@ -100,19 +100,21 @@ public final class SchematronCreator
       throw new IllegalStateException ("No abstract rules found!");
 
     // Now iterate and assemble Schematron
-    for (final Map.Entry <String, IMultiMapListBased <String, RuleAssertion>> aRuleEntry : m_aAbstractRules.entrySet ())
+    for (final Map.Entry <String, ICommonsMap <String, ICommonsList <RuleAssertion>>> aRuleEntry : m_aAbstractRules.entrySet ())
     {
       final String sTransaction = aRuleEntry.getKey ();
       final File aSCHFile = aBusinessRule.getSchematronAbstractFile ();
       LOGGER.info ("    Writing abstract Schematron file " +
                    aSCHFile.getName () +
                    " with " +
-                   aRuleEntry.getValue ().getTotalValueCount () +
+                   aRuleEntry.getValue ().values ().stream ().mapToInt (x -> x.size ()).sum () +
                    " rule(s)");
 
       // Create the XML content
       final IMicroDocument aDoc = new MicroDocument ();
-      aDoc.appendComment ("This file is generated automatically! Do NOT edit!\n" + "Abstract Schematron rules for " + sTransaction);
+      aDoc.appendComment ("This file is generated automatically! Do NOT edit!\n" +
+                          "Abstract Schematron rules for " +
+                          sTransaction);
       final IMicroElement ePattern = aDoc.appendElement (NS_SCHEMATRON, "pattern");
       ePattern.setAttribute ("abstract", "true");
       ePattern.setAttribute ("id", sTransaction);
@@ -137,7 +139,8 @@ public final class SchematronCreator
     }
   }
 
-  private static boolean _containsRuleID (@Nonnull final ICommonsList <RuleParam> aRuleParams, @Nullable final String sRuleID)
+  private static boolean _containsRuleID (@Nonnull final ICommonsList <RuleParam> aRuleParams,
+                                          @Nullable final String sRuleID)
   {
     return aRuleParams.containsAny (x -> x.getRuleID ().equals (sRuleID));
   }
@@ -146,7 +149,7 @@ public final class SchematronCreator
   {
     final String sBindingName = aSheet.getSheetName ();
     LOGGER.info ("    Handling sheet for binding '" + sBindingName + "'");
-    final IMultiMapListBased <String, RuleParam> aRules = new MultiHashMapArrayListBased <> ();
+    final ICommonsMap <String, ICommonsList <RuleParam>> aRules = new CommonsHashMap <> ();
 
     // Skip 1 line
     int nRowIndex = 1;
@@ -171,24 +174,29 @@ public final class SchematronCreator
       if (StringHelper.hasText (sPrerequisite))
         sTest = "(" + sPrerequisite + " and " + sTest + ") or not (" + sPrerequisite + ")";
 
-      aRules.putSingle (sTransaction, new RuleParam (sRuleID, sTest));
+      aRules.computeIfAbsent (sTransaction, k -> new CommonsArrayList <> ()).add (new RuleParam (sRuleID, sTest));
     }
 
     // Check if all required rules derived from the abstract rules are present
-    for (final Map.Entry <String, IMultiMapListBased <String, RuleAssertion>> aEntryTransaction : m_aAbstractRules.entrySet ())
+    for (final Map.Entry <String, ICommonsMap <String, ICommonsList <RuleAssertion>>> aEntryTransaction : m_aAbstractRules.entrySet ())
     {
       final String sTransaction = aEntryTransaction.getKey ();
       final ICommonsList <RuleParam> aFoundRules = aRules.get (sTransaction);
       if (aFoundRules == null)
-        throw new IllegalStateException ("Found no rules for transaction " + sTransaction + " and binding " + sBindingName);
-      for (final Map.Entry <String, ICommonsList <RuleAssertion>> aEntryContext : aEntryTransaction.getValue ().entrySet ())
+        throw new IllegalStateException ("Found no rules for transaction " +
+                                         sTransaction +
+                                         " and binding " +
+                                         sBindingName);
+      for (final Map.Entry <String, ICommonsList <RuleAssertion>> aEntryContext : aEntryTransaction.getValue ()
+                                                                                                   .entrySet ())
       {
         final String sContext = aEntryContext.getKey ();
         if (!_containsRuleID (aFoundRules, Utils.makeID (sContext)))
         {
           // Create an invalid context
           LOGGER.warn ("      Missing parameter for context '" + sContext + "'");
-          aRules.putSingle (sTransaction, new RuleParam (sContext, "//NonExistingDummyNode"));
+          aRules.computeIfAbsent (sTransaction, k -> new CommonsArrayList <> ())
+                .add (new RuleParam (sContext, "//NonExistingDummyNode"));
         }
         for (final RuleAssertion aRuleAssertion : aEntryContext.getValue ())
         {
@@ -197,7 +205,8 @@ public final class SchematronCreator
           {
             // No test needed
             LOGGER.warn ("      Missing parameter for rule '" + sRuleID + "'");
-            aRules.putSingle (sTransaction, new RuleParam (sRuleID, "./false"));
+            aRules.computeIfAbsent (sTransaction, k -> new CommonsArrayList <> ())
+                  .add (new RuleParam (sRuleID, "./false"));
           }
         }
       }
@@ -232,7 +241,8 @@ public final class SchematronCreator
       // Longest name must come first (ensure that in the ODS)
       final ICommonsList <RuleParam> aRuleParams = aRuleEntry.getValue ();
       if (false)
-        aRuleParams.getSorted (Comparator.comparing (RuleParam::getRuleID, IComparator.getComparatorStringLongestFirst ()));
+        aRuleParams.getSorted (Comparator.comparing (RuleParam::getRuleID,
+                                                     IComparator.getComparatorStringLongestFirst ()));
       for (final RuleParam aRuleParam : aRuleParams)
       {
         final IMicroElement eParam = ePattern.appendElement (NS_SCHEMATRON, "param");
@@ -293,10 +303,13 @@ public final class SchematronCreator
                           aBusinessRule.getSourceFile ().getName ());
       final IMicroElement eSchema = aDoc.appendElement (NS_SCHEMATRON, "schema");
       eSchema.setAttribute ("queryBinding", "xslt2");
-      eSchema.appendElement (NS_SCHEMATRON, "title").appendText (aBusinessRule.getID () + " " + sTransaction + " bound to " + sBindingName);
+      eSchema.appendElement (NS_SCHEMATRON, "title")
+             .appendText (aBusinessRule.getID () + " " + sTransaction + " bound to " + sBindingName);
 
       for (final Map.Entry <String, String> aEntry : aNsMap.entrySet ())
-        eSchema.appendElement (NS_SCHEMATRON, "ns").setAttribute ("prefix", aEntry.getKey ()).setAttribute ("uri", aEntry.getValue ());
+        eSchema.appendElement (NS_SCHEMATRON, "ns")
+               .setAttribute ("prefix", aEntry.getKey ())
+               .setAttribute ("uri", aEntry.getValue ());
 
       // Phases
       IMicroElement ePhase = eSchema.appendElement (NS_SCHEMATRON, "phase");
