@@ -81,10 +81,6 @@ public final class EN16931Validation
   public static final VESID VID_CII_133 = new VESID ("eu.cen.en16931", "cii", VERSION_133);
   public static final VESID VID_CII_134 = new VESID ("eu.cen.en16931", "cii", VERSION_134);
 
-  // EDIFACT
-  @Deprecated
-  public static final VESID VID_EDIFACT_100 = new VESID ("eu.cen.en16931", "edifact", VERSION_100);
-
   // UBL
   @Deprecated
   public static final VESID VID_UBL_INVOICE_100 = new VESID ("eu.cen.en16931", "ubl", VERSION_100);
