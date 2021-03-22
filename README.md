@@ -162,6 +162,9 @@ Alternate usage as a Maven BOM:
   
 # News and noteworthy
 
+* v2.1.0 - 2021-03-22
+    * Updated to ph-commons 10
+    * Dropped support for `EN 16931 EDIFACT/ISO 20625 1.0.0`
 * v2.0.5 - 2021-03-09
     * Extracted new submodule `phive-rules-peppol-legacy` to reduce the size of the default library. Only the latest two versions are contained in the main `phive-rules-peppol` module - older versions will be moved to `phive-rules-peppol-legacy`.
 * v2.0.4 - 2021-01-27
