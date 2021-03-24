@@ -102,7 +102,6 @@
             <exclude>src/main/resources/ehf/**</exclude>
             <exclude>src/main/resources/ehf-xslt/**</exclude>
             <exclude>src/test/resources/ehf/**</exclude>
-            <exclude>docs/*</exclude>
           </excludes>
         </configuration>
       </plugin>

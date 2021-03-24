@@ -91,7 +91,7 @@ public final class EHFValidationG3
     final boolean bNotDeprecated = false;
 
     // 2020-03-23
-    final String sXSLT = "/ehf/2020-03/xslt/";
+    final String sXSLT = "/schematron/2020-03/xslt/";
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_EHF_ADVANCED_ORDER_CANCELLATION_300,
                                                                            "EHF Advanced Order Cancellation " +
                                                                                                                     VID_EHF_ADVANCED_ORDER_CANCELLATION_300.getVersion (),

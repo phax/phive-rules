@@ -111,7 +111,7 @@ public final class CTestFiles
     ValueEnforcer.notNull (aVESID, "VESID");
 
     // 2018-11
-    String sPath = "/ehf/2018-11/examples/";
+    String sPath = "/test-files/2018-11/examples/";
     if (aVESID.equals (EHFValidationG2.VID_EHF_CATALOGUE_1_0_13))
     {
       return new CommonsArrayList <> (new ClassPathResource (sPath + "T19 Example file EHF Catalogue.xml"));
@@ -163,7 +163,7 @@ public final class CTestFiles
     }
 
     // 2019-06
-    sPath = "/ehf/2019-06/examples/";
+    sPath = "/test-files/2019-06/examples/";
     if (aVESID.equals (EHFValidationG2.VID_EHF_CATALOGUE_1_0_14))
     {
       return new CommonsArrayList <> (new ClassPathResource (sPath + "T19 Example file EHF Catalogue.xml"));
@@ -211,7 +211,7 @@ public final class CTestFiles
     }
 
     // 2019-12
-    sPath = "/ehf/2019-12/examples/";
+    sPath = "/test-files/2019-12/examples/";
     if (aVESID.equals (EHFValidationG2.VID_EHF_CATALOGUE_1_0_15))
     {
       return new CommonsArrayList <> (new ClassPathResource (sPath + "T19 Example file EHF Catalogue.xml"));
@@ -259,7 +259,7 @@ public final class CTestFiles
     }
 
     // 2020-03
-    sPath = "/ehf/2020-03/examples/";
+    sPath = "/test-files/2020-03/examples/";
     if (aVESID.equals (EHFValidationG3.VID_EHF_ADVANCED_ORDER_CANCELLATION_300))
     {
       return new CommonsArrayList <> ();

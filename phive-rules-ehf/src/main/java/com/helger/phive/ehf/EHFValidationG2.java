@@ -103,7 +103,7 @@ public class EHFValidationG2
   }
 
   // 2018-11
-  private static final String PATH_201811 = "/ehf/2018-11/xslt/";
+  private static final String PATH_201811 = "/schematron/2018-11/xslt/";
   @Deprecated
   private static final IReadableResource EHF_COMMON_V1_0_4 = new ClassPathResource (PATH_201811 + "EHF-UBL-COMMON.xslt", _getCL ());
   @Deprecated
@@ -128,7 +128,7 @@ public class EHFValidationG2
   private static final IReadableResource EHF_REMINDER_V1_1_0 = new ClassPathResource (PATH_201811 + "EHF-UBL-T17.xslt", _getCL ());
 
   // 2019-06
-  private static final String PATH_201906 = "/ehf/2019-06/xslt/";
+  private static final String PATH_201906 = "/schematron/2019-06/xslt/";
   // Has the same version but is different
   @Deprecated
   private static final IReadableResource EHF_COMMON_V1_0_4B = new ClassPathResource (PATH_201906 + "EHF-UBL-COMMON.xslt", _getCL ());
@@ -153,7 +153,7 @@ public class EHFValidationG2
   private static final IReadableResource EHF_PUNCH_OUT_V1_0_2 = new ClassPathResource (PATH_201906 + "EHF-UBL-T77.xslt", _getCL ());
 
   // 2019-12
-  private static final String PATH_201912 = "/ehf/2019-12/xslt/";
+  private static final String PATH_201912 = "/schematron/2019-12/xslt/";
   private static final IReadableResource EHF_COMMON_V1_0_4C = new ClassPathResource (PATH_201912 + "EHF-UBL-COMMON.xslt", _getCL ());
   private static final IReadableResource EHF_CATALOGUE_V1_0_15 = new ClassPathResource (PATH_201912 + "EHF-UBL-T19.xslt", _getCL ());
   private static final IReadableResource EHF_CATALOGUE_RESPONSE_V1_0_15 = new ClassPathResource (PATH_201912 + "EHF-UBL-T58.xslt",
