@@ -27,7 +27,7 @@ import com.helger.commons.io.resource.IReadableResource;
 
 public enum EEbInterfaceTestFiles
 {
-  V30 ("/ebinterface/v30/",
+  V30 ("/test-files/v30/",
        new String [] { "230A001-FA08-3242.XML",
                        "230A004-FA08-3244.XML",
                        "230A004-FA08-3245.XML",
@@ -40,7 +40,7 @@ public enum EEbInterfaceTestFiles
                        "valid4.xml",
                        "valid5.xml",
                        "valid6.xml" }),
-  V302 ("/ebinterface/v302/",
+  V302 ("/test-files/v302/",
         new String [] { "2011-0001-2011-09-12.XML",
                         "InvoiceExample1.xml",
                         "InvoiceExample2.xml",
@@ -50,7 +50,7 @@ public enum EEbInterfaceTestFiles
                         "mesonic2.xml",
                         "mesonic3-corrupted.xml",
                         "valid_and_signed.xml" }),
-  V40 ("/ebinterface/v40/",
+  V40 ("/test-files/v40/",
        new String [] { "86516_203053.xml",
                        "86523_203054.xml",
                        "86525_203055.xml",
@@ -62,11 +62,11 @@ public enum EEbInterfaceTestFiles
                        "handysignature.xml",
                        "testinstance-no-svnr.xml",
                        "testinstance-valid-schema.xml", }),
-  V41 ("/ebinterface/v41/", new String [] { "testinstance-valid-schema.xml" }),
-  V42 ("/ebinterface/v42/", new String [] { "testinstance-valid-schema.xml" }),
-  V43 ("/ebinterface/v43/", new String [] { "testinstance-valid-schema.xml" }),
-  V50 ("/ebinterface/v50/", new String [] { "testinstance-valid-schema.xml" }),
-  V60 ("/ebinterface/v60/", new String [] { "ebinterface_6p0_sample_dokumentation.xml", "ebinterface_6p0_sample.xml" });
+  V41 ("/test-files/v41/", new String [] { "testinstance-valid-schema.xml" }),
+  V42 ("/test-files/v42/", new String [] { "testinstance-valid-schema.xml" }),
+  V43 ("/test-files/v43/", new String [] { "testinstance-valid-schema.xml" }),
+  V50 ("/test-files/v50/", new String [] { "testinstance-valid-schema.xml" }),
+  V60 ("/test-files/v60/", new String [] { "ebinterface_6p0_sample_dokumentation.xml", "ebinterface_6p0_sample.xml" });
 
   private final ICommonsList <IReadableResource> m_aTestFiles = new CommonsArrayList <> ();
 
