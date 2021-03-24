@@ -130,64 +130,64 @@ public final class EN16931Validation
 
   // CII
   @Deprecated
-  public static final IReadableResource INVOICE_CII_100_XSLT = new ClassPathResource ("/en16931/1.0.0/cii/xslt/EN16931-CII-validation.xslt",
+  public static final IReadableResource INVOICE_CII_100_XSLT = new ClassPathResource ("/schematron/1.0.0/cii/xslt/EN16931-CII-validation.xslt",
                                                                                       _getCL ());
   @Deprecated
-  public static final IReadableResource INVOICE_CII_110_XSLT = new ClassPathResource ("/en16931/1.1.0/cii/xslt/EN16931-CII-validation.xslt",
+  public static final IReadableResource INVOICE_CII_110_XSLT = new ClassPathResource ("/schematron/1.1.0/cii/xslt/EN16931-CII-validation.xslt",
                                                                                       _getCL ());
   @Deprecated
-  public static final IReadableResource INVOICE_CII_120_XSLT = new ClassPathResource ("/en16931/1.2.0/cii/xslt/EN16931-CII-validation.xslt",
+  public static final IReadableResource INVOICE_CII_120_XSLT = new ClassPathResource ("/schematron/1.2.0/cii/xslt/EN16931-CII-validation.xslt",
                                                                                       _getCL ());
   @Deprecated
-  public static final IReadableResource INVOICE_CII_121_XSLT = new ClassPathResource ("/en16931/1.2.1/cii/xslt/EN16931-CII-validation.xslt",
+  public static final IReadableResource INVOICE_CII_121_XSLT = new ClassPathResource ("/schematron/1.2.1/cii/xslt/EN16931-CII-validation.xslt",
                                                                                       _getCL ());
   @Deprecated
-  public static final IReadableResource INVOICE_CII_123_XSLT = new ClassPathResource ("/en16931/1.2.3/cii/xslt/EN16931-CII-validation.xslt",
+  public static final IReadableResource INVOICE_CII_123_XSLT = new ClassPathResource ("/schematron/1.2.3/cii/xslt/EN16931-CII-validation.xslt",
                                                                                       _getCL ());
   @Deprecated
-  public static final IReadableResource INVOICE_CII_130_XSLT = new ClassPathResource ("/en16931/1.3.0/cii/xslt/EN16931-CII-validation.xslt",
+  public static final IReadableResource INVOICE_CII_130_XSLT = new ClassPathResource ("/schematron/1.3.0/cii/xslt/EN16931-CII-validation.xslt",
                                                                                       _getCL ());
   @Deprecated
-  public static final IReadableResource INVOICE_CII_131_XSLT = new ClassPathResource ("/en16931/1.3.1/cii/xslt/EN16931-CII-validation.xslt",
+  public static final IReadableResource INVOICE_CII_131_XSLT = new ClassPathResource ("/schematron/1.3.1/cii/xslt/EN16931-CII-validation.xslt",
                                                                                       _getCL ());
   @Deprecated
-  public static final IReadableResource INVOICE_CII_132_XSLT = new ClassPathResource ("/en16931/1.3.2/cii/xslt/EN16931-CII-validation.xslt",
+  public static final IReadableResource INVOICE_CII_132_XSLT = new ClassPathResource ("/schematron/1.3.2/cii/xslt/EN16931-CII-validation.xslt",
                                                                                       _getCL ());
   @Deprecated
-  public static final IReadableResource INVOICE_CII_133_XSLT = new ClassPathResource ("/en16931/1.3.3/cii/xslt/EN16931-CII-validation.xslt",
+  public static final IReadableResource INVOICE_CII_133_XSLT = new ClassPathResource ("/schematron/1.3.3/cii/xslt/EN16931-CII-validation.xslt",
                                                                                       _getCL ());
-  public static final IReadableResource INVOICE_CII_134_XSLT = new ClassPathResource ("/en16931/1.3.4/cii/xslt/EN16931-CII-validation.xslt",
+  public static final IReadableResource INVOICE_CII_134_XSLT = new ClassPathResource ("/schematron/1.3.4/cii/xslt/EN16931-CII-validation.xslt",
                                                                                       _getCL ());
 
   // UBL
   @Deprecated
-  public static final IReadableResource INVOICE_UBL_100_XSLT = new ClassPathResource ("/en16931/1.0.0/ubl/xslt/EN16931-UBL-model.xslt",
+  public static final IReadableResource INVOICE_UBL_100_XSLT = new ClassPathResource ("/schematron/1.0.0/ubl/xslt/EN16931-UBL-model.xslt",
                                                                                       _getCL ());
   @Deprecated
-  public static final IReadableResource INVOICE_UBL_110_XSLT = new ClassPathResource ("/en16931/1.1.0/ubl/xslt/EN16931-UBL-model.xslt",
+  public static final IReadableResource INVOICE_UBL_110_XSLT = new ClassPathResource ("/schematron/1.1.0/ubl/xslt/EN16931-UBL-model.xslt",
                                                                                       _getCL ());
   @Deprecated
-  public static final IReadableResource INVOICE_UBL_120_XSLT = new ClassPathResource ("/en16931/1.2.0/ubl/xslt/EN16931-UBL-validation.xslt",
+  public static final IReadableResource INVOICE_UBL_120_XSLT = new ClassPathResource ("/schematron/1.2.0/ubl/xslt/EN16931-UBL-validation.xslt",
                                                                                       _getCL ());
   @Deprecated
-  public static final IReadableResource INVOICE_UBL_121_XSLT = new ClassPathResource ("/en16931/1.2.1/ubl/xslt/EN16931-UBL-validation.xslt",
+  public static final IReadableResource INVOICE_UBL_121_XSLT = new ClassPathResource ("/schematron/1.2.1/ubl/xslt/EN16931-UBL-validation.xslt",
                                                                                       _getCL ());
   @Deprecated
-  public static final IReadableResource INVOICE_UBL_123_XSLT = new ClassPathResource ("/en16931/1.2.3/ubl/xslt/EN16931-UBL-validation.xslt",
+  public static final IReadableResource INVOICE_UBL_123_XSLT = new ClassPathResource ("/schematron/1.2.3/ubl/xslt/EN16931-UBL-validation.xslt",
                                                                                       _getCL ());
   @Deprecated
-  public static final IReadableResource INVOICE_UBL_130_XSLT = new ClassPathResource ("/en16931/1.3.0/ubl/xslt/EN16931-UBL-validation.xslt",
+  public static final IReadableResource INVOICE_UBL_130_XSLT = new ClassPathResource ("/schematron/1.3.0/ubl/xslt/EN16931-UBL-validation.xslt",
                                                                                       _getCL ());
   @Deprecated
-  public static final IReadableResource INVOICE_UBL_131_XSLT = new ClassPathResource ("/en16931/1.3.1/ubl/xslt/EN16931-UBL-validation.xslt",
+  public static final IReadableResource INVOICE_UBL_131_XSLT = new ClassPathResource ("/schematron/1.3.1/ubl/xslt/EN16931-UBL-validation.xslt",
                                                                                       _getCL ());
   @Deprecated
-  public static final IReadableResource INVOICE_UBL_132_XSLT = new ClassPathResource ("/en16931/1.3.2/ubl/xslt/EN16931-UBL-validation.xslt",
+  public static final IReadableResource INVOICE_UBL_132_XSLT = new ClassPathResource ("/schematron/1.3.2/ubl/xslt/EN16931-UBL-validation.xslt",
                                                                                       _getCL ());
   @Deprecated
-  public static final IReadableResource INVOICE_UBL_133_XSLT = new ClassPathResource ("/en16931/1.3.3/ubl/xslt/EN16931-UBL-validation.xslt",
+  public static final IReadableResource INVOICE_UBL_133_XSLT = new ClassPathResource ("/schematron/1.3.3/ubl/xslt/EN16931-UBL-validation.xslt",
                                                                                       _getCL ());
-  public static final IReadableResource INVOICE_UBL_134_XSLT = new ClassPathResource ("/en16931/1.3.4/ubl/xslt/EN16931-UBL-validation.xslt",
+  public static final IReadableResource INVOICE_UBL_134_XSLT = new ClassPathResource ("/schematron/1.3.4/ubl/xslt/EN16931-UBL-validation.xslt",
                                                                                       _getCL ());
 
   private EN16931Validation ()
@@ -275,8 +275,7 @@ public final class EN16931Validation
 
     // UBL
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_UBL_INVOICE_100,
-                                                                           "EN 16931 UBL Invoice " +
-                                                                                                VID_UBL_INVOICE_100.getVersion (),
+                                                                           "EN 16931 UBL Invoice " + VID_UBL_INVOICE_100.getVersion (),
                                                                            bDeprecated,
                                                                            ValidationExecutorXSD.create (EUBL21DocumentType.INVOICE),
                                                                            ValidationExecutorSchematron.createXSLT (INVOICE_UBL_100_XSLT,
@@ -289,8 +288,7 @@ public final class EN16931Validation
                                                                            ValidationExecutorSchematron.createXSLT (INVOICE_UBL_110_XSLT,
                                                                                                                     UBL21NamespaceContext.getInstance ())));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_UBL_INVOICE_110,
-                                                                           "EN 16931 UBL Invoice " +
-                                                                                                VID_UBL_INVOICE_110.getVersion (),
+                                                                           "EN 16931 UBL Invoice " + VID_UBL_INVOICE_110.getVersion (),
                                                                            bDeprecated,
                                                                            ValidationExecutorXSD.create (EUBL21DocumentType.INVOICE),
                                                                            ValidationExecutorSchematron.createXSLT (INVOICE_UBL_110_XSLT,
@@ -303,8 +301,7 @@ public final class EN16931Validation
                                                                            ValidationExecutorSchematron.createXSLT (INVOICE_UBL_110_XSLT,
                                                                                                                     UBL21NamespaceContext.getInstance ())));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_UBL_INVOICE_120,
-                                                                           "EN 16931 UBL Invoice " +
-                                                                                                VID_UBL_INVOICE_120.getVersion (),
+                                                                           "EN 16931 UBL Invoice " + VID_UBL_INVOICE_120.getVersion (),
                                                                            bDeprecated,
                                                                            ValidationExecutorXSD.create (EUBL21DocumentType.INVOICE),
                                                                            ValidationExecutorSchematron.createXSLT (INVOICE_UBL_120_XSLT,
@@ -317,8 +314,7 @@ public final class EN16931Validation
                                                                            ValidationExecutorSchematron.createXSLT (INVOICE_UBL_120_XSLT,
                                                                                                                     UBL21NamespaceContext.getInstance ())));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_UBL_INVOICE_121,
-                                                                           "EN 16931 UBL Invoice " +
-                                                                                                VID_UBL_INVOICE_121.getVersion (),
+                                                                           "EN 16931 UBL Invoice " + VID_UBL_INVOICE_121.getVersion (),
                                                                            bDeprecated,
                                                                            ValidationExecutorXSD.create (EUBL21DocumentType.INVOICE),
                                                                            ValidationExecutorSchematron.createXSLT (INVOICE_UBL_121_XSLT,
@@ -331,8 +327,7 @@ public final class EN16931Validation
                                                                            ValidationExecutorSchematron.createXSLT (INVOICE_UBL_121_XSLT,
                                                                                                                     UBL21NamespaceContext.getInstance ())));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_UBL_INVOICE_123,
-                                                                           "EN 16931 UBL Invoice " +
-                                                                                                VID_UBL_INVOICE_123.getVersion (),
+                                                                           "EN 16931 UBL Invoice " + VID_UBL_INVOICE_123.getVersion (),
                                                                            bDeprecated,
                                                                            ValidationExecutorXSD.create (EUBL21DocumentType.INVOICE),
                                                                            ValidationExecutorSchematron.createXSLT (INVOICE_UBL_123_XSLT,
@@ -345,8 +340,7 @@ public final class EN16931Validation
                                                                            ValidationExecutorSchematron.createXSLT (INVOICE_UBL_123_XSLT,
                                                                                                                     UBL21NamespaceContext.getInstance ())));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_UBL_INVOICE_130,
-                                                                           "EN 16931 UBL Invoice " +
-                                                                                                VID_UBL_INVOICE_130.getVersion (),
+                                                                           "EN 16931 UBL Invoice " + VID_UBL_INVOICE_130.getVersion (),
                                                                            bDeprecated,
                                                                            ValidationExecutorXSD.create (EUBL21DocumentType.INVOICE),
                                                                            ValidationExecutorSchematron.createXSLT (INVOICE_UBL_130_XSLT,
@@ -360,8 +354,7 @@ public final class EN16931Validation
                                                                                                                     UBL21NamespaceContext.getInstance ())));
 
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_UBL_INVOICE_131,
-                                                                           "EN 16931 UBL Invoice " +
-                                                                                                VID_UBL_INVOICE_131.getVersion (),
+                                                                           "EN 16931 UBL Invoice " + VID_UBL_INVOICE_131.getVersion (),
                                                                            bDeprecated,
                                                                            ValidationExecutorXSD.create (EUBL21DocumentType.INVOICE),
                                                                            ValidationExecutorSchematron.createXSLT (INVOICE_UBL_131_XSLT,
@@ -375,8 +368,7 @@ public final class EN16931Validation
                                                                                                                     UBL21NamespaceContext.getInstance ())));
 
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_UBL_INVOICE_132,
-                                                                           "EN 16931 UBL Invoice " +
-                                                                                                VID_UBL_INVOICE_132.getVersion (),
+                                                                           "EN 16931 UBL Invoice " + VID_UBL_INVOICE_132.getVersion (),
                                                                            bDeprecated,
                                                                            ValidationExecutorXSD.create (EUBL21DocumentType.INVOICE),
                                                                            ValidationExecutorSchematron.createXSLT (INVOICE_UBL_132_XSLT,
@@ -389,8 +381,7 @@ public final class EN16931Validation
                                                                            ValidationExecutorSchematron.createXSLT (INVOICE_UBL_132_XSLT,
                                                                                                                     UBL21NamespaceContext.getInstance ())));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_UBL_INVOICE_133,
-                                                                           "EN 16931 UBL Invoice " +
-                                                                                                VID_UBL_INVOICE_133.getVersion (),
+                                                                           "EN 16931 UBL Invoice " + VID_UBL_INVOICE_133.getVersion (),
                                                                            bDeprecated,
                                                                            ValidationExecutorXSD.create (EUBL21DocumentType.INVOICE),
                                                                            ValidationExecutorSchematron.createXSLT (INVOICE_UBL_133_XSLT,
@@ -403,8 +394,7 @@ public final class EN16931Validation
                                                                            ValidationExecutorSchematron.createXSLT (INVOICE_UBL_133_XSLT,
                                                                                                                     UBL21NamespaceContext.getInstance ())));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_UBL_INVOICE_134,
-                                                                           "EN 16931 UBL Invoice " +
-                                                                                                VID_UBL_INVOICE_134.getVersion (),
+                                                                           "EN 16931 UBL Invoice " + VID_UBL_INVOICE_134.getVersion (),
                                                                            bNotDeprecated,
                                                                            ValidationExecutorXSD.create (EUBL21DocumentType.INVOICE),
                                                                            ValidationExecutorSchematron.createXSLT (INVOICE_UBL_134_XSLT,
