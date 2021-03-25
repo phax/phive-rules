@@ -90,21 +90,6 @@
         </configuration>
       </plugin>
       <plugin>
-        <groupId>com.mycila</groupId>
-        <artifactId>license-maven-plugin</artifactId>
-        <configuration>
-          <excludes>
-            <exclude>**/LICENSE</exclude>
-            <exclude>**/NOTICE</exclude>
-            <exclude>src/main/resources/nlcius/**</exclude>
-            <exclude>src/main/resources/simplerinvoicing/**</exclude>
-            <exclude>src/test/resources/nlcius/**</exclude>
-            <exclude>src/test/resources/simplerinvoicing/**</exclude>
-            <exclude>src/test/resources/test-files/**</exclude>
-          </excludes>
-        </configuration>
-      </plugin>
-      <plugin>
         <groupId>com.helger.maven</groupId>
         <artifactId>ph-schematron-maven-plugin</artifactId>
         <executions>
@@ -115,8 +100,8 @@
             </goals>
             <id>preprocess</id>
             <configuration>
-              <sourceFile>${basedir}/src/test/resources/simplerinvoicing/si-ubl-1.0.sch</sourceFile>
-              <targetFile>${basedir}/src/test/resources/simplerinvoicing/preprocessed-si-ubl-1.0.sch</targetFile>
+              <sourceFile>${basedir}/src/test/resources/rule-source/simplerinvoicing/si-ubl-1.0.sch</sourceFile>
+              <targetFile>${basedir}/src/test/resources/rule-source/simplerinvoicing/preprocessed-si-ubl-1.0.sch</targetFile>
               <keepTitles>true</keepTitles>
             </configuration>
           </execution>
@@ -126,9 +111,9 @@
             </goals>
             <id>convert-si</id>
             <configuration>
-              <schematronDirectory>${basedir}/src/test/resources/simplerinvoicing/2.0.3</schematronDirectory>
+              <schematronDirectory>${basedir}/src/test/resources/rule-source/simplerinvoicing/2.0.3</schematronDirectory>
               <schematronPattern>si-ubl-*.sch</schematronPattern>
-              <xsltDirectory>${basedir}/src/main/resources/simplerinvoicing</xsltDirectory>
+              <xsltDirectory>${basedir}/src/main/resources/schematron/simplerinvoicing</xsltDirectory>
             </configuration>
           </execution>
           <execution>
@@ -137,9 +122,9 @@
             </goals>
             <id>convert-nlcius</id>
             <configuration>
-              <schematronDirectory>${basedir}/src/test/resources/nlcius/1.0.3</schematronDirectory>
+              <schematronDirectory>${basedir}/src/test/resources/rule-source/nlcius/1.0.3</schematronDirectory>
               <schematronPattern>nlcius-*.sch</schematronPattern>
-              <xsltDirectory>${basedir}/src/main/resources/nlcius</xsltDirectory>
+              <xsltDirectory>${basedir}/src/main/resources/schematron/nlcius</xsltDirectory>
             </configuration>
           </execution>
        -->

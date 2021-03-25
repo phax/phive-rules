@@ -87,43 +87,45 @@ public final class SimplerInvoicingValidation
     return SimplerInvoicingValidation.class.getClassLoader ();
   }
 
+  private static final String PATH_SI = "/schematron/simplerinvoicing/";
+  private static final String PATH_NL_CIUS = "/schematron/nlcius/";
+
   // SimplerInvoicing
   // 1.0
   @Deprecated
-  public static final ClassPathResource INVOICE_SI10 = new ClassPathResource ("/simplerinvoicing/si-ubl-1.0.xslt", _getCL ());
+  public static final ClassPathResource INVOICE_SI10 = new ClassPathResource (PATH_SI + "si-ubl-1.0.xslt", _getCL ());
 
   // 1.1
   @Deprecated
-  public static final ClassPathResource INVOICE_SI11 = new ClassPathResource ("/simplerinvoicing/si-ubl-1.1.xslt", _getCL ());
+  public static final ClassPathResource INVOICE_SI11 = new ClassPathResource (PATH_SI + "si-ubl-1.1.xslt", _getCL ());
 
   // 1.2
   @Deprecated
-  public static final ClassPathResource INVOICE_SI12 = new ClassPathResource ("/simplerinvoicing/si-ubl-1.2.xslt", _getCL ());
+  public static final ClassPathResource INVOICE_SI12 = new ClassPathResource (PATH_SI + "si-ubl-1.2.xslt", _getCL ());
   @Deprecated
-  public static final ClassPathResource ORDER_SI12 = new ClassPathResource ("/simplerinvoicing/si-ubl-1.2-purchaseorder.xslt", _getCL ());
+  public static final ClassPathResource ORDER_SI12 = new ClassPathResource (PATH_SI + "si-ubl-1.2-purchaseorder.xslt", _getCL ());
 
   // 1.2.3
-  public static final ClassPathResource INVOICE_SI123 = new ClassPathResource ("/simplerinvoicing/si-ubl-1.2.3.xslt", _getCL ());
-  public static final ClassPathResource ORDER_SI123 = new ClassPathResource ("/simplerinvoicing/si-ubl-1.2.3-purchaseorder.xslt",
-                                                                             _getCL ());
+  public static final ClassPathResource INVOICE_SI123 = new ClassPathResource (PATH_SI + "si-ubl-1.2.3.xslt", _getCL ());
+  public static final ClassPathResource ORDER_SI123 = new ClassPathResource (PATH_SI + "si-ubl-1.2.3-purchaseorder.xslt", _getCL ());
 
   // 2.0
   @Deprecated
-  public static final ClassPathResource INVOICE_SI20 = new ClassPathResource ("/simplerinvoicing/si-ubl-2.0.xslt", _getCL ());
+  public static final ClassPathResource INVOICE_SI20 = new ClassPathResource (PATH_SI + "si-ubl-2.0.xslt", _getCL ());
 
   // 2.0.1
   @Deprecated
-  public static final ClassPathResource INVOICE_SI201 = new ClassPathResource ("/simplerinvoicing/si-ubl-2.0.1.xslt", _getCL ());
+  public static final ClassPathResource INVOICE_SI201 = new ClassPathResource (PATH_SI + "si-ubl-2.0.1.xslt", _getCL ());
 
   // 2.0.2
   @Deprecated
-  public static final ClassPathResource INVOICE_SI202 = new ClassPathResource ("/simplerinvoicing/si-ubl-2.0.2.xslt", _getCL ());
+  public static final ClassPathResource INVOICE_SI202 = new ClassPathResource (PATH_SI + "si-ubl-2.0.2.xslt", _getCL ());
 
   // 2.0.3
-  public static final ClassPathResource INVOICE_SI203 = new ClassPathResource ("/simplerinvoicing/si-ubl-2.0.3.xslt", _getCL ());
+  public static final ClassPathResource INVOICE_SI203 = new ClassPathResource (PATH_SI + "si-ubl-2.0.3.xslt", _getCL ());
 
   // 2.0.3.1
-  public static final ClassPathResource INVOICE_SI2031 = new ClassPathResource ("/simplerinvoicing/si-ubl-2.0.3.1.xslt", _getCL ());
+  public static final ClassPathResource INVOICE_SI2031 = new ClassPathResource (PATH_SI + "si-ubl-2.0.3.1.xslt", _getCL ());
 
   private SimplerInvoicingValidation ()
   {}
@@ -254,7 +256,8 @@ public final class SimplerInvoicingValidation
                                                                            "Simplerinvoicing 2.0 G-Account extension 1.0",
                                                                            bDeprecated,
                                                                            ValidationExecutorXSD.create (EUBL21DocumentType.INVOICE),
-                                                                           _createXSLT (new ClassPathResource ("/simplerinvoicing/si-ubl-2.0-ext-gaccount-1.0.xslt",
+                                                                           _createXSLT (new ClassPathResource (PATH_SI +
+                                                                                                               "si-ubl-2.0-ext-gaccount-1.0.xslt",
                                                                                                                _getCL ()))));
 
     // 2.0 G-Account 1.0.1
@@ -262,7 +265,8 @@ public final class SimplerInvoicingValidation
                                                                            "Simplerinvoicing 2.0 G-Account extension 1.0.1",
                                                                            bNotDeprecated,
                                                                            ValidationExecutorXSD.create (EUBL21DocumentType.INVOICE),
-                                                                           _createXSLT (new ClassPathResource ("/simplerinvoicing/si-ubl-2.0-ext-gaccount-1.0.1.xslt",
+                                                                           _createXSLT (new ClassPathResource (PATH_SI +
+                                                                                                               "si-ubl-2.0-ext-gaccount-1.0.1.xslt",
                                                                                                                _getCL ()))));
 
     // NLCIUS 1.0.3
@@ -270,7 +274,8 @@ public final class SimplerInvoicingValidation
                                                                            "NLCIUS-CII 1.0.3",
                                                                            bNotDeprecated,
                                                                            ValidationExecutorXSD.create (ECIID16BDocumentType.CROSS_INDUSTRY_INVOICE),
-                                                                           _createXSLT (new ClassPathResource ("/nlcius/nlcius-cii-1.0.3.xslt",
+                                                                           _createXSLT (new ClassPathResource (PATH_NL_CIUS +
+                                                                                                               "nlcius-cii-1.0.3.xslt",
                                                                                                                _getCL ()))));
   }
 }
