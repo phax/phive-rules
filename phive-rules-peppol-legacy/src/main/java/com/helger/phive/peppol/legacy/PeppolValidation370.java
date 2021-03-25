@@ -66,7 +66,8 @@ public final class PeppolValidation370
   public static final VESID VID_OPENPEPPOL_BIS3_UBL_INVOICE = new VESID ("eu.peppol.bis3.ubl", "invoice", "1");
   public static final VESID VID_OPENPEPPOL_BIS3_UBL_CREDIT_NOTE = new VESID ("eu.peppol.bis3.ubl", "creditnote", "1");
 
-  private static final String PREFIX = "openpeppol/" + VERSION_STR + "/";
+  private static final String BASE_PATH = "schematron/openpeppol/";
+  private static final String PREFIX = BASE_PATH + VERSION_STR + "/";
   private static final String PREFIX_XSLT = PREFIX + "XSLT/";
   private static final String PREFIX_XSLTCORE = PREFIX + "XSLTCore/";
 
@@ -136,9 +137,9 @@ public final class PeppolValidation370
                                                                                                      "OPENPEPPOL-UBL-T111.xsl",
                                                                                                      _getCL ());
 
-  public static final IReadableResource BIS3_BILLING_CEN = new ClassPathResource ("/openpeppol/billingbis3/xslt/CEN-EN16931-UBL.xslt",
+  public static final IReadableResource BIS3_BILLING_CEN = new ClassPathResource (BASE_PATH + "billingbis3/xslt/CEN-EN16931-UBL.xslt",
                                                                                   _getCL ());
-  public static final IReadableResource BIS3_BILLING_PEPPOL = new ClassPathResource ("/openpeppol/billingbis3/xslt/PEPPOL-EN16931-UBL.xslt",
+  public static final IReadableResource BIS3_BILLING_PEPPOL = new ClassPathResource (BASE_PATH + "billingbis3/xslt/PEPPOL-EN16931-UBL.xslt",
                                                                                      _getCL ());
 
   private PeppolValidation370 ()

@@ -38,20 +38,24 @@ public class PeppolLegacyThirdpartyValidation
     return PeppolLegacyThirdpartyValidation.class.getClassLoader ();
   }
 
+  private static final String BASE_PATH = "schematron/peppol-thirdparty/";
+
   // Third-party
   public static final VESID VID_OPENPEPPOL_T10_V2_5_AT = new VESID ("eu.peppol.bis2", "t10", "6", "at");
   public static final VESID VID_OPENPEPPOL_T10_V2_7_AT_GOV = new VESID ("eu.peppol.bis2", "t10", "8", "at-gov");
   public static final VESID VID_OPENPEPPOL_T14_V2_5_AT = new VESID ("eu.peppol.bis2", "t14", "6", "at");
   public static final VESID VID_OPENPEPPOL_T14_V2_7_AT_GOV = new VESID ("eu.peppol.bis2", "t14", "8", "at-gov");
 
-  public static final ClassPathResource INVOICE_AT_NAT = new ClassPathResource ("/thirdparty/atnat-invoice/atnat-invoice-ubl.xslt",
+  public static final ClassPathResource INVOICE_AT_NAT = new ClassPathResource (BASE_PATH + "atnat-invoice/atnat-invoice-ubl.xslt",
                                                                                 _getCL ());
-  public static final ClassPathResource INVOICE_AT_GOV = new ClassPathResource ("/thirdparty/atgov-invoice/atgov-invoice-ubl.xslt",
+  public static final ClassPathResource INVOICE_AT_GOV = new ClassPathResource (BASE_PATH + "atgov-invoice/atgov-invoice-ubl.xslt",
                                                                                 _getCL ());
 
-  public static final ClassPathResource CREDIT_NOTE_AT_NAT = new ClassPathResource ("/thirdparty/atnat-creditnote/atnat-creditnote-ubl.xslt",
+  public static final ClassPathResource CREDIT_NOTE_AT_NAT = new ClassPathResource (BASE_PATH +
+                                                                                    "atnat-creditnote/atnat-creditnote-ubl.xslt",
                                                                                     _getCL ());
-  public static final ClassPathResource CREDIT_NOTE_AT_GOV = new ClassPathResource ("/thirdparty/atgov-creditnote/atgov-creditnote-ubl.xslt",
+  public static final ClassPathResource CREDIT_NOTE_AT_GOV = new ClassPathResource (BASE_PATH +
+                                                                                    "atgov-creditnote/atgov-creditnote-ubl.xslt",
                                                                                     _getCL ());
 
   @SuppressWarnings ("deprecation")

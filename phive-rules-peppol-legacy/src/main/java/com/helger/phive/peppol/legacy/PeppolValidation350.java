@@ -63,7 +63,7 @@ public final class PeppolValidation350
   public static final VESID VID_OPENPEPPOL_T77_V1 = new VESID ("eu.peppol.bis2", "t77", VERSION_STR);
   public static final VESID VID_OPENPEPPOL_T110_V1 = new VESID ("eu.peppol.bis2", "t110", VERSION_STR);
 
-  private static final String PREFIX = "openpeppol/" + VERSION_STR + "/SCH/";
+  private static final String PREFIX = "schematron/openpeppol/" + VERSION_STR + "/SCH/";
 
   private static final String ORDER = PREFIX + "peppolbis-trdm001-2.0-order/";
   private static final String INVOICE = PREFIX + "peppolbis-trdm010-2.0-invoice/";

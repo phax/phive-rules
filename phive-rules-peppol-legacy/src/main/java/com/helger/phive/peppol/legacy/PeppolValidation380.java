@@ -64,7 +64,7 @@ public final class PeppolValidation380
   public static final VESID VID_OPENPEPPOL_T110_V3 = new VESID ("eu.peppol.bis3", "t110", VERSION_STR);
   public static final VESID VID_OPENPEPPOL_T111_V3 = new VESID ("eu.peppol.bis3", "t111", VERSION_STR);
 
-  private static final String PREFIX_XSLT = "openpeppol/" + VERSION_STR + "/xslt/";
+  private static final String PREFIX_XSLT = "schematron/openpeppol/" + VERSION_STR + "/xslt/";
 
   @Nonnull
   private static ClassLoader _getCL ()
