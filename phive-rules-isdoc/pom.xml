@@ -85,20 +85,6 @@
         </configuration>
       </plugin>
       <plugin>
-        <groupId>com.mycila</groupId>
-        <artifactId>license-maven-plugin</artifactId>
-        <configuration>
-          <excludes>
-            <exclude>**/LICENSE</exclude>
-            <exclude>**/NOTICE</exclude>
-            <exclude>docs/**</exclude>
-            <exclude>src/main/resources/isdoc/**</exclude>
-            <exclude>src/test/resources/sch/**</exclude>
-            <exclude>src/test/resources/test-files/**</exclude>
-          </excludes>
-        </configuration>
-      </plugin>
-      <plugin>
         <groupId>com.helger.maven</groupId>
         <artifactId>ph-schematron-maven-plugin</artifactId>
         <executions>
@@ -109,9 +95,9 @@
             </goals>
             <id>ublbe</id>
             <configuration>
-              <schematronDirectory>${basedir}/src/test/resources/sch/6.0.1</schematronDirectory>
+              <schematronDirectory>${basedir}/src/test/resources/rule-source/6.0.1</schematronDirectory>
               <schematronPattern>*.sch</schematronPattern>
-              <xsltDirectory>${basedir}/src/main/resources/isdoc/6.0.1/xslt</xsltDirectory>
+              <xsltDirectory>${basedir}/src/main/resources/schematron/isdoc/6.0.1/xslt</xsltDirectory>
             </configuration>
           </execution>
        -->
