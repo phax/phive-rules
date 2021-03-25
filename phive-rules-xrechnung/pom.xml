@@ -85,19 +85,6 @@
         </configuration>
       </plugin>
       <plugin>
-        <groupId>com.mycila</groupId>
-        <artifactId>license-maven-plugin</artifactId>
-        <configuration>
-          <excludes>
-            <exclude>**/LICENSE</exclude>
-            <exclude>**/NOTICE</exclude>
-            <exclude>src/main/resources/schematron/**</exclude>
-            <exclude>src/test/resources/schematron-src/**</exclude>
-            <exclude>src/test/resources/test-files/**</exclude>
-          </excludes>
-        </configuration>
-      </plugin>
-      <plugin>
         <groupId>com.helger.maven</groupId>
         <artifactId>ph-schematron-maven-plugin</artifactId>
         <executions>
@@ -108,7 +95,7 @@
               <goal>convert</goal>
             </goals>
             <configuration>
-              <schematronDirectory>${basedir}/src/test/resources/schematron-src/2.0.1/cii</schematronDirectory>
+              <schematronDirectory>${basedir}/src/test/resources/rule-source/2.0.1/cii</schematronDirectory>
               <xsltDirectory>${basedir}/src/main/resources/schematron/2.0.1</xsltDirectory>
               <schematronPattern>*.sch</schematronPattern>
             </configuration>
@@ -119,7 +106,7 @@
               <goal>convert</goal>
             </goals>
             <configuration>
-              <schematronDirectory>${basedir}/src/test/resources/schematron-src/2.0.1/ubl-cn</schematronDirectory>
+              <schematronDirectory>${basedir}/src/test/resources/rule-source/2.0.1/ubl-cn</schematronDirectory>
               <xsltDirectory>${basedir}/src/main/resources/schematron/2.0.1</xsltDirectory>
               <schematronPattern>*.sch</schematronPattern>
             </configuration>
@@ -130,7 +117,7 @@
               <goal>convert</goal>
             </goals>
             <configuration>
-              <schematronDirectory>${basedir}/src/test/resources/schematron-src/2.0.1/ubl-inv</schematronDirectory>
+              <schematronDirectory>${basedir}/src/test/resources/rule-source/2.0.1/ubl-inv</schematronDirectory>
               <xsltDirectory>${basedir}/src/main/resources/schematron/2.0.1</xsltDirectory>
               <schematronPattern>*.sch</schematronPattern>
             </configuration>

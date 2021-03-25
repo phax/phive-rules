@@ -119,7 +119,7 @@
             </goals>
             <configuration>
               <schematronDirectory>src/test/resources/rule-source/aunz-peppol/1.0.4</schematronDirectory>
-              <xsltDirectory>src/main/resources/aunz-peppol/1.0.4/xslt</xsltDirectory>
+              <xsltDirectory>src/main/resources/schematron/peppol-aunz/1.0.4/xslt</xsltDirectory>
             </configuration>
           </execution>
           -->
@@ -132,7 +132,7 @@
             <configuration>
               <schematronDirectory>src/test/resources/rule-source/openpeppol/3.11.1</schematronDirectory>
               <schematronPattern>*.sch</schematronPattern>
-              <xsltDirectory>src/main/resources/openpeppol/3.11.1/xslt</xsltDirectory>
+              <xsltDirectory>src/main/resources/schematron/openpeppol/3.11.1/xslt</xsltDirectory>
             </configuration>
           </execution>
           -->
@@ -144,31 +144,7 @@
             </goals>
             <configuration>
               <schematronDirectory>src/test/resources/rule-source/sg-peppol/1.0.3/Schematron</schematronDirectory>
-              <xsltDirectory>src/main/resources/sg-peppol/1.0.3/xslt</xsltDirectory>
-            </configuration>
-          </execution>
-          -->
-          <!--
-          <execution>
-            <id>at-nat</id>
-            <goals>
-              <goal>convert</goal>
-            </goals>
-            <configuration>
-              <schematronDirectory>src/test/resources/rule-source/thirdparty/atnat</schematronDirectory>
-              <xsltDirectory>src/main/resources/thirdparty/atnat</xsltDirectory>
-            </configuration>
-          </execution>
-          -->
-          <!--
-          <execution>
-            <id>at-gov</id>
-            <goals>
-              <goal>convert</goal>
-            </goals>
-            <configuration>
-              <schematronDirectory>src/test/resources/rule-source/thirdparty/atgov</schematronDirectory>
-              <xsltDirectory>src/main/resources/thirdparty/atgov</xsltDirectory>
+              <xsltDirectory>src/main/resources/schematron/peppol-sg/1.0.3/xslt</xsltDirectory>
             </configuration>
           </execution>
           -->

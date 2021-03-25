@@ -85,19 +85,22 @@ public final class UBLBEValidation
     return UBLBEValidation.class.getClassLoader ();
   }
 
+  private static final String BASE_PATH = "/schematron/ublbe/";
+
   @Deprecated
-  private static final IReadableResource BE_EFFF_300 = new ClassPathResource ("/ublbe/3.0.0/EFFF-UBL-T10.xsl", _getCL ());
+  private static final IReadableResource BE_EFFF_300 = new ClassPathResource (BASE_PATH + "3.0.0/EFFF-UBL-T10.xsl", _getCL ());
   @Deprecated
-  private static final IReadableResource UBL_BE_100 = new ClassPathResource ("/ublbe/en16931/v1/GLOBALUBL.BE.xslt", _getCL ());
+  private static final IReadableResource UBL_BE_100 = new ClassPathResource (BASE_PATH + "en16931/v1/GLOBALUBL.BE.xslt", _getCL ());
   @Deprecated
-  private static final IReadableResource UBL_BE_110 = new ClassPathResource ("/ublbe/en16931/v1.1/GLOBALUBL.BE-201911.xslt", _getCL ());
+  private static final IReadableResource UBL_BE_110 = new ClassPathResource (BASE_PATH + "en16931/v1.1/GLOBALUBL.BE-201911.xslt",
+                                                                             _getCL ());
   @Deprecated
-  private static final IReadableResource UBL_BE_120 = new ClassPathResource ("/ublbe/en16931/v1.2/GLOBALUBL.BE.xslt", _getCL ());
+  private static final IReadableResource UBL_BE_120 = new ClassPathResource (BASE_PATH + "en16931/v1.2/GLOBALUBL.BE.xslt", _getCL ());
   @Deprecated
-  private static final IReadableResource UBL_BE_123 = new ClassPathResource ("/ublbe/en16931/v1.2.3/GLOBALUBL.BE.xslt", _getCL ());
+  private static final IReadableResource UBL_BE_123 = new ClassPathResource (BASE_PATH + "en16931/v1.2.3/GLOBALUBL.BE.xslt", _getCL ());
   @Deprecated
-  private static final IReadableResource UBL_BE_125 = new ClassPathResource ("/ublbe/en16931/v1.2.5/GLOBALUBL.BE.xslt", _getCL ());
-  private static final IReadableResource UBL_BE_126 = new ClassPathResource ("/ublbe/en16931/v1.2.6/GLOBALUBL.BE.xslt", _getCL ());
+  private static final IReadableResource UBL_BE_125 = new ClassPathResource (BASE_PATH + "en16931/v1.2.5/GLOBALUBL.BE.xslt", _getCL ());
+  private static final IReadableResource UBL_BE_126 = new ClassPathResource (BASE_PATH + "en16931/v1.2.6/GLOBALUBL.BE.xslt", _getCL ());
 
   private UBLBEValidation ()
   {}
