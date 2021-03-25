@@ -66,34 +66,39 @@ public final class OIOUBLValidation
     return OIOUBLValidation.class.getClassLoader ();
   }
 
-  private static final IReadableResource OIOUBL_APPLICATION_RESPONSE = new ClassPathResource ("/oioubl/2.0.2/OIOUBL_ApplicationResponse_Schematron.xsl",
+  private static final String PATH_202 = "/schematron/2.0.2/";
+  private static final IReadableResource OIOUBL_APPLICATION_RESPONSE = new ClassPathResource (PATH_202 +
+                                                                                              "OIOUBL_ApplicationResponse_Schematron.xsl",
                                                                                               _getCL ());
-  private static final IReadableResource OIOUBL_CATALOGUE = new ClassPathResource ("/oioubl/2.0.2/OIOUBL_Catalogue_Schematron.xsl",
-                                                                                   _getCL ());
-  private static final IReadableResource OIOUBL_CATALOGUE_DELETION = new ClassPathResource ("/oioubl/2.0.2/OIOUBL_CatalogueDeletion_Schematron.xsl",
+  private static final IReadableResource OIOUBL_CATALOGUE = new ClassPathResource (PATH_202 + "OIOUBL_Catalogue_Schematron.xsl", _getCL ());
+  private static final IReadableResource OIOUBL_CATALOGUE_DELETION = new ClassPathResource (PATH_202 +
+                                                                                            "OIOUBL_CatalogueDeletion_Schematron.xsl",
                                                                                             _getCL ());
-  private static final IReadableResource OIOUBL_CATALOGUE_ITEM_SPECIFICATION_UPDATE = new ClassPathResource ("/oioubl/2.0.2/OIOUBL_CatalogueItemSpecificationUpdate_Schematron.xsl",
+  private static final IReadableResource OIOUBL_CATALOGUE_ITEM_SPECIFICATION_UPDATE = new ClassPathResource (PATH_202 +
+                                                                                                             "OIOUBL_CatalogueItemSpecificationUpdate_Schematron.xsl",
                                                                                                              _getCL ());
-  private static final IReadableResource OIOUBL_CATALOGUE_PRICING_UPDATE = new ClassPathResource ("/oioubl/2.0.2/OIOUBL_CataloguePricingUpdate_Schematron.xsl",
+  private static final IReadableResource OIOUBL_CATALOGUE_PRICING_UPDATE = new ClassPathResource (PATH_202 +
+                                                                                                  "OIOUBL_CataloguePricingUpdate_Schematron.xsl",
                                                                                                   _getCL ());
-  private static final IReadableResource OIOUBL_CATALOGUE_REQUEST = new ClassPathResource ("/oioubl/2.0.2/OIOUBL_CatalogueRequest_Schematron.xsl",
+  private static final IReadableResource OIOUBL_CATALOGUE_REQUEST = new ClassPathResource (PATH_202 +
+                                                                                           "OIOUBL_CatalogueRequest_Schematron.xsl",
                                                                                            _getCL ());
-  private static final IReadableResource OIOUBL_CREDIT_NOTE = new ClassPathResource ("/oioubl/2.0.2/OIOUBL_CreditNote_Schematron.xsl",
+  private static final IReadableResource OIOUBL_CREDIT_NOTE = new ClassPathResource (PATH_202 + "OIOUBL_CreditNote_Schematron.xsl",
                                                                                      _getCL ());
-  private static final IReadableResource OIOUBL_INVOICE = new ClassPathResource ("/oioubl/2.0.2/OIOUBL_Invoice_Schematron.xsl", _getCL ());
-  private static final IReadableResource OIOUBL_ORDER = new ClassPathResource ("/oioubl/2.0.2/OIOUBL_Order_Schematron.xsl", _getCL ());
-  private static final IReadableResource OIOUBL_ORDER_CANCELLATION = new ClassPathResource ("/oioubl/2.0.2/OIOUBL_OrderCancellation_Schematron.xsl",
+  private static final IReadableResource OIOUBL_INVOICE = new ClassPathResource (PATH_202 + "OIOUBL_Invoice_Schematron.xsl", _getCL ());
+  private static final IReadableResource OIOUBL_ORDER = new ClassPathResource (PATH_202 + "OIOUBL_Order_Schematron.xsl", _getCL ());
+  private static final IReadableResource OIOUBL_ORDER_CANCELLATION = new ClassPathResource (PATH_202 +
+                                                                                            "OIOUBL_OrderCancellation_Schematron.xsl",
                                                                                             _getCL ());
-  private static final IReadableResource OIOUBL_ORDER_CHANGE = new ClassPathResource ("/oioubl/2.0.2/OIOUBL_OrderChange_Schematron.xsl",
+  private static final IReadableResource OIOUBL_ORDER_CHANGE = new ClassPathResource (PATH_202 + "OIOUBL_OrderChange_Schematron.xsl",
                                                                                       _getCL ());
-  private static final IReadableResource OIOUBL_ORDER_RESPONSE = new ClassPathResource ("/oioubl/2.0.2/OIOUBL_OrderResponse_Schematron.xsl",
+  private static final IReadableResource OIOUBL_ORDER_RESPONSE = new ClassPathResource (PATH_202 + "OIOUBL_OrderResponse_Schematron.xsl",
                                                                                         _getCL ());
-  private static final IReadableResource OIOUBL_ORDER_RESPONSE_SIMPLE = new ClassPathResource ("/oioubl/2.0.2/OIOUBL_OrderResponseSimple_Schematron.xsl",
+  private static final IReadableResource OIOUBL_ORDER_RESPONSE_SIMPLE = new ClassPathResource (PATH_202 +
+                                                                                               "OIOUBL_OrderResponseSimple_Schematron.xsl",
                                                                                                _getCL ());
-  private static final IReadableResource OIOUBL_REMINDER = new ClassPathResource ("/oioubl/2.0.2/OIOUBL_Reminder_Schematron.xsl",
-                                                                                  _getCL ());
-  private static final IReadableResource OIOUBL_STATEMENT = new ClassPathResource ("/oioubl/2.0.2/OIOUBL_Statement_Schematron.xsl",
-                                                                                   _getCL ());
+  private static final IReadableResource OIOUBL_REMINDER = new ClassPathResource (PATH_202 + "OIOUBL_Reminder_Schematron.xsl", _getCL ());
+  private static final IReadableResource OIOUBL_STATEMENT = new ClassPathResource (PATH_202 + "OIOUBL_Statement_Schematron.xsl", _getCL ());
 
   private OIOUBLValidation ()
   {}

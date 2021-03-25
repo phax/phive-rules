@@ -17,8 +17,10 @@
 package com.helger.phive.oioubl.supplementary.tools;
 
 import java.io.File;
+import java.util.Comparator;
 import java.util.Map;
 
+import com.helger.commons.collection.impl.CommonsArrayList;
 import com.helger.commons.collection.impl.CommonsTreeMap;
 import com.helger.commons.collection.impl.ICommonsMap;
 import com.helger.commons.compare.IComparator;
@@ -47,7 +49,7 @@ public class MainAssignTestFilesToDocTypes
     if (false)
       aMap.put ("UtilityStatement", "UTILITY_STATEMENT");
 
-    for (final File f : new FileSystemRecursiveIterator (new File ("src/test/resources/oioubl/2.0.2")))
+    for (final File f : new CommonsArrayList <> (new FileSystemRecursiveIterator (new File ("src/test/resources/test-files/2.0.2"))).getSortedInline (Comparator.comparing (File::getName)))
     {
       if (false)
         System.out.println (f.getName ());
@@ -68,7 +70,7 @@ public class MainAssignTestFilesToDocTypes
 
       System.out.println ("aMap.computeIfAbsent (OIOUBLValidation.VID_OIOUBL_" +
                           sBestMatch +
-                          ", k -> new CommonsArrayList<> ()).add (new ClassPathResource (\"/oioubl/2.0.2/" +
+                          ", k -> new CommonsArrayList<> ()).add (new ClassPathResource (sBasePath + \"" +
                           f.getName () +
                           "\"));");
     }
