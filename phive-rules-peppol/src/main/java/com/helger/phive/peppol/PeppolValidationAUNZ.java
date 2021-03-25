@@ -46,6 +46,8 @@ public final class PeppolValidationAUNZ
     return PeppolValidationAUNZ.class.getClassLoader ();
   }
 
+  private static final String BASE_PATH = "schematron/peppol-aunz/";
+
   // 1.0.3
   @Deprecated
   public static final VESID VID_OPENPEPPOL_BIS3_AUNZ_UBL_INVOICE_103 = new VESID ("eu.peppol.bis3.aunz.ubl", "invoice", "1.0.3");
@@ -61,13 +63,16 @@ public final class PeppolValidationAUNZ
                                                                                                    "1.0.3");
 
   @Deprecated
-  public static final IReadableResource BIS3_BILLING_AUNZ_PEPPOL_SELF_BILLING_103 = new ClassPathResource ("/aunz-peppol/1.0.3/xslt/AUNZ-PEPPOL-SB-validation.xslt",
+  public static final IReadableResource BIS3_BILLING_AUNZ_PEPPOL_SELF_BILLING_103 = new ClassPathResource (BASE_PATH +
+                                                                                                           "1.0.3/xslt/AUNZ-PEPPOL-SB-validation.xslt",
                                                                                                            _getCL ());
   @Deprecated
-  public static final IReadableResource BIS3_BILLING_AUNZ_PEPPOL_103 = new ClassPathResource ("/aunz-peppol/1.0.3/xslt/AUNZ-PEPPOL-validation.xslt",
+  public static final IReadableResource BIS3_BILLING_AUNZ_PEPPOL_103 = new ClassPathResource (BASE_PATH +
+                                                                                              "1.0.3/xslt/AUNZ-PEPPOL-validation.xslt",
                                                                                               _getCL ());
   @Deprecated
-  public static final IReadableResource BIS3_BILLING_AUNZ_UBL_103 = new ClassPathResource ("/aunz-peppol/1.0.3/xslt/AUNZ-UBL-validation.xslt",
+  public static final IReadableResource BIS3_BILLING_AUNZ_UBL_103 = new ClassPathResource (BASE_PATH +
+                                                                                           "1.0.3/xslt/AUNZ-UBL-validation.xslt",
                                                                                            _getCL ());
 
   // 1.0.4
@@ -80,11 +85,14 @@ public final class PeppolValidationAUNZ
                                                                                                    "creditnote-self-billing",
                                                                                                    "1.0.4");
 
-  public static final IReadableResource BIS3_BILLING_AUNZ_PEPPOL_SELF_BILLING_104 = new ClassPathResource ("/aunz-peppol/1.0.4/xslt/AUNZ-PEPPOL-SB-validation.xslt",
+  public static final IReadableResource BIS3_BILLING_AUNZ_PEPPOL_SELF_BILLING_104 = new ClassPathResource (BASE_PATH +
+                                                                                                           "1.0.4/xslt/AUNZ-PEPPOL-SB-validation.xslt",
                                                                                                            _getCL ());
-  public static final IReadableResource BIS3_BILLING_AUNZ_PEPPOL_104 = new ClassPathResource ("/aunz-peppol/1.0.4/xslt/AUNZ-PEPPOL-validation.xslt",
+  public static final IReadableResource BIS3_BILLING_AUNZ_PEPPOL_104 = new ClassPathResource (BASE_PATH +
+                                                                                              "1.0.4/xslt/AUNZ-PEPPOL-validation.xslt",
                                                                                               _getCL ());
-  public static final IReadableResource BIS3_BILLING_AUNZ_UBL_104 = new ClassPathResource ("/aunz-peppol/1.0.4/xslt/AUNZ-UBL-validation.xslt",
+  public static final IReadableResource BIS3_BILLING_AUNZ_UBL_104 = new ClassPathResource (BASE_PATH +
+                                                                                           "1.0.4/xslt/AUNZ-UBL-validation.xslt",
                                                                                            _getCL ());
 
   private PeppolValidationAUNZ ()
