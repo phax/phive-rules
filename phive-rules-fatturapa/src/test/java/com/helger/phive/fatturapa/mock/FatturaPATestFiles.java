@@ -27,14 +27,14 @@ import com.helger.commons.io.resource.IReadableResource;
 
 public enum FatturaPATestFiles
 {
-  V120 ("/examples/120/good/",
+  V120 ("/test-files/120/good/",
         new String [] { "IT01234567890_FPA01.xml",
                         "IT01234567890_FPA02.xml",
                         "IT01234567890_FPA03.xml",
                         "IT01234567890_FPR01.xml",
                         "IT01234567890_FPR02.xml",
                         "IT01234567890_FPR03.xml" }),
-  V121 ("/examples/121/good/",
+  V121 ("/test-files/121/good/",
         new String [] { "IT01234567890_FPA01.xml",
                         "IT01234567890_FPA02.xml",
                         "IT01234567890_FPA03.xml",
