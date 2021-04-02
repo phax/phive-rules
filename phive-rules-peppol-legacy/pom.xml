@@ -27,7 +27,7 @@
   <artifactId>phive-rules-peppol-legacy</artifactId>
   <packaging>bundle</packaging>
   <name>phive-rules-peppol-legacy</name>
-  <description>OpenPEPPOL llegacy validation rules for phive</description>
+  <description>OpenPEPPOL legacy validation rules for phive</description>
   <url>https://github.com/phax/phive-rules/phive-rules-peppol-legacy</url>
   <inceptionYear>2021</inceptionYear>
 
