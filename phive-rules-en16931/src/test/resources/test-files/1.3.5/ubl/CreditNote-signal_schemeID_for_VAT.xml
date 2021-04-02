@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Licensed under European Union Public Licence (EUPL) version 1.2.
+
+-->
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  -->
+<!--     PEPPOL BIS Billing 3.0 -  CREDIT NOTE                                  -->
+<!--     Reference - http://docs.peppol.eu/poacc/billing/3.0/                   -->
+<!--                                                                            -->
+<!--     Note - Remove schemeID for ClassifiedTaxCategory/ID & TaxCategory/ID   -->
+<!--                                                                            -->
+<!--     Revised with PEPPOL's Fall 2019 validation rules                       -->
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  -->
+
+<CreditNote 
+ xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" 
+ xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+ xmlns="urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2">
+
+	<cbc:CustomizationID>urn:cen.eu:en16931:2017#compliant#urn:fdc:peppol.eu:2017:poacc:billing:3.0</cbc:CustomizationID>
+	<cbc:ProfileID>urn:fdc:peppol.eu:2017:poacc:billing:01:1.0</cbc:ProfileID>
+	<cbc:ID>2018210</cbc:ID>
+	<cbc:IssueDate>2018-02-08</cbc:IssueDate>
+	<cbc:CreditNoteTypeCode>381</cbc:CreditNoteTypeCode>
+	<cbc:DocumentCurrencyCode>SEK</cbc:DocumentCurrencyCode>
+	<cbc:BuyerReference>Buyer reference</cbc:BuyerReference>
+
+	<cac:AccountingSupplierParty>
+		<cac:Party>
+			<cbc:EndpointID schemeID="0007">1234567890</cbc:EndpointID>
+			<cac:PostalAddress>
+				<cbc:StreetName>Main Street 1</cbc:StreetName>
+				<cbc:CityName>BigCity</cbc:CityName>
+				<cbc:PostalZone>11122</cbc:PostalZone>
+				<cac:Country>
+					<cbc:IdentificationCode>SE</cbc:IdentificationCode>
+				</cac:Country>
+			</cac:PostalAddress>
+			<cac:PartyTaxScheme>
+				<cbc:CompanyID>SE123456789001</cbc:CompanyID>
+				<cac:TaxScheme>
+					<cbc:ID>VAT</cbc:ID>
+				</cac:TaxScheme>
+			</cac:PartyTaxScheme>
+			<cac:PartyLegalEntity>
+				<cbc:RegistrationName>Emporum Inc.</cbc:RegistrationName>
+				<cbc:CompanyID schemeID="0007">1234567890</cbc:CompanyID>
+			</cac:PartyLegalEntity>
+		</cac:Party>
+	</cac:AccountingSupplierParty>
+
+	<cac:AccountingCustomerParty>
+		<cac:Party>
+			<cbc:EndpointID schemeID="0007">1234512345</cbc:EndpointID>
+			<cac:PostalAddress>
+				<cbc:AdditionalStreetName>P.O. Box 8</cbc:AdditionalStreetName>
+				<cbc:CityName>Motown</cbc:CityName>
+				<cbc:PostalZone>10203</cbc:PostalZone>
+				<cac:Country>
+					<cbc:IdentificationCode>SE</cbc:IdentificationCode>
+				</cac:Country>
+			</cac:PostalAddress>
+			<cac:PartyLegalEntity>
+				<cbc:RegistrationName>The Black Hole Ltd</cbc:RegistrationName>
+				<cbc:CompanyID schemeID="0007">1234512345</cbc:CompanyID>
+			</cac:PartyLegalEntity>
+		</cac:Party>
+	</cac:AccountingCustomerParty>
+
+	<cac:PaymentMeans>
+		<cbc:PaymentMeansCode name="Undefined">1</cbc:PaymentMeansCode>
+	</cac:PaymentMeans>
+	<cac:PaymentTerms>
+		<cbc:Note>30 dagar netto. Dröjsmålsränta:12 %</cbc:Note>
+	</cac:PaymentTerms>
+
+	<cac:AllowanceCharge> <!-- Allowance: -->
+		<cbc:ChargeIndicator>false</cbc:ChargeIndicator>
+		<cbc:AllowanceChargeReasonCode>95</cbc:AllowanceChargeReasonCode>
+		<cbc:AllowanceChargeReason>Discount</cbc:AllowanceChargeReason>
+		<cbc:MultiplierFactorNumeric>0</cbc:MultiplierFactorNumeric>
+		<cbc:Amount currencyID="SEK">0</cbc:Amount>
+		<cbc:BaseAmount currencyID="SEK">0</cbc:BaseAmount>
+		<cac:TaxCategory>
+			<cbc:ID>S</cbc:ID>
+			<cbc:Percent>25</cbc:Percent>
+			<cac:TaxScheme>
+				<cbc:ID>VAT</cbc:ID>
+			</cac:TaxScheme>
+		</cac:TaxCategory>
+	</cac:AllowanceCharge>
+	<cac:AllowanceCharge> <!-- Charge: -->
+		<cbc:ChargeIndicator>true</cbc:ChargeIndicator>
+		<cbc:AllowanceChargeReasonCode>WH</cbc:AllowanceChargeReasonCode>
+		<cbc:AllowanceChargeReason>Warehousing</cbc:AllowanceChargeReason>
+		<cbc:MultiplierFactorNumeric>0</cbc:MultiplierFactorNumeric>
+		<cbc:Amount currencyID="SEK">0</cbc:Amount>
+		<cbc:BaseAmount currencyID="SEK">0</cbc:BaseAmount>
+		<cac:TaxCategory>
+			<cbc:ID>S</cbc:ID>
+			<cbc:Percent>25</cbc:Percent>
+			<cac:TaxScheme>
+				<cbc:ID>VAT</cbc:ID>
+			</cac:TaxScheme>
+		</cac:TaxCategory>
+	</cac:AllowanceCharge>
+
+	<cac:TaxTotal>
+		<cbc:TaxAmount currencyID="SEK">0</cbc:TaxAmount>
+		<cac:TaxSubtotal>
+			<cbc:TaxableAmount currencyID="SEK">0</cbc:TaxableAmount>
+			<cbc:TaxAmount currencyID="SEK">0</cbc:TaxAmount>
+			<cac:TaxCategory>
+				<cbc:ID>S</cbc:ID>
+				<cbc:Percent>25</cbc:Percent>
+				<cac:TaxScheme>
+					<cbc:ID>VAT</cbc:ID>
+				</cac:TaxScheme>
+			</cac:TaxCategory>
+		</cac:TaxSubtotal>
+	</cac:TaxTotal>
+
+	<cac:LegalMonetaryTotal>
+		<cbc:LineExtensionAmount currencyID="SEK">0</cbc:LineExtensionAmount>
+		<cbc:TaxExclusiveAmount currencyID="SEK">0</cbc:TaxExclusiveAmount>
+		<cbc:TaxInclusiveAmount currencyID="SEK">0</cbc:TaxInclusiveAmount>
+		<cbc:AllowanceTotalAmount currencyID="SEK">0</cbc:AllowanceTotalAmount>
+		<cbc:ChargeTotalAmount currencyID="SEK">0</cbc:ChargeTotalAmount>
+		<cbc:PrepaidAmount currencyID="SEK">0</cbc:PrepaidAmount>
+		<cbc:PayableRoundingAmount currencyID="SEK">0</cbc:PayableRoundingAmount>
+		<cbc:PayableAmount currencyID="SEK">0</cbc:PayableAmount>
+	</cac:LegalMonetaryTotal>
+
+	<cac:CreditNoteLine>
+		<cbc:ID>1</cbc:ID>
+		<cbc:CreditedQuantity unitCode="EA">0</cbc:CreditedQuantity>
+		<cbc:LineExtensionAmount currencyID="SEK">0</cbc:LineExtensionAmount>
+		<cac:Item>
+			<cbc:Name>Universal product</cbc:Name>
+			<cac:ClassifiedTaxCategory>
+				<cbc:ID>S</cbc:ID>
+				<cbc:Percent>25</cbc:Percent>
+				<cac:TaxScheme>
+					<cbc:ID>VAT</cbc:ID>
+				</cac:TaxScheme>
+			</cac:ClassifiedTaxCategory>
+		</cac:Item>
+		<cac:Price>
+			<cbc:PriceAmount currencyID="SEK">0</cbc:PriceAmount>
+		</cac:Price>
+	</cac:CreditNoteLine>
+
+</CreditNote>
