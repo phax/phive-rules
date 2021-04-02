@@ -162,6 +162,8 @@ Alternate usage as a Maven BOM:
   
 # News and noteworthy
 
+* v2.1.1 - work in progress
+    * Added support for EN 16931 1.3.5 format (deprecated version 1.3.4)
 * v2.1.0 - 2021-03-22
     * Updated to ph-commons 10
     * Dropped support for `EN 16931 EDIFACT/ISO 20625 1.0.0`
