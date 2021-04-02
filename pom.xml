@@ -198,6 +198,11 @@
       </dependency>
       <dependency>
         <groupId>com.helger.phive.rules</groupId>
+        <artifactId>phive-rules-peppol-italy</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.helger.phive.rules</groupId>
         <artifactId>phive-rules-simplerinvoicing</artifactId>
         <version>${project.version}</version>
       </dependency>
@@ -265,6 +270,7 @@
     <module>phive-rules-oioubl</module>
     <module>phive-rules-peppol-legacy</module>
     <module>phive-rules-peppol</module>
+    <module>phive-rules-peppol-italy</module>
     <module>phive-rules-simplerinvoicing</module>
     <module>phive-rules-svefaktura</module>
     <module>phive-rules-teapps</module>

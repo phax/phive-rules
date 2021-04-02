@@ -18,6 +18,7 @@ This project is divided into sub-projects each keeping tracking of one document 
   * phive-rules-oioubl - Validation rules for Danish OIOUBL
   * phive-rules-peppol - the Peppol specific rules - always the latest two rule sets
   * phive-rules-peppol-legacy - older Peppol specific rules that are out of date (since v2.0.5)
+  * phive-rules-peppol-italy - Peppol Italy specific rules (since v2.1.1)
   * phive-rules-simplerinvoicing - Dutch SimplerInvoicing 1.x support from https://github.com/SimplerInvoicing/validation
   * phive-rules-svefaktura - Validation rules for Svefaktura (since v1.0.6)
   * phive-rules-teapps - Validation rules for Tieto TEAPPSXML
@@ -113,6 +114,12 @@ Add the following to your `pom.xml` to use this artifact, replacing `x.y.z` with
 
 <dependency>
   <groupId>com.helger.phive.rules</groupId>
+  <artifactId>phive-rules-peppol-italy</artifactId>
+  <version>x.y.z</version>
+</dependency>
+
+<dependency>
+  <groupId>com.helger.phive.rules</groupId>
   <artifactId>phive-rules-simplerinvoicing</artifactId>
   <version>x.y.z</version>
 </dependency>
@@ -162,8 +169,9 @@ Alternate usage as a Maven BOM:
   
 # News and noteworthy
 
-* v2.1.1 - work in progress
+* v2.1.1 - 2021-04-02
     * Added support for EN 16931 1.3.5 format (deprecated version 1.3.4)
+    * Added new submodule `phive-rules-peppol-italy` with the AGID Order, Despatch Advice and Order Response
 * v2.1.0 - 2021-03-22
     * Updated to ph-commons 10
     * Dropped support for `EN 16931 EDIFACT/ISO 20625 1.0.0`
