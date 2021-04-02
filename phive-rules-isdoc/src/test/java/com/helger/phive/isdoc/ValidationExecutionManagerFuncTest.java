@@ -25,6 +25,7 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.helger.jaxb.JAXBContextCache;
 import com.helger.phive.api.execute.ValidationExecutionManager;
 import com.helger.phive.api.executorset.IValidationExecutorSet;
 import com.helger.phive.api.result.ValidationResultList;
@@ -45,6 +46,8 @@ public final class ValidationExecutionManagerFuncTest
   @Test
   public void testApplyCompleteValidation ()
   {
+    if (false)
+      JAXBContextCache.setSilentMode (false);
     for (final MockFile aTestFile : CTestFiles.getAllTestFiles ())
     {
       final IValidationExecutorSet <IValidationSourceXML> aExecutors = CTestFiles.VES_REGISTRY.getOfID (aTestFile.getVESID ());

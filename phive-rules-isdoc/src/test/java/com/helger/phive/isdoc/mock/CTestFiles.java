@@ -23,7 +23,7 @@ import com.helger.commons.ValueEnforcer;
 import com.helger.commons.annotation.ReturnsMutableCopy;
 import com.helger.commons.collection.impl.CommonsArrayList;
 import com.helger.commons.collection.impl.ICommonsList;
-import com.helger.commons.io.resource.ClassPathResource;
+import com.helger.commons.io.resource.FileSystemResource;
 import com.helger.commons.io.resource.IReadableResource;
 import com.helger.phive.api.executorset.VESID;
 import com.helger.phive.api.executorset.ValidationExecutorSetRegistry;
@@ -61,10 +61,11 @@ public final class CTestFiles
   {
     ValueEnforcer.notNull (aVESID, "VESID");
 
+    final String sBasePath = "src/test/resources/test-files/";
     if (aVESID.equals (ISDOCValidation.VID_ISDOC_601))
     {
       return new CommonsArrayList <> (new String [] { "doklad.isdoc", "priklad2-egov.isdoc", },
-                                      x -> new ClassPathResource ("/test-files/6.0.1/" + x));
+                                      x -> new FileSystemResource (sBasePath + "6.0.1/" + x));
     }
 
     throw new IllegalArgumentException ("Invalid VESID: " + aVESID);

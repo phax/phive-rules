@@ -55,6 +55,11 @@
 
   <dependencies>
     <dependency>
+      <groupId>com.helger</groupId>
+      <artifactId>ph-jaxb-pom</artifactId>
+      <type>pom</type>
+    </dependency>
+    <dependency>
       <groupId>com.helger.commons</groupId>
       <artifactId>ph-commons</artifactId>
     </dependency>
