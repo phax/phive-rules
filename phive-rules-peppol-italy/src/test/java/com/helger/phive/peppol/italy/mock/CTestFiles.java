@@ -117,7 +117,7 @@ public final class CTestFiles
     if (aVESID.equals (PeppolItalyValidation2_2_9.VID_ORDER_RESPONSE))
     {
       final String sBase = sTestFiles + "order-response/";
-      return new CommonsArrayList <> (new String [] {}, x -> new FileSystemResource (sBase + x));
+      return new CommonsArrayList <> (new String [] { "ph1.xml" }, x -> new FileSystemResource (sBase + x));
     }
 
     throw new IllegalArgumentException ("Invalid VESID: " + aVESID);
