@@ -172,6 +172,8 @@ Alternate usage as a Maven BOM:
   
 # News and noteworthy
 
+* v2.1.2 - work in progress
+    * Added support for Peppol Spring 2021 rules (Release Candidate)
 * v2.1.1 - 2021-04-02
     * Added support for EN 16931 1.3.5 format (deprecated version 1.3.4)
     * Added new submodule `phive-rules-peppol-italy` with the AGID Order, Despatch Advice and Order Response
