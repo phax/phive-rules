@@ -53,9 +53,6 @@ public final class CIUS_PTValidation
     return CIUS_PTValidation.class.getClassLoader ();
   }
 
-  final boolean bNotDeprecated = false;
-  final boolean bDeprecated = true;
-
   /**
    * Register all standard CIUS-PT validation execution sets to the provided
    * registry.
