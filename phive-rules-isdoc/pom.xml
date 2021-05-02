@@ -55,9 +55,8 @@
 
   <dependencies>
     <dependency>
-      <groupId>com.helger</groupId>
-      <artifactId>ph-jaxb-pom</artifactId>
-      <type>pom</type>
+      <groupId>jakarta.xml.bind</groupId>
+      <artifactId>jakarta.xml.bind-api</artifactId>
     </dependency>
     <dependency>
       <groupId>com.helger.commons</groupId>
