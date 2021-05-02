@@ -69,8 +69,8 @@
       <scope>test</scope>
     </dependency>
     <dependency>
-      <groupId>com.helger</groupId>
-      <artifactId>ph-poi</artifactId>
+      <groupId>com.sun.xml.bind</groupId>
+      <artifactId>jaxb-impl</artifactId>
       <scope>test</scope>
     </dependency>
   </dependencies>

@@ -72,11 +72,6 @@
     </dependency>
     
     <dependency>
-      <groupId>com.helger</groupId>
-      <artifactId>ph-genericode</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
       <groupId>com.helger.peppol</groupId>
       <artifactId>peppol-testfiles</artifactId>
       <scope>test</scope>
@@ -87,8 +82,8 @@
       <scope>test</scope>
     </dependency>
     <dependency>
-      <groupId>com.helger</groupId>
-      <artifactId>ph-poi</artifactId>
+      <groupId>com.sun.xml.bind</groupId>
+      <artifactId>jaxb-impl</artifactId>
       <scope>test</scope>
     </dependency>
   </dependencies>
