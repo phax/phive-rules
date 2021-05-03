@@ -37,7 +37,6 @@ import com.helger.xml.namespace.MapBasedNamespaceContext;
  * @author Philip Helger
  */
 @Immutable
-@SuppressWarnings ("deprecation")
 public final class PeppolValidation
 {
   /**
@@ -50,13 +49,13 @@ public final class PeppolValidation
   public static String getVersionToUse ()
   {
     final LocalDate aNow = PDTFactory.getCurrentLocalDate ();
-    if (aNow.isBefore (PeppolValidation3_11_1.VALID_PER))
+    if (aNow.isBefore (PeppolValidation3_12_0.VALID_PER))
     {
       // Previous version
-      return PeppolValidation3_11_0.VERSION_STR;
+      return PeppolValidation3_11_1.VERSION_STR;
     }
     // Latest version
-    return PeppolValidation3_11_1.VERSION_STR;
+    return PeppolValidation3_12_0.VERSION_STR;
   }
 
   private PeppolValidation ()
@@ -74,7 +73,6 @@ public final class PeppolValidation
     // For better error messages
     SchematronNamespaceBeautifier.addMappings (UBL21NamespaceContext.getInstance ());
 
-    PeppolValidation3_11_0.init (aRegistry);
     PeppolValidation3_11_1.init (aRegistry);
     PeppolValidation3_12_0.init (aRegistry);
     PeppolValidationAUNZ.init (aRegistry);

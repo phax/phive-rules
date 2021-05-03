@@ -174,6 +174,7 @@ Alternate usage as a Maven BOM:
 
 * v2.1.3 - 2021-05-03
     * Added support for Peppol Spring 2021 rules (final version)
+    * Moved Peppol rules 3.11.0 from `phive-rules-peppol` to `phive-rules-peppol-legacy`
 * v2.1.2 - 2021-05-02
     * Updated to ph-commons 10.1
     * Added support for Peppol Spring 2021 rules (Release Candidate)
