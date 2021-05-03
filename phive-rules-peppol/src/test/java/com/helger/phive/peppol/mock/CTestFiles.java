@@ -239,17 +239,13 @@ public final class CTestFiles
                                         new FileSystemResource (sBase2 + "T111-uc003-Invoice is accepted.xml"),
                                         new FileSystemResource (sBase2 + "T111-uc004a-Invoice is rejected.xml"),
                                         new FileSystemResource (sBase2 + "T111-uc004b-Rejected requesting reissue.xml"),
-                                        new FileSystemResource (sBase2 +
-                                                                "T111-uc004c-Rejected requesting replacement.xml"),
-                                        new FileSystemResource (sBase2 +
-                                                                "T111-uc005-Invoice is conditionally accepted.xml"),
-                                        new FileSystemResource (sBase2 +
-                                                                "T111-uc006a-Under query missing information.xml"),
+                                        new FileSystemResource (sBase2 + "T111-uc004c-Rejected requesting replacement.xml"),
+                                        new FileSystemResource (sBase2 + "T111-uc005-Invoice is conditionally accepted.xml"),
+                                        new FileSystemResource (sBase2 + "T111-uc006a-Under query missing information.xml"),
                                         new FileSystemResource (sBase2 + "T111-uc006b-Missing PO.xml"),
                                         new FileSystemResource (sBase2 + "T111-uc006c-Wrong detail partial credit.xml"),
                                         new FileSystemResource (sBase2 + "T111-uc007-Payment has been initiated.xml"),
-                                        new FileSystemResource (sBase2 +
-                                                                "T111-uc008-Invoice is accepted by third party.xml"));
+                                        new FileSystemResource (sBase2 + "T111-uc008-Invoice is accepted by third party.xml"));
     }
 
     // 3.11.1
@@ -292,22 +288,18 @@ public final class CTestFiles
                                         new FileSystemResource (sBase2 + "T111-uc003-Invoice is accepted.xml"),
                                         new FileSystemResource (sBase2 + "T111-uc004a-Invoice is rejected.xml"),
                                         new FileSystemResource (sBase2 + "T111-uc004b-Rejected requesting reissue.xml"),
-                                        new FileSystemResource (sBase2 +
-                                                                "T111-uc004c-Rejected requesting replacement.xml"),
-                                        new FileSystemResource (sBase2 +
-                                                                "T111-uc005-Invoice is conditionally accepted.xml"),
-                                        new FileSystemResource (sBase2 +
-                                                                "T111-uc006a-Under query missing information.xml"),
+                                        new FileSystemResource (sBase2 + "T111-uc004c-Rejected requesting replacement.xml"),
+                                        new FileSystemResource (sBase2 + "T111-uc005-Invoice is conditionally accepted.xml"),
+                                        new FileSystemResource (sBase2 + "T111-uc006a-Under query missing information.xml"),
                                         new FileSystemResource (sBase2 + "T111-uc006b-Missing PO.xml"),
                                         new FileSystemResource (sBase2 + "T111-uc006c-Wrong detail partial credit.xml"),
                                         new FileSystemResource (sBase2 + "T111-uc007-Payment has been initiated.xml"),
-                                        new FileSystemResource (sBase2 +
-                                                                "T111-uc008-Invoice is accepted by third party.xml"));
+                                        new FileSystemResource (sBase2 + "T111-uc008-Invoice is accepted by third party.xml"));
     }
 
     // 3.12.0
     {
-      final String sBase = sTestFiles + "openpeppol/3.12.0.rc1/";
+      final String sBase = sTestFiles + "openpeppol/3.12.0/";
       // https://github.com/OpenPEPPOL/peppol-bis-invoice-3/tree/master/rules/examples
       if (aVESID.equals (PeppolValidation3_12_0.VID_OPENPEPPOL_INVOICE_V3))
         return new CommonsArrayList <> (new FileSystemResource (sBase + "billing/Allowance-example.xml"),
@@ -345,17 +337,13 @@ public final class CTestFiles
                                         new FileSystemResource (sBase2 + "T111-uc003-Invoice is accepted.xml"),
                                         new FileSystemResource (sBase2 + "T111-uc004a-Invoice is rejected.xml"),
                                         new FileSystemResource (sBase2 + "T111-uc004b-Rejected requesting reissue.xml"),
-                                        new FileSystemResource (sBase2 +
-                                                                "T111-uc004c-Rejected requesting replacement.xml"),
-                                        new FileSystemResource (sBase2 +
-                                                                "T111-uc005-Invoice is conditionally accepted.xml"),
-                                        new FileSystemResource (sBase2 +
-                                                                "T111-uc006a-Under query missing information.xml"),
+                                        new FileSystemResource (sBase2 + "T111-uc004c-Rejected requesting replacement.xml"),
+                                        new FileSystemResource (sBase2 + "T111-uc005-Invoice is conditionally accepted.xml"),
+                                        new FileSystemResource (sBase2 + "T111-uc006a-Under query missing information.xml"),
                                         new FileSystemResource (sBase2 + "T111-uc006b-Missing PO.xml"),
                                         new FileSystemResource (sBase2 + "T111-uc006c-Wrong detail partial credit.xml"),
                                         new FileSystemResource (sBase2 + "T111-uc007-Payment has been initiated.xml"),
-                                        new FileSystemResource (sBase2 +
-                                                                "T111-uc008-Invoice is accepted by third party.xml"));
+                                        new FileSystemResource (sBase2 + "T111-uc008-Invoice is accepted by third party.xml"));
     }
 
     throw new IllegalArgumentException ("Invalid VESID: " + aVESID);

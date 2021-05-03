@@ -172,6 +172,8 @@ Alternate usage as a Maven BOM:
   
 # News and noteworthy
 
+* v2.1.3 - 2021-05-03
+    * Added support for Peppol Spring 2021 rules (final version)
 * v2.1.2 - 2021-05-02
     * Updated to ph-commons 10.1
     * Added support for Peppol Spring 2021 rules (Release Candidate)

@@ -37,8 +37,9 @@ import com.helger.ubl21.EUBL21DocumentType;
 import com.helger.ubl21.UBL21NamespaceContext;
 
 /**
- * OpenPEPPOL validation artefacts release 3.11.1. Fall 2020 release hotfix
- * 2020-11-12. Valid per November 16th, 2020
+ * OpenPEPPOL validation artefacts release 3.11.1.<br>
+ * Fall 2020 release hotfix 2020-11-12.<br>
+ * Valid per November 16th, 2020
  *
  * @author Philip Helger
  */
