@@ -49,7 +49,7 @@ public final class UBLValidation
   public static final String VERSION_20 = "2.0";
   public static final String VERSION_21 = "2.1";
   public static final String VERSION_22 = "2.2";
-  public static final String VERSION_23 = "2.3-csd04";
+  public static final String VERSION_23 = "2.3-cs01";
 
   // UBL 2.0
   public static final VESID VID_UBL_20_APPLICATIONRESPONSE = new VESID (GROUP_ID, "applicationresponse", VERSION_20);
