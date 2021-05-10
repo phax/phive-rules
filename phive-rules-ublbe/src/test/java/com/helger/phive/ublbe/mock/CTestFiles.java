@@ -67,7 +67,9 @@ public final class CTestFiles
                                             UBLBEValidation.VID_UBL_BE_INVOICE_125,
                                             UBLBEValidation.VID_UBL_BE_CREDIT_NOTE_125,
                                             UBLBEValidation.VID_UBL_BE_INVOICE_126,
-                                            UBLBEValidation.VID_UBL_BE_CREDIT_NOTE_126 })
+                                            UBLBEValidation.VID_UBL_BE_CREDIT_NOTE_126,
+                                            UBLBEValidation.VID_UBL_BE_INVOICE_127,
+                                            UBLBEValidation.VID_UBL_BE_CREDIT_NOTE_127 })
       for (final IReadableResource aRes : getAllMatchingTestFiles (aESID))
         ret.add (MockFile.createGoodCase (aRes, aESID));
 
@@ -130,8 +132,7 @@ public final class CTestFiles
       aMap.put (UBLBEValidation.VID_UBL_BE_INVOICE_110,
                 new CommonsArrayList <> (new ClassPathResource (sPath +
                                                                 "UBLBE_BE0000000196_V01-15000001 - DocumentStatusCode Converted.xml"),
-                                         new ClassPathResource (sPath +
-                                                                "UBLBE_BE0000000196_V01-15000001 - Temporary.xml"),
+                                         new ClassPathResource (sPath + "UBLBE_BE0000000196_V01-15000001 - Temporary.xml"),
                                          new ClassPathResource (sPath + "UBLBE_BE0000000196_V01-15000001 Full.xml"),
                                          new ClassPathResource (sPath + "UBLBE_BE0000000196_V01-15000001.xml"),
                                          new ClassPathResource (sPath + "UBLBE_BE0000000196_V01-15000003.xml"),
@@ -168,8 +169,7 @@ public final class CTestFiles
       aMap.put (UBLBEValidation.VID_UBL_BE_INVOICE_120,
                 new CommonsArrayList <> (new ClassPathResource (sPath +
                                                                 "UBLBE_BE0000000196_V01-15000001 - DocumentStatusCode Converted.xml"),
-                                         new ClassPathResource (sPath +
-                                                                "UBLBE_BE0000000196_V01-15000001 - Temporary.xml"),
+                                         new ClassPathResource (sPath + "UBLBE_BE0000000196_V01-15000001 - Temporary.xml"),
                                          new ClassPathResource (sPath + "UBLBE_BE0000000196_V01-15000001 Full.xml"),
                                          new ClassPathResource (sPath + "UBLBE_BE0000000196_V01-15000001.xml"),
                                          new ClassPathResource (sPath + "UBLBE_BE0000000196_V01-15000003.xml"),
@@ -321,13 +321,51 @@ public final class CTestFiles
                                          new ClassPathResource (sPath + "UBLBE_BE0000000196_V01-15000024.xml")));
     }
 
+    // 1.2.7
+    {
+      final String sPath = sPathPrefix + "en16931/v1.2.7/";
+      aMap.put (UBLBEValidation.VID_UBL_BE_INVOICE_127,
+                new CommonsArrayList <> (new ClassPathResource (sPath +
+                                                                "UBLBE_BE0000000196_V01-15000001 - DocumentStatusCode Converted.xml"),
+                                         new ClassPathResource (sPath + "UBLBE_BE0000000196_V01-15000001 Full.xml"),
+                                         new ClassPathResource (sPath + "UBLBE_BE0000000196_V01-15000001.xml"),
+                                         new ClassPathResource (sPath + "UBLBE_BE0000000196_V01-15000003.xml"),
+                                         new ClassPathResource (sPath + "UBLBE_BE0000000196_V01-15000004.xml"),
+                                         new ClassPathResource (sPath + "UBLBE_BE0000000196_V01-15000005.xml"),
+                                         new ClassPathResource (sPath + "UBLBE_BE0000000196_V01-15000006.xml"),
+                                         new ClassPathResource (sPath + "UBLBE_BE0000000196_V01-15000008.xml"),
+                                         new ClassPathResource (sPath + "UBLBE_BE0000000196_V01-15000009.xml"),
+                                         new ClassPathResource (sPath + "UBLBE_BE0000000196_V01-15000010.xml"),
+                                         new ClassPathResource (sPath + "UBLBE_BE0000000196_V01-15000012.xml"),
+                                         new ClassPathResource (sPath + "UBLBE_BE0000000196_V01-15000013.xml"),
+                                         new ClassPathResource (sPath + "UBLBE_BE0000000196_V01-15000016.xml"),
+                                         new ClassPathResource (sPath + "UBLBE_BE0000000196_V01-15000017.xml"),
+                                         new ClassPathResource (sPath + "UBLBE_BE0000000196_V01-15000018.xml"),
+                                         new ClassPathResource (sPath + "UBLBE_BE0000000196_V01-15000019.xml"),
+                                         new ClassPathResource (sPath + "UBLBE_BE0000000196_V01-15000020.xml"),
+                                         new ClassPathResource (sPath + "UBLBE_BE0000000196_V01-15000021.xml"),
+                                         new ClassPathResource (sPath + "UBLBE_BE0000000196_V01-15000022.xml"),
+                                         new ClassPathResource (sPath + "UBLBE_BE0000000196_V01-15000023.xml"),
+                                         new ClassPathResource (sPath + "UBLBE_BE0000000196_V01-15000025.xml"),
+                                         new ClassPathResource (sPath + "UBLBE_BE0000000196_V01-15000026.xml"),
+                                         new ClassPathResource (sPath + "UBLBE_BE0000000196_V01-15000027.xml"),
+                                         new ClassPathResource (sPath + "UBLBE_BE0000000196_V01-15000028.xml"),
+                                         new ClassPathResource (sPath + "UBLBE_BE0000000196_V01-15000029.xml"),
+                                         new ClassPathResource (sPath + "UBLBE_BE0000000196_V01-15000030.xml"),
+                                         new ClassPathResource (sPath + "UBLBE_BE0000000196_V01-15000031.xml"),
+                                         new ClassPathResource (sPath + "UBLBE_BE0000000196_V01-15000032.xml")));
+
+      aMap.put (UBLBEValidation.VID_UBL_BE_CREDIT_NOTE_127,
+                new CommonsArrayList <> (new ClassPathResource (sPath + "UBLBE_BE0000000196_V01-15000002.xml"),
+                                         new ClassPathResource (sPath + "UBLBE_BE0000000196_V01-15000024.xml")));
+    }
+
     final ICommonsList <IReadableResource> ret = aMap.get (aVESID);
     if (ret != null)
       return ret;
 
     // TODO work around
-    if (aVESID.equals (UBLBEValidation.VID_UBL_BE_INVOICE_110) ||
-        aVESID.equals (UBLBEValidation.VID_UBL_BE_CREDIT_NOTE_110))
+    if (aVESID.equals (UBLBEValidation.VID_UBL_BE_INVOICE_110) || aVESID.equals (UBLBEValidation.VID_UBL_BE_CREDIT_NOTE_110))
       return new CommonsArrayList <> ();
 
     throw new IllegalArgumentException ("Invalid VESID: " + aVESID);
