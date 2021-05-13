@@ -22,7 +22,7 @@
   <parent>
     <groupId>com.helger.phive.rules</groupId>
     <artifactId>phive-rules-parent-pom</artifactId>
-    <version>2.1.4-SNAPSHOT</version>
+    <version>2.1.5-SNAPSHOT</version>
   </parent>
   <artifactId>phive-rules-ublbe</artifactId>
   <packaging>bundle</packaging>
@@ -108,9 +108,9 @@
             </goals>
             <id>ublbe</id>
             <configuration>
-              <schematronDirectory>${basedir}/src/test/resources/rule-source/en16931/v1.2.6</schematronDirectory>
+              <schematronDirectory>${basedir}/src/test/resources/rule-source/en16931/v1.2.7</schematronDirectory>
               <schematronPattern>*.sch</schematronPattern>
-              <xsltDirectory>${basedir}/src/main/resources/ublbe/en16931/v1.2.6</xsltDirectory>
+              <xsltDirectory>${basedir}/src/main/resources/schematron/ublbe/en16931/v1.2.7</xsltDirectory>
             </configuration>
           </execution>
        -->
