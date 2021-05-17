@@ -172,6 +172,8 @@ Alternate usage as a Maven BOM:
   
 # News and noteworthy
 
+* v2.1.5 - work in progress
+    * Deprecated Peppol rules 3.11.1
 * v2.1.4 - 2021-05-10
     * Added support for UBL.BE 1.2.7, deprecated version 1.2.6
 * v2.1.3 - 2021-05-03
