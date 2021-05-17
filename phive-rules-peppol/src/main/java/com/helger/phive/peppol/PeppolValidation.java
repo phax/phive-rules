@@ -37,6 +37,7 @@ import com.helger.xml.namespace.MapBasedNamespaceContext;
  * @author Philip Helger
  */
 @Immutable
+@SuppressWarnings ("deprecation")
 public final class PeppolValidation
 {
   /**
