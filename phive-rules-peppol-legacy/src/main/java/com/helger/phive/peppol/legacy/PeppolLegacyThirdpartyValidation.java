@@ -41,10 +41,10 @@ public class PeppolLegacyThirdpartyValidation
   private static final String BASE_PATH = "schematron/peppol-thirdparty/";
 
   // Third-party
-  public static final VESID VID_OPENPEPPOL_T10_V2_5_AT = new VESID ("eu.peppol.bis2", "t10", "6", "at");
-  public static final VESID VID_OPENPEPPOL_T10_V2_7_AT_GOV = new VESID ("eu.peppol.bis2", "t10", "8", "at-gov");
-  public static final VESID VID_OPENPEPPOL_T14_V2_5_AT = new VESID ("eu.peppol.bis2", "t14", "6", "at");
-  public static final VESID VID_OPENPEPPOL_T14_V2_7_AT_GOV = new VESID ("eu.peppol.bis2", "t14", "8", "at-gov");
+  public static final VESID VID_OPENPEPPOL_T10_AT_NAT = new VESID ("eu.peppol.bis2", "t10", "6", "at");
+  public static final VESID VID_OPENPEPPOL_T10_AT_GOV = new VESID ("eu.peppol.bis2", "t10", "8", "at-gov");
+  public static final VESID VID_OPENPEPPOL_T14_AT_NAT = new VESID ("eu.peppol.bis2", "t14", "6", "at");
+  public static final VESID VID_OPENPEPPOL_T14_AT_GOV = new VESID ("eu.peppol.bis2", "t14", "8", "at-gov");
 
   public static final ClassPathResource INVOICE_AT_NAT = new ClassPathResource (BASE_PATH +
                                                                                 "atnat-invoice/atnat-invoice-ubl.xslt",
@@ -83,7 +83,7 @@ public class PeppolLegacyThirdpartyValidation
     final boolean bNotDeprecated = false;
     // Invoice
     final IValidationExecutorSet <IValidationSourceXML> aVESInvoiceAT = ValidationExecutorSet.createDerived (aVESInvoice,
-                                                                                                             VID_OPENPEPPOL_T10_V2_5_AT,
+                                                                                                             VID_OPENPEPPOL_T10_AT_NAT,
                                                                                                              "OpenPEPPOL Invoice (Austria)",
                                                                                                              bNotDeprecated,
                                                                                                              ValidationExecutorSchematron.createXSLT (INVOICE_AT_NAT,
@@ -91,7 +91,7 @@ public class PeppolLegacyThirdpartyValidation
                                                                                                                                                       PeppolLegacyValidation.createUBLNSContext (EUBL21DocumentType.INVOICE.getNamespaceURI ())));
     aRegistry.registerValidationExecutorSet (aVESInvoiceAT);
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.createDerived (aVESInvoiceAT,
-                                                                                  VID_OPENPEPPOL_T10_V2_7_AT_GOV,
+                                                                                  VID_OPENPEPPOL_T10_AT_GOV,
                                                                                   "OpenPEPPOL Invoice (Austrian Government)",
                                                                                   bNotDeprecated,
                                                                                   ValidationExecutorSchematron.createXSLT (INVOICE_AT_GOV,
@@ -100,7 +100,7 @@ public class PeppolLegacyThirdpartyValidation
 
     // CreditNote
     final IValidationExecutorSet <IValidationSourceXML> aVESCreditNoteAT = ValidationExecutorSet.createDerived (aVESCreditNote,
-                                                                                                                VID_OPENPEPPOL_T14_V2_5_AT,
+                                                                                                                VID_OPENPEPPOL_T14_AT_NAT,
                                                                                                                 "OpenPEPPOL Credit Note (Austria)",
                                                                                                                 bNotDeprecated,
                                                                                                                 ValidationExecutorSchematron.createXSLT (CREDIT_NOTE_AT_NAT,
@@ -108,7 +108,7 @@ public class PeppolLegacyThirdpartyValidation
                                                                                                                                                          PeppolLegacyValidation.createUBLNSContext (EUBL21DocumentType.CREDIT_NOTE.getNamespaceURI ())));
     aRegistry.registerValidationExecutorSet (aVESCreditNoteAT);
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.createDerived (aVESCreditNoteAT,
-                                                                                  VID_OPENPEPPOL_T14_V2_7_AT_GOV,
+                                                                                  VID_OPENPEPPOL_T14_AT_GOV,
                                                                                   "OpenPEPPOL Credit Note (Austrian Government)",
                                                                                   bNotDeprecated,
                                                                                   ValidationExecutorSchematron.createXSLT (CREDIT_NOTE_AT_GOV,
