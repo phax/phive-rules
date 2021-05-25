@@ -245,7 +245,8 @@ public final class CTestFiles
                           if (aVESID.equals (XRechnungValidation.VID_XRECHNUNG_UBL_INVOICE_200))
                           {
                             final String sPrefix = "/test-files/2.0.0/ubl/";
-                            for (final String s : new String [] { "01.01a-INVOICE_ubl.xml",
+                            for (final String s : new String [] { "00.04_all_fields_ubl.xml",
+                                                                  "01.01a-INVOICE_ubl.xml",
                                                                   "01.02a-INVOICE_ubl.xml",
                                                                   "01.03a-INVOICE_ubl.xml",
                                                                   "01.04a-INVOICE_ubl.xml",
