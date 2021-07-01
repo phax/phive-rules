@@ -135,7 +135,7 @@ Add the following to your `pom.xml` to use this artifact, replacing `x.y.z` with
 
 <dependency>
   <groupId>com.helger.phive.rules</groupId>
-  <artifactId7>phive-rules-teapps</artifactId>
+  <artifactId>phive-rules-teapps</artifactId>
   <version>x.y.z</version>
 </dependency>
 
@@ -174,6 +174,7 @@ Alternate usage as a Maven BOM:
 
 * v2.1.5 - work in progress
     * Deprecated Peppol rules 3.11.1
+    * Added support for EN 16931 1.3.6 format (deprecated version 1.3.5)
 * v2.1.4 - 2021-05-10
     * Added support for UBL.BE 1.2.7, deprecated version 1.2.6
 * v2.1.3 - 2021-05-03
