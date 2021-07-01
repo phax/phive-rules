@@ -76,23 +76,50 @@ public final class PeppolValidationAUNZ
                                                                                            _getCL ());
 
   // 1.0.4
+  @Deprecated
   public static final VESID VID_OPENPEPPOL_BIS3_AUNZ_UBL_INVOICE_104 = new VESID ("eu.peppol.bis3.aunz.ubl", "invoice", "1.0.4");
+  @Deprecated
   public static final VESID VID_OPENPEPPOL_BIS3_AUNZ_UBL_INVOICE_SELF_BILLING_104 = new VESID ("eu.peppol.bis3.aunz.ubl",
                                                                                                "invoice-self-billing",
                                                                                                "1.0.4");
+  @Deprecated
   public static final VESID VID_OPENPEPPOL_BIS3_AUNZ_UBL_CREDIT_NOTE_104 = new VESID ("eu.peppol.bis3.aunz.ubl", "creditnote", "1.0.4");
+  @Deprecated
   public static final VESID VID_OPENPEPPOL_BIS3_AUNZ_UBL_CREDIT_NOTE_SELF_BILLING_104 = new VESID ("eu.peppol.bis3.aunz.ubl",
                                                                                                    "creditnote-self-billing",
                                                                                                    "1.0.4");
 
+  @Deprecated
   public static final IReadableResource BIS3_BILLING_AUNZ_PEPPOL_SELF_BILLING_104 = new ClassPathResource (BASE_PATH +
                                                                                                            "1.0.4/xslt/AUNZ-PEPPOL-SB-validation.xslt",
                                                                                                            _getCL ());
+  @Deprecated
   public static final IReadableResource BIS3_BILLING_AUNZ_PEPPOL_104 = new ClassPathResource (BASE_PATH +
                                                                                               "1.0.4/xslt/AUNZ-PEPPOL-validation.xslt",
                                                                                               _getCL ());
+  @Deprecated
   public static final IReadableResource BIS3_BILLING_AUNZ_UBL_104 = new ClassPathResource (BASE_PATH +
                                                                                            "1.0.4/xslt/AUNZ-UBL-validation.xslt",
+                                                                                           _getCL ());
+
+  // 1.0.5
+  public static final VESID VID_OPENPEPPOL_BIS3_AUNZ_UBL_INVOICE_105 = new VESID ("eu.peppol.bis3.aunz.ubl", "invoice", "1.0.5");
+  public static final VESID VID_OPENPEPPOL_BIS3_AUNZ_UBL_INVOICE_SELF_BILLING_105 = new VESID ("eu.peppol.bis3.aunz.ubl",
+                                                                                               "invoice-self-billing",
+                                                                                               "1.0.5");
+  public static final VESID VID_OPENPEPPOL_BIS3_AUNZ_UBL_CREDIT_NOTE_105 = new VESID ("eu.peppol.bis3.aunz.ubl", "creditnote", "1.0.5");
+  public static final VESID VID_OPENPEPPOL_BIS3_AUNZ_UBL_CREDIT_NOTE_SELF_BILLING_105 = new VESID ("eu.peppol.bis3.aunz.ubl",
+                                                                                                   "creditnote-self-billing",
+                                                                                                   "1.0.5");
+
+  public static final IReadableResource BIS3_BILLING_AUNZ_PEPPOL_SELF_BILLING_105 = new ClassPathResource (BASE_PATH +
+                                                                                                           "1.0.5/xslt/AUNZ-PEPPOL-SB-validation.xslt",
+                                                                                                           _getCL ());
+  public static final IReadableResource BIS3_BILLING_AUNZ_PEPPOL_105 = new ClassPathResource (BASE_PATH +
+                                                                                              "1.0.5/xslt/AUNZ-PEPPOL-validation.xslt",
+                                                                                              _getCL ());
+  public static final IReadableResource BIS3_BILLING_AUNZ_UBL_105 = new ClassPathResource (BASE_PATH +
+                                                                                           "1.0.5/xslt/AUNZ-UBL-validation.xslt",
                                                                                            _getCL ());
 
   private PeppolValidationAUNZ ()
@@ -152,7 +179,7 @@ public final class PeppolValidationAUNZ
     final String sVersion104 = VID_OPENPEPPOL_BIS3_AUNZ_UBL_INVOICE_104.getVersion ();
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_BIS3_AUNZ_UBL_INVOICE_104,
                                                                            "A-NZ PEPPOL BIS3 Invoice (UBL) " + sVersion104,
-                                                                           bNotDeprecated,
+                                                                           bDeprecated,
                                                                            ValidationExecutorXSD.create (EUBL21DocumentType.INVOICE),
                                                                            ValidationExecutorSchematron.createXSLT (BIS3_BILLING_AUNZ_PEPPOL_104,
                                                                                                                     aNSCtxInvoice),
@@ -160,7 +187,7 @@ public final class PeppolValidationAUNZ
                                                                                                                     aNSCtxInvoice)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_BIS3_AUNZ_UBL_CREDIT_NOTE_104,
                                                                            "A-NZ PEPPOL BIS3 CreditNote (UBL) " + sVersion104,
-                                                                           bNotDeprecated,
+                                                                           bDeprecated,
                                                                            ValidationExecutorXSD.create (EUBL21DocumentType.CREDIT_NOTE),
                                                                            ValidationExecutorSchematron.createXSLT (BIS3_BILLING_AUNZ_PEPPOL_104,
                                                                                                                     aNSCtxCreditNote),
@@ -170,7 +197,7 @@ public final class PeppolValidationAUNZ
     // Self-billing
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_BIS3_AUNZ_UBL_INVOICE_SELF_BILLING_104,
                                                                            "A-NZ PEPPOL BIS3 Invoice Self-Billing (UBL) " + sVersion104,
-                                                                           bNotDeprecated,
+                                                                           bDeprecated,
                                                                            ValidationExecutorXSD.create (EUBL21DocumentType.INVOICE),
                                                                            ValidationExecutorSchematron.createXSLT (BIS3_BILLING_AUNZ_PEPPOL_SELF_BILLING_104,
                                                                                                                     aNSCtxInvoice),
@@ -178,11 +205,48 @@ public final class PeppolValidationAUNZ
                                                                                                                     aNSCtxInvoice)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_BIS3_AUNZ_UBL_CREDIT_NOTE_SELF_BILLING_104,
                                                                            "A-NZ PEPPOL BIS3 CreditNote Self-Billing (UBL) " + sVersion104,
-                                                                           bNotDeprecated,
+                                                                           bDeprecated,
                                                                            ValidationExecutorXSD.create (EUBL21DocumentType.CREDIT_NOTE),
                                                                            ValidationExecutorSchematron.createXSLT (BIS3_BILLING_AUNZ_PEPPOL_SELF_BILLING_104,
                                                                                                                     aNSCtxCreditNote),
                                                                            ValidationExecutorSchematron.createXSLT (BIS3_BILLING_AUNZ_UBL_104,
+                                                                                                                    aNSCtxCreditNote)));
+
+    // 1.0.5
+    final String sVersion105 = VID_OPENPEPPOL_BIS3_AUNZ_UBL_INVOICE_105.getVersion ();
+    aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_BIS3_AUNZ_UBL_INVOICE_105,
+                                                                           "A-NZ PEPPOL BIS3 Invoice (UBL) " + sVersion105,
+                                                                           bNotDeprecated,
+                                                                           ValidationExecutorXSD.create (EUBL21DocumentType.INVOICE),
+                                                                           ValidationExecutorSchematron.createXSLT (BIS3_BILLING_AUNZ_PEPPOL_105,
+                                                                                                                    aNSCtxInvoice),
+                                                                           ValidationExecutorSchematron.createXSLT (BIS3_BILLING_AUNZ_UBL_105,
+                                                                                                                    aNSCtxInvoice)));
+    aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_BIS3_AUNZ_UBL_CREDIT_NOTE_105,
+                                                                           "A-NZ PEPPOL BIS3 CreditNote (UBL) " + sVersion105,
+                                                                           bNotDeprecated,
+                                                                           ValidationExecutorXSD.create (EUBL21DocumentType.CREDIT_NOTE),
+                                                                           ValidationExecutorSchematron.createXSLT (BIS3_BILLING_AUNZ_PEPPOL_105,
+                                                                                                                    aNSCtxCreditNote),
+                                                                           ValidationExecutorSchematron.createXSLT (BIS3_BILLING_AUNZ_UBL_105,
+                                                                                                                    aNSCtxCreditNote)));
+
+    // Self-billing
+    aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_BIS3_AUNZ_UBL_INVOICE_SELF_BILLING_105,
+                                                                           "A-NZ PEPPOL BIS3 Invoice Self-Billing (UBL) " + sVersion105,
+                                                                           bNotDeprecated,
+                                                                           ValidationExecutorXSD.create (EUBL21DocumentType.INVOICE),
+                                                                           ValidationExecutorSchematron.createXSLT (BIS3_BILLING_AUNZ_PEPPOL_SELF_BILLING_105,
+                                                                                                                    aNSCtxInvoice),
+                                                                           ValidationExecutorSchematron.createXSLT (BIS3_BILLING_AUNZ_UBL_105,
+                                                                                                                    aNSCtxInvoice)));
+    aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_BIS3_AUNZ_UBL_CREDIT_NOTE_SELF_BILLING_105,
+                                                                           "A-NZ PEPPOL BIS3 CreditNote Self-Billing (UBL) " + sVersion105,
+                                                                           bNotDeprecated,
+                                                                           ValidationExecutorXSD.create (EUBL21DocumentType.CREDIT_NOTE),
+                                                                           ValidationExecutorSchematron.createXSLT (BIS3_BILLING_AUNZ_PEPPOL_SELF_BILLING_105,
+                                                                                                                    aNSCtxCreditNote),
+                                                                           ValidationExecutorSchematron.createXSLT (BIS3_BILLING_AUNZ_UBL_105,
                                                                                                                     aNSCtxCreditNote)));
   }
 }

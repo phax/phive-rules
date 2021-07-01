@@ -175,6 +175,8 @@ Alternate usage as a Maven BOM:
 * v2.1.5 - work in progress
     * Deprecated Peppol rules 3.11.1
     * Added support for EN 16931 1.3.6 format (deprecated version 1.3.5)
+    * Added Peppol A-NZ-PEPPOL 1.0.5 rules (deprecated version 1.0.4)
+    * Moved Peppol A-NZ-PEPPOL 1.0.3 rules from `phive-rules-peppol` to `phive-rules-peppol-legacy`
 * v2.1.4 - 2021-05-10
     * Added support for UBL.BE 1.2.7, deprecated version 1.2.6
 * v2.1.3 - 2021-05-03
