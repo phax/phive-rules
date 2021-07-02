@@ -172,7 +172,7 @@ Alternate usage as a Maven BOM:
   
 # News and noteworthy
 
-* v2.1.5 - work in progress
+* v2.1.5 - 2021-07-02
     * Deprecated Peppol rules 3.11.1
     * Added support for EN 16931 1.3.6 format (deprecated version 1.3.5)
     * Added Peppol A-NZ-PEPPOL 1.0.5 rules (deprecated version 1.0.4)
