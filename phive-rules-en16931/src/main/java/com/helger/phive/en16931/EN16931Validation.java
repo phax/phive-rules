@@ -54,6 +54,9 @@ public final class EN16931Validation
   private static final String VERSION_134 = "1.3.4";
   private static final String VERSION_135 = "1.3.5";
   private static final String VERSION_136 = "1.3.6";
+
+  // Special fork
+  // https://github.com/phax/eInvoicing-EN16931/releases/tag/validation-1.3.6a
   private static final String VERSION_136A = "1.3.6a";
 
   // CII
