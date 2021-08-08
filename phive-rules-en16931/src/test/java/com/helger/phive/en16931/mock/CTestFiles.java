@@ -61,6 +61,7 @@ public final class CTestFiles
                                              EN16931Validation.VID_CII_134,
                                              EN16931Validation.VID_CII_135,
                                              EN16931Validation.VID_CII_136,
+                                             EN16931Validation.VID_CII_136A,
                                              EN16931Validation.VID_UBL_INVOICE_100,
                                              EN16931Validation.VID_UBL_INVOICE_110,
                                              EN16931Validation.VID_UBL_INVOICE_120,
@@ -79,7 +80,9 @@ public final class CTestFiles
                                              EN16931Validation.VID_UBL_INVOICE_135,
                                              EN16931Validation.VID_UBL_CREDIT_NOTE_135,
                                              EN16931Validation.VID_UBL_INVOICE_136,
-                                             EN16931Validation.VID_UBL_CREDIT_NOTE_136 })
+                                             EN16931Validation.VID_UBL_CREDIT_NOTE_136,
+                                             EN16931Validation.VID_UBL_INVOICE_136A,
+                                             EN16931Validation.VID_UBL_CREDIT_NOTE_136A })
       for (final IReadableResource aRes : getAllMatchingTestFiles (aVESID))
         ret.add (MockFile.createGoodCase (aRes, aVESID));
 
@@ -273,6 +276,21 @@ public final class CTestFiles
                                                       "CII_example8.xml",
                                                       "CII_example9.xml",
                                                       "XRechnung-O.xml" },
+                                      x -> new ClassPathResource (sPrefix + x));
+    }
+    if (aVESID.equals (EN16931Validation.VID_CII_136A))
+    {
+      final String sPrefix = "/test-files/1.3.6a/cii/";
+      return new CommonsArrayList <> (new String [] { "CII_business_example_01.xml",
+                                                      "CII_business_example_02.xml",
+                                                      "CII_example1.xml",
+                                                      "CII_example3.xml",
+                                                      "CII_example4.xml",
+                                                      "CII_example6.xml",
+                                                      "CII_example7.xml",
+                                                      "CII_example8.xml",
+                                                      "CII_example9.xml",
+                                                      "CII-BR-CO-10-RoundingIssue.xml" },
                                       x -> new ClassPathResource (sPrefix + x));
     }
 
@@ -500,6 +518,26 @@ public final class CTestFiles
     if (aVESID.equals (EN16931Validation.VID_UBL_CREDIT_NOTE_136))
     {
       final String sPrefix = "/test-files/1.3.6/ubl/";
+      return new CommonsArrayList <> (new String [] { "ubl-tc434-creditnote1.xml" }, x -> new ClassPathResource (sPrefix + x));
+    }
+    if (aVESID.equals (EN16931Validation.VID_UBL_INVOICE_136A))
+    {
+      final String sPrefix = "/test-files/1.3.6a/ubl/";
+      return new CommonsArrayList <> (new String [] { "FT G2G_TD01 con Allegato, Bonifico e Split Payment.xml",
+                                                      "ubl-tc434-example1.xml",
+                                                      "ubl-tc434-example2.xml",
+                                                      "ubl-tc434-example3.xml",
+                                                      "ubl-tc434-example4.xml",
+                                                      "ubl-tc434-example5.xml",
+                                                      "ubl-tc434-example6.xml",
+                                                      "ubl-tc434-example7.xml",
+                                                      "ubl-tc434-example8.xml",
+                                                      "ubl-tc434-example9.xml" },
+                                      x -> new ClassPathResource (sPrefix + x));
+    }
+    if (aVESID.equals (EN16931Validation.VID_UBL_CREDIT_NOTE_136A))
+    {
+      final String sPrefix = "/test-files/1.3.6a/ubl/";
       return new CommonsArrayList <> (new String [] { "ubl-tc434-creditnote1.xml" }, x -> new ClassPathResource (sPrefix + x));
     }
     throw new IllegalArgumentException ("Invalid VESID: " + aVESID);
