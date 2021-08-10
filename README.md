@@ -175,6 +175,7 @@ Alternate usage as a Maven BOM:
 * v2.1.6 - work in progress
     * Added support for EN 16931 1.3.6a rules - a special fork on https://github.com/phax/eInvoicing-EN16931/releases/tag/validation-1.3.6a
     * Added support for XRechnung 2.1.1
+    * Added support for UBL.BE 1.2.8, deprecated version 1.2.7
 * v2.1.5 - 2021-07-02
     * Deprecated Peppol rules 3.11.1
     * Added support for EN 16931 1.3.6 format (deprecated version 1.3.5)
