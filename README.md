@@ -172,6 +172,8 @@ Alternate usage as a Maven BOM:
   
 # News and noteworthy
 
+* v2.1.7 - work in progress
+    * Peppol rules 3.11.1 are now correctly marked as deprecated
 * v2.1.6 - 2021-08-11
     * Added support for EN 16931 1.3.6a rules - a special fork on https://github.com/phax/eInvoicing-EN16931/releases/tag/validation-1.3.6a
     * Added support for XRechnung 2.1.1
