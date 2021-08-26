@@ -25,6 +25,8 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.helger.commons.io.resource.FileSystemResource;
+import com.helger.commons.io.resource.IReadableResource;
 import com.helger.phive.api.execute.ValidationExecutionManager;
 import com.helger.phive.api.executorset.IValidationExecutorSet;
 import com.helger.phive.api.result.ValidationResultList;
@@ -64,6 +66,30 @@ public final class ValidationExecutionManagerFuncTest
         assertTrue (aErrors.getAllErrors ().toString (), aErrors.containsNoError ());
       else
         assertTrue (aErrors.containsAtLeastOneError ());
+    }
+  }
+
+  @Test
+  public void testLargeFile ()
+  {
+    final IValidationExecutorSet <IValidationSourceXML> aExecutors = CTestFiles.VES_REGISTRY.getOfID (PeppolValidation3_12_0.VID_OPENPEPPOL_INVOICE_V3);
+    assertNotNull (aExecutors);
+
+    for (final String s : new String [] { "22m", "50m", "70m", "100m", "125m", "200m" })
+    {
+      final IReadableResource aRes = new FileSystemResource ("src/test/resources/test-files/openpeppol/base-example-large-" + s + ".xml");
+      if (aRes.exists ())
+      {
+        LOGGER.info ("Validating " + aRes.getPath () + " against " + aExecutors.executors ().size () + " validation layers");
+
+        // Read as desired type
+        final IValidationSourceXML aSource = ValidationSourceXML.create (aRes);
+        final ValidationResultList aErrors = ValidationExecutionManager.executeValidation (aExecutors, aSource, Locale.US);
+        assertTrue (aErrors.getAllErrors ().toString (), aErrors.containsNoError ());
+      }
+      else
+        LOGGER.info ("File" + aRes.getPath () + " does not exist");
+
     }
   }
 }
