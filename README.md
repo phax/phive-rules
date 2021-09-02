@@ -172,11 +172,11 @@ Alternate usage as a Maven BOM:
   
 # News and noteworthy
 
-* v2.1.7 - work in progress
+* v2.1.7 - 2021-09-02
     * Peppol rules 3.11.1 are now correctly marked as deprecated
-    * Added support for SimplerInvoicing 2.0.3.2
-    * Added support for SimplerInvoicing NLCIUS-CII 1.0.3.1
-    * Added support for SimplerInvoicing 2.0 G-Account extension 1.0.2
+    * Added support for SimplerInvoicing 2.0.3.2, deprecated 2.0.3 and 2.0.3.1
+    * Added support for SimplerInvoicing NLCIUS-CII 1.0.3.1, deprecated 1.0.3
+    * Added support for SimplerInvoicing 2.0 G-Account extension 1.0.2, deprecated 1.0.1
 * v2.1.6 - 2021-08-11
     * Added support for EN 16931 1.3.6a rules - a special fork on https://github.com/phax/eInvoicing-EN16931/releases/tag/validation-1.3.6a
     * Added support for XRechnung 2.1.1
