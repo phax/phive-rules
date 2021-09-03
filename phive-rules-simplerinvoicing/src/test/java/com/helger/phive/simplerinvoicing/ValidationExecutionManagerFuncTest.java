@@ -43,30 +43,52 @@ public final class ValidationExecutionManagerFuncTest
   private static final Logger LOGGER = LoggerFactory.getLogger (ValidationExecutionManagerFuncTest.class);
 
   @Test
-  public void testApplyCompleteValidation ()
+  public void testAllGoodCases ()
   {
     for (final MockFile aTestFile : CTestFiles.getAllTestFiles ())
-    {
-      final IValidationExecutorSet <IValidationSourceXML> aExecutors = CTestFiles.VES_REGISTRY.getOfID (aTestFile.getVESID ());
-      assertNotNull (aExecutors);
-
-      LOGGER.info ("Validating " +
-                   aTestFile.getResource ().getPath () +
-                   " against " +
-                   aExecutors.executors ().size () +
-                   " validation layers using " +
-                   aTestFile.getVESID ().getAsSingleID ());
-
-      // Read as desired type
-      final IValidationSourceXML aSource = ValidationSourceXML.create (aTestFile.getResource ());
-      final ValidationResultList aValidationResultList = ValidationExecutionManager.executeValidation (aExecutors, aSource, Locale.US);
       if (aTestFile.isGoodCase ())
       {
-        aValidationResultList.getAllErrors ().forEach (x -> LOGGER.info (x.getErrorLevel () + " " + x.getAsString (Locale.US)));
+        final IValidationExecutorSet <IValidationSourceXML> aExecutors = CTestFiles.VES_REGISTRY.getOfID (aTestFile.getVESID ());
+        assertNotNull (aExecutors);
+
+        LOGGER.info ("Validating " +
+                     aTestFile.getResource ().getPath () +
+                     " against " +
+                     aExecutors.executors ().size () +
+                     " validation layers using " +
+                     aTestFile.getVESID ().getAsSingleID () +
+                     " - expecting success");
+
+        // Read as desired type
+        final IValidationSourceXML aSource = ValidationSourceXML.create (aTestFile.getResource ());
+        final ValidationResultList aValidationResultList = ValidationExecutionManager.executeValidation (aExecutors, aSource, Locale.US);
+        aValidationResultList.getAllErrors ().forEach (x -> LOGGER.info ("  " + x.getErrorLevel () + " " + x.getAsString (Locale.US)));
         assertTrue (aValidationResultList.getAllErrors ().toString (), aValidationResultList.containsNoError ());
       }
-      else
+  }
+
+  @Test
+  public void testAllBadCases ()
+  {
+    for (final MockFile aTestFile : CTestFiles.getAllTestFiles ())
+      if (aTestFile.isBadCase ())
+      {
+        final IValidationExecutorSet <IValidationSourceXML> aExecutors = CTestFiles.VES_REGISTRY.getOfID (aTestFile.getVESID ());
+        assertNotNull (aExecutors);
+
+        LOGGER.info ("Validating " +
+                     aTestFile.getResource ().getPath () +
+                     " against " +
+                     aExecutors.executors ().size () +
+                     " validation layers using " +
+                     aTestFile.getVESID ().getAsSingleID () +
+                     " - expecting error");
+
+        // Read as desired type
+        final IValidationSourceXML aSource = ValidationSourceXML.create (aTestFile.getResource ());
+        final ValidationResultList aValidationResultList = ValidationExecutionManager.executeValidation (aExecutors, aSource, Locale.US);
+        aValidationResultList.getAllFailures ().forEach (x -> LOGGER.info ("  " + x.getErrorLevel () + " " + x.getAsString (Locale.US)));
         assertTrue (aValidationResultList.containsAtLeastOneError ());
-    }
+      }
   }
 }

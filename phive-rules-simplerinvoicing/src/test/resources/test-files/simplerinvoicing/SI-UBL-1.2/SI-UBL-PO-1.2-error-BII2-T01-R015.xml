@@ -46,6 +46,19 @@
       </cac:PartyLegalEntity>
     </cac:Party>
   </cac:SellerSupplierParty>
+
+  <cac:AllowanceCharge>
+    <cbc:ChargeIndicator>true</cbc:ChargeIndicator>
+    <cbc:AllowanceChargeReason>some reason</cbc:AllowanceChargeReason>
+    <cbc:Amount currencyID="EUR">25</cbc:Amount>
+  </cac:AllowanceCharge>
+  <cac:AnticipatedMonetaryTotal>
+       <cbc:LineExtensionAmount currencyID="EUR">0</cbc:LineExtensionAmount>
+       <cbc:AllowanceTotalAmount currencyID="EUR">15</cbc:AllowanceTotalAmount>
+       <cbc:ChargeTotalAmount currencyID="EUR">25</cbc:ChargeTotalAmount>
+       <cbc:PayableAmount currencyID="EUR">10</cbc:PayableAmount>
+  </cac:AnticipatedMonetaryTotal>
+
   <cac:OrderLine>
     <cac:LineItem>
        <cbc:ID>123454</cbc:ID>

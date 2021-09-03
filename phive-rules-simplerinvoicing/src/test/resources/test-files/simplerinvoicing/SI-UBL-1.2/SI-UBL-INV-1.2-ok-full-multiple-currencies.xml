@@ -278,7 +278,7 @@
     <cac:TaxSubtotal>
       <cbc:TaxableAmount currencyID="EUR">1900</cbc:TaxableAmount>
       <cbc:TaxAmount currencyID="EUR">399</cbc:TaxAmount>
-      <cbc:TransactionCurrencyTaxAmount currencyID="USD">399</cbc:TransactionCurrencyTaxAmount>
+      <cbc:TransactionCurrencyTaxAmount currencyID="USD">3991</cbc:TransactionCurrencyTaxAmount>
       <cac:TaxCategory>
         <cbc:ID schemeID="UNCL5305">S</cbc:ID>
         <cbc:Percent>21</cbc:Percent>

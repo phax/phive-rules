@@ -41,7 +41,7 @@
     <cac:Party>
       <cbc:EndpointID schemeID="GLN" schemeAgencyID="9">1234567890123</cbc:EndpointID>
       <cac:PartyIdentification>
-        <cbc:ID schemeID="ZZZ">Supp123</cbc:ID>
+        <cbc:ID schemeID="NL:KVK">Supp123</cbc:ID>
       </cac:PartyIdentification>
       <cac:PartyName>
         <cbc:Name>Salescompany ltd.</cbc:Name>
@@ -86,7 +86,7 @@
     <cac:Party>
       <cbc:EndpointID schemeID="GLN" schemeAgencyID="9">1234567987654</cbc:EndpointID>
       <cac:PartyIdentification>
-        <cbc:ID schemeID="ZZZ">345KS5324</cbc:ID>
+        <cbc:ID schemeID="NL:VAT">345KS5324</cbc:ID>
       </cac:PartyIdentification>
       <cac:PartyName>
         <cbc:Name>Buyercompany ltd</cbc:Name>
@@ -112,7 +112,7 @@
       </cac:PartyTaxScheme>
       <cac:PartyLegalEntity>
         <cbc:RegistrationName>The buyercompany inc.</cbc:RegistrationName>
-        <cbc:CompanyID schemeAgencyID="ZZZ" schemeID="ZZZ">5645342123</cbc:CompanyID>
+        <cbc:CompanyID schemeAgencyID="ZZZ" schemeID="NL:KVK">5645342123</cbc:CompanyID>
       </cac:PartyLegalEntity>
       <cac:Contact>
         <cbc:Telephone>5121230</cbc:Telephone>
