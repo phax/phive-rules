@@ -174,6 +174,7 @@ Alternate usage as a Maven BOM:
 
 * v2.1.8 - work in progress
     * Fixed the UBL 2.3 version from `2.3-cs01` to `2.3` - no contentwise changes
+    * Added support for EN 16931 1.3.7 format (deprecated version 1.3.6)
 * v2.1.7 - 2021-09-02
     * Peppol rules 3.11.1 are now correctly marked as deprecated
     * Added support for SimplerInvoicing 2.0.3.2, deprecated 2.0.3 and 2.0.3.1
