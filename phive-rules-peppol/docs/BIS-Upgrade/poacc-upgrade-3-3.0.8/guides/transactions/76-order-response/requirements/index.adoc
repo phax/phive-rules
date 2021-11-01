@@ -1,8 +1,0 @@
-[[transaction-business-requirements]]
-= Order response transaction
-
-:leveloffset: +1
-
-include::general.adoc[]
-
-:leveloffset: -1

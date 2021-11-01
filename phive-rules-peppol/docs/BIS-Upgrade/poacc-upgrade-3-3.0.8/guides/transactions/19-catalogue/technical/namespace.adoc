@@ -1,6 +1,0 @@
-The catalogue data model is bound to {ubl} document type {ubl-catalogue}.
-
-====
-The target namespace for the catalogue is::
-`urn:oasis:names:specification:ubl:schema:xsd:Catalogue-2`
-====

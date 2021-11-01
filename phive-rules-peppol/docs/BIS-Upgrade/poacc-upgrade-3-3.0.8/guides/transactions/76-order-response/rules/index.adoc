@@ -1,5 +1,0 @@
-
-
-include::order-response.adoc[]
-
-include::codelist.adoc[]

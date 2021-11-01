@@ -1,7 +1,0 @@
-= PEPPOLs use of AsciiDoc
-
-:leveloffset: +1
-
-include::syntax.adoc[]
-
-:leveloffset: -1

@@ -1,9 +1,0 @@
-= Version 3.0.2 - hotfix
-[horizontal]
-Release date:: 2019-08-15
-
-== Changes to code lists and validation artefacts
-
-* Update in link:/poacc/billing/3.0/codelist/eas/[EAS] code list, addition of codes: 0151 ,0183, 0201 and 0200, and renaming of code 0199
-* Update in link:/poacc/billing/3.0/codelist/ICD/[ICD] code list, addition of codes: 0201 and 0200, and renaming of code 0199
-* Update in link:/poacc/billing/3.0/codelist/UNCL7143/[UNCL7143] code list, addition of codes: TSQ, TSR, TSS and TST

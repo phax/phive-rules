@@ -1,4 +1,0 @@
-[[namespaces]]
-= Namespaces
-
-include::../{catalogue-path}/technical/namespace.adoc[]
