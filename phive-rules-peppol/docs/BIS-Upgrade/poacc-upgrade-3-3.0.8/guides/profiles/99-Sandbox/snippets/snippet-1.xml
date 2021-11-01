@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApplicationResponse xmlns="urn:oasis:names:specification:ubl:schema:xsd:ApplicationResponse-2"
+                     xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+                     xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
+    <!-- tag::ubl-version[] -->
+    <cbc:UBLVersionID>2.1</cbc:UBLVersionID>
+    <!-- end::ubl-version[] -->
+    <cbc:CustomizationID schemeID="PEPPOL">urn:www.cenbii.eu:transaction:biitrns071:ver2.0:extended:urn:www.peppol.eu:bis:peppol36a:ver2.0</cbc:CustomizationID>
+    <!-- tag::profile[] -->
+    <cbc:ProfileID>urn:www.cenbii.eu:profile:bii36a:ver2.0</cbc:ProfileID>
+    <!-- end::profile[] -->
+    <cbc:ID>TheMLR-ID123</cbc:ID>
+    <cbc:IssueDate>2016-08-15</cbc:IssueDate>
+    <!-- tag::sender[] -->
+    <cac:SenderParty>
+        <cbc:EndpointID schemeID="NO:ORGNR">981915550</cbc:EndpointID>
+    </cac:SenderParty>  
+    <!-- end::sender[] -->
+    
+    <!-- tag::receiver[] -->
+    <cac:ReceiverParty>
+        <cbc:EndpointID schemeID="GLN">7315458756324</cbc:EndpointID>
+    </cac:ReceiverParty>
+    <!-- end::receiver[] -->
+    <cac:DocumentResponse>
+        <!-- tag::ack[] -->
+        <cac:Response>
+            <cbc:ResponseCode listID="UNCL4343">AB</cbc:ResponseCode>
+            <cbc:Description languageID="en">The document was accepted without any validations being performed.</cbc:Description>
+        </cac:Response>
+        <!-- end::ack[] -->
+        <cac:DocumentReference>
+            <!-- The SBDH envelope ID of the source message -->
+            <cbc:ID>EnvelopeID-12456789</cbc:ID>
+        </cac:DocumentReference>
+    </cac:DocumentResponse>
+</ApplicationResponse>

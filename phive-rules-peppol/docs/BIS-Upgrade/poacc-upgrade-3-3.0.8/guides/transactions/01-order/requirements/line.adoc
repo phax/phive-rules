@@ -1,0 +1,34 @@
+[[line-requirements]]
+= Line requirements
+
+[cols="1,5",options="header"]
+|====
+|ID
+|Requirement
+
+|tbr01-025
+|Each line in an order must be clearly identified to enable referencing from other documents.
+
+
+|tbr01-027
+|An order must provide for information about the final price that the buyer expects to pay exclusive of any VAT.
+This makes it possible for the seller to verify against his price lists and contracts.
+An order must provide for giving the base quantity to which the price applies.
+
+
+|tbr01-028
+|An order line must provide for information about the quantity ordered and its unit of measure.
+
+
+|tbr01-029
+|An order line must provide for detailed identification of the ordered item or variant of the item including name, identifiers, description as well as the values for different item properties, diagrams and specifications.
+
+
+|tbr01-034
+|An order line must provide for seller identifiers and standard identifiers for products
+
+
+|tbr01-035
+|It must be possible to state informative price discounts and amounts already paid.
+
+|====

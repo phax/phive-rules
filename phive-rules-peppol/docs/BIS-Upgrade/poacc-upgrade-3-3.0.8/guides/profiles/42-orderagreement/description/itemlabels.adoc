@@ -1,0 +1,19 @@
+= Item labelling
+
+Information about the items environmental, social, ethical and quality type of labelling. The UBL structure used for item labeling requires certain elements in addition to those used by this BIS. To fulfill the UBL requirements these are included with the dummy value NA.
+
+.Example
+[source, xml, indent=0]
+----
+include::{snippet-dir}/OA full.xml[tags=Certificate]
+----
+
+= Contracted item
+
+If the purchased item is offered in accordance to an existing contract, this should be indicated in the order agreement message.
+
+.Example
+[source, xml, indent=0]
+----
+include::{snippet-dir}/OA full.xml[tags=TransactionConditions]
+----

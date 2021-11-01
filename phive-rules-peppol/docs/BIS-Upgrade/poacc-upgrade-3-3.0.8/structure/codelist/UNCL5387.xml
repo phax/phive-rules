@@ -1,0 +1,584 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeList xmlns="urn:fdc:difi.no:2017:vefa:structure:CodeList-1">
+    
+    <Title>Price type codes (UNCL5387)</Title>
+    <Identifier>UNCL5387</Identifier>
+    <Version>D.16B</Version>
+    <Agency>UN/CEFACT</Agency>
+
+    <Code>
+        <Id>AAA</Id>
+        <Name>Reference price</Name>
+        <Description>Code identifying a reference price.</Description>
+    </Code>
+    <Code>
+        <Id>AAB</Id>
+        <Name>Price includes tax</Name>
+        <Description>Code specifying that the price is inclusive of tax.</Description>
+    </Code>
+    <Code>
+        <Id>AAC</Id>
+        <Name>Buyer suggested retail price</Name>
+        <Description>The suggested retail price as suggested or determined by the party purchasing
+            the goods.</Description>
+    </Code>
+    <Code>
+        <Id>AAD</Id>
+        <Name>Ocean charges rate</Name>
+        <Description>The charges imposed by the ocean transportation industry above and beyond the
+            basic freight.</Description>
+    </Code>
+    <Code>
+        <Id>AAE</Id>
+        <Name>Not subject to fluctuation</Name>
+        <Description>Not subject to escalation or adjustment.</Description>
+    </Code>
+    <Code>
+        <Id>AAF</Id>
+        <Name>Subject to escalation</Name>
+        <Description>Subject to increase or development by successive stages.</Description>
+    </Code>
+    <Code>
+        <Id>AAG</Id>
+        <Name>Subject to price adjustment</Name>
+        <Description>Code specifying that the price is subject to adjustment.</Description>
+    </Code>
+    <Code>
+        <Id>AAH</Id>
+        <Name>Subject to escalation and price adjustment</Name>
+        <Description>Subject to increase or development by successive stages and price
+            adjustment.</Description>
+    </Code>
+    <Code>
+        <Id>AAI</Id>
+        <Name>Fluctuation conditions not specified</Name>
+        <Description>Code specifying that the fluctuation conditions are not
+            identified.</Description>
+    </Code>
+    <Code>
+        <Id>AAJ</Id>
+        <Name>All in price</Name>
+        <Description>Firm price for specified work.</Description>
+    </Code>
+    <Code>
+        <Id>AAK</Id>
+        <Name>New price</Name>
+        <Description>A price valid from an effective date/time/period.</Description>
+    </Code>
+    <Code>
+        <Id>AAL</Id>
+        <Name>Old price</Name>
+        <Description>A price valid prior to an effective date/time/period of a new
+            price.</Description>
+    </Code>
+    <Code>
+        <Id>AAM</Id>
+        <Name>Per week</Name>
+        <Description>To indicate that the given price applies per week.</Description>
+    </Code>
+    <Code>
+        <Id>AAN</Id>
+        <Name>Price on application</Name>
+        <Description>Price can be obtained on request from seller.</Description>
+    </Code>
+    <Code>
+        <Id>AAO</Id>
+        <Name>Unpacked price</Name>
+        <Description>The price given is the price of the item without packaging.</Description>
+    </Code>
+    <Code>
+        <Id>AAP</Id>
+        <Name>Trade price</Name>
+        <Description>Discount price available to all customers except the retail
+            customer.</Description>
+    </Code>
+    <Code>
+        <Id>AAQ</Id>
+        <Name>Firm price</Name>
+        <Description>Price which will remain unchanged for a given time period.</Description>
+    </Code>
+    <Code>
+        <Id>AAR</Id>
+        <Name>Material share of item price</Name>
+        <Description>The per unit cost of referenced material based on a given quotation for that
+            material.</Description>
+    </Code>
+    <Code>
+        <Id>AAS</Id>
+        <Name>Labour share of item price</Name>
+        <Description>The labour component of the per-unit item price.</Description>
+    </Code>
+    <Code>
+        <Id>AAT</Id>
+        <Name>Transport share of item price</Name>
+        <Description>The transport component of the per-unit item price.</Description>
+    </Code>
+    <Code>
+        <Id>AAU</Id>
+        <Name>Packing share of item price</Name>
+        <Description>The packing component of the per-unit item price.</Description>
+    </Code>
+    <Code>
+        <Id>AAV</Id>
+        <Name>Tooling share of item price</Name>
+        <Description>The tooling component of the per-unit item price.</Description>
+    </Code>
+    <Code>
+        <Id>AAW</Id>
+        <Name>Temporary vehicle charge</Name>
+        <Description>The component of a price charged for providing a temporary
+            vehicle.</Description>
+    </Code>
+    <Code>
+        <Id>AAX</Id>
+        <Name>Price component due to interest</Name>
+        <Description>This is the component of the price which is charged due to
+            interest.</Description>
+    </Code>
+    <Code>
+        <Id>AAY</Id>
+        <Name>Price component due to management services</Name>
+        <Description>This is the component of the price which is charged due to management services
+            rendered.</Description>
+    </Code>
+    <Code>
+        <Id>AAZ</Id>
+        <Name>Price component due to maintenance</Name>
+        <Description>This is the component of the price which is charged due to
+            maintenance.</Description>
+    </Code>
+    <Code>
+        <Id>ABA</Id>
+        <Name>Individual buyer price</Name>
+        <Description>A price which is available to an individual buyer as opposed to an
+            institutional buyer.</Description>
+    </Code>
+    <Code>
+        <Id>ABB</Id>
+        <Name>Group buying price</Name>
+        <Description>A price which is available to a buying group.</Description>
+    </Code>
+    <Code>
+        <Id>ABC</Id>
+        <Name>Group member buying price</Name>
+        <Description>A special price given to a member of a buying group.</Description>
+    </Code>
+    <Code>
+        <Id>ABD</Id>
+        <Name>Pre-payment price</Name>
+        <Description>A special price if pre-payment is made for the article ordered.</Description>
+    </Code>
+    <Code>
+        <Id>ABE</Id>
+        <Name>Retail price - excluding taxes</Name>
+        <Description>Retail price not including any applicable taxes.</Description>
+    </Code>
+    <Code>
+        <Id>ABF</Id>
+        <Name>Suggested retail price - excluding taxes</Name>
+        <Description>Suggested retail price not including any applicable taxes.</Description>
+    </Code>
+    <Code>
+        <Id>ABG</Id>
+        <Name>Agreed minimum price</Name>
+        <Description>The minimum price agreed between trading partners.</Description>
+    </Code>
+    <Code>
+        <Id>ABH</Id>
+        <Name>Statutory minimum retail price</Name>
+        <Description>The legal minimum retail price.</Description>
+    </Code>
+    <Code>
+        <Id>ABI</Id>
+        <Name>Cost reimbursement price</Name>
+        <Description>A code to indicate that the price represents the reimbursement of the actual
+            costs incurred.</Description>
+    </Code>
+    <Code>
+        <Id>ABJ</Id>
+        <Name>Market price</Name>
+        <Description>A code to indicate that the given price is applicable under normal competitive
+            conditions.</Description>
+    </Code>
+    <Code>
+        <Id>ABK</Id>
+        <Name>Open tender price</Name>
+        <Description>A code to indicate that the price mentioned has been submitted in the context
+            of an open tender.</Description>
+    </Code>
+    <Code>
+        <Id>ABL</Id>
+        <Name>Base price</Name>
+        <Description>The base price of a product or service.</Description>
+    </Code>
+    <Code>
+        <Id>ABM</Id>
+        <Name>Base price difference</Name>
+        <Description>The difference in price against a base price.</Description>
+    </Code>
+    <Code>
+        <Id>ABN</Id>
+        <Name>Adjustable price prior to acceptance</Name>
+        <Description>A price which can be adjusted due to economic conditions between the date of
+            offer and the date of acceptance.</Description>
+    </Code>
+    <Code>
+        <Id>ABO</Id>
+        <Name>Revisable price after acceptance</Name>
+        <Description>A price which can be revised due to economic conditions between the date of
+            acceptance of the order and the date of delivery.</Description>
+    </Code>
+    <Code>
+        <Id>ABP</Id>
+        <Name>Provisional ceiling price</Name>
+        <Description>A provisional price which cannot be exceeded.</Description>
+    </Code>
+    <Code>
+        <Id>ABQ</Id>
+        <Name>Adjustable provisional ceiling price</Name>
+        <Description>A provisional price which cannot be exceeded but which can be adjusted due to
+            economic conditions between the date of offer and the date of acceptance.</Description>
+    </Code>
+    <Code>
+        <Id>ABR</Id>
+        <Name>Revisable provisional ceiling price</Name>
+        <Description>A provisional price which cannot be exceeded but is revisable due to economic
+            conditions between the date of acceptance of the order through to the date of
+            delivery.</Description>
+    </Code>
+    <Code>
+        <Id>ABS</Id>
+        <Name>Revisable provisional price</Name>
+        <Description>A provisional price which is revisable due to economic conditions between the
+            date of acceptance of the order and the date of delivery.</Description>
+    </Code>
+    <Code>
+        <Id>ABT</Id>
+        <Name>Adjustable provisional price</Name>
+        <Description>A provisional price which is adjustable due to economic conditions between the
+            date of offer and the date of acceptance.</Description>
+    </Code>
+    <Code>
+        <Id>ABU</Id>
+        <Name>Area price</Name>
+        <Description>Price connected to a geographical area.</Description>
+    </Code>
+    <Code>
+        <Id>ABV</Id>
+        <Name>Area system price</Name>
+        <Description>A basis price applied to a geographic area.</Description>
+    </Code>
+    <Code>
+        <Id>ABW</Id>
+        <Name>Special balance regulation price</Name>
+        <Description>The price applicable to the power generated as a result of a special balance
+            regulation.</Description>
+    </Code>
+    <Code>
+        <Id>ABX</Id>
+        <Name>Balance regulation price</Name>
+        <Description>The price applicable to the power generated as a result of a balance
+            regulation.</Description>
+    </Code>
+    <Code>
+        <Id>ABY</Id>
+        <Name>Upward balance regulation price</Name>
+        <Description>The price applicable to the power generated as a result of an upward balance
+            regulation.</Description>
+    </Code>
+    <Code>
+        <Id>ABZ</Id>
+        <Name>Downward balance regulation price</Name>
+        <Description>The price applicable to the power generated as a result of a downward balance
+            regulation.</Description>
+    </Code>
+    <Code>
+        <Id>ACA</Id>
+        <Name>Agreed minimum retail price</Name>
+        <Description>The agreed minimum retail price for an article.</Description>
+    </Code>
+    <Code>
+        <Id>ACB</Id>
+        <Name>Marked retail price</Name>
+        <Description>The retail price of a product which has been marked on the products
+            packaging.</Description>
+    </Code>
+    <Code>
+        <Id>AI</Id>
+        <Name>Active ingredient</Name>
+        <Description>Code specifying that price is based on the active ingredient.</Description>
+    </Code>
+    <Code>
+        <Id>ALT</Id>
+        <Name>Alternate price</Name>
+        <Description>A substitute cost.</Description>
+    </Code>
+    <Code>
+        <Id>AP</Id>
+        <Name>Advice price</Name>
+        <Description>Code specifying an advice price.</Description>
+    </Code>
+    <Code>
+        <Id>BR</Id>
+        <Name>Broker price</Name>
+        <Description>Code specifying a broker price.</Description>
+    </Code>
+    <Code>
+        <Id>CAT</Id>
+        <Name>Catalogue price</Name>
+        <Description>Price per unit of quantity of a product as specified in a
+            catalogue.</Description>
+    </Code>
+    <Code>
+        <Id>CDV</Id>
+        <Name>Current domestic value</Name>
+        <Description>The present worth of a thing which comes from ones homeland, in terms of money
+            or goods.</Description>
+    </Code>
+    <Code>
+        <Id>CON</Id>
+        <Name>Contract price</Name>
+        <Description>Price per unit of quantity of a product/service as agreed in a contract
+            between parties.</Description>
+    </Code>
+    <Code>
+        <Id>CP</Id>
+        <Name>Current price</Name>
+        <Description>Price at time of transaction, but subject to future change.</Description>
+    </Code>
+    <Code>
+        <Id>CU</Id>
+        <Name>Consumer unit</Name>
+        <Description>Code specifying that the price is based on consumer unit.</Description>
+    </Code>
+    <Code>
+        <Id>CUP</Id>
+        <Name>Confirmed unit price</Name>
+        <Description>The value of a single item that proves to be correct.</Description>
+    </Code>
+    <Code>
+        <Id>CUS</Id>
+        <Name>Declared customs unit value</Name>
+        <Description>A clearly known duty on a single item which is imposed by law.</Description>
+    </Code>
+    <Code>
+        <Id>DAP</Id>
+        <Name>Dealer adjusted price</Name>
+        <Description>The necessary or desirable changes that the sales agency makes with respect to
+            the value of the product.</Description>
+    </Code>
+    <Code>
+        <Id>DIS</Id>
+        <Name>Distributor price</Name>
+        <Description>The cost associated with the agency that markets goods.</Description>
+    </Code>
+    <Code>
+        <Id>DPR</Id>
+        <Name>Discount price</Name>
+        <Description>A reduction from the usual list value.</Description>
+    </Code>
+    <Code>
+        <Id>DR</Id>
+        <Name>Dealer price</Name>
+        <Description>Code specifying a dealer price.</Description>
+    </Code>
+    <Code>
+        <Id>DSC</Id>
+        <Name>Discount amount allowed</Name>
+        <Description>A certain price up to which one is able to make reductions from the usual list
+            value.</Description>
+    </Code>
+    <Code>
+        <Id>CSC</Id>
+        <Name>price</Name>
+        <Description>Price registered at European Commission Steel and Carbon office (DG
+            III).</Description>
+    </Code>
+    <Code>
+        <Id>ES</Id>
+        <Name>Estimated price</Name>
+        <Description>Code specifying an estimated price.</Description>
+    </Code>
+    <Code>
+        <Id>EUP</Id>
+        <Name>Expected unit price</Name>
+        <Description>The anticipated value of a single item.</Description>
+    </Code>
+    <Code>
+        <Id>FCR</Id>
+        <Name>Freight/charge rate</Name>
+        <Description>The price that is either a freight rate or a rate on which freight charges are
+            calculated.</Description>
+    </Code>
+    <Code>
+        <Id>GRP</Id>
+        <Name>Gross unit price</Name>
+        <Description>Unit price to which allowances and charges apply.</Description>
+    </Code>
+    <Code>
+        <Id>INV</Id>
+        <Name>Invoice price</Name>
+        <Description>Price per unit of quantity of a product as specified on an
+            invoice.</Description>
+    </Code>
+    <Code>
+        <Id>LBL</Id>
+        <Name>Labelling price</Name>
+        <Description>Retail price of the buyer that should be printed by the producer on the
+            articles label. The labelling price is not necessary the effective retail
+            price.</Description>
+    </Code>
+    <Code>
+        <Id>MAX</Id>
+        <Name>Maximum order quantity price</Name>
+        <Description>The greatest amount of goods or services which one can buy to receive a
+            certain value.</Description>
+    </Code>
+    <Code>
+        <Id>MIN</Id>
+        <Name>Minimum order quantity price</Name>
+        <Description>The least amount of goods or services that one can buy to receive a certain
+            value.</Description>
+    </Code>
+    <Code>
+        <Id>MNR</Id>
+        <Name>Minimum release quantity price</Name>
+        <Description>The least amount of an order one can place in order to receive a certain
+            value.</Description>
+    </Code>
+    <Code>
+        <Id>MSR</Id>
+        <Name>Manufacturers suggested retail</Name>
+        <Description>Price that reflects "Sales to other manufacturers" or "Sales for
+            resale".</Description>
+    </Code>
+    <Code>
+        <Id>MXR</Id>
+        <Name>Maximum release quantity price</Name>
+        <Description>The greatest amount of an order that one can place in order to receive a
+            certain value.</Description>
+    </Code>
+    <Code>
+        <Id>NE</Id>
+        <Name>Not-to-exceed price</Name>
+        <Description>Code specifying a price that cannot be increased.</Description>
+    </Code>
+    <Code>
+        <Id>NQT</Id>
+        <Name>No quote</Name>
+        <Description>No price available.</Description>
+    </Code>
+    <Code>
+        <Id>NTP</Id>
+        <Name>Net unit price</Name>
+        <Description>Unit price to which no allowances and charges apply.</Description>
+    </Code>
+    <Code>
+        <Id>NW</Id>
+        <Name>Net weight</Name>
+        <Description>Code specifying a net weight price.</Description>
+    </Code>
+    <Code>
+        <Id>OFR</Id>
+        <Name>Ocean freight rate</Name>
+        <Description>The price per pricing unit of ocean transportation services for moving cargo
+            from one location to another.</Description>
+    </Code>
+    <Code>
+        <Id>PAQ</Id>
+        <Name>Price break quantity(s)</Name>
+        <Description>Numerical amounts of goods or services which are associated with different
+            sums of money. As the amount goes up, the price per individual item
+            decreases.</Description>
+    </Code>
+    <Code>
+        <Id>PBQ</Id>
+        <Name>Unit price beginning quantity</Name>
+        <Description>The starting amount at which you can place a value on a single
+            item.</Description>
+    </Code>
+    <Code>
+        <Id>PPD</Id>
+        <Name>Prepaid freight charges</Name>
+        <Description>The cost of shipping is paid before the goods are shipped.</Description>
+    </Code>
+    <Code>
+        <Id>PPR</Id>
+        <Name>Provisional price</Name>
+        <Description>Price per unit of quantity of a product as provisionally agreed.</Description>
+    </Code>
+    <Code>
+        <Id>PRO</Id>
+        <Name>Producers price</Name>
+        <Description>The value that the maker of a good places on an item.</Description>
+    </Code>
+    <Code>
+        <Id>PRP</Id>
+        <Name>Promotional price</Name>
+        <Description>The value that is placed on an item that is being developed. The idea is to
+            sell this product for less than one normally would, and make up for it by selling a
+            larger quantity.</Description>
+    </Code>
+    <Code>
+        <Id>PW</Id>
+        <Name>Gross weight</Name>
+        <Description>Code specifying a gross weight price.</Description>
+    </Code>
+    <Code>
+        <Id>QTE</Id>
+        <Name>Quote price</Name>
+        <Description>Price per unit of quantity of a product as specified in a quote.</Description>
+    </Code>
+    <Code>
+        <Id>RES</Id>
+        <Name>Resale price</Name>
+        <Description>Price per unit of quantity of a product to be used for resale.</Description>
+    </Code>
+    <Code>
+        <Id>RTP</Id>
+        <Name>Retail price</Name>
+        <Description>Price per unit of quantity of a product to be used for retail.</Description>
+    </Code>
+    <Code>
+        <Id>SHD</Id>
+        <Name>Ship and debit</Name>
+        <Description>To transport goods and be owed money by the customer for the services
+            performed.</Description>
+    </Code>
+    <Code>
+        <Id>SRP</Id>
+        <Name>Suggested retail price</Name>
+        <Description>Price per unit of quantity of a product suggested for retail.</Description>
+    </Code>
+    <Code>
+        <Id>SW</Id>
+        <Name>Gross weight without wooden pallets</Name>
+        <Description>Used in steel industry.</Description>
+    </Code>
+    <Code>
+        <Id>TB</Id>
+        <Name>To be negotiated</Name>
+        <Description>Code specifying that the price has to be negotiated.</Description>
+    </Code>
+    <Code>
+        <Id>TRF</Id>
+        <Name>Transfer</Name>
+        <Description>To carry or remove from one place, situation, or person to
+            another.</Description>
+    </Code>
+    <Code>
+        <Id>TU</Id>
+        <Name>Traded unit</Name>
+        <Description>Code specifying a traded unit price.</Description>
+    </Code>
+    <Code>
+        <Id>TW</Id>
+        <Name>Theoretical weight</Name>
+        <Description>Code specifying a price based on a theoretical weight.</Description>
+    </Code>
+    <Code>
+        <Id>WH</Id>
+        <Name>Wholesale price</Name>
+        <Description>Code specifying a wholesale price.</Description>
+    </Code>
+</CodeList>

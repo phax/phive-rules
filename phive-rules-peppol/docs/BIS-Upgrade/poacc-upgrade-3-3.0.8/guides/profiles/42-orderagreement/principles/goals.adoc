@@ -1,0 +1,58 @@
+[[goals-and-objectives]]
+= Goals and Objectives
+
+The following main business goals to be gained by implementing a BII Order agreement profile are the following and apply to this BIS.
+
+.Main business goals
+[cols="1s,5",options="header",]
+|====
+|ID
+|Description
+|G-42-001
+|The profile enables buyers to receive real time information on the contracted products/services, resulting in correct and up to date information, such as price and availability based on a contract.
+
+|G-42-002
+|The effort to distribute catalogue information can be substantially reduced for sellers with large catalogues. It does not even presume standardized catalogues.
+
+|G-42-003
+|The profile enables the buyer to create an order in the seller’s web shop.
+
+|G-42-004
+|The profile enables the buyer to buy services such as flight tickets on-line and receive the order information back in the purchasing system of the buyer.
+
+|G-42-005
+|The profile enables buyers to configure their own products (i.e. pc’s or furniture) on the seller’s website, and receive order information back to the purchasing system of the buyer.,
+
+|G-42-006
+|Increased order accuracy by ensuring high data quality in the purchasing system of the buyer.
+
+|G-42-007
+|Personalized shopping experience - the seller’s product/services can be presented with photos, customized promotions and recommended accessories
+
+|G-42-008
+|The profile enables the buyer to receive the order information back in the purchasing system of the buyer also in the cases where the order is sent via e-mail, made in a telephone call or on a visit to the seller’s store.
+
+|G-42-009
+|The profile enables the buyer to instruct the seller to send a reference chosen by the buyer in the Order Agreement transaction.
+
+|G-42-010
+|The buyer wants precise order to invoice matching.
+
+|G-42-011
+|The seller wants an efficient way to report services rendered when buyer cannot order through the purchasing system.
+
+|G-42-012
+|The seller wants to match order and invoice automatically
+
+|G-42-013
+|The buyer wants to document the services rendered based on contract when the order was executed by other channels or based on a service agreement
+
+|G-42-014
+|The buyer wants to receive order agreement in a structured way in a general and interoperable file-format with no need for custom mappings or conversions.
+
+|G-42-015
+|The seller wants order agreement using generally accepted standard formats/specifications.
+
+|G-42-016
+|A buyer wants to collect certificate and label information in his orders for analytical purposes.
+|====

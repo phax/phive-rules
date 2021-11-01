@@ -1,0 +1,14 @@
+
+
+= Electronic address identifier scheme identifier
+
+All electronic address identifiers (`cbc:EndpointID/@schemeID`) use of a code list to be maintained by CEF.
+#This code list is still not available. Use PEPPOL Policy for identifiers untill code list is available#
+
+.Examples of usage in `cbc:EndpointID`
+[source,xml, indent="0"]
+----
+<cbc:EndpointID schemeID="DK:CVR">DK87654321</cbc:EndpointID> <1>
+
+----
+<1> schemeID is mandatory

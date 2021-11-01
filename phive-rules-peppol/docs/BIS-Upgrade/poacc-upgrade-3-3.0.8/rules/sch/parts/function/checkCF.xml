@@ -1,0 +1,31 @@
+<function name="u:checkCF" as="xs:boolean" xmlns="http://www.w3.org/1999/XSL/Transform">
+    <param name="arg" as="xs:string?"/>
+    <sequence select="
+		if ( (string-length($arg) = 16) or (string-length($arg) = 11) ) 		
+		then 
+		(
+			if ((string-length($arg) = 16)) 
+			then
+			(
+				if (u:checkCF16($arg)) 
+				then
+				(
+					true()
+				)
+				else
+				(
+					false()
+				)
+			)
+			else
+			(
+				if(($arg castable as xsd:integer)) then true() else false()
+		
+			)
+		)
+		else
+		(
+			false()
+		)
+		"/>
+  </function>

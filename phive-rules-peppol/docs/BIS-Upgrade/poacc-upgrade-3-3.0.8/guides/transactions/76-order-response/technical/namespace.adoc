@@ -1,0 +1,1 @@
+* The target namespace for the {ubl-order-response} is: + `urn:oasis:names:specification:ubl:schema:xsd:OrderResponse-2`

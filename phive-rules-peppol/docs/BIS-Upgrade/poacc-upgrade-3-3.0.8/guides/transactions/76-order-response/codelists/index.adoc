@@ -1,0 +1,11 @@
+
+[[codelist]]
+= Code lists
+
+The following chapters give an overview of the codes that is used in this PEPPOL BIS.
+
+:leveloffset: +1
+
+include::elements.adoc[]
+
+:leveloffset: -1

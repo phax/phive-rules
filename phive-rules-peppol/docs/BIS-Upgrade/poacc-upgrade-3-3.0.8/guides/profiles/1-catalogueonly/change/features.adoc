@@ -1,0 +1,202 @@
+[[features-added-in-bii2]]
+= Features added in BII2
+
+[cols=",",options="header",]
+|====
+|*Business term* |*UBL binding*
+|*Source catalogue identifier* |Catalogue/cac:SourceCatalogueReference
+|*Catalogue action code* |Catalogue/cbc:ActionCode
+|*Manufacturers item identifier* |Catalogue/cac:CatalogueLine/cac:Item/cac:ManufacturersItemIdentification/cbc:ID
+|*Item VAT percentage* |Catalogue/cac:CatalogueLine/cac:Item/cac:ClassifiedTaxCategory/cbc:Percent
+|*Item best before date* |Catalogue/cac:CatalogueLine/cac:Item/cac:ItemInstance/cbc:BestBeforeDate
+|*Item batch identifier* |Catalogue/cac:CatalogueLine/cac:Item/cac:ItemInstance/cac:LotIdentification/ cbc:LotNumberID
+|*Label Name* |Catalogue/cac:CatalogueLine/cac:Item/cac:Certificate/cbc:ID
+|*Label value* |Catalogue/cac:CatalogueLine/cac:Item/cac:Certificate/cbc:Remarks
+|*Label type* |Catalogue/cac:CatalogueLine/cac:Item/cac:Certificate/cbc:CertificateType
+|*Label Reference* |Catalogue/cac:CatalogueLine/cac:Item/cac:Certificate/cac:DocumentReference/ cbc:ID
+|*Property classification* |Catalogue/cac:CatalogueLine/cac:Item/cac:AdditionalItemProperty/ cbc:ValueQualifier
+|*Property unit of measure* |Suggested syntax binding: cac:AdditionalItemProperty/cbc:ValueQuantity/unitCode
+|*Price type* |Catalogue/cac:CatalogueLine/cac:RequiredItemLocationQuantity/cac:Price/ cbc:PriceType
+|*Standard unit of measure* |Catalogue/cac:CatalogueLine/cac:ItemComparison/cbc:Quantity/@unitCode
+a|
+*ComponentRelatedItem/*
+
+*Item identifier*
+
+ |Catalogue/cac:CatalogueLine/cac:ComponentRelatedItem/cbc:ID
+a|
+*ComponentRelatedItem/*
+
+*Item quantity*
+
+ |Catalogue/cac:CatalogueLine/cac:ComponentRelatedItem/cbc:Quantity
+a|
+*AccessoryRelatedItem/*
+
+*Item identifier*
+
+ |Catalogue/cac:CatalogueLine/cac:AccessoryRelatedItem/cbc:ID
+a|
+*AccessoryRelatedItem/*
+
+*Item quantity*
+
+ |Catalogue/cac:CatalogueLine/cac:AccessoryRelatedItem/cbc:Quantity
+a|
+*ReplacedItem/*
+
+*Item identifier*
+
+ |Catalogue/cac:CatalogueLine/cac:ReplacedRelatedItem/cbc:ID
+a|
+*ReplacedItem/*
+
+*Item quantity*
+
+ |Catalogue/cac:CatalogueLine/cac:ReplacedRelatedItem/cbc:Quantity
+a|
+*ItemPackaging/*
+
+*Packed units*
+
+ |Catalogue/cac:CatalogueLine/cac:ComponentRelatedItem/cbc:Quantity/@unitCode
+a|
+*ItemPackaging/*
+
+*Packed quantity*
+
+ a|
+Catalogue/cac:CatalogueLine/cac:Item/cbc:PackQuantity and
+
+Catalogue/cac:CatalogueLine/cac:ComponentRelatedItem/cbc:Quantity
+
+|*Consumable unit* |Catalogue/cac:CatalogueLine/cac:RequiredItemLocationQuantity/cac:DeliveryUnit/ cbc:ConsumerUnitQuantity/@unitCode
+|*Consumable unit quantity* |Catalogue/cac:CatalogueLine/cac:RequiredItemLocationQuantity/cac:DeliveryUnit/ cbc:ConsumerUnitQuantity
+|*Packaging level* |Catalogue/cac:CatalogueLine/cbc:PackLevelCode
+|*Height* |Catalogue/cac:CatalogueLine/cac:Item/cac:Dimension/cbc:Measure
+|*Length* |Catalogue/cac:CatalogueLine/cac:Item/cac:Dimension/cbc:Measure
+|*Width* |Catalogue/cac:CatalogueLine/cac:Item/cac:Dimension/cbc:Measure
+|*Weight* |Catalogue/cac:CatalogueLine/cac:Item/cac:Dimension/cbc:Measure
+|*Minimum storage temperature* |Catalogue/cac:CatalogueLine/cac:Item/cac:Dimension/cbc:MinimumMeasure
+|*Maximum storage temperature* |Catalogue/cac:CatalogueLine/cac:Item/cac:Dimension/cbc:MaximumMeasure
+|====
+
+[[features-removed]]
+= Features removed
+
+[cols="2,4",options="header",]
+|====
+|*Business term* |
+|*Building Number for Supplier* |General decision for all BIS documents
+|*Postbox for Supplier* |General decision for all BIS documents
+|*Department for Supplier* |General decision for all BIS documents
+a|
+*PartyTaxScheme/*
+
+*CompanyIdentifier*
+
+ |General decision for all BIS documents
+|====
+
+[[differences-in-representation]]
+= Differences in representation
+
+[cols="2,4",options="header",]
+|====
+|**Business term** |
+|*Tax Scheme ID* a|
+BII2 does not allow for en explicit specification of Tax Scheme ID = VAT as VAT is assumed to be the only tax scheme specified.
+
+In the current PEPPOL BIS this is expected to be explicitly stated although the same restriction applies.
+
+|*Contact person for Supplier and Customer* |BII2 only allow for the specification of Contact Person Name and not different elements for First name, Middle name and Family name.
+|*Item property type and value* |This specific field is not recognized in the BII2 requirement model as it does not assume any given syntax implementation.
+|*Item expiry date* |Moved from “ItemInstance/LotIdentification” to “AdditionalItemProperty”
+|====
+
+[[features-added-as-extensions-or-changes-to-bii2]]
+= Features added as extensions or changes to BII2
+
+Restrictions made in form of new business rules are not listed in this section, for these we refer to chapter 7 and the Conformance statement document.
+Descriptions of the new requirements are found in chapter 5.3.
+
+[cols=",,",options="header",]
+|====
+|**Business term** |*Requested by* |*UBL binding*
+|*Contracted item indicator* |*Sweden* |Catalogue/cac:CatalogueLine/cac:Item/cac:TransactionConditions/ cbc:ActionCode.
+ActionCode="CT" Contracted item indicator
+|*Contract subdivision* |*Denmark * a|
+Used to reference subsection of contract
+
+Catalogue/cac:CatalogueLine/cbc:ContractSubdivision
+
+|*External item specifiations type* |*Norway* a|
+Catalogue/cac:CatalogueLine/cac:Item/ cac:ItemSpecificationDocumentReference/cbc :DocumentTypeCode.
+
+Changed from cbc:DocumentDescription in BII.
+
+|*Maximum storage humidity* |*Sweden* |Catalogue/cac:CatalogueLine/cac:Item/cac:Dimension/ cbc:MaximumMeasure.
+|*Minimum storage humidity* |*Sweden* |Catalogue/cac:CatalogueLine/cac:Item/cac:Dimension/ cbc:MinimumMeasure.
+|*Package volume* |*Sweden* a|
+Catalogue/cac:CatalogueLine/cac:Item/cac:Dimension/cbc:Measure
+
+AttributeID=ABJ
+
+|*Package net weight exact* |*Sweden* a|
+Catalogue/cac:CatalogueLine/cac:Item/cac:Dimension/cbc:Measure
+
+AttributeID=AAF
+
+|*Package net weight approximately* |*Sweden* a|
+Catalogue/cac:CatalogueLine/cac:Item/cac:Dimension/cbc:Measure
+
+AttributeID=AAL
+
+|*Dimension description* |*Sweden* |Catalogue/cac:CatalogueLine/cac:Item/cac:Dimension/cbc:Description
+|*Brand Name* |*Sweden* |Catalogue/cac:CatalogueLine/cac:Item/cbc:BrandName
+|*General payment condition* |*Italy* |Catalogue cac:TradingTerms/cbc:Information
+|*Minimum quantity guarantied for delivery* |*Italy* |Catalogue/cac:CatalogueLine/cac:Itemcac:AdditionalItemProperty/ cbc:ValueQuantity
+|*Contact Person ID* |*Norway* |Catalogue/cac:ContractorCustomerParty/cac:Party/cac:Contact/cbc:ID
+|*@name for ItemClassificationCode* |*Sweden* |Catalogue/cac:CatalogueLine/cac:Item/cac:CommodityClassification/ cbc:ItemClassificationCode/@name
+|*Base Quantity* |*Sweden* |Catalogue/cac:CatalogueLine/ cac:RequiredItemLocationQuantity/cbc:BaseQuantity
+|*Orderable Unit Factor Rate* |*Denmark * a|
+Catalogue/cac:CatalogueLine/cac:RequiredItemLocationQuantity/ cac:Price/cbc:OrderableUnitFactorRate.
+
+Factor to convert Base Quantity to an Orderable Unit.
+
+|*Quantity threshold* |*Sweden* |Catalogue/cac:CatalogueLine/ cac:RequiredItemLocationQuantity/cbc:MinimumQuantity
+|*Quantity ceiling* |*Sweden* |Catalogue/cac:CatalogueLine/ cac:RequiredItemLocationQuantity/cbc:MaximumQuantity
+|*Transaction conditions* |*Sweden* a|
+Catalogue/cac:CatalogueLine/cac:Item/cac:TransactionConditions/ cbc:ID and cbc:ActionCode +
+ActionCode=”VQ”: Variable measure indicator
+
+ActionCode=”RC”: Returnable unit, indicator
+
+ActionCode=”SER”: Trade item is a service
+
+ActionCode=”MTO”: Trade item is produced after it has been ordered
+
+|*Party Legal Entity for provider* |*Denmark * |Catalogue/cac:ProviderParty/cac:PartyLegalEntity
+|*Postal Address for Provider* |*Denmark * |Catalogue/cac:ProviderParty/cac:PostalAddress
+|*Party Legal Entity for Receiver* |*Denmark * |Catalogue/cac:ReceiverParty/cac:PartyLegalEntity
+|*Postal address for Receiver* |*Denmark * |Catalogue/cac:ReceiverParty/cac:PostalAddress
+|*Issue date for referenced contract* |*Denmark * |Catalogue/cac:ReferencedContract/cbc:IssueDate
+|*Issuer Party name for certificate* |*Common* a|
+Catalogue/cac:CatalogueLine/cac:Item/cac:Certificate/cac:IssuerParty/ cac:PartyName.
+
+Composite element IssuerParty is mandatory in UBL.
+
+|*DocumentTypeCode for certificate* |*Common* a|
+Catalogue/cac:CatalogueLine/cac:Item/cac:Certificate/ cbc:CertificateTypeCode.
+
+Certificate Type Code is mandatory in UBL.
+
+|*Consumable Unit Quantity* |*Common* |Changed UBL binding to: Catalogue/cac:CatalogueLine/cac:CatalogueItem/cbc:PackSizeNumeric
+|*Validity period for Price* |*Sweden* a|
+Changed UBL binding to:
+
+Catalogue/cac:CatalogueLine/cac:RequiredItemLocationQuantity/ cac:Price/cac:ValidityPeriod
+
+|*Item Net quantity* |*Common* |Changed UBL binding to: Catalogue/cac:CatalogueLine/cbc:ContentUnitQuantity
+|*ExtendedID* |*Common* |Removed element Catalogue/cac:CatalogueLine/cac:Item/ cac:SellersItemIdentification/cbc:ExtendedID to be in compliance with other BIS documents.
+|====

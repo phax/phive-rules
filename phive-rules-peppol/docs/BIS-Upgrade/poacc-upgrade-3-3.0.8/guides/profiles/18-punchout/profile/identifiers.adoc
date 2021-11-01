@@ -1,0 +1,6 @@
+[[namespaces]]
+= Namespaces
+
+The shopping cart data model is in this PEPPOL BIS bound to the {ubl} of the Catalogue document type {ubl-catalogue}. The target namespace for the UBL-Catalogue-2.1 is:
+
+`urn:oasis:names:specification:ubl:schema:xsd:Catalogue-2`

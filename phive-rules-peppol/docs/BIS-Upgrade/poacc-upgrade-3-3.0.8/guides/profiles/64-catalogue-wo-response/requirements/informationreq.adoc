@@ -1,0 +1,613 @@
+[[information-requirements]]
+= Information requirements
+
+[[catalogue-transaction-business-requirements]]
+== Catalogue transaction business requirements
+
+[[general]]
+=== General
+
+[cols="1,5",options="header",]
+|====
+a|
+
+*ID*
+
+
+ a|
+
+*Requirement*
+
+
+a|
+
+tbr19-058
+
+
+ a|
+
+All transaction (catalogue and responses) must contain all information necessary for its application i.e. it shall not rely on the availability of external references such as a centralised repository of item information.
+To ease the processing of a catalogue or a response, as no external data sources are needed.
+
+
+a|
+
+tbr19-059
+
+
+ a|
+
+It must be possible to check the integrity and authentication of the information content and to audit these aspects of the content.
+To check that the catalogue or the response is authentic.
+
+
+|====
+
+[[header]]
+=== Header
+
+[cols="1,5",options="header",]
+|====
+a|
+
+*ID*
+
+
+ a|
+
+*Requirement*
+
+
+a|
+
+tbr19-071
+
+
+ a|
+
+A catalogue transaction must contain an identifier for the catalogue it represents or updates
+
+
+a|
+
+tbr19-001
+
+
+ a|
+
+An indicator for the catalogue revision may be specified.
+To support updating the
+
+
+| a|
+
+catalogue after the first submission a revision indicator is sometimes needed to differentiate the catalogue versions.
+This indicator ensures the catalogue provider (CP) and catalogue receiver (CR) always refer to the correct and valid version of the catalogue.
+
+
+a|
+
+tbr19-002
+
+
+ a|
+
+It must be possible to specify a name of the catalogue.
+Some catalogues have a special name used in the common communication.
+Sometimes the name refers to a special event the catalogue is created for.
+
+
+a|
+
+tbr19-003
+
+
+ a|
+
+It must be possible to specify the period of time the catalogue is valid.
+A catalogue without a stated validity period is assumed to be valid until it is cancelled.
+Sometimes products are offered only for a certain period of time or the prices for the product are assured to be fixed by the CP only during this period of time.
+
+
+a|
+
+tbr19-006
+
+
+ a|
+
+It must be possible to specify the contract on which the catalogue is based on.
+
+Sometimes a catalogue is provided according to a contract, e.g., a framework agreement (FWA). In such a FWA further requirements on the catalogue may be specified.
+A catalogue transaction either refers to one contract/agreement or none.
+
+
+a|
+
+tbr19-007
+
+
+ a|
+
+The party providing the catalogue must be specified.
+To check, if the catalogue comes from or is sent on behalf of the right CP.
+The party may be the supplier or a dedicated third party acting on behalf of the supplier.
+
+
+a|
+
+tbr19-010
+
+
+ a|
+
+The party receiving the catalogue must be specified.
+To check, if the catalogue sent to the same CR as specified in the catalogue.
+
+
+a|
+
+tbr19-015
+
+
+ a|
+
+It must be possible to specify who offers the items described in the catalogue and how this party can be contacted (mail, e-mail, phone, etc.). Only one supplier is allowed to be specified.
+As the catalogue provider can differ from the supplier itself, e.g., the supplier outsourced all catalogue services to a catalogue provider, the supplier has to be specified as well.
+This party is the actual Economic Operator the Contracting Authority is doing business with.
+
+
+a|
+
+tbr19-062
+
+
+ a|
+
+A catalogue must have information that makes it possible to reference specific instances of the catalogue.
+
+
+a|
+
+tbr19-066
+
+
+ a|
+
+The party that sells the products that are listed in the catalogue must be identifiable with information including name, address, identifiers as well as contact information.
+
+
+a|
+
+tbr19-067
+
+
+ a|
+
+The party that is allowed to buy the products that are listed in the catalogue must be identifiable with information including name and identifiers as well as contact information.
+
+
+a|
+
+tbr19-075
+
+
+ a|
+
+It must be possible to specify whether a catalogue is new, to be updated or to be replaced.
+
+
+|====
+
+[[item]]
+=== Item
+
+[cols="1,5",options="header",]
+|====
+a|
+
+*ID*
+
+
+ a|
+
+*Requirement*
+
+
+a|
+
+tbr19-040
+
+
+ a|
+
+An item in a Product or Service Catalogue must have a name and be uniquely identifiable by at least one single language-independent token.
+This includes such id provided by the CP itself as well as a manufacturer's id and an id coming from standard identification schemes.
+Ensure that the item can be referenced, e.g., in the order.
+The id can be used in the order, which makes it easier to process the order by the supplier and helps to deliver the correct item that was ordered by the buyer.
+
+
+a|
+
+tbr19-050
+
+
+ a|
+
+It must be possible to specify how the item has to be processed by the catalogue receiver.
+This includes the following options: adding the item to the catalogue, replacing an existing item in a catalogue sent before, and deleting an item in a catalogue sent before.
+If no action is specified it has to be considered as a new item.
+It is intended to provide a synchronization mechanism between the catalogue of the catalogue provider and the catalogue receiver.
+
+
+a|
+
+tbr19-041
+
+
+ a|
+
+It must be possible to specify the period of time the item is valid.
+If no validity period is specified, the item description is valid until it is cancelled.
+The same as in tbr19-003, but on the item level.
+This allows to have items with different validity periods in the same catalogue.
+Otherwise, for every a validity period a separate catalogue would need to be provided.
+
+
+a|
+
+tbr19-018
+
+
+ a|
+
+It must be possible to refer an item to the corresponding classes from one or more classification systems.
+Often, the usage of a classification system, e.g., CPV, UNSPSC, eCl@ss, or GS1 GPC, is mandatory or widely used in practice.
+By this requirement, it should be possible to use any classification systems mandated by Contracting Authorities or legal frameworks.
+
+
+a|
+
+tbr19-019
+
+
+ a|
+
+It must be possible to specify the (semantic) relationships and cardinalities between different items in the catalogue.
+In particular, in must be possible to specify part-of relationships and required (additional) items.
+Some items are not offered by a supplier individually.
+They are either only useful together with another item or refer in some manner to a specific item.
+Examples for such items are accessories belonging to and only applicable with another item or replacement
+
+items to replace broken components of an item. (In future version of BII other relationships may be added, e.g., replacement items, complementary items, or accessories.)
+
+
+a|
+
+tbr19-042
+
+
+ a|
+
+It must be possible to specify, if and how an item can be ordered.
+This includes allowed units of measure, order sizes, minimal and maximal order sizes, etc.
+Due to restriction from the production process or to simplify or to limit the costs of the ordering and logistics process the order size is restricted.
+Thus, the buyer needs information to place a correct order that is not denied by the supplier.
+
+
+a|
+
+tbr19-023
+
+
+ a|
+
+It must be possible to specify how the delivered items will be packaged.
+To indicate from which number of ordered order units this package unit will be delivered.
+
+
+a|
+
+tbr19-029
+
+
+ a|
+
+It must be possible to specify hazard indicators for an item by any indicator system.
+If an item can be a danger to people or the environment, so called hazardous goods, often legal requirements demand that such items have indicators to indicate the danger that come from this item.
+Furthermore, such items require special handling in the logistics process.
+
+
+a|
+
+tbr19-030
+
+
+ a|
+
+It must be possible to specify logistic conditions and other needed service information on how the item will be delivered.
+This includes information on maximum and minimum storage temperature, information needed for cross-border logistics processes.
+To define the work or services to be done for each package unit along the supply chain.
+
+
+a|
+
+tbr19-033
+
+
+ a|
+
+It must be possible to specify the manufacturer of the item.
+In particular, for the case where the supplier is different from the manufacturer of the item.
+
+
+a|
+
+tbr19-034
+
+
+ a|
+
+It must be possible to specify how the item is priced, and what VAT percentage applies.
+This includes factors that have influence on the price as well as relationships to other parts of the catalogue that may have impact on the price.
+
+The price is not always fixed, but dependent on many factors, e.g., order size, delivery region (down to the city level), allowance, charges, currency, etc.
+Prices must not be negative.
+
+
+a|
+
+tbr19-046
+
+
+ a|
+
+The price specification must allow to compare the prices of different items within the catalogue as well as across catalogues.
+To allow the comparison of the price of different items.
+Helps the buyer to make the buying decision.
+
+
+a|
+
+tbr19-048
+
+
+ a|
+
+It must be possible to specify the period of time an item price is valid.
+If no validity period is specified, the price is valid until cancelled.
+The same as in tbr19-003, but on the item level.
+This allows to have items with different validity periods in the same catalogue.
+This does not mean, that the item will expire.
+It only means, that after this period the item has to be ordered for a different price.
+
+
+a|
+
+tbr19-049
+
+
+ a|
+
+It must be possible to specify a delivery location on line level, with address, city, post code, etc., so that all details on each line are dependent on this location, including price, tax and other specifications.
+Needed to support the buying decision, to see how much has to be paid in the end.
+
+
+a|
+
+tbr19-035
+
+
+ a|
+
+It must be possible to provide information on the product marking, e.g., to indicate that environmental or social requirements on the item production were followed.
+Procurement managers need information about environmental marking applicable for a given item in order to ensure that environmental, ecological, food safety and basic human rights aspects were respected.
+On the other side, sales managers wish to provide this kind of information, e.g., for marketing purposes.
+
+
+a|
+
+tbr19-043
+
+
+ a|
+
+It must be possible to specify if and when an item becomes obsolete.
+This allows the suppliers to indicate that an item is not produced and delivered any more or until a certain point in time.
+By giving this information, it is prevented that the buyer orders items that will not be delivered any more.
+This requirement has a different meaning than tbr19-048.
+Tbr19-048 concerns the validity of the price.
+In tbr19-043 the “validity” refers on the item, i.e., product or service, when it will not be available.
+This means, the item itself will not be available and delivered by the supplier any more (to any condition).
+
+
+a|
+
+tbr19-044
+
+
+ a|
+
+It must be possible to specify a description of the item or where such a description can be found.
+To provide a written text describing the item.
+May be helpful for the buyer to order the items fitting his needs best.
+
+
+a|
+
+tbr19-045
+
+
+ a|
+
+It must be possible to specify keywords for an item.
+To support searching for an item by the buyer, so that the item can be found easier and faster that fits his needs best.
+
+
+a|
+
+tbr19-047
+
+
+ a|
+
+It must be possible to specify warranty information for the item.
+Sometimes suppliers offer specific warranties for their items that may be important for the buyer.
+Providing such information supports the buying decision.
+
+
+a|
+
+tbr19-063
+
+
+ a|
+
+A catalogue must have information that makes it possible to reference individual catalogue lines.
+
+
+a|
+
+tbr19-064
+
+
+ a|
+
+A catalogue line must provide for an indicator that clearly states whether the line item can be ordered according to the information given in the line.
+
+
+a|
+
+tbr19-065
+
+
+ a|
+
+A catalogue line must provide for additional information about items in the form of attachments and external references.
+
+
+a|
+
+tbr19-068
+
+
+ a|
+
+It must be possible to specify a manufacturing date, a best before date and an expiry date (last date when product may be used or consumed) for an item.
+
+
+a|
+
+tbr19-069
+
+
+ a|
+
+It must be possible to specify serial numbers, batch numbers and lot numbers for an item.
+
+
+a|
+
+tbr19-070
+
+
+ a|
+
+It must be possible to include or reference (e.g. by means of a URI) the main image for an item.
+
+
+a|
+
+tbr19-072
+
+
+ a|
+
+In addition to part-of relationships and required (additional) items there is also a need to identify replaced item.
+In cases where an old item is replaced by a new one this is frequently reflected in the catalogue by deleting the old item and adding the new item.
+The new item should then have a reference to the old (replaced) item.
+
+
+a|
+
+tbr19-073
+
+
+ a|
+
+Products are frequently sold with optional accessories.
+In addition to part-of relationships and required (additional) items there is also a need to identify these optional accessories in the catalogue.
+
+
+a|
+
+tbr19-076
+
+
+ a|
+
+It must be possible to state the country of origin for an item.
+
+
+a|
+
+tbr19-077
+
+
+ a|
+
+It must be possible to indicate that the item is part of a contractual arrangement.
+
+
+|====
+
+[[item-property]]
+=== Item Property
+
+[cols="1,5",options="header",]
+|====
+a|
+
+*ID*
+
+
+ a|
+
+*Requirement*
+
+
+a|
+
+tbr19-038
+
+
+ a|
+
+It must be possible to specify any additional properties of the item not covered by the message itself.
+Allows to enhance the description of the item and helps this way, inter alia, the buyer to order the item that fits his needs best.
+
+
+a|
+
+tbr19-037
+
+
+ a|
+
+It must be possible to refer an item property to any property from a product/service classification system, using standardized and predefined properties from accepted standards.
+Such predefined properties help to improve the description of an offered item, and thus helps the buyer to order the correct item, the item that fits his needs best.
+
+
+a|
+
+tbr19-039
+
+
+ a|
+
+If an item property is specified, a specific value has to be specified for this item property.
+The specified value has to hold true for the corresponding item.
+The specification of a concrete value helps to ensure that the buyer orders the item that fits his needs best.
+
+
+|====

@@ -1,0 +1,25 @@
+[[code-lists-business-rules]]
+= Code lists business rules
+
+[cols="1,4,1",options="header",]
+|====
+|*Rule ID* |*Rule* |*Error level*
+|CL-T19-001 |The action code for a catalogue line MUST be Add, Update or Delete if present |fatal
+|CL-T19-002 |For Mime code in attribute use MIME Media Type |fatal
+|CL-T19-004 |Tax categories MUST be coded using UN/ECE 5305 code list |fatal
+|OP-T19-001 |Country codes in a catalogue MUST be coded using ISO code list 3166-1 alpha2 |fatal
+|OP-T19-002 |Unit code MUST be coded according to the UN/ECE Recommendation 20 |fatal
+|OP-T19-003 |UNDG MUST be coded according to the UN EDIFACT 8273 code list |fatal
+|OP-T19-005 |An Endpoint Identifier Scheme MUST be from the list of PEPPOL Party Identifiers. |fatal
+|OP-T19-006 |An Party Identifier Scheme MUST be from the list of PEPPOL Party Identifiers |fatal
+|OP-T19-007 |An action code at header level MUST be from the PEPPOL action code list. |fatal
+|OP-T19-008 |A package level code MUST be from the PEPPOL subset of GS1 7009 code list. |fatal
+|OP-T19-009 |An attribute identifier MUST be from the UN EDIFACT 6313 code list. |fatal
+|OP-T19-010 |Orderable unit code MUST be coded according to the UN/ECE Recommendation 20 |fatal
+|OP-T19-011 |Currency ID MUST be coded using ISO code list 4217 |fatal
+|OP-T19-012  |languageID MUST be coded using ISO code list 639-1   |fatal
+|OP-T19-013 |A Party Company Identifier Scheme MUST be from the list of PEPPOL Party Identifiers |fatal
+|OP-T58-001 |An Endpoint Identifier Scheme MUST be from the list of PEPPOL Party Identifiers. |fatal
+|OP-T58-002 |A Party Identifier Scheme MUST be from the list of PEPPOL Party Identifiers |fatal
+|OP-T58-003 |A Response code MUST be from the UN CEFACT 4343 code list PEPPOL subset. |fatal
+|====

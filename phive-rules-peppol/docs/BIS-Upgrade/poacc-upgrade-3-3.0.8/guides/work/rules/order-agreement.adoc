@@ -1,0 +1,71 @@
+
+= Order Agreement rules
+
+== Transaction rules
+
+The following rules apply to the order agreement transaction as it is used in the Order agreement BIS
+[cols="^1,1s,4,1",options="header"]
+|====
+|Auto/Manual
+|RuleID
+|Rule
+|Error level
+|A|BII3-T110-R001|An Order agreement MUST have a customization identifier.|fatal
+|A|BII3-T110-R002|An Order agreement MUST have a BIS identifier.|fatal
+|A|BII3-T110-R003|An Order agreement MUST contain the date of issue.|fatal
+|A|BII3-T110-R005|An Order agreement MUST contain the Order agreement identifier.|fatal
+|A|BII3-T110-R006|An Order agreement MUST specify the buying party.|fatal
+|A|BII3-T110-R007|An Order agreement MUST specify the selling party.|fatal
+|A|BII3-T110-R008|An Order agreement MUST have at least one Order agreement line.|fatal
+|A|BII3-T110-R009|An Order agreement line MUST contain a #unique# line identifier.|fatal
+|M|BII3-T110-R011|Prices of items MUST not be negative.|fatal
+|M|BII3-T110-R012|An item in an Order agreement line MUST be identifiable by either “item sellers identifier” or “item standard identifier”.|fatal
+|A|BII3-T110-R015|An Order agreement line MUST specify line VAT information.|fatal
+|A|BII3-T110-R018|A seller MUST contain the seller identifier|fatal
+|A|BII3-T110-R019a|A seller name MUST be at most one|fatal
+|A|BII3-T110-R019b|A seller id MUST be at most one|fatal
+|A|BII3-T110-R019c|A buyer name MUST be at most one|fatal
+|A|BII3-T110-R019d|A buyer id MUST be at most one|fatal
+|A|BII3-T110-R020|A buyer MUST contain the buyer identifier|fatal
+|A|BII3-T110-R021|An Order agreement line MUST contain a quantity and it should not be 0|fatal
+|A|EUGEN-T110-R001|An endpoint identifier MUST have a scheme identifier attribute|fatal
+|-|EUGEN-T110-R002|A party identifier MUST have a scheme identifier attribute|fatal
+|-|EUGEN-T110-R003|A document currency code MUST have a list identifier attribute “ISO4217”|fatal
+|-|EUGEN-T110-R004|A country identification code MUST have a list identifier attribute “ISO3166-1:Alpha2”|fatal
+|-|EUGEN-T110-R005|A unit code attribute MUST have a unit code list identifier attribute “UNECERec20”|fatal
+|-|EUGEN-T110-R006|A tax category identifier MUST have a scheme identifier attribute “UNCL5305”|fatal
+|A|EUGEN-T110-R007|CustomizationID must be: urn:www.cenbii.eu:transaction:biitrns110:ver1.0:extended:urn:www.peppol.eu:bis:peppol42a:ver1.0|fatal
+|A|EUGEN-T110-R008|ProfileID must be: urn:www.cenbii.eu:profile:bii42:ver1.0|fatal
+|A|EUGEN-T110-R009|Sellers endpoint id must exist|fatal
+|A|EUGEN-T110-R010|Buyers endpoint id must exist|fatal
+|M|EUGEN-T110-R011|All amounts must have same currency code as document currency|fatal
+|-|EUGEN-T110-R013|Item classification codes must include code list value (listID)|fatal
+|A|EUGEN-T110-R015|Allowances and charges MUST have a reason|fatal
+|M|EUGEN-T110-R016|Total amount for payment MUST NOT be negative, if total amount for payment is provided.|fatal
+|M|EUGEN-T110-R017|Total sum of line amounts MUST NOT be negative, if total sum of line amounts is provided.|fatal
+|M|EUGEN-T110-R019|Total sum of line amounts MUST equal the sum of the order line amounts at order line level, if total sum of line amounts is provided.|fatal
+|M|EUGEN-T110-R020|Total sum of charges at document level MUST be equal to the sum of charges at document level, if total sum of charges at document level is provided.|fatal
+|M|EUGEN-T110-R021|Total sum of allowance at document level MUST be equal to the sum of allowance amounts at document level, if total sum of allowance at document level is provided.|fatal
+|M|EUGEN-T110-R022|Tax exclusive amount MUST equal the sum of line amount plus total charge amount at document level less total allowance amount at document level if tax exclusive amount is provided.|fatal
+|M|EUGEN-T110-R023|Tax inclusive amount must equal tax exclusive amount plus total tax amount.|fatal
+|M|EUGEN-T110-R024|Total amount for payment MUST be equal to the tax inclusive amount plus rounding amount.|fatal
+|-|EUGEN-T110-R025|UBLVersionID must be 2.1|fatal
+|A|EUGEN-T110-R026|Each item label must have an item label name.|fatal
+|A|EUGEN-T110-R027|Each item label must have an item label value.|fatal
+|====
+
+== Code list rules
+
+[cols="^1,1s,5",options="header"]
+|====
+|Auto/Manual |Identifier |Business Rule
+|A|CL-T110-R001 |currencyID for Amounts MUST be coded using ISO code list 4217
+|A|CL-T110-R002 |Order agreement currency MUST be coded using ISO code list 4217
+|A|CL-T110-R003 |#An Endpoint Identifier Scheme MUST be from the list of PEPPOL Party Identifiers described in the "PEPPOL Policy for using Identifiers".#
+|A|CL-T110-R004 |#A Party Identifier Scheme MUST be from the list of PEPPOL Party Identifiers described in the "PEPPOL Policy for using Identifiers".#
+|A|CL-T110-R005 |#VAT category code MUST be coded using UNCL 5305 code list BII3 subset#
+|A|CL-T110-R006 |Unit code for quantities MUST be coded according to the UN/ECE Recommendation 20
+|A|CL-T110-R007 |For Mime code in attribute use MIME Media Types.
+|A|CL-T110-R009 |Country codes MUST be from ISO 3166-1 alpha2
+|A|CL-T110-R010 |Commodity code schemes MUST be according to CENBII3 COMMODITY_SCHEME_ID
+|====

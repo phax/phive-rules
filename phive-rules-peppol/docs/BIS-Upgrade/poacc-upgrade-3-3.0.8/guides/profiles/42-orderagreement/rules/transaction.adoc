@@ -1,0 +1,81 @@
+[[bii-order-agreement-transaction-rules]]
+= CENBII Order Agreement transaction rules
+
+The following rules apply to the order agreement transaction as it is used in the Order agreement BIS
+
+[cols="1,2,2,1",options="header",]
+|====
+|*Rule ID*|*Rule*|*Req ID*|*Error level*
+|BII3-T110-R001|An Order agreement MUST have a customization identifier.|tir110-009|fatal
+|BII3-T110-R002|An Order agreement MUST have a BIS identifier.|tir110-008|fatal
+|BII3-T110-R003|An Order agreement MUST contain the date of issue.|tir110-002|fatal
+|BII3-T110-R005|An Order agreement MUST contain the Order agreement identifier.|tir110-001|fatal
+|BII3-T110-R006|An Order agreement MUST specify the buying party.|tir110-010/011|fatal
+|BII3-T110-R007|An Order agreement MUST specify the selling party.|tir110-013/014|fatal
+|BII3-T110-R008|An Order agreement MUST have at least one Order agreement line.||fatal
+|BII3-T110-R009|An Order agreement line MUST contain a unique line identifier.|tir110-022|fatal
+|BII3-T110-R011|Prices of items MUST not be negative.|tir110-109|fatal
+|BII3-T110-R012|An item in an Order agreement line MUST be identifiable by either “item sellers identifier” or “item standard identifier”.|tir110-033/034|fatal
+|BII3-T110-R015|An Order agreement line MUST specify line VAT information.||fatal
+|BII3-T110-R018|A seller MUST contain the seller identifier|tir110-014|fatal
+|BII3-T110-R019a|A seller name MUST be at most one|tir110-013|fatal
+|BII3-T110-R019b|A seller id MUST be at most one|tir110-014|fatal
+|BII3-T110-R019c|A buyer name MUST be at most one|tir110-010|fatal
+|BII3-T110-R019d|A buyer id MUST be at most one|tir110-011|fatal
+|BII3-T110-R020|A buyer MUST contain the buyer identifier||fatal
+|BII3-T110-R021|An Order agreement line MUST contain a quantity and it should not be 0|tir110-093|fatal
+|====
+
+== PEPPOL Order Agreement transaction business rules
+
+Following rules have been defined by OpenPeppol in addition to the rules adopted from the BII specifications. These rules apply in all implementations that follow this PEPPOL BIS.
+
+[cols="1s,2,2,1",options="header",]
+|====
+|Rule ID|Rule|Req ID|Error level
+|EUGEN-T110-R001|An endpoint identifier MUST have a scheme identifier attribute|tir110-015 +
+tir110-012|fatal
+|EUGEN-T110-R002|A party identifier MUST have a scheme identifier attribute|tir110-014 +
+tir110-013|fatal
+|EUGEN-T110-R003|A document currency code MUST have a list identifier attribute “ISO4217”|tir110-007|fatal
+|EUGEN-T110-R004|A country identification code MUST have a list identifier attribute “ISO3166-1:Alpha2”|tir110-062 +
+tir110-056 +
+tir110-077|fatal
+|EUGEN-T110-R005|A unit code attribute MUST have a unit code list identifier attribute “UNECERec20”|tir110-093|fatal
+|EUGEN-T110-R006|A tax category identifier MUST have a scheme identifier attribute “UNCL5305”|OP-110-005 +
+tir110-106|fatal
+|EUGEN-T110-R007|CustomizationID must be: urn:www.cenbii.eu:transaction:biitrns110:ver1.0:extended:urn:www.peppol.eu:bis:peppol42a:ver1.0|tir110-009|fatal
+|EUGEN-T110-R008|ProfileID must be: urn:www.cenbii.eu:profile:bii42:ver1.0|tir110-008|fatal
+|EUGEN-T110-R009|Sellers endpoint id must exist|tir110-015|fatal
+|EUGEN-T110-R010|Buyers endpoint id must exist|tir110-012|fatal
+|EUGEN-T110-R011|All amounts must have same currency code as document currency|
+tir110-007 +
+tir110-086 +
+tir110-087 +
+tir110-088 +
+tir110-089 +
+tir110-090 +
+tir110-108 +
+tir110-109 +
+tir110-112 +
+OP110-004 +
+OP110-008 +
+OP110-009 +
+OP110-010 +
+|fatal
+|EUGEN-T110-R013|Item classification codes must include code list value (listID)|tir110-096 +
+tir110-097|fatal
+|EUGEN-T110-R015|Allowances and charges MUST have a reason|OP-110-002 +
+OP-110-012|fatal
+|EUGEN-T110-R016|Total amount for payment MUST NOT be negative, if total amount for payment is provided.|tir110-090|fatal
+|EUGEN-T110-R017|Total sum of line amounts MUST NOT be negative, if total sum of line amounts is provided.|tir110-086|fatal
+|EUGEN-T110-R019|Total sum of line amounts MUST equal the sum of the order line amounts at order line level, if total sum of line amounts is provided.|tir110-086|fatal
+|EUGEN-T110-R020|Total sum of charges at document level MUST be equal to the sum of charges at document level, if total sum of charges at document level is provided.|OP-110-008|fatal
+|EUGEN-T110-R021|Total sum of allowance at document level MUST be equal to the sum of allowance amounts at document level, if total sum of allowance at document level is provided.|OP-110-009|fatal
+|EUGEN-T110-R022|Tax exclusive amount MUST equal the sum of line amount plus total charge amount at document level less total allowance amount at document level if tax exclusive amount is provided.|tir110-087|fatal
+|EUGEN-T110-R023|Tax inclusive amount must equal tax exclusive amount plus total tax amount.|tir110-088|fatal
+|EUGEN-T110-R024|Total amount for payment MUST be equal to the tax inclusive amount plus rounding amount.|tir110-090|fatal
+|EUGEN-T110-R025|UBLVersionID must be 2.1||fatal
+|EUGEN-T110-R026|Each item label must have an item label name.|OP-110-013|fatal
+|EUGEN-T110-R027|Each item label must have an item label value.|OP-110-014|fatal
+|====

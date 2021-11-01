@@ -1,0 +1,13 @@
+= Version 3.0.6 - hotfix
+[horizontal]
+Release date:: 2020-11-09
+
+== Changes to syntax
+* Corrected cardinality of cac:DespatchLine/cac:OrderLineReference/cac:OrderLine to 0..1 instead of 1..1 in Despatch Advice in line with BIS specification.[POACC-347]
+
+== Changes to code lists and validation artefacts
+* Removed rule PEPPOL-T16-R002 that triggered a warning when cac:OrderReference/cbc:ID in DespatchAdvice was absent [POACC-347]
+
+== Changes to previous release notes
+* A release note in version 3.0.5 was incorrect, the correct release note shall state:
+* For the Catalogue (T19) cac:Price/cac:ValidityPeriod (tir19-056/057) is marked as unbounded in the syntax description while the validation rules and BIS description expects maximum 1. Cardinality changed to 0..1 to align with requirements and business rules. [POACC-340]

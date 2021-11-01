@@ -1,0 +1,4 @@
+<function xmlns="http://www.w3.org/1999/XSL/Transform" name="u:cat2str">
+    <param name="cat"/>
+    <value-of select="concat(normalize-space($cat/cbc:ID), '-', round(xs:decimal($cat/cbc:Percent) * 1000000))"/>
+</function>

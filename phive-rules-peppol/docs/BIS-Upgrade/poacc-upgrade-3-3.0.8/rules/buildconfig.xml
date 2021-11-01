@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<buildConfigurations xmlns="http://difi.no/xsd/vefa/validator/1.0">
+
+  <package url="http://docs.peppol.eu/poacc/upgrade/3.0/">PEPPOL BIS Upgrade 3.0</package>
+
+<!-- unit testing -->
+  <testfolder>unit-catalogue</testfolder>
+  <testfolder>unit-common</testfolder>
+  <testfolder>unit-despatch-advice</testfolder>
+  <testfolder>unit-invoice-response</testfolder>
+  <testfolder>unit-order</testfolder>
+  <testfolder>unit-order-agreement</testfolder>
+  <testfolder>unit-order-response</testfolder>
+  <testfolder>unit-punch-out</testfolder>
+  
+  <!-- example and snippet folders -->
+  <testfolder>examples</testfolder>
+  <testfolder>use-case-examples/order</testfolder>
+  <testfolder>use-case-examples/order-response</testfolder>
+  <testfolder>snippets/order</testfolder>
+  <testfolder>snippets/order-response</testfolder>
+  <testfolder>snippets/order-agreement</testfolder>
+  <testfolder>snippets/catalogue</testfolder>
+  <testfolder>snippets/punchout</testfolder>
+  <testfolder>snippets/despatch</testfolder>
+  <testfolder>snippets/mlr</testfolder>
+  
+<!-- base config -->
+  <configuration>
+    <identifier>peppolbis-t01-base-3.0</identifier>
+    <title>PEPPOL Order 3.0 (T01)</title>
+    <inherit>ubl-order-2.1</inherit>
+    <file source="sch/PEPPOLBIS-T01.sch" path="xsl/PEPPOLBIS-T01.xsl"/>
+  </configuration>
+  <configuration>
+    <identifier>peppolbis-t16-base-3.0</identifier>
+    <title>PEPPOL Despatch Advice 3.0 (T16)</title>
+    <inherit>ubl-despatchadvice-2.1</inherit>
+    <file source="sch/PEPPOLBIS-T16.sch" path="xsl/PEPPOLBIS-T16.xsl"/>
+  </configuration>
+  <configuration>
+    <identifier>peppolbis-t19-base-3.0</identifier>
+    <title>PEPPOL Catalogue 3.0 (T19)</title>
+    <inherit>ubl-catalogue-2.1</inherit>
+    <file source="sch/PEPPOLBIS-T19.sch" path="xsl/PEPPOLBIS-T19.xsl"/>
+  </configuration>
+  <configuration>
+    <identifier>peppolbis-t58-base-3.0</identifier>
+    <title>PEPPOL Catalogue Response 3.0 (T58)</title>
+    <inherit>ubl-applicationresponse-2.1</inherit>
+    <file source="sch/PEPPOLBIS-T58.sch" path="xsl/PEPPOLBIS-T58.xsl"/>
+  </configuration>
+  <configuration>
+    <identifier>peppolbis-t76-base-3.0</identifier>
+    <title>PEPPOL Order Response 3.0 (T76)</title>
+    <inherit>ubl-orderresponse-2.1</inherit>
+    <file source="sch/PEPPOLBIS-T76.sch" path="xsl/PEPPOLBIS-T76.xsl"/>
+  </configuration>
+  <configuration>
+    <identifier>peppolbis-t77-base-3.0</identifier>
+    <title>PEPPOL Punch Out 3.0 (T77)</title>
+    <inherit>ubl-catalogue-2.1</inherit>
+    <file source="sch/PEPPOLBIS-T77.sch" path="xsl/PEPPOLBIS-T77.xsl"/>
+  </configuration>
+  <configuration>
+    <identifier>peppolbis-t110-base-3.0</identifier>
+    <title>PEPPOL Order Agreement 3.0 (T110)</title>
+    <inherit>ubl-orderresponse-2.1</inherit>
+    <file source="sch/PEPPOLBIS-T110.sch" path="xsl/PEPPOLBIS-T110.xsl"/>
+  </configuration>
+  <configuration>
+    <identifier>peppolbis-t111-base-3.0</identifier>
+    <title>PEPPOL Invoice Response 3.0 (T111)</title>
+    <inherit>ubl-applicationresponse-2.1</inherit>
+    <file source="sch/PEPPOLBIS-T111.sch" path="xsl/PEPPOLBIS-T111.xsl"/>
+  </configuration>
+  
+  <configuration>
+  <identifier>peppolbis-t71-base-3.0</identifier>
+  <title>PEPPOL MLR 3.0 (T71)</title>
+  <inherit>ubl-applicationresponse-2.1</inherit>
+  <file source="sch/PEPPOLBIS-T71.sch" path="xsl/PEPPOLBIS-T71.xsl"/>
+  </configuration>
+  
+  <!-- profile config -->
+  <configuration>
+    <identifier>peppolbis-03-order</identifier>
+    <title>PEPPOL BIS Order Only 3.0</title>
+    <profileId>urn:fdc:peppol.eu:poacc:bis:order_only:3</profileId>
+    <customizationId>urn:fdc:peppol.eu:poacc:trns:order:3</customizationId>
+    <inherit>peppolbis-t01-base-3.0</inherit>
+  </configuration>
+  
+  <configuration>
+    <identifier>peppolbis-28-order</identifier>
+    <title>PEPPOL BIS Ordering 3.0</title>
+    <profileId>urn:fdc:peppol.eu:poacc:bis:ordering:3</profileId>
+    <customizationId>urn:fdc:peppol.eu:poacc:trns:order:3</customizationId>
+    <inherit>peppolbis-t01-base-3.0</inherit>
+  </configuration>
+
+  <configuration>
+    <identifier>peppolbis-28-order-reponse</identifier>
+    <title>PEPPOL BIS 28 Order response 3.0 </title>
+    <profileId>urn:fdc:peppol.eu:poacc:bis:ordering:3</profileId>
+    <customizationId>urn:fdc:peppol.eu:poacc:trns:order_response:3</customizationId>
+    <inherit>peppolbis-t76-base-3.0</inherit>
+  </configuration>
+  
+  <configuration>
+    <identifier>peppolbis-42</identifier>
+    <title>PEPPOL BIS 42 Order agreement 3.0</title>
+    <profileId>urn:fdc:peppol.eu:poacc:bis:order_agreement:3</profileId>
+    <customizationId>urn:fdc:peppol.eu:poacc:trns:order_agreement:3</customizationId>
+    <inherit>peppolbis-t110-base-3.0</inherit>
+  </configuration>
+  
+  <configuration>
+    <identifier>peppolbis-1</identifier>
+    <title>PEPPOL BIS Catalogue 3.0</title>
+    <profileId>urn:fdc:peppol.eu:poacc:bis:catalogue_only:3</profileId>
+    <customizationId>urn:fdc:peppol.eu:poacc:trns:catalogue:3</customizationId>
+    <inherit>peppolbis-t19-base-3.0</inherit>
+  </configuration>
+  
+  <configuration>
+    <identifier>peppolbis-1-response</identifier>
+    <title>PEPPOL BIS Catalogue Response 3.0</title>
+    <profileId>urn:fdc:peppol.eu:poacc:bis:catalogue_only:3</profileId>
+    <customizationId>urn:fdc:peppol.eu:poacc:trns:catalogue_response:3</customizationId>
+    <inherit>peppolbis-t58-base-3.0</inherit>
+  </configuration>
+  
+  <configuration>
+    <identifier>peppolbis-1</identifier>
+    <title>PEPPOL BIS wo Catalogue  3.0</title>
+    <profileId>urn:fdc:peppol.eu:poacc:bis:catalogue_wo_response:3</profileId>
+    <customizationId>urn:fdc:peppol.eu:poacc:trns:catalogue:3</customizationId>
+    <inherit>peppolbis-t19-base-3.0</inherit>
+  </configuration>
+    
+  <configuration>
+    <identifier>peppolbis-18</identifier>
+    <title>PEPPOL BIS Punch Out 3.0</title>
+    <profileId>urn:fdc:peppol.eu:poacc:bis:punch_out:3</profileId>
+    <customizationId>urn:fdc:peppol.eu:poacc:trns:punch_out:3</customizationId>
+    <inherit>peppolbis-t77-base-3.0</inherit>
+  </configuration>
+  
+  <configuration>
+    <identifier>peppolbis-30</identifier>
+    <title>PEPPOL BIS Despatch Advice 3.0</title>
+    <profileId>urn:fdc:peppol.eu:poacc:bis:despatch_advice:3</profileId>
+    <customizationId>urn:fdc:peppol.eu:poacc:trns:despatch_advice:3</customizationId>
+    <inherit>peppolbis-t16-base-3.0</inherit>
+  </configuration>
+  
+  <configuration>
+    <identifier>peppolbis-63</identifier>
+    <title>PEPPOL BIS Invoice response 3.0</title>
+    <profileId>urn:fdc:peppol.eu:poacc:bis:invoice_response:3</profileId>
+    <customizationId>urn:fdc:peppol.eu:poacc:trns:invoice_response:3</customizationId>
+    <inherit>peppolbis-t111-base-3.0</inherit>
+  </configuration>
+  
+  <configuration>
+    <identifier>peppolbis-36</identifier>
+    <title>PEPPOL BIS Message level response 3.0</title>
+    <profileId>urn:fdc:peppol.eu:poacc:bis:mlr:3</profileId>
+    <customizationId>urn:fdc:peppol.eu:poacc:trns:mlr:3</customizationId>
+    <inherit>peppolbis-t71-base-3.0</inherit>
+  </configuration>
+</buildConfigurations>
+
+

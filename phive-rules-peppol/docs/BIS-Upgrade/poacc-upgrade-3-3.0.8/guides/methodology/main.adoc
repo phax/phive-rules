@@ -1,0 +1,27 @@
+include::links.adoc[]
+
+= image:../shared/images/peppol.png[float="right"]PEPPOL Documentation Methodology
+OpenPEPPOL AISBL, Post-Award Coordinating Community
+v0.1.0
+:doctype: book
+:icons: font
+:stem:
+:toc: left
+:toclevels: 2
+:source-highlighter: coderay
+:source-language: xml
+:sectanchors:
+:sectnums:
+
+
+:leveloffset: +1
+
+include::introduction.adoc[]
+
+include::asciidoc/index.adoc[]
+
+include::structure/index.adoc[]
+
+include::schematron/index.adoc[]
+
+:leveloffset: -1

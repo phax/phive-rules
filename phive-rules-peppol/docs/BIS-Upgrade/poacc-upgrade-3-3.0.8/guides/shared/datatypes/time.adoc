@@ -1,0 +1,24 @@
+
+= Time
+
+Time shall be in accordance to the “Extended time format” as specified by {ISO8601}, format [hh]:[mm]:[ss].
+
+
+====
+IMPORTANT: Time shall *not* include timezone information. Decimal fraction on seconds SHALL not be used.
+====
+
+
+.EN 16931_ Date. Type
+[cols="1s,1,1,1", options="header"]
+|===
+|Component
+|Use
+|Primitive Type
+|Example
+
+|Content
+|Mandatory
+|Date
+|09:30:12
+|===

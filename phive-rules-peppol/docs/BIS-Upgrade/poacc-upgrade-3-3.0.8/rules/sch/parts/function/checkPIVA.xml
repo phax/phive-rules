@@ -1,0 +1,7 @@
+ <function name="u:checkPIVA" as="xs:integer" xmlns="http://www.w3.org/1999/XSL/Transform">
+    <param name="arg" as="xs:string?"/>
+    <sequence select="
+				if (not($arg castable as xsd:integer)) 
+					then 1
+					else ( u:addPIVA($arg,xs:integer(0)) mod 10 )"/>
+  </function>

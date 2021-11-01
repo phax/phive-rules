@@ -1,0 +1,51 @@
+
+= Review of alignments done
+
+== VAT alignment
+
+* VAT chapter in BIS documents
+* VAT code lists in BIS documents
+* VAT category code referring to correct, hyperlinked code list
+* Snippets and examples
+
+== Party information
+
+* Chapter in BIS documents
+* Address information (3rd address line)
+* Legal name vs name
+* Address for tax representative in all BIS docs where appropriate
+
+== Calculation
+
+* Examples/description chapter for calculation.
+
+== Codes
+
+* Same code list used for "same"/similar element
+** Chapter on code list in all BIS documents
+** Syntax binding
+* Attributes not used for code lists
+** No attributes in examples/snippets
+
+== Identifiers
+
+* Party identifiers
+** schemeID optional
+** schemeID from ICD list
+* Endpoint identifiers
+** schemeID mandatory
+** schemeID from CEFlist
+* examples
+* BIS Chapter
+
+== References
+* Check that all applicable references are added to the different BIS'es
+* Chapter in BIS
+* Syntax binding
+
+== Business terms
+* Review use of business terms across all BIS docs?
+
+== Other
+* CustimazationID, ProfileID mandatory in all BIS
+* UBL version ID not used in any BIS

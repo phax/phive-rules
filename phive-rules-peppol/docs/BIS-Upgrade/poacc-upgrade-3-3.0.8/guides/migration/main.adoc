@@ -1,0 +1,25 @@
+include::../shared/links.adoc[]
+include::settings.adoc[]
+
+= Migration plan
+Draft, OpenPEPPOL AISBL, Post-Award Coordinating Community
+:doctype: book
+:icons: font
+:toc: left
+:toclevels: 2
+:source-highlighter: coderay
+:source-language: xml
+:sectanchors:
+:sectnums:
+:CIUS: Core Invoice Usage Specification (CIUS)
+:title-logo-image: ../images/peppol.jpg
+
+
+This document specifies the migration plan for transition from the current versions of PEPPOL BIS specifications, as listed below, to the updated PEPPOL BIS specifications (BIS version 3), as well as the phase out of the current PEPPOL BIS version 2 specifications. This plan is based on the {migration-policy}.
+
+
+:leveloffset: +1
+
+include::introduction.adoc[]
+include::overview.adoc[]
+include::rules.adoc[]

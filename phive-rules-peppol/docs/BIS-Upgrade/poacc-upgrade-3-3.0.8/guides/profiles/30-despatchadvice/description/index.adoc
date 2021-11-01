@@ -1,0 +1,35 @@
+[[description-of-selected-parts-of-the-despatch-advice-message]]
+= Description of selected parts of the despatch advice message
+
+:leveloffset: +1
+
+include::parties.adoc[]
+
+include::orderreference.adoc[]
+
+include::shipment.adoc[]
+
+:leveloffset: -1
+
+[[despatch-line]]
+= Despatch line
+
+Description of items that are being despatched.
+
+:leveloffset: +1
+
+include::itemdescription.adoc[]
+
+include::outstandingquantity.adoc[]
+
+include::hazardous.adoc[]
+
+include::itemproperties.adoc[]
+
+include::serialnumber.adoc[]
+
+include::batchnumber.adoc[]
+
+include::transporthandlingunit.adoc[]
+
+:leveloffset: -1

@@ -1,0 +1,13 @@
+= Document reference
+
+The document reference is used to provide a reference to the envelope of the business document on
+which the message level response is based. The message level response message may only cover
+exactly one business document. The element
+`cac:DocumentResponse/cac:DocumentReference/cbc:ID` MUST contain the instance
+identifier of the envelope of the original business document.
+
+.Example:
+[source, xml, indent=0]
+----
+include::{snippet-dir}/snippet-2.xml[tags=reference]
+----

@@ -1,0 +1,37 @@
+[[scope-of-invoice-response-message]]
+= Scope of Invoice Response message
+
+Invoice Response is an invoice and credit note specific response message that can be used to inform the Seller of the status of an invoice in the Buyer's approval and payment processes, based on the Buyer’s business rules and/or a Seller/Buyer agreement.
+
+.Invoice Response will provide following benefits to its users:
+* Invoice Response helps the Seller to initiate an action early in the case when processing of an invoice is challenged on the Buyer side.
+* The response informs Seller whether his invoice is in due process or whether that process is disrupted and requires action from Seller.
+* Invoice Response informs the Seller when their invoice has been approved or payment has been initiated so that the Seller can manage their cash flows and monitor the reception of funds through the payment channels.
+* Invoice Response provides automated means to the Buyer to keep the Seller informed of the invoice status in his invoice verification process and thus reduces or eliminates the need for manual status queries.
+* Invoice Response is designed to support automatic processing on the Seller side although it still may require manual actions.
+* Invoice Response is an informative message from Buyer to Seller.
+* Invoice Response structures the feedback loop from Buyer to Seller regarding the invoice handling process on Buyer’s side.
+* Invoice Response is an option for the Buyer to inform Seller about Buyer’s decisions in invoice processing in a structured or unstructured form.
+
+== In scope
+
+.The following concepts are within the scope of the Invoice Response:
+* Buyer can inform Seller about Invoice and credit note processing steps and statuses on Buyer’s side.
+* Invoice Response is based on Buyer’s business rules.
+* Invoice Response is a one directional message only - from Buyer to Seller.
+* Several response messages can potentially be exchanged for one invoice or credit note.
+* Response content may require manual action on Seller’s side.
+* Invoice Response supports only push message of the invoice status.
+* Invoice Response can not be automatically requested by Seller.
+* Acknowledging that a transmitted invoice has been received and can be processed.
+
+== Out of scope
+
+.The following concepts are outside the scope of the Invoice Response:
+* Invoice responses on a line level.
+* Several statuses in one response message.
+* Full automation on Seller side – not all the errors have to be encoded.
+* Bi-directional communication – discussion on response.
+* Enquiry of the Invoice response message.
+* Transmission level status.
+* Support for attachments.

@@ -1,0 +1,91 @@
+[[quantities-and-units]]
+== Quantities and units
+
+The table below lists quantities and units in the catalogue transaction. All quantities must be based on a Unit Of Measure (UOM) according UNECE Recommendation 20 and Recommendation 21 for UOM.
+For xml-examples for quantities and units, we refer to {examples-zip}.
+
+Following are two examples showing the use of different elements.
+
+Example 1: Bottles that contain 250m of shampoo are packed in cases, 6 bottles in each case. The cases are stacked 18 on each pallet. The minimum order quantity is always one unit.
+
+Example 2: Printing paper is sold in packs of 500 sheets. 6 packs of paper are packed in cases and 18 cases are stacked on a pallet. Minimum order quantity is one unit.
+
+[cols=",,,",options="header",]
+|====
+|* * |*1 bottle* +
+image:images/image6.png[image,width=55,height=117]
+|*Case of 6 bottles* +
+image:images/image8.png[image,width=121,height=78]
+|*Pallet of 18 cases* +
+image:images/image7.png[image,width=146,height=127]
+|*Line identifier* (tir19-032) |4 |5 |6
+|*Seller Item identifier* (tir19-091) |1111 |111 |11
+|*Item Name* (tir19-078) |Shampoo 250 ml |6x250 ml Shampoo |Shampoo
+|*Orderable unit* (tir19-035) |EA |CS |PF
+||||
+|*Packaging level* (tir19-102) |CU |TU |DU
+|*Packed quantity* (tir19-066) |  |6 |18
+|*-Packed units* |  |EA |CS
+||||
+|*Consumable unit quantity* (tir19-036) |1 |6 |108
+||||
+|*ItemNetQuantity* (tir19-061) |250 |1500 |27000
+|*-Unit* |MLT |MLT |MLT
+||||
+|*MinimumOrderQuantity* (tir19-038) |1 |1 |1
+|*-Unit* |EA |EA |EA
+||||
+|*Component related item Identifier* (tir19-045) |  |1111 |111
+|*Component related item quantity* (tir19-046) |  |6 |18
+|====
+
+[cols=",,,",options="header",]
+|====
+|* * |*Pack of 500 sheets paper* |*Case of 5 packs paper* a|
+*Pallet of 18 cases*
+
+*copypaper*
+
+|*Line identifier* (tir19-032)|7 |8 |9
+|*Seller Item identifier* (tir19-091)|A |AA |AAA
+|*Item Name* (tir19-078)|500 copy paper |5*500 Copy paper |Pallet of paper
+|*Orderable unit* (tir19-035)|EA |CS |PX
+||||
+|*Packaging level* (tir19-102)|CU |TU |DU
+|*Packed quantity* (tir19-066)|  |5 |18
+|*-Packed units* |  |EA |EA
+||||
+
+|*Consumable unit quantity* (tir19-036)|1 |5 |90
+||||
+|*ItemNetQuantity* (tir19-061)|500 |2500 |45000
+|*-Unit* |EA |EA |EA
+||||
+|*MinimumOrderQuantity* (tir19-038)|1 |1 |1
+|*-Unit* |EA |EA |EA
+||||
+|*Component related item Identifier* (tir19-045)|  |A |AA
+|*Component related item quantity* (tir19-046)|  |5 |18
+|====
+
+Following table shows the definition of the business terms shown in the example as well as their syntax binding.
+
+[cols="1,5,5",options="header",]
+|====
+|Id|*Description* |*Element /xPath*
+|tir19-032|Each line must have an identifier that is unique within the document to make it possible to positively reference the line. For example, from other documents.| /cac:CatalogueLine/cbc:ID
+|tir19-091|An identifier, assigned by the seller, for the item. Associates the item with its identification according to the seller's system. |/cac:CatalogueLine/cac:Item/cac:SellersItemIdentification/cbc:ID
+|tir19-078|A short name for an item.|/cac:CatalogueLine/cac:Item/cbc:Name
+|tir19-035|The unit in which the item described in this catalogue line can be ordered. The same item can be described in more than one catalogue line with different orderble units. E.g. catalogue line 1 describes item X that can be ordered in boxes at a given price. Line 2 may describe the same item X as orderable in pallets where the price is lower.|/cac:CatalogueLine/cbc:OrderableUnit
+|tir19-102|The packing level of the catalogue line.| cac:CatalogueLine/cbc:PackLevelCode
+|tir19-066|The number of packed units that are in the orderable unit. E.g. if the orderable unit is a pallet that contains 30 boxes then the packed units are BOX and the packed quantity is 30.|/cac:CatalogueLine/cac:Item/cbc:PackQuantity
+|UOM|The prepacking the article is available in inside the orderable unit (next lower level packing), and which contains the number of unit described in PackSizeNumeric. Unit desciption to PackQuantity. The value shoud be a valid UOM code like XCS for case.|/cac:CatalogueLine/cac:Item/cbc:PackQuantity/@unitCode
+|tir19-036|Specifies the number of consumable units that are in each orderable unit.|/cac:CatalogueLine/cac:Item/cbc:PackSizeNumeric 
+|tir19-061|The net quantity of the item that is contained in each consumable unit, excluding any packaging materials.|/cac:CatalogueLine/cbc:ContentUnitQuantity 
+|UOM|The unit of measure that applies to the item net quantity|cac:CatalogueLine cbc:ContentUnitQuantity @unitCode
+|tir19-038|The minimum number of orderable units that can be ordered according to details provided in the catalogue line, such as price.|/cac:CatalogueLine/cbc:MinimumOrderQuantity 
+|UOM|The unit of measure that applies to the minimum order quantity|/cac:CatalogueLine/cbc:MinimumOrderQuantity/@unitCode
+|tir19-045|The sellers identifier for the related item.|cac:CatalogueLine/cac:ComponentRelatedItem/cbc:ID
+|tir19-046|The quantity that applies to the relationship.|cac:CatalogueLine/cac:ComponentRelatedItem/cbc:Quantity
+
+|====

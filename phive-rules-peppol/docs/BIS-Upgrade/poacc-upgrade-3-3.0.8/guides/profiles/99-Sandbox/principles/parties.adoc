@@ -1,0 +1,21 @@
+[[parties-and-roles]]
+= Parties and roles
+
+The table below gives the definitions of the parties and roles of the message level response process.
+The sender and receiver of the Message Level Response message should be extracted from the
+envelope, i.e. the PEPPOL participants.
+
+[cols="2,4"]
+|====
+s|Business partners
+s|Description
+
+|Sender
+|The party sending an electronic message level response message back to the sending party of the business document.
+
+|Receiver
+a|The party, an electronic message level response was addressed to, and who is supposed to process the message level response. +
+This is the same party as the sender of the business document.
+|====
+
+image::images/roles-36.png[align="center"]

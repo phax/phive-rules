@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testSet xmlns="http://difi.no/xsd/vefa/validator/1.0"
+	configuration="peppolbis-t110-base-3.0">
+	<assert>
+		<description>Verify all items include either “item sellers identifier” or “item standard identifier”</description>
+		<scope>PEPPOL-T110-R002</scope>
+	</assert>
+	
+	<test>
+		<assert>
+			<success>PEPPOL-T110-R002</success>
+		</assert>
+		<OrderResponse xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+			xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+			xmlns="urn:oasis:names:specification:ubl:schema:xsd:OrderResponse-2">
+			<cac:OrderLine>
+				<cac:LineItem>
+					<cac:Item>
+						<cac:SellersItemIdentification>
+							<cbc:ID>123</cbc:ID>
+						</cac:SellersItemIdentification>
+						<cac:StandardItemIdentification>
+							<cbc:ID schemeID="GTIN">321</cbc:ID>
+						</cac:StandardItemIdentification>
+					</cac:Item>
+				</cac:LineItem>
+			</cac:OrderLine>
+		</OrderResponse>
+	</test>
+	
+	<test>
+		<assert>
+			<success>PEPPOL-T110-R002</success>
+		</assert>
+		<OrderResponse xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+			xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+			xmlns="urn:oasis:names:specification:ubl:schema:xsd:OrderResponse-2">
+			<cac:OrderLine>
+				<cac:LineItem>
+					<cac:Item>
+						<cac:SellersItemIdentification>
+							<cbc:ID>123</cbc:ID>
+						</cac:SellersItemIdentification>
+					</cac:Item>
+				</cac:LineItem>
+			</cac:OrderLine>
+		</OrderResponse>
+	</test>
+
+	<test>
+		<assert>
+			<success>PEPPOL-T110-R002</success>
+		</assert>
+		<OrderResponse xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+			xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+			xmlns="urn:oasis:names:specification:ubl:schema:xsd:OrderResponse-2">
+			<cac:OrderLine>
+				<cac:LineItem>
+					<cac:Item>
+						<cac:StandardItemIdentification>
+							<cbc:ID schemeID="GTIN">321</cbc:ID>
+						</cac:StandardItemIdentification>
+					</cac:Item>
+				</cac:LineItem>
+			</cac:OrderLine>
+		</OrderResponse>
+	</test>
+	
+	<test>
+		<assert>
+			<error>PEPPOL-T110-R002</error>
+		</assert>
+		<OrderResponse xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+			xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+			xmlns="urn:oasis:names:specification:ubl:schema:xsd:OrderResponse-2">
+			<cac:OrderLine>
+				<cac:LineItem>
+					<cac:Item>
+					</cac:Item>
+				</cac:LineItem>
+			</cac:OrderLine>
+		</OrderResponse>
+	</test>
+</testSet>

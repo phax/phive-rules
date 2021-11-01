@@ -1,0 +1,44 @@
+[[header-levels]]
+= Header levels
+
+All files containing a chapter (or sub-chapter) should be created using a level 0 heading (document title), and then using leveloffset to push the headings down by a specified number of levels (normally 1).
+This is done to enable files to be reused in other contexts, where it might appear at a different level.
+
+Please also look into this section of the Asciidoctor user manual for more information and details:
+[horizontal]
+Chapter explaining sections:: https://asciidoctor.org/docs/user-manual/#sections
+Chapter explaining leveloffset:: https://asciidoctor.org/docs/user-manual/#include-partitioning
+
+
+.Example showing AsciiDoc syntax
+[indent=0]
+----
+    = Principles and prerequisites
+
+    :leveloffset: +1 <1>
+
+    include::process.adoc[]
+
+    include::schenarios.adoc[]
+
+    :leveloffset: -1 <2>
+----
+<1> Pushes the level of all headers in the included documents down one level
+<2> Returns the leveloffset to 0
+
+
+When the below show `process.adoc` file is included as seen in the example above, all the headings will be pushed down one level
+
+.Example showing process.adoc file
+[indent=0]
+----
+= Process and typical scenarios <1>
+Some text for the chapter...
+
+== Process chart <2>
+Some text for the subchapter
+----
+<1> Will be shown as a level 1 heading
+<2> Will be shown as a level 2 heading
+
+<<<

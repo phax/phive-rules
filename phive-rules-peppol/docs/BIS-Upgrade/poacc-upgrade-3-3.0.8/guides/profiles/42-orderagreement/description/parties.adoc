@@ -1,0 +1,43 @@
+= Parties
+
+The following parties/roles may be specified in the message:
+
+== SellerSupplierParty (Seller)
+
+The seller is the legal person or organization acting on behalf of the supplier and who sells goods or services to the buyer. The seller is mandatory in the PEPPOL BIS Order Agreement message.
+
+.Example
+[source, xml, indent=0]
+----
+include::{snippet-dir}/OA full.xml[tags=seller]
+----
+
+== BuyerCustomerParty (Buyer)
+
+The buyer is the legal person or organization acting on behalf of the customer and who buys or purchases the goods or services. The buyer is mandatory in the PEPPOL BIS Order Agreement message.
+
+.Example
+[source, xml, indent=0]
+----
+include::{snippet-dir}/OA full.xml[tags=buyer]
+----
+
+== OriginatorCustomerParty (Originator)
+
+The unit initiating or requesting the ordered items. Most often the end user. The originator information is optional in the PEPPOL BIS Order Agreement message.
+
+.Example
+[source, xml, indent=0]
+----
+include::{snippet-dir}/OA full.xml[tags=originator]
+----
+
+== AccountingCustomerParty (Invoicee)
+
+The invoicee is the legal person or organization acting on behalf of the customer and who receives the invoice for the order. The invoicee information is optional in the PEPPOL BIS Order Agreement message.
+
+.Example
+[source, xml, indent=0]
+----
+include::{snippet-dir}/OA full.xml[tags=customer]
+----

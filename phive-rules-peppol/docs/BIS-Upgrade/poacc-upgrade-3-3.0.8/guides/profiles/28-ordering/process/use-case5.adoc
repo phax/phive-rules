@@ -1,0 +1,43 @@
+[[use-case-5-order-incl-ultimate-consignee]]
+= Use case 5 – Ordering including consignee and delivery party
+
+This use case contains an order of numbered items/articles. The order includes information regarding the delivery location and final party to where the delivery should be forwarded.
+
+[cols="1s,5",options="header"]
+|====
+|Use Case number
+|5
+
+|Use Case Name
+|Ordering including consignee and delivery party
+
+|Use Case Description
+|An order for numbered items with allowance and charges both on order level, line level and price.
+
+|Parties involved
+|Buyer +
+Seller +
+Consignee +
+Delivery party
+
+
+|Assumptions
+|The buyer has a catalogue or list of products to order. +
+The catalogue contains the item numbers, names and type of unit of measure. +
+
+|The flow
+|The buyer creates an order with 3 different lines and items. +
+The seller receives the order and sends an order response with an accept to deliver all items. +
+At time for delivery the seller packs all items, print goods labels which are put on and all packages and a transport label put on the plastic wrapping that holds all the packages. +
+The wrapped packages are delivered to and unloaded at the location of the consignee. +
+The packages are reloaded and delivered by internal transport to the delivery party. +
+
+
+|Result
+|The buyer and the seller have reached an agreement. +
+The delivery party has received the ordered items. +
+If the invoice has an order reference, the invoice can be matched automatically.
+
+|XML example file
+|{order-response-UC}
+|====

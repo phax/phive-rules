@@ -1,0 +1,16 @@
+
+= Document Type Code
+
+All document type codes shall be from {UNCL1001}
+
+
+[cols="1,4"]
+.Document type code
+|===
+h| Qualifier
+| `UNCL1001` (listID)
+h| Document location
+| `cbc:DocumentTypeCode`
+h| Source codelist
+| {UNCL1001}
+|===

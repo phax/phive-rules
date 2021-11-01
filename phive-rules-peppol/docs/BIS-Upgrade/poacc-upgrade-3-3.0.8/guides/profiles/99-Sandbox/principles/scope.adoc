@@ -1,0 +1,35 @@
+[[scope]]
+= Scope
+
+The Message Level Response message is intended to inform the issuer of the following situations
+
+. The received message contained errors according to the relevant conformance rules.
+* The message will not be processed any further.
+. The received message passed the validation of conformance rules without any fatal errors.
+* The message will be processed further.
+. The received message is not validated for conformance but the receiver acknowledges that
+it has been received and identified as a business message.
+* The message will be processed further.
+
+== The following errors are within the scope for a negative/rejecting Message Level Response:
+* XML schema validation error
+* Standard Compliance violations (e.g. empty elements not being allowed by UBL 2.1)
+* Validation error of type fatal error
+* Validation error of type warning. Warnings alone must NOT cause rejection of the business
+document (but they may be reported in addition to fatal errors)
+* Wrong version of business document (Will be handled like validation error of type fatal
+error)
+
+== The following errors are outside the scope of the message level response:
+* Unknown sender (in scope of transport acknowledgement)
+* Unknown receiver (in scope of transport acknowledgement)
+* Wrong version of envelope (in scope of transport acknowledgement)
+* XML schema validation error – envelope (in scope of transport acknowledgement)
+* XML not well formed (in scope of transport acknowledgement)
+* Non supported encoding (in scope of transport acknowledgement)
+* Wrong value (after database look-up) in reference fields (in scope of Business Level
+Response).
+** Examples:
+*** Wrong order number in invoice
+*** Wrong project or customer reference in invoice
+*** Wrong contract ID reference in catalogue

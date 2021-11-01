@@ -1,0 +1,23 @@
+
+= Migration rules ‐ PEPPOL participants affected by the Migration Policy
+
+The {migration-policy} affects all end‐users registered in a SMP for OpenPEPPOL bis specifications, other than invoice/billing, according to the following rules:
+
+.End‐users registered in a SMP before the phase‐in date ({phase-in})
+****
+Rule::
+* It is mandatory to support the current PEPPOL BIS versions that are registered in the SMP for an individual end user, until the transition date ({transition}).
+* Supporting new PEPPOL BIS versions is optional until the transition date ({transition}).
+****
+
+.End‐users registered in a SMP after the phase‐in date ({phase-in})
+****
+Rule::
+It is optional to support the current PEPPOL BIS versions and the new PEPPOL BIS versions that are registered in the SMP for an individual end user until the transition date ({transition}).
+****
+
+.For all end‐users after the transition ({transition})
+****
+Rule::
+After the transition, the PEPPOL BIS3 Upgrade becomes mandatory and the PEPPOL BIS2 Current becomes optional.
+****

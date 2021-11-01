@@ -1,0 +1,14 @@
+= Prices
+
+Prices must be exchanged in the Order Agreement transaction. The price may be 0 (zero)
+
+Price sent is related to the articles or services within this order agreement
+
+Prices includes allowances and/or charges but exclude TAX amounts
+
+
+.Example of price information in an Order Agreement message
+[source, xml, indent=0]
+----
+include::{snippet-dir}/snippet-oa.xml[tags=price]
+----

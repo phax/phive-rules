@@ -1,0 +1,57 @@
+
+= Detailed migration plan
+
+This section describes how and when updated PEPPOL Business Interoperability Specifications (BIS) will be available for use.
+
+This migration plan addresses the migration of the PEPPOL BIS specifications from current versions, 3.7 (BIS version 2 2018 fall release), to the upgraded versions BIS version 3.0. BIS version 3.0 is a non backwards compatible major release that aligns OpenPEPPOL BIS specifications to the EN16931 European Invoice Standard as it is has been adopted in OpenPEPPOL BIS3 Billing. These are the following BIS specifications, they are jointly referred to as "BIS version 3.0". Current version's are referred to as "BIS version 2 Current"
+
+* BIS 1A Catalogue Only
+* BIS 3A Order Only
+* BIS 18A Punch Out
+* BIS 28A Ordering
+* BIS 30A Despatch Advice
+* BIS 36A Message Level Response
+* BIS 42A Order Agreement
+* BIS 63A Invoice Response
+
+A - Phase In::
+* “Phase in” is defined as the start date for the optional use of PEPPOL BIS version 3.0 specifications corresponding to the publication date when the new PEPPOL BIS specifications become available for download at www.peppol.eu.
+* The date is set to *{phase-in}*
+
+B - Transition::
+* The Transition is defined as the period during which the current PEPPOL BIS specification (version 2)  changes status from mandatory to Optional.
+* The new PEPPOL BIS version 3.0, becomes  mandatory, to align with the enforcement of the new invoicing directive.
+* The start date for the transition period is set to *{transition}*
+
+c - Phase­out::
+* After the phase‐out, the old BIS specifications (version 2) are not available and the document id’s are removed from the Policy for Identifiers document.
+* Phase‐out date of old BIS specifications (version 2) are set to *{phase-out}*.
+
+
+The dates in the table below are start dates of the different phases. As an example, the date shown for A - Phase in, {phase-in} is the first date where the BIS version 3.0 is available as an optional element.
+
+.Migration overview
+[cols="^3h,^3,^3,^3"]
+|====
+
+.2+<.>|Subject to migration
+h|A - Phase in
+h|B - Transition
+h|C - Phase out
+
+
+h| {phase-in}
+h| {transition}
+h| {phase-out}
+
+| BIS2 Current
+| Mandatory
+| Optional
+| Discontinued
+
+| BIS3 Upgrade
+| Optional
+| Mandatory
+| Mandatory
+
+|====

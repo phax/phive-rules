@@ -1,0 +1,16 @@
+[[prices]]
+= Prices
+
+Prices may be exchanged in the order both for products with or without item identifiers and free text orders.
+
+If prices are not sent in the order the normal process is to do price matching during the billing process comparing prices in the Invoice to prices in the Catalogue.
+
+Price sent is related to the articles or services within this order.
+
+* Prices should include allowances and/or charges but exclude TAX amounts (e.g. VAT, GST or sales tax)
+
+.Example of price information in an Order message:
+[source, xml, indent=0]
+----
+include::{snippet-dir}/snippet-01.xml[tags=price]
+----

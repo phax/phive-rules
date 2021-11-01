@@ -1,0 +1,43 @@
+= Invoice response rules
+
+== Transaction rules
+
+[cols="^1,1s,4,1",options="header"]
+|====
+|Auto/Manual
+|RuleID
+|Rule
+|Error level
+|A|OP-T111-R001	|An Invoice Response SHALL have the profile identifier "urn:www.peppol.eu:profile:bis63a:ver1.0".	|Fatal
+|A|OP-T111-R002	|An Invoice Response SHALL have the customization identifier "urn:www.peppol.eu:transaction:biitrns111:ver1.0"	|Fatal
+|A|OP-T111-R003	|An Invoice Response SHALL contain the date of issue.	|Fatal
+|A|OP-T111-R004	|The Endpoint ID for party sending Invoice Response SHALL be specified.	|Fatal
+|A|OP-T111-R005	|The party sending Invoice Response SHALL be specified.	|Fatal
+|A|OP-T111-R006	|The Endpoint ID for receiving sending Invoice Response SHALL be specified.	|Fatal
+|A|OP-T111-R007	|The party receiving Invoice Response SHALL be specified.	|Fatal
+|A|OP-T111-R008	|An Invoice Response SHALL contain a document reference #pointing towards the business message that the response relates to.#	|Fatal
+|M|OP-T111-R009	|IF status code is one of: CA, UQ or RE then there SHALL be at a clarification code in Invoice Message Response.	|Fatal
+|====
+
+== Code list rules
+
+[cols="^1,1s,4,1",options="header"]
+|====
+|Auto/Manual
+|RuleID
+|Rule
+|Error level
+|-|CL-T111-R001	|A document type code SHALL have a list identifier attribute 'UNCL1001'.	|Fatal
+|-|CL-T111-R002	|A document type code MUST be coded using UNCL 1001 list BII2 subset.	|Fatal
+|A|CL-T111-R003	|#An Endpoint Identifier Scheme SHALL be from the list of PEPPOL Party Identifiers described in the "PEPPOL Policy for using Identifiers".#	|Fatal
+|A|CL-T111-R004	|#A Party Identifier Scheme SHALL be from the list of PEPPOL Party Identifiers described in the "PEPPOL Policy for using Identifiers".#	|Fatal
+|-|CL-T111-R005	|A Status Code SHALL have list ID as UNCL4343OpSubset.	|Fatal
+|A|CL-T111-R006	|A Status code value SHALL be one of the values from the UNCL 4343 PEPPOL Subset code list described in chapter 8.3.1	|Fatal
+|-|CL-T111-R007	|Clarification code SHALL have a list ID.	|Fatal
+|-|CL-T111-R008	|A Clarification code SHOULD have a list identifier attribute OPStatusReason or OPStatusAction or else the Invoice Response is using extended codes.	|Warning
+|A|CL-T111-R009	|IF Clarification codes list ID is OPStatusReason then the code SHALL be from the OPStatusReason code list.	|Fatal
+|A|CL-T111-R010	|IF Clarification codes list ID is OPStatusAction then the code SHALL be from the OPStatusAction code list.	|Fatal
+|A|CL-T111-R011	|An endpoint identifier SHALL have a scheme identifier attribute.	|Fatal
+|-|CL-T111-R012	|A party identifier SHALL have a scheme identifier attribute.	|Fatal
+|M|CL-T111-R013	|If Clarification code is OTH then Clarification reason SHOULD be provided.	|Warning
+|====

@@ -1,0 +1,20 @@
+[[namespaces]]
+= Namespaces
+
+The message level response data model is in this PEPPOL BIS bound to the {ubl-appl-resp}. The target namespace for the UBL-ApplicationResponse-2.1 is:
+
+`urn:oasis:names:specification:ubl:schema:xsd:ApplicationResponse-2`
+
+[[version-id]]
+= Version ID
+
+This BIS is using the {ubl-appl-resp}. The namespace of the XML-message does only communicate the major version number.
+
+IMPORTANT: The element `cbc:UBLVersionID` MUST be stated with the value *2.1*:
+
+
+.Example of UBL version identifier
+[source, xml, indent=0]
+----
+include::../snippets/snippet-1.xml[tags=ubl-version]
+----

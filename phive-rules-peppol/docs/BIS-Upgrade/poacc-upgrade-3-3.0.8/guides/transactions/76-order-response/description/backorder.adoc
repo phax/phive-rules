@@ -1,0 +1,12 @@
+[[order-response-with-backorder]]
+= Order response with backorder.
+
+An order response may provide information for partial delivery of an order line with additional information about the maximum number of items that will be delivered at a later but not known date.
+
+NOTE: If the remaining quantity will NOT be delivered use `cbc:MaximumBackorderQuantity`= 0.
+
+.Example showing a response to an order of 6 items of which 2 get confirmed delivery dates and 3 are placed on backorder to be delivered later, for a total delivery of up to 5 items
+[source, xml, indent=0]
+----
+include::{snippet-response-dir}/snippet-1.xml[tags=line-backorder]
+----

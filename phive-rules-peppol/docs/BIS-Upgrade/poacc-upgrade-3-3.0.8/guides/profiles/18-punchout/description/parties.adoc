@@ -1,0 +1,33 @@
+[[parties]]
+= Parties
+
+The following parties/roles may be specified in the message:
+
+[[seller]]
+== Seller
+
+* The seller is the legal person or organization acting on behalf of the supplier and who sells goods or services to the buyer.
+* The seller is given in the `cac:ProviderParty` in {ubl-catalogue} and is mandatory in the PEPPOL BIS Shopping Cart message.
+* The seller must be identified with a name but may additionally be identified with an identifier.
+* The endpoint identifier is the PEPPOL network address {peppol-transport} and the schemeID identifies the governance of the identifier used, in line with {policy8}.
+
+.Example of seller information
+[source, xml, indent=0]
+----
+include::{snippet-dir}/snippet-18-1.xml[tags=seller]
+----
+
+
+[[buyer]]
+== Buyer
+
+* The buyer is the legal person or organization acting on behalf of the customer who buys or purchases the goods or services.
+* The buyer is given in the `cac:ReceiverParty` in {ubl-catalogue} and is mandatory in the PEPPOL BIS Shopping cart message.
+The buyer must be identified with his name but may additionally be identified with the sellers customer identifier and/or a registered identifier.
+* The endpoint identifier is the PEPPOL network address {peppol-transport} and the schemeID identifies the governance of the identifier used, in line with {policy8}.
+
+.Example of buyer information
+[source, xml, indent=0]
+----
+include::{snippet-dir}/snippet-18-1.xml[tags=buyer]
+----

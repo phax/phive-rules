@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testSet xmlns="http://difi.no/xsd/vefa/validator/1.0" configuration="peppolbis-t111-base-3.0">
+	<assert>
+		<description>Verify that clarification code PPD has a description</description>
+		<scope>PEPPOL-T111-R004</scope>
+		<scope>PEPPOL-T111-R006</scope>
+		<scope>PEPPOL-T111-R005</scope>
+		<scope>PEPPOL-T111-R007</scope>
+	</assert>
+
+	<test id="1">
+		<assert>
+			<success>PEPPOL-T111-R004</success>
+		</assert>
+
+		<ApplicationResponse
+			xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+			xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+			xmlns="urn:oasis:names:specification:ubl:schema:xsd:ApplicationResponse-2">
+
+			<cac:DocumentResponse>
+				<cac:Response>
+					<cac:Status>
+						<cbc:StatusReasonCode listID="OPStatusReason">PPD</cbc:StatusReasonCode>
+						<cbc:StatusReason>Description of partial payment</cbc:StatusReason>
+					</cac:Status>
+				</cac:Response>
+			</cac:DocumentResponse>
+		</ApplicationResponse>
+	</test>
+
+	<test id="2">
+		<assert>
+			<error>PEPPOL-T111-R006</error>
+		</assert>
+
+		<ApplicationResponse
+			xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+			xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+			xmlns="urn:oasis:names:specification:ubl:schema:xsd:ApplicationResponse-2">
+			<cac:DocumentResponse>
+				<cac:Response>
+					<cac:Status>
+						<cbc:StatusReasonCode listID="OPStatusAction">PPD</cbc:StatusReasonCode>
+						<cbc:StatusReason>Description of partial payment</cbc:StatusReason>
+					</cac:Status>
+				</cac:Response>
+			</cac:DocumentResponse>
+		</ApplicationResponse>
+	</test>
+
+	<test id="3">
+		<assert>
+			<error>PEPPOL-T111-R004</error>
+		</assert>
+
+		<ApplicationResponse
+			xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+			xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+			xmlns="urn:oasis:names:specification:ubl:schema:xsd:ApplicationResponse-2">
+
+			<cac:DocumentResponse>
+				<cac:Response>
+					<cac:Status>
+						<cbc:StatusReasonCode listID="OPStatusReason">PPD</cbc:StatusReasonCode>
+					</cac:Status>
+				</cac:Response>
+			</cac:DocumentResponse>
+		</ApplicationResponse>
+	</test>
+
+</testSet>

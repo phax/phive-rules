@@ -1,0 +1,8 @@
+[[despatch-advice-business-rules]]
+= Despatch Advice Business Rules
+
+:leveloffset: +1
+
+include::businessrules.adoc[]
+
+:leveloffset: -1

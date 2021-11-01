@@ -1,0 +1,34 @@
+[[use-case-3-ordering-of-services]]
+= Use case 3 – Ordering of services
+
+This use case contains an order of services.
+
+[cols="1s,5",options="header"]
+|====
+|Use Case number
+|3
+|Use Case Name
+|Ordering of services
+
+|Use Case Description
+|An order of translation services. +
+Delivery location and period is specified. +
+The seller rejects the order.
+
+|Parties involved
+|Buyer +
+Seller
+
+|Assumptions
+|The buyer is using a form with pre-defined and agreed properties for this service.
+
+|The flow
+|The buyer creates the order with one line requesting translation between Swedish and Spanish. +
+The seller rejects the order.
+
+|Result
+|The buyer and the seller has not reached any agreement.
+
+|XML example file
+|{order-response-UC}
+|====

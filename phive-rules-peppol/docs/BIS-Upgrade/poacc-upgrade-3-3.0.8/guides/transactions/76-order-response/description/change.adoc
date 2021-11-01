@@ -1,0 +1,53 @@
+[[order-response-with-changes]]
+= Order response with changes
+
+* When Seller accepts an order with changes, the response code «CA» must be sent on header level.
+* On line level there may be a mix of different response codes.
+* Some lines may have been accepted without amendments (line response code 5), some not accepted (line response code 7) and some changed (line response code 3).
+
+* If line response code = 3, the elements to be changed must be sent with new values.
+
+** The following elements can be changed:
+
+*** Quantity
+*** Delivery period
+*** Replacement item
+*** Price
+
+.Example of change of quantity in an Order Response message:
+[source, xml, indent=0]
+----
+include::{snippet-response-dir}/snippet-1.xml[tags=line-change1]
+----
+
+
+.Example of change of quantity and delivery period in an Order Response message:
+[source, xml, indent=0]
+----
+include::{snippet-response-dir}/snippet-1.xml[tags=line-change2]
+----
+
+NOTE:  It is possible to send more than one Order Response line per Order line.
+
+
+.Example of change of quantity and delivery period for the same Order line as in the example above.
+[source, xml, indent=0]
+----
+include::{snippet-response-dir}/snippet-1.xml[tags=line-change3]
+----
+
+The effect of the two Order response lines above should be interpreted as follows:
+
+* Order line 4 will be delivered on two dates:
+** 18 pieces on 15^th^ of July and
+** 12 pieces on the 15^th^ of August.
+
+
+
+.Example of Replacement item in an Order Response message:
+[source, xml, indent=0]
+----
+include::{snippet-response-dir}/snippet-1.xml[tags=line-change4]
+----
+<1> Information on the replacement item is sent in `cac:SellerSubstitutedLineItem`
+<2> Attribute `listID`="MP" indicates UNSPSC, and the attribute `listVersionID` is used to indicate the version of UNSPSC that is used.

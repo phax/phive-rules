@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeList xmlns="urn:fdc:difi.no:2017:vefa:structure:CodeList-1">
+    
+    <Title>Invoice status code (UNCL4343 Subset)</Title>
+    <Identifier>UNCL4343-T111</Identifier>
+    <Version>D.17A</Version>
+    <Agency>UN/CEFACT</Agency>
+    <Subset>openPEPPOL-InvoiceResponse</Subset>
+    
+    <Code>
+        <Id>AB</Id>
+        <Name>Message acknowledgement</Name>
+        <Description>Indicates that an acknowledgement relating to receipt of message or transaction is required. Status is used when Buyer has received a readable invoice message that can be understood and submitted for processing by the Buyer. </Description>
+    </Code>
+    <Code>
+        <Id>AP</Id>
+        <Name>Accepted</Name>
+        <Description>Indication that the referenced offer or transaction (e.g., cargo booking or quotation request) has been accepted. Status is used only when the Buyer has given a final approval of the invoice and the next step is payment  </Description>
+    </Code>
+    <Code>
+        <Id>RE</Id>
+        <Name>Rejected</Name>
+        <Description>Indication that the referenced offer or transaction (e.g., cargo booking or quotation request) is not accepted. Status is used only when the Buyer will not process the referenced Invoice any further.
+            Buyer is rejecting this invoice but not necessarily the commercial transaction. Although it can be used also for rejection for commercial reasons (invoice not corresponding to delivery).
+        </Description>
+    </Code>
+    <Code>
+        <Id>IP</Id>
+        <Name>In process</Name>
+        <Description>Indicates that the referenced message or transaction is being processed. Status is used when the processing of the Invoice has started in Buyers system. </Description>
+    </Code>
+    <Code>
+        <Id>UQ</Id>
+        <Name>Under query</Name>
+        <Description>Indicates that the processing of the referenced message has been halted pending response to a query. Status is used when Buyer will not proceed to accept the Invoice without receiving additional information from the Seller.</Description>
+    </Code>
+    <Code>
+        <Id>CA</Id>
+        <Name>Conditionally accepted</Name>
+        <Description>Indication that the referenced offer or transaction (e.g., cargo booking or quotation request) has been accepted under conditions indicated in this message. Status is used when Buyer is accepting the Invoice under conditions stated in ‘Status Reason’ and proceed to pay accordingly unless disputed by Seller.</Description>
+    </Code>
+    <Code>
+        <Id>PD</Id>
+        <Name>Paid</Name>
+        <Description>Indicates that the referenced document or transaction has been paid. Status is used only when the Buyer has initiated the payment of the invoice.</Description>
+    </Code>
+    
+</CodeList>

@@ -1,0 +1,28 @@
+[[principles-and-prerequisites]]
+= Principles and prerequisites
+
+This chapter describes the principles and assumptions that underlie the use of the PEPPOL Despatch Advice.
+It is based on the CEN BII 30 Dispatch only profile.
+
+[[despatch-advice-message-in-general]]
+== Despatch Advice message in general
+
+The electronic transaction described in this implementation guide is the Despatch Advice message.
+The Despatch Advice message is used in the fulfillment process by the supplier to notify the receiver about, the despatch and delivery period for the goods being sent, as well as details about the goods for cross checking with the order and ultimately the Electronic Despatch Advice is used for declaring how the despatched goods are packed.
+
+The main activities supported by this message are:
+
+* *Transport* Full description of how the goods are packed and delivered.
+A delivery is taken to be a number of items that are despatched as a single consignment to a single delivery address.
+* *Ordering* States what is shipped; the quantity of goods shipped and what is outstanding.
+* *Receiving goods* Full support of the process of receiving goods into a warehouse, inventory, in stores or simply at a reception counter.
+
+:leveloffset: +1
+
+include::parties.adoc[]
+
+include::otherconcepts.adoc[]
+
+//include::requirements.adoc[]
+
+:leveloffset: -1

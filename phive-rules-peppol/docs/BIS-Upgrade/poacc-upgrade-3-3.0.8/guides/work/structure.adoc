@@ -1,0 +1,37 @@
+= Changes done to the data model/syntax binding
+
+* Remove UBL version ID - also removed from guides.
+* Remove attributes
+* Align label elements in Order Agreement and Punchout
+* Vat category in allowance/charge on header level in Order and Order Agreement
+* Add filename to attachments
+* Align contact classes, use name, telephone and email.
+
+
+Order/order response::
+* Your ref into cbc:CustomerReference, instead of Buyer/Contact/ID.
+* AccountingCustomerParty, use Contact ID or Name?
+
+
+= Changes to BIS documents
+
+* Add information on semantic datatypes
+* Chapters on code lists and rules referring to main site only.
+
+
+= Remarks/question
+
+* Align full allowance charge class?
+** Validate chargeindicator to be true or false?
+* Align cac:AdditionalItemProperty?
+* Party identification/EndpointID?
+** Shared chapter on identifier must be updated
+** Snippets/examples must be corrected
+* Attachments on header and line level. Align?
+* BIS Common text and introduction
+** Convert to AsciiDoc
+** Review chapters 3.1, 3.6 and 3.8 specifically
+
+
+Catalogue response::
+* Document response is set to optional, is this correct?

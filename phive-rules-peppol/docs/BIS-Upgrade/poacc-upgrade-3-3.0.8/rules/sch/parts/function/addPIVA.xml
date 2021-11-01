@@ -1,0 +1,11 @@
+  <function name="u:addPIVA" as="xs:integer" xmlns="http://www.w3.org/1999/XSL/Transform">
+    <param name="arg" as="xs:string"/>
+    <param name="pari" as="xs:integer"/>
+    <variable name="tappo" select="if (not($arg castable as xsd:integer)) then 0 else 1"/>
+    <variable name="mapper" select="if ($tappo = 0) then 0 else 
+																		( if ($pari = 1) 
+																			then ( xs:integer(substring('0246813579', ( xs:integer(substring($arg,1,1)) +1 ) ,1)) ) 
+																			else ( xs:integer(substring($arg,1,1) ) )
+																		)"/>
+    <sequence select="if ($tappo = 0) then $mapper else ( xs:integer($mapper) + u:addPIVA(substring(xs:string($arg),2), (if($pari=0) then 1 else 0) ) )"/>
+  </function>

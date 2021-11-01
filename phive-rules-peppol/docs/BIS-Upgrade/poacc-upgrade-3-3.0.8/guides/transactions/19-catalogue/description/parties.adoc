@@ -1,0 +1,63 @@
+[[parties]]
+= Parties
+
+The following parties/roles may be specified in the message:
+
+[[catalogue-provider-providerparty]]
+== Catalogue Provider (ProviderParty)
+
+The party that is responsible for the preparation and transfer of the Catalogue to the Catalogue receiver.
+Can be the Supplier itself or a third party providing this service.
+
+.Example:
+[source, xml, indent=0]
+----
+include::{snippet-dir}/Snippet-1-1.xml[tags=seller]
+----
+
+
+[[catalogue-receiver-receiverparty]]
+== Catalogue Receiver (ReceiverParty)
+
+The party that is responsible for the reception and control of the Catalogue.
+Can be the Customer itself or a third party providing this service to the Customer.
+
+.Example:
+[source, xml, indent=0]
+----
+include::{snippet-dir}/Snippet-1-1.xml[tags=buyer]
+----
+
+
+[[supplier-sellersupplierparty]]
+== Supplier (SellerSupplierParty)
+
+The party that is responsible for the delivery of products or services specified in the Catalogue.
+
+.Example:
+[source, xml, indent=0]
+----
+include::{snippet-dir}/Snippet-1-1.xml[tags=supplier]
+----
+
+[[buyer-contractorcustomerparty]]
+== Buyer (ContractorCustomerParty)
+
+The party buying products or services from the Catalogue.
+
+.Example:
+[source, xml, indent=0]
+----
+include::{snippet-dir}/Snippet-1-1.xml[tags=contractor]
+----
+
+[[manufacturer-manufacturerparty]]
+== Manufacturer (ManufacturerParty)
+
+The name of the Manufacturer.
+
+.Example:
+[source, xml, indent=0]
+----
+include::{snippet-dir}/Snippet-1-1.xml[tags=manufacturer]
+----

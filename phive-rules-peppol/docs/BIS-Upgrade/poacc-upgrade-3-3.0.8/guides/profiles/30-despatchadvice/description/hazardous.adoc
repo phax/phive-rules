@@ -1,0 +1,13 @@
+[[hazardous-item]]
+= Hazardous item
+
+The PEPPOL Despatch Advice also contains the possibility to inform the Consignee about Hazardous Items.
+This is done by informing the dangerous regulation code for example ADR (Road transport), IMDG (transport by sea) or RID (railroad transport). When declaring hazardous items it is recommended to use the UNDG code to inform about the convention the item is declared hazardous under.
+When the UNDG code has been declared the Hazard class is declared.
+The Hazard class corresponds to the hazardous class of the item for example class 2.3 which indicates Poisonous Gas.
+
+.UBL example of declaring hazardous items.
+[source, xml, indent=0]
+----
+include::{snippet-dir}/snippet-30-1.xml[tags=hazardous]
+----

@@ -1,0 +1,6 @@
+[[namespaces]]
+= Namespaces
+
+The order agreement data model is in this PEPPOL BIS bound to the {ubl} of the order response document type {ubl-order-response}. The target namespace for the UBL-OrderResponse-2.1 is:
+
+`urn:oasis:names:specification:ubl:schema:xsd:OrderResponse-2`

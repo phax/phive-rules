@@ -1,0 +1,17 @@
+[[scope]]
+= Scope
+
+The intention of this BIS is the synchronization of the Punch Out catalogue information between the selling and the buying side in a business relationship, where the selling side is the source of the information and the buying side the receiver.
+In this BIS, the selling side can be any Economic Operator and the buying side any Contracting Authority.
+The intended scope for this BIS includes business-to-government (B2G) and business-to-business (B2B) relationships.
+Although this BIS is a basis for an EDI agreement between two parties, it does not address all business level details of such an agreement.
+It is the provider's responsibility that data contained in the shopping cart transaction is valid from a technical, as well as a business point of view.
+
+The transaction, specified in this BIS are intended to be exchanged between the procurement systems of contracting authorities and systems for shopping cart transactions of economic operators.
+This document recognizes that when using Punch Out it is common to use synchronous message transfer methods but technical specification of that including the login- and logout transactions are outside scope of this BIS.
+
+In this BIS, synchronization of shopping cart transaction information covers the submission of new information, no update or deletion of information is covered by this BIS.
+In case of an update/change, the buyer will simply generate a new product- or service list by repeating the process.
+
+The information sourced with the Punch Out BIS may be used in following business process, such as ordering.
+The order transaction is outside scope of this BIS, we then refer to BISs PEPPOL BIS 3A Order Only or PEPPOL BIS 28A Ordering.

@@ -1,0 +1,394 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<Catalogue xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+	xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+	xmlns="urn:oasis:names:specification:ubl:schema:xsd:Catalogue-2">
+	<!-- tag::customizationid[] -->
+	<cbc:CustomizationID>urn:fdc:peppol.eu:poacc:trns:catalogue:3</cbc:CustomizationID>
+	<!-- end::customizationid[] -->
+	<!-- tag::profile[] -->
+	<cbc:ProfileID>urn:fdc:peppol.eu:poacc:bis:catalogue_only:3</cbc:ProfileID>
+	<!-- end::profile[] -->
+	<!-- tag::identifier[] -->
+	<cbc:ID>1387</cbc:ID>
+	<!-- end::identifier[] -->
+	<!-- tag::actioncode[] -->
+	<cbc:ActionCode>Update</cbc:ActionCode>
+	<!-- end::actioncode[] -->
+	<!-- tag::identifier[] -->
+	<cbc:IssueDate>2016-08-01</cbc:IssueDate>
+	<!-- end::identifier[] -->
+	<!-- tag::validity[] -->
+	<cac:ValidityPeriod>
+		<cbc:EndDate>2016-08-31</cbc:EndDate>
+	</cac:ValidityPeriod>
+	<!-- end::validity[] -->
+	<!-- tag::ref-contract[] -->
+	<cac:ReferencedContract>
+		<cbc:ID>CRT1387</cbc:ID>
+	</cac:ReferencedContract>
+	<!-- end::ref-contract[] -->
+	<!-- tag::seller[] -->
+	<cac:ProviderParty>
+		<cbc:EndpointID schemeID="0192">987654325</cbc:EndpointID>
+		<cac:PartyIdentification>
+			<cbc:ID schemeID="0088">5790000435951</cbc:ID>
+		</cac:PartyIdentification>
+		<cac:PartyLegalEntity>
+			<cbc:RegistrationName>Suuplier AS</cbc:RegistrationName>
+		</cac:PartyLegalEntity>
+	</cac:ProviderParty>
+	<!-- end::seller[] -->
+	<!-- tag::buyer[] -->
+	<cac:ReceiverParty>
+		<cbc:EndpointID schemeID="0192">123456785</cbc:EndpointID>
+		<cac:PartyIdentification>
+			<cbc:ID schemeID="0088">5790000435944</cbc:ID>
+		</cac:PartyIdentification>
+		<cac:PartyLegalEntity>
+			<cbc:RegistrationName>DEF Customer Ltd.</cbc:RegistrationName>
+		</cac:PartyLegalEntity>
+	</cac:ReceiverParty>
+	<!-- end::buyer[] -->
+	<!-- tag::supplier[] -->
+	<cac:SellerSupplierParty>
+		<cac:Party>
+			<cac:PartyName>
+				<cbc:Name>Office AS</cbc:Name>
+			</cac:PartyName>
+			<cac:PostalAddress>
+				<cbc:StreetName>Office street 12</cbc:StreetName>
+				<cbc:CityName>oslo</cbc:CityName>
+				<cbc:PostalZone>1163</cbc:PostalZone>
+				<cbc:CountrySubentity>Oslo</cbc:CountrySubentity>
+				<cac:Country>
+					<cbc:IdentificationCode>NO</cbc:IdentificationCode>
+				</cac:Country>
+			</cac:PostalAddress>
+			<cac:Contact>
+				<cbc:ElectronicMail>kontor@online.no</cbc:ElectronicMail>
+			</cac:Contact>
+		</cac:Party>
+	</cac:SellerSupplierParty>
+	<!-- end::supplier[] -->
+	<!-- tag::contractor[] -->
+	<cac:ContractorCustomerParty>
+		<cac:Party>
+			<cbc:EndpointID schemeID="0184">DK16356706</cbc:EndpointID>
+			<cac:PartyIdentification>
+				<cbc:ID schemeID="0184">DK16356706</cbc:ID>
+			</cac:PartyIdentification>
+			<cac:PartyName>
+				<cbc:Name>DIGST</cbc:Name>
+			</cac:PartyName>
+			<cac:Contact>
+				<cbc:ElectronicMail>postmottak@digst.dk</cbc:ElectronicMail>
+			</cac:Contact>
+		</cac:Party>
+	</cac:ContractorCustomerParty>
+	<!-- end::contractor[] -->
+	<cac:CatalogueLine>
+		<cbc:ID>1</cbc:ID>
+		<!-- tag::availability[] -->
+		<cac:LineValidityPeriod>
+			<cbc:StartDate>2014-12-31</cbc:StartDate>
+		</cac:LineValidityPeriod>
+		<!-- end::availability[] -->
+		<!-- tag::leadtime[] -->
+		<cac:RequiredItemLocationQuantity>
+			<cbc:LeadTimeMeasure unitCode="DAY">10</cbc:LeadTimeMeasure>
+			<!-- code omitted for clairty -->
+			<!-- end::leadtime[] -->
+			<cac:Price>
+				<cbc:PriceAmount currencyID="EUR">1000.00</cbc:PriceAmount>
+				<cbc:BaseQuantity unitCode="C62">1</cbc:BaseQuantity>
+			</cac:Price>
+		</cac:RequiredItemLocationQuantity>
+		<cac:Item>
+			<cbc:Description> Ballpoint pen, comes in different colours and tip
+				sizes</cbc:Description>
+			<cbc:PackQuantity unitCode="XCT">10</cbc:PackQuantity>
+			<cbc:Name> Ballpoint pen. Blue colour 0.7 mm</cbc:Name>
+			<!-- tag::product-id[] -->
+			<cac:SellersItemIdentification>
+				<cbc:ID>PC01</cbc:ID>
+			</cac:SellersItemIdentification>
+			<cac:ManufacturersItemIdentification>
+				<cbc:ID>PC01349087993</cbc:ID>
+			</cac:ManufacturersItemIdentification>
+			<cac:StandardItemIdentification>
+				<cbc:ID schemeID="0160">1234567890123</cbc:ID>
+			</cac:StandardItemIdentification>
+			<!-- end::product-id[] -->
+
+			<cac:ItemSpecificationDocumentReference>
+				<cbc:ID>PC01image.jpg</cbc:ID>
+				<cbc:DocumentTypeCode>3</cbc:DocumentTypeCode>
+				<!--1-->
+				<cac:Attachment>
+					<cbc:EmbeddedDocumentBinaryObject mimeCode="image/jpeg" filename="mainimage.jpg"
+						>UjBsR09EbGhjZ0dTQUxNQUFBUUNBRU1tQ1p0dU1GUXhEUzhi</cbc:EmbeddedDocumentBinaryObject>
+				</cac:Attachment>
+			</cac:ItemSpecificationDocumentReference>
+			<!-- tag::attachment-pdf[] -->
+			<cac:ItemSpecificationDocumentReference>
+				<cbc:ID>PC01specs.pdf</cbc:ID>
+				<cac:Attachment>
+					<cbc:EmbeddedDocumentBinaryObject mimeCode="application/pdf"
+						filename="specification.pdf"
+						>UGVyc29uYWwgY29tcHV0ZXIgcHJvZHVjdCBpbmZvcm1hdGlvbg==</cbc:EmbeddedDocumentBinaryObject>
+				</cac:Attachment>
+			</cac:ItemSpecificationDocumentReference>
+			<!-- end::attachment-pdf[] -->
+			<!-- tag::coo[] -->
+			<cac:OriginCountry>
+				<cbc:IdentificationCode>CH</cbc:IdentificationCode>
+			</cac:OriginCountry>
+			<!-- end::coo[] -->
+			<!-- tag::classification[] -->
+			<cac:CommodityClassification>
+				<cbc:ItemClassificationCode listID="TST" listVersionID="20.0601"
+					>14111511</cbc:ItemClassificationCode>
+			</cac:CommodityClassification>
+			<!-- end::classification[] -->
+			<!-- tag::hazardous[] -->
+			<cac:HazardousItem>
+				<cbc:UNDGCode>ADR</cbc:UNDGCode>
+			</cac:HazardousItem>
+			<!-- end::hazardous[] -->
+			<!-- tag::vat[] -->
+			<cac:ClassifiedTaxCategory>
+				<cbc:ID>S</cbc:ID>
+				<cbc:Percent>18</cbc:Percent>
+				<cac:TaxScheme>
+					<cbc:ID>VAT</cbc:ID>
+				</cac:TaxScheme>
+			</cac:ClassifiedTaxCategory>
+			<!-- end::vat[] -->
+			<cac:AdditionalItemProperty>
+				<cbc:Name>ServiceIndicator</cbc:Name>
+				<cbc:Value>false</cbc:Value>
+			</cac:AdditionalItemProperty>
+			<!-- tag::property[] -->
+			<cac:AdditionalItemProperty>
+				<cbc:Name>RAM memory</cbc:Name>
+				<cbc:Value>16 GB</cbc:Value>
+				<cbc:ValueQuantity unitCode="AD">16000000</cbc:ValueQuantity>
+			</cac:AdditionalItemProperty>
+			<!-- end::property[] -->
+			<!-- tag::color[] -->
+			<cac:AdditionalItemProperty>
+				<cbc:Name>Color</cbc:Name>
+				<cbc:Value>Red</cbc:Value>
+				<cbc:ValueQualifier>Color</cbc:ValueQualifier>
+			</cac:AdditionalItemProperty>
+			<!-- end::color[] -->
+			<!-- tag::allergen[] -->
+			<cac:AdditionalItemProperty>
+				<cbc:Name>Allergens</cbc:Name>
+				<cbc:NameCode listID="CodeListID">Allergens</cbc:NameCode>
+				<cbc:Value>Item contains 5% hazelnuts by volume.</cbc:Value>
+				<cbc:ValueQuantity unitCode="60">5</cbc:ValueQuantity>
+				<cbc:ValueQualifier>HAZELNUTS</cbc:ValueQualifier>
+			</cac:AdditionalItemProperty>
+			<!-- end::allergen[] -->
+			<!-- tag::product-id[] -->
+			<!-- Code omitted for clarity -->
+			<cac:ManufacturerParty>
+				<cac:PartyName>
+					<cbc:Name>The PC Manufacturing Party</cbc:Name>
+				</cac:PartyName>
+			</cac:ManufacturerParty>
+			<!-- end::product-id[] -->
+			<!-- tag::label[] -->
+			<cac:Certificate>
+				<cbc:ID>EU Ecolabel</cbc:ID>
+				<cbc:CertificateTypeCode>NA</cbc:CertificateTypeCode>
+				<cbc:CertificateType>Environmental</cbc:CertificateType>
+				<cac:IssuerParty>
+					<cac:PartyName>
+						<cbc:Name>NA</cbc:Name>
+					</cac:PartyName>
+				</cac:IssuerParty>
+			</cac:Certificate>
+			<!-- end::label[] -->
+			<!-- tag::dimension[] -->
+			<cac:Dimension>
+				<cbc:AttributeID>HT</cbc:AttributeID>
+				<cbc:Measure unitCode="CMT">270</cbc:Measure>
+			</cac:Dimension>
+			<cac:Dimension>
+				<cbc:AttributeID>LN</cbc:AttributeID>
+				<cbc:Measure unitCode="CMT">300</cbc:Measure>
+			</cac:Dimension>
+			<!-- end::dimension[] -->
+		</cac:Item>
+	</cac:CatalogueLine>
+	<!-- tag::line[] -->
+	<cac:CatalogueLine>
+		<cbc:ID>2</cbc:ID>
+		<!-- Code omitted -->
+		<!-- end::line[] -->
+		<!-- tag::price[] -->
+		<cac:RequiredItemLocationQuantity>
+			<cac:Price>
+				<cbc:PriceAmount currencyID="EUR">24.00</cbc:PriceAmount>
+				<cbc:BaseQuantity unitCode="C62">12</cbc:BaseQuantity>
+			</cac:Price>
+		</cac:RequiredItemLocationQuantity>
+		<!-- end::price[] -->
+		<cac:Item>
+			<!-- tag::name[] -->
+			<cbc:Description>21 inch monitor.</cbc:Description>
+			<cbc:Name>Monitor</cbc:Name>
+			<!-- end::name[] -->
+			<!-- tag::selleritemid[] -->
+			<cac:SellersItemIdentification>
+				<cbc:ID>MNTR01</cbc:ID>
+			</cac:SellersItemIdentification>
+			<!-- end::selleritemid[] -->
+			<cac:ManufacturersItemIdentification>
+				<cbc:ID>MNTR01349087993</cbc:ID>
+			</cac:ManufacturersItemIdentification>
+			<!-- tag::standarditemid[] -->
+			<cac:StandardItemIdentification>
+				<cbc:ID schemeID="0160">1234567890124</cbc:ID>
+			</cac:StandardItemIdentification>
+			<!-- end::standarditemid[] -->
+			<cac:CommodityClassification>
+				<cbc:ItemClassificationCode listID="STI">20101601</cbc:ItemClassificationCode>
+			</cac:CommodityClassification>
+			<cac:ClassifiedTaxCategory>
+				<cbc:ID>S</cbc:ID>
+				<cbc:Percent>18</cbc:Percent>
+				<cac:TaxScheme>
+					<cbc:ID>VAT</cbc:ID>
+				</cac:TaxScheme>
+			</cac:ClassifiedTaxCategory>
+			<cac:AdditionalItemProperty>
+				<cbc:Name>PartOf</cbc:Name>
+				<cbc:Value>PC01</cbc:Value>
+			</cac:AdditionalItemProperty>
+			<!-- tag::manufacturer[] -->
+			<cac:ManufacturerParty>
+				<cac:PartyName>
+					<cbc:Name>The PC Manufacturing Party</cbc:Name>
+				</cac:PartyName>
+			</cac:ManufacturerParty>
+			<!-- end::manufacturer[] -->
+		</cac:Item>
+	</cac:CatalogueLine>
+	<cac:CatalogueLine>
+		<cbc:ID>3</cbc:ID>
+		<cac:RequiredItemLocationQuantity>
+			<cac:Price>
+				<cbc:PriceAmount currencyID="EUR">20.00</cbc:PriceAmount>
+			</cac:Price>
+		</cac:RequiredItemLocationQuantity>
+		<cac:Item>
+			<cbc:Description>Linux installation service.</cbc:Description>
+			<cbc:Name>Installation service</cbc:Name>
+			<cac:SellersItemIdentification>
+				<cbc:ID>INST01</cbc:ID>
+			</cac:SellersItemIdentification>
+			<cac:ClassifiedTaxCategory>
+				<cbc:ID>S</cbc:ID>
+				<cbc:Percent>8</cbc:Percent>
+				<cac:TaxScheme>
+					<cbc:ID>VAT</cbc:ID>
+				</cac:TaxScheme>
+			</cac:ClassifiedTaxCategory>
+			<cac:AdditionalItemProperty>
+				<cbc:Name>PartOf</cbc:Name>
+				<cbc:Value>PC01</cbc:Value>
+			</cac:AdditionalItemProperty>
+			<!-- tag::service[] -->
+			<cac:AdditionalItemProperty>
+				<cbc:Name>ServiceIndicator</cbc:Name>
+				<cbc:Value>true</cbc:Value>
+			</cac:AdditionalItemProperty>
+			<!-- end::service[] -->
+		</cac:Item>
+	</cac:CatalogueLine>
+	<cac:CatalogueLine>
+		<cbc:ID>4</cbc:ID>
+		<cac:RequiredItemLocationQuantity>
+			<cac:Price>
+				<cbc:PriceAmount currencyID="EUR">20.00</cbc:PriceAmount>
+			</cac:Price>
+		</cac:RequiredItemLocationQuantity>
+		<!-- tag::itemnamedesc[] -->
+		<cac:Item>
+			<cbc:Description> Ballpoint pen, comes in different colours and tip
+				sizes</cbc:Description>
+			<cbc:PackQuantity unitCode="XCT">10</cbc:PackQuantity>
+			<cbc:Name> Ballpoint pen. Blue colour 0.7 mm</cbc:Name>
+			<cac:SellersItemIdentification>
+				<cbc:ID>34234-324</cbc:ID>
+			</cac:SellersItemIdentification>
+		</cac:Item>
+		<!-- end::itemnamedesc[] -->
+	</cac:CatalogueLine>
+	<cac:CatalogueLine>
+		<cbc:ID>5</cbc:ID>
+		<cac:RequiredItemLocationQuantity>
+			<cac:Price>
+				<cbc:PriceAmount currencyID="EUR">20.00</cbc:PriceAmount>
+			</cac:Price>
+		</cac:RequiredItemLocationQuantity>
+		<!-- tag::keywords[] -->
+		<cac:Item>
+			<cbc:Description>Day cream</cbc:Description>
+			<cbc:PackQuantity unitCode="EA">50</cbc:PackQuantity>
+			<cbc:Name>Ultimate Day cream, 250 ml</cbc:Name>
+			<cbc:Keyword>Moisturizer</cbc:Keyword>
+			<cbc:Keyword>Balm</cbc:Keyword>
+			<cbc:Keyword>Lotion</cbc:Keyword>
+			<cac:SellersItemIdentification>
+				<cbc:ID>654321</cbc:ID>
+			</cac:SellersItemIdentification>
+		</cac:Item>
+		<!-- end::keywords[] -->
+	</cac:CatalogueLine>
+	<cac:CatalogueLine>
+		<cbc:ID>6</cbc:ID>
+		<!-- tag::packlevel[] -->
+		<cbc:PackLevelCode>TU</cbc:PackLevelCode>
+		<!-- end::packlevel[] -->
+		<!-- tag::relateditem[] -->
+		<cac:ComponentRelatedItem>
+			<cbc:ID>7690211</cbc:ID>
+			<cbc:Quantity unitCode="XCT">6</cbc:Quantity>
+		</cac:ComponentRelatedItem>
+		<cac:ComponentRelatedItem>
+			<cbc:ID>523467</cbc:ID>
+			<cbc:Quantity unitCode="XCT">5</cbc:Quantity>
+		</cac:ComponentRelatedItem>
+		<!-- end::relateditem[] -->
+		<!-- tag::replaceitem[] -->
+		<cac:ReplacedRelatedItem>
+			<cbc:ID>12345</cbc:ID>
+			<cbc:Quantity unitCode="EA">5</cbc:Quantity>
+		</cac:ReplacedRelatedItem>
+		<!-- end::replaceitem[] -->
+		<!-- tag::prices[] -->
+		<cac:RequiredItemLocationQuantity>
+			<cbc:LeadTimeMeasure unitCode="DAY">2</cbc:LeadTimeMeasure>
+			<cac:Price>
+				<cbc:PriceAmount currencyID="NOK">20.0000</cbc:PriceAmount>
+			</cac:Price>
+		</cac:RequiredItemLocationQuantity>
+		<!-- end::prices[] -->
+		<cac:Item>
+			<cbc:Description> Ballpoint pen, comes in different colours and tip
+				sizes</cbc:Description>
+			<cbc:PackQuantity unitCode="XCT">10</cbc:PackQuantity>
+			<cbc:Name> Ballpoint pen. Blue colour 0.7 mm</cbc:Name>
+			<!-- tag::keyword[] -->
+			<cbc:Keyword>write equipment%felt pen</cbc:Keyword>
+			<!-- end::keyword[] -->
+			<cac:SellersItemIdentification>
+				<cbc:ID>983492342</cbc:ID>
+			</cac:SellersItemIdentification>
+		</cac:Item>
+	</cac:CatalogueLine>
+</Catalogue>

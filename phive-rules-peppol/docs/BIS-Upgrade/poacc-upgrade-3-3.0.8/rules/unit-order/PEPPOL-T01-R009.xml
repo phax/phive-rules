@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testSet xmlns="http://difi.no/xsd/vefa/validator/1.0"
+	configuration="peppolbis-t01-base-3.0">
+	<assert>
+		<description>Verify that the expected total sum of allowance at document level is equal to
+			the sum of allowance amounts at document level</description>
+		<scope>PEPPOL-T01-R009</scope>
+	</assert>
+	<test>
+		<assert>
+			<success>PEPPOL-T01-R009</success>
+		</assert>
+		<Order xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+			xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+			xmlns="urn:oasis:names:specification:ubl:schema:xsd:Order-2">
+
+
+			<cac:AllowanceCharge>
+				<cbc:ChargeIndicator>true</cbc:ChargeIndicator>
+				<cbc:Amount>400</cbc:Amount>
+			</cac:AllowanceCharge>
+			<cac:AllowanceCharge>
+				<cbc:ChargeIndicator>false</cbc:ChargeIndicator>
+				<cbc:Amount>100</cbc:Amount>
+			</cac:AllowanceCharge>
+
+			<cac:AnticipatedMonetaryTotal>
+				<cbc:AllowanceTotalAmount>100</cbc:AllowanceTotalAmount>
+			</cac:AnticipatedMonetaryTotal>
+
+		</Order>
+	</test>
+
+	<test>
+		<assert>
+			<success>PEPPOL-T01-R009</success>
+		</assert>
+		<Order xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+			xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+			xmlns="urn:oasis:names:specification:ubl:schema:xsd:Order-2">
+
+
+			<cac:AllowanceCharge>
+				<cbc:ChargeIndicator>false</cbc:ChargeIndicator>
+				<cbc:Amount>400</cbc:Amount>
+			</cac:AllowanceCharge>
+			<cac:AllowanceCharge>
+				<cbc:ChargeIndicator>false</cbc:ChargeIndicator>
+				<cbc:Amount>100</cbc:Amount>
+			</cac:AllowanceCharge>
+
+			<cac:AnticipatedMonetaryTotal>
+				<cbc:AllowanceTotalAmount>500</cbc:AllowanceTotalAmount>
+			</cac:AnticipatedMonetaryTotal>
+
+		</Order>
+	</test>
+
+	<test>
+		<assert>
+			<success>PEPPOL-T01-R009</success>
+		</assert>
+		<Order xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+			xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+			xmlns="urn:oasis:names:specification:ubl:schema:xsd:Order-2">
+
+
+			<!--<cac:AllowanceCharge>
+				<cbc:ChargeIndicator>false</cbc:ChargeIndicator>
+				<cbc:Amount>400</cbc:Amount>
+			</cac:AllowanceCharge>
+				-->
+
+			<cac:AnticipatedMonetaryTotal>
+				<cbc:AllowanceTotalAmount>0</cbc:AllowanceTotalAmount>
+			</cac:AnticipatedMonetaryTotal>
+
+		</Order>
+	</test>
+
+	<test>
+		<assert>
+			<error>PEPPOL-T01-R009</error>
+		</assert>
+
+		<Order xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+			xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+			xmlns="urn:oasis:names:specification:ubl:schema:xsd:Order-2">
+
+			<cac:AllowanceCharge>
+				<cbc:ChargeIndicator>false</cbc:ChargeIndicator>
+				<cbc:Amount>400</cbc:Amount>
+			</cac:AllowanceCharge>
+			<cac:AllowanceCharge>
+				<cbc:ChargeIndicator>false</cbc:ChargeIndicator>
+				<cbc:Amount>100</cbc:Amount>
+			</cac:AllowanceCharge>
+
+			<cac:AnticipatedMonetaryTotal>
+				<cbc:AllowanceTotalAmount>400</cbc:AllowanceTotalAmount>
+			</cac:AnticipatedMonetaryTotal>
+
+		</Order>
+	</test>
+
+</testSet>

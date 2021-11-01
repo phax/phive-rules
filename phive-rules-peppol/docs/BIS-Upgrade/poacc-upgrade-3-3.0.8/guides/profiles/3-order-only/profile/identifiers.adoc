@@ -1,0 +1,4 @@
+[[namespaces]]
+= Namespaces
+
+include::../{transaction-path}/technical/namespace.adoc[]

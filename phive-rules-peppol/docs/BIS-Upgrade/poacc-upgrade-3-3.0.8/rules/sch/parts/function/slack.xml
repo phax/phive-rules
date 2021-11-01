@@ -1,0 +1,6 @@
+<function xmlns="http://www.w3.org/1999/XSL/Transform" name="u:slack" as="xs:boolean">
+    <param name="exp" as="xs:decimal"/>
+    <param name="val" as="xs:decimal"/>
+    <param name="slack" as="xs:decimal"/>
+    <value-of select="xs:decimal($exp + $slack) &gt;= $val and xs:decimal($exp - $slack) &lt;= $val"/>
+</function>

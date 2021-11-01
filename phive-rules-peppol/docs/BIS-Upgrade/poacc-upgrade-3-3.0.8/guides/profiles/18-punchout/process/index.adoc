@@ -1,0 +1,39 @@
+
+[[process-and-typical-use-cases]]
+= Process and typical use cases
+
+The Punch Out BIS includes the sending of Shopping cart information from a Seller to a Buyer.
+
+[[process-flow]]
+== Process flow
+
+The Punch Out process flow can be described as follows:
+
+The Buyer is “re-directed” from his procurement system to the seller’s Punch Out enabled website.
+The buyer searches the website.
+
+At the website the buyer search and select articles which are added to a shopping cart.
+
+When the the buyer checks out of the website, a transaction (Punch Out) with item information of the selected item is sent to the buyer’s procurement system.
+
+:leveloffset: +1
+
+include::../../../shared/bpmn/bpmn-legend.adoc[]
+
+:leveloffset: -1
+
+
+The following diagram shows the choreography of the business process implemented by the BIS.
+
+image::images/bpmn-punchout.png[align="center", width=600]
+
+
+:leveloffset: +1
+
+include::use-case1.adoc[]
+
+include::use-case2.adoc[]
+
+include::use-case3.adoc[]
+
+:leveloffset: -1

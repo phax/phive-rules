@@ -1,0 +1,34 @@
+= Index files
+
+Each folder should contain one index file, named `index.adoc`. This file normally contains the main text of the chapter, and then uses the include function to add the files containing the subchapters.
+
+Further information on include directive can be found here: https://asciidoctor.org/docs/user-manual/#include-directive
+
+
+.Example showing AsciiDoc syntax
+[indent=0]
+----
+    = Principles and prerequisites
+
+    This chapter describes the principles and assumptions that underlie the use of PEPPOL Ordering.
+    It is based on the {bii-order}
+
+    :leveloffset: +1 <1>
+
+    include::scope.adoc[] <2>
+<3>
+    include::parties.adoc[]
+
+    include::benefit.adoc[]
+
+    include::../../../shared/files/interoperability.adoc[] <4>
+
+    :leveloffset: -1 <5>
+----
+<1> Using leveloffset to get correct header level for included files (See <<header-levels>>)
+<2> File containing subchapters included
+<3> Allways have one empty line between the include statements
+<4> Including a shared file (a file used by more than one BIS document)
+<5> Setting leveloffset back  (See <<header-levels>>)
+
+<<<

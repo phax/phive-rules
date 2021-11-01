@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OrderResponse xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns="urn:oasis:names:specification:ubl:schema:xsd:OrderResponse-2"
+  xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+  xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
+  <cbc:CustomizationID>urn:fdc:peppol.eu:poacc:trns:order_response:3</cbc:CustomizationID>
+  <cbc:ProfileID>urn:fdc:peppol.eu:poacc:bis:ordering:3</cbc:ProfileID>
+  <cbc:ID>101</cbc:ID>
+  <cbc:IssueDate>2013-07-01</cbc:IssueDate>
+  <cbc:IssueTime>06:10:10</cbc:IssueTime>
+  <!-- tag::response-header[] -->
+  <cbc:OrderResponseCode>CA</cbc:OrderResponseCode>
+  <!-- end::response-header[] -->
+  <cbc:Note>Response message with amendments in the details</cbc:Note>
+  <cbc:DocumentCurrencyCode>EUR</cbc:DocumentCurrencyCode>
+  <cbc:CustomerReference>YourRef</cbc:CustomerReference>
+  <!-- tag::order-ref[] -->
+  <cac:OrderReference>
+    <cbc:ID>1</cbc:ID>
+  </cac:OrderReference>
+  <!-- end::order-ref[] -->
+  <cac:SellerSupplierParty>
+    <cac:Party>
+      <cbc:EndpointID schemeID="0007">5546577799</cbc:EndpointID>
+      <cac:PartyIdentification>
+        <cbc:ID schemeID="0007">5546577799</cbc:ID>
+      </cac:PartyIdentification>
+      <cac:PartyLegalEntity>
+        <cbc:RegistrationName>The Supplier AB</cbc:RegistrationName>
+      </cac:PartyLegalEntity>
+    </cac:Party>
+  </cac:SellerSupplierParty>
+  <cac:BuyerCustomerParty>
+    <cac:Party>
+      <cbc:EndpointID schemeID="0007">5541277711</cbc:EndpointID>
+      <cac:PartyIdentification>
+        <cbc:ID schemeID="0007">5541277711</cbc:ID>
+      </cac:PartyIdentification>
+      <cac:PartyLegalEntity>
+        <cbc:RegistrationName>City Hospital</cbc:RegistrationName>
+      </cac:PartyLegalEntity>
+    </cac:Party>
+  </cac:BuyerCustomerParty>
+  <cac:Delivery>
+    <cac:PromisedDeliveryPeriod>
+      <cbc:StartDate>2013-07-15</cbc:StartDate>
+      <cbc:EndDate>2013-07-16</cbc:EndDate>
+    </cac:PromisedDeliveryPeriod>
+  </cac:Delivery>
+  <cac:OrderLine>
+    <cac:LineItem>
+      <cbc:ID>1</cbc:ID>
+      <cbc:LineStatusCode>7</cbc:LineStatusCode>
+      <cac:Item>
+        <cbc:Name>Brown sauce</cbc:Name>
+        <cac:SellersItemIdentification>
+          <cbc:ID>SN-33</cbc:ID>
+        </cac:SellersItemIdentification>
+      </cac:Item>
+    </cac:LineItem>
+    <!-- tag::order-ref-line[] -->
+    <cac:OrderLineReference>
+      <cbc:LineID>1</cbc:LineID>
+    </cac:OrderLineReference>
+    <!-- end::order-ref-line[] -->
+  </cac:OrderLine>
+  <cac:OrderLine>
+    <cac:LineItem>
+      <cbc:ID>2</cbc:ID>
+      <!-- tag::response-line[] -->
+      <cbc:LineStatusCode>3</cbc:LineStatusCode>
+      <!-- end::response-line[] -->
+      <cac:Item>
+        <cbc:Name>White sauce</cbc:Name>
+        <cac:SellersItemIdentification>
+          <cbc:ID>SN-34</cbc:ID>
+        </cac:SellersItemIdentification>
+      </cac:Item>
+    </cac:LineItem>
+    <cac:OrderLineReference>
+      <cbc:LineID>2</cbc:LineID>
+    </cac:OrderLineReference>
+  </cac:OrderLine>
+  <!-- tag::line-change1[] -->
+  <cac:OrderLine>
+    <cac:LineItem>
+      <cbc:ID>3</cbc:ID>
+      <cbc:LineStatusCode>3</cbc:LineStatusCode>
+      <cbc:Quantity unitCode="NAR">23</cbc:Quantity>
+      <cac:Item>
+        <cbc:Name>Pepper sauce</cbc:Name>
+        <cac:SellersItemIdentification>
+          <cbc:ID>SN-35</cbc:ID>
+        </cac:SellersItemIdentification>
+      </cac:Item>
+    </cac:LineItem>
+    <cac:OrderLineReference>
+      <cbc:LineID>3</cbc:LineID>
+    </cac:OrderLineReference>
+  </cac:OrderLine>
+  <!-- end::line-change1[] -->
+  <!-- tag::line-change2[] -->
+  <cac:OrderLine>
+    <cac:LineItem>
+      <cbc:ID>4</cbc:ID>
+      <cbc:LineStatusCode>3</cbc:LineStatusCode>
+      <cbc:Quantity unitCode="EA">18</cbc:Quantity>
+      <cac:Delivery>
+        <cac:PromisedDeliveryPeriod>
+          <cbc:StartDate>2013-07-15</cbc:StartDate>
+          <cbc:EndDate>2013-07-15</cbc:EndDate>
+        </cac:PromisedDeliveryPeriod>
+      </cac:Delivery>
+      <cac:Item>
+        <cbc:Name>Wet tissues</cbc:Name>
+      </cac:Item>
+    </cac:LineItem>
+    <cac:OrderLineReference>
+      <cbc:LineID>4</cbc:LineID>
+    </cac:OrderLineReference>
+  </cac:OrderLine>
+  <!-- end::line-change2[] -->
+  <!-- tag::line-change3[] -->
+  <cac:OrderLine>
+    <cac:LineItem>
+      <cbc:ID>5</cbc:ID>
+      <cbc:LineStatusCode>1</cbc:LineStatusCode>
+      <cbc:Quantity unitCode="EA">12</cbc:Quantity>
+      <cac:Delivery>
+        <cac:PromisedDeliveryPeriod>
+          <cbc:StartDate>2013-08-15</cbc:StartDate>
+          <cbc:EndDate>2013-08-15</cbc:EndDate>
+        </cac:PromisedDeliveryPeriod>
+      </cac:Delivery>
+      <cac:Item>
+        <cbc:Name>Wet tissues</cbc:Name>
+      </cac:Item>
+    </cac:LineItem>
+    <cac:OrderLineReference>
+      <cbc:LineID>4</cbc:LineID>
+    </cac:OrderLineReference>
+  </cac:OrderLine>
+  <!-- end::line-change3[] -->
+  <!-- tag::line-change4[] -->
+  <cac:OrderLine>
+    <cac:LineItem>
+      <cbc:ID>6</cbc:ID>
+      <cbc:LineStatusCode>3</cbc:LineStatusCode>
+      <cac:Item>
+        <cbc:Name>Wet tissues</cbc:Name>
+        <cac:SellersItemIdentification>
+          <cbc:ID>SItemNo011</cbc:ID>
+        </cac:SellersItemIdentification>
+        <cac:StandardItemIdentification>
+          <cbc:ID schemeID="0160">05704368876486</cbc:ID>
+        </cac:StandardItemIdentification>
+      </cac:Item>
+    </cac:LineItem>
+    <cac:SellerSubstitutedLineItem><!--1-->
+      <cbc:ID>2</cbc:ID>
+      <cac:Item>
+        <cbc:Name>Wet tissues</cbc:Name>
+        <cac:SellersItemIdentification>
+          <cbc:ID>SItemNo012</cbc:ID>
+        </cac:SellersItemIdentification>
+        <cac:StandardItemIdentification>
+          <cbc:ID schemeID="0160">05704368643453</cbc:ID>
+        </cac:StandardItemIdentification>
+        <cac:CommodityClassification>
+          <cbc:ItemClassificationCode listID="MP" listVersionID="20.0601">14111511</cbc:ItemClassificationCode><!--2-->
+        </cac:CommodityClassification>
+      </cac:Item>
+    </cac:SellerSubstitutedLineItem>
+    <cac:OrderLineReference>
+      <cbc:LineID>5</cbc:LineID>
+    </cac:OrderLineReference>
+  </cac:OrderLine>
+  <!-- end::line-change4[] -->
+  <!-- tag::line-change5[] -->
+  <cac:OrderLine>
+    <cac:LineItem>
+      <cbc:ID>11</cbc:ID>
+      <cbc:LineStatusCode>5</cbc:LineStatusCode>
+      <cac:Item>
+        <cbc:Name>Product A</cbc:Name>
+        <cac:SellersItemIdentification>
+          <cbc:ID>Pr00A</cbc:ID>
+        </cac:SellersItemIdentification>
+      </cac:Item>
+    </cac:LineItem>
+    <cac:OrderLineReference>
+      <cbc:LineID>1</cbc:LineID>
+    </cac:OrderLineReference>
+  </cac:OrderLine>
+  <cac:OrderLine>
+    <cac:LineItem>
+      <cbc:ID>10</cbc:ID>
+      <cbc:LineStatusCode>3</cbc:LineStatusCode>
+      <cbc:Quantity unitCode="C62">2</cbc:Quantity>
+      <cac:Delivery>
+        <cac:PromisedDeliveryPeriod>
+          <cbc:StartDate>2018-07-01</cbc:StartDate>
+        </cac:PromisedDeliveryPeriod>
+      </cac:Delivery>
+      <cac:Item>
+        <cbc:Name>Product B</cbc:Name>
+        <cac:SellersItemIdentification>
+          <cbc:ID>Pr00B</cbc:ID>
+        </cac:SellersItemIdentification>
+      </cac:Item>
+    </cac:LineItem>
+    <cac:OrderLineReference>
+      <cbc:LineID>2</cbc:LineID>
+    </cac:OrderLineReference>
+  </cac:OrderLine>
+  <cac:OrderLine>
+    <cac:LineItem>
+      <cbc:ID>7</cbc:ID>
+      <cbc:LineStatusCode>1</cbc:LineStatusCode>
+      <cbc:Quantity unitCode="C62">1</cbc:Quantity>
+      <cac:Delivery>
+        <cac:PromisedDeliveryPeriod>
+          <cbc:StartDate>2018-07-05</cbc:StartDate>
+        </cac:PromisedDeliveryPeriod>
+      </cac:Delivery>
+      <cac:Item>
+        <cbc:Name>Product B</cbc:Name>
+        <cac:SellersItemIdentification>
+          <cbc:ID>Pr00B</cbc:ID>
+        </cac:SellersItemIdentification>
+      </cac:Item>
+    </cac:LineItem>
+    <cac:OrderLineReference>
+      <cbc:LineID>2</cbc:LineID>
+    </cac:OrderLineReference>
+  </cac:OrderLine>
+  <cac:OrderLine>
+    <cac:LineItem>
+      <cbc:ID>8</cbc:ID>
+      <cbc:LineStatusCode>42</cbc:LineStatusCode>
+      <cac:Item>
+        <cbc:Name>Product C</cbc:Name>
+        <cac:SellersItemIdentification>
+          <cbc:ID>Pr00C</cbc:ID>
+        </cac:SellersItemIdentification>
+      </cac:Item>
+    </cac:LineItem>
+    <cac:OrderLineReference>
+      <cbc:LineID>3</cbc:LineID>
+    </cac:OrderLineReference>
+  </cac:OrderLine>
+  <!-- end::line-change5[] -->
+  <!-- tag::line-backorder[] -->
+  <cac:OrderLine>
+    <cac:LineItem>
+      <cbc:ID>9</cbc:ID>
+      <cbc:LineStatusCode>3</cbc:LineStatusCode>
+      <cbc:Quantity unitCode="C62">2</cbc:Quantity>
+      <cbc:MaximumBackorderQuantity>3</cbc:MaximumBackorderQuantity>
+      <cac:Delivery>
+        <cac:PromisedDeliveryPeriod>
+          <cbc:StartDate>2018-07-05</cbc:StartDate>
+        </cac:PromisedDeliveryPeriod>
+      </cac:Delivery>
+      <cac:Item>
+        <cbc:Name>Product D</cbc:Name>
+        <cac:SellersItemIdentification>
+          <cbc:ID>Pr00D</cbc:ID>
+        </cac:SellersItemIdentification>
+      </cac:Item>
+    </cac:LineItem>
+    <cac:OrderLineReference>
+      <cbc:LineID>1</cbc:LineID>
+    </cac:OrderLineReference>
+  </cac:OrderLine>
+  <!-- end::line-backorder[] -->
+</OrderResponse>

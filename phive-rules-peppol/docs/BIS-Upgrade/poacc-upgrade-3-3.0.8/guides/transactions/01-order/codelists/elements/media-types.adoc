@@ -1,0 +1,39 @@
+
+[[media-type]]
+= Media type code of attached document
+
+#Used subset from Billing BIS#
+
+[cols="1,4"]
+.Media Types
+|===
+h| Qualifier
+| _None_
+h| Document location
+| `cbc:EmbeddedDocumentBinaryObject/@mimeCode`
+h| Source codelist
+|
+  Subset of link:http://www.iana.org/assignments/media-types[IANA]
+|===
+
+Valid values are listed in the table below.
+
+[cols="1,4"]
+.Valid subset
+|===
+
+.1+h| Documents
+| application/pdf
+
+.2+h| Images
+| image/png
+| image/jpeg
+
+
+.1+h| Text
+| text/csv
+
+.2+h| Spreadsheet
+| application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+| application/vnd.oasis.opendocument.spreadsheet
+|===

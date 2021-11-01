@@ -1,0 +1,28 @@
+[[message-level-response-message-in-general]]
+= Message Level Response message in general
+
+Through the start to end flow of a message exchange; from the creation of an electronic message, down the transport line that goes through one or more transport networks to the designated receiver and all way through the eventual processing of the message content, there may be need to give responses to the relevant parties up-line about the status or results of the actions that the message goes through.
+These responses are of different nature but for the purpose of this document they can be divided into the following main groups.
+
+Transport acknowledgements::
+These are messages that are exchanged within the transport network(s) to inform about the process of carrying a message down the transport line.
+These responses may inform someone up-line that the delivery to a given point was successful or not and may contain details about issues that are relevant such as why a delivery was not successful.
+The key nature of these responses is that they do not in any way act on result of validation or processing of the content of the payload that is being transported.
+These response messages are commonly called “acks”.
+
+Message Level Responses::
+When a message has reached a given point in the transport line its content may be validated according to agreed specifications that may be both syntactical and semantic.
+The outcome of these validations may be reported to a relevant party up-line, informing him whether the validation was successful or not as well as giving some details.
+An example could be that an order message that is received is rejected because it is missing a closing tag (syntax error) or because its amounts don’t add up according to what is specified in the relevant syntax specification.
+A key nature of these messages is that they report on the message content on the basis of the technical specifications that apply.
+
+Business Level Responses::
+A message that has been received and accepted for processing may call for an action on the receiver’s behalf.
+That receiver’s action may need to be reported back up-line to a relevant party.
+An example is that a technically correct order may be received but the receiver decides to reject the order for any business reason such as out-of-stock situation, expired contract etc.
+The key nature of these responses is that they report a business decision that is made on the message instance received.
+
+*This specification is only concerned with the Message Level Responses.*
+
+.Flow of different response messages
+image::images/response.png[]

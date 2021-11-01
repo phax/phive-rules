@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OrderResponse xmlns="urn:oasis:names:specification:ubl:schema:xsd:OrderResponse-2"
+	xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+	xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
+
+	<cbc:CustomizationID>urn:fdc:peppol.eu:poacc:trns:order_agreement:3</cbc:CustomizationID>
+	<cbc:ProfileID>urn:fdc:peppol.eu:poacc:bis:order_agreement:3</cbc:ProfileID>
+	<cbc:ID>id123 tir110-001</cbc:ID>
+	<cbc:IssueDate>2016-08-16</cbc:IssueDate>
+	<cbc:IssueTime>12:00:00</cbc:IssueTime>
+	<cbc:Note>Textual note with the order agreement tir110-043</cbc:Note>
+	<cbc:DocumentCurrencyCode>EUR</cbc:DocumentCurrencyCode>
+	<cbc:CustomerReference>Buyer reference id tir110-044</cbc:CustomerReference>
+	<cac:OrderReference>
+		<cbc:ID>Order id tir110-042</cbc:ID>
+	</cac:OrderReference>
+	<cac:AdditionalDocumentReference>
+		<cbc:ID>Document idtir110-045</cbc:ID>
+		<cbc:DocumentType>Document description</cbc:DocumentType>
+		<cac:Attachment>
+			<cbc:EmbeddedDocumentBinaryObject mimeCode="application/pdf"  filename="file.pdf"
+				>UjBsR09EbGhjZ0dTQUxNQUFBUUNBRU1tQ1p0dU1GUXhEUzhi</cbc:EmbeddedDocumentBinaryObject>
+			<cac:ExternalReference>
+				<cbc:URI>https://joinup.ec.europa.eu/svn/peppol/PostAward/Ordering28A/20160310%20-%20PEPPOL_BIS_28a-101.pdf</cbc:URI>
+			</cac:ExternalReference>
+		</cac:Attachment>
+	</cac:AdditionalDocumentReference>
+	<cac:Contract>
+		<cbc:ID>contract id tir110-049</cbc:ID>
+	</cac:Contract>
+	<cac:SellerSupplierParty>
+		<cac:Party>
+			<cbc:EndpointID schemeID="0088">5790000436095</cbc:EndpointID>
+			<cac:PartyIdentification>
+				<cbc:ID schemeID="0007">5541277711</cbc:ID>
+			</cac:PartyIdentification>
+			<cac:PostalAddress>
+				<cbc:StreetName>Apt 56B, Whitehaven Mansions</cbc:StreetName>
+				<cbc:AdditionalStreetName>Sandhurst Sq</cbc:AdditionalStreetName>
+				<cbc:CityName>Brussels</cbc:CityName>
+				<cbc:PostalZone>1001</cbc:PostalZone>
+				<cbc:CountrySubentity>BE</cbc:CountrySubentity>
+				<cac:Country>
+					<cbc:IdentificationCode>SE</cbc:IdentificationCode>
+				</cac:Country>
+			</cac:PostalAddress>
+			<cac:PartyLegalEntity>
+				<cbc:RegistrationName>Supplier Works</cbc:RegistrationName>
+			</cac:PartyLegalEntity>
+			<cac:Contact>
+				<cbc:Name>Hercule Poirot</cbc:Name>
+				<cbc:Telephone>123456</cbc:Telephone>
+				<cbc:ElectronicMail>mail@work.be</cbc:ElectronicMail>
+			</cac:Contact>
+		</cac:Party>
+	</cac:SellerSupplierParty>
+	<cac:BuyerCustomerParty>
+		<cac:Party>
+			<cbc:EndpointID schemeID="0088">5790000436095</cbc:EndpointID>
+			<cac:PartyIdentification>
+				<cbc:ID schemeID="0007">5541277711</cbc:ID>
+			</cac:PartyIdentification>
+			<cac:PostalAddress>
+				<cbc:StreetName>Apt 56B, Whitehaven Mansions</cbc:StreetName>
+				<cbc:AdditionalStreetName>Sandhurst Sq</cbc:AdditionalStreetName>
+				<cbc:CityName>Brussels</cbc:CityName>
+				<cbc:PostalZone>1001</cbc:PostalZone>
+				<cbc:CountrySubentity>BE</cbc:CountrySubentity>
+				<cac:Country>
+					<cbc:IdentificationCode>SE</cbc:IdentificationCode>
+				</cac:Country>
+			</cac:PostalAddress>
+			<cac:PartyLegalEntity>
+				<cbc:RegistrationName>Buyer Ltd</cbc:RegistrationName>
+			</cac:PartyLegalEntity>
+		</cac:Party>
+		<cac:DeliveryContact>
+			<cbc:Name>Hercule Poirot</cbc:Name>
+			<cbc:Telephone>123456</cbc:Telephone>
+			<cbc:ElectronicMail>mail@work.be</cbc:ElectronicMail>
+		</cac:DeliveryContact>
+	</cac:BuyerCustomerParty>
+	<cac:OriginatorCustomerParty>
+		<cac:Party>
+			<cac:PartyIdentification>
+				<cbc:ID schemeID="0007">5541277711</cbc:ID>
+			</cac:PartyIdentification>
+			<cac:PartyName>
+				<cbc:Name>Information services</cbc:Name>
+			</cac:PartyName>
+		</cac:Party>
+	</cac:OriginatorCustomerParty>
+	<cac:AccountingCustomerParty>
+		<cac:Party>
+			<cac:PartyIdentification>
+				<cbc:ID schemeID="0007">5541277711</cbc:ID>
+			</cac:PartyIdentification>
+			<cac:PartyName>
+				<cbc:Name>Information services</cbc:Name>
+			</cac:PartyName>
+		</cac:Party>
+	</cac:AccountingCustomerParty>
+	<cac:Delivery>
+		<cac:PromisedDeliveryPeriod>
+			<cbc:StartDate>2016-08-20</cbc:StartDate>
+			<cbc:StartTime>12:00:00</cbc:StartTime>
+			<cbc:EndDate>2016-08-30</cbc:EndDate>
+			<cbc:EndTime>18:00:00</cbc:EndTime>
+		</cac:PromisedDeliveryPeriod>
+		<cac:DeliveryParty>
+			<cac:PartyIdentification>
+				<cbc:ID schemeID="0192">987654325</cbc:ID>
+			</cac:PartyIdentification>
+			<cac:PartyName>
+				<cbc:Name>Delivery party name</cbc:Name>
+			</cac:PartyName>
+		</cac:DeliveryParty>
+	</cac:Delivery>
+	<!-- tag::allowance[] -->
+	<cac:AllowanceCharge>
+		<cbc:ChargeIndicator>true</cbc:ChargeIndicator><!--1-->
+		<cbc:AllowanceChargeReasonCode>FC</cbc:AllowanceChargeReasonCode>
+		<cbc:AllowanceChargeReason>Freight service</cbc:AllowanceChargeReason>
+		<cbc:MultiplierFactorNumeric>2</cbc:MultiplierFactorNumeric><!--4-->
+		<cbc:Amount currencyID="EUR">20</cbc:Amount> <!--5-->
+		<cbc:BaseAmount currencyID="EUR">1000</cbc:BaseAmount><!--3-->
+		<cac:TaxCategory>
+			<cbc:ID>S</cbc:ID>
+			<cbc:Percent>23.6</cbc:Percent>
+			<cac:TaxScheme>
+				<cbc:ID>VAT</cbc:ID>
+			</cac:TaxScheme>
+		</cac:TaxCategory>
+	</cac:AllowanceCharge>
+	<cac:AllowanceCharge>
+		<cbc:ChargeIndicator>false</cbc:ChargeIndicator><!--2-->
+		<cbc:AllowanceChargeReasonCode>65</cbc:AllowanceChargeReasonCode>
+		<cbc:AllowanceChargeReason>Production error discount</cbc:AllowanceChargeReason>
+		<cbc:Amount currencyID="EUR">10</cbc:Amount>
+		<cac:TaxCategory>
+			<cbc:ID>S</cbc:ID>
+			<cbc:Percent>23.6</cbc:Percent>
+			<cac:TaxScheme>
+				<cbc:ID>VAT</cbc:ID>
+			</cac:TaxScheme>
+		</cac:TaxCategory>
+	</cac:AllowanceCharge>
+	<!-- end::allowance[] -->
+
+
+	<cac:TaxTotal>
+		<cbc:TaxAmount currencyID="EUR">283.2</cbc:TaxAmount><!--3-->
+		<cac:TaxSubtotal>
+			<cbc:TaxableAmount currencyID="EUR">1200</cbc:TaxableAmount><!--1-->
+			<cbc:TaxAmount currencyID="EUR">283.20</cbc:TaxAmount><!--2-->
+			<cac:TaxCategory>
+				<cbc:ID>S</cbc:ID>
+				<cbc:Percent>23.6</cbc:Percent><!--3-->
+				<cac:TaxScheme>
+					<cbc:ID>VAT</cbc:ID>
+				</cac:TaxScheme>
+			</cac:TaxCategory>
+		</cac:TaxSubtotal>
+	</cac:TaxTotal>
+
+
+	<cac:LegalMonetaryTotal>
+		<cbc:LineExtensionAmount currencyID="EUR">1200</cbc:LineExtensionAmount>
+		<cbc:TaxExclusiveAmount currencyID="EUR">1210</cbc:TaxExclusiveAmount>
+		<cbc:TaxInclusiveAmount currencyID="EUR">1493.2</cbc:TaxInclusiveAmount>
+		<cbc:AllowanceTotalAmount currencyID="EUR">10</cbc:AllowanceTotalAmount>
+		<cbc:ChargeTotalAmount currencyID="EUR">20</cbc:ChargeTotalAmount>
+		<cbc:PayableAmount currencyID="EUR">1493.20</cbc:PayableAmount>
+	</cac:LegalMonetaryTotal>
+	<cac:OrderLine>
+		<cac:LineItem>
+			<cbc:ID>1</cbc:ID>
+			<cbc:Note>Line note</cbc:Note>
+			<cbc:Quantity unitCode="C62">24</cbc:Quantity>
+			<cbc:LineExtensionAmount currencyID="EUR">1200</cbc:LineExtensionAmount>
+			<cac:Delivery>
+				<cbc:Quantity unitCode="C62">24</cbc:Quantity>
+				<cac:PromisedDeliveryPeriod>
+					<cbc:StartDate>2016-08-20</cbc:StartDate>
+					<cbc:StartTime>12:00:00</cbc:StartTime>
+					<cbc:EndDate>2016-08-30</cbc:EndDate>
+					<cbc:EndTime>18:00:00</cbc:EndTime>
+				</cac:PromisedDeliveryPeriod>
+			</cac:Delivery>
+
+
+			<!-- tag::price[] -->
+			<cac:Price>
+				<cbc:PriceAmount currencyID="EUR">50</cbc:PriceAmount>
+				<cbc:BaseQuantity unitCode="C62">1</cbc:BaseQuantity>
+			</cac:Price>
+			<!-- end::price[] -->
+			<cac:Item>
+				<cbc:Description>Description of the item</cbc:Description>
+				<cbc:Name>Item name</cbc:Name>
+				<cac:SellersItemIdentification>
+					<cbc:ID>123</cbc:ID>
+				</cac:SellersItemIdentification>
+				<cac:StandardItemIdentification>
+					<cbc:ID schemeID="0160">321</cbc:ID>
+				</cac:StandardItemIdentification>
+				<cac:ItemSpecificationDocumentReference>
+					<cbc:ID>doc id</cbc:ID>
+					<cbc:DocumentType>Item specs</cbc:DocumentType>
+					<cac:Attachment>
+						<cbc:EmbeddedDocumentBinaryObject mimeCode="application/pdf"
+							filename="specs.pdf"
+							>UjBsR09EbGhjZ0dTQUxNQUFBUUNBRU1tQ1p0dU1GUXhEUzhi</cbc:EmbeddedDocumentBinaryObject>
+						<cac:ExternalReference>
+							<cbc:URI>https://joinup.ec.europa.eu/svn/peppol/PostAward/Ordering28A/20160310%20-%20PEPPOL_BIS_28a-101.pdf</cbc:URI>
+						</cac:ExternalReference>
+					</cac:Attachment>
+				</cac:ItemSpecificationDocumentReference>
+				<cac:CommodityClassification>
+					<cbc:ItemClassificationCode listID="STI">3156</cbc:ItemClassificationCode>
+				</cac:CommodityClassification>
+				<cac:TransactionConditions>
+					<cbc:ActionCode>CT</cbc:ActionCode>
+				</cac:TransactionConditions>
+				<cac:ClassifiedTaxCategory>
+					<cbc:ID>S</cbc:ID>
+					<cbc:Percent>23.6</cbc:Percent>
+					<cac:TaxScheme>
+						<cbc:ID>VAT</cbc:ID>
+					</cac:TaxScheme>
+				</cac:ClassifiedTaxCategory>
+				<cac:AdditionalItemProperty>
+					<cbc:Name>Property name</cbc:Name>
+					<cbc:NameCode listID="PropertyCodeList">NameCode</cbc:NameCode>
+					<cbc:Value>Property value</cbc:Value>
+					<cbc:ValueQuantity unitCode="C62">1</cbc:ValueQuantity>
+				</cac:AdditionalItemProperty>
+				<cac:Certificate>
+					<cbc:ID>EU Ecolabel</cbc:ID>
+					<cbc:CertificateTypeCode>NA</cbc:CertificateTypeCode>
+					<cbc:CertificateType>Environmental</cbc:CertificateType>
+					<cbc:Remarks>Item label value</cbc:Remarks>
+					<cac:IssuerParty>
+						<cac:PartyName>
+							<cbc:Name>NA</cbc:Name>
+						</cac:PartyName>
+					</cac:IssuerParty>
+					<cac:DocumentReference>
+						<cbc:ID>Item label reference</cbc:ID>
+					</cac:DocumentReference>
+				</cac:Certificate>
+			</cac:Item>
+		</cac:LineItem>
+	</cac:OrderLine>
+</OrderResponse>

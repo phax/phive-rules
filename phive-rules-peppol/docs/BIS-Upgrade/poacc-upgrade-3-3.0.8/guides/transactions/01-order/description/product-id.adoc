@@ -1,0 +1,17 @@
+[[product-identification]]
+= Product identification
+
+Product identification must be done using the identifiers described below:
+
+* Sellers ID
+* Standard ID, e.g. the GS1 Global Trade Item Number (GTIN)
+
+Which identifier to use depends on what is known at the time ordering or what is commonly used in the relevant business sector.
+
+IMPORTANT: Each order line MUST have an item identifier and/or an item name
+
+.Example of an PEPPOL BIS Order item using both Sellers ID and Standard ID (GTIN):
+[source, xml, indent=0]
+----
+include::{snippet-dir}/snippet-01.xml[tags=prod-id]
+----

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeList xmlns="urn:fdc:difi.no:2017:vefa:structure:CodeList-1">
+
+    <Title>Clarification list identifier (openPEPPOL)</Title>
+    <Identifier>ClarificationListID</Identifier>
+    <Version>1.0</Version>
+    <Agency>OpenPEPPOL</Agency>
+    <Subset>OpenPEPPOL</Subset>
+
+    <Code>
+        <Id>OPStatusAction</Id>
+        <Name>StatusAction</Name>
+        <Description>Actions that the Buyer requests from the Seller</Description>
+    </Code>
+    <Code>
+        <Id>OPStatusReason</Id>
+        <Name>Status reason</Name>
+        <Description>Reasons for the given status</Description>
+    </Code>
+
+</CodeList>

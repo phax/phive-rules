@@ -1,0 +1,23 @@
+= Party identification
+
+== Sender Party
+
+The element `cac:SenderParty/cbc:EndpointID` MUST contain the party identification of the
+receiver of the original envelope.
+
+.Example:
+[source, xml, indent=0]
+----
+include::{snippet-dir}/snippet-1.xml[tags=sender]
+----
+
+
+== Receiver Party
+The element `cac:ReceiverParty/cbc:EndpointID` MUST contain the party identification of the
+sender of the original envelope.
+
+.Example:
+[source, xml, indent=0]
+----
+include::{snippet-dir}/snippet-1.xml[tags=receiver]
+----

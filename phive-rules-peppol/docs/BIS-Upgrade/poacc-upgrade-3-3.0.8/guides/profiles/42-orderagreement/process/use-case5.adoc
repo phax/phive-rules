@@ -1,0 +1,38 @@
+[[use-case-5-framework-contract]]
+= Use case 5 – Framework contract
+
+The buyer has made a framework agreement with the seller for services such as maintenance or consulting. The framework agreement sets limits and terms within which the seller may provide services without individual orders from the buyer.
+
+[cols="1h,5",]
+|====
+|Use Case number |5
+|Use Case Name |Maintenance based on framework contract
+|Use Case Description
+a|
+A seller who has a framework agreement that contracts him for certain services, items or consulting may react to events as contracted and at the end of a period send an order agreement listing the services that were carried out. +
+ +
+Examples include:
+
+* A maintenance services that monitors a building and, for example, fixes windows, doors and other things that need maintenance as identified.
+* A computer service provider monitors systems and reacts immediately to incidents such as system down time or errors.
+* An accounting services contracted by the buyer handles various filings and reports as required.
+* A seller of supplies has been contracted to monitor the stock levels for certain items and restock as needed to maintain the agreed levels.
+
+In each of these examples the buyer has made a framework contract with the seller allowing the seller to react to defined but not previously known events without receiving an order or request from the buyer for each event.
+
+|Parties involved
+a| * Buyer
+* Seller
+|Assumptions |The seller and buyer has a framework contract that define the service to be provided and its limits.
+|The flow|
+The seller of the services or items reacts to events as defined in the contract and carries out the service or delivers the items as contracted.
+
+Periodically, for example monthly, the seller lists all services and items that have been provided during the period. This is listed with order agreement lines and the total of the order agreement represents the total value of the services and items provided during the period which will be invoice by the seller. The seller sends the order agreement to the buyer who records it in his system.
+
+The seller proceeds to invoice immediately unless otherwise directed by the framework agreement.
+
+The buyer may have internal processes that verify these kind of order agreements differently than those initiated by himself.
+
+|Result |The buyer has registered a purchase order in his systems that allow him to order to invoice matching when the invoice is received.
+|XML example file |See Appendix A for a sample file illustrating Use Case 5.
+|====

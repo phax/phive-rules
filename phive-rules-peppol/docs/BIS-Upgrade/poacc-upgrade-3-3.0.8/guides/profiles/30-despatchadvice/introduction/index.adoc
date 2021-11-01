@@ -1,0 +1,26 @@
+[[introduction-to-openpeppol-and-bis]]
+= Introduction to openPEPPOL and BIS
+
+This BIS is a result of work within PEPPOL project and is published as part of PEPPOL specifications.
+
+This PEPPOL BIS provides a set of specifications for implementing a PEPPOL business process.
+The document is concerned with clarifying requirements for ensuring interoperability of pan-European Public eProcurement and provides guidelines for supporting these requirements and how to implement them.
+This PEPPOL BIS is based on the CEN WS/BII2 Profile “Profile BII30 Dispatch Only”. A conformance statement is included in this BIS, see annex B.
+
+.Relationship between BII profiles and PEPPOL BIS
+image::../../shared/images/BII_relationship.png[align="center", width=600]
+
+[[background-and-objective]]
+== Background and objective
+
+The PEPPOL BIS (Business Interoperability Specification) provides a set of specifications for implementing PEPPOL business documents.
+The specifications enable any company to issue electronic documents that fulfill legal and business processing requirement within the European Union and the EEA.
+It supports a subset of information that is used by most industries and enables users to issue documents (invoices, orders, despatch advices, etc…) that are valid for cross border trade within the European Union and the EEA.
+
+*The purpose* of this document is to describe a common format for the despatch advice message in the European market, and to facilitate an efficient implementation and increased use of electronic collaboration regarding the fulfillment process based on this format.
+
+:leveloffset: +1
+
+include::../../../shared/files/audience.adoc[]
+
+:leveloffset: -1

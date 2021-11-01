@@ -1,0 +1,13 @@
+= Overview of alignments
+
+The alignment of the BIS specification to the EN has been done with reference to the EN 16931 electronic invoice in line with the adoption of that standard into PEPPOL BIS Billing 3.0. The work is based on the following documents and decisions:
+
+* https://openpeppol.atlassian.net/wiki/download/attachments/180125738/Gap%20analysis.xlsx?api=v2[Peppol invoice to EN 16931 gap analysis] that formed basis for the BIS5A Billing.
+* https://openpeppol.atlassian.net/wiki/download/attachments/180125738/BIS3%20Scope%20and%20disposition.docx?api=v2[BIS3 Scope and disposition] addressing how gaps identified for the invoice should be adopted into other specifications.
+* Agreements made by the BIS3 work team members and documented in the team minutes.
+
+An important part of the alignment work was to adopt the documentation of the PEPPOL BIS Billing 3.0 to other specifications by using a browsable format instead of Word documents and spreadsheets.
+
+Minutes and further details can be found in the https://openpeppol.atlassian.net/wiki/spaces/PB3UWG/overview[project space in Confluence] .
+
+Further details of the the changes made can be found in http://test-docs.peppol.eu/poacc/upgrade-3/changes/[Overview of Alignments].

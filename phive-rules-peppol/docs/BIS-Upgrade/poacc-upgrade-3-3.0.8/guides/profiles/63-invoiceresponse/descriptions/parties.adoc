@@ -1,0 +1,92 @@
+[[sending-and-receiving-parties]]
+= Sending and receiving parties
+
+The sending and receiving parties are those that exchange the Invoice Response.
+These may be the Buyer and the Seller or service providers acting on their behalf.
+
+[[senderparty]]
+== SenderParty
+
+The party that sends the Invoice Response.
+This may be the Buyer who received the invoice, or it may be a service provider processing the invoice on behalf of the Buyer.
+If the Invoice Response is issued by a service provider the name of the actual Buyer may be given with the invoice reference.
+
+The information given for the sender is his EndpointID which is his PEPPOL Participant Identifier (PPID). The party identifier may be given as well and the schema that the identifier is based on.
+The name of the sender is then provided.
+
+Contact information for the sender (Buyer) is the person that the receiver (Seller) can contact when resolving an issue reported in the Invoice Response.
+This should not be general company email and phone unless the sender has in place a process that would direct the contact efficiently to a relevant person.
+
+.UBL example:
+[source, xml]
+----
+<cac:SenderParty>
+  <cbc:EndpointID schemeID="0196">6963495890</cbc:EndpointID>
+  <cac:PartyIdentification>
+    <cbc:ID schemeID="0088">senderif12345</cbc:ID>
+  </cac:PartyIdentification>
+  <cac:PartyName>
+    <cbc:Name>Buyer organization</cbc:Name>
+  </cac:PartyName>
+  <cac:Contact>
+    <cbc:Name>Invoice processing department</cbc:Name>
+    <cbc:Telephone>012312312345</cbc:Telephone>
+    <cbc:ElectronicMail>invoiceprocessingdepartment@organization.org</cbc:ElectronicMail>
+  </cac:Contact>
+</cac:SenderParty>
+----
+
+[[receiverparty]]
+== ReceiverParty
+
+The party that sent the Invoice that the IMR is responding to.
+This is also the receiver of the Invoice Response.
+This may be the Seller who issued the invoice or a service provider who handles the invocing process on behalf of the Seller.
+If this is a service provider, then the actual Seller may be identified as part of the invoice reference information.
+
+.UBL example:
+[source, xml]
+----
+<cac:ReceiverParty>
+  <cbc:EndpointID schemeID="0196">6841569459</cbc:EndpointID>
+  <cac:PartyIdentification>
+    <cbc:ID schemeID="0088">receiver12345</cbc:ID>
+  </cac:PartyIdentification>
+  <cac:PartyName>
+    <cbc:Name>Seller company</cbc:Name>
+  </cac:PartyName>
+</cac:ReceiverParty>
+----
+
+[[issuer-and-recipient-parties]]
+== Issuer and Recipient parties
+
+In the case when the Invoice processing is handled by a service provider on behalf or the Buyer or the Seller then the sending/receiving party is not the Buyer/Seller stated in the Invoice document.
+In those cases, it is required to identify the Buyer and the Seller as declared in the referenced Invoice.
+This shall be done by giving an identifier and a name.
+
+.UBL example:
+[source, xml]
+----
+<cac:IssuerParty>
+  <cac:PartyIdentification>
+    <cbc:ID schemeID="0088">6543219876546</cbc:ID>
+  </cac:PartyIdentification>
+  <cac:PartyName>
+    <cbc:Name>Seller A</cbc:Name>
+  </cac:PartyName>
+</cac:IssuerParty>
+----
+
+.UBL example:
+[source, xml]
+----
+<cac:RecipientParty>
+  <cac:PartyIdentification>
+    <cbc:ID schemeID="0088">9876549873211</cbc:ID>
+  </cac:PartyIdentification>
+  <cac:PartyName>
+    <cbc:Name>Buyer A</cbc:Name>
+  </cac:PartyName>
+</cac:RecipientParty>
+----

@@ -1,0 +1,37 @@
+[[bii-rules]]
+= BII rules
+
+The list below describes the business rules valid for the Message Level Response message.
+The MLR message itself will not be validated to prevent possible infinite loops.
+
+[cols="1s,4,1",options="header"]
+|====
+|RuleID
+|Rule
+|Error level
+
+|BII2-T71-R001
+|A message level response MUST have a profile identifier
+|Fatal
+
+|BII2-T71-R002
+|A message level response MUST have a customization identifier
+|Fatal
+
+|BII2-T71-R003
+|A message level response MUST contain the date of issue
+|Fatal
+
+|BII2-T71-R004
+|A message level response MUST contain the response identifier
+|Fatal
+
+|BII2-T71-R005
+|The party sending the message level response MUST be specified
+|Fatal
+
+|BII2-T71-R006
+|The party receiving the message level response MUST be specified
+|Fatal
+
+|====

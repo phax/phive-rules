@@ -1,0 +1,10 @@
+[[hazardous-item]]
+== Hazardous item
+
+If an item is classified as Hazardous item, a reference to the relevant UNDG-code must be stated and further specification must be provided in an attached document or on a web-site (URI).
+
+.Example:
+[source, xml, indent=0]
+----
+include::{snippet-dir}/Snippet-1-1.xml[tags=hazardous]
+----

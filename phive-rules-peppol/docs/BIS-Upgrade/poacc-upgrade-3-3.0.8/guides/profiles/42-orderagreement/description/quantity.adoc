@@ -1,0 +1,22 @@
+= Quantities and units
+
+Various Quantities and Units can be stated in the PEPPOL BIS Order Agreement. These are both related to the ordering process and the logistics process.
+
+The table below lists quantities and units in the format. To all quantities there must be a valid Unit of measure according to the Code list.
+
+[cols="2,4",options="header",]
+|====
+|Element name / (Tag name) |Description
+|Price Quantity / (BaseQuantity) |Quantity related to Price.
+|Order Quantity / (Quantity) |Quantity that is ordered, e.g. number of pieces or volume in litre .
+|====
+
+
+
+.Example of an order agreement line with a quantity of 120 pieces (cbc:Quantity) and price is given per 12 items. When calculating the line amount the price is applied pr 12 pieces, that is 120/12x50 = €500
+[source, xml, indent=0]
+----
+include::{snippet-dir}/OA full.xml[tags=LineItem]
+<!-- code omitted for clarity -->
+include::{snippet-dir}//OA full.xml[tags=price]
+----

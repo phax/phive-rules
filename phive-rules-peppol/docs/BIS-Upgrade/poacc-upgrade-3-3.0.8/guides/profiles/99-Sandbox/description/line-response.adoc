@@ -1,0 +1,15 @@
+= Line response
+
+In case of a negative response (rejection), the `cac:LineResponse` element is used to specify the
+errors in the business document. The `cbc:LineID` element is mandatory in {ubl}, but not
+relevant since the line responses are listing errors on both header level and line level from the
+original document and should have the value: *NA* (“Not Applicable”, must be all uppercase). The
+`cbc:XPath` element should be used to indicate where in the business document the error occurred
+(or other method for non-xml syntaxes) to reference the element causing the error. The
+`cbc:Description` element must be expressed in English only.
+
+.Example:
+[source, xml, indent=0]
+----
+include::../snippets/snippet-3.xml[tags=line-response]
+----

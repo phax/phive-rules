@@ -1,0 +1,77 @@
+
+= Order rules
+
+== Transaction rules
+
+[cols="^1,1s,4,1",options="header"]
+|====
+|Auto/Manual
+|RuleID
+|Rule
+|Error level
+
+|A
+|BII2-T01-R001
+|An order MUST have a customization identifier
+|fatal
+
+|A
+|BII2-T01-R002
+|An order MUST have a profile identifier
+|fatal
+
+|M
+|BII2-T01-R003
+|Each order line MUST have a document line identifier that is unique within the order
+|fatal
+
+|A
+|BII2-T01-R004
+|An order MUST have a document issue date
+|fatal
+
+|M|BII2-T01-R005 |An order SHOULD provide information about its validity end date |warning
+|A|BII2-T01-R006 |An order MUST have a document identifier |fatal
+|A|BII2-T01-R007 |Allowances and charges MUST have a reason |fatal
+|M|BII2-T01-R009 |An order MUST be stated in a single currency |fatal
+|M|BII2-T01-R010 |Each order line ordered quantity MUST not be negative |fatal
+|M|BII2-T01-R011 |Each order line item net price MUST not be negative |fatal
+|M|BII2-T01-R012 |Expected total amount for payment MUST NOT be negative |fatal
+|M|BII2-T01-R013 |Expected total sum of line amounts MUST NOT be negative |fatal
+|M|BII2-T01-R014 |Expected total sum of line amounts MUST equal the sum of the order line amounts at order line level |fatal
+|M|BII2-T01-R015 |Expected total sum of allowance at document level MUST be equal to the sum of allowance amounts at document level |fatal
+|M|BII2-T01-R016 |Expected total sum of charges at document level MUST be equal to the sum of charges at document level |fatal
+|M|BII2-T01-R017 |Expected total amount for payment MUST be equal to the sum of line amounts minus sum of allowances at document level plus sum of charges at document level and VAT total amount |fatal
+|M|BII2-T01-R018 |VAT total amount SHOULD be the sum of order line tax amounts, if order line tax amounts are provided |warning
+|A|BII2-T01-R019 |Each item property MUST have a data name, if item property is provided |fatal
+|A|BII2-T01-R020 |Each item property MUST have a data value, if item property is provided |fatal
+|M|BII2-T01-R021 |An order MUST have the buyer party name or a buyer party identifier |fatal
+|M|BII2-T01-R022 |An order MUST have the seller party name or a seller party identifier |fatal
+|M|BII2-T01-R029 |Each order line SHOULD have an ordered quantity |warning
+|A|BII2-T01-R030 |Each order line ordered quantity MUST have an associated unit of measure |fatal
+|M|BII2-T01-R031 |Each order line MUST have an item identifier and/or an item name |fatal
+|A|EUGEN-T01-R011 |An endpoint identifier MUST have a scheme identifier attribute |fatal
+|-|EUGEN-T01-R012 |A party identifier MUST have a scheme identifier attribute |fatal
+|-|EUGEN-T01-R013 |An order type code MUST have a list identifier attribute “UNCL1001” |fatal
+|-|EUGEN-T01-R014 |A document currency code MUST have a list identifier attribute “ISO4217” |fatal
+|-|EUGEN-T01-R015 |A country identification code MUST have a list identifier attribute “ISO3166-1:Alpha2” |fatal
+|-|EUGEN-T01-R016 |A unit code attribute MUST have a unit code list identifier attribute “UNECERec20” |fatal
+|-|EUGEN-T01-R017 |A tax category identifier MUST have a scheme identifier attribute “UNCL5305” |fatal
+|====
+
+
+== Code lists rules
+
+[cols="^1,1s,5",options="header"]
+|====
+|Auto/Manual |Identifier |Business Rule
+|A|OP-T01-001 |OrderTypeCode in an order MUST be from UN/ECE 1001 code list PEPPOL Subset
+|A|OP-T01-002 |DocumentCurrencyCode MUST be coded using ISO code list 4217
+|A|OP-T01-003 |A Binary Object MIME code attribute MUST be coded using MIME Code Type version 2008 code list
+|A|OP-T01-004 |#An Endpoint Identifier Scheme identifier MUST be from the code list PEPPOL Party Identifier#
+|A|OP-T01-005 |#An Party Identifier Scheme identifier MUST be from the code list PEPPOL Party Identifier#
+|A|OP-T01-006 |Country codes in an order MUST be coded using ISO code list 3166-1
+|A|OP-T01-007 |currencyID MUST be coded using ISO code list 4217
+|A|OP-T01-008 |A tax category identifier MUST be coded using UN/ECE 5305 BII2 Subset
+|A|OP-T01-009 |Unit code MUST be coded according to the UN/ECE Recommendation 20 (2009)
+|====

@@ -1,0 +1,37 @@
+
+= Despatch advice rules
+
+== Transaction rules
+
+[cols="^1,1s,4,1",options="header"]
+|====
+|Auto/Manual
+|RuleID
+|Rule
+|Error level
+|M|BII2-T16-R009 |A consignee party SHOULD have the party name or a party identifier  |warning
+|A|BII2-T16-R001 |A despatch advice MUST have a customization identifier |fatal
+|A|BII2-T16-R002 |A despatch advice MUST have a profile identifier |fatal
+|A|BII2-T16-R003 |A despatch advice MUST have a document identifier |fatal
+|A|BII2-T16-R004 |A despatch advice MUST have a document issue date |fatal
+|M|BII2-T16-R005 |A despatch advice SHOULD have an order identifier  |warning
+|A|BII2-T16-R006 |A despatch advice MUST have a Despatch party  |fatal
+|A|BII2-T16-R008 |A despatch advice MUST have a consignee party  |fatal
+|A|BII2-T16-R012 |A despatch advice MUST have at least one despatch advice line  |fatal
+|A|BII2-T16-R013 |Each despatch advice line MUST have a despatch line identifier that is #unique# within the despatch advice  |fatal
+|M|BII2-T16-R016 |Each despatch advice line MUST have an item identifier and/or an item name  |fatal
+|M|BII2-T16-R017 |Each despatch advice line SHOULD have a delivered quantity  |warning
+|M|BII2-T16-R019 |Each despatch advice line delivered quantity MUST not be negative  |fatal
+|A|BII2-T16-R020 |Each despatch advice line delivered quantity SHOULD have an associated unit of measure  |warning
+|M|BII2-T16-R021 |An outstanding quantity reason SHOULD be provided if the despatch line contains an outstanding quantity  |warning
+|A|BII2-T16-R011 |Shipment identifier MUST be provided if the despatch advice contains shipment information |fatal
+|M|BII2-T16-R007 |A Despatch party SHOULD have the Despatch party name |warning
+|A|BII2-T16-R018 |An item standard identifier MUST have an identification schema (e.g. GTIN)  |fatal
+|-|OP-T16-R001 |A country identification code MUST have a list identifier attribute “ISO3166-1:Alpha2”.  |fatal
+|-|OP-T16-R002 |A unit code attribute MUST have a unit code list identifier attribute “UNECERec20”  |fatal
+|-|OP-T16-R003 |A UNDG code MUST have a list identifier attribute “UNCL8273”  |fatal
+|-|OP-T16-R004 |A transport handling unit type code MUST have a list identifier attribute “UNECERec21”.  |fatal
+|A|OP-T16-R005 |#An Endpoint Identifier Scheme MUST be from the list of PEPPOL Party Identifiers.#  |Fatal
+|A|OP-T16-R006 |#A Party Identifier Scheme MUST be from the list of PEPPOL Party Identifiers#  |fatal
+|A|OP-T16-R007 |The handling unit measure AttributeID MUST be of value "AAB" for Unit gross weight or "AAW" for Gross volume|fatal
+|====

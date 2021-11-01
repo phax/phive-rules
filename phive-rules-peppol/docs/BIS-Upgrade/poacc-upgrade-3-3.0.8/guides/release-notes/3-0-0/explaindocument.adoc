@@ -1,0 +1,52 @@
+= Documentation
+
+For each Business Interoperability Specification (BIS) there are the following parts:
+
+== Business Interoperability Specifications.
+
+=== BIS document
+The specification of a business process. The document describes the business process that it supports and provides details on how individual elements that are exchanged in transactions are to be used and understood. It provides business examples and syntax examples where needed. Defines rules that govern the data as well as code list that must be used.
+
+=== Syntax
+The syntax document lists the data model of a transaction inluding what elements it contains, their cardinality and allowed values. The datamodel also contains examples of data. In this document the datamodel is mapped to the UBL 2.1 syntax.
+
+=== Rules
+For each BIS there are three sets of rules.
+
+==== Common rules
+These are rules that apply to all transaction and address issues such as, there may not be empty elements or that a date must be structure following the YYYY-MM-DD ISO format.
+
+Each common rule has an identifier. As example "PEPPOL-COMMON-R001"
+
+==== Basic rules
+These are rules that are automatically generated based on the syntax datamodel. These include rules on:
+
+* Cardinality of elements and classes.
+* Allowed fixed values for elements and attributes.
+* Allowed codes in code lists.
+
+Each basic rule has an identifier that include the transaction id and a sequential number starting with a B. As example "PEPPOL-T01-B00101"
+
+==== Business rules
+There are business rules that can not be automatically generated from the data model. These are mainly rules that concern relations between elements, such as:
+
+* Conditional values (IF-THEN)
+* Calculations of elements.
+* Minimum and maximum values.
+* Dependencies between elements.
+
+Each business rule has an identifier that include the transaction id and a sequential number starting with a R. As example "PEPPOL-T01-R001"
+
+=== Downloads
+These contain two type.
+
+* Schematron files that can be used for validating a transactions.
+** Schematron files for all transactions are provided in a single zip file.
+
+* Example files that can be used in tests and as reference in implementations.
+** Example files for all transaction are also provided in a single zip file.
+
+== Codes
+The documentation includes a listing of all code lists used in one or more transactions. The code lists are fully populated with information on where they are used, what their code values are and their definitions.
+
+NOTE: When a BIS specification defines how a code is used that definition overrules the general definition in the code list.

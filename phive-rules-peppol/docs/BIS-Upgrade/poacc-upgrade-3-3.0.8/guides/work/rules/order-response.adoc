@@ -1,0 +1,98 @@
+
+= Order response rules
+
+== Transaction rules
+
+[cols="^1,1s,4,1",options="header"]
+|====
+|Auto/Manual
+|RuleID
+|Rule
+|Error level
+
+|A
+|BII2-T76-R001
+|A order response MUST have a customization identifier
+|fatal
+
+|A
+|BII2-T76-R002
+|A order response MUST have a profile identifier
+|fatal
+
+|M
+|BII2-T76-R003
+|Each order response line MUST have a document line identifier that is unique within the order response
+|fatal
+
+|A
+|BII2-T76-R004
+|A order response MUST have a document issue date
+|fatal
+
+|A
+|BII2-T76-R006
+|A order response MUST have a document identifier
+|fatal
+
+|M
+|BII2-T76-R021
+|A order response MUST have the buyer party name or a buyer party identifier
+|fatal
+
+|M
+|BII2-T76-R022
+|A order response MUST have the seller party name or a seller party identifier
+|fatal
+
+|A
+|BII2-T76-R032
+|A order response MUST have a reference to an order
+|fatal
+
+|A
+|BII2-T76-R033
+|A order response MUST have a response code
+|fatal
+
+|A
+|BII2-T76-R034
+|An order response line MUST contain a reference to its corresponding order line.
+|fatal
+
+|A
+|EUGEN-T76-R001
+|An endpoint identifier MUST have a scheme identifier attribute
+|fatal
+
+|-
+|EUGEN-T76-R002
+|A party identifier MUST have a scheme identifier attribute
+|fatal
+
+|-
+|EUGEN-T76-R003
+|A response code MUST have a list identifier attribute “UNCL1225”
+|fatal
+
+|-
+|EUGEN-T76-R004
+|A line response status code MUST have a list identifier attribute “UNCL1229”
+|fatal
+
+|====
+
+== Codelists rules
+
+[cols="^1,1s,5",options="header"]
+|====
+|Auto/Manual |Identifier |Business Rule
+|A|OP-T76-001 |An order response code MUST be coded according to the code list UNCL1225.
+|A|OP-T76-002 |An order response line status code MUST be coded according to the code list UNCL1229.
+|A|OP-T76-003 |DocumentCurrencyCode MUST be coded using ISO code list 4217
+|A|OP-T76-004 |#An Endpoint Identifier Scheme identifier MUST be from the code list PEPPOL Party Identifier#
+|A|OP-T76-005 |#An Party Identifier Scheme identifier MUST be from the code list PEPPOL Party Identifier#
+|A|OP-T76-006 |Unit code MUST be coded according to the UN/ECE Recommendation 20 (2009)
+|A|OP-T76-007 |CurrencyID MUST be coded using ISO code list 4217
+|A|OP-T76-008 |A tax category identifier MUST be coded using UN/ECE 5305 BII2 Subset
+|====

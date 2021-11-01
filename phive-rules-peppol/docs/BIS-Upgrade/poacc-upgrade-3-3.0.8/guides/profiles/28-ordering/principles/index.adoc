@@ -1,0 +1,18 @@
+[[principles-and-prerequisites]]
+= Principles and prerequisites
+
+This chapter describes the principles and assumptions that underlie the use of PEPPOL Ordering.
+It is based on the {bii-ordering}
+
+
+:leveloffset: +1
+
+include::scope.adoc[]
+
+include::parties.adoc[]
+
+include::benefit.adoc[]
+
+include::../../../shared/files/interoperability.adoc[]
+
+:leveloffset: -1

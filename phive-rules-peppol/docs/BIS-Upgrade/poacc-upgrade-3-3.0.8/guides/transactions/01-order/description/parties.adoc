@@ -1,0 +1,56 @@
+[[parties-1]]
+= Parties
+
+The following parties/roles may be specified in the message:
+
+[[sellersupplierparty-seller]]
+== SellerSupplierParty (Seller)
+
+The seller is the legal person or organization acting on behalf of the supplier and who sells goods or services to the buyer.
+The seller is mandatory in the PEPPOL BIS Order message.
+
+.Example of seller information
+[source, xml, indent=0]
+----
+include::{snippet-dir}/snippet-01.xml[tags=seller]
+----
+
+[[buyercustomerparty-buyer]]
+== BuyerCustomerParty (Buyer)
+
+The buyer is the legal person or organization acting on behalf of the customer and who buys or purchases the goods or services.
+The buyer is mandatory in the PEPPOL BIS Order message.
+
+.Example of buyer information
+[source, xml, indent=0]
+----
+include::{snippet-dir}/snippet-01.xml[tags=buyer]
+----
+
+[[originatorcustomerparty-originator]]
+== OriginatorCustomerParty (Originator)
+
+The unit initiating the order.
+Most often the end user.
+The originator information is optional in the PEPPOL BIS Order message.
+
+.Example of originator information
+[source, xml, indent=0]
+----
+include::{snippet-dir}/snippet-01.xml[tags=originator]
+----
+
+
+[[accountingcustomerparty-invoicee]]
+== AccountingCustomerParty (Invoicee)
+
+The invoicee is the legal person or organization acting on behalf of the customer and who receives the invoice for the order.
+The invoicee information is optional in the PEPPOL BIS Order message.
+
+.Example of invoicee information
+[source, xml, indent=0]
+----
+include::{snippet-dir}/snippet-01.xml[tags=invoicee]
+----
+
+NOTE: In order to facilitate the invoicee information to be used in the invoice it is recommended to include as much information as possible, ie.PostalAddress, PartyTaxScheme and PartyLegalEntity in addition to PartyName and PartyIdentification.

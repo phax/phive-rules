@@ -1,0 +1,61 @@
+[[response]]
+= Response
+
+Is used to indicate the status of the Invoice.
+The response also provides information about the reason for the status as well as instructions on how the receiver of the Invoice Response is expected to react to the Invoice Response message.
+
+This information is given in the following hierarchy:
+
+* Invoice processing status (of the invoice receiver).
+** Status clarification (Status reason and/or Status action)
+*** Clarification detail
+
+Each Invoice Response may only reference one invoice and that invoice can only have one status at a time.
+If the status of that Invoice changes the respective change must be reported with another Invoice Response.
+
+The status clarification for the given status can be of either or both of two types - reason of that status and/or action expected by Seller.
+The purpose of this is to help Seller to understand the status and to resolve it in the correct way.
+
+As example if an invoice is rejected it will be represented as status code RE (Rejected) in the Invoice Response.
+For clarification, the Invoice Response would then state why it is rejected and there may be more than one reason.
+The clarification may further give the instructions regarding actions expected from the Seller, for example to cancel the Invoice with a Credit Note and issue a new corrective Invoice.
+
+To assist with resolution the Buyer might want to provide instructions on what is the correct data.
+
+
+.UBL example where TAX is VAT:
+[source, xml]
+----
+<cac:DocumentResponse>
+  <cac:Response>
+    <cbc:ResponseCode>RE</cbc:ResponseCode> <1>
+    <cbc:EffectiveDate>2016-10-25</cbc:EffectiveDate>
+
+      <cac:Status>
+        <cbc:StatusReasonCode listID="OPStatusReason">LEG</cbc:StatusReasonCode> <2>
+        <cbc:StatusReason>VAT Reference not found</cbc:StatusReason> <3>
+        <cac:Condition>
+          <cbc:AttributeID>BT-48</cbc:AttributeID> <4>
+          <cbc:Description>EU123456789</cbc:Description> <5>
+        </cac:Condition>
+      </cac:Status>
+
+      <cac:Status>
+        <cbc:StatusReasonCode listID="OPStatusAction">CNF</cbc:StatusReasonCode> <6>
+        <cbc:StatusReason>Credit fully</cbc:StatusReason> <6>
+        </cac:Status>
+
+      <cac:Status>
+        <cbc:StatusReasonCode listID="OPStatusAction">NIN</cbc:StatusReasonCode> <7>
+        <cbc:StatusReason>Issue new invoice</cbc:StatusReason> <7>
+      </cac:Status>
+  </cac:Response>
+</cac:DocumentResponse>
+----
+<1> An invoice is rejected using the status code RE.
+<2> The reason code for this rejection is LEG indicating that the invoice does not fulfil legal requirements
+<3> In text it is stated that the TAX reference is not found
+<4> Further reference is given to the element BT-48 in the Invoice (Buyers TAX number)
+<5> Expected value in BT-48 is EU123456789
+<6> The Buyer expects the Seller to issue a Credit Note that fully cancels the rejected Invoice
+<7> The Buyer also expects the Seller to issue a new Invoice with corrected information.

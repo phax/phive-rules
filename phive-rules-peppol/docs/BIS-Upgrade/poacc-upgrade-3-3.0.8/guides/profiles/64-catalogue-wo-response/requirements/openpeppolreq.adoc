@@ -1,0 +1,38 @@
+[[specific-openpeppol-requirements]]
+= Specific OpenPEPPOL requirements
+
+[cols="1,2,3",options="header",]
+|====
+|*ID:* |*Business term:* |*Description:*
+| |*HEADER LEVEL:* |
+|*OP-T19-019* |*General payment condition* |A Catalogue must support the use of general payment condition.
+|*OP-T19-021* |*Buyers contact person ID* |A catalogue must support the use of ID for buyers contact person.
+Normally used for “Your reference”.
+|*OP-T19-028* |*Party legal entity for provider* |A catalogue must support the use of party legal entity for provider.
+Used to specify the legal entity of the provider.
+|*OP-T19-029* |*Postal address for provider* |In order to specify exactly who is the provider, the postal address for provider party must be supported in a catalogue
+|*OP-T19-030* |*Party legal entity for receiver* |A catalogue must support the use of party legal entity for receiver.
+Used to specify the legal entity of the receiver.
+|*OP-T19-031* |*Postal address for receiver* |In order to specify exactly who is the receiver, the postal address for receiver party must be supported in a catalogue
+|*OP-T19-032* |*Issue date for referenced contract* |A catalogue must support the use of issuedate for the referenced contract.
+| |*LINE LEVEL:* |
+|*OP-T19-014* |*Maximum storage humidity* |A catalogue must support the use of maximum storage humidity.
+|*OP-T19-015* |*Minimum storage humidity* |A catalogue must support the use of minimum storage humidity
+|*OP-T19-016* |*Package volume* |A catalogue must support the use of package volume
+|*OP-T19-017* |*Package net weight exact* |A catalogue must support the use of exact net weight for package
+|*OP-T19-037* |*Package net weight approximately* |A catalogue must support the use of approximately net weight for package
+|*OP-T19-038* |*Dimension description* |A catalogue must support the use of description for dimension.
+Used for differentiating dimensions with same attributeID.
+|*OP-T19-018* |*Brand Name* |A catalogue must support the use of brand name for an item
+|*OP-T19-020* |*Minimum quantity guarantied for delivery* |A catalogue must support the use of minimum quantity of an item guaranteed in a delivery
+|*OP-T19-022* |*@name for ItemClassificationCode* |A catalogue must support the name of the Item classification code
+|*OP-T19-024* |*Base Quantity* |A catalogue must support base quantity for the stated price
+|*OP-T19-035* |*Orderable Unit Factor Rate* |A catalogue must support the use of the factor used to convert Base Quantity into Orderable Unit
+|*OP-T19-027* |*Transaction conditions* |A catalogue must support the use of transaction conditions
+|*OP-T19-036* |*Contract subdivision* |A catalogue must support the use of contract subdivision.
+Used to reference a subsection of a contract
+|*OP-T19-025* |*Quantity threshold* |A catalogue must support the use of threshold for quantity.
+Used to indicate the threshold quantity for the given price.
+|*OP-T19-026* |*Quantity ceiling* |A catalogue must support the use of quantity ceiling.
+Used to indicate maximum quantity for given price.
+|====

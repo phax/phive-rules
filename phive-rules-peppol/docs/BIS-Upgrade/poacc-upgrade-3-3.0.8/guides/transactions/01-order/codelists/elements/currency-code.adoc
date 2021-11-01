@@ -1,0 +1,16 @@
+
+= Currency code
+
+All currency identifiers shall be the alphabetic code from {ISO4217}
+
+.Currency identifiers
+[cols="1,4"]
+|===
+h| Qualifier
+| _None_
+h| Document location
+| `cbc:*/@currencyID` +
+`cbc:DocumentCurrencyCode`
+h| Source codelist
+| {ISO4217}
+|===

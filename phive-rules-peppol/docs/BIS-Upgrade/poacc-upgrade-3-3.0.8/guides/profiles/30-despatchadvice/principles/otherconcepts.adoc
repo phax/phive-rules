@@ -1,0 +1,15 @@
+[[other-important-concepts]]
+= Other important concepts
+
+The table below gives the definitions of key concepts of the fulfillment process.
+
+[cols="2,4",options="header",]
+|====
+|Term |Definition
+|*Shipment* |A contractual arrangement whereby an identifiable collection of goods items is to be transported from one party (usually a Supplier) to another party (usually a Customer).
+|*Consignment* |The transportation of an identifiable collection of goods items from one party (the Despatch Party) to another party (the Consignee) via one or more modes of transport.
+|*Transport Handling Unit* |A description of individual handling units in which the line items are packed.
+|*Master Data* |Master data is data which is generally static.  Data such as locations or product item can be considered master data.
+The process of data alignment is the exchange, “up-front”, between trading partners of location and/or item data.  In a GS1 context, master data is referenced by GS1 identification keys; the GLN – the global location number for locations, and the GTIN – global trade item number for item products.
+|*Logistics Label* |A logistics’ label has been applied to each of the pallets where the SSCCs are used and rendered as clear text numbers, address details and GS1 128 barcode.  NB where multiple SSCCs are applied to logistics’ units on one pallet, there needs to be a GS1 logistics label applied and exterior of the pallet.  The subordinate SSCCs on the individual logistics units should be packaged in such a way that they are not visible to the naked eye (in this scenario). For a full description of how to apply SSCCs and the GS1 Logistic label  see link; http://www.gs1.eu/?page=&tudasbazis=60&lister=26
+|====

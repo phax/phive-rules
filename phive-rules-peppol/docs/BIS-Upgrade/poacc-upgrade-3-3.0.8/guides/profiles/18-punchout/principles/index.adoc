@@ -1,0 +1,28 @@
+
+[[principles]]
+= Principles and prerequisites
+
+This chapter describes the principles and assumptions that underlie the use of this PEPPOL BIS Punch out.
+It is based on the {bii} 18 Punch out.
+
+This document identifies, explains and justifies the business requirements for the Punch Out-process.
+It provides syntax bindings to {ubl} (Universal Business Language). It also includes a syntax implementation guide.
+
+The Punch Out BIS describes a process where the buyer accesses the seller’s web-based catalogue, and adds and/or configures items (such as a PC) to a product or service list.
+The product- or service lists are sent to the buyers procurement system, and can later be used as a basis for an order or an item comparison in the buyers catalogue tool.
+The order is prepared and sent from the buyers procurement system, not from the sellers website.
+
+:leveloffset: +1
+
+include::scope.adoc[]
+
+include::goals.adoc[]
+
+include::parties.adoc[]
+
+include::benefits.adoc[]
+
+include::../../../shared/files/interoperability.adoc[]
+
+
+:leveloffset: -1

@@ -1,0 +1,11 @@
+[[item-properties]]
+= Item properties
+
+If additional item information such as properties and identifier are needed they can be added by using "Name" to identify the
+type of information and "Value" for the information.
+
+.UBL example of item properties
+[source, xml, indent=0]
+----
+include::{snippet-dir}/snippet-30-1.xml[tags=itemproperty]
+----

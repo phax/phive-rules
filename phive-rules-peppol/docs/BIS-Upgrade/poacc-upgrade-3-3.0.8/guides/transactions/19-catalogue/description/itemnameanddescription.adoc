@@ -1,0 +1,16 @@
+[[item-name-and-description]]
+== Item name and description
+
+The Item name shall be sent in tag `cac:Item/cbc:Name` on line level.
+It is the short description of an item commonly used in ERP-systems.
+An item name should make it possible for the user to distinguish between similar items.
+The Item name is often sent in the order from buyer to seller.
+The field length could be an agreement between parties, to make sure the supporting systems can handle the length.
+
+`cac:Item/cbc:Description` is used to provide additional relevant description of the item, in free text.
+
+.Example:
+[source, xml, indent=0]
+----
+include::{snippet-dir}/Snippet-1-1.xml[tags=itemnamedesc]
+----

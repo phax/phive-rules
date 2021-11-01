@@ -1,0 +1,20 @@
+[[catalogue-response-business-rules]]
+= Catalogue response business rules
+
+[cols="1,4,1",options="header",]
+|====
+|*RuleID* |*Rule* |*error level*
+|BII2-T58-R001 |A catalogue response MUST have a profile identifier |fatal
+|BII2-T58-R002 |A catalogue response MUST have a customization identifier |fatal
+|BII2-T58-R003 |A catalogue response MUST contain the date of issue |fatal
+|BII2-T58-R004 |A catalogue response MUST contain the response identifier |fatal
+|BII2-T58-R005 |The party sending the catalogue response MUST be specified |fatal
+|BII2-T58-R006 |The party receiving the catalogue response MUST be specified |fatal
+|BII2-T58-R007 |A catalogue response sending party MUST contain the full name or an identifier |fatal
+|BII2-T58-R008 |A catalogue response receiving party MUST contain the full name or an identifier |fatal
+|BII2-T58-R009 |A catalogue rejection MUST contain a response decision |fatal
+|BII2-T58-R010 |A catalogue response MUST contain a reference to the corresponding catalogue |fatal
+|EUGEN-T58-R001 |An endpoint identifier MUST have a scheme identifier attribute |fatal
+|EUGEN-T58-R002 |A party identifier MUST have a scheme identifier attribute |fatal
+|EUGEN-T58-R003 |A response code MUST have a list identifier attribute “UNCL4343” |fatal
+|====

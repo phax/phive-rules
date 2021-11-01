@@ -1,0 +1,100 @@
+= Catalogue and catalogue response rules
+
+== Catalogue transaction rules
+
+[cols="^1,1s,4,1",options="header"]
+|====
+|Auto/Manual
+|RuleID
+|Rule
+|Error level
+|A|BII2-T19-R001 |A catalogue MUST have a customization identifier |fatal
+|A|BII2-T19-R002 |A catalogue MUST have a profile identifier |fatal
+|A|BII2-T19-R003 |A catalogue MUST contain the date of issue |fatal
+|A|BII2-T19-R004 |A catalogue MUST contain the catalogue document identifier |fatal
+|M|BII2-T19-R006 |A validity period end date MUST be later or equal to a validity period start date if both validity period end date and validity period start date are present |fatal
+|A|BII2-T19-R007 |The party providing the catalogue MUST be specified |fatal
+|A|BII2-T19-R008 |The party receiving the catalogue MUST be specified |fatal
+|A|BII2-T19-R009 |A catalogue MUST have maximum one catalogue supplier |fatal
+|M|BII2-T19-R010 |A catalogue provider MUST contain the full name or an identifier |fatal
+|M|BII2-T19-R011 |A catalogue receiver MUST contain the full name or an identifier |fatal
+|M|BII2-T19-R012 |A catalogue supplier MUST contain the full name or an identifier |fatal
+|M|BII2-T19-R013 |A catalogue customer MUST contain the full name or an identifier |fatal
+|M|BII2-T19-R015 |Prices of items MUST not be negative |fatal
+|M|BII2-T19-R017 |Catalogue line validity period MUST be within the range of the whole catalogue validity period |warning
+|M|BII2-T19-R018 |Price validity period MUST be within the range of the whole catalogue line validity period |warning
+|M|BII2-T19-R019 |An item in a catalogue line SHOULD have a name |warning
+|M|BII2-T19-R020 |An item in a catalogue line MUST be uniquely identifiable by at least one of the following: +
+- Catalogue Provider identifier +
+- Standard identifier |fatal
+|M|BII2-T19-R021 |Standard Identifiers SHOULD contain the Schema Identifier (e.g. GTIN) |warning
+|M|BII2-T19-R022 |Classification codes SHOULD contain the Classification scheme Identifier (e.g. CPV or UNSPSC) |warning
+|A|BII2-T19-R023 |A catalogue MUST have at least one catalogue line |fatal
+|A|BII2-T19-R024 |A catalogue line MUST contain a #unique# line identifier |fatal
+|M|BII2-T19-R026 |Orderable quantities MUST be greater than zero |fatal
+|A|BII2-T19-R027 |An item property data name MUST specify a data value |fatal
+|M|BII2-T19-R029 |Maximum quantity MUST be greater than zero |warning
+|M|BII2-T19-R030 |Minimum quantity MUST be greater than zero |warning
+|M|BII2-T19-R031 |Maximum quantity MUST be greater or equal to the Minimum quantity |warning
+|A|EUGEN-T19-R043 |An endpoint identifier MUST have a scheme identifier attribute |fatal
+|-|EUGEN-T19-R044 |A party identifier MUST have a scheme identifier attribute |fatal
+|-|EUGEN-T19-R045 |A catalogue line action code MUST have a list identifier attribute “ACTIONCODE:BII2” |fatal
+|-|EUGEN-T19-R046 |A catalogue header action code MUST have a list identifier attribute “ACTIONCODE:PEPPOL” |fatal
+|-|EUGEN-T19-R047 |A country identification code MUST have a list identifier attribute “ISO3166-1:Alpha2” |fatal
+|-|EUGEN-T19-R048 |A unit code attribute MUST have a unit code list identifier attribute “UNECERec20” |fatal
+|-|EUGEN-T19-R049 |A classified tax category identifier MUST have a scheme identifier attribute “UNCL5305” |fatal
+|-|EUGEN-T19-R050 |A package level code MUST have a list identifier attribute “GS17009:PEPPOL“ |fatal
+|-|EUGEN-T19-R051 |A UNDG code MUST have a list identifier attribute “UNCL8273” |fatal
+|-|EUGEN-T19-R053 |An attribute identifier MUST have an scheme identifier “UNCL6313” |fatal
+|====
+
+== Catalogue response transaction rules
+
+[cols="^1,1s,4,1",options="header"]
+|====
+|Auto/Manual
+|RuleID
+|Rule
+|Error level
+|A|BII2-T58-R001 |A catalogue response MUST have a profile identifier |fatal
+|A|BII2-T58-R002 |A catalogue response MUST have a customization identifier |fatal
+|A|BII2-T58-R003 |A catalogue response MUST contain the date of issue |fatal
+|A|BII2-T58-R004 |A catalogue response MUST contain the response identifier |fatal
+|A|BII2-T58-R005 |The party sending the catalogue response MUST be specified |fatal
+|A|BII2-T58-R006 |The party receiving the catalogue response MUST be specified |fatal
+|M|BII2-T58-R007 |A catalogue response sending party MUST contain the full name or an identifier |fatal
+|M|BII2-T58-R008 |A catalogue response receiving party MUST contain the full name or an identifier |fatal
+|A|BII2-T58-R009 |A catalogue rejection MUST contain a response decision |fatal
+|A|BII2-T58-R010 |A catalogue response MUST contain a reference to the corresponding catalogue |fatal
+|A|EUGEN-T58-R001 |An endpoint identifier MUST have a scheme identifier attribute |fatal
+|-|EUGEN-T58-R002 |A party identifier MUST have a scheme identifier attribute |fatal
+|-|EUGEN-T58-R003 |A response code MUST have a list identifier attribute “UNCL4343” |fatal
+|====
+
+== Code lists rules
+
+[cols="^1,1s,4,1",options="header"]
+|====
+|Auto/Manual
+|RuleID
+|Rule
+|Error level
+|A|CL-T19-001 |The action code for a catalogue line MUST be Add, Update or Delete if present |fatal
+|A|CL-T19-002 |For Mime code in attribute use MIME Media Type |fatal
+|A|CL-T19-004 |Tax categories MUST be coded using UN/ECE 5305 code list |fatal
+|A|OP-T19-001 |Country codes in a catalogue MUST be coded using ISO code list 3166-1 alpha2 |fatal
+|A|OP-T19-002 |Unit code MUST be coded according to the UN/ECE Recommendation 20 |fatal
+|A|OP-T19-003 |UNDG MUST be coded according to the UN EDIFACT 8273 code list |fatal
+|A|OP-T19-005 |#An Endpoint Identifier Scheme MUST be from the list of PEPPOL Party Identifiers.# |fatal
+|A|OP-T19-006 |#An Party Identifier Scheme MUST be from the list of PEPPOL Party Identifiers# |fatal
+|A|OP-T19-007 |An action code at header level MUST be from the PEPPOL action code list. |fatal
+|A|OP-T19-008 |A package level code MUST be from the PEPPOL subset of GS1 7009 code list. |fatal
+|A|OP-T19-009 |An attribute identifier MUST be from the UN EDIFACT 6313 code list. |fatal
+|A|OP-T19-010 |Orderable unit code MUST be coded according to the UN/ECE Recommendation 20 |fatal
+|A|OP-T19-011 |Currency ID MUST be coded using ISO code list 4217 |fatal
+|A|OP-T19-012  |languageID MUST be coded using ISO code list 639-1   |fatal
+|A|OP-T19-013 |#A Party Company Identifier Scheme MUST be from the list of PEPPOL Party Identifiers# |fatal
+|A|OP-T58-001 |#An Endpoint Identifier Scheme MUST be from the list of PEPPOL Party Identifiers.# |fatal
+|A|OP-T58-002 |#A Party Identifier Scheme MUST be from the list of PEPPOL Party Identifiers# |fatal
+|A|OP-T58-003 |#A Response code MUST be from the UN CEFACT 4343 code list PEPPOL subset.#|fatal
+|====

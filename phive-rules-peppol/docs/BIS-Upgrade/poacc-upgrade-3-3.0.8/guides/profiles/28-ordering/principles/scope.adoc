@@ -1,0 +1,37 @@
+[[scope]]
+= Scope
+
+This BIS describes a process comprising a Buyer to issue an electronic order, whereby the Seller may accept the order, accept with changes or reject.
+In his rejection the Seller may indicate reasons, so the Buyer may issue a new order that may be acceptable.
+The Seller may accept the order with changes, only if in a previously concluded contract the scope of such changes was agreed.
+The order that is agreed upon by acceptance has the commercial and legal status of a contract.
+
+The main activities supported by this profile are:
+
+Structured Ordering::
+The Order transaction should support the structured ordering of goods or services, using free text or use of identifiers.
+The information source of the ordered products may be a (paper or electronic) catalogue.
+
+Accounting::
+The ordering process must support the allocation of budgets, so the value amounts of the ordered products may be stated.
+The buyer may provide some information that the seller is required to place on the invoice for aiding and automation of invoice processing.
+
+Invoice Verification::
+The buyer may provide some information that the seller is required to place on the invoice for aiding and automation of invoice approval.
+
+TAX reporting::
+TAX reporting is not a general requirement on orders. In this context the term TAX is used as a generalization of taxes such as VAT, GST or Sales Tax.
+The level of support in orders is to
+
+* Enable TAX reporting in invoices by providing TAX number of buyer. As an example in case of reverse charges in EU.
+* TAX can be stated as an estimate to enable buyers to state expected value of order. +
+This can be helpful in automated matching of orders and invoices. +
+TAX information is informative and does not affect the terms of trade.
+
+Transport and delivery::
+
+Only limited support is in scope for transport related information, but it is recognized that the buyer needs to be able to provide some information about requested delivery location, some basic term, time and contact persons for a delivery of an order.
+
+Inventory::
+
+Supporting inventory management is not in scope, but structured orders based on catalogues can be used to automate picking at supplier warehouses.

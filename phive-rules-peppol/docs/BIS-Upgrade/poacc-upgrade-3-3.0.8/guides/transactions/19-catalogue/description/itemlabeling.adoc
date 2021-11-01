@@ -1,0 +1,10 @@
+[[item-labelling]]
+== Item labelling
+
+Information about the items environmental, social, ethical and quality type of labelling.
+
+.Example:
+[source, xml, indent=0]
+----
+include::{snippet-dir}/Snippet-1-1.xml[tags=label]
+----

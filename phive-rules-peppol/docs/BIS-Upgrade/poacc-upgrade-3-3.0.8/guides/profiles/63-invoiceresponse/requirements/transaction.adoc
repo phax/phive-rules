@@ -1,0 +1,36 @@
+[[transaction-requirements]]
+= Transaction requirements
+
+Transaction requirements address what functionality the data in the transaction is intended to support.
+This controls how the data model, code lists and transaction rules are designed.
+
+.Transaction requirements
+[cols="1h,5",options="header"]
+|====
+|ID
+|Requirement
+
+|tbr111-001
+|It SHALL be possible to uniquely identify each Invoice Response and the date and time when it was issued.
+
+|tbr111-002
+|An Invoice Response should provide the users with means to send free text explanations and instructions.
+
+|tbr111-004
+|It SHALL be possible to clearly identify the parties exchanging the Invoice Response.
+
+|tbr111-006
+|An Invoice Response SHALL identify a previously received invoice or credit note by referring to the document, including the document identifier, document issue date and the document type.
+
+|tbr111-007
+|An Invoice Response SHALL support coded expressions of status and clarifications in a way that supports automation of the message processing by the Seller.
+
+|tbr111-009
+|An Invoice Response SHALL support message exchange through the PEPPOL message transport network.
+
+|tbr111-010
+|An Invoice Response SHALL be able to clearly indicate the status of an invoice in the Buyers processing.
+
+|tbr111-011
+|An Invoice Response should enable the Buyer to propose corrections in a structured way.
+|====

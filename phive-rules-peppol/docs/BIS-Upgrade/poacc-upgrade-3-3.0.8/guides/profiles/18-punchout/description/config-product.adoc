@@ -1,0 +1,29 @@
+[[configured-products]]
+= Configured products
+
+* The seller may define a configured product in a shopping cart and then list the individual items that are part of the configured product in a structured way as described in this clause.
+* The seller may also describe a configured product in an unstructured way as item description.
+* The items that are part of a configured product reference the Sellers Item number for the configured product that it is part of.
+* No reference is made from the configured product to the item.
+
+IMPORTANT: A shopping cart line that is part of a configured product can not be ordered individually.
+
+* If configured products are part of a shopping cart that has complete cart indicator as true, then a full ordering of the cart means purchase of its configured products only but not additionally the individual items that are part of them.
+* These items can be offered individually with additional lines in the cart where the item is not stated as "part of" the configured product.
+* If information for individual items conflict with the information given for the configured items the configured item supersedes.
+
+To indicate that an item that is part of a configured product, `cac:AdditionalItemProperty` is used.
+
+The name "PartOf" in `cac:AdditionalItemProperty` has dedicated meaning in the PEPPOL PunchOut message.
+
+Example below shows that Item PC01 is configured by 1 of item 12345 and 2 of item 6789.
+The order will be ONLY on Item PC01.
+
+.Example of configured products
+[source, xml, indent=0]
+----
+include::{snippet-dir}/snippet-18-2.xml[tags=config]
+----
+
+NOTE: The sum of the price multiplied by quantity of the items contained in the configured item does not have to equal the price of the configured product. The price of the contained items may show the pr.
+unit price but the configured price may include a price reduction.

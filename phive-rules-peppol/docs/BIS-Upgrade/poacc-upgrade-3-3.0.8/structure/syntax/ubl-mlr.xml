@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Structure xmlns="urn:fdc:difi.no:2017:vefa:structure-1">
+	<Term>MLR</Term>
+
+	<Property key="sch:prefix">PEPPOL-T71</Property>
+	<Property key="sch:identifier">T71-basic</Property>
+
+
+	<Namespace prefix="ubl">urn:oasis:names:specification:ubl:schema:xsd:ApplicationResponse-2</Namespace>
+	<Namespace prefix="cac">urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2</Namespace>
+	<Namespace prefix="cbc">urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2</Namespace>
+	<Document>
+		<Term>ubl:ApplicationResponse</Term>
+		<Element>
+			<Term>cbc:CustomizationID</Term>
+			<Name>Specification identification</Name>
+			<Description>Identifies the specification of content and rules that apply to the
+                transaction.</Description>
+			<DataType>Identifier</DataType>
+			<Reference type="BUSINESS_TERM">tir71-006</Reference>
+			<Value type="EXAMPLE">urn:fdc:peppol.eu:poacc:trns:mlr:3</Value>
+		</Element>
+		<Element>
+			<Term>cbc:ProfileID</Term>
+			<Name>Business process type identifier</Name>
+			<Description>Identifies the BII profile or business process context in which the
+                transaction appears.</Description>
+			<DataType>Identifier</DataType>
+			<Reference type="BUSINESS_TERM">tir71-005</Reference>
+
+			<Value type="FIXED">urn:fdc:peppol.eu:poacc:bis:mlr:3</Value>
+		</Element>
+		<Element>
+			<Term>cbc:ID</Term>
+			<Name>Response identifier</Name>
+			<Description>A transaction instance must contain an identifier. The identifier enables
+                positive referencing the transaction instance for various purposes including
+                referencing between transactions that are part of the same process.</Description>
+			<DataType>Identifier</DataType>
+			<Reference type="BUSINESS_TERM">tir71-001</Reference>
+
+			<Value type="EXAMPLE">23</Value>
+		</Element>
+		<Element>
+			<Term>cbc:IssueDate</Term>
+			<Name>Response issue date</Name>
+			<Description>The date on which the transaction instance was issued.Format "YYYY-MM-DD"</Description>
+			<DataType>Date</DataType>
+			<Reference type="BUSINESS_TERM">tir71-002</Reference>
+
+			<Value type="EXAMPLE">2018-05-18</Value>
+		</Element>
+		<Element cardinality="0..1">
+			<Term>cbc:IssueTime</Term>
+			<Name>Response issue time</Name>
+			<Description>The time at which the transaction instance was issued.Format "hh:mm:ss</Description>
+			<DataType>Time</DataType>
+			<Reference type="BUSINESS_TERM">tir71-003</Reference>
+			<Value type="EXAMPLE">12:01:34</Value>
+		</Element>
+		<Element>
+			<Term>cac:SenderParty</Term>
+			<Name>Sender information</Name>
+			<Description>The party sending an electronic message level response message back to the sending party of the business document.</Description>
+			<Element>
+				<Term>cbc:EndpointID</Term>
+				<Name>Sender party electronic address</Name>
+				<Description>Identifies the sender party's electronic address</Description>
+				<DataType>Identifier</DataType>
+				<Reference type="BUSINESS_TERM">tir71-009</Reference>
+				<Attribute>
+					<Term>schemeID</Term>
+					<Name>Scheme identifier</Name>
+					<Description>Scheme identifier for the electronic address</Description>
+					<Reference type="CODE_LIST">eas</Reference>
+					<Value type="EXAMPLE">0088</Value>
+				</Attribute>
+				<Value type="EXAMPLE">7300010000001</Value>
+			</Element>
+		</Element>
+		<Element>
+			<Term>cac:ReceiverParty</Term>
+			<Name>Receiver information</Name>
+			<Description>The party, an electronic message level response was addressed to, and who is supposed to process the message level response.
+                This is the same party as the sender of the business document.</Description>
+			<Element>
+				<Term>cbc:EndpointID</Term>
+				<Name>Reciever party electronic address</Name>
+				<Description>Identifies the receiver party's electronic address</Description>
+				<DataType>Identifier</DataType>
+				<Reference type="BUSINESS_TERM">tir71-012</Reference>
+				<Attribute>
+					<Term>schemeID</Term>
+					<Name>Scheme identifier</Name>
+					<Description>Scheme identifier for the electronic address</Description>
+					<Reference type="CODE_LIST">eas</Reference>
+					<Value type="EXAMPLE">0088</Value>
+				</Attribute>
+				<Value type="EXAMPLE">7300010000001</Value>
+			</Element>
+		</Element>
+		<Element>
+			<Term>cac:DocumentResponse</Term>
+			<Name>Document response</Name>
+			<Description>The document response is used to indicate the result of business document validation.
+            The element 'cac:DocumentResponse/cac:Response/cbc:ResponseCode' MUST contain the overall result code.</Description>
+			<Element>
+				<Term>cac:Response</Term>
+				<Name>Response information</Name>
+				<Element>
+					<Term>cbc:ResponseCode</Term>
+					<Name>Message response code</Name>
+					<Description>An indicator stating whether the referenced message was cleared
+                        through validation and advanced to the next step in the process. A negative
+                        response states that the document was not processed because of identified
+                        issues.</Description>
+					<DataType>Code</DataType>
+					<Reference type="BUSINESS_TERM">tir71-014</Reference>
+
+					<Reference type="CODE_LIST">UNCL4343</Reference>
+					<Value type="EXAMPLE">RE</Value>
+				</Element>
+				<Element cardinality="0..1">
+					<Term>cbc:Description</Term>
+					<Name>Response textual notes</Name>
+					<Description>Used to make any comments or instructions relevant to the response.
+                        The use of this element requires manual assessment by the
+                        receiver.</Description>
+					<DataType>Text</DataType>
+					<Reference type="BUSINESS_TERM">tir71-004</Reference>
+					<Value type="EXAMPLE">Rejected due to validation errors</Value>
+				</Element>
+			</Element>
+			<Element>
+				<Term>cac:DocumentReference</Term>
+				<Name>Document reference</Name>
+				<Description>The document reference is used to provide a reference to the envelope of the business document on which the message level response is based. The message level response message may only cover exactly one business document.
+                    The element 'cac:DocumentResponse/cac:DocumentReference/cbc:ID' MUST contain the instance identifier of the envelope of the original business document.</Description>
+				<Element>
+					<Term>cbc:ID</Term>
+					<Name>Document identifier</Name>
+					<Description>Identifies the document on which the message level response is based.</Description>
+					<DataType>Document reference</DataType>
+					<Reference type="BUSINESS_TERM">tir71-018</Reference>
+
+					<Value type="EXAMPLE">EnvelopeID-12345</Value>
+				</Element>
+				<Element cardinality="0..1">
+					<Term>cbc:DocumentTypeCode</Term>
+					<Name>Document type code</Name>
+					<Description>The type of the document being referred to, expressed as a code.</Description>
+					<DataType>Code</DataType>
+					<Reference type="BUSINESS_TERM">tir71-020</Reference>
+					<Reference type="CODE_LIST">UNCL1001</Reference>
+					<Value type="EXAMPLE">9</Value>
+				</Element>
+				<Element cardinality="0..1">
+					<Term>cbc:VersionID</Term>
+					<Name>Document version identifier</Name>
+					<Description>The version of the document that has been identified
+                        with the document identifier.</Description>
+					<DataType>Identifier</DataType>
+					<Reference type="BUSINESS_TERM">tir71-019</Reference>
+					<Value type="EXAMPLE">2</Value>
+				</Element>
+			</Element>
+			<Element cardinality="0..n">
+				<Term>cac:LineResponse</Term>
+				<Name>Line response information</Name>
+				<Description>A response to a particular line in the document. If the document response is negative (code='RE'), the line response element is used to specify the errors in the business
+                    document.</Description>
+				<Element>
+					<Term>cac:LineReference</Term>
+					<Name>Line reference</Name>
+					<Description>Identifies the line in the business document to which the reported issue applies</Description>
+					<Element>
+						<Term>cbc:LineID</Term>
+						<Name>Section identifier</Name>
+						<Description>Identifies the section of the document to which the
+                            reported issue applies. The LineID element must be used to indicate where in the business document the error
+                            occurred by using XPath to reference the element causing the error.
+                            To cater for scenarios where it is not possible to provide XPath, a dummy value must be applied. The
+                            dummy value must consist of the characters NA. This is due to that the LineID element is mandatory
+                            in the ApplicationResponse message in UBL 2.1 on which the MLR message is based.</Description>
+						<DataType>Identifier</DataType>
+						<Reference type="BUSINESS_TERM">tir71-013</Reference>
+						<Value type="EXAMPLE">/Catalogue/cac:CatalogueLine[3]/cac:Item[1]/cac:ClassifiedTaxCategory[1]/cbc:ID[1]</Value>
+					</Element>
+				</Element>
+				<Element>
+					<Term>cac:Response</Term>
+					<Name>Line response information</Name>
+					<Element cardinality="0..1">
+						<Term>cbc:ResponseCode</Term>
+						<Name>Line response code</Name>
+						<Description>A code stating whether the referenced line was accepted or rejected.</Description>
+						<DataType>Code</DataType>
+						<Reference type="BUSINESS_TERM">tir71-017</Reference>
+						<Reference type="CODE_LIST">UNCL4343</Reference>
+						<Value type="EXAMPLE">RE</Value>
+					</Element>
+					<Element>
+						<Term>cbc:Description</Term>
+						<Name>Issue description</Name>
+						<Description>The description of the issue identified in the transaction
+                            document.</Description>
+						<DataType>Text</DataType>
+						<Reference type="BUSINESS_TERM">tir71-015</Reference>
+						<Value type="EXAMPLE">Validation gives error [CL-T77-R002]- Tax categories MUST be coded using UN/ECE 5305 code list</Value>
+					</Element>
+					<Element>
+						<Term>cac:Status</Term>
+						<Name>Status information</Name>
+						<Element>
+							<Term>cbc:StatusReasonCode</Term>
+							<Name>Issue type coded</Name>
+							<Description>A codified verison of the issue description that describes
+                                the nature of the issue e.g. Syntax violation, Business rule
+                                violation, etc.</Description>
+							<DataType>Code</DataType>
+							<Reference type="BUSINESS_TERM">tir71-016</Reference>
+
+							<Reference type="CODE_LIST">StatusReason</Reference>
+							<Value type="EXAMPLE">BV</Value>
+						</Element>
+					</Element>
+				</Element>
+			</Element>
+		</Element>
+	</Document>
+</Structure>

@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testSet xmlns="http://difi.no/xsd/vefa/validator/1.0"
+	configuration="peppolbis-t01-base-3.0">
+	<assert>
+		<description>Verify that expected total amount with VAT = Expected total amount without VAT
+			+ Order total VAT amount.</description>
+		<scope>PEPPOL-T01-R017</scope>
+	</assert>
+	<test id="1">
+		<assert>
+			<success>PEPPOL-T01-R017</success>
+		</assert>
+		<Order xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+			xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+			xmlns="urn:oasis:names:specification:ubl:schema:xsd:Order-2">
+			<cac:TaxTotal>
+				<cbc:TaxAmount>500</cbc:TaxAmount>
+			</cac:TaxTotal>
+
+			<cac:AnticipatedMonetaryTotal>
+				<cbc:LineExtensionAmount>6225.0</cbc:LineExtensionAmount>
+				<cbc:TaxExclusiveAmount>6000</cbc:TaxExclusiveAmount>
+				<cbc:TaxInclusiveAmount>6500</cbc:TaxInclusiveAmount>			
+				<cbc:AllowanceTotalAmount>100</cbc:AllowanceTotalAmount>
+				<cbc:ChargeTotalAmount>400</cbc:ChargeTotalAmount>
+			</cac:AnticipatedMonetaryTotal>
+		</Order>
+	</test>
+	<test id="2">
+		<assert>
+			<success>PEPPOL-T01-R017</success>
+		</assert>
+		<Order xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+			xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+			xmlns="urn:oasis:names:specification:ubl:schema:xsd:Order-2">
+		<!--	<cac:TaxTotal>
+				<cbc:TaxAmount>500</cbc:TaxAmount>
+			</cac:TaxTotal>-->
+			
+			<cac:AnticipatedMonetaryTotal>
+				<cbc:TaxExclusiveAmount>6000</cbc:TaxExclusiveAmount>
+				<cbc:TaxInclusiveAmount>6500</cbc:TaxInclusiveAmount>
+			</cac:AnticipatedMonetaryTotal>
+		</Order>
+	</test>
+	<test id="3">
+		<assert>
+			<success>PEPPOL-T01-R017</success>
+		</assert>
+		<Order xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+			xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+			xmlns="urn:oasis:names:specification:ubl:schema:xsd:Order-2">
+			<cac:TaxTotal>
+				<cbc:TaxAmount>500</cbc:TaxAmount>
+			</cac:TaxTotal>
+			
+			<cac:AnticipatedMonetaryTotal>
+				<cbc:LineExtensionAmount>6300.0</cbc:LineExtensionAmount>
+				<!--<cbc:TaxExclusiveAmount>6000</cbc:TaxExclusiveAmount>-->
+				<cbc:TaxInclusiveAmount>7000</cbc:TaxInclusiveAmount>			
+				<cbc:AllowanceTotalAmount>200</cbc:AllowanceTotalAmount>
+				<cbc:ChargeTotalAmount>400</cbc:ChargeTotalAmount>
+			</cac:AnticipatedMonetaryTotal>
+		</Order>
+	</test>
+	
+	<test id="4">
+		<assert>
+			<error>PEPPOL-T01-R017</error>
+		</assert>
+		<Order xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+			xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+			xmlns="urn:oasis:names:specification:ubl:schema:xsd:Order-2">
+			<cac:TaxTotal>
+				<cbc:TaxAmount>0.00</cbc:TaxAmount>
+			</cac:TaxTotal>
+			
+			<cac:AnticipatedMonetaryTotal>
+				<cbc:TaxExclusiveAmount>6000</cbc:TaxExclusiveAmount>
+				<cbc:TaxInclusiveAmount>6300</cbc:TaxInclusiveAmount>
+			</cac:AnticipatedMonetaryTotal>
+		</Order>
+	</test>
+	
+	<test id="5">
+		<assert>
+			<error>PEPPOL-T01-R017</error>
+		</assert>
+		<Order xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+			xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+			xmlns="urn:oasis:names:specification:ubl:schema:xsd:Order-2">
+			<cac:TaxTotal>
+				<cbc:TaxAmount>500</cbc:TaxAmount>
+			</cac:TaxTotal>
+			
+			<cac:AnticipatedMonetaryTotal>
+				<cbc:TaxExclusiveAmount>6000</cbc:TaxExclusiveAmount>
+				<cbc:TaxInclusiveAmount>6300</cbc:TaxInclusiveAmount>
+			</cac:AnticipatedMonetaryTotal>
+		</Order>
+	</test>
+	<test id="6">
+		<assert>
+			<error>PEPPOL-T01-R017</error>
+		</assert>
+		<Order xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+			xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+			xmlns="urn:oasis:names:specification:ubl:schema:xsd:Order-2">
+			<cac:TaxTotal>
+				<cbc:TaxAmount>500</cbc:TaxAmount>
+			</cac:TaxTotal>
+			
+			<cac:AnticipatedMonetaryTotal>
+				<cbc:LineExtensionAmount>6300.0</cbc:LineExtensionAmount>
+				<!--<cbc:TaxExclusiveAmount>6000</cbc:TaxExclusiveAmount>-->
+				<cbc:TaxInclusiveAmount>6500</cbc:TaxInclusiveAmount>			
+				<cbc:AllowanceTotalAmount>200</cbc:AllowanceTotalAmount>
+				<cbc:ChargeTotalAmount>600</cbc:ChargeTotalAmount>
+			</cac:AnticipatedMonetaryTotal>
+		</Order>
+	</test>
+</testSet>

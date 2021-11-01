@@ -1,0 +1,45 @@
+= Syntax elements
+
+== Inline syntax elements
+
+All inline syntax elements should be marked as monospace, and should include the namespace-prefix
+
+.Example showing AsciiDoc syntax
+[source,indent=0]
+----
+The element `cbc:InvoicedQuantity` is mandatory
+----
+
+.Example of rendered text
+====
+The element `cbc:InvoicedQuantity` is mandatory
+====
+
+== Snippets
+
+Code snippets should preferably be fetched from a full xml example file, and not be loose code snippets inside the AsciiDoc files. The advantage of this, is that the example file can then be validated against both the schema and any Schematron validation rules, and hence this is an easy and quick way of assuring valid snippet code.
+
+AsciiDoc gives the opportunity to get specific lines of a file, and also to get code by tagged regions, which is the preferable method, as these will not be affected by xml elements being added or removed in the source document. Further reading: https://asciidoctor.org/docs/user-manual/#by-tagged-regions
+
+.Example showing AsciiDoc syntax
+[indent=0]
+----
+    [indent=0] <1>
+    ----
+    include::snippets/snippet-01.xml[tags=price]<2>
+    ----
+----
+
+<1> Setting indent to 0, allowing the leading block indent to be stripped
+<2> The file and explicit tags to fetch
+
+
+.Example of rendered text
+[source, xml, indent=0]
+----
+include::../snippets/snippet-01.xml[tags=price]
+----
+
+The xml file used to extract this snippet, can be found here link:snippets/snippet-01.xml[snippet-01.xml]
+
+<<<

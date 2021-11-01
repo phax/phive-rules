@@ -1,0 +1,18 @@
+[[related-items]]
+== Related items
+
+Items can be related to each other for ordering or logistic purposes.
+All related items must also be sent as separate Catalogue lines.
+Sellers article number is the only permitted type of article number and there for it is important that the Sellers article numbers is provided in catalogue line with the related item. +
+Types of relations:
+
+* Products that are bundled and ordered/invoiced together, e.g. bottles and deposits.
+* Products that are connected in a product line or a logistics structure, e.g. consumer units and trading units of the same article.
+* Accessories that might be sold together with a product, e.g. disk station to a laptop.
+
+
+.Example, The current item consists of 6 of Sellers article number 7690211, and 5 of article 523467:
+[source, xml, indent=0]
+----
+include::{snippet-dir}/Snippet-1-1.xml[tags=relateditem]
+----

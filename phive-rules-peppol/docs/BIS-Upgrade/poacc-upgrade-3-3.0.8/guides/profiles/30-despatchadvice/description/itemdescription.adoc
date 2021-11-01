@@ -1,0 +1,11 @@
+[[item-description-and-identification]]
+= Item description and identification
+
+Each despatch line contains elements for description and identification of the item.
+Normally only one of the identifiers is needed in the message.
+
+.Example:
+[source, xml, indent=0]
+----
+include::{snippet-dir}/snippet-30-1.xml[tags=item]
+----

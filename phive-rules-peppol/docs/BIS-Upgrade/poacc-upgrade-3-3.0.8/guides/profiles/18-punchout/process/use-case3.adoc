@@ -1,0 +1,41 @@
+[[use-case-3-user-configures-productservices]]
+= Use case 3 – User configures product/services
+
+This use case describes a process where a buyer uses a punch out system to configure a product by selecting several components and features from a catalogue.
+
+[cols="2s,6",options="header"]
+|====
+|Use Case number
+|3
+
+|Use Case Name
+|User configures product/services
+
+|Use Case Description
+|The buyer uses the functionality in the sellers website to configure a product or a service.
+
+|Parties involved
+|Buyer +
+Seller
+
+|Assumptions
+|The Seller has a website that allows the customer/buyer to automatically log into from his purchasing system.
+
+|The flow
+|The customer/buyer is working in their procurement system, and is searching for a seller of PC’s.
+
+The buyer selects a seller to see that seller’s products.
+The selected seller’s catalogue is Punch Out enabled.
+The procurement system then automatically sends a login request to the seller’s website, and the procurement system opens the website.
+
+The buyer then use the functionality in the seller’s website to select and configure a PC.
+When the buyer checks out of the website the item information of the configured item is automatically sent to the buyer’s procurement system.
+The procurement system automatically logout of the seller’s website, and the buyer is redirected back to the procurement system.
+From the procurement system, the buyer follows the normal ordering procedures when ordering the PC, using the identifier of the configured item as a reference for the seller.
+
+|Result
+|The buyer has retrieved information about a configured item.
+
+|XML example file
+|See Appendix A for a sample file illustrating Use Case 4.
+|====

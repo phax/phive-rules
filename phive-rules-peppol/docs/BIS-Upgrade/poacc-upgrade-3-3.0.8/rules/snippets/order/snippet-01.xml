@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Order xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns="urn:oasis:names:specification:ubl:schema:xsd:Order-2"
+    xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+    xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
+  <cbc:CustomizationID>urn:fdc:peppol.eu:poacc:trns:order:3</cbc:CustomizationID>
+  <cbc:ProfileID>urn:fdc:peppol.eu:poacc:bis:order_only:3</cbc:ProfileID>
+  <cbc:ID>1</cbc:ID>
+  <cbc:IssueDate>2013-07-01</cbc:IssueDate>
+  <cbc:IssueTime>05:10:10</cbc:IssueTime>
+   <cbc:DocumentCurrencyCode>EUR</cbc:DocumentCurrencyCode>
+  <cbc:AccountingCost>MAFO</cbc:AccountingCost>
+  <cac:ValidityPeriod>
+    <cbc:EndDate>2013-07-30</cbc:EndDate>
+  </cac:ValidityPeriod>
+  <!-- tag::attachment[] -->
+  <cac:AdditionalDocumentReference>
+    <cbc:ID>100</cbc:ID>
+    <cbc:DocumentType>Drawing</cbc:DocumentType><!--1-->
+    <cac:Attachment>
+      <cbc:EmbeddedDocumentBinaryObject mimeCode="application/pdf" filename="blueprint.pdf" >Ymx1ZXByaW50</cbc:EmbeddedDocumentBinaryObject><!--2-->
+    </cac:Attachment>
+  </cac:AdditionalDocumentReference>
+  <!-- end::attachment[] -->
+  <cac:Contract>
+    <cbc:ID>C1</cbc:ID>
+  </cac:Contract>
+  <!-- tag::buyer[] -->
+  <cac:BuyerCustomerParty>
+    <cac:Party>
+      <cbc:EndpointID schemeID="0007">5541277711</cbc:EndpointID>
+      <cac:PartyIdentification>
+        <cbc:ID schemeID="0007">5541277711</cbc:ID>
+      </cac:PartyIdentification>
+      <cac:PartyName>
+        <cbc:Name>City Hospital</cbc:Name>
+      </cac:PartyName>
+      <cac:PartyLegalEntity>
+        <cbc:RegistrationName>City Hospital 345433</cbc:RegistrationName>
+        <cbc:CompanyID schemeID="0007">5541277711</cbc:CompanyID>
+        <cac:RegistrationAddress>
+          <cbc:CityName>Eurocity</cbc:CityName>
+          <cac:Country>
+            <cbc:IdentificationCode>SE</cbc:IdentificationCode>
+          </cac:Country>
+        </cac:RegistrationAddress>
+      </cac:PartyLegalEntity>
+      <cac:Contact>
+        <cbc:Name>Martin Foggerty</cbc:Name>
+        <cbc:Telephone>+46555785488</cbc:Telephone>
+        <cbc:ElectronicMail>martin.foggerty@cityhospital.se</cbc:ElectronicMail>
+      </cac:Contact>
+    </cac:Party>
+  </cac:BuyerCustomerParty>
+  <!-- end::buyer[] -->
+  <!-- tag::seller[] -->
+  <cac:SellerSupplierParty>
+    <cac:Party>
+      <cbc:EndpointID schemeID="0192">987654325</cbc:EndpointID>
+      <cac:PartyIdentification>
+        <cbc:ID schemeID="0192">987654325</cbc:ID>
+      </cac:PartyIdentification>
+      <cac:PostalAddress>
+        <cbc:StreetName>Harbour street</cbc:StreetName>
+        <cbc:AdditionalStreetName>Dock 45</cbc:AdditionalStreetName>
+        <cbc:CityName>Bergen</cbc:CityName>
+        <cbc:PostalZone>5005</cbc:PostalZone>
+        <cbc:CountrySubentity>Region West</cbc:CountrySubentity>
+        <cac:AddressLine>
+			<cbc:Line>Gate 34</cbc:Line>
+        </cac:AddressLine>
+        <cac:Country>
+          <cbc:IdentificationCode>NO</cbc:IdentificationCode>
+        </cac:Country>
+      </cac:PostalAddress>
+      <cac:PartyLegalEntity>
+        <cbc:RegistrationName>Cod Liver Oil Limited</cbc:RegistrationName>
+      </cac:PartyLegalEntity>
+      <cac:Contact>
+        <cbc:Name>Öystein</cbc:Name>
+        <cbc:Telephone>+47555444333</cbc:Telephone>
+        <cbc:ElectronicMail>oystein@codliveroil.no</cbc:ElectronicMail>
+      </cac:Contact>
+    </cac:Party>
+  </cac:SellerSupplierParty>
+  <!-- end::seller[] -->
+  <!-- tag::originator[] -->
+  <cac:OriginatorCustomerParty>
+    <cac:Party>
+      <cac:PartyIdentification>
+        <cbc:ID schemeID="0088">7300010000001</cbc:ID>
+      </cac:PartyIdentification>
+      <cac:PartyName>
+        <cbc:Name>Surgery Department</cbc:Name>
+      </cac:PartyName>
+      <cac:Contact>
+        <cbc:Name>Dr Bengt</cbc:Name>
+        <cbc:Telephone>+46555444777</cbc:Telephone>
+        <cbc:ElectronicMail>bengt@cityhospital.no</cbc:ElectronicMail>
+      </cac:Contact>
+    </cac:Party>
+  </cac:OriginatorCustomerParty>
+  <!-- end::originator[] -->
+  <!-- tag::invoicee[] -->
+  <cac:AccountingCustomerParty>
+    <cac:Party>
+      <cbc:EndpointID schemeID="0007">5544332211</cbc:EndpointID>
+      <cac:PartyIdentification>
+        <cbc:ID schemeID="0007">5544332211</cbc:ID>
+      </cac:PartyIdentification>
+      <cac:PartyName>
+        <cbc:Name>Swedish Hospitals</cbc:Name>
+      </cac:PartyName>
+      <cac:PostalAddress>
+        <cbc:StreetName>High Street 23</cbc:StreetName>
+        <cbc:AdditionalStreetName>First floor</cbc:AdditionalStreetName>
+        <cbc:CityName>Trondheim</cbc:CityName>
+        <cbc:PostalZone>7005</cbc:PostalZone>
+        <cbc:CountrySubentity>Region M</cbc:CountrySubentity>
+        <cac:AddressLine>
+			<cbc:Line>Room 18</cbc:Line>
+        </cac:AddressLine>
+        <cac:Country>
+          <cbc:IdentificationCode>NO</cbc:IdentificationCode>
+        </cac:Country>
+      </cac:PostalAddress>
+      <cac:PartyLegalEntity>
+        <cbc:RegistrationName>Swedish Hospitals AB</cbc:RegistrationName>
+        <cbc:CompanyID>5544332211</cbc:CompanyID>
+        <cac:RegistrationAddress>
+          <cbc:CityName>Stockholm</cbc:CityName>
+          <cac:Country>
+            <cbc:IdentificationCode>SE</cbc:IdentificationCode>
+          </cac:Country>
+        </cac:RegistrationAddress>
+      </cac:PartyLegalEntity>
+    </cac:Party>
+  </cac:AccountingCustomerParty>
+  <!-- end::invoicee[] -->
+  <cac:Delivery>
+    <cac:DeliveryLocation>
+      <cac:Address>
+        <cbc:StreetName>Lower street 5</cbc:StreetName>
+        <cbc:AdditionalStreetName>Reception</cbc:AdditionalStreetName>
+        <cbc:CityName>Stockholm</cbc:CityName>
+        <cbc:PostalZone>11120</cbc:PostalZone>
+        <cac:AddressLine>
+			<cbc:Line>Right</cbc:Line>
+        </cac:AddressLine>
+        <cac:Country>
+          <cbc:IdentificationCode>SE</cbc:IdentificationCode>
+        </cac:Country>
+      </cac:Address>
+    </cac:DeliveryLocation>
+    <cac:RequestedDeliveryPeriod>
+      <cbc:StartDate>2013-07-15</cbc:StartDate>
+      <cbc:EndDate>2013-07-16</cbc:EndDate>
+    </cac:RequestedDeliveryPeriod>
+    <cac:DeliveryParty>
+      <cac:PartyName>
+        <cbc:Name>Hospital Tourist Department</cbc:Name>
+      </cac:PartyName>
+      <cac:Contact>
+        <cbc:Name>John</cbc:Name>
+        <cbc:Telephone>+465558877523</cbc:Telephone>
+        <cbc:ElectronicMail>john@cityhospital.se</cbc:ElectronicMail>
+      </cac:Contact>
+    </cac:DeliveryParty>
+  </cac:Delivery>
+
+  <!-- tag::allowance[] -->
+  <cac:AllowanceCharge>
+    <cbc:ChargeIndicator>true</cbc:ChargeIndicator><!--1-->
+    <cbc:AllowanceChargeReasonCode>FC</cbc:AllowanceChargeReasonCode>
+    <cbc:AllowanceChargeReason>Freight service</cbc:AllowanceChargeReason>
+    <cbc:MultiplierFactorNumeric>2</cbc:MultiplierFactorNumeric><!--4-->
+    <cbc:Amount currencyID="EUR">20</cbc:Amount> <!--5-->
+    <cbc:BaseAmount currencyID="EUR">1000</cbc:BaseAmount><!--3-->
+    <cac:TaxCategory>
+      <cbc:ID>S</cbc:ID>
+      <cbc:Percent>25</cbc:Percent>
+      <cac:TaxScheme>
+        <cbc:ID>VAT</cbc:ID>
+      </cac:TaxScheme>
+    </cac:TaxCategory>
+  </cac:AllowanceCharge>
+  <cac:AllowanceCharge>
+    <cbc:ChargeIndicator>false</cbc:ChargeIndicator><!--2-->
+    <cbc:AllowanceChargeReasonCode>65</cbc:AllowanceChargeReasonCode>
+    <cbc:AllowanceChargeReason>Production error discount</cbc:AllowanceChargeReason>
+    <cbc:Amount currencyID="EUR">10</cbc:Amount>
+    <cac:TaxCategory>
+      <cbc:ID>S</cbc:ID>
+      <cbc:Percent>25</cbc:Percent>
+      <cac:TaxScheme>
+        <cbc:ID>VAT</cbc:ID>
+      </cac:TaxScheme>
+    </cac:TaxCategory>
+  </cac:AllowanceCharge>
+  <!-- end::allowance[] -->
+
+
+  <!-- tag::tax-total[] -->
+  <cac:TaxTotal>
+		  <cbc:TaxAmount currencyID="EUR">268.75</cbc:TaxAmount>
+  </cac:TaxTotal>
+  <!-- end::tax-total[] -->
+  <cac:AnticipatedMonetaryTotal>
+    <cbc:LineExtensionAmount currencyID="EUR">1345</cbc:LineExtensionAmount>
+    <cbc:AllowanceTotalAmount currencyID="EUR">10</cbc:AllowanceTotalAmount>
+    <cbc:ChargeTotalAmount currencyID="EUR">20</cbc:ChargeTotalAmount>
+    <cbc:PayableAmount currencyID="EUR">1623.75</cbc:PayableAmount>
+  </cac:AnticipatedMonetaryTotal>
+  <cac:OrderLine>
+    <cac:LineItem>
+      <cbc:ID>1</cbc:ID>
+      <cbc:Quantity unitCode="NAR">10</cbc:Quantity>
+      <cbc:LineExtensionAmount currencyID="EUR">400</cbc:LineExtensionAmount>
+      <cbc:AccountingCost>MAFO-1</cbc:AccountingCost>
+      <!-- tag::price-discount[] -->
+      <cac:Price>
+        <cbc:PriceAmount currencyID="EUR">40</cbc:PriceAmount>
+        <cac:AllowanceCharge>
+          <cbc:ChargeIndicator>false</cbc:ChargeIndicator>
+          <cbc:Amount currencyID="EUR">10</cbc:Amount>
+          <cbc:BaseAmount currencyID="EUR">50</cbc:BaseAmount>
+        </cac:AllowanceCharge>
+      </cac:Price>
+      <!-- end::price-discount[] -->
+       <cac:Item>
+        <cbc:Description>1x12 pack sauce bags</cbc:Description>
+        <cbc:Name>Brown sauce</cbc:Name>
+         <!-- tag::prod-id[] -->
+        <cac:SellersItemIdentification>
+          <cbc:ID>SN-33</cbc:ID>
+        </cac:SellersItemIdentification>
+
+        <cac:StandardItemIdentification>
+          <cbc:ID schemeID="0160">05704066204093</cbc:ID>
+        </cac:StandardItemIdentification>
+         <!-- end::prod-id[] -->
+        <cac:ClassifiedTaxCategory>
+          <cbc:ID>S</cbc:ID>
+          <cbc:Percent>25</cbc:Percent>
+          <cac:TaxScheme>
+            <cbc:ID>VAT</cbc:ID>
+          </cac:TaxScheme>
+        </cac:ClassifiedTaxCategory>
+        </cac:Item>
+    </cac:LineItem>
+  </cac:OrderLine>
+  <cac:OrderLine>
+    <cac:LineItem>
+      <cbc:ID>2</cbc:ID>
+      <!-- tag::quantity[] -->
+      <cbc:Quantity unitCode="LTR">120</cbc:Quantity>
+      <!-- end::quantity[] -->
+      <cbc:LineExtensionAmount currencyID="EUR">720</cbc:LineExtensionAmount>
+      <cbc:AccountingCost>MAFO-1</cbc:AccountingCost>
+      <!-- tag::quantity[] -->
+
+      <cac:Price>
+        <cbc:PriceAmount currencyID="EUR">6</cbc:PriceAmount>
+        <cbc:BaseQuantity unitCode="LTR">1</cbc:BaseQuantity>
+      </cac:Price>
+      <!-- end::quantity[] -->
+      <!-- tag::name[] -->
+       <cac:Item>
+        <cbc:Description>1x12 pack sauce bags</cbc:Description>
+        <cbc:Name>White sauce</cbc:Name>
+
+         <!-- Code omitted for clarity -->
+
+         <!-- end::name[] -->
+        <cac:SellersItemIdentification>
+          <cbc:ID>SN-34</cbc:ID>
+        </cac:SellersItemIdentification>
+        <cac:StandardItemIdentification>
+          <cbc:ID schemeID="0160">08722700575887</cbc:ID>
+        </cac:StandardItemIdentification>
+        <cac:ClassifiedTaxCategory>
+          <cbc:ID>S</cbc:ID>
+          <cbc:Percent>25</cbc:Percent>
+          <cac:TaxScheme>
+            <cbc:ID>VAT</cbc:ID>
+          </cac:TaxScheme>
+        </cac:ClassifiedTaxCategory>
+        </cac:Item>
+    </cac:LineItem>
+  </cac:OrderLine>
+  <cac:OrderLine>
+    <cac:LineItem>
+      <cbc:ID>3</cbc:ID>
+      <cbc:Quantity unitCode="NAR">15</cbc:Quantity>
+      <cbc:LineExtensionAmount currencyID="EUR">225</cbc:LineExtensionAmount>
+      <cbc:AccountingCost>MAFO-1</cbc:AccountingCost>
+      <!-- tag::price[] -->
+      <cac:Price>
+        <cbc:PriceAmount currencyID="EUR">30</cbc:PriceAmount>
+        <cbc:BaseQuantity unitCode="NAR">2</cbc:BaseQuantity>
+      </cac:Price>
+      <!-- end::price[] -->
+       <cac:Item>
+        <cbc:Description>1x12 pack sauce bags</cbc:Description>
+        <cbc:Name>Pepper sauce</cbc:Name>
+        <cac:SellersItemIdentification>
+          <cbc:ID>SN-35</cbc:ID>
+        </cac:SellersItemIdentification>
+        <cac:StandardItemIdentification>
+          <cbc:ID schemeID="0160">08722700577584</cbc:ID>
+        </cac:StandardItemIdentification>
+        <cac:ClassifiedTaxCategory>
+          <cbc:ID>S</cbc:ID>
+          <cbc:Percent>25</cbc:Percent>
+          <cac:TaxScheme>
+            <cbc:ID>VAT</cbc:ID>
+          </cac:TaxScheme>
+        </cac:ClassifiedTaxCategory>
+        </cac:Item>
+    </cac:LineItem>
+  </cac:OrderLine>
+</Order>

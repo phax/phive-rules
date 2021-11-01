@@ -1,0 +1,23 @@
+[[dimension]]
+== Dimension
+
+Physical properties are important for logistics.
+The following values can be stated:
+
+* Height (HT)
+* Width (WD)
+* Length (LN)
+* Weight (WT)
+* Net Volume (AAX)
+
+For some items it is important to inform about storage regulations.
+The following values can be stated:
+
+* Temperature
+* Humidity
+
+.Example:
+[source, xml, indent=0]
+----
+include::{snippet-dir}/Snippet-1-1.xml[tags=dimension]
+----

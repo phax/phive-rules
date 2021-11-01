@@ -1,0 +1,119 @@
+
+
+= MLR rules
+
+== Transaction rules
+
+[cols="^1,1s,4,1",options="header"]
+|====
+|Auto/Manual
+|RuleID
+|Rule
+|Error level
+
+|-
+|EUGEN-T71-R001
+|A document type code MUST have a list identifier attribute 'UNCL1001'.
+|Fatal
+
+|-
+|EUGEN-T71-R002
+|A response code MUST have a list identifier attribute 'UNCL4343'.
+|Fatal
+
+|-
+|EUGEN-T71-R003
+|A status reason code MUST have a list identifier attribute ‘PEPPOLSTATUS'
+|Fatal
+
+|A
+|EUGEN-T71-R004
+|An endpoint identifier MUST have a scheme identifier attribute.
+|Fatal
+
+|-
+|EUGEN-T71-R005
+|A party identifier MUST have a scheme identifier attribute.
+|Fatal
+
+|A
+|EUGEN-T71-R006
+|A message level response MUST contain a document reference #pointing towards the envelope of the business document that the response relates to.#
+|Fatal
+
+|A
+|EUGEN-T71-R007
+|A response document MUST clearly indicate the reason for rejection.
+|Fatal
+
+|A
+|EUGEN-T71-R008
+|A response document MUST indicate whether the received document was accepted or not.
+|Fatal
+
+|A
+|BII2-T71-R001
+|A message level response MUST have a profile identifier
+|Fatal
+
+|A
+|BII2-T71-R002
+|A message level response MUST have a customization identifier
+|Fat
+
+|A
+|BII2-T71-R003
+|A message level response MUST contain the date of issue
+|Fatal
+
+|A
+|BII2-T71-R004
+|A message level response MUST contain the response identifier
+|Fatal
+
+|A
+|BII2-T71-R005
+|The party sending the message level response MUST be specified
+|Fatal
+
+|A
+|BII2-T71-R006
+|The party receiving the message level response MUST be specified
+|Fatal
+
+|====
+
+== Code lists rules
+
+[cols="^1,1s,4,1",options="header"]
+|====
+|Auto/Manual
+|RuleID
+|Rule
+|Error level
+
+|A
+|CL-071-R001
+|A document type code MUST be coded using UNCL 1001 list BII2 subset
+|Fatal
+|A
+
+|CL-071-R002
+|A Response Code MUST be from the UNCL 4343 PEPPOL Subset code list
+|Fatal
+
+|A
+|OP-T71-R001
+|#An Endpoint Identifier Scheme MUST be from the list of PEPPOL Party Identifiers described in the "PEPPOL Policy for using Identifiers".#
+|Fatal
+
+|A
+|OP-T71-R002
+|#An Party Identifier Scheme MUST be from the list of PEPPOL Party Identifiers described in the "PEPPOL Policy for using Identifiers".#
+|Fatal
+
+|A
+|OP-071-R003
+|A message level response MUST specify the status reason code using the PEPPOL Status code list
+|Fatal
+|====

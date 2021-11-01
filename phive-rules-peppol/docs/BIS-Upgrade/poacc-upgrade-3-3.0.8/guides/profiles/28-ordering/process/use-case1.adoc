@@ -1,0 +1,42 @@
+[[use-case-1-ordering-of-numbered-itemsarticles]]
+= Use case 1 – Ordering of numbered items/articles
+
+This use case contains an order of numbered items/articles.
+
+[cols="1s,5",options="header"]
+|====
+|Use Case number
+|1
+
+|Use Case Name
+|Ordering of numbered items/articles
+
+|Use Case Description
+a|
+* An order of numbered articles.
+* The order instructs the seller of the delivery address. The seller can deliver some of the items but not all.
+* One item needs to be replaced.
+|Parties involved
+|Buyer +
+Seller
+
+|Assumptions
+|The buyer has a catalogue or list of products to order. +
+The catalogue contains the item numbers, names and type of unit of measure.
+
+|The flow
+a|The buyer creates the order with 3 different lines and items. +
+The seller receives the order.
+
+* Accepts to deliver one item.
+* Rejects one item.
+* Replaces one item.
+
+|Result
+|The buyer and the seller has reached an agreement. +
+The buyer has updated the order information based on the response. +
+If the invoice has an order reference, the invoice can be matched automatically.
+
+|XML example file
+|{order-response-UC}
+|====

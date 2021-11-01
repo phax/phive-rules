@@ -1,0 +1,36 @@
+[[parties]]
+= Parties
+
+[cols="1,5",options="header"]
+|====
+|ID
+|Requirement
+
+|tbr01-010
+|An electronic order must provide for the identification of the electronic address from which the buyer sent the message and the electronic address to which it should be sent.
+
+
+|tbr01-011
+|For supporting reverse charge VAT invoicing the order must provide for the buyers VAT number in order to enable the seller to issue legally valid invoices.
+In some cases the buyer’s legal registration ID should also be provided.
+The legal registration ID may be used for identification purposes in the invoicing process and to verify the identity of parties for commercial purposes.
+
+
+|tbr01-012
+|An order must provide for legal information for the buyer. Ref {dir-2009-101}
+
+
+|tbr01-013
+|An order must provide for contact information for the buyer and the seller including structured name, phone, fax and email and job title.
+
+
+|tbr01-009
+|An order must provide for identifying the buyer and seller with name and address as well as identifiers, including the sellers’ legal registration ID.
+Use of published identifiers is common for identifying parties.
+Each party should be free to choose the scheme from which the own identification is derived.
+
+
+|tbr01-020
+|An order must provide for contact details of the party who originated the order as a whole or for individual order lines (i.e. the end user of the items).
+
+|====

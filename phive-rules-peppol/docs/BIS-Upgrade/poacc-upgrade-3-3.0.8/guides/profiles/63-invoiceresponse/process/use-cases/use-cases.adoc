@@ -1,0 +1,211 @@
+[[uc1]]
+.Use case 1 — Invoice in process
+[cols="1h,5",options="header",]
+|====
+|Use Case number |1
+|Use Case Name |Invoice in process.
+|Assumption and description |Invoice has been received but a clear or final response is not possible within the Maximum response time +
+Therefore the Buyer must provide an initial response to inform the Seller that the invoice is in process within ‘Maximum Response time.
+|The flow | Invoice Response with 'In Process' status prior to ‘Maximum Response time' +
+ Invoice Response with OTHER status is not part of the use case but the final status has to be delivered later when the invoice has been fully processed.
+|Parties involved |Buyer +
+Seller
+|Result |Seller is notified within the “Maximum Response Time” that the invoice is being processed. +
+A further Invoice Response will follow.
+|====
+
+[[uc2a]]
+.Use case 2a — Invoice is in process with additional reference data
+[cols="1h,5",options="header"]
+|====
+|Use Case number |2a
+|Use Case Name |Invoice is in process with additional reference data.
+|Assumption and description |The Buyer wants to inform the Seller of the date when the Buyer has received an invoice as well as his internal reference ID for that invoice.
+|The flow |Invoice Response with 'In Process' status, including information about formal reception date and the internal reference for the invoice.
+|Parties involved |Buyer +
+Seller
+|Result |The Seller knows that invoice is in process and that the Buyer received it at a certain date.
+He knows the internal reference used by the Buyer for this invoice.
+|====
+
+
+[[uc2b]]
+.Use case 2b — Invoice is in process but postponed
+[cols="1h,5",options="header",]
+|====
+|Use Case number |2b
+|Use Case Name |Invoice is in process but postponed
+|Assumption and description a|
+Buyer informs Seller that a reference could not be validated but also indicates that a further attempt will be made to process the Invoice and so no further action is required at this time.
+
+Buyer validates the invoice, but a Reference Number could not be matched to those on their system. +
+ +
+Buyer can re-attempt validation of the invoice (e.g. to allow updating of their internal Reference Number database in case the Reference Number details have not yet been processed ready for matching – or where the invoice arrives ahead of the goods).
+
+|The flow |Invoice Response with 'In Process' status and clarification text when invoice processing will continue, as no valid Reference Number was found.
+|Parties involved |Buyer +
+Seller
+|Result |Seller knows that the invoice is in the queue and the process is stopped until appointed date and then a further attempt will be made to match the Invoice.
+|====
+
+[[uc3]]
+.Use case 3 — Invoice is accepted
+[cols="1h,5",options="header"]
+|====
+|Use Case number |3
+|Use Case Name |Invoice is accepted
+|Assumption and description |Buyer has accepted the Invoice.
+|The flow |Invoice Response with 'Accepted' status and mandatory Invoice Response data indicating that an invoice is accepted.
+|Parties involved |Buyer +
+Seller
+|Result |Seller is notified that an invoice has been accepted and will be paid on due date.
+|====
+
+[[uc4a]]
+.Use case 4a — Invoice is rejected
+[cols="1h,5",options="header"]
+|====
+|Use Case number |4a
+|Use Case Name |Invoice is rejected
+|Assumption and description |Buyer has rejected the invoice.
+Buyer doesn't provide any encoded reasoning but provides only textual reason.
+|The flow |Invoice Response with 'Rejected' status and reasoning text why Invoice is rejected.
+|Parties involved |Buyer +
+Seller
+|Result |Seller is notified that an invoice has been rejected.
+In case further clarifications are needed, Seller needs to contact the Buyer for further actions (externally).
+|====
+
+[[uc4b]]
+.Use case 4b — Invoice is rejected requesting re-issue
+[cols="1h,5",options="header"]
+|====
+|Use Case number |4b
+|Use Case Name |Invoice is rejected requesting re-issue
+|Assumption and description |Invoice is rejected e.g. because of missing PO reference.
+The Buyer may not have booked the invoice into his accounts, so he considers that a Credit note is not needed but a correct Invoice is needed.
+|The flow |Invoice Response with 'Rejected' status, explanatory clarification code e.g, for missing PO reference and instructive clarification code for issuing a correct Invoice.
+|Parties involved |Buyer +
+Seller
+|Result |Seller is notified that an invoice has been rejected because of missing PO reference. +
+Seller needs to add PO number to the Invoice and reissue it.
+How he handles the initial invoice is up to him.
+|====
+
+[[uc4c]]
+.Use case 4c — Invoice is rejected requesting replacement
+[cols="1h,5",options="header"]
+|====
+|Use Case number |4c
+|Use Case Name |Invoice is rejected requesting replacement.
+|Assumption and description a|
+The Invoice is rejected, Credit Note requested, and a new Invoice is requested.
+
+The Buyer doesn’t accept the invoice content and rejects it.
+Buyer needs a Credit Note to cancel the original invoice and a new correct Invoice to continue with processing.
+The Buyer provides contact data and textual reasoning.
+
+|The flow |Invoice Response with 'Rejected' status with reasoning text why Invoice is rejected.
+Clarification codes for requesting a Credit Note and reissuing of a new Invoice.
+Buyer provides contact information to the Seller.
+|Parties involved |Buyer +
+Seller
+|Result |The Seller has been informed that the Invoice has been rejected.
+The Seller will proceed to issue a Credit Note for the referenced Invoice and a new Invoice to replace it. +
+The Seller can contact the Buyer using contact details provided in the Invoice Response.
+|====
+
+[[uc5]]
+.Use case 5 — Invoice is conditionally accepted
+[cols="1h,5",options="header"]
+|====
+|Use Case number |5
+|Use Case Name |Invoice is conditionally accepted
+|Assumption and description a|
+The Invoice is conditionally accepted and will be paid on a date different from the Invoice due date.
+
+The Buyer has accepted the invoice and intends to pay it according to agreement which gives a due date different from what is stated in the invoice.
+
+|The flow |Invoice Response with 'Conditionally accepted' status and explanatory clarification code for changed payment terms.
+The clarification includes information on what date the Invoice will be paid.
+|Parties involved |Buyer +
+Seller
+|Result |Seller is notified that Invoice has been conditionally accepted but will be paid on a date that is different from what was stated in the invoice.
+If the Seller accepts the change, he doesn't need to react, otherwise he must contact the Buyer (externally).
+|====
+
+[[uc6a]]
+.Use case 6a — Invoice is under query because of wrong or missing information.
+[cols="1h,5",options="header"]
+|====
+|Use Case number |6a
+|Use Case Name |Invoice is under query because of wrong or missing information.
+|Assumption and description |The Buyer cannot process the invoice and needs additional data from the Seller in order to proceed. +
+ +
+Buyer informs of the date when invoice was put under query (to allow for a potenital delay of the due date).
+|The flow |An Invoice Response is sent with 'Under query' status and clarification text stating what information is missing from the Invoice.
+Buyer informs of the reference date for the status. +
+Buyer provides his assumption for the correct data, if appropriate. +
+Buyer provides contact information to the Seller.
+|Parties involved |Buyer +
+Seller
+|Result |Seller has been notified that data is missing from the Invoice.
+Seller has notified about the date when the Invoice was put under query.
+Seller needs to forward the correct data to the Buyer (externally) to enable the Buyer to process the Invoice further.
+|====
+
+[[uc6b]]
+.Use case 6b — Invoice is under query because of missing PO reference.
+[cols="1h,5",options="header",]
+|====
+|Use Case number |6b
+|Use Case Name |Invoice is under query because for example of missing PO reference.
+|Assumption and description |The Buyer cannot process the invoice because he requires a PO reference.
+|The flow |An Invoice Response is sent with 'Under query status, explanatory clarification code for missing PO reference and instructive clarification code for providing it.
+|Parties involved |Buyer +
+Seller
+|Result |The Seller has been notified that a PO reference is missing from the Invoice and that he must provide it in order for Buyer to continue with processing
+|====
+
+[[uc6c]]
+.Use case 6c — Invoice is in under query because of wrong details, partial Credit Note is requested.
+[cols="1h,5",options="header"]
+|====
+|Use Case number |6c
+|Use Case Name |Invoice is in under query because of wrong details.
+A partial Credit Note is requested.
+|Assumption and description |The Buyer complains about a single line on the Invoice that doesn't correspond to delivery and wants Seller to issue a Credit Note for that line. +
+The Buyer will hold the processing until a partial Credit Note is received
+|The flow |An Invoice Response is sent with 'Under query’ status, clarification text for incorrect Invoice line and instructive clarification code for issuing a Credit Note.
+|Parties involved |Buyer +
+Seller
+|Result |Seller has been notified that the Invoice has an incorrect Invoice Line and that he needs to issue a partial Credit Note.
+|====
+
+[[uc7]]
+.Use case 7 — Invoice payment has been initiated
+[cols="1h,5",options="header"]
+|====
+|Use Case number |7
+|Use Case Name |Invoice payment has been initiated
+|Assumption and description |The Buyer indicates to the Seller that an invoice payment has been initiated.
+|The flow |An Invoice Response is sent with 'Paid' status.
+|Parties involved |Buyer +
+Seller
+|Result |Seller knows that the payment will be received soon.
+|====
+
+[[uc8]]
+.Use case 8 — Invoice is accepted by a third party acting on behalf of the Buyer.
+[cols="1h,5",options="header"]
+|====
+|Use Case number |8
+|Use Case Name |Invoice is accepted by third party who acts on behalf of Buyer.
+|Assumption and description |The Buyer has contracted a service provider to handle Invoice to Order matching on his behalf.
+|The flow |Invoice Response with 'Accepted' status and mandatory Invoice Response data indicating that an Invoice is accepted.
+Sending Party differs from Buyer party details.
+|Parties involved |Buyer +
+Service provider +
+Seller
+|Result |Seller is notified that an Invoice has been accepted and will be paid on due date.
+|====

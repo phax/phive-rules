@@ -1,0 +1,22 @@
+[[logistics-information]]
+== Logistics information
+
+The Logistics elements can be used to specify different pack levels for the same item:
+
+* Each pack level is regarded as a unique item and must be sent as a separate Catalogue line and identified with a unique identification such as GTIN.
+* Information about pack level is done in the element PackLevelCode on line level.
+The Pack level codes are based on the Edifact/Eancom-standard and the following codes are available:
+** DU = Dispatch Unit
+** HN = Handling Unit (level between TU and DU).
+** TU = Traded Unit
+** CU = Consumer Unit
+* It should be stated if the pack level is orderable.
+* The relation between pack levels should be specified by using Component Related Item, e.g. that a Dispatch unit contains Traded units.
+For the higher level Packed Quantity should be used.
++
+
+.Example:
+[source, xml, indent=0]
+----
+include::{snippet-dir}/Snippet-1-1.xml[tags=packlevel]
+----

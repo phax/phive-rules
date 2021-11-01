@@ -1,0 +1,20 @@
+[[introduction-to-openpeppol-and-bis]]
+= Introduction to openPEPPOL and BIS
+
+This BIS is a result of work within openPEPPOL and is published as part of the PEPPOL specifications.
+
+This PEPPOL BIS provides a set of specifications for implementing a PEPPOL business process.
+The document is concerned with clarifying requirements for ensuring interoperability of pan-European Public eProcurement and provides guidelines for supporting these requirements and how to implement them.
+This PEPPOL BIS is based on the CEN WS/BII2 “Profile BII01 Catalogue Only”.
+
+*The purpose* of this document is to describe a common format for the catalogue message in the European market, and to facilitate an efficient implementation and increased use of electronic collaboration regarding the sourcing process based on this format.
+
+.Relationship between BII profiles and PEPPOL BIS
+image::../../shared/images/BII_relationship.png[align="center", width=600]
+
+
+:leveloffset: +1
+
+include::../../../shared/files/audience.adoc[]
+
+:leveloffset: -1

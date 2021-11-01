@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testSet xmlns="http://difi.no/xsd/vefa/validator/1.0"
+	configuration="peppolbis-t01-base-3.0">
+	<assert>
+		<description>Verify currencyID has same value as DocumentCurrencyCode.</description>
+		<scope>PEPPOL-T01-R003</scope>
+	</assert>
+	
+	<test>
+		<assert>		
+			<success>PEPPOL-T01-R003</success>
+		</assert>
+		<Order xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+			xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+			xmlns="urn:oasis:names:specification:ubl:schema:xsd:Order-2">
+			
+			<cbc:DocumentCurrencyCode>NOK</cbc:DocumentCurrencyCode>
+			
+			<cac:TaxTotal>
+				<cbc:TaxAmount currencyID="NOK"/>
+			</cac:TaxTotal>
+			
+		</Order>
+	</test>
+
+	<test>
+		<assert>		
+			<error>PEPPOL-T01-R003</error>
+		</assert>
+		<Order xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+			xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+			xmlns="urn:oasis:names:specification:ubl:schema:xsd:Order-2">
+			
+			<cbc:DocumentCurrencyCode>NOK</cbc:DocumentCurrencyCode>
+			
+			<cac:TaxTotal>
+				<cbc:TaxAmount currencyID="EUR"/>
+			</cac:TaxTotal>
+			
+		</Order>
+	</test>
+	
+	<test>
+		<assert>		
+			<error>PEPPOL-T01-R003</error>
+		</assert>
+		<Order xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+			xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+			xmlns="urn:oasis:names:specification:ubl:schema:xsd:Order-2">
+			
+			<cbc:DocumentCurrencyCode>NOK</cbc:DocumentCurrencyCode>
+			
+			<cac:OrderLine>
+				<cac:LineItem>
+					<cbc:LineExtensionAmount currencyID="GBP">65.52</cbc:LineExtensionAmount>
+				</cac:LineItem>
+			</cac:OrderLine>
+			
+		</Order>
+	</test>
+	
+	<test>
+		<assert>		
+			<error>PEPPOL-T01-R003</error>
+		</assert>
+		<Order xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+			xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+			xmlns="urn:oasis:names:specification:ubl:schema:xsd:Order-2">
+			
+			<cbc:DocumentCurrencyCode>NOK</cbc:DocumentCurrencyCode>
+			
+			<cac:OrderLine>
+				<cac:LineItem>
+					<cac:Price>
+						<cbc:PriceAmount currencyID="GBP">59.12</cbc:PriceAmount>
+					</cac:Price>
+				</cac:LineItem>
+			</cac:OrderLine>
+			
+		</Order>
+	</test>
+
+	<test>
+		<assert>		
+			<error>PEPPOL-T01-R003</error>
+		</assert>
+		<Order xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+			xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+			xmlns="urn:oasis:names:specification:ubl:schema:xsd:Order-2">
+			
+			<cbc:DocumentCurrencyCode>GBP</cbc:DocumentCurrencyCode>
+			
+			<cac:AnticipatedMonetaryTotal>
+				<cbc:LineExtensionAmount currencyID="GBP">2456.30</cbc:LineExtensionAmount>
+				<cbc:TaxExclusiveAmount currencyID="EUR">2456.30</cbc:TaxExclusiveAmount>
+			</cac:AnticipatedMonetaryTotal>
+			
+		</Order>
+	</test>
+	
+
+	
+</testSet>

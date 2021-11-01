@@ -1,0 +1,16 @@
+[[transport-handling-unit]]
+= Transport handling unit
+
+The items on a Despatch line may be packed in several transport handling units which are the physical handling units such as box, container, pallet, etc.
+containing the consignment.
+
+Serial shipping container code (SSCC) issued by GS1 may be used to identify the transport handling unit.
+Note that the same physical handling unit may contain items from different despatch lines.
+Implemented by referencing the same SSCC code in the ID element of the TransportHandlingUnit on several despatch lines.
+
+Example:
+
+[source, xml, indent=0]
+----
+include::{snippet-dir}/snippet-30-3.xml[tags=transporthandling]
+----

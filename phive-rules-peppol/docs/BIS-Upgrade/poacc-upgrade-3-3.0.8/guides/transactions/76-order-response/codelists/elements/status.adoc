@@ -1,0 +1,33 @@
+= Status code
+
+[cols="1,4"]
+|===
+h| Qualifier
+| `UNCL1225` (listID)
+h| Document location
+| `cbc:OrderResponseCode`
+h| Source codelist
+a| Subset of {UNCL1225}.
+|===
+
+Valid values are listed in the table below:
+
+[cols="1,4", options="header"]
+.Code list
+|===
+| Code
+| Description
+
+| 12
+| Not processed
+
+| 27
+| Not accepted
+
+| 29
+| Accepted
+
+| 30
+| Accepted with amendment in detail section
+
+|===

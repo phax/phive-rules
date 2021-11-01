@@ -1,0 +1,10 @@
+[[message-note]]
+= Message note
+
+The Invoice Response enables the sender to provide a textual note that may give comments or instructions that apply to the whole response.
+
+.UBL example:
+[source, xml]
+----
+<cbc:Note>Please refer to previous email exchange regarding this invoice. </cbc:Note>
+----

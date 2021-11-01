@@ -1,0 +1,52 @@
+= Version 3.0.7
+[horizontal]
+Release date:: 2021-05-03
+
+== Changes to BIS document
+* The version numbers used in the BIS-documentation were inconsistant with the actual version numbers listed on the main documentation page. Version numbers should now be aligned. [POACC-391]
+
+* Changes in the documentation of Despatch Advice transaction 3.1. rule T16-R009 and T16-R010 is now reffering to seller party and originator customer party instead of buyer party [POACC-377].
+
+* Peppol logo updated to new design [POACC-375]
+
+* In Order Agreement BIS. Duplicated headings and intro text 3.3 and 3.3.1 removed. Later sections renumbered accordingly. [POACC-393]
+
+* Description of calculation of totals in Order Only BIS corrected so that class is shown as cac:AnticipatedMonetaryTotal instead of cac:LegalMonetaryTotal. No affect on functionality. [POACC-397]
+
+* Update of links to Use Case examples [POACC-383]
+
+* Catalogue BIS, both with and without response, the desciption for quantities and units in section 6.8 edited by adding tir numbers to the examples and to the business terms and the description of the business terms aligned with their desciption in the catalogue transaction data model. [POACC-374]
+
+== Changes to syntax
+* Order Transaction - an element which is mandatory in UBL was missing in the syntax description. The element (cac:Shipment/cbc:ID) is now added and with a fixed value "NA". The change was considered a bug-fix as the previous documentation would result in invalid UBL instances. [POACC-389 and POACC-380]
+
+* Order Transaction - the XML Elements for DeliveryParty Contact was incorrectly located under the DeliveryParty. The Contact element has been located correctly according to the UBL-schema.  The change was considered a bug-fix as the previous documentation would result in invalid UBL instances. [POACC-379]
+
+* An editorial change has been made in the description of the element Order/CustomerReference in the Order Transaction. Previous wording "Your reference" is changed to "Buyer reference" aligning the description with the business term used in the Invoice. [POACC-364]
+
+* Despatch Advice transcation, business term DespatchAddress/ID given description and tir id [POACC-368]
+
+* Missing tir id for cac:TaxScheme/cbc:ID added to OrderAgreement, PunchOut and Catalogue [POACC-373)
+
+* Order Agreement, added to description for Previous order Identifier that it is an optional business term but is a required element in the UBL syntax so if no previous order identifier is available use NA. [POACC-361]
+
+* Clarification on the syntax documentation of Buyer reference identifier (ReceiverParty/Contact/ID) in Punch Out transaction 3.1 [POACC-363].
+
+== Changes to code lists and validation artefacts
+
+* Edits to status code for Invoice Response to clarify additions made in last release [POACC-370]
+
+* Incorrect special characters removed from IT and SE country rules [POACC-398]
+
+* ICD code list details edited to remove contact information [POACC-388]
+
+* Code lists updated to align with EN 16931 and BIS Billing [POACC-407]
+
+** ICD code list. Added 0210, 0211, 0212, 0213
+
+** EAS code list. Added 0210, 0211, 0212, 0213. Removed 9956
+
+** UOM code list. Added 49 new codes into Recommendation 20 and 21
+
+== Changes to previous release notes
+* The date for the hotfix published in november 2020 was incorrectly dated to 2019. This date is corrected in this release.

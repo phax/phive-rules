@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Namespace xmlns="urn:fdc:difi.no:2017:vefa:structure:Namespace-1">
+    <Identifier prefix="ubl">urn:oasis:names:specification:ubl:schema:xsd:Catalogue-2</Identifier>
+    <Version>2.2</Version>
+    <Include prefix="cac">urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2</Include>
+    <Include prefix="cbc">urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2</Include>
+    <Include prefix="ext">urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2</Include>
+    <Element name="Catalogue">
+        <Ref card="0..1">ext:UBLExtensions</Ref>
+        <Ref card="0..1">cbc:UBLVersionID</Ref>
+        <Ref card="0..1">cbc:CustomizationID</Ref>
+        <Ref card="0..1">cbc:ProfileID</Ref>
+        <Ref card="0..1">cbc:ProfileExecutionID</Ref>
+        <Ref card="1..1">cbc:ID</Ref>
+        <Ref card="0..1">cbc:UUID</Ref>
+        <Ref card="0..1">cbc:ActionCode</Ref>
+        <Ref card="0..1">cbc:Name</Ref>
+        <Ref card="1..1">cbc:IssueDate</Ref>
+        <Ref card="0..1">cbc:IssueTime</Ref>
+        <Ref card="0..1">cbc:RevisionDate</Ref>
+        <Ref card="0..1">cbc:RevisionTime</Ref>
+        <Ref card="0..n">cbc:Note</Ref>
+        <Ref card="0..n">cbc:Description</Ref>
+        <Ref card="0..1">cbc:VersionID</Ref>
+        <Ref card="0..1">cbc:PreviousVersionID</Ref>
+        <Ref card="0..1">cbc:LineCountNumeric</Ref>
+        <Ref card="0..n">cac:ValidityPeriod</Ref>
+        <Ref card="0..n">cac:ReferencedContract</Ref>
+        <Ref card="0..1">cac:SourceCatalogueReference</Ref>
+        <Ref card="0..n">cac:DocumentReference</Ref>
+        <Ref card="0..n">cac:Signature</Ref>
+        <Ref card="1..1">cac:ProviderParty</Ref>
+        <Ref card="1..1">cac:ReceiverParty</Ref>
+        <Ref card="0..1">cac:SellerSupplierParty</Ref>
+        <Ref card="0..1">cac:ContractorCustomerParty</Ref>
+        <Ref card="0..n">cac:TradingTerms</Ref>
+        <Ref card="1..n">cac:CatalogueLine</Ref>
+    </Element>
+</Namespace>

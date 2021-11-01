@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeList xmlns="urn:fdc:difi.no:2017:vefa:structure:CodeList-1">
+
+    <Title>Action code (UNCL1229)</Title>
+    <Identifier>UNCL1229</Identifier>
+    <Version>D.17A</Version>
+    <Agency>UN/CEFACT</Agency>
+    <Subset>openPEPPOL</Subset>
+
+    <Code>
+        <Id>1</Id>
+        <Name>Order line is added</Name>
+        <Description>The information is to be or has been added.</Description>
+    </Code>
+    <Code>
+        <Id>3</Id>
+        <Name>Changed</Name>
+        <Description>The Order line is accepted with change.</Description>
+    </Code>
+    <Code>
+        <Id>5</Id>
+        <Name>Accepted without amendment.</Name>
+        <Description>The Order line is accepted without changes.</Description>
+    </Code>
+    <Code>
+        <Id>7</Id>
+        <Name>Not accepted</Name>
+        <Description>The Order line is rejected.</Description>
+    </Code>
+    <Code>
+        <Id>42</Id>
+        <Name>Allready delivered</Name>
+        <Description>Delivery has taken place</Description>
+    </Code>
+
+</CodeList>

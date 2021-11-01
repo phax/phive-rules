@@ -1,0 +1,24 @@
+[[document-reference]]
+= Document reference
+
+Used to provide a reference to the business document e.g. the invoice or credit note, to which the Invoice Response is is responding.
+
+IMPORTANT: One Invoice Response may only reference one business document.
+
+The type of the business document must also be included in the document reference element.
+Document Type Code is coded according to code list 1001 issued by UN/CEFACT.
+
+See chapter {link-codelist} for a complete list of all the document types.
+
+.UBL example:
+[source, xml]
+----
+<cac:DocumentReference>
+  <cbc:ID>inv021</cbc:ID> <1>
+  <cbc:IssueDate>2017-11-30</cbc:IssueDate> <2>
+  <cbc:DocumentTypeCode>380</cbc:DocumentTypeCode> <3>
+</cac:DocumentReference>
+----
+<1> Value from the ID element in the invoice for which this response is valid, found in element `cbc:ID` in the received invoice
+<2> The issue date of the invoice for which this response is valid, found in element `cbc:IssueDate` in the received invoice
+<3> The invoice type in the invoice for which this response is valid, found in element `cbc:DocumentTypeCode` in the received invoice

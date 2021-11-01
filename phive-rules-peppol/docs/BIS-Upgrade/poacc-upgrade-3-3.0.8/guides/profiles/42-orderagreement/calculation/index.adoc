@@ -1,0 +1,9 @@
+= Calculations
+
+:leveloffset: +1
+
+include::../../../shared/files/calculation/vat-calc.adoc[]
+
+include::totals.adoc[]
+
+:leveloffset: -1

@@ -1,0 +1,6 @@
+//asciidoc
+:user-manual: https://asciidoctor.org/docs/user-manual[AsciiDoc user manual]
+:converting-word: https://asciidoctor.org/docs/migrating-from-msword[MS Word to AsciiDoc]
+:what-is: https://asciidoctor.org/docs/what-is-asciidoc/[What is AsciiDoc?]
+:documentation: https://asciidoctor.org[Asciidoctor]
+:writers-guide: https://asciidoctor.org/docs/asciidoc-writers-guide/[AsciiDoc's Writers Guide]

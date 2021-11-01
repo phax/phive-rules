@@ -1,0 +1,16 @@
+[[codelists-business-rules]]
+= Codelists business rules
+
+[cols="1,5",options="header"]
+|====
+|Identifier |Business Rule
+|CL-T77-R002 |Unit code for BatchQuantity MUST be coded according to the UN/ECE Recommendation 20
+|CL-T77-R003 |Unit code for Price/BaseQuantity MUST be coded according to the UN/ECE Recommendation 20
+|CL-T77-R004 |currencyID for Amounts MUST be coded using ISO code list 4217.
+|CL-T77-R005 |Item VAT category code MUST be coded using UNCL 5305 code list BII3 subset.
+|CL-T77-R006 |For Mime code in attribute use MIME Media Types.
+|CL-T77-R007 |An Endpoint Identifier Scheme MUST be from the list of PEPPOL Party Identifiers described in the "PEPPOL Policy for using Identifiers".
+|CL-T77-R008 |A Party Identifier Scheme MUST be from the list of PEPPOL Party Identifiers described in the "PEPPOL Policy for using Identifiers".
+|CL-T77-R009 |A standard item identifier scheme MUST be coded according to the list Item Identifier Scheme ID defined by PEPPOL.
+|CL-T77-R010 |Commodity code schemes MUST be according to CENBII3 COMMODITYSCHEMEID.
+|====

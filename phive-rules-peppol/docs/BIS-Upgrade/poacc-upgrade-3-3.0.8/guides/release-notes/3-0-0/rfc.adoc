@@ -1,0 +1,23 @@
+= Accepted changes (RFC)
+
+The following changes were processed and agreed by the team.PB30-38	Validation Artefacts improvements candidates:
+
+* Batch/LOT and serial numbers in order 3a and 28a [PB30-1].
+* ID in AdditionalDocumentReference [PB30-4].
+* Change to DespatchAdvice BIS 30A, SFTI 20170622.xlsx [PB30-5].
+* Questions about PEPPOL BIS in post-award [PB30-7].
+* Request the OpenPEPPOL Post-Award CC to include the BuyersItemIdentification element in the BIS 28A Ordering and 30A Despatch Advice messages. [PB30-11].
+* Despatch Advice (BIS 30A), add postal Address informations and Person information [PB30-14].
+* Despatch Advice (BIS 30A), extension of cardinality for order reference ID [PB30-16].
+* General - enable price types for price is all transactions, other than Invoice [PB30-23].
+* General - harmonize Contracted Item Indicator and reference to contract [PB30-24].
+* Order Response - Use code list 1229 instead of 1225 as status code on line level [PB30-26].
+* Order Response - Introduce the use of line status code to indicate already delivered items [PB30-30].
+* Order Response - Introduce a document status code to confirm order reception [PB30-32].
+* Punch Out - Add delivery address and validity period on line level [PB30-33].
+* Punch Out - Introduce support for reserving goods [PB30-34].
+* Catalogue - Enable the use of standard item numbers to reference between related items [PB30-35].
+* Question for documentation on PEPPOL_BIS-18A.pdf, “Punch out” [PB30-37].
+
+
+

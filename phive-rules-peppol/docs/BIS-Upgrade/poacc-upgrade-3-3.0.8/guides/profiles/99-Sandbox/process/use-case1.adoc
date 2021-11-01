@@ -1,0 +1,40 @@
+[[use-case-1-positive-response]]
+= Use Case 1 – Positive response
+
+This use case is a message level response containing no errors, ie a positive response.
+
+[cols="2s,6",options="header"]
+|====
+|Use Case number
+|1
+|Use Case Name
+|Positive response
+
+|Use Case Description
+|This use case is a message level response based on a business document with no errors, ie a positive response.
+
+|Parties involved
+|BusinessDocumentSender, MLRReceiver +
+BusinessDocumentReceiver, MLR Sender
+
+|Assumptions
+a|
+.  The BusinessDocumentReceiver has received an electronic business document from the BusinessDocumentSender.
+.  The BusinessDocumentReceiver has validated the business document from the BusinessDocumentSender.
+.  The result of the validation is OK, no fatal errors.
+
+|The flow
+a|
+.  The BusinessDocumentSender has prepared and sent an electronic business document to the BusinessDocumentReceiver.
+.  The BusinessDocumentReceiver has received the business document.
+.  The BusinessDocumentReceiver has validated the business document.
+.  The MLRSender has sent a message level response message back to the BusinessDocumentSender.
+.  The MLRReceiver has received and processed the message level response message.
+
+|Result
+a|
+.  The message level response message helped the BusinessDocumentSender to confirm that the business document was received and validated with no errors by the BusinessDocumentReceiver.
+
+|XML example file
+|See Appendix A for a sample file illustrating Use Case 1.
+|====

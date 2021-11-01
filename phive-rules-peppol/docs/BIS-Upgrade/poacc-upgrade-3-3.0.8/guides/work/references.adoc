@@ -1,0 +1,6 @@
+= References
+
+== Order
+
+* Uses cac:QuotationDocumentReference & Originator reference, but originator reference is used to "reference to
+the internal requesition", whereas the element originator reference in the Invoice is used for "Tender or Lot reference". How to align this?

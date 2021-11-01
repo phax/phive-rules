@@ -1,0 +1,33 @@
+
+= Status reason codes
+
+
+[cols="1,4"]
+.Status reason codes
+|===
+h| Qualifier
+| PEPPOLSTATUS (listID)
+h| Document location
+| `cac:DocumentResponse/cac:LineResponse/cac:Response/cac:Status/cbc:StatusReasonCode`
+h| Source codelist
+| {peppol}
+|===
+
+Valid values are listed in the table below:
+
+[cols="1,4", options="header"]
+.Code list
+|===
+| Code
+| Description
+
+| SV
+| Syntax violation
+
+| RVF
+| Rule violation, fatal
+
+| RVW
+| Rule violation, warning
+
+|===

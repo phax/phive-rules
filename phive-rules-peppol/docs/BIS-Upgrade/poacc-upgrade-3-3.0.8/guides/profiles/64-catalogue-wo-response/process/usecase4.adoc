@@ -1,0 +1,37 @@
+[[use-case-4-catalogue-deletion]]
+= Use case 4 – Catalogue deletion
+
+This is a *Deletion* of the catalogue based on Use case 3.
+
+[cols="2,4",options="header",]
+|====
+|*Use Case No* |4
+|*Use Case Name* |Catalogue deletion.
+|*Use Case Description* a|
+The provider sends a catalogue deletion to the receiver.
+
+The catalogue deletes the previous accepted catalogue.
+
+After receiving the catalogue deletion, the buyer accepts the catalogue without any response message.
+
+|*Parties involved* a|
+Catalogue Provider (same legal entity as the Supplier/Seller in this use case).
+
+Catalogue Receiver (same legal entity as the Customer/Buyer in this use case).
+
+|*Assumptions* a|
+1.  The Seller has previously sent a catalogue to the Buyer which has been accepted.
+2.  The Seller and the Buyer have ended their contract.
+
+|*The flow* a|
+1.  The Seller identifies the current active catalogue to be deleted.
+2.  The Provider creates a Catalogue message.
+3.  The Provider sends the message to the Receiver.
+4.  The Buyer verifies the content in the message and accepts the catalogue.
+5.  The Buyer, in his ERP system, deactivates the items identified in the catalogue message.
+
+|*Result* a|
+1.  The Buyer can no longer make an order to the supplier from this catalogue.
+
+|*XML example file* |See {examples-zip} for sample Catalogue illustrating Use Case 4.
+|====

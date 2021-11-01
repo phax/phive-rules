@@ -1,0 +1,49 @@
+[[use-case-1-new-catalogue-from-the-seller]]
+= Use case 1 – New Catalogue from the seller
+
+This use case includes a simple catalogue containing mandatory information and information required to get a high performance from the buyers search engine.
+The catalogue contains both products and services.
+This is the first catalogue to the receiver.
+
+[cols="2,4",options="header",]
+|====
+|*Use Case No* |1
+|*Use Case Name* |A new catalogue from the Seller to the Buyer.
+|*Use Case Description* a|
+The provider sends a catalogue to the receiver.
+
+The catalogue contains the articles that the buyer and seller have agreed on in a contract.
+
+This is the first catalogue being sent on this contract.
+
+After receiving the catalogue, the buyer accepts the catalogue without any response message.
+
+|*Parties involved* a|
+Catalogue Provider (same legal entity as the Supplier/Seller in this use case).
+
+Catalogue Receiver (same legal entity as the Customer/Buyer in this use case).
+
+|*Assumptions* a|
+1.  The Seller and the Buyer have a contract of products and services that the buyer may purchase from the Seller.
+2.  The parties have agreed to exchange the catalogue.
+3.  The articles are:
+a.  Physical articles (pens and papers).
+b.  Fruits.
+c.  Services.
+
+|*The flow* a|
+1.  The Seller identifies the contracted items.
+2.  The Provider creates a Catalogue message.
+3.  The Provider sends the message to the Receiver.
+4.  The Buyer verifies the content in the message and considers whether to accept or reject the catalogue.
+5.  The Buyer accepts the Catalogue and inserts the articles from the catalogue message in the local ERP-system.
+
+|*Result* a|
+1.  The Buyer have all the articles and the contracted prices in the ERP-system and may start ordering.
+2.  The ordering process is easy when you have all necessary information in the ERP-system.
+
+_Please note that the ordering process is not part of this BIS.
+For ordering, please see PEPPOL BIS 3A._
+
+|*XML example file* |See {examples-zip} for sample Catalogue illustrating Use Case 1.
+|====

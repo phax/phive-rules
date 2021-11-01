@@ -1,0 +1,22 @@
+[[keyword]]
+== Keyword
+
+Keywords are sent to let the Buyer search for an item without knowing the item identification or name.
+Keywords tag can be repeated (0..n), but the number should be limited to ensure correct handling in the receiving system.
+
+It is also possible to send several keywords in the same tag, by using a separator between the different keywords.
+Which separator that should be used, must be agreed between the parties.
+Example of a separator can be the %-sign, as this is not used anywhere else.
+
+
+.Example of several keywords by using several <KeyWord>-tags:
+[source, xml, indent=0]
+----
+include::{snippet-dir}/Snippet-1-1.xml[tags=keywords]
+----
+
+.Example of several keywords using “%” as separator:
+[source, xml, indent=0]
+----
+include::{snippet-dir}/Snippet-1-1.xml[tags=keyword]
+----

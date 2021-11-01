@@ -1,0 +1,34 @@
+= Attachments on header level
+
+Non-XML documents can be sent as attachments to the PEPPOL BIS Order Agreement. This could be time sheets or other documents relevant for the order agreement. The attachment can either be sent as a binary object encoded in Base64 embedded in the message or as a URI to an external address as a link.
+
+It is recommended to send attachments as embedded, binary objects and not as external references.
+
+====
+IMPORTANT: Attachments should be used for additional information and not as order copies.
+====
+
+
+.Example of attachment as an embedded, binary object in an PEPPOL BIS Order Agreement message
+[source, xml, indent=0]
+----
+include::{snippet-dir}/OA full.xml[tags=AdditionalDocumentReference]
+----
+
+= Attachments and document references on line level
+
+Non-XML documents can be sent as attachments to the PEPPOL BIS Order Agreement on line level. This could comprise item specifications, time sheets or other documents relevant for the particular line in the order agreement. See the above information regarding attachments.
+
+
+.Example of attachment as an embedded, binary object in an PEPPOL BIS Order Agreement message on line level.
+[source, xml, indent=0]
+----
+include::{snippet-dir}/OA full.xml[tags=ItemSpecificationDocumentReference]
+----
+
+
+.Example of a Link to a downloadable ticket
+[source, xml, indent=0]
+----
+include::{snippet-dir}/OA full.xml[tags=ItemSpecificationDocumentReference2]
+----

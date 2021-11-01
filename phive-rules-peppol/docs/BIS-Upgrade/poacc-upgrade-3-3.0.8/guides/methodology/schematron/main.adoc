@@ -1,0 +1,21 @@
+= Schematron design guideline
+:doctype: book
+:icons: font
+:stem:
+:toc: left
+:toclevels: 2
+:source-highlighter: coderay
+:source-language: xml
+:sectanchors:
+:sectnums:
+
+This document gives a guidance in how to develop schematron artefacts in openPEPPOL Post Award Coordinating Community.
+
+NOTE: This document is work in progress and will be further developed. If you have any feedback, please provide them as an issue in https://github.com/OpenPEPPOL/poacc-upgrade-3/issues[GitHub].
+
+
+:leveloffset: +1
+
+include::index.adoc[]
+
+:leveloffset: -1

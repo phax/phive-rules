@@ -1,0 +1,13 @@
+[[descriptions]]
+= Description of selected parts of the message level response message
+
+
+:leveloffset: +1
+
+include::parties.adoc[]
+
+include::response-types.adoc[]
+
+include::doc-reference.adoc[]
+
+:leveloffset: -1

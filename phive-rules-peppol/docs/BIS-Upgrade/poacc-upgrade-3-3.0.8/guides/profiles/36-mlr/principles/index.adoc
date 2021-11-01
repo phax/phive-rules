@@ -1,0 +1,22 @@
+
+[[principles-and-prerequisites]]
+= Principles and prerequisites
+
+This chapter describes the principles and assumptions that underlie the use of the {peppol} Message Level Response message.
+It is based on the {bii-mlr}.
+
+A Messaging Level Response message can be used in the choreography of the exchange of a business document to improve reliability by allowing a receiver of a business document to inform the sender about the results of receivers validations and, in case of negative results, to inform the sender about the nature of the errors as well as their details
+
+They may allow the sender of the document to take appropriate action.
+
+
+:leveloffset: +1
+
+include::general.adoc[]
+
+include::scope.adoc[]
+
+include::parties.adoc[]
+
+
+:leveloffset: -1

@@ -1,0 +1,19 @@
+[[product-identification]]
+= Product identification
+
+Which identifier to use depends on what is known at the time of ordering or what is commonly used in the relevant business sector.
+
+IMPORTANT: Each cart line MUST have an item name and an identifier.
+
+Product identification must be done using one or both of the identifiers described below:
+
+* Sellers ID
+* Standard ID, e.g. the GS1 Global Trade Item Number (GTIN) used by the seller
+
+Manufacturers item identification can not be used alone to identify a product.
+
+.Example of an PEPPOL BIS Shopping Cart item using both Sellers ID, Manufacturers ID and Standard ID (GTIN)
+[source,xml, indent=0]
+----
+include::{snippet-dir}/snippet-18-1.xml[tags=product-id]
+----

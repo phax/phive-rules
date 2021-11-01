@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testSet xmlns="http://difi.no/xsd/vefa/validator/1.0" configuration="peppolbis-t01-base-3.0">
+	<assert>
+		<scope>PEPPOL-T01-R030</scope>
+		<description>Verify that VAT rate is higher than zero(0) if VAT category is "S" (standard
+			rate)</description>
+	</assert>
+	<test id="1">
+		<assert>
+			<success>PEPPOL-T01-R030</success>
+		</assert>
+		<Order xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+			xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+			xmlns="urn:oasis:names:specification:ubl:schema:xsd:Order-2">
+
+			<cac:AllowanceCharge>
+				<cac:TaxCategory>
+					<cbc:ID>S </cbc:ID>
+					<cbc:Percent>25</cbc:Percent>
+				</cac:TaxCategory>
+			</cac:AllowanceCharge>
+
+			<cac:OrderLine>
+				<cac:LineItem>
+					<cac:Item>
+						<cac:ClassifiedTaxCategory>
+							<cbc:ID>S</cbc:ID>
+							<cbc:Percent>25.00</cbc:Percent>
+						</cac:ClassifiedTaxCategory>
+					</cac:Item>
+				</cac:LineItem>
+			</cac:OrderLine>
+
+
+		</Order>
+	</test>
+
+
+	<test id="2">
+		<assert>
+			<success>PEPPOL-T01-R030</success>
+		</assert>
+		<Order xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+			xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+			xmlns="urn:oasis:names:specification:ubl:schema:xsd:Order-2">
+			
+			<cac:AllowanceCharge>
+				<cac:TaxCategory>
+					<cbc:ID>E</cbc:ID>
+					<cbc:Percent>0</cbc:Percent>
+				</cac:TaxCategory>
+			</cac:AllowanceCharge>
+			
+			<cac:OrderLine>
+				<cac:LineItem>
+					<cac:Item>
+						<cac:ClassifiedTaxCategory>
+							<cbc:ID>Z </cbc:ID>
+							<cbc:Percent>0.00</cbc:Percent>
+						</cac:ClassifiedTaxCategory>
+					</cac:Item>
+				</cac:LineItem>
+			</cac:OrderLine>
+			
+			
+		</Order>
+	</test>
+
+	<test id="3">
+		<assert>
+			<error number="2">PEPPOL-T01-R030</error>
+		</assert>
+		<Order xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+			xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+			xmlns="urn:oasis:names:specification:ubl:schema:xsd:Order-2">
+			
+			<cac:AllowanceCharge>
+				<cac:TaxCategory>
+					<cbc:ID>S </cbc:ID>
+					<cbc:Percent>0</cbc:Percent>
+				</cac:TaxCategory>
+			</cac:AllowanceCharge>
+			
+			<cac:OrderLine>
+				<cac:LineItem>
+					<cac:Item>
+						<cac:ClassifiedTaxCategory>
+							<cbc:ID> S</cbc:ID>
+							<cbc:Percent>0.00</cbc:Percent>
+						</cac:ClassifiedTaxCategory>
+					</cac:Item>
+				</cac:LineItem>
+			</cac:OrderLine>
+			
+			
+		</Order>
+	</test>
+
+</testSet>

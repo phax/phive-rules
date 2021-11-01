@@ -1,0 +1,126 @@
+[[catalogue-response-transaction-information-requirements]]
+== Catalogue Response transaction information requirements
+
+[[general-1]]
+=== General
+
+[cols="1,5",options="header",]
+|====
+|*ID* a|
+
+*Requirement*
+
+
+a|
+
+tbr58-058
+
+
+ a|
+
+All transactions (catalogues and responses) must contain all information
+
+necessary for its application, i.e. it shall not rely on the availability of external references such as a centralized repository of item information.
+To ease the processing of a catalogue or a response, as no external data sources are needed.
+
+
+a|
+
+tbr58-059
+
+
+ a|
+
+It must be possible to check the integrity and authentication of the information content and to audit these aspects of the content.
+To check that the catalogue or
+
+the response is authentic.
+
+
+|====
+
+[[header-1]]
+=== Header
+
+[cols="1,5",options="header",]
+|====
+|*ID* a|
+
+*Requirement*
+
+
+a|
+
+tbr58-061
+
+
+ a|
+
+A Catalogue Response must have an id, an issue date and optionally an issue time.
+
+
+a|
+
+tbr58-062
+
+
+ a|
+
+A Catalogue Response must refer to the id of the catalogue transaction it is responding to.
+
+
+a|
+
+tbr58-053
+
+
+ a|
+
+In the case of rejection, the reason for the rejection has to be specified.
+The
+
+Catalogue Receiver can reject a transaction if it does not conform to the agreement under which the catalogue is delivered.
+By proving the information about the rejection, the Catalogue Provider will be enabled to correct the catalogue.
+
+
+a|
+
+tbr58-056
+
+
+ a|
+
+The issuer of the response has to be specified.
+This is the Catalogue Receiver.
+To
+
+check, if the response comes from the correct Catalogue Receiver.
+
+
+a|
+
+tbr58-057
+
+
+ a|
+
+The receiver of the response has to be specified.
+The receiver is the Catalogue
+
+Provider.
+To check, if the response was sent to the correct Catalogue Provider.
+
+
+a|
+
+tbr58-060
+
+
+ a|
+
+The Catalogue Response may contain textual notes that may be used to make
+
+any comments or instructions relevant to the response.
+
+
+|====

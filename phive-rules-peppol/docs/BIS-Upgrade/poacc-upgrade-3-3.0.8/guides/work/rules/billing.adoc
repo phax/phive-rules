@@ -1,0 +1,34 @@
+
+= Rules to consider from PEPPOL BIS Billing 3.0
+
+== From EN16931
+
+* Party name is mandatory for all parties. Note that for Buyer and Seller, the Legal entity name is considered the full name.
+** This can be achiecved by an automatic rule
+* For parties where there is a postal address, the address is mandatory
+** This can be achiecved by an automatic rule
+* Country code is mandatory within an address
+** This can be achiecved by an automatic rule
+* VAT Identifiers must be prefixed with the alpha2 country code
+* EndpointID must have scheme Identifier
+** This can be achiecved by an automatic rule
+* Item name is mandatory
+** This can be achiecved by an automatic rule
+* Price can not be negative (both net and gross price)
+* Item standard identifier must have schemeID
+** This can be achiecved by an automatic rule
+* Item classification identifier must have schemeID
+** This can be achiecved by an automatic rule
+* All amounts (except price) must have max 2 decimals
+* VAT rules
+
+
+== From PEPPOL BIS Billing
+
+* EndpointIDs are mandatory
+** This can be achiecved by an automatic rule
+* Charge on price level is not allowed.
+* Calculation verified inside the Allowance class
+** PEPPOL-EN16931-R040 - Allowance/charge amount must equal base amount * percentage/100 if base amount and percentage exists
+* Calculation of line amount
+** PEPPOL-EN16931-R120 - Invoice line net amount MUST equal (Invoiced quantity * (Item net price/item price base quantity) + Invoice line charge amount - Invoice line allowance amount

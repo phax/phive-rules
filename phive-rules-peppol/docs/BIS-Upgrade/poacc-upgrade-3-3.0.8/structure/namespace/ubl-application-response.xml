@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Namespace xmlns="urn:fdc:difi.no:2017:vefa:structure:Namespace-1">
+    <Identifier prefix="ubl">urn:oasis:names:specification:ubl:schema:xsd:ApplicationResponse-2</Identifier>
+    <Version>2.2</Version>
+    <Include prefix="cac">urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2</Include>
+    <Include prefix="cbc">urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2</Include>
+    <Include prefix="ext">urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2</Include>
+    <Element name="ApplicationResponse">
+        <Ref card="0..1">ext:UBLExtensions</Ref>
+        <Ref card="0..1">cbc:UBLVersionID</Ref>
+        <Ref card="0..1">cbc:CustomizationID</Ref>
+        <Ref card="0..1">cbc:ProfileID</Ref>
+        <Ref card="0..1">cbc:ProfileExecutionID</Ref>
+        <Ref card="1..1">cbc:ID</Ref>
+        <Ref card="0..1">cbc:UUID</Ref>
+        <Ref card="1..1">cbc:IssueDate</Ref>
+        <Ref card="0..1">cbc:IssueTime</Ref>
+        <Ref card="0..1">cbc:ResponseDate</Ref>
+        <Ref card="0..1">cbc:ResponseTime</Ref>
+        <Ref card="0..n">cbc:Note</Ref>
+        <Ref card="0..1">cbc:VersionID</Ref>
+        <Ref card="0..n">cac:Signature</Ref>
+        <Ref card="1..1">cac:SenderParty</Ref>
+        <Ref card="1..1">cac:ReceiverParty</Ref>
+        <Ref card="0..n">cac:DocumentResponse</Ref>
+    </Element>
+</Namespace>

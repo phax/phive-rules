@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testSet xmlns="http://difi.no/xsd/vefa/validator/1.0"
+	configuration="peppolbis-t110-base-3.0">
+	<assert>
+		<description>Verify total sum of line amounts is not negative, if total sum of line amounts is provided</description>
+		<scope>PEPPOL-T110-R006</scope>
+	</assert>
+	
+	<test>
+		<assert>
+			<description>No error when line extension amount is available and positive.</description>
+			<success>PEPPOL-T110-R006</success>
+		</assert>
+		<OrderResponse xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+			xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+			xmlns="urn:oasis:names:specification:ubl:schema:xsd:OrderResponse-2">
+
+			<cac:LegalMonetaryTotal>
+				<cbc:LineExtensionAmount>100</cbc:LineExtensionAmount>
+			</cac:LegalMonetaryTotal>
+
+		</OrderResponse>
+	</test>
+	<test>
+		<assert>
+			<description>No error when line extension amount is available and zero.</description>
+			<success>PEPPOL-T110-R006</success>
+		</assert>
+		<OrderResponse xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+			xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+			xmlns="urn:oasis:names:specification:ubl:schema:xsd:OrderResponse-2">
+
+			<cac:LegalMonetaryTotal>
+				<cbc:LineExtensionAmount>0</cbc:LineExtensionAmount>
+			</cac:LegalMonetaryTotal>
+
+		</OrderResponse>
+	</test>
+	<test>
+		<assert>
+			<description>No error when line extension amount is not available.</description>
+			<success>PEPPOL-T110-R006</success>
+		</assert>
+		<OrderResponse xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+			xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+			xmlns="urn:oasis:names:specification:ubl:schema:xsd:OrderResponse-2">
+
+			<cac:LegalMonetaryTotal>
+				<!-- <cbc:LineExtensionAmount>0</cbc:LineExtensionAmount> -->
+			</cac:LegalMonetaryTotal>
+
+		</OrderResponse>
+	</test>
+	<test>
+		<assert>
+			<description>Trigger error when line extension amount is available and negative.</description>
+			<error>PEPPOL-T110-R006</error>
+		</assert>
+		<OrderResponse xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+			xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+			xmlns="urn:oasis:names:specification:ubl:schema:xsd:OrderResponse-2">
+
+			<cac:LegalMonetaryTotal>
+				<cbc:LineExtensionAmount>-100</cbc:LineExtensionAmount>
+			</cac:LegalMonetaryTotal>
+
+		</OrderResponse>
+	</test>
+	
+</testSet>

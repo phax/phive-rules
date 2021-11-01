@@ -1,0 +1,34 @@
+[[code-policy]]
+= Code Policy
+
+Key information in an Invoice Response is the reporting of the status of the invoice.
+The objective of the status code is to provide the Seller with a clear indication of the status of the referenced invoice inside the Buyers process in a way that allows the Seller to clearly identify if an action is required on his behalf.
+The status code can be supplemented with a clarification or an action code or textual note that explains the status and assists the Seller in deciding on correct reaction.
+
+The codes in the Invoice Response are given in the following structure.
+
+====
+* Invoice Status (1..1) 'cac:DocumentResponse/Response/cbc:ResponseCode'
+** Clarification (0..n)
+*** Data (0..n)
+====
+
+Each Invoice Response must have one and only one status code.
+
+For each Invoice Response (status) there is the option of providing one or more clarification.
+
+For each clarification there is the option to provide data that the Buyer proposes as a correction.
+
+.Example
+====
+An invoice may have been put under query (status UQ), as clarification the code XYZ is given to indicate that there is an issue with the references in the invoice.
+As data the Invoice Response may state that the expected value for the Purchase Order reference in the invoice was PO123.
+====
+
+:leveloffset: +1
+
+include::status-codes.adoc[]
+
+include::clarification.adoc[]
+
+:leveloffset: -1

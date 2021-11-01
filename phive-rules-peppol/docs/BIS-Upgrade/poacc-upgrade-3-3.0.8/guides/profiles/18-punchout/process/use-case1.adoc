@@ -1,0 +1,34 @@
+[[use-case-1-punch-out-used-for-ordering]]
+= Use case 1 – Punch out used for ordering
+
+This use case describes when a buyer uses the Punch out to retrieve item information that he can use in his procurement systems for ordering.
+
+[cols="2s,6",options="header",]
+|====
+|Use Case number
+|1
+
+|Use Case Name
+|Punch Out used for ordering
+
+|Use Case Description
+|The customer/buyer is working in the in-house procurement system, selects a seller that has a Punch Out Catalogue, and clicks to see that seller’s products.The procurement system then automatically sends a login request to the seller’s website, and the procurement system opens the remote website.
+|Parties involved
+|Buyer +
+Seller
+|Assumptions
+|The Seller has a website that allows the customer/buyer to automatically log into from his purchasing system.
+The seller’s website shows what items are contracted.
+
+|The flow
+|The buyer searches the website for items needed, and chooses to add some to the shopping cart. It is clearly visible which items are contracted. After selecting all required items, the buyer then chooses to check out. A transaction with information of the selected items is sent to the buyer’s procurement system, all information being real time, resulting in correct and up to date information on price, availability and lead-time.
+
+Seller’s website logs out the buyer, and the buyer is redirected back to the procurement system.
+The buyer then follows the normal order approval procedure, and places an order based on the items in the cart.
+
+|Result
+|The buyer has received information about the items that he selected into his cart in a message that is structured like a catalogue that can be imported into his purchasing system and used as basis for an order.
+
+|XML example file
+|See Appendix A for a sample file illustrating Use Case 1.
+|====

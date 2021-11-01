@@ -1,0 +1,25 @@
+[[process-and-typical-scenarios]]
+= Process and typical scenarios
+
+[[process-chart]]
+== Process chart
+
+.BPMN process covered by this BIS
+image::images/image5.png[width=600]
+
+Any further processing is outside scope of this BIS, and is in most cases done in the customers catalogue tool.
+
+
+:leveloffset: +1
+
+include::usecase1.adoc[]
+
+include::usecase2.adoc[]
+
+include::usecase3.adoc[]
+
+include::usecase4.adoc[]
+
+include::usecase5.adoc[]
+
+:leveloffset: -1

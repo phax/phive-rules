@@ -1,0 +1,13 @@
+
+[[order-agreement-business-rules]]
+= Order agreement business rules
+
+BIS business process rules are rules that apply to the business process as a whole. This includes describing requirements or commitments of the actors involved, describing relationships between two or more transactions within the process and/or describing the BIS relationship to factors outside of the BIS.
+
+[cols="1,4,1",options="header",]
+|====
+|Rule ID |Rule |Req ID
+|pbr42-R001 |The order agreement transaction includes only items selected and purchased by the buyer at prices and with allowances or charges presented to him during the purchase. |BR-42-005
+|pbr42-R002 |The method of exchanging the transaction must enable the buyer to ensure it's authentic. |BR-42-007
+|pbr42-R003 |Seller is obligated to supply the items according to the terms and quantity stated in the order agreement transaction. |BR-42-001
+|====

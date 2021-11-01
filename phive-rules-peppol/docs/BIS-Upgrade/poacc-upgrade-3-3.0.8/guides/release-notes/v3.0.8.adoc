@@ -1,0 +1,26 @@
+= Version 3.0.8
+[horizontal]
+Release date:: 2021-11-15
+
+== Changes to BIS document
+
+* BIS Order Agreement - editorial changes in the sub-numbering of a chapters for use cases. [POACC-401]
+* BIS Order Only - editorial update to section 6.10 regarding Tax total [POACC-413]
+* BIS Order Only, BIS Ordering, BIS Order Agreement - Editorial update to the description of tax usage on line level [POACC-440][POACC-441][POACC-442] 
+
+== Changes to syntax
+
+* Catalogue transaction - Clarified description of the business term Cataloge identifier. Changed wording "positive referencing" to "uniquely referencing" [POACC-406].
+* Order Response - Editorial update to cac:Party for SellerSupplierParty to be mandatory instead of optional [POACC-428]
+* Invoice Response - Removed trailing note left in description of DocumentReference/ID and DocumentReference/issueDate [POACC-447]
+* Duplicate tir identifiers in seller and buyer party legal information in order corrected by assignin new id's for Seller party legal information using tir01-p038 to tir01-p041. [POACC-414]
+
+== Changes to code lists and validation artefacts
+
+* Added rule (severity warning) for validation of format for Belgian organisation numbers (ICD:0208). Rule is planned to be changed to severity fatal in 2022 spring release. [POACC-408]
+
+* Added rule (severity warning) for validation of format for Italian identifiers (ICD:0201, 0210, 0211 and EAS 9906 and 9907). Rules are planned to be changed to severity fatal in 2022 spring release. [POACC-423]
+
+* Added transport handling unit (tir16-085) and packaging type (tir16-090) codes to align with CEF listing of codes. (O1, O2, O3, O4, O5, O6, O7, O8, O9, OG, OH, OI, OJ, OL, OM, ON, OP, OQ, OR, OS, OV, OW, OX, OY, OZ, P1, P3, P4, SX). [POACC-427]
+
+* Added UOM codes IUG, KWN, KWS, ODG, ODK, ODM, Q41, Q42, XZZ to aling with CEF listing of codes. [POACC-427]

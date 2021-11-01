@@ -1,0 +1,63 @@
+[[parties-and-roles]]
+= Parties and roles
+
+The table below gives the definitions of the parties and roles of the fulfillment process.
+
+[cols="2,4",options="header",]
+|====
+|Parties |Definition
+|*Customer* a|
+The customer is the legal person or organization who is in demand of a product or service.
+
+Examples of customer roles: buyer, consignee, debtor, contracting authority.
+
+|*Supplier* a|
+The supplier is the legal person or organization who provides a product or service.
+
+Examples of supplier roles: seller, despatch party, creditor, economic operator.
+
+|*Carrier* |The carrier handles the physical delivery/transportation of the despatched shipment.
+Used if a third party is handling the physical transport.
+|====
+[cols="2,4",options="header",]
+|====
+|Roles |Definition
+a|
+*Consignee*
+
+*(UBL:DeliveryCustomerParty)*
+
+ |The consignee is the person or organization to which the products will be shipped and who is taking possession.
+The role is carried out by the customer or on behalf of the customer.
+a|
+*Despatch Party*
+
+*(UBL:DespatchSupplierParty)*
+
+ |The Despatch Party is the person or organization who provides (despatch) the goods or services.
+The role is carried out by the supplier or on behalf of the supplier. (Despatch Party is sometimes known as the Consignor)
+a|
+*Buyer*
+
+*(UBL:BuyerCustomerParty)*
+
+ |The buyer is the legal person or organization who buys or purchases the goods or services.
+The role is carried out by the customer or on behalf of the customer.
+a|
+*Seller*
+
+*(UBL:SellerSupplierParty)*
+
+ |The seller is the legal person or organization who sells goods or services to the customer.
+The role is carried out by the supplier or on behalf of the supplier.
+a|
+*Originating party*
+
+*(UBL:OriginatorCustomerParty)*
+
+ |The party who will eventually receive and consume the goods and on whose behalf the buyer makes the purchase.
+|====
+
+The diagram below shows the roles in the fulfillment process.
+
+image::images/roles.png[image,width=649,height=260]

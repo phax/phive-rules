@@ -1,0 +1,12 @@
+[[business-requirements]]
+= Business requirements
+
+
+:leveloffset: +1
+
+include::processreq.adoc[]
+include::informationreq.adoc[]
+include::catalogueresponsereq.adoc[]
+include::openpeppolreq.adoc[]
+
+:leveloffset: -1

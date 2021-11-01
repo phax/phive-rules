@@ -1,0 +1,27 @@
+= Code list changes
+
+* All party identifiers from ISO 6523 ICD list.
+** ICD list to 0189 + 0192, this is not matching TC434 validation
+** Code 0092 and 0103 removed, as they are marked unused
+** Report mismatches to TC434?
+* Allowance and charge split in different types (5189 and 7161)
+** Code not used in other transactions - add elements?
+* Item Classification code = UNCL7143 - UNSPSC not in the list
+* Standard item identifier -ICD list -> full list allowed?
+* Mimecode is now a "merge" between TC434 and codes used in catalogue.
+
+Order agreement::
+** NameCode?
+** Contracted item - which element to use, ID or ActionCode? Code list?
+** Item property classification code - codelist?
+
+
+MLR::
+* The type of the document being referred to, expressed as a code. This refers to UNCL1001, but I assume we here want to reflect which document type the answer applies to? Should we apply a subset?
+* Subset of UNCL4343? Only AP and RE?
+
+Catalogue::
+* Why not use UNCL1225 for ActionCode?
+
+Catalogue reponse::
+* Subset of UNCL4343? Only AP and RE?

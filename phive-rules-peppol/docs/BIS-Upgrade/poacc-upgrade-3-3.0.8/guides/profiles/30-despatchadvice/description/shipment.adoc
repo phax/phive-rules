@@ -1,0 +1,20 @@
+[[shipment]]
+= Shipment
+
+Description of the actual shipment that contains the goods that are being despatched.
+
+[[shipment-id]]
+== Shipment ID
+
+In some uses of the Despath Advice, there is no unique identifier assigned to the shipment.
+However, the UBL syntax requires the Shipment ID.
+Consequently, to be able to use elements such as GrossWeightMeasure or CarrierParty, the Shipment/ID must be filled in.
+To cater for scenarios where no ID exist a dummy value must be applied.
+The dummy value must consist of the characters **NA**.
+
+Example:
+
+[source, xml, indent=0]
+----
+include::{snippet-dir}/snippet-30-1.xml[tags=shipment]
+----

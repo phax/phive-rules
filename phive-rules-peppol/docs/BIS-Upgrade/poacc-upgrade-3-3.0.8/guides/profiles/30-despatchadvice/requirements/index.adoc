@@ -1,0 +1,89 @@
+[[despatch-advice-transaction-business-requirements]]
+= Despatch Advice transaction business requirements
+
+
+.General requirements (the identifiers in the first column are referenced to from the detailed message structure)
+[cols="1h,5",options="header",]
+|====
+|ID |Requirement
+|tbr16-016 |The despatch advice must be identified with an identifier, with the issue date and possibly the issue time.
+|tbr16-001 |The despatch advice message is used by the supplier to indicate to the receiver, the goods to be delivered and how they are packaged.
+|tbr16-002 a|
+To support transportation of goods, a delivery is taken to be a number of items that are despatched as a single consignment to a single delivery address.
+
+* Each delivery must be accompanied by its own despatch advice
+* Each despatch advice relates to one delivery address
+* there may be multiple despatch advices to cover one purchase order
+
+|tbr16-003 a|
+The despatch advice may refer to an order.
+
+* Each despatch advice relates to one purchase order.
+
+|tbr16-011 |The despatch advice may state the reason for the chosen mode/means of transport.
+|tbr16-015 |The despatch advice may state the volume and weight of the consignment.
+|tbr16-017 |The despatch advice may contain a textual note.
+|====
+
+.Parties
+[cols="1h,5",options="header",]
+|====
+|ID |Requirement
+|tbr16-004 a|
+The despatch advice must identify the despatch party, who is responsible for the physical despatch.
+
+* The despatch party may act on behalf of the supplier
+* The receiver of goods may need to contact a person responsible for despatching the goods.
+
+|tbr16-005 a|
+The despatch advice must identify the consignee, who is responsible for receiving the goods.
+
+* The receiver may act on behalf of the customer.
+* The customer may need to be able to look up or verify the actual delivery address of the goods.
+The delivery address is where the despatched items have been shipped.
+
+|tbr16-006 a|
+The despatch advice may identify the Buyer, who is the commercially responsible party on whose behalf the goods are being received.
+
+* The buyer is identified providing at least a full name and a postal address
+* The buyer party information includes contact person that issuer or receiver can contact about status of delivery, like in-house routing from inventory or reception.
+
+|tbr16-012 |The despatch advice may include the delivery address.
+|tbr16-013 a|
+The despatch advice may identify the Seller, who is legally responsible for providing the goods and on whose behalf the goods are being sent.
+
+* The Seller is identified providing at least the full name and, the postal address and the VAT number
+* The Seller party information includes contact person that issuer or receiver can contact about status of despatch.
+
+|tbr16-014 a|
+If the physical transport is provided by a third party, the despatch advice may identify that carrier.
+
+* The carrier information may include the name of the driver.
+
+|====
+
+.Line Item
+[cols="1h,5",options="header",]
+|====
+|ID |Requirement
+|tbr16-007 a|
+Each despatch statement line should describe despatching of each order line.
+The line should provide reference to
+
+* order line,
+* delivered quantity, outstanding quantity (to be delivered on a different shipment).
+* The line should provide for line note.
+
+|tbr16-008 a|
+Each line should identify the product shipped so the receiver can verify its content.
+This may include
+
+* Item name,
+* Seller id
+* Item standard id
+* Dates, such as best before date, manufacturing date, etc.
+
+|tbr16-009 |Each line should identify hazardous items that may require special handing during transport, receiving of goods and storage.
+|tbr16-010 |Each line may identify the transport handling unit for each item delivered.
+The handling units may have external marking or bar codes that - during reception of goods - allow tracking and locating package units that the goods are placed in.
+|====

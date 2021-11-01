@@ -1,0 +1,28 @@
+= Introduction
+
+This document in its current version, aims at providing guidelines and methodology on how to use AsciiDoc to document the PEPPOL Business Interoperability Specifications (BIS hereon after), and Asciidoctor to publish the specifications.
+
+This document is not intended to be a tutorial in the AsciiDoc syntax, for that we point to official AsciiDoc manuals and other relative documents found in the chapter <<suggested-reading>>.
+
+AsciiDoc is a lightweight markup language, and the main benefits of using a lightweight markup language is
+
+* Ease of writing
+* Decoupling of content and presentation
+* Source control
+* Portability
+
+Asciidoctor is a fast text processor and publishing toolchain for converting AsciiDoc content to HTML5, EPUB3, PDF, DocBook 5 (or 4.5) slidedecks and other formats
+
+
+[[suggested-reading]]
+== Suggested reading
+
+The main {documentation} site provides several good links for further reading, particularly:
+
+* {user-manual}
+* {writers-guide}
+
+For more information on the difference between AsciiDoc and Asciidoctor, please see {what-is}.
+
+For conversion from MS Word to AsciiDoc, the following document will provide you with the needed details:
+{converting-word}

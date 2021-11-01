@@ -1,0 +1,42 @@
+[[use-case-2-catalogue-update-and-reject-from-the-receiver]]
+= Use case 2 – Catalogue update and reject from the receiver
+
+This is an *Update* of the catalogue based on Use case 1.
+
+[cols="2,4",options="header",]
+|====
+|*Use Case No* |2
+|*Use Case Name* |Catalogue update from the provider and reject from the receiver.
+|*Use Case Description* a|
+The provider sends a catalogue update to the receiver.
+
+The catalogue contains changes compared to the previous catalogue.
+
+After receiving the catalogue, the buyer rejects the catalogue using e-mail or other manual method (call, fax) to inform the provider.
+
+|*Parties involved* a|
+Catalogue Provider (same legal entity as the Supplier/Seller in this use case).
+
+Catalogue Receiver (same legal entity as the Customer/Buyer in this use case).
+
+|*Assumptions* a|
+1.  The Seller has previously sent a catalogue to the Buyer.
+2.  The Seller wants to update the catalogue.
+a.  One article is updated (GTIN is added).
+b.  One new article is added.
+c.  One article is deleted.
+
+|*The flow* a|
+1.  The Seller identifies the items to be in the Catalogue update.
+2.  The Provider creates a Catalogue message.
+3.  The Provider sends the message to the Receiver.
+4.  The Buyer verifies the content in the message and considers whether to accept or reject the catalogue.
+5.  The Buyer manually rejects the Catalogue using e-mail, call or fax.
+6.  The Seller manually handles the rejection.
+
+|*Result* a|
+1.  The Buyer did not insert the changes in the ERP-system.
+2.  The Seller needs to correct the information in his ERP-system.
+
+|*XML example file* |See {examples-zip} for sample Catalogue illustrating Use Case 2.
+|====

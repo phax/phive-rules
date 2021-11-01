@@ -1,0 +1,64 @@
+
+= Order response rules
+
+[cols="1s,4,1",options="header"]
+|====
+|RuleID
+|Rule
+|Error level
+|BII2-T76-R001
+|A order response MUST have a customization identifier
+|fatal
+
+|BII2-T76-R002
+|A order response MUST have a profile identifier
+|fatal
+
+|BII2-T76-R003
+|Each order response line MUST have a document line identifier that is unique within the order response
+|fatal
+
+|BII2-T76-R004
+|A order response MUST have a document issue date
+|fatal
+
+|BII2-T76-R006
+|A order response MUST have a document identifier
+|fatal
+|BII2-T76-R021
+|A order response MUST have the buyer party name or a buyer party identifier
+|fatal
+
+|BII2-T76-R022
+|A order response MUST have the seller party name or a seller party identifier
+|fatal
+
+|BII2-T76-R032
+|A order response MUST have a reference to an order
+|fatal
+
+|BII2-T76-R033
+|A order response MUST have a response code
+|fatal
+
+|BII2-T76-R034
+|An order response line MUST contain a reference to its corresponding order line.
+|fatal
+
+|EUGEN-T76-R001
+|An endpoint identifier MUST have a scheme identifier attribute
+|fatal
+
+|EUGEN-T76-R002
+|A party identifier MUST have a scheme identifier attribute
+|fatal
+
+|EUGEN-T76-R003
+|A response code MUST have a list identifier attribute “UNCL1225”
+|fatal
+
+|EUGEN-T76-R004
+|A line response status code MUST have a list identifier attribute “UNCL1229”
+|fatal
+
+|====

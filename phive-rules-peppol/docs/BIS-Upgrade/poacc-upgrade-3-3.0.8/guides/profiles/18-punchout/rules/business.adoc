@@ -1,0 +1,25 @@
+[[punch-out-business-rules]]
+= Punch Out business rules
+
+The following rules apply to the implementation and general use of the Punch Out BIS.
+
+[cols="1,5",options="header"]
+|====
+|RuleID |Rule
+|BII3-P18-R001 |The shopping cart transaction includes only items added to cart by the buyer.
+|BII3-P18-R002 |The method of exchanging the transaction must enable the buyer to ensure it's authentic.
+|BII3-P18-R003 |Seller is obligated to supply the items according to the terms and quantity stated in the shopping cart transaction.
+|====
+
+[[punch-out-peppol-business-rules]]
+= Punch Out PEPPOL business rules
+
+The following additional rules apply to the implementation and general use of the Punch Out BIS in the PEPPOL environment.
+
+[cols="1,5",options="header"]
+|====
+|RuleID |Rule
+|OP-P18-R001 |Information for configured products supersedes information for its component items.
+|OP-P18-R002 |Cart lines that contain additional item property name as ConfiguredProductIdentifier may not be ordered individually.
+|OP-18-R003 |IssueDate may not backdated.
+|====

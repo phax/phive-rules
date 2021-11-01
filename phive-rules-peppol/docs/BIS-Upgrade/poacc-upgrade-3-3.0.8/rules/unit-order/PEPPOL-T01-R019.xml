@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testSet xmlns="http://difi.no/xsd/vefa/validator/1.0"
+	configuration="peppolbis-t01-base-3.0">
+	<assert>
+		<description>Verify that item net price equals (Gross price - Allowance amount), when gross
+			price is provided</description>
+		<scope>PEPPOL-T01-R019</scope>
+	</assert>
+	<test>
+		<assert>
+			<success>PEPPOL-T01-R019</success>
+		</assert>
+		<Order xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+			xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+			xmlns="urn:oasis:names:specification:ubl:schema:xsd:Order-2">
+
+			<cac:OrderLine>
+				<cac:LineItem>
+					<cac:Price>
+						<cbc:PriceAmount>100.00</cbc:PriceAmount>
+						<cac:AllowanceCharge>
+							<cbc:ChargeIndicator>false</cbc:ChargeIndicator>
+							<cbc:Amount currencyID="NOK">15</cbc:Amount>
+							<cbc:BaseAmount currencyID="NOK">115.0000</cbc:BaseAmount>
+						</cac:AllowanceCharge>
+					</cac:Price>
+				</cac:LineItem>
+			</cac:OrderLine>
+
+		</Order>
+	</test>
+	<test>
+		<assert>
+			<success>PEPPOL-T01-R019</success>
+		</assert>
+		<Order xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+			xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+			xmlns="urn:oasis:names:specification:ubl:schema:xsd:Order-2">
+
+			<cac:OrderLine>
+				<cac:LineItem>
+					<cac:Price>
+						<cbc:PriceAmount>100.00</cbc:PriceAmount>
+						<cac:AllowanceCharge>
+							<cbc:ChargeIndicator>false</cbc:ChargeIndicator>
+							<cbc:Amount currencyID="NOK">50</cbc:Amount>
+							<!--	<cbc:BaseAmount currencyID="NOK">115.0000</cbc:BaseAmount>-->
+						</cac:AllowanceCharge>
+					</cac:Price>
+				</cac:LineItem>
+			</cac:OrderLine>
+
+		</Order>
+	</test>
+
+	<test>
+		<assert>
+			<error>PEPPOL-T01-R019</error>
+		</assert>
+		<Order xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+			xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+			xmlns="urn:oasis:names:specification:ubl:schema:xsd:Order-2">
+
+			<cac:OrderLine>
+				<cac:LineItem>
+					<cac:Price>
+						<cbc:PriceAmount>100.00</cbc:PriceAmount>
+						<cac:AllowanceCharge>
+							<cbc:ChargeIndicator>false</cbc:ChargeIndicator>
+							<cbc:Amount currencyID="NOK">15</cbc:Amount>
+							<cbc:BaseAmount currencyID="NOK">150</cbc:BaseAmount>
+						</cac:AllowanceCharge>
+					</cac:Price>
+				</cac:LineItem>
+			</cac:OrderLine>
+
+		</Order>
+	</test>
+
+</testSet>

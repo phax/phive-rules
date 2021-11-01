@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeList xmlns="urn:fdc:difi.no:2017:vefa:structure:CodeList-1">
+
+    <Title>Status Clarification Action (OpenPEPPOL)</Title>
+    <Identifier>OPStatusAction</Identifier>
+    <Version>1.0</Version>
+    <Agency>OpenPEPPOL</Agency>
+
+
+    <Code>
+        <Id>NOA</Id>
+        <Name>No action required</Name>
+        <Description>No action required</Description>
+    </Code>
+    <Code>
+        <Id>PIN</Id>
+        <Name>Provide information</Name>
+        <Description>Missing information requested without re-issuing invoice</Description>
+    </Code>
+    <Code>
+        <Id>NIN</Id>
+        <Name>Issue new invoice</Name>
+        <Description>Request to re-issue a corrected invoice</Description>
+    </Code>
+    <Code>
+        <Id>CNF</Id>
+        <Name>Credit fully</Name>
+        <Description>Request to fully cancel the referenced invoice with a credit note</Description>
+    </Code>
+    <Code>
+        <Id>CNP</Id>
+        <Name>Credit partially</Name>
+        <Description>Request to issue partial credit note for corrections only</Description>
+    </Code>
+    <Code>
+        <Id>CNA</Id>
+        <Name>Credit the amount</Name>
+        <Description>Request to repay the amount paid on the invoice</Description>
+    </Code>
+    <Code>
+        <Id>OTH</Id>
+        <Name>Other</Name>
+        <Description>Requested action is not defined by code</Description>
+    </Code>
+
+</CodeList>

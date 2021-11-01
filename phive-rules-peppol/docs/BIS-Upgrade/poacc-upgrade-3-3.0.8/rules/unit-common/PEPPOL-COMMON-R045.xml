@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testSet xmlns="http://difi.no/xsd/vefa/validator/1.0" configuration="peppolbis-t01-base-3.0">
+	<assert>
+		<description>ICD (0210) provided.</description>
+		<scope>PEPPOL-COMMON-R045</scope>
+	</assert>
+	
+	<test>
+		<assert>
+			<success>PEPPOL-COMMON-R045</success>
+		</assert>
+		<Order xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+			xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+			xmlns="urn:oasis:names:specification:ubl:schema:xsd:Order-2">
+			<cac:BuyerCustomerParty>
+				<cac:Party>
+					<cac:PartyLegalEntity>
+						<cbc:RegistrationName>Duvel</cbc:RegistrationName>
+						<cbc:CompanyID schemeID="0210">97735020584</cbc:CompanyID>
+					</cac:PartyLegalEntity>
+				</cac:Party>
+			</cac:BuyerCustomerParty>
+		</Order>
+	</test>
+    
+	    <test>
+		<assert>
+			<success>PEPPOL-COMMON-R045</success>
+		</assert>
+		<Order xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+			xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+			xmlns="urn:oasis:names:specification:ubl:schema:xsd:Order-2">
+			<cac:BuyerCustomerParty>
+				<cac:Party>
+					<cbc:EndpointID schemeID="0210">97735020584</cbc:EndpointID>
+				</cac:Party>
+			</cac:BuyerCustomerParty>
+		</Order>
+	</test>
+	
+
+    
+   
+    <test>
+		<assert>
+			<warning>PEPPOL-COMMON-R045</warning>
+		</assert>
+		<Order xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+			xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+			xmlns="urn:oasis:names:specification:ubl:schema:xsd:Order-2">
+			<cac:BuyerCustomerParty>
+				<cac:Party>
+					<cac:PartyLegalEntity>
+						<cbc:RegistrationName>Duvel</cbc:RegistrationName>
+						<cbc:CompanyID schemeID="0210">9773502058497735020584</cbc:CompanyID> <!-- too long -->
+					</cac:PartyLegalEntity>
+				</cac:Party>
+			</cac:BuyerCustomerParty>
+		</Order>
+	</test>
+    
+
+    <test>
+		<assert>
+			<warning>PEPPOL-COMMON-R045</warning>
+		</assert>
+		<Order xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+			xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+			xmlns="urn:oasis:names:specification:ubl:schema:xsd:Order-2">
+			<cac:BuyerCustomerParty>
+				<cac:Party>
+					<cac:PartyLegalEntity>
+						<cbc:RegistrationName>Duvel</cbc:RegistrationName>
+						<cbc:CompanyID schemeID="0210">ABC</cbc:CompanyID> <!-- Not numeric -->
+					</cac:PartyLegalEntity>
+				</cac:Party>
+			</cac:BuyerCustomerParty>
+		</Order>
+	</test>
+    
+    
+	
+</testSet>

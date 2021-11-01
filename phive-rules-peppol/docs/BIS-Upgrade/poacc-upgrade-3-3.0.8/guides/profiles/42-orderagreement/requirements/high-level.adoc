@@ -1,0 +1,59 @@
+
+= High level requirements
+
+Based on the <<goals-and-objectives>> of the BII profile on which this BIS is based the following set of High level requirements are found. Each requirement is connected to a goal.
+
+[cols="1s,4,1",options="header",]
+|====
+|Req. ID
+|Requirement statement
+|Ref. to goal
+
+|BR-42-001
+|The order agreement transaction should be regarded as the seller's accepted order, and the seller is thereby obligated to supply the items/services according to the terms identified in the order agreement transaction.
+|G-42-004, G-42-005, G-42-008, G-42-012
+
+|BR-42-002
+|The order agreement transaction must contain up to date information.
+|G-42-001
+
+|BR-42-003
+|The order agreement transaction must contain sufficient information to enable the buyer to create a “copy of an order” based on the information. Examples being quantity, price, units, seller’s item identification and references the buyer may need to automatically match the electronic invoice.
+|G-42-004, G-42-005, G-42-008
+
+|BR-42-004
+|The order agreement transaction includes only items purchased by the buyer.
+|G-42-006, G-42-011
+
+|BR-42-005
+|The transaction must contain information to identify configured items.
+|G-42-005
+
+|BR-42-006
+|It must be possible to identify the transaction, and ensure it is authentic.
+|G-42-009
+
+|BR-42-007
+|It should be possible to reference the order agreement transaction to a single framework agreement, DPS agreement or any other contract or agreement.
+|G-42-009, G-42-013
+
+|BR-42-008
+|The parties exchanging the order agreement must be specified.
+|G-42-008
+
+|BR-42-009
+|The buyer should be able to make an order without having the seller’s catalogue present in the purchasing system.
+|G-42-002, G-42-003, G-42-007
+
+|BR-42-010
+|The order agreement transaction must contain information to improve the procurement process.
+|G-42-009
+
+|BR-42-011
+|The order agreement transaction must contain information to assure invoice order matching.
+|G-42-009, G-42-011, G-42-012
+
+|BR-42-012
+|The order agreement transaction should include information about item labels and certificates.
+|G-42-016
+|====

@@ -1,0 +1,14 @@
+= Business rules
+
+:leveloffset: +1
+
+include::../{transaction-path}/rules/order.adoc[]
+
+
+= Codelist rules
+
+:leveloffset: +1
+
+include::../{transaction-path}/rules/codelist.adoc[]
+
+:leveloffset: -2

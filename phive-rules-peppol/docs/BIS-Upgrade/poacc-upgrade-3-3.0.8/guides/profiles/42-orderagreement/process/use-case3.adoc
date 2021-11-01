@@ -1,0 +1,24 @@
+[[use-case-3-telephone-and-e-mail-is-used-to-order-items]]
+= Use case 3 – Telephone and e-mail is used to order items
+
+[cols="1h,5",]
+|====
+|Use Case number |3
+|Use Case Name |Telephone or e-mail order
+|Use Case Description |Buyer makes a purchase by calling the seller by telephone or by sending an email.
+|Parties involved
+a| * Buyer
+* Seller
+|Assumptions |The buyer has an account with the seller with necessary details to send him an order agreement.
+|The flow a|
+The buyer is working in his purchasing system, and need to by printers and selects a seller of printers. The seller’s items are not in the purchasing system and the seller doesn't offer a web shop. The buyer calls the seller on the telephone.
+
+The buyer orders the printer directly during the phone call, and also informs the seller what reference to use.
+
+An order agreement transaction with item information and price of the selected items is sent from the seller to the buyer’s purchasing system. The order agreement is recorded in the buyer’s purchasing system
+
+After the delivery of the goods, the seller sends an invoice which matches the order and the delivery, but this is outside of this BIS.
+
+|Result |The buyer and the seller have reached an agreement. An order has been placed and the buyer has received a structured message with the order details. If the invoice has an order reference, the invoice can be matched automatically.
+|XML example file |See Appendix A for a sample file illustrating Use Case 3.
+|====

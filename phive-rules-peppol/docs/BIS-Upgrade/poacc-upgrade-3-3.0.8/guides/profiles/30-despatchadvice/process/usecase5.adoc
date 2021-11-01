@@ -1,0 +1,78 @@
+[[use-case-5-advanced-despatch-demonstrating-most-of-the-business-terms]]
+== Use case 5 – Advanced Despatch demonstrating most of the business terms
+
+This use case is a relatively more complex use of the Despatch Advice which will demonstrate the use of most of the business terms available in the electronic Despatch Advice message.
+
+[cols="1,5",options="header",]
+|====
+|*Use Case number* |5
+|*Use Case Name* |Advanced Despatch Advice demonstrating most of the business terms
+|*Use Case Description* a|
+This use case is a very complex use of the Despatch Advice which will demonstrate the use of all of the existing business terms available in the electronic Despatch advice message.
+
+The use case will also demonstrate different use of:
+
+* Party identification
+* Item identification
+* Packages
+
+|*Parties involved* a|
+Buyer (In UBL: BuyerCustomerParty)
+
+Seller (In UBL: SellerSupplierParty)
+
+Despatch party (In UBL: DespatchSupplierParty) (Different legal entity than the Seller in this use case)
+
+Consignee party (In UBL: DeliveryCustomerParty) (Different legal entity than the Buyer in this use case) Originating party (In UBL: OriginatorCustomerParty)
+
+|*Assumptions* a|
+.  The Seller party and Despatch party are different legal entities
+.  The Buyer party and Consignee party are different legal entities
+.  The Seller has received one order from the Buyer
+..  5 order lines (5 items)
+..  Order line 4 is not delivered in this despatch
+..  The second Despatch line contains a delivery 6 of 10 ordered items.
+The remaining 4 items will be delivered in another despatch.
+..  The third Despatch line is weight based
+..  Order to be delivered at one delivery address
+..  At the same time.
+..  Despatch line 4 contain hazardous items
+.  The Seller has accepted the order without changes
+.  The Despatch party is responsible for the delivery and is using a carrier for the physical transportation
+.  The items in the first and second line are in the same transport handling unit
+.  The items in line three and four are in two separate transport handling units
+
+image:images/image10.png[image,width=143,height=94]
+
+|*The flow* a|
+.  The Seller collects the ordered items
+.  The Seller loads the items into transport handling units (Boxes, crates, pallets etc.)
+.  The Despatch party identifies all shipping details
+.  The carrier picks up the goods for transport
+.  The Despatch party creates the Despatch advice message
+.  The Despatch party sends the Despatch advice message to the Consignee
+.  The Consignee can use the tracking ID to track the shipment
+.  The Consignee party receives the Despatch advice message
+.  The carrier delivers the goods to the Consignee
+.  The Consignee party uses the content in the Despatch advice message for registration receipt.
+..  Four Despatch lines, four items.
+..  Handling units are identified using SSCC identifiers
+.  The Consignee party uses the content in the Despatch advice message for storing- and handling.
+..  Handling unit with Hazardous items are identified
+..  Items can be stored by best before date, by batch and serial number
+..  Items can be handled according to the weight of the handling unit
+
+|*Result* a|
+.  The Despatch advice message helped the Consignee party to prepare receipt
+..  At right time
+..  At the right place (address)
+..  With appropriate tools and storage facilities
+..  In a secure manner
+.  The Despatch advice message helped the Consignee party in the process of register receipt to identify the
+..  Order
+..  The order lines
+..  The transport handling units
+..  The articles
+..  The delivered quantity/weight
+
+|====

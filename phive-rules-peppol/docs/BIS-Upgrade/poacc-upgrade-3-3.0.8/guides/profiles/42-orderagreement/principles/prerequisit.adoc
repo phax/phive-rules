@@ -1,0 +1,6 @@
+= Prerequisites
+
+The following are prerequisites for this BIS:
+
+1.  A buyer has purchased goods or services from the seller by any means.
+2.  The seller has to be registered in the buyer system with information as contact information and identifiers used for other BIS transaction e.g. BIS order and invoice (GLN, Organization number…)

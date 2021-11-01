@@ -1,0 +1,39 @@
+[[parties-and-roles]]
+== Parties and roles
+
+[cols="2,4",options="header",]
+|====
+|Business partners |Description
+|Customer a|
+The customer is the legal person or organization who is in demand of a product or service.
+
+Examples of customer roles: buyer, consignee, debtor, contracting authority.
+
+|Supplier a|
+The supplier is the legal person or organization who provides a product or service.
+
+Examples of supplier roles: seller, consignor, creditor, economic operator.
+
+|Role/actor |Description
+|Catalogue Provider a|
+Represents a party sending catalogues to receivers, being the supplier or on behalf of the supplier.
+
+The Catalogue Provider has to ensure that the latest catalogue is sent to the receiver.
+
+|Catalogue Receiver a|
+Represents a party receiving catalogues and sending the request how and what parts of the catalogues have to be updated in an update process.
+
+|Buyer a|
+The buyer is the legal person or organization acting on behalf of the customer and who buys or purchases the goods or services.
+
+|Seller a|
+The seller is the legal person or organization acting on behalf of the supplier and who sells goods or services to the customer.
+
+|====
+
+The following diagram links the business processes to the roles performed by the Business Partners:
+
+
+include::../{catalogue-path}/roles/roles.adoc[]
+
+include::../{response-path}/roles/roles.adoc[]

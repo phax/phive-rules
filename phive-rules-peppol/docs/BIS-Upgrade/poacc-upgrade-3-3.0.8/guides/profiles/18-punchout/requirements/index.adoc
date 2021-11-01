@@ -1,0 +1,56 @@
+[[transaction-business-requirements]]
+= Transaction business requirements
+
+Based on the goals and scope of this BIS, the following set of high level requirements are found.
+Each requirement is connected to a goal.
+
+[cols="1s,4,1",options="header"]
+.High level requirements
+|====
+|Req. ID
+|Requirement statement
+|Ref. to goal
+
+|BR-18-001
+|The shopping cart transaction should be regarded as the seller's standing offer, and the Seller is thereby obligated to supply the items according to the terms identified in the shopping cart transaction.
+|G-18-002
+
+|BR-18-002
+|The shopping cart transaction must contain real time information
+|G-18-002
+
+|BR-18-003
+|The shopping cart transaction must contain sufficient information to enable the buyer to place an order based on the information. Examples being quantity, price, units and sellers item identification.
+|G-18-004 & +
+G-18-006
+
+|BR-18-004
+|It must be possible to compare information in the shopping cart transaction with that of a static catalogue.
+|G-18-001
+
+|BR-18-005
+|The shopping cart transaction includes only items added to cart by the buyer.
+|G-18-003
+
+|BR-18-006
+|The transaction must contain information to identify configured items
+|G-18-005
+
+|BR-18-007
+|It must be possible to identify the transaction, and ensure it is authentic.
+|G-18-002
+
+|BR-18-008
+|It should be possible to reference the shopping cart transaction to a single framework agreement, DPS agreement or any other contract or agreement.
+|G-18-001
+
+|BR-18-009
+|The party exchanging the shopping cart must be specified.
+|G-18-008
+|====
+
+:leveloffset: +1
+
+include::peppol-requirements.adoc[]
+
+:leveloffset: -1

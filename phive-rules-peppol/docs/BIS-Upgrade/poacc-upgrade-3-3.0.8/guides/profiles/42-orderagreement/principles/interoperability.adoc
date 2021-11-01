@@ -1,0 +1,44 @@
+[[interoperability]]
+= Interoperability
+
+This PEPPOL BIS structure is based on the European Interoperability Framework 2.0. PEPPOL BIS applies the Framework as follows:
+
+.  Legal Interoperability
+
+* Legal:
+** In implementations supporting public sector buyers, the use of the Punch out BIS has to be monitored in order to secure that the buyers act in line with EU procurement directives.
+
+. Organizational interoperability
+
+* Organization (Organization/Business):
+** This PEPPOL BIS supports B2B and B2G.
+** This PEPPOL BIS supports cross border, regional and domestic ordering in EU and EEA.
+** This PEPPOL BIS can function as a component in an EDI agreement within a trading community.
+** This PEPPOL BIS supports linking of business processes within the sending and receiving organization.
+The process of order transmission in electronic form can be linked into internal processes of both sender and receiver, which may differ for various reasons.
+
+* Organization (Process):
+** This PEPPOL BIS supports a set of “common business processes” that is assumed to be supported by most enterprises whether public or private. These are processes that are used widely or understood as being relevant for most companies.
+
+. Semantic interoperability
+* Semantic:
+The set of information elements is assumed to be sufficient to support organizational business and processing requirements stated above.
+
+
+** A CORE Order Agreement cart message:
+*** Data model, a set of elements that the receiver MUST be able to process.
+*** Business rules, a set of business rules that ensure a common way of processing the information elements.
+The rules are stated in a way that allows for automated validation of document instances.
+Issuers and receivers can verify that the exchanged document conformes to the rules of this BIS. +
+PEPPOL adds business rules on top of the data model to clarify certain design choices left open by the {cenbii}.
+These choices are intended to lower the implementation threshold by limiting options for implementers and thereby increase interoperability of PEPPOL punch out transactions.
+
+
+.  Technical interoperability
+* Technical Interaction (Process and semantic implementation):
+** Binding to OASIS UBL 2.1, see {ubl}
+** ISO/IEC 19757-3 Schematron, for automation of document validation, see {schematron}
+** XSLT Stylesheet for presentation of content, see [XSLT]
+
+* Technical Interaction (eSignature Validation):
+** Not mandatory in this PEPPOL BIS. Not supported.

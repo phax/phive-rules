@@ -1,0 +1,40 @@
+[[sellers-conditions]]
+= Sellers conditions
+
+The shopping cart allows the seller to set conditions on how the buyer may order.
+
+The seller may set a limit of the validity time for the information in the shopping cart.
+A shopping cart is valid from the time it is issued until the time stated in the validity period.
+That time may not be before the time when the cart is issued.
+If only validity end date is given the cart is valid until end of that day in the sellers time zone.
+The seller may also set validity time for individual lines.
+
+
+.Example of validity end date and time
+[source, xml, indent=0]
+----
+include::{snippet-dir}/snippet-18-1.xml[tags=validity]
+----
+
+The seller may set the condition that the offer made in the shopping cart is only valid if all items in the cart are ordered.
+This means that the buyer may not select only certain items or change the quantities of the items listed in the cart.
+This is given by the complete cart indicator, using the element `cbc:ActionCode`.
+If the value of the indicator is "true" the buyer must either order all or none of the cart.
+The default value of the indicator is "false" meaning that if the element is not included in the message the buyer may order part of the cart.
+
+.Example of complete cart indicator
+[source, xml, indent=0]
+----
+include::{snippet-dir}/snippet-18-1.xml[tags=actioncode]
+----
+
+The seller may reference a contract that governs the offer made in the shopping cart.
+The terms and conditions of a referenced contract supersedes the information given in individual shopping carts.
+
+.Example of a referenced contract
+[source, xml, indent=0]
+----
+include::{snippet-dir}/snippet-18-1.xml[tags=ref-contract]
+----
+
+Further information on contracts and reference to contract on line can be found in <<contract-reference>>

@@ -1,0 +1,29 @@
+[[code-lists-business-rules]]
+= Code lists business rules
+
+[cols="1s,4,1",options="header"]
+|====
+|RuleID
+|Rule
+|Error level
+
+|CL-071-R001
+|A document type code MUST be coded using UNCL 1001 list BII2 subset
+|Fatal
+
+|CL-071-R002
+|A Response Code MUST be from the UNCL 4343 PEPPOL Subset code list
+|Fatal
+
+|OP-T71-R001
+|An Endpoint Identifier Scheme MUST be from the list of PEPPOL Party Identifiers described in the "PEPPOL Policy for using Identifiers".
+|Fatal
+
+|OP-T71-R002
+|An Party Identifier Scheme MUST be from the list of PEPPOL Party Identifiers described in the "PEPPOL Policy for using Identifiers".
+|Fatal
+
+|OP-071-R003
+|A message level response MUST specify the status reason code using the PEPPOL Status code list
+|Fatal
+|====

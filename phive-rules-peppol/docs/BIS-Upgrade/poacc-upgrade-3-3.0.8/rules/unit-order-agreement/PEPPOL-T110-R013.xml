@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testSet xmlns="http://difi.no/xsd/vefa/validator/1.0"
+	configuration="peppolbis-t110-base-3.0">
+	<assert>
+		<description>Verify Allowance/Charge amounts are not negative.</description>
+		<scope>PEPPOL-T110-R013</scope>
+	</assert>
+	
+	<test>
+		<assert>
+			<success>PEPPOL-T110-R013</success>
+		</assert>
+		<OrderResponse xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+			xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+			xmlns="urn:oasis:names:specification:ubl:schema:xsd:OrderResponse-2">
+			<cac:AllowanceCharge>
+				<cbc:Amount>25</cbc:Amount>
+			</cac:AllowanceCharge>
+		</OrderResponse>
+	</test>
+	<test>
+		<assert>
+			<success>PEPPOL-T110-R013</success>
+		</assert>
+		<OrderResponse xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+			xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+			xmlns="urn:oasis:names:specification:ubl:schema:xsd:OrderResponse-2">
+			<cac:AllowanceCharge>
+ 			</cac:AllowanceCharge>
+		</OrderResponse>
+	</test>
+	<test>
+		<assert>
+			<success>PEPPOL-T110-R013</success>
+		</assert>
+		<OrderResponse xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+			xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+			xmlns="urn:oasis:names:specification:ubl:schema:xsd:OrderResponse-2">
+			<cac:AllowanceCharge>
+				<cbc:Amount>-25</cbc:Amount>
+			</cac:AllowanceCharge>
+		</OrderResponse>
+	</test>
+</testSet>

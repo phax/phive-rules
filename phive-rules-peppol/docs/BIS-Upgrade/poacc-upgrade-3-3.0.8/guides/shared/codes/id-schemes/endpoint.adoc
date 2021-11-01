@@ -1,0 +1,18 @@
+
+
+= Electronic address identifier scheme identifier
+
+All electronic address identifiers (`cbc:EndpointID/@schemeID`) use the Electronic Address Scheme code list (EAS),
+maintained by CEF ({cef-codelists}).
+
+Valid values are found here: {codelist-EAS}.
+
+
+.Examples of usage in `cbc:EndpointID`
+[source,xml, indent="0"]
+----
+
+	<cbc:EndpointID schemeID="0184">DK87654321</cbc:EndpointID> <1>
+
+----
+<1> schemeID attribute is mandatory

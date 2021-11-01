@@ -1,0 +1,24 @@
+[[typical-use-cases]]
+= Typical use cases
+
+== Parties/Roles:
+
+In the use case descriptions below the following terms are used:
+
+[horizontal]
+BusinessDocumentSender:: Sender party in the role of sending a business document
+BusinessDocumentReceiver:: Receiving party in the role of receiving a business document
+MLRSender:: Sender party in the role of sending a MLR document
+MLRReceiver:: Receiver party in the role of receiving a MLR document
+
+NOTE: In the use cases the BusinessDocumentSender is the same physical party as the MLRReceiver and the BusinessDocumentReceiver is the same physical party as the MLRSender.
+
+:leveloffset: +1
+
+include::use-case1.adoc[]
+
+include::use-case2.adoc[]
+
+include::use-case3.adoc[]
+
+:leveloffset: -1

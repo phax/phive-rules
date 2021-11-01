@@ -1,0 +1,12 @@
+= Order type code
+
+[cols="1,4"]
+|===
+h| Qualifier
+| `UNCL1001` (listID)
+h| Document location
+| `cbc:OrderTypeCode`
+h| Source codelist
+a| Subset of {UNCL1001}. +
+Only valid code is 227 - Consignment order
+|===

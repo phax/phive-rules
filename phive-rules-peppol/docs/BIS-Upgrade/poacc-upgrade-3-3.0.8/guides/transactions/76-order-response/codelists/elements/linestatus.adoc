@@ -1,0 +1,36 @@
+= Line status code
+
+[cols="1,4"]
+|===
+h| Qualifier
+| `UNCL1229` (listID)
+h| Document location
+| `cbc:LineStatusCode`
+h| Source codelist
+a| Subset of {UNCL1229}.
+|===
+
+Valid values are listed in the table below:
+
+[cols="1,4", options="header"]
+.Code list
+|===
+| Code
+| Description
+
+| 1
+| Order line is Added.
+
+| 3
+| Order line is Changed.
+
+| 5
+|Order line is Accepted without amendments.
+
+| 7
+|Order line is Not accepted.
+
+| 42
+|Order line is Already delivered.
+
+|===

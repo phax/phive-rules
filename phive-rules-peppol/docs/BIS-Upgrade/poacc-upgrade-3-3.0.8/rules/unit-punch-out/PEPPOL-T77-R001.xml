@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testSet xmlns="http://difi.no/xsd/vefa/validator/1.0" configuration="peppolbis-t77-base-3.0">
+	<assert>
+		<description>Verify that validity period end date is equal to or later than the issue
+			date</description>
+		<scope>PEPPOL-T77-R001</scope>
+	</assert>
+
+	<test>
+		<assert>
+			<success>PEPPOL-T77-R001</success>
+		</assert>
+		<Catalogue
+			xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+			xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+			xmlns="urn:oasis:names:specification:ubl:schema:xsd:Catalogue-2">
+
+			<cbc:IssueDate>2016-08-01</cbc:IssueDate>
+
+			<cac:ValidityPeriod>
+				<cbc:EndDate>2016-08-31</cbc:EndDate>
+			</cac:ValidityPeriod>
+
+		</Catalogue>
+	</test>
+
+
+	<test>
+		<assert>
+			<success>PEPPOL-T77-R001</success>
+		</assert>
+		<Catalogue
+			xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+			xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+			xmlns="urn:oasis:names:specification:ubl:schema:xsd:Catalogue-2">
+
+			<cbc:IssueDate>2016-08-01</cbc:IssueDate>
+
+			<cac:ValidityPeriod>
+				<cbc:EndDate>2016-08-01</cbc:EndDate>
+			</cac:ValidityPeriod>
+
+		</Catalogue>
+	</test>
+
+	<test>
+		<assert>
+			<error>PEPPOL-T77-R001</error>
+		</assert>
+		<Catalogue
+			xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+			xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+			xmlns="urn:oasis:names:specification:ubl:schema:xsd:Catalogue-2">
+
+			<cbc:IssueDate>2018-08-01</cbc:IssueDate>
+
+			<cac:ValidityPeriod>
+				<cbc:EndDate>2018-07-01</cbc:EndDate>
+			</cac:ValidityPeriod>
+
+		</Catalogue>
+	</test>
+
+</testSet>

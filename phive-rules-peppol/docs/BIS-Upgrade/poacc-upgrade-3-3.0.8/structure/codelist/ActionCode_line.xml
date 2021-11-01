@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeList xmlns="urn:fdc:difi.no:2017:vefa:structure:CodeList-1">
+
+    <Title>Catalogue Action code, line level (openPEPPOL)</Title>
+    <Identifier>ActionCode_line</Identifier>
+    <Version>1.0</Version>
+    <Agency>OpenPEPPOL</Agency>
+    <Subset>OpenPEPPOL</Subset>
+
+    <Code>
+        <Id>Add</Id>
+        <Name>Addition</Name>
+        <Description>Used on catalogue level when a catalogue is sent for the first time to the
+            Catalogue Receiver referring to the contract in the header of the catalogue. On line
+            level this is used to indicate added items in the catalogue.</Description>
+    </Code>
+    <Code>
+        <Id>Update</Id>
+        <Name>Update</Name>
+        <Description>Updates a current catalogue/catalogue line.</Description>
+    </Code>
+    <Code>
+        <Id>Delete</Id>
+        <Name>Delete</Name>
+        <Description>Deletes the catalogue or catalogue line</Description>
+    </Code>
+
+</CodeList>

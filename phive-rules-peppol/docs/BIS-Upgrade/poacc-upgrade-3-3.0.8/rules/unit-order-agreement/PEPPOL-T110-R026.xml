@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testSet xmlns="http://difi.no/xsd/vefa/validator/1.0"
+	configuration="peppolbis-t110-base-3.0">
+	<assert>
+		<description>Verify that taxable category is the same in VAT breakdown as in line or allowance/charge</description>
+		<scope>PEPPOL-T110-R026</scope>
+	</assert>
+	<test id="1">
+		<assert>
+			
+			<success>PEPPOL-T110-R026</success>
+		</assert>
+		<OrderResponse xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+			xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+			xmlns="urn:oasis:names:specification:ubl:schema:xsd:OrderResponse-2">
+
+			<cac:TaxTotal>
+				<cac:TaxSubtotal>
+					<cac:TaxCategory>
+						<cbc:ID>S</cbc:ID>
+						<cbc:Percent>25</cbc:Percent>
+					</cac:TaxCategory>
+				</cac:TaxSubtotal>
+			</cac:TaxTotal>
+
+			<cac:OrderLine>
+				<cac:LineItem>
+				<cac:Item>
+					<cac:ClassifiedTaxCategory>
+						<cbc:ID>S</cbc:ID>
+						<cbc:Percent>25</cbc:Percent>
+					</cac:ClassifiedTaxCategory>
+				</cac:Item>
+				</cac:LineItem>
+			</cac:OrderLine>
+
+		</OrderResponse>
+	</test>
+	<test id="2">
+		<assert>
+			<success>PEPPOL-T110-R026</success>
+		</assert>
+		<OrderResponse xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+			xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+			xmlns="urn:oasis:names:specification:ubl:schema:xsd:OrderResponse-2">
+
+			<cac:TaxTotal>
+				<cac:TaxSubtotal>
+					<cac:TaxCategory>
+						<cbc:ID>S</cbc:ID>
+						<cbc:Percent>25</cbc:Percent>
+					</cac:TaxCategory>
+				</cac:TaxSubtotal>
+			</cac:TaxTotal>
+
+			<cac:OrderLine>
+				<cac:LineItem>
+				<cac:Item>
+					<cac:ClassifiedTaxCategory>
+						<cbc:ID>S</cbc:ID>
+						<cbc:Percent>25.00</cbc:Percent>
+					</cac:ClassifiedTaxCategory>
+				</cac:Item>
+				</cac:LineItem>
+			</cac:OrderLine>
+
+		</OrderResponse>
+	</test>
+
+	<test id="3">
+		<assert>
+			<error>PEPPOL-T110-R026</error>
+		</assert>
+		<OrderResponse xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+			xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+			xmlns="urn:oasis:names:specification:ubl:schema:xsd:OrderResponse-2">
+
+			<cac:TaxTotal>
+				<cac:TaxSubtotal>
+					<cac:TaxCategory>
+						<cbc:ID>S</cbc:ID>
+						<cbc:Percent>25</cbc:Percent>
+					</cac:TaxCategory>
+				</cac:TaxSubtotal>
+			</cac:TaxTotal>
+
+			<cac:OrderLine>
+				<cac:LineItem>
+				<cac:Item>
+					<cac:ClassifiedTaxCategory>
+						<cbc:ID>S</cbc:ID>
+						<cbc:Percent>24.99</cbc:Percent>
+					</cac:ClassifiedTaxCategory>
+				</cac:Item>
+				</cac:LineItem>
+			</cac:OrderLine>
+
+		</OrderResponse>
+	</test>
+	<test id="4">
+		<assert>
+			<success>PEPPOL-T110-R026</success>
+		</assert>
+		<OrderResponse xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+			xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+			xmlns="urn:oasis:names:specification:ubl:schema:xsd:OrderResponse-2">
+
+			<cac:TaxTotal>
+				<cac:TaxSubtotal>
+					<cac:TaxCategory>
+						<cbc:ID>S</cbc:ID>
+						<cbc:Percent>25</cbc:Percent>
+					</cac:TaxCategory>
+				</cac:TaxSubtotal>
+			</cac:TaxTotal>
+
+			<cac:AllowanceCharge>
+				<cac:TaxCategory>
+					<cbc:ID>S</cbc:ID>
+					<cbc:Percent>25</cbc:Percent>
+				</cac:TaxCategory>
+			</cac:AllowanceCharge>
+
+		</OrderResponse>
+	</test>
+	<test id="5">
+		<assert>
+			<success>PEPPOL-T110-R026</success>
+		</assert>
+		<OrderResponse xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+			xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+			xmlns="urn:oasis:names:specification:ubl:schema:xsd:OrderResponse-2">
+
+			<cac:TaxTotal>
+				<cac:TaxSubtotal>
+					<cac:TaxCategory>
+						<cbc:ID>S</cbc:ID>
+						<cbc:Percent>25</cbc:Percent>
+					</cac:TaxCategory>
+				</cac:TaxSubtotal>
+			</cac:TaxTotal>
+
+			<cac:AllowanceCharge>
+				<cac:TaxCategory>
+					<cbc:ID>S</cbc:ID>
+					<cbc:Percent>25.00</cbc:Percent>
+				</cac:TaxCategory>
+			</cac:AllowanceCharge>
+
+		</OrderResponse>
+	</test>
+	<test id="6">
+		<assert>
+			<error>PEPPOL-T110-R026</error>
+		</assert>
+		<OrderResponse xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+			xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+			xmlns="urn:oasis:names:specification:ubl:schema:xsd:OrderResponse-2">
+
+			<cac:TaxTotal>
+				<cac:TaxSubtotal>
+					<cac:TaxCategory>
+						<cbc:ID>S</cbc:ID>
+						<cbc:Percent>25</cbc:Percent>
+					</cac:TaxCategory>
+				</cac:TaxSubtotal>
+			</cac:TaxTotal>
+
+			<cac:AllowanceCharge>
+				<cac:TaxCategory>
+					<cbc:ID>S</cbc:ID>
+					<cbc:Percent>24.99</cbc:Percent>
+				</cac:TaxCategory>
+			</cac:AllowanceCharge>
+
+		</OrderResponse>
+	</test>
+
+	<test id="7">
+		<assert>
+			<success>PEPPOL-T110-R026</success>
+		</assert>
+		<OrderResponse xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+			xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+			xmlns="urn:oasis:names:specification:ubl:schema:xsd:OrderResponse-2">
+
+			<!-- Allow for situations where no tax total (Jira POACC-302)
+
+            <cac:TaxTotal>
+              <cac:TaxSubtotal>
+                <cac:TaxCategory>
+                  <cbc:ID>S</cbc:ID>
+                  <cbc:Percent>25</cbc:Percent>
+                </cac:TaxCategory>
+              </cac:TaxSubtotal>
+            </cac:TaxTotal>
+      -->
+			<cac:OrderLine>
+				<cac:LineItem>
+					<cac:Item>
+						<cac:ClassifiedTaxCategory>
+							<cbc:ID>S</cbc:ID>
+							<cbc:Percent>25.00</cbc:Percent>
+						</cac:ClassifiedTaxCategory>
+					</cac:Item>
+				</cac:LineItem>
+			</cac:OrderLine>
+
+		</OrderResponse>
+	</test>
+
+	<test id="8">
+		<assert>
+			<success>PEPPOL-T110-R026</success>
+		</assert>
+		<OrderResponse xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+			xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+			xmlns="urn:oasis:names:specification:ubl:schema:xsd:OrderResponse-2">
+
+            <cac:TaxTotal>
+              <cac:TaxSubtotal>
+                <cac:TaxCategory>
+                  <cbc:ID>S</cbc:ID>
+                  <cbc:Percent>25</cbc:Percent>
+                </cac:TaxCategory>
+              </cac:TaxSubtotal>
+            </cac:TaxTotal>
+
+			<cac:OrderLine>
+				<cac:LineItem>
+					<cac:Item>
+						<cac:ClassifiedTaxCategory>
+							<cbc:ID>S</cbc:ID>
+							<cbc:Percent>25</cbc:Percent>
+						</cac:ClassifiedTaxCategory>
+					</cac:Item>
+				</cac:LineItem>
+			</cac:OrderLine>
+
+		</OrderResponse>
+	</test>
+
+	<test id="9">
+		<assert>
+			<error>PEPPOL-T110-R026</error>
+		</assert>
+		<OrderResponse xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+			xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+			xmlns="urn:oasis:names:specification:ubl:schema:xsd:OrderResponse-2">
+
+			<cac:TaxTotal>
+				<cac:TaxSubtotal>
+					<cac:TaxCategory>
+						<cbc:ID>S</cbc:ID>
+						<cbc:Percent>25</cbc:Percent>
+					</cac:TaxCategory>
+				</cac:TaxSubtotal>
+			</cac:TaxTotal>
+
+			<cac:OrderLine>
+				<cac:LineItem>
+					<cac:Item>
+						<cac:ClassifiedTaxCategory>
+							<cbc:ID>M</cbc:ID>
+							<cbc:Percent>25</cbc:Percent>
+						</cac:ClassifiedTaxCategory>
+					</cac:Item>
+				</cac:LineItem>
+			</cac:OrderLine>
+
+		</OrderResponse>
+	</test>
+</testSet>

@@ -1,0 +1,29 @@
+= Product identification
+
+Product identification may be done using the identifiers described below:
+
+* Sellers ID
+* Standard ID, e.g. the GS1 Global Trade Item Number (GTIN)
+* Buyers ID
+
+The order agreement requires that an item has an identifier. This can be either the sellers identifier or a standard identifier. Which identifier to use depends on what is known at the time of the purchase or what is commonly used in the relevant business sector.
+
+
+.Example of an PEPPOL BIS Order Agreement item using both Sellers ID and Standard ID (GTIN)
+[source, xml, indent=0]
+----
+include::{snippet-dir}/OA full.xml[tags=ItemIdentifiers]
+----
+
+= Product name and description
+
+The Product name must be sent in the element `cac:Item/cbc:Name` on line level. Description of a product can be sent in `cac:Item/cbc:Description`.
+The Product name is often sent in the order agreement from the buyer to the seller.
+
+
+
+.Example in an PEPPOL BIS Order Agreement message
+[source, xml, indent=0]
+----
+include::{snippet-dir}/OA full.xml[tags=ItemDescription]
+----

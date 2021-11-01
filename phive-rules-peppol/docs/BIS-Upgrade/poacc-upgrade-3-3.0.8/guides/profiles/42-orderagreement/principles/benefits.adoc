@@ -1,0 +1,7 @@
+[[benefits]]
+= Benefits
+
+* The ability to use existing order-invoice-matching processes even if order is not issued from a procurement system.
+* Capture ordering actions that happen in other processes such as web shops, phone or by requisition at warehouse/store and so forth.
+* Visibility of whole spending analysis in the ordering module by importing orders that are not sent directly from the ordering module.
+* Support for ordering processes where products/services are not necessarily described as standardized catalogue items.

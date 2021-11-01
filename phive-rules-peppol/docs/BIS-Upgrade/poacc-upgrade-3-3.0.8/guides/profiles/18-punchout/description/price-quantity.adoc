@@ -1,0 +1,20 @@
+[[prices-and-quantities]]
+= Prices and quantities
+
+* Each line in the Shopping Cart must show the number of items that have been selected by the buyer.
+* For each item there must be a price.
+* The price must be given for the same units as the quantity but the number of units that the price is based on may be different than the quantity.
+
+.Example of price information
+====
+A buyer may select 360 pieces of an item where the price is €24 for each dozen (12 pieces). In this case the item unit is pieces, and the price for each piece is €24/12 or €2 for each item.
+Base quantity is optional, with default value 1; when some other base quantity applies it must be stated.
+
+In the shopping cart message this information would be given as follows:
+
+[source,xml, indent=0]
+----
+include::{snippet-dir}/snippet-18-1.xml[tags=price]
+----
+
+====

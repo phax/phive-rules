@@ -1,0 +1,18 @@
+[[order-transaction-business-requirements]]
+= Order transaction
+
+:leveloffset: +1
+
+include::general.adoc[]
+
+include::parties.adoc[]
+
+include::delivery.adoc[]
+
+include::line.adoc[]
+
+include::legal.adoc[]
+
+include::peppol.adoc[]
+
+:leveloffset: -1

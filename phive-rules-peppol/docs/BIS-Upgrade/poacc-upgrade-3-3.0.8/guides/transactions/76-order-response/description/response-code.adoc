@@ -1,0 +1,90 @@
+[[response-code]]
+= Response code
+
+The Response code states the Sellers ability to fulfil the order and must be sent on both header level and line level if lines are sent.
+
+
+[IMPORTANT]
+====
+* Response code *_must_* be sent on header level.
+* Line response code *_must_* be sent on line level if lines are sent.
+* Response code may have 4 values: AB, RE, AP and CA (subset of UNCL 4343 code list)
+* Line response code may have 5 values: 1, 3, 5, 7 and 42.
+====
+
+== Response code on Header level
+
+[cols="1,11",options="header"]
+|====
+|Response code
+|Action
+
+|AB
+a|
+* The Order has been received.
+* The Order has not yet been processed.
+* No lines should be sent.
+* An additional order response should be sent after processing, to accept, reject or accept with changes
+
+|RE
+a|
+* The Order is rejected.
+* No lines should be sent.
+
+|AP
+a|
+* The Order is accepted without amendment.
+* No lines should be sent.
+
+|CA
+a|
+* The Order is accepted with amendment on line level.
+* All lines must be sent.
+|====
+
+
+.UBL example of Response code on Header level in an Order Response message
+[source, xml, indent=0]
+----
+include::{snippet-response-dir}/snippet-1.xml[tags=response-header]
+----
+
+.UBL example of an order response using response code "AB" (order is received
+[source, xml, indent=0]
+----
+include::{snippet-response-dir}/snippet-2.xml[tags=received]
+----
+<1> Response code AB indicates only that the order has been received, but is not yet processed
+<2> No order lines are sent in this response.
+
+== Line response code on Line level
+
+
+[cols="1,11",options="header"]
+|====
+|Response line code
+|Action
+
+|1
+|The Order line is Added.
+
+|3
+|The Order line is Changed.
+
+|5
+|The Order line is Accepted without amendment.
+
+|7
+|The Order line is Not accepted.
+
+|42
+|The Order line is Already delivered.
+
+|====
+
+
+.Example of Response code on Line level in an Order Response message:
+[source, xml, indent=0]
+----
+include::{snippet-response-dir}/snippet-1.xml[tags=response-line]
+----

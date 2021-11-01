@@ -1,0 +1,42 @@
+[[description-of-selected-parts-of-the-catalogue-message]]
+=  Description of selected parts of the catalogue message
+
+:leveloffset: +1
+
+include::parties.adoc[]
+
+:leveloffset: -1
+
+include::actioncode.adoc[]
+
+include::itemidentification.adoc[]
+
+include::hazardousitem.adoc[]
+
+include::itemnameanddescription.adoc[]
+
+include::classification.adoc[]
+
+include::keyword.adoc[]
+
+include::quantitiesandunits.adoc[]
+
+include::prices.adoc[]
+
+include::itemlabeling.adoc[]
+
+include::relateditem.adoc[]
+
+include::logistics.adoc[]
+
+include::dimensions.adoc[]
+
+include::additionalproperties.adoc[]
+
+include::replaceditem.adoc[]
+
+:leveloffset: +1
+
+include::../../../shared/files/vat-cat-line.adoc[]
+
+:leveloffset: -1

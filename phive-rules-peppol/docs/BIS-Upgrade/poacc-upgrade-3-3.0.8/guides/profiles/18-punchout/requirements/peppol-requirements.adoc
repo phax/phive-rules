@@ -1,0 +1,42 @@
+[[specific-openpeppol-requirements]]
+= Specific OpenPEPPOL requirements
+
+[cols="1,2,3",options="header"]
+.Specific openPEPPOL requirements
+|====
+|ID:
+|Business term:
+|Description:
+
+3+s|HEADER LEVEL:
+
+|OP-T77-001
+|ProviderParty/EndpointID
+|The seller should be identified with an end point identifier.footnote:[In a Punch Out profile the shopping cart transaction may be exchanged by other means than through the PEPPOL network and does not require the identification of the endpoint.
+It is nevertheless recommented to provide the endpoint ID for parties.]
+
+|OP-T77-002
+|ReceiverParty/EndpointID
+|The buyer should be identified with an end point identifier.
+
+3+s|LINE LEVEL:
+|
+|
+|The shopping cart MUST be able to identify which attachment contains the items main image so that it can be processed accordingly.
+
+|OP-T77-003
+|Attachment image identifier
+|The item main image MUST have an identifier.
+
+|OP-T77-004
+|Attachment image description
+|The item main image may have a description.
+
+|OP-T77-005
+|Attachment image description code
+|The item main image MUST be authenticated as such with the code value itemimage
+
+|OP-T77-006
+|Attached image document
+|The item main image MUST be included in the message as a binary object.
+|====

@@ -1,0 +1,9 @@
+[[serial-numbers]]
+= Serial numbers
+
+If each of the delivered items is marked with an individual serial number, these numbers may be sent in the Despatch Advice on Item level.
+
+[source, xml, indent=0]
+----
+include::{snippet-dir}/snippet-30-1.xml[tags=serialid]
+----

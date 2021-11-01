@@ -1,0 +1,24 @@
+[[identification-and-dates.]]
+= Identification and dates.
+
+In the beginning of the shopping cart message there is information that identifies the shopping cart itself which allows for managing it in a processing flow as well as referencing it from other documents and processes.
+This is given by an identifier as well as the date and time when the shopping cart message is created.
+This would normally be the time when the buyer punches out from the sellers web store.
+
+The identifier is created by the seller and may be of any format.
+The issue date and time must not be in the future.
+
+.Example of cart identifier and issue date and time
+[source, xml, indent=0]
+----
+include::{snippet-dir}/snippet-18-1.xml[tags=identifier]
+----
+
+
+The shopping cart also includes two identifiers that identify the process that the shopping cart is used in.
+The specification that define how the shopping cart message is structured and how its information shall be processed is stated with the customization ID. The process it self is the Punch Out process as defined in this BIS specification, and is stated in the Profile ID element.
+
+These ID's is always the same for all shopping cart messages that comply to this version of PEPPOL BIS 18A.
+Each shopping cart message must comply to the specification referenced.
+
+Details on valid values for both customization ID and profile ID can be found in <<prof-18>>

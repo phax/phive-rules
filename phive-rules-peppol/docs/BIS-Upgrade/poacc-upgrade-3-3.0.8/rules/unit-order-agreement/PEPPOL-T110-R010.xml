@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testSet xmlns="http://difi.no/xsd/vefa/validator/1.0"
+	configuration="peppolbis-t110-base-3.0">
+	<assert>
+		<description>Verify tax exclusive amount is equal to the sum of line amount plus total charge amount at document level less total allowance amount at document level if tax exclusive amount is provided.</description>
+		<scope>PEPPOL-T110-R010</scope>
+	</assert>
+	
+	<test>
+		<assert>
+			<description>Valid example with charge and allowance.</description>
+			<success>PEPPOL-T110-R010</success>
+		</assert>
+		<OrderResponse xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+			xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+			xmlns="urn:oasis:names:specification:ubl:schema:xsd:OrderResponse-2">
+
+			<cac:LegalMonetaryTotal>
+				<cbc:LineExtensionAmount>100</cbc:LineExtensionAmount>
+				<cbc:ChargeTotalAmount>50</cbc:ChargeTotalAmount>
+				<cbc:AllowanceTotalAmount>50</cbc:AllowanceTotalAmount>
+				<cbc:TaxExclusiveAmount>100</cbc:TaxExclusiveAmount>
+			</cac:LegalMonetaryTotal>
+
+		</OrderResponse>
+	</test>
+	<test>
+		<assert>
+			<description>Valid example with charge and allowance.</description>
+			<success>PEPPOL-T110-R010</success>
+		</assert>
+		<OrderResponse xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+			xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+			xmlns="urn:oasis:names:specification:ubl:schema:xsd:OrderResponse-2">
+
+			<cac:LegalMonetaryTotal>
+				<cbc:LineExtensionAmount>100</cbc:LineExtensionAmount>
+				<cbc:ChargeTotalAmount>25</cbc:ChargeTotalAmount>
+				<cbc:AllowanceTotalAmount>75</cbc:AllowanceTotalAmount>
+				<cbc:TaxExclusiveAmount>50</cbc:TaxExclusiveAmount>
+			</cac:LegalMonetaryTotal>
+
+		</OrderResponse>
+	</test>
+	<test>
+		<assert>
+			<description>Invalid example with charge and allowance with invalid charge.</description>
+			<error>PEPPOL-T110-R010</error>
+		</assert>
+		<OrderResponse xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+			xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+			xmlns="urn:oasis:names:specification:ubl:schema:xsd:OrderResponse-2">
+
+			<cac:LegalMonetaryTotal>
+				<cbc:LineExtensionAmount>100</cbc:LineExtensionAmount>
+				<cbc:ChargeTotalAmount>100</cbc:ChargeTotalAmount>
+				<cbc:AllowanceTotalAmount>50</cbc:AllowanceTotalAmount>
+				<cbc:TaxExclusiveAmount>100</cbc:TaxExclusiveAmount>
+			</cac:LegalMonetaryTotal>
+
+		</OrderResponse>
+	</test>
+	<test>
+		<assert>
+			<description>Invalid example with charge and allowance with invalid allowance.</description>
+			<error>PEPPOL-T110-R010</error>
+		</assert>
+		<OrderResponse xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+			xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+			xmlns="urn:oasis:names:specification:ubl:schema:xsd:OrderResponse-2">
+
+			<cac:LegalMonetaryTotal>
+				<cbc:LineExtensionAmount>100</cbc:LineExtensionAmount>
+				<cbc:ChargeTotalAmount>50</cbc:ChargeTotalAmount>
+				<cbc:AllowanceTotalAmount>100</cbc:AllowanceTotalAmount>
+				<cbc:TaxExclusiveAmount>100</cbc:TaxExclusiveAmount>
+			</cac:LegalMonetaryTotal>
+
+		</OrderResponse>
+	</test>
+	<!-- (xs:decimal(cbc:TaxExclusiveAmount)) = ((round(xs:decimal(cbc:LineExtensionAmount)) * 10 * 10) div 100) -->
+	<test>
+		<assert>
+			<description>Valid example without charge and allowance.</description>
+			<success>PEPPOL-T110-R010</success>
+		</assert>
+		<OrderResponse xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+			xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+			xmlns="urn:oasis:names:specification:ubl:schema:xsd:OrderResponse-2">
+
+			<cac:LegalMonetaryTotal>
+				<cbc:LineExtensionAmount>100</cbc:LineExtensionAmount>
+				<cbc:TaxExclusiveAmount>100</cbc:TaxExclusiveAmount>
+			</cac:LegalMonetaryTotal>
+
+		</OrderResponse>
+	</test>
+	<test>
+		<assert>
+			<description>Invalid example without charge and allowance.</description>
+			<error>PEPPOL-T110-R010</error>
+		</assert>
+		<OrderResponse xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+			xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+			xmlns="urn:oasis:names:specification:ubl:schema:xsd:OrderResponse-2">
+
+			<cac:LegalMonetaryTotal>
+				<cbc:LineExtensionAmount>50</cbc:LineExtensionAmount>
+				<cbc:TaxExclusiveAmount>100</cbc:TaxExclusiveAmount>
+			</cac:LegalMonetaryTotal>
+
+		</OrderResponse>
+	</test>
+	<!-- (xs:decimal(cbc:TaxExclusiveAmount)) = ((round(xs:decimal(cbc:LineExtensionAmount)) * 10 * 10) div 100) +((round(xs:decimal(cbc:ChargeTotalAmount)) * 10 * 10) div 100) -->
+	<test>
+		<assert>
+			<description>Valid example with charge.</description>
+			<success>PEPPOL-T110-R010</success>
+		</assert>
+		<OrderResponse xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+			xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+			xmlns="urn:oasis:names:specification:ubl:schema:xsd:OrderResponse-2">
+
+			<cac:LegalMonetaryTotal>
+				<cbc:LineExtensionAmount>100</cbc:LineExtensionAmount>
+				<cbc:ChargeTotalAmount>50</cbc:ChargeTotalAmount>
+				<cbc:TaxExclusiveAmount>150</cbc:TaxExclusiveAmount>
+			</cac:LegalMonetaryTotal>
+
+		</OrderResponse>
+	</test>
+	<test>
+		<assert>
+			<description>Invalid example with charge.</description>
+			<error>PEPPOL-T110-R010</error>
+		</assert>
+		<OrderResponse xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+			xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+			xmlns="urn:oasis:names:specification:ubl:schema:xsd:OrderResponse-2">
+
+			<cac:LegalMonetaryTotal>
+				<cbc:LineExtensionAmount>100</cbc:LineExtensionAmount>
+				<cbc:ChargeTotalAmount>50</cbc:ChargeTotalAmount>
+				<cbc:TaxExclusiveAmount>100</cbc:TaxExclusiveAmount>
+			</cac:LegalMonetaryTotal>
+
+		</OrderResponse>
+	</test>
+	<!-- (xs:decimal(cbc:TaxExclusiveAmount)) = ((round(xs:decimal(cbc:LineExtensionAmount)) * 10 * 10) div 100) -((round(xs:decimal(cbc:AllowanceTotalAmount)) * 10 * 10) div 100) -->
+	<test>
+		<assert>
+			<description>Valid example with allowance.</description>
+			<success>PEPPOL-T110-R010</success>
+		</assert>
+		<OrderResponse xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+			xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+			xmlns="urn:oasis:names:specification:ubl:schema:xsd:OrderResponse-2">
+
+			<cac:LegalMonetaryTotal>
+				<cbc:LineExtensionAmount>100</cbc:LineExtensionAmount>
+				<cbc:AllowanceTotalAmount>50</cbc:AllowanceTotalAmount>
+				<cbc:TaxExclusiveAmount>50</cbc:TaxExclusiveAmount>
+			</cac:LegalMonetaryTotal>
+
+		</OrderResponse>
+	</test>
+	<test>
+		<assert>
+			<description>Invalid example with allowance.</description>
+			<error>PEPPOL-T110-R010</error>
+		</assert>
+		<OrderResponse xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+			xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+			xmlns="urn:oasis:names:specification:ubl:schema:xsd:OrderResponse-2">
+
+			<cac:LegalMonetaryTotal>
+				<cbc:LineExtensionAmount>100</cbc:LineExtensionAmount>
+				<cbc:AllowanceTotalAmount>50</cbc:AllowanceTotalAmount>
+				<cbc:TaxExclusiveAmount>100</cbc:TaxExclusiveAmount>
+			</cac:LegalMonetaryTotal>
+
+		</OrderResponse>
+	</test>
+	<!-- (not(cbc:TaxExclusiveAmount)) -->
+	<test>
+		<assert>
+			<description>Valid example without tax exclusive amount.</description>
+			<success>PEPPOL-T110-R010</success>
+		</assert>
+		<OrderResponse xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+			xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+			xmlns="urn:oasis:names:specification:ubl:schema:xsd:OrderResponse-2">
+
+			<cac:LegalMonetaryTotal>
+				<!-- <cbc:TaxExclusiveAmount>100</cbc:TaxExclusiveAmount> -->
+			</cac:LegalMonetaryTotal>
+
+		</OrderResponse>
+	</test>
+</testSet>

@@ -1,0 +1,26 @@
+[[item-properties]]
+= Item properties
+
+A shopping cart line may state if the item described in the line is a service by stating the item property ServiceIndicator as true. The line may also identify that the item is not a service with the value false.
+
+There is no default value so if the ServiceIndicator is not given the item may be either a service or not.
+
+
+.Example of indicating that an item is a service
+[source, xml, indent=0]
+----
+include::{snippet-dir}/snippet-18-1.xml[tags=service]
+----
+
+
+A shopping cart line may give a list of various attributes of an item such as size, colour. For each property the property name and value must be given.
+
+Additionally the seller may give a property code, using an identified code list, to support automation in comparison of attribute and if the attribute value can be quantified it may be restated with the Unit of measure as an attribute.
+
+.Example of item property, indicating 16 GB RAM Memory
+[source, xml, indent=0]
+----
+include::{snippet-dir}/snippet-18-1.xml[tags=property]
+----
+
+The name "ServiceIndicator" in `cac:AdditionalItemProperty` has dedicated meaning in the PEPPOL PunchOut message.

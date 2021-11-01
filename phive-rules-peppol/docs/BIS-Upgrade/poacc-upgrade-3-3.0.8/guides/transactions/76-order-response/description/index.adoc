@@ -1,0 +1,34 @@
+[[order-response-message]]
+= Description of selected parts of the order response message
+
+The Order response message is sent from the Seller to the Buyer stating the sellers ability to fulfil the order.
+The following rules applies to the PEPPOL BIS Order Response:
+
+* The Order response must refer to an Order.
+* Seller may accept or reject the entire Order.
+* If the order or any order line is rejected the Order response should contain a reason for rejection.
+* Seller may accept or reject the separate order lines.
+* If Seller accepts or rejects order lines, *_all_* order lines must be sent in the Order response. This applies even for order lines that has been delivered completely or partially.
+* The following information may be changed in the Order response:
+** Quantity
+** Delivery period
+** Replacement item
+** Price
+* If the Order is rejected or changed, the Order response may contain contact information to Seller.
+
+
+:leveloffset: +1
+
+include::response-code.adoc[]
+
+include::order-ref.adoc[]
+
+include::change.adoc[]
+
+include::changeanddeliver.adoc[]
+
+include::backorder.adoc[]
+
+include::../../../shared/files/vat-cat-line.adoc[]
+
+:leveloffset: -1

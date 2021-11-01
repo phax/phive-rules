@@ -1,0 +1,44 @@
+
+[[process-and-typical-use-cases]]
+= Process and typical use cases
+
+
+:leveloffset: +1
+
+include::../../../shared/bpmn/bpmn-legend.adoc[]
+
+:leveloffset: -1
+
+
+[[process-in-general]]
+== Process in general
+The process starts when a BusinessDocumentSender is preparing an electronic business document
+and then sends it. The BusinessDocumentReceiver receives the business document and potentially
+validates syntax and business rules.
+
+. *If the BusinessDocumentSender has requested an MLR back, the BusinessDocumentReceiver either:*
+
+.. Validates the business document and based on the result returns either an accept (no fatal
+errors) or a reject (fatal errors found)
+.. Doesn’t validate the business document and just sends a MLR with a response code
+indicating the message is acknowledged.
+
+IMPORTANT: This specification does not prescribe how a request for MLR is made or communicated.
+
+. *If the BusinessDocumentSender hasn’t requested an MLR back, the BusinessDocumentReceiver
+either:*
+
+.. Validates the business document and if fatal errors are found, returns a reject.
+.. Doesn’t respond with a MLR in case no fatal errors are found.
+
+If a MLR is returned the MLRReceiver must be notified and take appropriate action. If the response is
+positive the MLRReceiver may update the status of the business document or simply ignore the MLR.
+
+image::images/bpmn-mlr-1.png[align="center"]
+
+
+:leveloffset: +1
+
+include::use-case.adoc[]
+
+:leveloffset: -1

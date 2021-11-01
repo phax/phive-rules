@@ -1,0 +1,74 @@
+[[specific-openpeppol-requirements]]
+= Specific OpenPEPPOL requirements
+
+An order agreement should support the calculation of expected totals structured in an identical way to the order and the invoice message. To enable this the following needs to be added to the CENBII Order Agreement transaction.
+
+[cols="1h,2,3",options="header",]
+|====
+|ID: |Business term: |Description:
+| |*HEADER LEVEL:*|
+|OP-110-001
+|Allowance amount
+|An order agreement may have allowance amount on document level.
+
+|OP-110-002
+|Allowance reason
+|An order agreement must give an allowance reason for each allowance amount on document level.
+
+|OP-110-003
+|VAT category taxable amount
+|An order agreement may include VAT category taxable amount for each tax category.
+
+|OP-110-004
+|VAT category tax amount
+|An order agreement may include VAT category tax amount for each tax category.
+
+|OP-110-005
+|VAT category code
+|Each VAT tax category must have a VAT tax category code.
+
+|OP-110-006
+|VAT category rate
+|For each VAT tax category there must be a tax rate.
+
+|OP-110-007
+|VAT exemption reason text
+|An exemption reason may be given for VAT tax categories.
+
+|OP-110-008
+|Sum of charges on document level
+|An order agreement may include the sum of charges on document level.
+
+|OP-110-009
+|Sum of allowances on document level
+|An order agreement may include the sum of allowances on document level.
+
+|OP-110-010
+|Rounding of document total
+|The total amounts of an order agreement may be rounded.
+
+|OP-110-011
+|Charge amount
+|An order agreement may have charge amount on document level.
+
+|OP-110-012
+|Charge reason
+|An order agreement must give an charge reason for each allowance amount on document level.
+
+| |*LINE LEVEL:* |
+|OP-110-013
+|Item label name
+|An order agreement may provide information about the name of an item label.
+
+|OP-110-014
+|Item label value
+|An order agreement may provide information about the value of an item label.
+
+|OP-110-015
+|Item label type
+|An order agreement may provide information about the type of an item label.
+
+|OP-110-016
+|Item label reference
+|An order agreement may provide a reference for an item label.
+|====

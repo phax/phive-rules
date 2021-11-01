@@ -1,0 +1,34 @@
+= Version 3.0.4 - 2020 Spring
+[horizontal]
+Release date:: 2020-05-01
+
+== Changes to BIS document
+* The code example in section 6.6 (Classification) is updated from the temporary code ”MC” to the code “TST” (The UNSPSC commodity classification system) from code list UCL7143. [POACC-274]
+** for PEPPOL BIS Catalogue without response 3
+** for PEPPOL BIS Catalogue only 3
+* Following BIS generalized so that they use term TAX instead of VAT. Enables using them for other similar taxes like GST. Catalogue, Catalogue only, Order, Ordering, Order Agreement, Punch Out, Invoice Response. [POACC-265]
+** Text in guidelines generalized from VAT to GST
+** Element names and descriptions that had VAT in them generalized as TAX
+** Rules requesting Tax type ID as VAT removed to allow for GST. VAT now given as example.
+** Added new code for allowed TaxScheme Identifiers. Now allows VAT or GST.
+* Updated the link “Peppol Identifiers” of all the BIS DOCUMENTS in https://docs.peppol.eu/poacc/upgrade-3/ to reflect the newest version of “Policy for use of identifiers”[POACC-188]
+
+== Changes to syntax
+* Added cac:Package with elements cbc:ID and cbc:PackageTypeCode to support identification of packages within a transport handling unit. [POACC-301]
+* In the Order Syntax the sequence of Item Description (tir01-133) and Item Name (tir01-135) has been corrected so that Description is now before the Name. This is now in line with the UBL 2.1 syntax specification. [POACC-299]
+* Added name attribute to ItemClassificationCode and aligned Catalogue, Order, OrderAgreement, Order Respones and Shopping Cart. [POACC-277]
+
+== Changes to supporting documents
+* Updated test files with valid GLN numbers to pass travis validation according to the updated GLN validation rules introduced in version 3.0.3. [POACC-321]
+
+== Changes to code lists and validation artefacts
+* Added country code 1A for Kosovo into ISO 3166 for all BIS specifications. [POACC-324]
+* Updated test file poacc-upgrade-3\\rules\\snippets
+mlr/snippet-3.xml in order for the test file to conform to mlr syntax. [POACC-322]
+* Rule R026 in OrderAgreement modified so that it is fired only when TaxTotal is provided. [POACC-302]
+* In the Catalogue transaction the code PRODUCT_IMAGE is added to allowed DocumentTypeCodes in ItemSpecificationDocumentReference on line level. The code may be used to identify the main image of a product. [POACC-297]
+* Added code TRADE_ITEM_DESCRIPTION as allowed attachment type in Catalogue and PunchOut [POACC-279]
+* PEPPOL-T19-R011 and PEPPOL-T19-R016 updated to take unbounded cac:RequiredItemLocationQuantity into consideration. [POACC-255]
+* Changed character (code ) for citation marks (“) as it was in conflict with some implementations. Changes was made in Rules for transactions T16, T19 and T110. [POACC-249]
+* Validation of cbc:CustomizationID in all BIS specifications changed from element must contain exactly the relevant transaction identifier to element content must begin with that identifier value. [POACC-191]
+* Descriptions and some names of codes in UNCL7143 corrected in line with the official code list version d19a. Applies to all BIS using this code list. [POACC-258]

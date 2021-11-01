@@ -1,0 +1,16 @@
+[[codelists-business-rules]]
+= Order codelists rules
+
+[cols="1s,5",options="header"]
+|====
+|Identifier |Business Rule
+|OP-T01-001 |OrderTypeCode in an order MUST be from UN/ECE 1001 code list PEPPOL Subset
+|OP-T01-002 |DocumentCurrencyCode MUST be coded using ISO code list 4217
+|OP-T01-003 |A Binary Object MIME code attribute MUST be coded using MIME Code Type version 2008 code list
+|OP-T01-004 |An Endpoint Identifier Scheme identifier MUST be from the code list PEPPOL Party Identifier
+|OP-T01-005 |An Party Identifier Scheme identifier MUST be from the code list PEPPOL Party Identifier
+|OP-T01-006 |Country codes in an order MUST be coded using ISO code list 3166-1
+|OP-T01-007 |currencyID MUST be coded using ISO code list 4217
+|OP-T01-008 |A tax category identifier MUST be coded using UN/ECE 5305 BII2 Subset
+|OP-T01-009 |Unit code MUST be coded according to the UN/ECE Recommendation 20 (2009)
+|====

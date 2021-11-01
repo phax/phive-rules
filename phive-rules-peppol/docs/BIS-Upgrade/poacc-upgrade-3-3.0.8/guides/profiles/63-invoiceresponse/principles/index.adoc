@@ -1,0 +1,21 @@
+
+[[principles]]
+= Principles and prerequisites
+
+This chapter describes the principles and assumptions that underlie the use of the PEPPOL Invoice Response.
+The term Invoice in this specification is used for both an invoice and a credit note unless otherwise stated in the text or clear from the context.
+
+An Invoice Response can be used in the process of the exchange of invoices and credit notes until the parties have agreed on its settlement as paid or cancelled.
+It provides the Seller, as the issuer of the invoice or credit note, with information about the status of his invoice or credit note and provides the Buyer, as receiver of the invoice or credit note, with efficient means for keeping the Seller informed.
+
+
+:leveloffset: +1
+
+include::general.adoc[]
+
+include::scope.adoc[]
+
+include::parties.adoc[]
+
+
+:leveloffset: -1

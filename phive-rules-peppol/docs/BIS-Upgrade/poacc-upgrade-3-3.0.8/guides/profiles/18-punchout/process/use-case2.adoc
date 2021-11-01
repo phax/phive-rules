@@ -1,0 +1,41 @@
+[[use-case-2-user-cancels-session]]
+= Use case 2 – User cancels session
+
+This use case describe when, after having selected items into a shopping cart, the buyer cancels.
+
+[cols="2s,6",options="header"]
+|====
+|Use Case number
+|2
+
+|Use Case Name
+|User cancels session
+
+|Use Case Description
+|After having logged into a website which allows Punch Out and selected items into a shopping cart, the buyer cancels the process.
+
+|Parties involved
+|Buyer +
+Seller
+
+|Assumptions
+|The Seller has a website that allows the customer/buyer to automatically log into from his purchasing system.
+
+|The flow
+|The customer/buyer is working in their procurement system, looking for a seller of office supplies.
+
+The buyer selects a seller to see that seller’s products.
+The selected seller provides Punch Out catalogue.
+The procurement system then automatically sends a login request to the seller’s website, and the procurement system opens the website.
+
+The buyer searches the website for the items needed, and add these to the shopping cart.
+After selecting some items, the buyer chooses to cancel instead of doing a check out.
+
+The procurement system automatically logout of the seller’s website, and the buyer is redirected back to the procurement system.
+
+|Result
+|Buyer has aborted his connection to the website. The shopping cart has been cleared and no commitments have been made.
+
+|XML example file
+|None specific for this use case.
+|====

@@ -1,0 +1,27 @@
+[[delivery]]
+= Delivery
+
+[cols="1,5",options="header"]
+|====
+|ID
+|Requirement
+
+|tbr01-021
+|An order must provide for details about delivery location (address and ID), some basic delivery terms, delivery time and contact person for a delivery of an order.
+
+
+|tbr01-022
+|An order must provide for information about the dates before and/or after which the order as whole or individual order lines must be delivered.
+
+
+|tbr01-033
+|An order line must provide for indication on whether the buyer accepts partial deliveries of that line.
+
+
+|tbr01-038
+a|Basic delivery terms for transport
+
+* Transport location
+* Transport terms
+
+|====

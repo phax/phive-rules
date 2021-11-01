@@ -1,0 +1,41 @@
+[[specific-openpeppol-requirements]]
+= Specific OpenPEPPOL requirements
+
+[cols="1,1,4",options="header"]
+|====
+|ID:
+|Business term:
+|Description:
+
+3+s|HEADER LEVEL:
+
+|OP-T01-010
+|Buyers contact ID
+|An order must support the use of ID for buyers contact person.
+On the order the information is mandatory in Norwegian markets, and recommended in others.
+Normally used for “Your reference”.
+
+|OP-T01-011
+|Invoicee
+|An order must support the use of invoicee information.
+Content will be the same as for buyer except contact information.
+Norwegian, Swedish and Danish requirement.
+
+|OP-T01-014
+|Payment instructions and terms
+|An order must support specification of payment terms as plain text.
+Italian requirement.
+
+3+s|LINE LEVEL:
+
+|OP-T01-012
+|Item specification reference
+|There is a need to refer to an external document (ID) when it is necessary to specify the details of the item.
+This could be an instruction on how an item should be assembled or configured.
+Swedish requirement.
+
+|OP-T01-013
+|AdditionalItemProperty: +
+Value quantity and value qualifier 
+|Value quantity and value qualifier has been added to the AdditionalItemProperty element to harmonise with PEPPOL BIS Catalogue.
+|====

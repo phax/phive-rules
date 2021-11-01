@@ -1,0 +1,63 @@
+
+= Shopping cart rules
+
+== Transaction rules
+
+The following rules apply to the shopping cart transaction as it is used in the Punch Out BIS.
+
+[cols="^1,1s,4,1",options="header"]
+|====
+|Auto/Manual
+|RuleID
+|Rule
+|Error level
+|A|BII3-T77-R001 |A shopping cart MUST have a customization identifier. |fatal
+|A|BII3-T77-R002 |A shopping cart MUST have a profile identifier. |fatal
+|A|BII3-T77-R003 |A shopping cart MUST contain the date of issue. |fatal
+|A|BII3-T77-R004 |A shopping cart MUST contain the time of issue. |fatal
+|A|BII3-T77-R005 |A shopping cart MUST contain the shopping cart identifier. |fatal
+|A|BII3-T77-R006 |A shopping cart MUST specify the buying party. |fatal
+|A|BII3-T77-R007 |A shopping cart MUST specify the selling party. |fatal
+|A|BII3-T77-R008 |A shopping cart MUST have at least one shopping cart line. |fatal
+|A|BII3-T77-R009 |A shopping cart line MUST contain a #unique# line identifier. |fatal
+|M|BII3-T77-R010 |Shopping cart line quantities MUST be greater than ZERO. |fatal
+|M|BII3-T77-R011 |Prices of items MUST not be negative. |fatal
+|M|BII3-T77-R012 |An item in a shopping cart MUST be uniquely identifiable by either “item sellers identifier” or “item standard identifier” |fatal
+|A|BII3-T77-R013 |An item in a shopping cart MUST have a name. |fatal
+|A|BII3-T77-R014 |If item labelling is used, both label name and type MUST be present.
+ |fatal
+|A|BII3-T77-R015 |A shopping cart line MUST specify line VAT information.
+|fatal
+|A|BII3-T77-R016 |A shopping cart MUST contain the shopping cart currency |fatal
+|M|BII3-T77-R017 |A validity period MUST contain the "shopping cart validity period end date" at most once |fatal
+|A|BII3-T77-R018 |A seller MUST contain the full name and it should be at most once |fatal
+|A|BII3-T77-R019 |A seller id MUST be at most one |fatal
+|A|BII3-T77-R020 |A buyer MUST contain the full name and it should be at most once |fatal
+|A|BII3-T77-R021 |A shopping cart line MUST contain a shopping cart line quantity and it should be at most one |fatal
+|A|BII3-T77-R022 |A shopping cart line MUST contain configured product identifier at most once |fatal
+|M|BII3-T77-R023 |An item in a shopping cart line SHOULD have at most one description |warning
+|M|BII3-T77-R024 |An item in a shopping cart line SHOULD have at most one manufacturers item identification |warning
+|M|BII3-T77-R025 |An item in a shopping cart line SHOULD have at most one attachment |warning
+|M|BII3-T77-R026 |An item in a shopping cart line SHOULD have at most one attachment document description |warning
+|M|BII3-T77-R027 |An item in a shopping cart line SHOULD have at most one manufacturer party name |warning
+|M|BII3-T77-R028 |An item in a shopping cart line SHOULD have one and at most one line item VAT category code |warning
+|M|BII3-T77-R029 |An item in a shopping cart line SHOULD have one and at most one line item VAT rate |warning
+|M|BII3-T77-R030 |An item in a shopping cart line SHOULD have at most one commodity classification |warning
+|M|BII3-T77-R031 |Classification codes SHOULD contain the Classification scheme Identifier (e.g. CPV or UNSPSC) |warning
+|A|EUGEN-T77-R001 |CustomizationID MUST be urn:www.cenbii.eu:transaction:biitrns077:ver2.0**: +
+ extended:**www.peppol.eu:bis:peppol18a:ver1.0 |fatal
+|A|EUGEN-T77-R002 |ProfileID MUST be urn:www.cenbii.eu:profile:bii18:ver1.0 |fatal
+|M|EUGEN-T77-R003 |The validity period end date MAY not be earlier than the issue date. |fatal
+|A|EUGEN-T77-R004 |Complete cart indicator MAY only be "true" or "false" |fatal
+|M|EUGEN-T77-R006 |The shopping cart message SHOULD contain the Sellers end point id. |warning
+|M|EUGEN-T77-R007 |The shopping cart message SHOULD contain the Buyers end point id. |warning
+|M|EUGEN-T77-R008 |Unit code for price base quantity MUST be same as for batch quantity. |fatal
+|A|EUGEN-T77-R009 |Each line MUST have a price. |fatal
+|M|EUGEN-T77-R010 |For AdditionalItemProperties where name is ServiceIndicator the value MUST be "true" OR "false". |fatal
+|A|EUGEN-T77-R011 |LeadTimeMeasure unitCode MUST only be DAY meaning calendar day. |fatal
+|M|EUGEN-T77-R012 |Only one attachment MAY be identified as main image. |fatal
+|A|EUGEN-T77-R013 |Each item label MUST have an item label name. |fatal
+|A|EUGEN-T77-R014 |Each item label MUST have an item label value. |fatal
+|-|EUGEN-T77-R015 |UBLVersionID MUST be 2.1  |fatal
+|A|EUGEN-T77-R017 |Item classification codes MUST include code list value (listID). |fatal
+|====

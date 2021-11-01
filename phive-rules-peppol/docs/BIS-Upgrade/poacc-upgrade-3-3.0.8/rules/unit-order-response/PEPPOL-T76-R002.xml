@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testSet xmlns="http://difi.no/xsd/vefa/validator/1.0"
+	configuration="peppolbis-t76-base-3.0">
+	<assert>
+		<description>Verify that the seller party official name or a seller party identifier</description>
+		<scope>PEPPOL-T76-R002</scope>
+	</assert>
+	<test>
+		<assert>
+			<success>PEPPOL-T76-R002</success>
+		</assert>
+		<OrderResponse xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+			xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+			xmlns="urn:oasis:names:specification:ubl:schema:xsd:OrderResponse-2">
+
+			<cac:SellerSupplierParty>
+				<cac:Party>
+					<cac:PartyIdentification>
+						<cbc:ID>7080000374200</cbc:ID>
+					</cac:PartyIdentification>
+					<cac:PartyLegalEntity>
+						<cbc:RegistrationName>Medical</cbc:RegistrationName>
+					</cac:PartyLegalEntity>
+				</cac:Party>
+			</cac:SellerSupplierParty>
+
+		</OrderResponse>
+	</test>
+
+	<test>
+		<assert>
+			<success>PEPPOL-T76-R002</success>
+		</assert>
+		<OrderResponse xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+			xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+			xmlns="urn:oasis:names:specification:ubl:schema:xsd:OrderResponse-2">
+			
+			<cac:SellerSupplierParty>
+				<cac:Party>
+					<!--<cac:PartyIdentification>
+						<cbc:ID>7080000374200</cbc:ID>
+					</cac:PartyIdentification>-->
+					<cac:PartyLegalEntity>
+						<cbc:RegistrationName>Medical</cbc:RegistrationName>
+					</cac:PartyLegalEntity>
+				</cac:Party>
+			</cac:SellerSupplierParty>
+			
+		</OrderResponse>
+	</test>
+	<test>
+		<assert>
+			<success>PEPPOL-T76-R002</success>
+		</assert>
+		<OrderResponse xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+			xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+			xmlns="urn:oasis:names:specification:ubl:schema:xsd:OrderResponse-2">
+			
+			<cac:SellerSupplierParty>
+				<cac:Party>
+					<cac:PartyIdentification>
+						<cbc:ID>7080000374200</cbc:ID>
+					</cac:PartyIdentification>
+					<!--<cac:PartyLegalEntity>
+						<cbc:RegistrationName>Medical</cbc:RegistrationName>
+					</cac:PartyLegalEntity>-->
+				</cac:Party>
+			</cac:SellerSupplierParty>
+			
+		</OrderResponse>
+	</test>
+	
+	<test>
+		<assert>
+			<error>PEPPOL-T76-R002</error>
+		</assert>
+		<OrderResponse xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+			xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+			xmlns="urn:oasis:names:specification:ubl:schema:xsd:OrderResponse-2">
+			
+			<cac:SellerSupplierParty>
+				<cac:Party>
+					<cac:PartyIdentification>
+						<!--<cbc:ID>7080000374200</cbc:ID>-->
+					</cac:PartyIdentification>
+					<cac:PartyLegalEntity>
+						<!--<cbc:RegistrationName>Medical</cbc:RegistrationName>-->
+					</cac:PartyLegalEntity>
+				</cac:Party>
+			</cac:SellerSupplierParty>
+			
+		</OrderResponse>
+	</test>
+
+	<test>
+		<assert>
+			<error>PEPPOL-T76-R002</error>
+		</assert>
+		<OrderResponse xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+			xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+			xmlns="urn:oasis:names:specification:ubl:schema:xsd:OrderResponse-2">
+			
+			<cac:SellerSupplierParty>
+				<cac:Party>
+			<!--		<cac:PartyIdentification>
+						<cbc:ID>7080000374200</cbc:ID>
+					</cac:PartyIdentification>
+					<cac:PartyLegalEntity>
+						<cbc:RegistrationName>Medical</cbc:RegistrationName>
+					</cac:PartyLegalEntity>-->
+				</cac:Party>
+			</cac:SellerSupplierParty>
+			
+		</OrderResponse>
+	</test>
+	
+</testSet>

@@ -1,0 +1,35 @@
+[[goals-and-objectives]]
+= Goals and Objectives
+
+The following main business goals to be gained by implementing a {cenbii} Punch out profile are the following and apply to this BIS.
+
+.Main business goals
+[cols="1s,5",options="header"]
+|====
+|ID
+|Description
+
+|G18-001
+|This profile enables quick and easy comparison of different products/services, from different sellers, in the buyer’s procurement system or catalogue tool.
+
+|G18-002
+|The profile enables buyers to receive up to date information on the products/services, such as price and availability.
+
+|G18-003
+|The effort to distribute catalogue information can be substantially reduced for sellers with large catalogues.
+
+|G18-004
+|This profile enables the buyer to use their normal ordering approval procedure.
+
+|G18-005
+|The profile enables buyers to configure their own products (i.e. PC:s or chemical products) on the seller’s website, and receive product-/service-information back to their own system.
+
+|G18-006
+|Increased order accuracy by ensuring high data quality in the procurement system of the buyer.
+
+|G18-007
+|Personalize shopping experience - the sellers' product/services can be presented with photos, customized promotions and recommended accessories.
+
+|G18-008
+|This profile enables the buyer to use their catalogue tool with up-date information transferred from the sellers system.
+|====

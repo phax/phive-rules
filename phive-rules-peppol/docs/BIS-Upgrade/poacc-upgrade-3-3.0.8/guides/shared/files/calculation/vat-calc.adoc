@@ -1,0 +1,45 @@
+= Calculation of TAX amounts
+
+[[vat-calc]]
+== Total TAX amount
+
+The total TAX amount can be provided without providing the TAX breakdown, but if the TAX breakdown is present, the total TAX amount is the sum of all TAX Category TAX amounts.
+
+
+====
+stem:["Total TAX amount" = sum("TAX category tax amount")]
+====
+
+== TAX Breakdown
+
+One TAX Breakdown shall be provided for each distinct combination of TAX category code and TAX rate found in either the line TAX information or the Document level allowance or charges.
+
+For each distinct combination of TAX category code and TAX rate the calculations are:
+====
+stem:["TAX category taxable amount" = sum("Line net amounts")] +
+stem:[+ "Document level charge amount" - "Document level allowance amount"]
+====
+
+====
+stem:["TAX category tax amount" = "TAX category taxable amount" times ("TAX rate" div 100)]
+====
+
+IMPORTANT: For TAX Breakdown where the TAX Category indicates the invoice is not subject to TAX (e.g. (O) in EU), then the TAX category tax amount shall be zero.
+
+Please note that for the TAX rate, only significant decimals should be considered, i.e any difference in trailing zeros should not result in different TAX breakdowns.
+
+.Example where TAX is VAT.
+====
+Line 1 has category code = S and VAT rate = *25* +
+Line 2 has category code = S and VAT rate = *25.00* +
+This should result in only one VAT Breakdown.
+====
+
+.UBL Example of tax total and tax breakdown, when TAX is VAT.
+[source, xml, indent=0]
+----
+include::../../snippets/snippet-oa-vat.xml[tags=taxtotal]
+----
+<1> The class `cac:TaxCategory` is used for tax category information
+<2> TAX category according to codelist {vat-codes}
+<3> TAX rate

@@ -1,0 +1,74 @@
+[[bii-shopping-cart-transaction-rules]]
+= BII Shopping cart transaction rules
+
+The following rules apply to the shopping cart transaction as it is used in the Punch Out BIS.
+
+[cols="2,6,2,2",options="header"]
+|====
+|*Rule ID* |*Rule* |*Target* |*Error level*
+|BII3-T77-R001 |A shopping cart MUST have a customization identifier. |tir77-007 |fatal
+|BII3-T77-R002 |A shopping cart MUST have a profile identifier. |tir77-006 |fatal
+|BII3-T77-R003 |A shopping cart MUST contain the date of issue. |tir77-002 |fatal
+|BII3-T77-R004 |A shopping cart MUST contain the time of issue. |tir77-003 |fatal
+|BII3-T77-R005 |A shopping cart MUST contain the shopping cart identifier. |tir77-001 |fatal
+|BII3-T77-R006 |A shopping cart MUST specify the buying party. |tir77-010 |fatal
+|BII3-T77-R007 |A shopping cart MUST specify the selling party. |tir77-013 |fatal
+|BII3-T77-R008 |A shopping cart MUST have at least one shopping cart line. |tir77-015 |fatal
+|BII3-T77-R009 |A shopping cart line MUST contain a unique line identifier. |tir77-015 |fatal
+|BII3-T77-R010 |Shopping cart line quantities MUST be greater than ZERO. |tir77-017 |fatal
+|BII3-T77-R011 |Prices of items MUST not be negative. |tir77-032 |fatal
+|BII3-T77-R012 |An item in a shopping cart MUST be uniquely identifiable by either “item sellers identifier” or “item standard identifier” |tir77-022 +
+tir77-023 |fatal
+|BII3-T77-R013 |An item in a shopping cart MUST have a name. |tir77-021 |fatal
+|BII3-T77-R014 |If item labelling is used, both label name and type MUST be present.
+a|tir77-030 +
+tir77-031
+ |fatal
+|BII3-T77-R015 |A shopping cart line MUST specify line VAT information.
+a|tir77-034 +
+tir77-035
+|fatal
+|BII3-T77-R016 |A shopping cart MUST contain the shopping cart currency |tir77-032 |fatal
+|BII3-T77-R017 |A validity period MUST contain the "shopping cart validity period end date" at most once |tir77-009 |fatal
+|BII3-T77-R018 |A seller MUST contain the full name and it should be at most once |tir77-013 |fatal
+|BII3-T77-R019 |A seller id MUST be at most one |tir77-014 |fatal
+|BII3-T77-R020 |A buyer MUST contain the full name and it should be at most once |tir77-010 |fatal
+|BII3-T77-R021 |A shopping cart line MUST contain a shopping cart line quantity and it should be at most one |tir77-017 |fatal
+|BII3-T77-R022 |A shopping cart line MUST contain configured product identifier at most once |tir77-018 |fatal
+|BII3-T77-R023 |An item in a shopping cart line SHOULD have at most one description |tir77-039 |warning
+|BII3-T77-R024 |An item in a shopping cart line SHOULD have at most one manufacturers item identification |tir77-024 |warning
+|BII3-T77-R025 |An item in a shopping cart line SHOULD have at most one attachment |tir77-036 |warning
+|BII3-T77-R026 |An item in a shopping cart line SHOULD have at most one attachment document description |tir77-037 |warning
+|BII3-T77-R027 |An item in a shopping cart line SHOULD have at most one manufacturer party name |tir77-025 |warning
+|BII3-T77-R028 |An item in a shopping cart line SHOULD have one and at most one line item VAT category code |tir77-34 |warning
+|BII3-T77-R029 |An item in a shopping cart line SHOULD have one and at most one line item VAT rate |tir77-35 |warning
+|BII3-T77-R030 |An item in a shopping cart line SHOULD have at most one commodity classification |tir77-028 |warning
+|BII3-T77-R031 |Classification codes SHOULD contain the Classification scheme Identifier (e.g. CPV or UNSPSC) |tir77-028 |warning
+|====
+
+[[peppol-specific-transaction-rules]]
+= Peppol specific transaction rules
+
+Following rules have been defined by OpenPeppol in addition to the rules adopted from the BII specifications.
+These rules apply in all implementations that follow this PEPPOL BIS.
+
+[cols="2,6,2,2",options="header"]
+|====
+|*Rule ID* |*Rule* |*Target* |*Error level*
+|EUGEN-T77-R001 |CustomizationID MUST be urn:www.cenbii.eu:transaction:biitrns077:ver2.0**: +
+ extended:**www.peppol.eu:bis:peppol18a:ver1.0 |tir77-007 |fatal
+|EUGEN-T77-R002 |ProfileID MUST be urn:www.cenbii.eu:profile:bii18:ver1.0 |tir77-006 |fatal
+|EUGEN-T77-R003 |The validity period end date MAY not be earlier than the issue date. |tir77-008 |fatal
+|EUGEN-T77-R004 |Complete cart indicator MAY only be "true" or "false" |tir77-005 |fatal
+|EUGEN-T77-R006 |The shopping cart message SHOULD contain the Sellers end point id. |OP-T77-001 |warning
+|EUGEN-T77-R007 |The shopping cart message SHOULD contain the Buyers end point id. |OP-T77-002 |warning
+|EUGEN-T77-R008 |Unit code for price base quantity MUST be same as for batch quantity. |tir77-033 |fatal
+|EUGEN-T77-R009 |Each line MUST have a price. |tir77-032 |fatal
+|EUGEN-T77-R010 |For AdditionalItemProperties where name is ServiceIndicator the value MUST be "true" OR "false". |tir77-026 |fatal
+|EUGEN-T77-R011 |LeadTimeMeasure unitCode MUST only be DAY meaning calendar day. |tir77-016 |fatal
+|EUGEN-T77-R012 |Only one attachment MAY be identified as main image. |OP-T77-005 |fatal
+|EUGEN-T77-R013 |Each item label MUST have an item label name. |tir77-030 |fatal
+|EUGEN-T77-R014 |Each item label MUST have an item label value. |tir77-031 |fatal
+|EUGEN-T77-R015 |UBLVersionID MUST be 2.1 | |fatal
+|EUGEN-T77-R017 |Item classification codes MUST include code list value (listID). |tir77-028 |fatal
+|====

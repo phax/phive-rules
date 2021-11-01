@@ -1,0 +1,13 @@
+[[product-name-and-description]]
+= Product name and description
+
+The Product name shall be sent in tag `cac:Item/cbc:Name` on line level.
+Description of a product can be sent in `cac:Item/cbc:Description`.
+
+The Product name is often sent in the order from buyer to seller.
+
+.Example in an PEPPOL BIS Order message:
+[source, xml, indent=0]
+----
+include::{snippet-dir}/snippet-01.xml[tags=name]
+----

@@ -1,0 +1,18 @@
+[[tax-information]]
+= Tax information
+
+For correctly handling taxes for the item the line must state the items VAT category and percentage rate.
+
+.Example of VAT information where the standard rate of VAT is 18 percent:
+[source, xml, indent=0]
+----
+include::{snippet-dir}/snippet-18-1.xml[tags=vat]
+----
+
+Additionally the item country of origin may be given.
+
+.Example of country of origin
+[source, xml, indent=0]
+----
+include::{snippet-dir}/snippet-18-1.xml[tags=coo]
+----

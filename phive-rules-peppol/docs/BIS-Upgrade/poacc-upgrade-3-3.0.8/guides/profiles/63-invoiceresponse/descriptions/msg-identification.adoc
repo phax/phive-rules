@@ -1,0 +1,18 @@
+[[message-identification]]
+= Message identification
+
+The first section of the message is concerned with identifying the message and declaring what specifications the message is based on.
+
+.UBL example:
+[source, xml]
+----
+<cbc:CustomizationID>urn:fdc:peppol.eu:poacc:trns:invoice_response:3</cbc:CustomizationID> <1>
+<cbc:ProfileID>urn:fdc:peppol.eu:poacc:bis:invoice_response:3</cbc:ProfileID> <2>
+<cbc:ID>imrid001</cbc:ID> <3>
+<cbc:IssueDate>2016-10-26</cbc:IssueDate> <4>
+<cbc:IssueTime>12:00:00</cbc:IssueTime> <4>
+----
+<1> The message is based on the PEPPOL transaction specification for transaction 111 and should therefore comply with the rules defined in that specification.
+<2> The profile ID states that the transaction is part of business process number 63 which is the Invoice Response process.
+<3> The identifier for this message, i.e. the identifier for this Invoice Response message, not the identifier of the invoice that is being responded to.
+<4> The date and the time when the response was issues is then provided

@@ -1,0 +1,11 @@
+[[replaced-item]]
+== Replaced item
+
+Replaced item is used to identify an existing item being replaced by an item in this Catalogue.
+
+
+.Example:
+[source, xml, indent=0]
+----
+include::{snippet-dir}/Snippet-1-1.xml[tags=replaceitem]
+----

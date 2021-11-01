@@ -1,0 +1,50 @@
+[[business-requirements]]
+= Business requirements
+
+[cols="1,8",options="header"]
+|====
+|ID
+|Requirement
+
+|tbr71-001
+a|It must be possible to give the response message a unique identifier.
+The identifier is issued by the sender of the MLR and can be used to uniquely identify a message instance.footnote:[For the MLR UBL-Binding this refers to an identifier the in the ApplicationResponse document.]
+
+|tbr71-002
+|It must be possible to state the date and time when the response message is issued. +
+The date must always be given but the time (hours, minutes and seconds) is optional to use.
+
+|tbr71-003
+|It must be possible to state a free text note used to inform the receiver about information that is not explicitly given in any dedicated structure. The information is meant to be manually read/assessed by the receiver.
+
+|tbr71-004
+|It must be possible to specify the Party sending the response.
+
+|tbr71-005
+|It must be possible to specify the Party receiving the response.
+
+|OP-tbr71-006
+|It must be possible to specify the Response to a previously received message
+referring to the document by referring to its envelope/messageID
+
+|OP-tbr71-007
+|It must be possible to give the response as a code (response code) for the whole
+document (on header-level). A response code list is required in order to facilitate
+automated processing of message responses. Examples of response codes may be
+Accepted/Rejected/Acknowledged.
+
+|OP-tbr71-009
+|It must be possible to provide a list of validation errors and which type of violation
+they represent.
+
+|tbr71-010
+|A response document must be able to clearly indicate whether the received document was accepted or not.
+
+|tbr71-011
+|It must be possible to sign the response document in order to provide for non-repudiation.
+
+|OP-tbr71-014
+|The message should allow for location identifiers/paths to indicate the location of
+the errors in the received instance.
+
+|====

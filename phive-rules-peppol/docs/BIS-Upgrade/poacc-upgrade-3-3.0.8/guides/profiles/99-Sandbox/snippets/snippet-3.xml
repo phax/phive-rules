@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApplicationResponse xmlns="urn:oasis:names:specification:ubl:schema:xsd:ApplicationResponse-2"
+                     xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+                     xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
+    <cbc:UBLVersionID>2.1</cbc:UBLVersionID>
+    <cbc:CustomizationID schemeID="PEPPOL">urn:www.cenbii.eu:transaction:biitrns071:ver2.0:extended:urn:www.peppol.eu:bis:peppol36a:ver2.0</cbc:CustomizationID>
+    <cbc:ProfileID>urn:www.cenbii.eu:profile:bii36a:ver2.0</cbc:ProfileID>
+    <cbc:ID>TheMLR-ID123</cbc:ID>
+    <cbc:IssueDate>2016-08-15</cbc:IssueDate>
+    <cac:SenderParty>
+        <cbc:EndpointID schemeID="NO:ORGNR">981915550</cbc:EndpointID>
+    </cac:SenderParty>    
+    <cac:ReceiverParty>
+        <cbc:EndpointID schemeID="GLN">7315458756324</cbc:EndpointID>
+    </cac:ReceiverParty>
+    <cac:DocumentResponse>
+        <!-- tag::reject[] -->
+        <cac:Response>
+            <cbc:ResponseCode listID="UNCL4343">RE</cbc:ResponseCode>
+            <cbc:Description languageID="en">The document was rejected because it failed validation</cbc:Description>
+        </cac:Response>
+        <!-- end::reject[] -->
+        <cac:DocumentReference>
+            <!-- The SBDH envelope ID of the source message -->
+            <cbc:ID>EnvelopeID-12456789</cbc:ID>
+        </cac:DocumentReference>
+        <!-- tag::line-response[] -->
+        <cac:LineResponse>
+            <cac:LineReference>
+                <cbc:LineID>NA</cbc:LineID>
+                <cac:DocumentReference>
+                    <cbc:ID>NA</cbc:ID>
+                    <cbc:XPath>Invoice/cac:LegalMonetaryTotal/cbc:TaxExclusiveAmount</cbc:XPath>
+                </cac:DocumentReference>
+            </cac:LineReference>
+            <cac:Response>
+                <cbc:ReferenceID>BIIRULE-T10-R012</cbc:ReferenceID>
+                <cbc:Description>Invoice tax exclusive amount MUST equal the sum of lines plus allowances and charges on header level</cbc:Description>
+                <cac:Status>
+                    <cbc:StatusReasonCode listID="PEPPOLSTATUS">RVF</cbc:StatusReasonCode>
+                </cac:Status>
+            </cac:Response>
+        </cac:LineResponse>
+        <!-- end::line-response[] -->
+        <cac:LineResponse>
+            <cac:LineReference>
+                <!-- LineID is a mandatory field and the constant "NA" means "not applicable" meaning that
+                     no line ID is available. -->
+                <cbc:LineID>NA</cbc:LineID>
+                <cac:DocumentReference>
+                    <!-- DocumentReference/ID is a mandatory field and the constant "NA" means "not applicable" meaning that
+                         no ID is available. -->
+                    <cbc:ID>NA</cbc:ID>
+                    <!-- the (optional) XPath that was e.g. extracted from the Schematron SVRL -->
+                    <cbc:XPath>Invoice/cac:TaxTotal/cac:TaxSubtotal/</cbc:XPath>
+                </cac:DocumentReference>
+            </cac:LineReference>
+            <cac:Response>
+                <!-- The ID of the failed rule (optional) -->
+                <cbc:ReferenceID>EUGEN-T10-R051</cbc:ReferenceID>
+                <!-- The human readable response text -->
+                <cbc:Description>Document level amounts cannot have more than 2 decimals</cbc:Description>
+                <cac:Status>
+                    <!-- Must be one of "SV" (syntax violation), 
+                         "RVF" (rule violation fatal) or 
+                         "RVW" (rule violation warning) -->
+                    <cbc:StatusReasonCode listID="PEPPOLSTATUS">RVF</cbc:StatusReasonCode>
+                </cac:Status>
+            </cac:Response>
+        </cac:LineResponse>
+    </cac:DocumentResponse>
+</ApplicationResponse>

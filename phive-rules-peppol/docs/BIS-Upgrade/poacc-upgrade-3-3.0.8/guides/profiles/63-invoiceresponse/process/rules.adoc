@@ -1,0 +1,80 @@
+[[invoice-response-process-rules]]
+= Invoice Response process rules
+
+The Invoice Response process governs how and when the transactions are issued and how they are handled between the sender and the receiver.
+
+.Invoice response process rules
+[cols="1h,5",options="header"]
+|====
+|RuleID
+|Rule
+
+|OP-BR111-R001
+a|
+The Invoice Response is one directional message only - from Buyer to Seller.
+
+Invoice Response is meant to be sent from Buyer to Seller informing about invoice status inside the Buyer’s business process.
+
+|OP-BR111-R002
+|Each Invoice Response message is intended to carry one status code (top level status) at a time, for an individual invoice.
+To inform about several statuses of an Invoice then several messages shall be used in sequence.
+An invoice can only have one status at each time.
+
+|OP-BR111-R003
+|Several Invoice Response’s can be sent for one invoice.
+
+|OP-BR111-R004
+|If an invoice has been given the status Rejected or Paid, then no further Invoice Response may be sent regarding that invoice.
+I.e. Seller may ignore them.footnote:exept[Business situations that require exceptions to these rules are not prohibited by this BIS but are not supported by the Invoice Response described in it.
+Such business situations must be handled externally between the trading parties.]
+
+|OP-BR111-R005
+|If an invoice has been given status Approved, then that may only be followed with an Invoice Response giving status Paid.
+I.e. Seller may ignore them.footnote:exept[]
+
+|OP-BR111-R006
+|A Buyer shall provide first Invoice Response within 3 working days.
+
+|OP-BR111-R007
+|An Invoice Response message doesn’t prescribe the invoice workflow process for the Buyer.
+Different Buyers may have different workflows processes for the invoices.
+
+|OP-BR111-R008
+|An Invoice Response does not have any legal power.
+
+|OP-BR111-R009
+|An Invoice Response does not change the invoice content.
+
+|OP-BR111-R010
+|An Invoice Response does not change the commercial responsibilities between Buyer and Seller.
+
+|OP-BR111-R011
+|An Invoice Response (even as rejection) does not free the Buyer from his payment obligations towards the Seller if such an obligation exists by agreement or real business transaction or the other way around in case of a credit note.
+
+|OP-BR111-R012
+a|
+The status of invoices shall advance in the following order.
+
+[horizontal]
+AB:: Acknowledged
+
+IP:: In process
+
+UQ:: Under query
+
+CA:: Conditionally accepted
+
+RE:: Rejected (Final status)
+
+AP:: Accepted (approved)
+
+PD:: Paid (Final status, The status code “Paid” will probably not be used in relation to credit notes)
+
+The process may start at any status and not all statuses must be reported.
+
+|OP-BR111-R013
+|Seller can dispute any status presented by Buyer in Invoice Response with an external process.
+
+|OP-BR111-R014
+|Document type code must conform to the document type code of the original message the response is sent to (usually 380 for the commercial invoice and 381 for credit note).
+|====

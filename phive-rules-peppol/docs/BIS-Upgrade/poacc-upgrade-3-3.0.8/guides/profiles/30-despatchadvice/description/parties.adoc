@@ -1,0 +1,72 @@
+[[parties]]
+= Parties
+
+The following parties/roles may be specified in the message.
+The same actor may play more than one role depending on the handling routine.
+
+[[despatch-party-despatchsupplierparty]]
+== Despatch party (DespatchSupplierParty)
+
+The Despatch Party is the person or organization who provides (despatch) the goods or services.
+The role is carried out by the supplier or on behalf of the supplier. (Despatch Party is sometimes known as the Consignor). The Despatch Party is mandatory information in the Despatch Advice message.
+
+Example:
+[source, xml, indent=0]
+----
+include::{snippet-dir}/snippet-30-1.xml[tags=despatchsupplier]
+----
+
+[[consignee-deliverycustomerparty]]
+== Consignee (DeliveryCustomerParty)
+
+The Consignee is the person or organization to which the products will be shipped and who is taking possession.
+The role is carried out by the customer or on behalf of the customer.
+The Consignee is mandatory information in the Despatch Advice message.
+
+Example:
+[source, xml, indent=0]
+----
+include::{snippet-dir}/snippet-30-1.xml[tags=deliverycustomer]
+----
+
+[[buyer-buyercustomerparty]]
+== Buyer (BuyerCustomerParty)
+
+The buyer is the legal person or organization who buys or purchases the goods or services.
+The role is carried out by the customer or on behalf of the customer.
+
+The Buyer is optional information in the Despatch Advice message.
+
+Example:
+[source, xml, indent=0]
+----
+include::{snippet-dir}/snippet-30-1.xml[tags=buyer]
+----
+
+
+[[seller-sellersupplierparty]]
+== Seller (SellerSupplierParty)
+
+The seller is the legal person or organization who sells goods or services to the customer.
+The role is carried out by the supplier or on behalf of the supplier.
+The Seller is optional information in the Despatch Advice message.
+
+Example:
+[source, xml, indent=0]
+----
+include::{snippet-dir}/snippet-30-1.xml[tags=seller]
+----
+
+
+[[originating-party-originatorcustomerparty]]
+== Originating party (OriginatorCustomerParty)
+
+The party who will eventually receive and consume the goods and on whose behalf the buyer makes the purchase.
+The Originator Party is optional information in the Despatch Advice message.
+
+Example:
+
+[source, xml, indent=0]
+----
+include::{snippet-dir}/snippet-30-1.xml[tags=originator]
+----

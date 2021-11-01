@@ -1,0 +1,41 @@
+[[use-case-2-ordering-of-free-text-articles]]
+= Use case 2 – Ordering of free text articles
+
+This use case contains an order of free text articles.
+
+[cols="1s,5",options="header"]
+|====
+|Use Case number
+|2
+
+|Use Case Name
+|Ordering of free text articles
+
+|Use Case Description
+|An order with item/articles described in free text and attribute/value pairs. +
+The seller responds with the proper item names. +
+All lines are accepted.
+
+|Parties involved
+|Buyer +
+Seller +
+Originator
+
+|Assumptions
+|The buyer does not have structured item information. +
+The buyer must specify the items in a way that ensures that the seller can properly identify the requested items.
+|The flow
+a|The buyer creates the order with 2 different lines and items. +
+The seller:
+
+* Accepts to deliver all items
+* Full item information is returned in the response.
+
+|Result
+|The buyer and the seller has reached an agreement. +
+The buyer has updated the order information based on the response.+
+If the invoice has an order reference, the invoice can be matched automatically. +
+
+|XML example file
+|{order-response-UC}
+|====

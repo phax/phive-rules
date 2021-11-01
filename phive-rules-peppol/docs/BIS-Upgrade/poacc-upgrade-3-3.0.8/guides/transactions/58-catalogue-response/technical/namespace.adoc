@@ -1,0 +1,6 @@
+The catalogue response data model is bound to {ubl} document type {ubl-appl-resp}.
+
+====
+The target namespace for the catalogue response is::
+`urn:oasis:names:specification:ubl:schema:xsd:ApplicationResponse-2`
+====

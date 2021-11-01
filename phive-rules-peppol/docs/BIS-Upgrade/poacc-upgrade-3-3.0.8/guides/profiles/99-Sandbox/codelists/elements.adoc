@@ -1,0 +1,13 @@
+
+
+= Code lists used in order transaction
+
+:leveloffset: +1
+
+include::elements/doc-type.adoc[]
+
+include::elements/response-codes.adoc[]
+
+include::elements/status-reason.adoc[]
+
+:leveloffset: -1

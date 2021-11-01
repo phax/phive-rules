@@ -1,0 +1,11 @@
+
+[[id_schemes]]
+= Code lists for identifier schemes
+
+:leveloffset: +1
+
+include::schemes/endpoint.adoc[]
+include::schemes/party-id.adoc[]
+
+
+:leveloffset: -1

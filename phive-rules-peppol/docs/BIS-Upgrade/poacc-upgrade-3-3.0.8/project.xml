@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Project xmlns="urn:fdc:difi.no:2017:vefa:structure:Project-1">
+    <Name>PEPPOL BIS version 3</Name>
+    <!-- Introduction -->
+    <Documentation path="">INTRODUCTION</Documentation>
+    <Documentation path="compliance/">BIS compliance</Documentation>
+    <Documentation path="release-notes/">Release notes</Documentation>
+    <Documentation path="changes/">- Overview of alignments</Documentation>
+    <!-- BIS documents -->
+    <Documentation path="">BIS DOCUMENTS</Documentation>
+    <Documentation path="profiles/3-order-only/">- PEPPOL BIS Order only 3.2</Documentation>
+    <Documentation path="profiles/28-ordering/">- PEPPOL BIS Ordering 3.2</Documentation>
+    <Documentation path="profiles/1-catalogueonly/">- PEPPOL BIS Catalogue with response 3.1</Documentation>
+    <Documentation path="profiles/64-catalogue-wo-response/">- PEPPOL BIS Catalogue without response 3.1</Documentation>
+    <Documentation path="profiles/30-despatchadvice/">- PEPPOL BIS Despatch Advice 3.1</Documentation>
+    <Documentation path="profiles/18-punchout/">- PEPPOL BIS Punch Out 3.1</Documentation>
+    <Documentation path="profiles/42-orderagreement/">- PEPPOL BIS Order Agreement 3.0</Documentation>
+    <Documentation path="profiles/36-mlr/">- PEPPOL BIS Message Level Response 3.0</Documentation>
+    <Documentation path="profiles/63-invoiceresponse/">- PEPPOL BIS Invoice Response 3.1</Documentation>
+    <!-- <Documentation path="work/">Overview and processing of alignments</Documentation> -->
+    <!-- <Documentation path="review/">Review of alignments</Documentation> -->
+    <!-- <Documentation path="methodology/schematron/">Schematron guideline</Documentation> -->
+    <!-- <Documentation path="work/rules/">Automatic/manual rules</Documentation> -->
+    <!-- Syntax -->
+    <Resource>
+        <Type>Structure-1</Type>
+        <Path>structure/syntax/ubl-order.xml</Path>
+        <Title>PEPPOL Order transaction 3.2 (T01)</Title>
+    </Resource>
+    <Resource>
+        <Type>Structure-1</Type>
+        <Path>structure/syntax/ubl-order-response.xml</Path>
+        <Title>PEPPOL Order Response transaction 3.0 (T76)</Title>
+    </Resource>
+    <Resource>
+        <Type>Structure-1</Type>
+        <Path>structure/syntax/ubl-orderagreement.xml</Path>
+        <Title>PEPPOL Order Agreement transaction 3.0 (T110)</Title>
+    </Resource>
+    <Resource>
+        <Type>Structure-1</Type>
+        <Path>structure/syntax/ubl-catalogue.xml</Path>
+        <Title>PEPPOL Catalogue transaction 3.1 (T19)</Title>
+    </Resource>
+    <Resource>
+        <Type>Structure-1</Type>
+        <Path>structure/syntax/ubl-catalogue-response.xml</Path>
+        <Title>PEPPOL Catalogue Response transaction 3.0 (T58)</Title>
+    </Resource>
+    <Resource>
+        <Type>Structure-1</Type>
+        <Path>structure/syntax/ubl-despatch-advice.xml</Path>
+        <Title>PEPPOL Despatch Advice transaction 3.1 (T16)</Title>
+    </Resource>
+    <Resource>
+        <Type>Structure-1</Type>
+        <Path>structure/syntax/ubl-shoppingcart.xml</Path>
+        <Title>PEPPOL Punch Out transaction 3.1 (T77)</Title>
+    </Resource>
+    <Resource>
+        <Type>Structure-1</Type>
+        <Path>structure/syntax/ubl-mlr.xml</Path>
+        <Title>PEPPOL Message Level Response 3.0 (T71)</Title>
+    </Resource>
+    <Resource>
+        <Type>Structure-1</Type>
+        <Path>structure/syntax/ubl-invoiceresponse.xml</Path>
+        <Title>PEPPOL Invoice Response transaction 3.1 (T111)</Title>
+    </Resource>
+    <!-- Rules -->
+    <Resource>
+        <Identifier>common</Identifier>
+        <Type>native:Schematron</Type>
+        <Path>rules/sch/parts/common.sch</Path>
+        <Title>Common rules</Title>
+    </Resource>
+    <Resource>
+        <Identifier>T01</Identifier>
+        <Type>native:Schematron</Type>
+        <Path>rules/sch/parts/PEPPOL-M-T01.sch</Path>
+        <Title>Business rules for PEPPOL Order transaction 3.0 </Title>
+    </Resource>
+    <Resource>
+        <Identifier>T16</Identifier>
+        <Type>native:Schematron</Type>
+        <Path>rules/sch/parts/PEPPOL-M-T16.sch</Path>
+        <Title>Business rules for PEPPOL Despatch Advice transaction 3.0</Title>
+    </Resource>
+    <Resource>
+        <Identifier>T19</Identifier>
+        <Type>native:Schematron</Type>
+        <Path>rules/sch/parts/PEPPOL-M-T19.sch</Path>
+        <Title>Business rules for PEPPOL Catalogue transaction 3.0</Title>
+    </Resource>
+    <Resource>
+        <Identifier>T76</Identifier>
+        <Type>native:Schematron</Type>
+        <Path>rules/sch/parts/PEPPOL-M-T76.sch</Path>
+        <Title>Business rules for PEPPOL Order Response transaction 3.0</Title>
+    </Resource>
+    <Resource>
+        <Identifier>T77</Identifier>
+        <Type>native:Schematron</Type>
+        <Path>rules/sch/parts/PEPPOL-M-T77.sch</Path>
+        <Title>Business rules for PEPPOL Punch Out transaction 3.0</Title>
+    </Resource>
+    <Resource>
+        <Identifier>T110</Identifier>
+        <Type>native:Schematron</Type>
+        <Path>rules/sch/parts/PEPPOL-M-T110.sch</Path>
+        <Title>Business rules for PEPPOL Order Agreement transaction 3.0</Title>
+    </Resource>
+    <Resource>
+        <Identifier>T111</Identifier>
+        <Type>native:Schematron</Type>
+        <Path>rules/sch/parts/PEPPOL-M-T111.sch</Path>
+        <Title>Business rules for PEPPOL Invoice Response transaction 3.0</Title>
+    </Resource>
+    <!-- Code lists -->
+    <Resource>
+        <Type>CodeList-1</Type>
+        <Path>structure/codelist/UNCL1229.xml</Path>
+    </Resource>
+    <Resource>
+        <Type>CodeList-1</Type>
+        <Path>structure/codelist/UNCL5189.xml</Path>
+    </Resource>
+    <Resource>
+        <Type>CodeList-1</Type>
+        <Path>structure/codelist/UNCL4343.xml</Path>
+    </Resource>
+    <Resource>
+        <Type>CodeList-1</Type>
+        <Path>structure/codelist/TrueFalse.xml</Path>
+    </Resource>
+    <Resource>
+        <Type>CodeList-1</Type>
+        <Path>structure/codelist/ActionCode_header.xml</Path>
+    </Resource>
+    <Resource>
+        <Type>CodeList-1</Type>
+        <Path>structure/codelist/ActionCode_line.xml</Path>
+    </Resource>
+    <Resource>
+        <Type>CodeList-1</Type>
+        <Path>structure/codelist/UNCL7161.xml</Path>
+    </Resource>
+    <Resource>
+        <Type>CodeList-1</Type>
+        <Path>structure/codelist/ClarificationListID.xml</Path>
+    </Resource>
+    <Resource>
+        <Type>CodeList-1</Type>
+        <Path>structure/codelist/ISO3166-1_Alpha2.xml</Path>
+    </Resource>
+    <Resource>
+        <Type>CodeList-1</Type>
+        <Path>structure/codelist/ISO4217_2015.xml</Path>
+    </Resource>
+    <Resource>
+        <Type>CodeList-1</Type>
+        <Path>structure/codelist/UNCL8273.xml</Path>
+    </Resource>
+    <Resource>
+        <Type>CodeList-1</Type>
+        <Path>structure/codelist/UNCL1001.xml</Path>
+    </Resource>
+    <Resource>
+        <Type>CodeList-1</Type>
+        <Path>structure/codelist/UNCL5305.xml</Path>
+    </Resource>
+    <Resource>
+        <Type>CodeList-1</Type>
+        <Path>structure/codelist/eas.xml</Path>
+    </Resource>
+    <Resource>
+        <Type>CodeList-1</Type>
+        <Path>structure/codelist/ICD.xml</Path>
+    </Resource>
+    <Resource>
+        <Type>CodeList-1</Type>
+        <Path>structure/codelist/Image.xml</Path>
+    </Resource>
+    <Resource>
+        <Type>CodeList-1</Type>
+        <Path>structure/codelist/UNCL4343-T111.xml</Path>
+    </Resource>
+    <Resource>
+        <Type>CodeList-1</Type>
+        <Path>structure/codelist/UNCL7143.xml</Path>
+    </Resource>
+    <Resource>
+        <Type>CodeList-1</Type>
+        <Path>structure/codelist/UNCL6313.xml</Path>
+    </Resource>
+    <Resource>
+        <Type>CodeList-1</Type>
+        <Path>structure/codelist/UNCL6313-T16.xml</Path>
+    </Resource>
+    <Resource>
+        <Type>CodeList-1</Type>
+        <Path>structure/codelist/MimeCode.xml</Path>
+    </Resource>
+    <Resource>
+        <Type>CodeList-1</Type>
+        <Path>structure/codelist/UNCL4343-T76.xml</Path>
+    </Resource>
+    <Resource>
+        <Type>CodeList-1</Type>
+        <Path>structure/codelist/UNCL1001_T01.xml</Path>
+    </Resource>
+    <Resource>
+        <Type>CodeList-1</Type>
+        <Path>structure/codelist/GS17009.xml</Path>
+    </Resource>
+    <Resource>
+        <Type>CodeList-1</Type>
+        <Path>structure/codelist/UNCL5387.xml</Path>
+    </Resource>
+    <Resource>
+        <Type>CodeList-1</Type>
+        <Path>structure/codelist/UNECERec20-11e.xml</Path>
+    </Resource>
+    <Resource>
+        <Type>CodeList-1</Type>
+        <Path>structure/codelist/UNECERec21-9e.xml</Path>
+    </Resource>
+    <Resource>
+        <Type>CodeList-1</Type>
+        <Path>structure/codelist/OPStatusAction.xml</Path>
+    </Resource>
+    <Resource>
+        <Type>CodeList-1</Type>
+        <Path>structure/codelist/OPStatusReason.xml</Path>
+    </Resource>
+    <Resource>
+        <Type>CodeList-1</Type>
+        <Path>structure/codelist/StatusReason.xml</Path>
+    </Resource>
+    <!-- Files -->
+    <Resource>
+        <Type>native:File</Type>
+        <Path>project.xml</Path>
+        <Title>Example files (Appendix A)</Title>
+        <Property key="download">PEPPOLBIS-Examples.zip</Property>
+        <Property key="filename">PEPPOLBIS-Examples.zip</Property>
+    </Resource>
+    <Resource>
+        <Type>native:File</Type>
+        <Path>project.xml</Path>
+        <Title>Schematron files</Title>
+        <Property key="download">PEPPOLBIS-Upgrade-Schematron.zip</Property>
+        <Property key="filename">PEPPOLBIS-Upgrade-Schematron.zip</Property>
+    </Resource>
+    <!-- Namespaces -->
+    <Resource>
+        <Type>Namespace-1</Type>
+        <Path>structure/namespace/ubl-application-response.xml</Path>
+    </Resource>
+    <Resource>
+        <Type>Namespace-1</Type>
+        <Path>structure/namespace/ubl-catalogue.xml</Path>
+    </Resource>
+    <Resource>
+        <Type>Namespace-1</Type>
+        <Path>structure/namespace/ubl-despatch-advice.xml</Path>
+    </Resource>
+    <Resource>
+        <Type>Namespace-1</Type>
+        <Path>structure/namespace/ubl-order.xml</Path>
+    </Resource>
+    <Resource>
+        <Type>Namespace-1</Type>
+        <Path>structure/namespace/ubl-order-response.xml</Path>
+    </Resource>
+    <Resource>
+        <Type>Namespace-1</Type>
+        <Path>structure/namespace/ubl-cac.xml</Path>
+    </Resource>
+    <Resource>
+        <Type>Namespace-1</Type>
+        <Path>structure/namespace/ubl-cbc.xml</Path>
+    </Resource>
+</Project>

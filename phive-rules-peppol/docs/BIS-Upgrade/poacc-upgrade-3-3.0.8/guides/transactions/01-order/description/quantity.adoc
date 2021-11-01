@@ -1,0 +1,28 @@
+[[quantities-and-units]]
+= Quantities and units
+
+Various quantities and units can be stated in the PEPPOL BIS Order.
+These are both related to the ordering process and the logistics process.
+
+The table below lists quantities and units in the format.
+To all quantities there must be a valid Unit according to the Code list.
+
+[cols="1,5",options="header"]
+|====
+|Element name / (Tag name)
+|Description
+
+|Price Quantity +
+(`cbc:BaseQuantity`)
+|Quantity related to Price.
+
+|Order Quantity +
+(`cbc:Quantity`)
+|Quantity that is ordered, e.g. number of pieces or volume in litre .
+|====
+
+.Example of an order line with a quantity of 120 litre (cbc:Quantity) and price is given per litre.
+[source, xml, indent=0]
+----
+include::{snippet-dir}/snippet-01.xml[tags=quantity]
+----

@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OrderResponse xmlns="urn:oasis:names:specification:ubl:schema:xsd:OrderResponse-2"
+	xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+	xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
+	<cbc:CustomizationID>urn:fdc:peppol.eu:poacc:trns:order_agreement:3</cbc:CustomizationID>
+	<cbc:ProfileID>urn:fdc:peppol.eu:poacc:bis:order_agreement:3</cbc:ProfileID>
+
+	<cbc:ID>id123 tir110-001</cbc:ID>
+	<cbc:IssueDate>2016-08-16</cbc:IssueDate>
+	<cbc:IssueTime>12:00:00</cbc:IssueTime>
+	<cbc:Note>Textual note with the order agreement</cbc:Note>
+	<cbc:DocumentCurrencyCode>EUR</cbc:DocumentCurrencyCode>
+	
+	<!-- tag::CustomerReference[] -->
+	<cbc:CustomerReference>Buyer reference id</cbc:CustomerReference>
+	<!-- end::CustomerReference[] -->
+
+	<!-- tag::OrderReference[] -->
+	<cac:OrderReference>
+		<cbc:ID>Order id</cbc:ID>
+	</cac:OrderReference>
+	<!-- end::OrderReference[] -->
+
+	<!-- tag::AdditionalDocumentReference[] -->
+	<cac:AdditionalDocumentReference>
+		<cbc:ID>Document id</cbc:ID>
+		<cbc:DocumentType>Document description</cbc:DocumentType>
+		<cac:Attachment>
+			<cbc:EmbeddedDocumentBinaryObject mimeCode="application/pdf" filename="file.pdf">
+				UjBsR09EbGhjZ0dTQUxNQUFBUUNBRU1tQ1p0dU1GUXhEUzhi</cbc:EmbeddedDocumentBinaryObject>
+		</cac:Attachment>
+	</cac:AdditionalDocumentReference>
+	<!-- end::AdditionalDocumentReference[] -->
+
+	<!-- tag::contract[] -->
+	<cac:Contract>
+		<cbc:ID>contract id</cbc:ID>
+	</cac:Contract>
+	<!-- end::contract[] -->
+
+	<!-- tag::seller[] -->
+	<cac:SellerSupplierParty>
+		<cac:Party>
+			<cbc:EndpointID schemeID="0088">5790000436095</cbc:EndpointID>
+			<cac:PartyIdentification>
+				<cbc:ID schemeID="0007">5541277711</cbc:ID>
+			</cac:PartyIdentification>
+			<cac:PostalAddress>
+				<cbc:StreetName>Apt 56B, Whitehaven Mansions</cbc:StreetName>
+				<cbc:AdditionalStreetName>Sandhurst Sq</cbc:AdditionalStreetName>
+				<cbc:CityName>Brussels</cbc:CityName>
+				<cbc:PostalZone>1001</cbc:PostalZone>
+				<cbc:CountrySubentity>Brussels-Capital</cbc:CountrySubentity>
+				<cac:Country>
+					<cbc:IdentificationCode>BE</cbc:IdentificationCode>
+				</cac:Country>
+			</cac:PostalAddress>
+			<cac:PartyLegalEntity>
+				<cbc:RegistrationName>Seller Company Ltd</cbc:RegistrationName>
+			</cac:PartyLegalEntity>
+			<cac:Contact>
+				<cbc:Name>Hercule Poirot</cbc:Name>
+				<cbc:Telephone>123456</cbc:Telephone>
+				<cbc:ElectronicMail>mail@work.be</cbc:ElectronicMail>
+			</cac:Contact>
+		</cac:Party>
+	</cac:SellerSupplierParty>
+	<!-- end::seller[] -->
+
+	<!-- tag::buyer[] -->
+	<cac:BuyerCustomerParty>
+		<cac:Party>
+			<cbc:EndpointID schemeID="0088">5790000436095</cbc:EndpointID>
+			<cac:PartyIdentification>
+				<cbc:ID schemeID="0007">5541277711</cbc:ID>
+			</cac:PartyIdentification>
+			<cac:PostalAddress>
+				<cbc:StreetName>Apt 56B, Whitehaven Mansions</cbc:StreetName>
+				<cbc:AdditionalStreetName>Sandhurst Sq</cbc:AdditionalStreetName>
+				<cbc:CityName>Brussels</cbc:CityName>
+				<cbc:PostalZone>1001</cbc:PostalZone>
+				<cbc:CountrySubentity>BE</cbc:CountrySubentity>
+				<cac:Country>
+					<cbc:IdentificationCode>SE</cbc:IdentificationCode>
+				</cac:Country>
+			</cac:PostalAddress>
+			<cac:PartyLegalEntity>
+				<cbc:RegistrationName>Buyer Ltd</cbc:RegistrationName>
+			</cac:PartyLegalEntity>
+		</cac:Party>
+	</cac:BuyerCustomerParty>
+	<!-- end::buyer[] -->
+
+	<!-- tag::originator[] -->
+	<cac:OriginatorCustomerParty>
+		<cac:Party>
+			<cac:PartyIdentification>
+				<cbc:ID schemeID="0007">5541277711</cbc:ID>
+			</cac:PartyIdentification>
+			<cac:PartyName>
+				<cbc:Name>Information services</cbc:Name>
+			</cac:PartyName>
+		</cac:Party>
+	</cac:OriginatorCustomerParty>
+	<!-- end::originator[] -->
+
+	<!-- tag::customer[] -->
+	<cac:AccountingCustomerParty>
+		<cac:Party>
+			<cac:PartyIdentification>
+				<cbc:ID schemeID="0007">5541277711</cbc:ID>
+			</cac:PartyIdentification>
+			<cac:PartyName>
+				<cbc:Name>Information services</cbc:Name>
+			</cac:PartyName>
+		</cac:Party>
+	</cac:AccountingCustomerParty>
+	<!-- end::customer[] -->
+
+	<!-- tag::delivery[] -->
+	<cac:Delivery>
+		<cac:PromisedDeliveryPeriod>
+			<cbc:StartDate>2016-08-20</cbc:StartDate>
+			<cbc:StartTime>12:00:00</cbc:StartTime>
+			<cbc:EndDate>2016-08-30</cbc:EndDate>
+			<cbc:EndTime>18:00:00</cbc:EndTime>
+		</cac:PromisedDeliveryPeriod>
+		<cac:DeliveryParty>
+			<cac:PartyIdentification>
+				<cbc:ID schemeID="0007">5541277711</cbc:ID>
+			</cac:PartyIdentification>
+			<cac:PartyName>
+				<cbc:Name>Delivery party name</cbc:Name>
+			</cac:PartyName>
+		</cac:DeliveryParty>
+	
+	</cac:Delivery>
+	
+	<cac:DeliveryTerms>
+		<cbc:ID>1</cbc:ID>
+		<cbc:SpecialTerms>Customer pick up</cbc:SpecialTerms>
+	</cac:DeliveryTerms>
+	<!-- end::delivery[] -->
+	<!-- tag::allowance[] -->
+	<cac:AllowanceCharge>
+		<cbc:ChargeIndicator>false</cbc:ChargeIndicator>
+		<cbc:AllowanceChargeReason>Discount</cbc:AllowanceChargeReason>
+		<cbc:Amount currencyID="EUR">100</cbc:Amount>
+		<cac:TaxCategory>
+			<cbc:ID>S</cbc:ID>
+			<cbc:Percent>15</cbc:Percent>
+			<cac:TaxScheme>
+				<cbc:ID>VAT</cbc:ID>
+			</cac:TaxScheme>
+		</cac:TaxCategory>
+	</cac:AllowanceCharge>
+	<!-- end::allowance[] -->
+
+	<!-- tag::allowance2[] -->
+	<cac:AllowanceCharge>
+		<cbc:ChargeIndicator>true</cbc:ChargeIndicator>
+		<cbc:AllowanceChargeReason>Packing cost</cbc:AllowanceChargeReason>
+		<cbc:Amount currencyID="EUR">200</cbc:Amount>
+		<cac:TaxCategory>
+			<cbc:ID>S</cbc:ID>
+			<cbc:Percent>15</cbc:Percent>
+			<cac:TaxScheme>
+				<cbc:ID>VAT</cbc:ID>
+			</cac:TaxScheme>
+		</cac:TaxCategory>
+	</cac:AllowanceCharge>
+	<!-- end::allowance2[] -->
+
+	<!-- tag::taxtotal[] -->
+	<cac:TaxTotal>
+		<cbc:TaxAmount currencyID="EUR">90</cbc:TaxAmount>
+		<cac:TaxSubtotal>
+			<cbc:TaxableAmount currencyID="EUR">600</cbc:TaxableAmount>
+			<cbc:TaxAmount currencyID="EUR">90</cbc:TaxAmount>
+			<cac:TaxCategory>
+				<cbc:ID>S</cbc:ID>
+				<cbc:Percent>15</cbc:Percent>
+				<cac:TaxScheme>
+					<cbc:ID>VAT</cbc:ID>
+				</cac:TaxScheme>
+			</cac:TaxCategory>
+		</cac:TaxSubtotal>
+	</cac:TaxTotal>
+	<!-- end::taxtotal[] -->
+
+	<!-- tag::LegalMonetaryTotal[] -->
+	<cac:LegalMonetaryTotal>
+		<cbc:LineExtensionAmount currencyID="EUR">500</cbc:LineExtensionAmount>
+		<cbc:TaxExclusiveAmount currencyID="EUR">600</cbc:TaxExclusiveAmount>
+		<cbc:TaxInclusiveAmount currencyID="EUR">690</cbc:TaxInclusiveAmount>
+		<cbc:AllowanceTotalAmount currencyID="EUR">100</cbc:AllowanceTotalAmount>
+		<cbc:ChargeTotalAmount currencyID="EUR">200</cbc:ChargeTotalAmount>
+		<cbc:PrepaidAmount currencyID="EUR">90</cbc:PrepaidAmount>
+		<cbc:PayableAmount currencyID="EUR">600.00</cbc:PayableAmount>
+	</cac:LegalMonetaryTotal>
+	<!-- end::LegalMonetaryTotal[] -->
+
+	<cac:OrderLine>
+		<!-- tag::LineItem[] -->
+		<cac:LineItem>
+			<cbc:ID>1</cbc:ID>
+			<cbc:Note>Line note</cbc:Note>
+			<cbc:Quantity unitCode="C62">120</cbc:Quantity>
+			<cbc:LineExtensionAmount currencyID="EUR">500</cbc:LineExtensionAmount>
+
+			<!-- end::LineItem[] -->
+
+			<!-- tag::DeliveryLine[] -->
+			<cac:Delivery>
+				<cbc:Quantity unitCode="P1">12</cbc:Quantity>
+				<cac:PromisedDeliveryPeriod>
+					<cbc:StartDate>2016-08-20</cbc:StartDate>
+					<cbc:StartTime>12:00:00</cbc:StartTime>
+					<cbc:EndDate>2016-08-30</cbc:EndDate>
+					<cbc:EndTime>18:00:00</cbc:EndTime>
+				</cac:PromisedDeliveryPeriod>
+			</cac:Delivery>
+			<!-- end::DeliveryLine[] -->
+
+			<!-- tag::price[] -->
+			<cac:Price>
+				<cbc:PriceAmount currencyID="EUR">50</cbc:PriceAmount>
+				<cbc:BaseQuantity unitCode="C62">12</cbc:BaseQuantity>
+			</cac:Price>
+			<!-- end::price[] -->
+
+			<!-- tag::ItemDescription[] -->
+			<cac:Item>
+				<cbc:Description>Description of the item</cbc:Description>
+				<cbc:Name>Item name</cbc:Name>
+				<!-- end::ItemDescription[] -->
+
+				<!-- tag::ItemIdentifiers[] -->
+				<cac:SellersItemIdentification>
+					<cbc:ID>123</cbc:ID>
+				</cac:SellersItemIdentification>
+				<cac:StandardItemIdentification>
+					<cbc:ID schemeID="0160">73123456001233</cbc:ID>
+				</cac:StandardItemIdentification>
+				<!-- end::ItemIdentifiers[] -->
+
+				<!-- tag::ItemSpecificationDocumentReference[] -->
+				<cac:ItemSpecificationDocumentReference>
+					<cbc:ID>doc id</cbc:ID>
+					<cbc:DocumentType>Item specs</cbc:DocumentType>
+					<cac:Attachment>
+						<cbc:EmbeddedDocumentBinaryObject mimeCode="application/pdf"
+							filename="specs.pdf">
+							UjBsR09EbGhjZ0dTQUxNQUFBUUNBRU1tQ1p0dU1GUXhEUzhi</cbc:EmbeddedDocumentBinaryObject>
+					</cac:Attachment>
+				</cac:ItemSpecificationDocumentReference>
+				<!-- end::ItemSpecificationDocumentReference[] -->
+
+				<!-- tag::ItemSpecificationDocumentReference2[] -->
+				<cac:ItemSpecificationDocumentReference>
+					<cbc:ID>doc id</cbc:ID>
+					<cbc:DocumentType>Item specs</cbc:DocumentType>
+					<cac:Attachment>
+						<cac:ExternalReference>
+							<cbc:URI>https://joinup.ec.europa.eu/svn/peppol/PostAward/Ordering28A/20160310%20-%20PEPPOL_BIS_28a-101.pdf</cbc:URI>
+						</cac:ExternalReference>
+					</cac:Attachment>
+				</cac:ItemSpecificationDocumentReference>
+				<!-- end::ItemSpecificationDocumentReference2[] -->
+
+				<!-- tag::classification[] -->
+				<cac:CommodityClassification>
+					<cbc:ItemClassificationCode listID="MP" listVersionID="20.0601">14111511</cbc:ItemClassificationCode>
+				</cac:CommodityClassification>
+				<!-- end::classification[] -->	
+				
+				<!-- tag::TransactionConditions[] -->
+				<cac:TransactionConditions>
+					<cbc:ActionCode>CT</cbc:ActionCode>
+				</cac:TransactionConditions>
+				<!-- end::TransactionConditions[] -->
+
+				<!-- tag::ClassifiedTaxCategory[] -->
+				<cac:ClassifiedTaxCategory>
+					<cbc:ID>S</cbc:ID>
+					<cbc:Percent>15</cbc:Percent>
+					<cac:TaxScheme>
+						<cbc:ID>S</cbc:ID>
+					</cac:TaxScheme>
+				</cac:ClassifiedTaxCategory>
+				<!-- end::ClassifiedTaxCategory[] -->
+
+				<!-- tag::AdditionalItemProperty[] -->
+				<cac:AdditionalItemProperty>
+					<cbc:Name>Property name</cbc:Name>
+					<cbc:Value>Property value</cbc:Value>
+					<cbc:ValueQuantity unitCode="C62">1</cbc:ValueQuantity>
+				</cac:AdditionalItemProperty>
+				<!-- tag::AdditionalItemProperty[] -->
+
+				<!-- tag::Certificate[] -->
+				<cac:Certificate>
+					<cbc:ID>EU Ecolabel</cbc:ID>
+					<cbc:CertificateTypeCode>NA</cbc:CertificateTypeCode>
+					<cbc:CertificateType>Environmental</cbc:CertificateType>
+					<cbc:Remarks>Item label value</cbc:Remarks>
+					<cac:IssuerParty>
+						<cac:PartyName>
+							<cbc:Name>NA</cbc:Name>
+						</cac:PartyName>
+					</cac:IssuerParty>
+					<cac:DocumentReference>
+						<cbc:ID>Item label reference</cbc:ID>
+					</cac:DocumentReference>
+				</cac:Certificate>
+				<!-- end::Certificate[] -->
+
+			</cac:Item>
+		</cac:LineItem>
+	</cac:OrderLine>
+</OrderResponse>

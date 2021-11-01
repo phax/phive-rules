@@ -1,0 +1,30 @@
+[[use-case-3-buyer-visits-the-sellers-physical-store]]
+= Use case 4 – Buyer visits the seller’s physical store.
+
+This use case describes a process where the buyer physically enters the sellers store to buy and possibly take delivery of goods.
+
+[cols="1h,5",]
+|====
+|Use Case number |4
+|Use Case Name |User configures product/services
+|Use Case Description |A buyer physically makes a purchase and takes delivery.
+|Parties involved
+a| * Buyer
+* Seller
+|Assumptions |The buyer has an account with the seller with necessary details to send him an order agreement.
+|The flow a|
+The buyer urgently need some items and may wish to discuss this with the seller before buying the items.
+
+After selecting the items he needs the buyer gets a receipt for the selected items. He may bring with him all the items when leaving the store or schedule a later delivery.
+
+The seller registers the order in the ordering system including a reference such as requisition number, person id, project id etc.
+
+An order agreement transaction with item information and price of the selected items is sent from the seller to the buyer’s purchasing system. The order agreement is recorded in the buyer’s purchasing system
+
+The buyer then follows the normal procedure to, if needed, complete the order.
+
+The seller sends an invoice which matches the order and delivery, but this is outside of this BIS.
+
+|Result |The buyer and the seller has reached an agreement. An order has been placed and the buyer has taken delivery of the products. The buyer has received a structured message with the order details. The invoice has a reference, to match the order.
+|XML example file |See Appendix A for a sample file illustrating Use Case 4.
+|====

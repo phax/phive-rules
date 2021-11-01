@@ -1,0 +1,10 @@
+[[scope]]
+= Scope
+
+The intended scope for this BIS includes business-to-government (B2G) and business-to-business (B2B) relationships. Although the BIS is a basis for an EDI agreement between two parties, it does not address all business level details of such an agreement/contract.
+
+The order agreement represents the combined information of an order and an order confirmation, i.e. it represents an agreement entered upon by seller and buyer. The transaction, specified in this BIS is intended to be exchanged between the seller’s order management system and the of buyer’s purchasing system so that their respective systems get syncronised with regard to the information on the purchase.
+
+The different uses of this BIS are described in <<process-and-typical-use-cases>>.
+
+This is an auxiliary BIS intended to complement the primary ordering BISs, such as PEPPOL BIS 28A. It allows the buyer to have information from less formalized purchase processes conveniently fed into the procurement system, thereby giving control over corresponding payments and better statistics. By opening for order agreement transactions, it is very important that the buyer’s system can verify that the seller is allowed to send an order agreement and that the process is described in the contract between seller and buyer to prevent fraud and to secure good quality in the transaction.

@@ -1,0 +1,12 @@
+[[business-rules]]
+= Rules
+
+:leveloffset: +1
+
+include::bii.adoc[]
+
+include::peppol.adoc[]
+
+include::codelist.adoc[]
+
+:leveloffset: -1

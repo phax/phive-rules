@@ -1,0 +1,30 @@
+[[description-of-selected-parts-of-the-order-agreement-message]]
+= Description of selected parts of the order agreement message
+
+Following clauses describe the use of individual sections of the order agreement transaction.
+
+:leveloffset: +1
+
+include::parties.adoc[]
+
+include::delivery.adoc[]
+
+include::references.adoc[]
+
+include::attachments.adoc[]
+
+include::productid.adoc[]
+
+include::itemlabels.adoc[]
+
+include::classification.adoc[]
+
+include::quantity.adoc[]
+
+include::prices.adoc[]
+
+include::allowance.adoc[]
+
+include::../../../shared/files/vat-info.adoc[]
+
+:leveloffset: -1

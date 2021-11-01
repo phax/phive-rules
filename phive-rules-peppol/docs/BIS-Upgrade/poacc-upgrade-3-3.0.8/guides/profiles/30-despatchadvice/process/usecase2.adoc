@@ -1,0 +1,60 @@
+[[use-case-2---simple-despatch-with-outstanding-quantity.]]
+== Use case 2 - Simple Despatch with outstanding quantity.
+
+This use case is a simple Despatch where there are no transport handling units, but an outstanding quantity on line level.
+There are various examples on use of the outstanding quantity and outstanding reason There are four parties (legal entities) in this use case.
+
+[cols="1,5",options="header",]
+|====
+|*Use Case number* |2
+|*Use Case Name* |Simple Despatch with outstanding quantity
+|*Use Case Description* |This use case is a simple Despatch where there are no transport handling units, but an outstanding quantity on line level.
+There are various examples on use of the outstanding quantity and the outstanding reason.
+There are four parties (legal entities) in this use case.
+|*Parties involved* a|
+Buyer (In UBL: BuyerCustomerParty)
+
+Seller (In UBL: SellerSupplierParty)
+
+Despatch party (In UBL: DespatchSupplierParty) (Different legal entity than the Seller in this use case)
+
+Consignee party (In UBL: DeliveryCustomerParty) (Different legal entity than the Buyer in this use case)
+
+|*Assumptions* a|
+1.  The Seller has received one order from the Buyer with
+a.  5 lines (5 different items)
+b.   To be delivered at one delivery address
+c.  At the same time.
+2.  The Seller has accepted the order without changes.
+3.  The Seller can’t deliver the complete order as accepted.
+4.  The first line contains the ordered quantity
+5.  The second line contains a delivery of 6 of 10 ordered items.
+The remaining 4 items will be delivered in another Despatch.
+6.  The third line contains a delivery of 6 of 10 ordered items.
+The remaining 4 items will not be delivered.
+7.  The fourth line contains a delivery of 6 of 10 items.
+3 items will be delivered in another Despatch and 1 item will not be delivered.
+8.  The fifth line contains a delivery of 12 of 10 ordered items.
+
+|*The flow* a|
+1.  The Seller collects the ordered items
+2.  The Seller loads the articles in boxes
+3.  The Despatch party creates a Despatch advice message
+4.  The Despatch party sends Despatch advice message to the Customer
+5.  The Consignee party receives the Despatch advice message
+6.  The Consignee party uses the content in Despatch advice message for registration receipt.
+a.  Five Despatch lines with different articles, but a part of the articles related to line 2-5 is either outstanding or can’t be delivered at all. (No handling units in the message)
+
+|*Result* a|
+1.  The Despatch advice message helped the Consignee party to prepare receipt
+a.  At the right time
+b.  At the right place (address)
+2.  The Despatch advice message helped the Consignee party in the process of register receipt to identify the
+a.  Order
+b.  The order lines
+c.  The items
+d.  The delivered quantity
+e.  The outstanding quantity to be delivered at a later time
+f.  The outstanding quantity which will never be delivered
+
+|====

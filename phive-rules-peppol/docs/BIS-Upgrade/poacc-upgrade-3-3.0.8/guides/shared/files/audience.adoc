@@ -1,0 +1,20 @@
+
+[[audience]]
+= Audience
+
+The audience for this document is organizations wishing to be {peppol} enabled for exchanging electronic business documents, and/or their ICT-suppliers.
+
+These organizations may be:
+
+* Service providers
+* Contracting Authorities
+* Economic Operators
+* Software Developers
+
+More specifically it is addressed towards the following roles:
+
+* ICT Architects
+* ICT Developers
+* Business Experts
+
+For further information, please see {common}.

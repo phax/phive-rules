@@ -1,0 +1,30 @@
+
+[[response-code]]
+= Response code
+
+[cols="1,4"]
+.Response codes
+|===
+h| Qualifier
+| UNCL4343 (listID)
+h| Document location
+| `cbc:ResponseCode`
+h| Source codelist
+| Subset of {UNCL4343}}
+|===
+
+Valid values are listed in the table below.
+
+[cols="1h,4"]
+.Valid subset
+|===
+
+| RE
+| Rejected
+
+| AP
+| accepted
+
+|AB
+|Message acknowledgement
+|===

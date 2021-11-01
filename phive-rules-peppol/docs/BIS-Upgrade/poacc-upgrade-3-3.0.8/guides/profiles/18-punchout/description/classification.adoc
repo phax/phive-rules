@@ -1,0 +1,25 @@
+[[item-classification-and-labelling]]
+= Item classification and labelling
+
+A shopping cart line may give information about the classification of items eg. UNSPSC code
+
+.Example of classification code
+[source, xml, indent=0]
+----
+include::{snippet-dir}/snippet-18-1.xml[tags=classification]
+----
+
+A shopping cart line may give information about labels and certifications that apply to the item.
+Examples of such are environmental, health, social, quality, cultural and so fort.
+For each label the name of the label must be given and the certificate of the label as well.
+If a label has no levels it is recommended to set the type as active.
+
+Due to UBL syntax requirements (see {ubl-catalogue}) the tags `cbc:CertificateTypeCode` and `cac:IssuerParty` must also be included when the certificate class is used.
+
+These elements are not required by this PEPPOL BIS but in order to comply with the syntax requirement it is recommended to fill in the elements with the word "NA".
+
+.Example of label
+[source, xml, indent=0]
+----
+include::{snippet-dir}/snippet-18-1.xml[tags=label]
+----

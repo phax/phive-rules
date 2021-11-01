@@ -1,0 +1,32 @@
+[[business-rules]]
+= Business rules
+
+[cols="1,3,1,1",options="header",]
+|====
+|*Rule ID* |*Rule* |*Target* |*Error level*
+|BII2-T16-R009 |A consignee party SHOULD have the party name or a party identifier |Consignee Party |warning
+|BII2-T16-R001 |A despatch advice MUST have a customization identifier |despatch advice |fatal
+|BII2-T16-R002 |A despatch advice MUST have a profile identifier |despatch advice |fatal
+|BII2-T16-R003 |A despatch advice MUST have a document identifier |despatch advice |fatal
+|BII2-T16-R004 |A despatch advice MUST have a document issue date |despatch advice |fatal
+|BII2-T16-R005 |A despatch advice SHOULD have an order identifier |despatch advice |warning
+|BII2-T16-R006 |A despatch advice MUST have a Despatch party |despatch advice |fatal
+|BII2-T16-R008 |A despatch advice MUST have a consignee party |despatch advice |fatal
+|BII2-T16-R012 |A despatch advice MUST have at least one despatch advice line |despatch advice |fatal
+|BII2-T16-R013 |Each despatch advice line MUST have a despatch line identifier that is unique within the despatch advice |despatch advice Line |fatal
+|BII2-T16-R016 |Each despatch advice line MUST have an item identifier and/or an item name |despatch advice Line |fatal
+|BII2-T16-R017 |Each despatch advice line SHOULD have a delivered quantity |despatch advice Line |warning
+|BII2-T16-R019 |Each despatch advice line delivered quantity MUST not be negative |despatch advice Line |fatal
+|BII2-T16-R020 |Each despatch advice line delivered quantity SHOULD have an associated unit of measure |despatch advice Line |warning
+|BII2-T16-R021 |An outstanding quantity reason SHOULD be provided if the despatch line contains an outstanding quantity |despatch advice Line |warning
+|BII2-T16-R011 |Shipment identifier MUST be provided if the despatch advice contains shipment information |despatched shipment |fatal
+|BII2-T16-R007 |A Despatch party SHOULD have the Despatch party name |Despatch Party |warning
+|BII2-T16-R018 |An item standard identifier MUST have an identification schema (e.g. GTIN) |Item |fatal
+|OP-T16-R001 |A country identification code MUST have a list identifier attribute “ISO3166-1:Alpha2”. |despatch advice |fatal
+|OP-T16-R002 |A unit code attribute MUST have a unit code list identifier attribute “UNECERec20” |despatch advice |fatal
+|OP-T16-R003 |A UNDG code MUST have a list identifier attribute “UNCL8273” |despatch advice |fatal
+|OP-T16-R004 |A transport handling unit type code MUST have a list identifier attribute “UNECERec21”. |despatch advice |fatal
+|OP-T16-R005 |An Endpoint Identifier Scheme MUST be from the list of PEPPOL Party Identifiers. |despatch advice |Fatal
+|OP-T16-R006 |A Party Identifier Scheme MUST be from the list of PEPPOL Party Identifiers |despatch advice |fatal
+|OP-T16-R007 |The handling unit measure AttributeID MUST be of value "AAB" for Unit gross weight or "AAW" for Gross volume |Handling unit |fatal
+|====

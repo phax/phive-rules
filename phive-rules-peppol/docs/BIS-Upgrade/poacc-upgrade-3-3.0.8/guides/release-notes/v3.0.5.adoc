@@ -1,0 +1,29 @@
+= Version 3.0.5 - 2020 Fall
+[horizontal]
+Release date:: 2020-11-01
+
+== Changes to BIS document
+* Corrected use of charge indicatior false vs true in table in section 6.9 in order transaction. Issue: [POACC-352]
+* BIS "Catalogue only" renamed to "Catalogue with response". Issue: [POACC-357]
+* Added new business term to PunchOut for External attachment reference as tir77-p003 to align with text in BIS [POACC-354]
+* Migration plan from BIS2 to BIS3 removed. Is completed.
+* Updated text in section 6.2. Order reference in the Despatch Advice specification to clarify the use of OrderReference [POACC-347]
+* Updated link to example files in mlr and added clarification to the example files header on the main page [POACC-349]
+* Modified code policy in Invoice Response and added use case to for new Clarification Code (tir111-015) to support partial payments.
+* Editorial corrections and clarification of parties in Invoice Response BIS  [POACC-338]
+
+== Changes to syntax
+* For the Catalogue (T19) cbc:PriceType/cac:ValidityPeriod (tir19-056/057) is marked as unbounded in the syntax description while the validation rules and BIS description expects maximum 1. Cardinality changed to 0..1 to align with requirements and business rules. [POACC-340]
+* For the Order (T01). New optional business term added on document level "Shipping label" as tir01-p036. [POACC-283]
+* For the Order (T01). New optional business term added on line level "Delivery location ID" as tir01-p037. [POACC-320]
+
+== Changes to supporting documents
+
+
+== Changes to code lists and validation artefacts
+* Rule PEPPOL-COMMON-R040: "GLN must have a valid format according to GS1 rules". Changed from severity "warning" to "fatal". (The rule was introduced in fall 2019 with severity "warning" to avoid disruptions but with the intention to be changed to severity "fatal" after 6-12 months). Issue: [POACC-333] and [POACC-341]
+* EAS code list, added code 0209, removed code 9958. Peppol rule updated accordingly.
+* ICD code list, added code 0205, 0206, 0207, 0208, 0209. 
+* Duplicate currency codes removed from ISO4217 code list. Issue: [POACC-339]
+* OrderAgreement - Rule T110-R027 (verifies structure of tax categories) changed so that the rule is triggered only when it should be. [POACC-330]
+* For the Invoice Response (T111). New functionality to enable reporting on partial payments. Adding a new code for business term Clarification Code (tir111-015 ),   StatusClarificationReason code "PPD" that can be used in combination with Status Status (tir111-013 ) code PA (paid) to indicate that the payment is a partial one. [POACC-356]

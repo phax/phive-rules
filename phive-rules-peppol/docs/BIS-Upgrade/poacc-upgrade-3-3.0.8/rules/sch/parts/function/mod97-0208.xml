@@ -1,0 +1,6 @@
+  <function xmlns="http://www.w3.org/1999/XSL/Transform" name="u:mod97-0208" as="xs:boolean">
+    <param name="val"/>
+    <variable name="checkdigits" select="substring($val,9,2)"/>
+    <variable name="calculated_digits" select="xs:string(97 - (xs:integer(substring($val,1,8)) mod 97))"/>
+    <value-of select="number($checkdigits) = number($calculated_digits)"/>
+  </function>

@@ -1,0 +1,45 @@
+[[use-case-1---simple-despatch]]
+== Use case 1 - Simple Despatch
+
+This use case is a simple despatch where no handling units are used in the Despatch Advice.
+There are only two parties (legal entities) in this use case.
+
+[cols="1,5",options="header",]
+|====
+|*Use Case number* |1
+|*Use Case Name* |Simple Despatch
+|*Use Case Description* |This use case is a simple despatch where no handling units are used in the Despatch Advice.
+There are only two parties (legal entities) in this use case.
+|*Parties involved* a|
+Despatch party (In UBL: DespatchSupplierParty) (same legal entity as the Supplier/Seller in this use case)
+
+Consignee party (In UBL: DeliveryCustomerParty) (same legal entity as the Customer/Buyer in this use case)
+
+|*Assumptions* a|
+1.  The Seller has received one order from the Buyer with
+a.  2 lines (2 articles)
+b.   to be delivered at one delivery address
+c.  at the same time.
+2.  The Seller has accepted the order without changes.
+3.  The Despatch party delivers the complete order as accepted
+
+|*The flow* a|
+1.  The Seller collects the ordered articles
+2.  The Seller loads the articles in boxes
+3.  The Despatch party creates a Despatch advice message
+4.  The Despatch party sends Despatch advice message to the Consignee
+5.  The Consignee party receives the Despatch advice message
+6.  The Consignee party uses the content in the Despatch advice message for registration receipt.
+a.  Two despatch lines, two items (No handling units in the message)
+
+|*Result* a|
+1.  The Despatch advice message helped the Consignee party to prepare receipt
+a.  At the right time
+b.  At the right place (address)
+2.  The Despatch advice message helped the Consignee party in the process of register receipt to identify the
+a.  Order
+b.  The order lines
+c.  The articles
+d.  The delivered quantity
+
+|====

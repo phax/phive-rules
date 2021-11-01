@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testSet xmlns="http://difi.no/xsd/vefa/validator/1.0" configuration="peppolbis-t111-base-3.0">
+	<assert>
+		<description>Verify that clarification code OTH has a description</description>
+		<scope>PEPPOL-T111-R002</scope>
+	</assert>
+
+	<test id="1">
+		<assert>
+			<success>PEPPOL-T111-R002</success>
+		</assert>
+
+		<ApplicationResponse
+			xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+			xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+			xmlns="urn:oasis:names:specification:ubl:schema:xsd:ApplicationResponse-2">
+
+			<cac:DocumentResponse>
+				<cac:Response>
+					<cac:Status>
+						<cbc:StatusReasonCode listID="OPStatusReason">OTH</cbc:StatusReasonCode>
+						<cbc:StatusReason>Description of other reason</cbc:StatusReason>
+					</cac:Status>
+				</cac:Response>
+			</cac:DocumentResponse>
+		</ApplicationResponse>
+	</test>
+
+	<test id="2">
+		<assert>
+			<success>PEPPOL-T111-R002</success>
+		</assert>
+
+		<ApplicationResponse
+			xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+			xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+			xmlns="urn:oasis:names:specification:ubl:schema:xsd:ApplicationResponse-2">
+			<cac:DocumentResponse>
+				<cac:Response>
+					<cac:Status>
+
+						<cbc:StatusReasonCode listID="OPStatusAction">OTH</cbc:StatusReasonCode>
+						<cbc:StatusReason>Description of other action</cbc:StatusReason>
+					</cac:Status>
+				</cac:Response>
+			</cac:DocumentResponse>
+		</ApplicationResponse>
+	</test>
+
+	<test id="3">
+		<assert>
+			<warning>PEPPOL-T111-R002</warning>
+		</assert>
+
+		<ApplicationResponse
+			xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+			xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+			xmlns="urn:oasis:names:specification:ubl:schema:xsd:ApplicationResponse-2">
+
+			<cac:DocumentResponse>
+				<cac:Response>
+					<cac:Status>
+						<cbc:StatusReasonCode listID="OPStatusReason">OTH</cbc:StatusReasonCode>
+					</cac:Status>
+				</cac:Response>
+			</cac:DocumentResponse>
+		</ApplicationResponse>
+	</test>
+
+	<test id="4">
+		<assert>
+			<warning>PEPPOL-T111-R002</warning>
+		</assert>
+
+		<ApplicationResponse
+			xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+			xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+			xmlns="urn:oasis:names:specification:ubl:schema:xsd:ApplicationResponse-2">
+			<cac:DocumentResponse>
+				<cac:Response>
+					<cac:Status>
+						<cbc:StatusReasonCode listID="OPStatusAction">OTH</cbc:StatusReasonCode>
+					</cac:Status>
+				</cac:Response>
+			</cac:DocumentResponse>
+		</ApplicationResponse>
+
+	</test>
+
+</testSet>

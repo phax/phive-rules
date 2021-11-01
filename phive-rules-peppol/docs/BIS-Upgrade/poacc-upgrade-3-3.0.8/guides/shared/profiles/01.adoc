@@ -1,0 +1,21 @@
+
+[[prof-1]]
+= Customization and Profile identifiers
+
+In the table below you will find the values to be used as the specification identifier and the business process type for this profile
+
+[cols="2s,5a,5a", options="header"]
+|===
+| Type
+| Element `cbc:CustomizationID`
+| Element `cbc:ProfileID`
+
+
+| Catalogue (Trdm19)
+| urn:fdc:peppol.eu:poacc:trns:catalogue:3
+.2+.^| urn:fdc:peppol.eu:poacc:bis:catalogue_only:3
+
+| Catalogue response (Trdm58)
+| urn:fdc:peppol.eu:poacc:trns:catalogue_response:3
+|
+|===

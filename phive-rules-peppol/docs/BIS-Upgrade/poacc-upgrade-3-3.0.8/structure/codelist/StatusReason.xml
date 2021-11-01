@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeList xmlns="urn:fdc:difi.no:2017:vefa:structure:CodeList-1">
+
+    <Title>Status reason code (openPEPPOL)</Title>
+    <Identifier>StatusReason</Identifier>
+    <Version>3.0</Version>
+    <Agency>openPEPPOL</Agency>
+
+
+    <Code>
+        <Id>BV</Id>
+        <Name>Business rule violation, fatal</Name>
+    </Code>
+    <Code>
+        <Id>BW</Id>
+        <Name>Business rule violation, warning</Name>
+    </Code>
+    <Code>
+        <Id>SV</Id>
+        <Name>Syntax violation</Name>
+    </Code>
+
+</CodeList>

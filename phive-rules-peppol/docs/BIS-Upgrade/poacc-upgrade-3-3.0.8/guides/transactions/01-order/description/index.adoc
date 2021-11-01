@@ -1,0 +1,28 @@
+[[description-of-selected-parts-of-the-order-message]]
+= Description of selected parts of the order message
+
+:leveloffset: +1
+
+include::parties.adoc[]
+
+include::attachments.adoc[]
+
+include::originator-ref.adoc[]
+
+include::product-id.adoc[]
+
+include::product-name.adoc[]
+
+include::quantity.adoc[]
+
+include::price.adoc[]
+
+include::allowance.adoc[]
+
+include::totals.adoc[]
+
+include::tax-total.adoc[]
+
+include::../../../shared/files/vat-cat-line.adoc[]
+
+:leveloffset: -1

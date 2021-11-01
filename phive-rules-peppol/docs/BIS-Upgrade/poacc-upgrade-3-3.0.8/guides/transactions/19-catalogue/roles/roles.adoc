@@ -1,0 +1,4 @@
+
+
+.Business partners and roles in the catalogue
+image::images/image3.png[width=600]

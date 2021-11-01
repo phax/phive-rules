@@ -1,0 +1,41 @@
+[[action-code]]
+== Action code
+
+The Action code holds instructions about the treatment of the Catalogue by the recipients system.
+The Action code can be stated either on header or line level.
+Please be aware that the below mentioned are codes, and hence the correct use of upper and lower case must be used.
+Example: Replace is valid, REPLACE is not valid.
+
+Legal codes on Catalogue header level:
+
+* Add – Used when a catalogue is sent for the first time to the Catalogue Receiver referring to the contract in the header of the catalogue.
+* Replace – Replaces the entire catalogue referring to the contract.
+This is the default action.
+* Update – Updates a current catalogue.
+* Delete – deletes the entire catalogue
++
+.Example:
+[source, xml, indent=0]
+----
+include::{snippet-dir}/Snippet-1-2.xml[tags=actioncode]
+----
+
+Legal codes on Catalogue Line level:
+
+* Add – Used to add items to the catalogue.
+* Update – Used to update an item.
+The entire Catalogue Line is updated.
+Only used if Action code on header level is Update
+* Delete – Used to delete an entire Catalogue line.
+Only used if Action code on header level is Update.
+
+
+It is important to note that when updating or deleting on line level, the key identifier is the item ID (sellers item identification or standard item identification, see chapter 10.2.2.), not the line ID.
+If CatalogueLineReference is used in the corresponding order message (outside scope of this BIS), the numbering of Line ID must be consistent in all versions of the catalogue.
+
+
+.Example:
+[source, xml, indent=0]
+----
+include::{snippet-dir}/Snippet-1-1.xml[tags=actioncode]
+----

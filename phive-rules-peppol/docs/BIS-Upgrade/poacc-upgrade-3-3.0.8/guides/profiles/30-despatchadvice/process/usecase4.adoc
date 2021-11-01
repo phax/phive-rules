@@ -1,0 +1,66 @@
+[[use-case-4---despatch-with-weight-length-andor-volume-based-items-ie-vegetables-meat]]
+== Use case 4 - Despatch with weight, length and/or volume based items (ie vegetables, meat)
+
+This use case demonstrates the use of the Despatch Advice, where the Seller is despatching items which are priced on weight, length and/or volume.
+
+[cols="1,5",options="header",]
+|====
+|*Use Case number* |4
+|*Use Case Name* |Despatch with weight, length and/or volume based items (ie vegetables, meat)
+|*Use Case Description* a|
+This use case demonstrates the use of the Despatch Advice, where the Seller is despatching items which are priced on weight, length and/or volume.
+Therefore the weight, length or volume of the items is important.
+Transport handling units are used to indicate how the items are packed.
+
+The use case also demonstrates:
+
+* The use of different party identifiers (GLN and Swedish organization number)
+* The use of ItemBestBeforeDate, ItemExpiryDate, ItemBatchNumber, ItemSerialNumbers,
+* The use of SSCC keys,
+* The use of ItemSellersIdentifier and ItemStandardIdentifier (GTIN).
+
+|*Parties involved* a|
+Despatch party (In UBL: DespatchSupplierParty) (same legal entity as the Supplier/Seller in this use case)
+
+Consignee party (In UBL: DeliveryCustomerParty) (same legal entity as the Customer/Buyer in this use case)
+
+|*Assumptions* a|
+1.  The Seller has received one order from the Buyer with
+a.  4 lines (4 items) which are priced by the weight
+b.  To be delivered at one delivery address
+c.  At the same time.
+2.  The Seller has accepted the order without changes.
+3.  The Seller delivers the complete order as accepted.
+4.  The items are in four separate transport handling units.
+
+image:images/image9.png[image,width=150,height=94]
+
+|*The flow* a|
+1.  The Seller collects the ordered items
+2.  The Seller weighs the items.
+3.  The Seller loads the items into transport handling units (Boxes)
+4.  The Despatch party creates the Despatch Advice message
+5.  The Despatch party sends the Despatch Advice message to the Consignee
+6.  The Consignee party receives the Despatch Advice message
+7.  The Consignee party uses the content in the Despatch Advice message for registration receipt.
+a.  Four despatch lines, four items.
+b.  Handling units are identified using SSCC identifiers
+c.  The delivered weight is used in the receipt activity (for verification)
+8.  The Consignee party uses the content in the Despatch Advice message for storing- and handling.
+a.  Items can be stored by BestBeforeDate or ExpiryDate
+b.  Items can be stored by batch and/or serial numbers
+c.  Items can be handled according to the weight of the handling unit
+
+|*Result* a|
+1.  The Despatch Advice message helped the Consignee party to prepare receipt
+a.  At the right time
+b.  At the right place (address)
+c.  With appropriate storage facilities
+2.  The Despatch Advice message helped the Consignee party in the process of register receipt to identify the
+a.  Order
+b.  The order lines
+c.  The transport handling units
+d.  The items
+e.  The delivered quantity/weight
+
+|====

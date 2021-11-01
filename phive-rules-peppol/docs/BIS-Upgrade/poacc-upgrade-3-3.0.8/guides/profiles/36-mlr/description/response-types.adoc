@@ -1,0 +1,30 @@
+[[document-response]]
+= Document response
+
+The document response is used to indicate the result of business document validation. See chapter
+<<codelist>> for all code list values.
+
+Exactly one `cac:DocumentResponse` element MUST be present. The
+element `cac:DocumentResponse/cac:Response/cbc:ResponseCode` MUST contain the
+overall result code.
+
+In case the document is rejected, the `cbc:Description` element MUST be set.
+
+.Example for acceptance:
+[source, xml, indent=0]
+----
+include::{snippet-dir}/snippet-2.xml[tags=accept]
+----
+
+
+.Example for acknowledging:
+[source, xml, indent=0]
+----
+include::{snippet-dir}/snippet-1.xml[tags=ack]
+----
+
+.Example for rejection:
+[source, xml, indent=0]
+----
+include::{snippet-dir}/snippet-3.xml[tags=reject]
+----

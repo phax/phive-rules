@@ -1,0 +1,52 @@
+include::../../shared/links.adoc[]
+:doctype: book
+:icons: font
+:stem:
+:toc: left
+:toclevels: 2
+:source-highlighter: coderay
+:source-language: xml
+:sectanchors:
+:sectnums:
+:title-logo-image: ../../shared/images/peppol.png
+:order: ../../transactions/01-order
+:order-resp: ../../transactions/76-order-response
+:snippet-dir: ../../../../rules/snippets/order
+:snippet-response-dir: ../../../../rules/snippets/order-response
+
+= image:../../shared/images/peppol.png[float="right"]BIS Ordering 3.2
+{author}
+
+
+{description}
+
+include::../../shared/copyright.adoc[]
+
+
+= Link to main site of documentation
+
+{main-site}
+
+
+:leveloffset: +1
+
+include::introduction/index.adoc[]
+
+include::principles/index.adoc[]
+
+include::process/index.adoc[]
+
+//include::requirements/index.adoc[]
+
+include::../../shared/datatypes/index.adoc[]
+
+include::../../shared/codes/index.adoc[]
+
+include::{order}/description/index.adoc[]
+
+include::{order-resp}/description/index.adoc[]
+
+include::profile/index.adoc[]
+
+
+:leveloffset: -1

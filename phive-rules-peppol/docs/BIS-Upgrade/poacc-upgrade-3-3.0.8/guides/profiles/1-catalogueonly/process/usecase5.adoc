@@ -1,0 +1,41 @@
+[[use-case-5-catalogue-with-all-possible-information-and-positive-response]]
+= Use case 5 – Catalogue with all possible information and positive response
+
+This is an Update of a previous sent catalogue and not based on any of the other uses cases.
+The catalogue includes all possible information in a BIS catalogue.
+Some information may not be relevant, but is in the catalogue for giving an example.
+
+[cols="2,4",options="header",]
+|====
+|*Use Case No* |5
+|*Use Case Name* |Catalogue with all information.
+|*Use Case Description* |The provider sends a catalogue deletion to the receiver.
+|*Parties involved* a|
+Catalogue Provider
+
+Supplier/Seller
+
+Catalogue Receiver
+
+Customer/Buyer
+
+|*Assumptions* a|
+1.  The Seller has previously sent a catalogue to the Buyer which has been accepted.
+2.  The Seller needs to send a new article to update the previous catalogue.
+
+|*The flow* a|
+1.  The Seller identifies the article to be added
+2.  The Provider creates a Catalogue message
+3.  The Provider sends the message to the Receiver
+4.  The Buyer verifies the content in the message and considers the catalogue acceptable.
+5.  The Buyer sends a Catalogue response with accept.
+6.  The Buyer inserts/updates the information from the catalogue message in the local ERP-system..
+
+|*Result* a|
+1.  The Buyer have the articles and the contracted prices in the ERP-system and may start ordering
+
+_Please note that the ordering prosess is not part of this BIS.
+For ordering, please see PEPPOL BIS 3A._
+
+|*XML example file* |See Annex A for sample Catalogue and catalogue response files illustrating Use Case 5.
+|====

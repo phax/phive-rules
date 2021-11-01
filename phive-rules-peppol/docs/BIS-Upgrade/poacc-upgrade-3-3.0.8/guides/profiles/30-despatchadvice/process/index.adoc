@@ -1,0 +1,37 @@
+[[process-and-typical-scenarios]]
+= Process and typical scenarios
+
+[[legend-for-bpmn-diagrams]]
+== Legend for BPMN diagrams
+
+The diagrams are expressed in the BPMN notation.
+The diagram below serves as an explanation for the diagrams used in the process descriptions.
+
+image:images/image4.png[image,width=618,height=386]
+
+The following section and diagrams show the choreography of the business process involving various parties.
+
+:leveloffset: +1
+
+include::simpleprocess.adoc[]
+
+include::advancedprocess.adoc[]
+
+:leveloffset: -1
+
+[[typical-use-cases]]
+== Typical use cases
+
+:leveloffset: +1
+
+include::usecase1.adoc[]
+
+include::usecase2.adoc[]
+
+include::usecase3.adoc[]
+
+include::usecase4.adoc[]
+
+include::usecase5.adoc[]
+
+:leveloffset: -1

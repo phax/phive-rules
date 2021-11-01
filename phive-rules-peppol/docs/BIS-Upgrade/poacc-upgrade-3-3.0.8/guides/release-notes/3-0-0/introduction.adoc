@@ -1,0 +1,22 @@
+= Scope
+
+The current BIS specifications addressed by this project are the following.
+
+* PEPPOL BIS 1A Catalogue Only
+* PEPPOL BIS 3A Order Only
+* PEPPOL BIS 18A Punch Out
+* PEPPOL BIS 28A Ordering
+* PEPPOL BIS 30A Despatch Advice
+* PEPPOL BIS 36A Message Level Response
+* PEPPOL BIS 42A Order Agreement
+* PEPPOL BIS 63A Invoice Message Response
+
+In the work on each BIS, the following key tasks are identified.
+
+. Aligning with Invoice BIS. (code lists, party information, VAT details, Item details). Ref. Invoice gap analysis for potential gaps.
+. Changing documentation format from Word to AsciiDoc.
+. Processing and adoption of new requirements.
+. Adopting unit testing for validation objects.
+. Aligning Syntax bindings between documents.
+
+For further details please refer to the https://openpeppol.atlassian.net/wiki/download/attachments/182616099/Mandate_PEPPOL_PostAward_BIS%203.0%20upgrade.docx?api=v2[project mandate]

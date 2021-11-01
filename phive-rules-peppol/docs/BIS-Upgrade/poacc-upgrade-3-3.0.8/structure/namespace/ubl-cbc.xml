@@ -1,0 +1,2625 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Namespace xmlns="urn:fdc:difi.no:2017:vefa:structure:Namespace-1">
+   <Identifier prefix="cbc">urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2</Identifier>
+   <Version>2.1</Version>
+   <Include prefix="udt">urn:oasis:names:specification:ubl:schema:xsd:UnqualifiedDataTypes-2</Include>
+   <Element name="AcceptedIndicator">
+      <DataType>udt:IndicatorType</DataType>
+   </Element>
+   <Element name="AcceptedVariantsDescription">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="AccountFormatCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="AccountID">
+      <DataType>udt:IdentifierType</DataType>
+   </Element>
+   <Element name="AccountTypeCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="AccountingCost">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="AccountingCostCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="ActionCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="ActivityType">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="ActivityTypeCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="ActualDeliveryDate">
+      <DataType>udt:DateType</DataType>
+   </Element>
+   <Element name="ActualDeliveryTime">
+      <DataType>udt:TimeType</DataType>
+   </Element>
+   <Element name="ActualDespatchDate">
+      <DataType>udt:DateType</DataType>
+   </Element>
+   <Element name="ActualDespatchTime">
+      <DataType>udt:TimeType</DataType>
+   </Element>
+   <Element name="ActualPickupDate">
+      <DataType>udt:DateType</DataType>
+   </Element>
+   <Element name="ActualPickupTime">
+      <DataType>udt:TimeType</DataType>
+   </Element>
+   <Element name="ActualTemperatureReductionQuantity">
+      <DataType>udt:QuantityType</DataType>
+   </Element>
+   <Element name="AdValoremIndicator">
+      <DataType>udt:IndicatorType</DataType>
+   </Element>
+   <Element name="AdditionalAccountID">
+      <DataType>udt:IdentifierType</DataType>
+   </Element>
+   <Element name="AdditionalConditions">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="AdditionalInformation">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="AdditionalStreetName">
+      <DataType>udt:NameType</DataType>
+   </Element>
+   <Element name="AddressFormatCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="AddressTypeCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="AdjustmentReasonCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="AdmissionCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="AdvertisementAmount">
+      <DataType>udt:AmountType</DataType>
+   </Element>
+   <Element name="AgencyID">
+      <DataType>udt:IdentifierType</DataType>
+   </Element>
+   <Element name="AgencyName">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="AirFlowPercent">
+      <DataType>udt:PercentType</DataType>
+   </Element>
+   <Element name="AircraftID">
+      <DataType>udt:IdentifierType</DataType>
+   </Element>
+   <Element name="AliasName">
+      <DataType>udt:NameType</DataType>
+   </Element>
+   <Element name="AllowanceChargeReason">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="AllowanceChargeReasonCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="AllowanceTotalAmount">
+      <DataType>udt:AmountType</DataType>
+   </Element>
+   <Element name="AltitudeMeasure">
+      <DataType>udt:MeasureType</DataType>
+   </Element>
+   <Element name="Amount">
+      <DataType>udt:AmountType</DataType>
+   </Element>
+   <Element name="AmountRate">
+      <DataType>udt:RateType</DataType>
+   </Element>
+   <Element name="AnimalFoodApprovedIndicator">
+      <DataType>udt:IndicatorType</DataType>
+   </Element>
+   <Element name="AnimalFoodIndicator">
+      <DataType>udt:IndicatorType</DataType>
+   </Element>
+   <Element name="AnnualAverageAmount">
+      <DataType>udt:AmountType</DataType>
+   </Element>
+   <Element name="ApplicationStatusCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="ApprovalDate">
+      <DataType>udt:DateType</DataType>
+   </Element>
+   <Element name="ApprovalStatus">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="AttributeID">
+      <DataType>udt:IdentifierType</DataType>
+   </Element>
+   <Element name="AuctionConstraintIndicator">
+      <DataType>udt:IndicatorType</DataType>
+   </Element>
+   <Element name="AuctionURI">
+      <DataType>udt:IdentifierType</DataType>
+   </Element>
+   <Element name="AvailabilityDate">
+      <DataType>udt:DateType</DataType>
+   </Element>
+   <Element name="AvailabilityStatusCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="AverageAmount">
+      <DataType>udt:AmountType</DataType>
+   </Element>
+   <Element name="AverageSubsequentContractAmount">
+      <DataType>udt:AmountType</DataType>
+   </Element>
+   <Element name="AwardDate">
+      <DataType>udt:DateType</DataType>
+   </Element>
+   <Element name="AwardTime">
+      <DataType>udt:TimeType</DataType>
+   </Element>
+   <Element name="AwardingCriterionDescription">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="AwardingCriterionID">
+      <DataType>udt:IdentifierType</DataType>
+   </Element>
+   <Element name="AwardingCriterionTypeCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="AwardingMethodTypeCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="BackOrderAllowedIndicator">
+      <DataType>udt:IndicatorType</DataType>
+   </Element>
+   <Element name="BackorderQuantity">
+      <DataType>udt:QuantityType</DataType>
+   </Element>
+   <Element name="BackorderReason">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="BalanceAmount">
+      <DataType>udt:AmountType</DataType>
+   </Element>
+   <Element name="BalanceBroughtForwardIndicator">
+      <DataType>udt:IndicatorType</DataType>
+   </Element>
+   <Element name="BarcodeSymbologyID">
+      <DataType>udt:IdentifierType</DataType>
+   </Element>
+   <Element name="BaseAmount">
+      <DataType>udt:AmountType</DataType>
+   </Element>
+   <Element name="BaseQuantity">
+      <DataType>udt:QuantityType</DataType>
+   </Element>
+   <Element name="BaseUnitMeasure">
+      <DataType>udt:MeasureType</DataType>
+   </Element>
+   <Element name="BasedOnConsensusIndicator">
+      <DataType>udt:IndicatorType</DataType>
+   </Element>
+   <Element name="BasicConsumedQuantity">
+      <DataType>udt:QuantityType</DataType>
+   </Element>
+   <Element name="BatchQuantity">
+      <DataType>udt:QuantityType</DataType>
+   </Element>
+   <Element name="BestBeforeDate">
+      <DataType>udt:DateType</DataType>
+   </Element>
+   <Element name="BindingOnBuyerIndicator">
+      <DataType>udt:IndicatorType</DataType>
+   </Element>
+   <Element name="BirthDate">
+      <DataType>udt:DateType</DataType>
+   </Element>
+   <Element name="BirthplaceName">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="BlockName">
+      <DataType>udt:NameType</DataType>
+   </Element>
+   <Element name="BrandName">
+      <DataType>udt:NameType</DataType>
+   </Element>
+   <Element name="BrokerAssignedID">
+      <DataType>udt:IdentifierType</DataType>
+   </Element>
+   <Element name="BudgetYearNumeric">
+      <DataType>udt:NumericType</DataType>
+   </Element>
+   <Element name="BuildingName">
+      <DataType>udt:NameType</DataType>
+   </Element>
+   <Element name="BuildingNumber">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="BulkCargoIndicator">
+      <DataType>udt:IndicatorType</DataType>
+   </Element>
+   <Element name="BusinessClassificationEvidenceID">
+      <DataType>udt:IdentifierType</DataType>
+   </Element>
+   <Element name="BusinessIdentityEvidenceID">
+      <DataType>udt:IdentifierType</DataType>
+   </Element>
+   <Element name="BuyerEventID">
+      <DataType>udt:IdentifierType</DataType>
+   </Element>
+   <Element name="BuyerProfileURI">
+      <DataType>udt:IdentifierType</DataType>
+   </Element>
+   <Element name="BuyerReference">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="CV2ID">
+      <DataType>udt:IdentifierType</DataType>
+   </Element>
+   <Element name="CalculationExpression">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="CalculationExpressionCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="CalculationMethodCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="CalculationRate">
+      <DataType>udt:RateType</DataType>
+   </Element>
+   <Element name="CalculationSequenceNumeric">
+      <DataType>udt:NumericType</DataType>
+   </Element>
+   <Element name="CallBaseAmount">
+      <DataType>udt:AmountType</DataType>
+   </Element>
+   <Element name="CallDate">
+      <DataType>udt:DateType</DataType>
+   </Element>
+   <Element name="CallExtensionAmount">
+      <DataType>udt:AmountType</DataType>
+   </Element>
+   <Element name="CallTime">
+      <DataType>udt:TimeType</DataType>
+   </Element>
+   <Element name="CancellationNote">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="CandidateReductionConstraintIndicator">
+      <DataType>udt:IndicatorType</DataType>
+   </Element>
+   <Element name="CandidateStatement">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="CanonicalizationMethod">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="CapabilityTypeCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="CardChipCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="CardTypeCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="CargoTypeCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="CarrierAssignedID">
+      <DataType>udt:IdentifierType</DataType>
+   </Element>
+   <Element name="CarrierServiceInstructions">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="CatalogueIndicator">
+      <DataType>udt:IndicatorType</DataType>
+   </Element>
+   <Element name="CategoryName">
+      <DataType>udt:NameType</DataType>
+   </Element>
+   <Element name="CertificateType">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="CertificateTypeCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="ChangeConditions">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="Channel">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="ChannelCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="CharacterSetCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="Characteristics">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="ChargeIndicator">
+      <DataType>udt:IndicatorType</DataType>
+   </Element>
+   <Element name="ChargeTotalAmount">
+      <DataType>udt:AmountType</DataType>
+   </Element>
+   <Element name="ChargeableQuantity">
+      <DataType>udt:QuantityType</DataType>
+   </Element>
+   <Element name="ChargeableWeightMeasure">
+      <DataType>udt:MeasureType</DataType>
+   </Element>
+   <Element name="ChildConsignmentQuantity">
+      <DataType>udt:QuantityType</DataType>
+   </Element>
+   <Element name="ChipApplicationID">
+      <DataType>udt:IdentifierType</DataType>
+   </Element>
+   <Element name="CityName">
+      <DataType>udt:NameType</DataType>
+   </Element>
+   <Element name="CitySubdivisionName">
+      <DataType>udt:NameType</DataType>
+   </Element>
+   <Element name="CodeValue">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="CollaborationPriorityCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="Comment">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="CommodityCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="CompanyID">
+      <DataType>udt:IdentifierType</DataType>
+   </Element>
+   <Element name="CompanyLegalForm">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="CompanyLegalFormCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="CompanyLiquidationStatusCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="ComparedValueMeasure">
+      <DataType>udt:MeasureType</DataType>
+   </Element>
+   <Element name="ComparisonDataCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="ComparisonDataSourceCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="ComparisonForecastIssueDate">
+      <DataType>udt:DateType</DataType>
+   </Element>
+   <Element name="ComparisonForecastIssueTime">
+      <DataType>udt:TimeType</DataType>
+   </Element>
+   <Element name="CompletionIndicator">
+      <DataType>udt:IndicatorType</DataType>
+   </Element>
+   <Element name="Condition">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="ConditionCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="Conditions">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="ConditionsDescription">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="ConsigneeAssignedID">
+      <DataType>udt:IdentifierType</DataType>
+   </Element>
+   <Element name="ConsignmentQuantity">
+      <DataType>udt:QuantityType</DataType>
+   </Element>
+   <Element name="ConsignorAssignedID">
+      <DataType>udt:IdentifierType</DataType>
+   </Element>
+   <Element name="ConsolidatableIndicator">
+      <DataType>udt:IndicatorType</DataType>
+   </Element>
+   <Element name="ConstitutionCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="ConsumerIncentiveTacticTypeCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="ConsumerUnitQuantity">
+      <DataType>udt:QuantityType</DataType>
+   </Element>
+   <Element name="ConsumersEnergyLevel">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="ConsumersEnergyLevelCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="ConsumptionEnergyQuantity">
+      <DataType>udt:QuantityType</DataType>
+   </Element>
+   <Element name="ConsumptionID">
+      <DataType>udt:IdentifierType</DataType>
+   </Element>
+   <Element name="ConsumptionLevel">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="ConsumptionLevelCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="ConsumptionReportID">
+      <DataType>udt:IdentifierType</DataType>
+   </Element>
+   <Element name="ConsumptionType">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="ConsumptionTypeCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="ConsumptionWaterQuantity">
+      <DataType>udt:QuantityType</DataType>
+   </Element>
+   <Element name="ContainerizedIndicator">
+      <DataType>udt:IndicatorType</DataType>
+   </Element>
+   <Element name="Content">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="ContentUnitQuantity">
+      <DataType>udt:QuantityType</DataType>
+   </Element>
+   <Element name="ContractFolderID">
+      <DataType>udt:IdentifierType</DataType>
+   </Element>
+   <Element name="ContractName">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="ContractSubdivision">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="ContractType">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="ContractTypeCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="ContractedCarrierAssignedID">
+      <DataType>udt:IdentifierType</DataType>
+   </Element>
+   <Element name="ContractingSystemCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="CoordinateSystemCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="CopyIndicator">
+      <DataType>udt:IndicatorType</DataType>
+   </Element>
+   <Element name="CorporateRegistrationTypeCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="CorporateStockAmount">
+      <DataType>udt:AmountType</DataType>
+   </Element>
+   <Element name="CorrectionAmount">
+      <DataType>udt:AmountType</DataType>
+   </Element>
+   <Element name="CorrectionType">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="CorrectionTypeCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="CorrectionUnitAmount">
+      <DataType>udt:AmountType</DataType>
+   </Element>
+   <Element name="CountrySubentity">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="CountrySubentityCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="CreditLineAmount">
+      <DataType>udt:AmountType</DataType>
+   </Element>
+   <Element name="CreditNoteTypeCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="CreditedQuantity">
+      <DataType>udt:QuantityType</DataType>
+   </Element>
+   <Element name="CrewQuantity">
+      <DataType>udt:QuantityType</DataType>
+   </Element>
+   <Element name="CurrencyCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="CurrentChargeType">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="CurrentChargeTypeCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="CustomerAssignedAccountID">
+      <DataType>udt:IdentifierType</DataType>
+   </Element>
+   <Element name="CustomerReference">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="CustomizationID">
+      <DataType>udt:IdentifierType</DataType>
+   </Element>
+   <Element name="CustomsClearanceServiceInstructions">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="CustomsImportClassifiedIndicator">
+      <DataType>udt:IndicatorType</DataType>
+   </Element>
+   <Element name="CustomsStatusCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="CustomsTariffQuantity">
+      <DataType>udt:QuantityType</DataType>
+   </Element>
+   <Element name="DamageRemarks">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="DangerousGoodsApprovedIndicator">
+      <DataType>udt:IndicatorType</DataType>
+   </Element>
+   <Element name="DataSendingCapability">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="DataSourceCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="Date">
+      <DataType>udt:DateType</DataType>
+   </Element>
+   <Element name="DebitLineAmount">
+      <DataType>udt:AmountType</DataType>
+   </Element>
+   <Element name="DebitedQuantity">
+      <DataType>udt:QuantityType</DataType>
+   </Element>
+   <Element name="DeclarationTypeCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="DeclaredCarriageValueAmount">
+      <DataType>udt:AmountType</DataType>
+   </Element>
+   <Element name="DeclaredCustomsValueAmount">
+      <DataType>udt:AmountType</DataType>
+   </Element>
+   <Element name="DeclaredForCarriageValueAmount">
+      <DataType>udt:AmountType</DataType>
+   </Element>
+   <Element name="DeclaredStatisticsValueAmount">
+      <DataType>udt:AmountType</DataType>
+   </Element>
+   <Element name="DeliveredQuantity">
+      <DataType>udt:QuantityType</DataType>
+   </Element>
+   <Element name="DeliveryInstructions">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="DemurrageInstructions">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="Department">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="Description">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="DescriptionCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="DespatchAdviceTypeCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="DifferenceTemperatureReductionQuantity">
+      <DataType>udt:QuantityType</DataType>
+   </Element>
+   <Element name="DirectionCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="DisplayTacticTypeCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="DispositionCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="District">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="DocumentCurrencyCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="DocumentDescription">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="DocumentHash">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="DocumentID">
+      <DataType>udt:IdentifierType</DataType>
+   </Element>
+   <Element name="DocumentStatusCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="DocumentStatusReasonCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="DocumentStatusReasonDescription">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="DocumentType">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="DocumentTypeCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="DocumentationFeeAmount">
+      <DataType>udt:AmountType</DataType>
+   </Element>
+   <Element name="DueDate">
+      <DataType>udt:DateType</DataType>
+   </Element>
+   <Element name="DurationMeasure">
+      <DataType>udt:MeasureType</DataType>
+   </Element>
+   <Element name="Duty">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="DutyCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="EarliestPickupDate">
+      <DataType>udt:DateType</DataType>
+   </Element>
+   <Element name="EarliestPickupTime">
+      <DataType>udt:TimeType</DataType>
+   </Element>
+   <Element name="EconomicOperatorRegistryURI">
+      <DataType>udt:IdentifierType</DataType>
+   </Element>
+   <Element name="EffectiveDate">
+      <DataType>udt:DateType</DataType>
+   </Element>
+   <Element name="EffectiveTime">
+      <DataType>udt:TimeType</DataType>
+   </Element>
+   <Element name="ElectronicDeviceDescription">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="ElectronicMail">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="EmbeddedDocumentBinaryObject">
+      <DataType>udt:BinaryObjectType</DataType>
+   </Element>
+   <Element name="EmergencyProceduresCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="EmployeeQuantity">
+      <DataType>udt:QuantityType</DataType>
+   </Element>
+   <Element name="EncodingCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="EndDate">
+      <DataType>udt:DateType</DataType>
+   </Element>
+   <Element name="EndTime">
+      <DataType>udt:TimeType</DataType>
+   </Element>
+   <Element name="EndpointID">
+      <DataType>udt:IdentifierType</DataType>
+   </Element>
+   <Element name="EnvironmentalEmissionTypeCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="EstimatedAmount">
+      <DataType>udt:AmountType</DataType>
+   </Element>
+   <Element name="EstimatedConsumedQuantity">
+      <DataType>udt:QuantityType</DataType>
+   </Element>
+   <Element name="EstimatedDeliveryDate">
+      <DataType>udt:DateType</DataType>
+   </Element>
+   <Element name="EstimatedDeliveryTime">
+      <DataType>udt:TimeType</DataType>
+   </Element>
+   <Element name="EstimatedDespatchDate">
+      <DataType>udt:DateType</DataType>
+   </Element>
+   <Element name="EstimatedDespatchTime">
+      <DataType>udt:TimeType</DataType>
+   </Element>
+   <Element name="EstimatedOverallContractAmount">
+      <DataType>udt:AmountType</DataType>
+   </Element>
+   <Element name="EstimatedOverallContractQuantity">
+      <DataType>udt:QuantityType</DataType>
+   </Element>
+   <Element name="EvaluationCriterionTypeCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="EvidenceTypeCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="ExceptionResolutionCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="ExceptionStatusCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="ExchangeMarketID">
+      <DataType>udt:IdentifierType</DataType>
+   </Element>
+   <Element name="ExclusionReason">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="ExecutionRequirementCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="ExemptionReason">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="ExemptionReasonCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="ExpectedOperatorQuantity">
+      <DataType>udt:QuantityType</DataType>
+   </Element>
+   <Element name="ExpectedQuantity">
+      <DataType>udt:QuantityType</DataType>
+   </Element>
+   <Element name="ExpenseCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="ExpiryDate">
+      <DataType>udt:DateType</DataType>
+   </Element>
+   <Element name="ExpiryTime">
+      <DataType>udt:TimeType</DataType>
+   </Element>
+   <Element name="Expression">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="ExpressionCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="ExtendedID">
+      <DataType>udt:IdentifierType</DataType>
+   </Element>
+   <Element name="Extension">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="FaceValueAmount">
+      <DataType>udt:AmountType</DataType>
+   </Element>
+   <Element name="FamilyName">
+      <DataType>udt:NameType</DataType>
+   </Element>
+   <Element name="FeatureTacticTypeCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="FeeAmount">
+      <DataType>udt:AmountType</DataType>
+   </Element>
+   <Element name="FeeDescription">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="FileName">
+      <DataType>udt:NameType</DataType>
+   </Element>
+   <Element name="FinancingInstrumentCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="FirstName">
+      <DataType>udt:NameType</DataType>
+   </Element>
+   <Element name="FirstShipmentAvailibilityDate">
+      <DataType>udt:DateType</DataType>
+   </Element>
+   <Element name="Floor">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="FollowupContractIndicator">
+      <DataType>udt:IndicatorType</DataType>
+   </Element>
+   <Element name="ForecastPurposeCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="ForecastTypeCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="FormatCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="ForwarderServiceInstructions">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="FreeOfChargeIndicator">
+      <DataType>udt:IndicatorType</DataType>
+   </Element>
+   <Element name="FreeOnBoardValueAmount">
+      <DataType>udt:AmountType</DataType>
+   </Element>
+   <Element name="FreightForwarderAssignedID">
+      <DataType>udt:IdentifierType</DataType>
+   </Element>
+   <Element name="FreightRateClassCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="Frequency">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="FrozenDocumentIndicator">
+      <DataType>udt:IndicatorType</DataType>
+   </Element>
+   <Element name="FrozenPeriodDaysNumeric">
+      <DataType>udt:NumericType</DataType>
+   </Element>
+   <Element name="FullnessIndicationCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="FullyPaidSharesIndicator">
+      <DataType>udt:IndicatorType</DataType>
+   </Element>
+   <Element name="FundingProgram">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="FundingProgramCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="GasPressureQuantity">
+      <DataType>udt:QuantityType</DataType>
+   </Element>
+   <Element name="GenderCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="GeneralCargoIndicator">
+      <DataType>udt:IndicatorType</DataType>
+   </Element>
+   <Element name="GovernmentAgreementConstraintIndicator">
+      <DataType>udt:IndicatorType</DataType>
+   </Element>
+   <Element name="GrossTonnageMeasure">
+      <DataType>udt:MeasureType</DataType>
+   </Element>
+   <Element name="GrossVolumeMeasure">
+      <DataType>udt:MeasureType</DataType>
+   </Element>
+   <Element name="GrossWeightMeasure">
+      <DataType>udt:MeasureType</DataType>
+   </Element>
+   <Element name="GuaranteeTypeCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="GuaranteedDespatchDate">
+      <DataType>udt:DateType</DataType>
+   </Element>
+   <Element name="GuaranteedDespatchTime">
+      <DataType>udt:TimeType</DataType>
+   </Element>
+   <Element name="HandlingCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="HandlingInstructions">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="HashAlgorithmMethod">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="HaulageInstructions">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="HazardClassID">
+      <DataType>udt:IdentifierType</DataType>
+   </Element>
+   <Element name="HazardousCategoryCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="HazardousRegulationCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="HazardousRiskIndicator">
+      <DataType>udt:IndicatorType</DataType>
+   </Element>
+   <Element name="HeatingType">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="HeatingTypeCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="HigherTenderAmount">
+      <DataType>udt:AmountType</DataType>
+   </Element>
+   <Element name="HolderName">
+      <DataType>udt:NameType</DataType>
+   </Element>
+   <Element name="HumanFoodApprovedIndicator">
+      <DataType>udt:IndicatorType</DataType>
+   </Element>
+   <Element name="HumanFoodIndicator">
+      <DataType>udt:IndicatorType</DataType>
+   </Element>
+   <Element name="HumidityPercent">
+      <DataType>udt:PercentType</DataType>
+   </Element>
+   <Element name="ID">
+      <DataType>udt:IdentifierType</DataType>
+   </Element>
+   <Element name="IdentificationCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="IdentificationID">
+      <DataType>udt:IdentifierType</DataType>
+   </Element>
+   <Element name="ImmobilizationCertificateID">
+      <DataType>udt:IdentifierType</DataType>
+   </Element>
+   <Element name="ImportanceCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="IndicationIndicator">
+      <DataType>udt:IndicatorType</DataType>
+   </Element>
+   <Element name="IndustryClassificationCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="Information">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="InformationURI">
+      <DataType>udt:IdentifierType</DataType>
+   </Element>
+   <Element name="InhalationToxicityZoneCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="InhouseMail">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="InspectionMethodCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="InstallmentDueDate">
+      <DataType>udt:DateType</DataType>
+   </Element>
+   <Element name="InstructionID">
+      <DataType>udt:IdentifierType</DataType>
+   </Element>
+   <Element name="InstructionNote">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="Instructions">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="InsurancePremiumAmount">
+      <DataType>udt:AmountType</DataType>
+   </Element>
+   <Element name="InsuranceValueAmount">
+      <DataType>udt:AmountType</DataType>
+   </Element>
+   <Element name="InventoryValueAmount">
+      <DataType>udt:AmountType</DataType>
+   </Element>
+   <Element name="InvoiceTypeCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="InvoicedQuantity">
+      <DataType>udt:QuantityType</DataType>
+   </Element>
+   <Element name="InvoicingPartyReference">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="IssueDate">
+      <DataType>udt:DateType</DataType>
+   </Element>
+   <Element name="IssueNumberID">
+      <DataType>udt:IdentifierType</DataType>
+   </Element>
+   <Element name="IssueTime">
+      <DataType>udt:TimeType</DataType>
+   </Element>
+   <Element name="IssuerID">
+      <DataType>udt:IdentifierType</DataType>
+   </Element>
+   <Element name="ItemClassificationCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="ItemUpdateRequestIndicator">
+      <DataType>udt:IndicatorType</DataType>
+   </Element>
+   <Element name="JobTitle">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="JourneyID">
+      <DataType>udt:IdentifierType</DataType>
+   </Element>
+   <Element name="Justification">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="JustificationDescription">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="Keyword">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="LanguageID">
+      <DataType>udt:IdentifierType</DataType>
+   </Element>
+   <Element name="LastRevisionDate">
+      <DataType>udt:DateType</DataType>
+   </Element>
+   <Element name="LastRevisionTime">
+      <DataType>udt:TimeType</DataType>
+   </Element>
+   <Element name="LatestDeliveryDate">
+      <DataType>udt:DateType</DataType>
+   </Element>
+   <Element name="LatestDeliveryTime">
+      <DataType>udt:TimeType</DataType>
+   </Element>
+   <Element name="LatestMeterQuantity">
+      <DataType>udt:QuantityType</DataType>
+   </Element>
+   <Element name="LatestMeterReadingDate">
+      <DataType>udt:DateType</DataType>
+   </Element>
+   <Element name="LatestMeterReadingMethod">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="LatestMeterReadingMethodCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="LatestPickupDate">
+      <DataType>udt:DateType</DataType>
+   </Element>
+   <Element name="LatestPickupTime">
+      <DataType>udt:TimeType</DataType>
+   </Element>
+   <Element name="LatestProposalAcceptanceDate">
+      <DataType>udt:DateType</DataType>
+   </Element>
+   <Element name="LatestSecurityClearanceDate">
+      <DataType>udt:DateType</DataType>
+   </Element>
+   <Element name="LatitudeDegreesMeasure">
+      <DataType>udt:MeasureType</DataType>
+   </Element>
+   <Element name="LatitudeDirectionCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="LatitudeMinutesMeasure">
+      <DataType>udt:MeasureType</DataType>
+   </Element>
+   <Element name="LeadTimeMeasure">
+      <DataType>udt:MeasureType</DataType>
+   </Element>
+   <Element name="LegalReference">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="LegalStatusIndicator">
+      <DataType>udt:IndicatorType</DataType>
+   </Element>
+   <Element name="LiabilityAmount">
+      <DataType>udt:AmountType</DataType>
+   </Element>
+   <Element name="LicensePlateID">
+      <DataType>udt:IdentifierType</DataType>
+   </Element>
+   <Element name="LifeCycleStatusCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="LimitationDescription">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="Line">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="LineCountNumeric">
+      <DataType>udt:NumericType</DataType>
+   </Element>
+   <Element name="LineExtensionAmount">
+      <DataType>udt:AmountType</DataType>
+   </Element>
+   <Element name="LineID">
+      <DataType>udt:IdentifierType</DataType>
+   </Element>
+   <Element name="LineNumberNumeric">
+      <DataType>udt:NumericType</DataType>
+   </Element>
+   <Element name="LineStatusCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="ListValue">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="LivestockIndicator">
+      <DataType>udt:IndicatorType</DataType>
+   </Element>
+   <Element name="LoadingLengthMeasure">
+      <DataType>udt:MeasureType</DataType>
+   </Element>
+   <Element name="LoadingSequenceID">
+      <DataType>udt:IdentifierType</DataType>
+   </Element>
+   <Element name="LocaleCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="Location">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="LocationID">
+      <DataType>udt:IdentifierType</DataType>
+   </Element>
+   <Element name="LocationTypeCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="Login">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="LogoReferenceID">
+      <DataType>udt:IdentifierType</DataType>
+   </Element>
+   <Element name="LongitudeDegreesMeasure">
+      <DataType>udt:MeasureType</DataType>
+   </Element>
+   <Element name="LongitudeDirectionCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="LongitudeMinutesMeasure">
+      <DataType>udt:MeasureType</DataType>
+   </Element>
+   <Element name="LossRisk">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="LossRiskResponsibilityCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="LotNumberID">
+      <DataType>udt:IdentifierType</DataType>
+   </Element>
+   <Element name="LowTendersDescription">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="LowerOrangeHazardPlacardID">
+      <DataType>udt:IdentifierType</DataType>
+   </Element>
+   <Element name="LowerTenderAmount">
+      <DataType>udt:AmountType</DataType>
+   </Element>
+   <Element name="MandateTypeCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="ManufactureDate">
+      <DataType>udt:DateType</DataType>
+   </Element>
+   <Element name="ManufactureTime">
+      <DataType>udt:TimeType</DataType>
+   </Element>
+   <Element name="MarkAttention">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="MarkAttentionIndicator">
+      <DataType>udt:IndicatorType</DataType>
+   </Element>
+   <Element name="MarkCare">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="MarkCareIndicator">
+      <DataType>udt:IndicatorType</DataType>
+   </Element>
+   <Element name="MarketValueAmount">
+      <DataType>udt:AmountType</DataType>
+   </Element>
+   <Element name="MarkingID">
+      <DataType>udt:IdentifierType</DataType>
+   </Element>
+   <Element name="MathematicOperatorCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="MaximumAdvertisementAmount">
+      <DataType>udt:AmountType</DataType>
+   </Element>
+   <Element name="MaximumAmount">
+      <DataType>udt:AmountType</DataType>
+   </Element>
+   <Element name="MaximumBackorderQuantity">
+      <DataType>udt:QuantityType</DataType>
+   </Element>
+   <Element name="MaximumCopiesNumeric">
+      <DataType>udt:NumericType</DataType>
+   </Element>
+   <Element name="MaximumMeasure">
+      <DataType>udt:MeasureType</DataType>
+   </Element>
+   <Element name="MaximumNumberNumeric">
+      <DataType>udt:NumericType</DataType>
+   </Element>
+   <Element name="MaximumOperatorQuantity">
+      <DataType>udt:QuantityType</DataType>
+   </Element>
+   <Element name="MaximumOrderQuantity">
+      <DataType>udt:QuantityType</DataType>
+   </Element>
+   <Element name="MaximumPaidAmount">
+      <DataType>udt:AmountType</DataType>
+   </Element>
+   <Element name="MaximumPaymentInstructionsNumeric">
+      <DataType>udt:NumericType</DataType>
+   </Element>
+   <Element name="MaximumPercent">
+      <DataType>udt:PercentType</DataType>
+   </Element>
+   <Element name="MaximumQuantity">
+      <DataType>udt:QuantityType</DataType>
+   </Element>
+   <Element name="MaximumValue">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="MaximumVariantQuantity">
+      <DataType>udt:QuantityType</DataType>
+   </Element>
+   <Element name="Measure">
+      <DataType>udt:MeasureType</DataType>
+   </Element>
+   <Element name="MedicalFirstAidGuideCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="MeterConstant">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="MeterConstantCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="MeterName">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="MeterNumber">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="MeterReadingComments">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="MeterReadingType">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="MeterReadingTypeCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="MiddleName">
+      <DataType>udt:NameType</DataType>
+   </Element>
+   <Element name="MimeCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="MinimumAmount">
+      <DataType>udt:AmountType</DataType>
+   </Element>
+   <Element name="MinimumBackorderQuantity">
+      <DataType>udt:QuantityType</DataType>
+   </Element>
+   <Element name="MinimumImprovementBid">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="MinimumInventoryQuantity">
+      <DataType>udt:QuantityType</DataType>
+   </Element>
+   <Element name="MinimumMeasure">
+      <DataType>udt:MeasureType</DataType>
+   </Element>
+   <Element name="MinimumNumberNumeric">
+      <DataType>udt:NumericType</DataType>
+   </Element>
+   <Element name="MinimumOrderQuantity">
+      <DataType>udt:QuantityType</DataType>
+   </Element>
+   <Element name="MinimumPercent">
+      <DataType>udt:PercentType</DataType>
+   </Element>
+   <Element name="MinimumQuantity">
+      <DataType>udt:QuantityType</DataType>
+   </Element>
+   <Element name="MinimumValue">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="MiscellaneousEventTypeCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="ModelName">
+      <DataType>udt:NameType</DataType>
+   </Element>
+   <Element name="MonetaryScope">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="MovieTitle">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="MultipleOrderQuantity">
+      <DataType>udt:QuantityType</DataType>
+   </Element>
+   <Element name="MultiplierFactorNumeric">
+      <DataType>udt:NumericType</DataType>
+   </Element>
+   <Element name="Name">
+      <DataType>udt:NameType</DataType>
+   </Element>
+   <Element name="NameCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="NameSuffix">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="NationalityID">
+      <DataType>udt:IdentifierType</DataType>
+   </Element>
+   <Element name="NatureCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="NegotiationDescription">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="NetNetWeightMeasure">
+      <DataType>udt:MeasureType</DataType>
+   </Element>
+   <Element name="NetTonnageMeasure">
+      <DataType>udt:MeasureType</DataType>
+   </Element>
+   <Element name="NetVolumeMeasure">
+      <DataType>udt:MeasureType</DataType>
+   </Element>
+   <Element name="NetWeightMeasure">
+      <DataType>udt:MeasureType</DataType>
+   </Element>
+   <Element name="NetworkID">
+      <DataType>udt:IdentifierType</DataType>
+   </Element>
+   <Element name="NominationDate">
+      <DataType>udt:DateType</DataType>
+   </Element>
+   <Element name="NominationTime">
+      <DataType>udt:TimeType</DataType>
+   </Element>
+   <Element name="NormalTemperatureReductionQuantity">
+      <DataType>udt:QuantityType</DataType>
+   </Element>
+   <Element name="Note">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="NotificationTypeCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="OccurrenceDate">
+      <DataType>udt:DateType</DataType>
+   </Element>
+   <Element name="OccurrenceTime">
+      <DataType>udt:TimeType</DataType>
+   </Element>
+   <Element name="OnCarriageIndicator">
+      <DataType>udt:IndicatorType</DataType>
+   </Element>
+   <Element name="OneTimeChargeType">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="OneTimeChargeTypeCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="OntologyURI">
+      <DataType>udt:IdentifierType</DataType>
+   </Element>
+   <Element name="OpenTenderID">
+      <DataType>udt:IdentifierType</DataType>
+   </Element>
+   <Element name="OperatingYearsQuantity">
+      <DataType>udt:QuantityType</DataType>
+   </Element>
+   <Element name="OptionalLineItemIndicator">
+      <DataType>udt:IndicatorType</DataType>
+   </Element>
+   <Element name="OptionsDescription">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="OrderIntervalDaysNumeric">
+      <DataType>udt:NumericType</DataType>
+   </Element>
+   <Element name="OrderQuantityIncrementNumeric">
+      <DataType>udt:NumericType</DataType>
+   </Element>
+   <Element name="OrderResponseCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="OrderTypeCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="OrderableIndicator">
+      <DataType>udt:IndicatorType</DataType>
+   </Element>
+   <Element name="OrderableUnit">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="OrderableUnitFactorRate">
+      <DataType>udt:RateType</DataType>
+   </Element>
+   <Element name="OrganizationDepartment">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="OriginalContractingSystemID">
+      <DataType>udt:IdentifierType</DataType>
+   </Element>
+   <Element name="OriginalJobID">
+      <DataType>udt:IdentifierType</DataType>
+   </Element>
+   <Element name="OtherConditionsIndicator">
+      <DataType>udt:IndicatorType</DataType>
+   </Element>
+   <Element name="OtherInstruction">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="OtherName">
+      <DataType>udt:NameType</DataType>
+   </Element>
+   <Element name="OutstandingQuantity">
+      <DataType>udt:QuantityType</DataType>
+   </Element>
+   <Element name="OutstandingReason">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="OversupplyQuantity">
+      <DataType>udt:QuantityType</DataType>
+   </Element>
+   <Element name="OwnerTypeCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="PackLevelCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="PackQuantity">
+      <DataType>udt:QuantityType</DataType>
+   </Element>
+   <Element name="PackSizeNumeric">
+      <DataType>udt:NumericType</DataType>
+   </Element>
+   <Element name="PackageLevelCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="PackagingTypeCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="PackingCriteriaCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="PackingMaterial">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="PaidAmount">
+      <DataType>udt:AmountType</DataType>
+   </Element>
+   <Element name="PaidDate">
+      <DataType>udt:DateType</DataType>
+   </Element>
+   <Element name="PaidTime">
+      <DataType>udt:TimeType</DataType>
+   </Element>
+   <Element name="ParentDocumentID">
+      <DataType>udt:IdentifierType</DataType>
+   </Element>
+   <Element name="ParentDocumentLineReferenceID">
+      <DataType>udt:IdentifierType</DataType>
+   </Element>
+   <Element name="ParentDocumentTypeCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="ParentDocumentVersionID">
+      <DataType>udt:IdentifierType</DataType>
+   </Element>
+   <Element name="PartPresentationCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="PartecipationPercent">
+      <DataType>udt:PercentType</DataType>
+   </Element>
+   <Element name="PartialDeliveryIndicator">
+      <DataType>udt:IndicatorType</DataType>
+   </Element>
+   <Element name="ParticipationPercent">
+      <DataType>udt:PercentType</DataType>
+   </Element>
+   <Element name="PartyCapacityAmount">
+      <DataType>udt:AmountType</DataType>
+   </Element>
+   <Element name="PartyType">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="PartyTypeCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="PassengerQuantity">
+      <DataType>udt:QuantityType</DataType>
+   </Element>
+   <Element name="Password">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="PayPerView">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="PayableAlternativeAmount">
+      <DataType>udt:AmountType</DataType>
+   </Element>
+   <Element name="PayableAmount">
+      <DataType>udt:AmountType</DataType>
+   </Element>
+   <Element name="PayableRoundingAmount">
+      <DataType>udt:AmountType</DataType>
+   </Element>
+   <Element name="PayerReference">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="PaymentAlternativeCurrencyCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="PaymentChannelCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="PaymentCurrencyCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="PaymentDescription">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="PaymentDueDate">
+      <DataType>udt:DateType</DataType>
+   </Element>
+   <Element name="PaymentFrequencyCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="PaymentID">
+      <DataType>udt:IdentifierType</DataType>
+   </Element>
+   <Element name="PaymentMeansCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="PaymentMeansID">
+      <DataType>udt:IdentifierType</DataType>
+   </Element>
+   <Element name="PaymentNote">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="PaymentOrderReference">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="PaymentPercent">
+      <DataType>udt:PercentType</DataType>
+   </Element>
+   <Element name="PaymentPurposeCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="PaymentTermsDetailsURI">
+      <DataType>udt:IdentifierType</DataType>
+   </Element>
+   <Element name="PenaltyAmount">
+      <DataType>udt:AmountType</DataType>
+   </Element>
+   <Element name="PenaltySurchargePercent">
+      <DataType>udt:PercentType</DataType>
+   </Element>
+   <Element name="PerUnitAmount">
+      <DataType>udt:AmountType</DataType>
+   </Element>
+   <Element name="Percent">
+      <DataType>udt:PercentType</DataType>
+   </Element>
+   <Element name="PerformanceMetricTypeCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="PerformanceValueQuantity">
+      <DataType>udt:QuantityType</DataType>
+   </Element>
+   <Element name="PerformingCarrierAssignedID">
+      <DataType>udt:IdentifierType</DataType>
+   </Element>
+   <Element name="PersonalSituation">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="PhoneNumber">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="PlacardEndorsement">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="PlacardNotation">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="PlannedDate">
+      <DataType>udt:DateType</DataType>
+   </Element>
+   <Element name="PlotIdentification">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="PositionCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="PostEventNotificationDurationMeasure">
+      <DataType>udt:MeasureType</DataType>
+   </Element>
+   <Element name="PostalZone">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="Postbox">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="PowerIndicator">
+      <DataType>udt:IndicatorType</DataType>
+   </Element>
+   <Element name="PreCarriageIndicator">
+      <DataType>udt:IndicatorType</DataType>
+   </Element>
+   <Element name="PreEventNotificationDurationMeasure">
+      <DataType>udt:MeasureType</DataType>
+   </Element>
+   <Element name="PreferenceCriterionCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="PrepaidAmount">
+      <DataType>udt:AmountType</DataType>
+   </Element>
+   <Element name="PrepaidIndicator">
+      <DataType>udt:IndicatorType</DataType>
+   </Element>
+   <Element name="PrepaidPaymentReferenceID">
+      <DataType>udt:IdentifierType</DataType>
+   </Element>
+   <Element name="PreviousCancellationReasonCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="PreviousJobID">
+      <DataType>udt:IdentifierType</DataType>
+   </Element>
+   <Element name="PreviousMeterQuantity">
+      <DataType>udt:QuantityType</DataType>
+   </Element>
+   <Element name="PreviousMeterReadingDate">
+      <DataType>udt:DateType</DataType>
+   </Element>
+   <Element name="PreviousMeterReadingMethod">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="PreviousMeterReadingMethodCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="PreviousVersionID">
+      <DataType>udt:IdentifierType</DataType>
+   </Element>
+   <Element name="PriceAmount">
+      <DataType>udt:AmountType</DataType>
+   </Element>
+   <Element name="PriceChangeReason">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="PriceEvaluationCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="PriceRevisionFormulaDescription">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="PriceType">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="PriceTypeCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="PricingCurrencyCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="PricingUpdateRequestIndicator">
+      <DataType>udt:IndicatorType</DataType>
+   </Element>
+   <Element name="PrimaryAccountNumberID">
+      <DataType>udt:IdentifierType</DataType>
+   </Element>
+   <Element name="PrintQualifier">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="Priority">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="PrivacyCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="PrizeDescription">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="PrizeIndicator">
+      <DataType>udt:IndicatorType</DataType>
+   </Element>
+   <Element name="ProcedureCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="ProcessDescription">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="ProcessReason">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="ProcessReasonCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="ProcurementSubTypeCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="ProcurementTypeCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="ProductTraceID">
+      <DataType>udt:IdentifierType</DataType>
+   </Element>
+   <Element name="ProfileExecutionID">
+      <DataType>udt:IdentifierType</DataType>
+   </Element>
+   <Element name="ProfileID">
+      <DataType>udt:IdentifierType</DataType>
+   </Element>
+   <Element name="ProfileStatusCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="ProgressPercent">
+      <DataType>udt:PercentType</DataType>
+   </Element>
+   <Element name="PromotionalEventTypeCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="ProviderTypeCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="PublishAwardIndicator">
+      <DataType>udt:IndicatorType</DataType>
+   </Element>
+   <Element name="Purpose">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="PurposeCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="QualityControlCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="Quantity">
+      <DataType>udt:QuantityType</DataType>
+   </Element>
+   <Element name="QuantityDiscrepancyCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="RadioCallSignID">
+      <DataType>udt:IdentifierType</DataType>
+   </Element>
+   <Element name="RailCarID">
+      <DataType>udt:IdentifierType</DataType>
+   </Element>
+   <Element name="Rank">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="Rate">
+      <DataType>udt:RateType</DataType>
+   </Element>
+   <Element name="ReceiptAdviceTypeCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="ReceivedDate">
+      <DataType>udt:DateType</DataType>
+   </Element>
+   <Element name="ReceivedElectronicTenderQuantity">
+      <DataType>udt:QuantityType</DataType>
+   </Element>
+   <Element name="ReceivedForeignTenderQuantity">
+      <DataType>udt:QuantityType</DataType>
+   </Element>
+   <Element name="ReceivedQuantity">
+      <DataType>udt:QuantityType</DataType>
+   </Element>
+   <Element name="ReceivedTenderQuantity">
+      <DataType>udt:QuantityType</DataType>
+   </Element>
+   <Element name="Reference">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="ReferenceDate">
+      <DataType>udt:DateType</DataType>
+   </Element>
+   <Element name="ReferenceEventCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="ReferenceID">
+      <DataType>udt:IdentifierType</DataType>
+   </Element>
+   <Element name="ReferenceTime">
+      <DataType>udt:TimeType</DataType>
+   </Element>
+   <Element name="ReferencedConsignmentID">
+      <DataType>udt:IdentifierType</DataType>
+   </Element>
+   <Element name="RefrigeratedIndicator">
+      <DataType>udt:IndicatorType</DataType>
+   </Element>
+   <Element name="RefrigerationOnIndicator">
+      <DataType>udt:IndicatorType</DataType>
+   </Element>
+   <Element name="Region">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="RegisteredDate">
+      <DataType>udt:DateType</DataType>
+   </Element>
+   <Element name="RegisteredTime">
+      <DataType>udt:TimeType</DataType>
+   </Element>
+   <Element name="RegistrationDate">
+      <DataType>udt:DateType</DataType>
+   </Element>
+   <Element name="RegistrationExpirationDate">
+      <DataType>udt:DateType</DataType>
+   </Element>
+   <Element name="RegistrationID">
+      <DataType>udt:IdentifierType</DataType>
+   </Element>
+   <Element name="RegistrationName">
+      <DataType>udt:NameType</DataType>
+   </Element>
+   <Element name="RegistrationNationality">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="RegistrationNationalityID">
+      <DataType>udt:IdentifierType</DataType>
+   </Element>
+   <Element name="RegulatoryDomain">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="RejectActionCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="RejectReason">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="RejectReasonCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="RejectedQuantity">
+      <DataType>udt:QuantityType</DataType>
+   </Element>
+   <Element name="RejectionNote">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="ReleaseID">
+      <DataType>udt:IdentifierType</DataType>
+   </Element>
+   <Element name="ReliabilityPercent">
+      <DataType>udt:PercentType</DataType>
+   </Element>
+   <Element name="Remarks">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="ReminderSequenceNumeric">
+      <DataType>udt:NumericType</DataType>
+   </Element>
+   <Element name="ReminderTypeCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="ReplenishmentOwnerDescription">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="RequestForQuotationLineID">
+      <DataType>udt:IdentifierType</DataType>
+   </Element>
+   <Element name="RequestedDeliveryDate">
+      <DataType>udt:DateType</DataType>
+   </Element>
+   <Element name="RequestedDespatchDate">
+      <DataType>udt:DateType</DataType>
+   </Element>
+   <Element name="RequestedDespatchTime">
+      <DataType>udt:TimeType</DataType>
+   </Element>
+   <Element name="RequestedInvoiceCurrencyCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="RequestedPublicationDate">
+      <DataType>udt:DateType</DataType>
+   </Element>
+   <Element name="RequiredCurriculaIndicator">
+      <DataType>udt:IndicatorType</DataType>
+   </Element>
+   <Element name="RequiredCustomsID">
+      <DataType>udt:IdentifierType</DataType>
+   </Element>
+   <Element name="RequiredDeliveryDate">
+      <DataType>udt:DateType</DataType>
+   </Element>
+   <Element name="RequiredDeliveryTime">
+      <DataType>udt:TimeType</DataType>
+   </Element>
+   <Element name="RequiredFeeAmount">
+      <DataType>udt:AmountType</DataType>
+   </Element>
+   <Element name="ResidenceType">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="ResidenceTypeCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="ResidentOccupantsNumeric">
+      <DataType>udt:NumericType</DataType>
+   </Element>
+   <Element name="Resolution">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="ResolutionCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="ResolutionDate">
+      <DataType>udt:DateType</DataType>
+   </Element>
+   <Element name="ResolutionTime">
+      <DataType>udt:TimeType</DataType>
+   </Element>
+   <Element name="ResponseCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="ResponseDate">
+      <DataType>udt:DateType</DataType>
+   </Element>
+   <Element name="ResponseTime">
+      <DataType>udt:TimeType</DataType>
+   </Element>
+   <Element name="RetailEventName">
+      <DataType>udt:NameType</DataType>
+   </Element>
+   <Element name="RetailEventStatusCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="ReturnabilityIndicator">
+      <DataType>udt:IndicatorType</DataType>
+   </Element>
+   <Element name="ReturnableMaterialIndicator">
+      <DataType>udt:IndicatorType</DataType>
+   </Element>
+   <Element name="ReturnableQuantity">
+      <DataType>udt:QuantityType</DataType>
+   </Element>
+   <Element name="RevisedForecastLineID">
+      <DataType>udt:IdentifierType</DataType>
+   </Element>
+   <Element name="RevisionDate">
+      <DataType>udt:DateType</DataType>
+   </Element>
+   <Element name="RevisionStatusCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="RevisionTime">
+      <DataType>udt:TimeType</DataType>
+   </Element>
+   <Element name="RoamingPartnerName">
+      <DataType>udt:NameType</DataType>
+   </Element>
+   <Element name="RoleCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="RoleDescription">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="Room">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="RoundingAmount">
+      <DataType>udt:AmountType</DataType>
+   </Element>
+   <Element name="SalesOrderID">
+      <DataType>udt:IdentifierType</DataType>
+   </Element>
+   <Element name="SalesOrderLineID">
+      <DataType>udt:IdentifierType</DataType>
+   </Element>
+   <Element name="SchemeURI">
+      <DataType>udt:IdentifierType</DataType>
+   </Element>
+   <Element name="SealIssuerTypeCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="SealStatusCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="SealingPartyType">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="SecurityClassificationCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="SecurityID">
+      <DataType>udt:IdentifierType</DataType>
+   </Element>
+   <Element name="SellerEventID">
+      <DataType>udt:IdentifierType</DataType>
+   </Element>
+   <Element name="SequenceID">
+      <DataType>udt:IdentifierType</DataType>
+   </Element>
+   <Element name="SequenceNumberID">
+      <DataType>udt:IdentifierType</DataType>
+   </Element>
+   <Element name="SequenceNumeric">
+      <DataType>udt:NumericType</DataType>
+   </Element>
+   <Element name="SerialID">
+      <DataType>udt:IdentifierType</DataType>
+   </Element>
+   <Element name="ServiceInformationPreferenceCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="ServiceName">
+      <DataType>udt:NameType</DataType>
+   </Element>
+   <Element name="ServiceNumberCalled">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="ServiceType">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="ServiceTypeCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="SettlementDiscountAmount">
+      <DataType>udt:AmountType</DataType>
+   </Element>
+   <Element name="SettlementDiscountPercent">
+      <DataType>udt:PercentType</DataType>
+   </Element>
+   <Element name="SharesNumberQuantity">
+      <DataType>udt:QuantityType</DataType>
+   </Element>
+   <Element name="ShippingMarks">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="ShippingOrderID">
+      <DataType>udt:IdentifierType</DataType>
+   </Element>
+   <Element name="ShippingPriorityLevelCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="ShipsRequirements">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="ShortQuantity">
+      <DataType>udt:QuantityType</DataType>
+   </Element>
+   <Element name="ShortageActionCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="SignatureID">
+      <DataType>udt:IdentifierType</DataType>
+   </Element>
+   <Element name="SignatureMethod">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="SizeTypeCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="SoleProprietorshipIndicator">
+      <DataType>udt:IndicatorType</DataType>
+   </Element>
+   <Element name="SourceCurrencyBaseRate">
+      <DataType>udt:RateType</DataType>
+   </Element>
+   <Element name="SourceCurrencyCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="SourceForecastIssueDate">
+      <DataType>udt:DateType</DataType>
+   </Element>
+   <Element name="SourceForecastIssueTime">
+      <DataType>udt:TimeType</DataType>
+   </Element>
+   <Element name="SourceValueMeasure">
+      <DataType>udt:MeasureType</DataType>
+   </Element>
+   <Element name="SpecialInstructions">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="SpecialSecurityIndicator">
+      <DataType>udt:IndicatorType</DataType>
+   </Element>
+   <Element name="SpecialServiceInstructions">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="SpecialTerms">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="SpecialTransportRequirements">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="SpecificationID">
+      <DataType>udt:IdentifierType</DataType>
+   </Element>
+   <Element name="SpecificationTypeCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="SplitConsignmentIndicator">
+      <DataType>udt:IndicatorType</DataType>
+   </Element>
+   <Element name="StartDate">
+      <DataType>udt:DateType</DataType>
+   </Element>
+   <Element name="StartTime">
+      <DataType>udt:TimeType</DataType>
+   </Element>
+   <Element name="StatementTypeCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="StatusAvailableIndicator">
+      <DataType>udt:IndicatorType</DataType>
+   </Element>
+   <Element name="StatusCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="StatusReason">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="StatusReasonCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="StreetName">
+      <DataType>udt:NameType</DataType>
+   </Element>
+   <Element name="SubcontractingConditionsCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="SubmissionDate">
+      <DataType>udt:DateType</DataType>
+   </Element>
+   <Element name="SubmissionDueDate">
+      <DataType>udt:DateType</DataType>
+   </Element>
+   <Element name="SubmissionMethodCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="SubscriberID">
+      <DataType>udt:IdentifierType</DataType>
+   </Element>
+   <Element name="SubscriberType">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="SubscriberTypeCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="SubstitutionStatusCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="SuccessiveSequenceID">
+      <DataType>udt:IdentifierType</DataType>
+   </Element>
+   <Element name="SummaryDescription">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="SupplierAssignedAccountID">
+      <DataType>udt:IdentifierType</DataType>
+   </Element>
+   <Element name="SupplyChainActivityTypeCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="TareWeightMeasure">
+      <DataType>udt:MeasureType</DataType>
+   </Element>
+   <Element name="TargetCurrencyBaseRate">
+      <DataType>udt:RateType</DataType>
+   </Element>
+   <Element name="TargetCurrencyCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="TargetInventoryQuantity">
+      <DataType>udt:QuantityType</DataType>
+   </Element>
+   <Element name="TargetServicePercent">
+      <DataType>udt:PercentType</DataType>
+   </Element>
+   <Element name="TariffClassCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="TariffCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="TariffDescription">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="TaxAmount">
+      <DataType>udt:AmountType</DataType>
+   </Element>
+   <Element name="TaxCurrencyCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="TaxEnergyAmount">
+      <DataType>udt:AmountType</DataType>
+   </Element>
+   <Element name="TaxEnergyBalanceAmount">
+      <DataType>udt:AmountType</DataType>
+   </Element>
+   <Element name="TaxEnergyOnAccountAmount">
+      <DataType>udt:AmountType</DataType>
+   </Element>
+   <Element name="TaxEvidenceIndicator">
+      <DataType>udt:IndicatorType</DataType>
+   </Element>
+   <Element name="TaxExclusiveAmount">
+      <DataType>udt:AmountType</DataType>
+   </Element>
+   <Element name="TaxExemptionReason">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="TaxExemptionReasonCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="TaxIncludedIndicator">
+      <DataType>udt:IndicatorType</DataType>
+   </Element>
+   <Element name="TaxInclusiveAmount">
+      <DataType>udt:AmountType</DataType>
+   </Element>
+   <Element name="TaxLevelCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="TaxPointDate">
+      <DataType>udt:DateType</DataType>
+   </Element>
+   <Element name="TaxTypeCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="TaxableAmount">
+      <DataType>udt:AmountType</DataType>
+   </Element>
+   <Element name="TechnicalCommitteeDescription">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="TechnicalName">
+      <DataType>udt:NameType</DataType>
+   </Element>
+   <Element name="TelecommunicationsServiceCall">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="TelecommunicationsServiceCallCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="TelecommunicationsServiceCategory">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="TelecommunicationsServiceCategoryCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="TelecommunicationsSupplyType">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="TelecommunicationsSupplyTypeCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="Telefax">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="Telephone">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="TenderEnvelopeID">
+      <DataType>udt:IdentifierType</DataType>
+   </Element>
+   <Element name="TenderEnvelopeTypeCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="TenderResultCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="TenderTypeCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="TendererRequirementTypeCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="TendererRoleCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="TestMethod">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="Text">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="ThirdPartyPayerIndicator">
+      <DataType>udt:IndicatorType</DataType>
+   </Element>
+   <Element name="ThresholdAmount">
+      <DataType>udt:AmountType</DataType>
+   </Element>
+   <Element name="ThresholdQuantity">
+      <DataType>udt:QuantityType</DataType>
+   </Element>
+   <Element name="ThresholdValueComparisonCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="TierRange">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="TierRatePercent">
+      <DataType>udt:PercentType</DataType>
+   </Element>
+   <Element name="TimeAmount">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="TimeDeltaDaysQuantity">
+      <DataType>udt:QuantityType</DataType>
+   </Element>
+   <Element name="TimeFrequencyCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="TimezoneOffset">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="TimingComplaint">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="TimingComplaintCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="Title">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="ToOrderIndicator">
+      <DataType>udt:IndicatorType</DataType>
+   </Element>
+   <Element name="TotalAmount">
+      <DataType>udt:AmountType</DataType>
+   </Element>
+   <Element name="TotalBalanceAmount">
+      <DataType>udt:AmountType</DataType>
+   </Element>
+   <Element name="TotalConsumedQuantity">
+      <DataType>udt:QuantityType</DataType>
+   </Element>
+   <Element name="TotalCreditAmount">
+      <DataType>udt:AmountType</DataType>
+   </Element>
+   <Element name="TotalDebitAmount">
+      <DataType>udt:AmountType</DataType>
+   </Element>
+   <Element name="TotalDeliveredQuantity">
+      <DataType>udt:QuantityType</DataType>
+   </Element>
+   <Element name="TotalGoodsItemQuantity">
+      <DataType>udt:QuantityType</DataType>
+   </Element>
+   <Element name="TotalInvoiceAmount">
+      <DataType>udt:AmountType</DataType>
+   </Element>
+   <Element name="TotalMeteredQuantity">
+      <DataType>udt:QuantityType</DataType>
+   </Element>
+   <Element name="TotalPackageQuantity">
+      <DataType>udt:QuantityType</DataType>
+   </Element>
+   <Element name="TotalPackagesQuantity">
+      <DataType>udt:QuantityType</DataType>
+   </Element>
+   <Element name="TotalPaymentAmount">
+      <DataType>udt:AmountType</DataType>
+   </Element>
+   <Element name="TotalTaskAmount">
+      <DataType>udt:AmountType</DataType>
+   </Element>
+   <Element name="TotalTaxAmount">
+      <DataType>udt:AmountType</DataType>
+   </Element>
+   <Element name="TotalTransportHandlingUnitQuantity">
+      <DataType>udt:QuantityType</DataType>
+   </Element>
+   <Element name="TraceID">
+      <DataType>udt:IdentifierType</DataType>
+   </Element>
+   <Element name="TrackingDeviceCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="TrackingID">
+      <DataType>udt:IdentifierType</DataType>
+   </Element>
+   <Element name="TradeItemPackingLabelingTypeCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="TradeServiceCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="TradingRestrictions">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="TrainID">
+      <DataType>udt:IdentifierType</DataType>
+   </Element>
+   <Element name="TransactionCurrencyTaxAmount">
+      <DataType>udt:AmountType</DataType>
+   </Element>
+   <Element name="TransitDirectionCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="TransportAuthorizationCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="TransportEmergencyCardCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="TransportEquipmentTypeCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="TransportEventTypeCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="TransportExecutionPlanReferenceID">
+      <DataType>udt:IdentifierType</DataType>
+   </Element>
+   <Element name="TransportExecutionStatusCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="TransportHandlingUnitTypeCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="TransportMeansTypeCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="TransportModeCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="TransportServiceCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="TransportServiceProviderRemarks">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="TransportServiceProviderSpecialTerms">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="TransportUserRemarks">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="TransportUserSpecialTerms">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="TransportationServiceDescription">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="TransportationServiceDetailsURI">
+      <DataType>udt:IdentifierType</DataType>
+   </Element>
+   <Element name="TransportationStatusTypeCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="TypeCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="UBLVersionID">
+      <DataType>udt:IdentifierType</DataType>
+   </Element>
+   <Element name="UNDGCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="URI">
+      <DataType>udt:IdentifierType</DataType>
+   </Element>
+   <Element name="UUID">
+      <DataType>udt:IdentifierType</DataType>
+   </Element>
+   <Element name="UnknownPriceIndicator">
+      <DataType>udt:IndicatorType</DataType>
+   </Element>
+   <Element name="UpperOrangeHazardPlacardID">
+      <DataType>udt:IdentifierType</DataType>
+   </Element>
+   <Element name="UrgencyCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="UtilityStatementTypeCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="ValidateProcess">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="ValidateTool">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="ValidateToolVersion">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="ValidationDate">
+      <DataType>udt:DateType</DataType>
+   </Element>
+   <Element name="ValidationResultCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="ValidationTime">
+      <DataType>udt:TimeType</DataType>
+   </Element>
+   <Element name="ValidatorID">
+      <DataType>udt:IdentifierType</DataType>
+   </Element>
+   <Element name="ValidityStartDate">
+      <DataType>udt:DateType</DataType>
+   </Element>
+   <Element name="Value">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="ValueAmount">
+      <DataType>udt:AmountType</DataType>
+   </Element>
+   <Element name="ValueMeasure">
+      <DataType>udt:MeasureType</DataType>
+   </Element>
+   <Element name="ValueQualifier">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="ValueQuantity">
+      <DataType>udt:QuantityType</DataType>
+   </Element>
+   <Element name="VarianceQuantity">
+      <DataType>udt:QuantityType</DataType>
+   </Element>
+   <Element name="VariantConstraintIndicator">
+      <DataType>udt:IndicatorType</DataType>
+   </Element>
+   <Element name="VariantID">
+      <DataType>udt:IdentifierType</DataType>
+   </Element>
+   <Element name="VersionID">
+      <DataType>udt:IdentifierType</DataType>
+   </Element>
+   <Element name="VesselID">
+      <DataType>udt:IdentifierType</DataType>
+   </Element>
+   <Element name="VesselName">
+      <DataType>udt:NameType</DataType>
+   </Element>
+   <Element name="WarrantyInformation">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="WebsiteURI">
+      <DataType>udt:IdentifierType</DataType>
+   </Element>
+   <Element name="WeekDayCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="Weight">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="WeightNumeric">
+      <DataType>udt:NumericType</DataType>
+   </Element>
+   <Element name="WeightingAlgorithmCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="WorkPhase">
+      <DataType>udt:TextType</DataType>
+   </Element>
+   <Element name="WorkPhaseCode">
+      <DataType>udt:CodeType</DataType>
+   </Element>
+   <Element name="XPath">
+      <DataType>udt:TextType</DataType>
+   </Element>
+</Namespace>

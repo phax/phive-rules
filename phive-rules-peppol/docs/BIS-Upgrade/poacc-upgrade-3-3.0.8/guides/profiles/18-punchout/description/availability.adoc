@@ -1,0 +1,24 @@
+[[availability-dates-and-lead-time]]
+= Availability dates and lead time
+
+A shopping cart line may state the item availability date which is first day before the end of which the particular item can and will be shipped from the seller.
+If availability date is before the cart issue date then the item is immediately available.
+The availability of all items in the cart ends when the validity period of the cart ends.
+
+.Example of availability date for an item
+[source, xml, indent=0]
+----
+include::{snippet-dir}/snippet-18-1.xml[tags=availability]
+----
+
+A shopping cart line may state the lead time for the item. This is the maximum number of working days that may pass from the day the seller receives an order until the day the item is shipped from the seller. The seller may ship earlier.
+
+A lead day of one (1) means that an item will be shipped no later than the end of next working day according to the sellers regional calendar.
+
+.Example of delivery lead time
+[source, xml, indent=0]
+----
+include::{snippet-dir}/snippet-18-1.xml[tags=leadtime]
+----
+
+When an availability start date is earlier than the end of the lead time the seller may ship at or before the end of the lead time.

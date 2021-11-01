@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testSet xmlns="http://difi.no/xsd/vefa/validator/1.0"
+	configuration="peppolbis-t01-base-3.0">
+	<assert>
+		<description>Verify that price amount is not negative</description>
+		<scope>PEPPOL-T01-R005</scope>
+	</assert>
+	<test>
+		<assert>
+			<success>PEPPOL-T01-R005</success>
+		</assert>
+		<Order xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+			xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+			xmlns="urn:oasis:names:specification:ubl:schema:xsd:Order-2">
+
+			<cac:OrderLine>
+				<cac:LineItem>
+					<cac:Price>
+						<cbc:PriceAmount>10</cbc:PriceAmount>
+					</cac:Price>
+				</cac:LineItem>
+			</cac:OrderLine>
+
+		</Order>
+	</test>
+
+	<test>
+		<assert>
+			<success>PEPPOL-T01-R005</success>
+		</assert>
+		<Order xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+			xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+			xmlns="urn:oasis:names:specification:ubl:schema:xsd:Order-2">
+
+			<cac:OrderLine>
+				<cac:LineItem>
+					<cac:Price>
+						<cbc:PriceAmount>0</cbc:PriceAmount>
+					</cac:Price>
+				</cac:LineItem>
+			</cac:OrderLine>
+
+		</Order>
+	</test>
+	
+	<test>
+		<assert>
+			<error>PEPPOL-T01-R005</error>
+		</assert>
+		<Order xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+			xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+			xmlns="urn:oasis:names:specification:ubl:schema:xsd:Order-2">
+			
+			<cac:OrderLine>
+				<cac:LineItem>
+					<cac:Price>
+						<cbc:PriceAmount>-10</cbc:PriceAmount>
+					</cac:Price>
+				</cac:LineItem>
+			</cac:OrderLine>
+			
+		</Order>
+	</test>
+
+</testSet>

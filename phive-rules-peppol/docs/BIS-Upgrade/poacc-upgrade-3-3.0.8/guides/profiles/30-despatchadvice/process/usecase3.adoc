@@ -1,0 +1,202 @@
+[[use-case-3---despatch-with-logistic-units-using-gs1-keys]]
+== Use case 3 - Despatch with Logistic units using GS1 Keys
+
+This use case is a refined use of the Despatch Advice where several GS1 keys are applied within the Despatch Advice to identify various entities in the despatch advice, namely; Parties, Endpoints, Shipment id, consignment ids, logistic unit ids and product identification.
+
+[cols="1,5",options="header",]
+|====
+|*Use Case number* |3
+|*Use Case Name* |Despatch Advice with Logistic units using GS1 Keys
+|*Use Case Description* a|
+Describes a complete process whereby a Despatch party generates a Despatch Advice based on information about the order and the product.
+
+The Despatch Advice enables the supplier (carrier) to provide detailed information about the content of a shipment and enables a Buyer to reconcile, or confirm, the physical shipment against the order; it provides a mirror of the shipment’s packaging details and structure of the delivery.
+
+The Despatch Advice is sent by the Despatch party to the Consignee party when the goods are sent.
+
+|*Parties involved* a|
+Despatch party In UBL: DespatchSupplierParty) (Different legal entity than the Seller in this use case)
+
+Seller (In UBL: SellerSupplierParty)
+
+Consignee party (In UBL: DeliveryCustomerParty) (Different legal entity than the Buyer in this use)
+
+Buyer (In UBL: BuyerCustomerParty)
+
+|*Pre conditions* |Master data alignment of locations (GLNs) and products (GTINs).
+|*Post conditions* |Despatch advice is received by the receiver of the goods.
+|*Assumptions* a|
+[loweralpha]
+..  The Despatch Advice has one shipment id (GSIN) assigned by the seller
+..  The Despatch Advice has one consignment id which has been assigned by the carrier (GINC)
+..  One delivery point (no cross docking) which is identified by a GLN.
+..  The four despatch lines are each an orderable unit – a GTIN.
+..  Two ordered units (GTINS) are packed on each pallet.
+..  There are two pallets in the shipment.
+..  Each standard pallet is assigned one logistics’ unit id (SSCC).
+..  A logistics’ label has been applied to each of the pallets where the SSCC is used rendered as clear text numbers, address details and GS1 128 barcode
++
+_Relationship between the GTIN and the SSCC keys_
++
+image:images/gtin-scss.png[image,width=271,height=93]
+
+|*The flow* a|
+The Seller has accepted the order without changes.
+
+.  The Seller collects the ordered goods
+.  The ordered goods consist of one pallet per ordered 2 line items.
+.  The Despatch party loads the goods onto the transport.
+.  The Despatch party sends the Despatch advice to the Consignee
+.  The Consignee party receives the Despatch advice message
+
+1.  The Consignee party uses the content in the Despatch advice message for registration receipt.
+
+|*Result* a|
+.  The Despatch advice message helped the Consignee party to prepare for receipt of goods:
+..  At the right time
+..  At the right location (address)
+.  The Despatch advice helped the Consignee party in the process of receipt registration to identify the:
+..  Order
+..  The order lines
+..  The logistics’ handling units
+..  The goods description
+..  The delivered quantity
+..  The parties involved in the process
+
+|*XML example file* |See Annex A for a sample file illustrating Use Case 3.
+|====
+
+The following provides additional details and clarifications about the various keys and identifiers used in this Use Case, as well as the benefits implementers can obtain when using them.
+Ultimately there are two pictures clarifying the relationship between the GSIN and the GINC identifiers.
+
+[cols="2,4",options="header",]
+|====
+2+|Beneath are an overview and an explanation of the keys used in the Use Case.
+a|
+
+*GLN:*
+
+Global location number |
+
+Despatch party - Organizational identification.
+
+Despatch party - Endpoint identification
+
+Consignee - Organizational identification.
+
+Consignee - Endpoint identification
+
+Buyer - Organizational identification.
+
+Buyer - Endpoint identification.
+
+Seller - Organizational identification
+
+Seller - Endpoint identification.
+
+a|
+**SSCC**:
+
+Serial Shipping Container Code
+
+ a|
+Each transport handling unit is assigned an SSCC.
+
+The SSCC is the GS1 Identification Key for an item of any composition established for transport and/or storage which needs to be managed through the supply chain.
+The SSCC is assigned for the life time of the transport item and is a mandatory element on the GS1 Logistic Label
+
+a|
+*GSIN:*
+
+Global Shipment Identification Number
+
+ a|
+Shipment identification. One shipment number for the despatch advice.
+
+A document level id that specifies the number of the Shipment along the entire shipment, which, may consist of several consignments.
+
+* Number assigned by the seller to identify a logical grouping of logistic or transport units that are typically assembled by the seller for a transport shipment.
+
+* It meets the World Customs Organisation (WCO) requirement for a Unique Consignment Reference (URC).
+
+It is endorsed by ISO/IEC 15459 (ISO License Plate)
+
+a|
+*GINC:*
+
+Global Identification Number of Consignment
+
+ a|
+One consignment number for the Despatch Advice
+
+* Used to identify a logical grouping of logistic or transport units that are assembled to be transported under one transport document.
+
+* It is used to identify a logical grouping of logistic units during a specific journey of which there may be multiple consignment stages.
+
+
+a|
+*GTIN:*
+
+Global trade Item Number
+
+ a|
+Each ordered item as a GTIN.
+
+Product identification.
+
+|====
+
+[cols="2,4",options="header",]
+|====
+2+|Beneath are an overview of the benefits implementers can get when using the keys and identifiers.
+|
+*GTIN:*
+
+Global trade Item Number
+
+a|
+* Correct goods and associated data have been sourced through upfront data alignment
+
+|
+*GLN*
+
+Global Location Number
+
+a|
+* Precise and trustworthy location data has been achieved through GS1 master data alignment location registers.
+
+|
+*SSCC:*
+
+Serial Shipping Container Code
+
+a|
+* Logistic units are individually identified with the SSCC (Serial Shipping Container Code)
+* The item (goods) details accessed by scanning (bar code) or reading (EPC/RFID) the SSCC on the logistic unit and accessing the relevant information.
+* The usage of the SSCC on a logistic unit is subject to rules, namely that multiple visible SSCCs on one logistics unit can only be used for transit purposes.
+** If two or more SSCCs are applied on a logistics unit then the units associated to a given SSCC have to be individually wrapped or bound together to form individual logistics units.
+** Multiple SSCCs can be applied to individual units on one logistic unit for subsequent cross docking but they HAVE to be wrapped so that they are not visible.
+* Additionally, a master logistics label needs to be applied to the whole logistics unit for the consignment to the distribution center.
+a|
+**GSIN**:
+
+Global Shipment Identification Number
+
+a|
+* A globally recognised shipping number used to uniquely identify the shipment as a whole as specified by the seller
+
+|
+*GINC:*
+
+Global Identification Number of Consignment
+
+a|
+* A globally recognised consignment number used to uniquely identify the consignment as specified by the shipper.
+
+|====
+
+*Supplementary clarification on the usage of the GSIN and the GINC.*
+
+_Assembling of the keys:_
+
+image:images/image8.png[image,width=436,height=169]

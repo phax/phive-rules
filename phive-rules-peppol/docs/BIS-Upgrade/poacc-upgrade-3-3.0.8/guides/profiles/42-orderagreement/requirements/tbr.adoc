@@ -1,0 +1,82 @@
+
+= Transaction business requirements
+
+The above high level requirements are supported by the following transaction requirements.
+
+[cols="1s,5",options="header",]
+|====
+|ID
+|Requirement
+
+|tbr110-001
+|An order agreement must provide information about its identity and issue date and time.
+
+|tbr110-002
+|The order agreement must provide information to a previous order agreement if it needs to be changed or rejected.
+
+|tbr110-003
+|An order agreement must provide information about the identities, name and address of the seller
+
+|tbr110-004
+|An order agreement must provide information about the identities, name and address of the buyer
+
+|tbr110-005
+|The order agreement should carry information about the identities, name and address and contact details of the delivery party.
+
+|tbr110-006
+|An order agreement must provide for information about the identity and name of the buyer’s accounting party.
+
+|tbr110-007
+|An order agreement must provide for information about the delivery terms and delivery period.
+
+|tbr110-008
+|The lines in an order agreement must carry information that identifies the item.
+
+|tbr110-009
+|The lines in an order agreement must provide for information that describes the item.
+
+|tbr110-010
+|An order agreement must provide for information to refer to a document describing the purchased item/service. The reference may be a ticket or other documents related to the item/service.
+
+|tbr110-011
+|The lines in an order agreement must provide for information to specify a classification to the purchased item/service.
+
+|tbr110-012
+|For additional description to the purchased item/service the lines in an order agreement must provide for adding properties and attributes.
+
+|tbr110-013
+|An item should have information regarding the VAT rate and VAT category.
+
+|tbr110-014
+|An order agreement must provide seller contact information for the buyer to use when resolving issues with the order agreement.
+
+|tbr110-015
+|An order agreement must provide for information that makes it possible for the buyer to direct the order agreement in the buyer procurement system and for accounting purposes.
+
+|tbr110-016
+|It should be possible send other information that is not contained explicitly in another place in the transaction.
+
+|tbr110-017
+|An order agreement must provide for information of contract id and contract type that the order agreement is based on.
+
+|tbr110-018
+|An order agreement must provide for information of the identification and name of the originating party.
+
+|tbr110-019
+|An order agreement must provide for information of tax totals and other monetary totals on header level.
+
+|tbr110-020
+|An order agreement must provide for information of item price and the base quantity of the price.
+
+|tbr110-021
+|An order agreement must have a line number for each order agreement line.
+
+|tbr110-022
+|An order agreement must provide for information of ordered quantity and in if appropriate delivered quantity of the item.
+
+|tbr110-023
+|An order agreement must provide for information about the total amount for each line.
+
+|tbr110-024
+|It should be possible to indicate if an item/service has a contracted price.
+|====

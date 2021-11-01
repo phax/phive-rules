@@ -1,0 +1,13 @@
+
+[[peppol-bis-1a---benefits]]
+= PEPPOL BIS 1A - Benefits
+
+Catalogues are used as basis for maintenance of information about products and services that are part of a contract, like a framework agreement.
+
+* The buyer (or a catalogue provider on his behalf) can present the information in a web shop where he can ensure correctness of product description, prices and other terms that may apply.
+* The supplier can provide the customer with correct information at all times and ensure high data quality in orders based on the catalogue he prepares.
+* Implementing the catalogue provides the possibility of designing fully automated purchasing flows in which the electronic documents can be validated and matched automatically, thereby saving resources compared to manual processing.
+* Implementation of a catalogue can be the first step in automating the purchasing process followed by an order and an invoice, leading to entire purchasing process running from sourcing, ordering and invoicing to payment.
+* Buyers can accept or reject the catalogue using a catalogue response
+
+This PEPPOL BIS is based on the CEN/ISSS WS/BII Profile BII01 specification, see [BII_Catalogue].

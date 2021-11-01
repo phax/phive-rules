@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeList xmlns="urn:fdc:difi.no:2017:vefa:structure:CodeList-1">
+
+    <Title>UNCL1225 Message function code</Title>
+    <Identifier>UNCL1225</Identifier>
+    <Version>D.17A</Version>
+    <Agency>UN/CEFACT</Agency>
+    <Subset>openPEPPOL</Subset>
+
+    <Code>
+        <Id>27</Id>
+        <Name>Not accepted</Name>
+        <Description>The Order is rejected. No lines should be sent.</Description>
+    </Code>
+    <Code>
+        <Id>29</Id>
+        <Name>Accepted without amendment</Name>
+        <Description>The Order is accepted wihout amendment. No lines should be sent.</Description>
+    </Code>
+    <Code>
+        <Id>30</Id>
+        <Name>Accepted, with amendment in detail section</Name>
+        <Description>The Order is accepted with amendment on line level. All lines must be sent.</Description>
+    </Code>
+
+</CodeList>

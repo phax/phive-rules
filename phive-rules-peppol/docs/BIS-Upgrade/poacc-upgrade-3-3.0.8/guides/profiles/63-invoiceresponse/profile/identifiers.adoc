@@ -1,0 +1,6 @@
+[[namespaces]]
+= Namespaces
+
+The message level response data model is in this PEPPOL BIS bound to the {ubl-appl-resp}. The target namespace for the UBL-ApplicationResponse-2.1 is:
+
+`urn:oasis:names:specification:ubl:schema:xsd:ApplicationResponse-2`

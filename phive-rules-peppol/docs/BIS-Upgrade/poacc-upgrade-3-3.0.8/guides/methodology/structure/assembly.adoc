@@ -1,0 +1,65 @@
+= Assembling the document
+
+In the main folder of the BIS document, a file named `main.adoc` is used to set document title, description, attributes and to assemble the document using the include directive.
+
+.Example showing an AsciiDoc main file
+[indent=0]
+----
+      include::../../shared/links.adoc[] <1>
+
+      = image:../../shared/images/peppol.png[float="right"]PEPPOL BIS Catalogue Only 3.0 <2>
+      v3.0.0 <3>
+      :doctype: book <4>
+      :icons: font <5>
+      :stem: <6>
+      :toc: left <7>
+      :toclevels: 2 <8>
+      :source-highlighter: coderay <9>
+      :source-language: xml <10>
+      :sectanchors: <11>
+      :sectnums: <12>
+      :snippet-dir: ../../../../rules/snippets/catalogue <13>
+
+      <14>
+
+      include::../../shared/copyright.adoc[]
+
+      = Link to main site of documentation
+
+      {main-site}
+
+
+      :leveloffset: +1
+
+      include::introduction/index.adoc[]
+
+      include::principles/index.adoc[]
+
+      include::process/index.adoc[]
+
+      // include::requirements/index.adoc[]
+
+      include::../../shared/datatypes/index.adoc[]
+
+      include::../../shared/codes/index.adoc[]
+
+      include::description/index.adoc[]
+
+      include::profile/index.adoc[]
+
+      :leveloffset: -1
+----
+<1> Include a shared file of links
+<2> Title including PEPPOL-image
+<3> Version number
+<4> Doctype must always be book
+<5> Use font for icons, this is what provides the admonitions
+<6> :stem: is used for mathematical formulas, if needed
+<7> :toc: left places the table of content to the left of the content
+<8> :toclevels: 2 says that header level 1 and 2 will be shown in the table of content
+<9> :source-highlighter: coderay to give pretty source code highlighting
+<10> :source-language: xml, means that if not specified, a source block will show as xml. Other source codes can still be used, but must then be specified in the header of the specific block
+<11> :sectanchors: Every header/sub-header is given an anchor that can be linked to
+<12> :sectnums: Automatically numbers the headings
+<13> :snippet-dir: Add path to the folder where source/snippet documents are found.
+<14> includes of the different chapters in the BIS document

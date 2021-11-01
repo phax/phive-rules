@@ -1,0 +1,43 @@
+[[general-requirements]]
+= General requirements
+
+[cols="1,5",options="header"]
+|====
+|ID
+|Requirement
+
+|tbr01-001
+|To control the validation and processing of an order; information that identifies the data model customization used and the business process that the order is part of
+
+
+|tbr01-002
+|An order must provide information about its identity, type (purchase order or consignment order), issue date and validity
+
+
+|tbr01-003
+|To provide flexibility in ordering an order must provide for free text notes on document level as well as on individual order lines.
+
+
+|tbr01-004
+|An order must provide for information about the value of items ordered and what prices, charges and totals (including estimate of VAT) are expected to be paid in a way that can be matched against an invoice.
+
+
+|tbr01-005
+|The order must enable the buyer to send information that can be reported back in a resulting invoice with the purpose of automating the processing of the invoice.
+
+
+|tbr01-006
+|The order must enable the buyer to reference contract and documents that are relevant to prices and terms, including terms of delivery.
+
+
+|tbr01-030
+|The order must support information needed to specify estimated allowance and charges on document level that apply to the order as a whole.
+
+
+|tbr01-031
+|All amounts in the Order must be stated in the same currency.
+
+
+|tbr01-032
+|Order should only contain non-negative prices and quantities
+|====

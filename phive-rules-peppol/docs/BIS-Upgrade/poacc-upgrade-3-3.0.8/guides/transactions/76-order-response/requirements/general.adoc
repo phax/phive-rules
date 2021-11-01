@@ -1,0 +1,48 @@
+[[response-requirements]]
+= General requirements
+
+[cols="1,5",options="header"]
+|====
+|ID
+|Requirement
+
+|tbr76-010
+|An order response must provide information about its identity, issue date and validity and of the entities of the seller and buyer.
+
+
+|tbr76-001
+|The Order Response must refer to the Order it is responding to.
+
+
+|tbr76-002
+|The seller may respond to the order as a whole with accept, reject or accept with changes.
+
+
+|tbr76-003
+|The Order Response may state a reason for rejecting the order.
+
+
+|tbr76-004
+|The seller may accept or reject individual order lines.
+
+
+|tbr76-005
+|A partial accept/reject MUST refer to ALL order lines with no implicit accept/reject.
+
+
+|tbr76-006
+|The lines in an Order Response must refer to the corresponding order line number and to the corresponding item identification.
+
+
+|tbr76-008
+a|Information elements that may be changed in the Order Response with respect to the order are:
+
+* Quantity
+* Delivery date/period (header and line level)
+* Article (substitute)
+* Price
+
+|tbr76-009
+|If the Order Response is rejecting or changing the Order, the Order Response should carry seller contact information for the Buyer to use when resolving issues with the Order Response.
+
+|====

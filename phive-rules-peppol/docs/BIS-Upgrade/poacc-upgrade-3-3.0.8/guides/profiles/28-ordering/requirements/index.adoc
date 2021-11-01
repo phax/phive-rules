@@ -1,0 +1,9 @@
+= Transaction business requirements
+
+:leveloffset: +1
+
+include::../{order}/requirements/index.adoc[]
+
+include::../{order-resp}/requirements/index.adoc[]
+
+:leveloffset: -1

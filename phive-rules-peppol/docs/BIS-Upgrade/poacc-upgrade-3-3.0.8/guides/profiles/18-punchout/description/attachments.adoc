@@ -1,0 +1,30 @@
+[[attached-item-specifications-and-main-image]]
+= Attached Item Specifications and main image
+
+Non-XML documents can be sent as attachments to the PEPPOL BIS Shopping Cart to further specify the item.
+This could be pictures, drawings or time sheets or other documents relevant for the order.
+The attachment can either be sent as a binary object encoded in Base64 embedded in the message or as a URI to an external address as a link.
+
+One of these attachments can be identified specifically as being the main image for the item.
+Identifying it specifically allows automated retrieval of the image into the image location in the receiving system.
+
+It is recommended to send attachments as embedded, binary objects and not as external references.
+
+Valid codes can be found in {mime-codes}.
+
+
+.Example of attachment as an embedded, binary object in an PEPPOL BIS Shopping Cart.
+[source, xml, indent=0]
+----
+include::{snippet-dir}/snippet-18-1.xml[tags=attachment-pdf]
+----
+
+
+When sending an object that is the main image for the item the following example applies.
+
+.Example of attaching the main image
+[source, xml, indent=0]
+----
+include::{snippet-dir}/snippet-18-1.xml[tags=main-image]
+----
+<1> `cbc:DocumentTypeCode` MAINIMAGE identifies this as the main image for the item.

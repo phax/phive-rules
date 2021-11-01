@@ -1,0 +1,16 @@
+
+= Country code
+
+All country codes shall be the alpha-2 code from {ISO3166}
+
+
+[cols="1,4"]
+.Country of origin
+|===
+h| Qualifier
+| `ISO3166-1:Alpha2` (listID)
+h| Document location
+| `cac:Country/cbc:IdentificationCode`
+h| Source codelist
+| {ISO3166}
+|===

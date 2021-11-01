@@ -1,0 +1,7 @@
+[[more-advanced-process-use-of-despatch-party]]
+= More advanced process – use of Despatch party
+
+The more advanced process is based on the simple process above with the addition of the Despatch party who is responsible for the physical preparation of the goods for delivery.
+This situation will typically occur when the supplier has outsourced the logistics function to another company.
+
+image:images/bpmn-adv.png[image,width=662,height=428]

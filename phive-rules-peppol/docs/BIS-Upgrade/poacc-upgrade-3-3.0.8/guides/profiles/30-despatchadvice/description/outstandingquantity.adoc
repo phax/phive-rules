@@ -1,0 +1,59 @@
+[[outstanding-quantity]]
+= Outstanding quantity
+
+The outstanding element on the Despatch line is both used to signal the outstanding quantity and to inform about delivery discrepancies.
+
+The handling of “The outstanding quantity which will never be delivered” is done like this: The amount that is declared in the element OutstandingQuantity is equivalent to the amount that will be delivered in a later Despatch.
+This implicitly means that the missing items that are NOT declared in the OutstandingQuantity cant or will not will be delivered.
+
+*Example 1:*
+
+10 items are ordered, 6 items are delivered and the rest of 4 items will be delivered later:
+
+Quantity ordered: 10
+
+Quantity delivered: 6
+
+Outstanding quantity: 4
+
+[source, xml, indent=0]
+----
+include::{snippet-dir}/snippet-30-1.xml[tags=quantity1]
+----
+
+
+*Example 2:*
+
+10 items are ordered.
+6 items are delivered and the rest of 4 items will NOT be delivered:
+
+Quantity ordered: 10
+
+Quantity delivered: 6
+
+Outstanding quantity: 0
+
+[source, xml, indent=0]
+----
+include::{snippet-dir}/snippet-30-1.xml[tags=quantity2]
+----
+
+
+*Example 3:*
+
+10 items are ordered.
+6 items are delivered and 3 will be delivered later and 1 item will NOT be delivered:
+
+Quantity ordered: 10
+
+Quantity delivered: 6
+
+Outstanding quantity: 3
+
+[source, xml, indent=0]
+----
+include::{snippet-dir}/snippet-30-1.xml[tags=quantity3]
+----
+
+Ref.
+use case 2 above.

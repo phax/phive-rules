@@ -1,0 +1,44 @@
+include::../../shared/links.adoc[]
+:doctype: book
+:icons: font
+:stem:
+:toc: left
+:toclevels: 2
+:source-highlighter: coderay
+:source-language: xml
+:sectanchors:
+:sectnums:
+:title-logo-image: ../../shared/images/peppol.png
+:snippet-dir: ../../../../rules/snippets/mlr
+= image:../../shared/images/peppol.png[float="right"]BIS Message Level Response 3.0
+{author}
+
+{description}
+
+include::../../shared/copyright.adoc[]
+
+
+= Link to main site of documentation
+
+{main-site}
+
+:leveloffset: +1
+
+include::introduction/index.adoc[]
+
+include::principles/index.adoc[]
+
+include::process/index.adoc[]
+
+//include::requirements/index.adoc[]
+
+include::../../shared/datatypes/index.adoc[]
+
+include::../../shared/codes/index.adoc[]
+
+include::description/index.adoc[]
+
+include::profile/index.adoc[]
+
+
+:leveloffset: -1

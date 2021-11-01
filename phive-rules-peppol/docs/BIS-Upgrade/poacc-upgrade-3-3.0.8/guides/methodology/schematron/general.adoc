@@ -1,0 +1,53 @@
+= General design rules
+
+[source, xml, indent=0]
+----
+include::../snippets/schematron.sch[tags=schema]
+----
+<1> binding to xslt2
+<2> Add a descriptive title
+
+= Patterns
+
+Different patterns should be provided, suggestion is to have 3 different patterns (if applicable):
+
+. Transaction rules
+. National rules
+
+= Parameters
+
+Parameters can be stated either globally or locally within one rule.
+We recommend to use parameters for amounts, where the casting to decimals is done. This way the rule test when used within a calculation is easier to read.
+
+[source, xml, indent=0]
+----
+include::../snippets/schematron.sch[tags=parameters]
+----
+
+= Functions
+
+Functions can be created to do checking of calculations, like the example below:
+
+[source, xml, indent=0]
+----
+include::../snippets/schematron.sch[tags=functions]
+----
+
+= Rules
+
+In PEPPOL we only use assertions, not report when creating the rules.
+
+All asserts must have an `id` attribute with the identifier of the rule
+IMPORTANT: this must be unique within one schematron file
+
+In addition, the `test` attribute must be present, as well as the `flag` attribute. The `flag` attribute must contain either the value "fatal" or "warning".
+
+The error-message is the content of the `assert`- element, and should not be prefixed with the identifier.
+
+
+[source, xml, indent=0]
+----
+include::../snippets/schematron.sch[tags=rule]
+----
+<1> Rule context must not be an attribute
+<2> Attributes id, test and flag must be present

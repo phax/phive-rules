@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testSet xmlns="http://difi.no/xsd/vefa/validator/1.0"
+	configuration="peppolbis-t110-base-3.0">
+	<assert>
+		<description>Total amount for payment SHALL be equal to the tax inclusive amount minus the prepaid amount plus rounding amount.</description>
+		<scope>PEPPOL-T110-R012</scope>
+	</assert>
+	
+	<test>
+		<assert>
+			<description>Valid example with no prepaid amount or rounding amount</description>
+			<success>PEPPOL-T110-R012</success>
+		</assert>
+		<OrderResponse xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+			xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+			xmlns="urn:oasis:names:specification:ubl:schema:xsd:OrderResponse-2">
+
+			<cac:LegalMonetaryTotal>
+				<cbc:TaxInclusiveAmount>8081.2</cbc:TaxInclusiveAmount>
+				<cbc:PayableAmount>8081.2</cbc:PayableAmount>
+			</cac:LegalMonetaryTotal>
+
+		</OrderResponse>
+	</test>
+	<test>
+		<assert>
+			<description>Valid example with prepaid amount</description>
+			<success>PEPPOL-T110-R012</success>
+		</assert>
+		<OrderResponse xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+			xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+			xmlns="urn:oasis:names:specification:ubl:schema:xsd:OrderResponse-2">
+
+			<cac:LegalMonetaryTotal>
+				<cbc:TaxInclusiveAmount>8081.2</cbc:TaxInclusiveAmount>
+				<cbc:PrepaidAmount>10</cbc:PrepaidAmount>
+				<cbc:PayableAmount>8071.2</cbc:PayableAmount>
+			</cac:LegalMonetaryTotal>
+
+		</OrderResponse>
+	</test>
+	<test>
+		<assert>
+			<description>Valid example with rounding amount</description>
+			<success>PEPPOL-T110-R012</success>
+		</assert>
+		<OrderResponse xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+			xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+			xmlns="urn:oasis:names:specification:ubl:schema:xsd:OrderResponse-2">
+
+			<cac:LegalMonetaryTotal>
+				<cbc:TaxInclusiveAmount>8081.2</cbc:TaxInclusiveAmount>
+				<cbc:PayableRoundingAmount>0.8</cbc:PayableRoundingAmount>
+				<cbc:PayableAmount>8082</cbc:PayableAmount>
+			</cac:LegalMonetaryTotal>
+
+		</OrderResponse>
+	</test>
+	<test>
+		<assert>
+			<description>Valid example with prepaid and rounding amount</description>
+			<success>PEPPOL-T110-R012</success>
+		</assert>
+		<OrderResponse xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+			xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+			xmlns="urn:oasis:names:specification:ubl:schema:xsd:OrderResponse-2">
+			
+			<cac:LegalMonetaryTotal>
+				<cbc:TaxInclusiveAmount>8081.2</cbc:TaxInclusiveAmount>
+				<cbc:PrepaidAmount>10</cbc:PrepaidAmount>
+				<cbc:PayableRoundingAmount>0.8</cbc:PayableRoundingAmount>
+				<cbc:PayableAmount>8072</cbc:PayableAmount>
+			</cac:LegalMonetaryTotal>
+			
+		</OrderResponse>
+	</test>
+	
+	
+	
+	<test>
+		<assert>
+			<description>Invalid example with no prepaid amount or rounding amount</description>
+			<error>PEPPOL-T110-R012</error>
+		</assert>
+		<OrderResponse xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+			xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+			xmlns="urn:oasis:names:specification:ubl:schema:xsd:OrderResponse-2">
+
+			<cac:LegalMonetaryTotal>
+				<cbc:TaxInclusiveAmount>8081.2</cbc:TaxInclusiveAmount>
+				<cbc:PayableAmount>8021.2</cbc:PayableAmount>
+			</cac:LegalMonetaryTotal>
+
+		</OrderResponse>
+	</test>
+	<test>
+		<assert>
+			<description>Invalid example with prepaid amount</description>
+			<error>PEPPOL-T110-R012</error>
+		</assert>
+		<OrderResponse xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+			xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+			xmlns="urn:oasis:names:specification:ubl:schema:xsd:OrderResponse-2">
+
+			<cac:LegalMonetaryTotal>
+				<cbc:TaxInclusiveAmount>8081.2</cbc:TaxInclusiveAmount>
+				<cbc:PrepaidAmount>10</cbc:PrepaidAmount>
+				<cbc:PayableAmount>8081.2</cbc:PayableAmount>
+			</cac:LegalMonetaryTotal>
+
+		</OrderResponse>
+	</test>
+	<test>
+		<assert>
+			<description>Invalid example with rounding amount</description>
+			<error>PEPPOL-T110-R012</error>
+		</assert>
+		<OrderResponse xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+			xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+			xmlns="urn:oasis:names:specification:ubl:schema:xsd:OrderResponse-2">
+
+			<cac:LegalMonetaryTotal>
+				<cbc:TaxInclusiveAmount>8081.2</cbc:TaxInclusiveAmount>
+				<cbc:PayableRoundingAmount>0.8</cbc:PayableRoundingAmount>
+				<cbc:PayableAmount>8081.2</cbc:PayableAmount>
+			</cac:LegalMonetaryTotal>
+
+		</OrderResponse>
+	</test>
+	<test>
+		<assert>
+			<description>Invalid example with prepaid and rounding amount</description>
+			<error>PEPPOL-T110-R012</error>
+		</assert>
+		<OrderResponse xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+			xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+			xmlns="urn:oasis:names:specification:ubl:schema:xsd:OrderResponse-2">
+			
+			<cac:LegalMonetaryTotal>
+				<cbc:TaxInclusiveAmount>8081.2</cbc:TaxInclusiveAmount>
+				<cbc:PrepaidAmount>10</cbc:PrepaidAmount>
+				<cbc:PayableRoundingAmount>0.8</cbc:PayableRoundingAmount>
+				<cbc:PayableAmount>8022</cbc:PayableAmount>
+			</cac:LegalMonetaryTotal>
+			
+		</OrderResponse>
+	</test>
+	
+</testSet>

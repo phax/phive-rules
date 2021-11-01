@@ -1,0 +1,19 @@
+
+= Boolean
+
+
+Boolean indicators are used to specify the two allowed values, _true_ or _false_. All elements of datatype Boolean, must have either _true_ or _false_ as their value.
+
+
+[cols="1s,1,1,1", options="header"]
+|===
+|Component
+|Use
+|Primitive Type
+|Example
+
+|Content
+|Mandatory
+|String
+|true
+|===

@@ -1,0 +1,25 @@
+= References
+
+When sending the order agreement transaction the seller may include a reference that the buyers gave to him during the purchase. This reference can be of different nature and since it originates from the buyer it is understood by him.
+
+.Example
+[source, xml, indent=0]
+----
+include::{snippet-dir}/OA full.xml[tags=CustomerReference]
+----
+
+The order agreement may refrence a previous order agreement. This may be relevant, as example, when the buyer has changed a previous order.
+
+.Example
+[source, xml, indent=0]
+----
+include::{snippet-dir}/OA full.xml[tags=OrderReference]
+----
+
+The order agreement may reference a contract that applies to the purchase.
+
+.Example
+[source, xml, indent=0]
+----
+include::{snippet-dir}/OA full.xml[tags=contract]
+----

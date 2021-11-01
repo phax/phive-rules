@@ -1,0 +1,27 @@
+
+[[principles]]
+= Principles and prerequisites
+
+This chapter describes the principles and assumptions that underlie the use of PEPPOL Order Agreement.
+It is based on the {bii} 42 Order Agreement.
+
+This profile identifies, explains and justifies the business requirements for the Order agreement process.
+It provides syntax bindings to {ubl} (Universal Business Language). It also includes a syntax implementation guide.
+
+The order agreement profile describes processes where the buyer, after purchasing items/services, receives a message with information documenting the purchase.
+
+:leveloffset: +1
+
+include::prerequisit.adoc[]
+
+include::scope.adoc[]
+
+include::goals.adoc[]
+
+include::parties.adoc[]
+
+include::benefits.adoc[]
+
+include::interoperability.adoc[]
+
+:leveloffset: -1

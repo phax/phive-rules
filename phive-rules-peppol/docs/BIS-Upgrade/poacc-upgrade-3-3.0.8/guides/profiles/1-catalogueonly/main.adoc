@@ -1,0 +1,43 @@
+include::../../shared/links.adoc[]
+
+= image:../../shared/images/peppol.png[float="right"]PEPPOL BIS Catalogue With Response 3.1
+{author}
+:doctype: book
+:icons: font
+:stem:
+:toc: left
+:toclevels: 2
+:source-highlighter: coderay
+:source-language: xml
+:sectanchors:
+:sectnums:
+:snippet-dir: ../../../../rules/snippets/catalogue
+:catalogue-path: ../../transactions/19-catalogue
+:response-path: ../../transactions/58-catalogue-response
+
+{description}
+
+include::../../shared/copyright.adoc[]
+
+= Link to main site of documentation
+
+{main-site}
+
+
+:leveloffset: +1
+
+include::introduction/index.adoc[]
+
+include::principles/index.adoc[]
+
+include::process/index.adoc[]
+
+include::../../shared/datatypes/index.adoc[]
+
+include::../../shared/codes/index.adoc[]
+
+include::{catalogue-path}/description/index.adoc[]
+
+include::profile/index.adoc[]
+
+:leveloffset: -1

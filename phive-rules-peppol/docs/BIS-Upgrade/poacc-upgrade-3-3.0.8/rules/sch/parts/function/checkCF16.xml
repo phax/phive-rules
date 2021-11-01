@@ -1,0 +1,16 @@
+  <function name="u:checkCF16" as="xs:boolean" xmlns="http://www.w3.org/1999/XSL/Transform">
+    <param name="arg" as="xs:string?"/>
+    <variable name="allowed-characters">ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz</variable>
+    <sequence select="
+				if ( 	(string-length(translate(substring($arg,1,6), $allowed-characters, '')) = 0) and  
+						(substring($arg,7,2) castable as xsd:integer) and 
+						(string-length(translate(substring($arg,9,1), $allowed-characters, '')) = 0) and 
+						(substring($arg,10,2) castable as xsd:integer) and  
+						(substring($arg,12,3) castable as xsd:string) and 
+						(substring($arg,15,1) castable as xsd:integer) and  
+						(string-length(translate(substring($arg,16,1), $allowed-characters, '')) = 0)
+					) 
+				then true()
+				else false()
+				"/>
+  </function>

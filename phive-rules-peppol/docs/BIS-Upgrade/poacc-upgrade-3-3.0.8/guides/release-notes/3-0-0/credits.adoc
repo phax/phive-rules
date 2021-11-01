@@ -1,0 +1,27 @@
+= Contributions
+
+The following individuals have contributed to this work by participation in team meetings and with various development and review work between meetings.
+
+* Georg Birgisson, DIGG/Midran Ltd.
+* Siw Meckelborg, DIFI/Edisys
+* Charlotte Dahl Skovhus, MySupply
+* Arduini Iacopo, Emilia Romagna
+* Thomas Pettersson, SFTI/PSK Konsult
+* Dirk Willekens, BOSA
+* Arne Johan Larsen, Equinor
+* Elisa Bertocchi, Emilia Romagna
+* Sara Facchinetti, Infocert
+* Jalini Srisgantharajah, DIFI
+* Martin Forsberg, DIGG/Ecru consulting
+* Helena Ask, Visma
+* Peter Danko, E-delivery
+* Ole Ellerbæk Madsen, ERST
+* Jan Mæröe, DIFI
+* Erlend Klakegg Bergheim, DIFI
+* Sören Lennartson, DIGG
+* Jerry Dimitriou, Unipi
+* Serge Libert, BOSA
+* Andriana Prentza, Unipi
+* Manuel Gozzi, Emilia Romagna
+
+

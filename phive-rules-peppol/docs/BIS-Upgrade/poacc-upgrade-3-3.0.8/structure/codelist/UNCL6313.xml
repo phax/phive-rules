@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeList xmlns="urn:fdc:difi.no:2017:vefa:structure:CodeList-1">
+
+    <Title>Measured attribute code (UNCL6313)</Title>
+    <Identifier>UNCL6313</Identifier>
+    <Version>D.17A</Version>
+    <Agency>UN/CEFACT</Agency>
+    <Subset>openPEPPOL</Subset>
+
+
+    <Code>
+        <Id>ABJ</Id>
+        <Name>Volume</Name>
+        <Description>The amount of air space taken up by the entity</Description>
+    </Code>
+    <Code>
+        <Id>AAF</Id>
+        <Name>Net net weight</Name>
+        <Description>Weight (mass) if goods without any packaging</Description>
+    </Code>
+    <Code>
+        <Id>AAX</Id>
+        <Name>Net volume</Name>
+        <Description>
+            The volume after adjustment for factors such as
+            temperature or gravity.
+        </Description>
+    </Code>
+    <Code>
+        <Id>HT</Id>
+            <Name>Hight dimension</Name>
+        <Description>
+            Numeric value of height.
+        </Description>
+    </Code>
+    <Code>
+        <Id>LN</Id>
+        <Name>Length</Name>
+        <Description>To specify the value of a length dimension</Description>
+    </Code>
+    <Code>
+        <Id>WD</Id>
+        <Name>Width dimension</Name>
+        <Description>
+            Numeric value of width
+        </Description>
+    </Code>
+    <Code>
+        <Id>GW</Id>
+        <Name> Gross weight, maximum</Name>
+        <Description> The measured maximum gross weight.</Description>
+    </Code>
+    <Code>
+        <Id>TC</Id>
+        <Name>Temperature</Name>
+        <Description>A measurement in relation to temperature.</Description>
+    </Code>
+    <Code>
+        <Id>AAO</Id>
+        <Name>Humidity</Name>
+        <Description>
+            Degree of moisture
+        </Description>
+    </Code>
+
+
+
+</CodeList>

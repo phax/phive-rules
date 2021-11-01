@@ -1,0 +1,12 @@
+[[legal-requirements]]
+= Legal requirements
+
+
+These requirements apply to Businesses and Governments (B2G) who reside in countries whose eProcurement legal frameworks are aligned with requirements as stated in this specification.
+
+Legal requirements to be supported by this BIS, ref. {dir-2009-101}.
+
+* the information necessary in order to identify the register in which the file mentioned in Article 3 is kept, together with the number of the company in that register;
+* the legal form of the company, the location of its registered office and, where appropriate, the fact that the company is being wound up.
+* Where, in those documents, mention is made of the capital of the company, the reference shall be to the capital subscribed and paid up.
+* Member States shall prescribe that company websites are to contain at least the particulars mentioned in the first paragraph and, if applicable, a reference to the capital subscribed and paid up.

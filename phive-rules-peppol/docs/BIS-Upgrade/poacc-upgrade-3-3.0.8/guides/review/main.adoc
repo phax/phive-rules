@@ -1,0 +1,16 @@
+= Review of alignment
+:doctype: book
+:icons: font
+:stem:
+:toc: left
+:toclevels: 2
+:source-highlighter: coderay
+:source-language: xml
+:sectanchors:
+:sectnums:
+
+:leveloffset: +1
+
+include::index.adoc[]
+
+:leveloffset: -1

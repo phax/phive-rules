@@ -1,0 +1,19 @@
+
+= Order agreement requirements
+
+[cols="2h,4",options="header",]
+|====
+|Categories|Description and Values
+|Identifier|BiiTrns110
+|Description|A transaction containing information about the items/services purchased by the buyer.
+|Partner Types
+a|* Customer
+* Supplier
+|Authorized Roles
+a|* Buyer
+* Seller
+|Legal Implications|With providing an Order agreement transaction the Seller documents the agreement entered into with the seller regarding products, quantities, prices and terms, as stated in the Order agreement transaction.
+|Initial Event|Purchase
+|Terminal event|Process information
+|Constraints|non specified
+|====

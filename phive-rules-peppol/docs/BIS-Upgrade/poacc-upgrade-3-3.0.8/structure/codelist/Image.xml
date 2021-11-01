@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeList xmlns="urn:fdc:difi.no:2017:vefa:structure:CodeList-1">
+
+    <Title>Image code (openPEPPOL)</Title>
+    <Identifier>Image</Identifier>
+    <Version>1.0</Version>
+    <Agency>OpenPEPPOL</Agency>
+
+<!-- The code values in this list are based on the GS1 GDD list for ReferencedFileTypeCode -->
+
+
+    <Code>
+        <Id>PRODUCT_IMAGE</Id>
+        <Name>Main image for an item</Name>
+    </Code>
+    <Code>
+        <Id>TRADE_ITEM_DESCRIPTION</Id>
+        <Name>Trade Item Description</Name>
+    </Code>
+
+</CodeList>

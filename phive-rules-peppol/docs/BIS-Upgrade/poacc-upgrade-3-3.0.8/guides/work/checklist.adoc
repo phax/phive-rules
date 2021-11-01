@@ -1,0 +1,69 @@
+= Clecklist for cleanup
+
+- [ ] Open issue
+- [x] Closed issue
+
+== Syntax files, remove old rules.
+  - [x] Despatch advice.
+  - [x] Order agreement.
+  - [x] Order
+  - [x] Order response
+  - [x] Invoice Response
+  - [x] Punch out
+  - [x] Catalogue
+  - [x] Catalogue response, not needed
+  - [x] MLR, not needed.
+
+== Errors referring to old rules (Siw)
+	- [x] 71
+	- [x] 77
+	- [x] 19, only removed BII rules?
+	- [x] 58
+
+== Rules
+    - [x] Add a rules to ensure that allowance and charge amounts are not negative. (Siw)
+	- [x] Align rules on name and identifiers (Georg).
+    - [x] Id's are missing.
+
+== Creation of unit test files.
+    - [x] Despatch advice.
+    - [x] Order agreement.
+    - [x] Order.
+    - [x] Order response.
+    - [x] Invoice Response.
+    - [x] Punch out.
+    - [x] Catalogue.
+
+== Verifying and bugfixing rules and tests.
+=== Siw
+		- [x] Order.
+		- [x] Order agreement.
+		- [x] Order response.
+		- [x] Despatch.
+		- [x] Catalogue (Siw)
+		- [x] Punch out (Siw)
+
+=== Georg
+		- [x] Catalogue response.
+		- [x] IMR.
+		- [x] Anyone we are missing.
+
+== Other
+    - [ ] Release notes (In Git) (Georg)
+    - [ ] In main site of upgrade project there is reviewofalignment.xml (Siw)
+    - [x] No new rules added to 71 77 58, verify (Siw)
+    - [x] Inserting new customzation and profile identifiers (Georg)
+	- [x] Unit code list (Siw).
+    - [x] BIS, clean up yellow highlighting.
+    - [x] Base rules for all transactions have transaction id T01.
+    - [x] tir77-011tir77-012 in punchout, error or two tir?
+    - [x] Missing examples on syntax files (Jalini)
+    - [x] Add manual rule to order checking for two allowed profile id's
+    - [x] Syntax, add tir ids to new business terms "tirnn=pxxx"
+
+== Work schedule
+  - [x] Finish cleaning up schematrons before end Friday - Siw, Georg, Iacopo.
+  - [x] Finish unit test files before end Friday - Charlotte, Georg.
+  - [ ] Verify testing, Monday - Siw, Georg.
+  - [ ] Prepare package for distribution, Tuesday - Siw, Georg.
+  - [ ] Initiate review period, Wednesday - Georg.

@@ -1,0 +1,52 @@
+
+[[process-and-typical-use-cases]]
+= Process and typical use cases
+
+:leveloffset: +1
+
+include::../../../shared/bpmn/bpmn-legend.adoc[]
+
+:leveloffset: -1
+
+
+[[process-in-general]]
+== Process in general
+
+The process starts when a Seller party is preparing an electronic invoice and then sends it to the Buyer.
+After the invoice has been validated and transported the Buyer party receives the invoice.
+
+Once the Buyer has received the invoice in the form that it can be processed he may notify the Seller about this with an Invoice Response.
+
+After reception, the Buyer will usually enter into the invoice reviewal and approval process.
+The approval process may result in the invoice being approved as is without any comments.
+In that case the Buyer sends an Invoice Response to the Seller to notify him that the invoice has been approved and will be paid on due date.
+Approval process might be a bit different for the credit note (especially as status “Paid” is not applicable, but the other statuses serve their purpose).
+
+During the approval process, various issues may be identified.
+Issues such as quantities or amounts not being in line with Buyer’s data, missing information to correctly handle the invoice, invoice terms not in line with agreements or contracts and so forth.
+Depending on the nature of the issues the Buyer may do one of the following.
+
+* The Buyer may put the approval process on hold and notify the Seller by sending Invoice Response with status "under query" and add an explanation of what the issue is.
+** Once the Seller has responded to the issue the acceptance process may continue or the Buyer may raise further issues.
+* The Buyer may conditionally approve the invoice in which case they will send an Invoice Response to the Seller with the respective status and what the conditions are.
+** The Seller may respond externally, e.g. with an objection, or they may not respond in which case the Buyer will proceed and pay the invoice according to the conditions.
+** Most common example is when an invoice has payment terms like due date or payment account that are not in line with a contract.
+** Then the Buyer may notify that the invoice will be paid in accordance to the contract and then proceed to do so unless the Seller objects.
+* The Buyer may reject the invoice in which case it will notify the Seller and state the reason for the rejection and possibly request a credit note.
+** This is a final status for the invoice so if the Seller does not agree with the rejection they must follow that up externally.
+
+If an invoice has been approved or conditionally approved the Buyer will in due time proceed to initiate payment.
+The Buyer may then notify the Seller that the payment has been initiated.
+
+.Common simplified invoice approval process
+image::images/IMR-bpmn.png[]
+
+:leveloffset: +1
+
+include::rules.adoc[]
+
+include::code-policy/index.adoc[]
+
+include::use-cases/index.adoc[]
+
+:leveloffset: -1

@@ -1,0 +1,14 @@
+[[the-shopping-cart-line]]
+= The shopping cart line
+
+Each shopping cart line must have an id to support processing and referencing of individual lines . The ID is created by the seller and may be of any structure.
+
+IMPORTANT: A line id must be unique within the shopping cart message, but does not need to be in sequential order in the transaction.
+
+Example of a series of line identifiers is 1, 2, 3, 4, 5 ... or any other structure.
+
+.Example of a line identifier
+[source, xml, indent=0]
+----
+include::{snippet-dir}/snippet-18-1.xml[tags=line]
+----

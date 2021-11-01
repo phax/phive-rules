@@ -1,0 +1,49 @@
+[[process-requirements]]
+= Process requirements
+
+Process requirements describe what functions and benefits the parties are requiring from the overall process of exchanging Invoice Response messages.
+These requirements may influence the data requirements in the transaction, but they may also affect how the parties implement and use the Invoice Response in their ongoing business exchange.
+
+.Process requirements
+[cols="1h,5",options="header"]
+|====
+|ID
+|Requirement
+|br111-001
+|There is an agreed way to express when there will be no more Invoice Response message's regarding a particular invoice.
+The definition of status of the Invoice (whether approved or rejected) should clearly state whether it is a final status after which there cannot be any further Invoice Response’s sent by the Buyer in relation to that Invoice.
+
+|br111-002
+|An Invoice Response is intended for automatic processing on the Seller side although it still might require some manual actions.
+Free text response is also an option inside the Invoice Response.
+Validation rules might be automatically or manually executed on the Buyer’s side.
+The Buyer might outsource the rule’s execution to a service provider.
+
+|br111-003 |
+An Invoice Response should clearly inform the Seller of any additional actions they should execute so that the Buyer can continue the Invoice processing.
+
+|br111-004
+|An Invoice Response is an invoice specific message based on Buyer’s business rules and/or Seller/Buyer’s agreement.
+
+|br111-005
+a|An Invoice Response is one directional message only - from Buyer to Seller.
+
+Invoice Response is meant to inform the Seller about Invoice status inside the Buyer’s business process as well potential actions the Seller should take (if any).
+
+|br111-006
+|An Invoice Response status code is unambiguous: when applicable, it must be used to clearly indicate the next expected action to be executed by the Seller (described in Table below).
+|====
+
+[[registering-the-invoice-response-receiving-capability]]
+== Registering the Invoice Response receiving capability
+
+In order to use the Invoice Response in the {peppol} network the following steps need to be carried out:
+
+* Seller shall register the capability to receive Invoice Response BIS63A in its SMP.
+* Seller is seen as the interested party to find out if a Buyer is capable to send Invoice Response.
+** Usually the exchange of Invoice Response is agreed by the business parties beforehand.
+
+IMPORTANT: However, if the Seller has registered the receiving capability in the SMP then the Buyer can send an Invoice Response without previous agreement.
+
+* It is strongly recommended that a Buyer that sends an Invoice Response does that for all received Invoices.
+Not doing so may create uncertainty for the Seller and therefore create unwanted processing for both the Buyer and Seller.

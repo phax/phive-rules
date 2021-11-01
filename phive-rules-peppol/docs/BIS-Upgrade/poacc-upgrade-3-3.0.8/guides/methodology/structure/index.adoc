@@ -1,0 +1,19 @@
+= Document structure
+
+The BIS documents in AsciiDoc should be split up in several small files and folders, as this gives more flexibility and possibility for reuse, and it is easier to read/edit.
+
+A good starting point is to add folders for each main chapter in the document, and then one file pr level 2 header. If the chapter is very small, or very large, this off course should be adjusted as you find it suitable.
+
+.Example of folder structure for one BIS document
+image::images/folders.png[Example folder structure]
+
+
+:leveloffset: +1
+
+include::index-files.adoc[]
+
+include::headers.adoc[]
+
+include::assembly.adoc[]
+
+:leveloffset: -1

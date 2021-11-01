@@ -1,0 +1,126 @@
+[[process-requirements]]
+= Process requirements
+
+[cols="1,5",options="header",]
+|====
+a|
+
+*ID*
+
+
+ a|
+
+*Requirement*
+
+
+a|
+
+bpr01-071
+
+
+ a|
+
+The catalogue should be regarded as the Sellers standing offer, and the Seller is thereby obligated to supply the catalogue items according to the terms identified in the catalogue.
+
+
+a|
+
+bpr01-072
+
+
+ a|
+
+Catalogue transactions are subordinate to the contracts/agreements on which they are based.
+
+
+a|
+
+bpr01-073
+
+
+ a|
+
+The Seller is obligated to provide catalogue transactions updating items when item attributes change in the targeted catalogue, according to agreements.
+
+
+a|
+
+bpr01-074
+
+
+ a|
+
+The receiver can reject a transaction if it does not conform to the agreement under which the transaction is delivered.
+
+
+a|
+
+bpr01-075
+
+
+ a|
+
+A receiver must accept and implement a transaction if it conforms to an agreement.
+
+
+a|
+
+bpr01-055
+
+
+ a|
+
+The Catalogue Provider sends a transaction to establish or maintain a catalogue at the Catalogue Receiver side.
+
+
+a|
+
+bpr01-052
+
+
+ a|
+
+The Catalogue Receiver has to confirm that he received the catalogue and that he accepts or rejects the catalogue, by sending a Catalogue response message, in order to testify on the business level that the provided catalogue complies with the agreement under which the catalogue is provided.
+
+
+a|
+
+bpr01-051
+
+
+ a|
+
+It is the Catalogue Provider's responsibility that data contained in the catalogue transaction is valid from a technical as well as a business point of view, as, it is the task of the Catalogue Provider to gather and to compile the data for the catalogue at the selling side.
+
+
+a|
+
+bpr01-054
+
+
+ a|
+
+It is the Catalogue Receiver's responsibility to compile received catalogue transactions into a catalogue, as it is the task of the Catalogue Receiver to incorporate the catalogue data in the procurement systems at the buying side.
+
+
+a|
+
+bpr01-060
+
+
+ a|
+
+It is the Catalogue Receivers responsibility that data contained in the response transaction is valid from a technical as well as a business point of view, as it is his responsibility to confirm the reception of the catalogue.
+
+
+a|
+
+bpr01-061
+
+
+ a|
+
+It is the Catalogue Providers responsibility to compile received responses into his system.
+
+
+|====

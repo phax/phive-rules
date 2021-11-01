@@ -1,0 +1,16 @@
+[[descriptions]]
+= Description of selected parts of the invoice message response
+
+:leveloffset: +1
+
+include::msg-identification.adoc[]
+
+include::msg-note.adoc[]
+
+include::parties.adoc[]
+
+include::response.adoc[]
+
+include::doc-ref.adoc[]
+
+:leveloffset: -1

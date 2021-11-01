@@ -1,0 +1,11 @@
+[[version-id]]
+= Version ID
+
+IMPORTANT: The element `cbc:UBLVersionID` MUST be stated with the value *2.1*:
+
+
+.Example of UBL version identifier
+[source, xml, indent=0]
+----
+include::../../../transactions/76-order-response/snippets/snippet-1.xml[tags=ubl-version]
+----

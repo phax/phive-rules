@@ -1,0 +1,15 @@
+[[item-name-and-description]]
+= Item name and description
+
+Description of a product can be sent in `cac:Item/cbc:Description`.
+
+The Product name is sent in `cac:Item/cbc:Name`.
+
+The Name is preferably short so that it is suitable for use in a order or invoice line or as a heading.
+A description allows for longer text that describes the item in detail.
+
+.Example of item name and description
+[source, xml, indent=0]
+----
+include::{snippet-dir}/snippet-18-1.xml[tags=name]
+----

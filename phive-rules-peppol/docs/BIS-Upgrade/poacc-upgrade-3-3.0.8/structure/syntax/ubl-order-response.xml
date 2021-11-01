@@ -1,0 +1,672 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Structure xmlns="urn:fdc:difi.no:2017:vefa:structure-1">
+	<Term>OrderResponse</Term>
+
+
+	<Property key="sch:prefix">PEPPOL-T76</Property>
+	<Property key="sch:identifier">T76-basic</Property>
+
+
+	<Namespace prefix="ubl">urn:oasis:names:specification:ubl:schema:xsd:OrderResponse-2</Namespace>
+	<Namespace prefix="cac">urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2</Namespace>
+	<Namespace prefix="cbc">urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2</Namespace>
+	<Document>
+		<Term>ubl:OrderResponse</Term>
+		<Element>
+			<Term>cbc:CustomizationID</Term>
+			<Name>Specification identification</Name>
+			<Description>Identifies the specification of content and rules that apply to the
+                transaction.</Description>
+			<DataType>Identifier</DataType>
+			<Reference type="BUSINESS_TERM">tir76-001</Reference>
+
+			<Value type="EXAMPLE">urn:fdc:peppol.eu:poacc:trns:order_response:3</Value>
+		</Element>
+		<Element>
+			<Term>cbc:ProfileID</Term>
+			<Name>Business process type identifier</Name>
+			<Description>Identifies the BII profile or business process context in which the
+                transaction appears.</Description>
+			<DataType>Identifier</DataType>
+			<Reference type="BUSINESS_TERM">tir76-002</Reference>
+
+			<Value type="FIXED">urn:fdc:peppol.eu:poacc:bis:ordering:3</Value>
+		</Element>
+		<Element>
+			<Term>cbc:ID</Term>
+			<Name>Order response identifier</Name>
+			<Description>A transaction instance must have an identifier. The identifier enables
+                referencing the transaction for various purposes such as from other transactions
+                that are part of the same process.</Description>
+			<DataType>Identifier</DataType>
+			<Reference type="BUSINESS_TERM">tir76-003</Reference>
+
+			<Value type="EXAMPLE">or0987</Value>
+		</Element>
+		<Element cardinality="0..1">
+			<Term>cbc:SalesOrderID</Term>
+			<Name>Sales order reference</Name>
+			<Description>An identifier of a referenced sales order, issued by the Seller.</Description>
+			<DataType>Document Reference</DataType>
+			<Reference type="BUSINESS_TERM">tir76-p007</Reference>
+			<Value type="EXAMPLE">112233</Value>
+		</Element>
+		<Element>
+			<Term>cbc:IssueDate</Term>
+			<Name>Order response issue date</Name>
+			<Description>The date on which the transaction instance was issued.</Description>
+			<DataType>Date</DataType>
+			<Reference type="BUSINESS_TERM">tir76-004</Reference>
+
+			<Value type="EXAMPLE">2018-05-15</Value>
+		</Element>
+		<Element cardinality="0..1">
+			<Term>cbc:IssueTime</Term>
+			<Name>Order response issue time</Name>
+			<Description>The time on which the transaction instance was issued</Description>
+			<DataType>Time</DataType>
+			<Reference type="BUSINESS_TERM">tir76-005</Reference>
+			<Value type="EXAMPLE">09:23:56</Value>
+		</Element>
+		<Element>
+			<Term>cbc:OrderResponseCode</Term>
+			<Name>Response code</Name>
+			<Description>A code that indicates whether the referenced order has been received and not yet processed,
+				or is Accepted or Rejected as whole, alternatively, Accepted with change or already delivered.If response code is Accept or
+                Reject there may not be any response lines.</Description>
+			<DataType>Code</DataType>
+			<Reference type="BUSINESS_TERM">tir76-200</Reference>
+			<Reference type="CODE_LIST">UNCL4343-T76</Reference>
+
+			<Value type="EXAMPLE">AP</Value>
+		</Element>
+		<Element cardinality="0..1">
+			<Term>cbc:Note</Term>
+			<Name>Response clarification</Name>
+			<Description>Clarification of the suppliers decision.</Description>
+			<DataType>Text</DataType>
+			<Reference type="BUSINESS_TERM">tir76-006</Reference>
+		</Element>
+		<Element>
+			<Term>cbc:DocumentCurrencyCode</Term>
+			<Name>Document currency</Name>
+			<Description>The default currency for the offer.</Description>
+			<Reference type="BUSINESS_TERM">tir76-007</Reference>
+
+			<Reference type="CODE_LIST">ISO4217</Reference>
+			<Value type="EXAMPLE">EUR</Value>
+		</Element>
+		<Element cardinality="0..1">
+			<Term>cbc:CustomerReference</Term>
+			<Name>Buyer reference identifier</Name>
+			<Description>An identifier assigned by the Buyer used for internal routing purposes.The
+            identifier is defined by the buyer (contact ID, department, office id, project
+            code), but provided by the seller in the order response.</Description>
+			<DataType>Identifier</DataType>
+			<Reference type="BUSINESS_TERM">tir110-044</Reference>
+			<Value type="EXAMPLE">abc123</Value>
+		</Element>
+		<Element>
+			<Term>cac:OrderReference</Term>
+			<Name>Order reference</Name>
+			<Element>
+				<Term>cbc:ID</Term>
+				<Name>Order document reference</Name>
+				<Description>Used to reference the order that is being responded to.</Description>
+				<DataType>Document reference</DataType>
+				<Reference type="BUSINESS_TERM">tir76-011</Reference>
+
+				<Value type="EXAMPLE">o-23424</Value>
+			</Element>
+		</Element>
+		<Element>
+			<Term>cac:SellerSupplierParty</Term>
+			<Name>Seller information </Name>
+			<Element cardinality="1..1">
+				<Term>cac:Party</Term>
+				<Name>Description of seller</Name>
+				<Element>
+					<Term>cbc:EndpointID</Term>
+					<Name>Seller party electronic address</Name>
+					<Description>Identifies the seller party's electronic address</Description>
+					<DataType>Identifier</DataType>
+					<Reference type="BUSINESS_TERM">tir76-058</Reference>
+					<Attribute>
+						<Term>schemeID</Term>
+						<Name>Scheme identifier</Name>
+						<Description>Scheme identifier for the electronic address</Description>
+						<Reference type="CODE_LIST">eas</Reference>
+						<Value type="EXAMPLE">0088</Value>
+					</Attribute>
+					<Value type="EXAMPLE">7300010000001</Value>
+				</Element>
+				<Element cardinality="0..n">
+					<Term>cac:PartyIdentification</Term>
+					<Name>Seller identification </Name>
+					<Reference type="RULE">PEPPOL-T76-R002</Reference>
+					<Element>
+						<Term>cbc:ID</Term>
+						<Name>Seller party identification</Name>
+						<Description>Identifies a party.</Description>
+						<DataType>Identifier</DataType>
+						<Reference type="BUSINESS_TERM">tir76-059</Reference>
+
+						<Attribute usage="optional">
+							<Term>schemeID</Term>
+							<Name>Scheme identifier</Name>
+							<Description>Scheme identifier for party identification</Description>
+							<Reference type="CODE_LIST">ICD</Reference>
+							<Value type="EXAMPLE">0184</Value>
+						</Attribute>
+						<Value type="EXAMPLE">DK88777654</Value>
+					</Element>
+				</Element>
+
+				<Element cardinality="0..1">
+					<Term>cac:PartyLegalEntity</Term>
+					<Name>Name of seller</Name>
+					<Reference type="RULE">PEPPOL-T76-R002</Reference>
+
+					<Element>
+						<Term>cbc:RegistrationName</Term>
+						<Name>Seller party name</Name>
+						<Description>The name of the party.</Description>
+						<DataType>Text</DataType>
+						<Reference type="BUSINESS_TERM">tir76-060</Reference>
+						<Value type="EXAMPLE">Seller Inc.</Value>
+					</Element>
+				</Element>
+
+			</Element>
+		</Element>
+		<Element>
+			<Term>cac:BuyerCustomerParty</Term>
+			<Name>Buyer information</Name>
+			<Element>
+				<Term>cac:Party</Term>
+				<Name>Description of buyer</Name>
+				<Element>
+					<Term>cbc:EndpointID</Term>
+					<Name>Buyer party electronic address</Name>
+					<Description>Identifies the buyer party's electronic address</Description>
+					<DataType>Identifier</DataType>
+					<Reference type="BUSINESS_TERM">tir76-021</Reference>
+					<Attribute>
+						<Term>schemeID</Term>
+						<Name>Scheme identifier</Name>
+						<Description>Scheme identifier for the electronic address</Description>
+						<Reference type="CODE_LIST">eas</Reference>
+						<Value type="EXAMPLE">0088</Value>
+					</Attribute>
+					<Value type="EXAMPLE">7300010000001</Value>
+				</Element>
+				<Element cardinality="0..n">
+					<Term>cac:PartyIdentification</Term>
+					<Name>Buyer identification</Name>
+					<Reference type="RULE">PEPPOL-T76-R001</Reference>
+					<Element>
+						<Term>cbc:ID</Term>
+						<Name>Buyer party identification</Name>
+						<Description>An identification for the buyer party.</Description>
+						<Reference type="BUSINESS_TERM">tir76-022</Reference>
+
+
+						<Attribute usage="optional">
+							<Term>schemeID</Term>
+							<Name>Scheme identifier</Name>
+							<Description>Scheme identifier for party identification</Description>
+							<Reference type="CODE_LIST">ICD</Reference>
+							<Value type="EXAMPLE">0184</Value>
+						</Attribute>
+						<Value type="EXAMPLE">DK88777654</Value>
+					</Element>
+				</Element>
+
+				<Element cardinality="0..1">
+					<Term>cac:PartyLegalEntity</Term>
+					<Name>Party name</Name>
+					<Reference type="RULE">PEPPOL-T76-R001</Reference>
+
+					<Element>
+						<Term>cbc:RegistrationName</Term>
+						<Name>Buyer party name</Name>
+						<Description>The name of the party who ordered the items and receives the
+							response.</Description>
+						<DataType>Text</DataType>
+						<Reference type="BUSINESS_TERM">tir76-023</Reference>
+						<Reference type="RULE">PEPPOL-T76-R001</Reference>
+						<Value type="EXAMPLE">Buyer name</Value>
+					</Element>
+				</Element>
+
+			</Element>
+		</Element>
+		<Element cardinality="0..1">
+			<Term>cac:Delivery</Term>
+			<Name>Delivery information </Name>
+			<Element>
+				<Term>cac:PromisedDeliveryPeriod</Term>
+				<Name>Promised delivery period</Name>
+				<Element cardinality="0..1">
+					<Term>cbc:StartDate</Term>
+					<Name>Period start date</Name>
+					<Description>The date on which the period starts. The start dates counts as
+                        part of the period.</Description>
+					<DataType>date</DataType>
+					<Reference type="BUSINESS_TERM">tir76-099</Reference>
+					<Reference type="RULE">PEPPOL-T76-R004</Reference>
+					<Value type="EXAMPLE">2018-06-01</Value>
+				</Element>
+				<Element cardinality="0..1">
+					<Term>cbc:EndDate</Term>
+					<Name>Period end date</Name>
+					<Description>The date on which the period ends. The end date counts as part of
+                        the period.</Description>
+					<DataType>Date</DataType>
+					<Reference type="BUSINESS_TERM">tir76-100</Reference>
+					<Reference type="RULE">PEPPOL-T76-R004</Reference>
+					<Value type="EXAMPLE">2018-06-30</Value>
+				</Element>
+			</Element>
+		</Element>
+		<Element cardinality="0..n">
+			<Term>cac:OrderLine</Term>
+			<Name>Specification of order lines</Name>
+			<Element>
+				<Term>cac:LineItem</Term>
+				<Name>Description of line item</Name>
+				<Element>
+					<Term>cbc:ID</Term>
+					<Name>Document line identifier</Name>
+					<Description>Identifies the response line. Each order response line MUST be unique within the order response.</Description>
+					<DataType>Identifier</DataType>
+					<Reference type="BUSINESS_TERM">tir76-120</Reference>
+					<Reference type="RULE">PEPPOL-T76-R003</Reference>
+					<Value type="EXAMPLE">3</Value>
+				</Element>
+				<Element cardinality="0..1">
+					<Term>cbc:Note</Term>
+					<Name>Response clarification</Name>
+					<Description>Clarifacation of the suppliers decision for the
+                        line.</Description>
+					<DataType>Text</DataType>
+					<Reference type="BUSINESS_TERM">tir76-204</Reference>
+					<Value type="EXAMPLE">Please note our offices are closed in July, all orders received will be processed in August</Value>
+				</Element>
+				<Element>
+					<Term>cbc:LineStatusCode</Term>
+					<Name>Response code</Name>
+					<Description>A code that indicates whether the referenced order line as whole
+                        is Accepted or Rejected or, alternatively, Accepted with
+                        change.</Description>
+					<Reference type="BUSINESS_TERM">tir76-202</Reference>
+					<Reference type="CODE_LIST">UNCL1229</Reference>
+
+					<Value type="EXAMPLE">3</Value>
+				</Element>
+				<Element cardinality="0..1">
+					<Term>cbc:Quantity</Term>
+					<Name>Quantity</Name>
+					<Description>The quantity of items that will be delivered.</Description>
+					<DataType>Quantity</DataType>
+					<Reference type="BUSINESS_TERM">tir76-132</Reference>
+					<Attribute>
+						<Term>unitCode</Term>
+						<Name>Ordered quantity unit of measure</Name>
+						<Description>The unit of measure that applies to the ordered quantity.</Description>
+						<DataType>Code</DataType>
+						<Reference type="CODE_LIST">UNECERec20</Reference>
+						<Value type="EXAMPLE">C62</Value>
+					</Attribute>
+					<Value type="EXAMPLE">10</Value>
+				</Element>
+				<Element cardinality="0..1">
+					<Term>cbc:MaximumBackorderQuantity</Term>
+					<Name>Maximum backorder quantity</Name>
+					<Description>The quantity of items that will be delivered at a later time.
+						A unit for the backordered quantity is the same as for the Quantity.
+						If none of the remaining quantity for the response line is to be delivered, use 0 "zero".</Description>
+					<DataType>Quantity</DataType>
+					<Reference type="BUSINESS_TERM">tir76-p005</Reference>
+					<Value type="EXAMPLE">3</Value>
+				</Element>
+				<Element cardinality="0..1">
+					<Term>cac:Delivery</Term>
+					<Name>Delivery information</Name>
+					<Element>
+						<Term>cac:PromisedDeliveryPeriod</Term>
+						<Name>Delivery period</Name>
+						<Element cardinality="0..1">
+							<Term>cbc:StartDate</Term>
+							<Name>Period start date</Name>
+							<Description>The date on which the period starts. The start dates
+                                counts as part of the period.</Description>
+							<DataType>Date</DataType>
+							<Reference type="BUSINESS_TERM">tir76-126</Reference>
+							<Reference type="RULE">PEPPOL-T76-R004</Reference>
+							<Value type="EXAMPLE">2018-05-28</Value>
+						</Element>
+						<Element cardinality="0..1">
+							<Term>cbc:EndDate</Term>
+							<Name>Period end date</Name>
+							<Description>The date on which the period ends. The end date counts as
+                                part of the period.</Description>
+							<DataType>Date</DataType>
+							<Reference type="BUSINESS_TERM">tir76-127</Reference>
+							<Reference type="RULE">PEPPOL-T76-R004</Reference>
+							<Value type="EXAMPLE">2018-05-29</Value>
+						</Element>
+					</Element>
+				</Element>
+				<Element cardinality="0..1">
+					<Term>cac:Price</Term>
+					<Name>Price information</Name>
+					<Element>
+						<Term>cbc:PriceAmount</Term>
+						<Name>Item price</Name>
+						<Description>The net price of an item including discounts or surcharges
+                            that apply to the price.Although price is an optional element in an
+                            offer it recommended as best practice to either state the price or
+                            provide reference to an appropriate source from which the price can be
+                            identified such as a contract, catalogue or a quote.. The price amount.
+                            The net price of the item including all allowances, charges and taxes
+                            but exluding TAX.</Description>
+						<DataType>Price amount</DataType>
+						<Reference type="BUSINESS_TERM">tir76-130</Reference>
+						<Attribute>
+							<Term>currencyID</Term>
+							<Description>Currency identifier, must have the same value as element "Document currency".</Description>
+							<Reference type="CODE_LIST">ISO4217</Reference>
+							<Reference type="RULE">PEPPOL-T76-R004</Reference>
+							<Value type="EXAMPLE">EUR</Value>
+						</Attribute>
+						<Value type="EXAMPLE">1000.00</Value>
+					</Element>
+					<Element cardinality="0..1">
+						<Term>cbc:BaseQuantity</Term>
+						<Name>Item price base quantity</Name>
+						<Description>The actual quantity to which the price applies.</Description>
+						<DataType>Quantity</DataType>
+						<Reference type="BUSINESS_TERM">tir76-131</Reference>
+						<Attribute>
+							<Term>unitCode</Term>
+							<Name>Base quantity unit of measure</Name>
+							<Description>The unit of measure that applies to the base quantity.</Description>
+							<DataType>Code</DataType>
+							<Reference type="CODE_LIST">UNECERec20</Reference>
+							<Value type="EXAMPLE">C62</Value>
+						</Attribute>
+						<Value type="EXAMPLE">2</Value>
+					</Element>
+				</Element>
+				<Element>
+					<Term>cac:Item</Term>
+					<Name>Item information</Name>
+					<Element>
+						<Term>cbc:Name</Term>
+						<Name>Item name</Name>
+						<Description>A short name given to an item, such as a name from
+                            a Catalogue, as distinct from a description. A short name for the
+                            item.</Description>
+						<DataType>Text</DataType>
+						<Reference type="BUSINESS_TERM">tir76-205</Reference>
+						<Value type="EXAMPLE">Copy paper, 500 sheets</Value>
+					</Element>
+					<Element cardinality="0..1">
+						<Term>cac:BuyersItemIdentification</Term>
+						<Name>Buyer item identification</Name>
+
+						<Element>
+							<Term>cbc:ID</Term>
+							<Name>Buyers item identifier</Name>
+							<Description>An identifier, assigned by the buyer, for the
+								item. Associates the item with its identification according to the
+								buyer's system. </Description>
+							<DataType>Identifier</DataType>
+							<Reference type="BUSINESS_TERM">tir76-p006</Reference>
+							<Value type="EXAMPLE">111111</Value>
+						</Element>
+					</Element>
+
+					<Element cardinality="0..1">
+						<Term>cac:SellersItemIdentification</Term>
+						<Name>Sellers item identification</Name>
+						<Element>
+							<Term>cbc:ID</Term>
+							<Name>The Sellers item identifier</Name>
+							<Description>An identifier, assigned by the seller, for the
+								item. Associates the item with its identification according to the
+								seller's system. </Description>
+							<DataType>Identifier</DataType>
+							<Reference type="BUSINESS_TERM">tir76-206</Reference>
+
+							<Value type="EXAMPLE">3249834</Value>
+						</Element>
+					</Element>
+					<Element cardinality="0..1">
+						<Term>cac:StandardItemIdentification</Term>
+						<Name>Standard item identification</Name>
+						<Element>
+							<Term>cbc:ID</Term>
+							<Name>Item standard identifier</Name>
+							<Description>An item identifier based on a registered scheme. Associates
+								the item with its identification according to a standard system.</Description>
+							<DataType>Identifier</DataType>
+							<Reference type="BUSINESS_TERM">tir76-207</Reference>
+
+							<Attribute>
+								<Term>schemeID</Term>
+								<Name>Item standard identifier identification scheme identifier</Name>
+								<Description>The identification scheme identifier of the Item standard identifier</Description>
+								<Reference type="CODE_LIST">ICD</Reference>
+								<Value type="EXAMPLE">0160</Value>
+							</Attribute>
+							<Value type="EXAMPLE">05704066204093</Value>
+						</Element>
+					</Element>
+
+				</Element>
+			</Element>
+			<Element cardinality="0..1">
+				<Term>cac:SellerSubstitutedLineItem</Term>
+				<Name>Substituted line item by the seller</Name>
+				<Element>
+					<Term>cbc:ID</Term>
+					<Name>Substituted Line Item Identifier </Name>
+					<Description>Identifier of the substituted line item </Description>
+					<Reference type="BUSINESS_TERM">tir76-p002</Reference>
+					<Value type="EXAMPLE">3</Value>
+				</Element>
+				<Element>
+					<Term>cac:Item</Term>
+					<Name>Item information</Name>
+					<Element cardinality="0..1">
+						<Term>cbc:Name</Term>
+						<Name>Item name</Name>
+						<Description>A short name optionally given to an item, such as a name from
+                            a Catalogue, as distinct from a description. A short name for the
+                            item.</Description>
+						<DataType>Text</DataType>
+						<Reference type="BUSINESS_TERM">tir76-134</Reference>
+						<Value type="EXAMPLE">Copy paper, 1000 sheets</Value>
+					</Element>
+					<Element cardinality="0..1">
+						<Term>cac:SellersItemIdentification</Term>
+						<Name>Sellers item identification</Name>
+						<Element>
+							<Term>cbc:ID</Term>
+							<Name>Sellers item identifier</Name>
+							<Description>An identifier, assigned by the seller, for the
+                                item. Associates the item with its identification according to the
+                                seller's system. </Description>
+							<DataType>Identifier</DataType>
+							<Reference type="BUSINESS_TERM">tir76-135</Reference>
+							<Value type="EXAMPLE">3249834</Value>
+						</Element>
+					</Element>
+					<Element cardinality="0..1">
+						<Term>cac:StandardItemIdentification</Term>
+						<Name>Standard item identification</Name>
+						<Element>
+							<Term>cbc:ID</Term>
+							<Name>Item standard identifier</Name>
+							<Description>An item identifier based on a registered scheme. Associates
+                                the item with its identification according to a standard system.</Description>
+							<DataType>Identifier</DataType>
+							<Reference type="BUSINESS_TERM">tir76-136</Reference>
+							<Attribute>
+								<Term>schemeID</Term>
+								<Name>Item standard identifier identification scheme identifier</Name>
+								<Description>The identification scheme identifier of the Item standard identifier</Description>
+								<Reference type="CODE_LIST">ICD</Reference>
+								<Value type="EXAMPLE">0160</Value>
+							</Attribute>
+							<Value type="EXAMPLE">87463294723134124</Value>
+						</Element>
+					</Element>
+					<Element cardinality="0..n">
+						<Term>cac:CommodityClassification</Term>
+						<Name>Commodity classification information</Name>
+						<Element cardinality="0..1">
+							<Term>cbc:ItemClassificationCode</Term>
+							<Name>Item classification code</Name>
+							<Description>A code for classifying the item by its type or nature. Classification codes are used to
+                                allow grouping of similar items for a various purposes e.g. public
+                                procurement (CPV), e-Commerce (UNSPSC) etc.</Description>
+							<DataType>Code</DataType>
+							<Reference type="BUSINESS_TERM">tir76-149</Reference>
+							<Attribute>
+								<Term>listID</Term>
+								<Name>Item classification identifier identification scheme identifier</Name>
+								<Description>The identification scheme identifier of the Item classification identifier</Description>
+								<Reference type="CODE_LIST">UNCL7143</Reference>
+								<Value type="EXAMPLE">MP</Value>
+							</Attribute>
+							<Attribute usage="Optional">
+								<Term>listVersionID</Term>
+								<Name>Item classification identifier version identification scheme identifier</Name>
+								<Description>The identification scheme version identifier of the Item classification identifier</Description>
+								<Value type="EXAMPLE">20.0601</Value>
+							</Attribute>
+							<Attribute usage="Optional">
+								<Term>name</Term>
+								<Name>Clear text name equivalent of classification code</Name>
+								<Description>The textual equivalent of the code value</Description>
+								<Value type="EXAMPLE">Office furniture</Value>	
+							</Attribute>							
+							
+						</Element>
+					</Element>
+					<Element cardinality="0..1">
+						<Term>cac:ClassifiedTaxCategory</Term>
+						<Name>Line TAX information</Name>
+						<Element>
+							<Term>cbc:ID</Term>
+							<Name>Item TAX category code</Name>
+							<Description>The TAX category code for the item.</Description>
+							<DataType>Code</DataType>
+							<Reference type="BUSINESS_TERM">tir76-150</Reference>
+
+							<Reference type="CODE_LIST">UNCL5305</Reference>
+							<Value type="EXAMPLE">S</Value>
+						</Element>
+						<Element cardinality="0..1">
+							<Term>cbc:Percent</Term>
+							<Name>Line TAX rate</Name>
+							<Description>The TAX percentage rate that applies to the line
+                                amount.</Description>
+							<DataType>Percentage</DataType>
+							<Reference type="BUSINESS_TERM">tir04-170</Reference>
+							<Value type="EXAMPLE">25</Value>
+						</Element>
+						<Element>
+							<Term>cac:TaxScheme</Term>
+							<Name>Tax scheme information</Name>
+							<Element>
+								<Term>cbc:ID</Term>
+								<Description>Tax scheme. E.g. “VAT” or “GST”</Description>
+								<DataType>Identifier</DataType>
+								<Reference type="BUSINESS_TERM">tir76-p003</Reference>
+								<Value type="EXAMPLE">VAT or GST</Value>
+							</Element>
+						</Element>
+					</Element>
+					<Element cardinality="0..n">
+						<Term>cac:AdditionalItemProperty</Term>
+						<Name>Additional item property information</Name>
+						<Description>A group of business terms providing information about properties of the goods and services invoiced.</Description>
+						<Element>
+							<Term>cbc:Name</Term>
+							<Name>Item property name</Name>
+							<Description>The name of the property.The name must be sufficiently
+                                descriptive to define the value. The definition may be supplemented
+                                with the property unit of measure when relevant.</Description>
+							<DataType>Text</DataType>
+							<Reference type="BUSINESS_TERM">tir76-138</Reference>
+							<Value type="EXAMPLE">Color</Value>
+						</Element>
+						<Element cardinality="0..1">
+							<Term>cbc:NameCode</Term>
+							<Name>Item property code</Name>
+							<Description>Code for the item property according to a property code system.</Description>
+							<DataType>Code</DataType>
+							<Reference type="BUSINESS_TERM">tir76-p004</Reference>
+							<Attribute>
+								<Term>listID</Term>
+								<Name>Name code list id.</Name>
+								<Description>An identifier for the code list used for the Name code, this is bilaterally agreed</Description>
+							</Attribute>
+						</Element>
+						<Element>
+							<Term>cbc:Value</Term>
+							<Name>Item property value</Name>
+							<Description>The value of the item property.</Description>
+							<DataType>Text</DataType>
+							<Reference type="BUSINESS_TERM">tir76-139</Reference>
+							<Value type="EXAMPLE">Red</Value>
+						</Element>
+						<Element cardinality="0..1">
+							<Term>cbc:ValueQuantity</Term>
+							<Name>Item property unit of measure</Name>
+							<Description>The unit of measure in which the property value is stated,
+                                if relevant. May not be relevant when properties are
+                                descriptive.</Description>
+							<DataType>Quantity</DataType>
+							<Reference type="BUSINESS_TERM">tir76-p008</Reference>
+
+							<Attribute>
+								<Term>unitCode</Term>
+								<Name>Value quantity unit of measure</Name>
+								<Description>The unit of measure that applies to the value quantity.</Description>
+								<DataType>Code</DataType>
+								<Reference type="CODE_LIST">UNECERec20</Reference>
+								<Value type="EXAMPLE">NAR</Value>
+							</Attribute>
+							<Value type="EXAMPLE">2</Value>
+						</Element>
+						<Element cardinality="0..1">
+							<Term>cbc:ValueQualifier</Term>
+							<Name>Property classification</Name>
+              <Description>Standardized and predefined classification of items properties.</Description>
+							<DataType>Text</DataType>
+							<Reference type="BUSINESS_TERM">tir76-p009</Reference>
+						</Element>
+					</Element>
+				</Element>
+			</Element>
+			<Element>
+				<Term>cac:OrderLineReference</Term>
+				<Name>Reference to order line</Name>
+				<Element>
+					<Term>cbc:LineID</Term>
+					<Name>Order line reference</Name>
+					<Description>Used to reference the initial order line that correspondes to the
+						response.All order lines should be stated when an order is changed.</Description>
+					<Reference type="BUSINESS_TERM">tir76-201</Reference>
+
+					<Value type="EXAMPLE">34</Value>
+				</Element>
+			</Element>
+		</Element>
+	</Document>
+</Structure>

@@ -1,0 +1,8 @@
+[[simple-process-two-parties-involved]]
+= Simple process – two parties involved
+
+
+Following the establishment of a contract for purchase the Supplier, in the role of Despatch party, delivers or provides the contracted goods or services to the customer, who has the role of a consignee.
+
+
+image:images/bpmn-simple.png[image,width=662,height=422]

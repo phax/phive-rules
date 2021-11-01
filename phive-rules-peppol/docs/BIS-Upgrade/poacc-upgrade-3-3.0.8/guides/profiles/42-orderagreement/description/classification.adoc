@@ -1,0 +1,12 @@
+[[classification]]
+= Classification
+
+An item may be classified according to UNSPSC being the mandatory public classification schemes in some countries/sectors.
+As there is currently no code for UNSPSC in the used code list UNCL 7143, the code "MP" (Product/service identification number) is used.
+Products can also be classified according to regulatory schemes or classification schemes used in certain business sectors.
+
+.Example:
+[source, xml, indent=0]
+----
+include::{snippet-dir}/OA full.xml[tags=classification]
+----

@@ -1,0 +1,16 @@
+[[codelists-business-rules]]
+= Codelists business rules
+
+[cols="2,4",options="header",]
+|====
+|Identifier |Business Rule
+|CL-T110-R001 |currencyID for Amounts MUST be coded using ISO code list 4217
+|CL-T110-R002 |Order agreement currency MUST be coded using ISO code list 4217
+|CL-T110-R003 |An Endpoint Identifier Scheme MUST be from the list of PEPPOL Party Identifiers described in the "PEPPOL Policy for using Identifiers".
+|CL-T110-R004 |A Party Identifier Scheme MUST be from the list of PEPPOL Party Identifiers described in the "PEPPOL Policy for using Identifiers".
+|CL-T110-R005 |VAT category code MUST be coded using UNCL 5305 code list BII3 subset
+|CL-T110-R006 |Unit code for quantities MUST be coded according to the UN/ECE Recommendation 20
+|CL-T110-R007 |For Mime code in attribute use MIME Media Types.
+|CL-T110-R009 |Country codes MUST be from ISO 3166-1 alpha2
+|CL-T110-R010 |Commodity code schemes MUST be according to CENBII3 COMMODITY_SCHEME_ID
+|====

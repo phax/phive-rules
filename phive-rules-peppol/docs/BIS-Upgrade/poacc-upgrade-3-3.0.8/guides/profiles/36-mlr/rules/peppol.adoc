@@ -1,0 +1,41 @@
+[[peppol-specific-rules]]
+== PEPPOL Specific rules
+
+[cols="1s,4,1",options="header"]
+|====
+|RuleID
+|Rule
+|Error level
+
+|EUGEN-T71-R001
+|A document type code MUST have a list identifier attribute 'UNCL1001'.
+|Fatal
+
+|EUGEN-T71-R002
+|A response code MUST have a list identifier attribute 'UNCL4343'.
+|Fatal
+
+|EUGEN-T71-R003
+|A status reason code MUST have a list identifier attribute ‘PEPPOLSTATUS'
+|Fatal
+
+|EUGEN-T71-R004
+|An endpoint identifier MUST have a scheme identifier attribute.
+|Fatal
+
+|EUGEN-T71-R005
+|A party identifier MUST have a scheme identifier attribute.
+|Fatal
+
+|EUGEN-T71-R006
+|A message level response MUST contain a document reference pointing towards the envelope of the business document that the response relates to.
+|Fatal
+
+|EUGEN-T71-R007
+|A response document MUST clearly indicate the reason for rejection.
+|Fatal
+
+|EUGEN-T71-R008
+|A response document MUST indicate whether the received document was accepted or not.
+|Fatal
+|====

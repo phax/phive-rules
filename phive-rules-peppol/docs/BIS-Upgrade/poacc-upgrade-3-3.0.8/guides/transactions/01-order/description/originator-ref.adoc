@@ -1,0 +1,10 @@
+= Originator document reference
+
+The element `cac:OriginatorDocumentReference/cbc:ID`is used to give a reference to a document that has originated the order,
+example being the internal requisition on the buyer site on which the order is based.
+
+.UBL example of originator reference
+[source, xml, indent=0]
+----
+include::{snippet-dir}/snippet-02.xml[tags=originator]
+----

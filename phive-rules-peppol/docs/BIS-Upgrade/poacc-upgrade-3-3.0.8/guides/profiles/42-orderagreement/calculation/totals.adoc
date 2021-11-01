@@ -1,0 +1,48 @@
+
+[[totals]]
+= Calculation of totals
+
+The following elements show the legal monetary totals
+[cols="3,3,5", options="header"]
+|===
+| Element
+| Description
+| Formula
+
+| `cbc:LineExtensionAmount`
+| Sum of line net amounts
+| stem:[sum("cac:OrderLine/LineItem/cbc:LineExtensionAmount")]
+
+| `cbc:AllowanceTotalAmount`
+| Sum of allowances on document level
+| stem:[sum("cac:AllowanceCharge[ChargeIndicator='false'$$]$$/cbc:Amount")]
+
+| `cbc:ChargeTotalAmount`
+| Sum of charges on document level
+| stem:[sum("cac:AllowanceCharge[ChargeIndicator='true'$$]$$/cbc:Amount")]
+
+| `cbc:TaxExclusiveAmount`
+| Invoice total amount without VAT
+| stem:[\ \ \ \ "cac:LegalMonetaryTotal/cbc:LineExtensionAmount"] +
+stem:[– \ "cac:LegalMonetaryTotal/cbc:AllowanceTotalAmount"] +
+stem:[+ \ "cac:LegalMonetaryTotal/cbc:ChargeTotalAmount"]
+
+| `cbc:TaxInclusiveAmount`
+| Invoice total amount with VAT
+| stem:[\ \ \ \ "cac:LegalMonetaryTotal/cbc:TaxExclusiveAmount"] +
+stem:[+ \ "cac:TaxTotal/cbc:TaxAmount"]
+
+| `cbc:PrepaidAmount`
+| Amount allready paid
+| _Not applicable_
+
+| `cbc:PayableRoundingAmount`
+| Amount added for rounding of the payable amount
+| _Not applicable_
+
+| `cbc:PayableAmount`
+| Amount due for payment
+| stem:[\ \ \ \ "cac:LegalMonetaryTotal/cbc:TaxInclusiveAmount"] +
+stem:[- \ "cac:LegalMonetaryTotal/cbc:PrepaidAmount"] +
+stem:[+ \ "cac:LegalMonetaryTotal/cbc:PayableRoundingAmount"]
+|===

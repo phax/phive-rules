@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testSet xmlns="http://difi.no/xsd/vefa/validator/1.0" configuration="peppolbis-t01-base-3.0">
+	<assert>
+		<description>ICD (0201) provided.</description>
+		<scope>PEPPOL-COMMON-R044</scope>
+	</assert>
+	
+	<test>
+		<assert>
+			<success>PEPPOL-COMMON-R044</success>
+		</assert>
+		<Order xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+			xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+			xmlns="urn:oasis:names:specification:ubl:schema:xsd:Order-2">
+			<cac:BuyerCustomerParty>
+				<cac:Party>
+					<cac:PartyLegalEntity>
+						<cbc:RegistrationName>Duvel</cbc:RegistrationName>
+						<cbc:CompanyID schemeID="0201">F7VRDL</cbc:CompanyID>
+					</cac:PartyLegalEntity>
+				</cac:Party>
+			</cac:BuyerCustomerParty>
+		</Order>
+	</test>
+    
+	    <test>
+		<assert>
+			<success>PEPPOL-COMMON-R044</success>
+		</assert>
+		<Order xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+			xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+			xmlns="urn:oasis:names:specification:ubl:schema:xsd:Order-2">
+			<cac:BuyerCustomerParty>
+				<cac:Party>
+					<cbc:EndpointID schemeID="0201">F7VRDL</cbc:EndpointID>
+				</cac:Party>
+			</cac:BuyerCustomerParty>
+		</Order>
+	</test>
+	
+        
+   
+    <test>
+		<assert>
+			<warning>PEPPOL-COMMON-R044</warning>
+		</assert>
+		<Order xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+			xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+			xmlns="urn:oasis:names:specification:ubl:schema:xsd:Order-2">
+			<cac:BuyerCustomerParty>
+				<cac:Party>
+					<cac:PartyLegalEntity>
+						<cbc:RegistrationName>Duvel</cbc:RegistrationName>
+						<cbc:CompanyID schemeID="0201">07399999484052</cbc:CompanyID> <!-- too long -->
+					</cac:PartyLegalEntity>
+				</cac:Party>
+			</cac:BuyerCustomerParty>
+		</Order>
+	</test>
+    
+    
+	
+</testSet>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeList xmlns="urn:fdc:difi.no:2017:vefa:structure:CodeList-1">
+
+    <Title>Order type code (UNCL1001 subset)</Title>
+    <Identifier>UNCL1001_T01</Identifier>
+    <Version>D.17A</Version>
+    <Agency>UN/CEFACT</Agency>
+    <Subset>openPEPPOL</Subset>
+
+ 
+    <Code>
+        <Id>220</Id>
+        <Name>Order</Name>
+        <Description>Document/message by means of which a buyer initiates a
+            transaction with a seller involving the supply of goods
+            or services as specified, according to conditions set
+            out in an offer, or otherwise known to the buyer.
+        </Description>
+    </Code>
+  
+    <Code>
+        <Id>227</Id>
+        <Name>Consignment order</Name>
+        <Description>Order to deliver goods into stock with agreement on
+            payment when goods are sold out of this stock.
+        </Description>
+    </Code>
+   
+</CodeList>

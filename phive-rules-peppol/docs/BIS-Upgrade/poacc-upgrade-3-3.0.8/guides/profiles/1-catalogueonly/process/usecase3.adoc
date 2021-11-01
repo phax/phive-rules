@@ -1,0 +1,46 @@
+[[use-case-3-replace-of-catalogue-and-positive-response]]
+= Use case 3 – Replace of catalogue and positive response
+
+This is a *Replace* of the catalogue based on Use case 1 and 2.
+
+[cols="2,4",options="header",]
+|====
+|*Use Case No* |3
+|*Use Case Name* |Catalogues replace from the provider and accept from the receiver.
+|*Use Case Description* a|
+The provider sends a catalogue replace to the receiver.
+
+The catalogue contains all the contracted items and replaces the previous accepted catalogue.
+
+After receiving the catalogue, the buyer accepts the catalogue using a response message.
+
+|*Parties involved* a|
+Catalogue Provider (same legal entity as the Supplier/Seller in this use case)
+
+Catalogue Receiver (same legal entity as the Customer/Buyer in this use case)
+
+|*Assumptions* a|
+1.  The Seller has previously sent a new catalogue to the Buyer which has been accepted.
+2.  The Seller has sent an update of the catalogue which was rejected by the buyer
+3.  The Seller sends a replace catalogue
+a.  All articles that the supplier had identified in the contract, including the new one in the rejected catalogue.
+b.  One article from the previous accepted catalogue is not in this catalogue.
+c.  Three more new articles are added.
+Shampoo presented in a hierarchy.
+
+|*The flow* a|
+1.  The Seller identifies the items to be in the Catalogue update
+2.  The Provider creates a Catalogue message
+3.  The Provider sends the message to the Receiver
+4.  The Buyer verifies the content in the message and accepts the catalogue.
+5.  The Buyer sends a Catalogue response with accept.
+
+|*Result* a|
+1.  The Buyer has all the articles and the contracted prices in the ERP-system and may start ordering
+2.  The ordering process is easy when you have all necessary information in the ERP-system.
+
+_Please note that the ordering process is not part of this BIS.
+For ordering, please see PEPPOL BIS 3A._
+
+|*XML example file* |See Annex A for sample Catalogue and catalogue response files illustrating Use Case 3.
+|====

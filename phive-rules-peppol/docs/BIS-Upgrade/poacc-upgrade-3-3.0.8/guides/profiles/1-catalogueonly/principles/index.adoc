@@ -1,0 +1,23 @@
+[[principles-and-prerequisites]]
+= Principles and prerequisites
+
+[[business-process-in-scope]]
+== Business Process in scope
+
+This PEPPOL BIS supports a process for suppliers to send a catalogue and for buyers to return a catalogue response.
+It is intended to support transmission of electronic catalogue-messages for processing in semi-automated processes by the receiver.
+The BIS mandates no procurement related data but supports different ways of referring to products and services.
+By selective use of such references it can be used as basis for automated processing of ordering and invoicing.
+
+include::../../../shared/files/scope.adoc[]
+
+
+:leveloffset: +1
+
+include::benefits.adoc[]
+
+include::parties.adoc[]
+
+include::../../../shared/files/interoperability.adoc[]
+
+:leveloffset: -1

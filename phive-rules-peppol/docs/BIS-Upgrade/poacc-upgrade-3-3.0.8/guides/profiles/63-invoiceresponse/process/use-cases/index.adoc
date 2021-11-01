@@ -1,0 +1,34 @@
+[[typical-use-cases]]
+= Typical use cases
+
+The following use cases demonstrate how the Invoice Response message can be used in the described situations.
+While the use cases are drawn up to illustrate the general functionality of this BIS 63A, implementers are cautioned that national accounting rules may pose additional requirements on the handling of invoices.
+
+[cols="1,5",options="header",]
+|====
+|No |Use Case Name
+|<<uc1,1>> |Invoice in process.
+|<<uc2a,2a>> |Invoice is in process with additional reference data.
+|<<uc2b,2b>> |Invoice is in process but postponed.
+|<<uc3,3>>|Invoice is accepted.
+|<<uc4a,4a>> |Invoice is rejected.
+|<<uc4b,4b>>  |Invoice is rejected requesting re-issue.
+|<<uc4c,4c>>  |Invoice is rejected requesting replacement.
+| <<uc5,5>> |Invoice is conditionally accepted.
+|<<uc6a,6a>>  |Invoice is under query because of wrong or missing information.
+| <<uc6b,6b>> |Invoice is under query because of missing PO reference.
+|<<uc6c,6c>>  |Invoice is in under query because of wrong details, partial credit note requested.
+|<<uc7,7>>  |Invoice payment has been initiated.
+|<<uc8,8>>  |Invoice is accepted by a third party acting on behalf of the Buyer.
+|====
+
+[NOTE]
+====
+Example files are provided for all use cases, they are all available here: {imr-UC}
+====
+
+:leveloffset: +1
+
+include::use-cases.adoc[]
+
+:leveloffset: -1

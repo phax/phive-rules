@@ -1,0 +1,42 @@
+[[clarification]]
+= Clarification
+
+Depending on the status code, a clarification may be needed to state the Buyer’s reason for the status and/or any expected action from the Seller’s side.
+The clarification may be given either as text (in Status Reason) or as code (in StatusReasonCode). The purpose of the clarification is to provide the Seller with structured information which enables him to partially or fully automate his processing.
+The clarifications are of two types.
+
+* Reasons for the given status.
+* Actions that the Buyer requests from the Seller.
+
+These two types of clarifications are contained in separate code lists that have different list identifiers.
+This allows the Seller to distinguish between the two types of clarifications.
+Clarification codes are defined in {link-codelist}.
+
+Similar business reason (for example missing order number) may trigger different statuses depending on the Buyer’s business process. (e.g. missing order number - some of the Buyers might ’Reject’ the invoice but some of the Buyers might put it ’Under query’).
+
+[[detail-type-codes-and-values]]
+== Detail type codes and values
+
+For each clarification code the Buyer can provide details to assist in the correction.
+For example, if an invoice contains the wrong Buyers TAX number then the Buyer can provide the correct number in the Invoice Response.
+When a textual clarification that includes information about the correct values is not sufficient, but the correct values need to be provided in a structured way that information can be given by providing a type code that identifies the information type and the correct value.
+
+The detail type code for each data type shall be the business term identifier of the referenced document that shall be corrected, and the detail value shall be the value that the Buyer proposes as the correct one.
+
+Example:
+
+A Buyer receives a PEPPOL invoice where the following is true
+
+* The invoice complies to PEPPOL Billing specification
+* The Buyer‘s TAX number in the invoice is incorrect and should be EU12345
+* The Buyer requests the Seller to send a credit note to cancel the incorrect invoice and issue a new invoice with the correct TAX number.
+
+In the Billing specification for an invoice (See {peppol-billing}) the business term identifier for the Buyers TAX number is BT-48.
+
+To inform and assist in resolution of the issue the Buyer sends an Invoice Response to the Seller as follows:
+
+[horizontal]
+Invoice status:: RE (Rejected)
+Clarification code:: LEG (Legal information missing)
+Detail type code:: BT-48
+Detail value:: EU12345

@@ -1,0 +1,18 @@
+[[order-reference]]
+= Order reference
+
+Reference to the related order must be done on Header level.
+
+.Example of order reference on header level in a PEPPOL BIS Order Response
+[source, xml, indent=0]
+----
+include::{snippet-response-dir}/snippet-1.xml[tags=order-ref]
+----
+
+If lines are sent in the Order Response, reference to the related order line must be sent.
+
+.Example of order line reference on line level:
+[source, xml, indent=0]
+----
+include::{snippet-response-dir}/snippet-1.xml[tags=order-ref-line]
+----

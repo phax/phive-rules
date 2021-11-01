@@ -1,0 +1,23 @@
+
+= Date
+
+Dates shall be in accordance to the “Calendar date complete representation” as specified by {ISO8601}, format *YYYY-MM-DD*.
+
+====
+IMPORTANT: Dates shall *not* include timezone information.
+====
+
+
+.EN 16931_ Date. Type
+[cols="1s,1,1,1", options="header"]
+|===
+|Component
+|Use
+|Primitive Type
+|Example
+
+|Content
+|Mandatory
+|Date
+|2017-12-01
+|===

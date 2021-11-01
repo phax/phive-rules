@@ -1,0 +1,37 @@
+[[use-case-4-complex-ordering]]
+= Use case 4 – Complex ordering
+
+This use case contains an order with almost all elements in the order message used.
+
+[cols="1s,5",options="header"]
+|====
+|Use Case number
+|4
+
+|Use Case Name
+|Complex ordering
+
+|Use Case Description
+|An order for numbered items with allowance and charges both on order level, line level and price.
+
+|Parties involved
+|Buyer +
+Seller
+Originator
+
+|Assumptions
+|The buyer has a catalogue or list of products to order. +
+The catalogue contains the item numbers, names and type of unit of measure. +
+The buyer has reached a special agreement with the seller regarding discounts on the order, order lines and price. +
+
+|The flow
+|The buyer creates the order with 4 different lines and items. +
+The seller receives the order.
+
+|Result
+|The buyer and the seller has reached an agreement. +
+If the invoice has an order reference, the invoice can be matched automatically.
+
+|XML example file
+|{order-UC}
+|====

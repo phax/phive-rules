@@ -1,0 +1,3 @@
+//test
+* The target namespace for the {ubl} Order is: +
+`urn:oasis:names:specification:ubl:schema:xsd:Order-2`

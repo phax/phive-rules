@@ -1,0 +1,20 @@
+[[prices]]
+== Prices
+
+All prices in the format are related to the article or service within this Catalogue identified by an item identification.
+The following prices can be stated:
+
+* Net price including all discounts and charges but excluded TAX.
+* Item comparison price defining price for a certain quantity.
+Used for comparing prices for different articles with various quantities.
+* Conditional price related to a specific location, validity period or ordered quantity.
+* Approximate price.
+The current price will be set on the order date.
+Commonly used for fruit, vegetables, fresh fish etc.
+
+
+.Example:
+[source, xml, indent=0]
+----
+include::{snippet-dir}/Snippet-1-1.xml[tags=prices]
+----

@@ -1,0 +1,16 @@
+[[contract-reference]]
+= Contract reference
+
+* An individual line may reference a contract.
+* Different lines may reference different contracts.
+* If a contract is referenced on the cart level that contract applies to all items in the shopping cart and is only superseded by the line reference where there is a conflict.
+
+As example, if a cart level contract reference give payment terms and the line level contract only states delivery conditions for the item, then the payment terms apply as well.
+
+An example of line level contract reference is as follows. "Contracted item indicator", should be used when shopping from sellers webshop under framework agreements.
+
+.Example of line reference to a contract
+[source, xml, indent=0]
+----
+include::{snippet-dir}/snippet-18-1.xml[tags=contract]
+----

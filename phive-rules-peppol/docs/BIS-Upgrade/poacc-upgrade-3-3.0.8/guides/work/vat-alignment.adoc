@@ -1,0 +1,110 @@
+= VAT alignement
+
+== Open questions
+
+* rules
+* VAT identifier rules
+
+
+DespatchAdvice (16), MLR (36) and catalogue response (58) does not have any VAT information
+
+.VAT information in different transactions
+[cols="2,^1,^1,^1,^1,^1", options="header"]
+|===
+| Name (trans.id)
+| Monetary totals
+| Classified Tax Category
+| TaxAmount (line)
+| TaxAmount (document)
+| TaxSubtotal class
+
+|Order (01)
+| X
+| X
+| X
+| X
+|
+
+|Order response (76)
+|
+| X
+|
+|
+|
+
+| Catalogue (19)
+|
+| X
+|
+|
+|
+
+| Punch Out (77)
+|
+| X
+|
+|
+|
+
+| Order Agreement (110)
+| X
+| X
+| X
+| X
+| X
+|===
+
+== VAT rules
+
+.Candidate VAT rules from EN16931
+[cols="1,4", options="header"]
+|===
+|ID
+| Description
+
+|BR-45
+| Each VAT breakdown shall have a VAT category taxable amount.
+|BR-46
+| Each VAT breakdown shall have a VAT category tax amount.
+|BR-47
+|Each VAT breakdown shall be defined through a VAT category code.
+|BR-48
+|Each VAT breakdown shall have a VAT category rate, except if the Invoice is not subject to VAT.
+
+|BR-CO-17
+| VAT category tax amount = VAT category taxable amount x (VAT category rate / 100), rounded to two decimals.
+
+|===
+
+.Candidate VAT rate-specific rules
+[cols="1,3,2", options="header"]
+|===
+| ID
+| Description
+| Comment
+
+|BR-S-1
+|An Invoice that contains an Invoice line , a Document level allowance  or a Document level charge  where the VAT category code is “Standard rated” shall contain in the VAT breakdown  at least one VAT category code  equal with "Standard rated".
+| Valid for order agreement? (if we remove check on allowance/charge)
+
+|BR-S-2
+|An Invoice that contains an Invoice line  where the Invoiced item VAT category code  is “Standard rated” shall contain the Seller VAT Identifier , the Seller tax registration identifier  and/or the Seller tax representative VAT identifier .
+| Valid for order and order agreement
+
+|BR-S-5
+|In an Invoice line  where the Invoiced item VAT category code  is "Standard rated" the Invoiced item VAT rate  shall be greater than zero.
+| Valid for all documents
+
+|BR-S-8
+|For each different value of VAT category rate  where the VAT category code  is "Standard rated", the VAT category taxable amount  in a VAT breakdown  shall equal the sum of Invoice line net amounts  plus the sum of document level charge amounts  minus the sum of document level allowance amounts  where the VAT category code  is “Standard rated” and the VAT rate  equals the VAT category rate .
+| Valid for order agreement?
+
+|BR-S-9
+|The VAT category tax amount  in a VAT breakdown  where VAT category code  is "Standard rated" shall equal the VAT category taxable amount  multiplied by the VAT category rate .
+| Valid for order agreement?
+
+|BR-S-10
+|A VAT Breakdown  with VAT Category code  "Standard rate" shall not have a VAT exemption reason code  or VAT exemption reason text .
+| Valid for order agreement?
+
+|===
