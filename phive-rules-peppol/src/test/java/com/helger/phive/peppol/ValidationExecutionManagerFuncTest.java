@@ -88,7 +88,7 @@ public final class ValidationExecutionManagerFuncTest
         assertTrue (aErrors.getAllErrors ().toString (), aErrors.containsNoError ());
       }
       else
-        LOGGER.info ("File" + aRes.getPath () + " does not exist");
+        LOGGER.info ("Large file " + aRes.getPath () + " does not exist");
 
     }
   }
