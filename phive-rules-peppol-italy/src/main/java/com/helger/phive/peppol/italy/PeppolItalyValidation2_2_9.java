@@ -78,7 +78,7 @@ public final class PeppolItalyValidation2_2_9
     final boolean bNotDeprecated = false;
 
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_ORDER,
-                                                                           "AGID Peppol Order " + sVersion + sAkaVersionBIS,
+                                                                           "AGID Peppol Order" + sVersion + sAkaVersionBIS,
                                                                            bNotDeprecated,
                                                                            ValidationExecutorXSD.create (EUBL21DocumentType.ORDER),
                                                                            _createXSLT (ORDER)));
