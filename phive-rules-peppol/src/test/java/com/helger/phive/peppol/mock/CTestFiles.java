@@ -30,7 +30,6 @@ import com.helger.phive.api.executorset.ValidationExecutorSetRegistry;
 import com.helger.phive.engine.mock.MockFile;
 import com.helger.phive.engine.source.IValidationSourceXML;
 import com.helger.phive.peppol.PeppolValidation;
-import com.helger.phive.peppol.PeppolValidation3_11_1;
 import com.helger.phive.peppol.PeppolValidation3_12_0;
 import com.helger.phive.peppol.PeppolValidation3_13_0;
 import com.helger.phive.peppol.PeppolValidationAUNZ;
@@ -73,18 +72,6 @@ public final class CTestFiles
                                             PeppolValidationSG.VID_OPENPEPPOL_BIS3_SG_UBL_CREDIT_NOTE_103,
 
                                             /* OpenPeppol */
-                                            PeppolValidation3_11_1.VID_OPENPEPPOL_INVOICE_V3,
-                                            PeppolValidation3_11_1.VID_OPENPEPPOL_CREDIT_NOTE_V3,
-                                            PeppolValidation3_11_1.VID_OPENPEPPOL_ORDER_V3,
-                                            PeppolValidation3_11_1.VID_OPENPEPPOL_DESPATCH_ADVICE_V3,
-                                            PeppolValidation3_11_1.VID_OPENPEPPOL_CATALOGUE_V3,
-                                            PeppolValidation3_11_1.VID_OPENPEPPOL_CATALOGUE_RESPONSE_V3,
-                                            PeppolValidation3_11_1.VID_OPENPEPPOL_MLR_V3,
-                                            PeppolValidation3_11_1.VID_OPENPEPPOL_ORDER_RESPONSE_V3,
-                                            PeppolValidation3_11_1.VID_OPENPEPPOL_PUNCH_OUT_V3,
-                                            PeppolValidation3_11_1.VID_OPENPEPPOL_ORDER_AGREEMENT_V3,
-                                            PeppolValidation3_11_1.VID_OPENPEPPOL_INVOICE_MESSAGE_RESPONSE_V3,
-
                                             PeppolValidation3_12_0.VID_OPENPEPPOL_INVOICE_V3,
                                             PeppolValidation3_12_0.VID_OPENPEPPOL_CREDIT_NOTE_V3,
                                             PeppolValidation3_12_0.VID_OPENPEPPOL_ORDER_V3,
@@ -198,55 +185,6 @@ public final class CTestFiles
 
     if (aVESID.equals (PeppolValidationSG.VID_OPENPEPPOL_BIS3_SG_UBL_CREDIT_NOTE_103))
       return new CommonsArrayList <> ();
-
-    // 3.11.1
-    {
-      final String sBase = sTestFiles + "openpeppol/3.11.1/";
-      // https://github.com/OpenPEPPOL/peppol-bis-invoice-3/tree/master/rules/examples
-      if (aVESID.equals (PeppolValidation3_11_1.VID_OPENPEPPOL_INVOICE_V3))
-        return new CommonsArrayList <> (new FileSystemResource (sBase + "billing/Allowance-example.xml"),
-                                        new FileSystemResource (sBase + "billing/base-example.xml"),
-                                        new FileSystemResource (sBase + "billing/base-negative-inv-correction.xml"),
-                                        new FileSystemResource (sBase + "billing/vat-category-E.xml"),
-                                        new FileSystemResource (sBase + "billing/vat-category-O.xml"),
-                                        new FileSystemResource (sBase + "billing/Vat-category-S.xml"),
-                                        new FileSystemResource (sBase + "billing/vat-category-Z.xml"));
-      if (aVESID.equals (PeppolValidation3_11_1.VID_OPENPEPPOL_CREDIT_NOTE_V3))
-        return new CommonsArrayList <> (new FileSystemResource (sBase + "billing/base-creditnote-correction.xml"));
-      if (aVESID.equals (PeppolValidation3_11_1.VID_OPENPEPPOL_ORDER_V3))
-        return new CommonsArrayList <> (new FileSystemResource (sBase + "Order_Example.xml"));
-      if (aVESID.equals (PeppolValidation3_11_1.VID_OPENPEPPOL_DESPATCH_ADVICE_V3))
-        return new CommonsArrayList <> (new FileSystemResource (sBase + "DespatchAdvice_Example.xml"));
-      if (aVESID.equals (PeppolValidation3_11_1.VID_OPENPEPPOL_CATALOGUE_V3))
-        return new CommonsArrayList <> (new FileSystemResource (sBase + "Catalogue_Example.xml"));
-      if (aVESID.equals (PeppolValidation3_11_1.VID_OPENPEPPOL_CATALOGUE_RESPONSE_V3))
-        return new CommonsArrayList <> (new FileSystemResource (sBase + "CatalogueResponse_Example.xml"));
-      if (aVESID.equals (PeppolValidation3_11_1.VID_OPENPEPPOL_MLR_V3))
-        return new CommonsArrayList <> (new FileSystemResource (sBase + "MessageLevelResponse_Example.xml"));
-      if (aVESID.equals (PeppolValidation3_11_1.VID_OPENPEPPOL_ORDER_RESPONSE_V3))
-        return new CommonsArrayList <> (new FileSystemResource (sBase + "OrderResponse_Example.xml"));
-      if (aVESID.equals (PeppolValidation3_11_1.VID_OPENPEPPOL_PUNCH_OUT_V3))
-        return new CommonsArrayList <> (new FileSystemResource (sBase + "PunchOut_Example.xml"));
-      if (aVESID.equals (PeppolValidation3_11_1.VID_OPENPEPPOL_ORDER_AGREEMENT_V3))
-        return new CommonsArrayList <> (new FileSystemResource (sBase + "OrderAgreement_Example.xml"));
-
-      final String sBase2 = sBase + "Invoice reponse use cases/";
-      if (aVESID.equals (PeppolValidation3_11_1.VID_OPENPEPPOL_INVOICE_MESSAGE_RESPONSE_V3))
-        return new CommonsArrayList <> (new FileSystemResource (sBase + "InvoiceResponse_Example.xml"),
-                                        new FileSystemResource (sBase2 + "T111-uc001-Invoice in process.xml"),
-                                        new FileSystemResource (sBase2 + "T111-uc002a-Additional reference data.xml"),
-                                        new FileSystemResource (sBase2 + "T111-uc002b-In process but postponed.xml"),
-                                        new FileSystemResource (sBase2 + "T111-uc003-Invoice is accepted.xml"),
-                                        new FileSystemResource (sBase2 + "T111-uc004a-Invoice is rejected.xml"),
-                                        new FileSystemResource (sBase2 + "T111-uc004b-Rejected requesting reissue.xml"),
-                                        new FileSystemResource (sBase2 + "T111-uc004c-Rejected requesting replacement.xml"),
-                                        new FileSystemResource (sBase2 + "T111-uc005-Invoice is conditionally accepted.xml"),
-                                        new FileSystemResource (sBase2 + "T111-uc006a-Under query missing information.xml"),
-                                        new FileSystemResource (sBase2 + "T111-uc006b-Missing PO.xml"),
-                                        new FileSystemResource (sBase2 + "T111-uc006c-Wrong detail partial credit.xml"),
-                                        new FileSystemResource (sBase2 + "T111-uc007-Payment has been initiated.xml"),
-                                        new FileSystemResource (sBase2 + "T111-uc008-Invoice is accepted by third party.xml"));
-    }
 
     // 3.12.0
     {
