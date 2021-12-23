@@ -68,11 +68,15 @@ public final class CTestFiles
                                              SimplerInvoicingValidation.VID_SI_CREDIT_NOTE_V2031,
                                              SimplerInvoicingValidation.VID_SI_INVOICE_V2032,
                                              SimplerInvoicingValidation.VID_SI_CREDIT_NOTE_V2032,
+                                             SimplerInvoicingValidation.VID_SI_INVOICE_V2033,
+                                             SimplerInvoicingValidation.VID_SI_CREDIT_NOTE_V2033,
                                              SimplerInvoicingValidation.VID_SI_INVOICE_20_GACCOUNT_V10,
                                              SimplerInvoicingValidation.VID_SI_INVOICE_20_GACCOUNT_V101,
                                              SimplerInvoicingValidation.VID_SI_INVOICE_20_GACCOUNT_V102,
+                                             SimplerInvoicingValidation.VID_SI_INVOICE_20_GACCOUNT_V103,
                                              SimplerInvoicingValidation.VID_SI_NLCIUS_CII_V103,
-                                             SimplerInvoicingValidation.VID_SI_NLCIUS_CII_V1031 })
+                                             SimplerInvoicingValidation.VID_SI_NLCIUS_CII_V1031,
+                                             SimplerInvoicingValidation.VID_SI_NLCIUS_CII_V1032 })
     {
       for (final IReadableResource aRes : getAllMatchingGoodTestFiles (aVESID))
         ret.add (MockFile.createGoodCase (aRes, aVESID));
@@ -86,15 +90,15 @@ public final class CTestFiles
     return ret;
   }
 
-  private static final String sPath10 = "/test-files/simplerinvoicing/SI-UBL-1.0/";
-  private static final String sPath11 = "/test-files/simplerinvoicing/SI-UBL-1.1/";
-  private static final String sPath12 = "/test-files/simplerinvoicing/SI-UBL-1.2/";
-  private static final String sPath123 = "/test-files/simplerinvoicing/SI-UBL-1.2.3/";
-  private static final String sPath200 = "/test-files/simplerinvoicing/SI-UBL-2.0/";
-  private static final String sPath202 = "/test-files/simplerinvoicing/SI-UBL-2.0.2/";
-  private static final String sPath203 = "/test-files/simplerinvoicing/SI-UBL-2.0.3/";
-  private static final String sPath2032 = "/test-files/simplerinvoicing/SI-UBL-2.0.3.2/";
-  private static final String sPathGAccount10 = "/test-files/simplerinvoicing/si-ubl-2.0-ext-gaccount-1.0/";
+  private static final String NLCIUS_CII_103 = "/test-files/simplerinvoicing/NLCIUS-CII-1.0.3/";
+  private static final String PATH_10 = "/test-files/simplerinvoicing/SI-UBL-1.0/";
+  private static final String PATH_11 = "/test-files/simplerinvoicing/SI-UBL-1.1/";
+  private static final String PATH_12 = "/test-files/simplerinvoicing/SI-UBL-1.2/";
+  private static final String PATH_200 = "/test-files/simplerinvoicing/SI-UBL-2.0/";
+  private static final String PATH_202 = "/test-files/simplerinvoicing/SI-UBL-2.0.2/";
+  private static final String PATH_203 = "/test-files/simplerinvoicing/SI-UBL-2.0.3/";
+  private static final String PATH_2032 = "/test-files/simplerinvoicing/SI-UBL-2.0.3.2/";
+  private static final String PATH_GACCOUNT_10 = "/test-files/simplerinvoicing/si-ubl-2.0-ext-gaccount-1.0/";
 
   @Nonnull
   @ReturnsMutableCopy
@@ -106,7 +110,7 @@ public final class CTestFiles
     if (aVESID.equals (SimplerInvoicingValidation.VID_SI_INVOICE_V10))
     {
       for (final String s : new String [] { "SI-UBL-1.0-ok-minimal.xml", "SI-UBL-1.0-ok-reference.xml", "SI-UBL-1.0-ok.xml" })
-        ret.add (new ClassPathResource (sPath10 + s));
+        ret.add (new ClassPathResource (PATH_10 + s));
     }
     else
       if (aVESID.equals (SimplerInvoicingValidation.VID_SI_INVOICE_V11))
@@ -135,7 +139,7 @@ public final class CTestFiles
                                               "SI-UBL-1.1-ok-single-item.xml",
                                               "SI-UBL-1.1-ok-taxes-ae.xml",
                                               "SI-UBL-1.1-ok-taxes.xml" })
-          ret.add (new ClassPathResource (sPath11 + s));
+          ret.add (new ClassPathResource (PATH_11 + s));
       }
       else
         if (aVESID.equals (SimplerInvoicingValidation.VID_SI_INVOICE_V12) || aVESID.equals (SimplerInvoicingValidation.VID_SI_INVOICE_V123))
@@ -167,18 +171,18 @@ public final class CTestFiles
                                                 "SI-UBL-INV-1.2-ok-si-extension.xml",
                                                 "SI-UBL-INV-1.2-ok-single-item.xml",
                                                 "SI-UBL-INV-1.2-ok-taxes-ae.xml" })
-            ret.add (new ClassPathResource (sPath12 + s));
+            ret.add (new ClassPathResource (PATH_12 + s));
         }
         else
           if (aVESID.equals (SimplerInvoicingValidation.VID_SI_ORDER_V12) || aVESID.equals (SimplerInvoicingValidation.VID_SI_ORDER_V123))
           {
             for (final String s : new String [] { "SI-UBL-PO-1.2-ok-minimal.xml" })
-              ret.add (new ClassPathResource (sPath12 + s));
+              ret.add (new ClassPathResource (PATH_12 + s));
           }
           else
             if (aVESID.equals (SimplerInvoicingValidation.VID_SI_INVOICE_V20))
             {
-              final String sPath = sPath200;
+              final String sPath = PATH_200;
               ret.add (new ClassPathResource (sPath + "SI-UBL-2.0_BR-NL-10_ok_both_nl.xml"));
               ret.add (new ClassPathResource (sPath + "SI-UBL-2.0_BR-NL-10_ok_customer_not_nl.xml"));
               if (false)
@@ -214,14 +218,14 @@ public final class CTestFiles
             else
               if (aVESID.equals (SimplerInvoicingValidation.VID_SI_CREDIT_NOTE_V20))
               {
-                final String sPath = sPath200;
+                final String sPath = PATH_200;
                 ret.add (new ClassPathResource (sPath + "SI-UBL-2.0_BR-NL-8_ok_381.xml"));
               }
               else
                 if (aVESID.equals (SimplerInvoicingValidation.VID_SI_INVOICE_V201) ||
                     aVESID.equals (SimplerInvoicingValidation.VID_SI_INVOICE_V202))
                 {
-                  final String sPath = sPath202;
+                  final String sPath = PATH_202;
                   ret.add (new ClassPathResource (sPath + "SI-UBL-2.0_BR-NL-10_ok_both_nl.xml"));
                   ret.add (new ClassPathResource (sPath + "SI-UBL-2.0_BR-NL-10_ok_customer_not_nl.xml"));
                   if (false)
@@ -258,7 +262,7 @@ public final class CTestFiles
                   if (aVESID.equals (SimplerInvoicingValidation.VID_SI_CREDIT_NOTE_V201) ||
                       aVESID.equals (SimplerInvoicingValidation.VID_SI_CREDIT_NOTE_V202))
                   {
-                    final String sPath = sPath202;
+                    final String sPath = PATH_202;
                     ret.add (new ClassPathResource (sPath + "SI-UBL-2.0_BR-NL-8_ok_381.xml"));
                   }
                   else
@@ -329,17 +333,18 @@ public final class CTestFiles
                                                             "SI-UBL-2.0_UBL-SR-15_warning_multiple_legalentity_registrationname.xml",
                                                             "SI-UBL-2.0_UBL-SR-17_warning_multiple_legalentity_companyid.xml",
                                                             "SI-UBL-2.0_warning_empty_elements.xml" })
-                        ret.add (new ClassPathResource (sPath203 + s));
+                        ret.add (new ClassPathResource (PATH_203 + s));
                     }
                     else
                       if (aVESID.equals (SimplerInvoicingValidation.VID_SI_CREDIT_NOTE_V203) ||
                           aVESID.equals (SimplerInvoicingValidation.VID_SI_CREDIT_NOTE_V2031))
                       {
                         for (final String s : new String [] { "SI-UBL-2.0_BR-NL-8_ok_381.xml" })
-                          ret.add (new ClassPathResource (sPath203 + s));
+                          ret.add (new ClassPathResource (PATH_203 + s));
                       }
                       else
-                        if (aVESID.equals (SimplerInvoicingValidation.VID_SI_INVOICE_V2032))
+                        if (aVESID.equals (SimplerInvoicingValidation.VID_SI_INVOICE_V2032) ||
+                            aVESID.equals (SimplerInvoicingValidation.VID_SI_INVOICE_V2033))
                         {
                           for (final String s : new String [] { "SI-UBL-2.0_BR-NL-10_ok_both_nl.xml",
                                                                 "SI-UBL-2.0_BR-NL-10_ok_customer_not_nl.xml",
@@ -401,27 +406,31 @@ public final class CTestFiles
                                                                 "SI-UBL-2.0_ok_unitcode.xml",
                                                                 "SI-UBL-2.0_UBL-CR-561_warning.xml",
                                                                 "SI-UBL-2.0_warning_empty_elements.xml" })
-                            ret.add (new ClassPathResource (sPath2032 + s));
+                            ret.add (new ClassPathResource (PATH_2032 + s));
                         }
                         else
-                          if (aVESID.equals (SimplerInvoicingValidation.VID_SI_CREDIT_NOTE_V2032))
+                          if (aVESID.equals (SimplerInvoicingValidation.VID_SI_CREDIT_NOTE_V2032) ||
+                              aVESID.equals (SimplerInvoicingValidation.VID_SI_CREDIT_NOTE_V2033))
                           {
                             for (final String s : new String [] { "SI-UBL-2.0_BR-NL-8_ok_381.xml" })
-                              ret.add (new ClassPathResource (sPath2032 + s));
+                              ret.add (new ClassPathResource (PATH_2032 + s));
                           }
                           else
                             if (aVESID.equals (SimplerInvoicingValidation.VID_SI_INVOICE_20_GACCOUNT_V10) ||
                                 aVESID.equals (SimplerInvoicingValidation.VID_SI_INVOICE_20_GACCOUNT_V101) ||
-                                aVESID.equals (SimplerInvoicingValidation.VID_SI_INVOICE_20_GACCOUNT_V102))
+                                aVESID.equals (SimplerInvoicingValidation.VID_SI_INVOICE_20_GACCOUNT_V102) ||
+                                aVESID.equals (SimplerInvoicingValidation.VID_SI_INVOICE_20_GACCOUNT_V103))
                             {
                               for (final String s : new String [] { "si-ubl-2.0-ext-gaccount_ok_sample.xml" })
-                                ret.add (new ClassPathResource (sPathGAccount10 + s));
+                                ret.add (new ClassPathResource (PATH_GACCOUNT_10 + s));
                             }
                             else
                               if (aVESID.equals (SimplerInvoicingValidation.VID_SI_NLCIUS_CII_V103) ||
-                                  aVESID.equals (SimplerInvoicingValidation.VID_SI_NLCIUS_CII_V1031))
+                                  aVESID.equals (SimplerInvoicingValidation.VID_SI_NLCIUS_CII_V1031) ||
+                                  aVESID.equals (SimplerInvoicingValidation.VID_SI_NLCIUS_CII_V1032))
                               {
-                                // no test files
+                                for (final String s : new String [] { "NLCIUS-CII_ok_example.xml" })
+                                  ret.add (new ClassPathResource (NLCIUS_CII_103 + s));
                               }
                               else
                                 throw new IllegalArgumentException ("Invalid VESID: " + aVESID);
@@ -438,13 +447,13 @@ public final class CTestFiles
     if (aVESID.equals (SimplerInvoicingValidation.VID_SI_INVOICE_V10))
     {
       for (final String s : new String [] {})
-        ret.add (new ClassPathResource (sPath10 + s));
+        ret.add (new ClassPathResource (PATH_10 + s));
     }
     else
       if (aVESID.equals (SimplerInvoicingValidation.VID_SI_INVOICE_V11))
       {
         for (final String s : new String [] {})
-          ret.add (new ClassPathResource (sPath11 + s));
+          ret.add (new ClassPathResource (PATH_11 + s));
       }
       else
         if (aVESID.equals (SimplerInvoicingValidation.VID_SI_INVOICE_V12) || aVESID.equals (SimplerInvoicingValidation.VID_SI_INVOICE_V123))
@@ -569,7 +578,7 @@ public final class CTestFiles
                                                 "SI-UBL-INV-1.2-error-SI-INV-R029.xml",
                                                 "SI-UBL-INV-1.2-error-SI-INV-R453.xml",
                                                 "SI-UBL-INV-1.2-error-tax-currency.xml" })
-            ret.add (new ClassPathResource (sPath12 + s));
+            ret.add (new ClassPathResource (PATH_12 + s));
         }
         else
           if (aVESID.equals (SimplerInvoicingValidation.VID_SI_ORDER_V12) || aVESID.equals (SimplerInvoicingValidation.VID_SI_ORDER_V123))
@@ -601,76 +610,81 @@ public final class CTestFiles
                                                   "SI-UBL-PO-1.2-error-SI-V12-PO-R001.xml",
                 // "SI-UBL-PO-1.2-error-SI-V12-PO-R200.xml"
             })
-              ret.add (new ClassPathResource (sPath12 + s));
+              ret.add (new ClassPathResource (PATH_12 + s));
           }
           else
             if (aVESID.equals (SimplerInvoicingValidation.VID_SI_INVOICE_V20))
             {
               for (final String s : new String [] { "SI-UBL-2.0_BR-NL-10_ok_customer_no_companyid.xml" })
-                ret.add (new ClassPathResource (sPath200 + s));
+                ret.add (new ClassPathResource (PATH_200 + s));
             }
             else
               if (aVESID.equals (SimplerInvoicingValidation.VID_SI_CREDIT_NOTE_V20))
               {
                 for (final String s : new String [] {})
-                  ret.add (new ClassPathResource (sPath200 + s));
+                  ret.add (new ClassPathResource (PATH_200 + s));
               }
               else
                 if (aVESID.equals (SimplerInvoicingValidation.VID_SI_INVOICE_V201) ||
                     aVESID.equals (SimplerInvoicingValidation.VID_SI_INVOICE_V202))
                 {
                   for (final String s : new String [] {})
-                    ret.add (new ClassPathResource (sPath202 + s));
+                    ret.add (new ClassPathResource (PATH_202 + s));
                 }
                 else
                   if (aVESID.equals (SimplerInvoicingValidation.VID_SI_CREDIT_NOTE_V201) ||
                       aVESID.equals (SimplerInvoicingValidation.VID_SI_CREDIT_NOTE_V202))
                   {
                     for (final String s : new String [] {})
-                      ret.add (new ClassPathResource (sPath202 + s));
+                      ret.add (new ClassPathResource (PATH_202 + s));
                   }
                   else
                     if (aVESID.equals (SimplerInvoicingValidation.VID_SI_INVOICE_V203) ||
                         aVESID.equals (SimplerInvoicingValidation.VID_SI_INVOICE_V2031))
                     {
                       for (final String s : new String [] {})
-                        ret.add (new ClassPathResource (sPath203 + s));
+                        ret.add (new ClassPathResource (PATH_203 + s));
                     }
                     else
                       if (aVESID.equals (SimplerInvoicingValidation.VID_SI_CREDIT_NOTE_V203) ||
                           aVESID.equals (SimplerInvoicingValidation.VID_SI_CREDIT_NOTE_V2031))
                       {
                         for (final String s : new String [] {})
-                          ret.add (new ClassPathResource (sPath203 + s));
+                          ret.add (new ClassPathResource (PATH_203 + s));
                       }
                       else
-                        if (aVESID.equals (SimplerInvoicingValidation.VID_SI_INVOICE_V2032))
+                        if (aVESID.equals (SimplerInvoicingValidation.VID_SI_INVOICE_V2032) ||
+                            aVESID.equals (SimplerInvoicingValidation.VID_SI_INVOICE_V2033))
                         {
                           for (final String s : new String [] { "SI-UBL-2.0_UBL-SR-09_error_multiple_legalentity_registrationname.xml",
                                                                 "SI-UBL-2.0_UBL-SR-11_error_multiple_legalentity_companyid.xml",
                                                                 "SI-UBL-2.0_UBL-SR-15_error_multiple_legalentity_registrationname.xml",
                                                                 "SI-UBL-2.0_UBL-SR-17_error_multiple_legalentity_companyid.xml" })
-                            ret.add (new ClassPathResource (sPath2032 + s));
+                            ret.add (new ClassPathResource (PATH_2032 + s));
                         }
                         else
-                          if (aVESID.equals (SimplerInvoicingValidation.VID_SI_CREDIT_NOTE_V2032))
+                          if (aVESID.equals (SimplerInvoicingValidation.VID_SI_CREDIT_NOTE_V2032) ||
+                              aVESID.equals (SimplerInvoicingValidation.VID_SI_CREDIT_NOTE_V2033))
                           {
                             for (final String s : new String [] {})
-                              ret.add (new ClassPathResource (sPath2032 + s));
+                              ret.add (new ClassPathResource (PATH_2032 + s));
                           }
                           else
                             if (aVESID.equals (SimplerInvoicingValidation.VID_SI_INVOICE_20_GACCOUNT_V10) ||
                                 aVESID.equals (SimplerInvoicingValidation.VID_SI_INVOICE_20_GACCOUNT_V101) ||
-                                aVESID.equals (SimplerInvoicingValidation.VID_SI_INVOICE_20_GACCOUNT_V102))
+                                aVESID.equals (SimplerInvoicingValidation.VID_SI_INVOICE_20_GACCOUNT_V102) ||
+                                aVESID.equals (SimplerInvoicingValidation.VID_SI_INVOICE_20_GACCOUNT_V103))
                             {
                               for (final String s : new String [] {})
-                                ret.add (new ClassPathResource (sPathGAccount10 + s));
+                                ret.add (new ClassPathResource (PATH_GACCOUNT_10 + s));
                             }
                             else
                               if (aVESID.equals (SimplerInvoicingValidation.VID_SI_NLCIUS_CII_V103) ||
-                                  aVESID.equals (SimplerInvoicingValidation.VID_SI_NLCIUS_CII_V1031))
+                                  aVESID.equals (SimplerInvoicingValidation.VID_SI_NLCIUS_CII_V1031) ||
+                                  aVESID.equals (SimplerInvoicingValidation.VID_SI_NLCIUS_CII_V1032))
                               {
-                                // no test files
+                                for (final String s : new String [] { "NLCIUS-CII_error_BR-NL-10.xml" })
+                                  ret.add (new ClassPathResource (NLCIUS_CII_103 + s));
                               }
                               else
                                 throw new IllegalArgumentException ("Invalid VESID: " + aVESID);
