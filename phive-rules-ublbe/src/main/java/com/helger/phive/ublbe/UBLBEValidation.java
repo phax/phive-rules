@@ -86,8 +86,13 @@ public final class UBLBEValidation
   @Deprecated
   public static final VESID VID_UBL_BE_INVOICE_127 = new VESID (GROUPID_UBL_BE, "invoice", "1.2.7");
 
+  @Deprecated
   public static final VESID VID_UBL_BE_CREDIT_NOTE_128 = new VESID (GROUPID_UBL_BE, "credit-note", "1.2.8");
+  @Deprecated
   public static final VESID VID_UBL_BE_INVOICE_128 = new VESID (GROUPID_UBL_BE, "invoice", "1.2.8");
+
+  public static final VESID VID_UBL_BE_CREDIT_NOTE_129 = new VESID (GROUPID_UBL_BE, "credit-note", "1.2.9");
+  public static final VESID VID_UBL_BE_INVOICE_129 = new VESID (GROUPID_UBL_BE, "invoice", "1.2.9");
 
   @Nonnull
   private static ClassLoader _getCL ()
@@ -114,7 +119,9 @@ public final class UBLBEValidation
   private static final IReadableResource UBL_BE_126 = new ClassPathResource (BASE_PATH + "en16931/v1.2.6/GLOBALUBL.BE.xslt", _getCL ());
   @Deprecated
   private static final IReadableResource UBL_BE_127 = new ClassPathResource (BASE_PATH + "en16931/v1.2.7/GLOBALUBL.BE.xslt", _getCL ());
+  @Deprecated
   private static final IReadableResource UBL_BE_128 = new ClassPathResource (BASE_PATH + "en16931/v1.2.8/GLOBALUBL.BE.xslt", _getCL ());
+  private static final IReadableResource UBL_BE_129 = new ClassPathResource (BASE_PATH + "en16931/v1.2.9/GLOBALUBL.BE.xslt", _getCL ());
 
   private UBLBEValidation ()
   {}
@@ -245,13 +252,25 @@ public final class UBLBEValidation
     // v1.2.8
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_UBL_BE_INVOICE_128,
                                                                            "UBL.BE Invoice " + VID_UBL_BE_INVOICE_128.getVersion (),
-                                                                           bNotDeprecated,
+                                                                           bDeprecated,
                                                                            ValidationExecutorXSD.create (EUBL21DocumentType.INVOICE),
                                                                            _createXSLT (UBL_BE_128)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_UBL_BE_CREDIT_NOTE_128,
                                                                            "UBL.BE Credit Note " + VID_UBL_BE_CREDIT_NOTE_128.getVersion (),
-                                                                           bNotDeprecated,
+                                                                           bDeprecated,
                                                                            ValidationExecutorXSD.create (EUBL21DocumentType.CREDIT_NOTE),
                                                                            _createXSLT (UBL_BE_128)));
+
+    // v1.2.9
+    aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_UBL_BE_INVOICE_129,
+                                                                           "UBL.BE Invoice " + VID_UBL_BE_INVOICE_129.getVersion (),
+                                                                           bNotDeprecated,
+                                                                           ValidationExecutorXSD.create (EUBL21DocumentType.INVOICE),
+                                                                           _createXSLT (UBL_BE_129)));
+    aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_UBL_BE_CREDIT_NOTE_129,
+                                                                           "UBL.BE Credit Note " + VID_UBL_BE_CREDIT_NOTE_129.getVersion (),
+                                                                           bNotDeprecated,
+                                                                           ValidationExecutorXSD.create (EUBL21DocumentType.CREDIT_NOTE),
+                                                                           _createXSLT (UBL_BE_129)));
   }
 }

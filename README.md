@@ -174,6 +174,7 @@ Alternate usage as a Maven BOM:
 
 * v2.1.9 - work in progress
     * Deprecated Peppol 3.12.0 rules
+    * Added support for UBL.BE 1.2.9, deprecated version 1.2.8
 * v2.1.8 - 2021-11-05
     * Fixed the UBL 2.3 version from `2.3-cs01` to `2.3` - no content-wise changes
     * Added support for EN 16931 1.3.7 format (deprecated version 1.3.6)
