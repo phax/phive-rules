@@ -1,6 +1,5 @@
 # PHIVE rules
 
-[![Build Status](https://travis-ci.com/phax/phive-rules.svg?branch=master)](https://travis-ci.com/phax/phive-rules)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.helger.phive.rules/phive-rules-parent-pom/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.helger.phive.rules/phive-rules-parent-pom) 
 
 A set of preconfigured rules for PHIVE (Philip Helger Integrative Validation Engine) - pronounced `[ˈfaɪv]`.
