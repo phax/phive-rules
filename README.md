@@ -171,6 +171,8 @@ Alternate usage as a Maven BOM:
   
 # News and noteworthy
 
+* v2.1.10 - work in progress
+    * Added support for Portuguese CIUS-PT 2.1.1
 * v2.1.9 - 2021-12-23
     * Deprecated Peppol 3.12.0 rules
     * Added support for UBL.BE 1.2.9, deprecated version 1.2.8

@@ -32,6 +32,7 @@ import com.helger.phive.engine.mock.MockFile;
 import com.helger.phive.engine.source.IValidationSourceXML;
 
 @Immutable
+@SuppressWarnings ("deprecation")
 public final class CTestFiles
 {
   public static final ValidationExecutorSetRegistry <IValidationSourceXML> VES_REGISTRY = new ValidationExecutorSetRegistry <> ();
@@ -48,7 +49,10 @@ public final class CTestFiles
   public static ICommonsList <MockFile> getAllTestFiles ()
   {
     final ICommonsList <MockFile> ret = new CommonsArrayList <> ();
-    for (final VESID aESID : new VESID [] { CIUS_PTValidation.VID_TEAPPS_UBL_CREDITNOTE_200, CIUS_PTValidation.VID_TEAPPS_UBL_INVOICE_200 })
+    for (final VESID aESID : new VESID [] { CIUS_PTValidation.VID_CIUS_PT_UBL_CREDITNOTE_200,
+                                            CIUS_PTValidation.VID_CIUS_PT_UBL_INVOICE_200,
+                                            CIUS_PTValidation.VID_CIUS_PT_UBL_CREDITNOTE_211,
+                                            CIUS_PTValidation.VID_CIUS_PT_UBL_INVOICE_211 })
       for (final IReadableResource aRes : getAllMatchingTestFiles (aESID))
         ret.add (MockFile.createGoodCase (aRes, aESID));
 
@@ -61,12 +65,12 @@ public final class CTestFiles
   {
     ValueEnforcer.notNull (aVESID, "VESID");
 
-    if (aVESID.equals (CIUS_PTValidation.VID_TEAPPS_UBL_CREDITNOTE_200))
+    if (aVESID.equals (CIUS_PTValidation.VID_CIUS_PT_UBL_CREDITNOTE_200))
     {
       return new CommonsArrayList <> (new String [] { "CN_CIUS-PT_syntax-model - NC.xml", },
                                       x -> new ClassPathResource ("/test-files/2.0.0/" + x));
     }
-    if (aVESID.equals (CIUS_PTValidation.VID_TEAPPS_UBL_INVOICE_200))
+    if (aVESID.equals (CIUS_PTValidation.VID_CIUS_PT_UBL_INVOICE_200))
     {
       return new CommonsArrayList <> (new String [] { "I_CIUS-PT_syntax-model - F_b.xml",
                                                       "I_CIUS-PT_syntax-model - F_c.xml",
@@ -78,6 +82,24 @@ public final class CTestFiles
                                                       "I_CIUS-PT_syntax-model - F.xml",
                                                       "I_CIUS-PT_syntax-model - ND.xml" },
                                       x -> new ClassPathResource ("/test-files/2.0.0/" + x));
+    }
+    if (aVESID.equals (CIUS_PTValidation.VID_CIUS_PT_UBL_CREDITNOTE_211))
+    {
+      return new CommonsArrayList <> (new String [] { "CN_CIUS-PT_syntax-model - NC.xml", },
+                                      x -> new ClassPathResource ("/test-files/2.1.1/" + x));
+    }
+    if (aVESID.equals (CIUS_PTValidation.VID_CIUS_PT_UBL_INVOICE_211))
+    {
+      return new CommonsArrayList <> (new String [] { "I_CIUS-PT_syntax-model - F_b.xml",
+                                                      "I_CIUS-PT_syntax-model - F_c.xml",
+                                                      "I_CIUS-PT_syntax-model - F_d.xml",
+                                                      "I_CIUS-PT_syntax-model - F_e.xml",
+                                                      "I_CIUS-PT_syntax-model - F_f.xml",
+                                                      "I_CIUS-PT_syntax-model - F_g.xml",
+                                                      "I_CIUS-PT_syntax-model - F_h.xml",
+                                                      "I_CIUS-PT_syntax-model - F.xml",
+                                                      "I_CIUS-PT_syntax-model - ND.xml" },
+                                      x -> new ClassPathResource ("/test-files/2.1.1/" + x));
     }
 
     throw new IllegalArgumentException ("Invalid VESID: " + aVESID);

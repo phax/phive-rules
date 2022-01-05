@@ -41,8 +41,29 @@ public final class CIUS_PTValidation
   public static final String GROUP_ID = "pt.gov.espap.cius-pt";
 
   // Version 2.0.0
-  public static final VESID VID_TEAPPS_UBL_CREDITNOTE_200 = new VESID (GROUP_ID, "ubl-creditnote", "2.0.0");
-  public static final VESID VID_TEAPPS_UBL_INVOICE_200 = new VESID (GROUP_ID, "ubl-invoice", "2.0.0");
+  @Deprecated
+  public static final VESID VID_CIUS_PT_UBL_CREDITNOTE_200 = new VESID (GROUP_ID, "ubl-creditnote", "2.0.0");
+  @Deprecated
+  public static final VESID VID_CIUS_PT_UBL_INVOICE_200 = new VESID (GROUP_ID, "ubl-invoice", "2.0.0");
+  /**
+   * @deprecated Use {@link #VID_CIUS_PT_UBL_CREDITNOTE_200} instead
+   */
+  @Deprecated
+  public static final VESID VID_TEAPPS_UBL_CREDITNOTE_200 = VID_CIUS_PT_UBL_CREDITNOTE_200;
+  /**
+   * @deprecated Use {@link #VID_CIUS_PT_UBL_INVOICE_200} instead
+   */
+  @Deprecated
+  public static final VESID VID_TEAPPS_UBL_INVOICE_200 = VID_CIUS_PT_UBL_INVOICE_200;
+
+  // Version 2.1.1
+  public static final VESID VID_CIUS_PT_UBL_CREDITNOTE_211 = new VESID (GROUP_ID, "ubl-creditnote", "2.1.1");
+  public static final VESID VID_CIUS_PT_UBL_INVOICE_211 = new VESID (GROUP_ID, "ubl-invoice", "2.1.1");
+
+  private static final ClassPathResource RES_200 = new ClassPathResource ("/schematron/2.0.0/urn_feap.gov.pt_CIUS-PT_2.0.0.xslt",
+                                                                          _getCL ());
+  private static final ClassPathResource RES_211 = new ClassPathResource ("/schematron/2.1.1/urn_feap.gov.pt_CIUS-PT_2.1.1.xslt",
+                                                                          _getCL ());
 
   private CIUS_PTValidation ()
   {}
@@ -64,24 +85,39 @@ public final class CIUS_PTValidation
   {
     ValueEnforcer.notNull (aRegistry, "Registry");
 
+    final boolean bDeprecated = true;
     final boolean bNotDeprecated = false;
 
     // V2.0.0 containing the underlying EN rules
-    aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_TEAPPS_UBL_CREDITNOTE_200,
+    aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_CIUS_PT_UBL_CREDITNOTE_200,
                                                                            "CIUS-PT UBL CrediteNote " +
-                                                                                                          VID_TEAPPS_UBL_CREDITNOTE_200.getVersion (),
+                                                                                                           VID_CIUS_PT_UBL_CREDITNOTE_200.getVersion (),
+                                                                           bDeprecated,
+                                                                           ValidationExecutorXSD.create (EUBL21DocumentType.CREDIT_NOTE),
+                                                                           ValidationExecutorSchematron.createXSLT (RES_200,
+                                                                                                                    UBL21NamespaceContext.getInstance ())));
+    aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_CIUS_PT_UBL_INVOICE_200,
+                                                                           "CIUS-PT UBL Invoice " +
+                                                                                                        VID_CIUS_PT_UBL_INVOICE_200.getVersion (),
+                                                                           bDeprecated,
+                                                                           ValidationExecutorXSD.create (EUBL21DocumentType.INVOICE),
+                                                                           ValidationExecutorSchematron.createXSLT (RES_200,
+                                                                                                                    UBL21NamespaceContext.getInstance ())));
+
+    // V2.1.1 containing the underlying EN rules
+    aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_CIUS_PT_UBL_CREDITNOTE_211,
+                                                                           "CIUS-PT UBL CrediteNote " +
+                                                                                                           VID_CIUS_PT_UBL_CREDITNOTE_211.getVersion (),
                                                                            bNotDeprecated,
                                                                            ValidationExecutorXSD.create (EUBL21DocumentType.CREDIT_NOTE),
-                                                                           ValidationExecutorSchematron.createXSLT (new ClassPathResource ("/schematron/2.0.0/urn_feap.gov.pt_CIUS-PT_2.0.0.xslt",
-                                                                                                                                           _getCL ()),
+                                                                           ValidationExecutorSchematron.createXSLT (RES_211,
                                                                                                                     UBL21NamespaceContext.getInstance ())));
-    aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_TEAPPS_UBL_INVOICE_200,
+    aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_CIUS_PT_UBL_INVOICE_211,
                                                                            "CIUS-PT UBL Invoice " +
-                                                                                                       VID_TEAPPS_UBL_INVOICE_200.getVersion (),
+                                                                                                        VID_CIUS_PT_UBL_INVOICE_211.getVersion (),
                                                                            bNotDeprecated,
                                                                            ValidationExecutorXSD.create (EUBL21DocumentType.INVOICE),
-                                                                           ValidationExecutorSchematron.createXSLT (new ClassPathResource ("/schematron/2.0.0/urn_feap.gov.pt_CIUS-PT_2.0.0.xslt",
-                                                                                                                                           _getCL ()),
+                                                                           ValidationExecutorSchematron.createXSLT (RES_211,
                                                                                                                     UBL21NamespaceContext.getInstance ())));
   }
 }
