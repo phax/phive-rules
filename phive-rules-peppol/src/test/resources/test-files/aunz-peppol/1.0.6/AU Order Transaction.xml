@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Order xmlns="urn:oasis:names:specification:ubl:schema:xsd:Order-2"
+	   xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+	   xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
+	<cbc:CustomizationID>urn:fdc:peppol.eu:poacc:trns:order:3</cbc:CustomizationID>
+	<cbc:ProfileID>urn:fdc:peppol.eu:poacc:bis:order_only:3</cbc:ProfileID>
+	<cbc:ID>00002</cbc:ID>
+	<cbc:SalesOrderID>112233</cbc:SalesOrderID>
+	<cbc:IssueDate>2020-02-20</cbc:IssueDate>
+	<cbc:IssueTime>12:30:00</cbc:IssueTime>
+	<cbc:OrderTypeCode>220</cbc:OrderTypeCode>
+	<cbc:Note>Information text for the whole order</cbc:Note>
+	<cbc:DocumentCurrencyCode>AUD</cbc:DocumentCurrencyCode>
+	<cbc:CustomerReference>9000012345</cbc:CustomerReference>
+	<cbc:AccountingCost>Project123</cbc:AccountingCost>
+	<cac:ValidityPeriod>
+		<cbc:EndDate>2020-07-31</cbc:EndDate>
+	</cac:ValidityPeriod>
+	<cac:QuotationDocumentReference>
+		<cbc:ID>QuoteID123</cbc:ID>
+	</cac:QuotationDocumentReference>
+	<cac:OrderDocumentReference>
+		<cbc:ID>00001</cbc:ID>
+	</cac:OrderDocumentReference>
+	<cac:OriginatorDocumentReference>
+		<cbc:ID>MAFO</cbc:ID>
+	</cac:OriginatorDocumentReference>
+	<cac:AdditionalDocumentReference>
+		<cbc:ID>Doc1</cbc:ID>
+		<cbc:DocumentType>Timesheet</cbc:DocumentType>
+		<cac:Attachment>
+			<cac:ExternalReference>
+				<cbc:URI>http://www.suppliersite.co.AU/sheet001.html</cbc:URI>
+			</cac:ExternalReference>
+		</cac:Attachment>
+	</cac:AdditionalDocumentReference>
+	<cac:AdditionalDocumentReference>
+		<cbc:ID>Doc2</cbc:ID>
+		<cbc:DocumentType>Drawing</cbc:DocumentType>
+		<cac:Attachment>
+			<cbc:EmbeddedDocumentBinaryObject mimeCode="application/pdf" filename="Hours-spend.pdf">UjBsR09EbGhjZ0dTQUxNQUFBUUNBRU1tQ1p0dU1GUXhEUzhi
+            </cbc:EmbeddedDocumentBinaryObject>
+		</cac:Attachment>
+	</cac:AdditionalDocumentReference>
+	<cac:Contract>
+		<cbc:ID>34322</cbc:ID>
+	</cac:Contract>
+	<cac:BuyerCustomerParty>
+		<cac:Party>
+			<cbc:EndpointID schemeID="0151">51824753556</cbc:EndpointID>
+			<cac:PartyName>
+				<cbc:Name>Australian Taxation Office</cbc:Name>
+			</cac:PartyName>
+			<cac:PostalAddress>
+				<cbc:StreetName>Street Name</cbc:StreetName>
+				<cbc:AdditionalStreetName>Additional street name</cbc:AdditionalStreetName>
+				<cbc:CityName>City Name</cbc:CityName>
+				<cbc:PostalZone>2000</cbc:PostalZone>
+				<cbc:CountrySubentity>Region</cbc:CountrySubentity>
+				<cac:AddressLine>
+					<cbc:Line>Address Line 3</cbc:Line>
+				</cac:AddressLine>
+				<cac:Country>
+					<cbc:IdentificationCode>AU</cbc:IdentificationCode>
+				</cac:Country>
+			</cac:PostalAddress>
+			<cac:PartyTaxScheme>
+				<cbc:CompanyID>51824753556</cbc:CompanyID>
+				<cac:TaxScheme>
+					<cbc:ID>GST</cbc:ID>
+				</cac:TaxScheme>
+			</cac:PartyTaxScheme>
+			<cac:PartyLegalEntity>
+				<cbc:RegistrationName>Australian Taxation Office</cbc:RegistrationName>
+				<cbc:CompanyID schemeID="0151">51824753556</cbc:CompanyID>
+				<cac:RegistrationAddress>
+					<cbc:CityName>City Name</cbc:CityName>
+					<cac:Country>
+						<cbc:IdentificationCode>AU</cbc:IdentificationCode>
+					</cac:Country>
+				</cac:RegistrationAddress>
+			</cac:PartyLegalEntity>
+			<cac:Contact>
+				<cbc:Name>John Smith</cbc:Name>
+				<cbc:Telephone>02 6123 4567</cbc:Telephone>
+				<cbc:ElectronicMail>contact@ato.gov.au</cbc:ElectronicMail>
+			</cac:Contact>
+		</cac:Party>
+	</cac:BuyerCustomerParty>
+	<cac:SellerSupplierParty>
+		<cac:Party>
+			<cbc:EndpointID schemeID="0151">26008672179</cbc:EndpointID>
+			<cac:PartyName>
+				<cbc:Name>Bunnings Ltd</cbc:Name>
+			</cac:PartyName>
+			<cac:PostalAddress>
+				<cbc:StreetName>Street Name</cbc:StreetName>
+				<cbc:AdditionalStreetName>additional street name</cbc:AdditionalStreetName>
+				<cbc:CityName>City name</cbc:CityName>
+				<cbc:PostalZone>2000</cbc:PostalZone>
+				<cbc:CountrySubentity>Region</cbc:CountrySubentity>
+				<cac:AddressLine>
+					<cbc:Line>Address Line 1</cbc:Line>
+				</cac:AddressLine>
+				<cac:Country>
+					<cbc:IdentificationCode>AU</cbc:IdentificationCode>
+				</cac:Country>
+			</cac:PostalAddress>
+			<cac:PartyLegalEntity>
+				<cbc:RegistrationName>Bunnings Ltd</cbc:RegistrationName>
+				<cbc:CompanyID schemeID="0151">26008672179</cbc:CompanyID>
+				<cac:RegistrationAddress>
+					<cbc:CityName>City Name</cbc:CityName>
+					<cac:Country>
+						<cbc:IdentificationCode>AU</cbc:IdentificationCode>
+					</cac:Country>
+				</cac:RegistrationAddress>
+			</cac:PartyLegalEntity>
+			<cac:Contact>
+				<cbc:Name>Bunnings Contact</cbc:Name>
+				<cbc:Telephone>03 8123 4567</cbc:Telephone>
+				<cbc:ElectronicMail>Admin@bunnings.com.au</cbc:ElectronicMail>
+			</cac:Contact>
+		</cac:Party>
+	</cac:SellerSupplierParty>
+	<cac:AccountingCustomerParty>
+		<cac:Party>
+			<cbc:EndpointID schemeID="0151">51824753556</cbc:EndpointID>
+			<cac:PartyName>
+				<cbc:Name>Australian Taxation Office</cbc:Name>
+			</cac:PartyName>
+			<cac:PostalAddress>
+				<cbc:StreetName>Street Name</cbc:StreetName>
+				<cbc:AdditionalStreetName>Additional street name</cbc:AdditionalStreetName>
+				<cbc:CityName>City name</cbc:CityName>
+				<cbc:PostalZone>2000</cbc:PostalZone>
+				<cbc:CountrySubentity>Region</cbc:CountrySubentity>
+				<cac:AddressLine>
+					<cbc:Line>Address Line</cbc:Line>
+				</cac:AddressLine>
+				<cac:Country>
+					<cbc:IdentificationCode>AU</cbc:IdentificationCode>
+				</cac:Country>
+			</cac:PostalAddress>
+			<cac:PartyTaxScheme>
+				<cbc:CompanyID>51824753556</cbc:CompanyID>
+				<cac:TaxScheme>
+					<cbc:ID>GST</cbc:ID>
+				</cac:TaxScheme>
+			</cac:PartyTaxScheme>
+			<cac:PartyLegalEntity>
+				<cbc:RegistrationName>Australian Taxation Office</cbc:RegistrationName>
+				<cbc:CompanyID schemeID="0151">51824753556</cbc:CompanyID>
+				<cac:RegistrationAddress>
+					<cbc:CityName>City Nme</cbc:CityName>
+					<cac:Country>
+						<cbc:IdentificationCode>AU</cbc:IdentificationCode>
+					</cac:Country>
+				</cac:RegistrationAddress>
+			</cac:PartyLegalEntity>
+		</cac:Party>
+	</cac:AccountingCustomerParty>
+	<cac:Delivery>
+		<cac:DeliveryLocation>
+			<cbc:ID schemeID="0151">51824753556</cbc:ID>
+			<cac:Address>
+				<cbc:StreetName>Delivery Street</cbc:StreetName>
+				<cbc:AdditionalStreetName>additional street of delivery location</cbc:AdditionalStreetName>
+				<cbc:CityName>City name</cbc:CityName>
+				<cbc:PostalZone>2000</cbc:PostalZone>
+				<cbc:CountrySubentity>Region</cbc:CountrySubentity>
+				<cac:AddressLine>
+					<cbc:Line>additional address line</cbc:Line>
+				</cac:AddressLine>
+				<cac:Country>
+					<cbc:IdentificationCode>AU</cbc:IdentificationCode>
+				</cac:Country>
+			</cac:Address>
+		</cac:DeliveryLocation>
+		<cac:RequestedDeliveryPeriod>
+			<cbc:StartDate>2020-03-10</cbc:StartDate>
+			<cbc:EndDate>2020-04-30</cbc:EndDate>
+		</cac:RequestedDeliveryPeriod>
+	</cac:Delivery>
+	<cac:DeliveryTerms>
+	<!--INCODelivery Terms-->
+		<cbc:ID>DAF</cbc:ID>
+		<cbc:SpecialTerms>CAD</cbc:SpecialTerms>
+		<cac:DeliveryLocation>
+			<cbc:ID>FOB Australia</cbc:ID>
+		</cac:DeliveryLocation>
+	</cac:DeliveryTerms>
+	<cac:PaymentTerms>
+		<cbc:Note>Payment terms description</cbc:Note>
+    </cac:PaymentTerms>
+	<cac:AllowanceCharge>
+		<cbc:ChargeIndicator>true</cbc:ChargeIndicator>
+		<cbc:AllowanceChargeReasonCode>ABK</cbc:AllowanceChargeReasonCode>
+		<cbc:AllowanceChargeReason>Miscellaneous services</cbc:AllowanceChargeReason>
+		<cbc:Amount currencyID="AUD">400.00</cbc:Amount>
+		<cac:TaxCategory>
+			<cbc:ID>Z</cbc:ID>
+			<cbc:Percent>0</cbc:Percent>
+			<cac:TaxScheme>
+				<cbc:ID>GST</cbc:ID>
+			</cac:TaxScheme>
+		</cac:TaxCategory>
+	</cac:AllowanceCharge>
+	<cac:AllowanceCharge>
+		<cbc:ChargeIndicator>false</cbc:ChargeIndicator>
+		<cbc:AllowanceChargeReasonCode>95</cbc:AllowanceChargeReasonCode>
+		<cbc:AllowanceChargeReason>Discount</cbc:AllowanceChargeReason>
+		<cbc:MultiplierFactorNumeric>10</cbc:MultiplierFactorNumeric>
+		<cbc:Amount currencyID="AUD">500</cbc:Amount>
+		<cbc:BaseAmount currencyID="AUD">5000.00</cbc:BaseAmount>
+		<cac:TaxCategory>
+			<cbc:ID>S</cbc:ID>
+			<cbc:Percent>10</cbc:Percent>
+			<cac:TaxScheme>
+				<cbc:ID>GST</cbc:ID>
+			</cac:TaxScheme>
+		</cac:TaxCategory>
+	</cac:AllowanceCharge>
+	<cac:TaxTotal>
+		<cbc:TaxAmount currencyID="AUD">647.5</cbc:TaxAmount>
+	</cac:TaxTotal>
+	<cac:AnticipatedMonetaryTotal>
+		<cbc:LineExtensionAmount currencyID="AUD">6975.00</cbc:LineExtensionAmount>
+		<cbc:TaxExclusiveAmount currencyID="AUD">6875.00</cbc:TaxExclusiveAmount>
+		<cbc:TaxInclusiveAmount currencyID="AUD">7522.5</cbc:TaxInclusiveAmount>
+		<cbc:AllowanceTotalAmount currencyID="AUD">500.00</cbc:AllowanceTotalAmount>
+		<cbc:ChargeTotalAmount currencyID="AUD">400.00</cbc:ChargeTotalAmount>
+		<cbc:PrepaidAmount currencyID="AUD">100.00</cbc:PrepaidAmount>
+		<cbc:PayableAmount currencyID="AUD">7422.50</cbc:PayableAmount>
+	</cac:AnticipatedMonetaryTotal>
+
+
+	<cac:OrderLine>
+		<cbc:Note>Freetext note on line 1</cbc:Note>
+		<cac:LineItem>
+			<cbc:ID>01</cbc:ID>
+			<cbc:Quantity unitCode="EA">120</cbc:Quantity>
+			<cbc:LineExtensionAmount currencyID="AUD">575.00</cbc:LineExtensionAmount>
+			<cbc:PartialDeliveryIndicator>false</cbc:PartialDeliveryIndicator>
+			<cbc:AccountingCost>12345678</cbc:AccountingCost>
+			<cac:AllowanceCharge>
+				<cbc:ChargeIndicator>false</cbc:ChargeIndicator>
+				<cbc:AllowanceChargeReasonCode>95</cbc:AllowanceChargeReasonCode>
+				<cbc:AllowanceChargeReason>Discount</cbc:AllowanceChargeReason>
+				<cbc:MultiplierFactorNumeric>5</cbc:MultiplierFactorNumeric>
+				<cbc:Amount currencyID="AUD">25</cbc:Amount>
+				<cbc:BaseAmount currencyID="AUD">500</cbc:BaseAmount>
+			</cac:AllowanceCharge>
+			<cac:Price>
+				<cbc:PriceAmount currencyID="AUD">5.0000</cbc:PriceAmount>
+				<cbc:BaseQuantity unitCode="EA">1</cbc:BaseQuantity>
+			</cac:Price>
+			<cac:Item>
+				<cbc:Description>Pen 4mm</cbc:Description>
+				<cbc:Name>Pen 4mm</cbc:Name>
+				<cac:BuyersItemIdentification>
+					<cbc:ID>123456</cbc:ID>
+				</cac:BuyersItemIdentification>
+				<cac:SellersItemIdentification>
+					<cbc:ID>121212</cbc:ID>
+				</cac:SellersItemIdentification>
+				<cac:StandardItemIdentification>
+					<cbc:ID schemeID="0160">7560000012345</cbc:ID>
+				</cac:StandardItemIdentification>
+				<cac:ItemSpecificationDocumentReference>
+					<cbc:ID>12345678</cbc:ID>
+				</cac:ItemSpecificationDocumentReference>
+				<cac:CommodityClassification>
+					<cbc:ItemClassificationCode listID="MP" listVersionID="19.0501">12345678</cbc:ItemClassificationCode>
+				</cac:CommodityClassification>
+
+				<cac:ClassifiedTaxCategory>
+					<cbc:ID>S</cbc:ID>
+					<cbc:Percent>10</cbc:Percent>
+					<cac:TaxScheme>
+						<cbc:ID>GST</cbc:ID>
+					</cac:TaxScheme>
+				</cac:ClassifiedTaxCategory>
+				<cac:AdditionalItemProperty>
+					<cbc:Name>measure</cbc:Name>
+					<cbc:Value>30 mm</cbc:Value>
+					<cbc:ValueQuantity unitCode="C62">30</cbc:ValueQuantity>
+					<cbc:ValueQualifier>descr</cbc:ValueQualifier>
+				</cac:AdditionalItemProperty>
+				<cac:ItemInstance>
+					<cbc:SerialID>SE-123456</cbc:SerialID>
+					<cac:LotIdentification>
+						<cbc:LotNumberID>LO-123456</cbc:LotNumberID>
+					</cac:LotIdentification>
+				</cac:ItemInstance>
+			</cac:Item>
+		</cac:LineItem>
+	</cac:OrderLine>
+
+	<cac:OrderLine>
+		<cbc:Note>Freetext note on line 2</cbc:Note>
+		<cac:LineItem>
+			<cbc:ID>02</cbc:ID>
+			<cbc:Quantity unitCode="EA">500</cbc:Quantity>
+			<cbc:LineExtensionAmount currencyID="AUD">5600.00</cbc:LineExtensionAmount>
+			<cbc:PartialDeliveryIndicator>false</cbc:PartialDeliveryIndicator>
+			<cbc:AccountingCost>12345678</cbc:AccountingCost>
+			<cac:AllowanceCharge>
+				<cbc:ChargeIndicator>true</cbc:ChargeIndicator>
+				<cbc:AllowanceChargeReasonCode>ABK</cbc:AllowanceChargeReasonCode>
+				<cbc:AllowanceChargeReason>Miscellaneous services</cbc:AllowanceChargeReason>
+				<cbc:Amount currencyID="AUD">600.00</cbc:Amount>
+			</cac:AllowanceCharge>
+			<cac:Price>
+				<cbc:PriceAmount currencyID="AUD">10.000</cbc:PriceAmount>
+				<cbc:BaseQuantity unitCode="EA">1</cbc:BaseQuantity>
+			</cac:Price>
+			<cac:Item>
+				<cbc:Name>Wet Tissue</cbc:Name>
+				<cac:BuyersItemIdentification>
+					<cbc:ID>123456</cbc:ID>
+				</cac:BuyersItemIdentification>
+				<cac:SellersItemIdentification>
+					<cbc:ID>121212</cbc:ID>
+				</cac:SellersItemIdentification>
+				<cac:StandardItemIdentification>
+					<cbc:ID schemeID="0160">7560000012345</cbc:ID>
+				</cac:StandardItemIdentification>
+				<cac:ItemSpecificationDocumentReference>
+					<cbc:ID>12345678</cbc:ID>
+				</cac:ItemSpecificationDocumentReference>
+				<cac:CommodityClassification>
+					<cbc:ItemClassificationCode listID="MP" listVersionID="19.0501">12345678</cbc:ItemClassificationCode>
+				</cac:CommodityClassification>
+
+				<cac:ClassifiedTaxCategory>
+					<cbc:ID>S</cbc:ID>
+					<cbc:Percent>10</cbc:Percent>
+					<cac:TaxScheme>
+						<cbc:ID>GST</cbc:ID>
+					</cac:TaxScheme>
+				</cac:ClassifiedTaxCategory>
+			</cac:Item>
+		</cac:LineItem>
+	</cac:OrderLine>
+
+	<cac:OrderLine>
+		<cbc:Note>Freetext note on line 3</cbc:Note>
+		<cac:LineItem>
+			<cbc:ID>03</cbc:ID>
+			<cbc:Quantity unitCode="EA">100</cbc:Quantity>
+			<cbc:LineExtensionAmount currencyID="AUD">800.00</cbc:LineExtensionAmount>
+			<cbc:PartialDeliveryIndicator>false</cbc:PartialDeliveryIndicator>
+			<cbc:AccountingCost>12345678</cbc:AccountingCost>
+			<cac:Price>
+				<cbc:PriceAmount currencyID="AUD">8.000</cbc:PriceAmount>
+				<cbc:BaseQuantity unitCode="EA">1</cbc:BaseQuantity>
+			</cac:Price>
+			<cac:Item>
+				<cbc:Name>Pepper Sauce</cbc:Name>
+				<cac:BuyersItemIdentification>
+					<cbc:ID>01B3456</cbc:ID>
+				</cac:BuyersItemIdentification>
+				<cac:SellersItemIdentification>
+					<cbc:ID>SN-35</cbc:ID>
+				</cac:SellersItemIdentification>
+				<cac:StandardItemIdentification>
+					<cbc:ID schemeID="0160">8722700577588</cbc:ID>
+				</cac:StandardItemIdentification>
+				<cac:ItemSpecificationDocumentReference>
+					<cbc:ID>12345678</cbc:ID>
+				</cac:ItemSpecificationDocumentReference>
+				<cac:CommodityClassification>
+					<cbc:ItemClassificationCode listID="MP" listVersionID="19.0501">12345678</cbc:ItemClassificationCode>
+				</cac:CommodityClassification>
+
+				<cac:ClassifiedTaxCategory>
+					<cbc:ID>S</cbc:ID>
+					<cbc:Percent>10</cbc:Percent>
+					<cac:TaxScheme>
+						<cbc:ID>GST</cbc:ID>
+					</cac:TaxScheme>
+				</cac:ClassifiedTaxCategory>
+			</cac:Item>
+		</cac:LineItem>
+	</cac:OrderLine>
+</Order>

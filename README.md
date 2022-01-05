@@ -173,6 +173,7 @@ Alternate usage as a Maven BOM:
 
 * v2.1.10 - work in progress
     * Added support for Portuguese CIUS-PT 2.1.1
+    * Added Peppol A-NZ-PEPPOL 1.0.6 rules (deprecated version 1.0.5)
 * v2.1.9 - 2021-12-23
     * Deprecated Peppol 3.12.0 rules
     * Added support for UBL.BE 1.2.9, deprecated version 1.2.8
