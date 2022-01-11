@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (C) 2015-2022 Philip Helger (www.helger.com)
+    philip[at]helger[dot]com
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+            http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+
+-->
+<xs:schema xmlns="http://www.peppol.eu/schema/pd/businesscard/20180621/" 
+           xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+           targetNamespace="http://www.peppol.eu/schema/pd/businesscard/20180621/" 
+           elementFormDefault="qualified"
+           attributeFormDefault="unqualified">
+  <xs:annotation>
+    <xs:documentation>
+       This is the XML schema for the Peppol Directory
+         business card to be stored in a Peppol SMP.
+       
+       Author:
+         Philip Helger
+       
+       Contributors:
+         Martin Forsberg
+
+       History:  
+         2020-10-15, Philip Helger
+           Changed casing of PEPPOL to Peppol
+           Enforcing the Business Entity "Name" to be non-empty
+         2018-06-21, Philip Helger
+           Added multilingual name support
+         2016-01-12, Philip Helger, Martin Forsberg
+           Adopted names to be similar to UBL and SMP
+           Added the Peppol participant identifier
+         2015-11-05, Philip Helger
+           Added optional registration date
+         2015-11-03, Philip Helger
+           Changed target namespace URI
+           Made country code and entity Name mandatory
+           Added element WebSite
+           Added element BusinessContact
+         2015-05-29, Philip Helger
+           initial version
+    </xs:documentation>
+  </xs:annotation>
+  
+  <xs:simpleType name="NonEmptyString">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="CountryCodeType">
+    <xs:annotation>
+      <xs:documentation>
+        This type is used to represent ISO-3166 country codes.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:token">
+      <xs:minLength value="2" />
+      <xs:maxLength value="2" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="LanguageType">
+    <xs:annotation>
+      <xs:documentation>
+        This type is used to represent ISO-639-1 languages.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:token">
+      <xs:minLength value="2" />
+      <xs:maxLength value="2" />
+    </xs:restriction>
+  </xs:simpleType>
+  
+  <xs:complexType name="MultilingualNameType">
+    <xs:annotation>
+      <xs:documentation>The multilingual name type</xs:documentation>
+    </xs:annotation>
+    <xs:simpleContent>
+      <xs:annotation>
+        <xs:documentation>
+          The value of this name.
+        </xs:documentation>
+      </xs:annotation>
+      <xs:extension base="NonEmptyString">
+        <xs:attribute name="language" type="LanguageType" use="optional">
+          <xs:annotation>
+            <xs:documentation>
+              The optional language of this name
+            </xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  
+  <xs:complexType name="IdentifierType">
+    <xs:annotation>
+      <xs:documentation>
+        This type resembles the structure of a single (Peppol and non-Peppol) identifier.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:simpleContent>
+      <xs:annotation>
+        <xs:documentation>
+          The value of this identifier.
+        </xs:documentation>
+      </xs:annotation>
+      <xs:extension base="xs:string">
+        <xs:attribute name="scheme" type="xs:string" use="required">
+          <xs:annotation>
+            <xs:documentation>
+              The scheme of this identifier.
+              For Peppol this will be "iso6523-actorid-upis" for non-Peppol identifiers
+              this can be any human interpretable text
+            </xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <xs:complexType name="ContactType">
+    <xs:annotation>
+      <xs:documentation>
+        This type resembles the structure of a single business contact.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="Type" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>The type of the contact (sales, support, etc.)</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Name" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>The name of the contact (individual or organisational unit)</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="PhoneNumber" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>The public telephone number of the contact</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Email" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>The public email address of the contact</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="BusinessEntityType">
+    <xs:annotation>
+      <xs:documentation>
+        This type represents a single business entity as contained in a business card
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="Name" type="MultilingualNameType" minOccurs="1" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>
+            The multilingual name of the business entity.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="CountryCode" type="CountryCodeType" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>
+            The mandatory ISO 3166-2 country code (e.g. "AT" for Austria or "NO" for Norway).
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="GeographicalInformation" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>
+            This element may contain specific geographic information.
+            It may be an address or simply a region.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Identifier" type="IdentifierType" minOccurs="0" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>
+            This element is meant to contain additional identifiers for this
+            entity like VAT number, national organisation number etc.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="WebsiteURI" type="xs:anyURI" minOccurs="0" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>
+            This element may contain URIs linking to the business entity websites.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Contact" type="ContactType" minOccurs="0" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>
+            This element is meant to contain business contact points to get in touch
+            with the respective business entity.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="AdditionalInformation" type="xs:string" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>
+            This element contains all other information that might be relevant but is not
+            necessarily be contained in a structured field.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="registrationDate" type="xs:date" use="optional">
+      <xs:annotation>
+        <xs:documentation>
+          The optional date when the participant was registered for Peppol.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>  
+
+  <xs:complexType name="BusinessCardType">
+    <xs:annotation>
+      <xs:appinfo>
+        This type is used to represent a single Peppol Directory business card.
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="ParticipantIdentifier" type="IdentifierType" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>
+            The Peppol participant identifier (service group) to which this business information belongs.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="BusinessEntity" type="BusinessEntityType" minOccurs="0" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>
+            This is the unbounded list of business entities (companies or public administration 
+            bodies) that can be reached via the ServiceGroup.
+            The reason to allow 0 occurrences is to explicitly indicate that an SMP is capable of
+            handling business cards but does not want to provide specific information for this
+            Peppol participant.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>  
+    
+  <xs:element name="BusinessCard" type="BusinessCardType">
+    <xs:annotation>
+      <xs:documentation>
+        This is the root element for a single Peppol Directory business card.
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+</xs:schema>

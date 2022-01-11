@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+
+    Copyright (C) 2015-2022 Philip Helger (www.helger.com)
+    philip[at]helger[dot]com
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+            http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+
+-->
+<BusinessCard xmlns="http://www.peppol.eu/schema/pd/businesscard/20180621/">
+  <ParticipantIdentifier scheme="iso6523-actorid-upis">9915:b</ParticipantIdentifier>
+  <BusinessEntity registrationDate="2010-07-06">
+    <Name language="en">Austrian Federal Government</Name>
+    <Name language="en">Austria</Name>
+    <Name language="de">Österreichische Verwaltung</Name>
+    <Name language="de">Österreich</Name>
+    <Name language="de">BRZ</Name>
+    <Name language="de">BMDW</Name>
+    <Name>Legacy entry</Name>
+    <CountryCode>AT</CountryCode>
+    <GeographicalInformation>Spread all over Austria</GeographicalInformation>
+    <Identifier scheme="ZIPCode">1010</Identifier>
+    <WebsiteURI>https://www.erechnung.gv.at</WebsiteURI>
+    <WebsiteURI>https://www.e-rechnung.gv.at</WebsiteURI>
+    <Contact>
+      <Type>Support contact</Type>
+      <Name>e-Rechnung.gv.at support</Name>
+      <Email>support-erb@brz.gv.at</Email>
+    </Contact>
+    <AdditionalInformation>
+      This is the free text of the first entity.
+      You can write anything in here...
+      Feel free to write your personal biography :)
+    </AdditionalInformation>
+  </BusinessEntity>
+  <BusinessEntity>
+    <Name>Austrian Federal Government2</Name>
+    <CountryCode>AT</CountryCode>
+    <GeographicalInformation>Spread all over Austria2</GeographicalInformation>
+    <Identifier scheme="ZIPCode">1020</Identifier>
+    <WebsiteURI>https://www.erb.gv.at</WebsiteURI>
+    <Contact>
+      <Type>Support contact</Type>
+      <Name>e-Rechnung.gv.at support2</Name>
+      <Email>support-erb@brz.gv.at</Email>
+    </Contact>
+    <AdditionalInformation>
+      This is the free text of the second entity.
+    </AdditionalInformation>
+  </BusinessEntity>
+</BusinessCard>

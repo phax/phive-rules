@@ -33,6 +33,7 @@ import com.helger.phive.peppol.PeppolValidation;
 import com.helger.phive.peppol.PeppolValidation3_12_0;
 import com.helger.phive.peppol.PeppolValidation3_13_0;
 import com.helger.phive.peppol.PeppolValidationAUNZ;
+import com.helger.phive.peppol.PeppolValidationDirectory;
 import com.helger.phive.peppol.PeppolValidationSG;
 
 @Immutable
@@ -94,7 +95,12 @@ public final class CTestFiles
                                             PeppolValidation3_13_0.VID_OPENPEPPOL_ORDER_RESPONSE_V3,
                                             PeppolValidation3_13_0.VID_OPENPEPPOL_PUNCH_OUT_V3,
                                             PeppolValidation3_13_0.VID_OPENPEPPOL_ORDER_AGREEMENT_V3,
-                                            PeppolValidation3_13_0.VID_OPENPEPPOL_INVOICE_MESSAGE_RESPONSE_V3, })
+                                            PeppolValidation3_13_0.VID_OPENPEPPOL_INVOICE_MESSAGE_RESPONSE_V3,
+
+                                            /* Directory */
+                                            PeppolValidationDirectory.VID_OPENPEPPOL_BUSINESS_CARD_V1,
+                                            PeppolValidationDirectory.VID_OPENPEPPOL_BUSINESS_CARD_V2,
+                                            PeppolValidationDirectory.VID_OPENPEPPOL_BUSINESS_CARD_V3, })
       for (final IReadableResource aRes : getAllMatchingTestFiles (aESID))
         ret.add (MockFile.createGoodCase (aRes, aESID));
 
@@ -283,6 +289,39 @@ public final class CTestFiles
                                         new FileSystemResource (sBase2 + "T111-uc006c-Wrong detail partial credit.xml"),
                                         new FileSystemResource (sBase2 + "T111-uc007-Payment has been initiated.xml"),
                                         new FileSystemResource (sBase2 + "T111-uc008-Invoice is accepted by third party.xml"));
+    }
+
+    /* Peppol Directory BusinessCard */
+    if (aVESID.equals (PeppolValidationDirectory.VID_OPENPEPPOL_BUSINESS_CARD_V1))
+    {
+      final String sBase = sTestFiles + "business-card/v1/";
+      return new CommonsArrayList <> (new FileSystemResource (sBase + "bc-0088-5033466000005.xml"),
+                                      new FileSystemResource (sBase + "bc-9915-leckma.xml"),
+                                      new FileSystemResource (sBase + "business-card-example-spec-v1.xml"),
+                                      new FileSystemResource (sBase + "business-card-test1.xml"));
+    }
+
+    if (aVESID.equals (PeppolValidationDirectory.VID_OPENPEPPOL_BUSINESS_CARD_V2))
+    {
+      final String sBase = sTestFiles + "business-card/v2/";
+      return new CommonsArrayList <> (new FileSystemResource (sBase + "bc-0088-5033466000005.xml"),
+                                      new FileSystemResource (sBase + "bc-9915-leckma.xml"),
+                                      new FileSystemResource (sBase + "business-card-example-spec-v2.xml"),
+                                      new FileSystemResource (sBase + "business-card-test1.xml"),
+                                      new FileSystemResource (sBase + "nemhandel.xml"));
+    }
+
+    if (aVESID.equals (PeppolValidationDirectory.VID_OPENPEPPOL_BUSINESS_CARD_V3))
+    {
+      final String sBase = sTestFiles + "business-card/v3/";
+      return new CommonsArrayList <> (new FileSystemResource (sBase + "bc-0088-5033466000005.xml"),
+                                      new FileSystemResource (sBase + "bc1.xml"),
+                                      new FileSystemResource (sBase + "bc-9915-leckma.xml"),
+                                      new FileSystemResource (sBase + "bc-9930-de811152493.xml"),
+                                      new FileSystemResource (sBase + "business-card-cctf-103.xml"),
+                                      new FileSystemResource (sBase + "business-card-example-spec-v3.xml"),
+                                      new FileSystemResource (sBase + "business-card-test1.xml"),
+                                      new FileSystemResource (sBase + "business-card-test2.xml"));
     }
 
     throw new IllegalArgumentException ("Invalid VESID: " + aVESID);

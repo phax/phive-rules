@@ -171,10 +171,11 @@ Alternate usage as a Maven BOM:
   
 # News and noteworthy
 
-* v2.1.10 - work in progress
+* v2.1.10 - 2022-01-11
     * Added support for Portuguese CIUS-PT 2.1.1
     * Added Peppol A-NZ-PEPPOL 1.0.6 rules (deprecated version 1.0.5)
     * Moved Peppol A-NZ-PEPPOL 1.0.4 rules from `phive-rules-peppol` to `phive-rules-peppol-legacy`
+    * Added support for Peppol Directory BusinessCard v1, v2 and v3
 * v2.1.9 - 2021-12-23
     * Deprecated Peppol 3.12.0 rules
     * Added support for UBL.BE 1.2.9, deprecated version 1.2.8

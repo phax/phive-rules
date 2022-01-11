@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+
+    Copyright (C) 2015-2022 Philip Helger (www.helger.com)
+    philip[at]helger[dot]com
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+            http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+
+-->
+<BusinessCard 
+    xmlns="http://www.peppol.eu/schema/pd/businesscard/20161123/">
+  <ParticipantIdentifier 
+      scheme="iso6523-actorid-upis">0088:example</ParticipantIdentifier>
+  <BusinessEntity registrationDate="2010-07-06">
+    <Name>ACME Inc.</Name>
+    <CountryCode>AT</CountryCode>
+    <GeographicalInformation>ACME street 123</GeographicalInformation>
+    <Identifier scheme="VAT">ATU12345678</Identifier>
+    <Identifier scheme="OrgNr">hjdh7as9ds</Identifier>
+  </BusinessEntity>
+</BusinessCard>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+
+    Copyright (C) 2015-2022 Philip Helger (www.helger.com)
+    philip[at]helger[dot]com
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+            http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+
+-->
+<BusinessCard xmlns="http://www.peppol.eu/schema/pd/businesscard/20180621/">
+  <ParticipantIdentifier scheme="iso6523-actorid-upis">0204:991-8200-65</ParticipantIdentifier>
+  <BusinessEntity>
+    <Name language="de">ITZBund Bonn</Name>
+    <Name language="en">ITZBund Bonn</Name>
+    <CountryCode>DE</CountryCode>
+    <GeographicalInformation>keine Angabe
+oder
+
+Standort des Access Points
+
+oder
+
+Bernkasteler Straße 8, 53175 Bonn, Deutschland/Germany
+</GeographicalInformation>
+    <Identifier scheme="DE:LWID">991-8200-65</Identifier>
+    <WebsiteURI>https://xrechnung.bund.de</WebsiteURI>
+    <Contact>
+      <Type>Support</Type>
+      <Name>Service-Hotline</Name>
+      <PhoneNumber>0049 30 2598 4436</PhoneNumber>
+    </Contact>
+    <AdditionalInformation>Das ITZBund ist über die ZRE an Peppol angeschlossen.
+Bei Fragen oder Problemen wenden Sie sich bitte an die hinterlegte Nummer.
+
+The ITZBund is connected to Peppol via the ZRE.
+In case of questions or problems, please contact the support-hotline</AdditionalInformation>
+  </BusinessEntity>
+</BusinessCard>
