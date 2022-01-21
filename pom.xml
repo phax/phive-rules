@@ -109,11 +109,6 @@
         <artifactId>ph-fatturapa</artifactId>
         <version>1.2.0</version>
       </dependency>
-      <dependency>
-        <groupId>com.helger</groupId>
-        <artifactId>ph-genericode</artifactId>
-        <version>6.3.0</version>
-      </dependency>
       <!-- this is only needed for the test files -->
       <dependency>
         <groupId>com.helger.web</groupId>
