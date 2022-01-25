@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DespatchAdvice xmlns="urn:oasis:names:specification:ubl:schema:xsd:DespatchAdvice-2"
+	xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+	xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
+	<cbc:CustomizationID>urn:fdc:peppol.eu:poacc:trns:despatch_advice:3:extended:urn:www.agid.gov.it:trns:ddt:3.1</cbc:CustomizationID>
+	<cbc:ProfileID>urn:fdc:peppol.eu:poacc:bis:despatch_advice:3</cbc:ProfileID>
+	<cbc:ID>DDT-2015-123</cbc:ID>
+	<cbc:IssueDate>2015-10-29</cbc:IssueDate>
+	<cbc:IssueTime>08:00:50</cbc:IssueTime>
+	<cbc:Note>Prova Note in Testata</cbc:Note>
+	<cac:OrderReference>
+		<cbc:ID>ORD-2015-321#2015-10-25#0l06j9</cbc:ID>
+	</cac:OrderReference>
+	<!--Speditore. Obbligatorio-->
+	<cac:DespatchSupplierParty>
+		<cac:Party>
+			<cbc:EndpointID schemeID="0211">IT12345678901</cbc:EndpointID>
+			<cac:PostalAddress>
+				<cbc:StreetName>Via Lucio Dalla 1</cbc:StreetName>
+				<cbc:CityName>Bologna</cbc:CityName>
+				<cbc:PostalZone>40121</cbc:PostalZone>
+				<cbc:CountrySubentity>Bologna</cbc:CountrySubentity>
+				<cac:Country>
+					<cbc:IdentificationCode>IT</cbc:IdentificationCode>
+				</cac:Country>
+			</cac:PostalAddress>
+			<cac:PartyLegalEntity>
+				<cbc:RegistrationName>Notier</cbc:RegistrationName>
+			</cac:PartyLegalEntity>
+			<cac:Contact>
+				<cbc:Name>Magazzino</cbc:Name>
+				<cbc:Telephone>05155999</cbc:Telephone>
+				<cbc:ElectronicMail>CasellaPostaSpeditore@indirizzo.it</cbc:ElectronicMail>
+			</cac:Contact>
+		</cac:Party>
+	</cac:DespatchSupplierParty>
+	<!--Consegnatario. Obbligatorio-->
+	<cac:DeliveryCustomerParty>
+		<cac:Party>
+			<cbc:EndpointID schemeID="0201">0l06j9</cbc:EndpointID>
+			<cac:PostalAddress>
+				<cbc:StreetName>Via</cbc:StreetName>
+				<cbc:AdditionalStreetName>Inforazioni aggiuntive all'indirizzo</cbc:AdditionalStreetName>
+				<cbc:CityName>Bologna</cbc:CityName>
+				<cbc:PostalZone>40100</cbc:PostalZone>
+				<cbc:CountrySubentity>BO</cbc:CountrySubentity>
+				<cac:Country>
+					<cbc:IdentificationCode>IT</cbc:IdentificationCode>
+				</cac:Country>
+			</cac:PostalAddress>
+			<cac:PartyLegalEntity>
+				<cbc:RegistrationName>Nome Azienda Consegnatario</cbc:RegistrationName>
+			</cac:PartyLegalEntity>
+		</cac:Party>
+		<cac:DeliveryContact>
+			<cbc:Name>Nome Persona o Magazzino</cbc:Name>
+			<cbc:Telephone>05155999</cbc:Telephone>
+			<cbc:ElectronicMail>CasellaPostaConsegnatario@indirizzo.it</cbc:ElectronicMail>
+		</cac:DeliveryContact>
+	</cac:DeliveryCustomerParty>
+	<!--Acquirente. Opzionale-->
+	<cac:BuyerCustomerParty>
+		<cac:Party>
+			<cac:PartyIdentification>
+				<cbc:ID schemeID="0210">12345678901</cbc:ID>
+			</cac:PartyIdentification>
+			<cac:PartyName>
+				<cbc:Name>Nome Acquirente</cbc:Name>
+			</cac:PartyName>
+			<cac:PostalAddress>
+				<cbc:StreetName>Via Napoli 1</cbc:StreetName>
+				<cbc:CityName>Milano</cbc:CityName>
+				<cbc:PostalZone>20100</cbc:PostalZone>
+				<cbc:CountrySubentity>MI</cbc:CountrySubentity>
+				<cac:Country>
+					<cbc:IdentificationCode>IT</cbc:IdentificationCode>
+				</cac:Country>
+			</cac:PostalAddress>
+		</cac:Party>
+	</cac:BuyerCustomerParty>
+	<!--Venditore. Opzionale-->
+	<cac:SellerSupplierParty>
+		<cac:Party>
+			<cac:PartyIdentification>
+				<cbc:ID schemeID="0211">IT12345678901</cbc:ID>
+			</cac:PartyIdentification>
+			<cac:PartyName>
+				<cbc:Name>Nome o Descrizione del Magazzino, Venditore</cbc:Name>
+			</cac:PartyName>
+			<cac:PostalAddress>
+				<cbc:StreetName>Via Ferrara 300</cbc:StreetName>
+				<cbc:CityName>Milano</cbc:CityName>
+				<cbc:PostalZone>20100</cbc:PostalZone>
+				<cbc:CountrySubentity>MI</cbc:CountrySubentity>
+				<cac:Country>
+					<cbc:IdentificationCode>IT</cbc:IdentificationCode>
+				</cac:Country>
+			</cac:PostalAddress>
+			<!--cac:Contact>
+				<cbc:Name>Nome Persona o Magazzino di Riferimento se Presente</cbc:Name>
+				<cbc:Telephone>05155999</cbc:Telephone>
+				<cbc:ElectronicMail>CasellaPostaVenditore@indirizzo.it</cbc:ElectronicMail>
+			</cac:Contact-->
+		</cac:Party>
+	</cac:SellerSupplierParty>
+	<!--Committente. Opzionale-->
+	<cac:OriginatorCustomerParty>
+		<cac:Party>
+			<cac:PartyIdentification>
+				<cbc:ID schemeID="0210">12345678901</cbc:ID>
+			</cac:PartyIdentification>
+			<cac:PartyName>
+				<cbc:Name>Nome o Descrizione del Magazzino, Committente</cbc:Name>
+			</cac:PartyName>
+		</cac:Party>
+	</cac:OriginatorCustomerParty>
+	<!--Gestione spedizione della merce. Opzionale.-->
+	<cac:Shipment>
+		<cbc:ID>AB01</cbc:ID>
+		<cbc:Information>Inserire Descrizione Spedizione</cbc:Information>
+		<cbc:GrossWeightMeasure unitCode="KGM">100</cbc:GrossWeightMeasure>
+		<cbc:GrossVolumeMeasure unitCode="MTQ">15</cbc:GrossVolumeMeasure>
+		<cbc:TotalTransportHandlingUnitQuantity>25</cbc:TotalTransportHandlingUnitQuantity>
+		<cac:Consignment>
+			<cbc:ID>SPED100</cbc:ID>
+			<cbc:Information>Veicolo ad esempio: AUTOCARRO</cbc:Information>
+			<cac:CarrierParty>
+				<cac:PartyIdentification>
+					<cbc:ID schemeID="0211">IT00204260285</cbc:ID>
+				</cac:PartyIdentification>
+				<cac:PartyName>
+					<cbc:Name>Vettore: ad esempio SDA</cbc:Name>
+				</cac:PartyName>
+				<cac:PostalAddress>
+					<cbc:StreetName>Via Europa 100</cbc:StreetName>
+					<cbc:AdditionalStreetName>Palazzo A</cbc:AdditionalStreetName>
+					<cbc:CityName>Bologna</cbc:CityName>
+					<cbc:PostalZone>40121</cbc:PostalZone>
+					<cbc:CountrySubentity>Bologna</cbc:CountrySubentity>
+					<cac:Country>
+						<cbc:IdentificationCode>IT</cbc:IdentificationCode>
+					</cac:Country>
+				</cac:PostalAddress>
+				<cac:Person>
+					<cac:IdentityDocumentReference>
+						<cbc:ID>PAT123456</cbc:ID>
+						<cbc:DocumentType>PATENTE</cbc:DocumentType>
+					</cac:IdentityDocumentReference>
+				</cac:Person>
+			</cac:CarrierParty>
+		</cac:Consignment>
+		<cac:Delivery>
+			<cbc:TrackingID>Merce10</cbc:TrackingID>
+			<cac:EstimatedDeliveryPeriod>
+				<cbc:StartDate>2015-10-30</cbc:StartDate>
+				<cbc:StartTime>08:30:50</cbc:StartTime>
+				<cbc:EndDate>2015-10-31</cbc:EndDate>
+				<cbc:EndTime>12:30:50</cbc:EndTime>
+			</cac:EstimatedDeliveryPeriod>
+			<cac:Despatch>
+				<cbc:ActualDespatchDate>2015-10-31</cbc:ActualDespatchDate>
+				<cbc:ActualDespatchTime>16:30:30</cbc:ActualDespatchTime>
+				<cac:DespatchAddress>
+					<cbc:ID>234</cbc:ID>
+					<cbc:StreetName>Inserire Indirizzo Principale</cbc:StreetName>
+					<cbc:AdditionalStreetName>Inserire Informazioni Aggiuntive all'Indirizzo</cbc:AdditionalStreetName>
+					<cbc:CityName>Bologna</cbc:CityName>
+					<cbc:PostalZone>40100</cbc:PostalZone>
+					<cbc:CountrySubentity>BO</cbc:CountrySubentity>
+					<cac:Country>
+						<cbc:IdentificationCode>IT</cbc:IdentificationCode>
+					</cac:Country>
+				</cac:DespatchAddress>
+			</cac:Despatch>
+		</cac:Delivery>
+	</cac:Shipment>
+	<cac:DespatchLine>
+		<cbc:ID>1</cbc:ID>
+		<cbc:Note>Inserire Note</cbc:Note>
+		<cbc:DeliveredQuantity unitCode="NAR">100</cbc:DeliveredQuantity>
+		<cbc:OutstandingQuantity unitCode="NAR">20</cbc:OutstandingQuantity>
+		<cbc:OutstandingReason>Inserire Motivazione: Ad esempio Difettosa</cbc:OutstandingReason>
+		<cac:OrderLineReference>
+			<cbc:LineID>1</cbc:LineID>
+		</cac:OrderLineReference>
+		<cac:Item>
+			<cbc:Name>ABBA 12CPR RIV 875MG 125MG</cbc:Name>
+			<cbc:AdditionalInformation>Inserire Informazioni Aggiuntive</cbc:AdditionalInformation>
+			<cac:SellersItemIdentification>
+				<cbc:ID>100123</cbc:ID>
+			</cac:SellersItemIdentification>
+			<cac:StandardItemIdentification>
+				<cbc:ID schemeID="0160">036816015</cbc:ID>
+			</cac:StandardItemIdentification>
+			<cac:ItemInstance>
+				<cbc:ManufactureDate>2006-06-23</cbc:ManufactureDate>
+				<cbc:BestBeforeDate>2020-12-31</cbc:BestBeforeDate>
+				<cbc:SerialID>ITA00258</cbc:SerialID>
+				<cac:LotIdentification>
+					<cbc:LotNumberID>111222333</cbc:LotNumberID>
+					<cbc:ExpiryDate>2017-12-31</cbc:ExpiryDate>
+				</cac:LotIdentification>
+			</cac:ItemInstance>
+		</cac:Item>
+		<cac:Shipment>
+			<cbc:ID>NA</cbc:ID>
+			<cbc:HandlingCode>2</cbc:HandlingCode>
+			<cac:TransportHandlingUnit>
+				<cbc:ID>54321</cbc:ID>
+				<cbc:TransportHandlingUnitTypeCode>CT</cbc:TransportHandlingUnitTypeCode>
+				<cbc:HazardousRiskIndicator>false</cbc:HazardousRiskIndicator>
+				<cbc:ShippingMarks>FIDIA FARMACEUTICI SpA</cbc:ShippingMarks>
+				<cac:MeasurementDimension>
+					<cbc:AttributeID>AAB</cbc:AttributeID>
+					<cbc:Measure unitCode="KGM">50</cbc:Measure>
+				</cac:MeasurementDimension>
+			</cac:TransportHandlingUnit>
+		</cac:Shipment>
+	</cac:DespatchLine>
+	<cac:DespatchLine>
+		<cbc:ID>2</cbc:ID>
+		<cbc:Note>Inserire Note</cbc:Note>
+		<cbc:DeliveredQuantity unitCode="NAR">5</cbc:DeliveredQuantity>
+		<cac:OrderLineReference>
+			<cbc:LineID>2</cbc:LineID>
+		</cac:OrderLineReference>
+		<cac:Item>
+			<cbc:Name>MYLERAN*100CPR RIV 2MG</cbc:Name>
+			<cbc:AdditionalInformation>Inserire Informazioni Aggiuntive</cbc:AdditionalInformation>
+			<cac:SellersItemIdentification>
+				<cbc:ID>3698233</cbc:ID>
+			</cac:SellersItemIdentification>
+			<cac:StandardItemIdentification>
+				<cbc:ID schemeID="0160">024787018</cbc:ID>
+			</cac:StandardItemIdentification>
+			<cac:HazardousItem>
+				<cbc:ID>3249</cbc:ID>
+				<cbc:UNDGCode>ADR</cbc:UNDGCode>
+				<cbc:TechnicalName>Medicine, solid, toxic, n.o.s.</cbc:TechnicalName>
+				<cbc:CategoryName>ANTIBLASTICI</cbc:CategoryName>
+				<cbc:HazardClassID>6.1</cbc:HazardClassID>
+			</cac:HazardousItem>
+			<cac:ItemInstance>
+				<cbc:ManufactureDate>2010-05-01</cbc:ManufactureDate>
+				<cbc:BestBeforeDate>2022-12-31</cbc:BestBeforeDate>
+				<cbc:SerialID>xyz258471</cbc:SerialID>
+				<cac:LotIdentification>
+					<cbc:LotNumberID>12346987777</cbc:LotNumberID>
+					<cbc:ExpiryDate>2018-12-31</cbc:ExpiryDate>
+				</cac:LotIdentification>
+			</cac:ItemInstance>
+		</cac:Item>
+		<cac:Shipment>
+			<cbc:ID>NA</cbc:ID>
+			<cbc:HandlingCode>2</cbc:HandlingCode>
+			<cac:GoodsItem>
+				<cac:Temperature>
+          <cbc:AttributeID>Recommended</cbc:AttributeID>
+          <cbc:Measure unitCode="CEL">2</cbc:Measure>
+        </cac:Temperature>
+				<cac:MinimumTemperature>
+					<cbc:AttributeID>Trasporto</cbc:AttributeID>
+					<cbc:Measure unitCode="CEL">2</cbc:Measure>
+				</cac:MinimumTemperature>
+				<cac:MaximumTemperature>
+					<cbc:AttributeID>Trasporto</cbc:AttributeID>
+					<cbc:Measure unitCode="CEL">8</cbc:Measure>
+				</cac:MaximumTemperature>
+			</cac:GoodsItem>
+			<cac:TransportHandlingUnit>
+				<!-- SSCC - Segnacollo -->
+				<cbc:ID>32569</cbc:ID>
+				<cbc:TransportHandlingUnitTypeCode>CT</cbc:TransportHandlingUnitTypeCode>
+				<cbc:HazardousRiskIndicator>true</cbc:HazardousRiskIndicator>
+				<cbc:ShippingMarks>Marca Prodotto</cbc:ShippingMarks>
+				<cac:MeasurementDimension>
+					<cbc:AttributeID>AAB</cbc:AttributeID>
+					<cbc:Measure unitCode="KGM">50</cbc:Measure>
+				</cac:MeasurementDimension>
+			</cac:TransportHandlingUnit>
+		</cac:Shipment>
+	</cac:DespatchLine>
+</DespatchAdvice>

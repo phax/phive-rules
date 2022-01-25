@@ -171,6 +171,9 @@ Alternate usage as a Maven BOM:
   
 # News and noteworthy
 
+* v2.1.11 - 2022-01-25
+    * Added support for Peppol Italy rules 2.3.0 (AGID Despatch Advice, Invoice, Order, Order Agreement and Order Response)
+    * Deprecated support for Peppol Italy rules 2.2.9
 * v2.1.10 - 2022-01-11
     * Added support for Portuguese CIUS-PT 2.1.1
     * Added Peppol A-NZ-PEPPOL 1.0.6 rules (deprecated version 1.0.5)

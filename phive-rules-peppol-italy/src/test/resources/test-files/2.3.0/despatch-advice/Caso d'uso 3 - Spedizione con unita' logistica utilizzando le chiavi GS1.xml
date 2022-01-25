@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DespatchAdvice xmlns="urn:oasis:names:specification:ubl:schema:xsd:DespatchAdvice-2"
+	xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+	xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
+	<cbc:CustomizationID>urn:fdc:peppol.eu:poacc:trns:despatch_advice:3:extended:urn:www.agid.gov.it:trns:ddt:3.1</cbc:CustomizationID>
+	<cbc:ProfileID>urn:fdc:peppol.eu:poacc:bis:despatch_advice:3</cbc:ProfileID>
+	<cbc:ID>V000016343</cbc:ID>
+	<cbc:IssueDate>2014-08-28</cbc:IssueDate>
+	<cbc:Note>Caso d'uso 3 - Spedizione con unità logistica utilizzando le chiavi GS1</cbc:Note>
+	<cac:DespatchSupplierParty>
+		<cac:Party>
+			<cbc:EndpointID schemeID="0211">IT00204260285</cbc:EndpointID>
+			<cac:PostalAddress>
+				<cbc:StreetName>Via Lucio Dalla 1</cbc:StreetName>
+				<cbc:CityName>Bologna</cbc:CityName>
+				<cbc:PostalZone>40121</cbc:PostalZone>
+				<cbc:CountrySubentity>Bologna</cbc:CountrySubentity>
+				<cac:Country>
+					<cbc:IdentificationCode>IT</cbc:IdentificationCode>
+				</cac:Country>
+			</cac:PostalAddress>
+			<cac:PartyLegalEntity>
+				<cbc:RegistrationName>STM Group</cbc:RegistrationName>
+			</cac:PartyLegalEntity>
+			<cac:Contact>
+				<cbc:Name>Ufficio Spedizioni</cbc:Name>
+				<cbc:Telephone>029506981</cbc:Telephone>
+			</cac:Contact>
+		</cac:Party>
+	</cac:DespatchSupplierParty>
+	<cac:DeliveryCustomerParty>
+		<cac:Party>
+			<cbc:EndpointID schemeID="0201">ufr9wk</cbc:EndpointID>
+			<cac:PartyIdentification>
+				<cbc:ID schemeID="0088">5790000435968</cbc:ID>
+			</cac:PartyIdentification>
+			<cac:PostalAddress>
+				<cbc:StreetName>Via De Gasperi, 8</cbc:StreetName>
+				<cbc:AdditionalStreetName>Destinatario</cbc:AdditionalStreetName>
+				<cbc:CityName>Ravenna</cbc:CityName>
+				<cbc:PostalZone>48121</cbc:PostalZone>
+				<cbc:CountrySubentity>RA</cbc:CountrySubentity>
+				<cac:Country>
+					<cbc:IdentificationCode>IT</cbc:IdentificationCode>
+				</cac:Country>
+			</cac:PostalAddress>
+			<cac:PartyLegalEntity>
+				<cbc:RegistrationName>Azienda Ausl della Romagna</cbc:RegistrationName>
+			</cac:PartyLegalEntity>
+		</cac:Party>
+		<cac:DeliveryContact>
+			<cbc:Name>Magazzino Pievesestina</cbc:Name>
+			<cbc:Telephone>0547394917</cbc:Telephone>
+		</cac:DeliveryContact>
+	</cac:DeliveryCustomerParty>
+	<cac:BuyerCustomerParty>
+		<cac:Party>
+			<cac:PartyIdentification>
+				<cbc:ID schemeID="0210">02483810392</cbc:ID>
+			</cac:PartyIdentification>
+			<cac:PartyName>
+				<cbc:Name>Azienda Ausl della Romagna</cbc:Name>
+			</cac:PartyName>
+			<cac:PostalAddress>
+				<cbc:StreetName>Via Napoli 1</cbc:StreetName>
+				<cbc:CityName>Milano</cbc:CityName>
+				<cbc:PostalZone>20100</cbc:PostalZone>
+				<cbc:CountrySubentity>MI</cbc:CountrySubentity>
+				<cac:Country>
+					<cbc:IdentificationCode>IT</cbc:IdentificationCode>
+				</cac:Country>
+			</cac:PostalAddress>
+		</cac:Party>
+	</cac:BuyerCustomerParty>
+	<cac:SellerSupplierParty>
+		<cac:Party>
+			<cac:PartyIdentification>
+				<cbc:ID schemeID="0211">IT00204260285</cbc:ID>
+			</cac:PartyIdentification>
+			<cac:PartyName>
+				<cbc:Name>FIDIA FARMACEUTICI S.p.A</cbc:Name>
+			</cac:PartyName>
+			<cac:PostalAddress>
+				<cbc:StreetName>Via Napoli 1</cbc:StreetName>
+				<cbc:CityName>Milano</cbc:CityName>
+				<cbc:PostalZone>20100</cbc:PostalZone>
+				<cbc:CountrySubentity>MI</cbc:CountrySubentity>
+				<cac:Country>
+					<cbc:IdentificationCode>IT</cbc:IdentificationCode>
+				</cac:Country>
+			</cac:PostalAddress>
+		</cac:Party>
+	</cac:SellerSupplierParty>
+	<cac:Shipment>
+		<cbc:ID>STM 0001946113</cbc:ID>
+		<cbc:Information>Vendita</cbc:Information>
+		<cbc:GrossWeightMeasure unitCode="KGM">165.440</cbc:GrossWeightMeasure>
+		<cbc:TotalTransportHandlingUnitQuantity>2</cbc:TotalTransportHandlingUnitQuantity>
+		<cac:Consignment>
+			<cbc:ID>STM 0001946113</cbc:ID>
+			<cbc:Information>Porto Franco</cbc:Information>
+			<cac:CarrierParty>
+				<cac:PartyIdentification>
+					<cbc:ID schemeID="0211">IT00204260285</cbc:ID>
+				</cac:PartyIdentification>
+				<cac:PartyName>
+					<cbc:Name>EURODIFARM SRL</cbc:Name>
+				</cac:PartyName>
+				<cac:PostalAddress>
+					<cbc:StreetName>Via Europa 100</cbc:StreetName>
+					<cbc:AdditionalStreetName>Palazzo A</cbc:AdditionalStreetName>
+					<cbc:CityName>Bologna</cbc:CityName>
+					<cbc:PostalZone>40121</cbc:PostalZone>
+					<cbc:CountrySubentity>Bologna</cbc:CountrySubentity>
+					<cac:Country>
+						<cbc:IdentificationCode>IT</cbc:IdentificationCode>
+					</cac:Country>
+				</cac:PostalAddress>
+			</cac:CarrierParty>
+		</cac:Consignment>
+		<cac:Delivery>
+			<cbc:TrackingID>STM 0001946113</cbc:TrackingID>
+		</cac:Delivery>
+	</cac:Shipment>
+	<cac:DespatchLine>
+		<cbc:ID>1</cbc:ID>
+		<cbc:DeliveredQuantity unitCode="C62">960</cbc:DeliveredQuantity>
+		<cac:OrderLineReference>
+			<cbc:LineID>1</cbc:LineID>
+			<cac:OrderReference>
+				<cbc:ID>4930#2014-08-25#ufr9wk</cbc:ID>
+			</cac:OrderReference>
+		</cac:OrderLineReference>
+		<cac:Item>
+			<cbc:Name>CONNETTIVINA CREMA PLUS 25G</cbc:Name>
+			<cac:SellersItemIdentification>
+				<cbc:ID>101500H</cbc:ID>
+			</cac:SellersItemIdentification>
+			<cac:StandardItemIdentification>
+				<cbc:ID schemeID="0160">028440030</cbc:ID>
+			</cac:StandardItemIdentification>
+			<cac:ItemInstance>
+				<cac:LotIdentification>
+					<cbc:LotNumberID>126200</cbc:LotNumberID>
+					<cbc:ExpiryDate>2017-06-30</cbc:ExpiryDate>
+				</cac:LotIdentification>
+			</cac:ItemInstance>
+		</cac:Item>
+		<cac:Shipment>
+			<cbc:ID>NA</cbc:ID>
+			<cbc:HandlingCode>11</cbc:HandlingCode>
+			<cac:TransportHandlingUnit>
+				<cbc:ID>12345</cbc:ID>
+				<cbc:TransportHandlingUnitTypeCode>PX</cbc:TransportHandlingUnitTypeCode>
+				<cbc:HazardousRiskIndicator>false</cbc:HazardousRiskIndicator>
+				<cbc:ShippingMarks>Testo libero che viene scritto/stampato sull’unità logistica</cbc:ShippingMarks>
+				<cac:MeasurementDimension>
+					<cbc:AttributeID>AAB</cbc:AttributeID>
+					<cbc:Measure unitCode="KGM">23.00</cbc:Measure>
+				</cac:MeasurementDimension>
+				<cac:Package>
+					<cbc:ID>126</cbc:ID>
+					<cbc:PackagingTypeCode>BX</cbc:PackagingTypeCode>
+				</cac:Package>
+				<cac:Package>
+					<cbc:ID>667</cbc:ID>
+					<cbc:PackagingTypeCode>BX</cbc:PackagingTypeCode>
+				</cac:Package>
+			</cac:TransportHandlingUnit>
+		</cac:Shipment>
+	</cac:DespatchLine>
+	<cac:DespatchLine>
+		<cbc:ID>2</cbc:ID>
+		<cbc:DeliveredQuantity unitCode="NAR">960</cbc:DeliveredQuantity>
+		<cac:OrderLineReference>
+			<cbc:LineID>2</cbc:LineID>
+			<cac:OrderReference>
+				<cbc:ID>4930#2014-08-25#ufr9wk</cbc:ID>
+			</cac:OrderReference>
+		</cac:OrderLineReference>
+		<cac:Item>
+			<cbc:Name>MAALOX</cbc:Name>
+			<cac:SellersItemIdentification>
+				<cbc:ID>687571D</cbc:ID>
+			</cac:SellersItemIdentification>
+			<cac:StandardItemIdentification>
+				<cbc:ID schemeID="0160">022440070</cbc:ID>
+			</cac:StandardItemIdentification>
+			<cac:ItemInstance>
+				<cac:LotIdentification>
+					<cbc:LotNumberID>987645FF</cbc:LotNumberID>
+					<cbc:ExpiryDate>2019-06-20</cbc:ExpiryDate>
+				</cac:LotIdentification>
+			</cac:ItemInstance>
+		</cac:Item>
+		<cac:Shipment>
+			<cbc:ID>NA</cbc:ID>
+			<cbc:HandlingCode>11</cbc:HandlingCode>
+			<cac:TransportHandlingUnit>
+				<cbc:ID>12345</cbc:ID>
+			</cac:TransportHandlingUnit>
+		</cac:Shipment>
+	</cac:DespatchLine>
+	<cac:DespatchLine>
+		<cbc:ID>3</cbc:ID>
+		<cbc:DeliveredQuantity unitCode="NAR">960</cbc:DeliveredQuantity>
+		<cac:OrderLineReference>
+			<cbc:LineID>3</cbc:LineID>
+			<cac:OrderReference>
+				<cbc:ID>4930#2014-08-25#ufr9wk</cbc:ID>
+			</cac:OrderReference>
+		</cac:OrderLineReference>
+		<cac:Item>
+			<cbc:Name>BUSCOPAN</cbc:Name>
+			<cac:SellersItemIdentification>
+				<cbc:ID>009875V</cbc:ID>
+			</cac:SellersItemIdentification>
+			<cac:StandardItemIdentification>
+				<cbc:ID schemeID="0160">045640070</cbc:ID>
+			</cac:StandardItemIdentification>
+			<cac:ItemInstance>
+				<cac:LotIdentification>
+					<cbc:LotNumberID>987325HB</cbc:LotNumberID>
+					<cbc:ExpiryDate>2022-02-15</cbc:ExpiryDate>
+				</cac:LotIdentification>
+			</cac:ItemInstance>
+		</cac:Item>
+		<cac:Shipment>
+			<cbc:ID>NA</cbc:ID>
+			<cbc:HandlingCode>11</cbc:HandlingCode>
+			<cac:TransportHandlingUnit>
+				<cbc:ID>54321</cbc:ID>
+				<cbc:TransportHandlingUnitTypeCode>PX</cbc:TransportHandlingUnitTypeCode>
+				<cbc:HazardousRiskIndicator>false</cbc:HazardousRiskIndicator>
+				<cbc:ShippingMarks>Testo libero che viene scritto/stampato sull’unità logistica</cbc:ShippingMarks>
+				<cac:MeasurementDimension>
+					<cbc:AttributeID>AAB</cbc:AttributeID>
+					<cbc:Measure unitCode="KGM">23.00</cbc:Measure>
+				</cac:MeasurementDimension>
+				<cac:Package>
+					<cbc:ID>526</cbc:ID>
+					<cbc:PackagingTypeCode>BX</cbc:PackagingTypeCode>
+				</cac:Package>
+				<cac:Package>
+					<cbc:ID>936</cbc:ID>
+					<cbc:PackagingTypeCode>BX</cbc:PackagingTypeCode>
+				</cac:Package>
+			</cac:TransportHandlingUnit>
+		</cac:Shipment>
+	</cac:DespatchLine>
+	<cac:DespatchLine>
+		<cbc:ID>4</cbc:ID>
+		<cbc:DeliveredQuantity unitCode="NAR">960</cbc:DeliveredQuantity>
+		<cac:OrderLineReference>
+			<cbc:LineID>4</cbc:LineID>
+			<cac:OrderReference>
+				<cbc:ID>4930#2014-08-25#ufr9wk</cbc:ID>
+			</cac:OrderReference>
+		</cac:OrderLineReference>
+		<cac:Item>
+			<cbc:Name>SIMVASTATINA</cbc:Name>
+			<cac:SellersItemIdentification>
+				<cbc:ID>198463F</cbc:ID>
+			</cac:SellersItemIdentification>
+			<cac:StandardItemIdentification>
+				<cbc:ID schemeID="0160">036123040</cbc:ID>
+			</cac:StandardItemIdentification>
+			<cac:ItemInstance>
+				<cac:LotIdentification>
+					<cbc:LotNumberID>572975LK</cbc:LotNumberID>
+					<cbc:ExpiryDate>2017-03-18</cbc:ExpiryDate>
+				</cac:LotIdentification>
+			</cac:ItemInstance>
+		</cac:Item>
+		<cac:Shipment>
+			<cbc:ID>NA</cbc:ID>
+			<cbc:HandlingCode>11</cbc:HandlingCode>
+			<cac:TransportHandlingUnit>
+				<cbc:ID>54321</cbc:ID>
+			</cac:TransportHandlingUnit>
+		</cac:Shipment>
+	</cac:DespatchLine>
+</DespatchAdvice>
