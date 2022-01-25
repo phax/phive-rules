@@ -49,11 +49,13 @@ public final class PeppolItalyValidation
    * @param aRegistry
    *        The registry to add the artefacts. May not be <code>null</code>.
    */
+  @SuppressWarnings ("deprecation")
   public static void init (@Nonnull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
   {
     // For better error messages
     SchematronNamespaceBeautifier.addMappings (UBL21NamespaceContext.getInstance ());
 
     PeppolItalyValidation2_2_9.init (aRegistry);
+    PeppolItalyValidation2_3_0.init (aRegistry);
   }
 }

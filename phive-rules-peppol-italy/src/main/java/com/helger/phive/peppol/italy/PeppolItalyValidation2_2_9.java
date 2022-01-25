@@ -37,6 +37,7 @@ import com.helger.ubl21.UBL21NamespaceContext;
  * @author Philip Helger
  */
 @Immutable
+@Deprecated
 public final class PeppolItalyValidation2_2_9
 {
   // Standard resources
@@ -44,8 +45,8 @@ public final class PeppolItalyValidation2_2_9
 
   // Standard
   private static final String GROUP_ID = "it.peppol";
-  public static final VESID VID_ORDER = new VESID (GROUP_ID, "order", VERSION_STR);
   public static final VESID VID_DESPATCH_ADVICE = new VESID (GROUP_ID, "despatch-advice", VERSION_STR);
+  public static final VESID VID_ORDER = new VESID (GROUP_ID, "order", VERSION_STR);
   public static final VESID VID_ORDER_RESPONSE = new VESID (GROUP_ID, "order-response", VERSION_STR);
 
   @Nonnull
@@ -55,8 +56,8 @@ public final class PeppolItalyValidation2_2_9
   }
 
   private static final String PREFIX_XSLT = "schematron/peppol-italy/" + VERSION_STR + "/";
-  public static final IReadableResource ORDER = new ClassPathResource (PREFIX_XSLT + "AGID-PEPPOL-T01.xslt", _getCL ());
   public static final IReadableResource DESPATCH_ADVICE = new ClassPathResource (PREFIX_XSLT + "AGID-PEPPOL-T16.xslt", _getCL ());
+  public static final IReadableResource ORDER = new ClassPathResource (PREFIX_XSLT + "AGID-PEPPOL-T01.xslt", _getCL ());
   public static final IReadableResource ORDER_RESPONSE = new ClassPathResource (PREFIX_XSLT + "AGID-PEPPOL-T76.xslt", _getCL ());
 
   private PeppolItalyValidation2_2_9 ()
@@ -75,21 +76,21 @@ public final class PeppolItalyValidation2_2_9
     final String sVersion = " (" + VERSION_STR + ")";
     final String sAkaVersionBIS = " (for BIS 3.0.6)";
 
-    final boolean bNotDeprecated = false;
+    final boolean bDeprecated = true;
 
-    aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_ORDER,
-                                                                           "AGID Peppol Order" + sVersion + sAkaVersionBIS,
-                                                                           bNotDeprecated,
-                                                                           ValidationExecutorXSD.create (EUBL21DocumentType.ORDER),
-                                                                           _createXSLT (ORDER)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_DESPATCH_ADVICE,
                                                                            "AGID Peppol Despatch Advice" + sVersion + sAkaVersionBIS,
-                                                                           bNotDeprecated,
+                                                                           bDeprecated,
                                                                            ValidationExecutorXSD.create (EUBL21DocumentType.DESPATCH_ADVICE),
                                                                            _createXSLT (DESPATCH_ADVICE)));
+    aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_ORDER,
+                                                                           "AGID Peppol Order" + sVersion + sAkaVersionBIS,
+                                                                           bDeprecated,
+                                                                           ValidationExecutorXSD.create (EUBL21DocumentType.ORDER),
+                                                                           _createXSLT (ORDER)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_ORDER_RESPONSE,
                                                                            "AGID Peppol Order Response" + sVersion + sAkaVersionBIS,
-                                                                           bNotDeprecated,
+                                                                           bDeprecated,
                                                                            ValidationExecutorXSD.create (EUBL21DocumentType.ORDER_RESPONSE),
                                                                            _createXSLT (ORDER_RESPONSE)));
   }

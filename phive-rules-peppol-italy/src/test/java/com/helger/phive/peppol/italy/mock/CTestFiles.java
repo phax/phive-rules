@@ -33,6 +33,7 @@ import com.helger.phive.peppol.italy.PeppolItalyValidation;
 import com.helger.phive.peppol.italy.PeppolItalyValidation2_2_9;
 
 @Immutable
+@SuppressWarnings ("deprecation")
 public final class CTestFiles
 {
   public static final ValidationExecutorSetRegistry <IValidationSourceXML> VES_REGISTRY = new ValidationExecutorSetRegistry <> ();
@@ -49,8 +50,8 @@ public final class CTestFiles
   public static ICommonsList <MockFile> getAllTestFiles ()
   {
     final ICommonsList <MockFile> ret = new CommonsArrayList <> ();
-    for (final VESID aESID : new VESID [] { PeppolItalyValidation2_2_9.VID_ORDER,
-                                            PeppolItalyValidation2_2_9.VID_DESPATCH_ADVICE,
+    for (final VESID aESID : new VESID [] { PeppolItalyValidation2_2_9.VID_DESPATCH_ADVICE,
+                                            PeppolItalyValidation2_2_9.VID_ORDER,
                                             PeppolItalyValidation2_2_9.VID_ORDER_RESPONSE, })
       for (final IReadableResource aRes : getAllMatchingTestFiles (aESID))
         ret.add (MockFile.createGoodCase (aRes, aESID));
@@ -64,11 +65,31 @@ public final class CTestFiles
   {
     ValueEnforcer.notNull (aVESID, "VESID");
 
-    final String sTestFiles = "src/test/resources/test-files/2.2.9/";
+    final String sTestFiles229 = "src/test/resources/test-files/2.2.9/";
+
+    if (aVESID.equals (PeppolItalyValidation2_2_9.VID_DESPATCH_ADVICE))
+    {
+      final String sBase = sTestFiles229 + "despatch-advice/";
+      return new CommonsArrayList <> (new String [] { "Caso d'uso 1 - Spedizione semplice.xml",
+                                                      "Caso d'uso 2 - Spedizione semplice con quantita' inevasa.xml",
+                                                      "Caso d'uso 3 - Spedizione con unita' logistica utilizzando le chiavi GS1.xml",
+                                                      "Caso d'uso 4  - Spedizione con indicazione del peso, lunghezza e-o volume degli articoli merce.xml",
+                                                      "Caso d'uso 5 -  Spedizione avanzata con l'uso della maggior parte delle informazioni di business.xml",
+                                                      "Esempio DDT con Diversi Ordini.xml",
+                                                      "Esempio DDT con Gestione Temperatura e Merce Pericolosa.xml",
+                                                      "Esempio DDT con Indicazione Segnacollo.xml",
+                                                      "Esempio DDT con Ordine a Confezione 02.xml",
+                                                      "Esempio DDT con Ordine a Singola Unita' 01.xml",
+                                                      "Esempio DDT con Quantita' Inevasa.xml",
+                                                      "Esempio DDT con Reintegro e Lotto.xml",
+                                                      "Esempio DDT con Reintegro e Omaggio.xml",
+                                                      "Esempio DDT con Singolo Ordine.xml" },
+                                      x -> new FileSystemResource (sBase + x));
+    }
 
     if (aVESID.equals (PeppolItalyValidation2_2_9.VID_ORDER))
     {
-      final String sBase = sTestFiles + "order/";
+      final String sBase = sTestFiles229 + "order/";
       return new CommonsArrayList <> (new String [] { "Caso d'uso 1 - Ordine di fornitura con articoli numerati.xml",
                                                       "Caso d'uso 2 - Ordine di fornitura con articoli e un allegato.xml",
                                                       "Caso d'uso 3 - Ordine di fornitura con servizi.xml",
@@ -94,29 +115,9 @@ public final class CTestFiles
                                       x -> new FileSystemResource (sBase + x));
     }
 
-    if (aVESID.equals (PeppolItalyValidation2_2_9.VID_DESPATCH_ADVICE))
-    {
-      final String sBase = sTestFiles + "despatch-advice/";
-      return new CommonsArrayList <> (new String [] { "Caso d'uso 1 - Spedizione semplice.xml",
-                                                      "Caso d'uso 2 - Spedizione semplice con quantita' inevasa.xml",
-                                                      "Caso d'uso 3 - Spedizione con unita' logistica utilizzando le chiavi GS1.xml",
-                                                      "Caso d'uso 4  - Spedizione con indicazione del peso, lunghezza e-o volume degli articoli merce.xml",
-                                                      "Caso d'uso 5 -  Spedizione avanzata con l'uso della maggior parte delle informazioni di business.xml",
-                                                      "Esempio DDT con Diversi Ordini.xml",
-                                                      "Esempio DDT con Gestione Temperatura e Merce Pericolosa.xml",
-                                                      "Esempio DDT con Indicazione Segnacollo.xml",
-                                                      "Esempio DDT con Ordine a Confezione 02.xml",
-                                                      "Esempio DDT con Ordine a Singola Unita' 01.xml",
-                                                      "Esempio DDT con Quantita' Inevasa.xml",
-                                                      "Esempio DDT con Reintegro e Lotto.xml",
-                                                      "Esempio DDT con Reintegro e Omaggio.xml",
-                                                      "Esempio DDT con Singolo Ordine.xml" },
-                                      x -> new FileSystemResource (sBase + x));
-    }
-
     if (aVESID.equals (PeppolItalyValidation2_2_9.VID_ORDER_RESPONSE))
     {
-      final String sBase = sTestFiles + "order-response/";
+      final String sBase = sTestFiles229 + "order-response/";
       return new CommonsArrayList <> (new String [] { "ph1.xml" }, x -> new FileSystemResource (sBase + x));
     }
 
