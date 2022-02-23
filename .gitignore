@@ -1,6 +1,7 @@
 .settings/ 
 target/
 poacc-upgrade-3-3.0.*/
+xrechnung-*-schematron-*/
 
 *.pmd
 *.iml
