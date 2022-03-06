@@ -81,7 +81,7 @@
       <dependency>
         <groupId>com.helger.phive</groupId>
         <artifactId>phive-parent-pom</artifactId>
-        <version>7.2.2</version>
+        <version>7.2.3</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
