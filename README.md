@@ -171,6 +171,8 @@ Alternate usage as a Maven BOM:
   
 # News and noteworthy
 
+* v2.1.12 - work in progress
+    * Updated rules for XRechnung 2.2.0 to Schematron 1.7.1
 * v2.1.11 - 2022-01-25
     * Added support for Peppol Italy rules 2.3.0 (AGID Despatch Advice, Invoice, Order, Order Agreement and Order Response)
     * Deprecated support for Peppol Italy rules 2.2.9

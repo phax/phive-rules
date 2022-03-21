@@ -4,7 +4,7 @@
         xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
         queryBinding="xslt2"
         defaultPhase="xrechnung-model">
-  <title>Schematron Version 1.7.0 - XRechnung 2.2.0 compatible - UBL - CreditNote</title>
+  <title>Schematron Version 1.7.1 - XRechnung 2.2.0 compatible - UBL - CreditNote</title>
   <ns prefix="cbc" uri="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" />
   <ns prefix="cac" uri="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" />
   <ns prefix="ext" uri="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2" />

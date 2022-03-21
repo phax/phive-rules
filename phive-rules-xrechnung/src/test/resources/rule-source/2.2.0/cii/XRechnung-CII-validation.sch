@@ -7,7 +7,7 @@
         xmlns:ram="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100"
         queryBinding="xslt2"
         defaultPhase="xrechnung-model">
-  <title>Schematron Version 1.7.0 - XRechnung 2.2.0 compatible - CII</title>
+  <title>Schematron Version 1.7.1 - XRechnung 2.2.0 compatible - CII</title>
   <ns prefix="rsm"  uri="urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100" />
   <ns prefix="ccts" uri="urn:un:unece:uncefact:documentation:standard:CoreComponentsTechnicalSpecification:2" />
   <ns prefix="udt"  uri="urn:un:unece:uncefact:data:standard:UnqualifiedDataType:100" />
