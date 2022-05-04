@@ -75,7 +75,7 @@ public class PeppolLegacyThirdpartyValidation
     final IValidationExecutorSet <IValidationSourceXML> aVESInvoice = aRegistry.getOfID (PeppolValidation370.VID_OPENPEPPOL_T10_V2);
     final IValidationExecutorSet <IValidationSourceXML> aVESCreditNote = aRegistry.getOfID (PeppolValidation370.VID_OPENPEPPOL_T14_V2);
     if (aVESInvoice == null || aVESCreditNote == null)
-      throw new IllegalStateException ("Standard PEPPOL artefacts must be registered before third-party artefacts!");
+      throw new IllegalStateException ("Standard Peppol artefacts must be registered before third-party artefacts!");
 
     final String sPreReqInvoice = "/ubl:Invoice/cac:AccountingCustomerParty/cac:Party/cac:PostalAddress/cac:Country/cbc:IdentificationCode = 'AT'";
     final String sPreReqCreditNote = "/ubl:CreditNote/cac:AccountingCustomerParty/cac:Party/cac:PostalAddress/cac:Country/cbc:IdentificationCode = 'AT'";
@@ -84,7 +84,7 @@ public class PeppolLegacyThirdpartyValidation
     // Invoice
     final IValidationExecutorSet <IValidationSourceXML> aVESInvoiceAT = ValidationExecutorSet.createDerived (aVESInvoice,
                                                                                                              VID_OPENPEPPOL_T10_AT_NAT,
-                                                                                                             "OpenPEPPOL Invoice (Austria)",
+                                                                                                             "OpenPeppol Invoice (Austria)",
                                                                                                              bNotDeprecated,
                                                                                                              ValidationExecutorSchematron.createXSLT (INVOICE_AT_NAT,
                                                                                                                                                       sPreReqInvoice,
@@ -92,7 +92,7 @@ public class PeppolLegacyThirdpartyValidation
     aRegistry.registerValidationExecutorSet (aVESInvoiceAT);
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.createDerived (aVESInvoiceAT,
                                                                                   VID_OPENPEPPOL_T10_AT_GOV,
-                                                                                  "OpenPEPPOL Invoice (Austrian Government)",
+                                                                                  "OpenPeppol Invoice (Austrian Government)",
                                                                                   bNotDeprecated,
                                                                                   ValidationExecutorSchematron.createXSLT (INVOICE_AT_GOV,
                                                                                                                            sPreReqInvoice,
@@ -101,7 +101,7 @@ public class PeppolLegacyThirdpartyValidation
     // CreditNote
     final IValidationExecutorSet <IValidationSourceXML> aVESCreditNoteAT = ValidationExecutorSet.createDerived (aVESCreditNote,
                                                                                                                 VID_OPENPEPPOL_T14_AT_NAT,
-                                                                                                                "OpenPEPPOL Credit Note (Austria)",
+                                                                                                                "OpenPeppol Credit Note (Austria)",
                                                                                                                 bNotDeprecated,
                                                                                                                 ValidationExecutorSchematron.createXSLT (CREDIT_NOTE_AT_NAT,
                                                                                                                                                          sPreReqCreditNote,
@@ -109,7 +109,7 @@ public class PeppolLegacyThirdpartyValidation
     aRegistry.registerValidationExecutorSet (aVESCreditNoteAT);
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.createDerived (aVESCreditNoteAT,
                                                                                   VID_OPENPEPPOL_T14_AT_GOV,
-                                                                                  "OpenPEPPOL Credit Note (Austrian Government)",
+                                                                                  "OpenPeppol Credit Note (Austrian Government)",
                                                                                   bNotDeprecated,
                                                                                   ValidationExecutorSchematron.createXSLT (CREDIT_NOTE_AT_GOV,
                                                                                                                            sPreReqCreditNote,

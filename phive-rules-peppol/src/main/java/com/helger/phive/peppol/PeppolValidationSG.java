@@ -50,9 +50,13 @@ public final class PeppolValidationSG
 
   // 1.0.2
   @Deprecated
-  public static final VESID VID_OPENPEPPOL_BIS3_SG_UBL_INVOICE_102 = new VESID ("eu.peppol.bis3.sg.ubl", "invoice", "1.0.2");
+  public static final VESID VID_OPENPEPPOL_BIS3_SG_UBL_INVOICE_102 = new VESID ("eu.peppol.bis3.sg.ubl",
+                                                                                "invoice",
+                                                                                "1.0.2");
   @Deprecated
-  public static final VESID VID_OPENPEPPOL_BIS3_SG_UBL_CREDIT_NOTE_102 = new VESID ("eu.peppol.bis3.sg.ubl", "creditnote", "1.0.2");
+  public static final VESID VID_OPENPEPPOL_BIS3_SG_UBL_CREDIT_NOTE_102 = new VESID ("eu.peppol.bis3.sg.ubl",
+                                                                                    "creditnote",
+                                                                                    "1.0.2");
   @Deprecated
   public static final IReadableResource BIS3_BILLING_SG_CEN_102 = new ClassPathResource (BASE_PATH +
                                                                                          "1.0.2/xslt/CEN-EN16931-UBL-SG-Conformant.xslt",
@@ -63,8 +67,12 @@ public final class PeppolValidationSG
                                                                                             _getCL ());
 
   // 1.0.3
-  public static final VESID VID_OPENPEPPOL_BIS3_SG_UBL_INVOICE_103 = new VESID ("eu.peppol.bis3.sg.ubl", "invoice", "1.0.3");
-  public static final VESID VID_OPENPEPPOL_BIS3_SG_UBL_CREDIT_NOTE_103 = new VESID ("eu.peppol.bis3.sg.ubl", "creditnote", "1.0.3");
+  public static final VESID VID_OPENPEPPOL_BIS3_SG_UBL_INVOICE_103 = new VESID ("eu.peppol.bis3.sg.ubl",
+                                                                                "invoice",
+                                                                                "1.0.3");
+  public static final VESID VID_OPENPEPPOL_BIS3_SG_UBL_CREDIT_NOTE_103 = new VESID ("eu.peppol.bis3.sg.ubl",
+                                                                                    "creditnote",
+                                                                                    "1.0.3");
   public static final IReadableResource BIS3_BILLING_SG_CEN_103 = new ClassPathResource (BASE_PATH +
                                                                                          "1.0.3/xslt/CEN-EN16931-UBL-SG-Conformant.xslt",
                                                                                          _getCL ());
@@ -90,7 +98,7 @@ public final class PeppolValidationSG
 
     // 1.0.2
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_BIS3_SG_UBL_INVOICE_102,
-                                                                           "SG PEPPOL BIS3 Invoice (UBL) 1.0.2",
+                                                                           "SG Peppol BIS3 Invoice (UBL) 1.0.2",
                                                                            bDeprecated,
                                                                            ValidationExecutorXSD.create (EUBL21DocumentType.INVOICE),
                                                                            ValidationExecutorSchematron.createXSLT (BIS3_BILLING_SG_CEN_102,
@@ -98,7 +106,7 @@ public final class PeppolValidationSG
                                                                            ValidationExecutorSchematron.createXSLT (BIS3_BILLING_SG_PEPPOL_102,
                                                                                                                     aNSCtxInvoice)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_BIS3_SG_UBL_CREDIT_NOTE_102,
-                                                                           "SG PEPPOL BIS3 CreditNote (UBL) 1.0.2",
+                                                                           "SG Peppol BIS3 CreditNote (UBL) 1.0.2",
                                                                            bDeprecated,
                                                                            ValidationExecutorXSD.create (EUBL21DocumentType.CREDIT_NOTE),
                                                                            ValidationExecutorSchematron.createXSLT (BIS3_BILLING_SG_CEN_102,
@@ -108,7 +116,7 @@ public final class PeppolValidationSG
 
     // 1.0.3
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_BIS3_SG_UBL_INVOICE_103,
-                                                                           "SG PEPPOL BIS3 Invoice (UBL) 1.0.3",
+                                                                           "SG Peppol BIS3 Invoice (UBL) 1.0.3",
                                                                            bNotDeprecated,
                                                                            ValidationExecutorXSD.create (EUBL21DocumentType.INVOICE),
                                                                            ValidationExecutorSchematron.createXSLT (BIS3_BILLING_SG_CEN_103,
@@ -116,7 +124,7 @@ public final class PeppolValidationSG
                                                                            ValidationExecutorSchematron.createXSLT (BIS3_BILLING_SG_PEPPOL_103,
                                                                                                                     aNSCtxInvoice)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_BIS3_SG_UBL_CREDIT_NOTE_103,
-                                                                           "SG PEPPOL BIS3 CreditNote (UBL) 1.0.3",
+                                                                           "SG Peppol BIS3 CreditNote (UBL) 1.0.3",
                                                                            bNotDeprecated,
                                                                            ValidationExecutorXSD.create (EUBL21DocumentType.CREDIT_NOTE),
                                                                            ValidationExecutorSchematron.createXSLT (BIS3_BILLING_SG_CEN_103,

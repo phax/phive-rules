@@ -37,7 +37,7 @@ import com.helger.ubl21.EUBL21DocumentType;
 import com.helger.ubl21.UBL21NamespaceContext;
 
 /**
- * OpenPEPPOL validation artefacts release 3.11.1.<br>
+ * OpenPeppol validation artefacts release 3.11.1.<br>
  * Fall 2020 release hotfix 2020-11-12.<br>
  * Valid per November 16th, 2020
  *
@@ -117,59 +117,59 @@ public final class PeppolValidation3_11_1
     final boolean bDeprecated = true;
 
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_INVOICE_V3,
-                                                                           "OpenPEPPOL Invoice" + sVersion + sAkaVersionBilling,
+                                                                           "OpenPeppol Invoice" + sVersion + sAkaVersionBilling,
                                                                            bDeprecated,
                                                                            ValidationExecutorXSD.create (EUBL21DocumentType.INVOICE),
                                                                            _createXSLT (INVOICE_CEN),
                                                                            _createXSLT (INVOICE_PEPPOL)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_CREDIT_NOTE_V3,
-                                                                           "OpenPEPPOL Credit Note" + sVersion + sAkaVersionBilling,
+                                                                           "OpenPeppol Credit Note" + sVersion + sAkaVersionBilling,
                                                                            bDeprecated,
                                                                            ValidationExecutorXSD.create (EUBL21DocumentType.CREDIT_NOTE),
                                                                            _createXSLT (INVOICE_CEN),
                                                                            _createXSLT (INVOICE_PEPPOL)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_ORDER_V3,
-                                                                           "OpenPEPPOL Order" + sVersion + sAkaVersionBIS,
+                                                                           "OpenPeppol Order" + sVersion + sAkaVersionBIS,
                                                                            bDeprecated,
                                                                            ValidationExecutorXSD.create (EUBL21DocumentType.ORDER),
                                                                            _createXSLT (ORDER)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_DESPATCH_ADVICE_V3,
-                                                                           "OpenPEPPOL Despatch Advice" + sVersion + sAkaVersionBIS,
+                                                                           "OpenPeppol Despatch Advice" + sVersion + sAkaVersionBIS,
                                                                            bDeprecated,
                                                                            ValidationExecutorXSD.create (EUBL21DocumentType.DESPATCH_ADVICE),
                                                                            _createXSLT (DESPATCH_ADVICE)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_CATALOGUE_V3,
-                                                                           "OpenPEPPOL Catalogue" + sVersion + sAkaVersionBIS,
+                                                                           "OpenPeppol Catalogue" + sVersion + sAkaVersionBIS,
                                                                            bDeprecated,
                                                                            ValidationExecutorXSD.create (EUBL21DocumentType.CATALOGUE),
                                                                            _createXSLT (CATALOGUE)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_CATALOGUE_RESPONSE_V3,
-                                                                           "OpenPEPPOL Catalogue Response" + sVersion + sAkaVersionBIS,
+                                                                           "OpenPeppol Catalogue Response" + sVersion + sAkaVersionBIS,
                                                                            bDeprecated,
                                                                            ValidationExecutorXSD.create (EUBL21DocumentType.APPLICATION_RESPONSE),
                                                                            _createXSLT (CATALOGUE_RESPONSE)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_MLR_V3,
-                                                                           "OpenPEPPOL MLR" + sVersion + sAkaVersionBIS,
+                                                                           "OpenPeppol MLR" + sVersion + sAkaVersionBIS,
                                                                            bDeprecated,
                                                                            ValidationExecutorXSD.create (EUBL21DocumentType.APPLICATION_RESPONSE),
                                                                            _createXSLT (MLR)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_ORDER_RESPONSE_V3,
-                                                                           "OpenPEPPOL Order Response" + sVersion + sAkaVersionBIS,
+                                                                           "OpenPeppol Order Response" + sVersion + sAkaVersionBIS,
                                                                            bDeprecated,
                                                                            ValidationExecutorXSD.create (EUBL21DocumentType.ORDER_RESPONSE),
                                                                            _createXSLT (ORDER_RESPONSE)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_PUNCH_OUT_V3,
-                                                                           "OpenPEPPOL Punch Out" + sVersion + sAkaVersionBIS,
+                                                                           "OpenPeppol Punch Out" + sVersion + sAkaVersionBIS,
                                                                            bDeprecated,
                                                                            ValidationExecutorXSD.create (EUBL21DocumentType.CATALOGUE),
                                                                            _createXSLT (PUNCH_OUT)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_ORDER_AGREEMENT_V3,
-                                                                           "OpenPEPPOL Order Agreement" + sVersion + sAkaVersionBIS,
+                                                                           "OpenPeppol Order Agreement" + sVersion + sAkaVersionBIS,
                                                                            bDeprecated,
                                                                            ValidationExecutorXSD.create (EUBL21DocumentType.ORDER_RESPONSE),
                                                                            _createXSLT (ORDER_AGREEMENT)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_INVOICE_MESSAGE_RESPONSE_V3,
-                                                                           "OpenPEPPOL Invoice Message Response" +
+                                                                           "OpenPeppol Invoice Message Response" +
                                                                                                                        sVersion +
                                                                                                                        sAkaVersionBIS,
                                                                            bDeprecated,

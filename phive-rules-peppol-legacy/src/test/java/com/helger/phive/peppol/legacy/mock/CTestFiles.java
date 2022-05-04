@@ -418,7 +418,7 @@ public final class CTestFiles
     // 3.9.0
     {
       final String sBase = sTestFiles + "openpeppol/3.9.0/";
-      // https://github.com/OpenPEPPOL/peppol-bis-invoice-3/tree/master/rules/examples
+      // https://github.com/OpenPeppol/peppol-bis-invoice-3/tree/master/rules/examples
       if (aVESID.equals (PeppolValidation390.VID_OPENPEPPOL_INVOICE_V3))
         return new CommonsArrayList <> (new FileSystemResource (sBase + "Allowance-example.xml"),
                                         new FileSystemResource (sBase + "base-example.xml"),
@@ -466,7 +466,7 @@ public final class CTestFiles
     // 3.9.1
     {
       final String sBase = sTestFiles + "openpeppol/3.9.1/";
-      // https://github.com/OpenPEPPOL/peppol-bis-invoice-3/tree/master/rules/examples
+      // https://github.com/OpenPeppol/peppol-bis-invoice-3/tree/master/rules/examples
       if (aVESID.equals (PeppolValidation391.VID_OPENPEPPOL_INVOICE_V3))
         return new CommonsArrayList <> (new FileSystemResource (sBase + "Allowance-example.xml"),
                                         new FileSystemResource (sBase + "base-example.xml"),
@@ -514,7 +514,7 @@ public final class CTestFiles
     // 3.10.0
     {
       final String sBase = sTestFiles + "openpeppol/3.10.0/";
-      // https://github.com/OpenPEPPOL/peppol-bis-invoice-3/tree/master/rules/examples
+      // https://github.com/OpenPeppol/peppol-bis-invoice-3/tree/master/rules/examples
       if (aVESID.equals (PeppolValidation3_10_0.VID_OPENPEPPOL_INVOICE_V3))
         return new CommonsArrayList <> (new FileSystemResource (sBase + "billing/Allowance-example.xml"),
                                         new FileSystemResource (sBase + "billing/base-example.xml"),
@@ -563,7 +563,7 @@ public final class CTestFiles
     // 3.10.1
     {
       final String sBase = sTestFiles + "openpeppol/3.10.1/";
-      // https://github.com/OpenPEPPOL/peppol-bis-invoice-3/tree/master/rules/examples
+      // https://github.com/OpenPeppol/peppol-bis-invoice-3/tree/master/rules/examples
       if (aVESID.equals (PeppolValidation3_10_1.VID_OPENPEPPOL_INVOICE_V3))
         return new CommonsArrayList <> (new FileSystemResource (sBase + "billing/Allowance-example.xml"),
                                         new FileSystemResource (sBase + "billing/base-example.xml"),
@@ -612,7 +612,7 @@ public final class CTestFiles
     // 3.11.0
     {
       final String sBase = sTestFiles + "openpeppol/3.11.0/";
-      // https://github.com/OpenPEPPOL/peppol-bis-invoice-3/tree/master/rules/examples
+      // https://github.com/OpenPeppol/peppol-bis-invoice-3/tree/master/rules/examples
       if (aVESID.equals (PeppolValidation3_11_0.VID_OPENPEPPOL_INVOICE_V3))
         return new CommonsArrayList <> (new FileSystemResource (sBase + "billing/Allowance-example.xml"),
                                         new FileSystemResource (sBase + "billing/base-example.xml"),
@@ -661,7 +661,7 @@ public final class CTestFiles
     // 3.11.1
     {
       final String sBase = sTestFiles + "openpeppol/3.11.1/";
-      // https://github.com/OpenPEPPOL/peppol-bis-invoice-3/tree/master/rules/examples
+      // https://github.com/OpenPeppol/peppol-bis-invoice-3/tree/master/rules/examples
       if (aVESID.equals (PeppolValidation3_11_1.VID_OPENPEPPOL_INVOICE_V3))
         return new CommonsArrayList <> (new FileSystemResource (sBase + "billing/Allowance-example.xml"),
                                         new FileSystemResource (sBase + "billing/base-example.xml"),

@@ -63,7 +63,7 @@ public final class PeppolValidation
   {}
 
   /**
-   * Register all standard PEPPOL validation execution sets to the provided
+   * Register all standard Peppol validation execution sets to the provided
    * registry.
    *
    * @param aRegistry
