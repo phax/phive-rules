@@ -173,6 +173,7 @@ Alternate usage as a Maven BOM:
 
 * v2.1.13 - work in progress
     * Deprecated XRechnung 2.0.0 and 2.0.1
+    * Added support for EN 16931 1.3.8 format
 * v2.1.12 - 2022-03-21
     * Updated rules for XRechnung 2.2.0 to Schematron 1.7.1
 * v2.1.11 - 2022-01-25
