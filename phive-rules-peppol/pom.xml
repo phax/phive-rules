@@ -63,6 +63,10 @@
       <artifactId>ph-ubl21</artifactId>
     </dependency>
     <dependency>
+      <groupId>com.helger.cii</groupId>
+      <artifactId>ph-cii-d16b</artifactId>
+    </dependency>
+    <dependency>
       <groupId>com.helger.schematron</groupId>
       <artifactId>ph-schematron-xslt</artifactId>
     </dependency>
@@ -130,9 +134,9 @@
               <goal>convert</goal>
             </goals>
             <configuration>
-              <schematronDirectory>src/test/resources/rule-source/openpeppol/3.13.0</schematronDirectory>
+              <schematronDirectory>src/test/resources/rule-source/openpeppol/3.14.0</schematronDirectory>
               <schematronPattern>*.sch</schematronPattern>
-              <xsltDirectory>src/main/resources/schematron/openpeppol/3.13.0/xslt</xsltDirectory>
+              <xsltDirectory>src/main/resources/schematron/openpeppol/3.14.0/xslt</xsltDirectory>
             </configuration>
           </execution>
           -->

@@ -50,13 +50,13 @@ public final class PeppolValidation
   public static String getVersionToUse ()
   {
     final LocalDate aNow = PDTFactory.getCurrentLocalDate ();
-    if (aNow.isBefore (PeppolValidation3_13_0.VALID_PER))
+    if (aNow.isBefore (PeppolValidation3_14_0.VALID_PER))
     {
       // Previous version
-      return PeppolValidation3_12_0.VERSION_STR;
+      return PeppolValidation3_14_0.VERSION_STR;
     }
     // Latest version
-    return PeppolValidation3_13_0.VERSION_STR;
+    return PeppolValidation3_14_0.VERSION_STR;
   }
 
   private PeppolValidation ()
@@ -76,6 +76,7 @@ public final class PeppolValidation
 
     PeppolValidation3_12_0.init (aRegistry);
     PeppolValidation3_13_0.init (aRegistry);
+    PeppolValidation3_14_0.init (aRegistry);
     PeppolValidationAUNZ.init (aRegistry);
     PeppolValidationSG.init (aRegistry);
     PeppolValidationDirectory.init (aRegistry);
@@ -92,6 +93,7 @@ public final class PeppolValidation
     // For historical reasons, the "ubl" prefix is also mapped to this
     // namespace URI
     aNSContext.addMapping ("ubl", sNamespaceURI);
+
     return aNSContext;
   }
 }
