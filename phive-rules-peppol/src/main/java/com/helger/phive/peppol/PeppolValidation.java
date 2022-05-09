@@ -37,7 +37,7 @@ import com.helger.xml.namespace.MapBasedNamespaceContext;
  * @author Philip Helger
  */
 @Immutable
-@SuppressWarnings ("deprecation")
+// @SuppressWarnings ("deprecation")
 public final class PeppolValidation
 {
   /**
@@ -74,7 +74,6 @@ public final class PeppolValidation
     // For better error messages
     SchematronNamespaceBeautifier.addMappings (UBL21NamespaceContext.getInstance ());
 
-    PeppolValidation3_12_0.init (aRegistry);
     PeppolValidation3_13_0.init (aRegistry);
     PeppolValidation3_14_0.init (aRegistry);
     PeppolValidationAUNZ.init (aRegistry);
