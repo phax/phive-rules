@@ -16,6 +16,8 @@
  */
 package com.helger.phive.energieefactuur.mock;
 
+import static org.junit.Assert.assertTrue;
+
 import javax.annotation.Nonnull;
 import javax.annotation.concurrent.Immutable;
 
@@ -55,7 +57,10 @@ public final class CTestFiles
                                              EnergieEFactuurValidation.VID_ENERGIE_EFACTUUR_3_0_0 })
     {
       for (final IReadableResource aRes : getAllMatchingTestFiles (aVESID))
+      {
+        assertTrue ("Not existing test file: " + aRes.getPath (), aRes.exists ());
         ret.add (MockFile.createGoodCase (aRes, aVESID));
+      }
       ret.addAll (getAllBadTestFiles (aVESID));
     }
 
@@ -123,7 +128,9 @@ public final class CTestFiles
           ret.add (new MockFile (new ClassPathResource ("/test-files/2.0.0/bad/bad-meternumber-twice.xml"),
                                  aVESID,
                                  new CommonsHashSet <> ("")));
-          ret.add (new MockFile (new ClassPathResource ("/test-files/2.0.0/bad/bad-no-extension.xml"), aVESID, new CommonsHashSet <> ("")));
+          ret.add (new MockFile (new ClassPathResource ("/test-files/2.0.0/bad/bad-no-extension.xml"),
+                                 aVESID,
+                                 new CommonsHashSet <> ("")));
           ret.add (new MockFile (new ClassPathResource ("/test-files/2.0.0/bad/bad-two-extensions.xml"),
                                  aVESID,
                                  new CommonsHashSet <> ("")));

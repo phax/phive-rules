@@ -16,6 +16,8 @@
  */
 package com.helger.phive.oioubl.mock;
 
+import static org.junit.Assert.assertTrue;
+
 import javax.annotation.Nonnull;
 import javax.annotation.concurrent.Immutable;
 
@@ -66,8 +68,10 @@ public final class CTestFiles
                                             OIOUBLValidation.VID_OIOUBL_REMINDER,
                                             OIOUBLValidation.VID_OIOUBL_STATEMENT })
       for (final IReadableResource aRes : getAllMatchingTestFiles (aESID))
+      {
+        assertTrue ("Not existing test file: " + aRes.getPath (), aRes.exists ());
         ret.add (MockFile.createGoodCase (aRes, aESID));
-
+      }
     return ret;
   }
 
@@ -164,7 +168,8 @@ public final class CTestFiles
     if (false)
       aMap.computeIfAbsent (OIOUBLValidation.VID_OIOUBL_CATALOGUE, k -> new CommonsArrayList <> ())
           .add (new ClassPathResource (sBasePath + "CATEXE_02_02_07_Catalogue_v2p2.xml"));
-    aMap.computeIfAbsent (OIOUBLValidation.VID_OIOUBL_CATALOGUE_ITEM_SPECIFICATION_UPDATE, k -> new CommonsArrayList <> ())
+    aMap.computeIfAbsent (OIOUBLValidation.VID_OIOUBL_CATALOGUE_ITEM_SPECIFICATION_UPDATE,
+                          k -> new CommonsArrayList <> ())
         .add (new ClassPathResource (sBasePath + "CATEXE_03_03_00_CatalogueItemSpecificationUpdate_v2p2.xml"));
     aMap.computeIfAbsent (OIOUBLValidation.VID_OIOUBL_CATALOGUE_REQUEST, k -> new CommonsArrayList <> ())
         .add (new ClassPathResource (sBasePath + "CATEXE_03_03_00_CatalogueRequest_v2p2.xml"));

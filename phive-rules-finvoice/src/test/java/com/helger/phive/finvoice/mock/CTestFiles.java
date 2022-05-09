@@ -16,6 +16,8 @@
  */
 package com.helger.phive.finvoice.mock;
 
+import static org.junit.Assert.assertTrue;
+
 import javax.annotation.Nonnull;
 import javax.annotation.concurrent.Immutable;
 
@@ -53,8 +55,10 @@ public final class CTestFiles
                                             FinvoiceValidation.VID_FINVOICE_201,
                                             FinvoiceValidation.VID_FINVOICE_30 })
       for (final IReadableResource aRes : getAllMatchingTestFiles (aESID))
+      {
+        assertTrue ("Not existing test file: " + aRes.getPath (), aRes.exists ());
         ret.add (MockFile.createGoodCase (aRes, aESID));
-
+      }
     return ret;
   }
 
@@ -66,7 +70,8 @@ public final class CTestFiles
 
     if (aVESID.equals (FinvoiceValidation.VID_FINVOICE_13))
     {
-      return new CommonsArrayList <> (new String [] { "example.xml", "sample.xml" }, x -> new ClassPathResource ("/test-files/1.3/" + x));
+      return new CommonsArrayList <> (new String [] { "example.xml", "sample.xml" },
+                                      x -> new ClassPathResource ("/test-files/1.3/" + x));
     }
     if (aVESID.equals (FinvoiceValidation.VID_FINVOICE_20))
     {

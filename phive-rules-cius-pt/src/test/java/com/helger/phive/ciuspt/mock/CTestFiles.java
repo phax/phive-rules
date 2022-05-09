@@ -16,6 +16,8 @@
  */
 package com.helger.phive.ciuspt.mock;
 
+import static org.junit.Assert.assertTrue;
+
 import javax.annotation.Nonnull;
 import javax.annotation.concurrent.Immutable;
 
@@ -54,8 +56,10 @@ public final class CTestFiles
                                             CIUS_PTValidation.VID_CIUS_PT_UBL_CREDITNOTE_211,
                                             CIUS_PTValidation.VID_CIUS_PT_UBL_INVOICE_211 })
       for (final IReadableResource aRes : getAllMatchingTestFiles (aESID))
+      {
+        assertTrue ("Not existing test file: " + aRes.getPath (), aRes.exists ());
         ret.add (MockFile.createGoodCase (aRes, aESID));
-
+      }
     return ret;
   }
 

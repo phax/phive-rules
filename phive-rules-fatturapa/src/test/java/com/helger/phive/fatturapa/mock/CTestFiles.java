@@ -16,6 +16,8 @@
  */
 package com.helger.phive.fatturapa.mock;
 
+import static org.junit.Assert.assertTrue;
+
 import javax.annotation.Nonnull;
 import javax.annotation.concurrent.Immutable;
 
@@ -47,10 +49,13 @@ public final class CTestFiles
   public static ICommonsList <MockFile> getAllTestFiles ()
   {
     final ICommonsList <MockFile> ret = new CommonsArrayList <> ();
-    for (final VESID aVESID : new VESID [] { FatturaPAValidation.VID_FATTURAPA_120, FatturaPAValidation.VID_FATTURAPA_121 })
+    for (final VESID aVESID : new VESID [] { FatturaPAValidation.VID_FATTURAPA_120,
+                                             FatturaPAValidation.VID_FATTURAPA_121 })
       for (final IReadableResource aRes : getAllMatchingTestFiles (aVESID))
+      {
+        assertTrue ("Not existing test file: " + aRes.getPath (), aRes.exists ());
         ret.add (MockFile.createGoodCase (aRes, aVESID));
-
+      }
     return ret;
   }
 

@@ -16,6 +16,8 @@
  */
 package com.helger.phive.ubl.mock;
 
+import static org.junit.Assert.assertTrue;
+
 import javax.annotation.Nonnull;
 import javax.annotation.concurrent.Immutable;
 
@@ -54,8 +56,10 @@ public final class CTestFiles
                                             UBLValidation.VID_UBL_22_INVOICE,
                                             UBLValidation.VID_UBL_23_INVOICE })
       for (final IReadableResource aRes : getAllMatchingTestFiles (aESID))
+      {
+        assertTrue ("Not existing test file: " + aRes.getPath (), aRes.exists ());
         ret.add (MockFile.createGoodCase (aRes, aESID));
-
+      }
     return ret;
   }
 

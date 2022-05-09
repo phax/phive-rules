@@ -178,6 +178,7 @@ Alternate usage as a Maven BOM:
     * Added support for SimplerInvoicing 2.0.3.4, deprecated 2.0.3.3
     * Added support for SimplerInvoicing NLCIUS-CII 1.0.3.3, deprecated 1.0.3.2
     * Added support for SimplerInvoicing 2.0 G-Account extension 1.0.4, deprecated 1.0.3
+    * Added support for Peppol May 2022 release as 3.14.0 (Billing 3.0.13 and the rest 3.0.9)
 * v2.1.12 - 2022-03-21
     * Updated rules for XRechnung 2.2.0 to Schematron 1.7.1
 * v2.1.11 - 2022-01-25

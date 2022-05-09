@@ -16,6 +16,8 @@
  */
 package com.helger.phive.teapps.mock;
 
+import static org.junit.Assert.assertTrue;
+
 import javax.annotation.Nonnull;
 import javax.annotation.concurrent.Immutable;
 
@@ -50,8 +52,10 @@ public final class CTestFiles
     final ICommonsList <MockFile> ret = new CommonsArrayList <> ();
     for (final VESID aESID : new VESID [] { TEAPPSValidation.VID_TEAPPS_272, TEAPPSValidation.VID_TEAPPS_30 })
       for (final IReadableResource aRes : getAllMatchingTestFiles (aESID))
+      {
+        assertTrue ("Not existing test file: " + aRes.getPath (), aRes.exists ());
         ret.add (MockFile.createGoodCase (aRes, aESID));
-
+      }
     return ret;
   }
 
@@ -68,7 +72,8 @@ public final class CTestFiles
     }
     if (aVESID.equals (TEAPPSValidation.VID_TEAPPS_30))
     {
-      return new CommonsArrayList <> (new String [] { "empty.xml" }, x -> new ClassPathResource ("/test-files/3.0/" + x));
+      return new CommonsArrayList <> (new String [] { "empty.xml" },
+                                      x -> new ClassPathResource ("/test-files/3.0/" + x));
     }
 
     throw new IllegalArgumentException ("Invalid VESID: " + aVESID);

@@ -16,6 +16,8 @@
  */
 package com.helger.phive.facturae.mock;
 
+import static org.junit.Assert.assertTrue;
+
 import javax.annotation.Nonnull;
 import javax.annotation.concurrent.Immutable;
 
@@ -54,8 +56,10 @@ public final class CTestFiles
                                             FacturaeValidation.VID_FACTURAE_321,
                                             FacturaeValidation.VID_FACTURAE_322 })
       for (final IReadableResource aRes : getAllMatchingTestFiles (aESID))
+      {
+        assertTrue ("Not existing test file: " + aRes.getPath (), aRes.exists ());
         ret.add (MockFile.createGoodCase (aRes, aESID));
-
+      }
     return ret;
   }
 
@@ -77,11 +81,13 @@ public final class CTestFiles
     }
     if (aVESID.equals (FacturaeValidation.VID_FACTURAE_320))
     {
-      return new CommonsArrayList <> (new String [] { "Invoice32.xsig" }, x -> new ClassPathResource ("/test-files/3.2/" + x));
+      return new CommonsArrayList <> (new String [] { "Invoice32.xsig" },
+                                      x -> new ClassPathResource ("/test-files/3.2/" + x));
     }
     if (aVESID.equals (FacturaeValidation.VID_FACTURAE_321))
     {
-      return new CommonsArrayList <> (new String [] { "Invoice321.xsig" }, x -> new ClassPathResource ("/test-files/3.2.1/" + x));
+      return new CommonsArrayList <> (new String [] { "Invoice321.xsig" },
+                                      x -> new ClassPathResource ("/test-files/3.2.1/" + x));
     }
     if (aVESID.equals (FacturaeValidation.VID_FACTURAE_322))
     {

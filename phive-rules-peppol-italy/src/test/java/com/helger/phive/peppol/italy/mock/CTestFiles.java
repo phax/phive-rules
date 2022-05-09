@@ -16,6 +16,8 @@
  */
 package com.helger.phive.peppol.italy.mock;
 
+import static org.junit.Assert.assertTrue;
+
 import javax.annotation.Nonnull;
 import javax.annotation.concurrent.Immutable;
 
@@ -61,8 +63,10 @@ public final class CTestFiles
                                             PeppolItalyValidation2_3_0.VID_ORDER_AGREEMENT,
                                             PeppolItalyValidation2_3_0.VID_ORDER_RESPONSE, })
       for (final IReadableResource aRes : getAllMatchingTestFiles (aESID))
+      {
+        assertTrue ("Not existing test file: " + aRes.getPath (), aRes.exists ());
         ret.add (MockFile.createGoodCase (aRes, aESID));
-
+      }
     return ret;
   }
 

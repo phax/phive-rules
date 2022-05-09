@@ -16,6 +16,8 @@
  */
 package com.helger.phive.simplerinvoicing.mock;
 
+import static org.junit.Assert.assertTrue;
+
 import javax.annotation.Nonnull;
 import javax.annotation.concurrent.Immutable;
 
@@ -88,9 +90,13 @@ public final class CTestFiles
                                              SimplerInvoicingValidation.VID_SI_NLCIUS_CII_V1033 })
     {
       for (final IReadableResource aRes : getAllMatchingGoodTestFiles (aVESID))
+      {
+        assertTrue ("Not existing test file: " + aRes.getPath (), aRes.exists ());
         ret.add (MockFile.createGoodCase (aRes, aVESID));
+      }
       for (final IReadableResource aRes : getAllMatchingErrorTestFiles (aVESID))
       {
+        assertTrue ("Not existing test file: " + aRes.getPath (), aRes.exists ());
         // We don't check the exact errors
         ret.add (new MockFile (aRes, aVESID, new CommonsHashSet <> ("bla")));
       }
@@ -118,7 +124,9 @@ public final class CTestFiles
     final ICommonsList <IReadableResource> ret = new CommonsArrayList <> ();
     if (aVESID.equals (SimplerInvoicingValidation.VID_SI_INVOICE_V10))
     {
-      for (final String s : new String [] { "SI-UBL-1.0-ok-minimal.xml", "SI-UBL-1.0-ok-reference.xml", "SI-UBL-1.0-ok.xml" })
+      for (final String s : new String [] { "SI-UBL-1.0-ok-minimal.xml",
+                                            "SI-UBL-1.0-ok-reference.xml",
+                                            "SI-UBL-1.0-ok.xml" })
         ret.add (new ClassPathResource (PATH_10 + s));
     }
     else

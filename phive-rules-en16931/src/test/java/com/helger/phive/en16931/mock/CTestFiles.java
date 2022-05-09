@@ -16,6 +16,8 @@
  */
 package com.helger.phive.en16931.mock;
 
+import static org.junit.Assert.assertTrue;
+
 import javax.annotation.Nonnull;
 import javax.annotation.concurrent.Immutable;
 
@@ -91,8 +93,10 @@ public final class CTestFiles
                                              EN16931Validation.VID_UBL_INVOICE_138,
                                              EN16931Validation.VID_UBL_CREDIT_NOTE_138 })
       for (final IReadableResource aRes : getAllMatchingTestFiles (aVESID))
+      {
+        assertTrue ("Not existing test file: " + aRes.getPath (), aRes.exists ());
         ret.add (MockFile.createGoodCase (aRes, aVESID));
-
+      }
     return ret;
   }
 

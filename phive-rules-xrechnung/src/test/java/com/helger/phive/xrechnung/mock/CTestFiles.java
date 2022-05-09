@@ -16,6 +16,8 @@
  */
 package com.helger.phive.xrechnung.mock;
 
+import static org.junit.Assert.assertTrue;
+
 import javax.annotation.Nonnull;
 import javax.annotation.concurrent.Immutable;
 
@@ -79,8 +81,10 @@ public final class CTestFiles
                                             XRechnungValidation.VID_XRECHNUNG_UBL_CREDITNOTE_211,
                                             XRechnungValidation.VID_XRECHNUNG_UBL_INVOICE_211, })
       for (final IReadableResource aRes : getAllMatchingTestFiles (aESID))
+      {
+        assertTrue ("Not existing test file: " + aRes.getPath (), aRes.exists ());
         ret.add (MockFile.createGoodCase (aRes, aESID));
-
+      }
     return ret;
   }
 

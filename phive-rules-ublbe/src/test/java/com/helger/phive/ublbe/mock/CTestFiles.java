@@ -16,6 +16,8 @@
  */
 package com.helger.phive.ublbe.mock;
 
+import static org.junit.Assert.assertTrue;
+
 import javax.annotation.Nonnull;
 import javax.annotation.concurrent.Immutable;
 
@@ -75,8 +77,10 @@ public final class CTestFiles
                                             UBLBEValidation.VID_UBL_BE_INVOICE_129,
                                             UBLBEValidation.VID_UBL_BE_CREDIT_NOTE_129 })
       for (final IReadableResource aRes : getAllMatchingTestFiles (aESID))
+      {
+        assertTrue ("Not existing test file: " + aRes.getPath (), aRes.exists ());
         ret.add (MockFile.createGoodCase (aRes, aESID));
-
+      }
     return ret;
   }
 
@@ -136,7 +140,8 @@ public final class CTestFiles
       aMap.put (UBLBEValidation.VID_UBL_BE_INVOICE_110,
                 new CommonsArrayList <> (new ClassPathResource (sPath +
                                                                 "UBLBE_BE0000000196_V01-15000001 - DocumentStatusCode Converted.xml"),
-                                         new ClassPathResource (sPath + "UBLBE_BE0000000196_V01-15000001 - Temporary.xml"),
+                                         new ClassPathResource (sPath +
+                                                                "UBLBE_BE0000000196_V01-15000001 - Temporary.xml"),
                                          new ClassPathResource (sPath + "UBLBE_BE0000000196_V01-15000001 Full.xml"),
                                          new ClassPathResource (sPath + "UBLBE_BE0000000196_V01-15000001.xml"),
                                          new ClassPathResource (sPath + "UBLBE_BE0000000196_V01-15000003.xml"),
@@ -173,7 +178,8 @@ public final class CTestFiles
       aMap.put (UBLBEValidation.VID_UBL_BE_INVOICE_120,
                 new CommonsArrayList <> (new ClassPathResource (sPath +
                                                                 "UBLBE_BE0000000196_V01-15000001 - DocumentStatusCode Converted.xml"),
-                                         new ClassPathResource (sPath + "UBLBE_BE0000000196_V01-15000001 - Temporary.xml"),
+                                         new ClassPathResource (sPath +
+                                                                "UBLBE_BE0000000196_V01-15000001 - Temporary.xml"),
                                          new ClassPathResource (sPath + "UBLBE_BE0000000196_V01-15000001 Full.xml"),
                                          new ClassPathResource (sPath + "UBLBE_BE0000000196_V01-15000001.xml"),
                                          new ClassPathResource (sPath + "UBLBE_BE0000000196_V01-15000003.xml"),
@@ -454,7 +460,8 @@ public final class CTestFiles
       return ret;
 
     // TODO work around
-    if (aVESID.equals (UBLBEValidation.VID_UBL_BE_INVOICE_110) || aVESID.equals (UBLBEValidation.VID_UBL_BE_CREDIT_NOTE_110))
+    if (aVESID.equals (UBLBEValidation.VID_UBL_BE_INVOICE_110) ||
+        aVESID.equals (UBLBEValidation.VID_UBL_BE_CREDIT_NOTE_110))
       return new CommonsArrayList <> ();
 
     throw new IllegalArgumentException ("Invalid VESID: " + aVESID);

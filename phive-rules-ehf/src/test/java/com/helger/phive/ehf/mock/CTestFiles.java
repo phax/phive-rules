@@ -16,6 +16,8 @@
  */
 package com.helger.phive.ehf.mock;
 
+import static org.junit.Assert.assertTrue;
+
 import javax.annotation.Nonnull;
 import javax.annotation.concurrent.Immutable;
 
@@ -99,8 +101,10 @@ public final class CTestFiles
                                             EHFValidationG3.VID_EHF_PUNCH_OUT_300,
                                             EHFValidationG3.VID_EHF_REMINDER_300 })
       for (final IReadableResource aRes : getAllMatchingTestFiles (aESID))
+      {
+        assertTrue ("Not existing test file: " + aRes.getPath (), aRes.exists ());
         ret.add (MockFile.createGoodCase (aRes, aESID));
-
+      }
     return ret;
   }
 
@@ -159,7 +163,8 @@ public final class CTestFiles
     }
     if (aVESID.equals (EHFValidationG2.VID_EHF_REMINDER_1_1_0))
     {
-      return new CommonsArrayList <> (new ClassPathResource (sPath + "T17 biixy gyldig purring med alle elementer.xml"));
+      return new CommonsArrayList <> (new ClassPathResource (sPath +
+                                                             "T17 biixy gyldig purring med alle elementer.xml"));
     }
 
     // 2019-06
@@ -270,11 +275,13 @@ public final class CTestFiles
     }
     if (aVESID.equals (EHFValidationG3.VID_EHF_ADVANCED_ORDER_INITIATION_300))
     {
-      return new CommonsArrayList <> (new ClassPathResource (sPath + "advanced-ordering-3.0/Advanced_Order_Example.xml"));
+      return new CommonsArrayList <> (new ClassPathResource (sPath +
+                                                             "advanced-ordering-3.0/Advanced_Order_Example.xml"));
     }
     if (aVESID.equals (EHFValidationG3.VID_EHF_ADVANCED_ORDER_RESPONSE_300))
     {
-      return new CommonsArrayList <> (new ClassPathResource (sPath + "advanced-ordering-3.0/Advanced_OrderResponse_Example.xml"));
+      return new CommonsArrayList <> (new ClassPathResource (sPath +
+                                                             "advanced-ordering-3.0/Advanced_OrderResponse_Example.xml"));
     }
     if (aVESID.equals (EHFValidationG3.VID_EHF_CATALOGUE_300))
     {
@@ -290,8 +297,10 @@ public final class CTestFiles
     }
     if (aVESID.equals (EHFValidationG3.VID_EHF_FORWARD_BILLING_INVOICE_300))
     {
-      return new CommonsArrayList <> (new ClassPathResource (sPath + "forward-billing-3.0/forward-billing-nettleie-business.xml"),
-                                      new ClassPathResource (sPath + "forward-billing-3.0/forward-billing-nettleie-consumer.xml"));
+      return new CommonsArrayList <> (new ClassPathResource (sPath +
+                                                             "forward-billing-3.0/forward-billing-nettleie-business.xml"),
+                                      new ClassPathResource (sPath +
+                                                             "forward-billing-3.0/forward-billing-nettleie-consumer.xml"));
     }
     if (aVESID.equals (EHFValidationG3.VID_EHF_FORWARD_BILLING_CREDIT_NOTE_300))
     {
@@ -311,8 +320,10 @@ public final class CTestFiles
     }
     if (aVESID.equals (EHFValidationG3.VID_EHF_PAYMENT_REQUEST_300))
     {
-      return new CommonsArrayList <> (new ClassPathResource (sPath + "payment-request-3.0/PaymentRequest-example-1.xml"),
-                                      new ClassPathResource (sPath + "payment-request-3.0/PaymentRequest-example-2.xml"));
+      return new CommonsArrayList <> (new ClassPathResource (sPath +
+                                                             "payment-request-3.0/PaymentRequest-example-1.xml"),
+                                      new ClassPathResource (sPath +
+                                                             "payment-request-3.0/PaymentRequest-example-2.xml"));
     }
     if (aVESID.equals (EHFValidationG3.VID_EHF_PUNCH_OUT_300))
     {

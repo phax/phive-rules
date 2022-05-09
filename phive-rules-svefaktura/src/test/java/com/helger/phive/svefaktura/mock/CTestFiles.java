@@ -16,6 +16,8 @@
  */
 package com.helger.phive.svefaktura.mock;
 
+import static org.junit.Assert.assertTrue;
+
 import javax.annotation.Nonnull;
 import javax.annotation.concurrent.Immutable;
 
@@ -48,10 +50,13 @@ public final class CTestFiles
   public static ICommonsList <MockFile> getAllTestFiles ()
   {
     final ICommonsList <MockFile> ret = new CommonsArrayList <> ();
-    for (final VESID aESID : new VESID [] { SvefakturaValidation.VID_SVEFAKTURA_10, SvefakturaValidation.VID_OBJECT_ENVELOPE_10 })
+    for (final VESID aESID : new VESID [] { SvefakturaValidation.VID_SVEFAKTURA_10,
+                                            SvefakturaValidation.VID_OBJECT_ENVELOPE_10 })
       for (final IReadableResource aRes : getAllMatchingTestFiles (aESID))
+      {
+        assertTrue ("Not existing test file: " + aRes.getPath (), aRes.exists ());
         ret.add (MockFile.createGoodCase (aRes, aESID));
-
+      }
     return ret;
   }
 
@@ -72,7 +77,8 @@ public final class CTestFiles
     }
     if (aVESID.equals (SvefakturaValidation.VID_OBJECT_ENVELOPE_10))
     {
-      return new CommonsArrayList <> (new String [] { "ObjectEnvelope.xml" }, x -> new ClassPathResource ("/test-files/1.0/" + x));
+      return new CommonsArrayList <> (new String [] { "ObjectEnvelope.xml" },
+                                      x -> new ClassPathResource ("/test-files/1.0/" + x));
     }
 
     throw new IllegalArgumentException ("Invalid VESID: " + aVESID);
