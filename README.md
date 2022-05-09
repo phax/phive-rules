@@ -171,7 +171,7 @@ Alternate usage as a Maven BOM:
   
 # News and noteworthy
 
-* v2.1.13 - work in progress
+* v2.1.13 - 2022-05-09
     * Deprecated XRechnung 2.0.0 and 2.0.1
     * Added support for EN 16931 1.3.8 format
     * Added support for SimplerInvoicing 1.2.4, deprecated 1.2.3
