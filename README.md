@@ -171,6 +171,8 @@ Alternate usage as a Maven BOM:
   
 # News and noteworthy
 
+* v2.1.14 - work in progress
+    * Fixed the EN 16931 UBL 1.3.8 XSLT version
 * v2.1.13 - 2022-05-09
     * Deprecated XRechnung 2.0.0 and 2.0.1
     * Added support for EN 16931 1.3.8 format
