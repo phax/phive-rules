@@ -1,0 +1,566 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    vanzator RO1111111111118, cumparator 8609468
+    moneda factura = RON
+
+-->
+<Invoice xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2 ../../UBL-2.1(1)/xsd/maindoc/UBL-Invoice-2.1.xsd"
+    xmlns:qdt="urn:oasis:names:specification:ubl:schema:xsd:QualifiedDataTypes-2"
+    xmlns="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2"
+    xmlns:ccts="urn:un:unece:uncefact:documentation:2"
+    xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+    xmlns:udt="urn:oasis:names:specification:ubl:schema:xsd:UnqualifiedDataTypes-2"
+    xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
+    <cbc:CustomizationID>urn:cen.eu:en16931:2017#compliant#urn:efactura.mfinante.ro:CIUS-RO:1.0.0</cbc:CustomizationID><!--BT-24 cen.eu:en16931:2017#compliant#urn:efactura.mfinante.ro:CIUS-RO:1.0.0-->
+    <cbc:ID>12115118</cbc:ID>
+    <cbc:IssueDate>2015-01-09</cbc:IssueDate>
+    <cbc:DueDate>2015-01-09</cbc:DueDate>
+    <cbc:InvoiceTypeCode>380</cbc:InvoiceTypeCode>
+    <cbc:Note>Alle leveringen zijn franco. Alle prijzen zijn incl. BTW. Betalingstermijn: 14 dagen netto. Prijswijzigingen voorbehouden. Op al onze aanbiedingen, leveringen en overeenkomsten zijn van toepassing in de algemene verkoop en leveringsvoorwaarden. Gen bij de K.v. te Amsterdam 25-04-'85#Delivery terms#</cbc:Note>
+    <cbc:DocumentCurrencyCode>RON</cbc:DocumentCurrencyCode>
+    <cac:AccountingSupplierParty><!--BG-4 VANZATOR-->
+        <cac:Party>
+            <cbc:EndpointID schemeID="0002">1234567890123</cbc:EndpointID><!--BT-34-->
+            <cac:PartyIdentification>
+                <cbc:ID schemeID="0002">Supp123</cbc:ID><!--BT-29 BT-29-1-->
+            </cac:PartyIdentification>
+            <cac:PartyName>
+                <cbc:Name>Salescompany ltd.</cbc:Name><!--BT-28-->
+            </cac:PartyName>
+            <cac:PostalAddress><!--BG-5-->
+                <cbc:StreetName>Main street</cbc:StreetName><!--BT-35-->
+                <cbc:AdditionalStreetName>Suite 123</cbc:AdditionalStreetName><!--BT-36-->
+                <cbc:CityName>Big city</cbc:CityName><!--BT-37-->
+                <cbc:PostalZone>54321</cbc:PostalZone><!--BT-38-->
+                <cbc:CountrySubentity>RegionA</cbc:CountrySubentity><!--BT-39-->
+                <cac:AddressLine>
+                    <cbc:Line>Block 212</cbc:Line><!--BT-162-->
+                </cac:AddressLine>
+                <cac:Country>
+                    <cbc:IdentificationCode>RO</cbc:IdentificationCode><!--BT-40-->
+                </cac:Country>
+            </cac:PostalAddress>
+            <cac:PartyTaxScheme>
+                <cbc:CompanyID>RO1111111111118</cbc:CompanyID><!--BT-31-->
+                <cac:TaxScheme>
+                    <cbc:ID>VAT</cbc:ID>
+                </cac:TaxScheme>
+            </cac:PartyTaxScheme>
+            <cac:PartyLegalEntity>
+                <cbc:RegistrationName>The Sellercompany Incorporated</cbc:RegistrationName><!--BT-27-->
+                <cbc:CompanyID schemeID="0003">5402697509</cbc:CompanyID><!--BT-30 BT-30-1-->
+                <cbc:CompanyLegalForm>Company Ltd. established at the Commercial Court in Copenhagen, share capital of 20,000.00 RON, Director Behar Shehu</cbc:CompanyLegalForm><!--BT-33-->
+            </cac:PartyLegalEntity>
+            <cac:Contact><!--BG-6-->
+                <cbc:Name>Behar Shehu</cbc:Name><!--BT-41-->
+                <cbc:Telephone>4621230</cbc:Telephone><!--BT-42-->
+                <cbc:ElectronicMail>behar.shehu@salescompany.dk</cbc:ElectronicMail><!--BT-43-->
+            </cac:Contact>
+        </cac:Party>
+    </cac:AccountingSupplierParty>
+    <cac:AccountingCustomerParty><!--BG-7 CUMPARATOR-->
+        <cac:Party>
+            <cbc:EndpointID schemeID="0007">1234567987654</cbc:EndpointID><!--BT-49 bt-49-1-->
+            <cac:PartyIdentification>
+                <cbc:ID schemeID="0003">345KS5324</cbc:ID><!--BT-46 BT-46-1-->
+            </cac:PartyIdentification>
+            <cac:PartyName>
+                <cbc:Name>Ministerul Finantelor</cbc:Name><!--BT-45-->
+            </cac:PartyName>
+            <cac:PostalAddress><!--BG-8-->
+                <cbc:StreetName>BLD. Libertatii, Nr.16</cbc:StreetName><!--BT-50-->
+                <cbc:AdditionalStreetName>Corpul A</cbc:AdditionalStreetName><!--BT-51-->
+                <cbc:CityName>Municipiul Bucuresti</cbc:CityName><!--BT-52-->
+                <cbc:PostalZone>54321</cbc:PostalZone><!--BT-53-->
+                <cbc:CountrySubentity>Sector 5</cbc:CountrySubentity><!--BT-54-->
+                <cac:AddressLine>
+                    <cbc:Line>Camera212</cbc:Line><!--BT-163-->
+                </cac:AddressLine>
+                <cac:Country>
+                    <cbc:IdentificationCode>RO</cbc:IdentificationCode><!--BT-55-->
+                </cac:Country>
+            </cac:PostalAddress>
+            <cac:PartyTaxScheme>
+                <cbc:CompanyID>8609468</cbc:CompanyID><!--BT-48-->
+                <cac:TaxScheme>
+                </cac:TaxScheme>
+            </cac:PartyTaxScheme>
+            <cac:PartyLegalEntity>
+                <cbc:RegistrationName>Ministerul Finantelor</cbc:RegistrationName><!--BT-44-->
+                <cbc:CompanyID schemeID="0005">JB007</cbc:CompanyID><!--BT-47 BT-47-1-->
+            </cac:PartyLegalEntity>
+            <cac:Contact><!--BG-9-->
+                <cbc:Name>Ion Ionescu</cbc:Name><!--BT-56-->
+                <cbc:Telephone>0744123456</cbc:Telephone><!--BT-57-->
+                <cbc:ElectronicMail>ion.ionescu@mfinante.ro</cbc:ElectronicMail><!--BT-58-->
+            </cac:Contact>
+        </cac:Party>
+    </cac:AccountingCustomerParty>
+    <cac:PaymentMeans>
+        <cbc:PaymentMeansCode>30</cbc:PaymentMeansCode>
+        <cbc:PaymentID>Deb. 10202 / Fact. 12115118</cbc:PaymentID>
+        <cac:PayeeFinancialAccount>
+            <cbc:ID>NL57 RABO 0107307510</cbc:ID>
+        </cac:PayeeFinancialAccount>
+    </cac:PaymentMeans>
+    <cac:PaymentMeans>
+        <cbc:PaymentMeansCode>30</cbc:PaymentMeansCode>
+        <cac:PayeeFinancialAccount>
+            <cbc:ID>NL03 INGB 0004489902</cbc:ID>
+        </cac:PayeeFinancialAccount>
+    </cac:PaymentMeans>
+    <cac:TaxTotal>
+        <cbc:TaxAmount currencyID="RON">20.73</cbc:TaxAmount>
+        <cac:TaxSubtotal>
+            <cbc:TaxableAmount currencyID="RON">183.23</cbc:TaxableAmount>
+            <cbc:TaxAmount currencyID="RON">10.99</cbc:TaxAmount>
+            <cac:TaxCategory>
+                <cbc:ID>S</cbc:ID>
+                <cbc:Percent>6</cbc:Percent>
+                <cac:TaxScheme>
+                    <cbc:ID>VAT</cbc:ID>
+                </cac:TaxScheme>
+            </cac:TaxCategory>
+        </cac:TaxSubtotal>
+        <cac:TaxSubtotal>
+        <!-- 37,9 -->
+            <cbc:TaxableAmount currencyID="RON">46.37</cbc:TaxableAmount>
+            <cbc:TaxAmount currencyID="RON">9.74</cbc:TaxAmount>
+            <cac:TaxCategory>
+                <cbc:ID>S</cbc:ID>
+                <cbc:Percent>21</cbc:Percent>
+                <cac:TaxScheme>
+                    <cbc:ID>VAT</cbc:ID>
+                </cac:TaxScheme>
+            </cac:TaxCategory>
+        </cac:TaxSubtotal>
+    </cac:TaxTotal>
+    <cac:LegalMonetaryTotal>
+        <cbc:LineExtensionAmount currencyID="RON">229.60</cbc:LineExtensionAmount>
+        <cbc:TaxExclusiveAmount currencyID="RON">229.60</cbc:TaxExclusiveAmount>
+        <cbc:TaxInclusiveAmount currencyID="RON">250.33</cbc:TaxInclusiveAmount>
+        <cbc:PayableAmount currencyID="RON">250.33</cbc:PayableAmount>
+    </cac:LegalMonetaryTotal>
+    <cac:InvoiceLine>
+        <cbc:ID>1</cbc:ID>
+        <cbc:InvoicedQuantity unitCode="EA">2</cbc:InvoicedQuantity>
+        <cbc:LineExtensionAmount currencyID="RON">19.90</cbc:LineExtensionAmount>
+        <cac:Item>
+            <cbc:Name>PATAT FRITES 10MM 10KG</cbc:Name>
+            <cac:SellersItemIdentification>
+                <cbc:ID>166022</cbc:ID>
+            </cac:SellersItemIdentification>
+            <cac:ClassifiedTaxCategory>
+                <cbc:ID>S</cbc:ID>
+                <cbc:Percent>6</cbc:Percent>
+                <cac:TaxScheme>
+                    <cbc:ID>VAT</cbc:ID>
+                </cac:TaxScheme>
+            </cac:ClassifiedTaxCategory>
+       </cac:Item>
+        <cac:Price>
+            <cbc:PriceAmount currencyID="RON">9.95</cbc:PriceAmount>
+        </cac:Price>
+    </cac:InvoiceLine>
+    <cac:InvoiceLine>
+        <cbc:ID>2</cbc:ID>
+        <cbc:InvoicedQuantity unitCode="EA">1</cbc:InvoicedQuantity>
+        <cbc:LineExtensionAmount currencyID="RON">9.85</cbc:LineExtensionAmount>
+        <cac:Item>
+            <cbc:Name>PKAAS 50PL. JONG BEL. 1KG</cbc:Name>
+            <cac:SellersItemIdentification>
+                <cbc:ID>661813</cbc:ID>
+            </cac:SellersItemIdentification>
+            <cac:ClassifiedTaxCategory>
+                <cbc:ID>S</cbc:ID>
+                <cbc:Percent>6</cbc:Percent>
+                <cac:TaxScheme>
+                    <cbc:ID>VAT</cbc:ID>
+                </cac:TaxScheme>
+            </cac:ClassifiedTaxCategory>
+        </cac:Item>
+        <cac:Price>
+            <cbc:PriceAmount currencyID="RON">9.85</cbc:PriceAmount>
+        </cac:Price>
+    </cac:InvoiceLine>
+    <cac:InvoiceLine>
+        <cbc:ID>3</cbc:ID>
+        <cbc:InvoicedQuantity unitCode="EA">1</cbc:InvoicedQuantity>
+        <cbc:LineExtensionAmount currencyID="RON">8.29</cbc:LineExtensionAmount>
+        <cac:Item>
+            <cbc:Name>POT KETCHUP 3 LT</cbc:Name>
+            <cac:SellersItemIdentification>
+                <cbc:ID>438146</cbc:ID>
+            </cac:SellersItemIdentification>
+            <cac:ClassifiedTaxCategory>
+                <cbc:ID>S</cbc:ID>
+                <cbc:Percent>6</cbc:Percent>
+                <cac:TaxScheme>
+                    <cbc:ID>VAT</cbc:ID>
+                </cac:TaxScheme>
+            </cac:ClassifiedTaxCategory>
+        </cac:Item>
+        <cac:Price>
+            <cbc:PriceAmount currencyID="RON">8.29</cbc:PriceAmount>
+        </cac:Price>
+    </cac:InvoiceLine>
+    <cac:InvoiceLine>
+        <cbc:ID>4</cbc:ID>
+        <cbc:InvoicedQuantity unitCode="EA">2</cbc:InvoicedQuantity>
+        <cbc:LineExtensionAmount currencyID="RON">14.46</cbc:LineExtensionAmount>
+        <cac:Item>
+            <cbc:Name>FRITESSAUS 3 LRR</cbc:Name>
+            <cac:SellersItemIdentification>
+                <cbc:ID>438103</cbc:ID>
+            </cac:SellersItemIdentification>
+            <cac:ClassifiedTaxCategory>
+                <cbc:ID>S</cbc:ID>
+                <cbc:Percent>6</cbc:Percent>
+                <cac:TaxScheme>
+                    <cbc:ID>VAT</cbc:ID>
+                </cac:TaxScheme>
+            </cac:ClassifiedTaxCategory>
+        </cac:Item>
+        <cac:Price>
+            <cbc:PriceAmount currencyID="RON">7.23</cbc:PriceAmount>
+        </cac:Price>
+    </cac:InvoiceLine>
+    <cac:InvoiceLine>
+        <cbc:ID>5</cbc:ID>
+        <cbc:InvoicedQuantity unitCode="EA">1</cbc:InvoicedQuantity>
+        <cbc:LineExtensionAmount currencyID="RON">35.00</cbc:LineExtensionAmount>
+        <cac:Item>
+            <cbc:Name>KOFFIE BLIK 3,5KG SNELF </cbc:Name>
+            <cac:SellersItemIdentification>
+                <cbc:ID>666955</cbc:ID>
+            </cac:SellersItemIdentification>
+            <cac:ClassifiedTaxCategory>
+                <cbc:ID>S</cbc:ID>
+                <cbc:Percent>6</cbc:Percent>
+                <cac:TaxScheme>
+                    <cbc:ID>VAT</cbc:ID>
+                </cac:TaxScheme>
+            </cac:ClassifiedTaxCategory>
+        </cac:Item>
+        <cac:Price>
+            <cbc:PriceAmount currencyID="RON">35.00</cbc:PriceAmount>
+        </cac:Price>
+    </cac:InvoiceLine>
+    <cac:InvoiceLine>
+        <cbc:ID>6</cbc:ID>
+        <cbc:InvoicedQuantity unitCode="EA">1</cbc:InvoicedQuantity>
+        <cbc:LineExtensionAmount currencyID="RON">35.00</cbc:LineExtensionAmount>
+        <cac:Item>
+            <cbc:Name>KOFFIE 3.5 KG BLIK STAND </cbc:Name>
+            <cac:SellersItemIdentification>
+                <cbc:ID>664871</cbc:ID>
+            </cac:SellersItemIdentification>
+            <cac:ClassifiedTaxCategory>
+                <cbc:ID>S</cbc:ID>
+                <cbc:Percent>6</cbc:Percent>
+                <cac:TaxScheme>
+                    <cbc:ID>VAT</cbc:ID>
+                </cac:TaxScheme>
+            </cac:ClassifiedTaxCategory>
+        </cac:Item>
+        <cac:Price>
+            <cbc:PriceAmount currencyID="RON">35.00</cbc:PriceAmount>
+        </cac:Price>
+    </cac:InvoiceLine>
+    <cac:InvoiceLine>
+        <cbc:ID>7</cbc:ID>
+        <cbc:InvoicedQuantity unitCode="EA">1</cbc:InvoicedQuantity>
+        <cbc:LineExtensionAmount currencyID="RON">10.65</cbc:LineExtensionAmount>
+        <cac:Item>
+            <cbc:Name>SUIKERKLONT</cbc:Name>
+            <cac:SellersItemIdentification>
+                <cbc:ID>350257</cbc:ID>
+            </cac:SellersItemIdentification>
+            <cac:ClassifiedTaxCategory>
+                <cbc:ID>S</cbc:ID>
+                <cbc:Percent>6</cbc:Percent>
+                <cac:TaxScheme>
+                    <cbc:ID>VAT</cbc:ID>
+                </cac:TaxScheme>
+            </cac:ClassifiedTaxCategory>
+        </cac:Item>
+        <cac:Price>
+            <cbc:PriceAmount currencyID="RON">10.65</cbc:PriceAmount>
+        </cac:Price>
+    </cac:InvoiceLine>
+    <cac:InvoiceLine>
+        <cbc:ID>8</cbc:ID>
+        <cbc:InvoicedQuantity unitCode="EA">1</cbc:InvoicedQuantity>
+        <cbc:LineExtensionAmount currencyID="RON">1.55</cbc:LineExtensionAmount>
+        <cac:Item>
+            <cbc:Name>1 KG UL BLOKJES </cbc:Name>
+            <cac:SellersItemIdentification>
+                <cbc:ID>350258</cbc:ID>
+            </cac:SellersItemIdentification>
+            <cac:ClassifiedTaxCategory>
+                <cbc:ID>S</cbc:ID>
+                <cbc:Percent>6</cbc:Percent>
+                <cac:TaxScheme>
+                    <cbc:ID>VAT</cbc:ID>
+                </cac:TaxScheme>
+            </cac:ClassifiedTaxCategory>
+        </cac:Item>
+        <cac:Price>
+            <cbc:PriceAmount currencyID="RON">1.55</cbc:PriceAmount>
+        </cac:Price>
+    </cac:InvoiceLine>
+    <cac:InvoiceLine>
+        <cbc:ID>9</cbc:ID>
+        <cbc:InvoicedQuantity unitCode="EA">3</cbc:InvoicedQuantity>
+        <cbc:LineExtensionAmount currencyID="RON">14.37</cbc:LineExtensionAmount>
+        <cac:Item>
+            <cbc:Name>BLOCKNOTE A5 </cbc:Name>
+            <cac:SellersItemIdentification>
+                <cbc:ID>999998</cbc:ID>
+            </cac:SellersItemIdentification>
+            <cac:ClassifiedTaxCategory>
+                <cbc:ID>S</cbc:ID>
+                <cbc:Percent>6</cbc:Percent>
+                <cac:TaxScheme>
+                    <cbc:ID>VAT</cbc:ID>
+                </cac:TaxScheme>
+            </cac:ClassifiedTaxCategory>
+        </cac:Item>
+        <cac:Price>
+            <cbc:PriceAmount currencyID="RON">4.79</cbc:PriceAmount>
+        </cac:Price>
+    </cac:InvoiceLine>
+    <cac:InvoiceLine>
+        <cbc:ID>10</cbc:ID>
+        <cbc:InvoicedQuantity unitCode="EA">1</cbc:InvoicedQuantity>
+        <cbc:LineExtensionAmount currencyID="RON">8.29</cbc:LineExtensionAmount>
+        <cac:Item>
+            <cbc:Name>CHIPS NAT KLEIN ZAKJES</cbc:Name>
+            <cac:SellersItemIdentification>
+                <cbc:ID>740810</cbc:ID>
+            </cac:SellersItemIdentification>
+            <cac:ClassifiedTaxCategory>
+                <cbc:ID>S</cbc:ID>
+                <cbc:Percent>6</cbc:Percent>
+                <cac:TaxScheme>
+                    <cbc:ID>VAT</cbc:ID>
+                </cac:TaxScheme>
+            </cac:ClassifiedTaxCategory>
+        </cac:Item>
+        <cac:Price>
+            <cbc:PriceAmount currencyID="RON">8.29</cbc:PriceAmount>
+        </cac:Price>
+    </cac:InvoiceLine>
+    <cac:InvoiceLine>
+        <cbc:ID>11</cbc:ID>
+        <cbc:InvoicedQuantity unitCode="EA">2</cbc:InvoicedQuantity>
+        <cbc:LineExtensionAmount currencyID="RON">16.58</cbc:LineExtensionAmount>
+        <cac:Item>
+            <cbc:Name>CHIPS PAP KLEINE ZAKJES</cbc:Name>
+            <cac:SellersItemIdentification>
+                <cbc:ID>740829</cbc:ID>
+            </cac:SellersItemIdentification>
+            <cac:ClassifiedTaxCategory>
+                <cbc:ID>S</cbc:ID>
+                <cbc:Percent>6</cbc:Percent>
+                <cac:TaxScheme>
+                    <cbc:ID>VAT</cbc:ID>
+                </cac:TaxScheme>
+            </cac:ClassifiedTaxCategory>
+        </cac:Item>
+        <cac:Price>
+            <cbc:PriceAmount currencyID="RON">8.29</cbc:PriceAmount>
+        </cac:Price>
+    </cac:InvoiceLine>
+    <cac:InvoiceLine>
+        <cbc:ID>12</cbc:ID>
+        <cbc:InvoicedQuantity unitCode="EA">1</cbc:InvoicedQuantity>
+        <cbc:LineExtensionAmount currencyID="RON">9.95</cbc:LineExtensionAmount>
+        <cac:Item>
+            <cbc:Name>TR KL PAKJES APPELSAP </cbc:Name>
+            <cac:SellersItemIdentification>
+                <cbc:ID>740828</cbc:ID>
+            </cac:SellersItemIdentification>
+            <cac:ClassifiedTaxCategory>
+                <cbc:ID>S</cbc:ID>
+                <cbc:Percent>6</cbc:Percent>
+                <cac:TaxScheme>
+                    <cbc:ID>VAT</cbc:ID>
+                </cac:TaxScheme>
+            </cac:ClassifiedTaxCategory>
+        </cac:Item>
+        <cac:Price>
+            <cbc:PriceAmount currencyID="RON">9.95</cbc:PriceAmount>
+        </cac:Price>
+    </cac:InvoiceLine>
+    <cac:InvoiceLine>
+        <cbc:ID>13</cbc:ID>
+        <cbc:InvoicedQuantity unitCode="EA">2</cbc:InvoicedQuantity>
+        <cbc:LineExtensionAmount currencyID="RON">3.30</cbc:LineExtensionAmount>
+        <cac:Item>
+            <cbc:Name>PK CHOCOLADEMEL</cbc:Name>
+            <cac:SellersItemIdentification>
+                <cbc:ID>740827</cbc:ID>
+            </cac:SellersItemIdentification>
+            <cac:ClassifiedTaxCategory>
+                <cbc:ID>S</cbc:ID>
+                <cbc:Percent>6</cbc:Percent>
+                <cac:TaxScheme>
+                    <cbc:ID>VAT</cbc:ID>
+                </cac:TaxScheme>
+            </cac:ClassifiedTaxCategory>
+        </cac:Item>
+        <cac:Price>
+            <cbc:PriceAmount currencyID="RON">1.65</cbc:PriceAmount>
+        </cac:Price>
+    </cac:InvoiceLine>
+    <cac:InvoiceLine>
+        <cbc:ID>14</cbc:ID>
+        <cbc:InvoicedQuantity unitCode="EA">1</cbc:InvoicedQuantity>
+        <cbc:LineExtensionAmount currencyID="RON">10.80</cbc:LineExtensionAmount>
+        <cac:Item>
+            <cbc:Name>KRAT BIER </cbc:Name>
+            <cac:SellersItemIdentification>
+                <cbc:ID>999996</cbc:ID>
+            </cac:SellersItemIdentification>
+            <cac:ClassifiedTaxCategory>
+                <cbc:ID>S</cbc:ID>
+                <cbc:Percent>21</cbc:Percent>
+                <cac:TaxScheme>
+                    <cbc:ID>VAT</cbc:ID>
+                </cac:TaxScheme>
+            </cac:ClassifiedTaxCategory>
+        </cac:Item>
+        <cac:Price>
+            <cbc:PriceAmount currencyID="RON">10.80</cbc:PriceAmount>
+        </cac:Price>
+    </cac:InvoiceLine>
+    <cac:InvoiceLine>
+        <cbc:ID>15</cbc:ID>
+        <cbc:InvoicedQuantity unitCode="EA">1</cbc:InvoicedQuantity>
+        <cbc:LineExtensionAmount currencyID="RON">3.90</cbc:LineExtensionAmount>
+        <cac:Item>
+            <cbc:Name>STATIEGELD</cbc:Name>
+            <cac:SellersItemIdentification>
+                <cbc:ID>999995</cbc:ID>
+            </cac:SellersItemIdentification>
+            <cac:ClassifiedTaxCategory>
+                <cbc:ID>S</cbc:ID>
+                <cbc:Percent>6</cbc:Percent>
+                <cac:TaxScheme>
+                    <cbc:ID>VAT</cbc:ID>
+                </cac:TaxScheme>
+            </cac:ClassifiedTaxCategory>
+        </cac:Item>
+        <cac:Price>
+            <cbc:PriceAmount currencyID="RON">3.90</cbc:PriceAmount>
+        </cac:Price>
+    </cac:InvoiceLine>
+    <cac:InvoiceLine>
+        <cbc:ID>16</cbc:ID>
+        <cbc:InvoicedQuantity unitCode="EA">2</cbc:InvoicedQuantity>
+        <cbc:LineExtensionAmount currencyID="RON">7.60</cbc:LineExtensionAmount>
+        <cac:Item>
+            <cbc:Name>BLEEK 3 X 750 ML </cbc:Name>
+            <cac:SellersItemIdentification>
+                <cbc:ID>102172</cbc:ID>
+            </cac:SellersItemIdentification>
+            <cac:ClassifiedTaxCategory>
+                <cbc:ID>S</cbc:ID>
+                <cbc:Percent>21</cbc:Percent>
+                <cac:TaxScheme>
+                    <cbc:ID>VAT</cbc:ID>
+                </cac:TaxScheme>
+            </cac:ClassifiedTaxCategory>
+        </cac:Item>
+        <cac:Price>
+            <cbc:PriceAmount currencyID="RON">3.80</cbc:PriceAmount>
+        </cac:Price>
+    </cac:InvoiceLine>
+    <cac:InvoiceLine>
+        <cbc:ID>17</cbc:ID>
+        <cbc:InvoicedQuantity unitCode="EA">2</cbc:InvoicedQuantity>
+        <cbc:LineExtensionAmount currencyID="RON">9.34</cbc:LineExtensionAmount>
+        <cac:Item>
+            <cbc:Name>WC PAPIER </cbc:Name>
+            <cac:SellersItemIdentification>
+                <cbc:ID>999994</cbc:ID>
+            </cac:SellersItemIdentification>
+            <cac:ClassifiedTaxCategory>
+                <cbc:ID>S</cbc:ID>
+                <cbc:Percent>21</cbc:Percent>
+                <cac:TaxScheme>
+                    <cbc:ID>VAT</cbc:ID>
+                </cac:TaxScheme>
+            </cac:ClassifiedTaxCategory>
+        </cac:Item>
+        <cac:Price>
+            <cbc:PriceAmount currencyID="RON">4.67</cbc:PriceAmount>
+        </cac:Price>
+    </cac:InvoiceLine>
+    <cac:InvoiceLine>
+        <cbc:ID>18</cbc:ID>
+        <cbc:InvoicedQuantity unitCode="EA">1</cbc:InvoicedQuantity>
+        <cbc:LineExtensionAmount currencyID="RON">18.63</cbc:LineExtensionAmount>
+        <cac:Item>
+            <cbc:Name>BALPENNEN 50 ST BLAUW </cbc:Name>
+            <cac:SellersItemIdentification>
+                <cbc:ID>999993</cbc:ID>
+            </cac:SellersItemIdentification>
+            <cac:ClassifiedTaxCategory>
+                <cbc:ID>S</cbc:ID>
+                <cbc:Percent>21</cbc:Percent>
+                <cac:TaxScheme>
+                    <cbc:ID>VAT</cbc:ID>
+                </cac:TaxScheme>
+            </cac:ClassifiedTaxCategory>
+        </cac:Item>
+        <cac:Price>
+            <cbc:PriceAmount currencyID="RON">18.63</cbc:PriceAmount>
+        </cac:Price>
+    </cac:InvoiceLine>
+    <cac:InvoiceLine>
+        <cbc:ID>19</cbc:ID>
+        <cbc:InvoicedQuantity unitCode="EA">6</cbc:InvoicedQuantity>
+        <cbc:LineExtensionAmount currencyID="RON">102.12</cbc:LineExtensionAmount>
+        <cac:Item>
+            <cbc:Name>EM FRITUURVET </cbc:Name>
+            <cac:SellersItemIdentification>
+                <cbc:ID>999992</cbc:ID>
+            </cac:SellersItemIdentification>
+            <cac:ClassifiedTaxCategory>
+                <cbc:ID>S</cbc:ID>
+                <cbc:Percent>6</cbc:Percent>
+                <cac:TaxScheme>
+                    <cbc:ID>VAT</cbc:ID>
+                </cac:TaxScheme>
+            </cac:ClassifiedTaxCategory>
+        </cac:Item>
+        <cac:Price>
+            <cbc:PriceAmount currencyID="RON">17.02</cbc:PriceAmount>
+        </cac:Price>
+    </cac:InvoiceLine>
+    <cac:InvoiceLine>
+        <cbc:ID>20</cbc:ID>
+        <cbc:InvoicedQuantity unitCode="EA">6</cbc:InvoicedQuantity>
+        <cbc:LineExtensionAmount currencyID="RON">-109.98</cbc:LineExtensionAmount>
+        <cac:Item>
+            <cbc:Name>FRITUUR VET 10 KG RETOUR </cbc:Name>
+            <cac:SellersItemIdentification>
+                <cbc:ID>175137</cbc:ID>
+            </cac:SellersItemIdentification>
+            <cac:ClassifiedTaxCategory>
+                <cbc:ID>S</cbc:ID>
+                <cbc:Percent>6</cbc:Percent>
+                <cac:TaxScheme>
+                    <cbc:ID>VAT</cbc:ID>
+                </cac:TaxScheme>
+            </cac:ClassifiedTaxCategory>
+        </cac:Item>
+        <cac:Price>
+            <cbc:PriceAmount currencyID="RON">18.33</cbc:PriceAmount>
+        </cac:Price>
+    </cac:InvoiceLine>
+</Invoice>

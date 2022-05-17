@@ -34,6 +34,7 @@ import com.helger.phive.engine.mock.MockFile;
 import com.helger.phive.engine.source.IValidationSourceXML;
 
 @Immutable
+@SuppressWarnings ("deprecation")
 public final class CTestFiles
 {
   public static final ValidationExecutorSetRegistry <IValidationSourceXML> VES_REGISTRY = new ValidationExecutorSetRegistry <> ();
@@ -51,7 +52,10 @@ public final class CTestFiles
   {
     final ICommonsList <MockFile> ret = new CommonsArrayList <> ();
     for (final VESID aESID : new VESID [] { CIUS_ROValidation.VID_CIUS_RO_UBL_CREDITNOTE_103,
-                                            CIUS_ROValidation.VID_CIUS_RO_UBL_INVOICE_103 })
+                                            CIUS_ROValidation.VID_CIUS_RO_UBL_INVOICE_103,
+
+                                            CIUS_ROValidation.VID_CIUS_RO_UBL_CREDITNOTE_104,
+                                            CIUS_ROValidation.VID_CIUS_RO_UBL_INVOICE_104 })
       for (final IReadableResource aRes : getAllMatchingTestFiles (aESID))
       {
         assertTrue ("Not existing test file: " + aRes.getPath (), aRes.exists ());
@@ -68,8 +72,7 @@ public final class CTestFiles
 
     if (aVESID.equals (CIUS_ROValidation.VID_CIUS_RO_UBL_CREDITNOTE_103))
     {
-      return new CommonsArrayList <> (new String [] { },
-                                      x -> new ClassPathResource ("/test-files/1.0.3/" + x));
+      return new CommonsArrayList <> (new String [] {}, x -> new ClassPathResource ("/test-files/1.0.3/" + x));
     }
     if (aVESID.equals (CIUS_ROValidation.VID_CIUS_RO_UBL_INVOICE_103))
     {
@@ -84,6 +87,24 @@ public final class CTestFiles
                                                       "ubl_b2g_example9.xml",
                                                       "ubl_b2g_example10.xml" },
                                       x -> new ClassPathResource ("/test-files/1.0.3/" + x));
+    }
+    if (aVESID.equals (CIUS_ROValidation.VID_CIUS_RO_UBL_CREDITNOTE_104))
+    {
+      return new CommonsArrayList <> (new String [] {}, x -> new ClassPathResource ("/test-files/1.0.4/" + x));
+    }
+    if (aVESID.equals (CIUS_ROValidation.VID_CIUS_RO_UBL_INVOICE_104))
+    {
+      return new CommonsArrayList <> (new String [] { "ubl_b2g_example0.xml",
+                                                      "ubl_b2g_example1.xml",
+                                                      "ubl_b2g_example2.xml",
+                                                      "ubl_b2g_example3.xml",
+                                                      "ubl_b2g_example4.xml",
+                                                      "ubl_b2g_example5.xml",
+                                                      "ubl_b2g_example7.xml",
+                                                      "ubl_b2g_example8.xml",
+                                                      "ubl_b2g_example9.xml",
+                                                      "ubl_b2g_example10.xml" },
+                                      x -> new ClassPathResource ("/test-files/1.0.4/" + x));
     }
 
     throw new IllegalArgumentException ("Invalid VESID: " + aVESID);

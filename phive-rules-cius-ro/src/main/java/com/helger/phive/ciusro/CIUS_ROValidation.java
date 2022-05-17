@@ -24,6 +24,7 @@ import com.helger.commons.io.resource.ClassPathResource;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
 import com.helger.phive.api.executorset.VESID;
 import com.helger.phive.api.executorset.ValidationExecutorSet;
+import com.helger.phive.en16931.EN16931Validation;
 import com.helger.phive.engine.schematron.ValidationExecutorSchematron;
 import com.helger.phive.engine.source.IValidationSourceXML;
 import com.helger.phive.engine.xsd.ValidationExecutorXSD;
@@ -31,7 +32,7 @@ import com.helger.ubl21.EUBL21DocumentType;
 import com.helger.ubl21.UBL21NamespaceContext;
 
 /**
- * Generic CIUS-PT validation configuration
+ * Generic CIUS-RO validation configuration
  *
  * @author Philip Helger
  */
@@ -40,14 +41,23 @@ public final class CIUS_ROValidation
 {
   public static final String GROUP_ID = "ro.gov.mfinante.cius-ro";
 
-  // Version 2.1.1
+  // Version 1.0.3
+  @Deprecated
   public static final VESID VID_CIUS_RO_UBL_CREDITNOTE_103 = new VESID (GROUP_ID, "ubl-creditnote", "1.0.3");
+  @Deprecated
   public static final VESID VID_CIUS_RO_UBL_INVOICE_103 = new VESID (GROUP_ID, "ubl-invoice", "1.0.3");
 
-  private static final ClassPathResource RES_103 = new ClassPathResource ("/schematron/1.0.3/EN16931-CIUS_RO-UBL-validation.xslt",
+  // Version 1.0.4
+  public static final VESID VID_CIUS_RO_UBL_CREDITNOTE_104 = new VESID (GROUP_ID, "ubl-creditnote", "1.0.4");
+  public static final VESID VID_CIUS_RO_UBL_INVOICE_104 = new VESID (GROUP_ID, "ubl-invoice", "1.0.4");
+
+  @Deprecated
+  private static final ClassPathResource RES_103 = new ClassPathResource ("/schematron/1.0.3/ROeFactura-UBL-validation-Invoice_v1.0.3.xslt",
+                                                                          _getCL ());
+  private static final ClassPathResource RES_104 = new ClassPathResource ("/schematron/1.0.4/ROeFactura-UBL-validation-Invoice_v1.0.4.xslt",
                                                                           _getCL ());
 
-  private CIUS_ROValidation()
+  private CIUS_ROValidation ()
   {}
 
   @Nonnull
@@ -57,7 +67,7 @@ public final class CIUS_ROValidation
   }
 
   /**
-   * Register all standard CIUS-PT validation execution sets to the provided
+   * Register all standard CIUS-RO validation execution sets to the provided
    * registry.
    *
    * @param aRegistry
@@ -67,22 +77,47 @@ public final class CIUS_ROValidation
   {
     ValueEnforcer.notNull (aRegistry, "Registry");
 
+    final boolean bDeprecated = true;
     final boolean bNotDeprecated = false;
 
-    // V2.1.1 containing the underlying EN rules
+    // V1.0.3 referencing the underlying EN rules
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_CIUS_RO_UBL_CREDITNOTE_103,
-                                                                           "CIUS-PT UBL CrediteNote " +
-                                                                               VID_CIUS_RO_UBL_CREDITNOTE_103.getVersion (),
-                                                                           bNotDeprecated,
+                                                                           "CIUS-RO UBL CrediteNote " +
+                                                                                                           VID_CIUS_RO_UBL_CREDITNOTE_103.getVersion (),
+                                                                           bDeprecated,
                                                                            ValidationExecutorXSD.create (EUBL21DocumentType.CREDIT_NOTE),
+                                                                           ValidationExecutorSchematron.createXSLT (EN16931Validation.INVOICE_UBL_137_XSLT,
+                                                                                                                    UBL21NamespaceContext.getInstance ()),
                                                                            ValidationExecutorSchematron.createXSLT (RES_103,
                                                                                                                     UBL21NamespaceContext.getInstance ())));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_CIUS_RO_UBL_INVOICE_103,
-                                                                           "CIUS-PT UBL Invoice " +
-                                                                               VID_CIUS_RO_UBL_INVOICE_103.getVersion (),
+                                                                           "CIUS-RO UBL Invoice " +
+                                                                                                        VID_CIUS_RO_UBL_INVOICE_103.getVersion (),
+                                                                           bDeprecated,
+                                                                           ValidationExecutorXSD.create (EUBL21DocumentType.INVOICE),
+                                                                           ValidationExecutorSchematron.createXSLT (EN16931Validation.INVOICE_UBL_137_XSLT,
+                                                                                                                    UBL21NamespaceContext.getInstance ()),
+                                                                           ValidationExecutorSchematron.createXSLT (RES_103,
+                                                                                                                    UBL21NamespaceContext.getInstance ())));
+
+    // V1.0.4 referencing the underlying EN rules
+    aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_CIUS_RO_UBL_CREDITNOTE_104,
+                                                                           "CIUS-RO UBL CrediteNote " +
+                                                                                                           VID_CIUS_RO_UBL_CREDITNOTE_104.getVersion (),
+                                                                           bNotDeprecated,
+                                                                           ValidationExecutorXSD.create (EUBL21DocumentType.CREDIT_NOTE),
+                                                                           ValidationExecutorSchematron.createXSLT (EN16931Validation.INVOICE_UBL_137_XSLT,
+                                                                                                                    UBL21NamespaceContext.getInstance ()),
+                                                                           ValidationExecutorSchematron.createXSLT (RES_104,
+                                                                                                                    UBL21NamespaceContext.getInstance ())));
+    aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_CIUS_RO_UBL_INVOICE_104,
+                                                                           "CIUS-RO UBL Invoice " +
+                                                                                                        VID_CIUS_RO_UBL_INVOICE_104.getVersion (),
                                                                            bNotDeprecated,
                                                                            ValidationExecutorXSD.create (EUBL21DocumentType.INVOICE),
-                                                                           ValidationExecutorSchematron.createXSLT (RES_103,
+                                                                           ValidationExecutorSchematron.createXSLT (EN16931Validation.INVOICE_UBL_137_XSLT,
+                                                                                                                    UBL21NamespaceContext.getInstance ()),
+                                                                           ValidationExecutorSchematron.createXSLT (RES_104,
                                                                                                                     UBL21NamespaceContext.getInstance ())));
   }
 }

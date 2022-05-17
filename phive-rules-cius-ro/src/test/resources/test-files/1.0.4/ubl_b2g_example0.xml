@@ -1,0 +1,529 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    vanzator 1111111111118, reprezentant fiscal RO19, cumparator 8609468
+    moneda TVA =RON, moneda factura = RON
+
+-->
+<Invoice xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2 ../../UBL-2.1(1)/xsd/maindoc/UBL-Invoice-2.1.xsd"
+ xmlns:qdt="urn:oasis:names:specification:ubl:schema:xsd:QualifiedDataTypes-2"
+ xmlns="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2"
+ xmlns:ccts="urn:un:unece:uncefact:documentation:2"
+ xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+ xmlns:udt="urn:oasis:names:specification:ubl:schema:xsd:UnqualifiedDataTypes-2"
+ xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
+	<cbc:UBLVersionID>2.1</cbc:UBLVersionID>
+	<cbc:CustomizationID>urn:cen.eu:en16931:2017#compliant#urn:efactura.mfinante.ro:CIUS-RO:1.0.0</cbc:CustomizationID><!--BT-24 cen.eu:en16931:2017#compliant#urn:efactura.mfinante.ro:CIUS-RO:1.0.0-->
+	<cbc:ID>TOSL108</cbc:ID><!--BT-1-->
+	<cbc:IssueDate>2021-11-12</cbc:IssueDate><!--BT-2-->
+	<cbc:DueDate>2021-11-15</cbc:DueDate><!--BT-9-->
+	<cbc:InvoiceTypeCode>380</cbc:InvoiceTypeCode><!--BT-3-->
+	<cbc:Note>Ordered in our booth at the convention.</cbc:Note><!--BT-22-->
+	<cbc:Note>#AAB#Conditions of payment between the parties to a transaction.</cbc:Note><!--BT-21--><!--BT-22-->
+	<cbc:TaxPointDate>2009-11-13</cbc:TaxPointDate><!--BT-7-->
+	<cbc:DocumentCurrencyCode>RON</cbc:DocumentCurrencyCode><!--BT-5-->
+	<cbc:TaxCurrencyCode>RON</cbc:TaxCurrencyCode><!--BT-6-->	
+	<cbc:AccountingCost>Project cost code 123</cbc:AccountingCost><!--BT-19-->
+	<cac:InvoicePeriod><!--BG-14-->
+		<cbc:StartDate>2009-11-01</cbc:StartDate><!--BT-73-->
+		<cbc:EndDate>2009-11-30</cbc:EndDate><!--BT-74-->
+	</cac:InvoicePeriod>
+	<cac:OrderReference>
+		<cbc:ID>Order-0001</cbc:ID><!--BT-13-->
+		<cbc:SalesOrderID>sales-order-0001</cbc:SalesOrderID><!--BT-14-->
+	</cac:OrderReference>
+	<cac:BillingReference>
+		<cac:InvoiceDocumentReference><!--BG-3-->
+			<cbc:ID>ABC120-220-1</cbc:ID><!--BT-25-->
+			 <cbc:IssueDate>2021-11-12</cbc:IssueDate><!--BT-26-->
+		</cac:InvoiceDocumentReference>
+	</cac:BillingReference>
+	<cac:DespatchDocumentReference>
+			<cbc:ID>DespatchDocument-01-0001</cbc:ID><!--BT-16-->
+	</cac:DespatchDocumentReference>
+	<cac:ReceiptDocumentReference>
+		<cbc:ID>ReceiptDocument-01-0001</cbc:ID><!--BT-15-->
+	</cac:ReceiptDocumentReference>
+	<cac:OriginatorDocumentReference>
+		<cbc:ID>OriginatorDocument-01-0001</cbc:ID><!--BT-17-->
+	</cac:OriginatorDocumentReference>
+	<cac:ContractDocumentReference>
+		<cbc:ID>Contract321</cbc:ID><!--BT-12-->
+	</cac:ContractDocumentReference>
+	<cac:AdditionalDocumentReference>
+		<cbc:ID>Doc2</cbc:ID>
+		<cbc:DocumentDescription>Drawing</cbc:DocumentDescription>
+		<cac:Attachment>
+			<cbc:EmbeddedDocumentBinaryObject mimeCode="application/pdf" filename="document.pdf">UjBsR09EbGhjZ0dTQUxNQUFBUUNBRU1tQ1p0dU1GUXhEUzhi</cbc:EmbeddedDocumentBinaryObject><!--BT-125-->
+		</cac:Attachment>
+	</cac:AdditionalDocumentReference>
+	<cac:ProjectReference>
+		<cbc:ID>Project-0001</cbc:ID><!--BT-11-->
+	</cac:ProjectReference>
+	<cac:AccountingSupplierParty><!--BG-4 VANZATOR-->
+		<cac:Party>
+			<cbc:EndpointID schemeID="0002">1234567890123</cbc:EndpointID><!--BT-34-->
+			<cac:PartyIdentification>
+				<cbc:ID schemeID="0004">Supp123</cbc:ID><!--BT-29 BT-29-1-->
+			</cac:PartyIdentification>
+			<cac:PartyName>
+				<cbc:Name>Salescompany ltd.</cbc:Name><!--BT-28-->
+			</cac:PartyName>
+			<cac:PostalAddress><!--BG-5-->
+				<cbc:StreetName>Main street</cbc:StreetName><!--BT-35-->
+				<cbc:AdditionalStreetName>Suite 123</cbc:AdditionalStreetName><!--BT-36-->
+				<cbc:CityName>Big city</cbc:CityName><!--BT-37-->
+				<cbc:PostalZone>54321</cbc:PostalZone><!--BT-38-->
+				<cbc:CountrySubentity>RegionA</cbc:CountrySubentity><!--BT-39-->
+				<cac:AddressLine>
+					<cbc:Line>Block 212</cbc:Line><!--BT-162-->
+				</cac:AddressLine>
+				<cac:Country>
+					<cbc:IdentificationCode>DK</cbc:IdentificationCode><!--BT-40-->
+				</cac:Country>
+			</cac:PostalAddress>
+			<cac:PartyTaxScheme>
+				<cbc:CompanyID>RO1111111111118</cbc:CompanyID><!--BT-31-->
+				<cac:TaxScheme>
+					<cbc:ID>VAT</cbc:ID>
+				</cac:TaxScheme>
+			</cac:PartyTaxScheme>
+			<cac:PartyLegalEntity>
+				<cbc:RegistrationName>The Sellercompany Incorporated</cbc:RegistrationName><!--BT-27-->
+				<cbc:CompanyID schemeID="0003">5402697509</cbc:CompanyID><!--BT-30 BT-30-1-->
+				<cbc:CompanyLegalForm>Company Ltd. established at the Commercial Court in Copenhagen, share capital of 20,000.00 RON, Director Behar Shehu</cbc:CompanyLegalForm><!--BT-33-->
+			</cac:PartyLegalEntity>
+			<cac:Contact><!--BG-6-->
+				<cbc:Name>Behar Shehu</cbc:Name><!--BT-41-->
+				<cbc:Telephone>4621230</cbc:Telephone><!--BT-42-->
+				<cbc:ElectronicMail>behar.shehu@salescompany.dk</cbc:ElectronicMail><!--BT-43-->
+			</cac:Contact>
+		</cac:Party>
+	</cac:AccountingSupplierParty>
+	<cac:AccountingCustomerParty><!--BG-7 CUMPARATOR-->
+		<cac:Party>
+			<cbc:EndpointID schemeID="0002">1234567987654</cbc:EndpointID><!--BT-49 bt-49-1-->
+			<cac:PartyIdentification>
+				<cbc:ID schemeID="0002">345KS5324</cbc:ID><!--BT-46 BT-46-1-->
+			</cac:PartyIdentification>
+			<cac:PartyName>
+				<cbc:Name>Ministerul Finantelor</cbc:Name><!--BT-45-->
+			</cac:PartyName>
+			<cac:PostalAddress><!--BG-8-->
+				<cbc:StreetName>BLD. Libertatii, Nr.16</cbc:StreetName><!--BT-50-->
+				<cbc:AdditionalStreetName>Corpul A</cbc:AdditionalStreetName><!--BT-51-->
+				<cbc:CityName>Municipiul Bucuresti</cbc:CityName><!--BT-52-->
+				<cbc:PostalZone>54321</cbc:PostalZone><!--BT-53-->
+				<cbc:CountrySubentity>Sector 5</cbc:CountrySubentity><!--BT-54-->
+				<cac:AddressLine>
+					<cbc:Line>Camera212</cbc:Line><!--BT-163-->
+				</cac:AddressLine>
+				<cac:Country>
+					<cbc:IdentificationCode>RO</cbc:IdentificationCode><!--BT-55-->
+				</cac:Country>
+			</cac:PostalAddress>
+			<cac:PartyTaxScheme>
+				<cbc:CompanyID>8609468</cbc:CompanyID><!--BT-48-->
+				<cac:TaxScheme>
+				</cac:TaxScheme>
+			</cac:PartyTaxScheme>
+			<cac:PartyLegalEntity>
+				<cbc:RegistrationName>Ministerul Finantelor</cbc:RegistrationName><!--BT-44-->
+				<cbc:CompanyID schemeID="0005">JB007</cbc:CompanyID><!--BT-47 BT-47-1-->
+			</cac:PartyLegalEntity>
+			<cac:Contact><!--BG-9-->
+				<cbc:Name>Ion Ionescu</cbc:Name><!--BT-56-->
+				<cbc:Telephone>0744123456</cbc:Telephone><!--BT-57-->
+				<cbc:ElectronicMail>ion.ionescu@mfinante.ro</cbc:ElectronicMail><!--BT-58-->
+			</cac:Contact>
+		</cac:Party>
+	</cac:AccountingCustomerParty>
+	<cac:PayeeParty><!--BG-10-->
+		<cac:PartyIdentification>
+			<cbc:ID schemeID="0003">098740918237</cbc:ID><!--BT-60 BT-60-1-->
+		</cac:PartyIdentification>
+		<cac:PartyName>
+			<cbc:Name>Ebeneser Scrooge Inc.</cbc:Name><!--BT-59-->
+		</cac:PartyName>
+		<cac:PartyLegalEntity>
+			<cbc:CompanyID schemeID="0007">6411982340</cbc:CompanyID><!--BT-61 BT-61-1-->
+		</cac:PartyLegalEntity>
+	</cac:PayeeParty>
+	<cac:TaxRepresentativeParty><!--BG-11 REPREZENTANT FISCAL-->
+		<cac:PartyName>
+			<cbc:Name>TELEKOM ROMANIA COMMUNICATIONS S.A.</cbc:Name><!--BT-62-->
+		</cac:PartyName>
+		<cac:PostalAddress><!--BG-12-->
+			<cbc:StreetName>P-TA PRESEI LIBERE, NR.3-5</cbc:StreetName><!--BT-64-->
+			<cbc:AdditionalStreetName>City Gate</cbc:AdditionalStreetName><!--BT-65-->
+			<cbc:CityName>Municipiul Bucuresti</cbc:CityName><!--BT-66-->
+			<cbc:PostalZone>54321</cbc:PostalZone><!--BT-67-->
+			<cbc:CountrySubentity>Sector 1</cbc:CountrySubentity><!--BT-68-->
+			<cac:AddressLine>
+				<cbc:Line>Cladirea A</cbc:Line><!--BT-164-->
+			</cac:AddressLine>
+			<cac:Country>
+				<cbc:IdentificationCode>RO</cbc:IdentificationCode><!--BT-69-->
+			</cac:Country>
+			</cac:PostalAddress>
+			<cac:PartyTaxScheme>
+				<cbc:CompanyID>RO1111</cbc:CompanyID><!--BT-63-->
+				<cac:TaxScheme>
+					<cbc:ID>VAT</cbc:ID>
+				</cac:TaxScheme>
+			</cac:PartyTaxScheme>
+	</cac:TaxRepresentativeParty>
+	<cac:Delivery><!--BG-13 LIVRARE-->
+		<cbc:ActualDeliveryDate>2022-01-15</cbc:ActualDeliveryDate><!--BT-72-->
+		<cac:DeliveryLocation>
+			<cbc:ID schemeID="0021">6754238987648</cbc:ID><!--BT-71 BT-71-1-->
+		<cac:Address><!--BG-15-->
+			<cbc:StreetName>Deliverystreet</cbc:StreetName><!--BT-75-->
+			<cbc:AdditionalStreetName>Side door</cbc:AdditionalStreetName><!--BT-76-->
+			<cbc:CityName>DeliveryCity</cbc:CityName><!--BT-77-->
+			<cbc:PostalZone>523427</cbc:PostalZone><!--BT-78-->
+			<cbc:CountrySubentity>RegionC</cbc:CountrySubentity><!--BT-79-->
+			<cac:AddressLine>
+				<cbc:Line>Corpul A</cbc:Line><!--BT-165-->
+			</cac:AddressLine>
+			<cac:Country>
+				<cbc:IdentificationCode>BE</cbc:IdentificationCode><!--BT-80-->
+			</cac:Country>
+		</cac:Address>
+		</cac:DeliveryLocation>
+		<cac:DeliveryParty>
+			<cac:PartyName>
+					<cbc:Name>Directia Generala de Achizitii</cbc:Name><!--BT-70-->
+			</cac:PartyName>
+		</cac:DeliveryParty>
+	</cac:Delivery>
+	<cac:PaymentMeans><!--BG-16-->
+		<cbc:PaymentMeansCode name="Bank Card">48</cbc:PaymentMeansCode><!--BT-81-->
+		<cbc:InstructionNote>Virament bancar</cbc:InstructionNote><!--BT-82-->
+		<cbc:PaymentID>1800355</cbc:PaymentID><!--BT-83-->
+		<cac:CardAccount><!--BG-18-->
+			<cbc:PrimaryAccountNumberID>1234</cbc:PrimaryAccountNumberID><!--BT-87-->
+			<cbc:NetworkID>VISA</cbc:NetworkID>
+			<cbc:HolderName>Peter Petersen</cbc:HolderName><!--BT-88-->
+		</cac:CardAccount>
+		<cac:PayeeFinancialAccount><!--BG-17-->
+			<cbc:ID>DK1212341234123412</cbc:ID><!--BT-84-->
+			<cbc:Name>RON Account</cbc:Name><!--BT-85-->
+			<cac:FinancialInstitutionBranch>
+				<cbc:ID>DKDKABCD</cbc:ID><!--BT-88-->
+			</cac:FinancialInstitutionBranch>
+		</cac:PayeeFinancialAccount>
+		<cac:PaymentMandate><!--BG-19-->
+			<cbc:ID>M456</cbc:ID><!--BT-89-->
+			<cac:PayerFinancialAccount>
+				<cbc:ID>426</cbc:ID><!--BT-91-->
+			</cac:PayerFinancialAccount>
+		</cac:PaymentMandate>
+	</cac:PaymentMeans>
+	<cac:PaymentTerms>
+			<cbc:Note>Penalty percentage 10% from due date</cbc:Note><!--BT-20-->
+	</cac:PaymentTerms>
+	<cac:AllowanceCharge><!-- BG-21 TAXE SUPLIMENTARE-->
+		<cbc:ChargeIndicator>true</cbc:ChargeIndicator><!--charge-->
+		<cbc:AllowanceChargeReasonCode>ABL</cbc:AllowanceChargeReasonCode><!--BT-105-->
+		<cbc:AllowanceChargeReason>Packing cost</cbc:AllowanceChargeReason><!--BT-104-->
+		<cbc:MultiplierFactorNumeric>10.00</cbc:MultiplierFactorNumeric><!--BT-101-->
+		<cbc:Amount currencyID="RON">100</cbc:Amount><!--BT-99-->
+		<cbc:BaseAmount currencyID="RON">1500</cbc:BaseAmount><!--BT-100-->
+		<cac:TaxCategory>
+			<cbc:ID>S</cbc:ID><!--BT-102-->
+			<cbc:Percent>20.00</cbc:Percent><!--BT-103-->
+			<cac:TaxScheme>
+				<cbc:ID>VAT</cbc:ID>
+			</cac:TaxScheme>
+		</cac:TaxCategory>
+	</cac:AllowanceCharge>
+	<cac:AllowanceCharge><!-- BG-20 DEDUCERI-->
+		<cbc:ChargeIndicator>false</cbc:ChargeIndicator><!--charge-->
+		<cbc:AllowanceChargeReasonCode>100</cbc:AllowanceChargeReasonCode><!--BT-98-->
+		<cbc:AllowanceChargeReason>Loyal customer</cbc:AllowanceChargeReason><!--BT-97-->
+		<cbc:MultiplierFactorNumeric>10.00</cbc:MultiplierFactorNumeric><!--BT-94-->
+		<cbc:Amount currencyID="RON">150</cbc:Amount><!--BT-92-->
+		<cbc:BaseAmount currencyID="RON">1500</cbc:BaseAmount><!--BT-93-->
+		<cac:TaxCategory>
+			<cbc:ID>S</cbc:ID><!--BT-95-->
+			<cbc:Percent>20.00</cbc:Percent><!--BT-96-->
+			<cac:TaxScheme>
+				<cbc:ID>VAT</cbc:ID>
+			</cac:TaxScheme>
+		</cac:TaxCategory>
+	</cac:AllowanceCharge>
+	<cac:TaxTotal>
+		<cbc:TaxAmount currencyID="RON">273.09</cbc:TaxAmount><!--BT-110 BT-111-->
+		<cac:TaxSubtotal><!--BG-23(1)-->
+			<cbc:TaxableAmount currencyID="RON">1224.8</cbc:TaxableAmount><!--BT-116-->
+			<cbc:TaxAmount currencyID="RON">244.96</cbc:TaxAmount><!--BT-117-->
+			<cac:TaxCategory>
+				<cbc:ID>S</cbc:ID><!--BT-118-->
+				<cbc:Percent>20</cbc:Percent><!--BT-119-->
+				<cac:TaxScheme>
+					<cbc:ID>VAT</cbc:ID>
+				</cac:TaxScheme>
+			</cac:TaxCategory>
+		</cac:TaxSubtotal>
+		<cac:TaxSubtotal><!--BG-23(2)-->
+			<cbc:TaxableAmount currencyID="RON">187.5</cbc:TaxableAmount><!--BT-116-->
+			<cbc:TaxAmount currencyID="RON">28.13</cbc:TaxAmount><!--BT-117-->
+			<cac:TaxCategory>
+				<cbc:ID>S</cbc:ID><!--BT-118-->
+				<cbc:Percent>15</cbc:Percent><!--BT-119-->
+				<cac:TaxScheme>
+					<cbc:ID>VAT</cbc:ID>
+				</cac:TaxScheme>
+			</cac:TaxCategory>
+		</cac:TaxSubtotal>
+		<cac:TaxSubtotal><!--BG-23(3)-->
+			<cbc:TaxableAmount currencyID="RON">-25</cbc:TaxableAmount><!--BT-116-->
+			<cbc:TaxAmount currencyID="RON">0</cbc:TaxAmount><!--BT-117-->
+			<cac:TaxCategory>
+				<cbc:ID>E</cbc:ID><!--BT-118-->
+				<cbc:Percent>0</cbc:Percent><!--BT-119-->
+				<cbc:TaxExemptionReasonCode>VATEX-EU-79-C</cbc:TaxExemptionReasonCode><!--BT-121-->
+				<cbc:TaxExemptionReason>Exempt New Means of Transport</cbc:TaxExemptionReason><!--BT-120-->
+				<cac:TaxScheme>
+					<cbc:ID>VAT</cbc:ID>
+				</cac:TaxScheme>
+			</cac:TaxCategory>
+		</cac:TaxSubtotal>
+	</cac:TaxTotal>
+	<cac:LegalMonetaryTotal><!--BG-22-->
+		<cbc:LineExtensionAmount currencyID="RON">1436.5</cbc:LineExtensionAmount><!--BT-106-->
+			<cbc:TaxExclusiveAmount currencyID="RON">1386.5</cbc:TaxExclusiveAmount><!--BT-109-->
+		<cbc:TaxInclusiveAmount currencyID="RON">1659.59</cbc:TaxInclusiveAmount><!--BT-112-->
+		<cbc:AllowanceTotalAmount currencyID="RON">150</cbc:AllowanceTotalAmount><!--BT-107-->
+		<cbc:ChargeTotalAmount currencyID="RON">100</cbc:ChargeTotalAmount><!--BT-108-->
+		<cbc:PrepaidAmount currencyID="RON">1000</cbc:PrepaidAmount><!--BT-113-->
+		<cbc:PayableRoundingAmount currencyID="RON">0.30</cbc:PayableRoundingAmount><!--BT-114-->
+		<cbc:PayableAmount currencyID="RON">659.89</cbc:PayableAmount><!--BT-115-->
+	</cac:LegalMonetaryTotal>
+	<cac:InvoiceLine><!--BG-25(1)-->
+		<cbc:ID>1</cbc:ID><!--BT-126-->
+		<cbc:Note>Scratch on box</cbc:Note><!--BT-127-->
+		<cbc:InvoicedQuantity unitCode="C62">1</cbc:InvoicedQuantity><!--BT-129 BT-130-->
+		<cbc:LineExtensionAmount currencyID="RON">1273</cbc:LineExtensionAmount><!--BT-131-->
+		<cbc:AccountingCost>BookingCode001</cbc:AccountingCost><!--BT-133-->
+		<cac:InvoicePeriod><!--BG-26-->
+				<cbc:StartDate>2021-09-05</cbc:StartDate><!--BT-134-->
+				<cbc:EndDate>2021-10-05</cbc:EndDate><!--BT-135-->
+		</cac:InvoicePeriod>
+		<cac:OrderLineReference>
+			<cbc:LineID>1</cbc:LineID><!--BT-132-->
+		</cac:OrderLineReference>
+		<cac:DocumentReference>
+			<cbc:ID schemeID="AAA">11234</cbc:ID><!--BT-128-->
+		</cac:DocumentReference>
+		<cac:AllowanceCharge><!--BG-27 deducere-->
+			<cbc:ChargeIndicator>false</cbc:ChargeIndicator>
+			<cbc:AllowanceChargeReasonCode>100</cbc:AllowanceChargeReasonCode><!--BT-140-->
+			<cbc:AllowanceChargeReason>Loyal customer</cbc:AllowanceChargeReason><!--BT-139-->
+			<cbc:MultiplierFactorNumeric>10.00</cbc:MultiplierFactorNumeric><!--BT-138-->
+			<cbc:Amount currencyID="RON">150</cbc:Amount><!--BT-136-->
+			<cbc:BaseAmount currencyID="RON">1500</cbc:BaseAmount><!--BT-137-->
+		</cac:AllowanceCharge>
+		<cac:AllowanceCharge><!--BG-28 taxa suplimentara-->
+			<cbc:ChargeIndicator>true</cbc:ChargeIndicator>
+			<cbc:AllowanceChargeReasonCode>ABL</cbc:AllowanceChargeReasonCode><!--BT-145-->
+			<cbc:AllowanceChargeReason>Packing cost</cbc:AllowanceChargeReason><!--BT-144-->
+			<cbc:MultiplierFactorNumeric>10.00</cbc:MultiplierFactorNumeric><!--BT-143-->
+			<cbc:Amount currencyID="RON">150</cbc:Amount><!--BT-141-->
+			<cbc:BaseAmount currencyID="RON">1500</cbc:BaseAmount><!--BT-142-->
+		</cac:AllowanceCharge>
+		<cac:Item><!--BG-31-->
+			<cbc:Description>Processor: Intel Core 2 Duo SU9400 LV (1.4GHz). RAM: 3MB. Screen 1440x900</cbc:Description><!--BT-154-->
+			<cbc:Name>Labtop computer</cbc:Name><!--BT-153-->
+			<cac:BuyersItemIdentification>
+				<cbc:ID>JB007</cbc:ID><!--BT-156-->
+			</cac:BuyersItemIdentification>
+			<cac:SellersItemIdentification>
+				<cbc:ID>JB007</cbc:ID><!--BT-155-->
+			</cac:SellersItemIdentification>
+			<cac:StandardItemIdentification>
+				<cbc:ID schemeID="0005">1234567890124</cbc:ID><!--BT-157 BT-157-1 -->
+			</cac:StandardItemIdentification>
+			<cac:OriginCountry>
+				<cbc:IdentificationCode>DK</cbc:IdentificationCode><!--BT-159-->
+			</cac:OriginCountry>
+			<cac:CommodityClassification>
+				<cbc:ItemClassificationCode listID="AA" listVersionID="113">32344324</cbc:ItemClassificationCode><!--BT-158 BT-158-1 BT-158-2-->
+			</cac:CommodityClassification>
+			<cac:CommodityClassification>
+				<cbc:ItemClassificationCode listID="AB" listVersionID="2" >65434568</cbc:ItemClassificationCode>
+			</cac:CommodityClassification>
+			<cac:ClassifiedTaxCategory><!--BG-30-->
+				<cbc:ID>S</cbc:ID><!--BT-151-->
+				<cbc:Percent>20</cbc:Percent><!--BT-152-->
+				<cac:TaxScheme>
+					<cbc:ID>VAT</cbc:ID>
+				</cac:TaxScheme>
+			</cac:ClassifiedTaxCategory>	
+			<cac:AdditionalItemProperty>
+				<cbc:Name>Color</cbc:Name>
+				<cbc:Value>black</cbc:Value>
+			</cac:AdditionalItemProperty>
+		</cac:Item>
+		<cac:Price><!--BG-29-->
+			<cbc:PriceAmount currencyID="RON">1273</cbc:PriceAmount><!--BT-146-->
+			<cbc:BaseQuantity unitCode="C62">1</cbc:BaseQuantity><!--BT-149 BT-150-->
+			<cac:AllowanceCharge>
+				<cbc:ChargeIndicator>false</cbc:ChargeIndicator>
+				<cbc:Amount currencyID="RON">225</cbc:Amount><!--BT-147-->
+				<cbc:BaseAmount currencyID="RON">1500</cbc:BaseAmount><!--BT-148-->
+			</cac:AllowanceCharge>
+		</cac:Price>
+	</cac:InvoiceLine>
+	<cac:InvoiceLine> 
+		<cbc:ID>2</cbc:ID> 
+		<cbc:Note>Cover is slightly damaged.</cbc:Note> 
+		<cbc:InvoicedQuantity unitCode="EA">-1</cbc:InvoicedQuantity> 
+		<cbc:LineExtensionAmount currencyID="NOK">-3.96</cbc:LineExtensionAmount><!--BT-131-->
+		<cbc:AccountingCost>BookingCode002</cbc:AccountingCost> 
+		<cac:OrderLineReference> 
+			<cbc:LineID>5</cbc:LineID> 
+		</cac:OrderLineReference> 
+		<cac:Item> 
+			<cbc:Name>Returned "Advanced computing" book</cbc:Name> 
+			<cac:SellersItemIdentification> 
+				<cbc:ID>JB008</cbc:ID> 
+			</cac:SellersItemIdentification> 
+			<cac:StandardItemIdentification> 
+				<cbc:ID schemeID="0088">1234567890135</cbc:ID> 
+			</cac:StandardItemIdentification> 
+			<cac:CommodityClassification> 
+				<cbc:ItemClassificationCode listID="ZZZ">32344324</cbc:ItemClassificationCode> 
+			</cac:CommodityClassification> 
+			<cac:CommodityClassification> 
+				<cbc:ItemClassificationCode listID="STI">65434567</cbc:ItemClassificationCode> 
+			</cac:CommodityClassification> 
+			<cac:ClassifiedTaxCategory> 
+				<cbc:ID>S</cbc:ID> 
+				<cbc:Percent>20</cbc:Percent> 
+				<cac:TaxScheme> 
+					<cbc:ID>VAT</cbc:ID> 
+				</cac:TaxScheme> 
+			</cac:ClassifiedTaxCategory> 
+		</cac:Item> 
+		<cac:Price> 
+		<cbc:PriceAmount currencyID="NOK">3.96</cbc:PriceAmount> 
+		<cbc:BaseQuantity unitCode="EA">1</cbc:BaseQuantity> 
+		</cac:Price> 
+		</cac:InvoiceLine> 
+	<cac:InvoiceLine> 
+			<cbc:ID>3</cbc:ID> 
+			<cbc:InvoicedQuantity unitCode="EA">2</cbc:InvoicedQuantity> 
+		<cbc:LineExtensionAmount currencyID="NOK">4.96</cbc:LineExtensionAmount> <!--BT-131-->
+			<cbc:AccountingCost>BookingCode003</cbc:AccountingCost> <cac:OrderLineReference> 
+			<cbc:LineID>3</cbc:LineID> 
+			</cac:OrderLineReference> 
+				<cac:Item> 
+					<cbc:Name>"Computing for dummies" book</cbc:Name> 
+					<cac:SellersItemIdentification> 
+						<cbc:ID>JB009</cbc:ID> 
+					</cac:SellersItemIdentification> 
+					<cac:StandardItemIdentification> 
+						<cbc:ID schemeID="0088">1234567890135</cbc:ID> 
+					</cac:StandardItemIdentification> 
+					<cac:CommodityClassification> 
+						<cbc:ItemClassificationCode listID="ZZZ">32344324</cbc:ItemClassificationCode> 
+					</cac:CommodityClassification> 
+					<cac:CommodityClassification> 
+						<cbc:ItemClassificationCode listID="STI">65434567</cbc:ItemClassificationCode> 
+					</cac:CommodityClassification> 
+					<cac:ClassifiedTaxCategory> 
+						<cbc:ID>S</cbc:ID> 
+						<cbc:Percent>20</cbc:Percent> 
+						<cac:TaxScheme> 
+							<cbc:ID>VAT</cbc:ID> 
+						</cac:TaxScheme> 
+					</cac:ClassifiedTaxCategory> 
+			</cac:Item> 
+			<cac:Price> 
+				<cbc:PriceAmount currencyID="NOK">2.48</cbc:PriceAmount> 
+				<cbc:BaseQuantity unitCode="EA">1</cbc:BaseQuantity> 
+				<cac:AllowanceCharge> 
+					<cbc:ChargeIndicator>false</cbc:ChargeIndicator> 
+					<cbc:Amount currencyID="NOK">0.27</cbc:Amount> 
+					<cbc:BaseAmount currencyID="NOK">2.70</cbc:BaseAmount> 
+				</cac:AllowanceCharge> 
+			</cac:Price> 
+	</cac:InvoiceLine> 
+	<cac:InvoiceLine> 
+			<cbc:ID>4</cbc:ID> 
+			<cbc:InvoicedQuantity unitCode="EA">-1</cbc:InvoicedQuantity> 
+		<cbc:LineExtensionAmount currencyID="NOK">-25.00</cbc:LineExtensionAmount> <!--BT-131-->
+			<cbc:AccountingCost>BookingCode004</cbc:AccountingCost> 
+			<cac:OrderLineReference> 
+				<cbc:LineID>2</cbc:LineID> 
+			</cac:OrderLineReference> 
+			<cac:Item> 
+				<cbc:Name>Returned IBM 5150 desktop</cbc:Name> 
+				<cac:SellersItemIdentification> 
+					<cbc:ID>JB010</cbc:ID> 
+				</cac:SellersItemIdentification> 
+				<cac:StandardItemIdentification> 
+					<cbc:ID schemeID="0088">1234567890159</cbc:ID> 
+				</cac:StandardItemIdentification> 
+			<cac:CommodityClassification> 
+					<cbc:ItemClassificationCode listID="ZZZ">12344322</cbc:ItemClassificationCode> 
+			</cac:CommodityClassification> 
+			<cac:CommodityClassification> 
+				<cbc:ItemClassificationCode listID="STI">65434565</cbc:ItemClassificationCode> 
+			</cac:CommodityClassification> 
+			<cac:ClassifiedTaxCategory> 
+				<cbc:ID>E</cbc:ID> 
+				<cbc:Percent>0</cbc:Percent> 
+				<cac:TaxScheme> 
+					<cbc:ID>VAT</cbc:ID> 
+				</cac:TaxScheme> 
+			</cac:ClassifiedTaxCategory> 
+			</cac:Item> 
+			<cac:Price> 
+				<cbc:PriceAmount currencyID="NOK">25.00</cbc:PriceAmount> 
+				<cbc:BaseQuantity unitCode="EA">1</cbc:BaseQuantity> 
+			</cac:Price> 
+	</cac:InvoiceLine> 
+	<cac:InvoiceLine> 
+			<cbc:ID>5</cbc:ID> 
+			<cbc:InvoicedQuantity unitCode="MTR">250</cbc:InvoicedQuantity> 
+		<cbc:LineExtensionAmount currencyID="NOK">187.50</cbc:LineExtensionAmount> <!--BT-131-->
+			<cbc:AccountingCost>BookingCode005</cbc:AccountingCost> 
+			<cac:OrderLineReference> 
+				<cbc:LineID>6</cbc:LineID> 
+			</cac:OrderLineReference> 
+			<cac:Item> 
+				<cbc:Name>Network cable</cbc:Name> 
+				<cac:SellersItemIdentification> 
+					<cbc:ID>JB011</cbc:ID> 
+				</cac:SellersItemIdentification> 
+				<cac:StandardItemIdentification> 
+					<cbc:ID schemeID="0088">1234567890166</cbc:ID> 
+				</cac:StandardItemIdentification> 
+				<cac:CommodityClassification> 
+					<cbc:ItemClassificationCode listID="ZZZ">12344325</cbc:ItemClassificationCode> 
+				</cac:CommodityClassification> 
+				<cac:CommodityClassification> 
+					<cbc:ItemClassificationCode listID="STI">65434564</cbc:ItemClassificationCode> 
+				</cac:CommodityClassification> 
+				<cac:ClassifiedTaxCategory> 
+					<cbc:ID>S</cbc:ID> 
+					<cbc:Percent>15</cbc:Percent> 
+					<cac:TaxScheme> 
+					<cbc:ID>VAT</cbc:ID> 
+					</cac:TaxScheme> 
+				</cac:ClassifiedTaxCategory> 
+				<cac:AdditionalItemProperty> 
+					<cbc:Name>Type</cbc:Name> 
+					<cbc:Value>Cat5</cbc:Value> 
+				</cac:AdditionalItemProperty> 
+			</cac:Item> 
+			<cac:Price> 
+				<cbc:PriceAmount currencyID="NOK">0.75</cbc:PriceAmount> 
+				<cbc:BaseQuantity unitCode="MTR">1</cbc:BaseQuantity> 
+			</cac:Price> 
+		</cac:InvoiceLine>
+</Invoice>

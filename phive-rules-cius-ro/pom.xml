@@ -66,6 +66,10 @@
       <groupId>com.helger.ubl</groupId>
       <artifactId>ph-ubl21</artifactId>
     </dependency>
+    <dependency>
+      <groupId>com.helger.phive.rules</groupId>
+      <artifactId>phive-rules-en16931</artifactId>
+    </dependency>
 
     <dependency>
       <groupId>org.slf4j</groupId>
@@ -97,17 +101,19 @@
         <groupId>com.helger.maven</groupId>
         <artifactId>ph-schematron-maven-plugin</artifactId>
         <executions>
+<!--
           <execution>
             <id>ubl</id>
             <goals>
               <goal>convert</goal>
             </goals>
             <configuration>
-              <schematronDirectory>${basedir}/src/test/resources/rule-source/1.0.3</schematronDirectory>
-              <xsltDirectory>${basedir}/src/main/resources/schematron/1.0.3</xsltDirectory>
-              <schematronPattern>*.sch</schematronPattern>
+              <schematronDirectory>${basedir}/src/test/resources/rule-source/1.0.4/preprocessed</schematronDirectory>
+              <xsltDirectory>${basedir}/src/main/resources/schematron/1.0.4</xsltDirectory>
+              <schematronPattern>ROeFactura*.sch</schematronPattern>
             </configuration>
           </execution>
+-->
         </executions>
       </plugin>
     </plugins>
