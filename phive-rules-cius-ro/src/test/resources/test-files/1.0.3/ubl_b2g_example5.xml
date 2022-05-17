@@ -51,10 +51,12 @@
     <cac:ContractDocumentReference>
         <cbc:ID>2013-05</cbc:ID>
     </cac:ContractDocumentReference>
+    <!-- Schematron fix
     <cac:AdditionalDocumentReference>
         <cbc:ID>OBJ999</cbc:ID>
         <cbc:DocumentDescription>ATS</cbc:DocumentDescription>
     </cac:AdditionalDocumentReference>
+     -->
     <cac:AdditionalDocumentReference>
         <cbc:ID>sales slip</cbc:ID>
         <cbc:DocumentDescription>your sales slip</cbc:DocumentDescription>

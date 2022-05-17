@@ -42,6 +42,7 @@
             </cac:ExternalReference>
         </cac:Attachment>
     </cac:AdditionalDocumentReference>
+    <!-- Schematron fix
     <cac:AdditionalDocumentReference>
         <cbc:ID>Doc2</cbc:ID>
         <cbc:DocumentDescription>EHF specification</cbc:DocumentDescription>
@@ -49,6 +50,7 @@
             <cbc:EmbeddedDocumentBinaryObject mimeCode="application/pdf" filename="test.pdf">VGVzdGluZyBCYXNlNjQgZW5jb2Rpbmc=</cbc:EmbeddedDocumentBinaryObject>
         </cac:Attachment>
     </cac:AdditionalDocumentReference>
+    -->
     <cac:AccountingSupplierParty>
         <cac:Party>
             <cac:PartyIdentification>
