@@ -9,6 +9,7 @@ All projects found in here rely on the PHIVE validation engine provided by https
 This project is divided into sub-projects each keeping tracking of one document type set:
   * phive-rules-cii - Validation rules for pure CII (without any Schematron)
   * phive-rules-cius-pt - Validation rules for the Portuguese EN 16931 CIUS (since v1.0.11)
+  * phive-rules-cius-ro - Validation rules for the Romanian EN 16931 CIUS (since v2.1.14)
   * phive-rules-ebinterface - Validation rules for Austrian ebInterface
   * phive-rules-ehf - Validation rules for EHF (Norwegian public procurement)
   * phive-rules-en16931 - Validation rules for the EN 16931 (European e-Invoicing norm based on CEN TC 434)
@@ -45,6 +46,12 @@ Add the following to your `pom.xml` to use this artifact, replacing `x.y.z` with
 <dependency>
   <groupId>com.helger.phive.rules</groupId>
   <artifactId>phive-rules-cius-pt</artifactId>
+  <version>x.y.z</version>
+</dependency>
+
+<dependency>
+  <groupId>com.helger.phive.rules</groupId>
+  <artifactId>phive-rules-cius-ro</artifactId>
   <version>x.y.z</version>
 </dependency>
 
@@ -173,6 +180,8 @@ Alternate usage as a Maven BOM:
 
 * v2.1.14 - work in progress
     * Fixed the EN 16931 UBL 1.3.8 XSLT version
+    * Added support for CIUS-RO 1.0.3 - thanks to @yleider for the PR :heart:
+    * Added support for CIUS-RO 1.0.4
 * v2.1.13 - 2022-05-09
     * Deprecated XRechnung 2.0.0 and 2.0.1
     * Added support for EN 16931 1.3.8 format
