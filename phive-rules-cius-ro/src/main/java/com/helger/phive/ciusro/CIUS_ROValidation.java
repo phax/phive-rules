@@ -1,0 +1,88 @@
+/*
+ * Copyright (C) 2020-2022 Philip Helger (www.helger.com)
+ * philip[at]helger[dot]com
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *         http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+package com.helger.phive.ciusro;
+
+import javax.annotation.Nonnull;
+import javax.annotation.concurrent.Immutable;
+
+import com.helger.commons.ValueEnforcer;
+import com.helger.commons.io.resource.ClassPathResource;
+import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
+import com.helger.phive.api.executorset.VESID;
+import com.helger.phive.api.executorset.ValidationExecutorSet;
+import com.helger.phive.engine.schematron.ValidationExecutorSchematron;
+import com.helger.phive.engine.source.IValidationSourceXML;
+import com.helger.phive.engine.xsd.ValidationExecutorXSD;
+import com.helger.ubl21.EUBL21DocumentType;
+import com.helger.ubl21.UBL21NamespaceContext;
+
+/**
+ * Generic CIUS-PT validation configuration
+ *
+ * @author Philip Helger
+ */
+@Immutable
+public final class CIUS_ROValidation
+{
+  public static final String GROUP_ID = "ro.gov.mfinante.cius-ro";
+
+  // Version 2.1.1
+  public static final VESID VID_CIUS_RO_UBL_CREDITNOTE_103 = new VESID (GROUP_ID, "ubl-creditnote", "1.0.3");
+  public static final VESID VID_CIUS_RO_UBL_INVOICE_103 = new VESID (GROUP_ID, "ubl-invoice", "1.0.3");
+
+  private static final ClassPathResource RES_103 = new ClassPathResource ("/schematron/1.0.3/EN16931-CIUS_RO-UBL-validation.xslt",
+                                                                          _getCL ());
+
+  private CIUS_ROValidation()
+  {}
+
+  @Nonnull
+  private static ClassLoader _getCL ()
+  {
+    return CIUS_ROValidation.class.getClassLoader ();
+  }
+
+  /**
+   * Register all standard CIUS-PT validation execution sets to the provided
+   * registry.
+   *
+   * @param aRegistry
+   *        The registry to add the artefacts. May not be <code>null</code>.
+   */
+  public static void initCIUS_RO (@Nonnull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
+  {
+    ValueEnforcer.notNull (aRegistry, "Registry");
+
+    final boolean bNotDeprecated = false;
+
+    // V2.1.1 containing the underlying EN rules
+    aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_CIUS_RO_UBL_CREDITNOTE_103,
+                                                                           "CIUS-PT UBL CrediteNote " +
+                                                                               VID_CIUS_RO_UBL_CREDITNOTE_103.getVersion (),
+                                                                           bNotDeprecated,
+                                                                           ValidationExecutorXSD.create (EUBL21DocumentType.CREDIT_NOTE),
+                                                                           ValidationExecutorSchematron.createXSLT (RES_103,
+                                                                                                                    UBL21NamespaceContext.getInstance ())));
+    aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_CIUS_RO_UBL_INVOICE_103,
+                                                                           "CIUS-PT UBL Invoice " +
+                                                                               VID_CIUS_RO_UBL_INVOICE_103.getVersion (),
+                                                                           bNotDeprecated,
+                                                                           ValidationExecutorXSD.create (EUBL21DocumentType.INVOICE),
+                                                                           ValidationExecutorSchematron.createXSLT (RES_103,
+                                                                                                                    UBL21NamespaceContext.getInstance ())));
+  }
+}
