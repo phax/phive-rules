@@ -133,7 +133,7 @@
             <cbc:AdditionalStreetName>Front door</cbc:AdditionalStreetName>
             <cbc:CityName>Newtown</cbc:CityName>
             <cbc:PostalZone>202</cbc:PostalZone>
-            <cbc:CountrySubentity>RegionC</cbc:CountrySubentity>
+            <cbc:CountrySubentity>RO-AB</cbc:CountrySubentity>
             <cac:Country>
                 <cbc:IdentificationCode>RO</cbc:IdentificationCode>
             </cac:Country>

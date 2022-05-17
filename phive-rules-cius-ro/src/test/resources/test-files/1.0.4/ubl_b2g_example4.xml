@@ -20,6 +20,7 @@
     <cbc:InvoiceTypeCode>380</cbc:InvoiceTypeCode>
     <cbc:Note>Contract was established through our website</cbc:Note>
     <cbc:DocumentCurrencyCode>DKK</cbc:DocumentCurrencyCode>
+    <cbc:TaxCurrencyCode>RON</cbc:TaxCurrencyCode>
     <cac:InvoicePeriod>
         <cbc:StartDate>2013-01-01</cbc:StartDate>
         <cbc:EndDate>2013-04-01</cbc:EndDate>
@@ -123,6 +124,9 @@
                 </cac:TaxScheme>
             </cac:TaxCategory>
         </cac:TaxSubtotal>
+    </cac:TaxTotal>
+    <cac:TaxTotal>
+        <cbc:TaxAmount currencyID="RON">628.62</cbc:TaxAmount>
     </cac:TaxTotal>
     <cac:LegalMonetaryTotal>
         <cbc:LineExtensionAmount currencyID="DKK">1600.00</cbc:LineExtensionAmount>

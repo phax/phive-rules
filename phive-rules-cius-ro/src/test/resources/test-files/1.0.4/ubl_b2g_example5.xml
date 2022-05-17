@@ -22,7 +22,7 @@
     <cbc:InvoiceTypeCode>380</cbc:InvoiceTypeCode>
     <cbc:Note>Ordered through our website#Ordering information</cbc:Note>
     <cbc:DocumentCurrencyCode>DKK</cbc:DocumentCurrencyCode>
-    <cbc:TaxCurrencyCode>EUR</cbc:TaxCurrencyCode>
+    <cbc:TaxCurrencyCode>RON</cbc:TaxCurrencyCode>
     <cbc:AccountingCost>67543</cbc:AccountingCost>
     <cbc:BuyerReference>qwerty</cbc:BuyerReference>
     <cac:InvoicePeriod>
@@ -267,7 +267,7 @@
         </cac:TaxSubtotal>
     </cac:TaxTotal>
     <cac:TaxTotal>
-        <cbc:TaxAmount currencyID="EUR">628.62</cbc:TaxAmount>
+        <cbc:TaxAmount currencyID="RON">628.62</cbc:TaxAmount>
     </cac:TaxTotal>
     <cac:LegalMonetaryTotal>
         <cbc:LineExtensionAmount currencyID="DKK">4000.00</cbc:LineExtensionAmount>

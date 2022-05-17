@@ -82,6 +82,8 @@ public final class CTestFiles
                                                       "ubl_b2g_example3.xml",
                                                       "ubl_b2g_example4.xml",
                                                       "ubl_b2g_example5.xml",
+                                                      // too Buggy
+                                                      // "ubl_b2g_example6.xml",
                                                       "ubl_b2g_example7.xml",
                                                       "ubl_b2g_example8.xml",
                                                       "ubl_b2g_example9.xml",
@@ -100,6 +102,8 @@ public final class CTestFiles
                                                       "ubl_b2g_example3.xml",
                                                       "ubl_b2g_example4.xml",
                                                       "ubl_b2g_example5.xml",
+                                                      // too Buggy
+                                                      // "ubl_b2g_example6.xml",
                                                       "ubl_b2g_example7.xml",
                                                       "ubl_b2g_example8.xml",
                                                       "ubl_b2g_example9.xml",

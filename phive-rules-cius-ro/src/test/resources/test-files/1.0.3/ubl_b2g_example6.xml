@@ -17,7 +17,6 @@
 	<cbc:CustomizationID>urn:cen.eu:en16931:2017#compliant#urn:efactura.mfinante.ro:CIUS-RO:1.0.0</cbc:CustomizationID><!--BT-24 cen.eu:en16931:2017#compliant#urn:efactura.mfinante.ro:CIUS-RO:1.0.0-->
 	<cbc:ID>TOSL108</cbc:ID><!--BT-1-->
 	<cbc:IssueDate>2021-11-12</cbc:IssueDate><!--BT-2-->
-	<cbc:DueDate>2021-11-15</cbc:DueDate><!--BT-9-->
 	<cbc:InvoiceTypeCode>380</cbc:InvoiceTypeCode><!--BT-3-->
 	<cbc:Note>Ordered in our booth at the convention.</cbc:Note><!--BT-22-->
 	<cbc:Note>#AAB#Conditions of payment between the parties to a transaction.</cbc:Note><!--BT-21--><!--BT-22-->
@@ -51,6 +50,11 @@
 	<cac:ContractDocumentReference>
 		<cbc:ID>Contract321</cbc:ID><!--BT-12-->
 	</cac:ContractDocumentReference>
+	<cac:AdditionalDocumentReference><!--BG-24-->
+		<cbc:ID schemeID="AGU">repository-0001</cbc:ID><!--BT-18--> <!--BT-122-->
+		<cbc:DocumentTypeCode>130</cbc:DocumentTypeCode>
+
+	</cac:AdditionalDocumentReference>
 	<cac:AdditionalDocumentReference>
 		<cbc:ID>Doc2</cbc:ID>
 		<cbc:DocumentDescription>Drawing</cbc:DocumentDescription>
@@ -65,7 +69,7 @@
 		<cac:Party>
 			<cbc:EndpointID schemeID="0002">1234567890123</cbc:EndpointID><!--BT-34-->
 			<cac:PartyIdentification>
-				<cbc:ID schemeID="0004">Supp123</cbc:ID><!--BT-29 BT-29-1-->
+				<cbc:ID schemeID="0003">Supp123</cbc:ID><!--BT-29 BT-29-1-->
 			</cac:PartyIdentification>
 			<cac:PartyName>
 				<cbc:Name>Salescompany ltd.</cbc:Name><!--BT-28-->
@@ -105,7 +109,7 @@
 		<cac:Party>
 			<cbc:EndpointID schemeID="0002">1234567987654</cbc:EndpointID><!--BT-49 bt-49-1-->
 			<cac:PartyIdentification>
-				<cbc:ID schemeID="0002">345KS5324</cbc:ID><!--BT-46 BT-46-1-->
+				<cbc:ID schemeID="0004">345KS5324</cbc:ID><!--BT-46 BT-46-1-->
 			</cac:PartyIdentification>
 			<cac:PartyName>
 				<cbc:Name>Ministerul Finantelor</cbc:Name><!--BT-45-->
@@ -157,9 +161,9 @@
 		<cac:PostalAddress><!--BG-12-->
 			<cbc:StreetName>P-TA PRESEI LIBERE, NR.3-5</cbc:StreetName><!--BT-64-->
 			<cbc:AdditionalStreetName>City Gate</cbc:AdditionalStreetName><!--BT-65-->
-			<cbc:CityName>SECTOR1</cbc:CityName><!--BT-66-->
+			<cbc:CityName>Municipiul Bucuresti</cbc:CityName><!--BT-66-->
 			<cbc:PostalZone>54321</cbc:PostalZone><!--BT-67-->
-			<cbc:CountrySubentity>RO-B</cbc:CountrySubentity><!--BT-68-->
+			<cbc:CountrySubentity>Sector 1</cbc:CountrySubentity><!--BT-68-->
 			<cac:AddressLine>
 				<cbc:Line>Cladirea A</cbc:Line><!--BT-164-->
 			</cac:AddressLine>
@@ -168,7 +172,7 @@
 			</cac:Country>
 			</cac:PostalAddress>
 			<cac:PartyTaxScheme>
-				<cbc:CompanyID>RO1111</cbc:CompanyID><!--BT-63-->
+				<cbc:CompanyID>RO19</cbc:CompanyID><!--BT-48-->
 				<cac:TaxScheme>
 					<cbc:ID>VAT</cbc:ID>
 				</cac:TaxScheme>
@@ -177,7 +181,7 @@
 	<cac:Delivery><!--BG-13 LIVRARE-->
 		<cbc:ActualDeliveryDate>2022-01-15</cbc:ActualDeliveryDate><!--BT-72-->
 		<cac:DeliveryLocation>
-			<cbc:ID schemeID="0021">6754238987648</cbc:ID><!--BT-71 BT-71-1-->
+			<cbc:ID schemeID="0002">6754238987648</cbc:ID><!--BT-71 BT-71-1-->
 		<cac:Address><!--BG-15-->
 			<cbc:StreetName>Deliverystreet</cbc:StreetName><!--BT-75-->
 			<cbc:AdditionalStreetName>Side door</cbc:AdditionalStreetName><!--BT-76-->
@@ -233,7 +237,7 @@
 		<cbc:BaseAmount currencyID="RON">1500</cbc:BaseAmount><!--BT-100-->
 		<cac:TaxCategory>
 			<cbc:ID>S</cbc:ID><!--BT-102-->
-			<cbc:Percent>20.00</cbc:Percent><!--BT-103-->
+			<cbc:Percent>25.00</cbc:Percent><!--BT-103-->
 			<cac:TaxScheme>
 				<cbc:ID>VAT</cbc:ID>
 			</cac:TaxScheme>
@@ -248,17 +252,17 @@
 		<cbc:BaseAmount currencyID="RON">1500</cbc:BaseAmount><!--BT-93-->
 		<cac:TaxCategory>
 			<cbc:ID>S</cbc:ID><!--BT-95-->
-			<cbc:Percent>20.00</cbc:Percent><!--BT-96-->
+			<cbc:Percent>25.00</cbc:Percent><!--BT-96-->
 			<cac:TaxScheme>
 				<cbc:ID>VAT</cbc:ID>
 			</cac:TaxScheme>
 		</cac:TaxCategory>
 	</cac:AllowanceCharge>
 	<cac:TaxTotal>
-		<cbc:TaxAmount currencyID="RON">273.09</cbc:TaxAmount><!--BT-110 BT-111-->
+		<cbc:TaxAmount currencyID="RON">292.20</cbc:TaxAmount><!--BT-110 BT-111-->
 		<cac:TaxSubtotal><!--BG-23(1)-->
-			<cbc:TaxableAmount currencyID="RON">1224.8</cbc:TaxableAmount><!--BT-116-->
-			<cbc:TaxAmount currencyID="RON">244.96</cbc:TaxAmount><!--BT-117-->
+			<cbc:TaxableAmount currencyID="RON">1460.5</cbc:TaxableAmount><!--BT-116-->
+			<cbc:TaxAmount currencyID="RON">292.1</cbc:TaxAmount><!--BT-117-->
 			<cac:TaxCategory>
 				<cbc:ID>S</cbc:ID><!--BT-118-->
 				<cbc:Percent>20</cbc:Percent><!--BT-119-->
@@ -268,23 +272,23 @@
 			</cac:TaxCategory>
 		</cac:TaxSubtotal>
 		<cac:TaxSubtotal><!--BG-23(2)-->
-			<cbc:TaxableAmount currencyID="RON">187.5</cbc:TaxableAmount><!--BT-116-->
-			<cbc:TaxAmount currencyID="RON">28.13</cbc:TaxAmount><!--BT-117-->
+			<cbc:TaxableAmount currencyID="RON">1</cbc:TaxableAmount>
+			<cbc:TaxAmount currencyID="RON">0.1</cbc:TaxAmount>
 			<cac:TaxCategory>
-				<cbc:ID>S</cbc:ID><!--BT-118-->
-				<cbc:Percent>15</cbc:Percent><!--BT-119-->
+				<cbc:ID>AE</cbc:ID>
+				<cbc:Percent>10</cbc:Percent>
 				<cac:TaxScheme>
 					<cbc:ID>VAT</cbc:ID>
 				</cac:TaxScheme>
 			</cac:TaxCategory>
 		</cac:TaxSubtotal>
 		<cac:TaxSubtotal><!--BG-23(3)-->
-			<cbc:TaxableAmount currencyID="RON">-25</cbc:TaxableAmount><!--BT-116-->
-			<cbc:TaxAmount currencyID="RON">0</cbc:TaxAmount><!--BT-117-->
+			<cbc:TaxableAmount currencyID="RON">-25</cbc:TaxableAmount>
+			<cbc:TaxAmount currencyID="RON">0</cbc:TaxAmount>
 			<cac:TaxCategory>
-				<cbc:ID>E</cbc:ID><!--BT-118-->
-				<cbc:Percent>0</cbc:Percent><!--BT-119-->
-				<cbc:TaxExemptionReasonCode>VATEX-EU-79-C</cbc:TaxExemptionReasonCode><!--BT-121-->
+				<cbc:ID>E</cbc:ID>
+				<cbc:Percent>0</cbc:Percent>
+				<cbc:TaxExemptionReasonCode>VATEX-EU-132</cbc:TaxExemptionReasonCode><!--BT-121-->
 				<cbc:TaxExemptionReason>Exempt New Means of Transport</cbc:TaxExemptionReason><!--BT-120-->
 				<cac:TaxScheme>
 					<cbc:ID>VAT</cbc:ID>
@@ -294,13 +298,13 @@
 	</cac:TaxTotal>
 	<cac:LegalMonetaryTotal><!--BG-22-->
 		<cbc:LineExtensionAmount currencyID="RON">1436.5</cbc:LineExtensionAmount><!--BT-106-->
-			<cbc:TaxExclusiveAmount currencyID="RON">1386.5</cbc:TaxExclusiveAmount><!--BT-109-->
-		<cbc:TaxInclusiveAmount currencyID="RON">1659.59</cbc:TaxInclusiveAmount><!--BT-112-->
-		<cbc:AllowanceTotalAmount currencyID="RON">150</cbc:AllowanceTotalAmount><!--BT-107-->
+		<cbc:TaxExclusiveAmount currencyID="RON">1436.5</cbc:TaxExclusiveAmount><!--BT-109-->
+		<cbc:TaxInclusiveAmount currencyID="RON">1729</cbc:TaxInclusiveAmount><!--BT-112-->
+		<cbc:AllowanceTotalAmount currencyID="RON">100</cbc:AllowanceTotalAmount><!--BT-107-->
 		<cbc:ChargeTotalAmount currencyID="RON">100</cbc:ChargeTotalAmount><!--BT-108-->
 		<cbc:PrepaidAmount currencyID="RON">1000</cbc:PrepaidAmount><!--BT-113-->
 		<cbc:PayableRoundingAmount currencyID="RON">0.30</cbc:PayableRoundingAmount><!--BT-114-->
-		<cbc:PayableAmount currencyID="RON">659.89</cbc:PayableAmount><!--BT-115-->
+		<cbc:PayableAmount currencyID="RON">729</cbc:PayableAmount><!--BT-115-->
 	</cac:LegalMonetaryTotal>
 	<cac:InvoiceLine><!--BG-25(1)-->
 		<cbc:ID>1</cbc:ID><!--BT-126-->
@@ -344,7 +348,7 @@
 				<cbc:ID>JB007</cbc:ID><!--BT-155-->
 			</cac:SellersItemIdentification>
 			<cac:StandardItemIdentification>
-				<cbc:ID schemeID="0005">1234567890124</cbc:ID><!--BT-157 BT-157-1 -->
+				<cbc:ID schemeID="0002">1234567890124</cbc:ID><!--BT-157 BT-157-1 -->
 			</cac:StandardItemIdentification>
 			<cac:OriginCountry>
 				<cbc:IdentificationCode>DK</cbc:IdentificationCode><!--BT-159-->
@@ -353,7 +357,7 @@
 				<cbc:ItemClassificationCode listID="AA" listVersionID="113">32344324</cbc:ItemClassificationCode><!--BT-158 BT-158-1 BT-158-2-->
 			</cac:CommodityClassification>
 			<cac:CommodityClassification>
-				<cbc:ItemClassificationCode listID="AB" listVersionID="2" >65434568</cbc:ItemClassificationCode>
+				<cbc:ItemClassificationCode listID="AA" listVersionID="2" >65434568</cbc:ItemClassificationCode>
 			</cac:CommodityClassification>
 			<cac:ClassifiedTaxCategory><!--BG-30-->
 				<cbc:ID>S</cbc:ID><!--BT-151-->
@@ -381,7 +385,7 @@
 		<cbc:ID>2</cbc:ID> 
 		<cbc:Note>Cover is slightly damaged.</cbc:Note> 
 		<cbc:InvoicedQuantity unitCode="EA">-1</cbc:InvoicedQuantity> 
-		<cbc:LineExtensionAmount currencyID="NOK">-3.96</cbc:LineExtensionAmount><!--BT-131-->
+		<cbc:LineExtensionAmount currencyID="NOK">-3.96</cbc:LineExtensionAmount> 
 		<cbc:AccountingCost>BookingCode002</cbc:AccountingCost> 
 		<cac:OrderLineReference> 
 			<cbc:LineID>5</cbc:LineID> 
@@ -402,7 +406,7 @@
 			</cac:CommodityClassification> 
 			<cac:ClassifiedTaxCategory> 
 				<cbc:ID>S</cbc:ID> 
-				<cbc:Percent>20</cbc:Percent> 
+				<cbc:Percent>15</cbc:Percent> 
 				<cac:TaxScheme> 
 					<cbc:ID>VAT</cbc:ID> 
 				</cac:TaxScheme> 
@@ -416,7 +420,7 @@
 	<cac:InvoiceLine> 
 			<cbc:ID>3</cbc:ID> 
 			<cbc:InvoicedQuantity unitCode="EA">2</cbc:InvoicedQuantity> 
-		<cbc:LineExtensionAmount currencyID="NOK">4.96</cbc:LineExtensionAmount> <!--BT-131-->
+			<cbc:LineExtensionAmount currencyID="NOK">4.96</cbc:LineExtensionAmount> 
 			<cbc:AccountingCost>BookingCode003</cbc:AccountingCost> <cac:OrderLineReference> 
 			<cbc:LineID>3</cbc:LineID> 
 			</cac:OrderLineReference> 
@@ -436,7 +440,7 @@
 					</cac:CommodityClassification> 
 					<cac:ClassifiedTaxCategory> 
 						<cbc:ID>S</cbc:ID> 
-						<cbc:Percent>20</cbc:Percent> 
+						<cbc:Percent>15</cbc:Percent> 
 						<cac:TaxScheme> 
 							<cbc:ID>VAT</cbc:ID> 
 						</cac:TaxScheme> 
@@ -455,7 +459,7 @@
 	<cac:InvoiceLine> 
 			<cbc:ID>4</cbc:ID> 
 			<cbc:InvoicedQuantity unitCode="EA">-1</cbc:InvoicedQuantity> 
-		<cbc:LineExtensionAmount currencyID="NOK">-25.00</cbc:LineExtensionAmount> <!--BT-131-->
+			<cbc:LineExtensionAmount currencyID="NOK">-25.00</cbc:LineExtensionAmount> 
 			<cbc:AccountingCost>BookingCode004</cbc:AccountingCost> 
 			<cac:OrderLineReference> 
 				<cbc:LineID>2</cbc:LineID> 
@@ -490,7 +494,7 @@
 	<cac:InvoiceLine> 
 			<cbc:ID>5</cbc:ID> 
 			<cbc:InvoicedQuantity unitCode="MTR">250</cbc:InvoicedQuantity> 
-		<cbc:LineExtensionAmount currencyID="NOK">187.50</cbc:LineExtensionAmount> <!--BT-131-->
+			<cbc:LineExtensionAmount currencyID="NOK">187.50</cbc:LineExtensionAmount> 
 			<cbc:AccountingCost>BookingCode005</cbc:AccountingCost> 
 			<cac:OrderLineReference> 
 				<cbc:LineID>6</cbc:LineID> 
@@ -511,7 +515,7 @@
 				</cac:CommodityClassification> 
 				<cac:ClassifiedTaxCategory> 
 					<cbc:ID>S</cbc:ID> 
-					<cbc:Percent>15</cbc:Percent> 
+					<cbc:Percent>25</cbc:Percent> 
 					<cac:TaxScheme> 
 					<cbc:ID>VAT</cbc:ID> 
 					</cac:TaxScheme> 

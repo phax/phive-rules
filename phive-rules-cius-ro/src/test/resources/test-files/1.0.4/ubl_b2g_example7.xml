@@ -34,7 +34,7 @@
                 <cbc:AdditionalStreetName>Suite 123</cbc:AdditionalStreetName><!--BT-36-->
                 <cbc:CityName>Big city</cbc:CityName><!--BT-37-->
                 <cbc:PostalZone>54321</cbc:PostalZone><!--BT-38-->
-                <cbc:CountrySubentity>RegionA</cbc:CountrySubentity><!--BT-39-->
+                <cbc:CountrySubentity>RO-AB</cbc:CountrySubentity><!--BT-39-->
                 <cac:AddressLine>
                     <cbc:Line>Block 212</cbc:Line><!--BT-162-->
                 </cac:AddressLine>

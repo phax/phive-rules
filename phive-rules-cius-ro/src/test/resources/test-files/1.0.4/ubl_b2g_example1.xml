@@ -34,7 +34,7 @@
                 <cbc:AdditionalStreetName>Suite 123</cbc:AdditionalStreetName><!--BT-36-->
                 <cbc:CityName>Big city</cbc:CityName><!--BT-37-->
                 <cbc:PostalZone>54321</cbc:PostalZone><!--BT-38-->
-                <cbc:CountrySubentity>RegionA</cbc:CountrySubentity><!--BT-39-->
+                <cbc:CountrySubentity>RO-AB</cbc:CountrySubentity><!--BT-39-->
                 <cac:AddressLine>
                     <cbc:Line>Block 212</cbc:Line><!--BT-162-->
                 </cac:AddressLine>
@@ -72,9 +72,9 @@
             <cac:PostalAddress><!--BG-8-->
                 <cbc:StreetName>BLD. Libertatii, Nr.16</cbc:StreetName><!--BT-50-->
                 <cbc:AdditionalStreetName>Corpul A</cbc:AdditionalStreetName><!--BT-51-->
-                <cbc:CityName>Municipiul Bucuresti</cbc:CityName><!--BT-52-->
+                <cbc:CityName>SECTOR5</cbc:CityName><!--BT-52-->
                 <cbc:PostalZone>54321</cbc:PostalZone><!--BT-53-->
-                <cbc:CountrySubentity>Sector 5</cbc:CountrySubentity><!--BT-54-->
+                <cbc:CountrySubentity>RO-B</cbc:CountrySubentity><!--BT-54-->
                 <cac:AddressLine>
                     <cbc:Line>Camera212</cbc:Line><!--BT-163-->
                 </cac:AddressLine>
