@@ -178,8 +178,8 @@ Alternate usage as a Maven BOM:
   
 # News and noteworthy
 
-* v2.1.14 - work in progress
-    * Fixed the EN 16931 UBL 1.3.8 XSLT version
+* v2.1.14 - 2022-05-19
+    * Fixed the EN 16931 UBL 1.3.8 XSLT version. That does not impact the Peppol May 2022 release.
     * Added support for CIUS-RO 1.0.3 - thanks to @yleider for the PR :heart:
     * Added support for CIUS-RO 1.0.4
 * v2.1.13 - 2022-05-09
