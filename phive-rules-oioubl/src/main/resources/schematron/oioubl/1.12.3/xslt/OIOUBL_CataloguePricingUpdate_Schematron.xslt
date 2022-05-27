@@ -574,8 +574,8 @@
     <svrl:fired-rule context="doc:CataloguePricingUpdate" />
 
 		<!--REPORT -->
-<xsl:if test="ext:UBLExtensions/ext:UBLExtension/ext:ExtensionAgencyID = 'Digitaliseringsstyrelsen' and (ext:UBLExtensions/ext:UBLExtension/cbc:ID &lt; '1001' or ext:UBLExtensions/ext:UBLExtension/cbc:ID > '1999')">
-      <svrl:successful-report test="ext:UBLExtensions/ext:UBLExtension/ext:ExtensionAgencyID = 'Digitaliseringsstyrelsen' and (ext:UBLExtensions/ext:UBLExtension/cbc:ID &lt; '1001' or ext:UBLExtensions/ext:UBLExtension/cbc:ID > '1999')">
+<xsl:if test="ext:UBLExtensions/ext:UBLExtension/ext:ExtensionAgencyID = 'Digitaliseringsstyrelsen' and (ext:UBLExtensions/ext:UBLExtension/cbc:ID &lt; 1001 or ext:UBLExtensions/ext:UBLExtension/cbc:ID > 1999)">
+      <svrl:successful-report test="ext:UBLExtensions/ext:UBLExtension/ext:ExtensionAgencyID = 'Digitaliseringsstyrelsen' and (ext:UBLExtensions/ext:UBLExtension/cbc:ID &lt; 1001 or ext:UBLExtensions/ext:UBLExtension/cbc:ID > 1999)">
         <xsl:attribute name="location">
           <xsl:apply-templates mode="schematron-select-full-path" select="." />
         </xsl:attribute>
@@ -1790,8 +1790,8 @@
     </xsl:if>
 
 		<!--REPORT -->
-<xsl:if test="(cbc:AddressFormatCode = 'Unstructured') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0' or count(cac:Country) != '0')">
-      <svrl:successful-report test="(cbc:AddressFormatCode = 'Unstructured') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0' or count(cac:Country) != '0')">
+<xsl:if test="(cbc:AddressFormatCode = 'Unstructured') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0 or count(cac:Country) != 0)">
+      <svrl:successful-report test="(cbc:AddressFormatCode = 'Unstructured') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0 or count(cac:Country) != 0)">
         <xsl:attribute name="location">
           <xsl:apply-templates mode="schematron-select-full-path" select="." />
         </xsl:attribute>
@@ -1860,8 +1860,8 @@
     </xsl:if>
 
 		<!--REPORT -->
-<xsl:if test="(cbc:AddressFormatCode = 'StructuredID') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0' or count(cac:Country) != '0')">
-      <svrl:successful-report test="(cbc:AddressFormatCode = 'StructuredID') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0' or count(cac:Country) != '0')">
+<xsl:if test="(cbc:AddressFormatCode = 'StructuredID') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0 or count(cac:Country) != 0)">
+      <svrl:successful-report test="(cbc:AddressFormatCode = 'StructuredID') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0 or count(cac:Country) != 0)">
         <xsl:attribute name="location">
           <xsl:apply-templates mode="schematron-select-full-path" select="." />
         </xsl:attribute>
@@ -1880,8 +1880,8 @@
     </xsl:if>
 
 		<!--REPORT -->
-<xsl:if test="(cbc:AddressFormatCode = 'StructuredRegion') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0')">
-      <svrl:successful-report test="(cbc:AddressFormatCode = 'StructuredRegion') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0')">
+<xsl:if test="(cbc:AddressFormatCode = 'StructuredRegion') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0)">
+      <svrl:successful-report test="(cbc:AddressFormatCode = 'StructuredRegion') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0)">
         <xsl:attribute name="location">
           <xsl:apply-templates mode="schematron-select-full-path" select="." />
         </xsl:attribute>
@@ -2187,8 +2187,8 @@
     </xsl:if>
 
 		<!--REPORT -->
-<xsl:if test="(cbc:AddressFormatCode = 'Unstructured') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0' or count(cac:Country) != '0')">
-      <svrl:successful-report test="(cbc:AddressFormatCode = 'Unstructured') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0' or count(cac:Country) != '0')">
+<xsl:if test="(cbc:AddressFormatCode = 'Unstructured') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0 or count(cac:Country) != 0)">
+      <svrl:successful-report test="(cbc:AddressFormatCode = 'Unstructured') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0 or count(cac:Country) != 0)">
         <xsl:attribute name="location">
           <xsl:apply-templates mode="schematron-select-full-path" select="." />
         </xsl:attribute>
@@ -2257,8 +2257,8 @@
     </xsl:if>
 
 		<!--REPORT -->
-<xsl:if test="(cbc:AddressFormatCode = 'StructuredID') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0' or count(cac:Country) != '0')">
-      <svrl:successful-report test="(cbc:AddressFormatCode = 'StructuredID') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0' or count(cac:Country) != '0')">
+<xsl:if test="(cbc:AddressFormatCode = 'StructuredID') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0 or count(cac:Country) != 0)">
+      <svrl:successful-report test="(cbc:AddressFormatCode = 'StructuredID') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0 or count(cac:Country) != 0)">
         <xsl:attribute name="location">
           <xsl:apply-templates mode="schematron-select-full-path" select="." />
         </xsl:attribute>
@@ -2277,8 +2277,8 @@
     </xsl:if>
 
 		<!--REPORT -->
-<xsl:if test="(cbc:AddressFormatCode = 'StructuredRegion') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0')">
-      <svrl:successful-report test="(cbc:AddressFormatCode = 'StructuredRegion') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0')">
+<xsl:if test="(cbc:AddressFormatCode = 'StructuredRegion') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0)">
+      <svrl:successful-report test="(cbc:AddressFormatCode = 'StructuredRegion') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0)">
         <xsl:attribute name="location">
           <xsl:apply-templates mode="schematron-select-full-path" select="." />
         </xsl:attribute>
@@ -3449,8 +3449,8 @@
     </xsl:if>
 
 		<!--REPORT -->
-<xsl:if test="(cbc:AddressFormatCode = 'Unstructured') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0' or count(cac:Country) != '0')">
-      <svrl:successful-report test="(cbc:AddressFormatCode = 'Unstructured') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0' or count(cac:Country) != '0')">
+<xsl:if test="(cbc:AddressFormatCode = 'Unstructured') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0 or count(cac:Country) != 0)">
+      <svrl:successful-report test="(cbc:AddressFormatCode = 'Unstructured') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0 or count(cac:Country) != 0)">
         <xsl:attribute name="location">
           <xsl:apply-templates mode="schematron-select-full-path" select="." />
         </xsl:attribute>
@@ -3519,8 +3519,8 @@
     </xsl:if>
 
 		<!--REPORT -->
-<xsl:if test="(cbc:AddressFormatCode = 'StructuredID') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0' or count(cac:Country) != '0')">
-      <svrl:successful-report test="(cbc:AddressFormatCode = 'StructuredID') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0' or count(cac:Country) != '0')">
+<xsl:if test="(cbc:AddressFormatCode = 'StructuredID') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0 or count(cac:Country) != 0)">
+      <svrl:successful-report test="(cbc:AddressFormatCode = 'StructuredID') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0 or count(cac:Country) != 0)">
         <xsl:attribute name="location">
           <xsl:apply-templates mode="schematron-select-full-path" select="." />
         </xsl:attribute>
@@ -3539,8 +3539,8 @@
     </xsl:if>
 
 		<!--REPORT -->
-<xsl:if test="(cbc:AddressFormatCode = 'StructuredRegion') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0')">
-      <svrl:successful-report test="(cbc:AddressFormatCode = 'StructuredRegion') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0')">
+<xsl:if test="(cbc:AddressFormatCode = 'StructuredRegion') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0)">
+      <svrl:successful-report test="(cbc:AddressFormatCode = 'StructuredRegion') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0)">
         <xsl:attribute name="location">
           <xsl:apply-templates mode="schematron-select-full-path" select="." />
         </xsl:attribute>
@@ -3846,8 +3846,8 @@
     </xsl:if>
 
 		<!--REPORT -->
-<xsl:if test="(cbc:AddressFormatCode = 'Unstructured') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0' or count(cac:Country) != '0')">
-      <svrl:successful-report test="(cbc:AddressFormatCode = 'Unstructured') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0' or count(cac:Country) != '0')">
+<xsl:if test="(cbc:AddressFormatCode = 'Unstructured') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0 or count(cac:Country) != 0)">
+      <svrl:successful-report test="(cbc:AddressFormatCode = 'Unstructured') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0 or count(cac:Country) != 0)">
         <xsl:attribute name="location">
           <xsl:apply-templates mode="schematron-select-full-path" select="." />
         </xsl:attribute>
@@ -3916,8 +3916,8 @@
     </xsl:if>
 
 		<!--REPORT -->
-<xsl:if test="(cbc:AddressFormatCode = 'StructuredID') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0' or count(cac:Country) != '0')">
-      <svrl:successful-report test="(cbc:AddressFormatCode = 'StructuredID') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0' or count(cac:Country) != '0')">
+<xsl:if test="(cbc:AddressFormatCode = 'StructuredID') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0 or count(cac:Country) != 0)">
+      <svrl:successful-report test="(cbc:AddressFormatCode = 'StructuredID') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0 or count(cac:Country) != 0)">
         <xsl:attribute name="location">
           <xsl:apply-templates mode="schematron-select-full-path" select="." />
         </xsl:attribute>
@@ -3936,8 +3936,8 @@
     </xsl:if>
 
 		<!--REPORT -->
-<xsl:if test="(cbc:AddressFormatCode = 'StructuredRegion') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0')">
-      <svrl:successful-report test="(cbc:AddressFormatCode = 'StructuredRegion') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0')">
+<xsl:if test="(cbc:AddressFormatCode = 'StructuredRegion') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0)">
+      <svrl:successful-report test="(cbc:AddressFormatCode = 'StructuredRegion') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0)">
         <xsl:attribute name="location">
           <xsl:apply-templates mode="schematron-select-full-path" select="." />
         </xsl:attribute>
@@ -4990,8 +4990,8 @@
     </xsl:if>
 
 		<!--REPORT -->
-<xsl:if test="(cbc:AddressFormatCode = 'Unstructured') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0' or count(cac:Country) != '0')">
-      <svrl:successful-report test="(cbc:AddressFormatCode = 'Unstructured') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0' or count(cac:Country) != '0')">
+<xsl:if test="(cbc:AddressFormatCode = 'Unstructured') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0 or count(cac:Country) != 0)">
+      <svrl:successful-report test="(cbc:AddressFormatCode = 'Unstructured') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0 or count(cac:Country) != 0)">
         <xsl:attribute name="location">
           <xsl:apply-templates mode="schematron-select-full-path" select="." />
         </xsl:attribute>
@@ -5060,8 +5060,8 @@
     </xsl:if>
 
 		<!--REPORT -->
-<xsl:if test="(cbc:AddressFormatCode = 'StructuredID') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0' or count(cac:Country) != '0')">
-      <svrl:successful-report test="(cbc:AddressFormatCode = 'StructuredID') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0' or count(cac:Country) != '0')">
+<xsl:if test="(cbc:AddressFormatCode = 'StructuredID') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0 or count(cac:Country) != 0)">
+      <svrl:successful-report test="(cbc:AddressFormatCode = 'StructuredID') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0 or count(cac:Country) != 0)">
         <xsl:attribute name="location">
           <xsl:apply-templates mode="schematron-select-full-path" select="." />
         </xsl:attribute>
@@ -5080,8 +5080,8 @@
     </xsl:if>
 
 		<!--REPORT -->
-<xsl:if test="(cbc:AddressFormatCode = 'StructuredRegion') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0')">
-      <svrl:successful-report test="(cbc:AddressFormatCode = 'StructuredRegion') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0')">
+<xsl:if test="(cbc:AddressFormatCode = 'StructuredRegion') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0)">
+      <svrl:successful-report test="(cbc:AddressFormatCode = 'StructuredRegion') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0)">
         <xsl:attribute name="location">
           <xsl:apply-templates mode="schematron-select-full-path" select="." />
         </xsl:attribute>
@@ -5387,8 +5387,8 @@
     </xsl:if>
 
 		<!--REPORT -->
-<xsl:if test="(cbc:AddressFormatCode = 'Unstructured') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0' or count(cac:Country) != '0')">
-      <svrl:successful-report test="(cbc:AddressFormatCode = 'Unstructured') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0' or count(cac:Country) != '0')">
+<xsl:if test="(cbc:AddressFormatCode = 'Unstructured') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0 or count(cac:Country) != 0)">
+      <svrl:successful-report test="(cbc:AddressFormatCode = 'Unstructured') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0 or count(cac:Country) != 0)">
         <xsl:attribute name="location">
           <xsl:apply-templates mode="schematron-select-full-path" select="." />
         </xsl:attribute>
@@ -5457,8 +5457,8 @@
     </xsl:if>
 
 		<!--REPORT -->
-<xsl:if test="(cbc:AddressFormatCode = 'StructuredID') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0' or count(cac:Country) != '0')">
-      <svrl:successful-report test="(cbc:AddressFormatCode = 'StructuredID') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0' or count(cac:Country) != '0')">
+<xsl:if test="(cbc:AddressFormatCode = 'StructuredID') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0 or count(cac:Country) != 0)">
+      <svrl:successful-report test="(cbc:AddressFormatCode = 'StructuredID') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0 or count(cac:Country) != 0)">
         <xsl:attribute name="location">
           <xsl:apply-templates mode="schematron-select-full-path" select="." />
         </xsl:attribute>
@@ -5477,8 +5477,8 @@
     </xsl:if>
 
 		<!--REPORT -->
-<xsl:if test="(cbc:AddressFormatCode = 'StructuredRegion') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0')">
-      <svrl:successful-report test="(cbc:AddressFormatCode = 'StructuredRegion') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0')">
+<xsl:if test="(cbc:AddressFormatCode = 'StructuredRegion') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0)">
+      <svrl:successful-report test="(cbc:AddressFormatCode = 'StructuredRegion') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0)">
         <xsl:attribute name="location">
           <xsl:apply-templates mode="schematron-select-full-path" select="." />
         </xsl:attribute>
@@ -6550,8 +6550,8 @@
     </xsl:if>
 
 		<!--REPORT -->
-<xsl:if test="(cbc:AddressFormatCode = 'Unstructured') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0' or count(cac:Country) != '0')">
-      <svrl:successful-report test="(cbc:AddressFormatCode = 'Unstructured') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0' or count(cac:Country) != '0')">
+<xsl:if test="(cbc:AddressFormatCode = 'Unstructured') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0 or count(cac:Country) != 0)">
+      <svrl:successful-report test="(cbc:AddressFormatCode = 'Unstructured') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0 or count(cac:Country) != 0)">
         <xsl:attribute name="location">
           <xsl:apply-templates mode="schematron-select-full-path" select="." />
         </xsl:attribute>
@@ -6620,8 +6620,8 @@
     </xsl:if>
 
 		<!--REPORT -->
-<xsl:if test="(cbc:AddressFormatCode = 'StructuredID') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0' or count(cac:Country) != '0')">
-      <svrl:successful-report test="(cbc:AddressFormatCode = 'StructuredID') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0' or count(cac:Country) != '0')">
+<xsl:if test="(cbc:AddressFormatCode = 'StructuredID') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0 or count(cac:Country) != 0)">
+      <svrl:successful-report test="(cbc:AddressFormatCode = 'StructuredID') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0 or count(cac:Country) != 0)">
         <xsl:attribute name="location">
           <xsl:apply-templates mode="schematron-select-full-path" select="." />
         </xsl:attribute>
@@ -6640,8 +6640,8 @@
     </xsl:if>
 
 		<!--REPORT -->
-<xsl:if test="(cbc:AddressFormatCode = 'StructuredRegion') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0')">
-      <svrl:successful-report test="(cbc:AddressFormatCode = 'StructuredRegion') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0')">
+<xsl:if test="(cbc:AddressFormatCode = 'StructuredRegion') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0)">
+      <svrl:successful-report test="(cbc:AddressFormatCode = 'StructuredRegion') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0)">
         <xsl:attribute name="location">
           <xsl:apply-templates mode="schematron-select-full-path" select="." />
         </xsl:attribute>
@@ -6947,8 +6947,8 @@
     </xsl:if>
 
 		<!--REPORT -->
-<xsl:if test="(cbc:AddressFormatCode = 'Unstructured') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0' or count(cac:Country) != '0')">
-      <svrl:successful-report test="(cbc:AddressFormatCode = 'Unstructured') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0' or count(cac:Country) != '0')">
+<xsl:if test="(cbc:AddressFormatCode = 'Unstructured') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0 or count(cac:Country) != 0)">
+      <svrl:successful-report test="(cbc:AddressFormatCode = 'Unstructured') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0 or count(cac:Country) != 0)">
         <xsl:attribute name="location">
           <xsl:apply-templates mode="schematron-select-full-path" select="." />
         </xsl:attribute>
@@ -7017,8 +7017,8 @@
     </xsl:if>
 
 		<!--REPORT -->
-<xsl:if test="(cbc:AddressFormatCode = 'StructuredID') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0' or count(cac:Country) != '0')">
-      <svrl:successful-report test="(cbc:AddressFormatCode = 'StructuredID') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0' or count(cac:Country) != '0')">
+<xsl:if test="(cbc:AddressFormatCode = 'StructuredID') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0 or count(cac:Country) != 0)">
+      <svrl:successful-report test="(cbc:AddressFormatCode = 'StructuredID') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0 or count(cac:Country) != 0)">
         <xsl:attribute name="location">
           <xsl:apply-templates mode="schematron-select-full-path" select="." />
         </xsl:attribute>
@@ -7037,8 +7037,8 @@
     </xsl:if>
 
 		<!--REPORT -->
-<xsl:if test="(cbc:AddressFormatCode = 'StructuredRegion') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0')">
-      <svrl:successful-report test="(cbc:AddressFormatCode = 'StructuredRegion') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0')">
+<xsl:if test="(cbc:AddressFormatCode = 'StructuredRegion') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0)">
+      <svrl:successful-report test="(cbc:AddressFormatCode = 'StructuredRegion') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0)">
         <xsl:attribute name="location">
           <xsl:apply-templates mode="schematron-select-full-path" select="." />
         </xsl:attribute>
@@ -8205,8 +8205,8 @@
     </xsl:if>
 
 		<!--REPORT -->
-<xsl:if test="(cbc:AddressFormatCode = 'Unstructured') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0' or count(cac:Country) != '0')">
-      <svrl:successful-report test="(cbc:AddressFormatCode = 'Unstructured') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0' or count(cac:Country) != '0')">
+<xsl:if test="(cbc:AddressFormatCode = 'Unstructured') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0 or count(cac:Country) != 0)">
+      <svrl:successful-report test="(cbc:AddressFormatCode = 'Unstructured') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0 or count(cac:Country) != 0)">
         <xsl:attribute name="location">
           <xsl:apply-templates mode="schematron-select-full-path" select="." />
         </xsl:attribute>
@@ -8275,8 +8275,8 @@
     </xsl:if>
 
 		<!--REPORT -->
-<xsl:if test="(cbc:AddressFormatCode = 'StructuredID') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0' or count(cac:Country) != '0')">
-      <svrl:successful-report test="(cbc:AddressFormatCode = 'StructuredID') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0' or count(cac:Country) != '0')">
+<xsl:if test="(cbc:AddressFormatCode = 'StructuredID') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0 or count(cac:Country) != 0)">
+      <svrl:successful-report test="(cbc:AddressFormatCode = 'StructuredID') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0 or count(cac:Country) != 0)">
         <xsl:attribute name="location">
           <xsl:apply-templates mode="schematron-select-full-path" select="." />
         </xsl:attribute>
@@ -8295,8 +8295,8 @@
     </xsl:if>
 
 		<!--REPORT -->
-<xsl:if test="(cbc:AddressFormatCode = 'StructuredRegion') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0')">
-      <svrl:successful-report test="(cbc:AddressFormatCode = 'StructuredRegion') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0')">
+<xsl:if test="(cbc:AddressFormatCode = 'StructuredRegion') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0)">
+      <svrl:successful-report test="(cbc:AddressFormatCode = 'StructuredRegion') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0)">
         <xsl:attribute name="location">
           <xsl:apply-templates mode="schematron-select-full-path" select="." />
         </xsl:attribute>
@@ -8602,8 +8602,8 @@
     </xsl:if>
 
 		<!--REPORT -->
-<xsl:if test="(cbc:AddressFormatCode = 'Unstructured') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0' or count(cac:Country) != '0')">
-      <svrl:successful-report test="(cbc:AddressFormatCode = 'Unstructured') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0' or count(cac:Country) != '0')">
+<xsl:if test="(cbc:AddressFormatCode = 'Unstructured') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0 or count(cac:Country) != 0)">
+      <svrl:successful-report test="(cbc:AddressFormatCode = 'Unstructured') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0 or count(cac:Country) != 0)">
         <xsl:attribute name="location">
           <xsl:apply-templates mode="schematron-select-full-path" select="." />
         </xsl:attribute>
@@ -8672,8 +8672,8 @@
     </xsl:if>
 
 		<!--REPORT -->
-<xsl:if test="(cbc:AddressFormatCode = 'StructuredID') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0' or count(cac:Country) != '0')">
-      <svrl:successful-report test="(cbc:AddressFormatCode = 'StructuredID') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0' or count(cac:Country) != '0')">
+<xsl:if test="(cbc:AddressFormatCode = 'StructuredID') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0 or count(cac:Country) != 0)">
+      <svrl:successful-report test="(cbc:AddressFormatCode = 'StructuredID') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0 or count(cac:Country) != 0)">
         <xsl:attribute name="location">
           <xsl:apply-templates mode="schematron-select-full-path" select="." />
         </xsl:attribute>
@@ -8692,8 +8692,8 @@
     </xsl:if>
 
 		<!--REPORT -->
-<xsl:if test="(cbc:AddressFormatCode = 'StructuredRegion') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0')">
-      <svrl:successful-report test="(cbc:AddressFormatCode = 'StructuredRegion') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0')">
+<xsl:if test="(cbc:AddressFormatCode = 'StructuredRegion') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0)">
+      <svrl:successful-report test="(cbc:AddressFormatCode = 'StructuredRegion') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0)">
         <xsl:attribute name="location">
           <xsl:apply-templates mode="schematron-select-full-path" select="." />
         </xsl:attribute>
@@ -9614,8 +9614,8 @@
     </xsl:if>
 
 		<!--REPORT -->
-<xsl:if test="(cbc:AddressFormatCode = 'Unstructured') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0' or count(cac:Country) != '0')">
-      <svrl:successful-report test="(cbc:AddressFormatCode = 'Unstructured') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0' or count(cac:Country) != '0')">
+<xsl:if test="(cbc:AddressFormatCode = 'Unstructured') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0 or count(cac:Country) != 0)">
+      <svrl:successful-report test="(cbc:AddressFormatCode = 'Unstructured') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0 or count(cac:Country) != 0)">
         <xsl:attribute name="location">
           <xsl:apply-templates mode="schematron-select-full-path" select="." />
         </xsl:attribute>
@@ -9684,8 +9684,8 @@
     </xsl:if>
 
 		<!--REPORT -->
-<xsl:if test="(cbc:AddressFormatCode = 'StructuredID') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0' or count(cac:Country) != '0')">
-      <svrl:successful-report test="(cbc:AddressFormatCode = 'StructuredID') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0' or count(cac:Country) != '0')">
+<xsl:if test="(cbc:AddressFormatCode = 'StructuredID') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0 or count(cac:Country) != 0)">
+      <svrl:successful-report test="(cbc:AddressFormatCode = 'StructuredID') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0 or count(cac:Country) != 0)">
         <xsl:attribute name="location">
           <xsl:apply-templates mode="schematron-select-full-path" select="." />
         </xsl:attribute>
@@ -9704,8 +9704,8 @@
     </xsl:if>
 
 		<!--REPORT -->
-<xsl:if test="(cbc:AddressFormatCode = 'StructuredRegion') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0')">
-      <svrl:successful-report test="(cbc:AddressFormatCode = 'StructuredRegion') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0')">
+<xsl:if test="(cbc:AddressFormatCode = 'StructuredRegion') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0)">
+      <svrl:successful-report test="(cbc:AddressFormatCode = 'StructuredRegion') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0)">
         <xsl:attribute name="location">
           <xsl:apply-templates mode="schematron-select-full-path" select="." />
         </xsl:attribute>
@@ -10211,8 +10211,8 @@
     </xsl:if>
 
 		<!--REPORT -->
-<xsl:if test="(cbc:AddressFormatCode = 'Unstructured') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0' or count(cac:Country) != '0')">
-      <svrl:successful-report test="(cbc:AddressFormatCode = 'Unstructured') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0' or count(cac:Country) != '0')">
+<xsl:if test="(cbc:AddressFormatCode = 'Unstructured') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0 or count(cac:Country) != 0)">
+      <svrl:successful-report test="(cbc:AddressFormatCode = 'Unstructured') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0 or count(cac:Country) != 0)">
         <xsl:attribute name="location">
           <xsl:apply-templates mode="schematron-select-full-path" select="." />
         </xsl:attribute>
@@ -10281,8 +10281,8 @@
     </xsl:if>
 
 		<!--REPORT -->
-<xsl:if test="(cbc:AddressFormatCode = 'StructuredID') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0' or count(cac:Country) != '0')">
-      <svrl:successful-report test="(cbc:AddressFormatCode = 'StructuredID') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0' or count(cac:Country) != '0')">
+<xsl:if test="(cbc:AddressFormatCode = 'StructuredID') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0 or count(cac:Country) != 0)">
+      <svrl:successful-report test="(cbc:AddressFormatCode = 'StructuredID') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0 or count(cac:Country) != 0)">
         <xsl:attribute name="location">
           <xsl:apply-templates mode="schematron-select-full-path" select="." />
         </xsl:attribute>
@@ -10301,8 +10301,8 @@
     </xsl:if>
 
 		<!--REPORT -->
-<xsl:if test="(cbc:AddressFormatCode = 'StructuredRegion') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0')">
-      <svrl:successful-report test="(cbc:AddressFormatCode = 'StructuredRegion') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0')">
+<xsl:if test="(cbc:AddressFormatCode = 'StructuredRegion') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0)">
+      <svrl:successful-report test="(cbc:AddressFormatCode = 'StructuredRegion') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0)">
         <xsl:attribute name="location">
           <xsl:apply-templates mode="schematron-select-full-path" select="." />
         </xsl:attribute>
@@ -10608,8 +10608,8 @@
     </xsl:if>
 
 		<!--REPORT -->
-<xsl:if test="(cbc:AddressFormatCode = 'Unstructured') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0' or count(cac:Country) != '0')">
-      <svrl:successful-report test="(cbc:AddressFormatCode = 'Unstructured') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0' or count(cac:Country) != '0')">
+<xsl:if test="(cbc:AddressFormatCode = 'Unstructured') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0 or count(cac:Country) != 0)">
+      <svrl:successful-report test="(cbc:AddressFormatCode = 'Unstructured') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0 or count(cac:Country) != 0)">
         <xsl:attribute name="location">
           <xsl:apply-templates mode="schematron-select-full-path" select="." />
         </xsl:attribute>
@@ -10678,8 +10678,8 @@
     </xsl:if>
 
 		<!--REPORT -->
-<xsl:if test="(cbc:AddressFormatCode = 'StructuredID') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0' or count(cac:Country) != '0')">
-      <svrl:successful-report test="(cbc:AddressFormatCode = 'StructuredID') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0' or count(cac:Country) != '0')">
+<xsl:if test="(cbc:AddressFormatCode = 'StructuredID') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0 or count(cac:Country) != 0)">
+      <svrl:successful-report test="(cbc:AddressFormatCode = 'StructuredID') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0 or count(cac:Country) != 0)">
         <xsl:attribute name="location">
           <xsl:apply-templates mode="schematron-select-full-path" select="." />
         </xsl:attribute>
@@ -10698,8 +10698,8 @@
     </xsl:if>
 
 		<!--REPORT -->
-<xsl:if test="(cbc:AddressFormatCode = 'StructuredRegion') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0')">
-      <svrl:successful-report test="(cbc:AddressFormatCode = 'StructuredRegion') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0')">
+<xsl:if test="(cbc:AddressFormatCode = 'StructuredRegion') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0)">
+      <svrl:successful-report test="(cbc:AddressFormatCode = 'StructuredRegion') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0)">
         <xsl:attribute name="location">
           <xsl:apply-templates mode="schematron-select-full-path" select="." />
         </xsl:attribute>
@@ -11872,8 +11872,8 @@
     </xsl:if>
 
 		<!--REPORT -->
-<xsl:if test="(cbc:AddressFormatCode = 'Unstructured') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0' or count(cac:Country) != '0')">
-      <svrl:successful-report test="(cbc:AddressFormatCode = 'Unstructured') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0' or count(cac:Country) != '0')">
+<xsl:if test="(cbc:AddressFormatCode = 'Unstructured') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0 or count(cac:Country) != 0)">
+      <svrl:successful-report test="(cbc:AddressFormatCode = 'Unstructured') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0 or count(cac:Country) != 0)">
         <xsl:attribute name="location">
           <xsl:apply-templates mode="schematron-select-full-path" select="." />
         </xsl:attribute>
@@ -11942,8 +11942,8 @@
     </xsl:if>
 
 		<!--REPORT -->
-<xsl:if test="(cbc:AddressFormatCode = 'StructuredID') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0' or count(cac:Country) != '0')">
-      <svrl:successful-report test="(cbc:AddressFormatCode = 'StructuredID') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0' or count(cac:Country) != '0')">
+<xsl:if test="(cbc:AddressFormatCode = 'StructuredID') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0 or count(cac:Country) != 0)">
+      <svrl:successful-report test="(cbc:AddressFormatCode = 'StructuredID') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0 or count(cac:Country) != 0)">
         <xsl:attribute name="location">
           <xsl:apply-templates mode="schematron-select-full-path" select="." />
         </xsl:attribute>
@@ -11962,8 +11962,8 @@
     </xsl:if>
 
 		<!--REPORT -->
-<xsl:if test="(cbc:AddressFormatCode = 'StructuredRegion') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0')">
-      <svrl:successful-report test="(cbc:AddressFormatCode = 'StructuredRegion') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0')">
+<xsl:if test="(cbc:AddressFormatCode = 'StructuredRegion') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0)">
+      <svrl:successful-report test="(cbc:AddressFormatCode = 'StructuredRegion') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0)">
         <xsl:attribute name="location">
           <xsl:apply-templates mode="schematron-select-full-path" select="." />
         </xsl:attribute>
@@ -12269,8 +12269,8 @@
     </xsl:if>
 
 		<!--REPORT -->
-<xsl:if test="(cbc:AddressFormatCode = 'Unstructured') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0' or count(cac:Country) != '0')">
-      <svrl:successful-report test="(cbc:AddressFormatCode = 'Unstructured') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0' or count(cac:Country) != '0')">
+<xsl:if test="(cbc:AddressFormatCode = 'Unstructured') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0 or count(cac:Country) != 0)">
+      <svrl:successful-report test="(cbc:AddressFormatCode = 'Unstructured') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0 or count(cac:Country) != 0)">
         <xsl:attribute name="location">
           <xsl:apply-templates mode="schematron-select-full-path" select="." />
         </xsl:attribute>
@@ -12339,8 +12339,8 @@
     </xsl:if>
 
 		<!--REPORT -->
-<xsl:if test="(cbc:AddressFormatCode = 'StructuredID') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0' or count(cac:Country) != '0')">
-      <svrl:successful-report test="(cbc:AddressFormatCode = 'StructuredID') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0' or count(cac:Country) != '0')">
+<xsl:if test="(cbc:AddressFormatCode = 'StructuredID') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0 or count(cac:Country) != 0)">
+      <svrl:successful-report test="(cbc:AddressFormatCode = 'StructuredID') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0 or count(cac:Country) != 0)">
         <xsl:attribute name="location">
           <xsl:apply-templates mode="schematron-select-full-path" select="." />
         </xsl:attribute>
@@ -12359,8 +12359,8 @@
     </xsl:if>
 
 		<!--REPORT -->
-<xsl:if test="(cbc:AddressFormatCode = 'StructuredRegion') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0')">
-      <svrl:successful-report test="(cbc:AddressFormatCode = 'StructuredRegion') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0')">
+<xsl:if test="(cbc:AddressFormatCode = 'StructuredRegion') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0)">
+      <svrl:successful-report test="(cbc:AddressFormatCode = 'StructuredRegion') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0)">
         <xsl:attribute name="location">
           <xsl:apply-templates mode="schematron-select-full-path" select="." />
         </xsl:attribute>
@@ -13339,8 +13339,8 @@
     </xsl:if>
 
 		<!--REPORT -->
-<xsl:if test="(cbc:AddressFormatCode = 'Unstructured') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0' or count(cac:Country) != '0')">
-      <svrl:successful-report test="(cbc:AddressFormatCode = 'Unstructured') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0' or count(cac:Country) != '0')">
+<xsl:if test="(cbc:AddressFormatCode = 'Unstructured') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0 or count(cac:Country) != 0)">
+      <svrl:successful-report test="(cbc:AddressFormatCode = 'Unstructured') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0 or count(cac:Country) != 0)">
         <xsl:attribute name="location">
           <xsl:apply-templates mode="schematron-select-full-path" select="." />
         </xsl:attribute>
@@ -13409,8 +13409,8 @@
     </xsl:if>
 
 		<!--REPORT -->
-<xsl:if test="(cbc:AddressFormatCode = 'StructuredID') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0' or count(cac:Country) != '0')">
-      <svrl:successful-report test="(cbc:AddressFormatCode = 'StructuredID') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0' or count(cac:Country) != '0')">
+<xsl:if test="(cbc:AddressFormatCode = 'StructuredID') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0 or count(cac:Country) != 0)">
+      <svrl:successful-report test="(cbc:AddressFormatCode = 'StructuredID') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0 or count(cac:Country) != 0)">
         <xsl:attribute name="location">
           <xsl:apply-templates mode="schematron-select-full-path" select="." />
         </xsl:attribute>
@@ -13429,8 +13429,8 @@
     </xsl:if>
 
 		<!--REPORT -->
-<xsl:if test="(cbc:AddressFormatCode = 'StructuredRegion') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0')">
-      <svrl:successful-report test="(cbc:AddressFormatCode = 'StructuredRegion') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0')">
+<xsl:if test="(cbc:AddressFormatCode = 'StructuredRegion') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0)">
+      <svrl:successful-report test="(cbc:AddressFormatCode = 'StructuredRegion') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0)">
         <xsl:attribute name="location">
           <xsl:apply-templates mode="schematron-select-full-path" select="." />
         </xsl:attribute>
@@ -14038,8 +14038,8 @@
     </xsl:if>
 
 		<!--REPORT -->
-<xsl:if test="cbc:MultiplierFactorNumeric and ((cbc:Amount - (cbc:BaseAmount * cbc:MultiplierFactorNumeric) &lt; '-1.00') or (cbc:Amount - (cbc:BaseAmount * cbc:MultiplierFactorNumeric) > '1.00'))">
-      <svrl:successful-report test="cbc:MultiplierFactorNumeric and ((cbc:Amount - (cbc:BaseAmount * cbc:MultiplierFactorNumeric) &lt; '-1.00') or (cbc:Amount - (cbc:BaseAmount * cbc:MultiplierFactorNumeric) > '1.00'))">
+<xsl:if test="cbc:MultiplierFactorNumeric and ((cbc:Amount - (cbc:BaseAmount * cbc:MultiplierFactorNumeric) &lt; -1.00) or (cbc:Amount - (cbc:BaseAmount * cbc:MultiplierFactorNumeric) > 1.00))">
+      <svrl:successful-report test="cbc:MultiplierFactorNumeric and ((cbc:Amount - (cbc:BaseAmount * cbc:MultiplierFactorNumeric) &lt; -1.00) or (cbc:Amount - (cbc:BaseAmount * cbc:MultiplierFactorNumeric) > 1.00))">
         <xsl:attribute name="location">
           <xsl:apply-templates mode="schematron-select-full-path" select="." />
         </xsl:attribute>

@@ -101,8 +101,11 @@
             <configuration>
               <schematronDirectory>src/test/resources/rule-source/oioubl/1.12.3</schematronDirectory>
               <schematronPattern>*.xml</schematronPattern>
-              <xsltDirectory>src/main/resources/schematron/oioubl/1.12.3</xsltDirectory>
+              <xsltDirectory>src/main/resources/schematron/oioubl/1.12.3/xslt</xsltDirectory>
               <stopOnError>false</stopOnError>
+              <parameters>
+                <allow-foreign>true</allow-foreign>
+              </parameters>
             </configuration>
           </execution>
           -->

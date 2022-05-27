@@ -28,7 +28,7 @@
     <!-- [Release 20120615] Check added according to issue: https://bugs.softwareborsen.dk/show_bug.cgi?id=934 -->
     <!-- Rule to validate UBLExtensions -->
     <sch:rule abstract="true" id="UBLExtensionsCheck">
-        <sch:report test="ext:UBLExtensions/ext:UBLExtension/ext:ExtensionAgencyID = 'Digitaliseringsstyrelsen' and (ext:UBLExtensions/ext:UBLExtension/cbc:ID &lt; '1001' or ext:UBLExtensions/ext:UBLExtension/cbc:ID &gt; '1999')">[F-LIB313] Invalid UBLExtension/ID when UBLExtension/ExtensionAgencyID is equal to 'Digitaliseringsstyrelsen'. ID must be an assigned value between '1001' and '1999'.</sch:report>
+        <sch:report test="ext:UBLExtensions/ext:UBLExtension/ext:ExtensionAgencyID = 'Digitaliseringsstyrelsen' and (ext:UBLExtensions/ext:UBLExtension/cbc:ID &lt; 1001 or ext:UBLExtensions/ext:UBLExtension/cbc:ID &gt; 1999)">[F-LIB313] Invalid UBLExtension/ID when UBLExtension/ExtensionAgencyID is equal to 'Digitaliseringsstyrelsen'. ID must be an assigned value between '1001' and '1999'.</sch:report>
     </sch:rule>
 
     <!-- Rule to validate UBLVersionID -->
@@ -258,7 +258,7 @@
 
     <!-- Rule to validate Unstructured address -->
     <sch:rule abstract="true" id="UnstructuredCheck">
-        <sch:report test="(cbc:AddressFormatCode = 'Unstructured') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0' or count(cac:Country) != '0')">[F-LIB031] An Unstructured address is only allowed to have AddressLine elements</sch:report>
+        <sch:report test="(cbc:AddressFormatCode = 'Unstructured') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0 or count(cac:Country) != 0)">[F-LIB031] An Unstructured address is only allowed to have AddressLine elements</sch:report>
     </sch:rule>
 
     <!-- Rule to validate StructuredDK address -->
@@ -280,13 +280,13 @@
     <!-- Rule to validate StructuredID address -->
     <sch:rule abstract="true" id="StructuredIDCheck">
         <sch:report test="(cbc:AddressFormatCode = 'StructuredID') and (not(cbc:ID) or cbc:ID = '')">[F-LIB037] ID is required for a StructuredID address type</sch:report>
-        <sch:report test="(cbc:AddressFormatCode = 'StructuredID') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0' or count(cac:Country) != '0')">[F-LIB038] Only the ID is used for a StructuredID address type</sch:report>
+        <sch:report test="(cbc:AddressFormatCode = 'StructuredID') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0 or count(cac:Country) != 0)">[F-LIB038] Only the ID is used for a StructuredID address type</sch:report>
     </sch:rule>
 
     <!-- Rule to validate StructuredRegion address -->
     <sch:rule abstract="true" id="StructuredRegionCheck">
         <sch:report test="(cbc:AddressFormatCode = 'StructuredRegion') and ((not(cac:Country/cbc:IdentificationCode) or cac:Country/cbc:IdentificationCode = '') and (not(cbc:Region) or cbc:Region = '') and (not(cbc:District) or cbc:District = ''))">[F-LIB039] Region or District or Country/IdentificationCode is required for a StructuredRegion address type</sch:report>
-        <sch:report test="(cbc:AddressFormatCode = 'StructuredRegion') and (count(cbc:StreetName) != '0' or count(cbc:BuildingNumber) != '0' or count(cbc:CityName) != '0' or count(cbc:PostalZone) != '0')">[F-LIB040] Only Region, District, and/or Country/IdentificationCode can be used for a StructuredRegion address type</sch:report>
+        <sch:report test="(cbc:AddressFormatCode = 'StructuredRegion') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0)">[F-LIB040] Only Region, District, and/or Country/IdentificationCode can be used for a StructuredRegion address type</sch:report>
     </sch:rule>
 
     <!-- Rule to validate TaxScheme -->
@@ -871,7 +871,7 @@
         <sch:report test="cbc:MultiplierFactorNumeric and not(cbc:BaseAmount != '')">[F-LIB248] When MultiplierFactorNumeric is used, BaseAmount is mandatory</sch:report>
         <sch:report test="starts-with(cbc:MultiplierFactorNumeric,'-')">[F-LIB227] MultiplierFactorNumeric must be a positive number</sch:report>
         <!-- [PatchRelease 20120227] Tolerance added to check according to issue: https://bugs.softwareborsen.dk/show_bug.cgi?id=823 -->
-        <sch:report test="cbc:MultiplierFactorNumeric and ((cbc:Amount - (cbc:BaseAmount * cbc:MultiplierFactorNumeric) &lt; '-1.00') or (cbc:Amount - (cbc:BaseAmount * cbc:MultiplierFactorNumeric) &gt; '1.00'))">[F-LIB228] Amount must equal BaseAmount * MultiplierFactorNumeric</sch:report>
+        <sch:report test="cbc:MultiplierFactorNumeric and ((cbc:Amount - (cbc:BaseAmount * cbc:MultiplierFactorNumeric) &lt; -1.00) or (cbc:Amount - (cbc:BaseAmount * cbc:MultiplierFactorNumeric) &gt; 1.00))">[F-LIB228] Amount must equal BaseAmount * MultiplierFactorNumeric</sch:report>
     </sch:rule>
 
     <!-- Rule to validate PriceAllowanceCharge (toplevel only) -->
@@ -897,7 +897,7 @@
         <!-- [Release 20111201] Check exchanged with same as for AllowanceCharge according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=658 -->
         <!--<sch:report test="cbc:MultiplierFactorNumeric and not(cbc:Amount = (cbc:BaseAmount * cbc:MultiplierFactorNumeric))">[F-LIB272] Amount must equal BaseAmount * MultiplierFactorNumeric</sch:report>-->
         <!-- [PatchRelease 20120227] Tolerance added to check according to issue: https://bugs.softwareborsen.dk/show_bug.cgi?id=823 -->
-        <sch:report test="cbc:MultiplierFactorNumeric and ((cbc:Amount - (cbc:BaseAmount * cbc:MultiplierFactorNumeric) &lt; '-1.00') or (cbc:Amount - (cbc:BaseAmount * cbc:MultiplierFactorNumeric) &gt; '1.00'))">[F-LIB228] Amount must equal BaseAmount * MultiplierFactorNumeric</sch:report>
+        <sch:report test="cbc:MultiplierFactorNumeric and ((cbc:Amount - (cbc:BaseAmount * cbc:MultiplierFactorNumeric) &lt; -1.00) or (cbc:Amount - (cbc:BaseAmount * cbc:MultiplierFactorNumeric) &gt; 1.00))">[F-LIB228] Amount must equal BaseAmount * MultiplierFactorNumeric</sch:report>
     </sch:rule>
 
     <!-- Rule to validate TaxTotal -->
@@ -973,7 +973,7 @@
         <!-- Check that the Calculation ot the TaxAmount is correct -->
         <!-- [Release N/A] Added check according to issue: https://bugs.softwareborsen.dk/show_bug.cgi?id=1361 -->
         <!-- Removed from version 1.7 in last minute! -->
-        <!--<sch:report test="(cac:TaxCategory/cac:TaxScheme/cbc:ID = 63) and ((((cbc:TaxableAmount * (cac:TaxCategory/cbc:Percent div 100)) - cbc:TaxAmount) &lt; '-0.50') or (((cbc:TaxableAmount * (cac:TaxCategory/cbc:Percent div 100)) - cbc:TaxAmount) &gt; '0.50') )">[F-LIB326] In TaxTotal/TaxSubTotal (header), the TaxableAmount multiplied by TaxCategory/Precent must equal TaxAmount</sch:report>-->
+        <!--<sch:report test="(cac:TaxCategory/cac:TaxScheme/cbc:ID = 63) and ((((cbc:TaxableAmount * (cac:TaxCategory/cbc:Percent div 100)) - cbc:TaxAmount) &lt; -0.50) or (((cbc:TaxableAmount * (cac:TaxCategory/cbc:Percent div 100)) - cbc:TaxAmount) &gt; 0.50) )">[F-LIB326] In TaxTotal/TaxSubTotal (header), the TaxableAmount multiplied by TaxCategory/Precent must equal TaxAmount</sch:report>-->
 
         <!-- [Release 20160915] Added check according to issue: https://bugs.softwareborsen.dk/show_bug.cgi?id=1679 -->
         <sch:report test="(cac:TaxCategory/cac:TaxScheme/cbc:ID = 'VAT') and not(cac:TaxCategory/cbc:Percent)">[F-LIB333] When TaxCategory/TaxScheme/Id is VAT, the TaxCategory/Percent must be present.</sch:report>
@@ -984,7 +984,7 @@
         <!-- Check that the Calculation ot the TaxAmount is correct -->
         <!-- [Release N/A] Added check according to issue: https://bugs.softwareborsen.dk/show_bug.cgi?id=1361 -->
         <!-- Removed from version 1.7 in last minute! -->
-        <!--<sch:report test="(cac:TaxCategory/cac:TaxScheme/cbc:ID = 63) and (number(cbc:TaxAmount) &gt; 0) and ((((cbc:TaxableAmount * (cac:TaxCategory/cbc:Percent div 100)) - cbc:TaxAmount) &lt; '-0.15') or (((cbc:TaxableAmount * (cac:TaxCategory/cbc:Percent div 100)) - cbc:TaxAmount) &gt; '0.15') )">[F-LIB329] In TaxTotal/TaxSubTotal (line), if calculated, the TaxableAmount multiplied by TaxCategory/Precent must equal TaxAmount</sch:report>-->
+        <!--<sch:report test="(cac:TaxCategory/cac:TaxScheme/cbc:ID = 63) and (number(cbc:TaxAmount) &gt; 0) and ((((cbc:TaxableAmount * (cac:TaxCategory/cbc:Percent div 100)) - cbc:TaxAmount) &lt; -0.15) or (((cbc:TaxableAmount * (cac:TaxCategory/cbc:Percent div 100)) - cbc:TaxAmount) &gt; 0.15) )">[F-LIB329] In TaxTotal/TaxSubTotal (line), if calculated, the TaxableAmount multiplied by TaxCategory/Precent must equal TaxAmount</sch:report>-->
     </sch:rule>
 
     <!-- Rule to validate Attachment -->

@@ -1120,7 +1120,7 @@
 			<sch:report test="count(../cac:TaxTotal/cbc:RoundingAmount) and not(cbc:PayableRoundingAmount)">[F-OCH065] PayableRoundingAmount is mandatory when TaxTotal/RoundingAmount elements are present</sch:report>
 			<!-- Validate -->
 			<!-- [Release 20120615] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=823 -->
-			<sch:report test="((cbc:LineExtensionAmount - sum(../cac:OrderLine/cac:LineItem/cbc:LineExtensionAmount)) &gt; '0.0055') or ((cbc:LineExtensionAmount - sum(../cac:OrderLine/cac:LineItem/cbc:LineExtensionAmount)) &lt; '-0.0055')">[F-OCH066] The sum of Orderline/LineItem/LineExtensionAmount elements must equal LineExtensionAmount</sch:report>
+			<sch:report test="((cbc:LineExtensionAmount - sum(../cac:OrderLine/cac:LineItem/cbc:LineExtensionAmount)) &gt; 0.0055) or ((cbc:LineExtensionAmount - sum(../cac:OrderLine/cac:LineItem/cbc:LineExtensionAmount)) &lt; -0.0055)">[F-OCH066] The sum of Orderline/LineItem/LineExtensionAmount elements must equal LineExtensionAmount</sch:report>
 			<sch:report test="cbc:TaxExclusiveAmount and not(format-number(cbc:TaxExclusiveAmount,'##.00') = format-number(sum(../cac:TaxTotal/cac:TaxSubtotal/cbc:TaxAmount),'##.00'))">[F-OCH067] The sum of TaxTotal/TaxSubtotal/TaxAmount elements must equal TaxExclusiveAmount</sch:report>
 			<sch:report test="cbc:TaxInclusiveAmount and not(format-number(cbc:TaxInclusiveAmount,'##.00') = format-number(sum(cbc:LineExtensionAmount) + sum(../cac:TaxTotal/cac:TaxSubtotal/cbc:TaxAmount) + sum(cbc:ChargeTotalAmount) - sum(cbc:AllowanceTotalAmount) + sum(cbc:PayableRoundingAmount),'##.00'))">[F-OCH068] TaxInclusiveAmount is calculated incorrectly</sch:report>
 			<sch:report test="cbc:AllowanceTotalAmount and not(format-number(cbc:AllowanceTotalAmount,'##.00') = format-number(sum(../cac:AllowanceCharge[cbc:ChargeIndicator='false']/cbc:Amount),'##.00'))">[F-OCH069] The sum of AllowanceCharge/Amount elements (with ChargeIndicator='false') must equal AllowanceTotalAmount</sch:report>
@@ -1223,8 +1223,8 @@
 
 			<sch:assert test="cbc:ID != ''">[F-OCH132] Invalid ID. Must contain a value</sch:assert>
 			<sch:extends rule="AccountingCostCheck"/>
-			<sch:report test="(not($L) and $T) and ((cbc:LineExtensionAmount &lt; (cbc:Quantity * cac:Price/cbc:PriceAmount - '01.00')) or (cbc:LineExtensionAmount &gt; (cbc:Quantity * cac:Price/cbc:PriceAmount + '01.00')))">[F-OCH140] When present, LineExtensionAmount must equal Quantity * Price.PriceAmount (when OrderableUnitFactorRate not present)</sch:report>
-			<sch:report test="(not($L) and not($T)) and ((cbc:LineExtensionAmount &lt; (cbc:Quantity * cac:Price/cbc:PriceAmount * cac:Price/cbc:OrderableUnitFactorRate - '01.00')) or (cbc:LineExtensionAmount &gt; (cbc:Quantity * cac:Price/cbc:PriceAmount * cac:Price/cbc:OrderableUnitFactorRate + '01.00')))">[F-OCH179] When present, LineExtensionAmount must equal Quantity * Price.PriceAmount * Price.OrderableUnitFactorRate</sch:report>
+			<sch:report test="(not($L) and $T) and ((cbc:LineExtensionAmount &lt; (cbc:Quantity * cac:Price/cbc:PriceAmount - 01.00)) or (cbc:LineExtensionAmount &gt; (cbc:Quantity * cac:Price/cbc:PriceAmount + 01.00)))">[F-OCH140] When present, LineExtensionAmount must equal Quantity * Price.PriceAmount (when OrderableUnitFactorRate not present)</sch:report>
+			<sch:report test="(not($L) and not($T)) and ((cbc:LineExtensionAmount &lt; (cbc:Quantity * cac:Price/cbc:PriceAmount * cac:Price/cbc:OrderableUnitFactorRate - 01.00)) or (cbc:LineExtensionAmount &gt; (cbc:Quantity * cac:Price/cbc:PriceAmount * cac:Price/cbc:OrderableUnitFactorRate + 01.00)))">[F-OCH179] When present, LineExtensionAmount must equal Quantity * Price.PriceAmount * Price.OrderableUnitFactorRate</sch:report>
 		</sch:rule>
 		<!-- Validate UUID -->
 		<!-- Validate Note -->

@@ -1030,7 +1030,7 @@
 			<sch:report test="count(../cac:TaxTotal/cbc:RoundingAmount) and not(cbc:PayableRoundingAmount)">[F-ORD115] PayableRoundingAmount is mandatory when TaxTotal/RoundingAmount elements are present</sch:report>
 			<!-- Validate -->
 			<!-- [Release 20120615] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=823 -->
-			<!-- sch:report test="((cbc:LineExtensionAmount - sum(../cac:OrderLine/cac:LineItem/cbc:LineExtensionAmount)) &gt; '0.0055') or ((cbc:LineExtensionAmount - sum(../cac:OrderLine/cac:LineItem/cbc:LineExtensionAmount)) &lt; '-0.0055')">[F-ORD116] The sum of Orderline/LineItem/LineExtensionAmount elements must equal LineExtensionAmount</sch:report-->
+			<!-- sch:report test="((cbc:LineExtensionAmount - sum(../cac:OrderLine/cac:LineItem/cbc:LineExtensionAmount)) &gt; 0.0055) or ((cbc:LineExtensionAmount - sum(../cac:OrderLine/cac:LineItem/cbc:LineExtensionAmount)) &lt; -0.0055)">[F-ORD116] The sum of Orderline/LineItem/LineExtensionAmount elements must equal LineExtensionAmount</sch:report-->
 			<sch:report test="cbc:TaxExclusiveAmount and not(format-number(cbc:TaxExclusiveAmount,'##.00') = format-number(sum(../cac:TaxTotal/cac:TaxSubtotal/cbc:TaxAmount),'##.00'))">[F-ORD117] The sum of TaxTotal/TaxSubtotal/TaxAmount elements must equal TaxExclusiveAmount</sch:report>
 			<sch:report test="cbc:TaxInclusiveAmount and not(format-number(cbc:TaxInclusiveAmount,'##.00') = format-number(sum(cbc:LineExtensionAmount) + sum(../cac:TaxTotal/cac:TaxSubtotal/cbc:TaxAmount) + sum(cbc:ChargeTotalAmount) - sum(cbc:AllowanceTotalAmount) + sum(cbc:PayableRoundingAmount),'##.00'))">[F-ORD118] TaxInclusiveAmount is calculated incorrectly</sch:report>
 			<sch:report test="cbc:AllowanceTotalAmount and not(format-number(cbc:AllowanceTotalAmount,'##.00') = format-number(sum(../cac:AllowanceCharge[cbc:ChargeIndicator='false']/cbc:Amount),'##.00'))">[F-ORD119] The sum of AllowanceCharge/Amount elements (with ChargeIndicator='false') must equal AllowanceTotalAmount</sch:report>
@@ -1122,22 +1122,22 @@
 			<sch:let name="nolineExtensionAmount" value="not(cbc:LineExtensionAmount)"/>
 
 			<!-- OrderableUnitFactorRate is not mandatory - so default to 1, if not exists. -->
-			<sch:let name="orderableUnitFactorRate" value="concat(
+			<sch:let name="orderableUnitFactorRate" value="xs:decimal(concat(
                                                                 substring(cac:Price/cbc:OrderableUnitFactorRate, 1, number(normalize-space(cac:Price/cbc:OrderableUnitFactorRate) != '') * string-length(cac:Price/cbc:OrderableUnitFactorRate)),
-                                                                substring(1, 1, number(not(normalize-space(cac:Price/cbc:OrderableUnitFactorRate) != '')) * 1)
-                                                    )"/>
+                                                                substring('1', 1, number(not(normalize-space(cac:Price/cbc:OrderableUnitFactorRate) != '')) * 1)
+                                                    ))"/>
 
 			<sch:let name="quantity" value="cbc:Quantity"/>
 			<sch:let name="priceAmount" value="cac:Price/cbc:PriceAmount"/>
 			<!-- BaseQuantity is not mandatory - so default to 1, if not exists. -->
-			<sch:let name="baseQuantity" value="concat(
+			<sch:let name="baseQuantity" value="xs:decimal(concat(
                                                                 substring(cac:Price/cbc:BaseQuantity, 1, number(normalize-space(cac:Price/cbc:BaseQuantity) != '') * string-length(cac:Price/cbc:BaseQuantity)),
-                                                                substring(1, 1, number(not(normalize-space(cac:Price/cbc:BaseQuantity) != '')) * 1)
-                                                    )"/>
-			<sch:let name="lineExtensionAmount" value="concat(
+                                                                substring('1', 1, number(not(normalize-space(cac:Price/cbc:BaseQuantity) != '')) * 1)
+                                                    ))"/>
+			<sch:let name="lineExtensionAmount" value="xs:decimal(concat(
                                                                 substring(cbc:LineExtensionAmount, 1, number(normalize-space(cbc:LineExtensionAmount) != '' ) * string-length(cbc:LineExtensionAmount)),
-                                                                substring(0, 1, number(not(normalize-space(cbc:LineExtensionAmount) != '')) * 1)
-                                                    )"/>
+                                                                substring('0', 1, number(not(normalize-space(cbc:LineExtensionAmount) != '')) * 1)
+                                                    ))"/>
 			<sch:let name="calculatedTotalUnitCodeDifferent" value="$priceAmount * $quantity * $orderableUnitFactorRate"/>
 			<sch:let name="calculatedTotalUnitCodeEqual" value="($priceAmount * $quantity) div $baseQuantity"/>
 
@@ -1167,8 +1167,8 @@
 
 			<!-- [020422] - NH-50 -->
 			<!-- Original test-->
-			<!-- sch:report test="(not($L) and $T) and ((cbc:LineExtensionAmount &lt; (cbc:Quantity * cac:Price/cbc:PriceAmount - '01.00')) or (cbc:LineExtensionAmount &gt; (cbc:Quantity * cac:Price/cbc:PriceAmount + '01.00')))">[F-ORD245] When present, LineExtensionAmount must equal Quantity * Price.PriceAmount (when OrderableUnitFactorRate not present)</sch:report -->
-			<!-- sch:report test="(not($L) and not($T)) and ((cbc:LineExtensionAmount &lt; (cbc:Quantity * cac:Price/cbc:PriceAmount * cac:Price/cbc:OrderableUnitFactorRate - '01.00')) or (cbc:LineExtensionAmount &gt; (cbc:Quantity * cac:Price/cbc:PriceAmount * cac:Price/cbc:OrderableUnitFactorRate + '01.00')))">[F-ORD246] When present, LineExtensionAmount must equal Quantity * Price.PriceAmount * Price.OrderableUnitFactorRate</sch:report -->
+			<!-- sch:report test="(not($L) and $T) and ((cbc:LineExtensionAmount &lt; (cbc:Quantity * cac:Price/cbc:PriceAmount - 01.00)) or (cbc:LineExtensionAmount &gt; (cbc:Quantity * cac:Price/cbc:PriceAmount + 01.00)))">[F-ORD245] When present, LineExtensionAmount must equal Quantity * Price.PriceAmount (when OrderableUnitFactorRate not present)</sch:report -->
+			<!-- sch:report test="(not($L) and not($T)) and ((cbc:LineExtensionAmount &lt; (cbc:Quantity * cac:Price/cbc:PriceAmount * cac:Price/cbc:OrderableUnitFactorRate - '01.00')) or (cbc:LineExtensionAmount &gt; (cbc:Quantity * cac:Price/cbc:PriceAmount * cac:Price/cbc:OrderableUnitFactorRate + 01.00)))">[F-ORD246] When present, LineExtensionAmount must equal Quantity * Price.PriceAmount * Price.OrderableUnitFactorRate</sch:report -->
 
 			<!-- G -->
 			<sch:report test="not($nolineExtensionAmount) and $unitCodeDifferent and (($lineExtensionAmount &lt; ($calculatedTotalUnitCodeDifferent - 1.00)) or ($lineExtensionAmount &gt; ($calculatedTotalUnitCodeDifferent + 1.00)))">[F-ORD246] Order line '<sch:value-of select="cbc:ID"/>' - When present, lineExtensionAmount (<sch:value-of select="cbc:LineExtensionAmount"/>) must equal Quantity (<sch:value-of select="cbc:Quantity"/>) * Price.PriceAmount (<sch:value-of select="cac:Price/cbc:PriceAmount"/>) * Price.OrderableUnitFactorRate (<sch:value-of select="cac:Price/cbc:OrderableUnitFactorRate"/>) +/- 1.00 (Quantity unitCode and Price.BaseQuantity unitCode are not equal)</sch:report>
