@@ -38,7 +38,9 @@ public final class FacturaeValidation
 {
   public static final String GROUP_ID = "es.gob";
 
+  @Deprecated
   public static final VESID VID_FACTURAE_300 = new VESID (GROUP_ID, "facturae", "3.0");
+  @Deprecated
   public static final VESID VID_FACTURAE_310 = new VESID (GROUP_ID, "facturae", "3.1");
   public static final VESID VID_FACTURAE_320 = new VESID (GROUP_ID, "facturae", "3.2");
   public static final VESID VID_FACTURAE_321 = new VESID (GROUP_ID, "facturae", "3.2.1");
