@@ -88,6 +88,26 @@
           </instructions>
         </configuration>
       </plugin>
+      <plugin>
+        <groupId>com.helger.maven</groupId>
+        <artifactId>ph-schematron-maven-plugin</artifactId>
+        <executions>
+          <!-- 
+          <execution>
+            <id>oioubl</id>
+            <goals>
+              <goal>convert</goal>
+            </goals>
+            <configuration>
+              <schematronDirectory>src/test/resources/rule-source/oioubl/1.12.3</schematronDirectory>
+              <schematronPattern>*.xml</schematronPattern>
+              <xsltDirectory>src/main/resources/schematron/oioubl/1.12.3</xsltDirectory>
+              <stopOnError>false</stopOnError>
+            </configuration>
+          </execution>
+          -->
+        </executions>
+      </plugin>
     </plugins>
   </build>
 </project>

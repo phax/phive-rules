@@ -1,0 +1,1518 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+******************************************************************************************************************
+
+		OIOUBL Schematron
+
+		publisher:          NemHandel / Erhvervsstyrelsen
+        Repository path:    $HeadURL$
+        File version:       $Revision$
+        Last changed by:    $Author$
+        Last changed date:  $Date$
+
+		Description:        This document is produced as part of the OIOUBL schematron package
+		Rights:             It can be used following the Common Creative Licence
+
+		all terms derived from http://dublincore.org/documents/dcmi-terms/
+
+		For more information, see www.oioubl.info or email support@nemhandel.dk
+
+******************************************************************************************************************
+-->
+
+<sch:schema xmlns:sch="http://purl.oclc.org/dsdl/schematron">
+
+	<sch:ns uri="urn:oasis:names:specification:ubl:schema:xsd:Statement-2"                    prefix="doc"/>
+	<sch:ns uri="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"    prefix="cac"/>
+	<sch:ns uri="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"        prefix="cbc"/>
+	<sch:ns uri="urn:oasis:names:specification:ubl:schema:xsd:CoreComponentParameters-2"      prefix="ccts"/>
+	<sch:ns uri="urn:oasis:names:specification:ubl:schema:xsd:SpecializedDatatypes-2"         prefix="sdt"/>
+	<sch:ns uri="urn:un:unece:uncefact:data:specification:UnqualifiedDataTypesSchemaModule:2" prefix="udt"/>
+	<!-- [Release 20120615] Check added according to issue: https://bugs.softwareborsen.dk/show_bug.cgi?id=934 -->
+	<sch:ns uri="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2"    prefix="ext"/>
+	<sch:ns uri="http://www.w3.org/2001/XMLSchema"                                            prefix="xs"/>
+
+	<sch:p>Schematron for validating OIOUBL-2.1 documents.</sch:p>
+	<sch:title>Checking OIOUBL-2.1 Statement</sch:title>
+
+
+	<!-- Inclusion of OIOUBL codelist variables -->
+	<sch:include href="OIOUBL_Codelist_Schematron.xml"/>
+
+
+	<!-- Global variables -->
+
+
+	<!-- The default phase to execute when validating -->
+	<sch:phase id="default">
+		<sch:active pattern="ublextensions"/>
+		<sch:active pattern="profile"/>
+		<sch:active pattern="statement"/>
+		<sch:active pattern="statementperiod"/>
+		<sch:active pattern="additionaldocumentreference"/>
+		<sch:active pattern="signature"/>
+		<sch:active pattern="accountingsupplierparty"/>
+		<sch:active pattern="accountingcustomerparty"/>
+		<sch:active pattern="buyercustomerparty"/>
+		<sch:active pattern="sellersupplierparty"/>
+		<sch:active pattern="originatorcustomerparty"/>
+		<sch:active pattern="payeeparty"/>
+		<sch:active pattern="paymentmeans"/>
+		<sch:active pattern="paymentterms"/>
+		<sch:active pattern="allowancecharge"/>
+		<sch:active pattern="taxtotal"/>
+		<sch:active pattern="statementline"/>
+	</sch:phase>
+
+
+	<!-- Inclusion of OIOUBL common rules -->
+	<sch:include href="OIOUBL_Common_Schematron.xml"/>
+
+
+	<!-- - - - - - - - - - - -  UBLExtensions - - - - - - - - - - - - -  -->
+	<!-- [Release 20120615] Check added according to issue: https://bugs.softwareborsen.dk/show_bug.cgi?id=934 -->
+	<sch:pattern name="UBLExtensions" id="ublextensions">
+		<sch:p>Pattern for validating the UBLExtensions class</sch:p>
+		<sch:rule context="doc:Statement">
+			<sch:extends rule="UBLExtensionsCheck"/>
+		</sch:rule>
+	</sch:pattern>
+
+	<!-- - - - - - - - - - - -  Profile - - - - - - - - - - - - -  -->
+	<sch:pattern name="Profile" id="profile">
+		<sch:p>Pattern for validating root element, Profile and UBL version</sch:p>
+		<!-- Validate root element -->
+		<sch:rule context="/">
+			<sch:assert test="local-name(*) = 'Statement'">[F-STA001] Root element must be Statement</sch:assert>
+			<!-- [Release 20130315] Check added according to issue: https://bugs.softwareborsen.dk/show_bug.cgi?id=1023 -->
+			<sch:assert test="namespace-uri(*) = 'urn:oasis:names:specification:ubl:schema:xsd:Statement-2'">[F-STA089] The documenttype does not match an OIOUBL Statement and can not be validated by this schematron.</sch:assert>
+		</sch:rule>
+		<sch:rule context="doc:Statement">
+			<!-- Check ProfileID, UBLVersionID and CustomizationID -->
+			<sch:extends rule="UBLVersionIDCheck"/>
+			<sch:extends rule="CustomizationIDCheck"/>
+			<sch:extends rule="ProfileIDCheck"/>
+		</sch:rule>
+	</sch:pattern>
+
+	<!-- - - - - - - - - - - -  Statement (STA088) - - - - - - - - - - -  -->
+	<sch:pattern name="Statement" id="statement">
+		<sch:p>Pattern for validating the Statement structure</sch:p>
+		<sch:rule context="doc:Statement">
+			<!-- Check for excluded elements -->
+			<sch:assert test="count(cbc:LineCountNumeric) = 0">[F-STA002] LineCountNumeric element must be excluded</sch:assert>
+			<!-- Check for mandatory elements -->
+			<sch:assert test="cbc:TotalBalanceAmount != ''">[F-STA004] Invalid TotalBalanceAmount. Must contain a value</sch:assert>
+			<!-- Validate -->
+			<sch:assert test="cbc:ID != ''">[F-STA006] Invalid ID. Must contain a value</sch:assert>
+			<sch:assert test="cbc:DocumentCurrencyCode != ''">[F-STA064] Invalid DocumentCurrencyCode. Must contain a value</sch:assert>
+			<!-- <sch:report test="cbc:TotalDebitAmount and cbc:TotalCreditAmount">[F-STA065] Use either TotalDebitAmount or TotalCreditAmount</sch:report> -->
+		</sch:rule>
+
+		<!-- Validate CopyIndicator -->
+
+		<!-- Validate UUID -->
+		<sch:rule context="doc:Statement/cbc:UUID">
+			<sch:extends rule="UUIDCheck"/>
+		</sch:rule>
+
+		<!-- Validate IssueDate -->
+		<!-- Validate IssueTime -->
+
+		<!-- Validate Note -->
+		<sch:rule context="doc:Statement/cbc:Note">
+			<sch:extends rule="NoteCheck"/>
+		</sch:rule>
+
+		<!-- Validate DocumentCurrencyCode -->
+		<sch:rule context="doc:Statement/cbc:DocumentCurrencyCode">
+			<sch:extends rule="CurrencyCodeCheck"/>
+		</sch:rule>
+
+		<!-- Validate TotalDebitAmount -->
+		<sch:rule context="doc:Statement/cbc:TotalDebitAmount">
+			<sch:extends rule="PosZeroNumberCheck"/>
+		</sch:rule>
+
+		<!-- Validate TotalCreditAmount -->
+		<sch:rule context="doc:Statement/cbc:TotalDebitAmount">
+			<sch:extends rule="PosZeroNumberCheck"/>
+		</sch:rule>
+
+		<!-- Validate TotalBalanceAmount -->
+		<sch:rule context="doc:Statement/cbc:TotalDebitAmount">
+		</sch:rule>
+
+		<!-- Validate LineCountNumeric (Excluded) -->
+	</sch:pattern>
+
+	<!-- - - - - - - - - - - -  StatementPeriod - - - - - - - - - - -  -->
+	<sch:pattern name="StatementPeriod" id="statementperiod">
+		<sch:p>Pattern for validating the StatementPeriod class</sch:p>
+		<sch:rule context="doc:Statement/cac:StatementPeriod">
+			<sch:extends rule="PeriodCheck"/>
+		</sch:rule>
+		<!-- Validate Description -->
+		<sch:rule context="doc:Statement/cac:StatementPeriod/cbc:Description">
+			<sch:extends rule="DescriptionLanguageCheck"/>
+		</sch:rule>
+	</sch:pattern>
+
+	<!-- - - - - - - - - - - -  AdditionalDocumentReference - - - - - - - - - - -  -->
+	<sch:pattern name="AdditionalDocumentReference" id="additionaldocumentreference">
+		<sch:p>Pattern for validating the AdditionalDocumentReference class</sch:p>
+		<sch:rule context="doc:Statement/cac:AdditionalDocumentReference">
+			<sch:extends rule="DocumentReferenceCheck"/>
+		</sch:rule>
+	</sch:pattern>
+
+	<!-- - - - - - - - - - - -  Signature - - - - - - - - - - -  -->
+	<sch:pattern name="Signature" id="signature">
+		<sch:p>Pattern for validating the Signature class</sch:p>
+		<sch:rule context="doc:Statement/cac:Signature">
+			<!-- Check for excluded elements -->
+			<!-- Check for mandatory elements -->
+			<!-- Validate -->
+			<sch:assert test="cbc:ID != ''">[F-STA007] Invalid ID. Must contain a value</sch:assert>
+		</sch:rule>
+		<!-- Validate SignatoryParty -->
+		<sch:rule context="doc:Statement/cac:Signature/cac:SignatoryParty">
+			<!-- Check for excluded elements -->
+			<sch:extends rule="PartyExcludedCheck"/>
+			<!-- Check for mandatory elements -->
+			<!-- Validate -->
+			<sch:extends rule="PartyNameCheck"/>
+			<sch:extends rule="EndpointIDCheck"/>
+			<sch:report test="count(cac:PartyLegalEntity) &gt; 1">[F-STA066] No more than one PartyLegalEntity class may be present</sch:report>
+		</sch:rule>
+		<!-- Validate SignatoryParty/PartyIdentification -->
+		<sch:rule context="doc:Statement/cac:Signature/cac:SignatoryParty/cac:PartyIdentification">
+			<sch:extends rule="PartyIdentificationCheck"/>
+		</sch:rule>
+		<!-- Validate SignatoryParty/PartyName -->
+		<sch:rule context="doc:Statement/cac:Signature/cac:SignatoryParty/cac:PartyName">
+			<sch:extends rule="PartyNameLanguageCheck"/>
+		</sch:rule>
+		<!-- Validate SignatoryParty/PostalAddress -->
+		<sch:rule context="doc:Statement/cac:Signature/cac:SignatoryParty/cac:PostalAddress">
+			<sch:extends rule="AddressCheck"/>
+		</sch:rule>
+		<!-- Validate SignatoryParty/PhysicalLocation -->
+		<sch:rule context="doc:Statement/cac:Signature/cac:SignatoryParty/cac:PhysicalLocation">
+			<sch:extends rule="AddressIDCheck"/>
+		</sch:rule>
+		<!-- Validate SignatoryParty/PhysicalLocation/ValidityPeriod -->
+		<sch:rule context="doc:Statement/cac:Signature/cac:SignatoryParty/cac:PhysicalLocation/cac:ValidityPeriod">
+			<sch:extends rule="PeriodCheck"/>
+		</sch:rule>
+		<!-- Validate SignatoryParty/PhysicalLocation/ValidityPeriod/Description -->
+		<sch:rule context="doc:Statement/cac:Signature/cac:SignatoryParty/cac:PhysicalLocation/cac:ValidityPeriod/cbc:Description">
+			<sch:extends rule="DescriptionLanguageCheck"/>
+		</sch:rule>
+		<!-- Validate SignatoryParty/PhysicalLocation/Address -->
+		<sch:rule context="doc:Statement/cac:Signature/cac:SignatoryParty/cac:PhysicalLocation/cac:Address">
+			<sch:extends rule="AddressCheck"/>
+		</sch:rule>
+		<!-- Validate SignatoryParty/PartyTaxScheme -->
+		<sch:rule context="doc:Statement/cac:Signature/cac:SignatoryParty/cac:PartyTaxScheme">
+			<sch:extends rule="PartyTaxSchemeCheck"/>
+		</sch:rule>
+		<!-- Validate SignatoryParty/PartyTaxScheme/TaxScheme -->
+		<sch:rule context="doc:Statement/cac:Signature/cac:SignatoryParty/cac:PartyTaxScheme/cac:TaxScheme">
+			<sch:extends rule="TaxSchemeCheck"/>
+		</sch:rule>
+		<!-- Validate SignatoryParty/PartyLegalEntity -->
+		<sch:rule context="doc:Statement/cac:Signature/cac:SignatoryParty/cac:PartyLegalEntity">
+			<sch:extends rule="PartyLegalEntityCheck"/>
+		</sch:rule>
+		<!-- Validate SignatoryParty/Contact -->
+		<sch:rule context="doc:Statement/cac:Signature/cac:SignatoryParty/cac:Contact">
+			<sch:extends rule="ContactCheck"/>
+		</sch:rule>
+		<!-- Validate SignatoryParty/Person -->
+		<sch:rule context="doc:Statement/cac:Signature/cac:SignatoryParty/cac:Person">
+			<sch:extends rule="Person/FirstNameCheck"/>
+		</sch:rule>
+
+		<!-- Validate DigitalSignatureAttachment -->
+		<sch:rule context="doc:Statement/cac:Signature/cac:DigitalSignatureAttachment">
+			<sch:extends rule="AttachmentCheck"/>
+		</sch:rule>
+
+		<!-- Validate OriginalDocumentReference -->
+		<sch:rule context="doc:Statement/cac:Signature/cac:OriginalDocumentReference">
+			<sch:extends rule="DocumentReferenceCheck"/>
+		</sch:rule>
+	</sch:pattern>
+
+	<!-- - - - - - - - - - - -  AccountingSupplierParty - - - - - - - - - - -  -->
+	<sch:pattern name="AccountingSupplierParty" id="accountingsupplierparty">
+		<sch:p>Pattern for validating the AccountingSupplierParty class</sch:p>
+
+		<!-- - - - - - - - - - - -  Top-level checks - - - - - - - - - - -  -->
+		<sch:rule context="doc:Statement/cac:AccountingSupplierParty">
+			<!-- Check for excluded elements -->
+			<sch:assert test="count(cbc:DataSendingCapability) = 0">[F-STA008] DataSendingCapability element must be excluded</sch:assert>
+			<!-- Check for mandatory elements -->
+			<sch:assert test="count(cac:Party) = 1">[F-STA009] Party class must be present</sch:assert>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  Party - - - - - - - - - - -  -->
+		<sch:rule context="doc:Statement/cac:AccountingSupplierParty/cac:Party">
+			<!-- Check for excluded elements -->
+			<sch:extends rule="PartyExcludedCheck"/>
+			<!-- Check for mandatory elements -->
+			<sch:assert test="cbc:EndpointID != ''">[F-STA010] Invalid EndpointID. Must contain a value</sch:assert>
+			<sch:assert test="count(cac:PartyLegalEntity) = 1">[F-STA013] One PartyLegalEntity class must be present</sch:assert>
+			<!-- Validate -->
+			<sch:extends rule="PartyNameCheck"/>
+			<sch:extends rule="EndpointIDCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyIdentification - - - - - - - - - - -  -->
+		<sch:rule context="doc:Statement/cac:AccountingSupplierParty/cac:Party/cac:PartyIdentification">
+			<sch:extends rule="PartyIdentificationCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyName - - - - - - - - - - -  -->
+		<sch:rule context="doc:Statement/cac:AccountingSupplierParty/cac:Party/cac:PartyName">
+			<sch:extends rule="PartyNameLanguageCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PostalAddress - - - - - - - - - - -  -->
+		<sch:rule context="doc:Statement/cac:AccountingSupplierParty/cac:Party/cac:PostalAddress">
+			<sch:extends rule="AddressCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PhysicalLocation - - - - - - - - - - -  -->
+		<sch:rule context="doc:Statement/cac:AccountingSupplierParty/cac:Party/cac:PhysicalLocation">
+			<sch:extends rule="AddressIDCheck"/>
+		</sch:rule>
+		<!-- Validate ValidityPeriod -->
+		<sch:rule context="doc:Statement/cac:AccountingSupplierParty/cac:Party/cac:PhysicalLocation/cac:ValidityPeriod">
+			<sch:extends rule="PeriodCheck"/>
+		</sch:rule>
+		<!-- Validate ValidityPeriod/Description -->
+		<sch:rule context="doc:Statement/cac:AccountingSupplierParty/cac:Party/cac:PhysicalLocation/cac:ValidityPeriod/cbc:Description">
+			<sch:extends rule="DescriptionLanguageCheck"/>
+		</sch:rule>
+		<!-- Validate Address -->
+		<sch:rule context="doc:Statement/cac:AccountingSupplierParty/cac:Party/cac:PhysicalLocation/cac:Address">
+			<sch:extends rule="AddressCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyTaxScheme - - - - - - - - - - -  -->
+		<sch:rule context="doc:Statement/cac:AccountingSupplierParty/cac:Party/cac:PartyTaxScheme">
+			<sch:extends rule="PartyTaxSchemeCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyTaxScheme/TaxScheme - - - - - - - - - - -  -->
+		<sch:rule context="doc:Statement/cac:AccountingSupplierParty/cac:Party/cac:PartyTaxScheme/cac:TaxScheme">
+			<sch:extends rule="TaxSchemeCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyLegalEntity - - - - - - - - - - -  -->
+		<sch:rule context="doc:Statement/cac:AccountingSupplierParty/cac:Party/cac:PartyLegalEntity">
+			<sch:extends rule="PartyLegalEntityCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  Contact - - - - - - - - - - -  -->
+		<sch:rule context="doc:Statement/cac:AccountingSupplierParty/cac:Party/cac:Contact">
+			<!-- Check for mandatory elements -->
+			<sch:assert test="cbc:ID != ''">[F-STA067] Invalid ID. Must contain a value</sch:assert>
+			<!-- Validate -->
+			<sch:extends rule="ContactCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  Person - - - - - - - - - - -  -->
+		<sch:rule context="doc:Statement/cac:AccountingSupplierParty/cac:Party/cac:Person">
+			<sch:extends rule="Person/FirstNameCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  DespatchContact - - - - - - - - - - -  -->
+		<sch:rule context="doc:Statement/cac:AccountingSupplierParty/cac:DespatchContact">
+			<sch:extends rule="ContactCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  AccountingContact - - - - - - - - - - -  -->
+		<sch:rule context="doc:Statement/cac:AccountingSupplierParty/cac:AccountingContact">
+			<sch:extends rule="ContactCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  SellerContact - - - - - - - - - - -  -->
+		<sch:rule context="doc:Statement/cac:AccountingSupplierParty/cac:SellerContact">
+			<sch:extends rule="ContactCheck"/>
+		</sch:rule>
+	</sch:pattern>
+
+	<!-- - - - - - - - - - - -  AccountingCustomerParty - - - - - - - - - - -  -->
+	<sch:pattern name="AccountingCustomerParty" id="accountingcustomerparty">
+		<sch:p>Pattern for validating the AccountingCustomerParty class</sch:p>
+
+		<!-- - - - - - - - - - - -  Top-level checks - - - - - - - - - - -  -->
+		<sch:rule context="doc:Statement/cac:AccountingCustomerParty">
+			<!-- Check for excluded elements -->
+			<!-- Check for mandatory elements -->
+			<sch:assert test="count(cac:Party) = 1">[F-STA016] One Party class must be present</sch:assert>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  Party - - - - - - - - - - -  -->
+		<sch:rule context="doc:Statement/cac:AccountingCustomerParty/cac:Party">
+			<!-- Check for excluded elements -->
+			<sch:extends rule="PartyExcludedCheck"/>
+			<!-- Check for mandatory elements -->
+			<sch:assert test="cbc:EndpointID != ''">[F-STA017] Invalid EndpointID. Must contain a value</sch:assert>
+			<!-- Validate -->
+			<sch:extends rule="PartyNameCheck"/>
+			<sch:extends rule="EndpointIDCheck"/>
+			<sch:report test="count(cac:PartyLegalEntity) &gt; 1">[F-STA088] No more than one PartyLegalEntity class may be present</sch:report>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyIdentification - - - - - - - - - - -  -->
+		<sch:rule context="doc:Statement/cac:AccountingCustomerParty/cac:Party/cac:PartyIdentification">
+			<sch:extends rule="PartyIdentificationCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyName - - - - - - - - - - -  -->
+		<sch:rule context="doc:Statement/cac:AccountingCustomerParty/cac:Party/cac:PartyName">
+			<sch:extends rule="PartyNameLanguageCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PostalAddress - - - - - - - - - - -  -->
+		<sch:rule context="doc:Statement/cac:AccountingCustomerParty/cac:Party/cac:PostalAddress">
+			<sch:extends rule="AddressCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PhysicalLocation - - - - - - - - - - -  -->
+		<sch:rule context="doc:Statement/cac:AccountingCustomerParty/cac:Party/cac:PhysicalLocation">
+			<sch:extends rule="AddressIDCheck"/>
+		</sch:rule>
+		<!-- Validate ValidityPeriod -->
+		<sch:rule context="doc:Statement/cac:AccountingCustomerParty/cac:Party/cac:PhysicalLocation/cac:ValidityPeriod">
+			<sch:extends rule="PeriodCheck"/>
+		</sch:rule>
+		<!-- Validate ValidityPeriod/Description -->
+		<sch:rule context="doc:Statement/cac:AccountingCustomerParty/cac:Party/cac:PhysicalLocation/cac:ValidityPeriod/cbc:Description">
+			<sch:extends rule="DescriptionLanguageCheck"/>
+		</sch:rule>
+		<!-- Validate Address -->
+		<sch:rule context="doc:Statement/cac:AccountingCustomerParty/cac:Party/cac:PhysicalLocation/cac:Address">
+			<sch:extends rule="AddressCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyTaxScheme - - - - - - - - - - -  -->
+		<sch:rule context="doc:Statement/cac:AccountingCustomerParty/cac:Party/cac:PartyTaxScheme">
+			<sch:extends rule="PartyTaxSchemeCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyTaxScheme/TaxScheme - - - - - - - - - - -  -->
+		<sch:rule context="doc:Statement/cac:AccountingCustomerParty/cac:Party/cac:PartyTaxScheme/cac:TaxScheme">
+			<sch:extends rule="TaxSchemeCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyLegalEntity - - - - - - - - - - -  -->
+		<sch:rule context="doc:Statement/cac:AccountingCustomerParty/cac:Party/cac:PartyLegalEntity">
+			<sch:extends rule="PartyLegalEntityCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  Contact - - - - - - - - - - -  -->
+		<sch:rule context="doc:Statement/cac:AccountingCustomerParty/cac:Party/cac:Contact">
+			<!-- Check for mandatory elements -->
+			<sch:assert test="cbc:ID != ''">[F-STA025] Invalid ID. Must contain a value</sch:assert>
+			<!-- Validate -->
+			<sch:extends rule="ContactCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  Person - - - - - - - - - - -  -->
+		<sch:rule context="doc:Statement/cac:AccountingCustomerParty/cac:Party/cac:Person">
+			<sch:extends rule="Person/FirstNameCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  DeliveryContact - - - - - - - - - - -  -->
+		<sch:rule context="doc:Statement/cac:AccountingCustomerParty/cac:DeliveryContact">
+			<sch:extends rule="ContactCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  AccountingContact - - - - - - - - - - -  -->
+		<sch:rule context="doc:Statement/cac:AccountingCustomerParty/cac:AccountingContact">
+			<sch:extends rule="ContactCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  BuyerContact - - - - - - - - - - -  -->
+		<sch:rule context="doc:Statement/cac:AccountingCustomerParty/cac:BuyerContact">
+			<sch:extends rule="ContactCheck"/>
+		</sch:rule>
+	</sch:pattern>
+
+	<!-- - - - - - - - - - - -  BuyerCustomerParty - - - - - - - - - - -  -->
+	<sch:pattern name="BuyerCustomerParty" id="buyercustomerparty">
+		<sch:p>Pattern for validating the BuyerCustomerParty class</sch:p>
+
+		<!-- - - - - - - - - - - -  Top-level checks - - - - - - - - - - -  -->
+		<sch:rule context="doc:Statement/cac:BuyerCustomerParty">
+			<!-- Check for excluded elements -->
+			<!-- Check for mandatory elements -->
+			<sch:assert test="count(cac:Party) = 1">[F-STA028] One Party class must be present</sch:assert>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  Party - - - - - - - - - - -  -->
+		<sch:rule context="doc:Statement/cac:BuyerCustomerParty/cac:Party">
+			<!-- Check for excluded elements -->
+			<sch:extends rule="PartyExcludedCheck"/>
+			<!-- Check for mandatory elements -->
+			<!-- Validate -->
+			<sch:extends rule="PartyNameCheck"/>
+			<sch:extends rule="EndpointIDCheck"/>
+			<sch:report test="count(cac:PartyLegalEntity) &gt; 1">[F-STA029] No more than one PartyLegalEntity class may be present</sch:report>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyIdentification - - - - - - - - - - -  -->
+		<sch:rule context="doc:Statement/cac:BuyerCustomerParty/cac:Party/cac:PartyIdentification">
+			<sch:extends rule="PartyIdentificationCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyName - - - - - - - - - - -  -->
+		<sch:rule context="doc:Statement/cac:BuyerCustomerParty/cac:Party/cac:PartyName">
+			<sch:extends rule="PartyNameLanguageCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PostalAddress - - - - - - - - - - -  -->
+		<sch:rule context="doc:Statement/cac:BuyerCustomerParty/cac:Party/cac:PostalAddress">
+			<sch:extends rule="AddressCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PhysicalLocation - - - - - - - - - - -  -->
+		<sch:rule context="doc:Statement/cac:BuyerCustomerParty/cac:Party/cac:PhysicalLocation">
+			<sch:extends rule="AddressIDCheck"/>
+		</sch:rule>
+		<!-- Validate ValidityPeriod -->
+		<sch:rule context="doc:Statement/cac:BuyerCustomerParty/cac:Party/cac:PhysicalLocation/cac:ValidityPeriod">
+			<sch:extends rule="PeriodCheck"/>
+		</sch:rule>
+		<!-- Validate ValidityPeriod/Description -->
+		<sch:rule context="doc:Statement/cac:BuyerCustomerParty/cac:Party/cac:PhysicalLocation/cac:ValidityPeriod/cbc:Description">
+			<sch:extends rule="DescriptionLanguageCheck"/>
+		</sch:rule>
+		<!-- Validate Address -->
+		<sch:rule context="doc:Statement/cac:BuyerCustomerParty/cac:Party/cac:PhysicalLocation/cac:Address">
+			<sch:extends rule="AddressCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyTaxScheme - - - - - - - - - - -  -->
+		<sch:rule context="doc:Statement/cac:BuyerCustomerParty/cac:Party/cac:PartyTaxScheme">
+			<sch:extends rule="PartyTaxSchemeCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyTaxScheme/TaxScheme - - - - - - - - - - -  -->
+		<sch:rule context="doc:Statement/cac:BuyerCustomerParty/cac:Party/cac:PartyTaxScheme/cac:TaxScheme">
+			<sch:extends rule="TaxSchemeCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyLegalEntity - - - - - - - - - - -  -->
+		<sch:rule context="doc:Statement/cac:BuyerCustomerParty/cac:Party/cac:PartyLegalEntity">
+			<sch:extends rule="PartyLegalEntityCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  Contact - - - - - - - - - - -  -->
+		<sch:rule context="doc:Statement/cac:BuyerCustomerParty/cac:Party/cac:Contact">
+			<sch:extends rule="ContactCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  Person - - - - - - - - - - -  -->
+		<sch:rule context="doc:Statement/cac:BuyerCustomerParty/cac:Party/cac:Person">
+			<sch:extends rule="Person/FirstNameCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  DeliveryContact - - - - - - - - - - -  -->
+		<sch:rule context="doc:Statement/cac:BuyerCustomerParty/cac:DeliveryContact">
+			<sch:extends rule="ContactCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  AccountingContact - - - - - - - - - - -  -->
+		<sch:rule context="doc:Statement/cac:BuyerCustomerParty/cac:AccountingContact">
+			<sch:extends rule="ContactCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  BuyerContact - - - - - - - - - - -  -->
+		<sch:rule context="doc:Statement/cac:BuyerCustomerParty/cac:BuyerContact">
+			<sch:extends rule="ContactCheck"/>
+		</sch:rule>
+	</sch:pattern>
+
+	<!-- - - - - - - - - - - -  SellerSupplierParty - - - - - - - - - - -  -->
+	<sch:pattern name="SellerSupplierParty" id="sellersupplierparty">
+		<sch:p>Pattern for validating the SellerSupplierParty class</sch:p>
+
+		<!-- - - - - - - - - - - -  Top-level checks - - - - - - - - - - -  -->
+		<sch:rule context="doc:Statement/cac:SellerSupplierParty">
+			<!-- Check for excluded elements -->
+			<sch:assert test="count(cbc:DataSendingCapability) = 0">[F-STA037] DataSendingCapability element must be excluded</sch:assert>
+			<!-- Check for mandatory elements -->
+			<sch:assert test="count(cac:Party) = 1">[F-STA038] Party class must be present</sch:assert>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  Party - - - - - - - - - - -  -->
+		<sch:rule context="doc:Statement/cac:SellerSupplierParty/cac:Party">
+			<!-- Check for excluded elements -->
+			<sch:extends rule="PartyExcludedCheck"/>
+			<!-- Check for mandatory elements -->
+			<sch:assert test="count(cac:PartyLegalEntity) = 1">[F-STA042] One PartyLegalEntity class must be present</sch:assert>
+			<!-- Validate -->
+			<sch:extends rule="PartyNameCheck"/>
+			<sch:extends rule="EndpointIDCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyIdentification - - - - - - - - - - -  -->
+		<sch:rule context="doc:Statement/cac:SellerSupplierParty/cac:Party/cac:PartyIdentification">
+			<sch:extends rule="PartyIdentificationCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyName - - - - - - - - - - -  -->
+		<sch:rule context="doc:Statement/cac:SellerSupplierParty/cac:Party/cac:PartyName">
+			<sch:extends rule="PartyNameLanguageCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PostalAddress - - - - - - - - - - -  -->
+		<sch:rule context="doc:Statement/cac:SellerSupplierParty/cac:Party/cac:PostalAddress">
+			<sch:extends rule="AddressCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PhysicalLocation - - - - - - - - - - -  -->
+		<sch:rule context="doc:Statement/cac:SellerSupplierParty/cac:Party/cac:PhysicalLocation">
+			<sch:extends rule="AddressIDCheck"/>
+		</sch:rule>
+		<!-- Validate ValidityPeriod -->
+		<sch:rule context="doc:Statement/cac:SellerSupplierParty/cac:Party/cac:PhysicalLocation/cac:ValidityPeriod">
+			<sch:extends rule="PeriodCheck"/>
+		</sch:rule>
+		<!-- Validate ValidityPeriod/Description -->
+		<sch:rule context="doc:Statement/cac:SellerSupplierParty/cac:Party/cac:PhysicalLocation/cac:ValidityPeriod/cbc:Description">
+			<sch:extends rule="DescriptionLanguageCheck"/>
+		</sch:rule>
+		<!-- Validate Address -->
+		<sch:rule context="doc:Statement/cac:SellerSupplierParty/cac:Party/cac:PhysicalLocation/cac:Address">
+			<sch:extends rule="AddressCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyTaxScheme - - - - - - - - - - -  -->
+		<sch:rule context="doc:Statement/cac:SellerSupplierParty/cac:Party/cac:PartyTaxScheme">
+			<sch:extends rule="PartyTaxSchemeCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyTaxScheme/TaxScheme - - - - - - - - - - -  -->
+		<sch:rule context="doc:Statement/cac:SellerSupplierParty/cac:Party/cac:PartyTaxScheme/cac:TaxScheme">
+			<sch:extends rule="TaxSchemeCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyLegalEntity - - - - - - - - - - -  -->
+		<sch:rule context="doc:Statement/cac:SellerSupplierParty/cac:Party/cac:PartyLegalEntity">
+			<sch:extends rule="PartyLegalEntityCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  Contact - - - - - - - - - - -  -->
+		<sch:rule context="doc:Statement/cac:SellerSupplierParty/cac:Party/cac:Contact">
+			<sch:extends rule="ContactCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  Person - - - - - - - - - - -  -->
+		<sch:rule context="doc:Statement/cac:SellerSupplierParty/cac:Party/cac:Person">
+			<sch:extends rule="Person/FirstNameCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  DespatchContact - - - - - - - - - - -  -->
+		<sch:rule context="doc:Statement/cac:SellerSupplierParty/cac:DespatchContact">
+			<sch:extends rule="ContactCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  AccountingContact - - - - - - - - - - -  -->
+		<sch:rule context="doc:Statement/cac:SellerSupplierParty/cac:AccountingContact">
+			<sch:extends rule="ContactCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  SellerContact - - - - - - - - - - -  -->
+		<sch:rule context="doc:Statement/cac:SellerSupplierParty/cac:SellerContact">
+			<sch:extends rule="ContactCheck"/>
+		</sch:rule>
+	</sch:pattern>
+
+
+	<!-- - - - - - - - - - - -  OriginatorCustomerParty - - - - - - - - - - -  -->
+	<sch:pattern name="OriginatorCustomerParty" id="buyercustomerparty">
+		<sch:p>Pattern for validating the OriginatorCustomerParty class</sch:p>
+
+		<!-- - - - - - - - - - - -  Top-level checks - - - - - - - - - - -  -->
+		<sch:rule context="doc:Statement/cac:OriginatorCustomerParty">
+			<!-- Check for excluded elements -->
+			<!-- Check for mandatory elements -->
+			<sch:assert test="count(cac:Party) = 1">[F-STA043] Party class must be present</sch:assert>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  Party - - - - - - - - - - -  -->
+		<sch:rule context="doc:Statement/cac:OriginatorCustomerParty/cac:Party">
+			<!-- Check for excluded elements -->
+			<sch:extends rule="PartyExcludedCheck"/>
+			<!-- Check for mandatory elements -->
+			<!-- Validate -->
+			<sch:extends rule="PartyNameCheck"/>
+			<sch:extends rule="EndpointIDCheck"/>
+			<sch:report test="count(cac:PartyLegalEntity) &gt; 1">[F-STA044] No more than one PartyLegalEntity class may be present</sch:report>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyIdentification - - - - - - - - - - -  -->
+		<sch:rule context="doc:Statement/cac:OriginatorCustomerParty/cac:Party/cac:PartyIdentification">
+			<sch:extends rule="PartyIdentificationCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyName - - - - - - - - - - -  -->
+		<sch:rule context="doc:Statement/cac:OriginatorCustomerParty/cac:Party/cac:PartyName">
+			<sch:extends rule="PartyNameLanguageCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PostalAddress - - - - - - - - - - -  -->
+		<sch:rule context="doc:Statement/cac:OriginatorCustomerParty/cac:Party/cac:PostalAddress">
+			<sch:extends rule="AddressCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PhysicalLocation - - - - - - - - - - -  -->
+		<sch:rule context="doc:Statement/cac:OriginatorCustomerParty/cac:Party/cac:PhysicalLocation">
+			<sch:extends rule="AddressIDCheck"/>
+		</sch:rule>
+		<!-- Validate ValidityPeriod -->
+		<sch:rule context="doc:Statement/cac:OriginatorCustomerParty/cac:Party/cac:PhysicalLocation/cac:ValidityPeriod">
+			<sch:extends rule="PeriodCheck"/>
+		</sch:rule>
+		<!-- Validate ValidityPeriod/Description -->
+		<sch:rule context="doc:Statement/cac:OriginatorCustomerParty/cac:Party/cac:PhysicalLocation/cac:ValidityPeriod/cbc:Description">
+			<sch:extends rule="DescriptionLanguageCheck"/>
+		</sch:rule>
+		<!-- Validate Address -->
+		<sch:rule context="doc:Statement/cac:OriginatorCustomerParty/cac:Party/cac:PhysicalLocation/cac:Address">
+			<sch:extends rule="AddressCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyTaxScheme - - - - - - - - - - -  -->
+		<sch:rule context="doc:Statement/cac:OriginatorCustomerParty/cac:Party/cac:PartyTaxScheme">
+			<sch:extends rule="PartyTaxSchemeCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyTaxScheme/TaxScheme - - - - - - - - - - -  -->
+		<sch:rule context="doc:Statement/cac:OriginatorCustomerParty/cac:Party/cac:PartyTaxScheme/cac:TaxScheme">
+			<sch:extends rule="TaxSchemeCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyLegalEntity - - - - - - - - - - -  -->
+		<sch:rule context="doc:Statement/cac:OriginatorCustomerParty/cac:Party/cac:PartyLegalEntity">
+			<sch:extends rule="PartyLegalEntityCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  Contact - - - - - - - - - - -  -->
+		<sch:rule context="doc:Statement/cac:OriginatorCustomerParty/cac:Party/cac:Contact">
+			<sch:extends rule="ContactCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  Person - - - - - - - - - - -  -->
+		<sch:rule context="doc:Statement/cac:OriginatorCustomerParty/cac:Party/cac:Person">
+			<sch:extends rule="Person/FirstNameCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  DeliveryContact - - - - - - - - - - -  -->
+		<sch:rule context="doc:Statement/cac:OriginatorCustomerParty/cac:DeliveryContact">
+			<sch:extends rule="ContactCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  AccountingContact - - - - - - - - - - -  -->
+		<sch:rule context="doc:Statement/cac:OriginatorCustomerParty/cac:AccountingContact">
+			<sch:extends rule="ContactCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  BuyerContact - - - - - - - - - - -  -->
+		<sch:rule context="doc:Statement/cac:OriginatorCustomerParty/cac:BuyerContact">
+			<sch:extends rule="ContactCheck"/>
+		</sch:rule>
+	</sch:pattern>
+
+	<!-- - - - - - - - - - - -  PayeeParty - - - - - - - - - - -  -->
+	<sch:pattern name="PayeeParty" id="payeeparty">
+		<sch:p>Pattern for validating the PayeeParty class</sch:p>
+
+		<!-- - - - - - - - - - - -  Top-level checks - - - - - - - - - - -  -->
+		<sch:rule context="doc:Statement/cac:PayeeParty">
+			<!-- Check for excluded elements -->
+			<sch:extends rule="PartyExcludedCheck"/>
+			<!-- Check for mandatory elements -->
+			<!-- Validate -->
+			<sch:extends rule="PartyNameCheck"/>
+			<sch:extends rule="EndpointIDCheck"/>
+			<sch:report test="count(cac:PartyLegalEntity) &gt; 1">[F-STA046] No more than one PartyLegalEntity class may be present</sch:report>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyIdentification - - - - - - - - - - -  -->
+		<sch:rule context="doc:Statement/cac:PayeeParty/cac:PartyIdentification">
+			<sch:extends rule="PartyIdentificationCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyName - - - - - - - - - - -  -->
+		<sch:rule context="doc:Statement/cac:PayeeParty/cac:PartyName">
+			<sch:extends rule="PartyNameLanguageCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PostalAddress - - - - - - - - - - -  -->
+		<sch:rule context="doc:Statement/cac:PayeeParty/cac:PostalAddress">
+			<sch:extends rule="AddressCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PhysicalLocation - - - - - - - - - - -  -->
+		<sch:rule context="doc:Statement/cac:PayeeParty/cac:PhysicalLocation">
+			<sch:extends rule="AddressIDCheck"/>
+		</sch:rule>
+		<!-- Validate ValidityPeriod -->
+		<sch:rule context="doc:Statement/cac:PayeeParty/cac:PhysicalLocation/cac:ValidityPeriod">
+			<sch:extends rule="PeriodCheck"/>
+		</sch:rule>
+		<!-- Validate ValidityPeriod/Description -->
+		<sch:rule context="doc:Statement/cac:PayeeParty/cac:PhysicalLocation/cac:ValidityPeriod/cbc:Description">
+			<sch:extends rule="DescriptionLanguageCheck"/>
+		</sch:rule>
+		<!-- Validate Address -->
+		<sch:rule context="doc:Statement/cac:PayeeParty/cac:PhysicalLocation/cac:Address">
+			<sch:extends rule="AddressCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyTaxScheme - - - - - - - - - - -  -->
+		<sch:rule context="doc:Statement/cac:PayeeParty/cac:PartyTaxScheme">
+			<sch:extends rule="PartyTaxSchemeCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyTaxScheme/TaxScheme - - - - - - - - - - -  -->
+		<sch:rule context="doc:Statement/cac:PayeeParty/cac:PartyTaxScheme/cac:TaxScheme">
+			<sch:extends rule="TaxSchemeCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyLegalEntity - - - - - - - - - - -  -->
+		<sch:rule context="doc:Statement/cac:PayeeParty/cac:PartyLegalEntity">
+			<sch:extends rule="PartyLegalEntityCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  Contact - - - - - - - - - - -  -->
+		<sch:rule context="doc:Statement/cac:PayeeParty/cac:Contact">
+			<sch:extends rule="ContactCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  Person - - - - - - - - - - -  -->
+		<sch:rule context="doc:Statement/cac:PayeeParty/cac:Person">
+			<sch:extends rule="Person/FirstNameCheck"/>
+		</sch:rule>
+	</sch:pattern>
+
+	<!-- - - - - - - - - - - -  PaymentMeans - - - - - - - - - - -  -->
+	<sch:pattern name="PaymentMeans" id="paymentmeans">
+		<sch:p>Pattern for validating the PaymentMeans class</sch:p>
+		<sch:rule context="doc:Statement/cac:PaymentMeans">
+			<sch:extends rule="PaymentMeansCheck"/>
+			<sch:extends rule="PaymentMeansCode31Check"/>
+			<sch:extends rule="PaymentMeansCode42Check"/>
+			<sch:extends rule="PaymentMeansCode48Check"/>
+			<sch:extends rule="PaymentMeansCode49Check"/>
+			<sch:extends rule="PaymentMeansCode50Check"/>
+            <sch:extends rule="PaymentMeansCode58Check"/>
+            <sch:extends rule="PaymentMeansCode59Check"/>
+			<sch:extends rule="PaymentMeansCode93Check"/>
+			<sch:extends rule="PaymentMeansCode97Check"/>
+		</sch:rule>
+	</sch:pattern>
+
+	<!-- - - - - - - - - - - -  PaymentTerms - - - - - - - - - - -  -->
+	<sch:pattern name="PaymentTerms" id="paymentterms">
+		<sch:p>Pattern for validating the PaymentTerms class</sch:p>
+		<sch:rule context="doc:Statement/cac:PaymentTerms">
+			<sch:extends rule="PaymentTermsCheck"/>
+		</sch:rule>
+		<!-- Validate PaymentMeansID -->
+		<sch:rule context="doc:Statement/cac:PaymentTerms/cbc:PaymentMeansID">
+			<!-- <sch:extends rule="PaymentMeansIDCheck"/> -->
+		</sch:rule>
+		<!-- Validate Amount -->
+		<sch:rule context="doc:Statement/cac:PaymentTerms/cbc:Amount">
+			<sch:extends rule="PosZeroNumberCheck"/>
+		</sch:rule>
+		<!-- Validate SettlementPeriod -->
+		<sch:rule context="doc:Statement/cac:PaymentTerms/cac:SettlementPeriod">
+			<sch:extends rule="PeriodCheck"/>
+		</sch:rule>
+		<!-- Validate SettlementPeriod/Description -->
+		<sch:rule context="doc:Statement/cac:PaymentTerms/cac:SettlementPeriod/cbc:Description">
+			<sch:extends rule="DescriptionLanguageCheck"/>
+		</sch:rule>
+		<!-- Validate PenaltyPeriod -->
+		<sch:rule context="doc:Statement/cac:PaymentTerms/cac:PenaltyPeriod">
+			<sch:extends rule="PeriodCheck"/>
+		</sch:rule>
+		<!-- Validate PenaltyPeriod/Description -->
+		<sch:rule context="doc:Statement/cac:PaymentTerms/cac:PenaltyPeriod/cbc:Description">
+			<sch:extends rule="DescriptionLanguageCheck"/>
+		</sch:rule>
+	</sch:pattern>
+
+	<!-- - - - - - - - - - - -  AllowanceCharge - - - - - - - - - - -  -->
+	<sch:pattern name="AllowanceCharge" id="allowancecharge">
+		<sch:p>Pattern for validating the AllowanceCharge class</sch:p>
+		<sch:rule context="doc:Statement/cac:AllowanceCharge">
+			<sch:extends rule="AllowanceChargeTopCheck"/>
+			<sch:extends rule="AccountingCostCheck"/>
+		</sch:rule>
+		<!-- Validate PrepaidIndicator -->
+		<!-- Validate SequenceNumeric -->
+		<sch:rule context="doc:Statement/cac:AllowanceCharge/cbc:SequenceNumeric">
+			<sch:extends rule="PosNumberCheck"/>
+		</sch:rule>
+		<!-- Validate Amount -->
+		<sch:rule context="doc:Statement/cac:AllowanceCharge/cbc:Amount">
+			<sch:extends rule="PosZeroNumberCheck"/>
+		</sch:rule>
+		<!-- Validate BaseAmount -->
+		<sch:rule context="doc:Statement/cac:AllowanceCharge/cbc:BaseAmount">
+			<sch:extends rule="PosZeroNumberCheck"/>
+		</sch:rule>
+		<!-- Validate TaxCategory -->
+		<sch:rule context="doc:Statement/cac:AllowanceCharge/cac:TaxCategory">
+			<sch:extends rule="TaxCategoryCheck"/>
+		</sch:rule>
+		<!-- Validate TaxCategory/TaxScheme -->
+		<sch:rule context="doc:Statement/cac:AllowanceCharge/cac:TaxCategory/cac:TaxScheme">
+			<sch:extends rule="TaxSchemeCheck"/>
+		</sch:rule>
+	</sch:pattern>
+
+
+	<!-- - - - - - - - - - - -  TaxTotal - - - - - - - - - - -  -->
+	<sch:pattern name="TaxTotal" id="taxtotal">
+		<sch:p>Pattern for validating the TaxTotal class</sch:p>
+		<!-- - - - - - - - - - - -  Top-level checks - - - - - - - - - - -  -->
+		<sch:rule context="doc:Statement/cac:TaxTotal">
+			<sch:extends rule="TaxTotalCheck"/>
+		</sch:rule>
+		<!-- - - - - - - - - - - -  TaxSubtotal - - - - - - - - - - -  -->
+		<sch:rule context="doc:Statement/cac:TaxTotal/cac:TaxSubtotal">
+			<sch:extends rule="TaxSubtotalCheck"/>
+		</sch:rule>
+		<!-- - - - - - - - - - - -  TaxCategory - - - - - - - - - - -  -->
+		<sch:rule context="doc:Statement/cac:TaxTotal/cac:TaxSubtotal/cac:TaxCategory">
+			<sch:extends rule="TaxCategoryCheck"/>
+		</sch:rule>
+		<!-- - - - - - - - - - - -  TaxCategory/TaxScheme - - - - - - - - - - -  -->
+		<sch:rule context="doc:Statement/cac:TaxTotal/cac:TaxSubtotal/cac:TaxCategory/cac:TaxScheme">
+			<sch:extends rule="TaxSchemeCheck"/>
+		</sch:rule>
+	</sch:pattern>
+
+	<!-- - - - - - - - - - - -  StatementLine - - - - - - - - - - -  -->
+	<sch:pattern name="StatementLine" id="statementline">
+		<sch:p>Pattern for validating the StatementLine class</sch:p>
+
+		<!-- - - - - - - - - - - -  Top-level checks - - - - - - - - - - -  -->
+		<sch:rule context="doc:Statement/cac:StatementLine">
+			<!-- Check for excluded elements -->
+			<!-- Check for mandatory elements -->
+			<sch:assert test="cbc:ID != ''">[F-STA063] Invalid ID. Must contain a value</sch:assert>
+			<!-- Validate -->
+			<sch:report test="count(cac:InvoicePeriod) &gt; 1">[F-STA086] No more than one InvoicePeriod class may be present</sch:report>
+		</sch:rule>
+		<!-- Validate DebitLineAmount -->
+		<sch:rule context="doc:Statement/cac:StatementLine/cbc:DebitLineAmount">
+			<sch:extends rule="PosNumberCheck"/>
+		</sch:rule>
+		<!-- Validate CreditLineAmount -->
+		<sch:rule context="doc:Statement/cac:StatementLine/cbc:CreditLineAmount">
+			<sch:extends rule="PosNumberCheck"/>
+		</sch:rule>
+		<!-- Validate BalanceAmount -->
+		<sch:rule context="doc:Statement/cac:StatementLine/cbc:BalanceAmount">
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PaymentMeans - - - - - - - - - - -  -->
+		<sch:rule context="doc:Statement/cac:StatementLine/cac:PaymentMeans">
+			<sch:extends rule="PaymentMeansCheck"/>
+			<sch:extends rule="PaymentMeansCode31Check"/>
+			<sch:extends rule="PaymentMeansCode42Check"/>
+			<sch:extends rule="PaymentMeansCode48Check"/>
+			<sch:extends rule="PaymentMeansCode49Check"/>
+			<sch:extends rule="PaymentMeansCode50Check"/>
+			<sch:extends rule="PaymentMeansCode93Check"/>
+			<sch:extends rule="PaymentMeansCode97Check"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PaymentTerms - - - - - - - - - - -  -->
+		<sch:rule context="doc:Statement/cac:StatementLine/cac:PaymentTerms">
+			<sch:extends rule="PaymentTermsCheck"/>
+		</sch:rule>
+		<!-- Validate PaymentMeansID -->
+		<sch:rule context="doc:Statement/cac:StatementLine/cac:PaymentTerms/cbc:PaymentMeansID">
+			<!-- <sch:extends rule="PaymentMeansIDCheck"/> -->
+		</sch:rule>
+		<!-- Validate Amount -->
+		<sch:rule context="doc:Statement/cac:StatementLine/cac:PaymentTerms/cbc:Amount">
+			<sch:extends rule="PosZeroNumberCheck"/>
+		</sch:rule>
+		<!-- Validate SettlementPeriod -->
+		<sch:rule context="doc:Statement/cac:StatementLine/cac:PaymentTerms/cac:SettlementPeriod">
+			<sch:extends rule="PeriodCheck"/>
+		</sch:rule>
+		<!-- Validate SettlementPeriod/Description -->
+		<sch:rule context="doc:Statement/cac:StatementLine/cac:PaymentTerms/cac:SettlementPeriod/cbc:Description">
+			<sch:extends rule="DescriptionLanguageCheck"/>
+		</sch:rule>
+		<!-- Validate PenaltyPeriod -->
+		<sch:rule context="doc:Statement/cac:StatementLine/cac:PaymentTerms/cac:PenaltyPeriod">
+			<sch:extends rule="PeriodCheck"/>
+		</sch:rule>
+		<!-- Validate PenaltyPeriod/Description -->
+		<sch:rule context="doc:Statement/cac:StatementLine/cac:PaymentTerms/cac:PenaltyPeriod/cbc:Description">
+			<sch:extends rule="DescriptionLanguageCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  BuyerCustomerParty - - - - - - - - - - -  -->
+		<!-- Top-level checks -->
+		<sch:rule context="doc:Statement/cac:StatementLine/cac:BuyerCustomerParty">
+			<!-- Check for excluded elements -->
+			<!-- Check for mandatory elements -->
+			<sch:assert test="count(cac:Party) = 1">[F-STA069] Party class must be present</sch:assert>
+		</sch:rule>
+		<!-- Party -->
+		<sch:rule context="doc:Statement/cac:StatementLine/cac:BuyerCustomerParty/cac:Party">
+			<!-- Check for excluded elements -->
+			<sch:extends rule="PartyExcludedCheck"/>
+			<!-- Check for mandatory elements -->
+			<!-- Validate -->
+			<sch:extends rule="PartyNameCheck"/>
+			<sch:extends rule="EndpointIDCheck"/>
+			<sch:report test="count(cac:PartyLegalEntity) &gt; 1">[F-STA070] No more than one PartyLegalEntity class may be present</sch:report>
+		</sch:rule>
+		<!-- PartyIdentification -->
+		<sch:rule context="doc:Statement/cac:StatementLine/cac:BuyerCustomerParty/cac:Party/cac:PartyIdentification">
+			<sch:extends rule="PartyIdentificationCheck"/>
+		</sch:rule>
+		<!-- PartyName -->
+		<sch:rule context="doc:Statement/cac:StatementLine/cac:BuyerCustomerParty/cac:Party/cac:PartyName">
+			<sch:extends rule="PartyNameLanguageCheck"/>
+		</sch:rule>
+		<!-- PostalAddress -->
+		<sch:rule context="doc:Statement/cac:StatementLine/cac:BuyerCustomerParty/cac:Party/cac:PostalAddress">
+			<sch:extends rule="AddressCheck"/>
+		</sch:rule>
+		<!-- PhysicalLocation -->
+		<sch:rule context="doc:Statement/cac:StatementLine/cac:BuyerCustomerParty/cac:Party/cac:PhysicalLocation">
+			<sch:extends rule="AddressIDCheck"/>
+		</sch:rule>
+		<!-- PhysicalLocation/ValidityPeriod -->
+		<sch:rule context="doc:Statement/cac:StatementLine/cac:BuyerCustomerParty/cac:Party/cac:PhysicalLocation/cac:ValidityPeriod">
+			<sch:extends rule="PeriodCheck"/>
+		</sch:rule>
+		<!-- PhysicalLocation/ValidityPeriod/Description -->
+		<sch:rule context="doc:Statement/cac:StatementLine/cac:BuyerCustomerParty/cac:Party/cac:PhysicalLocation/cac:ValidityPeriod/cbc:Description">
+			<sch:extends rule="DescriptionLanguageCheck"/>
+		</sch:rule>
+		<!-- PhysicalLocation/Address -->
+		<sch:rule context="doc:Statement/cac:StatementLine/cac:BuyerCustomerParty/cac:Party/cac:PhysicalLocation/cac:Address">
+			<sch:extends rule="AddressCheck"/>
+		</sch:rule>
+		<!-- PartyTaxScheme -->
+		<sch:rule context="doc:Statement/cac:StatementLine/cac:BuyerCustomerParty/cac:Party/cac:PartyTaxScheme">
+			<sch:extends rule="PartyTaxSchemeCheck"/>
+		</sch:rule>
+		<!-- PartyTaxScheme/TaxScheme -->
+		<sch:rule context="doc:Statement/cac:StatementLine/cac:BuyerCustomerParty/cac:Party/cac:PartyTaxScheme/cac:TaxScheme">
+			<sch:extends rule="TaxSchemeCheck"/>
+		</sch:rule>
+		<!-- PartyLegalEntity -->
+		<sch:rule context="doc:Statement/cac:StatementLine/cac:BuyerCustomerParty/cac:Party/cac:PartyLegalEntity">
+			<sch:extends rule="PartyLegalEntityCheck"/>
+		</sch:rule>
+		<!-- Contact -->
+		<sch:rule context="doc:Statement/cac:StatementLine/cac:BuyerCustomerParty/cac:Party/cac:Contact">
+			<sch:extends rule="ContactCheck"/>
+		</sch:rule>
+		<!-- Person -->
+		<sch:rule context="doc:Statement/cac:StatementLine/cac:BuyerCustomerParty/cac:Party/cac:Person">
+			<sch:extends rule="Person/FirstNameCheck"/>
+		</sch:rule>
+		<!-- DeliveryContact -->
+		<sch:rule context="doc:Statement/cac:StatementLine/cac:BuyerCustomerParty/cac:DeliveryContact">
+			<sch:extends rule="ContactCheck"/>
+		</sch:rule>
+		<!-- AccountingContact -->
+		<sch:rule context="doc:Statement/cac:StatementLine/cac:BuyerCustomerParty/cac:AccountingContact">
+			<sch:extends rule="ContactCheck"/>
+		</sch:rule>
+		<!-- BuyerContact -->
+		<sch:rule context="doc:Statement/cac:StatementLine/cac:BuyerCustomerParty/cac:BuyerContact">
+			<sch:extends rule="ContactCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  SellerSupplierParty - - - - - - - - - - -  -->
+		<!-- Top-level checks -->
+		<sch:rule context="doc:Statement/cac:StatementLine/cac:SellerSupplierParty">
+			<!-- Check for excluded elements -->
+			<sch:assert test="count(cbc:DataSendingCapability) = 0">[F-STA071] DataSendingCapability element must be excluded</sch:assert>
+			<!-- Check for mandatory elements -->
+			<sch:assert test="count(cac:Party) = 1">[F-STA072] Party class must be present</sch:assert>
+		</sch:rule>
+		<!-- Party -->
+		<sch:rule context="doc:Statement/cac:StatementLine/cac:SellerSupplierParty/cac:Party">
+			<!-- Check for excluded elements -->
+			<sch:extends rule="PartyExcludedCheck"/>
+			<!-- Check for mandatory elements -->
+			<!-- Validate -->
+			<sch:extends rule="PartyNameCheck"/>
+			<sch:extends rule="EndpointIDCheck"/>
+			<sch:report test="count(cac:PartyLegalEntity) &gt; 1">[F-STA073] No more than one PartyLegalEntity class may be present</sch:report>
+		</sch:rule>
+		<!-- PartyIdentification -->
+		<sch:rule context="doc:Statement/cac:StatementLine/cac:SellerSupplierParty/cac:Party/cac:PartyIdentification">
+			<sch:extends rule="PartyIdentificationCheck"/>
+		</sch:rule>
+		<!-- PartyName -->
+		<sch:rule context="doc:Statement/cac:StatementLine/cac:SellerSupplierParty/cac:Party/cac:PartyName">
+			<sch:extends rule="PartyNameLanguageCheck"/>
+		</sch:rule>
+		<!-- PostalAddress -->
+		<sch:rule context="doc:Statement/cac:StatementLine/cac:SellerSupplierParty/cac:Party/cac:PostalAddress">
+			<sch:extends rule="AddressCheck"/>
+		</sch:rule>
+		<!-- PhysicalLocation -->
+		<sch:rule context="doc:Statement/cac:StatementLine/cac:SellerSupplierParty/cac:Party/cac:PhysicalLocation">
+			<sch:extends rule="AddressIDCheck"/>
+		</sch:rule>
+		<!-- PhysicalLocation/ValidityPeriod -->
+		<sch:rule context="doc:Statement/cac:StatementLine/cac:SellerSupplierParty/cac:Party/cac:PhysicalLocation/cac:ValidityPeriod">
+			<sch:extends rule="PeriodCheck"/>
+		</sch:rule>
+		<!-- PhysicalLocation/ValidityPeriod/Description -->
+		<sch:rule context="doc:Statement/cac:StatementLine/cac:SellerSupplierParty/cac:Party/cac:PhysicalLocation/cac:ValidityPeriod/cbc:Description">
+			<sch:extends rule="DescriptionLanguageCheck"/>
+		</sch:rule>
+		<!-- PhysicalLocation/Address -->
+		<sch:rule context="doc:Statement/cac:StatementLine/cac:SellerSupplierParty/cac:Party/cac:PhysicalLocation/cac:Address">
+			<sch:extends rule="AddressCheck"/>
+		</sch:rule>
+		<!-- PartyTaxScheme -->
+		<sch:rule context="doc:Statement/cac:StatementLine/cac:SellerSupplierParty/cac:Party/cac:PartyTaxScheme">
+			<sch:extends rule="PartyTaxSchemeCheck"/>
+		</sch:rule>
+		<!-- PartyTaxScheme/TaxScheme -->
+		<sch:rule context="doc:Statement/cac:StatementLine/cac:SellerSupplierParty/cac:Party/cac:PartyTaxScheme/cac:TaxScheme">
+			<sch:extends rule="TaxSchemeCheck"/>
+		</sch:rule>
+		<!-- PartyLegalEntity -->
+		<sch:rule context="doc:Statement/cac:StatementLine/cac:SellerSupplierParty/cac:Party/cac:PartyLegalEntity">
+			<sch:extends rule="PartyLegalEntityCheck"/>
+		</sch:rule>
+		<!-- Contact -->
+		<sch:rule context="doc:Statement/cac:StatementLine/cac:SellerSupplierParty/cac:Party/cac:Contact">
+			<sch:extends rule="ContactCheck"/>
+		</sch:rule>
+		<!-- Person -->
+		<sch:rule context="doc:Statement/cac:StatementLine/cac:SellerSupplierParty/cac:Party/cac:Person">
+			<sch:extends rule="Person/FirstNameCheck"/>
+		</sch:rule>
+		<!-- DespatchContact -->
+		<sch:rule context="doc:Statement/cac:StatementLine/cac:SellerSupplierParty/cac:DespatchContact">
+			<sch:extends rule="ContactCheck"/>
+		</sch:rule>
+		<!-- AccountingContact -->
+		<sch:rule context="doc:Statement/cac:StatementLine/cac:SellerSupplierParty/cac:AccountingContact">
+			<sch:extends rule="ContactCheck"/>
+		</sch:rule>
+		<!-- SellerContact -->
+		<sch:rule context="doc:Statement/cac:StatementLine/cac:SellerSupplierParty/cac:SellerContact">
+			<sch:extends rule="ContactCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  OriginatorCustomerParty - - - - - - - - - - -  -->
+		<!-- Top-level checks -->
+		<sch:rule context="doc:Statement/cac:StatementLine/cac:OriginatorCustomerParty">
+			<!-- Check for excluded elements -->
+			<!-- Check for mandatory elements -->
+			<sch:assert test="count(cac:Party) = 1">[F-STA074] Party class must be present</sch:assert>
+		</sch:rule>
+		<!-- Party -->
+		<sch:rule context="doc:Statement/cac:StatementLine/cac:OriginatorCustomerParty/cac:Party">
+			<!-- Check for excluded elements -->
+			<sch:extends rule="PartyExcludedCheck"/>
+			<!-- Check for mandatory elements -->
+			<!-- Validate -->
+			<sch:extends rule="PartyNameCheck"/>
+			<sch:extends rule="EndpointIDCheck"/>
+			<sch:report test="count(cac:PartyLegalEntity) &gt; 1">[F-STA075] No more than one PartyLegalEntity class may be present</sch:report>
+		</sch:rule>
+		<!-- PartyIdentification -->
+		<sch:rule context="doc:Statement/cac:StatementLine/cac:OriginatorCustomerParty/cac:Party/cac:PartyIdentification">
+			<sch:extends rule="PartyIdentificationCheck"/>
+		</sch:rule>
+		<!-- PartyName -->
+		<sch:rule context="doc:Statement/cac:StatementLine/cac:OriginatorCustomerParty/cac:Party/cac:PartyName">
+			<sch:extends rule="PartyNameLanguageCheck"/>
+		</sch:rule>
+		<!-- PostalAddress -->
+		<sch:rule context="doc:Statement/cac:StatementLine/cac:OriginatorCustomerParty/cac:Party/cac:PostalAddress">
+			<sch:extends rule="AddressCheck"/>
+		</sch:rule>
+		<!-- PhysicalLocation -->
+		<sch:rule context="doc:Statement/cac:StatementLine/cac:OriginatorCustomerParty/cac:Party/cac:PhysicalLocation">
+			<sch:extends rule="AddressIDCheck"/>
+		</sch:rule>
+		<!-- PhysicalLocation/ValidityPeriod -->
+		<sch:rule context="doc:Statement/cac:StatementLine/cac:OriginatorCustomerParty/cac:Party/cac:PhysicalLocation/cac:ValidityPeriod">
+			<sch:extends rule="PeriodCheck"/>
+		</sch:rule>
+		<!-- PhysicalLocation/ValidityPeriod/Description -->
+		<sch:rule context="doc:Statement/cac:StatementLine/cac:OriginatorCustomerParty/cac:Party/cac:PhysicalLocation/cac:ValidityPeriod/cbc:Description">
+			<sch:extends rule="DescriptionLanguageCheck"/>
+		</sch:rule>
+		<!-- PhysicalLocation/Address -->
+		<sch:rule context="doc:Statement/cac:StatementLine/cac:OriginatorCustomerParty/cac:Party/cac:PhysicalLocation/cac:Address">
+			<sch:extends rule="AddressCheck"/>
+		</sch:rule>
+		<!-- PartyTaxScheme -->
+		<sch:rule context="doc:Statement/cac:StatementLine/cac:OriginatorCustomerParty/cac:Party/cac:PartyTaxScheme">
+			<sch:extends rule="PartyTaxSchemeCheck"/>
+		</sch:rule>
+		<!-- PartyTaxScheme/TaxScheme -->
+		<sch:rule context="doc:Statement/cac:StatementLine/cac:OriginatorCustomerParty/cac:Party/cac:PartyTaxScheme/cac:TaxScheme">
+			<sch:extends rule="TaxSchemeCheck"/>
+		</sch:rule>
+		<!-- PartyLegalEntity -->
+		<sch:rule context="doc:Statement/cac:StatementLine/cac:OriginatorCustomerParty/cac:Party/cac:PartyLegalEntity">
+			<sch:extends rule="PartyLegalEntityCheck"/>
+		</sch:rule>
+		<!-- Contact -->
+		<sch:rule context="doc:Statement/cac:StatementLine/cac:OriginatorCustomerParty/cac:Party/cac:Contact">
+			<sch:extends rule="ContactCheck"/>
+		</sch:rule>
+		<!-- Person -->
+		<sch:rule context="doc:Statement/cac:StatementLine/cac:OriginatorCustomerParty/cac:Party/cac:Person">
+			<sch:extends rule="Person/FirstNameCheck"/>
+		</sch:rule>
+		<!-- DeliveryContact -->
+		<sch:rule context="doc:Statement/cac:StatementLine/cac:OriginatorCustomerParty/cac:DeliveryContact">
+			<sch:extends rule="ContactCheck"/>
+		</sch:rule>
+		<!-- AccountingContact -->
+		<sch:rule context="doc:Statement/cac:StatementLine/cac:OriginatorCustomerParty/cac:AccountingContact">
+			<sch:extends rule="ContactCheck"/>
+		</sch:rule>
+		<!-- BuyerContact -->
+		<sch:rule context="doc:Statement/cac:StatementLine/cac:OriginatorCustomerParty/cac:BuyerContact">
+			<sch:extends rule="ContactCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  AccountingCustomerParty - - - - - - - - - - -  -->
+		<!-- Top-level checks -->
+		<sch:rule context="doc:Statement/cac:StatementLine/cac:AccountingCustomerParty">
+			<!-- Check for excluded elements -->
+			<!-- Check for mandatory elements -->
+			<sch:assert test="count(cac:Party) = 1">[F-STA077] Party class must be present</sch:assert>
+		</sch:rule>
+		<!-- Party -->
+		<sch:rule context="doc:Statement/cac:StatementLine/cac:AccountingCustomerParty/cac:Party">
+			<!-- Check for excluded elements -->
+			<sch:extends rule="PartyExcludedCheck"/>
+			<!-- Check for mandatory elements -->
+			<!-- Validate -->
+			<sch:extends rule="PartyNameCheck"/>
+			<sch:extends rule="EndpointIDCheck"/>
+			<sch:report test="count(cac:PartyLegalEntity) &gt; 1">[F-STA087] No more than one PartyLegalEntity class may be present</sch:report>
+		</sch:rule>
+		<!-- PartyIdentification -->
+		<sch:rule context="doc:Statement/cac:StatementLine/cac:AccountingCustomerParty/cac:Party/cac:PartyIdentification">
+			<sch:extends rule="PartyIdentificationCheck"/>
+		</sch:rule>
+		<!-- PartyName -->
+		<sch:rule context="doc:Statement/cac:StatementLine/cac:AccountingCustomerParty/cac:Party/cac:PartyName">
+			<sch:extends rule="PartyNameLanguageCheck"/>
+		</sch:rule>
+		<!-- PostalAddress -->
+		<sch:rule context="doc:Statement/cac:StatementLine/cac:AccountingCustomerParty/cac:Party/cac:PostalAddress">
+			<sch:extends rule="AddressCheck"/>
+		</sch:rule>
+		<!-- PhysicalLocation -->
+		<sch:rule context="doc:Statement/cac:StatementLine/cac:AccountingCustomerParty/cac:Party/cac:PhysicalLocation">
+			<sch:extends rule="AddressIDCheck"/>
+		</sch:rule>
+		<!-- PhysicalLocation/ValidityPeriod -->
+		<sch:rule context="doc:Statement/cac:StatementLine/cac:AccountingCustomerParty/cac:Party/cac:PhysicalLocation/cac:ValidityPeriod">
+			<sch:extends rule="PeriodCheck"/>
+		</sch:rule>
+		<!-- PhysicalLocation/ValidityPeriod/Description -->
+		<sch:rule context="doc:Statement/cac:StatementLine/cac:AccountingCustomerParty/cac:Party/cac:PhysicalLocation/cac:ValidityPeriod/cbc:Description">
+			<sch:extends rule="DescriptionLanguageCheck"/>
+		</sch:rule>
+		<!-- PhysicalLocation/Address -->
+		<sch:rule context="doc:Statement/cac:StatementLine/cac:AccountingCustomerParty/cac:Party/cac:PhysicalLocation/cac:Address">
+			<sch:extends rule="AddressCheck"/>
+		</sch:rule>
+		<!-- PartyTaxScheme -->
+		<sch:rule context="doc:Statement/cac:StatementLine/cac:AccountingCustomerParty/cac:Party/cac:PartyTaxScheme">
+			<sch:extends rule="PartyTaxSchemeCheck"/>
+		</sch:rule>
+		<!-- PartyTaxScheme/TaxScheme -->
+		<sch:rule context="doc:Statement/cac:StatementLine/cac:AccountingCustomerParty/cac:Party/cac:PartyTaxScheme/cac:TaxScheme">
+			<sch:extends rule="TaxSchemeCheck"/>
+		</sch:rule>
+		<!-- PartyLegalEntity -->
+		<sch:rule context="doc:Statement/cac:StatementLine/cac:AccountingCustomerParty/cac:Party/cac:PartyLegalEntity">
+			<sch:extends rule="PartyLegalEntityCheck"/>
+		</sch:rule>
+		<!-- Contact -->
+		<sch:rule context="doc:Statement/cac:StatementLine/cac:AccountingCustomerParty/cac:Party/cac:Contact">
+			<sch:extends rule="ContactCheck"/>
+		</sch:rule>
+		<!-- Person -->
+		<sch:rule context="doc:Statement/cac:StatementLine/cac:AccountingCustomerParty/cac:Party/cac:Person">
+			<sch:extends rule="Person/FirstNameCheck"/>
+		</sch:rule>
+		<!-- DeliveryContact -->
+		<sch:rule context="doc:Statement/cac:StatementLine/cac:AccountingCustomerParty/cac:DeliveryContact">
+			<sch:extends rule="ContactCheck"/>
+		</sch:rule>
+		<!-- AccountingContact -->
+		<sch:rule context="doc:Statement/cac:StatementLine/cac:AccountingCustomerParty/cac:AccountingContact">
+			<sch:extends rule="ContactCheck"/>
+		</sch:rule>
+		<!-- BuyerContact -->
+		<sch:rule context="doc:Statement/cac:StatementLine/cac:AccountingCustomerParty/cac:BuyerContact">
+			<sch:extends rule="ContactCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  AccountingSupplierParty - - - - - - - - - - -  -->
+		<!-- Top-level checks -->
+		<sch:rule context="doc:Statement/cac:StatementLine/cac:AccountingSupplierParty">
+			<!-- Check for excluded elements -->
+			<sch:assert test="count(cbc:DataSendingCapability) = 0">[F-STA078] DataSendingCapability element must be excluded</sch:assert>
+			<!-- Check for mandatory elements -->
+			<sch:assert test="count(cac:Party) = 1">[F-STA079] Party class must be present</sch:assert>
+		</sch:rule>
+		<!-- Party -->
+		<sch:rule context="doc:Statement/cac:StatementLine/cac:AccountingSupplierParty/cac:Party">
+			<!-- Check for excluded elements -->
+			<sch:extends rule="PartyExcludedCheck"/>
+			<!-- Check for mandatory elements -->
+			<!-- Validate -->
+			<sch:extends rule="PartyNameCheck"/>
+			<sch:extends rule="EndpointIDCheck"/>
+			<sch:report test="count(cac:PartyLegalEntity) &gt; 1">[F-STA080] No more than one PartyLegalEntity class may be present</sch:report>
+		</sch:rule>
+		<!-- PartyIdentification -->
+		<sch:rule context="doc:Statement/cac:StatementLine/cac:AccountingSupplierParty/cac:Party/cac:PartyIdentification">
+			<sch:extends rule="PartyIdentificationCheck"/>
+		</sch:rule>
+		<!-- PartyName -->
+		<sch:rule context="doc:Statement/cac:StatementLine/cac:AccountingSupplierParty/cac:Party/cac:PartyName">
+			<sch:extends rule="PartyNameLanguageCheck"/>
+		</sch:rule>
+		<!-- PostalAddress -->
+		<sch:rule context="doc:Statement/cac:StatementLine/cac:AccountingSupplierParty/cac:Party/cac:PostalAddress">
+			<sch:extends rule="AddressCheck"/>
+		</sch:rule>
+		<!-- PhysicalLocation -->
+		<sch:rule context="doc:Statement/cac:StatementLine/cac:AccountingSupplierParty/cac:Party/cac:PhysicalLocation">
+			<sch:extends rule="AddressIDCheck"/>
+		</sch:rule>
+		<!-- PhysicalLocation/ValidityPeriod -->
+		<sch:rule context="doc:Statement/cac:StatementLine/cac:AccountingSupplierParty/cac:Party/cac:PhysicalLocation/cac:ValidityPeriod">
+			<sch:extends rule="PeriodCheck"/>
+		</sch:rule>
+		<!-- PhysicalLocation/ValidityPeriod/Description -->
+		<sch:rule context="doc:Statement/cac:StatementLine/cac:AccountingSupplierParty/cac:Party/cac:PhysicalLocation/cac:ValidityPeriod/cbc:Description">
+			<sch:extends rule="DescriptionLanguageCheck"/>
+		</sch:rule>
+		<!-- PhysicalLocation/Address -->
+		<sch:rule context="doc:Statement/cac:StatementLine/cac:AccountingSupplierParty/cac:Party/cac:PhysicalLocation/cac:Address">
+			<sch:extends rule="AddressCheck"/>
+		</sch:rule>
+		<!-- PartyTaxScheme -->
+		<sch:rule context="doc:Statement/cac:StatementLine/cac:AccountingSupplierParty/cac:Party/cac:PartyTaxScheme">
+			<sch:extends rule="PartyTaxSchemeCheck"/>
+		</sch:rule>
+		<!-- PartyTaxScheme/TaxScheme -->
+		<sch:rule context="doc:Statement/cac:StatementLine/cac:AccountingSupplierParty/cac:Party/cac:PartyTaxScheme/cac:TaxScheme">
+			<sch:extends rule="TaxSchemeCheck"/>
+		</sch:rule>
+		<!-- PartyLegalEntity -->
+		<sch:rule context="doc:Statement/cac:StatementLine/cac:AccountingSupplierParty/cac:Party/cac:PartyLegalEntity">
+			<sch:extends rule="PartyLegalEntityCheck"/>
+		</sch:rule>
+		<!-- Contact -->
+		<sch:rule context="doc:Statement/cac:StatementLine/cac:AccountingSupplierParty/cac:Party/cac:Contact">
+			<sch:extends rule="ContactCheck"/>
+		</sch:rule>
+		<!-- Person -->
+		<sch:rule context="doc:Statement/cac:StatementLine/cac:AccountingSupplierParty/cac:Party/cac:Person">
+			<sch:extends rule="Person/FirstNameCheck"/>
+		</sch:rule>
+		<!-- DespatchContact -->
+		<sch:rule context="doc:Statement/cac:StatementLine/cac:AccountingSupplierParty/cac:DespatchContact">
+			<sch:extends rule="ContactCheck"/>
+		</sch:rule>
+		<!-- AccountingContact -->
+		<sch:rule context="doc:Statement/cac:StatementLine/cac:AccountingSupplierParty/cac:AccountingContact">
+			<sch:extends rule="ContactCheck"/>
+		</sch:rule>
+		<!-- SellerContact -->
+		<sch:rule context="doc:Statement/cac:StatementLine/cac:AccountingSupplierParty/cac:SellerContact">
+			<sch:extends rule="ContactCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PayeeParty - - - - - - - - - - -  -->
+		<!--  Top-level checks -->
+		<sch:rule context="doc:Statement/cac:StatementLine/cac:PayeeParty">
+			<!-- Check for excluded elements -->
+			<sch:extends rule="PartyExcludedCheck"/>
+			<!-- Check for mandatory elements -->
+			<!-- Validate -->
+			<sch:extends rule="PartyNameCheck"/>
+			<sch:extends rule="EndpointIDCheck"/>
+			<sch:report test="count(cac:PartyLegalEntity) &gt; 1">[F-STA081] No more than one PartyLegalEntity class may be present</sch:report>
+		</sch:rule>
+		<!-- PartyIdentification -->
+		<sch:rule context="doc:Statement/cac:StatementLine/cac:PayeeParty/cac:PartyIdentification">
+			<sch:extends rule="PartyIdentificationCheck"/>
+		</sch:rule>
+		<!-- PartyName -->
+		<sch:rule context="doc:Statement/cac:StatementLine/cac:PayeeParty/cac:PartyName">
+			<sch:extends rule="PartyNameLanguageCheck"/>
+		</sch:rule>
+		<!-- PostalAddress -->
+		<sch:rule context="doc:Statement/cac:StatementLine/cac:PayeeParty/cac:PostalAddress">
+			<sch:extends rule="AddressCheck"/>
+		</sch:rule>
+		<!-- PhysicalLocation -->
+		<sch:rule context="doc:Statement/cac:StatementLine/cac:PayeeParty/cac:PhysicalLocation">
+			<sch:extends rule="AddressIDCheck"/>
+		</sch:rule>
+		<!-- PhysicalLocation/ValidityPeriod -->
+		<sch:rule context="doc:Statement/cac:StatementLine/cac:PayeeParty/cac:PhysicalLocation/cac:ValidityPeriod">
+			<sch:extends rule="PeriodCheck"/>
+		</sch:rule>
+		<!-- PhysicalLocation/ValidityPeriod/Description -->
+		<sch:rule context="doc:Statement/cac:StatementLine/cac:PayeeParty/cac:PhysicalLocation/cac:ValidityPeriod/cbc:Description">
+			<sch:extends rule="DescriptionLanguageCheck"/>
+		</sch:rule>
+		<!-- PhysicalLocation/Address -->
+		<sch:rule context="doc:Statement/cac:StatementLine/cac:PayeeParty/cac:PhysicalLocation/cac:Address">
+			<sch:extends rule="AddressCheck"/>
+		</sch:rule>
+		<!-- PartyTaxScheme -->
+		<sch:rule context="doc:Statement/cac:StatementLine/cac:PayeeParty/cac:PartyTaxScheme">
+			<sch:extends rule="PartyTaxSchemeCheck"/>
+		</sch:rule>
+		<!-- PartyTaxScheme/TaxScheme -->
+		<sch:rule context="doc:Statement/cac:StatementLine/cac:PayeeParty/cac:PartyTaxScheme/cac:TaxScheme">
+			<sch:extends rule="TaxSchemeCheck"/>
+		</sch:rule>
+		<!-- PartyLegalEntity -->
+		<sch:rule context="doc:Statement/cac:StatementLine/cac:PayeeParty/cac:PartyLegalEntity">
+			<sch:extends rule="PartyLegalEntityCheck"/>
+		</sch:rule>
+		<!-- Contact -->
+		<sch:rule context="doc:Statement/cac:StatementLine/cac:PayeeParty/cac:Contact">
+			<sch:extends rule="ContactCheck"/>
+		</sch:rule>
+		<!-- Person -->
+		<sch:rule context="doc:Statement/cac:StatementLine/cac:PayeeParty/cac:Person">
+			<sch:extends rule="Person/FirstNameCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  InvoicePeriod - - - - - - - - - - -  -->
+		<sch:rule context="doc:Statement/cac:StatementLine/cac:InvoicePeriod">
+			<sch:extends rule="PeriodCheck"/>
+		</sch:rule>
+		<!-- Validate Description -->
+		<sch:rule context="doc:Statement/cac:StatementLine/cac:StatementPeriod/cbc:Description">
+			<sch:extends rule="DescriptionLanguageCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  BillingReference - - - - - - - - - - -  -->
+		<sch:rule context="doc:Statement/cac:StatementLine/cac:BillingReference">
+			<!-- Check for excluded elements -->
+			<sch:assert test="count(cac:DebitNoteDocumentReference) = 0">[F-STA082] DebitNoteDocumentReference class must be excluded</sch:assert>
+			<sch:assert test="count(cac:AdditionalDocumentReference) = 0">[F-STA083] AdditionalDocumentReference class must be excluded</sch:assert>
+			<!-- Check for mandatory elements -->
+			<!-- Validate -->
+			<sch:report test="count(cac:BillingReferenceLine) &gt; 1">[F-STA084] No more than one BillingReferenceLine class may be present</sch:report>
+		</sch:rule>
+		<!-- Validate BillingReference/InvoiceDocumentReference -->
+		<sch:rule context="doc:Statement/cac:StatementLine/cac:BillingReference/cac:InvoiceDocumentReference">
+			<sch:extends rule="KnownDocumentReferenceCheck"/>
+		</sch:rule>
+		<!-- Validate BillingReference/SelfBilledInvoiceDocumentReference -->
+		<sch:rule context="doc:Statement/cac:StatementLine/cac:BillingReference/cac:SelfBilledInvoiceDocumentReference">
+			<sch:extends rule="KnownDocumentReferenceCheck"/>
+		</sch:rule>
+		<!-- Validate BillingReference/CreditNoteDocumentReference -->
+		<sch:rule context="doc:Statement/cac:StatementLine/cac:BillingReference/cac:CreditNoteDocumentReference">
+			<sch:extends rule="KnownDocumentReferenceCheck"/>
+		</sch:rule>
+		<!-- Validate BillingReference/SelfBilledCreditNoteDocumentReference -->
+		<sch:rule context="doc:Statement/cac:StatementLine/cac:BillingReference/cac:SelfBilledCreditNoteDocumentReference">
+			<sch:extends rule="KnownDocumentReferenceCheck"/>
+		</sch:rule>
+		<!-- Validate BillingReference/ReminderDocumentReference -->
+		<sch:rule context="doc:Statement/cac:StatementLine/cac:BillingReference/cac:ReminderDocumentReference">
+			<sch:extends rule="KnownDocumentReferenceCheck"/>
+		</sch:rule>
+		<!-- Validate BillingReference/BillingReferenceLine -->
+		<sch:rule context="doc:Statement/cac:StatementLine/cac:BillingReference/cac:BillingReferenceLine">
+			<sch:report test="count(cac:AllowanceCharge) &gt; 1">[F-STA085] No more than one AllowanceCharge class may be present</sch:report>
+		</sch:rule>
+		<!-- Validate BillingReference/BillingReferenceLine/AllowanceCharge -->
+		<sch:rule context="doc:Statement/cac:StatementLine/cac:BillingReference/cac:BillingReferenceLine/cac:AllowanceCharge">
+			<sch:extends rule="AllowanceChargeTopCheck"/>
+			<sch:extends rule="AccountingCostCheck"/>
+		</sch:rule>
+		<!-- Validate BillingReference/BillingReferenceLine/AllowanceCharge/SequenceNumeric -->
+		<sch:rule context="doc:Statement/cac:StatementLine/cac:BillingReference/cac:BillingReferenceLine/cac:AllowanceCharge/cbc:SequenceNumeric">
+			<sch:extends rule="PosNumberCheck"/>
+		</sch:rule>
+		<!-- Validate BillingReference/BillingReferenceLine/AllowanceCharge/Amount -->
+		<sch:rule context="doc:Statement/cac:StatementLine/cac:BillingReference/cac:BillingReferenceLine/cac:AllowanceCharge/cbc:Amount">
+			<sch:extends rule="PosZeroNumberCheck"/>
+		</sch:rule>
+		<!-- Validate BillingReference/BillingReferenceLine/AllowanceCharge/BaseAmount -->
+		<sch:rule context="doc:Statement/cac:StatementLine/cac:BillingReference/cac:BillingReferenceLine/cac:AllowanceCharge/cbc:BaseAmount">
+			<sch:extends rule="PosZeroNumberCheck"/>
+		</sch:rule>
+		<!-- Validate BillingReference/BillingReferenceLine/AllowanceCharge/TaxCategory -->
+		<sch:rule context="doc:Statement/cac:StatementLine/cac:BillingReference/cac:BillingReferenceLine/cac:AllowanceCharge/cac:TaxCategory">
+			<sch:extends rule="TaxCategoryCheck"/>
+		</sch:rule>
+		<!-- Validate BillingReference/BillingReferenceLine/AllowanceCharge/TaxCategory/TaxScheme -->
+		<sch:rule context="doc:Statement/cac:StatementLine/cac:BillingReference/cac:BillingReferenceLine/cac:AllowanceCharge/cac:TaxCategory/cac:TaxScheme">
+			<sch:extends rule="TaxSchemeCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  DocumentReference - - - - - - - - - - -  -->
+		<sch:rule context="doc:Statement/cac:StatementLine/cac:DocumentReference">
+			<sch:extends rule="DocumentReferenceCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  ExchangeRate - - - - - - - - - - -  -->
+		<sch:rule context="doc:Statement/cac:StatementLine/cac:ExchangeRate">
+			<sch:extends rule="ExchangeRateCheck"/>
+		</sch:rule>
+		<!-- Validate ExchangeRate/ForeignExchangeContract/ValidityPeriod -->
+		<sch:rule context="doc:Statement/cac:StatementLine/cac:ExchangeRate/cac:ForeignExchangeContract/cac:ValidityPeriod">
+			<sch:extends rule="PeriodCheck"/>
+		</sch:rule>
+		<!-- Validate ExchangeRate/ForeignExchangeContract/ValidityPeriod/Description -->
+		<sch:rule context="doc:Statement/cac:StatementLine/cac:ExchangeRate/cac:ForeignExchangeContract/cac:ValidityPeriod/cbc:Description">
+			<sch:extends rule="DescriptionLanguageCheck"/>
+		</sch:rule>
+		<!-- Validate ExchangeRate/ForeignExchangeContract/ContractDocumentReference -->
+		<sch:rule context="doc:Statement/cac:StatementLine/cac:ExchangeRate/cac:ForeignExchangeContract/cac:ContractDocumentReference">
+			<sch:extends rule="KnownDocumentReferenceCheck"/>
+		</sch:rule>
+
+	</sch:pattern>
+
+</sch:schema>

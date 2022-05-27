@@ -1,0 +1,623 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+******************************************************************************************************************
+
+		OIOUBL Schematron
+
+		publisher:          NemHandel / Erhvervsstyrelsen
+        Repository path:    $HeadURL$
+        File version:       $Revision$
+        Last changed by:    $Author$
+        Last changed date:  $Date$
+
+		Description:        This document is produced as part of the OIOUBL schematron package
+		Rights:             It can be used following the Common Creative Licence
+
+		all terms derived from http://dublincore.org/documents/dcmi-terms/
+
+		For more information, see www.oioubl.info or email support@nemhandel.dk
+
+******************************************************************************************************************
+-->
+
+<sch:schema xmlns:sch="http://purl.oclc.org/dsdl/schematron">
+
+	<sch:ns uri="urn:oasis:names:specification:ubl:schema:xsd:CatalogueDeletion-2"            prefix="doc"/>
+	<sch:ns uri="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"    prefix="cac"/>
+	<sch:ns uri="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"        prefix="cbc"/>
+	<sch:ns uri="urn:oasis:names:specification:ubl:schema:xsd:CoreComponentParameters-2"      prefix="ccts"/>
+	<sch:ns uri="urn:oasis:names:specification:ubl:schema:xsd:SpecializedDatatypes-2"         prefix="sdt"/>
+	<sch:ns uri="urn:un:unece:uncefact:data:specification:UnqualifiedDataTypesSchemaModule:2" prefix="udt"/>
+	<!-- [Release 20120615] Check added according to issue: https://bugs.softwareborsen.dk/show_bug.cgi?id=934 -->
+	<sch:ns uri="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2" prefix="ext"/>
+	<sch:ns uri="http://www.w3.org/2001/XMLSchema"                                            prefix="xs"/>
+
+
+
+	<sch:p>Schematron for validating OIOUBL-2.1 documents.</sch:p>
+	<sch:title>Checking OIOUBL-2.1 CatalogueDeletion</sch:title>
+
+
+	<!-- Inclusion of OIOUBL codelist variables -->
+	<sch:include href="OIOUBL_Codelist_Schematron.xml"/>
+
+
+	<!-- Global variables -->
+
+
+	<!-- The default phase to execute when validating -->
+	<sch:phase id="default">
+		<sch:active pattern="ublextensions"/>
+		<sch:active pattern="profile"/>
+		<sch:active pattern="cataloguedeletion"/>
+		<sch:active pattern="validityperiod"/>
+		<sch:active pattern="deletedcataloguereference"/>
+		<sch:active pattern="referencedcontract"/>
+		<sch:active pattern="signature"/>
+		<sch:active pattern="receiverparty"/>
+		<sch:active pattern="providerparty"/>
+		<sch:active pattern="sellersupplierparty"/>
+		<sch:active pattern="contractorcustomerparty"/>
+	</sch:phase>
+
+
+	<!-- Inclusion of OIOUBL common rules -->
+	<sch:include href="OIOUBL_Common_Schematron.xml"/>
+
+
+	<!-- - - - - - - - - - - -  UBLExtensions - - - - - - - - - - - - -  -->
+	<!-- [Release 20120615] Check added according to issue: https://bugs.softwareborsen.dk/show_bug.cgi?id=934 -->
+	<sch:pattern name="UBLExtensions" id="ublextensions">
+		<sch:p>Pattern for validating the UBLExtensions class</sch:p>
+		<sch:rule context="doc:CatalogueDeletion">
+			<sch:extends rule="UBLExtensionsCheck"/>
+		</sch:rule>
+	</sch:pattern>
+
+	<!-- - - - - - - - - - - -  Profile - - - - - - - - - - - - -  -->
+	<sch:pattern name="Profile" id="profile">
+		<sch:p>Pattern for validating root element, Profile and UBL version</sch:p>
+		<!-- Validate root element -->
+		<sch:rule context="/">
+			<sch:assert test="local-name(*) = 'CatalogueDeletion'">[F-CDE001] Root element must be CatalogueDeletion</sch:assert>
+			<!-- [Release 20130315] Check added according to issue: https://bugs.softwareborsen.dk/show_bug.cgi?id=1023 -->
+			<sch:assert test="namespace-uri(*) = 'urn:oasis:names:specification:ubl:schema:xsd:CatalogueDeletion-2'">[F-CDE072] The documenttype does not match an OIOUBL CatalogueDeletion and can not be validated by this schematron.</sch:assert>
+		</sch:rule>
+		<sch:rule context="doc:CatalogueDeletion">
+			<!-- Check ProfileID, UBLVersionID and CustomizationID -->
+			<sch:extends rule="UBLVersionIDCheck"/>
+			<sch:extends rule="CustomizationIDCheck"/>
+			<sch:extends rule="ProfileIDCheck"/>
+
+			<!-- Check Profile dependencies (top level) -->
+		</sch:rule>
+	</sch:pattern>
+
+	<!-- - - - - - - - - - - -  CatalogueDeletion (CDE071) - - - - - - - - - - -  -->
+	<sch:pattern name="CatalogueDeletion" id="cataloguedeletion">
+		<sch:p>Pattern for validating the CatalogueDeletion structure</sch:p>
+		<sch:rule context="doc:CatalogueDeletion">
+			<!-- Check for excluded elements -->
+			<!-- Check for mandatory elements -->
+			<!-- Validate -->
+			<sch:assert test="cbc:ID != ''">[F-CDE002] Invalid ID. Must contain a value</sch:assert>
+			<sch:report test="cac:SellerSupplierParty and cac:ProviderParty/cac:PartyIdentification/cbc:ID = cac:SellerSupplierParty/cac:Party/cac:PartyIdentification/cbc:ID">[F-CDE003] SellerSupplierParty must be different from ProviderParty</sch:report>
+			<sch:report test="cac:ContractorCustomerParty and cac:ReceiverParty/cac:PartyIdentification/cbc:ID = cac:ContractorCustomerParty/cac:Party/cac:PartyIdentification/cbc:ID">[F-CDE004] ContractorCustomerParty must be different from ReceiverParty</sch:report>
+			<sch:report test="count(cac:ReferencedContract) &gt; 1">[F-CDE005] No more than one ReferencedContract class may be present</sch:report>
+		</sch:rule>
+
+		<!-- Validate UUID -->
+		<sch:rule context="doc:CatalogueDeletion/cbc:UUID">
+			<sch:extends rule="UUIDCheck"/>
+		</sch:rule>
+
+		<!-- Validate IssueDate -->
+		<!-- Validate IssueTime -->
+
+		<!-- Validate Note -->
+		<sch:rule context="doc:CatalogueDeletion/cbc:Note">
+			<sch:extends rule="NoteCheck"/>
+		</sch:rule>
+
+		<!-- Validate VersionID -->
+
+		<!-- Validate Description -->
+		<sch:rule context="doc:CatalogueDeletion/cbc:Description">
+			<sch:extends rule="DescriptionLanguageCheck"/>
+		</sch:rule>
+	</sch:pattern>
+
+	<!-- - - - - - - - - - - -  ValidityPeriod - - - - - - - - - - -  -->
+	<sch:pattern name="ValidityPeriod" id="validityperiod">
+		<sch:p>Pattern for validating the ValidityPeriod class</sch:p>
+		<sch:rule context="doc:CatalogueDeletion/cac:ValidityPeriod">
+			<!-- Validate -->
+			<sch:extends rule="PeriodCheck"/>
+		</sch:rule>
+		<!-- Validate Description -->
+		<sch:rule context="doc:CatalogueDeletion/cac:ValidityPeriod/cbc:Description">
+			<sch:extends rule="DescriptionLanguageCheck"/>
+		</sch:rule>
+	</sch:pattern>
+
+	<!-- - - - - - - - - - - -  DeletedCatalogueReference - - - - - - - - - - -  -->
+	<sch:pattern name="DeletedCatalogueReference" id="deletedcataloguereference">
+		<sch:p>Pattern for validating the DeletedCatalogueReference class</sch:p>
+		<sch:rule context="doc:CatalogueDeletion/cac:DeletedCatalogueReference">
+			<!-- Check for excluded elements -->
+			<!-- Check for mandatory elements -->
+			<!-- Validate -->
+		</sch:rule>
+		<!-- Validate UUID -->
+		<sch:rule context="doc:CatalogueDeletion/cac:DeletedCatalogueReference/cbc:UUID">
+			<sch:extends rule="UUIDCheck"/>
+		</sch:rule>
+
+		<!-- Validate IssueDate -->
+		<!-- Validate IssueTime -->
+		<!-- Validate RevisionDate -->
+		<!-- Validate RevisionTime -->
+
+		<!-- Validate Note -->
+		<sch:rule context="doc:CatalogueDeletion/cac:DeletedCatalogueReference/cbc:Note">
+			<sch:extends rule="NoteCheck"/>
+		</sch:rule>
+
+		<!-- Validate VersionID -->
+
+		<!-- Validate Description -->
+		<sch:rule context="doc:CatalogueDeletion/cac:DeletedCatalogueReference/cbc:Description">
+			<sch:extends rule="DescriptionLanguageCheck"/>
+		</sch:rule>
+	</sch:pattern>
+
+	<!-- - - - - - - - - - - -  ReferencedContract - - - - - - - - - - -  -->
+	<sch:pattern name="ReferencedContract" id="referencedcontract">
+		<sch:p>Pattern for validating the ReferencedContract class</sch:p>
+		<sch:rule context="doc:CatalogueDeletion/cac:ReferencedContract">
+			<!-- Check for excluded elements -->
+			<!-- Check for mandatory elements -->
+			<sch:assert test="cbc:ID != ''">[F-CDE020] Invalid ID. Must contain a value</sch:assert>
+			<!-- Validate -->
+			<sch:report test="cbc:ContractType and cbc:ContractTypeCode">[F-CDE021] Use either ContractType or ContractTypeCode</sch:report>
+			<sch:report test="count(cac:ContractDocumentReference) &gt; 1">[F-CDE022] No more than one ContractDocumentReference class may be present</sch:report>
+		</sch:rule>
+
+		<!-- Validate ValidityPeriod -->
+		<sch:rule context="doc:CatalogueDeletion/cac:ReferencedContract/cac:ValidityPeriod">
+			<sch:extends rule="PeriodCheck"/>
+		</sch:rule>
+		<!-- Validate ValidityPeriod/Description -->
+		<sch:rule context="doc:CatalogueDeletion/cac:ReferencedContract/cac:ValidityPeriod/cbc:Description">
+			<sch:extends rule="DescriptionLanguageCheck"/>
+		</sch:rule>
+
+		<!-- Validate ContractDocumentReference -->
+		<sch:rule context="doc:CatalogueDeletion/cac:ReferencedContract/cac:ContractDocumentReference">
+			<sch:extends rule="KnownDocumentReferenceCheck"/>
+		</sch:rule>
+	</sch:pattern>
+
+	<!-- - - - - - - - - - - -  Signature - - - - - - - - - - -  -->
+	<sch:pattern name="Signature" id="signature">
+		<sch:p>Pattern for validating the Signature class</sch:p>
+		<sch:rule context="doc:CatalogueDeletion/cac:Signature">
+			<!-- Check for excluded elements -->
+			<!-- Check for mandatory elements -->
+			<!-- Validate -->
+			<sch:assert test="cbc:ID != ''">[F-CDE030] Invalid ID. Must contain a value</sch:assert>
+		</sch:rule>
+		<!-- Validate SignatoryParty -->
+		<sch:rule context="doc:CatalogueDeletion/cac:Signature/cac:SignatoryParty">
+			<!-- Check for excluded elements -->
+			<sch:extends rule="PartyExcludedCheck"/>
+			<!-- Check for mandatory elements -->
+			<!-- Validate -->
+			<sch:extends rule="PartyNameCheck"/>
+			<sch:extends rule="EndpointIDCheck"/>
+			<sch:report test="count(cac:PartyLegalEntity) &gt; 1">[F-CDE031] No more than one PartyLegalEntity class may be present</sch:report>
+		</sch:rule>
+		<!-- Validate SignatoryParty/PartyIdentification -->
+		<sch:rule context="doc:CatalogueDeletion/cac:Signature/cac:SignatoryParty/cac:PartyIdentification">
+			<sch:extends rule="PartyIdentificationCheck"/>
+		</sch:rule>
+		<!-- Validate SignatoryParty/PartyName -->
+		<sch:rule context="doc:CatalogueDeletion/cac:Signature/cac:SignatoryParty/cac:PartyName">
+			<sch:extends rule="PartyNameLanguageCheck"/>
+		</sch:rule>
+		<!-- Validate SignatoryParty/PostalAddress -->
+		<sch:rule context="doc:CatalogueDeletion/cac:Signature/cac:SignatoryParty/cac:PostalAddress">
+			<sch:extends rule="AddressCheck"/>
+		</sch:rule>
+		<!-- Validate SignatoryParty/PhysicalLocation -->
+		<sch:rule context="doc:CatalogueDeletion/cac:Signature/cac:SignatoryParty/cac:PhysicalLocation">
+			<sch:extends rule="AddressIDCheck"/>
+		</sch:rule>
+		<!-- Validate SignatoryParty/PhysicalLocation/ValidityPeriod -->
+		<sch:rule context="doc:CatalogueDeletion/cac:Signature/cac:SignatoryParty/cac:PhysicalLocation/cac:ValidityPeriod">
+			<sch:extends rule="PeriodCheck"/>
+		</sch:rule>
+		<!-- Validate SignatoryParty/PhysicalLocation/ValidityPeriod/Description -->
+		<sch:rule context="doc:CatalogueDeletion/cac:Signature/cac:SignatoryParty/cac:PhysicalLocation/cac:ValidityPeriod/cbc:Description">
+			<sch:extends rule="DescriptionLanguageCheck"/>
+		</sch:rule>
+		<!-- Validate SignatoryParty/PhysicalLocation/Address -->
+		<sch:rule context="doc:CatalogueDeletion/cac:Signature/cac:SignatoryParty/cac:PhysicalLocation/cac:Address">
+			<sch:extends rule="AddressCheck"/>
+		</sch:rule>
+		<!-- Validate SignatoryParty/PartyTaxScheme -->
+		<sch:rule context="doc:CatalogueDeletion/cac:Signature/cac:SignatoryParty/cac:PartyTaxScheme">
+			<sch:extends rule="PartyTaxSchemeCheck"/>
+		</sch:rule>
+		<!-- Validate SignatoryParty/PartyTaxScheme/TaxScheme -->
+		<sch:rule context="doc:CatalogueDeletion/cac:Signature/cac:SignatoryParty/cac:PartyTaxScheme/cac:TaxScheme">
+			<sch:extends rule="TaxSchemeCheck"/>
+		</sch:rule>
+		<!-- Validate SignatoryParty/PartyLegalEntity -->
+		<sch:rule context="doc:CatalogueDeletion/cac:Signature/cac:SignatoryParty/cac:PartyLegalEntity">
+			<sch:extends rule="PartyLegalEntityCheck"/>
+		</sch:rule>
+		<!-- Validate SignatoryParty/Contact -->
+		<sch:rule context="doc:CatalogueDeletion/cac:Signature/cac:SignatoryParty/cac:Contact">
+			<sch:extends rule="ContactCheck"/>
+		</sch:rule>
+		<!-- Validate SignatoryParty/Person -->
+		<sch:rule context="doc:CatalogueDeletion/cac:Signature/cac:SignatoryParty/cac:Person">
+			<sch:extends rule="Person/FirstNameCheck"/>
+		</sch:rule>
+
+		<!-- Validate DigitalSignatureAttachment -->
+		<sch:rule context="doc:CatalogueDeletion/cac:Signature/cac:DigitalSignatureAttachment">
+			<sch:extends rule="AttachmentCheck"/>
+		</sch:rule>
+
+		<!-- Validate OriginalDocumentReference -->
+		<sch:rule context="doc:CatalogueDeletion/cac:Signature/cac:OriginalDocumentReference">
+			<sch:extends rule="DocumentReferenceCheck"/>
+		</sch:rule>
+	</sch:pattern>
+
+	<!-- - - - - - - - - - - -  ReceiverParty - - - - - - - - - - -  -->
+	<sch:pattern name="ReceiverParty" id="receiverparty">
+		<sch:p>Pattern for validating the ReceiverParty class</sch:p>
+
+		<!-- - - - - - - - - - - -  Top-level checks - - - - - - - - - - -  -->
+		<sch:rule context="doc:CatalogueDeletion/cac:ReceiverParty">
+			<!-- Check for excluded elements -->
+			<sch:extends rule="PartyExcludedCheck"/>
+			<!-- Check for mandatory elements -->
+			<sch:assert test="cbc:EndpointID != ''">[F-CDE050] Invalid EndpointID. Must contain a value</sch:assert>
+			<!-- Validate -->
+			<sch:extends rule="PartyNameCheck"/>
+			<sch:extends rule="EndpointIDCheck"/>
+			<sch:report test="count(cac:PartyLegalEntity) &gt; 1">[F-CDE051] No more than one PartyLegalEntity class may be present</sch:report>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyIdentification - - - - - - - - - - -  -->
+		<sch:rule context="doc:CatalogueDeletion/cac:ReceiverParty/cac:PartyIdentification">
+			<sch:extends rule="PartyIdentificationCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyName - - - - - - - - - - -  -->
+		<sch:rule context="doc:CatalogueDeletion/cac:ReceiverParty/cac:PartyName">
+			<sch:extends rule="PartyNameLanguageCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PostalAddress - - - - - - - - - - -  -->
+		<sch:rule context="doc:CatalogueDeletion/cac:ReceiverParty/cac:PostalAddress">
+			<sch:extends rule="AddressCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PhysicalLocation - - - - - - - - - - -  -->
+		<sch:rule context="doc:CatalogueDeletion/cac:ReceiverParty/cac:PhysicalLocation">
+			<sch:extends rule="AddressIDCheck"/>
+		</sch:rule>
+		<!-- Validate ValidityPeriod -->
+		<sch:rule context="doc:CatalogueDeletion/cac:ReceiverParty/cac:PhysicalLocation/cac:ValidityPeriod">
+			<sch:extends rule="PeriodCheck"/>
+		</sch:rule>
+		<!-- Validate ValidityPeriod/Description -->
+		<sch:rule context="doc:CatalogueDeletion/cac:ReceiverParty/cac:PhysicalLocation/cac:ValidityPeriod/cbc:Description">
+			<sch:extends rule="DescriptionLanguageCheck"/>
+		</sch:rule>
+		<!-- Validate Address -->
+		<sch:rule context="doc:CatalogueDeletion/cac:ReceiverParty/cac:PhysicalLocation/cac:Address">
+			<sch:extends rule="AddressCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyTaxScheme - - - - - - - - - - -  -->
+		<sch:rule context="doc:CatalogueDeletion/cac:ReceiverParty/cac:PartyTaxScheme">
+			<sch:extends rule="PartyTaxSchemeCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyTaxScheme/TaxScheme - - - - - - - - - - -  -->
+		<sch:rule context="doc:CatalogueDeletion/cac:ReceiverParty/cac:PartyTaxScheme/cac:TaxScheme">
+			<sch:extends rule="TaxSchemeCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyLegalEntity - - - - - - - - - - -  -->
+		<sch:rule context="doc:CatalogueDeletion/cac:ReceiverParty/cac:PartyLegalEntity">
+			<sch:extends rule="PartyLegalEntityCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  Contact - - - - - - - - - - -  -->
+		<sch:rule context="doc:CatalogueDeletion/cac:ReceiverParty/cac:Contact">
+			<sch:extends rule="ContactCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  Person - - - - - - - - - - -  -->
+		<sch:rule context="doc:CatalogueDeletion/cac:ReceiverParty/cac:Person">
+			<sch:extends rule="Person/FirstNameCheck"/>
+		</sch:rule>
+	</sch:pattern>
+
+
+	<!-- - - - - - - - - - - -  ProviderParty - - - - - - - - - - -  -->
+	<sch:pattern name="ProviderParty" id="providerparty">
+		<sch:p>Pattern for validating the ProviderParty class</sch:p>
+
+		<!-- - - - - - - - - - - -  Top-level checks - - - - - - - - - - -  -->
+		<sch:rule context="doc:CatalogueDeletion/cac:ProviderParty">
+			<!-- Check for excluded elements -->
+			<sch:extends rule="PartyExcludedCheck"/>
+			<!-- Check for mandatory elements -->
+			<sch:assert test="cbc:EndpointID != ''">[F-CDE040] Invalid EndpointID. Must contain a value</sch:assert>
+			<sch:assert test="count(cac:PartyLegalEntity) = 1">[F-CDE041] One PartyLegalEntity class must be present</sch:assert>
+			<!-- Validate -->
+			<sch:extends rule="PartyNameCheck"/>
+			<sch:extends rule="EndpointIDCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyIdentification - - - - - - - - - - -  -->
+		<sch:rule context="doc:CatalogueDeletion/cac:ProviderParty/cac:PartyIdentification">
+			<sch:extends rule="PartyIdentificationCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyName - - - - - - - - - - -  -->
+		<sch:rule context="doc:CatalogueDeletion/cac:ProviderParty/cac:PartyName">
+			<sch:extends rule="PartyNameLanguageCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PostalAddress - - - - - - - - - - -  -->
+		<sch:rule context="doc:CatalogueDeletion/cac:ProviderParty/cac:PostalAddress">
+			<sch:extends rule="AddressCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PhysicalLocation - - - - - - - - - - -  -->
+		<sch:rule context="doc:CatalogueDeletion/cac:ProviderParty/cac:PhysicalLocation">
+			<sch:extends rule="AddressIDCheck"/>
+		</sch:rule>
+		<!-- Validate ValidityPeriod -->
+		<sch:rule context="doc:CatalogueDeletion/cac:ProviderParty/cac:PhysicalLocation/cac:ValidityPeriod">
+			<sch:extends rule="PeriodCheck"/>
+		</sch:rule>
+		<!-- Validate ValidityPeriod/Description -->
+		<sch:rule context="doc:CatalogueDeletion/cac:ProviderParty/cac:PhysicalLocation/cac:ValidityPeriod/cbc:Description">
+			<sch:extends rule="DescriptionLanguageCheck"/>
+		</sch:rule>
+		<!-- Validate Address -->
+		<sch:rule context="doc:CatalogueDeletion/cac:ProviderParty/cac:PhysicalLocation/cac:Address">
+			<sch:extends rule="AddressCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyTaxScheme - - - - - - - - - - -  -->
+		<sch:rule context="doc:CatalogueDeletion/cac:ProviderParty/cac:PartyTaxScheme">
+			<sch:extends rule="PartyTaxSchemeCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyTaxScheme/TaxScheme - - - - - - - - - - -  -->
+		<sch:rule context="doc:CatalogueDeletion/cac:ProviderParty/cac:PartyTaxScheme/cac:TaxScheme">
+			<sch:extends rule="TaxSchemeCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyLegalEntity - - - - - - - - - - -  -->
+		<sch:rule context="doc:CatalogueDeletion/cac:ProviderParty/cac:PartyLegalEntity">
+			<sch:extends rule="PartyLegalEntityCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  Contact - - - - - - - - - - -  -->
+		<sch:rule context="doc:CatalogueDeletion/cac:ProviderParty/cac:Contact">
+			<sch:extends rule="ContactCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  Person - - - - - - - - - - -  -->
+		<sch:rule context="doc:CatalogueDeletion/cac:ProviderParty/cac:Person">
+			<sch:extends rule="Person/FirstNameCheck"/>
+		</sch:rule>
+	</sch:pattern>
+
+
+	<!-- - - - - - - - - - - -  SellerSupplierParty - - - - - - - - - - -  -->
+	<sch:pattern name="SellerSupplierParty" id="sellersupplierparty">
+		<sch:p>Pattern for validating the SellerSupplierParty class</sch:p>
+
+		<!-- - - - - - - - - - - -  Top-level checks - - - - - - - - - - -  -->
+		<sch:rule context="doc:CatalogueDeletion/cac:SellerSupplierParty">
+			<!-- Check for excluded elements -->
+			<sch:assert test="count(cbc:DataSendingCapability) = 0">[F-CDE060] DataSendingCapability element must be excluded</sch:assert>
+			<!-- Check for mandatory elements -->
+			<sch:assert test="count(cac:Party) = 1">[F-CDE061] One Party class must be present</sch:assert>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  Party - - - - - - - - - - -  -->
+		<sch:rule context="doc:CatalogueDeletion/cac:SellerSupplierParty/cac:Party">
+			<!-- Check for excluded elements -->
+			<sch:extends rule="PartyExcludedCheck"/>
+			<!-- Check for mandatory elements -->
+			<!-- Validate -->
+			<sch:extends rule="PartyNameCheck"/>
+			<sch:extends rule="EndpointIDCheck"/>
+			<sch:report test="count(cac:PartyLegalEntity) &gt; 1">[F-CDE062] No more than one PartyLegalEntity class may be present</sch:report>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyIdentification - - - - - - - - - - -  -->
+		<sch:rule context="doc:CatalogueDeletion/cac:SellerSupplierParty/cac:Party/cac:PartyIdentification">
+			<sch:extends rule="PartyIdentificationCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyName - - - - - - - - - - -  -->
+		<sch:rule context="doc:CatalogueDeletion/cac:SellerSupplierParty/cac:Party/cac:PartyName">
+			<sch:extends rule="PartyNameLanguageCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PostalAddress - - - - - - - - - - -  -->
+		<sch:rule context="doc:CatalogueDeletion/cac:SellerSupplierParty/cac:Party/cac:PostalAddress">
+			<sch:extends rule="AddressCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PhysicalLocation - - - - - - - - - - -  -->
+		<sch:rule context="doc:CatalogueDeletion/cac:SellerSupplierParty/cac:Party/cac:PhysicalLocation">
+			<sch:extends rule="AddressIDCheck"/>
+		</sch:rule>
+		<!-- Validate ValidityPeriod -->
+		<sch:rule context="doc:CatalogueDeletion/cac:SellerSupplierParty/cac:Party/cac:PhysicalLocation/cac:ValidityPeriod">
+			<sch:extends rule="PeriodCheck"/>
+		</sch:rule>
+		<!-- Validate ValidityPeriod/Description -->
+		<sch:rule context="doc:CatalogueDeletion/cac:SellerSupplierParty/cac:Party/cac:PhysicalLocation/cac:ValidityPeriod/cbc:Description">
+			<sch:extends rule="DescriptionLanguageCheck"/>
+		</sch:rule>
+		<!-- Validate Address -->
+		<sch:rule context="doc:CatalogueDeletion/cac:SellerSupplierParty/cac:Party/cac:PhysicalLocation/cac:Address">
+			<sch:extends rule="AddressCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyTaxScheme - - - - - - - - - - -  -->
+		<sch:rule context="doc:CatalogueDeletion/cac:SellerSupplierParty/cac:Party/cac:PartyTaxScheme">
+			<sch:extends rule="PartyTaxSchemeCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyTaxScheme/TaxScheme - - - - - - - - - - -  -->
+		<sch:rule context="doc:CatalogueDeletion/cac:SellerSupplierParty/cac:Party/cac:PartyTaxScheme/cac:TaxScheme">
+			<sch:extends rule="TaxSchemeCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyLegalEntity - - - - - - - - - - -  -->
+		<sch:rule context="doc:CatalogueDeletion/cac:SellerSupplierParty/cac:Party/cac:PartyLegalEntity">
+			<sch:extends rule="PartyLegalEntityCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  Contact - - - - - - - - - - -  -->
+		<sch:rule context="doc:CatalogueDeletion/cac:SellerSupplierParty/cac:Party/cac:Contact">
+			<sch:extends rule="ContactCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  Person - - - - - - - - - - -  -->
+		<sch:rule context="doc:CatalogueDeletion/cac:SellerSupplierParty/cac:Party/cac:Person">
+			<sch:extends rule="Person/FirstNameCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  DespatchContact - - - - - - - - - - -  -->
+		<sch:rule context="doc:CatalogueDeletion/cac:SellerSupplierParty/cac:DespatchContact">
+			<sch:extends rule="ContactCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  AccountingContact - - - - - - - - - - -  -->
+		<sch:rule context="doc:CatalogueDeletion/cac:SellerSupplierParty/cac:AccountingContact">
+			<sch:extends rule="ContactCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  SellerContact - - - - - - - - - - -  -->
+		<sch:rule context="doc:CatalogueDeletion/cac:SellerSupplierParty/cac:SellerContact">
+			<sch:extends rule="ContactCheck"/>
+		</sch:rule>
+	</sch:pattern>
+
+
+	<!-- - - - - - - - - - - -  ContractorCustomerParty - - - - - - - - - - -  -->
+	<sch:pattern name="ContractorCustomerParty" id="ContractorCustomerParty">
+		<sch:p>Pattern for validating the ContractorCustomerParty class</sch:p>
+
+		<!-- - - - - - - - - - - -  Top-level checks - - - - - - - - - - -  -->
+		<sch:rule context="doc:CatalogueDeletion/cac:ContractorCustomerParty">
+			<!-- Check for excluded elements -->
+			<!-- Check for mandatory elements -->
+			<sch:assert test="count(cac:Party) = 1">[F-CDE070] Party class must be present</sch:assert>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  Party - - - - - - - - - - -  -->
+		<sch:rule context="doc:CatalogueDeletion/cac:ContractorCustomerParty/cac:Party">
+			<!-- Check for excluded elements -->
+			<sch:extends rule="PartyExcludedCheck"/>
+			<!-- Check for mandatory elements -->
+			<!-- Validate -->
+			<sch:extends rule="PartyNameCheck"/>
+			<sch:extends rule="EndpointIDCheck"/>
+			<sch:report test="count(cac:PartyLegalEntity) &gt; 1">[F-CDE071] No more than one PartyLegalEntity class may be present</sch:report>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyIdentification - - - - - - - - - - -  -->
+		<sch:rule context="doc:CatalogueDeletion/cac:ContractorCustomerParty/cac:Party/cac:PartyIdentification">
+			<sch:extends rule="PartyIdentificationCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyName - - - - - - - - - - -  -->
+		<sch:rule context="doc:CatalogueDeletion/cac:ContractorCustomerParty/cac:Party/cac:PartyName">
+			<sch:extends rule="PartyNameLanguageCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PostalAddress - - - - - - - - - - -  -->
+		<sch:rule context="doc:CatalogueDeletion/cac:ContractorCustomerParty/cac:Party/cac:PostalAddress">
+			<sch:extends rule="AddressCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PhysicalLocation - - - - - - - - - - -  -->
+		<sch:rule context="doc:CatalogueDeletion/cac:ContractorCustomerParty/cac:Party/cac:PhysicalLocation">
+			<sch:extends rule="AddressIDCheck"/>
+		</sch:rule>
+		<!-- Validate ValidityPeriod -->
+		<sch:rule context="doc:CatalogueDeletion/cac:ContractorCustomerParty/cac:Party/cac:PhysicalLocation/cac:ValidityPeriod">
+			<sch:extends rule="PeriodCheck"/>
+		</sch:rule>
+		<!-- Validate ValidityPeriod/Description -->
+		<sch:rule context="doc:CatalogueDeletion/cac:ContractorCustomerParty/cac:Party/cac:PhysicalLocation/cac:ValidityPeriod/cbc:Description">
+			<sch:extends rule="DescriptionLanguageCheck"/>
+		</sch:rule>
+		<!-- Validate Address -->
+		<sch:rule context="doc:CatalogueDeletion/cac:ContractorCustomerParty/cac:Party/cac:PhysicalLocation/cac:Address">
+			<sch:extends rule="AddressCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyTaxScheme - - - - - - - - - - -  -->
+		<sch:rule context="doc:CatalogueDeletion/cac:ContractorCustomerParty/cac:Party/cac:PartyTaxScheme">
+			<sch:extends rule="PartyTaxSchemeCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyTaxScheme/TaxScheme - - - - - - - - - - -  -->
+		<sch:rule context="doc:CatalogueDeletion/cac:ContractorCustomerParty/cac:Party/cac:PartyTaxScheme/cac:TaxScheme">
+			<sch:extends rule="TaxSchemeCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyLegalEntity - - - - - - - - - - -  -->
+		<sch:rule context="doc:CatalogueDeletion/cac:ContractorCustomerParty/cac:Party/cac:PartyLegalEntity">
+			<sch:extends rule="PartyLegalEntityCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  Contact - - - - - - - - - - -  -->
+		<sch:rule context="doc:CatalogueDeletion/cac:ContractorCustomerParty/cac:Party/cac:Contact">
+			<sch:extends rule="ContactCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  Person - - - - - - - - - - -  -->
+		<sch:rule context="doc:CatalogueDeletion/cac:ContractorCustomerParty/cac:Party/cac:Person">
+			<sch:extends rule="Person/FirstNameCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  DeliveryContact - - - - - - - - - - -  -->
+		<sch:rule context="doc:CatalogueDeletion/cac:ContractorCustomerParty/cac:DeliveryContact">
+			<sch:extends rule="ContactCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  AccountingContact - - - - - - - - - - -  -->
+		<sch:rule context="doc:CatalogueDeletion/cac:ContractorCustomerParty/cac:AccountingContact">
+			<sch:extends rule="ContactCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  BuyerContact - - - - - - - - - - -  -->
+		<sch:rule context="doc:CatalogueDeletion/cac:ContractorCustomerParty/cac:BuyerContact">
+			<sch:extends rule="ContactCheck"/>
+		</sch:rule>
+	</sch:pattern>
+
+</sch:schema>

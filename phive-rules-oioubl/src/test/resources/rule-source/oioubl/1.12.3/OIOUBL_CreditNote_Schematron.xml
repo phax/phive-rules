@@ -1,0 +1,1649 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+******************************************************************************************************************
+
+		OIOUBL Schematron
+
+		publisher:          NemHandel / Erhvervsstyrelsen
+        Repository path:    $HeadURL$
+        File version:       $Revision$
+        Last changed by:    $Author$
+        Last changed date:  $Date$
+
+		Description:        This document is produced as part of the OIOUBL schematron package
+		Rights:             It can be used following the Common Creative Licence
+
+		all terms derived from http://dublincore.org/documents/dcmi-terms/
+
+		For more information, see www.oioubl.info or email support@nemhandel.dk
+
+******************************************************************************************************************
+-->
+
+<sch:schema xmlns:sch="http://purl.oclc.org/dsdl/schematron" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+
+	<sch:ns uri="urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2"                   prefix="doc"/>
+	<sch:ns uri="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"    prefix="cac"/>
+	<sch:ns uri="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"        prefix="cbc"/>
+	<sch:ns uri="urn:oasis:names:specification:ubl:schema:xsd:CoreComponentParameters-2"      prefix="ccts"/>
+	<sch:ns uri="urn:oasis:names:specification:ubl:schema:xsd:SpecializedDatatypes-2"         prefix="sdt"/>
+	<sch:ns uri="urn:un:unece:uncefact:data:specification:UnqualifiedDataTypesSchemaModule:2" prefix="udt"/>
+	<!-- [Release 20120615] Check added according to issue: https://bugs.softwareborsen.dk/show_bug.cgi?id=934 -->
+	<sch:ns uri="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2"    prefix="ext"/>
+	<sch:ns uri="http://www.w3.org/2001/XMLSchema"                                            prefix="xs"/>
+
+	<sch:p>Schematron for validating OIOUBL-2.1 documents.</sch:p>
+	<sch:title>Checking OIOUBL-2.1 CreditNote</sch:title>
+
+
+	<!-- Inclusion of OIOUBL codelist variables -->
+	<sch:include href="OIOUBL_Codelist_Schematron.xml"/>
+
+
+	<!-- Global variables -->
+	<sch:let name="Simple" value="doc:CreditNote/cbc:ProfileID = 'Procurement-OrdSimR-BilSim-1.0' or doc:CreditNote/cbc:ProfileID = 'Procurement-OrdAdv-BilSim-1.0' or doc:CreditNote/cbc:ProfileID = 'urn:www.nesubl.eu:profiles:profile7:ver1.0' or doc:CreditNote/cbc:ProfileID = 'urn:www.nesubl.eu:profiles:profile7:ver2.0'"/>
+	<sch:let name="Nes"    value="doc:CreditNote/cbc:ProfileID = 'urn:www.nesubl.eu:profiles:profile5:ver2.0'"/>
+
+
+	<!-- The default phase to execute when validating -->
+	<sch:phase id="default">
+		<sch:active pattern="ublextensions"/>
+		<sch:active pattern="profile"/>
+		<sch:active pattern="creditnote"/>
+		<sch:active pattern="invoiceperiod"/>
+		<sch:active pattern="discrepancyresponse"/>
+		<sch:active pattern="orderreference"/>
+		<sch:active pattern="billingreference"/>
+		<sch:active pattern="despatchdocumentreference"/>
+		<sch:active pattern="receiptdocumentreference"/>
+		<sch:active pattern="contractdocumentreference"/>
+		<sch:active pattern="additionaldocumentreference"/>
+		<sch:active pattern="signature"/>
+		<sch:active pattern="accountingsupplierparty"/>
+		<sch:active pattern="accountingcustomerparty"/>
+		<sch:active pattern="payeeparty"/>
+        <sch:active pattern="taxRepresentativeParty"/>
+		<!-- sch:active pattern="taxechangerate"/ -->
+		<sch:active pattern="pricingexchangerate"/>
+		<sch:active pattern="paymentexchangerate"/>
+		<sch:active pattern="paymentalternativeexchangerate"/>
+		<sch:active pattern="allowancecharge"/>
+		<sch:active pattern="taxtotal"/>
+		<sch:active pattern="legalmonetarytotal"/>
+		<sch:active pattern="creditnoteline"/>
+	</sch:phase>
+
+
+	<!-- Inclusion of OIOUBL common rules -->
+	<sch:include href="OIOUBL_Common_Schematron.xml"/>
+
+
+	<!-- - - - - - - - - - - -  UBLExtensions - - - - - - - - - - - - -  -->
+	<!-- [Release 20120615] Check added according to issue: https://bugs.softwareborsen.dk/show_bug.cgi?id=934 -->
+	<sch:pattern name="UBLExtensions" id="ublextensions">
+		<sch:p>Pattern for validating the UBLExtensions class</sch:p>
+		<sch:rule context="doc:CreditNote">
+			<sch:extends rule="UBLExtensionsCheck"/>
+		</sch:rule>
+	</sch:pattern>
+
+	<!-- - - - - - - - - - - -  Profile - - - - - - - - - - - - -  -->
+	<sch:pattern name="Profile" id="profile">
+		<sch:p>Pattern for validating root element, Profile and UBL version</sch:p>
+		<!-- Validate root element -->
+		<sch:rule context="/">
+			<sch:assert test="local-name(*) = 'CreditNote'">[F-CRN001] Root element must be CreditNote</sch:assert>
+			<!-- [Release 20130315] Check added according to issue: https://bugs.softwareborsen.dk/show_bug.cgi?id=1023 -->
+			<sch:assert test="namespace-uri(*) = 'urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2'">[F-CRN204] The documenttype does not match an OIOUBL CreditNote and can not be validated by this schematron.</sch:assert>
+		</sch:rule>
+		<sch:rule context="doc:CreditNote">
+			<!-- Check ProfileID, UBLVersionID and CustomizationID -->
+			<sch:extends rule="UBLVersionIDCheck"/>
+			<sch:extends rule="CustomizationIDCheck"/>
+			<sch:extends rule="ProfileIDCheck"/>
+
+			<!-- Check Profile dependencies (top level) -->
+			<sch:report test="$Simple and not(cac:OrderReference)">[F-CRN002] There must be an OrderReference class for this profileID</sch:report>
+		</sch:rule>
+	</sch:pattern>
+
+	<!-- - - - - - - - - - - -  CreditNote (CRN197)- - - - - - - - - - -  -->
+	<sch:pattern name="CreditNote" id="creditnote">
+		<sch:p>Pattern for validating the CreditNote structure</sch:p>
+		<sch:rule context="doc:CreditNote">
+			<!-- Check for excluded elements -->
+      <!-- [Release 20180915] Remove exclusion according to issue: https://bugs.softwareborsen.dk/show_bug.cgi?id=2000 -->
+			<!-- <sch:assert test="count(cac:TaxRepresentativeParty) = 0">[F-CRN165] TaxRepresentativeParty class must be excluded</sch:assert> -->
+			<!-- Check for mandatory elements -->
+			<sch:assert test="cbc:DocumentCurrencyCode != ''">[F-CRN004] Invalid DocumentCurrencyCode. Must contain a value</sch:assert>
+			<sch:assert test="count(cac:TaxTotal) != 0">[F-CRN005] One or more TaxTotal class must be present</sch:assert>
+			<!-- Validate -->
+			<!-- [Release 20111201] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=623 -->
+      <!-- [Release 20160915] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=1586 -->
+			<sch:assert test="normalize-space(cbc:ID) != ''">[F-CRN006] Invalid CreditNote/ID (Creditnote number). Must contain a value.</sch:assert>
+			<sch:extends rule="AccountingCostCheck"/>
+			<sch:report test="count(cac:InvoicePeriod) &gt; 1">[F-CRN159] No more than one InvoicePeriod class may be present</sch:report>
+		</sch:rule>
+
+		<!-- Validate CopyIndicator -->
+
+		<!-- Validate UUID -->
+		<sch:rule context="doc:CreditNote/cbc:UUID">
+			<sch:extends rule="UUIDCheck"/>
+		</sch:rule>
+
+		<!-- Validate IssueDate -->
+		<!-- Validate IssueTime -->
+		<!-- Validate TaxPointDate -->
+
+		<!-- Validate Note -->
+		<sch:rule context="doc:CreditNote/cbc:Note">
+			<sch:extends rule="NoteCheck"/>
+		</sch:rule>
+
+		<!-- Validate DocumentCurrencyCode -->
+		<sch:rule context="doc:CreditNote/cbc:DocumentCurrencyCode">
+			<sch:report test="/*/cac:CreditNoteLine/cbc:LineExtensionAmount[@currencyID][@currencyID!=string(current())]">[F-CRN007] There is a LineExtensionAmount for one or more CreditNoteLines where the currencyID does not equal the DocumentCurrencyCode</sch:report>
+			<sch:report test="/*/cac:LegalMonetaryTotal/cbc:LineExtensionAmount[@currencyID][@currencyID!=string(current())]">[F-CRN008] There is a LineExtensionAmount where the currencyID does not equal the DocumentCurrencyCode</sch:report>
+			<sch:report test="/*/cac:LegalMonetaryTotal/cbc:PayableAmount[@currencyID][@currencyID!=string(current())]">[F-CRN009] There is a PayableAmount where the currencyID does not equal the DocumentCurrencyCode</sch:report>
+			<sch:extends rule="CurrencyCodeCheck"/>
+		</sch:rule>
+
+		<!-- Validate TaxCurrencyCode -->
+		<sch:rule context="doc:CreditNote/cbc:TaxCurrencyCode">
+		    <!-- [Release 20180915] Check removed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=2002 -->
+<!--			<sch:report test="//cbc:TaxAmount[@currencyID][@currencyID!=string(current())]">[F-CRN010] There is a TaxAmount where the currencyID does not equal the TaxCurrencyCode</sch:report>-->
+			<sch:assert test=".='DKK' or . ='EUR'">[F-CRN011] TaxCurrencyCode must be either DKK or EUR</sch:assert>
+			<!-- [Release 20180915] Check removed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=2002 -->
+            <!--<sch:assert test="count(/*/cac:TaxExchangeRate) != 0">[F-CRN012] One TaxExchangeRate class must be present when TaxCurrencyCode element is used</sch:assert>-->
+			<sch:assert test="count(/*/cac:TaxTotal/cac:TaxSubtotal/cbc:TransactionCurrencyTaxAmount) != 0">[F-CRN013] One TransactionCurrencyTaxAmount element must be present when TaxCurrencyCode element is used</sch:assert>
+			<sch:extends rule="CurrencyCodeCheck"/>
+
+			<!-- [Release 20180915] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=2002 -->
+			<sch:report test="//cac:TaxTotal/cac:TaxSubtotal/cbc:TransactionCurrencyTaxAmount[@currencyID != string(current())]">[F-CRN209] There is a TransactionCurrencyTaxAmount where the currencyID does not equal the TaxCurrencyCode ('<sch:value-of select="."/>').</sch:report>
+		</sch:rule>
+
+		<!-- Validate PricingCurrencyCode -->
+		<sch:rule context="doc:CreditNote/cbc:PricingCurrencyCode">
+			<sch:report test="/*/cac:CreditNoteLine/cac:Price/cbc:PriceAmount[@currencyID][@currencyID!=string(current())]">[F-CRN014] There is a PriceAmount where the currencyID does not equal the PricingCurrencyCode</sch:report>
+			<sch:assert test="count(/*/cac:PricingExchangeRate) != 0">[F-CRN015] One PricingExchangeRate class must be present when PricingCurrencyCode element is used</sch:assert>
+			<sch:extends rule="CurrencyCodeCheck"/>
+		</sch:rule>
+
+		<!-- Validate PaymentCurrencyCode -->
+		<sch:rule context="doc:CreditNote/cbc:PaymentCurrencyCode">
+			<sch:assert test="count(/*/cac:PaymentExchangeRate) != 0">[F-CRN016] One PaymentExchangeRate class must be present when PaymentCurrencyCode element is used</sch:assert>
+			<sch:extends rule="CurrencyCodeCheck"/>
+		</sch:rule>
+
+		<!-- Validate PaymentAlternativeCurrencyCode -->
+		<sch:rule context="doc:CreditNote/cbc:PaymentAlternativeCurrencyCode">
+			<sch:assert test="count(/*/cac:PaymentAlternativeExchangeRate) != 0">[F-CRN017] One PaymentAlternativeExchangeRate class must be present when PaymentAlternativeCurrencyCode element is used</sch:assert>
+			<sch:extends rule="CurrencyCodeCheck"/>
+		</sch:rule>
+
+		<!-- Validate AccountingCostCode (ok, see above) -->
+		<!-- Validate AccountingCost (ok, see above) -->
+		<!-- Validate LineCountNumeric -->
+	</sch:pattern>
+
+	<!-- - - - - - - - - - - -  InvoicePeriod - - - - - - - - - - -  -->
+	<sch:pattern name="InvoicePeriod" id="invoiceperiod">
+		<sch:p>Pattern for validating the InvoicePeriod class</sch:p>
+		<sch:rule context="doc:CreditNote/cac:InvoicePeriod">
+			<sch:extends rule="PeriodCheck"/>
+		</sch:rule>
+		<!-- Validate Description -->
+		<sch:rule context="doc:CreditNote/cac:InvoicePeriod/cbc:Description">
+			<sch:extends rule="DescriptionLanguageCheck"/>
+		</sch:rule>
+	</sch:pattern>
+
+	<!-- - - - - - - - - - - -  DiscrepancyResponse - - - - - - - - - - -  -->
+	<sch:pattern name="DiscrepancyResponse" id="discrepancyresponse">
+		<sch:p>Pattern for validating the DiscrepancyResponse class</sch:p>
+		<sch:rule context="doc:CreditNote/cac:DiscrepancyResponse">
+			<!-- Check for excluded elements -->
+			<!-- Check for mandatory elements -->
+			<!-- Validate -->
+			<!-- [Release 20111201] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=623 -->
+			<sch:assert test="normalize-space(cbc:ReferenceID) != ''">[F-CRN161] Invalid ReferenceID. Must contain a value</sch:assert>
+			<sch:report test="cbc:ResponseCode and cbc:Description">[F-CRN188] Use either ResponseCode or Description</sch:report>
+		</sch:rule>
+		<!-- Validate ResponseCode -->
+		<sch:rule context="doc:CreditNote/cac:DiscrepancyResponse/cbc:ResponseCode">
+			<sch:report test="./@listID != $Discrepancy_listID or not(./@listID)">[F-CRN018] Invalid listID. Must be '<sch:value-of select="$Discrepancy_listID"/>'</sch:report>
+			<sch:report test="./@listAgencyID != $Discrepancy_agencyID or not(./@listAgencyID)">[F-CRN160] Invalid listAgencyID. Must be '<sch:value-of select="$Discrepancy_agencyID"/>'</sch:report>
+			<sch:assert test="contains($Discrepancy, concat(',',.,','))">[F-CRN193] Invalid ResponseCode: '<sch:value-of select="."/>'. Must be a value from the codelist</sch:assert>
+		</sch:rule>
+		<!-- Validate Description -->
+		<sch:rule context="doc:CreditNote/cac:DiscrepancyResponse/cbc:Description">
+			<sch:extends rule="DescriptionLanguageCheck"/>
+		</sch:rule>
+	</sch:pattern>
+
+	<!-- - - - - - - - - - - -  OrderReference - - - - - - - - - - -  -->
+	<sch:pattern name="OrderReference" id="orderreference">
+		<sch:p>Pattern for validating the OrderReference class</sch:p>
+		<sch:rule context="doc:CreditNote/cac:OrderReference">
+			<!-- Check for excluded elements -->
+			<!-- Check for mandatory elements -->
+			<!-- [Release 20111201] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=623 -->
+      <!-- [Release 20160915] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=1586 -->
+			<sch:assert test="normalize-space(cbc:ID) != ''">[F-CRN022] Invalid OrderReference/ID. Must contain a value.</sch:assert>
+		</sch:rule>
+		<!-- Validate UUID -->
+		<sch:rule context="doc:CreditNote/cac:OrderReference/cbc:UUID">
+			<sch:extends rule="UUIDCheck"/>
+		</sch:rule>
+		<!-- Validate IssueDate -->
+		<!-- Validate DocumentReference -->
+		<sch:rule context="doc:CreditNote/cac:OrderReference/cac:DocumentReference">
+			<sch:extends rule="KnownDocumentReferenceCheck"/>
+		</sch:rule>
+	</sch:pattern>
+
+	<!-- - - - - - - - - - - -  BillingReference - - - - - - - - - - -  -->
+	<sch:pattern name="BillingReference" id="billingreference">
+		<sch:p>Pattern for validating the BillingReference class</sch:p>
+		<sch:rule context="doc:CreditNote/cac:BillingReference">
+			<!-- Check for excluded elements -->
+			<sch:assert test="count(cac:DebitNoteDocumentReference) = 0">[F-CRN023] DebitNoteDocumentReference class must be excluded</sch:assert>
+			<sch:assert test="count(cac:AdditionalDocumentReference) = 0">[F-CRN024] AdditionalDocumentReference class must be excluded</sch:assert>
+			<sch:assert test="count(cac:BillingReferenceLine) = 0">[F-CRN162] BillingReferenceLine class must be excluded</sch:assert>
+			<!-- Check for mandatory elements -->
+			<!-- Validate -->
+		</sch:rule>
+		<!-- Validate InvoiceDocumentReference -->
+		<sch:rule context="doc:CreditNote/cac:BillingReference/cac:InvoiceDocumentReference">
+			<sch:extends rule="KnownDocumentReferenceCheck"/>
+		</sch:rule>
+		<!-- Validate SelfBilledInvoiceDocumentReference -->
+		<sch:rule context="doc:CreditNote/cac:BillingReference/cac:SelfBilledInvoiceDocumentReference">
+			<sch:extends rule="KnownDocumentReferenceCheck"/>
+		</sch:rule>
+		<!-- Validate CreditNoteDocumentReference -->
+		<sch:rule context="doc:CreditNote/cac:BillingReference/cac:CreditNoteDocumentReference">
+			<sch:extends rule="KnownDocumentReferenceCheck"/>
+		</sch:rule>
+		<!-- Validate SelfBilledCreditNoteDocumentReference -->
+		<sch:rule context="doc:CreditNote/cac:BillingReference/cac:SelfBilledCreditNoteDocumentReference">
+			<sch:extends rule="KnownDocumentReferenceCheck"/>
+		</sch:rule>
+		<!-- Validate ReminderDocumentReference -->
+		<sch:rule context="doc:CreditNote/cac:BillingReference/cac:ReminderDocumentReference">
+			<sch:extends rule="KnownDocumentReferenceCheck"/>
+		</sch:rule>
+	</sch:pattern>
+
+	<!-- - - - - - - - - - - -  DespatchDocumentReference - - - - - - - - - - -  -->
+	<sch:pattern name="DespatchDocumentReference" id="despatchdocumentreference">
+		<sch:p>Pattern for validating the OriginatorDocumentReference class</sch:p>
+		<sch:rule context="doc:CreditNote/cac:DespatchDocumentReference">
+			<sch:extends rule="KnownDocumentReferenceCheck"/>
+		</sch:rule>
+	</sch:pattern>
+
+	<!-- - - - - - - - - - - -  ReceiptDocumentReference - - - - - - - - - - -  -->
+	<sch:pattern name="ReceiptDocumentReference" id="receiptdocumentreference">
+		<sch:p>Pattern for validating the ReceiptDocumentReference class</sch:p>
+		<sch:rule context="doc:CreditNote/cac:ReceiptDocumentReference">
+			<sch:extends rule="KnownDocumentReferenceCheck"/>
+		</sch:rule>
+	</sch:pattern>
+
+	<!-- - - - - - - - - - - -  ContractDocumentReference - - - - - - - - - - -  -->
+	<sch:pattern name="ContractDocumentReference" id="contractdocumentreference">
+		<sch:p>Pattern for validating the ContractDocumentReference class</sch:p>
+		<sch:rule context="doc:CreditNote/cac:ContractDocumentReference">
+			<sch:extends rule="KnownDocumentReferenceCheck"/>
+		</sch:rule>
+	</sch:pattern>
+
+	<!-- - - - - - - - - - - -  AdditionalDocumentReference - - - - - - - - - - -  -->
+	<sch:pattern name="AdditionalDocumentReference" id="additionaldocumentreference">
+		<sch:p>Pattern for validating the AdditionalDocumentReference class</sch:p>
+		<sch:rule context="doc:CreditNote/cac:AdditionalDocumentReference">
+			<sch:extends rule="DocumentReferenceCheck"/>
+		</sch:rule>
+	</sch:pattern>
+
+	<!-- - - - - - - - - - - -  Signature - - - - - - - - - - -  -->
+	<sch:pattern name="Signature" id="signature">
+		<sch:p>Pattern for validating the Signature class</sch:p>
+		<sch:rule context="doc:CreditNote/cac:Signature">
+			<!-- Check for excluded elements -->
+			<!-- Check for mandatory elements -->
+			<!-- Validate -->
+			<!-- [Release 20111201] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=623 -->
+      <!-- [Release 20160915] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=1586 -->
+			<sch:assert test="normalize-space(cbc:ID) != ''">[F-CRN025] Invalid Signature/ID. Must contain a value.</sch:assert>
+		</sch:rule>
+		<!-- Validate SignatoryParty -->
+		<sch:rule context="doc:CreditNote/cac:Signature/cac:SignatoryParty">
+			<!-- Check for excluded elements -->
+			<sch:extends rule="PartyExcludedCheck"/>
+			<!-- Check for mandatory elements -->
+			<!-- Validate -->
+			<sch:extends rule="PartyNameCheck"/>
+			<sch:extends rule="EndpointIDCheck"/>
+			<sch:report test="count(cac:PartyLegalEntity) &gt; 1">[F-CRN163] No more than one PartyLegalEntity class may be present</sch:report>
+		</sch:rule>
+		<!-- Validate SignatoryParty/PartyIdentification -->
+		<sch:rule context="doc:CreditNote/cac:Signature/cac:SignatoryParty/cac:PartyIdentification">
+			<sch:extends rule="PartyIdentificationCheck"/>
+		</sch:rule>
+		<!-- Validate SignatoryParty/PartyName -->
+		<sch:rule context="doc:CreditNote/cac:Signature/cac:SignatoryParty/cac:PartyName">
+			<sch:extends rule="PartyNameLanguageCheck"/>
+		</sch:rule>
+		<!-- Validate SignatoryParty/PostalAddress -->
+		<sch:rule context="doc:CreditNote/cac:Signature/cac:SignatoryParty/cac:PostalAddress">
+			<sch:extends rule="AddressCheck"/>
+		</sch:rule>
+		<!-- Validate SignatoryParty/PhysicalLocation -->
+		<sch:rule context="doc:CreditNote/cac:Signature/cac:SignatoryParty/cac:PhysicalLocation">
+			<sch:extends rule="AddressIDCheck"/>
+		</sch:rule>
+		<!-- Validate SignatoryParty/PhysicalLocation/ValidityPeriod -->
+		<sch:rule context="doc:CreditNote/cac:Signature/cac:SignatoryParty/cac:PhysicalLocation/cac:ValidityPeriod">
+			<sch:extends rule="PeriodCheck"/>
+		</sch:rule>
+		<!-- Validate SignatoryParty/PhysicalLocation/ValidityPeriod/Description -->
+		<sch:rule context="doc:CreditNote/cac:Signature/cac:SignatoryParty/cac:PhysicalLocation/cac:ValidityPeriod/cbc:Description">
+			<sch:extends rule="DescriptionLanguageCheck"/>
+		</sch:rule>
+		<!-- Validate SignatoryParty/PhysicalLocation/Address -->
+		<sch:rule context="doc:CreditNote/cac:Signature/cac:SignatoryParty/cac:PhysicalLocation/cac:Address">
+			<sch:extends rule="AddressCheck"/>
+		</sch:rule>
+		<!-- Validate SignatoryParty/PartyTaxScheme -->
+		<sch:rule context="doc:CreditNote/cac:Signature/cac:SignatoryParty/cac:PartyTaxScheme">
+			<sch:extends rule="PartyTaxSchemeCheck"/>
+		</sch:rule>
+		<!-- Validate SignatoryParty/PartyTaxScheme/TaxScheme -->
+		<sch:rule context="doc:CreditNote/cac:Signature/cac:SignatoryParty/cac:PartyTaxScheme/cac:TaxScheme">
+			<sch:extends rule="TaxSchemeCheck"/>
+		</sch:rule>
+		<!-- Validate SignatoryParty/PartyLegalEntity -->
+		<sch:rule context="doc:CreditNote/cac:Signature/cac:SignatoryParty/cac:PartyLegalEntity">
+			<sch:extends rule="PartyLegalEntityCheck"/>
+		</sch:rule>
+		<!-- Validate SignatoryParty/Contact -->
+		<sch:rule context="doc:CreditNote/cac:Signature/cac:SignatoryParty/cac:Contact">
+			<sch:extends rule="ContactCheck"/>
+		</sch:rule>
+		<!-- Validate SignatoryParty/Person -->
+		<sch:rule context="doc:CreditNote/cac:Signature/cac:SignatoryParty/cac:Person">
+			<sch:extends rule="Person/FirstNameCheck"/>
+		</sch:rule>
+
+		<!-- Validate DigitalSignatureAttachment -->
+		<sch:rule context="doc:CreditNote/cac:Signature/cac:DigitalSignatureAttachment">
+			<sch:extends rule="AttachmentCheck"/>
+		</sch:rule>
+
+		<!-- Validate OriginalDocumentReference -->
+		<sch:rule context="doc:CreditNote/cac:Signature/cac:OriginalDocumentReference">
+			<sch:extends rule="DocumentReferenceCheck"/>
+		</sch:rule>
+	</sch:pattern>
+
+	<!-- - - - - - - - - - - -  AccountingSupplierParty - - - - - - - - - - -  -->
+	<sch:pattern name="AccountingSupplierParty" id="accountingsupplierparty">
+		<sch:p>Pattern for validating the AccountingSupplierParty class</sch:p>
+
+		<!-- - - - - - - - - - - -  Top-level checks - - - - - - - - - - -  -->
+		<sch:rule context="doc:CreditNote/cac:AccountingSupplierParty">
+			<!-- Check for excluded elements -->
+			<sch:assert test="count(cbc:DataSendingCapability) = 0">[F-CRN026] DataSendingCapability element must be excluded</sch:assert>
+
+			<!-- Check for mandatory elements -->
+			<sch:assert test="count(cac:Party) = 1">[F-CRN027] Party class must be present</sch:assert>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  Party - - - - - - - - - - -  -->
+		<sch:rule context="doc:CreditNote/cac:AccountingSupplierParty/cac:Party">
+			<!-- Check for excluded elements -->
+			<sch:extends rule="PartyExcludedCheck"/>
+
+			<!-- Check for mandatory elements -->
+			<!-- [Release 20111201] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=623 -->
+			<sch:assert test="normalize-space(cbc:EndpointID) != ''">[F-CRN028] Invalid EndpointID. Must contain a value</sch:assert>
+			<sch:assert test="count(cac:PartyLegalEntity) = 1">[F-CRN031] One PartyLegalEntity class must be present</sch:assert>
+
+			<!-- Validate -->
+			<sch:extends rule="PartyNameCheck"/>
+			<sch:extends rule="EndpointIDCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyIdentification - - - - - - - - - - -  -->
+		<sch:rule context="doc:CreditNote/cac:AccountingSupplierParty/cac:Party/cac:PartyIdentification">
+			<sch:extends rule="PartyIdentificationCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyName - - - - - - - - - - -  -->
+		<sch:rule context="doc:CreditNote/cac:AccountingSupplierParty/cac:Party/cac:PartyName">
+			<sch:extends rule="PartyNameLanguageCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PostalAddress - - - - - - - - - - -  -->
+		<sch:rule context="doc:CreditNote/cac:AccountingSupplierParty/cac:Party/cac:PostalAddress">
+			<sch:extends rule="AddressCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PhysicalLocation - - - - - - - - - - -  -->
+		<sch:rule context="doc:CreditNote/cac:AccountingSupplierParty/cac:Party/cac:PhysicalLocation">
+			<sch:extends rule="AddressIDCheck"/>
+		</sch:rule>
+		<!-- Validate ValidityPeriod -->
+		<sch:rule context="doc:CreditNote/cac:AccountingSupplierParty/cac:Party/cac:PhysicalLocation/cac:ValidityPeriod">
+			<sch:extends rule="PeriodCheck"/>
+		</sch:rule>
+		<!-- Validate ValidityPeriod/Description -->
+		<sch:rule context="doc:CreditNote/cac:AccountingSupplierParty/cac:Party/cac:PhysicalLocation/cac:ValidityPeriod/cbc:Description">
+			<sch:extends rule="DescriptionLanguageCheck"/>
+		</sch:rule>
+		<!-- Validate Address -->
+		<sch:rule context="doc:CreditNote/cac:AccountingSupplierParty/cac:Party/cac:PhysicalLocation/cac:Address">
+			<sch:extends rule="AddressCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyTaxScheme - - - - - - - - - - -  -->
+		<sch:rule context="doc:CreditNote/cac:AccountingSupplierParty/cac:Party/cac:PartyTaxScheme">
+			<sch:extends rule="PartyTaxSchemeCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyTaxScheme/TaxScheme - - - - - - - - - - -  -->
+		<sch:rule context="doc:CreditNote/cac:AccountingSupplierParty/cac:Party/cac:PartyTaxScheme/cac:TaxScheme">
+			<sch:extends rule="TaxSchemeCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyLegalEntity - - - - - - - - - - -  -->
+		<sch:rule context="doc:CreditNote/cac:AccountingSupplierParty/cac:Party/cac:PartyLegalEntity">
+			<sch:extends rule="PartyLegalEntityCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  Contact - - - - - - - - - - -  -->
+		<sch:rule context="doc:CreditNote/cac:AccountingSupplierParty/cac:Party/cac:Contact">
+			<sch:extends rule="ContactCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  Person - - - - - - - - - - -  -->
+		<sch:rule context="doc:CreditNote/cac:AccountingSupplierParty/cac:Party/cac:Person">
+			<sch:extends rule="Person/FirstNameCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  DespatchContact - - - - - - - - - - -  -->
+		<sch:rule context="doc:CreditNote/cac:AccountingSupplierParty/cac:DespatchContact">
+			<sch:extends rule="ContactCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  AccountingContact - - - - - - - - - - -  -->
+		<sch:rule context="doc:CreditNote/cac:AccountingSupplierParty/cac:AccountingContact">
+			<sch:extends rule="ContactCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  SellerContact - - - - - - - - - - -  -->
+		<sch:rule context="doc:CreditNote/cac:AccountingSupplierParty/cac:SellerContact">
+			<sch:extends rule="ContactCheck"/>
+		</sch:rule>
+	</sch:pattern>
+
+	<!-- - - - - - - - - - - -  AccountingCustomerParty - - - - - - - - - - -  -->
+	<sch:pattern name="AccountingCustomerParty" id="accountingcustomerparty">
+		<sch:p>Pattern for validating the AccountingCustomerParty class</sch:p>
+
+		<!-- - - - - - - - - - - -  Top-level checks - - - - - - - - - - -  -->
+		<sch:rule context="doc:CreditNote/cac:AccountingCustomerParty">
+			<!-- Check for excluded elements -->
+			<!-- Check for mandatory elements -->
+			<sch:assert test="count(cac:Party) = 1">[F-CRN039] One Party class must be present</sch:assert>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  Party - - - - - - - - - - -  -->
+		<sch:rule context="doc:CreditNote/cac:AccountingCustomerParty/cac:Party">
+			<!-- Check for excluded elements -->
+			<sch:extends rule="PartyExcludedCheck"/>
+
+			<!-- Check for mandatory elements -->
+			<!-- [Release 20111201] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=623 -->
+			<sch:assert test="normalize-space(cbc:EndpointID) != ''">[F-CRN040] Invalid EndpointID. Must contain a value</sch:assert>
+			<sch:assert test="count(cac:Contact) = 1">[F-CRN042] One Contact class must be present</sch:assert>
+
+			<!-- Validate -->
+			<sch:extends rule="PartyNameCheck"/>
+			<sch:extends rule="EndpointIDCheck"/>
+			<sch:report test="count(cac:PartyLegalEntity) &gt; 1">[F-CRN164] No more than one PartyLegalEntity class may be present</sch:report>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyIdentification - - - - - - - - - - -  -->
+		<sch:rule context="doc:CreditNote/cac:AccountingCustomerParty/cac:Party/cac:PartyIdentification">
+			<sch:extends rule="PartyIdentificationCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyName - - - - - - - - - - -  -->
+		<sch:rule context="doc:CreditNote/cac:AccountingCustomerParty/cac:Party/cac:PartyName">
+			<sch:extends rule="PartyNameLanguageCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PostalAddress - - - - - - - - - - -  -->
+		<sch:rule context="doc:CreditNote/cac:AccountingCustomerParty/cac:Party/cac:PostalAddress">
+			<sch:extends rule="AddressCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PhysicalLocation - - - - - - - - - - -  -->
+		<sch:rule context="doc:CreditNote/cac:AccountingCustomerParty/cac:Party/cac:PhysicalLocation">
+			<sch:extends rule="AddressIDCheck"/>
+		</sch:rule>
+		<!-- Validate ValidityPeriod -->
+		<sch:rule context="doc:CreditNote/cac:AccountingCustomerParty/cac:Party/cac:PhysicalLocation/cac:ValidityPeriod">
+			<sch:extends rule="PeriodCheck"/>
+		</sch:rule>
+		<!-- Validate ValidityPeriod/Description -->
+		<sch:rule context="doc:CreditNote/cac:AccountingCustomerParty/cac:Party/cac:PhysicalLocation/cac:ValidityPeriod/cbc:Description">
+			<sch:extends rule="DescriptionLanguageCheck"/>
+		</sch:rule>
+		<!-- Validate Address -->
+		<sch:rule context="doc:CreditNote/cac:AccountingCustomerParty/cac:Party/cac:PhysicalLocation/cac:Address">
+			<sch:extends rule="AddressCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyTaxScheme - - - - - - - - - - -  -->
+		<sch:rule context="doc:CreditNote/cac:AccountingCustomerParty/cac:Party/cac:PartyTaxScheme">
+			<sch:extends rule="PartyTaxSchemeCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyTaxScheme/TaxScheme - - - - - - - - - - -  -->
+		<sch:rule context="doc:CreditNote/cac:AccountingCustomerParty/cac:Party/cac:PartyTaxScheme/cac:TaxScheme">
+			<sch:extends rule="TaxSchemeCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyLegalEntity - - - - - - - - - - -  -->
+		<sch:rule context="doc:CreditNote/cac:AccountingCustomerParty/cac:Party/cac:PartyLegalEntity">
+			<sch:extends rule="PartyLegalEntityCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  Contact - - - - - - - - - - -  -->
+		<sch:rule context="doc:CreditNote/cac:AccountingCustomerParty/cac:Party/cac:Contact">
+			<!-- Check for excluded elements -->
+			<!-- Check for mandatory elements -->
+			<!-- [Release 20111201] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=623 -->
+      <!-- [Release 20160915] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=1586 -->
+			<sch:assert test="normalize-space(cbc:ID) != ''">[F-CRN047] Invalid AccountingCustomerParty/Contact/ID. Must contain a value.</sch:assert>
+			<!-- Validate -->
+			<sch:extends rule="ContactCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  Person - - - - - - - - - - -  -->
+		<sch:rule context="doc:CreditNote/cac:AccountingCustomerParty/cac:Party/cac:Person">
+			<sch:extends rule="Person/FirstNameCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  DeliveryContact - - - - - - - - - - -  -->
+		<sch:rule context="doc:CreditNote/cac:AccountingCustomerParty/cac:DeliveryContact">
+			<sch:extends rule="ContactCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  AccountingContact - - - - - - - - - - -  -->
+		<sch:rule context="doc:CreditNote/cac:AccountingCustomerParty/cac:AccountingContact">
+			<sch:extends rule="ContactCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  BuyerContact - - - - - - - - - - -  -->
+		<sch:rule context="doc:CreditNote/cac:AccountingCustomerParty/cac:BuyerContact">
+			<sch:extends rule="ContactCheck"/>
+		</sch:rule>
+	</sch:pattern>
+
+	<!-- - - - - - - - - - - -  PayeeParty - - - - - - - - - - -  -->
+	<sch:pattern name="PayeeParty" id="payeeparty">
+		<sch:p>Pattern for validating the PayeeParty class</sch:p>
+
+		<!-- - - - - - - - - - - -  Top-level checks - - - - - - - - - - -  -->
+		<sch:rule context="doc:CreditNote/cac:PayeeParty">
+			<!-- Check for excluded elements -->
+			<sch:extends rule="PartyExcludedCheck"/>
+			<!-- Check for mandatory elements -->
+			<!-- Validate -->
+			<sch:extends rule="PartyNameCheck"/>
+			<sch:extends rule="EndpointIDCheck"/>
+			<sch:report test="count(cac:PartyLegalEntity) &gt; 1">[F-CRN166] No more than one PartyLegalEntity class may be present</sch:report>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyIdentification - - - - - - - - - - -  -->
+		<sch:rule context="doc:CreditNote/cac:PayeeParty/cac:PartyIdentification">
+			<sch:extends rule="PartyIdentificationCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyName - - - - - - - - - - -  -->
+		<sch:rule context="doc:CreditNote/cac:PayeeParty/cac:PartyName">
+			<sch:extends rule="PartyNameLanguageCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PostalAddress - - - - - - - - - - -  -->
+		<sch:rule context="doc:CreditNote/cac:PayeeParty/cac:PostalAddress">
+			<sch:extends rule="AddressCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PhysicalLocation - - - - - - - - - - -  -->
+		<sch:rule context="doc:CreditNote/cac:PayeeParty/cac:PhysicalLocation">
+			<sch:extends rule="AddressIDCheck"/>
+		</sch:rule>
+		<!-- Validate ValidityPeriod -->
+		<sch:rule context="doc:CreditNote/cac:PayeeParty/cac:PhysicalLocation/cac:ValidityPeriod">
+			<sch:extends rule="PeriodCheck"/>
+		</sch:rule>
+		<!-- Validate ValidityPeriod/Description -->
+		<sch:rule context="doc:CreditNote/cac:PayeeParty/cac:PhysicalLocation/cac:ValidityPeriod/cbc:Description">
+			<sch:extends rule="DescriptionLanguageCheck"/>
+		</sch:rule>
+		<!-- Validate Address -->
+		<sch:rule context="doc:CreditNote/cac:PayeeParty/cac:PhysicalLocation/cac:Address">
+			<sch:extends rule="AddressCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyTaxScheme - - - - - - - - - - -  -->
+		<sch:rule context="doc:CreditNote/cac:PayeeParty/cac:PartyTaxScheme">
+			<sch:extends rule="PartyTaxSchemeCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyTaxScheme/TaxScheme - - - - - - - - - - -  -->
+		<sch:rule context="doc:CreditNote/cac:PayeeParty/cac:PartyTaxScheme/cac:TaxScheme">
+			<sch:extends rule="TaxSchemeCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyLegalEntity - - - - - - - - - - -  -->
+		<sch:rule context="doc:CreditNote/cac:PayeeParty/cac:PartyLegalEntity">
+			<sch:extends rule="PartyLegalEntityCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  Contact - - - - - - - - - - -  -->
+		<sch:rule context="doc:CreditNote/cac:PayeeParty/cac:Contact">
+			<sch:extends rule="ContactCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  Person - - - - - - - - - - -  -->
+		<sch:rule context="doc:CreditNote/cac:PayeeParty/cac:Person">
+			<sch:extends rule="Person/FirstNameCheck"/>
+		</sch:rule>
+	</sch:pattern>
+
+	<!-- - - - - - - - - - - -  TaxRepresentativeParty - - - - - - - - - - -  -->
+  <!-- [Release 20180915] Check added according to issue: https://bugs.softwareborsen.dk/show_bug.cgi?id=2000 -->
+	<sch:pattern name="TaxRepresentativeParty" id="taxRepresentativeParty">
+		<sch:p>Pattern for validating the TaxRepresentativeParty class</sch:p>
+    <sch:rule context="doc:CreditNote/cac:TaxRepresentativeParty">
+			<sch:extends rule="TaxRepresentativePartyCheck"/>
+		</sch:rule>
+
+    <sch:rule context="doc:CreditNote/cac:TaxRepresentativeParty/cac:PartyTaxScheme">
+			<sch:extends rule="PartyTaxSchemeCheck"/>
+		</sch:rule>
+
+    <sch:rule context="doc:CreditNote/cac:TaxRepresentativeParty/cac:PartyTaxScheme/cac:TaxScheme">
+			<sch:extends rule="TaxSchemeCheck"/>
+		</sch:rule>
+	</sch:pattern>
+
+
+
+	<!-- - - - - - - - - - - -  TaxExchangeRate - - - - - - - - - - -  -->
+	<sch:pattern name="TaxExchangeRate" id="taxexchangerate">
+		<sch:p>Pattern for validating the TaxExchangeRate class</sch:p>
+		<sch:rule context="doc:CreditNote/cac:TaxExchangeRate">
+			<sch:extends rule="ExchangeRateCheck"/>
+		</sch:rule>
+		<!-- Validate TaxExchangeRate/ForeignExchangeContract/ValidityPeriod -->
+		<sch:rule context="doc:CreditNote/cac:TaxExchangeRate/cac:ForeignExchangeContract/cac:ValidityPeriod">
+			<sch:extends rule="PeriodCheck"/>
+		</sch:rule>
+		<!-- Validate TaxExchangeRate/ForeignExchangeContract/ValidityPeriod/Description -->
+		<sch:rule context="doc:CreditNote/cac:TaxExchangeRate/cac:ForeignExchangeContract/cac:ValidityPeriod/cbc:Description">
+			<sch:extends rule="DescriptionLanguageCheck"/>
+		</sch:rule>
+		<!-- Validate TaxExchangeRate/ForeignExchangeContract/ContractDocumentReference -->
+		<sch:rule context="doc:CreditNote/cac:TaxExchangeRate/cac:ForeignExchangeContract/cac:ContractDocumentReference">
+			<sch:extends rule="KnownDocumentReferenceCheck"/>
+		</sch:rule>
+	</sch:pattern>
+
+	<!-- - - - - - - - - - - -  PricingExchangeRate - - - - - - - - - - -  -->
+	<sch:pattern name="PricingExchangeRate" id="pricingexchangerate">
+		<sch:p>Pattern for validating the PricingExchangeRate class</sch:p>
+		<sch:rule context="doc:CreditNote/cac:PricingExchangeRate">
+			<sch:extends rule="ExchangeRateCheck"/>
+		</sch:rule>
+		<!-- Validate PricingExchangeRate/ForeignExchangeContract/ValidityPeriod -->
+		<sch:rule context="doc:CreditNote/cac:PricingExchangeRate/cac:ForeignExchangeContract/cac:ValidityPeriod">
+			<sch:extends rule="PeriodCheck"/>
+		</sch:rule>
+		<!-- Validate PricingExchangeRate/ForeignExchangeContract/ValidityPeriod/Description -->
+		<sch:rule context="doc:CreditNote/cac:PricingExchangeRate/cac:ForeignExchangeContract/cac:ValidityPeriod/cbc:Description">
+			<sch:extends rule="DescriptionLanguageCheck"/>
+		</sch:rule>
+		<!-- Validate PricingExchangeRate/ForeignExchangeContract/ContractDocumentReference -->
+		<sch:rule context="doc:CreditNote/cac:PricingExchangeRate/cac:ForeignExchangeContract/cac:ContractDocumentReference">
+			<sch:extends rule="KnownDocumentReferenceCheck"/>
+		</sch:rule>
+	</sch:pattern>
+
+	<!-- - - - - - - - - - - -  PaymentExchangeRate - - - - - - - - - - -  -->
+	<sch:pattern name="PaymentExchangeRate" id="paymentexchangerate">
+		<sch:p>Pattern for validating the PaymentExchangeRate class</sch:p>
+		<sch:rule context="doc:CreditNote/cac:PaymentExchangeRate">
+			<sch:extends rule="ExchangeRateCheck"/>
+		</sch:rule>
+		<!-- Validate PaymentExchangeRate/ForeignExchangeContract/ValidityPeriod -->
+		<sch:rule context="doc:CreditNote/cac:PaymentExchangeRate/cac:ForeignExchangeContract/cac:ValidityPeriod">
+			<sch:extends rule="PeriodCheck"/>
+		</sch:rule>
+		<!-- Validate PaymentExchangeRate/ForeignExchangeContract/ValidityPeriod/Description -->
+		<sch:rule context="doc:CreditNote/cac:PaymentExchangeRate/cac:ForeignExchangeContract/cac:ValidityPeriod/cbc:Description">
+			<sch:extends rule="DescriptionLanguageCheck"/>
+		</sch:rule>
+		<!-- Validate PaymentExchangeRate/ForeignExchangeContract/ContractDocumentReference -->
+		<sch:rule context="doc:CreditNote/cac:PaymentExchangeRate/cac:ForeignExchangeContract/cac:ContractDocumentReference">
+			<sch:extends rule="KnownDocumentReferenceCheck"/>
+		</sch:rule>
+	</sch:pattern>
+
+	<!-- - - - - - - - - - - -  PaymentAlternativeExchangeRate - - - - - - - - - - -  -->
+	<sch:pattern name="PaymentAlternativeExchangeRate" id="paymentalternativeexchangerate">
+		<sch:p>Pattern for validating the PaymentAlternativeExchangeRate class</sch:p>
+		<sch:rule context="doc:CreditNote/cac:PaymentAlternativeExchangeRate">
+			<sch:extends rule="ExchangeRateCheck"/>
+		</sch:rule>
+		<!-- Validate PaymentAlternativeExchangeRate/ForeignExchangeContract/ValidityPeriod -->
+		<sch:rule context="doc:CreditNote/cac:PaymentAlternativeExchangeRate/cac:ForeignExchangeContract/cac:ValidityPeriod">
+			<sch:extends rule="PeriodCheck"/>
+		</sch:rule>
+		<!-- Validate PaymentAlternativeExchangeRate/ForeignExchangeContract/ValidityPeriod/Description -->
+		<sch:rule context="doc:CreditNote/cac:PaymentAlternativeExchangeRate/cac:ForeignExchangeContract/cac:ValidityPeriod/cbc:Description">
+			<sch:extends rule="DescriptionLanguageCheck"/>
+		</sch:rule>
+		<!-- Validate PaymentAlternativeExchangeRate/ForeignExchangeContract/ContractDocumentReference -->
+		<sch:rule context="doc:CreditNote/cac:PaymentAlternativeExchangeRate/cac:ForeignExchangeContract/cac:ContractDocumentReference">
+			<sch:extends rule="KnownDocumentReferenceCheck"/>
+		</sch:rule>
+	</sch:pattern>
+
+	<!-- - - - - - - - - - - -  AllowanceCharge - - - - - - - - - - -  -->
+	<sch:pattern name="AllowanceCharge" id="allowancecharge">
+		<sch:p>Pattern for validating the AllowanceCharge class</sch:p>
+		<sch:rule context="doc:CreditNote/cac:AllowanceCharge">
+			<sch:extends rule="AllowanceChargeTopCheck"/>
+			<sch:extends rule="AccountingCostCheck"/>
+		</sch:rule>
+		<!-- Validate PrepaidIndicator -->
+		<!-- Validate SequenceNumeric -->
+		<sch:rule context="doc:CreditNote/cac:AllowanceCharge/cbc:SequenceNumeric">
+			<sch:extends rule="PosNumberCheck"/>
+		</sch:rule>
+		<!-- Validate Amount -->
+		<sch:rule context="doc:CreditNote/cac:AllowanceCharge/cbc:Amount">
+            <!-- [Release 20190315] Changing check according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=2010 -->
+            <!-- <sch:extends rule="PosZeroNumberCheck"/> -->
+            <!-- <sch:extends rule="PosZeroNumberOrConvertedCheck"/> -->
+            <sch:extends rule="NumberCheck"/>
+		</sch:rule>
+		<!-- Validate BaseAmount -->
+		<sch:rule context="doc:CreditNote/cac:AllowanceCharge/cbc:BaseAmount">
+            <!-- [Release 20190315] Changing check according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=2010 -->
+            <!-- <sch:extends rule="PosZeroNumberCheck"/> -->
+            <!-- <sch:extends rule="PosZeroNumberOrConvertedCheck"/> -->
+            <sch:extends rule="NumberCheck"/>
+		</sch:rule>
+		<!-- Validate TaxCategory -->
+		<sch:rule context="doc:CreditNote/cac:AllowanceCharge/cac:TaxCategory">
+			<sch:extends rule="TaxCategoryCheck"/>
+		</sch:rule>
+		<!-- Validate TaxCategory/TaxScheme -->
+		<sch:rule context="doc:CreditNote/cac:AllowanceCharge/cac:TaxCategory/cac:TaxScheme">
+			<sch:extends rule="TaxSchemeCheck"/>
+		</sch:rule>
+	</sch:pattern>
+
+	<!-- - - - - - - - - - - -  TaxTotal - - - - - - - - - - -  -->
+	<sch:pattern name="TaxTotal" id="taxtotal">
+		<sch:p>Pattern for validating the TaxTotal class</sch:p>
+		<!-- - - - - - - - - - - -  Top-level checks - - - - - - - - - - -  -->
+		<sch:rule context="doc:CreditNote/cac:TaxTotal">
+			<sch:extends rule="TaxTotalCheck"/>
+		</sch:rule>
+		<!-- - - - - - - - - - - -  TaxSubtotal - - - - - - - - - - -  -->
+		<sch:rule context="doc:CreditNote/cac:TaxTotal/cac:TaxSubtotal">
+			<sch:extends rule="TaxSubtotalCheck"/>
+			<!-- [Release 20130315] Rule added only on header according to issue: https://bugs.softwareborsen.dk/show_bug.cgi?id=887 -->
+			<!--[20130114] The checks are removed till next schematron release, since the formular is not yet correct.-->
+			<!--<sch:let name="ZeroRated" value="cac:TaxCategory/cbc:ID = 'ZeroRated'"/>-->
+			<!--<sch:report test="($ID63 and $StandardRated) and format-number(cbc:TaxableAmount, '##.00') != format-number((sum(/doc:CreditNote/cac:CreditNoteLine/cac:TaxTotal/cac:TaxSubtotal[cac:TaxCategory/cbc:ID = 'StandardRated' and cac:TaxCategory/cac:TaxScheme/cbc:ID = '63']/cbc:TaxableAmount) + sum(/doc:CreditNote/cac:AllowanceCharge[cbc:ChargeIndicator='true' and cac:TaxCategory/cac:TaxScheme/cbc:ID = '63' and cac:TaxCategory/cbc:ID = 'StandardRated']/cbc:Amount) - sum(/doc:CreditNote/cac:AllowanceCharge[cbc:ChargeIndicator='false' and cac:TaxCategory/cac:TaxScheme/cbc:ID = '63' and cac:TaxCategory/cbc:ID = 'StandardRated']/cbc:Amount)), '##.00')">[F-CRN205] For TaxCategory.ID = StandardRated and TaxCategory.TaxScheme.ID = 63, TaxableAmount must equal sum of InvoiceLine.TaxTotal.TaxSubtotal.TaxableAmount plus Charges minus Discharges.</sch:report>-->
+			<!--<sch:report test="($ID63 and $ZeroRated) and format-number(cbc:TaxableAmount, '##.00') != format-number((sum(/doc:CreditNote/cac:CreditNoteLine/cac:TaxTotal/cac:TaxSubtotal[cac:TaxCategory/cbc:ID = 'ZeroRated']/cbc:TaxableAmount) + sum(/doc:CreditNote/cac:AllowanceCharge[cbc:ChargeIndicator='true' and cac:TaxCategory/cac:TaxScheme/cbc:ID = '63' and cac:TaxCategory/cbc:ID = 'ZeroRated']/cbc:Amount) - sum(/doc:CreditNote/cac:AllowanceCharge[cbc:ChargeIndicator='false' and cac:TaxCategory/cac:TaxScheme/cbc:ID = '63' and cac:TaxCategory/cbc:ID = 'ZeroRated']/cbc:Amount)), '##.00')">[F-CRN206] For TaxCategory.ID = ZeroRated and TaxCategory.TaxScheme.ID = 63, TaxableAmount must equal sum of InvoiceLine.TaxTotal.TaxSubtotal.TaxableAmount plus Charges minus Discharges.</sch:report>-->
+
+      <!-- [Release 20150915] Added check according to issue: https://bugs.softwareborsen.dk/show_bug.cgi?id=1361 -->
+      <sch:extends rule="TaxSubtotalCalculationHeader"/>
+		</sch:rule>
+		<!-- - - - - - - - - - - -  TaxCategory - - - - - - - - - - -  -->
+		<sch:rule context="doc:CreditNote/cac:TaxTotal/cac:TaxSubtotal/cac:TaxCategory">
+			<sch:extends rule="TaxCategoryCheck"/>
+		</sch:rule>
+		<!-- - - - - - - - - - - -  TaxCategory/TaxScheme - - - - - - - - - - -  -->
+		<sch:rule context="doc:CreditNote/cac:TaxTotal/cac:TaxSubtotal/cac:TaxCategory/cac:TaxScheme">
+			<sch:extends rule="TaxSchemeCheck"/>
+		</sch:rule>
+	</sch:pattern>
+
+	<!-- - - - - - - - - - - -  LegalMonetaryTotal - - - - - - - - - - -  -->
+	<sch:pattern name="LegalMonetaryTotal" id="legalmonetarytotal">
+		<sch:p>Pattern for validating the LegalMonetaryTotal class</sch:p>
+		<sch:rule context="doc:CreditNote/cac:LegalMonetaryTotal">
+
+			<!-- 111021: NH-130 -->
+			<sch:let name="TotalLineExtensionAmount" value="format-number (sum(../cac:CreditNoteLine[not(cbc:FreeOfChargeIndicator) or cbc:FreeOfChargeIndicator = 'false']/cbc:LineExtensionAmount),'##.00')" />
+
+
+			<!-- Check for excluded elements -->
+			<!-- Check for mandatory elements -->
+			<!-- [Release 20111201] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=623 -->
+			<sch:assert test="normalize-space(cbc:LineExtensionAmount) != ''">[F-CRN066] Invalid LineExtensionAmount. Must contain a value</sch:assert>
+			<sch:report test="count(../cac:AllowanceCharge[cbc:ChargeIndicator='false']) and not(cbc:AllowanceTotalAmount)">[F-CRN068] AllowanceTotalAmount is mandatory when AllowanceCharge classes (with ChargeIndicator='false') are present</sch:report>
+			<sch:report test="count(../cac:AllowanceCharge[cbc:ChargeIndicator='true']) and not(cbc:ChargeTotalAmount)">[F-CRN069] ChargeTotalAmount is mandatory when AllowanceCharge classes (with ChargeIndicator='true') are present</sch:report>
+			<!-- [Release 20130315] Check removed according to issue: https://bugs.softwareborsen.dk/show_bug.cgi?id=1151 -->
+			<!--<sch:report test="count(../cac:PrepaidPayment/cbc:PaidAmount) and not(cbc:PrepaidAmount)">[F-CRN070] PrepaidAmount is mandatory when PrepaidPayment/PaidAmount elements are present</sch:report>-->
+			<sch:report test="count(../cac:TaxTotal/cbc:RoundingAmount) and not(cbc:PayableRoundingAmount)">[F-CRN071] PayableRoundingAmount is mandatory when TaxTotal/RoundingAmount elements are present</sch:report>
+			<!-- Validate -->
+			<!-- [Release 20120615] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=823 -->
+			<sch:report test="((cbc:LineExtensionAmount - sum(../cac:CreditNoteLine/cbc:LineExtensionAmount)) &gt; '0.0055') or ((cbc:LineExtensionAmount - sum(../cac:CreditNoteLine/cbc:LineExtensionAmount)) &lt; '-0.0055')">[F-CRN072] The sum of CreditNoteLine/LineExtensionAmount ('<sch:value-of select="$TotalLineExtensionAmount"/>') elements must equal LineExtensionAmount ('<sch:value-of select="cbc:LineExtensionAmount"/>')</sch:report>
+
+			<sch:report test="cbc:TaxExclusiveAmount and not(format-number(cbc:TaxExclusiveAmount,'##.00') = format-number(sum(../cac:TaxTotal/cac:TaxSubtotal/cbc:TaxAmount),'##.00'))">[F-CRN073] The sum of TaxTotal/TaxSubtotal/TaxAmount elements must equal TaxExclusiveAmount</sch:report>
+			<sch:report test="cbc:TaxInclusiveAmount and not(format-number(cbc:TaxInclusiveAmount,'##.00') = format-number(sum(cbc:LineExtensionAmount) + sum(../cac:TaxTotal/cac:TaxSubtotal/cbc:TaxAmount) + sum(cbc:ChargeTotalAmount) - sum(cbc:AllowanceTotalAmount) + sum(cbc:PayableRoundingAmount),'##.00'))">[F-CRN074] TaxInclusiveAmount is calculated incorrectly</sch:report>
+			<sch:report test="cbc:AllowanceTotalAmount and not(format-number(cbc:AllowanceTotalAmount,'##.00') = format-number(sum(../cac:AllowanceCharge[cbc:ChargeIndicator='false']/cbc:Amount),'##.00'))">[F-CRN075] The sum of AllowanceCharge/Amount elements (with ChargeIndicator='false') must equal AllowanceTotalAmount</sch:report>
+			<sch:report test="cbc:ChargeTotalAmount and not(format-number(cbc:ChargeTotalAmount,'##.00') = format-number(sum(../cac:AllowanceCharge[cbc:ChargeIndicator='true']/cbc:Amount),'##.00'))">[F-CRN076] The sum of AllowanceCharge/Amount elements (with ChargeIndicator='true') must equal cbc:ChargeTotalAmount</sch:report>
+			<!-- [Release 20130315] Check removed according to issue: https://bugs.softwareborsen.dk/show_bug.cgi?id=1151 -->
+			<!--<sch:report test="cbc:PrepaidAmount and not(format-number(cbc:PrepaidAmount,'##.00') = format-number(sum(../cac:PrepaidPayment/cbc:PaidAmount),'##.00'))">[F-CRN077] The sum of PrepaidPayment/PaidAmount elements must equal PrepaidAmount</sch:report>-->
+
+
+      <!-- [Release 20160915] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=1710 -->
+			<sch:report test="(cbc:PayableRoundingAmount) and (../cac:TaxTotal/cbc:RoundingAmount) and (not(format-number(cbc:PayableRoundingAmount,'##.00') = format-number(sum(../cac:TaxTotal/cbc:RoundingAmount),'##.00')))">[F-CRN078] The sum of TaxTotal/RoundingAmount elements must equal PayableRoundingAmount</sch:report>
+			<sch:report test="(cbc:PayableRoundingAmount) and ((cbc:PayableRoundingAmount &lt; -10.00) or (cbc:PayableRoundingAmount &gt; 10.00))">[F-CRN208] The LegalMonetaryTotal/PayableRoundingAmount must NOT be less then -10.00 or greater then 10.00.</sch:report>
+
+      <!-- [Release 20130315] Check replaced with new, that do not contain PrepaidAmount, according to issue: https://bugs.softwareborsen.dk/show_bug.cgi?id=1151 -->
+			<!--<sch:assert test="format-number(cbc:PayableAmount,'##.00') = format-number(sum(cbc:LineExtensionAmount) + sum(../cac:TaxTotal/cac:TaxSubtotal/cbc:TaxAmount) + sum(cbc:ChargeTotalAmount) - sum(cbc:AllowanceTotalAmount) - sum(cbc:PrepaidAmount) + sum(cbc:PayableRoundingAmount),'##.00')">[F-CRN079] PayableAmount is calculated incorrectly</sch:assert>-->
+      <!-- [Release 20130315] Check replaced with new, that do not contain PrepaidAmount, according to issue: https://bugs.softwareborsen.dk/show_bug.cgi?id=1151 -->
+			<!-- <sch:assert test="format-number(cbc:PayableAmount,'##.00') = format-number(sum(cbc:LineExtensionAmount) + sum(../cac:TaxTotal/cac:TaxSubtotal/cbc:TaxAmount) + sum(cbc:ChargeTotalAmount) - sum(cbc:AllowanceTotalAmount) + sum(cbc:PayableRoundingAmount),'##.00')">[F-CRN079] PayableAmount is calculated incorrectly</sch:assert> -->
+      <!-- [Release 20180915] PrepaidAmount is added again, according to issue: https://bugs.softwareborsen.dk/show_bug.cgi?id=2017 -->
+
+
+
+
+			<!-- NH-571 Changed the test as it did not fully cover the problem -->
+			<!-- sch:assert test="format-number(cbc:PayableAmount,'##.00') = format-number(sum(cbc:LineExtensionAmount) + sum(../cac:TaxTotal/cac:TaxSubtotal/cbc:TaxAmount) + sum(cbc:ChargeTotalAmount) - sum(cbc:AllowanceTotalAmount) - sum(cbc:PrepaidAmount) + sum(cbc:PayableRoundingAmount),'##.00')">[F-CRN079] PayableAmount is calculated incorrectly</sch:assert-->
+
+			<!-- NH-47 Support for both Java and .NET en match of "-0 = 0" -->
+			<sch:let name="PayableSum" value="format-number (sum(cbc:PayableAmount) ,'##.00')"/>
+
+			<sch:let name="TotalSum" value="format-number (sum(cbc:LineExtensionAmount) + sum(../cac:TaxTotal/cac:TaxSubtotal/cbc:TaxAmount) + sum(cbc:ChargeTotalAmount) - sum(cbc:AllowanceTotalAmount) - sum(cbc:PrepaidAmount) + sum(cbc:PayableRoundingAmount),'##.00')"/>
+
+			<xsl:variable name="AlteredPayableSum">
+				<xsl:choose>
+					<xsl:when test="$TotalSum = -.00">.00</xsl:when>
+					<xsl:otherwise><xsl:value-of select="$TotalSum"/></xsl:otherwise>
+				</xsl:choose>
+			</xsl:variable>
+
+			<sch:assert test="$AlteredPayableSum = $PayableSum">[F-CRN079] PayableAmount is calculated incorrectly - PayableAmount ('<sch:value-of select="$PayableSum"/>' ) don't match total calculation ('<sch:value-of select="$AlteredPayableSum"/>' )</sch:assert>
+			<!--  -->
+
+			<!-- <sch:report test="../cbc:TaxCurrencyCode">[I-LIB999] Validation not yet implemented!</sch:report> -->
+		</sch:rule>
+		<!-- Validate LineExtensionAmount -->
+		<sch:rule context="doc:CreditNote/cac:LegalMonetaryTotal/cbc:LineExtensionAmount">
+			<!-- [Release 20111201] Changing check according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=657 -->
+			<!--<sch:extends rule="PosDecNumberCheck"/>-->
+			<sch:extends rule="DecNumberCheck"/>
+		</sch:rule>
+		<!-- Validate TaxExclusiveAmount -->
+		<sch:rule context="doc:CreditNote/cac:LegalMonetaryTotal/cbc:TaxExclusiveAmount">
+			<sch:extends rule="DecNumberCheck"/>
+		</sch:rule>
+		<!-- Validate TaxInclusiveAmount -->
+		<sch:rule context="doc:CreditNote/cac:LegalMonetaryTotal/cbc:TaxInclusiveAmount">
+            <!-- [Release 20190315] Changing check according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=2010 -->
+            <!-- <sch:extends rule="PosDecNumberCheck"/> -->
+            <sch:extends rule="PosDecNumberOrConvertedCheck"/>
+		</sch:rule>
+		<!-- Validate AllowanceTotalAmount -->
+		<sch:rule context="doc:CreditNote/cac:LegalMonetaryTotal/cbc:AllowanceTotalAmount">
+            <!-- [Release 20190315] Changing check according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=2010 -->
+            <sch:extends rule="DecNumberCheck"/>
+		</sch:rule>
+		<!-- Validate ChargeTotalAmount -->
+		<sch:rule context="doc:CreditNote/cac:LegalMonetaryTotal/cbc:ChargeTotalAmount">
+            <!-- [Release 20190315] Changing check according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=2010 -->
+            <sch:extends rule="DecNumberCheck"/>
+		</sch:rule>
+		<!-- Validate PrepaidAmount -->
+		<sch:rule context="doc:CreditNote/cac:LegalMonetaryTotal/cbc:PrepaidAmount">
+            <!-- [Release 20190315] Changing check according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=2010 -->
+			<!-- <sch:extends rule="PosZeroDecNumberCheck"/> -->
+            <sch:extends rule="PosZeroDecNumberOrConvertedCheck"/>
+		</sch:rule>
+		<!-- Validate PayableRoundingAmount -->
+		<sch:rule context="doc:CreditNote/cac:LegalMonetaryTotal/cbc:PayableRoundingAmount">
+			<sch:extends rule="ZeroDecNumberCheck"/>
+		</sch:rule>
+		<!-- Validate PayableAmount -->
+		<sch:rule context="doc:CreditNote/cac:LegalMonetaryTotal/cbc:PayableAmount">
+            <sch:extends rule="PosDecNumberCheck"/>
+		</sch:rule>
+	</sch:pattern>
+
+	<!-- - - - - - - - - - - -  CreditNoteLine - - - - - - - - - - -  -->
+	<sch:pattern name="CreditNoteLine" id="creditnoteline">
+		<sch:p>Pattern for validating the CreditNoteLine class</sch:p>
+
+		<!-- - - - - - - - - - - -  Top-level checks - - - - - - - - - - -  -->
+		<sch:rule context="doc:CreditNote/cac:CreditNoteLine">
+			<!-- Variables -->
+			<sch:let name="O"       value="cac:Price/cbc:OrderableUnitFactorRate and cac:Price/cbc:OrderableUnitFactorRate != 1"/>
+			<sch:let name="notFree" value="not(cbc:FreeOfChargeIndicator) or cbc:FreeOfChargeIndicator = 'false'"/>
+
+			<sch:let name="noFactorRate" value="not(cac:Price/cbc:OrderableUnitFactorRate)"/>
+			<!-- [Release 20111201] Variable added according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=659 -->
+			<sch:let name="noExchangeRate" value="not(../cac:PricingExchangeRate)"/>
+			<sch:let name="CRandMOC" value="not(../cac:PricingExchangeRate/cbc:CalculationRate) or not(../cac:PricingExchangeRate/cbc:MathematicOperatorCode)"/>
+			<sch:let name="Multiply" value="../cac:PricingExchangeRate/cbc:MathematicOperatorCode = 'multiply'"/>
+			<sch:let name="Divide" value="../cac:PricingExchangeRate/cbc:MathematicOperatorCode = 'divide'"/>
+			<!-- [Release 20120615] Variable added according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=927 -->
+			<sch:let name="NegativeLEA" value="starts-with(cbc:CreditedQuantity,'-')"/>
+			<sch:let name="NegativePA" value="starts-with(cac:Price/cbc:PriceAmount,'-')"/>
+
+            <!-- OrderableUnitFactorRate is not mandatory - so default to 1, if not exists. -->
+            <sch:let name="orderableUnitFactorRate" value="concat(
+                                                                substring(cac:Price/cbc:OrderableUnitFactorRate, 1, number(normalize-space(cac:Price/cbc:OrderableUnitFactorRate) != '') * string-length(cac:Price/cbc:OrderableUnitFactorRate)),
+                                                                substring(1, 1, number(not(normalize-space(cac:Price/cbc:OrderableUnitFactorRate) != '')) * 1)
+                                                            )"/>
+            <sch:let name="quantity" value="cbc:CreditedQuantity"/>
+            <sch:let name="priceAmount" value="cac:Price/cbc:PriceAmount"/>
+            <!-- BaseQuantity is not mandatory - so default to 1, if not exists. -->
+            <sch:let name="baseQuantity" value="concat(
+                                                                substring(cac:Price/cbc:BaseQuantity, 1, number(normalize-space(cac:Price/cbc:BaseQuantity) != '') * string-length(cac:Price/cbc:BaseQuantity)),
+                                                                substring(1, 1, number(not(normalize-space(cac:Price/cbc:BaseQuantity) != '')) * 1)
+                                                            )"/>
+            <sch:let name="lineExtensionAmount" value="concat(
+                                                                substring(cbc:LineExtensionAmount, 1, number(normalize-space(cbc:LineExtensionAmount) != '' ) * string-length(cbc:LineExtensionAmount)),
+                                                                substring(0, 1, number(not(normalize-space(cbc:LineExtensionAmount) != '')) * 1)
+                                                        )"/>
+            <sch:let name="calculatedTotal" value="($priceAmount div $baseQuantity) * $quantity"/>
+
+			<sch:let name="calculatedTotalUnitCodeDifferent" value="$priceAmount * $quantity * $orderableUnitFactorRate"/>
+			<sch:let name="calculatedTotalUnitCodeEqual" value="($priceAmount * $quantity) div $baseQuantity"/>
+
+			<sch:let name="unitCodeDifferent" value="cbc:CreditedQuantity/@unitCode != cac:Price/cbc:BaseQuantity/@unitCode"/>
+			<sch:let name="unitCodeEqual" value="cbc:CreditedQuantity/@unitCode = cac:Price/cbc:BaseQuantity/@unitCode"/>
+			<sch:let name="unitCodeNeither" value="not($unitCodeDifferent) and not($unitCodeEqual)"/>
+
+			<!-- Check for excluded elements -->
+			<!-- Check for mandatory elements -->
+			<sch:assert test="cbc:CreditedQuantity != ''">[F-CRN196] Invalid CreditedQuantity. Must contain a value</sch:assert>
+			<sch:assert test="count(cac:TaxTotal) != 0">[F-CRN081] One or more TaxTotal class must be present</sch:assert>
+			<sch:report test="not(count(cac:Item)) and not(count(cac:BillingReference))">[F-CRN082] One Item class must be present when CreditNoteLine/BillingReference is not specified</sch:report>
+			<sch:report test="not(count(cac:Price)) and not(count(cac:BillingReference))">[F-CRN083] One Price class must be present when CreditNoteLine/BillingReference is not specified</sch:report>
+			<!-- Validate -->
+			<!-- [Release 20111201] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=623 -->
+      <!-- [Release 20160915] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=1586 -->
+			<sch:assert test="normalize-space(cbc:ID) != ''">[F-CRN084] Invalid CreditNoteLine/ID. Must contain a value.</sch:assert>
+			<sch:extends rule="AccountingCostCheck"/>
+
+			<!-- [Release 20120615] Check added according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=927 -->
+			<sch:report test="not($NegativeLEA or $NegativePA) and starts-with(cac:Price/cac:AllowanceCharge/cbc:Amount,'-')">[F-CRN203] AllowanceCharge.Amount can not be negative, if CreditedQuantity or Price.PriceAmount is not negative.</sch:report>
+
+			<!-- <sch:report test="../cbc:PricingCurrencyCode">[I-CRN999] Validation not yet implemented!</sch:report> -->
+			<!-- [Release 20111201] Added 1 warning and 4 new checks according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=659 -->
+			<!-- A -->
+			<!-- 071021; NH-501  -->
+			<!-- sch:report test="($T and $PER) and ((cbc:LineExtensionAmount &lt; (cbc:CreditedQuantity * cac:Price/cbc:PriceAmount - '01.00')) or (cbc:LineExtensionAmount &gt; (cbc:CreditedQuantity * cac:Price/cbc:PriceAmount + '01.00')))">[F-CRN085] LineExtensionAmount must equal CreditedQuantity * Price.PriceAmount (when OrderableUnitFactorRate not present)</sch:report -->
+			<!-- B, C, D, H, I & J -->
+
+			<!-- [020422] - NH-50 -->
+			<sch:report test="($notFree and not($noExchangeRate) and $CRandMOC)">[W-CRN154] CreditNote line '<sch:value-of select="cbc:ID"/>' with lineExtensionAmount (<sch:value-of select="cbc:LineExtensionAmount"/>) cannot be evaluated since either 'cbc:CalculationRate', 'cbc:MathematicOperatorCode' or both are not present in 'CreditNote/cac:PricingExchangeRate'</sch:report>
+
+			<!-- E -->
+
+			<sch:report test="$unitCodeDifferent and ($notFree and $noFactorRate and not($noExchangeRate) and not($CRandMOC) and $Multiply) and ((cbc:LineExtensionAmount &lt; ($calculatedTotalUnitCodeDifferent * ../cac:PricingExchangeRate/cbc:CalculationRate - '01.00')) or (cbc:LineExtensionAmount &gt; ($calculatedTotalUnitCodeDifferent * ../cac:PricingExchangeRate/cbc:CalculationRate + '01.00')))">[F-CRN212] CreditNote line '<sch:value-of select="cbc:ID"/>' with lineExtensionAmount (<sch:value-of select="cbc:LineExtensionAmount"/>) must equal CreditedQuantity (<sch:value-of select="cbc:CreditedQuantity"/>) * Price.PriceAmount (<sch:value-of select="cac:Price/cbc:PriceAmount"/>) * CreditNote.PricingExchangeRate.CalculationRate) (when '../cac:PricingExchangeRate' is present with MathematicOperatorCode = 'multiply' and OrderableUnitFactorRate is not present) +/- 1.00 (CreditNotedQuantity unitCode and Price.BaseQuantity unitCode are not equal)</sch:report>
+			<sch:report test="$unitCodeEqual     and ($notFree and $noFactorRate and not($noExchangeRate) and not($CRandMOC) and $Multiply) and ((cbc:LineExtensionAmount &lt; ($calculatedTotalUnitCodeEqual * ../cac:PricingExchangeRate/cbc:CalculationRate - '01.00')) or (cbc:LineExtensionAmount &gt; ($calculatedTotalUnitCodeEqual * ../cac:PricingExchangeRate/cbc:CalculationRate + '01.00')))">[F-CRN213] CreditNote line '<sch:value-of select="cbc:ID"/>' with lineExtensionAmount (<sch:value-of select="cbc:LineExtensionAmount"/>) must equal ((Price.PriceAmount (<sch:value-of select="$priceAmount"/>) / Price.BaseQuantity (<sch:value-of select="$baseQuantity"/>) ) * CreditedQuantity (<sch:value-of select="$quantity"/>)) * CreditNote.PricingExchangeRate.CalculationRate (when '../cac:PricingExchangeRate' is present with MathematicOperatorCode = 'multiply' and OrderableUnitFactorRate is not present) +/- 1.00 (CreditNotedQuantity unitCode and Price.BaseQuantity unitCode are equal)</sch:report>
+			<sch:report test="$unitCodeNeither   and ($notFree and $noFactorRate and not($noExchangeRate) and not($CRandMOC) and $Multiply) and ((cbc:LineExtensionAmount &lt; ($calculatedTotalUnitCodeEqual * ../cac:PricingExchangeRate/cbc:CalculationRate - '01.00')) or (cbc:LineExtensionAmount &gt; ($calculatedTotalUnitCodeEqual * ../cac:PricingExchangeRate/cbc:CalculationRate + '01.00')))">[F-CRN198] CreditNote line '<sch:value-of select="cbc:ID"/>' with lineExtensionAmount (<sch:value-of select="cbc:LineExtensionAmount"/>) must equal Price.PriceAmount (<sch:value-of select="$priceAmount"/>) * CreditedQuantity (<sch:value-of select="$quantity"/>) * CreditNote.PricingExchangeRate.CalculationRate (when '../cac:PricingExchangeRate' is present with MathematicOperatorCode = 'multiply' and OrderableUnitFactorRate is not present) +/- 1.00.</sch:report>
+
+			<!-- F -->
+			<sch:report test="$unitCodeDifferent and ($notFree and $noFactorRate and not($noExchangeRate) and not($CRandMOC) and $Divide) and ((cbc:LineExtensionAmount &lt; ((( $calculatedTotalUnitCodeDifferent ) div ../cac:PricingExchangeRate/cbc:CalculationRate) - '01.00')) or (cbc:LineExtensionAmount &gt; ((($calculatedTotalUnitCodeDifferent) div ../cac:PricingExchangeRate/cbc:CalculationRate) + '01.00')))">[F-CRN214] CreditNote line '<sch:value-of select="cbc:ID"/>' with lineExtensionAmount (<sch:value-of select="cbc:LineExtensionAmount"/>) must equal (CreditedQuantity (<sch:value-of select="cbc:CreditedQuantity"/>) * Price.PriceAmount (<sch:value-of select="cac:Price/cbc:PriceAmount"/>) * Price.OrderableUnitFactorRate (<sch:value-of select="cac:Price/cbc:OrderableUnitFactorRate"/>)) div CreditNote.PricingExchangeRate.CalculationRate (when '../cac:PricingExchangeRate' is present with MathematicOperatorCode = 'divide' and OrderableUnitFactorRate is not present) +/- 1.00 (CreditNotedQuantity unitCode and Price.BaseQuantity unitCode are not equal)</sch:report>
+			<sch:report test="$unitCodeEqual     and ($notFree and $noFactorRate and not($noExchangeRate) and not($CRandMOC) and $Divide) and ((cbc:LineExtensionAmount &lt; ((( $calculatedTotalUnitCodeEqual ) div ../cac:PricingExchangeRate/cbc:CalculationRate) - '01.00')) or (cbc:LineExtensionAmount &gt; ((($calculatedTotalUnitCodeEqual) div ../cac:PricingExchangeRate/cbc:CalculationRate) + '01.00')))">[F-CRN215] CreditNote line '<sch:value-of select="cbc:ID"/>' with lineExtensionAmount (<sch:value-of select="cbc:LineExtensionAmount"/>) must equal ((Price.PriceAmount (<sch:value-of select="$priceAmount"/>) / Price.BaseQuantity (<sch:value-of select="$baseQuantity"/>) ) * CreditedQuantity (<sch:value-of select="$quantity"/>)) div CreditNote.PricingExchangeRate.CalculationRate (when '../cac:PricingExchangeRate' is present with MathematicOperatorCode = 'divide' and OrderableUnitFactorRate is not present) +/- 1.00 (CreditNotedQuantity unitCode and Price.BaseQuantity unitCode are equal)</sch:report>
+			<sch:report test="$unitCodeNeither   and ($notFree and $noFactorRate and not($noExchangeRate) and not($CRandMOC) and $Divide) and ((cbc:LineExtensionAmount &lt; ((( $calculatedTotalUnitCodeEqual ) div ../cac:PricingExchangeRate/cbc:CalculationRate) - '01.00')) or (cbc:LineExtensionAmount &gt; ((($calculatedTotalUnitCodeEqual) div ../cac:PricingExchangeRate/cbc:CalculationRate) + '01.00')))">[F-CRN199] CreditNote line '<sch:value-of select="cbc:ID"/>' with lineExtensionAmount (<sch:value-of select="cbc:LineExtensionAmount"/>) must equal Price.PriceAmount (<sch:value-of select="$priceAmount"/>) * CreditedQuantity (<sch:value-of select="$quantity"/>) div CreditNote.PricingExchangeRate.CalculationRate (when '../cac:PricingExchangeRate' is present with MathematicOperatorCode = 'divide' and OrderableUnitFactorRate is not present) +/- 1.00.</sch:report>
+
+			<!-- G -->
+			<sch:report test="$unitCodeDifferent and ($notFree and $noExchangeRate) and (($lineExtensionAmount &lt; ($calculatedTotalUnitCodeDifferent - 1.00)) or ($lineExtensionAmount &gt; ($calculatedTotalUnitCodeDifferent + 1.00)))">[F-CRN194] CreditNote line '<sch:value-of select="cbc:ID"/>' with lineExtensionAmount (<sch:value-of select="cbc:LineExtensionAmount"/>) must equal CreditedQuantity (<sch:value-of select="cbc:CreditedQuantity"/>) * Price.PriceAmount (<sch:value-of select="cac:Price/cbc:PriceAmount"/>) * Price.OrderableUnitFactorRate (<sch:value-of select="cac:Price/cbc:OrderableUnitFactorRate"/>) +/- 1.00 (CreditedQuantity unitCode and Price.BaseQuantity unitCode are not equal)</sch:report>
+			<sch:report test="$unitCodeEqual     and ($notFree and $noExchangeRate) and (($lineExtensionAmount &lt; ($calculatedTotalUnitCodeEqual - 1.00)) or ($lineExtensionAmount &gt; ($calculatedTotalUnitCodeEqual  + 1.00)))">[F-CRN210] CreditNote line '<sch:value-of select="cbc:ID"/>' with lineExtensionAmount (<sch:value-of select="$lineExtensionAmount"/>) must equal (Price.PriceAmount (<sch:value-of select="$priceAmount"/>) / Price.BaseQuantity (<sch:value-of select="$baseQuantity"/>) ) * CreditedQuantity (<sch:value-of select="$quantity"/>) +/- 1.00 (CreditedQuantity unitCode and Price.BaseQuantity unitCode are equal)</sch:report>
+			<sch:report test="$unitCodeNeither   and ($notFree and $noExchangeRate) and (($lineExtensionAmount &lt; ($calculatedTotalUnitCodeEqual - 1.00)) or ($lineExtensionAmount &gt; ($calculatedTotalUnitCodeEqual  + 1.00)))">[F-CRN216] CreditNote line '<sch:value-of select="cbc:ID"/>' with lineExtensionAmount (<sch:value-of select="$lineExtensionAmount"/>) must equal Price.PriceAmount (<sch:value-of select="$priceAmount"/>) * CreditedQuantity (<sch:value-of select="$quantity"/>) +/- 1.00.</sch:report>
+
+			<!-- K -->
+			<sch:report test="$unitCodeDifferent and ($notFree and not($noFactorRate) and not($noExchangeRate) and not($CRandMOC) and $Multiply) and ((cbc:LineExtensionAmount &lt; ($calculatedTotalUnitCodeDifferent * ../cac:PricingExchangeRate/cbc:CalculationRate - '01.00')) or (cbc:LineExtensionAmount &gt; ($calculatedTotalUnitCodeDifferent * ../cac:PricingExchangeRate/cbc:CalculationRate + '01.00')))">[F-CRN200] CreditNote line '<sch:value-of select="cbc:ID"/>' with lineExtensionAmount (<sch:value-of select="cbc:LineExtensionAmount"/>) must equal CreditedQuantity (<sch:value-of select="cbc:CreditedQuantity"/>) * Price.PriceAmount (<sch:value-of select="cac:Price/cbc:PriceAmount"/>) * Price.OrderableUnitFactorRate (<sch:value-of select="cac:Price/cbc:OrderableUnitFactorRate"/>) * CreditNote.PricingExchangeRate.CalculationRate (when '../cac:PricingExchangeRate' is present with MathematicOperatorCode = 'multiply') +/- 1.00 (CreditNotedQuantity unitCode and Price.BaseQuantity unitCode are not equal)</sch:report>
+			<sch:report test="$unitCodeEqual     and ($notFree and not($noFactorRate) and not($noExchangeRate) and not($CRandMOC) and $Multiply) and ((cbc:LineExtensionAmount &lt; ($calculatedTotalUnitCodeEqual * ../cac:PricingExchangeRate/cbc:CalculationRate - '01.00')) or (cbc:LineExtensionAmount &gt; ($calculatedTotalUnitCodeEqual * ../cac:PricingExchangeRate/cbc:CalculationRate + '01.00')))">[F-CRN217] CreditNote line '<sch:value-of select="cbc:ID"/>' with lineExtensionAmount (<sch:value-of select="cbc:LineExtensionAmount"/>) must equal (Price.PriceAmount (<sch:value-of select="$priceAmount"/>) / Price.BaseQuantity (<sch:value-of select="$baseQuantity"/>) ) * CreditedQuantity (<sch:value-of select="$quantity"/>) * CreditNote.PricingExchangeRate.CalculationRate (when '../cac:PricingExchangeRate' is present with MathematicOperatorCode = 'multiply') +/- 1.00 (CreditNotedQuantity unitCode and Price.BaseQuantity unitCode are equal)</sch:report>
+			<sch:report test="$unitCodeNeither   and ($notFree and not($noFactorRate) and not($noExchangeRate) and not($CRandMOC) and $Multiply) and ((cbc:LineExtensionAmount &lt; ($calculatedTotalUnitCodeEqual * ../cac:PricingExchangeRate/cbc:CalculationRate - '01.00')) or (cbc:LineExtensionAmount &gt; ($calculatedTotalUnitCodeEqual * ../cac:PricingExchangeRate/cbc:CalculationRate + '01.00')))">[F-CRN218] CreditNote line '<sch:value-of select="cbc:ID"/>' with lineExtensionAmount (<sch:value-of select="cbc:LineExtensionAmount"/>) must equal Price.PriceAmount (<sch:value-of select="$priceAmount"/>) * CreditedQuantity * CreditNote.PricingExchangeRate.CalculationRate (when '../cac:PricingExchangeRate' is present with MathematicOperatorCode = 'multiply') +/- 1.00.</sch:report>
+
+			<!-- L -->
+			<sch:report test="$unitCodeDifferent and ($notFree and not($noFactorRate) and not($noExchangeRate) and not($CRandMOC) and $Divide) and (((cbc:LineExtensionAmount &lt; ($calculatedTotalUnitCodeDifferent div ../cac:PricingExchangeRate/cbc:CalculationRate) - '01.00')) or (cbc:LineExtensionAmount &gt; (($calculatedTotalUnitCodeDifferent div ../cac:PricingExchangeRate/cbc:CalculationRate) + '01.00')))">[F-CRN201] CreditNote line '<sch:value-of select="cbc:ID"/>' with lineExtensionAmount (<sch:value-of select="cbc:LineExtensionAmount"/>) must equal (CreditedQuantity (<sch:value-of select="cbc:CreditedQuantity"/>) * Price.PriceAmount (<sch:value-of select="cac:Price/cbc:PriceAmount"/>) * Price.OrderableUnitFactorRate (<sch:value-of select="cac:Price/cbc:OrderableUnitFactorRate"/>)) div CreditNote.PricingExchangeRate.CalculationRate (when '../cac:PricingExchangeRate' is present with MathematicOperatorCode = 'divide') +/- 1.00 (CreditNotedQuantity unitCode and Price.BaseQuantity unitCode are not equal)</sch:report>
+			<sch:report test="$unitCodeEqual     and ($notFree and not($noFactorRate) and not($noExchangeRate) and not($CRandMOC) and $Divide) and (((cbc:LineExtensionAmount &lt; ($calculatedTotalUnitCodeEqual div ../cac:PricingExchangeRate/cbc:CalculationRate) - '01.00')) or (cbc:LineExtensionAmount &gt; (($calculatedTotalUnitCodeEqual div ../cac:PricingExchangeRate/cbc:CalculationRate) + '01.00')))">[F-CRN219] CreditNote line '<sch:value-of select="cbc:ID"/>' with lineExtensionAmount (<sch:value-of select="cbc:LineExtensionAmount"/>) must equal ((Price.PriceAmount (<sch:value-of select="$priceAmount"/>) / Price.BaseQuantity (<sch:value-of select="$baseQuantity"/>) ) * CreditedQuantity (<sch:value-of select="$quantity"/>)) div CreditNote.PricingExchangeRate.CalculationRate (when '../cac:PricingExchangeRate' is present with MathematicOperatorCode = 'divide') +/- 1.00 (CreditNotedQuantity unitCode and Price.BaseQuantity unitCode are equal)</sch:report>
+			<sch:report test="$unitCodeNeither   and ($notFree and not($noFactorRate) and not($noExchangeRate) and not($CRandMOC) and $Divide) and (((cbc:LineExtensionAmount &lt; ($calculatedTotalUnitCodeEqual div ../cac:PricingExchangeRate/cbc:CalculationRate) - '01.00')) or (cbc:LineExtensionAmount &gt; (($calculatedTotalUnitCodeEqual div ../cac:PricingExchangeRate/cbc:CalculationRate) + '01.00')))">[F-CRN220] CreditNote line '<sch:value-of select="cbc:ID"/>' with lineExtensionAmount (<sch:value-of select="cbc:LineExtensionAmount"/>) must equal Price.PriceAmount (<sch:value-of select="$priceAmount"/>) * CreditedQuantity (<sch:value-of select="$quantity"/>) div CreditNote.PricingExchangeRate.CalculationRate (when '../cac:PricingExchangeRate' is present with MathematicOperatorCode = 'divide') +/- 1.00.</sch:report>
+			<!-- NH-50 -->
+
+
+			<!-- [Release 20111201] Check removed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=647 -->
+			<!--<sch:report test="$Nes and $O">[F-CRN197] For this profileID, OrderableUnitFactorRate can only have the value of 1</sch:report>-->
+      <!-- [Release 20160915] Check added according to issue: https://bugs.softwareborsen.dk/show_bug.cgi?id=1496 -->
+            <sch:assert test="normalize-space(cbc:LineExtensionAmount) != ''">[F-CRN207] For each CreditNoteLine, LineExtensionAmount must be present and contain a value.</sch:assert>
+
+            <!-- [20190315] https://bugs.softwareborsen.dk/show_bug.cgi?id=2120 -->
+           	</sch:rule>
+		<!-- Validate CreditedQuantity -->
+		<sch:rule context="doc:CreditNote/cac:CreditNoteLine/cbc:CreditedQuantity">
+			<sch:extends rule="unitCodeCheck"/>
+			<!-- [Release 20120615] Check changed according to issue: https://bugs.softwareborsen.dk/show_bug.cgi?id=723 -->
+			<!-- 270122: NH-51 - no restriction on decimals -->
+			<!-- sch:report test="string-length(substring-after(., '.')) &gt; 6">[F-CRN087] Invalid CreditedQuantity. No more than 6 decimals</sch:report -->
+			<sch:assert test=". != 0">[F-CRN088] Invalid CreditedQuantity. Must not be zero</sch:assert>
+		</sch:rule>
+		<!-- Validate LineExtensionAmount -->
+		<sch:rule context="doc:CreditNote/cac:CreditNoteLine/cbc:LineExtensionAmount">
+			<sch:report test="string-length(substring-after(., '.')) &lt; 2">[F-CRN089] Invalid LineExtensionAmount. Must have at least 2 decimals</sch:report>
+			<sch:report test="string-length(substring-after(., '.')) &gt; 4">[F-CRN090] Invalid LineExtensionAmount. No more than 4 decimals</sch:report>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  DiscrepancyResponse - - - - - - - - - - -  -->
+		<sch:rule context="doc:CreditNote/cac:CreditNoteLine/cac:DiscrepancyResponse">
+			<!-- Check for excluded elements -->
+			<!-- Check for mandatory elements -->
+			<!-- Validate -->
+			<!-- [Release 20111201] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=623 -->
+			<sch:assert test="normalize-space(cbc:ReferenceID) != ''">[F-CRN168] Invalid ReferenceID. Must contain a value</sch:assert>
+			<sch:report test="cbc:ResponseCode and cbc:Description">[F-CRN169] Use either ResponseCode or Description</sch:report>
+		</sch:rule>
+		<!-- Validate ResponseCode -->
+		<sch:rule context="doc:CreditNote/cac:CreditNoteLine/cac:DiscrepancyResponse/cbc:ResponseCode">
+			<sch:assert test="./@listID = 'urn:oioubl:codelist:lineresponsecode-1.0'">[F-CRN091] Invalid listID. Must be 'urn:oioubl:codelist:lineresponsecode-1.0'</sch:assert>
+			<sch:assert test="./@listAgencyID = '320'">[F-CRN167] Invalid listAgencyID. Must be '320'</sch:assert>
+		</sch:rule>
+		<!-- Validate Description -->
+		<sch:rule context="doc:CreditNote/cac:CreditNoteLine/cac:DiscrepancyResponse/cbc:Description">
+			<sch:extends rule="DescriptionLanguageCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  DespatchLineReference - - - - - - - - - - -  -->
+		<sch:rule context="doc:CreditNote/cac:CreditNoteLine/cac:DespatchLineReference">
+			<!-- Check for excluded elements -->
+			<!-- Check for mandatory elements -->
+			<!-- Validate -->
+			<!-- [Release 20111201] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=623 -->
+			<sch:assert test="normalize-space(cbc:LineID) != ''">[F-CRN170] Invalid LineID. Must contain a value</sch:assert>
+		</sch:rule>
+		<!-- Validate DespatchLineReference/DocumentReference -->
+		<sch:rule context="doc:CreditNote/cac:CreditNoteLine/cac:DespatchLineReference/cac:DocumentReference">
+			<sch:extends rule="KnownDocumentReferenceCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  ReceiptLineReference - - - - - - - - - - -  -->
+		<sch:rule context="doc:CreditNote/cac:CreditNoteLine/cac:ReceiptLineReference">
+			<!-- Check for excluded elements -->
+			<!-- Check for mandatory elements -->
+			<!-- Validate -->
+			<!-- [Release 20111201] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=623 -->
+			<sch:assert test="normalize-space(cbc:LineID) != ''">[F-CRN171] Invalid LineID. Must contain a value</sch:assert>
+		</sch:rule>
+		<!-- Validate ReceiptLineReference/DocumentReference -->
+		<sch:rule context="doc:CreditNote/cac:CreditNoteLine/cac:ReceiptLineReference/cac:DocumentReference">
+			<sch:extends rule="KnownDocumentReferenceCheck"/>
+		</sch:rule>
+
+
+		<!-- - - - - - - - - - - -  BillingReference - - - - - - - - - - -  -->
+		<sch:rule context="doc:CreditNote/cac:CreditNoteLine/cac:BillingReference">
+			<!-- Check for excluded elements -->
+			<sch:assert test="count(cac:DebitNoteDocumentReference) = 0">[F-CRN172] DebitNoteDocumentReference class must be excluded</sch:assert>
+			<sch:assert test="count(cac:AdditionalDocumentReference) = 0">[F-CRN173] AdditionalDocumentReference class must be excluded</sch:assert>
+			<!-- Check for mandatory elements -->
+			<!-- Validate -->
+			<sch:report test="count(cac:BillingReferenceLine) &gt; 1">[F-CRN174] No more than one BillingReferenceLine class may be present</sch:report>
+		</sch:rule>
+		<!-- Validate BillingReference/InvoiceDocumentReference -->
+		<sch:rule context="doc:CreditNote/cac:CreditNoteLine/cac:BillingReference/cac:InvoiceDocumentReference">
+			<sch:extends rule="KnownDocumentReferenceCheck"/>
+		</sch:rule>
+		<!-- Validate BillingReference/SelfBilledInvoiceDocumentReference -->
+		<sch:rule context="doc:CreditNote/cac:CreditNoteLine/cac:BillingReference/cac:SelfBilledInvoiceDocumentReference">
+			<sch:extends rule="KnownDocumentReferenceCheck"/>
+		</sch:rule>
+		<!-- Validate BillingReference/CreditNoteDocumentReference -->
+		<sch:rule context="doc:CreditNote/cac:CreditNoteLine/cac:BillingReference/cac:CreditNoteDocumentReference">
+			<sch:extends rule="KnownDocumentReferenceCheck"/>
+		</sch:rule>
+		<!-- Validate BillingReference/SelfBilledCreditNoteDocumentReference -->
+		<sch:rule context="doc:CreditNote/cac:CreditNoteLine/cac:BillingReference/cac:SelfBilledCreditNoteDocumentReference">
+			<sch:extends rule="KnownDocumentReferenceCheck"/>
+		</sch:rule>
+		<!-- Validate BillingReference/ReminderDocumentReference -->
+		<sch:rule context="doc:CreditNote/cac:CreditNoteLine/cac:BillingReference/cac:ReminderDocumentReference">
+			<sch:extends rule="KnownDocumentReferenceCheck"/>
+		</sch:rule>
+		<!-- Validate BillingReference/BillingReferenceLine -->
+		<sch:rule context="doc:CreditNote/cac:CreditNoteLine/cac:BillingReference/cac:BillingReferenceLine">
+			<sch:report test="count(cac:AllowanceCharge) &gt; 1">[F-CRN175] No more than one AllowanceCharge class may be present</sch:report>
+		</sch:rule>
+		<!-- Validate BillingReference/BillingReferenceLine/AllowanceCharge -->
+		<sch:rule context="doc:CreditNote/cac:CreditNoteLine/cac:BillingReference/cac:BillingReferenceLine/cac:AllowanceCharge">
+			<sch:extends rule="AllowanceChargeTopCheck"/>
+			<sch:extends rule="AccountingCostCheck"/>
+		</sch:rule>
+		<!-- Validate BillingReference/BillingReferenceLine/AllowanceCharge/SequenceNumeric -->
+		<sch:rule context="doc:CreditNote/cac:CreditNoteLine/cac:BillingReference/cac:BillingReferenceLine/cac:AllowanceCharge/cbc:SequenceNumeric">
+			<sch:extends rule="PosNumberCheck"/>
+		</sch:rule>
+		<!-- Validate BillingReference/BillingReferenceLine/AllowanceCharge/Amount -->
+		<sch:rule context="doc:CreditNote/cac:CreditNoteLine/cac:BillingReference/cac:BillingReferenceLine/cac:AllowanceCharge/cbc:Amount">
+            <!-- [Release 20190315] Changing check according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=2010 -->
+            <!-- <sch:extends rule="PosZeroNumberCheck"/> -->
+            <!-- <sch:extends rule="PosZeroNumberOrConvertedCheck"/> -->
+            <sch:extends rule="NumberCheck"/>
+		</sch:rule>
+		<!-- Validate BillingReference/BillingReferenceLine/AllowanceCharge/BaseAmount -->
+		<sch:rule context="doc:CreditNote/cac:CreditNoteLine/cac:BillingReference/cac:BillingReferenceLine/cac:AllowanceCharge/cbc:BaseAmount">
+            <!-- [Release 20190315] Changing check according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=2010 -->
+            <!-- <sch:extends rule="PosZeroNumberCheck"/> -->
+            <!-- <sch:extends rule="PosZeroNumberOrConvertedCheck"/> -->
+            <sch:extends rule="NumberCheck"/>
+		</sch:rule>
+		<!-- Validate BillingReference/BillingReferenceLine/AllowanceCharge/TaxCategory -->
+		<sch:rule context="doc:CreditNote/cac:CreditNoteLine/cac:BillingReference/cac:BillingReferenceLine/cac:AllowanceCharge/cac:TaxCategory">
+			<sch:extends rule="TaxCategoryCheck"/>
+		</sch:rule>
+		<!-- Validate BillingReference/BillingReferenceLine/AllowanceCharge/TaxCategory/TaxScheme -->
+		<sch:rule context="doc:CreditNote/cac:CreditNoteLine/cac:BillingReference/cac:BillingReferenceLine/cac:AllowanceCharge/cac:TaxCategory/cac:TaxScheme">
+			<sch:extends rule="TaxSchemeCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  DocumentReference - - - - - - - - - - -  -->
+		<sch:rule context="doc:CreditNote/cac:CreditNoteLine/cac:DocumentReference">
+			<sch:extends rule="DocumentReferenceCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PricingReference - - - - - - - - - - -  -->
+		<sch:rule context="doc:CreditNote/cac:CreditNoteLine/cac:PricingReference">
+			<!-- Check for excluded elements -->
+			<!-- Check for mandatory elements -->
+			<!-- Validate -->
+			<!-- <sch:report test="'1' = '1'">[I-CRN999] Validation not yet implemented!</sch:report> -->
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  Delivery - - - - - - - - - - -  -->
+		<sch:rule context="doc:CreditNote/cac:CreditNoteLine/cac:Delivery">
+			<!-- Check for excluded elements -->
+			<sch:assert test="count(cbc:LatestDeliveryDate) = 0">[F-CRN098] LatestDeliveryDate element must be excluded</sch:assert>
+			<sch:assert test="count(cbc:LatestDeliveryTime) = 0">[F-CRN099] LatestDeliveryTime element must be excluded</sch:assert>
+			<sch:assert test="count(cac:DeliveryAddress) = 0">[F-CRN157] DeliveryAddress class must be excluded</sch:assert>
+			<sch:assert test="count(cac:PromisedDeliveryPeriod) = 0">[F-CRN100] PromisedDeliveryPeriod class must be excluded</sch:assert>
+			<sch:assert test="count(cac:EstimatedDeliveryPeriod) = 0">[F-CRN101] EstimatedDeliveryPeriod class must be excluded</sch:assert>
+			<!-- Check for mandatory elements -->
+			<!-- Validate -->
+			<!-- <sch:report test="cac:Despath">[I-CRN999] Validation not yet implemented!</sch:report> -->
+		</sch:rule>
+		<!-- Validate DeliveryLocation -->
+		<sch:rule context="doc:CreditNote/cac:CreditNoteLine/cac:Delivery/cac:DeliveryLocation">
+			<!-- Check for mandatory elements -->
+			<sch:report test="not(cbc:ID) and not(cac:Address)">[F-CRN158] Address is mandatory when ID is not specified</sch:report>
+			<!-- Validate -->
+			<!-- ID -->
+			<!-- Description -->
+			<!-- Conditions -->
+			<!-- CountrySubentity -->
+			<!-- CountrySubentityCode -->
+		</sch:rule>
+		<!-- Validate DeliveryLocation/ValidityPeriod -->
+		<sch:rule context="doc:CreditNote/cac:CreditNoteLine/cac:Delivery/cac:DeliveryLocation/cac:ValidityPeriod">
+			<sch:extends rule="PeriodCheck"/>
+		</sch:rule>
+		<!-- Validate DeliveryLocation/ValidityPeriod/Description -->
+		<sch:rule context="doc:CreditNote/cac:CreditNoteLine/cac:Delivery/cac:DeliveryLocation/cac:ValidityPeriod/cbc:Description">
+			<sch:extends rule="DescriptionLanguageCheck"/>
+		</sch:rule>
+		<!-- Validate DeliveryLocation/Address -->
+		<sch:rule context="doc:CreditNote/cac:CreditNoteLine/cac:Delivery/cac:DeliveryLocation/cac:Address">
+			<sch:extends rule="AddressCheck"/>
+		</sch:rule>
+		<!-- Validate RequestedDeliveryPeriod -->
+		<sch:rule context="doc:CreditNote/cac:CreditNoteLine/cac:Delivery/cac:RequestedDeliveryPeriod">
+			<sch:extends rule="PeriodCheck"/>
+		</sch:rule>
+		<!-- Validate RequestedDeliveryPeriod/Description -->
+		<sch:rule context="doc:CreditNote/cac:CreditNoteLine/cac:Delivery/cac:RequestedDeliveryPeriod/cbc:Description">
+			<sch:extends rule="DescriptionLanguageCheck"/>
+		</sch:rule>
+		<!-- Validate DeliveryParty -->
+		<sch:rule context="doc:CreditNote/cac:CreditNoteLine/cac:Delivery/cac:DeliveryParty">
+			<!-- Check for excluded elements -->
+			<sch:extends rule="PartyExcludedCheck"/>
+			<!-- Check for mandatory elements -->
+			<!-- Validate -->
+			<sch:extends rule="PartyNameCheck"/>
+			<sch:extends rule="EndpointIDCheck"/>
+			<sch:report test="count(cac:PartyLegalEntity) &gt; 1">[F-CRN176] No more than one PartyLegalEntity class may be present</sch:report>
+		</sch:rule>
+		<!-- Validate DeliveryParty/PartyIdentification -->
+		<sch:rule context="doc:CreditNote/cac:CreditNoteLine/cac:Delivery/cac:DeliveryParty/cac:PartyIdentification">
+			<sch:extends rule="PartyIdentificationCheck"/>
+		</sch:rule>
+		<!-- Validate DeliveryParty/PartyName -->
+		<sch:rule context="doc:CreditNote/cac:CreditNoteLine/cac:Delivery/cac:DeliveryParty/cac:PartyName">
+			<sch:extends rule="PartyNameLanguageCheck"/>
+		</sch:rule>
+		<!-- Validate DeliveryParty/PostalAddress -->
+		<sch:rule context="doc:CreditNote/cac:CreditNoteLine/cac:Delivery/cac:DeliveryParty/cac:PostalAddress">
+			<sch:extends rule="AddressCheck"/>
+		</sch:rule>
+		<!-- Validate DeliveryParty/PhysicalLocation -->
+		<sch:rule context="doc:CreditNote/cac:CreditNoteLine/cac:Delivery/cac:DeliveryParty/cac:PhysicalLocation">
+			<sch:extends rule="AddressIDCheck"/>
+		</sch:rule>
+		<!-- Validate DeliveryParty/PhysicalLocation/ValidityPeriod -->
+		<sch:rule context="doc:CreditNote/cac:CreditNoteLine/cac:Delivery/cac:DeliveryParty/cac:PhysicalLocation/cac:ValidityPeriod">
+			<sch:extends rule="PeriodCheck"/>
+		</sch:rule>
+		<!-- Validate DeliveryParty/PhysicalLocation/ValidityPeriod/Description -->
+		<sch:rule context="doc:CreditNote/cac:CreditNoteLine/cac:Delivery/cac:DeliveryParty/cac:PhysicalLocation/cac:ValidityPeriod/cbc:Description">
+			<sch:extends rule="DescriptionLanguageCheck"/>
+		</sch:rule>
+		<!-- Validate DeliveryParty/PhysicalLocation/Address -->
+		<sch:rule context="doc:CreditNote/cac:CreditNoteLine/cac:Delivery/cac:DeliveryParty/cac:PhysicalLocation/cac:Address">
+			<sch:extends rule="AddressCheck"/>
+		</sch:rule>
+		<!-- Validate DeliveryParty/PartyTaxScheme -->
+		<sch:rule context="doc:CreditNote/cac:CreditNoteLine/cac:Delivery/cac:DeliveryParty/cac:PartyTaxScheme">
+			<sch:extends rule="PartyTaxSchemeCheck"/>
+		</sch:rule>
+		<!-- Validate DeliveryParty/PartyTaxScheme/TaxScheme -->
+		<sch:rule context="doc:CreditNote/cac:CreditNoteLine/cac:Delivery/cac:DeliveryParty/cac:PartyTaxScheme/cac:TaxScheme">
+			<sch:extends rule="TaxSchemeCheck"/>
+		</sch:rule>
+		<!-- Validate DeliveryParty/PartyLegalEntity -->
+		<sch:rule context="doc:CreditNote/cac:CreditNoteLine/cac:Delivery/cac:DeliveryParty/cac:PartyLegalEntity">
+			<sch:extends rule="PartyLegalEntityCheck"/>
+		</sch:rule>
+		<!-- Validate DeliveryParty/Contact -->
+		<sch:rule context="doc:CreditNote/cac:CreditNoteLine/cac:Delivery/cac:DeliveryParty/cac:Contact">
+			<sch:extends rule="ContactCheck"/>
+		</sch:rule>
+		<!-- Validate DeliveryParty/Person -->
+		<sch:rule context="doc:CreditNote/cac:CreditNoteLine/cac:Delivery/cac:DeliveryParty/cac:Person">
+			<sch:extends rule="Person/FirstNameCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  TaxTotal - - - - - - - - - - -  -->
+		<sch:rule context="doc:CreditNote/cac:CreditNoteLine/cac:TaxTotal">
+			<sch:extends rule="TaxTotalCheck"/>
+		</sch:rule>
+		<!-- Validate TaxTotal/TaxSubtotal -->
+		<sch:rule context="doc:CreditNote/cac:CreditNoteLine/cac:TaxTotal/cac:TaxSubtotal">
+			<sch:extends rule="TaxSubtotalCheck"/>
+      <!-- [Release 20150915] Added check according to issue: https://bugs.softwareborsen.dk/show_bug.cgi?id=1361 -->
+      <sch:extends rule="TaxSubtotalCalculationLine"/>
+		</sch:rule>
+		<!-- Validate TaxTotal/TaxSubtotal/TaxCategory -->
+		<sch:rule context="doc:CreditNote/cac:CreditNoteLine/cac:TaxTotal/cac:TaxSubtotal/cac:TaxCategory">
+			<sch:extends rule="TaxCategoryCheck"/>
+		</sch:rule>
+		<!-- Validate TaxTotal/TaxSubtotal/TaxCategory/TaxScheme -->
+		<sch:rule context="doc:CreditNote/cac:CreditNoteLine/cac:TaxTotal/cac:TaxSubtotal/cac:TaxCategory/cac:TaxScheme">
+			<sch:extends rule="TaxSchemeCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  Item - - - - - - - - - - -  -->
+		<sch:rule context="doc:CreditNote/cac:CreditNoteLine/cac:Item">
+			<!-- Check for excluded elements -->
+			<sch:assert test="count(cac:OriginCountry) = 0">[F-CRN109] OriginCountry class must be excluded</sch:assert>
+			<!-- Check for mandatory elements -->
+			<!-- [Release 20111201] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=623 -->
+			<sch:assert test="normalize-space(cbc:Name) != ''">[F-CRN110] Invalid Name for InvoiceLine. Must contain a value</sch:assert> <!-- 081021: NH-196 Test rettet -->
+			<!-- Validate -->
+      <!-- [Release 20150915] Check removed according to issue: https://bugs.softwareborsen.dk/show_bug.cgi?id=1507 -->
+			<!-- sch:report test="string-length(cbc:Name) &gt; 40">[W-CRN153] Invalid Name. Should not exceed 40 characters</sch:report -->
+			<sch:report test="count(cbc:Keyword) &gt; 1">[F-CRN177] No more than one Keyword element may be present</sch:report>
+			<sch:report test="count(cbc:BrandName) &gt; 1">[F-CRN178] No more than one BrandName element may be present</sch:report>
+			<sch:report test="count(cbc:ModelName) &gt; 1">[F-CRN179] No more than one ModelName element may be present</sch:report>
+			<sch:report test="count(cac:ManufacturersItemIdentification) &gt; 1">[F-CRN180] No more than one ManufacturersItemIdentification class may be present</sch:report>
+			<sch:report test="count(cac:AdditionalItemIdentification) &gt; 1">[F-CRN181] No more than one AdditionalItemIdentification class may be present</sch:report>
+			<sch:report test="count(cac:ItemSpecificationDocumentReference) &gt; 1">[F-CRN182] No more than one ItemSpecificationDocumentReference class may be present</sch:report>
+		</sch:rule>
+		<!-- Validate Description -->
+		<sch:rule context="doc:CreditNote/cac:CreditNoteLine/cac:Item/cbc:Description">
+			<sch:extends rule="DescriptionLanguageCheck"/>
+		</sch:rule>
+		<!-- Validate PackQuantity -->
+		<!-- Validate PackSizeNumeric -->
+		<!-- Validate CatalogueIndicator (excluded) -->
+		<!-- Validate Name (OK) -->
+		<!-- Validate HazardousRiskIndicator -->
+		<!-- Validate AdditionalInformation -->
+		<!-- Validate Keyword (OK) -->
+		<!-- Validate BrandName (OK) -->
+		<!-- Validate ModelName (OK) -->
+
+		<!-- - - - - - - - - - - -  Item/BuyersItemIdentification - - - - - - - - - - -  -->
+		<sch:rule context="doc:CreditNote/cac:CreditNoteLine/cac:Item/cac:BuyersItemIdentification">
+			<sch:extends rule="DefaultItemIdentificationCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  Item/SellersItemIdentification - - - - - - - - - - -  -->
+		<sch:rule context="doc:CreditNote/cac:CreditNoteLine/cac:Item/cac:SellersItemIdentification">
+			<!-- Validate -->
+			<!-- [Release 20111201] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=623 -->
+      <!-- [Release 20160915] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=1586 -->
+			<sch:assert test="normalize-space(cbc:ID) != ''">[F-CRN115] Invalid SellersItemIdentification/ID. Must contain a value.</sch:assert>
+			<!-- <sch:report test="cac:IssuerParty">[I-CRN999] Validation not yet implemented!</sch:report> -->
+		</sch:rule>
+		<!-- Validate Item/SellersItemIdentification/PhysicalAttribute -->
+		<sch:rule context="doc:CreditNote/cac:CreditNoteLine/cac:Item/cac:SellersItemIdentification/cac:PhysicalAttribute">
+			<!-- Check for excluded elements -->
+			<!-- Check for mandatory elements -->
+			<!-- [Release 20111201] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=623 -->
+			<sch:assert test="normalize-space(cbc:Description) != ''">[F-CRN119] Invalid Description. Must contain a value</sch:assert>
+			<!-- Validate -->
+			<!-- [Release 20111201] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=623 -->
+			<sch:assert test="normalize-space(cbc:AttributeID) != ''">[F-CRN118] Invalid AttributeID. Must contain a value</sch:assert>
+		</sch:rule>
+		<!-- Validate Item/SellersItemIdentification/PhysicalAttribute/Description -->
+		<sch:rule context="doc:CreditNote/cac:CreditNoteLine/cac:Item/cac:SellersItemIdentification/cac:PhysicalAttribute/cbc:Description">
+			<sch:extends rule="DescriptionLanguageCheck"/>
+		</sch:rule>
+		<!-- Validate Item/SellersItemIdentification/MeasurementDimension -->
+		<sch:rule context="doc:CreditNote/cac:CreditNoteLine/cac:Item/cac:SellersItemIdentification/cac:MeasurementDimension">
+			<!-- Check for excluded elements -->
+			<!-- Check for mandatory elements -->
+			<!-- Validate -->
+			<!-- [Release 20111201] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=623 -->
+			<sch:assert test="normalize-space(cbc:AttributeID) != ''">[F-CRN189] Invalid AttributeID. Must contain a value</sch:assert>
+		</sch:rule>
+		<!-- Validate Item/SellersItemIdentification/MeasurementDimension/Description -->
+		<sch:rule context="doc:CreditNote/cac:CreditNoteLine/cac:Item/cac:SellersItemIdentification/cac:MeasurementDimension/cbc:Description">
+			<sch:extends rule="DescriptionLanguageCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  Item/ManufacturersItemIdentification - - - - - - - - - - -  -->
+		<sch:rule context="doc:CreditNote/cac:CreditNoteLine/cac:Item/cac:ManufacturersItemIdentification">
+			<sch:extends rule="DefaultItemIdentificationCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  Item/StandardItemIdentification - - - - - - - - - - -  -->
+		<sch:rule context="doc:CreditNote/cac:CreditNoteLine/cac:Item/cac:StandardItemIdentification">
+			<sch:extends rule="DefaultItemIdentificationCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  Item/CatalogueItemIdentification - - - - - - - - - - -  -->
+		<sch:rule context="doc:CreditNote/cac:CreditNoteLine/cac:Item/cac:CatalogueItemIdentification">
+			<sch:extends rule="DefaultItemIdentificationCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  Item/AdditionalItemIdentification - - - - - - - - - - -  -->
+		<sch:rule context="doc:CreditNote/cac:CreditNoteLine/cac:Item/cac:AdditionalItemIdentification">
+			<sch:extends rule="DefaultItemIdentificationCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  Item/CatalogueDocumentReference - - - - - - - - - - -  -->
+		<sch:rule context="doc:CreditNote/cac:CreditNoteLine/cac:Item/cac:CatalogueDocumentReference">
+			<sch:extends rule="KnownDocumentReferenceCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  Item/ItemSpecificationDocumentReference - - - - - - - - - - -  -->
+		<sch:rule context="doc:CreditNote/cac:CreditNoteLine/cac:Item/cac:ItemSpecificationDocumentReference">
+			<sch:extends rule="DocumentReferenceCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  Item/OriginCountry (excluded)- - - - - - - - - - -  -->
+
+		<!-- - - - - - - - - - - -  Item/CommodityClassification - - - - - - - - - - -  -->
+		<sch:rule context="doc:CreditNote/cac:CreditNoteLine/cac:Item/cac:CommodityClassification">
+			<!-- Check for excluded elements -->
+			<!-- Check for mandatory elements -->
+			<!-- Validate -->
+			<sch:report test="cbc:ItemClassificationCode and not(cbc:ItemClassificationCode/@listID='UNSPSC')">[W-CRN132] Use a Valid UNSPSC 19.0501 code</sch:report>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  Item/TransactionConditions - - - - - - - - - - -  -->
+		<sch:rule context="doc:CreditNote/cac:CreditNoteLine/cac:Item/cac:TransactionConditions">
+			<!-- Check for excluded elements -->
+			<!-- Check for mandatory elements -->
+			<!-- Validate -->
+		</sch:rule>
+		<!-- Validate Item/TransactionConditions/Description -->
+		<sch:rule context="doc:CreditNote/cac:CreditNoteLine/cac:Item/cac:TransactionConditions/cbc:Description">
+			<sch:extends rule="DescriptionLanguageCheck"/>
+		</sch:rule>
+		<!-- Validate Item/TransactionConditions/DocumentReference -->
+		<sch:rule context="doc:CreditNote/cac:CreditNoteLine/cac:Item/cac:TransactionConditions/cac:DocumentReference">
+			<sch:extends rule="DocumentReferenceCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  Item/HazardousItem - - - - - - - - - - -  -->
+		<sch:rule context="doc:CreditNote/cac:CreditNoteLine/cac:Item/cac:HazardousItem">
+			<!-- Check for excluded elements -->
+			<!-- Check for mandatory elements -->
+			<!-- Validate -->
+			<!-- <sch:report test="'1' = '1'">[I-CRN999] Validation not yet implemented!</sch:report> -->
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  Item/ClassifiedTaxCategory - - - - - - - - - - -  -->
+		<sch:rule context="doc:CreditNote/cac:CreditNoteLine/cac:Item/cac:ClassifiedTaxCategory">
+			<sch:extends rule="TaxCategoryCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  Item/ClassifiedTaxCategory/TaxScheme - - - - - - - - - - -  -->
+		<sch:rule context="doc:CreditNote/cac:CreditNoteLine/cac:Item/cac:ClassifiedTaxCategory/cac:TaxScheme">
+			<sch:extends rule="TaxSchemeCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  Item/AdditionalItemProperty - - - - - - - - - - -  -->
+		<sch:rule context="doc:CreditNote/cac:CreditNoteLine/cac:Item/cac:AdditionalItemProperty">
+			<!-- Check for excluded elements -->
+			<!-- Check for mandatory elements -->
+			<!-- Validate -->
+			<!-- [Release 20111201] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=623 -->
+			<sch:assert test="normalize-space(cbc:Name) != ''">[F-CRN133] Invalid Name. Must contain a value</sch:assert>
+			<!-- [Release 20111201] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=623 -->
+			<sch:assert test="normalize-space(cbc:Value) != ''">[F-CRN151] Invalid Value. Must contain a value</sch:assert>
+		</sch:rule>
+		<!-- - - - - - - - - - - -  Item/AdditionalItemProperty/UsabilityPeriod - - - - - - - - - - -  -->
+		<sch:rule context="doc:CreditNote/cac:CreditNoteLine/cac:Item/cac:AdditionalItemProperty/cac:UsabilityPeriod">
+			<sch:extends rule="PeriodCheck"/>
+		</sch:rule>
+		<!-- - - - - - - - - - - -  Item/AdditionalItemProperty/UsabilityPeriod/Description - - - - - - - - - - -  -->
+		<sch:rule context="doc:CreditNote/cac:CreditNoteLine/cac:Item/cac:AdditionalItemProperty/cac:UsabilityPeriod/cbc:Description">
+			<sch:extends rule="DescriptionLanguageCheck"/>
+		</sch:rule>
+		<!-- - - - - - - - - - - -  Item/AdditionalItemProperty/ItemPropertyGroup - - - - - - - - - - -  -->
+		<sch:rule context="doc:CreditNote/cac:CreditNoteLine/cac:Item/cac:AdditionalItemProperty/cac:ItemPropertyGroup">
+			<!-- Check for excluded elements -->
+			<!-- Check for mandatory elements -->
+			<!-- Validate -->
+			<!-- [Release 20111201] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=623 -->
+			<sch:assert test="normalize-space(cbc:ID) != ''">[F-CRN152] Invalid ID. Must contain a value</sch:assert>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  Item/ManufacturerParty - - - - - - - - - - -  -->
+		<sch:rule context="doc:CreditNote/cac:CreditNoteLine/cac:Item/cac:ManufacturerParty">
+			<!-- Check for excluded elements -->
+			<!-- Check for mandatory elements -->
+			<!-- Validate -->
+			<!-- <sch:report test="'1' = '1'">[I-CRN999] Validation not yet implemented!</sch:report> -->
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  Item/InformationContentProviderParty - - - - - - - - - - -  -->
+		<sch:rule context="doc:CreditNote/cac:CreditNoteLine/cac:Item/cac:InformationContentProviderParty">
+			<!-- Check for excluded elements -->
+			<!-- Check for mandatory elements -->
+			<!-- Validate -->
+			<!-- <sch:report test="'1' = '1'">[I-CRN999] Validation not yet implemented!</sch:report> -->
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  Item/OriginAddress - - - - - - - - - - -  -->
+		<sch:rule context="doc:CreditNote/cac:CreditNoteLine/cac:Item/cac:OriginAddress">
+			<sch:extends rule="AddressCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  Item/ItemInstance - - - - - - - - - - -  -->
+		<sch:rule context="doc:CreditNote/cac:CreditNoteLine/cac:Item/cac:ItemInstance">
+			<!-- Check for excluded elements -->
+			<!-- Check for mandatory elements -->
+			<!-- Validate -->
+		</sch:rule>
+		<!-- Validate Item/ItemInstance/AdditionalItemProperty -->
+		<sch:rule context="doc:CreditNote/cac:CreditNoteLine/cac:Item/cac:ItemInstance/cac:AdditionalItemProperty">
+			<!-- Check for excluded elements -->
+			<!-- Check for mandatory elements -->
+			<!-- Validate -->
+			<!-- [Release 20111201] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=623 -->
+			<sch:assert test="normalize-space(cbc:Name) != ''">[F-CRN190] Invalid Name. Must contain a value</sch:assert>
+			<!-- [Release 20111201] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=623 -->
+			<sch:assert test="normalize-space(cbc:Value) != ''">[F-CRN191] Invalid Value. Must contain a value</sch:assert>
+		</sch:rule>
+		<!-- Validate Item/ItemInstance/AdditionalItemProperty/UsabilityPeriod -->
+		<sch:rule context="doc:CreditNote/cac:CreditNoteLine/cac:Item/cac:ItemInstance/cac:AdditionalItemProperty/cac:UsabilityPeriod">
+			<sch:extends rule="PeriodCheck"/>
+		</sch:rule>
+		<!-- Validate Item/ItemInstance/AdditionalItemProperty/UsabilityPeriod/Description -->
+		<sch:rule context="doc:CreditNote/cac:CreditNoteLine/cac:Item/cac:ItemInstance/cac:AdditionalItemProperty/cac:UsabilityPeriod/cbc:Description">
+			<sch:extends rule="DescriptionLanguageCheck"/>
+		</sch:rule>
+		<!-- Validate Item/ItemInstance/AdditionalItemProperty/ItemPropertyGroup -->
+		<sch:rule context="doc:CreditNote/cac:CreditNoteLine/cac:Item/cac:ItemInstance/cac:AdditionalItemProperty/cac:ItemPropertyGroup">
+			<!-- Check for excluded elements -->
+			<!-- Check for mandatory elements -->
+			<!-- Validate -->
+			<!-- [Release 20111201] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=623 -->
+			<sch:assert test="normalize-space(cbc:ID) != ''">[F-CRN192] Invalid ID. Must contain a value</sch:assert>
+		</sch:rule>
+		<!-- Validate Item/ItemInstance/LotIdentification -->
+		<sch:rule context="doc:CreditNote/cac:CreditNoteLine/cac:Item/cac:ItemInstance/cac:LotIdentification">
+			<!-- Check for excluded elements -->
+			<!-- Check for mandatory elements -->
+			<!-- Validate -->
+		</sch:rule>
+		<!-- Validate Item/ItemInstance/LotIdentification/AdditionalItemProperty -->
+		<sch:rule context="doc:CreditNote/cac:CreditNoteLine/cac:Item/cac:ItemInstance/cac:LotIdentification/cac:AdditionalItemProperty">
+		<!-- [Release 20111201] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=623 -->
+			<sch:assert test="normalize-space(cbc:Name) != ''">[F-CRN185] Invalid Name. Must contain a value</sch:assert>
+			<!-- [Release 20111201] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=623 -->
+			<sch:assert test="normalize-space(cbc:Value) != ''">[F-CRN186] Invalid Value. Must contain a value</sch:assert>
+		</sch:rule>
+		<!-- Validate Item/ItemInstance/LotIdentification/AdditionalItemProperty/UsabilityPeriod -->
+		<sch:rule context="doc:CreditNote/cac:CreditNoteLine/cac:Item/cac:ItemInstance/cac:LotIdentification/cac:AdditionalItemProperty/cac:UsabilityPeriod">
+			<sch:extends rule="PeriodCheck"/>
+		</sch:rule>
+		<!-- Validate Item/ItemInstance/LotIdentification/AdditionalItemProperty/UsabilityPeriod/Description -->
+		<sch:rule context="doc:CreditNote/cac:CreditNoteLine/cac:Item/cac:ItemInstance/cac:LotIdentification/cac:AdditionalItemProperty/cac:UsabilityPeriod/cbc:Description">
+			<sch:extends rule="DescriptionLanguageCheck"/>
+		</sch:rule>
+		<!-- Validate Item/ItemInstance/LotIdentification/AdditionalItemProperty/ItemPropertyGroup -->
+		<sch:rule context="doc:CreditNote/cac:CreditNoteLine/cac:Item/cac:ItemInstance/cac:LotIdentification/cac:AdditionalItemProperty/cac:ItemPropertyGroup">
+			<!-- Validate -->
+			<!-- [Release 20111201] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=623 -->
+			<sch:assert test="normalize-space(cbc:ID) != ''">[F-CRN187] Invalid ID. Must contain a value</sch:assert>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  Certificate - - - - - - - - - - -  -->
+		<!-- 151221 - NH-1205  -->
+
+		<sch:rule context="doc:CreditNote/cac:CreditNoteLine/cac:Item/cac:Certificate/cbc:ID">
+			<sch:assert test="normalize-space(.) != ''">[F-CRN203] cbc:ID must contain a value.</sch:assert>
+			<sch:assert test="contains($Environment_Value, concat(',',.,','))">[F-CRN211] Invalid cac:CertificateTypeCode: '<sch:value-of select="."/>' Must be a value from the codelist: PackagingMarkedLabelAccreditationCode from GS1 Global Data Dictionary.</sch:assert>
+		</sch:rule>
+
+		<sch:rule context="doc:CreditNote/cac:CreditNoteLine/cac:Item/cac:Certificate/cbc:CertificateTypeCode">
+			<sch:assert test="normalize-space(.) != ''">[F-CRN204] cac:CertificateTypeCode must contain a value.</sch:assert>
+		</sch:rule>
+
+		<sch:rule context="doc:CreditNote/cac:CreditNoteLine/cac:Item/cac:Certificate/cbc:CertificateType">
+			<sch:assert test="normalize-space(.) != ''">[F-CRN205] cbc:CertificateType must contain a value.</sch:assert>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  Price - - - - - - - - - - -  -->
+		<sch:rule context="doc:CreditNote/cac:CreditNoteLine/cac:Price">
+			<!-- Check for excluded elements -->
+			<!-- Check for mandatory elements -->
+			<!-- Validate -->
+		</sch:rule>
+		<!-- Validate PriceAmount -->
+		<!-- Validate BaseQuantity -->
+		<sch:rule context="doc:CreditNote/cac:CreditNoteLine/cac:Price/cbc:BaseQuantity">
+			<sch:extends rule="unitCodeCheck"/>
+			<sch:extends rule="PosZeroNumberCheck"/>
+		</sch:rule>
+		<!-- Validate PriceChangeReason -->
+		<sch:rule context="doc:CreditNote/cac:CreditNoteLine/cac:Price/cbc:PriceChangeReason">
+			<sch:report test="count(../cbc:PriceChangeReason) &gt; 1 and not(./@languageID)">[W-CRN139] The attribute languageID should be used when more than one PriceChangeReason element is present</sch:report>
+			<sch:report test="local-name(following-sibling::*) = local-name(current()) and following-sibling::*/@languageID = self::*/@languageID">[W-CRN140] Multilanguage error. Replicated PriceChangeReason elements with same languageID attribute value</sch:report>
+		</sch:rule>
+		<!-- Validate PriceTypeCode -->
+		<sch:rule context="doc:CreditNote/cac:CreditNoteLine/cac:Price/cbc:PriceTypeCode">
+			<sch:assert test="./@listID = 'UN/ECE 5387'">[F-CRN141] Invalid listID. Must be 'UN/ECE 5387'</sch:assert>
+		</sch:rule>
+		<!-- Validate PriceType -->
+		<!-- Validate OrderableUnitFactorRate -->
+		<sch:rule context="doc:CreditNote/cac:CreditNoteLine/cac:Price/cbc:OrderableUnitFactorRate">
+			<sch:extends rule="PosZeroNumberCheck"/>
+		</sch:rule>
+		<!-- Validate ValidityPeriod -->
+		<sch:rule context="doc:CreditNote/cac:CreditNoteLine/cac:Price/cac:ValidityPeriod">
+			<sch:extends rule="PeriodCheck"/>
+		</sch:rule>
+		<!-- Validate ValidityPeriod/Description -->
+		<sch:rule context="doc:CreditNote/cac:CreditNoteLine/cac:Price/cac:ValidityPeriod/cbc:Description">
+			<sch:extends rule="DescriptionLanguageCheck"/>
+		</sch:rule>
+		<!-- Validate PriceList -->
+		<sch:rule context="doc:CreditNote/cac:CreditNoteLine/cac:Price/cac:PriceList">
+			<!-- <sch:report test="'1' = '1'">[I-CRN999] Validation not yet implemented!</sch:report> -->
+		</sch:rule>
+		<!-- Validate AllowanceCharge -->
+		<sch:rule context="doc:CreditNote/cac:CreditNoteLine/cac:Price/cac:AllowanceCharge">
+			<sch:extends rule="PriceAllowanceChargeTopCheckMultiplierFactor"/>
+		</sch:rule>
+		<!-- Validate AllowanceCharge/SequenceNumeric -->
+		<sch:rule context="doc:CreditNote/cac:CreditNoteLine/cac:Price/cac:AllowanceCharge/cbc:SequenceNumeric">
+			<sch:extends rule="PosNumberCheck"/>
+		</sch:rule>
+		<!-- Validate AllowanceCharge/Amount -->
+		<sch:rule context="doc:CreditNote/cac:CreditNoteLine/cac:Price/cac:AllowanceCharge/cbc:Amount">
+			<!-- [Release 20120615] Check removed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=927 -->
+			<!--<sch:extends rule="PosZeroNumberCheck"/>-->
+			<!-- [Release 20120615] Check added according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=927 -->
+            <!-- [Release 20190315] Changing check according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=2010 -->
+            <!-- <sch:extends rule="ZeroNumberCheck"/> -->
+            <!-- <sch:extends rule="ZeroNumberOrConvertedCheck"/> -->
+            <sch:extends rule="NumberCheck"/>
+		</sch:rule>
+		<!-- Validate AllowanceCharge/BaseAmount -->
+		<sch:rule context="doc:CreditNote/cac:CreditNoteLine/cac:Price/cac:AllowanceCharge/cbc:BaseAmount">
+			<!-- [Release 20130315] Check changed according to issue: https://bugs.softwareborsen.dk/show_bug.cgi?id=1066 -->
+            <!-- [Release 20190315] Changing check according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=2010 -->
+            <!-- <sch:extends rule="ZeroNumberCheck"/> -->
+            <!-- <sch:extends rule="ZeroNumberOrConvertedCheck"/> -->
+            <sch:extends rule="NumberCheck"/>
+		</sch:rule>
+		<!-- Validate AllowanceCharge/TaxCategory -->
+		<sch:rule context="doc:CreditNote/cac:CreditNoteLine/cac:Price/cac:AllowanceCharge/cac:TaxCategory">
+			<sch:extends rule="TaxCategoryCheck"/>
+		</sch:rule>
+		<!-- Validate AllowanceCharge/TaxCategory/TaxScheme -->
+		<sch:rule context="doc:CreditNote/cac:CreditNoteLine/cac:Price/cac:AllowanceCharge/cac:TaxCategory/cac:TaxScheme">
+			<sch:extends rule="TaxSchemeCheck"/>
+		</sch:rule>
+
+	</sch:pattern>
+
+</sch:schema>

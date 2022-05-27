@@ -1,0 +1,991 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+******************************************************************************************************************
+
+		OIOUBL Schematron
+
+		publisher:          NemHandel / Erhvervsstyrelsen
+        Repository path:    $HeadURL$
+        File version:       $Revision$
+        Last changed by:    $Author$
+        Last changed date:  $Date$
+
+		Description:        This document is produced as part of the OIOUBL schematron package
+		Rights:             It can be used following the Common Creative Licence
+
+		all terms derived from http://dublincore.org/documents/dcmi-terms/
+
+		For more information, see www.oioubl.info or email support@nemhandel.dk
+
+******************************************************************************************************************
+-->
+
+<sch:schema xmlns:sch="http://purl.oclc.org/dsdl/schematron">
+
+	<sch:ns uri="urn:oasis:names:specification:ubl:schema:xsd:Reminder-2"                     prefix="doc"/>
+	<sch:ns uri="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"    prefix="cac"/>
+	<sch:ns uri="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"        prefix="cbc"/>
+	<sch:ns uri="urn:oasis:names:specification:ubl:schema:xsd:CoreComponentParameters-2"      prefix="ccts"/>
+	<sch:ns uri="urn:oasis:names:specification:ubl:schema:xsd:SpecializedDatatypes-2"         prefix="sdt"/>
+	<sch:ns uri="urn:un:unece:uncefact:data:specification:UnqualifiedDataTypesSchemaModule:2" prefix="udt"/>
+	<!-- [Release 20120615] Check added according to issue: https://bugs.softwareborsen.dk/show_bug.cgi?id=934 -->
+	<sch:ns uri="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2" prefix="ext"/>
+	<sch:ns uri="http://www.w3.org/2001/XMLSchema"                                            prefix="xs"/>
+
+	<sch:p>Schematron for validating OIOUBL-2.1 documents.</sch:p>
+	<sch:title>Checking OIOUBL-2.1 Reminder</sch:title>
+
+
+	<!-- Inclusion of OIOUBL codelist variables -->
+	<sch:include href="OIOUBL_Codelist_Schematron.xml"/>
+
+
+	<!-- Global variables -->
+
+
+	<!-- The default phase to execute when validating -->
+	<sch:phase id="default">
+		<sch:active pattern="ublextensions"/>
+		<sch:active pattern="profile"/>
+		<sch:active pattern="reminder"/>
+		<sch:active pattern="reminderperiod"/>
+		<sch:active pattern="additionaldocumentreference"/>
+		<sch:active pattern="signature"/>
+		<sch:active pattern="accountingsupplierparty"/>
+		<sch:active pattern="accountingcustomerparty"/>
+		<sch:active pattern="payeeparty"/>
+		<sch:active pattern="taxrepresentativeparty"/>
+		<sch:active pattern="paymentmeans"/>
+		<sch:active pattern="paymentterms"/>
+		<sch:active pattern="prepaidpayment"/>
+		<sch:active pattern="allowancecharge"/>
+		<sch:active pattern="taxechangerate"/>
+		<sch:active pattern="pricingexchangerate"/>
+		<sch:active pattern="paymentexchangerate"/>
+		<sch:active pattern="paymentalternativeexchangerate"/>
+		<sch:active pattern="taxtotal"/>
+		<sch:active pattern="legalmonetarytotal"/>
+		<sch:active pattern="reminderline"/>
+	</sch:phase>
+
+
+	<!-- Inclusion of OIOUBL common rules -->
+	<sch:include href="OIOUBL_Common_Schematron.xml"/>
+
+
+	<!-- - - - - - - - - - - -  UBLExtensions - - - - - - - - - - - - -  -->
+	<!-- [Release 20120615] Check added according to issue: https://bugs.softwareborsen.dk/show_bug.cgi?id=934 -->
+	<sch:pattern name="UBLExtensions" id="ublextensions">
+		<sch:p>Pattern for validating the UBLExtensions class</sch:p>
+		<sch:rule context="doc:Reminder">
+			<sch:extends rule="UBLExtensionsCheck"/>
+		</sch:rule>
+	</sch:pattern>
+
+	<!-- - - - - - - - - - - -  Profile - - - - - - - - - - - - -  -->
+	<sch:pattern name="Profile" id="profile">
+		<sch:p>Pattern for validating root element, Profile and UBL version</sch:p>
+		<!-- Validate root element -->
+		<sch:rule context="/">
+			<sch:assert test="local-name(*) = 'Reminder'">[F-REM001] Root element must be Reminder</sch:assert>
+			<!-- [Release 20130315] Check added according to issue: https://bugs.softwareborsen.dk/show_bug.cgi?id=1023 -->
+			<sch:assert test="namespace-uri(*) = 'urn:oasis:names:specification:ubl:schema:xsd:Reminder-2'">[F-REM096] The documenttype does not match an OIOUBL Reminder and can not be validated by this schematron.</sch:assert>
+		</sch:rule>
+		<sch:rule context="doc:Reminder">
+			<!-- Check ProfileID, UBLVersionID and CustomizationID -->
+			<sch:extends rule="UBLVersionIDCheck"/>
+			<sch:extends rule="CustomizationIDCheck"/>
+			<sch:extends rule="ProfileIDCheck"/>
+		</sch:rule>
+	</sch:pattern>
+
+	<!-- - - - - - - - - - - -  Reminder (REM097)- - - - - - - - - - -  -->
+	<sch:pattern name="Reminder" id="reminder">
+		<sch:p>Pattern for validating the Reminder structure</sch:p>
+		<sch:rule context="doc:Reminder">
+			<!-- Check for excluded elements -->
+			<sch:assert test="count(cbc:TaxPointDate) = 0">[F-REM002] TaxPointDate element must be excluded</sch:assert>
+			<sch:assert test="count(cbc:LineCountNumeric) = 0">[F-REM003] LineCountNumeric element must be excluded</sch:assert>
+			<!-- [Release 20180915] Remove exclusion according to issue: https://bugs.softwareborsen.dk/show_bug.cgi?id=2000 -->
+      <!-- <sch:assert test="count(cac:TaxRepresentativeParty) = 0">[F-REM004] TaxRepresentativeParty class must be excluded</sch:assert> -->
+			<!-- Check for mandatory elements -->
+			<sch:assert test="cbc:ReminderTypeCode != ''">[F-REM006] Invalid ReminderTypeCode. Must contain a value</sch:assert>
+			<!-- [Release 20111201] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=623 -->
+			<sch:assert test="normalize-space(cbc:ReminderSequenceNumeric) != ''">[F-REM007] Invalid ReminderSequenceNumeric. Must contain a value</sch:assert>
+			<sch:assert test="cbc:DocumentCurrencyCode != ''">[F-REM008] Invalid DocumentCurrencyCode. Must contain a value</sch:assert>
+			<!-- Validate -->
+			<!-- [Release 20111201] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=623 -->
+			<sch:assert test="normalize-space(cbc:ID) != ''">[F-REM010] Invalid ID. Must contain a value</sch:assert>
+			<!-- [Release 20111201] Addition to existing check according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=662 -->
+			<sch:assert test="cbc:ReminderTypeCode/@listID = 'urn:oioubl.codelist:remindertypecode-1.1' or cbc:ReminderTypeCode/@listID = 'urn:oioubl:codelist:remindertypecode-1.1'">[F-REM059] Invalid listID. Must be 'urn:oioubl.codelist:remindertypecode-1.1' or 'urn:oioubl:codelist:remindertypecode-1.1'</sch:assert>
+			<!--<sch:assert test="cbc:ReminderTypeCode/@listID = 'urn:oioubl.codelist:remindertypecode-1.1'">[F-REM059] Invalid listID. Must be 'urn:oioubl.codelist:remindertypecode-1.1'</sch:assert>-->
+			<sch:assert test="cbc:ReminderTypeCode/@listAgencyID = '320'">[F-REM060] Invalid listAgencyID. Must be '320'</sch:assert>
+			<sch:assert test="cbc:ReminderTypeCode = 'Reminder' or cbc:ReminderTypeCode = 'Advis'">[F-REM061] Invalid ReminderTypeCode. Must be a value from the codelist</sch:assert>
+			<sch:extends rule="AccountingCostCheck"/>
+			<sch:report test="count(cac:ReminderPeriod) &gt; 1">[F-REM070] No more than one ReminderPeriod class may be present</sch:report>
+		</sch:rule>
+
+		<!-- Validate CopyIndicator -->
+
+		<!-- Validate UUID -->
+		<sch:rule context="doc:Reminder/cbc:UUID">
+			<sch:extends rule="UUIDCheck"/>
+		</sch:rule>
+
+		<!-- Validate IssueDate -->
+		<!-- Validate IssueTime -->
+		<!-- Validate ReminderTypeCode (ok, see above) -->
+		<!-- Validate ReminderSequenceNumeric -->
+
+		<!-- Validate Note -->
+		<sch:rule context="doc:Reminder/cbc:Note">
+			<sch:extends rule="NoteCheck"/>
+		</sch:rule>
+
+		<!-- Validate TaxPointDate -->
+
+		<!-- Validate DocumentCurrencyCode -->
+		<sch:rule context="doc:Reminder/cbc:DocumentCurrencyCode">
+			<sch:report test="/*/cac:ReminderLine/cbc:DebitLineAmount[@currencyID][@currencyID!=string(current())]">[F-REM067] There is a DebitLineAmount for one or more Reminder lines where the currencyID does not equal the DocumentCurrencyCode</sch:report>
+			<sch:report test="/*/cac:ReminderLine/cbc:CreditLineAmount[@currencyID][@currencyID!=string(current())]">[F-REM068] There is a CreditLineAmount for one or more Reminder lines where the currencyID does not equal the DocumentCurrencyCode</sch:report>
+			<sch:report test="/*/cac:LegalMonetaryTotal/cbc:LineExtensionAmount[@currencyID][@currencyID!=string(current())]">[F-REM065] There is a LineExtensionAmount where the currencyID does not equal the DocumentCurrencyCode</sch:report>
+			<sch:report test="/*/cac:LegalMonetaryTotal/cbc:PayableAmount[@currencyID][@currencyID!=string(current())]">[F-REM066] There is a PayableAmount where the currencyID does not equal the DocumentCurrencyCode</sch:report>
+			<sch:extends rule="CurrencyCodeCheck"/>
+		</sch:rule>
+
+		<!-- Validate TaxCurrencyCode -->
+		<sch:rule context="doc:Reminder/cbc:TaxCurrencyCode">
+            <!-- [Release 20180915] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=2002 -->
+			<!--<sch:report test="//cbc:TaxAmount[@currencyID][@currencyID!=string(current())]">[F-REM011] There is a TaxAmount where the currencyID does not equal the TaxCurrencyCode</sch:report>-->
+			<sch:assert test=".='DKK' or . ='EUR'">[F-REM012] TaxCurrencyCode must be either DKK or EUR</sch:assert>
+			<!-- [Release 20180915] Check removed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=2002 -->
+            <!--<sch:assert test="count(/*/cac:TaxExchangeRate) != 0">[F-REM013] One TaxExchangeRate class must be present when TaxCurrencyCode element is used</sch:assert>-->
+			<sch:assert test="count(/*/cac:TaxTotal/cac:TaxSubtotal/cbc:TransactionCurrencyTaxAmount) != 0">[F-REM014] One TransactionCurrencyTaxAmount element must be present when TaxCurrencyCode element is used</sch:assert>
+		</sch:rule>
+
+		<!-- Validate PricingCurrencyCode -->
+		<sch:rule context="doc:Reminder/cbc:PricingCurrencyCode">
+			<sch:assert test="count(/*/cac:PricingExchangeRate) != 0">[F-REM062] One PricingExchangeRate class must be present when PricingCurrencyCode element is used</sch:assert>
+			<sch:extends rule="CurrencyCodeCheck"/>
+		</sch:rule>
+
+		<!-- Validate PaymentCurrencyCode -->
+		<sch:rule context="doc:Reminder/cbc:PaymentCurrencyCode">
+			<sch:assert test="count(/*/cac:PaymentExchangeRate) != 0">[F-REM063] One PaymentExchangeRate class must be present when PaymentCurrencyCode element is used</sch:assert>
+			<sch:extends rule="CurrencyCodeCheck"/>
+		</sch:rule>
+
+		<!-- Validate PaymentAlternativeCurrencyCode -->
+		<sch:rule context="doc:Reminder/cbc:PaymentAlternativeCurrencyCode">
+			<sch:assert test="count(/*/cac:PaymentAlternativeExchangeRate) != 0">[F-REM064] One PaymentAlternativeExchangeRate class must be present when PaymentAlternativeCurrencyCode element is used</sch:assert>
+			<sch:extends rule="CurrencyCodeCheck"/>
+		</sch:rule>
+
+		<!-- Validate AccountingCostCode (ok, see above) -->
+		<!-- Validate AccountingCost (ok, see above) -->
+		<!-- Validate LineCountNumeric -->
+	</sch:pattern>
+
+	<!-- - - - - - - - - - - -  ReminderPeriod - - - - - - - - - - -  -->
+	<sch:pattern name="ReminderPeriod" id="reminderperiod">
+		<sch:p>Pattern for validating the ReminderPeriod class</sch:p>
+		<sch:rule context="doc:Reminder/cac:ReminderPeriod">
+			<sch:extends rule="PeriodCheck"/>
+		</sch:rule>
+		<!-- Validate Description -->
+		<sch:rule context="doc:Reminder/cac:ReminderPeriod/cbc:Description">
+			<sch:extends rule="DescriptionLanguageCheck"/>
+		</sch:rule>
+	</sch:pattern>
+
+	<!-- - - - - - - - - - - -  AdditionalDocumentReference - - - - - - - - - - -  -->
+	<sch:pattern name="AdditionalDocumentReference" id="additionaldocumentreference">
+		<sch:p>Pattern for validating the AdditionalDocumentReference class</sch:p>
+		<sch:rule context="doc:Reminder/cac:AdditionalDocumentReference">
+			<sch:extends rule="DocumentReferenceCheck"/>
+		</sch:rule>
+	</sch:pattern>
+
+	<!-- - - - - - - - - - - -  Signature - - - - - - - - - - -  -->
+	<sch:pattern name="Signature" id="signature">
+		<sch:p>Pattern for validating the Signature class</sch:p>
+		<sch:rule context="doc:Reminder/cac:Signature">
+			<!-- Check for excluded elements -->
+			<!-- Check for mandatory elements -->
+			<!-- Validate -->
+			<!-- [Release 20111201] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=623 -->
+			<sch:assert test="normalize-space(cbc:ID) != ''">[F-REM015] Invalid ID. Must contain a value</sch:assert>
+		</sch:rule>
+		<!-- Validate SignatoryParty -->
+		<sch:rule context="doc:Reminder/cac:Signature/cac:SignatoryParty">
+			<!-- Check for excluded elements -->
+			<sch:extends rule="PartyExcludedCheck"/>
+			<!-- Check for mandatory elements -->
+			<!-- Validate -->
+			<sch:extends rule="PartyNameCheck"/>
+			<sch:extends rule="EndpointIDCheck"/>
+			<sch:report test="count(cac:PartyLegalEntity) &gt; 1">[F-REM069] No more than one PartyLegalEntity class may be present</sch:report>
+		</sch:rule>
+		<!-- Validate SignatoryParty/PartyIdentification -->
+		<sch:rule context="doc:Reminder/cac:Signature/cac:SignatoryParty/cac:PartyIdentification">
+			<sch:extends rule="PartyIdentificationCheck"/>
+		</sch:rule>
+		<!-- Validate SignatoryParty/PartyName -->
+		<sch:rule context="doc:Reminder/cac:Signature/cac:SignatoryParty/cac:PartyName">
+			<sch:extends rule="PartyNameLanguageCheck"/>
+		</sch:rule>
+		<!-- Validate SignatoryParty/PostalAddress -->
+		<sch:rule context="doc:Reminder/cac:Signature/cac:SignatoryParty/cac:PostalAddress">
+			<sch:extends rule="AddressCheck"/>
+		</sch:rule>
+		<!-- Validate SignatoryParty/PhysicalLocation -->
+		<sch:rule context="doc:Reminder/cac:Signature/cac:SignatoryParty/cac:PhysicalLocation">
+			<sch:extends rule="AddressIDCheck"/>
+		</sch:rule>
+		<!-- Validate SignatoryParty/PhysicalLocation/ValidityPeriod -->
+		<sch:rule context="doc:Reminder/cac:Signature/cac:SignatoryParty/cac:PhysicalLocation/cac:ValidityPeriod">
+			<sch:extends rule="PeriodCheck"/>
+		</sch:rule>
+		<!-- Validate SignatoryParty/PhysicalLocation/ValidityPeriod/Description -->
+		<sch:rule context="doc:Reminder/cac:Signature/cac:SignatoryParty/cac:PhysicalLocation/cac:ValidityPeriod/cbc:Description">
+			<sch:extends rule="DescriptionLanguageCheck"/>
+		</sch:rule>
+		<!-- Validate SignatoryParty/PhysicalLocation/Address -->
+		<sch:rule context="doc:Reminder/cac:Signature/cac:SignatoryParty/cac:PhysicalLocation/cac:Address">
+			<sch:extends rule="AddressCheck"/>
+		</sch:rule>
+		<!-- Validate SignatoryParty/PartyTaxScheme -->
+		<sch:rule context="doc:Reminder/cac:Signature/cac:SignatoryParty/cac:PartyTaxScheme">
+			<sch:extends rule="PartyTaxSchemeCheck"/>
+		</sch:rule>
+		<!-- Validate SignatoryParty/PartyTaxScheme/TaxScheme -->
+		<sch:rule context="doc:Reminder/cac:Signature/cac:SignatoryParty/cac:PartyTaxScheme/cac:TaxScheme">
+			<sch:extends rule="TaxSchemeCheck"/>
+		</sch:rule>
+		<!-- Validate SignatoryParty/PartyLegalEntity -->
+		<sch:rule context="doc:Reminder/cac:Signature/cac:SignatoryParty/cac:PartyLegalEntity">
+			<sch:extends rule="PartyLegalEntityCheck"/>
+		</sch:rule>
+		<!-- Validate SignatoryParty/Contact -->
+		<sch:rule context="doc:Reminder/cac:Signature/cac:SignatoryParty/cac:Contact">
+			<sch:extends rule="ContactCheck"/>
+		</sch:rule>
+		<!-- Validate SignatoryParty/Person -->
+		<sch:rule context="doc:Reminder/cac:Signature/cac:SignatoryParty/cac:Person">
+			<sch:extends rule="Person/FirstNameCheck"/>
+		</sch:rule>
+
+		<!-- Validate DigitalSignatureAttachment -->
+		<sch:rule context="doc:Reminder/cac:Signature/cac:DigitalSignatureAttachment">
+			<sch:extends rule="AttachmentCheck"/>
+		</sch:rule>
+
+		<!-- Validate OriginalDocumentReference -->
+		<sch:rule context="doc:Reminder/cac:Signature/cac:OriginalDocumentReference">
+			<sch:extends rule="DocumentReferenceCheck"/>
+		</sch:rule>
+	</sch:pattern>
+
+	<!-- - - - - - - - - - - -  AccountingSupplierParty - - - - - - - - - - -  -->
+	<sch:pattern name="AccountingSupplierParty" id="accountingsupplierparty">
+		<sch:p>Pattern for validating the AccountingSupplierParty class</sch:p>
+
+		<!-- - - - - - - - - - - -  Top-level checks - - - - - - - - - - -  -->
+		<sch:rule context="doc:Reminder/cac:AccountingSupplierParty">
+			<!-- Check for excluded elements -->
+			<sch:assert test="count(cbc:DataSendingCapability) = 0">[F-REM016] DataSendingCapability element must be excluded</sch:assert>
+
+			<!-- Check for mandatory elements -->
+			<sch:assert test="count(cac:Party) = 1">[F-REM017] Party class must be present</sch:assert>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  Party - - - - - - - - - - -  -->
+		<sch:rule context="doc:Reminder/cac:AccountingSupplierParty/cac:Party">
+			<!-- Check for excluded elements -->
+			<sch:extends rule="PartyExcludedCheck"/>
+
+			<!-- Check for mandatory elements -->
+			<!-- [Release 20111201] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=623 -->
+			<sch:assert test="normalize-space(cbc:EndpointID) != ''">[F-REM018] Invalid EndpointID. Must contain a value</sch:assert>
+			<sch:assert test="count(cac:PartyLegalEntity) = 1">[F-REM021] One PartyLegalEntity class must be present</sch:assert>
+
+			<!-- Validate -->
+			<sch:extends rule="PartyNameCheck"/>
+			<sch:extends rule="EndpointIDCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyIdentification - - - - - - - - - - -  -->
+		<sch:rule context="doc:Reminder/cac:AccountingSupplierParty/cac:Party/cac:PartyIdentification">
+			<sch:extends rule="PartyIdentificationCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyName - - - - - - - - - - -  -->
+		<sch:rule context="doc:Reminder/cac:AccountingSupplierParty/cac:Party/cac:PartyName">
+			<sch:extends rule="PartyNameLanguageCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PostalAddress - - - - - - - - - - -  -->
+		<sch:rule context="doc:Reminder/cac:AccountingSupplierParty/cac:Party/cac:PostalAddress">
+			<sch:extends rule="AddressCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PhysicalLocation - - - - - - - - - - -  -->
+		<sch:rule context="doc:Reminder/cac:AccountingSupplierParty/cac:Party/cac:PhysicalLocation">
+			<sch:extends rule="AddressIDCheck"/>
+		</sch:rule>
+		<!-- Validate ValidityPeriod -->
+		<sch:rule context="doc:Reminder/cac:AccountingSupplierParty/cac:Party/cac:PhysicalLocation/cac:ValidityPeriod">
+			<sch:extends rule="PeriodCheck"/>
+		</sch:rule>
+		<!-- Validate ValidityPeriod/Description -->
+		<sch:rule context="doc:Reminder/cac:AccountingSupplierParty/cac:Party/cac:PhysicalLocation/cac:ValidityPeriod/cbc:Description">
+			<sch:extends rule="DescriptionLanguageCheck"/>
+		</sch:rule>
+		<!-- Validate Address -->
+		<sch:rule context="doc:Reminder/cac:AccountingSupplierParty/cac:Party/cac:PhysicalLocation/cac:Address">
+			<sch:extends rule="AddressCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyTaxScheme - - - - - - - - - - -  -->
+		<sch:rule context="doc:Reminder/cac:AccountingSupplierParty/cac:Party/cac:PartyTaxScheme">
+			<sch:extends rule="PartyTaxSchemeCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyTaxScheme/TaxScheme - - - - - - - - - - -  -->
+		<sch:rule context="doc:Reminder/cac:AccountingSupplierParty/cac:Party/cac:PartyTaxScheme/cac:TaxScheme">
+			<sch:extends rule="TaxSchemeCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyLegalEntity - - - - - - - - - - -  -->
+		<sch:rule context="doc:Reminder/cac:AccountingSupplierParty/cac:Party/cac:PartyLegalEntity">
+			<sch:extends rule="PartyLegalEntityCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  Contact - - - - - - - - - - -  -->
+		<sch:rule context="doc:Reminder/cac:AccountingSupplierParty/cac:Party/cac:Contact">
+			<sch:extends rule="ContactCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  Person - - - - - - - - - - -  -->
+		<sch:rule context="doc:Reminder/cac:AccountingSupplierParty/cac:Party/cac:Person">
+			<sch:extends rule="Person/FirstNameCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  DespatchContact - - - - - - - - - - -  -->
+		<sch:rule context="doc:Reminder/cac:SellerSupplierParty/cac:DespatchContact">
+			<sch:extends rule="ContactCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  AccountingContact - - - - - - - - - - -  -->
+		<sch:rule context="doc:Reminder/cac:SellerSupplierParty/cac:AccountingContact">
+			<sch:extends rule="ContactCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  SellerContact - - - - - - - - - - -  -->
+		<sch:rule context="doc:Reminder/cac:SellerSupplierParty/cac:SellerContact">
+			<sch:extends rule="ContactCheck"/>
+		</sch:rule>
+	</sch:pattern>
+
+	<!-- - - - - - - - - - - -  AccountingCustomerParty - - - - - - - - - - -  -->
+	<sch:pattern name="AccountingCustomerParty" id="accountingcustomerparty">
+		<sch:p>Pattern for validating the AccountingCustomerParty class</sch:p>
+
+		<!-- - - - - - - - - - - -  Top-level checks - - - - - - - - - - -  -->
+		<sch:rule context="doc:Reminder/cac:AccountingCustomerParty">
+			<!-- Check for excluded elements -->
+
+			<!-- Check for mandatory elements -->
+			<sch:assert test="count(cac:Party) = 1">[F-REM024] One Party class must be present</sch:assert>
+
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  Party - - - - - - - - - - -  -->
+		<sch:rule context="doc:Reminder/cac:AccountingCustomerParty/cac:Party">
+			<!-- Check for excluded elements -->
+			<sch:extends rule="PartyExcludedCheck"/>
+
+			<!-- Check for mandatory elements -->
+			<!-- [Release 20111201] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=623 -->
+			<sch:assert test="normalize-space(cbc:EndpointID) != ''">[F-REM025] Invalid EndpointID. Must contain a value</sch:assert>
+			<sch:assert test="count(cac:Contact) = 1">[F-REM071] One Contact class must be present</sch:assert>
+
+			<!-- Validate -->
+			<sch:extends rule="PartyNameCheck"/>
+			<sch:extends rule="EndpointIDCheck"/>
+			<sch:report test="count(cac:PartyLegalEntity) &gt; 1">[F-REM093] No more than one PartyLegalEntity class may be present</sch:report>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyIdentification - - - - - - - - - - -  -->
+		<sch:rule context="doc:Reminder/cac:AccountingCustomerParty/cac:Party/cac:PartyIdentification">
+			<sch:extends rule="PartyIdentificationCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyName - - - - - - - - - - -  -->
+		<sch:rule context="doc:Reminder/cac:AccountingCustomerParty/cac:Party/cac:PartyName">
+			<sch:extends rule="PartyNameLanguageCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PostalAddress - - - - - - - - - - -  -->
+		<sch:rule context="doc:Reminder/cac:AccountingCustomerParty/cac:Party/cac:PostalAddress">
+			<sch:extends rule="AddressCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PhysicalLocation - - - - - - - - - - -  -->
+		<sch:rule context="doc:Reminder/cac:AccountingCustomerParty/cac:Party/cac:PhysicalLocation">
+			<sch:extends rule="AddressIDCheck"/>
+		</sch:rule>
+		<!-- Validate ValidityPeriod -->
+		<sch:rule context="doc:Reminder/cac:AccountingCustomerParty/cac:Party/cac:PhysicalLocation/cac:ValidityPeriod">
+			<sch:extends rule="PeriodCheck"/>
+		</sch:rule>
+		<!-- Validate ValidityPeriod/Description -->
+		<sch:rule context="doc:Reminder/cac:AccountingCustomerParty/cac:Party/cac:PhysicalLocation/cac:ValidityPeriod/cbc:Description">
+			<sch:extends rule="DescriptionLanguageCheck"/>
+		</sch:rule>
+		<!-- Validate Address -->
+		<sch:rule context="doc:Reminder/cac:AccountingCustomerParty/cac:Party/cac:PhysicalLocation/cac:Address">
+			<sch:extends rule="AddressCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyTaxScheme - - - - - - - - - - -  -->
+		<sch:rule context="doc:Reminder/cac:AccountingCustomerParty/cac:Party/cac:PartyTaxScheme">
+			<sch:extends rule="PartyTaxSchemeCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyTaxScheme/TaxScheme - - - - - - - - - - -  -->
+		<sch:rule context="doc:Reminder/cac:AccountingCustomerParty/cac:Party/cac:PartyTaxScheme/cac:TaxScheme">
+			<sch:extends rule="TaxSchemeCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyLegalEntity - - - - - - - - - - -  -->
+		<sch:rule context="doc:Reminder/cac:AccountingCustomerParty/cac:Party/cac:PartyLegalEntity">
+			<sch:extends rule="PartyLegalEntityCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  Contact - - - - - - - - - - -  -->
+		<sch:rule context="doc:Reminder/cac:AccountingCustomerParty/cac:Party/cac:Contact">
+			<sch:extends rule="ContactCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  Person - - - - - - - - - - -  -->
+		<sch:rule context="doc:Reminder/cac:AccountingCustomerParty/cac:Party/cac:Person">
+			<sch:extends rule="Person/FirstNameCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  DeliveryContact - - - - - - - - - - -  -->
+		<sch:rule context="doc:Reminder/cac:AccountingCustomerParty/cac:DeliveryContact">
+			<sch:extends rule="ContactCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  AccountingContact - - - - - - - - - - -  -->
+		<sch:rule context="doc:Reminder/cac:AccountingCustomerParty/cac:AccountingContact">
+			<sch:extends rule="ContactCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  BuyerContact - - - - - - - - - - -  -->
+		<sch:rule context="doc:Reminder/cac:AccountingCustomerParty/cac:BuyerContact">
+			<sch:extends rule="ContactCheck"/>
+		</sch:rule>
+	</sch:pattern>
+
+	<!-- - - - - - - - - - - -  PayeeParty - - - - - - - - - - -  -->
+	<sch:pattern name="PayeeParty" id="payeeparty">
+		<sch:p>Pattern for validating the PayeeParty class</sch:p>
+
+		<!-- - - - - - - - - - - -  Top-level checks - - - - - - - - - - -  -->
+		<sch:rule context="doc:Reminder/cac:PayeeParty">
+			<!-- Check for excluded elements -->
+			<sch:extends rule="PartyExcludedCheck"/>
+
+			<!-- Check for mandatory elements -->
+			<!-- [Release 20111201] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=623 -->
+			<sch:assert test="normalize-space(cbc:EndpointID) != ''">[F-REM034] Invalid EndpointID. Must contain a value</sch:assert>
+
+			<!-- Validate -->
+			<sch:extends rule="PartyNameCheck"/>
+			<sch:extends rule="EndpointIDCheck"/>
+			<sch:report test="count(cac:PartyLegalEntity) &gt; 1">[F-REM072] No more than one PartyLegalEntity class may be present</sch:report>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyIdentification - - - - - - - - - - -  -->
+		<sch:rule context="doc:Reminder/cac:PayeeParty/cac:PartyIdentification">
+			<sch:extends rule="PartyIdentificationCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyName - - - - - - - - - - -  -->
+		<sch:rule context="doc:Reminder/cac:PayeeParty/cac:PartyName">
+			<sch:extends rule="PartyNameLanguageCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PostalAddress - - - - - - - - - - -  -->
+		<sch:rule context="doc:Reminder/cac:PayeeParty/cac:PostalAddress">
+			<sch:extends rule="AddressCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PhysicalLocation - - - - - - - - - - -  -->
+		<sch:rule context="doc:Reminder/cac:PayeeParty/cac:PhysicalLocation">
+			<sch:extends rule="AddressIDCheck"/>
+		</sch:rule>
+		<!-- Validate ValidityPeriod -->
+		<sch:rule context="doc:Reminder/cac:PayeeParty/cac:PhysicalLocation/cac:ValidityPeriod">
+			<sch:extends rule="PeriodCheck"/>
+		</sch:rule>
+		<!-- Validate ValidityPeriod/Description -->
+		<sch:rule context="doc:Reminder/cac:PayeeParty/cac:PhysicalLocation/cac:ValidityPeriod/cbc:Description">
+			<sch:extends rule="DescriptionLanguageCheck"/>
+		</sch:rule>
+		<!-- Validate Address -->
+		<sch:rule context="doc:Reminder/cac:PayeeParty/cac:PhysicalLocation/cac:Address">
+			<sch:extends rule="AddressCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyTaxScheme - - - - - - - - - - -  -->
+		<sch:rule context="doc:Reminder/cac:PayeeParty/cac:PartyTaxScheme">
+			<sch:extends rule="PartyTaxSchemeCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyTaxScheme/TaxScheme - - - - - - - - - - -  -->
+		<sch:rule context="doc:Reminder/cac:PayeeParty/cac:PartyTaxScheme/cac:TaxScheme">
+			<sch:extends rule="TaxSchemeCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyLegalEntity - - - - - - - - - - -  -->
+		<sch:rule context="doc:Reminder/cac:PayeeParty/cac:PartyLegalEntity">
+			<sch:extends rule="PartyLegalEntityCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  Contact - - - - - - - - - - -  -->
+		<sch:rule context="doc:Reminder/cac:PayeeParty/cac:Contact">
+			<sch:extends rule="ContactCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  Person - - - - - - - - - - -  -->
+		<sch:rule context="doc:Reminder/cac:PayeeParty/cac:Person">
+			<sch:extends rule="Person/FirstNameCheck"/>
+		</sch:rule>
+	</sch:pattern>
+
+	<!-- - - - - - - - - - - -  TaxRepresentativeParty - - - - - - - - - - -  -->
+  <!-- [Release 20180915] Check added according to issue: https://bugs.softwareborsen.dk/show_bug.cgi?id=2000 -->
+	<sch:pattern name="TaxRepresentativeParty" id="taxRepresentativeParty">
+		<sch:p>Pattern for validating the TaxRepresentativeParty class</sch:p>
+    <sch:rule context="doc:Reminder/cac:TaxRepresentativeParty">
+			<sch:extends rule="TaxRepresentativePartyCheck"/>
+		</sch:rule>
+
+    <sch:rule context="doc:Reminder/cac:TaxRepresentativeParty/cac:PartyTaxScheme">
+			<sch:extends rule="PartyTaxSchemeCheck"/>
+		</sch:rule>
+
+    <sch:rule context="doc:Reminder/cac:TaxRepresentativeParty/cac:PartyTaxScheme/cac:TaxScheme">
+			<sch:extends rule="TaxSchemeCheck"/>
+		</sch:rule>
+	</sch:pattern>
+
+	<!-- - - - - - - - - - - -  PaymentMeans - - - - - - - - - - -  -->
+	<sch:pattern name="PaymentMeans" id="paymentmeans">
+		<sch:p>Pattern for validating the PaymentMeans class</sch:p>
+		<sch:rule context="doc:Reminder/cac:PaymentMeans">
+			<sch:extends rule="PaymentMeansCheck"/>
+			<sch:extends rule="PaymentMeansCode31Check"/>
+			<sch:extends rule="PaymentMeansCode42Check"/>
+			<sch:extends rule="PaymentMeansCode48Check"/>
+			<sch:extends rule="PaymentMeansCode49Check"/>
+			<sch:extends rule="PaymentMeansCode50Check"/>
+            <sch:extends rule="PaymentMeansCode58Check"/>
+            <sch:extends rule="PaymentMeansCode59Check"/>
+			<sch:extends rule="PaymentMeansCode93Check"/>
+			<sch:extends rule="PaymentMeansCode97Check"/>
+		</sch:rule>
+	</sch:pattern>
+
+	<!-- - - - - - - - - - - -  PaymentTerms - - - - - - - - - - -  -->
+	<sch:pattern name="PaymentTerms" id="paymentterms">
+		<sch:p>Pattern for validating the PaymentTerms class</sch:p>
+		<sch:rule context="doc:Reminder/cac:PaymentTerms">
+			<sch:extends rule="PaymentTermsCheck"/>
+		</sch:rule>
+		<!-- Validate PaymentMeansID -->
+		<sch:rule context="doc:Reminder/cac:PaymentTerms/cbc:PaymentMeansID">
+			<!-- <sch:extends rule="PaymentMeansIDCheck"/> -->
+		</sch:rule>
+		<!-- Validate Amount -->
+		<sch:rule context="doc:Reminder/cac:PaymentTerms/cbc:Amount">
+			<sch:extends rule="PosZeroNumberCheck"/>
+		</sch:rule>
+		<!-- Validate SettlementPeriod -->
+		<sch:rule context="doc:Reminder/cac:PaymentTerms/cac:SettlementPeriod">
+			<sch:extends rule="PeriodCheck"/>
+		</sch:rule>
+		<!-- Validate SettlementPeriod/Description -->
+		<sch:rule context="doc:Reminder/cac:PaymentTerms/cac:SettlementPeriod/cbc:Description">
+			<sch:extends rule="DescriptionLanguageCheck"/>
+		</sch:rule>
+		<!-- Validate PenaltyPeriod -->
+		<sch:rule context="doc:Reminder/cac:PaymentTerms/cac:PenaltyPeriod">
+			<sch:extends rule="PeriodCheck"/>
+		</sch:rule>
+		<!-- Validate PenaltyPeriod/Description -->
+		<sch:rule context="doc:Reminder/cac:PaymentTerms/cac:PenaltyPeriod/cbc:Description">
+			<sch:extends rule="DescriptionLanguageCheck"/>
+		</sch:rule>
+	</sch:pattern>
+
+	<!-- - - - - - - - - - - -  PrepaidPayment - - - - - - - - - - -  -->
+	<sch:pattern name="PrepaidPayment" id="prepaidpayment">
+		<sch:p>Pattern for validating the PrepaidPayment class</sch:p>
+		<sch:rule context="doc:Reminder/cac:PrepaidPayment">
+			<!-- Check for excluded elements -->
+			<!-- Check for mandatory elements -->
+			<!-- Validate -->
+		</sch:rule>
+	</sch:pattern>
+	<!-- Validate PaidAmount -->
+	<sch:rule context="doc:Reminder/cac:PrepaidPayment/cbc:PaidAmount">
+		<sch:extends rule="PosZeroDecNumberCheck"/>
+	</sch:rule>
+
+	<!-- - - - - - - - - - - -  AllowanceCharge - - - - - - - - - - -  -->
+	<sch:pattern name="AllowanceCharge" id="allowancecharge">
+		<sch:p>Pattern for validating the AllowanceCharge class</sch:p>
+		<sch:rule context="doc:Reminder/cac:AllowanceCharge">
+			<sch:extends rule="AllowanceChargeTopCheck"/>
+			<sch:extends rule="AccountingCostCheck"/>
+			<!-- Validate -->
+			<sch:report test="cbc:AllowanceChargeReason and cbc:AllowanceChargeReasonCode">[F-REM094] Use either AllowanceChargeReason or AllowanceChargeReasonCode</sch:report>
+		</sch:rule>
+		<!-- Validate PrepaidIndicator -->
+		<!-- Validate AllowanceChargeReasonCode -->
+		<sch:rule context="doc:Reminder/cac:AllowanceCharge/cbc:AllowanceChargeReasonCode">
+			<sch:assert test="./@listID = 'urn:oioubl:codelist:reminderallowancechargereasoncode-1.0'">[W-REM095] Invalid listID. Must be 'urn:oioubl:codelist:reminderallowancechargereasoncode-1.0'</sch:assert>
+			<sch:assert test="./@listAgencyID = '320'">[W-REM096] Invalid listAgencyID. Must be '320'</sch:assert>
+			<sch:assert test=". = 'PenaltyFee' or . = 'PenaltyRate'">[F-REM097] Invalid AllowanceChargeReasonCode. Must be a value from the codelist</sch:assert>
+		</sch:rule>
+		<!-- Validate SequenceNumeric -->
+		<sch:rule context="doc:Reminder/cac:AllowanceCharge/cbc:SequenceNumeric">
+			<sch:extends rule="PosNumberCheck"/>
+		</sch:rule>
+		<!-- Validate Amount -->
+		<sch:rule context="doc:Reminder/cac:AllowanceCharge/cbc:Amount">
+			<sch:extends rule="PosZeroNumberCheck"/>
+            <!-- Udsættes til marts 2019 -->
+            <!-- [Release 20190315] Changing check according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=2010 -->
+            <!-- <sch:extends rule="NumberCheck"/> -->
+		</sch:rule>
+		<!-- Validate BaseAmount -->
+		<sch:rule context="doc:Reminder/cac:AllowanceCharge/cbc:BaseAmount">
+			<sch:extends rule="PosZeroNumberCheck"/>
+            <!-- Udsættes til marts 2019 -->
+            <!-- [Release 20190315] Changing check according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=2010 -->
+            <!-- <sch:extends rule="NumberCheck"/> -->
+		</sch:rule>
+		<!-- Validate TaxCategory -->
+		<sch:rule context="doc:Reminder/cac:AllowanceCharge/cac:TaxCategory">
+			<sch:extends rule="TaxCategoryCheck"/>
+		</sch:rule>
+		<!-- Validate TaxCategory/TaxScheme -->
+		<sch:rule context="doc:Reminder/cac:AllowanceCharge/cac:TaxCategory/cac:TaxScheme">
+			<sch:extends rule="TaxSchemeCheck"/>
+		</sch:rule>
+	</sch:pattern>
+
+
+	<!-- - - - - - - - - - - -  TaxExchangeRate - - - - - - - - - - -  -->
+	<sch:pattern name="TaxExchangeRate" id="taxexchangerate">
+		<sch:p>Pattern for validating the TaxExchangeRate class</sch:p>
+		<sch:rule context="doc:Reminder/cac:TaxExchangeRate">
+			<sch:extends rule="ExchangeRateCheck"/>
+		</sch:rule>
+		<!-- Validate TaxExchangeRate/ForeignExchangeContract/ValidityPeriod -->
+		<sch:rule context="doc:Reminder/cac:TaxExchangeRate/cac:ForeignExchangeContract/cac:ValidityPeriod">
+			<sch:extends rule="PeriodCheck"/>
+		</sch:rule>
+		<!-- Validate TaxExchangeRate/ForeignExchangeContract/ValidityPeriod/Description -->
+		<sch:rule context="doc:Reminder/cac:TaxExchangeRate/cac:ForeignExchangeContract/cac:ValidityPeriod/cbc:Description">
+			<sch:extends rule="DescriptionLanguageCheck"/>
+		</sch:rule>
+		<!-- Validate TaxExchangeRate/ForeignExchangeContract/ContractDocumentReference -->
+		<sch:rule context="doc:Reminder/cac:TaxExchangeRate/cac:ForeignExchangeContract/cac:ContractDocumentReference">
+			<sch:extends rule="KnownDocumentReferenceCheck"/>
+		</sch:rule>
+	</sch:pattern>
+
+	<!-- - - - - - - - - - - -  PricingExchangeRate - - - - - - - - - - -  -->
+	<sch:pattern name="PricingExchangeRate" id="pricingexchangerate">
+		<sch:p>Pattern for validating the PricingExchangeRate class</sch:p>
+		<sch:rule context="doc:Reminder/cac:PricingExchangeRate">
+			<sch:extends rule="ExchangeRateCheck"/>
+		</sch:rule>
+		<!-- Validate PricingExchangeRate/ForeignExchangeContract/ValidityPeriod -->
+		<sch:rule context="doc:Reminder/cac:PricingExchangeRate/cac:ForeignExchangeContract/cac:ValidityPeriod">
+			<sch:extends rule="PeriodCheck"/>
+		</sch:rule>
+		<!-- Validate PricingExchangeRate/ForeignExchangeContract/ValidityPeriod/Description -->
+		<sch:rule context="doc:Reminder/cac:PricingExchangeRate/cac:ForeignExchangeContract/cac:ValidityPeriod/cbc:Description">
+			<sch:extends rule="DescriptionLanguageCheck"/>
+		</sch:rule>
+		<!-- Validate PricingExchangeRate/ForeignExchangeContract/ContractDocumentReference -->
+		<sch:rule context="doc:Reminder/cac:PricingExchangeRate/cac:ForeignExchangeContract/cac:ContractDocumentReference">
+			<sch:extends rule="KnownDocumentReferenceCheck"/>
+		</sch:rule>
+	</sch:pattern>
+
+	<!-- - - - - - - - - - - -  PaymentExchangeRate - - - - - - - - - - -  -->
+	<sch:pattern name="PaymentExchangeRate" id="paymentexchangerate">
+		<sch:p>Pattern for validating the PaymentExchangeRate class</sch:p>
+		<sch:rule context="doc:Reminder/cac:PaymentExchangeRate">
+			<sch:extends rule="ExchangeRateCheck"/>
+		</sch:rule>
+		<!-- Validate PaymentExchangeRate/ForeignExchangeContract/ValidityPeriod -->
+		<sch:rule context="doc:Reminder/cac:PaymentExchangeRate/cac:ForeignExchangeContract/cac:ValidityPeriod">
+			<sch:extends rule="PeriodCheck"/>
+		</sch:rule>
+		<!-- Validate PaymentExchangeRate/ForeignExchangeContract/ValidityPeriod/Description -->
+		<sch:rule context="doc:Reminder/cac:PaymentExchangeRate/cac:ForeignExchangeContract/cac:ValidityPeriod/cbc:Description">
+			<sch:extends rule="DescriptionLanguageCheck"/>
+		</sch:rule>
+		<!-- Validate PaymentExchangeRate/ForeignExchangeContract/ContractDocumentReference -->
+		<sch:rule context="doc:Reminder/cac:PaymentExchangeRate/cac:ForeignExchangeContract/cac:ContractDocumentReference">
+			<sch:extends rule="KnownDocumentReferenceCheck"/>
+		</sch:rule>
+	</sch:pattern>
+
+	<!-- - - - - - - - - - - -  PaymentAlternativeExchangeRate - - - - - - - - - - -  -->
+	<sch:pattern name="PaymentAlternativeExchangeRate" id="paymentalternativeexchangerate">
+		<sch:p>Pattern for validating the PaymentAlternativeExchangeRate class</sch:p>
+		<sch:rule context="doc:Reminder/cac:PaymentAlternativeExchangeRate">
+			<sch:extends rule="ExchangeRateCheck"/>
+		</sch:rule>
+		<!-- Validate PaymentAlternativeExchangeRate/ForeignExchangeContract/ValidityPeriod -->
+		<sch:rule context="doc:Reminder/cac:PaymentAlternativeExchangeRate/cac:ForeignExchangeContract/cac:ValidityPeriod">
+			<sch:extends rule="PeriodCheck"/>
+		</sch:rule>
+		<!-- Validate PaymentAlternativeExchangeRate/ForeignExchangeContract/ValidityPeriod/Description -->
+		<sch:rule context="doc:Reminder/cac:PaymentAlternativeExchangeRate/cac:ForeignExchangeContract/cac:ValidityPeriod/cbc:Description">
+			<sch:extends rule="DescriptionLanguageCheck"/>
+		</sch:rule>
+		<!-- Validate PaymentAlternativeExchangeRate/ForeignExchangeContract/ContractDocumentReference -->
+		<sch:rule context="doc:Reminder/cac:PaymentAlternativeExchangeRate/cac:ForeignExchangeContract/cac:ContractDocumentReference">
+			<sch:extends rule="KnownDocumentReferenceCheck"/>
+		</sch:rule>
+	</sch:pattern>
+
+	<!-- - - - - - - - - - - -  TaxTotal - - - - - - - - - - -  -->
+	<sch:pattern name="TaxTotal" id="taxtotal">
+		<sch:p>Pattern for validating the TaxTotal class</sch:p>
+		<!-- - - - - - - - - - - -  Top-level checks - - - - - - - - - - -  -->
+		<sch:rule context="doc:Reminder/cac:TaxTotal">
+			<sch:extends rule="TaxTotalCheck"/>
+		</sch:rule>
+		<!-- - - - - - - - - - - -  TaxSubtotal - - - - - - - - - - -  -->
+		<sch:rule context="doc:Reminder/cac:TaxTotal/cac:TaxSubtotal">
+			<sch:extends rule="TaxSubtotalCheck"/>
+      <!-- [Release 20150915] Added check according to issue: https://bugs.softwareborsen.dk/show_bug.cgi?id=1361 -->
+      <sch:extends rule="TaxSubtotalCalculationHeader"/>
+		</sch:rule>
+		<!-- - - - - - - - - - - -  TaxCategory - - - - - - - - - - -  -->
+		<sch:rule context="doc:Reminder/cac:TaxTotal/cac:TaxSubtotal/cac:TaxCategory">
+			<sch:extends rule="TaxCategoryCheck"/>
+		</sch:rule>
+		<!-- - - - - - - - - - - -  TaxCategory/TaxScheme - - - - - - - - - - -  -->
+		<sch:rule context="doc:Reminder/cac:TaxTotal/cac:TaxSubtotal/cac:TaxCategory/cac:TaxScheme">
+			<sch:extends rule="TaxSchemeCheck"/>
+		</sch:rule>
+	</sch:pattern>
+
+	<!-- - - - - - - - - - - -  LegalMonetaryTotal - - - - - - - - - - -  -->
+	<sch:pattern name="LegalMonetaryTotal" id="legalmonetarytotal">
+		<sch:p>Pattern for validating the LegalMonetaryTotal class</sch:p>
+		<sch:rule context="doc:Reminder/cac:LegalMonetaryTotal">
+			<!-- Check for excluded elements -->
+			<!-- Check for mandatory elements -->
+			<!-- [Release 20111201] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=623 -->
+			<sch:assert test="normalize-space(cbc:LineExtensionAmount) != ''">[F-REM054] Invalid LineExtensionAmount. Must contain a value</sch:assert>
+			<sch:report test="count(../cac:AllowanceCharge[cbc:ChargeIndicator='false']) and not(cbc:AllowanceTotalAmount)">[F-REM074] AllowanceTotalAmount is mandatory when AllowanceCharge classes (with ChargeIndicator='false') are present</sch:report>
+			<sch:report test="count(../cac:AllowanceCharge[cbc:ChargeIndicator='true']) and not(cbc:ChargeTotalAmount)">[F-REM075] ChargeTotalAmount is mandatory when AllowanceCharge classes (with ChargeIndicator='true') are present</sch:report>
+			<sch:report test="count(../cac:PrepaidPayment/cbc:PaidAmount) and not(cbc:PrepaidAmount)">[F-REM076] PrepaidAmount is mandatory when PrepaidPayment/PaidAmount elements are present</sch:report>
+			<sch:report test="count(../cac:TaxTotal/cbc:RoundingAmount) and not(cbc:PayableRoundingAmount)">[F-REM077] PayableRoundingAmount is mandatory when TaxTotal/RoundingAmount elements are present</sch:report>
+			<!-- Validate -->
+			<sch:report test="cbc:TaxExclusiveAmount and not(format-number(cbc:TaxExclusiveAmount,'##.00') = format-number(sum(../cac:TaxTotal/cac:TaxSubtotal/cbc:TaxAmount),'##.00'))">[F-REM079] The sum of TaxTotal/TaxSubtotal/TaxAmount elements must equal TaxExclusiveAmount</sch:report>
+			<sch:report test="cbc:TaxInclusiveAmount and not(format-number(cbc:TaxInclusiveAmount,'##.00') = format-number(sum(cbc:LineExtensionAmount) + sum(../cac:TaxTotal/cac:TaxSubtotal/cbc:TaxAmount) + sum(cbc:ChargeTotalAmount) - sum(cbc:AllowanceTotalAmount) + sum(cbc:PayableRoundingAmount),'##.00'))">[F-REM080] TaxInclusiveAmount is calculated incorrectly</sch:report>
+			<sch:report test="cbc:AllowanceTotalAmount and not(format-number(cbc:AllowanceTotalAmount,'##.00') = format-number(sum(../cac:AllowanceCharge[cbc:ChargeIndicator='false']/cbc:Amount),'##.00'))">[F-REM081] The sum of AllowanceCharge/Amount elements (with ChargeIndicator='false') must equal AllowanceTotalAmount</sch:report>
+			<sch:report test="cbc:ChargeTotalAmount and not(format-number(cbc:ChargeTotalAmount,'##.00') = format-number(sum(../cac:AllowanceCharge[cbc:ChargeIndicator='true']/cbc:Amount),'##.00'))">[F-REM082] The sum of AllowanceCharge/Amount elements (with ChargeIndicator='true') must equal cbc:ChargeTotalAmount</sch:report>
+			<sch:report test="cbc:PrepaidAmount and not(format-number(cbc:PrepaidAmount,'##.00') = format-number(sum(../cac:PrepaidPayment/cbc:PaidAmount),'##.00'))">[F-REM083] The sum of PrepaidPayment/PaidAmount elements must equal PrepaidAmount</sch:report>
+			<sch:report test="cbc:PayableRoundingAmount and not(format-number(cbc:PayableRoundingAmount,'##.00') = format-number(sum(../cac:TaxTotal/cbc:RoundingAmount),'##.00'))">[F-REM084] The sum of TaxTotal/RoundingAmount elements must equal PayableRoundingAmount</sch:report>
+
+      <!-- [Release 20150915] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=1465
+       the two parser, msxml and saxon, make two differrent interpretation of this:  0 = -0. -->
+			<sch:assert test="format-number(sum(cbc:PayableAmount) *-1,'##.00') = format-number((sum(cbc:LineExtensionAmount) + sum(../cac:TaxTotal/cac:TaxSubtotal/cbc:TaxAmount) + sum(cbc:ChargeTotalAmount) - sum(cbc:AllowanceTotalAmount) - sum(cbc:PrepaidAmount) + sum(cbc:PayableRoundingAmount)) *-1,'##.00')">[F-REM085] PayableAmount is calculated incorrectly</sch:assert>
+      <!-- [Release 20150915] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=1425 -->
+			<sch:report test="(count(../cac:PaymentTerms) &gt; 0) and not (  (format-number(cbc:PayableAmount,'##.00') = format-number(sum(../cac:PaymentTerms/cbc:Amount),'##.00'))   or   (format-number(cbc:PayableAmount,'##.00') = format-number(../cac:PaymentTerms[1]/cbc:Amount,'##.00')))">[F-REM086] The sum of PaymentTerms/Amount elements or the value of the first PaymentTerms/Amount must equal PayableAmount</sch:report>
+			<!-- <sch:report test="../cbc:TaxCurrencyCode">[I-REM999] Validation not yet implemented!</sch:report> -->
+		</sch:rule>
+		<!-- Validate LineExtensionAmount -->
+		<sch:rule context="doc:Reminder/cac:LegalMonetaryTotal/cbc:LineExtensionAmount">
+			<!-- [Release 20111201] Changing check according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=657 -->
+			<!--<sch:extends rule="PosZeroDecNumberCheck"/>-->
+			<sch:extends rule="ZeroDecNumberCheck"/>
+		</sch:rule>
+		<!-- Validate TaxExclusiveAmount -->
+		<sch:rule context="doc:Reminder/cac:LegalMonetaryTotal/cbc:TaxExclusiveAmount">
+			<sch:extends rule="PosDecNumberCheck"/>
+		</sch:rule>
+		<!-- Validate TaxInclusiveAmount -->
+		<sch:rule context="doc:Reminder/cac:LegalMonetaryTotal/cbc:TaxInclusiveAmount">
+            <sch:extends rule="PosZeroDecNumberCheck"/>
+            <!-- Udsættes til marts 2019 -->
+            <!-- [Release 20190315] Changing check according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=2010 -->
+			<!-- <sch:extends rule="DecNumberCheck"/> -->
+		</sch:rule>
+		<!-- Validate AllowanceTotalAmount -->
+		<sch:rule context="doc:Reminder/cac:LegalMonetaryTotal/cbc:AllowanceTotalAmount">
+			<sch:extends rule="PosZeroDecNumberCheck"/>
+            <!-- Udsættes til marts 2019 -->
+            <!-- [Release 20190315] Changing check according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=2010 -->
+            <!-- <sch:extends rule="DecNumberCheck"/> -->
+		</sch:rule>
+		<!-- Validate ChargeTotalAmount -->
+		<sch:rule context="doc:Reminder/cac:LegalMonetaryTotal/cbc:ChargeTotalAmount">
+			<sch:extends rule="PosZeroDecNumberCheck"/>
+            <!-- Udsættes til marts 2019 -->
+            <!-- [Release 20190315] Changing check according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=2010 -->
+            <!-- <sch:extends rule="DecNumberCheck"/> -->
+		</sch:rule>
+		<!-- Validate PrepaidAmount -->
+		<sch:rule context="doc:Reminder/cac:LegalMonetaryTotal/cbc:PrepaidAmount">
+			<sch:extends rule="PosZeroDecNumberCheck"/>
+		</sch:rule>
+		<!-- Validate PayableRoundingAmount -->
+		<sch:rule context="doc:Reminder/cac:LegalMonetaryTotal/cbc:PayableRoundingAmount">
+			<sch:extends rule="ZeroDecNumberCheck"/>
+		</sch:rule>
+		<!-- Validate PayableAmount -->
+		<sch:rule context="doc:Reminder/cac:LegalMonetaryTotal/cbc:PayableAmount">
+            <sch:extends rule="PosZeroDecNumberCheck"/>
+		</sch:rule>
+	</sch:pattern>
+
+	<!-- - - - - - - - - - - -  ReminderLine - - - - - - - - - - -  -->
+	<sch:pattern name="ReminderLine" id="reminderline">
+		<sch:p>Pattern for validating the ReminderLine class</sch:p>
+
+		<!-- - - - - - - - - - - -  Top-level checks - - - - - - - - - - -  -->
+		<sch:rule context="doc:Reminder/cac:ReminderLine">
+			<!-- Check for excluded elements -->
+			<!-- Check for mandatory elements -->
+			<!-- Validate -->
+			<!-- [Release 20111201] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=623 -->
+			<sch:assert test="normalize-space(cbc:ID) != ''">[F-REM058] Invalid ID. Must contain a value</sch:assert>
+			<sch:extends rule="AccountingCostCheck"/>
+			<sch:report test="count(cac:ReminderPeriod) &gt; 1">[F-REM087] No more than one ReminderPeriod class may be present</sch:report>
+			<sch:report test="count(cac:BillingReference) &gt; 1">[F-REM088] No more than one BillingReference class may be present</sch:report>
+		</sch:rule>
+		<!-- Validate UUID -->
+		<sch:rule context="doc:Reminder/cac:ReminderLine/cbc:UUID">
+			<sch:extends rule="UUIDCheck"/>
+		</sch:rule>
+		<!-- Validate DebitLineAmount -->
+		<sch:rule context="doc:Reminder/cac:ReminderLine/cbc:DebitLineAmount">
+			<sch:extends rule="PosZeroDecNumberCheck"/>
+		</sch:rule>
+		<!-- Validate CreditLineAmount -->
+		<sch:rule context="doc:Reminder/cac:ReminderLine/cbc:CreditLineAmount">
+			<sch:extends rule="PosZeroDecNumberCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  ReminderPeriod - - - - - - - - - - -  -->
+		<sch:rule context="doc:Reminder/cac:ReminderLine/cac:ReminderPeriod">
+			<sch:extends rule="PeriodCheck"/>
+		</sch:rule>
+		<!-- Validate Description -->
+		<sch:rule context="doc:Reminder/cac:ReminderLine/cac:ReminderPeriod/cbc:Description">
+			<sch:extends rule="DescriptionLanguageCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  BillingReference - - - - - - - - - - -  -->
+		<sch:rule context="doc:Reminder/cac:ReminderLine/cac:BillingReference">
+			<!-- Check for excluded elements -->
+			<sch:assert test="count(cac:DebitNoteDocumentReference) = 0">[F-REM089] DebitNoteDocumentReference class must be excluded</sch:assert>
+			<sch:assert test="count(cac:AdditionalDocumentReference) = 0">[F-REM090] AdditionalDocumentReference class must be excluded</sch:assert>
+			<!-- Check for mandatory elements -->
+			<!-- Validate -->
+			<sch:report test="count(cac:BillingReferenceLine) &gt; 1">[F-REM091] No more than one BillingReferenceLine class may be present</sch:report>
+		</sch:rule>
+		<!-- Validate BillingReference/InvoiceDocumentReference -->
+		<sch:rule context="doc:Reminder/cac:ReminderLine/cac:BillingReference/cac:InvoiceDocumentReference">
+			<sch:extends rule="KnownDocumentReferenceCheck"/>
+		</sch:rule>
+		<!-- Validate BillingReference/SelfBilledInvoiceDocumentReference -->
+		<sch:rule context="doc:Reminder/cac:ReminderLine/cac:BillingReference/cac:SelfBilledInvoiceDocumentReference">
+			<sch:extends rule="KnownDocumentReferenceCheck"/>
+		</sch:rule>
+		<!-- Validate BillingReference/CreditNoteDocumentReference -->
+		<sch:rule context="doc:Reminder/cac:ReminderLine/cac:BillingReference/cac:CreditNoteDocumentReference">
+			<sch:extends rule="KnownDocumentReferenceCheck"/>
+		</sch:rule>
+		<!-- Validate BillingReference/SelfBilledCreditNoteDocumentReference -->
+		<sch:rule context="doc:Reminder/cac:ReminderLine/cac:BillingReference/cac:SelfBilledCreditNoteDocumentReference">
+			<sch:extends rule="KnownDocumentReferenceCheck"/>
+		</sch:rule>
+		<!-- Validate BillingReference/ReminderDocumentReference -->
+		<sch:rule context="doc:Reminder/cac:ReminderLine/cac:BillingReference/cac:ReminderDocumentReference">
+			<sch:extends rule="KnownDocumentReferenceCheck"/>
+		</sch:rule>
+		<!-- Validate BillingReference/BillingReferenceLine -->
+		<sch:rule context="doc:Reminder/cac:ReminderLine/cac:BillingReference/cac:BillingReferenceLine">
+			<sch:report test="count(cac:AllowanceCharge) &gt; 1">[F-REM092] No more than one AllowanceCharge class may be present</sch:report>
+		</sch:rule>
+		<!-- Validate BillingReference/BillingReferenceLine/AllowanceCharge -->
+		<sch:rule context="doc:Reminder/cac:ReminderLine/cac:BillingReference/cac:BillingReferenceLine/cac:AllowanceCharge">
+			<sch:extends rule="AllowanceChargeTopCheck"/>
+			<sch:extends rule="AccountingCostCheck"/>
+		</sch:rule>
+		<!-- Validate BillingReference/BillingReferenceLine/AllowanceCharge/SequenceNumeric -->
+		<sch:rule context="doc:Reminder/cac:ReminderLine/cac:BillingReference/cac:BillingReferenceLine/cac:AllowanceCharge/cbc:SequenceNumeric">
+			<sch:extends rule="PosNumberCheck"/>
+		</sch:rule>
+		<!-- Validate BillingReference/BillingReferenceLine/AllowanceCharge/Amount -->
+		<sch:rule context="doc:Reminder/cac:ReminderLine/cac:BillingReference/cac:BillingReferenceLine/cac:AllowanceCharge/cbc:Amount">
+			<sch:extends rule="PosZeroNumberCheck"/>
+            <!-- Udsættes til marts 2019 -->
+            <!-- [Release 20190315] Changing check according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=2010 -->
+            <!-- <sch:extends rule="NumberCheck"/> -->
+		</sch:rule>
+		<!-- Validate BillingReference/BillingReferenceLine/AllowanceCharge/BaseAmount -->
+		<sch:rule context="doc:Reminder/cac:ReminderLine/cac:BillingReference/cac:BillingReferenceLine/cac:AllowanceCharge/cbc:BaseAmount">
+			<sch:extends rule="PosZeroNumberCheck"/>
+            <!-- Udsættes til marts 2019 -->
+            <!-- [Release 20180915] Changing check according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=2010 -->
+            <!-- <sch:extends rule="NumberCheck"/> -->
+		</sch:rule>
+		<!-- Validate BillingReference/BillingReferenceLine/AllowanceCharge/TaxCategory -->
+		<sch:rule context="doc:Reminder/cac:ReminderLine/cac:BillingReference/cac:BillingReferenceLine/cac:AllowanceCharge/cac:TaxCategory">
+			<sch:extends rule="TaxCategoryCheck"/>
+		</sch:rule>
+		<!-- Validate BillingReference/BillingReferenceLine/AllowanceCharge/TaxCategory/TaxScheme -->
+		<sch:rule context="doc:Reminder/cac:ReminderLine/cac:BillingReference/cac:BillingReferenceLine/cac:AllowanceCharge/cac:TaxCategory/cac:TaxScheme">
+			<sch:extends rule="TaxSchemeCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  ExchangeRate - - - - - - - - - - -  -->
+		<sch:rule context="doc:Reminder/cac:ReminderLine/cac:ExchangeRate">
+			<sch:extends rule="ExchangeRateCheck"/>
+		</sch:rule>
+		<!-- Validate ExchangeRate/ForeignExchangeContract/ValidityPeriod -->
+		<sch:rule context="doc:Reminder/cac:ReminderLine/cac:ExchangeRate/cac:ForeignExchangeContract/cac:ValidityPeriod">
+			<sch:extends rule="PeriodCheck"/>
+		</sch:rule>
+		<!-- Validate ExchangeRate/ForeignExchangeContract/ValidityPeriod/Description -->
+		<sch:rule context="doc:Reminder/cac:ReminderLine/cac:ExchangeRate/cac:ForeignExchangeContract/cac:ValidityPeriod/cbc:Description">
+			<sch:extends rule="DescriptionLanguageCheck"/>
+		</sch:rule>
+		<!-- Validate ExchangeRate/ForeignExchangeContract/ContractDocumentReference -->
+		<sch:rule context="doc:Reminder/cac:ReminderLine/cac:ExchangeRate/cac:ForeignExchangeContract/cac:ContractDocumentReference">
+			<sch:extends rule="KnownDocumentReferenceCheck"/>
+		</sch:rule>
+
+	</sch:pattern>
+
+</sch:schema>

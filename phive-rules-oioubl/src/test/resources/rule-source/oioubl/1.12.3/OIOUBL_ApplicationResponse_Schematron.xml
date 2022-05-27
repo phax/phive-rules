@@ -1,0 +1,613 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+******************************************************************************************************************
+
+		OIOUBL Schematron
+
+		publisher:          NemHandel / Erhvervsstyrelsen
+        Repository path:    $HeadURL$
+        File version:       $Revision$
+        Last changed by:    $Author$
+        Last changed date:  $Date$
+
+		Description:        This document is produced as part of the OIOUBL schematron package
+		Rights:             It can be used following the Common Creative Licence
+
+		all terms derived from http://dublincore.org/documents/dcmi-terms/
+
+		For more information, see www.oioubl.info or email support@nemhandel.dk
+
+******************************************************************************************************************
+-->
+
+<sch:schema xmlns:sch="http://purl.oclc.org/dsdl/schematron">
+
+	<sch:ns uri="urn:oasis:names:specification:ubl:schema:xsd:ApplicationResponse-2"          prefix="doc"/>
+	<sch:ns uri="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"    prefix="cac"/>
+	<sch:ns uri="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"        prefix="cbc"/>
+	<sch:ns uri="urn:oasis:names:specification:ubl:schema:xsd:CoreComponentParameters-2"      prefix="ccts"/>
+	<sch:ns uri="urn:oasis:names:specification:ubl:schema:xsd:SpecializedDatatypes-2"         prefix="sdt"/>
+	<sch:ns uri="urn:un:unece:uncefact:data:specification:UnqualifiedDataTypesSchemaModule:2" prefix="udt"/>
+	<!-- [Release 20120615] Check added according to issue: https://bugs.softwareborsen.dk/show_bug.cgi?id=934 -->
+	<sch:ns uri="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2"    prefix="ext"/>
+	<sch:ns uri="http://www.w3.org/2001/XMLSchema"                                            prefix="xs"/>
+
+	<sch:p>Schematron for validating OIOUBL-2.1 documents.</sch:p>
+	<sch:title>Checking OIOUBL-2.1 ApplicationResponse</sch:title>
+
+
+	<!-- Inclusion of OIOUBL codelist variables -->
+	<sch:include href="OIOUBL_Codelist_Schematron.xml"/>
+
+
+	<!-- Global variables -->
+
+
+	<!-- The default phase to execute when validating -->
+	<sch:phase id="default">
+		<sch:active pattern="ublextensions"/>
+		<sch:active pattern="profile"/>
+		<sch:active pattern="applicationresponse"/>
+		<sch:active pattern="signature"/>
+		<sch:active pattern="senderparty"/>
+		<sch:active pattern="receiverparty"/>
+		<sch:active pattern="documentresponse"/>
+	</sch:phase>
+
+
+	<!-- Inclusion of OIOUBL common rules -->
+	<sch:include href="OIOUBL_Common_Schematron.xml"/>
+
+
+	<!-- - - - - - - - - - - -  UBLExtensions - - - - - - - - - - - - -  -->
+	<!-- [Release 20120615] Check added according to issue: https://bugs.softwareborsen.dk/show_bug.cgi?id=934 -->
+	<sch:pattern name="UBLExtensions" id="ublextensions">
+		<sch:p>Pattern for validating the UBLExtensions class</sch:p>
+		<sch:rule context="doc:ApplicationResponse">
+			<sch:extends rule="UBLExtensionsCheck"/>
+		</sch:rule>
+	</sch:pattern>
+
+	<!-- - - - - - - - - - - -  Profile - - - - - - - - - - - - -  -->
+	<sch:pattern name="Profile" id="profile">
+		<sch:p>Pattern for validating root element, Profile and UBL version</sch:p>
+		<!-- Validate root element -->
+		<sch:rule context="/">
+			<sch:assert test="local-name(*) = 'ApplicationResponse'">[F-APR001] Root element must be ApplicationResponse</sch:assert>
+			<!-- [Release 20130315] Check added according to issue: https://bugs.softwareborsen.dk/show_bug.cgi?id=1023 -->
+			<sch:assert test="namespace-uri(*) = 'urn:oasis:names:specification:ubl:schema:xsd:ApplicationResponse-2'">[F-APR056] The documenttype does not match an OIOUBL ApplicationResponse and can not be validated by this schematron.</sch:assert>
+		</sch:rule>
+		<sch:rule context="doc:ApplicationResponse">
+			<!-- Check ProfileID, UBLVersionID and CustomizationID -->
+			<sch:extends rule="UBLVersionIDCheck"/>
+			<sch:extends rule="CustomizationIDCheck"/>
+			<sch:extends rule="ProfileIDCheck"/>
+
+			<!-- Check Profile dependencies (top level) -->
+			<sch:report test="(cbc:ProfileID = 'NONE') and not(cac:DocumentResponse/cac:Response/cbc:ResponseCode = 'TechnicalReject' or cac:DocumentResponse/cac:Response/cbc:ResponseCode = 'ProfileReject')">[F-APR004] ProfileID with value 'NONE' is only allowed when ResponseCode equals 'TechnicalReject' or 'ProfileReject'</sch:report>
+
+			<!-- [Release 20140915] Check added according to issue: https://bugs.softwareborsen.dk/show_bug.cgi?id=1286 -->
+			<sch:report test="(cbc:ProfileID = 'Procurement-TecRes-1.0') and not(cac:DocumentResponse/cac:Response/cbc:ResponseCode = 'TechnicalAccept')">[F-APR057] ProfileID with value 'Procurement-TecRes-1.0' is only allowed when ResponseCode equals 'TechnicalAccept'</sch:report>
+			<sch:report test="(cac:DocumentResponse/cac:Response/cbc:ResponseCode = 'TechnicalAccept') and not (cbc:ProfileID = 'Procurement-TecRes-1.0')">[F-APR058] ResponseCode with value 'TechnicalAccept' is only allowed when ProfileID equals 'Procurement-TecRes-1.0'</sch:report>
+		</sch:rule>
+	</sch:pattern>
+
+	<!-- - - - - - - - - - - -  ApplicationResponse (APR055) - - - - - - - - - - -  -->
+	<sch:pattern name="ApplicationResponse" id="applicationresponse">
+		<sch:p>Pattern for validating the ApplicationResponse structure</sch:p>
+		<sch:rule context="doc:ApplicationResponse">
+			<!-- Check for excluded elements -->
+			<!-- Check for mandatory elements -->
+			<!-- Validate -->
+			<!-- [Release 20111201] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=623 -->
+			<sch:assert test="normalize-space(cbc:ID) != ''">[F-APR005] Invalid ID. Must contain a value</sch:assert>
+			<sch:report test="count(cac:DocumentResponse) &gt; 1">[F-APR054] No more than one DocumentResponse class may be present</sch:report>
+		</sch:rule>
+
+		<!-- Validate UUID -->
+		<sch:rule context="doc:ApplicationResponse/cbc:UUID">
+			<sch:extends rule="UUIDCheck"/>
+		</sch:rule>
+
+		<!-- Validate IssueDate -->
+		<!-- Validate IssueTime -->
+		<!-- Validate ResponseDate -->
+		<!-- Validate ResponseTime -->
+
+		<!-- Validate Note -->
+		<sch:rule context="doc:ApplicationResponse/cbc:Note">
+			<sch:extends rule="NoteCheck"/>
+		</sch:rule>
+	</sch:pattern>
+
+	<!-- - - - - - - - - - - -  Signature - - - - - - - - - - -  -->
+	<sch:pattern name="Signature" id="signature">
+		<sch:p>Pattern for validating the Signature class</sch:p>
+		<sch:rule context="doc:ApplicationResponse/cac:Signature">
+			<!-- Check for excluded elements -->
+			<!-- Check for mandatory elements -->
+			<!-- Validate -->
+			<!-- [Release 20111201] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=623 -->
+			<sch:assert test="normalize-space(cbc:ID) != ''">[F-APR006] Invalid ID. Must contain a value</sch:assert>
+		</sch:rule>
+		<!-- Validate SignatoryParty -->
+		<sch:rule context="doc:ApplicationResponse/cac:Signature/cac:SignatoryParty">
+			<!-- Check for excluded elements -->
+			<sch:extends rule="PartyExcludedCheck"/>
+			<!-- Check for mandatory elements -->
+			<!-- Validate -->
+			<sch:extends rule="PartyNameCheck"/>
+			<sch:extends rule="EndpointIDCheck"/>
+			<sch:report test="count(cac:PartyLegalEntity) &gt; 1">[F-APR039] No more than one PartyLegalEntity class may be present</sch:report>
+		</sch:rule>
+		<!-- Validate SignatoryParty/PartyIdentification -->
+		<sch:rule context="doc:ApplicationResponse/cac:Signature/cac:SignatoryParty/cac:PartyIdentification">
+			<sch:extends rule="PartyIdentificationCheck"/>
+		</sch:rule>
+		<!-- Validate SignatoryParty/PartyName -->
+		<sch:rule context="doc:ApplicationResponse/cac:Signature/cac:SignatoryParty/cac:PartyName">
+			<sch:extends rule="PartyNameLanguageCheck"/>
+		</sch:rule>
+		<!-- Validate SignatoryParty/PostalAddress -->
+		<sch:rule context="doc:ApplicationResponse/cac:Signature/cac:SignatoryParty/cac:PostalAddress">
+			<sch:extends rule="AddressCheck"/>
+		</sch:rule>
+		<!-- Validate SignatoryParty/PhysicalLocation -->
+		<sch:rule context="doc:ApplicationResponse/cac:Signature/cac:SignatoryParty/cac:PhysicalLocation">
+			<sch:extends rule="AddressIDCheck"/>
+		</sch:rule>
+		<!-- Validate SignatoryParty/PhysicalLocation/ValidityPeriod -->
+		<sch:rule context="doc:ApplicationResponse/cac:Signature/cac:SignatoryParty/cac:PhysicalLocation/cac:ValidityPeriod">
+			<sch:extends rule="PeriodCheck"/>
+		</sch:rule>
+		<!-- Validate SignatoryParty/PhysicalLocation/ValidityPeriod/Description -->
+		<sch:rule context="doc:ApplicationResponse/cac:Signature/cac:SignatoryParty/cac:PhysicalLocation/cac:ValidityPeriod/cbc:Description">
+			<sch:extends rule="DescriptionLanguageCheck"/>
+		</sch:rule>
+		<!-- Validate SignatoryParty/PhysicalLocation/Address -->
+		<sch:rule context="doc:ApplicationResponse/cac:Signature/cac:SignatoryParty/cac:PhysicalLocation/cac:Address">
+			<sch:extends rule="AddressCheck"/>
+		</sch:rule>
+		<!-- Validate SignatoryParty/PartyTaxScheme -->
+		<sch:rule context="doc:ApplicationResponse/cac:Signature/cac:SignatoryParty/cac:PartyTaxScheme">
+			<sch:extends rule="PartyTaxSchemeCheck"/>
+		</sch:rule>
+		<!-- Validate SignatoryParty/PartyTaxScheme/TaxScheme -->
+		<sch:rule context="doc:ApplicationResponse/cac:Signature/cac:SignatoryParty/cac:PartyTaxScheme/cac:TaxScheme">
+			<sch:extends rule="TaxSchemeCheck"/>
+		</sch:rule>
+		<!-- Validate SignatoryParty/PartyLegalEntity -->
+		<sch:rule context="doc:ApplicationResponse/cac:Signature/cac:SignatoryParty/cac:PartyLegalEntity">
+			<sch:extends rule="PartyLegalEntityCheck"/>
+		</sch:rule>
+		<!-- Validate SignatoryParty/Contact -->
+		<sch:rule context="doc:ApplicationResponse/cac:Signature/cac:SignatoryParty/cac:Contact">
+			<sch:extends rule="ContactCheck"/>
+		</sch:rule>
+		<!-- Validate SignatoryParty/Person -->
+		<sch:rule context="doc:ApplicationResponse/cac:Signature/cac:SignatoryParty/cac:Person">
+			<sch:extends rule="Person/FirstNameCheck"/>
+		</sch:rule>
+
+		<!-- Validate DigitalSignatureAttachment -->
+		<sch:rule context="doc:ApplicationResponse/cac:Signature/cac:DigitalSignatureAttachment">
+			<sch:extends rule="AttachmentCheck"/>
+		</sch:rule>
+
+		<!-- Validate OriginalDocumentReference -->
+		<sch:rule context="doc:ApplicationResponse/cac:Signature/cac:OriginalDocumentReference">
+			<sch:extends rule="DocumentReferenceCheck"/>
+		</sch:rule>
+
+	</sch:pattern>
+
+	<!-- - - - - - - - - - - -  SenderParty - - - - - - - - - - -  -->
+	<sch:pattern name="SenderParty" id="senderparty">
+		<sch:p>Pattern for validating the SenderParty class</sch:p>
+
+		<!-- - - - - - - - - - - -  Top-level checks - - - - - - - - - - -  -->
+		<sch:rule context="doc:ApplicationResponse/cac:SenderParty">
+			<!-- Check for excluded elements -->
+			<sch:extends rule="PartyExcludedCheck"/>
+
+			<!-- Check for mandatory elements -->
+			<!-- [Release 20111201] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=623 -->
+			<sch:assert test="normalize-space(cbc:EndpointID) != ''">[F-APR008] Invalid EndpointID. Must contain a value</sch:assert>
+
+			<!-- Validate -->
+			<sch:extends rule="PartyNameCheck"/>
+			<sch:extends rule="EndpointIDCheck"/>
+			<sch:assert test="count(cac:PartyLegalEntity) = 1">[F-APR040] One PartyLegalEntity class must be present</sch:assert>
+
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyIdentification - - - - - - - - - - -  -->
+		<sch:rule context="doc:ApplicationResponse/cac:SenderParty/cac:PartyIdentification">
+			<sch:extends rule="PartyIdentificationCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyName - - - - - - - - - - -  -->
+		<sch:rule context="doc:ApplicationResponse/cac:SenderParty/cac:PartyName">
+			<sch:extends rule="PartyNameLanguageCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PostalAddress - - - - - - - - - - -  -->
+		<sch:rule context="doc:ApplicationResponse/cac:SenderParty/cac:PostalAddress">
+			<sch:extends rule="AddressCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PhysicalLocation - - - - - - - - - - -  -->
+		<sch:rule context="doc:ApplicationResponse/cac:SenderParty/cac:PhysicalLocation">
+			<sch:extends rule="AddressIDCheck"/>
+		</sch:rule>
+		<!-- Validate ValidityPeriod -->
+		<sch:rule context="doc:ApplicationResponse/cac:SenderParty/cac:PhysicalLocation/cac:ValidityPeriod">
+			<sch:extends rule="PeriodCheck"/>
+		</sch:rule>
+		<!-- Validate ValidityPeriod/Description -->
+		<sch:rule context="doc:ApplicationResponse/cac:SenderParty/cac:PhysicalLocation/cac:ValidityPeriod/cbc:Description">
+			<sch:extends rule="DescriptionLanguageCheck"/>
+		</sch:rule>
+		<!-- Validate Address -->
+		<sch:rule context="doc:ApplicationResponse/cac:SenderParty/cac:PhysicalLocation/cac:Address">
+			<sch:extends rule="AddressCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyTaxScheme - - - - - - - - - - -  -->
+		<sch:rule context="doc:ApplicationResponse/cac:SenderParty/cac:PartyTaxScheme">
+			<sch:extends rule="PartyTaxSchemeCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyTaxScheme/TaxScheme - - - - - - - - - - -  -->
+		<sch:rule context="doc:ApplicationResponse/cac:SenderParty/cac:PartyTaxScheme/cac:TaxScheme">
+			<sch:extends rule="TaxSchemeCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyLegalEntity - - - - - - - - - - -  -->
+		<sch:rule context="doc:ApplicationResponse/cac:SenderParty/cac:PartyLegalEntity">
+			<sch:extends rule="PartyLegalEntityCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  Contact - - - - - - - - - - -  -->
+		<sch:rule context="doc:ApplicationResponse/cac:SenderParty/cac:Contact">
+			<sch:extends rule="ContactCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  Person - - - - - - - - - - -  -->
+		<sch:rule context="doc:ApplicationResponse/cac:SenderParty/cac:Person">
+			<sch:extends rule="Person/FirstNameCheck"/>
+		</sch:rule>
+	</sch:pattern>
+
+	<!-- - - - - - - - - - - -  ReceiverParty - - - - - - - - - - -  -->
+	<sch:pattern name="ReceiverParty" id="receiverparty">
+		<sch:p>Pattern for validating the ReceiverParty class</sch:p>
+
+		<!-- - - - - - - - - - - -  Top-level checks - - - - - - - - - - -  -->
+		<sch:rule context="doc:ApplicationResponse/cac:ReceiverParty">
+			<!-- Check for excluded elements -->
+			<sch:extends rule="PartyExcludedCheck"/>
+
+			<!-- Check for mandatory elements -->
+			<!-- [Release 20111201] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=623 -->
+			<sch:assert test="normalize-space(cbc:EndpointID) != ''">[F-APR012] Invalid EndpointID. Must contain a value</sch:assert>
+
+			<!-- Validate -->
+			<sch:extends rule="PartyNameCheck"/>
+			<sch:extends rule="EndpointIDCheck"/>
+			<sch:report test="count(cac:PartyLegalEntity) &gt; 1">[F-APR041] No more than one PartyLegalEntity class may be present</sch:report>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyIdentification - - - - - - - - - - -  -->
+		<sch:rule context="doc:ApplicationResponse/cac:ReceiverParty/cac:PartyIdentification">
+			<sch:extends rule="PartyIdentificationCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyName - - - - - - - - - - -  -->
+		<sch:rule context="doc:ApplicationResponse/cac:ReceiverParty/cac:PartyName">
+			<sch:extends rule="PartyNameLanguageCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PostalAddress - - - - - - - - - - -  -->
+		<sch:rule context="doc:ApplicationResponse/cac:ReceiverParty/cac:PostalAddress">
+			<sch:extends rule="AddressCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PhysicalLocation - - - - - - - - - - -  -->
+		<sch:rule context="doc:ApplicationResponse/cac:ReceiverParty/cac:PhysicalLocation">
+			<sch:extends rule="AddressIDCheck"/>
+		</sch:rule>
+		<!-- Validate ValidityPeriod -->
+		<sch:rule context="doc:ApplicationResponse/cac:ReceiverParty/cac:PhysicalLocation/cac:ValidityPeriod">
+			<sch:extends rule="PeriodCheck"/>
+		</sch:rule>
+		<!-- Validate ValidityPeriod/Description -->
+		<sch:rule context="doc:ApplicationResponse/cac:ReceiverParty/cac:PhysicalLocation/cac:ValidityPeriod/cbc:Description">
+			<sch:extends rule="DescriptionLanguageCheck"/>
+		</sch:rule>
+		<!-- Validate Address -->
+		<sch:rule context="doc:ApplicationResponse/cac:ReceiverParty/cac:PhysicalLocation/cac:Address">
+			<sch:extends rule="AddressCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyTaxScheme - - - - - - - - - - -  -->
+		<sch:rule context="doc:ApplicationResponse/cac:ReceiverParty/cac:PartyTaxScheme">
+			<sch:extends rule="PartyTaxSchemeCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyTaxScheme/TaxScheme - - - - - - - - - - -  -->
+		<sch:rule context="doc:ApplicationResponse/cac:ReceiverParty/cac:PartyTaxScheme/cac:TaxScheme">
+			<sch:extends rule="TaxSchemeCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyLegalEntity - - - - - - - - - - -  -->
+		<sch:rule context="doc:ApplicationResponse/cac:ReceiverParty/cac:PartyLegalEntity">
+			<sch:extends rule="PartyLegalEntityCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  Contact - - - - - - - - - - -  -->
+		<sch:rule context="doc:ApplicationResponse/cac:ReceiverParty/cac:Contact">
+			<sch:extends rule="ContactCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  Person - - - - - - - - - - -  -->
+		<sch:rule context="doc:ApplicationResponse/cac:ReceiverParty/cac:Person">
+			<sch:extends rule="Person/FirstNameCheck"/>
+		</sch:rule>
+	</sch:pattern>
+
+	<!-- - - - - - - - - - - -  DocumentResponse - - - - - - - - - - -  -->
+	<sch:pattern name="DocumentResponse" id="documentresponse">
+		<sch:p>Pattern for validating the DocumentResponse class</sch:p>
+
+		<!-- - - - - - - - - - - -  Top-level checks - - - - - - - - - - -  -->
+		<sch:rule context="doc:ApplicationResponse/cac:DocumentResponse">
+			<!-- Check for excluded elements -->
+			<!-- Check for mandatory elements -->
+			<!-- Validate -->
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  Response - - - - - - - - - - -  -->
+		<sch:rule context="doc:ApplicationResponse/cac:DocumentResponse/cac:Response">
+			<!-- Check for excluded elements -->
+			<!-- Check for mandatory elements -->
+			<!-- [Release 20111201] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=623 -->
+			<sch:assert test="normalize-space(cbc:ResponseCode) != ''">[F-APR015] Invalid ResponseCode. Must contain a value</sch:assert>
+			<!-- Validate -->
+			<!-- [Release 20111201] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=623 -->
+			<sch:assert test="normalize-space(cbc:ReferenceID) != ''">[F-APR016] Invalid ReferenceID. Must contain a value</sch:assert>
+		</sch:rule>
+		<!-- Validate ResponseCode -->
+		<sch:rule context="doc:ApplicationResponse/cac:DocumentResponse/cac:Response/cbc:ResponseCode">
+            <!-- [Release 20140915] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=1286 -->
+			<sch:assert test="./@listID = $Response_listID">[F-APR017] Invalid listID. Must be '<sch:value-of select="$Response_listID"/>'</sch:assert>
+			<!-- Codelist contain the value 'ProfileAccept' which is not allowed - so can't use the codelist in the check -->
+            <!-- sch:report test="./@listID = $Response_listID and not (contains($Response, concat(',',.,',')))">[F-APR018] Invalid ResponseCode. Must be a value from the codelist</sch:report -->
+            <sch:assert test="./@listID = $Response_listID and (. = 'TechnicalReject' or . = 'TechnicalAccept' or . = 'ProfileReject' or . = 'BusinessReject' or . = 'BusinessAccept')">[F-APR018] Invalid ResponseCode. Must be a value from the codelist</sch:assert>
+		</sch:rule>
+		<!-- Validate Description -->
+		<sch:rule context="doc:ApplicationResponse/cac:DocumentResponse/cac:Response/cbc:Description">
+			<sch:extends rule="DescriptionLanguageCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  DocumentReference - - - - - - - - - - -  -->
+		<sch:rule context="doc:ApplicationResponse/cac:DocumentResponse/cac:DocumentReference">
+			<!-- Check for excluded elements -->
+			<sch:assert test="count(cbc:DocumentType) = 0">[F-APR021] DocumentType element must be excluded</sch:assert>
+			<!-- Check for mandatory elements -->
+			<!-- [Release 20111201] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=623 -->
+			<sch:assert test="normalize-space(cbc:DocumentTypeCode) != ''">[F-APR024] Invalid DocumentTypeCode. Must contain a value</sch:assert>
+			<!-- Validate -->
+			<!-- [Release 20111201] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=623 -->
+			<sch:assert test="normalize-space(cbc:ID) != ''">[F-APR025] Invalid ID. Must contain a value</sch:assert>
+			<sch:report test="cbc:UUID and not(string-length(string(cbc:UUID)) = 36)">[F-APR026] Invalid UUID. Must be of this form '6E09886B-DC6E-439F-82D1-7CCAC7F4E3B1'</sch:report>
+			<sch:assert test="cbc:DocumentTypeCode/@listID = $ResponseDocType_listID or cbc:DocumentTypeCode/@listID = $ResponseDocType2_listID">[W-APR027] Invalid listID. Must be '<sch:value-of select="$ResponseDocType_listID"/>' or '<sch:value-of select="$ResponseDocType2_listID"/>'</sch:assert>
+			<sch:assert test="cbc:DocumentTypeCode/@listAgencyID = $ResponseDocType_agencyID">[W-APR043] Invalid listAgencyID. Must be '<sch:value-of select="$ResponseDocType_agencyID"/>'</sch:assert>
+			<sch:report test="cbc:DocumentTypeCode/@listID = $ResponseDocType_listID and not (contains($ResponseDocType, concat(',',cbc:DocumentTypeCode,',')))">[F-APR028] Invalid DocumentTypeCode: '<sch:value-of select="cbc:DocumentTypeCode"/>'. Must be a value from the codelist</sch:report>
+			<sch:report test="cbc:DocumentTypeCode/@listID = $ResponseDocType2_listID and not (contains($ResponseDocType2, concat(',',cbc:DocumentTypeCode,',')))">[F-APR055] Invalid DocumentTypeCode: '<sch:value-of select="cbc:DocumentTypeCode"/>'. Must be a value from the codelist</sch:report>
+			<sch:report test="cbc:DocumentTypeCode = 'Order' and (../cac:Response/cbc:ResponseCode = 'BusinessAccept' or ../cac:Response/cbc:ResponseCode = 'BusinessReject')">[F-APR053] Invalid DocumentTypeCode. ApplicationResponse can't be used as response for an Order, when ResponseCode equals BusinessReject or BusinessAccept</sch:report>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  DocumentReference/Attachment - - - - - - - - - - -  -->
+		<sch:rule context="doc:ApplicationResponse/cac:DocumentResponse/cac:DocumentReference/cac:Attachment">
+			<!-- Check for excluded elements -->
+			<!-- Check for mandatory elements -->
+			<!-- Validate -->
+			<sch:report test="cbc:EmbeddedDocumentBinaryObject and cac:ExternalReference">[F-APR045] Use either EmbeddedDocumentBinaryObject or ExternalReference</sch:report>
+		</sch:rule>
+		<!-- Validate EmbeddedDocumentBinaryObject -->
+		<sch:rule context="doc:ApplicationResponse/cac:DocumentResponse/cac:DocumentReference/cac:Attachment/cbc:EmbeddedDocumentBinaryObject">
+			<sch:assert test="./@mimeCode='image/tiff' or ./@mimeCode='image/png' or ./@mimeCode='image/jpeg' or ./@mimeCode='image/gif' or ./@mimeCode='application/pdf' or ./@mimeCode='text/xml'">[F-APR044] Attribute mimeCode must be a value from the codelist</sch:assert>
+		</sch:rule>
+		<!-- Validate ExternalReference -->
+		<sch:rule context="doc:ApplicationResponse/cac:DocumentResponse/cac:DocumentReference/cac:Attachment/cac:ExternalReference">
+			<!-- [Release 20111201] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=623 -->
+			<sch:assert test="normalize-space(cbc:URI) != ''">[F-APR046] Invalid URI. Must contain a value</sch:assert>
+		</sch:rule>
+
+
+		<!-- - - - - - - - - - - -  IssuerParty - - - - - - - - - - -  -->
+		<sch:rule context="doc:ApplicationResponse/cac:DocumentResponse/cac:IssuerParty">
+			<!-- Check for excluded elements -->
+			<sch:extends rule="PartyExcludedCheck"/>
+			<!-- Check for mandatory elements -->
+			<!-- [Release 20111201] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=623 -->
+			<sch:assert test="normalize-space(cbc:EndpointID) != ''">[F-APR047] Invalid EndpointID. Must contain a value</sch:assert>
+			<sch:assert test="count(cac:PartyLegalEntity) = 1">[F-APR048] One PartyLegalEntity class must be present</sch:assert>
+			<!-- Validate -->
+			<sch:extends rule="PartyNameCheck"/>
+			<sch:extends rule="EndpointIDCheck"/>
+		</sch:rule>
+
+		<!--  PartyIdentification -->
+		<sch:rule context="doc:ApplicationResponse/cac:DocumentResponse/cac:IssuerParty/cac:PartyIdentification">
+			<sch:extends rule="PartyIdentificationCheck"/>
+		</sch:rule>
+
+		<!--  PartyName  -->
+		<sch:rule context="doc:ApplicationResponse/cac:DocumentResponse/cac:IssuerParty/cac:PartyName">
+			<sch:extends rule="PartyNameLanguageCheck"/>
+		</sch:rule>
+
+		<!-- PostalAddress -->
+		<sch:rule context="doc:ApplicationResponse/cac:DocumentResponse/cac:IssuerParty/cac:PostalAddress">
+			<sch:extends rule="AddressCheck"/>
+		</sch:rule>
+
+		<!-- PhysicalLocation -->
+		<sch:rule context="doc:ApplicationResponse/cac:DocumentResponse/cac:IssuerParty/cac:PhysicalLocation">
+			<sch:extends rule="AddressIDCheck"/>
+		</sch:rule>
+		<!-- Validate PhysicalLocation/ValidityPeriod -->
+		<sch:rule context="doc:ApplicationResponse/cac:DocumentResponse/cac:IssuerParty/cac:PhysicalLocation/cac:ValidityPeriod">
+			<sch:extends rule="PeriodCheck"/>
+		</sch:rule>
+		<!-- Validate PhysicalLocation/ValidityPeriod/Description -->
+		<sch:rule context="doc:ApplicationResponse/cac:DocumentResponse/cac:IssuerParty/cac:PhysicalLocation/cac:ValidityPeriod/cbc:Description">
+			<sch:extends rule="DescriptionLanguageCheck"/>
+		</sch:rule>
+		<!-- Validate PhysicalLocation/Address -->
+		<sch:rule context="doc:ApplicationResponse/cac:DocumentResponse/cac:IssuerParty/cac:PhysicalLocation/cac:Address">
+			<sch:extends rule="AddressCheck"/>
+		</sch:rule>
+
+		<!-- PartyTaxScheme -->
+		<sch:rule context="doc:ApplicationResponse/cac:DocumentResponse/cac:IssuerParty/cac:PartyTaxScheme">
+			<sch:extends rule="PartyTaxSchemeCheck"/>
+		</sch:rule>
+
+		<!-- PartyTaxScheme/TaxScheme -->
+		<sch:rule context="doc:ApplicationResponse/cac:DocumentResponse/cac:IssuerParty/cac:PartyTaxScheme/cac:TaxScheme">
+			<sch:extends rule="TaxSchemeCheck"/>
+		</sch:rule>
+
+		<!-- PartyLegalEntity -->
+		<sch:rule context="doc:ApplicationResponse/cac:DocumentResponse/cac:IssuerParty/cac:PartyLegalEntity">
+			<sch:extends rule="PartyLegalEntityCheck"/>
+		</sch:rule>
+
+		<!-- Contact -->
+		<sch:rule context="doc:ApplicationResponse/cac:DocumentResponse/cac:IssuerParty/cac:Contact">
+			<sch:extends rule="ContactCheck"/>
+		</sch:rule>
+
+		<!-- Person -->
+		<sch:rule context="doc:ApplicationResponse/cac:DocumentResponse/cac:IssuerParty/cac:Person">
+			<sch:extends rule="Person/FirstNameCheck"/>
+		</sch:rule>
+
+
+		<!-- - - - - - - - - - - -  RecipientParty - - - - - - - - - - -  -->
+		<sch:rule context="doc:ApplicationResponse/cac:DocumentResponse/cac:RecipientParty">
+			<!-- Check for excluded elements -->
+			<sch:extends rule="PartyExcludedCheck"/>
+			<!-- Check for mandatory elements -->
+			<!-- [Release 20111201] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=623 -->
+			<sch:assert test="normalize-space(cbc:EndpointID) != ''">[F-APR049] Invalid EndpointID. Must contain a value</sch:assert>
+			<!-- Validate -->
+			<sch:extends rule="PartyNameCheck"/>
+			<sch:extends rule="EndpointIDCheck"/>
+			<sch:report test="count(cac:PartyLegalEntity) &gt; 1">[F-APR050] No more than one PartyLegalEntity class may be present</sch:report>
+		</sch:rule>
+
+		<!--  PartyIdentification -->
+		<sch:rule context="doc:ApplicationResponse/cac:DocumentResponse/cac:RecipientParty/cac:PartyIdentification">
+			<sch:extends rule="PartyIdentificationCheck"/>
+		</sch:rule>
+
+		<!--  PartyName  -->
+		<sch:rule context="doc:ApplicationResponse/cac:DocumentResponse/cac:RecipientParty/cac:PartyName">
+			<sch:extends rule="PartyNameLanguageCheck"/>
+		</sch:rule>
+
+		<!-- PostalAddress -->
+		<sch:rule context="doc:ApplicationResponse/cac:DocumentResponse/cac:RecipientParty/cac:PostalAddress">
+			<sch:extends rule="AddressCheck"/>
+		</sch:rule>
+
+		<!-- PhysicalLocation -->
+		<sch:rule context="doc:ApplicationResponse/cac:DocumentResponse/cac:RecipientParty/cac:PhysicalLocation">
+			<sch:extends rule="AddressIDCheck"/>
+		</sch:rule>
+		<!-- Validate PhysicalLocation/ValidityPeriod -->
+		<sch:rule context="doc:ApplicationResponse/cac:DocumentResponse/cac:RecipientParty/cac:PhysicalLocation/cac:ValidityPeriod">
+			<sch:extends rule="PeriodCheck"/>
+		</sch:rule>
+		<!-- Validate PhysicalLocation/ValidityPeriod/Description -->
+		<sch:rule context="doc:ApplicationResponse/cac:DocumentResponse/cac:RecipientParty/cac:PhysicalLocation/cac:ValidityPeriod/cbc:Description">
+			<sch:extends rule="DescriptionLanguageCheck"/>
+		</sch:rule>
+		<!-- Validate PhysicalLocation/Address -->
+		<sch:rule context="doc:ApplicationResponse/cac:DocumentResponse/cac:RecipientParty/cac:PhysicalLocation/cac:Address">
+			<sch:extends rule="AddressCheck"/>
+		</sch:rule>
+
+		<!-- PartyTaxScheme -->
+		<sch:rule context="doc:ApplicationResponse/cac:DocumentResponse/cac:RecipientParty/cac:PartyTaxScheme">
+			<sch:extends rule="PartyTaxSchemeCheck"/>
+		</sch:rule>
+
+		<!-- PartyTaxScheme/TaxScheme -->
+		<sch:rule context="doc:ApplicationResponse/cac:DocumentResponse/cac:RecipientParty/cac:PartyTaxScheme/cac:TaxScheme">
+			<sch:extends rule="TaxSchemeCheck"/>
+		</sch:rule>
+
+		<!-- PartyLegalEntity -->
+		<sch:rule context="doc:ApplicationResponse/cac:DocumentResponse/cac:RecipientParty/cac:PartyLegalEntity">
+			<sch:extends rule="PartyLegalEntityCheck"/>
+		</sch:rule>
+
+		<!-- Contact -->
+		<sch:rule context="doc:ApplicationResponse/cac:DocumentResponse/cac:RecipientParty/cac:Contact">
+			<sch:extends rule="ContactCheck"/>
+		</sch:rule>
+
+		<!-- Person -->
+		<sch:rule context="doc:ApplicationResponse/cac:DocumentResponse/cac:RecipientParty/cac:Person">
+			<sch:extends rule="Person/FirstNameCheck"/>
+		</sch:rule>
+
+
+		<!-- - - - - - - - - - - -  LineResponse - - - - - - - - - - -  -->
+		<sch:rule context="doc:ApplicationResponse/cac:DocumentResponse/cac:LineResponse">
+			<!-- Check for excluded elements -->
+			<!-- Check for mandatory elements -->
+			<!-- Validate -->
+			<sch:report test="count(cac:Response) &gt; 1">[F-APR051] No more than one Response class may be present</sch:report>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  LineResponse/LineReference - - - - - - - - - - -  -->
+		<sch:rule context="doc:ApplicationResponse/cac:DocumentResponse/cac:LineResponse/cac:LineReference">
+			<!-- Check for excluded elements -->
+			<sch:assert test="count(cac:DocumentReference) = 0">[F-APR029] DocumentReference class must be excluded</sch:assert>
+			<!-- Check for mandatory elements -->
+			<!-- Validate -->
+			<!-- [Release 20111201] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=623 -->
+			<sch:assert test="normalize-space(cbc:LineID) != ''">[F-APR030] Invalid LineID. Must contain a value</sch:assert>
+			<sch:report test="cbc:UUID and not(string-length(string(cbc:UUID)) = 36)">[F-APR031] Invalid UUID. Must be of this form '6E09886B-DC6E-439F-82D1-7CCAC7F4E3B1'</sch:report>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  LineResponse/Response - - - - - - - - - - -  -->
+		<sch:rule context="doc:ApplicationResponse/cac:DocumentResponse/cac:LineResponse/cac:Response">
+			<!-- Check for excluded elements -->
+			<!-- Check for mandatory elements -->
+			<!-- [Release 20111201] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=623 -->
+			<sch:assert test="normalize-space(cbc:ResponseCode) != ''">[F-APR032] Invalid ResponseCode. Must contain a value</sch:assert>
+			<!-- Validate -->
+			<!-- [Release 20111201] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=623 -->
+			<sch:assert test="normalize-space(cbc:ReferenceID) != ''">[F-APR033] Invalid ReferenceID. Must contain a value</sch:assert>
+		</sch:rule>
+		<!-- Validate ResponseCode -->
+		<sch:rule context="doc:ApplicationResponse/cac:DocumentResponse/cac:LineResponse/cac:Response/cbc:ResponseCode">
+			<sch:assert test="./@listID = 'urn:oioubl:codelist:lineresponsecode-1.1'">[W-APR034] Invalid listID. Must be 'urn:oioubl:codelist:lineresponsecode-1.1'</sch:assert>
+			<sch:assert test="./@listAgencyID = '320'">[W-APR052] Invalid listAgencyID. Must be '320'</sch:assert>
+			<sch:assert test=". = 'BusinessReject' or . = 'BusinessAccept'">[F-APR035] Invalid ResponseCode. Must be a value from the codelist</sch:assert>
+		</sch:rule>
+		<!-- Validate Description -->
+		<sch:rule context="doc:ApplicationResponse/cac:DocumentResponse/cac:LineResponse/cac:Response/cbc:Description">
+			<sch:extends rule="DescriptionLanguageCheck"/>
+		</sch:rule>
+	</sch:pattern>
+
+</sch:schema>
