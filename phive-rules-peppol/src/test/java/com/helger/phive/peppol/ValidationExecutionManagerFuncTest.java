@@ -61,7 +61,9 @@ public final class ValidationExecutionManagerFuncTest
 
       // Read as desired type
       final IValidationSourceXML aSource = ValidationSourceXML.create (aTestFile.getResource ());
-      final ValidationResultList aErrors = ValidationExecutionManager.executeValidation (aExecutors, aSource, Locale.US);
+      final ValidationResultList aErrors = ValidationExecutionManager.executeValidation (aExecutors,
+                                                                                         aSource,
+                                                                                         Locale.US);
       if (aTestFile.isGoodCase ())
         assertTrue (aErrors.getAllErrors ().toString (), aErrors.containsNoError ());
       else
@@ -72,19 +74,27 @@ public final class ValidationExecutionManagerFuncTest
   @Test
   public void testLargeFile ()
   {
-    final IValidationExecutorSet <IValidationSourceXML> aExecutors = CTestFiles.VES_REGISTRY.getOfID (PeppolValidation3_13_0.VID_OPENPEPPOL_INVOICE_V3);
+    final IValidationExecutorSet <IValidationSourceXML> aExecutors = CTestFiles.VES_REGISTRY.getOfID (PeppolValidation3_14_0.VID_OPENPEPPOL_INVOICE_UBL_V3);
     assertNotNull (aExecutors);
 
     for (final String s : new String [] { "22m", "50m", "70m", "100m", "125m", "200m" })
     {
-      final IReadableResource aRes = new FileSystemResource ("src/test/resources/test-files/openpeppol/base-example-large-" + s + ".xml");
+      final IReadableResource aRes = new FileSystemResource ("src/test/resources/test-files/openpeppol/base-example-large-" +
+                                                             s +
+                                                             ".xml");
       if (aRes.exists ())
       {
-        LOGGER.info ("Validating " + aRes.getPath () + " against " + aExecutors.executors ().size () + " validation layers");
+        LOGGER.info ("Validating " +
+                     aRes.getPath () +
+                     " against " +
+                     aExecutors.executors ().size () +
+                     " validation layers");
 
         // Read as desired type
         final IValidationSourceXML aSource = ValidationSourceXML.create (aRes);
-        final ValidationResultList aErrors = ValidationExecutionManager.executeValidation (aExecutors, aSource, Locale.US);
+        final ValidationResultList aErrors = ValidationExecutionManager.executeValidation (aExecutors,
+                                                                                           aSource,
+                                                                                           Locale.US);
         assertTrue (aErrors.getAllErrors ().toString (), aErrors.containsNoError ());
       }
       else
