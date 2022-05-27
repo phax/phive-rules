@@ -180,6 +180,8 @@ Alternate usage as a Maven BOM:
 
 * v2.1.15 - work in progress
     * Added Peppol A-NZ-PEPPOL 1.0.7 rules (deprecated version 1.0.6)
+    * Moved Peppol A-NZ-PEPPOL 1.0.5 rules from `phive-rules-peppol` to `phive-rules-peppol-legacy`
+    * Deprecated Peppol 3.13.0 rules
 * v2.1.14 - 2022-05-19
     * Fixed the EN 16931 UBL 1.3.8 XSLT version. That does not impact the Peppol May 2022 release.
     * Added support for CIUS-RO 1.0.3 - thanks to @yleider for the PR :heart:
