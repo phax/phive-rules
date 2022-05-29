@@ -1,0 +1,877 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<UtilityStatement xmlns="urn:oioubl:names:specification:oioubl:schema:xsd:UtilityStatement-2"
+                  xmlns:cac="urn:oioubl:names:specification:oioubl:schema:xsd:CommonAggregateComponents-2"
+                  xmlns:cbc="urn:oioubl:names:specification:oioubl:schema:xsd:CommonBasicComponents-2"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+    <cbc:UBLVersionID>2.1</cbc:UBLVersionID>
+    <cbc:CustomizationID>OIOUBL-2.1</cbc:CustomizationID>
+    <cbc:ProfileID schemeAgencyID="320" schemeID="urn:oioubl:id:profileid-1.3">Reference-Utility-1.0</cbc:ProfileID>
+    <cbc:ID>61014906x-1</cbc:ID>
+    <cbc:CopyIndicator>false</cbc:CopyIndicator>
+    <cbc:UUID>9756b4d0-8815-1029-857a-e388fe63f488</cbc:UUID>
+    <cbc:IssueDate>2007-12-12</cbc:IssueDate>
+
+    <!-- Der er tale om en ELspecifikation -->
+    <cbc:UtilityStatementTypeCode listAgencyID="320" listID="urn:oioubl:codelist:utilitystatementtypecode-1.0">Electricity</cbc:UtilityStatementTypeCode>
+    <cbc:DocumentCurrencyCode>DKK</cbc:DocumentCurrencyCode>
+
+    <!-- Referencen til OIOUBL faktura -->
+    <cac:ParentDocumentReference>
+        <cbc:ID schemeAgencyID="Elfabrikken Distribution A/S">61014906x</cbc:ID>
+        <cbc:UUID>9756b4d0-8815-1029-857a-e388fe63f499</cbc:UUID>
+        <cbc:IssueDate>2007-12-12</cbc:IssueDate>
+        <cbc:DocumentTypeCode listAgencyID="320" listID="urn:oioubl:codelist:responsedocumenttypecode-1.2">Invoice</cbc:DocumentTypeCode>
+    </cac:ParentDocumentReference>
+
+    <!-- Afsender) -->
+    <cac:SenderParty>
+        <cbc:EndpointID schemeAgencyID="9" schemeID="GLN">5790000012755</cbc:EndpointID>
+
+        <cac:PartyIdentification>
+            <cbc:ID schemeID="DK:CVR">DK87654321</cbc:ID>
+        </cac:PartyIdentification>
+
+        <cac:PartyName>
+            <cbc:Name>Elfabrikken Distribution A/S</cbc:Name>
+        </cac:PartyName>
+
+        <cac:PostalAddress>
+            <cbc:AddressFormatCode listAgencyID="320" listID="urn:oioubl:codelist:addressformatcode-1.1">StructuredDK</cbc:AddressFormatCode>
+            <cbc:StreetName>Kraftværksvej</cbc:StreetName>
+            <cbc:BuildingNumber>1</cbc:BuildingNumber>
+            <cbc:CityName>Elby</cbc:CityName>
+            <cbc:PostalZone>1234</cbc:PostalZone>
+            <cac:Country>
+                <cbc:IdentificationCode>DK</cbc:IdentificationCode>
+            </cac:Country>
+        </cac:PostalAddress>
+
+        <!-- Moms -->
+        <cac:PartyTaxScheme>
+            <cbc:CompanyID schemeID="DK:SE">DK87654321</cbc:CompanyID>
+            <cac:TaxScheme>
+                <cbc:ID schemeAgencyID="320" schemeID="urn:oioubl:id:taxschemeid-1.2">63</cbc:ID>
+                <cbc:Name>Moms</cbc:Name>
+            </cac:TaxScheme>
+        </cac:PartyTaxScheme>
+
+        <!-- Elafgift -->
+        <cac:PartyTaxScheme>
+            <cbc:CompanyID schemeID="DK:SE">DK87654321</cbc:CompanyID>
+            <cac:TaxScheme>
+                <cbc:ID schemeAgencyID="320" schemeID="urn:oioubl:id:taxschemeid-1.2">21</cbc:ID>
+                <cbc:Name>Elafgift</cbc:Name>
+                <cbc:TaxTypeCode listAgencyID="320" listID="urn:oioubl:codelist:taxtypecode-1.1">StandardRated</cbc:TaxTypeCode>
+            </cac:TaxScheme>
+        </cac:PartyTaxScheme>
+
+        <!-- Eldistributionsbidrag -->
+        <cac:PartyTaxScheme>
+            <cbc:CompanyID schemeID="DK:SE">DK87654321</cbc:CompanyID>
+            <cac:TaxScheme>
+                <cbc:ID schemeAgencyID="320" schemeID="urn:oioubl:id:taxschemeid-1.2">21d</cbc:ID>
+                <cbc:Name>Eldistributionsbidrag</cbc:Name>
+                <cbc:TaxTypeCode listAgencyID="320" listID="urn:oioubl:codelist:taxtypecode-1.1">StandardRated</cbc:TaxTypeCode>
+            </cac:TaxScheme>
+        </cac:PartyTaxScheme>
+
+        <!-- CO2 afgift EL -->
+        <cac:PartyTaxScheme>
+            <cbc:CompanyID schemeID="DK:SE">DK87654321</cbc:CompanyID>
+            <cac:TaxScheme>
+                <cbc:ID schemeAgencyID="320" schemeID="urn:oioubl:id:taxschemeid-1.2">41</cbc:ID>
+                <cbc:Name>CO2-afgift/El</cbc:Name>
+                <cbc:TaxTypeCode listAgencyID="320" listID="urn:oioubl:codelist:taxtypecode-1.1">StandardRated</cbc:TaxTypeCode>
+            </cac:TaxScheme>
+        </cac:PartyTaxScheme>
+
+        <cac:PartyLegalEntity>
+            <cbc:RegistrationName>Elfabrikken Distribution A/S</cbc:RegistrationName>
+            <cbc:CompanyID schemeID="DK:CVR">DK87654321</cbc:CompanyID>
+        </cac:PartyLegalEntity>
+
+        <cac:Contact>
+            <cbc:ID>n/a</cbc:ID>
+            <cbc:Telephone>99887766</cbc:Telephone>
+            <cbc:ElectronicMail>kundeservice@elfabrikken.dk</cbc:ElectronicMail>
+        </cac:Contact>
+    </cac:SenderParty>
+
+    <!-- Modtager -->
+    <cac:ReceiverParty>
+        <cbc:EndpointID schemeAgencyID="9" schemeID="GLN">5798009811578</cbc:EndpointID>
+
+        <cac:PartyIdentification>
+            <cbc:ID schemeID="DK:CVR">DK12345678</cbc:ID>
+        </cac:PartyIdentification>
+
+        <cac:PartyName>
+            <cbc:Name>Finn Christensen</cbc:Name>
+        </cac:PartyName>
+
+        <cac:PostalAddress>
+            <cbc:AddressFormatCode listAgencyID="320" listID="urn:oioubl:codelist:addressformatcode-1.1">StructuredDK</cbc:AddressFormatCode>
+            <cbc:StreetName>Oioxmlgade</cbc:StreetName>
+            <cbc:BuildingNumber>3</cbc:BuildingNumber>
+            <cbc:CityName>København Ø</cbc:CityName>
+            <cbc:PostalZone>2100</cbc:PostalZone>
+            <cac:Country>
+                <cbc:IdentificationCode>DK</cbc:IdentificationCode>
+            </cac:Country>
+        </cac:PostalAddress>
+
+        <cac:Contact>
+            <!-- Kundenr hos Elfabrikken -->
+            <cbc:ID>6001119xx</cbc:ID>
+            <cbc:Name>Finn Christensen</cbc:Name>
+        </cac:Contact>
+    </cac:ReceiverParty>
+
+
+    <!-- Specifikation pr. forbrugssted (Kan gentages n-gange) -->
+    <!-- Nr. 1 -->
+    <cac:SubscriberConsumption>
+
+        <!-- Kontonummer -->
+        <cbc:ConsumptionID>40002905x</cbc:ConsumptionID>
+
+        <!-- Type for opgørelsen -->
+        <cbc:SpecificationTypeCode listAgencyID="320" listID="urn:oioubl:codelist:specificationtypecode-1.0">YearlyStatement</cbc:SpecificationTypeCode>
+
+        <cbc:Note>Sådan har vi beregnet din årsopgørelse.</cbc:Note>
+
+        <!-- Forbrugssted -->
+        <cac:UtilityConsumptionPoint>
+
+            <!-- Aftagenummer (GLN, GSRN etc.) -->
+            <cbc:ID schemeAgencyID="n/a" schemeID="ZZZ">741101371xx</cbc:ID>
+
+            <cbc:TotalDeliveredQuantity unitCode="KWH">5761.00</cbc:TotalDeliveredQuantity>
+
+            <!-- Installationsadresse (leveringssted) -->
+            <cac:Address>
+                <cbc:AddressFormatCode listAgencyID="320" listID="urn:oioubl:codelist:addressformatcode-1.1">StructuredDK</cbc:AddressFormatCode>
+                <cbc:StreetName>Oioxmlgade</cbc:StreetName>
+                <cbc:BuildingNumber>3</cbc:BuildingNumber>
+                <cbc:CityName>København Ø</cbc:CityName>
+                <cbc:PostalZone>2100</cbc:PostalZone>
+                <cac:Country>
+                    <cbc:IdentificationCode>DK</cbc:IdentificationCode>
+                </cac:Country>
+            </cac:Address>
+
+            <!-- Måler information (Kan gentages n-gange) -->
+            <!-- Nr. 1 -->
+            <cac:UtilityMeter>
+
+                <cbc:MeterNumber>61722x</cbc:MeterNumber>
+
+                <cbc:MeterConstant>1.000</cbc:MeterConstant>
+
+                <cbc:MeterConstantCode listAgencyID="320" listID="urn:oioubl:codelist:meterconstantcode-1.0">Factor</cbc:MeterConstantCode>
+
+                <cbc:TotalDeliveredQuantity unitCode="KWH">5761.00</cbc:TotalDeliveredQuantity>
+
+                <cbc:MeterReadingMethodCode listAgencyID="320" listID="urn:oioubl:codelist:meterreadingmethodcode-1.0">WEB</cbc:MeterReadingMethodCode>
+
+                <!-- Måleraflæsning (Kan gentages n-gange) -->
+                <!-- Nr. 1 -->
+                <cac:MeterReading>
+
+                    <!-- TypeCode (Electricity, Heating, Water etc.) -->
+                    <cbc:MeterReadingTypeCode listAgencyID="320" listID="urn:oioubl:codelist:meterreadingtypecode-1.0">Electricity</cbc:MeterReadingTypeCode>
+                    <cbc:PreviousMeterReadingDate>2006-12-01</cbc:PreviousMeterReadingDate>
+                    <cbc:PreviousMeterQuantity unitCode="KWH">122604.00</cbc:PreviousMeterQuantity>
+                    <cbc:LatestMeterReadingDate>2007-12-01</cbc:LatestMeterReadingDate>
+                    <cbc:LatestMeterQuantity unitCode="KWH">128365.00</cbc:LatestMeterQuantity>
+                    <cbc:DeliveredQuantity unitCode="KWH">5761.00</cbc:DeliveredQuantity>
+                </cac:MeterReading>
+
+            </cac:UtilityMeter>
+
+        </cac:UtilityConsumptionPoint>
+
+
+        <!-- Aconto betaling (Kan gentages n-gange) -->
+        <!-- Nr. 1 -->
+        <cac:OnAccountPayment>
+
+            <cbc:EstimatedConsumedQuantity unitCode="KWH">5745.00</cbc:EstimatedConsumedQuantity>
+
+            <cbc:Note>Vi tager forbehold for prisændringer. Du modtager din næste årsopgørelse om cirka et år.</cbc:Note>
+
+            <cac:Period>
+                <cbc:StartDate>2007-12-02</cbc:StartDate>
+                <cbc:EndDate>2008-11-30</cbc:EndDate>
+            </cac:Period>
+
+            <!-- Betalingerne (Kan gentages n-gange) -->
+            <!-- Nr. 1 -->
+            <cac:PlannedSettlement>
+                <cbc:DueDate>2008-03-07</cbc:DueDate>
+                <cbc:Amount currencyID="DKK">2474.60</cbc:Amount>
+            </cac:PlannedSettlement>
+            <!-- Nr. 2 -->
+            <cac:PlannedSettlement>
+                <cbc:DueDate>2008-06-09</cbc:DueDate>
+                <cbc:Amount currencyID="DKK">2474.60</cbc:Amount>
+            </cac:PlannedSettlement>
+            <!-- Nr. 3 -->
+            <cac:PlannedSettlement>
+                <cbc:DueDate>2008-09-08</cbc:DueDate>
+                <cbc:Amount currencyID="DKK">2474.60</cbc:Amount>
+            </cac:PlannedSettlement>
+
+        </cac:OnAccountPayment>
+
+
+        <!-- Forbrug -->
+        <cac:Consumption>
+
+
+            <cac:MainPeriod>
+                <cbc:StartDate>2006-12-01</cbc:StartDate>
+                <cbc:EndDate>2007-12-01</cbc:EndDate>
+                <cbc:Description>Opgørelsen gælder fra den 1. december 2006 til 1. december 2007.</cbc:Description>
+            </cac:MainPeriod>
+
+            <!-- Afgiftsspecifikation - topniveau -->
+            <!-- Elafgift -->
+            <cac:TaxTotal>
+                <cbc:TaxAmount currencyID="DKK">3087.90</cbc:TaxAmount>
+                <cac:TaxSubtotal>
+                    <cbc:TaxableAmount currencyID="DKK">3087.90</cbc:TaxableAmount>
+                    <cbc:TaxAmount currencyID="DKK">3087.90</cbc:TaxAmount>
+                    <cac:TaxCategory>
+                        <cbc:ID schemeAgencyID="320" schemeID="urn:oioubl:id:taxcategoryid-1.1">Excise</cbc:ID>
+                        <cbc:BaseUnitMeasure unitCode="EA">1</cbc:BaseUnitMeasure>
+                        <cbc:PerUnitAmount currencyID="DKK">3087.90</cbc:PerUnitAmount>
+                        <cac:TaxScheme>
+                            <cbc:ID schemeAgencyID="320" schemeID="urn:oioubl:id:taxschemeid-1.2">21</cbc:ID>
+                            <cbc:Name>Elafgift</cbc:Name>
+                            <cbc:TaxTypeCode listAgencyID="320" listID="urn:oioubl:codelist:taxtypecode-1.1">StandardRated</cbc:TaxTypeCode>
+                        </cac:TaxScheme>
+                    </cac:TaxCategory>
+                </cac:TaxSubtotal>
+            </cac:TaxTotal>
+            <!-- Eldistributionsbidrag -->
+            <cac:TaxTotal>
+                <cbc:TaxAmount currencyID="DKK">230.44</cbc:TaxAmount>
+                <cac:TaxSubtotal>
+                    <cbc:TaxableAmount currencyID="DKK">230.44</cbc:TaxableAmount>
+                    <cbc:TaxAmount currencyID="DKK">230.44</cbc:TaxAmount>
+                    <cac:TaxCategory>
+                        <cbc:ID schemeAgencyID="320" schemeID="urn:oioubl:id:taxcategoryid-1.1">Excise</cbc:ID>
+                        <cbc:BaseUnitMeasure unitCode="EA">1</cbc:BaseUnitMeasure>
+                        <cbc:PerUnitAmount currencyID="DKK">230.44</cbc:PerUnitAmount>
+                        <cac:TaxScheme>
+                            <cbc:ID schemeAgencyID="320" schemeID="urn:oioubl:id:taxschemeid-1.2">21d</cbc:ID>
+                            <cbc:Name>Eldistributionsbidrag</cbc:Name>
+                            <cbc:TaxTypeCode listAgencyID="320" listID="urn:oioubl:codelist:taxtypecode-1.1">StandardRated</cbc:TaxTypeCode>
+                        </cac:TaxScheme>
+                    </cac:TaxCategory>
+                </cac:TaxSubtotal>
+            </cac:TaxTotal>
+            <!-- CO2 afgift -->
+            <cac:TaxTotal>
+                <cbc:TaxAmount currencyID="DKK">518.49</cbc:TaxAmount>
+                <cac:TaxSubtotal>
+                    <cbc:TaxableAmount currencyID="DKK">518.49</cbc:TaxableAmount>
+                    <cbc:TaxAmount currencyID="DKK">518.49</cbc:TaxAmount>
+                    <cac:TaxCategory>
+                        <cbc:ID schemeAgencyID="320" schemeID="urn:oioubl:id:taxcategoryid-1.1">Excise</cbc:ID>
+                        <cbc:BaseUnitMeasure unitCode="EA">1</cbc:BaseUnitMeasure>
+                        <cbc:PerUnitAmount currencyID="DKK">518.49</cbc:PerUnitAmount>
+                        <cac:TaxScheme>
+                            <cbc:ID schemeAgencyID="320" schemeID="urn:oioubl:id:taxschemeid-1.2">41</cbc:ID>
+                            <cbc:Name>CO2-afgift/El</cbc:Name>
+                            <cbc:TaxTypeCode listAgencyID="320" listID="urn:oioubl:codelist:taxtypecode-1.1">StandardRated</cbc:TaxTypeCode>
+                        </cac:TaxScheme>
+                    </cac:TaxCategory>
+                </cac:TaxSubtotal>
+            </cac:TaxTotal>
+            <!-- Moms -->
+            <cac:TaxTotal>
+                <cbc:TaxAmount currencyID="DKK">2103.60</cbc:TaxAmount>
+                <cac:TaxSubtotal>
+                    <cbc:TaxableAmount currencyID="DKK">8414.41</cbc:TaxableAmount>
+                    <cbc:TaxAmount currencyID="DKK">2103.60</cbc:TaxAmount>
+                    <cac:TaxCategory>
+                        <cbc:ID schemeAgencyID="320" schemeID="urn:oioubl:id:taxcategoryid-1.1">StandardRated</cbc:ID>
+                        <cbc:Percent>25</cbc:Percent>
+                        <cac:TaxScheme>
+                            <cbc:ID schemeAgencyID="320" schemeID="urn:oioubl:id:taxschemeid-1.2">63</cbc:ID>
+                            <cbc:Name>Moms</cbc:Name>
+                        </cac:TaxScheme>
+                    </cac:TaxCategory>
+                </cac:TaxSubtotal>
+            </cac:TaxTotal>
+
+            <cac:EnergyWaterSupply>
+
+                <!-- Forbrugsrapport (Kan gentages n-gange) -->
+                <!-- Nr. 1 -->
+                <cac:ConsumptionReport>
+
+                    <cbc:ID>n/a</cbc:ID>
+
+                    <cbc:TotalConsumedQuantity>20479.00</cbc:TotalConsumedQuantity>
+
+                    <cac:Period>
+                        <cbc:StartDate>2004-01-01</cbc:StartDate>
+                        <cbc:EndDate>2007-01-01</cbc:EndDate>
+                    </cac:Period>
+
+                    <!-- Forbrugsudvikling (Kan gentages n-gange) -->
+                    <!-- Nr. 1 -->
+                    <cac:ConsumptionHistory>
+                        <cbc:Quantity unitCode="KWH">7621.00</cbc:Quantity>
+                        <cbc:Description>2004/2005</cbc:Description>
+                        <cac:Period>
+                            <cbc:StartDate>2004-01-01</cbc:StartDate>
+                            <cbc:EndDate>2005-01-01</cbc:EndDate>
+                        </cac:Period>
+                    </cac:ConsumptionHistory>
+                    <!-- Nr. 2 -->
+                    <cac:ConsumptionHistory>
+                        <cbc:Quantity unitCode="KWH">7113.00</cbc:Quantity>
+                        <cbc:Description>2005/2006</cbc:Description>
+                        <cac:Period>
+                            <cbc:StartDate>2005-01-01</cbc:StartDate>
+                            <cbc:EndDate>2006-01-01</cbc:EndDate>
+                        </cac:Period>
+                    </cac:ConsumptionHistory>
+                    <!-- Nr. 3 -->
+                    <cac:ConsumptionHistory>
+                        <cbc:Quantity unitCode="KWH">5745.00</cbc:Quantity>
+                        <cbc:Description>2006/2007</cbc:Description>
+                        <cac:Period>
+                            <cbc:StartDate>2006-01-01</cbc:StartDate>
+                            <cbc:EndDate>2007-01-01</cbc:EndDate>
+                        </cac:Period>
+                    </cac:ConsumptionHistory>
+
+                </cac:ConsumptionReport>
+
+
+                <!-- Afgiftsspecifikation - periode niveau -->
+                <!-- (afgifter ialt i perioden, opkrævet aconto, difference) -->
+                <!-- Nr. 1 -->
+                <cac:EnergyTaxReport>
+                    <cbc:TaxEnergyAmount currencyID="DKK">3087.90</cbc:TaxEnergyAmount>
+                    <cbc:TaxEnergyOnAccountAmount currencyID="DKK">2855.40</cbc:TaxEnergyOnAccountAmount>
+                    <cbc:TaxEnergyBalanceAmount currencyID="DKK">232.49</cbc:TaxEnergyBalanceAmount>
+                    <cac:TaxScheme>
+                        <cbc:ID schemeAgencyID="320" schemeID="urn:oioubl:id:taxschemeid-1.2">21</cbc:ID>
+                        <cbc:Name>Elafgift</cbc:Name>
+                        <cbc:TaxTypeCode listAgencyID="320" listID="urn:oioubl:codelist:taxtypecode-1.1">StandardRated</cbc:TaxTypeCode>
+                    </cac:TaxScheme>
+                </cac:EnergyTaxReport>
+                <!-- Nr. 2 -->
+                <cac:EnergyTaxReport>
+                    <cbc:TaxEnergyAmount currencyID="DKK">230.44</cbc:TaxEnergyAmount>
+                    <cbc:TaxEnergyOnAccountAmount currencyID="DKK">213.16</cbc:TaxEnergyOnAccountAmount>
+                    <cbc:TaxEnergyBalanceAmount currencyID="DKK">17.35</cbc:TaxEnergyBalanceAmount>
+                    <cac:TaxScheme>
+                        <cbc:ID schemeAgencyID="320" schemeID="urn:oioubl:id:taxschemeid-1.2">21d</cbc:ID>
+                        <cbc:Name>Eldistributionsbidrag</cbc:Name>
+                        <cbc:TaxTypeCode listAgencyID="320" listID="urn:oioubl:codelist:taxtypecode-1.1">StandardRated</cbc:TaxTypeCode>
+                    </cac:TaxScheme>
+                </cac:EnergyTaxReport>
+                <!-- Nr. 3 -->
+                <cac:EnergyTaxReport>
+                    <cbc:TaxEnergyAmount currencyID="DKK">518.49</cbc:TaxEnergyAmount>
+                    <cbc:TaxEnergyOnAccountAmount currencyID="DKK">479.40</cbc:TaxEnergyOnAccountAmount>
+                    <cbc:TaxEnergyBalanceAmount currencyID="DKK">39.03</cbc:TaxEnergyBalanceAmount>
+                    <cac:TaxScheme>
+                        <cbc:ID schemeAgencyID="320" schemeID="urn:oioubl:id:taxschemeid-1.2">41</cbc:ID>
+                        <cbc:Name>CO2-afgift/El</cbc:Name>
+                        <cbc:TaxTypeCode listAgencyID="320" listID="urn:oioubl:codelist:taxtypecode-1.1">StandardRated</cbc:TaxTypeCode>
+                    </cac:TaxScheme>
+                </cac:EnergyTaxReport>
+                <!-- Nr. 4 -->
+                <cac:EnergyTaxReport>
+                    <cbc:TaxEnergyAmount currencyID="DKK">2103.60</cbc:TaxEnergyAmount>
+                    <cbc:TaxEnergyOnAccountAmount currencyID="DKK">1932.86</cbc:TaxEnergyOnAccountAmount>
+                    <cbc:TaxEnergyBalanceAmount currencyID="DKK">170.74</cbc:TaxEnergyBalanceAmount>
+                    <cac:TaxScheme>
+                        <cbc:ID schemeAgencyID="320" schemeID="urn:oioubl:id:taxschemeid-1.2">63</cbc:ID>
+                        <cbc:Name>Moms</cbc:Name>
+                    </cac:TaxScheme>
+                </cac:EnergyTaxReport>
+
+
+                <!-- Forbrugsgennemsnit (Kan gentages n-gange) -->
+                <!-- Nr. 1 -->
+                <cac:ConsumptionAverage>
+                    <cbc:AverageAmount currencyID="DKK">1.65</cbc:AverageAmount>
+                    <cbc:Description>Gennemsnitspris inklusiv moms pr. kilowatt-time i regningsperioden.</cbc:Description>
+                </cac:ConsumptionAverage>
+                <!-- Nr. 2 -->
+                <cac:ConsumptionAverage>
+                    <cbc:AverageAmount currencyID="DKK">1.68</cbc:AverageAmount>
+                    <cbc:Description>Gennemsnitspris inklusiv moms pr. kilowatt-time i den foregående regningsperiode.</cbc:Description>
+                </cac:ConsumptionAverage>
+
+            </cac:EnergyWaterSupply>
+
+            <!-- Beløbstotal - topniveau -->
+            <cac:LegalMonetaryTotal>
+                <cbc:LineExtensionAmount currencyID="DKK">4577.58</cbc:LineExtensionAmount>
+                <cbc:TaxExclusiveAmount currencyID="DKK">5940.43</cbc:TaxExclusiveAmount>
+                <cbc:TaxInclusiveAmount currencyID="DKK">10518.01</cbc:TaxInclusiveAmount>
+                <cbc:PayableAmount currencyID="DKK">10518.01</cbc:PayableAmount>
+            </cac:LegalMonetaryTotal>
+
+        </cac:Consumption>
+
+
+        <!-- Sub-specifikation (Kan gentages n-gange) -->
+        <!-- Nr. 1 -->
+        <cac:SupplierConsumption>
+            <cbc:Description>Det betaler du for EL på det frie marked til Elfabrikken Forsyning A/S</cbc:Description>
+
+            <!-- Leverandør information -->
+            <cac:UtilitySupplierParty>
+
+                <cac:PartyIdentification>
+                    <cbc:ID schemeID="DK:CVR">DK88776655</cbc:ID>
+                </cac:PartyIdentification>
+
+                <cac:PartyName>
+                    <cbc:Name>Elfabrikken Forsyning A/S</cbc:Name>
+                </cac:PartyName>
+
+                <!-- Moms -->
+                <cac:PartyTaxScheme>
+                    <cbc:CompanyID schemeID="DK:SE">DK88776655</cbc:CompanyID>
+                    <cac:TaxScheme>
+                        <cbc:ID schemeAgencyID="320" schemeID="urn:oioubl:id:taxschemeid-1.2">63</cbc:ID>
+                        <cbc:Name>Moms</cbc:Name>
+                    </cac:TaxScheme>
+                </cac:PartyTaxScheme>
+
+                <cac:PartyLegalEntity>
+                    <cbc:RegistrationName>Elfabrikken Forsyning A/S</cbc:RegistrationName>
+                    <cbc:CompanyID schemeID="DK:CVR">DK88776655</cbc:CompanyID>
+                </cac:PartyLegalEntity>
+            </cac:UtilitySupplierParty>
+
+
+            <!-- Forbrug - subniveau -->
+            <cac:Consumption>
+
+                <!-- Afgiftsspecifikation - subniveau -->
+                <cac:TaxTotal>
+                    <cbc:TaxAmount currencyID="DKK">542.44</cbc:TaxAmount>
+                    <cac:TaxSubtotal>
+                        <cbc:TaxableAmount currencyID="DKK">2169.76</cbc:TaxableAmount>
+                        <cbc:TaxAmount currencyID="DKK">542.44</cbc:TaxAmount>
+                        <cac:TaxCategory>
+                            <cbc:ID schemeAgencyID="320" schemeID="urn:oioubl:id:taxcategoryid-1.1">StandardRated</cbc:ID>
+                            <cbc:Percent>25</cbc:Percent>
+                            <cac:TaxScheme>
+                                <cbc:ID schemeAgencyID="320" schemeID="urn:oioubl:id:taxschemeid-1.2">63</cbc:ID>
+                                <cbc:Name>Moms</cbc:Name>
+                            </cac:TaxScheme>
+                        </cac:TaxCategory>
+                    </cac:TaxSubtotal>
+                </cac:TaxTotal>
+
+                <!-- Beløbstotal - subniveau -->
+                <cac:LegalMonetaryTotal>
+                    <cbc:LineExtensionAmount currencyID="DKK">2169.76</cbc:LineExtensionAmount>
+                    <cbc:TaxExclusiveAmount currencyID="DKK">542.44</cbc:TaxExclusiveAmount>
+                    <cbc:TaxInclusiveAmount currencyID="DKK">2712.20</cbc:TaxInclusiveAmount>
+                    <cbc:PayableAmount currencyID="DKK">2712.20</cbc:PayableAmount>
+                </cac:LegalMonetaryTotal>
+
+
+            </cac:Consumption>
+
+
+            <!-- Produktlinje (kan gentages n-gange) -->
+            <!-- Nr. 1 -->
+            <cac:ConsumptionLine>
+
+                <cbc:ID>1</cbc:ID>
+
+                <cbc:InvoicedQuantity unitCode="EA">5761</cbc:InvoicedQuantity>
+
+                <cbc:LineExtensionAmount currencyID="DKK">2049.76</cbc:LineExtensionAmount>
+
+                <cac:UtilityItem>
+
+                    <cbc:ID>n/a</cbc:ID>
+
+                    <cbc:Description>Basispris Kvartal (5.761 kWh a 35,58 øre)</cbc:Description>
+
+                    <!-- ForbrugsType (fritekst) -->
+                    <cbc:ConsumptionType>Basispris</cbc:ConsumptionType>
+
+                    <!-- Afgiftskategori -->
+                    <cac:TaxCategory>
+                        <cbc:ID schemeAgencyID="320" schemeID="urn:oioubl:id:taxcategoryid-1.1">StandardRated</cbc:ID>
+                        <cbc:Percent>25</cbc:Percent>
+                        <cac:TaxScheme>
+                            <cbc:ID schemeAgencyID="320" schemeID="urn:oioubl:id:taxschemeid-1.2">63</cbc:ID>
+                            <cbc:Name>Moms</cbc:Name>
+                        </cac:TaxScheme>
+                    </cac:TaxCategory>
+
+                </cac:UtilityItem>
+
+                <cac:Price>
+                    <!-- Enhedspris -->
+                    <cbc:PriceAmount currencyID="DKK">0.3558</cbc:PriceAmount>
+
+                    <!-- Enhedsstrørrelse m.m -->
+                    <cbc:BaseQuantity unitCode="EA">1</cbc:BaseQuantity>
+                    <cbc:OrderableUnitFactorRate>1</cbc:OrderableUnitFactorRate>
+
+                </cac:Price>
+
+            </cac:ConsumptionLine>
+
+
+            <!-- Produktlinje (kan gentages n-gange) -->
+            <!-- Nr. 2 -->
+            <cac:ConsumptionLine>
+
+                <cbc:ID>2</cbc:ID>
+
+                <cbc:InvoicedQuantity unitCode="EA">1</cbc:InvoicedQuantity>
+
+                <cbc:LineExtensionAmount currencyID="DKK">120.00</cbc:LineExtensionAmount>
+
+                <cac:UtilityItem>
+
+                    <cbc:ID>n/a</cbc:ID>
+
+                    <cbc:Description>Elabonnement</cbc:Description>
+
+                    <!-- ForbrugsType (fritekst) -->
+                    <cbc:ConsumptionType>Elabonnement</cbc:ConsumptionType>
+
+                    <!-- Afgiftskategori -->
+                    <cac:TaxCategory>
+                        <cbc:ID schemeAgencyID="320" schemeID="urn:oioubl:id:taxcategoryid-1.1">StandardRated</cbc:ID>
+                        <cbc:Percent>25</cbc:Percent>
+                        <cac:TaxScheme>
+                            <cbc:ID schemeAgencyID="320" schemeID="urn:oioubl:id:taxschemeid-1.2">63</cbc:ID>
+                            <cbc:Name>Moms</cbc:Name>
+                        </cac:TaxScheme>
+                    </cac:TaxCategory>
+
+                </cac:UtilityItem>
+
+                <cac:Price>
+                    <!-- Enhedspris -->
+                    <cbc:PriceAmount currencyID="DKK">120.00</cbc:PriceAmount>
+
+                    <!-- Enhedsstrørrelse m.m -->
+                    <cbc:BaseQuantity unitCode="EA">1</cbc:BaseQuantity>
+                    <cbc:OrderableUnitFactorRate>1</cbc:OrderableUnitFactorRate>
+
+                </cac:Price>
+
+            </cac:ConsumptionLine>
+        </cac:SupplierConsumption>
+
+
+        <!-- Sub-specifikation (Kan gentages n-gange) -->
+        <!-- Nr. 2 -->
+        <cac:SupplierConsumption>
+            <cbc:Description>Det betaler du for de lovregulerede ydelser til Elfabrikken Elnet</cbc:Description>
+
+            <!-- Leverandør information -->
+            <cac:UtilitySupplierParty>
+
+                <cac:PartyIdentification>
+                    <cbc:ID schemeID="DK:CVR">DK87654321</cbc:ID>
+                </cac:PartyIdentification>
+
+                <cac:PartyName>
+                    <cbc:Name>Elfabrikken Elnet A/S</cbc:Name>
+                </cac:PartyName>
+
+                <!-- Moms -->
+                <cac:PartyTaxScheme>
+                    <cbc:CompanyID schemeID="DK:SE">DK87654321</cbc:CompanyID>
+                    <cac:TaxScheme>
+                        <cbc:ID schemeAgencyID="320" schemeID="urn:oioubl:id:taxschemeid-1.2">63</cbc:ID>
+                        <cbc:Name>Moms</cbc:Name>
+                    </cac:TaxScheme>
+                </cac:PartyTaxScheme>
+
+                <!-- Elafgift -->
+                <cac:PartyTaxScheme>
+                    <cbc:CompanyID schemeID="DK:SE">DK87654321</cbc:CompanyID>
+                    <cac:TaxScheme>
+                        <cbc:ID schemeAgencyID="320" schemeID="urn:oioubl:id:taxschemeid-1.2">21</cbc:ID>
+                        <cbc:Name>Elafgift</cbc:Name>
+                        <cbc:TaxTypeCode listAgencyID="320" listID="urn:oioubl:codelist:taxtypecode-1.1">StandardRated</cbc:TaxTypeCode>
+                    </cac:TaxScheme>
+                </cac:PartyTaxScheme>
+
+                <!-- Eldistributionsbidrag -->
+                <cac:PartyTaxScheme>
+                    <cbc:CompanyID schemeID="DK:SE">DK87654321</cbc:CompanyID>
+                    <cac:TaxScheme>
+                        <cbc:ID schemeAgencyID="320" schemeID="urn:oioubl:id:taxschemeid-1.2">21d</cbc:ID>
+                        <cbc:Name>Eldistributionsbidrag</cbc:Name>
+                        <cbc:TaxTypeCode listAgencyID="320" listID="urn:oioubl:codelist:taxtypecode-1.1">StandardRated</cbc:TaxTypeCode>
+                    </cac:TaxScheme>
+                </cac:PartyTaxScheme>
+
+                <!-- CO2 afgift EL -->
+                <cac:PartyTaxScheme>
+                    <cbc:CompanyID schemeID="DK:SE">DK87654321</cbc:CompanyID>
+                    <cac:TaxScheme>
+                        <cbc:ID schemeAgencyID="320" schemeID="urn:oioubl:id:taxschemeid-1.2">41</cbc:ID>
+                        <cbc:Name>CO2-afgift/El</cbc:Name>
+                        <cbc:TaxTypeCode listAgencyID="320" listID="urn:oioubl:codelist:taxtypecode-1.1">StandardRated</cbc:TaxTypeCode>
+                    </cac:TaxScheme>
+                </cac:PartyTaxScheme>
+
+                <cac:PartyLegalEntity>
+                    <cbc:RegistrationName>Elfabrikken Elnet A/S</cbc:RegistrationName>
+                    <cbc:CompanyID schemeID="DK:CVR">DK87654321</cbc:CompanyID>
+                </cac:PartyLegalEntity>
+
+            </cac:UtilitySupplierParty>
+
+            <!-- Forbrug - subniveau -->
+            <cac:Consumption>
+
+                <!-- Afgiftsspecifikation - subniveau -->
+                <!-- Elafgift -->
+                <cac:TaxTotal>
+                    <cbc:TaxAmount currencyID="DKK">3087.90</cbc:TaxAmount>
+                    <cac:TaxSubtotal>
+                        <cbc:TaxableAmount currencyID="DKK">3087.90</cbc:TaxableAmount>
+                        <cbc:TaxAmount currencyID="DKK">3087.90</cbc:TaxAmount>
+                        <cac:TaxCategory>
+                            <cbc:ID schemeAgencyID="320" schemeID="urn:oioubl:id:taxcategoryid-1.1">Excise</cbc:ID>
+                            <cbc:BaseUnitMeasure unitCode="EA">1</cbc:BaseUnitMeasure>
+                            <cbc:PerUnitAmount currencyID="DKK">3087.90</cbc:PerUnitAmount>
+                            <cac:TaxScheme>
+                                <cbc:ID schemeAgencyID="320" schemeID="urn:oioubl:id:taxschemeid-1.2">21</cbc:ID>
+                                <cbc:Name>Elafgift</cbc:Name>
+                                <cbc:TaxTypeCode listAgencyID="320" listID="urn:oioubl:codelist:taxtypecode-1.1">StandardRated</cbc:TaxTypeCode>
+                            </cac:TaxScheme>
+                        </cac:TaxCategory>
+                    </cac:TaxSubtotal>
+                </cac:TaxTotal>
+                <!-- Eldistributionsbidrag -->
+                <cac:TaxTotal>
+                    <cbc:TaxAmount currencyID="DKK">230.44</cbc:TaxAmount>
+                    <cac:TaxSubtotal>
+                        <cbc:TaxableAmount currencyID="DKK">230.44</cbc:TaxableAmount>
+                        <cbc:TaxAmount currencyID="DKK">230.44</cbc:TaxAmount>
+                        <cac:TaxCategory>
+                            <cbc:ID schemeAgencyID="320" schemeID="urn:oioubl:id:taxcategoryid-1.1">Excise</cbc:ID>
+                            <cbc:BaseUnitMeasure unitCode="EA">1</cbc:BaseUnitMeasure>
+                            <cbc:PerUnitAmount currencyID="DKK">230.44</cbc:PerUnitAmount>
+                            <cac:TaxScheme>
+                                <cbc:ID schemeAgencyID="320" schemeID="urn:oioubl:id:taxschemeid-1.2">21d</cbc:ID>
+                                <cbc:Name>Eldistributionsbidrag</cbc:Name>
+                                <cbc:TaxTypeCode listAgencyID="320" listID="urn:oioubl:codelist:taxtypecode-1.1">StandardRated</cbc:TaxTypeCode>
+                            </cac:TaxScheme>
+                        </cac:TaxCategory>
+                    </cac:TaxSubtotal>
+                </cac:TaxTotal>
+                <!-- CO2 afgift -->
+                <cac:TaxTotal>
+                    <cbc:TaxAmount currencyID="DKK">518.49</cbc:TaxAmount>
+                    <cac:TaxSubtotal>
+                        <cbc:TaxableAmount currencyID="DKK">518.49</cbc:TaxableAmount>
+                        <cbc:TaxAmount currencyID="DKK">518.49</cbc:TaxAmount>
+                        <cac:TaxCategory>
+                            <cbc:ID schemeAgencyID="320" schemeID="urn:oioubl:id:taxcategoryid-1.1">Excise</cbc:ID>
+                            <cbc:BaseUnitMeasure unitCode="EA">1</cbc:BaseUnitMeasure>
+                            <cbc:PerUnitAmount currencyID="DKK">518.49</cbc:PerUnitAmount>
+                            <cac:TaxScheme>
+                                <cbc:ID schemeAgencyID="320" schemeID="urn:oioubl:id:taxschemeid-1.2">41</cbc:ID>
+                                <cbc:Name>CO2-afgift/El</cbc:Name>
+                                <cbc:TaxTypeCode listAgencyID="320" listID="urn:oioubl:codelist:taxtypecode-1.1">StandardRated</cbc:TaxTypeCode>
+                            </cac:TaxScheme>
+                        </cac:TaxCategory>
+                    </cac:TaxSubtotal>
+                </cac:TaxTotal>
+                <!-- Moms -->
+                <cac:TaxTotal>
+                    <cbc:TaxAmount currencyID="DKK">1561.16</cbc:TaxAmount>
+                    <cac:TaxSubtotal>
+                        <cbc:TaxableAmount currencyID="DKK">6244.65</cbc:TaxableAmount>
+                        <cbc:TaxAmount currencyID="DKK">1561.16</cbc:TaxAmount>
+                        <cac:TaxCategory>
+                            <cbc:ID schemeAgencyID="320" schemeID="urn:oioubl:id:taxcategoryid-1.1">StandardRated</cbc:ID>
+                            <cbc:Percent>25</cbc:Percent>
+                            <cac:TaxScheme>
+                                <cbc:ID schemeAgencyID="320" schemeID="urn:oioubl:id:taxschemeid-1.2">63</cbc:ID>
+                                <cbc:Name>Moms</cbc:Name>
+                            </cac:TaxScheme>
+                        </cac:TaxCategory>
+                    </cac:TaxSubtotal>
+                </cac:TaxTotal>
+
+                <!-- Beløbstotal - subniveau -->
+                <cac:LegalMonetaryTotal>
+                    <cbc:LineExtensionAmount currencyID="DKK">2407.82</cbc:LineExtensionAmount>
+                    <cbc:TaxExclusiveAmount currencyID="DKK">5397.99</cbc:TaxExclusiveAmount>
+                    <cbc:TaxInclusiveAmount currencyID="DKK">7805.81</cbc:TaxInclusiveAmount>
+                    <cbc:PayableAmount currencyID="DKK">7805.81</cbc:PayableAmount>
+                </cac:LegalMonetaryTotal>
+            </cac:Consumption>
+
+
+            <!-- Produktlinje (kan gentages n-gange) -->
+            <!-- Nr. 1 -->
+            <cac:ConsumptionLine>
+                <cbc:ID>1</cbc:ID>
+                <cbc:InvoicedQuantity unitCode="EA">5761</cbc:InvoicedQuantity>
+                <cbc:LineExtensionAmount currencyID="DKK">1167.18</cbc:LineExtensionAmount>
+                <cac:UtilityItem>
+                    <cbc:ID>n/a</cbc:ID>
+                    <cbc:Description>Transport af el (5.761 kWh a 20,26 øre)</cbc:Description>
+
+                    <!-- ForbrugsType (fritekst) -->
+                    <cbc:ConsumptionType>Transport af el</cbc:ConsumptionType>
+
+                    <!-- Afgiftskategori -->
+                    <cac:TaxCategory>
+                        <cbc:ID schemeAgencyID="320" schemeID="urn:oioubl:id:taxcategoryid-1.1">StandardRated</cbc:ID>
+                        <cbc:Percent>25</cbc:Percent>
+                        <cac:TaxScheme>
+                            <cbc:ID schemeAgencyID="320" schemeID="urn:oioubl:id:taxschemeid-1.2">63</cbc:ID>
+                            <cbc:Name>Moms</cbc:Name>
+                        </cac:TaxScheme>
+                    </cac:TaxCategory>
+
+                </cac:UtilityItem>
+
+                <cac:Price>
+                    <!-- Enhedspris -->
+                    <cbc:PriceAmount currencyID="DKK">0.2026</cbc:PriceAmount>
+
+                    <!-- Enhedsstrørrelse m.m -->
+                    <cbc:BaseQuantity unitCode="EA">1</cbc:BaseQuantity>
+                    <cbc:OrderableUnitFactorRate>1</cbc:OrderableUnitFactorRate>
+                </cac:Price>
+
+            </cac:ConsumptionLine>
+
+
+            <!-- Produktlinje (kan gentages n-gange) -->
+            <!-- Nr. 2 -->
+            <cac:ConsumptionLine>
+                <cbc:ID>2</cbc:ID>
+                <cbc:InvoicedQuantity unitCode="EA">5761</cbc:InvoicedQuantity>
+                <cbc:LineExtensionAmount currencyID="DKK">572.64</cbc:LineExtensionAmount>
+                <cac:UtilityItem>
+                    <cbc:ID>n/a</cbc:ID>
+                    <cbc:Description>Offentlige forpligtelser (5.761 kWh a 9,94 øre)</cbc:Description>
+
+                    <!-- ForbrugsType (fritekst) -->
+                    <cbc:ConsumptionType>Offentlige forpligtelser</cbc:ConsumptionType>
+
+                    <!-- Afgiftskategori -->
+                    <cac:TaxCategory>
+                        <cbc:ID schemeAgencyID="320" schemeID="urn:oioubl:id:taxcategoryid-1.1">StandardRated</cbc:ID>
+                        <cbc:Percent>25</cbc:Percent>
+                        <cac:TaxScheme>
+                            <cbc:ID schemeAgencyID="320" schemeID="urn:oioubl:id:taxschemeid-1.2">63</cbc:ID>
+                            <cbc:Name>Moms</cbc:Name>
+                        </cac:TaxScheme>
+                    </cac:TaxCategory>
+                </cac:UtilityItem>
+
+                <cac:Price>
+                    <!-- Enhedspris -->
+                    <cbc:PriceAmount currencyID="DKK">0.0994</cbc:PriceAmount>
+
+                    <!-- Enhedsstrørrelse m.m -->
+                    <cbc:BaseQuantity unitCode="EA">1</cbc:BaseQuantity>
+                    <cbc:OrderableUnitFactorRate>1</cbc:OrderableUnitFactorRate>
+                </cac:Price>
+
+            </cac:ConsumptionLine>
+
+
+            <!-- Produktlinje (kan gentages n-gange) -->
+            <!-- Nr. 3 -->
+            <cac:ConsumptionLine>
+                <cbc:ID>3</cbc:ID>
+                <cbc:InvoicedQuantity unitCode="EA">1</cbc:InvoicedQuantity>
+                <cbc:LineExtensionAmount currencyID="DKK">648.00</cbc:LineExtensionAmount>
+                <cac:UtilityItem>
+                    <cbc:ID>n/a</cbc:ID>
+                    <cbc:Description>Netabonnement</cbc:Description>
+
+                    <!-- ForbrugsType (fritekst) -->
+                    <cbc:ConsumptionType>Netabonnement</cbc:ConsumptionType>
+
+                    <!-- Afgiftskategori -->
+                    <cac:TaxCategory>
+                        <cbc:ID schemeAgencyID="320" schemeID="urn:oioubl:id:taxcategoryid-1.1">StandardRated</cbc:ID>
+                        <cbc:Percent>25</cbc:Percent>
+                        <cac:TaxScheme>
+                            <cbc:ID schemeAgencyID="320" schemeID="urn:oioubl:id:taxschemeid-1.2">63</cbc:ID>
+                            <cbc:Name>Moms</cbc:Name>
+                        </cac:TaxScheme>
+                    </cac:TaxCategory>
+                </cac:UtilityItem>
+
+                <cac:Price>
+                    <!-- Enhedspris -->
+                    <cbc:PriceAmount currencyID="DKK">648.00</cbc:PriceAmount>
+
+                    <!-- Enhedsstrørrelse m.m -->
+                    <cbc:BaseQuantity unitCode="EA">1</cbc:BaseQuantity>
+                    <cbc:OrderableUnitFactorRate>1</cbc:OrderableUnitFactorRate>
+                </cac:Price>
+
+            </cac:ConsumptionLine>
+
+            <!-- Produktlinje (kan gentages n-gange) -->
+            <!-- Nr. 4 -->
+            <cac:ConsumptionLine>
+                <cbc:ID>4</cbc:ID>
+                <cbc:InvoicedQuantity unitCode="EA">1</cbc:InvoicedQuantity>
+                <cbc:LineExtensionAmount currencyID="DKK">20.00</cbc:LineExtensionAmount>
+                <cac:UtilityItem>
+                    <cbc:ID>n/a</cbc:ID>
+                    <cbc:Description>Stikledningsabonnement (Stikledningen er ikke lovreguleret)</cbc:Description>
+
+                    <!-- ForbrugsType (fritekst) -->
+                    <cbc:ConsumptionType>Stikledningsabonnement</cbc:ConsumptionType>
+
+                    <!-- Afgiftskategori -->
+                    <cac:TaxCategory>
+                        <cbc:ID schemeAgencyID="320" schemeID="urn:oioubl:id:taxcategoryid-1.1">StandardRated</cbc:ID>
+                        <cbc:Percent>25</cbc:Percent>
+                        <cac:TaxScheme>
+                            <cbc:ID schemeAgencyID="320" schemeID="urn:oioubl:id:taxschemeid-1.2">63</cbc:ID>
+                            <cbc:Name>Moms</cbc:Name>
+                        </cac:TaxScheme>
+                    </cac:TaxCategory>
+                </cac:UtilityItem>
+
+                <cac:Price>
+                    <!-- Enhedspris -->
+                    <cbc:PriceAmount currencyID="DKK">20.00</cbc:PriceAmount>
+
+                    <!-- Enhedsstrørrelse m.m -->
+                    <cbc:BaseQuantity unitCode="EA">1</cbc:BaseQuantity>
+                    <cbc:OrderableUnitFactorRate>1</cbc:OrderableUnitFactorRate>
+                </cac:Price>
+
+            </cac:ConsumptionLine>
+
+        </cac:SupplierConsumption>
+
+    </cac:SubscriberConsumption>
+
+    </UtilityStatement>

@@ -57,41 +57,26 @@ public final class OIOUBLValidation
 
   // Ancient old 2.0.2
   private static final String VERSION_202 = "2.0.2";
-  @Deprecated
   public static final VESID VID_OIOUBL_APPLICATION_RESPONSE = new VESID (GROUPID, "application-response", VERSION_202);
-  @Deprecated
   public static final VESID VID_OIOUBL_CATALOGUE = new VESID (GROUPID, "catalogue", VERSION_202);
-  @Deprecated
   public static final VESID VID_OIOUBL_CATALOGUE_DELETION = new VESID (GROUPID, "catalogue-deletion", VERSION_202);
-  @Deprecated
   public static final VESID VID_OIOUBL_CATALOGUE_ITEM_SPECIFICATION_UPDATE = new VESID (GROUPID,
                                                                                         "catalogue-item-specification-update",
                                                                                         VERSION_202);
-  @Deprecated
   public static final VESID VID_OIOUBL_CATALOGUE_PRICING_UPDATE = new VESID (GROUPID,
                                                                              "catalogue-pricing-update",
                                                                              VERSION_202);
-  @Deprecated
   public static final VESID VID_OIOUBL_CATALOGUE_REQUEST = new VESID (GROUPID, "catalogue-request", VERSION_202);
-  @Deprecated
   public static final VESID VID_OIOUBL_CREDIT_NOTE = new VESID (GROUPID, "credit-note", VERSION_202);
-  @Deprecated
   public static final VESID VID_OIOUBL_INVOICE = new VESID (GROUPID, "invoice", VERSION_202);
-  @Deprecated
   public static final VESID VID_OIOUBL_ORDER = new VESID (GROUPID, "order", VERSION_202);
-  @Deprecated
   public static final VESID VID_OIOUBL_ORDER_CANCELLATION = new VESID (GROUPID, "order-cancellation", VERSION_202);
-  @Deprecated
   public static final VESID VID_OIOUBL_ORDER_CHANGE = new VESID (GROUPID, "order-change", VERSION_202);
-  @Deprecated
   public static final VESID VID_OIOUBL_ORDER_RESPONSE = new VESID (GROUPID, "order-response", VERSION_202);
-  @Deprecated
   public static final VESID VID_OIOUBL_ORDER_RESPONSE_SIMPLE = new VESID (GROUPID,
                                                                           "order-response-simple",
                                                                           VERSION_202);
-  @Deprecated
   public static final VESID VID_OIOUBL_REMINDER = new VESID (GROUPID, "reminder", VERSION_202);
-  @Deprecated
   public static final VESID VID_OIOUBL_STATEMENT = new VESID (GROUPID, "statement", VERSION_202);
 
   // 1.12.3
@@ -158,7 +143,6 @@ public final class OIOUBLValidation
     // For better error messages
     SchematronNamespaceBeautifier.addMappings (UBL20NamespaceContext.getInstance ());
 
-    final boolean bDeprecated = true;
     final boolean bNotDeprecated = false;
 
     // 2.0.2 - ancient old version
@@ -167,7 +151,7 @@ public final class OIOUBLValidation
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OIOUBL_APPLICATION_RESPONSE,
                                                                              "OIOUBL Application Response " +
                                                                                                               VID_OIOUBL_APPLICATION_RESPONSE.getVersion (),
-                                                                             bDeprecated,
+                                                                             bNotDeprecated,
                                                                              ValidationExecutorXSD.create (EUBL20DocumentType.APPLICATION_RESPONSE),
                                                                              _createOIOUBL (new ClassPathResource (sPath202 +
                                                                                                                    "OIOUBL_ApplicationResponse_Schematron.xsl",
@@ -175,7 +159,7 @@ public final class OIOUBLValidation
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OIOUBL_CATALOGUE,
                                                                              "OIOUBL Catalogue " +
                                                                                                    VID_OIOUBL_CATALOGUE.getVersion (),
-                                                                             bDeprecated,
+                                                                             bNotDeprecated,
                                                                              ValidationExecutorXSD.create (EUBL20DocumentType.CATALOGUE),
                                                                              _createOIOUBL (new ClassPathResource (sPath202 +
                                                                                                                    "OIOUBL_Catalogue_Schematron.xsl",
@@ -183,7 +167,7 @@ public final class OIOUBLValidation
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OIOUBL_CATALOGUE_DELETION,
                                                                              "OIOUBL Catalogue Deletion " +
                                                                                                             VID_OIOUBL_CATALOGUE_DELETION.getVersion (),
-                                                                             bDeprecated,
+                                                                             bNotDeprecated,
                                                                              ValidationExecutorXSD.create (EUBL20DocumentType.CATALOGUE_DELETION),
                                                                              _createOIOUBL (new ClassPathResource (sPath202 +
                                                                                                                    "OIOUBL_CatalogueDeletion_Schematron.xsl",
@@ -191,7 +175,7 @@ public final class OIOUBLValidation
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OIOUBL_CATALOGUE_ITEM_SPECIFICATION_UPDATE,
                                                                              "OIOUBL Catalogue Item Specification Update " +
                                                                                                                              VID_OIOUBL_CATALOGUE_ITEM_SPECIFICATION_UPDATE.getVersion (),
-                                                                             bDeprecated,
+                                                                             bNotDeprecated,
                                                                              ValidationExecutorXSD.create (EUBL20DocumentType.CATALOGUE_ITEM_SPECIFICATION_UPDATE),
                                                                              _createOIOUBL (new ClassPathResource (sPath202 +
                                                                                                                    "OIOUBL_CatalogueItemSpecificationUpdate_Schematron.xsl",
@@ -199,7 +183,7 @@ public final class OIOUBLValidation
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OIOUBL_CATALOGUE_PRICING_UPDATE,
                                                                              "OIOUBL Catalogue Pricing Update " +
                                                                                                                   VID_OIOUBL_CATALOGUE_PRICING_UPDATE.getVersion (),
-                                                                             bDeprecated,
+                                                                             bNotDeprecated,
                                                                              ValidationExecutorXSD.create (EUBL20DocumentType.CATALOGUE_PRICING_UPDATE),
                                                                              _createOIOUBL (new ClassPathResource (sPath202 +
                                                                                                                    "OIOUBL_CataloguePricingUpdate_Schematron.xsl",
@@ -207,7 +191,7 @@ public final class OIOUBLValidation
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OIOUBL_CATALOGUE_REQUEST,
                                                                              "OIOUBL Catalogue Request " +
                                                                                                            VID_OIOUBL_CATALOGUE_REQUEST.getVersion (),
-                                                                             bDeprecated,
+                                                                             bNotDeprecated,
                                                                              ValidationExecutorXSD.create (EUBL20DocumentType.CATALOGUE_REQUEST),
                                                                              _createOIOUBL (new ClassPathResource (sPath202 +
                                                                                                                    "OIOUBL_CatalogueRequest_Schematron.xsl",
@@ -215,7 +199,7 @@ public final class OIOUBLValidation
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OIOUBL_CREDIT_NOTE,
                                                                              "OIOUBL Credit Note " +
                                                                                                      VID_OIOUBL_CREDIT_NOTE.getVersion (),
-                                                                             bDeprecated,
+                                                                             bNotDeprecated,
                                                                              ValidationExecutorXSD.create (EUBL20DocumentType.CREDIT_NOTE),
                                                                              _createOIOUBL (new ClassPathResource (sPath202 +
                                                                                                                    "OIOUBL_CreditNote_Schematron.xsl",
@@ -223,7 +207,7 @@ public final class OIOUBLValidation
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OIOUBL_INVOICE,
                                                                              "OIOUBL Invoice " +
                                                                                                  VID_OIOUBL_INVOICE.getVersion (),
-                                                                             bDeprecated,
+                                                                             bNotDeprecated,
                                                                              ValidationExecutorXSD.create (EUBL20DocumentType.INVOICE),
                                                                              _createOIOUBL (new ClassPathResource (sPath202 +
                                                                                                                    "OIOUBL_Invoice_Schematron.xsl",
@@ -231,7 +215,7 @@ public final class OIOUBLValidation
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OIOUBL_ORDER,
                                                                              "OIOUBL Order " +
                                                                                                VID_OIOUBL_ORDER.getVersion (),
-                                                                             bDeprecated,
+                                                                             bNotDeprecated,
                                                                              ValidationExecutorXSD.create (EUBL20DocumentType.ORDER),
                                                                              _createOIOUBL (new ClassPathResource (sPath202 +
                                                                                                                    "OIOUBL_Order_Schematron.xsl",
@@ -239,7 +223,7 @@ public final class OIOUBLValidation
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OIOUBL_ORDER_CANCELLATION,
                                                                              "OIOUBL Order Cancellation " +
                                                                                                             VID_OIOUBL_ORDER_CANCELLATION.getVersion (),
-                                                                             bDeprecated,
+                                                                             bNotDeprecated,
                                                                              ValidationExecutorXSD.create (EUBL20DocumentType.ORDER_CANCELLATION),
                                                                              _createOIOUBL (new ClassPathResource (sPath202 +
                                                                                                                    "OIOUBL_OrderCancellation_Schematron.xsl",
@@ -247,7 +231,7 @@ public final class OIOUBLValidation
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OIOUBL_ORDER_CHANGE,
                                                                              "OIOUBL Order Change " +
                                                                                                       VID_OIOUBL_ORDER_CHANGE.getVersion (),
-                                                                             bDeprecated,
+                                                                             bNotDeprecated,
                                                                              ValidationExecutorXSD.create (EUBL20DocumentType.ORDER_CHANGE),
                                                                              _createOIOUBL (new ClassPathResource (sPath202 +
                                                                                                                    "OIOUBL_OrderChange_Schematron.xsl",
@@ -255,7 +239,7 @@ public final class OIOUBLValidation
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OIOUBL_ORDER_RESPONSE,
                                                                              "OIOUBL Order Response " +
                                                                                                         VID_OIOUBL_ORDER_RESPONSE.getVersion (),
-                                                                             bDeprecated,
+                                                                             bNotDeprecated,
                                                                              ValidationExecutorXSD.create (EUBL20DocumentType.ORDER_RESPONSE),
                                                                              _createOIOUBL (new ClassPathResource (sPath202 +
                                                                                                                    "OIOUBL_OrderResponse_Schematron.xsl",
@@ -263,7 +247,7 @@ public final class OIOUBLValidation
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OIOUBL_ORDER_RESPONSE_SIMPLE,
                                                                              "OIOUBL Order Response Simple " +
                                                                                                                VID_OIOUBL_ORDER_RESPONSE_SIMPLE.getVersion (),
-                                                                             bDeprecated,
+                                                                             bNotDeprecated,
                                                                              ValidationExecutorXSD.create (EUBL20DocumentType.ORDER_RESPONSE_SIMPLE),
                                                                              _createOIOUBL (new ClassPathResource (sPath202 +
                                                                                                                    "OIOUBL_OrderResponseSimple_Schematron.xsl",
@@ -271,7 +255,7 @@ public final class OIOUBLValidation
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OIOUBL_REMINDER,
                                                                              "OIOUBL Reminder " +
                                                                                                   VID_OIOUBL_REMINDER.getVersion (),
-                                                                             bDeprecated,
+                                                                             bNotDeprecated,
                                                                              ValidationExecutorXSD.create (EUBL20DocumentType.REMINDER),
                                                                              _createOIOUBL (new ClassPathResource (sPath202 +
                                                                                                                    "OIOUBL_Reminder_Schematron.xsl",
@@ -279,7 +263,7 @@ public final class OIOUBLValidation
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OIOUBL_STATEMENT,
                                                                              "OIOUBL Statement " +
                                                                                                    VID_OIOUBL_STATEMENT.getVersion (),
-                                                                             bDeprecated,
+                                                                             bNotDeprecated,
                                                                              ValidationExecutorXSD.create (EUBL20DocumentType.STATEMENT),
                                                                              _createOIOUBL (new ClassPathResource (sPath202 +
                                                                                                                    "OIOUBL_Statement_Schematron.xsl",
