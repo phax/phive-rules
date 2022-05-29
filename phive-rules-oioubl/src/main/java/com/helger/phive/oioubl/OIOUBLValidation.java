@@ -20,8 +20,12 @@ import javax.annotation.Nonnull;
 import javax.annotation.concurrent.Immutable;
 
 import com.helger.commons.ValueEnforcer;
+import com.helger.commons.collection.impl.CommonsArrayList;
 import com.helger.commons.io.resource.ClassPathResource;
 import com.helger.commons.io.resource.IReadableResource;
+import com.helger.commons.string.StringHelper;
+import com.helger.jaxb.builder.IJAXBDocumentType;
+import com.helger.jaxb.builder.JAXBDocumentType;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
 import com.helger.phive.api.executorset.VESID;
 import com.helger.phive.api.executorset.ValidationExecutorSet;
@@ -29,8 +33,11 @@ import com.helger.phive.engine.schematron.SchematronNamespaceBeautifier;
 import com.helger.phive.engine.schematron.ValidationExecutorSchematron;
 import com.helger.phive.engine.source.IValidationSourceXML;
 import com.helger.phive.engine.xsd.ValidationExecutorXSD;
-import com.helger.ubl21.EUBL21DocumentType;
-import com.helger.ubl21.UBL21NamespaceContext;
+import com.helger.ubl20.CUBL20;
+import com.helger.ubl20.EUBL20DocumentType;
+import com.helger.ubl20.UBL20NamespaceContext;
+
+import oioubl.names.specification.oioubl.schema.xsd.utilitystatement_2.UtilityStatementType;
 
 /**
  * Generic OIOUBL validation configuration
@@ -118,6 +125,9 @@ public final class OIOUBLValidation
                                                                                  VERSION_1_12_3);
   public static final VESID VID_OIOUBL_REMINDER_1_12_3 = new VESID (GROUPID, "reminder", VERSION_1_12_3);
   public static final VESID VID_OIOUBL_STATEMENT_1_12_3 = new VESID (GROUPID, "statement", VERSION_1_12_3);
+  public static final VESID VID_OIOUBL_UTILITY_STATEMENT_1_12_3 = new VESID (GROUPID,
+                                                                             "utility-statement",
+                                                                             VERSION_1_12_3);
 
   private OIOUBLValidation ()
   {}
@@ -125,13 +135,13 @@ public final class OIOUBLValidation
   @Nonnull
   private static ValidationExecutorSchematron _createOIOUBL (@Nonnull final IReadableResource aRes)
   {
-    return ValidationExecutorSchematron.createOIOUBL (aRes, UBL21NamespaceContext.getInstance ());
+    return ValidationExecutorSchematron.createOIOUBL (aRes, UBL20NamespaceContext.getInstance ());
   }
 
   @Nonnull
   private static ValidationExecutorSchematron _createXSLT (@Nonnull final IReadableResource aRes)
   {
-    return ValidationExecutorSchematron.createXSLT (aRes, UBL21NamespaceContext.getInstance ());
+    return ValidationExecutorSchematron.createXSLT (aRes, UBL20NamespaceContext.getInstance ());
   }
 
   /**
@@ -146,7 +156,7 @@ public final class OIOUBLValidation
     ValueEnforcer.notNull (aRegistry, "Registry");
 
     // For better error messages
-    SchematronNamespaceBeautifier.addMappings (UBL21NamespaceContext.getInstance ());
+    SchematronNamespaceBeautifier.addMappings (UBL20NamespaceContext.getInstance ());
 
     final boolean bDeprecated = true;
     final boolean bNotDeprecated = false;
@@ -158,7 +168,7 @@ public final class OIOUBLValidation
                                                                              "OIOUBL Application Response " +
                                                                                                               VID_OIOUBL_APPLICATION_RESPONSE.getVersion (),
                                                                              bDeprecated,
-                                                                             ValidationExecutorXSD.create (EUBL21DocumentType.APPLICATION_RESPONSE),
+                                                                             ValidationExecutorXSD.create (EUBL20DocumentType.APPLICATION_RESPONSE),
                                                                              _createOIOUBL (new ClassPathResource (sPath202 +
                                                                                                                    "OIOUBL_ApplicationResponse_Schematron.xsl",
                                                                                                                    _getCL ()))));
@@ -166,7 +176,7 @@ public final class OIOUBLValidation
                                                                              "OIOUBL Catalogue " +
                                                                                                    VID_OIOUBL_CATALOGUE.getVersion (),
                                                                              bDeprecated,
-                                                                             ValidationExecutorXSD.create (EUBL21DocumentType.CATALOGUE),
+                                                                             ValidationExecutorXSD.create (EUBL20DocumentType.CATALOGUE),
                                                                              _createOIOUBL (new ClassPathResource (sPath202 +
                                                                                                                    "OIOUBL_Catalogue_Schematron.xsl",
                                                                                                                    _getCL ()))));
@@ -174,7 +184,7 @@ public final class OIOUBLValidation
                                                                              "OIOUBL Catalogue Deletion " +
                                                                                                             VID_OIOUBL_CATALOGUE_DELETION.getVersion (),
                                                                              bDeprecated,
-                                                                             ValidationExecutorXSD.create (EUBL21DocumentType.CATALOGUE_DELETION),
+                                                                             ValidationExecutorXSD.create (EUBL20DocumentType.CATALOGUE_DELETION),
                                                                              _createOIOUBL (new ClassPathResource (sPath202 +
                                                                                                                    "OIOUBL_CatalogueDeletion_Schematron.xsl",
                                                                                                                    _getCL ()))));
@@ -182,7 +192,7 @@ public final class OIOUBLValidation
                                                                              "OIOUBL Catalogue Item Specification Update " +
                                                                                                                              VID_OIOUBL_CATALOGUE_ITEM_SPECIFICATION_UPDATE.getVersion (),
                                                                              bDeprecated,
-                                                                             ValidationExecutorXSD.create (EUBL21DocumentType.CATALOGUE_ITEM_SPECIFICATION_UPDATE),
+                                                                             ValidationExecutorXSD.create (EUBL20DocumentType.CATALOGUE_ITEM_SPECIFICATION_UPDATE),
                                                                              _createOIOUBL (new ClassPathResource (sPath202 +
                                                                                                                    "OIOUBL_CatalogueItemSpecificationUpdate_Schematron.xsl",
                                                                                                                    _getCL ()))));
@@ -190,7 +200,7 @@ public final class OIOUBLValidation
                                                                              "OIOUBL Catalogue Pricing Update " +
                                                                                                                   VID_OIOUBL_CATALOGUE_PRICING_UPDATE.getVersion (),
                                                                              bDeprecated,
-                                                                             ValidationExecutorXSD.create (EUBL21DocumentType.CATALOGUE_PRICING_UPDATE),
+                                                                             ValidationExecutorXSD.create (EUBL20DocumentType.CATALOGUE_PRICING_UPDATE),
                                                                              _createOIOUBL (new ClassPathResource (sPath202 +
                                                                                                                    "OIOUBL_CataloguePricingUpdate_Schematron.xsl",
                                                                                                                    _getCL ()))));
@@ -198,7 +208,7 @@ public final class OIOUBLValidation
                                                                              "OIOUBL Catalogue Request " +
                                                                                                            VID_OIOUBL_CATALOGUE_REQUEST.getVersion (),
                                                                              bDeprecated,
-                                                                             ValidationExecutorXSD.create (EUBL21DocumentType.CATALOGUE_REQUEST),
+                                                                             ValidationExecutorXSD.create (EUBL20DocumentType.CATALOGUE_REQUEST),
                                                                              _createOIOUBL (new ClassPathResource (sPath202 +
                                                                                                                    "OIOUBL_CatalogueRequest_Schematron.xsl",
                                                                                                                    _getCL ()))));
@@ -206,7 +216,7 @@ public final class OIOUBLValidation
                                                                              "OIOUBL Credit Note " +
                                                                                                      VID_OIOUBL_CREDIT_NOTE.getVersion (),
                                                                              bDeprecated,
-                                                                             ValidationExecutorXSD.create (EUBL21DocumentType.CREDIT_NOTE),
+                                                                             ValidationExecutorXSD.create (EUBL20DocumentType.CREDIT_NOTE),
                                                                              _createOIOUBL (new ClassPathResource (sPath202 +
                                                                                                                    "OIOUBL_CreditNote_Schematron.xsl",
                                                                                                                    _getCL ()))));
@@ -214,7 +224,7 @@ public final class OIOUBLValidation
                                                                              "OIOUBL Invoice " +
                                                                                                  VID_OIOUBL_INVOICE.getVersion (),
                                                                              bDeprecated,
-                                                                             ValidationExecutorXSD.create (EUBL21DocumentType.INVOICE),
+                                                                             ValidationExecutorXSD.create (EUBL20DocumentType.INVOICE),
                                                                              _createOIOUBL (new ClassPathResource (sPath202 +
                                                                                                                    "OIOUBL_Invoice_Schematron.xsl",
                                                                                                                    _getCL ()))));
@@ -222,7 +232,7 @@ public final class OIOUBLValidation
                                                                              "OIOUBL Order " +
                                                                                                VID_OIOUBL_ORDER.getVersion (),
                                                                              bDeprecated,
-                                                                             ValidationExecutorXSD.create (EUBL21DocumentType.ORDER),
+                                                                             ValidationExecutorXSD.create (EUBL20DocumentType.ORDER),
                                                                              _createOIOUBL (new ClassPathResource (sPath202 +
                                                                                                                    "OIOUBL_Order_Schematron.xsl",
                                                                                                                    _getCL ()))));
@@ -230,7 +240,7 @@ public final class OIOUBLValidation
                                                                              "OIOUBL Order Cancellation " +
                                                                                                             VID_OIOUBL_ORDER_CANCELLATION.getVersion (),
                                                                              bDeprecated,
-                                                                             ValidationExecutorXSD.create (EUBL21DocumentType.ORDER_CANCELLATION),
+                                                                             ValidationExecutorXSD.create (EUBL20DocumentType.ORDER_CANCELLATION),
                                                                              _createOIOUBL (new ClassPathResource (sPath202 +
                                                                                                                    "OIOUBL_OrderCancellation_Schematron.xsl",
                                                                                                                    _getCL ()))));
@@ -238,7 +248,7 @@ public final class OIOUBLValidation
                                                                              "OIOUBL Order Change " +
                                                                                                       VID_OIOUBL_ORDER_CHANGE.getVersion (),
                                                                              bDeprecated,
-                                                                             ValidationExecutorXSD.create (EUBL21DocumentType.ORDER_CHANGE),
+                                                                             ValidationExecutorXSD.create (EUBL20DocumentType.ORDER_CHANGE),
                                                                              _createOIOUBL (new ClassPathResource (sPath202 +
                                                                                                                    "OIOUBL_OrderChange_Schematron.xsl",
                                                                                                                    _getCL ()))));
@@ -246,7 +256,7 @@ public final class OIOUBLValidation
                                                                              "OIOUBL Order Response " +
                                                                                                         VID_OIOUBL_ORDER_RESPONSE.getVersion (),
                                                                              bDeprecated,
-                                                                             ValidationExecutorXSD.create (EUBL21DocumentType.ORDER_RESPONSE),
+                                                                             ValidationExecutorXSD.create (EUBL20DocumentType.ORDER_RESPONSE),
                                                                              _createOIOUBL (new ClassPathResource (sPath202 +
                                                                                                                    "OIOUBL_OrderResponse_Schematron.xsl",
                                                                                                                    _getCL ()))));
@@ -254,7 +264,7 @@ public final class OIOUBLValidation
                                                                              "OIOUBL Order Response Simple " +
                                                                                                                VID_OIOUBL_ORDER_RESPONSE_SIMPLE.getVersion (),
                                                                              bDeprecated,
-                                                                             ValidationExecutorXSD.create (EUBL21DocumentType.ORDER_RESPONSE_SIMPLE),
+                                                                             ValidationExecutorXSD.create (EUBL20DocumentType.ORDER_RESPONSE_SIMPLE),
                                                                              _createOIOUBL (new ClassPathResource (sPath202 +
                                                                                                                    "OIOUBL_OrderResponseSimple_Schematron.xsl",
                                                                                                                    _getCL ()))));
@@ -262,7 +272,7 @@ public final class OIOUBLValidation
                                                                              "OIOUBL Reminder " +
                                                                                                   VID_OIOUBL_REMINDER.getVersion (),
                                                                              bDeprecated,
-                                                                             ValidationExecutorXSD.create (EUBL21DocumentType.REMINDER),
+                                                                             ValidationExecutorXSD.create (EUBL20DocumentType.REMINDER),
                                                                              _createOIOUBL (new ClassPathResource (sPath202 +
                                                                                                                    "OIOUBL_Reminder_Schematron.xsl",
                                                                                                                    _getCL ()))));
@@ -270,11 +280,26 @@ public final class OIOUBLValidation
                                                                              "OIOUBL Statement " +
                                                                                                    VID_OIOUBL_STATEMENT.getVersion (),
                                                                              bDeprecated,
-                                                                             ValidationExecutorXSD.create (EUBL21DocumentType.STATEMENT),
+                                                                             ValidationExecutorXSD.create (EUBL20DocumentType.STATEMENT),
                                                                              _createOIOUBL (new ClassPathResource (sPath202 +
                                                                                                                    "OIOUBL_Statement_Schematron.xsl",
                                                                                                                    _getCL ()))));
     }
+
+    final IJAXBDocumentType aXSDUtilityStatement = new JAXBDocumentType (UtilityStatementType.class,
+                                                                         new CommonsArrayList <> (CUBL20.XSD_CODELIST_UNIT_CODE,
+                                                                                                  CUBL20.XSD_CODELIST_MIME_MEDIA_TYPE_CODE,
+                                                                                                  CUBL20.XSD_CODELIST_CURRENCY_CODE,
+                                                                                                  CUBL20.XSD_CODELIST_LANGUAGE_CODE,
+                                                                                                  CUBL20.XSD_UNQUALIFIED_DATA_TYPES,
+                                                                                                  CUBL20.XSD_QUALIFIED_DATA_TYPES,
+                                                                                                  new ClassPathResource ("schemas/OIOUBL_v2.1-b/common/OIOUBL_UTS-CommonBasicComponents-2.1.xsd",
+                                                                                                                         _getCL ()),
+                                                                                                  new ClassPathResource ("schemas/OIOUBL_v2.1-b/common/OIOUBL_UTS-CommonAggregateComponents-2.1.xsd",
+                                                                                                                         _getCL ()),
+                                                                                                  new ClassPathResource ("schemas/OIOUBL_v2.1-b/maindoc/UBL-UtilityStatement-2.1.xsd",
+                                                                                                                         _getCL ())),
+                                                                         s -> StringHelper.trimEnd (s, "Type"));
 
     // 1.12.3
     {
@@ -283,7 +308,7 @@ public final class OIOUBLValidation
                                                                              "OIOUBL Application Response " +
                                                                                                                      VID_OIOUBL_APPLICATION_RESPONSE_1_12_3.getVersion (),
                                                                              bNotDeprecated,
-                                                                             ValidationExecutorXSD.create (EUBL21DocumentType.APPLICATION_RESPONSE),
+                                                                             ValidationExecutorXSD.create (EUBL20DocumentType.APPLICATION_RESPONSE),
                                                                              _createXSLT (new ClassPathResource (sPath +
                                                                                                                  "OIOUBL_ApplicationResponse_Schematron.xslt",
                                                                                                                  _getCL ()))));
@@ -291,7 +316,7 @@ public final class OIOUBLValidation
                                                                              "OIOUBL Catalogue " +
                                                                                                           VID_OIOUBL_CATALOGUE_1_12_3.getVersion (),
                                                                              bNotDeprecated,
-                                                                             ValidationExecutorXSD.create (EUBL21DocumentType.CATALOGUE),
+                                                                             ValidationExecutorXSD.create (EUBL20DocumentType.CATALOGUE),
                                                                              _createXSLT (new ClassPathResource (sPath +
                                                                                                                  "OIOUBL_Catalogue_Schematron.xslt",
                                                                                                                  _getCL ()))));
@@ -299,7 +324,7 @@ public final class OIOUBLValidation
                                                                              "OIOUBL Catalogue Deletion " +
                                                                                                                    VID_OIOUBL_CATALOGUE_DELETION_1_12_3.getVersion (),
                                                                              bNotDeprecated,
-                                                                             ValidationExecutorXSD.create (EUBL21DocumentType.CATALOGUE_DELETION),
+                                                                             ValidationExecutorXSD.create (EUBL20DocumentType.CATALOGUE_DELETION),
                                                                              _createXSLT (new ClassPathResource (sPath +
                                                                                                                  "OIOUBL_CatalogueDeletion_Schematron.xslt",
                                                                                                                  _getCL ()))));
@@ -307,7 +332,7 @@ public final class OIOUBLValidation
                                                                              "OIOUBL Catalogue Item Specification Update " +
                                                                                                                                     VID_OIOUBL_CATALOGUE_ITEM_SPECIFICATION_UPDATE_1_12_3.getVersion (),
                                                                              bNotDeprecated,
-                                                                             ValidationExecutorXSD.create (EUBL21DocumentType.CATALOGUE_ITEM_SPECIFICATION_UPDATE),
+                                                                             ValidationExecutorXSD.create (EUBL20DocumentType.CATALOGUE_ITEM_SPECIFICATION_UPDATE),
                                                                              _createXSLT (new ClassPathResource (sPath +
                                                                                                                  "OIOUBL_CatalogueItemSpecificationUpdate_Schematron.xslt",
                                                                                                                  _getCL ()))));
@@ -315,7 +340,7 @@ public final class OIOUBLValidation
                                                                              "OIOUBL Catalogue Pricing Update " +
                                                                                                                          VID_OIOUBL_CATALOGUE_PRICING_UPDATE_1_12_3.getVersion (),
                                                                              bNotDeprecated,
-                                                                             ValidationExecutorXSD.create (EUBL21DocumentType.CATALOGUE_PRICING_UPDATE),
+                                                                             ValidationExecutorXSD.create (EUBL20DocumentType.CATALOGUE_PRICING_UPDATE),
                                                                              _createXSLT (new ClassPathResource (sPath +
                                                                                                                  "OIOUBL_CataloguePricingUpdate_Schematron.xslt",
                                                                                                                  _getCL ()))));
@@ -323,7 +348,7 @@ public final class OIOUBLValidation
                                                                              "OIOUBL Catalogue Request " +
                                                                                                                   VID_OIOUBL_CATALOGUE_REQUEST_1_12_3.getVersion (),
                                                                              bNotDeprecated,
-                                                                             ValidationExecutorXSD.create (EUBL21DocumentType.CATALOGUE_REQUEST),
+                                                                             ValidationExecutorXSD.create (EUBL20DocumentType.CATALOGUE_REQUEST),
                                                                              _createXSLT (new ClassPathResource (sPath +
                                                                                                                  "OIOUBL_CatalogueRequest_Schematron.xslt",
                                                                                                                  _getCL ()))));
@@ -331,7 +356,7 @@ public final class OIOUBLValidation
                                                                              "OIOUBL Credit Note " +
                                                                                                             VID_OIOUBL_CREDIT_NOTE_1_12_3.getVersion (),
                                                                              bNotDeprecated,
-                                                                             ValidationExecutorXSD.create (EUBL21DocumentType.CREDIT_NOTE),
+                                                                             ValidationExecutorXSD.create (EUBL20DocumentType.CREDIT_NOTE),
                                                                              _createXSLT (new ClassPathResource (sPath +
                                                                                                                  "OIOUBL_CreditNote_Schematron.xslt",
                                                                                                                  _getCL ()))));
@@ -339,7 +364,7 @@ public final class OIOUBLValidation
                                                                              "OIOUBL Invoice " +
                                                                                                         VID_OIOUBL_INVOICE_1_12_3.getVersion (),
                                                                              bNotDeprecated,
-                                                                             ValidationExecutorXSD.create (EUBL21DocumentType.INVOICE),
+                                                                             ValidationExecutorXSD.create (EUBL20DocumentType.INVOICE),
                                                                              _createXSLT (new ClassPathResource (sPath +
                                                                                                                  "OIOUBL_Invoice_Schematron.xslt",
                                                                                                                  _getCL ()))));
@@ -347,7 +372,7 @@ public final class OIOUBLValidation
                                                                              "OIOUBL Order " +
                                                                                                       VID_OIOUBL_ORDER_1_12_3.getVersion (),
                                                                              bNotDeprecated,
-                                                                             ValidationExecutorXSD.create (EUBL21DocumentType.ORDER),
+                                                                             ValidationExecutorXSD.create (EUBL20DocumentType.ORDER),
                                                                              _createXSLT (new ClassPathResource (sPath +
                                                                                                                  "OIOUBL_Order_Schematron.xslt",
                                                                                                                  _getCL ()))));
@@ -355,7 +380,7 @@ public final class OIOUBLValidation
                                                                              "OIOUBL Order Cancellation " +
                                                                                                                    VID_OIOUBL_ORDER_CANCELLATION_1_12_3.getVersion (),
                                                                              bNotDeprecated,
-                                                                             ValidationExecutorXSD.create (EUBL21DocumentType.ORDER_CANCELLATION),
+                                                                             ValidationExecutorXSD.create (EUBL20DocumentType.ORDER_CANCELLATION),
                                                                              _createXSLT (new ClassPathResource (sPath +
                                                                                                                  "OIOUBL_OrderCancellation_Schematron.xslt",
                                                                                                                  _getCL ()))));
@@ -363,7 +388,7 @@ public final class OIOUBLValidation
                                                                              "OIOUBL Order Change " +
                                                                                                              VID_OIOUBL_ORDER_CHANGE_1_12_3.getVersion (),
                                                                              bNotDeprecated,
-                                                                             ValidationExecutorXSD.create (EUBL21DocumentType.ORDER_CHANGE),
+                                                                             ValidationExecutorXSD.create (EUBL20DocumentType.ORDER_CHANGE),
                                                                              _createXSLT (new ClassPathResource (sPath +
                                                                                                                  "OIOUBL_OrderChange_Schematron.xslt",
                                                                                                                  _getCL ()))));
@@ -371,7 +396,7 @@ public final class OIOUBLValidation
                                                                              "OIOUBL Order Response " +
                                                                                                                VID_OIOUBL_ORDER_RESPONSE_1_12_3.getVersion (),
                                                                              bNotDeprecated,
-                                                                             ValidationExecutorXSD.create (EUBL21DocumentType.ORDER_RESPONSE),
+                                                                             ValidationExecutorXSD.create (EUBL20DocumentType.ORDER_RESPONSE),
                                                                              _createXSLT (new ClassPathResource (sPath +
                                                                                                                  "OIOUBL_OrderResponse_Schematron.xslt",
                                                                                                                  _getCL ()))));
@@ -379,7 +404,7 @@ public final class OIOUBLValidation
                                                                              "OIOUBL Order Response Simple " +
                                                                                                                       VID_OIOUBL_ORDER_RESPONSE_SIMPLE_1_12_3.getVersion (),
                                                                              bNotDeprecated,
-                                                                             ValidationExecutorXSD.create (EUBL21DocumentType.ORDER_RESPONSE_SIMPLE),
+                                                                             ValidationExecutorXSD.create (EUBL20DocumentType.ORDER_RESPONSE_SIMPLE),
                                                                              _createXSLT (new ClassPathResource (sPath +
                                                                                                                  "OIOUBL_OrderResponseSimple_Schematron.xslt",
                                                                                                                  _getCL ()))));
@@ -387,7 +412,7 @@ public final class OIOUBLValidation
                                                                              "OIOUBL Reminder " +
                                                                                                          VID_OIOUBL_REMINDER_1_12_3.getVersion (),
                                                                              bNotDeprecated,
-                                                                             ValidationExecutorXSD.create (EUBL21DocumentType.REMINDER),
+                                                                             ValidationExecutorXSD.create (EUBL20DocumentType.REMINDER),
                                                                              _createXSLT (new ClassPathResource (sPath +
                                                                                                                  "OIOUBL_Reminder_Schematron.xslt",
                                                                                                                  _getCL ()))));
@@ -395,9 +420,18 @@ public final class OIOUBLValidation
                                                                              "OIOUBL Statement " +
                                                                                                           VID_OIOUBL_STATEMENT_1_12_3.getVersion (),
                                                                              bNotDeprecated,
-                                                                             ValidationExecutorXSD.create (EUBL21DocumentType.STATEMENT),
+                                                                             ValidationExecutorXSD.create (EUBL20DocumentType.STATEMENT),
                                                                              _createXSLT (new ClassPathResource (sPath +
                                                                                                                  "OIOUBL_Statement_Schematron.xslt",
+                                                                                                                 _getCL ()))));
+
+      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OIOUBL_UTILITY_STATEMENT_1_12_3,
+                                                                             "OIOUBL Utility Statement " +
+                                                                                                                  VID_OIOUBL_UTILITY_STATEMENT_1_12_3.getVersion (),
+                                                                             bNotDeprecated,
+                                                                             ValidationExecutorXSD.create (aXSDUtilityStatement),
+                                                                             _createXSLT (new ClassPathResource (sPath +
+                                                                                                                 "OIOUBL_UtilityStatement_Schematron.xslt",
                                                                                                                  _getCL ()))));
     }
   }

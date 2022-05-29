@@ -60,7 +60,7 @@
     </dependency>
     <dependency>
       <groupId>com.helger.ubl</groupId>
-      <artifactId>ph-ubl21</artifactId>
+      <artifactId>ph-ubl20</artifactId>
     </dependency>
     <dependency>
       <groupId>com.helger.schematron</groupId>
@@ -87,6 +87,76 @@
             <Import-Package>!javax.annotation.*,*</Import-Package>
           </instructions>
         </configuration>
+      </plugin>
+      <plugin>
+        <groupId>com.evolvedbinary.maven.jvnet</groupId>
+        <artifactId>jaxb2-maven-plugin</artifactId>
+        <version>0.15.0</version>
+        <executions>
+          <execution>
+            <goals>
+              <goal>generate</goal>
+            </goals>
+            <id>ublpe20</id>
+            <configuration>
+              <schemaDirectory>${basedir}/src/main/resources/schemas/OIOUBL_v2.1-b/maindoc</schemaDirectory>
+              <bindingIncludes>
+                <bindingInclude>bindings.xjb</bindingInclude>
+              </bindingIncludes>
+              <catalog>src/main/jaxb/catalog.txt</catalog>
+            </configuration>
+          </execution>
+        </executions>
+        <configuration>
+          <bindingDirectory>${basedir}/src/main/jaxb</bindingDirectory>
+          <extension>true</extension>
+          <strict>false</strict>
+          <useDependenciesAsEpisodes>true</useDependenciesAsEpisodes>
+          <args>
+            <arg>-no-header</arg>
+            <arg>-quiet</arg>
+            <arg>-Xph-default-locale</arg>
+            <arg>en_US</arg>
+            <arg>-Xph-annotate</arg>
+            <arg>-Xph-fields-private</arg>
+            <arg>-Xph-code-quality</arg>
+            <arg>-Xph-implements</arg>
+            <arg>java.io.Serializable</arg>
+            <arg>-Xph-equalshashcode</arg>
+            <arg>-Xph-tostring</arg>
+            <arg>-Xph-list-extension</arg>
+            <arg>-Xph-csu</arg>
+            <arg>-Xph-cloneable2</arg>
+            <arg>-Xph-value-extender</arg>
+            <arg>-Xph-offset-dt-extension</arg>
+          </args>
+        </configuration>
+        <dependencies>
+          <dependency>
+            <groupId>com.helger</groupId>
+            <artifactId>ph-jaxb22-plugin</artifactId>
+            <version>2.3.3.3</version>
+          </dependency>
+        </dependencies>
+      </plugin>
+      <!-- Delete the directory with only ObjectFactory 
+           Source: http://stackoverflow.com/questions/32635137
+      -->
+      <plugin>
+        <artifactId>maven-antrun-plugin</artifactId>
+        <executions>
+          <execution>
+            <phase>process-sources</phase>
+            <goals>
+              <goal>run</goal>
+            </goals>
+            <configuration>
+              <target>
+                <delete dir="${basedir}/target/generated-sources/xjc/oasis/" />
+              </target>
+            </configuration>
+          </execution>
+        </executions>
       </plugin>
       <plugin>
         <groupId>com.helger.maven</groupId>

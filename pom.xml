@@ -63,7 +63,7 @@
   </developers>
   
   <properties>
-    <ph-schematron.version>6.3.1</ph-schematron.version>
+    <ph-schematron.version>6.3.2-SNAPSHOT</ph-schematron.version>
   </properties>
   
   <dependencyManagement>
