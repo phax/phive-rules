@@ -34,6 +34,7 @@ import com.helger.phive.engine.source.IValidationSourceXML;
 import com.helger.phive.facturae.FacturaeValidation;
 
 @Immutable
+@SuppressWarnings ("deprecation")
 public final class CTestFiles
 {
   public static final ValidationExecutorSetRegistry <IValidationSourceXML> VES_REGISTRY = new ValidationExecutorSetRegistry <> ();

@@ -34,7 +34,6 @@ import com.helger.phive.engine.source.IValidationSourceXML;
 import com.helger.phive.oioubl.OIOUBLValidation;
 
 @Immutable
-@SuppressWarnings ("deprecation")
 public final class CTestFiles
 {
   public static final ValidationExecutorSetRegistry <IValidationSourceXML> VES_REGISTRY = new ValidationExecutorSetRegistry <> ();
