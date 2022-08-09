@@ -178,6 +178,8 @@ Alternate usage as a Maven BOM:
   
 # News and noteworthy
 
+* v2.1.16 - work in progress
+    * Added support for ebInterface 6.1
 * v2.1.15 - 2022-07-06
     * Added Peppol A-NZ-PEPPOL 1.0.7 rules (deprecated version 1.0.6)
     * Moved Peppol A-NZ-PEPPOL 1.0.5 rules from `phive-rules-peppol` to `phive-rules-peppol-legacy`
