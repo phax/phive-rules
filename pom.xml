@@ -63,7 +63,7 @@
   </developers>
   
   <properties>
-    <ph-schematron.version>6.3.2</ph-schematron.version>
+    <ph-schematron.version>6.3.3</ph-schematron.version>
   </properties>
   
   <dependencyManagement>
@@ -85,7 +85,7 @@
       <dependency>
         <groupId>com.helger.phive</groupId>
         <artifactId>phive-parent-pom</artifactId>
-        <version>7.2.3</version>
+        <version>7.2.4</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
@@ -117,7 +117,7 @@
       <dependency>
         <groupId>com.helger.web</groupId>
         <artifactId>ph-web-parent-pom</artifactId>
-        <version>9.6.4</version>
+        <version>9.7.1</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
@@ -125,7 +125,7 @@
       <dependency>
         <groupId>com.helger.peppol</groupId>
         <artifactId>peppol-commons-parent-pom</artifactId>
-        <version>8.7.6</version>
+        <version>8.8.0</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
