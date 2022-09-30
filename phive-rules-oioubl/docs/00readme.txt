@@ -22,3 +22,5 @@ Releases:
 https://www.digitaliser.dk/group/56183/resources
 https://digitaliser.dk/resource/3718578
 https://digitaliser.dk/resource/2326329
+
+https://nemhandel.dk/betaversion-af-ny-oioubl-version-21-og-nye-oioubl-schematroner-version-112dev
