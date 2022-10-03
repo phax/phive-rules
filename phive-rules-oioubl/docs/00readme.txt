@@ -15,12 +15,15 @@
     limitations under the License.
 ====
 
+Official News item:
+https://nemhandel.dk/opdateringer-releases
+https://nemhandel.dk/betaversion-af-ny-oioubl-version-21-og-nye-oioubl-schematroner-version-112dev
+
 Source:
 https://rep.erst.dk/git/openebusiness/common/
 
-Releases:
+Other news items:
 https://www.digitaliser.dk/group/56183/resources
 https://digitaliser.dk/resource/3718578
 https://digitaliser.dk/resource/2326329
 
-https://nemhandel.dk/betaversion-af-ny-oioubl-version-21-og-nye-oioubl-schematroner-version-112dev
