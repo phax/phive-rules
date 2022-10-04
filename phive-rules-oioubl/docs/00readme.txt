@@ -27,3 +27,4 @@ https://www.digitaliser.dk/group/56183/resources
 https://digitaliser.dk/resource/3718578
 https://digitaliser.dk/resource/2326329
 
+There is an RSS feed you can subscript to - see https://nemhandel.dk/faa-nyheder-og-releases-som-rss (link: https://nemhandel.dk/nyheder_releases.xml)
