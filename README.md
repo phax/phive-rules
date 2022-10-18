@@ -178,7 +178,7 @@ Alternate usage as a Maven BOM:
   
 # News and noteworthy
 
-* v2.1.16 - work in progress
+* v2.1.16 - 2022-10-18
     * Added support for ebInterface 6.1
     * Added support for EN 16931 1.3.9 format
 * v2.1.15 - 2022-07-06
