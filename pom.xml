@@ -26,7 +26,7 @@
   </parent>
   <groupId>com.helger.phive.rules</groupId>
   <artifactId>phive-rules-parent-pom</artifactId>
-  <version>2.1.16-SNAPSHOT</version>
+  <version>2.1.17-SNAPSHOT</version>
   <packaging>pom</packaging>
   <name>phive-rules-parent-pom</name>
   <description>Base POM to build the phive rules projects</description>
@@ -71,7 +71,7 @@
       <dependency>
         <groupId>com.helger.commons</groupId>
         <artifactId>ph-commons-parent-pom</artifactId>
-        <version>10.2.0</version>
+        <version>10.2.1</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
@@ -117,7 +117,7 @@
       <dependency>
         <groupId>com.helger.web</groupId>
         <artifactId>ph-web-parent-pom</artifactId>
-        <version>9.7.1</version>
+        <version>9.7.2</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
