@@ -63,7 +63,7 @@
   </developers>
   
   <properties>
-    <ph-schematron.version>6.3.3</ph-schematron.version>
+    <ph-schematron.version>6.3.4</ph-schematron.version>
   </properties>
   
   <dependencyManagement>
