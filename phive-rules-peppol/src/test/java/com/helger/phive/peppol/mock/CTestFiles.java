@@ -36,6 +36,7 @@ import com.helger.phive.peppol.PeppolValidation3_13_0;
 import com.helger.phive.peppol.PeppolValidation3_14_0;
 import com.helger.phive.peppol.PeppolValidationAUNZ;
 import com.helger.phive.peppol.PeppolValidationDirectory;
+import com.helger.phive.peppol.PeppolValidationReporting;
 import com.helger.phive.peppol.PeppolValidationSG;
 
 @Immutable
@@ -103,7 +104,11 @@ public final class CTestFiles
                                             /* Directory */
                                             PeppolValidationDirectory.VID_OPENPEPPOL_BUSINESS_CARD_V1,
                                             PeppolValidationDirectory.VID_OPENPEPPOL_BUSINESS_CARD_V2,
-                                            PeppolValidationDirectory.VID_OPENPEPPOL_BUSINESS_CARD_V3, })
+                                            PeppolValidationDirectory.VID_OPENPEPPOL_BUSINESS_CARD_V3,
+
+                                            /* Reporting */
+                                            PeppolValidationReporting.VID_OPENPEPPOL_EUSR_V100RC2,
+                                            PeppolValidationReporting.VID_OPENPEPPOL_TSR_V100, })
       for (final IReadableResource aRes : getAllMatchingTestFiles (aESID))
       {
         assertTrue ("Not existing test file: " + aRes.getPath (), aRes.exists ());
@@ -368,6 +373,22 @@ public final class CTestFiles
                                       new FileSystemResource (sBase + "business-card-example-spec-v3.xml"),
                                       new FileSystemResource (sBase + "business-card-test1.xml"),
                                       new FileSystemResource (sBase + "business-card-test2.xml"));
+    }
+
+    /* Peppol Reporting */
+    if (aVESID.equals (PeppolValidationReporting.VID_OPENPEPPOL_EUSR_V100RC2))
+    {
+      final String sBase = sTestFiles + "reporting/eusr/1.0.0-RC2/";
+      return new CommonsArrayList <> (new FileSystemResource (sBase + "end-user-statistics-reporting-1.xml"),
+                                      new FileSystemResource (sBase + "end-user-statistics-reporting-empty.xml"),
+                                      new FileSystemResource (sBase + "end-user-statistics-reporting-minimal.xml"));
+    }
+
+    if (aVESID.equals (PeppolValidationReporting.VID_OPENPEPPOL_TSR_V100))
+    {
+      final String sBase = sTestFiles + "reporting/tsr/1.0.0/";
+      return new CommonsArrayList <> (new FileSystemResource (sBase + "transaction-statistics-2.xml"),
+                                      new FileSystemResource (sBase + "transaction-statistics-minimal.xml"));
     }
 
     throw new IllegalArgumentException ("Invalid VESID: " + aVESID);

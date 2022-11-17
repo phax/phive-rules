@@ -79,6 +79,7 @@ public final class PeppolValidation
     PeppolValidationAUNZ.init (aRegistry);
     PeppolValidationSG.init (aRegistry);
     PeppolValidationDirectory.init (aRegistry);
+    PeppolValidationReporting.init (aRegistry);
   }
 
   @Nonnull

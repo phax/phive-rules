@@ -178,6 +178,9 @@ Alternate usage as a Maven BOM:
   
 # News and noteworthy
 
+* v2.1.17 - work in progress
+    * Added support for Peppol End User Statistics Report 1.0.0-RC2
+    * Added support for Peppol Transaction Statistics Report 1.0.0
 * v2.1.16 - 2022-10-18
     * Added support for ebInterface 6.1
     * Added support for EN 16931 1.3.9 format
