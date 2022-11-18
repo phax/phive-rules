@@ -178,7 +178,7 @@ Alternate usage as a Maven BOM:
   
 # News and noteworthy
 
-* v2.1.17 - work in progress
+* v2.1.17 - 2022-11-18
     * Added support for Peppol End User Statistics Report 1.0.0-RC2
     * Added support for Peppol Transaction Statistics Report 1.0.0
     * Added support for SimplerInvoicing 2.0.3.5
