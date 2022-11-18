@@ -181,6 +181,9 @@ Alternate usage as a Maven BOM:
 * v2.1.17 - work in progress
     * Added support for Peppol End User Statistics Report 1.0.0-RC2
     * Added support for Peppol Transaction Statistics Report 1.0.0
+    * Added support for SimplerInvoicing 2.0.3.5
+    * Added support for SimplerInvoicing NLCIUS-CII 1.0.3.4
+    * Added support for SimplerInvoicing 2.0 G-Account extension 1.0.5
 * v2.1.16 - 2022-10-18
     * Added support for ebInterface 6.1
     * Added support for EN 16931 1.3.9 format
