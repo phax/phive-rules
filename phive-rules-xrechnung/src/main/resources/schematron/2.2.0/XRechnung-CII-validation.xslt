@@ -153,7 +153,7 @@
 
 <!--SCHEMA SETUP-->
 <xsl:template match="/">
-    <svrl:schematron-output schemaVersion="" title="Schematron Version 1.7.1 - XRechnung 2.2.0 compatible - CII">
+    <svrl:schematron-output schemaVersion="" title="Schematron Version 1.7.3 - XRechnung 2.2.0 compatible - CII">
       <xsl:attribute name="phase">xrechnung-model</xsl:attribute>
       <xsl:comment>
         <xsl:value-of select="$archiveDirParameter" />   
@@ -197,7 +197,7 @@
   </xsl:template>
 
 <!--SCHEMATRON PATTERNS-->
-<svrl:text>Schematron Version 1.7.1 - XRechnung 2.2.0 compatible - CII</svrl:text>
+<svrl:text>Schematron Version 1.7.3 - XRechnung 2.2.0 compatible - CII</svrl:text>
 
 <!--PATTERN variable-pattern-->
 <xsl:variable name="XR-MAJOR-MINOR-VERSION" select="'2.2'" />
@@ -353,9 +353,9 @@
 
 		<!--ASSERT -->
 <xsl:choose>
-      <xsl:when test="ram:GuidelineSpecifiedDocumentContextParameter/ram:ID = $XR-CIUS-ID" />
+      <xsl:when test="ram:GuidelineSpecifiedDocumentContextParameter/ram:ID = $XR-CIUS-ID or                     ram:GuidelineSpecifiedDocumentContextParameter/ram:ID = $XR-EXTENSION-ID" />
       <xsl:otherwise>
-        <svrl:failed-assert test="ram:GuidelineSpecifiedDocumentContextParameter/ram:ID = $XR-CIUS-ID">
+        <svrl:failed-assert test="ram:GuidelineSpecifiedDocumentContextParameter/ram:ID = $XR-CIUS-ID or ram:GuidelineSpecifiedDocumentContextParameter/ram:ID = $XR-EXTENSION-ID">
           <xsl:attribute name="id">BR-DE-21</xsl:attribute>
           <xsl:attribute name="flag">warning</xsl:attribute>
           <xsl:attribute name="location">
@@ -671,9 +671,9 @@
 
 		<!--ASSERT -->
 <xsl:choose>
-      <xsl:when test="not(ram:TypeCode = '59') or                     matches(normalize-space(replace(ram:PayerPartyDebtorFinancialAccount/ram:IBANID, '([ \n\r\t\s])', '')), '^[A-Z]{2}[0-9]{2}[a-zA-Z0-9]{0,30}$') and                     xs:integer(string-join(for $cp in string-to-codepoints(concat(substring(normalize-space(replace(ram:PayerPartyDebtorFinancialAccount/ram:IBANID, '([ \n\r\t\s])', '')),5),upper-case(substring(normalize-space(replace(ram:PayerPartyDebtorFinancialAccount/ram:IBANID, '([ \n\r\t\s])', '')),1,2)),substring(normalize-space(replace(ram:PayerPartyDebtorFinancialAccount/ram:IBANID, '([ \n\r\t\s])', '')),3,2))) return  (if($cp > 64) then $cp - 55 else  $cp - 48),'')) mod 97 = 1" />
+      <xsl:when test="not(ram:TypeCode = '59') or                     matches(normalize-space(replace(ram:PayerPartyDebtorFinancialAccount/ram:IBANID, '([ \n\r\t\s])', '')), '^[A-Z]{2}[0-9]{2}[a-zA-Z0-9]{0,30}$') and                     xs:decimal(string-join(for $cp in string-to-codepoints(concat(substring(normalize-space(replace(ram:PayerPartyDebtorFinancialAccount/ram:IBANID, '([ \n\r\t\s])', '')),5),upper-case(substring(normalize-space(replace(ram:PayerPartyDebtorFinancialAccount/ram:IBANID, '([ \n\r\t\s])', '')),1,2)),substring(normalize-space(replace(ram:PayerPartyDebtorFinancialAccount/ram:IBANID, '([ \n\r\t\s])', '')),3,2))) return  (if($cp > 64) then $cp - 55 else  $cp - 48),'')) mod 97 = 1" />
       <xsl:otherwise>
-        <svrl:failed-assert test="not(ram:TypeCode = '59') or matches(normalize-space(replace(ram:PayerPartyDebtorFinancialAccount/ram:IBANID, '([ \n\r\t\s])', '')), '^[A-Z]{2}[0-9]{2}[a-zA-Z0-9]{0,30}$') and xs:integer(string-join(for $cp in string-to-codepoints(concat(substring(normalize-space(replace(ram:PayerPartyDebtorFinancialAccount/ram:IBANID, '([ \n\r\t\s])', '')),5),upper-case(substring(normalize-space(replace(ram:PayerPartyDebtorFinancialAccount/ram:IBANID, '([ \n\r\t\s])', '')),1,2)),substring(normalize-space(replace(ram:PayerPartyDebtorFinancialAccount/ram:IBANID, '([ \n\r\t\s])', '')),3,2))) return (if($cp > 64) then $cp - 55 else $cp - 48),'')) mod 97 = 1">
+        <svrl:failed-assert test="not(ram:TypeCode = '59') or matches(normalize-space(replace(ram:PayerPartyDebtorFinancialAccount/ram:IBANID, '([ \n\r\t\s])', '')), '^[A-Z]{2}[0-9]{2}[a-zA-Z0-9]{0,30}$') and xs:decimal(string-join(for $cp in string-to-codepoints(concat(substring(normalize-space(replace(ram:PayerPartyDebtorFinancialAccount/ram:IBANID, '([ \n\r\t\s])', '')),5),upper-case(substring(normalize-space(replace(ram:PayerPartyDebtorFinancialAccount/ram:IBANID, '([ \n\r\t\s])', '')),1,2)),substring(normalize-space(replace(ram:PayerPartyDebtorFinancialAccount/ram:IBANID, '([ \n\r\t\s])', '')),3,2))) return (if($cp > 64) then $cp - 55 else $cp - 48),'')) mod 97 = 1">
           <xsl:attribute name="id">BR-DE-20</xsl:attribute>
           <xsl:attribute name="flag">warning</xsl:attribute>
           <xsl:attribute name="location">

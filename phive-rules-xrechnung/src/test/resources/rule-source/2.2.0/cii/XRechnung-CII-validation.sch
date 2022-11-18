@@ -7,7 +7,7 @@
         xmlns:ram="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100"
         queryBinding="xslt2"
         defaultPhase="xrechnung-model">
-  <title>Schematron Version 1.7.2 - XRechnung 2.2.0 compatible - CII</title>
+  <title>Schematron Version 1.7.3 - XRechnung 2.2.0 compatible - CII</title>
   <ns prefix="rsm"  uri="urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100" />
   <ns prefix="ccts" uri="urn:un:unece:uncefact:documentation:standard:CoreComponentsTechnicalSpecification:2" />
   <ns prefix="udt"  uri="urn:un:unece:uncefact:data:standard:UnqualifiedDataType:100" />
@@ -73,7 +73,8 @@
     </rule>
   
     <rule context="/rsm:CrossIndustryInvoice/rsm:ExchangedDocumentContext">
-      <assert test="ram:GuidelineSpecifiedDocumentContextParameter/ram:ID = $XR-CIUS-ID"
+      <assert test="ram:GuidelineSpecifiedDocumentContextParameter/ram:ID = $XR-CIUS-ID or
+                    ram:GuidelineSpecifiedDocumentContextParameter/ram:ID = $XR-EXTENSION-ID"
               flag="warning"
               id="BR-DE-21"
           >[BR-DE-21] Das Element "Specification identifier" (BT-24) soll syntaktisch der Kennung des Standards XRechnung entsprechen.</assert>

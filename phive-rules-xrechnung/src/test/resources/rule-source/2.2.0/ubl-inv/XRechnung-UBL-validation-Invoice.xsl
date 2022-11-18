@@ -153,7 +153,7 @@
    <!--SCHEMA SETUP-->
    <xsl:template match="/">
       <svrl:schematron-output xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
-                              title="Schematron Version 1.7.2 - XRechnung 2.2.0 compatible - UBL - Invoice"
+                              title="Schematron Version 1.7.3 - XRechnung 2.2.0 compatible - UBL - Invoice"
                               schemaVersion="">
          <xsl:attribute name="phase">xrechnung-model</xsl:attribute>
          <xsl:comment>
@@ -201,7 +201,7 @@
       </svrl:schematron-output>
    </xsl:template>
    <!--SCHEMATRON PATTERNS-->
-   <svrl:text xmlns:svrl="http://purl.oclc.org/dsdl/svrl">Schematron Version 1.7.2 - XRechnung 2.2.0 compatible - UBL - Invoice</svrl:text>
+   <svrl:text xmlns:svrl="http://purl.oclc.org/dsdl/svrl">Schematron Version 1.7.3 - XRechnung 2.2.0 compatible - UBL - Invoice</svrl:text>
    <!--PATTERN variable-pattern-->
    <xsl:variable name="XR-MAJOR-MINOR-VERSION" select="'2.2'"/>
    <xsl:variable name="XR-CIUS-ID"

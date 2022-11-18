@@ -185,6 +185,7 @@ Alternate usage as a Maven BOM:
     * Added support for SimplerInvoicing NLCIUS-CII 1.0.3.4
     * Added support for SimplerInvoicing 2.0 G-Account extension 1.0.5
     * Added support for OIOUBL 1.13.0
+    * Updated XRechnung 2.2.0 rules to v1.7.3
 * v2.1.16 - 2022-10-18
     * Added support for ebInterface 6.1
     * Added support for EN 16931 1.3.9 format
