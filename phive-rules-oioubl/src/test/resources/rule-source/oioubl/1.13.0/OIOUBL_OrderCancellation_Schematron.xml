@@ -1,0 +1,564 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+******************************************************************************************************************
+
+		OIOUBL Schematron
+
+		publisher:          NemHandel / Erhvervsstyrelsen
+        Repository path:    $HeadURL$
+        File version:       $Revision$
+        Last changed by:    $Author$
+        Last changed date:  $Date$
+
+		Description:        This document is produced as part of the OIOUBL schematron package
+		Rights:             It can be used following the Common Creative Licence
+
+		all terms derived from http://dublincore.org/documents/dcmi-terms/
+
+		For more information, see www.oioubl.info or email support@nemhandel.dk
+
+******************************************************************************************************************
+-->
+
+<sch:schema xmlns:sch="http://purl.oclc.org/dsdl/schematron">
+
+	<sch:ns uri="urn:oasis:names:specification:ubl:schema:xsd:OrderCancellation-2"            prefix="doc"/>
+	<sch:ns uri="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"    prefix="cac"/>
+	<sch:ns uri="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"        prefix="cbc"/>
+	<sch:ns uri="urn:oasis:names:specification:ubl:schema:xsd:CoreComponentParameters-2"      prefix="ccts"/>
+	<sch:ns uri="urn:oasis:names:specification:ubl:schema:xsd:SpecializedDatatypes-2"         prefix="sdt"/>
+	<sch:ns uri="urn:un:unece:uncefact:data:specification:UnqualifiedDataTypesSchemaModule:2" prefix="udt"/>
+	<!-- [Release 20120615] Check added according to issue: https://bugs.softwareborsen.dk/show_bug.cgi?id=934 -->
+	<sch:ns uri="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2" prefix="ext"/>
+	<sch:ns uri="http://www.w3.org/2001/XMLSchema"                                            prefix="xs"/>
+
+	<sch:p>Schematron for validating OIOUBL-2.1 documents.</sch:p>
+	<sch:title>Checking OIOUBL-2.1 OrderCancellation</sch:title>
+
+
+	<!-- Inclusion of OIOUBL codelist variables -->
+	<sch:include href="OIOUBL_Codelist_Schematron.xml"/>
+
+
+	<!-- Global variables -->
+
+
+	<!-- The default phase to execute when validating -->
+	<sch:phase id="default">
+		<sch:active pattern="ublextensions"/>
+		<sch:active pattern="profile"/>
+		<sch:active pattern="ordercancellation"/>
+		<sch:active pattern="orderreference"/>
+		<sch:active pattern="originatordocumentreference"/>
+		<sch:active pattern="additionaldocumentreference"/>
+		<sch:active pattern="contract"/>
+		<sch:active pattern="signature"/>
+		<sch:active pattern="buyercustomerparty"/>
+		<sch:active pattern="sellersupplierparty"/>
+		<sch:active pattern="originatorcustomerparty"/>
+	</sch:phase>
+
+
+	<!-- Inclusion of OIOUBL common rules -->
+	<sch:include href="OIOUBL_Common_Schematron.xml"/>
+
+
+	<!-- - - - - - - - - - - -  UBLExtensions - - - - - - - - - - - - -  -->
+	<!-- [Release 20120615] Check added according to issue: https://bugs.softwareborsen.dk/show_bug.cgi?id=934 -->
+	<sch:pattern name="UBLExtensions" id="ublextensions">
+		<sch:p>Pattern for validating the UBLExtensions class</sch:p>
+		<sch:rule context="doc:OrderCancellation">
+			<sch:extends rule="UBLExtensionsCheck"/>
+		</sch:rule>
+	</sch:pattern>
+
+	<!-- - - - - - - - - - - -  Profile - - - - - - - - - - - - -  -->
+	<sch:pattern name="Profile" id="profile">
+		<sch:p>Pattern for validating root element, Profile and UBL version</sch:p>
+		<!-- Validate root element -->
+		<sch:rule context="/">
+			<sch:assert test="local-name(*) = 'OrderCancellation'">[F-OCA001] Root element must be OrderCancellation</sch:assert>
+			<!-- [Release 20130315] Check added according to issue: https://bugs.softwareborsen.dk/show_bug.cgi?id=1023 -->
+			<sch:assert test="namespace-uri(*) = 'urn:oasis:names:specification:ubl:schema:xsd:OrderCancellation-2'">[F-OCA028] The documenttype does not match an OIOUBL OrderCancellation and can not be validated by this schematron.</sch:assert>
+		</sch:rule>
+		<sch:rule context="doc:OrderCancellation">
+			<!-- Check ProfileID, UBLVersionID and CustomizationID -->
+			<sch:extends rule="UBLVersionIDCheck"/>
+			<sch:extends rule="CustomizationIDCheck"/>
+			<sch:extends rule="ProfileIDCheck"/>
+		</sch:rule>
+	</sch:pattern>
+
+	<!-- - - - - - - - - - - -  OrderCancellation (OCA027) - - - - - - - - - - -  -->
+	<sch:pattern name="OrderCancellation" id="ordercancellation">
+		<sch:p>Pattern for validating the OrderCancellation structure</sch:p>
+		<sch:rule context="doc:OrderCancellation">
+			<!-- Check for excluded elements -->
+			<!-- Check for mandatory elements -->
+			<!-- Validate -->
+			<sch:assert test="cbc:ID != ''">[F-OCA002] Invalid ID. Must contain a value</sch:assert>
+			<sch:assert test="cbc:CancellationNote != ''">[F-OCA003] Invalid CancellationNote. Must contain a value</sch:assert>
+			<sch:report test="count(cac:OrderReference) &gt; 1">[F-OCA004] No more than one OrderReference class may be present</sch:report>
+			<sch:report test="count(cac:Contract) &gt; 1">[F-OCA005] No more than one Contract class may be present</sch:report>
+			<sch:report test="count(cac:Signature) &gt; 1">[F-OCA006] No more than one Signature class may be present</sch:report>
+		</sch:rule>
+
+		<!-- Validate CopyIndicator -->
+
+		<!-- Validate UUID -->
+		<sch:rule context="doc:OrderCancellation/cbc:UUID">
+			<sch:extends rule="UUIDCheck"/>
+		</sch:rule>
+
+		<!-- Validate IssueDate -->
+		<!-- Validate IssueTime -->
+
+		<!-- Validate Note -->
+		<sch:rule context="doc:OrderCancellation/cbc:Note">
+			<sch:extends rule="NoteCheck"/>
+		</sch:rule>
+
+		<!-- Validate CancellationNote (ok, see above) -->
+	</sch:pattern>
+
+	<!-- - - - - - - - - - - -  OrderReference - - - - - - - - - - -  -->
+	<sch:pattern name="OrderReference" id="orderreference">
+		<sch:p>Pattern for validating the OrderReference class</sch:p>
+		<sch:rule context="doc:OrderCancellation/cac:OrderReference">
+			<!-- Check for excluded elements -->
+			<!-- Check for mandatory elements -->
+			<!-- Validate -->
+			<sch:assert test="cbc:ID != ''">[F-OCA007] Invalid ID. Must contain a value</sch:assert>
+		</sch:rule>
+		<!-- Validate UUID -->
+		<sch:rule context="doc:OrderCancellation/cac:OrderReference/cbc:UUID">
+			<sch:extends rule="UUIDCheck"/>
+		</sch:rule>
+		<!-- Validate IssueDate -->
+		<!-- Validate CustomerReference -->
+		<!-- Validate DocumentReference -->
+		<sch:rule context="doc:OrderCancellation/cac:OrderReference/cac:DocumentReference">
+			<sch:extends rule="KnownDocumentReferenceCheck"/>
+		</sch:rule>
+	</sch:pattern>
+
+	<!-- - - - - - - - - - - -  OriginatorDocumentReference - - - - - - - - - - -  -->
+	<sch:pattern name="OriginatorDocumentReference" id="originatordocumentreference">
+		<sch:p>Pattern for validating the OriginatorDocumentReference class</sch:p>
+		<sch:rule context="doc:OrderCancellation/cac:OriginatorDocumentReference">
+			<sch:extends rule="DocumentReferenceCheck"/>
+		</sch:rule>
+	</sch:pattern>
+
+	<!-- - - - - - - - - - - -  AdditionalDocumentReference - - - - - - - - - - -  -->
+	<sch:pattern name="AdditionalDocumentReference" id="additionaldocumentreference">
+		<sch:p>Pattern for validating the AdditionalDocumentReference class</sch:p>
+		<sch:rule context="doc:OrderCancellation/cac:AdditionalDocumentReference">
+			<sch:extends rule="DocumentReferenceCheck"/>
+		</sch:rule>
+	</sch:pattern>
+
+	<!-- - - - - - - - - - - -  Contract - - - - - - - - - - -  -->
+	<sch:pattern name="Contract" id="contract">
+		<sch:p>Pattern for validating the Contract class</sch:p>
+		<sch:rule context="doc:OrderCancellation/cac:Contract">
+			<!-- Check for excluded elements -->
+			<!-- Check for mandatory elements -->
+			<sch:assert test="cbc:ID != ''">[F-OCA010] Invalid ID. Must contain a value</sch:assert>
+			<!-- Validate -->
+			<sch:report test="cbc:ContractType and cbc:ContractTypeCode">[F-OCA011] Use either ContractType or ContractTypeCode</sch:report>
+			<sch:report test="count(cac:ContractDocumentReference) &gt; 1">[F-OCA012] No more than one ContractDocumentReference class may be present</sch:report>
+		</sch:rule>
+
+		<!-- Validate ValidityPeriod -->
+		<sch:rule context="doc:Catalogue/cac:ReferencedContract/cac:ValidityPeriod">
+			<sch:extends rule="PeriodCheck"/>
+		</sch:rule>
+		<!-- Validate ValidityPeriod/Description -->
+		<sch:rule context="doc:Catalogue/cac:ReferencedContract/cac:ValidityPeriod/cbc:Description">
+			<sch:extends rule="DescriptionLanguageCheck"/>
+		</sch:rule>
+
+		<!-- Validate ContractDocumentReference -->
+		<sch:rule context="doc:OrderCancellation/cac:Contract/cac:ContractDocumentReference">
+			<sch:extends rule="KnownDocumentReferenceCheck"/>
+		</sch:rule>
+	</sch:pattern>
+
+	<!-- - - - - - - - - - - -  Signature - - - - - - - - - - -  -->
+	<sch:pattern name="Signature" id="signature">
+		<sch:p>Pattern for validating the Signature class</sch:p>
+		<sch:rule context="doc:OrderCancellation/cac:Signature">
+			<!-- Check for excluded elements -->
+			<!-- Check for mandatory elements -->
+			<!-- Validate -->
+			<sch:assert test="cbc:ID != ''">[F-OCA013] Invalid ID. Must contain a value</sch:assert>
+		</sch:rule>
+		<!-- Validate SignatoryParty -->
+		<sch:rule context="doc:OrderCancellation/cac:Signature/cac:SignatoryParty">
+			<!-- Check for excluded elements -->
+			<sch:extends rule="PartyExcludedCheck"/>
+			<!-- Check for mandatory elements -->
+			<!-- Validate -->
+			<sch:extends rule="PartyNameCheck"/>
+			<sch:extends rule="EndpointIDCheck"/>
+			<sch:report test="count(cac:PartyLegalEntity) &gt; 1">[F-OCA014] No more than one PartyLegalEntity class may be present</sch:report>
+		</sch:rule>
+		<!-- Validate SignatoryParty/PartyIdentification -->
+		<sch:rule context="doc:OrderCancellation/cac:Signature/cac:SignatoryParty/cac:PartyIdentification">
+			<sch:extends rule="PartyIdentificationCheck"/>
+		</sch:rule>
+		<!-- Validate SignatoryParty/PartyName -->
+		<sch:rule context="doc:OrderCancellation/cac:Signature/cac:SignatoryParty/cac:PartyName">
+			<sch:extends rule="PartyNameLanguageCheck"/>
+		</sch:rule>
+		<!-- Validate SignatoryParty/PostalAddress -->
+		<sch:rule context="doc:OrderCancellation/cac:Signature/cac:SignatoryParty/cac:PostalAddress">
+			<sch:extends rule="AddressCheck"/>
+		</sch:rule>
+		<!-- Validate SignatoryParty/PhysicalLocation -->
+		<sch:rule context="doc:OrderCancellation/cac:Signature/cac:SignatoryParty/cac:PhysicalLocation">
+			<sch:extends rule="AddressIDCheck"/>
+		</sch:rule>
+		<!-- Validate SignatoryParty/PhysicalLocation/ValidityPeriod -->
+		<sch:rule context="doc:OrderCancellation/cac:Signature/cac:SignatoryParty/cac:PhysicalLocation/cac:ValidityPeriod">
+			<sch:extends rule="PeriodCheck"/>
+		</sch:rule>
+		<!-- Validate SignatoryParty/PhysicalLocation/ValidityPeriod/Description -->
+		<sch:rule context="doc:OrderCancellation/cac:Signature/cac:SignatoryParty/cac:PhysicalLocation/cac:ValidityPeriod/cbc:Description">
+			<sch:extends rule="DescriptionLanguageCheck"/>
+		</sch:rule>
+		<!-- Validate SignatoryParty/PhysicalLocation/Address -->
+		<sch:rule context="doc:OrderCancellation/cac:Signature/cac:SignatoryParty/cac:PhysicalLocation/cac:Address">
+			<sch:extends rule="AddressCheck"/>
+		</sch:rule>
+		<!-- Validate SignatoryParty/PartyTaxScheme -->
+		<sch:rule context="doc:OrderCancellation/cac:Signature/cac:SignatoryParty/cac:PartyTaxScheme">
+			<sch:extends rule="PartyTaxSchemeCheck"/>
+		</sch:rule>
+		<!-- Validate SignatoryParty/PartyTaxScheme/TaxScheme -->
+		<sch:rule context="doc:OrderCancellation/cac:Signature/cac:SignatoryParty/cac:PartyTaxScheme/cac:TaxScheme">
+			<sch:extends rule="TaxSchemeCheck"/>
+		</sch:rule>
+		<!-- Validate SignatoryParty/PartyLegalEntity -->
+		<sch:rule context="doc:OrderCancellation/cac:Signature/cac:SignatoryParty/cac:PartyLegalEntity">
+			<sch:extends rule="PartyLegalEntityCheck"/>
+		</sch:rule>
+		<!-- Validate SignatoryParty/Contact -->
+		<sch:rule context="doc:OrderCancellation/cac:Signature/cac:SignatoryParty/cac:Contact">
+			<sch:extends rule="ContactCheck"/>
+		</sch:rule>
+		<!-- Validate SignatoryParty/Person -->
+		<sch:rule context="doc:OrderCancellation/cac:Signature/cac:SignatoryParty/cac:Person">
+			<sch:extends rule="Person/FirstNameCheck"/>
+		</sch:rule>
+
+		<!-- Validate DigitalSignatureAttachment -->
+		<sch:rule context="doc:OrderCancellation/cac:Signature/cac:DigitalSignatureAttachment">
+			<sch:extends rule="AttachmentCheck"/>
+		</sch:rule>
+
+		<!-- Validate OriginalDocumentReference -->
+		<sch:rule context="doc:OrderCancellation/cac:Signature/cac:OriginalDocumentReference">
+			<sch:extends rule="DocumentReferenceCheck"/>
+		</sch:rule>
+	</sch:pattern>
+
+	<!-- - - - - - - - - - - -  BuyerCustomerParty - - - - - - - - - - -  -->
+	<sch:pattern name="BuyerCustomerParty" id="buyercustomerparty">
+		<sch:p>Pattern for validating the BuyerCustomerParty class</sch:p>
+
+		<!-- - - - - - - - - - - -  Top-level checks - - - - - - - - - - -  -->
+		<sch:rule context="doc:OrderCancellation/cac:BuyerCustomerParty">
+			<!-- Check for excluded elements -->
+			<sch:assert test="count(cbc:CustomerAssignedAccountID) = 0">[F-OCA015] CustomerAssignedAccountID element must be excluded</sch:assert>
+			<sch:assert test="count(cbc:AdditionalAccountID) = 0">[F-OCA016] AdditionalAccountID element must be excluded</sch:assert>
+			<!-- Check for mandatory elements -->
+			<sch:assert test="count(cac:Party) = 1">[F-OCA017] Party class must be present</sch:assert>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  Party - - - - - - - - - - -  -->
+		<sch:rule context="doc:OrderCancellation/cac:BuyerCustomerParty/cac:Party">
+			<!-- Check for excluded elements -->
+			<sch:extends rule="PartyExcludedCheck"/>
+			<!-- Check for mandatory elements -->
+			<sch:assert test="cbc:EndpointID != ''">[F-OCA018] Invalid EndpointID. Must contain a value</sch:assert>
+			<sch:assert test="count(cac:PartyLegalEntity) = 1">[F-OCA019] One PartyLegalEntity class must be present</sch:assert>
+			<sch:assert test="count(cac:Contact) = 1">[F-OCA020] One Contact class must be present</sch:assert>
+			<!-- Validate -->
+			<sch:extends rule="PartyNameCheck"/>
+			<sch:extends rule="EndpointIDCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyIdentification - - - - - - - - - - -  -->
+		<sch:rule context="doc:OrderCancellation/cac:BuyerCustomerParty/cac:Party/cac:PartyIdentification">
+			<sch:extends rule="PartyIdentificationCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyName - - - - - - - - - - -  -->
+		<sch:rule context="doc:OrderCancellation/cac:BuyerCustomerParty/cac:Party/cac:PartyName">
+			<sch:extends rule="PartyNameLanguageCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PostalAddress - - - - - - - - - - -  -->
+		<sch:rule context="doc:OrderCancellation/cac:BuyerCustomerParty/cac:Party/cac:PostalAddress">
+			<sch:extends rule="AddressCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PhysicalLocation - - - - - - - - - - -  -->
+		<sch:rule context="doc:OrderCancellation/cac:BuyerCustomerParty/cac:Party/cac:PhysicalLocation">
+			<sch:extends rule="AddressIDCheck"/>
+		</sch:rule>
+		<!-- Validate ValidityPeriod -->
+		<sch:rule context="doc:OrderCancellation/cac:BuyerCustomerParty/cac:Party/cac:PhysicalLocation/cac:ValidityPeriod">
+			<sch:extends rule="PeriodCheck"/>
+		</sch:rule>
+		<!-- Validate ValidityPeriod/Description -->
+		<sch:rule context="doc:OrderCancellation/cac:BuyerCustomerParty/cac:Party/cac:PhysicalLocation/cac:ValidityPeriod/cbc:Description">
+			<sch:extends rule="DescriptionLanguageCheck"/>
+		</sch:rule>
+		<!-- Validate Address -->
+		<sch:rule context="doc:OrderCancellation/cac:BuyerCustomerParty/cac:Party/cac:PhysicalLocation/cac:Address">
+			<sch:extends rule="AddressCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyTaxScheme - - - - - - - - - - -  -->
+		<sch:rule context="doc:OrderCancellation/cac:BuyerCustomerParty/cac:Party/cac:PartyTaxScheme">
+			<sch:extends rule="PartyTaxSchemeCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyTaxScheme/TaxScheme - - - - - - - - - - -  -->
+		<sch:rule context="doc:OrderCancellation/cac:BuyerCustomerParty/cac:Party/cac:PartyTaxScheme/cac:TaxScheme">
+			<sch:extends rule="TaxSchemeCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyLegalEntity - - - - - - - - - - -  -->
+		<sch:rule context="doc:OrderCancellation/cac:BuyerCustomerParty/cac:Party/cac:PartyLegalEntity">
+			<sch:extends rule="PartyLegalEntityCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  Contact - - - - - - - - - - -  -->
+		<sch:rule context="doc:OrderCancellation/cac:BuyerCustomerParty/cac:Party/cac:Contact">
+			<!-- Check for excluded elements -->
+			<!-- Check for mandatory elements -->
+			<sch:assert test="cbc:ID != ''">[F-OCA021] Invalid ID. Must contain a value</sch:assert>
+			<!-- Validate -->
+			<sch:extends rule="ContactCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  Person - - - - - - - - - - -  -->
+		<sch:rule context="doc:OrderCancellation/cac:BuyerCustomerParty/cac:Party/cac:Person">
+			<sch:extends rule="Person/FirstNameCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  DeliveryContact - - - - - - - - - - -  -->
+		<sch:rule context="doc:OrderCancellation/cac:BuyerCustomerParty/cac:DeliveryContact">
+			<sch:extends rule="ContactCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  AccountingContact - - - - - - - - - - -  -->
+		<sch:rule context="doc:OrderCancellation/cac:BuyerCustomerParty/cac:AccountingContact">
+			<sch:extends rule="ContactCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  BuyerContact - - - - - - - - - - -  -->
+		<sch:rule context="doc:OrderCancellation/cac:BuyerCustomerParty/cac:BuyerContact">
+			<sch:extends rule="ContactCheck"/>
+		</sch:rule>
+	</sch:pattern>
+
+	<!-- - - - - - - - - - - -  SellerSupplierParty - - - - - - - - - - -  -->
+	<sch:pattern name="SellerSupplierParty" id="sellersupplierparty">
+		<sch:p>Pattern for validating the SellerSupplierParty class</sch:p>
+
+		<!-- - - - - - - - - - - -  Top-level checks - - - - - - - - - - -  -->
+		<sch:rule context="doc:OrderCancellation/cac:SellerSupplierParty">
+			<!-- Check for excluded elements -->
+			<sch:assert test="count(cbc:DataSendingCapability) = 0">[F-OCA022] DataSendingCapability element must be excluded</sch:assert>
+			<!-- Check for mandatory elements -->
+			<sch:assert test="count(cac:Party) = 1">[F-OCA023] Party class must be present</sch:assert>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  Party - - - - - - - - - - -  -->
+		<sch:rule context="doc:OrderCancellation/cac:SellerSupplierParty/cac:Party">
+			<!-- Check for excluded elements -->
+			<sch:extends rule="PartyExcludedCheck"/>
+			<!-- Check for mandatory elements -->
+			<sch:assert test="cbc:EndpointID != ''">[F-OCA024] Invalid EndpointID. Must contain a value</sch:assert>
+			<!-- Validate -->
+			<sch:extends rule="PartyNameCheck"/>
+			<sch:extends rule="EndpointIDCheck"/>
+			<sch:report test="count(cac:PartyLegalEntity) &gt; 1">[F-OCA025] No more than one PartyLegalEntity class may be present</sch:report>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyIdentification - - - - - - - - - - -  -->
+		<sch:rule context="doc:OrderCancellation/cac:SellerSupplierParty/cac:Party/cac:PartyIdentification">
+			<sch:extends rule="PartyIdentificationCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyName - - - - - - - - - - -  -->
+		<sch:rule context="doc:OrderCancellation/cac:SellerSupplierParty/cac:Party/cac:PartyName">
+			<sch:extends rule="PartyNameLanguageCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PostalAddress - - - - - - - - - - -  -->
+		<sch:rule context="doc:OrderCancellation/cac:SellerSupplierParty/cac:Party/cac:PostalAddress">
+			<sch:extends rule="AddressCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PhysicalLocation - - - - - - - - - - -  -->
+		<sch:rule context="doc:OrderCancellation/cac:SellerSupplierParty/cac:Party/cac:PhysicalLocation">
+			<sch:extends rule="AddressIDCheck"/>
+		</sch:rule>
+		<!-- Validate ValidityPeriod -->
+		<sch:rule context="doc:OrderCancellation/cac:SellerSupplierParty/cac:Party/cac:PhysicalLocation/cac:ValidityPeriod">
+			<sch:extends rule="PeriodCheck"/>
+		</sch:rule>
+		<!-- Validate ValidityPeriod/Description -->
+		<sch:rule context="doc:OrderCancellation/cac:SellerSupplierParty/cac:Party/cac:PhysicalLocation/cac:ValidityPeriod/cbc:Description">
+			<sch:extends rule="DescriptionLanguageCheck"/>
+		</sch:rule>
+		<!-- Validate Address -->
+		<sch:rule context="doc:OrderCancellation/cac:SellerSupplierParty/cac:Party/cac:PhysicalLocation/cac:Address">
+			<sch:extends rule="AddressCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyTaxScheme - - - - - - - - - - -  -->
+		<sch:rule context="doc:OrderCancellation/cac:SellerSupplierParty/cac:Party/cac:PartyTaxScheme">
+			<sch:extends rule="PartyTaxSchemeCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyTaxScheme/TaxScheme - - - - - - - - - - -  -->
+		<sch:rule context="doc:OrderCancellation/cac:SellerSupplierParty/cac:Party/cac:PartyTaxScheme/cac:TaxScheme">
+			<sch:extends rule="TaxSchemeCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyLegalEntity - - - - - - - - - - -  -->
+		<sch:rule context="doc:OrderCancellation/cac:SellerSupplierParty/cac:Party/cac:PartyLegalEntity">
+			<sch:extends rule="PartyLegalEntityCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  Contact - - - - - - - - - - -  -->
+		<sch:rule context="doc:OrderCancellation/cac:SellerSupplierParty/cac:Party/cac:Contact">
+			<sch:extends rule="ContactCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  Person - - - - - - - - - - -  -->
+		<sch:rule context="doc:OrderCancellation/cac:SellerSupplierParty/cac:Party/cac:Person">
+			<sch:extends rule="Person/FirstNameCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  DespatchContact - - - - - - - - - - -  -->
+		<sch:rule context="doc:OrderCancellation/cac:SellerSupplierParty/cac:DespatchContact">
+			<sch:extends rule="ContactCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  AccountingContact - - - - - - - - - - -  -->
+		<sch:rule context="doc:OrderCancellation/cac:SellerSupplierParty/cac:AccountingContact">
+			<sch:extends rule="ContactCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  SellerContact - - - - - - - - - - -  -->
+		<sch:rule context="doc:OrderCancellation/cac:SellerSupplierParty/cac:SellerContact">
+			<sch:extends rule="ContactCheck"/>
+		</sch:rule>
+	</sch:pattern>
+
+	<!-- - - - - - - - - - - -  OriginatorCustomerParty - - - - - - - - - - -  -->
+	<sch:pattern name="OriginatorCustomerParty" id="originatorcustomerparty">
+		<sch:p>Pattern for validating the OriginatorCustomerParty class</sch:p>
+
+		<!-- - - - - - - - - - - -  Top-level checks - - - - - - - - - - -  -->
+		<sch:rule context="doc:OrderCancellation/cac:OriginatorCustomerParty">
+			<!-- Check for excluded elements -->
+			<!-- Check for mandatory elements -->
+			<sch:assert test="count(cac:Party) = 1">[F-OCA026] Party class must be present</sch:assert>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  Party - - - - - - - - - - -  -->
+		<sch:rule context="doc:OrderCancellation/cac:OriginatorCustomerParty/cac:Party">
+			<!-- Check for excluded elements -->
+			<sch:extends rule="PartyExcludedCheck"/>
+			<!-- Check for mandatory elements -->
+			<!-- Validate -->
+			<sch:extends rule="PartyNameCheck"/>
+			<sch:extends rule="EndpointIDCheck"/>
+			<sch:report test="count(cac:PartyLegalEntity) &gt; 1">[F-OCA027] No more than one PartyLegalEntity class may be present</sch:report>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyIdentification - - - - - - - - - - -  -->
+		<sch:rule context="doc:OrderCancellation/cac:OriginatorCustomerParty/cac:Party/cac:PartyIdentification">
+			<sch:extends rule="PartyIdentificationCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyName - - - - - - - - - - -  -->
+		<sch:rule context="doc:OrderCancellation/cac:OriginatorCustomerParty/cac:Party/cac:PartyName">
+			<sch:extends rule="PartyNameLanguageCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PostalAddress - - - - - - - - - - -  -->
+		<sch:rule context="doc:OrderCancellation/cac:OriginatorCustomerParty/cac:Party/cac:PostalAddress">
+			<sch:extends rule="AddressCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PhysicalLocation - - - - - - - - - - -  -->
+		<sch:rule context="doc:OrderCancellation/cac:OriginatorCustomerParty/cac:Party/cac:PhysicalLocation">
+			<sch:extends rule="AddressIDCheck"/>
+		</sch:rule>
+		<!-- Validate ValidityPeriod -->
+		<sch:rule context="doc:OrderCancellation/cac:OriginatorCustomerParty/cac:Party/cac:PhysicalLocation/cac:ValidityPeriod">
+			<sch:extends rule="PeriodCheck"/>
+		</sch:rule>
+		<!-- Validate ValidityPeriod/Description -->
+		<sch:rule context="doc:OrderCancellation/cac:OriginatorCustomerParty/cac:Party/cac:PhysicalLocation/cac:ValidityPeriod/cbc:Description">
+			<sch:extends rule="DescriptionLanguageCheck"/>
+		</sch:rule>
+		<!-- Validate Address -->
+		<sch:rule context="doc:OrderCancellation/cac:OriginatorCustomerParty/cac:Party/cac:PhysicalLocation/cac:Address">
+			<sch:extends rule="AddressCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyTaxScheme - - - - - - - - - - -  -->
+		<sch:rule context="doc:OrderCancellation/cac:OriginatorCustomerParty/cac:Party/cac:PartyTaxScheme">
+			<sch:extends rule="PartyTaxSchemeCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyTaxScheme/TaxScheme - - - - - - - - - - -  -->
+		<sch:rule context="doc:OrderCancellation/cac:OriginatorCustomerParty/cac:Party/cac:PartyTaxScheme/cac:TaxScheme">
+			<sch:extends rule="TaxSchemeCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyLegalEntity - - - - - - - - - - -  -->
+		<sch:rule context="doc:OrderCancellation/cac:OriginatorCustomerParty/cac:Party/cac:PartyLegalEntity">
+			<sch:extends rule="PartyLegalEntityCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  Contact - - - - - - - - - - -  -->
+		<sch:rule context="doc:OrderCancellation/cac:OriginatorCustomerParty/cac:Party/cac:Contact">
+			<sch:extends rule="ContactCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  Person - - - - - - - - - - -  -->
+		<sch:rule context="doc:OrderCancellation/cac:OriginatorCustomerParty/cac:Party/cac:Person">
+			<sch:extends rule="Person/FirstNameCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  DeliveryContact - - - - - - - - - - -  -->
+		<sch:rule context="doc:OrderCancellation/cac:OriginatorCustomerParty/cac:DeliveryContact">
+			<sch:extends rule="ContactCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  AccountingContact - - - - - - - - - - -  -->
+		<sch:rule context="doc:OrderCancellation/cac:OriginatorCustomerParty/cac:AccountingContact">
+			<sch:extends rule="ContactCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  BuyerContact - - - - - - - - - - -  -->
+		<sch:rule context="doc:OrderCancellation/cac:OriginatorCustomerParty/cac:BuyerContact">
+			<sch:extends rule="ContactCheck"/>
+		</sch:rule>
+	</sch:pattern>
+
+
+</sch:schema>

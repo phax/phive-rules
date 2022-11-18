@@ -184,6 +184,7 @@ Alternate usage as a Maven BOM:
     * Added support for SimplerInvoicing 2.0.3.5
     * Added support for SimplerInvoicing NLCIUS-CII 1.0.3.4
     * Added support for SimplerInvoicing 2.0 G-Account extension 1.0.5
+    * Added support for OIOUBL 1.13.0
 * v2.1.16 - 2022-10-18
     * Added support for ebInterface 6.1
     * Added support for EN 16931 1.3.9 format
@@ -192,6 +193,7 @@ Alternate usage as a Maven BOM:
     * Moved Peppol A-NZ-PEPPOL 1.0.5 rules from `phive-rules-peppol` to `phive-rules-peppol-legacy`
     * Deprecated Peppol 3.13.0 rules
     * Updated XRechnung 2.2.0 rules to v1.7.2
+    * Added support for OIOUBL 1.12.3
 * v2.1.14 - 2022-05-19
     * Fixed the EN 16931 UBL 1.3.8 XSLT version. That does not impact the Peppol May 2022 release.
     * Added support for CIUS-RO 1.0.3 - thanks to @yleider for the PR :heart:

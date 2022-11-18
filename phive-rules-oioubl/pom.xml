@@ -169,9 +169,9 @@
               <goal>convert</goal>
             </goals>
             <configuration>
-              <schematronDirectory>src/test/resources/rule-source/oioubl/1.12.3</schematronDirectory>
+              <schematronDirectory>src/test/resources/rule-source/oioubl/1.13.0</schematronDirectory>
               <schematronPattern>*.xml</schematronPattern>
-              <xsltDirectory>src/main/resources/schematron/oioubl/1.12.3/xslt</xsltDirectory>
+              <xsltDirectory>src/main/resources/schematron/oioubl/1.13.0/xslt</xsltDirectory>
               <stopOnError>false</stopOnError>
               <parameters>
                 <allow-foreign>true</allow-foreign>
