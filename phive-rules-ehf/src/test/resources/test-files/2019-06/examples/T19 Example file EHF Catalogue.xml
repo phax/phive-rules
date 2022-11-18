@@ -11,7 +11,7 @@
 	<cbc:VersionID>v1.0</cbc:VersionID>
 	<cac:ValidityPeriod>
 		<cbc:StartDate>2018-10-20</cbc:StartDate>
-		<cbc:EndDate>2022-10-30</cbc:EndDate>
+		<cbc:EndDate>2099-10-30</cbc:EndDate>
 	</cac:ValidityPeriod>
 	<cac:ReferencedContract>
 		<cbc:ID>123123</cbc:ID>
