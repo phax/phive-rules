@@ -7,11 +7,11 @@ A set of preconfigured rules for PHIVE (Philip Helger Integrative Validation Eng
 All projects found in here rely on the PHIVE validation engine provided by https://github.com/phax/phive (formerly ph-bdve)
 
 This project is divided into sub-projects each keeping tracking of one document type set:
-* phive-rules-cii - Validation rules for pure CII (without any Schematron)
+* phive-rules-cii - Validation rules for pure UN CII (without any Schematron)
 * phive-rules-cius-pt - Validation rules for the Portuguese EN 16931 CIUS (since v1.0.11)
 * phive-rules-cius-ro - Validation rules for the Romanian EN 16931 CIUS (since v2.1.14)
 * phive-rules-ebinterface - Validation rules for Austrian ebInterface
-* phive-rules-ehf - Validation rules for EHF (Norwegian public procurement)
+* phive-rules-ehf - Validation rules for Norwegian EHF (Norwegian public procurement)
 * phive-rules-en16931 - Validation rules for the EN 16931 (European e-Invoicing norm based on CEN TC 434)
 * phive-rules-energieefactuur - Validation rules for Dutch Energie eFactuur
 * phive-rules-facturae - Validation rules for the Spanisch Facturae (since v1.0.11)
@@ -22,11 +22,11 @@ This project is divided into sub-projects each keeping tracking of one document 
 * phive-rules-peppol - the Peppol specific rules - always the latest two rule sets
 * phive-rules-peppol-legacy - older Peppol specific rules that are out of date (since v2.0.5)
 * phive-rules-peppol-italy - Peppol Italy specific rules (since v2.1.1)
-* phive-rules-simplerinvoicing - Dutch SimplerInvoicing 1.x support from https://github.com/SimplerInvoicing/validation
-* phive-rules-svefaktura - Validation rules for Svefaktura (since v1.0.6)
-* phive-rules-teapps - Validation rules for Tieto TEAPPSXML
-* phive-rules-ubl - Validation rules for pure UBL (without any Schematron)
-* phive-rules-ublbe - Validation rules for e-FFF/UBL.BE
+* phive-rules-simplerinvoicing - Dutch SimplerInvoicing support from https://github.com/SimplerInvoicing/validation
+* phive-rules-svefaktura - Validation rules for Swedish Svefaktura (since v1.0.6)
+* phive-rules-teapps - Validation rules for Finnish Tieto TEAPPSXML
+* phive-rules-ubl - Validation rules for pure OASIS UBL (without any Schematron)
+* phive-rules-ublbe - Validation rules for Belgium e-FFF/UBL.BE
 * phive-rules-xrechnung - Validation rules for German XRechnung
 
 The Java code in this project is licensed under the Apache 2 license.
