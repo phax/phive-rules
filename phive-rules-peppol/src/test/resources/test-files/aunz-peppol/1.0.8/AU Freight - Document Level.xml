@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Invoice xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+    xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+    xmlns="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2">
+    <cbc:CustomizationID>urn:cen.eu:en16931:2017#conformant#urn:fdc:peppol.eu:2017:poacc:billing:international:aunz:3.0</cbc:CustomizationID>
+    <cbc:ProfileID>urn:fdc:peppol.eu:2017:poacc:billing:01:1.0</cbc:ProfileID>
+    <cbc:ID>12345554</cbc:ID>
+    <cbc:IssueDate>2021-09-10</cbc:IssueDate>
+    <cbc:DueDate>2021-10-30</cbc:DueDate>
+    <cbc:InvoiceTypeCode>380</cbc:InvoiceTypeCode>
+    <cbc:Note>Freight Terms</cbc:Note>
+    <cbc:DocumentCurrencyCode>AUD</cbc:DocumentCurrencyCode>
+    <cbc:AccountingCost>4025:123:4343</cbc:AccountingCost>
+    <cbc:BuyerReference>Your reference 123</cbc:BuyerReference>
+       <cac:OrderReference>
+       <cbc:ID>PurchaseOrderReference</cbc:ID>
+    </cac:OrderReference>
+    
+	<cac:AccountingSupplierParty>
+        <cac:Party>
+            <cbc:EndpointID schemeID="0151">47555222000</cbc:EndpointID>
+            <cac:PartyIdentification>
+                <cbc:ID>47555222000</cbc:ID>
+            </cac:PartyIdentification>
+            <cac:PartyName>
+                <cbc:Name>Supplier ABC Pty Ltd</cbc:Name>
+            </cac:PartyName>
+            <cac:PostalAddress>
+                <cbc:StreetName>52 Rosewood St</cbc:StreetName>
+                <cbc:CityName>Sydney</cbc:CityName>
+                <cbc:PostalZone>2758</cbc:PostalZone>
+				<cbc:CountrySubentity>NSW</cbc:CountrySubentity>
+                <cac:Country>
+                    <cbc:IdentificationCode>AU</cbc:IdentificationCode>
+                </cac:Country>
+            </cac:PostalAddress>
+            <cac:PartyLegalEntity>
+                <cbc:RegistrationName>Supplier ABC Pty Ltd</cbc:RegistrationName>
+                <cbc:CompanyID  schemeID="0151">47555222000</cbc:CompanyID>
+                <cbc:CompanyLegalForm>Partnership</cbc:CompanyLegalForm>
+            </cac:PartyLegalEntity>
+            <cac:Contact>
+                <cbc:Name>Supplier contact</cbc:Name>
+                <cbc:Telephone>Mobile 0430123456</cbc:Telephone>
+                <cbc:ElectronicMail>admin@ABC_Ltd.com.au</cbc:ElectronicMail>
+            </cac:Contact>
+        </cac:Party>
+    </cac:AccountingSupplierParty>
+	
+	<cac:AccountingCustomerParty>
+        <cac:Party>
+            <cbc:EndpointID schemeID="0151">57946356658</cbc:EndpointID>
+            <cac:PartyIdentification>
+                <cbc:ID schemeID="0151">57946356658</cbc:ID>
+            </cac:PartyIdentification>
+            <cac:PartyName>
+                <cbc:Name>Buyer CDE Pty Ltd</cbc:Name>
+            </cac:PartyName>
+            <cac:PostalAddress>
+                <cbc:StreetName>Building 123, EAST RD</cbc:StreetName>
+                <cbc:CityName>Sydney</cbc:CityName>
+                <cbc:PostalZone>2310</cbc:PostalZone>
+				<cbc:CountrySubentity>NSW</cbc:CountrySubentity>
+                <cac:Country>
+                    <cbc:IdentificationCode>AU</cbc:IdentificationCode>
+                </cac:Country>
+            </cac:PostalAddress>
+            <cac:PartyTaxScheme>
+                <cbc:CompanyID>57946356658</cbc:CompanyID>
+                <cac:TaxScheme>
+                    <cbc:ID>GST</cbc:ID>
+                </cac:TaxScheme>
+            </cac:PartyTaxScheme>
+            <cac:PartyLegalEntity>
+                <cbc:RegistrationName>Buyer CDE Pty Ltd</cbc:RegistrationName>
+                <cbc:CompanyID schemeID="0151">57946356658</cbc:CompanyID>
+            </cac:PartyLegalEntity>
+            <cac:Contact>
+                <cbc:Name>Accounts Payable</cbc:Name>
+            </cac:Contact>
+        </cac:Party>
+    </cac:AccountingCustomerParty>
+	
+	<cac:Delivery>
+        <cbc:ActualDeliveryDate>2021-09-09</cbc:ActualDeliveryDate>
+        <cac:DeliveryLocation>
+            <cbc:ID schemeID="0088">9429033591476</cbc:ID>
+            <cac:Address>
+                <cbc:StreetName>Greenbank Road</cbc:StreetName>
+                <cbc:AdditionalStreetName>LOADING DOCK 4</cbc:AdditionalStreetName>
+                <cbc:CityName>Eastmead</cbc:CityName>
+                <cbc:PostalZone>2443</cbc:PostalZone>
+                <cbc:CountrySubentity>NSW</cbc:CountrySubentity>
+                <cac:Country>
+                    <cbc:IdentificationCode>AU</cbc:IdentificationCode>
+                </cac:Country>
+            </cac:Address>
+        </cac:DeliveryLocation>
+        <cac:DeliveryParty>
+            <cac:PartyName>
+                <cbc:Name>Buyer CDE Head office</cbc:Name>
+            </cac:PartyName>
+        </cac:DeliveryParty>
+    </cac:Delivery>
+	
+    <cac:PaymentMeans>
+        <cbc:PaymentMeansCode name="Credit transfer">30</cbc:PaymentMeansCode>
+        <cbc:PaymentID>PaymentReferenceText</cbc:PaymentID>
+        <cac:PayeeFinancialAccount>
+            <cbc:ID>AccountNumber</cbc:ID>
+            <cbc:Name>AccountName</cbc:Name>
+            <cac:FinancialInstitutionBranch>
+                <cbc:ID>BSB Number</cbc:ID>
+            </cac:FinancialInstitutionBranch>
+        </cac:PayeeFinancialAccount>  
+    </cac:PaymentMeans>
+    <cac:PaymentTerms>
+        <cbc:Note>end of current month + 30 days</cbc:Note>
+    </cac:PaymentTerms>
+	
+	<!--document level freight charge-->
+    <cac:AllowanceCharge>
+        <cbc:ChargeIndicator>true</cbc:ChargeIndicator>
+        <cbc:AllowanceChargeReasonCode>FC</cbc:AllowanceChargeReasonCode>
+        <cbc:AllowanceChargeReason>Freight</cbc:AllowanceChargeReason>
+        <cbc:Amount currencyID="AUD">30.00</cbc:Amount>
+        <cac:TaxCategory>
+            <cbc:ID>S</cbc:ID>
+            <cbc:Percent>10</cbc:Percent>
+            <cac:TaxScheme>
+                <cbc:ID>GST</cbc:ID>
+            </cac:TaxScheme>
+        </cac:TaxCategory>
+    </cac:AllowanceCharge>
+	
+    <cac:TaxTotal>
+        <cbc:TaxAmount currencyID="AUD">3.00</cbc:TaxAmount>
+        <cac:TaxSubtotal>
+            <cbc:TaxableAmount currencyID="AUD">30.00</cbc:TaxableAmount>
+            <cbc:TaxAmount currencyID="AUD">3.00</cbc:TaxAmount>
+            <cac:TaxCategory>
+                <cbc:ID>S</cbc:ID>
+                <cbc:Percent>10</cbc:Percent>
+                <cac:TaxScheme>
+                    <cbc:ID>GST</cbc:ID>
+                </cac:TaxScheme>
+            </cac:TaxCategory>
+        </cac:TaxSubtotal>
+		<cac:TaxSubtotal>
+            <cbc:TaxableAmount currencyID="AUD">2295.00</cbc:TaxableAmount>
+            <cbc:TaxAmount currencyID="AUD">0</cbc:TaxAmount>
+            <cac:TaxCategory>
+                <cbc:ID>Z</cbc:ID>
+                <cbc:Percent>0</cbc:Percent>
+                <cac:TaxScheme>
+                    <cbc:ID>GST</cbc:ID>
+                </cac:TaxScheme>
+            </cac:TaxCategory>
+        </cac:TaxSubtotal>
+    </cac:TaxTotal>
+	
+    <cac:LegalMonetaryTotal>
+        <cbc:LineExtensionAmount currencyID="AUD">2295.00</cbc:LineExtensionAmount>
+        <cbc:TaxExclusiveAmount currencyID="AUD">2325.00</cbc:TaxExclusiveAmount>
+        <cbc:TaxInclusiveAmount currencyID="AUD">2328.00</cbc:TaxInclusiveAmount>
+        <cbc:ChargeTotalAmount currencyID="AUD">30.00</cbc:ChargeTotalAmount>
+        <cbc:PrepaidAmount currencyID="AUD">0.00</cbc:PrepaidAmount>
+        <cbc:PayableAmount currencyID="AUD">2328.00</cbc:PayableAmount>
+    </cac:LegalMonetaryTotal>
+ 
+    <cac:InvoiceLine>
+       <cbc:ID>1</cbc:ID>
+       <cbc:Note>Quantity  x Box</cbc:Note>
+       <cbc:InvoicedQuantity unitCode="XBX">9</cbc:InvoicedQuantity>
+       <cbc:LineExtensionAmount currencyID= "AUD">1395.00</cbc:LineExtensionAmount>
+           <cbc:AccountingCost>Accounting Cost</cbc:AccountingCost>
+           <cac:InvoicePeriod>
+           <cbc:StartDate>2021-09-11</cbc:StartDate> 
+           <cbc:EndDate>2021-09-30</cbc:EndDate> 
+       </cac:InvoicePeriod>
+       <cac:OrderLineReference>
+            <cbc:LineID>123</cbc:LineID>
+       </cac:OrderLineReference>
+		<cac:Item>
+			<cbc:Description>Product A</cbc:Description>
+			<cbc:Name>Product A</cbc:Name>
+			<cac:StandardItemIdentification>
+				  <cbc:ID  schemeID="0002">AW23451</cbc:ID>
+			</cac:StandardItemIdentification>
+				<cac:OriginCountry>
+					<cbc:IdentificationCode>AU</cbc:IdentificationCode>
+				</cac:OriginCountry>
+				<cac:CommodityClassification>
+					<cbc:ItemClassificationCode listID="SRV">454665</cbc:ItemClassificationCode>
+				</cac:CommodityClassification>
+				<cac:ClassifiedTaxCategory>
+					<cbc:ID>Z</cbc:ID>
+					<cbc:Percent>0</cbc:Percent>
+					<cac:TaxScheme>
+						<cbc:ID>GST</cbc:ID>
+					</cac:TaxScheme>
+				</cac:ClassifiedTaxCategory>
+        </cac:Item>
+       <cac:Price>
+           <cbc:PriceAmount currencyID="AUD">155.00</cbc:PriceAmount>
+       </cac:Price>
+    </cac:InvoiceLine>
+
+   <cac:InvoiceLine>
+      <cbc:ID>2</cbc:ID>
+      <cbc:InvoicedQuantity unitCode="XBX">6</cbc:InvoicedQuantity>
+      <cbc:LineExtensionAmount currencyID="AUD">900.00</cbc:LineExtensionAmount>
+      <cac:OrderLineReference>
+          <cbc:LineID>456</cbc:LineID>
+      </cac:OrderLineReference>
+      <cac:Item>
+          <cbc:Description>Product B</cbc:Description>
+          <cbc:Name>Product B</cbc:Name>
+          <cac:OriginCountry>
+              <cbc:IdentificationCode>NO</cbc:IdentificationCode>
+          </cac:OriginCountry>
+          <cac:CommodityClassification>
+              <cbc:ItemClassificationCode listID="SRV">565654</cbc:ItemClassificationCode>
+          </cac:CommodityClassification>
+          <cac:ClassifiedTaxCategory>
+              <cbc:ID>Z</cbc:ID>
+              <cbc:Percent>0</cbc:Percent>
+              <cac:TaxScheme>
+                  <cbc:ID>GST</cbc:ID>
+              </cac:TaxScheme>
+          </cac:ClassifiedTaxCategory>
+      </cac:Item>
+      <cac:Price>
+          <cbc:PriceAmount currencyID="AUD">150.00</cbc:PriceAmount>
+      </cac:Price>
+   </cac:InvoiceLine>
+
+</Invoice>

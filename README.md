@@ -178,6 +178,8 @@ Alternate usage as a Maven BOM:
   
 # News and noteworthy
 
+* v2.1.18 - work in progress
+    * Added Peppol A-NZ-PEPPOL 1.0.8 rules (deprecated version 1.0.7)
 * v2.1.17 - 2022-11-18
     * Added support for Peppol End User Statistics Report 1.0.0-RC2
     * Added support for Peppol Transaction Statistics Report 1.0.0

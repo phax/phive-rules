@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<OrderResponse xmlns="urn:oasis:names:specification:ubl:schema:xsd:OrderResponse-2"
+			   xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+			   xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
+	<cbc:CustomizationID>urn:fdc:peppol.eu:poacc:trns:order_response:3</cbc:CustomizationID>
+	<cbc:ProfileID>urn:fdc:peppol.eu:poacc:bis:ordering:3</cbc:ProfileID>
+	<cbc:ID>OrderResponse01</cbc:ID>
+	<cbc:SalesOrderID>101-111</cbc:SalesOrderID>
+	<cbc:IssueDate>2020-03-01</cbc:IssueDate>
+	<cbc:IssueTime>06:10:10</cbc:IssueTime>
+	<cbc:OrderResponseCode>CA</cbc:OrderResponseCode>
+	<cbc:Note>Response message with amendments in the details</cbc:Note>
+	<cbc:DocumentCurrencyCode>AUD</cbc:DocumentCurrencyCode>
+	<cbc:CustomerReference>ABC-123</cbc:CustomerReference>
+	<cac:OrderReference>
+		<cbc:ID>112233</cbc:ID>
+	</cac:OrderReference>
+	<cac:SellerSupplierParty>
+		<cac:Party>
+			<cbc:EndpointID schemeID="0151">47555222000</cbc:EndpointID>
+			<cac:PartyIdentification>
+				<cbc:ID schemeID="0151">47555222000</cbc:ID>
+			</cac:PartyIdentification>
+			<cac:PartyLegalEntity>
+				<cbc:RegistrationName>Supplier PLC</cbc:RegistrationName>
+			</cac:PartyLegalEntity>
+		</cac:Party>
+	</cac:SellerSupplierParty>
+	<cac:BuyerCustomerParty>
+		<cac:Party>
+			<cbc:EndpointID schemeID="0151">51824753556</cbc:EndpointID>
+			<cac:PartyIdentification>
+				<cbc:ID schemeID="0151">51824753556</cbc:ID>
+			</cac:PartyIdentification>
+			<cac:PartyLegalEntity>
+				<cbc:RegistrationName>Customer PTY LTD</cbc:RegistrationName>
+			</cac:PartyLegalEntity>
+		</cac:Party>
+	</cac:BuyerCustomerParty>
+	<cac:Delivery>
+		<cac:PromisedDeliveryPeriod>
+			<cbc:StartDate>2020-03-15</cbc:StartDate>
+			<cbc:EndDate>2020-03-30</cbc:EndDate>
+		</cac:PromisedDeliveryPeriod>
+	</cac:Delivery>
+	<cac:OrderLine>
+		<cac:LineItem>
+			<cbc:ID>1</cbc:ID>
+			<cbc:Note>Order line amended</cbc:Note>
+			<cbc:LineStatusCode>3</cbc:LineStatusCode>
+			<!--changed price-->
+			<cac:Price>
+				<cbc:PriceAmount currencyID="AUD">52.0000</cbc:PriceAmount>
+				<cbc:BaseQuantity unitCode="C62">1</cbc:BaseQuantity>
+			</cac:Price>
+			<cac:Item>
+				<cbc:Name>Pen 4mm</cbc:Name>
+				<cac:BuyersItemIdentification>
+					<cbc:ID>123456</cbc:ID>
+				</cac:BuyersItemIdentification>
+				<cac:SellersItemIdentification>
+					<cbc:ID>SN-33</cbc:ID>
+				</cac:SellersItemIdentification>
+				<cac:StandardItemIdentification>
+					<cbc:ID schemeID="0160">7400000001234</cbc:ID>
+				</cac:StandardItemIdentification>
+			</cac:Item>
+		</cac:LineItem>
+		<cac:OrderLineReference>
+			<cbc:LineID>1</cbc:LineID>
+		</cac:OrderLineReference>
+	</cac:OrderLine>
+	<cac:OrderLine>
+		<cac:LineItem>
+			<cbc:ID>2</cbc:ID>
+			<cbc:Note>Order line accepted with no change</cbc:Note>
+			<cbc:LineStatusCode>5</cbc:LineStatusCode>
+			<cac:Item>
+				<cbc:Name>Wet tissues</cbc:Name>
+				<cac:SellersItemIdentification>
+					<cbc:ID>SItemNo011</cbc:ID>
+				</cac:SellersItemIdentification>
+			</cac:Item>
+		</cac:LineItem>
+		<cac:OrderLineReference>
+			<cbc:LineID>2</cbc:LineID>
+		</cac:OrderLineReference>
+	</cac:OrderLine>
+	<cac:OrderLine>
+		<cac:LineItem>
+			<cbc:ID>3</cbc:ID>
+			<cbc:Note>Substituted Item</cbc:Note>
+			<cbc:LineStatusCode>3</cbc:LineStatusCode>
+			<cac:Item>
+				<cbc:Name>Pepper sauce</cbc:Name>
+				<cac:SellersItemIdentification>
+					<cbc:ID>SN-35</cbc:ID>
+				</cac:SellersItemIdentification>
+			</cac:Item>
+		</cac:LineItem>
+		<cac:SellerSubstitutedLineItem>
+			<cbc:ID>1</cbc:ID>
+			<cac:Item>
+				<cbc:Name>Pepper sauce</cbc:Name>
+				<cac:SellersItemIdentification>
+					<cbc:ID>SN-36</cbc:ID>
+				</cac:SellersItemIdentification>
+				<cac:StandardItemIdentification>
+					<cbc:ID schemeID="0160">8722700577588</cbc:ID>
+				</cac:StandardItemIdentification>
+				<cac:ClassifiedTaxCategory>
+					<cbc:ID>S</cbc:ID>
+					<cbc:Percent>10</cbc:Percent>
+					<cac:TaxScheme>
+						<cbc:ID>GST</cbc:ID>
+					</cac:TaxScheme>
+				</cac:ClassifiedTaxCategory>
+			</cac:Item>
+		</cac:SellerSubstitutedLineItem>
+		<cac:OrderLineReference>
+			<cbc:LineID>3</cbc:LineID>
+		</cac:OrderLineReference>
+	</cac:OrderLine>
+</OrderResponse>
