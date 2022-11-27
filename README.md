@@ -175,12 +175,19 @@ Alternate usage as a Maven BOM:
   <scope>import</scope>
 </dependency>
 ```
+
+## Peppol Validation Artefact Versioning
+
+If you wonder why the Peppol version differs from the original version numbers - this is because I started versioning the Peppol artefacts before OpenPeppol did.
+As OpenPeppol is only changing the "micro" version part (3.0.x), whereas I started using the "minor" part (3.x) from the beginning, I could never take over the official version numbers because their version number would always "smaller" then any old version from my numbering scheme.
+I hope that with the introduction of PINT, the versioning problem will be solved.
   
 # News and noteworthy
 
 * v2.1.18 - work in progress
     * Added Peppol A-NZ-PEPPOL 1.0.8 rules (deprecated version 1.0.7)
     * Moved Peppol A-NZ-PEPPOL 1.0.6 rules from `phive-rules-peppol` to `phive-rules-peppol-legacy`
+    * Added support for Peppol November 2022 release as 3.15.0 (Billing 3.0.14 and the rest 3.0.10)
 * v2.1.17 - 2022-11-18
     * Added support for Peppol End User Statistics Report 1.0.0-RC2
     * Added support for Peppol Transaction Statistics Report 1.0.0
