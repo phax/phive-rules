@@ -303,10 +303,11 @@
         <artifactId>license-maven-plugin</artifactId>
         <configuration>
           <excludes>
-            <exclude>**/.git*</exclude>
             <exclude>**/LICENSE</exclude>
             <exclude>**/NOTICE</exclude>
             <exclude>**/zz</exclude>
+            <exclude>**/.git*</exclude>
+            <exclude>**/*.txt</exclude>
             <exclude>docs/**</exclude>
             <exclude>src/main/resources/schemas/**</exclude>
             <exclude>src/main/resources/schematron/**</exclude>
