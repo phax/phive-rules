@@ -129,9 +129,9 @@
               <goal>convert</goal>
             </goals>
             <configuration>
-              <schematronDirectory>src/test/resources/rule-source/openpeppol/3.14.0</schematronDirectory>
+              <schematronDirectory>src/test/resources/rule-source/openpeppol/3.15.0</schematronDirectory>
               <schematronPattern>*.sch</schematronPattern>
-              <xsltDirectory>src/main/resources/schematron/openpeppol/3.14.0/xslt</xsltDirectory>
+              <xsltDirectory>src/main/resources/schematron/openpeppol/3.15.0/xslt</xsltDirectory>
             </configuration>
           </execution>
           -->
