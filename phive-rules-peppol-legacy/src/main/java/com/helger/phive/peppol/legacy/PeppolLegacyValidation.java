@@ -70,6 +70,7 @@ public final class PeppolLegacyValidation
     PeppolValidation3_11_0.init (aRegistry);
     PeppolValidation3_11_1.init (aRegistry);
     PeppolValidation3_12_0.init (aRegistry);
+    PeppolValidation3_13_0.init (aRegistry);
   }
 
   @Nonnull
