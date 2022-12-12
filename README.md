@@ -184,12 +184,13 @@ I hope that with the introduction of PINT, the versioning problem will be solved
   
 # News and noteworthy
 
-* v2.1.18 - work in progress
+* v2.1.18 - 2022-12-12
     * Added Peppol A-NZ-PEPPOL 1.0.8 rules (deprecated version 1.0.7)
     * Moved Peppol A-NZ-PEPPOL 1.0.6 rules from `phive-rules-peppol` to `phive-rules-peppol-legacy`
     * Added support for Peppol November 2022 release as 3.15.0 (Billing 3.0.14 and the rest 3.0.10)
     * Moved Peppol 3.13.0 rules from `phive-rules-peppol` to `phive-rules-peppol-legacy`
     * Added support for UBL.BE 1.30, deprecated version 1.2.9 (see the change in numbering: `30` vs. `2.9`)
+    * Added support for CIUS-RO 1.0.8 - thanks to @yleider for the PR again
 * v2.1.17 - 2022-11-18
     * Added support for Peppol End User Statistics Report 1.0.0-RC2
     * Added support for Peppol Transaction Statistics Report 1.0.0
