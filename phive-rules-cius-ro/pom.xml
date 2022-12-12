@@ -101,19 +101,20 @@
         <groupId>com.helger.maven</groupId>
         <artifactId>ph-schematron-maven-plugin</artifactId>
         <executions>
-<!--
+
           <execution>
             <id>ubl</id>
             <goals>
               <goal>convert</goal>
             </goals>
+            <phase>generate-sources</phase>
             <configuration>
-              <schematronDirectory>${basedir}/src/test/resources/rule-source/1.0.4/preprocessed</schematronDirectory>
-              <xsltDirectory>${basedir}/src/main/resources/schematron/1.0.4</xsltDirectory>
+              <schematronDirectory>${basedir}/src/test/resources/rule-source/1.0.8/preprocessed</schematronDirectory>
+              <xsltDirectory>${basedir}/src/main/resources/schematron/1.0.8</xsltDirectory>
               <schematronPattern>ROeFactura*.sch</schematronPattern>
             </configuration>
           </execution>
--->
+
         </executions>
       </plugin>
     </plugins>
