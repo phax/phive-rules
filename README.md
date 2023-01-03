@@ -184,6 +184,8 @@ I hope that with the introduction of PINT, the versioning problem will be solved
   
 # News and noteworthy
 
+* v2.1.19 - work in progress
+    * Added support for Energie eFactuur 3.1.0
 * v2.1.18 - 2022-12-12
     * Added Peppol A-NZ-PEPPOL 1.0.8 rules (deprecated version 1.0.7)
     * Moved Peppol A-NZ-PEPPOL 1.0.6 rules from `phive-rules-peppol` to `phive-rules-peppol-legacy`
