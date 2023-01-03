@@ -54,7 +54,8 @@ public final class CTestFiles
     for (final VESID aVESID : new VESID [] { EnergieEFactuurValidation.VID_ENERGIE_EFACTUUR_1_0_0,
                                              EnergieEFactuurValidation.VID_ENERGIE_EFACTUUR_1_0_1,
                                              EnergieEFactuurValidation.VID_ENERGIE_EFACTUUR_2_0_0,
-                                             EnergieEFactuurValidation.VID_ENERGIE_EFACTUUR_3_0_0 })
+                                             EnergieEFactuurValidation.VID_ENERGIE_EFACTUUR_3_0_0,
+                                             EnergieEFactuurValidation.VID_ENERGIE_EFACTUUR_3_1_0 })
     {
       for (final IReadableResource aRes : getAllMatchingTestFiles (aVESID))
       {
@@ -102,7 +103,12 @@ public final class CTestFiles
             ret.add (new ClassPathResource ("/test-files/3.0.0/good/20190326_SEeF 3.0  - Voorbeeldfactuur 001 - levering.xml"));
           }
           else
-            throw new IllegalArgumentException ("Invalid VESID: " + aVESID);
+            if (aVESID.equals (EnergieEFactuurValidation.VID_ENERGIE_EFACTUUR_3_1_0))
+            {
+              ret.add (new ClassPathResource ("/test-files/3.1.0/good/20220822_SEeF 3.1  - Voorbeeldfactuur 001 - levering.xml"));
+            }
+            else
+              throw new IllegalArgumentException ("Invalid VESID: " + aVESID);
     return ret;
   }
 
@@ -141,7 +147,12 @@ public final class CTestFiles
             // TODO
           }
           else
-            throw new IllegalArgumentException ("Invalid VESID: " + aVESID);
+            if (aVESID.equals (EnergieEFactuurValidation.VID_ENERGIE_EFACTUUR_3_1_0))
+            {
+              // TODO
+            }
+            else
+              throw new IllegalArgumentException ("Invalid VESID: " + aVESID);
     return ret;
   }
 }
