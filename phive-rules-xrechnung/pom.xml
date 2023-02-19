@@ -100,8 +100,8 @@
               <goal>convert</goal>
             </goals>
             <configuration>
-              <schematronDirectory>${basedir}/src/test/resources/rule-source/2.2.0/cii</schematronDirectory>
-              <xsltDirectory>${basedir}/src/main/resources/schematron/2.2.0</xsltDirectory>
+              <schematronDirectory>${basedir}/src/test/resources/rule-source/2.3.1/cii</schematronDirectory>
+              <xsltDirectory>${basedir}/src/main/resources/schematron/2.3.1</xsltDirectory>
               <schematronPattern>*.sch</schematronPattern>
             </configuration>
           </execution>
@@ -111,8 +111,8 @@
               <goal>convert</goal>
             </goals>
             <configuration>
-              <schematronDirectory>${basedir}/src/test/resources/rule-source/2.2.0/ubl-cn</schematronDirectory>
-              <xsltDirectory>${basedir}/src/main/resources/schematron/2.2.0</xsltDirectory>
+              <schematronDirectory>${basedir}/src/test/resources/rule-source/2.3.1/ubl-cn</schematronDirectory>
+              <xsltDirectory>${basedir}/src/main/resources/schematron/2.3.1</xsltDirectory>
               <schematronPattern>*.sch</schematronPattern>
             </configuration>
           </execution>
@@ -122,8 +122,8 @@
               <goal>convert</goal>
             </goals>
             <configuration>
-              <schematronDirectory>${basedir}/src/test/resources/rule-source/2.2.0/ubl-inv</schematronDirectory>
-              <xsltDirectory>${basedir}/src/main/resources/schematron/2.2.0</xsltDirectory>
+              <schematronDirectory>${basedir}/src/test/resources/rule-source/2.3.1/ubl-inv</schematronDirectory>
+              <xsltDirectory>${basedir}/src/main/resources/schematron/2.3.1</xsltDirectory>
               <schematronPattern>*.sch</schematronPattern>
             </configuration>
           </execution>
