@@ -66,7 +66,7 @@
     <jaxb-plugin.group>com.helger.maven</jaxb-plugin.group>
     <jaxb-plugin.artifact>jaxb40-maven-plugin</jaxb-plugin.artifact>
     <jaxb-plugin.version>0.16.1</jaxb-plugin.version>
-    <ph-schematron.version>7.0.0</ph-schematron.version>
+    <ph-schematron.version>7.1.0</ph-schematron.version>
   </properties>
   
   <dependencyManagement>
