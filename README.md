@@ -184,6 +184,9 @@ I hope that with the introduction of PINT, the versioning problem will be solved
   
 # News and noteworthy
 
+* v3.0.1 - work in progress
+    * Added support for Peppol End User Statistics Report 1.0.0 (deprecated 1.0.0-RC2)
+    * Added support for Peppol Transaction Statistics Report 1.0.1 (deprecated 1.0.0)
 * v3.0.0 - 2023-02-20
     * Using Java 11 as the baseline
     * Updated to ph-commons 11

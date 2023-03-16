@@ -154,20 +154,20 @@
               <goal>convert</goal>
             </goals>
             <configuration>
-              <schematronDirectory>src/test/resources/rule-source/reporting/eusr/1.0.0-RC2</schematronDirectory>
-              <xsltDirectory>src/main/resources/schematron/reporting/eusr/1.0.0-RC2/xslt</xsltDirectory>
+              <schematronDirectory>src/test/resources/rule-source/reporting/eusr/1.0.0</schematronDirectory>
+              <xsltDirectory>src/main/resources/schematron/reporting/eusr/1.0.0/xslt</xsltDirectory>
             </configuration>
           </execution>
           -->
           <!--
           <execution>
-            <id>reporting-tssr</id>
+            <id>reporting-tsr</id>
             <goals>
               <goal>convert</goal>
             </goals>
             <configuration>
-              <schematronDirectory>src/test/resources/rule-source/reporting/tsr/1.0.0</schematronDirectory>
-              <xsltDirectory>src/main/resources/schematron/reporting/tsr/1.0.0/xslt</xsltDirectory>
+              <schematronDirectory>src/test/resources/rule-source/reporting/tsr/1.0.1</schematronDirectory>
+              <xsltDirectory>src/main/resources/schematron/reporting/tsr/1.0.1/xslt</xsltDirectory>
             </configuration>
           </execution>
           -->
