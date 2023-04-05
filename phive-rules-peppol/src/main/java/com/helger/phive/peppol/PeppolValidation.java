@@ -44,6 +44,7 @@ public final class PeppolValidation
    *         Never <code>null</code>.
    * @since 5.1.8
    */
+  @SuppressWarnings ("deprecation")
   @Nonnull
   @Nonempty
   public static String getVersionToUse ()
@@ -68,6 +69,7 @@ public final class PeppolValidation
    * @param aRegistry
    *        The registry to add the artefacts. May not be <code>null</code>.
    */
+  @SuppressWarnings ("deprecation")
   public static void initStandard (@Nonnull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
   {
     // For better error messages
