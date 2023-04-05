@@ -184,6 +184,8 @@ I hope that with the introduction of PINT, the versioning problem will be solved
   
 # News and noteworthy
 
+* v3.0.2 - work in progress
+    * Added support for EN 16931 1.3.10 format and deprecated EN 16931 1.3.6a, 1.3.7 and 1.3.8 versions
 * v3.0.1 - 2023-03-16
     * Added support for Peppol End User Statistics Report 1.0.0 (deprecated 1.0.0-RC2)
     * Added support for Peppol Transaction Statistics Report 1.0.1 (deprecated 1.0.0)
