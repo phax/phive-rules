@@ -76,7 +76,7 @@ public final class CTestFiles
   {
     ValueEnforcer.notNull (aVESID, "VESID");
 
-    final String sTestFiles229 = "src/test/resources/test-files/2.2.9/";
+    final String sTestFiles229 = "src/test/resources/external/test-files/2.2.9/";
     if (aVESID.equals (PeppolItalyValidation2_2_9.VID_DESPATCH_ADVICE))
     {
       final String sBase = sTestFiles229 + "despatch-advice/";
@@ -131,7 +131,7 @@ public final class CTestFiles
       return new CommonsArrayList <> (new String [] { "ph1.xml" }, x -> new FileSystemResource (sBase + x));
     }
 
-    final String sTestFiles230 = "src/test/resources/test-files/2.3.0/";
+    final String sTestFiles230 = "src/test/resources/external/test-files/2.3.0/";
     if (aVESID.equals (PeppolItalyValidation2_3_0.VID_DESPATCH_ADVICE))
     {
       final String sBase = sTestFiles230 + "despatch-advice/";

@@ -57,15 +57,20 @@ public final class PeppolItalyValidation2_3_0
     return PeppolItalyValidation2_3_0.class.getClassLoader ();
   }
 
-  private static final String PREFIX_XSLT = "schematron/peppol-italy/" + VERSION_STR + "/";
+  private static final String PREFIX_XSLT = "external/schematron/peppol-italy/" + VERSION_STR + "/";
 
-  public static final IReadableResource DESPATCH_ADVICE = new ClassPathResource (PREFIX_XSLT + "despatch-advice/AGID-PEPPOL-T16.xslt",
+  public static final IReadableResource DESPATCH_ADVICE = new ClassPathResource (PREFIX_XSLT +
+                                                                                 "despatch-advice/AGID-PEPPOL-T16.xslt",
                                                                                  _getCL ());
-  public static final IReadableResource INVOICE = new ClassPathResource (PREFIX_XSLT + "invoice/AGID-EN16931-UBL.xslt", _getCL ());
-  public static final IReadableResource ORDER = new ClassPathResource (PREFIX_XSLT + "order/AGID-PEPPOL-T01.xslt", _getCL ());
-  public static final IReadableResource ORDER_AGREEMENT = new ClassPathResource (PREFIX_XSLT + "order-agreement/AGID-PEPPOL-T110.xslt",
+  public static final IReadableResource INVOICE = new ClassPathResource (PREFIX_XSLT + "invoice/AGID-EN16931-UBL.xslt",
+                                                                         _getCL ());
+  public static final IReadableResource ORDER = new ClassPathResource (PREFIX_XSLT + "order/AGID-PEPPOL-T01.xslt",
+                                                                       _getCL ());
+  public static final IReadableResource ORDER_AGREEMENT = new ClassPathResource (PREFIX_XSLT +
+                                                                                 "order-agreement/AGID-PEPPOL-T110.xslt",
                                                                                  _getCL ());
-  public static final IReadableResource ORDER_RESPONSE = new ClassPathResource (PREFIX_XSLT + "order-response/AGID-PEPPOL-T76.xslt",
+  public static final IReadableResource ORDER_RESPONSE = new ClassPathResource (PREFIX_XSLT +
+                                                                                "order-response/AGID-PEPPOL-T76.xslt",
                                                                                 _getCL ());
 
   private PeppolItalyValidation2_3_0 ()
@@ -87,27 +92,37 @@ public final class PeppolItalyValidation2_3_0
     final boolean bNotDeprecated = false;
 
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_DESPATCH_ADVICE,
-                                                                           "AGID Peppol Despatch Advice" + sVersion + sAkaVersionBIS,
+                                                                           "AGID Peppol Despatch Advice" +
+                                                                                                sVersion +
+                                                                                                sAkaVersionBIS,
                                                                            bNotDeprecated,
                                                                            ValidationExecutorXSD.create (EUBL21DocumentType.DESPATCH_ADVICE),
                                                                            _createXSLT (DESPATCH_ADVICE)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_INVOICE,
-                                                                           "AGID Peppol Invoice" + sVersion + sAkaVersionBIS,
+                                                                           "AGID Peppol Invoice" +
+                                                                                        sVersion +
+                                                                                        sAkaVersionBIS,
                                                                            bNotDeprecated,
                                                                            ValidationExecutorXSD.create (EUBL21DocumentType.INVOICE),
                                                                            _createXSLT (INVOICE)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_ORDER,
-                                                                           "AGID Peppol Order" + sVersion + sAkaVersionBIS,
+                                                                           "AGID Peppol Order" +
+                                                                                      sVersion +
+                                                                                      sAkaVersionBIS,
                                                                            bNotDeprecated,
                                                                            ValidationExecutorXSD.create (EUBL21DocumentType.ORDER),
                                                                            _createXSLT (ORDER)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_ORDER_AGREEMENT,
-                                                                           "AGID Peppol Order Agreement" + sVersion + sAkaVersionBIS,
+                                                                           "AGID Peppol Order Agreement" +
+                                                                                                sVersion +
+                                                                                                sAkaVersionBIS,
                                                                            bNotDeprecated,
                                                                            ValidationExecutorXSD.create (EUBL21DocumentType.ORDER_RESPONSE),
                                                                            _createXSLT (ORDER_AGREEMENT)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_ORDER_RESPONSE,
-                                                                           "AGID Peppol Order Response" + sVersion + sAkaVersionBIS,
+                                                                           "AGID Peppol Order Response" +
+                                                                                               sVersion +
+                                                                                               sAkaVersionBIS,
                                                                            bNotDeprecated,
                                                                            ValidationExecutorXSD.create (EUBL21DocumentType.ORDER_RESPONSE),
                                                                            _createXSLT (ORDER_RESPONSE)));
