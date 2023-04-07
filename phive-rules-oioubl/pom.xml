@@ -104,7 +104,7 @@
             </goals>
             <id>ublpe20</id>
             <configuration>
-              <schemaDirectory>${basedir}/src/main/resources/schemas/OIOUBL_v2.1-b/maindoc</schemaDirectory>
+              <schemaDirectory>${basedir}/src/main/resources/external/schemas/OIOUBL_v2.1-b/maindoc</schemaDirectory>
               <bindingIncludes>
                 <bindingInclude>bindings.xjb</bindingInclude>
               </bindingIncludes>

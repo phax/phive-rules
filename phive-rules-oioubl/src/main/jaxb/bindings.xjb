@@ -28,6 +28,6 @@
     <xjc:javaType name="com.helger.commons.datetime.XMLOffsetDate"     xmlType="xsd:date"     adapter="com.helger.jaxb.adapter.AdapterXMLOffsetDate" />
     <xjc:javaType name="com.helger.commons.datetime.XMLOffsetTime"     xmlType="xsd:time"     adapter="com.helger.jaxb.adapter.AdapterXMLOffsetTime" />
   </globalBindings>
-  <bindings schemaLocation="../resources/schemas/OIOUBL_v2.1-b/maindoc/UBL-UtilityStatement-2.1.xsd">
+  <bindings schemaLocation="../resources/external/schemas/OIOUBL_v2.1-b/maindoc/UBL-UtilityStatement-2.1.xsd">
   </bindings>
 </bindings>
