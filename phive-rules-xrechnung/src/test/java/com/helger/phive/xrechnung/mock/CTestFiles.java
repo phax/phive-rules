@@ -100,10 +100,12 @@ public final class CTestFiles
 
     final ICommonsList <IReadableResource> ret = new CommonsArrayList <> ();
 
+    final String sPrefix0 = "/external/test-files/";
+
     // 1.2.0
     if (aVESID.equals (XRechnungValidation.VID_XRECHNUNG_CII_120))
     {
-      final String sPrefix = "/test-files/1.2.0/cii/";
+      final String sPrefix = sPrefix0 + "1.2.0/cii/";
       for (final String s : new String [] { "CII_business_example_01.xml",
                                             "CII_business_example_02.xml",
                                             "CII_example1.xml",
@@ -125,7 +127,7 @@ public final class CTestFiles
       else
         if (aVESID.equals (XRechnungValidation.VID_XRECHNUNG_UBL_INVOICE_120))
         {
-          final String sPrefix = "/test-files/1.2.0/ubl/";
+          final String sPrefix = sPrefix0 + "1.2.0/ubl/";
           for (final String s : new String [] { "ubl-tc434-example1.xml",
                                                 "ubl-tc434-example2.xml",
                                                 "ubl-tc434-example3.xml",
@@ -141,7 +143,7 @@ public final class CTestFiles
     // 1.2.1
     if (aVESID.equals (XRechnungValidation.VID_XRECHNUNG_CII_121))
     {
-      final String sPrefix = "/test-files/1.2.1/cii/";
+      final String sPrefix = sPrefix0 + "1.2.1/cii/";
       for (final String s : new String [] { "CII_business_example_01.xml",
                                             "CII_business_example_02.xml",
                                             "CII_example1.xml",
@@ -163,7 +165,7 @@ public final class CTestFiles
       else
         if (aVESID.equals (XRechnungValidation.VID_XRECHNUNG_UBL_INVOICE_121))
         {
-          final String sPrefix = "/test-files/1.2.1/ubl/";
+          final String sPrefix = sPrefix0 + "1.2.1/ubl/";
           for (final String s : new String [] { "ubl-tc434-example1.xml",
                                                 "ubl-tc434-example2.xml",
                                                 "ubl-tc434-example3.xml",
@@ -179,7 +181,7 @@ public final class CTestFiles
     // 1.2.2
     if (aVESID.equals (XRechnungValidation.VID_XRECHNUNG_CII_122))
     {
-      final String sPrefix = "/test-files/1.2.2/cii/";
+      final String sPrefix = sPrefix0 + "1.2.2/cii/";
       for (final String s : new String [] { "01.01a-INVOICE_uncefact.xml",
                                             "01.02a-INVOICE_uncefact.xml",
                                             "01.03a-INVOICE_uncefact.xml",
@@ -209,7 +211,7 @@ public final class CTestFiles
       else
         if (aVESID.equals (XRechnungValidation.VID_XRECHNUNG_UBL_INVOICE_122))
         {
-          final String sPrefix = "/test-files/1.2.2/ubl/";
+          final String sPrefix = sPrefix0 + "1.2.2/ubl/";
           for (final String s : new String [] { "01.01a-INVOICE_ubl.xml",
                                                 "01.02a-INVOICE_ubl.xml",
                                                 "01.03a-INVOICE_ubl.xml",
@@ -235,7 +237,7 @@ public final class CTestFiles
     // 2.0.0
     if (aVESID.equals (XRechnungValidation.VID_XRECHNUNG_CII_200))
     {
-      final String sPrefix = "/test-files/2.0.0/cii/";
+      final String sPrefix = sPrefix0 + "2.0.0/cii/";
       for (final String s : new String [] { "01.01a-INVOICE_uncefact.xml",
                                             "01.02a-INVOICE_uncefact.xml",
                                             "01.03a-INVOICE_uncefact.xml",
@@ -265,7 +267,7 @@ public final class CTestFiles
       else
         if (aVESID.equals (XRechnungValidation.VID_XRECHNUNG_UBL_INVOICE_200))
         {
-          final String sPrefix = "/test-files/2.0.0/ubl/";
+          final String sPrefix = sPrefix0 + "2.0.0/ubl/";
           for (final String s : new String [] { "00.04_all_fields_ubl.xml",
                                                 "01.01a-INVOICE_ubl.xml",
                                                 "01.02a-INVOICE_ubl.xml",
@@ -293,7 +295,7 @@ public final class CTestFiles
     // 2.0.1
     if (aVESID.equals (XRechnungValidation.VID_XRECHNUNG_CII_201))
     {
-      final String sPrefix = "/test-files/2.0.1/cii/";
+      final String sPrefix = sPrefix0 + "2.0.1/cii/";
       for (final String s : new String [] { "cii-br-de-10-test-335-identity.xml",
                                             "cii-br-de-11-test-286-identity.xml",
                                             "cii-br-de-13-test-bg-17-291-identity.xml",
@@ -326,14 +328,14 @@ public final class CTestFiles
     else
       if (aVESID.equals (XRechnungValidation.VID_XRECHNUNG_UBL_CREDITNOTE_201))
       {
-        final String sPrefix = "/test-files/2.0.1/ubl-cn/";
+        final String sPrefix = sPrefix0 + "2.0.1/ubl-cn/";
         for (final String s : new String [] {})
           ret.add (new ClassPathResource (sPrefix + s));
       }
       else
         if (aVESID.equals (XRechnungValidation.VID_XRECHNUNG_UBL_INVOICE_201))
         {
-          final String sPrefix = "/test-files/2.0.1/ubl-inv/";
+          final String sPrefix = sPrefix0 + "2.0.1/ubl-inv/";
           for (final String s : new String [] { "ubl-inv-br-de-17-test-102-code-326.xml",
                                                 "ubl-inv-br-de-17-test-103-code-380.xml",
                                                 "ubl-inv-br-de-17-test-104-code-384.xml",
@@ -389,7 +391,7 @@ public final class CTestFiles
     // 2.1.1
     if (aVESID.equals (XRechnungValidation.VID_XRECHNUNG_CII_211))
     {
-      final String sPrefix = "/test-files/2.1.1/cii/";
+      final String sPrefix = sPrefix0 + "2.1.1/cii/";
       for (final String s : new String [] { "cii-br-de-1-test-356-identity.xml",
                                             "cii-br-de-10-test-386-identity.xml",
                                             "cii-br-de-11-test-322-identity.xml",
@@ -443,7 +445,7 @@ public final class CTestFiles
     else
       if (aVESID.equals (XRechnungValidation.VID_XRECHNUNG_UBL_CREDITNOTE_211))
       {
-        final String sPrefix = "/test-files/2.1.1/ubl-cn/";
+        final String sPrefix = sPrefix0 + "2.1.1/ubl-cn/";
         for (final String s : new String [] { "ubl-cn-br-de-1-test-269-identity.xml",
                                               "ubl-cn-br-de-10-test-239-identity.xml",
                                               "ubl-cn-br-de-11-test-267-identity.xml",
@@ -481,7 +483,7 @@ public final class CTestFiles
       else
         if (aVESID.equals (XRechnungValidation.VID_XRECHNUNG_UBL_INVOICE_211))
         {
-          final String sPrefix = "/test-files/2.1.1/ubl-inv/";
+          final String sPrefix = sPrefix0 + "2.1.1/ubl-inv/";
           for (final String s : new String [] { "ubl-inv-br-de-1-test-131-identity.xml",
                                                 "ubl-inv-br-de-10-test-65-identity.xml",
                                                 "ubl-inv-br-de-11-test-95-identity.xml",
@@ -536,7 +538,7 @@ public final class CTestFiles
     // 2.2.0
     if (aVESID.equals (XRechnungValidation.VID_XRECHNUNG_CII_220))
     {
-      final String sPrefix = "/test-files/2.2.0/cii/";
+      final String sPrefix = sPrefix0 + "2.2.0/cii/";
       for (final String s : new String [] { "01.01a-INVOICE_uncefact.xml",
                                             "01.02a-INVOICE_uncefact.xml",
                                             "01.03a-INVOICE_uncefact.xml",
@@ -579,7 +581,7 @@ public final class CTestFiles
       else
         if (aVESID.equals (XRechnungValidation.VID_XRECHNUNG_UBL_INVOICE_220))
         {
-          final String sPrefix = "/test-files/2.2.0/ubl-inv/";
+          final String sPrefix = sPrefix0 + "2.2.0/ubl-inv/";
           for (final String s : new String [] { "01.01a-INVOICE_ubl.xml",
                                                 "01.02a-INVOICE_ubl.xml",
                                                 "01.03a-INVOICE_ubl.xml",
@@ -610,7 +612,7 @@ public final class CTestFiles
     // 2.3.1
     if (aVESID.equals (XRechnungValidation.VID_XRECHNUNG_CII_231))
     {
-      final String sPrefix = "/test-files/2.3.1/cii/";
+      final String sPrefix = sPrefix0 + "2.3.1/cii/";
       for (final String s : new String [] { "01.01a-INVOICE_uncefact.xml",
                                             "01.02a-INVOICE_uncefact.xml",
                                             "01.03a-INVOICE_uncefact.xml",
@@ -653,7 +655,7 @@ public final class CTestFiles
       else
         if (aVESID.equals (XRechnungValidation.VID_XRECHNUNG_UBL_INVOICE_220))
         {
-          final String sPrefix = "/test-files/2.3.1/ubl-inv/";
+          final String sPrefix = sPrefix0 + "2.3.1/ubl-inv/";
           for (final String s : new String [] { "01.01a-INVOICE_ubl.xml",
                                                 "01.02a-INVOICE_ubl.xml",
                                                 "01.03a-INVOICE_ubl.xml",
