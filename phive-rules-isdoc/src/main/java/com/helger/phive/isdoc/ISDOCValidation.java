@@ -82,8 +82,8 @@ public final class ISDOCValidation
                                                                            "ISDOC " + VID_ISDOC_601.getVersion (),
                                                                            bNotDeprecated,
                                                                            ValidationExecutorXSD.create (CXMLDSig.getXSDResource (),
-                                                                                                         new ClassPathResource ("/schemas/isdoc/6.0.1/isdoc-invoice-dsig-6.0.1.xsd",
+                                                                                                         new ClassPathResource ("/external/schemas/isdoc/6.0.1/isdoc-invoice-dsig-6.0.1.xsd",
                                                                                                                                 _getCL ())),
-                                                                           _createXSLT (new ClassPathResource ("/schematron/isdoc/6.0.1/isdoc-6.0.1.xslt"))));
+                                                                           _createXSLT (new ClassPathResource ("/external/schematron/isdoc/6.0.1/isdoc-6.0.1.xslt"))));
   }
 }

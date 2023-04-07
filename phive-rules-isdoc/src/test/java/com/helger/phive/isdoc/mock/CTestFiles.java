@@ -65,7 +65,7 @@ public final class CTestFiles
   {
     ValueEnforcer.notNull (aVESID, "VESID");
 
-    final String sBasePath = "src/test/resources/test-files/";
+    final String sBasePath = "src/test/resources/external/test-files/";
     if (aVESID.equals (ISDOCValidation.VID_ISDOC_601))
     {
       return new CommonsArrayList <> (new String [] { "doklad.isdoc", "priklad2-egov.isdoc", },
