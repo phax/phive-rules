@@ -46,7 +46,7 @@ public final class PeppolLegacyValidationSG
     return PeppolLegacyValidationSG.class.getClassLoader ();
   }
 
-  private static final String BASE_PATH = "schematron/peppol-sg/";
+  private static final String BASE_PATH = "external/schematron/peppol-sg/";
 
   // 1.0.0 aka 1
   @Deprecated

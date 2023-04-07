@@ -46,7 +46,7 @@ public final class PeppolLegacyValidationAUNZ
     return PeppolLegacyValidationAUNZ.class.getClassLoader ();
   }
 
-  private static final String BASE_PATH = "schematron/peppol-aunz/";
+  private static final String BASE_PATH = "external/schematron/peppol-aunz/";
 
   // 1.0.0
   @Deprecated

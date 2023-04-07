@@ -38,7 +38,7 @@ public class PeppolLegacyThirdpartyValidation
     return PeppolLegacyThirdpartyValidation.class.getClassLoader ();
   }
 
-  private static final String BASE_PATH = "schematron/peppol-thirdparty/";
+  private static final String BASE_PATH = "external/schematron/peppol-thirdparty/";
 
   // Third-party
   public static final VESID VID_OPENPEPPOL_T10_AT_NAT = new VESID ("eu.peppol.bis2", "t10", "6", "at");
