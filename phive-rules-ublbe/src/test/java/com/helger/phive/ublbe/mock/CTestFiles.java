@@ -93,7 +93,7 @@ public final class CTestFiles
     ValueEnforcer.notNull (aVESID, "VESID");
 
     final ICommonsMap <VESID, ICommonsList <IReadableResource>> aMap = new CommonsHashMap <> ();
-    final String sPathPrefix = "/test-files/";
+    final String sPathPrefix = "/external/test-files/";
     {
       final String sPath = sPathPrefix + "3.0.0/";
       aMap.put (UBLBEValidation.VID_EFFF_INVOICE,

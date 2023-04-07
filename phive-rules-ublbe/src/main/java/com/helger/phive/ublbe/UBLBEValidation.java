@@ -44,13 +44,13 @@ import com.helger.ubl21.UBL21NamespaceContext;
 public final class UBLBEValidation
 {
   @Deprecated
-  private static final String GROUPID_EFFF = "be.efff";
+  public static final String GROUPID_EFFF = "be.efff";
   @Deprecated
   public static final VESID VID_EFFF_CREDIT_NOTE = new VESID (GROUPID_EFFF, "credit-note", "3.0.0");
   @Deprecated
   public static final VESID VID_EFFF_INVOICE = new VESID (GROUPID_EFFF, "invoice", "3.0.0");
 
-  private static final String GROUPID_UBL_BE = "be.ubl";
+  public static final String GROUPID_UBL_BE = "be.ubl";
   @Deprecated
   public static final VESID VID_UBL_BE_CREDIT_NOTE_100 = new VESID (GROUPID_UBL_BE, "credit-note", "1.0.0");
   @Deprecated
@@ -105,7 +105,7 @@ public final class UBLBEValidation
     return UBLBEValidation.class.getClassLoader ();
   }
 
-  private static final String BASE_PATH = "/schematron/ublbe/";
+  private static final String BASE_PATH = "/external/schematron/ublbe/";
 
   @Deprecated
   private static final IReadableResource BE_EFFF_300 = new ClassPathResource (BASE_PATH + "3.0.0/EFFF-UBL-T10.xsl",
