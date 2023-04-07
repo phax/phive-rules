@@ -129,8 +129,8 @@ public final class SimplerInvoicingValidation
     return SimplerInvoicingValidation.class.getClassLoader ();
   }
 
-  private static final String PATH_SI = "/schematron/simplerinvoicing/";
-  private static final String PATH_NL_CIUS = "/schematron/nlcius/";
+  private static final String PATH_SI = "/external/schematron/simplerinvoicing/";
+  private static final String PATH_NL_CIUS = "/external/schematron/nlcius/";
 
   // SimplerInvoicing
   // 1.0
@@ -145,17 +145,24 @@ public final class SimplerInvoicingValidation
   @Deprecated
   public static final ClassPathResource INVOICE_SI12 = new ClassPathResource (PATH_SI + "si-ubl-1.2.xslt", _getCL ());
   @Deprecated
-  public static final ClassPathResource ORDER_SI12 = new ClassPathResource (PATH_SI + "si-ubl-1.2-purchaseorder.xslt", _getCL ());
+  public static final ClassPathResource ORDER_SI12 = new ClassPathResource (PATH_SI + "si-ubl-1.2-purchaseorder.xslt",
+                                                                            _getCL ());
 
   // 1.2.3
   @Deprecated
-  public static final ClassPathResource INVOICE_SI123 = new ClassPathResource (PATH_SI + "si-ubl-1.2.3.xslt", _getCL ());
+  public static final ClassPathResource INVOICE_SI123 = new ClassPathResource (PATH_SI + "si-ubl-1.2.3.xslt",
+                                                                               _getCL ());
   @Deprecated
-  public static final ClassPathResource ORDER_SI123 = new ClassPathResource (PATH_SI + "si-ubl-1.2.3-purchaseorder.xslt", _getCL ());
+  public static final ClassPathResource ORDER_SI123 = new ClassPathResource (PATH_SI +
+                                                                             "si-ubl-1.2.3-purchaseorder.xslt",
+                                                                             _getCL ());
 
   // 1.2.4
-  public static final ClassPathResource INVOICE_SI124 = new ClassPathResource (PATH_SI + "si-ubl-1.2.4.xslt", _getCL ());
-  public static final ClassPathResource ORDER_SI124 = new ClassPathResource (PATH_SI + "si-ubl-1.2.4-purchaseorder.xslt", _getCL ());
+  public static final ClassPathResource INVOICE_SI124 = new ClassPathResource (PATH_SI + "si-ubl-1.2.4.xslt",
+                                                                               _getCL ());
+  public static final ClassPathResource ORDER_SI124 = new ClassPathResource (PATH_SI +
+                                                                             "si-ubl-1.2.4-purchaseorder.xslt",
+                                                                             _getCL ());
 
   // 2.0
   @Deprecated
@@ -163,33 +170,41 @@ public final class SimplerInvoicingValidation
 
   // 2.0.1
   @Deprecated
-  public static final ClassPathResource INVOICE_SI201 = new ClassPathResource (PATH_SI + "si-ubl-2.0.1.xslt", _getCL ());
+  public static final ClassPathResource INVOICE_SI201 = new ClassPathResource (PATH_SI + "si-ubl-2.0.1.xslt",
+                                                                               _getCL ());
 
   // 2.0.2
   @Deprecated
-  public static final ClassPathResource INVOICE_SI202 = new ClassPathResource (PATH_SI + "si-ubl-2.0.2.xslt", _getCL ());
+  public static final ClassPathResource INVOICE_SI202 = new ClassPathResource (PATH_SI + "si-ubl-2.0.2.xslt",
+                                                                               _getCL ());
 
   // 2.0.3
   @Deprecated
-  public static final ClassPathResource INVOICE_SI203 = new ClassPathResource (PATH_SI + "si-ubl-2.0.3.xslt", _getCL ());
+  public static final ClassPathResource INVOICE_SI203 = new ClassPathResource (PATH_SI + "si-ubl-2.0.3.xslt",
+                                                                               _getCL ());
 
   // 2.0.3.1
   @Deprecated
-  public static final ClassPathResource INVOICE_SI2031 = new ClassPathResource (PATH_SI + "si-ubl-2.0.3.1.xslt", _getCL ());
+  public static final ClassPathResource INVOICE_SI2031 = new ClassPathResource (PATH_SI + "si-ubl-2.0.3.1.xslt",
+                                                                                _getCL ());
 
   // 2.0.3.2
   @Deprecated
-  public static final ClassPathResource INVOICE_SI2032 = new ClassPathResource (PATH_SI + "si-ubl-2.0.3.2.xslt", _getCL ());
+  public static final ClassPathResource INVOICE_SI2032 = new ClassPathResource (PATH_SI + "si-ubl-2.0.3.2.xslt",
+                                                                                _getCL ());
 
   // 2.0.3.3
   @Deprecated
-  public static final ClassPathResource INVOICE_SI2033 = new ClassPathResource (PATH_SI + "si-ubl-2.0.3.3.xslt", _getCL ());
+  public static final ClassPathResource INVOICE_SI2033 = new ClassPathResource (PATH_SI + "si-ubl-2.0.3.3.xslt",
+                                                                                _getCL ());
 
   // 2.0.3.4
-  public static final ClassPathResource INVOICE_SI2034 = new ClassPathResource (PATH_SI + "si-ubl-2.0.3.4.xslt", _getCL ());
+  public static final ClassPathResource INVOICE_SI2034 = new ClassPathResource (PATH_SI + "si-ubl-2.0.3.4.xslt",
+                                                                                _getCL ());
 
   // 2.0.3.5
-  public static final ClassPathResource INVOICE_SI2035 = new ClassPathResource (PATH_SI + "si-ubl-2.0.3.5.xslt", _getCL ());
+  public static final ClassPathResource INVOICE_SI2035 = new ClassPathResource (PATH_SI + "si-ubl-2.0.3.5.xslt",
+                                                                                _getCL ());
 
   private SimplerInvoicingValidation ()
   {}

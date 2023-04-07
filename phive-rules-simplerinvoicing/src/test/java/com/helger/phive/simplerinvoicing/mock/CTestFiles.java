@@ -109,15 +109,16 @@ public final class CTestFiles
     return ret;
   }
 
-  private static final String NLCIUS_CII_103 = "/test-files/simplerinvoicing/NLCIUS-CII-1.0.3/";
-  private static final String PATH_10 = "/test-files/simplerinvoicing/SI-UBL-1.0/";
-  private static final String PATH_11 = "/test-files/simplerinvoicing/SI-UBL-1.1/";
-  private static final String PATH_12 = "/test-files/simplerinvoicing/SI-UBL-1.2/";
-  private static final String PATH_200 = "/test-files/simplerinvoicing/SI-UBL-2.0/";
-  private static final String PATH_202 = "/test-files/simplerinvoicing/SI-UBL-2.0.2/";
-  private static final String PATH_203 = "/test-files/simplerinvoicing/SI-UBL-2.0.3/";
-  private static final String PATH_2032 = "/test-files/simplerinvoicing/SI-UBL-2.0.3.2/";
-  private static final String PATH_GACCOUNT_10 = "/test-files/simplerinvoicing/si-ubl-2.0-ext-gaccount-1.0/";
+  private static final String PREFIX = "/external/test-files/simplerinvoicing/";
+  private static final String NLCIUS_CII_103 = PREFIX + "NLCIUS-CII-1.0.3/";
+  private static final String PATH_10 = PREFIX + "SI-UBL-1.0/";
+  private static final String PATH_11 = PREFIX + "SI-UBL-1.1/";
+  private static final String PATH_12 = PREFIX + "SI-UBL-1.2/";
+  private static final String PATH_200 = PREFIX + "SI-UBL-2.0/";
+  private static final String PATH_202 = PREFIX + "SI-UBL-2.0.2/";
+  private static final String PATH_203 = PREFIX + "SI-UBL-2.0.3/";
+  private static final String PATH_2032 = PREFIX + "SI-UBL-2.0.3.2/";
+  private static final String PATH_GACCOUNT_10 = PREFIX + "si-ubl-2.0-ext-gaccount-1.0/";
 
   @Nonnull
   @ReturnsMutableCopy
@@ -128,7 +129,9 @@ public final class CTestFiles
     final ICommonsList <IReadableResource> ret = new CommonsArrayList <> ();
     if (aVESID.equals (SimplerInvoicingValidation.VID_SI_INVOICE_V10))
     {
-      for (final String s : new String [] { "SI-UBL-1.0-ok-minimal.xml", "SI-UBL-1.0-ok-reference.xml", "SI-UBL-1.0-ok.xml" })
+      for (final String s : new String [] { "SI-UBL-1.0-ok-minimal.xml",
+                                            "SI-UBL-1.0-ok-reference.xml",
+                                            "SI-UBL-1.0-ok.xml" })
         ret.add (new ClassPathResource (PATH_10 + s));
     }
     else
