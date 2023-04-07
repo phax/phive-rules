@@ -312,11 +312,11 @@ public final class OIOUBLValidation
                                                                                                   CUBL20.XSD_CODELIST_LANGUAGE_CODE,
                                                                                                   CUBL20.XSD_UNQUALIFIED_DATA_TYPES,
                                                                                                   CUBL20.XSD_QUALIFIED_DATA_TYPES,
-                                                                                                  new ClassPathResource ("schemas/OIOUBL_v2.1-b/common/OIOUBL_UTS-CommonBasicComponents-2.1.xsd",
+                                                                                                  new ClassPathResource ("external/schemas/OIOUBL_v2.1-b/common/OIOUBL_UTS-CommonBasicComponents-2.1.xsd",
                                                                                                                          _getCL ()),
-                                                                                                  new ClassPathResource ("schemas/OIOUBL_v2.1-b/common/OIOUBL_UTS-CommonAggregateComponents-2.1.xsd",
+                                                                                                  new ClassPathResource ("external/schemas/OIOUBL_v2.1-b/common/OIOUBL_UTS-CommonAggregateComponents-2.1.xsd",
                                                                                                                          _getCL ()),
-                                                                                                  new ClassPathResource ("schemas/OIOUBL_v2.1-b/maindoc/UBL-UtilityStatement-2.1.xsd",
+                                                                                                  new ClassPathResource ("external/schemas/OIOUBL_v2.1-b/maindoc/UBL-UtilityStatement-2.1.xsd",
                                                                                                                          _getCL ())),
                                                                          s -> StringHelper.trimEnd (s, "Type"));
 
