@@ -43,16 +43,25 @@ public final class PeppolValidationDirectory
     return PeppolValidationDirectory.class.getClassLoader ();
   }
 
-  private static final String BASE_PATH = "schemas/";
+  private static final String BASE_PATH = "external/schemas/";
 
-  public static final VESID VID_OPENPEPPOL_BUSINESS_CARD_V1 = new VESID ("eu.peppol.directory", "businesscard", "1.0.0");
-  public static final VESID VID_OPENPEPPOL_BUSINESS_CARD_V2 = new VESID ("eu.peppol.directory", "businesscard", "2.0.0");
-  public static final VESID VID_OPENPEPPOL_BUSINESS_CARD_V3 = new VESID ("eu.peppol.directory", "businesscard", "3.0.0");
-  private static final IReadableResource DIRECTORY_V1 = new ClassPathResource (BASE_PATH + "peppol-directory-business-card-20160112.xsd",
+  public static final VESID VID_OPENPEPPOL_BUSINESS_CARD_V1 = new VESID ("eu.peppol.directory",
+                                                                         "businesscard",
+                                                                         "1.0.0");
+  public static final VESID VID_OPENPEPPOL_BUSINESS_CARD_V2 = new VESID ("eu.peppol.directory",
+                                                                         "businesscard",
+                                                                         "2.0.0");
+  public static final VESID VID_OPENPEPPOL_BUSINESS_CARD_V3 = new VESID ("eu.peppol.directory",
+                                                                         "businesscard",
+                                                                         "3.0.0");
+  private static final IReadableResource DIRECTORY_V1 = new ClassPathResource (BASE_PATH +
+                                                                               "peppol-directory-business-card-20160112.xsd",
                                                                                _getCL ());
-  private static final IReadableResource DIRECTORY_V2 = new ClassPathResource (BASE_PATH + "peppol-directory-business-card-20161123.xsd",
+  private static final IReadableResource DIRECTORY_V2 = new ClassPathResource (BASE_PATH +
+                                                                               "peppol-directory-business-card-20161123.xsd",
                                                                                _getCL ());
-  private static final IReadableResource DIRECTORY_V3 = new ClassPathResource (BASE_PATH + "peppol-directory-business-card-20180621.xsd",
+  private static final IReadableResource DIRECTORY_V3 = new ClassPathResource (BASE_PATH +
+                                                                               "peppol-directory-business-card-20180621.xsd",
                                                                                _getCL ());
 
   private PeppolValidationDirectory ()

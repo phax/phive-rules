@@ -78,7 +78,7 @@ public final class PeppolValidation3_15_0
     return PeppolValidation3_15_0.class.getClassLoader ();
   }
 
-  private static final String PREFIX_XSLT = "schematron/openpeppol/" + VERSION_STR + "/xslt/";
+  private static final String PREFIX_XSLT = "external/schematron/openpeppol/" + VERSION_STR + "/xslt/";
   public static final IReadableResource INVOICE_UBL_CEN = new ClassPathResource (PREFIX_XSLT + "CEN-EN16931-UBL.xslt",
                                                                                  _getCL ());
   public static final IReadableResource INVOICE_UBL_PEPPOL = new ClassPathResource (PREFIX_XSLT +

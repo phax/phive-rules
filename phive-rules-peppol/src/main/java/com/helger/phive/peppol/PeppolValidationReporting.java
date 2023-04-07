@@ -43,8 +43,8 @@ public final class PeppolValidationReporting
     return PeppolValidationReporting.class.getClassLoader ();
   }
 
-  private static final String BASE_PATH_XSD = "schemas/";
-  private static final String BASE_PATH_SCH = "schematron/reporting/";
+  private static final String BASE_PATH_XSD = "external/schemas/";
+  private static final String BASE_PATH_SCH = "external/schematron/reporting/";
 
   private static final String GROUP_ID = "eu.peppol.reporting";
 

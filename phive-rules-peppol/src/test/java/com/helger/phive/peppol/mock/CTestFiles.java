@@ -127,69 +127,69 @@ public final class CTestFiles
   {
     ValueEnforcer.notNull (aVESID, "VESID");
 
-    final String sTestFiles = "src/test/resources/test-files/";
+    final String sPrefix0 = "src/test/resources/external/test-files/";
 
     // AUNZ 1.0.7
     if (aVESID.equals (PeppolValidationAUNZ.VID_OPENPEPPOL_BIS3_AUNZ_UBL_INVOICE_107))
     {
-      final String sBase = sTestFiles + "aunz-peppol/1.0.7/";
-      return new CommonsArrayList <> (new FileSystemResource (sBase + "AU Invoice.xml"),
-                                      new FileSystemResource (sBase + "NZ Allowance On Invoice Line.xml"),
-                                      new FileSystemResource (sBase + "NZ Invoice Level Allowance.xml"),
-                                      new FileSystemResource (sBase + "NZ Invoice Level Charge.xml"),
-                                      new FileSystemResource (sBase + "NZ No Allowances.xml"),
-                                      new FileSystemResource (sBase + "NZ Prepaid Amount.xml"));
+      final String sPrefix = sPrefix0 + "aunz-peppol/1.0.7/";
+      return new CommonsArrayList <> (new FileSystemResource (sPrefix + "AU Invoice.xml"),
+                                      new FileSystemResource (sPrefix + "NZ Allowance On Invoice Line.xml"),
+                                      new FileSystemResource (sPrefix + "NZ Invoice Level Allowance.xml"),
+                                      new FileSystemResource (sPrefix + "NZ Invoice Level Charge.xml"),
+                                      new FileSystemResource (sPrefix + "NZ No Allowances.xml"),
+                                      new FileSystemResource (sPrefix + "NZ Prepaid Amount.xml"));
     }
     if (aVESID.equals (PeppolValidationAUNZ.VID_OPENPEPPOL_BIS3_AUNZ_UBL_CREDIT_NOTE_107))
     {
-      final String sBase = sTestFiles + "aunz-peppol/1.0.7/";
-      return new CommonsArrayList <> (new FileSystemResource (sBase + "NZ Credit note.xml"));
+      final String sPrefix = sPrefix0 + "aunz-peppol/1.0.7/";
+      return new CommonsArrayList <> (new FileSystemResource (sPrefix + "NZ Credit note.xml"));
     }
     if (aVESID.equals (PeppolValidationAUNZ.VID_OPENPEPPOL_BIS3_AUNZ_UBL_INVOICE_SELF_BILLING_107))
     {
-      final String sBase = sTestFiles + "aunz-peppol/1.0.7/";
-      return new CommonsArrayList <> (new FileSystemResource (sBase + "AU Self Billing.xml"),
-                                      new FileSystemResource (sBase + "NZ Self Billing.xml"));
+      final String sPrefix = sPrefix0 + "aunz-peppol/1.0.7/";
+      return new CommonsArrayList <> (new FileSystemResource (sPrefix + "AU Self Billing.xml"),
+                                      new FileSystemResource (sPrefix + "NZ Self Billing.xml"));
     }
     if (aVESID.equals (PeppolValidationAUNZ.VID_OPENPEPPOL_BIS3_AUNZ_UBL_CREDIT_NOTE_SELF_BILLING_107))
     {
-      final String sBase = sTestFiles + "aunz-peppol/1.0.7/";
-      return new CommonsArrayList <> (new FileSystemResource (sBase + "NZ Self Billed Credit note.xml"));
+      final String sPrefix = sPrefix0 + "aunz-peppol/1.0.7/";
+      return new CommonsArrayList <> (new FileSystemResource (sPrefix + "NZ Self Billed Credit note.xml"));
     }
 
     // AUNZ 1.0.8
     if (aVESID.equals (PeppolValidationAUNZ.VID_OPENPEPPOL_BIS3_AUNZ_UBL_INVOICE_108))
     {
-      final String sBase = sTestFiles + "aunz-peppol/1.0.8/";
-      return new CommonsArrayList <> (new FileSystemResource (sBase + "AU Invoice.xml"),
-                                      new FileSystemResource (sBase + "NZ Allowance On Invoice Line.xml"),
-                                      new FileSystemResource (sBase + "NZ Invoice Level Allowance.xml"),
-                                      new FileSystemResource (sBase + "NZ Invoice Level Charge.xml"),
-                                      new FileSystemResource (sBase + "NZ No Allowances.xml"),
-                                      new FileSystemResource (sBase + "NZ Prepaid Amount.xml"));
+      final String sPrefix = sPrefix0 + "aunz-peppol/1.0.8/";
+      return new CommonsArrayList <> (new FileSystemResource (sPrefix + "AU Invoice.xml"),
+                                      new FileSystemResource (sPrefix + "NZ Allowance On Invoice Line.xml"),
+                                      new FileSystemResource (sPrefix + "NZ Invoice Level Allowance.xml"),
+                                      new FileSystemResource (sPrefix + "NZ Invoice Level Charge.xml"),
+                                      new FileSystemResource (sPrefix + "NZ No Allowances.xml"),
+                                      new FileSystemResource (sPrefix + "NZ Prepaid Amount.xml"));
     }
     if (aVESID.equals (PeppolValidationAUNZ.VID_OPENPEPPOL_BIS3_AUNZ_UBL_CREDIT_NOTE_108))
     {
-      final String sBase = sTestFiles + "aunz-peppol/1.0.8/";
-      return new CommonsArrayList <> (new FileSystemResource (sBase + "NZ Credit note.xml"));
+      final String sPrefix = sPrefix0 + "aunz-peppol/1.0.8/";
+      return new CommonsArrayList <> (new FileSystemResource (sPrefix + "NZ Credit note.xml"));
     }
     if (aVESID.equals (PeppolValidationAUNZ.VID_OPENPEPPOL_BIS3_AUNZ_UBL_INVOICE_SELF_BILLING_108))
     {
-      final String sBase = sTestFiles + "aunz-peppol/1.0.8/";
-      return new CommonsArrayList <> (new FileSystemResource (sBase + "AU Self Billing.xml"),
-                                      new FileSystemResource (sBase + "NZ Self Billing.xml"));
+      final String sPrefix = sPrefix0 + "aunz-peppol/1.0.8/";
+      return new CommonsArrayList <> (new FileSystemResource (sPrefix + "AU Self Billing.xml"),
+                                      new FileSystemResource (sPrefix + "NZ Self Billing.xml"));
     }
     if (aVESID.equals (PeppolValidationAUNZ.VID_OPENPEPPOL_BIS3_AUNZ_UBL_CREDIT_NOTE_SELF_BILLING_108))
     {
-      final String sBase = sTestFiles + "aunz-peppol/1.0.8/";
-      return new CommonsArrayList <> (new FileSystemResource (sBase + "NZ Self Billed Credit note.xml"));
+      final String sPrefix = sPrefix0 + "aunz-peppol/1.0.8/";
+      return new CommonsArrayList <> (new FileSystemResource (sPrefix + "NZ Self Billed Credit note.xml"));
     }
 
     // SG 1.0.2
     if (aVESID.equals (PeppolValidationSG.VID_OPENPEPPOL_BIS3_SG_UBL_INVOICE_102))
     {
-      final String sBase = sTestFiles + "sg-peppol/1.0.2/";
-      return new CommonsArrayList <> (new FileSystemResource (sBase + "Singapore invoice valid 1.xml"));
+      final String sPrefix = sPrefix0 + "sg-peppol/1.0.2/";
+      return new CommonsArrayList <> (new FileSystemResource (sPrefix + "Singapore invoice valid 1.xml"));
     }
 
     if (aVESID.equals (PeppolValidationSG.VID_OPENPEPPOL_BIS3_SG_UBL_CREDIT_NOTE_102))
@@ -198,9 +198,9 @@ public final class CTestFiles
     // SG 1.0.3
     if (aVESID.equals (PeppolValidationSG.VID_OPENPEPPOL_BIS3_SG_UBL_INVOICE_103))
     {
-      final String sBase = sTestFiles + "sg-peppol/1.0.3/";
-      return new CommonsArrayList <> (new FileSystemResource (sBase + "Singapore invoice valid 1.xml"),
-                                      new FileSystemResource (sBase + "Singapore invoice valid 1 - NG tax code.xml"));
+      final String sPrefix = sPrefix0 + "sg-peppol/1.0.3/";
+      return new CommonsArrayList <> (new FileSystemResource (sPrefix + "Singapore invoice valid 1.xml"),
+                                      new FileSystemResource (sPrefix + "Singapore invoice valid 1 - NG tax code.xml"));
     }
 
     if (aVESID.equals (PeppolValidationSG.VID_OPENPEPPOL_BIS3_SG_UBL_CREDIT_NOTE_103))
@@ -208,71 +208,71 @@ public final class CTestFiles
 
     // 3.14.0
     {
-      final String sBase = sTestFiles + "openpeppol/3.14.0/";
+      final String sPrefix = sPrefix0 + "openpeppol/3.14.0/";
       // https://github.com/OpenPEPPOL/peppol-bis-invoice-3/tree/master/rules/examples
       if (aVESID.equals (PeppolValidation3_14_0.VID_OPENPEPPOL_INVOICE_UBL_V3))
-        return new CommonsArrayList <> (new FileSystemResource (sBase + "billing/Allowance-example.xml"),
-                                        new FileSystemResource (sBase + "billing/base-example.xml"),
-                                        new FileSystemResource (sBase + "billing/base-negative-inv-correction.xml"),
-                                        new FileSystemResource (sBase + "billing/vat-category-E.xml"),
-                                        new FileSystemResource (sBase + "billing/vat-category-O.xml"),
-                                        new FileSystemResource (sBase + "billing/Vat-category-S.xml"),
-                                        new FileSystemResource (sBase + "billing/vat-category-Z.xml"),
+        return new CommonsArrayList <> (new FileSystemResource (sPrefix + "billing/Allowance-example.xml"),
+                                        new FileSystemResource (sPrefix + "billing/base-example.xml"),
+                                        new FileSystemResource (sPrefix + "billing/base-negative-inv-correction.xml"),
+                                        new FileSystemResource (sPrefix + "billing/vat-category-E.xml"),
+                                        new FileSystemResource (sPrefix + "billing/vat-category-O.xml"),
+                                        new FileSystemResource (sPrefix + "billing/Vat-category-S.xml"),
+                                        new FileSystemResource (sPrefix + "billing/vat-category-Z.xml"),
                                         // Original file is broken
-                                        new FileSystemResource (sBase + "billing/GR-base-example-correct.xml"),
+                                        new FileSystemResource (sPrefix + "billing/GR-base-example-correct.xml"),
                                         // Original file is broken
-                                        // new FileSystemResource (sBase +
+                                        // new FileSystemResource (sPrefix +
                                         // "billing/GR-base-example-TaxRepresentative.xml"),
-                                        new FileSystemResource (sBase + "billing/Norwegian-example-1.xml"));
+                                        new FileSystemResource (sPrefix + "billing/Norwegian-example-1.xml"));
       if (aVESID.equals (PeppolValidation3_14_0.VID_OPENPEPPOL_CREDIT_NOTE_UBL_V3))
-        return new CommonsArrayList <> (new FileSystemResource (sBase + "billing/base-creditnote-correction.xml"));
+        return new CommonsArrayList <> (new FileSystemResource (sPrefix + "billing/base-creditnote-correction.xml"));
       if (aVESID.equals (PeppolValidation3_14_0.VID_OPENPEPPOL_INVOICE_CII_V3))
         return new CommonsArrayList <> ();
       if (aVESID.equals (PeppolValidation3_14_0.VID_OPENPEPPOL_ORDER_V3))
-        return new CommonsArrayList <> (new FileSystemResource (sBase + "Order_Example.xml"),
-                                        new FileSystemResource (sBase + "Order use cases/UC1_Order.xml"),
-                                        new FileSystemResource (sBase + "Order use cases/UC2_Order.xml"),
-                                        new FileSystemResource (sBase + "Order use cases/UC3_Order.xml"),
-                                        new FileSystemResource (sBase + "Order use cases/UC4_Order.xml"),
-                                        new FileSystemResource (sBase + "Order use cases/UC5_Order.xml"));
+        return new CommonsArrayList <> (new FileSystemResource (sPrefix + "Order_Example.xml"),
+                                        new FileSystemResource (sPrefix + "Order use cases/UC1_Order.xml"),
+                                        new FileSystemResource (sPrefix + "Order use cases/UC2_Order.xml"),
+                                        new FileSystemResource (sPrefix + "Order use cases/UC3_Order.xml"),
+                                        new FileSystemResource (sPrefix + "Order use cases/UC4_Order.xml"),
+                                        new FileSystemResource (sPrefix + "Order use cases/UC5_Order.xml"));
       if (aVESID.equals (PeppolValidation3_14_0.VID_OPENPEPPOL_DESPATCH_ADVICE_V3))
-        return new CommonsArrayList <> (new FileSystemResource (sBase + "DespatchAdvice_Example.xml"),
-                                        new FileSystemResource (sBase +
+        return new CommonsArrayList <> (new FileSystemResource (sPrefix + "DespatchAdvice_Example.xml"),
+                                        new FileSystemResource (sPrefix +
                                                                 "Despatch Advice use cases/DespatchAdvice-BIS3_UseCase1.xml"),
-                                        new FileSystemResource (sBase +
+                                        new FileSystemResource (sPrefix +
                                                                 "Despatch Advice use cases/DespatchAdvice-BIS3_UseCase2.xml"),
-                                        new FileSystemResource (sBase +
+                                        new FileSystemResource (sPrefix +
                                                                 "Despatch Advice use cases/DespatchAdvice-BIS3_UseCase3.xml"),
-                                        new FileSystemResource (sBase +
+                                        new FileSystemResource (sPrefix +
                                                                 "Despatch Advice use cases/DespatchAdvice-BIS3_UseCase4.xml"),
-                                        new FileSystemResource (sBase +
+                                        new FileSystemResource (sPrefix +
                                                                 "Despatch Advice use cases/DespatchAdvice-BIS3_UseCase5.xml"));
       if (aVESID.equals (PeppolValidation3_14_0.VID_OPENPEPPOL_CATALOGUE_V3))
-        return new CommonsArrayList <> (new FileSystemResource (sBase + "Catalogue_Example.xml"));
+        return new CommonsArrayList <> (new FileSystemResource (sPrefix + "Catalogue_Example.xml"));
       if (aVESID.equals (PeppolValidation3_14_0.VID_OPENPEPPOL_CATALOGUE_RESPONSE_V3))
-        return new CommonsArrayList <> (new FileSystemResource (sBase + "CatalogueResponse_Example.xml"));
+        return new CommonsArrayList <> (new FileSystemResource (sPrefix + "CatalogueResponse_Example.xml"));
       if (aVESID.equals (PeppolValidation3_14_0.VID_OPENPEPPOL_MLR_V3))
-        return new CommonsArrayList <> (new FileSystemResource (sBase + "MessageLevelResponse_Example.xml"));
+        return new CommonsArrayList <> (new FileSystemResource (sPrefix + "MessageLevelResponse_Example.xml"));
       if (aVESID.equals (PeppolValidation3_14_0.VID_OPENPEPPOL_ORDER_RESPONSE_V3))
-        return new CommonsArrayList <> (new FileSystemResource (sBase + "OrderResponse_Example.xml"),
-                                        new FileSystemResource (sBase +
+        return new CommonsArrayList <> (new FileSystemResource (sPrefix + "OrderResponse_Example.xml"),
+                                        new FileSystemResource (sPrefix +
                                                                 "Order-response use cases/UC1_Order_response.xml"),
-                                        new FileSystemResource (sBase +
+                                        new FileSystemResource (sPrefix +
                                                                 "Order-response use cases/UC2_Order_response.xml"),
-                                        new FileSystemResource (sBase +
+                                        new FileSystemResource (sPrefix +
                                                                 "Order-response use cases/UC3_Order_response.xml"),
-                                        new FileSystemResource (sBase +
+                                        new FileSystemResource (sPrefix +
                                                                 "Order-response use cases/UC4_Order_response.xml"),
-                                        new FileSystemResource (sBase +
+                                        new FileSystemResource (sPrefix +
                                                                 "Order-response use cases/UC5_Order_response.xml"));
       if (aVESID.equals (PeppolValidation3_14_0.VID_OPENPEPPOL_PUNCH_OUT_V3))
-        return new CommonsArrayList <> (new FileSystemResource (sBase + "PunchOut_Example.xml"));
+        return new CommonsArrayList <> (new FileSystemResource (sPrefix + "PunchOut_Example.xml"));
       if (aVESID.equals (PeppolValidation3_14_0.VID_OPENPEPPOL_ORDER_AGREEMENT_V3))
-        return new CommonsArrayList <> (new FileSystemResource (sBase + "OrderAgreement_Example.xml"));
+        return new CommonsArrayList <> (new FileSystemResource (sPrefix + "OrderAgreement_Example.xml"));
 
-      final String sBase2 = sBase + "Invoice reponse use cases/";
+      final String sBase2 = sPrefix + "Invoice reponse use cases/";
       if (aVESID.equals (PeppolValidation3_14_0.VID_OPENPEPPOL_INVOICE_MESSAGE_RESPONSE_V3))
-        return new CommonsArrayList <> (new FileSystemResource (sBase + "InvoiceResponse_Example.xml"),
+        return new CommonsArrayList <> (new FileSystemResource (sPrefix + "InvoiceResponse_Example.xml"),
                                         new FileSystemResource (sBase2 + "T111-uc001-Invoice in process.xml"),
                                         new FileSystemResource (sBase2 + "T111-uc002a-Additional reference data.xml"),
                                         new FileSystemResource (sBase2 + "T111-uc002b-In process but postponed.xml"),
@@ -294,65 +294,65 @@ public final class CTestFiles
 
     // 3.15.0
     {
-      final String sBase = sTestFiles + "openpeppol/3.15.0/";
+      final String sPrefix = sPrefix0 + "openpeppol/3.15.0/";
       // https://github.com/OpenPEPPOL/peppol-bis-invoice-3/tree/master/rules/examples
       if (aVESID.equals (PeppolValidation3_15_0.VID_OPENPEPPOL_INVOICE_UBL_V3))
-        return new CommonsArrayList <> (new FileSystemResource (sBase + "billing/Allowance-example.xml"),
-                                        new FileSystemResource (sBase + "billing/base-example.xml"),
-                                        new FileSystemResource (sBase + "billing/base-negative-inv-correction.xml"),
-                                        new FileSystemResource (sBase + "billing/vat-category-E.xml"),
-                                        new FileSystemResource (sBase + "billing/vat-category-O.xml"),
-                                        new FileSystemResource (sBase + "billing/Vat-category-S.xml"),
-                                        new FileSystemResource (sBase + "billing/vat-category-Z.xml"));
+        return new CommonsArrayList <> (new FileSystemResource (sPrefix + "billing/Allowance-example.xml"),
+                                        new FileSystemResource (sPrefix + "billing/base-example.xml"),
+                                        new FileSystemResource (sPrefix + "billing/base-negative-inv-correction.xml"),
+                                        new FileSystemResource (sPrefix + "billing/vat-category-E.xml"),
+                                        new FileSystemResource (sPrefix + "billing/vat-category-O.xml"),
+                                        new FileSystemResource (sPrefix + "billing/Vat-category-S.xml"),
+                                        new FileSystemResource (sPrefix + "billing/vat-category-Z.xml"));
       if (aVESID.equals (PeppolValidation3_15_0.VID_OPENPEPPOL_CREDIT_NOTE_UBL_V3))
-        return new CommonsArrayList <> (new FileSystemResource (sBase + "billing/base-creditnote-correction.xml"));
+        return new CommonsArrayList <> (new FileSystemResource (sPrefix + "billing/base-creditnote-correction.xml"));
       if (aVESID.equals (PeppolValidation3_15_0.VID_OPENPEPPOL_INVOICE_CII_V3))
         return new CommonsArrayList <> ();
       if (aVESID.equals (PeppolValidation3_15_0.VID_OPENPEPPOL_ORDER_V3))
-        return new CommonsArrayList <> (new FileSystemResource (sBase + "Order_Example.xml"),
-                                        new FileSystemResource (sBase + "Order use cases/UC1_Order.xml"),
-                                        new FileSystemResource (sBase + "Order use cases/UC2_Order.xml"),
-                                        new FileSystemResource (sBase + "Order use cases/UC3_Order.xml"),
-                                        new FileSystemResource (sBase + "Order use cases/UC4_Order.xml"),
-                                        new FileSystemResource (sBase + "Order use cases/UC5_Order.xml"));
+        return new CommonsArrayList <> (new FileSystemResource (sPrefix + "Order_Example.xml"),
+                                        new FileSystemResource (sPrefix + "Order use cases/UC1_Order.xml"),
+                                        new FileSystemResource (sPrefix + "Order use cases/UC2_Order.xml"),
+                                        new FileSystemResource (sPrefix + "Order use cases/UC3_Order.xml"),
+                                        new FileSystemResource (sPrefix + "Order use cases/UC4_Order.xml"),
+                                        new FileSystemResource (sPrefix + "Order use cases/UC5_Order.xml"));
       if (aVESID.equals (PeppolValidation3_15_0.VID_OPENPEPPOL_DESPATCH_ADVICE_V3))
-        return new CommonsArrayList <> (new FileSystemResource (sBase + "DespatchAdvice_Example.xml"),
-                                        new FileSystemResource (sBase +
+        return new CommonsArrayList <> (new FileSystemResource (sPrefix + "DespatchAdvice_Example.xml"),
+                                        new FileSystemResource (sPrefix +
                                                                 "Despatch Advice use cases/DespatchAdvice-BIS3_UseCase1.xml"),
-                                        new FileSystemResource (sBase +
+                                        new FileSystemResource (sPrefix +
                                                                 "Despatch Advice use cases/DespatchAdvice-BIS3_UseCase2.xml"),
-                                        new FileSystemResource (sBase +
+                                        new FileSystemResource (sPrefix +
                                                                 "Despatch Advice use cases/DespatchAdvice-BIS3_UseCase3.xml"),
-                                        new FileSystemResource (sBase +
+                                        new FileSystemResource (sPrefix +
                                                                 "Despatch Advice use cases/DespatchAdvice-BIS3_UseCase4.xml"),
-                                        new FileSystemResource (sBase +
+                                        new FileSystemResource (sPrefix +
                                                                 "Despatch Advice use cases/DespatchAdvice-BIS3_UseCase5.xml"));
       if (aVESID.equals (PeppolValidation3_15_0.VID_OPENPEPPOL_CATALOGUE_V3))
-        return new CommonsArrayList <> (new FileSystemResource (sBase + "Catalogue_Example.xml"));
+        return new CommonsArrayList <> (new FileSystemResource (sPrefix + "Catalogue_Example.xml"));
       if (aVESID.equals (PeppolValidation3_15_0.VID_OPENPEPPOL_CATALOGUE_RESPONSE_V3))
-        return new CommonsArrayList <> (new FileSystemResource (sBase + "CatalogueResponse_Example.xml"));
+        return new CommonsArrayList <> (new FileSystemResource (sPrefix + "CatalogueResponse_Example.xml"));
       if (aVESID.equals (PeppolValidation3_15_0.VID_OPENPEPPOL_MLR_V3))
-        return new CommonsArrayList <> (new FileSystemResource (sBase + "MessageLevelResponse_Example.xml"));
+        return new CommonsArrayList <> (new FileSystemResource (sPrefix + "MessageLevelResponse_Example.xml"));
       if (aVESID.equals (PeppolValidation3_15_0.VID_OPENPEPPOL_ORDER_RESPONSE_V3))
-        return new CommonsArrayList <> (new FileSystemResource (sBase + "OrderResponse_Example.xml"),
-                                        new FileSystemResource (sBase +
+        return new CommonsArrayList <> (new FileSystemResource (sPrefix + "OrderResponse_Example.xml"),
+                                        new FileSystemResource (sPrefix +
                                                                 "Order-response use cases/UC1_Order_response.xml"),
-                                        new FileSystemResource (sBase +
+                                        new FileSystemResource (sPrefix +
                                                                 "Order-response use cases/UC2_Order_response.xml"),
-                                        new FileSystemResource (sBase +
+                                        new FileSystemResource (sPrefix +
                                                                 "Order-response use cases/UC3_Order_response.xml"),
-                                        new FileSystemResource (sBase +
+                                        new FileSystemResource (sPrefix +
                                                                 "Order-response use cases/UC4_Order_response.xml"),
-                                        new FileSystemResource (sBase +
+                                        new FileSystemResource (sPrefix +
                                                                 "Order-response use cases/UC5_Order_response.xml"));
       if (aVESID.equals (PeppolValidation3_15_0.VID_OPENPEPPOL_PUNCH_OUT_V3))
-        return new CommonsArrayList <> (new FileSystemResource (sBase + "PunchOut_Example.xml"));
+        return new CommonsArrayList <> (new FileSystemResource (sPrefix + "PunchOut_Example.xml"));
       if (aVESID.equals (PeppolValidation3_15_0.VID_OPENPEPPOL_ORDER_AGREEMENT_V3))
-        return new CommonsArrayList <> (new FileSystemResource (sBase + "OrderAgreement_Example.xml"));
+        return new CommonsArrayList <> (new FileSystemResource (sPrefix + "OrderAgreement_Example.xml"));
 
-      final String sBase2 = sBase + "Invoice reponse use cases/";
+      final String sBase2 = sPrefix + "Invoice reponse use cases/";
       if (aVESID.equals (PeppolValidation3_15_0.VID_OPENPEPPOL_INVOICE_MESSAGE_RESPONSE_V3))
-        return new CommonsArrayList <> (new FileSystemResource (sBase + "InvoiceResponse_Example.xml"),
+        return new CommonsArrayList <> (new FileSystemResource (sPrefix + "InvoiceResponse_Example.xml"),
                                         new FileSystemResource (sBase2 + "T111-uc001-Invoice in process.xml"),
                                         new FileSystemResource (sBase2 + "T111-uc002a-Additional reference data.xml"),
                                         new FileSystemResource (sBase2 + "T111-uc002b-In process but postponed.xml"),
@@ -375,65 +375,65 @@ public final class CTestFiles
     /* Peppol Directory BusinessCard */
     if (aVESID.equals (PeppolValidationDirectory.VID_OPENPEPPOL_BUSINESS_CARD_V1))
     {
-      final String sBase = sTestFiles + "business-card/v1/";
-      return new CommonsArrayList <> (new FileSystemResource (sBase + "bc-0088-5033466000005.xml"),
-                                      new FileSystemResource (sBase + "bc-9915-leckma.xml"),
-                                      new FileSystemResource (sBase + "business-card-example-spec-v1.xml"),
-                                      new FileSystemResource (sBase + "business-card-test1.xml"));
+      final String sPrefix = sPrefix0 + "business-card/v1/";
+      return new CommonsArrayList <> (new FileSystemResource (sPrefix + "bc-0088-5033466000005.xml"),
+                                      new FileSystemResource (sPrefix + "bc-9915-leckma.xml"),
+                                      new FileSystemResource (sPrefix + "business-card-example-spec-v1.xml"),
+                                      new FileSystemResource (sPrefix + "business-card-test1.xml"));
     }
 
     if (aVESID.equals (PeppolValidationDirectory.VID_OPENPEPPOL_BUSINESS_CARD_V2))
     {
-      final String sBase = sTestFiles + "business-card/v2/";
-      return new CommonsArrayList <> (new FileSystemResource (sBase + "bc-0088-5033466000005.xml"),
-                                      new FileSystemResource (sBase + "bc-9915-leckma.xml"),
-                                      new FileSystemResource (sBase + "business-card-example-spec-v2.xml"),
-                                      new FileSystemResource (sBase + "business-card-test1.xml"),
-                                      new FileSystemResource (sBase + "nemhandel.xml"));
+      final String sPrefix = sPrefix0 + "business-card/v2/";
+      return new CommonsArrayList <> (new FileSystemResource (sPrefix + "bc-0088-5033466000005.xml"),
+                                      new FileSystemResource (sPrefix + "bc-9915-leckma.xml"),
+                                      new FileSystemResource (sPrefix + "business-card-example-spec-v2.xml"),
+                                      new FileSystemResource (sPrefix + "business-card-test1.xml"),
+                                      new FileSystemResource (sPrefix + "nemhandel.xml"));
     }
 
     if (aVESID.equals (PeppolValidationDirectory.VID_OPENPEPPOL_BUSINESS_CARD_V3))
     {
-      final String sBase = sTestFiles + "business-card/v3/";
-      return new CommonsArrayList <> (new FileSystemResource (sBase + "bc-0088-5033466000005.xml"),
-                                      new FileSystemResource (sBase + "bc1.xml"),
-                                      new FileSystemResource (sBase + "bc-9915-leckma.xml"),
-                                      new FileSystemResource (sBase + "bc-9930-de811152493.xml"),
-                                      new FileSystemResource (sBase + "business-card-cctf-103.xml"),
-                                      new FileSystemResource (sBase + "business-card-example-spec-v3.xml"),
-                                      new FileSystemResource (sBase + "business-card-test1.xml"),
-                                      new FileSystemResource (sBase + "business-card-test2.xml"));
+      final String sPrefix = sPrefix0 + "business-card/v3/";
+      return new CommonsArrayList <> (new FileSystemResource (sPrefix + "bc-0088-5033466000005.xml"),
+                                      new FileSystemResource (sPrefix + "bc1.xml"),
+                                      new FileSystemResource (sPrefix + "bc-9915-leckma.xml"),
+                                      new FileSystemResource (sPrefix + "bc-9930-de811152493.xml"),
+                                      new FileSystemResource (sPrefix + "business-card-cctf-103.xml"),
+                                      new FileSystemResource (sPrefix + "business-card-example-spec-v3.xml"),
+                                      new FileSystemResource (sPrefix + "business-card-test1.xml"),
+                                      new FileSystemResource (sPrefix + "business-card-test2.xml"));
     }
 
     /* Peppol Reporting */
     // EUSR
     if (aVESID.equals (PeppolValidationReporting.VID_OPENPEPPOL_EUSR_V100RC2))
     {
-      final String sBase = sTestFiles + "reporting/eusr/1.0.0-RC2/";
-      return new CommonsArrayList <> (new FileSystemResource (sBase + "end-user-statistics-reporting-1.xml"),
-                                      new FileSystemResource (sBase + "end-user-statistics-reporting-empty.xml"),
-                                      new FileSystemResource (sBase + "end-user-statistics-reporting-minimal.xml"));
+      final String sPrefix = sPrefix0 + "reporting/eusr/1.0.0-RC2/";
+      return new CommonsArrayList <> (new FileSystemResource (sPrefix + "end-user-statistics-reporting-1.xml"),
+                                      new FileSystemResource (sPrefix + "end-user-statistics-reporting-empty.xml"),
+                                      new FileSystemResource (sPrefix + "end-user-statistics-reporting-minimal.xml"));
     }
     if (aVESID.equals (PeppolValidationReporting.VID_OPENPEPPOL_EUSR_V100))
     {
-      final String sBase = sTestFiles + "reporting/eusr/1.0.0/";
-      return new CommonsArrayList <> (new FileSystemResource (sBase + "end-user-statistics-reporting-1.xml"),
-                                      new FileSystemResource (sBase + "end-user-statistics-reporting-empty.xml"),
-                                      new FileSystemResource (sBase + "end-user-statistics-reporting-minimal.xml"));
+      final String sPrefix = sPrefix0 + "reporting/eusr/1.0.0/";
+      return new CommonsArrayList <> (new FileSystemResource (sPrefix + "end-user-statistics-reporting-1.xml"),
+                                      new FileSystemResource (sPrefix + "end-user-statistics-reporting-empty.xml"),
+                                      new FileSystemResource (sPrefix + "end-user-statistics-reporting-minimal.xml"));
     }
 
     // TSR
     if (aVESID.equals (PeppolValidationReporting.VID_OPENPEPPOL_TSR_V100))
     {
-      final String sBase = sTestFiles + "reporting/tsr/1.0.0/";
-      return new CommonsArrayList <> (new FileSystemResource (sBase + "transaction-statistics-2.xml"),
-                                      new FileSystemResource (sBase + "transaction-statistics-minimal.xml"));
+      final String sPrefix = sPrefix0 + "reporting/tsr/1.0.0/";
+      return new CommonsArrayList <> (new FileSystemResource (sPrefix + "transaction-statistics-2.xml"),
+                                      new FileSystemResource (sPrefix + "transaction-statistics-minimal.xml"));
     }
     if (aVESID.equals (PeppolValidationReporting.VID_OPENPEPPOL_TSR_V101))
     {
-      final String sBase = sTestFiles + "reporting/tsr/1.0.1/";
-      return new CommonsArrayList <> (new FileSystemResource (sBase + "transaction-statistics-2.xml"),
-                                      new FileSystemResource (sBase + "transaction-statistics-minimal.xml"));
+      final String sPrefix = sPrefix0 + "reporting/tsr/1.0.1/";
+      return new CommonsArrayList <> (new FileSystemResource (sPrefix + "transaction-statistics-2.xml"),
+                                      new FileSystemResource (sPrefix + "transaction-statistics-minimal.xml"));
     }
 
     throw new IllegalArgumentException ("Invalid VESID: " + aVESID);
