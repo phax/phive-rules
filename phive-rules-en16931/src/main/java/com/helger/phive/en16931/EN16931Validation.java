@@ -169,108 +169,144 @@ public final class EN16931Validation
     return EN16931Validation.class.getClassLoader ();
   }
 
+  private static final String PREFIX = "/external/schematron/";
+
   // CII
   @Deprecated
-  public static final IReadableResource INVOICE_CII_100_XSLT = new ClassPathResource ("/schematron/1.0.0/cii/xslt/EN16931-CII-validation.xslt",
+  public static final IReadableResource INVOICE_CII_100_XSLT = new ClassPathResource (PREFIX +
+                                                                                      "1.0.0/cii/xslt/EN16931-CII-validation.xslt",
                                                                                       _getCL ());
   @Deprecated
-  public static final IReadableResource INVOICE_CII_110_XSLT = new ClassPathResource ("/schematron/1.1.0/cii/xslt/EN16931-CII-validation.xslt",
+  public static final IReadableResource INVOICE_CII_110_XSLT = new ClassPathResource (PREFIX +
+                                                                                      "1.1.0/cii/xslt/EN16931-CII-validation.xslt",
                                                                                       _getCL ());
   @Deprecated
-  public static final IReadableResource INVOICE_CII_120_XSLT = new ClassPathResource ("/schematron/1.2.0/cii/xslt/EN16931-CII-validation.xslt",
+  public static final IReadableResource INVOICE_CII_120_XSLT = new ClassPathResource (PREFIX +
+                                                                                      "1.2.0/cii/xslt/EN16931-CII-validation.xslt",
                                                                                       _getCL ());
   @Deprecated
-  public static final IReadableResource INVOICE_CII_121_XSLT = new ClassPathResource ("/schematron/1.2.1/cii/xslt/EN16931-CII-validation.xslt",
+  public static final IReadableResource INVOICE_CII_121_XSLT = new ClassPathResource (PREFIX +
+                                                                                      "1.2.1/cii/xslt/EN16931-CII-validation.xslt",
                                                                                       _getCL ());
   @Deprecated
-  public static final IReadableResource INVOICE_CII_123_XSLT = new ClassPathResource ("/schematron/1.2.3/cii/xslt/EN16931-CII-validation.xslt",
+  public static final IReadableResource INVOICE_CII_123_XSLT = new ClassPathResource (PREFIX +
+                                                                                      "1.2.3/cii/xslt/EN16931-CII-validation.xslt",
                                                                                       _getCL ());
   @Deprecated
-  public static final IReadableResource INVOICE_CII_130_XSLT = new ClassPathResource ("/schematron/1.3.0/cii/xslt/EN16931-CII-validation.xslt",
+  public static final IReadableResource INVOICE_CII_130_XSLT = new ClassPathResource (PREFIX +
+                                                                                      "1.3.0/cii/xslt/EN16931-CII-validation.xslt",
                                                                                       _getCL ());
   @Deprecated
-  public static final IReadableResource INVOICE_CII_131_XSLT = new ClassPathResource ("/schematron/1.3.1/cii/xslt/EN16931-CII-validation.xslt",
+  public static final IReadableResource INVOICE_CII_131_XSLT = new ClassPathResource (PREFIX +
+                                                                                      "1.3.1/cii/xslt/EN16931-CII-validation.xslt",
                                                                                       _getCL ());
   @Deprecated
-  public static final IReadableResource INVOICE_CII_132_XSLT = new ClassPathResource ("/schematron/1.3.2/cii/xslt/EN16931-CII-validation.xslt",
+  public static final IReadableResource INVOICE_CII_132_XSLT = new ClassPathResource (PREFIX +
+                                                                                      "1.3.2/cii/xslt/EN16931-CII-validation.xslt",
                                                                                       _getCL ());
   @Deprecated
-  public static final IReadableResource INVOICE_CII_133_XSLT = new ClassPathResource ("/schematron/1.3.3/cii/xslt/EN16931-CII-validation.xslt",
+  public static final IReadableResource INVOICE_CII_133_XSLT = new ClassPathResource (PREFIX +
+                                                                                      "1.3.3/cii/xslt/EN16931-CII-validation.xslt",
                                                                                       _getCL ());
   @Deprecated
-  public static final IReadableResource INVOICE_CII_134_XSLT = new ClassPathResource ("/schematron/1.3.4/cii/xslt/EN16931-CII-validation.xslt",
+  public static final IReadableResource INVOICE_CII_134_XSLT = new ClassPathResource (PREFIX +
+                                                                                      "1.3.4/cii/xslt/EN16931-CII-validation.xslt",
                                                                                       _getCL ());
   @Deprecated
-  public static final IReadableResource INVOICE_CII_135_XSLT = new ClassPathResource ("/schematron/1.3.5/cii/EN16931-CII-validation.xslt",
+  public static final IReadableResource INVOICE_CII_135_XSLT = new ClassPathResource (PREFIX +
+                                                                                      "1.3.5/cii/EN16931-CII-validation.xslt",
                                                                                       _getCL ());
   @Deprecated
-  public static final IReadableResource INVOICE_CII_136_XSLT = new ClassPathResource ("/schematron/1.3.6/cii/EN16931-CII-validation.xslt",
+  public static final IReadableResource INVOICE_CII_136_XSLT = new ClassPathResource (PREFIX +
+                                                                                      "1.3.6/cii/EN16931-CII-validation.xslt",
                                                                                       _getCL ());
   // Specific bugfix version for XRechnung 2.1.1 only
   @Deprecated
-  public static final IReadableResource INVOICE_CII_136A_XSLT = new ClassPathResource ("/schematron/1.3.6a/cii/EN16931-CII-validation.xslt",
+  public static final IReadableResource INVOICE_CII_136A_XSLT = new ClassPathResource (PREFIX +
+                                                                                       "1.3.6a/cii/EN16931-CII-validation.xslt",
                                                                                        _getCL ());
   @Deprecated
-  public static final IReadableResource INVOICE_CII_137_XSLT = new ClassPathResource ("/schematron/1.3.7/cii/EN16931-CII-validation.xslt",
+  public static final IReadableResource INVOICE_CII_137_XSLT = new ClassPathResource (PREFIX +
+                                                                                      "1.3.7/cii/EN16931-CII-validation.xslt",
                                                                                       _getCL ());
   @Deprecated
-  public static final IReadableResource INVOICE_CII_138_XSLT = new ClassPathResource ("/schematron/1.3.8/cii/EN16931-CII-validation.xslt",
+  public static final IReadableResource INVOICE_CII_138_XSLT = new ClassPathResource (PREFIX +
+                                                                                      "1.3.8/cii/EN16931-CII-validation.xslt",
                                                                                       _getCL ());
-  public static final IReadableResource INVOICE_CII_139_XSLT = new ClassPathResource ("/schematron/1.3.9/cii/EN16931-CII-validation.xslt",
+  public static final IReadableResource INVOICE_CII_139_XSLT = new ClassPathResource (PREFIX +
+                                                                                      "1.3.9/cii/EN16931-CII-validation.xslt",
                                                                                       _getCL ());
-  public static final IReadableResource INVOICE_CII_1310_XSLT = new ClassPathResource ("/schematron/1.3.10/cii/EN16931-CII-validation.xslt",
+  public static final IReadableResource INVOICE_CII_1310_XSLT = new ClassPathResource (PREFIX +
+                                                                                       "1.3.10/cii/EN16931-CII-validation.xslt",
                                                                                        _getCL ());
 
   // UBL
   @Deprecated
-  public static final IReadableResource INVOICE_UBL_100_XSLT = new ClassPathResource ("/schematron/1.0.0/ubl/xslt/EN16931-UBL-model.xslt",
+  public static final IReadableResource INVOICE_UBL_100_XSLT = new ClassPathResource (PREFIX +
+                                                                                      "1.0.0/ubl/xslt/EN16931-UBL-model.xslt",
                                                                                       _getCL ());
   @Deprecated
-  public static final IReadableResource INVOICE_UBL_110_XSLT = new ClassPathResource ("/schematron/1.1.0/ubl/xslt/EN16931-UBL-model.xslt",
+  public static final IReadableResource INVOICE_UBL_110_XSLT = new ClassPathResource (PREFIX +
+                                                                                      "1.1.0/ubl/xslt/EN16931-UBL-model.xslt",
                                                                                       _getCL ());
   @Deprecated
-  public static final IReadableResource INVOICE_UBL_120_XSLT = new ClassPathResource ("/schematron/1.2.0/ubl/xslt/EN16931-UBL-validation.xslt",
+  public static final IReadableResource INVOICE_UBL_120_XSLT = new ClassPathResource (PREFIX +
+                                                                                      "1.2.0/ubl/xslt/EN16931-UBL-validation.xslt",
                                                                                       _getCL ());
   @Deprecated
-  public static final IReadableResource INVOICE_UBL_121_XSLT = new ClassPathResource ("/schematron/1.2.1/ubl/xslt/EN16931-UBL-validation.xslt",
+  public static final IReadableResource INVOICE_UBL_121_XSLT = new ClassPathResource (PREFIX +
+                                                                                      "1.2.1/ubl/xslt/EN16931-UBL-validation.xslt",
                                                                                       _getCL ());
   @Deprecated
-  public static final IReadableResource INVOICE_UBL_123_XSLT = new ClassPathResource ("/schematron/1.2.3/ubl/xslt/EN16931-UBL-validation.xslt",
+  public static final IReadableResource INVOICE_UBL_123_XSLT = new ClassPathResource (PREFIX +
+                                                                                      "1.2.3/ubl/xslt/EN16931-UBL-validation.xslt",
                                                                                       _getCL ());
   @Deprecated
-  public static final IReadableResource INVOICE_UBL_130_XSLT = new ClassPathResource ("/schematron/1.3.0/ubl/xslt/EN16931-UBL-validation.xslt",
+  public static final IReadableResource INVOICE_UBL_130_XSLT = new ClassPathResource (PREFIX +
+                                                                                      "1.3.0/ubl/xslt/EN16931-UBL-validation.xslt",
                                                                                       _getCL ());
   @Deprecated
-  public static final IReadableResource INVOICE_UBL_131_XSLT = new ClassPathResource ("/schematron/1.3.1/ubl/xslt/EN16931-UBL-validation.xslt",
+  public static final IReadableResource INVOICE_UBL_131_XSLT = new ClassPathResource (PREFIX +
+                                                                                      "1.3.1/ubl/xslt/EN16931-UBL-validation.xslt",
                                                                                       _getCL ());
   @Deprecated
-  public static final IReadableResource INVOICE_UBL_132_XSLT = new ClassPathResource ("/schematron/1.3.2/ubl/xslt/EN16931-UBL-validation.xslt",
+  public static final IReadableResource INVOICE_UBL_132_XSLT = new ClassPathResource (PREFIX +
+                                                                                      "1.3.2/ubl/xslt/EN16931-UBL-validation.xslt",
                                                                                       _getCL ());
   @Deprecated
-  public static final IReadableResource INVOICE_UBL_133_XSLT = new ClassPathResource ("/schematron/1.3.3/ubl/xslt/EN16931-UBL-validation.xslt",
+  public static final IReadableResource INVOICE_UBL_133_XSLT = new ClassPathResource (PREFIX +
+                                                                                      "1.3.3/ubl/xslt/EN16931-UBL-validation.xslt",
                                                                                       _getCL ());
   @Deprecated
-  public static final IReadableResource INVOICE_UBL_134_XSLT = new ClassPathResource ("/schematron/1.3.4/ubl/xslt/EN16931-UBL-validation.xslt",
+  public static final IReadableResource INVOICE_UBL_134_XSLT = new ClassPathResource (PREFIX +
+                                                                                      "1.3.4/ubl/xslt/EN16931-UBL-validation.xslt",
                                                                                       _getCL ());
   @Deprecated
-  public static final IReadableResource INVOICE_UBL_135_XSLT = new ClassPathResource ("/schematron/1.3.5/ubl/EN16931-UBL-validation.xslt",
+  public static final IReadableResource INVOICE_UBL_135_XSLT = new ClassPathResource (PREFIX +
+                                                                                      "1.3.5/ubl/EN16931-UBL-validation.xslt",
                                                                                       _getCL ());
   @Deprecated
-  public static final IReadableResource INVOICE_UBL_136_XSLT = new ClassPathResource ("/schematron/1.3.6/ubl/EN16931-UBL-validation.xslt",
+  public static final IReadableResource INVOICE_UBL_136_XSLT = new ClassPathResource (PREFIX +
+                                                                                      "1.3.6/ubl/EN16931-UBL-validation.xslt",
                                                                                       _getCL ());
   // Specific bugfix version for XRechnung 2.1.1 only
   @Deprecated
-  public static final IReadableResource INVOICE_UBL_136A_XSLT = new ClassPathResource ("/schematron/1.3.6a/ubl/EN16931-UBL-validation.xslt",
+  public static final IReadableResource INVOICE_UBL_136A_XSLT = new ClassPathResource (PREFIX +
+                                                                                       "1.3.6a/ubl/EN16931-UBL-validation.xslt",
                                                                                        _getCL ());
   @Deprecated
-  public static final IReadableResource INVOICE_UBL_137_XSLT = new ClassPathResource ("/schematron/1.3.7/ubl/EN16931-UBL-validation.xslt",
+  public static final IReadableResource INVOICE_UBL_137_XSLT = new ClassPathResource (PREFIX +
+                                                                                      "1.3.7/ubl/EN16931-UBL-validation.xslt",
                                                                                       _getCL ());
   @Deprecated
-  public static final IReadableResource INVOICE_UBL_138_XSLT = new ClassPathResource ("/schematron/1.3.8/ubl/EN16931-UBL-validation.xslt",
+  public static final IReadableResource INVOICE_UBL_138_XSLT = new ClassPathResource (PREFIX +
+                                                                                      "1.3.8/ubl/EN16931-UBL-validation.xslt",
                                                                                       _getCL ());
-  public static final IReadableResource INVOICE_UBL_139_XSLT = new ClassPathResource ("/schematron/1.3.9/ubl/EN16931-UBL-validation.xslt",
+  public static final IReadableResource INVOICE_UBL_139_XSLT = new ClassPathResource (PREFIX +
+                                                                                      "1.3.9/ubl/EN16931-UBL-validation.xslt",
                                                                                       _getCL ());
-  public static final IReadableResource INVOICE_UBL_1310_XSLT = new ClassPathResource ("/schematron/1.3.10/ubl/EN16931-UBL-validation.xslt",
+  public static final IReadableResource INVOICE_UBL_1310_XSLT = new ClassPathResource (PREFIX +
+                                                                                       "1.3.10/ubl/EN16931-UBL-validation.xslt",
                                                                                        _getCL ());
 
   private EN16931Validation ()

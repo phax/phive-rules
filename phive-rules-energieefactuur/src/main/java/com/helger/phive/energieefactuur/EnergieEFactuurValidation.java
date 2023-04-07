@@ -72,15 +72,15 @@ public final class EnergieEFactuurValidation
     return EnergieEFactuurValidation.class.getClassLoader ();
   }
 
-  public static final IReadableResource SEEF_EXT_XSD_1_0_0 = new ClassPathResource ("/schemas/energieefactuur/SEeF_UBLExtension_v1.0.0.xsd",
+  public static final IReadableResource SEEF_EXT_XSD_1_0_0 = new ClassPathResource ("/external/schemas/energieefactuur/SEeF_UBLExtension_v1.0.0.xsd",
                                                                                     _getCL ());
-  public static final IReadableResource SEEF_EXT_XSD_1_0_1 = new ClassPathResource ("/schemas/energieefactuur/SEeF_UBLExtension_v1.0.1.xsd",
+  public static final IReadableResource SEEF_EXT_XSD_1_0_1 = new ClassPathResource ("/external/schemas/energieefactuur/SEeF_UBLExtension_v1.0.1.xsd",
                                                                                     _getCL ());
-  public static final IReadableResource SEEF_EXT_XSD_2_0_0 = new ClassPathResource ("/schemas/energieefactuur/SEeF_UBLExtension_v2.0.0.xsd",
+  public static final IReadableResource SEEF_EXT_XSD_2_0_0 = new ClassPathResource ("/external/schemas/energieefactuur/SEeF_UBLExtension_v2.0.0.xsd",
                                                                                     _getCL ());
-  public static final IReadableResource SEEF_EXT_XSD_3_0_0 = new ClassPathResource ("/schemas/energieefactuur/SEeF_UBLExtension_v3.0.0.xsd",
+  public static final IReadableResource SEEF_EXT_XSD_3_0_0 = new ClassPathResource ("/external/schemas/energieefactuur/SEeF_UBLExtension_v3.0.0.xsd",
                                                                                     _getCL ());
-  public static final IReadableResource SEEF_EXT_XSD_3_1_0 = new ClassPathResource ("/schemas/energieefactuur/SEeF_UBLExtension_v3.1.0.xsd",
+  public static final IReadableResource SEEF_EXT_XSD_3_1_0 = new ClassPathResource ("/external/schemas/energieefactuur/SEeF_UBLExtension_v3.1.0.xsd",
                                                                                     _getCL ());
 
   private EnergieEFactuurValidation ()

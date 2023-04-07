@@ -76,9 +76,13 @@ public final class ValidationExecutionManagerFuncTest
 
       // Read as desired type
       final IValidationSourceXML aSource = ValidationSourceXML.create (aTestFile.getResource ());
-      final ValidationResultList aErrors = ValidationExecutionManager.executeValidation (aExecutors, aSource, Locale.US);
+      final ValidationResultList aErrors = ValidationExecutionManager.executeValidation (aExecutors,
+                                                                                         aSource,
+                                                                                         Locale.US);
       if (aTestFile.isGoodCase ())
-        assertTrue (aErrors.getAllCount (IError::isError) + " error(s):\n" + StringHelper.getImploded ('\n', aErrors.getAllErrors ()),
+        assertTrue (aErrors.getAllCount (IError::isError) +
+                    " error(s):\n" +
+                    StringHelper.getImploded ('\n', aErrors.getAllErrors ()),
                     aErrors.containsNoError ());
       else
         assertTrue (aErrors.containsAtLeastOneError ());
@@ -88,7 +92,7 @@ public final class ValidationExecutionManagerFuncTest
   @Test
   public void testXPath_BR_S_08 () throws Exception
   {
-    final Document aDoc = DOMReader.readXMLDOM (new FileSystemResource ("src/test/resources/test-files/1.0.0/cii/CII_business_example_02.xml"));
+    final Document aDoc = DOMReader.readXMLDOM (new FileSystemResource ("src/test/resources/external/test-files/1.0.0/cii/CII_business_example_02.xml"));
     assertNotNull (aDoc);
     assertNotNull (aDoc.getDocumentElement ());
 
@@ -132,7 +136,8 @@ public final class ValidationExecutionManagerFuncTest
         System.out.println (aXP.evaluate (sSum1, aCurMatch, XPathConstants.NUMBER));
         System.out.println (aXP.evaluate (sSum2, aCurMatch, XPathConstants.NUMBER));
         System.out.println (aXP.evaluate (sSum3, aCurMatch, XPathConstants.NUMBER));
-        System.out.println ("SUM: " + aXP.evaluate (sSum1 + " +  " + sSum2 + " - " + sSum3, aCurMatch, XPathConstants.NUMBER));
+        System.out.println ("SUM: " +
+                            aXP.evaluate (sSum1 + " +  " + sSum2 + " - " + sSum3, aCurMatch, XPathConstants.NUMBER));
         System.out.println ("Equals: " +
                             aXP.evaluate ("../ram:BasisAmount = " + sSum1 + " +  " + sSum2 + " - " + sSum3,
                                           aCurMatch,
@@ -148,7 +153,7 @@ public final class ValidationExecutionManagerFuncTest
   @Test
   public void testXPath_BR_O_08 () throws Exception
   {
-    final Document aDoc = DOMReader.readXMLDOM (new FileSystemResource ("src/test/resources/test-files/1.0.0/cii/CII_example7.xml"));
+    final Document aDoc = DOMReader.readXMLDOM (new FileSystemResource ("src/test/resources/external/test-files/1.0.0/cii/CII_example7.xml"));
     assertNotNull (aDoc);
     assertNotNull (aDoc.getDocumentElement ());
 
@@ -166,7 +171,14 @@ public final class ValidationExecutionManagerFuncTest
     final String sSum1 = "(round(sum(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeSettlement[ram:ApplicableTradeTax/ram:CategoryCode = 'O']/ram:SpecifiedTradeSettlementLineMonetarySummation/ram:LineTotalAmount)*10*10)div 100) ";
     final String sSum2 = "(round(sum(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeAllowanceCharge[ram:ChargeIndicator/udt:Indicator='true' and ram:CategoryTradeTax/ram:CategoryCode='O']/ram:ActualAmount)*10*10)div 100)";
     final String sSum3 = "(round(sum(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeAllowanceCharge[ram:ChargeIndicator/udt:Indicator='false' and ram:CategoryTradeTax/ram:CategoryCode='O']/ram:ActualAmount)*10*10)div 100)";
-    final XPathExpression aXE2 = aXP.compile ("ram:BasisAmount = " + "   " + sSum1 + " +  " + sSum2 + " - " + sSum3 + "");
+    final XPathExpression aXE2 = aXP.compile ("ram:BasisAmount = " +
+                                              "   " +
+                                              sSum1 +
+                                              " +  " +
+                                              sSum2 +
+                                              " - " +
+                                              sSum3 +
+                                              "");
 
     for (int i = 0; i < aMatches.getLength (); ++i)
     {

@@ -69,10 +69,12 @@ public final class CTestFiles
   {
     ValueEnforcer.notNull (aVESID, "VESID");
 
+    final String sPrefix = "/external/test-files/";
+
     if (aVESID.equals (CIUS_PTValidation.VID_CIUS_PT_UBL_CREDITNOTE_200))
     {
       return new CommonsArrayList <> (new String [] { "CN_CIUS-PT_syntax-model - NC.xml", },
-                                      x -> new ClassPathResource ("/test-files/2.0.0/" + x));
+                                      x -> new ClassPathResource (sPrefix + "2.0.0/" + x));
     }
     if (aVESID.equals (CIUS_PTValidation.VID_CIUS_PT_UBL_INVOICE_200))
     {
@@ -85,12 +87,12 @@ public final class CTestFiles
                                                       "I_CIUS-PT_syntax-model - F_h.xml",
                                                       "I_CIUS-PT_syntax-model - F.xml",
                                                       "I_CIUS-PT_syntax-model - ND.xml" },
-                                      x -> new ClassPathResource ("/test-files/2.0.0/" + x));
+                                      x -> new ClassPathResource (sPrefix + "2.0.0/" + x));
     }
     if (aVESID.equals (CIUS_PTValidation.VID_CIUS_PT_UBL_CREDITNOTE_211))
     {
       return new CommonsArrayList <> (new String [] { "CN_CIUS-PT_syntax-model - NC.xml", },
-                                      x -> new ClassPathResource ("/test-files/2.1.1/" + x));
+                                      x -> new ClassPathResource (sPrefix + "2.1.1/" + x));
     }
     if (aVESID.equals (CIUS_PTValidation.VID_CIUS_PT_UBL_INVOICE_211))
     {
@@ -103,7 +105,7 @@ public final class CTestFiles
                                                       "I_CIUS-PT_syntax-model - F_h.xml",
                                                       "I_CIUS-PT_syntax-model - F.xml",
                                                       "I_CIUS-PT_syntax-model - ND.xml" },
-                                      x -> new ClassPathResource ("/test-files/2.1.1/" + x));
+                                      x -> new ClassPathResource (sPrefix + "2.1.1/" + x));
     }
 
     throw new IllegalArgumentException ("Invalid VESID: " + aVESID);

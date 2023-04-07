@@ -109,7 +109,7 @@
             </goals>
             <phase>generate-sources</phase>
             <configuration>
-              <schematronDirectory>${basedir}/src/test/resources/rule-source/1.0.8/preprocessed</schematronDirectory>
+              <schematronDirectory>${basedir}/src/test/resources/external/rule-source/1.0.8/preprocessed</schematronDirectory>
               <xsltDirectory>${basedir}/src/main/resources/schematron/1.0.8</xsltDirectory>
               <schematronPattern>ROeFactura*.sch</schematronPattern>
             </configuration>

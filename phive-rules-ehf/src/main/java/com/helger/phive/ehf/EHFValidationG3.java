@@ -43,15 +43,25 @@ public final class EHFValidationG3
   private static final String GROUP_ID = "no.ehf.g3";
 
   // 2020-03-23
-  public static final VESID VID_EHF_ADVANCED_ORDER_CANCELLATION_300 = new VESID (GROUP_ID, "advanced-order-cancellation", "3.0.0");
+  public static final VESID VID_EHF_ADVANCED_ORDER_CANCELLATION_300 = new VESID (GROUP_ID,
+                                                                                 "advanced-order-cancellation",
+                                                                                 "3.0.0");
   public static final VESID VID_EHF_ADVANCED_ORDER_CHANGE_300 = new VESID (GROUP_ID, "advanced-order-change", "3.0.0");
-  public static final VESID VID_EHF_ADVANCED_ORDER_INITIATION_300 = new VESID (GROUP_ID, "advanced-order-initiation", "3.0.0");
-  public static final VESID VID_EHF_ADVANCED_ORDER_RESPONSE_300 = new VESID (GROUP_ID, "advanced-order-response", "3.0.0");
+  public static final VESID VID_EHF_ADVANCED_ORDER_INITIATION_300 = new VESID (GROUP_ID,
+                                                                               "advanced-order-initiation",
+                                                                               "3.0.0");
+  public static final VESID VID_EHF_ADVANCED_ORDER_RESPONSE_300 = new VESID (GROUP_ID,
+                                                                             "advanced-order-response",
+                                                                             "3.0.0");
   public static final VESID VID_EHF_CATALOGUE_300 = new VESID (GROUP_ID, "catalogue", "3.0.0");
   public static final VESID VID_EHF_CATALOGUE_RESPONSE_300 = new VESID (GROUP_ID, "catalogue-response", "3.0.0");
   public static final VESID VID_EHF_DESPATCH_ADVICE_300 = new VESID (GROUP_ID, "despatch-advice", "3.0.0");
-  public static final VESID VID_EHF_FORWARD_BILLING_INVOICE_300 = new VESID (GROUP_ID, "forward-billing-invoice", "3.0.1");
-  public static final VESID VID_EHF_FORWARD_BILLING_CREDIT_NOTE_300 = new VESID (GROUP_ID, "forward-billing-creditnote", "3.0.1");
+  public static final VESID VID_EHF_FORWARD_BILLING_INVOICE_300 = new VESID (GROUP_ID,
+                                                                             "forward-billing-invoice",
+                                                                             "3.0.1");
+  public static final VESID VID_EHF_FORWARD_BILLING_CREDIT_NOTE_300 = new VESID (GROUP_ID,
+                                                                                 "forward-billing-creditnote",
+                                                                                 "3.0.1");
   public static final VESID VID_EHF_ORDER_AGREEMENT_300 = new VESID (GROUP_ID, "order-agreement", "3.0.0");
   public static final VESID VID_EHF_ORDER_300 = new VESID (GROUP_ID, "order", "3.0.0");
   public static final VESID VID_EHF_ORDER_RESPONSE_300 = new VESID (GROUP_ID, "order-response", "3.0.0");
@@ -91,7 +101,7 @@ public final class EHFValidationG3
     final boolean bNotDeprecated = false;
 
     // 2020-03-23
-    final String sXSLT = "/schematron/2020-03/xslt/";
+    final String sXSLT = "/external/schematron/2020-03/xslt/";
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_EHF_ADVANCED_ORDER_CANCELLATION_300,
                                                                            "EHF Advanced Order Cancellation " +
                                                                                                                     VID_EHF_ADVANCED_ORDER_CANCELLATION_300.getVersion (),
@@ -125,7 +135,8 @@ public final class EHFValidationG3
                                                                                                                "advanced-ordering-3.0/EHF-P09-3.0-ORDER-RESPONSE.xslt",
                                                                                                                _getCL ()))));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_EHF_CATALOGUE_300,
-                                                                           "EHF Catalogue " + VID_EHF_CATALOGUE_300.getVersion (),
+                                                                           "EHF Catalogue " +
+                                                                                                  VID_EHF_CATALOGUE_300.getVersion (),
                                                                            bNotDeprecated,
                                                                            ValidationExecutorXSD.create (EUBL22DocumentType.CATALOGUE),
                                                                            _createXSLT (new ClassPathResource (sXSLT +
@@ -178,14 +189,16 @@ public final class EHFValidationG3
                                                                                                                "order-agreement-3.0/EHF-ORDER-AGREEMENT-3.0.xslt",
                                                                                                                _getCL ()))));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_EHF_ORDER_300,
-                                                                           "EHF Order " + VID_EHF_ORDER_300.getVersion (),
+                                                                           "EHF Order " +
+                                                                                              VID_EHF_ORDER_300.getVersion (),
                                                                            bNotDeprecated,
                                                                            ValidationExecutorXSD.create (EUBL22DocumentType.ORDER),
                                                                            _createXSLT (new ClassPathResource (sXSLT +
                                                                                                                "ordering-3.0/EHF-ORDER-3.0.xslt",
                                                                                                                _getCL ()))));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_EHF_ORDER_RESPONSE_300,
-                                                                           "EHF Order Response " + VID_EHF_ORDER_RESPONSE_300.getVersion (),
+                                                                           "EHF Order Response " +
+                                                                                                       VID_EHF_ORDER_RESPONSE_300.getVersion (),
                                                                            bNotDeprecated,
                                                                            ValidationExecutorXSD.create (EUBL22DocumentType.ORDER_RESPONSE),
                                                                            _createXSLT (new ClassPathResource (sXSLT +
@@ -199,14 +212,16 @@ public final class EHFValidationG3
                                                                            _createXSLT (new ClassPathResource (sXSLT +
                                                                                                                "payment-request-3.0/EHF-P07-3.0-PAYMENT-REQUEST-3.0.xslt"))));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_EHF_PUNCH_OUT_300,
-                                                                           "EHF Punch Out " + VID_EHF_PUNCH_OUT_300.getVersion (),
+                                                                           "EHF Punch Out " +
+                                                                                                  VID_EHF_PUNCH_OUT_300.getVersion (),
                                                                            bNotDeprecated,
                                                                            ValidationExecutorXSD.create (EUBL22DocumentType.CATALOGUE),
                                                                            _createXSLT (new ClassPathResource (sXSLT +
                                                                                                                "punch-out-3.0/EHF-PUNCH-OUT-3.0.xslt",
                                                                                                                _getCL ()))));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_EHF_REMINDER_300,
-                                                                           "EHF Reminder " + VID_EHF_REMINDER_300.getVersion (),
+                                                                           "EHF Reminder " +
+                                                                                                 VID_EHF_REMINDER_300.getVersion (),
                                                                            bNotDeprecated,
                                                                            ValidationExecutorXSD.create (EUBL22DocumentType.INVOICE),
                                                                            _createXSLT (new ClassPathResource (sXSLT +

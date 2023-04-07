@@ -60,9 +60,9 @@ public final class CIUS_PTValidation
   public static final VESID VID_CIUS_PT_UBL_CREDITNOTE_211 = new VESID (GROUP_ID, "ubl-creditnote", "2.1.1");
   public static final VESID VID_CIUS_PT_UBL_INVOICE_211 = new VESID (GROUP_ID, "ubl-invoice", "2.1.1");
 
-  private static final ClassPathResource RES_200 = new ClassPathResource ("/schematron/2.0.0/urn_feap.gov.pt_CIUS-PT_2.0.0.xslt",
+  private static final ClassPathResource RES_200 = new ClassPathResource ("/external/schematron/2.0.0/urn_feap.gov.pt_CIUS-PT_2.0.0.xslt",
                                                                           _getCL ());
-  private static final ClassPathResource RES_211 = new ClassPathResource ("/schematron/2.1.1/urn_feap.gov.pt_CIUS-PT_2.1.1.xslt",
+  private static final ClassPathResource RES_211 = new ClassPathResource ("/external/schematron/2.1.1/urn_feap.gov.pt_CIUS-PT_2.1.1.xslt",
                                                                           _getCL ());
 
   private CIUS_PTValidation ()

@@ -104,8 +104,8 @@
               <goal>convert</goal>
             </goals>
             <configuration>
-              <schematronDirectory>${basedir}/src/test/resources/rule-source/2.1.1</schematronDirectory>
-              <xsltDirectory>${basedir}/src/main/resources/schematron/2.1.1</xsltDirectory>
+              <schematronDirectory>${basedir}/src/test/resources/external/rule-source/2.1.1</schematronDirectory>
+              <xsltDirectory>${basedir}/src/main/resources/external/schematron/2.1.1</xsltDirectory>
               <schematronPattern>*.sch</schematronPattern>
             </configuration>
           </execution>

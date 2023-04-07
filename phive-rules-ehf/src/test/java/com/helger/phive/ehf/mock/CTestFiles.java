@@ -115,7 +115,7 @@ public final class CTestFiles
     ValueEnforcer.notNull (aVESID, "VESID");
 
     // 2018-11
-    String sPath = "/test-files/2018-11/examples/";
+    String sPath = "/external/test-files/2018-11/examples/";
     if (aVESID.equals (EHFValidationG2.VID_EHF_CATALOGUE_1_0_13))
     {
       return new CommonsArrayList <> (new ClassPathResource (sPath + "T19 Example file EHF Catalogue.xml"));
@@ -168,7 +168,7 @@ public final class CTestFiles
     }
 
     // 2019-06
-    sPath = "/test-files/2019-06/examples/";
+    sPath = "/external/test-files/2019-06/examples/";
     if (aVESID.equals (EHFValidationG2.VID_EHF_CATALOGUE_1_0_14))
     {
       return new CommonsArrayList <> (new ClassPathResource (sPath + "T19 Example file EHF Catalogue.xml"));
@@ -216,7 +216,7 @@ public final class CTestFiles
     }
 
     // 2019-12
-    sPath = "/test-files/2019-12/examples/";
+    sPath = "/external/test-files/2019-12/examples/";
     if (aVESID.equals (EHFValidationG2.VID_EHF_CATALOGUE_1_0_15))
     {
       return new CommonsArrayList <> (new ClassPathResource (sPath + "T19 Example file EHF Catalogue.xml"));
@@ -264,7 +264,7 @@ public final class CTestFiles
     }
 
     // 2020-03
-    sPath = "/test-files/2020-03/examples/";
+    sPath = "/external/test-files/2020-03/examples/";
     if (aVESID.equals (EHFValidationG3.VID_EHF_ADVANCED_ORDER_CANCELLATION_300))
     {
       return new CommonsArrayList <> ();
@@ -333,6 +333,7 @@ public final class CTestFiles
     {
       return new CommonsArrayList <> (new ClassPathResource (sPath + "reminder-3.0/Reminder-Example.xml"));
     }
+
     throw new IllegalArgumentException ("Invalid VESID: " + aVESID);
   }
 }

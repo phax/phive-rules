@@ -58,7 +58,7 @@ public final class CTestFiles
                                             CIUS_ROValidation.VID_CIUS_RO_UBL_INVOICE_104,
 
                                             CIUS_ROValidation.VID_CIUS_RO_UBL_CREDITNOTE_108,
-                                            CIUS_ROValidation.VID_CIUS_RO_UBL_INVOICE_108})
+                                            CIUS_ROValidation.VID_CIUS_RO_UBL_INVOICE_108 })
       for (final IReadableResource aRes : getAllMatchingTestFiles (aESID))
       {
         assertTrue ("Not existing test file: " + aRes.getPath (), aRes.exists ());
@@ -73,9 +73,11 @@ public final class CTestFiles
   {
     ValueEnforcer.notNull (aVESID, "VESID");
 
+    final String sPrefix = "/external/test-files/";
+
     if (aVESID.equals (CIUS_ROValidation.VID_CIUS_RO_UBL_CREDITNOTE_103))
     {
-      return new CommonsArrayList <> (new String [] {}, x -> new ClassPathResource ("/test-files/1.0.3/" + x));
+      return new CommonsArrayList <> (new String [] {}, x -> new ClassPathResource (sPrefix + "1.0.3/" + x));
     }
     if (aVESID.equals (CIUS_ROValidation.VID_CIUS_RO_UBL_INVOICE_103))
     {
@@ -91,11 +93,11 @@ public final class CTestFiles
                                                       "ubl_b2g_example8.xml",
                                                       "ubl_b2g_example9.xml",
                                                       "ubl_b2g_example10.xml" },
-                                      x -> new ClassPathResource ("/test-files/1.0.3/" + x));
+                                      x -> new ClassPathResource (sPrefix + "1.0.3/" + x));
     }
     if (aVESID.equals (CIUS_ROValidation.VID_CIUS_RO_UBL_CREDITNOTE_104))
     {
-      return new CommonsArrayList <> (new String [] {}, x -> new ClassPathResource ("/test-files/1.0.4/" + x));
+      return new CommonsArrayList <> (new String [] {}, x -> new ClassPathResource (sPrefix + "1.0.4/" + x));
     }
     if (aVESID.equals (CIUS_ROValidation.VID_CIUS_RO_UBL_INVOICE_104))
     {
@@ -111,11 +113,11 @@ public final class CTestFiles
                                                       "ubl_b2g_example8.xml",
                                                       "ubl_b2g_example9.xml",
                                                       "ubl_b2g_example10.xml" },
-                                      x -> new ClassPathResource ("/test-files/1.0.4/" + x));
+                                      x -> new ClassPathResource (sPrefix + "1.0.4/" + x));
     }
     if (aVESID.equals (CIUS_ROValidation.VID_CIUS_RO_UBL_CREDITNOTE_108))
     {
-      return new CommonsArrayList <> (new String [] {}, x -> new ClassPathResource ("/test-files/1.0.8/" + x));
+      return new CommonsArrayList <> (new String [] {}, x -> new ClassPathResource (sPrefix + "1.0.8/" + x));
     }
     if (aVESID.equals (CIUS_ROValidation.VID_CIUS_RO_UBL_INVOICE_108))
     {
@@ -131,7 +133,7 @@ public final class CTestFiles
                                                       "ubl_b2g_example8.xml",
                                                       "ubl_b2g_example9.xml",
                                                       "ubl_b2g_example10.xml" },
-                                      x -> new ClassPathResource ("/test-files/1.0.8/" + x));
+                                      x -> new ClassPathResource (sPrefix + "1.0.8/" + x));
     }
 
     throw new IllegalArgumentException ("Invalid VESID: " + aVESID);

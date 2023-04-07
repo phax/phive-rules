@@ -58,14 +58,14 @@ public final class CIUS_ROValidation
   public static final VESID VID_CIUS_RO_UBL_INVOICE_108 = new VESID (GROUP_ID, "ubl-invoice", "1.0.8");
 
   @Deprecated
-  private static final ClassPathResource RES_103 = new ClassPathResource ("/schematron/1.0.3/ROeFactura-UBL-validation-Invoice_v1.0.3.xslt",
+  private static final ClassPathResource RES_103 = new ClassPathResource ("/external/schematron/1.0.3/ROeFactura-UBL-validation-Invoice_v1.0.3.xslt",
                                                                           _getCL ());
 
   @Deprecated
-  private static final ClassPathResource RES_104 = new ClassPathResource ("/schematron/1.0.4/ROeFactura-UBL-validation-Invoice_v1.0.4.xslt",
+  private static final ClassPathResource RES_104 = new ClassPathResource ("/external/schematron/1.0.4/ROeFactura-UBL-validation-Invoice_v1.0.4.xslt",
                                                                           _getCL ());
 
-  private static final ClassPathResource RES_108 = new ClassPathResource ("/schematron/1.0.8/ROeFactura-UBL-validation-Invoice_v1.0.8.xslt",
+  private static final ClassPathResource RES_108 = new ClassPathResource ("/external/schematron/1.0.8/ROeFactura-UBL-validation-Invoice_v1.0.8.xslt",
                                                                           _getCL ());
 
   private CIUS_ROValidation ()
