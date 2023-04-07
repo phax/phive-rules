@@ -68,19 +68,21 @@ public final class CTestFiles
   {
     ValueEnforcer.notNull (aVESID, "VESID");
 
+    final String sPrefix = "/external/test-files/";
+
     if (aVESID.equals (FinvoiceValidation.VID_FINVOICE_13))
     {
       return new CommonsArrayList <> (new String [] { "example.xml", "sample.xml" },
-                                      x -> new ClassPathResource ("/test-files/1.3/" + x));
+                                      x -> new ClassPathResource (sPrefix + "1.3/" + x));
     }
     if (aVESID.equals (FinvoiceValidation.VID_FINVOICE_20))
     {
-      return new CommonsArrayList <> (new String [] {}, x -> new ClassPathResource ("/test-files/2.01/" + x));
+      return new CommonsArrayList <> (new String [] {}, x -> new ClassPathResource (sPrefix + "2.01/" + x));
     }
     if (aVESID.equals (FinvoiceValidation.VID_FINVOICE_201))
     {
       return new CommonsArrayList <> (new String [] { "finvoice_201_example.xml", "Finvoice 2.01 example.xml" },
-                                      x -> new ClassPathResource ("/test-files/2.01/" + x));
+                                      x -> new ClassPathResource (sPrefix + "2.01/" + x));
     }
     if (aVESID.equals (FinvoiceValidation.VID_FINVOICE_30))
     {
@@ -92,7 +94,7 @@ public final class CTestFiles
                                                       "Verkkoyhtiön_läpilaskutuksen_erillislaskuesimerkki_20190405.xml",
                                                       "Verkkoyhtiö_yrityslaskuesimerkki_20190405.xml",
                                                       "Verkkoyhtiö_yrityslaskuesimerkki_siirtyvä_veloitus_20190405.xml" },
-                                      x -> new ClassPathResource ("/test-files/3.0/" + x));
+                                      x -> new ClassPathResource (sPrefix + "3.0/" + x));
     }
 
     throw new IllegalArgumentException ("Invalid VESID: " + aVESID);
