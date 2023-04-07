@@ -74,31 +74,31 @@ public final class FacturaeValidation
                                                                            "Facturae " + VID_FACTURAE_300.getVersion (),
                                                                            bDeprecated,
                                                                            ValidationExecutorXSD.create (CXMLDSig.getXSDResource (),
-                                                                                                         new ClassPathResource ("/schemas/Facturae30.xsd",
+                                                                                                         new ClassPathResource ("/external/schemas/Facturae30.xsd",
                                                                                                                                 _getCL ()))));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_FACTURAE_310,
                                                                            "Facturae " + VID_FACTURAE_310.getVersion (),
                                                                            bDeprecated,
                                                                            ValidationExecutorXSD.create (CXMLDSig.getXSDResource (),
-                                                                                                         new ClassPathResource ("/schemas/Facturaev31.xsd",
+                                                                                                         new ClassPathResource ("/external/schemas/Facturaev31.xsd",
                                                                                                                                 _getCL ()))));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_FACTURAE_320,
                                                                            "Facturae " + VID_FACTURAE_320.getVersion (),
                                                                            bNotDeprecated,
                                                                            ValidationExecutorXSD.create (CXMLDSig.getXSDResource (),
-                                                                                                         new ClassPathResource ("/schemas/Facturaev3_2.xsd",
+                                                                                                         new ClassPathResource ("/external/schemas/Facturaev3_2.xsd",
                                                                                                                                 _getCL ()))));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_FACTURAE_321,
                                                                            "Facturae " + VID_FACTURAE_321.getVersion (),
                                                                            bNotDeprecated,
                                                                            ValidationExecutorXSD.create (CXMLDSig.getXSDResource (),
-                                                                                                         new ClassPathResource ("/schemas/Facturaev3_2_1.xsd",
+                                                                                                         new ClassPathResource ("/external/schemas/Facturaev3_2_1.xsd",
                                                                                                                                 _getCL ()))));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_FACTURAE_322,
                                                                            "Facturae " + VID_FACTURAE_322.getVersion (),
                                                                            bNotDeprecated,
                                                                            ValidationExecutorXSD.create (CXMLDSig.getXSDResource (),
-                                                                                                         new ClassPathResource ("/schemas/Facturaev3_2_2.xsd",
+                                                                                                         new ClassPathResource ("/external/schemas/Facturaev3_2_2.xsd",
                                                                                                                                 _getCL ()))));
   }
 }

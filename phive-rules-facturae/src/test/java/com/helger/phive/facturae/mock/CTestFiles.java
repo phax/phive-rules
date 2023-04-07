@@ -70,29 +70,31 @@ public final class CTestFiles
   {
     ValueEnforcer.notNull (aVESID, "VESID");
 
+    final String sPrefix = "/external/test-files/";
+
     if (aVESID.equals (FacturaeValidation.VID_FACTURAE_300))
     {
       return new CommonsArrayList <> (new String [] { "factura2_ejemplo30.xml", "Invoice30.xml" },
-                                      x -> new ClassPathResource ("/test-files/3.0/" + x));
+                                      x -> new ClassPathResource (sPrefix + "3.0/" + x));
     }
     if (aVESID.equals (FacturaeValidation.VID_FACTURAE_310))
     {
       return new CommonsArrayList <> (new String [] { "factura_ejemplo_31.xml", "Invoice31.xsig" },
-                                      x -> new ClassPathResource ("/test-files/3.1/" + x));
+                                      x -> new ClassPathResource (sPrefix + "3.1/" + x));
     }
     if (aVESID.equals (FacturaeValidation.VID_FACTURAE_320))
     {
       return new CommonsArrayList <> (new String [] { "Invoice32.xsig" },
-                                      x -> new ClassPathResource ("/test-files/3.2/" + x));
+                                      x -> new ClassPathResource (sPrefix + "3.2/" + x));
     }
     if (aVESID.equals (FacturaeValidation.VID_FACTURAE_321))
     {
       return new CommonsArrayList <> (new String [] { "Invoice321.xsig" },
-                                      x -> new ClassPathResource ("/test-files/3.2.1/" + x));
+                                      x -> new ClassPathResource (sPrefix + "3.2.1/" + x));
     }
     if (aVESID.equals (FacturaeValidation.VID_FACTURAE_322))
     {
-      return new CommonsArrayList <> (new String [] {}, x -> new ClassPathResource ("/test-files/3.2.2/" + x));
+      return new CommonsArrayList <> (new String [] {}, x -> new ClassPathResource (sPrefix + "3.2.2/" + x));
     }
 
     throw new IllegalArgumentException ("Invalid VESID: " + aVESID);
