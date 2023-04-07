@@ -50,7 +50,8 @@ public final class CTestFiles
   {
     final ICommonsList <MockFile> ret = new CommonsArrayList <> ();
     for (final VESID aVESID : new VESID [] { FatturaPAValidation.VID_FATTURAPA_120,
-                                             FatturaPAValidation.VID_FATTURAPA_121 })
+                                             FatturaPAValidation.VID_FATTURAPA_121,
+                                             FatturaPAValidation.VID_FATTURAPA_122 })
       for (final IReadableResource aRes : getAllMatchingTestFiles (aVESID))
       {
         assertTrue ("Not existing test file: " + aRes.getPath (), aRes.exists ());
@@ -69,6 +70,8 @@ public final class CTestFiles
       return FatturaPATestFiles.V120.getTestResources ();
     if (aVESID.equals (FatturaPAValidation.VID_FATTURAPA_121))
       return FatturaPATestFiles.V121.getTestResources ();
+    if (aVESID.equals (FatturaPAValidation.VID_FATTURAPA_122))
+      return FatturaPATestFiles.V122.getTestResources ();
 
     throw new IllegalArgumentException ("Invalid VESID: " + aVESID);
   }

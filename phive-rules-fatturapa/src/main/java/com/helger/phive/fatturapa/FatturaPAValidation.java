@@ -39,6 +39,7 @@ public final class FatturaPAValidation
 
   public static final VESID VID_FATTURAPA_120 = new VESID (GROUP_ID, "invoice", "1.2.0");
   public static final VESID VID_FATTURAPA_121 = new VESID (GROUP_ID, "invoice", "1.2.1");
+  public static final VESID VID_FATTURAPA_122 = new VESID (GROUP_ID, "invoice", "1.2.2");
 
   private FatturaPAValidation ()
   {}
@@ -54,16 +55,24 @@ public final class FatturaPAValidation
   {
     ValueEnforcer.notNull (aRegistry, "Registry");
 
+    final boolean bDeprecated = true;
     final boolean bNotDeprecated = false;
 
     // No Schematrons here
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_FATTURAPA_120,
-                                                                           "fatturaPA " + VID_FATTURAPA_120.getVersion (),
-                                                                           bNotDeprecated,
+                                                                           "fatturaPA " +
+                                                                                              VID_FATTURAPA_120.getVersion (),
+                                                                           bDeprecated,
                                                                            ValidationExecutorXSD.create (EFatturaPADocumentType.FATTURAPA_120)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_FATTURAPA_121,
-                                                                           "fatturaPA " + VID_FATTURAPA_121.getVersion (),
+                                                                           "fatturaPA " +
+                                                                                              VID_FATTURAPA_121.getVersion (),
                                                                            bNotDeprecated,
                                                                            ValidationExecutorXSD.create (EFatturaPADocumentType.FATTURAPA_121)));
+    aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_FATTURAPA_122,
+                                                                           "fatturaPA " +
+                                                                                              VID_FATTURAPA_122.getVersion (),
+                                                                           bNotDeprecated,
+                                                                           ValidationExecutorXSD.create (EFatturaPADocumentType.FATTURAPA_122)));
   }
 }
