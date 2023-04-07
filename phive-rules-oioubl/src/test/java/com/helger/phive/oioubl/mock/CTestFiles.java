@@ -116,12 +116,13 @@ public final class CTestFiles
   {
     ValueEnforcer.notNull (aVESID, "VESID");
 
+    final String sPrefix0 = "/external/test-files/";
     final ICommonsList <IReadableResource> ret = new CommonsArrayList <> ();
 
     // Ancient 2.0.2
     if (aVESID.equals (OIOUBLValidation.VID_OIOUBL_APPLICATION_RESPONSE))
     {
-      final String sPrefix = "/test-files/2.0.2/";
+      final String sPrefix = sPrefix0 + "2.0.2/";
       for (final String s : new String [] { "ApplicationResponseStor_v2p2.xml",
                                             "BASPRO_03_01_06_ApplicationResponse_v2p2.xml",
                                             "CATEXE_01_01_00_ApplicationResponse_v2p2.xml",
@@ -135,7 +136,7 @@ public final class CTestFiles
     else
       if (aVESID.equals (OIOUBLValidation.VID_OIOUBL_CATALOGUE))
       {
-        final String sPrefix = "/test-files/2.0.2/";
+        final String sPrefix = sPrefix0 + "2.0.2/";
         for (final String s : new String [] { // "CATEXE_01_01_00_Catalogue_v2p2.xml",
                                               // "CATEXE_02_02_07_Catalogue_v2p2.xml",
                                               "CATEXE_05_05_00_Catalogue_A_v2p2.xml",
@@ -145,28 +146,28 @@ public final class CTestFiles
       else
         if (aVESID.equals (OIOUBLValidation.VID_OIOUBL_CATALOGUE_DELETION))
         {
-          final String sPrefix = "/test-files/2.0.2/";
+          final String sPrefix = sPrefix0 + "2.0.2/";
           for (final String s : new String [] { "CATEXE_06_06_00_CatalogueDeletion_v2p2.xml" })
             ret.add (new ClassPathResource (sPrefix + s));
         }
         else
           if (aVESID.equals (OIOUBLValidation.VID_OIOUBL_CATALOGUE_ITEM_SPECIFICATION_UPDATE))
           {
-            final String sPrefix = "/test-files/2.0.2/";
+            final String sPrefix = sPrefix0 + "2.0.2/";
             for (final String s : new String [] { "CATEXE_03_03_00_CatalogueItemSpecificationUpdate_v2p2.xml" })
               ret.add (new ClassPathResource (sPrefix + s));
           }
           else
             if (aVESID.equals (OIOUBLValidation.VID_OIOUBL_CATALOGUE_PRICING_UPDATE))
             {
-              final String sPrefix = "/test-files/2.0.2/";
+              final String sPrefix = sPrefix0 + "2.0.2/";
               for (final String s : new String [] { "CATEXE_04_04_00_CataloguePricingUpdate_v2p2.xml" })
                 ret.add (new ClassPathResource (sPrefix + s));
             }
             else
               if (aVESID.equals (OIOUBLValidation.VID_OIOUBL_CATALOGUE_REQUEST))
               {
-                final String sPrefix = "/test-files/2.0.2/";
+                final String sPrefix = sPrefix0 + "2.0.2/";
                 for (final String s : new String [] { "CATEXE_01_01_00_CatalogueRequest_v2p2.xml",
                                                       "CATEXE_02_02_07_CatalogueRequest_v2p2.xml",
                                                       "CATEXE_03_03_00_CatalogueRequest_v2p2.xml",
@@ -176,7 +177,7 @@ public final class CTestFiles
               else
                 if (aVESID.equals (OIOUBLValidation.VID_OIOUBL_CREDIT_NOTE))
                 {
-                  final String sPrefix = "/test-files/2.0.2/";
+                  final String sPrefix = sPrefix0 + "2.0.2/";
                   for (final String s : new String [] { "BASPRO_03_01_06_CreditNote_v2p2.xml",
                       // "CreditNoteStor_v2p2.xml"
                   })
@@ -185,7 +186,7 @@ public final class CTestFiles
                 else
                   if (aVESID.equals (OIOUBLValidation.VID_OIOUBL_INVOICE))
                   {
-                    final String sPrefix = "/test-files/2.0.2/";
+                    final String sPrefix = sPrefix0 + "2.0.2/";
                     for (final String s : new String [] { "ADVORD_01_01_00_Invoice_v2p2.xml",
                                                           "ADVORD_02_02_00_Invoice_v2p2.xml",
                                                           "ADVORD_03_03_00_Invoice_v2p2.xml",
@@ -212,7 +213,7 @@ public final class CTestFiles
                   else
                     if (aVESID.equals (OIOUBLValidation.VID_OIOUBL_ORDER))
                     {
-                      final String sPrefix = "/test-files/2.0.2/";
+                      final String sPrefix = sPrefix0 + "2.0.2/";
                       for (final String s : new String [] { "ADVORD_03_03_00_Order_v2p2.xml",
                                                             "ADVORD_04_04_00_Order_v2p2.xml",
                                                             "ADVORD_05_04_01_Order_v2p2.xml",
@@ -235,7 +236,7 @@ public final class CTestFiles
                     else
                       if (aVESID.equals (OIOUBLValidation.VID_OIOUBL_ORDER_CANCELLATION))
                       {
-                        final String sPrefix = "/test-files/2.0.2/";
+                        final String sPrefix = sPrefix0 + "2.0.2/";
                         for (final String s : new String [] { "ADVORD_05_04_01_OrderCancellation_v2p2.xml",
                                                               "OrderCancellationStor_v2p2.xml" })
                           ret.add (new ClassPathResource (sPrefix + s));
@@ -243,7 +244,7 @@ public final class CTestFiles
                       else
                         if (aVESID.equals (OIOUBLValidation.VID_OIOUBL_ORDER_CHANGE))
                         {
-                          final String sPrefix = "/test-files/2.0.2/";
+                          final String sPrefix = sPrefix0 + "2.0.2/";
                           for (final String s : new String [] { "ADVORD_01_01_00_OrderChange_v2p2.xml",
                                                                 "ADVORD_02_02_00_OrderChange_v2p2.xml",
                                                                 "ADVORD_04_04_00_OrderChange_v2p2.xml",
@@ -253,7 +254,7 @@ public final class CTestFiles
                         else
                           if (aVESID.equals (OIOUBLValidation.VID_OIOUBL_ORDER_RESPONSE))
                           {
-                            final String sPrefix = "/test-files/2.0.2/";
+                            final String sPrefix = sPrefix0 + "2.0.2/";
                             for (final String s : new String [] { "ADVORD_01_01_00_OrderResponse_v2p2.xml",
                                                                   "ADVORD_02_02_00_OrderResponse_v2p2.xml",
                                                                   "ADVORD_04_04_00_OrderResponse_v2p2.xml",
@@ -265,7 +266,7 @@ public final class CTestFiles
                           else
                             if (aVESID.equals (OIOUBLValidation.VID_OIOUBL_ORDER_RESPONSE_SIMPLE))
                             {
-                              final String sPrefix = "/test-files/2.0.2/";
+                              final String sPrefix = sPrefix0 + "2.0.2/";
                               for (final String s : new String [] { "ADVORD_02_02_00_OrderResponseSimple_v2p2.xml",
                                                                     "ADVORD_03_03_00_OrderResponseSimple_v2p2.xml",
                                                                     "ADVORD_06_05_00_OrderResponseSimple_v2p2.xml",
@@ -288,7 +289,7 @@ public final class CTestFiles
                             else
                               if (aVESID.equals (OIOUBLValidation.VID_OIOUBL_REMINDER))
                               {
-                                final String sPrefix = "/test-files/2.0.2/";
+                                final String sPrefix = sPrefix0 + "2.0.2/";
                                 for (final String s : new String [] { "BASPRO_04_01_08_Reminder_v2p2.xml",
                                                                       "COMPAY_03_03_00_Reminder_v2p2.xml",
                                     // "ReminderStor_v2p2.xml",
@@ -298,7 +299,7 @@ public final class CTestFiles
                               else
                                 if (aVESID.equals (OIOUBLValidation.VID_OIOUBL_STATEMENT))
                                 {
-                                  final String sPrefix = "/test-files/2.0.2/";
+                                  final String sPrefix = sPrefix0 + "2.0.2/";
                                   for (final String s : new String [] {
                                       // "StatementStor_v2p2.xml",
                                   })
@@ -310,56 +311,57 @@ public final class CTestFiles
     if (false)
       if (aVESID.equals (OIOUBLValidation.VID_OIOUBL_APPLICATION_RESPONSE_1_12_3))
       {
-        final String sPrefix = "/test-files/1.12.3/";
+        final String sPrefix = sPrefix0 + "1.12.3/";
         for (final String s : new String [] { "OIOUBL_ApplicationResponse_v2p2.xml" })
           ret.add (new ClassPathResource (sPrefix + s));
       }
       else
         if (aVESID.equals (OIOUBLValidation.VID_OIOUBL_CATALOGUE_1_12_3))
         {
-          final String sPrefix = "/test-files/1.12.3/";
+          final String sPrefix = sPrefix0 + "1.12.3/";
           for (final String s : new String [] { "OIOUBL_Catalogue_v2p2.xml" })
             ret.add (new ClassPathResource (sPrefix + s));
         }
         else
           if (aVESID.equals (OIOUBLValidation.VID_OIOUBL_CATALOGUE_DELETION_1_12_3))
           {
-            final String sPrefix = "/test-files/1.12.3/";
+            final String sPrefix = sPrefix0 + "1.12.3/";
             for (final String s : new String [] { "OIOUBL_CatalogueDeletion_v2p2.xml" })
               ret.add (new ClassPathResource (sPrefix + s));
           }
           else
             if (aVESID.equals (OIOUBLValidation.VID_OIOUBL_CATALOGUE_ITEM_SPECIFICATION_UPDATE_1_12_3))
             {
-              final String sPrefix = "/test-files/1.12.3/";
+              final String sPrefix = sPrefix0 + "1.12.3/";
               for (final String s : new String [] { "OIOUBL_CatalogueItemSpecificationUpdate_v2p2.xml" })
                 ret.add (new ClassPathResource (sPrefix + s));
             }
             else
               if (aVESID.equals (OIOUBLValidation.VID_OIOUBL_CATALOGUE_PRICING_UPDATE_1_12_3))
               {
-                final String sPrefix = "/test-files/1.12.3/";
+                final String sPrefix = sPrefix0 + "1.12.3/";
                 for (final String s : new String [] { "OIOUBL_CataloguePricingUpdate_v2p2.xml" })
                   ret.add (new ClassPathResource (sPrefix + s));
               }
               else
                 if (aVESID.equals (OIOUBLValidation.VID_OIOUBL_CATALOGUE_REQUEST_1_12_3))
                 {
-                  final String sPrefix = "/test-files/1.12.3/";
+                  final String sPrefix = sPrefix0 + "1.12.3/";
                   for (final String s : new String [] { "OIOUBL_CatalogueRequest_v2p2.xml" })
                     ret.add (new ClassPathResource (sPrefix + s));
                 }
                 else
                   if (aVESID.equals (OIOUBLValidation.VID_OIOUBL_CREDIT_NOTE_1_12_3))
                   {
-                    final String sPrefix = "/test-files/1.12.3/";
-                    for (final String s : new String [] { "OIOUBL_CreditNote_v2p2.xml", "OIOUBL_CreditNoteCertificate.xml" })
+                    final String sPrefix = sPrefix0 + "1.12.3/";
+                    for (final String s : new String [] { "OIOUBL_CreditNote_v2p2.xml",
+                                                          "OIOUBL_CreditNoteCertificate.xml" })
                       ret.add (new ClassPathResource (sPrefix + s));
                   }
                   else
                     if (aVESID.equals (OIOUBLValidation.VID_OIOUBL_INVOICE_1_12_3))
                     {
-                      final String sPrefix = "/test-files/1.12.3/";
+                      final String sPrefix = sPrefix0 + "1.12.3/";
                       for (final String s : new String [] { "OIOUBL_Invoice_UBLExtensions_v2p2.xml",
                                                             "OIOUBL_Invoice_v2p2.xml",
                                                             "OIOUBL_InvoiceCerticate.xml" })
@@ -368,63 +370,63 @@ public final class CTestFiles
                     else
                       if (aVESID.equals (OIOUBLValidation.VID_OIOUBL_ORDER_1_12_3))
                       {
-                        final String sPrefix = "/test-files/1.12.3/";
+                        final String sPrefix = sPrefix0 + "1.12.3/";
                         for (final String s : new String [] { "OIOUBL_Order_v2p2.xml" })
                           ret.add (new ClassPathResource (sPrefix + s));
                       }
                       else
                         if (aVESID.equals (OIOUBLValidation.VID_OIOUBL_ORDER_CANCELLATION_1_12_3))
                         {
-                          final String sPrefix = "/test-files/1.12.3/";
+                          final String sPrefix = sPrefix0 + "1.12.3/";
                           for (final String s : new String [] { "OIOUBL_OrderCancellation_v2p2.xml" })
                             ret.add (new ClassPathResource (sPrefix + s));
                         }
                         else
                           if (aVESID.equals (OIOUBLValidation.VID_OIOUBL_ORDER_CHANGE_1_12_3))
                           {
-                            final String sPrefix = "/test-files/1.12.3/";
+                            final String sPrefix = sPrefix0 + "1.12.3/";
                             for (final String s : new String [] { "OIOUBL_OrderChange_v2p2.xml" })
                               ret.add (new ClassPathResource (sPrefix + s));
                           }
                           else
                             if (aVESID.equals (OIOUBLValidation.VID_OIOUBL_ORDER_RESPONSE_1_12_3))
                             {
-                              final String sPrefix = "/test-files/1.12.3/";
+                              final String sPrefix = sPrefix0 + "1.12.3/";
                               for (final String s : new String [] { "OIOUBL_OrderResponse_v2p2.xml" })
                                 ret.add (new ClassPathResource (sPrefix + s));
                             }
                             else
                               if (aVESID.equals (OIOUBLValidation.VID_OIOUBL_ORDER_RESPONSE_SIMPLE_1_12_3))
                               {
-                                final String sPrefix = "/test-files/1.12.3/";
+                                final String sPrefix = sPrefix0 + "1.12.3/";
                                 for (final String s : new String [] { "OIOUBL_OrderResponseSimple_v2p2.xml" })
                                   ret.add (new ClassPathResource (sPrefix + s));
                               }
                               else
                                 if (aVESID.equals (OIOUBLValidation.VID_OIOUBL_REMINDER_1_12_3))
                                 {
-                                  final String sPrefix = "/test-files/1.12.3/";
+                                  final String sPrefix = sPrefix0 + "1.12.3/";
                                   for (final String s : new String [] { "OIOUBL_Reminder_v2p2.xml" })
                                     ret.add (new ClassPathResource (sPrefix + s));
                                 }
                                 else
                                   if (aVESID.equals (OIOUBLValidation.VID_OIOUBL_STATEMENT_1_12_3))
                                   {
-                                    final String sPrefix = "/test-files/1.12.3/";
+                                    final String sPrefix = sPrefix0 + "1.12.3/";
                                     for (final String s : new String [] { "OIOUBL_Statement_v2p2.xml" })
                                       ret.add (new ClassPathResource (sPrefix + s));
                                   }
                                   else
                                     if (aVESID.equals (OIOUBLValidation.VID_OIOUBL_UTILITY_STATEMENT_1_12_3))
                                     {
-                                      final String sPrefix = "/test-files/1.12.3/";
+                                      final String sPrefix = sPrefix0 + "1.12.3/";
                                       for (final String s : new String [] { "OIOUBL_UtilityStatement_v2p2.xml" })
                                         ret.add (new ClassPathResource (sPrefix + s));
                                     }
 
     // 1.13.0
     {
-      final String sPrefix = "/test-files/1.13.0/";
+      final String sPrefix = sPrefix0 + "1.13.0/";
       if (aVESID.equals (OIOUBLValidation.VID_OIOUBL_APPLICATION_RESPONSE_1_13_0))
       {
         for (final String s : new String [] { "OIOUBL_ApplicationResponse_v2p2.xml" })
@@ -472,7 +474,8 @@ public final class CTestFiles
                   else
                     if (aVESID.equals (OIOUBLValidation.VID_OIOUBL_INVOICE_1_13_0))
                     {
-                      for (final String s : new String [] { "OIOUBL_Invoice_UBLExtensions_v2p2.xml", "OIOUBL_Invoice_v2p2.xml",
+                      for (final String s : new String [] { "OIOUBL_Invoice_UBLExtensions_v2p2.xml",
+                                                            "OIOUBL_Invoice_v2p2.xml",
                           // broken
                           // "OIOUBL_InvoiceCerticate.xml"
                       })

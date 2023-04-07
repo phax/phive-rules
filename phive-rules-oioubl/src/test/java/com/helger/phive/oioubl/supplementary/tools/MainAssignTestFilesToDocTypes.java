@@ -49,7 +49,7 @@ public class MainAssignTestFilesToDocTypes
     if (false)
       aMap.put ("UtilityStatement", "UTILITY_STATEMENT");
 
-    for (final File f : new CommonsArrayList <> (new FileSystemRecursiveIterator (new File ("src/test/resources/test-files/2.0.2"))).getSortedInline (Comparator.comparing (File::getName)))
+    for (final File f : new CommonsArrayList <> (new FileSystemRecursiveIterator (new File ("src/test/resources/external/test-files/2.0.2"))).getSortedInline (Comparator.comparing (File::getName)))
     {
       if (false)
         System.out.println (f.getName ());

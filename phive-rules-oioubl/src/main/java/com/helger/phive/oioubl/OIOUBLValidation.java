@@ -63,7 +63,9 @@ public final class OIOUBLValidation
   public static final VESID VID_OIOUBL_CATALOGUE_ITEM_SPECIFICATION_UPDATE = new VESID (GROUPID,
                                                                                         "catalogue-item-specification-update",
                                                                                         VERSION_202);
-  public static final VESID VID_OIOUBL_CATALOGUE_PRICING_UPDATE = new VESID (GROUPID, "catalogue-pricing-update", VERSION_202);
+  public static final VESID VID_OIOUBL_CATALOGUE_PRICING_UPDATE = new VESID (GROUPID,
+                                                                             "catalogue-pricing-update",
+                                                                             VERSION_202);
   public static final VESID VID_OIOUBL_CATALOGUE_REQUEST = new VESID (GROUPID, "catalogue-request", VERSION_202);
   public static final VESID VID_OIOUBL_CREDIT_NOTE = new VESID (GROUPID, "credit-note", VERSION_202);
   public static final VESID VID_OIOUBL_INVOICE = new VESID (GROUPID, "invoice", VERSION_202);
@@ -71,51 +73,81 @@ public final class OIOUBLValidation
   public static final VESID VID_OIOUBL_ORDER_CANCELLATION = new VESID (GROUPID, "order-cancellation", VERSION_202);
   public static final VESID VID_OIOUBL_ORDER_CHANGE = new VESID (GROUPID, "order-change", VERSION_202);
   public static final VESID VID_OIOUBL_ORDER_RESPONSE = new VESID (GROUPID, "order-response", VERSION_202);
-  public static final VESID VID_OIOUBL_ORDER_RESPONSE_SIMPLE = new VESID (GROUPID, "order-response-simple", VERSION_202);
+  public static final VESID VID_OIOUBL_ORDER_RESPONSE_SIMPLE = new VESID (GROUPID,
+                                                                          "order-response-simple",
+                                                                          VERSION_202);
   public static final VESID VID_OIOUBL_REMINDER = new VESID (GROUPID, "reminder", VERSION_202);
   public static final VESID VID_OIOUBL_STATEMENT = new VESID (GROUPID, "statement", VERSION_202);
 
   // 1.12.3
   private static final String VERSION_1_12_3 = "1.12.3";
-  public static final VESID VID_OIOUBL_APPLICATION_RESPONSE_1_12_3 = new VESID (GROUPID, "application-response", VERSION_1_12_3);
+  public static final VESID VID_OIOUBL_APPLICATION_RESPONSE_1_12_3 = new VESID (GROUPID,
+                                                                                "application-response",
+                                                                                VERSION_1_12_3);
   public static final VESID VID_OIOUBL_CATALOGUE_1_12_3 = new VESID (GROUPID, "catalogue", VERSION_1_12_3);
-  public static final VESID VID_OIOUBL_CATALOGUE_DELETION_1_12_3 = new VESID (GROUPID, "catalogue-deletion", VERSION_1_12_3);
+  public static final VESID VID_OIOUBL_CATALOGUE_DELETION_1_12_3 = new VESID (GROUPID,
+                                                                              "catalogue-deletion",
+                                                                              VERSION_1_12_3);
   public static final VESID VID_OIOUBL_CATALOGUE_ITEM_SPECIFICATION_UPDATE_1_12_3 = new VESID (GROUPID,
                                                                                                "catalogue-item-specification-update",
                                                                                                VERSION_1_12_3);
-  public static final VESID VID_OIOUBL_CATALOGUE_PRICING_UPDATE_1_12_3 = new VESID (GROUPID, "catalogue-pricing-update", VERSION_1_12_3);
-  public static final VESID VID_OIOUBL_CATALOGUE_REQUEST_1_12_3 = new VESID (GROUPID, "catalogue-request", VERSION_1_12_3);
+  public static final VESID VID_OIOUBL_CATALOGUE_PRICING_UPDATE_1_12_3 = new VESID (GROUPID,
+                                                                                    "catalogue-pricing-update",
+                                                                                    VERSION_1_12_3);
+  public static final VESID VID_OIOUBL_CATALOGUE_REQUEST_1_12_3 = new VESID (GROUPID,
+                                                                             "catalogue-request",
+                                                                             VERSION_1_12_3);
   public static final VESID VID_OIOUBL_CREDIT_NOTE_1_12_3 = new VESID (GROUPID, "credit-note", VERSION_1_12_3);
   public static final VESID VID_OIOUBL_INVOICE_1_12_3 = new VESID (GROUPID, "invoice", VERSION_1_12_3);
   public static final VESID VID_OIOUBL_ORDER_1_12_3 = new VESID (GROUPID, "order", VERSION_1_12_3);
-  public static final VESID VID_OIOUBL_ORDER_CANCELLATION_1_12_3 = new VESID (GROUPID, "order-cancellation", VERSION_1_12_3);
+  public static final VESID VID_OIOUBL_ORDER_CANCELLATION_1_12_3 = new VESID (GROUPID,
+                                                                              "order-cancellation",
+                                                                              VERSION_1_12_3);
   public static final VESID VID_OIOUBL_ORDER_CHANGE_1_12_3 = new VESID (GROUPID, "order-change", VERSION_1_12_3);
   public static final VESID VID_OIOUBL_ORDER_RESPONSE_1_12_3 = new VESID (GROUPID, "order-response", VERSION_1_12_3);
-  public static final VESID VID_OIOUBL_ORDER_RESPONSE_SIMPLE_1_12_3 = new VESID (GROUPID, "order-response-simple", VERSION_1_12_3);
+  public static final VESID VID_OIOUBL_ORDER_RESPONSE_SIMPLE_1_12_3 = new VESID (GROUPID,
+                                                                                 "order-response-simple",
+                                                                                 VERSION_1_12_3);
   public static final VESID VID_OIOUBL_REMINDER_1_12_3 = new VESID (GROUPID, "reminder", VERSION_1_12_3);
   public static final VESID VID_OIOUBL_STATEMENT_1_12_3 = new VESID (GROUPID, "statement", VERSION_1_12_3);
-  public static final VESID VID_OIOUBL_UTILITY_STATEMENT_1_12_3 = new VESID (GROUPID, "utility-statement", VERSION_1_12_3);
+  public static final VESID VID_OIOUBL_UTILITY_STATEMENT_1_12_3 = new VESID (GROUPID,
+                                                                             "utility-statement",
+                                                                             VERSION_1_12_3);
 
   // 1.13.0
   private static final String VERSION_1_13_0 = "1.13.0";
-  public static final VESID VID_OIOUBL_APPLICATION_RESPONSE_1_13_0 = new VESID (GROUPID, "application-response", VERSION_1_13_0);
+  public static final VESID VID_OIOUBL_APPLICATION_RESPONSE_1_13_0 = new VESID (GROUPID,
+                                                                                "application-response",
+                                                                                VERSION_1_13_0);
   public static final VESID VID_OIOUBL_CATALOGUE_1_13_0 = new VESID (GROUPID, "catalogue", VERSION_1_13_0);
-  public static final VESID VID_OIOUBL_CATALOGUE_DELETION_1_13_0 = new VESID (GROUPID, "catalogue-deletion", VERSION_1_13_0);
+  public static final VESID VID_OIOUBL_CATALOGUE_DELETION_1_13_0 = new VESID (GROUPID,
+                                                                              "catalogue-deletion",
+                                                                              VERSION_1_13_0);
   public static final VESID VID_OIOUBL_CATALOGUE_ITEM_SPECIFICATION_UPDATE_1_13_0 = new VESID (GROUPID,
                                                                                                "catalogue-item-specification-update",
                                                                                                VERSION_1_13_0);
-  public static final VESID VID_OIOUBL_CATALOGUE_PRICING_UPDATE_1_13_0 = new VESID (GROUPID, "catalogue-pricing-update", VERSION_1_13_0);
-  public static final VESID VID_OIOUBL_CATALOGUE_REQUEST_1_13_0 = new VESID (GROUPID, "catalogue-request", VERSION_1_13_0);
+  public static final VESID VID_OIOUBL_CATALOGUE_PRICING_UPDATE_1_13_0 = new VESID (GROUPID,
+                                                                                    "catalogue-pricing-update",
+                                                                                    VERSION_1_13_0);
+  public static final VESID VID_OIOUBL_CATALOGUE_REQUEST_1_13_0 = new VESID (GROUPID,
+                                                                             "catalogue-request",
+                                                                             VERSION_1_13_0);
   public static final VESID VID_OIOUBL_CREDIT_NOTE_1_13_0 = new VESID (GROUPID, "credit-note", VERSION_1_13_0);
   public static final VESID VID_OIOUBL_INVOICE_1_13_0 = new VESID (GROUPID, "invoice", VERSION_1_13_0);
   public static final VESID VID_OIOUBL_ORDER_1_13_0 = new VESID (GROUPID, "order", VERSION_1_13_0);
-  public static final VESID VID_OIOUBL_ORDER_CANCELLATION_1_13_0 = new VESID (GROUPID, "order-cancellation", VERSION_1_13_0);
+  public static final VESID VID_OIOUBL_ORDER_CANCELLATION_1_13_0 = new VESID (GROUPID,
+                                                                              "order-cancellation",
+                                                                              VERSION_1_13_0);
   public static final VESID VID_OIOUBL_ORDER_CHANGE_1_13_0 = new VESID (GROUPID, "order-change", VERSION_1_13_0);
   public static final VESID VID_OIOUBL_ORDER_RESPONSE_1_13_0 = new VESID (GROUPID, "order-response", VERSION_1_13_0);
-  public static final VESID VID_OIOUBL_ORDER_RESPONSE_SIMPLE_1_13_0 = new VESID (GROUPID, "order-response-simple", VERSION_1_13_0);
+  public static final VESID VID_OIOUBL_ORDER_RESPONSE_SIMPLE_1_13_0 = new VESID (GROUPID,
+                                                                                 "order-response-simple",
+                                                                                 VERSION_1_13_0);
   public static final VESID VID_OIOUBL_REMINDER_1_13_0 = new VESID (GROUPID, "reminder", VERSION_1_13_0);
   public static final VESID VID_OIOUBL_STATEMENT_1_13_0 = new VESID (GROUPID, "statement", VERSION_1_13_0);
-  public static final VESID VID_OIOUBL_UTILITY_STATEMENT_1_13_0 = new VESID (GROUPID, "utility-statement", VERSION_1_13_0);
+  public static final VESID VID_OIOUBL_UTILITY_STATEMENT_1_13_0 = new VESID (GROUPID,
+                                                                             "utility-statement",
+                                                                             VERSION_1_13_0);
 
   private OIOUBLValidation ()
   {}
@@ -150,7 +182,7 @@ public final class OIOUBLValidation
 
     // 2.0.2 - ancient old version
     {
-      final String sPath202 = "/schematron/oioubl/2.0.2/";
+      final String sPath202 = "/external/schematron/oioubl/2.0.2/";
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OIOUBL_APPLICATION_RESPONSE,
                                                                              "OIOUBL Application Response " +
                                                                                                               VID_OIOUBL_APPLICATION_RESPONSE.getVersion (),
@@ -160,7 +192,8 @@ public final class OIOUBLValidation
                                                                                                                    "OIOUBL_ApplicationResponse_Schematron.xsl",
                                                                                                                    _getCL ()))));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OIOUBL_CATALOGUE,
-                                                                             "OIOUBL Catalogue " + VID_OIOUBL_CATALOGUE.getVersion (),
+                                                                             "OIOUBL Catalogue " +
+                                                                                                   VID_OIOUBL_CATALOGUE.getVersion (),
                                                                              bNotDeprecated,
                                                                              ValidationExecutorXSD.create (EUBL20DocumentType.CATALOGUE),
                                                                              _createOIOUBL (new ClassPathResource (sPath202 +
@@ -199,21 +232,24 @@ public final class OIOUBLValidation
                                                                                                                    "OIOUBL_CatalogueRequest_Schematron.xsl",
                                                                                                                    _getCL ()))));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OIOUBL_CREDIT_NOTE,
-                                                                             "OIOUBL Credit Note " + VID_OIOUBL_CREDIT_NOTE.getVersion (),
+                                                                             "OIOUBL Credit Note " +
+                                                                                                     VID_OIOUBL_CREDIT_NOTE.getVersion (),
                                                                              bNotDeprecated,
                                                                              ValidationExecutorXSD.create (EUBL20DocumentType.CREDIT_NOTE),
                                                                              _createOIOUBL (new ClassPathResource (sPath202 +
                                                                                                                    "OIOUBL_CreditNote_Schematron.xsl",
                                                                                                                    _getCL ()))));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OIOUBL_INVOICE,
-                                                                             "OIOUBL Invoice " + VID_OIOUBL_INVOICE.getVersion (),
+                                                                             "OIOUBL Invoice " +
+                                                                                                 VID_OIOUBL_INVOICE.getVersion (),
                                                                              bNotDeprecated,
                                                                              ValidationExecutorXSD.create (EUBL20DocumentType.INVOICE),
                                                                              _createOIOUBL (new ClassPathResource (sPath202 +
                                                                                                                    "OIOUBL_Invoice_Schematron.xsl",
                                                                                                                    _getCL ()))));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OIOUBL_ORDER,
-                                                                             "OIOUBL Order " + VID_OIOUBL_ORDER.getVersion (),
+                                                                             "OIOUBL Order " +
+                                                                                               VID_OIOUBL_ORDER.getVersion (),
                                                                              bNotDeprecated,
                                                                              ValidationExecutorXSD.create (EUBL20DocumentType.ORDER),
                                                                              _createOIOUBL (new ClassPathResource (sPath202 +
@@ -228,7 +264,8 @@ public final class OIOUBLValidation
                                                                                                                    "OIOUBL_OrderCancellation_Schematron.xsl",
                                                                                                                    _getCL ()))));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OIOUBL_ORDER_CHANGE,
-                                                                             "OIOUBL Order Change " + VID_OIOUBL_ORDER_CHANGE.getVersion (),
+                                                                             "OIOUBL Order Change " +
+                                                                                                      VID_OIOUBL_ORDER_CHANGE.getVersion (),
                                                                              bNotDeprecated,
                                                                              ValidationExecutorXSD.create (EUBL20DocumentType.ORDER_CHANGE),
                                                                              _createOIOUBL (new ClassPathResource (sPath202 +
@@ -251,14 +288,16 @@ public final class OIOUBLValidation
                                                                                                                    "OIOUBL_OrderResponseSimple_Schematron.xsl",
                                                                                                                    _getCL ()))));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OIOUBL_REMINDER,
-                                                                             "OIOUBL Reminder " + VID_OIOUBL_REMINDER.getVersion (),
+                                                                             "OIOUBL Reminder " +
+                                                                                                  VID_OIOUBL_REMINDER.getVersion (),
                                                                              bNotDeprecated,
                                                                              ValidationExecutorXSD.create (EUBL20DocumentType.REMINDER),
                                                                              _createOIOUBL (new ClassPathResource (sPath202 +
                                                                                                                    "OIOUBL_Reminder_Schematron.xsl",
                                                                                                                    _getCL ()))));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OIOUBL_STATEMENT,
-                                                                             "OIOUBL Statement " + VID_OIOUBL_STATEMENT.getVersion (),
+                                                                             "OIOUBL Statement " +
+                                                                                                   VID_OIOUBL_STATEMENT.getVersion (),
                                                                              bNotDeprecated,
                                                                              ValidationExecutorXSD.create (EUBL20DocumentType.STATEMENT),
                                                                              _createOIOUBL (new ClassPathResource (sPath202 +
@@ -283,7 +322,7 @@ public final class OIOUBLValidation
 
     // 1.12.3
     {
-      final String sPath = "/schematron/oioubl/1.12.3/xslt/";
+      final String sPath = "/external/schematron/oioubl/1.12.3/xslt/";
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OIOUBL_APPLICATION_RESPONSE_1_12_3,
                                                                              "OIOUBL Application Response " +
                                                                                                                      VID_OIOUBL_APPLICATION_RESPONSE_1_12_3.getVersion (),
@@ -341,14 +380,16 @@ public final class OIOUBLValidation
                                                                                                                  "OIOUBL_CreditNote_Schematron.xslt",
                                                                                                                  _getCL ()))));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OIOUBL_INVOICE_1_12_3,
-                                                                             "OIOUBL Invoice " + VID_OIOUBL_INVOICE_1_12_3.getVersion (),
+                                                                             "OIOUBL Invoice " +
+                                                                                                        VID_OIOUBL_INVOICE_1_12_3.getVersion (),
                                                                              bNotDeprecated,
                                                                              ValidationExecutorXSD.create (EUBL20DocumentType.INVOICE),
                                                                              _createXSLT (new ClassPathResource (sPath +
                                                                                                                  "OIOUBL_Invoice_Schematron.xslt",
                                                                                                                  _getCL ()))));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OIOUBL_ORDER_1_12_3,
-                                                                             "OIOUBL Order " + VID_OIOUBL_ORDER_1_12_3.getVersion (),
+                                                                             "OIOUBL Order " +
+                                                                                                      VID_OIOUBL_ORDER_1_12_3.getVersion (),
                                                                              bNotDeprecated,
                                                                              ValidationExecutorXSD.create (EUBL20DocumentType.ORDER),
                                                                              _createXSLT (new ClassPathResource (sPath +
@@ -387,7 +428,8 @@ public final class OIOUBLValidation
                                                                                                                  "OIOUBL_OrderResponseSimple_Schematron.xslt",
                                                                                                                  _getCL ()))));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OIOUBL_REMINDER_1_12_3,
-                                                                             "OIOUBL Reminder " + VID_OIOUBL_REMINDER_1_12_3.getVersion (),
+                                                                             "OIOUBL Reminder " +
+                                                                                                         VID_OIOUBL_REMINDER_1_12_3.getVersion (),
                                                                              bNotDeprecated,
                                                                              ValidationExecutorXSD.create (EUBL20DocumentType.REMINDER),
                                                                              _createXSLT (new ClassPathResource (sPath +
@@ -414,7 +456,7 @@ public final class OIOUBLValidation
 
     // 1.13.0
     {
-      final String sPath = "/schematron/oioubl/1.13.0/xslt/";
+      final String sPath = "/external/schematron/oioubl/1.13.0/xslt/";
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OIOUBL_APPLICATION_RESPONSE_1_13_0,
                                                                              "OIOUBL Application Response " +
                                                                                                                      VID_OIOUBL_APPLICATION_RESPONSE_1_13_0.getVersion (),
@@ -472,14 +514,16 @@ public final class OIOUBLValidation
                                                                                                                  "OIOUBL_CreditNote_Schematron.xslt",
                                                                                                                  _getCL ()))));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OIOUBL_INVOICE_1_13_0,
-                                                                             "OIOUBL Invoice " + VID_OIOUBL_INVOICE_1_13_0.getVersion (),
+                                                                             "OIOUBL Invoice " +
+                                                                                                        VID_OIOUBL_INVOICE_1_13_0.getVersion (),
                                                                              bNotDeprecated,
                                                                              ValidationExecutorXSD.create (EUBL20DocumentType.INVOICE),
                                                                              _createXSLT (new ClassPathResource (sPath +
                                                                                                                  "OIOUBL_Invoice_Schematron.xslt",
                                                                                                                  _getCL ()))));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OIOUBL_ORDER_1_13_0,
-                                                                             "OIOUBL Order " + VID_OIOUBL_ORDER_1_13_0.getVersion (),
+                                                                             "OIOUBL Order " +
+                                                                                                      VID_OIOUBL_ORDER_1_13_0.getVersion (),
                                                                              bNotDeprecated,
                                                                              ValidationExecutorXSD.create (EUBL20DocumentType.ORDER),
                                                                              _createXSLT (new ClassPathResource (sPath +
@@ -518,7 +562,8 @@ public final class OIOUBLValidation
                                                                                                                  "OIOUBL_OrderResponseSimple_Schematron.xslt",
                                                                                                                  _getCL ()))));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OIOUBL_REMINDER_1_13_0,
-                                                                             "OIOUBL Reminder " + VID_OIOUBL_REMINDER_1_13_0.getVersion (),
+                                                                             "OIOUBL Reminder " +
+                                                                                                         VID_OIOUBL_REMINDER_1_13_0.getVersion (),
                                                                              bNotDeprecated,
                                                                              ValidationExecutorXSD.create (EUBL20DocumentType.REMINDER),
                                                                              _createXSLT (new ClassPathResource (sPath +
