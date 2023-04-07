@@ -66,6 +66,8 @@ public final class CTestFiles
   {
     ValueEnforcer.notNull (aVESID, "VESID");
 
+    final String sPrefix = "/external/test-files/";
+
     if (aVESID.equals (SvefakturaValidation.VID_SVEFAKTURA_10))
     {
       return new CommonsArrayList <> (new String [] { "svefaktura.xml",
@@ -73,12 +75,12 @@ public final class CTestFiles
                                                       "svefaktura m ext ref.xml",
                                                       "svefaktura m koder.xml",
                                                       "svefaktura moms.xml" },
-                                      x -> new ClassPathResource ("/test-files/1.0/" + x));
+                                      x -> new ClassPathResource (sPrefix + "1.0/" + x));
     }
     if (aVESID.equals (SvefakturaValidation.VID_OBJECT_ENVELOPE_10))
     {
       return new CommonsArrayList <> (new String [] { "ObjectEnvelope.xml" },
-                                      x -> new ClassPathResource ("/test-files/1.0/" + x));
+                                      x -> new ClassPathResource (sPrefix + "1.0/" + x));
     }
 
     throw new IllegalArgumentException ("Invalid VESID: " + aVESID);

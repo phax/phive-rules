@@ -91,11 +91,12 @@ public final class SvefakturaValidation
     final boolean bNotDeprecated = false;
 
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_SVEFAKTURA_10,
-                                                                           "SvefakturaXML " + VID_SVEFAKTURA_10.getVersion (),
+                                                                           "SvefakturaXML " +
+                                                                                              VID_SVEFAKTURA_10.getVersion (),
                                                                            bNotDeprecated,
-                                                                           ValidationExecutorXSD.create (new ClassPathResource ("/schemas/1.0/maindoc/SFTI-BasicInvoice-1.0.xsd",
+                                                                           ValidationExecutorXSD.create (new ClassPathResource ("/external/schemas/1.0/maindoc/SFTI-BasicInvoice-1.0.xsd",
                                                                                                                                 _getCL ())),
-                                                                           _createXSLT (new ClassPathResource ("/schemas/1.0/svenfaktura-1.0-sch.xslt",
+                                                                           _createXSLT (new ClassPathResource ("/external/schemas/1.0/svenfaktura-1.0-sch.xslt",
                                                                                                                _getCL ()))));
 
     // No Schematrons here
@@ -103,7 +104,7 @@ public final class SvefakturaValidation
                                                                            "SvefakturaXML ObjectEnvelope " +
                                                                                                    VID_OBJECT_ENVELOPE_10.getVersion (),
                                                                            bNotDeprecated,
-                                                                           ValidationExecutorXSD.create (new ClassPathResource ("/schemas/1.0/maindoc/SFTI-ObjectEnvelope-1.0.xsd",
+                                                                           ValidationExecutorXSD.create (new ClassPathResource ("/external/schemas/1.0/maindoc/SFTI-ObjectEnvelope-1.0.xsd",
                                                                                                                                 _getCL ()))));
   }
 }
