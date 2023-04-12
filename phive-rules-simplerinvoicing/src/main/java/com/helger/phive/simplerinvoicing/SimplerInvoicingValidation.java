@@ -97,11 +97,18 @@ public final class SimplerInvoicingValidation
   @Deprecated
   public static final VESID VID_SI_CREDIT_NOTE_V2033 = new VESID (GROUP_ID, "creditnote", "2.0.3.3");
 
+  @Deprecated
   public static final VESID VID_SI_INVOICE_V2034 = new VESID (GROUP_ID, "invoice", "2.0.3.4");
+  @Deprecated
   public static final VESID VID_SI_CREDIT_NOTE_V2034 = new VESID (GROUP_ID, "creditnote", "2.0.3.4");
 
+  @Deprecated
   public static final VESID VID_SI_INVOICE_V2035 = new VESID (GROUP_ID, "invoice", "2.0.3.5");
+  @Deprecated
   public static final VESID VID_SI_CREDIT_NOTE_V2035 = new VESID (GROUP_ID, "creditnote", "2.0.3.5");
+
+  public static final VESID VID_SI_INVOICE_V2036 = new VESID (GROUP_ID, "invoice", "2.0.3.6");
+  public static final VESID VID_SI_CREDIT_NOTE_V2036 = new VESID (GROUP_ID, "creditnote", "2.0.3.6");
 
   @Deprecated
   public static final VESID VID_SI_INVOICE_20_GACCOUNT_V10 = new VESID (GROUP_ID, "invoice20.g-account", "1.0");
@@ -111,8 +118,11 @@ public final class SimplerInvoicingValidation
   public static final VESID VID_SI_INVOICE_20_GACCOUNT_V102 = new VESID (GROUP_ID, "invoice20.g-account", "1.0.2");
   @Deprecated
   public static final VESID VID_SI_INVOICE_20_GACCOUNT_V103 = new VESID (GROUP_ID, "invoice20.g-account", "1.0.3");
+  @Deprecated
   public static final VESID VID_SI_INVOICE_20_GACCOUNT_V104 = new VESID (GROUP_ID, "invoice20.g-account", "1.0.4");
+  @Deprecated
   public static final VESID VID_SI_INVOICE_20_GACCOUNT_V105 = new VESID (GROUP_ID, "invoice20.g-account", "1.0.5");
+  public static final VESID VID_SI_INVOICE_20_GACCOUNT_V106 = new VESID (GROUP_ID, "invoice20.g-account", "1.0.6");
 
   @Deprecated
   public static final VESID VID_SI_NLCIUS_CII_V103 = new VESID (GROUP_ID, "nlcius-cii", "1.0.3");
@@ -120,8 +130,11 @@ public final class SimplerInvoicingValidation
   public static final VESID VID_SI_NLCIUS_CII_V1031 = new VESID (GROUP_ID, "nlcius-cii", "1.0.3.1");
   @Deprecated
   public static final VESID VID_SI_NLCIUS_CII_V1032 = new VESID (GROUP_ID, "nlcius-cii", "1.0.3.2");
+  @Deprecated
   public static final VESID VID_SI_NLCIUS_CII_V1033 = new VESID (GROUP_ID, "nlcius-cii", "1.0.3.3");
+  @Deprecated
   public static final VESID VID_SI_NLCIUS_CII_V1034 = new VESID (GROUP_ID, "nlcius-cii", "1.0.3.4");
+  public static final VESID VID_SI_NLCIUS_CII_V1035 = new VESID (GROUP_ID, "nlcius-cii", "1.0.3.5");
 
   @Nonnull
   private static ClassLoader _getCL ()
@@ -199,11 +212,17 @@ public final class SimplerInvoicingValidation
                                                                                 _getCL ());
 
   // 2.0.3.4
+  @Deprecated
   public static final ClassPathResource INVOICE_SI2034 = new ClassPathResource (PATH_SI + "si-ubl-2.0.3.4.xslt",
                                                                                 _getCL ());
 
   // 2.0.3.5
+  @Deprecated
   public static final ClassPathResource INVOICE_SI2035 = new ClassPathResource (PATH_SI + "si-ubl-2.0.3.5.xslt",
+                                                                                _getCL ());
+
+  // 2.0.3.6
+  public static final ClassPathResource INVOICE_SI2036 = new ClassPathResource (PATH_SI + "si-ubl-2.0.3.6.xslt",
                                                                                 _getCL ());
 
   private SimplerInvoicingValidation ()
@@ -369,26 +388,38 @@ public final class SimplerInvoicingValidation
     // 2.0.3.4
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_SI_INVOICE_V2034,
                                                                            "Simplerinvoicing Invoice 2.0.3.4",
-                                                                           bNotDeprecated,
+                                                                           bDeprecated,
                                                                            ValidationExecutorXSD.create (EUBL21DocumentType.INVOICE),
                                                                            _createXSLT (INVOICE_SI2034)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_SI_CREDIT_NOTE_V2034,
                                                                            "Simplerinvoicing CreditNote 2.0.3.4",
-                                                                           bNotDeprecated,
+                                                                           bDeprecated,
                                                                            ValidationExecutorXSD.create (EUBL21DocumentType.CREDIT_NOTE),
                                                                            _createXSLT (INVOICE_SI2034)));
 
     // 2.0.3.5
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_SI_INVOICE_V2035,
                                                                            "Simplerinvoicing Invoice 2.0.3.5",
-                                                                           bNotDeprecated,
+                                                                           bDeprecated,
                                                                            ValidationExecutorXSD.create (EUBL21DocumentType.INVOICE),
                                                                            _createXSLT (INVOICE_SI2035)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_SI_CREDIT_NOTE_V2035,
                                                                            "Simplerinvoicing CreditNote 2.0.3.5",
-                                                                           bNotDeprecated,
+                                                                           bDeprecated,
                                                                            ValidationExecutorXSD.create (EUBL21DocumentType.CREDIT_NOTE),
                                                                            _createXSLT (INVOICE_SI2035)));
+
+    // 2.0.3.6
+    aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_SI_INVOICE_V2036,
+                                                                           "Simplerinvoicing Invoice 2.0.3.6",
+                                                                           bNotDeprecated,
+                                                                           ValidationExecutorXSD.create (EUBL21DocumentType.INVOICE),
+                                                                           _createXSLT (INVOICE_SI2036)));
+    aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_SI_CREDIT_NOTE_V2036,
+                                                                           "Simplerinvoicing CreditNote 2.0.3.6",
+                                                                           bNotDeprecated,
+                                                                           ValidationExecutorXSD.create (EUBL21DocumentType.CREDIT_NOTE),
+                                                                           _createXSLT (INVOICE_SI2036)));
 
     // 2.0 G-Account 1.0
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_SI_INVOICE_20_GACCOUNT_V10,
@@ -429,19 +460,28 @@ public final class SimplerInvoicingValidation
     // 2.0 G-Account 1.0.4
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_SI_INVOICE_20_GACCOUNT_V104,
                                                                            "Simplerinvoicing 2.0 G-Account extension 1.0.4",
-                                                                           bNotDeprecated,
+                                                                           bDeprecated,
                                                                            ValidationExecutorXSD.create (EUBL21DocumentType.INVOICE),
                                                                            _createXSLT (new ClassPathResource (PATH_SI +
                                                                                                                "si-ubl-2.0-ext-gaccount-1.0.4.xslt",
                                                                                                                _getCL ()))));
 
-    // 2.0 G-Account 1.0.4
+    // 2.0 G-Account 1.0.5
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_SI_INVOICE_20_GACCOUNT_V105,
                                                                            "Simplerinvoicing 2.0 G-Account extension 1.0.5",
-                                                                           bNotDeprecated,
+                                                                           bDeprecated,
                                                                            ValidationExecutorXSD.create (EUBL21DocumentType.INVOICE),
                                                                            _createXSLT (new ClassPathResource (PATH_SI +
                                                                                                                "si-ubl-2.0-ext-gaccount-1.0.5.xslt",
+                                                                                                               _getCL ()))));
+
+    // 2.0 G-Account 1.0.6
+    aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_SI_INVOICE_20_GACCOUNT_V106,
+                                                                           "Simplerinvoicing 2.0 G-Account extension 1.0.6",
+                                                                           bNotDeprecated,
+                                                                           ValidationExecutorXSD.create (EUBL21DocumentType.INVOICE),
+                                                                           _createXSLT (new ClassPathResource (PATH_SI +
+                                                                                                               "si-ubl-2.0-ext-gaccount-1.0.6.xslt",
                                                                                                                _getCL ()))));
 
     // NLCIUS 1.0.3
@@ -474,7 +514,7 @@ public final class SimplerInvoicingValidation
     // NLCIUS 1.0.3.3
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_SI_NLCIUS_CII_V1033,
                                                                            "NLCIUS-CII 1.0.3.3",
-                                                                           bNotDeprecated,
+                                                                           bDeprecated,
                                                                            ValidationExecutorXSD.create (ECIID16BDocumentType.CROSS_INDUSTRY_INVOICE),
                                                                            _createXSLT (new ClassPathResource (PATH_NL_CIUS +
                                                                                                                "nlcius-cii-1.0.3.3.xslt",
@@ -483,10 +523,19 @@ public final class SimplerInvoicingValidation
     // NLCIUS 1.0.3.4
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_SI_NLCIUS_CII_V1034,
                                                                            "NLCIUS-CII 1.0.3.4",
-                                                                           bNotDeprecated,
+                                                                           bDeprecated,
                                                                            ValidationExecutorXSD.create (ECIID16BDocumentType.CROSS_INDUSTRY_INVOICE),
                                                                            _createXSLT (new ClassPathResource (PATH_NL_CIUS +
                                                                                                                "nlcius-cii-1.0.3.4.xslt",
+                                                                                                               _getCL ()))));
+
+    // NLCIUS 1.0.3.5
+    aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_SI_NLCIUS_CII_V1035,
+                                                                           "NLCIUS-CII 1.0.3.5",
+                                                                           bNotDeprecated,
+                                                                           ValidationExecutorXSD.create (ECIID16BDocumentType.CROSS_INDUSTRY_INVOICE),
+                                                                           _createXSLT (new ClassPathResource (PATH_NL_CIUS +
+                                                                                                               "nlcius-cii-1.0.3.5.xslt",
                                                                                                                _getCL ()))));
   }
 }

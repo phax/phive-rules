@@ -105,8 +105,8 @@
             </goals>
             <id>preprocess</id>
             <configuration>
-              <sourceFile>${basedir}/src/test/resources/rule-source/simplerinvoicing/si-ubl-1.0.sch</sourceFile>
-              <targetFile>${basedir}/src/test/resources/rule-source/simplerinvoicing/preprocessed-si-ubl-1.0.sch</targetFile>
+              <sourceFile>${basedir}/src/test/resources/external/rule-source/simplerinvoicing/si-ubl-1.0.sch</sourceFile>
+              <targetFile>${basedir}/src/test/resources/external/rule-source/simplerinvoicing/preprocessed-si-ubl-1.0.sch</targetFile>
               <keepTitles>true</keepTitles>
             </configuration>
           </execution>
@@ -118,9 +118,9 @@
             </goals>
             <id>convert-si</id>
             <configuration>
-              <schematronDirectory>${basedir}/src/test/resources/rule-source/simplerinvoicing/1.2.4</schematronDirectory>
+              <schematronDirectory>${basedir}/src/test/resources/external/rule-source/simplerinvoicing/1.2.4</schematronDirectory>
               <schematronPattern>si-ubl-*.sch</schematronPattern>
-              <xsltDirectory>${basedir}/src/main/resources/schematron/simplerinvoicing</xsltDirectory>
+              <xsltDirectory>${basedir}/src/main/resources/external/schematron/simplerinvoicing</xsltDirectory>
             </configuration>
           </execution>
 -->
@@ -131,9 +131,9 @@
             </goals>
             <id>convert-si</id>
             <configuration>
-              <schematronDirectory>${basedir}/src/test/resources/rule-source/simplerinvoicing/2.0.3.5</schematronDirectory>
+              <schematronDirectory>${basedir}/src/test/resources/external/rule-source/simplerinvoicing/2.0.3.6</schematronDirectory>
               <schematronPattern>si-ubl-*.sch</schematronPattern>
-              <xsltDirectory>${basedir}/src/main/resources/schematron/simplerinvoicing</xsltDirectory>
+              <xsltDirectory>${basedir}/src/main/resources/external/schematron/simplerinvoicing</xsltDirectory>
             </configuration>
           </execution>
 -->
@@ -144,9 +144,9 @@
             </goals>
             <id>convert-nlcius</id>
             <configuration>
-              <schematronDirectory>${basedir}/src/test/resources/rule-source/nlcius/1.0.3.4</schematronDirectory>
+              <schematronDirectory>${basedir}/src/test/resources/external/rule-source/nlcius/1.0.3.5</schematronDirectory>
               <schematronPattern>nlcius-*.sch</schematronPattern>
-              <xsltDirectory>${basedir}/src/main/resources/schematron/nlcius</xsltDirectory>
+              <xsltDirectory>${basedir}/src/main/resources/external/schematron/nlcius</xsltDirectory>
             </configuration>
           </execution>
 -->
