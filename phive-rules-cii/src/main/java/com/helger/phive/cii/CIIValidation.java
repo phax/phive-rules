@@ -16,14 +16,13 @@
  */
 package com.helger.phive.cii;
 
-import java.util.Locale;
-
 import javax.annotation.Nonnull;
 import javax.annotation.concurrent.Immutable;
 
+import com.helger.cii.d16b.CIID16BCrossIndustryInvoiceTypeMarshaller;
 import com.helger.cii.d16b.CIID16BNamespaceContext;
-import com.helger.cii.d16b.ECIID16BDocumentType;
 import com.helger.commons.ValueEnforcer;
+import com.helger.commons.io.resource.ClassPathResource;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
 import com.helger.phive.api.executorset.VESID;
 import com.helger.phive.api.executorset.ValidationExecutorSet;
@@ -42,7 +41,9 @@ public final class CIIValidation
   public static final String GROUP_ID = "un.unece.uncefact";
   public static final String VERSION_D16B = "D16B";
 
-  public static final VESID VID_CII_D16B_CROSSINDUSTRYINVOICE = new VESID (GROUP_ID, "crossindustryinvoice", VERSION_D16B);
+  public static final VESID VID_CII_D16B_CROSSINDUSTRYINVOICE = new VESID (GROUP_ID,
+                                                                           "crossindustryinvoice",
+                                                                           VERSION_D16B);
 
   private CIIValidation ()
   {}
@@ -62,16 +63,16 @@ public final class CIIValidation
     SchematronNamespaceBeautifier.addMappings (CIID16BNamespaceContext.getInstance ());
 
     final boolean bNotDeprecated = false;
-    for (final ECIID16BDocumentType e : ECIID16BDocumentType.values ())
-    {
-      final String sName = e.getLocalName ();
-      final VESID aVESID = new VESID (GROUP_ID, sName.toLowerCase (Locale.US), VERSION_D16B);
 
-      // No Schematrons here
-      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (aVESID,
-                                                                             "CII " + sName + " " + VERSION_D16B,
-                                                                             bNotDeprecated,
-                                                                             ValidationExecutorXSD.create (e)));
-    }
+    // TODO replace with constant from CIID16BCrossIndustryInvoiceTypeMarshaller
+    // in ph-cii >= 3.0.1
+    final ClassPathResource aCIIRes = new ClassPathResource (CIID16BCrossIndustryInvoiceTypeMarshaller.XSD_PATH,
+                                                             CIID16BCrossIndustryInvoiceTypeMarshaller.class.getClassLoader ());
+
+    // No Schematrons here
+    aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_CII_D16B_CROSSINDUSTRYINVOICE,
+                                                                           "CII CrossIndustryInvoice " + VERSION_D16B,
+                                                                           bNotDeprecated,
+                                                                           ValidationExecutorXSD.create (aCIIRes)));
   }
 }

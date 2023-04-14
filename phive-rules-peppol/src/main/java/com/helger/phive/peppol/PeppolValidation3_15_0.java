@@ -22,8 +22,8 @@ import java.time.Month;
 import javax.annotation.Nonnull;
 import javax.annotation.concurrent.Immutable;
 
+import com.helger.cii.d16b.CIID16BCrossIndustryInvoiceTypeMarshaller;
 import com.helger.cii.d16b.CIID16BNamespaceContext;
-import com.helger.cii.d16b.ECIID16BDocumentType;
 import com.helger.commons.ValueEnforcer;
 import com.helger.commons.datetime.PDTFactory;
 import com.helger.commons.io.resource.ClassPathResource;
@@ -117,6 +117,11 @@ public final class PeppolValidation3_15_0
                                                                                           "PEPPOLBIS-T111.xslt",
                                                                                           _getCL ());
 
+  // TODO replace with constant from CIID16BCrossIndustryInvoiceTypeMarshaller
+  // in ph-cii >= 3.0.1
+  private static final ClassPathResource CPR_CII = new ClassPathResource (CIID16BCrossIndustryInvoiceTypeMarshaller.XSD_PATH,
+                                                                          CIID16BCrossIndustryInvoiceTypeMarshaller.class.getClassLoader ());
+
   private PeppolValidation3_15_0 ()
   {}
 
@@ -165,7 +170,7 @@ public final class PeppolValidation3_15_0
                                                                                                           sVersion +
                                                                                                           sAkaVersionBilling,
                                                                            bNotDeprecated,
-                                                                           ValidationExecutorXSD.create (ECIID16BDocumentType.CROSS_INDUSTRY_INVOICE),
+                                                                           ValidationExecutorXSD.create (CPR_CII),
                                                                            _createXsltCII (INVOICE_CII_CEN),
                                                                            _createXsltCII (INVOICE_CII_PEPPOL)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_ORDER_V3,
