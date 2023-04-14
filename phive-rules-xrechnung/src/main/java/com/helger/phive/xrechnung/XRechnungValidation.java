@@ -19,7 +19,7 @@ package com.helger.phive.xrechnung;
 import javax.annotation.Nonnull;
 import javax.annotation.concurrent.Immutable;
 
-import com.helger.cii.d16b.CIID16BCrossIndustryInvoiceTypeMarshaller;
+import com.helger.cii.d16b.CCIID16B;
 import com.helger.cii.d16b.CIID16BNamespaceContext;
 import com.helger.commons.ValueEnforcer;
 import com.helger.commons.collection.impl.CommonsHashMap;
@@ -105,11 +105,6 @@ public final class XRechnungValidation
   public static final VESID VID_XRECHNUNG_CII_231 = new VESID (GROUP_ID, "cii", "2.3.1");
   public static final VESID VID_XRECHNUNG_UBL_CREDITNOTE_231 = new VESID (GROUP_ID, "ubl-creditnote", "2.3.1");
   public static final VESID VID_XRECHNUNG_UBL_INVOICE_231 = new VESID (GROUP_ID, "ubl-invoice", "2.3.1");
-
-  // TODO replace with constant from CIID16BCrossIndustryInvoiceTypeMarshaller
-  // in ph-cii >= 3.0.1
-  private static final ClassPathResource CPR_CII = new ClassPathResource (CIID16BCrossIndustryInvoiceTypeMarshaller.XSD_PATH,
-                                                                          CIID16BCrossIndustryInvoiceTypeMarshaller.class.getClassLoader ());
 
   private XRechnungValidation ()
   {}
@@ -262,7 +257,7 @@ public final class XRechnungValidation
                                                                              "XRechnung CII " +
                                                                                                     VID_XRECHNUNG_CII_200.getVersion (),
                                                                              bDeprecated,
-                                                                             ValidationExecutorXSD.create (CPR_CII),
+                                                                             ValidationExecutorXSD.create (CCIID16B.getXSDResource ()),
                                                                              ValidationExecutorSchematron.createXSLT (EN16931Validation.INVOICE_CII_132_XSLT,
                                                                                                                       UBL21NamespaceContext.getInstance ())
                                                                                                          .addCustomErrorLevels (aCustomErrorLevels),
@@ -307,7 +302,7 @@ public final class XRechnungValidation
                                                                              "XRechnung CII " +
                                                                                                     VID_XRECHNUNG_CII_201.getVersion (),
                                                                              bDeprecated,
-                                                                             ValidationExecutorXSD.create (CPR_CII),
+                                                                             ValidationExecutorXSD.create (CCIID16B.getXSDResource ()),
                                                                              ValidationExecutorSchematron.createXSLT (EN16931Validation.INVOICE_CII_133_XSLT,
                                                                                                                       UBL21NamespaceContext.getInstance ())
                                                                                                          .addCustomErrorLevels (aCustomErrorLevels),
@@ -354,7 +349,7 @@ public final class XRechnungValidation
                                                                              "XRechnung CII " +
                                                                                                     VID_XRECHNUNG_CII_211.getVersion (),
                                                                              bDeprecated,
-                                                                             ValidationExecutorXSD.create (CPR_CII),
+                                                                             ValidationExecutorXSD.create (CCIID16B.getXSDResource ()),
                                                                              ValidationExecutorSchematron.createXSLT (EN16931Validation.INVOICE_CII_136A_XSLT,
                                                                                                                       UBL21NamespaceContext.getInstance ())
                                                                                                          .addCustomErrorLevels (aCustomErrorLevels),
@@ -399,7 +394,7 @@ public final class XRechnungValidation
                                                                              "XRechnung CII " +
                                                                                                     VID_XRECHNUNG_CII_220.getVersion (),
                                                                              bNotDeprecated,
-                                                                             ValidationExecutorXSD.create (CPR_CII),
+                                                                             ValidationExecutorXSD.create (CCIID16B.getXSDResource ()),
                                                                              ValidationExecutorSchematron.createXSLT (EN16931Validation.INVOICE_CII_137_XSLT,
                                                                                                                       UBL21NamespaceContext.getInstance ())
                                                                                                          .addCustomErrorLevels (aCustomErrorLevels),
@@ -443,7 +438,7 @@ public final class XRechnungValidation
                                                                              "XRechnung CII " +
                                                                                                     VID_XRECHNUNG_CII_231.getVersion (),
                                                                              bNotDeprecated,
-                                                                             ValidationExecutorXSD.create (CPR_CII),
+                                                                             ValidationExecutorXSD.create (CCIID16B.getXSDResource ()),
                                                                              ValidationExecutorSchematron.createXSLT (EN16931Validation.INVOICE_CII_139_XSLT,
                                                                                                                       UBL21NamespaceContext.getInstance ())
                                                                                                          .addCustomErrorLevels (aCustomErrorLevels),

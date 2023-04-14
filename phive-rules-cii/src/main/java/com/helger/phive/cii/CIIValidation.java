@@ -19,10 +19,9 @@ package com.helger.phive.cii;
 import javax.annotation.Nonnull;
 import javax.annotation.concurrent.Immutable;
 
-import com.helger.cii.d16b.CIID16BCrossIndustryInvoiceTypeMarshaller;
+import com.helger.cii.d16b.CCIID16B;
 import com.helger.cii.d16b.CIID16BNamespaceContext;
 import com.helger.commons.ValueEnforcer;
-import com.helger.commons.io.resource.ClassPathResource;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
 import com.helger.phive.api.executorset.VESID;
 import com.helger.phive.api.executorset.ValidationExecutorSet;
@@ -64,15 +63,10 @@ public final class CIIValidation
 
     final boolean bNotDeprecated = false;
 
-    // TODO replace with constant from CIID16BCrossIndustryInvoiceTypeMarshaller
-    // in ph-cii >= 3.0.1
-    final ClassPathResource aCIIRes = new ClassPathResource (CIID16BCrossIndustryInvoiceTypeMarshaller.XSD_PATH,
-                                                             CIID16BCrossIndustryInvoiceTypeMarshaller.class.getClassLoader ());
-
     // No Schematrons here
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_CII_D16B_CROSSINDUSTRYINVOICE,
                                                                            "CII CrossIndustryInvoice " + VERSION_D16B,
                                                                            bNotDeprecated,
-                                                                           ValidationExecutorXSD.create (aCIIRes)));
+                                                                           ValidationExecutorXSD.create (CCIID16B.getXSDResource ())));
   }
 }

@@ -19,7 +19,7 @@ package com.helger.phive.en16931;
 import javax.annotation.Nonnull;
 import javax.annotation.concurrent.Immutable;
 
-import com.helger.cii.d16b.CIID16BCrossIndustryInvoiceTypeMarshaller;
+import com.helger.cii.d16b.CCIID16B;
 import com.helger.cii.d16b.CIID16BNamespaceContext;
 import com.helger.commons.ValueEnforcer;
 import com.helger.commons.io.resource.ClassPathResource;
@@ -61,11 +61,6 @@ public final class EN16931Validation
   private static final String VERSION_138 = "1.3.8";
   private static final String VERSION_139 = "1.3.9";
   private static final String VERSION_1310 = "1.3.10";
-
-  // TODO replace with constant from CIID16BCrossIndustryInvoiceTypeMarshaller
-  // in ph-cii >= 3.0.1
-  private static final ClassPathResource CPR_CII = new ClassPathResource (CIID16BCrossIndustryInvoiceTypeMarshaller.XSD_PATH,
-                                                                          CIID16BCrossIndustryInvoiceTypeMarshaller.class.getClassLoader ());
 
   // CII
   @Deprecated
@@ -341,119 +336,119 @@ public final class EN16931Validation
                                                                              "EN 16931 CII " +
                                                                                           VID_CII_100.getVersion (),
                                                                              bDeprecated,
-                                                                             ValidationExecutorXSD.create (CPR_CII),
+                                                                             ValidationExecutorXSD.create (CCIID16B.getXSDResource ()),
                                                                              ValidationExecutorSchematron.createXSLT (INVOICE_CII_100_XSLT,
                                                                                                                       CIID16BNamespaceContext.getInstance ())));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_CII_110,
                                                                              "EN 16931 CII " +
                                                                                           VID_CII_110.getVersion (),
                                                                              bDeprecated,
-                                                                             ValidationExecutorXSD.create (CPR_CII),
+                                                                             ValidationExecutorXSD.create (CCIID16B.getXSDResource ()),
                                                                              ValidationExecutorSchematron.createXSLT (INVOICE_CII_110_XSLT,
                                                                                                                       CIID16BNamespaceContext.getInstance ())));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_CII_120,
                                                                              "EN 16931 CII " +
                                                                                           VID_CII_120.getVersion (),
                                                                              bDeprecated,
-                                                                             ValidationExecutorXSD.create (CPR_CII),
+                                                                             ValidationExecutorXSD.create (CCIID16B.getXSDResource ()),
                                                                              ValidationExecutorSchematron.createXSLT (INVOICE_CII_120_XSLT,
                                                                                                                       CIID16BNamespaceContext.getInstance ())));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_CII_121,
                                                                              "EN 16931 CII " +
                                                                                           VID_CII_121.getVersion (),
                                                                              bDeprecated,
-                                                                             ValidationExecutorXSD.create (CPR_CII),
+                                                                             ValidationExecutorXSD.create (CCIID16B.getXSDResource ()),
                                                                              ValidationExecutorSchematron.createXSLT (INVOICE_CII_121_XSLT,
                                                                                                                       CIID16BNamespaceContext.getInstance ())));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_CII_123,
                                                                              "EN 16931 CII " +
                                                                                           VID_CII_123.getVersion (),
                                                                              bDeprecated,
-                                                                             ValidationExecutorXSD.create (CPR_CII),
+                                                                             ValidationExecutorXSD.create (CCIID16B.getXSDResource ()),
                                                                              ValidationExecutorSchematron.createXSLT (INVOICE_CII_123_XSLT,
                                                                                                                       CIID16BNamespaceContext.getInstance ())));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_CII_130,
                                                                              "EN 16931 CII " +
                                                                                           VID_CII_130.getVersion (),
                                                                              bDeprecated,
-                                                                             ValidationExecutorXSD.create (CPR_CII),
+                                                                             ValidationExecutorXSD.create (CCIID16B.getXSDResource ()),
                                                                              ValidationExecutorSchematron.createXSLT (INVOICE_CII_130_XSLT,
                                                                                                                       CIID16BNamespaceContext.getInstance ())));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_CII_131,
                                                                              "EN 16931 CII " +
                                                                                           VID_CII_131.getVersion (),
                                                                              bDeprecated,
-                                                                             ValidationExecutorXSD.create (CPR_CII),
+                                                                             ValidationExecutorXSD.create (CCIID16B.getXSDResource ()),
                                                                              ValidationExecutorSchematron.createXSLT (INVOICE_CII_131_XSLT,
                                                                                                                       CIID16BNamespaceContext.getInstance ())));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_CII_132,
                                                                              "EN 16931 CII " +
                                                                                           VID_CII_132.getVersion (),
                                                                              bDeprecated,
-                                                                             ValidationExecutorXSD.create (CPR_CII),
+                                                                             ValidationExecutorXSD.create (CCIID16B.getXSDResource ()),
                                                                              ValidationExecutorSchematron.createXSLT (INVOICE_CII_132_XSLT,
                                                                                                                       CIID16BNamespaceContext.getInstance ())));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_CII_133,
                                                                              "EN 16931 CII " +
                                                                                           VID_CII_133.getVersion (),
                                                                              bDeprecated,
-                                                                             ValidationExecutorXSD.create (CPR_CII),
+                                                                             ValidationExecutorXSD.create (CCIID16B.getXSDResource ()),
                                                                              ValidationExecutorSchematron.createXSLT (INVOICE_CII_133_XSLT,
                                                                                                                       CIID16BNamespaceContext.getInstance ())));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_CII_134,
                                                                              "EN 16931 CII " +
                                                                                           VID_CII_134.getVersion (),
                                                                              bDeprecated,
-                                                                             ValidationExecutorXSD.create (CPR_CII),
+                                                                             ValidationExecutorXSD.create (CCIID16B.getXSDResource ()),
                                                                              ValidationExecutorSchematron.createXSLT (INVOICE_CII_134_XSLT,
                                                                                                                       CIID16BNamespaceContext.getInstance ())));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_CII_135,
                                                                              "EN 16931 CII " +
                                                                                           VID_CII_135.getVersion (),
                                                                              bDeprecated,
-                                                                             ValidationExecutorXSD.create (CPR_CII),
+                                                                             ValidationExecutorXSD.create (CCIID16B.getXSDResource ()),
                                                                              ValidationExecutorSchematron.createXSLT (INVOICE_CII_135_XSLT,
                                                                                                                       CIID16BNamespaceContext.getInstance ())));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_CII_136,
                                                                              "EN 16931 CII " +
                                                                                           VID_CII_136.getVersion (),
                                                                              bDeprecated,
-                                                                             ValidationExecutorXSD.create (CPR_CII),
+                                                                             ValidationExecutorXSD.create (CCIID16B.getXSDResource ()),
                                                                              ValidationExecutorSchematron.createXSLT (INVOICE_CII_136_XSLT,
                                                                                                                       CIID16BNamespaceContext.getInstance ())));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_CII_136A,
                                                                              "EN 16931 CII " +
                                                                                            VID_CII_136A.getVersion (),
                                                                              bDeprecated,
-                                                                             ValidationExecutorXSD.create (CPR_CII),
+                                                                             ValidationExecutorXSD.create (CCIID16B.getXSDResource ()),
                                                                              ValidationExecutorSchematron.createXSLT (INVOICE_CII_136A_XSLT,
                                                                                                                       CIID16BNamespaceContext.getInstance ())));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_CII_137,
                                                                              "EN 16931 CII " +
                                                                                           VID_CII_137.getVersion (),
                                                                              bDeprecated,
-                                                                             ValidationExecutorXSD.create (CPR_CII),
+                                                                             ValidationExecutorXSD.create (CCIID16B.getXSDResource ()),
                                                                              ValidationExecutorSchematron.createXSLT (INVOICE_CII_137_XSLT,
                                                                                                                       CIID16BNamespaceContext.getInstance ())));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_CII_138,
                                                                              "EN 16931 CII " +
                                                                                           VID_CII_138.getVersion (),
                                                                              bDeprecated,
-                                                                             ValidationExecutorXSD.create (CPR_CII),
+                                                                             ValidationExecutorXSD.create (CCIID16B.getXSDResource ()),
                                                                              ValidationExecutorSchematron.createXSLT (INVOICE_CII_138_XSLT,
                                                                                                                       CIID16BNamespaceContext.getInstance ())));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_CII_139,
                                                                              "EN 16931 CII " +
                                                                                           VID_CII_139.getVersion (),
                                                                              bNotDeprecated,
-                                                                             ValidationExecutorXSD.create (CPR_CII),
+                                                                             ValidationExecutorXSD.create (CCIID16B.getXSDResource ()),
                                                                              ValidationExecutorSchematron.createXSLT (INVOICE_CII_139_XSLT,
                                                                                                                       CIID16BNamespaceContext.getInstance ())));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_CII_1310,
                                                                              "EN 16931 CII " +
                                                                                            VID_CII_1310.getVersion (),
                                                                              bNotDeprecated,
-                                                                             ValidationExecutorXSD.create (CPR_CII),
+                                                                             ValidationExecutorXSD.create (CCIID16B.getXSDResource ()),
                                                                              ValidationExecutorSchematron.createXSLT (INVOICE_CII_1310_XSLT,
                                                                                                                       CIID16BNamespaceContext.getInstance ())));
     }

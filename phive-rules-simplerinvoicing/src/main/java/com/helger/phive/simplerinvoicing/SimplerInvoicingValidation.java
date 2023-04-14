@@ -19,7 +19,7 @@ package com.helger.phive.simplerinvoicing;
 import javax.annotation.Nonnull;
 import javax.annotation.concurrent.Immutable;
 
-import com.helger.cii.d16b.CIID16BCrossIndustryInvoiceTypeMarshaller;
+import com.helger.cii.d16b.CCIID16B;
 import com.helger.commons.ValueEnforcer;
 import com.helger.commons.io.resource.ClassPathResource;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
@@ -224,11 +224,6 @@ public final class SimplerInvoicingValidation
   // 2.0.3.6
   public static final ClassPathResource INVOICE_SI2036 = new ClassPathResource (PATH_SI + "si-ubl-2.0.3.6.xslt",
                                                                                 _getCL ());
-
-  // TODO replace with constant from CIID16BCrossIndustryInvoiceTypeMarshaller
-  // in ph-cii >= 3.0.1
-  private static final ClassPathResource CPR_CII = new ClassPathResource (CIID16BCrossIndustryInvoiceTypeMarshaller.XSD_PATH,
-                                                                          CIID16BCrossIndustryInvoiceTypeMarshaller.class.getClassLoader ());
 
   private SimplerInvoicingValidation ()
   {}
@@ -493,7 +488,7 @@ public final class SimplerInvoicingValidation
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_SI_NLCIUS_CII_V103,
                                                                            "NLCIUS-CII 1.0.3",
                                                                            bDeprecated,
-                                                                           ValidationExecutorXSD.create (CPR_CII),
+                                                                           ValidationExecutorXSD.create (CCIID16B.getXSDResource ()),
                                                                            _createXSLT (new ClassPathResource (PATH_NL_CIUS +
                                                                                                                "nlcius-cii-1.0.3.xslt",
                                                                                                                _getCL ()))));
@@ -502,7 +497,7 @@ public final class SimplerInvoicingValidation
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_SI_NLCIUS_CII_V1031,
                                                                            "NLCIUS-CII 1.0.3.1",
                                                                            bDeprecated,
-                                                                           ValidationExecutorXSD.create (CPR_CII),
+                                                                           ValidationExecutorXSD.create (CCIID16B.getXSDResource ()),
                                                                            _createXSLT (new ClassPathResource (PATH_NL_CIUS +
                                                                                                                "nlcius-cii-1.0.3.1.xslt",
                                                                                                                _getCL ()))));
@@ -511,7 +506,7 @@ public final class SimplerInvoicingValidation
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_SI_NLCIUS_CII_V1032,
                                                                            "NLCIUS-CII 1.0.3.2",
                                                                            bDeprecated,
-                                                                           ValidationExecutorXSD.create (CPR_CII),
+                                                                           ValidationExecutorXSD.create (CCIID16B.getXSDResource ()),
                                                                            _createXSLT (new ClassPathResource (PATH_NL_CIUS +
                                                                                                                "nlcius-cii-1.0.3.2.xslt",
                                                                                                                _getCL ()))));
@@ -520,7 +515,7 @@ public final class SimplerInvoicingValidation
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_SI_NLCIUS_CII_V1033,
                                                                            "NLCIUS-CII 1.0.3.3",
                                                                            bDeprecated,
-                                                                           ValidationExecutorXSD.create (CPR_CII),
+                                                                           ValidationExecutorXSD.create (CCIID16B.getXSDResource ()),
                                                                            _createXSLT (new ClassPathResource (PATH_NL_CIUS +
                                                                                                                "nlcius-cii-1.0.3.3.xslt",
                                                                                                                _getCL ()))));
@@ -529,7 +524,7 @@ public final class SimplerInvoicingValidation
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_SI_NLCIUS_CII_V1034,
                                                                            "NLCIUS-CII 1.0.3.4",
                                                                            bDeprecated,
-                                                                           ValidationExecutorXSD.create (CPR_CII),
+                                                                           ValidationExecutorXSD.create (CCIID16B.getXSDResource ()),
                                                                            _createXSLT (new ClassPathResource (PATH_NL_CIUS +
                                                                                                                "nlcius-cii-1.0.3.4.xslt",
                                                                                                                _getCL ()))));
@@ -538,7 +533,7 @@ public final class SimplerInvoicingValidation
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_SI_NLCIUS_CII_V1035,
                                                                            "NLCIUS-CII 1.0.3.5",
                                                                            bNotDeprecated,
-                                                                           ValidationExecutorXSD.create (CPR_CII),
+                                                                           ValidationExecutorXSD.create (CCIID16B.getXSDResource ()),
                                                                            _createXSLT (new ClassPathResource (PATH_NL_CIUS +
                                                                                                                "nlcius-cii-1.0.3.5.xslt",
                                                                                                                _getCL ()))));

@@ -22,8 +22,8 @@ import java.time.Month;
 import javax.annotation.Nonnull;
 import javax.annotation.concurrent.Immutable;
 
+import com.helger.cii.d16b.CCIID16B;
 import com.helger.cii.d16b.CIID16BNamespaceContext;
-import com.helger.cii.d16b.ECIID16BDocumentType;
 import com.helger.commons.ValueEnforcer;
 import com.helger.commons.datetime.PDTFactory;
 import com.helger.commons.io.resource.ClassPathResource;
@@ -167,7 +167,7 @@ public final class PeppolValidation3_14_0
                                                                                                           sVersion +
                                                                                                           sAkaVersionBilling,
                                                                            bDeprecated,
-                                                                           ValidationExecutorXSD.create (ECIID16BDocumentType.CROSS_INDUSTRY_INVOICE),
+                                                                           ValidationExecutorXSD.create (CCIID16B.getXSDResource ()),
                                                                            _createXsltCII (INVOICE_CII_CEN),
                                                                            _createXsltCII (INVOICE_CII_PEPPOL)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_ORDER_V3,
