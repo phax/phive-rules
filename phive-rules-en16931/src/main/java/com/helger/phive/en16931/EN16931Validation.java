@@ -42,6 +42,8 @@ import com.helger.ubl21.UBL21NamespaceContext;
 @Immutable
 public final class EN16931Validation
 {
+  private static final String GROUP_ID = "eu.cen.en16931";
+
   private static final String VERSION_100 = "1.0.0";
   private static final String VERSION_110 = "1.1.0";
   private static final String VERSION_120 = "1.2.0";
@@ -64,104 +66,104 @@ public final class EN16931Validation
 
   // CII
   @Deprecated
-  public static final VESID VID_CII_100 = new VESID ("eu.cen.en16931", "cii", VERSION_100);
+  public static final VESID VID_CII_100 = new VESID (GROUP_ID, "cii", VERSION_100);
   @Deprecated
-  public static final VESID VID_CII_110 = new VESID ("eu.cen.en16931", "cii", VERSION_110);
+  public static final VESID VID_CII_110 = new VESID (GROUP_ID, "cii", VERSION_110);
   @Deprecated
-  public static final VESID VID_CII_120 = new VESID ("eu.cen.en16931", "cii", VERSION_120);
+  public static final VESID VID_CII_120 = new VESID (GROUP_ID, "cii", VERSION_120);
   @Deprecated
-  public static final VESID VID_CII_121 = new VESID ("eu.cen.en16931", "cii", VERSION_121);
+  public static final VESID VID_CII_121 = new VESID (GROUP_ID, "cii", VERSION_121);
   @Deprecated
-  public static final VESID VID_CII_123 = new VESID ("eu.cen.en16931", "cii", VERSION_123);
+  public static final VESID VID_CII_123 = new VESID (GROUP_ID, "cii", VERSION_123);
   @Deprecated
-  public static final VESID VID_CII_130 = new VESID ("eu.cen.en16931", "cii", VERSION_130);
+  public static final VESID VID_CII_130 = new VESID (GROUP_ID, "cii", VERSION_130);
   @Deprecated
-  public static final VESID VID_CII_131 = new VESID ("eu.cen.en16931", "cii", VERSION_131);
+  public static final VESID VID_CII_131 = new VESID (GROUP_ID, "cii", VERSION_131);
   @Deprecated
-  public static final VESID VID_CII_132 = new VESID ("eu.cen.en16931", "cii", VERSION_132);
+  public static final VESID VID_CII_132 = new VESID (GROUP_ID, "cii", VERSION_132);
   @Deprecated
-  public static final VESID VID_CII_133 = new VESID ("eu.cen.en16931", "cii", VERSION_133);
+  public static final VESID VID_CII_133 = new VESID (GROUP_ID, "cii", VERSION_133);
   @Deprecated
-  public static final VESID VID_CII_134 = new VESID ("eu.cen.en16931", "cii", VERSION_134);
+  public static final VESID VID_CII_134 = new VESID (GROUP_ID, "cii", VERSION_134);
   @Deprecated
-  public static final VESID VID_CII_135 = new VESID ("eu.cen.en16931", "cii", VERSION_135);
+  public static final VESID VID_CII_135 = new VESID (GROUP_ID, "cii", VERSION_135);
   @Deprecated
-  public static final VESID VID_CII_136 = new VESID ("eu.cen.en16931", "cii", VERSION_136);
+  public static final VESID VID_CII_136 = new VESID (GROUP_ID, "cii", VERSION_136);
   @Deprecated
-  public static final VESID VID_CII_136A = new VESID ("eu.cen.en16931", "cii", VERSION_136A);
+  public static final VESID VID_CII_136A = new VESID (GROUP_ID, "cii", VERSION_136A);
   @Deprecated
-  public static final VESID VID_CII_137 = new VESID ("eu.cen.en16931", "cii", VERSION_137);
+  public static final VESID VID_CII_137 = new VESID (GROUP_ID, "cii", VERSION_137);
   @Deprecated
-  public static final VESID VID_CII_138 = new VESID ("eu.cen.en16931", "cii", VERSION_138);
-  public static final VESID VID_CII_139 = new VESID ("eu.cen.en16931", "cii", VERSION_139);
-  public static final VESID VID_CII_1310 = new VESID ("eu.cen.en16931", "cii", VERSION_1310);
+  public static final VESID VID_CII_138 = new VESID (GROUP_ID, "cii", VERSION_138);
+  public static final VESID VID_CII_139 = new VESID (GROUP_ID, "cii", VERSION_139);
+  public static final VESID VID_CII_1310 = new VESID (GROUP_ID, "cii", VERSION_1310);
 
   // UBL
   @Deprecated
-  public static final VESID VID_UBL_INVOICE_100 = new VESID ("eu.cen.en16931", "ubl", VERSION_100);
+  public static final VESID VID_UBL_INVOICE_100 = new VESID (GROUP_ID, "ubl", VERSION_100);
   @Deprecated
-  public static final VESID VID_UBL_INVOICE_110 = new VESID ("eu.cen.en16931", "ubl", VERSION_110);
+  public static final VESID VID_UBL_INVOICE_110 = new VESID (GROUP_ID, "ubl", VERSION_110);
   @Deprecated
-  public static final VESID VID_UBL_INVOICE_120 = new VESID ("eu.cen.en16931", "ubl", VERSION_120);
+  public static final VESID VID_UBL_INVOICE_120 = new VESID (GROUP_ID, "ubl", VERSION_120);
   @Deprecated
-  public static final VESID VID_UBL_INVOICE_121 = new VESID ("eu.cen.en16931", "ubl", VERSION_121);
+  public static final VESID VID_UBL_INVOICE_121 = new VESID (GROUP_ID, "ubl", VERSION_121);
   @Deprecated
-  public static final VESID VID_UBL_INVOICE_123 = new VESID ("eu.cen.en16931", "ubl", VERSION_123);
+  public static final VESID VID_UBL_INVOICE_123 = new VESID (GROUP_ID, "ubl", VERSION_123);
   @Deprecated
-  public static final VESID VID_UBL_INVOICE_130 = new VESID ("eu.cen.en16931", "ubl", VERSION_130);
+  public static final VESID VID_UBL_INVOICE_130 = new VESID (GROUP_ID, "ubl", VERSION_130);
   @Deprecated
-  public static final VESID VID_UBL_INVOICE_131 = new VESID ("eu.cen.en16931", "ubl", VERSION_131);
+  public static final VESID VID_UBL_INVOICE_131 = new VESID (GROUP_ID, "ubl", VERSION_131);
   @Deprecated
-  public static final VESID VID_UBL_INVOICE_132 = new VESID ("eu.cen.en16931", "ubl", VERSION_132);
+  public static final VESID VID_UBL_INVOICE_132 = new VESID (GROUP_ID, "ubl", VERSION_132);
   @Deprecated
-  public static final VESID VID_UBL_INVOICE_133 = new VESID ("eu.cen.en16931", "ubl", VERSION_133);
+  public static final VESID VID_UBL_INVOICE_133 = new VESID (GROUP_ID, "ubl", VERSION_133);
   @Deprecated
-  public static final VESID VID_UBL_INVOICE_134 = new VESID ("eu.cen.en16931", "ubl", VERSION_134);
+  public static final VESID VID_UBL_INVOICE_134 = new VESID (GROUP_ID, "ubl", VERSION_134);
   @Deprecated
-  public static final VESID VID_UBL_INVOICE_135 = new VESID ("eu.cen.en16931", "ubl", VERSION_135);
+  public static final VESID VID_UBL_INVOICE_135 = new VESID (GROUP_ID, "ubl", VERSION_135);
   @Deprecated
-  public static final VESID VID_UBL_INVOICE_136 = new VESID ("eu.cen.en16931", "ubl", VERSION_136);
+  public static final VESID VID_UBL_INVOICE_136 = new VESID (GROUP_ID, "ubl", VERSION_136);
   @Deprecated
-  public static final VESID VID_UBL_INVOICE_136A = new VESID ("eu.cen.en16931", "ubl", VERSION_136A);
+  public static final VESID VID_UBL_INVOICE_136A = new VESID (GROUP_ID, "ubl", VERSION_136A);
   @Deprecated
-  public static final VESID VID_UBL_INVOICE_137 = new VESID ("eu.cen.en16931", "ubl", VERSION_137);
+  public static final VESID VID_UBL_INVOICE_137 = new VESID (GROUP_ID, "ubl", VERSION_137);
   @Deprecated
-  public static final VESID VID_UBL_INVOICE_138 = new VESID ("eu.cen.en16931", "ubl", VERSION_138);
-  public static final VESID VID_UBL_INVOICE_139 = new VESID ("eu.cen.en16931", "ubl", VERSION_139);
-  public static final VESID VID_UBL_INVOICE_1310 = new VESID ("eu.cen.en16931", "ubl", VERSION_1310);
+  public static final VESID VID_UBL_INVOICE_138 = new VESID (GROUP_ID, "ubl", VERSION_138);
+  public static final VESID VID_UBL_INVOICE_139 = new VESID (GROUP_ID, "ubl", VERSION_139);
+  public static final VESID VID_UBL_INVOICE_1310 = new VESID (GROUP_ID, "ubl", VERSION_1310);
 
   @Deprecated
-  public static final VESID VID_UBL_CREDIT_NOTE_100 = new VESID ("eu.cen.en16931", "ubl-creditnote", VERSION_100);
+  public static final VESID VID_UBL_CREDIT_NOTE_100 = new VESID (GROUP_ID, "ubl-creditnote", VERSION_100);
   @Deprecated
-  public static final VESID VID_UBL_CREDIT_NOTE_110 = new VESID ("eu.cen.en16931", "ubl-creditnote", VERSION_110);
+  public static final VESID VID_UBL_CREDIT_NOTE_110 = new VESID (GROUP_ID, "ubl-creditnote", VERSION_110);
   @Deprecated
-  public static final VESID VID_UBL_CREDIT_NOTE_120 = new VESID ("eu.cen.en16931", "ubl-creditnote", VERSION_120);
+  public static final VESID VID_UBL_CREDIT_NOTE_120 = new VESID (GROUP_ID, "ubl-creditnote", VERSION_120);
   @Deprecated
-  public static final VESID VID_UBL_CREDIT_NOTE_121 = new VESID ("eu.cen.en16931", "ubl-creditnote", VERSION_121);
+  public static final VESID VID_UBL_CREDIT_NOTE_121 = new VESID (GROUP_ID, "ubl-creditnote", VERSION_121);
   @Deprecated
-  public static final VESID VID_UBL_CREDIT_NOTE_123 = new VESID ("eu.cen.en16931", "ubl-creditnote", VERSION_123);
+  public static final VESID VID_UBL_CREDIT_NOTE_123 = new VESID (GROUP_ID, "ubl-creditnote", VERSION_123);
   @Deprecated
-  public static final VESID VID_UBL_CREDIT_NOTE_130 = new VESID ("eu.cen.en16931", "ubl-creditnote", VERSION_130);
+  public static final VESID VID_UBL_CREDIT_NOTE_130 = new VESID (GROUP_ID, "ubl-creditnote", VERSION_130);
   @Deprecated
-  public static final VESID VID_UBL_CREDIT_NOTE_131 = new VESID ("eu.cen.en16931", "ubl-creditnote", VERSION_131);
+  public static final VESID VID_UBL_CREDIT_NOTE_131 = new VESID (GROUP_ID, "ubl-creditnote", VERSION_131);
   @Deprecated
-  public static final VESID VID_UBL_CREDIT_NOTE_132 = new VESID ("eu.cen.en16931", "ubl-creditnote", VERSION_132);
+  public static final VESID VID_UBL_CREDIT_NOTE_132 = new VESID (GROUP_ID, "ubl-creditnote", VERSION_132);
   @Deprecated
-  public static final VESID VID_UBL_CREDIT_NOTE_133 = new VESID ("eu.cen.en16931", "ubl-creditnote", VERSION_133);
+  public static final VESID VID_UBL_CREDIT_NOTE_133 = new VESID (GROUP_ID, "ubl-creditnote", VERSION_133);
   @Deprecated
-  public static final VESID VID_UBL_CREDIT_NOTE_134 = new VESID ("eu.cen.en16931", "ubl-creditnote", VERSION_134);
+  public static final VESID VID_UBL_CREDIT_NOTE_134 = new VESID (GROUP_ID, "ubl-creditnote", VERSION_134);
   @Deprecated
-  public static final VESID VID_UBL_CREDIT_NOTE_135 = new VESID ("eu.cen.en16931", "ubl-creditnote", VERSION_135);
+  public static final VESID VID_UBL_CREDIT_NOTE_135 = new VESID (GROUP_ID, "ubl-creditnote", VERSION_135);
   @Deprecated
-  public static final VESID VID_UBL_CREDIT_NOTE_136 = new VESID ("eu.cen.en16931", "ubl-creditnote", VERSION_136);
+  public static final VESID VID_UBL_CREDIT_NOTE_136 = new VESID (GROUP_ID, "ubl-creditnote", VERSION_136);
   @Deprecated
-  public static final VESID VID_UBL_CREDIT_NOTE_136A = new VESID ("eu.cen.en16931", "ubl-creditnote", VERSION_136A);
+  public static final VESID VID_UBL_CREDIT_NOTE_136A = new VESID (GROUP_ID, "ubl-creditnote", VERSION_136A);
   @Deprecated
-  public static final VESID VID_UBL_CREDIT_NOTE_137 = new VESID ("eu.cen.en16931", "ubl-creditnote", VERSION_137);
+  public static final VESID VID_UBL_CREDIT_NOTE_137 = new VESID (GROUP_ID, "ubl-creditnote", VERSION_137);
   @Deprecated
-  public static final VESID VID_UBL_CREDIT_NOTE_138 = new VESID ("eu.cen.en16931", "ubl-creditnote", VERSION_138);
-  public static final VESID VID_UBL_CREDIT_NOTE_139 = new VESID ("eu.cen.en16931", "ubl-creditnote", VERSION_139);
-  public static final VESID VID_UBL_CREDIT_NOTE_1310 = new VESID ("eu.cen.en16931", "ubl-creditnote", VERSION_1310);
+  public static final VESID VID_UBL_CREDIT_NOTE_138 = new VESID (GROUP_ID, "ubl-creditnote", VERSION_138);
+  public static final VESID VID_UBL_CREDIT_NOTE_139 = new VESID (GROUP_ID, "ubl-creditnote", VERSION_139);
+  public static final VESID VID_UBL_CREDIT_NOTE_1310 = new VESID (GROUP_ID, "ubl-creditnote", VERSION_1310);
 
   @Nonnull
   private static ClassLoader _getCL ()
