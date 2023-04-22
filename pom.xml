@@ -96,7 +96,7 @@
       <dependency>
         <groupId>com.helger.ubl</groupId>
         <artifactId>ph-ubl-parent-pom</artifactId>
-        <version>7.0.0</version>
+        <version>8.0.0</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
@@ -110,7 +110,7 @@
       <dependency>
         <groupId>com.helger</groupId>
         <artifactId>ph-ebinterface</artifactId>
-        <version>7.0.0</version>
+        <version>7.1.0</version>
       </dependency>
       <dependency>
         <groupId>com.helger</groupId>
