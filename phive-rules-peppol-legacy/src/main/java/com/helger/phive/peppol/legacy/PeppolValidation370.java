@@ -34,6 +34,7 @@ import com.helger.phive.engine.schematron.ValidationExecutorSchematron;
 import com.helger.phive.engine.source.IValidationSourceXML;
 import com.helger.phive.engine.xsd.ValidationExecutorXSD;
 import com.helger.ubl21.EUBL21DocumentType;
+import com.helger.ubl21.UBL21Marshaller;
 import com.helger.ubl21.UBL21NamespaceContext;
 
 /**
@@ -204,7 +205,7 @@ public final class PeppolValidation370
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_T10_V2,
                                                                            "OpenPeppol Invoice" + sVersion + sAkaBIS2,
                                                                            bDeprecated,
-                                                                           ValidationExecutorXSD.create (EUBL21DocumentType.INVOICE),
+                                                                           ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
                                                                            _createXSLT (INVOICE_RULES),
                                                                            _createXSLT (INVOICE_OPENPEPPOL),
                                                                            _createXSLT (INVOICE_OPENPEPPOL_CORE)));
@@ -213,7 +214,7 @@ public final class PeppolValidation370
                                                                                                   sVersion +
                                                                                                   sAkaBIS2,
                                                                            bDeprecated,
-                                                                           ValidationExecutorXSD.create (EUBL21DocumentType.CREDIT_NOTE),
+                                                                           ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
                                                                            _createXSLT (CREDIT_NOTE_RULES),
                                                                            _createXSLT (CREDIT_NOTE_OPENPEPPOL),
                                                                            _createXSLT (CREDIT_NOTE_OPENPEPPOL_CORE)));
@@ -285,13 +286,13 @@ public final class PeppolValidation370
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_BIS3_UBL_INVOICE,
                                                                            "OpenPeppol Invoice BIS3 (UBL)",
                                                                            bDeprecated,
-                                                                           ValidationExecutorXSD.create (EUBL21DocumentType.INVOICE),
+                                                                           ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
                                                                            _createXSLT (BIS3_BILLING_CEN),
                                                                            _createXSLT (BIS3_BILLING_PEPPOL)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_BIS3_UBL_CREDIT_NOTE,
                                                                            "OpenPeppol CreditNote BIS3 (UBL)",
                                                                            bDeprecated,
-                                                                           ValidationExecutorXSD.create (EUBL21DocumentType.CREDIT_NOTE),
+                                                                           ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
                                                                            _createXSLT (BIS3_BILLING_CEN),
                                                                            _createXSLT (BIS3_BILLING_PEPPOL)));
   }

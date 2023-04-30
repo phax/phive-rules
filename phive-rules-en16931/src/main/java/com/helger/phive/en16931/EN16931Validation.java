@@ -31,7 +31,7 @@ import com.helger.phive.engine.schematron.SchematronNamespaceBeautifier;
 import com.helger.phive.engine.schematron.ValidationExecutorSchematron;
 import com.helger.phive.engine.source.IValidationSourceXML;
 import com.helger.phive.engine.xsd.ValidationExecutorXSD;
-import com.helger.ubl21.EUBL21DocumentType;
+import com.helger.ubl21.UBL21Marshaller;
 import com.helger.ubl21.UBL21NamespaceContext;
 
 /**
@@ -454,7 +454,6 @@ public final class EN16931Validation
                                                                              ValidationExecutorSchematron.createXSLT (INVOICE_CII_1310_XSLT,
                                                                                                                       CIID16BNamespaceContext.getInstance ())));
     }
-
     // UBL
     {
       // 1.0.0
@@ -462,14 +461,14 @@ public final class EN16931Validation
                                                                              "EN 16931 UBL Invoice " +
                                                                                                   VID_UBL_INVOICE_100.getVersion (),
                                                                              bDeprecated,
-                                                                             ValidationExecutorXSD.create (EUBL21DocumentType.INVOICE),
+                                                                             ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
                                                                              ValidationExecutorSchematron.createXSLT (INVOICE_UBL_100_XSLT,
                                                                                                                       UBL21NamespaceContext.getInstance ())));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_UBL_CREDIT_NOTE_100,
                                                                              "EN 16931 UBL CreditNote " +
                                                                                                       VID_UBL_CREDIT_NOTE_100.getVersion (),
                                                                              bDeprecated,
-                                                                             ValidationExecutorXSD.create (EUBL21DocumentType.CREDIT_NOTE),
+                                                                             ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
                                                                              ValidationExecutorSchematron.createXSLT (INVOICE_UBL_110_XSLT,
                                                                                                                       UBL21NamespaceContext.getInstance ())));
 
@@ -478,14 +477,14 @@ public final class EN16931Validation
                                                                              "EN 16931 UBL Invoice " +
                                                                                                   VID_UBL_INVOICE_110.getVersion (),
                                                                              bDeprecated,
-                                                                             ValidationExecutorXSD.create (EUBL21DocumentType.INVOICE),
+                                                                             ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
                                                                              ValidationExecutorSchematron.createXSLT (INVOICE_UBL_110_XSLT,
                                                                                                                       UBL21NamespaceContext.getInstance ())));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_UBL_CREDIT_NOTE_110,
                                                                              "EN 16931 UBL CreditNote " +
                                                                                                       VID_UBL_CREDIT_NOTE_110.getVersion (),
                                                                              bDeprecated,
-                                                                             ValidationExecutorXSD.create (EUBL21DocumentType.CREDIT_NOTE),
+                                                                             ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
                                                                              ValidationExecutorSchematron.createXSLT (INVOICE_UBL_110_XSLT,
                                                                                                                       UBL21NamespaceContext.getInstance ())));
 
@@ -494,14 +493,14 @@ public final class EN16931Validation
                                                                              "EN 16931 UBL Invoice " +
                                                                                                   VID_UBL_INVOICE_120.getVersion (),
                                                                              bDeprecated,
-                                                                             ValidationExecutorXSD.create (EUBL21DocumentType.INVOICE),
+                                                                             ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
                                                                              ValidationExecutorSchematron.createXSLT (INVOICE_UBL_120_XSLT,
                                                                                                                       UBL21NamespaceContext.getInstance ())));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_UBL_CREDIT_NOTE_120,
                                                                              "EN 16931 UBL CreditNote " +
                                                                                                       VID_UBL_CREDIT_NOTE_120.getVersion (),
                                                                              bDeprecated,
-                                                                             ValidationExecutorXSD.create (EUBL21DocumentType.CREDIT_NOTE),
+                                                                             ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
                                                                              ValidationExecutorSchematron.createXSLT (INVOICE_UBL_120_XSLT,
                                                                                                                       UBL21NamespaceContext.getInstance ())));
 
@@ -510,14 +509,14 @@ public final class EN16931Validation
                                                                              "EN 16931 UBL Invoice " +
                                                                                                   VID_UBL_INVOICE_121.getVersion (),
                                                                              bDeprecated,
-                                                                             ValidationExecutorXSD.create (EUBL21DocumentType.INVOICE),
+                                                                             ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
                                                                              ValidationExecutorSchematron.createXSLT (INVOICE_UBL_121_XSLT,
                                                                                                                       UBL21NamespaceContext.getInstance ())));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_UBL_CREDIT_NOTE_121,
                                                                              "EN 16931 UBL CreditNote " +
                                                                                                       VID_UBL_CREDIT_NOTE_121.getVersion (),
                                                                              bDeprecated,
-                                                                             ValidationExecutorXSD.create (EUBL21DocumentType.CREDIT_NOTE),
+                                                                             ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
                                                                              ValidationExecutorSchematron.createXSLT (INVOICE_UBL_121_XSLT,
                                                                                                                       UBL21NamespaceContext.getInstance ())));
 
@@ -526,14 +525,14 @@ public final class EN16931Validation
                                                                              "EN 16931 UBL Invoice " +
                                                                                                   VID_UBL_INVOICE_123.getVersion (),
                                                                              bDeprecated,
-                                                                             ValidationExecutorXSD.create (EUBL21DocumentType.INVOICE),
+                                                                             ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
                                                                              ValidationExecutorSchematron.createXSLT (INVOICE_UBL_123_XSLT,
                                                                                                                       UBL21NamespaceContext.getInstance ())));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_UBL_CREDIT_NOTE_123,
                                                                              "EN 16931 UBL CreditNote " +
                                                                                                       VID_UBL_CREDIT_NOTE_123.getVersion (),
                                                                              bDeprecated,
-                                                                             ValidationExecutorXSD.create (EUBL21DocumentType.CREDIT_NOTE),
+                                                                             ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
                                                                              ValidationExecutorSchematron.createXSLT (INVOICE_UBL_123_XSLT,
                                                                                                                       UBL21NamespaceContext.getInstance ())));
 
@@ -542,14 +541,14 @@ public final class EN16931Validation
                                                                              "EN 16931 UBL Invoice " +
                                                                                                   VID_UBL_INVOICE_130.getVersion (),
                                                                              bDeprecated,
-                                                                             ValidationExecutorXSD.create (EUBL21DocumentType.INVOICE),
+                                                                             ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
                                                                              ValidationExecutorSchematron.createXSLT (INVOICE_UBL_130_XSLT,
                                                                                                                       UBL21NamespaceContext.getInstance ())));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_UBL_CREDIT_NOTE_130,
                                                                              "EN 16931 UBL CreditNote " +
                                                                                                       VID_UBL_CREDIT_NOTE_130.getVersion (),
                                                                              bDeprecated,
-                                                                             ValidationExecutorXSD.create (EUBL21DocumentType.CREDIT_NOTE),
+                                                                             ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
                                                                              ValidationExecutorSchematron.createXSLT (INVOICE_UBL_130_XSLT,
                                                                                                                       UBL21NamespaceContext.getInstance ())));
 
@@ -558,14 +557,14 @@ public final class EN16931Validation
                                                                              "EN 16931 UBL Invoice " +
                                                                                                   VID_UBL_INVOICE_131.getVersion (),
                                                                              bDeprecated,
-                                                                             ValidationExecutorXSD.create (EUBL21DocumentType.INVOICE),
+                                                                             ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
                                                                              ValidationExecutorSchematron.createXSLT (INVOICE_UBL_131_XSLT,
                                                                                                                       UBL21NamespaceContext.getInstance ())));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_UBL_CREDIT_NOTE_131,
                                                                              "EN 16931 UBL CreditNote " +
                                                                                                       VID_UBL_CREDIT_NOTE_131.getVersion (),
                                                                              bDeprecated,
-                                                                             ValidationExecutorXSD.create (EUBL21DocumentType.CREDIT_NOTE),
+                                                                             ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
                                                                              ValidationExecutorSchematron.createXSLT (INVOICE_UBL_131_XSLT,
                                                                                                                       UBL21NamespaceContext.getInstance ())));
 
@@ -574,14 +573,14 @@ public final class EN16931Validation
                                                                              "EN 16931 UBL Invoice " +
                                                                                                   VID_UBL_INVOICE_132.getVersion (),
                                                                              bDeprecated,
-                                                                             ValidationExecutorXSD.create (EUBL21DocumentType.INVOICE),
+                                                                             ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
                                                                              ValidationExecutorSchematron.createXSLT (INVOICE_UBL_132_XSLT,
                                                                                                                       UBL21NamespaceContext.getInstance ())));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_UBL_CREDIT_NOTE_132,
                                                                              "EN 16931 UBL CreditNote " +
                                                                                                       VID_UBL_CREDIT_NOTE_132.getVersion (),
                                                                              bDeprecated,
-                                                                             ValidationExecutorXSD.create (EUBL21DocumentType.CREDIT_NOTE),
+                                                                             ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
                                                                              ValidationExecutorSchematron.createXSLT (INVOICE_UBL_132_XSLT,
                                                                                                                       UBL21NamespaceContext.getInstance ())));
 
@@ -590,14 +589,14 @@ public final class EN16931Validation
                                                                              "EN 16931 UBL Invoice " +
                                                                                                   VID_UBL_INVOICE_133.getVersion (),
                                                                              bDeprecated,
-                                                                             ValidationExecutorXSD.create (EUBL21DocumentType.INVOICE),
+                                                                             ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
                                                                              ValidationExecutorSchematron.createXSLT (INVOICE_UBL_133_XSLT,
                                                                                                                       UBL21NamespaceContext.getInstance ())));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_UBL_CREDIT_NOTE_133,
                                                                              "EN 16931 UBL CreditNote " +
                                                                                                       VID_UBL_CREDIT_NOTE_133.getVersion (),
                                                                              bDeprecated,
-                                                                             ValidationExecutorXSD.create (EUBL21DocumentType.CREDIT_NOTE),
+                                                                             ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
                                                                              ValidationExecutorSchematron.createXSLT (INVOICE_UBL_133_XSLT,
                                                                                                                       UBL21NamespaceContext.getInstance ())));
 
@@ -606,14 +605,14 @@ public final class EN16931Validation
                                                                              "EN 16931 UBL Invoice " +
                                                                                                   VID_UBL_INVOICE_134.getVersion (),
                                                                              bDeprecated,
-                                                                             ValidationExecutorXSD.create (EUBL21DocumentType.INVOICE),
+                                                                             ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
                                                                              ValidationExecutorSchematron.createXSLT (INVOICE_UBL_134_XSLT,
                                                                                                                       UBL21NamespaceContext.getInstance ())));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_UBL_CREDIT_NOTE_134,
                                                                              "EN 16931 UBL CreditNote " +
                                                                                                       VID_UBL_CREDIT_NOTE_134.getVersion (),
                                                                              bDeprecated,
-                                                                             ValidationExecutorXSD.create (EUBL21DocumentType.CREDIT_NOTE),
+                                                                             ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
                                                                              ValidationExecutorSchematron.createXSLT (INVOICE_UBL_134_XSLT,
                                                                                                                       UBL21NamespaceContext.getInstance ())));
 
@@ -622,14 +621,14 @@ public final class EN16931Validation
                                                                              "EN 16931 UBL Invoice " +
                                                                                                   VID_UBL_INVOICE_135.getVersion (),
                                                                              bDeprecated,
-                                                                             ValidationExecutorXSD.create (EUBL21DocumentType.INVOICE),
+                                                                             ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
                                                                              ValidationExecutorSchematron.createXSLT (INVOICE_UBL_135_XSLT,
                                                                                                                       UBL21NamespaceContext.getInstance ())));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_UBL_CREDIT_NOTE_135,
                                                                              "EN 16931 UBL CreditNote " +
                                                                                                       VID_UBL_CREDIT_NOTE_135.getVersion (),
                                                                              bDeprecated,
-                                                                             ValidationExecutorXSD.create (EUBL21DocumentType.CREDIT_NOTE),
+                                                                             ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
                                                                              ValidationExecutorSchematron.createXSLT (INVOICE_UBL_135_XSLT,
                                                                                                                       UBL21NamespaceContext.getInstance ())));
 
@@ -638,14 +637,14 @@ public final class EN16931Validation
                                                                              "EN 16931 UBL Invoice " +
                                                                                                   VID_UBL_INVOICE_136.getVersion (),
                                                                              bDeprecated,
-                                                                             ValidationExecutorXSD.create (EUBL21DocumentType.INVOICE),
+                                                                             ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
                                                                              ValidationExecutorSchematron.createXSLT (INVOICE_UBL_136_XSLT,
                                                                                                                       UBL21NamespaceContext.getInstance ())));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_UBL_CREDIT_NOTE_136,
                                                                              "EN 16931 UBL CreditNote " +
                                                                                                       VID_UBL_CREDIT_NOTE_136.getVersion (),
                                                                              bDeprecated,
-                                                                             ValidationExecutorXSD.create (EUBL21DocumentType.CREDIT_NOTE),
+                                                                             ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
                                                                              ValidationExecutorSchematron.createXSLT (INVOICE_UBL_136_XSLT,
                                                                                                                       UBL21NamespaceContext.getInstance ())));
 
@@ -654,14 +653,14 @@ public final class EN16931Validation
                                                                              "EN 16931 UBL Invoice " +
                                                                                                    VID_UBL_INVOICE_136A.getVersion (),
                                                                              bDeprecated,
-                                                                             ValidationExecutorXSD.create (EUBL21DocumentType.INVOICE),
+                                                                             ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
                                                                              ValidationExecutorSchematron.createXSLT (INVOICE_UBL_136A_XSLT,
                                                                                                                       UBL21NamespaceContext.getInstance ())));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_UBL_CREDIT_NOTE_136A,
                                                                              "EN 16931 UBL CreditNote " +
                                                                                                        VID_UBL_CREDIT_NOTE_136A.getVersion (),
                                                                              bDeprecated,
-                                                                             ValidationExecutorXSD.create (EUBL21DocumentType.CREDIT_NOTE),
+                                                                             ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
                                                                              ValidationExecutorSchematron.createXSLT (INVOICE_UBL_136A_XSLT,
                                                                                                                       UBL21NamespaceContext.getInstance ())));
 
@@ -670,14 +669,14 @@ public final class EN16931Validation
                                                                              "EN 16931 UBL Invoice " +
                                                                                                   VID_UBL_INVOICE_137.getVersion (),
                                                                              bDeprecated,
-                                                                             ValidationExecutorXSD.create (EUBL21DocumentType.INVOICE),
+                                                                             ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
                                                                              ValidationExecutorSchematron.createXSLT (INVOICE_UBL_137_XSLT,
                                                                                                                       UBL21NamespaceContext.getInstance ())));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_UBL_CREDIT_NOTE_137,
                                                                              "EN 16931 UBL CreditNote " +
                                                                                                       VID_UBL_CREDIT_NOTE_137.getVersion (),
                                                                              bDeprecated,
-                                                                             ValidationExecutorXSD.create (EUBL21DocumentType.CREDIT_NOTE),
+                                                                             ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
                                                                              ValidationExecutorSchematron.createXSLT (INVOICE_UBL_137_XSLT,
                                                                                                                       UBL21NamespaceContext.getInstance ())));
 
@@ -686,14 +685,14 @@ public final class EN16931Validation
                                                                              "EN 16931 UBL Invoice " +
                                                                                                   VID_UBL_INVOICE_138.getVersion (),
                                                                              bDeprecated,
-                                                                             ValidationExecutorXSD.create (EUBL21DocumentType.INVOICE),
+                                                                             ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
                                                                              ValidationExecutorSchematron.createXSLT (INVOICE_UBL_138_XSLT,
                                                                                                                       UBL21NamespaceContext.getInstance ())));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_UBL_CREDIT_NOTE_138,
                                                                              "EN 16931 UBL CreditNote " +
                                                                                                       VID_UBL_CREDIT_NOTE_138.getVersion (),
                                                                              bDeprecated,
-                                                                             ValidationExecutorXSD.create (EUBL21DocumentType.CREDIT_NOTE),
+                                                                             ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
                                                                              ValidationExecutorSchematron.createXSLT (INVOICE_UBL_138_XSLT,
                                                                                                                       UBL21NamespaceContext.getInstance ())));
 
@@ -702,14 +701,14 @@ public final class EN16931Validation
                                                                              "EN 16931 UBL Invoice " +
                                                                                                   VID_UBL_INVOICE_139.getVersion (),
                                                                              bNotDeprecated,
-                                                                             ValidationExecutorXSD.create (EUBL21DocumentType.INVOICE),
+                                                                             ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
                                                                              ValidationExecutorSchematron.createXSLT (INVOICE_UBL_139_XSLT,
                                                                                                                       UBL21NamespaceContext.getInstance ())));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_UBL_CREDIT_NOTE_139,
                                                                              "EN 16931 UBL CreditNote " +
                                                                                                       VID_UBL_CREDIT_NOTE_139.getVersion (),
                                                                              bNotDeprecated,
-                                                                             ValidationExecutorXSD.create (EUBL21DocumentType.CREDIT_NOTE),
+                                                                             ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
                                                                              ValidationExecutorSchematron.createXSLT (INVOICE_UBL_139_XSLT,
                                                                                                                       UBL21NamespaceContext.getInstance ())));
 
@@ -718,14 +717,14 @@ public final class EN16931Validation
                                                                              "EN 16931 UBL Invoice " +
                                                                                                    VID_UBL_INVOICE_1310.getVersion (),
                                                                              bNotDeprecated,
-                                                                             ValidationExecutorXSD.create (EUBL21DocumentType.INVOICE),
+                                                                             ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
                                                                              ValidationExecutorSchematron.createXSLT (INVOICE_UBL_1310_XSLT,
                                                                                                                       UBL21NamespaceContext.getInstance ())));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_UBL_CREDIT_NOTE_1310,
                                                                              "EN 16931 UBL CreditNote " +
                                                                                                        VID_UBL_CREDIT_NOTE_1310.getVersion (),
                                                                              bNotDeprecated,
-                                                                             ValidationExecutorXSD.create (EUBL21DocumentType.CREDIT_NOTE),
+                                                                             ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
                                                                              ValidationExecutorSchematron.createXSLT (INVOICE_UBL_1310_XSLT,
                                                                                                                       UBL21NamespaceContext.getInstance ())));
     }

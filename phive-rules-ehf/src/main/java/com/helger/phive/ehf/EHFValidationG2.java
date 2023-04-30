@@ -29,7 +29,7 @@ import com.helger.phive.engine.schematron.SchematronNamespaceBeautifier;
 import com.helger.phive.engine.schematron.ValidationExecutorSchematron;
 import com.helger.phive.engine.source.IValidationSourceXML;
 import com.helger.phive.engine.xsd.ValidationExecutorXSD;
-import com.helger.ubl21.EUBL21DocumentType;
+import com.helger.ubl21.UBL21Marshaller;
 import com.helger.ubl21.UBL21NamespaceContext;
 
 /**
@@ -245,7 +245,7 @@ public class EHFValidationG2
                                                                            "EHF Catalogue " +
                                                                                                      VID_EHF_CATALOGUE_1_0_13.getVersion (),
                                                                            bDeprecated,
-                                                                           ValidationExecutorXSD.create (EUBL21DocumentType.CATALOGUE),
+                                                                           ValidationExecutorXSD.create (UBL21Marshaller.getAllCatalogueXSDs ()),
                                                                            _createXSLT (new ClassPathResource (PATH_201811 +
                                                                                                                "BIIRULES-UBL-T19.xslt",
                                                                                                                _getCL ())),
@@ -258,7 +258,7 @@ public class EHFValidationG2
                                                                            "EHF Catalogue Response " +
                                                                                                               VID_EHF_CATALOGUE_RESPONSE_1_0_13.getVersion (),
                                                                            bDeprecated,
-                                                                           ValidationExecutorXSD.create (EUBL21DocumentType.APPLICATION_RESPONSE),
+                                                                           ValidationExecutorXSD.create (UBL21Marshaller.getAllApplicationResponseXSDs ()),
                                                                            _createXSLT (new ClassPathResource (PATH_201811 +
                                                                                                                "BIIRULES-UBL-T58.xslt",
                                                                                                                _getCL ())),
@@ -271,7 +271,7 @@ public class EHFValidationG2
                                                                            "EHF Creditnote " +
                                                                                                       VID_EHF_CREDITNOTE_2_0_15.getVersion (),
                                                                            bDeprecated,
-                                                                           ValidationExecutorXSD.create (EUBL21DocumentType.CREDIT_NOTE),
+                                                                           ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
                                                                            _createXSLT (new ClassPathResource (PATH_201811 +
                                                                                                                "BIIRULES-UBL-T14.xslt",
                                                                                                                _getCL ())),
@@ -284,7 +284,7 @@ public class EHFValidationG2
                                                                            "EHF Despatch Advice " +
                                                                                                            VID_EHF_DESPATCH_ADVICE_1_0_10.getVersion (),
                                                                            bDeprecated,
-                                                                           ValidationExecutorXSD.create (EUBL21DocumentType.DESPATCH_ADVICE),
+                                                                           ValidationExecutorXSD.create (UBL21Marshaller.getAllDespatchAdviceXSDs ()),
                                                                            _createXSLT (new ClassPathResource (PATH_201811 +
                                                                                                                "BIIRULES-UBL-T16.xslt",
                                                                                                                _getCL ())),
@@ -297,7 +297,7 @@ public class EHFValidationG2
                                                                            "EHF Invoice " +
                                                                                                    VID_EHF_INVOICE_2_0_15.getVersion (),
                                                                            bDeprecated,
-                                                                           ValidationExecutorXSD.create (EUBL21DocumentType.INVOICE),
+                                                                           ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
                                                                            _createXSLT (new ClassPathResource (PATH_201811 +
                                                                                                                "BIIRULES-UBL-T10.xslt",
                                                                                                                _getCL ())),
@@ -310,7 +310,7 @@ public class EHFValidationG2
                                                                            "EHF Ordering " +
                                                                                                  VID_EHF_ORDER_1_0_11.getVersion (),
                                                                            bDeprecated,
-                                                                           ValidationExecutorXSD.create (EUBL21DocumentType.ORDER),
+                                                                           ValidationExecutorXSD.create (UBL21Marshaller.getAllOrderXSDs ()),
                                                                            _createXSLT (new ClassPathResource (PATH_201811 +
                                                                                                                "BIIRULES-UBL-T01.xslt",
                                                                                                                _getCL ())),
@@ -323,7 +323,7 @@ public class EHFValidationG2
                                                                            "EHF Order Agreement " +
                                                                                                           VID_EHF_ORDER_AGREEMENT_1_0_2.getVersion (),
                                                                            bDeprecated,
-                                                                           ValidationExecutorXSD.create (EUBL21DocumentType.ORDER_RESPONSE),
+                                                                           ValidationExecutorXSD.create (UBL21Marshaller.getAllOrderResponseXSDs ()),
                                                                            _createXSLT (new ClassPathResource (PATH_201811 +
                                                                                                                "BIIRULES-UBL-T110.xslt",
                                                                                                                _getCL ())),
@@ -336,7 +336,7 @@ public class EHFValidationG2
                                                                            "EHF Order Response " +
                                                                                                           VID_EHF_ORDER_RESPONSE_1_0_11.getVersion (),
                                                                            bDeprecated,
-                                                                           ValidationExecutorXSD.create (EUBL21DocumentType.ORDER_RESPONSE),
+                                                                           ValidationExecutorXSD.create (UBL21Marshaller.getAllOrderResponseXSDs ()),
                                                                            _createXSLT (new ClassPathResource (PATH_201811 +
                                                                                                                "BIIRULES-UBL-T76.xslt",
                                                                                                                _getCL ())),
@@ -349,7 +349,7 @@ public class EHFValidationG2
                                                                            "EHF Punch Out " +
                                                                                                     VID_EHF_PUNCH_OUT_1_0_1.getVersion (),
                                                                            bDeprecated,
-                                                                           ValidationExecutorXSD.create (EUBL21DocumentType.CATALOGUE),
+                                                                           ValidationExecutorXSD.create (UBL21Marshaller.getAllCatalogueXSDs ()),
                                                                            _createXSLT (new ClassPathResource (PATH_201811 +
                                                                                                                "BIIRULES-UBL-T77.xslt",
                                                                                                                _getCL ())),
@@ -364,7 +364,7 @@ public class EHFValidationG2
                                                                            "EHF Reminder " +
                                                                                                    VID_EHF_REMINDER_1_1_0.getVersion (),
                                                                            bNotDeprecated,
-                                                                           ValidationExecutorXSD.create (EUBL21DocumentType.REMINDER),
+                                                                           ValidationExecutorXSD.create (UBL21Marshaller.getAllReminderXSDs ()),
                                                                            _createXSLT (EHF_COMMON_V1_0_4),
                                                                            _createXSLT (EHF_REMINDER_V1_1_0)));
 
@@ -373,7 +373,7 @@ public class EHFValidationG2
                                                                            "EHF Catalogue " +
                                                                                                      VID_EHF_CATALOGUE_1_0_14.getVersion (),
                                                                            bDeprecated,
-                                                                           ValidationExecutorXSD.create (EUBL21DocumentType.CATALOGUE),
+                                                                           ValidationExecutorXSD.create (UBL21Marshaller.getAllCatalogueXSDs ()),
                                                                            _createXSLT (new ClassPathResource (PATH_201906 +
                                                                                                                "BIIRULES-UBL-T19.xslt",
                                                                                                                _getCL ())),
@@ -386,7 +386,7 @@ public class EHFValidationG2
                                                                            "EHF Catalogue Response " +
                                                                                                               VID_EHF_CATALOGUE_RESPONSE_1_0_14.getVersion (),
                                                                            bDeprecated,
-                                                                           ValidationExecutorXSD.create (EUBL21DocumentType.APPLICATION_RESPONSE),
+                                                                           ValidationExecutorXSD.create (UBL21Marshaller.getAllApplicationResponseXSDs ()),
                                                                            _createXSLT (new ClassPathResource (PATH_201906 +
                                                                                                                "BIIRULES-UBL-T58.xslt",
                                                                                                                _getCL ())),
@@ -399,7 +399,7 @@ public class EHFValidationG2
                                                                            "EHF Creditnote " +
                                                                                                       VID_EHF_CREDITNOTE_2_0_16.getVersion (),
                                                                            bDeprecated,
-                                                                           ValidationExecutorXSD.create (EUBL21DocumentType.CREDIT_NOTE),
+                                                                           ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
                                                                            _createXSLT (new ClassPathResource (PATH_201906 +
                                                                                                                "BIIRULES-UBL-T14.xslt",
                                                                                                                _getCL ())),
@@ -412,7 +412,7 @@ public class EHFValidationG2
                                                                            "EHF Despatch Advice " +
                                                                                                            VID_EHF_DESPATCH_ADVICE_1_0_11.getVersion (),
                                                                            bDeprecated,
-                                                                           ValidationExecutorXSD.create (EUBL21DocumentType.DESPATCH_ADVICE),
+                                                                           ValidationExecutorXSD.create (UBL21Marshaller.getAllDespatchAdviceXSDs ()),
                                                                            _createXSLT (new ClassPathResource (PATH_201906 +
                                                                                                                "BIIRULES-UBL-T16.xslt",
                                                                                                                _getCL ())),
@@ -425,7 +425,7 @@ public class EHFValidationG2
                                                                            "EHF Invoice " +
                                                                                                    VID_EHF_INVOICE_2_0_16.getVersion (),
                                                                            bDeprecated,
-                                                                           ValidationExecutorXSD.create (EUBL21DocumentType.INVOICE),
+                                                                           ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
                                                                            _createXSLT (new ClassPathResource (PATH_201906 +
                                                                                                                "BIIRULES-UBL-T10.xslt",
                                                                                                                _getCL ())),
@@ -438,7 +438,7 @@ public class EHFValidationG2
                                                                            "EHF Ordering " +
                                                                                                  VID_EHF_ORDER_1_0_12.getVersion (),
                                                                            bDeprecated,
-                                                                           ValidationExecutorXSD.create (EUBL21DocumentType.ORDER),
+                                                                           ValidationExecutorXSD.create (UBL21Marshaller.getAllOrderXSDs ()),
                                                                            _createXSLT (new ClassPathResource (PATH_201906 +
                                                                                                                "BIIRULES-UBL-T01.xslt",
                                                                                                                _getCL ())),
@@ -451,7 +451,7 @@ public class EHFValidationG2
                                                                            "EHF Order Agreement " +
                                                                                                           VID_EHF_ORDER_AGREEMENT_1_0_3.getVersion (),
                                                                            bDeprecated,
-                                                                           ValidationExecutorXSD.create (EUBL21DocumentType.ORDER_RESPONSE),
+                                                                           ValidationExecutorXSD.create (UBL21Marshaller.getAllOrderResponseXSDs ()),
                                                                            _createXSLT (new ClassPathResource (PATH_201906 +
                                                                                                                "BIIRULES-UBL-T110.xslt",
                                                                                                                _getCL ())),
@@ -464,7 +464,7 @@ public class EHFValidationG2
                                                                            "EHF Order Response " +
                                                                                                           VID_EHF_ORDER_RESPONSE_1_0_12.getVersion (),
                                                                            bDeprecated,
-                                                                           ValidationExecutorXSD.create (EUBL21DocumentType.ORDER_RESPONSE),
+                                                                           ValidationExecutorXSD.create (UBL21Marshaller.getAllOrderResponseXSDs ()),
                                                                            _createXSLT (new ClassPathResource (PATH_201906 +
                                                                                                                "BIIRULES-UBL-T76.xslt",
                                                                                                                _getCL ())),
@@ -477,7 +477,7 @@ public class EHFValidationG2
                                                                            "EHF Punch Out " +
                                                                                                     VID_EHF_PUNCH_OUT_1_0_2.getVersion (),
                                                                            bDeprecated,
-                                                                           ValidationExecutorXSD.create (EUBL21DocumentType.CATALOGUE),
+                                                                           ValidationExecutorXSD.create (UBL21Marshaller.getAllCatalogueXSDs ()),
                                                                            _createXSLT (new ClassPathResource (PATH_201906 +
                                                                                                                "BIIRULES-UBL-T77.xslt",
                                                                                                                _getCL ())),
@@ -493,7 +493,7 @@ public class EHFValidationG2
                                                                            "EHF Catalogue " +
                                                                                                      VID_EHF_CATALOGUE_1_0_15.getVersion (),
                                                                            bNotDeprecated,
-                                                                           ValidationExecutorXSD.create (EUBL21DocumentType.CATALOGUE),
+                                                                           ValidationExecutorXSD.create (UBL21Marshaller.getAllCatalogueXSDs ()),
                                                                            _createXSLT (new ClassPathResource (PATH_201912 +
                                                                                                                "BIIRULES-UBL-T19.xslt",
                                                                                                                _getCL ())),
@@ -506,7 +506,7 @@ public class EHFValidationG2
                                                                            "EHF Catalogue Response " +
                                                                                                               VID_EHF_CATALOGUE_RESPONSE_1_0_15.getVersion (),
                                                                            bNotDeprecated,
-                                                                           ValidationExecutorXSD.create (EUBL21DocumentType.APPLICATION_RESPONSE),
+                                                                           ValidationExecutorXSD.create (UBL21Marshaller.getAllApplicationResponseXSDs ()),
                                                                            _createXSLT (new ClassPathResource (PATH_201912 +
                                                                                                                "BIIRULES-UBL-T58.xslt",
                                                                                                                _getCL ())),
@@ -519,7 +519,7 @@ public class EHFValidationG2
                                                                            "EHF Creditnote " +
                                                                                                       VID_EHF_CREDITNOTE_2_0_17.getVersion (),
                                                                            bNotDeprecated,
-                                                                           ValidationExecutorXSD.create (EUBL21DocumentType.CREDIT_NOTE),
+                                                                           ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
                                                                            _createXSLT (new ClassPathResource (PATH_201912 +
                                                                                                                "BIIRULES-UBL-T14.xslt",
                                                                                                                _getCL ())),
@@ -532,7 +532,7 @@ public class EHFValidationG2
                                                                            "EHF Despatch Advice " +
                                                                                                            VID_EHF_DESPATCH_ADVICE_1_0_12.getVersion (),
                                                                            bNotDeprecated,
-                                                                           ValidationExecutorXSD.create (EUBL21DocumentType.DESPATCH_ADVICE),
+                                                                           ValidationExecutorXSD.create (UBL21Marshaller.getAllDespatchAdviceXSDs ()),
                                                                            _createXSLT (new ClassPathResource (PATH_201912 +
                                                                                                                "BIIRULES-UBL-T16.xslt",
                                                                                                                _getCL ())),
@@ -545,7 +545,7 @@ public class EHFValidationG2
                                                                            "EHF Invoice " +
                                                                                                    VID_EHF_INVOICE_2_0_17.getVersion (),
                                                                            bNotDeprecated,
-                                                                           ValidationExecutorXSD.create (EUBL21DocumentType.INVOICE),
+                                                                           ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
                                                                            _createXSLT (new ClassPathResource (PATH_201912 +
                                                                                                                "BIIRULES-UBL-T10.xslt",
                                                                                                                _getCL ())),
@@ -558,7 +558,7 @@ public class EHFValidationG2
                                                                            "EHF Ordering " +
                                                                                                  VID_EHF_ORDER_1_0_13.getVersion (),
                                                                            bNotDeprecated,
-                                                                           ValidationExecutorXSD.create (EUBL21DocumentType.ORDER),
+                                                                           ValidationExecutorXSD.create (UBL21Marshaller.getAllOrderXSDs ()),
                                                                            _createXSLT (new ClassPathResource (PATH_201912 +
                                                                                                                "BIIRULES-UBL-T01.xslt",
                                                                                                                _getCL ())),
@@ -571,7 +571,7 @@ public class EHFValidationG2
                                                                            "EHF Order Agreement " +
                                                                                                           VID_EHF_ORDER_AGREEMENT_1_0_4.getVersion (),
                                                                            bNotDeprecated,
-                                                                           ValidationExecutorXSD.create (EUBL21DocumentType.ORDER_RESPONSE),
+                                                                           ValidationExecutorXSD.create (UBL21Marshaller.getAllOrderResponseXSDs ()),
                                                                            _createXSLT (new ClassPathResource (PATH_201912 +
                                                                                                                "BIIRULES-UBL-T110.xslt",
                                                                                                                _getCL ())),
@@ -584,7 +584,7 @@ public class EHFValidationG2
                                                                            "EHF Order Response " +
                                                                                                           VID_EHF_ORDER_RESPONSE_1_0_13.getVersion (),
                                                                            bNotDeprecated,
-                                                                           ValidationExecutorXSD.create (EUBL21DocumentType.ORDER_RESPONSE),
+                                                                           ValidationExecutorXSD.create (UBL21Marshaller.getAllOrderResponseXSDs ()),
                                                                            _createXSLT (new ClassPathResource (PATH_201912 +
                                                                                                                "BIIRULES-UBL-T76.xslt",
                                                                                                                _getCL ())),
@@ -597,7 +597,7 @@ public class EHFValidationG2
                                                                            "EHF Punch Out " +
                                                                                                     VID_EHF_PUNCH_OUT_1_0_3.getVersion (),
                                                                            bNotDeprecated,
-                                                                           ValidationExecutorXSD.create (EUBL21DocumentType.CATALOGUE),
+                                                                           ValidationExecutorXSD.create (UBL21Marshaller.getAllCatalogueXSDs ()),
                                                                            _createXSLT (new ClassPathResource (PATH_201912 +
                                                                                                                "BIIRULES-UBL-T77.xslt",
                                                                                                                _getCL ())),

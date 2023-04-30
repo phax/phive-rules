@@ -29,7 +29,7 @@ import com.helger.phive.engine.schematron.SchematronNamespaceBeautifier;
 import com.helger.phive.engine.schematron.ValidationExecutorSchematron;
 import com.helger.phive.engine.source.IValidationSourceXML;
 import com.helger.phive.engine.xsd.ValidationExecutorXSD;
-import com.helger.ubl21.EUBL21DocumentType;
+import com.helger.ubl21.UBL21Marshaller;
 import com.helger.xml.namespace.MapBasedNamespaceContext;
 
 /**
@@ -73,8 +73,10 @@ public final class PeppolLegacyValidationSG
   {
     ValueEnforcer.notNull (aRegistry, "Registry");
 
-    final MapBasedNamespaceContext aNSCtxInvoice = PeppolLegacyValidation.createUBLNSContext (EUBL21DocumentType.INVOICE.getNamespaceURI ());
-    final MapBasedNamespaceContext aNSCtxCreditNote = PeppolLegacyValidation.createUBLNSContext (EUBL21DocumentType.CREDIT_NOTE.getNamespaceURI ());
+    final MapBasedNamespaceContext aNSCtxInvoice = PeppolLegacyValidation.createUBLNSContext (UBL21Marshaller.invoice ()
+                                                                                                             .getRootElementNamespaceURI ());
+    final MapBasedNamespaceContext aNSCtxCreditNote = PeppolLegacyValidation.createUBLNSContext (UBL21Marshaller.creditNote ()
+                                                                                                                .getRootElementNamespaceURI ());
 
     // For better error messages (merge both)
     SchematronNamespaceBeautifier.addMappings (aNSCtxCreditNote);
@@ -85,7 +87,7 @@ public final class PeppolLegacyValidationSG
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_BIS3_SG_UBL_INVOICE_100,
                                                                            "SG Peppol BIS3 Invoice (UBL) 1.0.0",
                                                                            bDeprecated,
-                                                                           ValidationExecutorXSD.create (EUBL21DocumentType.INVOICE),
+                                                                           ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
                                                                            ValidationExecutorSchematron.createXSLT (BIS3_BILLING_SG_CEN_100,
                                                                                                                     aNSCtxInvoice),
                                                                            ValidationExecutorSchematron.createXSLT (BIS3_BILLING_SG_PEPPOL_100,
@@ -93,7 +95,7 @@ public final class PeppolLegacyValidationSG
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_BIS3_SG_UBL_CREDIT_NOTE_100,
                                                                            "SG Peppol BIS3 CreditNote (UBL) 1.0.0",
                                                                            bDeprecated,
-                                                                           ValidationExecutorXSD.create (EUBL21DocumentType.CREDIT_NOTE),
+                                                                           ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
                                                                            ValidationExecutorSchematron.createXSLT (BIS3_BILLING_SG_CEN_100,
                                                                                                                     aNSCtxCreditNote),
                                                                            ValidationExecutorSchematron.createXSLT (BIS3_BILLING_SG_PEPPOL_100,

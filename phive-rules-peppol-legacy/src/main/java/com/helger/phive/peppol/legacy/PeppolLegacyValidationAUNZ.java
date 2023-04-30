@@ -29,7 +29,7 @@ import com.helger.phive.engine.schematron.SchematronNamespaceBeautifier;
 import com.helger.phive.engine.schematron.ValidationExecutorSchematron;
 import com.helger.phive.engine.source.IValidationSourceXML;
 import com.helger.phive.engine.xsd.ValidationExecutorXSD;
-import com.helger.ubl21.EUBL21DocumentType;
+import com.helger.ubl21.UBL21Marshaller;
 import com.helger.xml.namespace.MapBasedNamespaceContext;
 
 /**
@@ -272,8 +272,10 @@ public final class PeppolLegacyValidationAUNZ
   {
     ValueEnforcer.notNull (aRegistry, "Registry");
 
-    final MapBasedNamespaceContext aNSCtxInvoice = PeppolLegacyValidation.createUBLNSContext (EUBL21DocumentType.INVOICE.getNamespaceURI ());
-    final MapBasedNamespaceContext aNSCtxCreditNote = PeppolLegacyValidation.createUBLNSContext (EUBL21DocumentType.CREDIT_NOTE.getNamespaceURI ());
+    final MapBasedNamespaceContext aNSCtxInvoice = PeppolLegacyValidation.createUBLNSContext (UBL21Marshaller.invoice ()
+                                                                                                             .getRootElementNamespaceURI ());
+    final MapBasedNamespaceContext aNSCtxCreditNote = PeppolLegacyValidation.createUBLNSContext (UBL21Marshaller.creditNote ()
+                                                                                                                .getRootElementNamespaceURI ());
 
     // For better error messages (merge both)
     SchematronNamespaceBeautifier.addMappings (aNSCtxCreditNote.getClone ().setMappings (aNSCtxInvoice));
@@ -286,7 +288,7 @@ public final class PeppolLegacyValidationAUNZ
                                                                            "A-NZ Peppol BIS3 Invoice (UBL) " +
                                                                                                                      sVersion100,
                                                                            bDeprecated,
-                                                                           ValidationExecutorXSD.create (EUBL21DocumentType.INVOICE),
+                                                                           ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
                                                                            ValidationExecutorSchematron.createXSLT (BIS3_BILLING_AUNZ_PEPPOL_100,
                                                                                                                     aNSCtxInvoice),
                                                                            ValidationExecutorSchematron.createXSLT (BIS3_BILLING_AUNZ_UBL_100,
@@ -295,7 +297,7 @@ public final class PeppolLegacyValidationAUNZ
                                                                            "A-NZ Peppol BIS3 CreditNote (UBL) " +
                                                                                                                          sVersion100,
                                                                            bDeprecated,
-                                                                           ValidationExecutorXSD.create (EUBL21DocumentType.CREDIT_NOTE),
+                                                                           ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
                                                                            ValidationExecutorSchematron.createXSLT (BIS3_BILLING_AUNZ_PEPPOL_100,
                                                                                                                     aNSCtxCreditNote),
                                                                            ValidationExecutorSchematron.createXSLT (BIS3_BILLING_AUNZ_UBL_100,
@@ -306,7 +308,7 @@ public final class PeppolLegacyValidationAUNZ
                                                                            "A-NZ Peppol BIS3 Invoice Self-Billing (UBL) " +
                                                                                                                                   sVersion100,
                                                                            bDeprecated,
-                                                                           ValidationExecutorXSD.create (EUBL21DocumentType.INVOICE),
+                                                                           ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
                                                                            ValidationExecutorSchematron.createXSLT (BIS3_BILLING_AUNZ_PEPPOL_SELF_BILLING_100,
                                                                                                                     aNSCtxInvoice),
                                                                            ValidationExecutorSchematron.createXSLT (BIS3_BILLING_AUNZ_UBL_100,
@@ -315,7 +317,7 @@ public final class PeppolLegacyValidationAUNZ
                                                                            "A-NZ Peppol BIS3 CreditNote Self-Billing (UBL) " +
                                                                                                                                       sVersion100,
                                                                            bDeprecated,
-                                                                           ValidationExecutorXSD.create (EUBL21DocumentType.CREDIT_NOTE),
+                                                                           ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
                                                                            ValidationExecutorSchematron.createXSLT (BIS3_BILLING_AUNZ_PEPPOL_SELF_BILLING_100,
                                                                                                                     aNSCtxCreditNote),
                                                                            ValidationExecutorSchematron.createXSLT (BIS3_BILLING_AUNZ_UBL_100,
@@ -327,7 +329,7 @@ public final class PeppolLegacyValidationAUNZ
                                                                            "A-NZ Peppol BIS3 Invoice (UBL) " +
                                                                                                                      sVersion101,
                                                                            bDeprecated,
-                                                                           ValidationExecutorXSD.create (EUBL21DocumentType.INVOICE),
+                                                                           ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
                                                                            ValidationExecutorSchematron.createXSLT (BIS3_BILLING_AUNZ_PEPPOL_101,
                                                                                                                     aNSCtxInvoice),
                                                                            ValidationExecutorSchematron.createXSLT (BIS3_BILLING_AUNZ_UBL_101,
@@ -336,7 +338,7 @@ public final class PeppolLegacyValidationAUNZ
                                                                            "A-NZ Peppol BIS3 CreditNote (UBL) " +
                                                                                                                          sVersion101,
                                                                            bDeprecated,
-                                                                           ValidationExecutorXSD.create (EUBL21DocumentType.CREDIT_NOTE),
+                                                                           ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
                                                                            ValidationExecutorSchematron.createXSLT (BIS3_BILLING_AUNZ_PEPPOL_101,
                                                                                                                     aNSCtxCreditNote),
                                                                            ValidationExecutorSchematron.createXSLT (BIS3_BILLING_AUNZ_UBL_101,
@@ -347,7 +349,7 @@ public final class PeppolLegacyValidationAUNZ
                                                                            "A-NZ Peppol BIS3 Invoice Self-Billing (UBL) " +
                                                                                                                                   sVersion101,
                                                                            bDeprecated,
-                                                                           ValidationExecutorXSD.create (EUBL21DocumentType.INVOICE),
+                                                                           ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
                                                                            ValidationExecutorSchematron.createXSLT (BIS3_BILLING_AUNZ_PEPPOL_SELF_BILLING_101,
                                                                                                                     aNSCtxInvoice),
                                                                            ValidationExecutorSchematron.createXSLT (BIS3_BILLING_AUNZ_UBL_101,
@@ -356,7 +358,7 @@ public final class PeppolLegacyValidationAUNZ
                                                                            "A-NZ Peppol BIS3 CreditNote Self-Billing (UBL) " +
                                                                                                                                       sVersion101,
                                                                            bDeprecated,
-                                                                           ValidationExecutorXSD.create (EUBL21DocumentType.CREDIT_NOTE),
+                                                                           ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
                                                                            ValidationExecutorSchematron.createXSLT (BIS3_BILLING_AUNZ_PEPPOL_SELF_BILLING_101,
                                                                                                                     aNSCtxCreditNote),
                                                                            ValidationExecutorSchematron.createXSLT (BIS3_BILLING_AUNZ_UBL_101,
@@ -368,7 +370,7 @@ public final class PeppolLegacyValidationAUNZ
                                                                            "A-NZ Peppol BIS3 Invoice (UBL) " +
                                                                                                                      sVersion102,
                                                                            bDeprecated,
-                                                                           ValidationExecutorXSD.create (EUBL21DocumentType.INVOICE),
+                                                                           ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
                                                                            ValidationExecutorSchematron.createXSLT (BIS3_BILLING_AUNZ_PEPPOL_102,
                                                                                                                     aNSCtxInvoice),
                                                                            ValidationExecutorSchematron.createXSLT (BIS3_BILLING_AUNZ_UBL_102,
@@ -377,7 +379,7 @@ public final class PeppolLegacyValidationAUNZ
                                                                            "A-NZ Peppol BIS3 CreditNote (UBL) " +
                                                                                                                          sVersion102,
                                                                            bDeprecated,
-                                                                           ValidationExecutorXSD.create (EUBL21DocumentType.CREDIT_NOTE),
+                                                                           ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
                                                                            ValidationExecutorSchematron.createXSLT (BIS3_BILLING_AUNZ_PEPPOL_102,
                                                                                                                     aNSCtxCreditNote),
                                                                            ValidationExecutorSchematron.createXSLT (BIS3_BILLING_AUNZ_UBL_102,
@@ -388,7 +390,7 @@ public final class PeppolLegacyValidationAUNZ
                                                                            "A-NZ Peppol BIS3 Invoice Self-Billing (UBL) " +
                                                                                                                                   sVersion102,
                                                                            bDeprecated,
-                                                                           ValidationExecutorXSD.create (EUBL21DocumentType.INVOICE),
+                                                                           ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
                                                                            ValidationExecutorSchematron.createXSLT (BIS3_BILLING_AUNZ_PEPPOL_SELF_BILLING_102,
                                                                                                                     aNSCtxInvoice),
                                                                            ValidationExecutorSchematron.createXSLT (BIS3_BILLING_AUNZ_UBL_102,
@@ -397,7 +399,7 @@ public final class PeppolLegacyValidationAUNZ
                                                                            "A-NZ Peppol BIS3 CreditNote Self-Billing (UBL) " +
                                                                                                                                       sVersion102,
                                                                            bDeprecated,
-                                                                           ValidationExecutorXSD.create (EUBL21DocumentType.CREDIT_NOTE),
+                                                                           ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
                                                                            ValidationExecutorSchematron.createXSLT (BIS3_BILLING_AUNZ_PEPPOL_SELF_BILLING_102,
                                                                                                                     aNSCtxCreditNote),
                                                                            ValidationExecutorSchematron.createXSLT (BIS3_BILLING_AUNZ_UBL_102,
@@ -409,7 +411,7 @@ public final class PeppolLegacyValidationAUNZ
                                                                            "A-NZ Peppol BIS3 Invoice (UBL) " +
                                                                                                                      sVersion103,
                                                                            bDeprecated,
-                                                                           ValidationExecutorXSD.create (EUBL21DocumentType.INVOICE),
+                                                                           ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
                                                                            ValidationExecutorSchematron.createXSLT (BIS3_BILLING_AUNZ_PEPPOL_103,
                                                                                                                     aNSCtxInvoice),
                                                                            ValidationExecutorSchematron.createXSLT (BIS3_BILLING_AUNZ_UBL_103,
@@ -418,7 +420,7 @@ public final class PeppolLegacyValidationAUNZ
                                                                            "A-NZ Peppol BIS3 CreditNote (UBL) " +
                                                                                                                          sVersion103,
                                                                            bDeprecated,
-                                                                           ValidationExecutorXSD.create (EUBL21DocumentType.CREDIT_NOTE),
+                                                                           ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
                                                                            ValidationExecutorSchematron.createXSLT (BIS3_BILLING_AUNZ_PEPPOL_103,
                                                                                                                     aNSCtxCreditNote),
                                                                            ValidationExecutorSchematron.createXSLT (BIS3_BILLING_AUNZ_UBL_103,
@@ -429,7 +431,7 @@ public final class PeppolLegacyValidationAUNZ
                                                                            "A-NZ Peppol BIS3 Invoice Self-Billing (UBL) " +
                                                                                                                                   sVersion103,
                                                                            bDeprecated,
-                                                                           ValidationExecutorXSD.create (EUBL21DocumentType.INVOICE),
+                                                                           ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
                                                                            ValidationExecutorSchematron.createXSLT (BIS3_BILLING_AUNZ_PEPPOL_SELF_BILLING_103,
                                                                                                                     aNSCtxInvoice),
                                                                            ValidationExecutorSchematron.createXSLT (BIS3_BILLING_AUNZ_UBL_103,
@@ -438,7 +440,7 @@ public final class PeppolLegacyValidationAUNZ
                                                                            "A-NZ Peppol BIS3 CreditNote Self-Billing (UBL) " +
                                                                                                                                       sVersion103,
                                                                            bDeprecated,
-                                                                           ValidationExecutorXSD.create (EUBL21DocumentType.CREDIT_NOTE),
+                                                                           ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
                                                                            ValidationExecutorSchematron.createXSLT (BIS3_BILLING_AUNZ_PEPPOL_SELF_BILLING_103,
                                                                                                                     aNSCtxCreditNote),
                                                                            ValidationExecutorSchematron.createXSLT (BIS3_BILLING_AUNZ_UBL_103,
@@ -450,7 +452,7 @@ public final class PeppolLegacyValidationAUNZ
                                                                            "A-NZ Peppol BIS3 Invoice (UBL) " +
                                                                                                                      sVersion104,
                                                                            bDeprecated,
-                                                                           ValidationExecutorXSD.create (EUBL21DocumentType.INVOICE),
+                                                                           ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
                                                                            ValidationExecutorSchematron.createXSLT (BIS3_BILLING_AUNZ_PEPPOL_104,
                                                                                                                     aNSCtxInvoice),
                                                                            ValidationExecutorSchematron.createXSLT (BIS3_BILLING_AUNZ_UBL_104,
@@ -459,7 +461,7 @@ public final class PeppolLegacyValidationAUNZ
                                                                            "A-NZ Peppol BIS3 CreditNote (UBL) " +
                                                                                                                          sVersion104,
                                                                            bDeprecated,
-                                                                           ValidationExecutorXSD.create (EUBL21DocumentType.CREDIT_NOTE),
+                                                                           ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
                                                                            ValidationExecutorSchematron.createXSLT (BIS3_BILLING_AUNZ_PEPPOL_104,
                                                                                                                     aNSCtxCreditNote),
                                                                            ValidationExecutorSchematron.createXSLT (BIS3_BILLING_AUNZ_UBL_104,
@@ -470,7 +472,7 @@ public final class PeppolLegacyValidationAUNZ
                                                                            "A-NZ Peppol BIS3 Invoice Self-Billing (UBL) " +
                                                                                                                                   sVersion104,
                                                                            bDeprecated,
-                                                                           ValidationExecutorXSD.create (EUBL21DocumentType.INVOICE),
+                                                                           ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
                                                                            ValidationExecutorSchematron.createXSLT (BIS3_BILLING_AUNZ_PEPPOL_SELF_BILLING_104,
                                                                                                                     aNSCtxInvoice),
                                                                            ValidationExecutorSchematron.createXSLT (BIS3_BILLING_AUNZ_UBL_104,
@@ -479,7 +481,7 @@ public final class PeppolLegacyValidationAUNZ
                                                                            "A-NZ Peppol BIS3 CreditNote Self-Billing (UBL) " +
                                                                                                                                       sVersion104,
                                                                            bDeprecated,
-                                                                           ValidationExecutorXSD.create (EUBL21DocumentType.CREDIT_NOTE),
+                                                                           ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
                                                                            ValidationExecutorSchematron.createXSLT (BIS3_BILLING_AUNZ_PEPPOL_SELF_BILLING_104,
                                                                                                                     aNSCtxCreditNote),
                                                                            ValidationExecutorSchematron.createXSLT (BIS3_BILLING_AUNZ_UBL_104,
@@ -491,7 +493,7 @@ public final class PeppolLegacyValidationAUNZ
                                                                            "A-NZ Peppol BIS3 Invoice (UBL) " +
                                                                                                                      sVersion105,
                                                                            bDeprecated,
-                                                                           ValidationExecutorXSD.create (EUBL21DocumentType.INVOICE),
+                                                                           ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
                                                                            ValidationExecutorSchematron.createXSLT (BIS3_BILLING_AUNZ_PEPPOL_105,
                                                                                                                     aNSCtxInvoice),
                                                                            ValidationExecutorSchematron.createXSLT (BIS3_BILLING_AUNZ_UBL_105,
@@ -500,7 +502,7 @@ public final class PeppolLegacyValidationAUNZ
                                                                            "A-NZ Peppol BIS3 CreditNote (UBL) " +
                                                                                                                          sVersion105,
                                                                            bDeprecated,
-                                                                           ValidationExecutorXSD.create (EUBL21DocumentType.CREDIT_NOTE),
+                                                                           ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
                                                                            ValidationExecutorSchematron.createXSLT (BIS3_BILLING_AUNZ_PEPPOL_105,
                                                                                                                     aNSCtxCreditNote),
                                                                            ValidationExecutorSchematron.createXSLT (BIS3_BILLING_AUNZ_UBL_105,
@@ -511,7 +513,7 @@ public final class PeppolLegacyValidationAUNZ
                                                                            "A-NZ Peppol BIS3 Invoice Self-Billing (UBL) " +
                                                                                                                                   sVersion105,
                                                                            bDeprecated,
-                                                                           ValidationExecutorXSD.create (EUBL21DocumentType.INVOICE),
+                                                                           ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
                                                                            ValidationExecutorSchematron.createXSLT (BIS3_BILLING_AUNZ_PEPPOL_SELF_BILLING_105,
                                                                                                                     aNSCtxInvoice),
                                                                            ValidationExecutorSchematron.createXSLT (BIS3_BILLING_AUNZ_UBL_105,
@@ -520,7 +522,7 @@ public final class PeppolLegacyValidationAUNZ
                                                                            "A-NZ Peppol BIS3 CreditNote Self-Billing (UBL) " +
                                                                                                                                       sVersion105,
                                                                            bDeprecated,
-                                                                           ValidationExecutorXSD.create (EUBL21DocumentType.CREDIT_NOTE),
+                                                                           ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
                                                                            ValidationExecutorSchematron.createXSLT (BIS3_BILLING_AUNZ_PEPPOL_SELF_BILLING_105,
                                                                                                                     aNSCtxCreditNote),
                                                                            ValidationExecutorSchematron.createXSLT (BIS3_BILLING_AUNZ_UBL_105,
@@ -532,7 +534,7 @@ public final class PeppolLegacyValidationAUNZ
                                                                            "A-NZ Peppol BIS3 Invoice (UBL) " +
                                                                                                                      sVersion106,
                                                                            bDeprecated,
-                                                                           ValidationExecutorXSD.create (EUBL21DocumentType.INVOICE),
+                                                                           ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
                                                                            ValidationExecutorSchematron.createXSLT (BIS3_BILLING_AUNZ_PEPPOL_106,
                                                                                                                     aNSCtxInvoice),
                                                                            ValidationExecutorSchematron.createXSLT (BIS3_BILLING_AUNZ_UBL_106,
@@ -541,7 +543,7 @@ public final class PeppolLegacyValidationAUNZ
                                                                            "A-NZ Peppol BIS3 CreditNote (UBL) " +
                                                                                                                          sVersion106,
                                                                            bDeprecated,
-                                                                           ValidationExecutorXSD.create (EUBL21DocumentType.CREDIT_NOTE),
+                                                                           ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
                                                                            ValidationExecutorSchematron.createXSLT (BIS3_BILLING_AUNZ_PEPPOL_106,
                                                                                                                     aNSCtxCreditNote),
                                                                            ValidationExecutorSchematron.createXSLT (BIS3_BILLING_AUNZ_UBL_106,
@@ -552,7 +554,7 @@ public final class PeppolLegacyValidationAUNZ
                                                                            "A-NZ Peppol BIS3 Invoice Self-Billing (UBL) " +
                                                                                                                                   sVersion106,
                                                                            bDeprecated,
-                                                                           ValidationExecutorXSD.create (EUBL21DocumentType.INVOICE),
+                                                                           ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
                                                                            ValidationExecutorSchematron.createXSLT (BIS3_BILLING_AUNZ_PEPPOL_SELF_BILLING_106,
                                                                                                                     aNSCtxInvoice),
                                                                            ValidationExecutorSchematron.createXSLT (BIS3_BILLING_AUNZ_UBL_106,
@@ -561,7 +563,7 @@ public final class PeppolLegacyValidationAUNZ
                                                                            "A-NZ Peppol BIS3 CreditNote Self-Billing (UBL) " +
                                                                                                                                       sVersion106,
                                                                            bDeprecated,
-                                                                           ValidationExecutorXSD.create (EUBL21DocumentType.CREDIT_NOTE),
+                                                                           ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
                                                                            ValidationExecutorSchematron.createXSLT (BIS3_BILLING_AUNZ_PEPPOL_SELF_BILLING_106,
                                                                                                                     aNSCtxCreditNote),
                                                                            ValidationExecutorSchematron.createXSLT (BIS3_BILLING_AUNZ_UBL_106,

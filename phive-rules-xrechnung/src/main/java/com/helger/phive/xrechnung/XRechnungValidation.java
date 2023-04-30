@@ -34,7 +34,7 @@ import com.helger.phive.en16931.EN16931Validation;
 import com.helger.phive.engine.schematron.ValidationExecutorSchematron;
 import com.helger.phive.engine.source.IValidationSourceXML;
 import com.helger.phive.engine.xsd.ValidationExecutorXSD;
-import com.helger.ubl21.EUBL21DocumentType;
+import com.helger.ubl21.UBL21Marshaller;
 import com.helger.ubl21.UBL21NamespaceContext;
 
 /**
@@ -269,7 +269,7 @@ public final class XRechnungValidation
                                                                              "XRechnung UBL CrediteNote " +
                                                                                                                VID_XRECHNUNG_UBL_CREDITNOTE_200.getVersion (),
                                                                              bDeprecated,
-                                                                             ValidationExecutorXSD.create (EUBL21DocumentType.CREDIT_NOTE),
+                                                                             ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
                                                                              ValidationExecutorSchematron.createXSLT (EN16931Validation.INVOICE_UBL_132_XSLT,
                                                                                                                       UBL21NamespaceContext.getInstance ())
                                                                                                          .addCustomErrorLevels (aCustomErrorLevels),
@@ -281,7 +281,7 @@ public final class XRechnungValidation
                                                                              "XRechnung UBL Invoice " +
                                                                                                             VID_XRECHNUNG_UBL_INVOICE_200.getVersion (),
                                                                              bDeprecated,
-                                                                             ValidationExecutorXSD.create (EUBL21DocumentType.INVOICE),
+                                                                             ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
                                                                              ValidationExecutorSchematron.createXSLT (EN16931Validation.INVOICE_UBL_132_XSLT,
                                                                                                                       UBL21NamespaceContext.getInstance ())
                                                                                                          .addCustomErrorLevels (aCustomErrorLevels),
@@ -314,7 +314,7 @@ public final class XRechnungValidation
                                                                              "XRechnung UBL CrediteNote " +
                                                                                                                VID_XRECHNUNG_UBL_CREDITNOTE_201.getVersion (),
                                                                              bDeprecated,
-                                                                             ValidationExecutorXSD.create (EUBL21DocumentType.CREDIT_NOTE),
+                                                                             ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
                                                                              ValidationExecutorSchematron.createXSLT (EN16931Validation.INVOICE_UBL_133_XSLT,
                                                                                                                       UBL21NamespaceContext.getInstance ())
                                                                                                          .addCustomErrorLevels (aCustomErrorLevels),
@@ -326,7 +326,7 @@ public final class XRechnungValidation
                                                                              "XRechnung UBL Invoice " +
                                                                                                             VID_XRECHNUNG_UBL_INVOICE_201.getVersion (),
                                                                              bDeprecated,
-                                                                             ValidationExecutorXSD.create (EUBL21DocumentType.INVOICE),
+                                                                             ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
                                                                              ValidationExecutorSchematron.createXSLT (EN16931Validation.INVOICE_UBL_133_XSLT,
                                                                                                                       UBL21NamespaceContext.getInstance ())
                                                                                                          .addCustomErrorLevels (aCustomErrorLevels),
@@ -361,7 +361,7 @@ public final class XRechnungValidation
                                                                              "XRechnung UBL CrediteNote " +
                                                                                                                VID_XRECHNUNG_UBL_CREDITNOTE_211.getVersion (),
                                                                              bDeprecated,
-                                                                             ValidationExecutorXSD.create (EUBL21DocumentType.CREDIT_NOTE),
+                                                                             ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
                                                                              ValidationExecutorSchematron.createXSLT (EN16931Validation.INVOICE_UBL_136A_XSLT,
                                                                                                                       UBL21NamespaceContext.getInstance ())
                                                                                                          .addCustomErrorLevels (aCustomErrorLevels),
@@ -373,7 +373,7 @@ public final class XRechnungValidation
                                                                              "XRechnung UBL Invoice " +
                                                                                                             VID_XRECHNUNG_UBL_INVOICE_211.getVersion (),
                                                                              bDeprecated,
-                                                                             ValidationExecutorXSD.create (EUBL21DocumentType.INVOICE),
+                                                                             ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
                                                                              ValidationExecutorSchematron.createXSLT (EN16931Validation.INVOICE_UBL_136A_XSLT,
                                                                                                                       UBL21NamespaceContext.getInstance ())
                                                                                                          .addCustomErrorLevels (aCustomErrorLevels),
@@ -406,7 +406,7 @@ public final class XRechnungValidation
                                                                              "XRechnung UBL CrediteNote " +
                                                                                                                VID_XRECHNUNG_UBL_CREDITNOTE_220.getVersion (),
                                                                              bNotDeprecated,
-                                                                             ValidationExecutorXSD.create (EUBL21DocumentType.CREDIT_NOTE),
+                                                                             ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
                                                                              ValidationExecutorSchematron.createXSLT (EN16931Validation.INVOICE_UBL_137_XSLT,
                                                                                                                       UBL21NamespaceContext.getInstance ())
                                                                                                          .addCustomErrorLevels (aCustomErrorLevels),
@@ -418,7 +418,7 @@ public final class XRechnungValidation
                                                                              "XRechnung UBL Invoice " +
                                                                                                             VID_XRECHNUNG_UBL_INVOICE_220.getVersion (),
                                                                              bNotDeprecated,
-                                                                             ValidationExecutorXSD.create (EUBL21DocumentType.INVOICE),
+                                                                             ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
                                                                              ValidationExecutorSchematron.createXSLT (EN16931Validation.INVOICE_UBL_137_XSLT,
                                                                                                                       UBL21NamespaceContext.getInstance ())
                                                                                                          .addCustomErrorLevels (aCustomErrorLevels),
@@ -450,7 +450,7 @@ public final class XRechnungValidation
                                                                              "XRechnung UBL CrediteNote " +
                                                                                                                VID_XRECHNUNG_UBL_CREDITNOTE_231.getVersion (),
                                                                              bNotDeprecated,
-                                                                             ValidationExecutorXSD.create (EUBL21DocumentType.CREDIT_NOTE),
+                                                                             ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
                                                                              ValidationExecutorSchematron.createXSLT (EN16931Validation.INVOICE_UBL_139_XSLT,
                                                                                                                       UBL21NamespaceContext.getInstance ())
                                                                                                          .addCustomErrorLevels (aCustomErrorLevels),
@@ -462,7 +462,7 @@ public final class XRechnungValidation
                                                                              "XRechnung UBL Invoice " +
                                                                                                             VID_XRECHNUNG_UBL_INVOICE_231.getVersion (),
                                                                              bNotDeprecated,
-                                                                             ValidationExecutorXSD.create (EUBL21DocumentType.INVOICE),
+                                                                             ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
                                                                              ValidationExecutorSchematron.createXSLT (EN16931Validation.INVOICE_UBL_139_XSLT,
                                                                                                                       UBL21NamespaceContext.getInstance ())
                                                                                                          .addCustomErrorLevels (aCustomErrorLevels),

@@ -27,7 +27,7 @@ import com.helger.phive.api.executorset.ValidationExecutorSet;
 import com.helger.phive.engine.schematron.ValidationExecutorSchematron;
 import com.helger.phive.engine.source.IValidationSourceXML;
 import com.helger.phive.engine.xsd.ValidationExecutorXSD;
-import com.helger.ubl21.EUBL21DocumentType;
+import com.helger.ubl21.UBL21Marshaller;
 import com.helger.ubl21.UBL21NamespaceContext;
 
 /**
@@ -93,14 +93,14 @@ public final class CIUS_PTValidation
                                                                            "CIUS-PT UBL CrediteNote " +
                                                                                                            VID_CIUS_PT_UBL_CREDITNOTE_200.getVersion (),
                                                                            bDeprecated,
-                                                                           ValidationExecutorXSD.create (EUBL21DocumentType.CREDIT_NOTE),
+                                                                           ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
                                                                            ValidationExecutorSchematron.createXSLT (RES_200,
                                                                                                                     UBL21NamespaceContext.getInstance ())));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_CIUS_PT_UBL_INVOICE_200,
                                                                            "CIUS-PT UBL Invoice " +
                                                                                                         VID_CIUS_PT_UBL_INVOICE_200.getVersion (),
                                                                            bDeprecated,
-                                                                           ValidationExecutorXSD.create (EUBL21DocumentType.INVOICE),
+                                                                           ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
                                                                            ValidationExecutorSchematron.createXSLT (RES_200,
                                                                                                                     UBL21NamespaceContext.getInstance ())));
 
@@ -109,14 +109,14 @@ public final class CIUS_PTValidation
                                                                            "CIUS-PT UBL CrediteNote " +
                                                                                                            VID_CIUS_PT_UBL_CREDITNOTE_211.getVersion (),
                                                                            bNotDeprecated,
-                                                                           ValidationExecutorXSD.create (EUBL21DocumentType.CREDIT_NOTE),
+                                                                           ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
                                                                            ValidationExecutorSchematron.createXSLT (RES_211,
                                                                                                                     UBL21NamespaceContext.getInstance ())));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_CIUS_PT_UBL_INVOICE_211,
                                                                            "CIUS-PT UBL Invoice " +
                                                                                                         VID_CIUS_PT_UBL_INVOICE_211.getVersion (),
                                                                            bNotDeprecated,
-                                                                           ValidationExecutorXSD.create (EUBL21DocumentType.INVOICE),
+                                                                           ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
                                                                            ValidationExecutorSchematron.createXSLT (RES_211,
                                                                                                                     UBL21NamespaceContext.getInstance ())));
   }

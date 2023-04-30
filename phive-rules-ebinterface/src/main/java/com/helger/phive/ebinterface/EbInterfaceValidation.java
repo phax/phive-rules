@@ -20,7 +20,7 @@ import javax.annotation.Nonnull;
 import javax.annotation.concurrent.Immutable;
 
 import com.helger.commons.ValueEnforcer;
-import com.helger.ebinterface.builder.EEbInterfaceDocumentType;
+import com.helger.ebinterface.CEbInterface;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
 import com.helger.phive.api.executorset.VESID;
 import com.helger.phive.api.executorset.ValidationExecutorSet;
@@ -61,33 +61,45 @@ public final class EbInterfaceValidation
   {
     ValueEnforcer.notNull (aRegistry, "Registry");
 
+    final boolean bDeprecated = true;
     final boolean bNotDeprecated = false;
 
     // No Schematrons here
-    for (final EEbInterfaceDocumentType e : EEbInterfaceDocumentType.values ())
-    {
-      final String sVersion = e.name ().charAt (3) + "." + e.name ().substring (4);
-      final VESID aVESID = new VESID (GROUP_ID, "invoice", sVersion);
-
-      // No Schematrons here
-      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (aVESID,
-                                                                             "ebInterface " + sVersion,
-                                                                             bNotDeprecated,
-                                                                             ValidationExecutorXSD.create (e)));
-    }
+    aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_EBI_30,
+                                                                           "ebInterface 3.0",
+                                                                           bDeprecated,
+                                                                           ValidationExecutorXSD.create (CEbInterface.EBINTERFACE_30_XSDS)));
+    aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_EBI_302,
+                                                                           "ebInterface 3.0.2",
+                                                                           bDeprecated,
+                                                                           ValidationExecutorXSD.create (CEbInterface.EBINTERFACE_302_XSDS)));
+    aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_EBI_40,
+                                                                           "ebInterface 4.0",
+                                                                           bDeprecated,
+                                                                           ValidationExecutorXSD.create (CEbInterface.EBINTERFACE_40_XSDS)));
+    aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_EBI_41,
+                                                                           "ebInterface 4.1",
+                                                                           bDeprecated,
+                                                                           ValidationExecutorXSD.create (CEbInterface.EBINTERFACE_41_XSDS)));
+    aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_EBI_42,
+                                                                           "ebInterface 4.2",
+                                                                           bDeprecated,
+                                                                           ValidationExecutorXSD.create (CEbInterface.EBINTERFACE_42_XSDS)));
+    aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_EBI_43,
+                                                                           "ebInterface 4.3",
+                                                                           bNotDeprecated,
+                                                                           ValidationExecutorXSD.create (CEbInterface.EBINTERFACE_43_XSDS)));
+    aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_EBI_50,
+                                                                           "ebInterface 5.0",
+                                                                           bNotDeprecated,
+                                                                           ValidationExecutorXSD.create (CEbInterface.EBINTERFACE_50_XSDS)));
+    aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_EBI_60,
+                                                                           "ebInterface 6.0",
+                                                                           bNotDeprecated,
+                                                                           ValidationExecutorXSD.create (CEbInterface.EBINTERFACE_60_XSDS)));
+    aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_EBI_61,
+                                                                           "ebInterface 6.1",
+                                                                           bNotDeprecated,
+                                                                           ValidationExecutorXSD.create (CEbInterface.EBINTERFACE_61_XSDS)));
   }
-
-  // public static void main (final String [] args)
-  // {
-  // for (final EEbInterfaceDocumentType e : EEbInterfaceDocumentType.values ())
-  // {
-  // final String sVersion = e.name ().charAt (3) + "." + e.name ().substring
-  // (4);
-  // System.out.println ("public static final VESID VID_EBI_" +
-  // e.name ().substring (3) +
-  // " = new VESID (GROUP_ID, \"invoice\", \"" +
-  // sVersion +
-  // "\");");
-  // }
-  // }
 }

@@ -34,6 +34,7 @@ import com.helger.phive.engine.schematron.ValidationExecutorSchematron;
 import com.helger.phive.engine.source.IValidationSourceXML;
 import com.helger.phive.engine.xsd.ValidationExecutorXSD;
 import com.helger.ubl21.EUBL21DocumentType;
+import com.helger.ubl21.UBL21Marshaller;
 import com.helger.ubl21.UBL21NamespaceContext;
 
 /**
@@ -238,14 +239,14 @@ public final class PeppolValidation350
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_T10_V2,
                                                                            "OpenPeppol Invoice" + sVersion,
                                                                            bIsDeprecated,
-                                                                           ValidationExecutorXSD.create (EUBL21DocumentType.INVOICE),
+                                                                           ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
                                                                            _createPure (INVOICE_RULES),
                                                                            _createPure (INVOICE_OPENPEPPOL),
                                                                            _createPure (INVOICE_OPENPEPPOL_CORE)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_T14_V2,
                                                                            "OpenPeppol Credit Note" + sVersion,
                                                                            bIsDeprecated,
-                                                                           ValidationExecutorXSD.create (EUBL21DocumentType.CREDIT_NOTE),
+                                                                           ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
                                                                            _createPure (CREDIT_NOTE_RULES),
                                                                            _createPure (CREDIT_NOTE_OPENPEPPOL),
                                                                            _createPure (CREDIT_NOTE_OPENPEPPOL_CORE)));
