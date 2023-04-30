@@ -29,7 +29,7 @@ import com.helger.phive.engine.schematron.SchematronNamespaceBeautifier;
 import com.helger.phive.engine.schematron.ValidationExecutorSchematron;
 import com.helger.phive.engine.source.IValidationSourceXML;
 import com.helger.phive.engine.xsd.ValidationExecutorXSD;
-import com.helger.ubl22.EUBL22DocumentType;
+import com.helger.ubl22.UBL22Marshaller;
 import com.helger.ubl22.UBL22NamespaceContext;
 
 /**
@@ -106,7 +106,7 @@ public final class EHFValidationG3
                                                                            "EHF Advanced Order Cancellation " +
                                                                                                                     VID_EHF_ADVANCED_ORDER_CANCELLATION_300.getVersion (),
                                                                            bNotDeprecated,
-                                                                           ValidationExecutorXSD.create (EUBL22DocumentType.ORDER_CANCELLATION),
+                                                                           ValidationExecutorXSD.create (UBL22Marshaller.getAllOrderCancellationXSDs ()),
                                                                            _createXSLT (new ClassPathResource (sXSLT +
                                                                                                                "advanced-ordering-3.0/EHF-P09-3.0-ORDER-CANCELLATION.xslt",
                                                                                                                _getCL ()))));
@@ -114,7 +114,7 @@ public final class EHFValidationG3
                                                                            "EHF Advanced Order Change " +
                                                                                                               VID_EHF_ADVANCED_ORDER_CHANGE_300.getVersion (),
                                                                            bNotDeprecated,
-                                                                           ValidationExecutorXSD.create (EUBL22DocumentType.ORDER_CHANGE),
+                                                                           ValidationExecutorXSD.create (UBL22Marshaller.getAllOrderChangeXSDs ()),
                                                                            _createXSLT (new ClassPathResource (sXSLT +
                                                                                                                "advanced-ordering-3.0/EHF-P09-3.0-ORDER-CHANGE.xslt",
                                                                                                                _getCL ()))));
@@ -122,7 +122,7 @@ public final class EHFValidationG3
                                                                            "EHF Advanced Order Initiation " +
                                                                                                                   VID_EHF_ADVANCED_ORDER_INITIATION_300.getVersion (),
                                                                            bNotDeprecated,
-                                                                           ValidationExecutorXSD.create (EUBL22DocumentType.ORDER),
+                                                                           ValidationExecutorXSD.create (UBL22Marshaller.getAllOrderXSDs ()),
                                                                            _createXSLT (new ClassPathResource (sXSLT +
                                                                                                                "advanced-ordering-3.0/EHF-P09-3.0-ORDER-INITIATION.xslt",
                                                                                                                _getCL ()))));
@@ -130,7 +130,7 @@ public final class EHFValidationG3
                                                                            "EHF Advanced Order Response " +
                                                                                                                 VID_EHF_ADVANCED_ORDER_RESPONSE_300.getVersion (),
                                                                            bNotDeprecated,
-                                                                           ValidationExecutorXSD.create (EUBL22DocumentType.ORDER_RESPONSE),
+                                                                           ValidationExecutorXSD.create (UBL22Marshaller.getAllOrderResponseXSDs ()),
                                                                            _createXSLT (new ClassPathResource (sXSLT +
                                                                                                                "advanced-ordering-3.0/EHF-P09-3.0-ORDER-RESPONSE.xslt",
                                                                                                                _getCL ()))));
@@ -138,7 +138,7 @@ public final class EHFValidationG3
                                                                            "EHF Catalogue " +
                                                                                                   VID_EHF_CATALOGUE_300.getVersion (),
                                                                            bNotDeprecated,
-                                                                           ValidationExecutorXSD.create (EUBL22DocumentType.CATALOGUE),
+                                                                           ValidationExecutorXSD.create (UBL22Marshaller.getAllCatalogueXSDs ()),
                                                                            _createXSLT (new ClassPathResource (sXSLT +
                                                                                                                "catalogue-3.0/EHF-CATALOGUE-3.0.xslt",
                                                                                                                _getCL ()))));
@@ -146,7 +146,7 @@ public final class EHFValidationG3
                                                                            "EHF Catalogue Response " +
                                                                                                            VID_EHF_CATALOGUE_RESPONSE_300.getVersion (),
                                                                            bNotDeprecated,
-                                                                           ValidationExecutorXSD.create (EUBL22DocumentType.APPLICATION_RESPONSE),
+                                                                           ValidationExecutorXSD.create (UBL22Marshaller.getAllApplicationResponseXSDs ()),
                                                                            _createXSLT (new ClassPathResource (sXSLT +
                                                                                                                "catalogue-3.0/EHF-CATALOGUE-RESPONSE-3.0.xslt",
                                                                                                                _getCL ()))));
@@ -154,7 +154,7 @@ public final class EHFValidationG3
                                                                            "EHF Despatch Advice " +
                                                                                                         VID_EHF_DESPATCH_ADVICE_300.getVersion (),
                                                                            bNotDeprecated,
-                                                                           ValidationExecutorXSD.create (EUBL22DocumentType.DESPATCH_ADVICE),
+                                                                           ValidationExecutorXSD.create (UBL22Marshaller.getAllDespatchAdviceXSDs ()),
                                                                            _createXSLT (new ClassPathResource (sXSLT +
                                                                                                                "despatch-advice-3.0/EHF-DESPATCH-ADVICE-3.0.xslt",
                                                                                                                _getCL ()))));
@@ -162,7 +162,7 @@ public final class EHFValidationG3
                                                                            "EHF Forward Billing Invoice " +
                                                                                                                 VID_EHF_FORWARD_BILLING_INVOICE_300.getVersion (),
                                                                            bNotDeprecated,
-                                                                           ValidationExecutorXSD.create (EUBL22DocumentType.INVOICE),
+                                                                           ValidationExecutorXSD.create (UBL22Marshaller.getAllInvoiceXSDs ()),
                                                                            _createXSLT (new ClassPathResource (sXSLT +
                                                                                                                "forward-billing-3.0/FORWARD-BILLING-CEN-EN16931-UBL.xslt",
                                                                                                                _getCL ())),
@@ -173,7 +173,7 @@ public final class EHFValidationG3
                                                                            "EHF Forward Billing CreditNote " +
                                                                                                                     VID_EHF_FORWARD_BILLING_CREDIT_NOTE_300.getVersion (),
                                                                            bNotDeprecated,
-                                                                           ValidationExecutorXSD.create (EUBL22DocumentType.CREDIT_NOTE),
+                                                                           ValidationExecutorXSD.create (UBL22Marshaller.getAllCreditNoteXSDs ()),
                                                                            _createXSLT (new ClassPathResource (sXSLT +
                                                                                                                "forward-billing-3.0/FORWARD-BILLING-CEN-EN16931-UBL.xslt",
                                                                                                                _getCL ())),
@@ -184,7 +184,7 @@ public final class EHFValidationG3
                                                                            "EHF Order Agreement " +
                                                                                                         VID_EHF_ORDER_AGREEMENT_300.getVersion (),
                                                                            bNotDeprecated,
-                                                                           ValidationExecutorXSD.create (EUBL22DocumentType.ORDER_RESPONSE),
+                                                                           ValidationExecutorXSD.create (UBL22Marshaller.getAllOrderResponseXSDs ()),
                                                                            _createXSLT (new ClassPathResource (sXSLT +
                                                                                                                "order-agreement-3.0/EHF-ORDER-AGREEMENT-3.0.xslt",
                                                                                                                _getCL ()))));
@@ -192,7 +192,7 @@ public final class EHFValidationG3
                                                                            "EHF Order " +
                                                                                               VID_EHF_ORDER_300.getVersion (),
                                                                            bNotDeprecated,
-                                                                           ValidationExecutorXSD.create (EUBL22DocumentType.ORDER),
+                                                                           ValidationExecutorXSD.create (UBL22Marshaller.getAllOrderXSDs ()),
                                                                            _createXSLT (new ClassPathResource (sXSLT +
                                                                                                                "ordering-3.0/EHF-ORDER-3.0.xslt",
                                                                                                                _getCL ()))));
@@ -200,7 +200,7 @@ public final class EHFValidationG3
                                                                            "EHF Order Response " +
                                                                                                        VID_EHF_ORDER_RESPONSE_300.getVersion (),
                                                                            bNotDeprecated,
-                                                                           ValidationExecutorXSD.create (EUBL22DocumentType.ORDER_RESPONSE),
+                                                                           ValidationExecutorXSD.create (UBL22Marshaller.getAllOrderResponseXSDs ()),
                                                                            _createXSLT (new ClassPathResource (sXSLT +
                                                                                                                "ordering-3.0/EHF-ORDER-RESPONSE-3.0.xslt",
                                                                                                                _getCL ()))));
@@ -208,14 +208,14 @@ public final class EHFValidationG3
                                                                            "EHF Payment Request " +
                                                                                                         VID_EHF_PAYMENT_REQUEST_300.getVersion (),
                                                                            bNotDeprecated,
-                                                                           ValidationExecutorXSD.create (EUBL22DocumentType.INVOICE),
+                                                                           ValidationExecutorXSD.create (UBL22Marshaller.getAllInvoiceXSDs ()),
                                                                            _createXSLT (new ClassPathResource (sXSLT +
                                                                                                                "payment-request-3.0/EHF-P07-3.0-PAYMENT-REQUEST-3.0.xslt"))));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_EHF_PUNCH_OUT_300,
                                                                            "EHF Punch Out " +
                                                                                                   VID_EHF_PUNCH_OUT_300.getVersion (),
                                                                            bNotDeprecated,
-                                                                           ValidationExecutorXSD.create (EUBL22DocumentType.CATALOGUE),
+                                                                           ValidationExecutorXSD.create (UBL22Marshaller.getAllCatalogueXSDs ()),
                                                                            _createXSLT (new ClassPathResource (sXSLT +
                                                                                                                "punch-out-3.0/EHF-PUNCH-OUT-3.0.xslt",
                                                                                                                _getCL ()))));
@@ -223,7 +223,7 @@ public final class EHFValidationG3
                                                                            "EHF Reminder " +
                                                                                                  VID_EHF_REMINDER_300.getVersion (),
                                                                            bNotDeprecated,
-                                                                           ValidationExecutorXSD.create (EUBL22DocumentType.INVOICE),
+                                                                           ValidationExecutorXSD.create (UBL22Marshaller.getAllInvoiceXSDs ()),
                                                                            _createXSLT (new ClassPathResource (sXSLT +
                                                                                                                "reminder-3.0/REMINDER-CEN-EN16931-UBL.xslt",
                                                                                                                _getCL ())),

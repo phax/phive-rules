@@ -20,7 +20,7 @@ import javax.annotation.Nonnull;
 import javax.annotation.concurrent.Immutable;
 
 import com.helger.commons.ValueEnforcer;
-import com.helger.fatturapa.builder.EFatturaPADocumentType;
+import com.helger.fatturapa.CFatturaPA;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
 import com.helger.phive.api.executorset.VESID;
 import com.helger.phive.api.executorset.ValidationExecutorSet;
@@ -63,16 +63,16 @@ public final class FatturaPAValidation
                                                                            "fatturaPA " +
                                                                                               VID_FATTURAPA_120.getVersion (),
                                                                            bDeprecated,
-                                                                           ValidationExecutorXSD.create (EFatturaPADocumentType.FATTURAPA_120)));
+                                                                           ValidationExecutorXSD.create (CFatturaPA.getAllXSDFatturaPA120 ())));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_FATTURAPA_121,
                                                                            "fatturaPA " +
                                                                                               VID_FATTURAPA_121.getVersion (),
-                                                                           bNotDeprecated,
-                                                                           ValidationExecutorXSD.create (EFatturaPADocumentType.FATTURAPA_121)));
+                                                                           bDeprecated,
+                                                                           ValidationExecutorXSD.create (CFatturaPA.getAllXSDFatturaPA121 ())));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_FATTURAPA_122,
                                                                            "fatturaPA " +
                                                                                               VID_FATTURAPA_122.getVersion (),
                                                                            bNotDeprecated,
-                                                                           ValidationExecutorXSD.create (EFatturaPADocumentType.FATTURAPA_122)));
+                                                                           ValidationExecutorXSD.create (CFatturaPA.getAllXSDFatturaPA122 ())));
   }
 }
