@@ -36,6 +36,7 @@ import com.helger.phive.peppol.PeppolValidation3_14_0;
 import com.helger.phive.peppol.PeppolValidation3_15_0;
 import com.helger.phive.peppol.PeppolValidationAUNZ;
 import com.helger.phive.peppol.PeppolValidationDirectory;
+import com.helger.phive.peppol.PeppolValidationJP;
 import com.helger.phive.peppol.PeppolValidationReporting;
 import com.helger.phive.peppol.PeppolValidationSG;
 
@@ -112,7 +113,11 @@ public final class CTestFiles
                                             PeppolValidationReporting.VID_OPENPEPPOL_EUSR_V100,
 
                                             PeppolValidationReporting.VID_OPENPEPPOL_TSR_V100,
-                                            PeppolValidationReporting.VID_OPENPEPPOL_TSR_V101, })
+                                            PeppolValidationReporting.VID_OPENPEPPOL_TSR_V101,
+
+                                            /* Japan */
+                                            PeppolValidationJP.VID_OPENPEPPOL_JP_PINT_INVOICE_012,
+                                            PeppolValidationJP.VID_OPENPEPPOL_JP_PINT_CREDIT_NOTE_012 })
       for (final IReadableResource aRes : getAllMatchingTestFiles (aESID))
       {
         assertTrue ("Not existing test file: " + aRes.getPath (), aRes.exists ());
@@ -156,7 +161,6 @@ public final class CTestFiles
       final String sPrefix = sPrefix0 + "aunz-peppol/1.0.7/";
       return new CommonsArrayList <> (new FileSystemResource (sPrefix + "NZ Self Billed Credit note.xml"));
     }
-
     // AUNZ 1.0.8
     if (aVESID.equals (PeppolValidationAUNZ.VID_OPENPEPPOL_BIS3_AUNZ_UBL_INVOICE_108))
     {
@@ -184,14 +188,12 @@ public final class CTestFiles
       final String sPrefix = sPrefix0 + "aunz-peppol/1.0.8/";
       return new CommonsArrayList <> (new FileSystemResource (sPrefix + "NZ Self Billed Credit note.xml"));
     }
-
     // SG 1.0.2
     if (aVESID.equals (PeppolValidationSG.VID_OPENPEPPOL_BIS3_SG_UBL_INVOICE_102))
     {
       final String sPrefix = sPrefix0 + "sg-peppol/1.0.2/";
       return new CommonsArrayList <> (new FileSystemResource (sPrefix + "Singapore invoice valid 1.xml"));
     }
-
     if (aVESID.equals (PeppolValidationSG.VID_OPENPEPPOL_BIS3_SG_UBL_CREDIT_NOTE_102))
       return new CommonsArrayList <> ();
 
@@ -202,7 +204,6 @@ public final class CTestFiles
       return new CommonsArrayList <> (new FileSystemResource (sPrefix + "Singapore invoice valid 1.xml"),
                                       new FileSystemResource (sPrefix + "Singapore invoice valid 1 - NG tax code.xml"));
     }
-
     if (aVESID.equals (PeppolValidationSG.VID_OPENPEPPOL_BIS3_SG_UBL_CREDIT_NOTE_103))
       return new CommonsArrayList <> ();
 
@@ -291,7 +292,6 @@ public final class CTestFiles
                                         new FileSystemResource (sBase2 +
                                                                 "T111-uc008-Invoice is accepted by third party.xml"));
     }
-
     // 3.15.0
     {
       final String sPrefix = sPrefix0 + "openpeppol/3.15.0/";
@@ -371,7 +371,6 @@ public final class CTestFiles
                                         new FileSystemResource (sBase2 +
                                                                 "T111-uc008-Invoice is accepted by third party.xml"));
     }
-
     /* Peppol Directory BusinessCard */
     if (aVESID.equals (PeppolValidationDirectory.VID_OPENPEPPOL_BUSINESS_CARD_V1))
     {
@@ -381,7 +380,6 @@ public final class CTestFiles
                                       new FileSystemResource (sPrefix + "business-card-example-spec-v1.xml"),
                                       new FileSystemResource (sPrefix + "business-card-test1.xml"));
     }
-
     if (aVESID.equals (PeppolValidationDirectory.VID_OPENPEPPOL_BUSINESS_CARD_V2))
     {
       final String sPrefix = sPrefix0 + "business-card/v2/";
@@ -391,7 +389,6 @@ public final class CTestFiles
                                       new FileSystemResource (sPrefix + "business-card-test1.xml"),
                                       new FileSystemResource (sPrefix + "nemhandel.xml"));
     }
-
     if (aVESID.equals (PeppolValidationDirectory.VID_OPENPEPPOL_BUSINESS_CARD_V3))
     {
       final String sPrefix = sPrefix0 + "business-card/v3/";
@@ -404,7 +401,6 @@ public final class CTestFiles
                                       new FileSystemResource (sPrefix + "business-card-test1.xml"),
                                       new FileSystemResource (sPrefix + "business-card-test2.xml"));
     }
-
     /* Peppol Reporting */
     // EUSR
     if (aVESID.equals (PeppolValidationReporting.VID_OPENPEPPOL_EUSR_V100RC2))
@@ -421,7 +417,6 @@ public final class CTestFiles
                                       new FileSystemResource (sPrefix + "end-user-statistics-reporting-empty.xml"),
                                       new FileSystemResource (sPrefix + "end-user-statistics-reporting-minimal.xml"));
     }
-
     // TSR
     if (aVESID.equals (PeppolValidationReporting.VID_OPENPEPPOL_TSR_V100))
     {
@@ -435,7 +430,28 @@ public final class CTestFiles
       return new CommonsArrayList <> (new FileSystemResource (sPrefix + "transaction-statistics-2.xml"),
                                       new FileSystemResource (sPrefix + "transaction-statistics-minimal.xml"));
     }
-
+    /* Peppol JP */
+    if (aVESID.equals (PeppolValidationJP.VID_OPENPEPPOL_JP_PINT_INVOICE_012))
+    {
+      final String sPrefix = sPrefix0 + "jp-pint/0.1.2/";
+      return new CommonsArrayList <> (new FileSystemResource (sPrefix + "Japan PINT Invoice UBL Example.xml"),
+                                      new FileSystemResource (sPrefix + "Japan PINT Invoice UBL Example1-minimum.xml"),
+                                      new FileSystemResource (sPrefix +
+                                                              "Japan PINT Invoice UBL Example2-TaxAcctCur.xml"),
+                                      new FileSystemResource (sPrefix + "Japan PINT Invoice UBL Example3-SumInv1.xml"),
+                                      new FileSystemResource (sPrefix + "Japan PINT Invoice UBL Example4-SumInv2.xml"),
+                                      new FileSystemResource (sPrefix +
+                                                              "Japan PINT Invoice UBL Example5-AllowanceCharge.xml"),
+                                      new FileSystemResource (sPrefix + "Japan PINT Invoice UBL Example6-CorrInv.xml"),
+                                      new FileSystemResource (sPrefix +
+                                                              "Japan PINT Invoice UBL Example7-Return.Quan.ItPr.xml"),
+                                      new FileSystemResource (sPrefix +
+                                                              "Japan PINT Invoice UBL Example9-SumInv1 and O.xml"));
+    }
+    if (aVESID.equals (PeppolValidationJP.VID_OPENPEPPOL_JP_PINT_CREDIT_NOTE_012))
+    {
+      return new CommonsArrayList <> ();
+    }
     throw new IllegalArgumentException ("Invalid VESID: " + aVESID);
   }
 }

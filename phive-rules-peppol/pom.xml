@@ -124,6 +124,18 @@
           -->
           <!-- 
           <execution>
+            <id>jp-pint</id>
+            <goals>
+              <goal>convert</goal>
+            </goals>
+            <configuration>
+              <schematronDirectory>src/test/resources/external/rule-source/jp-pint/0.1.2</schematronDirectory>
+              <xsltDirectory>src/main/resources/external/schematron/jp-pint/0.1.2/xslt</xsltDirectory>
+            </configuration>
+          </execution>
+          -->
+          <!-- 
+          <execution>
             <id>peppol-regular</id>
             <goals>
               <goal>convert</goal>
