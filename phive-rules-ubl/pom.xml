@@ -74,6 +74,10 @@
       <groupId>com.helger.ubl</groupId>
       <artifactId>ph-ubl23</artifactId>
     </dependency>
+    <dependency>
+      <groupId>com.helger.ubl</groupId>
+      <artifactId>ph-ubl24</artifactId>
+    </dependency>
     
     <dependency>
       <groupId>org.slf4j</groupId>
