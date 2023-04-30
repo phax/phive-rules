@@ -184,6 +184,9 @@ I hope that with the introduction of PINT, the versioning problem will be solved
   
 # News and noteworthy
 
+* v3.0.3 - work in progress
+    * Requires ph-ubl 8.0.2 or later
+    * Added support for UBL 2.4-CSD01
 * v3.0.2 - 2023-04-12
     * Added support for EN 16931 1.3.10 format and deprecated EN 16931 1.3.6a, 1.3.7 and 1.3.8 versions
     * Deprecated Peppol rules 3.0.14
