@@ -184,7 +184,7 @@ I hope that with the introduction of PINT, the versioning problem will be solved
   
 # News and noteworthy
 
-* v3.0.3 - work in progress
+* v3.0.3 - 2023-04-30
     * Requires ph-ubl 8.0.2 or later
     * Added support for UBL 2.4-CSD01
     * Added support for Japan PINT Invoice and Credit Note 0.1.2. See [issue #16](https://github.com/phax/phive-rules/issues/16) - thx @dwillekens
