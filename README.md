@@ -184,6 +184,8 @@ I hope that with the introduction of PINT, the versioning problem will be solved
   
 # News and noteworthy
 
+* v3.0.4 - work in progress
+    * Updated XRechnung 2.3.1 rules to 1.8.2
 * v3.0.3 - 2023-04-30
     * Requires ph-ubl 8.0.2 or later
     * Added support for UBL 2.4-CSD01
