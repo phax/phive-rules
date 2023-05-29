@@ -49,7 +49,7 @@ public final class ValidationExecutionManagerFuncTest
       if (aTestFile.isGoodCase ())
       {
         final IValidationExecutorSet <IValidationSourceXML> aExecutors = CTestFiles.VES_REGISTRY.getOfID (aTestFile.getVESID ());
-        assertNotNull (aExecutors);
+        assertNotNull ("Missing: " + aTestFile.getVESID ().getAsSingleID (), aExecutors);
 
         LOGGER.info ("Validating " +
                      aTestFile.getResource ().getPath () +
@@ -61,8 +61,11 @@ public final class ValidationExecutionManagerFuncTest
 
         // Read as desired type
         final IValidationSourceXML aSource = ValidationSourceXML.create (aTestFile.getResource ());
-        final ValidationResultList aValidationResultList = ValidationExecutionManager.executeValidation (aExecutors, aSource, Locale.US);
-        aValidationResultList.getAllErrors ().forEach (x -> LOGGER.info ("  " + x.getErrorLevel () + " " + x.getAsString (Locale.US)));
+        final ValidationResultList aValidationResultList = ValidationExecutionManager.executeValidation (aExecutors,
+                                                                                                         aSource,
+                                                                                                         Locale.US);
+        aValidationResultList.getAllErrors ()
+                             .forEach (x -> LOGGER.info ("  " + x.getErrorLevel () + " " + x.getAsString (Locale.US)));
         assertTrue (aValidationResultList.getAllErrors ().toString (), aValidationResultList.containsNoError ());
       }
   }
@@ -74,7 +77,7 @@ public final class ValidationExecutionManagerFuncTest
       if (aTestFile.isBadCase ())
       {
         final IValidationExecutorSet <IValidationSourceXML> aExecutors = CTestFiles.VES_REGISTRY.getOfID (aTestFile.getVESID ());
-        assertNotNull (aExecutors);
+        assertNotNull ("Missing: " + aTestFile.getVESID ().getAsSingleID (), aExecutors);
 
         LOGGER.info ("Validating " +
                      aTestFile.getResource ().getPath () +
@@ -86,8 +89,11 @@ public final class ValidationExecutionManagerFuncTest
 
         // Read as desired type
         final IValidationSourceXML aSource = ValidationSourceXML.create (aTestFile.getResource ());
-        final ValidationResultList aValidationResultList = ValidationExecutionManager.executeValidation (aExecutors, aSource, Locale.US);
-        aValidationResultList.getAllFailures ().forEach (x -> LOGGER.info ("  " + x.getErrorLevel () + " " + x.getAsString (Locale.US)));
+        final ValidationResultList aValidationResultList = ValidationExecutionManager.executeValidation (aExecutors,
+                                                                                                         aSource,
+                                                                                                         Locale.US);
+        aValidationResultList.getAllFailures ()
+                             .forEach (x -> LOGGER.info ("  " + x.getErrorLevel () + " " + x.getAsString (Locale.US)));
         assertTrue (aValidationResultList.containsAtLeastOneError ());
       }
   }
