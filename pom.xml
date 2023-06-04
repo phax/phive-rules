@@ -129,7 +129,7 @@
       <dependency>
         <groupId>com.helger.peppol</groupId>
         <artifactId>peppol-commons-parent-pom</artifactId>
-        <version>9.0.4</version>
+        <version>9.0.5</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
@@ -211,7 +211,7 @@
       </dependency>
       <dependency>
         <groupId>com.helger.phive.rules</groupId>
-        <artifactId>phive-rules-simplerinvoicing</artifactId>
+        <artifactId>phive-rules-setu</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
@@ -280,6 +280,7 @@
     <module>phive-rules-peppol-legacy</module>
     <module>phive-rules-peppol</module>
     <module>phive-rules-peppol-italy</module>
+    <module>phive-rules-setu</module>
     <module>phive-rules-simplerinvoicing</module>
     <module>phive-rules-svefaktura</module>
     <module>phive-rules-teapps</module>

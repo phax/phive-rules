@@ -2,4 +2,9 @@
 * text=auto
 
 # Required so that the JAXB plugin does not create &#13;
-*.xsd  text eol=lf
+*.sch   text eol=lf
+*.xml   text eol=lf
+*.xsd   text eol=lf
+*.xsl   text eol=lf
+*.xslt  text eol=lf
+*.pdf   binary
