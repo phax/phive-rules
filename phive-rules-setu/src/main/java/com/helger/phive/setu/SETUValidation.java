@@ -84,7 +84,7 @@ public final class SETUValidation
                                                                            ValidationExecutorXSD.create (CXML_XSD.getXSDResource (),
                                                                                                          new ClassPathResource ("/external/schemas/hr-xml-2007/SIDES/TimeCardAdditionalData.xsd",
                                                                                                                                 _getCL ()),
-                                                                                                         new ClassPathResource ("/external/schemas/hr-xml-2007/TimeCard/Timecard.xsd",
+                                                                                                         new ClassPathResource ("/external/schemas/hr-xml-2007/TimeCard/TimeCard.xsd",
                                                                                                                                 _getCL ())),
                                                                            _createXSLT (new ClassPathResource ("/external/schematron/timecard/1.4/xslt/RTE-v1.4-TimeCard.xslt"))));
   }
