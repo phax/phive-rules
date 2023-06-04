@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ubl:ApplicationResponse xmlns:ubl="urn:oasis:names:specification:ubl:schema:xsd:ApplicationResponse-2" xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<cbc:CustomizationID>urn:fdc:peppol.eu:poacc:trns:invoice_response:3</cbc:CustomizationID>
+	<cbc:ProfileID>urn:fdc:peppol.eu:poacc:bis:invoice_response:3</cbc:ProfileID>
+	<cbc:ID>InvoiceResponse1</cbc:ID>
+	<cbc:IssueDate>2020-11-01</cbc:IssueDate>
+	<cbc:IssueTime>12:00:00</cbc:IssueTime>
+	<cbc:Note>Sample UBL for invoice response, rejection with reason and action codes</cbc:Note>
+	<cac:SenderParty>
+		<cbc:EndpointID schemeID="0151">51824753556</cbc:EndpointID>
+		<cac:PartyLegalEntity>
+			<cbc:RegistrationName>Test Buyer Entity</cbc:RegistrationName>
+		</cac:PartyLegalEntity>
+		<cac:Contact>
+			<cbc:Name>Buyer's AP team</cbc:Name>
+			<cbc:Telephone>012312312345</cbc:Telephone>
+			<cbc:ElectronicMail>invoiceprocessingdepartment@organization.org</cbc:ElectronicMail>
+		</cac:Contact>
+	</cac:SenderParty>
+	<cac:ReceiverParty>
+		<cbc:EndpointID schemeID="0151">48485657783</cbc:EndpointID>
+		<cac:PartyLegalEntity>
+			<cbc:RegistrationName>Test Seller company</cbc:RegistrationName>
+		</cac:PartyLegalEntity>
+	</cac:ReceiverParty>
+	<cac:DocumentResponse>
+		<cac:Response>
+			<cbc:ResponseCode listID="UNCL4343OpSubset">RE</cbc:ResponseCode>
+			<cbc:EffectiveDate>2020-11-01</cbc:EffectiveDate>
+			<cac:Status>
+				<cbc:StatusReasonCode listID="OPStatusReason">REF</cbc:StatusReasonCode>
+				<!--using the free text field to provide detailed description-->
+				<cbc:StatusReason>Purchase order number is invalid. The format should be POnnnnnn</cbc:StatusReason>
+			</cac:Status>
+			<!--including an action code to request the sender to send another invoice-->
+			<cac:Status>
+				<cbc:StatusReasonCode listID="OPStatusAction">NIN</cbc:StatusReasonCode>
+			</cac:Status>
+		</cac:Response>
+		<cac:DocumentReference>
+			<cbc:ID>inv021</cbc:ID>
+			<cbc:IssueDate>2020-10-30</cbc:IssueDate>
+			<cbc:DocumentTypeCode listID="UNECE1001">380</cbc:DocumentTypeCode>
+		</cac:DocumentReference>
+		<cac:IssuerParty>
+			<cac:PartyIdentification>
+				<cbc:ID schemeID="0151">48485657783</cbc:ID>
+			</cac:PartyIdentification>
+			<cac:PartyName>
+				<cbc:Name>Seller A</cbc:Name>
+			</cac:PartyName>
+		</cac:IssuerParty>
+		<cac:RecipientParty>
+			<cac:PartyIdentification>
+				<cbc:ID schemeID="0151">51824753556</cbc:ID>
+			</cac:PartyIdentification>
+			<cac:PartyName>
+				<cbc:Name>Buyer A</cbc:Name>
+			</cac:PartyName>
+		</cac:RecipientParty>
+	</cac:DocumentResponse>
+</ubl:ApplicationResponse>

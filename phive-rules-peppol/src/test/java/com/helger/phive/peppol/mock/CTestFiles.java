@@ -32,6 +32,7 @@ import com.helger.phive.api.executorset.ValidationExecutorSetRegistry;
 import com.helger.phive.engine.mock.MockFile;
 import com.helger.phive.engine.source.IValidationSourceXML;
 import com.helger.phive.peppol.PeppolValidation;
+import com.helger.phive.peppol.PeppolValidation2023_05;
 import com.helger.phive.peppol.PeppolValidation3_14_0;
 import com.helger.phive.peppol.PeppolValidation3_15_0;
 import com.helger.phive.peppol.PeppolValidationAUNZ;
@@ -69,6 +70,11 @@ public final class CTestFiles
                                             PeppolValidationAUNZ.VID_OPENPEPPOL_BIS3_AUNZ_UBL_INVOICE_SELF_BILLING_108,
                                             PeppolValidationAUNZ.VID_OPENPEPPOL_BIS3_AUNZ_UBL_CREDIT_NOTE_SELF_BILLING_108,
 
+                                            PeppolValidationAUNZ.VID_OPENPEPPOL_BIS3_AUNZ_UBL_INVOICE_109,
+                                            PeppolValidationAUNZ.VID_OPENPEPPOL_BIS3_AUNZ_UBL_CREDIT_NOTE_109,
+                                            PeppolValidationAUNZ.VID_OPENPEPPOL_BIS3_AUNZ_UBL_INVOICE_SELF_BILLING_109,
+                                            PeppolValidationAUNZ.VID_OPENPEPPOL_BIS3_AUNZ_UBL_CREDIT_NOTE_SELF_BILLING_109,
+
                                             /* Singapore */
                                             PeppolValidationSG.VID_OPENPEPPOL_BIS3_SG_UBL_INVOICE_102,
                                             PeppolValidationSG.VID_OPENPEPPOL_BIS3_SG_UBL_CREDIT_NOTE_102,
@@ -102,6 +108,22 @@ public final class CTestFiles
                                             PeppolValidation3_15_0.VID_OPENPEPPOL_PUNCH_OUT_V3,
                                             PeppolValidation3_15_0.VID_OPENPEPPOL_ORDER_AGREEMENT_V3,
                                             PeppolValidation3_15_0.VID_OPENPEPPOL_INVOICE_MESSAGE_RESPONSE_V3,
+
+                                            PeppolValidation2023_05.VID_OPENPEPPOL_INVOICE_UBL_V3,
+                                            PeppolValidation2023_05.VID_OPENPEPPOL_CREDIT_NOTE_UBL_V3,
+                                            // PeppolValidation2023_05.VID_OPENPEPPOL_INVOICE_CII_V3,
+                                            PeppolValidation2023_05.VID_OPENPEPPOL_ORDER_V3,
+                                            PeppolValidation2023_05.VID_OPENPEPPOL_DESPATCH_ADVICE_V3,
+                                            PeppolValidation2023_05.VID_OPENPEPPOL_CATALOGUE_V3,
+                                            PeppolValidation2023_05.VID_OPENPEPPOL_CATALOGUE_RESPONSE_V3,
+                                            PeppolValidation2023_05.VID_OPENPEPPOL_MLR_V3,
+                                            PeppolValidation2023_05.VID_OPENPEPPOL_ORDER_RESPONSE_V3,
+                                            PeppolValidation2023_05.VID_OPENPEPPOL_PUNCH_OUT_V3,
+                                            PeppolValidation2023_05.VID_OPENPEPPOL_ORDER_AGREEMENT_V3,
+                                            PeppolValidation2023_05.VID_OPENPEPPOL_INVOICE_MESSAGE_RESPONSE_V3,
+                                            PeppolValidation2023_05.VID_OPENPEPPOL_ORDER_CHANGE_V3,
+                                            PeppolValidation2023_05.VID_OPENPEPPOL_ORDER_CANCELLATION_V3,
+                                            PeppolValidation2023_05.VID_OPENPEPPOL_ORDER_RESPONSE_ADVANCED_V3,
 
                                             /* Directory */
                                             PeppolValidationDirectory.VID_OPENPEPPOL_BUSINESS_CARD_V1,
@@ -161,6 +183,7 @@ public final class CTestFiles
       final String sPrefix = sPrefix0 + "aunz-peppol/1.0.7/";
       return new CommonsArrayList <> (new FileSystemResource (sPrefix + "NZ Self Billed Credit note.xml"));
     }
+
     // AUNZ 1.0.8
     if (aVESID.equals (PeppolValidationAUNZ.VID_OPENPEPPOL_BIS3_AUNZ_UBL_INVOICE_108))
     {
@@ -188,6 +211,35 @@ public final class CTestFiles
       final String sPrefix = sPrefix0 + "aunz-peppol/1.0.8/";
       return new CommonsArrayList <> (new FileSystemResource (sPrefix + "NZ Self Billed Credit note.xml"));
     }
+
+    // AUNZ 1.0.9
+    if (aVESID.equals (PeppolValidationAUNZ.VID_OPENPEPPOL_BIS3_AUNZ_UBL_INVOICE_109))
+    {
+      final String sPrefix = sPrefix0 + "aunz-peppol/1.0.9/";
+      return new CommonsArrayList <> (new FileSystemResource (sPrefix + "AU Invoice.xml"),
+                                      new FileSystemResource (sPrefix + "NZ Allowance On Invoice Line.xml"),
+                                      new FileSystemResource (sPrefix + "NZ Invoice Level Allowance.xml"),
+                                      new FileSystemResource (sPrefix + "NZ Invoice Level Charge.xml"),
+                                      new FileSystemResource (sPrefix + "NZ No Allowances.xml"),
+                                      new FileSystemResource (sPrefix + "NZ Prepaid Amount.xml"));
+    }
+    if (aVESID.equals (PeppolValidationAUNZ.VID_OPENPEPPOL_BIS3_AUNZ_UBL_CREDIT_NOTE_109))
+    {
+      final String sPrefix = sPrefix0 + "aunz-peppol/1.0.9/";
+      return new CommonsArrayList <> (new FileSystemResource (sPrefix + "NZ Credit note.xml"));
+    }
+    if (aVESID.equals (PeppolValidationAUNZ.VID_OPENPEPPOL_BIS3_AUNZ_UBL_INVOICE_SELF_BILLING_109))
+    {
+      final String sPrefix = sPrefix0 + "aunz-peppol/1.0.9/";
+      return new CommonsArrayList <> (new FileSystemResource (sPrefix + "AU Self Billing.xml"),
+                                      new FileSystemResource (sPrefix + "NZ Self Billing.xml"));
+    }
+    if (aVESID.equals (PeppolValidationAUNZ.VID_OPENPEPPOL_BIS3_AUNZ_UBL_CREDIT_NOTE_SELF_BILLING_109))
+    {
+      final String sPrefix = sPrefix0 + "aunz-peppol/1.0.9/";
+      return new CommonsArrayList <> (new FileSystemResource (sPrefix + "NZ Self Billed Credit note.xml"));
+    }
+
     // SG 1.0.2
     if (aVESID.equals (PeppolValidationSG.VID_OPENPEPPOL_BIS3_SG_UBL_INVOICE_102))
     {
@@ -292,6 +344,7 @@ public final class CTestFiles
                                         new FileSystemResource (sBase2 +
                                                                 "T111-uc008-Invoice is accepted by third party.xml"));
     }
+
     // 3.15.0
     {
       final String sPrefix = sPrefix0 + "openpeppol/3.15.0/";
@@ -371,6 +424,92 @@ public final class CTestFiles
                                         new FileSystemResource (sBase2 +
                                                                 "T111-uc008-Invoice is accepted by third party.xml"));
     }
+
+    // 2023-05
+    {
+      final String sPrefix = sPrefix0 + "openpeppol/2023.5/";
+      // https://github.com/OpenPEPPOL/peppol-bis-invoice-3/tree/master/rules/examples
+      if (aVESID.equals (PeppolValidation2023_05.VID_OPENPEPPOL_INVOICE_UBL_V3))
+        return new CommonsArrayList <> (new FileSystemResource (sPrefix + "billing/Allowance-example.xml"),
+                                        new FileSystemResource (sPrefix + "billing/base-example.xml"),
+                                        new FileSystemResource (sPrefix + "billing/base-negative-inv-correction.xml"),
+                                        new FileSystemResource (sPrefix + "billing/vat-category-E.xml"),
+                                        new FileSystemResource (sPrefix + "billing/vat-category-O.xml"),
+                                        new FileSystemResource (sPrefix + "billing/Vat-category-S.xml"),
+                                        new FileSystemResource (sPrefix + "billing/vat-category-Z.xml"));
+      if (aVESID.equals (PeppolValidation2023_05.VID_OPENPEPPOL_CREDIT_NOTE_UBL_V3))
+        return new CommonsArrayList <> (new FileSystemResource (sPrefix + "billing/base-creditnote-correction.xml"));
+      if (aVESID.equals (PeppolValidation2023_05.VID_OPENPEPPOL_ORDER_V3))
+        return new CommonsArrayList <> (new FileSystemResource (sPrefix + "Order_Example.xml"),
+                                        new FileSystemResource (sPrefix + "Order use cases/UC1_Order.xml"),
+                                        new FileSystemResource (sPrefix + "Order use cases/UC2_Order.xml"),
+                                        new FileSystemResource (sPrefix + "Order use cases/UC3_Order.xml"),
+                                        new FileSystemResource (sPrefix + "Order use cases/UC4_Order.xml"),
+                                        new FileSystemResource (sPrefix + "Order use cases/UC5_Order.xml"));
+      if (aVESID.equals (PeppolValidation2023_05.VID_OPENPEPPOL_DESPATCH_ADVICE_V3))
+        return new CommonsArrayList <> (new FileSystemResource (sPrefix + "DespatchAdvice_Example.xml"),
+                                        new FileSystemResource (sPrefix +
+                                                                "Despatch Advice use cases/DespatchAdvice-BIS3_UseCase1.xml"),
+                                        new FileSystemResource (sPrefix +
+                                                                "Despatch Advice use cases/DespatchAdvice-BIS3_UseCase2.xml"),
+                                        new FileSystemResource (sPrefix +
+                                                                "Despatch Advice use cases/DespatchAdvice-BIS3_UseCase3.xml"),
+                                        new FileSystemResource (sPrefix +
+                                                                "Despatch Advice use cases/DespatchAdvice-BIS3_UseCase4.xml"),
+                                        new FileSystemResource (sPrefix +
+                                                                "Despatch Advice use cases/DespatchAdvice-BIS3_UseCase5.xml"));
+      if (aVESID.equals (PeppolValidation2023_05.VID_OPENPEPPOL_CATALOGUE_V3))
+        return new CommonsArrayList <> (new FileSystemResource (sPrefix + "Catalogue_Example.xml"));
+      if (aVESID.equals (PeppolValidation2023_05.VID_OPENPEPPOL_CATALOGUE_RESPONSE_V3))
+        return new CommonsArrayList <> (new FileSystemResource (sPrefix + "CatalogueResponse_Example.xml"));
+      if (aVESID.equals (PeppolValidation2023_05.VID_OPENPEPPOL_MLR_V3))
+        return new CommonsArrayList <> (new FileSystemResource (sPrefix + "MessageLevelResponse_Example.xml"));
+      if (aVESID.equals (PeppolValidation2023_05.VID_OPENPEPPOL_ORDER_RESPONSE_V3))
+        return new CommonsArrayList <> (new FileSystemResource (sPrefix + "OrderResponse_Example.xml"),
+                                        new FileSystemResource (sPrefix +
+                                                                "Order-response use cases/UC1_Order_response.xml"),
+                                        new FileSystemResource (sPrefix +
+                                                                "Order-response use cases/UC2_Order_response.xml"),
+                                        new FileSystemResource (sPrefix +
+                                                                "Order-response use cases/UC3_Order_response.xml"),
+                                        new FileSystemResource (sPrefix +
+                                                                "Order-response use cases/UC4_Order_response.xml"),
+                                        new FileSystemResource (sPrefix +
+                                                                "Order-response use cases/UC5_Order_response.xml"));
+      if (aVESID.equals (PeppolValidation2023_05.VID_OPENPEPPOL_PUNCH_OUT_V3))
+        return new CommonsArrayList <> (new FileSystemResource (sPrefix + "PunchOut_Example.xml"));
+      if (aVESID.equals (PeppolValidation2023_05.VID_OPENPEPPOL_ORDER_AGREEMENT_V3))
+        return new CommonsArrayList <> (new FileSystemResource (sPrefix + "OrderAgreement_Example.xml"));
+
+      final String sBase2 = sPrefix + "Invoice reponse use cases/";
+      if (aVESID.equals (PeppolValidation2023_05.VID_OPENPEPPOL_INVOICE_MESSAGE_RESPONSE_V3))
+        return new CommonsArrayList <> (new FileSystemResource (sPrefix + "InvoiceResponse_Example.xml"),
+                                        new FileSystemResource (sBase2 + "T111-uc001-Invoice in process.xml"),
+                                        new FileSystemResource (sBase2 + "T111-uc002a-Additional reference data.xml"),
+                                        new FileSystemResource (sBase2 + "T111-uc002b-In process but postponed.xml"),
+                                        new FileSystemResource (sBase2 + "T111-uc003-Invoice is accepted.xml"),
+                                        new FileSystemResource (sBase2 + "T111-uc004a-Invoice is rejected.xml"),
+                                        new FileSystemResource (sBase2 + "T111-uc004b-Rejected requesting reissue.xml"),
+                                        new FileSystemResource (sBase2 +
+                                                                "T111-uc004c-Rejected requesting replacement.xml"),
+                                        new FileSystemResource (sBase2 +
+                                                                "T111-uc005-Invoice is conditionally accepted.xml"),
+                                        new FileSystemResource (sBase2 +
+                                                                "T111-uc006a-Under query missing information.xml"),
+                                        new FileSystemResource (sBase2 + "T111-uc006b-Missing PO.xml"),
+                                        new FileSystemResource (sBase2 + "T111-uc006c-Wrong detail partial credit.xml"),
+                                        new FileSystemResource (sBase2 + "T111-uc007-Payment has been initiated.xml"),
+                                        new FileSystemResource (sBase2 +
+                                                                "T111-uc008-Invoice is accepted by third party.xml"));
+
+      if (aVESID.equals (PeppolValidation2023_05.VID_OPENPEPPOL_ORDER_CHANGE_V3))
+        return new CommonsArrayList <> (new FileSystemResource (sPrefix + "OrderChange_Example.xml"));
+      if (aVESID.equals (PeppolValidation2023_05.VID_OPENPEPPOL_ORDER_CANCELLATION_V3))
+        return new CommonsArrayList <> (new FileSystemResource (sPrefix + "OrderCancellation_Example.xml"));
+      if (aVESID.equals (PeppolValidation2023_05.VID_OPENPEPPOL_ORDER_RESPONSE_ADVANCED_V3))
+        return new CommonsArrayList <> (new FileSystemResource (sPrefix + "OrderResponseAdvanced_Example.xml"));
+    }
+
     /* Peppol Directory BusinessCard */
     if (aVESID.equals (PeppolValidationDirectory.VID_OPENPEPPOL_BUSINESS_CARD_V1))
     {

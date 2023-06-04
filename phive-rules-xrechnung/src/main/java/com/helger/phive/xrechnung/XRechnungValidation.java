@@ -455,7 +455,7 @@ public final class XRechnungValidation
                                                                                                                       UBL21NamespaceContext.getInstance ())
                                                                                                          .addCustomErrorLevels (aCustomErrorLevels),
                                                                              ValidationExecutorSchematron.createXSLT (new ClassPathResource (sPrefix +
-                                                                                                                                             "2.3.1/XRechnung-UBL-validation-CreditNote.xslt",
+                                                                                                                                             "2.3.1/XRechnung-UBL-validation.xslt",
                                                                                                                                              _getCL ()),
                                                                                                                       UBL21NamespaceContext.getInstance ())));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_XRECHNUNG_UBL_INVOICE_231,
@@ -467,7 +467,7 @@ public final class XRechnungValidation
                                                                                                                       UBL21NamespaceContext.getInstance ())
                                                                                                          .addCustomErrorLevels (aCustomErrorLevels),
                                                                              ValidationExecutorSchematron.createXSLT (new ClassPathResource (sPrefix +
-                                                                                                                                             "2.3.1/XRechnung-UBL-validation-Invoice.xslt",
+                                                                                                                                             "2.3.1/XRechnung-UBL-validation.xslt",
                                                                                                                                              _getCL ()),
                                                                                                                       UBL21NamespaceContext.getInstance ())));
     }
