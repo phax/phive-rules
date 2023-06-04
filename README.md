@@ -22,6 +22,7 @@ This project is divided into sub-projects each keeping tracking of one document 
 * phive-rules-peppol - the Peppol specific rules - always the latest two rule sets
 * phive-rules-peppol-legacy - older Peppol specific rules that are out of date (since v2.0.5)
 * phive-rules-peppol-italy - Peppol Italy specific rules (since v2.1.1)
+* phive-rules-setu - Dutch SETU selected standards (since v3.0.4)
 * phive-rules-simplerinvoicing - Dutch SimplerInvoicing support from https://github.com/SimplerInvoicing/validation
 * phive-rules-svefaktura - Validation rules for Swedish Svefaktura (since v1.0.6)
 * phive-rules-teapps - Validation rules for Finnish Tieto TEAPPSXML
@@ -124,6 +125,12 @@ Add the following to your `pom.xml` to use this artifact, replacing `x.y.z` with
 <dependency>
   <groupId>com.helger.phive.rules</groupId>
   <artifactId>phive-rules-peppol-italy</artifactId>
+  <version>x.y.z</version>
+</dependency>
+
+<dependency>
+  <groupId>com.helger.phive.rules</groupId>
+  <artifactId>phive-rules-setu</artifactId>
   <version>x.y.z</version>
 </dependency>
 
