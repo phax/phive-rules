@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VacancyResponseNL xsi:schemaLocation="http://ns.hr-xml.org/2007-04-15 VacancyResponseNL.xsd" xmlns="http://ns.hr-xml.org/2007-04-15" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<!--
+	Name: 			VacancyResponseNLExample.xml
+	Purpose: 	Example of VacancyResponse message
+	Author(s): 	SETU (helpdesk@setu.nl)
+	Standard: 	SETU standard for Vacancies v1.0
+	Date: 			2011-11-11
+-->
+	<MessageId idOwner="recruiter">
+		<IdValue>264854751</IdValue>
+	</MessageId>
+	<ReactionToMessageId idOwner="owner">
+		<IdValue>123456</IdValue>
+	</ReactionToMessageId>
+	<AdvertisementId>132546512</AdvertisementId>
+	<Reason>Kandidaat beschikbaar in eigen database. Wij gaan geen advertentie opstellen op basis van deze vacature maar u een voorstel sturen.</Reason>
+</VacancyResponseNL>

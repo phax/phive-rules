@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://ns.hr-xml.org/2007-04-15" xmlns="http://ns.hr-xml.org/2007-04-15" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" version="2007-04-15">
+	<xsd:annotation>
+		<xsd:documentation>
+"Copyright  The HR-XML Consortium. All Rights Reserved. http://www.hr-xml.org"
+Name: OnlineAddress.xsd
+Status: Recommendation
+Date this version: 2007-04-15
+Purpose: Defines the schema for online addresses.
+Author(s): Don Simonson, Robert Half Int'l., CPO Workgroup
+Documentation: ContactMethod.html
+
+Terms of license can be found in license.txt.
+
+</xsd:documentation>
+	</xsd:annotation>
+	<xsd:element name="InternetEmailAddress" type="InternetEmailAddressType"/>
+	<xsd:element name="InternetWebAddress" type="InternetWebAddressType"/>
+	<xsd:simpleType name="InternetEmailAddressType">
+		<xsd:restriction base="xsd:string"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="InternetWebAddressType">
+		<xsd:restriction base="xsd:string"/>
+	</xsd:simpleType>
+</xsd:schema>

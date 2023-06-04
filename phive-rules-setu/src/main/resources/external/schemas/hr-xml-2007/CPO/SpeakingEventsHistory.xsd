@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://ns.hr-xml.org/2007-04-15" targetNamespace="http://ns.hr-xml.org/2007-04-15" elementFormDefault="qualified" version="2007-04-15">
+	<xsd:annotation>
+		<xsd:documentation>
+"Copyright  The HR-XML Consortium. All Rights Reserved. http://www.hr-xml.org"
+Status: Recommendation
+Date this version: 2007-04-15
+Purpose: Defines Speaking events history data.
+Author(s):  
+
+Terms of license can be found in license.txt.
+
+2005-09-11 - Minor syntactical edit to ExtendedSpeakingTypeType, removing the unnecessary xsd:restriction.  Xml instances remain completely forwardly and backwardly compatible.
+
+		</xsd:documentation>
+	</xsd:annotation>
+	<xsd:include schemaLocation="../CPO/OnlineAddress.xsd"/>
+	<xsd:include schemaLocation="../CPO/FlexibleDates.xsd"/>
+	<xsd:include schemaLocation="../CPO/ISOUtilities.xsd"/>
+	<xsd:include schemaLocation="../CPO/xStringPatternExtensionType.xsd"/>
+	<xsd:element name="SpeakingEventsHistory">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="SpeakingEvent" maxOccurs="unbounded"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="SpeakingEvent" type="SpeakingEventType"/>
+	<xsd:complexType name="SpeakingEventType">
+		<xsd:sequence>
+			<xsd:element name="Title" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="Role" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="StartDate" type="FlexibleDatesType" minOccurs="0"/>
+			<xsd:element name="EndDate" type="FlexibleDatesType" minOccurs="0"/>
+			<xsd:element name="EventName" type="xsd:string"/>
+			<xsd:element name="EventType" type="ExtendedEventTypeType" minOccurs="0"/>
+			<xsd:element name="Location" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="Description" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="AffiliatedOrganization" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="Link" type="InternetWebAddressType" minOccurs="0"/>
+		</xsd:sequence>
+		<xsd:attribute name="type" type="ExtendedSpeakingTypeType"/>
+	</xsd:complexType>
+	<xsd:simpleType name="SpeakingTypeType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="speech"/>
+			<xsd:enumeration value="presentation"/>
+			<xsd:enumeration value="demonstration"/>
+			<xsd:enumeration value="interview"/>
+			<xsd:enumeration value="debate"/>
+			<xsd:enumeration value="panel discussion"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="ExtendedSpeakingTypeType">
+		<xsd:union memberTypes="SpeakingTypeType xStringPatternExtensionType"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="EventTypeType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="convention"/>
+			<xsd:enumeration value="rally"/>
+			<xsd:enumeration value="conference"/>
+			<xsd:enumeration value="sales meeting"/>
+			<xsd:enumeration value="television show"/>
+			<xsd:enumeration value="radio show"/>
+			<xsd:enumeration value="web-based"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="ExtendedEventTypeType">
+		<xsd:union memberTypes="EventTypeType xStringPatternExtensionType"/>
+	</xsd:simpleType>
+</xsd:schema>

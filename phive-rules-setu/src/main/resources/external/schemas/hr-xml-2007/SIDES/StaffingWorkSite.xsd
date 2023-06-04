@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2005 sp1 U (http://www.xmlspy.com) by Kim Bartkus (private) -->
+<xsd:schema xmlns="http://ns.hr-xml.org/2007-04-15" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://ns.hr-xml.org/2007-04-15" elementFormDefault="qualified" version="2007-04-15">
+	<xsd:annotation>
+		<xsd:documentation>
+"Copyright  The HR-XML Consortium. All Rights Reserved. http://www.hr-xml.org"
+Name: StaffingWorkSite.xsd
+Status: Recommendation
+Date this version: 2007-04-15
+Purpose: Defines the Schema for Work Site
+Author(s): Kim Bartkus, Brian Salamon
+Documentation: StaffingWorkSite.html
+
+Terms of license can be found in license.txt.
+
+2006-July: Added StructuredTravelDirections.
+2006-Feb: The WorkSiteId was made optional based on feedback received.  This is considered a backwardly compatible bug fix.
+
+</xsd:documentation>
+	</xsd:annotation>
+	<xsd:include schemaLocation="../CPO/DateTimeDataTypes.xsd"/>
+	<xsd:include schemaLocation="../CPO/PostalAddress.xsd"/>
+	<xsd:element name="StaffingWorkSite" type="StaffingWorkSiteType"/>
+	<xsd:complexType name="StaffingWorkSiteType">
+		<xsd:sequence>
+			<xsd:element name="WorkSiteId" minOccurs="0">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="Id" type="xsd:string"/>
+						<xsd:element name="Domain" minOccurs="0">
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element name="IdIssuer" type="xsd:string" minOccurs="0"/>
+									<xsd:element name="IdType" type="xsd:string" minOccurs="0"/>
+								</xsd:sequence>
+							</xsd:complexType>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="WorkSiteName" type="xsd:string"/>
+			<xsd:element name="WorkSiteDetail" minOccurs="0" maxOccurs="unbounded">
+				<xsd:complexType>
+					<xsd:simpleContent>
+						<xsd:extension base="xsd:string">
+							<xsd:attribute name="workSiteType" type="xsd:string"/>
+						</xsd:extension>
+					</xsd:simpleContent>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="PostalAddress" type="PostalAddressType" minOccurs="0"/>
+			<xsd:choice>
+				<xsd:element name="TravelDirections" type="xsd:string" minOccurs="0"/>
+				<xsd:element name="StructuredTravelDirections" minOccurs="0" maxOccurs="unbounded">
+					<xsd:complexType>
+						<xsd:sequence>
+							<xsd:element name="StartPoint" type="xsd:string"/>
+							<xsd:element name="EndPoint" type="xsd:string" minOccurs="0"/>
+							<xsd:element name="Transportation" type="xsd:string"/>
+							<xsd:element name="TimeRequired">
+								<xsd:complexType>
+									<xsd:simpleContent>
+										<xsd:extension base="xsd:decimal">
+											<xsd:attribute name="unitOfMeasure" type="xsd:string" use="required"/>
+										</xsd:extension>
+									</xsd:simpleContent>
+								</xsd:complexType>
+							</xsd:element>
+							<xsd:element name="MapLink" type="xsd:string" minOccurs="0"/>
+							<xsd:element name="Description" type="xsd:string" minOccurs="0"/>
+						</xsd:sequence>
+					</xsd:complexType>
+				</xsd:element>
+			</xsd:choice>
+			<xsd:element name="ParkingInstructions" type="xsd:string" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

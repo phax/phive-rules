@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://ns.hr-xml.org/2007-04-15" xmlns="http://ns.hr-xml.org/2007-04-15" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" version="2007-04-15">
+	<xsd:annotation>
+		<xsd:documentation>
+"Copyright  The HR-XML Consortium. All Rights Reserved. http://www.hr-xml.org"
+
+Name: CustomerReportingRequirements.xsd
+Status: Recommendation
+Date this version: 2007-04-15
+Purpose: Defines the CustomerReportingRequirements Schema
+Author(s):  SIDES Workgroup
+Documentation: SIDESReusableModules.html
+
+2004-May: Made changes and additions based on global SIDES feedback. See scope section in SIDESReusableModules.doc for details. 
+
+Terms of license can be found in license.txt.
+
+</xsd:documentation>
+	</xsd:annotation>
+	<xsd:element name="CustomerReportingRequirements" type="CustomerReportingRequirementsType"/>
+	<xsd:complexType name="CustomerReportingRequirementsType">
+		<xsd:sequence>
+			<xsd:element name="ManagerName" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="SupervisorName" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="ContactName" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="PurchaseOrderNumber" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="DepartmentCode" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="DepartmentName" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="LocationCode" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="LocationName" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="CostCenterCode" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="CostCenterName" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="CustomerJobCode" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="CustomerJobDescription" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="AccountCode" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="ProjectCode" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="ExternalOrderNumber" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="ExternalReqNumber" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="Entity" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="SubEntity" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="Shift" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="CustomerReferenceNumber" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="AdditionalRequirement" minOccurs="0" maxOccurs="unbounded">
+				<xsd:complexType>
+					<xsd:simpleContent>
+						<xsd:extension base="xsd:string">
+							<xsd:attribute name="requirementTitle" type="xsd:string" use="optional"/>
+						</xsd:extension>
+					</xsd:simpleContent>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="PurchaseOrderLineItem" type="xsd:string" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

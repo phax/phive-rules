@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://ns.hr-xml.org/2007-04-15" xmlns="http://ns.hr-xml.org/2007-04-15" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" version="2007-04-15">
+	<xsd:annotation>
+		<xsd:documentation>
+"Copyright  The HR-XML Consortium. All Rights Reserved. http://www.hr-xml.org"
+Name: PatentHistory.xsd
+Status: Recommendation
+Date this version: 2007-04-15
+Purpose: Defines XSD for Information about Patents claimed on a resume, CV, etc.
+Editor: Chuck Allen
+Documentation: 
+
+Terms of license can be found in license.txt.
+
+		</xsd:documentation>
+	</xsd:annotation>
+	<xsd:include schemaLocation="../CPO/DateTimeDataTypes.xsd"/>
+	<xsd:include schemaLocation="../CPO/EntityIdType.xsd"/>
+	<xsd:include schemaLocation="../CPO/ISOUtilities.xsd"/>
+	<xsd:include schemaLocation="../CPO/ContactMethod.xsd"/>
+	<xsd:include schemaLocation="../CPO/xStringPatternExtensionType.xsd"/>
+	<xsd:element name="PatentHistory" type="PatentHistoryType"/>
+	<xsd:complexType name="PatentHistoryType">
+		<xsd:sequence>
+			<xsd:element name="Patent" type="PatentDescriptionType" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="PatentDescriptionType">
+		<xsd:sequence>
+			<xsd:element name="PatentTitle" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="Description" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="Inventors" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>A patent has one or more applicants. An applicant is the person or corporate body that applies for the patent and intends to 'work' the invention (to manufacture or license the technology).  Under US law the applicants must be the inventor(s) except in exceptional circumstances.  On a resume or CV listing patents held or submitted, an individual might use the "Applicants" component when the patent is held or was filed with others ("co-applicants").</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="InventorName" type="xsd:string" maxOccurs="unbounded"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="PatentDetail" minOccurs="0" maxOccurs="unbounded">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="IssuingAuthority" minOccurs="0">
+							<xsd:complexType>
+								<xsd:simpleContent>
+									<xsd:extension base="xsd:string">
+										<xsd:attribute name="countryCode" type="CountryCodeType"/>
+									</xsd:extension>
+								</xsd:simpleContent>
+							</xsd:complexType>
+						</xsd:element>
+						<xsd:element name="PatentMilestone" maxOccurs="unbounded">
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element name="Id" type="xsd:string" minOccurs="0"/>
+									<xsd:element name="Status" type="PatentStatusTypes" minOccurs="0"/>
+									<xsd:element name="Date" type="AnyDateTimeNkNaType" minOccurs="0"/>
+								</xsd:sequence>
+							</xsd:complexType>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="Link" type="InternetWebAddressType" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:simpleType name="PatentStatusTypes">
+		<xsd:union memberTypes="PatentStatusTypeTypes xStringPatternExtensionType"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="PatentStatusTypeTypes">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="PatentIssued"/>
+			<xsd:enumeration value="PatentPending"/>
+			<xsd:enumeration value="PatentFiled"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+</xsd:schema>

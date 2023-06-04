@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2005 sp1 U (http://www.xmlspy.com) by Kim Bartkus (private) -->
+<xsd:schema xmlns="http://ns.hr-xml.org/2007-04-15" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://ns.hr-xml.org/2007-04-15" elementFormDefault="qualified" version="2007-04-15">
+    <!-- The following includes are added because there is a bug in validateschema function of eValidator (i.e. only the first import statement is loaded). Workaround is added includes (not import) here in the hr-xml namespace -->
+    <xsd:include schemaLocation="../SEP/Resume.xsd"/>
+	<xsd:include schemaLocation="../SEP/Resume.xsd"/>
+	<xsd:include schemaLocation="../CPO/EntityIdType.xsd"/>
+	<xsd:include schemaLocation="../CPO/DateTimeDataTypes.xsd"/>
+    
+	<xsd:annotation>
+		<xsd:documentation>
+"Copyright The HR-XML Consortium. All Rights Reserved. http://www.hr-xml.org" 
+
+Name: StaffingOrder.xsd 
+Status: CandidateRecommendation 
+Date this version: 2007-04-15
+Purpose: Defines the StaffingOrder Schema 
+Author(s): SIDES Workgroup 
+Documentation: StaffingOrder.html 
+
+2006-July: 
+- Added Reference Id's to match other SIDES schemas: TimeCardId, InvoiceId, PositionId, AssignmentId, HumanResourceId.
+- Added 'extension' and 'replacement' enumerations to OrderStatus.
+
+2004-May: Made changes and additions based on global SIDES feedback. See scope section in StaffingOrder.doc for details. 
+
+Terms of license can be found in license.txt.
+
+</xsd:documentation>
+	</xsd:annotation>
+	<xsd:include schemaLocation="../SIDES/CustomerReportingRequirements.xsd"/>
+	<xsd:include schemaLocation="../CPO/xStringPatternExtensionType.xsd"/>
+	<xsd:include schemaLocation="../SIDES/StaffingPosition.xsd"/>
+	<xsd:include schemaLocation="../CPO/UserArea.xsd"/>
+	<xsd:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="../../W3C/xml.xsd"/>
+    
+	<xsd:complexType name="StaffingOrderType">
+		<xsd:sequence>
+			<xsd:element name="OrderId" type="EntityIdType"/>
+			<xsd:element name="ReferenceInformation">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="MasterOrderId" type="EntityIdType" minOccurs="0" maxOccurs="unbounded"/>
+						<xsd:element name="StaffingCustomerId" type="EntityIdType" minOccurs="0" maxOccurs="unbounded"/>
+						<xsd:element name="StaffingCustomerOrgUnitId" type="EntityIdType" minOccurs="0" maxOccurs="unbounded"/>
+						<xsd:element name="IntermediaryId" type="EntityIdType" minOccurs="0" maxOccurs="unbounded"/>
+						<xsd:element name="StaffingSupplierId" type="EntityIdType" minOccurs="0" maxOccurs="unbounded"/>
+						<xsd:element name="BillToEntityId" type="EntityIdType" minOccurs="0" maxOccurs="unbounded"/>
+						<xsd:element name="StaffingSupplierOrgUnitId" type="EntityIdType" minOccurs="0" maxOccurs="unbounded"/>
+						<xsd:element name="TimeCardId" type="EntityIdType" minOccurs="0" maxOccurs="unbounded"/>
+						<xsd:element name="InvoiceId" type="EntityIdType" minOccurs="0" maxOccurs="unbounded"/>
+						<xsd:element name="PositionId" type="EntityIdType" minOccurs="0" maxOccurs="unbounded"/>
+						<xsd:element name="AssignmentId" type="EntityIdType" minOccurs="0" maxOccurs="unbounded"/>
+						<xsd:element name="HumanResourceId" type="EntityIdType" minOccurs="0" maxOccurs="unbounded"/>
+						<xsd:element name="StaffingOrganizationId" type="EntityIdType" minOccurs="0" maxOccurs="unbounded"/>
+						<xsd:element ref="UserArea" minOccurs="0"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element ref="CustomerReportingRequirements"/>
+			<xsd:element name="OrderClassification">
+				<xsd:complexType>
+					<xsd:attribute name="orderType" type="OrderType" use="required"/>
+					<xsd:attribute name="orderStatus" type="OrderStatusType" use="required"/>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="BillToAttention" minOccurs="0">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element ref="ContactInfo"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="OrderContact" minOccurs="0" maxOccurs="unbounded">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element ref="ContactInfo"/>
+					</xsd:sequence>
+					<xsd:attribute name="contactType" type="StaffingContactType" use="required"/>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="RequiredResponseDate" type="AnyDateTimeNaType" minOccurs="0"/>
+			<xsd:element name="OrderComments" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="PositionQuantity" type="xsd:integer"/>
+			<xsd:element name="PositionQuantityOpen" type="xsd:integer" minOccurs="0"/>
+			<xsd:element name="MultiVendorDistribution" type="xsd:boolean" default="false">
+				<xsd:annotation>
+					<xsd:documentation>The MultiVendorDistribution default of false is deprecated and will be removed in a future version. Please do not use.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element ref="StaffingPosition" maxOccurs="unbounded"/>
+			<xsd:element ref="UserArea" minOccurs="0"/>
+		</xsd:sequence>
+		<xsd:attribute ref="xml:lang"/>
+	</xsd:complexType>
+	<xsd:element name="StaffingOrder" type="StaffingOrderType"/>
+	<xsd:simpleType name="KnownOrderType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="quote"/>
+			<xsd:enumeration value="order"/>
+			<xsd:enumeration value="unapproved order"/>
+			<xsd:enumeration value="RFQ"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="OrderType">
+		<xsd:union memberTypes="KnownOrderType xsd:string"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="KnownOrderStatus">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="new"/>
+			<xsd:enumeration value="revised"/>
+			<xsd:enumeration value="reopened"/>
+			<xsd:enumeration value="cancelled"/>
+			<xsd:enumeration value="closed"/>
+			<xsd:enumeration value="accepted"/>
+			<xsd:enumeration value="rejected"/>
+			<xsd:enumeration value="extension"/>
+			<xsd:enumeration value="replacement"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="OrderStatusType">
+		<xsd:union memberTypes="KnownOrderStatus xStringPatternExtensionType"/>
+	</xsd:simpleType>
+</xsd:schema>

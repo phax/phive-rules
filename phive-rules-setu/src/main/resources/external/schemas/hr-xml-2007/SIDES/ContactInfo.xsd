@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2005 sp1 U (http://www.xmlspy.com) by Kim Bartkus (private) -->
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://ns.hr-xml.org/2007-04-15" targetNamespace="http://ns.hr-xml.org/2007-04-15" elementFormDefault="qualified" version="2007-04-15">
+	<xsd:annotation>
+		<xsd:documentation>
+"Copyright  The HR-XML Consortium. All Rights Reserved. http://www.hr-xml.org"
+
+Name: ContactInfo.xsd
+Status: Recommendation
+Date this version: 2007-04-15
+Purpose: Defines the ContactInfo Schema
+Author(s):  SIDES Workgroup
+Documentation: SIDESReusableModules.html
+
+2006-July: AddedContactId to ContactInfoType.
+
+2004-May: Made changes and additions based on global SIDES feedback. See scope section in SIDESReusableModules.doc for details. 
+
+
+Terms of license can be found in license.txt.
+
+</xsd:documentation>
+	</xsd:annotation>
+	<xsd:include schemaLocation="../CPO/PersonName.xsd"/>
+	<xsd:include schemaLocation="../CPO/PostalAddress.xsd"/>
+	<xsd:include schemaLocation="../CPO/DateTimeDataTypes.xsd"/>
+	<xsd:include schemaLocation="../CPO/ContactMethod.xsd"/>
+	<xsd:include schemaLocation="../CPO/TelcomNumber.xsd"/>
+	<xsd:include schemaLocation="../CPO/OnlineAddress.xsd"/>
+	<xsd:include schemaLocation="../CPO/IdentifierTypes.xsd"/>
+	<xsd:complexType name="ContactInfoType">
+		<xsd:sequence>
+			<xsd:element ref="PersonName"/>
+			<xsd:element name="ContactMethod" type="ContactMethodType" maxOccurs="unbounded"/>
+			<xsd:element name="ContactId" type="EntityIdType" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="EntityContactInfoType">
+		<xsd:sequence>
+			<xsd:element name="EntityName" type="xsd:string"/>
+			<xsd:element ref="PersonName" minOccurs="0"/>
+			<xsd:element name="ContactMethod" type="ContactMethodType" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="EntityContactInfo" type="EntityContactInfoType"/>
+	<xsd:element name="ContactInfo" type="ContactInfoType"/>
+</xsd:schema>

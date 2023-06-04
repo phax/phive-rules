@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2006 rel. 3 sp1 (http://www.altova.com) by Chuck Allen (HR-XML Consortium, Inc.) -->
+<xsd:schema xmlns="http://ns.hr-xml.org/2007-04-15" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://ns.hr-xml.org/2007-04-15" elementFormDefault="qualified" version="2007-04-15">
+	<xsd:annotation>
+		<xsd:documentation>
+"Copyright  The HR-XML Consortium. All Rights Reserved. http://www.hr-xml.org"
+Name: Candidate.xsd
+Status: Recommendation
+Date this version: 2007-04-15
+Purpose: Defines candidate information
+Author(s):  Kim Bartkus, Staffing Exchange Protocol Work Group
+Documentation: StaffingExchangeProtocol.html
+
+Terms of license can be found in license.txt.
+
+2004-07-06: An optional attribute xml:lang was added to the root element.
+
+2006-03-08: Chuck Allen added xsd:include for /SEP/SearchTypes.xsd
+
+		</xsd:documentation>
+	</xsd:annotation>
+	<xsd:include schemaLocation="../CPO/ContactMethod.xsd"/>
+	<xsd:include schemaLocation="../CPO/SharedStaffingModules.xsd"/>
+	<xsd:include schemaLocation="../CPO/MilitaryHistory.xsd"/>
+	<xsd:include schemaLocation="../CPO/EducationHistory.xsd"/>
+	<xsd:include schemaLocation="../CPO/EmploymentHistory.xsd"/>
+	<xsd:include schemaLocation="../CPO/OnlineAddress.xsd"/>
+	<xsd:include schemaLocation="../CPO/DateTimeDataTypes.xsd"/>
+	<xsd:include schemaLocation="../CPO/IdentifierTypes.xsd"/>
+	<xsd:include schemaLocation="../CPO/PersonDescriptors.xsd"/>
+	<xsd:include schemaLocation="../CPO/Organization.xsd"/>
+	<xsd:include schemaLocation="../SEP/MatchingTypes.xsd"/>
+	<xsd:include schemaLocation="../SEP/Resume.xsd"/>
+	<xsd:include schemaLocation="../CPO/UserArea.xsd"/>
+	<xsd:include schemaLocation="../SEP/SearchTypes.xsd"/>
+	<xsd:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="../../W3C/xml.xsd"/>
+	<!-- Profile Type -->
+	<xsd:element name="Candidate" type="CandidateType"/>
+	<xsd:complexType name="CandidateType">
+		<xsd:sequence>
+			<xsd:element name="CandidateRecordInfo" type="RecordInfoType" minOccurs="0"/>
+			<xsd:element name="RelatedPositionPostings">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="PositionPosting" type="PositionPostingSearchInfoType" minOccurs="0" maxOccurs="unbounded"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="CandidateSupplier" type="SupplierType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="DistributionGuidelines" type="DistributionGuidelinesType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="CandidateProfile" type="CandidateProfileType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="Resume" minOccurs="0"/>
+			<xsd:element ref="UserArea" minOccurs="0"/>
+		</xsd:sequence>
+		<xsd:attribute ref="xml:lang"/>
+	</xsd:complexType>
+	<!-- Profile Type -->
+	<xsd:complexType name="CandidateProfileType">
+		<xsd:sequence>
+			<xsd:element name="ProfileId" type="EntityIdType" minOccurs="0"/>
+			<xsd:element name="ProfileName" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="AvailabilityInfo" minOccurs="0">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="AvailabilityDates" minOccurs="0" maxOccurs="unbounded">
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element name="StartDate" type="LocalDateNkNaType" minOccurs="0"/>
+									<xsd:element name="EndDate" type="LocalDateNkNaType" minOccurs="0"/>
+								</xsd:sequence>
+							</xsd:complexType>
+						</xsd:element>
+						<xsd:element name="TermOfNotice" minOccurs="0">
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element name="Value" type="xsd:integer"/>
+									<xsd:element name="Interval" type="NoticeFrequencyType"/>
+								</xsd:sequence>
+							</xsd:complexType>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="DistributionGuidelines" type="DistributionGuidelinesType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="PersonalData" type="CandidatePersonalDataType" minOccurs="0"/>
+			<xsd:element name="PreferredPosition" minOccurs="0">
+				<xsd:complexType>
+					<xsd:complexContent>
+						<xsd:extension base="PositionMatchingType">
+							<xsd:sequence>
+								<xsd:element name="Commute" type="CommuteType" minOccurs="0"/>
+							</xsd:sequence>
+						</xsd:extension>
+					</xsd:complexContent>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element ref="EmploymentHistory" minOccurs="0"/>
+			<xsd:element ref="EducationHistory" minOccurs="0"/>
+			<xsd:element ref="MilitaryHistory" minOccurs="0"/>
+			<xsd:element ref="Associations" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="SupportingMaterials" type="StaffingSupportingMaterialsType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="UserArea" minOccurs="0"/>
+		</xsd:sequence>
+		<xsd:attribute ref="xml:lang"/>
+	</xsd:complexType>
+	<!-- Personal Data Type -->
+	<xsd:element name="PersonalData" type="CandidatePersonalDataType"/>
+	<xsd:complexType name="CandidatePersonalDataType">
+		<xsd:sequence>
+			<xsd:element name="PersonId" type="EntityIdType" minOccurs="0"/>
+			<xsd:element name="PersonName" type="PersonNameType" minOccurs="0"/>
+			<xsd:element name="ContactMethod" type="ContactMethodType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="PersonDescriptors" type="PersonDescriptorsType" minOccurs="0"/>
+			<xsd:element ref="UserArea" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<!-- Term of notice frequency -->
+	<xsd:simpleType name="NoticeFrequencyType">
+		<xsd:union memberTypes="BasicNoticeFrequencyType xStringPatternExtensionType"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="BasicNoticeFrequencyType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="Hour"/>
+			<xsd:enumeration value="Day"/>
+			<xsd:enumeration value="Week"/>
+			<xsd:enumeration value="Month"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:complexType name="PositionPostingSearchInfoType">
+		<xsd:complexContent>
+			<xsd:extension base="PositionPostingType">
+				<xsd:sequence>
+					<xsd:element ref="SearchCriteria" minOccurs="0"/>
+					<xsd:element ref="SearchResult" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+</xsd:schema>

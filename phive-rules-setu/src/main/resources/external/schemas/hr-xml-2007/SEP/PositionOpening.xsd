@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2006 rel. 3 sp1 (http://www.altova.com) by Chuck Allen (HR-XML Consortium, Inc.) -->
+<xsd:schema xmlns="http://ns.hr-xml.org/2007-04-15" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://ns.hr-xml.org/2007-04-15" elementFormDefault="qualified" version="2007-04-15">
+	<xsd:annotation>
+		<xsd:documentation>
+"Copyright  The HR-XML Consortium. All Rights Reserved. http://www.hr-xml.org"
+Name: PositionOpening.xsd
+Status: Recommendation
+Date this version: 2007-04-15
+Purpose: Defines SEP Position information
+Author(s):  Kim Bartkus, Staffing Exchange Protocol Work Group
+Documentation: StaffingExchangeProtocol.html
+
+Terms of license can be found in license.txt.
+
+2004-07-06: An optional attribute xml:lang was added to the root element.
+
+2005-08-08 Kim Bartkus 
+Change schema to allow more than one PositionSupplier. 
+Add Role to PositionSupplier.
+Add HowToApply structure to PositionProfile.
+Add NumberToFill Element to PositionOpening. 
+
+2005-10-14 Kim Bartkus Added LocalizedPostionClassification to PositionProfile.
+2006-03-08 Chuck Allen named anonymous type extending PositionMatchingTypes
+                      to PositionMatchingExtendedType. Added optional/repeatable SearchCriteria
+                      to PositionMatchingExtendedType. 
+		</xsd:documentation>
+	</xsd:annotation>
+	<xsd:include schemaLocation="../CPO/DateTimeDataTypes.xsd"/>
+	<xsd:include schemaLocation="../SEP/MatchingTypes.xsd"/>
+	<xsd:include schemaLocation="../SEP/PrehireRemunerationPackage.xsd"/>
+	<xsd:include schemaLocation="../SEP/Localizations.xsd"/>
+	<xsd:include schemaLocation="../CPO/UserArea.xsd"/>
+	<xsd:include schemaLocation="../CPO/IdentifierTypes.xsd"/>
+	<xsd:include schemaLocation="../CPO/Competencies.xsd"/>
+	<xsd:include schemaLocation="../CPO/Organization.xsd"/>
+	<xsd:include schemaLocation="../SEP/SearchTypes.xsd"/>
+	<xsd:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="../../W3C/xml.xsd"/>
+	<!-- Position  -->
+	<xsd:element name="PositionOpening" type="PositionOpeningType"/>
+	<xsd:complexType name="PositionOpeningType">
+		<xsd:sequence>
+			<xsd:element name="PositionRecordInfo" type="RecordInfoType" minOccurs="0"/>
+			<xsd:element name="PositionPostings" type="PositionPostingsType" minOccurs="0"/>
+			<xsd:element name="PositionSupplier" type="PositionSupplierType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="PositionProfile" type="PositionProfileType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="NumberToFill" type="xsd:integer" minOccurs="0"/>
+			<xsd:element ref="UserArea" minOccurs="0"/>
+		</xsd:sequence>
+		<xsd:attribute ref="xml:lang"/>
+	</xsd:complexType>
+	<!-- Position Profile Type -->
+	<xsd:complexType name="PositionProfileType">
+		<xsd:sequence>
+			<xsd:element name="ProfileId" type="EntityIdType" minOccurs="0"/>
+			<xsd:element name="ProfileName" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="PositionDateInfo" type="PositionDateInfoType"/>
+			<xsd:element name="Organization" type="OrganizationType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="PositionDetail" type="PositionMatchingExtendedType" minOccurs="0"/>
+			<xsd:element name="PositionClassification" type="LocalizedPositionClassificationType" minOccurs="0"/>
+			<xsd:element name="FormattedPositionDescription" minOccurs="0" maxOccurs="unbounded">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="Name">
+							<xsd:complexType>
+								<xsd:simpleContent>
+									<xsd:extension base="xsd:string">
+										<xsd:attribute ref="xml:lang"/>
+									</xsd:extension>
+								</xsd:simpleContent>
+							</xsd:complexType>
+						</xsd:element>
+						<xsd:element name="Value">
+							<xsd:complexType>
+								<xsd:simpleContent>
+									<xsd:extension base="xsd:string">
+										<xsd:attribute ref="xml:lang"/>
+									</xsd:extension>
+								</xsd:simpleContent>
+							</xsd:complexType>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="HowToApply" minOccurs="0" maxOccurs="unbounded">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element ref="PersonName" minOccurs="0"/>
+						<xsd:element name="ApplicationMethod" type="ApplicationMethodType" minOccurs="0"/>
+						<xsd:element ref="UserArea" minOccurs="0"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="DistributionGuidelines" type="DistributionGuidelinesType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="SupportingMaterials" type="StaffingSupportingMaterialsType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="UserArea" minOccurs="0"/>
+		</xsd:sequence>
+		<xsd:attribute ref="xml:lang"/>
+	</xsd:complexType>
+	<xsd:complexType name="ApplicationMethodType">
+		<xsd:sequence>
+			<xsd:element ref="Telephone" minOccurs="0"/>
+			<xsd:element ref="Fax" minOccurs="0"/>
+			<xsd:element ref="InternetEmailAddress" minOccurs="0"/>
+			<xsd:element ref="InternetWebAddress" minOccurs="0"/>
+			<xsd:element ref="PostalAddress" minOccurs="0"/>
+			<xsd:element name="InPerson" minOccurs="0">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="TravelDirections" type="xsd:string" minOccurs="0"/>
+						<xsd:element name="MapLink" type="InternetWebAddressType" minOccurs="0"/>
+						<xsd:element name="AdditionalInstructions" type="xsd:string" minOccurs="0"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="PositionMatchingExtendedType">
+		<xsd:complexContent>
+			<xsd:extension base="PositionMatchingType">
+				<xsd:sequence>
+					<xsd:element name="JobLevelInfo" type="JobLevelInfoType" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="SearchCriteria" minOccurs="0" maxOccurs="unbounded"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+</xsd:schema>

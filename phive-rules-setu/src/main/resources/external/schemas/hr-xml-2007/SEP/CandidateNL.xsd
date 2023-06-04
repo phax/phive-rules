@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2008 sp1 (http://www.altova.com) by Jasper Roes (TNO) -->
+<xsd:schema xmlns="http://ns.hr-xml.org/2007-04-15" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://ns.hr-xml.org/2007-04-15" elementFormDefault="qualified" version="2007-04-15">
+	<xsd:annotation>
+		<xsd:documentation>
+			<xsd:documentation>
+		Name: 			CandidateNL.xsd
+		Purpose: 	Defines the CV XML-message for Dutch Human Resource industry. This schema is an extension and modification of the HR-XML SEP Candidate message
+		Author(s): 	SETU (helpdesk@setu.nl)
+		Standard: 	Draft SETU standard for CV v0.9
+		Date: 			2013-12-15
+		</xsd:documentation>
+		</xsd:documentation>
+	</xsd:annotation>
+	<xsd:include schemaLocation="../CPO/ContactMethod.xsd"/>
+	<xsd:include schemaLocation="../CPO/SharedStaffingModules.xsd"/>
+	<xsd:include schemaLocation="../CPO/MilitaryHistory.xsd"/>
+	<xsd:include schemaLocation="../CPO/EducationHistory.xsd"/>
+	<xsd:include schemaLocation="../CPO/EmploymentHistory.xsd"/>
+	<xsd:include schemaLocation="../CPO/OnlineAddress.xsd"/>
+	<xsd:include schemaLocation="../CPO/DateTimeDataTypes.xsd"/>
+	<xsd:include schemaLocation="../CPO/IdentifierTypes.xsd"/>
+	<xsd:include schemaLocation="../CPO/PersonDescriptors.xsd"/>
+	<xsd:include schemaLocation="../CPO/Organization.xsd"/>
+	<xsd:include schemaLocation="../SEP/MatchingTypes.xsd"/>
+	<xsd:include schemaLocation="../SEP/Resume.xsd"/>
+	<xsd:include schemaLocation="../SEP/SearchTypes.xsd"/>
+	<xsd:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="../../W3C/xml.xsd"/>
+	<!-- Profile Type -->
+	<xsd:element name="CandidateNL" type="CandidateType"/>
+	<xsd:complexType name="CandidateType">
+		<xsd:sequence>
+			<xsd:element name="CandidateRecordInfoNL" minOccurs="0">
+				<xsd:complexType>
+					<xsd:complexContent>
+						<xsd:extension base="RecordInfoType">
+							<xsd:sequence>
+								<xsd:element name="IndicatorStoringCVAllowed" type="xsd:boolean"/>
+								<xsd:element name="IndicatorMatchingWanted" type="xsd:boolean"/>
+							</xsd:sequence>
+						</xsd:extension>
+					</xsd:complexContent>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="RelatedPositionPostings" minOccurs="0">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="PositionPosting" type="PositionPostingSearchInfoType" maxOccurs="unbounded"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="CandidateSupplier" type="SupplierType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="DistributionGuidelines" type="DistributionGuidelinesType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="CandidateProfile" type="CandidateProfileType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="Resume" minOccurs="0"/>
+			<xsd:element name="ExtensionsNL" type="ExtensionsNLType" minOccurs="0"/>
+		</xsd:sequence>
+		<xsd:attribute ref="xml:lang"/>
+	</xsd:complexType>
+	<!-- Profile Type -->
+	<xsd:complexType name="CandidateProfileType">
+		<xsd:sequence>
+			<xsd:element name="ProfileId" type="EntityIdType" minOccurs="0"/>
+			<xsd:element name="ProfileName" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="AvailabilityInfo" minOccurs="0">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="AvailabilityDates" minOccurs="0" maxOccurs="unbounded">
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element name="StartDate" type="LocalDateNkNaType" minOccurs="0"/>
+									<xsd:element name="EndDate" type="LocalDateNkNaType" minOccurs="0"/>
+								</xsd:sequence>
+							</xsd:complexType>
+						</xsd:element>
+						<xsd:element name="TermOfNotice" minOccurs="0">
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element name="Value" type="xsd:integer"/>
+									<xsd:element name="Interval" type="NoticeFrequencyType"/>
+								</xsd:sequence>
+							</xsd:complexType>
+						</xsd:element>
+						<xsd:element name="AvailableHours" minOccurs="0">
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element name="AvailableHoursPerDay" type="AvailableHoursPerDayType" maxOccurs="7"/>
+								</xsd:sequence>
+							</xsd:complexType>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="DistributionGuidelines" type="DistributionGuidelinesType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="PersonalData" type="CandidatePersonalDataType" minOccurs="0"/>
+			<xsd:element name="PreferredPositionNL" minOccurs="0">
+				<xsd:complexType>
+					<xsd:complexContent>
+						<xsd:extension base="PositionMatchingType">
+							<xsd:sequence>
+								<xsd:element name="Commute" type="CommuteType" minOccurs="0"/>
+								<xsd:element name="AvailableTransportMeans" type="AvailableTransportMeansNLType" minOccurs="0"/>
+								<xsd:element name="HoursPerWeek" type="MinMaxType" minOccurs="0"/>
+								<xsd:element name="DaysPerWeek" type="MinMaxType" minOccurs="0"/>
+								<xsd:element name="DesiredProfessionName" type="CodelistNameType" minOccurs="0" maxOccurs="unbounded"/>
+								<xsd:element name="ContractDetails" type="ContractDetailsType" minOccurs="0"/>
+							</xsd:sequence>
+						</xsd:extension>
+					</xsd:complexContent>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="Languages" type="LanguagesType" minOccurs="0"/>
+			<xsd:element ref="EmploymentHistory" minOccurs="0"/>
+			<xsd:element ref="EducationHistory" minOccurs="0"/>
+			<xsd:element ref="MilitaryHistory" minOccurs="0"/>
+			<xsd:element ref="Associations" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="SupportingMaterials" type="StaffingSupportingMaterialsType" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+		<xsd:attribute ref="xml:lang"/>
+	</xsd:complexType>
+	<!-- Personal Data Type -->
+	<xsd:element name="PersonalData" type="CandidatePersonalDataType"/>
+	<xsd:complexType name="CandidatePersonalDataType">
+		<xsd:sequence>
+			<xsd:element name="PersonId" type="EntityIdType" minOccurs="0"/>
+			<xsd:element name="PersonName" type="PersonNameType" minOccurs="0"/>
+			<xsd:element name="ContactMethod" type="ContactMethodNLType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="PersonDescriptors" type="PersonDescriptorsType" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<!-- Term of notice frequency -->
+	<xsd:simpleType name="NoticeFrequencyType">
+		<xsd:union memberTypes="BasicNoticeFrequencyType xStringPatternExtensionType"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="BasicNoticeFrequencyType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="Hour"/>
+			<xsd:enumeration value="Day"/>
+			<xsd:enumeration value="Week"/>
+			<xsd:enumeration value="Month"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:complexType name="PositionPostingSearchInfoType">
+		<xsd:complexContent>
+			<xsd:extension base="PositionPostingType">
+				<xsd:sequence>
+					<xsd:element ref="SearchCriteria" minOccurs="0"/>
+					<xsd:element ref="SearchResult" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="AvailableTransportMeansNLType">
+		<xsd:sequence>
+			<xsd:element name="AvailableTransportMean" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="MinMaxType">
+		<xsd:sequence>
+			<xsd:element name="Minimum" type="xsd:double"/>
+			<xsd:element name="Maximum" type="xsd:double"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="CodelistNameType">
+		<xsd:sequence>
+			<xsd:element name="Codelist" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="Identifier" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="Name" type="xsd:string"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ContractDetailsType">
+		<xsd:sequence>
+			<xsd:element name="ContractDuration" type="xsd:string"/>
+			<xsd:element name="TypeOfContract" type="xsd:string"/>
+			<xsd:element name="ContractFeatures" type="ContractFeaturesType" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ContractFeaturesType">
+		<xsd:sequence>
+			<xsd:element name="ContractFeature" type="xsd:string" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ContactMethodNLType">
+		<xsd:complexContent>
+			<xsd:extension base="ContactMethodType">
+				<xsd:sequence>
+					<xsd:element name="SocialMedia" type="SocialMediaType" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="SocialMediaType">
+		<xsd:sequence>
+			<xsd:element name="SocialMedium" type="SocialMediumType" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="SocialMediumType">
+		<xsd:sequence>
+			<xsd:element name="SocialMediumParty" type="xsd:string"/>
+			<xsd:element name="SocialMediumIdentifier" type="xsd:string"/>
+			<xsd:element name="SocialMediumLink" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="SocialMediumProfileId" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="SocialMediumToken" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="SocialMediumRevoke" type="xsd:boolean" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="AvailableHoursPerDayType">
+		<xsd:sequence>
+			<xsd:element name="Day" type="DayTypes"/>
+			<xsd:element name="StartTime" type="LocalTimeNkNaType"/>
+			<xsd:element name="EndTime" type="LocalTimeNkNaType"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:simpleType name="DayTypes">
+		<xsd:annotation>
+			<xsd:documentation>1 = Monday, 2 = Tuesday, 3 = Wednesday, 4 = Thursday, 5 = Friday, 6 = Saturday, 7 = Sunday</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="1"/>
+			<xsd:enumeration value="2"/>
+			<xsd:enumeration value="3"/>
+			<xsd:enumeration value="4"/>
+			<xsd:enumeration value="5"/>
+			<xsd:enumeration value="6"/>
+			<xsd:enumeration value="7"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:complexType name="LanguagesType">
+		<xsd:sequence>
+			<xsd:element ref="LanguageNL" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="LanguageNL">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="LanguageCode" minOccurs="0"/>
+				<xsd:element name="Read" type="xsd:string" minOccurs="0"/>
+				<xsd:element name="Write" type="xsd:string" minOccurs="0"/>
+				<xsd:element name="Speak" type="xsd:string" minOccurs="0"/>
+				<xsd:element name="Comments" type="xsd:string" minOccurs="0"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:complexType name="ExtensionsNLType">
+		<xsd:sequence>
+			<xsd:element name="Extension" type="ExtensionType" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ExtensionType">
+		<xsd:sequence>
+			<xsd:element name="ExtensionName"/>
+			<xsd:element name="ExtensionValue" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

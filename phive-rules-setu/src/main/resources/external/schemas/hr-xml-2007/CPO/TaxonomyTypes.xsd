@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://ns.hr-xml.org/2007-04-15" xmlns="http://ns.hr-xml.org/2007-04-15" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" version="2007-04-15">
+	<xsd:annotation>
+		<xsd:documentation>
+"Copyright  The HR-XML Consortium. All Rights Reserved. http://www.hr-xml.org"
+Name: TaxonomyTypes.xsd
+Status: Recommendation
+Date this version: 2007-04-15
+Purpose: Defines reusable hierarchical classification schema components.
+Author(s):  
+Documentation: TaxonomyTypes.html
+
+Terms of license can be found in license.txt.
+
+</xsd:documentation>
+	</xsd:annotation>
+	<!-- industry code -->
+	<xsd:element name="IndustryCode" type="IndustryCodeType"/>
+	<xsd:complexType name="IndustryCodeType">
+		<xsd:simpleContent>
+			<xsd:extension base="xsd:string">
+				<xsd:attribute name="primaryIndicator" type="xsd:boolean" use="optional"/>
+				<xsd:attribute name="classificationName" type="xsd:string" use="optional"/>
+			</xsd:extension>
+		</xsd:simpleContent>
+	</xsd:complexType>
+</xsd:schema>

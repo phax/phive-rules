@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://ns.hr-xml.org/2007-04-15" xmlns="http://ns.hr-xml.org/2007-04-15" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" version="2007-04-15">
+	<xsd:annotation>
+		<xsd:documentation>
+"Copyright  The HR-XML Consortium. All Rights Reserved. http://www.hr-xml.org"
+Name: xStringPatternExtensionType.xsd
+Status: Recommendation
+Date this version: 2007-04-15
+Purpose: Defines the xStringPatternExtensionType enumeration extension schema.
+Author(s):  Technical Steering Committee
+Documentation: While the name of the type is different, this schema's functionality is documented in the "Extended Enumerations" section of the SchemaDesignGuidelines.pdf. 
+
+Terms of license can be found in license.txt.
+
+</xsd:documentation>
+	</xsd:annotation>
+	<xsd:simpleType name="xStringPatternExtensionType">
+		<xsd:restriction base="xsd:string">
+			<xsd:pattern value="x:\S.*"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+</xsd:schema>

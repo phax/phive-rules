@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2005 sp1 U (http://www.xmlspy.com) by Kim Bartkus (private) -->
+<xsd:schema xmlns="http://ns.hr-xml.org/2007-04-15" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://ns.hr-xml.org/2007-04-15" elementFormDefault="qualified" version="2007-04-15">
+	<xsd:annotation>
+		<xsd:documentation>
+"Copyright  The HR-XML Consortium. All Rights Reserved. http://www.hr-xml.org"
+
+Name: StaffingOrganization.xsd
+Status: CandidateRecommendation
+Date this version: 2007-04-15
+Purpose: Defines the StaffingOrganization Schema
+Author(s):  SIDES Workgroup
+Documentation:  StaffingOrganization.html
+Net Change(s):  
+
+2006-July:
+- Added Reference Id's to match other SIDES schemas: MasterOrderId.
+- Added TaxEvaluation structure to PaymentInfo.
+- Changed BankAccountInfo to not be localized.
+- Added AccountType and AccountHolder to BankAccountInfo.
+
+2004-May: This is a new schema that uses the CPO Organization.xsd as the base, extended with payment info and reference id's.
+
+Terms of license can be found in license.txt.
+
+		</xsd:documentation>
+	</xsd:annotation>
+	<xsd:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="../../W3C/xml.xsd"/>
+	<xsd:include schemaLocation="../CPO/RoundingTypes.xsd"/>
+	<xsd:include schemaLocation="../CPO/Organization.xsd"/>
+	<xsd:include schemaLocation="../SIDES/Localizations.xsd"/>
+	<xsd:include schemaLocation="../SIDES/BankAccountInfo.xsd"/>
+	<xsd:complexType name="StaffingOrganizationType">
+		<xsd:sequence>
+			<xsd:element ref="Organization" maxOccurs="unbounded"/>
+			<xsd:element name="PaymentInfo" type="PaymentInfoType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="ReferenceIdInfo" type="StaffingReferenceIdType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="UserArea" minOccurs="0"/>
+		</xsd:sequence>
+		<xsd:attribute name="typeOfOrganization" type="TypeOfOrganization" use="required"/>
+		<xsd:attribute ref="xml:lang"/>
+	</xsd:complexType>
+	<!-- Staffing Organization Type  -->
+	<xsd:simpleType name="StaffingOrganizationTypes">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="Customer"/>
+			<xsd:enumeration value="Supplier"/>
+			<xsd:enumeration value="Intermediary"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="TypeOfOrganization">
+		<xsd:union memberTypes="StaffingOrganizationTypes xStringPatternExtensionType"/>
+	</xsd:simpleType>
+	<!-- Reference Information -->
+	<xsd:complexType name="StaffingReferenceIdType">
+		<xsd:sequence>
+			<xsd:element name="StaffingCustomerId" type="EntityIdType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="StaffingCustomerOrgUnitId" type="EntityIdType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="StaffingSupplierId" type="EntityIdType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="StaffingSupplierOrgUnitId" type="EntityIdType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="OrderId" type="EntityIdType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="HumanResourceId" type="EntityIdType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="IntermediaryId" type="EntityIdType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="PositionId" type="EntityIdType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="BillToEntityId" type="EntityIdType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="AssignmentId" type="EntityIdType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="TimeCardId" type="EntityIdType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="InvoiceId" type="EntityIdType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="MasterOrderId" type="EntityIdType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="StaffingOrganizationId" type="EntityIdType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="UserArea" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<!-- Payment Information -->
+	<xsd:complexType name="PaymentInfoType">
+		<xsd:sequence>
+			<xsd:element name="OrganizationId" type="EntityIdType" minOccurs="0"/>
+			<xsd:element name="OrganizationalUnitId" type="EntityIdType" minOccurs="0"/>
+			<xsd:element name="VATRate" type="xsd:decimal" minOccurs="0"/>
+			<xsd:element name="TaxEvaluation" minOccurs="0" maxOccurs="unbounded">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="TaxType" type="xsd:string"/>
+						<xsd:element name="Description" type="xsd:string" minOccurs="0"/>
+						<xsd:element name="TaxRounding" type="RoundingRuleType" minOccurs="0"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="PaymentCondition" minOccurs="0">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="Structured" minOccurs="0">
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element name="PaymentMode" type="xsd:string"/>
+									<xsd:element name="PaymentTimeAllowed" type="xsd:decimal"/>
+									<xsd:element name="PaymentEvent" type="xsd:string"/>
+									<xsd:element name="PaymentDay" type="xsd:decimal"/>
+								</xsd:sequence>
+							</xsd:complexType>
+						</xsd:element>
+						<xsd:element name="Description" type="xsd:string" minOccurs="0"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="BankAccountInfo" type="BankAccountInfoType" minOccurs="0"/>
+			<xsd:element name="Capital" minOccurs="0">
+				<xsd:complexType>
+					<xsd:simpleContent>
+						<xsd:extension base="xsd:decimal">
+							<xsd:attribute name="currencyCode" type="CurrencyCodeType"/>
+						</xsd:extension>
+					</xsd:simpleContent>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="FinancialGuarantee" minOccurs="0">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="Name" type="xsd:string" minOccurs="0"/>
+						<xsd:element name="Amount" minOccurs="0">
+							<xsd:complexType>
+								<xsd:simpleContent>
+									<xsd:extension base="xsd:string">
+										<xsd:attribute name="currencyCode" type="CurrencyCodeType"/>
+									</xsd:extension>
+								</xsd:simpleContent>
+							</xsd:complexType>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="CollectiveAgreement" type="xsd:string" minOccurs="0"/>
+			<xsd:element ref="UserArea" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="StaffingOrganization" type="StaffingOrganizationType"/>
+</xsd:schema>

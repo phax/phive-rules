@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://ns.hr-xml.org/2007-04-15" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://ns.hr-xml.org/2007-04-15" elementFormDefault="qualified" version="2007-04-15">
+	<xsd:annotation>
+		<xsd:documentation>
+"Copyright  The HR-XML Consortium. All Rights Reserved. http://www.hr-xml.org"
+Name: ISOUtilities.xsd
+Status: Recommendation
+Date this version: 2007-04-15
+Purpose: Defines schema components related to ISO described data.
+Author(s):  
+Documentation: GuidelinesForISOUtilities.html
+
+Terms of license can be found in license.txt.
+
+ </xsd:documentation>
+	</xsd:annotation>
+	<xsd:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="../../W3C/xml.xsd"/>
+	<!-- gender code -->
+	<xsd:element name="GenderCode" type="GenderCodeType"/>
+	<xsd:simpleType name="GenderCodeType">
+		<xsd:annotation>
+			<xsd:documentation>Must conform to ISO 5218 - Representation of Human Sexes (0 - Not Known; 1 - Male; 2 - Female; 9 - Not specified)</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:integer">
+			<xsd:pattern value="[0129]"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<!-- currency code -->
+	<xsd:element name="CurrencyCode" type="CurrencyCodeType"/>
+	<xsd:simpleType name="CurrencyCodeType">
+		<xsd:annotation>
+			<xsd:documentation>Must conform to ISO 4217 - Representation of Currency and Funds</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:pattern value="[A-Z][A-Z][A-Z]"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<!-- country code -->
+	<xsd:element name="CountryCode" type="CountryCodeType"/>
+	<xsd:simpleType name="CountryCodeType">
+		<xsd:annotation>
+			<xsd:documentation>Must conform to ISO 3166 Representation of Countries.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:pattern value="[A-Z][A-Z]"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<!-- language as data, capturing the language itself -->
+	<xsd:element name="LanguageCode" type="LanguageCodeType"/>
+	<xsd:simpleType name="LanguageCodeType">
+		<xsd:annotation>
+			<xsd:documentation>ISO 639-1 two character code is preferred, but not required.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:language"/>
+	</xsd:simpleType>
+	<!-- the LanguageDependentTextType-->
+	<xsd:complexType name="LanguageDependentTextType">
+		<xsd:simpleContent>
+			<xsd:extension base="xsd:string">
+				<xsd:attribute ref="xml:lang">
+					<xsd:annotation>
+						<xsd:documentation>ISO 639-1 two character code is preferred, but not required.</xsd:documentation>
+					</xsd:annotation>
+				</xsd:attribute>
+			</xsd:extension>
+		</xsd:simpleContent>
+	</xsd:complexType>
+</xsd:schema>

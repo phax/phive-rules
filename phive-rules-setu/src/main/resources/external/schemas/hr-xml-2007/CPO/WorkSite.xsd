@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://ns.hr-xml.org/2007-04-15" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://ns.hr-xml.org/2007-04-15" elementFormDefault="qualified" version="2007-04-15">
+	<xsd:annotation>
+		<xsd:documentation>
+"Copyright  The HR-XML Consortium. All Rights Reserved. http://www.hr-xml.org"
+Name: WorkSite.xsd
+Status: Recommendation
+Date this version: 2007-04-15
+Purpose: Defines the Schema for Work Site
+Author(s): Kim Bartkus, Paul Kiel
+Documentation: WorkSite.html
+
+Terms of license can be found in license.txt.
+
+
+		</xsd:documentation>
+	</xsd:annotation>
+	<!-- Includes -->
+	<xsd:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="../../W3C/xml.xsd"/>
+	<xsd:include schemaLocation="../CPO/DateTimeDataTypes.xsd"/>
+	<xsd:include schemaLocation="../CPO/PostalAddress.xsd"/>
+	<xsd:include schemaLocation="../CPO/EntityIdType.xsd"/>
+	<xsd:include schemaLocation="../CPO/ISOUtilities.xsd"/>
+	<xsd:include schemaLocation="../CPO/UserArea.xsd"/>
+	<xsd:include schemaLocation="../CPO/xStringPatternExtensionType.xsd"/>
+	<!-- WorkSite -->
+	<xsd:complexType name="WorkSiteType">
+		<xsd:sequence>
+			<xsd:element name="WorkSiteName" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="WorkSiteId" type="EntityIdType" minOccurs="0"/>
+			<xsd:element name="Details" minOccurs="0" maxOccurs="unbounded">
+				<xsd:complexType>
+					<xsd:simpleContent>
+						<xsd:extension base="LanguageDependentTextType">
+							<xsd:attribute name="type" type="xsd:string"/>
+						</xsd:extension>
+					</xsd:simpleContent>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="PostalAddress" type="PostalAddressType" minOccurs="0"/>
+			<xsd:element name="TravelDirections" type="LanguageDependentTextType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="ParkingInstructions" type="LanguageDependentTextType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="WorkSiteEnvironment" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="UserArea" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<!-- WorkSiteEnvironment -->
+	<xsd:complexType name="WorkSiteEnvironmentType">
+		<xsd:sequence>
+			<xsd:element name="EnvironmentName" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="EnvironmentId" type="EntityIdType" minOccurs="0"/>
+			<xsd:element name="WorkSiteId" type="EntityIdType" minOccurs="0"/>
+			<xsd:element name="Description" minOccurs="0">
+				<xsd:complexType>
+					<xsd:simpleContent>
+						<xsd:extension base="xsd:string">
+							<xsd:attribute ref="xml:lang"/>
+						</xsd:extension>
+					</xsd:simpleContent>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="Considerations" minOccurs="0" maxOccurs="unbounded">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="General" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+						<xsd:element name="Physical" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+						<xsd:element name="SafetyEquipment" type="SafetyEquipmentType" minOccurs="0" maxOccurs="unbounded"/>
+						<xsd:element name="DressCode" type="DressCodeType" minOccurs="0" maxOccurs="unbounded"/>
+						<xsd:element ref="UserArea" minOccurs="0"/>
+					</xsd:sequence>
+					<xsd:attribute ref="xml:lang"/>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element ref="UserArea" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="WorkSite" type="WorkSiteType"/>
+	<xsd:element name="WorkSiteEnvironment" type="WorkSiteEnvironmentType"/>
+	<!--Types -->
+	<xsd:complexType name="SafetyEquipmentType">
+		<xsd:simpleContent>
+			<xsd:extension base="xsd:string">
+				<xsd:attribute name="suppliedByOrganization" type="xsd:boolean"/>
+			</xsd:extension>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="DressCodeType">
+		<xsd:simpleContent>
+			<xsd:extension base="DressCodeContentTypes">
+				<xsd:attribute name="suppliedByOrganization" type="xsd:boolean"/>
+			</xsd:extension>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:simpleType name="DressCodeContentTypes">
+		<xsd:union memberTypes="DressCodeContentType xStringPatternExtensionType"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="DressCodeContentType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="Professional"/>
+			<xsd:enumeration value="Business"/>
+			<xsd:enumeration value="Business Casual"/>
+			<xsd:enumeration value="Uniform"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+</xsd:schema>

@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2005 sp1 U (http://www.xmlspy.com) by Kim Bartkus (private) -->
+<xsd:schema xmlns="http://ns.hr-xml.org/2007-04-15" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://ns.hr-xml.org/2007-04-15" elementFormDefault="qualified" version="2007-04-15">
+	<xsd:annotation>
+		<xsd:documentation>
+"Copyright The HR-XML Consortium. All Rights Reserved. http://www.hr-xml.org" 
+Name: PositionHeader.xsd 
+Status: Recommendation 
+Date this version: 2007-04-15
+Purpose: Extends the Position Header with SIDES requirements
+Author(s): Kim Bartkus, SIDES workgroup
+Documentation: SIDES.html
+
+2006-July:
+- Extended CPO PositionHeader with staffing-relevant information (StaffingPositionHeader): FormattedPositionDescription, ShiftWork, PositionMustEndByInfo, TransitionInfo, OverTimeInfo, HolidayWork, and BusyPeriodInfo.
+- Added Japanese extension (LocalStaffingPositionInfo).
+
+Terms of license can be found in license.txt.
+
+</xsd:documentation>
+	</xsd:annotation>
+	<xsd:include schemaLocation="../CPO/PositionHeader.xsd"/>
+	<xsd:include schemaLocation="../CPO/Frequencies.xsd"/>
+	<xsd:include schemaLocation="../SIDES/Localizations.xsd"/>
+	<xsd:element name="StaffingPositionHeader" type="StaffingPositionHeaderType"/>
+	<xsd:complexType name="StaffingPositionHeaderType">
+		<xsd:complexContent>
+			<xsd:extension base="PositionHeaderType">
+				<xsd:sequence>
+					<xsd:element name="FormattedPositionDescription" minOccurs="0" maxOccurs="unbounded">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="Id" type="EntityIdType" minOccurs="0"/>
+								<xsd:element name="Name" type="xsd:string" minOccurs="0"/>
+								<xsd:element name="Value" type="xsd:string"/>
+							</xsd:sequence>
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="JobCategory" minOccurs="0" maxOccurs="unbounded">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="Id" type="EntityIdType" minOccurs="0"/>
+								<xsd:element name="Description" type="xsd:string"/>
+							</xsd:sequence>
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="ShiftWork" minOccurs="0">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="Description" type="xsd:string" minOccurs="0"/>
+							</xsd:sequence>
+							<xsd:attribute name="haveShiftWork" type="xsd:boolean" use="required"/>
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="PositionMustEndByInfo" minOccurs="0">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="Date" type="xsd:date"/>
+								<xsd:element name="Description" type="xsd:string" minOccurs="0"/>
+							</xsd:sequence>
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="TransitionInfo" minOccurs="0">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="Duration" minOccurs="0">
+									<xsd:complexType>
+										<xsd:simpleContent>
+											<xsd:extension base="xsd:decimal">
+												<xsd:attribute name="unitOfTime" type="UnitOfTimeEnumType" use="required"/>
+											</xsd:extension>
+										</xsd:simpleContent>
+									</xsd:complexType>
+								</xsd:element>
+								<xsd:element name="Description" type="xsd:string" minOccurs="0"/>
+							</xsd:sequence>
+							<xsd:attribute name="required" type="xsd:boolean" use="required"/>
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="OvertimeInfo" minOccurs="0">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="ExpectedTime" minOccurs="0">
+									<xsd:complexType>
+										<xsd:simpleContent>
+											<xsd:extension base="xsd:decimal">
+												<xsd:attribute name="unitOfTime" type="UnitOfTimeEnumType" use="required"/>
+											</xsd:extension>
+										</xsd:simpleContent>
+									</xsd:complexType>
+								</xsd:element>
+								<xsd:element name="ExpectedWithin" minOccurs="0">
+									<xsd:complexType>
+										<xsd:simpleContent>
+											<xsd:extension base="xsd:decimal">
+												<xsd:attribute name="unitOfTime" type="UnitOfTimeEnumType" use="required"/>
+											</xsd:extension>
+										</xsd:simpleContent>
+									</xsd:complexType>
+								</xsd:element>
+								<xsd:element name="Description" type="xsd:string" minOccurs="0"/>
+							</xsd:sequence>
+							<xsd:attribute name="haveOvertime" type="xsd:boolean" use="required"/>
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="HolidayWork" minOccurs="0">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="Description" type="xsd:string" minOccurs="0"/>
+							</xsd:sequence>
+							<xsd:attribute name="haveHolidayWork" type="xsd:boolean" use="required"/>
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="BusyPeriodInfo" minOccurs="0" maxOccurs="unbounded">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:choice>
+									<xsd:element name="PeriodString" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+									<xsd:sequence>
+										<xsd:element name="StartBusyPeriod" type="xsd:string" minOccurs="0">
+											<xsd:annotation>
+												<xsd:documentation>If using a date, the date must be in ISO 8601 format.</xsd:documentation>
+											</xsd:annotation>
+										</xsd:element>
+										<xsd:element name="EndBusyPeriod" type="xsd:string" minOccurs="0">
+											<xsd:annotation>
+												<xsd:documentation>If using a date, the date must be in ISO 8601 format.</xsd:documentation>
+											</xsd:annotation>
+										</xsd:element>
+									</xsd:sequence>
+								</xsd:choice>
+								<xsd:element name="Description" type="xsd:string" minOccurs="0"/>
+							</xsd:sequence>
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="LocalStaffingPositionInfo" type="LocalStaffingPositionInfoType" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:simpleType name="UnitOfTimeEnumType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="second"/>
+			<xsd:enumeration value="minute"/>
+			<xsd:enumeration value="hour"/>
+			<xsd:enumeration value="day"/>
+			<xsd:enumeration value="week"/>
+			<xsd:enumeration value="month"/>
+			<xsd:enumeration value="year"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+</xsd:schema>

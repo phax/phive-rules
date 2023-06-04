@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://ns.hr-xml.org/2007-04-15" targetNamespace="http://ns.hr-xml.org/2007-04-15" elementFormDefault="qualified" version="2007-04-15">
+	<xsd:annotation>
+		<xsd:documentation>
+"Copyright  The HR-XML Consortium. All Rights Reserved. http://www.hr-xml.org"
+Name: Organization.xsd
+Status: Recommendation
+Date this version: 2007-04-15
+Purpose: Defines the schema for an Organization (legal entity)
+Author(s): Jason Brown, CPO Workgroup
+Documentation: Organization.html
+
+Change History:
+2005-01
+As per Schema Design Guidelines, all default values have been removed.
+
+2004-Jun-07: Add 'description' attribute to Accounting Code. This is a bug fix to allow labeling of multiple accounting codes. 
+
+2005-08-08: Kim Bartkus 
+Added Stock structure.
+Added IsPublicCompany element.
+Added MissionStatement and Value Statement elements. 
+
+Terms of license can be found in license.txt.
+
+		</xsd:documentation>
+	</xsd:annotation>
+	<xsd:include schemaLocation="../CPO/TaxonomyTypes.xsd"/>
+	<xsd:include schemaLocation="../CPO/IdentifierTypes.xsd"/>
+	<xsd:include schemaLocation="../CPO/PersonName.xsd"/>
+	<xsd:include schemaLocation="../CPO/PostalAddress.xsd"/>
+	<xsd:include schemaLocation="../CPO/ContactMethod.xsd"/>
+	<xsd:include schemaLocation="../CPO/WorkSite.xsd"/>
+	<xsd:include schemaLocation="../CPO/UserArea.xsd"/>
+	<xsd:include schemaLocation="../CPO/xStringPatternExtensionType.xsd"/>
+	<xsd:include schemaLocation="../CPO/ISOUtilities.xsd"/>
+	<!-- Organization -->
+	<xsd:element name="Organization">
+		<xsd:complexType>
+			<xsd:complexContent>
+				<xsd:extension base="OrganizationType"/>
+			</xsd:complexContent>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:complexType name="OrganizationType">
+		<xsd:sequence>
+			<xsd:element name="OrganizationName" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="OrganizationId" type="EntityIdType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="TaxId" type="EntityIdType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="LegalId" type="EntityIdType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="DunsNumber" type="DunsNumberDataType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="IsPublicCompany" type="xsd:boolean" minOccurs="0"/>
+			<xsd:element name="Stock" type="StockType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="MissionStatement" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="ValueStatement" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="InternetDomainName" type="InternetDomainNameType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="DoingBusinessAs" type="LanguageDependentTextType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="LegalClassification" type="OrganizationLegalClassificationType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="IndustryCode" type="IndustryCodeType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="Headcount" type="xsd:nonNegativeInteger" minOccurs="0"/>
+			<xsd:element name="Description" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="WorkSite" type="WorkSiteType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="ContactInfo" type="OrganizationContactType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="RelatedOrganization" type="RelatedOrganizationType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="OrganizationalUnit" type="OrganizationalUnitType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="UserArea" type="UserAreaType" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<!-- Organizational Unit -->
+	<xsd:element name="OrganizationalUnit" type="OrganizationalUnitType"/>
+	<xsd:complexType name="OrganizationalUnitType">
+		<xsd:sequence>
+			<xsd:element name="OrganizationalUnitName" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="OrganizationalUnitId" type="EntityIdType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="OrganizationId" type="EntityIdType" minOccurs="0"/>
+			<xsd:element name="Description" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="IndustryCode" type="IndustryCodeType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="AccountingCode" type="AccountingCodeType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="WorkSite" type="WorkSiteType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="RelatedOrganizationalUnit" type="RelatedOrganizationalUnitType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="PersonMember" type="OrganizationalUnitPersonMemberType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="UserArea" type="UserAreaType" minOccurs="0"/>
+		</xsd:sequence>
+		<xsd:attribute name="typeOfGroup" type="xsd:string"/>
+		<xsd:attribute name="hierarchicalRole" type="HierarchicalRoleType" use="optional"/>
+	</xsd:complexType>
+	<!-- the RelatedOrganization type -->
+	<xsd:complexType name="RelatedOrganizationType">
+		<xsd:complexContent>
+			<xsd:extension base="OrganizationType">
+				<xsd:attribute name="relationship" type="OrganizationRelationshipType"/>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<!-- the relationship  type -->
+	<xsd:simpleType name="OrganizationRelationshipType">
+		<xsd:union memberTypes="BasicOrganizationRelationshipType xStringPatternExtensionType"/>
+	</xsd:simpleType>
+	<!-- basic relationship  level types -->
+	<xsd:simpleType name="BasicOrganizationRelationshipType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="Child"/>
+			<xsd:enumeration value="Parent"/>
+			<xsd:enumeration value="Ultimate Parent"/>
+			<xsd:enumeration value="Domestic Parent"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<!-- the RelatedOrganizationalUnit type -->
+	<xsd:complexType name="RelatedOrganizationalUnitType">
+		<xsd:complexContent>
+			<xsd:extension base="OrganizationalUnitType">
+				<xsd:attribute name="relationship" type="OrganizationalUnitRelationshipType"/>
+				<xsd:attribute name="natureOfRelationship" type="OrganizationalUnitStructureType"/>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<!-- the relationship  type -->
+	<xsd:simpleType name="OrganizationalUnitRelationshipType">
+		<xsd:union memberTypes="BasicOrganizationalUnitRelationshipType xStringPatternExtensionType"/>
+	</xsd:simpleType>
+	<!-- basic relationship  level types -->
+	<xsd:simpleType name="BasicOrganizationalUnitRelationshipType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="Child"/>
+			<xsd:enumeration value="Sibling"/>
+			<xsd:enumeration value="Parent"/>
+			<xsd:enumeration value="Ultimate Parent"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<!-- the group  type - replaced by a string. Enumerations used only for example.
+	<xsd:simpleType name="GroupType">
+		<xsd:union memberTypes="BasicGroupType xStringPatternExtensionType"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="BasicGroupType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="Project"/>
+			<xsd:enumeration value="Group"/>
+			<xsd:enumeration value="Team"/>
+			<xsd:enumeration value="Department"/>
+			<xsd:enumeration value="Division"/>
+			<xsd:enumeration value="Branch"/>
+			<xsd:enumeration value="Business Unit"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	 the purpose type -->
+	<!-- the purpose type -->
+	<xsd:simpleType name="HierarchicalRoleType">
+		<xsd:union memberTypes="BasicHierarchicalRoleType xStringPatternExtensionType"/>
+	</xsd:simpleType>
+	<!-- basic group  types -->
+	<xsd:simpleType name="BasicHierarchicalRoleType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="Functional"/>
+			<xsd:enumeration value="Logical"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<!-- the structure type -->
+	<xsd:simpleType name="OrganizationalUnitStructureType">
+		<xsd:union memberTypes="BasicOrganizationalUnitStructureType xStringPatternExtensionType"/>
+	</xsd:simpleType>
+	<!-- basic structure types -->
+	<xsd:simpleType name="BasicOrganizationalUnitStructureType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="Reporting"/>
+			<xsd:enumeration value="Legal"/>
+			<xsd:enumeration value="Fiduciary"/>
+			<xsd:enumeration value="Structural"/>
+			<xsd:enumeration value="Project"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<!-- the legal classification type -->
+	<xsd:complexType name="OrganizationLegalClassificationType">
+		<xsd:simpleContent>
+			<xsd:extension base="xsd:string">
+				<xsd:attribute name="countryCode" type="CountryCodeType" use="required"/>
+				<xsd:attribute name="ownership" type="OrganizationLegalOwnershipType" use="optional"/>
+			</xsd:extension>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<!-- institution types -->
+	<xsd:simpleType name="OrganizationLegalOwnershipType">
+		<xsd:union memberTypes="BasicOrganizationLegalOwnershipType xStringPatternExtensionType"/>
+	</xsd:simpleType>
+	<!-- basic institution types -->
+	<xsd:simpleType name="BasicOrganizationLegalOwnershipType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="Public"/>
+			<xsd:enumeration value="Private"/>
+			<xsd:enumeration value="Government"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<!-- the ContactType -->
+	<xsd:complexType name="OrganizationContactType">
+		<xsd:sequence>
+			<xsd:element name="ContactName" type="PersonNameType" minOccurs="0"/>
+			<xsd:element name="ContactId" type="EntityIdType" minOccurs="0"/>
+			<xsd:element name="ContactMethod" type="ContactMethodType" minOccurs="0"/>
+		</xsd:sequence>
+		<xsd:attribute name="purpose" type="OrganizationContactPurposeType"/>
+	</xsd:complexType>
+	<!-- the contact role type -->
+	<xsd:simpleType name="OrganizationContactPurposeType">
+		<xsd:union memberTypes="BasicOrganizationContactPurposeType xStringPatternExtensionType"/>
+	</xsd:simpleType>
+	<!-- basic contact role types -->
+	<xsd:simpleType name="BasicOrganizationContactPurposeType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="Headquarters"/>
+			<xsd:enumeration value="Sales"/>
+			<xsd:enumeration value="Support"/>
+			<xsd:enumeration value="Billing"/>
+			<xsd:enumeration value="Legal"/>
+			<xsd:enumeration value="Human Resources"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<!-- the PersonMemberType -->
+	<xsd:complexType name="OrganizationalUnitPersonMemberType">
+		<xsd:sequence>
+			<xsd:element name="PersonName" type="PersonNameType" minOccurs="0"/>
+			<xsd:element name="PersonId" type="EntityIdType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="PersonRole" type="OrganizationalUnitPersonMemberRoleType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="ContactMethod" type="ContactMethodType" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<!-- the person member role type -->
+	<xsd:complexType name="OrganizationalUnitPersonMemberRoleType">
+		<xsd:sequence>
+			<xsd:element name="RoleName" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="RoleId" type="EntityIdType" minOccurs="0"/>
+			<xsd:element name="Description" type="xsd:string" minOccurs="0"/>
+		</xsd:sequence>
+		<xsd:attribute name="leader" type="xsd:boolean"/>
+	</xsd:complexType>
+	<!-- the accounting code type -->
+	<xsd:complexType name="AccountingCodeType">
+		<xsd:simpleContent>
+			<xsd:extension base="xsd:string">
+				<xsd:attribute name="description" type="xsd:string" use="optional"/>
+			</xsd:extension>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<!-- the Stock type -->
+	<xsd:complexType name="StockType">
+		<xsd:sequence>
+			<xsd:element name="Id" type="EntityIdType" minOccurs="0"/>
+			<xsd:element name="Symbol" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="Exchange" type="xsd:string" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

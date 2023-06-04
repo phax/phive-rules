@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://ns.hr-xml.org/2007-04-15" xmlns="http://ns.hr-xml.org/2007-04-15" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" version="2007-04-15">
+	<xsd:annotation>
+		<xsd:documentation>
+"Copyright  The HR-XML Consortium. All Rights Reserved. http://www.hr-xml.org"
+Name: PostalAddress.xsd
+Status: Recommendation
+Date this version: 2007-04-15
+Purpose: Defines the schema for Postal Address
+Author(s): Paul Kiel, Kim Bartkus, CPO Workgroup
+Documentation: PostalAddress.html
+
+Terms of license can be found in license.txt.
+
+Change History:
+2005-01
+As per Schema Design Guidelines, all default values have been removed.
+
+
+</xsd:documentation>
+	</xsd:annotation>
+	<xsd:include schemaLocation="../CPO/PersonName.xsd"/>
+	<xsd:complexType name="PostalAddressType">
+		<xsd:sequence>
+			<xsd:element name="CountryCode">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:pattern value="[A-Z]{2}"/>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="PostalCode" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="Region" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="Municipality" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="DeliveryAddress" minOccurs="0">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="AddressLine" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+						<xsd:element name="StreetName" type="xsd:string" minOccurs="0"/>
+						<xsd:element name="BuildingNumber" type="xsd:string" minOccurs="0"/>
+						<xsd:element name="Unit" type="xsd:string" minOccurs="0"/>
+						<xsd:element name="PostOfficeBox" type="xsd:string" minOccurs="0"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="Recipient" minOccurs="0" maxOccurs="unbounded">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="PersonName" type="PersonNameType" minOccurs="0"/>
+						<xsd:element name="AdditionalText" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+						<xsd:element name="Organization" type="xsd:string" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation>Deprecated in favor of OrganizationName element.</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="OrganizationName" type="xsd:string" minOccurs="0"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+		<xsd:attribute name="type">
+			<xsd:simpleType>
+				<xsd:restriction base="xsd:string">
+					<xsd:enumeration value="postOfficeBoxAddress"/>
+					<xsd:enumeration value="streetAddress"/>
+					<xsd:enumeration value="militaryAddress"/>
+					<xsd:enumeration value="undefined"/>
+				</xsd:restriction>
+			</xsd:simpleType>
+		</xsd:attribute>
+	</xsd:complexType>
+	<xsd:element name="PostalAddress" type="PostalAddressType"/>
+</xsd:schema>

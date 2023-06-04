@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://ns.hr-xml.org/2007-04-15" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://ns.hr-xml.org/2007-04-15" elementFormDefault="qualified" version="2007-04-15">
+	<xsd:annotation>
+		<xsd:documentation>
+"Copyright  The HR-XML Consortium. All Rights Reserved. http://www.hr-xml.org"
+Status: Recommendation
+Date this version: 2007-04-15
+Purpose: Defines the DemographicDetail Schema
+Author(s):  Screening Workgroup
+Documentation: .html
+
+Terms of license can be found in license.txt.
+
+</xsd:documentation>
+	</xsd:annotation>
+	<xsd:include schemaLocation="../CPO/xStringPatternExtensionType.xsd"/>
+	<xsd:include schemaLocation="../CPO/FlexibleDates.xsd"/>
+	<xsd:include schemaLocation="../CPO/OnlineAddress.xsd"/>
+	<xsd:include schemaLocation="../CPO/ISOUtilities.xsd"/>
+	<xsd:complexType name="DemographicDetailType">
+		<xsd:sequence>
+			<xsd:element name="GovernmentId" type="PersonalIdType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="OtherId" minOccurs="0" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation>Other personal identifier  such as school or student number.</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:simpleContent>
+						<xsd:extension base="PersonalIdType">
+							<xsd:attribute name="type" type="xsd:string" use="optional"/>
+						</xsd:extension>
+					</xsd:simpleContent>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="DateOfBirth" type="LocalDateNkNaType" minOccurs="0"/>
+			<xsd:element name="Race" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="GenderCode" type="GenderCodeType" minOccurs="0"/>
+			<xsd:element name="VeteranStatus" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="MilitaryStatus" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="Disability" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="Ethnicity" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="Religion" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="Nationality" type="CountryCodeType" minOccurs="0"/>
+			<xsd:element name="VisaStatus" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="Language" type="LanguageCodeType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="EyeColor" type="ExtendedPersonEyeColorQualifiers" minOccurs="0"/>
+			<xsd:element name="HairColor" type="ExtendedPersonHairColorQualifiers" minOccurs="0"/>
+			<xsd:element name="Height" minOccurs="0">
+				<xsd:complexType>
+					<xsd:simpleContent>
+						<xsd:extension base="xsd:string">
+							<xsd:attribute name="unitOfMeasure" type="xsd:string"/>
+						</xsd:extension>
+					</xsd:simpleContent>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="Weight" minOccurs="0">
+				<xsd:complexType>
+					<xsd:simpleContent>
+						<xsd:extension base="xsd:string">
+							<xsd:attribute name="unitOfMeasure" type="xsd:string"/>
+						</xsd:extension>
+					</xsd:simpleContent>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="IdentifyingMarks" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="BirthPlace" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="Age" type="xsd:nonNegativeInteger" minOccurs="0"/>
+			<xsd:element name="HomeOwner" type="xsd:boolean" minOccurs="0"/>
+			<xsd:element name="Other" minOccurs="0">
+				<xsd:complexType>
+					<xsd:simpleContent>
+						<xsd:extension base="xsd:string">
+							<xsd:attribute name="type" type="xsd:string"/>
+						</xsd:extension>
+					</xsd:simpleContent>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:simpleType name="ExtendedPersonEyeColorQualifiers">
+		<xsd:union memberTypes="PersonEyeColor xStringPatternExtensionType"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="ExtendedPersonHairColorQualifiers">
+		<xsd:union memberTypes="PersonHairColor xStringPatternExtensionType"/>
+	</xsd:simpleType>
+	<xsd:complexType name="PersonalIdType">
+		<xsd:simpleContent>
+			<xsd:extension base="xsd:string">
+				<xsd:attribute name="countryCode" type="xsd:string" use="optional"/>
+				<xsd:attribute name="jurisdiction" type="xsd:string" use="optional"/>
+				<xsd:attribute name="issuingAuthority" type="xsd:string" use="optional"/>
+				<xsd:attribute name="issuingRegion" type="xsd:string" use="optional"/>
+				<xsd:attribute name="documentType" type="xsd:string" use="optional"/>
+				<xsd:attribute name="validFrom" type="AnyLocalYearMonthDateNkNaType" use="optional"/>
+				<xsd:attribute name="validTo" type="AnyLocalYearMonthDateNkNaType" use="optional"/>
+				<xsd:attribute name="idSource" type="xsd:string" use="optional"/>
+			</xsd:extension>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:simpleType name="PersonEyeColor">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="Black"/>
+			<xsd:enumeration value="Hazel"/>
+			<xsd:enumeration value="Gray"/>
+			<xsd:enumeration value="Brown"/>
+			<xsd:enumeration value="Violet"/>
+			<xsd:enumeration value="Green"/>
+			<xsd:enumeration value="Blue"/>
+			<xsd:enumeration value="Maroon"/>
+			<xsd:enumeration value="Pink"/>
+			<xsd:enumeration value="Dichromatic"/>
+			<xsd:enumeration value="Unknown"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="PersonHairColor">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="Bald"/>
+			<xsd:enumeration value="Brown"/>
+			<xsd:enumeration value="White"/>
+			<xsd:enumeration value="Blonde"/>
+			<xsd:enumeration value="Gray"/>
+			<xsd:enumeration value="Red"/>
+			<xsd:enumeration value="Auburn"/>
+			<xsd:enumeration value="Black"/>
+			<xsd:enumeration value="Silver"/>
+			<xsd:enumeration value="Unknown"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+</xsd:schema>

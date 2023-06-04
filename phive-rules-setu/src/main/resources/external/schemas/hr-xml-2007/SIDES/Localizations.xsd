@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2005 sp1 U (http://www.xmlspy.com) by Kim Bartkus (private) -->
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://ns.hr-xml.org/2007-04-15" targetNamespace="http://ns.hr-xml.org/2007-04-15" elementFormDefault="qualified" version="2007-04-15">
+	<xsd:annotation>
+		<xsd:documentation>
+"Copyright  The HR-XML Consortium. All Rights Reserved. http://www.hr-xml.org"
+Name: 
+Status: Recommendation
+Date this version: 2007-04-15
+Purpose: 
+Author(s):  SIDES Workgroup
+Document: 
+
+2006-July:
+- Removed FRBankAccountInfo. It is no longer a localized structure.
+- Added LocalStaffingPositionInfoType.
+- Added JPContractRequirements.
+
+Terms of license can be found in license.txt.
+
+This schema serves two functions.  First, it is a "hook" to connect the main, international schema(s) to all localized content including region specific components.  Second, if there are localizations that are universal (meaning that a concept is used everywhere, but used differently everywhere) then those common definitions can be used here, with region specific material included as an xsd:include.
+
+</xsd:documentation>
+	</xsd:annotation>
+	<xsd:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="../../W3C/xml.xsd"/>
+	<xsd:include schemaLocation="../CPO/UserArea.xsd"/>
+	<xsd:include schemaLocation="../CPO/WorkSite.xsd"/>
+	<xsd:include schemaLocation="../SIDES/JP/JPLocalizations.xsd"/>
+	<xsd:include schemaLocation="../SIDES/FR/FRLocalizations.xsd"/>
+	<!-- Localized Staffing Limits -->
+	<xsd:complexType name="LocalStaffingPositionInfoType">
+		<xsd:choice>
+			<xsd:element name="JPStaffingPositionInfo" type="JPStaffingPositionInfoType"/>
+		</xsd:choice>
+	</xsd:complexType>
+	<!-- Local Contract Requirements  -->
+	<xsd:complexType name="LocalContractRequirementsType">
+		<xsd:complexContent>
+			<xsd:extension base="FRContractRequirementsType">
+				<xsd:choice>
+					<xsd:element ref="JPContractRequirements" minOccurs="0"/>
+				</xsd:choice>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+</xsd:schema>

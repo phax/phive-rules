@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2005 sp1 U (http://www.xmlspy.com) by Kim Bartkus (private) -->
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://ns.hr-xml.org/2007-04-15" targetNamespace="http://ns.hr-xml.org/2007-04-15" elementFormDefault="qualified" version="2007-04-15">
+	<xsd:annotation>
+		<xsd:documentation>
+"Copyright The HR-XML Consortium. All Rights Reserved. http://www.hr-xml.org" 
+
+Name: StaffingAction.xsd 
+Status: CandidateRecommendation 
+Date this version: 2007-04-15
+Purpose: Defines the StaffingAction Schema 
+Author(s): SIDES Workgroup 
+Documentation: StaffingAction.html 
+
+2006-July: 
+- Added Reference Id's to match other SIDES schemas: BillToEntityId, MasterOrderId.
+- Added 'Modification', 'Cancelled', 'Request' enumerations to StaffingActionReasonCode.
+- Added 'Reporting' enumeration to StaffingActionReasonSubjects.
+
+2004-May: Made changes and additions based on global SIDES feedback. See scope section in StaffingAction.doc for details. 
+
+Terms of license can be found in license.txt.
+
+</xsd:documentation>
+	</xsd:annotation>
+	<xsd:include schemaLocation="../SIDES/ContactInfo.xsd"/>
+	<xsd:include schemaLocation="../CPO/xStringPatternExtensionType.xsd"/>
+	<xsd:include schemaLocation="../SIDES/StaffingContactType.xsd"/>
+	<xsd:include schemaLocation="../CPO/EntityIdType.xsd"/>
+	<xsd:include schemaLocation="../CPO/UserArea.xsd"/>
+	<xsd:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="../../W3C/xml.xsd"/>
+	<xsd:complexType name="StaffingActionType">
+		<xsd:sequence>
+			<xsd:element name="StaffingActionId" type="EntityIdType" maxOccurs="unbounded"/>
+			<xsd:element name="StaffingActionInfo">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="ActionType" type="StaffingActionByType"/>
+						<xsd:element name="ActionTypeComments" type="xsd:string" minOccurs="0"/>
+						<xsd:element name="ActionReason" minOccurs="0">
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element name="ActionReasonCode" type="StaffingActionReasonCodeType"/>
+									<xsd:element name="ActionSubject" type="StaffingActionSubjectType"/>
+								</xsd:sequence>
+							</xsd:complexType>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="ReferenceInformation">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="HumanResourceId" type="EntityIdType" minOccurs="0" maxOccurs="unbounded"/>
+						<xsd:element name="OrderId" type="EntityIdType" minOccurs="0" maxOccurs="unbounded"/>
+						<xsd:element name="PositionId" type="EntityIdType" minOccurs="0" maxOccurs="unbounded"/>
+						<xsd:element name="AssignmentId" type="EntityIdType" minOccurs="0" maxOccurs="unbounded"/>
+						<xsd:element name="IntermediaryId" type="EntityIdType" minOccurs="0" maxOccurs="unbounded"/>
+						<xsd:element name="StaffingSupplierId" type="EntityIdType" minOccurs="0" maxOccurs="unbounded"/>
+						<xsd:element name="StaffingCustomerId" type="EntityIdType" minOccurs="0" maxOccurs="unbounded"/>
+						<xsd:element name="StaffingSupplierOrgUnitId" type="EntityIdType" minOccurs="0" maxOccurs="unbounded"/>
+						<xsd:element name="StaffingCustomerOrgUnitId" type="EntityIdType" minOccurs="0" maxOccurs="unbounded"/>
+						<xsd:element name="TimeCardId" type="EntityIdType" minOccurs="0" maxOccurs="unbounded"/>
+						<xsd:element name="InvoiceId" type="EntityIdType" minOccurs="0" maxOccurs="unbounded"/>
+						<xsd:element name="BillToEntityId" type="EntityIdType" minOccurs="0" maxOccurs="unbounded"/>
+						<xsd:element name="MasterOrderId" type="EntityIdType" minOccurs="0" maxOccurs="unbounded"/>
+						<xsd:element name="StaffingOrganizationId" type="EntityIdType" minOccurs="0" maxOccurs="unbounded"/>
+						<xsd:element ref="UserArea" minOccurs="0"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="StaffingActionContact" maxOccurs="unbounded">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="ReferenceInformation" minOccurs="0">
+							<xsd:complexType>
+								<xsd:choice>
+									<xsd:element name="StaffingSupplierId" type="xsd:string" maxOccurs="unbounded"/>
+									<xsd:element name="IntermediaryId" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+									<xsd:element name="StaffingCustomerId" type="xsd:string" maxOccurs="unbounded"/>
+								</xsd:choice>
+							</xsd:complexType>
+						</xsd:element>
+						<xsd:element ref="EntityContactInfo"/>
+					</xsd:sequence>
+					<xsd:attribute name="contactType" type="StaffingContactType" use="required"/>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="ActionSchedule" minOccurs="0" maxOccurs="unbounded">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="ContactPerson" type="ContactInfoType" maxOccurs="unbounded"/>
+						<xsd:element name="ContactPeriod" minOccurs="0" maxOccurs="unbounded">
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element name="StartDateTime" type="AnyDateTimeNaType" minOccurs="0"/>
+									<xsd:element name="EndDateTime" type="AnyDateTimeNaType" minOccurs="0"/>
+								</xsd:sequence>
+							</xsd:complexType>
+						</xsd:element>
+						<xsd:element name="SpecialRequirements" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element ref="UserArea" minOccurs="0"/>
+		</xsd:sequence>
+		<xsd:attribute ref="xml:lang"/>
+	</xsd:complexType>
+	<xsd:element name="StaffingAction" type="StaffingActionType"/>
+	<xsd:simpleType name="KnownStaffingActionByType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="request info"/>
+			<xsd:enumeration value="request action"/>
+			<xsd:enumeration value="request communication"/>
+			<xsd:enumeration value="response info"/>
+			<xsd:enumeration value="response action"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="StaffingActionByType">
+		<xsd:union memberTypes="KnownStaffingActionByType xsd:string"/>
+	</xsd:simpleType>
+	<!-- Action Reason Code  -->
+	<xsd:simpleType name="StaffingActionReasonCodes">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="Acknowledgement"/>
+			<xsd:enumeration value="Confirmation"/>
+			<xsd:enumeration value="Contract Extension"/>
+			<xsd:enumeration value="Contract Modification"/>
+			<xsd:enumeration value="Contract Expiration"/>
+			<xsd:enumeration value="Assignment Extension"/>
+			<xsd:enumeration value="Assignment Modification"/>
+			<xsd:enumeration value="Modification"/>
+			<xsd:enumeration value="Request"/>
+			<xsd:enumeration value="Cancelled"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="StaffingActionReasonCodeType">
+		<xsd:union memberTypes="StaffingActionReasonCodes xStringPatternExtensionType"/>
+	</xsd:simpleType>
+	<!-- Action Reason Subject  -->
+	<xsd:simpleType name="StaffingActionReasonSubjects">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="Order"/>
+			<xsd:enumeration value="Position"/>
+			<xsd:enumeration value="Assignment"/>
+			<xsd:enumeration value="Staffing Supplier"/>
+			<xsd:enumeration value="Staffing Customer"/>
+			<xsd:enumeration value="Timecard"/>
+			<xsd:enumeration value="Invoice"/>
+			<xsd:enumeration value="Contract"/>
+			<xsd:enumeration value="Human Resource"/>
+			<xsd:enumeration value="Reporting"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="StaffingActionSubjectType">
+		<xsd:union memberTypes="StaffingActionReasonSubjects xStringPatternExtensionType"/>
+	</xsd:simpleType>
+</xsd:schema>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns="http://ns.hr-xml.org/2007-04-15" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://ns.hr-xml.org/2007-04-15" elementFormDefault="qualified" version="2007-04-15">
+	<xsd:annotation>
+		<xsd:documentation> "Copyright The HR-XML Consortium. All Rights Reserved.
+      http://www.hr-xml.org" Name: Status: Recommendation
+      Terms of license can be found in license.txt. </xsd:documentation>
+	</xsd:annotation>
+	<xsd:include schemaLocation="../../CPO/IdentifierTypes.xsd"/>
+	<xsd:complexType name="DELocalizedPositionClassificationType">
+		<xsd:sequence>
+			<xsd:element name="BKZClassification" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Berufskennziffer (BKZ) is a German occupational classification system.</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="BKZId" type="EntityIdType" minOccurs="0"/>
+						<xsd:element name="BKZName" type="xsd:string" minOccurs="0"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="EducationAuthorization" type="xsd:boolean" minOccurs="0"/>
+			<xsd:element name="HandicapStatus" type="HandicapStatusEnumType" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:simpleType name="HandicapStatusEnumType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="HandicapOnly"/>
+			<xsd:enumeration value="All"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+</xsd:schema>

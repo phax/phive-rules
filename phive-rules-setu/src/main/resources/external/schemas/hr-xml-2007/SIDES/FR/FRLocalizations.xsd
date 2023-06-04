@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://ns.hr-xml.org/2007-04-15" targetNamespace="http://ns.hr-xml.org/2007-04-15" elementFormDefault="qualified" version="2007-04-15">
+	<xsd:include schemaLocation="../../CPO/UserArea.xsd"/>
+	<xsd:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="../../../W3C/xml.xsd"/>
+	<xsd:include schemaLocation="../../CPO/WorkSite.xsd"/>
+	<xsd:annotation>
+		<xsd:documentation>
+"Copyright  The HR-XML Consortium. All Rights Reserved. http://www.hr-xml.org"
+
+Name: FRBankAccountInfoTypes.xsd
+Status: Recommendation
+Date this version: 2007-04-15
+Purpose: 
+Author(s):  SIDES Workgroup
+Documentation:  
+
+2006-July: 
+- Removed FRBankAccountInfo. This is now part of BankAccountInfo schema.
+- AddedFRContractRequirementsType.
+
+Terms of license can be found in license.txt.
+
+
+		</xsd:documentation>
+	</xsd:annotation>
+	<!-- Localized ContractRequirements -->
+	<xsd:complexType name="FRContractRequirementsType">
+		<xsd:sequence>
+			<xsd:element name="WorkSite" type="WorkSiteType" minOccurs="0"/>
+			<xsd:element name="StartStaffingShiftId" type="EntityIdType" minOccurs="0"/>
+			<xsd:element name="ContractLegalReason" minOccurs="0">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="LocalContractType" type="xsd:string"/>
+						<xsd:element name="RecourseType">
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element name="Code" type="xsd:string"/>
+									<xsd:element name="Description" type="xsd:string"/>
+								</xsd:sequence>
+							</xsd:complexType>
+						</xsd:element>
+						<xsd:element name="ContractReason" type="xsd:string"/>
+						<xsd:element name="ReplacedPerson" minOccurs="0">
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element name="PersonName" type="PersonNameType"/>
+									<xsd:element name="Position" type="xsd:string"/>
+								</xsd:sequence>
+							</xsd:complexType>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="CompensationReference" minOccurs="0" maxOccurs="unbounded">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="Code" type="xsd:string"/>
+						<xsd:element name="Description" type="xsd:string"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="SupplierSignature" minOccurs="0">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="WrittenBy" type="PersonNameType"/>
+						<xsd:element name="SignedBy" type="PersonNameType"/>
+						<xsd:element name="Date" type="LocalDateType"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="CustomerSignature" minOccurs="0">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="SignedBy" type="PersonNameType"/>
+						<xsd:element name="Date" type="LocalDateType"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="PositionCharacteristics" minOccurs="0">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="PositionTitle" type="xsd:string"/>
+						<xsd:element name="PositionStatus" minOccurs="0">
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element name="Code" type="xsd:string"/>
+									<xsd:element name="Description" type="xsd:string"/>
+								</xsd:sequence>
+							</xsd:complexType>
+						</xsd:element>
+						<xsd:element name="Description" type="xsd:string" minOccurs="0"/>
+						<xsd:element name="PositionLevel" type="xsd:string" minOccurs="0"/>
+						<xsd:element name="PositionCoefficient" type="xsd:string" minOccurs="0"/>
+						<xsd:element name="PositionSpecificCondition" minOccurs="0" maxOccurs="unbounded">
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element name="ConditionCode" type="xsd:string" minOccurs="0"/>
+									<xsd:element name="ConditionDescription" type="xsd:string" minOccurs="0"/>
+									<xsd:element name="ConditionValue" type="xsd:string" minOccurs="0"/>
+								</xsd:sequence>
+							</xsd:complexType>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element ref="UserArea" minOccurs="0"/>
+		</xsd:sequence>
+		<xsd:attribute ref="xml:lang"/>
+	</xsd:complexType>
+	<xsd:element name="FRContractRequirements" type="FRContractRequirementsType"/>
+</xsd:schema>

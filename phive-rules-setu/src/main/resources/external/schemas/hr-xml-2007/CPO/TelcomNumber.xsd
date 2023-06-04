@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://ns.hr-xml.org/2007-04-15" xmlns="http://ns.hr-xml.org/2007-04-15" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" version="2007-04-15">
+	<xsd:annotation>
+		<xsd:documentation>
+"Copyright  The HR-XML Consortium. All Rights Reserved. http://www.hr-xml.org"
+Name: TelcomNumber.xsd
+Status: Recommendation
+Date this version: 2007-04-15
+Purpose: Schema for Telecommunications data.
+Author(s): Don Simonson, Robert Half Int'l., CPO Workgroup
+Documentation: ContactMethod.html
+
+Terms of license can be found in license.txt.
+
+</xsd:documentation>
+	</xsd:annotation>
+	<xsd:group name="TelcomNumberGroup">
+		<xsd:sequence>
+			<xsd:element ref="InternationalCountryCode" minOccurs="0"/>
+			<xsd:element ref="NationalNumber" minOccurs="0"/>
+			<xsd:element ref="AreaCityCode" minOccurs="0"/>
+			<xsd:element ref="SubscriberNumber"/>
+			<xsd:element ref="Extension" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:group>
+	<xsd:element name="FormattedNumber" type="xsd:string"/>
+	<xsd:element name="InternationalCountryCode" type="xsd:string"/>
+	<xsd:element name="NationalNumber" type="xsd:string"/>
+	<xsd:element name="AreaCityCode" type="xsd:string"/>
+	<xsd:element name="SubscriberNumber" type="xsd:string"/>
+	<xsd:complexType name="TelcomNumberType">
+		<xsd:choice>
+			<xsd:element ref="FormattedNumber"/>
+			<xsd:group ref="TelcomNumberGroup"/>
+		</xsd:choice>
+	</xsd:complexType>
+	<xsd:element name="Extension" type="xsd:string"/>
+	<xsd:element name="Telephone" type="TelcomNumberType"/>
+	<xsd:element name="Mobile" type="MobileTelcomNumberType"/>
+	<xsd:element name="Fax" type="TelcomNumberType"/>
+	<xsd:element name="Pager" type="TelcomNumberType"/>
+	<xsd:element name="TTYTDD" type="TelcomNumberType"/>
+	<xsd:complexType name="MobileTelcomNumberType">
+		<xsd:complexContent>
+			<xsd:extension base="TelcomNumberType">
+				<xsd:attribute name="smsEnabled" type="xsd:boolean" use="optional"/>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="TelcomNumberListType">
+		<xsd:sequence>
+			<xsd:element ref="Telephone" minOccurs="0"/>
+			<xsd:element ref="Mobile" minOccurs="0"/>
+			<xsd:element ref="Fax" minOccurs="0"/>
+			<xsd:element ref="Pager" minOccurs="0"/>
+			<xsd:element ref="TTYTDD" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

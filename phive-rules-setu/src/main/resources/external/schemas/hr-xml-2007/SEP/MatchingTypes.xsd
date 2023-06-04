@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://ns.hr-xml.org/2007-04-15" targetNamespace="http://ns.hr-xml.org/2007-04-15" elementFormDefault="qualified" version="2007-04-15">
+	<xsd:annotation>
+		<xsd:documentation>
+"Copyright  The HR-XML Consortium. All Rights Reserved. http://www.hr-xml.org"
+Name: MatchingTypes.xsd
+Status: Recommendation
+Date this version: 2007-04-15
+Purpose: Defines common objects to be used in SEP posting and seeker.
+Author(s):  Kim Bartkus, Don Simonson, Paul Kiel, Staffing Exchange Protocol Work Group
+Documentation: StaffingExchangeProtocol.html
+
+2005-08-08 Kim Bartkus added percentage attribute to PositionSchedule
+
+Terms of license can be found in license.txt.
+
+</xsd:documentation>
+	</xsd:annotation>
+	<xsd:include schemaLocation="../SEP/PrehireRemunerationPackage.xsd"/>
+	<xsd:include schemaLocation="../CPO/Competencies.xsd"/>
+	<xsd:include schemaLocation="../SEP/SEPPhysicalLocation.xsd"/>
+	<xsd:include schemaLocation="../CPO/WorkSite.xsd"/>
+	<xsd:include schemaLocation="../CPO/xStringPatternExtensionType.xsd"/>
+	<xsd:include schemaLocation="../CPO/TaxonomyTypes.xsd"/>
+	<xsd:include schemaLocation="../CPO/UserArea.xsd"/>
+	<xsd:include schemaLocation="../CPO/SharedStaffingModules.xsd"/>
+	<xsd:include schemaLocation="../SEP/Localizations.xsd"/>
+	<!-- -->
+	<!-- Position Type -->
+	<xsd:complexType name="PositionMatchingType">
+		<xsd:sequence>
+			<xsd:element name="Company" type="EntityReferenceType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="CompanyScale" type="ScaleType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="IndustryCode" type="IndustryCodeType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="PhysicalLocation" type="SEPPhysicalLocationType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="JobCategory" type="OccupationalCategoryType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="PositionTitle" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="PositionClassification" type="StaffingPositionClassificationType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="PositionSchedule" minOccurs="0" maxOccurs="unbounded">
+				<xsd:complexType>
+					<xsd:simpleContent>
+						<xsd:extension base="PositionScheduleType">
+							<xsd:attribute name="percentage" type="xsd:float"/>
+						</xsd:extension>
+					</xsd:simpleContent>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="Shift" type="WorkShiftScheduleType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="Competency" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="RemunerationPackage" type="PrehireRemunerationPackageType" minOccurs="0"/>
+			<xsd:element name="WorkStyle" type="WorkStyleType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="DressCode" type="DressCodeType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="Travel" type="StaffingTravelType" minOccurs="0"/>
+			<xsd:element name="Relocation" type="StaffingRelocationType" minOccurs="0"/>
+			<xsd:element name="PreferredLanguage" type="LanguageCodeType" minOccurs="0"/>
+			<xsd:element name="UserArea" type="UserAreaType" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<!-- Commute -->
+	<xsd:complexType name="CommuteType">
+		<xsd:sequence>
+			<xsd:element name="TimeMax" minOccurs="0">
+				<xsd:complexType>
+					<xsd:simpleContent>
+						<xsd:extension base="xsd:decimal">
+							<xsd:attribute name="unitOfMeasure" type="xsd:string" use="optional"/>
+						</xsd:extension>
+					</xsd:simpleContent>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="DistanceMax" minOccurs="0">
+				<xsd:complexType>
+					<xsd:simpleContent>
+						<xsd:extension base="xsd:decimal">
+							<xsd:attribute name="unitOfMeasure" type="xsd:string" use="optional"/>
+						</xsd:extension>
+					</xsd:simpleContent>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="Comments" type="xsd:string" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<!-- Travel -->
+	<xsd:complexType name="StaffingTravelType">
+		<xsd:choice>
+			<xsd:element name="Applicable" type="xsd:boolean" minOccurs="0"/>
+			<xsd:sequence>
+				<xsd:element name="TravelFrequency" type="xsd:string" minOccurs="0"/>
+				<xsd:element name="TravelConsiderations" type="xsd:string" minOccurs="0"/>
+			</xsd:sequence>
+		</xsd:choice>
+	</xsd:complexType>
+	<!-- Relocate -->
+	<xsd:complexType name="StaffingRelocationType">
+		<xsd:sequence>
+			<xsd:element name="Comments" type="xsd:string" minOccurs="0"/>
+		</xsd:sequence>
+		<xsd:attribute name="relocationConsidered" type="xsd:boolean" use="required"/>
+	</xsd:complexType>
+	<!-- Work Shift Schedule -->
+	<xsd:complexType name="WorkShiftScheduleType">
+		<xsd:sequence>
+			<xsd:element name="Id" type="EntityIdType" minOccurs="0"/>
+			<xsd:element name="Name" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="Hours" type="xsd:decimal" minOccurs="0"/>
+			<xsd:element name="StartTime" type="LocalTimeNkNaType" minOccurs="0"/>
+			<xsd:element name="EndTime" type="LocalTimeNkNaType" minOccurs="0"/>
+			<xsd:element ref="PayTypeHours" minOccurs="0"/>
+			<xsd:element name="Comments" type="xsd:string" minOccurs="0"/>
+		</xsd:sequence>
+		<xsd:attribute name="shiftPeriod" type="ShiftPeriodType" use="optional"/>
+	</xsd:complexType>
+	<!-- shift period type -->
+	<xsd:simpleType name="ShiftPeriodType">
+		<xsd:union memberTypes="BasicShiftPeriodTypes xStringPatternExtensionType"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="BasicShiftPeriodTypes">
+		<xsd:annotation>
+			<xsd:documentation>1 = Monday, 2 = Tuesday, 3 = Wednesday, 4 = Thursday, 5 = Friday, 6 = Saturday, 7 = Sunday</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="On Call"/>
+			<xsd:enumeration value="Annual"/>
+			<xsd:enumeration value="Rostered"/>
+			<xsd:enumeration value="Variable"/>
+			<xsd:enumeration value="Monthly"/>
+			<xsd:enumeration value="Weekly"/>
+			<xsd:enumeration value="Daily"/>
+			<xsd:enumeration value="1"/>
+			<xsd:enumeration value="2"/>
+			<xsd:enumeration value="3"/>
+			<xsd:enumeration value="4"/>
+			<xsd:enumeration value="5"/>
+			<xsd:enumeration value="6"/>
+			<xsd:enumeration value="7"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<!-- Company Scale Types -->
+	<xsd:simpleType name="ScaleType">
+		<xsd:union memberTypes="BasicScaleTypes xStringPatternExtensionType"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="BasicScaleTypes">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="Global"/>
+			<xsd:enumeration value="National"/>
+			<xsd:enumeration value="Regional"/>
+			<xsd:enumeration value="Local"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<!-- Position Classification Types -->
+	<xsd:simpleType name="StaffingPositionClassificationType">
+		<xsd:union memberTypes="BasicPositionClassification xStringPatternExtensionType"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="BasicPositionClassification">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="Direct Hire"/>
+			<xsd:enumeration value="Temp to Hire"/>
+			<xsd:enumeration value="Contract to Hire"/>
+			<xsd:enumeration value="Contract"/>
+			<xsd:enumeration value="Temporary"/>
+			<xsd:enumeration value="Volunteer"/>
+			<xsd:enumeration value="Internship"/>
+			<xsd:enumeration value="Apprenticeship"/>
+			<xsd:enumeration value="On Call"/>
+			<xsd:enumeration value="Remote"/>
+			<xsd:enumeration value="Any"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<!-- Work Style Types -->
+	<xsd:simpleType name="WorkStyleType">
+		<xsd:union memberTypes="BasicWorkStyleTypes xStringPatternExtensionType"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="BasicWorkStyleTypes">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="Independent"/>
+			<xsd:enumeration value="Team"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<!-- Position Schedule Types -->
+	<xsd:simpleType name="PositionScheduleType">
+		<xsd:union memberTypes="BasicScheduleTypes xStringPatternExtensionType"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="BasicScheduleTypes">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="Full Time"/>
+			<xsd:enumeration value="Part Time"/>
+			<xsd:enumeration value="Flex Time"/>
+			<xsd:enumeration value="Seasonal"/>
+			<xsd:enumeration value="Any"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<!-- This element is for display purposes only. It is used to create the schema diagram and definition tables. -->
+	<xsd:element name="PositionMatching" type="PositionMatchingType"/>
+</xsd:schema>

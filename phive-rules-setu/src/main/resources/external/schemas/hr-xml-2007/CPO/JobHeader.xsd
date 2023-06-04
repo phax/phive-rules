@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://ns.hr-xml.org/2007-04-15" xmlns="http://ns.hr-xml.org/2007-04-15" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" version="2007-04-15">
+	<xsd:annotation>
+		<xsd:documentation>
+"Copyright  The HR-XML Consortium. All Rights Reserved. http://www.hr-xml.org"
+Name: JobHeader.xsd
+Status: Recommendation
+Date this version: 2007-04-15
+Purpose: Defines the Schema for Job Description
+Author(s): Brian Salamon, Kim Bartkus, Paul Kiel, J/P Workgroup
+Documentation: JobAndPositionHeader.html
+
+Terms of license can be found in license.txt.
+
+</xsd:documentation>
+	</xsd:annotation>
+	<xsd:include schemaLocation="../CPO/DateTimeDataTypes.xsd"/>
+	<xsd:element name="JobHeader">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="JobId" type="JobIdentifierType"/>
+				<xsd:element ref="JobTitle" minOccurs="0"/>
+				<xsd:element ref="JobDescription" minOccurs="0"/>
+				<xsd:element ref="JobStatus" minOccurs="0"/>
+				<xsd:element ref="JobLevel" minOccurs="0" maxOccurs="unbounded"/>
+				<xsd:element ref="JobCategory" minOccurs="0" maxOccurs="unbounded"/>
+			</xsd:sequence>
+			<xsd:attribute name="validFrom" type="AnyDateTimeType"/>
+			<xsd:attribute name="validTo" type="AnyDateTimeType"/>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="JobStatus">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="Code" type="xsd:string" minOccurs="0"/>
+				<xsd:element name="Description" type="xsd:string" minOccurs="0"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="JobDescription" type="xsd:string"/>
+	<xsd:element name="JobTitle" type="xsd:string"/>
+	<xsd:element name="JobCategory">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="Code" type="xsd:string" minOccurs="0"/>
+				<xsd:element name="Description" type="xsd:string" minOccurs="0"/>
+			</xsd:sequence>
+			<xsd:attribute name="type" type="xsd:string"/>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="JobLevel">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="Code" type="xsd:string" minOccurs="0"/>
+				<xsd:element name="Description" type="xsd:string" minOccurs="0"/>
+				<xsd:element ref="JobLevel" minOccurs="0"/>
+			</xsd:sequence>
+			<xsd:attribute name="type" type="xsd:string"/>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:complexType name="JobIdentifierType">
+		<xsd:sequence>
+			<xsd:element name="Id" type="xsd:string"/>
+			<xsd:element name="Domain" minOccurs="0">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="IdIssuer" type="xsd:string" minOccurs="0"/>
+						<xsd:element name="IdType" type="xsd:string" minOccurs="0"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

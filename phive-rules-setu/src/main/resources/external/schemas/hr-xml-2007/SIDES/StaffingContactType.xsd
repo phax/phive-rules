@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2005 sp1 U (http://www.xmlspy.com) by Kim Bartkus (private) -->
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://ns.hr-xml.org/2007-04-15" targetNamespace="http://ns.hr-xml.org/2007-04-15" elementFormDefault="qualified" version="2007-04-15">
+	<xsd:annotation>
+		<xsd:documentation>
+"Copyright  The HR-XML Consortium. All Rights Reserved. http://www.hr-xml.org"
+Name: StaffingContactType.xsd
+Status: Recommendation
+Date this version: 2007-04-15
+Purpose: Defines the StaffingContactType Schema
+Author(s):  SIDES Workgroup
+Documentation: SIDESReusableModules.html
+
+2006-July: Added 'first day contact', ' customer complaints', 'supplier manager', 'supplier complaints', and 'deputy time approver' enumerations to KnownContactType.
+
+Terms of license can be found in license.txt.
+
+</xsd:documentation>
+	</xsd:annotation>
+	<xsd:include schemaLocation="../CPO/xStringPatternExtensionType.xsd"/>
+	<xsd:simpleType name="KnownContactType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="placed by"/>
+			<xsd:enumeration value="placed on behalf of"/>
+			<xsd:enumeration value="confirm to"/>
+			<xsd:enumeration value="authorized by"/>
+			<xsd:enumeration value="interviewer"/>
+			<xsd:enumeration value="supervisor"/>
+			<xsd:enumeration value="time approver"/>
+			<xsd:enumeration value="submitted by"/>
+			<xsd:enumeration value="created by"/>
+			<xsd:enumeration value="sent to"/>
+			<xsd:enumeration value="first day contact"/>
+			<xsd:enumeration value="customer complaints"/>
+			<xsd:enumeration value="supplier manager"/>
+			<xsd:enumeration value="supplier complaints"/>
+			<xsd:enumeration value="deputy time approver"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="StaffingContactType">
+		<xsd:union memberTypes="KnownContactType xsd:string"/>
+	</xsd:simpleType>
+</xsd:schema>

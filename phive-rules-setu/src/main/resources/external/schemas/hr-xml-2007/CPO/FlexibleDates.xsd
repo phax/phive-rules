@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://ns.hr-xml.org/2007-04-15" xmlns="http://ns.hr-xml.org/2007-04-15" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" version="2007-04-15">
+	<xsd:annotation>
+		<xsd:documentation>
+Copyright  The HR-XML Consortium. All Rights Reserved. http://www.hr-xml.org
+Name: FlexibleDates.xsd
+Status: Recommendation
+Date this version: 2007-04-15
+Purpose: Defines Flexible Dates construct.  
+Author(s): Mark Marsden, Don Simonson, Paul Kiel, Cross Process Work Group
+Documentation: 
+
+Terms of license can be found in license.txt.
+
+</xsd:documentation>
+	</xsd:annotation>
+	<xsd:include schemaLocation="../CPO/DateTimeDataTypes.xsd"/>
+	<!--  ====================  flexible dates ==============================  -->
+	<xsd:simpleType name="AnyLocalYearMonthDateType">
+		<xsd:union memberTypes="AnyLocalDateYearMonthDayType AnyLocalDateYearMonthType AnyLocalDateYearType"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="AnyLocalDateYearMonthDayType">
+		<xsd:restriction base="xsd:date"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="AnyLocalDateYearMonthType">
+		<xsd:restriction base="xsd:gYearMonth"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="AnyLocalDateYearType">
+		<xsd:restriction base="xsd:gYear"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="AnyLocalYearMonthDateNkType">
+		<xsd:union memberTypes="NotKnownLiteral AnyLocalDateYearMonthDayType AnyLocalDateYearMonthType AnyLocalDateYearType"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="AnyLocalYearMonthDateNaType">
+		<xsd:union memberTypes="NotApplicableLiteral AnyLocalDateYearMonthDayType AnyLocalDateYearMonthType AnyLocalDateYearType"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="AnyLocalYearMonthDateNkNaType">
+		<xsd:union memberTypes="NotKnownLiteral NotApplicableLiteral AnyLocalDateYearMonthDayType AnyLocalDateYearMonthType AnyLocalDateYearType"/>
+	</xsd:simpleType>
+	<xsd:complexType name="FlexibleDatesType">
+		<xsd:choice>
+			<xsd:element name="AnyDate" type="AnyDateTimeNkNaType"/>
+			<xsd:element name="YearMonth" type="xsd:gYearMonth"/>
+			<xsd:element name="Year" type="xsd:gYear"/>
+			<xsd:element name="MonthDay" type="xsd:gMonthDay"/>
+			<xsd:element name="StringDate" type="xsd:string"/>
+		</xsd:choice>
+		<xsd:attribute name="dateDescription" type="xsd:string"/>
+	</xsd:complexType>
+</xsd:schema>

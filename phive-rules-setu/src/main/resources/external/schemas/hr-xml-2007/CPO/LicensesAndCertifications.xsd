@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://ns.hr-xml.org/2007-04-15" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://ns.hr-xml.org/2007-04-15" elementFormDefault="qualified" version="2007-04-15">
+	<xsd:annotation>
+		<xsd:documentation>
+"Copyright  The HR-XML Consortium. All Rights Reserved. http://www.hr-xml.org"
+Status: Recommendation
+Date this version: 2007-04-15
+Purpose: Defines common objects shared by Recruiting, SIDES, and Screening.
+Author(s):  Kim Bartkus, Paul Kiel
+
+Terms of license can be found in license.txt.
+
+		</xsd:documentation>
+	</xsd:annotation>
+	<xsd:include schemaLocation="../CPO/IdentifierTypes.xsd"/>
+	<xsd:include schemaLocation="../CPO/FlexibleDates.xsd"/>
+	<xsd:include schemaLocation="../CPO/ISOUtilities.xsd"/>
+	<xsd:include schemaLocation="../CPO/xStringPatternExtensionType.xsd"/>
+	<xsd:element name="LicensesAndCertifications">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="LicenseOrCertification" maxOccurs="unbounded"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="LicenseOrCertification" type="CredentialType"/>
+	<xsd:element name="SecurityCredentials">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="SecurityCredential" maxOccurs="unbounded"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="SecurityCredential" type="CredentialType"/>
+	<xsd:complexType name="CredentialType">
+		<xsd:sequence>
+			<xsd:element name="Name" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>The name of license or certification.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Id" type="xsd:string" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>An identifer for the credential.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="IssuingAuthority" type="IssuingAuthorityType" minOccurs="0"/>
+			<xsd:element name="Description" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="EffectiveDate" minOccurs="0">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="ValidFrom" type="FlexibleDatesType" minOccurs="0"/>
+						<xsd:element name="ValidTo" type="FlexibleDatesType" minOccurs="0"/>
+						<xsd:element name="FirstIssuedDate" type="FlexibleDatesType" minOccurs="0"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<!-- issuing authority  type -->
+	<xsd:complexType name="IssuingAuthorityType">
+		<xsd:simpleContent>
+			<xsd:extension base="xsd:string">
+				<xsd:attribute name="countryCode" type="CountryCodeType"/>
+			</xsd:extension>
+		</xsd:simpleContent>
+	</xsd:complexType>
+</xsd:schema>

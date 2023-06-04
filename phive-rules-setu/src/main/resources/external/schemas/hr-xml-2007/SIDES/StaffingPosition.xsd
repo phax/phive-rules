@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2005 sp1 U (http://www.xmlspy.com) by Kim Bartkus (private) -->
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://ns.hr-xml.org/2007-04-15" targetNamespace="http://ns.hr-xml.org/2007-04-15" elementFormDefault="qualified" version="2007-04-15">
+	<xsd:annotation>
+		<xsd:documentation>
+"Copyright The HR-XML Consortium. All Rights Reserved. http://www.hr-xml.org" 
+
+Name: StaffingPosition.xsd 
+Status: CandidateRecommendation 
+Date this version: 2007-04-15
+Purpose: Defines the StaffingPosition Schema 
+Author(s): SIDES Workgroup 
+Documentation: StaffingPosition.html 
+
+2006-July:
+- Added PositionDuration to PositionDateRange.
+- Added ExtensionParameters to PositionDateRange.
+- Added InvoiceInfo.
+- Changed PositionHeader element to use StaffingPositionHeaderType.
+
+2004-May: Made changes and additions based on global SIDES feedback. See scope section in StaffingPosition.doc for details. 
+An optional attribute xml:lang was added to the root element.
+
+Terms of license can be found in license.txt.
+		
+		</xsd:documentation>
+	</xsd:annotation>
+	<xsd:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="../../W3C/xml.xsd"/>
+	<xsd:include schemaLocation="../CPO/Competencies.xsd"/>
+	<xsd:include schemaLocation="../SIDES/StaffingPositionHeader.xsd"/>
+	<xsd:include schemaLocation="../SIDES/StaffingWorkSite.xsd"/>
+	<xsd:include schemaLocation="../SIDES/StaffingWorkSiteEnvironment.xsd"/>
+	<xsd:include schemaLocation="../SIDES/Rates.xsd"/>
+	<xsd:include schemaLocation="../SIDES/StaffingShift.xsd"/>
+	<xsd:include schemaLocation="../SIDES/ContactInfo.xsd"/>
+	<xsd:include schemaLocation="../SIDES/CustomerReportingRequirements.xsd"/>
+	<xsd:include schemaLocation="../SIDES/ResourceScreening.xsd"/>
+	<xsd:include schemaLocation="../SIDES/StaffingContactType.xsd"/>
+	<xsd:include schemaLocation="../CPO/FlexibleDates.xsd"/>
+	<xsd:include schemaLocation="../CPO/Frequencies.xsd"/>
+	<xsd:element name="StaffingPosition" type="StaffingPositionType"/>
+	<xsd:complexType name="StaffingPositionType">
+		<xsd:sequence>
+			<xsd:element name="PositionHeader" type="StaffingPositionHeaderType"/>
+			<xsd:element ref="CustomerReportingRequirements"/>
+			<xsd:element name="DepartmentName" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="PositionReason" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="PositionDateRange">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="StartDate" type="AnyDateTimeType"/>
+						<xsd:element name="ExpectedEndDate" type="AnyDateTimeNkType" minOccurs="0"/>
+						<xsd:element name="ActualEndDate" type="AnyDateTimeNaType" minOccurs="0"/>
+						<xsd:element name="MaxStartDate" type="FlexibleDatesType" minOccurs="0"/>
+						<xsd:element name="StartAsSoonAsPossible" type="xsd:boolean" minOccurs="0"/>
+						<xsd:element name="MaxNeedEndDate" type="FlexibleDatesType" minOccurs="0"/>
+						<xsd:element name="PositionDuration" minOccurs="0">
+							<xsd:complexType>
+								<xsd:simpleContent>
+									<xsd:extension base="xsd:decimal">
+										<xsd:attribute name="unitOfTime" type="xsd:string" use="required"/>
+									</xsd:extension>
+								</xsd:simpleContent>
+							</xsd:complexType>
+						</xsd:element>
+						<xsd:element name="ExtensionParameters" minOccurs="0">
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element name="AllowExtension" type="xsd:boolean" minOccurs="0"/>
+									<xsd:element name="ExtensionPeriod" minOccurs="0">
+										<xsd:complexType>
+											<xsd:simpleContent>
+												<xsd:extension base="xsd:decimal">
+													<xsd:attribute name="unitOfTime" type="xsd:string" use="required"/>
+												</xsd:extension>
+											</xsd:simpleContent>
+										</xsd:complexType>
+									</xsd:element>
+									<xsd:element name="Description" type="xsd:string" minOccurs="0"/>
+								</xsd:sequence>
+							</xsd:complexType>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="ReportToPerson" minOccurs="0">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element ref="ContactInfo"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="PositionContact" minOccurs="0" maxOccurs="unbounded">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element ref="ContactInfo"/>
+					</xsd:sequence>
+					<xsd:attribute name="contactType" type="StaffingContactType" use="optional"/>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element ref="Rates" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="WorkSite" type="StaffingWorkSiteType"/>
+			<xsd:element name="WorkSiteEnvironment" type="StaffingWorkSiteEnvironmentType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="StaffingShift" maxOccurs="unbounded"/>
+			<xsd:element name="PositionRequirements" minOccurs="0">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element ref="Competency" minOccurs="0" maxOccurs="unbounded"/>
+						<xsd:element name="ScreeningRequirements" minOccurs="0" maxOccurs="unbounded">
+							<xsd:complexType>
+								<xsd:attribute name="screeningType" type="StaffingScreeningType" use="optional"/>
+							</xsd:complexType>
+						</xsd:element>
+					</xsd:sequence>
+					<xsd:attribute name="resumeRequired" type="xsd:boolean" use="required"/>
+					<xsd:attribute name="interviewRequired" type="xsd:boolean" use="required"/>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="InvoiceInfo" minOccurs="0">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="Description" type="xsd:string" minOccurs="0"/>
+						<xsd:element name="FourHourMinimum" type="xsd:boolean" minOccurs="0"/>
+						<xsd:element name="ExpenseReimbursed" type="xsd:boolean" minOccurs="0"/>
+						<xsd:element name="InvoiceFrequency" type="FrequencyType" minOccurs="0" maxOccurs="unbounded"/>
+						<xsd:element name="TimePeriodClosingDateInfo" type="DateChoiceType" minOccurs="0" maxOccurs="unbounded"/>
+						<xsd:element name="ClosingDateInfo" type="DateChoiceType" minOccurs="0" maxOccurs="unbounded"/>
+						<xsd:element name="ArrivalDateInfo" type="DateChoiceType" minOccurs="0" maxOccurs="unbounded"/>
+						<xsd:element name="PaymentDateInfo" type="DateChoiceType" minOccurs="0" maxOccurs="unbounded"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+		<xsd:attribute ref="xml:lang"/>
+	</xsd:complexType>
+	<xsd:complexType name="DateChoiceType">
+		<xsd:choice>
+			<xsd:element name="Date" type="xsd:date" minOccurs="0"/>
+			<xsd:element name="DateString" type="xsd:string" minOccurs="0"/>
+		</xsd:choice>
+	</xsd:complexType>
+</xsd:schema>

@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2005 sp1 U (http://www.xmlspy.com) by Kim Bartkus (private) -->
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://ns.hr-xml.org/2007-04-15" targetNamespace="http://ns.hr-xml.org/2007-04-15" elementFormDefault="qualified" version="2007-04-15">
+    <!-- The following includes are added because there is a bug in validateschema function of eValidator (i.e. only the first import statement is loaded). Workaround is added includes (not import) here in the hr-xml namespace -->
+    <xsd:include schemaLocation="StaffingShift.xsd"/>
+	<xsd:include schemaLocation="CustomerReportingRequirements.xsd"/>
+	<xsd:include schemaLocation="../CPO/EntityIdType.xsd"/>
+	<xsd:include schemaLocation="ContactInfo.xsd"/>
+    
+	<xsd:annotation>
+		<xsd:documentation>
+"Copyright The HR-XML Consortium. All Rights Reserved. http://www.hr-xml.org" 
+
+Name: HumanResource.xsd 
+Status: Recommendation 
+Date this version: 2007-04-15
+Purpose: Defines the HumanResource Schema 
+Author(s): SIDES Workgroup 
+Documentation: HumanResource.html 
+
+2006-July:
+- Added Reference Id's to match other SIDES schema: MasterOrderId, TimeCardId, InvoiceId, and BillToEntityId.
+- Added staffing information to PositionHeader. 
+- Added Social Insurance structure. 
+
+2004-June: The AvailabilityDate was corrected to remove an ambiguous content model.  The unbounded xsd:choice was replaced with a simple xsd:sequence. In order to allow for multiple AvailabilityStartDate and AvailabilityEndDate, the parent element itself, AvailabilityDate, was made repeatable.   
+
+This is a technically non-backwards compatible bug fix.  However, if all three elements are used with no more than a single occurrence, then it is backwardly compatible.  It is only with multiple occurrences that compatibility becomes a problem.
+
+Previous structure with ambiguous content model:
+
+						xsd:element name="AvailabilityDate" minOccurs="0"
+							xsd:complexType
+								xsd:choice maxOccurs="unbounded"
+									xsd:element name="AvailabilityStartDate" type="AnyDateTimeNkType"/
+									xsd:element name="AvailabilityEndDate" type="AnyDateTimeNkType"/
+								/xsd:choice
+							/xsd:complexType
+						/xsd:element
+
+New structure:
+						xsd:element name="AvailabilityDate" minOccurs="0" maxOccurs="unbounded"
+							xsd:complexType
+								xsd:sequence
+									xsd:element name="AvailabilityStartDate" type="AnyDateTimeNkType"/
+									xsd:element name="AvailabilityEndDate" type="AnyDateTimeNkType" minOccurs="0"/
+								/xsd:sequence
+							/xsd:complexType
+						/xsd:element
+
+2004-May: Made changes and additions based on global SIDES feedback. See scope section in HumanResource.doc for details. 
+
+Terms of license can be found in license.txt.
+
+</xsd:documentation>
+	</xsd:annotation>
+	<xsd:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="../../W3C/xml.xsd"/>
+	<xsd:include schemaLocation="../SEP/Resume.xsd"/>
+	<xsd:include schemaLocation="../SIDES/Rates.xsd"/>
+	<xsd:include schemaLocation="../SIDES/ContactInfo.xsd"/>
+	<xsd:include schemaLocation="../SIDES/ResourceScreening.xsd"/>
+	<xsd:include schemaLocation="../SIDES/StaffingPositionHeader.xsd"/>
+	<xsd:include schemaLocation="../SIDES/Localizations.xsd"/>
+	<xsd:complexType name="HumanResourceType">
+		<xsd:sequence>
+			<xsd:element name="HumanResourceId" type="EntityIdType" maxOccurs="unbounded"/>
+			<xsd:element name="HumanResourceStatus">
+				<xsd:complexType>
+					<xsd:attribute name="status" type="StatusType" use="required"/>
+					<xsd:attribute name="statusChangeReason" type="xsd:string" use="optional"/>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="ReferenceInformation">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="StaffingSupplierId" type="EntityIdType" maxOccurs="unbounded"/>
+						<xsd:element name="StaffingCustomerId" type="EntityIdType" maxOccurs="unbounded"/>
+						<xsd:element name="IntermediaryId" type="EntityIdType" minOccurs="0" maxOccurs="unbounded"/>
+						<xsd:element name="OrderId" type="EntityIdType" minOccurs="0" maxOccurs="unbounded"/>
+						<xsd:element name="PositionId" type="EntityIdType" minOccurs="0" maxOccurs="unbounded"/>
+						<xsd:element name="AssignmentId" type="EntityIdType" minOccurs="0" maxOccurs="unbounded"/>
+						<xsd:element name="StaffingSupplierOrgUnitId" type="EntityIdType" minOccurs="0" maxOccurs="unbounded"/>
+						<xsd:element name="StaffingCustomerOrgUnitId" type="EntityIdType" minOccurs="0" maxOccurs="unbounded"/>
+						<xsd:element name="MasterOrderId" type="EntityIdType" minOccurs="0" maxOccurs="unbounded"/>
+						<xsd:element name="TimeCardId" type="EntityIdType" minOccurs="0" maxOccurs="unbounded"/>
+						<xsd:element name="InvoiceId" type="EntityIdType" minOccurs="0" maxOccurs="unbounded"/>
+						<xsd:element name="BillToEntityId" type="EntityIdType" minOccurs="0" maxOccurs="unbounded"/>
+						<xsd:element name="StaffingOrganizationId" type="EntityIdType" minOccurs="0" maxOccurs="unbounded"/>
+						<xsd:element ref="UserArea" minOccurs="0"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="ResourceInformation">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="ResourceType" minOccurs="0">
+							<xsd:complexType>
+								<xsd:attribute name="independentContractor" type="xsd:boolean" use="required"/>
+								<xsd:attribute name="payrolledEmployee" type="xsd:boolean" use="required"/>
+							</xsd:complexType>
+						</xsd:element>
+						<xsd:element ref="PersonName"/>
+						<xsd:element ref="EntityContactInfo"/>
+						<xsd:element ref="PostalAddress" minOccurs="0"/>
+						<xsd:element name="AvailabilityDate" minOccurs="0" maxOccurs="unbounded">
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element name="AvailabilityStartDate" type="AnyDateTimeNkType"/>
+									<xsd:element name="AvailabilityEndDate" type="AnyDateTimeNkType" minOccurs="0"/>
+								</xsd:sequence>
+							</xsd:complexType>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element ref="Rates" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="Profile">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element ref="Competency" minOccurs="0" maxOccurs="unbounded"/>
+						<xsd:element ref="Resume" minOccurs="0"/>
+						<xsd:element name="PositionHeader" type="StaffingPositionHeaderType" minOccurs="0" maxOccurs="unbounded"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element ref="ResourceScreening" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="Preferences">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="DesiredShift" minOccurs="0">
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element name="ShiftName" type="xsd:string" minOccurs="0"/>
+									<xsd:element name="ShiftHours" type="xsd:decimal" minOccurs="0"/>
+									<xsd:element name="ShiftStartTime" type="LocalTimeNkNaType" minOccurs="0"/>
+									<xsd:element name="ShiftEndTime" type="LocalTimeNkNaType" minOccurs="0"/>
+									<xsd:element name="ShiftComments" type="xsd:string" minOccurs="0"/>
+								</xsd:sequence>
+							</xsd:complexType>
+						</xsd:element>
+						<xsd:element name="Travel" minOccurs="0">
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element name="PercentageTravel" type="xsd:string" minOccurs="0"/>
+									<xsd:element name="TravelConsiderations" type="xsd:string" minOccurs="0"/>
+								</xsd:sequence>
+								<xsd:attribute name="willingToTravel" type="xsd:boolean" use="required"/>
+							</xsd:complexType>
+						</xsd:element>
+						<xsd:element name="Commute" minOccurs="0">
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element name="TimeMax" type="xsd:string" minOccurs="0"/>
+									<xsd:element name="DistanceMax" type="xsd:string" minOccurs="0"/>
+									<xsd:element name="CommuteComments" type="xsd:string" minOccurs="0"/>
+								</xsd:sequence>
+							</xsd:complexType>
+						</xsd:element>
+						<xsd:element name="Relocation" minOccurs="0">
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element name="RelocationComments" type="xsd:string" minOccurs="0"/>
+								</xsd:sequence>
+								<xsd:attribute name="willingToRelocate" type="xsd:boolean" use="required"/>
+							</xsd:complexType>
+						</xsd:element>
+						<xsd:element name="DistributionRestrictions" minOccurs="0">
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element name="DoNotDistributeTo" type="xsd:string" maxOccurs="unbounded"/>
+								</xsd:sequence>
+							</xsd:complexType>
+						</xsd:element>
+						<xsd:element name="DesiredCompensation" minOccurs="0">
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element name="CompensationAmount">
+										<xsd:complexType>
+											<xsd:simpleContent>
+												<xsd:extension base="xsd:string">
+													<xsd:attribute name="currency" use="required">
+														<xsd:simpleType>
+															<xsd:restriction base="xsd:string">
+																<xsd:pattern value="[A-Z][A-Z][A-Z]"/>
+															</xsd:restriction>
+														</xsd:simpleType>
+													</xsd:attribute>
+													<xsd:attribute name="amountPeriod" type="AmountPeriodType" use="optional"/>
+												</xsd:extension>
+											</xsd:simpleContent>
+										</xsd:complexType>
+									</xsd:element>
+									<xsd:element name="CompensationComments" type="xsd:string" minOccurs="0"/>
+								</xsd:sequence>
+							</xsd:complexType>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="HumanResourceComments" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="SocialInsurance" minOccurs="0" maxOccurs="unbounded">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="Type" type="SocialInsuranceTypeType"/>
+						<xsd:element name="IsParticipating" type="xsd:boolean"/>
+						<xsd:element name="ReasonForNotParticipating" type="xsd:string" minOccurs="0"/>
+						<xsd:element name="LegalDescription" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element ref="UserArea" minOccurs="0"/>
+		</xsd:sequence>
+		<xsd:attribute ref="xml:lang"/>
+	</xsd:complexType>
+	<xsd:element name="HumanResource" type="HumanResourceType"/>
+	<xsd:simpleType name="KnownStatusType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="new"/>
+			<xsd:enumeration value="revised"/>
+			<xsd:enumeration value="rejected"/>
+			<xsd:enumeration value="accepted"/>
+			<xsd:enumeration value="withdrawn"/>
+			<xsd:enumeration value="suspended"/>
+			<xsd:enumeration value="pending"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:complexType name="SocialInsuranceTypeType">
+		<xsd:choice>
+			<xsd:element name="StandardValue" type="SocialInsuranceEnumType" minOccurs="0"/>
+			<xsd:element name="NonStandardValue" type="xsd:string" minOccurs="0"/>
+		</xsd:choice>
+	</xsd:complexType>
+	<xsd:simpleType name="SocialInsuranceEnumType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="Health"/>
+			<xsd:enumeration value="WelfarePension"/>
+			<xsd:enumeration value="UnemploymentInsurance"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="StatusType">
+		<xsd:union memberTypes="KnownStatusType xStringPatternExtensionType"/>
+	</xsd:simpleType>
+</xsd:schema>

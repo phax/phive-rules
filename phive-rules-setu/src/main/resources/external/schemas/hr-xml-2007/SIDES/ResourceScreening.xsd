@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://ns.hr-xml.org/2007-04-15" targetNamespace="http://ns.hr-xml.org/2007-04-15" elementFormDefault="qualified" version="2007-04-15">
+	<xsd:annotation>
+		<xsd:documentation>
+"Copyright  The HR-XML Consortium. All Rights Reserved. http://www.hr-xml.org"
+Name: ResourceScreening.xsd
+Status: Recommendation
+Date this version: 2007-04-15
+Purpose: Defines the ResourceScreening Schema
+Author(s):  SIDES Workgroup
+Documentation: SIDESReusableModules.html
+
+Terms of license can be found in license.txt.
+
+2004-07-06: An optional attribute xml:lang was added to the root element.
+		
+		</xsd:documentation>
+	</xsd:annotation>
+	<xsd:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="../../W3C/xml.xsd"/>
+	<xsd:include schemaLocation="../SIDES/StaffingContactType.xsd"/>
+	<xsd:include schemaLocation="../CPO/xStringPatternExtensionType.xsd"/>
+	<xsd:include schemaLocation="../CPO/DateTimeDataTypes.xsd"/>
+	<xsd:complexType name="ResourceScreeningType">
+		<xsd:sequence>
+			<xsd:element name="ScreeningResultDate" type="AnyDateTimeType"/>
+			<xsd:element name="ScreeningResult" type="xsd:string"/>
+			<xsd:element name="ScreeningComments" type="xsd:string" minOccurs="0"/>
+		</xsd:sequence>
+		<xsd:attribute name="screeningType" type="StaffingScreeningType" use="required"/>
+		<xsd:attribute ref="xml:lang"/>
+	</xsd:complexType>
+	<xsd:element name="ResourceScreening" type="ResourceScreeningType"/>
+	<xsd:simpleType name="KnownScreeningType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="abuse"/>
+			<xsd:enumeration value="address"/>
+			<xsd:enumeration value="awards"/>
+			<xsd:enumeration value="credit"/>
+			<xsd:enumeration value="criminal"/>
+			<xsd:enumeration value="drug"/>
+			<xsd:enumeration value="earnings"/>
+			<xsd:enumeration value="education"/>
+			<xsd:enumeration value="employment"/>
+			<xsd:enumeration value="license"/>
+			<xsd:enumeration value="name"/>
+			<xsd:enumeration value="phone"/>
+			<xsd:enumeration value="reference"/>
+			<xsd:enumeration value="workcomp"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="StaffingScreeningType">
+		<xsd:union memberTypes="KnownScreeningType xsd:string"/>
+	</xsd:simpleType>
+</xsd:schema>

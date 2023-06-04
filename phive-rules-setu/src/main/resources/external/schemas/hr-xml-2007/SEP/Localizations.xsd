@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns="http://ns.hr-xml.org/2007-04-15" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://ns.hr-xml.org/2007-04-15" elementFormDefault="qualified" version="2007-04-15">
+	<xsd:annotation>
+		<xsd:documentation>
+"Copyright  The HR-XML Consortium. All Rights Reserved. http://www.hr-xml.org"
+Name: Localizations.xsd
+Status: Recommendation
+Date this version: 2007-04-15
+Purpose: 
+Author(s): 
+Documentation: 
+
+Terms of license can be found in license.txt.
+
+This schema serves two functions.  First, it is a "hook" to connect the main, international schema(s) to all localized content including region specific components.  Second, if there are localizations that are universal (meaning that a concept is used everywhere, but used differently everywhere) then those common definitions can be used here, with region specific material included as an xsd:include.
+
+</xsd:documentation>
+	</xsd:annotation>
+	<xsd:include schemaLocation="../SEP/DE/DELocalizations.xsd"/>
+	<xsd:include schemaLocation="../SEP/US/USLocalizations.xsd"/>
+	<xsd:complexType name="LocalizedPositionClassificationType">
+		<xsd:choice>
+			<xsd:element name="USClassification" type="USLocalizedPositionClassificationType"/>
+			<xsd:element name="DEClassification" type="DELocalizedPositionClassificationType"/>
+		</xsd:choice>
+	</xsd:complexType>
+	<xsd:element name="PayTypeHours" type="USPayTypeHoursType"/>
+</xsd:schema>

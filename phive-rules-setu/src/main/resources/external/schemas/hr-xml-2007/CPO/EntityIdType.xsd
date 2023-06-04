@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://ns.hr-xml.org/2007-04-15" xmlns="http://ns.hr-xml.org/2007-04-15" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" version="2007-04-15">
+	<xsd:annotation>
+		<xsd:documentation>
+"Copyright  The HR-XML Consortium. All Rights Reserved. http://www.hr-xml.org"
+Name: EntityIdType.xsd
+Status: Recommendation
+Date this version: 2007-04-15
+Purpose: Defines XSD for Entity Identifiers
+Editor: Karl Brophey, Kim Bartkus,  CPO Workgroup
+Documentation: EntityIdentifiers.html (IdentifierTypes.html)
+
+Terms of license can be found in license.txt.
+
+</xsd:documentation>
+	</xsd:annotation>
+	<xsd:include schemaLocation="../CPO/DateTimeDataTypes.xsd"/>
+	<xsd:complexType name="EntityIdType">
+		<xsd:sequence>
+			<xsd:element name="IdValue" maxOccurs="unbounded">
+				<xsd:complexType>
+					<xsd:simpleContent>
+						<xsd:extension base="xsd:string">
+							<xsd:attribute name="name" type="xsd:string" use="optional"/>
+						</xsd:extension>
+					</xsd:simpleContent>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+		<xsd:attribute name="validFrom" type="AnyDateTimeNkNaType" use="optional"/>
+		<xsd:attribute name="validTo" type="AnyDateTimeNkNaType" use="optional"/>
+		<xsd:attribute name="idOwner" type="xsd:string" use="optional"/>
+	</xsd:complexType>
+</xsd:schema>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://ns.hr-xml.org/2007-04-15" xmlns="http://ns.hr-xml.org/2007-04-15" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" version="2007-04-15">
+	<xsd:annotation>
+		<xsd:documentation>
+"Copyright  The HR-XML Consortium. All Rights Reserved. http://www.hr-xml.org"
+Name: MilitaryHistory.xsd
+Status: Recommendation
+Date this version: 2007-04-15
+Purpose: Defines the MilitaryHistory Schema
+Author(s):  
+Documentation: MilitaryHistory.html
+
+Terms of license can be found in license.txt.
+
+</xsd:documentation>
+	</xsd:annotation>
+	<xsd:include schemaLocation="../CPO/DateTimeDataTypes.xsd"/>
+	<xsd:include schemaLocation="../CPO/ISOUtilities.xsd"/>
+	<xsd:include schemaLocation="../CPO/IdentifierTypes.xsd"/>
+	<xsd:include schemaLocation="../CPO/UserArea.xsd"/>
+	<xsd:include schemaLocation="../CPO/FlexibleDates.xsd"/>
+	<xsd:element name="MilitaryHistory" type="MilitaryHistoryType"/>
+	<xsd:complexType name="MilitaryHistoryType">
+		<xsd:sequence>
+			<xsd:element name="CountryServed" type="CountryCodeType"/>
+			<xsd:element name="ServiceNumber" type="EntityIdType" minOccurs="0"/>
+			<xsd:element name="ServiceDetail" minOccurs="0" maxOccurs="unbounded">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="UnitOrDivision" type="xsd:string" minOccurs="0"/>
+						<xsd:element name="RankAchieved" type="RankAchievedType" minOccurs="0"/>
+						<xsd:element name="DatesOfService" type="DatesOfServiceType"/>
+						<xsd:element name="Campaign" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+						<xsd:element name="AreaOfExpertise" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+						<xsd:element name="RecognitionAchieved" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+						<xsd:element name="DisciplinaryAction" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+						<xsd:element name="DischargeStatus" type="xsd:string" minOccurs="0"/>
+						<xsd:element ref="UserArea" minOccurs="0"/>
+					</xsd:sequence>
+					<xsd:attribute name="branch" type="xsd:string" use="required"/>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="ServiceStatus" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="Comments" type="xsd:string" minOccurs="0"/>
+			<xsd:element ref="UserArea" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="RankAchievedType">
+		<xsd:sequence>
+			<xsd:element name="StartRank" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="CurrentOrEndRank" type="xsd:string" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="DatesOfServiceType">
+		<xsd:sequence>
+			<xsd:element name="StartDate" type="FlexibleDatesType"/>
+			<xsd:element name="EndDate" type="FlexibleDatesType" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

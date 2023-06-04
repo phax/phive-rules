@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2005 sp1 U (http://www.xmlspy.com) by Kim Bartkus (private) -->
+<xsd:schema xmlns="http://ns.hr-xml.org/2007-04-15" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://ns.hr-xml.org/2007-04-15" elementFormDefault="qualified" version="2007-04-15">
+    <xsd:include schemaLocation="StaffingWorkSite.xsd"/>
+	<xsd:annotation>
+		<xsd:documentation>
+"Copyright The HR-XML Consortium. All Rights Reserved. http://www.hr-xml.org" 
+
+Name: Assignment.xsd 
+Status: Recommendation
+Date this version: 2007-04-15
+Purpose: Defines the Assignment Schema 
+Author(s): SIDES Workgroup 
+Documentation: Assignment.html 
+
+2006-July:
+ - Added Reference Id's to match other SIDES schemas: MasterOrderId, TimeCardId, InvoiceId.
+ - Added EffectiveDate to ContractInformation.
+ - Changed LocalContractRequirements to localized structure.
+ - Added JPContractRequirements. 
+ 
+2004-May: Made changes and additions based on global SIDES feedback. See scope section in Assignment.doc for details. 
+
+Terms of license can be found in license.txt.
+
+</xsd:documentation>
+	</xsd:annotation>
+	<xsd:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="../../W3C/xml.xsd"/>
+	<xsd:include schemaLocation="../SIDES/CustomerReportingRequirements.xsd"/>
+	<xsd:include schemaLocation="../SIDES/StaffingShift.xsd"/>
+	<xsd:include schemaLocation="../SIDES/Rates.xsd"/>
+	<xsd:include schemaLocation="../CPO/UserArea.xsd"/>
+	<xsd:include schemaLocation="../SIDES/ContactInfo.xsd"/>
+	<xsd:complexType name="AssignmentType">
+		<xsd:sequence>
+			<xsd:element name="AssignmentId" type="EntityIdType" maxOccurs="unbounded"/>
+			<xsd:element name="ReferenceInformation">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="StaffingCustomerId" type="EntityIdType" maxOccurs="unbounded"/>
+						<xsd:element name="StaffingCustomerOrgUnitId" type="EntityIdType" minOccurs="0" maxOccurs="unbounded"/>
+						<xsd:element name="OrderId" type="EntityIdType" minOccurs="0" maxOccurs="unbounded"/>
+						<xsd:element name="HumanResourceId" type="EntityIdType" maxOccurs="unbounded"/>
+						<xsd:element name="IntermediaryId" type="EntityIdType" minOccurs="0" maxOccurs="unbounded"/>
+						<xsd:element name="PositionId" type="EntityIdType" maxOccurs="unbounded"/>
+						<xsd:element name="StaffingSupplierId" type="EntityIdType" minOccurs="0" maxOccurs="unbounded"/>
+						<xsd:element name="BillToEntityId" type="EntityIdType" minOccurs="0" maxOccurs="unbounded"/>
+						<xsd:element name="StaffingSupplierOrgUnitId" type="EntityIdType" minOccurs="0" maxOccurs="unbounded"/>
+						<xsd:element name="MasterOrderId" type="EntityIdType" minOccurs="0" maxOccurs="unbounded"/>
+						<xsd:element name="TimeCardId" type="EntityIdType" minOccurs="0" maxOccurs="unbounded"/>
+						<xsd:element name="InvoiceId" type="EntityIdType" minOccurs="0" maxOccurs="unbounded"/>
+						<xsd:element name="StaffingOrganizationId" type="EntityIdType" minOccurs="0" maxOccurs="unbounded"/>
+						<xsd:element ref="UserArea" minOccurs="0"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element ref="CustomerReportingRequirements"/>
+			<xsd:element ref="Rates" maxOccurs="unbounded"/>
+			<xsd:element ref="StaffingShift" maxOccurs="unbounded"/>
+			<xsd:element name="AssignmentDateRange">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="StartDate" type="AnyDateTimeType"/>
+						<xsd:element name="ExpectedEndDate" type="AnyDateTimeNkType" minOccurs="0"/>
+						<xsd:element name="ActualEndDate" type="AnyDateTimeNaType" minOccurs="0"/>
+						<xsd:element name="FlexibilityMinDate" type="AnyDateTimeNaType" minOccurs="0"/>
+						<xsd:element name="FlexibilityMaxDate" type="AnyDateTimeNaType" minOccurs="0"/>
+						<xsd:element name="ProbationaryPeriod" minOccurs="0" maxOccurs="unbounded">
+							<xsd:complexType>
+								<xsd:simpleContent>
+									<xsd:extension base="xsd:decimal">
+										<xsd:attribute name="unitOfMeasure" type="xsd:string"/>
+									</xsd:extension>
+								</xsd:simpleContent>
+							</xsd:complexType>
+						</xsd:element>
+						<xsd:element name="SuspensionPeriod" minOccurs="0" maxOccurs="unbounded">
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element name="StartDate" type="AnyDateTimeType"/>
+									<xsd:element name="EndDate" type="AnyDateTimeNkType"/>
+									<xsd:element name="Comments" type="xsd:string" minOccurs="0"/>
+								</xsd:sequence>
+							</xsd:complexType>
+						</xsd:element>
+						<xsd:element name="EffectiveDate" type="AnyDateTimeType" minOccurs="0"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="EndReasonComments" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="ContractInformation" minOccurs="0" maxOccurs="unbounded">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="ContractId" type="EntityIdType"/>
+						<xsd:element name="LegalInformation" type="xsd:string"/>
+						<xsd:element name="ContractVersion" type="xsd:string"/>
+						<xsd:element name="ContractVersionDate" type="AnyDateTimeNkNaType"/>
+						<xsd:element name="StaffType" type="xsd:string"/>
+						<xsd:element name="LocalContractRequirements" type="LocalContractRequirementsType" minOccurs="0"/>
+						<xsd:element name="FrameAgreementInfo" type="FrameAgreementType" minOccurs="0" maxOccurs="unbounded"/>
+					</xsd:sequence>
+					<xsd:attribute name="contractType" type="ContractType" use="required"/>
+					<xsd:attribute name="contractStatus" type="ContractStatus" use="required"/>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element ref="UserArea" minOccurs="0"/>
+		</xsd:sequence>
+		<xsd:attribute name="assignmentStatus" type="AssignmentStatusType" use="required"/>
+		<xsd:attribute ref="xml:lang"/>
+	</xsd:complexType>
+	<xsd:element name="Assignment" type="AssignmentType"/>
+	<xsd:simpleType name="KnownAssignmentStatus">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="active"/>
+			<xsd:enumeration value="inactive"/>
+			<xsd:enumeration value="suspended"/>
+			<xsd:enumeration value="pending"/>
+			<xsd:enumeration value="revised"/>
+			<xsd:enumeration value="cancelled"/>
+			<xsd:enumeration value="ended"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="AssignmentStatusType">
+		<xsd:union memberTypes="KnownAssignmentStatus xStringPatternExtensionType"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="KnownContractType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="human resource"/>
+			<xsd:enumeration value="staffing customer"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="ContractType">
+		<xsd:union memberTypes="KnownContractType xStringPatternExtensionType"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="KnownContractStatus">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="signed"/>
+			<xsd:enumeration value="unsigned"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="ContractStatus">
+		<xsd:union memberTypes="KnownContractStatus xStringPatternExtensionType"/>
+	</xsd:simpleType>
+	<!-- Frame Agreement  -->
+	<xsd:complexType name="FrameAgreementType">
+		<xsd:sequence>
+			<xsd:element name="DocumentId" type="EntityIdType"/>
+			<xsd:element name="DocumentVersion" type="xsd:string"/>
+			<xsd:element name="ValidityDateRange">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="StartDate" type="AnyDateTimeType"/>
+						<xsd:element name="EndDate" type="AnyDateTimeNkType"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="DocumentName" type="xsd:string"/>
+			<xsd:element name="DocumentType" type="DocumentTypeType" minOccurs="0"/>
+			<xsd:element name="StaffingOrgContact" minOccurs="0" maxOccurs="unbounded">
+				<xsd:complexType>
+					<xsd:complexContent>
+						<xsd:extension base="ContactInfoType">
+							<xsd:attribute name="typeOfOrganization" use="required">
+								<xsd:simpleType>
+									<xsd:union memberTypes="xStringPatternExtensionType">
+										<xsd:simpleType>
+											<xsd:restriction base="xsd:string">
+												<xsd:enumeration value="Customer"/>
+												<xsd:enumeration value="Supplier"/>
+												<xsd:enumeration value="Intermediary"/>
+											</xsd:restriction>
+										</xsd:simpleType>
+									</xsd:union>
+								</xsd:simpleType>
+							</xsd:attribute>
+						</xsd:extension>
+					</xsd:complexContent>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:simpleType name="DocumentTypeType">
+		<xsd:union memberTypes="DocumentTypes xStringPatternExtensionType"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="DocumentTypes">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="worldwide"/>
+			<xsd:enumeration value="europe"/>
+			<xsd:enumeration value="national"/>
+			<xsd:enumeration value="regional"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+</xsd:schema>

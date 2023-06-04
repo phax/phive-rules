@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://ns.hr-xml.org/2007-04-15" xmlns="http://ns.hr-xml.org/2007-04-15" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" version="2007-04-15">
+	<xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+	<xsd:annotation>
+		<xsd:documentation>
+"Copyright  The HR-XML Consortium. All Rights Reserved. http://www.hr-xml.org"
+Name: TimeCard.xsd
+Status: Recommendation
+Date this version: 2007-04-15
+Purpose: Defines XSD for Time Capture
+Author(s): Bill Kerr - Oracle Corporation, Paul Kiel - HR-XML, Gail Bubsey - Kelly Services, Erwin Folmer - TNO, Time Workgroup
+Documentation: TimeExpenseReporting.html
+Terms of license can be found in license.txt.
+		
+		</xsd:documentation>
+	</xsd:annotation>
+	<xsd:include schemaLocation="../CPO/EntityIdType.xsd"/>
+	<xsd:include schemaLocation="../CPO/PersonName.xsd"/>
+	<xsd:include schemaLocation="../CPO/UserArea.xsd"/>
+	<xsd:include schemaLocation="../CPO/ISOUtilities.xsd"/>
+	<xsd:element name="TimeCard" type="TimeCardType"/>
+	<xsd:simpleType name="ActionCodeType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="Add"/>
+			<xsd:enumeration value="Change"/>
+			<xsd:enumeration value="Void"/>
+			<xsd:enumeration value="Unchanged"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="DayAssignmentType">
+		<xsd:union memberTypes="DayAssignmentEnumerationType LocalDateType xsd:nonNegativeInteger"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="DayAssignmentEnumerationType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="previous"/>
+			<xsd:enumeration value="current"/>
+			<xsd:enumeration value="next"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:complexType name="AdditionalDataType" mixed="true">
+		<xsd:annotation>
+			<xsd:documentation>In order to prevent a possible "ambiguous content model" errors in an instance, unbounded sequences were either eliminated from or deprecated in all HR-XML schemas. Removing unbounded sequences ensures that ambiguous errors are not found in an instance.  The unbounded sequence here is officially deprecated and will be changed to a single sequence.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence minOccurs="0" maxOccurs="unbounded">
+			<xsd:any namespace="##any" processContents="strict" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+		<xsd:attribute name="type" type="xsd:string"/>
+	</xsd:complexType>
+	<xsd:complexType name="ApprovalInfoType">
+		<xsd:sequence>
+			<xsd:element name="Person" type="TimeCardPersonType"/>
+			<xsd:element name="ApprovedDateTime" type="AnyDateTimeType"/>
+			<xsd:element name="Comment" type="CommentType" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+		<xsd:attribute name="approverType" type="xsd:string"/>
+	</xsd:complexType>
+	<xsd:complexType name="CommentType">
+		<xsd:simpleContent>
+			<xsd:extension base="xsd:string">
+				<xsd:attribute ref="xml:lang"/>
+			</xsd:extension>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="SubmitterInfoType">
+		<xsd:sequence>
+			<xsd:element name="Person" type="TimeCardPersonType" minOccurs="0"/>
+			<xsd:element name="Source" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="SubmittedDateTime" type="AnyDateTimeType"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="TimeCardPersonType">
+		<xsd:sequence>
+			<xsd:element name="Id" type="EntityIdType" minOccurs="0"/>
+			<xsd:element ref="PersonName" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="TimeCardType">
+		<xsd:sequence>
+			<xsd:element name="Id" type="EntityIdType" minOccurs="0"/>
+			<xsd:element name="ReportedResource">
+				<xsd:complexType>
+					<xsd:choice>
+						<xsd:element name="Person" type="TimeCardPersonType"/>
+						<xsd:element name="Resource">
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element name="Id" type="EntityIdType" minOccurs="0" maxOccurs="unbounded"/>
+									<xsd:element name="ResourceName" type="xsd:string" minOccurs="0"/>
+									<xsd:element name="AdditionalData" type="AdditionalDataType" minOccurs="0" maxOccurs="unbounded"/>
+								</xsd:sequence>
+								<xsd:attribute name="type" type="xsd:string"/>
+							</xsd:complexType>
+						</xsd:element>
+					</xsd:choice>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="ReportedTime" maxOccurs="unbounded">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="PeriodStartDate" type="AnyDateTimeType"/>
+						<xsd:element name="PeriodEndDate" type="AnyDateTimeType"/>
+						<xsd:element name="ReportedPersonAssignment" minOccurs="0">
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element name="Id" type="EntityIdType" minOccurs="0"/>
+								</xsd:sequence>
+							</xsd:complexType>
+						</xsd:element>
+						<xsd:choice maxOccurs="unbounded">
+							<xsd:element name="TimeInterval">
+								<xsd:complexType>
+									<xsd:sequence>
+										<xsd:element name="Id" type="EntityIdType" minOccurs="0"/>
+										<xsd:element name="StartDateTime" type="AnyDateTimeType"/>
+										<xsd:choice>
+											<xsd:sequence>
+												<xsd:element name="EndDateTime" type="AnyDateTimeType"/>
+												<xsd:element name="Duration" type="TimeCardDuration" minOccurs="0"/>
+											</xsd:sequence>
+											<xsd:element name="Duration" type="TimeCardDuration"/>
+										</xsd:choice>
+										<xsd:element name="PieceWork" minOccurs="0" maxOccurs="unbounded">
+											<xsd:complexType>
+												<xsd:sequence>
+													<xsd:element name="Piece">
+														<xsd:complexType>
+															<xsd:sequence>
+																<xsd:element name="Id" type="EntityIdType" minOccurs="0"/>
+																<xsd:element name="PieceValue" type="xsd:string"/>
+															</xsd:sequence>
+														</xsd:complexType>
+													</xsd:element>
+													<xsd:element name="Quantity">
+														<xsd:complexType>
+															<xsd:simpleContent>
+																<xsd:extension base="xsd:double">
+																	<xsd:attribute name="unitOfMeasure" type="xsd:string"/>
+																</xsd:extension>
+															</xsd:simpleContent>
+														</xsd:complexType>
+													</xsd:element>
+												</xsd:sequence>
+											</xsd:complexType>
+										</xsd:element>
+										<xsd:element name="RateOrAmount" minOccurs="0" maxOccurs="unbounded">
+											<xsd:complexType>
+												<xsd:simpleContent>
+													<xsd:extension base="xsd:double">
+														<xsd:attribute name="currency" type="CurrencyCodeType" use="required"/>
+														<xsd:attribute name="type" type="xsd:string" use="required"/>
+														<xsd:attribute name="period" type="xsd:string"/>
+														<xsd:attribute name="multiplier" type="xsd:double"/>
+														<xsd:attribute name="toBeBilled" type="xsd:boolean"/>
+														<xsd:attribute name="toBePaid" type="xsd:boolean"/>
+													</xsd:extension>
+												</xsd:simpleContent>
+											</xsd:complexType>
+										</xsd:element>
+										<xsd:element name="Allowance" minOccurs="0" maxOccurs="unbounded">
+											<xsd:complexType>
+												<xsd:sequence>
+													<xsd:element name="Id" type="EntityIdType" minOccurs="0"/>
+													<xsd:element name="StartDate" type="AnyDateTimeType" minOccurs="0"/>
+													<xsd:element name="EndDate" type="AnyDateTimeType" minOccurs="0"/>
+													<xsd:element name="Amount" minOccurs="0">
+														<xsd:complexType>
+															<xsd:simpleContent>
+																<xsd:extension base="xsd:double">
+																	<xsd:attribute name="currency" type="CurrencyCodeType" use="required"/>
+																</xsd:extension>
+															</xsd:simpleContent>
+														</xsd:complexType>
+													</xsd:element>
+													<xsd:element name="Quantity" type="xsd:double" minOccurs="0"/>
+													<xsd:element name="AdditionalData" type="AdditionalDataType" minOccurs="0" maxOccurs="unbounded"/>
+													<xsd:element name="ApprovalInfo" type="ApprovalInfoType" minOccurs="0" maxOccurs="unbounded"/>
+													<xsd:element name="SubmitterInfo" type="SubmitterInfoType" minOccurs="0"/>
+													<xsd:element name="Comment" type="CommentType" minOccurs="0" maxOccurs="unbounded"/>
+												</xsd:sequence>
+												<xsd:attribute name="type" type="xsd:string" use="required"/>
+												<xsd:attribute name="billable" type="xsd:boolean"/>
+												<xsd:attribute name="actionCode" type="ActionCodeType"/>
+											</xsd:complexType>
+										</xsd:element>
+										<xsd:element name="AdditionalData" type="AdditionalDataType" minOccurs="0" maxOccurs="unbounded"/>
+										<xsd:element name="ApprovalInfo" type="ApprovalInfoType" minOccurs="0" maxOccurs="unbounded"/>
+										<xsd:element name="SubmitterInfo" type="SubmitterInfoType" minOccurs="0"/>
+										<xsd:element name="Comment" type="CommentType" minOccurs="0" maxOccurs="unbounded"/>
+									</xsd:sequence>
+									<xsd:attribute name="type" type="xsd:string" use="required"/>
+									<xsd:attribute name="dayAssignment" type="DayAssignmentType"/>
+									<xsd:attribute name="billable" type="xsd:boolean"/>
+									<xsd:attribute name="actionCode" type="ActionCodeType"/>
+								</xsd:complexType>
+							</xsd:element>
+							<xsd:element name="TimeEvent">
+								<xsd:complexType>
+									<xsd:sequence>
+										<xsd:element name="Id" type="EntityIdType" minOccurs="0"/>
+										<xsd:element name="EventDateTime" type="AnyDateTimeType"/>
+										<xsd:element name="RateOrAmount" minOccurs="0" maxOccurs="unbounded">
+											<xsd:complexType>
+												<xsd:simpleContent>
+													<xsd:extension base="xsd:double">
+														<xsd:attribute name="currency" type="CurrencyCodeType" use="required"/>
+														<xsd:attribute name="type" type="xsd:string" use="required"/>
+														<xsd:attribute name="period" type="xsd:string"/>
+													</xsd:extension>
+												</xsd:simpleContent>
+											</xsd:complexType>
+										</xsd:element>
+										<xsd:element name="AdditionalData" type="AdditionalDataType" minOccurs="0" maxOccurs="unbounded"/>
+										<xsd:element name="ApprovalInfo" type="ApprovalInfoType" minOccurs="0" maxOccurs="unbounded"/>
+										<xsd:element name="SubmitterInfo" type="SubmitterInfoType" minOccurs="0"/>
+										<xsd:element name="Comment" type="CommentType" minOccurs="0" maxOccurs="unbounded"/>
+									</xsd:sequence>
+									<xsd:attribute name="type" type="xsd:string" use="required"/>
+									<xsd:attribute name="dayAssignment" type="DayAssignmentType"/>
+									<xsd:attribute name="billable" type="xsd:boolean"/>
+									<xsd:attribute name="actionCode" type="ActionCodeType"/>
+								</xsd:complexType>
+							</xsd:element>
+							<xsd:element name="Expense">
+								<xsd:complexType>
+									<xsd:sequence>
+										<xsd:element name="Id" type="EntityIdType" minOccurs="0"/>
+										<xsd:element name="ExpenseDate" type="AnyDateTimeType"/>
+										<xsd:element name="ExpenseAmount">
+											<xsd:complexType>
+												<xsd:simpleContent>
+													<xsd:extension base="xsd:double">
+														<xsd:attribute name="currency" type="CurrencyCodeType" use="required"/>
+													</xsd:extension>
+												</xsd:simpleContent>
+											</xsd:complexType>
+										</xsd:element>
+										<xsd:element name="AdditionalData" type="AdditionalDataType" minOccurs="0" maxOccurs="unbounded"/>
+										<xsd:element name="ApprovalInfo" type="ApprovalInfoType" minOccurs="0" maxOccurs="unbounded"/>
+										<xsd:element name="SubmitterInfo" type="SubmitterInfoType" minOccurs="0"/>
+										<xsd:element name="Comment" type="CommentType" minOccurs="0" maxOccurs="unbounded"/>
+									</xsd:sequence>
+									<xsd:attribute name="type" type="xsd:string" use="required"/>
+									<xsd:attribute name="billable" type="xsd:boolean"/>
+									<xsd:attribute name="actionCode" type="ActionCodeType"/>
+								</xsd:complexType>
+							</xsd:element>
+							<xsd:element name="Allowance">
+								<xsd:complexType>
+									<xsd:sequence>
+										<xsd:element name="Id" type="EntityIdType" minOccurs="0"/>
+										<xsd:element name="StartDate" type="AnyDateTimeType" minOccurs="0"/>
+										<xsd:element name="EndDate" type="AnyDateTimeType" minOccurs="0"/>
+										<xsd:element name="Amount" minOccurs="0">
+											<xsd:complexType>
+												<xsd:simpleContent>
+													<xsd:extension base="xsd:double">
+														<xsd:attribute name="currency" type="CurrencyCodeType" use="required"/>
+													</xsd:extension>
+												</xsd:simpleContent>
+											</xsd:complexType>
+										</xsd:element>
+										<xsd:element name="Quantity" type="xsd:double" minOccurs="0"/>
+										<xsd:element name="AdditionalData" type="AdditionalDataType" minOccurs="0" maxOccurs="unbounded"/>
+										<xsd:element name="ApprovalInfo" type="ApprovalInfoType" minOccurs="0" maxOccurs="unbounded"/>
+										<xsd:element name="SubmitterInfo" type="SubmitterInfoType" minOccurs="0"/>
+										<xsd:element name="Comment" type="CommentType" minOccurs="0" maxOccurs="unbounded"/>
+									</xsd:sequence>
+									<xsd:attribute name="type" type="xsd:string" use="required"/>
+									<xsd:attribute name="billable" type="xsd:boolean"/>
+									<xsd:attribute name="actionCode" type="ActionCodeType"/>
+								</xsd:complexType>
+							</xsd:element>
+						</xsd:choice>
+						<xsd:element name="AdditionalData" type="AdditionalDataType" minOccurs="0" maxOccurs="unbounded"/>
+						<xsd:element name="ApprovalInfo" type="ApprovalInfoType" minOccurs="0" maxOccurs="unbounded"/>
+						<xsd:element name="SubmitterInfo" type="SubmitterInfoType" minOccurs="0"/>
+					</xsd:sequence>
+					<xsd:attribute name="status" type="xsd:string">
+						<xsd:annotation>
+							<xsd:documentation>The preferred statuses are: Raw, Processed, Submitted, Rejected, Approved, Final. Please look at the documentation for definitions.</xsd:documentation>
+						</xsd:annotation>
+					</xsd:attribute>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="SubmitterInfo" type="SubmitterInfoType" minOccurs="0"/>
+			<xsd:element name="ApprovalInfo" type="ApprovalInfoType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="AdditionalData" type="AdditionalDataType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="UserArea" minOccurs="0"/>
+		</xsd:sequence>
+		<xsd:attribute ref="xml:lang"/>
+	</xsd:complexType>
+	<xsd:simpleType name="TimeCardDuration">
+		<xsd:union memberTypes="xsd:duration xsd:decimal"/>
+	</xsd:simpleType>
+</xsd:schema>

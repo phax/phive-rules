@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns="http://ns.hr-xml.org/2007-04-15" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://ns.hr-xml.org/2007-04-15" elementFormDefault="qualified" version="2007-04-15">
+	<xsd:annotation>
+		<xsd:documentation>
+"Copyright  The HR-XML Consortium. All Rights Reserved. http://www.hr-xml.org"
+Name: CompetencyTypes.xsd
+Status: Recommendation
+Date this version: 2007-04-15
+Author(s): Competency  Work Group
+
+Terms of license can be found in license.txt.
+</xsd:documentation>
+	</xsd:annotation>
+	<xsd:include schemaLocation="../CPO/EntityIdType.xsd"/>
+	<xsd:include schemaLocation="../CPO/UserArea.xsd"/>
+	<xsd:include schemaLocation="../CPO/ISOUtilities.xsd"/>
+	<!-- CompetencyId, Global Element -->
+	<xsd:element name="CompetencyId" type="EntityIdType">
+		<xsd:annotation>
+			<xsd:documentation>A globally scoped element containing an identifier for a competency being referenced. </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="SpecifiedCompetencyReference" type="SpecifiedCompetencyReferenceType">
+		<xsd:annotation>
+			<xsd:documentation>This element is mainly for documentation purposes. SpecifiedCompetencyReferenceType would generally be 
+			used with an element named for the context in which it appears. For example, the CompetenciesAssessed elment within AssessmentCatalog
+			extends SpecifiedCompetencyReferenceType.</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="NumericValue" type="NumericValueType"/>
+	<xsd:element name="StringValue">
+		<xsd:complexType>
+			<xsd:simpleContent>
+				<xsd:extension base="xsd:string">
+					<xsd:attribute name="minValue" type="xsd:string"/>
+					<xsd:attribute name="maxValue" type="xsd:string"/>
+					<xsd:attribute name="description" type="xsd:string"/>
+				</xsd:extension>
+			</xsd:simpleContent>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:complexType name="NumericAndStringScoreType">
+		<xsd:sequence>
+			<xsd:element ref="NumericValue" minOccurs="0"/>
+			<xsd:element ref="StringValue" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="SpecifiedCompetencyReferenceType">
+		<xsd:sequence>
+			<xsd:element ref="CompetencyId"/>
+			<xsd:element name="ProficencyLevel" type="xsd:string" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Contains a value indicating a level of proficiency. 
+					The scale and meaning of the proficiency level value is determined within the context of the particular competency taxonomy referenced. </xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="FlexibleCompetencyReferenceType">
+		<xsd:sequence>
+			<xsd:element ref="CompetencyId" minOccurs="0"/>
+			<xsd:element name="ProficencyLevel" type="xsd:string" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Same as above, but Id is not required. Contains a value indicating a level of proficiency.  The scale and meaning of the proficiency level value is determined within the context of the particular competency taxonomy referenced. </xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="NumericValueType">
+		<xsd:simpleContent>
+			<xsd:extension base="xsd:double">
+				<xsd:attribute name="minValue" type="xsd:double"/>
+				<xsd:attribute name="maxValue" type="xsd:double"/>
+				<xsd:attribute name="interval" type="xsd:double"/>
+				<xsd:attribute name="description" type="xsd:string"/>
+			</xsd:extension>
+		</xsd:simpleContent>
+	</xsd:complexType>
+</xsd:schema>

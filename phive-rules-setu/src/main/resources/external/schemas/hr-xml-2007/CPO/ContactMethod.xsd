@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://ns.hr-xml.org/2007-04-15" xmlns="http://ns.hr-xml.org/2007-04-15" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" version="2007-04-15">
+	<xsd:annotation>
+		<xsd:documentation>
+"Copyright  The HR-XML Consortium. All Rights Reserved. http://www.hr-xml.org"
+Name: ContactMethod.xsd
+Status: Recommendation
+Date this version: 2007-04-15
+Purpose: Defines the schema for contact methods
+Author(s): Don Simonson, Robert Half Int'l., CPO Workgroup
+Documentation: ContactMethod.html
+
+Terms of license can be found in license.txt.
+
+</xsd:documentation>
+	</xsd:annotation>
+	<xsd:include schemaLocation="../CPO/PostalAddress.xsd"/>
+	<xsd:include schemaLocation="../CPO/xStringPatternExtensionType.xsd"/>
+	<xsd:include schemaLocation="../CPO/TelcomNumber.xsd"/>
+	<xsd:include schemaLocation="../CPO/OnlineAddress.xsd"/>
+	<xsd:element name="Use" type="contactMethodUsePatternExtensionType"/>
+	<xsd:element name="Location" type="contactMethodLocationPatternExtensionType"/>
+	<xsd:element name="WhenAvailable" type="contactMethodWhenAvailableType"/>
+	<xsd:complexType name="ContactMethodType">
+		<xsd:sequence>
+			<xsd:element ref="Use" minOccurs="0"/>
+			<xsd:element ref="Location" minOccurs="0"/>
+			<xsd:element ref="WhenAvailable" minOccurs="0"/>
+			<xsd:element ref="Telephone" minOccurs="0"/>
+			<xsd:element ref="Mobile" minOccurs="0"/>
+			<xsd:element ref="Fax" minOccurs="0"/>
+			<xsd:element ref="Pager" minOccurs="0"/>
+			<xsd:element ref="TTYTDD" minOccurs="0"/>
+			<xsd:element ref="InternetEmailAddress" minOccurs="0"/>
+			<xsd:element ref="InternetWebAddress" minOccurs="0"/>
+			<xsd:element ref="PostalAddress" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:simpleType name="contactMethodUseType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="business"/>
+			<xsd:enumeration value="businessDirect"/>
+			<xsd:enumeration value="personal"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="contactMethodLocationType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="office"/>
+			<xsd:enumeration value="vehicle"/>
+			<xsd:enumeration value="onPerson"/>
+			<xsd:enumeration value="home"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="contactMethodWhenAvailableType">
+		<xsd:restriction base="xsd:string"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="contactMethodUsePatternExtensionType">
+		<xsd:union memberTypes="contactMethodUseType xStringPatternExtensionType"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="contactMethodLocationPatternExtensionType">
+		<xsd:union memberTypes="contactMethodLocationType xStringPatternExtensionType"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="contactMethodWhenAvailablePatternExtensionType">
+		<xsd:union memberTypes="contactMethodWhenAvailableType xStringPatternExtensionType"/>
+	</xsd:simpleType>
+</xsd:schema>

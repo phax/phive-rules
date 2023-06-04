@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns="http://ns.hr-xml.org/2007-04-15" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://ns.hr-xml.org/2007-04-15" elementFormDefault="qualified" version="2007-04-15">
+	<xsd:annotation>
+		<xsd:documentation>
+"Copyright  The HR-XML Consortium. All Rights Reserved. http://www.hr-xml.org"
+Name: Acknowledgement.xsd
+Status: Technical Note
+Date this version: 2007-04-15
+Purpose: Defines an Acknowledgement document reusing types within HR-XML's  ApplicationAcknowledgement schema. Provides a simpler number of choices. Allows for Acknowledgement of Receipt without specifying any business processing results.
+Terms of license can be found in license.txt.
+</xsd:documentation>
+	</xsd:annotation>
+	<xsd:include schemaLocation="../CPO/ApplicationAcknowledgement.xsd"/>
+	<xsd:element name="Acknowledgement" type="SimpleAcknowledgementType"/>
+	<xsd:complexType name="SimpleAcknowledgementType">
+		<xsd:sequence>
+			<xsd:element name="ReceiptAcknowledged" type="ReceiptAcknowledgedEnumType"/>
+			<xsd:element name="ReferenceId" type="EntityIdType" minOccurs="0"/>
+			<xsd:element name="Exception" type="ExceptionType" minOccurs="0"/>
+			<xsd:element ref="UserArea" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:simpleType name="ReceiptAcknowledgedEnumType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="true"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+</xsd:schema>

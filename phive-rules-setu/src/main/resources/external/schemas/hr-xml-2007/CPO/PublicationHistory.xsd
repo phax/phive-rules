@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://ns.hr-xml.org/2007-04-15" targetNamespace="http://ns.hr-xml.org/2007-04-15" elementFormDefault="qualified" version="2007-04-15">
+	<xsd:annotation>
+		<xsd:documentation>
+"Copyright  The HR-XML Consortium. All Rights Reserved. http://www.hr-xml.org"
+Status: Recommendation
+Date this version: 2007-04-15
+Purpose: Defines publication history data.
+Author(s):  
+
+Terms of license can be found in license.txt.
+
+2004-06-02: The format pattern for the ISBNType has been modified to correctly handle an "X" as the 10th character.  This change is considered a bug fix and is backwardly compatible.
+     new pattern = [0-9]{9}[0-9,X]{1}
+     previous pattern that would not allow an "X" as a 10th character = [0-9]{10}
+     Special thanks to Randy Charles Morin, KBCafe.com for finding this correction.
+     
+2004-06-18: The format of the ISSNType was previously incorrect.  The pattern in this schema includes a corrected pattern.  This is a non-backwardly compatible bug fix.  
+     new pattern = ISSN[0-9]{4}-[0-9]{3}[0-9,X]{1}
+
+
+		</xsd:documentation>
+	</xsd:annotation>
+	<xsd:include schemaLocation="../CPO/FlexibleDates.xsd"/>
+	<xsd:include schemaLocation="../CPO/EntityIdType.xsd"/>
+	<xsd:include schemaLocation="../CPO/xStringPatternExtensionType.xsd"/>
+	<xsd:include schemaLocation="../CPO/PersonName.xsd"/>
+	<xsd:include schemaLocation="../CPO/OnlineAddress.xsd"/>
+	<xsd:include schemaLocation="../CPO/ISOUtilities.xsd"/>
+	<xsd:element name="PublicationHistory" type="PublicationHistoryType"/>
+	<xsd:complexType name="PublicationHistoryType">
+		<xsd:annotation>
+			<xsd:documentation>This is used in the context of a resume or CV to list articles, books, or other publications authored or co-authored by an individual. </xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="FormattedPublicationDescription" minOccurs="0" maxOccurs="unbounded">
+				<xsd:complexType>
+					<xsd:simpleContent>
+						<xsd:extension base="xsd:string">
+							<xsd:attribute name="type" type="PublicationTypes"/>
+						</xsd:extension>
+					</xsd:simpleContent>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="Article" type="ArticleType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="Book" type="BookType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="ConferencePaper" type="ConferencePaperType" minOccurs="0" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation>Contains details about papers or presentations prepared for delivery at a conference.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="OtherPublication" type="OtherPublicationType" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="BasicBibliographicRecordType">
+		<xsd:sequence>
+			<xsd:element name="Title" type="xsd:string"/>
+			<xsd:element name="Name" minOccurs="0" maxOccurs="unbounded">
+				<xsd:complexType>
+					<xsd:complexContent>
+						<xsd:extension base="PersonNameType">
+							<xsd:attribute name="role" type="ExtendedRoleType" use="required"/>
+						</xsd:extension>
+					</xsd:complexContent>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="PublicationDate" type="FlexibleDatesType" minOccurs="0"/>
+			<xsd:element name="Link" type="InternetWebAddressType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="Abstract" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="Copyright" type="CopyrightType" minOccurs="0"/>
+			<xsd:element name="Comments" type="xsd:string" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ArticleType">
+		<xsd:annotation>
+			<xsd:documentation>Contains bibliographic information for an article published in a journal or serial.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="BasicBibliographicRecordType">
+				<xsd:sequence>
+					<xsd:element name="JournalOrSerialName" type="xsd:string" minOccurs="0"/>
+					<xsd:element name="ISSN" type="issnType" minOccurs="0"/>
+					<xsd:element name="Volume" type="xsd:string" minOccurs="0"/>
+					<xsd:element name="Issue" type="xsd:string" minOccurs="0"/>
+					<xsd:element name="PageNumber" type="xsd:string" minOccurs="0"/>
+					<xsd:element name="PublicationLanguage" type="LanguageCodeType" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="BookType">
+		<xsd:annotation>
+			<xsd:documentation>Contain bibliographic information for a book or monograph.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="BasicBibliographicRecordType">
+				<xsd:sequence>
+					<xsd:element name="Edition" type="xsd:string" minOccurs="0"/>
+					<xsd:element name="Chapter" type="xsd:string" minOccurs="0"/>
+					<xsd:element name="ISSN" type="issnType" minOccurs="0"/>
+					<xsd:element name="ISBN" type="isbnType" minOccurs="0"/>
+					<xsd:element name="NumberOfPages" type="xsd:positiveInteger" minOccurs="0"/>
+					<xsd:element name="PublisherName" type="xsd:string" minOccurs="0"/>
+					<xsd:element name="PublisherLocation" type="xsd:string" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="ConferencePaperType">
+		<xsd:annotation>
+			<xsd:documentation>A paper or presentation given at a conference or published as part of conference proceedings.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="BasicBibliographicRecordType">
+				<xsd:sequence>
+					<xsd:element name="EventName" type="xsd:string" minOccurs="0"/>
+					<xsd:element name="ConferenceDate" type="FlexibleDatesType" minOccurs="0"/>
+					<xsd:element name="ConferenceLocation" type="xsd:string" minOccurs="0"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="OtherPublicationType">
+		<xsd:annotation>
+			<xsd:documentation>Bibliographic information for other publication type, such as a Thesis, Whitepaper, Report, Technical Documentation, etc.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="BasicBibliographicRecordType">
+				<xsd:sequence>
+					<xsd:element name="ISSN" type="issnType" minOccurs="0"/>
+					<xsd:element name="ISBN" type="isbnType" minOccurs="0"/>
+					<xsd:element name="NumberOfPages" type="xsd:positiveInteger" minOccurs="0"/>
+					<xsd:element name="PublisherName" type="xsd:string" minOccurs="0"/>
+					<xsd:element name="PublisherLocation" type="xsd:string" minOccurs="0"/>
+				</xsd:sequence>
+				<xsd:attribute name="type" type="PublicationOtherTypes"/>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="CopyrightType">
+		<xsd:annotation>
+			<xsd:documentation>Contains copyright information, such as year and copyright text.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="CopyrightDates" minOccurs="0">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="OriginalDate" type="FlexibleDatesType"/>
+						<xsd:element name="MostRecentDate" type="FlexibleDatesType" minOccurs="0"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="CopyrightText" type="xsd:string" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:simpleType name="issnType">
+		<xsd:annotation>
+			<xsd:documentation>International Standard Serial Number. The is an identifier for articles and serial publications. The ISSN is defined by the ISO 3297 standard. The ISSN can be applied to series of books. A book belonging to a particular series will have both an ISSN (identifying the series) and an ISBN (identifying the given monograph as such).</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:pattern value="ISSN[0-9]{4}-[0-9]{3}[0-9,X]{1}"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="isbnType">
+		<xsd:annotation>
+			<xsd:documentation>International Standard Book Number. The ISBN is defined by the ISO ISO 2108 standard. The International Standard Book Number (ISBN) is a 10-digit system to identify books and monographic publications.
+
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:pattern value="[0-9]{9}[0-9,X]{1}"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="PublicationTypes">
+		<xsd:union memberTypes="PublicationTypeTypes xStringPatternExtensionType"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="PublicationTypeTypes">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="Article"/>
+			<xsd:enumeration value="Book"/>
+			<xsd:enumeration value="Conference"/>
+			<xsd:enumeration value="Other"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="PublicationOtherTypes">
+		<xsd:union memberTypes="xStringPatternExtensionType PublicationOtherTypeTypes"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="PublicationOtherTypeTypes">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="Thesis"/>
+			<xsd:enumeration value="Whitepaper"/>
+			<xsd:enumeration value="Report"/>
+			<xsd:enumeration value="TechnicalDocumentation"/>
+			<xsd:enumeration value="Study"/>
+			<xsd:enumeration value="Manual"/>
+			<xsd:enumeration value="ResearchPaper"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="ExtendedRoleType">
+		<xsd:union memberTypes="xStringPatternExtensionType RoleType"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="RoleType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="author"/>
+			<xsd:enumeration value="editor"/>
+			<xsd:enumeration value="illustrator"/>
+			<xsd:enumeration value="contributor"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+</xsd:schema>

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns="http://ns.hr-xml.org/2007-04-15" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://ns.hr-xml.org/2007-04-15" elementFormDefault="qualified" version="2007-04-15">
+	<xsd:annotation>
+		<xsd:documentation>
+"Copyright The HR-XML Consortium. All Rights Reserved. http://www.hr-xml.org" 
+Name: PositionHeader.xsd 
+Status: Recommendation
+Date this version: 2007-04-15
+Purpose: Defines the Schema for Position Description 
+Author(s): Brian Salamon, Kim Bartkus, J/P Workgroup 
+Documentation: JobAndPositionHeader.html 
+
+Terms of license can be found in license.txt.
+
+Change History:
+2005-01
+As per Schema Design Guidelines, all default values have been removed.
+2006-04-10 KB created PositionHeaderType.
+
+
+</xsd:documentation>
+	</xsd:annotation>
+	<xsd:include schemaLocation="../CPO/DateTimeDataTypes.xsd"/>
+	<xsd:include schemaLocation="../CPO/IdentifierTypes.xsd"/>
+	<xsd:include schemaLocation="../CPO/PersonName.xsd"/>
+	<xsd:element name="PositionHeader" type="PositionHeaderType"/>
+	<xsd:element name="JobId" type="PositionIdentifierType"/>
+	<xsd:element name="PositionTitle" type="xsd:string"/>
+	<xsd:element name="PositionDescription" type="xsd:string"/>
+	<xsd:element name="ReportToPositionId" type="PositionIdentifierType"/>
+	<xsd:element name="SpecialInstructions" type="xsd:string"/>
+	<xsd:element name="PositionStatus">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="Code" type="xsd:string" minOccurs="0"/>
+				<xsd:element name="Description" type="xsd:string" minOccurs="0"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:complexType name="PositionIdentifierType">
+		<xsd:sequence>
+			<xsd:element name="Id" type="xsd:string"/>
+			<xsd:element name="Domain" minOccurs="0">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="IdIssuer" type="xsd:string" minOccurs="0"/>
+						<xsd:element name="IdType" type="xsd:string" minOccurs="0"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="PositionHeaderType">
+		<xsd:sequence>
+			<xsd:element name="PositionId" type="PositionIdentifierType"/>
+			<xsd:element ref="JobId" minOccurs="0"/>
+			<xsd:element ref="PositionTitle" minOccurs="0"/>
+			<xsd:element name="PositionType" type="xsd:string" minOccurs="0"/>
+			<xsd:element ref="PositionDescription" minOccurs="0"/>
+			<xsd:element ref="PositionStatus" minOccurs="0"/>
+			<xsd:element ref="ReportToPositionId" minOccurs="0"/>
+			<xsd:element ref="SpecialInstructions" minOccurs="0"/>
+			<xsd:element name="TypeOfHours" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="Quantity" type="xsd:double" minOccurs="0"/>
+			<xsd:element name="RequestedPerson" minOccurs="0" maxOccurs="unbounded">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="PersonName" type="PersonNameType" minOccurs="0"/>
+						<xsd:element name="PersonId" type="EntityIdType" minOccurs="0"/>
+						<xsd:element name="Supplier" type="EntityReferenceType" minOccurs="0"/>
+					</xsd:sequence>
+					<xsd:attribute name="mandatory" type="xsd:boolean"/>
+					<xsd:attribute name="currentlyAssigned" type="xsd:boolean"/>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="PositionSpecificCondition" minOccurs="0" maxOccurs="unbounded">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="ConditionCode" type="xsd:string" minOccurs="0"/>
+						<xsd:element name="ConditionDescription" type="xsd:string" minOccurs="0"/>
+						<xsd:element name="ConditionValue" type="xsd:string" minOccurs="0"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+		<xsd:attribute name="validFrom" type="AnyDateTimeType"/>
+		<xsd:attribute name="validTo" type="AnyDateTimeType"/>
+	</xsd:complexType>
+</xsd:schema>

@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2006 rel. 3 sp1 (http://www.altova.com) by Chuck Allen (HR-XML Consortium, Inc.) -->
+<xsd:schema xmlns="http://ns.hr-xml.org/2007-04-15" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://ns.hr-xml.org/2007-04-15" elementFormDefault="qualified" version="2007-04-15">
+	<xsd:annotation>
+		<xsd:documentation>
+"Copyright  The HR-XML Consortium. All Rights Reserved. http://www.hr-xml.org"
+Name: Candidate.xsd
+Status: DRAFT
+Date this version: 2007-04-15
+Purpose: Search Criteria / Search Results
+Author(s):  Chuck Allen, Staffing Exchange Protocol Work Group
+
+Terms of license can be found in license.txt.
+		</xsd:documentation>
+	</xsd:annotation>
+	<xsd:include schemaLocation="../CPO/EntityIdType.xsd"/>
+	<xsd:include schemaLocation="../CPO/ContactMethod.xsd"/>
+	<xsd:include schemaLocation="../CPO/UserArea.xsd"/>
+	<xsd:include schemaLocation="../CPO/CompetencyTypes.xsd"/>
+	<xsd:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="../../W3C/xml.xsd"/>
+	<xsd:element name="SearchCriteria" type="SearchCriteriaType"/>
+	<xsd:element name="SearchResult" type="SearchResultType"/>
+	<xsd:complexType name="SearchCriteriaType">
+		<xsd:sequence>
+			<xsd:element name="SearchCriteriaId" type="EntityIdType" minOccurs="0"/>
+			<xsd:element name="SearchTarget" type="xsd:string" minOccurs="0" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation>The name of a database or service that is the target of the search.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="UserId" type="EntityIdType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>The Id of the user conducting the search.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="SearchTimeStamp" type="xsd:dateTime" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Date and time search was conducted. I've used LocalDateTimeType.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="SearchString" type="xsd:anyURI" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>The search string. Usually an URL-encoded string. </xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="SearchCriterion" type="OtherSearchCriteriaType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="UserArea" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="OtherSearchCriteriaType">
+		<xsd:sequence>
+			<xsd:element name="CriterionName" type="xsd:string"/>
+			<xsd:element name="CriterionValue" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="Weight" type="NumericValueType" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="SearchResultType">
+		<xsd:sequence>
+			<xsd:element name="SearchResultId" type="EntityIdType" minOccurs="0"/>
+			<xsd:element name="SearchTarget" type="xsd:string" minOccurs="0" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation>The name of a database or service that is the target of the search.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="UserId" type="EntityIdType" minOccurs="0"/>
+			<xsd:element name="SearchTimeStamp" type="xsd:dateTime" minOccurs="0"/>
+			<xsd:element name="MatchedObjectId" type="EntityIdType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Examples would be an identifier for the Candidate, Position, or other item returned by the search.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="SearchRelevanceScore" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>The relevance score returned for this item. This might be a percentage, a number score, or textual score (high, medium, low relevance)</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:simpleContent>
+						<xsd:extension base="xsd:string">
+							<xsd:attribute name="unitOfMeasure"/>
+						</xsd:extension>
+					</xsd:simpleContent>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="SearchRelevanceRank" type="xsd:int" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>The rank of this item within the set returned by the search.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="SearchResultCount" type="xsd:int" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>The number of items returned from the search.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="RankedSearchResults" type="RankedSearchResultsType" minOccurs="0"/>
+			<xsd:element ref="UserArea" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="RankedSearchRelevanceType">
+		<xsd:sequence>
+			<xsd:element name="CriterionName" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="Requested" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="Offered" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="Score" minOccurs="0">
+				<xsd:complexType>
+					<xsd:simpleContent>
+						<xsd:extension base="xsd:string">
+							<xsd:attribute name="unitOfMeasure" type="xsd:string"/>
+						</xsd:extension>
+					</xsd:simpleContent>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="Weight" type="NumericValueType" minOccurs="0"/>
+			<xsd:element ref="UserArea" minOccurs="0"/>
+			<xsd:element name="RankedResult" type="RankedSearchRelevanceType" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="RankedSearchResultsType">
+		<xsd:sequence>
+			<xsd:element name="RankedResult" type="RankedSearchRelevanceType" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2005 sp1 U (http://www.xmlspy.com) by Kim Bartkus (private) -->
+<xsd:schema xmlns="http://ns.hr-xml.org/2007-04-15" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://ns.hr-xml.org/2007-04-15" elementFormDefault="qualified" version="2007-04-15">
+	<xsd:annotation>
+		<xsd:documentation> 
+"Copyright The HR-XML Consortium. All Rights Reserved. http://www.hr-xml.org" 
+
+Name: Rates.xsd 
+Status: Recommendation 
+Date this version: 2007-04-15
+Purpose: Defines the Rates Schema 
+Author(s): SIDES Workgroup 
+Documentation: SIDESReusableModules.html 
+
+2006-July:  Added TimeWorkedRounding.
+
+2004-May: Made changes and additions based on global SIDES feedback. See scope section in SIDESReusableModules.doc for details. 
+An optional attribute xml:lang was added to the root element.
+
+Terms of license can be found in license.txt.
+
+</xsd:documentation>
+	</xsd:annotation>
+	<xsd:include schemaLocation="../CPO/xStringPatternExtensionType.xsd"/>
+	<xsd:include schemaLocation="../CPO/EntityIdType.xsd"/>
+	<xsd:include schemaLocation="../SIDES/Localizations.xsd"/>
+	<xsd:include schemaLocation="../CPO/RoundingTypes.xsd"/>
+	<xsd:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="../../W3C/xml.xsd"/>
+	<xsd:complexType name="RatesType">
+		<xsd:sequence>
+			<xsd:element name="ExternalRateSetId" type="EntityIdType" minOccurs="0"/>
+			<xsd:element name="Amount" minOccurs="0">
+				<xsd:complexType>
+					<xsd:simpleContent>
+						<xsd:extension base="xsd:decimal">
+							<xsd:attribute name="rateAmountPeriod" type="AmountPeriodType" use="required"/>
+							<xsd:attribute name="currency" use="required">
+								<xsd:simpleType>
+									<xsd:restriction base="xsd:string">
+										<xsd:pattern value="[A-Z][A-Z][A-Z]"/>
+									</xsd:restriction>
+								</xsd:simpleType>
+							</xsd:attribute>
+						</xsd:extension>
+					</xsd:simpleContent>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="Class" type="xsd:string"/>
+			<xsd:element name="StaffingShiftId" type="EntityIdType" minOccurs="0"/>
+			<xsd:element name="Multiplier" minOccurs="0" maxOccurs="unbounded">
+				<xsd:complexType>
+					<xsd:simpleContent>
+						<xsd:extension base="xsd:decimal">
+							<xsd:attribute name="percentIndicator" type="xsd:boolean" use="optional"/>
+						</xsd:extension>
+					</xsd:simpleContent>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="StartDate" type="AnyDateTimeNaType"/>
+			<xsd:element name="EndDate" type="AnyDateTimeNkType" minOccurs="0"/>
+			<xsd:element name="Description" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="RatesId" type="EntityIdType" minOccurs="0"/>
+			<xsd:element name="CustomerRateClassification" type="EntityIdType" minOccurs="0"/>
+			<xsd:element name="BillingMultiplier" minOccurs="0" maxOccurs="unbounded">
+				<xsd:complexType>
+					<xsd:simpleContent>
+						<xsd:extension base="xsd:decimal">
+							<xsd:attribute name="percentIndicator" type="xsd:boolean" use="required"/>
+						</xsd:extension>
+					</xsd:simpleContent>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="TimeWorkedRounding" type="TimeRoundingRuleType" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+		<xsd:attribute name="rateType" type="RateType" use="required"/>
+		<xsd:attribute name="rateStatus" type="RateStatusType" use="required"/>
+		<xsd:attribute ref="xml:lang"/>
+	</xsd:complexType>
+	<xsd:element name="Rates" type="RatesType"/>
+	<xsd:simpleType name="KnownRateType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="bill"/>
+			<xsd:enumeration value="expense"/>
+			<xsd:enumeration value="pay"/>
+			<xsd:enumeration value="minBillRate"/>
+			<xsd:enumeration value="maxBillRate"/>
+			<xsd:enumeration value="minPayRate"/>
+			<xsd:enumeration value="maxPayRate"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="RateType">
+		<xsd:union memberTypes="KnownRateType xsd:string"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="KnownRateStatus">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="proposed"/>
+			<xsd:enumeration value="agreed"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="RateStatusType">
+		<xsd:union memberTypes="KnownRateStatus xStringPatternExtensionType"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="KnownAmountPeriod">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="yearly"/>
+			<xsd:enumeration value="monthly"/>
+			<xsd:enumeration value="semi-monthly"/>
+			<xsd:enumeration value="weekly"/>
+			<xsd:enumeration value="biweekly"/>
+			<xsd:enumeration value="daily"/>
+			<xsd:enumeration value="hourly"/>
+			<xsd:enumeration value="fortnightly"/>
+			<xsd:enumeration value="perunit"/>
+			<xsd:enumeration value="flatfee"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="AmountPeriodType">
+		<xsd:union memberTypes="KnownAmountPeriod xStringPatternExtensionType"/>
+	</xsd:simpleType>
+</xsd:schema>

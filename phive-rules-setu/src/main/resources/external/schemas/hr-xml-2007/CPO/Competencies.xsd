@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://ns.hr-xml.org/2007-04-15" targetNamespace="http://ns.hr-xml.org/2007-04-15" elementFormDefault="qualified" version="2007-04-15">
+	<xsd:annotation>
+		<xsd:documentation>
+"Copyright  The HR-XML Consortium. All Rights Reserved. http://www.hr-xml.org"
+Name: Competencies.xsd
+Status: Recommendation
+Date this version: 2007-04-15
+Purpose: Defines the Competencies Schema
+Author(s):  Competencies Workgroup
+Documentation: Competencies.html
+
+Terms of license can be found in license.txt.
+
+Change History:
+2005-01
+As per Schema Design Guidelines, all default values have been removed.
+
+2004-09-14: Make Competency a global root type.
+
+</xsd:documentation>
+	</xsd:annotation>
+	<xsd:include schemaLocation="../CPO/DateTimeDataTypes.xsd"/>
+	<xsd:include schemaLocation="../CPO/UserArea.xsd"/>
+	<xsd:include schemaLocation="../CPO/xStringPatternExtensionType.xsd"/>
+	<xsd:include schemaLocation="../CPO/CompetencyTypes.xsd"/>
+	<xsd:element name="Competency" type="CompetencyType"/>
+	<xsd:element name="SupportingInformation" type="xsd:string"/>
+	<xsd:simpleType name="ExtendedWeightType">
+		<xsd:union memberTypes="CompetencyWeightType xStringPatternExtensionType"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="CompetencyWeightType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="levelOfInterest"/>
+			<xsd:enumeration value="skillLevel"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:complexType name="CompetencyType">
+		<xsd:sequence>
+			<xsd:element name="CompetencyId" minOccurs="0">
+				<xsd:complexType>
+		<xsd:attribute name="id" type="xsd:string" use="required"/>
+		<xsd:attribute name="idOwner" type="xsd:string"/>
+		<xsd:attribute name="description" type="xsd:string"/>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="TaxonomyId" minOccurs="0" maxOccurs="unbounded">
+				<xsd:complexType>
+		<xsd:attribute name="id" type="xsd:string" use="required"/>
+		<xsd:attribute name="idOwner" type="xsd:string"/>
+		<xsd:attribute name="description" type="xsd:string"/>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="CompetencyEvidence" minOccurs="0" maxOccurs="unbounded">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="EvidenceId" minOccurs="0">
+							<xsd:complexType>
+		<xsd:attribute name="id" type="xsd:string" use="required"/>
+		<xsd:attribute name="idOwner" type="xsd:string"/>
+		<xsd:attribute name="description" type="xsd:string"/>
+							</xsd:complexType>
+						</xsd:element>
+						<xsd:choice>
+							<xsd:element ref="NumericValue"/>
+							<xsd:element ref="StringValue"/>
+						</xsd:choice>
+						<xsd:element ref="SupportingInformation" minOccurs="0" maxOccurs="unbounded"/>
+					</xsd:sequence>
+					<xsd:attribute name="dateOfIncident" type="AnyDateTimeType"/>
+					<xsd:attribute name="name" type="xsd:string"/>
+					<xsd:attribute name="typeDescription" type="xsd:string"/>
+					<xsd:attribute name="expirationDate" type="AnyDateTimeType"/>
+					<xsd:attribute name="typeId" type="xsd:string"/>
+					<xsd:attribute name="required" type="xsd:boolean"/>
+					<xsd:attribute name="lastUsed" type="AnyDateTimeType"/>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="CompetencyWeight" minOccurs="0" maxOccurs="unbounded">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:choice>
+							<xsd:element ref="NumericValue"/>
+							<xsd:element ref="StringValue"/>
+						</xsd:choice>
+						<xsd:element ref="SupportingInformation" minOccurs="0" maxOccurs="unbounded"/>
+					</xsd:sequence>
+					<xsd:attribute name="type" type="ExtendedWeightType"/>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element ref="Competency" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="UserArea" minOccurs="0"/>
+		</xsd:sequence>
+		<xsd:attribute name="name" type="xsd:string"/>
+		<xsd:attribute name="description" type="xsd:string"/>
+		<xsd:attribute name="required" type="xsd:boolean"/>
+	</xsd:complexType>
+</xsd:schema>

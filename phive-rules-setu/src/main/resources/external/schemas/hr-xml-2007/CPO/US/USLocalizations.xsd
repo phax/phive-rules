@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns="http://ns.hr-xml.org/2007-04-15" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://ns.hr-xml.org/2007-04-15" elementFormDefault="qualified" version="2007-04-15">
+	<xsd:annotation>
+		<xsd:documentation>
+"Copyright  The HR-XML Consortium. All Rights Reserved. http://www.hr-xml.org"
+Name: USLocalizations.xsd
+Status: Recommendation
+Date this version: 2007-04-15
+Purpose: 
+Author(s): 
+Documentation: 
+
+Terms of license can be found in license.txt.
+
+</xsd:documentation>
+	</xsd:annotation>
+	<!-- FLSA Status -->
+	<xsd:element name="FLSAStatus" type="FLSAStatusEnumType"/>
+	<xsd:simpleType name="FLSAStatusEnumType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="exempt"/>
+			<xsd:enumeration value="non-exempt"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+</xsd:schema>

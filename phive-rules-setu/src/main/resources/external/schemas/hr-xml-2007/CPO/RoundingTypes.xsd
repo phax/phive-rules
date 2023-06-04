@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns="http://ns.hr-xml.org/2007-04-15" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://ns.hr-xml.org/2007-04-15" elementFormDefault="qualified" version="2007-04-15">
+	<xsd:annotation>
+		<xsd:documentation>
+"Copyright  The HR-XML Consortium. All Rights Reserved. http://www.hr-xml.org"
+Name: RoundingTypes.xsd
+Status: Draft
+Date this version: 2007-04-15
+Purpose: Defines the rounding rules
+Author(s): Kim Bartkus, SIDES workgroup
+
+Terms of license can be found in license.txt.
+
+round-down: The discarded digits are ignored; the result is unchanged (round toward 0, truncate): 
+1.123 --> 1.12 
+1.128 --> 1.12 
+1.125 --> 1.12 
+1.135 --> 1.13 
+
+round-half-up: If the discarded digits represent greater than or equal to half (0.5) then the result should be incremented by 1; otherwise the discarded digits are ignored: 
+1.123 --> 1.12 
+1.128 --> 1.13 
+1.125 --> 1.13 
+1.135 --> 1.14 
+
+round-half-even: If the discarded digits represent greater than half (0.5) then the result coefficient is incremented by 1; if they represent less than half, then the result is not adjusted; otherwise the result is unaltered if its rightmost digit is even, or incremented by 1 if its rightmost digit is odd (to make an even digit): 
+1.123 --> 1.12 
+1.128 --> 1.13 
+1.125 --> 1.12 
+1.135 --> 1.14 
+
+round-ceiling: Round toward positive infinity: If all of the discarded digits are zero or if the sign is negative the result is unchanged; otherwise, the result is incremented by 1 
+1.123 --> 1.13 
+1.128 --> 1.13 
+-1.123 --> -1.12 
+-1.128 --> -1.12 
+
+round-floor: Round toward negative infinty: If all of the discarded digits are zero or if the sign is positive the result is unchanged; otherwise, the absolute value of the result is incremented by 1 
+1.123 --> 1.12 
+1.128 --> 1.12 
+-1.123 --> -1.13 
+-1.128 --> -1.13 
+
+round-half-down: If the discarded digits represent greater than half (0.5) then the result is incremented by 1; otherwise the discarded digits are ignored: 
+1.123 --> 1.12 
+1.128 --> 1.13 
+1.125 --> 1.12 
+1.135 --> 1.13 
+
+round-up: Round away from 0: If all of the discarded digits are zero the result is unchanged, otherwise the result is incremented by 1 
+1.123 --> 1.13 
+1.128 --> 1.13 
+1.125 --> 1.13 
+1.135 --> 1.14 
+
+</xsd:documentation>
+	</xsd:annotation>
+	<xsd:include schemaLocation="../CPO/Frequencies.xsd"/>
+	<!-- Rounding Rule Types -->
+	<xsd:complexType name="RoundingRuleType">
+		<xsd:sequence>
+			<xsd:element name="RoundingMethod" type="RoundingRuleEnumType" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+		<xsd:attribute name="resultDigit" type="xsd:integer"/>
+	</xsd:complexType>
+	<!-- Time Rounding Rule Types -->
+	<xsd:complexType name="TimeRoundingRuleType">
+		<xsd:sequence>
+			<xsd:element name="TimeInterval" minOccurs="0">
+				<xsd:complexType>
+					<xsd:simpleContent>
+						<xsd:extension base="xsd:decimal">
+							<xsd:attribute name="roundingMethod" type="RoundingRuleEnumType"/>
+							<xsd:attribute name="unitOfTime" type="xsd:string"/>
+						</xsd:extension>
+					</xsd:simpleContent>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+		<xsd:attribute name="summaryCycle" type="FrequencyType"/>
+	</xsd:complexType>
+	<!-- Rounding List -->
+	<xsd:simpleType name="RoundingRuleEnumType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="RoundDown"/>
+			<xsd:enumeration value="RoundHalfDown"/>
+			<xsd:enumeration value="RoundUp"/>
+			<xsd:enumeration value="RoundHalfUp"/>
+			<xsd:enumeration value="RoundHalfEven"/>
+			<xsd:enumeration value="RoundCeiling"/>
+			<xsd:enumeration value="RoundFloor"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<!-- These elements are only used to create diagrams. May need to remove for name collision issues. -->
+	<xsd:element name="RoundingElements">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="Rounding" type="RoundingRuleType" minOccurs="0" maxOccurs="unbounded"/>
+				<xsd:sequence/>
+				<xsd:element name="TimeRounding" type="TimeRoundingRuleType" minOccurs="0" maxOccurs="unbounded"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+</xsd:schema>

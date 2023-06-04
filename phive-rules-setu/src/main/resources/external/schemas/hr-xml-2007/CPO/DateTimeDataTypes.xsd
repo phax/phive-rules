@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns="http://ns.hr-xml.org/2007-04-15" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://ns.hr-xml.org/2007-04-15" elementFormDefault="qualified" version="2007-04-15">
+	<xsd:annotation>
+		<xsd:documentation>
+Copyright  The HR-XML Consortium. All Rights Reserved. http://www.hr-xml.org
+Name: DateTimeDataTypes.xsd
+Status: Recommendation
+Date Approved: 2007-04-15
+Purpose: Defines Date and Time datatypes to be used in HR-XML Consortium work.  
+Author(s): Mark Marsden and Paul Kiel, Cross Process Work Group
+Documentation: DateTimeDataTypes.html
+
+Terms of license can be found in license.txt.
+
+</xsd:documentation>
+	</xsd:annotation>
+	<!--  ====================  Literal Types ==============================  -->
+	<xsd:simpleType name="NotKnownLiteral">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="notKnown"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="NotApplicableLiteral">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="notApplicable"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<!--  ====================  Local Date Types ==============================  -->
+	<xsd:simpleType name="LocalDateType">
+		<xsd:restriction base="xsd:date">
+			<xsd:pattern value="\d\d\d\d-\d\d-\d\d"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="LocalDateNkType">
+		<xsd:union memberTypes="LocalDateType NotKnownLiteral"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="LocalDateNaType">
+		<xsd:union memberTypes="LocalDateType NotApplicableLiteral"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="LocalDateNkNaType">
+		<xsd:union memberTypes="LocalDateType NotKnownLiteral NotApplicableLiteral"/>
+	</xsd:simpleType>
+	<!--  ====================  Date Types ====================================  -->
+	<xsd:simpleType name="DateType">
+		<xsd:restriction base="xsd:date">
+			<xsd:pattern value="\d\d\d\d-\d\d-\d\d(Z|(\+|-)\d\d:\d\d)"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="DateNkType">
+		<xsd:union memberTypes="DateType NotKnownLiteral"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="DateNaType">
+		<xsd:union memberTypes="DateType NotApplicableLiteral"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="DateNkNaType">
+		<xsd:union memberTypes="DateType NotKnownLiteral NotApplicableLiteral"/>
+	</xsd:simpleType>
+	<!--  ====================  Local Time Types ==============================  -->
+	<xsd:simpleType name="LocalTimeType">
+		<xsd:restriction base="xsd:time">
+			<xsd:pattern value="\d\d:\d\d:\d\d"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="LocalTimeNkType">
+		<xsd:union memberTypes="LocalTimeType NotKnownLiteral"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="LocalTimeNaType">
+		<xsd:union memberTypes="LocalTimeType NotApplicableLiteral"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="LocalTimeNkNaType">
+		<xsd:union memberTypes="LocalTimeType NotKnownLiteral NotApplicableLiteral"/>
+	</xsd:simpleType>
+	<!--  ====================  Time Types ===================================  -->
+	<xsd:simpleType name="TimeType">
+		<xsd:restriction base="xsd:time">
+			<xsd:pattern value="\d\d:\d\d:\d\d(Z|(\+|-)\d\d:\d\d)"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="TimeNkType">
+		<xsd:union memberTypes="TimeType NotKnownLiteral"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="TimeNaType">
+		<xsd:union memberTypes="TimeType NotApplicableLiteral"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="TimeNkNaType">
+		<xsd:union memberTypes="TimeType NotKnownLiteral NotApplicableLiteral"/>
+	</xsd:simpleType>
+	<!--  ====================  Local DateTime Types ===============================  -->
+	<xsd:simpleType name="LocalDateTimeType">
+		<xsd:restriction base="xsd:dateTime">
+			<xsd:pattern value="\d\d\d\d-\d\d-\d\dT\d\d:\d\d:\d\d"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="LocalDateTimeNkType">
+		<xsd:union memberTypes="LocalDateTimeType NotKnownLiteral"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="LocalDateTimeNaType">
+		<xsd:union memberTypes="LocalDateTimeType NotApplicableLiteral"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="LocalDateTimeNkNaType">
+		<xsd:union memberTypes="LocalDateTimeType NotKnownLiteral NotApplicableLiteral"/>
+	</xsd:simpleType>
+	<!--  ====================  DateTime Types ===================================  -->
+	<xsd:simpleType name="DateTimeType">
+		<xsd:restriction base="xsd:dateTime">
+			<xsd:pattern value="\d\d\d\d-\d\d-\d\dT\d\d:\d\d:\d\d(Z|(\+|-)\d\d:\d\d)"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="DateTimeNkType">
+		<xsd:union memberTypes="DateTimeType NotKnownLiteral"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="DateTimeNaType">
+		<xsd:union memberTypes="DateTimeType NotApplicableLiteral"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="DateTimeNkNaType">
+		<xsd:union memberTypes="DateTimeType NotKnownLiteral NotApplicableLiteral"/>
+	</xsd:simpleType>
+	<!--  ====================  Any DateTime Types ==============================  -->
+	<xsd:simpleType name="AnyDateTimeType">
+		<xsd:union memberTypes="LocalDateType DateType LocalDateTimeType DateTimeType"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="AnyDateTimeNkType">
+		<xsd:union memberTypes="LocalDateType DateType LocalDateTimeType DateTimeType NotKnownLiteral"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="AnyDateTimeNaType">
+		<xsd:union memberTypes="LocalDateType DateType LocalDateTimeType DateTimeType NotApplicableLiteral"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="AnyDateTimeNkNaType">
+		<xsd:union memberTypes="LocalDateType DateType LocalDateTimeType DateTimeType NotKnownLiteral NotApplicableLiteral"/>
+	</xsd:simpleType>
+</xsd:schema>

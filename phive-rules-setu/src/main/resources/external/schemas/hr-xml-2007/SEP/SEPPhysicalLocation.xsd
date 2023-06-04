@@ -1,0 +1,184 @@
+<?xml version="1.0"?>
+<xsd:schema targetNamespace="http://ns.hr-xml.org/2007-04-15" elementFormDefault="qualified" xmlns="http://ns.hr-xml.org/2007-04-15" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<xsd:annotation>
+		<xsd:documentation>
+"Copyright  The HR-XML Consortium. All Rights Reserved. http://www.hr-xml.org"
+Name: SEPPhysicalLocation.xsd
+Status: Recommendation
+Date this version: 2007-04-15
+Purpose: Defines physical location information.
+Author(s): Staffing Exchange Protocol Work Group
+Documentation: StaffingExchangeProtocol.html
+
+Terms of license can be found in license.txt.
+
+2004-06-07: The Consortium has subsequently issued a "PhysicalLocation" schema for use across the entire Consortium of schemas.  In a future release of Staffing Exchange Protocol, this schema "SEPPhysicalLocation" will be removed in favor of the aforementioned PhysicalLocation.  In order to maintain backward compatibility as well as avoid naming collisions, some elements and types have been scoped locally here in SEPPhysicalLocation.  No content models have been changed in any way.  This schema is hereby considered deprecated.
+
+</xsd:documentation>
+	</xsd:annotation>
+	<xsd:include schemaLocation="../CPO/PostalAddress.xsd"/>
+	<xsd:include schemaLocation="../CPO/ISOUtilities.xsd"/>
+	<xsd:include schemaLocation="../CPO/IdentifierTypes.xsd"/>
+	<xsd:include schemaLocation="../CPO/xStringPatternExtensionType.xsd"/>
+	<xsd:include schemaLocation="../CPO/PhysicalLocation.xsd"/>
+	<xsd:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="../../W3C/xml.xsd"/>
+	<xsd:complexType name="SEPPhysicalLocationType">
+		<xsd:sequence>
+			<xsd:element name="Id" type="EntityIdType" minOccurs="0"/>
+			<xsd:element name="Name" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="SpatialLocation" minOccurs="0">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="Latitude">
+							<xsd:annotation>
+								<xsd:documentation>[N|S]degree.minute.second.f, degree range [0-90], decimal fraction f in arbitrary length (ex. N60.08.00.235556)</xsd:documentation>
+							</xsd:annotation>
+							<xsd:simpleType>
+								<xsd:restriction base="xsd:string">
+									<xsd:pattern value="(\+|\-)((\d|[0-8]\d)\.([0-5]\d))((\.[0-5]\d\.\d+)|(\.[0-5]\d))?|90\.00\.00(\.0+)?">
+										<xsd:annotation>
+											<xsd:documentation>
+Pattern is generally of the form +DD.MM.SS  (D=degrees, M=minutes, S=seconds)
+
+Description of the pattern:
+1) '+' or '-' required unless the value is 90.00.00 
+	- if value is 90.00.00, then omit the '+' or '-'
+	- '+' means North, '-' means South
+2) A one-digit or two-digit number for degrees (range 0 to 89) - required 
+3) A dot (the decimal between degrees and minutes) - required
+4) A two-digit number for minutes (range 00 to 59) - required 
+5) A dot (the decimal between minutes and seconds) - optional
+6) A two-digit number for seconds (range 00 to 59) - optional
+     - if there is a dot in step 5, then there must be a two-digit number for seconds
+7) A dot (the decimal between seconds and parts of a second) - optional
+8) Digits for parts of a second (can be any number of digits) - optional
+     - if there is a dot in step 7, then there must be at least one digit after it
+
+Examples:
++0.00.00
++00.00.00
+90.00.00
+90.00.00.0
+-89.59.59
+-89.59
+-89.59.59.555
+
+
+Pattern breakdown: (D=degrees, M=minutes, S=seconds)
+(\+|\-)  (...see next line..)  |     90\.00\.00(\.0+)? <!-- choice of:  +(...DD.MM.SS pattern...) OR 90.00.00 -->
+((\d|[0-8]\d)\.([0-5]\d))  (...see next line..) <!-- D (0-9), DD (00-89), and MM (00-59) ranges defined, followed by ... -->
+((\.[0-5]\d\.\d+)   |   (\.[0-5]\d))?<!-- SS with decimal fractions of S *OR* SS without fractions of S *OR* no SS at all -->
+
+
+The original pattern (just for insurance):
+pattern value="(N|S)((\d|[0-8]\d)\.([0-5]\d)\.[0-5]\d(\.\d+)?)|90\.00\.00(\.0+)?" 
+
+
+			</xsd:documentation>
+										</xsd:annotation>
+									</xsd:pattern>
+								</xsd:restriction>
+							</xsd:simpleType>
+						</xsd:element>
+						<xsd:element name="Longitude">
+							<xsd:annotation>
+								<xsd:documentation>[E|W]degree.minute.second.f, degree range [0-180], decimal fraction f in arbitrary length (ex. E25.00.00)</xsd:documentation>
+							</xsd:annotation>
+							<xsd:simpleType>
+								<xsd:restriction base="xsd:string">
+									<xsd:pattern value="(\+|-)(\d|\d\d|[0-1][0-7]\d)\.([0-5]\d)((\.[0-5]\d\.\d+)|(\.[0-5]\d))?|180\.00\.00(\.0+)?">
+										<xsd:annotation>
+											<xsd:documentation>
+Pattern is generally of the form +DDD.MM.SS  (D=degrees, M=minutes, S=seconds)
+
+Description of the pattern:
+1) '+' or '-' required unless the value is 180.00.00 
+	- if 180.00.00, then omit the '+' or '-'
+	- '+' means East, '-' means West
+2) A one-digit, two-digit, or three-digit number for degrees (range 0 to 179) - required 
+3) A dot (the decimal between degrees and minutes) - required
+4) A two-digit number for minutes (range 00 to 59) - required
+5) A dot (the decimal between minutes and seconds) - optional
+6) A two-digit number for seconds (range 00 to 59) - optional
+     - if there is a dot in step 5, then there must be a two-digit number for seconds
+7) A dot (the decimal between seconds and parts of a second) - optional
+8) Digits for parts of a second (can be any number of digits) - optional
+     - if there is a dot in step 7, then there must be at least one digit after it
+
+Examples:
++0.00.00
++00.00.00
++000.00.00
+180.00.00
+180.00.00.0
+-179.59.59
+-40.59.59.555
+-40.59
+
+
+Pattern breakdown: (D=degrees, M=minutes, S=seconds)
+(\+|\-)  (...see next line..)  |     190\.00\.00(\.0+)? <!-- choice of:  +(...DDD.MM.SS pattern...) OR 180.00.00 -->
+(\d|\d\d|[0-1][0-7]\d)\.([0-5]\d)  (...see next line..) <!-- D (0-9), DD (00-99), DDD (000-179) and MM (00-59) ranges defined, followed by ... -->
+((\.[0-5]\d\.\d+)   |   (\.[0-5]\d))?<!-- SS with decimal fractions of S *OR* SS without fractions of S *OR* no SS at all -->
+
+ 
+The original pattern (just for insurance):
+pattern value="(E|W)((\d|\d\d|[0-1][0-7]\d)\.([0-5]\d)\.[0-5]\d(\.\d+)?)|180\.00\.00(\.0+)?" 
+			</xsd:documentation>
+										</xsd:annotation>
+									</xsd:pattern>
+								</xsd:restriction>
+							</xsd:simpleType>
+						</xsd:element>
+						<xsd:choice>
+							<xsd:element name="Altitude" type="xsd:decimal" minOccurs="0">
+								<xsd:annotation>
+									<xsd:documentation>[(+)|-]x.f meter from WGS-84 datum reference ellipsoid, + above, - below, decimal fraction f in arbitrary length (ex. +12 )</xsd:documentation>
+								</xsd:annotation>
+							</xsd:element>
+							<xsd:element name="AltitudeMeanSeaLevel" type="xsd:decimal" minOccurs="0">
+								<xsd:annotation>
+									<xsd:documentation>[(+)|-]x.f meter from mean sea level, + above, - below, decimal fraction f in arbitrary length (ex. +10 )</xsd:documentation>
+								</xsd:annotation>
+							</xsd:element>
+						</xsd:choice>
+						<xsd:element name="HorizontalAccuracy" type="NonNegativeDecimal" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation>by circle of radius from the positioned point in (+)x.f meter, decimal fraction f in arbitrary length (ex. 50.0)</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="VerticalAccuracy" type="NonNegativeDecimal" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation>in (+)x.f meter, decimal fraction f in arbitrary length (ex. 2.5)</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="TravelDirections" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="Area" type="AreaType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="PostalAddress" minOccurs="0"/>
+			<xsd:element name="Comments" type="xsd:string" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:simpleType name="AreaTypeType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="municipality"/>
+			<xsd:enumeration value="postalcode"/>
+			<xsd:enumeration value="countrycode"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:complexType name="AreaType">
+		<xsd:sequence>
+			<xsd:element name="Value" type="xsd:string"/>
+			<xsd:element name="Area" type="AreaType" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+		<xsd:attribute name="type">
+			<xsd:simpleType>
+				<xsd:union memberTypes="AreaTypeType xStringPatternExtensionType"/>
+			</xsd:simpleType>
+		</xsd:attribute>
+	</xsd:complexType>
+	<!-- This element is for display purposes only. It is used to create the schema diagram and definition tables. -->
+	<xsd:element name="SEPPhysicalLocation" type="SEPPhysicalLocationType"/>
+</xsd:schema>

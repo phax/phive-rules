@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns="http://ns.hr-xml.org/2007-04-15" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://ns.hr-xml.org/2007-04-15" elementFormDefault="qualified" version="2007-04-15">
+	<xsd:annotation>
+		<xsd:documentation>
+"Copyright  The HR-XML Consortium. All Rights Reserved. http://www.hr-xml.org"
+Name: PersonName.xsd
+Status: Recommendation
+Date this version: 2007-04-15
+Purpose: Defines the schema for PersonName
+Author(s): Paul Kiel, Kim Bartkus, CPO Workgroup
+Documentation: PersonName.html
+
+Change History:
+2005-01
+As per Schema Design Guidelines, all default values have been removed.
+
+2005-10 Kim Bartkus 
+Removed deprecated FormattedName type attribute and changed occurrence to 1.
+Removed deprecated Affix type attribute enumerations.
+Added script attribute to PersonName.
+Added AlternativeScript structure to PersonName.
+
+Terms of license can be found in license.txt.
+ 
+</xsd:documentation>
+	</xsd:annotation>
+	<xsd:complexType name="PersonNameType">
+		<xsd:sequence>
+			<xsd:element name="FormattedName" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="LegalName" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="GivenName" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="PreferredGivenName" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="MiddleName" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="FamilyName" minOccurs="0" maxOccurs="unbounded">
+				<xsd:complexType>
+					<xsd:simpleContent>
+						<xsd:extension base="xsd:string">
+							<xsd:attribute name="primary">
+								<xsd:simpleType>
+									<xsd:restriction base="xsd:string">
+										<xsd:enumeration value="true"/>
+										<xsd:enumeration value="false"/>
+										<xsd:enumeration value="undefined"/>
+									</xsd:restriction>
+								</xsd:simpleType>
+							</xsd:attribute>
+							<xsd:attribute name="prefix" type="xsd:string"/>
+						</xsd:extension>
+					</xsd:simpleContent>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="Affix" minOccurs="0" maxOccurs="unbounded">
+				<xsd:complexType>
+					<xsd:simpleContent>
+						<xsd:extension base="xsd:string">
+							<xsd:attribute name="type" use="required">
+								<xsd:simpleType>
+									<xsd:restriction base="xsd:string">
+										<xsd:enumeration value="aristocraticTitle"/>
+										<xsd:enumeration value="formOfAddress"/>
+										<xsd:enumeration value="generation"/>
+										<xsd:enumeration value="qualification"/>
+									</xsd:restriction>
+								</xsd:simpleType>
+							</xsd:attribute>
+						</xsd:extension>
+					</xsd:simpleContent>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="AlternateScript" minOccurs="0" maxOccurs="unbounded">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="FormattedName" type="xsd:string" minOccurs="0"/>
+						<xsd:element name="LegalName" type="xsd:string" minOccurs="0"/>
+						<xsd:element name="GivenName" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+						<xsd:element name="PreferredGivenName" type="xsd:string" minOccurs="0"/>
+						<xsd:element name="MiddleName" type="xsd:string" minOccurs="0"/>
+						<xsd:element name="FamilyName" minOccurs="0" maxOccurs="unbounded">
+							<xsd:complexType>
+								<xsd:simpleContent>
+									<xsd:extension base="xsd:string">
+										<xsd:attribute name="primary">
+											<xsd:simpleType>
+												<xsd:restriction base="xsd:string">
+													<xsd:enumeration value="true"/>
+													<xsd:enumeration value="false"/>
+													<xsd:enumeration value="undefined"/>
+												</xsd:restriction>
+											</xsd:simpleType>
+										</xsd:attribute>
+										<xsd:attribute name="prefix" type="xsd:string"/>
+									</xsd:extension>
+								</xsd:simpleContent>
+							</xsd:complexType>
+						</xsd:element>
+						<xsd:element name="Affix" minOccurs="0" maxOccurs="unbounded">
+							<xsd:complexType>
+								<xsd:simpleContent>
+									<xsd:extension base="xsd:string">
+										<xsd:attribute name="type" use="required">
+											<xsd:simpleType>
+												<xsd:restriction base="xsd:string">
+													<xsd:enumeration value="aristocraticTitle"/>
+													<xsd:enumeration value="formOfAddress"/>
+													<xsd:enumeration value="generation"/>
+													<xsd:enumeration value="qualification"/>
+												</xsd:restriction>
+											</xsd:simpleType>
+										</xsd:attribute>
+									</xsd:extension>
+								</xsd:simpleContent>
+							</xsd:complexType>
+						</xsd:element>
+					</xsd:sequence>
+					<xsd:attribute name="script" type="xsd:string"/>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+		<xsd:attribute name="script" type="xsd:string"/>
+	</xsd:complexType>
+	<xsd:element name="PersonName" type="PersonNameType"/>
+</xsd:schema>

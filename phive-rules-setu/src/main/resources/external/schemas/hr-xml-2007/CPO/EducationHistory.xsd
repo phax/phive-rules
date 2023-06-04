@@ -1,0 +1,821 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2005 sp1 U (http://www.xmlspy.com) by Kim Bartkus (private) -->
+<xsd:schema xmlns="http://ns.hr-xml.org/2007-04-15" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://ns.hr-xml.org/2007-04-15" elementFormDefault="qualified" version="2007-04-15">
+	<xsd:annotation>
+		<xsd:documentation>
+"Copyright  The HR-XML Consortium. All Rights Reserved. http://www.hr-xml.org"
+Name: EducationHistory.xsd
+Status: Recommendation
+Date this version: 2007-04-15
+Purpose: Defines the EducationHistory Schema
+Author(s):  
+Documentation: EducationHistory.html
+
+Change History:
+2005-01
+As per Schema Design Guidelines, all default values have been removed.
+
+2005-08-08: Kim Bartkus removed duplicate enumeration - vocational.
+
+2005-11-08: Renamed SchoolNameType to SchoolDataType.  Renamed SchoolNameTypes to SchoolTypeType.  Reflects TSC naming conventions.
+
+Terms of license can be found in license.txt.
+
+</xsd:documentation>
+	</xsd:annotation>
+	<xsd:include schemaLocation="../CPO/Competencies.xsd"/>
+	<xsd:include schemaLocation="../CPO/IdentifierTypes.xsd"/>
+	<xsd:include schemaLocation="../CPO/PersonName.xsd"/>
+	<xsd:include schemaLocation="../CPO/DateTimeDataTypes.xsd"/>
+	<xsd:include schemaLocation="../CPO/ContactMethod.xsd"/>
+	<xsd:include schemaLocation="../CPO/TelcomNumber.xsd"/>
+	<xsd:include schemaLocation="../CPO/OnlineAddress.xsd"/>
+	<xsd:include schemaLocation="../CPO/PostalAddress.xsd"/>
+	<xsd:include schemaLocation="../CPO/UserArea.xsd"/>
+	<xsd:include schemaLocation="../CPO/FlexibleDates.xsd"/>
+	<xsd:include schemaLocation="../CPO/ISOUtilities.xsd"/>
+	<xsd:include schemaLocation="../CPO/xStringPatternExtensionType.xsd"/>
+	<xsd:element name="EducationHistory" type="EducationHistoryType"/>
+	<xsd:complexType name="SchoolOrInstitutionType">
+		<xsd:sequence>
+			<xsd:element name="SchoolName" type="xsd:string" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Deprecated in favor of the School / SchoolName path.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="School" type="SchoolDataType" minOccurs="0" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation>School, College or institution attended.  Associated type attribute further qualifies the name as current, prior,  degree or joint.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="LocationSummary" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Summarized location of the entity. </xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="Municipality" type="xsd:string" minOccurs="0"/>
+						<xsd:element name="Region" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+						<xsd:element ref="CountryCode" minOccurs="0"/>
+						<xsd:element name="PostalCode" type="xsd:string" minOccurs="0"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element ref="PostalAddress" minOccurs="0"/>
+			<xsd:element name="OrganizationUnit" minOccurs="0" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation>The campus, department or other organizational unit for the educational institution. </xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:simpleContent>
+						<xsd:extension base="xsd:string">
+							<xsd:attribute name="organizationType" type="OrgTypeStringExtensionType" use="required"/>
+							<xsd:attribute name="attendanceStatus" use="optional">
+								<xsd:simpleType>
+									<xsd:restriction base="xsd:string">
+										<xsd:enumeration value="current"/>
+										<xsd:enumeration value="prior"/>
+										<xsd:enumeration value="unknown"/>
+									</xsd:restriction>
+								</xsd:simpleType>
+							</xsd:attribute>
+						</xsd:extension>
+					</xsd:simpleContent>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="Degree" minOccurs="0" maxOccurs="unbounded">
+				<xsd:complexType>
+					<xsd:complexContent>
+						<xsd:extension base="EduDegreeType"/>
+					</xsd:complexContent>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="Major" type="xsd:string" minOccurs="0" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation>Deprecated in favor of Degree construct.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Minor" type="xsd:string" minOccurs="0" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation>Deprecated in favor of Degree construct.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Measure" type="EduMeasureType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Deprecated in favor of Degree construct.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="DatesOfAttendance" type="DeprecatedDatesOfAttendanceType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Deprecated in favor of Degree construct.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Comments" type="xsd:string" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Deprecated in favor of Degree construct.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="ISCEDInstitutionClassification" type="ISCEDInstitutionClassificationType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>This construct replaces the deprecated schoolType attribute.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="LocalInstitutionClassification" type="ClassificationType" minOccurs="0" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation>This construct replaces the deprecated schoolType attribute.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element ref="UserArea" minOccurs="0"/>
+		</xsd:sequence>
+		<xsd:attribute name="schoolType" type="SchoolTypeStringExtensionType" use="required">
+			<xsd:annotation>
+				<xsd:documentation>Deprecated in favor of ISCEDInstitutionClassification and LocalInstitutionClassification.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+	</xsd:complexType>
+	<xsd:complexType name="SchoolDataType">
+		<xsd:sequence>
+			<xsd:element name="InternetDomainName" type="InternetDomainNameType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="SchoolId" type="EntityIdType" minOccurs="0" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation>Identifier of the School, College or institution attended.  Associated type attribute further qualifies the name as current, prior,  degree or joint.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="SchoolName" type="xsd:string" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>School, College or institution attended.  Associated type attribute further qualifies the name as current, prior,  degree or joint.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+		<xsd:attribute name="type" type="SchoolTypeType" use="optional"/>
+	</xsd:complexType>
+	<xsd:complexType name="EduDegreeType">
+		<xsd:sequence>
+			<xsd:element name="DegreeName" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>The subject studied, as expressed on the diploma.</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:simpleContent>
+						<xsd:extension base="xsd:string">
+							<xsd:attribute name="academicHonors" type="xsd:string" use="optional"/>
+							<xsd:attribute name="honorsProgram" type="xsd:string" use="optional"/>
+						</xsd:extension>
+					</xsd:simpleContent>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="DegreeDate" type="FlexibleDatesType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>The date the person received their degree. </xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="OtherHonors" minOccurs="0" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation>The name of any other honors, such as Phi Beta Kappa, etc. that the student may have received.</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:simpleContent>
+						<xsd:extension base="xsd:string">
+							<xsd:attribute name="type" type="xsd:string" use="optional"/>
+						</xsd:extension>
+					</xsd:simpleContent>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="DegreeMajor" type="MajorType" minOccurs="0" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation>The official names of any and all major courses of study associated with the student's degree title.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="DegreeMinor" type="MinorType" minOccurs="0" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation>If applicable, these fields should be used to reflect the official names of any and all minor courses of study associated with the student's degree title.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="DegreeMeasure" type="EducationalMeasureType" minOccurs="0"/>
+			<xsd:element name="DatesOfAttendance" type="DatesOfAttendanceType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="Comments" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="DegreeClassification" type="ClassificationType" minOccurs="0" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation>This construct replaces the deprecated degreeType attribute, which was a union of degreeTypes, degreeCodeTypes, graduationCodeTypes, and a string.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element ref="UserArea" minOccurs="0"/>
+		</xsd:sequence>
+		<xsd:attribute name="degreeType" type="DegreeTypeStringExtensionType" use="optional">
+			<xsd:annotation>
+				<xsd:documentation>Deprecated in favor of DegreeClassification.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute name="examPassed" type="xsd:boolean" use="optional"/>
+		<xsd:attribute name="graduatingDegree" type="GraduatingDegreeType" use="optional"/>
+	</xsd:complexType>
+	<xsd:complexType name="MajorType">
+		<xsd:sequence>
+			<xsd:element name="ProgramId" type="EntityIdType" minOccurs="0" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation>Identifier reflecting the program code(s) associated with any Major course of Study.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="DegreeConcentration" type="xsd:string" minOccurs="0" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation>Reflects the official names of any and all major concentrations associated with the student's degree title. For example, a Math major may have an Applied Math concentration even though this area of concentration is not required to pursue a Math major.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Name" type="xsd:string" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation>Reflects the official names of any and all major courses of study associated with the student's degree title.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Option" type="xsd:string" minOccurs="0" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation>Reflects the official names of any and all major options associated with the student's degree title. For example, a particular institution may require their Engineering majors to select either a Mechanical Engineering option or a Structural Engineering option.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="MinorType">
+		<xsd:sequence>
+			<xsd:element name="ProgramId" type="EntityIdType" minOccurs="0" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation>Identifier reflecting the program code(s) associated with any Minor course of Study.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Name" type="xsd:string" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation>Reflects the official names of any and all minor courses of study associated with the student's degree title.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="DeprecatedDatesOfAttendanceType">
+		<xsd:annotation>
+			<xsd:documentation>This type is the same as the DatesOfAttendanceType, except it is an unbounded sequence.  This remains for backward compatibility only.  </xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence maxOccurs="unbounded">
+			<xsd:element name="StartDate" type="FlexibleDatesType"/>
+			<xsd:element name="EndDate" type="FlexibleDatesType" minOccurs="0"/>
+		</xsd:sequence>
+		<xsd:attribute name="enrollmentStatus" type="xsd:string" use="optional"/>
+		<xsd:attribute name="currentlyEnrolled" type="xsd:boolean" use="optional"/>
+		<xsd:attribute name="studentInGoodStanding" type="xsd:boolean" use="optional"/>
+	</xsd:complexType>
+	<xsd:complexType name="DatesOfAttendanceType">
+		<xsd:sequence>
+			<xsd:element name="StartDate" type="FlexibleDatesType"/>
+			<xsd:element name="EndDate" type="FlexibleDatesType" minOccurs="0"/>
+		</xsd:sequence>
+		<xsd:attribute name="enrollmentStatus" type="xsd:string" use="optional"/>
+		<xsd:attribute name="currentlyEnrolled" type="xsd:boolean" use="optional"/>
+		<xsd:attribute name="studentInGoodStanding" type="xsd:boolean" use="optional"/>
+	</xsd:complexType>
+	<!--  String Extensions -->
+	<xsd:simpleType name="degreeCodeTypes">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="B17">
+				<xsd:annotation>
+					<xsd:documentation>Did not complete secondary school</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="B18">
+				<xsd:annotation>
+					<xsd:documentation>Standard high school diploma</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="B19">
+				<xsd:annotation>
+					<xsd:documentation>Advanced or honors diploma</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="B20">
+				<xsd:annotation>
+					<xsd:documentation>Vocational diploma</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="B21">
+				<xsd:annotation>
+					<xsd:documentation>Special education diploma</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="B22">
+				<xsd:annotation>
+					<xsd:documentation>Certificate of completion or attendance</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="B23">
+				<xsd:annotation>
+					<xsd:documentation>Special certificate of completion</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="B24">
+				<xsd:annotation>
+					<xsd:documentation>General Education Development Diploma (GED)</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="B25">
+				<xsd:annotation>
+					<xsd:documentation>Other high school equivalency diploma</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="B26">
+				<xsd:annotation>
+					<xsd:documentation>International diploma or certificate (such as International Baccalaureate)</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="graduationCodeTypes">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="2.1">
+				<xsd:annotation>
+					<xsd:documentation>Postsecondary Certificate Or Diploma (less than one year)</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="2.2">
+				<xsd:annotation>
+					<xsd:documentation>Postsecondary Certificate Or Diploma (one year or more but less than four years)</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="2.3">
+				<xsd:annotation>
+					<xsd:documentation>Associate Degree (e.g., Associate In Arts, Associate In Science, Associate In Applied Science)</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="2.4">
+				<xsd:annotation>
+					<xsd:documentation>Baccalaureate Degree</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="2.5">
+				<xsd:annotation>
+					<xsd:documentation>Baccalaureate (Honours) Degree</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="2.6">
+				<xsd:annotation>
+					<xsd:documentation>Postsecondary Certificate Or Diploma (one year or more but less than two years)</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="2.7">
+				<xsd:annotation>
+					<xsd:documentation>Postsecondary Certificate Or Diploma (two years or more but less than four years)</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="3.1">
+				<xsd:annotation>
+					<xsd:documentation>First Professional Degree</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="3.2">
+				<xsd:annotation>
+					<xsd:documentation>Post-Professional Degree</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="4.1">
+				<xsd:annotation>
+					<xsd:documentation>Graduate Certificate</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="4.2">
+				<xsd:annotation>
+					<xsd:documentation>Master's Degree</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="4.3">
+				<xsd:annotation>
+					<xsd:documentation>Intermediate Graduate Degree</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="4.4">
+				<xsd:annotation>
+					<xsd:documentation>Doctoral Degree</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="4.5">
+				<xsd:annotation>
+					<xsd:documentation>Post-Doctoral Degree</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="degreeTypes">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="secondary"/>
+			<xsd:enumeration value="high school or equivalent"/>
+			<xsd:enumeration value="some high school or equivalent"/>
+			<xsd:enumeration value="HND/HNC or equivalent"/>
+			<xsd:enumeration value="vocational"/>
+			<xsd:enumeration value="certification"/>
+			<xsd:enumeration value="some college"/>
+			<xsd:enumeration value="associates"/>
+			<xsd:enumeration value="bachelors"/>
+			<xsd:enumeration value="some post-graduate"/>
+			<xsd:enumeration value="masters"/>
+			<xsd:enumeration value="doctorate"/>
+			<xsd:enumeration value="postdoctorate"/>
+			<xsd:enumeration value="professional"/>
+			<xsd:enumeration value="postprofessional"/>
+			<xsd:enumeration value="intermediategraduate"/>
+			<xsd:enumeration value="specialeducation"/>
+			<xsd:enumeration value="ged"/>
+			<xsd:enumeration value="international"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="DegreeTypeStringExtensionType">
+		<xsd:union memberTypes="degreeTypes degreeCodeTypes graduationCodeTypes xsd:string"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="orgTypes">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="department"/>
+			<xsd:enumeration value="subSchool"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="OrgTypeStringExtensionType">
+		<xsd:union memberTypes="orgTypes xsd:string"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="schoolTypes">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="highschool"/>
+			<xsd:enumeration value="secondary"/>
+			<xsd:enumeration value="trade"/>
+			<xsd:enumeration value="community"/>
+			<xsd:enumeration value="college"/>
+			<xsd:enumeration value="university"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="SchoolTypeStringExtensionType">
+		<xsd:union memberTypes="schoolTypes xsd:string"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="AcademicCreditCodeType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="A">
+				<xsd:annotation>
+					<xsd:documentation>Adult Credits</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="C">
+				<xsd:annotation>
+					<xsd:documentation>Continuing Education Unit</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="G">
+				<xsd:annotation>
+					<xsd:documentation>Carnegie Units</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="N">
+				<xsd:annotation>
+					<xsd:documentation>No Credit</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Q">
+				<xsd:annotation>
+					<xsd:documentation>Quarter Hour Credit</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="S">
+				<xsd:annotation>
+					<xsd:documentation>Semester Hour Credit</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="U">
+				<xsd:annotation>
+					<xsd:documentation>Units</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="V">
+				<xsd:annotation>
+					<xsd:documentation>Vocational Credits</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="X">
+				<xsd:annotation>
+					<xsd:documentation>Other Type of Credit</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="CourseLevelCodeType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="1">
+				<xsd:annotation>
+					<xsd:documentation>Remedial</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="2">
+				<xsd:annotation>
+					<xsd:documentation>Basic</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="3">
+				<xsd:annotation>
+					<xsd:documentation>Teacher's Aide</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="4">
+				<xsd:annotation>
+					<xsd:documentation>General</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="5">
+				<xsd:annotation>
+					<xsd:documentation>Applied</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="6">
+				<xsd:annotation>
+					<xsd:documentation>Survey</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="7">
+				<xsd:annotation>
+					<xsd:documentation>Regular</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="8">
+				<xsd:annotation>
+					<xsd:documentation>Specialized Topics</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="9">
+				<xsd:annotation>
+					<xsd:documentation>Advanced</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="10">
+				<xsd:annotation>
+					<xsd:documentation>Honors</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="11">
+				<xsd:annotation>
+					<xsd:documentation>Gifted and Talented</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="12">
+				<xsd:annotation>
+					<xsd:documentation>Advanced Placement</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="13">
+				<xsd:annotation>
+					<xsd:documentation>Special Education</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="14">
+				<xsd:annotation>
+					<xsd:documentation>Vocational Education</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="15">
+				<xsd:annotation>
+					<xsd:documentation>Independent Study</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="16">
+				<xsd:annotation>
+					<xsd:documentation>Work Experience</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="17">
+				<xsd:annotation>
+					<xsd:documentation>Adult Basic</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="18">
+				<xsd:annotation>
+					<xsd:documentation>Adult Secondary</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="19">
+				<xsd:annotation>
+					<xsd:documentation>International Baccalaureate</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="A">
+				<xsd:annotation>
+					<xsd:documentation>Summary of all courses taken at all institutions</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="AR">
+				<xsd:annotation>
+					<xsd:documentation>Academic Renewal</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="B">
+				<xsd:annotation>
+					<xsd:documentation>Summary of all courses taken at sending institution</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="D">
+				<xsd:annotation>
+					<xsd:documentation>Dual Level (Upper Division and Graduate)</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="DL">
+				<xsd:annotation>
+					<xsd:documentation>Dual Level (Graduate and Professional)</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="E">
+				<xsd:annotation>
+					<xsd:documentation>Summary of All Courses Taken at All Institutions, excluding Repeated and/or Forgiven Courses</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="F">
+				<xsd:annotation>
+					<xsd:documentation>Summary of All Courses Taken at the Sending Institution, Excluding Repeated and/or Forgiven Courses</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="G">
+				<xsd:annotation>
+					<xsd:documentation>Graduate (postsecondary)</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="H">
+				<xsd:annotation>
+					<xsd:documentation>Higher or Upper division (postsecondary)</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="I">
+				<xsd:annotation>
+					<xsd:documentation>Institutional Credit</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="L">
+				<xsd:annotation>
+					<xsd:documentation>Lower division (postsecondary)</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="M">
+				<xsd:annotation>
+					<xsd:documentation>Work in the Major or Program</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="P">
+				<xsd:annotation>
+					<xsd:documentation>Professional</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="R">
+				<xsd:annotation>
+					<xsd:documentation>Remedial (postsecondary)</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="T">
+				<xsd:annotation>
+					<xsd:documentation>Summary of Transfer Work Only</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="U">
+				<xsd:annotation>
+					<xsd:documentation>Undergraduate (postsecondary)</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="V">
+				<xsd:annotation>
+					<xsd:documentation>Summary of Transfer Work Only, Excluding Repeated and/or Forgiven Courses</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:complexType name="MeasureValueType">
+		<xsd:choice>
+			<xsd:element ref="NumericValue"/>
+			<xsd:element ref="StringValue"/>
+		</xsd:choice>
+	</xsd:complexType>
+	<xsd:complexType name="EduMeasureType">
+		<xsd:sequence>
+			<xsd:element name="MeasureSystem" type="xsd:string"/>
+			<xsd:element name="MeasureValue" type="xsd:string"/>
+		</xsd:sequence>
+		<xsd:attribute name="measureType" type="xsd:string" use="required"/>
+	</xsd:complexType>
+	<xsd:complexType name="EducationMeasureType">
+		<xsd:sequence>
+			<xsd:element name="MeasureSystem" type="xsd:string" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Identifies the measurement system.  i.e. GPA</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="MeasureValue" type="MeasureValueType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>The grade point average of a student.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="LowestPossibleValue" type="MeasureValueType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>The value specifying the minimum of the measurement range</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="HighestPossibleValue" type="MeasureValueType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>The value specifying the maximum of the measurement range</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="ExcessiveValueIndicator" type="xsd:boolean" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>This is a code indicating that an A+ grade has a value higher than the highest possible GPA.  False - It is not possible to have a higher GPA than indicated in Range Maximum.  True - It is possible to have a higher GPA than indicated in Range Maximum.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="GoodStudentIndicator" type="xsd:boolean" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="EducationalMeasureType">
+		<xsd:sequence>
+			<xsd:element name="EducationalMeasure" type="EducationMeasureType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Identifies the measurement system.  i.e. GPA</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="AcademicCreditCode" type="AcademicCreditCodeType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Code indicating the type of credit used (awarded) by the institution.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="CourseLevelCode" type="CourseLevelCodeType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Code indicating the level or type or both, of work which is reflected in the grade average and the credit hours</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="CumulativeSummaryIndicator" type="xsd:boolean" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>If True, this is a summary of all work included in the record.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="AcademicCreditHoursIncluded" type="xsd:decimal" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>This is the total number of credits (or credit hours) included in the grade point average for this particular summary. Inclusion or exclusion of certain credits depends on the policy of the sending institution.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="AcademicCreditHoursAttempted" type="xsd:decimal" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>This is the total number of credits (credit hours) included on the record for this particular summary. This would normally be all credits for which the student paid, whether or not the credits were used to calculate the grade point average. Examples of credit hours to be included, if available, are credits for which non-punitive grades such as "I" or "W" or "Audit" were awarded.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="AcademicCreditHoursEarned" type="xsd:decimal" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>This is the total number of credits (credit hours) attemptedand earned and included in this summary.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="ClassRank" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>This is a student's numerical class rank with the highest student in the class having a rank or position of 1</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:simpleContent>
+						<xsd:extension base="xsd:integer">
+							<xsd:attribute name="numberOfStudents" type="xsd:integer" use="optional"/>
+						</xsd:extension>
+					</xsd:simpleContent>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+		<xsd:attribute name="measureType" type="xsd:string" use="optional"/>
+	</xsd:complexType>
+	<xsd:simpleType name="SchoolTypeType">
+		<xsd:annotation>
+			<xsd:documentation>Further refines the name of the institution. </xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="current"/>
+			<xsd:enumeration value="prior"/>
+			<xsd:enumeration value="joint"/>
+			<xsd:enumeration value="degree"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:complexType name="EducationHistoryType">
+		<xsd:sequence>
+			<xsd:element name="SchoolOrInstitution" maxOccurs="unbounded">
+				<xsd:complexType>
+					<xsd:complexContent>
+						<xsd:extension base="SchoolOrInstitutionType"/>
+					</xsd:complexContent>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:simpleType name="GraduatingDegreeType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="graduating"/>
+			<xsd:enumeration value="qualifying"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:complexType name="ClassificationType">
+		<xsd:sequence>
+			<xsd:element name="Id" type="EntityIdType" minOccurs="0"/>
+			<xsd:element name="Description" type="xsd:string" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:simpleType name="ISCEDInstitutionClassificationType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="0"/>
+			<xsd:enumeration value="1"/>
+			<xsd:enumeration value="2"/>
+			<xsd:enumeration value="3"/>
+			<xsd:enumeration value="4"/>
+			<xsd:enumeration value="5"/>
+			<xsd:enumeration value="6"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+</xsd:schema>

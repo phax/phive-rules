@@ -1,0 +1,114 @@
+<?xml version="1.0"?>
+<xsd:schema targetNamespace="http://ns.hr-xml.org/2007-04-15" xmlns="http://ns.hr-xml.org/2007-04-15" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" version="2007-04-15">
+	<xsd:annotation>
+		<xsd:documentation>
+"Copyright  The HR-XML Consortium. All Rights Reserved. http://www.hr-xml.org"
+Name: PhysicalLocation.xsd
+Status: Recommendation
+Date this version: 2007-04-15
+Purpose: To describe a physical location.
+Author(s): CPO Work Group
+Documentation: PhysicalLocation.html
+
+Terms of license can be found in license.txt.
+
+</xsd:documentation>
+	</xsd:annotation>
+	<xsd:include schemaLocation="../CPO/PostalAddress.xsd"/>
+	<xsd:include schemaLocation="../CPO/ISOUtilities.xsd"/>
+	<xsd:include schemaLocation="../CPO/IdentifierTypes.xsd"/>
+	<xsd:include schemaLocation="../CPO/xStringPatternExtensionType.xsd"/>
+	<xsd:include schemaLocation="../CPO/DateTimeDataTypes.xsd"/>
+	<xsd:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="../../W3C/xml.xsd"/>
+	<xsd:element name="PhysicalLocation" type="PhysicalLocationType"/>
+	<xsd:element name="SpatialLocation" type="SpatialLocationType"/>
+	<xsd:complexType name="PhysicalLocationType">
+		<xsd:sequence>
+			<xsd:element name="Id" type="EntityIdType" minOccurs="0"/>
+			<xsd:element name="Name" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="EffectiveDate" minOccurs="0">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="StartDate" type="LocalDateNkNaType" minOccurs="0"/>
+						<xsd:element name="EndDate" type="LocalDateNkNaType" minOccurs="0"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element ref="SpatialLocation" minOccurs="0"/>
+			<xsd:element name="TravelDirections" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="PostalAddress" minOccurs="0"/>
+			<xsd:element name="Area" type="LocationAreaType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="Comments" type="xsd:string" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="SpatialLocationType">
+		<xsd:sequence>
+			<xsd:element name="Latitude" type="LatitudeType"/>
+			<xsd:element name="Longitude" type="LongitudeType"/>
+			<xsd:choice>
+				<xsd:element name="Altitude" type="xsd:decimal" minOccurs="0">
+					<xsd:annotation>
+						<xsd:documentation>[(+)|-]x.f meter from WGS-84 datum reference ellipsoid, + above, - below, decimal fraction f in arbitrary length (ex. +12 )</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+				<xsd:element name="AltitudeMeanSeaLevel" type="xsd:decimal" minOccurs="0">
+					<xsd:annotation>
+						<xsd:documentation>[(+)|-]x.f meter from mean sea level, + above, - below, decimal fraction f in arbitrary length (ex. +10 )</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
+			</xsd:choice>
+			<xsd:element name="HorizontalAccuracy" type="NonNegativeDecimal" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>by circle of radius from the positioned point in (+)x.f meter, decimal fraction f in arbitrary length (ex. 50.0)</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="VerticalAccuracy" type="NonNegativeDecimal" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>in (+)x.f meter, decimal fraction f in arbitrary length (ex. 2.5)</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:simpleType name="NonNegativeDecimal">
+		<xsd:restriction base="xsd:decimal">
+			<xsd:minInclusive value="0"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="LatitudeType">
+		<xsd:annotation>
+			<xsd:documentation>Negative numbers are degrees South Latitude, and positive numbers are degrees North Latitude.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:decimal">
+			<xsd:minInclusive value="-90.0"/>
+			<xsd:maxInclusive value="90.0"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="LongitudeType">
+		<xsd:annotation>
+			<xsd:documentation>Negative numbers are degrees West Longitude, and positive numbers are degrees East Longitude.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:decimal">
+			<xsd:minInclusive value="-180.0"/>
+			<xsd:maxInclusive value="180.0"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="LocationAreaTypeType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="municipality"/>
+			<xsd:enumeration value="postalcode"/>
+			<xsd:enumeration value="countrycode"/>
+			<xsd:enumeration value="region"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:complexType name="LocationAreaType">
+		<xsd:sequence>
+			<xsd:element name="Description" type="xsd:string"/>
+			<xsd:element name="Area" type="LocationAreaType" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+		<xsd:attribute name="type">
+			<xsd:simpleType>
+				<xsd:union memberTypes="LocationAreaTypeType xStringPatternExtensionType"/>
+			</xsd:simpleType>
+		</xsd:attribute>
+	</xsd:complexType>
+</xsd:schema>

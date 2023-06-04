@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2005 sp1 U (http://www.xmlspy.com) by Kim Bartkus (private) -->
+<xsd:schema xmlns="http://ns.hr-xml.org/2007-04-15" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://ns.hr-xml.org/2007-04-15" elementFormDefault="qualified" version="2007-04-15">
+	<xsd:include schemaLocation="../../SIDES/FR/FRLocalizations.xsd"/>
+	<xsd:annotation>
+		<xsd:documentation>
+"Copyright  The HR-XML Consortium. All Rights Reserved. http://www.hr-xml.org"
+Name: 
+Status: 
+Date this version: 
+Purpose: 
+Author(s): Takahiro Fujiwara
+Documentation: 
+
+Terms of license can be found in license.txt.
+
+2006-03-07 Takahiro Fujiwara
+			IsNotParticipating - remove default setting in accordance with TSC guide "Removing default values from xml schemas".
+
+</xsd:documentation>
+	</xsd:annotation>
+	<!-- Localized Staffing Limits -->
+	<!-- Localization entry point in the StaffingPositionHeader -->
+	<xsd:complexType name="JPStaffingPositionInfoType">
+		<xsd:sequence>
+			<xsd:element name="NoLimitStaffing" type="NoLimitStaffingType" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<!-- 2006-04-19 Takahiro Fujiwara [NoLimitStaffing] -->
+	<xsd:complexType name="NoLimitStaffingType">
+		<xsd:annotation>
+			<xsd:documentation>a Job that has no legal restriction of the period.  There are 5 job types and 1 for special cases.  Some job types need further detailed information.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:choice minOccurs="0">
+			<xsd:element name="ProjectWithPeriod" type="ProjectWithPeriodType"/>
+			<xsd:element name="WorkWithPeriod" type="WorkWithPeriodType"/>
+			<xsd:element name="Leave" type="AnyLeaveType"/>
+			<xsd:element name="SpecialCases" type="SpecialCasesType"/>
+		</xsd:choice>
+		<xsd:attribute name="type" type="NoLimitStaffingEnumType" use="required"/>
+	</xsd:complexType>
+	<xsd:simpleType name="NoLimitStaffingEnumType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="JobCategoryByOrdinance"/>
+			<xsd:enumeration value="ProjectWithPeriod"/>
+			<xsd:enumeration value="WorkWithPeriod"/>
+			<xsd:enumeration value="MaternityLeave"/>
+			<xsd:enumeration value="CaringLeave"/>
+			<xsd:enumeration value="SpecialCases"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:complexType name="ProjectWithPeriodType">
+		<xsd:annotation>
+			<xsd:documentation>This type holds information of a limited project.  Project that are under 3year (limited to project for launch/transformation/expanding/dismemberment/scrapping of business)</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="ProjectDetail" type="xsd:string"/>
+			<xsd:element name="ProjectPeriod" type="xsd:string"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="WorkWithPeriodType">
+		<xsd:annotation>
+			<xsd:documentation>This type indicates that the position is not a full time job.  The law permits a unlimited period work if the workday of the temporally staff is considerably  lower than the permanent employee (need to be below 10 days/month and half of the permanent employee)
+</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="DaysPerMonth" type="xsd:decimal"/>
+			<xsd:element name="OrdinaryDaysPerMonth" type="xsd:decimal"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="AnyLeaveType">
+		<xsd:annotation>
+			<xsd:documentation>Used for replacement for a employee of a maternity leave or child-care leave / family-care leave</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="ReplacedPerson" type="xsd:string"/>
+			<xsd:element name="WorkContents" type="xsd:string"/>
+			<xsd:element name="StartDate" type="xsd:date"/>
+			<xsd:element name="ExpectedEndDate" type="xsd:date"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="SpecialCasesType">
+		<xsd:annotation>
+			<xsd:documentation/>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="Description" type="xsd:string"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<!-- Localized Contract Requirements -->
+	<xsd:complexType name="JPContractRequirementsType">
+		<xsd:sequence>
+			<xsd:element name="ComplaintProcedure" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="CancellationPolicy" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="PlacementNotification" minOccurs="0">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="PlacementTiming" type="xsd:string"/>
+						<xsd:element name="PlacementContent" type="xsd:string"/>
+						<xsd:element name="Result" type="xsd:string"/>
+						<xsd:element name="ReasonOfReject" type="xsd:string"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="JPContractRequirements" type="JPContractRequirementsType"/>
+</xsd:schema>

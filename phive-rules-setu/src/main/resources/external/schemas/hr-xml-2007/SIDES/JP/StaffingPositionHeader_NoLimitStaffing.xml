@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2006 rel. 3 sp1 (http://www.altova.com) by Chuck Allen (HR-XML Consortium, Inc.) -->
+<!-- This file described in Japanese and translated into English.   Example file for followings:   StaffingPositionHeader mainly new specification which was added from Japanese requirements.     - FormattedPositionDescription     - JobCategory     - ShiftWork     - PositionMustEndByInfo     - TransitionInfo     - OvertimeInfo     - HolidayWork     - BusyPeriodInfo     -    And JPStaffingPositionInfo     - NoLimitStaffing-->
+<StaffingPositionHeader xmlns="http://ns.hr-xml.org/2007-04-15" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://ns.hr-xml.org/2007-04-15  ../StaffingPositionHeader.xsd">
+	<!-- 表現したいこと：派遣ポジションの...  職種コード(PositionId):  IN04  職種名 (PositionTitle):  Machinery/Precision Instrument Inspection[機械・精密機械検査業務]  仕事の内容 (PositionDescription) :   Inspection of machine operation accuracy [機械が操作どおり動作するかどうかの検査]   仕事の付随情報     ID(FormattedPositionDescription/Id/IdValue:   1     省略名称(FormattedPositionDescription/Name:  コミュニケーションの相手     正式名称(FormattedPosiitonDescription/Value:  内部・外部/内部/外部/その他具体的に記述   仕事の付随情報     ID(FormattedPositionDescription/Id/IdValue:   2     省略名称(FormattedPositionDescription/Name:  業務の任かされ方     正式名称(FormattedPosiitonDescription/Value:  指示に従う/主体性をもって行う/その他具体的に記述-->
+	<!-- (IN04 - Machinery/Precision Instrument Inspection[機械・精密機械検査業務) -->
+	<PositionId>
+		<Id>SS01</Id>
+	</PositionId>
+	<PositionTitle> Machinery/Precision Instrument Inspection[機械・精密機械検査業務]</PositionTitle>
+	<PositionDescription> Inspection of machine operation accuracy [機械が操作どおり動作するかどうかの検査]</PositionDescription>
+	<FormattedPositionDescription>
+		<Id>
+			<IdValue name="">1</IdValue>
+		</Id>
+		<Name>コミュニケーションの相手</Name>
+		<Value>内部</Value>
+	</FormattedPositionDescription>
+	<FormattedPositionDescription>
+		<Id>
+			<IdValue>2</IdValue>
+		</Id>
+		<Name>業務の任かされ方</Name>
+		<Value>指示に従う</Value>
+	</FormattedPositionDescription>
+	<!-- other example:  職種コード(PositionId):  SS01  職種名 (PositionTitle):  Secretary[Secretary]  仕事の内容 (PositionDescription) :   Telephone reception, filing, PC operation (Excel, Word, PowerPoint), expense settlement, etc. [電話応対、ファイリング、PC 操作（Excel、Word、PowerPoint）、経費清算等]  <JobCategory>    <Id>      <IdValue/>    </Id>    <Description>PC Operation[事務用機器の操作]</Description>  </JobCategory>  <JobCategory>    <Id>      <IdValue>7</IdValue>    </Id>    <Description>Secretary[秘書]</Description>  </JobCategory>  <JobCategory>    <Id>      <IdValue>8</IdValue>    </Id>    <Description>Filing[ファイリング]</Description> </JobCategory>  -->
+	<ShiftWork haveShiftWork="false">
+		<Description/>
+	</ShiftWork>
+	<TransitionInfo required="true">
+		<Duration unitOfTime="day">3</Duration>
+	</TransitionInfo>
+	<OvertimeInfo haveOvertime="true">
+		<ExpectedTime unitOfTime="hour">5</ExpectedTime>
+		<ExpectedWithin unitOfTime="month">1</ExpectedWithin>
+		<Description>occurs at the end of week</Description>
+	</OvertimeInfo>
+	<HolidayWork haveHolidayWork="false"> </HolidayWork>
+	<BusyPeriodInfo>
+		<PeriodString>3rd week of December</PeriodString>
+		<Description>Fiscal year end work</Description>
+	</BusyPeriodInfo>
+	<!-- <BusyPeriodInfo>   <Description>Summer Season</Description>   <StartBusyPeriod>July</StartBusyPeriod>   <EndBusyPeriod>August</EndBusyPeriod> </BusyPeriodInfo> -->
+	<LocalStaffingPositionInfo>
+		<JPStaffingPositionInfo>
+			<!--     Examples.  Avairable only one from followings     1. JobCategoryByOrdinance:     <NoLimitStaffing type="JobCategoryByOrdinance">     </NoLimitStaffing>     2. ProjectWithPeriod:     <NoLimitStaffing type="ProjectWithPeriod">       <ProjectWithPeriod>         <ProjectDetail>New HR Evaluation System Implementation</ProjectDetail>         <ProjectPeriod>2 years</ProjectPeriod>       </ProjectWithPeriod>     </NoLimitStaffing>     3. WorkWithPeriod:     <NoLimitStaffing type="WorkWithPeriod">       <WorkWithPeriod>         <DaysPerMonth>10</DaysPerMonth>       </WorkWithPeriod>     </NoLimitStaffing>     4. MaternityLeave     <NoLimitStaffing type="MaternityLeave">       <Leave>         <ReplacedPerson>Woman's name</ReplacedPerson>         <WorkContents>Bilingual Secretly</WorkContents>         <StartDate>2006-04-20</StartDate>         <ExpectedEndDate>2007-04-20</ExpectedEndDate>       </Leave>     </NoLimitStaffing>     5. CaringLeave     <NoLimitStaffing type="CaringLeave">       <Leave>         <ReplacedPerson>Worker's name</ReplacedPerson>         <WorkContents>Administrative assistance with PC operation</WorkContents>         <StartDate>2006-04-20</StartDate>         <ExpectedEndDate>2007-04-20</ExpectedEndDate>       </Leave>     </NoLimitStaffing>     6. SpecialCases     <NoLimitStaffing type="SpecialCases">       <SpecialCases>         <Description>treatment for a worker over 45 years old (effective until March 2005)</Description>       </SpecialCases>-->
+			<NoLimitStaffing type="CaringLeave">
+				<Leave>
+					<ReplacedPerson>Taro Yamada[山田太郎]</ReplacedPerson>
+					<WorkContents> Machinery/Precision Instrument Inspection[機械・精密機械検査業務]</WorkContents>
+					<StartDate>2006-04-20</StartDate>
+					<ExpectedEndDate>2008-04-20</ExpectedEndDate>
+				</Leave>
+			</NoLimitStaffing>
+		</JPStaffingPositionInfo>
+	</LocalStaffingPositionInfo>
+</StaffingPositionHeader>

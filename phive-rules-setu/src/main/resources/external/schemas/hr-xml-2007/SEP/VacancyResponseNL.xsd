@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns="http://ns.hr-xml.org/2007-04-15" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://ns.hr-xml.org/2007-04-15" elementFormDefault="qualified" version="2011-01">
+	<xsd:annotation>
+		<xsd:documentation>
+Name: VacancyResponseNL.xsd
+Version: 1.0
+Date this version: 2011-01
+Purpose: Defines the Response XML-message for Dutch Human Resource industry.
+Author(s):  SETU
+Documentation: SETU Standard for Vacancies 1.0
+		</xsd:documentation>
+	</xsd:annotation>
+	<xsd:include schemaLocation="../SEP/MatchingTypes.xsd"/>
+	<xsd:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="../../W3C/xml.xsd"/>
+	<xsd:element name="VacancyResponseNL" type="VacancyResponseNLType"/>
+	<xsd:complexType name="VacancyResponseNLType">
+		<xsd:sequence>
+			<xsd:element name="MessageId" type="EntityIdType"/>
+			<xsd:element name="ReactionToMessageId" type="EntityIdType" maxOccurs="4"/>
+			<xsd:element name="AdvertisementId" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="Reason" type="xsd:string"/>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This file described in Japanese and translated into English.
+    Example file for followings:
+    JPContractRequirements which was added from Japanese requirements.
+      PlacementNotification
+      ComplaintProcedure
+-->
+<Assignment assignmentStatus="active" xmlns="http://ns.hr-xml.org/2007-04-15" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://ns.hr-xml.org/2007-04-15    ../Assignment.xsd">
+	<AssignmentId>
+		<IdValue/>
+	</AssignmentId>
+	<ReferenceInformation>
+		<StaffingCustomerId>
+			<IdValue/>
+		</StaffingCustomerId>
+		<HumanResourceId>
+			<IdValue/>
+		</HumanResourceId>
+		<PositionId>
+			<IdValue/>
+		</PositionId>
+	</ReferenceInformation>
+	<CustomerReportingRequirements/>
+	<Rates rateType="bill" rateStatus="agreed">
+		<Class/>
+		<StartDate>9999-01-23</StartDate>
+	</Rates>
+	<StaffingShift>
+		<Id>
+			<IdValue/>
+		</Id>
+	</StaffingShift>
+	<AssignmentDateRange>
+		<StartDate>9999-01-23</StartDate>
+	</AssignmentDateRange>
+	<ContractInformation contractType="human resource" contractStatus="signed">
+		<ContractId>
+			<IdValue/>
+		</ContractId>
+		<LegalInformation/>
+		<ContractVersion/>
+		<ContractVersionDate>9999-01-23</ContractVersionDate>
+		<StaffType/>
+		<LocalContractRequirements>
+			<JPContractRequirements>
+				<!--Japanese Localization edited by Kazuko Sugamura/Takahiro Fujiwara -->
+				<!-- 2006年1月10日より始まった紹介予定派遣が、スタッフの入社試験結果が基準に達しなかったため、紹介が不成立になった例：
+			The example where the temporary service assignment started from 
+			January 10, 2006 did not go to the permanent placement due to the 
+			candidate’s unacceptable entrance test result. -->
+				<!-- ComplaintProcedure[苦情処理方法] How to process complaints and contact process-->
+				<!-- （苦情処理の項目はこのXMLの例には含まれない。
+				The example for <ComplaintProcedure> is not included in this XML sample.
+				<ComplaintProcedure>苦情処理方法の例を記述</ComplaintProcedure>
+				-->
+				<PlacementNotification>
+					<!-- PlacementTiming[入社日] Entrance Date -->
+					<PlacementTiming>入社なし (no employment )</PlacementTiming>
+					<!-- PlacementContent[特定行為の内容] Content of referral -->
+					<PlacementContent>「入社試験 (entrance examination.) </PlacementContent>
+					<!-- Result[採否結果] The result -->
+					<Result>不採用 (no employment)</Result>
+					<!-- ReasonOfReject[不採用の理由] Reasons in case of reject -->
+					<ReasonOfReject>試験結果が基準に達しなかったため (The test result did not make the passing mark.)</ReasonOfReject>
+				</PlacementNotification>
+			</JPContractRequirements>
+		</LocalContractRequirements>
+	</ContractInformation>
+	<UserArea/>
+</Assignment>

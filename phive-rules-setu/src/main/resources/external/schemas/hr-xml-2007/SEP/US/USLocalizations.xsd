@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns="http://ns.hr-xml.org/2007-04-15" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://ns.hr-xml.org/2007-04-15" elementFormDefault="qualified" version="2007-04-15">
+	<xsd:annotation>
+		<xsd:documentation>
+"Copyright  The HR-XML Consortium. All Rights Reserved. http://www.hr-xml.org"
+Name: USLocalizations.xsd
+Status: Recommendation
+Date this version: 2007-04-15
+Purpose: 
+Author(s): 
+Documentation: 
+
+Terms of license can be found in license.txt.
+
+</xsd:documentation>
+	</xsd:annotation>
+	<xsd:include schemaLocation="../../CPO/xStringPatternExtensionType.xsd"/>
+	<xsd:include schemaLocation="../../CPO/IdentifierTypes.xsd"/>
+	<xsd:include schemaLocation="../../CPO/US/USLocalizations.xsd"/>
+	<xsd:complexType name="USLocalizedPositionClassificationType">
+		<xsd:sequence>
+			<xsd:element name="FLSAStatus" type="FLSAStatusEnumType"/>
+			<xsd:element name="EEOCJobCategory" type="EEOCJobCategoryType" minOccurs="0"/>
+			<xsd:element name="AffirmativeActionPlanJobGroupId" type="EntityIdType" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<!-- EEOCJobCategory-->
+	<xsd:complexType name="EEOCJobCategoryType">
+		<xsd:choice>
+			<xsd:element name="StandardValue" type="EEOCJobCategoryEnumType"/>
+			<xsd:element name="NonStandardValue" type="xsd:string"/>
+		</xsd:choice>
+	</xsd:complexType>
+	<xsd:simpleType name="EEOCJobCategoryEnumType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="Officials and Managers"/>
+			<xsd:enumeration value="Professionals"/>
+			<xsd:enumeration value=" Technicians"/>
+			<xsd:enumeration value="Sales"/>
+			<xsd:enumeration value="Official and Clerical"/>
+			<xsd:enumeration value="Craft Workers Skilled"/>
+			<xsd:enumeration value="Operative SemiSkilled"/>
+			<xsd:enumeration value="Laborers Unskilled"/>
+			<xsd:enumeration value="Service Workers"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<!-- hours type -->
+	<xsd:simpleType name="USPayTypeHoursType">
+		<xsd:union memberTypes="BasicHoursTypes xStringPatternExtensionType"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="BasicHoursTypes">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="Regular"/>
+			<xsd:enumeration value="Overtime"/>
+			<xsd:enumeration value="TimeHalf"/>
+			<xsd:enumeration value="DoubleTime"/>
+			<xsd:enumeration value="Special"/>
+			<xsd:enumeration value="Premium"/>
+			<xsd:enumeration value="Per Diem"/>
+			<xsd:enumeration value="On Call"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+</xsd:schema>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns="http://ns.hr-xml.org/2007-04-15" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://ns.hr-xml.org/2007-04-15" elementFormDefault="qualified" version="2007-04-15">
+	<xsd:annotation>
+		<xsd:documentation>
+"Copyright  The HR-XML Consortium. All Rights Reserved. http://www.hr-xml.org"
+
+Name: TimeCardAdditionalData.xsd
+Status: Recommendation
+Date this version: 2007-04-15
+Purpose: Defines the TimeCardAdditionalData Schema
+Author(s):  SIDES Workgroup
+Documentation: ExtendedTimeCard.html
+
+2006-July: Added Reference Id's to match other SIDES schemas: StaffingSupplierOrgUnitId, StaffingCustomerOrgUnitId, InvoiceId, BillToEntityId.
+2004-May: Made changes and additions based on global SIDES feedback. See scope section in ExtendedTimeCard.doc for details. 
+
+Terms of license can be found in license.txt.
+
+</xsd:documentation>
+	</xsd:annotation>
+	<xsd:include schemaLocation="../SIDES/CustomerReportingRequirements.xsd"/>
+	<xsd:include schemaLocation="../CPO/EntityIdType.xsd"/>
+	<xsd:include schemaLocation="../TimeCard/TimeCard.xsd"/>
+	<xsd:include schemaLocation="../CPO/UserArea.xsd"/>
+	<xsd:element name="StaffingAdditionalData">
+		<xsd:complexType>
+			<xsd:choice>
+				<xsd:sequence>
+					<xsd:element ref="CustomerReportingRequirements"/>
+					<xsd:group ref="ReferenceInformation" minOccurs="0"/>
+				</xsd:sequence>
+				<xsd:group ref="ReferenceInformation"/>
+			</xsd:choice>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:group name="ReferenceInformation">
+		<xsd:sequence>
+			<xsd:element name="ReferenceInformation">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="OrderId" type="EntityIdType" minOccurs="0" maxOccurs="unbounded"/>
+						<xsd:element name="PositionId" type="EntityIdType" minOccurs="0" maxOccurs="unbounded"/>
+						<xsd:element name="IntermediaryId" type="EntityIdType" minOccurs="0" maxOccurs="unbounded"/>
+						<xsd:element name="StaffingSupplierId" type="EntityIdType" minOccurs="0" maxOccurs="unbounded"/>
+						<xsd:element name="StaffingCustomerId" type="EntityIdType" minOccurs="0" maxOccurs="unbounded"/>
+						<xsd:element name="MasterOrderId" type="EntityIdType" minOccurs="0" maxOccurs="unbounded"/>
+						<xsd:element name="HumanResourceId" type="EntityIdType" minOccurs="0" maxOccurs="unbounded"/>
+						<xsd:element name="AssignmentId" type="EntityIdType" minOccurs="0" maxOccurs="unbounded"/>
+						<xsd:element name="DocumentId" type="EntityIdType" minOccurs="0"/>
+						<xsd:element name="StaffingSupplierOrgUnitId" type="EntityIdType" minOccurs="0" maxOccurs="unbounded"/>
+						<xsd:element name="StaffingCustomerOrgUnitId" type="EntityIdType" minOccurs="0" maxOccurs="unbounded"/>
+						<xsd:element name="InvoiceId" type="EntityIdType" minOccurs="0" maxOccurs="unbounded"/>
+						<xsd:element name="BillToEntityId" type="EntityIdType" minOccurs="0" maxOccurs="unbounded"/>
+						<xsd:element name="StaffingOrganizationId" type="EntityIdType" minOccurs="0" maxOccurs="unbounded"/>
+						<xsd:element ref="UserArea" minOccurs="0"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:group>
+</xsd:schema>

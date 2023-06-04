@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://ns.hr-xml.org/2007-04-15" targetNamespace="http://ns.hr-xml.org/2007-04-15" elementFormDefault="qualified" version="2007-04-15">
+	<xsd:annotation>
+		<xsd:documentation>
+"Copyright  The HR-XML Consortium. All Rights Reserved. http://www.hr-xml.org"
+Name: StaffingWorkSiteEnvironment.xsd
+Status: Recommendation
+Date this version: 2007-04-15
+Purpose: Defines the Schema for WorkSiteEnvironment
+Author(s): Kim Bartkus, Paul Kiel
+Documentation: StaffingWorkSite.html
+
+Terms of license can be found in license.txt.
+
+2006-July: Added 'SafetyAndHygiene' enumeration to EnvironmentConsiderations.
+2006-Feb: The WorkSiteId was made optional based on feedback received.  This is considered a backwardly compatible bug fix.
+
+</xsd:documentation>
+	</xsd:annotation>
+	<xsd:include schemaLocation="../CPO/DateTimeDataTypes.xsd"/>
+	<xsd:element name="StaffingWorkSiteEnvironment" type="StaffingWorkSiteEnvironmentType"/>
+	<xsd:complexType name="StaffingWorkSiteEnvironmentType">
+		<xsd:sequence>
+			<xsd:element name="EnvironmentId" minOccurs="0">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="Id" type="xsd:string"/>
+						<xsd:element name="Domain" minOccurs="0">
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element name="IdIssuer" type="xsd:string" minOccurs="0"/>
+									<xsd:element name="IdType" type="xsd:string" minOccurs="0"/>
+								</xsd:sequence>
+							</xsd:complexType>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="EnvironmentName" type="xsd:string"/>
+			<xsd:element name="EnvironmentDescription" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="EnvironmentConsideration" minOccurs="0" maxOccurs="unbounded">
+				<xsd:complexType>
+					<xsd:simpleContent>
+						<xsd:extension base="xsd:string">
+							<xsd:attribute name="suppliedByOrganization" type="xsd:boolean"/>
+							<xsd:attribute name="typeConsideration" use="required">
+								<xsd:simpleType>
+									<xsd:restriction base="xsd:string">
+										<xsd:enumeration value="General"/>
+										<xsd:enumeration value="Physical"/>
+										<xsd:enumeration value="SafetyEquipment"/>
+										<xsd:enumeration value="DressCode"/>
+										<xsd:enumeration value="SafetyAndHygiene"/>
+									</xsd:restriction>
+								</xsd:simpleType>
+							</xsd:attribute>
+						</xsd:extension>
+					</xsd:simpleContent>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

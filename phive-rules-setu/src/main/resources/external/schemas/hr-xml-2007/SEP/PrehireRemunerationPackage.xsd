@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://ns.hr-xml.org/2007-04-15" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://ns.hr-xml.org/2007-04-15" elementFormDefault="qualified" version="2007-04-15">
+	<xsd:annotation>
+		<xsd:documentation>
+"Copyright  The HR-XML Consortium. All Rights Reserved. http://www.hr-xml.org"
+Name: PrehireRemunerationPackage.xsd
+Status: Recommendation
+Date this version: 2007-04-15
+Purpose: The renumeration package used for prehire.
+Author(s):  Kim Bartkus, Paul Kiel, Staffing Exchange Protocol Work Group
+Documentation: StaffingExchangeProtocol.html
+
+Terms of license can be found in license.txt.
+
+Change notes:
+2005-01-13
+Renamed OtherPayType to OtherPayDataType so as not to be confused with attribute of same name.
+
+</xsd:documentation>
+	</xsd:annotation>
+	<xsd:include schemaLocation="../CPO/xStringPatternExtensionType.xsd"/>
+	<xsd:include schemaLocation="../CPO/ISOUtilities.xsd"/>
+	<xsd:include schemaLocation="../CPO/UserArea.xsd"/>
+	<xsd:include schemaLocation="../CPO/Frequencies.xsd"/>
+	<!-- -->
+	<!-- Remuneration Package -->
+	<xsd:complexType name="PrehireRemunerationPackageType">
+		<xsd:sequence>
+			<xsd:element name="BasePay" type="BasePayType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="OtherPay" type="OtherPayDataType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="Benefits" type="BenefitsType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="UserArea" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<!-- Base Pay -->
+	<xsd:complexType name="BasePayType">
+		<xsd:sequence>
+			<xsd:element name="BasePayAmountMin" type="xsd:decimal" minOccurs="0"/>
+			<xsd:element name="BasePayAmountMax" type="xsd:decimal" minOccurs="0"/>
+		</xsd:sequence>
+		<xsd:attribute name="currencyCode" type="CurrencyCodeType"/>
+		<xsd:attribute name="baseInterval" type="FrequencyType"/>
+	</xsd:complexType>
+	<!-- OtherPay -->
+	<xsd:complexType name="OtherPayDataType">
+		<xsd:sequence>
+			<xsd:element name="OtherPayAmountMin" type="xsd:decimal" minOccurs="0"/>
+			<xsd:element name="OtherPayAmountMax" type="xsd:decimal" minOccurs="0"/>
+			<xsd:element name="OtherPayCalculation" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="Comments" type="xsd:string" minOccurs="0"/>
+		</xsd:sequence>
+		<xsd:attribute name="currencyCode" type="CurrencyCodeType"/>
+		<xsd:attribute name="otherInterval" type="OtherIntervalType"/>
+		<xsd:attribute name="otherPayType" type="OtherPayTypeTypes"/>
+	</xsd:complexType>
+	<!-- other interval  types -->
+	<xsd:simpleType name="OtherIntervalType">
+		<xsd:union memberTypes="BasicFrequencyType SignOnType xStringPatternExtensionType"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="SignOnType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="Sign-on"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<!-- other pay types -->
+	<xsd:simpleType name="OtherPayTypeTypes">
+		<xsd:union memberTypes="BasicOtherPayTypeTypes xStringPatternExtensionType"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="BasicOtherPayTypeTypes">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="Bonus"/>
+			<xsd:enumeration value="Commission"/>
+			<xsd:enumeration value="Incentive"/>
+			<xsd:enumeration value="Sliding Commission"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<!-- Benefits -->
+	<xsd:complexType name="BenefitsType">
+		<xsd:sequence>
+			<xsd:element name="Insurance" minOccurs="0" maxOccurs="unbounded">
+				<xsd:complexType>
+					<xsd:simpleContent>
+						<xsd:extension base="xsd:boolean">
+							<xsd:attribute name="type" type="InsuranceTypes"/>
+						</xsd:extension>
+					</xsd:simpleContent>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="RetirementOrSavingsPlan" type="xsd:boolean" minOccurs="0"/>
+			<xsd:element name="CompanyVehicle" minOccurs="0" maxOccurs="unbounded">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="Description" type="xsd:string" minOccurs="0"/>
+					</xsd:sequence>
+					<xsd:attribute name="companyOffered" type="xsd:boolean"/>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="RelocationAssistance" minOccurs="0" maxOccurs="unbounded">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="Description" type="xsd:string" minOccurs="0"/>
+					</xsd:sequence>
+					<xsd:attribute name="companyOffered" type="xsd:boolean"/>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="VisaSponsorship" type="xsd:boolean" minOccurs="0"/>
+			<xsd:element name="TimeOffAllowance" type="TimeOffAllowanceType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="ExpatriateBenefits" type="ExpatriateBenefitsType" minOccurs="0"/>
+			<xsd:element name="OtherBenefits" minOccurs="0" maxOccurs="unbounded">
+				<xsd:complexType>
+					<xsd:simpleContent>
+						<xsd:extension base="xsd:string">
+							<xsd:attribute name="type" type="xsd:string"/>
+						</xsd:extension>
+					</xsd:simpleContent>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="Comments" type="xsd:string" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<!-- Insurance -->
+	<xsd:simpleType name="InsuranceTypes">
+		<xsd:union memberTypes="BasicInsuranceTypes xStringPatternExtensionType"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="BasicInsuranceTypes">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="Medical"/>
+			<xsd:enumeration value="Dental"/>
+			<xsd:enumeration value="Vision"/>
+			<xsd:enumeration value="Life"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<!-- Time Off Allowance -->
+	<xsd:complexType name="TimeOffAllowanceType">
+		<xsd:sequence>
+			<xsd:element name="Description" type="xsd:string" minOccurs="0"/>
+		</xsd:sequence>
+		<xsd:attribute name="timeOffType" type="TimeOffTypes"/>
+	</xsd:complexType>
+	<!-- time off-->
+	<xsd:simpleType name="TimeOffTypes">
+		<xsd:union memberTypes="BasicTimeOffTypes xStringPatternExtensionType"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="BasicTimeOffTypes">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="PaidHoliday"/>
+			<xsd:enumeration value="UnpaidHoliday"/>
+			<xsd:enumeration value="PaidVacation"/>
+			<xsd:enumeration value="PaidLeave"/>
+			<xsd:enumeration value="UnpaidLeave"/>
+			<xsd:enumeration value="PersonalDays"/>
+			<xsd:enumeration value="HealthDays"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<!-- Expatriate Benefits  -->
+	<xsd:complexType name="ExpatriateBenefitsType">
+		<xsd:choice>
+			<xsd:element name="ExpatriateBenefitsOffered" type="xsd:boolean" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="ExpatriateBenefitList" type="ExpatriateBenefitTypeTypes" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:choice>
+	</xsd:complexType>
+	<!-- Expatriate Benefit Types -->
+	<xsd:simpleType name="ExpatriateBenefitTypeTypes">
+		<xsd:union memberTypes="BasicExpatriateBenefitTypeTypes xStringPatternExtensionType"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="BasicExpatriateBenefitTypeTypes">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="Relocation Package"/>
+			<xsd:enumeration value="School Fees"/>
+			<xsd:enumeration value="Vehicle"/>
+			<xsd:enumeration value="Professional Service Fees"/>
+			<xsd:enumeration value="Language Instruction"/>
+			<xsd:enumeration value="Club Membership"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<!-- This element is for display purposes only. It is used to create the schema diagram and definition tables. -->
+	<xsd:element name="PrehireRemuneration" type="PrehireRemunerationPackageType"/>
+</xsd:schema>

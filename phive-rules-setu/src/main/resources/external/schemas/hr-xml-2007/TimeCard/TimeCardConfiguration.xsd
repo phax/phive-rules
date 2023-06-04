@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://ns.hr-xml.org/2007-04-15" xmlns="http://ns.hr-xml.org/2007-04-15" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" version="2007-04-15">
+	<xsd:annotation>
+		<xsd:documentation>
+"Copyright  The HR-XML Consortium. All Rights Reserved. http://www.hr-xml.org"
+Name: TimeCardConfiguration.xsd
+Status: Recommendation
+Date this version: 2007-04-15
+Purpose: Defines the schema for configuration of Time Cards
+Author(s): Andreas Bold, SAP, and members of the Time Reporting Workgroup
+Documentation: TimeCardConfiguration.html
+
+Terms of license can be found in license.txt.
+
+Change History:
+2005-01
+As per Schema Design Guidelines, all default values have been removed.
+
+
+</xsd:documentation>
+	</xsd:annotation>
+	<xsd:annotation>
+		<xsd:documentation>
+		
+CONFORMANCE NOTE:
+
+Some parser implementations require the namespace prefix "xml" 
+be declared as an attribute in the "xsd:schema" root element:
+
+xmlns:xml="http://www.w3.org/XML/1998/namespace"
+
+</xsd:documentation>
+	</xsd:annotation>
+	<xsd:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="../../W3C/xml.xsd"/>
+	<xsd:include schemaLocation="../CPO/DateTimeDataTypes.xsd"/>
+	<xsd:include schemaLocation="../CPO/PersonName.xsd"/>
+	<xsd:element name="TimeCardConfiguration" type="TimeCardConfigurationType"/>
+	<xsd:complexType name="NamedEntityType">
+		<xsd:sequence>
+			<xsd:element name="Id" type="xsd:string"/>
+			<xsd:element name="ShortDescription" minOccurs="0" maxOccurs="unbounded">
+				<xsd:complexType>
+					<xsd:simpleContent>
+						<xsd:extension base="xsd:string">
+							<xsd:attribute ref="xml:lang" use="required"/>
+						</xsd:extension>
+					</xsd:simpleContent>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="Description" minOccurs="0" maxOccurs="unbounded">
+				<xsd:complexType>
+					<xsd:simpleContent>
+						<xsd:extension base="xsd:string">
+							<xsd:attribute ref="xml:lang" use="required"/>
+						</xsd:extension>
+					</xsd:simpleContent>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+		<xsd:attribute name="validFrom" type="AnyDateTimeType"/>
+		<xsd:attribute name="validTo" type="AnyDateTimeType"/>
+	</xsd:complexType>
+	<xsd:complexType name="TimeCardConfigurationType">
+		<xsd:sequence>
+			<xsd:element name="Resources" minOccurs="0">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="Person" minOccurs="0" maxOccurs="unbounded">
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element name="Id" type="xsd:string" minOccurs="0"/>
+									<xsd:element ref="PersonName" minOccurs="0"/>
+									<xsd:element name="Assignment" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+								</xsd:sequence>
+								<xsd:attribute name="validFrom" type="AnyDateTimeType"/>
+								<xsd:attribute name="validTo" type="AnyDateTimeType"/>
+								<xsd:attribute name="preferredLanguage" type="xsd:language" use="optional"/>
+							</xsd:complexType>
+						</xsd:element>
+						<xsd:element name="Resource" minOccurs="0" maxOccurs="unbounded">
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element name="Id" type="xsd:string" minOccurs="0"/>
+									<xsd:element name="ResourceName" type="xsd:string" minOccurs="0"/>
+								</xsd:sequence>
+								<xsd:attribute name="validFrom" type="AnyDateTimeType"/>
+								<xsd:attribute name="validTo" type="AnyDateTimeType"/>
+							</xsd:complexType>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="TimeIntervalTypes" minOccurs="0">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="Type" type="NamedEntityType" maxOccurs="unbounded"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="TimeEventTypes" minOccurs="0">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="Type" type="NamedEntityType" maxOccurs="unbounded"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="TimeExpenseTypes" minOccurs="0">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="Type" type="NamedEntityType" maxOccurs="unbounded"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="AdditionalDataTypesAndValues" minOccurs="0" maxOccurs="unbounded">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="Type" type="NamedEntityType"/>
+						<xsd:element name="Value" type="NamedEntityType" minOccurs="0" maxOccurs="unbounded"/>
+					</xsd:sequence>
+					<xsd:attribute name="scope">
+						<xsd:simpleType>
+							<xsd:restriction base="xsd:string">
+								<xsd:enumeration value="TimeInterval"/>
+								<xsd:enumeration value="TimeEvent"/>
+								<xsd:enumeration value="TimeExpense"/>
+								<xsd:enumeration value="TimeIntervalAndTimeEvent"/>
+								<xsd:enumeration value="TimeIntervalAndTimeExpense"/>
+								<xsd:enumeration value="TimeEventAndTimeExpense"/>
+								<xsd:enumeration value="TimeIntervalAndTimeEventAndTimeExpense"/>
+							</xsd:restriction>
+						</xsd:simpleType>
+					</xsd:attribute>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

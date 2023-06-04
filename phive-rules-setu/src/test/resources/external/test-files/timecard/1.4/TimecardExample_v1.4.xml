@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--		
+	Name: 		TimecardExample_v1.4.xml
+	Purpose: 	Specifies a timecard example.
+	Author(s): 	SETU
+	Standard: 	SETU Standard for Reporting Time and Expenses v1.4
+	Date: 		2018-06-22
+	Last edit:	2020-11-25
+-->
+<TimeCard xmlns="http://ns.hr-xml.org/2007-04-15" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://ns.hr-xml.org/2007-04-15 ../../../hr-xml/SIDES/TimeCardAdditionalData.xsd">
+	<Id idOwner="StaffingCustomer">
+		<IdValue>TC00123456</IdValue>
+	</Id>
+	<ReportedResource>
+		<Person>
+			<Id idOwner="StaffingCustomer">
+				<IdValue>23456</IdValue>
+			</Id>
+			<PersonName>
+				<FormattedName>Piet van der Berg</FormattedName>
+				<LegalName>Pieter Arend van der Berg</LegalName>
+				<GivenName>Pieter</GivenName>
+				<GivenName>Arend</GivenName>
+				<PreferredGivenName>Piet</PreferredGivenName>
+				<MiddleName>P.A.</MiddleName>
+				<FamilyName primary="true" prefix="van der">Berg</FamilyName>
+			</PersonName>
+		</Person>
+	</ReportedResource>
+	<ReportedTime status="">
+		<PeriodStartDate>2017-08-07</PeriodStartDate>
+		<PeriodEndDate>2017-08-11</PeriodEndDate>
+		<TimeInterval type="Regular" billable="true">
+			<Id idOwner="StaffingCustomer">
+				<IdValue>TC00123456-1</IdValue>
+			</Id>
+			<StartDateTime>2017-08-07T07:00:00</StartDateTime>
+			<EndDateTime>2017-08-07T15:00:00</EndDateTime>
+			<Duration>8.00</Duration>
+			<RateOrAmount currency="EUR" type="hourly" multiplier="100" toBeBilled="true" toBePaid="true">0.00</RateOrAmount> <!--0, because rate is already specified in Assignment. The same holds for RateOrAmount elements following.-->
+		</TimeInterval>
+		<TimeInterval type="Overtime" billable="true">
+			<Id idOwner="StaffingCustomer">
+				<IdValue>TC00123456-2</IdValue>
+			</Id>
+			<StartDateTime>2017-08-07T15:00:00</StartDateTime>
+			<EndDateTime>2017-08-07T17:00:00</EndDateTime>
+			<Duration>2.00</Duration>
+			<RateOrAmount currency="EUR" type="hourly" multiplier="150">0.00</RateOrAmount>
+		</TimeInterval>
+		<TimeInterval type="Regular" billable="true">
+			<Id idOwner="StaffingCustomer">
+				<IdValue>TC00123456-3</IdValue>
+			</Id>
+			<StartDateTime>2017-08-08T07:00:00</StartDateTime>
+			<EndDateTime>2017-08-08T15:00:00</EndDateTime>
+			<Duration>8.00</Duration>
+			<RateOrAmount currency="EUR" type="hourly" multiplier="100" toBeBilled="true" toBePaid="true">0.00</RateOrAmount>
+		</TimeInterval>
+		<TimeInterval type="Shift" dayAssignment="2017-08-10" billable="true">
+			<Id idOwner="StaffingCustomer">
+				<IdValue>TC00123456-4</IdValue>
+			</Id>
+			<StartDateTime>2017-08-09T22:00:00</StartDateTime>
+			<EndDateTime>2017-08-10T06:00:00</EndDateTime>
+			<Duration>8.00</Duration>
+			<RateOrAmount currency="EUR" type="hourly" multiplier="125">0.00</RateOrAmount>
+		</TimeInterval>
+		<TimeInterval type="Shift" dayAssignment="2017-08-11" billable="true">
+			<Id idOwner="StaffingCustomer">
+				<IdValue>TC00123456-5</IdValue>
+			</Id>
+			<StartDateTime>2017-08-10T22:00:00</StartDateTime>
+			<EndDateTime>2017-08-11T06:00:00</EndDateTime>
+			<Duration>8.00</Duration>
+			<RateOrAmount currency="EUR" type="hourly" multiplier="125">0.00</RateOrAmount>
+		</TimeInterval>
+		<Allowance type="102B" billable="true">
+			<Id idOwner="StaffingCustomer">
+				<IdValue name="allowance">TC00123456-6</IdValue>
+			</Id>
+			<StartDate>2017-08-07</StartDate>
+			<EndDate>2017-08-11</EndDate>
+			<Amount currency="EUR">3.50</Amount>
+			<Quantity>4</Quantity>
+			<Comment>Example of a travel allowance</Comment>
+		</Allowance>
+	</ReportedTime>
+	<SubmitterInfo>
+		<Source>Henk de Vries</Source>
+		<SubmittedDateTime>2017-08-13T06:30:00</SubmittedDateTime>
+	</SubmitterInfo>
+	<ApprovalInfo>
+		<Person>
+			<PersonName>
+				<FormattedName>Jan Pietersen</FormattedName>
+			</PersonName>
+		</Person>
+		<ApprovedDateTime>2017-08-13T06:31:14</ApprovedDateTime>
+		<Comment>Any comment</Comment>
+	</ApprovalInfo>
+	<AdditionalData>
+		<StaffingAdditionalData>
+			<CustomerReportingRequirements>
+				<ManagerName>M.A. Nager</ManagerName>	
+    			<ContactName>I.N. ter Cedent</ContactName>
+				<PurchaseOrderNumber>PO123789</PurchaseOrderNumber>				
+				<DepartmentCode>12</DepartmentCode>
+				<DepartmentName>Productie</DepartmentName>
+				<CostCenterCode>173</CostCenterCode>
+				<CostCenterName>Staalproductie</CostCenterName>
+				<ProjectCode>012.30303</ProjectCode>
+				<AdditionalRequirement requirementTitle="InclusiveRate">true</AdditionalRequirement>
+			</CustomerReportingRequirements>
+			<ReferenceInformation>
+				<StaffingSupplierId idOwner="StaffingCustomer">
+					<IdValue>39876</IdValue>
+				</StaffingSupplierId>
+				<StaffingCustomerId idOwner="StaffingCompany">
+					<IdValue>223445</IdValue>
+				</StaffingCustomerId>
+				<AssignmentId idOwner="StaffingCompany">
+					<IdValue>1234/1234561</IdValue>
+				</AssignmentId>
+				<StaffingSupplierOrgUnitId idOwner="StaffingCustomer">
+					<IdValue>53954</IdValue>					
+				</StaffingSupplierOrgUnitId>
+				<StaffingCustomerOrgUnitId idOwner="StaffingCompany">
+					<IdValue>1234</IdValue>
+				</StaffingCustomerOrgUnitId>			
+			</ReferenceInformation>
+		</StaffingAdditionalData>
+	</AdditionalData>
+</TimeCard>

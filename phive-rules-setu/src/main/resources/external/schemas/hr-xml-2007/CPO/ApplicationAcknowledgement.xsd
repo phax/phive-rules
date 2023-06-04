@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns="http://ns.hr-xml.org/2007-04-15" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://ns.hr-xml.org/2007-04-15" elementFormDefault="qualified" version="2007-04-15">
+	<xsd:annotation>
+		<xsd:documentation>
+"Copyright  The HR-XML Consortium. All Rights Reserved. http://www.hr-xml.org"
+Name: AcknowledgeTypes.xsd
+Status: Recommendation
+Date this version: 2007-04-15
+Purpose: Defines the Acknowledge schema
+Author(s):  Paul Kiel, Dan Diman, Kim Bartkus
+Documentation: ApplicationAcknowledgement.doc
+
+Terms of license can be found in license.txt.
+
+2005-10-26: Changed MessageIdType from an enumerated list to a simple string.  Made UniquePayloadTrackingId repeatable.  Review by the Technical Steering Committee recommended this.  Backwardly compatible.
+
+2005-11-08: Changed EntityNoException from fixed=true to a single enumeration.  It is believed that this would be better supported by code generators.  No content model changes.
+
+</xsd:documentation>
+	</xsd:annotation>
+	<xsd:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="../../W3C/xml.xsd"/>
+	<xsd:include schemaLocation="../CPO/EntityIdType.xsd"/>
+	<xsd:include schemaLocation="../CPO/PersonName.xsd"/>
+	<xsd:include schemaLocation="../CPO/ContactMethod.xsd"/>
+	<xsd:include schemaLocation="../CPO/UserArea.xsd"/>
+	<xsd:complexType name="ExceptionType">
+		<xsd:sequence>
+			<xsd:element name="ExceptionIdentifier" type="xsd:string" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>This is an ID (or code) used by the organization generating the acknowledgement to identify the specific exception.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="ExceptionSeverity">
+				<xsd:annotation>
+					<xsd:documentation>How severe the exception is.  Fatal means system processed nothing.  Warning means system processed something, but perhaps incompletely.  Information means system processed everything, but a problem *may* occur that needs notification.</xsd:documentation>
+				</xsd:annotation>
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:enumeration value="Fatal">
+							<xsd:annotation>
+								<xsd:documentation>Fatal means system processed nothing.  </xsd:documentation>
+							</xsd:annotation>
+						</xsd:enumeration>
+						<xsd:enumeration value="Warning">
+							<xsd:annotation>
+								<xsd:documentation> Warning means system processed something, but perhaps incompletely.  </xsd:documentation>
+							</xsd:annotation>
+						</xsd:enumeration>
+						<xsd:enumeration value="Information">
+							<xsd:annotation>
+								<xsd:documentation>Information means system processed everything, but a problem *may* occur that needs notification.</xsd:documentation>
+							</xsd:annotation>
+						</xsd:enumeration>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="ExceptionMessage" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>The exception content message.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="ExceptionScopeSchemaXPath" type="xsd:string" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>The leve at which processing stops (within the entity).   If fatal severity, this will  match the EntitySchemaXPath.  If a warning severity, then this will be the point at which processing stops within entity.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="SubordinateEntityXPath" type="xsd:string" minOccurs="0" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation>The offending element(s) or attributes (inside the scope of ExceptionScopeSchemaXPath, which in turn is in the scope of the EntityDisposition.  </xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Followup" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Indicates who is responsibile for correcting the exception.</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="OrganizationId" type="EntityIdType" minOccurs="0"/>
+						<xsd:element name="OrganizationName" type="xsd:string" minOccurs="0"/>
+						<xsd:element name="PersonName" type="PersonNameType" minOccurs="0"/>
+						<xsd:element name="ContactInfo" type="ContactMethodType" minOccurs="0" maxOccurs="unbounded"/>
+					</xsd:sequence>
+					<xsd:attribute name="responsibleForFollowup">
+						<xsd:simpleType>
+							<xsd:restriction base="xsd:string">
+								<xsd:enumeration value="No Followup Needed"/>
+								<xsd:enumeration value="Payload Source Organization"/>
+								<xsd:enumeration value="Acknowledgement Source Organization"/>
+							</xsd:restriction>
+						</xsd:simpleType>
+					</xsd:attribute>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="AdditionalData" minOccurs="0" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation>Additional information (in a name-value pair format).</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="Description" type="xsd:string"/>
+						<xsd:element name="Value" type="xsd:string"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="EntityExceptionType">
+		<xsd:sequence>
+			<xsd:element name="EntityXMLFragment" type="xsd:anyType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>XML fragment beginning with the element pointed to by the EntityInstanceXPath above.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Exception" type="ExceptionType" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation>Business level exceptions regarding the specified entity.  This would not include enveloping or xml related exceptions.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="AcknowledgeType">
+		<xsd:sequence>
+			<xsd:element name="PayloadResponseSummary" type="PayloadResponseSummaryType"/>
+			<xsd:element name="PayloadDisposition" type="PayloadDispositionType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation> Should the detail be optional?  Or should this be a choice between the element as it is now and a "no-op" element that indicates total success of the transaction.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element ref="UserArea" minOccurs="0"/>
+		</xsd:sequence>
+		<xsd:attribute ref="xml:lang"/>
+	</xsd:complexType>
+	<xsd:complexType name="PayloadDispositionType">
+		<xsd:sequence>
+			<xsd:element name="EntityDisposition" minOccurs="0" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation>Dispostion for a single entity.  Repetable for batched entities.  For example, representing a Subscriber in Enrollment.</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="EntityIdentifier" type="EntityIdType" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation>The identifier for the component disposition, for example SubscriberId</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="EntityShortName" type="xsd:string" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation>The Entity disposition name,.  Example is "Subscriber".</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="EntitySchemaXPath" type="xsd:string" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation>This will define the "root" level at which the exception applies by reference to the schema.  This is an XPath not for the XML payload instance, but the XML document that is the schema itself.</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="EntityInstanceXPath" type="xsd:string">
+							<xsd:annotation>
+								<xsd:documentation>XPath to the entity in the payload.  This is the full XPath and not simply pointing to the axis in general.  For example in Enrollment, this value would  be an XPath to the Subscriber element (including the occurrence of the Subscriber in the instance - such as Enrollment/Organization/Subscriber[position()=2]).</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:choice>
+							<xsd:element name="EntityNoException">
+								<xsd:annotation>
+									<xsd:documentation>Entities successfully accepted in the payload transaction.</xsd:documentation>
+								</xsd:annotation>
+								<xsd:simpleType>
+									<xsd:restriction base="xsd:string">
+										<xsd:enumeration value="true"/>
+									</xsd:restriction>
+								</xsd:simpleType>
+							</xsd:element>
+							<xsd:element name="EntityException" type="EntityExceptionType">
+								<xsd:annotation>
+									<xsd:documentation>This is the main resuable that can be incorporated into SOAP fault scenario.!!!!</xsd:documentation>
+								</xsd:annotation>
+							</xsd:element>
+						</xsd:choice>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="PayloadResponseSummaryType">
+		<xsd:sequence>
+			<xsd:element name="ReferenceId" type="EntityIdType" minOccurs="0" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation>An identifer passed back for referencing the transation. For example, an order number or confirmation code.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="TransportMessageId" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>The message identifier of the enrollment transaction for which application acknowledgement is being returned.  Matches the transport layer id.</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="MessageIdType" type="xsd:string" minOccurs="0"/>
+						<xsd:element name="MessageId" type="EntityIdType"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="UniquePayloadTrackingId" type="EntityIdType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>The sender in a trading partnership agreeing to use the enrollment acknowledgement will provide this value in the attribute of the same name on the "Enrollment" element; the value will be repeated in this elemnt to produce an acknowledgement of a specific enrollment payload.  Matches the Enrollment Id.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="TransactionReceiptTimestamp" type="DateTimeType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>The date and time at which the message containing the payload here acknowledged was received.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="ProcessingTimestamp" minOccurs="0" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation>The date and time at which a particular processing action was performed on the payload.  The description attribute will contain text meaningful to both parties in the exchange.  For example, an acknolwegment sender could provide date/times such as "Medical Coverages Processed" or "Claims Ready".  Value applies to non-exception cases.</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:simpleContent>
+						<xsd:extension base="DateTimeType">
+							<xsd:attribute name="description" type="xsd:string"/>
+						</xsd:extension>
+					</xsd:simpleContent>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="AcknowledgementCreationTimestamp" type="DateTimeType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>The date and time at which this acknowledgement was created.  It is recommended to use the time at which the acknowledgement payload was completed.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="ReceivedPayloadSummary" minOccurs="0">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="ReceivedPayloadSchemaURI" type="xsd:anyURI" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation>A URI indicating where the schema used to create the enrolment payload being acknowledged can be found.</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="EntityInfo" minOccurs="0" maxOccurs="unbounded">
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element name="EntityInstanceAxisXPath" type="xsd:string" minOccurs="0">
+										<xsd:annotation>
+											<xsd:documentation>An XPath to the entity level in the xml instance.  It does not indicate which occurrence of the entity, only the axis.  For example, it may be Enrollment/Organization/Subscriber - not indicating which Subscriber occurrence. The instance is located by ReceivedPayloadSchemaURI.</xsd:documentation>
+										</xsd:annotation>
+									</xsd:element>
+									<xsd:element name="Count" type="xsd:nonNegativeInteger">
+										<xsd:annotation>
+											<xsd:documentation>The number of items referreed to in the EntitySchemaXPath element.</xsd:documentation>
+										</xsd:annotation>
+									</xsd:element>
+									<xsd:element name="EntityShortName" type="xsd:string" minOccurs="0">
+										<xsd:annotation>
+											<xsd:documentation>A non-standard or shorter name for the entities identified by the EntityXPath  (e.g. "Families with Medical Coverage" or "Life Insurance Coverages with Total Volume Over 2 million dollars".</xsd:documentation>
+										</xsd:annotation>
+									</xsd:element>
+								</xsd:sequence>
+							</xsd:complexType>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="ApplicationAcknowledgement" type="AcknowledgeType"/>
+</xsd:schema>

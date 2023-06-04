@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://ns.hr-xml.org/2007-04-15" xmlns="http://ns.hr-xml.org/2007-04-15" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" version="2007-04-15">
+	<xsd:annotation>
+		<xsd:documentation>
+"Copyright  The HR-XML Consortium. All Rights Reserved. http://www.hr-xml.org"
+Name: Frequencies.xsd
+Status: Recommendation
+Date this version: 2007-04-15
+Purpose: Defines the frequencies for Payroll Instruction
+Author(s): Jason Brown, Payroll Workgroup
+Documentation: .html
+
+Terms of license can be found in license.txt.
+
+</xsd:documentation>
+	</xsd:annotation>
+	<xsd:include schemaLocation="../CPO/xStringPatternExtensionType.xsd"/>
+	<!-- Frequency Types -->
+	<xsd:simpleType name="FrequencyType">
+		<xsd:union memberTypes="BasicFrequencyType xStringPatternExtensionType"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="BasicFrequencyType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="Hourly"/>
+			<xsd:enumeration value="Daily"/>
+			<xsd:enumeration value="Weekly"/>
+			<xsd:enumeration value="Bi-Weekly"/>
+			<xsd:enumeration value="Semi-Monthly"/>
+			<xsd:enumeration value="Monthly"/>
+			<xsd:enumeration value="Month-Week-1"/>
+			<xsd:enumeration value="Month-Week-2"/>
+			<xsd:enumeration value="Month-Week-3"/>
+			<xsd:enumeration value="Month-Week-4"/>
+			<xsd:enumeration value="Month-Week-5"/>
+			<xsd:enumeration value="Month-Week-Last"/>
+			<xsd:enumeration value="Bi-Monthly"/>
+			<xsd:enumeration value="Quarterly"/>
+			<xsd:enumeration value="Semi-Annually"/>
+			<xsd:enumeration value="Annually"/>
+			<xsd:enumeration value="Once"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<!-- the Frequency -->
+	<xsd:element name="Frequency" type="FrequencyType"/>
+</xsd:schema>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://ns.hr-xml.org/2007-04-15" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://ns.hr-xml.org/2007-04-15" elementFormDefault="qualified" version="2007-04-15">
+	<xsd:annotation>
+		<xsd:documentation>
+"Copyright  The HR-XML Consortium. All Rights Reserved. http://www.hr-xml.org"
+Name: ResumeAdditionalItems.xsd
+Status: Recommendation
+Date this version: 2007-04-15
+Purpose: Defines XSD for a flexible container to capture information about interest, activities, personal life, hobbies, and avocational volunteer work, group affiliations, etc.
+Editor: Chuck Allen
+Documentation: Resume.html
+
+Terms of license can be found in license.txt.
+
+</xsd:documentation>
+	</xsd:annotation>
+	<xsd:include schemaLocation="../CPO/DateTimeDataTypes.xsd"/>
+	<xsd:include schemaLocation="../CPO/FlexibleDates.xsd"/>
+	<xsd:include schemaLocation="../CPO/xStringPatternExtensionType.xsd"/>
+	<xsd:include schemaLocation="../CPO/ISOUtilities.xsd"/>
+	<xsd:element name="ResumeAdditionalItem" type="AdditionalItemType"/>
+	<xsd:complexType name="AdditionalItemType">
+		<xsd:sequence>
+			<xsd:element name="EffectiveDate" minOccurs="0">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="StartDate" type="FlexibleDatesType" minOccurs="0"/>
+						<xsd:element name="EndDate" type="FlexibleDatesType" minOccurs="0"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="Description" type="xsd:string" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation>The type attribute of the parent element will identify the content of this element.  i.e. header, detail, etc.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+		<xsd:attribute name="type" type="ResumeItemTypes" use="optional"/>
+	</xsd:complexType>
+	<xsd:simpleType name="ResumeItemTypes">
+		<xsd:union memberTypes="xStringPatternExtensionType ResumeItemTypeTypes"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="ResumeItemTypeTypes">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="Activities"/>
+			<xsd:enumeration value="Interests"/>
+			<xsd:enumeration value="Personal"/>
+			<xsd:enumeration value="Community"/>
+			<xsd:enumeration value="Hobbies"/>
+			<xsd:enumeration value="Volunteer"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+</xsd:schema>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns="http://ns.hr-xml.org/2007-04-15" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://ns.hr-xml.org/2007-04-15" elementFormDefault="qualified" version="2007-04-15">
+	<xsd:annotation>
+		<xsd:documentation>
+"Copyright  The HR-XML Consortium. All Rights Reserved. http://www.hr-xml.org"
+Name: IdentifierTypes.xsd
+Status: Recommendation
+Date this version: 2007-04-15
+Purpose: Defines reusable identifier schema components.
+Author(s):  
+Documentation: IdentifierTypes.html
+
+2004-07-06: The EntityReferenceType was changed from a xsd:choice content model to a xsd:sequence content model.  This is considered a backwardly compatible bug fix.
+
+2005-11-08: DunsNumberType data type renamed to DunsNumberDataType.  This was done so there is not a type and an attribute with the same name (and only cased different).  Code gen tools can be case insensitive and so this would create a collision.  
+
+Terms of license can be found in license.txt.
+
+</xsd:documentation>
+	</xsd:annotation>
+	<xsd:include schemaLocation="../CPO/EntityIdType.xsd"/>
+	<!-- InternetDomainNameType-->
+	<xsd:element name="InternetDomainName" type="InternetDomainNameType"/>
+	<xsd:complexType name="InternetDomainNameType">
+		<xsd:simpleContent>
+			<xsd:extension base="xsd:string">
+				<xsd:attribute name="primaryIndicator" type="xsd:boolean" use="optional"/>
+			</xsd:extension>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<!-- EntityReferenceType-->
+	<xsd:complexType name="EntityReferenceType">
+		<xsd:sequence>
+			<xsd:element name="Id" type="EntityIdType" minOccurs="0"/>
+			<xsd:element name="Name" type="xsd:string" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="DunsNumber" type="DunsNumberDataType"/>
+	<xsd:simpleType name="DunsNumberBaseType">
+		<xsd:restriction base="xsd:integer">
+			<xsd:pattern value="\d{9}"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:complexType name="DunsNumberDataType">
+		<xsd:simpleContent>
+			<xsd:extension base="DunsNumberBaseType">
+				<xsd:attribute name="dunsNumberType" use="required">
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:string">
+							<xsd:enumeration value="standard Duns"/>
+							<xsd:enumeration value="global ultimate"/>
+							<xsd:enumeration value="domestic ultimate"/>
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:attribute>
+			</xsd:extension>
+		</xsd:simpleContent>
+	</xsd:complexType>
+</xsd:schema>

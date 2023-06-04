@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PositionOpeningNL xsi:schemaLocation="http://ns.hr-xml.org/2007-04-15 PositionOpeningNL.xsd" xmlns="http://ns.hr-xml.org/2007-04-15" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xml:lang="nl">
+<!--
+	Name: 			PositionOpeningNLExample - vacancy.xml
+	Purpose: 	Example of PositionOpeningNL message
+	Author(s): 	SETU (helpdesk@setu.nl)
+	Standard: 	SETU standard for Vacancies v1.0
+	Date: 			2011-11-11
+-->
+	<PositionRecordInfo>
+		<Id idOwner="owner">
+			<IdValue>123456</IdValue>
+		</Id>
+		<Status>x:put</Status>
+	</PositionRecordInfo>
+	<PositionSupplierNL>
+		<SupplierIds>
+			<SupplierId idOwner="owner">
+				<IdValue>123</IdValue>
+			</SupplierId>
+			<SupplierId idOwner="KVK">
+				<IdValue>NL21136652</IdValue>
+			</SupplierId>
+		</SupplierIds>
+		<EntityName>Bedrijf A</EntityName>
+		<ContactName>Piet Janssen</ContactName>
+		<ContactMethod>
+			<Telephone>
+				<FormattedNumber>+31154789523</FormattedNumber>
+			</Telephone>
+			<InternetEmailAddress>piet.janssen@bedrijfa.nl</InternetEmailAddress>
+			<SocialMedia>
+				<SocialMedium>
+					<SocialMediumParty>Linkedin</SocialMediumParty>
+					<SocialMediumIdentifier>pietjansen</SocialMediumIdentifier>
+				</SocialMedium>
+			</SocialMedia>
+		</ContactMethod>
+		<Role>owner</Role>
+	</PositionSupplierNL>
+	<PositionProfileNL>
+		<PositionDateInfo>
+			<StartAsSoonAsPossible>true</StartAsSoonAsPossible>
+		</PositionDateInfo>
+		<Organization>
+			<OrganizationName>Bedrijf A</OrganizationName>
+			<ValueStatement>Als bedrijf A zijn willen wij apparatuur van de hoogste kwaliteit maken waarbij wij oog hebben voor de milieutechnische aspecten. Daarnaast ontwikkelen wij onze apparatuur zodanig dat deze zo min mogelijk energie verbruiken</ValueStatement>
+			<InternetDomainName>www.bedrijfa.nl</InternetDomainName>
+			<IndustryCode>28.30</IndustryCode>
+			<Description>Bedrijf A maakt mechanische apparatuur voor de land- en tuinbouw industrie</Description>
+			<ContactInfo purpose="x:moreinfo">
+				<ContactName>
+					<FormattedName>Piet Janssen</FormattedName>
+				</ContactName>
+				<ContactMethod>
+					<Telephone>
+						<FormattedNumber>+31154789523</FormattedNumber>
+					</Telephone>
+					<InternetEmailAddress>piet.janssen@bedrijfa.nl</InternetEmailAddress>
+					<PostalAddress>
+						<CountryCode>NL</CountryCode>
+						<PostalCode>0000AA</PostalCode>
+						<Municipality>Fictievestad</Municipality>
+						<DeliveryAddress>
+							<AddressLine>Fictievestraat</AddressLine>
+							<BuildingNumber>1</BuildingNumber>
+							<Unit>a</Unit>
+						</DeliveryAddress>
+					</PostalAddress>
+				</ContactMethod>
+			</ContactInfo>
+			<SocialMedia>
+				<SocialMedium>
+					<SocialMediumParty>Linkedin</SocialMediumParty>
+					<SocialMediumIdentifier>pietjansen</SocialMediumIdentifier>
+				</SocialMedium>
+			</SocialMedia>
+			<ContactPersons>
+				<ContactPerson>
+					<ContactName>Hoofdvestiging</ContactName>
+					<ContactMethod>
+						<Telephone>
+							<FormattedNumber>+31154789520</FormattedNumber>
+						</Telephone>
+						<InternetEmailAddress>recruitment@bedrijfa.nl</InternetEmailAddress>
+						<SocialMedia>
+							<SocialMedium>
+								<SocialMediumParty>Linkedin</SocialMediumParty>
+								<SocialMediumIdentifier>recruitmentbedrijfa</SocialMediumIdentifier>
+							</SocialMedium>
+						</SocialMedia>
+					</ContactMethod>
+				</ContactPerson>
+			</ContactPersons>
+		</Organization>
+		<PositionDetail>
+			<PhysicalLocation>
+				<Area type="municipality">
+					<Value>Groningen</Value>
+				</Area>
+				<PostalAddress>
+					<CountryCode>NL</CountryCode>
+					<PostalCode>0000AA</PostalCode>
+					<Municipality>Fictievestad</Municipality>
+					<DeliveryAddress>
+						<AddressLine>Fictievestraat</AddressLine>
+						<BuildingNumber>1</BuildingNumber>
+						<Unit>a</Unit>
+					</DeliveryAddress>
+				</PostalAddress>
+			</PhysicalLocation>
+			<JobCategory>
+				<CategoryCode>4</CategoryCode>
+			</JobCategory>
+			<PositionTitle>Werktuigbouwkundige voor mechanische apparaten land- en tuinbouw</PositionTitle>
+			<RemunerationPackage>
+				<BasePay currencyCode="EUR" baseInterval="x:FourWeekly">
+					<BasePayAmountMin>3000</BasePayAmountMin>
+					<BasePayAmountMax>4000</BasePayAmountMax>
+				</BasePay>
+				<Benefits>
+					<Comments>Goede primaire voorwaarde, daarnaast als secundaire voorwaarden onder andere een pensioenplan, levensloopregeling, fietsplan en een ruime onkostenvergoeding. Daarnaast kennen wij flexibele arbeidstijden en bieden wij ook de mogelijkheid tot thuiswerken.</Comments>
+				</Benefits>
+			</RemunerationPackage>
+			<FunctionName>
+				<Name>Werktuigbouwkundige</Name>
+			</FunctionName>
+			<ProfessionName>
+				<Name>Werktuigbouwkundige</Name>
+			</ProfessionName>
+			<FunctionDescription>Werktuigbouwkundige die energiezuinige mechanische apparaten wil ontwikkelen voor de land- en tuinbouw sector</FunctionDescription>
+			<FunctionRequirementsDescription>Masteropleiding (of vergelijkbaar) in de richting werktuigbouwkunde en in bezig van rijbewijs B</FunctionRequirementsDescription>
+			<SalaryScale>
+				<Scale>9</Scale>
+				<SalarySystem>CAO werktuigbouwkunde</SalarySystem>
+			</SalaryScale>
+			<HoursPerWeek>
+				<Minimum>32</Minimum>
+				<Maximum>40</Maximum>
+			</HoursPerWeek>
+			<DaysPerWeek>
+				<Minimum>4</Minimum>
+				<Maximum>5</Maximum>
+			</DaysPerWeek>
+			<ContractDetails>
+				<ContractDuration>permanent</ContractDuration>
+				<TypeOfContract>direct</TypeOfContract>
+			</ContractDetails>
+			<Requirements>
+				<EducationDegree>6</EducationDegree>
+				<EducationMajor>64</EducationMajor>
+				<WorkingAndThinkingLevel>6</WorkingAndThinkingLevel>
+				<YearsOfRelevantWorkingExperience>
+					<Minimum>3</Minimum>
+					<Maximum>5</Maximum>
+				</YearsOfRelevantWorkingExperience>
+				<CareerLevel>Professional-Experienced</CareerLevel>
+				<LicensesAndCertifications>
+					<LicenseOrCertification>
+						<Name>drivingLicense</Name>
+						<Id>B</Id>
+					</LicenseOrCertification>
+				</LicensesAndCertifications>
+				<Qualifications>
+					<Competency description="hoofdrekenen">
+						<TaxonomyId id="1" description="Codelijst rekenen"/>
+						<CompetencyWeight>
+							<NumericValue>4</NumericValue>
+						</CompetencyWeight>						
+					</Competency>				
+				</Qualifications>
+				<Languages>
+					<LanguageNL>
+						<LanguageCode>nl</LanguageCode>
+						<Read>4</Read>
+						<Write>4</Write>
+						<Speak>4</Speak>
+					</LanguageNL>
+					<LanguageNL>
+						<LanguageCode>en</LanguageCode>
+						<Read>4</Read>
+						<Write>4</Write>
+						<Speak>4</Speak>
+					</LanguageNL>
+				</Languages>
+			</Requirements>
+		</PositionDetail>
+		<FormattedPositionDescription>Werktuigbouwkundige die energiezuinige mechanische apparaten wil ontwikkelen voor de land- en tuinbouw sector.</FormattedPositionDescription>
+		<PositionKeywords>
+			<Keyword>werktuigbouwkundige</Keyword>
+			<Keyword>Landbouw</Keyword>
+			<Keyword>energiezuinigd</Keyword>
+			<Keyword>mechanisch</Keyword>
+			<Keyword>mechanische apparatuur</Keyword>
+			<Keyword>werktuigbouwkunde</Keyword>
+		</PositionKeywords>
+	</PositionProfileNL>
+	<NumberToFill>1</NumberToFill>
+</PositionOpeningNL>

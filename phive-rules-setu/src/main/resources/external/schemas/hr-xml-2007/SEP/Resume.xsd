@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns="http://ns.hr-xml.org/2007-04-15" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://ns.hr-xml.org/2007-04-15" elementFormDefault="qualified" version="2007-04-15">
+	<xsd:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="../../W3C/xml.xsd"/>
+	<xsd:annotation>
+		<xsd:documentation>
+"Copyright  The HR-XML Consortium. All Rights Reserved. http://www.hr-xml.org"
+Name: Resume.xsd
+Status: Recommendation
+Date this version: 2007-04-15
+Purpose: Defines the Resume Schema  
+Author(s):  RecruitingAndStaffing Workgroup
+Documentation: Resume.html
+
+2005-08-08 - Kim Bartkus removed choice and extra layer for structured and non-structured XML resume.
+
+Terms of license can be found in license.txt.
+
+</xsd:documentation>
+	</xsd:annotation>
+	<xsd:include schemaLocation="../CPO/Competencies.xsd"/>
+	<xsd:include schemaLocation="../CPO/UserArea.xsd"/>
+	<xsd:include schemaLocation="../CPO/ISOUtilities.xsd"/>
+	<xsd:include schemaLocation="../CPO/EducationHistory.xsd"/>
+	<xsd:include schemaLocation="../CPO/MilitaryHistory.xsd"/>
+	<xsd:include schemaLocation="../CPO/EmploymentHistory.xsd"/>
+	<xsd:include schemaLocation="../CPO/PublicationHistory.xsd"/>
+	<xsd:include schemaLocation="../CPO/PatentHistory.xsd"/>
+	<xsd:include schemaLocation="../CPO/SpeakingEventsHistory.xsd"/>
+	<xsd:include schemaLocation="../SEP/ResumeAdditionalItems.xsd"/>
+<!--	Not Used: <xsd:include schemaLocation="../CPO/SharedStaffingModules.xsd"/>-->
+	<xsd:include schemaLocation="../CPO/LicensesAndCertifications.xsd"/>
+	<xsd:complexType name="SEPContactInfoType">
+		<xsd:sequence>
+			<xsd:element ref="PersonName" minOccurs="0"/>
+			<xsd:element name="ContactMethod" type="ContactMethodType" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="Resume">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="ResumeId" type="EntityIdType" minOccurs="0"/>
+				<xsd:element name="DistributionGuidelines" type="DistributionGuidelinesType" minOccurs="0"/>
+				<xsd:element ref="StructuredXMLResume" minOccurs="0"/>
+				<xsd:element ref="NonXMLResume" minOccurs="0"/>
+				<xsd:element ref="UserArea" minOccurs="0"/>
+			</xsd:sequence>
+			<xsd:attribute ref="xml:lang"/>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:complexType name="StructuredXMLResumeType">
+		<xsd:sequence>
+			<xsd:element name="ContactInfo" type="SEPContactInfoType" minOccurs="0"/>
+			<xsd:element name="ExecutiveSummary" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="Objective" type="xsd:string" minOccurs="0"/>
+			<xsd:element ref="EmploymentHistory" minOccurs="0"/>
+			<xsd:element ref="EducationHistory" minOccurs="0"/>
+			<xsd:element ref="LicensesAndCertifications" minOccurs="0"/>
+			<xsd:element ref="MilitaryHistory" minOccurs="0"/>
+			<xsd:element ref="PatentHistory" minOccurs="0"/>
+			<xsd:element ref="PublicationHistory" minOccurs="0"/>
+			<xsd:element ref="SpeakingEventsHistory" minOccurs="0"/>
+			<xsd:element name="Qualifications" minOccurs="0">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="QualificationSummary" type="xsd:string" minOccurs="0"/>
+						<xsd:element ref="Competency" minOccurs="0" maxOccurs="unbounded"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="Languages" minOccurs="0">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element ref="Language" maxOccurs="unbounded"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element ref="Achievements" minOccurs="0"/>
+			<xsd:element ref="Associations" minOccurs="0"/>
+			<xsd:element ref="References" minOccurs="0"/>
+			<xsd:element ref="SecurityCredentials" minOccurs="0"/>
+			<xsd:element name="ResumeAdditionalItems" minOccurs="0">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element ref="ResumeAdditionalItem" maxOccurs="unbounded"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="SupportingMaterials" type="StaffingSupportingMaterialsType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="ProfessionalAssociations" type="ProfessionalAssociationType" minOccurs="0"/>
+			<xsd:group ref="Comments" minOccurs="0"/>
+			<xsd:element name="RevisionDate" type="AnyDateTimeNkType" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="NonXMLResumeType">
+		<xsd:sequence>
+			<xsd:element name="TextResume" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="LinkToResume" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="SupportingMaterials" type="StaffingSupportingMaterialsType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:group ref="Comments" minOccurs="0"/>
+			<xsd:element name="RevisionDate" type="AnyDateTimeNkType" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ProfessionalAssociationType">
+		<xsd:sequence>
+			<xsd:element name="Association" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:group name="Comments">
+		<xsd:sequence>
+			<xsd:element name="Comments" type="xsd:string" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:group>
+	<xsd:element name="StructuredXMLResume" type="StructuredXMLResumeType"/>
+	<xsd:element name="NonXMLResume" type="NonXMLResumeType"/>
+</xsd:schema>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns="http://ns.hr-xml.org/2007-04-15" xmlns:xsd="http://www.w3.org/2001/XMLSchema"  targetNamespace="http://ns.hr-xml.org/2007-04-15" elementFormDefault="qualified" version="2007-04-15">
+	<xsd:include schemaLocation="EntityIdType.xsd"/>
+	<xsd:include schemaLocation="UserArea.xsd"/>
+	<xsd:element name="RetrieveMethod" type="RetrieveType"/>
+	<xsd:complexType name="RetrieveType">
+		<xsd:sequence>
+			<xsd:element name="ReferenceId" type="EntityIdType"/>
+			<xsd:element name="Description" type="xsd:string" minOccurs="0"/>
+			<xsd:element ref="UserArea" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

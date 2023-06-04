@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns="http://ns.hr-xml.org/2007-04-15" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://ns.hr-xml.org/2007-04-15" elementFormDefault="qualified" version="2007-04-15">
+	<xsd:annotation>
+		<xsd:documentation>
+"Copyright  The HR-XML Consortium. All Rights Reserved. http://www.hr-xml.org"
+Name: EmploymentHistory.xsd
+Status: Recommendation
+Date this version: 2007-04-15
+Purpose: Defines the EmploymentHistory Schema
+Author(s):  
+Documentation: EmploymentHistory.html
+
+Terms of license can be found in license.txt.
+
+Change Notes:
+2005-01-13
+Renamed EmployerOrgType to EmployerOrgDataType so as not to be confused with attribute of same name.
+		
+		</xsd:documentation>
+	</xsd:annotation>
+	<xsd:include schemaLocation="../CPO/UserArea.xsd"/>
+	<xsd:include schemaLocation="../CPO/IdentifierTypes.xsd"/>
+	<xsd:include schemaLocation="../CPO/PersonName.xsd"/>
+	<xsd:include schemaLocation="../CPO/Competencies.xsd"/>
+	<xsd:include schemaLocation="../CPO/ContactMethod.xsd"/>
+	<xsd:include schemaLocation="../CPO/ISOUtilities.xsd"/>
+	<xsd:include schemaLocation="../CPO/FlexibleDates.xsd"/>
+	<xsd:include schemaLocation="../CPO/SharedStaffingModules.xsd"/>
+	<xsd:complexType name="EmploymentHistoryType">
+		<xsd:sequence>
+			<xsd:element name="EmployerOrg" type="EmployerOrgDataType" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="EmployerOrgDataType">
+		<xsd:sequence>
+			<xsd:element name="EmployerOrgName" type="xsd:string"/>
+			<xsd:element name="EmployerContactInfo" type="EmpContactInfoType" minOccurs="0"/>
+			<xsd:element name="PositionHistory" maxOccurs="unbounded">
+				<xsd:complexType>
+					<xsd:complexContent>
+						<xsd:extension base="PositionHistoryType"/>
+					</xsd:complexContent>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element ref="UserArea" minOccurs="0"/>
+		</xsd:sequence>
+		<xsd:attribute name="employerOrgType" type="EmpOrgTypeStringExtensionType"/>
+	</xsd:complexType>
+	<xsd:complexType name="EmpContactInfoType">
+		<xsd:sequence>
+			<xsd:element ref="PersonName" minOccurs="0"/>
+			<xsd:element name="ContactMethod" type="ContactMethodType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="LocationSummary" type="EmploymentLocationSummaryType" minOccurs="0"/>
+			<xsd:element name="InternetDomainName" type="InternetDomainNameType" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+		<xsd:attribute name="contactType" type="ContactTypeStringExtensionType"/>
+	</xsd:complexType>
+	<xsd:complexType name="PositionHistoryType">
+		<xsd:sequence>
+			<xsd:element name="Title" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="OrgName" type="PositionOrgNameType"/>
+			<xsd:element name="OrgInfo" type="PositionOrgInfoType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="OrgIndustry" type="PositionOrgIndustryType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="OrgSize" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="Description" type="xsd:string"/>
+			<xsd:element name="StartDate" type="FlexibleDatesType"/>
+			<xsd:element name="EndDate" type="FlexibleDatesType" minOccurs="0"/>
+			<xsd:element name="Compensation" type="PositionCompensationType" minOccurs="0"/>
+			<xsd:element name="Comments" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="Verification" type="VerificationType" minOccurs="0"/>
+			<xsd:element name="JobLevelInfo" type="JobLevelInfoType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="JobCategory" type="OccupationalCategoryType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="Competency" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="UserArea" minOccurs="0"/>
+		</xsd:sequence>
+		<xsd:attribute name="positionType" type="PositionTypexStringPatternExtensionType"/>
+		<xsd:attribute name="currentEmployer" type="xsd:boolean" use="optional"/>
+	</xsd:complexType>
+	<xsd:complexType name="VerificationType">
+		<xsd:sequence>
+			<xsd:element name="ContactInfo">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element ref="PersonName"/>
+						<xsd:element name="ContactMethod" type="ContactMethodType" minOccurs="0" maxOccurs="unbounded"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="ReasonForLeaving" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="PermissionToContact" type="xsd:boolean" minOccurs="0"/>
+			<xsd:element name="VerifyEmployment" type="xsd:boolean" minOccurs="0"/>
+			<xsd:element name="EligibleForRehire" type="xsd:boolean" minOccurs="0"/>
+			<xsd:element name="AttendanceRating" type="RatingType" minOccurs="0"/>
+			<xsd:element name="OverallPerformanceRating" type="RatingType" minOccurs="0"/>
+			<xsd:element name="QuestionAnswerPair" type="EmploymentQuestionAnswerPairType" minOccurs="0" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation>Usage is primarily for the results of a screening, but is not limited to that purpose.  </xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="RatingType">
+		<xsd:choice>
+			<xsd:element name="NumericValue">
+				<xsd:complexType>
+					<xsd:simpleContent>
+						<xsd:extension base="xsd:double">
+							<xsd:attribute name="minValue" type="xsd:double"/>
+							<xsd:attribute name="maxValue" type="xsd:double"/>
+							<xsd:attribute name="description" type="xsd:string"/>
+						</xsd:extension>
+					</xsd:simpleContent>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="StringValue">
+				<xsd:complexType>
+					<xsd:simpleContent>
+						<xsd:extension base="xsd:string">
+							<xsd:attribute name="minValue" type="xsd:string"/>
+							<xsd:attribute name="maxValue" type="xsd:string"/>
+							<xsd:attribute name="description" type="xsd:string"/>
+						</xsd:extension>
+					</xsd:simpleContent>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:choice>
+	</xsd:complexType>
+	<xsd:simpleType name="contactTypes">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="recruiter"/>
+			<xsd:enumeration value="HRRep"/>
+			<xsd:enumeration value="directSupervisor"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="ContactTypeStringExtensionType">
+		<xsd:union memberTypes="contactTypes xsd:string"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="employerOrgTypes">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="soleEmployer"/>
+			<xsd:enumeration value="agent"/>
+			<xsd:enumeration value="broker"/>
+			<xsd:enumeration value="self"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="EmpOrgTypeStringExtensionType">
+		<xsd:union memberTypes="employerOrgTypes xsd:string"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="organizationTypes">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="department"/>
+			<xsd:enumeration value="group"/>
+			<xsd:enumeration value="team"/>
+			<xsd:enumeration value="branch"/>
+			<xsd:enumeration value="company"/>
+			<xsd:enumeration value="subsidiary"/>
+			<xsd:enumeration value="unit"/>
+			<xsd:enumeration value="headquarters"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="OrganizationTypeStringExtensionType">
+		<xsd:union memberTypes="organizationTypes xsd:string"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="positionTypes">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="directHire"/>
+			<xsd:enumeration value="contract"/>
+			<xsd:enumeration value="temp"/>
+			<xsd:enumeration value="contractToHire"/>
+			<xsd:enumeration value="tempToHire"/>
+			<xsd:enumeration value="volunteer"/>
+			<xsd:enumeration value="internship"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="PositionTypexStringPatternExtensionType">
+		<xsd:union memberTypes="positionTypes xStringPatternExtensionType"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="intervalTypes">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="hourly"/>
+			<xsd:enumeration value="daily"/>
+			<xsd:enumeration value="weekly"/>
+			<xsd:enumeration value="monthly"/>
+			<xsd:enumeration value="quarterly"/>
+			<xsd:enumeration value="yearly"/>
+			<xsd:enumeration value="semi-monthly"/>
+			<xsd:enumeration value="biweekly"/>
+			<xsd:enumeration value="fortnightly"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="IntervalTypeStringExtensionType">
+		<xsd:union memberTypes="intervalTypes xsd:string"/>
+	</xsd:simpleType>
+	<xsd:complexType name="PositionOrgNameType">
+		<xsd:sequence>
+			<xsd:element name="OrganizationName" type="xsd:string"/>
+			<xsd:element name="OrgName" type="PositionOrgNameType" minOccurs="0"/>
+		</xsd:sequence>
+		<xsd:attribute name="organizationType" type="OrganizationTypeStringExtensionType"/>
+	</xsd:complexType>
+	<xsd:complexType name="PositionOrgInfoType">
+		<xsd:sequence>
+			<xsd:element name="PositionLocation" type="PostalAddressType" minOccurs="0"/>
+			<xsd:element name="WebSite" type="InternetWebAddressType" minOccurs="0"/>
+			<xsd:element name="LocationSummary" type="EmploymentLocationSummaryType" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="PositionOrgIndustryType">
+		<xsd:sequence>
+			<xsd:element name="IndustryDescription" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="IndustryCode" minOccurs="0">
+				<xsd:complexType>
+					<xsd:simpleContent>
+						<xsd:extension base="xsd:string">
+							<xsd:attribute name="classificationName" type="xsd:string"/>
+						</xsd:extension>
+					</xsd:simpleContent>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+		<xsd:attribute name="primaryIndicator" type="xsd:boolean" use="required"/>
+	</xsd:complexType>
+	<xsd:complexType name="PositionCompensationType">
+		<xsd:sequence>
+			<xsd:element name="StartingCompensation" minOccurs="0">
+				<xsd:complexType>
+					<xsd:simpleContent>
+						<xsd:extension base="xsd:string">
+							<xsd:attribute name="currency" type="CurrencyCodeType" use="required"/>
+							<xsd:attribute name="intervalType" type="IntervalTypeStringExtensionType"/>
+							<xsd:attribute name="validFrom" type="AnyDateTimeNaType"/>
+							<xsd:attribute name="validTo" type="AnyDateTimeNaType"/>
+						</xsd:extension>
+					</xsd:simpleContent>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="EndingCompensation" minOccurs="0">
+				<xsd:complexType>
+					<xsd:simpleContent>
+						<xsd:extension base="xsd:string">
+							<xsd:attribute name="currency" type="CurrencyCodeType" use="required"/>
+							<xsd:attribute name="intervalType" type="IntervalTypeStringExtensionType"/>
+							<xsd:attribute name="validFrom" type="AnyDateTimeNaType"/>
+							<xsd:attribute name="validTo" type="AnyDateTimeNaType"/>
+						</xsd:extension>
+					</xsd:simpleContent>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="Comments" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="OtherCompensation" minOccurs="0" maxOccurs="unbounded">
+				<xsd:complexType>
+					<xsd:simpleContent>
+						<xsd:extension base="xsd:string">
+							<xsd:attribute name="type" type="xsd:string"/>
+							<xsd:attribute name="validFrom" type="AnyDateTimeNaType"/>
+							<xsd:attribute name="validTo" type="AnyDateTimeNaType"/>
+						</xsd:extension>
+					</xsd:simpleContent>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="EmploymentLocationSummaryType">
+		<xsd:sequence>
+			<xsd:element name="Municipality" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="Region" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element ref="CountryCode" minOccurs="0"/>
+			<xsd:element name="PostalCode" type="xsd:string" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="EmploymentQuestionAnswerPairType">
+		<xsd:sequence>
+			<xsd:element name="Question" type="xsd:string"/>
+			<xsd:element name="Answer" type="xsd:string" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="EmploymentHistory" type="EmploymentHistoryType"/>
+</xsd:schema>

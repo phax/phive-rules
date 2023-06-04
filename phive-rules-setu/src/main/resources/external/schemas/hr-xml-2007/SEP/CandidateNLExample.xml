@@ -1,0 +1,359 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CandidateNL xsi:schemaLocation="http://ns.hr-xml.org/2007-04-15 CandidateNL.xsd" xmlns="http://ns.hr-xml.org/2007-04-15" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<!--
+	Name: 		CandidateNLExample.xml
+	Purpose: 	Example of CandidateNL message
+	Author(s): 	SETU (helpdesk@setu.nl)
+	Standard: 	Draft SETU standard for CV v0.9
+	Date: 		2013-09-09
+-->
+	<CandidateRecordInfoNL>
+		<Id>
+			<IdValue>132146578</IdValue>
+		</Id>
+		<Status>x:activate</Status>
+		<IndicatorStoringCVAllowed>true</IndicatorStoringCVAllowed>
+		<IndicatorMatchingWanted>true</IndicatorMatchingWanted>
+	</CandidateRecordInfoNL>
+	<RelatedPositionPostings>
+		<PositionPosting>
+			<Id idOwner="publicist">
+				<IdValue>vacature1234</IdValue>
+			</Id>
+			<Title>Java ontwikkelaar</Title>
+			<Link>http://www.vacaturebank.nl/vacature1234</Link>			
+		</PositionPosting>
+	</RelatedPositionPostings>
+	<CandidateSupplier>
+		<SupplierId idOwner="owner">
+			<IdValue>uz93939</IdValue>
+		</SupplierId>
+		<EntityName>Uitzendbureau A</EntityName>		
+	</CandidateSupplier>
+	<DistributionGuidelines>
+		<DistributeTo>
+			<Id idOwner="KVK">
+				<IdValue>NL32165465</IdValue>
+			</Id>
+			<Name>Uitzendbureau B</Name>
+		</DistributeTo>
+		<DoNotDistributeTo>
+			<Id idOwner="KVK">
+				<IdValue>NL36347478</IdValue>
+			</Id>
+			<Name>Werkgever A</Name>
+		</DoNotDistributeTo>
+	</DistributionGuidelines>
+	<CandidateProfile>
+		<AvailabilityInfo>
+			<AvailabilityDates>
+				<StartDate>2014-01-01</StartDate>
+				<EndDate>2014-12-31</EndDate>
+			</AvailabilityDates>
+			<TermOfNotice>
+				<Value>2</Value>
+				<Interval>Month</Interval>
+			</TermOfNotice>
+			<AvailableHours>
+				<AvailableHoursPerDay>
+					<Day>1</Day>
+					<StartTime>08:00:00</StartTime>
+					<EndTime>18:00:00</EndTime>
+				</AvailableHoursPerDay>
+				<AvailableHoursPerDay>
+					<Day>2</Day>
+					<StartTime>08:00:00</StartTime>
+					<EndTime>18:00:00</EndTime>
+				</AvailableHoursPerDay>
+				<AvailableHoursPerDay>
+					<Day>3</Day>
+					<StartTime>08:00:00</StartTime>
+					<EndTime>18:00:00</EndTime>
+				</AvailableHoursPerDay>
+				<AvailableHoursPerDay>
+					<Day>4</Day>
+					<StartTime>08:00:00</StartTime>
+					<EndTime>18:00:00</EndTime>
+				</AvailableHoursPerDay>
+				<AvailableHoursPerDay>
+					<Day>5</Day>
+					<StartTime>08:00:00</StartTime>
+					<EndTime>12:00:00</EndTime>
+				</AvailableHoursPerDay>
+			</AvailableHours>
+		</AvailabilityInfo>
+		<PersonalData>
+			<PersonName>
+				<FormattedName>Jan Michiel Pietersen</FormattedName>
+				<LegalName>ir. Jan Michiel Pietersen</LegalName>
+				<GivenName>Jan</GivenName>
+				<GivenName>Michiel</GivenName>
+				<PreferredGivenName>Jan</PreferredGivenName>
+				<MiddleName>J.M.</MiddleName>
+				<FamilyName>Pietersen</FamilyName>
+			</PersonName>
+			<ContactMethod>
+				<Telephone>
+					<FormattedNumber>020-12121748</FormattedNumber>
+				</Telephone>
+				<Mobile>
+					<FormattedNumber>06-65746845</FormattedNumber>
+				</Mobile>
+				<Fax>
+					<FormattedNumber>020-6578912</FormattedNumber>
+				</Fax>
+				<InternetEmailAddress>jan.pietersen@emailprovider.nl</InternetEmailAddress>
+				<InternetWebAddress>www.janpietersen.nl</InternetWebAddress>
+				<PostalAddress>
+					<CountryCode>NL</CountryCode>
+					<PostalCode>1234AB</PostalCode>
+					<Municipality>Amsterdam</Municipality>
+					<DeliveryAddress>
+						<StreetName>Voorbeeldstraat</StreetName>
+						<BuildingNumber>1</BuildingNumber>
+					</DeliveryAddress>					
+				</PostalAddress>
+				<SocialMedia>
+					<SocialMedium>
+						<SocialMediumParty>twitter</SocialMediumParty>
+						<SocialMediumIdentifier>@janpietersen</SocialMediumIdentifier>
+						<SocialMediumLink>http://www.twitter.com/janpietersen</SocialMediumLink>
+						<SocialMediumProfileId>10</SocialMediumProfileId>
+						<SocialMediumToken>45jfero8tufjsjlfre90t9rt0et</SocialMediumToken>
+						<SocialMediumRevoke>false</SocialMediumRevoke>
+					</SocialMedium>
+					<SocialMedium>
+						<SocialMediumParty>linkedin</SocialMediumParty>
+						<SocialMediumIdentifier>janpietersen</SocialMediumIdentifier>
+					</SocialMedium>
+				</SocialMedia>
+			</ContactMethod>
+			<PersonDescriptors>
+				<LegalIdentifiers>
+					<VisaStatus validFrom="2013-01-01" validTo="2015-12-31"/>
+				</LegalIdentifiers>
+				<DemographicDescriptors>
+					<Nationality>Dutch</Nationality>
+					<BirthPlace>Amsterdam</BirthPlace>
+					<MaritalStatus>Married</MaritalStatus>
+				</DemographicDescriptors>
+				<BiologicalDescriptors>
+					<DateOfBirth>1975-06-05</DateOfBirth>
+					<GenderCode>1</GenderCode>
+					<DisabilityInfo>
+						<Type>Rolstoel gebonden</Type>
+						<AccommodationsNeeded>true</AccommodationsNeeded>
+					</DisabilityInfo>
+				</BiologicalDescriptors>
+				<SupportingMaterials>
+					<AttachmentReference mimeType="image/jpeg">base64encodedphoto</AttachmentReference>
+					<Description>Photo</Description>
+				</SupportingMaterials>
+			</PersonDescriptors>
+		</PersonalData>
+		<PreferredPositionNL>
+			<IndustryCode>28.30</IndustryCode>
+			<PhysicalLocation>
+				<Area type="municipality">
+					<Value>Amsterdam</Value>
+				</Area>
+			</PhysicalLocation>
+			<JobCategory>
+				<CategoryCode>4</CategoryCode>
+			</JobCategory>			
+			<RemunerationPackage>
+				<BasePay currencyCode="EUR" baseInterval="Monthly">
+					<BasePayAmountMin>2500</BasePayAmountMin>
+					<BasePayAmountMax>3000</BasePayAmountMax>
+				</BasePay>
+			</RemunerationPackage>
+			<Relocation relocationConsidered="false"/>
+			<Commute>
+				<DistanceMax unitOfMeasure="km">50</DistanceMax>
+			</Commute>
+			<AvailableTransportMeans>
+				<AvailableTransportMean>4</AvailableTransportMean>
+				<AvailableTransportMean>7</AvailableTransportMean>
+			</AvailableTransportMeans>
+			<HoursPerWeek>
+				<Minimum>32</Minimum>
+				<Maximum>36</Maximum>
+			</HoursPerWeek>
+			<DaysPerWeek>
+				<Minimum>4</Minimum>
+				<Maximum>5</Maximum>
+			</DaysPerWeek>
+			<DesiredProfessionName>
+				<Name>Java ontwikkelaar</Name>
+			</DesiredProfessionName>
+			<ContractDetails>
+				<ContractDuration>permanent</ContractDuration>
+				<TypeOfContract>direct</TypeOfContract>
+				<ContractFeatures>
+					<ContractFeature>20</ContractFeature>
+				</ContractFeatures>
+			</ContractDetails>
+		</PreferredPositionNL>
+		<Languages>
+			<LanguageNL>
+				<LanguageCode>nl</LanguageCode>
+				<Read>4</Read>
+				<Write>4</Write>
+				<Speak>4</Speak>
+			</LanguageNL>
+			<LanguageNL>
+				<LanguageCode>en</LanguageCode>
+				<Read>4</Read>
+				<Write>4</Write>
+				<Speak>4</Speak>
+			</LanguageNL>
+		</Languages>
+	</CandidateProfile>
+	<Resume>		
+		<StructuredXMLResume>
+			<ExecutiveSummary>Java programmeur met 5 jaar ervaring, tevens Scrum master</ExecutiveSummary>
+			<Objective>Java programmeur met 5 jaar werkervaring in de commercieële sector, heeft in de laatste drie jaar ook regelmatig als Scrum Master gefungeerd in ontwikkelprojecten waarin minimaal 5 personen actief waren</Objective>
+			<EmploymentHistory>
+				<EmployerOrg>
+					<EmployerOrgName>Java-softwaredevelopment B.V.</EmployerOrgName>
+					<EmployerContactInfo>
+						<PersonName>
+							<FormattedName>Henk Janssen</FormattedName>
+						</PersonName>
+						<ContactMethod>
+							<Telephone>
+								<FormattedNumber>020-6985478</FormattedNumber>
+							</Telephone>
+							<Mobile>
+								<FormattedNumber>06-23658715</FormattedNumber>
+							</Mobile>
+							<Fax>
+								<FormattedNumber>020-6325841</FormattedNumber>
+							</Fax>
+							<InternetEmailAddress>henk.janssen@java-softwaredevelopment.nl</InternetEmailAddress>
+						</ContactMethod>
+					</EmployerContactInfo>
+					<PositionHistory>
+						<Title>Java programmeur</Title>
+						<OrgName>
+							<OrganizationName>Java-softwaredevelopment B.V.</OrganizationName>
+						</OrgName>
+						<OrgIndustry primaryIndicator="true">
+							<IndustryCode>28.30</IndustryCode>
+						</OrgIndustry>
+						<Description>Ontwikkelen van software in Java</Description>
+						<StartDate>
+							<AnyDate>2012-01-01</AnyDate>
+						</StartDate>
+						<EndDate>
+							<AnyDate>2012-12-31</AnyDate>
+						</EndDate>
+						<JobCategory>
+							<CategoryCode>4</CategoryCode>
+						</JobCategory>
+					</PositionHistory>
+				</EmployerOrg>
+			</EmploymentHistory>
+			<EducationHistory>
+				<SchoolOrInstitution schoolType="education">
+					<School>
+						<SchoolName>Hogeschool Saxion</SchoolName>
+					</School>
+					<Degree examPassed="true">
+						<DegreeName>5</DegreeName>
+						<DatesOfAttendance>
+							<StartDate>
+								<AnyDate>1990-09-01</AnyDate>
+							</StartDate>
+							<EndDate>
+								<AnyDate>1994-08-31</AnyDate>
+							</EndDate>
+						</DatesOfAttendance>
+						<Comments>Bachelor informatica</Comments>
+						<DegreeClassification>
+							<Description>6</Description>
+						</DegreeClassification>
+					</Degree>
+				</SchoolOrInstitution>
+				<SchoolOrInstitution schoolType="course">
+					<School>
+						<SchoolName>Java opleidingen.nl</SchoolName>
+					</School>
+					<Degree examPassed="false">
+						<DatesOfAttendance>
+							<StartDate>
+								<AnyDate>1996-01-01</AnyDate>
+							</StartDate>
+							<EndDate>
+								<AnyDate>1996-07-01</AnyDate>
+							</EndDate>
+						</DatesOfAttendance>
+						<Comments>Basis cursus Java</Comments>
+					</Degree>
+				</SchoolOrInstitution>
+			</EducationHistory>
+			<LicensesAndCertifications>
+				<LicenseOrCertification>
+					<Name>drivingLicense</Name>
+					<Id>B</Id>
+				</LicenseOrCertification>
+			</LicensesAndCertifications>
+			<Qualifications>
+				<Competency description="hoofdrekenen">
+					<TaxonomyId id="1" description="Codelijst rekenen"/>
+					<CompetencyWeight>
+						<NumericValue>4</NumericValue>
+					</CompetencyWeight>						
+				</Competency>	
+			</Qualifications>
+			<Associations>
+				<Association>
+					<Name>Java forum</Name>
+					<StartDate>
+						<AnyDate>2001-01-01</AnyDate>
+					</StartDate>
+					<EndDate>
+						<AnyDate>notApplicable</AnyDate>
+					</EndDate>
+					<Role>
+						<Name>Boardmember</Name>
+					</Role>
+					<Comments>Als lid van het bestuur verantwoordelijk voor het besturen van het Java Forum waarin gediscussieerd wordt over de toepassing van java in softwareontwikkeling</Comments>
+				</Association>
+			</Associations>
+			<References>
+				<Reference type="x:reference">
+					<PersonName>
+						<FormattedName>Henk Janssen</FormattedName>
+					</PersonName>
+					<PositionTitle>Directeur</PositionTitle>
+					<ContactMethod>
+						<WhenAvailable>on request</WhenAvailable>
+					</ContactMethod>
+				</Reference>
+				<Reference type="x:recommendation">
+					<PersonName>
+						<FormattedName>Piet Klaassen</FormattedName>
+					</PersonName>
+					<PositionTitle>Java ontwikkelaar</PositionTitle>
+					<Comments>Jan is een goede java softwareontwikkelaar met veel kennis, het is een erg prettige persoon om mee te werken</Comments>
+				</Reference>
+			</References>
+			<ResumeAdditionalItems>
+				<ResumeAdditionalItem type="Hobbies">
+					<Description>Modelvliegen</Description>
+				</ResumeAdditionalItem>
+			</ResumeAdditionalItems>
+			<SupportingMaterials>
+				<AttachmentReference mimeType="application/pdf">base64encodedCV</AttachmentReference>
+				<Description>CV</Description>
+			</SupportingMaterials>
+			<SupportingMaterials>
+				<Link>http://www.janpietersen.nl/voorbeelden</Link>
+				<Description>Voorbeeld code</Description>
+			</SupportingMaterials>
+			<Comments>Ruimte om aanvullende wensen aan te geven</Comments>
+			<RevisionDate>2013-09-09</RevisionDate>
+		</StructuredXMLResume>	
+	</Resume>
+</CandidateNL>

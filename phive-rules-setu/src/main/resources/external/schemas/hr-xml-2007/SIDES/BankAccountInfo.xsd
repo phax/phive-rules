@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2005 sp1 U (http://www.xmlspy.com) by Kim Bartkus (private) -->
+<xsd:schema xmlns="http://ns.hr-xml.org/2007-04-15" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://ns.hr-xml.org/2007-04-15" elementFormDefault="qualified" version="2007-04-15">
+	<xsd:annotation>
+		<xsd:documentation>
+"Copyright  The HR-XML Consortium. All Rights Reserved. http://www.hr-xml.org"
+Name: 
+Status: 
+Date this version: 
+Purpose: 
+Author(s): 
+Documentation: 
+
+2006-July: Created new schema from the BankAccountInfo within FRLocalization.xsd.
+Added BankAccountType and BankAccountHolder optional elements.
+
+Terms of license can be found in license.txt.
+
+</xsd:documentation>
+	</xsd:annotation>
+	<!-- Localized Bank Account Info -->
+	<xsd:complexType name="BankAccountInfoType">
+		<xsd:sequence>
+			<xsd:element name="BankInfoByJurisdiction" minOccurs="0" maxOccurs="unbounded">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="BankCode" type="xsd:string"/>
+						<xsd:element name="BankWindow" type="xsd:string"/>
+						<xsd:element name="BankAccountNumber" type="xsd:string"/>
+						<xsd:element name="BankAccountKey" type="xsd:string"/>
+						<xsd:element name="BankAccountType" type="xsd:string" minOccurs="0"/>
+						<xsd:element name="BankAccountHolder" type="xsd:string" minOccurs="0"/>
+					</xsd:sequence>
+					<xsd:attribute name="bankJurisdiction" type="xsd:string" use="required"/>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="BankAccountForeign" type="xsd:string" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

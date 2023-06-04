@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2005 sp1 U (http://www.xmlspy.com) by Kim Bartkus (private) -->
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://ns.hr-xml.org/2007-04-15" targetNamespace="http://ns.hr-xml.org/2007-04-15" elementFormDefault="qualified" version="2007-04-15">
+	<xsd:annotation>
+		<xsd:documentation>
+"Copyright The HR-XML Consortium. All Rights Reserved. http://www.hr-xml.org" 
+Name: StaffingOrder.xsd 
+Status: Recommendation 
+Date this version: 2007-04-15
+Purpose: Defines the StaffingOrder Schema 
+Author(s): SIDES Workgroup 
+Documentation: SIDESReusableModules.html
+
+Terms of license can be found in license.txt.
+
+2006-July: Added 'event' enumeration to shiftPeriod.
+2004-07-06: An optional attribute xml:lang was added to the root element.
+		
+		</xsd:documentation>
+	</xsd:annotation>
+	<xsd:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="../../W3C/xml.xsd"/>
+	<xsd:include schemaLocation="../CPO/EntityIdType.xsd"/>
+	<xsd:element name="StaffingShift" type="StaffingShiftType"/>
+	<xsd:complexType name="StaffingShiftType">
+		<xsd:sequence>
+			<xsd:element name="Id" type="EntityIdType"/>
+			<xsd:element name="Name" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="Hours" type="xsd:decimal" minOccurs="0"/>
+			<xsd:element name="StartTime" type="LocalTimeNkNaType" minOccurs="0"/>
+			<xsd:element name="EndTime" type="LocalTimeNkNaType" minOccurs="0"/>
+			<xsd:element name="TypeHours" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="Comment" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="ExternalStaffingShiftSetId" type="EntityIdType" minOccurs="0"/>
+		</xsd:sequence>
+		<xsd:attribute name="shiftPeriod">
+			<xsd:annotation>
+				<xsd:documentation> Numeric values conform to: ISO 8601 2nd Edition; ISO8601:2000(E); pub 2000-12-15, Data elements and interchange formats,  Information interchange,  Representation of dates and times,  http://www.iso.ch/cate/d26780.html/ 
+
+				</xsd:documentation>
+				<xsd:documentation>1 = Monday, 2 = Tuesday, 3 = Wednesday, 4 = Thursday, 5 = Friday, 6 = Saturday, 7 = Sunday</xsd:documentation>
+			</xsd:annotation>
+			<xsd:simpleType>
+				<xsd:restriction base="xsd:string">
+					<xsd:enumeration value="monthly"/>
+					<xsd:enumeration value="weekly"/>
+					<xsd:enumeration value="daily"/>
+					<xsd:enumeration value="1"/>
+					<xsd:enumeration value="2"/>
+					<xsd:enumeration value="3"/>
+					<xsd:enumeration value="4"/>
+					<xsd:enumeration value="5"/>
+					<xsd:enumeration value="6"/>
+					<xsd:enumeration value="7"/>
+					<xsd:enumeration value="event"/>
+				</xsd:restriction>
+			</xsd:simpleType>
+		</xsd:attribute>
+		<xsd:attribute ref="xml:lang"/>
+	</xsd:complexType>
+</xsd:schema>
