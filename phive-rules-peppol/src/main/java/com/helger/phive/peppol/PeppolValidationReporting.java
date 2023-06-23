@@ -53,6 +53,7 @@ public final class PeppolValidationReporting
   @Deprecated
   public static final VESID VID_OPENPEPPOL_EUSR_V100RC2 = new VESID (GROUP_ID, "eusr", "1.0.0-RC2");
   public static final VESID VID_OPENPEPPOL_EUSR_V100 = new VESID (GROUP_ID, "eusr", "1.0.0");
+  public static final VESID VID_OPENPEPPOL_EUSR_V101 = new VESID (GROUP_ID, "eusr", "1.0.1");
 
   // TSR
 
@@ -90,6 +91,16 @@ public final class PeppolValidationReporting
                                                                                                                                 _getCL ())),
                                                                            ValidationExecutorSchematron.createXSLT (new ClassPathResource (BASE_PATH_SCH +
                                                                                                                                            "eusr/1.0.0/xslt/peppol-end-user-statistics-reporting-1.0.0.xslt",
+                                                                                                                                           _getCL ()),
+                                                                                                                    null)));
+    aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_EUSR_V101,
+                                                                           "Peppol End User Statistics Report v1.0.1",
+                                                                           bNotDeprecated,
+                                                                           ValidationExecutorXSD.create (new ClassPathResource (BASE_PATH_XSD +
+                                                                                                                                "peppol-end-user-statistics-reporting-1.0.0.xsd",
+                                                                                                                                _getCL ())),
+                                                                           ValidationExecutorSchematron.createXSLT (new ClassPathResource (BASE_PATH_SCH +
+                                                                                                                                           "eusr/1.0.1/xslt/peppol-end-user-statistics-reporting-1.0.1.xslt",
                                                                                                                                            _getCL ()),
                                                                                                                     null)));
 

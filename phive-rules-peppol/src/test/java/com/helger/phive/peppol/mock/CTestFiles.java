@@ -133,6 +133,7 @@ public final class CTestFiles
                                             /* Reporting */
                                             PeppolValidationReporting.VID_OPENPEPPOL_EUSR_V100RC2,
                                             PeppolValidationReporting.VID_OPENPEPPOL_EUSR_V100,
+                                            PeppolValidationReporting.VID_OPENPEPPOL_EUSR_V101,
 
                                             PeppolValidationReporting.VID_OPENPEPPOL_TSR_V100,
                                             PeppolValidationReporting.VID_OPENPEPPOL_TSR_V101,
@@ -553,6 +554,14 @@ public final class CTestFiles
     {
       final String sPrefix = sPrefix0 + "reporting/eusr/1.0.0/";
       return new CommonsArrayList <> (new FileSystemResource (sPrefix + "end-user-statistics-reporting-1.xml"),
+                                      new FileSystemResource (sPrefix + "end-user-statistics-reporting-empty.xml"),
+                                      new FileSystemResource (sPrefix + "end-user-statistics-reporting-minimal.xml"));
+    }
+    if (aVESID.equals (PeppolValidationReporting.VID_OPENPEPPOL_EUSR_V101))
+    {
+      final String sPrefix = sPrefix0 + "reporting/eusr/1.0.1/";
+      return new CommonsArrayList <> (new FileSystemResource (sPrefix + "end-user-statistics-reporting-1.xml"),
+                                      new FileSystemResource (sPrefix + "end-user-statistics-reporting-2.xml"),
                                       new FileSystemResource (sPrefix + "end-user-statistics-reporting-empty.xml"),
                                       new FileSystemResource (sPrefix + "end-user-statistics-reporting-minimal.xml"));
     }
