@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<EndUserStatisticsReport xmlns="urn:fdc:peppol:end-user-statistics-report:1.1">
+  <CustomizationID>urn:fdc:peppol.eu:edec:trns:end-user-statistics-report:1.1</CustomizationID>
+  <ProfileID>urn:fdc:peppol.eu:edec:bis:reporting:1.0</ProfileID>
+  <Header>
+    <ReportPeriod>
+      <StartDate>2022-01-01</StartDate>
+      <EndDate>2022-01-31</EndDate>
+    </ReportPeriod>
+    <ReporterID schemeID="CertSubjectCN">POP000360</ReporterID>
+  </Header>
+  <!-- Full set -->
+  <FullSet>
+    <SendingEndUsers>5</SendingEndUsers>
+    <ReceivingEndUsers>3</ReceivingEndUsers>
+    <SendingOrReceivingEndUsers>6</SendingOrReceivingEndUsers>
+  </FullSet>
+  <!-- Subsets per Dataset Type and Process ID -->
+  <Subset type="PerDT-PR">
+    <Key metaSchemeID="DT" schemeID="busdox-docid-qns">urn:oasis:names:specification:ubl:schema:xsd:Invoice-2::Invoice##urn:cen.eu:en16931:2017#compliant#urn:fdc:peppol.eu:2017:poacc:billing:3.0::2.1</Key>
+    <Key metaSchemeID="PR" schemeID="cenbii-procid-ubl">urn:fdc:peppol.eu:2017:poacc:billing:01:1.0</Key>
+    <SendingEndUsers>4</SendingEndUsers>
+    <ReceivingEndUsers>2</ReceivingEndUsers>
+    <SendingOrReceivingEndUsers>5</SendingOrReceivingEndUsers>
+  </Subset>
+  <Subset type="PerDT-PR">
+    <Key metaSchemeID="DT" schemeID="busdox-docid-qns">urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2::CreditNote##urn:cen.eu:en16931:2017#compliant#urn:fdc:peppol.eu:2017:poacc:billing:3.0::2.1</Key>
+    <Key metaSchemeID="PR" schemeID="cenbii-procid-ubl">urn:fdc:peppol.eu:2017:poacc:billing:01:1.0</Key>
+    <SendingEndUsers>5</SendingEndUsers>
+    <ReceivingEndUsers>2</ReceivingEndUsers>
+    <SendingOrReceivingEndUsers>5</SendingOrReceivingEndUsers>
+  </Subset>
+  <!-- Subsets per Dataset Type, Process ID and End User Country -->
+  <Subset type="PerDT-PR-EUC">
+    <Key metaSchemeID="DT" schemeID="busdox-docid-qns">urn:oasis:names:specification:ubl:schema:xsd:Invoice-2::Invoice##urn:cen.eu:en16931:2017#compliant#urn:fdc:peppol.eu:2017:poacc:billing:3.0::2.1</Key>
+    <Key metaSchemeID="PR" schemeID="cenbii-procid-ubl">urn:fdc:peppol.eu:2017:poacc:billing:01:1.0</Key>
+    <Key metaSchemeID="CC" schemeID="EndUserCountry">FI</Key>
+    <SendingEndUsers>3</SendingEndUsers>
+    <ReceivingEndUsers>2</ReceivingEndUsers>
+    <SendingOrReceivingEndUsers>4</SendingOrReceivingEndUsers>
+  </Subset>
+  <Subset type="PerDT-PR-EUC">
+    <Key metaSchemeID="DT" schemeID="busdox-docid-qns">urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2::CreditNote##urn:cen.eu:en16931:2017#compliant#urn:fdc:peppol.eu:2017:poacc:billing:3.0::2.1</Key>
+    <Key metaSchemeID="PR" schemeID="cenbii-procid-ubl">urn:fdc:peppol.eu:2017:poacc:billing:01:1.0</Key>
+    <Key metaSchemeID="CC" schemeID="EndUserCountry">NO</Key>
+    <SendingEndUsers>2</SendingEndUsers>
+    <ReceivingEndUsers>2</ReceivingEndUsers>
+    <SendingOrReceivingEndUsers>3</SendingOrReceivingEndUsers>
+  </Subset>
+  <!-- Subsets per Dataset Type and End User Country -->
+  <Subset type="PerDT-EUC">
+    <Key metaSchemeID="DT" schemeID="busdox-docid-qns">urn:oasis:names:specification:ubl:schema:xsd:Invoice-2::Invoice##urn:cen.eu:en16931:2017#compliant#urn:fdc:peppol.eu:2017:poacc:billing:3.0::2.1</Key>
+    <Key metaSchemeID="CC" schemeID="EndUserCountry">PT</Key>
+    <SendingEndUsers>5</SendingEndUsers>
+    <ReceivingEndUsers>2</ReceivingEndUsers>
+    <SendingOrReceivingEndUsers>6</SendingOrReceivingEndUsers>
+  </Subset>
+  <!-- Subsets per End User Country -->
+  <Subset type="PerEUC">
+    <Key metaSchemeID="CC" schemeID="EndUserCountry">PT</Key>
+    <SendingEndUsers>12</SendingEndUsers>
+    <ReceivingEndUsers>23</ReceivingEndUsers>
+    <SendingOrReceivingEndUsers>26</SendingOrReceivingEndUsers>
+  </Subset>
+</EndUserStatisticsReport>

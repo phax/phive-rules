@@ -134,6 +134,7 @@ public final class CTestFiles
                                             PeppolValidationReporting.VID_OPENPEPPOL_EUSR_V100RC2,
                                             PeppolValidationReporting.VID_OPENPEPPOL_EUSR_V100,
                                             PeppolValidationReporting.VID_OPENPEPPOL_EUSR_V101,
+                                            PeppolValidationReporting.VID_OPENPEPPOL_EUSR_V110,
 
                                             PeppolValidationReporting.VID_OPENPEPPOL_TSR_V100,
                                             PeppolValidationReporting.VID_OPENPEPPOL_TSR_V101,
@@ -564,6 +565,16 @@ public final class CTestFiles
                                       new FileSystemResource (sPrefix + "end-user-statistics-reporting-2.xml"),
                                       new FileSystemResource (sPrefix + "end-user-statistics-reporting-empty.xml"),
                                       new FileSystemResource (sPrefix + "end-user-statistics-reporting-minimal.xml"));
+    }
+    if (aVESID.equals (PeppolValidationReporting.VID_OPENPEPPOL_EUSR_V110))
+    {
+      final String sPrefix = sPrefix0 + "reporting/eusr/1.1.0/";
+      return new CommonsArrayList <> (new FileSystemResource (sPrefix + "end-user-statistics-reporting-1.xml"),
+                                      new FileSystemResource (sPrefix + "end-user-statistics-reporting-2.xml"),
+                                      new FileSystemResource (sPrefix + "end-user-statistics-reporting-empty.xml"),
+                                      new FileSystemResource (sPrefix + "end-user-statistics-reporting-minimal.xml"),
+                                      new FileSystemResource (sPrefix + "eusr-generated-1.xml"),
+                                      new FileSystemResource (sPrefix + "eusr-good-template.xml"));
     }
     // TSR
     if (aVESID.equals (PeppolValidationReporting.VID_OPENPEPPOL_TSR_V100))

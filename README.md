@@ -191,6 +191,8 @@ I hope that with the introduction of PINT, the versioning problem will be solved
   
 # News and noteworthy
 
+* v3.0.5 - 2023-07-02
+    * Added support for Peppol End User Statistics Report 1.1.0
 * v3.0.4 - 2023-06-27
     * Updated XRechnung 2.3.1 rules to 1.8.2
     * Added Peppol A-NZ-PEPPOL 1.0.9 rules (deprecated version 1.0.8)
