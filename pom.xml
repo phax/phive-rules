@@ -67,7 +67,7 @@
     <jaxb-plugin.artifact>jaxb40-maven-plugin</jaxb-plugin.artifact>
     <jaxb-plugin.version>0.16.1</jaxb-plugin.version>
     <ph-jaxb-plugin.version>4.0.2</ph-jaxb-plugin.version>
-    <ph-schematron.version>7.0.1</ph-schematron.version>
+    <ph-schematron.version>7.1.1</ph-schematron.version>
   </properties>
   
   <dependencyManagement>
