@@ -39,7 +39,7 @@ public final class CTestFiles
   public static final ValidationExecutorSetRegistry <IValidationSourceXML> VES_REGISTRY = new ValidationExecutorSetRegistry <> ();
   static
   {
-    SETUValidation.initISDOC (VES_REGISTRY);
+    SETUValidation.initSETU (VES_REGISTRY);
   }
 
   private CTestFiles ()

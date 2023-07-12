@@ -70,8 +70,22 @@ public final class SETUValidation
    *
    * @param aRegistry
    *        The registry to add the artefacts. May not be <code>null</code>.
+   * @deprecated Use {@link #initSETU(IValidationExecutorSetRegistry)} instead
    */
+  @Deprecated (forRemoval = true, since = "3.0.6")
   public static void initISDOC (@Nonnull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
+  {
+    initSETU (aRegistry);
+  }
+
+  /**
+   * Register all standard SETU validation execution sets to the provided
+   * registry.
+   *
+   * @param aRegistry
+   *        The registry to add the artefacts. May not be <code>null</code>.
+   */
+  public static void initSETU (@Nonnull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
   {
     ValueEnforcer.notNull (aRegistry, "Registry");
 
