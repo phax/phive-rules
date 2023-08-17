@@ -94,7 +94,7 @@ public final class CIUS_ROValidation
 
     // V1.0.3 referencing the underlying EN rules
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_CIUS_RO_UBL_CREDITNOTE_103,
-                                                                           "CIUS-RO UBL CrediteNote " +
+                                                                           "CIUS-RO UBL CreditNote " +
                                                                                                            VID_CIUS_RO_UBL_CREDITNOTE_103.getVersion (),
                                                                            bDeprecated,
                                                                            ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
@@ -114,7 +114,7 @@ public final class CIUS_ROValidation
 
     // V1.0.4 referencing the underlying EN rules
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_CIUS_RO_UBL_CREDITNOTE_104,
-                                                                           "CIUS-RO UBL CrediteNote " +
+                                                                           "CIUS-RO UBL CreditNote " +
                                                                                                            VID_CIUS_RO_UBL_CREDITNOTE_104.getVersion (),
                                                                            bDeprecated,
                                                                            ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
@@ -134,7 +134,7 @@ public final class CIUS_ROValidation
 
     // V1.0.8 referencing the underlying EN rules, valid per 27.12.2022
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_CIUS_RO_UBL_CREDITNOTE_108,
-                                                                           "CIUS-RO UBL CrediteNote " +
+                                                                           "CIUS-RO UBL CreditNote " +
                                                                                                            VID_CIUS_RO_UBL_CREDITNOTE_108.getVersion (),
                                                                            bNotDeprecated,
                                                                            ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
