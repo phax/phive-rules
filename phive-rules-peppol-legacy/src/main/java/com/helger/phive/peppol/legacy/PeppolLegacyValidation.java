@@ -22,8 +22,8 @@ import javax.xml.XMLConstants;
 
 import com.helger.commons.annotation.ReturnsMutableObject;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
-import com.helger.phive.engine.schematron.SchematronNamespaceBeautifier;
-import com.helger.phive.engine.source.IValidationSourceXML;
+import com.helger.phive.xml.schematron.SchematronNamespaceBeautifier;
+import com.helger.phive.xml.source.IValidationSourceXML;
 import com.helger.ubl21.UBL21NamespaceContext;
 import com.helger.xml.namespace.MapBasedNamespaceContext;
 

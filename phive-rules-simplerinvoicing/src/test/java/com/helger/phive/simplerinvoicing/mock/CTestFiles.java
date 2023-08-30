@@ -30,9 +30,9 @@ import com.helger.commons.io.resource.ClassPathResource;
 import com.helger.commons.io.resource.IReadableResource;
 import com.helger.phive.api.executorset.VESID;
 import com.helger.phive.api.executorset.ValidationExecutorSetRegistry;
-import com.helger.phive.engine.mock.MockFile;
-import com.helger.phive.engine.source.IValidationSourceXML;
+import com.helger.phive.api.mock.MockFile;
 import com.helger.phive.simplerinvoicing.SimplerInvoicingValidation;
+import com.helger.phive.xml.source.IValidationSourceXML;
 
 @Immutable
 @SuppressWarnings ("deprecation")

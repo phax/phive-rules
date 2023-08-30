@@ -25,10 +25,10 @@ import com.helger.commons.io.resource.IReadableResource;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
 import com.helger.phive.api.executorset.VESID;
 import com.helger.phive.api.executorset.ValidationExecutorSet;
-import com.helger.phive.engine.schematron.SchematronNamespaceBeautifier;
-import com.helger.phive.engine.schematron.ValidationExecutorSchematron;
-import com.helger.phive.engine.source.IValidationSourceXML;
-import com.helger.phive.engine.xsd.ValidationExecutorXSD;
+import com.helger.phive.xml.schematron.SchematronNamespaceBeautifier;
+import com.helger.phive.xml.schematron.ValidationExecutorSchematron;
+import com.helger.phive.xml.source.IValidationSourceXML;
+import com.helger.phive.xml.xsd.ValidationExecutorXSD;
 import com.helger.ubl21.UBL21Marshaller;
 import com.helger.ubl21.UBL21NamespaceContext;
 

@@ -25,10 +25,10 @@ import com.helger.commons.io.resource.IReadableResource;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
 import com.helger.phive.api.executorset.VESID;
 import com.helger.phive.api.executorset.ValidationExecutorSet;
-import com.helger.phive.engine.schematron.ValidationExecutorSchematron;
-import com.helger.phive.engine.source.IValidationSourceXML;
-import com.helger.phive.engine.xsd.ValidationExecutorXSD;
-import com.helger.ubl21.EUBL21DocumentType;
+import com.helger.phive.xml.schematron.ValidationExecutorSchematron;
+import com.helger.phive.xml.source.IValidationSourceXML;
+import com.helger.phive.xml.xsd.ValidationExecutorXSD;
+import com.helger.ubl21.UBL21Marshaller;
 import com.helger.ubl21.UBL21NamespaceContext;
 
 /**
@@ -85,21 +85,21 @@ public final class PeppolItalyValidation2_2_9
                                                                                                 sVersion +
                                                                                                 sAkaVersionBIS,
                                                                            bDeprecated,
-                                                                           ValidationExecutorXSD.create (EUBL21DocumentType.DESPATCH_ADVICE),
+                                                                           ValidationExecutorXSD.create (UBL21Marshaller.getAllDespatchAdviceXSDs ()),
                                                                            _createXSLT (DESPATCH_ADVICE)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_ORDER,
                                                                            "AGID Peppol Order" +
                                                                                       sVersion +
                                                                                       sAkaVersionBIS,
                                                                            bDeprecated,
-                                                                           ValidationExecutorXSD.create (EUBL21DocumentType.ORDER),
+                                                                           ValidationExecutorXSD.create (UBL21Marshaller.getAllOrderXSDs ()),
                                                                            _createXSLT (ORDER)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_ORDER_RESPONSE,
                                                                            "AGID Peppol Order Response" +
                                                                                                sVersion +
                                                                                                sAkaVersionBIS,
                                                                            bDeprecated,
-                                                                           ValidationExecutorXSD.create (EUBL21DocumentType.ORDER_RESPONSE),
+                                                                           ValidationExecutorXSD.create (UBL21Marshaller.getAllOrderResponseXSDs ()),
                                                                            _createXSLT (ORDER_RESPONSE)));
   }
 }

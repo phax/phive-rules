@@ -30,10 +30,9 @@ import com.helger.commons.version.Version;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
 import com.helger.phive.api.executorset.VESID;
 import com.helger.phive.api.executorset.ValidationExecutorSet;
-import com.helger.phive.engine.schematron.ValidationExecutorSchematron;
-import com.helger.phive.engine.source.IValidationSourceXML;
-import com.helger.phive.engine.xsd.ValidationExecutorXSD;
-import com.helger.ubl21.EUBL21DocumentType;
+import com.helger.phive.xml.schematron.ValidationExecutorSchematron;
+import com.helger.phive.xml.source.IValidationSourceXML;
+import com.helger.phive.xml.xsd.ValidationExecutorXSD;
 import com.helger.ubl21.UBL21Marshaller;
 import com.helger.ubl21.UBL21NamespaceContext;
 
@@ -141,61 +140,61 @@ public final class PeppolValidation380
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_T01_V3,
                                                                            "OpenPeppol Order" + sVersion + sVersionBIS,
                                                                            bDeprecated,
-                                                                           ValidationExecutorXSD.create (EUBL21DocumentType.ORDER),
+                                                                           ValidationExecutorXSD.create (UBL21Marshaller.getAllOrderXSDs ()),
                                                                            _createXSLT (ORDER)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_T16_V3,
                                                                            "OpenPeppol Despatch Advice" +
                                                                                                   sVersion +
                                                                                                   sVersionBIS,
                                                                            bDeprecated,
-                                                                           ValidationExecutorXSD.create (EUBL21DocumentType.DESPATCH_ADVICE),
+                                                                           ValidationExecutorXSD.create (UBL21Marshaller.getAllDespatchAdviceXSDs ()),
                                                                            _createXSLT (DESPATCH_ADVICE)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_T19_V3,
                                                                            "OpenPeppol Catalogue" +
                                                                                                   sVersion +
                                                                                                   sVersionBIS,
                                                                            bDeprecated,
-                                                                           ValidationExecutorXSD.create (EUBL21DocumentType.CATALOGUE),
+                                                                           ValidationExecutorXSD.create (UBL21Marshaller.getAllCatalogueXSDs ()),
                                                                            _createXSLT (CATALOGUE)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_T58_V3,
                                                                            "OpenPeppol Catalogue Response" +
                                                                                                   sVersion +
                                                                                                   sVersionBIS,
                                                                            bDeprecated,
-                                                                           ValidationExecutorXSD.create (EUBL21DocumentType.APPLICATION_RESPONSE),
+                                                                           ValidationExecutorXSD.create (UBL21Marshaller.getAllApplicationResponseXSDs ()),
                                                                            _createXSLT (CATALOGUE_RESPONSE)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_T71_V3,
                                                                            "OpenPeppol MLR" + sVersion + sVersionBIS,
                                                                            bDeprecated,
-                                                                           ValidationExecutorXSD.create (EUBL21DocumentType.APPLICATION_RESPONSE),
+                                                                           ValidationExecutorXSD.create (UBL21Marshaller.getAllApplicationResponseXSDs ()),
                                                                            _createXSLT (MLR)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_T76_V3,
                                                                            "OpenPeppol Order Response" +
                                                                                                   sVersion +
                                                                                                   sVersionBIS,
                                                                            bDeprecated,
-                                                                           ValidationExecutorXSD.create (EUBL21DocumentType.ORDER_RESPONSE),
+                                                                           ValidationExecutorXSD.create (UBL21Marshaller.getAllOrderResponseXSDs ()),
                                                                            _createXSLT (ORDER_RESPONSE)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_T77_V3,
                                                                            "OpenPeppol Punch Out" +
                                                                                                   sVersion +
                                                                                                   sVersionBIS,
                                                                            bDeprecated,
-                                                                           ValidationExecutorXSD.create (EUBL21DocumentType.CATALOGUE),
+                                                                           ValidationExecutorXSD.create (UBL21Marshaller.getAllCatalogueXSDs ()),
                                                                            _createXSLT (PUNCH_OUT)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_T110_V3,
                                                                            "OpenPeppol Order Agreement" +
                                                                                                    sVersion +
                                                                                                    sVersionBIS,
                                                                            bDeprecated,
-                                                                           ValidationExecutorXSD.create (EUBL21DocumentType.ORDER_RESPONSE),
+                                                                           ValidationExecutorXSD.create (UBL21Marshaller.getAllOrderResponseXSDs ()),
                                                                            _createXSLT (ORDER_AGREEMENT)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_T111_V3,
                                                                            "OpenPeppol Invoice Message Response" +
                                                                                                    sVersion +
                                                                                                    sVersionBIS,
                                                                            bDeprecated,
-                                                                           ValidationExecutorXSD.create (EUBL21DocumentType.APPLICATION_RESPONSE),
+                                                                           ValidationExecutorXSD.create (UBL21Marshaller.getAllApplicationResponseXSDs ()),
                                                                            _createXSLT (INVOICE_MESSAGE_RESPONSE)));
   }
 }

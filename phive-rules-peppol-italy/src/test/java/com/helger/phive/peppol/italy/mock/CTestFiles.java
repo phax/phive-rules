@@ -29,11 +29,11 @@ import com.helger.commons.io.resource.FileSystemResource;
 import com.helger.commons.io.resource.IReadableResource;
 import com.helger.phive.api.executorset.VESID;
 import com.helger.phive.api.executorset.ValidationExecutorSetRegistry;
-import com.helger.phive.engine.mock.MockFile;
-import com.helger.phive.engine.source.IValidationSourceXML;
+import com.helger.phive.api.mock.MockFile;
 import com.helger.phive.peppol.italy.PeppolItalyValidation;
 import com.helger.phive.peppol.italy.PeppolItalyValidation2_2_9;
 import com.helger.phive.peppol.italy.PeppolItalyValidation2_3_0;
+import com.helger.phive.xml.source.IValidationSourceXML;
 
 @Immutable
 @SuppressWarnings ("deprecation")

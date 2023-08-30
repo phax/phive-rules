@@ -26,8 +26,8 @@ import com.helger.commons.annotation.Nonempty;
 import com.helger.commons.annotation.ReturnsMutableObject;
 import com.helger.commons.datetime.PDTFactory;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
-import com.helger.phive.engine.schematron.SchematronNamespaceBeautifier;
-import com.helger.phive.engine.source.IValidationSourceXML;
+import com.helger.phive.xml.schematron.SchematronNamespaceBeautifier;
+import com.helger.phive.xml.source.IValidationSourceXML;
 import com.helger.ubl21.UBL21NamespaceContext;
 import com.helger.xml.namespace.MapBasedNamespaceContext;
 
@@ -44,7 +44,7 @@ public final class PeppolValidation
    *         Never <code>null</code>.
    * @since 5.1.8
    */
-  // @SuppressWarnings ("deprecation")
+  @SuppressWarnings ("deprecation")
   @Nonnull
   @Nonempty
   public static String getVersionToUse ()

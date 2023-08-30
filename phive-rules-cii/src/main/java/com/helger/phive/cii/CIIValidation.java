@@ -25,9 +25,9 @@ import com.helger.commons.ValueEnforcer;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
 import com.helger.phive.api.executorset.VESID;
 import com.helger.phive.api.executorset.ValidationExecutorSet;
-import com.helger.phive.engine.schematron.SchematronNamespaceBeautifier;
-import com.helger.phive.engine.source.IValidationSourceXML;
-import com.helger.phive.engine.xsd.ValidationExecutorXSD;
+import com.helger.phive.xml.schematron.SchematronNamespaceBeautifier;
+import com.helger.phive.xml.source.IValidationSourceXML;
+import com.helger.phive.xml.xsd.ValidationExecutorXSD;
 
 /**
  * Generic CII validation configuration

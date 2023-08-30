@@ -28,10 +28,10 @@ import org.w3c.dom.Node;
 
 import com.helger.phive.api.execute.ValidationExecutionManager;
 import com.helger.phive.api.executorset.IValidationExecutorSet;
+import com.helger.phive.api.mock.MockFile;
 import com.helger.phive.api.result.ValidationResultList;
-import com.helger.phive.engine.mock.MockFile;
-import com.helger.phive.engine.source.IValidationSourceXML;
-import com.helger.phive.engine.source.ValidationSourceXML;
+import com.helger.phive.xml.source.IValidationSourceXML;
+import com.helger.phive.xml.source.ValidationSourceXML;
 import com.helger.phive.xrechnung.mock.CTestFiles;
 import com.helger.xml.serialize.read.DOMReader;
 

@@ -30,8 +30,7 @@ import com.helger.commons.io.resource.IReadableResource;
 import com.helger.peppol.testfiles.official.OfficialTestFiles;
 import com.helger.phive.api.executorset.VESID;
 import com.helger.phive.api.executorset.ValidationExecutorSetRegistry;
-import com.helger.phive.engine.mock.MockFile;
-import com.helger.phive.engine.source.IValidationSourceXML;
+import com.helger.phive.api.mock.MockFile;
 import com.helger.phive.peppol.legacy.PeppolLegacyThirdpartyValidation;
 import com.helger.phive.peppol.legacy.PeppolLegacyValidation;
 import com.helger.phive.peppol.legacy.PeppolLegacyValidationAUNZ;
@@ -46,6 +45,7 @@ import com.helger.phive.peppol.legacy.PeppolValidation3_11_0;
 import com.helger.phive.peppol.legacy.PeppolValidation3_11_1;
 import com.helger.phive.peppol.legacy.PeppolValidation3_12_0;
 import com.helger.phive.peppol.legacy.PeppolValidation3_13_0;
+import com.helger.phive.xml.source.IValidationSourceXML;
 
 @Immutable
 @SuppressWarnings ("deprecation")

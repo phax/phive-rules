@@ -29,11 +29,11 @@ import com.helger.commons.io.resource.FileSystemResource;
 import com.helger.commons.io.resource.IReadableResource;
 import com.helger.phive.api.execute.ValidationExecutionManager;
 import com.helger.phive.api.executorset.IValidationExecutorSet;
+import com.helger.phive.api.mock.MockFile;
 import com.helger.phive.api.result.ValidationResultList;
-import com.helger.phive.engine.mock.MockFile;
-import com.helger.phive.engine.source.IValidationSourceXML;
-import com.helger.phive.engine.source.ValidationSourceXML;
 import com.helger.phive.peppol.mock.CTestFiles;
+import com.helger.phive.xml.source.IValidationSourceXML;
+import com.helger.phive.xml.source.ValidationSourceXML;
 
 /**
  * Test class for class {@link ValidationExecutionManager}.
@@ -74,7 +74,7 @@ public final class ValidationExecutionManagerFuncTest
   @Test
   public void testLargeFile ()
   {
-    final IValidationExecutorSet <IValidationSourceXML> aExecutors = CTestFiles.VES_REGISTRY.getOfID (PeppolValidation3_15_0.VID_OPENPEPPOL_INVOICE_UBL_V3);
+    final IValidationExecutorSet <IValidationSourceXML> aExecutors = CTestFiles.VES_REGISTRY.getOfID (PeppolValidation2023_05.VID_OPENPEPPOL_INVOICE_UBL_V3);
     assertNotNull (aExecutors);
 
     for (final String s : new String [] { "22m", "50m", "70m", "100m", "125m", "200m" })
