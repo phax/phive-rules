@@ -191,6 +191,8 @@ I hope that with the introduction of PINT, the versioning problem will be solved
   
 # News and noteworthy
  
+* v3.1.0 - work in progress
+    * Deprecated OpenPeppol 3.15.0 rules
 * v3.1.0-beta1 - 2023-08-30 [not recommended for production use]
     * Updated to phive 9.0.0 Beta1
 * v3.0.5 - 2023-07-02
