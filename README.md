@@ -196,12 +196,6 @@ I hope that with the introduction of PINT, the versioning problem will be solved
     * Updated to phive 9.0.0 Beta2 with the strict version number check
     * The following VES versions were changed:
         * `eu.cen.en16931:cii:1.3.6a` is now `eu.cen.en16931:cii:1.3.6.a`  
-        * `eu.peppol.reporting:eusr:1.0.0-RC2` is now `eu.peppol.reporting:eusr:1.0.0.RC2`  
-        * `un.unece.uncefact:crossindustryinvoice:D16B` is now `un.unece.uncefact:crossindustryinvoice:`  
-        * `::` is now `::`  
-        * `::` is now `::`  
-        * `::` is now `::`  
-        * `::` is now `::`  
 * v3.1.0-beta1 - 2023-08-30 [not recommended for production use]
     * Updated to phive 9.0.0 Beta1
 * v3.0.5 - 2023-07-02
