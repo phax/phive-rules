@@ -95,7 +95,7 @@ public final class CIUS_ROValidation
     // V1.0.3 referencing the underlying EN rules
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_CIUS_RO_UBL_CREDITNOTE_103,
                                                                            "CIUS-RO UBL CreditNote " +
-                                                                                                           VID_CIUS_RO_UBL_CREDITNOTE_103.getVersion (),
+                                                                                                           VID_CIUS_RO_UBL_CREDITNOTE_103.getVersionString (),
                                                                            bDeprecated,
                                                                            ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
                                                                            ValidationExecutorSchematron.createXSLT (EN16931Validation.INVOICE_UBL_137_XSLT,
@@ -104,7 +104,7 @@ public final class CIUS_ROValidation
                                                                                                                     UBL21NamespaceContext.getInstance ())));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_CIUS_RO_UBL_INVOICE_103,
                                                                            "CIUS-RO UBL Invoice " +
-                                                                                                        VID_CIUS_RO_UBL_INVOICE_103.getVersion (),
+                                                                                                        VID_CIUS_RO_UBL_INVOICE_103.getVersionString (),
                                                                            bDeprecated,
                                                                            ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
                                                                            ValidationExecutorSchematron.createXSLT (EN16931Validation.INVOICE_UBL_137_XSLT,
@@ -115,7 +115,7 @@ public final class CIUS_ROValidation
     // V1.0.4 referencing the underlying EN rules
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_CIUS_RO_UBL_CREDITNOTE_104,
                                                                            "CIUS-RO UBL CreditNote " +
-                                                                                                           VID_CIUS_RO_UBL_CREDITNOTE_104.getVersion (),
+                                                                                                           VID_CIUS_RO_UBL_CREDITNOTE_104.getVersionString (),
                                                                            bDeprecated,
                                                                            ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
                                                                            ValidationExecutorSchematron.createXSLT (EN16931Validation.INVOICE_UBL_137_XSLT,
@@ -124,7 +124,7 @@ public final class CIUS_ROValidation
                                                                                                                     UBL21NamespaceContext.getInstance ())));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_CIUS_RO_UBL_INVOICE_104,
                                                                            "CIUS-RO UBL Invoice " +
-                                                                                                        VID_CIUS_RO_UBL_INVOICE_104.getVersion (),
+                                                                                                        VID_CIUS_RO_UBL_INVOICE_104.getVersionString (),
                                                                            bDeprecated,
                                                                            ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
                                                                            ValidationExecutorSchematron.createXSLT (EN16931Validation.INVOICE_UBL_137_XSLT,
@@ -135,7 +135,7 @@ public final class CIUS_ROValidation
     // V1.0.8 referencing the underlying EN rules, valid per 27.12.2022
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_CIUS_RO_UBL_CREDITNOTE_108,
                                                                            "CIUS-RO UBL CreditNote " +
-                                                                                                           VID_CIUS_RO_UBL_CREDITNOTE_108.getVersion (),
+                                                                                                           VID_CIUS_RO_UBL_CREDITNOTE_108.getVersionString (),
                                                                            bNotDeprecated,
                                                                            ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
                                                                            ValidationExecutorSchematron.createXSLT (EN16931Validation.INVOICE_UBL_138_XSLT,
@@ -144,7 +144,7 @@ public final class CIUS_ROValidation
                                                                                                                     UBL21NamespaceContext.getInstance ())));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_CIUS_RO_UBL_INVOICE_108,
                                                                            "CIUS-RO UBL Invoice " +
-                                                                                                        VID_CIUS_RO_UBL_INVOICE_108.getVersion (),
+                                                                                                        VID_CIUS_RO_UBL_INVOICE_108.getVersionString (),
                                                                            bNotDeprecated,
                                                                            ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
                                                                            ValidationExecutorSchematron.createXSLT (EN16931Validation.INVOICE_UBL_138_XSLT,

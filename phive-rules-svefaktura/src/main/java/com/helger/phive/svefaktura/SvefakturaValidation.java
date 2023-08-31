@@ -92,7 +92,7 @@ public final class SvefakturaValidation
 
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_SVEFAKTURA_10,
                                                                            "SvefakturaXML " +
-                                                                                              VID_SVEFAKTURA_10.getVersion (),
+                                                                                              VID_SVEFAKTURA_10.getVersionString (),
                                                                            bNotDeprecated,
                                                                            ValidationExecutorXSD.create (new ClassPathResource ("/external/schemas/1.0/maindoc/SFTI-BasicInvoice-1.0.xsd",
                                                                                                                                 _getCL ())),
@@ -102,7 +102,7 @@ public final class SvefakturaValidation
     // No Schematrons here
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OBJECT_ENVELOPE_10,
                                                                            "SvefakturaXML ObjectEnvelope " +
-                                                                                                   VID_OBJECT_ENVELOPE_10.getVersion (),
+                                                                                                   VID_OBJECT_ENVELOPE_10.getVersionString (),
                                                                            bNotDeprecated,
                                                                            ValidationExecutorXSD.create (new ClassPathResource ("/external/schemas/1.0/maindoc/SFTI-ObjectEnvelope-1.0.xsd",
                                                                                                                                 _getCL ()))));

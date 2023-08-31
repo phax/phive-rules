@@ -91,14 +91,14 @@ public final class CIUS_PTValidation
     // V2.0.0 containing the underlying EN rules
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_CIUS_PT_UBL_CREDITNOTE_200,
                                                                            "CIUS-PT UBL CreditNote " +
-                                                                                                           VID_CIUS_PT_UBL_CREDITNOTE_200.getVersion (),
+                                                                                                           VID_CIUS_PT_UBL_CREDITNOTE_200.getVersionString (),
                                                                            bDeprecated,
                                                                            ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
                                                                            ValidationExecutorSchematron.createXSLT (RES_200,
                                                                                                                     UBL21NamespaceContext.getInstance ())));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_CIUS_PT_UBL_INVOICE_200,
                                                                            "CIUS-PT UBL Invoice " +
-                                                                                                        VID_CIUS_PT_UBL_INVOICE_200.getVersion (),
+                                                                                                        VID_CIUS_PT_UBL_INVOICE_200.getVersionString (),
                                                                            bDeprecated,
                                                                            ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
                                                                            ValidationExecutorSchematron.createXSLT (RES_200,
@@ -107,14 +107,14 @@ public final class CIUS_PTValidation
     // V2.1.1 containing the underlying EN rules
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_CIUS_PT_UBL_CREDITNOTE_211,
                                                                            "CIUS-PT UBL CreditNote " +
-                                                                                                           VID_CIUS_PT_UBL_CREDITNOTE_211.getVersion (),
+                                                                                                           VID_CIUS_PT_UBL_CREDITNOTE_211.getVersionString (),
                                                                            bNotDeprecated,
                                                                            ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
                                                                            ValidationExecutorSchematron.createXSLT (RES_211,
                                                                                                                     UBL21NamespaceContext.getInstance ())));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_CIUS_PT_UBL_INVOICE_211,
                                                                            "CIUS-PT UBL Invoice " +
-                                                                                                        VID_CIUS_PT_UBL_INVOICE_211.getVersion (),
+                                                                                                        VID_CIUS_PT_UBL_INVOICE_211.getVersionString (),
                                                                            bNotDeprecated,
                                                                            ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
                                                                            ValidationExecutorSchematron.createXSLT (RES_211,

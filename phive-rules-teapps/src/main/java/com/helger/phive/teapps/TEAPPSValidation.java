@@ -64,12 +64,14 @@ public final class TEAPPSValidation
 
     // No Schematrons here
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_TEAPPS_272,
-                                                                           "TEAPPSXML " + VID_TEAPPS_272.getVersion (),
+                                                                           "TEAPPSXML " +
+                                                                                           VID_TEAPPS_272.getVersionString (),
                                                                            bNotDeprecated,
                                                                            ValidationExecutorXSD.create (new ClassPathResource ("/external/schemas/TEAPPSXMLv272_schema_INVOICES.xsd",
                                                                                                                                 _getCL ()))));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_TEAPPS_30,
-                                                                           "TEAPPSXML " + VID_TEAPPS_30.getVersion (),
+                                                                           "TEAPPSXML " +
+                                                                                          VID_TEAPPS_30.getVersionString (),
                                                                            bNotDeprecated,
                                                                            ValidationExecutorXSD.create (new ClassPathResource ("/external/schemas/teappsxmlv30_schema_invoices_0.xsd",
                                                                                                                                 _getCL ()))));

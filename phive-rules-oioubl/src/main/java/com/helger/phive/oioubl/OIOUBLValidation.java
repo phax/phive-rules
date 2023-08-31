@@ -181,7 +181,7 @@ public final class OIOUBLValidation
       final String sPath202 = "/external/schematron/oioubl/2.0.2/";
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OIOUBL_APPLICATION_RESPONSE,
                                                                              "OIOUBL Application Response " +
-                                                                                                              VID_OIOUBL_APPLICATION_RESPONSE.getVersion (),
+                                                                                                              VID_OIOUBL_APPLICATION_RESPONSE.getVersionString (),
                                                                              bNotDeprecated,
                                                                              ValidationExecutorXSD.create (UBL20Marshaller.getAllApplicationResponseXSDs ()),
                                                                              _createOIOUBL (new ClassPathResource (sPath202 +
@@ -189,7 +189,7 @@ public final class OIOUBLValidation
                                                                                                                    _getCL ()))));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OIOUBL_CATALOGUE,
                                                                              "OIOUBL Catalogue " +
-                                                                                                   VID_OIOUBL_CATALOGUE.getVersion (),
+                                                                                                   VID_OIOUBL_CATALOGUE.getVersionString (),
                                                                              bNotDeprecated,
                                                                              ValidationExecutorXSD.create (UBL20Marshaller.getAllCatalogueXSDs ()),
                                                                              _createOIOUBL (new ClassPathResource (sPath202 +
@@ -197,7 +197,7 @@ public final class OIOUBLValidation
                                                                                                                    _getCL ()))));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OIOUBL_CATALOGUE_DELETION,
                                                                              "OIOUBL Catalogue Deletion " +
-                                                                                                            VID_OIOUBL_CATALOGUE_DELETION.getVersion (),
+                                                                                                            VID_OIOUBL_CATALOGUE_DELETION.getVersionString (),
                                                                              bNotDeprecated,
                                                                              ValidationExecutorXSD.create (UBL20Marshaller.getAllCatalogueDeletionXSDs ()),
                                                                              _createOIOUBL (new ClassPathResource (sPath202 +
@@ -205,7 +205,7 @@ public final class OIOUBLValidation
                                                                                                                    _getCL ()))));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OIOUBL_CATALOGUE_ITEM_SPECIFICATION_UPDATE,
                                                                              "OIOUBL Catalogue Item Specification Update " +
-                                                                                                                             VID_OIOUBL_CATALOGUE_ITEM_SPECIFICATION_UPDATE.getVersion (),
+                                                                                                                             VID_OIOUBL_CATALOGUE_ITEM_SPECIFICATION_UPDATE.getVersionString (),
                                                                              bNotDeprecated,
                                                                              ValidationExecutorXSD.create (UBL20Marshaller.getAllCatalogueItemSpecificationUpdateXSDs ()),
                                                                              _createOIOUBL (new ClassPathResource (sPath202 +
@@ -213,7 +213,7 @@ public final class OIOUBLValidation
                                                                                                                    _getCL ()))));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OIOUBL_CATALOGUE_PRICING_UPDATE,
                                                                              "OIOUBL Catalogue Pricing Update " +
-                                                                                                                  VID_OIOUBL_CATALOGUE_PRICING_UPDATE.getVersion (),
+                                                                                                                  VID_OIOUBL_CATALOGUE_PRICING_UPDATE.getVersionString (),
                                                                              bNotDeprecated,
                                                                              ValidationExecutorXSD.create (UBL20Marshaller.getAllCataloguePricingUpdateXSDs ()),
                                                                              _createOIOUBL (new ClassPathResource (sPath202 +
@@ -221,7 +221,7 @@ public final class OIOUBLValidation
                                                                                                                    _getCL ()))));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OIOUBL_CATALOGUE_REQUEST,
                                                                              "OIOUBL Catalogue Request " +
-                                                                                                           VID_OIOUBL_CATALOGUE_REQUEST.getVersion (),
+                                                                                                           VID_OIOUBL_CATALOGUE_REQUEST.getVersionString (),
                                                                              bNotDeprecated,
                                                                              ValidationExecutorXSD.create (UBL20Marshaller.getAllCatalogueRequestXSDs ()),
                                                                              _createOIOUBL (new ClassPathResource (sPath202 +
@@ -229,7 +229,7 @@ public final class OIOUBLValidation
                                                                                                                    _getCL ()))));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OIOUBL_CREDIT_NOTE,
                                                                              "OIOUBL Credit Note " +
-                                                                                                     VID_OIOUBL_CREDIT_NOTE.getVersion (),
+                                                                                                     VID_OIOUBL_CREDIT_NOTE.getVersionString (),
                                                                              bNotDeprecated,
                                                                              ValidationExecutorXSD.create (UBL20Marshaller.getAllCreditNoteXSDs ()),
                                                                              _createOIOUBL (new ClassPathResource (sPath202 +
@@ -237,7 +237,7 @@ public final class OIOUBLValidation
                                                                                                                    _getCL ()))));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OIOUBL_INVOICE,
                                                                              "OIOUBL Invoice " +
-                                                                                                 VID_OIOUBL_INVOICE.getVersion (),
+                                                                                                 VID_OIOUBL_INVOICE.getVersionString (),
                                                                              bNotDeprecated,
                                                                              ValidationExecutorXSD.create (UBL20Marshaller.getAllInvoiceXSDs ()),
                                                                              _createOIOUBL (new ClassPathResource (sPath202 +
@@ -245,7 +245,7 @@ public final class OIOUBLValidation
                                                                                                                    _getCL ()))));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OIOUBL_ORDER,
                                                                              "OIOUBL Order " +
-                                                                                               VID_OIOUBL_ORDER.getVersion (),
+                                                                                               VID_OIOUBL_ORDER.getVersionString (),
                                                                              bNotDeprecated,
                                                                              ValidationExecutorXSD.create (UBL20Marshaller.getAllOrderXSDs ()),
                                                                              _createOIOUBL (new ClassPathResource (sPath202 +
@@ -253,7 +253,7 @@ public final class OIOUBLValidation
                                                                                                                    _getCL ()))));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OIOUBL_ORDER_CANCELLATION,
                                                                              "OIOUBL Order Cancellation " +
-                                                                                                            VID_OIOUBL_ORDER_CANCELLATION.getVersion (),
+                                                                                                            VID_OIOUBL_ORDER_CANCELLATION.getVersionString (),
                                                                              bNotDeprecated,
                                                                              ValidationExecutorXSD.create (UBL20Marshaller.getAllOrderCancellationXSDs ()),
                                                                              _createOIOUBL (new ClassPathResource (sPath202 +
@@ -261,7 +261,7 @@ public final class OIOUBLValidation
                                                                                                                    _getCL ()))));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OIOUBL_ORDER_CHANGE,
                                                                              "OIOUBL Order Change " +
-                                                                                                      VID_OIOUBL_ORDER_CHANGE.getVersion (),
+                                                                                                      VID_OIOUBL_ORDER_CHANGE.getVersionString (),
                                                                              bNotDeprecated,
                                                                              ValidationExecutorXSD.create (UBL20Marshaller.getAllOrderChangeXSDs ()),
                                                                              _createOIOUBL (new ClassPathResource (sPath202 +
@@ -269,7 +269,7 @@ public final class OIOUBLValidation
                                                                                                                    _getCL ()))));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OIOUBL_ORDER_RESPONSE,
                                                                              "OIOUBL Order Response " +
-                                                                                                        VID_OIOUBL_ORDER_RESPONSE.getVersion (),
+                                                                                                        VID_OIOUBL_ORDER_RESPONSE.getVersionString (),
                                                                              bNotDeprecated,
                                                                              ValidationExecutorXSD.create (UBL20Marshaller.getAllOrderResponseXSDs ()),
                                                                              _createOIOUBL (new ClassPathResource (sPath202 +
@@ -277,7 +277,7 @@ public final class OIOUBLValidation
                                                                                                                    _getCL ()))));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OIOUBL_ORDER_RESPONSE_SIMPLE,
                                                                              "OIOUBL Order Response Simple " +
-                                                                                                               VID_OIOUBL_ORDER_RESPONSE_SIMPLE.getVersion (),
+                                                                                                               VID_OIOUBL_ORDER_RESPONSE_SIMPLE.getVersionString (),
                                                                              bNotDeprecated,
                                                                              ValidationExecutorXSD.create (UBL20Marshaller.getAllOrderResponseSimpleXSDs ()),
                                                                              _createOIOUBL (new ClassPathResource (sPath202 +
@@ -285,7 +285,7 @@ public final class OIOUBLValidation
                                                                                                                    _getCL ()))));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OIOUBL_REMINDER,
                                                                              "OIOUBL Reminder " +
-                                                                                                  VID_OIOUBL_REMINDER.getVersion (),
+                                                                                                  VID_OIOUBL_REMINDER.getVersionString (),
                                                                              bNotDeprecated,
                                                                              ValidationExecutorXSD.create (UBL20Marshaller.getAllReminderXSDs ()),
                                                                              _createOIOUBL (new ClassPathResource (sPath202 +
@@ -293,7 +293,7 @@ public final class OIOUBLValidation
                                                                                                                    _getCL ()))));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OIOUBL_STATEMENT,
                                                                              "OIOUBL Statement " +
-                                                                                                   VID_OIOUBL_STATEMENT.getVersion (),
+                                                                                                   VID_OIOUBL_STATEMENT.getVersionString (),
                                                                              bNotDeprecated,
                                                                              ValidationExecutorXSD.create (UBL20Marshaller.getAllStatementXSDs ()),
                                                                              _createOIOUBL (new ClassPathResource (sPath202 +
@@ -318,7 +318,7 @@ public final class OIOUBLValidation
       final String sPath = "/external/schematron/oioubl/1.12.3/xslt/";
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OIOUBL_APPLICATION_RESPONSE_1_12_3,
                                                                              "OIOUBL Application Response " +
-                                                                                                                     VID_OIOUBL_APPLICATION_RESPONSE_1_12_3.getVersion (),
+                                                                                                                     VID_OIOUBL_APPLICATION_RESPONSE_1_12_3.getVersionString (),
                                                                              bNotDeprecated,
                                                                              ValidationExecutorXSD.create (UBL20Marshaller.getAllApplicationResponseXSDs ()),
                                                                              _createXSLT (new ClassPathResource (sPath +
@@ -326,7 +326,7 @@ public final class OIOUBLValidation
                                                                                                                  _getCL ()))));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OIOUBL_CATALOGUE_1_12_3,
                                                                              "OIOUBL Catalogue " +
-                                                                                                          VID_OIOUBL_CATALOGUE_1_12_3.getVersion (),
+                                                                                                          VID_OIOUBL_CATALOGUE_1_12_3.getVersionString (),
                                                                              bNotDeprecated,
                                                                              ValidationExecutorXSD.create (UBL20Marshaller.getAllCatalogueXSDs ()),
                                                                              _createXSLT (new ClassPathResource (sPath +
@@ -334,7 +334,7 @@ public final class OIOUBLValidation
                                                                                                                  _getCL ()))));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OIOUBL_CATALOGUE_DELETION_1_12_3,
                                                                              "OIOUBL Catalogue Deletion " +
-                                                                                                                   VID_OIOUBL_CATALOGUE_DELETION_1_12_3.getVersion (),
+                                                                                                                   VID_OIOUBL_CATALOGUE_DELETION_1_12_3.getVersionString (),
                                                                              bNotDeprecated,
                                                                              ValidationExecutorXSD.create (UBL20Marshaller.getAllCatalogueDeletionXSDs ()),
                                                                              _createXSLT (new ClassPathResource (sPath +
@@ -342,7 +342,7 @@ public final class OIOUBLValidation
                                                                                                                  _getCL ()))));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OIOUBL_CATALOGUE_ITEM_SPECIFICATION_UPDATE_1_12_3,
                                                                              "OIOUBL Catalogue Item Specification Update " +
-                                                                                                                                    VID_OIOUBL_CATALOGUE_ITEM_SPECIFICATION_UPDATE_1_12_3.getVersion (),
+                                                                                                                                    VID_OIOUBL_CATALOGUE_ITEM_SPECIFICATION_UPDATE_1_12_3.getVersionString (),
                                                                              bNotDeprecated,
                                                                              ValidationExecutorXSD.create (UBL20Marshaller.getAllCatalogueItemSpecificationUpdateXSDs ()),
                                                                              _createXSLT (new ClassPathResource (sPath +
@@ -350,7 +350,7 @@ public final class OIOUBLValidation
                                                                                                                  _getCL ()))));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OIOUBL_CATALOGUE_PRICING_UPDATE_1_12_3,
                                                                              "OIOUBL Catalogue Pricing Update " +
-                                                                                                                         VID_OIOUBL_CATALOGUE_PRICING_UPDATE_1_12_3.getVersion (),
+                                                                                                                         VID_OIOUBL_CATALOGUE_PRICING_UPDATE_1_12_3.getVersionString (),
                                                                              bNotDeprecated,
                                                                              ValidationExecutorXSD.create (UBL20Marshaller.getAllCataloguePricingUpdateXSDs ()),
                                                                              _createXSLT (new ClassPathResource (sPath +
@@ -358,7 +358,7 @@ public final class OIOUBLValidation
                                                                                                                  _getCL ()))));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OIOUBL_CATALOGUE_REQUEST_1_12_3,
                                                                              "OIOUBL Catalogue Request " +
-                                                                                                                  VID_OIOUBL_CATALOGUE_REQUEST_1_12_3.getVersion (),
+                                                                                                                  VID_OIOUBL_CATALOGUE_REQUEST_1_12_3.getVersionString (),
                                                                              bNotDeprecated,
                                                                              ValidationExecutorXSD.create (UBL20Marshaller.getAllCatalogueRequestXSDs ()),
                                                                              _createXSLT (new ClassPathResource (sPath +
@@ -366,7 +366,7 @@ public final class OIOUBLValidation
                                                                                                                  _getCL ()))));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OIOUBL_CREDIT_NOTE_1_12_3,
                                                                              "OIOUBL Credit Note " +
-                                                                                                            VID_OIOUBL_CREDIT_NOTE_1_12_3.getVersion (),
+                                                                                                            VID_OIOUBL_CREDIT_NOTE_1_12_3.getVersionString (),
                                                                              bNotDeprecated,
                                                                              ValidationExecutorXSD.create (UBL20Marshaller.getAllCreditNoteXSDs ()),
                                                                              _createXSLT (new ClassPathResource (sPath +
@@ -374,7 +374,7 @@ public final class OIOUBLValidation
                                                                                                                  _getCL ()))));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OIOUBL_INVOICE_1_12_3,
                                                                              "OIOUBL Invoice " +
-                                                                                                        VID_OIOUBL_INVOICE_1_12_3.getVersion (),
+                                                                                                        VID_OIOUBL_INVOICE_1_12_3.getVersionString (),
                                                                              bNotDeprecated,
                                                                              ValidationExecutorXSD.create (UBL20Marshaller.getAllInvoiceXSDs ()),
                                                                              _createXSLT (new ClassPathResource (sPath +
@@ -382,7 +382,7 @@ public final class OIOUBLValidation
                                                                                                                  _getCL ()))));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OIOUBL_ORDER_1_12_3,
                                                                              "OIOUBL Order " +
-                                                                                                      VID_OIOUBL_ORDER_1_12_3.getVersion (),
+                                                                                                      VID_OIOUBL_ORDER_1_12_3.getVersionString (),
                                                                              bNotDeprecated,
                                                                              ValidationExecutorXSD.create (UBL20Marshaller.getAllOrderXSDs ()),
                                                                              _createXSLT (new ClassPathResource (sPath +
@@ -390,7 +390,7 @@ public final class OIOUBLValidation
                                                                                                                  _getCL ()))));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OIOUBL_ORDER_CANCELLATION_1_12_3,
                                                                              "OIOUBL Order Cancellation " +
-                                                                                                                   VID_OIOUBL_ORDER_CANCELLATION_1_12_3.getVersion (),
+                                                                                                                   VID_OIOUBL_ORDER_CANCELLATION_1_12_3.getVersionString (),
                                                                              bNotDeprecated,
                                                                              ValidationExecutorXSD.create (UBL20Marshaller.getAllOrderCancellationXSDs ()),
                                                                              _createXSLT (new ClassPathResource (sPath +
@@ -398,7 +398,7 @@ public final class OIOUBLValidation
                                                                                                                  _getCL ()))));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OIOUBL_ORDER_CHANGE_1_12_3,
                                                                              "OIOUBL Order Change " +
-                                                                                                             VID_OIOUBL_ORDER_CHANGE_1_12_3.getVersion (),
+                                                                                                             VID_OIOUBL_ORDER_CHANGE_1_12_3.getVersionString (),
                                                                              bNotDeprecated,
                                                                              ValidationExecutorXSD.create (UBL20Marshaller.getAllOrderChangeXSDs ()),
                                                                              _createXSLT (new ClassPathResource (sPath +
@@ -406,7 +406,7 @@ public final class OIOUBLValidation
                                                                                                                  _getCL ()))));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OIOUBL_ORDER_RESPONSE_1_12_3,
                                                                              "OIOUBL Order Response " +
-                                                                                                               VID_OIOUBL_ORDER_RESPONSE_1_12_3.getVersion (),
+                                                                                                               VID_OIOUBL_ORDER_RESPONSE_1_12_3.getVersionString (),
                                                                              bNotDeprecated,
                                                                              ValidationExecutorXSD.create (UBL20Marshaller.getAllOrderResponseXSDs ()),
                                                                              _createXSLT (new ClassPathResource (sPath +
@@ -414,7 +414,7 @@ public final class OIOUBLValidation
                                                                                                                  _getCL ()))));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OIOUBL_ORDER_RESPONSE_SIMPLE_1_12_3,
                                                                              "OIOUBL Order Response Simple " +
-                                                                                                                      VID_OIOUBL_ORDER_RESPONSE_SIMPLE_1_12_3.getVersion (),
+                                                                                                                      VID_OIOUBL_ORDER_RESPONSE_SIMPLE_1_12_3.getVersionString (),
                                                                              bNotDeprecated,
                                                                              ValidationExecutorXSD.create (UBL20Marshaller.getAllOrderResponseSimpleXSDs ()),
                                                                              _createXSLT (new ClassPathResource (sPath +
@@ -422,7 +422,7 @@ public final class OIOUBLValidation
                                                                                                                  _getCL ()))));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OIOUBL_REMINDER_1_12_3,
                                                                              "OIOUBL Reminder " +
-                                                                                                         VID_OIOUBL_REMINDER_1_12_3.getVersion (),
+                                                                                                         VID_OIOUBL_REMINDER_1_12_3.getVersionString (),
                                                                              bNotDeprecated,
                                                                              ValidationExecutorXSD.create (UBL20Marshaller.getAllReminderXSDs ()),
                                                                              _createXSLT (new ClassPathResource (sPath +
@@ -430,7 +430,7 @@ public final class OIOUBLValidation
                                                                                                                  _getCL ()))));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OIOUBL_STATEMENT_1_12_3,
                                                                              "OIOUBL Statement " +
-                                                                                                          VID_OIOUBL_STATEMENT_1_12_3.getVersion (),
+                                                                                                          VID_OIOUBL_STATEMENT_1_12_3.getVersionString (),
                                                                              bNotDeprecated,
                                                                              ValidationExecutorXSD.create (UBL20Marshaller.getAllStatementXSDs ()),
                                                                              _createXSLT (new ClassPathResource (sPath +
@@ -439,7 +439,7 @@ public final class OIOUBLValidation
 
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OIOUBL_UTILITY_STATEMENT_1_12_3,
                                                                              "OIOUBL Utility Statement " +
-                                                                                                                  VID_OIOUBL_UTILITY_STATEMENT_1_12_3.getVersion (),
+                                                                                                                  VID_OIOUBL_UTILITY_STATEMENT_1_12_3.getVersionString (),
                                                                              bNotDeprecated,
                                                                              ValidationExecutorXSD.create (XSD_UTITLITY_STATEMENT),
                                                                              _createXSLT (new ClassPathResource (sPath +
@@ -451,7 +451,7 @@ public final class OIOUBLValidation
       final String sPath = "/external/schematron/oioubl/1.13.0/xslt/";
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OIOUBL_APPLICATION_RESPONSE_1_13_0,
                                                                              "OIOUBL Application Response " +
-                                                                                                                     VID_OIOUBL_APPLICATION_RESPONSE_1_13_0.getVersion (),
+                                                                                                                     VID_OIOUBL_APPLICATION_RESPONSE_1_13_0.getVersionString (),
                                                                              bNotDeprecated,
                                                                              ValidationExecutorXSD.create (UBL20Marshaller.getAllApplicationResponseXSDs ()),
                                                                              _createXSLT (new ClassPathResource (sPath +
@@ -459,7 +459,7 @@ public final class OIOUBLValidation
                                                                                                                  _getCL ()))));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OIOUBL_CATALOGUE_1_13_0,
                                                                              "OIOUBL Catalogue " +
-                                                                                                          VID_OIOUBL_CATALOGUE_1_13_0.getVersion (),
+                                                                                                          VID_OIOUBL_CATALOGUE_1_13_0.getVersionString (),
                                                                              bNotDeprecated,
                                                                              ValidationExecutorXSD.create (UBL20Marshaller.getAllCatalogueXSDs ()),
                                                                              _createXSLT (new ClassPathResource (sPath +
@@ -467,7 +467,7 @@ public final class OIOUBLValidation
                                                                                                                  _getCL ()))));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OIOUBL_CATALOGUE_DELETION_1_13_0,
                                                                              "OIOUBL Catalogue Deletion " +
-                                                                                                                   VID_OIOUBL_CATALOGUE_DELETION_1_13_0.getVersion (),
+                                                                                                                   VID_OIOUBL_CATALOGUE_DELETION_1_13_0.getVersionString (),
                                                                              bNotDeprecated,
                                                                              ValidationExecutorXSD.create (UBL20Marshaller.getAllCatalogueDeletionXSDs ()),
                                                                              _createXSLT (new ClassPathResource (sPath +
@@ -475,7 +475,7 @@ public final class OIOUBLValidation
                                                                                                                  _getCL ()))));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OIOUBL_CATALOGUE_ITEM_SPECIFICATION_UPDATE_1_13_0,
                                                                              "OIOUBL Catalogue Item Specification Update " +
-                                                                                                                                    VID_OIOUBL_CATALOGUE_ITEM_SPECIFICATION_UPDATE_1_13_0.getVersion (),
+                                                                                                                                    VID_OIOUBL_CATALOGUE_ITEM_SPECIFICATION_UPDATE_1_13_0.getVersionString (),
                                                                              bNotDeprecated,
                                                                              ValidationExecutorXSD.create (UBL20Marshaller.getAllCatalogueItemSpecificationUpdateXSDs ()),
                                                                              _createXSLT (new ClassPathResource (sPath +
@@ -483,7 +483,7 @@ public final class OIOUBLValidation
                                                                                                                  _getCL ()))));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OIOUBL_CATALOGUE_PRICING_UPDATE_1_13_0,
                                                                              "OIOUBL Catalogue Pricing Update " +
-                                                                                                                         VID_OIOUBL_CATALOGUE_PRICING_UPDATE_1_13_0.getVersion (),
+                                                                                                                         VID_OIOUBL_CATALOGUE_PRICING_UPDATE_1_13_0.getVersionString (),
                                                                              bNotDeprecated,
                                                                              ValidationExecutorXSD.create (UBL20Marshaller.getAllCataloguePricingUpdateXSDs ()),
                                                                              _createXSLT (new ClassPathResource (sPath +
@@ -491,7 +491,7 @@ public final class OIOUBLValidation
                                                                                                                  _getCL ()))));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OIOUBL_CATALOGUE_REQUEST_1_13_0,
                                                                              "OIOUBL Catalogue Request " +
-                                                                                                                  VID_OIOUBL_CATALOGUE_REQUEST_1_13_0.getVersion (),
+                                                                                                                  VID_OIOUBL_CATALOGUE_REQUEST_1_13_0.getVersionString (),
                                                                              bNotDeprecated,
                                                                              ValidationExecutorXSD.create (UBL20Marshaller.getAllCatalogueRequestXSDs ()),
                                                                              _createXSLT (new ClassPathResource (sPath +
@@ -499,7 +499,7 @@ public final class OIOUBLValidation
                                                                                                                  _getCL ()))));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OIOUBL_CREDIT_NOTE_1_13_0,
                                                                              "OIOUBL Credit Note " +
-                                                                                                            VID_OIOUBL_CREDIT_NOTE_1_13_0.getVersion (),
+                                                                                                            VID_OIOUBL_CREDIT_NOTE_1_13_0.getVersionString (),
                                                                              bNotDeprecated,
                                                                              ValidationExecutorXSD.create (UBL20Marshaller.getAllCreditNoteXSDs ()),
                                                                              _createXSLT (new ClassPathResource (sPath +
@@ -507,7 +507,7 @@ public final class OIOUBLValidation
                                                                                                                  _getCL ()))));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OIOUBL_INVOICE_1_13_0,
                                                                              "OIOUBL Invoice " +
-                                                                                                        VID_OIOUBL_INVOICE_1_13_0.getVersion (),
+                                                                                                        VID_OIOUBL_INVOICE_1_13_0.getVersionString (),
                                                                              bNotDeprecated,
                                                                              ValidationExecutorXSD.create (UBL20Marshaller.getAllInvoiceXSDs ()),
                                                                              _createXSLT (new ClassPathResource (sPath +
@@ -515,7 +515,7 @@ public final class OIOUBLValidation
                                                                                                                  _getCL ()))));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OIOUBL_ORDER_1_13_0,
                                                                              "OIOUBL Order " +
-                                                                                                      VID_OIOUBL_ORDER_1_13_0.getVersion (),
+                                                                                                      VID_OIOUBL_ORDER_1_13_0.getVersionString (),
                                                                              bNotDeprecated,
                                                                              ValidationExecutorXSD.create (UBL20Marshaller.getAllOrderXSDs ()),
                                                                              _createXSLT (new ClassPathResource (sPath +
@@ -523,7 +523,7 @@ public final class OIOUBLValidation
                                                                                                                  _getCL ()))));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OIOUBL_ORDER_CANCELLATION_1_13_0,
                                                                              "OIOUBL Order Cancellation " +
-                                                                                                                   VID_OIOUBL_ORDER_CANCELLATION_1_13_0.getVersion (),
+                                                                                                                   VID_OIOUBL_ORDER_CANCELLATION_1_13_0.getVersionString (),
                                                                              bNotDeprecated,
                                                                              ValidationExecutorXSD.create (UBL20Marshaller.getAllOrderCancellationXSDs ()),
                                                                              _createXSLT (new ClassPathResource (sPath +
@@ -531,7 +531,7 @@ public final class OIOUBLValidation
                                                                                                                  _getCL ()))));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OIOUBL_ORDER_CHANGE_1_13_0,
                                                                              "OIOUBL Order Change " +
-                                                                                                             VID_OIOUBL_ORDER_CHANGE_1_13_0.getVersion (),
+                                                                                                             VID_OIOUBL_ORDER_CHANGE_1_13_0.getVersionString (),
                                                                              bNotDeprecated,
                                                                              ValidationExecutorXSD.create (UBL20Marshaller.getAllOrderChangeXSDs ()),
                                                                              _createXSLT (new ClassPathResource (sPath +
@@ -539,7 +539,7 @@ public final class OIOUBLValidation
                                                                                                                  _getCL ()))));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OIOUBL_ORDER_RESPONSE_1_13_0,
                                                                              "OIOUBL Order Response " +
-                                                                                                               VID_OIOUBL_ORDER_RESPONSE_1_13_0.getVersion (),
+                                                                                                               VID_OIOUBL_ORDER_RESPONSE_1_13_0.getVersionString (),
                                                                              bNotDeprecated,
                                                                              ValidationExecutorXSD.create (UBL20Marshaller.getAllOrderResponseXSDs ()),
                                                                              _createXSLT (new ClassPathResource (sPath +
@@ -547,7 +547,7 @@ public final class OIOUBLValidation
                                                                                                                  _getCL ()))));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OIOUBL_ORDER_RESPONSE_SIMPLE_1_13_0,
                                                                              "OIOUBL Order Response Simple " +
-                                                                                                                      VID_OIOUBL_ORDER_RESPONSE_SIMPLE_1_13_0.getVersion (),
+                                                                                                                      VID_OIOUBL_ORDER_RESPONSE_SIMPLE_1_13_0.getVersionString (),
                                                                              bNotDeprecated,
                                                                              ValidationExecutorXSD.create (UBL20Marshaller.getAllOrderResponseSimpleXSDs ()),
                                                                              _createXSLT (new ClassPathResource (sPath +
@@ -555,7 +555,7 @@ public final class OIOUBLValidation
                                                                                                                  _getCL ()))));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OIOUBL_REMINDER_1_13_0,
                                                                              "OIOUBL Reminder " +
-                                                                                                         VID_OIOUBL_REMINDER_1_13_0.getVersion (),
+                                                                                                         VID_OIOUBL_REMINDER_1_13_0.getVersionString (),
                                                                              bNotDeprecated,
                                                                              ValidationExecutorXSD.create (UBL20Marshaller.getAllReminderXSDs ()),
                                                                              _createXSLT (new ClassPathResource (sPath +
@@ -563,7 +563,7 @@ public final class OIOUBLValidation
                                                                                                                  _getCL ()))));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OIOUBL_STATEMENT_1_13_0,
                                                                              "OIOUBL Statement " +
-                                                                                                          VID_OIOUBL_STATEMENT_1_13_0.getVersion (),
+                                                                                                          VID_OIOUBL_STATEMENT_1_13_0.getVersionString (),
                                                                              bNotDeprecated,
                                                                              ValidationExecutorXSD.create (UBL20Marshaller.getAllStatementXSDs ()),
                                                                              _createXSLT (new ClassPathResource (sPath +
@@ -572,7 +572,7 @@ public final class OIOUBLValidation
 
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OIOUBL_UTILITY_STATEMENT_1_13_0,
                                                                              "OIOUBL Utility Statement " +
-                                                                                                                  VID_OIOUBL_UTILITY_STATEMENT_1_13_0.getVersion (),
+                                                                                                                  VID_OIOUBL_UTILITY_STATEMENT_1_13_0.getVersionString (),
                                                                              bNotDeprecated,
                                                                              ValidationExecutorXSD.create (XSD_UTITLITY_STATEMENT),
                                                                              _createXSLT (new ClassPathResource (sPath +

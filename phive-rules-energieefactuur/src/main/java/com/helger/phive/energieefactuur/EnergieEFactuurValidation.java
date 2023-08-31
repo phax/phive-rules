@@ -119,7 +119,7 @@ public final class EnergieEFactuurValidation
       // Same Schematrons as SimplerInvoicing - and same classloader!
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_ENERGIE_EFACTUUR_1_0_0,
                                                                              "Energie eFactuur " +
-                                                                                                         VID_ENERGIE_EFACTUUR_1_0_0.getVersion (),
+                                                                                                         VID_ENERGIE_EFACTUUR_1_0_0.getVersionString (),
                                                                              bNotDeprecated,
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
                                                                              ValidationExecutorXSDPartial.create (SEEF_EXT_XSD_1_0_0,
@@ -143,7 +143,7 @@ public final class EnergieEFactuurValidation
       // Same Schematrons as SimplerInvoicing - and same classloader!
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_ENERGIE_EFACTUUR_1_0_1,
                                                                              "Energie eFactuur " +
-                                                                                                         VID_ENERGIE_EFACTUUR_1_0_1.getVersion (),
+                                                                                                         VID_ENERGIE_EFACTUUR_1_0_1.getVersionString (),
                                                                              bNotDeprecated,
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
                                                                              ValidationExecutorXSDPartial.create (SEEF_EXT_XSD_1_0_1,
@@ -167,7 +167,7 @@ public final class EnergieEFactuurValidation
       // Same Schematrons as SimplerInvoicing - and same classloader!
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_ENERGIE_EFACTUUR_2_0_0,
                                                                              "Energie eFactuur " +
-                                                                                                         VID_ENERGIE_EFACTUUR_2_0_0.getVersion (),
+                                                                                                         VID_ENERGIE_EFACTUUR_2_0_0.getVersionString (),
                                                                              bNotDeprecated,
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
                                                                              ValidationExecutorXSDPartial.create (SEEF_EXT_XSD_2_0_0,
@@ -191,7 +191,7 @@ public final class EnergieEFactuurValidation
       // Same Schematrons as SimplerInvoicing - and same classloader!
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_ENERGIE_EFACTUUR_3_0_0,
                                                                              "Energie eFactuur " +
-                                                                                                         VID_ENERGIE_EFACTUUR_3_0_0.getVersion (),
+                                                                                                         VID_ENERGIE_EFACTUUR_3_0_0.getVersionString (),
                                                                              bNotDeprecated,
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
                                                                              ValidationExecutorXSDPartial.create (SEEF_EXT_XSD_3_0_0,
@@ -215,7 +215,7 @@ public final class EnergieEFactuurValidation
       // Same Schematrons as SimplerInvoicing - and same classloader!
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_ENERGIE_EFACTUUR_3_1_0,
                                                                              "Energie eFactuur " +
-                                                                                                         VID_ENERGIE_EFACTUUR_3_1_0.getVersion (),
+                                                                                                         VID_ENERGIE_EFACTUUR_3_1_0.getVersionString (),
                                                                              bNotDeprecated,
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
                                                                              ValidationExecutorXSDPartial.create (SEEF_EXT_XSD_3_1_0,

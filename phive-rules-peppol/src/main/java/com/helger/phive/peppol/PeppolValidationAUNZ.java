@@ -153,7 +153,7 @@ public final class PeppolValidationAUNZ
     final boolean bNotDeprecated = false;
 
     // 1.0.7
-    final String sVersion107 = VID_OPENPEPPOL_BIS3_AUNZ_UBL_INVOICE_107.getVersion ();
+    final String sVersion107 = VID_OPENPEPPOL_BIS3_AUNZ_UBL_INVOICE_107.getVersionString ();
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_BIS3_AUNZ_UBL_INVOICE_107,
                                                                            "A-NZ Peppol BIS3 Invoice (UBL) " +
                                                                                                                      sVersion107,
@@ -194,7 +194,7 @@ public final class PeppolValidationAUNZ
                                                                                                                     aNSCtxCreditNote)));
 
     // 1.0.8
-    final String sVersion108 = VID_OPENPEPPOL_BIS3_AUNZ_UBL_INVOICE_108.getVersion ();
+    final String sVersion108 = VID_OPENPEPPOL_BIS3_AUNZ_UBL_INVOICE_108.getVersionString ();
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_BIS3_AUNZ_UBL_INVOICE_108,
                                                                            "A-NZ Peppol BIS3 Invoice (UBL) " +
                                                                                                                      sVersion108,
@@ -235,7 +235,7 @@ public final class PeppolValidationAUNZ
                                                                                                                     aNSCtxCreditNote)));
 
     // 1.0.9
-    final String sVersion109 = VID_OPENPEPPOL_BIS3_AUNZ_UBL_INVOICE_109.getVersion ();
+    final String sVersion109 = VID_OPENPEPPOL_BIS3_AUNZ_UBL_INVOICE_109.getVersionString ();
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_BIS3_AUNZ_UBL_INVOICE_109,
                                                                            "A-NZ Peppol BIS3 Invoice (UBL) " +
                                                                                                                      sVersion109,

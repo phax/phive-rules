@@ -283,7 +283,7 @@ public final class PeppolLegacyValidationAUNZ
     final boolean bDeprecated = true;
 
     // 1.0.0
-    final String sVersion100 = VID_OPENPEPPOL_BIS3_AUNZ_UBL_INVOICE_100.getVersion ();
+    final String sVersion100 = VID_OPENPEPPOL_BIS3_AUNZ_UBL_INVOICE_100.getVersionString ();
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_BIS3_AUNZ_UBL_INVOICE_100,
                                                                            "A-NZ Peppol BIS3 Invoice (UBL) " +
                                                                                                                      sVersion100,
@@ -324,7 +324,7 @@ public final class PeppolLegacyValidationAUNZ
                                                                                                                     aNSCtxCreditNote)));
 
     // 1.0.1
-    final String sVersion101 = VID_OPENPEPPOL_BIS3_AUNZ_UBL_INVOICE_101.getVersion ();
+    final String sVersion101 = VID_OPENPEPPOL_BIS3_AUNZ_UBL_INVOICE_101.getVersionString ();
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_BIS3_AUNZ_UBL_INVOICE_101,
                                                                            "A-NZ Peppol BIS3 Invoice (UBL) " +
                                                                                                                      sVersion101,
@@ -365,7 +365,7 @@ public final class PeppolLegacyValidationAUNZ
                                                                                                                     aNSCtxCreditNote)));
 
     // 1.0.2
-    final String sVersion102 = VID_OPENPEPPOL_BIS3_AUNZ_UBL_INVOICE_102.getVersion ();
+    final String sVersion102 = VID_OPENPEPPOL_BIS3_AUNZ_UBL_INVOICE_102.getVersionString ();
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_BIS3_AUNZ_UBL_INVOICE_102,
                                                                            "A-NZ Peppol BIS3 Invoice (UBL) " +
                                                                                                                      sVersion102,
@@ -406,7 +406,7 @@ public final class PeppolLegacyValidationAUNZ
                                                                                                                     aNSCtxCreditNote)));
 
     // 1.0.3
-    final String sVersion103 = VID_OPENPEPPOL_BIS3_AUNZ_UBL_INVOICE_103.getVersion ();
+    final String sVersion103 = VID_OPENPEPPOL_BIS3_AUNZ_UBL_INVOICE_103.getVersionString ();
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_BIS3_AUNZ_UBL_INVOICE_103,
                                                                            "A-NZ Peppol BIS3 Invoice (UBL) " +
                                                                                                                      sVersion103,
@@ -447,7 +447,7 @@ public final class PeppolLegacyValidationAUNZ
                                                                                                                     aNSCtxCreditNote)));
 
     // 1.0.4
-    final String sVersion104 = VID_OPENPEPPOL_BIS3_AUNZ_UBL_INVOICE_104.getVersion ();
+    final String sVersion104 = VID_OPENPEPPOL_BIS3_AUNZ_UBL_INVOICE_104.getVersionString ();
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_BIS3_AUNZ_UBL_INVOICE_104,
                                                                            "A-NZ Peppol BIS3 Invoice (UBL) " +
                                                                                                                      sVersion104,
@@ -488,7 +488,7 @@ public final class PeppolLegacyValidationAUNZ
                                                                                                                     aNSCtxCreditNote)));
 
     // 1.0.5
-    final String sVersion105 = VID_OPENPEPPOL_BIS3_AUNZ_UBL_INVOICE_105.getVersion ();
+    final String sVersion105 = VID_OPENPEPPOL_BIS3_AUNZ_UBL_INVOICE_105.getVersionString ();
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_BIS3_AUNZ_UBL_INVOICE_105,
                                                                            "A-NZ Peppol BIS3 Invoice (UBL) " +
                                                                                                                      sVersion105,
@@ -529,7 +529,7 @@ public final class PeppolLegacyValidationAUNZ
                                                                                                                     aNSCtxCreditNote)));
 
     // 1.0.6
-    final String sVersion106 = VID_OPENPEPPOL_BIS3_AUNZ_UBL_INVOICE_106.getVersion ();
+    final String sVersion106 = VID_OPENPEPPOL_BIS3_AUNZ_UBL_INVOICE_106.getVersionString ();
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_BIS3_AUNZ_UBL_INVOICE_106,
                                                                            "A-NZ Peppol BIS3 Invoice (UBL) " +
                                                                                                                      sVersion106,

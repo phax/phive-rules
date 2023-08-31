@@ -243,7 +243,7 @@ public class EHFValidationG2
     // 2018-11
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_EHF_CATALOGUE_1_0_13,
                                                                            "EHF Catalogue " +
-                                                                                                     VID_EHF_CATALOGUE_1_0_13.getVersion (),
+                                                                                                     VID_EHF_CATALOGUE_1_0_13.getVersionString (),
                                                                            bDeprecated,
                                                                            ValidationExecutorXSD.create (UBL21Marshaller.getAllCatalogueXSDs ()),
                                                                            _createXSLT (new ClassPathResource (PATH_201811 +
@@ -256,7 +256,7 @@ public class EHFValidationG2
                                                                            _createXSLT (EHF_CATALOGUE_V1_0_13)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_EHF_CATALOGUE_RESPONSE_1_0_13,
                                                                            "EHF Catalogue Response " +
-                                                                                                              VID_EHF_CATALOGUE_RESPONSE_1_0_13.getVersion (),
+                                                                                                              VID_EHF_CATALOGUE_RESPONSE_1_0_13.getVersionString (),
                                                                            bDeprecated,
                                                                            ValidationExecutorXSD.create (UBL21Marshaller.getAllApplicationResponseXSDs ()),
                                                                            _createXSLT (new ClassPathResource (PATH_201811 +
@@ -269,7 +269,7 @@ public class EHFValidationG2
                                                                            _createXSLT (EHF_CATALOGUE_RESPONSE_V1_0_13)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_EHF_CREDITNOTE_2_0_15,
                                                                            "EHF Creditnote " +
-                                                                                                      VID_EHF_CREDITNOTE_2_0_15.getVersion (),
+                                                                                                      VID_EHF_CREDITNOTE_2_0_15.getVersionString (),
                                                                            bDeprecated,
                                                                            ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
                                                                            _createXSLT (new ClassPathResource (PATH_201811 +
@@ -282,7 +282,7 @@ public class EHFValidationG2
                                                                            _createXSLT (EHF_CREDITNOTE_V2_0_15)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_EHF_DESPATCH_ADVICE_1_0_10,
                                                                            "EHF Despatch Advice " +
-                                                                                                           VID_EHF_DESPATCH_ADVICE_1_0_10.getVersion (),
+                                                                                                           VID_EHF_DESPATCH_ADVICE_1_0_10.getVersionString (),
                                                                            bDeprecated,
                                                                            ValidationExecutorXSD.create (UBL21Marshaller.getAllDespatchAdviceXSDs ()),
                                                                            _createXSLT (new ClassPathResource (PATH_201811 +
@@ -295,7 +295,7 @@ public class EHFValidationG2
                                                                            _createXSLT (EHF_DESPATCH_ADVICE_V1_0_10)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_EHF_INVOICE_2_0_15,
                                                                            "EHF Invoice " +
-                                                                                                   VID_EHF_INVOICE_2_0_15.getVersion (),
+                                                                                                   VID_EHF_INVOICE_2_0_15.getVersionString (),
                                                                            bDeprecated,
                                                                            ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
                                                                            _createXSLT (new ClassPathResource (PATH_201811 +
@@ -308,7 +308,7 @@ public class EHFValidationG2
                                                                            _createXSLT (EHF_INVOICE_V2_0_15)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_EHF_ORDER_1_0_11,
                                                                            "EHF Ordering " +
-                                                                                                 VID_EHF_ORDER_1_0_11.getVersion (),
+                                                                                                 VID_EHF_ORDER_1_0_11.getVersionString (),
                                                                            bDeprecated,
                                                                            ValidationExecutorXSD.create (UBL21Marshaller.getAllOrderXSDs ()),
                                                                            _createXSLT (new ClassPathResource (PATH_201811 +
@@ -321,7 +321,7 @@ public class EHFValidationG2
                                                                            _createXSLT (EHF_ORDER_V1_0_11)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_EHF_ORDER_AGREEMENT_1_0_2,
                                                                            "EHF Order Agreement " +
-                                                                                                          VID_EHF_ORDER_AGREEMENT_1_0_2.getVersion (),
+                                                                                                          VID_EHF_ORDER_AGREEMENT_1_0_2.getVersionString (),
                                                                            bDeprecated,
                                                                            ValidationExecutorXSD.create (UBL21Marshaller.getAllOrderResponseXSDs ()),
                                                                            _createXSLT (new ClassPathResource (PATH_201811 +
@@ -334,7 +334,7 @@ public class EHFValidationG2
                                                                            _createXSLT (EHF_ORDER_AGREEMENT_V1_0_2)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_EHF_ORDER_RESPONSE_1_0_11,
                                                                            "EHF Order Response " +
-                                                                                                          VID_EHF_ORDER_RESPONSE_1_0_11.getVersion (),
+                                                                                                          VID_EHF_ORDER_RESPONSE_1_0_11.getVersionString (),
                                                                            bDeprecated,
                                                                            ValidationExecutorXSD.create (UBL21Marshaller.getAllOrderResponseXSDs ()),
                                                                            _createXSLT (new ClassPathResource (PATH_201811 +
@@ -347,7 +347,7 @@ public class EHFValidationG2
                                                                            _createXSLT (EHF_ORDER_RESPONSE_V1_0_11)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_EHF_PUNCH_OUT_1_0_1,
                                                                            "EHF Punch Out " +
-                                                                                                    VID_EHF_PUNCH_OUT_1_0_1.getVersion (),
+                                                                                                    VID_EHF_PUNCH_OUT_1_0_1.getVersionString (),
                                                                            bDeprecated,
                                                                            ValidationExecutorXSD.create (UBL21Marshaller.getAllCatalogueXSDs ()),
                                                                            _createXSLT (new ClassPathResource (PATH_201811 +
@@ -362,7 +362,7 @@ public class EHFValidationG2
     // Reminder is NOT in PEPPOL
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_EHF_REMINDER_1_1_0,
                                                                            "EHF Reminder " +
-                                                                                                   VID_EHF_REMINDER_1_1_0.getVersion (),
+                                                                                                   VID_EHF_REMINDER_1_1_0.getVersionString (),
                                                                            bNotDeprecated,
                                                                            ValidationExecutorXSD.create (UBL21Marshaller.getAllReminderXSDs ()),
                                                                            _createXSLT (EHF_COMMON_V1_0_4),
@@ -371,7 +371,7 @@ public class EHFValidationG2
     // 2019-06
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_EHF_CATALOGUE_1_0_14,
                                                                            "EHF Catalogue " +
-                                                                                                     VID_EHF_CATALOGUE_1_0_14.getVersion (),
+                                                                                                     VID_EHF_CATALOGUE_1_0_14.getVersionString (),
                                                                            bDeprecated,
                                                                            ValidationExecutorXSD.create (UBL21Marshaller.getAllCatalogueXSDs ()),
                                                                            _createXSLT (new ClassPathResource (PATH_201906 +
@@ -384,7 +384,7 @@ public class EHFValidationG2
                                                                            _createXSLT (EHF_CATALOGUE_V1_0_14)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_EHF_CATALOGUE_RESPONSE_1_0_14,
                                                                            "EHF Catalogue Response " +
-                                                                                                              VID_EHF_CATALOGUE_RESPONSE_1_0_14.getVersion (),
+                                                                                                              VID_EHF_CATALOGUE_RESPONSE_1_0_14.getVersionString (),
                                                                            bDeprecated,
                                                                            ValidationExecutorXSD.create (UBL21Marshaller.getAllApplicationResponseXSDs ()),
                                                                            _createXSLT (new ClassPathResource (PATH_201906 +
@@ -397,7 +397,7 @@ public class EHFValidationG2
                                                                            _createXSLT (EHF_CATALOGUE_RESPONSE_V1_0_14)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_EHF_CREDITNOTE_2_0_16,
                                                                            "EHF Creditnote " +
-                                                                                                      VID_EHF_CREDITNOTE_2_0_16.getVersion (),
+                                                                                                      VID_EHF_CREDITNOTE_2_0_16.getVersionString (),
                                                                            bDeprecated,
                                                                            ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
                                                                            _createXSLT (new ClassPathResource (PATH_201906 +
@@ -410,7 +410,7 @@ public class EHFValidationG2
                                                                            _createXSLT (EHF_CREDITNOTE_V2_0_16)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_EHF_DESPATCH_ADVICE_1_0_11,
                                                                            "EHF Despatch Advice " +
-                                                                                                           VID_EHF_DESPATCH_ADVICE_1_0_11.getVersion (),
+                                                                                                           VID_EHF_DESPATCH_ADVICE_1_0_11.getVersionString (),
                                                                            bDeprecated,
                                                                            ValidationExecutorXSD.create (UBL21Marshaller.getAllDespatchAdviceXSDs ()),
                                                                            _createXSLT (new ClassPathResource (PATH_201906 +
@@ -423,7 +423,7 @@ public class EHFValidationG2
                                                                            _createXSLT (EHF_DESPATCH_ADVICE_V1_0_11)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_EHF_INVOICE_2_0_16,
                                                                            "EHF Invoice " +
-                                                                                                   VID_EHF_INVOICE_2_0_16.getVersion (),
+                                                                                                   VID_EHF_INVOICE_2_0_16.getVersionString (),
                                                                            bDeprecated,
                                                                            ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
                                                                            _createXSLT (new ClassPathResource (PATH_201906 +
@@ -436,7 +436,7 @@ public class EHFValidationG2
                                                                            _createXSLT (EHF_INVOICE_V2_0_16)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_EHF_ORDER_1_0_12,
                                                                            "EHF Ordering " +
-                                                                                                 VID_EHF_ORDER_1_0_12.getVersion (),
+                                                                                                 VID_EHF_ORDER_1_0_12.getVersionString (),
                                                                            bDeprecated,
                                                                            ValidationExecutorXSD.create (UBL21Marshaller.getAllOrderXSDs ()),
                                                                            _createXSLT (new ClassPathResource (PATH_201906 +
@@ -449,7 +449,7 @@ public class EHFValidationG2
                                                                            _createXSLT (EHF_ORDER_V1_0_12)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_EHF_ORDER_AGREEMENT_1_0_3,
                                                                            "EHF Order Agreement " +
-                                                                                                          VID_EHF_ORDER_AGREEMENT_1_0_3.getVersion (),
+                                                                                                          VID_EHF_ORDER_AGREEMENT_1_0_3.getVersionString (),
                                                                            bDeprecated,
                                                                            ValidationExecutorXSD.create (UBL21Marshaller.getAllOrderResponseXSDs ()),
                                                                            _createXSLT (new ClassPathResource (PATH_201906 +
@@ -462,7 +462,7 @@ public class EHFValidationG2
                                                                            _createXSLT (EHF_ORDER_AGREEMENT_V1_0_3)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_EHF_ORDER_RESPONSE_1_0_12,
                                                                            "EHF Order Response " +
-                                                                                                          VID_EHF_ORDER_RESPONSE_1_0_12.getVersion (),
+                                                                                                          VID_EHF_ORDER_RESPONSE_1_0_12.getVersionString (),
                                                                            bDeprecated,
                                                                            ValidationExecutorXSD.create (UBL21Marshaller.getAllOrderResponseXSDs ()),
                                                                            _createXSLT (new ClassPathResource (PATH_201906 +
@@ -475,7 +475,7 @@ public class EHFValidationG2
                                                                            _createXSLT (EHF_ORDER_RESPONSE_V1_0_12)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_EHF_PUNCH_OUT_1_0_2,
                                                                            "EHF Punch Out " +
-                                                                                                    VID_EHF_PUNCH_OUT_1_0_2.getVersion (),
+                                                                                                    VID_EHF_PUNCH_OUT_1_0_2.getVersionString (),
                                                                            bDeprecated,
                                                                            ValidationExecutorXSD.create (UBL21Marshaller.getAllCatalogueXSDs ()),
                                                                            _createXSLT (new ClassPathResource (PATH_201906 +
@@ -491,7 +491,7 @@ public class EHFValidationG2
     // 2019-12
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_EHF_CATALOGUE_1_0_15,
                                                                            "EHF Catalogue " +
-                                                                                                     VID_EHF_CATALOGUE_1_0_15.getVersion (),
+                                                                                                     VID_EHF_CATALOGUE_1_0_15.getVersionString (),
                                                                            bNotDeprecated,
                                                                            ValidationExecutorXSD.create (UBL21Marshaller.getAllCatalogueXSDs ()),
                                                                            _createXSLT (new ClassPathResource (PATH_201912 +
@@ -504,7 +504,7 @@ public class EHFValidationG2
                                                                            _createXSLT (EHF_CATALOGUE_V1_0_15)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_EHF_CATALOGUE_RESPONSE_1_0_15,
                                                                            "EHF Catalogue Response " +
-                                                                                                              VID_EHF_CATALOGUE_RESPONSE_1_0_15.getVersion (),
+                                                                                                              VID_EHF_CATALOGUE_RESPONSE_1_0_15.getVersionString (),
                                                                            bNotDeprecated,
                                                                            ValidationExecutorXSD.create (UBL21Marshaller.getAllApplicationResponseXSDs ()),
                                                                            _createXSLT (new ClassPathResource (PATH_201912 +
@@ -517,7 +517,7 @@ public class EHFValidationG2
                                                                            _createXSLT (EHF_CATALOGUE_RESPONSE_V1_0_15)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_EHF_CREDITNOTE_2_0_17,
                                                                            "EHF Creditnote " +
-                                                                                                      VID_EHF_CREDITNOTE_2_0_17.getVersion (),
+                                                                                                      VID_EHF_CREDITNOTE_2_0_17.getVersionString (),
                                                                            bNotDeprecated,
                                                                            ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
                                                                            _createXSLT (new ClassPathResource (PATH_201912 +
@@ -530,7 +530,7 @@ public class EHFValidationG2
                                                                            _createXSLT (EHF_CREDITNOTE_V2_0_17)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_EHF_DESPATCH_ADVICE_1_0_12,
                                                                            "EHF Despatch Advice " +
-                                                                                                           VID_EHF_DESPATCH_ADVICE_1_0_12.getVersion (),
+                                                                                                           VID_EHF_DESPATCH_ADVICE_1_0_12.getVersionString (),
                                                                            bNotDeprecated,
                                                                            ValidationExecutorXSD.create (UBL21Marshaller.getAllDespatchAdviceXSDs ()),
                                                                            _createXSLT (new ClassPathResource (PATH_201912 +
@@ -543,7 +543,7 @@ public class EHFValidationG2
                                                                            _createXSLT (EHF_DESPATCH_ADVICE_V1_0_12)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_EHF_INVOICE_2_0_17,
                                                                            "EHF Invoice " +
-                                                                                                   VID_EHF_INVOICE_2_0_17.getVersion (),
+                                                                                                   VID_EHF_INVOICE_2_0_17.getVersionString (),
                                                                            bNotDeprecated,
                                                                            ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
                                                                            _createXSLT (new ClassPathResource (PATH_201912 +
@@ -556,7 +556,7 @@ public class EHFValidationG2
                                                                            _createXSLT (EHF_INVOICE_V2_0_17)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_EHF_ORDER_1_0_13,
                                                                            "EHF Ordering " +
-                                                                                                 VID_EHF_ORDER_1_0_13.getVersion (),
+                                                                                                 VID_EHF_ORDER_1_0_13.getVersionString (),
                                                                            bNotDeprecated,
                                                                            ValidationExecutorXSD.create (UBL21Marshaller.getAllOrderXSDs ()),
                                                                            _createXSLT (new ClassPathResource (PATH_201912 +
@@ -569,7 +569,7 @@ public class EHFValidationG2
                                                                            _createXSLT (EHF_ORDER_V1_0_13)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_EHF_ORDER_AGREEMENT_1_0_4,
                                                                            "EHF Order Agreement " +
-                                                                                                          VID_EHF_ORDER_AGREEMENT_1_0_4.getVersion (),
+                                                                                                          VID_EHF_ORDER_AGREEMENT_1_0_4.getVersionString (),
                                                                            bNotDeprecated,
                                                                            ValidationExecutorXSD.create (UBL21Marshaller.getAllOrderResponseXSDs ()),
                                                                            _createXSLT (new ClassPathResource (PATH_201912 +
@@ -582,7 +582,7 @@ public class EHFValidationG2
                                                                            _createXSLT (EHF_ORDER_AGREEMENT_V1_0_4)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_EHF_ORDER_RESPONSE_1_0_13,
                                                                            "EHF Order Response " +
-                                                                                                          VID_EHF_ORDER_RESPONSE_1_0_13.getVersion (),
+                                                                                                          VID_EHF_ORDER_RESPONSE_1_0_13.getVersionString (),
                                                                            bNotDeprecated,
                                                                            ValidationExecutorXSD.create (UBL21Marshaller.getAllOrderResponseXSDs ()),
                                                                            _createXSLT (new ClassPathResource (PATH_201912 +
@@ -595,7 +595,7 @@ public class EHFValidationG2
                                                                            _createXSLT (EHF_ORDER_RESPONSE_V1_0_13)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_EHF_PUNCH_OUT_1_0_3,
                                                                            "EHF Punch Out " +
-                                                                                                    VID_EHF_PUNCH_OUT_1_0_3.getVersion (),
+                                                                                                    VID_EHF_PUNCH_OUT_1_0_3.getVersionString (),
                                                                            bNotDeprecated,
                                                                            ValidationExecutorXSD.create (UBL21Marshaller.getAllCatalogueXSDs ()),
                                                                            _createXSLT (new ClassPathResource (PATH_201912 +

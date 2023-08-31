@@ -61,17 +61,17 @@ public final class FatturaPAValidation
     // No Schematrons here
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_FATTURAPA_120,
                                                                            "fatturaPA " +
-                                                                                              VID_FATTURAPA_120.getVersion (),
+                                                                                              VID_FATTURAPA_120.getVersionString (),
                                                                            bDeprecated,
                                                                            ValidationExecutorXSD.create (CFatturaPA.getAllXSDFatturaPA120 ())));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_FATTURAPA_121,
                                                                            "fatturaPA " +
-                                                                                              VID_FATTURAPA_121.getVersion (),
+                                                                                              VID_FATTURAPA_121.getVersionString (),
                                                                            bDeprecated,
                                                                            ValidationExecutorXSD.create (CFatturaPA.getAllXSDFatturaPA121 ())));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_FATTURAPA_122,
                                                                            "fatturaPA " +
-                                                                                              VID_FATTURAPA_122.getVersion (),
+                                                                                              VID_FATTURAPA_122.getVersionString (),
                                                                            bNotDeprecated,
                                                                            ValidationExecutorXSD.create (CFatturaPA.getAllXSDFatturaPA122 ())));
   }

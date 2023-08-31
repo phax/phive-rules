@@ -93,7 +93,7 @@ public final class SETUValidation
 
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_TIMECARD_14,
                                                                            "SETU Timcard " +
-                                                                                            VID_TIMECARD_14.getVersion (),
+                                                                                            VID_TIMECARD_14.getVersionString (),
                                                                            bNotDeprecated,
                                                                            ValidationExecutorXSD.create (CXML_XSD.getXSDResource (),
                                                                                                          new ClassPathResource ("/external/schemas/hr-xml-2007/SIDES/TimeCardAdditionalData.xsd",
