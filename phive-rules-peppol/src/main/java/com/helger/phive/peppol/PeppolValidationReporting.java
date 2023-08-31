@@ -51,7 +51,7 @@ public final class PeppolValidationReporting
   // EUSR
 
   @Deprecated
-  public static final VESID VID_OPENPEPPOL_EUSR_V100RC2 = new VESID (GROUP_ID, "eusr", "1.0.0.RC2");
+  public static final VESID VID_OPENPEPPOL_EUSR_V100RC2 = new VESID (GROUP_ID, "eusr", "1.0.0-RC2");
   @Deprecated
   public static final VESID VID_OPENPEPPOL_EUSR_V100 = new VESID (GROUP_ID, "eusr", "1.0.0");
   @Deprecated
