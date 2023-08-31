@@ -196,6 +196,7 @@ I hope that with the introduction of PINT, the versioning problem will be solved
     * Updated to phive 9.0.0 Beta2 with the strict version number check
     * The following VES versions were changed:
         * `eu.cen.en16931:cii:1.3.6a` is now `eu.cen.en16931:cii:1.3.6.a`  
+        * `at.ebinterface:invoice:3.02` is now `at.ebinterface:invoice:3.0.2`  
 * v3.1.0-beta1 - 2023-08-30 [not recommended for production use]
     * Updated to phive 9.0.0 Beta1
 * v3.0.5 - 2023-07-02

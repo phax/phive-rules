@@ -38,7 +38,7 @@ public final class EbInterfaceValidation
   public static final String GROUP_ID = "at.ebinterface";
 
   public static final VESID VID_EBI_30 = new VESID (GROUP_ID, "invoice", "3.0");
-  public static final VESID VID_EBI_302 = new VESID (GROUP_ID, "invoice", "3.02");
+  public static final VESID VID_EBI_302 = new VESID (GROUP_ID, "invoice", "3.0.2");
   public static final VESID VID_EBI_40 = new VESID (GROUP_ID, "invoice", "4.0");
   public static final VESID VID_EBI_41 = new VESID (GROUP_ID, "invoice", "4.1");
   public static final VESID VID_EBI_42 = new VESID (GROUP_ID, "invoice", "4.2");
