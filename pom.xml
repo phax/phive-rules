@@ -89,7 +89,7 @@
       <dependency>
         <groupId>com.helger.phive</groupId>
         <artifactId>phive-parent-pom</artifactId>
-        <version>9.0.0-SNAPSHOT</version>
+        <version>9.0.0-beta2</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
@@ -129,7 +129,7 @@
       <dependency>
         <groupId>com.helger.peppol</groupId>
         <artifactId>peppol-commons-parent-pom</artifactId>
-        <version>9.0.7</version>
+        <version>9.0.8</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>

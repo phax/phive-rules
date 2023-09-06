@@ -75,7 +75,6 @@ public final class PeppolValidation
     // For better error messages
     SchematronNamespaceBeautifier.addMappings (UBL21NamespaceContext.getInstance ());
 
-    PeppolValidation3_14_0.init (aRegistry);
     PeppolValidation3_15_0.init (aRegistry);
     PeppolValidation2023_05.init (aRegistry);
     PeppolValidationAUNZ.init (aRegistry);

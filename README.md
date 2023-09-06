@@ -191,8 +191,9 @@ I hope that with the introduction of PINT, the versioning problem will be solved
   
 # News and noteworthy
  
-* v3.1.0 - work in progress
+* v3.1.0-beta2 - 2023-09-06 [not recommended for production use]
     * Deprecated OpenPeppol 3.15.0 rules
+    * Moved Peppol 3.14.0 rules from `phive-rules-peppol` to `phive-rules-peppol-legacy`
     * Updated to phive 9.0.0 Beta2 with the strict version number check
     * The following VES versions were changed:
         * `eu.cen.en16931:cii:1.3.6a` is now `eu.cen.en16931:cii:1.3.6.a`  

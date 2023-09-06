@@ -63,6 +63,10 @@
       <artifactId>ph-ubl21</artifactId>
     </dependency>
     <dependency>
+      <groupId>com.helger.cii</groupId>
+      <artifactId>ph-cii-d16b</artifactId>
+    </dependency>
+    <dependency>
       <groupId>com.helger.schematron</groupId>
       <artifactId>ph-schematron-xslt</artifactId>
     </dependency>
