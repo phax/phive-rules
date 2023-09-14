@@ -27,10 +27,10 @@ import com.helger.commons.collection.impl.CommonsArrayList;
 import com.helger.commons.collection.impl.ICommonsList;
 import com.helger.commons.io.resource.FileSystemResource;
 import com.helger.commons.io.resource.IReadableResource;
+import com.helger.diver.api.version.VESID;
 import com.helger.peppol.testfiles.official.OfficialTestFiles;
-import com.helger.phive.api.executorset.VESID;
 import com.helger.phive.api.executorset.ValidationExecutorSetRegistry;
-import com.helger.phive.api.mock.MockFile;
+import com.helger.phive.api.mock.TestFile;
 import com.helger.phive.peppol.legacy.PeppolLegacyThirdpartyValidation;
 import com.helger.phive.peppol.legacy.PeppolLegacyValidation;
 import com.helger.phive.peppol.legacy.PeppolLegacyValidationAUNZ;
@@ -66,9 +66,9 @@ public final class CTestFiles
 
   @Nonnull
   @ReturnsMutableCopy
-  public static ICommonsList <MockFile> getAllTestFiles ()
+  public static ICommonsList <TestFile> getAllTestFiles ()
   {
-    final ICommonsList <MockFile> ret = new CommonsArrayList <> ();
+    final ICommonsList <TestFile> ret = new CommonsArrayList <> ();
     for (final VESID aESID : new VESID [] { /* AU_NZ */
                                             PeppolLegacyValidationAUNZ.VID_OPENPEPPOL_BIS3_AUNZ_UBL_INVOICE_100,
                                             PeppolLegacyValidationAUNZ.VID_OPENPEPPOL_BIS3_AUNZ_UBL_CREDIT_NOTE_100,
@@ -243,7 +243,7 @@ public final class CTestFiles
       for (final IReadableResource aRes : getAllMatchingTestFiles (aESID))
       {
         assertTrue ("Not existing test file: " + aRes.getPath (), aRes.exists ());
-        ret.add (MockFile.createGoodCase (aRes, aESID));
+        ret.add (TestFile.createGoodCase (aRes, aESID));
       }
     return ret;
   }

@@ -27,9 +27,9 @@ import com.helger.commons.collection.impl.CommonsArrayList;
 import com.helger.commons.collection.impl.ICommonsList;
 import com.helger.commons.io.resource.ClassPathResource;
 import com.helger.commons.io.resource.IReadableResource;
-import com.helger.phive.api.executorset.VESID;
+import com.helger.diver.api.version.VESID;
 import com.helger.phive.api.executorset.ValidationExecutorSetRegistry;
-import com.helger.phive.api.mock.MockFile;
+import com.helger.phive.api.mock.TestFile;
 import com.helger.phive.finvoice.FinvoiceValidation;
 import com.helger.phive.xml.source.IValidationSourceXML;
 
@@ -47,9 +47,9 @@ public final class CTestFiles
 
   @Nonnull
   @ReturnsMutableCopy
-  public static ICommonsList <MockFile> getAllTestFiles ()
+  public static ICommonsList <TestFile> getAllTestFiles ()
   {
-    final ICommonsList <MockFile> ret = new CommonsArrayList <> ();
+    final ICommonsList <TestFile> ret = new CommonsArrayList <> ();
     for (final VESID aESID : new VESID [] { FinvoiceValidation.VID_FINVOICE_13,
                                             FinvoiceValidation.VID_FINVOICE_20,
                                             FinvoiceValidation.VID_FINVOICE_201,
@@ -57,7 +57,7 @@ public final class CTestFiles
       for (final IReadableResource aRes : getAllMatchingTestFiles (aESID))
       {
         assertTrue ("Not existing test file: " + aRes.getPath (), aRes.exists ());
-        ret.add (MockFile.createGoodCase (aRes, aESID));
+        ret.add (TestFile.createGoodCase (aRes, aESID));
       }
     return ret;
   }

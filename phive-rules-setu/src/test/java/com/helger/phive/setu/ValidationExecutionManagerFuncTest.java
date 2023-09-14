@@ -27,7 +27,7 @@ import org.slf4j.LoggerFactory;
 
 import com.helger.phive.api.execute.ValidationExecutionManager;
 import com.helger.phive.api.executorset.IValidationExecutorSet;
-import com.helger.phive.api.mock.MockFile;
+import com.helger.phive.api.mock.TestFile;
 import com.helger.phive.api.result.ValidationResultList;
 import com.helger.phive.setu.mock.CTestFiles;
 import com.helger.phive.xml.source.IValidationSourceXML;
@@ -45,7 +45,7 @@ public final class ValidationExecutionManagerFuncTest
   @Test
   public void testApplyCompleteValidation ()
   {
-    for (final MockFile aTestFile : CTestFiles.getAllTestFiles ())
+    for (final TestFile aTestFile : CTestFiles.getAllTestFiles ())
     {
       final IValidationExecutorSet <IValidationSourceXML> aExecutors = CTestFiles.VES_REGISTRY.getOfID (aTestFile.getVESID ());
       assertNotNull (aExecutors);

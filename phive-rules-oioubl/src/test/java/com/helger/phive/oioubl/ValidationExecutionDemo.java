@@ -21,9 +21,9 @@ import javax.annotation.Nullable;
 
 import org.w3c.dom.Document;
 
+import com.helger.diver.api.version.VESID;
 import com.helger.phive.api.execute.ValidationExecutionManager;
 import com.helger.phive.api.executorset.IValidationExecutorSet;
-import com.helger.phive.api.executorset.VESID;
 import com.helger.phive.api.result.ValidationResultList;
 import com.helger.phive.oioubl.mock.CTestFiles;
 import com.helger.phive.xml.source.IValidationSourceXML;

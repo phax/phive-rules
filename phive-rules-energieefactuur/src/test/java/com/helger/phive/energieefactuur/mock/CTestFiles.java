@@ -28,9 +28,9 @@ import com.helger.commons.collection.impl.CommonsHashSet;
 import com.helger.commons.collection.impl.ICommonsList;
 import com.helger.commons.io.resource.ClassPathResource;
 import com.helger.commons.io.resource.IReadableResource;
-import com.helger.phive.api.executorset.VESID;
+import com.helger.diver.api.version.VESID;
 import com.helger.phive.api.executorset.ValidationExecutorSetRegistry;
-import com.helger.phive.api.mock.MockFile;
+import com.helger.phive.api.mock.TestFile;
 import com.helger.phive.energieefactuur.EnergieEFactuurValidation;
 import com.helger.phive.xml.source.IValidationSourceXML;
 
@@ -48,9 +48,9 @@ public final class CTestFiles
 
   @Nonnull
   @ReturnsMutableCopy
-  public static ICommonsList <MockFile> getAllTestFiles ()
+  public static ICommonsList <TestFile> getAllTestFiles ()
   {
-    final ICommonsList <MockFile> ret = new CommonsArrayList <> ();
+    final ICommonsList <TestFile> ret = new CommonsArrayList <> ();
     for (final VESID aVESID : new VESID [] { EnergieEFactuurValidation.VID_ENERGIE_EFACTUUR_1_0_0,
                                              EnergieEFactuurValidation.VID_ENERGIE_EFACTUUR_1_0_1,
                                              EnergieEFactuurValidation.VID_ENERGIE_EFACTUUR_2_0_0,
@@ -60,7 +60,7 @@ public final class CTestFiles
       for (final IReadableResource aRes : getAllMatchingTestFiles (aVESID))
       {
         assertTrue ("Not existing test file: " + aRes.getPath (), aRes.exists ());
-        ret.add (MockFile.createGoodCase (aRes, aVESID));
+        ret.add (TestFile.createGoodCase (aRes, aVESID));
       }
       ret.addAll (getAllBadTestFiles (aVESID));
     }
@@ -123,13 +123,13 @@ public final class CTestFiles
 
   @Nonnull
   @ReturnsMutableCopy
-  public static ICommonsList <MockFile> getAllBadTestFiles (@Nonnull final VESID aVESID)
+  public static ICommonsList <TestFile> getAllBadTestFiles (@Nonnull final VESID aVESID)
   {
     ValueEnforcer.notNull (aVESID, "VESID");
 
     final String sPrefix = "/external/test-files/";
 
-    final ICommonsList <MockFile> ret = new CommonsArrayList <> ();
+    final ICommonsList <TestFile> ret = new CommonsArrayList <> ();
     if (aVESID.equals (EnergieEFactuurValidation.VID_ENERGIE_EFACTUUR_1_0_0))
     {
       // TODO
@@ -142,13 +142,13 @@ public final class CTestFiles
       else
         if (aVESID.equals (EnergieEFactuurValidation.VID_ENERGIE_EFACTUUR_2_0_0))
         {
-          ret.add (new MockFile (new ClassPathResource (sPrefix + "2.0.0/bad/bad-meternumber-twice.xml"),
+          ret.add (new TestFile (new ClassPathResource (sPrefix + "2.0.0/bad/bad-meternumber-twice.xml"),
                                  aVESID,
                                  new CommonsHashSet <> ("")));
-          ret.add (new MockFile (new ClassPathResource (sPrefix + "2.0.0/bad/bad-no-extension.xml"),
+          ret.add (new TestFile (new ClassPathResource (sPrefix + "2.0.0/bad/bad-no-extension.xml"),
                                  aVESID,
                                  new CommonsHashSet <> ("")));
-          ret.add (new MockFile (new ClassPathResource (sPrefix + "2.0.0/bad/bad-two-extensions.xml"),
+          ret.add (new TestFile (new ClassPathResource (sPrefix + "2.0.0/bad/bad-two-extensions.xml"),
                                  aVESID,
                                  new CommonsHashSet <> ("")));
         }
