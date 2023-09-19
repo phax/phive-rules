@@ -648,12 +648,12 @@ public final class CTestFiles
         ret.add (new ClassPathResource (sPrefix + s));
     }
     else
-      if (aVESID.equals (XRechnungValidation.VID_XRECHNUNG_UBL_CREDITNOTE_220))
+      if (aVESID.equals (XRechnungValidation.VID_XRECHNUNG_UBL_CREDITNOTE_231))
       {
         // None atm
       }
       else
-        if (aVESID.equals (XRechnungValidation.VID_XRECHNUNG_UBL_INVOICE_220))
+        if (aVESID.equals (XRechnungValidation.VID_XRECHNUNG_UBL_INVOICE_231))
         {
           final String sPrefix = sPrefix0 + "2.3.1/ubl-inv/";
           for (final String s : new String [] { "01.01a-INVOICE_ubl.xml",
