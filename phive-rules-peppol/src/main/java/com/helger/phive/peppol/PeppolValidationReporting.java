@@ -56,13 +56,17 @@ public final class PeppolValidationReporting
   public static final VESID VID_OPENPEPPOL_EUSR_V100 = new VESID (GROUP_ID, "eusr", "1.0.0");
   @Deprecated
   public static final VESID VID_OPENPEPPOL_EUSR_V101 = new VESID (GROUP_ID, "eusr", "1.0.1");
+  @Deprecated
   public static final VESID VID_OPENPEPPOL_EUSR_V110 = new VESID (GROUP_ID, "eusr", "1.1.0");
+  public static final VESID VID_OPENPEPPOL_EUSR_V111 = new VESID (GROUP_ID, "eusr", "1.1.1");
 
   // TSR
 
   @Deprecated
   public static final VESID VID_OPENPEPPOL_TSR_V100 = new VESID (GROUP_ID, "tsr", "1.0.0");
+  @Deprecated
   public static final VESID VID_OPENPEPPOL_TSR_V101 = new VESID (GROUP_ID, "tsr", "1.0.1");
+  public static final VESID VID_OPENPEPPOL_TSR_V102 = new VESID (GROUP_ID, "tsr", "1.0.2");
 
   private PeppolValidationReporting ()
   {}
@@ -75,69 +79,91 @@ public final class PeppolValidationReporting
     final boolean bNotDeprecated = false;
 
     // EUSR
-
-    aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_EUSR_V100RC2,
-                                                                           "Peppol End User Statistics Report v1.0.0-RC2",
-                                                                           bDeprecated,
-                                                                           ValidationExecutorXSD.create (new ClassPathResource (BASE_PATH_XSD +
-                                                                                                                                "peppol-end-user-statistics-reporting-1.0.0-RC2.xsd",
-                                                                                                                                _getCL ())),
-                                                                           ValidationExecutorSchematron.createXSLT (new ClassPathResource (BASE_PATH_SCH +
-                                                                                                                                           "eusr/1.0.0-RC2/xslt/peppol-end-user-statistics-reporting-1.0.0-RC2.xslt",
-                                                                                                                                           _getCL ()),
-                                                                                                                    null)));
-    aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_EUSR_V100,
-                                                                           "Peppol End User Statistics Report v1.0.0",
-                                                                           bNotDeprecated,
-                                                                           ValidationExecutorXSD.create (new ClassPathResource (BASE_PATH_XSD +
-                                                                                                                                "peppol-end-user-statistics-reporting-1.0.0.xsd",
-                                                                                                                                _getCL ())),
-                                                                           ValidationExecutorSchematron.createXSLT (new ClassPathResource (BASE_PATH_SCH +
-                                                                                                                                           "eusr/1.0.0/xslt/peppol-end-user-statistics-reporting-1.0.0.xslt",
-                                                                                                                                           _getCL ()),
-                                                                                                                    null)));
-    aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_EUSR_V101,
-                                                                           "Peppol End User Statistics Report v1.0.1",
-                                                                           bNotDeprecated,
-                                                                           ValidationExecutorXSD.create (new ClassPathResource (BASE_PATH_XSD +
-                                                                                                                                "peppol-end-user-statistics-reporting-1.0.0.xsd",
-                                                                                                                                _getCL ())),
-                                                                           ValidationExecutorSchematron.createXSLT (new ClassPathResource (BASE_PATH_SCH +
-                                                                                                                                           "eusr/1.0.1/xslt/peppol-end-user-statistics-reporting-1.0.1.xslt",
-                                                                                                                                           _getCL ()),
-                                                                                                                    null)));
-    aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_EUSR_V110,
-                                                                           "Peppol End User Statistics Report v1.1.0",
-                                                                           bNotDeprecated,
-                                                                           ValidationExecutorXSD.create (new ClassPathResource (BASE_PATH_XSD +
-                                                                                                                                "peppol-end-user-statistics-reporting-1.1.xsd",
-                                                                                                                                _getCL ())),
-                                                                           ValidationExecutorSchematron.createXSLT (new ClassPathResource (BASE_PATH_SCH +
-                                                                                                                                           "eusr/1.1.0/xslt/peppol-end-user-statistics-reporting-1.1.0.xslt",
-                                                                                                                                           _getCL ()),
-                                                                                                                    null)));
+    {
+      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_EUSR_V100RC2,
+                                                                             "Peppol End User Statistics Report v1.0.0-RC2",
+                                                                             bDeprecated,
+                                                                             ValidationExecutorXSD.create (new ClassPathResource (BASE_PATH_XSD +
+                                                                                                                                  "peppol-end-user-statistics-reporting-1.0.0-RC2.xsd",
+                                                                                                                                  _getCL ())),
+                                                                             ValidationExecutorSchematron.createXSLT (new ClassPathResource (BASE_PATH_SCH +
+                                                                                                                                             "eusr/1.0.0-RC2/xslt/peppol-end-user-statistics-reporting-1.0.0-RC2.xslt",
+                                                                                                                                             _getCL ()),
+                                                                                                                      null)));
+      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_EUSR_V100,
+                                                                             "Peppol End User Statistics Report v1.0.0",
+                                                                             bDeprecated,
+                                                                             ValidationExecutorXSD.create (new ClassPathResource (BASE_PATH_XSD +
+                                                                                                                                  "peppol-end-user-statistics-reporting-1.0.0.xsd",
+                                                                                                                                  _getCL ())),
+                                                                             ValidationExecutorSchematron.createXSLT (new ClassPathResource (BASE_PATH_SCH +
+                                                                                                                                             "eusr/1.0.0/xslt/peppol-end-user-statistics-reporting-1.0.0.xslt",
+                                                                                                                                             _getCL ()),
+                                                                                                                      null)));
+      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_EUSR_V101,
+                                                                             "Peppol End User Statistics Report v1.0.1",
+                                                                             bDeprecated,
+                                                                             ValidationExecutorXSD.create (new ClassPathResource (BASE_PATH_XSD +
+                                                                                                                                  "peppol-end-user-statistics-reporting-1.0.0.xsd",
+                                                                                                                                  _getCL ())),
+                                                                             ValidationExecutorSchematron.createXSLT (new ClassPathResource (BASE_PATH_SCH +
+                                                                                                                                             "eusr/1.0.1/xslt/peppol-end-user-statistics-reporting-1.0.1.xslt",
+                                                                                                                                             _getCL ()),
+                                                                                                                      null)));
+      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_EUSR_V110,
+                                                                             "Peppol End User Statistics Report v1.1.0",
+                                                                             bDeprecated,
+                                                                             ValidationExecutorXSD.create (new ClassPathResource (BASE_PATH_XSD +
+                                                                                                                                  "peppol-end-user-statistics-reporting-1.1.xsd",
+                                                                                                                                  _getCL ())),
+                                                                             ValidationExecutorSchematron.createXSLT (new ClassPathResource (BASE_PATH_SCH +
+                                                                                                                                             "eusr/1.1.0/xslt/peppol-end-user-statistics-reporting-1.1.0.xslt",
+                                                                                                                                             _getCL ()),
+                                                                                                                      null)));
+      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_EUSR_V111,
+                                                                             "Peppol End User Statistics Report v1.1.1",
+                                                                             bNotDeprecated,
+                                                                             ValidationExecutorXSD.create (new ClassPathResource (BASE_PATH_XSD +
+                                                                                                                                  "peppol-end-user-statistics-reporting-1.1.xsd",
+                                                                                                                                  _getCL ())),
+                                                                             ValidationExecutorSchematron.createXSLT (new ClassPathResource (BASE_PATH_SCH +
+                                                                                                                                             "eusr/1.1.1/xslt/peppol-end-user-statistics-reporting-1.1.1.xslt",
+                                                                                                                                             _getCL ()),
+                                                                                                                      null)));
+    }
 
     // TSR
-
-    aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_TSR_V100,
-                                                                           "Peppol Transaction Statistics Report v1.0.0",
-                                                                           bDeprecated,
-                                                                           ValidationExecutorXSD.create (new ClassPathResource (BASE_PATH_XSD +
-                                                                                                                                "peppol-transaction-statistics-reporting-1.0.0.xsd",
-                                                                                                                                _getCL ())),
-                                                                           ValidationExecutorSchematron.createXSLT (new ClassPathResource (BASE_PATH_SCH +
-                                                                                                                                           "tsr/1.0.0/xslt/peppol-transaction-statistics-reporting-1.0.0.xslt",
-                                                                                                                                           _getCL ()),
-                                                                                                                    null)));
-    aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_TSR_V101,
-                                                                           "Peppol Transaction Statistics Report v1.0.1",
-                                                                           bNotDeprecated,
-                                                                           ValidationExecutorXSD.create (new ClassPathResource (BASE_PATH_XSD +
-                                                                                                                                "peppol-transaction-statistics-reporting-1.0.1.xsd",
-                                                                                                                                _getCL ())),
-                                                                           ValidationExecutorSchematron.createXSLT (new ClassPathResource (BASE_PATH_SCH +
-                                                                                                                                           "tsr/1.0.1/xslt/peppol-transaction-statistics-reporting-1.0.1.xslt",
-                                                                                                                                           _getCL ()),
-                                                                                                                    null)));
+    {
+      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_TSR_V100,
+                                                                             "Peppol Transaction Statistics Report v1.0.0",
+                                                                             bDeprecated,
+                                                                             ValidationExecutorXSD.create (new ClassPathResource (BASE_PATH_XSD +
+                                                                                                                                  "peppol-transaction-statistics-reporting-1.0.0.xsd",
+                                                                                                                                  _getCL ())),
+                                                                             ValidationExecutorSchematron.createXSLT (new ClassPathResource (BASE_PATH_SCH +
+                                                                                                                                             "tsr/1.0.0/xslt/peppol-transaction-statistics-reporting-1.0.0.xslt",
+                                                                                                                                             _getCL ()),
+                                                                                                                      null)));
+      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_TSR_V101,
+                                                                             "Peppol Transaction Statistics Report v1.0.1",
+                                                                             bDeprecated,
+                                                                             ValidationExecutorXSD.create (new ClassPathResource (BASE_PATH_XSD +
+                                                                                                                                  "peppol-transaction-statistics-reporting-1.0.1.xsd",
+                                                                                                                                  _getCL ())),
+                                                                             ValidationExecutorSchematron.createXSLT (new ClassPathResource (BASE_PATH_SCH +
+                                                                                                                                             "tsr/1.0.1/xslt/peppol-transaction-statistics-reporting-1.0.1.xslt",
+                                                                                                                                             _getCL ()),
+                                                                                                                      null)));
+      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_TSR_V102,
+                                                                             "Peppol Transaction Statistics Report v1.0.2",
+                                                                             bNotDeprecated,
+                                                                             ValidationExecutorXSD.create (new ClassPathResource (BASE_PATH_XSD +
+                                                                                                                                  "peppol-transaction-statistics-reporting-1.0.1.xsd",
+                                                                                                                                  _getCL ())),
+                                                                             ValidationExecutorSchematron.createXSLT (new ClassPathResource (BASE_PATH_SCH +
+                                                                                                                                             "tsr/1.0.2/xslt/peppol-transaction-statistics-reporting-1.0.2.xslt",
+                                                                                                                                             _getCL ()),
+                                                                                                                      null)));
+    }
   }
 }

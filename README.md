@@ -191,8 +191,10 @@ I hope that with the introduction of PINT, the versioning problem will be solved
   
 # News and noteworthy
  
-* v3.1.1 - 2023-09-19
+* v3.1.1 - 2023-09-21
     * Added support for XRechnung 3.0.1
+    * Updated Peppol Reporting EUSR Schematron to 1.1.1 - deprecated the older versions
+    * Updated Peppol Reporting TSR Schematron to 1.0.2 - deprecated the older versions
 * v3.1.0 - 2023-09-14
     * Updated to phive 9.0.0
 * v3.1.0-beta2 - 2023-09-06 [not recommended for production use]
