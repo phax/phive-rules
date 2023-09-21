@@ -53,9 +53,9 @@ public final class CTestFiles
   public static ICommonsList <TestFile> getAllTestFiles ()
   {
     final ICommonsList <TestFile> ret = new CommonsArrayList <> ();
-    for (final VESID aESID : new VESID [] { XRechnungValidation.VID_XRECHNUNG_CII_300,
-                                            XRechnungValidation.VID_XRECHNUNG_UBL_CREDITNOTE_300,
-                                            XRechnungValidation.VID_XRECHNUNG_UBL_INVOICE_300,
+    for (final VESID aESID : new VESID [] { XRechnungValidation.VID_XRECHNUNG_CII_301,
+                                            XRechnungValidation.VID_XRECHNUNG_UBL_CREDITNOTE_301,
+                                            XRechnungValidation.VID_XRECHNUNG_UBL_INVOICE_301,
 
                                             XRechnungValidation.VID_XRECHNUNG_CII_231,
                                             XRechnungValidation.VID_XRECHNUNG_UBL_CREDITNOTE_231,
@@ -687,10 +687,10 @@ public final class CTestFiles
             ret.add (new ClassPathResource (sPrefix + s));
         }
 
-    // 3.0.0
-    if (aVESID.equals (XRechnungValidation.VID_XRECHNUNG_CII_300))
+    // 3.0.1
+    if (aVESID.equals (XRechnungValidation.VID_XRECHNUNG_CII_301))
     {
-      final String sPrefix = sPrefix0 + "3.0.0/cii/";
+      final String sPrefix = sPrefix0 + "3.0.1/cii/";
       for (final String s : new String [] { "01.01a-INVOICE_uncefact.xml",
                                             "01.02a-INVOICE_uncefact.xml",
                                             "01.03a-INVOICE_uncefact.xml",
@@ -726,14 +726,14 @@ public final class CTestFiles
         ret.add (new ClassPathResource (sPrefix + s));
     }
     else
-      if (aVESID.equals (XRechnungValidation.VID_XRECHNUNG_UBL_CREDITNOTE_300))
+      if (aVESID.equals (XRechnungValidation.VID_XRECHNUNG_UBL_CREDITNOTE_301))
       {
         // None atm
       }
       else
-        if (aVESID.equals (XRechnungValidation.VID_XRECHNUNG_UBL_INVOICE_300))
+        if (aVESID.equals (XRechnungValidation.VID_XRECHNUNG_UBL_INVOICE_301))
         {
-          final String sPrefix = sPrefix0 + "3.0.0/ubl-inv/";
+          final String sPrefix = sPrefix0 + "3.0.1/ubl-inv/";
           for (final String s : new String [] { "01.01a-INVOICE_ubl.xml",
                                                 "01.02a-INVOICE_ubl.xml",
                                                 "01.03a-INVOICE_ubl.xml",

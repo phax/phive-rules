@@ -192,7 +192,7 @@ I hope that with the introduction of PINT, the versioning problem will be solved
 # News and noteworthy
  
 * v3.1.1 - 2023-09-19
-    * Added support for XRechnung 3.0.0
+    * Added support for XRechnung 3.0.1
 * v3.1.0 - 2023-09-14
     * Updated to phive 9.0.0
 * v3.1.0-beta2 - 2023-09-06 [not recommended for production use]
