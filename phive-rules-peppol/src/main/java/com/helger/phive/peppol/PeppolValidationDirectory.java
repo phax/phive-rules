@@ -54,15 +54,6 @@ public final class PeppolValidationDirectory
   public static final VESID VID_OPENPEPPOL_BUSINESS_CARD_V3 = new VESID ("eu.peppol.directory",
                                                                          "businesscard",
                                                                          "3.0.0");
-  private static final IReadableResource DIRECTORY_V1 = new ClassPathResource (BASE_PATH +
-                                                                               "peppol-directory-business-card-20160112.xsd",
-                                                                               _getCL ());
-  private static final IReadableResource DIRECTORY_V2 = new ClassPathResource (BASE_PATH +
-                                                                               "peppol-directory-business-card-20161123.xsd",
-                                                                               _getCL ());
-  private static final IReadableResource DIRECTORY_V3 = new ClassPathResource (BASE_PATH +
-                                                                               "peppol-directory-business-card-20180621.xsd",
-                                                                               _getCL ());
 
   private PeppolValidationDirectory ()
   {}
@@ -73,17 +64,37 @@ public final class PeppolValidationDirectory
 
     final boolean bNotDeprecated = false;
 
-    aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_BUSINESS_CARD_V1,
-                                                                           "Peppol Directory BusinessCard v1",
-                                                                           bNotDeprecated,
-                                                                           ValidationExecutorXSD.create (DIRECTORY_V1)));
-    aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_BUSINESS_CARD_V2,
-                                                                           "Peppol Directory BusinessCard v2",
-                                                                           bNotDeprecated,
-                                                                           ValidationExecutorXSD.create (DIRECTORY_V2)));
-    aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_BUSINESS_CARD_V3,
-                                                                           "Peppol Directory BusinessCard v3",
-                                                                           bNotDeprecated,
-                                                                           ValidationExecutorXSD.create (DIRECTORY_V3)));
+    // v1
+    {
+      final IReadableResource DIRECTORY_V1 = new ClassPathResource (BASE_PATH +
+                                                                    "peppol-directory-business-card-20160112.xsd",
+                                                                    _getCL ());
+      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_BUSINESS_CARD_V1,
+                                                                             "Peppol Directory BusinessCard v1",
+                                                                             bNotDeprecated,
+                                                                             ValidationExecutorXSD.create (DIRECTORY_V1)));
+    }
+
+    // v2
+    {
+      final IReadableResource DIRECTORY_V2 = new ClassPathResource (BASE_PATH +
+                                                                    "peppol-directory-business-card-20161123.xsd",
+                                                                    _getCL ());
+      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_BUSINESS_CARD_V2,
+                                                                             "Peppol Directory BusinessCard v2",
+                                                                             bNotDeprecated,
+                                                                             ValidationExecutorXSD.create (DIRECTORY_V2)));
+    }
+
+    // v3
+    {
+      final IReadableResource DIRECTORY_V3 = new ClassPathResource (BASE_PATH +
+                                                                    "peppol-directory-business-card-20180621.xsd",
+                                                                    _getCL ());
+      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_BUSINESS_CARD_V3,
+                                                                             "Peppol Directory BusinessCard v3",
+                                                                             bNotDeprecated,
+                                                                             ValidationExecutorXSD.create (DIRECTORY_V3)));
+    }
   }
 }

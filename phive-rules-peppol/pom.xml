@@ -158,8 +158,8 @@
               <goal>convert</goal>
             </goals>
             <configuration>
-              <schematronDirectory>src/test/resources/external/rule-source/sg-peppol/1.0.3/Schematron</schematronDirectory>
-              <xsltDirectory>src/main/resources/external/schematron/peppol-sg/1.0.3/xslt</xsltDirectory>
+              <schematronDirectory>src/test/resources/external/rule-source/sg-peppol/2023.7</schematronDirectory>
+              <xsltDirectory>src/main/resources/external/schematron/peppol-sg/2023.7/xslt</xsltDirectory>
             </configuration>
           </execution>
           -->

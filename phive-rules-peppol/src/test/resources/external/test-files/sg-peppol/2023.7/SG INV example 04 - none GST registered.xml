@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Invoice xmlns="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2" xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" xmlns:ccts="urn:un:unece:uncefact:documentation:2" xmlns:ext="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2" xmlns:qdt="urn:oasis:names:specification:ubl:schema:xsd:QualifiedDatatypes-2" xmlns:udt="urn:un:unece:uncefact:data:specification:UnqualifiedDataTypesSchemaModule:2" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+<!-- 
+
+A valid Singapore invoice issued by a supplier who is not registered for GST.
+
+-->
+
+	<cbc:UBLVersionID>2.1</cbc:UBLVersionID>
+	<cbc:CustomizationID>urn:cen.eu:en16931:2017#conformant#urn:fdc:peppol.eu:2017:poacc:billing:international:sg:3.0</cbc:CustomizationID> <!-- BT-24 -->
+	<cbc:ProfileID>urn:fdc:peppol.eu:2017:poacc:billing:01:1.0</cbc:ProfileID> <!-- BT-23 -->
+	<cbc:ID>F012345</cbc:ID> <!-- BT-1 -->
+	<cbc:IssueDate>2020-05-27</cbc:IssueDate> <!-- BT-2 -->
+	<cbc:DueDate>2020-06-27</cbc:DueDate> <!-- BT-9 -->
+	<cbc:InvoiceTypeCode>380</cbc:InvoiceTypeCode> <!-- BT-3 -->
+	<cbc:Note>This is an invoice example</cbc:Note> <!-- BT-22 -->
+	<cbc:DocumentCurrencyCode>SGD</cbc:DocumentCurrencyCode> <!-- BT-5 -->
+	<cbc:BuyerReference>IMDA1-Infocomm Media Devt Authority</cbc:BuyerReference> <!-- BT-10 -->
+	<cac:OrderReference>
+		<cbc:ID>POnr12345</cbc:ID> <!-- BT-13 -->
+	</cac:OrderReference>
+	<cac:AdditionalDocumentReference>
+		<cbc:ID>doc2</cbc:ID>  <!-- BT-122 -->
+		<cbc:DocumentDescription>Usage summary</cbc:DocumentDescription>  <!-- BT-123 -->
+		<cac:Attachment>
+			<cbc:EmbeddedDocumentBinaryObject filename="report.pdf" mimeCode="application/pdf">UjBsR09EbGhjZ0dTQUxNQUFBUUNBRU1tQ1p0dU1GUXhEUzhi</cbc:EmbeddedDocumentBinaryObject>    <!-- BT-125 -->
+		</cac:Attachment>
+	</cac:AdditionalDocumentReference>
+	<cac:AccountingSupplierParty>
+		<cac:Party>
+			<cbc:EndpointID schemeID="0195">SGUEN201012456C</cbc:EndpointID> <!-- BT-34, BT-34-1 -->
+			<cac:PostalAddress>
+				<cbc:StreetName>Mainstreet 112</cbc:StreetName> <!-- BT-35 -->
+				<cbc:AdditionalStreetName>Building 3</cbc:AdditionalStreetName> <!-- BT-36 -->
+				<cbc:CityName>Singapore</cbc:CityName> <!-- BT-37 -->
+				<cbc:PostalZone>1000</cbc:PostalZone> <!-- BT-38 -->
+				<cbc:CountrySubentity>Singapore</cbc:CountrySubentity> <!-- BT-39 -->
+				<cac:Country>
+					<cbc:IdentificationCode>SG</cbc:IdentificationCode> <!-- BT-40 -->
+				</cac:Country>
+			</cac:PostalAddress>
+			<cac:PartyLegalEntity>
+				<cbc:RegistrationName>Gallery Photo Supplier</cbc:RegistrationName> <!-- BT-27 -->
+				<cbc:CompanyID>C19002826A</cbc:CompanyID>
+			</cac:PartyLegalEntity>
+			<cac:Contact>
+				<cbc:ElectronicMail>peter@seller.org</cbc:ElectronicMail> <!-- BT-43 -->
+			</cac:Contact>
+		</cac:Party>
+	</cac:AccountingSupplierParty>
+	<cac:AccountingCustomerParty>
+		<cac:Party>
+			<cbc:EndpointID schemeID="0195">SGUENT08GA0028A</cbc:EndpointID> <!-- BT-49, BT-49-1 -->
+			<cac:PartyIdentification>
+				<cbc:ID schemeID="0035">345KS5324</cbc:ID> <!-- BT-46, BT-46-1 -->
+			</cac:PartyIdentification>
+			<cac:PostalAddress>
+				<cbc:StreetName>Central road 56</cbc:StreetName> <!-- BT-50 -->
+				<cbc:AdditionalStreetName>Second floor</cbc:AdditionalStreetName> <!-- BT-51 -->
+				<cbc:CityName>Singapore</cbc:CityName> <!-- BT-52 -->
+				<cbc:PostalZone>101</cbc:PostalZone> <!-- BT-53 -->
+				<cbc:CountrySubentity>Singapore</cbc:CountrySubentity> <!-- BT-54 -->
+				<cac:Country>
+					<cbc:IdentificationCode>SG</cbc:IdentificationCode> <!-- BT-55 -->
+				</cac:Country>
+			</cac:PostalAddress>
+			<cac:PartyLegalEntity>
+				<cbc:RegistrationName>IMDA</cbc:RegistrationName> <!-- BT-45 -->
+			</cac:PartyLegalEntity>
+			<cac:Contact>
+				<cbc:Name>John Doe</cbc:Name> <!-- BT-56 -->
+			</cac:Contact>
+		</cac:Party>
+	</cac:AccountingCustomerParty>
+	<cac:PaymentMeans>
+		<cbc:PaymentMeansCode name="Bank transfer">30</cbc:PaymentMeansCode> <!-- BT-82, BT-81 -->
+		<cbc:PaymentID>gr12345</cbc:PaymentID> <!-- BT-83 -->
+		<cac:PayeeFinancialAccount>
+			<cbc:ID>000166000001</cbc:ID> <!-- BT-84 -->
+			<cbc:Name>Payee current account</cbc:Name> <!-- BT-85 -->
+			<cac:FinancialInstitutionBranch>
+				<cbc:ID>ICDLOG</cbc:ID> <!-- BT-86 -->
+			</cac:FinancialInstitutionBranch>
+		</cac:PayeeFinancialAccount>
+	</cac:PaymentMeans>
+	<cac:PaymentTerms>
+		<cbc:Note>30D</cbc:Note> <!-- BT-20 -->
+	</cac:PaymentTerms>
+	<cac:AllowanceCharge>
+		<cbc:ChargeIndicator>true</cbc:ChargeIndicator> <!-- UBL qualifier -->
+		<cbc:AllowanceChargeReasonCode>DL</cbc:AllowanceChargeReasonCode> <!-- BT-98, BT-105 -->
+		<cbc:AllowanceChargeReason>Transport cost</cbc:AllowanceChargeReason> <!-- BT-97, BT-104 -->
+		<cbc:Amount currencyID="SGD">2300.00</cbc:Amount> <!-- BT-92, BT-99 -->
+		<cac:TaxCategory>
+			<cbc:ID>NG</cbc:ID> <!-- BT-95, BT-102 -->
+				<cbc:Percent>0</cbc:Percent> <!-- BT-96, BT-103  -->
+			<cac:TaxScheme>
+				<cbc:ID>GST</cbc:ID>
+			</cac:TaxScheme>
+		</cac:TaxCategory>
+	</cac:AllowanceCharge>
+	<cac:TaxTotal>
+		<cbc:TaxAmount currencyID="SGD">0.00</cbc:TaxAmount> <!-- BT-110 -->
+		<cac:TaxSubtotal>
+			<cbc:TaxableAmount currencyID="SGD">23200.00</cbc:TaxableAmount> <!-- BT-116 -->
+			<cbc:TaxAmount currencyID="SGD">0.00</cbc:TaxAmount> <!-- BT-117 -->
+			<cac:TaxCategory>
+				<cbc:ID>NG</cbc:ID> <!-- BT-118 -->
+				<cbc:Percent>0</cbc:Percent> <!-- BT-119 -->
+				<cac:TaxScheme>
+					<cbc:ID>GST</cbc:ID> <!-- BT-118, qualifier -->
+				</cac:TaxScheme>
+			</cac:TaxCategory>
+		</cac:TaxSubtotal>
+	</cac:TaxTotal>
+	<cac:LegalMonetaryTotal>
+		<cbc:LineExtensionAmount currencyID="SGD">20900.00</cbc:LineExtensionAmount> <!-- BT-106 -->
+		<cbc:TaxExclusiveAmount currencyID="SGD">23200.00</cbc:TaxExclusiveAmount> <!-- BT-109 -->
+		<cbc:TaxInclusiveAmount currencyID="SGD">23200.00</cbc:TaxInclusiveAmount> <!-- BT-112 -->
+		<cbc:ChargeTotalAmount currencyID="SGD">2300</cbc:ChargeTotalAmount> <!-- BT-108 -->
+		<cbc:PayableAmount currencyID="SGD">23200.00</cbc:PayableAmount> <!-- BT-115 -->
+	</cac:LegalMonetaryTotal>
+	<cac:InvoiceLine>
+		<cbc:ID>1</cbc:ID> <!-- BT-126 -->
+		<cbc:InvoicedQuantity unitCode="H87">10</cbc:InvoicedQuantity> <!-- BT-130, BT-129 -->
+		<cbc:LineExtensionAmount currencyID="SGD">900.00</cbc:LineExtensionAmount> <!-- BT-131 -->
+		<cac:OrderLineReference>
+			<cbc:LineID>2</cbc:LineID> <!-- BT-132 -->
+		</cac:OrderLineReference>
+		<cac:Item>
+			<cbc:Name>Yashica MG2</cbc:Name> <!-- BT-153 -->
+			<cac:SellersItemIdentification>
+				<cbc:ID>Item1</cbc:ID> <!-- BT-155 -->
+			</cac:SellersItemIdentification>
+			<cac:ClassifiedTaxCategory>
+				<cbc:ID>NG</cbc:ID> <!-- BT-151 -->
+				<cbc:Percent>0</cbc:Percent> <!-- BT-152 -->
+				<cac:TaxScheme>
+					<cbc:ID>GST</cbc:ID>
+				</cac:TaxScheme>
+			</cac:ClassifiedTaxCategory>
+		</cac:Item>
+		<cac:Price>
+			<cbc:PriceAmount currencyID="SGD">90.00</cbc:PriceAmount> <!-- BT-146 -->
+		</cac:Price>
+	</cac:InvoiceLine>
+	<cac:InvoiceLine>
+		<cbc:ID>2</cbc:ID> <!-- BT-126 -->
+		<cbc:InvoicedQuantity unitCode="H87">20</cbc:InvoicedQuantity> <!-- BT-130, BT-129 -->
+		<cbc:LineExtensionAmount currencyID="SGD">20000.00</cbc:LineExtensionAmount> <!-- BT-131 -->
+		<cac:OrderLineReference>
+			<cbc:LineID>1</cbc:LineID> <!-- BT-132 -->
+		</cac:OrderLineReference>	
+		<cac:Item>
+			<cbc:Name>Pentax Z-1 Body</cbc:Name> <!-- BT-153 -->
+			<cac:SellersItemIdentification>
+				<cbc:ID>Item2</cbc:ID> <!-- BT-155 -->
+			</cac:SellersItemIdentification>
+			<cac:ClassifiedTaxCategory>
+				<cbc:ID>NG</cbc:ID> <!-- BT-151 -->
+				<cbc:Percent>0</cbc:Percent> <!-- BT-152 -->
+				<cac:TaxScheme>
+					<cbc:ID>GST</cbc:ID>
+				</cac:TaxScheme>
+			</cac:ClassifiedTaxCategory>
+			</cac:Item>
+		<cac:Price>
+			<cbc:PriceAmount currencyID="SGD">1000.00</cbc:PriceAmount> <!-- BT-146 -->
+		</cac:Price>
+	</cac:InvoiceLine>
+
+</Invoice>

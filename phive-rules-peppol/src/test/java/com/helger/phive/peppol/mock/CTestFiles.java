@@ -249,6 +249,36 @@ public final class CTestFiles
     if (aVESID.equals (PeppolValidationSG.VID_OPENPEPPOL_BIS3_SG_UBL_CREDIT_NOTE_103))
       return new CommonsArrayList <> ();
 
+    // SG 2023.07
+    if (aVESID.equals (PeppolValidationSG.VID_OPENPEPPOL_BIS3_SG_UBL_INVOICE_2023_07))
+    {
+      final String sPrefix = sPrefix0 + "sg-peppol/2023.7/";
+      return new CommonsArrayList <> (new FileSystemResource (sPrefix + "SG INV example 02 - full valid invoice 1.xml"),
+                                      new FileSystemResource (sPrefix +
+                                                              "SG INV example 03 - Allowances and Charges.xml"),
+                                      new FileSystemResource (sPrefix + "SG INV example 04 - none GST registered.xml"),
+                                      new FileSystemResource (sPrefix +
+                                                              "SG INV example 05 - AGD compliant with II and PO reference.xml"),
+                                      new FileSystemResource (sPrefix + "SG INV example 06 - Foreign currency.xml"),
+                                      new FileSystemResource (sPrefix + "SG INV example 07 - Foreign buyer.xml"),
+                                      new FileSystemResource (sPrefix + "SG INV example 08 - Factored invoice.xml"),
+                                      new FileSystemResource (sPrefix + "SG INV example 09 - Zero rated GST.xml"),
+                                      new FileSystemResource (sPrefix + "SG INV example 10 - Prepayment.xml"),
+                                      new FileSystemResource (sPrefix + "SG INV example 11 - Decimals.xml"),
+                                      new FileSystemResource (sPrefix + "SG INV example 12 - SG bank transfer.xml"),
+                                      new FileSystemResource (sPrefix + "SG INV example 13 - SG GIRO.xml"),
+                                      new FileSystemResource (sPrefix + "SG INV example 14 - PayNow.xml"),
+                                      new FileSystemResource (sPrefix + "SG INV example 15 - Credit card.xml"),
+                                      new FileSystemResource (sPrefix + "SG INV example 16 - GST in SGD.xml"),
+                                      new FileSystemResource (sPrefix +
+                                                              "SG INV example 16b - GST in SGD With Several Errors.xml"));
+    }
+    if (aVESID.equals (PeppolValidationSG.VID_OPENPEPPOL_BIS3_SG_UBL_CREDIT_NOTE_103))
+    {
+      final String sPrefix = sPrefix0 + "sg-peppol/2023.7/";
+      return new CommonsArrayList <> (new FileSystemResource (sPrefix + "SG CN example 01 - Credit Note.xml"));
+    }
+
     // 3.15.0
     {
       final String sPrefix = sPrefix0 + "openpeppol/3.15.0/";
@@ -444,6 +474,7 @@ public final class CTestFiles
                                       new FileSystemResource (sPrefix + "business-card-test1.xml"),
                                       new FileSystemResource (sPrefix + "business-card-test2.xml"));
     }
+
     /* Peppol Reporting */
     // EUSR
     if (aVESID.equals (PeppolValidationReporting.VID_OPENPEPPOL_EUSR_V100RC2))
@@ -488,6 +519,7 @@ public final class CTestFiles
                                       new FileSystemResource (sPrefix + "eusr-generated-1.xml"),
                                       new FileSystemResource (sPrefix + "eusr-good-template.xml"));
     }
+
     // TSR
     if (aVESID.equals (PeppolValidationReporting.VID_OPENPEPPOL_TSR_V100))
     {
