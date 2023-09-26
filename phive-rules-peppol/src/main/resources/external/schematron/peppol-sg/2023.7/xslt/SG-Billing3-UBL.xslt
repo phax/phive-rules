@@ -172,8 +172,8 @@
         <xsl:attribute name="document">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
-        <xsl:attribute name="id">Peppol derived</xsl:attribute>
-        <xsl:attribute name="name">Peppol derived</xsl:attribute>
+        <xsl:attribute name="id">Peppol-derived</xsl:attribute>
+        <xsl:attribute name="name">Peppol-derived</xsl:attribute>
         <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M11" select="/" />
@@ -217,7 +217,7 @@
 <!--SCHEMATRON PATTERNS-->
 <svrl:text>Singapore Specific rules for Billing 3</svrl:text>
 
-<!--PATTERN Peppol derived-->
+<!--PATTERN Peppol-derived-->
 
 
 	<!--RULE -->

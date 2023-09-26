@@ -75,11 +75,11 @@ public final class CTestFiles
                                             PeppolValidationAUNZ.VID_OPENPEPPOL_BIS3_AUNZ_UBL_CREDIT_NOTE_SELF_BILLING_109,
 
                                             /* Singapore */
-                                            PeppolValidationSG.VID_OPENPEPPOL_BIS3_SG_UBL_INVOICE_102,
-                                            PeppolValidationSG.VID_OPENPEPPOL_BIS3_SG_UBL_CREDIT_NOTE_102,
-
                                             PeppolValidationSG.VID_OPENPEPPOL_BIS3_SG_UBL_INVOICE_103,
                                             PeppolValidationSG.VID_OPENPEPPOL_BIS3_SG_UBL_CREDIT_NOTE_103,
+
+                                            PeppolValidationSG.VID_OPENPEPPOL_BIS3_SG_UBL_INVOICE_2023_7,
+                                            PeppolValidationSG.VID_OPENPEPPOL_BIS3_SG_UBL_CREDIT_NOTE_2023_7,
 
                                             /* OpenPeppol */
                                             PeppolValidation3_15_0.VID_OPENPEPPOL_INVOICE_UBL_V3,
@@ -230,15 +230,6 @@ public final class CTestFiles
       return new CommonsArrayList <> (new FileSystemResource (sPrefix + "NZ Self Billed Credit note.xml"));
     }
 
-    // SG 1.0.2
-    if (aVESID.equals (PeppolValidationSG.VID_OPENPEPPOL_BIS3_SG_UBL_INVOICE_102))
-    {
-      final String sPrefix = sPrefix0 + "sg-peppol/1.0.2/";
-      return new CommonsArrayList <> (new FileSystemResource (sPrefix + "Singapore invoice valid 1.xml"));
-    }
-    if (aVESID.equals (PeppolValidationSG.VID_OPENPEPPOL_BIS3_SG_UBL_CREDIT_NOTE_102))
-      return new CommonsArrayList <> ();
-
     // SG 1.0.3
     if (aVESID.equals (PeppolValidationSG.VID_OPENPEPPOL_BIS3_SG_UBL_INVOICE_103))
     {
@@ -250,7 +241,7 @@ public final class CTestFiles
       return new CommonsArrayList <> ();
 
     // SG 2023.07
-    if (aVESID.equals (PeppolValidationSG.VID_OPENPEPPOL_BIS3_SG_UBL_INVOICE_2023_07))
+    if (aVESID.equals (PeppolValidationSG.VID_OPENPEPPOL_BIS3_SG_UBL_INVOICE_2023_7))
     {
       final String sPrefix = sPrefix0 + "sg-peppol/2023.7/";
       return new CommonsArrayList <> (new FileSystemResource (sPrefix + "SG INV example 02 - full valid invoice 1.xml"),
@@ -269,11 +260,13 @@ public final class CTestFiles
                                       new FileSystemResource (sPrefix + "SG INV example 13 - SG GIRO.xml"),
                                       new FileSystemResource (sPrefix + "SG INV example 14 - PayNow.xml"),
                                       new FileSystemResource (sPrefix + "SG INV example 15 - Credit card.xml"),
-                                      new FileSystemResource (sPrefix + "SG INV example 16 - GST in SGD.xml"),
-                                      new FileSystemResource (sPrefix +
-                                                              "SG INV example 16b - GST in SGD With Several Errors.xml"));
+                                      new FileSystemResource (sPrefix + "SG INV example 16 - GST in SGD.xml")
+      /*
+       * , new FileSystemResource (sPrefix +
+       * "SG INV example 16b - GST in SGD With Several Errors.xml")
+       */);
     }
-    if (aVESID.equals (PeppolValidationSG.VID_OPENPEPPOL_BIS3_SG_UBL_CREDIT_NOTE_103))
+    if (aVESID.equals (PeppolValidationSG.VID_OPENPEPPOL_BIS3_SG_UBL_CREDIT_NOTE_2023_7))
     {
       final String sPrefix = sPrefix0 + "sg-peppol/2023.7/";
       return new CommonsArrayList <> (new FileSystemResource (sPrefix + "SG CN example 01 - Credit Note.xml"));

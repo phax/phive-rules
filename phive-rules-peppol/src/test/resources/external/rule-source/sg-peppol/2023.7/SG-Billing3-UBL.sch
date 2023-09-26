@@ -29,7 +29,7 @@
   
   
   
-  <pattern id="Peppol derived">
+  <pattern id="Peppol-derived">
     
       <rule context="/ubl:Invoice | /cn:CreditNote">
          <assert id="PEPPOL-EN16931-R004-SG"
