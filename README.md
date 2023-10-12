@@ -191,11 +191,13 @@ I hope that with the introduction of PINT, the versioning problem will be solved
   
 # News and noteworthy
  
-* v3.1.2 - work in progress 
+* v3.1.2 - 2023-10-12
     * Added support for SG-PEPPOL 2023.7 rules. See [issue #18](https://github.com/phax/phive-rules/issues/18) - thx @Sivasgebiz
     * Deprecated SG-PEPPOL 1.0.3 rules
     * Moved SG-PEPPOL 1.0.2 rules from `phive-rules-peppol` to `phive-rules-peppol-legacy`
     * Added support for EN 16931 rules v1.3.11 format and deprecated v1.3.9
+    * Added support for Peppol Reporting EUSR v1.1.2 and deprecated v1.1.1
+    * Added support for Peppol Reporting TSR v1.0.3 and deprecated v1.0.2
 * v3.1.1 - 2023-09-21
     * Added support for XRechnung 3.0.1
     * Updated Peppol Reporting EUSR Schematron to 1.1.1 - deprecated the older versions

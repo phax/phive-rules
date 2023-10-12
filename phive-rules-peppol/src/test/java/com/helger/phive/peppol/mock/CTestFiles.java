@@ -122,10 +122,12 @@ public final class CTestFiles
                                             PeppolValidationReporting.VID_OPENPEPPOL_EUSR_V101,
                                             PeppolValidationReporting.VID_OPENPEPPOL_EUSR_V110,
                                             PeppolValidationReporting.VID_OPENPEPPOL_EUSR_V111,
+                                            PeppolValidationReporting.VID_OPENPEPPOL_EUSR_V112,
 
                                             PeppolValidationReporting.VID_OPENPEPPOL_TSR_V100,
                                             PeppolValidationReporting.VID_OPENPEPPOL_TSR_V101,
                                             PeppolValidationReporting.VID_OPENPEPPOL_TSR_V102,
+                                            PeppolValidationReporting.VID_OPENPEPPOL_TSR_V103,
 
                                             /* Japan */
                                             PeppolValidationJP.VID_OPENPEPPOL_JP_PINT_INVOICE_012,
@@ -512,6 +514,16 @@ public final class CTestFiles
                                       new FileSystemResource (sPrefix + "eusr-generated-1.xml"),
                                       new FileSystemResource (sPrefix + "eusr-good-template.xml"));
     }
+    if (aVESID.equals (PeppolValidationReporting.VID_OPENPEPPOL_EUSR_V112))
+    {
+      final String sPrefix = sPrefix0 + "reporting/eusr/1.1.2/";
+      return new CommonsArrayList <> (new FileSystemResource (sPrefix + "end-user-statistics-reporting-1.xml"),
+                                      new FileSystemResource (sPrefix + "end-user-statistics-reporting-2.xml"),
+                                      new FileSystemResource (sPrefix + "end-user-statistics-reporting-empty.xml"),
+                                      new FileSystemResource (sPrefix + "end-user-statistics-reporting-minimal.xml"),
+                                      new FileSystemResource (sPrefix + "eusr-generated-1.xml"),
+                                      new FileSystemResource (sPrefix + "eusr-good-template.xml"));
+    }
 
     // TSR
     if (aVESID.equals (PeppolValidationReporting.VID_OPENPEPPOL_TSR_V100))
@@ -532,6 +544,13 @@ public final class CTestFiles
       return new CommonsArrayList <> (new FileSystemResource (sPrefix + "transaction-statistics-2.xml"),
                                       new FileSystemResource (sPrefix + "transaction-statistics-minimal.xml"));
     }
+    if (aVESID.equals (PeppolValidationReporting.VID_OPENPEPPOL_TSR_V103))
+    {
+      final String sPrefix = sPrefix0 + "reporting/tsr/1.0.3/";
+      return new CommonsArrayList <> (new FileSystemResource (sPrefix + "transaction-statistics-2.xml"),
+                                      new FileSystemResource (sPrefix + "transaction-statistics-minimal.xml"));
+    }
+
     /* Peppol JP */
     if (aVESID.equals (PeppolValidationJP.VID_OPENPEPPOL_JP_PINT_INVOICE_012))
     {
