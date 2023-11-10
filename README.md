@@ -193,8 +193,9 @@ I hope that with the introduction of PINT, the versioning problem will be solved
  
 * v3.1.5 - 2023-11-10
     * Added support for Peppol Reporting EUSR v1.1.4 and deprecated v1.1.3
+    * Added support for Czech ISDOC v6.0.2 and deprecated v6.0.1 [original Schematron had errors]
 * v3.1.4 - 2023-11-06
-    * Rerelease of 3.1.3 because publishing to Maven Central created an error
+    * Re-release of 3.1.3 because publishing to Maven Central created an error
 * v3.1.3 - 2023-11-03
     * Added support for Peppol Reporting EUSR v1.1.3 and deprecated v1.1.2
     * Added support for Peppol Reporting TSR v1.0.4 and deprecated v1.0.3
