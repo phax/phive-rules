@@ -102,11 +102,11 @@
             <goals>
               <goal>convert</goal>
             </goals>
-            <id>ublbe</id>
+            <id>isdoc</id>
             <configuration>
-              <schematronDirectory>${basedir}/src/test/resources/rule-source/6.0.1</schematronDirectory>
+              <schematronDirectory>${basedir}/src/test/resources/external/rule-source/6.0.2</schematronDirectory>
               <schematronPattern>*.sch</schematronPattern>
-              <xsltDirectory>${basedir}/src/main/resources/schematron/isdoc/6.0.1/xslt</xsltDirectory>
+              <xsltDirectory>${basedir}/src/main/resources/external/schematron/isdoc/6.0.2</xsltDirectory>
             </configuration>
           </execution>
        -->

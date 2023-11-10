@@ -1,0 +1,783 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Formát Faktury ISDOC -->
+<Invoice xmlns="http://isdoc.cz/namespace/2013" version="6.0.1">
+  <!--číslo verze ISDOC -->
+
+  <DocumentType>1</DocumentType>
+  <!--Typ dokumentu, z násl.číselníku-->
+  <!-- 1: Faktura - daňový doklad
+       2: Opravný daňový doklad (dobropis)
+       3: Opravný daňový doklad (vrubopis)
+       4: Zálohová faktura (nedaňový zálohový list)
+       5: Daňový doklad při přijetí platby (daňový zálohový list)
+       6: Opravný daňový doklad při přijetí platby (dobropis DZL)
+       7: Zjednodušený daňový doklad
+  -->
+  
+  <ID>FV-111999/2011</ID>
+  <!--ID, lidsky čitelné číslo dokladu-->
+  <UUID>7B4C5BE0-288C-11D2-8E62-004095452B84</UUID>
+  <!--GUID, identifikace od emitujícího systému-->
+  <IssueDate>2013-02-28</IssueDate>
+  <!--Datum vystavení­-->
+  <TaxPointDate>2013-02-28</TaxPointDate>
+  <!--Datum plnění DPH-->
+  <VATApplicable>true</VATApplicable>
+  <!--Podléhá DPH-->
+  <ElectronicPossibilityAgreementReference>ABC123/90007/2012</ElectronicPossibilityAgreementReference>
+  <!--Označení dokumentu, kterým dal příjemce vystaviteli souhlas s elektronickou formou faktury-->
+  
+  <Note>Nepovinná poznámka k dokladu</Note>
+
+  <LocalCurrencyCode>CZK</LocalCurrencyCode>
+  <!--Lokální měna dokladu, vždy povinná položka-->
+  
+  <ForeignCurrencyCode>EUR</ForeignCurrencyCode>
+  <!--Cizí měna dokladu, pokud je třeba jí použít. Nepovinná položka-->
+  <CurrRate>25.10</CurrRate>
+  <!--kurz cizí měny, pokud je použita, jinak 1-->
+  <RefCurrRate>1</RefCurrRate>
+  <!--vztažný kurz cizí měny, většinou 1-->
+  
+  <Extensions>
+    <!--Jakákoliv struktura hlavičkových uživatelských položek-->   
+    <extenzeH:UserfieldName xmlns:extenzeH="http://anydomain.cz/branch/developer/head">my user data</extenzeH:UserfieldName>
+    <extenzeH:AdditionalHeadDiscount xmlns:extenzeH="http://anydomain.cz/branch/developer/head">10</extenzeH:AdditionalHeadDiscount>    
+  </Extensions>
+
+  <AccountingSupplierParty>
+    <!--Dodavatel, účetní jednotka-->
+    <Party>
+      <PartyIdentification>
+        <UserID>315</UserID>
+        <!--Uživatelské číslo firmy/provozovny-->
+        <CatalogFirmIdentification>0</CatalogFirmIdentification>
+        <!--Mezinár.č. firmy/provozovny např.EAN, GLN... -->
+        <ID>25097563</ID>
+        <!--IČO firmy-->
+      </PartyIdentification>
+      <PartyName>
+        <Name>ABRA Software a.s.</Name>
+      </PartyName>
+      <PostalAddress>
+        <StreetName>Jeremiášova</StreetName>
+        <BuildingNumber>1422</BuildingNumber>
+        <CityName>Praha 13</CityName>
+        <PostalZone>15300</PostalZone>
+      	<Country>
+      	  <IdentificationCode>CZ</IdentificationCode>
+      	  <Name>Česká republika</Name>
+      	</Country>        
+      </PostalAddress>
+      <PartyTaxScheme>
+        <CompanyID>CZ25097563</CompanyID>
+        <TaxScheme>VAT</TaxScheme>
+      </PartyTaxScheme>
+      <RegisterIdentification>
+        <RegisterKeptAt>Městského soudu v Praze</RegisterKeptAt>
+        <RegisterFileRef>odd. B, vl. 4475</RegisterFileRef>
+        <RegisterDate>1996-12-31</RegisterDate>
+      </RegisterIdentification>
+      <Contact>
+        <Name>Josef Novák</Name>
+        <Telephone>123456789</Telephone>
+        <ElectronicMail>novak@abra.eu</ElectronicMail>
+      </Contact>
+    </Party>
+  </AccountingSupplierParty>
+
+  <SellerSupplierParty>
+    <!--Dodavatel, fakturační adresa-->
+    <Party>
+      <PartyIdentification>
+        <UserID>315</UserID>
+        <CatalogFirmIdentification>0</CatalogFirmIdentification>
+        <ID>25097563</ID>
+      </PartyIdentification>
+      <PartyName>
+        <Name>ABRA Software a.s.</Name>
+      </PartyName>
+      <PostalAddress>
+        <StreetName>Jeremiášova</StreetName>
+        <BuildingNumber>1422</BuildingNumber>
+        <CityName>Praha 13</CityName>
+        <PostalZone>15300</PostalZone>
+        <Country>
+          <IdentificationCode>CZ</IdentificationCode>
+          <Name>Česká republika</Name>
+        </Country>
+      </PostalAddress>
+      <PartyTaxScheme>
+        <CompanyID>CZ25097563</CompanyID>
+        <TaxScheme>VAT</TaxScheme>
+      </PartyTaxScheme>
+      <RegisterIdentification>
+        <RegisterKeptAt>Městského soudu v Praze</RegisterKeptAt>
+        <RegisterFileRef>odd. B, vl. 4475</RegisterFileRef>
+        <RegisterDate>1996-12-31</RegisterDate>
+      </RegisterIdentification>
+      <Contact>
+        <Name>Josef Novák</Name>
+        <Telephone>123456789</Telephone>
+        <ElectronicMail>novak@abra.eu</ElectronicMail>
+      </Contact>
+    </Party>
+  </SellerSupplierParty>
+
+  <AccountingCustomerParty>
+    <!--Příjemce, účetní jednotka-->
+    <Party>
+      <PartyIdentification>
+        <UserID>000001</UserID>
+        <CatalogFirmIdentification>0</CatalogFirmIdentification>
+        <ID>00006947</ID>
+      </PartyIdentification>
+      <PartyName>
+        <Name>Ministerstvo financí ČR</Name>
+      </PartyName>
+      <PostalAddress>
+        <StreetName>Letenská</StreetName>
+        <BuildingNumber>15</BuildingNumber>
+        <CityName>Praha 1</CityName>
+        <PostalZone>11810</PostalZone>
+        <Country>
+          <IdentificationCode>CZ</IdentificationCode>
+          <Name>Česká republika</Name>
+        </Country>
+      </PostalAddress>
+      <PartyTaxScheme>
+        <CompanyID>CZ00006947</CompanyID>
+        <TaxScheme>VAT</TaxScheme>
+      </PartyTaxScheme>
+      <Contact>
+        <Name>Jan Novák</Name>
+        <Telephone>987654321</Telephone>
+        <ElectronicMail>novotny@mfcr.cz</ElectronicMail>
+      </Contact>
+    </Party>
+  </AccountingCustomerParty>
+
+  <BuyerCustomerParty>
+    <!--Odběratel, fakturační adresa-->
+    <Party>
+      <PartyIdentification>
+        <UserID>000001</UserID>
+        <CatalogFirmIdentification>0</CatalogFirmIdentification>
+        <ID>00006947</ID>
+      </PartyIdentification>
+      <PartyName>
+        <Name>Ministerstvo financí ČR</Name>
+      </PartyName>
+      <PostalAddress>
+        <StreetName>Letenská</StreetName>
+        <BuildingNumber>15</BuildingNumber>
+        <CityName>Praha 1</CityName>
+        <PostalZone>11810</PostalZone>
+        <Country>
+          <IdentificationCode>CZ</IdentificationCode>
+          <Name>Česká republika</Name>
+        </Country>
+      </PostalAddress>
+      <PartyTaxScheme>
+        <CompanyID>CZ00006947</CompanyID>
+        <TaxScheme>VAT</TaxScheme>
+      </PartyTaxScheme>
+      <Contact>
+        <Name>Jan Novák</Name>
+        <Telephone>987654321</Telephone>
+        <ElectronicMail>novotny@mfcr.cz</ElectronicMail>
+      </Contact>
+    </Party>
+  </BuyerCustomerParty>
+
+  <OrderReferences>
+    <!--Nepovinná hlavičková kolekce objednávek pro případnou vazbu -->
+    <OrderReference id="Obj1">
+      <!--Objednávka #1-->
+      <SalesOrderID>OP-111222/2011</SalesOrderID>
+      <!--Vlastní ident. objednávky přijaté u dodavatele-->
+      <ExternalOrderID>OV-123111/2011</ExternalOrderID>
+      <!--Ext.č.obj.přijaté, typicky obj.vydaná odběratele-->
+      <IssueDate>2013-01-03</IssueDate>
+      <!--Datum vystavení objednávky přijaté u dodavatele-->
+    </OrderReference>
+    <OrderReference id="Obj2">
+      <!--Objednávka #2-->
+      <SalesOrderID>OP-111223/2011</SalesOrderID>
+      <ExternalOrderID>OV-123112/2011</ExternalOrderID>
+      <IssueDate>2013-01-20</IssueDate>
+    </OrderReference>
+  </OrderReferences>
+  <!--Podrobnější odkazování na OBJ je dále možné v řádcích faktury-->
+  
+  <DeliveryNoteReferences>
+    <!--Nepovinná hlavičková kolekce dodacích listů pro případnou vazbu -->
+    <DeliveryNoteReference id="DL1">
+      <!--DL #1-->
+      <ID>DL-45678/2011</ID>
+      <!--Vlastní ident. DL u dodavatele-->
+      <IssueDate>2013-02-28</IssueDate>
+      <!--Datum vystavení DL dodavatele-->
+    </DeliveryNoteReference>
+  </DeliveryNoteReferences>
+  <!--Podrobnější odkazování na DL je dále možné v řádcích faktury-->
+  
+  <!--Odkaz na původní doklad, který tento aktuální doklad opravuje (jen pro případ DocumentType=2,3,6)-->
+  <OriginalDocumentReferences>
+    <OriginalDocumentReference id="OrigDoc">
+      <ID>FV-111999/2011</ID>
+      <!--ID, lidsky čitelné číslo původního dokladu-->
+      <IssueDate>2013-02-28</IssueDate>
+      <!--datum vystavení původního dokladu-->
+      <UUID>7B4C5BE0-288C-11D2-8E62-004095452B84</UUID>
+      <!--GUID, strojové id pův.dokl-->
+    </OriginalDocumentReference>
+  </OriginalDocumentReferences>  
+
+  <Delivery>
+    <!--Místo určení - adresa dodání­-->
+    <Party>
+      <PartyIdentification>
+        <UserID>000001</UserID>
+        <CatalogFirmIdentification>0</CatalogFirmIdentification>
+        <ID>00006947</ID>
+      </PartyIdentification>
+      <PartyName>
+        <Name>Ministerstvo financí ČR</Name>
+      </PartyName>
+      <PostalAddress>
+        <StreetName>Letenská</StreetName>
+        <BuildingNumber>15</BuildingNumber>
+        <CityName>Praha 1</CityName>
+        <PostalZone>11810</PostalZone>
+        <Country>
+          <IdentificationCode>CZ</IdentificationCode>
+          <Name>Česká republika</Name>
+        </Country>
+      </PostalAddress>
+      <PartyTaxScheme>
+        <CompanyID>CZ00006947</CompanyID>
+        <TaxScheme>VAT</TaxScheme>
+      </PartyTaxScheme>
+      <Contact>
+        <Name>Jan Novák</Name>
+        <Telephone>987654321</Telephone>
+        <ElectronicMail>novotny@mfcr.cz</ElectronicMail>
+      </Contact>
+    </Party>
+  </Delivery>
+
+  <InvoiceLines>
+    <!--Kolekce jednotlivých řádků faktury-->
+    <InvoiceLine>
+      <!--Řádek faktury-->
+      <ID>1</ID>
+      <!--Pořadové číslo řádku faktury-->
+      <OrderReference ref="Obj1">
+        <!--Nepovinný odkaz na objednávku, až na její číslo řádku-->
+        <LineID>1</LineID>
+        <!--Nepovinné číslo řádku objednávky-->
+      </OrderReference>
+      <DeliveryNoteReference ref="DL1">
+        <!--Nepovinný odkaz na dodací list, až na jeho číslo řádku-->
+        <LineID>1</LineID>
+        <!--Nepovinné číslo řádku DL-->
+      </DeliveryNoteReference>
+      <!--Násl. 4 položky jsou nepovinný položkový odkaz na řádek původního dokladu, který je aktuálním dokladem opravován.-->
+      <!--To je možno použít typicky na zpětném dokladu (DocumentType=2,3,6). Další možností je použití těchto 4 položek-->
+      <!--v případě běžné faktury (DocumentType=1) a to u řádeku se zápornou částkou, což je vlastně také způsob dobropisu.-->
+      <!--Při použití u faktury ale nebude odkazovaný doklad uveden v hlavičkových údajích aktuálního dokladu.-->
+      <OriginalDocumentReference ref="OrigDoc">
+        <LineID>1</LineID>
+        <!--Číslo řádku původního dokladu-->
+      </OriginalDocumentReference>
+      <InvoicedQuantity unitCode="Ks">100</InvoicedQuantity>
+      <!--počet jednotek-->
+      <LineExtensionAmountCurr>4.30</LineExtensionAmountCurr>
+      <!--celk.cena bez daně na ř. v C.M.-->
+      <LineExtensionAmount>107.93</LineExtensionAmount>
+      <!--celk.cena bez daně na ř. v T.M.-->
+      <LineExtensionAmountTaxInclusiveCurr>5.20</LineExtensionAmountTaxInclusiveCurr>
+      <LineExtensionAmountTaxInclusive>130.52</LineExtensionAmountTaxInclusive>
+      <LineExtensionTaxAmount>22.59</LineExtensionTaxAmount>
+      <!--částka daně na ř. (v T.M.)-->
+      <UnitPrice>1.0793</UnitPrice>
+      <!--jedn.cena bez daně na ř. v T.M.-->
+      <UnitPriceTaxInclusive>1.3052</UnitPriceTaxInclusive>
+      <!--jedn.cena s daní na ř. v T.M.-->
+      <ClassifiedTaxCategory>
+        <Percent>19</Percent>
+        <!--% DPH, nezávislé na položce Item-->
+        <VATCalculationMethod>0</VATCalculationMethod>
+        <!--Způsob výpočtu DPH, 0-zdola, 1-shora-->
+      </ClassifiedTaxCategory>
+      <Note>Parfémovaný, vůně strawberry</Note>
+      <Item>
+        <Description>Kapesník papírový NAPPAX NP458</Description>
+        <CatalogueItemIdentification>
+          <!--EAN-->
+          <ID>1000000000013</ID>
+        </CatalogueItemIdentification>
+        <SellersItemIdentification>
+          <!--Identifikace zboží dle prodejce-->
+          <ID>10000001</ID>
+        </SellersItemIdentification>
+        <SecondarySellersItemIdentification>
+          <!--Identifikace zboží dle prodejce 2-->
+          <ID>DE555444333</ID>
+        </SecondarySellersItemIdentification>
+        <TertiarySellersItemIdentification>
+          <!--Identifikace zboží dle prodejce 3-->
+          <ID>NAPPAX 458-1028-30</ID>
+        </TertiarySellersItemIdentification>
+        <BuyersItemIdentification>
+          <!--Identifikace zboží dle kupujícího-->
+          <ID>999988887777766666</ID>
+        </BuyersItemIdentification>
+        <StoreBatches>
+          <!--Nepovinná kolekce šarží nebo sériových čísel-->
+          <StoreBatch>
+            <!--Povinná alespoň jedna sekce šarže/sériového čísla-->
+            <Name>Šarže 3A5/2011</Name>
+            <!--Název šarže/Sér.č.-->
+            <Note>Pozor doprodej staré řady parfémů</Note>
+            <!--Poznámka k Š/SČ-->
+            <ExpirationDate>2010-12-31</ExpirationDate>
+            <!--Datum expirace Š/SČ-->
+            <Specification>Dávkování 35</Specification>
+            <!--Specifikace k Š/SČ-->
+            <Quantity unitCode="Ks">80</Quantity>
+            <!--Počet jednotek Š, SČ=1-->
+            <BatchOrSerialNumber>B</BatchOrSerialNumber>
+            <!--B-Šarže, S-Sériové číslo-->
+          </StoreBatch>
+          <StoreBatch>
+            <Name>Šarže 3A9/2011</Name>
+            <Note>Nová řada</Note>
+            <ExpirationDate>2015-12-31</ExpirationDate>
+            <Specification>Dávkování 35</Specification>
+            <Quantity unitCode="Ks">20</Quantity>
+            <BatchOrSerialNumber>B</BatchOrSerialNumber>
+          </StoreBatch>
+        </StoreBatches>
+      </Item>
+      <Extensions>
+        <!--Jakákoliv struktura řádkových uživatelských položek-->
+        <extenzeL:UserfieldName xmlns:extenzeL="http://anydomain.cz/branch/developer/line">my user data</extenzeL:UserfieldName>                                                
+      </Extensions>
+    </InvoiceLine>
+
+    <InvoiceLine>
+      <ID>2</ID>
+      <!--Pořadové číslo řádku faktury-->
+      <OrderReference ref="Obj2">
+        <!--Nepovinný odkaz na objednávku, až na její číslo řádku-->
+        <LineID>3</LineID>
+        <!--Nepovinné číslo řádku objednávky-->
+      </OrderReference>
+      <DeliveryNoteReference ref="DL1">
+        <!--Nepovinný odkaz na dodací list, až na jeho číslo řádku-->
+        <LineID>2</LineID>
+        <!--Nepovinné číslo řádku DL-->
+      </DeliveryNoteReference>
+      <InvoicedQuantity unitCode="Ks">1000</InvoicedQuantity>
+      <LineExtensionAmountCurr>8.70</LineExtensionAmountCurr>
+      <LineExtensionAmount>218.37</LineExtensionAmount>
+      <LineExtensionAmountTaxInclusiveCurr>9.50</LineExtensionAmountTaxInclusiveCurr>
+      <LineExtensionAmountTaxInclusive>238.45</LineExtensionAmountTaxInclusive>
+      <LineExtensionTaxAmount>20.08</LineExtensionTaxAmount>
+      <UnitPrice>.21837</UnitPrice>
+      <UnitPriceTaxInclusive>.23845</UnitPriceTaxInclusive>
+      <ClassifiedTaxCategory>
+        <Percent>9</Percent>
+        <!--% DPH, nezávislé na položce Item-->
+        <VATCalculationMethod>0</VATCalculationMethod>
+      </ClassifiedTaxCategory>
+      <Note>S úpravou LA1</Note>
+      <Item>
+        <Description>Papír barevný XERTEC 120g/L</Description>
+        <CatalogueItemIdentification>
+          <ID>0000000000013</ID>
+        </CatalogueItemIdentification>
+        <SellersItemIdentification>
+          <ID>10000002</ID>
+        </SellersItemIdentification>
+        <SecondarySellersItemIdentification>
+          <ID>ABFN78956546</ID>
+        </SecondarySellersItemIdentification>
+        <TertiarySellersItemIdentification>
+          <ID>XRT 1054/222/100020</ID>
+        </TertiarySellersItemIdentification>
+        <BuyersItemIdentification>
+          <ID>5555444433332222</ID>
+        </BuyersItemIdentification>
+      </Item>
+    </InvoiceLine>
+
+    <InvoiceLine>
+      <ID>3</ID>
+      <!--Pořadové číslo řádku faktury-->
+      <DeliveryNoteReference ref="DL1">
+        <!--Nepovinný odkaz na dodací list, až na jeho číslo řádku-->
+        <LineID>3</LineID>
+        <!--Nepovinné číslo řádku DL-->
+      </DeliveryNoteReference>
+      <InvoicedQuantity unitCode="Ks">1</InvoicedQuantity>
+      <LineExtensionAmountCurr>1</LineExtensionAmountCurr>
+      <LineExtensionAmount>25.1</LineExtensionAmount>
+      <LineExtensionAmountTaxInclusiveCurr>1.05</LineExtensionAmountTaxInclusiveCurr>
+      <LineExtensionAmountTaxInclusive>26.355</LineExtensionAmountTaxInclusive>
+      <LineExtensionTaxAmount>1.255</LineExtensionTaxAmount>
+      <UnitPrice>25.1</UnitPrice>
+      <UnitPriceTaxInclusive>26.355</UnitPriceTaxInclusive>
+      <ClassifiedTaxCategory>
+        <Percent>5</Percent>
+        <!--% DPH, nezávislé na položce Item-->
+        <VATCalculationMethod>0</VATCalculationMethod>
+      </ClassifiedTaxCategory>
+      <Note>Expresní zásilka</Note>
+      <Item>
+        <Description>Služba ve zvláštní sazbě, ekologická přeprava</Description>
+      </Item>
+    </InvoiceLine>
+  </InvoiceLines>
+
+  <NonTaxedDeposits>
+    <!--kolekce nedaň.ZL. Projevem je záp.částka PaidDepositsAmount snižující celk.PayableAmount-->
+    <NonTaxedDeposit>
+      <!--informace o konkrétním zaplaceném nedaňovém zálohovém listu-->
+      <ID>ZLV-111888/2011</ID>
+      <!--jméno dokladu, identifikace ZL u mě jako vystavitele-->
+      <VariableSymbol>111888</VariableSymbol>
+      <!--variabilní symbol pod kterým byl zaplacen-->
+      <DepositAmountCurr>1</DepositAmountCurr>
+      <!--kladná částka zálohy v C.M.-->
+      <DepositAmount>25.1</DepositAmount>
+      <!--kladná částka zálohy v T.M.-->
+    </NonTaxedDeposit>
+  </NonTaxedDeposits>
+
+  <TaxedDeposits>
+    <!--kolekce odúčtování zd. záloh. Projevem jsou v sumáři DPH "AlreadyClaimed.." které se odečítají-->
+    <TaxedDeposit>
+      <!--informace o konkrétní částce v sazbě na odúčtovaném daňovém zálohovém listu-->
+      <ID>DZV-111555/2011</ID>
+      <!--jméno dokladu, identifikace daňového ZL u mě jako vystavitele-->
+      <VariableSymbol>111555</VariableSymbol>
+      <!--VS protože teor.může přijít zál.daňová fakt a tu platím bankou-->
+      <TaxableDepositAmountCurr>4.30</TaxableDepositAmountCurr>
+      <!--kl.č. zálohy bez daně v C.M.-->
+      <TaxableDepositAmount>107.93</TaxableDepositAmount>
+      <!--kl.č. zálohy bez daně v T.M.-->
+      <TaxInclusiveDepositAmountCurr>5.20</TaxInclusiveDepositAmountCurr>
+      <!--kl.č zál.sdaní C.M.-->
+      <TaxInclusiveDepositAmount>130.52</TaxInclusiveDepositAmount>
+      <!--kl.č zál.sdaní T.M.-->
+      <ClassifiedTaxCategory>
+        <Percent>19</Percent>
+        <VATCalculationMethod>0</VATCalculationMethod>
+      </ClassifiedTaxCategory>
+    </TaxedDeposit>
+    <TaxedDeposit>
+      <ID>DZV-111666/2011</ID>
+      <VariableSymbol/>
+      <TaxableDepositAmountCurr>8.70</TaxableDepositAmountCurr>
+      <!--kl. částka zál bez daně v C.M.-->
+      <TaxableDepositAmount>218.37</TaxableDepositAmount>
+      <!--kl. částka zál bez daně v T.M.-->
+      <TaxInclusiveDepositAmountCurr>9.50</TaxInclusiveDepositAmountCurr>
+      <!--kl.č zál sdaní  C.M.-->
+      <TaxInclusiveDepositAmount>238.45</TaxInclusiveDepositAmount>
+      <!--kl.č zál sdaní  T.M.-->
+      <ClassifiedTaxCategory>
+        <Percent>9</Percent>
+        <VATCalculationMethod>0</VATCalculationMethod>
+      </ClassifiedTaxCategory>
+    </TaxedDeposit>
+  </TaxedDeposits>
+
+  <TaxTotal>
+    <!--daňová rekapitulace: sumář po sazbách a pak celková daň-->
+    <TaxSubTotal>
+      <!--sumář jedné sazby-->
+      <TaxableAmountCurr>4.30</TaxableAmountCurr>
+      <!--základ v sazbě v C.M.-->
+      <TaxableAmount>107.93</TaxableAmount>
+      <!--částka s daní v sazbě v T.M.-->
+      <TaxAmountCurr>0.9</TaxAmountCurr>
+      <!--daň v sazbě v C.M.-->
+      <TaxAmount>22.59</TaxAmount>
+      <!--základ v sazbě v T.M.-->
+      <TaxInclusiveAmountCurr>5.20</TaxInclusiveAmountCurr>
+      <!--částka s daní v sazbě v C.M.-->
+      <TaxInclusiveAmount>130.52</TaxInclusiveAmount>
+      <!--daň v sazbě v T.M.-->
+      <AlreadyClaimedTaxableAmountCurr>4.30</AlreadyClaimedTaxableAmountCurr>
+      <!--na záloze již upl., základ v sazbě v C.M.-->
+      <AlreadyClaimedTaxableAmount>107.93</AlreadyClaimedTaxableAmount>
+      <!--na záloze již uplatněno, základ v sazbě v T.M.-->
+      <AlreadyClaimedTaxAmountCurr>0.9</AlreadyClaimedTaxAmountCurr>
+      <!--na záloze již uplatněno, daň v sazbě v C.M.-->
+      <AlreadyClaimedTaxAmount>22.59</AlreadyClaimedTaxAmount>
+      <!--na záloze již uplatněno, daň v sazbě v T.M.-->
+      <AlreadyClaimedTaxInclusiveAmountCurr>5.20</AlreadyClaimedTaxInclusiveAmountCurr>
+      <!--na záloze již upl., s daní v sazbě v C.M.-->
+      <AlreadyClaimedTaxInclusiveAmount>130.52</AlreadyClaimedTaxInclusiveAmount>
+      <!--na záloze již upl., s daní v sazbě v T.M.-->
+      <DifferenceTaxableAmountCurr>0</DifferenceTaxableAmountCurr>
+      <!--diff, zákl C.M.-->
+      <DifferenceTaxableAmount>0</DifferenceTaxableAmount>
+      <!--diff, zákl T.M.-->
+      <DifferenceTaxAmountCurr>0</DifferenceTaxAmountCurr>
+      <!--diff, daň  C.M.-->
+      <DifferenceTaxAmount>0</DifferenceTaxAmount>
+      <!--diff, daň  T.M.-->
+      <DifferenceTaxInclusiveAmountCurr>0</DifferenceTaxInclusiveAmountCurr>
+      <!--diff, sdaní C.M.-->
+      <DifferenceTaxInclusiveAmount>0</DifferenceTaxInclusiveAmount>
+      <!--diff, sdaní T.M.-->
+      <TaxCategory>
+        <Percent>19</Percent>
+        <!--% daně-->
+      </TaxCategory>
+    </TaxSubTotal>
+    <TaxSubTotal>
+      <!--sumář druhé sazby-->
+      <TaxableAmountCurr>8.70</TaxableAmountCurr>
+      <!--základ v sazbě v C.M.-->
+      <TaxableAmount>218.37</TaxableAmount>
+      <!--částka s daní v sazbě v T.M.-->
+      <TaxAmountCurr>0.8</TaxAmountCurr>
+      <!--daň v sazbě v C.M.-->
+      <TaxAmount>20.08</TaxAmount>
+      <!--základ v sazbě v T.M.-->
+      <TaxInclusiveAmountCurr>9.50</TaxInclusiveAmountCurr>
+      <!--částka s daní v sazbě v C.M.-->
+      <TaxInclusiveAmount>238.45</TaxInclusiveAmount>
+      <!--daň v sazbě v T.M.-->
+      <AlreadyClaimedTaxableAmountCurr>8.70</AlreadyClaimedTaxableAmountCurr>
+      <!--na záloze již upl., základ v sazbě v C.M.-->
+      <AlreadyClaimedTaxableAmount>218.37</AlreadyClaimedTaxableAmount>
+      <!--na záloze již uplatněno, základ v sazbě v T.M.-->
+      <AlreadyClaimedTaxAmountCurr>0.80</AlreadyClaimedTaxAmountCurr>
+      <!--na záloze již uplatněno, daň v sazbě v C.M.-->
+      <AlreadyClaimedTaxAmount>20.08</AlreadyClaimedTaxAmount>
+      <!--na záloze již uplatněno, daň v sazbě v T.M.-->
+      <AlreadyClaimedTaxInclusiveAmountCurr>9.50</AlreadyClaimedTaxInclusiveAmountCurr>
+      <!--na záloze již upl., s daní v sazbě v C.M.-->
+      <AlreadyClaimedTaxInclusiveAmount>238.45</AlreadyClaimedTaxInclusiveAmount>
+      <!--na záloze již upl., s daní v sazbě v T.M.-->
+      <DifferenceTaxableAmountCurr>0</DifferenceTaxableAmountCurr>
+      <!--diff, zákl v C.M.-->
+      <DifferenceTaxableAmount>0</DifferenceTaxableAmount>
+      <!--diff, zákl v T.M.-->
+      <DifferenceTaxAmountCurr>0</DifferenceTaxAmountCurr>
+      <!--diff, daň v C.M.-->
+      <DifferenceTaxAmount>0</DifferenceTaxAmount>
+      <!--diff, daň v T.M.-->
+      <DifferenceTaxInclusiveAmountCurr>0</DifferenceTaxInclusiveAmountCurr>
+      <!--diff, sdaní C.M.-->
+      <DifferenceTaxInclusiveAmount>0</DifferenceTaxInclusiveAmount>
+      <!--diff, sdaní T.M.-->
+      <TaxCategory>
+        <Percent>9</Percent>
+        <!--% daně›-->
+      </TaxCategory>
+    </TaxSubTotal>
+    <TaxSubTotal>
+      <!--Pro příklad i sumář třetí sazby-->
+      <TaxableAmountCurr>1</TaxableAmountCurr>
+      <!--základ v sazbě v C.M.-->
+      <TaxableAmount>25.10</TaxableAmount>
+      <!--částka s daní v sazbě v T.M.-->
+      <TaxAmountCurr>0.1</TaxAmountCurr>
+      <!--daň v sazbě v C.M.-->
+      <TaxAmount>2.51</TaxAmount>
+      <!--základ v sazbě v T.M.-->
+      <TaxInclusiveAmountCurr>1.10</TaxInclusiveAmountCurr>
+      <!--částka s daní v sazbě v C.M.-->
+      <TaxInclusiveAmount>27.61</TaxInclusiveAmount>
+      <!--daň v sazbě v T.M.-->
+      <AlreadyClaimedTaxableAmountCurr>0</AlreadyClaimedTaxableAmountCurr>
+      <!--na záloze již upl., základ v sazbě v C.M.-->
+      <AlreadyClaimedTaxableAmount>0</AlreadyClaimedTaxableAmount>
+      <!--na záloze již uplatněno, základ v sazbě v T.M.-->
+      <AlreadyClaimedTaxAmountCurr>0</AlreadyClaimedTaxAmountCurr>
+      <!--na záloze již uplatněno, daň v sazbě v C.M.-->
+      <AlreadyClaimedTaxAmount>0</AlreadyClaimedTaxAmount>
+      <!--na záloze již uplatněno, daň v sazbě v T.M.-->
+      <AlreadyClaimedTaxInclusiveAmountCurr>0</AlreadyClaimedTaxInclusiveAmountCurr>
+      <!--na záloze již upl., s daní v sazbě v C.M.-->
+      <AlreadyClaimedTaxInclusiveAmount>0</AlreadyClaimedTaxInclusiveAmount>
+      <!--na záloze již upl., s daní v sazbě v T.M.-->
+      <DifferenceTaxableAmountCurr>1</DifferenceTaxableAmountCurr>
+      <!--rozdíl, zák C.M.-->
+      <DifferenceTaxableAmount>25.10</DifferenceTaxableAmount>
+      <!--rozdíl, zák T.M.-->
+      <DifferenceTaxAmountCurr>1.10</DifferenceTaxAmountCurr>
+      <!--rozdíl, daň C.M.-->
+      <DifferenceTaxAmount>27.61</DifferenceTaxAmount>
+      <!--rozdíl, daň T.M.-->
+      <DifferenceTaxInclusiveAmountCurr>0.1</DifferenceTaxInclusiveAmountCurr>
+      <!--rozdíl, sd. C.M.-->
+      <DifferenceTaxInclusiveAmount>2.51</DifferenceTaxInclusiveAmount>
+      <!--rozdíl, sd. T.M.-->
+      <TaxCategory>
+        <Percent>5</Percent>
+        <!--% daně›-->
+      </TaxCategory>
+    </TaxSubTotal>
+    <TaxAmountCurr>0.1</TaxAmountCurr>
+    <!--celková daň v C.M. po odečtení odúčtovaných záloh-->
+    <TaxAmount>2.51</TaxAmount>
+    <!--celková daň v T.M. po odečtení odúčtovaných záloh-->
+  </TaxTotal>
+
+  <LegalMonetaryTotal>
+    <!--celkové částky, vždy bez daně v tuzemské a cizí měně a s daní totéž-->
+    <TaxExclusiveAmount>351.40</TaxExclusiveAmount>
+    <TaxExclusiveAmountCurr>14</TaxExclusiveAmountCurr>
+    <TaxInclusiveAmount>396.58</TaxInclusiveAmount>
+    <TaxInclusiveAmountCurr>15.80</TaxInclusiveAmountCurr>
+    <AlreadyClaimedTaxExclusiveAmount>326.30</AlreadyClaimedTaxExclusiveAmount>
+    <!--sumy na z upl.-->
+    <AlreadyClaimedTaxExclusiveAmountCurr>13</AlreadyClaimedTaxExclusiveAmountCurr>
+    <AlreadyClaimedTaxInclusiveAmount>368.97</AlreadyClaimedTaxInclusiveAmount>
+    <AlreadyClaimedTaxInclusiveAmountCurr>14.70</AlreadyClaimedTaxInclusiveAmountCurr>
+    <DifferenceTaxExclusiveAmount>25.10</DifferenceTaxExclusiveAmount>
+    <!--celkové sumy - rozdílů-->
+    <DifferenceTaxExclusiveAmountCurr>1</DifferenceTaxExclusiveAmountCurr>
+    <DifferenceTaxInclusiveAmount>27.61</DifferenceTaxInclusiveAmount>
+    <DifferenceTaxInclusiveAmountCurr>1.10</DifferenceTaxInclusiveAmountCurr>
+    <PayableRoundingAmount>-2.51</PayableRoundingAmount>
+    <!--zaokrouhl celk.částky v T.M.-->
+    <PayableRoundingAmountCurr>-0.10</PayableRoundingAmountCurr>
+    <!--zaokrouhl celk.částky v C.M.-->
+    <PaidDepositsAmount>-25.10</PaidDepositsAmount>
+    <!--na nedaňové zál zaplaceno v T.M.-->
+    <PaidDepositsAmountCurr>-1</PaidDepositsAmountCurr>
+    <!--na nedaňové zál zaplaceno v C.M.-->
+    <PayableAmount>0</PayableAmount>
+    <!--k zaplacení v T.M.-->
+    <PayableAmountCurr>0</PayableAmountCurr>
+    <!--k zaplacení v C.M.-->
+  </LegalMonetaryTotal>
+
+  <PaymentMeans>
+    <!--Kolekce plateb. Je možno platit různě a na vícekrát, typicky u plateb na bank.účet-->
+    <!--podporujeme: 10-cash, 20-cheque, 42-Bankaccount, 48-Bankcard, 97-Clearing between partners-->
+    <!--sekce isd:Details obsahuje buď odkaz dokument svázaný s platbou nebo na náležitosti platby na BÚ-->
+    <Payment>
+      <!--První příklad - platba hotovostí-->
+      <PaidAmount>0</PaidAmount>
+      <!--částka k zaplacení s přísl.měnou-->
+      <PaymentMeansCode>10</PaymentMeansCode>
+      <!--10 - cash-->
+      <Details>
+        <!--podrobnosti, u hotovosti a ostatních nepovinná možnost zadání -->
+        <DocumentID>PP-455123/2011</DocumentID>
+        <!--svázaného dokladu - zde pokladní účtenky-->
+        <IssueDate>2013-05-27</IssueDate>
+        <!--datum jejího vystavení-->
+      </Details>
+    </Payment>
+    <Payment>
+      <!--Druhý příklad - bankou nadvakrát do různého data splatnosti-->
+      <PaidAmount>0</PaidAmount>
+      <!--částka k zaplacení s přísl.měnou-->
+      <PaymentMeansCode>42</PaymentMeansCode>
+      <!--42 - bank.převodem-->
+      <Details>
+        <!--podrobnosti, u bankovního převodu povinné údaje o věřiteli a platbě-->
+        <PaymentDueDate>2013-03-13</PaymentDueDate>
+        <!--Datum splatnosti-->
+        <ID>1234567890</ID>
+        <!--číslo účtu lokální banky-->
+        <BankCode>0800</BankCode>
+        <!--kód lokální banky-->
+        <Name>Česká spořitelna, a.s.</Name>
+        <!--název lokální banky-->
+        <IBAN>CZ12345678901234567890</IBAN>
+        <!--mezinárodní číslo účtu IBAN-->
+        <BIC>GIBACZPX</BIC>
+        <!--ISO 9362 BIC kód banky, tzv.Swift kód 8 nebo 11 znaků-->
+        <VariableSymbol>111999</VariableSymbol>
+        <!--VS-->
+        <ConstantSymbol>0308</ConstantSymbol>
+        <!--KS nebo tzv.platební titul - pro zahr. platby dle ČNB-->
+        <SpecificSymbol>105512</SpecificSymbol>
+        <!--SS-->
+      </Details>
+    </Payment>
+    <Payment>
+      <!--Druhá část platby, jiná splatnost-->
+      <PaidAmount>0</PaidAmount>
+      <PaymentMeansCode>42</PaymentMeansCode>
+      <Details>
+        <PaymentDueDate>2013-06-30</PaymentDueDate>
+        <ID>1234567890</ID>
+        <BankCode>0800</BankCode>
+        <Name>Česká spořitelna, a.s.</Name>
+        <IBAN>CZ12345678901234567890</IBAN>
+        <BIC>GIBACZPX</BIC>
+        <VariableSymbol>111999</VariableSymbol>
+        <ConstantSymbol>0308</ConstantSymbol>
+        <SpecificSymbol>105512</SpecificSymbol>
+      </Details>
+    </Payment>
+    <AlternateBankAccounts>
+      <!--nepovinná kolekce dalších bank.účtů, na které je možno také platit, v ČR časté-->
+      <AlternateBankAccount>
+        <!--má samozřejmě smysl pouze v případě, že alespoň jedna z plateb výše je na BÚ.-->
+        <ID>45798465465465</ID>
+        <!--předpokládá se, že VS, SS a KS se s účtem nemění a definují výše-->
+        <BankCode>0100</BankCode>
+        <Name>Komerční banka, a.s.</Name>
+        <IBAN>CZ1546556565454687987</IBAN>
+        <BIC>KOBACZPX</BIC>
+      </AlternateBankAccount>
+      <AlternateBankAccount>
+        <ID>98654623265464</ID>
+        <BankCode>0300</BankCode>
+        <Name>Československá obchodní banka, a.s.</Name>
+        <IBAN>CZ1546556565454687987</IBAN>
+        <BIC>CEKOCZPP</BIC>
+      </AlternateBankAccount>
+    </AlternateBankAccounts>
+  </PaymentMeans>
+  <SupplementsList>
+    <!--Nepovinná kolekce příloh daného dokladu, jeden z nich může být dodaný náhled (atribut preview="true")-->
+    <Supplement>
+      <Filename>Logo.bmp</Filename>
+      <DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/>
+      <DigestValue>t1y5ADJ5+2IM/oCnvvlo/g+Gnvo=</DigestValue>
+    </Supplement>
+    <Supplement>
+      <Filename>Notebook.jpg</Filename>
+      <DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/>
+      <DigestValue>r32gUQt4vqSBnw401tL7QhjH2xs=</DigestValue>
+    </Supplement>    
+    <Supplement>
+      <Filename>OBCHODNI_PODMINKY.DOC</Filename>
+      <DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/>
+      <DigestValue>Gm9hyD0uRKiUN3VOY7X0OIB1+DU=</DigestValue>
+    </Supplement>
+    <Supplement preview="true">
+      <Filename>Dodany nahled FV.pdf</Filename>
+      <DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/>
+      <DigestValue>hDcHV8mAaNkRAF/AHBjE+JjpbIQ=</DigestValue>
+    </Supplement>
+    <Supplement>
+      <!--pokud má být přílohou také .isdoc soubor, musí být v ZIPu v podadresáři, v rootu smí být jen ten hlavní-->
+      <Filename>stare doklady\dalsi.isdoc</Filename>
+      <DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/>
+      <DigestValue>e2yeqeUXMAxst6rS92+2XPIvDjQ=</DigestValue>                   
+    </Supplement>
+    <Supplement>
+      <!--stejnětak mohou být v podadresáři(ích) i jakékoliv další soubory-->
+      <Filename>stare doklady\logo2.bmp</Filename>
+      <DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/>
+      <DigestValue>t1y5ADJ5+2IM/oCnvvlo/g+Gnvo=</DigestValue>
+    </Supplement>
+  </SupplementsList>
+</Invoice>

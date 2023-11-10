@@ -34,6 +34,7 @@ import com.helger.phive.isdoc.ISDOCValidation;
 import com.helger.phive.xml.source.IValidationSourceXML;
 
 @Immutable
+@SuppressWarnings ("deprecation")
 public final class CTestFiles
 {
   public static final ValidationExecutorSetRegistry <IValidationSourceXML> VES_REGISTRY = new ValidationExecutorSetRegistry <> ();
@@ -50,7 +51,7 @@ public final class CTestFiles
   public static ICommonsList <TestFile> getAllTestFiles ()
   {
     final ICommonsList <TestFile> ret = new CommonsArrayList <> ();
-    for (final VESID aESID : new VESID [] { ISDOCValidation.VID_ISDOC_601 })
+    for (final VESID aESID : new VESID [] { ISDOCValidation.VID_ISDOC_601, ISDOCValidation.VID_ISDOC_602 })
       for (final IReadableResource aRes : getAllMatchingTestFiles (aESID))
       {
         assertTrue ("Not existing test file: " + aRes.getPath (), aRes.exists ());
@@ -70,6 +71,11 @@ public final class CTestFiles
     {
       return new CommonsArrayList <> (new String [] { "doklad.isdoc", "priklad2-egov.isdoc", },
                                       x -> new FileSystemResource (sBasePath + "6.0.1/" + x));
+    }
+    if (aVESID.equals (ISDOCValidation.VID_ISDOC_602))
+    {
+      return new CommonsArrayList <> (new String [] { "doklad.isdoc", "priklad2-egov.isdoc", },
+                                      x -> new FileSystemResource (sBasePath + "6.0.2/" + x));
     }
 
     throw new IllegalArgumentException ("Invalid VESID: " + aVESID);

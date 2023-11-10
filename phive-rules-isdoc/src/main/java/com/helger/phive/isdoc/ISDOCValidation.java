@@ -41,7 +41,9 @@ public final class ISDOCValidation
 {
   public static final String GROUP_ID = "cz.isdoc";
 
+  @Deprecated
   public static final VESID VID_ISDOC_601 = new VESID (GROUP_ID, "isdoc", "6.0.1");
+  public static final VESID VID_ISDOC_602 = new VESID (GROUP_ID, "isdoc", "6.0.2");
 
   private ISDOCValidation ()
   {}
@@ -76,14 +78,22 @@ public final class ISDOCValidation
   {
     ValueEnforcer.notNull (aRegistry, "Registry");
 
+    final boolean bDeprecated = true;
     final boolean bNotDeprecated = false;
 
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_ISDOC_601,
                                                                            "ISDOC " + VID_ISDOC_601.getVersionString (),
-                                                                           bNotDeprecated,
+                                                                           bDeprecated,
                                                                            ValidationExecutorXSD.create (CXMLDSig.getXSDResource (),
                                                                                                          new ClassPathResource ("/external/schemas/isdoc/6.0.1/isdoc-invoice-dsig-6.0.1.xsd",
                                                                                                                                 _getCL ())),
                                                                            _createXSLT (new ClassPathResource ("/external/schematron/isdoc/6.0.1/isdoc-6.0.1.xslt"))));
+    aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_ISDOC_602,
+                                                                           "ISDOC " + VID_ISDOC_601.getVersionString (),
+                                                                           bNotDeprecated,
+                                                                           ValidationExecutorXSD.create (CXMLDSig.getXSDResource (),
+                                                                                                         new ClassPathResource ("/external/schemas/isdoc/6.0.2/isdoc-invoice-dsig-6.0.2.xsd",
+                                                                                                                                _getCL ())),
+                                                                           _createXSLT (new ClassPathResource ("/external/schematron/isdoc/6.0.2/isdoc-6.0.2.xslt"))));
   }
 }
