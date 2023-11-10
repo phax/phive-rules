@@ -124,6 +124,7 @@ public final class CTestFiles
                                             PeppolValidationReporting.VID_OPENPEPPOL_EUSR_V111,
                                             PeppolValidationReporting.VID_OPENPEPPOL_EUSR_V112,
                                             PeppolValidationReporting.VID_OPENPEPPOL_EUSR_V113,
+                                            PeppolValidationReporting.VID_OPENPEPPOL_EUSR_V114,
 
                                             PeppolValidationReporting.VID_OPENPEPPOL_TSR_V100,
                                             PeppolValidationReporting.VID_OPENPEPPOL_TSR_V101,
@@ -532,6 +533,16 @@ public final class CTestFiles
       return new CommonsArrayList <> (new FileSystemResource (sPrefix + "end-user-statistics-reporting-1.xml"),
                                       new FileSystemResource (sPrefix + "end-user-statistics-reporting-2.xml"),
                                       new FileSystemResource (sPrefix + "end-user-statistics-reporting-3.xml"),
+                                      new FileSystemResource (sPrefix + "end-user-statistics-reporting-empty.xml"),
+                                      new FileSystemResource (sPrefix + "end-user-statistics-reporting-minimal.xml"),
+                                      new FileSystemResource (sPrefix + "eusr-generated-1.xml"),
+                                      new FileSystemResource (sPrefix + "eusr-good-template.xml"));
+    }
+    if (aVESID.equals (PeppolValidationReporting.VID_OPENPEPPOL_EUSR_V114))
+    {
+      final String sPrefix = sPrefix0 + "reporting/eusr/1.1.4/";
+      return new CommonsArrayList <> (new FileSystemResource (sPrefix + "end-user-statistics-reporting-1.xml"),
+                                      new FileSystemResource (sPrefix + "end-user-statistics-reporting-2.xml"),
                                       new FileSystemResource (sPrefix + "end-user-statistics-reporting-empty.xml"),
                                       new FileSystemResource (sPrefix + "end-user-statistics-reporting-minimal.xml"),
                                       new FileSystemResource (sPrefix + "eusr-generated-1.xml"),

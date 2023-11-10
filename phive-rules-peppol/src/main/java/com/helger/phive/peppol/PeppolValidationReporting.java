@@ -62,7 +62,9 @@ public final class PeppolValidationReporting
   public static final VESID VID_OPENPEPPOL_EUSR_V111 = new VESID (GROUP_ID, "eusr", "1.1.1");
   @Deprecated
   public static final VESID VID_OPENPEPPOL_EUSR_V112 = new VESID (GROUP_ID, "eusr", "1.1.2");
+  @Deprecated
   public static final VESID VID_OPENPEPPOL_EUSR_V113 = new VESID (GROUP_ID, "eusr", "1.1.3");
+  public static final VESID VID_OPENPEPPOL_EUSR_V114 = new VESID (GROUP_ID, "eusr", "1.1.4");
 
   // TSR
 
@@ -147,10 +149,18 @@ public final class PeppolValidationReporting
                                                                                                                       null)));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_EUSR_V113,
                                                                              "Peppol End User Statistics Report v1.1.3",
-                                                                             bNotDeprecated,
+                                                                             bDeprecated,
                                                                              ValidationExecutorXSD.create (aXSD11),
                                                                              ValidationExecutorSchematron.createXSLT (new ClassPathResource (BASE_PATH_SCH +
                                                                                                                                              "eusr/1.1.3/xslt/peppol-end-user-statistics-reporting-1.1.3.xslt",
+                                                                                                                                             _getCL ()),
+                                                                                                                      null)));
+      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_EUSR_V114,
+                                                                             "Peppol End User Statistics Report v1.1.4",
+                                                                             bNotDeprecated,
+                                                                             ValidationExecutorXSD.create (aXSD11),
+                                                                             ValidationExecutorSchematron.createXSLT (new ClassPathResource (BASE_PATH_SCH +
+                                                                                                                                             "eusr/1.1.4/xslt/peppol-end-user-statistics-reporting-1.1.4.xslt",
                                                                                                                                              _getCL ()),
                                                                                                                       null)));
     }
