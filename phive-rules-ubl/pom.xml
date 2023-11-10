@@ -100,7 +100,9 @@
         <configuration>
           <instructions>
             <Automatic-Module-Name>com.helger.phive.ubl</Automatic-Module-Name>
-            <Export-Package>com.helger.phive.ubl.*</Export-Package>
+            <Export-Package>
+              com.helger.phive.ubl
+            </Export-Package>
             <Import-Package>!javax.annotation.*,*</Import-Package>
           </instructions>
         </configuration>

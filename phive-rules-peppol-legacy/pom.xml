@@ -101,7 +101,9 @@
         <configuration>
           <instructions>
             <Automatic-Module-Name>com.helger.phive.peppol.legacy</Automatic-Module-Name>
-            <Export-Package>com.helger.phive.peppol.legacy.*</Export-Package>
+            <Export-Package>
+              com.helger.phive.peppol.legacy
+            </Export-Package>
             <Import-Package>!javax.annotation.*,*</Import-Package>
           </instructions>
         </configuration>

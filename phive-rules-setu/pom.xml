@@ -87,8 +87,10 @@
         <extensions>true</extensions>
         <configuration>
           <instructions>
-            <Automatic-Module-Name>com.helger.phive.isdoc</Automatic-Module-Name>
-            <Export-Package>com.helger.phive.isdoc.*</Export-Package>
+            <Automatic-Module-Name>com.helger.phive.setu</Automatic-Module-Name>
+            <Export-Package>
+              com.helger.phive.setu
+            </Export-Package>
             <Import-Package>!javax.annotation.*,*</Import-Package>
           </instructions>
         </configuration>

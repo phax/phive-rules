@@ -84,7 +84,9 @@
         <configuration>
           <instructions>
             <Automatic-Module-Name>com.helger.phive.peppol.italy</Automatic-Module-Name>
-            <Export-Package>com.helger.phive.peppol.italy.*</Export-Package>
+            <Export-Package>
+              com.helger.phive.peppol.italy
+            </Export-Package>
             <Import-Package>!javax.annotation.*,*</Import-Package>
           </instructions>
         </configuration>

@@ -92,7 +92,9 @@
         <configuration>
           <instructions>
             <Automatic-Module-Name>com.helger.phive.xrechnung</Automatic-Module-Name>
-            <Export-Package>com.helger.phive.xrechnung.*</Export-Package>
+            <Export-Package>
+              com.helger.phive.xrechnung
+            </Export-Package>
             <Import-Package>!javax.annotation.*,*</Import-Package>
           </instructions>
         </configuration>

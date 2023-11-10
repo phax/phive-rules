@@ -88,7 +88,9 @@
         <configuration>
           <instructions>
             <Automatic-Module-Name>com.helger.phive.ciuspt</Automatic-Module-Name>
-            <Export-Package>com.helger.phive.ciuspt.*</Export-Package>
+            <Export-Package>
+              com.helger.phive.ciuspt
+            </Export-Package>
             <Import-Package>!javax.annotation.*,*</Import-Package>
           </instructions>
         </configuration>

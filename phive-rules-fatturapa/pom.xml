@@ -79,7 +79,9 @@
         <configuration>
           <instructions>
             <Automatic-Module-Name>com.helger.phive.fatturapa</Automatic-Module-Name>
-            <Export-Package>com.helger.phive.fatturapa.*</Export-Package>
+            <Export-Package>
+              com.helger.phive.fatturapa
+            </Export-Package>
             <Import-Package>!javax.annotation.*,*</Import-Package>
           </instructions>
         </configuration>

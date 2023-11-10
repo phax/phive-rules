@@ -88,7 +88,12 @@
         <configuration>
           <instructions>
             <Automatic-Module-Name>com.helger.phive.oioubl</Automatic-Module-Name>
-            <Export-Package>com.helger.phive.oioubl.*</Export-Package>
+            <Export-Package>
+              com.helger.phive.oioubl,
+              oioubl.names.specification.oioubl.schema.xsd.commonaggregatecomponents_2,
+              oioubl.names.specification.oioubl.schema.xsd.commonbasiccomponents_2,
+              oioubl.names.specification.oioubl.schema.xsd.utilitystatement_2
+            </Export-Package>
             <Import-Package>!javax.annotation.*,*</Import-Package>
           </instructions>
         </configuration>

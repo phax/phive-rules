@@ -88,7 +88,9 @@
         <configuration>
           <instructions>
             <Automatic-Module-Name>com.helger.phive.isdoc</Automatic-Module-Name>
-            <Export-Package>com.helger.phive.isdoc.*</Export-Package>
+            <Export-Package>
+              com.helger.phive.isdoc
+            </Export-Package>
             <Import-Package>!javax.annotation.*,*</Import-Package>
           </instructions>
         </configuration>

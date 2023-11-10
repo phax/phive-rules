@@ -80,7 +80,9 @@
         <configuration>
           <instructions>
             <Automatic-Module-Name>com.helger.phive.svefaktura</Automatic-Module-Name>
-            <Export-Package>com.helger.phive.svefaktura.*</Export-Package>
+            <Export-Package>
+              com.helger.phive.svefaktura
+            </Export-Package>
             <Import-Package>!javax.annotation.*,*</Import-Package>
           </instructions>
         </configuration>

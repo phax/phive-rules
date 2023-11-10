@@ -92,7 +92,9 @@
         <configuration>
           <instructions>
             <Automatic-Module-Name>com.helger.phive.ehf</Automatic-Module-Name>
-            <Export-Package>com.helger.phive.ehf.*</Export-Package>
+            <Export-Package>
+              com.helger.phive.ehf
+            </Export-Package>
             <Import-Package>!javax.annotation.*,*</Import-Package>
           </instructions>
         </configuration>

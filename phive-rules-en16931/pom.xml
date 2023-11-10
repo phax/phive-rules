@@ -84,7 +84,9 @@
         <configuration>
           <instructions>
             <Automatic-Module-Name>com.helger.phive.en16931</Automatic-Module-Name>
-            <Export-Package>com.helger.phive.en16931.*</Export-Package>
+            <Export-Package>
+              com.helger.phive.en16931
+            </Export-Package>
             <Import-Package>!javax.annotation.*,*</Import-Package>
           </instructions>
         </configuration>
