@@ -193,6 +193,7 @@ I hope that with the introduction of PINT, the versioning problem will be solved
  
 * v3.1.6 - 2023-11-29
     * Added Peppol 2023 November release (Billing 3.0.16 and Upgrade 3.0.12)
+    * Moved Peppol 3.15.0 rules from `phive-rules-peppol` to `phive-rules-peppol-legacy`
 * v3.1.5 - 2023-11-10
     * Added support for Peppol Reporting EUSR v1.1.4 and deprecated v1.1.3
     * Added support for Czech ISDOC v6.0.2 and deprecated v6.0.1 [original Schematron had errors]
