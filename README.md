@@ -191,9 +191,10 @@ I hope that with the introduction of PINT, the versioning problem will be solved
   
 # News and noteworthy
  
-* v3.1.6 - 2023-11-29
-    * Added Peppol 2023 November release (Billing 3.0.16 and Upgrade 3.0.12)
+* v3.1.6 - 2023-11-30
+    * Added Peppol November 2023 release (Billing 3.0.16 and Upgrade 3.0.12)
     * Moved Peppol 3.15.0 rules from `phive-rules-peppol` to `phive-rules-peppol-legacy`
+    * Added SimplerInvoicing November 2023 release (SI 2.0.3.8, NLCIUS-CII 1.0.3.7, SI 2.0 G-Account extension 1.0.8)
 * v3.1.5 - 2023-11-10
     * Added support for Peppol Reporting EUSR v1.1.4 and deprecated v1.1.3
     * Added support for Czech ISDOC v6.0.2 and deprecated v6.0.1 [original Schematron had errors]
@@ -232,7 +233,7 @@ I hope that with the introduction of PINT, the versioning problem will be solved
     * Added support for SimplerInvoicing 2.0.3.7 and deprecated old versions
     * Added support for SimplerInvoicing NLCIUS-CII 1.0.3.6 and deprecated old versions
     * Added support for SimplerInvoicing 2.0 G-Account extension 1.0.7 and deprecated old versions
-    * Added Peppol 2023 May release (Billing 3.0.15 and Upgrade 3.0.11) - using a new versioning number (yyyy.m)
+    * Added Peppol May 2023 release (Billing 3.0.15 and Upgrade 3.0.11) - using a new versioning number (yyyy.m)
     * Added new submodule `phive-rules-setu` for selected Dutch SETU standards
     * Added support for Peppol End User Statistics Report 1.0.1
 * v3.0.3 - 2023-04-30
