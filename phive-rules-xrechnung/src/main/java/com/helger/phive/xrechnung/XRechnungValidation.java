@@ -477,8 +477,8 @@ public final class XRechnungValidation
                                                                                                                       UBL21NamespaceContext.getInstance ())));
     }
 
-    // v3.0.1 (based on rule release 2.0.1)
-    // Uses CEN rules 1.3.10
+    // v3.0.1 (based on rule release 2.0.2)
+    // Uses CEN rules 1.3.11
     {
       final ICommonsMap <String, EErrorLevel> aCustomErrorLevels = new CommonsHashMap <> ();
       aCustomErrorLevels.put ("BR-CL-23", EErrorLevel.WARN);
@@ -488,7 +488,7 @@ public final class XRechnungValidation
                                                                                                     VID_XRECHNUNG_CII_301.getVersionString (),
                                                                              bNotDeprecated,
                                                                              ValidationExecutorXSD.create (CCIID16B.getXSDResource ()),
-                                                                             ValidationExecutorSchematron.createXSLT (EN16931Validation.INVOICE_CII_1310_XSLT,
+                                                                             ValidationExecutorSchematron.createXSLT (EN16931Validation.INVOICE_CII_1311_XSLT,
                                                                                                                       UBL21NamespaceContext.getInstance ())
                                                                                                          .addCustomErrorLevels (aCustomErrorLevels),
                                                                              ValidationExecutorSchematron.createXSLT (new ClassPathResource (sPrefix +
@@ -500,7 +500,7 @@ public final class XRechnungValidation
                                                                                                                VID_XRECHNUNG_UBL_CREDITNOTE_301.getVersionString (),
                                                                              bNotDeprecated,
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
-                                                                             ValidationExecutorSchematron.createXSLT (EN16931Validation.INVOICE_UBL_1310_XSLT,
+                                                                             ValidationExecutorSchematron.createXSLT (EN16931Validation.INVOICE_UBL_1311_XSLT,
                                                                                                                       UBL21NamespaceContext.getInstance ())
                                                                                                          .addCustomErrorLevels (aCustomErrorLevels),
                                                                              ValidationExecutorSchematron.createXSLT (new ClassPathResource (sPrefix +
@@ -512,7 +512,7 @@ public final class XRechnungValidation
                                                                                                             VID_XRECHNUNG_UBL_INVOICE_301.getVersionString (),
                                                                              bNotDeprecated,
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
-                                                                             ValidationExecutorSchematron.createXSLT (EN16931Validation.INVOICE_UBL_1310_XSLT,
+                                                                             ValidationExecutorSchematron.createXSLT (EN16931Validation.INVOICE_UBL_1311_XSLT,
                                                                                                                       UBL21NamespaceContext.getInstance ())
                                                                                                          .addCustomErrorLevels (aCustomErrorLevels),
                                                                              ValidationExecutorSchematron.createXSLT (new ClassPathResource (sPrefix +
