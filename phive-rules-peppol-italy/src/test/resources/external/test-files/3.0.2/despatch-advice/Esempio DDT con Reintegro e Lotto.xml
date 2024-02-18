@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DespatchAdvice xmlns="urn:oasis:names:specification:ubl:schema:xsd:DespatchAdvice-2"
+	xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+	xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
+	<cbc:CustomizationID>urn:fdc:peppol.eu:poacc:trns:despatch_advice:3:extended:urn:www.agid.gov.it:trns:ddt:3.1</cbc:CustomizationID>
+	<cbc:ProfileID>urn:fdc:peppol.eu:poacc:bis:despatch_advice:3</cbc:ProfileID>
+	<cbc:ID>1313</cbc:ID>
+	<cbc:IssueDate>2015-05-13</cbc:IssueDate>
+	<cbc:Note>Nulla</cbc:Note>
+	<cac:OrderReference>
+		<cbc:ID>4521#2020-01-25#ugh8vg</cbc:ID>
+	</cac:OrderReference>
+	<cac:DespatchSupplierParty>
+		<cac:Party>
+			<cbc:EndpointID schemeID="0211">IT00495451205</cbc:EndpointID>
+			<!--Indirizzo Speditore-Mittente. Obbligatorio-->
+			<cac:PostalAddress>
+				<cbc:StreetName>Via Lucio Dalla 1</cbc:StreetName>
+				<cbc:CityName>Bologna</cbc:CityName>
+				<cbc:PostalZone>40121</cbc:PostalZone>
+				<cbc:CountrySubentity>Bologna</cbc:CountrySubentity>
+				<cac:Country>
+					<cbc:IdentificationCode>IT</cbc:IdentificationCode>
+				</cac:Country>
+			</cac:PostalAddress>
+			<cac:PartyLegalEntity>
+				<cbc:RegistrationName>ARS Chirurgica SRL</cbc:RegistrationName>
+			</cac:PartyLegalEntity>
+			<cac:Contact>
+				<cbc:Telephone>051951811</cbc:Telephone>
+			</cac:Contact>
+		</cac:Party>
+	</cac:DespatchSupplierParty>
+	<cac:DeliveryCustomerParty>
+		<cac:Party>
+			<cbc:EndpointID schemeID="0201">ufr9wk</cbc:EndpointID>
+			<cac:PostalAddress>
+				<cbc:StreetName>Via Albertoni, 15</cbc:StreetName>
+				<cbc:CityName>Bologna</cbc:CityName>
+				<cbc:PostalZone>40138</cbc:PostalZone>
+				<cbc:CountrySubentity>BO</cbc:CountrySubentity>
+				<cac:Country>
+					<cbc:IdentificationCode>IT</cbc:IdentificationCode>
+				</cac:Country>
+			</cac:PostalAddress>
+			<cac:PartyLegalEntity>
+				<cbc:RegistrationName>Azienda Ospedaliero - Universitaria di Bologna Policlinico S.Orsola - Malpighi</cbc:RegistrationName>
+			</cac:PartyLegalEntity>
+		</cac:Party>
+	</cac:DeliveryCustomerParty>
+	<cac:BuyerCustomerParty>
+		<cac:Party>
+			<cac:PartyIdentification>
+				<cbc:ID schemeID="0210">92038610371</cbc:ID>
+			</cac:PartyIdentification>
+			<cac:PartyName>
+				<cbc:Name>Azienda Ospedaliero - Universitaria di Bologna Policlinico S.Orsola - Malpighi</cbc:Name>
+			</cac:PartyName>
+			<!--Indirizzo Acquirente. Obbligatorio-->
+			<cac:PostalAddress>
+				<cbc:StreetName>Via Napoli 1</cbc:StreetName>
+				<cbc:CityName>Milano</cbc:CityName>
+				<cbc:PostalZone>20100</cbc:PostalZone>
+				<cbc:CountrySubentity>MI</cbc:CountrySubentity>
+				<cac:Country>
+					<cbc:IdentificationCode>IT</cbc:IdentificationCode>
+				</cac:Country>
+			</cac:PostalAddress>
+		</cac:Party>
+	</cac:BuyerCustomerParty>
+	<cac:SellerSupplierParty>
+		<cac:Party>
+			<cac:PartyIdentification>
+				<cbc:ID schemeID="0211">IT00495451205</cbc:ID>
+			</cac:PartyIdentification>
+			<cac:PartyName>
+				<cbc:Name>ARS CHIRURIGICA SRL</cbc:Name>
+			</cac:PartyName>
+			<!--Indirizzo Venditore. Obbligatorio-->
+			<cac:PostalAddress>
+				<cbc:StreetName>Via Ferrara 300</cbc:StreetName>
+				<cbc:CityName>Milano</cbc:CityName>
+				<cbc:PostalZone>20100</cbc:PostalZone>
+				<cbc:CountrySubentity>MI</cbc:CountrySubentity>
+				<cac:Country>
+					<cbc:IdentificationCode>IT</cbc:IdentificationCode>
+				</cac:Country>
+			</cac:PostalAddress>
+		</cac:Party>
+	</cac:SellerSupplierParty>
+	<cac:OriginatorCustomerParty>
+		<cac:Party>
+			<cac:PartyIdentification>
+				<cbc:ID schemeID="0210">92038610371</cbc:ID>
+			</cac:PartyIdentification>
+			<cac:PartyName>
+				<cbc:Name>Centro Log.Beni Sanit- Ecom - Area 2</cbc:Name>
+			</cac:PartyName>
+		</cac:Party>
+	</cac:OriginatorCustomerParty>
+	<cac:Shipment>
+		<cbc:ID>NA</cbc:ID>
+		<cbc:Information>Reintegro</cbc:Information>
+		<cbc:GrossWeightMeasure unitCode="KGM">100</cbc:GrossWeightMeasure>
+		<cbc:TotalTransportHandlingUnitQuantity>25</cbc:TotalTransportHandlingUnitQuantity>
+		<cac:Consignment>
+			<cbc:ID>NA</cbc:ID>
+			<cbc:Information>Porto Franco</cbc:Information>
+			<cac:CarrierParty>
+				<cac:PartyIdentification>
+					<cbc:ID schemeID="0211">IT00204260285</cbc:ID>
+				</cac:PartyIdentification>
+				<cac:PartyName>
+					<cbc:Name>Vettore</cbc:Name>
+				</cac:PartyName>
+				<!--Indirizzo Vettore. Obbligatorio-->
+				<cac:PostalAddress>
+					<!-- Obbligatorio: Art. 21, comma 4 del DPR n. 633/1972 -->
+					<cbc:StreetName>Via Europa 100</cbc:StreetName>
+					<cbc:AdditionalStreetName>Palazzo A</cbc:AdditionalStreetName>
+					<!-- Obbligatorio: Art. 21, comma 4 del DPR n. 633/1972 -->
+					<cbc:CityName>Bologna</cbc:CityName>
+					<!-- Obbligatorio: Art. 21, comma 4 del DPR n. 633/1972 -->
+					<cbc:PostalZone>40121</cbc:PostalZone>
+					<!-- Obbligatorio: Art. 21, comma 4 del DPR n. 633/1972 -->
+					<cbc:CountrySubentity>Bologna</cbc:CountrySubentity>
+					<cac:Country>
+						<cbc:IdentificationCode>IT</cbc:IdentificationCode>
+					</cac:Country>
+				</cac:PostalAddress>
+			</cac:CarrierParty>
+		</cac:Consignment>
+		<cac:Delivery>
+			<cac:EstimatedDeliveryPeriod>
+				<cbc:StartDate>2015-05-13</cbc:StartDate>
+				<cbc:StartTime>14:00:00</cbc:StartTime>
+			</cac:EstimatedDeliveryPeriod>
+			<cac:Despatch>
+				<cac:DespatchAddress>
+					<cbc:ID>C34/C36</cbc:ID>
+					<cbc:StreetName>Viale Ercolani, 4</cbc:StreetName>
+					<cbc:AdditionalStreetName>Centro Log.Beni Sanit- Ecom - Area 2</cbc:AdditionalStreetName>
+					<cbc:CityName>Bologna</cbc:CityName>
+					<cbc:PostalZone>40138</cbc:PostalZone>
+					<cbc:CountrySubentity>BO</cbc:CountrySubentity>
+					<cac:Country>
+						<cbc:IdentificationCode>IT</cbc:IdentificationCode>
+					</cac:Country>
+				</cac:DespatchAddress>
+			</cac:Despatch>
+		</cac:Delivery>
+	</cac:Shipment>
+	<cac:DespatchLine>
+		<cbc:ID>1</cbc:ID>
+		<cbc:Note>VS. ORDINE REINTEGRO</cbc:Note>
+		<cbc:DeliveredQuantity unitCode="H87">1</cbc:DeliveredQuantity>
+		<cac:OrderLineReference>
+			<cbc:LineID>NA</cbc:LineID>
+		</cac:OrderLineReference>
+		<cac:Item>
+			<cbc:Name>SYNERGY PROTESI VASCOLARE BIFORCATA 22X11MM LUNGH.50CM INTEGARD KNITTED</cbc:Name>
+			<cac:SellersItemIdentification>
+				<cbc:ID>IVIGK2211SG</cbc:ID>
+			</cac:SellersItemIdentification>
+			<cac:StandardItemIdentification>
+				<cbc:ID schemeID="0160">P07010299</cbc:ID>
+			</cac:StandardItemIdentification>
+			<cac:ItemInstance>
+				<!--Lotto-->
+				<cac:LotIdentification>
+					<cbc:LotNumberID>1022796908/14J26</cbc:LotNumberID>
+					<cbc:ExpiryDate>2017-08-31</cbc:ExpiryDate>
+				</cac:LotIdentification>
+			</cac:ItemInstance>
+		</cac:Item>
+		<cac:Shipment>
+			<cbc:ID>NA</cbc:ID>
+		</cac:Shipment>
+	</cac:DespatchLine>
+</DespatchAdvice>

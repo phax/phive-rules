@@ -57,5 +57,6 @@ public final class PeppolItalyValidation
 
     PeppolItalyValidation2_2_9.init (aRegistry);
     PeppolItalyValidation2_3_0.init (aRegistry);
+    PeppolItalyValidation3_0_2.init (aRegistry);
   }
 }
