@@ -155,13 +155,13 @@
           -->
           <!--
           <execution>
-            <id>sg-peppol</id>
+            <id>pint</id>
             <goals>
               <goal>convert</goal>
             </goals>
             <configuration>
-              <schematronDirectory>src/test/resources/external/rule-source/sg-peppol/2023.7</schematronDirectory>
-              <xsltDirectory>src/main/resources/external/schematron/peppol-sg/2023.7/xslt</xsltDirectory>
+              <schematronDirectory>src/test/resources/external/rule-source/pint/1.0.1</schematronDirectory>
+              <xsltDirectory>src/main/resources/external/schematron/pint/1.0.1/xslt</xsltDirectory>
             </configuration>
           </execution>
           -->
@@ -186,6 +186,18 @@
             <configuration>
               <schematronDirectory>src/test/resources/external/rule-source/reporting/tsr/1.0.4</schematronDirectory>
               <xsltDirectory>src/main/resources/external/schematron/reporting/tsr/1.0.4/xslt</xsltDirectory>
+            </configuration>
+          </execution>
+          -->
+          <!--
+          <execution>
+            <id>sg-peppol</id>
+            <goals>
+              <goal>convert</goal>
+            </goals>
+            <configuration>
+              <schematronDirectory>src/test/resources/external/rule-source/sg-peppol/2023.7</schematronDirectory>
+              <xsltDirectory>src/main/resources/external/schematron/peppol-sg/2023.7/xslt</xsltDirectory>
             </configuration>
           </execution>
           -->
