@@ -191,11 +191,12 @@ I hope that with the introduction of PINT, the versioning problem will be solved
   
 # News and noteworthy
  
-* v3.1.7 - work in progress
+* v3.1.7 - 2024-02-18
     * XRechnung 3.0.1 rules updated to reference EN 16931 rules 1.3.11 (was 1.3.10)
     * Added Peppol A-NZ-PEPPOL 1.0.10 rules
     * Moved Peppol A-NZ-PEPPOL 1.0.7 and 1.0.8 rules from `phive-rules-peppol` to `phive-rules-peppol-legacy`
     * Added support for Peppol Italy rules 3.0.2 (AGID Credit Note, Despatch Advice, Invoice, Order, Order Agreement and Order Response)
+    * Added Peppol PINT rules 1.0.0 and 1.0.1
 * v3.1.6 - 2023-11-30
     * Added Peppol November 2023 release (Billing 3.0.16 and Upgrade 3.0.12)
     * Moved Peppol 3.15.0 rules from `phive-rules-peppol` to `phive-rules-peppol-legacy`
