@@ -29,7 +29,7 @@ import com.helger.phive.xml.schematron.ValidationExecutorSchematron;
 import com.helger.phive.xml.source.IValidationSourceXML;
 import com.helger.phive.xml.xsd.ValidationExecutorXSD;
 import com.helger.ubl21.UBL21Marshaller;
-import com.helger.ubl21.UBL21NamespaceContext;
+import com.helger.xml.namespace.IIterableNamespaceContext;
 
 /**
  * Italian Peppol validation artefacts based on BIS 3.0.6.
@@ -77,9 +77,10 @@ public final class PeppolItalyValidation2_3_0
   {}
 
   @Nonnull
-  private static ValidationExecutorSchematron _createXSLT (@Nonnull final IReadableResource aRes)
+  private static ValidationExecutorSchematron _createXSLT (@Nonnull final IReadableResource aRes,
+                                                           @Nonnull final IIterableNamespaceContext aNamespaceContext)
   {
-    return ValidationExecutorSchematron.createXSLT (aRes, UBL21NamespaceContext.getInstance ());
+    return ValidationExecutorSchematron.createXSLT (aRes, aNamespaceContext);
   }
 
   public static void init (@Nonnull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
@@ -97,34 +98,44 @@ public final class PeppolItalyValidation2_3_0
                                                                                                 sAkaVersionBIS,
                                                                            bNotDeprecated,
                                                                            ValidationExecutorXSD.create (UBL21Marshaller.getAllDespatchAdviceXSDs ()),
-                                                                           _createXSLT (DESPATCH_ADVICE)));
+                                                                           _createXSLT (DESPATCH_ADVICE,
+                                                                                        PeppolItalyValidation.createUBLNSContext (UBL21Marshaller.despatchAdvice ()
+                                                                                                                                                 .getRootElementNamespaceURI ()))));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_INVOICE,
                                                                            "AGID Peppol Invoice" +
                                                                                         sVersion +
                                                                                         sAkaVersionBIS,
                                                                            bNotDeprecated,
                                                                            ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
-                                                                           _createXSLT (INVOICE)));
+                                                                           _createXSLT (INVOICE,
+                                                                                        PeppolItalyValidation.createUBLNSContext (UBL21Marshaller.invoice ()
+                                                                                                                                                 .getRootElementNamespaceURI ()))));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_ORDER,
                                                                            "AGID Peppol Order" +
                                                                                       sVersion +
                                                                                       sAkaVersionBIS,
                                                                            bNotDeprecated,
                                                                            ValidationExecutorXSD.create (UBL21Marshaller.getAllOrderXSDs ()),
-                                                                           _createXSLT (ORDER)));
+                                                                           _createXSLT (ORDER,
+                                                                                        PeppolItalyValidation.createUBLNSContext (UBL21Marshaller.order ()
+                                                                                                                                                 .getRootElementNamespaceURI ()))));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_ORDER_AGREEMENT,
                                                                            "AGID Peppol Order Agreement" +
                                                                                                 sVersion +
                                                                                                 sAkaVersionBIS,
                                                                            bNotDeprecated,
                                                                            ValidationExecutorXSD.create (UBL21Marshaller.getAllOrderResponseXSDs ()),
-                                                                           _createXSLT (ORDER_AGREEMENT)));
+                                                                           _createXSLT (ORDER_AGREEMENT,
+                                                                                        PeppolItalyValidation.createUBLNSContext (UBL21Marshaller.orderResponse ()
+                                                                                                                                                 .getRootElementNamespaceURI ()))));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_ORDER_RESPONSE,
                                                                            "AGID Peppol Order Response" +
                                                                                                sVersion +
                                                                                                sAkaVersionBIS,
                                                                            bNotDeprecated,
                                                                            ValidationExecutorXSD.create (UBL21Marshaller.getAllOrderResponseXSDs ()),
-                                                                           _createXSLT (ORDER_RESPONSE)));
+                                                                           _createXSLT (ORDER_RESPONSE,
+                                                                                        PeppolItalyValidation.createUBLNSContext (UBL21Marshaller.orderResponse ()
+                                                                                                                                                 .getRootElementNamespaceURI ()))));
   }
 }

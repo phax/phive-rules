@@ -18,11 +18,14 @@ package com.helger.phive.peppol.italy;
 
 import javax.annotation.Nonnull;
 import javax.annotation.concurrent.Immutable;
+import javax.xml.XMLConstants;
 
+import com.helger.commons.annotation.ReturnsMutableObject;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
 import com.helger.phive.xml.schematron.SchematronNamespaceBeautifier;
 import com.helger.phive.xml.source.IValidationSourceXML;
 import com.helger.ubl21.UBL21NamespaceContext;
+import com.helger.xml.namespace.MapBasedNamespaceContext;
 
 /**
  * Generic Peppol Italy validation configuration. It contains only the old
@@ -58,5 +61,20 @@ public final class PeppolItalyValidation
     PeppolItalyValidation2_2_9.init (aRegistry);
     PeppolItalyValidation2_3_0.init (aRegistry);
     PeppolItalyValidation3_0_2.init (aRegistry);
+  }
+
+  @Nonnull
+  @ReturnsMutableObject
+  static MapBasedNamespaceContext createUBLNSContext (@Nonnull final String sNamespaceURI)
+  {
+    final MapBasedNamespaceContext aNSContext = UBL21NamespaceContext.getInstance ().getClone ();
+
+    // Add the default mapping for the root namespace
+    aNSContext.addMapping (XMLConstants.DEFAULT_NS_PREFIX, sNamespaceURI);
+    // For historical reasons, the "ubl" prefix is also mapped to this
+    // namespace URI
+    aNSContext.addMapping ("ubl", sNamespaceURI);
+
+    return aNSContext;
   }
 }
