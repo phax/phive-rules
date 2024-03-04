@@ -118,31 +118,7 @@
         <executions>
           <!-- 
           <execution>
-            <id>aunz-peppol</id>
-            <goals>
-              <goal>convert</goal>
-            </goals>
-            <configuration>
-              <schematronDirectory>src/test/resources/external/rule-source/aunz-peppol/1.0.10</schematronDirectory>
-              <xsltDirectory>src/main/resources/external/schematron/peppol-aunz/1.0.10/xslt</xsltDirectory>
-            </configuration>
-          </execution>
-          -->
-          <!-- 
-          <execution>
-            <id>jp-pint</id>
-            <goals>
-              <goal>convert</goal>
-            </goals>
-            <configuration>
-              <schematronDirectory>src/test/resources/external/rule-source/jp-pint/0.1.2</schematronDirectory>
-              <xsltDirectory>src/main/resources/external/schematron/jp-pint/0.1.2/xslt</xsltDirectory>
-            </configuration>
-          </execution>
-          -->
-          <!-- 
-          <execution>
-            <id>peppol-regular</id>
+            <id>openpeppol</id>
             <goals>
               <goal>convert</goal>
             </goals>
@@ -162,6 +138,18 @@
             <configuration>
               <schematronDirectory>src/test/resources/external/rule-source/pint/1.0.1</schematronDirectory>
               <xsltDirectory>src/main/resources/external/schematron/pint/1.0.1/xslt</xsltDirectory>
+            </configuration>
+          </execution>
+          -->
+          <!-- 
+          <execution>
+            <id>pint-jp</id>
+            <goals>
+              <goal>convert</goal>
+            </goals>
+            <configuration>
+              <schematronDirectory>src/test/resources/external/rule-source/pint-jp/0.1.2</schematronDirectory>
+              <xsltDirectory>src/main/resources/external/schematron/pint-jp/0.1.2/xslt</xsltDirectory>
             </configuration>
           </execution>
           -->
@@ -186,6 +174,18 @@
             <configuration>
               <schematronDirectory>src/test/resources/external/rule-source/reporting/tsr/1.0.5</schematronDirectory>
               <xsltDirectory>src/main/resources/external/schematron/reporting/tsr/1.0.5/xslt</xsltDirectory>
+            </configuration>
+          </execution>
+          -->
+          <!-- 
+          <execution>
+            <id>aunz-peppol</id>
+            <goals>
+              <goal>convert</goal>
+            </goals>
+            <configuration>
+              <schematronDirectory>src/test/resources/external/rule-source/aunz-peppol/1.0.10</schematronDirectory>
+              <xsltDirectory>src/main/resources/external/schematron/peppol-aunz/1.0.10/xslt</xsltDirectory>
             </configuration>
           </execution>
           -->

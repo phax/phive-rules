@@ -45,7 +45,7 @@ public final class PeppolValidationJP
     return PeppolValidationJP.class.getClassLoader ();
   }
 
-  private static final String BASE_PATH = "external/schematron/jp-pint/";
+  private static final String BASE_PATH = "external/schematron/pint-jp/";
 
   // 0.1.2
   public static final VESID VID_OPENPEPPOL_JP_PINT_INVOICE_012 = new VESID ("org.peppol.jp.pint", "invoice", "0.1.2");

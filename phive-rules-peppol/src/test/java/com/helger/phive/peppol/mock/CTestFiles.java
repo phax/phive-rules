@@ -483,7 +483,7 @@ public final class CTestFiles
     /* Peppol JP */
     if (aVESID.equals (PeppolValidationJP.VID_OPENPEPPOL_JP_PINT_INVOICE_012))
     {
-      final String sPrefix = sPrefix0 + "jp-pint/0.1.2/";
+      final String sPrefix = sPrefix0 + "pint-jp/0.1.2/";
       return new CommonsArrayList <> (new FileSystemResource (sPrefix + "Japan PINT Invoice UBL Example.xml"),
                                       new FileSystemResource (sPrefix + "Japan PINT Invoice UBL Example1-minimum.xml"),
                                       new FileSystemResource (sPrefix +
