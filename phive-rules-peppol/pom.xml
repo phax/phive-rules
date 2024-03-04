@@ -172,8 +172,8 @@
               <goal>convert</goal>
             </goals>
             <configuration>
-              <schematronDirectory>src/test/resources/external/rule-source/reporting/eusr/1.1.4</schematronDirectory>
-              <xsltDirectory>src/main/resources/external/schematron/reporting/eusr/1.1.4/xslt</xsltDirectory>
+              <schematronDirectory>src/test/resources/external/rule-source/reporting/eusr/1.1.5</schematronDirectory>
+              <xsltDirectory>src/main/resources/external/schematron/reporting/eusr/1.1.5/xslt</xsltDirectory>
             </configuration>
           </execution>
           -->
@@ -184,8 +184,8 @@
               <goal>convert</goal>
             </goals>
             <configuration>
-              <schematronDirectory>src/test/resources/external/rule-source/reporting/tsr/1.0.4</schematronDirectory>
-              <xsltDirectory>src/main/resources/external/schematron/reporting/tsr/1.0.4/xslt</xsltDirectory>
+              <schematronDirectory>src/test/resources/external/rule-source/reporting/tsr/1.0.5</schematronDirectory>
+              <xsltDirectory>src/main/resources/external/schematron/reporting/tsr/1.0.5/xslt</xsltDirectory>
             </configuration>
           </execution>
           -->

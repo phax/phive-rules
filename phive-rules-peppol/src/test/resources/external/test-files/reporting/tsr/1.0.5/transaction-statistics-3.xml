@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+
+    Copyright (C) 2022-2023 Philip Helger
+    philip[at]helger[dot]com
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+            http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+
+-->
+<TransactionStatisticsReport xmlns="urn:fdc:peppol:transaction-statistics-report:1.0">
+  <CustomizationID>urn:fdc:peppol.eu:edec:trns:transaction-statistics-reporting:1.0</CustomizationID>
+  <ProfileID>urn:fdc:peppol.eu:edec:bis:reporting:1.0</ProfileID>
+  <Header>
+    <ReportPeriod>
+      <StartDate>2022-01-01</StartDate>
+      <EndDate>2022-01-31</EndDate>
+    </ReportPeriod>
+    <ReporterID schemeID="CertSubjectCN">POP000360</ReporterID>
+  </Header>
+
+  <!-- Totals -->
+  <Total>
+    <Incoming>0</Incoming>
+    <Outgoing>17</Outgoing>
+  </Total>
+
+  <!-- Sum per TP must match TotalCount -->
+  <Subtotal type="PerTP">
+    <Key metaSchemeID="TP" schemeID="Peppol">peppol-transport-as4-v2_0</Key>
+    <Incoming>0</Incoming>
+    <Outgoing>17</Outgoing>
+  </Subtotal>
+
+  <Subtotal type="PerSP-DT-PR">
+    <Key metaSchemeID="SP" schemeID="CertSubjectCN">POP000001</Key>
+    <Key metaSchemeID="DT" schemeID="busdox-docid-qns">urn:oasis:names:specification:ubl:schema:xsd:Invoice-2::Invoice##urn:cen.eu:en16931:2017#compliant#urn:fdc:peppol.eu:2017:poacc:billing:3.0::2.1</Key>
+    <Key metaSchemeID="PR" schemeID="cenbii-procid-ubl">urn:fdc:peppol.eu:2017:poacc:billing:01:1.0</Key>
+    <Incoming>0</Incoming>
+    <Outgoing>3</Outgoing>
+  </Subtotal>
+
+  <Subtotal type="PerSP-DT-PR">
+    <Key metaSchemeID="SP" schemeID="CertSubjectCN">POP000001</Key>
+    <Key metaSchemeID="DT" schemeID="busdox-docid-qns">urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2::CreditNote##urn:cen.eu:en16931:2017#compliant#urn:fdc:peppol.eu:2017:poacc:billing:3.0::2.1</Key>
+    <Key metaSchemeID="PR" schemeID="cenbii-procid-ubl">urn:fdc:peppol.eu:2017:poacc:billing:01:1.0</Key>
+    <Incoming>0</Incoming>
+    <Outgoing>2</Outgoing>
+  </Subtotal>
+
+  <Subtotal type="PerSP-DT-PR">
+    <Key metaSchemeID="SP" schemeID="CertSubjectCN">POP000002</Key>
+    <Key metaSchemeID="DT" schemeID="busdox-docid-qns">urn:oasis:names:specification:ubl:schema:xsd:Order-2::Order##urn:fdc:peppol.eu:poacc:trns:order:3::2.1</Key>
+    <Key metaSchemeID="PR" schemeID="cenbii-procid-ubl">cenbii-procid-ubl::urn:fdc:peppol.eu:poacc:bis:ordering:3</Key>
+    <Incoming>0</Incoming>
+    <Outgoing>12</Outgoing>
+  </Subtotal>
+</TransactionStatisticsReport>

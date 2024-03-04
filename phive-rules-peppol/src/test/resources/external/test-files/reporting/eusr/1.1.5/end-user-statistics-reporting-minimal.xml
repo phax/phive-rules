@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<EndUserStatisticsReport xmlns="urn:fdc:peppol:end-user-statistics-report:1.1">
+  <CustomizationID>urn:fdc:peppol.eu:edec:trns:end-user-statistics-report:1.1</CustomizationID>
+  <ProfileID>urn:fdc:peppol.eu:edec:bis:reporting:1.0</ProfileID>
+  <Header>
+    <ReportPeriod>
+      <StartDate>2022-01-01</StartDate>
+      <EndDate>2022-01-31</EndDate>
+    </ReportPeriod>
+    <ReporterID schemeID="CertSubjectCN">POP000360</ReporterID>
+  </Header>
+  <!-- Full set -->
+  <FullSet>
+    <SendingEndUsers>1</SendingEndUsers>
+    <ReceivingEndUsers>0</ReceivingEndUsers>
+    <SendingOrReceivingEndUsers>1</SendingOrReceivingEndUsers>
+  </FullSet>
+  <!-- Subsets per Dataset Type and Process ID -->
+  <Subset type="PerDT-PR">
+    <Key metaSchemeID="DT" schemeID="busdox-docid-qns">urn:oasis:names:specification:ubl:schema:xsd:Invoice-2::Invoice##urn:cen.eu:en16931:2017#compliant#urn:fdc:peppol.eu:2017:poacc:billing:3.0::2.1</Key>
+    <Key metaSchemeID="PR" schemeID="cenbii-procid-ubl">urn:fdc:peppol.eu:2017:poacc:billing:01:1.0</Key>
+    <!-- Not incoming/outgoing this time -->
+    <SendingEndUsers>1</SendingEndUsers>
+    <ReceivingEndUsers>0</ReceivingEndUsers>
+    <SendingOrReceivingEndUsers>1</SendingOrReceivingEndUsers>
+  </Subset>
+  <!-- Subsets per Dataset Type and End User Country -->
+  <Subset type="PerDT-EUC">
+    <Key metaSchemeID="DT" schemeID="busdox-docid-qns">urn:oasis:names:specification:ubl:schema:xsd:Invoice-2::Invoice##urn:cen.eu:en16931:2017#compliant#urn:fdc:peppol.eu:2017:poacc:billing:3.0::2.1</Key>
+    <Key metaSchemeID="CC" schemeID="EndUserCountry">PT</Key>
+    <SendingEndUsers>1</SendingEndUsers>
+    <ReceivingEndUsers>0</ReceivingEndUsers>
+    <SendingOrReceivingEndUsers>1</SendingOrReceivingEndUsers>
+  </Subset>
+  <!-- Subsets per End User Country -->
+  <Subset type="PerEUC">
+    <Key metaSchemeID="CC" schemeID="EndUserCountry">PT</Key>
+    <SendingEndUsers>1</SendingEndUsers>
+    <ReceivingEndUsers>0</ReceivingEndUsers>
+    <SendingOrReceivingEndUsers>1</SendingOrReceivingEndUsers>
+  </Subset>
+</EndUserStatisticsReport>
