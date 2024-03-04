@@ -153,6 +153,30 @@
             </configuration>
           </execution>
           -->
+          <!-- 
+          <execution>
+            <id>pint-my-billing</id>
+            <goals>
+              <goal>convert</goal>
+            </goals>
+            <configuration>
+              <schematronDirectory>src/test/resources/external/rule-source/pint-my/1.0.0/billing</schematronDirectory>
+              <xsltDirectory>src/main/resources/external/schematron/pint-my/1.0.0/billing</xsltDirectory>
+            </configuration>
+          </execution>
+          -->
+          <!-- 
+          <execution>
+            <id>pint-my-selfbilling</id>
+            <goals>
+              <goal>convert</goal>
+            </goals>
+            <configuration>
+              <schematronDirectory>src/test/resources/external/rule-source/pint-my/1.0.0/selfbilling</schematronDirectory>
+              <xsltDirectory>src/main/resources/external/schematron/pint-my/1.0.0/selfbilling</xsltDirectory>
+            </configuration>
+          </execution>
+          -->
           <!--
           <execution>
             <id>reporting-eusr</id>
