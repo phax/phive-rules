@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns="urn:fdc:peppol:end-user-statistics-report:1.1"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="urn:fdc:peppol:end-user-statistics-report:1.1"
+           elementFormDefault="qualified"
+           attributeFormDefault="unqualified">
+  <xs:annotation>
+    <xs:documentation>
+      This is the XML schema for the Peppol End User Statistics Reporting.
+      This is based on the "Internal Regulations" document,
+        chapter 4.3 "Service Provider Reporting about End Users"
+
+      Author:
+        Philip Helger
+
+      History:
+        EUSR 1.1.0
+        * 2023-03-29, Muhammet Yildiz - namespaces updated
+        EUSR 1.0.0
+        * 2023-03-06, Philip Helger - updates after second review
+        EUSR RC2
+        * 2022-11-04, Muhammet Yildiz, Philip Helger - updates after the first review
+        EUR RC1
+        * 2022-04-14, Philip Helger - initial version
+    </xs:documentation>
+  </xs:annotation>
+
+  <xs:complexType name="IDType">
+    <xs:annotation>
+      <xs:documentation>
+        A generic ID type with an optional "schemeID" attribute and a value
+      </xs:documentation>
+    </xs:annotation>
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute name="schemeID" type="xs:string" use="optional">
+          <xs:annotation>
+            <xs:documentation>ID scheme</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <xs:complexType name="ReportPeriodType">
+    <xs:annotation>
+      <xs:documentation>The type for the report period.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="StartDate" type="xs:date">
+        <xs:annotation>
+          <xs:documentation>
+            The first day (inclusive) of the reporting period covered by that report.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="EndDate" type="xs:date">
+        <xs:annotation>
+          <xs:documentation>
+            The last day (inclusive) of the reporting period covered by that report.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="HeaderType">
+    <xs:annotation>
+      <xs:documentation>
+        The type for the report header metadata.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="ReportPeriod" type="ReportPeriodType">
+        <xs:annotation>
+          <xs:documentation>
+            The period that this report covers.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ReporterID" type="IDType">
+        <xs:annotation>
+          <xs:documentation>
+            The unique identification of the Service Provider that is providing the data.
+            If the "schemeID" attribute is set to "CertSubjectCN" than the value must be
+            the Peppol AP Certificate Subject CN (Common Name).
+            Other scheme IDs are currently not supported.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="FullSetType">
+    <xs:sequence>
+      <xs:element name="SendingEndUsers" type="xs:nonNegativeInteger"/>
+      <xs:element name="ReceivingEndUsers" type="xs:nonNegativeInteger"/>
+      <xs:element name="SendingOrReceivingEndUsers" type="xs:nonNegativeInteger"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="SubsetKeyType">
+    <xs:annotation>
+      <xs:documentation>
+        A key type with mandatory "metaSchemeID" and "schemeID" attributes and a value
+      </xs:documentation>
+    </xs:annotation>
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute name="metaSchemeID" type="xs:token" use="required">
+          <xs:annotation>
+            <xs:documentation>
+              Meta ID scheme. See the BIS for details.
+              This list is extensible for future use cases and hence not checked by XSD.
+            </xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="schemeID" type="xs:string" use="required">
+          <xs:annotation>
+            <xs:documentation>
+              The ID scheme of the key, depending on the Meta Scheme ID.
+            </xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <xs:complexType name="SubsetType">
+    <xs:sequence>
+      <xs:element name="Key" type="SubsetKeyType" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>The subset keys</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="SendingEndUsers" type="xs:nonNegativeInteger">
+        <xs:annotation>
+          <xs:documentation>Number of matching effective sending End Users</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ReceivingEndUsers" type="xs:nonNegativeInteger">
+        <xs:annotation>
+          <xs:documentation>Number of matching effective receiving End Users</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="SendingOrReceivingEndUsers" type="xs:nonNegativeInteger">
+        <xs:annotation>
+          <xs:documentation>Number of matching effective sending OR receiving End Users</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="type" type="xs:token" use="required">
+      <xs:annotation>
+        <xs:documentation>Defines the expected Key elements and their meta schemes.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+
+  <xs:complexType name="EndUserStatisticsReportType">
+    <xs:annotation>
+      <xs:appinfo>
+        This type is used to represent a single Peppol End User Statistics Report.
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="CustomizationID" type="IDType">
+        <xs:annotation>
+          <xs:documentation>
+            Identifies a customization of this format for a specific use.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ProfileID" type="IDType">
+        <xs:annotation>
+          <xs:documentation>
+            Identifies the business process context in which the transaction appears.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Header" type="HeaderType">
+        <xs:annotation>
+          <xs:documentation>
+            Identifies the metadata of the report.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="FullSet" type="FullSetType" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="Subset" type="SubsetType" minOccurs="0" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>
+            A subset representing the number of sending and/or receiving end users for
+            a particular combination of constraints.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:element name="EndUserStatisticsReport" type="EndUserStatisticsReportType">
+    <xs:annotation>
+      <xs:documentation>
+        This is the root element for a single Peppol End User Statistics Report.
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+</xs:schema>

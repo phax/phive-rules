@@ -115,20 +115,9 @@ public final class CTestFiles
                                             PeppolValidationDirectory.VID_OPENPEPPOL_BUSINESS_CARD_V3,
 
                                             /* Reporting */
-                                            PeppolValidationReporting.VID_OPENPEPPOL_EUSR_V100RC2,
-                                            PeppolValidationReporting.VID_OPENPEPPOL_EUSR_V100,
-                                            PeppolValidationReporting.VID_OPENPEPPOL_EUSR_V101,
-                                            PeppolValidationReporting.VID_OPENPEPPOL_EUSR_V110,
-                                            PeppolValidationReporting.VID_OPENPEPPOL_EUSR_V111,
-                                            PeppolValidationReporting.VID_OPENPEPPOL_EUSR_V112,
-                                            PeppolValidationReporting.VID_OPENPEPPOL_EUSR_V113,
                                             PeppolValidationReporting.VID_OPENPEPPOL_EUSR_V114,
                                             PeppolValidationReporting.VID_OPENPEPPOL_EUSR_V115,
 
-                                            PeppolValidationReporting.VID_OPENPEPPOL_TSR_V100,
-                                            PeppolValidationReporting.VID_OPENPEPPOL_TSR_V101,
-                                            PeppolValidationReporting.VID_OPENPEPPOL_TSR_V102,
-                                            PeppolValidationReporting.VID_OPENPEPPOL_TSR_V103,
                                             PeppolValidationReporting.VID_OPENPEPPOL_TSR_V104,
                                             PeppolValidationReporting.VID_OPENPEPPOL_TSR_V105,
 
@@ -452,69 +441,6 @@ public final class CTestFiles
 
     /* Peppol Reporting */
     // EUSR
-    if (aVESID.equals (PeppolValidationReporting.VID_OPENPEPPOL_EUSR_V100RC2))
-    {
-      final String sPrefix = sPrefix0 + "reporting/eusr/1.0.0-RC2/";
-      return new CommonsArrayList <> (new FileSystemResource (sPrefix + "end-user-statistics-reporting-1.xml"),
-                                      new FileSystemResource (sPrefix + "end-user-statistics-reporting-empty.xml"),
-                                      new FileSystemResource (sPrefix + "end-user-statistics-reporting-minimal.xml"));
-    }
-    if (aVESID.equals (PeppolValidationReporting.VID_OPENPEPPOL_EUSR_V100))
-    {
-      final String sPrefix = sPrefix0 + "reporting/eusr/1.0.0/";
-      return new CommonsArrayList <> (new FileSystemResource (sPrefix + "end-user-statistics-reporting-1.xml"),
-                                      new FileSystemResource (sPrefix + "end-user-statistics-reporting-empty.xml"),
-                                      new FileSystemResource (sPrefix + "end-user-statistics-reporting-minimal.xml"));
-    }
-    if (aVESID.equals (PeppolValidationReporting.VID_OPENPEPPOL_EUSR_V101))
-    {
-      final String sPrefix = sPrefix0 + "reporting/eusr/1.0.1/";
-      return new CommonsArrayList <> (new FileSystemResource (sPrefix + "end-user-statistics-reporting-1.xml"),
-                                      new FileSystemResource (sPrefix + "end-user-statistics-reporting-2.xml"),
-                                      new FileSystemResource (sPrefix + "end-user-statistics-reporting-empty.xml"),
-                                      new FileSystemResource (sPrefix + "end-user-statistics-reporting-minimal.xml"));
-    }
-    if (aVESID.equals (PeppolValidationReporting.VID_OPENPEPPOL_EUSR_V110))
-    {
-      final String sPrefix = sPrefix0 + "reporting/eusr/1.1.0/";
-      return new CommonsArrayList <> (new FileSystemResource (sPrefix + "end-user-statistics-reporting-1.xml"),
-                                      new FileSystemResource (sPrefix + "end-user-statistics-reporting-2.xml"),
-                                      new FileSystemResource (sPrefix + "end-user-statistics-reporting-empty.xml"),
-                                      new FileSystemResource (sPrefix + "end-user-statistics-reporting-minimal.xml"),
-                                      new FileSystemResource (sPrefix + "eusr-generated-1.xml"),
-                                      new FileSystemResource (sPrefix + "eusr-good-template.xml"));
-    }
-    if (aVESID.equals (PeppolValidationReporting.VID_OPENPEPPOL_EUSR_V111))
-    {
-      final String sPrefix = sPrefix0 + "reporting/eusr/1.1.1/";
-      return new CommonsArrayList <> (new FileSystemResource (sPrefix + "end-user-statistics-reporting-1.xml"),
-                                      new FileSystemResource (sPrefix + "end-user-statistics-reporting-2.xml"),
-                                      new FileSystemResource (sPrefix + "end-user-statistics-reporting-empty.xml"),
-                                      new FileSystemResource (sPrefix + "end-user-statistics-reporting-minimal.xml"),
-                                      new FileSystemResource (sPrefix + "eusr-generated-1.xml"),
-                                      new FileSystemResource (sPrefix + "eusr-good-template.xml"));
-    }
-    if (aVESID.equals (PeppolValidationReporting.VID_OPENPEPPOL_EUSR_V112))
-    {
-      final String sPrefix = sPrefix0 + "reporting/eusr/1.1.2/";
-      return new CommonsArrayList <> (new FileSystemResource (sPrefix + "end-user-statistics-reporting-1.xml"),
-                                      new FileSystemResource (sPrefix + "end-user-statistics-reporting-2.xml"),
-                                      new FileSystemResource (sPrefix + "end-user-statistics-reporting-empty.xml"),
-                                      new FileSystemResource (sPrefix + "end-user-statistics-reporting-minimal.xml"),
-                                      new FileSystemResource (sPrefix + "eusr-generated-1.xml"),
-                                      new FileSystemResource (sPrefix + "eusr-good-template.xml"));
-    }
-    if (aVESID.equals (PeppolValidationReporting.VID_OPENPEPPOL_EUSR_V113))
-    {
-      final String sPrefix = sPrefix0 + "reporting/eusr/1.1.3/";
-      return new CommonsArrayList <> (new FileSystemResource (sPrefix + "end-user-statistics-reporting-1.xml"),
-                                      new FileSystemResource (sPrefix + "end-user-statistics-reporting-2.xml"),
-                                      new FileSystemResource (sPrefix + "end-user-statistics-reporting-3.xml"),
-                                      new FileSystemResource (sPrefix + "end-user-statistics-reporting-empty.xml"),
-                                      new FileSystemResource (sPrefix + "end-user-statistics-reporting-minimal.xml"),
-                                      new FileSystemResource (sPrefix + "eusr-generated-1.xml"),
-                                      new FileSystemResource (sPrefix + "eusr-good-template.xml"));
-    }
     if (aVESID.equals (PeppolValidationReporting.VID_OPENPEPPOL_EUSR_V114))
     {
       final String sPrefix = sPrefix0 + "reporting/eusr/1.1.4/";
@@ -537,30 +463,6 @@ public final class CTestFiles
     }
 
     // TSR
-    if (aVESID.equals (PeppolValidationReporting.VID_OPENPEPPOL_TSR_V100))
-    {
-      final String sPrefix = sPrefix0 + "reporting/tsr/1.0.0/";
-      return new CommonsArrayList <> (new FileSystemResource (sPrefix + "transaction-statistics-2.xml"),
-                                      new FileSystemResource (sPrefix + "transaction-statistics-minimal.xml"));
-    }
-    if (aVESID.equals (PeppolValidationReporting.VID_OPENPEPPOL_TSR_V101))
-    {
-      final String sPrefix = sPrefix0 + "reporting/tsr/1.0.1/";
-      return new CommonsArrayList <> (new FileSystemResource (sPrefix + "transaction-statistics-2.xml"),
-                                      new FileSystemResource (sPrefix + "transaction-statistics-minimal.xml"));
-    }
-    if (aVESID.equals (PeppolValidationReporting.VID_OPENPEPPOL_TSR_V102))
-    {
-      final String sPrefix = sPrefix0 + "reporting/tsr/1.0.2/";
-      return new CommonsArrayList <> (new FileSystemResource (sPrefix + "transaction-statistics-2.xml"),
-                                      new FileSystemResource (sPrefix + "transaction-statistics-minimal.xml"));
-    }
-    if (aVESID.equals (PeppolValidationReporting.VID_OPENPEPPOL_TSR_V103))
-    {
-      final String sPrefix = sPrefix0 + "reporting/tsr/1.0.3/";
-      return new CommonsArrayList <> (new FileSystemResource (sPrefix + "transaction-statistics-2.xml"),
-                                      new FileSystemResource (sPrefix + "transaction-statistics-minimal.xml"));
-    }
     if (aVESID.equals (PeppolValidationReporting.VID_OPENPEPPOL_TSR_V104))
     {
       final String sPrefix = sPrefix0 + "reporting/tsr/1.0.4/";

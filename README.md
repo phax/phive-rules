@@ -194,6 +194,7 @@ I hope that with the introduction of PINT, the versioning problem will be solved
 * v3.1.8 - 2024-03-04
     * Added support for Peppol Reporting EUSR v1.1.5 and deprecated v1.1.4
     * Added support for Peppol Reporting TSR v1.0.5 and deprecated v1.0.4
+    * Moved old versions of Peppol Reporting validation to `phive-rules-peppol-legacy`
 * v3.1.7 - 2024-02-18
     * XRechnung 3.0.1 rules updated to reference EN 16931 rules 1.3.11 (was 1.3.10)
     * Added Peppol A-NZ-PEPPOL 1.0.10 rules

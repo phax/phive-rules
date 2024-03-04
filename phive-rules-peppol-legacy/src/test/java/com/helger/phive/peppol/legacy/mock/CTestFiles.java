@@ -34,6 +34,7 @@ import com.helger.phive.api.mock.TestFile;
 import com.helger.phive.peppol.legacy.PeppolLegacyThirdpartyValidation;
 import com.helger.phive.peppol.legacy.PeppolLegacyValidation;
 import com.helger.phive.peppol.legacy.PeppolLegacyValidationAUNZ;
+import com.helger.phive.peppol.legacy.PeppolLegacyValidationReporting;
 import com.helger.phive.peppol.legacy.PeppolLegacyValidationSG;
 import com.helger.phive.peppol.legacy.PeppolValidation370;
 import com.helger.phive.peppol.legacy.PeppolValidation381;
@@ -60,6 +61,7 @@ public final class CTestFiles
     PeppolLegacyThirdpartyValidation.init (VES_REGISTRY);
     PeppolLegacyValidationAUNZ.init (VES_REGISTRY);
     PeppolLegacyValidationSG.init (VES_REGISTRY);
+    PeppolLegacyValidationReporting.init (VES_REGISTRY);
   }
 
   private CTestFiles ()
@@ -267,6 +269,20 @@ public final class CTestFiles
                                             PeppolValidation3_15_0.VID_OPENPEPPOL_PUNCH_OUT_V3,
                                             PeppolValidation3_15_0.VID_OPENPEPPOL_ORDER_AGREEMENT_V3,
                                             PeppolValidation3_15_0.VID_OPENPEPPOL_INVOICE_MESSAGE_RESPONSE_V3,
+
+                                            /* Reporting */
+                                            PeppolLegacyValidationReporting.VID_OPENPEPPOL_EUSR_V100RC2,
+                                            PeppolLegacyValidationReporting.VID_OPENPEPPOL_EUSR_V100,
+                                            PeppolLegacyValidationReporting.VID_OPENPEPPOL_EUSR_V101,
+                                            PeppolLegacyValidationReporting.VID_OPENPEPPOL_EUSR_V110,
+                                            PeppolLegacyValidationReporting.VID_OPENPEPPOL_EUSR_V111,
+                                            PeppolLegacyValidationReporting.VID_OPENPEPPOL_EUSR_V112,
+                                            PeppolLegacyValidationReporting.VID_OPENPEPPOL_EUSR_V113,
+
+                                            PeppolLegacyValidationReporting.VID_OPENPEPPOL_TSR_V100,
+                                            PeppolLegacyValidationReporting.VID_OPENPEPPOL_TSR_V101,
+                                            PeppolLegacyValidationReporting.VID_OPENPEPPOL_TSR_V102,
+                                            PeppolLegacyValidationReporting.VID_OPENPEPPOL_TSR_V103,
 
     })
       for (final IReadableResource aRes : getAllMatchingTestFiles (aESID))
@@ -1212,6 +1228,98 @@ public final class CTestFiles
                                         new FileSystemResource (sBase2 + "T111-uc007-Payment has been initiated.xml"),
                                         new FileSystemResource (sBase2 +
                                                                 "T111-uc008-Invoice is accepted by third party.xml"));
+    }
+
+    /* Peppol Reporting */
+    // EUSR
+    if (aVESID.equals (PeppolLegacyValidationReporting.VID_OPENPEPPOL_EUSR_V100RC2))
+    {
+      final String sPrefix = sPrefix0 + "reporting/eusr/1.0.0-RC2/";
+      return new CommonsArrayList <> (new FileSystemResource (sPrefix + "end-user-statistics-reporting-1.xml"),
+                                      new FileSystemResource (sPrefix + "end-user-statistics-reporting-empty.xml"),
+                                      new FileSystemResource (sPrefix + "end-user-statistics-reporting-minimal.xml"));
+    }
+    if (aVESID.equals (PeppolLegacyValidationReporting.VID_OPENPEPPOL_EUSR_V100))
+    {
+      final String sPrefix = sPrefix0 + "reporting/eusr/1.0.0/";
+      return new CommonsArrayList <> (new FileSystemResource (sPrefix + "end-user-statistics-reporting-1.xml"),
+                                      new FileSystemResource (sPrefix + "end-user-statistics-reporting-empty.xml"),
+                                      new FileSystemResource (sPrefix + "end-user-statistics-reporting-minimal.xml"));
+    }
+    if (aVESID.equals (PeppolLegacyValidationReporting.VID_OPENPEPPOL_EUSR_V101))
+    {
+      final String sPrefix = sPrefix0 + "reporting/eusr/1.0.1/";
+      return new CommonsArrayList <> (new FileSystemResource (sPrefix + "end-user-statistics-reporting-1.xml"),
+                                      new FileSystemResource (sPrefix + "end-user-statistics-reporting-2.xml"),
+                                      new FileSystemResource (sPrefix + "end-user-statistics-reporting-empty.xml"),
+                                      new FileSystemResource (sPrefix + "end-user-statistics-reporting-minimal.xml"));
+    }
+    if (aVESID.equals (PeppolLegacyValidationReporting.VID_OPENPEPPOL_EUSR_V110))
+    {
+      final String sPrefix = sPrefix0 + "reporting/eusr/1.1.0/";
+      return new CommonsArrayList <> (new FileSystemResource (sPrefix + "end-user-statistics-reporting-1.xml"),
+                                      new FileSystemResource (sPrefix + "end-user-statistics-reporting-2.xml"),
+                                      new FileSystemResource (sPrefix + "end-user-statistics-reporting-empty.xml"),
+                                      new FileSystemResource (sPrefix + "end-user-statistics-reporting-minimal.xml"),
+                                      new FileSystemResource (sPrefix + "eusr-generated-1.xml"),
+                                      new FileSystemResource (sPrefix + "eusr-good-template.xml"));
+    }
+    if (aVESID.equals (PeppolLegacyValidationReporting.VID_OPENPEPPOL_EUSR_V111))
+    {
+      final String sPrefix = sPrefix0 + "reporting/eusr/1.1.1/";
+      return new CommonsArrayList <> (new FileSystemResource (sPrefix + "end-user-statistics-reporting-1.xml"),
+                                      new FileSystemResource (sPrefix + "end-user-statistics-reporting-2.xml"),
+                                      new FileSystemResource (sPrefix + "end-user-statistics-reporting-empty.xml"),
+                                      new FileSystemResource (sPrefix + "end-user-statistics-reporting-minimal.xml"),
+                                      new FileSystemResource (sPrefix + "eusr-generated-1.xml"),
+                                      new FileSystemResource (sPrefix + "eusr-good-template.xml"));
+    }
+    if (aVESID.equals (PeppolLegacyValidationReporting.VID_OPENPEPPOL_EUSR_V112))
+    {
+      final String sPrefix = sPrefix0 + "reporting/eusr/1.1.2/";
+      return new CommonsArrayList <> (new FileSystemResource (sPrefix + "end-user-statistics-reporting-1.xml"),
+                                      new FileSystemResource (sPrefix + "end-user-statistics-reporting-2.xml"),
+                                      new FileSystemResource (sPrefix + "end-user-statistics-reporting-empty.xml"),
+                                      new FileSystemResource (sPrefix + "end-user-statistics-reporting-minimal.xml"),
+                                      new FileSystemResource (sPrefix + "eusr-generated-1.xml"),
+                                      new FileSystemResource (sPrefix + "eusr-good-template.xml"));
+    }
+    if (aVESID.equals (PeppolLegacyValidationReporting.VID_OPENPEPPOL_EUSR_V113))
+    {
+      final String sPrefix = sPrefix0 + "reporting/eusr/1.1.3/";
+      return new CommonsArrayList <> (new FileSystemResource (sPrefix + "end-user-statistics-reporting-1.xml"),
+                                      new FileSystemResource (sPrefix + "end-user-statistics-reporting-2.xml"),
+                                      new FileSystemResource (sPrefix + "end-user-statistics-reporting-3.xml"),
+                                      new FileSystemResource (sPrefix + "end-user-statistics-reporting-empty.xml"),
+                                      new FileSystemResource (sPrefix + "end-user-statistics-reporting-minimal.xml"),
+                                      new FileSystemResource (sPrefix + "eusr-generated-1.xml"),
+                                      new FileSystemResource (sPrefix + "eusr-good-template.xml"));
+    }
+
+    // TSR
+    if (aVESID.equals (PeppolLegacyValidationReporting.VID_OPENPEPPOL_TSR_V100))
+    {
+      final String sPrefix = sPrefix0 + "reporting/tsr/1.0.0/";
+      return new CommonsArrayList <> (new FileSystemResource (sPrefix + "transaction-statistics-2.xml"),
+                                      new FileSystemResource (sPrefix + "transaction-statistics-minimal.xml"));
+    }
+    if (aVESID.equals (PeppolLegacyValidationReporting.VID_OPENPEPPOL_TSR_V101))
+    {
+      final String sPrefix = sPrefix0 + "reporting/tsr/1.0.1/";
+      return new CommonsArrayList <> (new FileSystemResource (sPrefix + "transaction-statistics-2.xml"),
+                                      new FileSystemResource (sPrefix + "transaction-statistics-minimal.xml"));
+    }
+    if (aVESID.equals (PeppolLegacyValidationReporting.VID_OPENPEPPOL_TSR_V102))
+    {
+      final String sPrefix = sPrefix0 + "reporting/tsr/1.0.2/";
+      return new CommonsArrayList <> (new FileSystemResource (sPrefix + "transaction-statistics-2.xml"),
+                                      new FileSystemResource (sPrefix + "transaction-statistics-minimal.xml"));
+    }
+    if (aVESID.equals (PeppolLegacyValidationReporting.VID_OPENPEPPOL_TSR_V103))
+    {
+      final String sPrefix = sPrefix0 + "reporting/tsr/1.0.3/";
+      return new CommonsArrayList <> (new FileSystemResource (sPrefix + "transaction-statistics-2.xml"),
+                                      new FileSystemResource (sPrefix + "transaction-statistics-minimal.xml"));
     }
 
     throw new IllegalArgumentException ("Invalid VESID: " + aVESID);
