@@ -48,12 +48,21 @@ public final class PeppolValidationPINT
   private static final String BASE_PATH = "external/schematron/pint/";
 
   // 1.0.0
+  @Deprecated
+  public static final ClassPathResource RES_OPENPEPPOL_PINT_1_0_0 = new ClassPathResource (BASE_PATH +
+                                                                                           "1.0.0/xslt/PINT-UBL-validation-preprocessed.xslt",
+                                                                                           _getCL ());
+  @Deprecated
   public static final VESID VID_OPENPEPPOL_PINT_INVOICE_1_0_0 = new VESID ("org.peppol.pint", "invoice", "1.0.0");
+  @Deprecated
   public static final VESID VID_OPENPEPPOL_PINT_CREDIT_NOTE_1_0_0 = new VESID ("org.peppol.pint",
                                                                                "credit-note",
                                                                                "1.0.0");
 
   // 1.0.1
+  public static final ClassPathResource RES_OPENPEPPOL_PINT_1_0_1 = new ClassPathResource (BASE_PATH +
+                                                                                           "1.0.1/xslt/PINT-UBL-validation-preprocessed.xslt",
+                                                                                           _getCL ());
   public static final VESID VID_OPENPEPPOL_PINT_INVOICE_1_0_1 = new VESID ("org.peppol.pint", "invoice", "1.0.1");
   public static final VESID VID_OPENPEPPOL_PINT_CREDIT_NOTE_1_0_1 = new VESID ("org.peppol.pint",
                                                                                "credit-note",
@@ -74,43 +83,38 @@ public final class PeppolValidationPINT
     // For better error messages (merge both)
     SchematronNamespaceBeautifier.addMappings (aNSCtxCreditNote);
 
+    final boolean bDeprecated = true;
     final boolean bNotDeprecated = false;
 
     // 1.0.0
     {
-      final ClassPathResource aCPR = new ClassPathResource (BASE_PATH +
-                                                            "1.0.0/xslt/PINT-UBL-validation-preprocessed.xslt",
-                                                            _getCL ());
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_PINT_INVOICE_1_0_0,
                                                                              "OpenPeppol PINT Invoice (UBL) 1.0.0",
-                                                                             bNotDeprecated,
+                                                                             bDeprecated,
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
-                                                                             ValidationExecutorSchematron.createXSLT (aCPR,
+                                                                             ValidationExecutorSchematron.createXSLT (RES_OPENPEPPOL_PINT_1_0_0,
                                                                                                                       aNSCtxInvoice)));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_PINT_CREDIT_NOTE_1_0_0,
                                                                              "OpenPeppol PINT Credit Note (UBL) 1.0.0",
-                                                                             bNotDeprecated,
+                                                                             bDeprecated,
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
-                                                                             ValidationExecutorSchematron.createXSLT (aCPR,
+                                                                             ValidationExecutorSchematron.createXSLT (RES_OPENPEPPOL_PINT_1_0_0,
                                                                                                                       aNSCtxCreditNote)));
     }
 
     // 1.0.1
     {
-      final ClassPathResource aCPR = new ClassPathResource (BASE_PATH +
-                                                            "1.0.1/xslt/PINT-UBL-validation-preprocessed.xslt",
-                                                            _getCL ());
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_PINT_INVOICE_1_0_1,
                                                                              "OpenPeppol PINT Invoice (UBL) 1.0.1",
                                                                              bNotDeprecated,
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
-                                                                             ValidationExecutorSchematron.createXSLT (aCPR,
+                                                                             ValidationExecutorSchematron.createXSLT (RES_OPENPEPPOL_PINT_1_0_1,
                                                                                                                       aNSCtxInvoice)));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_PINT_CREDIT_NOTE_1_0_1,
                                                                              "OpenPeppol PINT Credit Note (UBL) 1.0.1",
                                                                              bNotDeprecated,
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
-                                                                             ValidationExecutorSchematron.createXSLT (aCPR,
+                                                                             ValidationExecutorSchematron.createXSLT (RES_OPENPEPPOL_PINT_1_0_1,
                                                                                                                       aNSCtxCreditNote)));
     }
   }

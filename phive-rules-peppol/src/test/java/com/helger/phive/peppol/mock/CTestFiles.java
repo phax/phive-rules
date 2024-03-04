@@ -36,6 +36,7 @@ import com.helger.phive.peppol.PeppolValidation2023_11;
 import com.helger.phive.peppol.PeppolValidationAUNZ;
 import com.helger.phive.peppol.PeppolValidationDirectory;
 import com.helger.phive.peppol.PeppolValidationJP;
+import com.helger.phive.peppol.PeppolValidationMY;
 import com.helger.phive.peppol.PeppolValidationReporting;
 import com.helger.phive.peppol.PeppolValidationSG;
 import com.helger.phive.xml.source.IValidationSourceXML;
@@ -123,7 +124,15 @@ public final class CTestFiles
 
                                             /* Japan */
                                             PeppolValidationJP.VID_OPENPEPPOL_JP_PINT_INVOICE_012,
-                                            PeppolValidationJP.VID_OPENPEPPOL_JP_PINT_CREDIT_NOTE_012 })
+                                            PeppolValidationJP.VID_OPENPEPPOL_JP_PINT_CREDIT_NOTE_012,
+
+                                            /* Malaysia */
+                                            PeppolValidationMY.VID_OPENPEPPOL_MY_PINT_UBL_INVOICE_1_0_0,
+                                            PeppolValidationMY.VID_OPENPEPPOL_MY_PINT_UBL_CREDIT_NOTE_1_0_0,
+                                            PeppolValidationMY.VID_OPENPEPPOL_MY_PINT_UBL_INVOICE_SELF_BILLING_1_0_0,
+                                            PeppolValidationMY.VID_OPENPEPPOL_MY_PINT_UBL_CREDIT_NOTE_SELF_BILLING_1_0_0,
+
+    })
       for (final IReadableResource aRes : getAllMatchingTestFiles (aESID))
       {
         assertTrue ("Not existing test file: " + aRes.getPath (), aRes.exists ());
@@ -500,8 +509,33 @@ public final class CTestFiles
     }
     if (aVESID.equals (PeppolValidationJP.VID_OPENPEPPOL_JP_PINT_CREDIT_NOTE_012))
     {
+      // empty
       return new CommonsArrayList <> ();
     }
+
+    /* Peppol Malaysia */
+    if (aVESID.equals (PeppolValidationMY.VID_OPENPEPPOL_MY_PINT_UBL_INVOICE_1_0_0))
+    {
+      final String sPrefix = sPrefix0 + "pint-my/1.0.0/invoice/";
+      return new CommonsArrayList <> (new FileSystemResource (sPrefix + "17022014MyPINT0.9Sample_MultiTaxRate.xml"),
+                                      new FileSystemResource (sPrefix + "17022024MyPINT0.9Sample_Common.xml"));
+    }
+    if (aVESID.equals (PeppolValidationMY.VID_OPENPEPPOL_MY_PINT_UBL_CREDIT_NOTE_1_0_0))
+    {
+      // empty
+      return new CommonsArrayList <> ();
+    }
+    if (aVESID.equals (PeppolValidationMY.VID_OPENPEPPOL_MY_PINT_UBL_INVOICE_SELF_BILLING_1_0_0))
+    {
+      // empty
+      return new CommonsArrayList <> ();
+    }
+    if (aVESID.equals (PeppolValidationMY.VID_OPENPEPPOL_MY_PINT_UBL_CREDIT_NOTE_SELF_BILLING_1_0_0))
+    {
+      // empty
+      return new CommonsArrayList <> ();
+    }
+
     throw new IllegalArgumentException ("Invalid VESID: " + aVESID);
   }
 }

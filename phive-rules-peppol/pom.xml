@@ -160,8 +160,8 @@
               <goal>convert</goal>
             </goals>
             <configuration>
-              <schematronDirectory>src/test/resources/external/rule-source/pint-my/1.0.0/billing</schematronDirectory>
-              <xsltDirectory>src/main/resources/external/schematron/pint-my/1.0.0/billing</xsltDirectory>
+              <schematronDirectory>src/test/resources/external/rule-source/pint-my/1.0.0/xslt/billing</schematronDirectory>
+              <xsltDirectory>src/main/resources/external/schematron/pint-my/1.0.0/xslt/billing</xsltDirectory>
             </configuration>
           </execution>
           -->
@@ -172,8 +172,8 @@
               <goal>convert</goal>
             </goals>
             <configuration>
-              <schematronDirectory>src/test/resources/external/rule-source/pint-my/1.0.0/selfbilling</schematronDirectory>
-              <xsltDirectory>src/main/resources/external/schematron/pint-my/1.0.0/selfbilling</xsltDirectory>
+              <schematronDirectory>src/test/resources/external/rule-source/pint-my/1.0.0/xslt/selfbilling</schematronDirectory>
+              <xsltDirectory>src/main/resources/external/schematron/pint-my/1.0.0/xslt/selfbilling</xsltDirectory>
             </configuration>
           </execution>
           -->
