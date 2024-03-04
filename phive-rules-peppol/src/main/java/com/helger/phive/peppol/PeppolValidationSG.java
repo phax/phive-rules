@@ -60,11 +60,11 @@ public final class PeppolValidationSG
 
   // 2023.7
   public static final VESID VID_OPENPEPPOL_BIS3_SG_UBL_INVOICE_2023_7 = new VESID ("eu.peppol.bis3.sg.ubl",
-                                                                                    "invoice",
-                                                                                    "2023.7");
+                                                                                   "invoice",
+                                                                                   "2023.7");
   public static final VESID VID_OPENPEPPOL_BIS3_SG_UBL_CREDIT_NOTE_2023_7 = new VESID ("eu.peppol.bis3.sg.ubl",
-                                                                                        "creditnote",
-                                                                                        "2023.7");
+                                                                                       "creditnote",
+                                                                                       "2023.7");
 
   private PeppolValidationSG ()
   {}
@@ -101,7 +101,7 @@ public final class PeppolValidationSG
                                                                              ValidationExecutorSchematron.createXSLT (BIS3_BILLING_SG_PEPPOL_103,
                                                                                                                       aNSCtxInvoice)));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_BIS3_SG_UBL_CREDIT_NOTE_103,
-                                                                             "SG Peppol BIS3 CreditNote (UBL) 1.0.3",
+                                                                             "SG Peppol BIS3 Credit Note (UBL) 1.0.3",
                                                                              bDeprecated,
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
                                                                              ValidationExecutorSchematron.createXSLT (BIS3_BILLING_SG_CEN_103,
@@ -133,7 +133,7 @@ public final class PeppolValidationSG
                                                                              ValidationExecutorSchematron.createXSLT (BIS3_BILLING_SG_2023_07,
                                                                                                                       aNSCtxInvoice)));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_BIS3_SG_UBL_CREDIT_NOTE_2023_7,
-                                                                             "SG Peppol BIS3 CreditNote (UBL) 2023.7",
+                                                                             "SG Peppol BIS3 Credit Note (UBL) 2023.7",
                                                                              bNotDeprecated,
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
                                                                              ValidationExecutorSchematron.createXSLT (BIS3_BILLING_SG_CEN_2023_07,

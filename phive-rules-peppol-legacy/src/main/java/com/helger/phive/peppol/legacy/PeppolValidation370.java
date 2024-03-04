@@ -289,7 +289,7 @@ public final class PeppolValidation370
                                                                            _createXSLT (BIS3_BILLING_CEN),
                                                                            _createXSLT (BIS3_BILLING_PEPPOL)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_BIS3_UBL_CREDIT_NOTE,
-                                                                           "OpenPeppol CreditNote BIS3 (UBL)",
+                                                                           "OpenPeppol Credit Note BIS3 (UBL)",
                                                                            bDeprecated,
                                                                            ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
                                                                            _createXSLT (BIS3_BILLING_CEN),

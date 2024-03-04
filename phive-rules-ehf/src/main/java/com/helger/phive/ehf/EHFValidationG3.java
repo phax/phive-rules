@@ -170,7 +170,7 @@ public final class EHFValidationG3
                                                                                                                "forward-billing-3.0/FORWARD-BILLING-PEPPOL-EN16931-UBL.xslt",
                                                                                                                _getCL ()))));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_EHF_FORWARD_BILLING_CREDIT_NOTE_300,
-                                                                           "EHF Forward Billing CreditNote " +
+                                                                           "EHF Forward Billing Credit Note " +
                                                                                                                     VID_EHF_FORWARD_BILLING_CREDIT_NOTE_300.getVersionString (),
                                                                            bNotDeprecated,
                                                                            ValidationExecutorXSD.create (UBL22Marshaller.getAllCreditNoteXSDs ()),

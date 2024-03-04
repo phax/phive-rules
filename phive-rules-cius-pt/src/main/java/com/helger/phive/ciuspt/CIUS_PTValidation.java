@@ -90,7 +90,7 @@ public final class CIUS_PTValidation
 
     // V2.0.0 containing the underlying EN rules
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_CIUS_PT_UBL_CREDITNOTE_200,
-                                                                           "CIUS-PT UBL CreditNote " +
+                                                                           "CIUS-PT UBL Credit Note " +
                                                                                                            VID_CIUS_PT_UBL_CREDITNOTE_200.getVersionString (),
                                                                            bDeprecated,
                                                                            ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
@@ -106,7 +106,7 @@ public final class CIUS_PTValidation
 
     // V2.1.1 containing the underlying EN rules
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_CIUS_PT_UBL_CREDITNOTE_211,
-                                                                           "CIUS-PT UBL CreditNote " +
+                                                                           "CIUS-PT UBL Credit Note " +
                                                                                                            VID_CIUS_PT_UBL_CREDITNOTE_211.getVersionString (),
                                                                            bNotDeprecated,
                                                                            ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),

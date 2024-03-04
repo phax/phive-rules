@@ -331,7 +331,7 @@ public final class SimplerInvoicingValidation
                                                                            ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
                                                                            _createXSLT (INVOICE_SI20)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_SI_CREDIT_NOTE_V20,
-                                                                           "Simplerinvoicing CreditNote 2.0",
+                                                                           "Simplerinvoicing Credit Note 2.0",
                                                                            bDeprecated,
                                                                            ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
                                                                            _createXSLT (INVOICE_SI20)));
@@ -343,7 +343,7 @@ public final class SimplerInvoicingValidation
                                                                            ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
                                                                            _createXSLT (INVOICE_SI201)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_SI_CREDIT_NOTE_V201,
-                                                                           "Simplerinvoicing CreditNote 2.0.1",
+                                                                           "Simplerinvoicing Credit Note 2.0.1",
                                                                            bDeprecated,
                                                                            ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
                                                                            _createXSLT (INVOICE_SI201)));
@@ -355,7 +355,7 @@ public final class SimplerInvoicingValidation
                                                                            ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
                                                                            _createXSLT (INVOICE_SI202)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_SI_CREDIT_NOTE_V202,
-                                                                           "Simplerinvoicing CreditNote 2.0.2",
+                                                                           "Simplerinvoicing Credit Note 2.0.2",
                                                                            bDeprecated,
                                                                            ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
                                                                            _createXSLT (INVOICE_SI202)));
@@ -367,7 +367,7 @@ public final class SimplerInvoicingValidation
                                                                            ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
                                                                            _createXSLT (INVOICE_SI203)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_SI_CREDIT_NOTE_V203,
-                                                                           "Simplerinvoicing CreditNote 2.0.3",
+                                                                           "Simplerinvoicing Credit Note 2.0.3",
                                                                            bDeprecated,
                                                                            ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
                                                                            _createXSLT (INVOICE_SI203)));
@@ -379,7 +379,7 @@ public final class SimplerInvoicingValidation
                                                                            ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
                                                                            _createXSLT (INVOICE_SI2031)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_SI_CREDIT_NOTE_V2031,
-                                                                           "Simplerinvoicing CreditNote 2.0.3.1",
+                                                                           "Simplerinvoicing Credit Note 2.0.3.1",
                                                                            bDeprecated,
                                                                            ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
                                                                            _createXSLT (INVOICE_SI2031)));
@@ -391,7 +391,7 @@ public final class SimplerInvoicingValidation
                                                                            ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
                                                                            _createXSLT (INVOICE_SI2032)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_SI_CREDIT_NOTE_V2032,
-                                                                           "Simplerinvoicing CreditNote 2.0.3.2",
+                                                                           "Simplerinvoicing Credit Note 2.0.3.2",
                                                                            bDeprecated,
                                                                            ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
                                                                            _createXSLT (INVOICE_SI2032)));
@@ -403,7 +403,7 @@ public final class SimplerInvoicingValidation
                                                                            ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
                                                                            _createXSLT (INVOICE_SI2033)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_SI_CREDIT_NOTE_V2033,
-                                                                           "Simplerinvoicing CreditNote 2.0.3.3",
+                                                                           "Simplerinvoicing Credit Note 2.0.3.3",
                                                                            bDeprecated,
                                                                            ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
                                                                            _createXSLT (INVOICE_SI2033)));
@@ -415,7 +415,7 @@ public final class SimplerInvoicingValidation
                                                                            ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
                                                                            _createXSLT (INVOICE_SI2034)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_SI_CREDIT_NOTE_V2034,
-                                                                           "Simplerinvoicing CreditNote 2.0.3.4",
+                                                                           "Simplerinvoicing Credit Note 2.0.3.4",
                                                                            bDeprecated,
                                                                            ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
                                                                            _createXSLT (INVOICE_SI2034)));
@@ -427,7 +427,7 @@ public final class SimplerInvoicingValidation
                                                                            ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
                                                                            _createXSLT (INVOICE_SI2035)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_SI_CREDIT_NOTE_V2035,
-                                                                           "Simplerinvoicing CreditNote 2.0.3.5",
+                                                                           "Simplerinvoicing Credit Note 2.0.3.5",
                                                                            bDeprecated,
                                                                            ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
                                                                            _createXSLT (INVOICE_SI2035)));
@@ -439,7 +439,7 @@ public final class SimplerInvoicingValidation
                                                                            ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
                                                                            _createXSLT (INVOICE_SI2036)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_SI_CREDIT_NOTE_V2036,
-                                                                           "Simplerinvoicing CreditNote 2.0.3.6",
+                                                                           "Simplerinvoicing Credit Note 2.0.3.6",
                                                                            bDeprecated,
                                                                            ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
                                                                            _createXSLT (INVOICE_SI2036)));
@@ -451,7 +451,7 @@ public final class SimplerInvoicingValidation
                                                                            ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
                                                                            _createXSLT (INVOICE_SI2037)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_SI_CREDIT_NOTE_V2037,
-                                                                           "Simplerinvoicing CreditNote 2.0.3.7",
+                                                                           "Simplerinvoicing Credit Note 2.0.3.7",
                                                                            bNotDeprecated,
                                                                            ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
                                                                            _createXSLT (INVOICE_SI2037)));
@@ -463,7 +463,7 @@ public final class SimplerInvoicingValidation
                                                                            ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
                                                                            _createXSLT (INVOICE_SI2038)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_SI_CREDIT_NOTE_V2038,
-                                                                           "Simplerinvoicing CreditNote 2.0.3.8",
+                                                                           "Simplerinvoicing Credit Note 2.0.3.8",
                                                                            bNotDeprecated,
                                                                            ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
                                                                            _createXSLT (INVOICE_SI2038)));

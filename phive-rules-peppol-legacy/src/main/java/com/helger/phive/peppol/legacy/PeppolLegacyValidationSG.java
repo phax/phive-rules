@@ -103,7 +103,7 @@ public final class PeppolLegacyValidationSG
                                                                              ValidationExecutorSchematron.createXSLT (BIS3_BILLING_SG_PEPPOL_100,
                                                                                                                       aNSCtxInvoice)));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_BIS3_SG_UBL_CREDIT_NOTE_100,
-                                                                             "SG Peppol BIS3 CreditNote (UBL) 1.0.0",
+                                                                             "SG Peppol BIS3 Credit Note (UBL) 1.0.0",
                                                                              bDeprecated,
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
                                                                              ValidationExecutorSchematron.createXSLT (BIS3_BILLING_SG_CEN_100,
@@ -130,7 +130,7 @@ public final class PeppolLegacyValidationSG
                                                                              ValidationExecutorSchematron.createXSLT (BIS3_BILLING_SG_PEPPOL_102,
                                                                                                                       aNSCtxInvoice)));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_BIS3_SG_UBL_CREDIT_NOTE_102,
-                                                                             "SG Peppol BIS3 CreditNote (UBL) 1.0.2",
+                                                                             "SG Peppol BIS3 Credit Note (UBL) 1.0.2",
                                                                              bDeprecated,
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
                                                                              ValidationExecutorSchematron.createXSLT (BIS3_BILLING_SG_CEN_102,
