@@ -191,7 +191,7 @@ I hope that with the introduction of PINT, the versioning problem will be solved
   
 # News and noteworthy
  
-* v3.1.8 - 2024-03-04
+* v3.1.8 - 2024-03-06
     * Added support for Peppol Reporting EUSR v1.1.5 and deprecated v1.1.4
     * Added support for Peppol Reporting TSR v1.0.5 and deprecated v1.0.4
     * Moved old versions of Peppol Reporting validation to `phive-rules-peppol-legacy`
