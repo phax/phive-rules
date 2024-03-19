@@ -91,7 +91,7 @@ public final class PeppolValidationAUNZ
     // For better error messages (merge both)
     SchematronNamespaceBeautifier.addMappings (aNSCtxCreditNote.getClone ().setMappings (aNSCtxInvoice));
 
-    final boolean bDeprecated = true;
+    // final boolean bDeprecated = true;
     final boolean bNotDeprecated = false;
 
     // 1.0.9
