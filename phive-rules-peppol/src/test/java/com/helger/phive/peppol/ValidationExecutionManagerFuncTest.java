@@ -74,7 +74,7 @@ public final class ValidationExecutionManagerFuncTest
   @Test
   public void testLargeFile ()
   {
-    final IValidationExecutorSet <IValidationSourceXML> aExecutors = CTestFiles.VES_REGISTRY.getOfID (PeppolValidation2023_05.VID_OPENPEPPOL_INVOICE_UBL_V3);
+    final IValidationExecutorSet <IValidationSourceXML> aExecutors = CTestFiles.VES_REGISTRY.getOfID (PeppolValidation2023_11.VID_OPENPEPPOL_INVOICE_UBL_V3);
     assertNotNull (aExecutors);
 
     for (final String s : new String [] { "22m", "50m", "70m", "100m", "125m", "200m" })
