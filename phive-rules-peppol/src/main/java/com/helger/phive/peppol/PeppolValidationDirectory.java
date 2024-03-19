@@ -45,9 +45,11 @@ public final class PeppolValidationDirectory
 
   private static final String BASE_PATH = "external/schemas/";
 
+  @Deprecated
   public static final VESID VID_OPENPEPPOL_BUSINESS_CARD_V1 = new VESID ("eu.peppol.directory",
                                                                          "businesscard",
                                                                          "1.0.0");
+  @Deprecated
   public static final VESID VID_OPENPEPPOL_BUSINESS_CARD_V2 = new VESID ("eu.peppol.directory",
                                                                          "businesscard",
                                                                          "2.0.0");
@@ -62,6 +64,7 @@ public final class PeppolValidationDirectory
   {
     ValueEnforcer.notNull (aRegistry, "Registry");
 
+    final boolean bDeprecated = true;
     final boolean bNotDeprecated = false;
 
     // v1
@@ -71,7 +74,7 @@ public final class PeppolValidationDirectory
                                                                     _getCL ());
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_BUSINESS_CARD_V1,
                                                                              "Peppol Directory BusinessCard v1",
-                                                                             bNotDeprecated,
+                                                                             bDeprecated,
                                                                              ValidationExecutorXSD.create (DIRECTORY_V1)));
     }
 
@@ -82,7 +85,7 @@ public final class PeppolValidationDirectory
                                                                     _getCL ());
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_BUSINESS_CARD_V2,
                                                                              "Peppol Directory BusinessCard v2",
-                                                                             bNotDeprecated,
+                                                                             bDeprecated,
                                                                              ValidationExecutorXSD.create (DIRECTORY_V2)));
     }
 
