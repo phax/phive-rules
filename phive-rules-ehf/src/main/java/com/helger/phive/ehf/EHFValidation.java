@@ -44,5 +44,6 @@ public final class EHFValidation
   {
     EHFValidationG2.initEHF (aRegistry);
     EHFValidationG3.initEHF (aRegistry);
+    EHFValidationG3_2023_02.initEHF (aRegistry);
   }
 }

@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+This file is distributed as part of EHF Post-Award G3.
+
+Release: 2022-06-15
+Timestamp: 2023-02-15 15:01z
+
+Repository for releases and issues:
+  https://github.com/anskaffelser/ehf-postaward-g3
+-->
+
+<Invoice xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+         xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+         xmlns="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2">
+
+    <cbc:CustomizationID>urn:fdc:anskaffelser.no:2019:ehf:spec:payment-request:3.0</cbc:CustomizationID>
+    <cbc:ProfileID>urn:fdc:anskaffelser.no:2019:ehf:postaward:g3:07:1.0</cbc:ProfileID>
+    <cbc:ID>1234</cbc:ID>
+    <cbc:IssueDate>2018-10-01</cbc:IssueDate>
+    <cbc:DueDate>2018-10-01</cbc:DueDate>
+    <cbc:Note>Victim of violent compensation</cbc:Note>
+    <cbc:DocumentCurrencyCode>NOK</cbc:DocumentCurrencyCode>
+    <cbc:AccountingCost>123:123:15415</cbc:AccountingCost>
+    <cbc:BuyerReference>ert1122</cbc:BuyerReference>
+
+    <cac:InvoicePeriod>
+        <cbc:StartDate>2018-10-01</cbc:StartDate>
+        <cbc:EndDate>2018-10-30</cbc:EndDate>
+        <cbc:DescriptionCode>35</cbc:DescriptionCode>
+    </cac:InvoicePeriod>
+
+    <cac:OrderReference>
+        <cbc:ID>007</cbc:ID>
+    </cac:OrderReference>
+
+    <cac:AdditionalDocumentReference>
+        <cbc:ID>AT56789</cbc:ID>
+        <cbc:DocumentTypeCode>130</cbc:DocumentTypeCode>
+        <cbc:DocumentDescription>Report</cbc:DocumentDescription>
+        <cac:Attachment>
+            <cac:ExternalReference>
+                <cbc:URI>http://www.rapport.no</cbc:URI>
+            </cac:ExternalReference>
+        </cac:Attachment>
+    </cac:AdditionalDocumentReference>
+
+    <cac:ProjectReference>
+        <cbc:ID>P-01</cbc:ID>
+    </cac:ProjectReference>
+
+    <cac:AccountingSupplierParty>
+        <cac:Party>
+            <cac:PartyIdentification>
+                <cbc:ID schemeID="0192">987654325</cbc:ID>
+            </cac:PartyIdentification>
+            <cac:PartyName>
+                <cbc:Name>Advokatfirmaet Z</cbc:Name>
+            </cac:PartyName>
+            <cac:PostalAddress>
+                <cbc:StreetName>Storoveien 3</cbc:StreetName>
+                <cbc:AdditionalStreetName>Building A</cbc:AdditionalStreetName>
+                <cbc:CityName>Oslo</cbc:CityName>
+                <cbc:PostalZone>0487</cbc:PostalZone>
+                <cbc:CountrySubentity>Oslo</cbc:CountrySubentity>
+                <cac:AddressLine>
+                    <cbc:Line>Building 2</cbc:Line>
+                </cac:AddressLine>
+                <cac:Country>
+                    <cbc:IdentificationCode listID="ISO3166-1:Alpha2">NO</cbc:IdentificationCode>
+                </cac:Country>
+            </cac:PostalAddress>
+        </cac:Party>
+    </cac:AccountingSupplierParty>
+
+    <cac:AccountingCustomerParty>
+        <cac:Party>
+            <cbc:EndpointID schemeID="0192">987654325</cbc:EndpointID>
+            <cac:PartyIdentification>
+                <cbc:ID schemeID="0192">987654325</cbc:ID>
+            </cac:PartyIdentification>
+            <cac:PartyName>
+                <cbc:Name>Statens sivilrettsforvaltning</cbc:Name>
+            </cac:PartyName>
+            <cac:PostalAddress>
+                <cbc:StreetName>Karl Johans gate 14</cbc:StreetName>
+                <cbc:AdditionalStreetName>Building A</cbc:AdditionalStreetName>
+                <cbc:CityName>Oslo</cbc:CityName>
+                <cbc:PostalZone>0154</cbc:PostalZone>
+                <cac:Country>
+                    <cbc:IdentificationCode listID="ISO3166-1:Alpha2">NO</cbc:IdentificationCode>
+                </cac:Country>
+            </cac:PostalAddress>
+
+            <cac:Contact>
+                <cbc:Name>Ola Nordmann</cbc:Name>
+                <cbc:Telephone>22334455</cbc:Telephone>
+                <cbc:ElectronicMail>ola.nordmann@staten.no</cbc:ElectronicMail>
+            </cac:Contact>
+        </cac:Party>
+    </cac:AccountingCustomerParty>
+
+    <cac:PaymentMeans>
+        <cbc:PaymentMeansCode name="Credit transfer">30</cbc:PaymentMeansCode>
+        <cbc:PaymentID>93274235</cbc:PaymentID>
+        <cac:PayeeFinancialAccount>
+            <cbc:ID>112233445566</cbc:ID>
+            <cbc:Name>Hans Hansen</cbc:Name>
+            <cac:FinancialInstitutionBranch>
+                <cbc:ID>BIC12345</cbc:ID>
+            </cac:FinancialInstitutionBranch>
+        </cac:PayeeFinancialAccount>
+    </cac:PaymentMeans>
+
+    <cac:LegalMonetaryTotal>
+        <cbc:LineExtensionAmount currencyID="NOK">5000.00</cbc:LineExtensionAmount>
+        <cbc:PrepaidAmount currencyID="NOK">0.00</cbc:PrepaidAmount>
+        <cbc:PayableAmount currencyID="NOK">5000.00</cbc:PayableAmount>
+    </cac:LegalMonetaryTotal>
+
+    <cac:InvoiceLine>
+        <cbc:ID>1</cbc:ID>
+        <cbc:InvoicedQuantity unitCode="NAR">1</cbc:InvoicedQuantity>
+        <cbc:LineExtensionAmount currencyID="NOK">1000.00</cbc:LineExtensionAmount>
+        <cbc:AccountingCost>00123</cbc:AccountingCost>
+        <cac:InvoicePeriod>
+            <cbc:StartDate>2018-10-01</cbc:StartDate>
+            <cbc:EndDate>2018-10-20</cbc:EndDate>
+        </cac:InvoicePeriod>
+        <cac:Item>
+            <cbc:Description>Physically injured after a violence episode.</cbc:Description>
+            <cbc:Name>Hans Hansen</cbc:Name>
+            <cac:BuyersItemIdentification>
+                <cbc:ID>115599</cbc:ID>
+            </cac:BuyersItemIdentification>
+            <cac:SellersItemIdentification>
+                <cbc:ID>995544</cbc:ID>
+            </cac:SellersItemIdentification>
+        </cac:Item>
+        <cac:Price>
+            <cbc:PriceAmount currencyID="NOK">1000.00</cbc:PriceAmount>
+        </cac:Price>
+    </cac:InvoiceLine>
+</Invoice>
