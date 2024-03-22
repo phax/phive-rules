@@ -39,6 +39,7 @@ public final class EHFValidation
    * @param aRegistry
    *        The registry to register to. May not be <code>null</code>.
    */
+  @SuppressWarnings ("deprecation")
   public static void initEHF (@Nonnull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
   {
     EHFValidationG2.initEHF (aRegistry);

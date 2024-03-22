@@ -29,7 +29,7 @@ import com.helger.phive.xml.source.IValidationSourceXML;
 import com.helger.schematron.xslt.SchematronResourceXSLT;
 
 /**
- * Test class for class {@link EHFValidationG2}.
+ * Test class for class {@link EHFValidationG3}.
  *
  * @author Philip Helger
  */
