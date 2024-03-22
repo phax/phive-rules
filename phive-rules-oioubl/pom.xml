@@ -172,6 +172,7 @@
         <groupId>com.helger.maven</groupId>
         <artifactId>ph-schematron-maven-plugin</artifactId>
         <executions>
+          <!-- Note: OIOUBL_Codelist_Schematron.xml and OIOUBL_Common_Schematron.xml will fail because they are includes -->
           <!-- 
           <execution>
             <id>oioubl</id>
@@ -179,9 +180,9 @@
               <goal>convert</goal>
             </goals>
             <configuration>
-              <schematronDirectory>src/test/resources/rule-source/oioubl/1.13.0</schematronDirectory>
+              <schematronDirectory>src/test/resources/external/rule-source/oioubl/1.13.2</schematronDirectory>
               <schematronPattern>*.xml</schematronPattern>
-              <xsltDirectory>src/main/resources/schematron/oioubl/1.13.0/xslt</xsltDirectory>
+              <xsltDirectory>src/main/resources/external/schematron/oioubl/1.13.2/xslt</xsltDirectory>
               <stopOnError>false</stopOnError>
               <parameters>
                 <allow-foreign>true</allow-foreign>

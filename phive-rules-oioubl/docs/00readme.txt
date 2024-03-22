@@ -18,6 +18,7 @@
 Official News item:
 https://nemhandel.dk/opdateringer-releases
 https://nemhandel.dk/betaversion-af-ny-oioubl-version-21-og-nye-oioubl-schematroner-version-112dev
+https://nemhandel.dk/oioubl-schematron-version-1132-hotfix
 
 Source:
 https://rep.erst.dk/git/openebusiness/common/

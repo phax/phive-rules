@@ -1,0 +1,1792 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+******************************************************************************************************************
+
+		OIOUBL Schematron
+
+		publisher:          NemHandel / Erhvervsstyrelsen
+        Repository path:    $HeadURL$
+        File version:       $Revision$
+        Last changed by:    $Author$
+        Last changed date:  $Date$
+
+		Description:        This document is produced as part of the OIOUBL schematron package
+		Rights:             It can be used following the Common Creative Licence
+
+		all terms derived from http://dublincore.org/documents/dcmi-terms/
+
+		For more information, see www.oioubl.info or email support@nemhandel.dk
+
+******************************************************************************************************************
+-->
+
+<sch:schema xmlns:sch="http://purl.oclc.org/dsdl/schematron">
+
+	<sch:ns uri="urn:oasis:names:specification:ubl:schema:xsd:Order-2"			  prefix="doc"/>
+	<sch:ns uri="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"    prefix="cac"/>
+	<sch:ns uri="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"        prefix="cbc"/>
+	<sch:ns uri="urn:oasis:names:specification:ubl:schema:xsd:CoreComponentParameters-2"      prefix="ccts"/>
+	<sch:ns uri="urn:oasis:names:specification:ubl:schema:xsd:SpecializedDatatypes-2"         prefix="sdt"/>
+	<sch:ns uri="urn:un:unece:uncefact:data:specification:UnqualifiedDataTypesSchemaModule:2" prefix="udt"/>
+	<!-- [Release 20120615] Check added according to issue: https://bugs.softwareborsen.dk/show_bug.cgi?id=934 -->
+	<sch:ns uri="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2" prefix="ext"/>
+	<sch:ns uri="http://www.w3.org/2001/XMLSchema"                                            prefix="xs"/>
+
+	<sch:p>Schematron for validating OIOUBL-2.1 documents.</sch:p>
+	<sch:title>Checking OIOUBL-2.1 Order</sch:title>
+
+
+	<!-- Inclusion of OIOUBL codelist variables -->
+	<sch:include href="OIOUBL_Codelist_Schematron.xml"/>
+
+
+	<!-- Global variables -->
+
+
+	<!-- The default phase to execute when validating -->
+	<sch:phase id="default">
+		<sch:active pattern="ublextensions"/>
+		<sch:active pattern="profile"/>
+		<sch:active pattern="order"/>
+		<sch:active pattern="validityperiod"/>
+		<sch:active pattern="quotationdocumentreference"/>
+		<sch:active pattern="orderdocumentreference"/>
+		<sch:active pattern="originatordocumentreference"/>
+		<sch:active pattern="additionaldocumentreference"/>
+		<sch:active pattern="contract"/>
+		<sch:active pattern="signature"/>
+		<sch:active pattern="buyercustomerparty"/>
+		<sch:active pattern="sellersupplierparty"/>
+		<sch:active pattern="originatorcustomerparty"/>
+		<sch:active pattern="freightforwarderparty"/>
+		<sch:active pattern="accountingcustomerparty"/>
+		<sch:active pattern="delivery"/>
+		<sch:active pattern="deliveryterms"/>
+		<sch:active pattern="paymentmeans"/>
+		<sch:active pattern="transactionconditions"/>
+		<sch:active pattern="allowancecharge"/>
+		<sch:active pattern="destinationcountry"/>
+		<sch:active pattern="taxtotal"/>
+		<sch:active pattern="anticipatedmonetarytotal"/>
+		<sch:active pattern="orderline"/>
+	</sch:phase>
+
+
+	<!-- Inclusion of OIOUBL common rules -->
+	<sch:include href="OIOUBL_Common_Schematron.xml"/>
+
+
+	<!-- - - - - - - - - - - -  UBLExtensions - - - - - - - - - - - - -  -->
+	<!-- [Release 20120615] Check added according to issue: https://bugs.softwareborsen.dk/show_bug.cgi?id=934 -->
+	<sch:pattern name="UBLExtensions" id="ublextensions">
+		<sch:p>Pattern for validating the UBLExtensions class</sch:p>
+		<sch:rule context="doc:Order">
+			<sch:extends rule="UBLExtensionsCheck"/>
+		</sch:rule>
+	</sch:pattern>
+
+	<!-- - - - - - - - - - - -  Profile - - - - - - - - - - - - -  -->
+	<sch:pattern name="Profile" id="profile">
+		<sch:p>Pattern for validating root element, Profile and UBL version</sch:p>
+		<!-- Validate root element -->
+		<sch:rule context="/">
+			<sch:assert test="local-name(*) = 'Order'">[F-ORD001] Root element must be Order</sch:assert>
+			<!-- [Release 20130315] Check added according to issue: https://bugs.softwareborsen.dk/show_bug.cgi?id=1023 -->
+			<sch:assert test="namespace-uri(*) = 'urn:oasis:names:specification:ubl:schema:xsd:Order-2'">[F-ORD254] The documenttype does not match an OIOUBL Order and can not be validated by this schematron.</sch:assert>
+		</sch:rule>
+		<sch:rule context="doc:Order">
+			<!-- Check ProfileID, UBLVersionID and CustomizationID -->
+			<sch:extends rule="UBLVersionIDCheck"/>
+			<sch:extends rule="CustomizationIDCheck"/>
+			<sch:extends rule="ProfileIDCheck"/>
+
+			<!-- Check Profile dependencies (top level) -->
+		</sch:rule>
+	</sch:pattern>
+
+	<!-- - - - - - - - - - - -  Order (ORD247) - - - - - - - - - - -  -->
+	<sch:pattern name="Order" id="order">
+		<sch:p>Pattern for validating the Order structure</sch:p>
+		<sch:rule context="doc:Order">
+			<!-- Check for excluded elements -->
+			<sch:assert test="count(cbc:SalesOrderID) = 0">[F-ORD002] SalesOrderID element must be excluded</sch:assert>
+			<sch:assert test="count(cbc:LineCountNumeric) = 0">[F-ORD003] LineCountNumeric element must be excluded</sch:assert>
+			<sch:assert test="count(cac:OrderDocumentReference) = 0">[F-ORD004] OrderDocumentReference class must be excluded</sch:assert>
+			<!-- Check for mandatory elements -->
+			<!-- Validate -->
+			<!-- [Release 20111201] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=623 -->
+      <!-- [Release 20160915] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=1586 -->
+			<sch:assert test="normalize-space(cbc:ID) != ''">[F-ORD007] Invalid Order/ID (Order number). Must contain a value.</sch:assert>
+			<sch:extends rule="AccountingCostCheck"/>
+			<sch:report test="count(cac:ValidityPeriod) &gt; 1">[F-ORD212] No more than one ValidityPeriod class may be present</sch:report>
+			<sch:report test="count(cac:Contract) &gt; 1">[F-ORD213] No more than one Contract class may be present</sch:report>
+			<sch:report test="count(cac:Delivery) &gt; 1">[F-ORD215] No more than one Delivery class may be present</sch:report>
+		</sch:rule>
+		<!-- Validate CopyIndicator -->
+
+		<!-- Validate UUID -->
+		<sch:rule context="doc:Order/cbc:UUID">
+			<sch:extends rule="UUIDCheck"/>
+		</sch:rule>
+
+		<!-- Validate IssueDate -->
+		<!-- Validate IssueTime -->
+
+		<!-- Validate Note -->
+		<sch:rule context="doc:Order/cbc:Note">
+			<sch:extends rule="NoteCheck"/>
+		</sch:rule>
+
+		<!-- Validate RequestedInvoiceCurrencyCode -->
+		<sch:rule context="doc:Order/cbc:RequestedInvoiceCurrencyCode">
+			<sch:extends rule="CurrencyCodeCheck"/>
+		</sch:rule>
+
+		<!-- Validate DocumentCurrencyCode -->
+		<sch:rule context="doc:Order/cbc:DocumentCurrencyCode">
+			<sch:extends rule="CurrencyCodeCheck"/>
+		</sch:rule>
+
+		<!-- Validate PricingCurrencyCode -->
+		<sch:rule context="doc:Order/cbc:PricingCurrencyCode">
+			<sch:report test="/*/cac:OrderLine/cac:LineItem/cac:Price/cbc:PriceAmount[@currencyID][@currencyID!=string(current())]">[F-ORD011] There is a PriceAmount where the currencyID does not equal the PricingCurrencyCode</sch:report>
+			<sch:extends rule="CurrencyCodeCheck"/>
+		</sch:rule>
+
+		<!-- Validate TaxCurrencyCode -->
+		<sch:rule context="doc:Order/cbc:TaxCurrencyCode">
+			<sch:report test="//cbc:TaxAmount[@currencyID][@currencyID!=string(current())]">[F-ORD012] There is a TaxAmount where the currencyID does not equal the TaxCurrencyCode</sch:report>
+			<sch:assert test=".='DKK' or . ='EUR'">[F-ORD013] TaxCurrencyCode must be either DKK or EUR</sch:assert>
+		</sch:rule>
+
+		<!-- Validate CustomerReference -->
+		<!-- Validate AccountingCostCode (ok, see above) -->
+		<!-- Validate AccountingCost (ok, see above) -->
+	</sch:pattern>
+
+	<!-- - - - - - - - - - - -  ValidityPeriod - - - - - - - - - - -  -->
+	<sch:pattern name="ValidityPeriod" id="validityperiod">
+		<sch:p>Pattern for validating the ValidityPeriod class</sch:p>
+		<sch:rule context="doc:Order/cac:ValidityPeriod">
+			<!-- Validate -->
+			<sch:extends rule="PeriodCheck"/>
+			<sch:extends rule="DescriptionLanguageCheckNew"/>
+		</sch:rule>
+		<!-- Validate Description -->
+		
+	</sch:pattern>
+
+	<!-- - - - - - - - - - - -  QuotationDocumentReference - - - - - - - - - - -  -->
+	<sch:pattern name="QuotationDocumentReference" id="quotationdocumentreference">
+		<sch:p>Pattern for validating the QuotationDocumentReference class</sch:p>
+		<sch:rule context="doc:Order/cac:QuotationDocumentReference">
+			<sch:extends rule="KnownDocumentReferenceCheck"/>
+		</sch:rule>
+	</sch:pattern>
+
+	<!-- - - - - - - - - - - -  OrderDocumentReference (excluded) - - - - - - - - - - -  -->
+
+	<!-- - - - - - - - - - - -  OriginatorDocumentReference - - - - - - - - - - -  -->
+	<sch:pattern name="OriginatorDocumentReference" id="originatordocumentreference">
+		<sch:p>Pattern for validating the OriginatorDocumentReference class</sch:p>
+		<sch:rule context="doc:Order/cac:OriginatorDocumentReference">
+			<sch:extends rule="KnownDocumentReferenceCheck"/>
+		</sch:rule>
+	</sch:pattern>
+
+	<!-- - - - - - - - - - - -  AdditionalDocumentReference - - - - - - - - - - -  -->
+	<sch:pattern name="AdditionalDocumentReference" id="additionaldocumentreference">
+		<sch:p>Pattern for validating the AdditionalDocumentReference class</sch:p>
+		<sch:rule context="doc:Order/cac:AdditionalDocumentReference">
+			<sch:extends rule="DocumentReferenceCheck"/>
+		</sch:rule>
+	</sch:pattern>
+
+	<!-- - - - - - - - - - - -  Contract - - - - - - - - - - -  -->
+	<sch:pattern name="Contract" id="contract">
+		<sch:p>Pattern for validating the Contract class</sch:p>
+		<sch:rule context="doc:Order/cac:Contract">
+			<!-- Check for excluded elements -->
+			<sch:assert test="count(cbc:IssueDate) = 0">[F-ORD022] IssueDate element must be excluded</sch:assert>
+			<sch:assert test="count(cbc:IssueTime) = 0">[F-ORD023] IssueTime element must be excluded</sch:assert>
+			<sch:assert test="count(cac:ValidityPeriod) = 0">[F-ORD024] ValidityPeriod class must be excluded</sch:assert>
+			<!-- Check for mandatory elements -->
+			<!-- [Release 20111201] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=623 -->
+      <!-- [Release 20160915] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=1586 -->
+			<sch:assert test="normalize-space(cbc:ID) != ''">[F-ORD026] Invalid Contract/ID. Must contain a value.</sch:assert>
+			<!-- Validate -->
+			<sch:report test="cbc:ContractType and cbc:ContractTypeCode">[F-ORD027] Use either ContractType or ContractTypeCode</sch:report>
+			<sch:report test="count(cac:ContractDocumentReference) &gt; 1">[F-ORD025] No more than one ContractDocumentReference class may be present</sch:report>
+		</sch:rule>
+		<!-- Validate ContractDocumentReference -->
+		<sch:rule context="doc:Order/cac:Contract/cac:ContractDocumentReference">
+			<sch:extends rule="KnownDocumentReferenceCheck"/>
+		</sch:rule>
+	</sch:pattern>
+
+	<!-- - - - - - - - - - - -  Signature - - - - - - - - - - -  -->
+	<sch:pattern name="Signature" id="signature">
+		<sch:p>Pattern for validating the Signature class</sch:p>
+		<sch:rule context="doc:Order/cac:Signature">
+			<!-- Check for excluded elements -->
+			<!-- Check for mandatory elements -->
+			<!-- Validate -->
+			<!-- [Release 20111201] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=623 -->
+      <!-- [Release 20160915] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=1586 -->
+			<sch:assert test="normalize-space(cbc:ID) != ''">[F-ORD028] Invalid Signature/ID. Must contain a value.</sch:assert>
+		</sch:rule>
+		<!-- Validate SignatoryParty -->
+		<sch:rule context="doc:Order/cac:Signature/cac:SignatoryParty">
+			<!-- Check for excluded elements -->
+			<sch:extends rule="PartyExcludedCheck"/>
+			<!-- Check for mandatory elements -->
+			<!-- Validate -->
+			<sch:extends rule="PartyNameCheck"/>
+			<sch:extends rule="EndpointIDCheck"/>
+			<sch:report test="count(cac:PartyLegalEntity) &gt; 1">[F-ORD218] No more than one PartyLegalEntity class may be present</sch:report>
+		</sch:rule>
+		<!-- Validate SignatoryParty/PartyIdentification -->
+		<sch:rule context="doc:Order/cac:Signature/cac:SignatoryParty/cac:PartyIdentification">
+			<sch:extends rule="PartyIdentificationCheck"/>
+		</sch:rule>
+		<!-- Validate SignatoryParty/PartyName -->
+		<sch:rule context="doc:Order/cac:Signature/cac:SignatoryParty/cac:PartyName">
+			<sch:extends rule="PartyNameLanguageCheck"/>
+		</sch:rule>
+		<!-- Validate SignatoryParty/PostalAddress -->
+		<sch:rule context="doc:Order/cac:Signature/cac:SignatoryParty/cac:PostalAddress">
+			<sch:extends rule="AddressCheck"/>
+		</sch:rule>
+		<!-- Validate SignatoryParty/PhysicalLocation -->
+		<sch:rule context="doc:Order/cac:Signature/cac:SignatoryParty/cac:PhysicalLocation">
+			<sch:extends rule="AddressIDCheck"/>
+		</sch:rule>
+		<!-- Validate SignatoryParty/PhysicalLocation/ValidityPeriod -->
+		<sch:rule context="doc:Order/cac:Signature/cac:SignatoryParty/cac:PhysicalLocation/cac:ValidityPeriod">
+			<sch:extends rule="DescriptionLanguageCheckNew"/>
+			<sch:extends rule="PeriodCheck"/>
+		</sch:rule>
+		<!-- Validate SignatoryParty/PhysicalLocation/ValidityPeriod/Description -->
+	
+		<!-- Validate SignatoryParty/PhysicalLocation/Address -->
+		<sch:rule context="doc:Order/cac:Signature/cac:SignatoryParty/cac:PhysicalLocation/cac:Address">
+			<sch:extends rule="AddressCheck"/>
+		</sch:rule>
+		<!-- Validate SignatoryParty/PartyTaxScheme -->
+		<sch:rule context="doc:Order/cac:Signature/cac:SignatoryParty/cac:PartyTaxScheme">
+			<sch:extends rule="PartyTaxSchemeCheck"/>
+		</sch:rule>
+		<!-- Validate SignatoryParty/PartyTaxScheme/TaxScheme -->
+		<sch:rule context="doc:Order/cac:Signature/cac:SignatoryParty/cac:PartyTaxScheme/cac:TaxScheme">
+			<sch:extends rule="TaxSchemeCheck"/>
+		</sch:rule>
+		<!-- Validate SignatoryParty/PartyLegalEntity -->
+		<sch:rule context="doc:Order/cac:Signature/cac:SignatoryParty/cac:PartyLegalEntity">
+			<sch:extends rule="PartyLegalEntityCheck"/>
+		</sch:rule>
+		<!-- Validate SignatoryParty/Contact -->
+		<sch:rule context="doc:Order/cac:Signature/cac:SignatoryParty/cac:Contact">
+			<sch:extends rule="ContactCheck"/>
+		</sch:rule>
+		<!-- Validate SignatoryParty/Person -->
+		<sch:rule context="doc:Order/cac:Signature/cac:SignatoryParty/cac:Person">
+			<sch:extends rule="Person/FirstNameCheck"/>
+		</sch:rule>
+
+		<!-- Validate DigitalSignatureAttachment -->
+		<sch:rule context="doc:Order/cac:Signature/cac:DigitalSignatureAttachment">
+			<sch:extends rule="AttachmentCheck"/>
+		</sch:rule>
+
+		<!-- Validate OriginalDocumentReference -->
+		<sch:rule context="doc:Order/cac:Signature/cac:OriginalDocumentReference">
+			<sch:extends rule="DocumentReferenceCheck"/>
+		</sch:rule>
+	</sch:pattern>
+
+	<!-- - - - - - - - - - - -  BuyerCustomerParty - - - - - - - - - - -  -->
+	<sch:pattern name="BuyerCustomerParty" id="buyercustomerparty">
+		<sch:p>Pattern for validating the BuyerCustomerParty class</sch:p>
+
+		<!-- - - - - - - - - - - -  Top-level checks - - - - - - - - - - -  -->
+		<sch:rule context="doc:Order/cac:BuyerCustomerParty">
+			<!-- Check for excluded elements -->
+			<sch:assert test="count(cbc:CustomerAssignedAccountID) = 0">[F-ORD029] CustomerAssignedAccountID element must be excluded</sch:assert>
+			<sch:assert test="count(cbc:AdditionalAccountID) = 0">[F-ORD030] AdditionalAccountID element must be excluded</sch:assert>
+			<!-- Check for mandatory elements -->
+			<sch:assert test="count(cac:Party) = 1">[F-ORD031] One Party class must be present</sch:assert>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  Party - - - - - - - - - - -  -->
+		<sch:rule context="doc:Order/cac:BuyerCustomerParty/cac:Party">
+			<!-- Check for excluded elements -->
+			<sch:extends rule="PartyExcludedCheck"/>
+			<!-- Check for mandatory elements -->
+			<!-- [Release 20111201] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=623 -->
+			<sch:assert test="normalize-space(cbc:EndpointID) != ''">[F-ORD032] Invalid EndpointID. Must contain a value</sch:assert>
+			<sch:assert test="count(cac:PartyLegalEntity) = 1">[F-ORD034] One PartyLegalEntity class must be present</sch:assert>
+			<sch:assert test="count(cac:Contact) = 1">[F-ORD035] One Contact class must be present</sch:assert>
+			<!-- Validate -->
+			<sch:extends rule="PartyNameCheck"/>
+			<sch:extends rule="EndpointIDCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyIdentification - - - - - - - - - - -  -->
+		<sch:rule context="doc:Order/cac:BuyerCustomerParty/cac:Party/cac:PartyIdentification">
+			<sch:extends rule="PartyIdentificationCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyName - - - - - - - - - - -  -->
+		<sch:rule context="doc:Order/cac:BuyerCustomerParty/cac:Party/cac:PartyName">
+			<sch:extends rule="PartyNameLanguageCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PostalAddress - - - - - - - - - - -  -->
+		<sch:rule context="doc:Order/cac:BuyerCustomerParty/cac:Party/cac:PostalAddress">
+			<sch:extends rule="AddressCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PhysicalLocation - - - - - - - - - - -  -->
+		<sch:rule context="doc:Order/cac:BuyerCustomerParty/cac:Party/cac:PhysicalLocation">
+			<sch:extends rule="AddressIDCheck"/>
+		</sch:rule>
+		<!-- Validate ValidityPeriod -->
+		<sch:rule context="doc:Order/cac:BuyerCustomerParty/cac:Party/cac:PhysicalLocation/cac:ValidityPeriod">
+		    <sch:extends rule="DescriptionLanguageCheckNew"/>
+			<sch:extends rule="PeriodCheck"/>
+		</sch:rule>
+		<!-- Validate ValidityPeriod/Description -->
+
+		<!-- Validate Address -->
+		<sch:rule context="doc:Order/cac:BuyerCustomerParty/cac:Party/cac:PhysicalLocation/cac:Address">
+			<sch:extends rule="AddressCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyTaxScheme - - - - - - - - - - -  -->
+		<sch:rule context="doc:Order/cac:BuyerCustomerParty/cac:Party/cac:PartyTaxScheme">
+			<sch:extends rule="PartyTaxSchemeCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyTaxScheme/TaxScheme - - - - - - - - - - -  -->
+		<sch:rule context="doc:Order/cac:BuyerCustomerParty/cac:Party/cac:PartyTaxScheme/cac:TaxScheme">
+			<sch:extends rule="TaxSchemeCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyLegalEntity - - - - - - - - - - -  -->
+		<sch:rule context="doc:Order/cac:BuyerCustomerParty/cac:Party/cac:PartyLegalEntity">
+			<sch:extends rule="PartyLegalEntityCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  Contact - - - - - - - - - - -  -->
+		<sch:rule context="doc:Order/cac:BuyerCustomerParty/cac:Party/cac:Contact">
+			<!-- Check for excluded elements -->
+			<!-- Check for mandatory elements -->
+			<!-- [Release 20111201] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=623 -->
+      <!-- [Release 20160915] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=1586 -->
+			<sch:assert test="normalize-space(cbc:ID) != ''">[F-ORD041] Invalid BuyerCustomerParty/Contact/ID. Must contain a value.</sch:assert>
+			<!-- Validate -->
+			<sch:extends rule="ContactCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  Person - - - - - - - - - - -  -->
+		<sch:rule context="doc:Order/cac:BuyerCustomerParty/cac:Party/cac:Person">
+			<sch:extends rule="Person/FirstNameCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  DeliveryContact - - - - - - - - - - -  -->
+		<sch:rule context="doc:Order/cac:BuyerCustomerParty/cac:DeliveryContact">
+			<sch:extends rule="ContactCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  AccountingContact - - - - - - - - - - -  -->
+		<sch:rule context="doc:Order/cac:BuyerCustomerParty/cac:AccountingContact">
+			<sch:extends rule="ContactCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  BuyerContact - - - - - - - - - - -  -->
+		<sch:rule context="doc:Order/cac:BuyerCustomerParty/cac:BuyerContact">
+			<sch:extends rule="ContactCheck"/>
+		</sch:rule>
+	</sch:pattern>
+
+	<!-- - - - - - - - - - - -  SellerSupplierParty - - - - - - - - - - -  -->
+	<sch:pattern name="SellerSupplierParty" id="sellersupplierparty">
+		<sch:p>Pattern for validating the SellerSupplierParty class</sch:p>
+
+		<!-- - - - - - - - - - - -  Top-level checks - - - - - - - - - - -  -->
+		<sch:rule context="doc:Order/cac:SellerSupplierParty">
+			<!-- Check for excluded elements -->
+			<sch:assert test="count(cbc:DataSendingCapability) = 0">[F-ORD042] DataSendingCapability element must be excluded</sch:assert>
+			<!-- Check for mandatory elements -->
+			<sch:assert test="count(cac:Party) = 1">[F-ORD043] Party class must be present</sch:assert>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  Party - - - - - - - - - - -  -->
+		<sch:rule context="doc:Order/cac:SellerSupplierParty/cac:Party">
+			<!-- Check for excluded elements -->
+			<sch:extends rule="PartyExcludedCheck"/>
+			<!-- Check for mandatory elements -->
+			<!-- [Release 20111201] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=623 -->
+			<sch:assert test="normalize-space(cbc:EndpointID) != ''">[F-ORD044] Invalid EndpointID. Must contain a value</sch:assert>
+			<!-- Validate -->
+			<sch:extends rule="PartyNameCheck"/>
+			<sch:extends rule="EndpointIDCheck"/>
+			<sch:report test="count(cac:PartyLegalEntity) &gt; 1">[F-ORD219] No more than one PartyLegalEntity class may be present</sch:report>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyIdentification - - - - - - - - - - -  -->
+		<sch:rule context="doc:Order/cac:SellerSupplierParty/cac:Party/cac:PartyIdentification">
+			<sch:extends rule="PartyIdentificationCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyName - - - - - - - - - - -  -->
+		<sch:rule context="doc:Order/cac:SellerSupplierParty/cac:Party/cac:PartyName">
+			<sch:extends rule="PartyNameLanguageCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PostalAddress - - - - - - - - - - -  -->
+		<sch:rule context="doc:Order/cac:SellerSupplierParty/cac:Party/cac:PostalAddress">
+			<sch:extends rule="AddressCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PhysicalLocation - - - - - - - - - - -  -->
+		<sch:rule context="doc:Order/cac:SellerSupplierParty/cac:Party/cac:PhysicalLocation">
+			<sch:extends rule="AddressIDCheck"/>
+		</sch:rule>
+		<!-- Validate ValidityPeriod -->
+		<sch:rule context="doc:Order/cac:SellerSupplierParty/cac:Party/cac:PhysicalLocation/cac:ValidityPeriod">
+		    <sch:extends rule="DescriptionLanguageCheckNew"/>
+			<sch:extends rule="PeriodCheck"/>
+		</sch:rule>
+	
+		<!-- Validate Address -->
+		<sch:rule context="doc:Order/cac:SellerSupplierParty/cac:Party/cac:PhysicalLocation/cac:Address">
+			<sch:extends rule="AddressCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyTaxScheme - - - - - - - - - - -  -->
+		<sch:rule context="doc:Order/cac:SellerSupplierParty/cac:Party/cac:PartyTaxScheme">
+			<sch:extends rule="PartyTaxSchemeCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyTaxScheme/TaxScheme - - - - - - - - - - -  -->
+		<sch:rule context="doc:Order/cac:SellerSupplierParty/cac:Party/cac:PartyTaxScheme/cac:TaxScheme">
+			<sch:extends rule="TaxSchemeCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyLegalEntity - - - - - - - - - - -  -->
+		<sch:rule context="doc:Order/cac:SellerSupplierParty/cac:Party/cac:PartyLegalEntity">
+			<sch:extends rule="PartyLegalEntityCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  Contact - - - - - - - - - - -  -->
+		<sch:rule context="doc:Order/cac:SellerSupplierParty/cac:Party/cac:Contact">
+			<sch:extends rule="ContactCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  Person - - - - - - - - - - -  -->
+		<sch:rule context="doc:Order/cac:SellerSupplierParty/cac:Party/cac:Person">
+			<sch:extends rule="Person/FirstNameCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  DespatchContact - - - - - - - - - - -  -->
+		<sch:rule context="doc:Order/cac:SellerSupplierParty/cac:DespatchContact">
+			<sch:extends rule="ContactCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  AccountingContact - - - - - - - - - - -  -->
+		<sch:rule context="doc:Order/cac:SellerSupplierParty/cac:AccountingContact">
+			<sch:extends rule="ContactCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  SellerContact - - - - - - - - - - -  -->
+		<sch:rule context="doc:Order/cac:SellerSupplierParty/cac:SellerContact">
+			<sch:extends rule="ContactCheck"/>
+		</sch:rule>
+	</sch:pattern>
+
+	<!-- - - - - - - - - - - -  OriginatorCustomerParty - - - - - - - - - - -  -->
+	<sch:pattern name="OriginatorCustomerParty" id="originatorcustomerparty">
+		<sch:p>Pattern for validating the OriginatorCustomerParty class</sch:p>
+
+		<!-- - - - - - - - - - - -  Top-level checks - - - - - - - - - - -  -->
+		<sch:rule context="doc:Order/cac:OriginatorCustomerParty">
+			<!-- Check for excluded elements -->
+			<!-- Check for mandatory elements -->
+			<sch:assert test="count(cac:Party) = 1">[F-ORD052] Party class must be present</sch:assert>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  Party - - - - - - - - - - -  -->
+		<sch:rule context="doc:Order/cac:OriginatorCustomerParty/cac:Party">
+			<!-- Check for excluded elements -->
+			<sch:extends rule="PartyExcludedCheck"/>
+			<!-- Check for mandatory elements -->
+			<!-- Validate -->
+			<sch:extends rule="PartyNameCheck"/>
+			<sch:extends rule="EndpointIDCheck"/>
+			<sch:report test="count(cac:PartyLegalEntity) &gt; 1">[F-ORD220] No more than one PartyLegalEntity class may be present</sch:report>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyIdentification - - - - - - - - - - -  -->
+		<sch:rule context="doc:Order/cac:OriginatorCustomerParty/cac:Party/cac:PartyIdentification">
+			<sch:extends rule="PartyIdentificationCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyName - - - - - - - - - - -  -->
+		<sch:rule context="doc:Order/cac:OriginatorCustomerParty/cac:Party/cac:PartyName">
+			<sch:extends rule="PartyNameLanguageCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PostalAddress - - - - - - - - - - -  -->
+		<sch:rule context="doc:Order/cac:OriginatorCustomerParty/cac:Party/cac:PostalAddress">
+			<sch:extends rule="AddressCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PhysicalLocation - - - - - - - - - - -  -->
+		<sch:rule context="doc:Order/cac:OriginatorCustomerParty/cac:Party/cac:PhysicalLocation">
+			<sch:extends rule="AddressIDCheck"/>
+		</sch:rule>
+		<!-- Validate ValidityPeriod -->
+		<sch:rule context="doc:Order/cac:OriginatorCustomerParty/cac:Party/cac:PhysicalLocation/cac:ValidityPeriod">
+	    	<sch:extends rule="DescriptionLanguageCheckNew"/>
+			<sch:extends rule="PeriodCheck"/>
+		</sch:rule>
+		<!-- Validate ValidityPeriod/Description -->
+	
+		<!-- Validate Address -->
+		<sch:rule context="doc:Order/cac:OriginatorCustomerParty/cac:Party/cac:PhysicalLocation/cac:Address">
+			<sch:extends rule="AddressCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyTaxScheme - - - - - - - - - - -  -->
+		<sch:rule context="doc:Order/cac:OriginatorCustomerParty/cac:Party/cac:PartyTaxScheme">
+			<sch:extends rule="PartyTaxSchemeCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyTaxScheme/TaxScheme - - - - - - - - - - -  -->
+		<sch:rule context="doc:Order/cac:OriginatorCustomerParty/cac:Party/cac:PartyTaxScheme/cac:TaxScheme">
+			<sch:extends rule="TaxSchemeCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyLegalEntity - - - - - - - - - - -  -->
+		<sch:rule context="doc:Order/cac:OriginatorCustomerParty/cac:Party/cac:PartyLegalEntity">
+			<sch:extends rule="PartyLegalEntityCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  Contact - - - - - - - - - - -  -->
+		<sch:rule context="doc:Order/cac:OriginatorCustomerParty/cac:Party/cac:Contact">
+			<sch:extends rule="ContactCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  Person - - - - - - - - - - -  -->
+		<sch:rule context="doc:Order/cac:OriginatorCustomerParty/cac:Party/cac:Person">
+			<sch:extends rule="Person/FirstNameCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  DeliveryContact - - - - - - - - - - -  -->
+		<sch:rule context="doc:Order/cac:OriginatorCustomerParty/cac:DeliveryContact">
+			<sch:extends rule="ContactCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  AccountingContact - - - - - - - - - - -  -->
+		<sch:rule context="doc:Order/cac:OriginatorCustomerParty/cac:AccountingContact">
+			<sch:extends rule="ContactCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  BuyerContact - - - - - - - - - - -  -->
+		<sch:rule context="doc:Order/cac:OriginatorCustomerParty/cac:BuyerContact">
+			<sch:extends rule="ContactCheck"/>
+		</sch:rule>
+	</sch:pattern>
+
+	<!-- - - - - - - - - - - -  FreightForwarderParty - - - - - - - - - - -  -->
+	<sch:pattern name="FreightForwarderParty" id="freightforwarderparty">
+		<sch:p>Pattern for validating the FreightForwarderParty class</sch:p>
+
+		<!-- - - - - - - - - - - -  Top-level checks - - - - - - - - - - -  -->
+		<sch:rule context="doc:Order/cac:FreightForwarderParty">
+			<!-- Check for excluded elements -->
+			<sch:extends rule="PartyExcludedCheck"/>
+			<!-- Check for mandatory elements -->
+			<!-- Validate -->
+			<sch:extends rule="PartyNameCheck"/>
+			<sch:extends rule="EndpointIDCheck"/>
+			<sch:report test="count(cac:PartyLegalEntity) &gt; 1">[F-ORD221] No more than one PartyLegalEntity class may be present</sch:report>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyIdentification - - - - - - - - - - -  -->
+		<sch:rule context="doc:Order/cac:FreightForwarderParty/cac:PartyIdentification">
+			<sch:extends rule="PartyIdentificationCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyName - - - - - - - - - - -  -->
+		<sch:rule context="doc:Order/cac:FreightForwarderParty/cac:PartyName">
+			<sch:extends rule="PartyNameLanguageCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PostalAddress - - - - - - - - - - -  -->
+		<sch:rule context="doc:Order/cac:FreightForwarderParty/cac:PostalAddress">
+			<sch:extends rule="AddressCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PhysicalLocation - - - - - - - - - - -  -->
+		<sch:rule context="doc:Order/cac:FreightForwarderParty/cac:PhysicalLocation">
+			<sch:extends rule="AddressIDCheck"/>
+		</sch:rule>
+		<!-- Validate ValidityPeriod -->
+		<sch:rule context="doc:Order/cac:FreightForwarderParty/cac:PhysicalLocation/cac:ValidityPeriod">
+	    	<sch:extends rule="DescriptionLanguageCheckNew"/>
+			<sch:extends rule="PeriodCheck"/>
+		</sch:rule>
+		<!-- Validate ValidityPeriod/Description -->
+		<!-- Validate Address -->
+		<sch:rule context="doc:Order/cac:FreightForwarderParty/cac:PhysicalLocation/cac:Address">
+			<sch:extends rule="AddressCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyTaxScheme - - - - - - - - - - -  -->
+		<sch:rule context="doc:Order/cac:FreightForwarderParty/cac:PartyTaxScheme">
+			<sch:extends rule="PartyTaxSchemeCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyTaxScheme/TaxScheme - - - - - - - - - - -  -->
+		<sch:rule context="doc:Order/cac:FreightForwarderParty/cac:PartyTaxScheme/cac:TaxScheme">
+			<sch:extends rule="TaxSchemeCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyLegalEntity - - - - - - - - - - -  -->
+		<sch:rule context="doc:Order/cac:FreightForwarderParty/cac:PartyLegalEntity">
+			<sch:extends rule="PartyLegalEntityCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  Contact - - - - - - - - - - -  -->
+		<sch:rule context="doc:Order/cac:FreightForwarderParty/cac:Contact">
+			<sch:extends rule="ContactCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  Person - - - - - - - - - - -  -->
+		<sch:rule context="doc:Order/cac:FreightForwarderParty/cac:Person">
+			<sch:extends rule="Person/FirstNameCheck"/>
+		</sch:rule>
+	</sch:pattern>
+
+	<!-- - - - - - - - - - - -  AccountingCustomerParty - - - - - - - - - - -  -->
+	<sch:pattern name="AccountingCustomerParty" id="accountingcustomerparty">
+		<sch:p>Pattern for validating the AccountingCustomerParty class</sch:p>
+
+		<!-- - - - - - - - - - - -  Top-level checks - - - - - - - - - - -  -->
+		<sch:rule context="doc:Order/cac:AccountingCustomerParty">
+			<!-- Check for excluded elements -->
+			<!-- Check for mandatory elements -->
+			<sch:assert test="count(cac:Party) = 1">[F-ORD068] Party class must be present</sch:assert>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  Party - - - - - - - - - - -  -->
+		<sch:rule context="doc:Order/cac:AccountingCustomerParty/cac:Party">
+			<!-- Check for excluded elements -->
+			<sch:extends rule="PartyExcludedCheck"/>
+			<!-- Check for mandatory elements -->
+			<!-- [Release 20111201] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=623 -->
+			<sch:assert test="normalize-space(cbc:EndpointID) != ''">[F-ORD069] Invalid EndpointID. Must contain a value</sch:assert>
+			<sch:assert test="count(cac:PartyLegalEntity) = 1">[F-ORD071] One PartyLegalEntity class must be present</sch:assert>
+			<!-- Validate -->
+			<sch:extends rule="PartyNameCheck"/>
+			<sch:extends rule="EndpointIDCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyIdentification - - - - - - - - - - -  -->
+		<sch:rule context="doc:Order/cac:AccountingCustomerParty/cac:Party/cac:PartyIdentification">
+			<sch:extends rule="PartyIdentificationCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyName - - - - - - - - - - -  -->
+		<sch:rule context="doc:Order/cac:AccountingCustomerParty/cac:Party/cac:PartyName">
+			<sch:extends rule="PartyNameLanguageCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PostalAddress - - - - - - - - - - -  -->
+		<sch:rule context="doc:Order/cac:AccountingCustomerParty/cac:Party/cac:PostalAddress">
+			<sch:extends rule="AddressCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PhysicalLocation - - - - - - - - - - -  -->
+		<sch:rule context="doc:Order/cac:AccountingCustomerParty/cac:Party/cac:PhysicalLocation">
+			<sch:extends rule="AddressIDCheck"/>
+		</sch:rule>
+		<!-- Validate ValidityPeriod -->
+		<sch:rule context="doc:Order/cac:AccountingCustomerParty/cac:Party/cac:PhysicalLocation/cac:ValidityPeriod">
+		    <sch:extends rule="DescriptionLanguageCheckNew"/>
+			<sch:extends rule="PeriodCheck"/>
+		</sch:rule>
+		<!-- Validate ValidityPeriod/Description -->
+	
+		<!-- Validate Address -->
+		<sch:rule context="doc:Order/cac:AccountingCustomerParty/cac:Party/cac:PhysicalLocation/cac:Address">
+			<sch:extends rule="AddressCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyTaxScheme - - - - - - - - - - -  -->
+		<sch:rule context="doc:Order/cac:AccountingCustomerParty/cac:Party/cac:PartyTaxScheme">
+			<sch:extends rule="PartyTaxSchemeCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyTaxScheme/TaxScheme - - - - - - - - - - -  -->
+		<sch:rule context="doc:Order/cac:AccountingCustomerParty/cac:Party/cac:PartyTaxScheme/cac:TaxScheme">
+			<sch:extends rule="TaxSchemeCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyLegalEntity - - - - - - - - - - -  -->
+		<sch:rule context="doc:Order/cac:AccountingCustomerParty/cac:Party/cac:PartyLegalEntity">
+			<sch:extends rule="PartyLegalEntityCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  Contact - - - - - - - - - - -  -->
+		<sch:rule context="doc:Order/cac:AccountingCustomerParty/cac:Party/cac:Contact">
+			<sch:extends rule="ContactCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  Person - - - - - - - - - - -  -->
+		<sch:rule context="doc:Order/cac:AccountingCustomerParty/cac:Party/cac:Person">
+			<sch:extends rule="Person/FirstNameCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  DeliveryContact - - - - - - - - - - -  -->
+		<sch:rule context="doc:Order/cac:AccountingCustomerParty/cac:DeliveryContact">
+			<sch:extends rule="ContactCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  AccountingContact - - - - - - - - - - -  -->
+		<sch:rule context="doc:Order/cac:AccountingCustomerParty/cac:AccountingContact">
+			<sch:extends rule="ContactCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  BuyerContact - - - - - - - - - - -  -->
+		<sch:rule context="doc:Order/cac:AccountingCustomerParty/cac:BuyerContact">
+			<sch:extends rule="ContactCheck"/>
+		</sch:rule>
+	</sch:pattern>
+
+	<!-- - - - - - - - - - - -  Delivery - - - - - - - - - - -  -->
+	<sch:pattern name="Delivery" id="delivery">
+		<sch:p>Pattern for validating the Delivery class</sch:p>
+		<sch:rule context="doc:Order/cac:Delivery">
+			<!-- Check for excluded elements -->
+			<sch:assert test="count(cbc:ID) = 0">[F-ORD079] ID element must be excluded</sch:assert>
+			<sch:assert test="count(cbc:ActualDeliveryDate) = 0">[F-ORD083] ActualDeliveryDate element must be excluded</sch:assert>
+			<sch:assert test="count(cbc:ActualDeliveryTime) = 0">[F-ORD084] ActualDeliveryTime element must be excluded</sch:assert>
+			<sch:assert test="count(cac:DeliveryAddress) = 0">[F-ORD208] DeliveryAddress class must be excluded</sch:assert>
+			<sch:assert test="count(cac:PromisedDeliveryPeriod) = 0">[F-ORD085] PromisedDeliveryPeriod class must be excluded</sch:assert>
+			<sch:assert test="count(cac:EstimatedDeliveryPeriod) = 0">[F-ORD086] EstimatedDeliveryPeriod class must be excluded</sch:assert>
+			<!-- Check for mandatory elements -->
+			<!-- Validate -->
+			<!-- [Release 20130315] Check [F-ORD087, F-ORD088, F-ORD089, F-ORD090] removed according to issue: https://bugs.softwareborsen.dk/show_bug.cgi?id=1025 -->
+			<!--<sch:report test="cac:DeliveryParty and ../cac:BuyerCustomerParty/cac:Party/cac:PartyIdentification/cbc:ID = cac:DeliveryParty/cac:PartyIdentification/cbc:ID">[F-ORD087] DeliveryParty must be different from BuyerCustomerParty</sch:report>-->
+			<!--<sch:report test="cac:DeliveryParty and ../cac:BuyerCustomerParty/cac:Party/cac:PartyName/cbc:Name = cac:DeliveryParty/cac:PartyName/cbc:Name">[F-ORD088] DeliveryParty must be different from BuyerCustomerParty</sch:report>-->
+			<!--<sch:report test="cac:DeliveryParty and ../cac:AccountingCustomerParty/cac:Party/cac:PartyIdentification/cbc:ID = cac:DeliveryParty/cac:PartyIdentification/cbc:ID">[F-ORD089] DeliveryParty must be different from AccountingCustomerParty</sch:report>-->
+			<!--<sch:report test="cac:DeliveryParty and ../cac:AccountingCustomerParty/cac:Party/cac:PartyName/cbc:Name = cac:DeliveryParty/cac:PartyName/cbc:Name">[F-ORD090] DeliveryParty must be different from AccountingCustomerParty</sch:report>-->
+			<!-- <sch:report test="cac:Despath">[I-ORD999] Validation not yet implemented!</sch:report> -->
+		</sch:rule>
+		<!-- Validate DeliveryLocation -->
+		<sch:rule context="doc:Order/cac:Delivery/cac:DeliveryLocation">
+			<!-- Check for mandatory elements -->
+			<sch:report test="not(cbc:ID) and not(cac:Address)">[F-ORD209] Address is mandatory when ID is not specified</sch:report>
+			<!-- Validate -->
+			<!-- ID -->
+			<!-- Description -->
+			<!-- Conditions -->
+			<!-- CountrySubentity -->
+			<!-- CountrySubentityCode -->
+		</sch:rule>
+		<!-- Validate DeliveryLocation/ValidityPeriod -->
+		<sch:rule context="doc:Order/cac:Delivery/cac:DeliveryLocation/cac:ValidityPeriod">
+			<sch:extends rule="DescriptionLanguageCheckNew"/>
+			<sch:extends rule="PeriodCheck"/>
+		</sch:rule>
+		<!-- Validate DeliveryLocation/ValidityPeriod/Description -->
+		
+		<!-- Validate DeliveryLocation/Address -->
+		<sch:rule context="doc:Order/cac:Delivery/cac:DeliveryLocation/cac:Address">
+			<sch:extends rule="AddressCheck"/>
+		</sch:rule>
+		<!-- Validate RequestedDeliveryPeriod -->
+		<sch:rule context="doc:Order/cac:Delivery/cac:RequestedDeliveryPeriod">
+		    <sch:extends rule="DescriptionLanguageCheckNew"/>
+			<sch:extends rule="PeriodCheck"/>
+		</sch:rule>
+		<!-- Validate RequestedDeliveryPeriod/Description -->
+		
+		<!-- Validate DeliveryParty -->
+		<sch:rule context="doc:Order/cac:Delivery/cac:DeliveryParty">
+			<!-- Check for excluded elements -->
+			<sch:extends rule="PartyExcludedCheck"/>
+			<!-- Check for mandatory elements -->
+			<!-- Validate -->
+			<sch:extends rule="PartyNameCheck"/>
+			<sch:extends rule="EndpointIDCheck"/>
+			<sch:report test="count(cac:PartyLegalEntity) &gt; 1">[F-ORD222] No more than one PartyLegalEntity class may be present</sch:report>
+		</sch:rule>
+		<!-- Validate DeliveryParty/PartyIdentification -->
+		<sch:rule context="doc:Order/cac:Delivery/cac:DeliveryParty/cac:PartyIdentification">
+			<sch:extends rule="PartyIdentificationCheck"/>
+		</sch:rule>
+		<!-- Validate DeliveryParty/PartyName -->
+		<sch:rule context="doc:Order/cac:Delivery/cac:DeliveryParty/cac:PartyName">
+			<sch:extends rule="PartyNameLanguageCheck"/>
+		</sch:rule>
+		<!-- Validate DeliveryParty/PostalAddress -->
+		<sch:rule context="doc:Order/cac:Delivery/cac:DeliveryParty/cac:PostalAddress">
+			<sch:extends rule="AddressCheck"/>
+		</sch:rule>
+		<!-- Validate DeliveryParty/PhysicalLocation -->
+		<sch:rule context="doc:Order/cac:Delivery/cac:DeliveryParty/cac:PhysicalLocation">
+			<sch:extends rule="AddressIDCheck"/>
+		</sch:rule>
+		<!-- Validate DeliveryParty/PhysicalLocation/ValidityPeriod -->
+		<sch:rule context="doc:Order/cac:Delivery/cac:DeliveryParty/cac:PhysicalLocation/cac:ValidityPeriod">
+		    <sch:extends rule="DescriptionLanguageCheckNew"/>
+			<sch:extends rule="PeriodCheck"/>
+		</sch:rule>
+		<!-- Validate DeliveryParty/PhysicalLocation/ValidityPeriod/Description -->
+		<!-- Validate DeliveryParty/PhysicalLocation/Address -->
+		<sch:rule context="doc:Order/cac:Delivery/cac:DeliveryParty/cac:PhysicalLocation/cac:Address">
+			<sch:extends rule="AddressCheck"/>
+		</sch:rule>
+		<!-- Validate DeliveryParty/PartyTaxScheme -->
+		<sch:rule context="doc:Order/cac:Delivery/cac:DeliveryParty/cac:PartyTaxScheme">
+			<sch:extends rule="PartyTaxSchemeCheck"/>
+		</sch:rule>
+		<!-- Validate DeliveryParty/PartyTaxScheme/TaxScheme -->
+		<sch:rule context="doc:Order/cac:Delivery/cac:DeliveryParty/cac:PartyTaxScheme/cac:TaxScheme">
+			<sch:extends rule="TaxSchemeCheck"/>
+		</sch:rule>
+		<!-- Validate DeliveryParty/PartyLegalEntity -->
+		<sch:rule context="doc:Order/cac:Delivery/cac:DeliveryParty/cac:PartyLegalEntity">
+			<sch:extends rule="PartyLegalEntityCheck"/>
+		</sch:rule>
+		<!-- Validate DeliveryParty/Contact -->
+		<sch:rule context="doc:Order/cac:Delivery/cac:DeliveryParty/cac:Contact">
+			<sch:extends rule="ContactCheck"/>
+		</sch:rule>
+		<!-- Validate DeliveryParty/Person -->
+		<sch:rule context="doc:Order/cac:Delivery/cac:DeliveryParty/cac:Person">
+			<sch:extends rule="Person/FirstNameCheck"/>
+		</sch:rule>
+	</sch:pattern>
+
+	<!-- - - - - - - - - - - -  DeliveryTerms - - - - - - - - - - -  -->
+	<sch:pattern name="DeliveryTerms" id="deliveryterms">
+		<sch:p>Pattern for validating the DeliveryTerms class</sch:p>
+		<sch:rule context="doc:Order/cac:DeliveryTerms">
+			<!-- Check for excluded elements -->
+			<sch:assert test="count(cac:AllowanceCharge) = 0">[F-ORD097] AllowanceCharge class must be excluded</sch:assert>
+			<!-- Check for mandatory elements -->
+			<!-- Validate -->
+			<sch:report test="cbc:ID and cbc:SpecialTerms">[F-ORD098] Use either ID or SpecialTerms</sch:report>
+			<sch:report test="cbc:ID and not(cbc:ID = 'Incoterms' or cbc:ID = 'INCOTERMS')">[W-ORD223] If used, use INCO terms (ID = 'INCOTERMS')</sch:report>
+			<sch:report test="cbc:LossRiskResponsibilityCode and cbc:LossRisk">[F-ORD099] Use either LossRiskResponsibilityCode or LossRisk</sch:report>
+		</sch:rule>
+		<!-- Validate DeliveryTerms/DeliveryLocation -->
+		<sch:rule context="doc:Order/cac:DeliveryTerms/cac:DeliveryLocation">
+			<!-- [Release 20111201] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=623 -->
+      <!-- [Release 20160915] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=1586 -->
+			<sch:assert test="normalize-space(cbc:ID) != ''">[F-ORD224] Invalid DeliveryTerms/DeliveryLocation/ID. Must contain a value.</sch:assert>
+		</sch:rule>
+		<!-- Validate DeliveryTerms/DeliveryLocation/ValidityPeriod -->
+		<sch:rule context="doc:Order/cac:DeliveryTerms/cac:DeliveryLocation/cac:ValidityPeriod">
+	    	<sch:extends rule="DescriptionLanguageCheckNew"/>
+			<sch:extends rule="PeriodCheck"/>
+		</sch:rule>
+		<!-- Validate DeliveryTerms/DeliveryLocation/ValidityPeriod/Description -->
+		
+		<!-- Validate DeliveryTerms/DeliveryLocation/Address -->
+		<sch:rule context="doc:Order/cac:DeliveryTerms/cac:DeliveryLocation/cac:Address">
+			<sch:extends rule="AddressCheck"/>
+		</sch:rule>
+	</sch:pattern>
+
+	<!-- - - - - - - - - - - -  PaymentMeans - - - - - - - - - - -  -->
+	<sch:pattern name="PaymentMeans" id="paymentmeans">
+		<sch:p>Pattern for validating the PaymentMeans class</sch:p>
+		<sch:rule context="doc:Order/cac:PaymentMeans">
+			<sch:extends rule="PaymentMeansCheck"/>
+			<sch:extends rule="PaymentMeansCode31Check"/>
+			<sch:extends rule="PaymentMeansCode42Check"/>
+			<sch:extends rule="PaymentMeansCode48Check"/>
+			<sch:extends rule="PaymentMeansCode49Check"/>
+			<sch:extends rule="PaymentMeansCode50Check"/>
+            <sch:extends rule="PaymentMeansCode58Check"/>
+            <sch:extends rule="PaymentMeansCode59Check"/>
+			<sch:extends rule="PaymentMeansCode93Check"/>
+			<sch:extends rule="PaymentMeansCode97Check"/>
+		</sch:rule>
+	</sch:pattern>
+
+	<!-- - - - - - - - - - - -  TransactionConditions - - - - - - - - - - -  -->
+	<sch:pattern name="TransactionConditions" id="transactionconditions">
+		<sch:p>Pattern for validating the TransactionConditions class</sch:p>
+		<sch:rule context="doc:Order/cac:TransactionConditions">
+		<sch:extends rule="DescriptionLanguageCheckNew"/>
+			<!-- Check for excluded elements -->
+			<!-- Check for mandatory elements -->
+			<!-- Validate -->
+		</sch:rule>
+		<!-- Validate TransactionConditions/Description -->
+		<!-- Validate TransactionConditions/DocumentReference -->
+		<sch:rule context="doc:Order/cac:TransactionConditions/cac:DocumentReference">
+			<sch:extends rule="DocumentReferenceCheck"/>
+		</sch:rule>
+	</sch:pattern>
+
+	<!-- - - - - - - - - - - -  AllowanceCharge - - - - - - - - - - -  -->
+	<sch:pattern name="AllowanceCharge" id="allowancecharge">
+		<sch:p>Pattern for validating the AllowanceCharge class</sch:p>
+		<sch:rule context="doc:Order/cac:AllowanceCharge">
+			<sch:extends rule="AllowanceChargeTopCheck"/>
+			<sch:extends rule="AccountingCostCheck"/>
+		</sch:rule>
+		<!-- Validate PrepaidIndicator -->
+		<!-- Validate SequenceNumeric -->
+		<sch:rule context="doc:Order/cac:AllowanceCharge/cbc:SequenceNumeric">
+			<sch:extends rule="PosNumberCheck"/>
+		</sch:rule>
+		<!-- Validate Amount -->
+		<sch:rule context="doc:Order/cac:AllowanceCharge/cbc:Amount">
+			<sch:extends rule="PosZeroNumberCheck"/>
+		</sch:rule>
+		<!-- Validate BaseAmount -->
+		<sch:rule context="doc:Order/cac:AllowanceCharge/cbc:BaseAmount">
+			<sch:extends rule="PosZeroNumberCheck"/>
+		</sch:rule>
+		<!-- Validate TaxCategory -->
+		<sch:rule context="doc:Order/cac:AllowanceCharge/cac:TaxCategory">
+			<sch:extends rule="TaxCategoryCheck"/>
+		</sch:rule>
+		<!-- Validate TaxCategory/TaxScheme -->
+		<sch:rule context="doc:Order/cac:AllowanceCharge/cac:TaxCategory/cac:TaxScheme">
+			<sch:extends rule="TaxSchemeCheck"/>
+		</sch:rule>
+	</sch:pattern>
+
+	<!-- - - - - - - - - - - -  DestinationCountry - - - - - - - - - - -  -->
+	<sch:pattern name="DestinationCountry" id="destinationcountry">
+		<sch:p>Pattern for validating the DestinationCountry class</sch:p>
+		<sch:rule context="doc:Order/cac:DestinationCountry">
+			<!-- Check for excluded elements -->
+			<!-- Check for mandatory elements -->
+			<sch:assert test="normalize-space(cbc:IdentificationCode) != ''">[F-ORD225] Invalid IdentificationCode. Must contain a value</sch:assert>
+			<!-- Validate -->
+		</sch:rule>
+	</sch:pattern>
+
+	<!-- - - - - - - - - - - -  TaxTotal - - - - - - - - - - -  -->
+	<sch:pattern name="TaxTotal" id="taxtotal">
+		<sch:p>Pattern for validating the TaxTotal class</sch:p>
+		<!-- - - - - - - - - - - -  Top-level checks - - - - - - - - - - -  -->
+		<sch:rule context="doc:Order/cac:TaxTotal">
+			<sch:extends rule="TaxTotalCheck"/>
+		</sch:rule>
+		<!-- - - - - - - - - - - -  TaxSubtotal - - - - - - - - - - -  -->
+		<sch:rule context="doc:Order/cac:TaxTotal/cac:TaxSubtotal">
+			<sch:extends rule="TaxSubtotalCheck"/>
+		</sch:rule>
+		<!-- - - - - - - - - - - -  TaxCategory - - - - - - - - - - -  -->
+		<sch:rule context="doc:Order/cac:TaxTotal/cac:TaxSubtotal/cac:TaxCategory">
+			<sch:extends rule="TaxCategoryCheck"/>
+		</sch:rule>
+		<!-- - - - - - - - - - - -  TaxCategory/TaxScheme - - - - - - - - - - -  -->
+		<sch:rule context="doc:Order/cac:TaxTotal/cac:TaxSubtotal/cac:TaxCategory/cac:TaxScheme">
+			<sch:extends rule="TaxSchemeCheck"/>
+		</sch:rule>
+	</sch:pattern>
+
+	<!-- - - - - - - - - - - -  AnticipatedMonetaryTotal - - - - - - - - - - -  -->
+	<sch:pattern name="AnticipatedMonetaryTotal" id="anticipatedmonetarytotal">
+		<sch:p>Pattern for validating the AnticipatedMonetaryTotal class</sch:p>
+		<sch:rule context="doc:Order/cac:AnticipatedMonetaryTotal">
+			<!-- Check for excluded elements -->
+			<!-- Check for mandatory elements -->
+			<!-- [Release 20111201] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=623 -->
+			<sch:assert test="normalize-space(cbc:LineExtensionAmount) != ''">[F-ORD110] Invalid LineExtensionAmount. Must contain a value</sch:assert>
+			<sch:report test="count(../cac:AllowanceCharge[cbc:ChargeIndicator='false']) and not(cbc:AllowanceTotalAmount)">[F-ORD112] AllowanceTotalAmount is mandatory when AllowanceCharge classes (with ChargeIndicator='false') are present</sch:report>
+			<sch:report test="count(../cac:AllowanceCharge[cbc:ChargeIndicator='true']) and not(cbc:ChargeTotalAmount)">[F-ORD113] ChargeTotalAmount is mandatory when AllowanceCharge classes (with ChargeIndicator='true') are present</sch:report>
+			<sch:report test="count(../cac:PrepaidPayment/cbc:PaidAmount) and not(cbc:PrepaidAmount)">[F-ORD114] PrepaidAmount is mandatory when PrepaidPayment/PaidAmount elements are present</sch:report>
+			<sch:report test="count(../cac:TaxTotal/cbc:RoundingAmount) and not(cbc:PayableRoundingAmount)">[F-ORD115] PayableRoundingAmount is mandatory when TaxTotal/RoundingAmount elements are present</sch:report>
+			<!-- Validate -->
+			<!-- [Release 20120615] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=823 -->
+			<!-- sch:report test="((cbc:LineExtensionAmount - sum(../cac:OrderLine/cac:LineItem/cbc:LineExtensionAmount)) &gt; '0.0055') or ((cbc:LineExtensionAmount - sum(../cac:OrderLine/cac:LineItem/cbc:LineExtensionAmount)) &lt; '-0.0055')">[F-ORD116] The sum of Orderline/LineItem/LineExtensionAmount elements must equal LineExtensionAmount</sch:report-->
+			<sch:report test="cbc:TaxExclusiveAmount and not(format-number(cbc:TaxExclusiveAmount,'##.00') = format-number(sum(../cac:TaxTotal/cac:TaxSubtotal/cbc:TaxAmount),'##.00'))">[F-ORD117] The sum of TaxTotal/TaxSubtotal/TaxAmount elements must equal TaxExclusiveAmount</sch:report>
+			<sch:report test="cbc:TaxInclusiveAmount and not(format-number(cbc:TaxInclusiveAmount,'##.00') = format-number(sum(cbc:LineExtensionAmount) + sum(../cac:TaxTotal/cac:TaxSubtotal/cbc:TaxAmount) + sum(cbc:ChargeTotalAmount) - sum(cbc:AllowanceTotalAmount) + sum(cbc:PayableRoundingAmount),'##.00'))">[F-ORD118] TaxInclusiveAmount is calculated incorrectly</sch:report>
+			<sch:report test="cbc:AllowanceTotalAmount and not(format-number(cbc:AllowanceTotalAmount,'##.00') = format-number(sum(../cac:AllowanceCharge[cbc:ChargeIndicator='false']/cbc:Amount),'##.00'))">[F-ORD119] The sum of AllowanceCharge/Amount elements (with ChargeIndicator='false') must equal AllowanceTotalAmount</sch:report>
+			<sch:report test="cbc:ChargeTotalAmount and not(format-number(cbc:ChargeTotalAmount,'##.00') = format-number(sum(../cac:AllowanceCharge[cbc:ChargeIndicator='true']/cbc:Amount),'##.00'))">[F-ORD120] The sum of AllowanceCharge/Amount elements (with ChargeIndicator='true') must equal cbc:ChargeTotalAmount</sch:report>
+			<sch:report test="cbc:PrepaidAmount and not(format-number(cbc:PrepaidAmount,'##.00') = format-number(sum(../cac:PrepaidPayment/cbc:PaidAmount),'##.00'))">[F-ORD121] The sum of PrepaidPayment/PaidAmount elements must equal PrepaidAmount</sch:report>
+			<sch:report test="cbc:PayableRoundingAmount and not(format-number(cbc:PayableRoundingAmount,'##.00') = format-number(sum(../cac:TaxTotal/cbc:RoundingAmount),'##.00'))">[F-ORD122] The sum of TaxTotal/RoundingAmount elements must equal PayableRoundingAmount</sch:report>
+			<sch:assert test="format-number(cbc:PayableAmount,'##.00') = format-number(sum(cbc:LineExtensionAmount) + sum(../cac:TaxTotal/cac:TaxSubtotal/cbc:TaxAmount) + sum(cbc:ChargeTotalAmount) - sum(cbc:AllowanceTotalAmount) - sum(cbc:PrepaidAmount) + sum(cbc:PayableRoundingAmount),'##.00')">[F-ORD123] PayableAmount is calculated incorrectly</sch:assert>
+			<!-- <sch:report test="../cbc:TaxCurrencyCode">[I-ORD999] Validation not yet implemented!</sch:report> -->
+		</sch:rule>
+		<!-- Validate LineExtensionAmount -->
+		<sch:rule context="doc:Order/cac:AnticipatedMonetaryTotal/cbc:LineExtensionAmount">
+			<!-- [Release 20111201] Changing check according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=657 -->
+			<!--<sch:extends rule="PosZeroDecNumberCheck"/>-->
+			<!-- sch:extends rule="ZeroDecNumberCheck"/ -->
+			<!-- [Release 20140915] Changing check according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=1309 -->
+			<sch:extends rule="DecNumberCheck"/>
+		</sch:rule>
+		<!-- Validate TaxExclusiveAmount -->
+		<sch:rule context="doc:Order/cac:AnticipatedMonetaryTotal/cbc:TaxExclusiveAmount">
+			<sch:extends rule="DecNumberCheck"/>
+		</sch:rule>
+		<!-- Validate TaxInclusiveAmount -->
+		<sch:rule context="doc:Order/cac:AnticipatedMonetaryTotal/cbc:TaxInclusiveAmount">
+			<!-- [Release 20140915] Changing check according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=1309 -->
+			<!-- sch:extends rule="PosZeroDecNumberCheck"/ -->
+			<sch:extends rule="PosDecNumberCheck"/>
+		</sch:rule>
+		<!-- Validate AllowanceTotalAmount -->
+		<sch:rule context="doc:Order/cac:AnticipatedMonetaryTotal/cbc:AllowanceTotalAmount">
+			<sch:extends rule="PosZeroDecNumberCheck"/>
+		</sch:rule>
+		<!-- Validate ChargeTotalAmount -->
+		<sch:rule context="doc:Order/cac:AnticipatedMonetaryTotal/cbc:ChargeTotalAmount">
+			<sch:extends rule="PosZeroDecNumberCheck"/>
+		</sch:rule>
+		<!-- Validate PrepaidAmount -->
+		<sch:rule context="doc:Order/cac:AnticipatedMonetaryTotal/cbc:PrepaidAmount">
+			<sch:extends rule="PosZeroDecNumberCheck"/>
+		</sch:rule>
+		<!-- Validate PayableRoundingAmount -->
+		<sch:rule context="doc:Order/cac:AnticipatedMonetaryTotal/cbc:PayableRoundingAmount">
+			<sch:extends rule="ZeroDecNumberCheck"/>
+		</sch:rule>
+		<!-- Validate PayableAmount -->
+		<sch:rule context="doc:Order/cac:AnticipatedMonetaryTotal/cbc:PayableAmount">
+			<!-- [Release 20140915] Changing check according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=1309 -->
+			<!-- sch:extends rule="PosZeroDecNumberCheck"/ -->
+			<sch:extends rule="PosDecNumberCheck"/>
+		</sch:rule>
+	</sch:pattern>
+
+	<!-- - - - - - - - - - - -  OrderLine - - - - - - - - - - -  -->
+	<sch:pattern name="OrderLine" id="orderline">
+		<sch:p>Pattern for validating the OrderLine class</sch:p>
+
+		<!-- - - - - - - - - - - -  Top-level checks - - - - - - - - - - -  -->
+		<sch:rule context="doc:Order/cac:OrderLine">
+			<!-- Check for excluded elements -->
+			<sch:assert test="count(cbc:SubstitutionStatusCode) = 0">[F-ORD124] SubstitutionStatusCode element must be excluded</sch:assert>
+			<sch:assert test="count(cac:SellerProposedSubstituteLineItem) = 0">[F-ORD125] SellerProposedSubstituteLineItem class must be excluded</sch:assert>
+			<sch:assert test="count(cac:SellerSubstitutedLineItem) = 0">[F-ORD126] SellerSubstitutedLineItem class must be excluded</sch:assert>
+			<sch:assert test="count(cac:CatalogueLineReference) = 0">[F-ORD128] CatalogueLineReference class must be excluded</sch:assert>
+			<!-- Check for mandatory elements -->
+			<!-- Validate -->
+
+			<!-- [Release 20120615] Added 5 new checks according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=730 -->
+			<!-- 1 -->
+			<sch:report test="cac:LineItem/cac:Delivery/cbc:LatestDeliveryDate and count(../cac:Delivery/cbc:LatestDeliveryDate)">[F-ORD248] Only use Delivery.LatestDeliveryDate if not specified on header level (Order.Delivery)</sch:report>
+			<!-- 2 -->
+			<sch:report test="cac:LineItem/cac:Delivery/cbc:LatestDeliveryTime and count(../cac:Delivery/cbc:LatestDeliveryTime)">[F-ORD249] Only use Delivery.LatestDeliveryTime if not specified on header level (Order.Delivery)</sch:report>
+			<!-- 3 -->
+			<sch:report test="cac:LineItem/cac:Delivery/cac:RequestedDeliveryPeriod and count(../cac:Delivery/cac:RequestedDeliveryPeriod)">[F-ORD250] Only use Delivery.RequestedDeliveryPeriod if not specified on header level (Order.Delivery)</sch:report>
+			<!-- 4-->
+			<sch:report test="cac:LineItem/cac:Delivery/cac:DeliveryLocation and count(../cac:Delivery/cac:DeliveryLocation)">[F-ORD251] Only use Delivery.DeliveryLocation if not specified on header level (Order.Delivery)</sch:report>
+			<!-- 5 -->
+			<sch:report test="cac:LineItem/cac:Delivery/cac:DeliveryParty and count(../cac:Delivery/cac:DeliveryParty)">[F-ORD252] Only use Delivery.DeliveryParty if not specified on header level (Order.Delivery)</sch:report>
+
+			<sch:report test="./cac:LineItem/cbc:ID = ./following-sibling::*/cac:LineItem/cbc:ID">[W-ORD244] ID must be unique within the document instance</sch:report>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  LineItem - - - - - - - - - - -  -->
+		<!-- Variables -->
+
+		<sch:rule context="doc:Order/cac:OrderLine/cac:LineItem">
+			<sch:let name="noFactorRate" value="not(cac:Price/cbc:OrderableUnitFactorRate)"/>
+			<sch:let name="NegativeLEA" value="starts-with(cbc:Quantity,'-')"/>
+			<sch:let name="NegativePA" value="starts-with(cac:Price/cbc:PriceAmount,'-')"/>
+			<sch:let name="noPrice" value="not(cac:Price)"/>
+			<sch:let name="nolineExtensionAmount" value="not(cbc:LineExtensionAmount)"/>
+
+			<!-- OrderableUnitFactorRate is not mandatory - so default to 1, if not exists. -->
+			
+			<sch:let name="orderableUnitFactorRate" value="cac:Price/cbc:OrderableUnitFactorRate"></sch:let>
+<!--
+			<sch:let name="orderableUnitFactorRate" value="concat(
+                                                                substring(cac:Price/cbc:OrderableUnitFactorRate, 1, number(normalize-space(cac:Price/cbc:OrderableUnitFactorRate) != '') * string-length(cac:Price/cbc:OrderableUnitFactorRate)),
+                                                                substring(1, 1, number(not(normalize-space(cac:Price/cbc:OrderableUnitFactorRate) != '')) * 1)
+                                                    )"/>
+-->
+			<sch:let name="quantity" value="cbc:Quantity"/>
+			<sch:let name="priceAmount" value="cac:Price/cbc:PriceAmount"/>
+			<!-- BaseQuantity is not mandatory - so default to 1, if not exists. -->
+			
+			<!-- [Release 20221128] Formatting removed - NH-3089 -->
+            <sch:let name="baseQuantity" value="cac:Price/cbc:BaseQuantity"></sch:let>
+<!--
+			<sch:let name="baseQuantity" value="concat(
+                                                                substring(cac:Price/cbc:BaseQuantity, 1, number(normalize-space(cac:Price/cbc:BaseQuantity) != '') * string-length(cac:Price/cbc:BaseQuantity)),
+                                                                substring(1, 1, number(not(normalize-space(cac:Price/cbc:BaseQuantity) != '')) * 1)
+                                                    )"/>
+-->
+            <sch:let name="lineExtensionAmount" value="format-number (cbc:LineExtensionAmount,'#.00')"></sch:let>
+<!--
+			<sch:let name="lineExtensionAmount" value="concat(
+                                                                substring(cbc:LineExtensionAmount, 1, number(normalize-space(cbc:LineExtensionAmount) != '' ) * string-length(cbc:LineExtensionAmount)),
+                                                                substring(0, 1, number(not(normalize-space(cbc:LineExtensionAmount) != '')) * 1)
+                                                    )"/>
+-->
+			<sch:let name="calculatedTotalUnitCodeDifferent" value="xs:double($priceAmount) * xs:double($quantity) * xs:double($orderableUnitFactorRate)"/>
+			<sch:let name="calculatedTotalUnitCodeEqual" value="(xs:double($priceAmount) * xs:double($quantity)) div xs:double($baseQuantity)"/>
+
+			<sch:let name="unitCodeDifferent" value="cbc:Quantity/@unitCode != cac:Price/cbc:BaseQuantity/@unitCode"/>
+			<sch:let name="unitCodeEqual" value="cbc:Quantity/@unitCode = cac:Price/cbc:BaseQuantity/@unitCode"/>
+			<sch:let name="unitCodeNeither" value="not($unitCodeDifferent) and not($unitCodeEqual)"/>
+
+
+			<!-- Check for excluded elements -->
+			<sch:assert test="count(cbc:SalesOrderID) = 0">[F-ORD129] SalesOrderID element must be excluded</sch:assert>
+			<!-- Check for mandatory elements -->
+			<!-- [Release 20111201] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=623 -->
+			<sch:assert test="normalize-space(cbc:Quantity) != ''">[F-ORD227] Invalid Quantity. Must contain a value</sch:assert>
+			<!-- Validate -->
+			<!-- [Release 20120615] Check added according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=927 -->
+			<sch:report test="not($NegativeLEA or $NegativePA) and starts-with(cac:AllowanceCharge/cbc:Amount,'-')">[F-ORD253] AllowanceCharge.Amount can not be negative, if Quantity or Price.PriceAmount are not negative.</sch:report>
+			<sch:report test="not($noPrice) and not($NegativeLEA or $NegativePA) and starts-with(cac:Price/cac:AllowanceCharge/cbc:Amount,'-')">[F-ORD253] AllowanceCharge.Amount can not be negative, if Quantity or Price.PriceAmount are not negative.</sch:report>
+
+			<!-- [Release 20111201] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=623 -->
+      <!-- [Release 20160915] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=1586 -->
+			<sch:assert test="normalize-space(cbc:ID) != ''">[F-ORD131] Invalid OrderLine/LineItem/ID. Must contain a value.</sch:assert>
+			<sch:extends rule="AccountingCostCheck"/>
+
+
+
+			<!-- B, C, D, H, I & J -->
+
+			<!-- [020422] - NH-50 -->
+			<!-- Original test-->
+			<!-- sch:report test="(not($L) and $T) and ((cbc:LineExtensionAmount &lt; (cbc:Quantity * cac:Price/cbc:PriceAmount - '01.00')) or (cbc:LineExtensionAmount &gt; (cbc:Quantity * cac:Price/cbc:PriceAmount + '01.00')))">[F-ORD245] When present, LineExtensionAmount must equal Quantity * Price.PriceAmount (when OrderableUnitFactorRate not present)</sch:report -->
+			<!-- sch:report test="(not($L) and not($T)) and ((cbc:LineExtensionAmount &lt; (cbc:Quantity * cac:Price/cbc:PriceAmount * cac:Price/cbc:OrderableUnitFactorRate - '01.00')) or (cbc:LineExtensionAmount &gt; (cbc:Quantity * cac:Price/cbc:PriceAmount * cac:Price/cbc:OrderableUnitFactorRate + '01.00')))">[F-ORD246] When present, LineExtensionAmount must equal Quantity * Price.PriceAmount * Price.OrderableUnitFactorRate</sch:report -->
+
+			<!-- G -->
+			<sch:report test="not($nolineExtensionAmount) and $unitCodeDifferent and ((xs:double($lineExtensionAmount) &lt; (xs:double($calculatedTotalUnitCodeDifferent) - 1.00)) or (xs:double($lineExtensionAmount) &gt; (xs:double($calculatedTotalUnitCodeDifferent) + 1.00)))">[F-ORD246] Order line '<sch:value-of select="cbc:ID"/>' - When present, lineExtensionAmount (<sch:value-of select="cbc:LineExtensionAmount"/>) must equal Quantity (<sch:value-of select="cbc:Quantity"/>) * Price.PriceAmount (<sch:value-of select="cac:Price/cbc:PriceAmount"/>) * Price.OrderableUnitFactorRate (<sch:value-of select="cac:Price/cbc:OrderableUnitFactorRate"/>) +/- 1.00 (Quantity unitCode and Price.BaseQuantity unitCode are not equal)</sch:report>
+			<sch:report test="not($nolineExtensionAmount) and $unitCodeEqual     and ((xs:double($lineExtensionAmount) &lt; (xs:double($calculatedTotalUnitCodeEqual) - 1.00)) or (xs:double($lineExtensionAmount) &gt; (xs:double($calculatedTotalUnitCodeEqual)  + 1.00)))">[F-ORD255] Order line '<sch:value-of select="cbc:ID"/>' When present, lineExtensionAmount (<sch:value-of select="$lineExtensionAmount"/>) must equal (Price.PriceAmount (<sch:value-of select="$priceAmount"/>) / Price.BaseQuantity (<sch:value-of select="$baseQuantity"/>) ) * Quantity (<sch:value-of select="$quantity"/>) +/- 1.00 (Quantity unitCode and Price.BaseQuantity unitCode are equal)</sch:report>
+			<sch:report test="not($nolineExtensionAmount) and $unitCodeNeither   and ((xs:double($lineExtensionAmount) &lt; (xs:double($calculatedTotalUnitCodeEqual) - 1.00)) or (xs:double($lineExtensionAmount) &gt; (xs:double($calculatedTotalUnitCodeEqual)  + 1.00)))">[F-ORD245] Order line '<sch:value-of select="cbc:ID"/>' When present, lineExtensionAmount (<sch:value-of select="$lineExtensionAmount"/>) must equal Price.PriceAmount (<sch:value-of select="$priceAmount"/>) * Quantity (<sch:value-of select="$quantity"/>) +/- 1.00.</sch:report>
+
+		<!-- NH-50 -->
+
+
+		</sch:rule>
+		<!-- Validate UUID -->
+		<!-- Validate Note -->
+		<!-- Validate LineStatusCode -->
+		<sch:rule context="doc:Order/cac:OrderLine/cac:LineItem/cbc:LineStatusCode">
+			<sch:assert test="./@listID = 'urn:oioubl:codelist:linestatuscode-1.1'">[F-ORD132] Invalid listID. Must be 'urn:oioubl:codelist:linestatuscode-1.1'</sch:assert>
+			<sch:assert test="./@listAgencyID = '320'">[F-ORD226] Invalid listAgencyID. Must be '320'</sch:assert>
+		</sch:rule>
+		<!-- Validate Quantity -->
+		<sch:rule context="doc:Order/cac:OrderLine/cac:LineItem/cbc:Quantity">
+			<sch:extends rule="unitCodeCheck"/>
+			<sch:report test="string-length(substring-after(., '.')) &lt; 2">[F-ORD133] Invalid Quantity. Must have at least 2 decimals</sch:report>
+			<!-- [Release 20120615] Check changed according to issue: https://bugs.softwareborsen.dk/show_bug.cgi?id=723 -->
+			<!-- 270122: NH-51 - no restriction on decimals -->
+			<!-- sch:report test="string-length(substring-after(., '.')) &gt; 6">[F-ORD134] Invalid Quantity. No more than 6 decimals</sch:report-->
+			<sch:assert test=". != 0">[F-ORD135] Invalid Quantity. Must not be zero</sch:assert>
+		</sch:rule>
+		<!-- Validate LineExtensionAmount -->
+		<sch:rule context="doc:Order/cac:OrderLine/cac:LineItem/cbc:LineExtensionAmount">
+			<sch:report test="string-length(substring-after(., '.')) &lt; 2">[F-ORD136] Invalid LineExtensionAmount. Must have at least 2 decimals</sch:report>
+			<sch:report test="string-length(substring-after(., '.')) &gt; 4">[F-ORD137] Invalid LineExtensionAmount. No more than 4 decimals</sch:report>
+		</sch:rule>
+		<!-- Validate TotalTaxAmount -->
+		<sch:rule context="doc:Order/cac:OrderLine/cac:LineItem/cbc:TotalTaxAmount">
+			<sch:extends rule="PosZeroNumberCheck"/>
+		</sch:rule>
+		<!-- Validate MinimunQuantity -->
+		<sch:rule context="doc:Order/cac:OrderLine/cac:LineItem/cbc:MinimunQuantity">
+			<sch:extends rule="PosZeroNumberCheck"/>
+		</sch:rule>
+		<!-- Validate MaximunQuantity -->
+		<sch:rule context="doc:Order/cac:OrderLine/cac:LineItem/cbc:MaximunQuantity">
+			<sch:extends rule="PosZeroNumberCheck"/>
+		</sch:rule>
+		<!-- Validate MinimunBackorderQuantity -->
+		<sch:rule context="doc:Order/cac:OrderLine/cac:LineItem/cbc:MinimunBackorderQuantity">
+			<sch:extends rule="PosZeroNumberCheck"/>
+		</sch:rule>
+		<!-- Validate MaximunBackorderQuantity -->
+		<sch:rule context="doc:Order/cac:OrderLine/cac:LineItem/cbc:MaximunBackorderQuantity">
+			<sch:extends rule="PosZeroNumberCheck"/>
+		</sch:rule>
+		<!-- Validate InspectionMethodCode -->
+		<!-- Validate PartialDeliveryIndicator -->
+		<!-- Validate BackOrderAllowedIndicator -->
+		<!-- Validate AccountingCostCode (OK see above) -->
+		<!-- Validate AccountingCost (OK see above) -->
+
+		<!-- - - - - - - - - - - -  LineItem/Delivery - - - - - - - - - - -  -->
+		<sch:rule context="doc:Order/cac:OrderLine/cac:LineItem/cac:Delivery">
+			<!-- Check for excluded elements -->
+			<sch:assert test="count(cbc:ID) = 0">[F-ORD138] ID element must be excluded</sch:assert>
+			<sch:assert test="count(cbc:ActualDeliveryDate) = 0">[F-ORD141] ActualDeliveryDate element must be excluded</sch:assert>
+			<sch:assert test="count(cbc:ActualDeliveryTime) = 0">[F-ORD142] ActualDeliveryTime element must be excluded</sch:assert>
+			<sch:assert test="count(cbc:TrackingID) = 0">[F-ORD143] TrackingID element must be excluded</sch:assert>
+			<sch:assert test="count(cac:DeliveryAddress) = 0">[F-ORD210] DeliveryAddress class must be excluded</sch:assert>
+			<sch:assert test="count(cac:PromisedDeliveryPeriod) = 0">[F-ORD144] PromisedDeliveryPeriod class must be excluded</sch:assert>
+			<sch:assert test="count(cac:EstimatedDeliveryPeriod) = 0">[F-ORD145] EstimatedDeliveryPeriod class must be excluded</sch:assert>
+
+			<!-- Check for mandatory elements -->
+			<!-- Validate -->
+			<!-- <sch:report test="cac:Despath">[I-ORD999] Validation not yet implemented!</sch:report> -->
+		</sch:rule>
+		<!-- Validate DeliveryLocation -->
+		<sch:rule context="doc:Order/cac:OrderLine/cac:LineItem/cac:Delivery/cac:DeliveryLocation">
+			<!-- Check for mandatory elements -->
+			<sch:report test="not(cbc:ID) and not(cac:Address)">[F-ORD211] Address is mandatory when ID is not specified</sch:report>
+			<!-- Validate -->
+			<!-- ID -->
+			<!-- Description -->
+			<!-- Conditions -->
+			<!-- CountrySubentity -->
+			<!-- CountrySubentityCode -->
+		</sch:rule>
+		<!-- Validate DeliveryLocation/ValidityPeriod -->
+		<sch:rule context="doc:Order/cac:OrderLine/cac:LineItem/cac:Delivery/cac:DeliveryLocation/cac:ValidityPeriod">
+		    <sch:extends rule="DescriptionLanguageCheckNew"/>
+			<sch:extends rule="PeriodCheck"/>
+		</sch:rule>
+		<!-- Validate DeliveryLocation/ValidityPeriod/Description -->
+		<!-- Validate DeliveryLocation/Address -->
+		<sch:rule context="doc:Order/cac:OrderLine/cac:LineItem/cac:Delivery/cac:DeliveryLocation/cac:Address">
+			<sch:extends rule="AddressCheck"/>
+		</sch:rule>
+		<!-- Validate RequestedDeliveryPeriod -->
+		<sch:rule context="doc:Order/cac:OrderLine/cac:LineItem/cac:Delivery/cac:RequestedDeliveryPeriod">
+		    <sch:extends rule="DescriptionLanguageCheckNew"/>
+			<sch:extends rule="PeriodCheck"/>
+		</sch:rule>
+		<!-- Validate RequestedDeliveryPeriod/Description -->
+	
+		<!-- Validate DeliveryParty -->
+		<sch:rule context="doc:Order/cac:OrderLine/cac:LineItem/cac:Delivery/cac:DeliveryParty">
+			<!-- Check for excluded elements -->
+			<sch:extends rule="PartyExcludedCheck"/>
+			<!-- Check for mandatory elements -->
+			<!-- Validate -->
+			<sch:extends rule="PartyNameCheck"/>
+			<sch:extends rule="EndpointIDCheck"/>
+			<sch:report test="count(cac:PartyLegalEntity) &gt; 1">[F-ORD229] No more than one PartyLegalEntity class may be present</sch:report>
+		</sch:rule>
+		<!-- Validate DeliveryParty/PartyIdentification -->
+		<sch:rule context="doc:Order/cac:OrderLine/cac:LineItem/cac:Delivery/cac:DeliveryParty/cac:PartyIdentification">
+			<sch:extends rule="PartyIdentificationCheck"/>
+		</sch:rule>
+		<!-- Validate DeliveryParty/PartyName -->
+		<sch:rule context="doc:Order/cac:OrderLine/cac:LineItem/cac:Delivery/cac:DeliveryParty/cac:PartyName">
+			<sch:extends rule="PartyNameLanguageCheck"/>
+		</sch:rule>
+		<!-- Validate DeliveryParty/PostalAddress -->
+		<sch:rule context="doc:Order/cac:OrderLine/cac:LineItem/cac:Delivery/cac:DeliveryParty/cac:PostalAddress">
+			<sch:extends rule="AddressCheck"/>
+		</sch:rule>
+		<!-- Validate DeliveryParty/PhysicalLocation -->
+		<sch:rule context="doc:Order/cac:OrderLine/cac:LineItem/cac:Delivery/cac:DeliveryParty/cac:PhysicalLocation">
+			<sch:extends rule="AddressIDCheck"/>
+		</sch:rule>
+		<!-- Validate DeliveryParty/PhysicalLocation/ValidityPeriod -->
+		<sch:rule context="doc:Order/cac:OrderLine/cac:LineItem/cac:Delivery/cac:DeliveryParty/cac:PhysicalLocation/cac:ValidityPeriod">
+		    <sch:extends rule="DescriptionLanguageCheckNew"/>
+			<sch:extends rule="PeriodCheck"/>
+		</sch:rule>
+		<!-- Validate DeliveryParty/PhysicalLocation/ValidityPeriod/Description -->
+	
+		<!-- Validate DeliveryParty/PhysicalLocation/Address -->
+		<sch:rule context="doc:Order/cac:OrderLine/cac:LineItem/cac:Delivery/cac:DeliveryParty/cac:PhysicalLocation/cac:Address">
+			<sch:extends rule="AddressCheck"/>
+		</sch:rule>
+		<!-- Validate DeliveryParty/PartyTaxScheme -->
+		<sch:rule context="doc:Order/cac:OrderLine/cac:LineItem/cac:Delivery/cac:DeliveryParty/cac:PartyTaxScheme">
+			<sch:extends rule="PartyTaxSchemeCheck"/>
+		</sch:rule>
+		<!-- Validate DeliveryParty/PartyTaxScheme/TaxScheme -->
+		<sch:rule context="doc:Order/cac:OrderLine/cac:LineItem/cac:Delivery/cac:DeliveryParty/cac:PartyTaxScheme/cac:TaxScheme">
+			<sch:extends rule="TaxSchemeCheck"/>
+		</sch:rule>
+		<!-- Validate DeliveryParty/PartyLegalEntity -->
+		<sch:rule context="doc:Order/cac:OrderLine/cac:LineItem/cac:Delivery/cac:DeliveryParty/cac:PartyLegalEntity">
+			<sch:extends rule="PartyLegalEntityCheck"/>
+		</sch:rule>
+		<!-- Validate DeliveryParty/Contact -->
+		<sch:rule context="doc:Order/cac:OrderLine/cac:LineItem/cac:Delivery/cac:DeliveryParty/cac:Contact">
+			<sch:extends rule="ContactCheck"/>
+		</sch:rule>
+		<!-- Validate DeliveryParty/Person -->
+		<sch:rule context="doc:Order/cac:OrderLine/cac:LineItem/cac:Delivery/cac:DeliveryParty/cac:Person">
+			<sch:extends rule="Person/FirstNameCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  LineItem/DeliveryTerms - - - - - - - - - - -  -->
+		<sch:rule context="doc:Order/cac:OrderLine/cac:LineItem/cac:DeliveryTerms">
+			<!-- Check for excluded elements -->
+			<sch:assert test="count(cac:AllowanceCharge) = 0">[F-ORD234] AllowanceCharge class must be excluded</sch:assert>
+			<!-- Check for mandatory elements -->
+			<!-- Validate -->
+			<sch:report test="cbc:ID and cbc:SpecialTerms">[F-ORD230] Use either ID or SpecialTerms</sch:report>
+			<sch:report test="cbc:ID and cbc:ID != 'Incoterms'">[W-ORD231] If used, use INCO terms (ID = 'Incoterms')</sch:report>
+			<sch:report test="cbc:LossRiskResponsibilityCode and cbc:LossRisk">[F-ORD232] Use either LossRiskResponsibilityCode or LossRisk</sch:report>
+		</sch:rule>
+		<!-- Validate DeliveryTerms/DeliveryLocation -->
+		<sch:rule context="doc:Order/cac:OrderLine/cac:LineItem/cac:DeliveryTerms/cac:DeliveryLocation">
+			<!-- [Release 20111201] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=623 -->
+      <!-- [Release 20160915] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=1586 -->
+			<sch:assert test="normalize-space(cbc:ID) != ''">[F-ORD233] Invalid OrderLine/LineItem/DeliveryTerms/DeliveryLocation/ID. Must contain a value.</sch:assert>
+		</sch:rule>
+		<!-- Validate DeliveryTerms/DeliveryLocation/ValidityPeriod -->
+		<sch:rule context="doc:Order/cac:OrderLine/cac:LineItem/cac:DeliveryTerms/cac:DeliveryLocation/cac:ValidityPeriod">
+	    	<sch:extends rule="DescriptionLanguageCheckNew"/>
+			<sch:extends rule="PeriodCheck"/>
+		</sch:rule>
+		<!-- Validate DeliveryTerms/DeliveryLocation/ValidityPeriod/Description -->
+		
+		<!-- Validate DeliveryTerms/DeliveryLocation/Address -->
+		<sch:rule context="doc:Order/cac:OrderLine/cac:LineItem/cac:DeliveryTerms/cac:DeliveryLocation/cac:Address">
+			<sch:extends rule="AddressCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  LineItem/OriginatorParty - - - - - - - - - - -  -->
+		<sch:rule context="doc:Order/cac:OrderLine/cac:LineItem/cac:OriginatorParty">
+			<!-- Check for excluded elements -->
+			<sch:extends rule="PartyExcludedCheck"/>
+			<!-- Check for mandatory elements -->
+			<!-- Validate -->
+			<sch:extends rule="PartyNameCheck"/>
+			<sch:extends rule="EndpointIDCheck"/>
+			<sch:report test="count(cac:PartyLegalEntity) &gt; 1">[F-ORD151] No more than one PartyLegalEntity class may be present</sch:report>
+		</sch:rule>
+		<!-- Validate DeliveryParty/PartyIdentification -->
+		<sch:rule context="doc:Order/cac:OrderLine/cac:LineItem/cac:OriginatorParty/cac:PartyIdentification">
+			<sch:extends rule="PartyIdentificationCheck"/>
+		</sch:rule>
+		<!-- Validate DeliveryParty/PartyName -->
+		<sch:rule context="doc:Order/cac:OrderLine/cac:LineItem/cac:OriginatorParty/cac:PartyName">
+			<sch:extends rule="PartyNameLanguageCheck"/>
+		</sch:rule>
+		<!-- Validate DeliveryParty/PostalAddress -->
+		<sch:rule context="doc:Order/cac:OrderLine/cac:LineItem/cac:OriginatorParty/cac:PostalAddress">
+			<sch:extends rule="AddressCheck"/>
+		</sch:rule>
+		<!-- Validate DeliveryParty/PhysicalLocation -->
+		<sch:rule context="doc:Order/cac:OrderLine/cac:LineItem/cac:OriginatorParty/cac:PhysicalLocation">
+			<sch:extends rule="AddressIDCheck"/>
+		</sch:rule>
+		<!-- Validate DeliveryParty/PhysicalLocation/ValidityPeriod -->
+		<sch:rule context="doc:Order/cac:OrderLine/cac:LineItem/cac:OriginatorParty/cac:PhysicalLocation/cac:ValidityPeriod">
+			<sch:extends rule="DescriptionLanguageCheckNew"/>
+			<sch:extends rule="PeriodCheck"/>
+		</sch:rule>
+		<!-- Validate DeliveryParty/PhysicalLocation/ValidityPeriod/Description -->
+		
+		<!-- Validate DeliveryParty/PhysicalLocation/Address -->
+		<sch:rule context="doc:Order/cac:OrderLine/cac:LineItem/cac:OriginatorParty/cac:PhysicalLocation/cac:Address">
+			<sch:extends rule="AddressCheck"/>
+		</sch:rule>
+		<!-- Validate DeliveryParty/PartyTaxScheme -->
+		<sch:rule context="doc:Order/cac:OrderLine/cac:LineItem/cac:OriginatorParty/cac:PartyTaxScheme">
+			<sch:extends rule="PartyTaxSchemeCheck"/>
+		</sch:rule>
+		<!-- Validate DeliveryParty/PartyTaxScheme/TaxScheme -->
+		<sch:rule context="doc:Order/cac:OrderLine/cac:LineItem/cac:OriginatorParty/cac:PartyTaxScheme/cac:TaxScheme">
+			<sch:extends rule="TaxSchemeCheck"/>
+		</sch:rule>
+		<!-- Validate DeliveryParty/PartyLegalEntity -->
+		<sch:rule context="doc:Order/cac:OrderLine/cac:LineItem/cac:OriginatorParty/cac:PartyLegalEntity">
+			<sch:extends rule="PartyLegalEntityCheck"/>
+		</sch:rule>
+		<!-- Validate DeliveryParty/Contact -->
+		<sch:rule context="doc:Order/cac:OrderLine/cac:LineItem/cac:OriginatorParty/cac:Contact">
+			<sch:extends rule="ContactCheck"/>
+		</sch:rule>
+		<!-- Validate DeliveryParty/Person -->
+		<sch:rule context="doc:Order/cac:OrderLine/cac:LineItem/cac:OriginatorParty/cac:Person">
+			<sch:extends rule="Person/FirstNameCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  LineItem/OrderedShipment - - - - - - - - - - -  -->
+		<sch:rule context="doc:Order/cac:OrderLine/cac:LineItem/cac:OrderedShipment">
+			<!-- Check for excluded elements -->
+			<!-- Check for mandatory elements -->
+			<!-- Validate -->
+			<!-- <sch:report test="'1' = '1'">[I-ORD999] Validation not yet implemented!</sch:report> -->
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  LineItem/PricingReference - - - - - - - - - - -  -->
+		<sch:rule context="doc:Order/cac:OrderLine/cac:LineItem/cac:PricingReference">
+			<!-- Check for excluded elements -->
+			<!-- Check for mandatory elements -->
+			<!-- Validate -->
+			<!-- <sch:report test="'1' = '1'">[I-ORD999] Validation not yet implemented!</sch:report> -->
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  LineItem/AllowanceCharge - - - - - - - - - - -  -->
+		<sch:rule context="doc:Order/cac:OrderLine/cac:LineItem/cac:AllowanceCharge">
+			<sch:extends rule="AllowanceChargeTopCheck"/>
+			<sch:extends rule="AccountingCostCheck"/>
+		</sch:rule>
+		<!-- Validate PrepaidIndicator -->
+		<!-- Validate SequenceNumeric -->
+		<sch:rule context="doc:Order/cac:OrderLine/cac:LineItem/cac:AllowanceCharge/cbc:SequenceNumeric">
+			<sch:extends rule="PosNumberCheck"/>
+		</sch:rule>
+		<!-- Validate Amount -->
+		<sch:rule context="doc:Order/cac:OrderLine/cac:LineItem/cac:AllowanceCharge/cbc:Amount">
+			<!-- [Release 20120615] Check removed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=927 -->
+			<!--<sch:extends rule="PosZeroNumberCheck"/>-->
+			<!-- [Release 20120615] Check added according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=927 -->
+			<sch:extends rule="ZeroNumberCheck"/>
+		</sch:rule>
+		<!-- Validate BaseAmount -->
+		<sch:rule context="doc:Order/cac:OrderLine/cac:LineItem/cac:AllowanceCharge/cbc:BaseAmount">
+			<sch:extends rule="PosZeroNumberCheck"/>
+		</sch:rule>
+		<!-- Validate TaxCategory -->
+		<sch:rule context="doc:Order/cac:OrderLine/cac:LineItem/cac:AllowanceCharge/cac:TaxCategory">
+			<sch:extends rule="TaxCategoryCheck"/>
+		</sch:rule>
+		<!-- Validate TaxCategory/TaxScheme -->
+		<sch:rule context="doc:Order/cac:OrderLine/cac:LineItem/cac:AllowanceCharge/cac:TaxCategory/cac:TaxScheme">
+			<sch:extends rule="TaxSchemeCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  LineItem/Price - - - - - - - - - - -  -->
+		<sch:rule context="doc:Order/cac:OrderLine/cac:LineItem/cac:Price">
+			<!-- Check for excluded elements -->
+			<sch:assert test="count(cac:ValidityPeriod) = 0">[F-ORD236] ValidityPeriod class must be excluded</sch:assert>
+			<!-- Check for mandatory elements -->
+			<!-- Validate -->
+		</sch:rule>
+		<!-- Validate PriceAmount -->
+		<sch:rule context="doc:Order/cac:OrderLine/cac:LineItem/cac:Price/cbc:PriceAmount">
+			<sch:report test="string-length(substring-after(., '.')) &lt; 2">[F-ORD169] Invalid PriceAmount. Must have at least 2 decimals</sch:report>
+			<sch:report test="string-length(substring-after(., '.')) &gt; 4">[F-ORD170] Invalid PriceAmount. No more than 4 decimals</sch:report>
+		</sch:rule>
+		<!-- Validate BaseQuantity -->
+		<sch:rule context="doc:Order/cac:OrderLine/cac:LineItem/cac:Price/cbc:BaseQuantity">
+			<sch:extends rule="unitCodeCheck"/>
+			<sch:extends rule="PosZeroNumberCheck"/>
+		</sch:rule>
+		<!-- Validate PriceChangeReason -->
+		<sch:rule context="doc:Order/cac:OrderLine/cac:LineItem/cac:Price/cbc:PriceChangeReason">
+			<sch:report test="count(../cbc:PriceChangeReason) &gt; 1 and not(./@languageID)">[W-ORD172] The attribute languageID should be used when more than one PriceChangeReason element is present</sch:report>
+			<sch:report test="following-sibling::*/@languageID = self::*/@languageID">[W-ORD173] Multilanguage error. Replicated PriceChangeReason elements with same languageID attribute value</sch:report>
+		</sch:rule>
+		<!-- Validate PriceTypeCode -->
+		<sch:rule context="doc:Order/cac:OrderLine/cac:LineItem/cac:Price/cbc:PriceTypeCode">
+			<sch:assert test="./@listID = 'UN/ECE 5387'">[F-ORD174] Invalid listID. Must be 'UN/ECE 5387'</sch:assert>
+			<sch:assert test="./@listAgencyID = '320' or ./@listAgencyID = '6'">[F-ORD237] Invalid listAgencyID. Must be '6'</sch:assert>
+		</sch:rule>
+		<!-- Validate PriceType -->
+		<!-- Validate OrderableUnitFactorRate -->
+		<sch:rule context="doc:Order/cac:OrderLine/cac:LineItem/cac:Price/cbc:OrderableUnitFactorRate">
+			<sch:extends rule="PosZeroNumberCheck"/>
+		</sch:rule>
+		<!-- Validate ValidityPeriod -->
+		<sch:rule context="doc:Order/cac:OrderLine/cac:LineItem/cac:Price/cac:ValidityPeriod">
+	    	<sch:extends rule="DescriptionLanguageCheckNew"/>
+			<sch:extends rule="PeriodCheck"/>
+		</sch:rule>
+		<!-- Validate ValidityPeriod/Description -->
+		
+		<!-- Validate PriceList -->
+		<sch:rule context="doc:Order/cac:OrderLine/cac:LineItem/cac:Price/cac:PriceList">
+			<!-- <sch:report test="'1' = '1'">[I-ORD999] Validation not yet implemented!</sch:report> -->
+		</sch:rule>
+		<!-- Validate AllowanceCharge -->
+		<sch:rule context="doc:Order/cac:OrderLine/cac:LineItem/cac:Price/cac:AllowanceCharge">
+			<sch:extends rule="PriceAllowanceChargeTopCheck"/>
+		</sch:rule>
+		<!-- Validate AllowanceCharge/SequenceNumeric -->
+		<sch:rule context="doc:Order/cac:OrderLine/cac:LineItem/cac:Price/cac:AllowanceCharge/cbc:SequenceNumeric">
+			<sch:extends rule="PosNumberCheck"/>
+		</sch:rule>
+		<!-- Validate AllowanceCharge/Amount -->
+		<sch:rule context="doc:Order/cac:OrderLine/cac:LineItem/cac:Price/cac:AllowanceCharge/cbc:Amount">
+			<!-- [Release 20120615] Check removed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=927 -->
+			<!--<sch:extends rule="PosZeroNumberCheck"/>-->
+			<!-- [Release 20120615] Check added according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=927 -->
+			<sch:extends rule="ZeroNumberCheck"/>
+		</sch:rule>
+		<!-- Validate AllowanceCharge/BaseAmount -->
+		<sch:rule context="doc:Order/cac:OrderLine/cac:LineItem/cac:Price/cac:AllowanceCharge/cbc:BaseAmount">
+			<!-- [Release 20130315] Check changed according to issue: https://bugs.softwareborsen.dk/show_bug.cgi?id=1066 -->
+			<sch:extends rule="ZeroNumberCheck"/>
+		</sch:rule>
+		<!-- Validate AllowanceCharge/TaxCategory -->
+		<sch:rule context="doc:Order/cac:OrderLine/cac:LineItem/cac:Price/cac:AllowanceCharge/cac:TaxCategory">
+			<sch:extends rule="TaxCategoryCheck"/>
+		</sch:rule>
+		<!-- Validate AllowanceCharge/TaxCategory/TaxScheme -->
+		<sch:rule context="doc:Order/cac:OrderLine/cac:LineItem/cac:Price/cac:AllowanceCharge/cac:TaxCategory/cac:TaxScheme">
+			<sch:extends rule="TaxSchemeCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  LineItem/Item - - - - - - - - - - -  -->
+		<sch:rule context="doc:Order/cac:OrderLine/cac:LineItem/cac:Item">
+			<!-- Check for excluded elements -->
+			<sch:assert test="count(cac:OriginCountry) = 0">[F-ORD238] OriginCountry class must be excluded</sch:assert>
+			<!-- Check for mandatory elements -->
+			<!-- [Release 20111201] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=623 -->
+			<sch:assert test="normalize-space(cbc:Name) != ''">[F-ORD184] Invalid Name. Must contain a value</sch:assert>
+			<sch:report test="contains(/doc:Order/cbc:ProfileID, 'Procurement-OrdSim') and not(cac:SellersItemIdentification)">[F-ORD185] There must be a SellersItemIdentification class for this profileID</sch:report>
+			<!-- Validate -->
+      <!-- [Release 20150915] Check removed according to issue: https://bugs.softwareborsen.dk/show_bug.cgi?id=1507 -->
+			<!-- sch:report test="string-length(cbc:Name) &gt; 40">[W-ORD186] Invalid Name. Should not exceed 40 characters</sch:report -->
+			<sch:report test="not(cbc:Description) and not(cac:BuyersItemIdentification) and not(cac:SellersItemIdentification) and not(cac:ManufacturersItemIdentification) and not(cac:StandardItemIdentification) and not(cac:CatalogueItemIdentification) and not(cac:AdditionalItemIdentification)">[F-ORD239] Description is mandatory if no ItemIdentification is present</sch:report>
+		</sch:rule>
+		<!-- Validate Description -->
+		<sch:rule context="doc:Order/cac:OrderLine/cac:LineItem/cac:Item/cbc:Description">
+			<sch:extends rule="DescriptionLanguageCheckNew"/>
+		</sch:rule>
+		<!-- Validate PackQuantity -->
+		<!-- Validate PackSizeNumeric -->
+		<!-- Validate CatalogueIndicator -->
+		<!-- Validate Name (OK) -->
+		<!-- Validate HazardousRiskIndicator -->
+		<!-- Validate AdditionalInformation -->
+		<!-- Validate Keyword -->
+		<!-- Validate BrandName -->
+		<!-- Validate ModelName -->
+
+		<!-- - - - - - - - - - - -  LineItem/Item/BuyersItemIdentification - - - - - - - - - - -  -->
+		<sch:rule context="doc:Order/cac:OrderLine/cac:LineItem/cac:Item/cac:BuyersItemIdentification">
+			<sch:extends rule="DefaultItemIdentificationCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  LineItem/Item/SellersItemIdentification - - - - - - - - - - -  -->
+		<sch:rule context="doc:Order/cac:OrderLine/cac:LineItem/cac:Item/cac:SellersItemIdentification">
+			<!-- Validate -->
+			<!-- [Release 20111201] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=623 -->
+      <!-- [Release 20160915] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=1586 -->
+			<sch:assert test="normalize-space(cbc:ID) != ''">[F-ORD189] Invalid SellersItemIdentification/ID. Must contain a value.</sch:assert>
+			<!-- <sch:report test="cac:IssuerParty">[I-ORD999] Validation not yet implemented!</sch:report> -->
+		</sch:rule>
+		<!-- Validate Item/SellersItemIdentification/PhysicalAttribute -->
+		<sch:rule context="doc:Order/cac:OrderLine/cac:LineItem/cac:Item/cac:SellersItemIdentification/cac:PhysicalAttribute">
+			<!-- Check for excluded elements -->
+			<!-- Check for mandatory elements -->
+			<!-- [Release 20111201] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=623 -->
+			<sch:assert test="normalize-space(cbc:Description) != ''">[F-ORD192] Invalid Description. Must contain a value</sch:assert>
+			<!-- Validate -->
+			<!-- [Release 20111201] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=623 -->
+			<sch:assert test="normalize-space(cbc:AttributeID) != ''">[F-ORD193] Invalid AttributeID. Must contain a value</sch:assert>
+			<sch:extends rule="DescriptionLanguageCheckNew"/>
+		</sch:rule>
+		<!-- Validate Item/SellersItemIdentification/PhysicalAttribute/Description -->
+		
+		<!-- Validate Item/SellersItemIdentification/MeasurementDimension -->
+		<sch:rule context="doc:Order/cac:OrderLine/cac:LineItem/cac:Item/cac:SellersItemIdentification/cac:MeasurementDimension">
+			<sch:extends rule="DescriptionLanguageCheckNew"/>
+			<!-- Validate -->
+			<!-- [Release 20111201] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=623 -->
+			<sch:assert test="normalize-space(cbc:AttributeID) != ''">[F-ORD187] Invalid AttributeID. Must contain a value</sch:assert>
+		</sch:rule>
+		<!-- Validate Item/SellersItemIdentification/MeasurementDimension/Description -->
+		
+
+		<!-- - - - - - - - - - - -  LineItem/Item/ManufacturersItemIdentification - - - - - - - - - - -  -->
+		<sch:rule context="doc:Order/cac:OrderLine/cac:LineItem/cac:Item/cac:ManufacturersItemIdentification">
+			<sch:extends rule="DefaultItemIdentificationCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  LineItem/Item/StandardItemIdentification - - - - - - - - - - -  -->
+		<sch:rule context="doc:Order/cac:OrderLine/cac:LineItem/cac:Item/cac:StandardItemIdentification">
+			<sch:extends rule="DefaultItemIdentificationCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  LineItem/Item/CatalogueItemIdentification - - - - - - - - - - -  -->
+		<sch:rule context="doc:Order/cac:OrderLine/cac:LineItem/cac:Item/cac:CatalogueItemIdentification">
+			<sch:extends rule="DefaultItemIdentificationCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  LineItem/Item/AdditionalItemIdentification - - - - - - - - - - -  -->
+		<sch:rule context="doc:Order/cac:OrderLine/cac:LineItem/cac:Item/cac:AdditionalItemIdentification">
+			<sch:extends rule="DefaultItemIdentificationCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  LineItem/Item/CatalogueDocumentReference - - - - - - - - - - -  -->
+		<sch:rule context="doc:Order/cac:OrderLine/cac:LineItem/cac:Item/cac:CatalogueDocumentReference">
+			<sch:extends rule="KnownDocumentReferenceCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  LineItem/Item/ItemSpecificationDocumentReference - - - - - - - - - - -  -->
+		<sch:rule context="doc:Order/cac:OrderLine/cac:LineItem/cac:Item/cac:ItemSpecificationDocumentReference">
+			<sch:extends rule="DocumentReferenceCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  LineItem/Item/OriginCountry (excluded) - - - - - - - - - - -  -->
+
+		<!-- - - - - - - - - - - -  LineItem/Item/CommodityClassification - - - - - - - - - - -  -->
+		<sch:rule context="doc:Order/cac:OrderLine/cac:LineItem/cac:Item/cac:CommodityClassification">
+			<!-- Check for excluded elements -->
+			<!-- Check for mandatory elements -->
+			<!-- Validate -->
+			<sch:report test="cbc:ItemClassificationCode and not(cbc:ItemClassificationCode/@listID='UNSPSC')">[W-ORD195] Use a Valid UNSPSC 19.0501 code</sch:report>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  LineItem/Item/TransactionConditions - - - - - - - - - - -  -->
+		<sch:rule context="doc:Order/cac:OrderLine/cac:LineItem/cac:Item/cac:TransactionConditions">
+    		<sch:extends rule="DescriptionLanguageCheckNew"/>
+			<!-- Check for excluded elements -->
+			<!-- Check for mandatory elements -->
+			<!-- Validate -->
+		</sch:rule>
+		<!-- Validate Item/TransactionConditions/Description -->
+		
+		<!-- Validate Item/TransactionConditions/DocumentReference -->
+		<sch:rule context="doc:Order/cac:OrderLine/cac:LineItem/cac:Item/cac:TransactionConditions/cac:DocumentReference">
+			<sch:extends rule="DocumentReferenceCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  LineItem/Item/HazardousItem - - - - - - - - - - -  -->
+		<sch:rule context="doc:Order/cac:OrderLine/cac:LineItem/cac:Item/cac:HazardousItem">
+			<!-- Check for excluded elements -->
+			<!-- Check for mandatory elements -->
+			<!-- Validate -->
+			<!-- <sch:report test="'1' = '1'">[I-ORD999] Validation not yet implemented!</sch:report> -->
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  LineItem/Item/ClassifiedTaxCategory - - - - - - - - - - -  -->
+		<sch:rule context="doc:Order/cac:OrderLine/cac:LineItem/cac:Item/cac:ClassifiedTaxCategory">
+			<sch:extends rule="TaxCategoryCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  LineItem/Item/ClassifiedTaxCategory/TaxScheme - - - - - - - - - - -  -->
+		<sch:rule context="doc:Order/cac:OrderLine/cac:LineItem/cac:Item/cac:ClassifiedTaxCategory/cac:TaxScheme">
+			<sch:extends rule="TaxSchemeCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  LineItem/Item/AdditionalItemProperty - - - - - - - - - - -  -->
+		<sch:rule context="doc:Order/cac:OrderLine/cac:LineItem/cac:Item/cac:AdditionalItemProperty">
+			<!-- Check for excluded elements -->
+			<!-- Check for mandatory elements -->
+			<!-- Validate -->
+			<!-- [Release 20111201] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=623 -->
+			<sch:assert test="normalize-space(cbc:Name) != ''">[F-ORD200] Invalid Name. Must contain a value</sch:assert>
+			<!-- [Release 20111201] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=623 -->
+			<sch:assert test="normalize-space(cbc:Value) != ''">[F-ORD201] Invalid Value. Must contain a value</sch:assert>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  LineItem/Item/AdditionalItemProperty/ItemPropertyGroup - - - - - - - - - - -  -->
+		<sch:rule context="doc:Order/cac:OrderLine/cac:LineItem/cac:Item/cac:AdditionalItemProperty/cac:ItemPropertyGroup">
+			<!-- Check for excluded elements -->
+			<!-- Check for mandatory elements -->
+			<!-- Validate -->
+			<!-- [Release 20111201] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=623 -->
+			<sch:assert test="normalize-space(cbc:ID) != ''">[F-ORD203] Invalid ID. Must contain a value</sch:assert>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  LineItem/Item/ManufacturerParty - - - - - - - - - - -  -->
+		<sch:rule context="doc:Order/cac:OrderLine/cac:LineItem/cac:Item/cac:ManufacturerParty">
+			<!-- Check for excluded elements -->
+			<!-- Check for mandatory elements -->
+			<!-- Validate -->
+			<!-- <sch:report test="'1' = '1'">[I-ORD999] Validation not yet implemented!</sch:report> -->
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  LineItem/Item/InformationContentProviderParty - - - - - - - - - - -  -->
+		<sch:rule context="doc:Order/cac:OrderLine/cac:LineItem/cac:Item/cac:InformationContentProviderParty">
+			<!-- Check for excluded elements -->
+			<!-- Check for mandatory elements -->
+			<!-- Validate -->
+			<!-- <sch:report test="'1' = '1'">[I-ORD999] Validation not yet implemented!</sch:report> -->
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  LineItem/Item/OriginAddress - - - - - - - - - - -  -->
+		<sch:rule context="doc:Order/cac:OrderLine/cac:LineItem/cac:Item/cac:OriginAddress">
+			<sch:extends rule="AddressCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  Item/ItemInstance - - - - - - - - - - -  -->
+		<sch:rule context="doc:Order/cac:OrderLine/cac:LineItem/cac:Item/cac:ItemInstance">
+			<!-- Check for excluded elements -->
+			<!-- Check for mandatory elements -->
+			<!-- Validate -->
+		</sch:rule>
+		<!-- Validate Item/ItemInstance/AdditionalItemProperty -->
+		<sch:rule context="doc:Order/cac:OrderLine/cac:LineItem/cac:Item/cac:ItemInstance/cac:AdditionalItemProperty">
+			<!-- Check for excluded elements -->
+			<!-- Check for mandatory elements -->
+			<!-- Validate -->
+			<!-- [Release 20111201] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=623 -->
+			<sch:assert test="normalize-space(cbc:Name) != ''">[F-ORD204] Invalid Name. Must contain a value</sch:assert>
+			<!-- [Release 20111201] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=623 -->
+			<sch:assert test="normalize-space(cbc:Value) != ''">[F-ORD242] Invalid Value. Must contain a value</sch:assert>
+		</sch:rule>
+		<!-- Validate Item/ItemInstance/AdditionalItemProperty/UsabilityPeriod -->
+		<sch:rule context="doc:Order/cac:OrderLine/cac:LineItem/cac:Item/cac:ItemInstance/cac:AdditionalItemProperty/cac:UsabilityPeriod">
+	    	<sch:extends rule="DescriptionLanguageCheckNew"/>
+			<sch:extends rule="PeriodCheck"/>
+		</sch:rule>
+		<!-- Validate Item/ItemInstance/AdditionalItemProperty/UsabilityPeriod/Description -->
+		
+		<!-- Validate Item/ItemInstance/AdditionalItemProperty/ItemPropertyGroup -->
+		<sch:rule context="doc:Order/cac:OrderLine/cac:LineItem/cac:Item/cac:ItemInstance/cac:AdditionalItemProperty/cac:ItemPropertyGroup">
+			<!-- Check for excluded elements -->
+			<!-- Check for mandatory elements -->
+			<!-- Validate -->
+			<!-- [Release 20111201] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=623 -->
+			<sch:assert test="normalize-space(cbc:ID) != ''">[F-ORD188] Invalid ID. Must contain a value</sch:assert>
+		</sch:rule>
+		<!-- Validate Item/ItemInstance/LotIdentification -->
+		<sch:rule context="doc:Order/cac:OrderLine/cac:LineItem/cac:Item/cac:ItemInstance/cac:LotIdentification">
+			<!-- Check for excluded elements -->
+			<!-- Check for mandatory elements -->
+			<!-- Validate -->
+		</sch:rule>
+		<!-- Validate Item/ItemInstance/LotIdentification/AdditionalItemProperty -->
+		<sch:rule context="doc:Order/cac:OrderLine/cac:LineItem/cac:Item/cac:ItemInstance/cac:LotIdentification/cac:AdditionalItemProperty">
+			<!-- [Release 20111201] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=623 -->
+			<sch:assert test="normalize-space(cbc:Name) != ''">[F-ORD240] Invalid Name. Must contain a value</sch:assert>
+			<!-- [Release 20111201] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=623 -->
+			<sch:assert test="normalize-space(cbc:Value) != ''">[F-ORD241] Invalid Value. Must contain a value</sch:assert>
+		</sch:rule>
+		<!-- Validate Item/ItemInstance/LotIdentification/AdditionalItemProperty/UsabilityPeriod -->
+		<sch:rule context="doc:Order/cac:OrderLine/cac:LineItem/cac:Item/cac:ItemInstance/cac:LotIdentification/cac:AdditionalItemProperty/cac:UsabilityPeriod">
+	    	<sch:extends rule="DescriptionLanguageCheckNew"/>
+			<sch:extends rule="PeriodCheck"/>
+		</sch:rule>
+		<!-- Validate Item/ItemInstance/LotIdentification/AdditionalItemProperty/UsabilityPeriod/Description -->
+		
+		<!-- Validate Item/ItemInstance/LotIdentification/AdditionalItemProperty/ItemPropertyGroup -->
+		<sch:rule context="doc:Order/cac:OrderLine/cac:LineItem/cac:Item/cac:ItemInstance/cac:LotIdentification/cac:AdditionalItemProperty/cac:ItemPropertyGroup">
+			<!-- Validate -->
+			<!-- [Release 20111201] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=623 -->
+			<sch:assert test="normalize-space(cbc:ID) != ''">[F-ORD243] Invalid ID. Must contain a value</sch:assert>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  BuyerProposedSubstituteLineItem - - - - - - - - - - -  -->
+		<sch:rule context="doc:Order/cac:OrderLine/cac:BuyerProposedSubstituteLineItem">
+			<!-- Check for excluded elements -->
+			<!-- Check for mandatory elements -->
+			<!-- Validate -->
+			<!-- <sch:report test="'1' = '1'">[I-ORD999] Validation not yet implemented!</sch:report> -->
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  QuotationLineReference - - - - - - - - - - -  -->
+		<sch:rule context="doc:Order/cac:OrderLine/cac:QuotationLineReference">
+			<!-- Check for excluded elements -->
+			<!-- Check for mandatory elements -->
+			<!-- Validate -->
+			<!-- [Release 20111201] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=623 -->
+			<sch:assert test="normalize-space(cbc:LineID) != ''">[F-ORD207] Invalid LineID. Must contain a value</sch:assert>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  QuotationLineReference/DocumentReference - - - - - - - - - - -  -->
+		<sch:rule context="doc:Order/cac:OrderLine/cac:QuotationLineReference/cac:DocumentReference">
+			<sch:extends rule="KnownDocumentReferenceCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  DocumentReference - - - - - - - - - - -  -->
+		<sch:rule context="doc:Order/cac:OrderLine/cac:DocumentReference">
+			<sch:extends rule="DocumentReferenceCheck"/>
+		</sch:rule>
+
+	</sch:pattern>
+
+</sch:schema>

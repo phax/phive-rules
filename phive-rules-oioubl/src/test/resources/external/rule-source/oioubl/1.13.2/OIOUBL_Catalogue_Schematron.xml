@@ -1,0 +1,1297 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+******************************************************************************************************************
+
+		OIOUBL Schematron
+
+		publisher:          NemHandel / Erhvervsstyrelsen
+        Repository path:    $HeadURL$
+        File version:       $Revision$
+        Last changed by:    $Author$
+        Last changed date:  $Date$
+
+		Description:        This document is produced as part of the OIOUBL schematron package
+		Rights:             It can be used following the Common Creative Licence
+
+		all terms derived from http://dublincore.org/documents/dcmi-terms/
+
+		For more information, see www.oioubl.info or email support@nemhandel.dk
+
+******************************************************************************************************************
+-->
+
+<sch:schema xmlns:sch="http://purl.oclc.org/dsdl/schematron">
+
+    <sch:ns uri="urn:oasis:names:specification:ubl:schema:xsd:Catalogue-2" prefix="doc"/>
+    <sch:ns uri="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" prefix="cac"/>
+    <sch:ns uri="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" prefix="cbc"/>
+    <sch:ns uri="urn:oasis:names:specification:ubl:schema:xsd:CoreComponentParameters-2" prefix="ccts"/>
+    <sch:ns uri="urn:oasis:names:specification:ubl:schema:xsd:SpecializedDatatypes-2" prefix="sdt"/>
+    <sch:ns uri="urn:un:unece:uncefact:data:specification:UnqualifiedDataTypesSchemaModule:2" prefix="udt"/>
+    <!-- [Release 20120615] Check added according to issue: https://bugs.softwareborsen.dk/show_bug.cgi?id=934 -->
+    <sch:ns uri="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2" prefix="ext"/>
+    <sch:ns uri="http://www.w3.org/2001/XMLSchema" prefix="xs"/>
+
+    <sch:p>Schematron for validating OIOUBL-2.1 documents.</sch:p>
+    <sch:title>Checking OIOUBL-2.1 Catalogue</sch:title>
+
+
+    <!-- Inclusion of OIOUBL codelist variables -->
+    <sch:include href="OIOUBL_Codelist_Schematron.xml"/>
+
+
+    <!-- Global variables -->
+
+
+    <!-- The default phase to execute when validating -->
+    <sch:phase id="default">
+        <sch:active pattern="ublextensions"/>
+        <sch:active pattern="profile"/>
+        <sch:active pattern="catalogue"/>
+        <sch:active pattern="validityperiod"/>
+        <sch:active pattern="referencedcontract"/>
+        <sch:active pattern="signature"/>
+        <sch:active pattern="providerparty"/>
+        <sch:active pattern="receiverparty"/>
+        <sch:active pattern="sellersupplierparty"/>
+        <sch:active pattern="contractorcustomerparty"/>
+        <sch:active pattern="tradingterms"/>
+        <sch:active pattern="catalogueline"/>
+    </sch:phase>
+
+
+    <!-- Inclusion of OIOUBL common rules -->
+    <sch:include href="OIOUBL_Common_Schematron.xml"/>
+
+
+    <!-- - - - - - - - - - - -  UBLExtensions - - - - - - - - - - - - -  -->
+    <!-- [Release 20120615] Check added according to issue: https://bugs.softwareborsen.dk/show_bug.cgi?id=934 -->
+    <sch:pattern name="UBLExtensions" id="ublextensions">
+        <sch:p>Pattern for validating the UBLExtensions class</sch:p>
+        <sch:rule context="doc:Catalogue">
+            <sch:extends rule="UBLExtensionsCheck"/>
+        </sch:rule>
+    </sch:pattern>
+
+    <!-- - - - - - - - - - - -  Profile - - - - - - - - - - - - -  -->
+    <sch:pattern name="Profile" id="profile">
+        <sch:p>Pattern for validating root element, Profile and UBL version</sch:p>
+        <!-- Validate root element -->
+        <sch:rule context="/">
+            <sch:assert test="local-name(*) = 'Catalogue'">[F-CAT001] Root element must be Catalogue</sch:assert>
+            <!-- [Release 20130315] Check added according to issue: https://bugs.softwareborsen.dk/show_bug.cgi?id=1023 -->
+            <sch:assert
+                    test="namespace-uri(*) = 'urn:oasis:names:specification:ubl:schema:xsd:Catalogue-2'">[F-CAT249] The documenttype does not match an OIOUBL Catalogue and can not be validated by this schematron.
+            </sch:assert>
+        </sch:rule>
+        <sch:rule context="doc:Catalogue">
+            <!-- Check ProfileID, UBLVersionID and CustomizationID -->
+            <sch:extends rule="UBLVersionIDCheck"/>
+            <sch:extends rule="CustomizationIDCheck"/>
+            <sch:extends rule="ProfileIDCheck"/>
+
+            <!-- Check Profile dependencies (top level) -->
+        </sch:rule>
+    </sch:pattern>
+
+    <!-- - - - - - - - - - - -  Catalogue (CAT248) - - - - - - - - - - -  -->
+    <sch:pattern name="Catalogue" id="catalogue">
+        <sch:p>Pattern for validating the Catalogue structure</sch:p>
+        <sch:rule context="doc:Catalogue">
+            <!-- Check for excluded elements -->
+            <sch:assert test="count(cbc:LineCountNumeric) = 0">[F-CAT004] LineCountNumeric element must be excluded</sch:assert>
+
+            <!-- Check for mandatory elements -->
+            <sch:assert test="cbc:VersionID != ''">[F-CAT003] Invalid VersionID. Must contain a value</sch:assert>
+            <sch:assert test="count(cac:ValidityPeriod) = 1">[F-CAT005] One ValidityPeriod class must be present</sch:assert>
+            <sch:assert test="count(cac:SellerSupplierParty) = 1">[F-CAT006] One SellerSupplierParty class must be present</sch:assert>
+
+            <!-- Validate -->
+            <sch:assert test="cbc:ID != ''">[F-CAT002] Invalid ID. Must contain a value</sch:assert>
+            <sch:report
+                    test="cac:ContractorCustomerParty and cac:ReceiverParty/cac:PartyIdentification/cbc:ID = cac:ContractorCustomerParty/cac:Party/cac:PartyIdentification/cbc:ID">[F-CAT007] ContractorCustomerParty must be different from ReceiverParty
+            </sch:report>
+            <sch:report test="count(cac:ReferencedContract) &gt; 1">[F-CAT008] No more than one ReferencedContract class must be present
+            </sch:report>
+            <sch:extends rule="DescriptionLanguageCheckNew"/>
+        </sch:rule>
+
+        <!-- Validate UUID -->
+        <sch:rule context="doc:Catalogue/cbc:UUID">
+            <sch:extends rule="UUIDCheck"/>
+        </sch:rule>
+
+        <!-- Validate IssueDate -->
+
+        <!-- Validate IssueTime -->
+
+        <!-- Validate RevisionDate -->
+
+        <!-- Validate RevisionTime -->
+
+        <!-- Validate Note -->
+        <sch:rule context="doc:Catalogue/cbc:Note">
+            <sch:extends rule="NoteCheck"/>
+        </sch:rule>
+
+        <!-- Validate Description -->
+     
+
+        <!-- Validate VersionID -->
+
+        <!-- Validate PreviousVersionID -->
+
+        <!-- Validate LineCountNumeric (Excluded) -->
+    </sch:pattern>
+
+    <!-- - - - - - - - - - - -  ValidityPeriod - - - - - - - - - - -  -->
+    <sch:pattern name="ValidityPeriod" id="validityperiod">
+        <sch:p>Pattern for validating the ValidityPeriod class</sch:p>
+        <sch:rule context="doc:Catalogue/cac:ValidityPeriod">
+            <!-- Validate -->
+            <sch:extends rule="PeriodCheck"/>
+             <sch:extends rule="DescriptionLanguageCheckNew"/>
+        </sch:rule>
+        <!-- Validate Description -->
+        
+    </sch:pattern>
+
+    <!-- - - - - - - - - - - -  ReferencedContract - - - - - - - - - - -  -->
+    <sch:pattern name="ReferencedContract" id="referencedcontract">
+        <sch:p>Pattern for validating the ReferencedContract class</sch:p>
+        <sch:rule context="doc:Catalogue/cac:ReferencedContract">
+            <!-- Check for excluded elements -->
+            <!-- Check for mandatory elements -->
+            <sch:assert test="cbc:ID != ''">[F-CAT020] Invalid ID. Must contain a value</sch:assert>
+            <!-- Validate -->
+            <sch:report test="cbc:ContractType and cbc:ContractTypeCode">[F-CAT021] Use either ContractType or ContractTypeCode</sch:report>
+            <sch:report
+                    test="count(cac:ContractDocumentReference) &gt; 1">[F-CAT022] No more than one ContractDocumentReference class may be present
+            </sch:report>
+        </sch:rule>
+
+        <!-- Validate ValidityPeriod -->
+        <sch:rule context="doc:Catalogue/cac:ReferencedContract/cac:ValidityPeriod">
+            <sch:extends rule="PeriodCheck"/>
+             <sch:extends rule="DescriptionLanguageCheckNew"/>
+        </sch:rule>
+        <!-- Validate ValidityPeriod/Description -->
+       
+        <!-- Validate ContractDocumentReference -->
+        <sch:rule context="doc:Catalogue/cac:ReferencedContract/cac:ContractDocumentReference">
+            <sch:extends rule="KnownDocumentReferenceCheck"/>
+        </sch:rule>
+    </sch:pattern>
+
+    <!-- - - - - - - - - - - -  Signature - - - - - - - - - - -  -->
+    <sch:pattern name="Signature" id="signature">
+        <sch:p>Pattern for validating the Signature class</sch:p>
+        <sch:rule context="doc:Catalogue/cac:Signature">
+            <!-- Check for excluded elements -->
+            <!-- Check for mandatory elements -->
+            <!-- Validate -->
+            <sch:assert test="cbc:ID != ''">[F-CAT030] Invalid ID. Must contain a value</sch:assert>
+        </sch:rule>
+        <!-- Validate SignatoryParty -->
+        <sch:rule context="doc:Catalogue/cac:Signature/cac:SignatoryParty">
+            <!-- Check for excluded elements -->
+            <sch:extends rule="PartyExcludedCheck"/>
+            <!-- Check for mandatory elements -->
+            <!-- Validate -->
+            <sch:extends rule="PartyNameCheck"/>
+            <sch:extends rule="EndpointIDCheck"/>
+            <sch:report test="count(cac:PartyLegalEntity) &gt; 1">[F-CAT031] No more than one PartyLegalEntity class may be present
+            </sch:report>
+        </sch:rule>
+        <!-- Validate SignatoryParty/PartyIdentification -->
+        <sch:rule context="doc:Catalogue/cac:Signature/cac:SignatoryParty/cac:PartyIdentification">
+            <sch:extends rule="PartyIdentificationCheck"/>
+        </sch:rule>
+        <!-- Validate SignatoryParty/PartyName -->
+        <sch:rule context="doc:Catalogue/cac:Signature/cac:SignatoryParty/cac:PartyName">
+            <sch:extends rule="PartyNameLanguageCheck"/>
+        </sch:rule>
+        <!-- Validate SignatoryParty/PostalAddress -->
+        <sch:rule context="doc:Catalogue/cac:Signature/cac:SignatoryParty/cac:PostalAddress">
+            <sch:extends rule="AddressCheck"/>
+        </sch:rule>
+        <!-- Validate SignatoryParty/PhysicalLocation -->
+        <sch:rule context="doc:Catalogue/cac:Signature/cac:SignatoryParty/cac:PhysicalLocation">
+            <sch:extends rule="AddressIDCheck"/>
+        </sch:rule>
+        <!-- Validate SignatoryParty/PhysicalLocation/ValidityPeriod -->
+        <sch:rule context="doc:Catalogue/cac:Signature/cac:SignatoryParty/cac:PhysicalLocation/cac:ValidityPeriod">
+            <sch:extends rule="DescriptionLanguageCheckNew"/>
+            <sch:extends rule="PeriodCheck"/>
+        </sch:rule>
+        <!-- Validate SignatoryParty/PhysicalLocation/ValidityPeriod/Description -->
+       
+        <!-- Validate SignatoryParty/PhysicalLocation/Address -->
+        <sch:rule context="doc:Catalogue/cac:Signature/cac:SignatoryParty/cac:PhysicalLocation/cac:Address">
+            <sch:extends rule="AddressCheck"/>
+        </sch:rule>
+        <!-- Validate SignatoryParty/PartyTaxScheme -->
+        <sch:rule context="doc:Catalogue/cac:Signature/cac:SignatoryParty/cac:PartyTaxScheme">
+            <sch:extends rule="PartyTaxSchemeCheck"/>
+        </sch:rule>
+        <!-- Validate SignatoryParty/PartyTaxScheme/TaxScheme -->
+        <sch:rule context="doc:Catalogue/cac:Signature/cac:SignatoryParty/cac:PartyTaxScheme/cac:TaxScheme">
+            <sch:extends rule="TaxSchemeCheck"/>
+        </sch:rule>
+        <!-- Validate SignatoryParty/PartyLegalEntity -->
+        <sch:rule context="doc:Catalogue/cac:Signature/cac:SignatoryParty/cac:PartyLegalEntity">
+            <sch:extends rule="PartyLegalEntityCheck"/>
+        </sch:rule>
+        <!-- Validate SignatoryParty/Contact -->
+        <sch:rule context="doc:Catalogue/cac:Signature/cac:SignatoryParty/cac:Contact">
+            <sch:extends rule="ContactCheck"/>
+        </sch:rule>
+        <!-- Validate SignatoryParty/Person -->
+        <sch:rule context="doc:Catalogue/cac:Signature/cac:SignatoryParty/cac:Person">
+            <sch:extends rule="Person/FirstNameCheck"/>
+        </sch:rule>
+
+        <!-- Validate DigitalSignatureAttachment -->
+        <sch:rule context="doc:Catalogue/cac:Signature/cac:DigitalSignatureAttachment">
+            <sch:extends rule="AttachmentCheck"/>
+        </sch:rule>
+
+        <!-- Validate OriginalDocumentReference -->
+        <sch:rule context="doc:Catalogue/cac:Signature/cac:OriginalDocumentReference">
+            <sch:extends rule="DocumentReferenceCheck"/>
+        </sch:rule>
+    </sch:pattern>
+
+    <!-- - - - - - - - - - - -  ProviderParty - - - - - - - - - - -  -->
+    <sch:pattern name="ProviderParty" id="providerparty">
+        <sch:p>Pattern for validating the ProviderParty class</sch:p>
+
+        <!-- - - - - - - - - - - -  Top-level checks - - - - - - - - - - -  -->
+        <sch:rule context="doc:Catalogue/cac:ProviderParty">
+            <!-- Check for excluded elements -->
+            <sch:extends rule="PartyExcludedCheck"/>
+            <!-- Check for mandatory elements -->
+            <sch:assert test="cbc:EndpointID != ''">[F-CAT040] Invalid EndpointID. Must contain a value</sch:assert>
+            <sch:assert test="count(cac:PartyLegalEntity) = 1">[F-CAT041] One PartyLegalEntity class must be present</sch:assert>
+            <!-- Validate -->
+            <sch:extends rule="PartyNameCheck"/>
+            <sch:extends rule="EndpointIDCheck"/>
+        </sch:rule>
+
+        <!-- - - - - - - - - - - -  PartyIdentification - - - - - - - - - - -  -->
+        <sch:rule context="doc:Catalogue/cac:ProviderParty/cac:PartyIdentification">
+            <sch:extends rule="PartyIdentificationCheck"/>
+        </sch:rule>
+
+        <!-- - - - - - - - - - - -  PartyName - - - - - - - - - - -  -->
+        <sch:rule context="doc:Catalogue/cac:ProviderParty/cac:PartyName">
+            <sch:extends rule="PartyNameLanguageCheck"/>
+        </sch:rule>
+
+        <!-- - - - - - - - - - - -  PostalAddress - - - - - - - - - - -  -->
+        <sch:rule context="doc:Catalogue/cac:ProviderParty/cac:PostalAddress">
+            <sch:extends rule="AddressCheck"/>
+        </sch:rule>
+
+        <!-- - - - - - - - - - - -  PhysicalLocation - - - - - - - - - - -  -->
+        <sch:rule context="doc:Catalogue/cac:ProviderParty/cac:PhysicalLocation">
+            <sch:extends rule="AddressIDCheck"/>
+        </sch:rule>
+        <!-- Validate ValidityPeriod -->
+        <sch:rule context="doc:Catalogue/cac:ProviderParty/cac:PhysicalLocation/cac:ValidityPeriod">
+            <sch:extends rule="DescriptionLanguageCheckNew"/>
+            <sch:extends rule="PeriodCheck"/>
+        </sch:rule>
+        <!-- Validate ValidityPeriod/Description -->
+      
+        <!-- Validate Address -->
+        <sch:rule context="doc:Catalogue/cac:ProviderParty/cac:PhysicalLocation/cac:Address">
+            <sch:extends rule="AddressCheck"/>
+        </sch:rule>
+
+        <!-- - - - - - - - - - - -  PartyTaxScheme - - - - - - - - - - -  -->
+        <sch:rule context="doc:Catalogue/cac:ProviderParty/cac:PartyTaxScheme">
+            <sch:extends rule="PartyTaxSchemeCheck"/>
+        </sch:rule>
+
+        <!-- - - - - - - - - - - -  PartyTaxScheme/TaxScheme - - - - - - - - - - -  -->
+        <sch:rule context="doc:Catalogue/cac:ProviderParty/cac:PartyTaxScheme/cac:TaxScheme">
+            <sch:extends rule="TaxSchemeCheck"/>
+        </sch:rule>
+
+        <!-- - - - - - - - - - - -  PartyLegalEntity - - - - - - - - - - -  -->
+        <sch:rule context="doc:Catalogue/cac:ProviderParty/cac:PartyLegalEntity">
+            <sch:extends rule="PartyLegalEntityCheck"/>
+        </sch:rule>
+
+        <!-- - - - - - - - - - - -  Contact - - - - - - - - - - -  -->
+        <sch:rule context="doc:Catalogue/cac:ProviderParty/cac:Contact">
+            <sch:extends rule="ContactCheck"/>
+        </sch:rule>
+
+        <!-- - - - - - - - - - - -  Person - - - - - - - - - - -  -->
+        <sch:rule context="doc:Catalogue/cac:ProviderParty/cac:Person">
+            <sch:extends rule="Person/FirstNameCheck"/>
+        </sch:rule>
+    </sch:pattern>
+
+    <!-- - - - - - - - - - - -  ReceiverParty - - - - - - - - - - -  -->
+    <sch:pattern name="ReceiverParty" id="receiverparty">
+        <sch:p>Pattern for validating the ReceiverParty class</sch:p>
+
+        <!-- - - - - - - - - - - -  Top-level checks - - - - - - - - - - -  -->
+        <sch:rule context="doc:Catalogue/cac:ReceiverParty">
+            <!-- Check for excluded elements -->
+            <sch:extends rule="PartyExcludedCheck"/>
+            <!-- Check for mandatory elements -->
+            <sch:assert test="cbc:EndpointID != ''">[F-CAT050] Invalid EndpointID. Must contain a value</sch:assert>
+            <!-- Validate -->
+            <sch:extends rule="PartyNameCheck"/>
+            <sch:extends rule="EndpointIDCheck"/>
+            <sch:report test="count(cac:PartyLegalEntity) &gt; 1">[F-CAT051] No more than one PartyLegalEntity class may be present
+            </sch:report>
+        </sch:rule>
+
+        <!-- - - - - - - - - - - -  PartyIdentification - - - - - - - - - - -  -->
+        <sch:rule context="doc:Catalogue/cac:ReceiverParty/cac:PartyIdentification">
+            <sch:extends rule="PartyIdentificationCheck"/>
+        </sch:rule>
+
+        <!-- - - - - - - - - - - -  PartyName - - - - - - - - - - -  -->
+        <sch:rule context="doc:Catalogue/cac:ReceiverParty/cac:PartyName">
+            <sch:extends rule="PartyNameLanguageCheck"/>
+        </sch:rule>
+
+        <!-- - - - - - - - - - - -  PostalAddress - - - - - - - - - - -  -->
+        <sch:rule context="doc:Catalogue/cac:ReceiverParty/cac:PostalAddress">
+            <sch:extends rule="AddressCheck"/>
+        </sch:rule>
+
+        <!-- - - - - - - - - - - -  PhysicalLocation - - - - - - - - - - -  -->
+        <sch:rule context="doc:Catalogue/cac:ReceiverParty/cac:PhysicalLocation">
+            <sch:extends rule="AddressIDCheck"/>
+        </sch:rule>
+        <!-- Validate ValidityPeriod -->
+        <sch:rule context="doc:Catalogue/cac:ReceiverParty/cac:PhysicalLocation/cac:ValidityPeriod">
+            <sch:extends rule="DescriptionLanguageCheckNew"/>
+            <sch:extends rule="PeriodCheck"/>
+        </sch:rule>
+        <!-- Validate ValidityPeriod/Description -->
+       
+        <!-- Validate Address -->
+        <sch:rule context="doc:Catalogue/cac:ReceiverParty/cac:PhysicalLocation/cac:Address">
+            <sch:extends rule="AddressCheck"/>
+        </sch:rule>
+
+        <!-- - - - - - - - - - - -  PartyTaxScheme - - - - - - - - - - -  -->
+        <sch:rule context="doc:Catalogue/cac:ReceiverParty/cac:PartyTaxScheme">
+            <sch:extends rule="PartyTaxSchemeCheck"/>
+        </sch:rule>
+
+        <!-- - - - - - - - - - - -  PartyTaxScheme/TaxScheme - - - - - - - - - - -  -->
+        <sch:rule context="doc:Catalogue/cac:ReceiverParty/cac:PartyTaxScheme/cac:TaxScheme">
+            <sch:extends rule="TaxSchemeCheck"/>
+        </sch:rule>
+
+        <!-- - - - - - - - - - - -  PartyLegalEntity - - - - - - - - - - -  -->
+        <sch:rule context="doc:Catalogue/cac:ReceiverParty/cac:PartyLegalEntity">
+            <sch:extends rule="PartyLegalEntityCheck"/>
+        </sch:rule>
+
+        <!-- - - - - - - - - - - -  Contact - - - - - - - - - - -  -->
+        <sch:rule context="doc:Catalogue/cac:ReceiverParty/cac:Contact">
+            <sch:extends rule="ContactCheck"/>
+        </sch:rule>
+
+        <!-- - - - - - - - - - - -  Person - - - - - - - - - - -  -->
+        <sch:rule context="doc:Catalogue/cac:ReceiverParty/cac:Person">
+            <sch:extends rule="Person/FirstNameCheck"/>
+        </sch:rule>
+    </sch:pattern>
+
+    <!-- - - - - - - - - - - -  SellerSupplierParty - - - - - - - - - - -  -->
+    <sch:pattern name="SellerSupplierParty" id="sellersupplierparty">
+        <sch:p>Pattern for validating the SellerSupplierParty class</sch:p>
+
+        <!-- - - - - - - - - - - -  Top-level checks - - - - - - - - - - -  -->
+        <sch:rule context="doc:Catalogue/cac:SellerSupplierParty">
+            <!-- Check for excluded elements -->
+            <sch:assert test="count(cbc:DataSendingCapability) = 0">[F-CAT060] DataSendingCapability element must be excluded</sch:assert>
+            <!-- Check for mandatory elements -->
+            <sch:assert test="count(cac:Party) = 1">[F-CAT061] One Party class must be present</sch:assert>
+        </sch:rule>
+
+        <!-- - - - - - - - - - - -  Party - - - - - - - - - - -  -->
+        <sch:rule context="doc:Catalogue/cac:SellerSupplierParty/cac:Party">
+            <!-- Check for excluded elements -->
+            <sch:extends rule="PartyExcludedCheck"/>
+            <!-- Check for mandatory elements -->
+            <!-- Validate -->
+            <sch:extends rule="PartyNameCheck"/>
+            <sch:extends rule="EndpointIDCheck"/>
+            <sch:report test="count(cac:PartyLegalEntity) &gt; 1">[F-CAT062] No more than one PartyLegalEntity class may be present
+            </sch:report>
+        </sch:rule>
+
+        <!-- - - - - - - - - - - -  PartyIdentification - - - - - - - - - - -  -->
+        <sch:rule context="doc:Catalogue/cac:SellerSupplierParty/cac:Party/cac:PartyIdentification">
+            <sch:extends rule="PartyIdentificationCheck"/>
+        </sch:rule>
+
+        <!-- - - - - - - - - - - -  PartyName - - - - - - - - - - -  -->
+        <sch:rule context="doc:Catalogue/cac:SellerSupplierParty/cac:Party/cac:PartyName">
+            <sch:extends rule="PartyNameLanguageCheck"/>
+        </sch:rule>
+
+        <!-- - - - - - - - - - - -  PostalAddress - - - - - - - - - - -  -->
+        <sch:rule context="doc:Catalogue/cac:SellerSupplierParty/cac:Party/cac:PostalAddress">
+            <sch:extends rule="AddressCheck"/>
+        </sch:rule>
+
+        <!-- - - - - - - - - - - -  PhysicalLocation - - - - - - - - - - -  -->
+        <sch:rule context="doc:Catalogue/cac:SellerSupplierParty/cac:Party/cac:PhysicalLocation">
+            <sch:extends rule="AddressIDCheck"/>
+        </sch:rule>
+        <!-- Validate ValidityPeriod -->
+        <sch:rule context="doc:Catalogue/cac:SellerSupplierParty/cac:Party/cac:PhysicalLocation/cac:ValidityPeriod">
+            <sch:extends rule="DescriptionLanguageCheckNew"/>
+            <sch:extends rule="PeriodCheck"/>
+        </sch:rule>
+        <!-- Validate ValidityPeriod/Description -->
+        
+        <!-- Validate Address -->
+        <sch:rule context="doc:Catalogue/cac:SellerSupplierParty/cac:Party/cac:PhysicalLocation/cac:Address">
+            <sch:extends rule="AddressCheck"/>
+        </sch:rule>
+
+        <!-- - - - - - - - - - - -  PartyTaxScheme - - - - - - - - - - -  -->
+        <sch:rule context="doc:Catalogue/cac:SellerSupplierParty/cac:Party/cac:PartyTaxScheme">
+            <sch:extends rule="PartyTaxSchemeCheck"/>
+        </sch:rule>
+
+        <!-- - - - - - - - - - - -  PartyTaxScheme/TaxScheme - - - - - - - - - - -  -->
+        <sch:rule context="doc:Catalogue/cac:SellerSupplierParty/cac:Party/cac:PartyTaxScheme/cac:TaxScheme">
+            <sch:extends rule="TaxSchemeCheck"/>
+        </sch:rule>
+
+        <!-- - - - - - - - - - - -  PartyLegalEntity - - - - - - - - - - -  -->
+        <sch:rule context="doc:Catalogue/cac:SellerSupplierParty/cac:Party/cac:PartyLegalEntity">
+            <sch:extends rule="PartyLegalEntityCheck"/>
+        </sch:rule>
+
+        <!-- - - - - - - - - - - -  Contact - - - - - - - - - - -  -->
+        <sch:rule context="doc:Catalogue/cac:SellerSupplierParty/cac:Party/cac:Contact">
+            <sch:extends rule="ContactCheck"/>
+        </sch:rule>
+
+        <!-- - - - - - - - - - - -  Person - - - - - - - - - - -  -->
+        <sch:rule context="doc:Catalogue/cac:SellerSupplierParty/cac:Party/cac:Person">
+            <sch:extends rule="Person/FirstNameCheck"/>
+        </sch:rule>
+
+        <!-- - - - - - - - - - - -  DespatchContact - - - - - - - - - - -  -->
+        <sch:rule context="doc:Catalogue/cac:SellerSupplierParty/cac:DespatchContact">
+            <sch:extends rule="ContactCheck"/>
+        </sch:rule>
+
+        <!-- - - - - - - - - - - -  AccountingContact - - - - - - - - - - -  -->
+        <sch:rule context="doc:Catalogue/cac:SellerSupplierParty/cac:AccountingContact">
+            <sch:extends rule="ContactCheck"/>
+        </sch:rule>
+
+        <!-- - - - - - - - - - - -  SellerContact - - - - - - - - - - -  -->
+        <sch:rule context="doc:Catalogue/cac:SellerSupplierParty/cac:SellerContact">
+            <sch:extends rule="ContactCheck"/>
+        </sch:rule>
+    </sch:pattern>
+
+    <!-- - - - - - - - - - - -  ContractorCustomerParty - - - - - - - - - - -  -->
+    <sch:pattern name="ContractorCustomerParty" id="ContractorCustomerParty">
+        <sch:p>Pattern for validating the ContractorCustomerParty class</sch:p>
+
+        <!-- - - - - - - - - - - -  Top-level checks - - - - - - - - - - -  -->
+        <sch:rule context="doc:Catalogue/cac:ContractorCustomerParty">
+            <!-- Check for excluded elements -->
+            <!-- Check for mandatory elements -->
+            <sch:assert test="count(cac:Party) = 1">[F-CAT070] Party class must be present</sch:assert>
+        </sch:rule>
+
+        <!-- - - - - - - - - - - -  Party - - - - - - - - - - -  -->
+        <sch:rule context="doc:Catalogue/cac:ContractorCustomerParty/cac:Party">
+            <!-- Check for excluded elements -->
+            <sch:extends rule="PartyExcludedCheck"/>
+            <!-- Check for mandatory elements -->
+            <!-- Validate -->
+            <sch:extends rule="PartyNameCheck"/>
+            <sch:extends rule="EndpointIDCheck"/>
+            <sch:report test="count(cac:PartyLegalEntity) &gt; 1">[F-CAT071] No more than one PartyLegalEntity class may be present
+            </sch:report>
+        </sch:rule>
+
+        <!-- - - - - - - - - - - -  PartyIdentification - - - - - - - - - - -  -->
+        <sch:rule context="doc:Catalogue/cac:ContractorCustomerParty/cac:Party/cac:PartyIdentification">
+            <sch:extends rule="PartyIdentificationCheck"/>
+        </sch:rule>
+
+        <!-- - - - - - - - - - - -  PartyName - - - - - - - - - - -  -->
+        <sch:rule context="doc:Catalogue/cac:ContractorCustomerParty/cac:Party/cac:PartyName">
+            <sch:extends rule="PartyNameLanguageCheck"/>
+        </sch:rule>
+
+        <!-- - - - - - - - - - - -  PostalAddress - - - - - - - - - - -  -->
+        <sch:rule context="doc:Catalogue/cac:ContractorCustomerParty/cac:Party/cac:PostalAddress">
+            <sch:extends rule="AddressCheck"/>
+        </sch:rule>
+
+        <!-- - - - - - - - - - - -  PhysicalLocation - - - - - - - - - - -  -->
+        <sch:rule context="doc:Catalogue/cac:ContractorCustomerParty/cac:Party/cac:PhysicalLocation">
+            <sch:extends rule="AddressIDCheck"/>
+        </sch:rule>
+        <!-- Validate ValidityPeriod -->
+        <sch:rule context="doc:Catalogue/cac:ContractorCustomerParty/cac:Party/cac:PhysicalLocation/cac:ValidityPeriod">
+            <sch:extends rule="DescriptionLanguageCheckNew"/>
+            <sch:extends rule="PeriodCheck"/>
+        </sch:rule>
+        <!-- Validate ValidityPeriod/Description -->
+       
+        <!-- Validate Address -->
+        <sch:rule context="doc:Catalogue/cac:ContractorCustomerParty/cac:Party/cac:PhysicalLocation/cac:Address">
+            <sch:extends rule="AddressCheck"/>
+        </sch:rule>
+
+        <!-- - - - - - - - - - - -  PartyTaxScheme - - - - - - - - - - -  -->
+        <sch:rule context="doc:Catalogue/cac:ContractorCustomerParty/cac:Party/cac:PartyTaxScheme">
+            <sch:extends rule="PartyTaxSchemeCheck"/>
+        </sch:rule>
+
+        <!-- - - - - - - - - - - -  PartyTaxScheme/TaxScheme - - - - - - - - - - -  -->
+        <sch:rule context="doc:Catalogue/cac:ContractorCustomerParty/cac:Party/cac:PartyTaxScheme/cac:TaxScheme">
+            <sch:extends rule="TaxSchemeCheck"/>
+        </sch:rule>
+
+        <!-- - - - - - - - - - - -  PartyLegalEntity - - - - - - - - - - -  -->
+        <sch:rule context="doc:Catalogue/cac:ContractorCustomerParty/cac:Party/cac:PartyLegalEntity">
+            <sch:extends rule="PartyLegalEntityCheck"/>
+        </sch:rule>
+
+        <!-- - - - - - - - - - - -  Contact - - - - - - - - - - -  -->
+        <sch:rule context="doc:Catalogue/cac:ContractorCustomerParty/cac:Party/cac:Contact">
+            <sch:extends rule="ContactCheck"/>
+        </sch:rule>
+
+        <!-- - - - - - - - - - - -  Person - - - - - - - - - - -  -->
+        <sch:rule context="doc:Catalogue/cac:ContractorCustomerParty/cac:Party/cac:Person">
+            <sch:extends rule="Person/FirstNameCheck"/>
+        </sch:rule>
+
+        <!-- - - - - - - - - - - -  DeliveryContact - - - - - - - - - - -  -->
+        <sch:rule context="doc:Catalogue/cac:ContractorCustomerParty/cac:DeliveryContact">
+            <sch:extends rule="ContactCheck"/>
+        </sch:rule>
+
+        <!-- - - - - - - - - - - -  AccountingContact - - - - - - - - - - -  -->
+        <sch:rule context="doc:Catalogue/cac:ContractorCustomerParty/cac:AccountingContact">
+            <sch:extends rule="ContactCheck"/>
+        </sch:rule>
+
+        <!-- - - - - - - - - - - -  BuyerContact - - - - - - - - - - -  -->
+        <sch:rule context="doc:Catalogue/cac:ContractorCustomerParty/cac:BuyerContact">
+            <sch:extends rule="ContactCheck"/>
+        </sch:rule>
+    </sch:pattern>
+
+    <!-- - - - - - - - - - - -  TradingTerms - - - - - - - - - - -  -->
+    <sch:pattern name="TradingTerms" id="tradingterms">
+        <sch:p>Pattern for validating the TradingTerms class</sch:p>
+        <sch:rule context="doc:Catalogue/cac:TradingTerms">
+            <!-- Check for excluded elements -->
+            <!-- Check for mandatory elements -->
+            <!-- Validate -->
+        </sch:rule>
+        <!-- ApplicableAddress -->
+        <sch:rule context="doc:Catalogue/cac:TradingTerms/cac:ApplicableAddress">
+            <sch:extends rule="AddressCheck"/>
+        </sch:rule>
+    </sch:pattern>
+
+    <!-- - - - - - - - - - - -  CatalogueLine - - - - - - - - - - -  -->
+    <sch:pattern name="CatalogueLine" id="catalogueline">
+        <sch:p>Pattern for validating the CatalogueLine class</sch:p>
+
+        <!-- - - - - - - - - - - -  Top-level checks - - - - - - - - - - -  -->
+        <sch:rule context="doc:Catalogue/cac:CatalogueLine">
+            <!-- Check for excluded elements -->
+            <sch:assert test="count(cac:DocumentReference) = 0">[F-CAT114] DocumentReference class must be excluded</sch:assert>
+            <!-- Check for mandatory elements -->
+            <sch:assert test="cbc:ActionCode != ''">[F-CAT101] Invalid ActionCode. Must contain a value</sch:assert>
+            <sch:assert test="cbc:OrderableIndicator != ''">[F-CAT106] Invalid OrderableIndicator. Must contain a value</sch:assert>
+            <sch:assert test="cbc:ContentUnitQuantity != ''">[F-CAT108] Invalid ContentUnitQuantity. Must contain a value</sch:assert>
+            <!-- Validate -->
+            <sch:assert test="cbc:ID != ''">[F-CAT100] Invalid ID. Must contain a value</sch:assert>
+            <sch:report test="./cbc:ID = ./following-sibling::*/cbc:ID">[F-CAT248] CatalogueLine.ID must be unique within the document instance</sch:report>
+            <sch:assert test="cbc:ActionCode/@listID = $CatAction_listID">[F-CAT102] Invalid listID. Must be '<sch:value-of
+                    select="$CatAction_listID"/>'
+            </sch:assert>
+            <sch:assert test="cbc:ActionCode/@listAgencyID = $CatAction_agencyID">[F-CAT103] Invalid listAgencyID. Must be '<sch:value-of
+                    select="$CatAction_agencyID"/>'
+            </sch:assert>
+            <sch:assert test="contains($CatAction, concat(',',cbc:ActionCode,','))">[F-CAT111] Invalid ActionCode: '<sch:value-of
+                    select="cbc:ActionCode"/>'. Must be a value from the codelist
+            </sch:assert>
+            <sch:report
+                    test="cbc:OrderableIndicator = 'true' and not(cbc:OrderableUnit)">[F-CAT115] When OrderableIndicator equals 'true' the element OrderableUnit must be filled out
+            </sch:report>
+            <sch:report test="count(cac:ItemComparison) &gt; 1">[F-CAT113] No more than one ItemComparison class may be present</sch:report>
+        </sch:rule>
+        <!-- Validate LifeCycleStatusCode -->
+        <sch:rule context="doc:Catalogue/cac:CatalogueLine/cbc:LifeCycleStatusCode">
+            <sch:assert test="./@listID = $LifeCycle_listID">[F-CAT104] Invalid listID. Must be '<sch:value-of select="$LifeCycle_listID"/>'
+            </sch:assert>
+            <sch:assert test="./@listAgencyID = $LifeCycle_agencyID">[F-CAT105] Invalid listAgencyID. Must be '<sch:value-of
+                    select="$LifeCycle_agencyID"/>'
+            </sch:assert>
+            <sch:assert test="contains($LifeCycle, concat(',',.,','))">[F-CAT112] Invalid LifeCycleStatusCode: '<sch:value-of
+                    select="."/>'. Must be a value from the codelist
+            </sch:assert>
+        </sch:rule>
+        <!-- Validate Note -->
+        <sch:rule context="doc:Catalogue/cac:CatalogueLine/cbc:Note">
+            <sch:extends rule="NoteCheck"/>
+        </sch:rule>
+        <!-- Validate OrderableUnit -->
+        <sch:rule context="doc:Catalogue/cac:CatalogueLine/cbc:OrderableUnit">
+            <sch:assert test="string-length(.) &gt; 1">[F-CAT107] The value of unitCode attribute should be a valid UOM measure</sch:assert>
+        </sch:rule>
+        <!-- Validate ContentUnitQuantity -->
+        <sch:rule context="doc:Catalogue/cac:CatalogueLine/cbc:ContentUnitQuantity">
+            <sch:extends rule="PosZeroNumberCheck"/>
+            <sch:extends rule="unitCodeCheck"/>
+        </sch:rule>
+        <!-- Validate OrderQuantityIncrementNumeric -->
+        <sch:rule context="doc:Catalogue/cac:CatalogueLine/cbc:OrderQuantityIncrementNumeric">
+            <sch:extends rule="PosZeroNumberCheck"/>
+        </sch:rule>
+        <!-- Validate MinimumOrderQuantity -->
+        <sch:rule context="doc:Catalogue/cac:CatalogueLine/cbc:MinimumOrderQuantity">
+            <sch:extends rule="PosZeroNumberCheck"/>
+        </sch:rule>
+        <!-- Validate MaximumOrderQuantity -->
+        <sch:rule context="doc:Catalogue/cac:CatalogueLine/cbc:MaximumOrderQuantity">
+            <sch:extends rule="PosZeroNumberCheck"/>
+        </sch:rule>
+        <!-- Validate WarrantyInformation -->
+        <sch:rule context="doc:Catalogue/cac:CatalogueLine/cbc:WarrantyInformation">
+            <sch:report
+                    test="count(../cbc:WarrantyInformation) &gt; 1 and not(./@languageID)">[W-CAT109] The attribute languageID should be used when more than one WarrantyInformation element is present
+            </sch:report>
+            <sch:report
+                    test="following-sibling::*/@languageID = self::*/@languageID">[W-CAT110] Multilanguage error. Replicated WarrantyInformation elements with same languageID attribute value
+            </sch:report>
+        </sch:rule>
+
+        <!-- - - - - - - - - - - -  ContractorCustomerParty - - - - - - - - - - -  -->
+        <!-- Top-level checks -->
+        <sch:rule context="doc:Catalogue/cac:CatalogueLine/cac:ContractorCustomerParty">
+            <!-- Check for excluded elements -->
+            <!-- Check for mandatory elements -->
+            <sch:assert test="count(cac:Party) = 1">[F-CAT120] Party class must be present</sch:assert>
+        </sch:rule>
+        <!-- Party -->
+        <sch:rule context="doc:Catalogue/cac:CatalogueLine/cac:ContractorCustomerParty/cac:Party">
+            <!-- Check for excluded elements -->
+            <sch:extends rule="PartyExcludedCheck"/>
+            <!-- Check for mandatory elements -->
+            <!-- Validate -->
+            <sch:extends rule="PartyNameCheck"/>
+            <sch:extends rule="EndpointIDCheck"/>
+            <sch:report test="count(cac:PartyLegalEntity) &gt; 1">[F-CAT121] No more than one PartyLegalEntity class may be present
+            </sch:report>
+        </sch:rule>
+        <!-- PartyIdentification -->
+        <sch:rule context="doc:Catalogue/cac:CatalogueLine/cac:ContractorCustomerParty/cac:Party/cac:PartyIdentification">
+            <sch:extends rule="PartyIdentificationCheck"/>
+        </sch:rule>
+        <!-- PartyName -->
+        <sch:rule context="doc:Catalogue/cac:CatalogueLine/cac:ContractorCustomerParty/cac:Party/cac:PartyName">
+            <sch:extends rule="PartyNameLanguageCheck"/>
+        </sch:rule>
+        <!-- PostalAddress -->
+        <sch:rule context="doc:Catalogue/cac:CatalogueLine/cac:ContractorCustomerParty/cac:Party/cac:PostalAddress">
+            <sch:extends rule="AddressCheck"/>
+        </sch:rule>
+        <!-- PhysicalLocation -->
+        <sch:rule context="doc:Catalogue/cac:CatalogueLine/cac:ContractorCustomerParty/cac:Party/cac:PhysicalLocation">
+            <sch:extends rule="AddressIDCheck"/>
+        </sch:rule>
+        <!-- PhysicalLocation/ValidityPeriod -->
+        <sch:rule context="doc:Catalogue/cac:CatalogueLine/cac:ContractorCustomerParty/cac:Party/cac:PhysicalLocation/cac:ValidityPeriod">
+            <sch:extends rule="DescriptionLanguageCheckNew"/>
+            <sch:extends rule="PeriodCheck"/>
+        </sch:rule>
+        <!-- PhysicalLocation/ValidityPeriod/Description -->
+      
+        <!-- PhysicalLocation/Address -->
+        <sch:rule context="doc:Catalogue/cac:CatalogueLine/cac:ContractorCustomerParty/cac:Party/cac:PhysicalLocation/cac:Address">
+            <sch:extends rule="AddressCheck"/>
+        </sch:rule>
+        <!-- PartyTaxScheme -->
+        <sch:rule context="doc:Catalogue/cac:CatalogueLine/cac:ContractorCustomerParty/cac:Party/cac:PartyTaxScheme">
+            <sch:extends rule="PartyTaxSchemeCheck"/>
+        </sch:rule>
+        <!-- PartyTaxScheme/TaxScheme -->
+        <sch:rule context="doc:Catalogue/cac:CatalogueLine/cac:ContractorCustomerParty/cac:Party/cac:PartyTaxScheme/cac:TaxScheme">
+            <sch:extends rule="TaxSchemeCheck"/>
+        </sch:rule>
+        <!-- PartyLegalEntity -->
+        <sch:rule context="doc:Catalogue/cac:CatalogueLine/cac:ContractorCustomerParty/cac:Party/cac:PartyLegalEntity">
+            <sch:extends rule="PartyLegalEntityCheck"/>
+        </sch:rule>
+        <!-- Contact -->
+        <sch:rule context="doc:Catalogue/cac:CatalogueLine/cac:ContractorCustomerParty/cac:Party/cac:Contact">
+            <sch:extends rule="ContactCheck"/>
+        </sch:rule>
+        <!-- Person -->
+        <sch:rule context="doc:Catalogue/cac:CatalogueLine/cac:ContractorCustomerParty/cac:Party/cac:Person">
+            <sch:extends rule="Person/FirstNameCheck"/>
+        </sch:rule>
+        <!-- DeliveryContact -->
+        <sch:rule context="doc:Catalogue/cac:CatalogueLine/cac:ContractorCustomerParty/cac:DeliveryContact">
+            <sch:extends rule="ContactCheck"/>
+        </sch:rule>
+        <!-- AccountingContact -->
+        <sch:rule context="doc:Catalogue/cac:CatalogueLine/cac:ContractorCustomerParty/cac:AccountingContact">
+            <sch:extends rule="ContactCheck"/>
+        </sch:rule>
+        <!-- BuyerContact -->
+        <sch:rule context="doc:Catalogue/cac:CatalogueLine/cac:ContractorCustomerParty/cac:BuyerContact">
+            <sch:extends rule="ContactCheck"/>
+        </sch:rule>
+
+        <!-- - - - - - - - - - - -  SellerSupplierParty - - - - - - - - - - -  -->
+        <!-- Top-level checks -->
+        <sch:rule context="doc:Catalogue/cac:CatalogueLine/cac:SellerSupplierParty">
+            <!-- Check for excluded elements -->
+            <sch:assert test="count(cbc:DataSendingCapability) = 0">[F-CAT130] DataSendingCapability element must be excluded</sch:assert>
+            <!-- Check for mandatory elements -->
+            <sch:assert test="count(cac:Party) = 1">[F-CAT131] Party class must be present</sch:assert>
+        </sch:rule>
+        <!-- Party -->
+        <sch:rule context="doc:Catalogue/cac:CatalogueLine/cac:SellerSupplierParty/cac:Party">
+            <!-- Check for excluded elements -->
+            <sch:extends rule="PartyExcludedCheck"/>
+            <!-- Check for mandatory elements -->
+            <!-- Validate -->
+            <sch:extends rule="PartyNameCheck"/>
+            <sch:extends rule="EndpointIDCheck"/>
+            <sch:report test="count(cac:PartyLegalEntity) &gt; 1">[F-CAT132] No more than one PartyLegalEntity class may be present
+            </sch:report>
+        </sch:rule>
+        <!-- PartyIdentification -->
+        <sch:rule context="doc:Catalogue/cac:CatalogueLine/cac:SellerSupplierParty/cac:Party/cac:PartyIdentification">
+            <sch:extends rule="PartyIdentificationCheck"/>
+        </sch:rule>
+        <!-- PartyName -->
+        <sch:rule context="doc:Catalogue/cac:CatalogueLine/cac:SellerSupplierParty/cac:Party/cac:PartyName">
+            <sch:extends rule="PartyNameLanguageCheck"/>
+        </sch:rule>
+        <!-- PostalAddress -->
+        <sch:rule context="doc:Catalogue/cac:CatalogueLine/cac:SellerSupplierParty/cac:Party/cac:PostalAddress">
+            <sch:extends rule="AddressCheck"/>
+        </sch:rule>
+        <!-- PhysicalLocation -->
+        <sch:rule context="doc:Catalogue/cac:CatalogueLine/cac:SellerSupplierParty/cac:Party/cac:PhysicalLocation">
+            <sch:extends rule="AddressIDCheck"/>
+        </sch:rule>
+        <!-- PhysicalLocation/ValidityPeriod -->
+        <sch:rule context="doc:Catalogue/cac:CatalogueLine/cac:SellerSupplierParty/cac:Party/cac:PhysicalLocation/cac:ValidityPeriod">
+            <sch:extends rule="DescriptionLanguageCheckNew"/>
+            <sch:extends rule="PeriodCheck"/>
+        </sch:rule>
+        <!-- PhysicalLocation/ValidityPeriod/Description -->
+      
+        <!-- PhysicalLocation/Address -->
+        <sch:rule context="doc:Catalogue/cac:CatalogueLine/cac:SellerSupplierParty/cac:Party/cac:PhysicalLocation/cac:Address">
+            <sch:extends rule="AddressCheck"/>
+        </sch:rule>
+        <!-- PartyTaxScheme -->
+        <sch:rule context="doc:Catalogue/cac:CatalogueLine/cac:SellerSupplierParty/cac:Party/cac:PartyTaxScheme">
+            <sch:extends rule="PartyTaxSchemeCheck"/>
+        </sch:rule>
+        <!-- PartyTaxScheme/TaxScheme -->
+        <sch:rule context="doc:Catalogue/cac:CatalogueLine/cac:SellerSupplierParty/cac:Party/cac:PartyTaxScheme/cac:TaxScheme">
+            <sch:extends rule="TaxSchemeCheck"/>
+        </sch:rule>
+        <!-- PartyLegalEntity -->
+        <sch:rule context="doc:Catalogue/cac:CatalogueLine/cac:SellerSupplierParty/cac:Party/cac:PartyLegalEntity">
+            <sch:extends rule="PartyLegalEntityCheck"/>
+        </sch:rule>
+        <!-- Contact -->
+        <sch:rule context="doc:Catalogue/cac:CatalogueLine/cac:SellerSupplierParty/cac:Party/cac:Contact">
+            <sch:extends rule="ContactCheck"/>
+        </sch:rule>
+        <!-- Person -->
+        <sch:rule context="doc:Catalogue/cac:CatalogueLine/cac:SellerSupplierParty/cac:Party/cac:Person">
+            <sch:extends rule="Person/FirstNameCheck"/>
+        </sch:rule>
+        <!-- DespatchContact -->
+        <sch:rule context="doc:Catalogue/cac:CatalogueLine/cac:SellerSupplierParty/cac:DespatchContact">
+            <sch:extends rule="ContactCheck"/>
+        </sch:rule>
+        <!-- AccountingContact -->
+        <sch:rule context="doc:Catalogue/cac:CatalogueLine/cac:SellerSupplierParty/cac:AccountingContact">
+            <sch:extends rule="ContactCheck"/>
+        </sch:rule>
+        <!-- SellerContact -->
+        <sch:rule context="doc:Catalogue/cac:CatalogueLine/cac:SellerSupplierParty/cac:SellerContact">
+            <sch:extends rule="ContactCheck"/>
+        </sch:rule>
+
+        <!-- - - - - - - - - - - -  WarrantyParty - - - - - - - - - - -  -->
+        <!-- [I-CAT999] Validation not yet implemented! -->
+
+
+        <!-- - - - - - - - - - - -  WarrantyValidityPeriod - - - - - - - - - - -  -->
+        <sch:rule context="doc:Catalogue/cac:CatalogueLine/cac:WarrantyValidityPeriod">
+            <sch:extends rule="DescriptionLanguageCheckNew"/>
+            <sch:extends rule="PeriodCheck"/>
+        </sch:rule>
+        <!-- Validate Description -->
+       
+
+        <!-- - - - - - - - - - - -  LineValidityPeriod - - - - - - - - - - -  -->
+        <sch:rule context="doc:Catalogue/cac:CatalogueLine/cac:LineValidityPeriod">
+            <sch:extends rule="DescriptionLanguageCheckNew"/>
+            <sch:extends rule="PeriodCheck"/>
+        </sch:rule>
+        <!-- Validate Description -->
+       
+
+        <!-- - - - - - - - - - - -  ItemComparison - - - - - - - - - - -  -->
+        <sch:rule context="doc:Catalogue/cac:CatalogueLine/cac:ItemComparison">
+            <!-- Check for mandatory elements -->
+            <sch:assert test="cbc:PriceAmount != ''">[F-CAT140] Invalid PriceAmount. Must contain a value</sch:assert>
+            <sch:assert test="cbc:Quantity != ''">[F-CAT141] Invalid Quantity. Must contain a value</sch:assert>
+        </sch:rule>
+
+        <!-- - - - - - - - - - - -  ComponentRelatedItem - - - - - - - - - - -  -->
+        <sch:rule context="doc:Catalogue/cac:CatalogueLine/cac:ComponentRelatedItem">
+            <!-- Check for mandatory elements -->
+            <sch:assert test="cbc:ID != ''">[F-CAT150] Invalid ID. Must contain a value</sch:assert>
+            <sch:extends rule="DescriptionLanguageCheckNew"/>
+        </sch:rule>
+        <!-- Validate Description -->
+       
+        <!-- - - - - - - - - - - -  AccessoryRelatedItem - - - - - - - - - - -  -->
+        <sch:rule context="doc:Catalogue/cac:CatalogueLine/cac:AccessoryRelatedItem">
+            <!-- Check for mandatory elements -->
+            <sch:assert test="cbc:ID != ''">[F-CAT160] Invalid ID. Must contain a value</sch:assert>
+            <sch:extends rule="DescriptionLanguageCheckNew"/>
+        </sch:rule>
+        <!-- Validate Description -->
+       
+
+        <!-- - - - - - - - - - - -  RequiredRelatedItem - - - - - - - - - - -  -->
+        <sch:rule context="doc:Catalogue/cac:CatalogueLine/cac:RequiredRelatedItem">
+            <!-- Check for mandatory elements -->
+            <sch:assert test="cbc:ID != ''">[F-CAT170] Invalid ID. Must contain a value</sch:assert>
+             <sch:extends rule="DescriptionLanguageCheckNew"/>
+        </sch:rule>
+        <!-- Validate Description -->
+>
+
+        <!-- - - - - - - - - - - -  ReplacementRelatedItem - - - - - - - - - - -  -->
+        <sch:rule context="doc:Catalogue/cac:CatalogueLine/cac:ReplacementRelatedItem">
+            <!-- Check for mandatory elements -->
+            <sch:assert test="cbc:ID != ''">[F-CAT180] Invalid ID. Must contain a value</sch:assert>
+            <sch:extends rule="DescriptionLanguageCheckNew"/>
+        </sch:rule>
+        <!-- Validate Description -->
+        
+
+        <!-- - - - - - - - - - - -  ComplementaryRelatedItem - - - - - - - - - - -  -->
+        <sch:rule context="doc:Catalogue/cac:CatalogueLine/cac:ComplementaryRelatedItem">
+            <!-- Check for mandatory elements -->
+            <sch:assert test="cbc:ID != ''">[F-CAT190] Invalid ID. Must contain a value</sch:assert>
+            <sch:extends rule="DescriptionLanguageCheckNew"/>
+        </sch:rule>
+        <!-- Validate Description -->
+      
+        <!-- - - - - - - - - - - -  RequiredItemLocationQuantity - - - - - - - - - - -  -->
+        <sch:rule context="doc:Catalogue/cac:CatalogueLine/cac:RequiredItemLocationQuantity">
+            <!-- Validate -->
+            <sch:report
+                    test="count(cbc:TradingRestrictions) &gt; 1">[F-CAT200] No more than one TradingRestrictions element may be present
+            </sch:report>
+        </sch:rule>
+        <!-- Validate MinimumQuantity -->
+        <sch:rule context="doc:Catalogue/cac:CatalogueLine/cac:RequiredItemLocationQuantity/cbc:MinimumQuantity">
+            <sch:extends rule="PosZeroNumberCheck"/>
+        </sch:rule>
+        <!-- Validate MaximumQuantity -->
+        <sch:rule context="doc:Catalogue/cac:CatalogueLine/cac:RequiredItemLocationQuantity/cbc:MaximumQuantity">
+            <sch:extends rule="PosZeroNumberCheck"/>
+        </sch:rule>
+
+        <!-- - - - - - - - - - - -  RequiredItemLocationQuantity/ApplicableTerritoryAddress - - - - - - - - - - -  -->
+        <sch:rule context="doc:Catalogue/cac:CatalogueLine/cac:RequiredItemLocationQuantity/cac:ApplicableTerritoryAddress">
+            <sch:extends rule="AddressCheck"/>
+        </sch:rule>
+
+        <!-- - - - - - - - - - - -  RequiredItemLocationQuantity/Price - - - - - - - - - - -  -->
+        <sch:rule context="doc:Catalogue/cac:CatalogueLine/cac:RequiredItemLocationQuantity/cac:Price">
+            <!-- Validate -->
+            <sch:assert test="cbc:PriceAmount != ''">[F-CAT201] Invalid PriceAmount. Must contain a value</sch:assert>
+            <sch:report test="count(cac:ValidityPeriod) &gt; 1">[F-CAT207] No more than one ValidityPeriod class may be present</sch:report>
+        </sch:rule>
+        <!-- Validate PriceAmount -->
+        <sch:rule context="doc:Catalogue/cac:CatalogueLine/cac:RequiredItemLocationQuantity/cac:Price/cbc:PriceAmount">
+            <sch:report test="string-length(substring-after(., '.')) &lt; 2">[F-CAT202] Invalid PriceAmount. Must have at least 2 decimals
+            </sch:report>
+            <sch:assert test="not(starts-with(.,'-'))">[F-CAT203] Invalid PriceAmount. Must not be negative</sch:assert>
+        </sch:rule>
+        <!-- Validate BaseQuantity -->
+        <sch:rule context="doc:Catalogue/cac:CatalogueLine/cac:RequiredItemLocationQuantity/cac:Price/cbc:BaseQuantity">
+            <sch:extends rule="unitCodeCheck"/>
+            <sch:extends rule="PosZeroNumberCheck"/>
+        </sch:rule>
+        <!-- Validate PriceChangeReason -->
+        <sch:rule context="doc:Catalogue/cac:CatalogueLine/cac:RequiredItemLocationQuantity/cac:Price/cbc:PriceChangeReason">
+            <sch:report
+                    test="count(../cbc:PriceChangeReason) &gt; 1 and not(./@languageID)">[W-CAT204] The attribute languageID should be used when more than one PriceChangeReason element is present
+            </sch:report>
+            <sch:report
+                    test="following-sibling::*/@languageID = self::*/@languageID">[W-CAT205] Multilanguage error. Replicated PriceChangeReason elements with same languageID attribute value
+            </sch:report>
+        </sch:rule>
+        <!-- Validate PriceTypeCode -->
+        <sch:rule context="doc:Catalogue/cac:CatalogueLine/cac:RequiredItemLocationQuantity/cac:Price/cbc:PriceTypeCode">
+            <sch:assert test="./@listID = 'UN/ECE 5387'">[F-CAT206] Invalid listID. Must be 'UN/ECE 5387'</sch:assert>
+        </sch:rule>
+        <!-- Validate PriceType -->
+        <!-- Validate OrderableUnitFactorRate -->
+        <sch:rule context="doc:Catalogue/cac:CatalogueLine/cac:RequiredItemLocationQuantity/cac:Price/cbc:OrderableUnitFactorRate">
+            <sch:extends rule="PosZeroNumberCheck"/>
+        </sch:rule>
+        <!-- Validate ValidityPeriod -->
+        <sch:rule context="doc:Catalogue/cac:CatalogueLine/cac:RequiredItemLocationQuantity/cac:Price/cac:ValidityPeriod">
+            <sch:extends rule="DescriptionLanguageCheckNew"/>
+            <sch:extends rule="PeriodCheck"/>
+        </sch:rule>
+        <!-- Validate ValidityPeriod/Description -->
+       
+        <!-- Validate PriceList -->
+        <sch:rule context="doc:Catalogue/cac:CatalogueLine/cac:RequiredItemLocationQuantity/cac:Price/cac:PriceList">
+        </sch:rule>
+        <!-- Validate PriceList/ValidityPeriod -->
+        <sch:rule context="doc:Catalogue/cac:CatalogueLine/cac:RequiredItemLocationQuantity/cac:Price/cac:PriceList/cac:ValidityPeriod">
+            <sch:extends rule="PeriodCheck"/>
+            <sch:extends rule="DescriptionLanguageCheckNew"/>
+        </sch:rule>
+        <!-- Validate PriceList/ValidityPeriod/Description -->
+      
+        <!-- Validate PriceList/PreviousPriceList -->
+        <sch:rule context="doc:Catalogue/cac:CatalogueLine/cac:RequiredItemLocationQuantity/cac:Price/cac:PriceList/cac:PreviousPriceList">
+        </sch:rule>
+        <!-- Validate PriceList/PreviousPriceList/ValidityPeriod -->
+        <sch:rule
+                context="doc:Catalogue/cac:CatalogueLine/cac:RequiredItemLocationQuantity/cac:Price/cac:PriceList/cac:PreviousPriceList/cac:ValidityPeriod">
+            <sch:extends rule="PeriodCheck"/>
+            <sch:extends rule="DescriptionLanguageCheckNew"/>
+        </sch:rule>
+        <!-- Validate PriceList/PreviousPriceList/ValidityPeriod/Description -->
+        
+        <!-- Validate AllowanceCharge -->
+        <sch:rule context="doc:Catalogue/cac:CatalogueLine/cac:RequiredItemLocationQuantity/cac:Price/cac:AllowanceCharge">
+            <sch:extends rule="AllowanceChargeTopCheck"/>
+            <sch:extends rule="AccountingCostCheck"/>
+        </sch:rule>
+        <!-- Validate AllowanceCharge/PrepaidIndicator -->
+        <!-- Validate AllowanceCharge/SequenceNumeric -->
+        <sch:rule
+                context="doc:Catalogue/cac:CatalogueLine/cac:RequiredItemLocationQuantity/cac:Price/cac:AllowanceCharge/cbc:SequenceNumeric">
+            <sch:extends rule="PosNumberCheck"/>
+        </sch:rule>
+        <!-- Validate AllowanceCharge/Amount -->
+        <sch:rule context="doc:Catalogue/cac:CatalogueLine/cac:RequiredItemLocationQuantity/cac:Price/cac:AllowanceCharge/cbc:Amount">
+            <sch:extends rule="PosZeroNumberCheck"/>
+        </sch:rule>
+        <!-- Validate AllowanceCharge/BaseAmount -->
+        <sch:rule context="doc:Catalogue/cac:CatalogueLine/cac:RequiredItemLocationQuantity/cac:Price/cac:AllowanceCharge/cbc:BaseAmount">
+            <sch:extends rule="PosZeroNumberCheck"/>
+        </sch:rule>
+        <!-- Validate AllowanceCharge/TaxCategory -->
+        <sch:rule context="doc:Catalogue/cac:CatalogueLine/cac:RequiredItemLocationQuantity/cac:Price/cac:AllowanceCharge/cac:TaxCategory">
+            <sch:extends rule="TaxCategoryCheck"/>
+        </sch:rule>
+        <!-- Validate AllowanceCharge/TaxCategory/TaxScheme -->
+        <sch:rule
+                context="doc:Catalogue/cac:CatalogueLine/cac:RequiredItemLocationQuantity/cac:Price/cac:AllowanceCharge/cac:TaxCategory/cac:TaxScheme">
+            <sch:extends rule="TaxSchemeCheck"/>
+        </sch:rule>
+
+        <!-- - - - - - - - - - - -  RequiredItemLocationQuantity/DeliveryUnit - - - - - - - - - - -  -->
+        <sch:rule context="doc:Catalogue/cac:CatalogueLine/cac:RequiredItemLocationQuantity/cac:DeliveryUnit">
+        </sch:rule>
+        <!-- Validate RequiredItemLocationQuantity/DeliveryUnit/BatchQuantity -->
+        <sch:rule context="doc:Catalogue/cac:CatalogueLine/cac:RequiredItemLocationQuantity/cac:DeliveryUnit/cbc:BatchQuantity">
+            <sch:extends rule="PosZeroNumberCheck"/>
+        </sch:rule>
+        <!-- Validate RequiredItemLocationQuantity/DeliveryUnit/ConsumerUnitQuantity -->
+        <sch:rule context="doc:Catalogue/cac:CatalogueLine/cac:RequiredItemLocationQuantity/cac:DeliveryUnit/cbc:ConsumerUnitQuantity">
+            <sch:extends rule="PosZeroNumberCheck"/>
+        </sch:rule>
+        <!-- Validate RequiredItemLocationQuantity/DeliveryUnit/HazardousRiskIndicator -->
+
+        <!-- - - - - - - - - - - -  RequiredItemLocationQuantity/ApplicableTaxCategory - - - - - - - - - - -  -->
+        <sch:rule context="doc:Catalogue/cac:CatalogueLine/cac:RequiredItemLocationQuantity/cac:ApplicableTaxCategory">
+            <sch:extends rule="TaxCategoryCheck"/>
+        </sch:rule>
+        <!-- Validate TaxScheme -->
+        <sch:rule context="doc:Catalogue/cac:CatalogueLine/cac:RequiredItemLocationQuantity/cac:ApplicableTaxCategory/cac:TaxScheme">
+            <sch:extends rule="TaxSchemeCheck"/>
+        </sch:rule>
+
+        <!-- - - - - - - - - - - -  DocumentReference (Excluded) - - - - - - - - - - -  -->
+
+        <!-- - - - - - - - - - - -  Item - - - - - - - - - - -  -->
+        <sch:rule context="doc:Catalogue/cac:CatalogueLine/cac:Item">
+            <!-- Check for excluded elements -->
+            <sch:assert test="count(cbc:CatalogueIndicator) = 0">[F-CAT220] CatalogueIndicator element must be excluded</sch:assert>
+            <!-- NH-1872c - Check remoded to allow the use of OriginCountry-->
+            <!-- NH-1872: Allow OriginCountry - Check below removed -->
+            <!-- sch:assert test="count(cac:OriginCountry) = 0">[F-CAT241] OriginCountry class must be excluded</sch:assert -->
+
+            <sch:assert test="count(cac:ClassifiedTaxCategory) = 0">[F-CAT234] ClassifiedTaxCategory class must be excluded</sch:assert>
+            <!-- Check for mandatory elements -->
+            <sch:assert test="cbc:Name != ''">[F-CAT221] Invalid Name. Must contain a value</sch:assert>
+            <sch:assert test="count(cac:SellersItemIdentification) = 1">[F-CAT223] One SellersItemIdentification class must be present
+            </sch:assert>
+            <sch:assert
+                    test="count(cac:CommodityClassification) &gt; 0">[F-CAT230] At least one CommodityClassification class must be present
+            </sch:assert>
+            <!-- Validate -->
+            <!-- [Release 20150915] Check removed according to issue: https://bugs.softwareborsen.dk/show_bug.cgi?id=1507 -->
+            <!-- sch:report test="string-length(cbc:Name) &gt; 40">[W-CAT222] Invalid Name. Should not exceed 40 characters</sch:report -->
+            <sch:report
+                    test="count(cac:ManufacturersItemIdentification) &gt; 1">[F-CAT228] No more than one ManufacturersItemIdentification class may be present
+            </sch:report>
+            <sch:report
+                    test="count(cac:AdditionalItemIdentification) &gt; 1">[F-CAT229] No more than one AdditionalItemIdentification class may be present
+            </sch:report>
+            <sch:report test="count(cac:OriginAddress) &gt; 1">[F-CAT244] No more than one OriginAddress class may be present</sch:report>
+          <sch:extends rule="DescriptionLanguageCheckNew"/>
+        </sch:rule>
+        <!-- Validate Description -->
+       
+        <!-- Validate PackQuantity -->
+        <sch:rule context="doc:Catalogue/cac:CatalogueLine/cac:Item/cbc:PackQuantity">
+            <sch:extends rule="PosZeroNumberCheck"/>
+        </sch:rule>
+        <!-- Validate PackSizeNumeric -->
+        <sch:rule context="doc:Catalogue/cac:CatalogueLine/cac:Item/cbc:PackSizeNumeric">
+            <sch:extends rule="PosZeroNumberCheck"/>
+        </sch:rule>
+        <!-- Validate CatalogueIndicator -->
+        <!-- Validate Name (OK) -->
+        <!-- Validate HazardousRiskIndicator -->
+        <!-- Validate AdditionalInformation -->
+        <!-- Validate Keyword -->
+        <!-- Validate BrandName -->
+        <!-- Validate ModelName -->
+
+        <!-- - - - - - - - - - - -  Item/BuyersItemIdentification - - - - - - - - - - -  -->
+        <sch:rule context="doc:Catalogue/cac:CatalogueLine/cac:Item/cac:BuyersItemIdentification">
+            <sch:extends rule="DefaultItemIdentificationCheck"/>
+        </sch:rule>
+
+        <!-- - - - - - - - - - - -  Item/SellersItemIdentification - - - - - - - - - - -  -->
+        <sch:rule context="doc:Catalogue/cac:CatalogueLine/cac:Item/cac:SellersItemIdentification">
+            <!-- Validate -->
+            <sch:assert test="cbc:ID != ''">[F-CAT224] Invalid ID. Must contain a value</sch:assert>
+        </sch:rule>
+        <!-- Validate Item/SellersItemIdentification/PhysicalAttribute -->
+        <sch:rule context="doc:Catalogue/cac:CatalogueLine/cac:Item/cac:SellersItemIdentification/cac:PhysicalAttribute">
+            <!-- Check for excluded elements -->
+            <sch:assert test="count(cbc:PositionCode) = 0">[F-CAT242] PositionCode element must be excluded</sch:assert>
+            <sch:assert test="count(cbc:DescriptionCode) = 0">[F-CAT243] DescriptionCode element must be excluded</sch:assert>
+            <!-- Check for mandatory elements -->
+            <sch:assert test="cbc:Description != ''">[F-CAT226] Invalid Description. Must contain a value</sch:assert>
+            <!-- Validate -->
+            <sch:assert test="cbc:AttributeID != ''">[F-CAT225] Invalid AttributeID. Must contain a value</sch:assert>
+            <sch:extends rule="DescriptionLanguageCheckNew"/>
+        </sch:rule>
+        <!-- Validate Item/SellersItemIdentification/PhysicalAttribute/Description -->
+     
+        <!-- Validate Item/SellersItemIdentification/MeasurementDimension -->
+        <sch:rule context="doc:Catalogue/cac:CatalogueLine/cac:Item/cac:SellersItemIdentification/cac:MeasurementDimension">
+            <sch:extends rule="DescriptionLanguageCheckNew"/>
+            <!-- Validate -->
+            <sch:assert test="cbc:AttributeID != ''">[F-CAT227] Invalid AttributeID. Must contain a value</sch:assert>
+        </sch:rule>
+        <!-- Validate Item/SellersItemIdentification/MeasurementDimension/Description -->
+       
+
+        <!-- - - - - - - - - - - -  Item/ManufacturersItemIdentification - - - - - - - - - - -  -->
+        <sch:rule context="doc:Catalogue/cac:CatalogueLine/cac:Item/cac:ManufacturersItemIdentification">
+            <sch:extends rule="DefaultItemIdentificationCheck"/>
+        </sch:rule>
+
+        <!-- - - - - - - - - - - -  Item/StandardItemIdentification - - - - - - - - - - -  -->
+        <sch:rule context="doc:Catalogue/cac:CatalogueLine/cac:Item/cac:StandardItemIdentification">
+            <sch:extends rule="DefaultItemIdentificationCheck"/>
+        </sch:rule>
+
+        <!-- - - - - - - - - - - -  Item/CatalogueItemIdentification - - - - - - - - - - -  -->
+        <sch:rule context="doc:Catalogue/cac:CatalogueLine/cac:Item/cac:CatalogueItemIdentification">
+            <sch:extends rule="DefaultItemIdentificationCheck"/>
+        </sch:rule>
+
+        <!-- - - - - - - - - - - -  Item/AdditionalItemIdentification - - - - - - - - - - -  -->
+        <sch:rule context="doc:Catalogue/cac:CatalogueLine/cac:Item/cac:AdditionalItemIdentification">
+            <sch:extends rule="DefaultItemIdentificationCheck"/>
+        </sch:rule>
+
+        <!-- - - - - - - - - - - -  Item/CatalogueDocumentReference - - - - - - - - - - -  -->
+        <sch:rule context="doc:Catalogue/cac:CatalogueLine/cac:Item/cac:CatalogueDocumentReference">
+            <sch:extends rule="KnownDocumentReferenceCheck"/>
+        </sch:rule>
+
+        <!-- - - - - - - - - - - -  Item/ItemSpecificationDocumentReference - - - - - - - - - - -  -->
+        <sch:rule context="doc:Catalogue/cac:CatalogueLine/cac:Item/cac:ItemSpecificationDocumentReference">
+            <sch:extends rule="DocumentReferenceCheck"/>
+        </sch:rule>
+
+        <!-- - - - - - - - - - - -  Item/OriginCountry (excluded)- - - - - - - - - - -  -->
+
+        <!-- - - - - - - - - - - -  Item/CommodityClassification - - - - - - - - - - -  -->
+        <sch:rule context="doc:Catalogue/cac:CatalogueLine/cac:Item/cac:CommodityClassification">
+            <!-- Check for excluded elements -->
+            <!-- Check for mandatory elements -->
+            <sch:assert test="cbc:ItemClassificationCode != ''">[F-CAT231] Invalid ItemClassificationCode. Must contain a value</sch:assert>
+            <!-- Validate -->
+            <sch:assert test="cbc:ItemClassificationCode/@listID = 'UNSPSC'">[F-CAT232] Invalid listID. Must be 'UNSPSC'</sch:assert>
+            <sch:assert test="cbc:ItemClassificationCode/@listAgencyID = '113'">[F-CAT233] Invalid listAgencyID. Must be '113'</sch:assert>
+        </sch:rule>
+
+        <!-- - - - - - - - - - - -  Item/TransactionConditions - - - - - - - - - - -  -->
+        <sch:rule context="doc:Catalogue/cac:CatalogueLine/cac:Item/cac:TransactionConditions">
+            <sch:extends rule="DescriptionLanguageCheckNew"/>
+            <!-- Check for excluded elements -->
+            <!-- Check for mandatory elements -->
+            <!-- Validate -->
+        </sch:rule>
+        <!-- Validate Item/TransactionConditions/Description -->
+      
+        <!-- Validate Item/TransactionConditions/DocumentReference -->
+        <sch:rule context="doc:Catalogue/cac:CatalogueLine/cac:Item/cac:TransactionConditions/cac:DocumentReference">
+            <sch:extends rule="DocumentReferenceCheck"/>
+        </sch:rule>
+
+        <!-- - - - - - - - - - - -  Item/HazardousItem - - - - - - - - - - -  -->
+        <sch:rule context="doc:Catalogue/cac:CatalogueLine/cac:Item/cac:HazardousItem">
+            <!-- Check for excluded elements -->
+            <!-- Check for mandatory elements -->
+            <!-- Validate -->
+            <!-- [I-CAT999] Validation not yet implemented! -->
+        </sch:rule>
+
+        <!-- - - - - - - - - - - -  Item/ClassifiedTaxCategory (excluded) - - - - - - - - - - -  -->
+
+        <!-- - - - - - - - - - - -  Item/AdditionalItemProperty - - - - - - - - - - -  -->
+        <sch:rule context="doc:Catalogue/cac:CatalogueLine/cac:Item/cac:AdditionalItemProperty">
+            <!-- Check for excluded elements -->
+            <!-- Check for mandatory elements -->
+            <!-- Validate -->
+            <sch:assert test="cbc:Name != ''">[F-CAT235] Invalid Name. Must contain a value</sch:assert>
+            <sch:assert test="cbc:Value != ''">[F-CAT236] Invalid Value. Must contain a value</sch:assert>
+        </sch:rule>
+        <!-- - - - - - - - - - - -  Item/AdditionalItemProperty/UsabilityPeriod - - - - - - - - - - -  -->
+        <sch:rule context="doc:Catalogue/cac:CatalogueLine/cac:Item/cac:AdditionalItemProperty/cac:UsabilityPeriod">
+            <sch:extends rule="PeriodCheck"/>
+        </sch:rule>
+        <!-- - - - - - - - - - - -  Item/AdditionalItemProperty/ItemPropertyGroup - - - - - - - - - - -  -->
+        <sch:rule context="doc:Catalogue/cac:CatalogueLine/cac:Item/cac:AdditionalItemProperty/cac:ItemPropertyGroup">
+            <!-- Check for excluded elements -->
+            <!-- Check for mandatory elements -->
+            <!-- Validate -->
+            <sch:assert test="cbc:ID != ''">[F-CAT237] Invalid ID. Must contain a value</sch:assert>
+        </sch:rule>
+
+        <!-- - - - - - - - - - - -  Item/ManufacturerParty - - - - - - - - - - -  -->
+        <sch:rule context="doc:Catalogue/cac:CatalogueLine/cac:Item/cac:ManufacturerParty">
+            <!-- Check for excluded elements -->
+            <!-- Check for mandatory elements -->
+            <!-- Validate -->
+            <!-- [I-CAT999] Validation not yet implemented! -->
+        </sch:rule>
+
+        <!-- - - - - - - - - - - -  Item/InformationContentProviderParty - - - - - - - - - - -  -->
+        <sch:rule context="doc:Catalogue/cac:CatalogueLine/cac:Item/cac:InformationContentProviderParty">
+            <!-- Check for excluded elements -->
+            <!-- Check for mandatory elements -->
+            <!-- Validate -->
+            <!-- [I-CAT999] Validation not yet implemented! -->
+        </sch:rule>
+
+        <!-- - - - - - - - - - - -  Item/OriginAddress - - - - - - - - - - -  -->
+        <sch:rule context="doc:Catalogue/cac:CatalogueLine/cac:Item/cac:OriginAddress">
+            <sch:extends rule="AddressCheck"/>
+        </sch:rule>
+
+        <!-- - - - - - - - - - - -  Item/ItemInstance - - - - - - - - - - -  -->
+        <sch:rule context="doc:Catalogue/cac:CatalogueLine/cac:Item/cac:ItemInstance">
+            <!-- Check for excluded elements -->
+            <!-- Check for mandatory elements -->
+            <!-- Validate -->
+        </sch:rule>
+        <!-- Validate Item/ItemInstance/AdditionalItemProperty -->
+        <sch:rule context="doc:Catalogue/cac:CatalogueLine/cac:Item/cac:ItemInstance/cac:AdditionalItemProperty">
+            <!-- Check for excluded elements -->
+            <!-- Check for mandatory elements -->
+            <!-- Validate -->
+            <sch:assert test="cbc:Name != ''">[F-CAT245] Invalid Name. Must contain a value</sch:assert>
+            <sch:assert test="cbc:Value != ''">[F-CAT246] Invalid Value. Must contain a value</sch:assert>
+        </sch:rule>
+        <!-- Validate Item/ItemInstance/AdditionalItemProperty/UsabilityPeriod -->
+        <sch:rule context="doc:Catalogue/cac:CatalogueLine/cac:Item/cac:ItemInstance/cac:AdditionalItemProperty/cac:UsabilityPeriod">
+            <sch:extends rule="PeriodCheck"/>
+            <sch:extends rule="DescriptionLanguageCheckNew"/>
+        </sch:rule>
+        <!-- Validate Item/ItemInstance/AdditionalItemProperty/UsabilityPeriod/Description -->
+
+        <!-- Validate Item/ItemInstance/AdditionalItemProperty/ItemPropertyGroup -->
+        <sch:rule context="doc:Catalogue/cac:CatalogueLine/cac:Item/cac:ItemInstance/cac:AdditionalItemProperty/cac:ItemPropertyGroup">
+            <!-- Check for excluded elements -->
+            <!-- Check for mandatory elements -->
+            <!-- Validate -->
+            <sch:assert test="cbc:ID != ''">[F-CAT247] Invalid ID. Must contain a value</sch:assert>
+        </sch:rule>
+        <!-- Validate Item/ItemInstance/LotIdentification -->
+        <sch:rule context="doc:Catalogue/cac:CatalogueLine/cac:Item/cac:ItemInstance/cac:LotIdentification">
+            <!-- Check for excluded elements -->
+            <!-- Check for mandatory elements -->
+            <!-- Validate -->
+        </sch:rule>
+        <!-- Validate Item/ItemInstance/LotIdentification/AdditionalItemProperty -->
+        <sch:rule context="doc:Catalogue/cac:CatalogueLine/cac:Item/cac:ItemInstance/cac:LotIdentification/cac:AdditionalItemProperty">
+            <sch:assert test="cbc:Name != ''">[F-CAT238] Invalid Name. Must contain a value</sch:assert>
+            <sch:assert test="cbc:Value != ''">[F-CAT239] Invalid Value. Must contain a value</sch:assert>
+        </sch:rule>
+        <!-- Validate Item/ItemInstance/LotIdentification/AdditionalItemProperty/UsabilityPeriod -->
+        <sch:rule
+                context="doc:Catalogue/cac:CatalogueLine/cac:Item/cac:ItemInstance/cac:LotIdentification/cac:AdditionalItemProperty/cac:UsabilityPeriod">
+                <sch:extends rule="DescriptionLanguageCheckNew"/>
+            <sch:extends rule="PeriodCheck"/>
+        </sch:rule>
+        <!-- Validate Item/ItemInstance/LotIdentification/AdditionalItemProperty/UsabilityPeriod/Description -->
+        
+        <!-- Validate Item/ItemInstance/LotIdentification/AdditionalItemProperty/ItemPropertyGroup -->
+        <sch:rule
+                context="doc:Catalogue/cac:CatalogueLine/cac:Item/cac:ItemInstance/cac:LotIdentification/cac:AdditionalItemProperty/cac:ItemPropertyGroup">
+            <!-- Validate -->
+            <sch:assert test="cbc:ID != ''">[F-CAT240] Invalid ID. Must contain a value</sch:assert>
+        </sch:rule>
+
+    </sch:pattern>
+</sch:schema>
