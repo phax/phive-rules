@@ -191,7 +191,7 @@ I hope that with the introduction of PINT, the versioning problem will be solved
   
 # News and noteworthy
  
-* v3.1.9 - work in progress
+* v3.1.9 - 2024-03-22
     * Deprecated Peppol Business Card formats v1 and v2
     * Deprecated Peppol May 2023 release
     * Updated the EHF G3 formats to the latest versions from 2023-02 and deprecated the previous G3 versions
