@@ -75,7 +75,7 @@
       <dependency>
         <groupId>com.helger.commons</groupId>
         <artifactId>ph-commons-parent-pom</artifactId>
-        <version>11.1.4</version>
+        <version>11.1.5</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
@@ -89,21 +89,21 @@
       <dependency>
         <groupId>com.helger.diver</groupId>
         <artifactId>ph-diver-parent-pom</artifactId>
-        <version>1.1.0</version>
+        <version>1.1.1</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
       <dependency>
         <groupId>com.helger.phive</groupId>
         <artifactId>phive-parent-pom</artifactId>
-        <version>9.1.0</version>
+        <version>9.2.0</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
       <dependency>
         <groupId>com.helger.ubl</groupId>
         <artifactId>ph-ubl-parent-pom</artifactId>
-        <version>9.0.0</version>
+        <version>9.0.1</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
@@ -128,7 +128,7 @@
       <dependency>
         <groupId>com.helger.web</groupId>
         <artifactId>ph-web-parent-pom</artifactId>
-        <version>10.1.7</version>
+        <version>10.1.8</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
@@ -136,7 +136,7 @@
       <dependency>
         <groupId>com.helger.peppol</groupId>
         <artifactId>peppol-commons-parent-pom</artifactId>
-        <version>9.3.1</version>
+        <version>9.3.2</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
