@@ -30,6 +30,7 @@ import com.helger.commons.io.resource.IReadableResource;
 import com.helger.diver.api.version.VESID;
 import com.helger.phive.api.executorset.ValidationExecutorSetRegistry;
 import com.helger.phive.api.mock.TestFile;
+import com.helger.phive.oioubl.OIOUBLLegacyValidation;
 import com.helger.phive.oioubl.OIOUBLValidation;
 import com.helger.phive.xml.source.IValidationSourceXML;
 
@@ -41,6 +42,7 @@ public final class CTestFiles
   static
   {
     OIOUBLValidation.initOIOUBL (VES_REGISTRY);
+    OIOUBLLegacyValidation.initLegacyOIOUBL (VES_REGISTRY);
   }
 
   private CTestFiles ()
@@ -52,21 +54,21 @@ public final class CTestFiles
   {
     final ICommonsList <TestFile> ret = new CommonsArrayList <> ();
     for (final VESID aESID : new VESID [] { // Ancient 2.0.2
-                                            OIOUBLValidation.VID_OIOUBL_APPLICATION_RESPONSE,
-                                            OIOUBLValidation.VID_OIOUBL_CATALOGUE,
-                                            OIOUBLValidation.VID_OIOUBL_CATALOGUE_DELETION,
-                                            OIOUBLValidation.VID_OIOUBL_CATALOGUE_ITEM_SPECIFICATION_UPDATE,
-                                            OIOUBLValidation.VID_OIOUBL_CATALOGUE_PRICING_UPDATE,
-                                            OIOUBLValidation.VID_OIOUBL_CATALOGUE_REQUEST,
-                                            OIOUBLValidation.VID_OIOUBL_CREDIT_NOTE,
-                                            OIOUBLValidation.VID_OIOUBL_INVOICE,
-                                            OIOUBLValidation.VID_OIOUBL_ORDER,
-                                            OIOUBLValidation.VID_OIOUBL_ORDER_CANCELLATION,
-                                            OIOUBLValidation.VID_OIOUBL_ORDER_CHANGE,
-                                            OIOUBLValidation.VID_OIOUBL_ORDER_RESPONSE,
-                                            OIOUBLValidation.VID_OIOUBL_ORDER_RESPONSE_SIMPLE,
-                                            OIOUBLValidation.VID_OIOUBL_REMINDER,
-                                            OIOUBLValidation.VID_OIOUBL_STATEMENT,
+                                            OIOUBLLegacyValidation.VID_OIOUBL_APPLICATION_RESPONSE,
+                                            OIOUBLLegacyValidation.VID_OIOUBL_CATALOGUE,
+                                            OIOUBLLegacyValidation.VID_OIOUBL_CATALOGUE_DELETION,
+                                            OIOUBLLegacyValidation.VID_OIOUBL_CATALOGUE_ITEM_SPECIFICATION_UPDATE,
+                                            OIOUBLLegacyValidation.VID_OIOUBL_CATALOGUE_PRICING_UPDATE,
+                                            OIOUBLLegacyValidation.VID_OIOUBL_CATALOGUE_REQUEST,
+                                            OIOUBLLegacyValidation.VID_OIOUBL_CREDIT_NOTE,
+                                            OIOUBLLegacyValidation.VID_OIOUBL_INVOICE,
+                                            OIOUBLLegacyValidation.VID_OIOUBL_ORDER,
+                                            OIOUBLLegacyValidation.VID_OIOUBL_ORDER_CANCELLATION,
+                                            OIOUBLLegacyValidation.VID_OIOUBL_ORDER_CHANGE,
+                                            OIOUBLLegacyValidation.VID_OIOUBL_ORDER_RESPONSE,
+                                            OIOUBLLegacyValidation.VID_OIOUBL_ORDER_RESPONSE_SIMPLE,
+                                            OIOUBLLegacyValidation.VID_OIOUBL_REMINDER,
+                                            OIOUBLLegacyValidation.VID_OIOUBL_STATEMENT,
 
                                             // 1.12.3
                                             OIOUBLValidation.VID_OIOUBL_APPLICATION_RESPONSE_1_12_3,
@@ -139,7 +141,7 @@ public final class CTestFiles
     final ICommonsList <IReadableResource> ret = new CommonsArrayList <> ();
 
     // Ancient 2.0.2
-    if (aVESID.equals (OIOUBLValidation.VID_OIOUBL_APPLICATION_RESPONSE))
+    if (aVESID.equals (OIOUBLLegacyValidation.VID_OIOUBL_APPLICATION_RESPONSE))
     {
       final String sPrefix = sPrefix0 + "2.0.2/";
       for (final String s : new String [] { "ApplicationResponseStor_v2p2.xml",
@@ -153,7 +155,7 @@ public final class CTestFiles
         ret.add (new ClassPathResource (sPrefix + s));
     }
     else
-      if (aVESID.equals (OIOUBLValidation.VID_OIOUBL_CATALOGUE))
+      if (aVESID.equals (OIOUBLLegacyValidation.VID_OIOUBL_CATALOGUE))
       {
         final String sPrefix = sPrefix0 + "2.0.2/";
         for (final String s : new String [] { // "CATEXE_01_01_00_Catalogue_v2p2.xml",
@@ -163,28 +165,28 @@ public final class CTestFiles
           ret.add (new ClassPathResource (sPrefix + s));
       }
       else
-        if (aVESID.equals (OIOUBLValidation.VID_OIOUBL_CATALOGUE_DELETION))
+        if (aVESID.equals (OIOUBLLegacyValidation.VID_OIOUBL_CATALOGUE_DELETION))
         {
           final String sPrefix = sPrefix0 + "2.0.2/";
           for (final String s : new String [] { "CATEXE_06_06_00_CatalogueDeletion_v2p2.xml" })
             ret.add (new ClassPathResource (sPrefix + s));
         }
         else
-          if (aVESID.equals (OIOUBLValidation.VID_OIOUBL_CATALOGUE_ITEM_SPECIFICATION_UPDATE))
+          if (aVESID.equals (OIOUBLLegacyValidation.VID_OIOUBL_CATALOGUE_ITEM_SPECIFICATION_UPDATE))
           {
             final String sPrefix = sPrefix0 + "2.0.2/";
             for (final String s : new String [] { "CATEXE_03_03_00_CatalogueItemSpecificationUpdate_v2p2.xml" })
               ret.add (new ClassPathResource (sPrefix + s));
           }
           else
-            if (aVESID.equals (OIOUBLValidation.VID_OIOUBL_CATALOGUE_PRICING_UPDATE))
+            if (aVESID.equals (OIOUBLLegacyValidation.VID_OIOUBL_CATALOGUE_PRICING_UPDATE))
             {
               final String sPrefix = sPrefix0 + "2.0.2/";
               for (final String s : new String [] { "CATEXE_04_04_00_CataloguePricingUpdate_v2p2.xml" })
                 ret.add (new ClassPathResource (sPrefix + s));
             }
             else
-              if (aVESID.equals (OIOUBLValidation.VID_OIOUBL_CATALOGUE_REQUEST))
+              if (aVESID.equals (OIOUBLLegacyValidation.VID_OIOUBL_CATALOGUE_REQUEST))
               {
                 final String sPrefix = sPrefix0 + "2.0.2/";
                 for (final String s : new String [] { "CATEXE_01_01_00_CatalogueRequest_v2p2.xml",
@@ -194,7 +196,7 @@ public final class CTestFiles
                   ret.add (new ClassPathResource (sPrefix + s));
               }
               else
-                if (aVESID.equals (OIOUBLValidation.VID_OIOUBL_CREDIT_NOTE))
+                if (aVESID.equals (OIOUBLLegacyValidation.VID_OIOUBL_CREDIT_NOTE))
                 {
                   final String sPrefix = sPrefix0 + "2.0.2/";
                   for (final String s : new String [] { "BASPRO_03_01_06_CreditNote_v2p2.xml",
@@ -203,7 +205,7 @@ public final class CTestFiles
                     ret.add (new ClassPathResource (sPrefix + s));
                 }
                 else
-                  if (aVESID.equals (OIOUBLValidation.VID_OIOUBL_INVOICE))
+                  if (aVESID.equals (OIOUBLLegacyValidation.VID_OIOUBL_INVOICE))
                   {
                     final String sPrefix = sPrefix0 + "2.0.2/";
                     for (final String s : new String [] { "ADVORD_01_01_00_Invoice_v2p2.xml",
@@ -230,7 +232,7 @@ public final class CTestFiles
                       ret.add (new ClassPathResource (sPrefix + s));
                   }
                   else
-                    if (aVESID.equals (OIOUBLValidation.VID_OIOUBL_ORDER))
+                    if (aVESID.equals (OIOUBLLegacyValidation.VID_OIOUBL_ORDER))
                     {
                       final String sPrefix = sPrefix0 + "2.0.2/";
                       for (final String s : new String [] { "ADVORD_03_03_00_Order_v2p2.xml",
@@ -253,7 +255,7 @@ public final class CTestFiles
                         ret.add (new ClassPathResource (sPrefix + s));
                     }
                     else
-                      if (aVESID.equals (OIOUBLValidation.VID_OIOUBL_ORDER_CANCELLATION))
+                      if (aVESID.equals (OIOUBLLegacyValidation.VID_OIOUBL_ORDER_CANCELLATION))
                       {
                         final String sPrefix = sPrefix0 + "2.0.2/";
                         for (final String s : new String [] { "ADVORD_05_04_01_OrderCancellation_v2p2.xml",
@@ -261,7 +263,7 @@ public final class CTestFiles
                           ret.add (new ClassPathResource (sPrefix + s));
                       }
                       else
-                        if (aVESID.equals (OIOUBLValidation.VID_OIOUBL_ORDER_CHANGE))
+                        if (aVESID.equals (OIOUBLLegacyValidation.VID_OIOUBL_ORDER_CHANGE))
                         {
                           final String sPrefix = sPrefix0 + "2.0.2/";
                           for (final String s : new String [] { "ADVORD_01_01_00_OrderChange_v2p2.xml",
@@ -271,7 +273,7 @@ public final class CTestFiles
                             ret.add (new ClassPathResource (sPrefix + s));
                         }
                         else
-                          if (aVESID.equals (OIOUBLValidation.VID_OIOUBL_ORDER_RESPONSE))
+                          if (aVESID.equals (OIOUBLLegacyValidation.VID_OIOUBL_ORDER_RESPONSE))
                           {
                             final String sPrefix = sPrefix0 + "2.0.2/";
                             for (final String s : new String [] { "ADVORD_01_01_00_OrderResponse_v2p2.xml",
@@ -283,7 +285,7 @@ public final class CTestFiles
                               ret.add (new ClassPathResource (sPrefix + s));
                           }
                           else
-                            if (aVESID.equals (OIOUBLValidation.VID_OIOUBL_ORDER_RESPONSE_SIMPLE))
+                            if (aVESID.equals (OIOUBLLegacyValidation.VID_OIOUBL_ORDER_RESPONSE_SIMPLE))
                             {
                               final String sPrefix = sPrefix0 + "2.0.2/";
                               for (final String s : new String [] { "ADVORD_02_02_00_OrderResponseSimple_v2p2.xml",
@@ -306,7 +308,7 @@ public final class CTestFiles
                                 ret.add (new ClassPathResource (sPrefix + s));
                             }
                             else
-                              if (aVESID.equals (OIOUBLValidation.VID_OIOUBL_REMINDER))
+                              if (aVESID.equals (OIOUBLLegacyValidation.VID_OIOUBL_REMINDER))
                               {
                                 final String sPrefix = sPrefix0 + "2.0.2/";
                                 for (final String s : new String [] { "BASPRO_04_01_08_Reminder_v2p2.xml",
@@ -316,7 +318,7 @@ public final class CTestFiles
                                   ret.add (new ClassPathResource (sPrefix + s));
                               }
                               else
-                                if (aVESID.equals (OIOUBLValidation.VID_OIOUBL_STATEMENT))
+                                if (aVESID.equals (OIOUBLLegacyValidation.VID_OIOUBL_STATEMENT))
                                 {
                                   final String sPrefix = sPrefix0 + "2.0.2/";
                                   for (final String s : new String [] {

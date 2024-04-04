@@ -63,6 +63,10 @@
       <artifactId>ph-ubl20</artifactId>
     </dependency>
     <dependency>
+      <groupId>com.helger.ubl</groupId>
+      <artifactId>ph-ubl21</artifactId>
+    </dependency>
+    <dependency>
       <groupId>com.helger.schematron</groupId>
       <artifactId>ph-schematron-xslt</artifactId>
     </dependency>

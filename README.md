@@ -191,6 +191,9 @@ I hope that with the introduction of PINT, the versioning problem will be solved
   
 # News and noteworthy
  
+* v3.1.10 - work in progress
+    * All OIOUBL 1.x validations are now correctly based on UBL 2.1 instead of UBL 2.0
+    * Extracted the rules for the legacy OIOUBL rules into a separate registerable entity (`OIOUBLLegacyValidation`).
 * v3.1.9 - 2024-03-22
     * Deprecated Peppol Business Card formats v1 and v2
     * Deprecated Peppol May 2023 release
