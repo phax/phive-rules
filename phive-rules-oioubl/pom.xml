@@ -111,7 +111,7 @@
             <goals>
               <goal>generate</goal>
             </goals>
-            <id>ublpe20</id>
+            <id>oioubl</id>
             <configuration>
               <schemaDirectory>${basedir}/src/main/resources/external/schemas/OIOUBL_v2.1-b/maindoc</schemaDirectory>
               <bindingIncludes>
@@ -125,7 +125,13 @@
           <bindingDirectory>${basedir}/src/main/jaxb</bindingDirectory>
           <extension>true</extension>
           <strict>false</strict>
-          <useDependenciesAsEpisodes>true</useDependenciesAsEpisodes>
+          <episodes>
+            <episode>
+              <groupId>com.helger.ubl</groupId>
+              <artifactId>ph-ubl20</artifactId>
+              <!-- Version is not required if the artifact is configured as dependency -->
+            </episode>
+          </episodes>          
           <args>
             <arg>-no-header</arg>
             <arg>-quiet</arg>
