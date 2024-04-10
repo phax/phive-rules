@@ -24,6 +24,8 @@ import com.helger.commons.io.resource.ClassPathResource;
 import com.helger.diver.api.version.VESID;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
 import com.helger.phive.api.executorset.ValidationExecutorSet;
+import com.helger.phive.api.executorset.status.IValidationExecutorSetStatus;
+import com.helger.phive.api.executorset.status.ValidationExecutorSetStatus;
 import com.helger.phive.xml.schematron.ValidationExecutorSchematron;
 import com.helger.phive.xml.source.IValidationSourceXML;
 import com.helger.phive.xml.xsd.ValidationExecutorXSD;
@@ -74,6 +76,12 @@ public final class CIUS_PTValidation
     return CIUS_PTValidation.class.getClassLoader ();
   }
 
+  @Nonnull
+  private static IValidationExecutorSetStatus _createStatus (final boolean bIsDeprecated)
+  {
+    return ValidationExecutorSetStatus.createDeprecatedNow (bIsDeprecated);
+  }
+
   /**
    * Register all standard CIUS-PT validation execution sets to the provided
    * registry.
@@ -92,14 +100,14 @@ public final class CIUS_PTValidation
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_CIUS_PT_UBL_CREDITNOTE_200,
                                                                            "CIUS-PT UBL Credit Note " +
                                                                                                            VID_CIUS_PT_UBL_CREDITNOTE_200.getVersionString (),
-                                                                           bDeprecated,
+                                                                           _createStatus (bDeprecated),
                                                                            ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
                                                                            ValidationExecutorSchematron.createXSLT (RES_200,
                                                                                                                     UBL21NamespaceContext.getInstance ())));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_CIUS_PT_UBL_INVOICE_200,
                                                                            "CIUS-PT UBL Invoice " +
                                                                                                         VID_CIUS_PT_UBL_INVOICE_200.getVersionString (),
-                                                                           bDeprecated,
+                                                                           _createStatus (bDeprecated),
                                                                            ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
                                                                            ValidationExecutorSchematron.createXSLT (RES_200,
                                                                                                                     UBL21NamespaceContext.getInstance ())));
@@ -108,14 +116,14 @@ public final class CIUS_PTValidation
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_CIUS_PT_UBL_CREDITNOTE_211,
                                                                            "CIUS-PT UBL Credit Note " +
                                                                                                            VID_CIUS_PT_UBL_CREDITNOTE_211.getVersionString (),
-                                                                           bNotDeprecated,
+                                                                           _createStatus (bNotDeprecated),
                                                                            ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
                                                                            ValidationExecutorSchematron.createXSLT (RES_211,
                                                                                                                     UBL21NamespaceContext.getInstance ())));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_CIUS_PT_UBL_INVOICE_211,
                                                                            "CIUS-PT UBL Invoice " +
                                                                                                         VID_CIUS_PT_UBL_INVOICE_211.getVersionString (),
-                                                                           bNotDeprecated,
+                                                                           _createStatus (bNotDeprecated),
                                                                            ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
                                                                            ValidationExecutorSchematron.createXSLT (RES_211,
                                                                                                                     UBL21NamespaceContext.getInstance ())));

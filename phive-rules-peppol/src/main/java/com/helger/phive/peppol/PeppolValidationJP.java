@@ -24,6 +24,8 @@ import com.helger.commons.io.resource.ClassPathResource;
 import com.helger.diver.api.version.VESID;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
 import com.helger.phive.api.executorset.ValidationExecutorSet;
+import com.helger.phive.api.executorset.status.IValidationExecutorSetStatus;
+import com.helger.phive.api.executorset.status.ValidationExecutorSetStatus;
 import com.helger.phive.xml.schematron.SchematronNamespaceBeautifier;
 import com.helger.phive.xml.schematron.ValidationExecutorSchematron;
 import com.helger.phive.xml.source.IValidationSourceXML;
@@ -56,6 +58,12 @@ public final class PeppolValidationJP
   private PeppolValidationJP ()
   {}
 
+  @Nonnull
+  private static IValidationExecutorSetStatus _createStatus (final boolean bIsDeprecated)
+  {
+    return ValidationExecutorSetStatus.createDeprecatedNow (bIsDeprecated);
+  }
+
   public static void init (@Nonnull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
   {
     ValueEnforcer.notNull (aRegistry, "Registry");
@@ -80,7 +88,7 @@ public final class PeppolValidationJP
                                                              _getCL ());
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_JP_PINT_INVOICE_012,
                                                                              "Japan PINT Invoice (UBL) 0.1.2",
-                                                                             bNotDeprecated,
+                                                                             _createStatus (bNotDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
                                                                              ValidationExecutorSchematron.createXSLT (aCPR1,
                                                                                                                       aNSCtxInvoice),
@@ -88,7 +96,7 @@ public final class PeppolValidationJP
                                                                                                                       aNSCtxInvoice)));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_JP_PINT_CREDIT_NOTE_012,
                                                                              "Japan PINT Credit Note (UBL) 0.1.2",
-                                                                             bNotDeprecated,
+                                                                             _createStatus (bNotDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
                                                                              ValidationExecutorSchematron.createXSLT (aCPR1,
                                                                                                                       aNSCtxCreditNote),

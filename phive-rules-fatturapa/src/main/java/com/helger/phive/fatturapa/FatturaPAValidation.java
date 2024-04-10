@@ -24,6 +24,8 @@ import com.helger.diver.api.version.VESID;
 import com.helger.fatturapa.CFatturaPA;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
 import com.helger.phive.api.executorset.ValidationExecutorSet;
+import com.helger.phive.api.executorset.status.IValidationExecutorSetStatus;
+import com.helger.phive.api.executorset.status.ValidationExecutorSetStatus;
 import com.helger.phive.xml.source.IValidationSourceXML;
 import com.helger.phive.xml.xsd.ValidationExecutorXSD;
 
@@ -44,6 +46,12 @@ public final class FatturaPAValidation
   private FatturaPAValidation ()
   {}
 
+  @Nonnull
+  private static IValidationExecutorSetStatus _createStatus (final boolean bIsDeprecated)
+  {
+    return ValidationExecutorSetStatus.createDeprecatedNow (bIsDeprecated);
+  }
+
   /**
    * Register all standard fatturaPA validation execution sets to the provided
    * registry.
@@ -62,17 +70,17 @@ public final class FatturaPAValidation
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_FATTURAPA_120,
                                                                            "fatturaPA " +
                                                                                               VID_FATTURAPA_120.getVersionString (),
-                                                                           bDeprecated,
+                                                                           _createStatus (bDeprecated),
                                                                            ValidationExecutorXSD.create (CFatturaPA.getAllXSDFatturaPA120 ())));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_FATTURAPA_121,
                                                                            "fatturaPA " +
                                                                                               VID_FATTURAPA_121.getVersionString (),
-                                                                           bDeprecated,
+                                                                           _createStatus (bDeprecated),
                                                                            ValidationExecutorXSD.create (CFatturaPA.getAllXSDFatturaPA121 ())));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_FATTURAPA_122,
                                                                            "fatturaPA " +
                                                                                               VID_FATTURAPA_122.getVersionString (),
-                                                                           bNotDeprecated,
+                                                                           _createStatus (bNotDeprecated),
                                                                            ValidationExecutorXSD.create (CFatturaPA.getAllXSDFatturaPA122 ())));
   }
 }

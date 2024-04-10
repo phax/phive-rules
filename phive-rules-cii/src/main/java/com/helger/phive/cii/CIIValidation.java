@@ -25,6 +25,8 @@ import com.helger.commons.ValueEnforcer;
 import com.helger.diver.api.version.VESID;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
 import com.helger.phive.api.executorset.ValidationExecutorSet;
+import com.helger.phive.api.executorset.status.IValidationExecutorSetStatus;
+import com.helger.phive.api.executorset.status.ValidationExecutorSetStatus;
 import com.helger.phive.xml.schematron.SchematronNamespaceBeautifier;
 import com.helger.phive.xml.source.IValidationSourceXML;
 import com.helger.phive.xml.xsd.ValidationExecutorXSD;
@@ -47,6 +49,12 @@ public final class CIIValidation
   private CIIValidation ()
   {}
 
+  @Nonnull
+  private static IValidationExecutorSetStatus _createStatus (final boolean bIsDeprecated)
+  {
+    return ValidationExecutorSetStatus.createDeprecatedNow (bIsDeprecated);
+  }
+
   /**
    * Register all standard CII D16B validation execution sets to the provided
    * registry.
@@ -66,7 +74,7 @@ public final class CIIValidation
     // No Schematrons here
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_CII_D16B_CROSSINDUSTRYINVOICE,
                                                                            "CII CrossIndustryInvoice " + VERSION_D16B,
-                                                                           bNotDeprecated,
+                                                                           _createStatus (bNotDeprecated),
                                                                            ValidationExecutorXSD.create (CCIID16B.getXSDResource ())));
   }
 }

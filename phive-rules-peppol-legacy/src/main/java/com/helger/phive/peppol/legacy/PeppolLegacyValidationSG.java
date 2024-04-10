@@ -25,6 +25,8 @@ import com.helger.commons.io.resource.IReadableResource;
 import com.helger.diver.api.version.VESID;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
 import com.helger.phive.api.executorset.ValidationExecutorSet;
+import com.helger.phive.api.executorset.status.IValidationExecutorSetStatus;
+import com.helger.phive.api.executorset.status.ValidationExecutorSetStatus;
 import com.helger.phive.xml.schematron.SchematronNamespaceBeautifier;
 import com.helger.phive.xml.schematron.ValidationExecutorSchematron;
 import com.helger.phive.xml.source.IValidationSourceXML;
@@ -38,6 +40,7 @@ import com.helger.xml.namespace.MapBasedNamespaceContext;
  * @author Philip Helger
  */
 @Immutable
+@Deprecated
 public final class PeppolLegacyValidationSG
 {
   @Nonnull
@@ -49,27 +52,29 @@ public final class PeppolLegacyValidationSG
   private static final String BASE_PATH = "external/schematron/peppol-sg/";
 
   // 1.0.0 aka 1
-  @Deprecated
   public static final VESID VID_OPENPEPPOL_BIS3_SG_UBL_INVOICE_100 = new VESID ("eu.peppol.bis3.sg.ubl",
                                                                                 "invoice",
                                                                                 "1");
-  @Deprecated
   public static final VESID VID_OPENPEPPOL_BIS3_SG_UBL_CREDIT_NOTE_100 = new VESID ("eu.peppol.bis3.sg.ubl",
                                                                                     "creditnote",
                                                                                     "1");
 
   // 1.0.2
-  @Deprecated
   public static final VESID VID_OPENPEPPOL_BIS3_SG_UBL_INVOICE_102 = new VESID ("eu.peppol.bis3.sg.ubl",
                                                                                 "invoice",
                                                                                 "1.0.2");
-  @Deprecated
   public static final VESID VID_OPENPEPPOL_BIS3_SG_UBL_CREDIT_NOTE_102 = new VESID ("eu.peppol.bis3.sg.ubl",
                                                                                     "creditnote",
                                                                                     "1.0.2");
 
   private PeppolLegacyValidationSG ()
   {}
+
+  @Nonnull
+  private static IValidationExecutorSetStatus _createStatus (final boolean bIsDeprecated)
+  {
+    return ValidationExecutorSetStatus.createDeprecatedNow (bIsDeprecated);
+  }
 
   public static void init (@Nonnull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
   {
@@ -96,7 +101,7 @@ public final class PeppolLegacyValidationSG
 
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_BIS3_SG_UBL_INVOICE_100,
                                                                              "SG Peppol BIS3 Invoice (UBL) 1.0.0",
-                                                                             bDeprecated,
+                                                                             _createStatus (bDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
                                                                              ValidationExecutorSchematron.createXSLT (BIS3_BILLING_SG_CEN_100,
                                                                                                                       aNSCtxInvoice),
@@ -104,7 +109,7 @@ public final class PeppolLegacyValidationSG
                                                                                                                       aNSCtxInvoice)));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_BIS3_SG_UBL_CREDIT_NOTE_100,
                                                                              "SG Peppol BIS3 Credit Note (UBL) 1.0.0",
-                                                                             bDeprecated,
+                                                                             _createStatus (bDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
                                                                              ValidationExecutorSchematron.createXSLT (BIS3_BILLING_SG_CEN_100,
                                                                                                                       aNSCtxCreditNote),
@@ -123,7 +128,7 @@ public final class PeppolLegacyValidationSG
 
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_BIS3_SG_UBL_INVOICE_102,
                                                                              "SG Peppol BIS3 Invoice (UBL) 1.0.2",
-                                                                             bDeprecated,
+                                                                             _createStatus (bDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
                                                                              ValidationExecutorSchematron.createXSLT (BIS3_BILLING_SG_CEN_102,
                                                                                                                       aNSCtxInvoice),
@@ -131,7 +136,7 @@ public final class PeppolLegacyValidationSG
                                                                                                                       aNSCtxInvoice)));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_BIS3_SG_UBL_CREDIT_NOTE_102,
                                                                              "SG Peppol BIS3 Credit Note (UBL) 1.0.2",
-                                                                             bDeprecated,
+                                                                             _createStatus (bDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
                                                                              ValidationExecutorSchematron.createXSLT (BIS3_BILLING_SG_CEN_102,
                                                                                                                       aNSCtxCreditNote),

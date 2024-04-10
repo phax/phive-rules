@@ -30,6 +30,8 @@ import com.helger.commons.version.Version;
 import com.helger.diver.api.version.VESID;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
 import com.helger.phive.api.executorset.ValidationExecutorSet;
+import com.helger.phive.api.executorset.status.IValidationExecutorSetStatus;
+import com.helger.phive.api.executorset.status.ValidationExecutorSetStatus;
 import com.helger.phive.xml.schematron.ValidationExecutorSchematron;
 import com.helger.phive.xml.source.IValidationSourceXML;
 import com.helger.phive.xml.xsd.ValidationExecutorXSD;
@@ -113,6 +115,12 @@ public final class PeppolValidation390
     return ValidationExecutorSchematron.createXSLT (aRes, UBL21NamespaceContext.getInstance ());
   }
 
+  @Nonnull
+  private static IValidationExecutorSetStatus _createStatus (final boolean bIsDeprecated)
+  {
+    return ValidationExecutorSetStatus.createDeprecatedNow (bIsDeprecated);
+  }
+
   public static void init (@Nonnull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
   {
     ValueEnforcer.notNull (aRegistry, "Registry");
@@ -125,7 +133,7 @@ public final class PeppolValidation390
                                                                            "OpenPeppol Invoice" +
                                                                                                       sVersion +
                                                                                                       sAkaVersionBilling,
-                                                                           bDeprecated,
+                                                                           _createStatus (bDeprecated),
                                                                            ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
                                                                            _createXSLT (INVOICE_CEN),
                                                                            _createXSLT (INVOICE_PEPPOL)));
@@ -133,7 +141,7 @@ public final class PeppolValidation390
                                                                            "OpenPeppol Credit Note" +
                                                                                                           sVersion +
                                                                                                           sAkaVersionBilling,
-                                                                           bDeprecated,
+                                                                           _createStatus (bDeprecated),
                                                                            ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
                                                                            _createXSLT (INVOICE_CEN),
                                                                            _createXSLT (INVOICE_PEPPOL)));
@@ -141,61 +149,61 @@ public final class PeppolValidation390
                                                                            "OpenPeppol Order" +
                                                                                                   sVersion +
                                                                                                   sAkaVersionBIS,
-                                                                           bDeprecated,
+                                                                           _createStatus (bDeprecated),
                                                                            ValidationExecutorXSD.create (UBL21Marshaller.getAllOrderXSDs ()),
                                                                            _createXSLT (ORDER)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_T16_V3,
                                                                            "OpenPeppol Despatch Advice" +
                                                                                                   sVersion +
                                                                                                   sAkaVersionBIS,
-                                                                           bDeprecated,
+                                                                           _createStatus (bDeprecated),
                                                                            ValidationExecutorXSD.create (UBL21Marshaller.getAllDespatchAdviceXSDs ()),
                                                                            _createXSLT (DESPATCH_ADVICE)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_T19_V3,
                                                                            "OpenPeppol Catalogue" +
                                                                                                   sVersion +
                                                                                                   sAkaVersionBIS,
-                                                                           bDeprecated,
+                                                                           _createStatus (bDeprecated),
                                                                            ValidationExecutorXSD.create (UBL21Marshaller.getAllCatalogueXSDs ()),
                                                                            _createXSLT (CATALOGUE)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_T58_V3,
                                                                            "OpenPeppol Catalogue Response" +
                                                                                                   sVersion +
                                                                                                   sAkaVersionBIS,
-                                                                           bDeprecated,
+                                                                           _createStatus (bDeprecated),
                                                                            ValidationExecutorXSD.create (UBL21Marshaller.getAllApplicationResponseXSDs ()),
                                                                            _createXSLT (CATALOGUE_RESPONSE)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_T71_V3,
                                                                            "OpenPeppol MLR" + sVersion + sAkaVersionBIS,
-                                                                           bDeprecated,
+                                                                           _createStatus (bDeprecated),
                                                                            ValidationExecutorXSD.create (UBL21Marshaller.getAllApplicationResponseXSDs ()),
                                                                            _createXSLT (MLR)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_T76_V3,
                                                                            "OpenPeppol Order Response" +
                                                                                                   sVersion +
                                                                                                   sAkaVersionBIS,
-                                                                           bDeprecated,
+                                                                           _createStatus (bDeprecated),
                                                                            ValidationExecutorXSD.create (UBL21Marshaller.getAllOrderResponseXSDs ()),
                                                                            _createXSLT (ORDER_RESPONSE)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_T77_V3,
                                                                            "OpenPeppol Punch Out" +
                                                                                                   sVersion +
                                                                                                   sAkaVersionBIS,
-                                                                           bDeprecated,
+                                                                           _createStatus (bDeprecated),
                                                                            ValidationExecutorXSD.create (UBL21Marshaller.getAllCatalogueXSDs ()),
                                                                            _createXSLT (PUNCH_OUT)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_T110_V3,
                                                                            "OpenPeppol Order Agreement" +
                                                                                                    sVersion +
                                                                                                    sAkaVersionBIS,
-                                                                           bDeprecated,
+                                                                           _createStatus (bDeprecated),
                                                                            ValidationExecutorXSD.create (UBL21Marshaller.getAllOrderResponseXSDs ()),
                                                                            _createXSLT (ORDER_AGREEMENT)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_T111_V3,
                                                                            "OpenPeppol Invoice Message Response" +
                                                                                                    sVersion +
                                                                                                    sAkaVersionBIS,
-                                                                           bDeprecated,
+                                                                           _createStatus (bDeprecated),
                                                                            ValidationExecutorXSD.create (UBL21Marshaller.getAllApplicationResponseXSDs ()),
                                                                            _createXSLT (INVOICE_MESSAGE_RESPONSE)));
   }

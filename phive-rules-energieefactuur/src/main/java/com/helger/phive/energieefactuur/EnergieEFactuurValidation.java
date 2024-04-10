@@ -28,6 +28,8 @@ import com.helger.commons.io.resource.IReadableResource;
 import com.helger.diver.api.version.VESID;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
 import com.helger.phive.api.executorset.ValidationExecutorSet;
+import com.helger.phive.api.executorset.status.IValidationExecutorSetStatus;
+import com.helger.phive.api.executorset.status.ValidationExecutorSetStatus;
 import com.helger.phive.simplerinvoicing.SimplerInvoicingValidation;
 import com.helger.phive.xml.schematron.SchematronNamespaceBeautifier;
 import com.helger.phive.xml.schematron.ValidationExecutorSchematron;
@@ -86,6 +88,12 @@ public final class EnergieEFactuurValidation
   private EnergieEFactuurValidation ()
   {}
 
+  @Nonnull
+  private static IValidationExecutorSetStatus _createStatus (final boolean bIsDeprecated)
+  {
+    return ValidationExecutorSetStatus.createDeprecatedNow (bIsDeprecated);
+  }
+
   /**
    * Register all standard Energie eFactuur validation execution sets to the
    * provided registry.
@@ -120,7 +128,7 @@ public final class EnergieEFactuurValidation
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_ENERGIE_EFACTUUR_1_0_0,
                                                                              "Energie eFactuur " +
                                                                                                          VID_ENERGIE_EFACTUUR_1_0_0.getVersionString (),
-                                                                             bNotDeprecated,
+                                                                             _createStatus (bNotDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
                                                                              ValidationExecutorXSDPartial.create (SEEF_EXT_XSD_1_0_0,
                                                                                                                   XSDPartialContext.create (aXE100,
@@ -144,7 +152,7 @@ public final class EnergieEFactuurValidation
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_ENERGIE_EFACTUUR_1_0_1,
                                                                              "Energie eFactuur " +
                                                                                                          VID_ENERGIE_EFACTUUR_1_0_1.getVersionString (),
-                                                                             bNotDeprecated,
+                                                                             _createStatus (bNotDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
                                                                              ValidationExecutorXSDPartial.create (SEEF_EXT_XSD_1_0_1,
                                                                                                                   XSDPartialContext.create (aXE101,
@@ -168,7 +176,7 @@ public final class EnergieEFactuurValidation
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_ENERGIE_EFACTUUR_2_0_0,
                                                                              "Energie eFactuur " +
                                                                                                          VID_ENERGIE_EFACTUUR_2_0_0.getVersionString (),
-                                                                             bNotDeprecated,
+                                                                             _createStatus (bNotDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
                                                                              ValidationExecutorXSDPartial.create (SEEF_EXT_XSD_2_0_0,
                                                                                                                   XSDPartialContext.create (aXE200,
@@ -192,7 +200,7 @@ public final class EnergieEFactuurValidation
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_ENERGIE_EFACTUUR_3_0_0,
                                                                              "Energie eFactuur " +
                                                                                                          VID_ENERGIE_EFACTUUR_3_0_0.getVersionString (),
-                                                                             bNotDeprecated,
+                                                                             _createStatus (bNotDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
                                                                              ValidationExecutorXSDPartial.create (SEEF_EXT_XSD_3_0_0,
                                                                                                                   XSDPartialContext.create (aXE300,
@@ -216,7 +224,7 @@ public final class EnergieEFactuurValidation
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_ENERGIE_EFACTUUR_3_1_0,
                                                                              "Energie eFactuur " +
                                                                                                          VID_ENERGIE_EFACTUUR_3_1_0.getVersionString (),
-                                                                             bNotDeprecated,
+                                                                             _createStatus (bNotDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
                                                                              ValidationExecutorXSDPartial.create (SEEF_EXT_XSD_3_1_0,
                                                                                                                   XSDPartialContext.create (aXE310,

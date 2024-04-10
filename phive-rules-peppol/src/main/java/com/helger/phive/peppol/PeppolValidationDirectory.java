@@ -25,6 +25,8 @@ import com.helger.commons.io.resource.IReadableResource;
 import com.helger.diver.api.version.VESID;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
 import com.helger.phive.api.executorset.ValidationExecutorSet;
+import com.helger.phive.api.executorset.status.IValidationExecutorSetStatus;
+import com.helger.phive.api.executorset.status.ValidationExecutorSetStatus;
 import com.helger.phive.xml.source.IValidationSourceXML;
 import com.helger.phive.xml.xsd.ValidationExecutorXSD;
 
@@ -60,6 +62,12 @@ public final class PeppolValidationDirectory
   private PeppolValidationDirectory ()
   {}
 
+  @Nonnull
+  private static IValidationExecutorSetStatus _createStatus (final boolean bIsDeprecated)
+  {
+    return ValidationExecutorSetStatus.createDeprecatedNow (bIsDeprecated);
+  }
+
   public static void init (@Nonnull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
   {
     ValueEnforcer.notNull (aRegistry, "Registry");
@@ -74,7 +82,7 @@ public final class PeppolValidationDirectory
                                                                     _getCL ());
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_BUSINESS_CARD_V1,
                                                                              "Peppol Directory BusinessCard v1",
-                                                                             bDeprecated,
+                                                                             _createStatus (bDeprecated),
                                                                              ValidationExecutorXSD.create (DIRECTORY_V1)));
     }
 
@@ -85,7 +93,7 @@ public final class PeppolValidationDirectory
                                                                     _getCL ());
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_BUSINESS_CARD_V2,
                                                                              "Peppol Directory BusinessCard v2",
-                                                                             bDeprecated,
+                                                                             _createStatus (bDeprecated),
                                                                              ValidationExecutorXSD.create (DIRECTORY_V2)));
     }
 
@@ -96,7 +104,7 @@ public final class PeppolValidationDirectory
                                                                     _getCL ());
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_BUSINESS_CARD_V3,
                                                                              "Peppol Directory BusinessCard v3",
-                                                                             bNotDeprecated,
+                                                                             _createStatus (bNotDeprecated),
                                                                              ValidationExecutorXSD.create (DIRECTORY_V3)));
     }
   }

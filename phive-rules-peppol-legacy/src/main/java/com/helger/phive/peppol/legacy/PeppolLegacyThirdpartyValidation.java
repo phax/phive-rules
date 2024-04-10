@@ -24,6 +24,8 @@ import com.helger.diver.api.version.VESID;
 import com.helger.phive.api.executorset.IValidationExecutorSet;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
 import com.helger.phive.api.executorset.ValidationExecutorSet;
+import com.helger.phive.api.executorset.status.IValidationExecutorSetStatus;
+import com.helger.phive.api.executorset.status.ValidationExecutorSetStatus;
 import com.helger.phive.xml.schematron.SchematronNamespaceBeautifier;
 import com.helger.phive.xml.schematron.ValidationExecutorSchematron;
 import com.helger.phive.xml.source.IValidationSourceXML;
@@ -31,6 +33,7 @@ import com.helger.ubl21.UBL21Marshaller;
 import com.helger.ubl21.UBL21NamespaceContext;
 import com.helger.xml.namespace.MapBasedNamespaceContext;
 
+@Deprecated
 public class PeppolLegacyThirdpartyValidation
 {
   @Nonnull
@@ -64,7 +67,12 @@ public class PeppolLegacyThirdpartyValidation
   private PeppolLegacyThirdpartyValidation ()
   {}
 
-  @SuppressWarnings ("deprecation")
+  @Nonnull
+  private static IValidationExecutorSetStatus _createStatus (final boolean bIsDeprecated)
+  {
+    return ValidationExecutorSetStatus.createDeprecatedNow (bIsDeprecated);
+  }
+
   public static void init (@Nonnull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
   {
     ValueEnforcer.notNull (aRegistry, "Registry");
@@ -91,7 +99,7 @@ public class PeppolLegacyThirdpartyValidation
     final IValidationExecutorSet <IValidationSourceXML> aVESInvoiceAT = ValidationExecutorSet.createDerived (aVESInvoice,
                                                                                                              VID_OPENPEPPOL_T10_AT_NAT,
                                                                                                              "OpenPeppol Invoice (Austria)",
-                                                                                                             bDeprecated,
+                                                                                                             _createStatus (bDeprecated),
                                                                                                              ValidationExecutorSchematron.createXSLT (INVOICE_AT_NAT,
                                                                                                                                                       sPreReqInvoice,
                                                                                                                                                       aNSCtxInvoice));
@@ -99,7 +107,7 @@ public class PeppolLegacyThirdpartyValidation
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.createDerived (aVESInvoiceAT,
                                                                                   VID_OPENPEPPOL_T10_AT_GOV,
                                                                                   "OpenPeppol Invoice (Austrian Government)",
-                                                                                  bDeprecated,
+                                                                                  _createStatus (bDeprecated),
                                                                                   ValidationExecutorSchematron.createXSLT (INVOICE_AT_GOV,
                                                                                                                            sPreReqInvoice,
                                                                                                                            aNSCtxInvoice)));
@@ -108,7 +116,7 @@ public class PeppolLegacyThirdpartyValidation
     final IValidationExecutorSet <IValidationSourceXML> aVESCreditNoteAT = ValidationExecutorSet.createDerived (aVESCreditNote,
                                                                                                                 VID_OPENPEPPOL_T14_AT_NAT,
                                                                                                                 "OpenPeppol Credit Note (Austria)",
-                                                                                                                bDeprecated,
+                                                                                                                _createStatus (bDeprecated),
                                                                                                                 ValidationExecutorSchematron.createXSLT (CREDIT_NOTE_AT_NAT,
                                                                                                                                                          sPreReqCreditNote,
                                                                                                                                                          aNSCtxCreditNote));
@@ -116,7 +124,7 @@ public class PeppolLegacyThirdpartyValidation
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.createDerived (aVESCreditNoteAT,
                                                                                   VID_OPENPEPPOL_T14_AT_GOV,
                                                                                   "OpenPeppol Credit Note (Austrian Government)",
-                                                                                  bDeprecated,
+                                                                                  _createStatus (bDeprecated),
                                                                                   ValidationExecutorSchematron.createXSLT (CREDIT_NOTE_AT_GOV,
                                                                                                                            sPreReqCreditNote,
                                                                                                                            aNSCtxCreditNote)));

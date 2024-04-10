@@ -24,6 +24,8 @@ import com.helger.commons.io.resource.ClassPathResource;
 import com.helger.diver.api.version.VESID;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
 import com.helger.phive.api.executorset.ValidationExecutorSet;
+import com.helger.phive.api.executorset.status.IValidationExecutorSetStatus;
+import com.helger.phive.api.executorset.status.ValidationExecutorSetStatus;
 import com.helger.phive.xml.source.IValidationSourceXML;
 import com.helger.phive.xml.xsd.ValidationExecutorXSD;
 
@@ -51,6 +53,12 @@ public final class FinvoiceValidation
     return FinvoiceValidation.class.getClassLoader ();
   }
 
+  @Nonnull
+  private static IValidationExecutorSetStatus _createStatus (final boolean bIsDeprecated)
+  {
+    return ValidationExecutorSetStatus.createDeprecatedNow (bIsDeprecated);
+  }
+
   /**
    * Register all standard Finvoice validation execution sets to the provided
    * registry.
@@ -70,28 +78,28 @@ public final class FinvoiceValidation
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_FINVOICE_13,
                                                                            "Finvoice " +
                                                                                             VID_FINVOICE_13.getVersionString (),
-                                                                           bNotDeprecated,
+                                                                           _createStatus (bNotDeprecated),
                                                                            ValidationExecutorXSD.create (new ClassPathResource (sPrefix +
                                                                                                                                 "Finvoice1.3.xsd",
                                                                                                                                 _getCL ()))));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_FINVOICE_20,
                                                                            "Finvoice " +
                                                                                             VID_FINVOICE_20.getVersionString (),
-                                                                           bNotDeprecated,
+                                                                           _createStatus (bNotDeprecated),
                                                                            ValidationExecutorXSD.create (new ClassPathResource (sPrefix +
                                                                                                                                 "Finvoice2.0.xsd",
                                                                                                                                 _getCL ()))));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_FINVOICE_201,
                                                                            "Finvoice " +
                                                                                              VID_FINVOICE_201.getVersionString (),
-                                                                           bNotDeprecated,
+                                                                           _createStatus (bNotDeprecated),
                                                                            ValidationExecutorXSD.create (new ClassPathResource (sPrefix +
                                                                                                                                 "Finvoice2.01.xsd",
                                                                                                                                 _getCL ()))));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_FINVOICE_30,
                                                                            "Finvoice " +
                                                                                             VID_FINVOICE_30.getVersionString (),
-                                                                           bNotDeprecated,
+                                                                           _createStatus (bNotDeprecated),
                                                                            ValidationExecutorXSD.create (new ClassPathResource (sPrefix +
                                                                                                                                 "Finvoice3.0.xsd",
                                                                                                                                 _getCL ()))));

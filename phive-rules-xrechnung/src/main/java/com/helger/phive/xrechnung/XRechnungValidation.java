@@ -30,6 +30,8 @@ import com.helger.diver.api.version.VESID;
 import com.helger.phive.api.executorset.IValidationExecutorSet;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
 import com.helger.phive.api.executorset.ValidationExecutorSet;
+import com.helger.phive.api.executorset.status.IValidationExecutorSetStatus;
+import com.helger.phive.api.executorset.status.ValidationExecutorSetStatus;
 import com.helger.phive.en16931.EN16931Validation;
 import com.helger.phive.xml.schematron.ValidationExecutorSchematron;
 import com.helger.phive.xml.source.IValidationSourceXML;
@@ -120,6 +122,12 @@ public final class XRechnungValidation
     return XRechnungValidation.class.getClassLoader ();
   }
 
+  @Nonnull
+  private static IValidationExecutorSetStatus _createStatus (final boolean bIsDeprecated)
+  {
+    return ValidationExecutorSetStatus.createDeprecatedNow (bIsDeprecated);
+  }
+
   /**
    * Register all standard XRechnung validation execution sets to the provided
    * registry. Make sure to register the EN16931 artefacts before you register
@@ -164,7 +172,7 @@ public final class XRechnungValidation
                                                                                     VID_XRECHNUNG_CII_120,
                                                                                     "XRechnung CII " +
                                                                                                            VID_XRECHNUNG_CII_120.getVersionString (),
-                                                                                    bDeprecated,
+                                                                                    _createStatus (bDeprecated),
                                                                                     ValidationExecutorSchematron.createXSLT (new ClassPathResource (sPrefix +
                                                                                                                                                     "1.2.0/XRechnung-CII-validation.xslt",
                                                                                                                                                     _getCL ()),
@@ -173,7 +181,7 @@ public final class XRechnungValidation
                                                                                     VID_XRECHNUNG_UBL_CREDITNOTE_120,
                                                                                     "XRechnung UBL Credit Note " +
                                                                                                                       VID_XRECHNUNG_UBL_CREDITNOTE_120.getVersionString (),
-                                                                                    bDeprecated,
+                                                                                    _createStatus (bDeprecated),
                                                                                     ValidationExecutorSchematron.createXSLT (new ClassPathResource (sPrefix +
                                                                                                                                                     "1.2.0/XRechnung-UBL-validation-CreditNote.xslt",
                                                                                                                                                     _getCL ()),
@@ -182,7 +190,7 @@ public final class XRechnungValidation
                                                                                     VID_XRECHNUNG_UBL_INVOICE_120,
                                                                                     "XRechnung UBL Invoice " +
                                                                                                                    VID_XRECHNUNG_UBL_INVOICE_120.getVersionString (),
-                                                                                    bDeprecated,
+                                                                                    _createStatus (bDeprecated),
                                                                                     ValidationExecutorSchematron.createXSLT (new ClassPathResource (sPrefix +
                                                                                                                                                     "1.2.0/XRechnung-UBL-validation-Invoice.xslt",
                                                                                                                                                     _getCL ()),
@@ -195,7 +203,7 @@ public final class XRechnungValidation
                                                                                     VID_XRECHNUNG_CII_121,
                                                                                     "XRechnung CII " +
                                                                                                            VID_XRECHNUNG_CII_121.getVersionString (),
-                                                                                    bDeprecated,
+                                                                                    _createStatus (bDeprecated),
                                                                                     ValidationExecutorSchematron.createXSLT (new ClassPathResource (sPrefix +
                                                                                                                                                     "1.2.1/XRechnung-CII-validation.xslt",
                                                                                                                                                     _getCL ()),
@@ -204,7 +212,7 @@ public final class XRechnungValidation
                                                                                     VID_XRECHNUNG_UBL_CREDITNOTE_121,
                                                                                     "XRechnung UBL Credit Note " +
                                                                                                                       VID_XRECHNUNG_UBL_CREDITNOTE_121.getVersionString (),
-                                                                                    bDeprecated,
+                                                                                    _createStatus (bDeprecated),
                                                                                     ValidationExecutorSchematron.createXSLT (new ClassPathResource (sPrefix +
                                                                                                                                                     "1.2.1/XRechnung-UBL-validation-CreditNote.xslt",
                                                                                                                                                     _getCL ()),
@@ -213,7 +221,7 @@ public final class XRechnungValidation
                                                                                     VID_XRECHNUNG_UBL_INVOICE_121,
                                                                                     "XRechnung UBL Invoice " +
                                                                                                                    VID_XRECHNUNG_UBL_INVOICE_121.getVersionString (),
-                                                                                    bDeprecated,
+                                                                                    _createStatus (bDeprecated),
                                                                                     ValidationExecutorSchematron.createXSLT (new ClassPathResource (sPrefix +
                                                                                                                                                     "1.2.1/XRechnung-UBL-validation-Invoice.xslt",
                                                                                                                                                     _getCL ()),
@@ -226,7 +234,7 @@ public final class XRechnungValidation
                                                                                     VID_XRECHNUNG_CII_122,
                                                                                     "XRechnung CII " +
                                                                                                            VID_XRECHNUNG_CII_122.getVersionString (),
-                                                                                    bDeprecated,
+                                                                                    _createStatus (bDeprecated),
                                                                                     ValidationExecutorSchematron.createXSLT (new ClassPathResource (sPrefix +
                                                                                                                                                     "1.2.2/XRechnung-CII-validation.xslt",
                                                                                                                                                     _getCL ()),
@@ -235,7 +243,7 @@ public final class XRechnungValidation
                                                                                     VID_XRECHNUNG_UBL_CREDITNOTE_122,
                                                                                     "XRechnung UBL Credit Note " +
                                                                                                                       VID_XRECHNUNG_UBL_CREDITNOTE_122.getVersionString (),
-                                                                                    bDeprecated,
+                                                                                    _createStatus (bDeprecated),
                                                                                     ValidationExecutorSchematron.createXSLT (new ClassPathResource (sPrefix +
                                                                                                                                                     "1.2.2/XRechnung-UBL-validation-CreditNote.xslt",
                                                                                                                                                     _getCL ()),
@@ -244,7 +252,7 @@ public final class XRechnungValidation
                                                                                     VID_XRECHNUNG_UBL_INVOICE_122,
                                                                                     "XRechnung UBL Invoice " +
                                                                                                                    VID_XRECHNUNG_UBL_INVOICE_122.getVersionString (),
-                                                                                    bDeprecated,
+                                                                                    _createStatus (bDeprecated),
                                                                                     ValidationExecutorSchematron.createXSLT (new ClassPathResource (sPrefix +
                                                                                                                                                     "1.2.2/XRechnung-UBL-validation-Invoice.xslt",
                                                                                                                                                     _getCL ()),
@@ -261,7 +269,7 @@ public final class XRechnungValidation
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_XRECHNUNG_CII_200,
                                                                              "XRechnung CII " +
                                                                                                     VID_XRECHNUNG_CII_200.getVersionString (),
-                                                                             bDeprecated,
+                                                                             _createStatus (bDeprecated),
                                                                              ValidationExecutorXSD.create (CCIID16B.getXSDResource ()),
                                                                              ValidationExecutorSchematron.createXSLT (EN16931Validation.INVOICE_CII_132_XSLT,
                                                                                                                       UBL21NamespaceContext.getInstance ())
@@ -273,7 +281,7 @@ public final class XRechnungValidation
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_XRECHNUNG_UBL_CREDITNOTE_200,
                                                                              "XRechnung UBL Credit Note " +
                                                                                                                VID_XRECHNUNG_UBL_CREDITNOTE_200.getVersionString (),
-                                                                             bDeprecated,
+                                                                             _createStatus (bDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
                                                                              ValidationExecutorSchematron.createXSLT (EN16931Validation.INVOICE_UBL_132_XSLT,
                                                                                                                       UBL21NamespaceContext.getInstance ())
@@ -285,7 +293,7 @@ public final class XRechnungValidation
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_XRECHNUNG_UBL_INVOICE_200,
                                                                              "XRechnung UBL Invoice " +
                                                                                                             VID_XRECHNUNG_UBL_INVOICE_200.getVersionString (),
-                                                                             bDeprecated,
+                                                                             _createStatus (bDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
                                                                              ValidationExecutorSchematron.createXSLT (EN16931Validation.INVOICE_UBL_132_XSLT,
                                                                                                                       UBL21NamespaceContext.getInstance ())
@@ -306,7 +314,7 @@ public final class XRechnungValidation
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_XRECHNUNG_CII_201,
                                                                              "XRechnung CII " +
                                                                                                     VID_XRECHNUNG_CII_201.getVersionString (),
-                                                                             bDeprecated,
+                                                                             _createStatus (bDeprecated),
                                                                              ValidationExecutorXSD.create (CCIID16B.getXSDResource ()),
                                                                              ValidationExecutorSchematron.createXSLT (EN16931Validation.INVOICE_CII_133_XSLT,
                                                                                                                       UBL21NamespaceContext.getInstance ())
@@ -318,7 +326,7 @@ public final class XRechnungValidation
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_XRECHNUNG_UBL_CREDITNOTE_201,
                                                                              "XRechnung UBL Credit Note " +
                                                                                                                VID_XRECHNUNG_UBL_CREDITNOTE_201.getVersionString (),
-                                                                             bDeprecated,
+                                                                             _createStatus (bDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
                                                                              ValidationExecutorSchematron.createXSLT (EN16931Validation.INVOICE_UBL_133_XSLT,
                                                                                                                       UBL21NamespaceContext.getInstance ())
@@ -330,7 +338,7 @@ public final class XRechnungValidation
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_XRECHNUNG_UBL_INVOICE_201,
                                                                              "XRechnung UBL Invoice " +
                                                                                                             VID_XRECHNUNG_UBL_INVOICE_201.getVersionString (),
-                                                                             bDeprecated,
+                                                                             _createStatus (bDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
                                                                              ValidationExecutorSchematron.createXSLT (EN16931Validation.INVOICE_UBL_133_XSLT,
                                                                                                                       UBL21NamespaceContext.getInstance ())
@@ -353,7 +361,7 @@ public final class XRechnungValidation
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_XRECHNUNG_CII_211,
                                                                              "XRechnung CII " +
                                                                                                     VID_XRECHNUNG_CII_211.getVersionString (),
-                                                                             bDeprecated,
+                                                                             _createStatus (bDeprecated),
                                                                              ValidationExecutorXSD.create (CCIID16B.getXSDResource ()),
                                                                              ValidationExecutorSchematron.createXSLT (EN16931Validation.INVOICE_CII_136A_XSLT,
                                                                                                                       UBL21NamespaceContext.getInstance ())
@@ -365,7 +373,7 @@ public final class XRechnungValidation
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_XRECHNUNG_UBL_CREDITNOTE_211,
                                                                              "XRechnung UBL Credit Note " +
                                                                                                                VID_XRECHNUNG_UBL_CREDITNOTE_211.getVersionString (),
-                                                                             bDeprecated,
+                                                                             _createStatus (bDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
                                                                              ValidationExecutorSchematron.createXSLT (EN16931Validation.INVOICE_UBL_136A_XSLT,
                                                                                                                       UBL21NamespaceContext.getInstance ())
@@ -377,7 +385,7 @@ public final class XRechnungValidation
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_XRECHNUNG_UBL_INVOICE_211,
                                                                              "XRechnung UBL Invoice " +
                                                                                                             VID_XRECHNUNG_UBL_INVOICE_211.getVersionString (),
-                                                                             bDeprecated,
+                                                                             _createStatus (bDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
                                                                              ValidationExecutorSchematron.createXSLT (EN16931Validation.INVOICE_UBL_136A_XSLT,
                                                                                                                       UBL21NamespaceContext.getInstance ())
@@ -398,7 +406,7 @@ public final class XRechnungValidation
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_XRECHNUNG_CII_220,
                                                                              "XRechnung CII " +
                                                                                                     VID_XRECHNUNG_CII_220.getVersionString (),
-                                                                             bNotDeprecated,
+                                                                             _createStatus (bNotDeprecated),
                                                                              ValidationExecutorXSD.create (CCIID16B.getXSDResource ()),
                                                                              ValidationExecutorSchematron.createXSLT (EN16931Validation.INVOICE_CII_137_XSLT,
                                                                                                                       UBL21NamespaceContext.getInstance ())
@@ -410,7 +418,7 @@ public final class XRechnungValidation
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_XRECHNUNG_UBL_CREDITNOTE_220,
                                                                              "XRechnung UBL Credit Note " +
                                                                                                                VID_XRECHNUNG_UBL_CREDITNOTE_220.getVersionString (),
-                                                                             bNotDeprecated,
+                                                                             _createStatus (bNotDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
                                                                              ValidationExecutorSchematron.createXSLT (EN16931Validation.INVOICE_UBL_137_XSLT,
                                                                                                                       UBL21NamespaceContext.getInstance ())
@@ -422,7 +430,7 @@ public final class XRechnungValidation
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_XRECHNUNG_UBL_INVOICE_220,
                                                                              "XRechnung UBL Invoice " +
                                                                                                             VID_XRECHNUNG_UBL_INVOICE_220.getVersionString (),
-                                                                             bNotDeprecated,
+                                                                             _createStatus (bNotDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
                                                                              ValidationExecutorSchematron.createXSLT (EN16931Validation.INVOICE_UBL_137_XSLT,
                                                                                                                       UBL21NamespaceContext.getInstance ())
@@ -442,7 +450,7 @@ public final class XRechnungValidation
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_XRECHNUNG_CII_231,
                                                                              "XRechnung CII " +
                                                                                                     VID_XRECHNUNG_CII_231.getVersionString (),
-                                                                             bNotDeprecated,
+                                                                             _createStatus (bNotDeprecated),
                                                                              ValidationExecutorXSD.create (CCIID16B.getXSDResource ()),
                                                                              ValidationExecutorSchematron.createXSLT (EN16931Validation.INVOICE_CII_139_XSLT,
                                                                                                                       UBL21NamespaceContext.getInstance ())
@@ -454,7 +462,7 @@ public final class XRechnungValidation
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_XRECHNUNG_UBL_CREDITNOTE_231,
                                                                              "XRechnung UBL Credit Note " +
                                                                                                                VID_XRECHNUNG_UBL_CREDITNOTE_231.getVersionString (),
-                                                                             bNotDeprecated,
+                                                                             _createStatus (bNotDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
                                                                              ValidationExecutorSchematron.createXSLT (EN16931Validation.INVOICE_UBL_139_XSLT,
                                                                                                                       UBL21NamespaceContext.getInstance ())
@@ -466,7 +474,7 @@ public final class XRechnungValidation
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_XRECHNUNG_UBL_INVOICE_231,
                                                                              "XRechnung UBL Invoice " +
                                                                                                             VID_XRECHNUNG_UBL_INVOICE_231.getVersionString (),
-                                                                             bNotDeprecated,
+                                                                             _createStatus (bNotDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
                                                                              ValidationExecutorSchematron.createXSLT (EN16931Validation.INVOICE_UBL_139_XSLT,
                                                                                                                       UBL21NamespaceContext.getInstance ())
@@ -486,7 +494,7 @@ public final class XRechnungValidation
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_XRECHNUNG_CII_301,
                                                                              "XRechnung CII " +
                                                                                                     VID_XRECHNUNG_CII_301.getVersionString (),
-                                                                             bNotDeprecated,
+                                                                             _createStatus (bNotDeprecated),
                                                                              ValidationExecutorXSD.create (CCIID16B.getXSDResource ()),
                                                                              ValidationExecutorSchematron.createXSLT (EN16931Validation.INVOICE_CII_1311_XSLT,
                                                                                                                       UBL21NamespaceContext.getInstance ())
@@ -498,7 +506,7 @@ public final class XRechnungValidation
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_XRECHNUNG_UBL_CREDITNOTE_301,
                                                                              "XRechnung UBL Credit Note " +
                                                                                                                VID_XRECHNUNG_UBL_CREDITNOTE_301.getVersionString (),
-                                                                             bNotDeprecated,
+                                                                             _createStatus (bNotDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
                                                                              ValidationExecutorSchematron.createXSLT (EN16931Validation.INVOICE_UBL_1311_XSLT,
                                                                                                                       UBL21NamespaceContext.getInstance ())
@@ -510,7 +518,7 @@ public final class XRechnungValidation
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_XRECHNUNG_UBL_INVOICE_301,
                                                                              "XRechnung UBL Invoice " +
                                                                                                             VID_XRECHNUNG_UBL_INVOICE_301.getVersionString (),
-                                                                             bNotDeprecated,
+                                                                             _createStatus (bNotDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
                                                                              ValidationExecutorSchematron.createXSLT (EN16931Validation.INVOICE_UBL_1311_XSLT,
                                                                                                                       UBL21NamespaceContext.getInstance ())

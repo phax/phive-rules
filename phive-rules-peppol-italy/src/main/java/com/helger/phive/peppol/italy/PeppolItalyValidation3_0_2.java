@@ -25,6 +25,8 @@ import com.helger.commons.io.resource.IReadableResource;
 import com.helger.diver.api.version.VESID;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
 import com.helger.phive.api.executorset.ValidationExecutorSet;
+import com.helger.phive.api.executorset.status.IValidationExecutorSetStatus;
+import com.helger.phive.api.executorset.status.ValidationExecutorSetStatus;
 import com.helger.phive.xml.schematron.ValidationExecutorSchematron;
 import com.helger.phive.xml.source.IValidationSourceXML;
 import com.helger.phive.xml.xsd.ValidationExecutorXSD;
@@ -84,6 +86,12 @@ public final class PeppolItalyValidation3_0_2
     return ValidationExecutorSchematron.createXSLT (aRes, aNamespaceContext);
   }
 
+  @Nonnull
+  private static IValidationExecutorSetStatus _createStatus (final boolean bIsDeprecated)
+  {
+    return ValidationExecutorSetStatus.createDeprecatedNow (bIsDeprecated);
+  }
+
   public static void init (@Nonnull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
   {
     ValueEnforcer.notNull (aRegistry, "Registry");
@@ -97,7 +105,7 @@ public final class PeppolItalyValidation3_0_2
                                                                            "AGID Peppol Despatch Advice" +
                                                                                                 sVersion +
                                                                                                 sAkaVersionBIS,
-                                                                           bNotDeprecated,
+                                                                           _createStatus (bNotDeprecated),
                                                                            ValidationExecutorXSD.create (UBL21Marshaller.getAllDespatchAdviceXSDs ()),
                                                                            _createXSLT (DESPATCH_ADVICE,
                                                                                         PeppolItalyValidation.createUBLNSContext (UBL21Marshaller.despatchAdvice ()
@@ -106,7 +114,7 @@ public final class PeppolItalyValidation3_0_2
                                                                            "AGID Peppol Invoice" +
                                                                                         sVersion +
                                                                                         sAkaVersionBIS,
-                                                                           bNotDeprecated,
+                                                                           _createStatus (bNotDeprecated),
                                                                            ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
                                                                            _createXSLT (INVOICE,
                                                                                         PeppolItalyValidation.createUBLNSContext (UBL21Marshaller.invoice ()
@@ -115,7 +123,7 @@ public final class PeppolItalyValidation3_0_2
                                                                            "AGID Peppol Credit Note" +
                                                                                             sVersion +
                                                                                             sAkaVersionBIS,
-                                                                           bNotDeprecated,
+                                                                           _createStatus (bNotDeprecated),
                                                                            ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
                                                                            _createXSLT (INVOICE,
                                                                                         PeppolItalyValidation.createUBLNSContext (UBL21Marshaller.creditNote ()
@@ -124,7 +132,7 @@ public final class PeppolItalyValidation3_0_2
                                                                            "AGID Peppol Order" +
                                                                                       sVersion +
                                                                                       sAkaVersionBIS,
-                                                                           bNotDeprecated,
+                                                                           _createStatus (bNotDeprecated),
                                                                            ValidationExecutorXSD.create (UBL21Marshaller.getAllOrderXSDs ()),
                                                                            _createXSLT (ORDER,
                                                                                         PeppolItalyValidation.createUBLNSContext (UBL21Marshaller.order ()
@@ -133,7 +141,7 @@ public final class PeppolItalyValidation3_0_2
                                                                            "AGID Peppol Order Agreement" +
                                                                                                 sVersion +
                                                                                                 sAkaVersionBIS,
-                                                                           bNotDeprecated,
+                                                                           _createStatus (bNotDeprecated),
                                                                            ValidationExecutorXSD.create (UBL21Marshaller.getAllOrderResponseXSDs ()),
                                                                            _createXSLT (ORDER_AGREEMENT,
                                                                                         PeppolItalyValidation.createUBLNSContext (UBL21Marshaller.orderResponse ()
@@ -142,7 +150,7 @@ public final class PeppolItalyValidation3_0_2
                                                                            "AGID Peppol Order Response" +
                                                                                                sVersion +
                                                                                                sAkaVersionBIS,
-                                                                           bNotDeprecated,
+                                                                           _createStatus (bNotDeprecated),
                                                                            ValidationExecutorXSD.create (UBL21Marshaller.getAllOrderResponseXSDs ()),
                                                                            _createXSLT (ORDER_RESPONSE,
                                                                                         PeppolItalyValidation.createUBLNSContext (UBL21Marshaller.orderResponse ()

@@ -24,6 +24,8 @@ import com.helger.diver.api.version.VESID;
 import com.helger.ebinterface.CEbInterface;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
 import com.helger.phive.api.executorset.ValidationExecutorSet;
+import com.helger.phive.api.executorset.status.IValidationExecutorSetStatus;
+import com.helger.phive.api.executorset.status.ValidationExecutorSetStatus;
 import com.helger.phive.xml.source.IValidationSourceXML;
 import com.helger.phive.xml.xsd.ValidationExecutorXSD;
 
@@ -50,6 +52,12 @@ public final class EbInterfaceValidation
   private EbInterfaceValidation ()
   {}
 
+  @Nonnull
+  private static IValidationExecutorSetStatus _createStatus (final boolean bIsDeprecated)
+  {
+    return ValidationExecutorSetStatus.createDeprecatedNow (bIsDeprecated);
+  }
+
   /**
    * Register all standard ebInterface validation execution sets to the provided
    * registry.
@@ -67,39 +75,39 @@ public final class EbInterfaceValidation
     // No Schematrons here
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_EBI_30,
                                                                            "ebInterface 3.0",
-                                                                           bDeprecated,
+                                                                           _createStatus (bDeprecated),
                                                                            ValidationExecutorXSD.create (CEbInterface.EBINTERFACE_30_XSDS)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_EBI_302,
                                                                            "ebInterface 3.0.2",
-                                                                           bDeprecated,
+                                                                           _createStatus (bDeprecated),
                                                                            ValidationExecutorXSD.create (CEbInterface.EBINTERFACE_302_XSDS)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_EBI_40,
                                                                            "ebInterface 4.0",
-                                                                           bDeprecated,
+                                                                           _createStatus (bDeprecated),
                                                                            ValidationExecutorXSD.create (CEbInterface.EBINTERFACE_40_XSDS)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_EBI_41,
                                                                            "ebInterface 4.1",
-                                                                           bDeprecated,
+                                                                           _createStatus (bDeprecated),
                                                                            ValidationExecutorXSD.create (CEbInterface.EBINTERFACE_41_XSDS)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_EBI_42,
                                                                            "ebInterface 4.2",
-                                                                           bDeprecated,
+                                                                           _createStatus (bDeprecated),
                                                                            ValidationExecutorXSD.create (CEbInterface.EBINTERFACE_42_XSDS)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_EBI_43,
                                                                            "ebInterface 4.3",
-                                                                           bNotDeprecated,
+                                                                           _createStatus (bNotDeprecated),
                                                                            ValidationExecutorXSD.create (CEbInterface.EBINTERFACE_43_XSDS)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_EBI_50,
                                                                            "ebInterface 5.0",
-                                                                           bNotDeprecated,
+                                                                           _createStatus (bNotDeprecated),
                                                                            ValidationExecutorXSD.create (CEbInterface.EBINTERFACE_50_XSDS)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_EBI_60,
                                                                            "ebInterface 6.0",
-                                                                           bNotDeprecated,
+                                                                           _createStatus (bNotDeprecated),
                                                                            ValidationExecutorXSD.create (CEbInterface.EBINTERFACE_60_XSDS)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_EBI_61,
                                                                            "ebInterface 6.1",
-                                                                           bNotDeprecated,
+                                                                           _createStatus (bNotDeprecated),
                                                                            ValidationExecutorXSD.create (CEbInterface.EBINTERFACE_61_XSDS)));
   }
 }

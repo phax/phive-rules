@@ -24,6 +24,8 @@ import com.helger.commons.io.resource.ClassPathResource;
 import com.helger.diver.api.version.VESID;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
 import com.helger.phive.api.executorset.ValidationExecutorSet;
+import com.helger.phive.api.executorset.status.IValidationExecutorSetStatus;
+import com.helger.phive.api.executorset.status.ValidationExecutorSetStatus;
 import com.helger.phive.xml.schematron.ValidationExecutorSchematron;
 import com.helger.phive.xml.source.IValidationSourceXML;
 import com.helger.phive.xml.xsd.ValidationExecutorXSD;
@@ -77,6 +79,12 @@ public final class SvefakturaValidation
     return ValidationExecutorSchematron.createXSLT (aRes, NS_CTX);
   }
 
+  @Nonnull
+  private static IValidationExecutorSetStatus _createStatus (final boolean bIsDeprecated)
+  {
+    return ValidationExecutorSetStatus.createDeprecatedNow (bIsDeprecated);
+  }
+
   /**
    * Register all standard Svefaktura validation execution sets to the provided
    * registry.
@@ -93,7 +101,7 @@ public final class SvefakturaValidation
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_SVEFAKTURA_10,
                                                                            "SvefakturaXML " +
                                                                                               VID_SVEFAKTURA_10.getVersionString (),
-                                                                           bNotDeprecated,
+                                                                           _createStatus (bNotDeprecated),
                                                                            ValidationExecutorXSD.create (new ClassPathResource ("/external/schemas/1.0/maindoc/SFTI-BasicInvoice-1.0.xsd",
                                                                                                                                 _getCL ())),
                                                                            _createXSLT (new ClassPathResource ("/external/schemas/1.0/svenfaktura-1.0-sch.xslt",
@@ -103,7 +111,7 @@ public final class SvefakturaValidation
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OBJECT_ENVELOPE_10,
                                                                            "SvefakturaXML ObjectEnvelope " +
                                                                                                    VID_OBJECT_ENVELOPE_10.getVersionString (),
-                                                                           bNotDeprecated,
+                                                                           _createStatus (bNotDeprecated),
                                                                            ValidationExecutorXSD.create (new ClassPathResource ("/external/schemas/1.0/maindoc/SFTI-ObjectEnvelope-1.0.xsd",
                                                                                                                                 _getCL ()))));
   }

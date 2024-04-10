@@ -25,6 +25,8 @@ import com.helger.commons.io.resource.IReadableResource;
 import com.helger.diver.api.version.VESID;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
 import com.helger.phive.api.executorset.ValidationExecutorSet;
+import com.helger.phive.api.executorset.status.IValidationExecutorSetStatus;
+import com.helger.phive.api.executorset.status.ValidationExecutorSetStatus;
 import com.helger.phive.xml.schematron.SchematronNamespaceBeautifier;
 import com.helger.phive.xml.schematron.ValidationExecutorSchematron;
 import com.helger.phive.xml.source.IValidationSourceXML;
@@ -96,6 +98,12 @@ public final class OIOUBLLegacyValidation
     return ValidationExecutorSchematron.createOIOUBL (aRes, UBL20NamespaceContext.getInstance ());
   }
 
+  @Nonnull
+  private static IValidationExecutorSetStatus _createStatus (final boolean bIsDeprecated)
+  {
+    return ValidationExecutorSetStatus.createDeprecatedNow (bIsDeprecated);
+  }
+
   /**
    * Register all legacy OIOUBL validation execution sets to the provided
    * registry.
@@ -118,7 +126,7 @@ public final class OIOUBLLegacyValidation
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OIOUBL_APPLICATION_RESPONSE,
                                                                              "OIOUBL Application Response " +
                                                                                                               VID_OIOUBL_APPLICATION_RESPONSE.getVersionString (),
-                                                                             bDeprecated,
+                                                                             _createStatus (bDeprecated),
                                                                              ValidationExecutorXSD.create (UBL20Marshaller.getAllApplicationResponseXSDs ()),
                                                                              _createOIOUBL (new ClassPathResource (sPath202 +
                                                                                                                    "OIOUBL_ApplicationResponse_Schematron.xsl",
@@ -126,7 +134,7 @@ public final class OIOUBLLegacyValidation
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OIOUBL_CATALOGUE,
                                                                              "OIOUBL Catalogue " +
                                                                                                    VID_OIOUBL_CATALOGUE.getVersionString (),
-                                                                             bDeprecated,
+                                                                             _createStatus (bDeprecated),
                                                                              ValidationExecutorXSD.create (UBL20Marshaller.getAllCatalogueXSDs ()),
                                                                              _createOIOUBL (new ClassPathResource (sPath202 +
                                                                                                                    "OIOUBL_Catalogue_Schematron.xsl",
@@ -134,7 +142,7 @@ public final class OIOUBLLegacyValidation
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OIOUBL_CATALOGUE_DELETION,
                                                                              "OIOUBL Catalogue Deletion " +
                                                                                                             VID_OIOUBL_CATALOGUE_DELETION.getVersionString (),
-                                                                             bDeprecated,
+                                                                             _createStatus (bDeprecated),
                                                                              ValidationExecutorXSD.create (UBL20Marshaller.getAllCatalogueDeletionXSDs ()),
                                                                              _createOIOUBL (new ClassPathResource (sPath202 +
                                                                                                                    "OIOUBL_CatalogueDeletion_Schematron.xsl",
@@ -142,7 +150,7 @@ public final class OIOUBLLegacyValidation
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OIOUBL_CATALOGUE_ITEM_SPECIFICATION_UPDATE,
                                                                              "OIOUBL Catalogue Item Specification Update " +
                                                                                                                              VID_OIOUBL_CATALOGUE_ITEM_SPECIFICATION_UPDATE.getVersionString (),
-                                                                             bDeprecated,
+                                                                             _createStatus (bDeprecated),
                                                                              ValidationExecutorXSD.create (UBL20Marshaller.getAllCatalogueItemSpecificationUpdateXSDs ()),
                                                                              _createOIOUBL (new ClassPathResource (sPath202 +
                                                                                                                    "OIOUBL_CatalogueItemSpecificationUpdate_Schematron.xsl",
@@ -150,7 +158,7 @@ public final class OIOUBLLegacyValidation
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OIOUBL_CATALOGUE_PRICING_UPDATE,
                                                                              "OIOUBL Catalogue Pricing Update " +
                                                                                                                   VID_OIOUBL_CATALOGUE_PRICING_UPDATE.getVersionString (),
-                                                                             bDeprecated,
+                                                                             _createStatus (bDeprecated),
                                                                              ValidationExecutorXSD.create (UBL20Marshaller.getAllCataloguePricingUpdateXSDs ()),
                                                                              _createOIOUBL (new ClassPathResource (sPath202 +
                                                                                                                    "OIOUBL_CataloguePricingUpdate_Schematron.xsl",
@@ -158,7 +166,7 @@ public final class OIOUBLLegacyValidation
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OIOUBL_CATALOGUE_REQUEST,
                                                                              "OIOUBL Catalogue Request " +
                                                                                                            VID_OIOUBL_CATALOGUE_REQUEST.getVersionString (),
-                                                                             bDeprecated,
+                                                                             _createStatus (bDeprecated),
                                                                              ValidationExecutorXSD.create (UBL20Marshaller.getAllCatalogueRequestXSDs ()),
                                                                              _createOIOUBL (new ClassPathResource (sPath202 +
                                                                                                                    "OIOUBL_CatalogueRequest_Schematron.xsl",
@@ -166,7 +174,7 @@ public final class OIOUBLLegacyValidation
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OIOUBL_CREDIT_NOTE,
                                                                              "OIOUBL Credit Note " +
                                                                                                      VID_OIOUBL_CREDIT_NOTE.getVersionString (),
-                                                                             bDeprecated,
+                                                                             _createStatus (bDeprecated),
                                                                              ValidationExecutorXSD.create (UBL20Marshaller.getAllCreditNoteXSDs ()),
                                                                              _createOIOUBL (new ClassPathResource (sPath202 +
                                                                                                                    "OIOUBL_CreditNote_Schematron.xsl",
@@ -174,7 +182,7 @@ public final class OIOUBLLegacyValidation
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OIOUBL_INVOICE,
                                                                              "OIOUBL Invoice " +
                                                                                                  VID_OIOUBL_INVOICE.getVersionString (),
-                                                                             bDeprecated,
+                                                                             _createStatus (bDeprecated),
                                                                              ValidationExecutorXSD.create (UBL20Marshaller.getAllInvoiceXSDs ()),
                                                                              _createOIOUBL (new ClassPathResource (sPath202 +
                                                                                                                    "OIOUBL_Invoice_Schematron.xsl",
@@ -182,7 +190,7 @@ public final class OIOUBLLegacyValidation
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OIOUBL_ORDER,
                                                                              "OIOUBL Order " +
                                                                                                VID_OIOUBL_ORDER.getVersionString (),
-                                                                             bDeprecated,
+                                                                             _createStatus (bDeprecated),
                                                                              ValidationExecutorXSD.create (UBL20Marshaller.getAllOrderXSDs ()),
                                                                              _createOIOUBL (new ClassPathResource (sPath202 +
                                                                                                                    "OIOUBL_Order_Schematron.xsl",
@@ -190,7 +198,7 @@ public final class OIOUBLLegacyValidation
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OIOUBL_ORDER_CANCELLATION,
                                                                              "OIOUBL Order Cancellation " +
                                                                                                             VID_OIOUBL_ORDER_CANCELLATION.getVersionString (),
-                                                                             bDeprecated,
+                                                                             _createStatus (bDeprecated),
                                                                              ValidationExecutorXSD.create (UBL20Marshaller.getAllOrderCancellationXSDs ()),
                                                                              _createOIOUBL (new ClassPathResource (sPath202 +
                                                                                                                    "OIOUBL_OrderCancellation_Schematron.xsl",
@@ -198,7 +206,7 @@ public final class OIOUBLLegacyValidation
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OIOUBL_ORDER_CHANGE,
                                                                              "OIOUBL Order Change " +
                                                                                                       VID_OIOUBL_ORDER_CHANGE.getVersionString (),
-                                                                             bDeprecated,
+                                                                             _createStatus (bDeprecated),
                                                                              ValidationExecutorXSD.create (UBL20Marshaller.getAllOrderChangeXSDs ()),
                                                                              _createOIOUBL (new ClassPathResource (sPath202 +
                                                                                                                    "OIOUBL_OrderChange_Schematron.xsl",
@@ -206,7 +214,7 @@ public final class OIOUBLLegacyValidation
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OIOUBL_ORDER_RESPONSE,
                                                                              "OIOUBL Order Response " +
                                                                                                         VID_OIOUBL_ORDER_RESPONSE.getVersionString (),
-                                                                             bDeprecated,
+                                                                             _createStatus (bDeprecated),
                                                                              ValidationExecutorXSD.create (UBL20Marshaller.getAllOrderResponseXSDs ()),
                                                                              _createOIOUBL (new ClassPathResource (sPath202 +
                                                                                                                    "OIOUBL_OrderResponse_Schematron.xsl",
@@ -214,7 +222,7 @@ public final class OIOUBLLegacyValidation
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OIOUBL_ORDER_RESPONSE_SIMPLE,
                                                                              "OIOUBL Order Response Simple " +
                                                                                                                VID_OIOUBL_ORDER_RESPONSE_SIMPLE.getVersionString (),
-                                                                             bDeprecated,
+                                                                             _createStatus (bDeprecated),
                                                                              ValidationExecutorXSD.create (UBL20Marshaller.getAllOrderResponseSimpleXSDs ()),
                                                                              _createOIOUBL (new ClassPathResource (sPath202 +
                                                                                                                    "OIOUBL_OrderResponseSimple_Schematron.xsl",
@@ -222,7 +230,7 @@ public final class OIOUBLLegacyValidation
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OIOUBL_REMINDER,
                                                                              "OIOUBL Reminder " +
                                                                                                   VID_OIOUBL_REMINDER.getVersionString (),
-                                                                             bDeprecated,
+                                                                             _createStatus (bDeprecated),
                                                                              ValidationExecutorXSD.create (UBL20Marshaller.getAllReminderXSDs ()),
                                                                              _createOIOUBL (new ClassPathResource (sPath202 +
                                                                                                                    "OIOUBL_Reminder_Schematron.xsl",
@@ -230,7 +238,7 @@ public final class OIOUBLLegacyValidation
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OIOUBL_STATEMENT,
                                                                              "OIOUBL Statement " +
                                                                                                    VID_OIOUBL_STATEMENT.getVersionString (),
-                                                                             bDeprecated,
+                                                                             _createStatus (bDeprecated),
                                                                              ValidationExecutorXSD.create (UBL20Marshaller.getAllStatementXSDs ()),
                                                                              _createOIOUBL (new ClassPathResource (sPath202 +
                                                                                                                    "OIOUBL_Statement_Schematron.xsl",

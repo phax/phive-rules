@@ -25,6 +25,8 @@ import com.helger.commons.io.resource.IReadableResource;
 import com.helger.diver.api.version.VESID;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
 import com.helger.phive.api.executorset.ValidationExecutorSet;
+import com.helger.phive.api.executorset.status.IValidationExecutorSetStatus;
+import com.helger.phive.api.executorset.status.ValidationExecutorSetStatus;
 import com.helger.phive.xml.schematron.ValidationExecutorSchematron;
 import com.helger.phive.xml.source.IValidationSourceXML;
 import com.helger.phive.xml.xsd.ValidationExecutorXSD;
@@ -64,6 +66,12 @@ public final class SETUValidation
     return ValidationExecutorSchematron.createXSLT (aRes, NS_CTX.getClone ());
   }
 
+  @Nonnull
+  private static IValidationExecutorSetStatus _createStatus (final boolean bIsDeprecated)
+  {
+    return ValidationExecutorSetStatus.createDeprecatedNow (bIsDeprecated);
+  }
+
   /**
    * Register all standard SETU validation execution sets to the provided
    * registry.
@@ -94,7 +102,7 @@ public final class SETUValidation
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_TIMECARD_14,
                                                                            "SETU Timcard " +
                                                                                             VID_TIMECARD_14.getVersionString (),
-                                                                           bNotDeprecated,
+                                                                           _createStatus (bNotDeprecated),
                                                                            ValidationExecutorXSD.create (CXML_XSD.getXSDResource (),
                                                                                                          new ClassPathResource ("/external/schemas/hr-xml-2007/SIDES/TimeCardAdditionalData.xsd",
                                                                                                                                 _getCL ()),
