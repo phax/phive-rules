@@ -18,6 +18,7 @@ package com.helger.phive.peppol.legacy;
 
 import java.time.LocalDate;
 import java.time.Month;
+import java.time.OffsetDateTime;
 
 import javax.annotation.Nonnull;
 import javax.annotation.concurrent.Immutable;
@@ -25,6 +26,7 @@ import javax.annotation.concurrent.Immutable;
 import com.helger.cii.d16b.CCIID16B;
 import com.helger.cii.d16b.CIID16BNamespaceContext;
 import com.helger.commons.ValueEnforcer;
+import com.helger.commons.collection.impl.ICommonsList;
 import com.helger.commons.datetime.PDTFactory;
 import com.helger.commons.io.resource.ClassPathResource;
 import com.helger.commons.io.resource.IReadableResource;
@@ -32,8 +34,11 @@ import com.helger.commons.version.Version;
 import com.helger.diver.api.version.VESID;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
 import com.helger.phive.api.executorset.ValidationExecutorSet;
+import com.helger.phive.api.executorset.status.EValidationExecutorStatusType;
 import com.helger.phive.api.executorset.status.IValidationExecutorSetStatus;
 import com.helger.phive.api.executorset.status.ValidationExecutorSetStatus;
+import com.helger.phive.api.executorset.status.ValidationExecutorSetStatusHistoryItem;
+import com.helger.phive.peppol.PeppolValidation2023_05;
 import com.helger.phive.xml.schematron.ValidationExecutorSchematron;
 import com.helger.phive.xml.source.IValidationSourceXML;
 import com.helger.phive.xml.xsd.ValidationExecutorXSD;
@@ -55,6 +60,7 @@ public final class PeppolValidation3_15_0
   public static final Version PEPPOL_VALIDATION_ARTEFACT_VERSION = new Version (3, 15, 0);
   public static final String VERSION_STR = PEPPOL_VALIDATION_ARTEFACT_VERSION.getAsString (true);
   public static final LocalDate VALID_PER = PDTFactory.createLocalDate (2023, Month.FEBRUARY, 6);
+  public static final OffsetDateTime VALID_PER_UTC = PDTFactory.createOffsetDateTimeUTC (VALID_PER);
 
   // Standard
   private static final String GROUP_ID = "eu.peppol.bis3";
@@ -99,7 +105,14 @@ public final class PeppolValidation3_15_0
   @Nonnull
   private static IValidationExecutorSetStatus _createStatus (final boolean bIsDeprecated)
   {
-    return ValidationExecutorSetStatus.createDeprecatedNow (bIsDeprecated);
+    return new ValidationExecutorSetStatus (PDTFactory.getCurrentOffsetDateTime (),
+                                            bIsDeprecated ? EValidationExecutorStatusType.DEPRECATED
+                                                          : EValidationExecutorStatusType.VALID,
+                                            VALID_PER_UTC,
+                                            PeppolValidation2023_05.VALID_PER_UTC,
+                                            (String) null,
+                                            (VESID) null,
+                                            (ICommonsList <ValidationExecutorSetStatusHistoryItem>) null);
   }
 
   public static void init (@Nonnull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)

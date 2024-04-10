@@ -74,7 +74,11 @@
       <groupId>com.helger.schematron</groupId>
       <artifactId>ph-schematron-pure</artifactId>
     </dependency>
-    
+    <dependency>
+      <groupId>com.helger.phive.rules</groupId>
+      <artifactId>phive-rules-peppol</artifactId>
+    </dependency>
+
     <dependency>
       <groupId>com.helger.peppol</groupId>
       <artifactId>peppol-testfiles</artifactId>
