@@ -116,7 +116,7 @@ public final class PeppolValidation2023_05
                                             bIsDeprecated ? EValidationExecutorStatusType.DEPRECATED
                                                           : EValidationExecutorStatusType.VALID,
                                             VALID_PER_UTC,
-                                            PeppolValidation2023_05.VALID_PER_UTC,
+                                            PeppolValidation2023_11.VALID_PER_UTC,
                                             (String) null,
                                             (VESID) null,
                                             (ICommonsList <ValidationExecutorSetStatusHistoryItem>) null);
