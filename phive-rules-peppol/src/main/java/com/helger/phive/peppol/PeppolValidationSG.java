@@ -145,11 +145,11 @@ public final class PeppolValidationSG
                                                                              _createStatus (bNotDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
                                                                              ValidationExecutorSchematron.createXSLT (BIS3_BILLING_SG_CEN_2023_07,
-                                                                                                                      aNSCtxInvoice),
+                                                                                                                      aNSCtxCreditNote),
                                                                              ValidationExecutorSchematron.createXSLT (BIS3_BILLING_SG_PEPPOL_2023_07,
-                                                                                                                      aNSCtxInvoice),
+                                                                                                                      aNSCtxCreditNote),
                                                                              ValidationExecutorSchematron.createXSLT (BIS3_BILLING_SG_2023_07,
-                                                                                                                      aNSCtxInvoice)));
+                                                                                                                      aNSCtxCreditNote)));
     }
   }
 }
