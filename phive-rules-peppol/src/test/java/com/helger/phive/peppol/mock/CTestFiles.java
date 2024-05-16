@@ -71,9 +71,6 @@ public final class CTestFiles
                                             PeppolValidationAUNZ.VID_OPENPEPPOL_BIS3_AUNZ_UBL_CREDIT_NOTE_SELF_BILLING_1_0_10,
 
                                             /* Singapore */
-                                            PeppolValidationSG.VID_OPENPEPPOL_BIS3_SG_UBL_INVOICE_103,
-                                            PeppolValidationSG.VID_OPENPEPPOL_BIS3_SG_UBL_CREDIT_NOTE_103,
-
                                             PeppolValidationSG.VID_OPENPEPPOL_BIS3_SG_UBL_INVOICE_2023_7,
                                             PeppolValidationSG.VID_OPENPEPPOL_BIS3_SG_UBL_CREDIT_NOTE_2023_7,
 
@@ -207,16 +204,6 @@ public final class CTestFiles
       final String sPrefix = sPrefix0 + "aunz-peppol/1.0.10/";
       return new CommonsArrayList <> (new FileSystemResource (sPrefix + "NZ Self Billed Credit note.xml"));
     }
-
-    // SG 1.0.3
-    if (aVESID.equals (PeppolValidationSG.VID_OPENPEPPOL_BIS3_SG_UBL_INVOICE_103))
-    {
-      final String sPrefix = sPrefix0 + "sg-peppol/1.0.3/";
-      return new CommonsArrayList <> (new FileSystemResource (sPrefix + "Singapore invoice valid 1.xml"),
-                                      new FileSystemResource (sPrefix + "Singapore invoice valid 1 - NG tax code.xml"));
-    }
-    if (aVESID.equals (PeppolValidationSG.VID_OPENPEPPOL_BIS3_SG_UBL_CREDIT_NOTE_103))
-      return new CommonsArrayList <> ();
 
     // SG 2023.07
     if (aVESID.equals (PeppolValidationSG.VID_OPENPEPPOL_BIS3_SG_UBL_INVOICE_2023_7))

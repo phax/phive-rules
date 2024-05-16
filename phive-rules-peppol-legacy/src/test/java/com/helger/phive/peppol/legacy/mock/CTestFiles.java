@@ -125,6 +125,9 @@ public final class CTestFiles
                                             PeppolLegacyValidationSG.VID_OPENPEPPOL_BIS3_SG_UBL_INVOICE_102,
                                             PeppolLegacyValidationSG.VID_OPENPEPPOL_BIS3_SG_UBL_CREDIT_NOTE_102,
 
+                                            PeppolLegacyValidationSG.VID_OPENPEPPOL_BIS3_SG_UBL_INVOICE_103,
+                                            PeppolLegacyValidationSG.VID_OPENPEPPOL_BIS3_SG_UBL_CREDIT_NOTE_103,
+
                                             /* OpenPeppol */
                                             PeppolValidation370.VID_OPENPEPPOL_T19_V2,
                                             PeppolValidation370.VID_OPENPEPPOL_T58_V2,
@@ -568,6 +571,16 @@ public final class CTestFiles
       return new CommonsArrayList <> (new FileSystemResource (sPrefix + "Singapore invoice valid 1.xml"));
     }
     if (aVESID.equals (PeppolLegacyValidationSG.VID_OPENPEPPOL_BIS3_SG_UBL_CREDIT_NOTE_102))
+      return new CommonsArrayList <> ();
+
+    // SG 1.0.3
+    if (aVESID.equals (PeppolLegacyValidationSG.VID_OPENPEPPOL_BIS3_SG_UBL_INVOICE_103))
+    {
+      final String sPrefix = sPrefix0 + "sg-peppol/1.0.3/";
+      return new CommonsArrayList <> (new FileSystemResource (sPrefix + "Singapore invoice valid 1.xml"),
+                                      new FileSystemResource (sPrefix + "Singapore invoice valid 1 - NG tax code.xml"));
+    }
+    if (aVESID.equals (PeppolLegacyValidationSG.VID_OPENPEPPOL_BIS3_SG_UBL_CREDIT_NOTE_103))
       return new CommonsArrayList <> ();
 
     // 3.7.0
