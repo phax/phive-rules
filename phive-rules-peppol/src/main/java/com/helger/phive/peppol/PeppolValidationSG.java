@@ -68,6 +68,14 @@ public final class PeppolValidationSG
                                                                                        "creditnote",
                                                                                        "2023.7");
 
+  // 2023.12
+  public static final VESID VID_OPENPEPPOL_BIS3_SG_UBL_INVOICE_2023_12 = new VESID ("eu.peppol.bis3.sg.ubl",
+                                                                                    "invoice",
+                                                                                    "2023.12");
+  public static final VESID VID_OPENPEPPOL_BIS3_SG_UBL_CREDIT_NOTE_2023_12 = new VESID ("eu.peppol.bis3.sg.ubl",
+                                                                                        "creditnote",
+                                                                                        "2023.12");
+
   private PeppolValidationSG ()
   {}
 
@@ -149,6 +157,40 @@ public final class PeppolValidationSG
                                                                              ValidationExecutorSchematron.createXSLT (BIS3_BILLING_SG_PEPPOL_2023_07,
                                                                                                                       aNSCtxCreditNote),
                                                                              ValidationExecutorSchematron.createXSLT (BIS3_BILLING_SG_2023_07,
+                                                                                                                      aNSCtxCreditNote)));
+    }
+
+    // 2023.12
+    {
+      final IReadableResource BIS3_BILLING_SG_CEN_2023_12 = new ClassPathResource (BASE_PATH +
+                                                                                   "2023.12/xslt/SG-Subset-CEN-EN16931-UBL.xslt",
+                                                                                   _getCL ());
+      final IReadableResource BIS3_BILLING_SG_PEPPOL_2023_12 = new ClassPathResource (BASE_PATH +
+                                                                                      "2023.12/xslt/SG-Subset-PEPPOL-EN16931-UBL.xslt",
+                                                                                      _getCL ());
+      final IReadableResource BIS3_BILLING_SG_2023_12 = new ClassPathResource (BASE_PATH +
+                                                                               "2023.12/xslt/SG-Billing3-UBL.xslt",
+                                                                               _getCL ());
+
+      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_BIS3_SG_UBL_INVOICE_2023_12,
+                                                                             "SG Peppol BIS3 Invoice (UBL) 2023.12",
+                                                                             _createStatus (bNotDeprecated),
+                                                                             ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
+                                                                             ValidationExecutorSchematron.createXSLT (BIS3_BILLING_SG_CEN_2023_12,
+                                                                                                                      aNSCtxInvoice),
+                                                                             ValidationExecutorSchematron.createXSLT (BIS3_BILLING_SG_PEPPOL_2023_12,
+                                                                                                                      aNSCtxInvoice),
+                                                                             ValidationExecutorSchematron.createXSLT (BIS3_BILLING_SG_2023_12,
+                                                                                                                      aNSCtxInvoice)));
+      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_BIS3_SG_UBL_CREDIT_NOTE_2023_12,
+                                                                             "SG Peppol BIS3 Credit Note (UBL) 2023.12",
+                                                                             _createStatus (bNotDeprecated),
+                                                                             ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
+                                                                             ValidationExecutorSchematron.createXSLT (BIS3_BILLING_SG_CEN_2023_12,
+                                                                                                                      aNSCtxCreditNote),
+                                                                             ValidationExecutorSchematron.createXSLT (BIS3_BILLING_SG_PEPPOL_2023_12,
+                                                                                                                      aNSCtxCreditNote),
+                                                                             ValidationExecutorSchematron.createXSLT (BIS3_BILLING_SG_2023_12,
                                                                                                                       aNSCtxCreditNote)));
     }
   }
