@@ -1,0 +1,4 @@
+The CEN rules are based on
+https://github.com/ConnectingEurope/eInvoicing-EN16931
+commit 9efef2fdb64b188fb6d4a1327ed6ae00ec6ff20c
+(tag validation-1.3.12)

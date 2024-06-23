@@ -23,7 +23,7 @@ This project is divided into sub-projects each keeping tracking of one document 
 * phive-rules-peppol-legacy - older Peppol specific rules that are out of date (since v2.0.5)
 * phive-rules-peppol-italy - Peppol Italy specific rules (since v2.1.1)
 * phive-rules-setu - Dutch SETU selected standards (since v3.0.4)
-* phive-rules-simplerinvoicing - Dutch SimplerInvoicing support from https://github.com/SimplerInvoicing/validation
+* phive-rules-Simplerinvoicing - Dutch Simplerinvoicing support from https://github.com/Simplerinvoicing/validation
 * phive-rules-svefaktura - Validation rules for Swedish Svefaktura (since v1.0.6)
 * phive-rules-teapps - Validation rules for Finnish Tieto TEAPPSXML
 * phive-rules-ubl - Validation rules for pure OASIS UBL (without any Schematron)
@@ -136,7 +136,7 @@ Add the following to your `pom.xml` to use this artifact, replacing `x.y.z` with
 
 <dependency>
   <groupId>com.helger.phive.rules</groupId>
-  <artifactId>phive-rules-simplerinvoicing</artifactId>
+  <artifactId>phive-rules-Simplerinvoicing</artifactId>
   <version>x.y.z</version>
 </dependency>
 
@@ -197,6 +197,9 @@ I hope that with the introduction of PINT, the versioning problem will be solved
     * Deprecated Peppol A-NZ-PEPPOL 1.0.9 rules
     * Added XRechnung 3.0.0 rules (for completeness)
     * Added XRechnung 3.0.2 rules
+    * Deprecated Simplerinvoicing Invoice 1.2.4 and Order 1.2.4
+    * Deprecated Simplerinvoicing Invoice 2.0.3.7, Simplerinvoicing 2.0 G-Account extension 1.0.7 and NLCIUS-CII 1.0.3.6
+    * Added Simplerinvoicing Invoice 2.0.3.9, Simplerinvoicing 2.0 G-Account extension 1.0.9 and NLCIUS-CII 1.0.3.8
 * v3.1.10 - 2024-05-16
     * Added support for EN 16931 rules v1.3.12 format and deprecated v1.3.10
     * All OIOUBL 1.x validations are now correctly based on UBL 2.1 instead of UBL 2.0
@@ -222,7 +225,7 @@ I hope that with the introduction of PINT, the versioning problem will be solved
 * v3.1.6 - 2023-11-30
     * Added Peppol November 2023 release (Billing 3.0.16 and Upgrade 3.0.12)
     * Moved Peppol 3.15.0 rules from `phive-rules-peppol` to `phive-rules-peppol-legacy`
-    * Added SimplerInvoicing November 2023 release (SI 2.0.3.8, NLCIUS-CII 1.0.3.7, SI 2.0 G-Account extension 1.0.8)
+    * Added Simplerinvoicing November 2023 release (SI 2.0.3.8, NLCIUS-CII 1.0.3.7, SI 2.0 G-Account extension 1.0.8)
 * v3.1.5 - 2023-11-10
     * Added support for Peppol Reporting EUSR v1.1.4 and deprecated v1.1.3
     * Added support for Czech ISDOC v6.0.2 and deprecated v6.0.1 [original Schematron had errors]
@@ -258,9 +261,9 @@ I hope that with the introduction of PINT, the versioning problem will be solved
 * v3.0.4 - 2023-06-27
     * Updated XRechnung 2.3.1 rules to 1.8.2
     * Added Peppol A-NZ-PEPPOL 1.0.9 rules (deprecated version 1.0.8)
-    * Added support for SimplerInvoicing 2.0.3.7 and deprecated old versions
-    * Added support for SimplerInvoicing NLCIUS-CII 1.0.3.6 and deprecated old versions
-    * Added support for SimplerInvoicing 2.0 G-Account extension 1.0.7 and deprecated old versions
+    * Added support for Simplerinvoicing 2.0.3.7 and deprecated old versions
+    * Added support for Simplerinvoicing NLCIUS-CII 1.0.3.6 and deprecated old versions
+    * Added support for Simplerinvoicing 2.0 G-Account extension 1.0.7 and deprecated old versions
     * Added Peppol May 2023 release (Billing 3.0.15 and Upgrade 3.0.11) - using a new versioning number (yyyy.m)
     * Added new submodule `phive-rules-setu` for selected Dutch SETU standards
     * Added support for Peppol End User Statistics Report 1.0.1
@@ -272,9 +275,9 @@ I hope that with the introduction of PINT, the versioning problem will be solved
     * Added support for EN 16931 1.3.10 format and deprecated EN 16931 1.3.6a, 1.3.7 and 1.3.8 versions
     * Deprecated Peppol rules 3.0.14
     * Added support for fatturaPA 1.2.2
-    * Added support for SimplerInvoicing 2.0.3.6 and deprecated old versions
-    * Added support for SimplerInvoicing NLCIUS-CII 1.0.3.5 and deprecated old versions
-    * Added support for SimplerInvoicing 2.0 G-Account extension 1.0.6 and deprecated old versions
+    * Added support for Simplerinvoicing 2.0.3.6 and deprecated old versions
+    * Added support for Simplerinvoicing NLCIUS-CII 1.0.3.5 and deprecated old versions
+    * Added support for Simplerinvoicing 2.0 G-Account extension 1.0.6 and deprecated old versions
 * v3.0.1 - 2023-03-16
     * Added support for Peppol End User Statistics Report 1.0.0 (deprecated 1.0.0-RC2)
     * Added support for Peppol Transaction Statistics Report 1.0.1 (deprecated 1.0.0)
@@ -296,9 +299,9 @@ I hope that with the introduction of PINT, the versioning problem will be solved
 * v2.1.17 - 2022-11-18
     * Added support for Peppol End User Statistics Report 1.0.0-RC2
     * Added support for Peppol Transaction Statistics Report 1.0.0
-    * Added support for SimplerInvoicing 2.0.3.5
-    * Added support for SimplerInvoicing NLCIUS-CII 1.0.3.4
-    * Added support for SimplerInvoicing 2.0 G-Account extension 1.0.5
+    * Added support for Simplerinvoicing 2.0.3.5
+    * Added support for Simplerinvoicing NLCIUS-CII 1.0.3.4
+    * Added support for Simplerinvoicing 2.0 G-Account extension 1.0.5
     * Added support for OIOUBL 1.13.0
     * Updated XRechnung 2.2.0 rules to v1.7.3
 * v2.1.16 - 2022-10-18
@@ -317,10 +320,10 @@ I hope that with the introduction of PINT, the versioning problem will be solved
 * v2.1.13 - 2022-05-09
     * Deprecated XRechnung 2.0.0 and 2.0.1
     * Added support for EN 16931 1.3.8 format
-    * Added support for SimplerInvoicing 1.2.4, deprecated 1.2.3
-    * Added support for SimplerInvoicing 2.0.3.4, deprecated 2.0.3.3
-    * Added support for SimplerInvoicing NLCIUS-CII 1.0.3.3, deprecated 1.0.3.2
-    * Added support for SimplerInvoicing 2.0 G-Account extension 1.0.4, deprecated 1.0.3
+    * Added support for Simplerinvoicing 1.2.4, deprecated 1.2.3
+    * Added support for Simplerinvoicing 2.0.3.4, deprecated 2.0.3.3
+    * Added support for Simplerinvoicing NLCIUS-CII 1.0.3.3, deprecated 1.0.3.2
+    * Added support for Simplerinvoicing 2.0 G-Account extension 1.0.4, deprecated 1.0.3
     * Added support for Peppol May 2022 release as 3.14.0 (Billing 3.0.13 and the rest 3.0.9)
     * Moved Peppol rules 3.12.0 from `phive-rules-peppol` to `phive-rules-peppol-legacy`
 * v2.1.12 - 2022-03-21
@@ -337,9 +340,9 @@ I hope that with the introduction of PINT, the versioning problem will be solved
 * v2.1.9 - 2021-12-23
     * Deprecated Peppol 3.12.0 rules
     * Added support for UBL.BE 1.2.9, deprecated version 1.2.8
-    * Added support for SimplerInvoicing 2.0.3.3, deprecated 2.0.3.2
-    * Added support for SimplerInvoicing NLCIUS-CII 1.0.3.2, deprecated 1.0.3.1
-    * Added support for SimplerInvoicing 2.0 G-Account extension 1.0.3, deprecated 1.0.2
+    * Added support for Simplerinvoicing 2.0.3.3, deprecated 2.0.3.2
+    * Added support for Simplerinvoicing NLCIUS-CII 1.0.3.2, deprecated 1.0.3.1
+    * Added support for Simplerinvoicing 2.0 G-Account extension 1.0.3, deprecated 1.0.2
 * v2.1.8 - 2021-11-05
     * Fixed the UBL 2.3 version from `2.3-cs01` to `2.3` - no content-wise changes
     * Added support for EN 16931 1.3.7 format (deprecated version 1.3.6)
@@ -347,9 +350,9 @@ I hope that with the introduction of PINT, the versioning problem will be solved
     * Moved Peppol rules 3.11.1 from `phive-rules-peppol` to `phive-rules-peppol-legacy`
 * v2.1.7 - 2021-09-02
     * Peppol rules 3.11.1 are now correctly marked as deprecated
-    * Added support for SimplerInvoicing 2.0.3.2, deprecated 2.0.3 and 2.0.3.1
-    * Added support for SimplerInvoicing NLCIUS-CII 1.0.3.1, deprecated 1.0.3
-    * Added support for SimplerInvoicing 2.0 G-Account extension 1.0.2, deprecated 1.0.1
+    * Added support for Simplerinvoicing 2.0.3.2, deprecated 2.0.3 and 2.0.3.1
+    * Added support for Simplerinvoicing NLCIUS-CII 1.0.3.1, deprecated 1.0.3
+    * Added support for Simplerinvoicing 2.0 G-Account extension 1.0.2, deprecated 1.0.1
 * v2.1.6 - 2021-08-11
     * Added support for EN 16931 1.3.6a rules - a special fork on https://github.com/phax/eInvoicing-EN16931/releases/tag/validation-1.3.6a
     * Added support for XRechnung 2.1.1
@@ -379,12 +382,12 @@ I hope that with the introduction of PINT, the versioning problem will be solved
     * Updated to phive 7.1.0
     * Added support for EN 16931 1.3.4 format (deprecated version 1.3.3)
 * v2.0.3 - 2021-01-07
-    * Added support for SimplerInvoicing 1.2.3
-    * Added support for SimplerInvoicing 2.0.3
-    * Added support for SimplerInvoicing 2.0.3.1
-    * Added support for SimplerInvoicing NLCIUS-CII 1.0.3
-    * Added support for SimplerInvoicing 2.0 G-Account extension 1.0
-    * Added support for SimplerInvoicing 2.0 G-Account extension 1.0.1
+    * Added support for Simplerinvoicing 1.2.3
+    * Added support for Simplerinvoicing 2.0.3
+    * Added support for Simplerinvoicing 2.0.3.1
+    * Added support for Simplerinvoicing NLCIUS-CII 1.0.3
+    * Added support for Simplerinvoicing 2.0 G-Account extension 1.0
+    * Added support for Simplerinvoicing 2.0 G-Account extension 1.0.1
 * v2.0.2 - 2021-01-06
     * Updated to UBL 2.3-CSD04 (adding 2 new document types)
     * Added support for XRechnung 2.0.1 rules v1.5.0

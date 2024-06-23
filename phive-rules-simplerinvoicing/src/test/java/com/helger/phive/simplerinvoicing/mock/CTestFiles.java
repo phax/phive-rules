@@ -85,6 +85,8 @@ public final class CTestFiles
                                              SimplerInvoicingValidation.VID_SI_CREDIT_NOTE_V2037,
                                              SimplerInvoicingValidation.VID_SI_INVOICE_V2038,
                                              SimplerInvoicingValidation.VID_SI_CREDIT_NOTE_V2038,
+                                             SimplerInvoicingValidation.VID_SI_INVOICE_V2039,
+                                             SimplerInvoicingValidation.VID_SI_CREDIT_NOTE_V2039,
 
                                              SimplerInvoicingValidation.VID_SI_INVOICE_20_GACCOUNT_V10,
                                              SimplerInvoicingValidation.VID_SI_INVOICE_20_GACCOUNT_V101,
@@ -95,6 +97,7 @@ public final class CTestFiles
                                              SimplerInvoicingValidation.VID_SI_INVOICE_20_GACCOUNT_V106,
                                              SimplerInvoicingValidation.VID_SI_INVOICE_20_GACCOUNT_V107,
                                              SimplerInvoicingValidation.VID_SI_INVOICE_20_GACCOUNT_V108,
+                                             SimplerInvoicingValidation.VID_SI_INVOICE_20_GACCOUNT_V109,
 
                                              SimplerInvoicingValidation.VID_SI_NLCIUS_CII_V103,
                                              SimplerInvoicingValidation.VID_SI_NLCIUS_CII_V1031,
@@ -103,7 +106,8 @@ public final class CTestFiles
                                              SimplerInvoicingValidation.VID_SI_NLCIUS_CII_V1034,
                                              SimplerInvoicingValidation.VID_SI_NLCIUS_CII_V1035,
                                              SimplerInvoicingValidation.VID_SI_NLCIUS_CII_V1036,
-                                             SimplerInvoicingValidation.VID_SI_NLCIUS_CII_V1037 })
+                                             SimplerInvoicingValidation.VID_SI_NLCIUS_CII_V1037,
+                                             SimplerInvoicingValidation.VID_SI_NLCIUS_CII_V1038 })
     {
       for (final IReadableResource aRes : getAllMatchingGoodTestFiles (aVESID))
       {
@@ -387,7 +391,8 @@ public final class CTestFiles
                             aVESID.equals (SimplerInvoicingValidation.VID_SI_INVOICE_V2035) ||
                             aVESID.equals (SimplerInvoicingValidation.VID_SI_INVOICE_V2036) ||
                             aVESID.equals (SimplerInvoicingValidation.VID_SI_INVOICE_V2037) ||
-                            aVESID.equals (SimplerInvoicingValidation.VID_SI_INVOICE_V2038))
+                            aVESID.equals (SimplerInvoicingValidation.VID_SI_INVOICE_V2038) ||
+                            aVESID.equals (SimplerInvoicingValidation.VID_SI_INVOICE_V2039))
                         {
                           for (final String s : new String [] { "SI-UBL-2.0_BR-NL-10_ok_both_nl.xml",
                                                                 "SI-UBL-2.0_BR-NL-10_ok_customer_not_nl.xml",
@@ -458,7 +463,8 @@ public final class CTestFiles
                               aVESID.equals (SimplerInvoicingValidation.VID_SI_CREDIT_NOTE_V2035) ||
                               aVESID.equals (SimplerInvoicingValidation.VID_SI_CREDIT_NOTE_V2036) ||
                               aVESID.equals (SimplerInvoicingValidation.VID_SI_CREDIT_NOTE_V2037) ||
-                              aVESID.equals (SimplerInvoicingValidation.VID_SI_CREDIT_NOTE_V2038))
+                              aVESID.equals (SimplerInvoicingValidation.VID_SI_CREDIT_NOTE_V2038) ||
+                              aVESID.equals (SimplerInvoicingValidation.VID_SI_CREDIT_NOTE_V2039))
                           {
                             for (final String s : new String [] { "SI-UBL-2.0_BR-NL-8_ok_381.xml" })
                               ret.add (new ClassPathResource (PATH_2032 + s));
@@ -472,7 +478,8 @@ public final class CTestFiles
                                 aVESID.equals (SimplerInvoicingValidation.VID_SI_INVOICE_20_GACCOUNT_V105) ||
                                 aVESID.equals (SimplerInvoicingValidation.VID_SI_INVOICE_20_GACCOUNT_V106) ||
                                 aVESID.equals (SimplerInvoicingValidation.VID_SI_INVOICE_20_GACCOUNT_V107) ||
-                                aVESID.equals (SimplerInvoicingValidation.VID_SI_INVOICE_20_GACCOUNT_V108))
+                                aVESID.equals (SimplerInvoicingValidation.VID_SI_INVOICE_20_GACCOUNT_V108) ||
+                                aVESID.equals (SimplerInvoicingValidation.VID_SI_INVOICE_20_GACCOUNT_V109))
                             {
                               for (final String s : new String [] { "si-ubl-2.0-ext-gaccount_ok_sample.xml" })
                                 ret.add (new ClassPathResource (PATH_GACCOUNT_10 + s));
@@ -485,7 +492,8 @@ public final class CTestFiles
                                   aVESID.equals (SimplerInvoicingValidation.VID_SI_NLCIUS_CII_V1034) ||
                                   aVESID.equals (SimplerInvoicingValidation.VID_SI_NLCIUS_CII_V1035) ||
                                   aVESID.equals (SimplerInvoicingValidation.VID_SI_NLCIUS_CII_V1036) ||
-                                  aVESID.equals (SimplerInvoicingValidation.VID_SI_NLCIUS_CII_V1037))
+                                  aVESID.equals (SimplerInvoicingValidation.VID_SI_NLCIUS_CII_V1037) ||
+                                  aVESID.equals (SimplerInvoicingValidation.VID_SI_NLCIUS_CII_V1038))
                               {
                                 for (final String s : new String [] { "NLCIUS-CII_ok_example.xml" })
                                   ret.add (new ClassPathResource (NLCIUS_CII_103 + s));
@@ -721,7 +729,8 @@ public final class CTestFiles
                             aVESID.equals (SimplerInvoicingValidation.VID_SI_INVOICE_V2035) ||
                             aVESID.equals (SimplerInvoicingValidation.VID_SI_INVOICE_V2036) ||
                             aVESID.equals (SimplerInvoicingValidation.VID_SI_INVOICE_V2037) ||
-                            aVESID.equals (SimplerInvoicingValidation.VID_SI_INVOICE_V2038))
+                            aVESID.equals (SimplerInvoicingValidation.VID_SI_INVOICE_V2038) ||
+                            aVESID.equals (SimplerInvoicingValidation.VID_SI_INVOICE_V2039))
                         {
                           for (final String s : new String [] { "SI-UBL-2.0_UBL-SR-09_error_multiple_legalentity_registrationname.xml",
                                                                 "SI-UBL-2.0_UBL-SR-11_error_multiple_legalentity_companyid.xml",
@@ -736,7 +745,8 @@ public final class CTestFiles
                               aVESID.equals (SimplerInvoicingValidation.VID_SI_CREDIT_NOTE_V2035) ||
                               aVESID.equals (SimplerInvoicingValidation.VID_SI_CREDIT_NOTE_V2036) ||
                               aVESID.equals (SimplerInvoicingValidation.VID_SI_CREDIT_NOTE_V2037) ||
-                              aVESID.equals (SimplerInvoicingValidation.VID_SI_CREDIT_NOTE_V2038))
+                              aVESID.equals (SimplerInvoicingValidation.VID_SI_CREDIT_NOTE_V2038) ||
+                              aVESID.equals (SimplerInvoicingValidation.VID_SI_CREDIT_NOTE_V2039))
                           {
                             for (final String s : new String [] {})
                               ret.add (new ClassPathResource (PATH_2032 + s));
@@ -750,7 +760,8 @@ public final class CTestFiles
                                 aVESID.equals (SimplerInvoicingValidation.VID_SI_INVOICE_20_GACCOUNT_V105) ||
                                 aVESID.equals (SimplerInvoicingValidation.VID_SI_INVOICE_20_GACCOUNT_V106) ||
                                 aVESID.equals (SimplerInvoicingValidation.VID_SI_INVOICE_20_GACCOUNT_V107) ||
-                                aVESID.equals (SimplerInvoicingValidation.VID_SI_INVOICE_20_GACCOUNT_V108))
+                                aVESID.equals (SimplerInvoicingValidation.VID_SI_INVOICE_20_GACCOUNT_V108) ||
+                                aVESID.equals (SimplerInvoicingValidation.VID_SI_INVOICE_20_GACCOUNT_V109))
                             {
                               for (final String s : new String [] {})
                                 ret.add (new ClassPathResource (PATH_GACCOUNT_10 + s));
@@ -763,7 +774,8 @@ public final class CTestFiles
                                   aVESID.equals (SimplerInvoicingValidation.VID_SI_NLCIUS_CII_V1034) ||
                                   aVESID.equals (SimplerInvoicingValidation.VID_SI_NLCIUS_CII_V1035) ||
                                   aVESID.equals (SimplerInvoicingValidation.VID_SI_NLCIUS_CII_V1036) ||
-                                  aVESID.equals (SimplerInvoicingValidation.VID_SI_NLCIUS_CII_V1037))
+                                  aVESID.equals (SimplerInvoicingValidation.VID_SI_NLCIUS_CII_V1037) ||
+                                  aVESID.equals (SimplerInvoicingValidation.VID_SI_NLCIUS_CII_V1038))
                               {
                                 for (final String s : new String [] { "NLCIUS-CII_error_BR-NL-10.xml" })
                                   ret.add (new ClassPathResource (NLCIUS_CII_103 + s));
