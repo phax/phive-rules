@@ -193,6 +193,8 @@ I hope that with the introduction of PINT, the versioning problem will be solved
  
 * v3.1.11 - work in progress
     * Added Peppol May 2024 release (Billing 3.0.17 and Upgrade 3.0.13)
+    * Added Peppol A-NZ-PEPPOL 1.0.11 rules
+    * Deprecated Peppol A-NZ-PEPPOL 1.0.9 rules
 * v3.1.10 - 2024-05-16
     * Added support for EN 16931 rules v1.3.12 format and deprecated v1.3.10
     * All OIOUBL 1.x validations are now correctly based on UBL 2.1 instead of UBL 2.0
