@@ -53,9 +53,17 @@ public final class CTestFiles
   public static ICommonsList <TestFile> getAllTestFiles ()
   {
     final ICommonsList <TestFile> ret = new CommonsArrayList <> ();
-    for (final VESID aESID : new VESID [] { XRechnungValidation.VID_XRECHNUNG_CII_301,
+    for (final VESID aESID : new VESID [] { XRechnungValidation.VID_XRECHNUNG_CII_302,
+                                            XRechnungValidation.VID_XRECHNUNG_UBL_CREDITNOTE_302,
+                                            XRechnungValidation.VID_XRECHNUNG_UBL_INVOICE_302,
+
+                                            XRechnungValidation.VID_XRECHNUNG_CII_301,
                                             XRechnungValidation.VID_XRECHNUNG_UBL_CREDITNOTE_301,
                                             XRechnungValidation.VID_XRECHNUNG_UBL_INVOICE_301,
+
+                                            XRechnungValidation.VID_XRECHNUNG_CII_300,
+                                            XRechnungValidation.VID_XRECHNUNG_UBL_CREDITNOTE_300,
+                                            XRechnungValidation.VID_XRECHNUNG_UBL_INVOICE_300,
 
                                             XRechnungValidation.VID_XRECHNUNG_CII_231,
                                             XRechnungValidation.VID_XRECHNUNG_UBL_CREDITNOTE_231,
@@ -687,6 +695,80 @@ public final class CTestFiles
             ret.add (new ClassPathResource (sPrefix + s));
         }
 
+    // 3.0.0
+    if (aVESID.equals (XRechnungValidation.VID_XRECHNUNG_CII_300))
+    {
+      final String sPrefix = sPrefix0 + "3.0.0/cii/";
+      for (final String s : new String [] { "01.01a-INVOICE_uncefact.xml",
+                                            "01.02a-INVOICE_uncefact.xml",
+                                            "01.03a-INVOICE_uncefact.xml",
+                                            "01.04a-INVOICE_uncefact.xml",
+                                            "01.05a-INVOICE_uncefact.xml",
+                                            "01.06a-INVOICE_uncefact.xml",
+                                            "01.07a-INVOICE_uncefact.xml",
+                                            "01.08a-INVOICE_uncefact.xml",
+                                            "01.09a-INVOICE_uncefact.xml",
+                                            "01.10a-INVOICE_uncefact.xml",
+                                            "01.11a-INVOICE_uncefact.xml",
+                                            "01.12a-INVOICE_uncefact.xml",
+                                            "01.13a-INVOICE_uncefact.xml",
+                                            "01.14a-INVOICE_uncefact.xml",
+                                            "01.15a-INVOICE_uncefact.xml",
+                                            "01.17a-INVOICE_uncefact.xml",
+                                            "01.18a-INVOICE_uncefact.xml",
+                                            "01.19a-INVOICE_uncefact.xml",
+                                            "01.20a-INVOICE_uncefact.xml",
+                                            "01.21a-INVOICE_uncefact.xml",
+                                            "02.01a-INVOICE_uncefact.xml",
+                                            "02.02a-INVOICE_uncefact.xml",
+                                            "02.03a-INVOICE_uncefact.xml",
+                                            "02.04a-INVOICE_uncefact.xml",
+                                            "02.05a-INVOICE_uncefact.xml",
+                                            "02.06a-INVOICE_uncefact.xml",
+                                            "03.01a-INVOICE_uncefact.xml",
+                                            "03.02a-INVOICE_uncefact.xml",
+                                            "03.03a-INVOICE_uncefact.xml",
+                                            "03.04a-INVOICE_uncefact.xml",
+                                            "03.05a-INVOICE_uncefact.xml",
+                                            "03.06a-INVOICE_uncefact.xml" })
+        ret.add (new ClassPathResource (sPrefix + s));
+    }
+    else
+      if (aVESID.equals (XRechnungValidation.VID_XRECHNUNG_UBL_CREDITNOTE_300))
+      {
+        // None atm
+      }
+      else
+        if (aVESID.equals (XRechnungValidation.VID_XRECHNUNG_UBL_INVOICE_300))
+        {
+          final String sPrefix = sPrefix0 + "3.0.0/ubl-inv/";
+          for (final String s : new String [] { "01.01a-INVOICE_ubl.xml",
+                                                "01.02a-INVOICE_ubl.xml",
+                                                "01.03a-INVOICE_ubl.xml",
+                                                "01.04a-INVOICE_ubl.xml",
+                                                "01.05a-INVOICE_ubl.xml",
+                                                "01.06a-INVOICE_ubl.xml",
+                                                "01.07a-INVOICE_ubl.xml",
+                                                "01.08a-INVOICE_ubl.xml",
+                                                "01.09a-INVOICE_ubl.xml",
+                                                "01.10a-INVOICE_ubl.xml",
+                                                "01.11a-INVOICE_ubl.xml",
+                                                "01.12a-INVOICE_ubl.xml",
+                                                "01.13a-INVOICE_ubl.xml",
+                                                "01.14a-INVOICE_ubl.xml",
+                                                "01.17a-INVOICE_ubl.xml",
+                                                "01.18a-INVOICE_ubl.xml",
+                                                "01.19a-INVOICE_ubl.xml",
+                                                "01.20a-INVOICE_ubl.xml",
+                                                "01.21a-INVOICE_ubl.xml",
+                                                "02.01a-INVOICE_ubl.xml",
+                                                "02.02a-INVOICE_ubl.xml",
+                                                "03.01a-INVOICE_ubl.xml",
+                                                "03.02a-INVOICE_ubl.xml",
+                                                "03.06a-INVOICE_ubl.xml" })
+            ret.add (new ClassPathResource (sPrefix + s));
+        }
+
     // 3.0.1
     if (aVESID.equals (XRechnungValidation.VID_XRECHNUNG_CII_301))
     {
@@ -761,6 +843,79 @@ public final class CTestFiles
             ret.add (new ClassPathResource (sPrefix + s));
         }
 
+    // 3.0.2
+    if (aVESID.equals (XRechnungValidation.VID_XRECHNUNG_CII_302))
+    {
+      final String sPrefix = sPrefix0 + "3.0.2/cii/";
+      for (final String s : new String [] { "01.01a-INVOICE_uncefact.xml",
+                                            "01.02a-INVOICE_uncefact.xml",
+                                            "01.03a-INVOICE_uncefact.xml",
+                                            "01.04a-INVOICE_uncefact.xml",
+                                            "01.05a-INVOICE_uncefact.xml",
+                                            "01.06a-INVOICE_uncefact.xml",
+                                            "01.07a-INVOICE_uncefact.xml",
+                                            "01.08a-INVOICE_uncefact.xml",
+                                            "01.09a-INVOICE_uncefact.xml",
+                                            "01.10a-INVOICE_uncefact.xml",
+                                            "01.11a-INVOICE_uncefact.xml",
+                                            "01.12a-INVOICE_uncefact.xml",
+                                            "01.13a-INVOICE_uncefact.xml",
+                                            "01.14a-INVOICE_uncefact.xml",
+                                            "01.15a-INVOICE_uncefact.xml",
+                                            "01.17a-INVOICE_uncefact.xml",
+                                            "01.18a-INVOICE_uncefact.xml",
+                                            "01.19a-INVOICE_uncefact.xml",
+                                            "01.20a-INVOICE_uncefact.xml",
+                                            "01.21a-INVOICE_uncefact.xml",
+                                            "02.01a-INVOICE_uncefact.xml",
+                                            "02.02a-INVOICE_uncefact.xml",
+                                            "02.03a-INVOICE_uncefact.xml",
+                                            "02.04a-INVOICE_uncefact.xml",
+                                            "02.05a-INVOICE_uncefact.xml",
+                                            "02.06a-INVOICE_uncefact.xml",
+                                            "03.01a-INVOICE_uncefact.xml",
+                                            "03.02a-INVOICE_uncefact.xml",
+                                            "03.03a-INVOICE_uncefact.xml",
+                                            "03.04a-INVOICE_uncefact.xml",
+                                            "03.05a-INVOICE_uncefact.xml",
+                                            "03.06a-INVOICE_uncefact.xml" })
+        ret.add (new ClassPathResource (sPrefix + s));
+    }
+    else
+      if (aVESID.equals (XRechnungValidation.VID_XRECHNUNG_UBL_CREDITNOTE_302))
+      {
+        // None atm
+      }
+      else
+        if (aVESID.equals (XRechnungValidation.VID_XRECHNUNG_UBL_INVOICE_302))
+        {
+          final String sPrefix = sPrefix0 + "3.0.2/ubl-inv/";
+          for (final String s : new String [] { "01.01a-INVOICE_ubl.xml",
+                                                "01.02a-INVOICE_ubl.xml",
+                                                "01.03a-INVOICE_ubl.xml",
+                                                "01.04a-INVOICE_ubl.xml",
+                                                "01.05a-INVOICE_ubl.xml",
+                                                "01.06a-INVOICE_ubl.xml",
+                                                "01.07a-INVOICE_ubl.xml",
+                                                "01.08a-INVOICE_ubl.xml",
+                                                "01.09a-INVOICE_ubl.xml",
+                                                "01.10a-INVOICE_ubl.xml",
+                                                "01.11a-INVOICE_ubl.xml",
+                                                "01.12a-INVOICE_ubl.xml",
+                                                "01.13a-INVOICE_ubl.xml",
+                                                "01.14a-INVOICE_ubl.xml",
+                                                "01.17a-INVOICE_ubl.xml",
+                                                "01.18a-INVOICE_ubl.xml",
+                                                "01.19a-INVOICE_ubl.xml",
+                                                "01.20a-INVOICE_ubl.xml",
+                                                "01.21a-INVOICE_ubl.xml",
+                                                "02.01a-INVOICE_ubl.xml",
+                                                "02.02a-INVOICE_ubl.xml",
+                                                "03.01a-INVOICE_ubl.xml",
+                                                "03.02a-INVOICE_ubl.xml",
+                                                "03.06a-INVOICE_ubl.xml" })
+            ret.add (new ClassPathResource (sPrefix + s));
+        }
     return ret;
   }
 }
