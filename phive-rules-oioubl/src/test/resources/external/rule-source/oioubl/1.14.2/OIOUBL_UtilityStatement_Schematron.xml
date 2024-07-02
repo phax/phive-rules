@@ -1,0 +1,1881 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+******************************************************************************************************************
+
+		OIOUBL Schematron
+
+		publisher:          NemHandel / Erhvervsstyrelsen
+        Repository path:    $HeadURL$
+        File version:       $Revision$
+        Last changed by:    $Author$
+        Last changed date:  $Date$
+
+		Description:        This document is produced as part of the OIOUBL schematron package
+		Rights:             It can be used following the Common Creative Licence
+
+		all terms derived from http://dublincore.org/documents/dcmi-terms/
+
+		For more information, see www.oioubl.info or email support@nemhandel.dk
+
+******************************************************************************************************************
+-->
+<!-- UAN-196: NemeSpace rettet til Oasis-->
+<sch:schema xmlns:sch="http://purl.oclc.org/dsdl/schematron">
+
+	<sch:ns uri="urn:oasis:names:specification:ubl:schema:xsd:UtilityStatement-2"          prefix="doc"/>
+	<sch:ns uri="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" prefix="cac"/>
+	<sch:ns uri="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"     prefix="cbc"/>
+	<sch:ns uri="urn:oasis:names:specification:ubl:schema:xsd:CoreComponentParameters-2"       prefix="ccts"/>
+	<sch:ns uri="urn:oasis:names:specification:ubl:schema:xsd:SpecializedDatatypes-2"          prefix="sdt"/>
+	<sch:ns uri="urn:un:unece:uncefact:data:specification:UnqualifiedDataTypesSchemaModule:2"  prefix="udt"/>
+	<sch:ns uri="http://www.w3.org/2001/XMLSchema"                                             prefix="xs"/>
+
+	<sch:p>Schematron for validating OIOUBL-2.1 documents.</sch:p>
+	<sch:title>Checking OIOUBL-2.1 UtilityStatement</sch:title>
+
+
+	<!-- Inclusion of OIOUBL UTS codelist variables -->
+  <sch:include href="OIOUBL_Codelist_Schematron.xml"/>
+
+	<!-- Global variables -->
+	<sch:let name="Multi" value="doc:UtilityStatement/cbc:UtilityStatementTypeCode = 'MultiSettlement'"/>
+	<sch:let name="Total" value="doc:UtilityStatement/cac:SubscriberConsumption/cac:Consumption/cac:LegalMonetaryTotal/cbc:PayableAmount"/>
+
+
+	<!-- The default phase to execute when validating -->
+	<sch:phase id="default">
+		<sch:active pattern="profile"/>
+		<sch:active pattern="utilitystatement"/>
+		<sch:active pattern="parentdocumentreference"/>
+		<sch:active pattern="additionaldocumentreference"/>
+		<sch:active pattern="signature"/>
+		<sch:active pattern="senderparty"/>
+		<sch:active pattern="receiverparty"/>
+		<sch:active pattern="buyercustomerparty"/>
+		<sch:active pattern="subscriberparty"/>
+		<sch:active pattern="mainonaccountpayment"/>
+		<sch:active pattern="subscriberconsumption"/>
+	</sch:phase>
+
+
+	<!-- Inclusion of OIOUBL common rules -->
+	<sch:include href="OIOUBL_Common_Schematron.xml"/>
+
+
+	<!-- - - - - - - - - - - -  UBLExtensions - - - - - - - - - - - - -  -->
+
+	<!-- - - - - - - - - - - -  Profile - - - - - - - - - - - - -  -->
+	<sch:pattern name="Profile" id="profile">
+		<sch:p>Pattern for validating root element, Profile and UBL version</sch:p>
+		<!-- Validate root element -->
+		<sch:rule context="/">
+			<sch:assert test="local-name(*) = 'UtilityStatement'">[F-UTS001] Root element must be UtilityStatement</sch:assert>
+		</sch:rule>
+		<sch:rule context="doc:UtilityStatement">
+			<!-- Check ProfileID, UBLVersionID and CustomizationID -->
+			<sch:extends rule="UBLVersionIDCheck"/>
+			<sch:extends rule="CustomizationIDCheck"/>
+			<sch:assert test="cbc:ProfileID/@schemeID = 'urn:oioubl:id:profileid-1.3'">[W-UTS002] Invalid schemeID. Must be 'urn:oioubl:id:profileid-1.3'</sch:assert>
+			<sch:assert test="cbc:ProfileID/@schemeAgencyID = $Profile1_agencyID">[W-UTS003] Invalid schemeAgencyID. Must be '<sch:value-of select="$Profile1_agencyID"/>'</sch:assert>
+			<sch:assert test="cbc:ProfileID = 'Reference-Utility-1.0' or cbc:ProfileID = 'Reference-UtilityR-1.0'">[F-UTS004] Invalid ProfileID: '<sch:value-of select="cbc:ProfileID"/>'. Must be either Reference-Utility-1.0 or Reference-UtilityR-1.0</sch:assert>
+			<!-- Check Profile dependencies (top level) -->
+		</sch:rule>
+	</sch:pattern>
+
+	<!-- - - - - - - - - - - -  UtilityStatement (UTS172) - - - - - - - - - - -  -->
+	<sch:pattern name="UtilityStatement" id="utilitystatement">
+		<sch:p>Pattern for validating the UtilityStatement structure</sch:p>
+		<sch:rule context="doc:UtilityStatement">
+			<!-- Check for excluded elements -->
+
+			<!-- Check for mandatory elements -->
+
+			<!-- Validate -->
+			<!-- [Release 20111201] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=623 -->
+			<sch:assert test="normalize-space(cbc:ID) != ''">[F-UTS006] Invalid ID. Must contain a value</sch:assert>
+			<sch:extends rule="AccountingCostCheck"/>
+		</sch:rule>
+
+		<!-- Validate CopyIndicator -->
+
+		<!-- Validate UUID -->
+		<sch:rule context="doc:UtilityStatement/cbc:UUID">
+			<sch:extends rule="UUIDCheck"/>
+		</sch:rule>
+
+		<!-- Validate IssueDate -->
+		<!-- Validate IssueTime -->
+
+		<!-- Validate UtilityStatementTypeCode -->
+		<sch:rule context="doc:UtilityStatement/cbc:UtilityStatementTypeCode">
+			<sch:assert test="./@listID = $UtilityStatType_listID">[W-UTS008] Invalid listID. Must be '<sch:value-of select="$UtilityStatType_listID"/>'</sch:assert>
+			<sch:assert test="./@listAgencyID = $UtilityStatType_agencyID">[W-UTS009] Invalid listAgencyID. Must be '<sch:value-of select="$UtilityStatType_agencyID"/>'</sch:assert>
+			<sch:assert test="contains($UtilityStatType, concat(',',.,','))">[F-UTS010] Invalid UtilityStatementTypeCode: '<sch:value-of select="."/>'. Must be a value from the codelist</sch:assert>
+		</sch:rule>
+
+		<!-- Validate Note -->
+		<sch:rule context="doc:UtilityStatement/cbc:Note">
+			<sch:extends rule="NoteCheck"/>
+		</sch:rule>
+
+		<!-- Validate DocumentCurrencyCode -->
+		<sch:rule context="doc:UtilityStatement/cbc:DocumentCurrencyCode">
+			<sch:extends rule="CurrencyCodeCheck"/>
+		</sch:rule>
+
+		<!-- Validate AccountingCostCode (ok, see above) -->
+		<!-- Validate AccountingCost (ok, see above) -->
+	</sch:pattern>
+
+
+	<!-- - - - - - - - - - - -  ParentDocumentReference - - - - - - - - - - -  -->
+	<sch:pattern name="ParentDocumentReference" id="parentdocumentreference">
+		<sch:p>Pattern for validating the ParentDocumentReference class</sch:p>
+
+		<!-- - - - - - - - - - - -  Top-level checks - - - - - - - - - - -  -->
+		<sch:rule context="doc:UtilityStatement/cac:ParentDocumentReference">
+			<!-- Check for excluded elements -->
+			<sch:assert test="count(cbc:DocumentType) = 0">[F-UTS015] DocumentType element must be excluded</sch:assert>
+			<sch:assert test="count(cbc:XPath) = 0">[F-UTS016] XPath element must be excluded</sch:assert>
+			<sch:assert test="count(cac:Attachment) = 0">[F-UTS017] Attachment class must be excluded</sch:assert>
+
+			<!-- Check for mandatory elements -->
+			<sch:assert test="cbc:IssueDate != ''">[F-UTS018] Invalid IssueDate. Must contain a value</sch:assert>
+			<sch:assert test="cbc:DocumentTypeCode != ''">[F-UTS019] Invalid DocumentTypeCode. Must contain a value</sch:assert>
+
+			<!-- Validate -->
+			<!-- [Release 20111201] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=623 -->
+			<sch:assert test="normalize-space(cbc:ID) != ''">[F-UTS020] Invalid ID. Must contain a value</sch:assert>
+		</sch:rule>
+
+		<!-- Validate ID -->
+		<sch:rule context="doc:UtilityStatement/cac:ParentDocumentReference/cbc:ID">
+			<sch:assert test="./@schemeAgencyID != ''">[F-UTS021] Invalid schemeAgencyID. Must contain a value</sch:assert>
+		</sch:rule>
+
+		<!-- Validate UUID -->
+		<sch:rule context="doc:UtilityStatement/cac:ParentDocumentReference/cbc:UUID">
+			<sch:extends rule="UUIDCheck"/>
+		</sch:rule>
+
+		<!-- Validate DocumentTypeCode -->
+		<sch:rule context="doc:UtilityStatement/cac:ParentDocumentReference/cbc:DocumentTypeCode">
+			<sch:assert test="./@listID = $ResponseDocType2_listID">[W-UTS022] Invalid listID. Must be '<sch:value-of select="$ResponseDocType2_listID"/>'</sch:assert>
+			<sch:assert test="./@listAgencyID = $ResponseDocType_agencyID">[W-UTS023] Invalid listAgencyID. Must be '<sch:value-of select="$ResponseDocType_agencyID"/>'</sch:assert>
+			<sch:assert test=". = 'Invoice' or . = 'CreditNote'">[F-UTS024] Invalid DocumentTypeCode: '<sch:value-of select="."/>'. Must be either 'Invoice' or 'CreditNote'</sch:assert>
+		<!-- [Release 20120315] Checks removed according to issue: https://bugs.softwareborsen.dk/show_bug.cgi?id=830 -->
+			<!--
+			<sch:report test=". = 'Invoice' and starts-with($Total,'-')">[F-UTS014] Invalid DocumentTypeCode. Must be 'CreditNote' when UTS PayableAmount is negative</sch:report>
+			<sch:report test=". = 'CreditNote' and not (starts-with($Total,'-'))">[F-UTS007] Invalid DocumentTypeCode. Must be 'Invoice' when UTS PayableAmount is positive or zero</sch:report>
+         -->
+		</sch:rule>
+	</sch:pattern>
+
+
+	<!-- - - - - - - - - - - -  AdditionalDocumentReference - - - - - - - - - - -  -->
+	<sch:pattern name="AdditionalDocumentReference" id="additionaldocumentreference">
+		<sch:p>Pattern for validating the AdditionalDocumentReference class</sch:p>
+		<sch:rule context="doc:UtilityStatement/cac:AdditionalDocumentReference">
+			<sch:extends rule="DocumentReferenceCheck"/>
+		</sch:rule>
+	</sch:pattern>
+
+
+	<!-- - - - - - - - - - - -  Signature - - - - - - - - - - -  -->
+	<sch:pattern name="Signature" id="signature">
+		<sch:p>Pattern for validating the Signature class</sch:p>
+		<sch:rule context="doc:UtilityStatement/cac:Signature">
+			<!-- Check for excluded elements -->
+			<!-- Check for mandatory elements -->
+			<!-- Validate -->
+			<!-- [Release 20111201] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=623 -->
+			<sch:assert test="normalize-space(cbc:ID) != ''">[F-UTS027] Invalid ID. Must contain a value</sch:assert>
+		</sch:rule>
+		<!-- Validate SignatoryParty -->
+		<sch:rule context="doc:UtilityStatement/cac:Signature/cac:SignatoryParty">
+			<!-- Check for excluded elements -->
+			<sch:extends rule="PartyExcludedCheck"/>
+			<!-- Check for mandatory elements -->
+			<!-- Validate -->
+			<sch:extends rule="PartyNameCheck"/>
+			<sch:extends rule="EndpointIDCheck"/>
+			<sch:report test="count(cac:PartyLegalEntity) &gt; 1">[F-UTS169] No more than one PartyLegalEntity class may be present</sch:report>
+		</sch:rule>
+		<!-- Validate SignatoryParty/PartyIdentification -->
+		<sch:rule context="doc:UtilityStatement/cac:Signature/cac:SignatoryParty/cac:PartyIdentification">
+			<sch:extends rule="PartyIdentificationCheck"/>
+		</sch:rule>
+		<!-- Validate SignatoryParty/PartyName -->
+		<sch:rule context="doc:UtilityStatement/cac:Signature/cac:SignatoryParty/cac:PartyName">
+			<sch:extends rule="PartyNameLanguageCheck"/>
+		</sch:rule>
+		<!-- Validate SignatoryParty/PostalAddress -->
+		<sch:rule context="doc:UtilityStatement/cac:Signature/cac:SignatoryParty/cac:PostalAddress">
+			<sch:extends rule="AddressCheck"/>
+		</sch:rule>
+		<!-- Validate SignatoryParty/PhysicalLocation -->
+		<sch:rule context="doc:UtilityStatement/cac:Signature/cac:SignatoryParty/cac:PhysicalLocation">
+			<sch:extends rule="AddressIDCheck"/>
+		</sch:rule>
+		<!-- Validate SignatoryParty/PhysicalLocation/ValidityPeriod -->
+		<sch:rule context="doc:UtilityStatement/cac:Signature/cac:SignatoryParty/cac:PhysicalLocation/cac:ValidityPeriod">
+			<sch:extends rule="PeriodCheck"/>
+		</sch:rule>
+		<!-- Validate SignatoryParty/PhysicalLocation/ValidityPeriod/Description -->
+		<sch:rule context="doc:UtilityStatement/cac:Signature/cac:SignatoryParty/cac:PhysicalLocation/cac:ValidityPeriod/cbc:Description">
+			<sch:extends rule="DescriptionLanguageCheck"/>
+		</sch:rule>
+		<!-- Validate SignatoryParty/PhysicalLocation/Address -->
+		<sch:rule context="doc:UtilityStatement/cac:Signature/cac:SignatoryParty/cac:PhysicalLocation/cac:Address">
+			<sch:extends rule="AddressCheck"/>
+		</sch:rule>
+		<!-- Validate SignatoryParty/PartyTaxScheme -->
+		<sch:rule context="doc:UtilityStatement/cac:Signature/cac:SignatoryParty/cac:PartyTaxScheme">
+			<sch:extends rule="PartyTaxSchemeCheck"/>
+		</sch:rule>
+		<!-- Validate SignatoryParty/PartyTaxScheme/TaxScheme -->
+		<sch:rule context="doc:UtilityStatement/cac:Signature/cac:SignatoryParty/cac:PartyTaxScheme/cac:TaxScheme">
+			<sch:extends rule="TaxSchemeCheck"/>
+		</sch:rule>
+		<!-- Validate SignatoryParty/PartyLegalEntity -->
+		<sch:rule context="doc:UtilityStatement/cac:Signature/cac:SignatoryParty/cac:PartyLegalEntity">
+			<sch:extends rule="PartyLegalEntityCheck"/>
+		</sch:rule>
+		<!-- Validate SignatoryParty/Contact -->
+		<sch:rule context="doc:UtilityStatement/cac:Signature/cac:SignatoryParty/cac:Contact">
+			<sch:extends rule="ContactCheck"/>
+		</sch:rule>
+		<!-- Validate SignatoryParty/Person -->
+		<sch:rule context="doc:UtilityStatement/cac:Signature/cac:SignatoryParty/cac:Person">
+			<sch:extends rule="Person/FirstNameCheck"/>
+		</sch:rule>
+
+		<!-- Validate DigitalSignatureAttachment -->
+		<sch:rule context="doc:UtilityStatement/cac:Signature/cac:DigitalSignatureAttachment">
+			<sch:extends rule="AttachmentCheck"/>
+		</sch:rule>
+
+		<!-- Validate OriginalDocumentReference -->
+		<sch:rule context="doc:UtilityStatement/cac:Signature/cac:OriginalDocumentReference">
+			<sch:extends rule="DocumentReferenceCheck"/>
+		</sch:rule>
+
+		<!-- Validate DigitalSignatureAttachment -->
+		<sch:rule context="doc:UtilityStatement/cac:Signature/cac:DigitalSignatureAttachment">
+			<sch:extends rule="AttachmentCheck"/>
+		</sch:rule>
+
+		<!-- Validate OriginalDocumentReference -->
+		<sch:rule context="doc:UtilityStatement/cac:Signature/cac:OriginalDocumentReference">
+			<sch:extends rule="DocumentReferenceCheck"/>
+		</sch:rule>
+	</sch:pattern>
+
+	<!-- - - - - - - - - - - -  SenderParty - - - - - - - - - - -  -->
+	<sch:pattern name="SenderParty" id="senderparty">
+		<sch:p>Pattern for validating the SenderParty class</sch:p>
+
+		<!-- - - - - - - - - - - -  Top-level checks - - - - - - - - - - -  -->
+		<sch:rule context="doc:UtilityStatement/cac:SenderParty">
+			<!-- Check for excluded elements -->
+			<sch:extends rule="PartyExcludedCheck"/>
+
+			<!-- Check for mandatory elements -->
+			<!-- [Release 20111201] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=623 -->
+			<sch:assert test="normalize-space(cbc:EndpointID) != ''">[F-UTS008] Invalid EndpointID. Must contain a value</sch:assert>
+
+			<!-- Validate -->
+			<sch:extends rule="PartyNameCheck"/>
+			<sch:extends rule="EndpointIDCheck"/>
+			<sch:assert test="count(cac:PartyLegalEntity) = 1">[F-UTS040] One PartyLegalEntity class must be present</sch:assert>
+
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyIdentification - - - - - - - - - - -  -->
+		<sch:rule context="doc:UtilityStatement/cac:SenderParty/cac:PartyIdentification">
+			<sch:extends rule="PartyIdentificationCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyName - - - - - - - - - - -  -->
+		<sch:rule context="doc:UtilityStatement/cac:SenderParty/cac:PartyName">
+			<sch:extends rule="PartyNameLanguageCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PostalAddress - - - - - - - - - - -  -->
+		<sch:rule context="doc:UtilityStatement/cac:SenderParty/cac:PostalAddress">
+			<sch:extends rule="AddressCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PhysicalLocation - - - - - - - - - - -  -->
+		<sch:rule context="doc:UtilityStatement/cac:SenderParty/cac:PhysicalLocation">
+			<sch:extends rule="AddressIDCheck"/>
+		</sch:rule>
+		<!-- Validate ValidityPeriod -->
+		<sch:rule context="doc:UtilityStatement/cac:SenderParty/cac:PhysicalLocation/cac:ValidityPeriod">
+		    <sch:extends rule="DescriptionLanguageCheckNew"/>
+			<sch:extends rule="PeriodCheck"/>
+		</sch:rule>
+		<!-- Validate ValidityPeriod/Description -->
+	
+		<!-- Validate Address -->
+		<sch:rule context="doc:UtilityStatement/cac:SenderParty/cac:PhysicalLocation/cac:Address">
+			<sch:extends rule="AddressCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyTaxScheme - - - - - - - - - - -  -->
+		<sch:rule context="doc:UtilityStatement/cac:SenderParty/cac:PartyTaxScheme">
+			<sch:extends rule="PartyTaxSchemeCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyTaxScheme/TaxScheme - - - - - - - - - - -  -->
+		<sch:rule context="doc:UtilityStatement/cac:SenderParty/cac:PartyTaxScheme/cac:TaxScheme">
+			<sch:extends rule="TaxSchemeCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyLegalEntity - - - - - - - - - - -  -->
+		<sch:rule context="doc:UtilityStatement/cac:SenderParty/cac:PartyLegalEntity">
+			<sch:extends rule="PartyLegalEntityCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  Contact - - - - - - - - - - -  -->
+		<sch:rule context="doc:UtilityStatement/cac:SenderParty/cac:Contact">
+			<sch:extends rule="ContactCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  Person - - - - - - - - - - -  -->
+		<sch:rule context="doc:UtilityStatement/cac:SenderParty/cac:Person">
+			<sch:extends rule="Person/FirstNameCheck"/>
+		</sch:rule>
+	</sch:pattern>
+
+
+	<!-- - - - - - - - - - - -  ReceiverParty - - - - - - - - - - -  -->
+	<sch:pattern name="ReceiverParty" id="receiverparty">
+		<sch:p>Pattern for validating the ReceiverParty class</sch:p>
+
+		<!-- - - - - - - - - - - -  Top-level checks - - - - - - - - - - -  -->
+		<sch:rule context="doc:UtilityStatement/cac:ReceiverParty">
+			<!-- Check for excluded elements -->
+			<sch:extends rule="PartyExcludedCheck"/>
+
+			<!-- Check for mandatory elements -->
+			<!-- [Release 20111201] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=623 -->
+			<sch:assert test="normalize-space(cbc:EndpointID) != ''">[F-UTS012] Invalid EndpointID. Must contain a value</sch:assert>
+
+			<!-- Validate -->
+			<sch:extends rule="PartyNameCheck"/>
+			<sch:extends rule="EndpointIDCheck"/>
+			<sch:report test="count(cac:PartyLegalEntity) &gt; 1">[F-UTS041] No more than one PartyLegalEntity class may be present</sch:report>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyIdentification - - - - - - - - - - -  -->
+		<sch:rule context="doc:UtilityStatement/cac:ReceiverParty/cac:PartyIdentification">
+			<sch:extends rule="PartyIdentificationCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyName - - - - - - - - - - -  -->
+		<sch:rule context="doc:UtilityStatement/cac:ReceiverParty/cac:PartyName">
+			<sch:extends rule="PartyNameLanguageCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PostalAddress - - - - - - - - - - -  -->
+		<sch:rule context="doc:UtilityStatement/cac:ReceiverParty/cac:PostalAddress">
+			<sch:extends rule="AddressCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PhysicalLocation - - - - - - - - - - -  -->
+		<sch:rule context="doc:UtilityStatement/cac:ReceiverParty/cac:PhysicalLocation">
+			<sch:extends rule="AddressIDCheck"/>
+		</sch:rule>
+		<!-- Validate ValidityPeriod -->
+		<sch:rule context="doc:UtilityStatement/cac:ReceiverParty/cac:PhysicalLocation/cac:ValidityPeriod">
+		    <sch:extends rule="DescriptionLanguageCheckNew"/>
+			<sch:extends rule="PeriodCheck"/>
+		</sch:rule>
+		<!-- Validate ValidityPeriod/Description -->
+		
+		<!-- Validate Address -->
+		<sch:rule context="doc:UtilityStatement/cac:ReceiverParty/cac:PhysicalLocation/cac:Address">
+			<sch:extends rule="AddressCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyTaxScheme - - - - - - - - - - -  -->
+		<sch:rule context="doc:UtilityStatement/cac:ReceiverParty/cac:PartyTaxScheme">
+			<sch:extends rule="PartyTaxSchemeCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyTaxScheme/TaxScheme - - - - - - - - - - -  -->
+		<sch:rule context="doc:UtilityStatement/cac:ReceiverParty/cac:PartyTaxScheme/cac:TaxScheme">
+			<sch:extends rule="TaxSchemeCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyLegalEntity - - - - - - - - - - -  -->
+		<sch:rule context="doc:UtilityStatement/cac:ReceiverParty/cac:PartyLegalEntity">
+			<sch:extends rule="PartyLegalEntityCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  Contact - - - - - - - - - - -  -->
+		<sch:rule context="doc:UtilityStatement/cac:ReceiverParty/cac:Contact">
+			<sch:extends rule="ContactCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  Person - - - - - - - - - - -  -->
+		<sch:rule context="doc:UtilityStatement/cac:ReceiverParty/cac:Person">
+			<sch:extends rule="Person/FirstNameCheck"/>
+		</sch:rule>
+	</sch:pattern>
+
+
+	<!-- - - - - - - - - - - -  BuyerCustomerParty - - - - - - - - - - -  -->
+	<sch:pattern name="BuyerCustomerParty" id="buyercustomerparty">
+		<sch:p>Pattern for validating the BuyerCustomerParty class</sch:p>
+
+		<!-- - - - - - - - - - - -  Top-level checks - - - - - - - - - - -  -->
+		<sch:rule context="doc:UtilityStatement/cac:BuyerCustomerParty">
+			<!-- Check for excluded elements -->
+			<!-- Check for mandatory elements -->
+			<sch:assert test="count(cac:Party) = 1">[F-UTS061] Party class must be present</sch:assert>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  Party - - - - - - - - - - -  -->
+		<sch:rule context="doc:UtilityStatement/cac:BuyerCustomerParty/cac:Party">
+			<!-- Check for excluded elements -->
+			<sch:extends rule="PartyExcludedCheck"/>
+			<!-- Check for mandatory elements -->
+			<!-- Validate -->
+			<sch:extends rule="PartyNameCheck"/>
+			<sch:extends rule="EndpointIDCheck"/>
+			<sch:report test="count(cac:PartyLegalEntity) &gt; 1">[F-UTS170] No more than one PartyLegalEntity class may be present</sch:report>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyIdentification - - - - - - - - - - -  -->
+		<sch:rule context="doc:UtilityStatement/cac:BuyerCustomerParty/cac:Party/cac:PartyIdentification">
+			<sch:extends rule="PartyIdentificationCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyName - - - - - - - - - - -  -->
+		<sch:rule context="doc:UtilityStatement/cac:BuyerCustomerParty/cac:Party/cac:PartyName">
+			<sch:extends rule="PartyNameLanguageCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PostalAddress - - - - - - - - - - -  -->
+		<sch:rule context="doc:UtilityStatement/cac:BuyerCustomerParty/cac:Party/cac:PostalAddress">
+			<sch:extends rule="AddressCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PhysicalLocation - - - - - - - - - - -  -->
+		<sch:rule context="doc:UtilityStatement/cac:BuyerCustomerParty/cac:Party/cac:PhysicalLocation">
+			<sch:extends rule="AddressIDCheck"/>
+		</sch:rule>
+		<!-- Validate ValidityPeriod -->
+		<sch:rule context="doc:UtilityStatement/cac:BuyerCustomerParty/cac:Party/cac:PhysicalLocation/cac:ValidityPeriod">
+		    <sch:extends rule="DescriptionLanguageCheckNew"/>
+			<sch:extends rule="PeriodCheck"/>
+		</sch:rule>
+		<!-- Validate ValidityPeriod/Description -->
+		
+		<!-- Validate Address -->
+		<sch:rule context="doc:UtilityStatement/cac:BuyerCustomerParty/cac:Party/cac:PhysicalLocation/cac:Address">
+			<sch:extends rule="AddressCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyTaxScheme - - - - - - - - - - -  -->
+		<sch:rule context="doc:UtilityStatement/cac:BuyerCustomerParty/cac:Party/cac:PartyTaxScheme">
+			<sch:extends rule="PartyTaxSchemeCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyTaxScheme/TaxScheme - - - - - - - - - - -  -->
+		<sch:rule context="doc:UtilityStatement/cac:BuyerCustomerParty/cac:Party/cac:PartyTaxScheme/cac:TaxScheme">
+			<sch:extends rule="TaxSchemeCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyLegalEntity - - - - - - - - - - -  -->
+		<sch:rule context="doc:UtilityStatement/cac:BuyerCustomerParty/cac:Party/cac:PartyLegalEntity">
+			<sch:extends rule="PartyLegalEntityCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  Contact - - - - - - - - - - -  -->
+		<sch:rule context="doc:UtilityStatement/cac:BuyerCustomerParty/cac:Party/cac:Contact">
+			<sch:extends rule="ContactCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  Person - - - - - - - - - - -  -->
+		<sch:rule context="doc:UtilityStatement/cac:BuyerCustomerParty/cac:Party/cac:Person">
+			<sch:extends rule="Person/FirstNameCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  DeliveryContact - - - - - - - - - - -  -->
+		<sch:rule context="doc:UtilityStatement/cac:BuyerCustomerParty/cac:DeliveryContact">
+			<sch:extends rule="ContactCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  AccountingContact - - - - - - - - - - -  -->
+		<sch:rule context="doc:UtilityStatement/cac:BuyerCustomerParty/cac:AccountingContact">
+			<sch:extends rule="ContactCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  BuyerContact - - - - - - - - - - -  -->
+		<sch:rule context="doc:UtilityStatement/cac:BuyerCustomerParty/cac:BuyerContact">
+			<sch:extends rule="ContactCheck"/>
+		</sch:rule>
+	</sch:pattern>
+
+
+	<!-- - - - - - - - - - - -  SubscriberParty - - - - - - - - - - -  -->
+	<sch:pattern name="SubscriberParty" id="subscriberparty">
+		<sch:p>Pattern for validating the SubscriberParty class</sch:p>
+
+		<!-- - - - - - - - - - - -  Top-level checks - - - - - - - - - - -  -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberParty">
+			<!-- Check for excluded elements -->
+			<sch:extends rule="PartyExcludedCheck"/>
+			<!-- Check for mandatory elements -->
+			<!-- Validate -->
+			<sch:extends rule="PartyNameCheck"/>
+			<sch:extends rule="EndpointIDCheck"/>
+			<sch:report test="count(cac:PartyLegalEntity) &gt; 1">[F-UTS171] No more than one PartyLegalEntity class may be present</sch:report>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyIdentification - - - - - - - - - - -  -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberParty/cac:PartyIdentification">
+			<sch:extends rule="PartyIdentificationCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyName - - - - - - - - - - -  -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberParty/cac:PartyName">
+			<sch:extends rule="PartyNameLanguageCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PostalAddress - - - - - - - - - - -  -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberParty/cac:PostalAddress">
+			<sch:extends rule="AddressCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PhysicalLocation - - - - - - - - - - -  -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberParty/cac:PhysicalLocation">
+			<sch:extends rule="AddressIDCheck"/>
+		</sch:rule>
+		<!-- Validate ValidityPeriod -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberParty/cac:PhysicalLocation/cac:ValidityPeriod">
+		    <sch:extends rule="DescriptionLanguageCheckNew"/>
+			<sch:extends rule="PeriodCheck"/>
+		</sch:rule>
+		<!-- Validate ValidityPeriod/Description -->
+	
+		<!-- Validate Address -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberParty/cac:PhysicalLocation/cac:Address">
+			<sch:extends rule="AddressCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyTaxScheme - - - - - - - - - - -  -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberParty/cac:PartyTaxScheme">
+			<sch:extends rule="PartyTaxSchemeCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyTaxScheme/TaxScheme - - - - - - - - - - -  -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberParty/cac:PartyTaxScheme/cac:TaxScheme">
+			<sch:extends rule="TaxSchemeCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  PartyLegalEntity - - - - - - - - - - -  -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberParty/cac:PartyLegalEntity">
+			<sch:extends rule="PartyLegalEntityCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  Contact - - - - - - - - - - -  -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberParty/cac:Contact">
+			<sch:extends rule="ContactCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  Person - - - - - - - - - - -  -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberParty/cac:Person">
+			<sch:extends rule="Person/FirstNameCheck"/>
+		</sch:rule>
+	</sch:pattern>
+
+
+	<!-- - - - - - - - - - - -  MainOnAccountPayment - - - - - - - - - - -  -->
+	<sch:pattern name="MainOnAccountPayment" id="mainonaccountpayment">
+		<sch:p>Pattern for validating the MainOnAccountPayment class</sch:p>
+
+		<!-- - - - - - - - - - - -  Top-level checks - - - - - - - - - - -  -->
+		<sch:rule context="doc:UtilityStatement/cac:MainOnAccountPayment">
+			<!-- Check for excluded elements -->
+			<!-- Check for mandatory elements -->
+			<!-- Validate -->
+		</sch:rule>
+
+		<!-- Validate Note -->
+
+		<!-- Validate Period -->
+		<sch:rule context="doc:UtilityStatement/cac:MainOnAccountPayment/cac:Period">
+		    <sch:extends rule="DescriptionLanguageCheckNew"/>
+			<sch:extends rule="PeriodCheck"/>
+		</sch:rule>
+		<!-- Validate Period/Description -->
+		
+	</sch:pattern>
+
+
+	<!-- - - - - - - - - - - -  SubscriberConsumption - - - - - - - - - - -  -->
+	<sch:pattern name="SubscriberConsumption" id="subscriberconsumption">
+		<sch:p>Pattern for validating the SubscriberConsumption class</sch:p>
+
+		<!-- - - - - - - - - - - -  Top-level checks - - - - - - - - - - -  -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption">
+			<!-- Check for excluded elements -->
+			<!-- Check for mandatory elements -->
+			<!-- Validate -->
+			<!-- [Release 20111201] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=623 -->
+			<sch:assert test="normalize-space(cbc:ConsumptionID) != ''">[F-UTS030] Invalid ConsumptionID. Must contain a value</sch:assert>
+		</sch:rule>
+		<!-- Validate SpecificationTypeCode -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cbc:SpecificationTypeCode">
+			<sch:assert test="./@listID = $UtilitySpecTypeCode_listID">[W-UTS031] Invalid listID. Must be '<sch:value-of select="$UtilitySpecTypeCode_listID"/>'</sch:assert>
+			<sch:assert test="./@listAgencyID = $UtilitySpecTypeCode_agencyID">[W-UTS032] Invalid listAgencyID. Must be '<sch:value-of select="$UtilitySpecTypeCode_agencyID"/>'</sch:assert>
+			<sch:assert test="contains($UtilitySpecTypeCode, concat(',',normalize-space(.),','))">[F-UTS033] Invalid SpecificationTypeCode: '<sch:value-of select="normalize-space(.)"/>'. Must be a value from the codelist</sch:assert>
+		</sch:rule>
+		<!-- Validate Note -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cbc:Note">
+			<sch:extends rule="NoteCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  SubscriberParty - - - - - - - - - - -  -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:SubscriberParty">
+			<!-- Check for excluded elements -->
+			<sch:extends rule="PartyExcludedCheck"/>
+			<!-- Check for mandatory elements -->
+			<!-- Validate -->
+			<sch:extends rule="PartyNameCheck"/>
+			<sch:extends rule="EndpointIDCheck"/>
+			<sch:report test="count(cac:PartyLegalEntity) &gt; 1">[F-UTS034] No more than one PartyLegalEntity class may be present</sch:report>
+		</sch:rule>
+		<!-- Validate PartyIdentification -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:SubscriberParty/cac:PartyIdentification">
+			<sch:extends rule="PartyIdentificationCheck"/>
+		</sch:rule>
+		<!-- Validate PartyName -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:SubscriberParty/cac:PartyName">
+			<sch:extends rule="PartyNameLanguageCheck"/>
+		</sch:rule>
+		<!-- Validate PostalAddress -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:SubscriberParty/cac:PostalAddress">
+			<sch:extends rule="AddressCheck"/>
+		</sch:rule>
+		<!-- Validate PhysicalLocation -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:SubscriberParty/cac:PhysicalLocation">
+			<sch:extends rule="AddressIDCheck"/>
+		</sch:rule>
+		<!-- Validate PhysicalLocation/ValidityPeriod -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:SubscriberParty/cac:PhysicalLocation/cac:ValidityPeriod">
+		    <sch:extends rule="DescriptionLanguageCheckNew"/>
+			<sch:extends rule="PeriodCheck"/>
+		</sch:rule>
+		<!-- Validate PhysicalLocation/ValidityPeriod/Description -->
+		
+		<!-- Validate PhysicalLocation/Address -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:SubscriberParty/cac:PhysicalLocation/cac:Address">
+			<sch:extends rule="AddressCheck"/>
+		</sch:rule>
+		<!-- Validate PartyTaxScheme -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:SubscriberParty/cac:PartyTaxScheme">
+			<sch:extends rule="PartyTaxSchemeCheck"/>
+		</sch:rule>
+		<!-- Validate PartyTaxScheme/TaxScheme -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:SubscriberParty/cac:PartyTaxScheme/cac:TaxScheme">
+			<sch:extends rule="TaxSchemeCheck"/>
+		</sch:rule>
+		<!-- Validate PartyLegalEntity -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:SubscriberParty/cac:PartyLegalEntity">
+			<sch:extends rule="PartyLegalEntityCheck"/>
+		</sch:rule>
+		<!-- Validate Contact -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:SubscriberParty/cac:Contact">
+			<sch:extends rule="ContactCheck"/>
+		</sch:rule>
+		<!-- Validate Person -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:SubscriberParty/cac:Person">
+			<sch:extends rule="Person/FirstNameCheck"/>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  UtilityConsumptionPoint - - - - - - - - - - -  -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:UtilityConsumptionPoint">
+			<!-- [Release 20111201] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=623 -->
+			<sch:assert test="normalize-space(cbc:ID) != ''">[F-UTS035] Invalid ID. Must contain a value</sch:assert>
+		</sch:rule>
+		<!-- Validate ID -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:UtilityConsumptionPoint/cbc:ID">
+			<sch:assert test="contains($UtilityCPointID, concat(',',./@schemeID,','))">[F-UTS036] Invalid schemeID: '<sch:value-of select="./@schemeID"/>'. Must be a valid scheme for ConsumptionPointID</sch:assert>
+			<sch:report test="(./@schemeID = 'GSRN') and not(string-length(.) = 18)">[F-UTS037] schemeID = GSRN, ID must be a valid GSRN number (123456789012345678)</sch:report>
+		</sch:rule>
+		<!-- Validate SubscriberIDTypeCode -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:UtilityConsumptionPoint/cbc:SubscriberIDTypeCode">
+			<sch:assert test="./@listID = $UtilitySubIDTypeCode_listID">[W-UTS038] Invalid listID. Must be '<sch:value-of select="$UtilitySubIDTypeCode_listID"/>'</sch:assert>
+			<sch:assert test="./@listAgencyID = $UtilitySubIDTypeCode_agencyID">[W-UTS039] Invalid listAgencyID. Must be '<sch:value-of select="$UtilitySubIDTypeCode_agencyID"/>'</sch:assert>
+			<sch:assert test="contains($UtilitySubIDTypeCode, concat(',',.,','))">[F-UTS172] Invalid SubscriberIDTypeCode: '<sch:value-of select="."/>'. Must be a value from the codelist</sch:assert>
+		</sch:rule>
+
+		<!-- Validate Address -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:UtilityConsumptionPoint/cac:Address">
+			<sch:extends rule="AddressCheck"/>
+		</sch:rule>
+
+		<!-- Validate WebSiteAccess -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:UtilityConsumptionPoint/cac:WebSiteAccess">
+			<!-- [Release 20111201] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=623 -->
+			<sch:assert test="normalize-space(cbc:URI) != ''">[F-UTS042] Invalid URI. Must contain a value</sch:assert>
+			<!-- [Release 20111201] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=623 -->
+			<sch:assert test="normalize-space(cbc:Password) != ''">[F-UTS043] Invalid Password. Must contain a value</sch:assert>
+			<!-- [Release 20111201] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=623 -->
+			<sch:assert test="normalize-space(cbc:Login) != ''">[F-UTS044] Invalid Login. Must contain a value</sch:assert>
+		</sch:rule>
+
+		<!-- Validate UtilityMeter -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:UtilityConsumptionPoint/cac:UtilityMeter">
+		</sch:rule>
+		<!-- Validate UtilityMeter/MeterConstant -->
+		<!-- Validate UtilityMeter/MeterConstantCode -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:UtilityConsumptionPoint/cac:UtilityMeter/cbc:MeterConstantCode">
+			<sch:assert test="./@listID = $UtilityMeterConCode_listID">[W-UTS045] Invalid listID. Must be '<sch:value-of select="$UtilityMeterConCode_listID"/>'</sch:assert>
+			<sch:assert test="./@listAgencyID = $UtilityMeterConCode_agencyID">[W-UTS046] Invalid listAgencyID. Must be '<sch:value-of select="$UtilityMeterConCode_agencyID"/>'</sch:assert>
+			<sch:assert test="contains($UtilityMeterConCode, concat(',',.,','))">[F-UTS047] Invalid MeterConstantCode: '<sch:value-of select="."/>'. Must be a value from the codelist</sch:assert>
+		</sch:rule>
+		<!-- Validate UtilityMeter/MeterReadingMethodCode - Findes ikke i XSD ver. 2.1 -->
+		<!--sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:UtilityConsumptionPoint/cac:UtilityMeter/cbc:MeterReadingMethodCode">
+			<sch:assert test="./@listID = $UtilityReaMetCode_listID">[W-UTS048] Invalid listID. Must be '<sch:value-of select="$UtilityReaMetCode_listID"/>'</sch:assert>
+			<sch:assert test="./@listAgencyID = $UtilityReaMetCode_agencyID">[W-UTS049] Invalid listAgencyID. Must be '<sch:value-of select="$UtilityReaMetCode_agencyID"/>'</sch:assert>
+			<sch:assert test="contains($UtilityReaMetCode, concat(',',.,','))">[F-UTS050] Invalid MeterReadingMethodCode: '<sch:value-of select="."/>'. Must be a value from the codelist</sch:assert>
+		</sch:rule-->
+		<!-- Validate UtilityMeter/MeterReading -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:UtilityConsumptionPoint/cac:UtilityMeter/cac:MeterReading">
+		</sch:rule>
+		<!-- Validate MeterReadingTypeCode -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:UtilityConsumptionPoint/cac:UtilityMeter/cac:MeterReading/cbc:MeterReadingTypeCode">
+			<sch:assert test="./@listID = $UtilityMRTypeCode_listID">[W-UTS051] Invalid listID. Must be '<sch:value-of select="$UtilityMRTypeCode_listID"/>'</sch:assert>
+			<sch:assert test="./@listAgencyID = $UtilityMRTypeCode_agencyID">[W-UTS052] Invalid listAgencyID. Must be '<sch:value-of select="$UtilityMRTypeCode_agencyID"/>'</sch:assert>
+			<sch:assert test="contains($UtilityMRTypeCode, concat(',',.,','))">[F-UTS053] Invalid MeterReadingTypeCode: '<sch:value-of select="."/>'. Must be a value from the codelist</sch:assert>
+		</sch:rule>
+
+		<!-- - - - - - - - - - - -  OnAccountPayment - - - - - - - - - - -  -->
+		<!-- Validate Period -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:OnAccountPayment/cac:Period">
+		    <sch:extends rule="DescriptionLanguageCheckNew"/>
+			<sch:extends rule="PeriodCheck"/>
+		</sch:rule>
+		<!-- Validate Period/Description -->
+		
+
+
+
+		<!-- - - - - - - - - - - -  Consumption - - - - - - - - - - -  -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:Consumption">
+		</sch:rule>
+
+		<!-- Validate UtilityStatementTypeCode -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:Consumption/cbc:UtilityStatementTypeCode">
+			<sch:assert test="./@listID = $UtilityStatType_listID">[W-UTS054] Invalid listID. Must be '<sch:value-of select="$UtilityStatType_listID"/>'</sch:assert>
+			<sch:assert test="./@listAgencyID = $UtilityStatType_agencyID">[W-UTS055] Invalid listAgencyID. Must be '<sch:value-of select="$UtilityStatType_agencyID"/>'</sch:assert>
+			<sch:assert test="contains($UtilityStatType, concat(',',.,','))">[F-UTS056] Invalid UtilityStatementTypeCode: '<sch:value-of select="."/>'. Must be a value from the codelist</sch:assert>
+		</sch:rule>
+
+		<!-- Validate MainPeriod -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:Consumption/cac:MainPeriod">
+		    <sch:extends rule="DescriptionLanguageCheckNew"/>
+			<sch:extends rule="PeriodCheck"/>
+		</sch:rule>
+		<!-- Validate MainPeriod/Description -->
+		
+
+
+
+		<!-- - - - - - - - - - - -  AllowanceCharge - - - - - - - - - - -  -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:Consumption/cac:AllowanceCharge">
+			<sch:extends rule="AllowanceChargeTopCheck"/>
+			<sch:extends rule="AccountingCostCheck"/>
+		</sch:rule>
+		<!-- Validate AllowanceCharge/SequenceNumeric -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:Consumption/cac:AllowanceCharge/cbc:SequenceNumeric">
+			<sch:extends rule="PosNumberCheck"/>
+		</sch:rule>
+		<!-- Validate AllowanceCharge/Amount -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:Consumption/cac:AllowanceCharge/cbc:Amount">
+			<sch:extends rule="PosZeroNumberCheck"/>
+		</sch:rule>
+		<!-- Validate AllowanceCharge/BaseAmount -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:Consumption/cac:AllowanceCharge/cbc:BaseAmount">
+			<sch:extends rule="PosZeroNumberCheck"/>
+		</sch:rule>
+		<!-- Validate AllowanceCharge/TaxCategory -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:Consumption/cac:AllowanceCharge/cac:TaxCategory">
+			<sch:extends rule="TaxCategoryCheck"/>
+		</sch:rule>
+		<!-- Validate AllowanceCharge/TaxCategory/TaxScheme -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:Consumption/cac:AllowanceCharge/cac:TaxCategory/cac:TaxScheme">
+			<sch:extends rule="TaxSchemeCheck"/>
+		</sch:rule>
+
+
+		<!-- - - - - - - - - - - -  TaxTotal - - - - - - - - - - -  -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:Consumption/cac:TaxTotal">
+			<sch:extends rule="TaxTotalCheck"/>
+		</sch:rule>
+		<!-- Validate TaxTotal/TaxSubtotal -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:Consumption/cac:TaxTotal/cac:TaxSubtotal">
+			<sch:extends rule="TaxSubtotalCheck"/>
+		</sch:rule>
+		<!-- Validate TaxTotal/TaxSubtotal/TaxCategory -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:Consumption/cac:TaxTotal/cac:TaxSubtotal/cac:TaxCategory">
+			<sch:extends rule="TaxCategoryCheck"/>
+		</sch:rule>
+		<!-- Validate TaxTotal/TaxSubtotal/TaxCategory/TaxScheme -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:Consumption/cac:TaxTotal/cac:TaxSubtotal/cac:TaxCategory/cac:TaxScheme">
+			<sch:extends rule="TaxSchemeCheck"/>
+		</sch:rule>
+
+
+		<!-- - - - - - - - - - - - EnergyWaterSupply - - - - - - - - - - -  -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:Consumption/cac:EnergyWaterSupply">
+		</sch:rule>
+
+
+
+		<!-- - - - - - - - - - - -  ConsumptionReport - - - - - - - - - - -  -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:Consumption/cac:EnergyWaterSupply/cac:ConsumptionReport">
+			<!-- [Release 20111201] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=623 -->
+			<sch:assert test="normalize-space(cbc:ID) != ''">[F-UTS057] Invalid ID. Must contain a value</sch:assert>
+			<sch:extends rule="DescriptionLanguageCheckNew"/>
+		</sch:rule>
+
+		<!-- Validate ConsumptionTypeCode -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:Consumption/cac:EnergyWaterSupply/cac:ConsumptionReport/cbc:ConsumptionTypeCode">
+			<sch:assert test="./@listID = $UtilityConTypeCode_listID">[W-UTS058] Invalid listID. Must be '<sch:value-of select="$UtilityConTypeCode_listID"/>'</sch:assert>
+			<sch:assert test="./@listAgencyID = $UtilityConTypeCode_agencyID">[W-UTS059] Invalid listAgencyID. Must be '<sch:value-of select="$UtilityConTypeCode_agencyID"/>'</sch:assert>
+			<sch:assert test="contains($UtilityConTypeCode, concat(',',.,','))">[F-UTS060] Invalid ConsumptionTypeCode: '<sch:value-of select="."/>'. Must be a value from the codelist</sch:assert>
+		</sch:rule>
+
+		<!-- Validate Description -->
+		
+
+		<!-- Validate ConsumersEnergyLevelCode -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:Consumption/cac:EnergyWaterSupply/cac:ConsumptionReport/cbc:ConsumersEnergyLevelCode">
+			<sch:assert test="./@listID = $UtilityCELCode_listID">[W-UTS061] Invalid listID. Must be '<sch:value-of select="$UtilityCELCode_listID"/>'</sch:assert>
+			<sch:assert test="./@listAgencyID = $UtilityCELCode_agencyID">[W-UTS062] Invalid listAgencyID. Must be '<sch:value-of select="$UtilityCELCode_agencyID"/>'</sch:assert>
+			<sch:assert test="contains($UtilityCELCode, concat(',',.,','))">[F-UTS063] Invalid ConsumersEnergyLevelCode: '<sch:value-of select="."/>'. Must be a value from the codelist</sch:assert>
+		</sch:rule>
+
+		<!-- Validate ResidenseTypeCode -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:Consumption/cac:EnergyWaterSupply/cac:ConsumptionReport/cbc:ResidenceTypeCode">
+			<sch:assert test="./@listID = $UtilityResTypeCode_listID">[W-UTS064] Invalid listID. Must be '<sch:value-of select="$UtilityResTypeCode_listID"/>'</sch:assert>
+			<sch:assert test="./@listAgencyID = $UtilityResTypeCode_agencyID">[W-UTS065] Invalid listAgencyID. Must be '<sch:value-of select="$UtilityResTypeCode_agencyID"/>'</sch:assert>
+			<sch:assert test="contains($UtilityResTypeCode, concat(',',.,','))">[F-UTS066] Invalid ResidenseTypeCode: '<sch:value-of select="."/>'. Must be a value from the codelist</sch:assert>
+		</sch:rule>
+
+		<!-- Validate HeatingTypeCode -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:Consumption/cac:EnergyWaterSupply/cac:ConsumptionReport/cbc:HeatingTypeCode">
+			<sch:assert test="./@listID = $UtilityHeaTypeCode_listID">[W-UTS067] Invalid listID. Must be '<sch:value-of select="$UtilityHeaTypeCode_listID"/>'</sch:assert>
+			<sch:assert test="./@listAgencyID = $UtilityHeaTypeCode_agencyID">[W-UTS068] Invalid listAgencyID. Must be '<sch:value-of select="$UtilityHeaTypeCode_agencyID"/>'</sch:assert>
+			<sch:assert test="contains($UtilityHeaTypeCode, concat(',',.,','))">[F-UTS069] Invalid HeatingTypeCode: '<sch:value-of select="."/>'. Must be a value from the codelist</sch:assert>
+		</sch:rule>
+
+		<!-- Validate Period -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:Consumption/cac:EnergyWaterSupply/cac:ConsumptionReport/cac:Period">
+		    <sch:extends rule="DescriptionLanguageCheckNew"/>
+			<sch:extends rule="PeriodCheck"/>
+		</sch:rule>
+		<!-- Validate Period/Description -->
+		
+		<!-- Validate GuidanceDocumentReference -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:Consumption/cac:EnergyWaterSupply/cac:ConsumptionReport/cac:GuidanceDocumentReference">
+			<sch:extends rule="KnownDocumentReferenceCheck"/>
+		</sch:rule>
+
+		<!-- Validate DocumentReference -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:Consumption/cac:EnergyWaterSupply/cac:ConsumptionReport/cac:DocumentReference">
+			<sch:extends rule="DocumentReferenceCheck"/>
+		</sch:rule>
+
+		<!-- Validate ConsumptionReportReference -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:Consumption/cac:EnergyWaterSupply/cac:ConsumptionReport/cac:ConsumptionReportReference">
+			<!-- [Release 20111201] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=623 -->
+			<sch:assert test="normalize-space(cbc:ConsumptionReportID) != ''">[F-UTS070] Invalid ConsumptionReportID. Must contain a value</sch:assert>
+		</sch:rule>
+		<!-- Validate ConsumptionReportReference/ConsumptionTypeCode -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:Consumption/cac:EnergyWaterSupply/cac:ConsumptionReport/cac:ConsumptionReportReference/cbc:ConsumptionTypeCode">
+			<sch:assert test="./@listID = $UtilityConTypeCode_listID">[W-UTS071] Invalid listID. Must be '<sch:value-of select="$UtilityConTypeCode_listID"/>'</sch:assert>
+			<sch:assert test="./@listAgencyID = $UtilityConTypeCode_agencyID">[W-UTS072] Invalid listAgencyID. Must be '<sch:value-of select="$UtilityConTypeCode_agencyID"/>'</sch:assert>
+			<sch:assert test="contains($UtilityConTypeCode, concat(',',.,','))">[F-UTS073] Invalid ConsumptionTypeCode: '<sch:value-of select="."/>'. Must be a value from the codelist</sch:assert>
+		</sch:rule>
+		<!-- Validate ConsumptionReportReference/Period -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:Consumption/cac:EnergyWaterSupply/cac:ConsumptionReport/cac:ConsumptionReportReference/cac:Period">
+			<sch:extends rule="DescriptionLanguageCheckNew"/>
+			<sch:extends rule="PeriodCheck"/>
+		</sch:rule>
+		<!-- Validate ConsumptionReportReference/Period/Description -->
+	
+
+		<!-- Validate ConsumptionHistory -->
+		<!-- Validate ConsumptionLevelCode -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:Consumption/cac:EnergyWaterSupply/cac:ConsumptionReport/cac:ConsumptionHistory/cbc:ConsumptionLevelCode">
+			<sch:assert test="./@listID = $UtilityCELCode_listID">[W-UTS074] Invalid listID. Must be '<sch:value-of select="$UtilityCELCode_listID"/>'</sch:assert>
+			<sch:assert test="./@listAgencyID = $UtilityCELCode_agencyID">[W-UTS075] Invalid listAgencyID. Must be '<sch:value-of select="$UtilityCELCode_agencyID"/>'</sch:assert>
+			<sch:assert test="contains($UtilityCELCode, concat(',',.,','))">[F-UTS076] Invalid ConsumptionLevelCode: '<sch:value-of select="."/>'. Must be a value from the codelist</sch:assert>
+		</sch:rule>
+		<!-- Validate Description -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:Consumption/cac:EnergyWaterSupply/cac:ConsumptionReport/cac:ConsumptionHistory">
+			<sch:extends rule="DescriptionLanguageCheckNew"/>
+		</sch:rule>
+		<!-- Validate Period -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:Consumption/cac:EnergyWaterSupply/cac:ConsumptionReport/cac:ConsumptionHistory/cac:Period">
+		    <sch:extends rule="DescriptionLanguageCheckNew"/>
+			<sch:extends rule="PeriodCheck"/>
+		</sch:rule>
+		<!-- Validate Period/Description -->
+		
+
+
+		<!-- - - - - - - - - - - -  EnergyTaxReport - - - - - - - - - - -  -->
+		<!-- Validate TaxScheme -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:Consumption/cac:EnergyWaterSupply/cac:EnergyTaxReport/cac:TaxScheme">
+			<sch:extends rule="TaxSchemeCheck"/>
+		</sch:rule>
+
+
+		<!-- - - - - - - - - - - -  ConsumptionAverage - - - - - - - - - - -  -->
+
+
+		<!-- - - - - - - - - - - -  EnergyWaterCorrection - - - - - - - - - - -  -->
+		<!-- Validate CorrectionTypeCode -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:Consumption/cac:EnergyWaterSupply/cac:EnergyWaterCorrection/cbc:CorrectionTypeCode">
+			<sch:assert test="./@listID = $UtilityCorTypeCode_listID">[W-UTS077] Invalid listID. Must be '<sch:value-of select="$UtilityCorTypeCode_listID"/>'</sch:assert>
+			<sch:assert test="./@listAgencyID = $UtilityCorTypeCode_agencyID">[W-UTS078] Invalid listAgencyID. Must be '<sch:value-of select="$UtilityCorTypeCode_agencyID"/>'</sch:assert>
+			<sch:assert test="contains($UtilityCorTypeCode, concat(',',.,','))">[F-UTS079] Invalid CorrectionTypeCode: '<sch:value-of select="."/>'. Must be a value from the codelist</sch:assert>
+		</sch:rule>
+
+
+
+		<!-- - - - - - - - - - - - TelecommunicationsSupply - - - - - - - - - - -  -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:Consumption/cac:TelecommunicationsSupply">
+		</sch:rule>
+		<!-- Validate TelecommunicationsSupplyType -->
+		<!-- Validate TelecommunicationsSupplyTypeCode -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:Consumption/cac:TelecommunicationsSupply/cbc:TelecommunicationsSupplyTypeCode">
+			<sch:assert test="./@listID = $UtilityTeleSupTypeCode_listID">[W-UTS080] Invalid listID. Must be '<sch:value-of select="$UtilityTeleSupTypeCode_listID"/>'</sch:assert>
+			<sch:assert test="./@listAgencyID = $UtilityTeleSupTypeCode_agencyID">[W-UTS081] Invalid listAgencyID. Must be '<sch:value-of select="$UtilityTeleSupTypeCode_agencyID"/>'</sch:assert>
+			<sch:assert test="contains($UtilityTeleSupTypeCode, concat(',',.,','))">[F-UTS082] Invalid ExtendedSpecificationTypeCode: '<sch:value-of select="."/>'. Must be a value from the codelist</sch:assert>
+		</sch:rule>
+		<!-- Validate PrivacyCode -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:Consumption/cac:TelecommunicationsSupply/cbc:PrivacyCode">
+			<sch:assert test="./@listID = $UtilityPrivacyCode_listID">[W-UTS083] Invalid listID. Must be '<sch:value-of select="$UtilityPrivacyCode_listID"/>'</sch:assert>
+			<sch:assert test="./@listAgencyID = $UtilityPrivacyCode_agencyID">[W-UTS084] Invalid listAgencyID. Must be '<sch:value-of select="$UtilityPrivacyCode_agencyID"/>'</sch:assert>
+			<sch:assert test="contains($UtilityPrivacyCode, concat(',',.,','))">[F-UTS085] Invalid PrivacyCode: '<sch:value-of select="."/>'. Must be a value from the codelist</sch:assert>
+		</sch:rule>
+		<!-- Validate Description -->
+		<!-- Validate TotalAmount -->
+
+
+		<!-- - - - - - - - - - - -  TelecommunicationsSupplyLine - - - - - - - - - - -  -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:Consumption/cac:TelecommunicationsSupply/cac:TelecommunicationsSupplyLine">
+			<!-- Check for excluded elements -->
+			<!-- Check for mandatory elements -->
+
+			<!-- Validate -->
+			<!-- [Release 20111201] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=623 -->
+			<sch:assert test="normalize-space(cbc:ID) != ''">[F-UTS086] Invalid ID. Must contain a value</sch:assert>
+			<!-- [Release 20111201] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=623 -->
+			<sch:assert test="normalize-space(cbc:PhoneNumber) != ''">[F-UTS087] Invalid PhoneNumber. Must contain a value</sch:assert>
+		</sch:rule>
+
+		<!-- Validate LineExtensionAmount -->
+
+		<!-- Validate ExchangeRate -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:Consumption/cac:TelecommunicationsSupply/cac:TelecommunicationsSupplyLine/cac:ExchangeRate">
+			<sch:extends rule="ExchangeRateCheck"/>
+		</sch:rule>
+		<!-- Validate ExchangeRate/ForeignExchangeContract/ValidityPeriod -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:Consumption/cac:TelecommunicationsSupply/cac:TelecommunicationsSupplyLine/cac:ExchangeRate/cac:ForeignExchangeContract/cac:ValidityPeriod">
+			<sch:extends rule="DescriptionLanguageCheckNew"/>
+			<sch:extends rule="PeriodCheck"/>
+		</sch:rule>
+		<!-- Validate ExchangeRate/ForeignExchangeContract/ValidityPeriod/Description -->
+		
+		<!-- Validate ExchangeRate/ForeignExchangeContract/ContractDocumentReference -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:Consumption/cac:TelecommunicationsSupply/cac:TelecommunicationsSupplyLine/cac:ExchangeRate/cac:ForeignExchangeContract/cac:ContractDocumentReference">
+			<sch:extends rule="KnownDocumentReferenceCheck"/>
+		</sch:rule>
+
+		<!-- Validate AllowanceCharge -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:Consumption/cac:TelecommunicationsSupply/cac:TelecommunicationsSupplyLine/cac:AllowanceCharge">
+			<sch:extends rule="AllowanceChargeTopCheck"/>
+			<sch:extends rule="AccountingCostCheck"/>
+		</sch:rule>
+		<!-- Validate AllowanceCharge/SequenceNumeric -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:Consumption/cac:TelecommunicationsSupply/cac:TelecommunicationsSupplyLine/cac:AllowanceCharge/cbc:SequenceNumeric">
+			<sch:extends rule="PosNumberCheck"/>
+		</sch:rule>
+		<!-- Validate AllowanceCharge/Amount -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:Consumption/cac:TelecommunicationsSupply/cac:TelecommunicationsSupplyLine/cac:AllowanceCharge/cbc:Amount">
+			<sch:extends rule="PosZeroNumberCheck"/>
+		</sch:rule>
+		<!-- Validate AllowanceCharge/BaseAmount -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:Consumption/cac:TelecommunicationsSupply/cac:TelecommunicationsSupplyLine/cac:AllowanceCharge/cbc:BaseAmount">
+			<sch:extends rule="PosZeroNumberCheck"/>
+		</sch:rule>
+		<!-- Validate AllowanceCharge/TaxCategory -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:Consumption/cac:TelecommunicationsSupply/cac:TelecommunicationsSupplyLine/cac:AllowanceCharge/cac:TaxCategory">
+			<sch:extends rule="TaxCategoryCheck"/>
+		</sch:rule>
+		<!-- Validate AllowanceCharge/TaxCategory/TaxScheme -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:Consumption/cac:TelecommunicationsSupply/cac:TelecommunicationsSupplyLine/cac:AllowanceCharge/cac:TaxCategory/cac:TaxScheme">
+			<sch:extends rule="TaxSchemeCheck"/>
+		</sch:rule>
+
+		<!-- Validate TaxTotal -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:Consumption/cac:TelecommunicationsSupply/cac:TelecommunicationsSupplyLine/cac:TaxTotal">
+			<sch:extends rule="TaxTotalCheck"/>
+		</sch:rule>
+		<!-- Validate TaxTotal/TaxSubtotal -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:Consumption/cac:TelecommunicationsSupply/cac:TelecommunicationsSupplyLine/cac:TaxTotal/cac:TaxSubtotal">
+			<sch:extends rule="TaxSubtotalCheck"/>
+		</sch:rule>
+		<!-- Validate TaxTotal/TaxSubtotal/TaxCategory -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:Consumption/cac:TelecommunicationsSupply/cac:TelecommunicationsSupplyLine/cac:TaxTotal/cac:TaxSubtotal/cac:TaxCategory">
+			<sch:extends rule="TaxCategoryCheck"/>
+		</sch:rule>
+		<!-- Validate TaxTotal/TaxSubtotal/TaxCategory/TaxScheme -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:Consumption/cac:TelecommunicationsSupply/cac:TelecommunicationsSupplyLine/cac:TaxTotal/cac:TaxSubtotal/cac:TaxCategory/cac:TaxScheme">
+			<sch:extends rule="TaxSchemeCheck"/>
+		</sch:rule>
+
+
+		<!-- - - - - - - - - - - -  TelecommunicationsService - - - - - - - - - - -  -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:Consumption/cac:TelecommunicationsSupply/cac:TelecommunicationsSupplyLine/cac:TelecommunicationsService">
+			<!-- [Release 20111201] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=623 -->
+			<sch:assert test="normalize-space(cbc:ID) != ''">[F-UTS088] Invalid ID. Must contain a value</sch:assert>
+			<!-- [Release 20111201] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=623 -->
+			<sch:assert test="normalize-space(cbc:CallDate) != ''">[F-UTS089] Invalid CallDate. Must contain a value</sch:assert>
+			<!-- [Release 20111201] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=623 -->
+			<sch:assert test="normalize-space(cbc:CallTime) != ''">[F-UTS090] Invalid CallTime. Must contain a value</sch:assert>
+			<!-- [Release 20111201] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=623 -->
+			<sch:assert test="normalize-space(cbc:ServiceNumberCalled) != ''">[F-UTS091] Invalid ServiceNumberCalled. Must contain a value</sch:assert>
+			<sch:report test="cac:Country and not(cac:Country/cbc:IdentificationCode != '')">[F-UTS092] When Country is used the element Country/IdentificationCode must be filled out</sch:report>
+		</sch:rule>
+
+		<!-- Validate TelecommunicationsService/TelecommunicationsServiceCategoryCode -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:Consumption/cac:TelecommunicationsSupply/cac:TelecommunicationsSupplyLine/cac:TelecommunicationsService/cbc:TelecommunicationsServiceCategoryCode">
+			<sch:assert test="./@listID = $UtilityTeleCatCode_listID">[W-UTS093] Invalid listID. Must be '<sch:value-of select="$UtilityTeleCatCode_listID"/>'</sch:assert>
+			<sch:assert test="./@listAgencyID = $UtilityTeleCatCode_agencyID">[W-UTS094] Invalid listAgencyID. Must be '<sch:value-of select="$UtilityTeleCatCode_agencyID"/>'</sch:assert>
+			<sch:assert test="contains($UtilityTeleCatCode, concat(',',.,','))">[F-UTS095] Invalid TelecommunicationsServiceCategoryCode: '<sch:value-of select="."/>'. Must be a value from the codelist</sch:assert>
+		</sch:rule>
+
+		<!-- Validate TelecommunicationsService/TelecommunicationsServiceCallCode -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:Consumption/cac:TelecommunicationsSupply/cac:TelecommunicationsSupplyLine/cac:TelecommunicationsService/cbc:TelecommunicationsServiceCallCode">
+			<sch:assert test="./@listID = $UtilityTeleCallCode_listID">[W-UTS096] Invalid listID. Must be '<sch:value-of select="$UtilityTeleCallCode_listID"/>'</sch:assert>
+			<sch:assert test="./@listAgencyID = $UtilityTeleCallCode_agencyID">[W-UTS097] Invalid listAgencyID. Must be '<sch:value-of select="$UtilityTeleCallCode_agencyID"/>'</sch:assert>
+			<sch:assert test="contains($UtilityTeleCallCode, concat(',',.,','))">[F-UTS098] Invalid TelecommunicationsServiceCallCode: '<sch:value-of select="."/>'. Must be a value from the codelist</sch:assert>
+		</sch:rule>
+
+
+		<!-- Validate Price -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:Consumption/cac:TelecommunicationsSupply/cac:TelecommunicationsSupplyLine/cac:TelecommunicationsService/cac:Price">
+			<!-- Check for excluded elements -->
+			<!-- Check for mandatory elements -->
+			<!-- Validate -->
+		</sch:rule>
+		<!-- Validate PriceAmount -->
+		<!-- Validate BaseQuantity -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:Consumption/cac:TelecommunicationsSupply/cac:TelecommunicationsSupplyLine/cac:TelecommunicationsService/cac:Price/cbc:BaseQuantity">
+			<sch:extends rule="unitCodeCheck"/>
+			<sch:extends rule="PosZeroNumberCheck"/>
+		</sch:rule>
+		<!-- Validate PriceChangeReason -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:Consumption/cac:TelecommunicationsSupply/cac:TelecommunicationsSupplyLine/cac:TelecommunicationsService/cac:Price/cbc:PriceChangeReason">
+			<sch:report test="count(../cbc:PriceChangeReason) &gt; 1 and not(./@languageID)">[W-UTS099] The attribute languageID should be used when more than one PriceChangeReason element is present</sch:report>
+			<sch:report test="following-sibling::*/@languageID = self::*/@languageID">[W-UTS100] Multilanguage error. Replicated PriceChangeReason elements with same languageID attribute value</sch:report>
+		</sch:rule>
+		<!-- Validate PriceTypeCode -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:Consumption/cac:TelecommunicationsSupply/cac:TelecommunicationsSupplyLine/cac:TelecommunicationsService/cac:Price/cbc:PriceTypeCode">
+			<sch:assert test="./@listID = 'UN/ECE 5387'">[F-UTS101] Invalid listID. Must be 'UN/ECE 5387'</sch:assert>
+		</sch:rule>
+		<!-- Validate PriceType -->
+		<!-- Validate OrderableUnitFactorRate -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:Consumption/cac:TelecommunicationsSupply/cac:TelecommunicationsSupplyLine/cac:TelecommunicationsService/cac:Price/cbc:OrderableUnitFactorRate">
+			<sch:extends rule="PosZeroNumberCheck"/>
+		</sch:rule>
+		<!-- Validate ValidityPeriod -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:Consumption/cac:TelecommunicationsSupply/cac:TelecommunicationsSupplyLine/cac:TelecommunicationsService/cac:Price/cac:ValidityPeriod">
+			<sch:extends rule="DescriptionLanguageCheckNew"/>
+			<sch:extends rule="PeriodCheck"/>
+		</sch:rule>
+		<!-- Validate ValidityPeriod/Description -->
+	
+		<!-- Validate PriceList -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:Consumption/cac:TelecommunicationsSupply/cac:TelecommunicationsSupplyLine/cac:TelecommunicationsService/cac:Price/cac:PriceList">
+			<!-- <sch:report test="'1' = '1'">[I-UTS999] Validation not yet implemented!</sch:report> -->
+		</sch:rule>
+		<!-- Validate AllowanceCharge -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:Consumption/cac:TelecommunicationsSupply/cac:TelecommunicationsSupplyLine/cac:TelecommunicationsService/cac:Price/cac:AllowanceCharge">
+			<sch:extends rule="PriceAllowanceChargeTopCheck"/>
+		</sch:rule>
+		<!-- Validate AllowanceCharge/SequenceNumeric -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:Consumption/cac:TelecommunicationsSupply/cac:TelecommunicationsSupplyLine/cac:TelecommunicationsService/cac:Price/cac:AllowanceCharge/cbc:SequenceNumeric">
+			<sch:extends rule="PosNumberCheck"/>
+		</sch:rule>
+		<!-- Validate AllowanceCharge/Amount -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:Consumption/cac:TelecommunicationsSupply/cac:TelecommunicationsSupplyLine/cac:TelecommunicationsService/cac:Price/cac:AllowanceCharge/cbc:Amount">
+			<sch:extends rule="PosZeroNumberCheck"/>
+		</sch:rule>
+		<!-- Validate AllowanceCharge/BaseAmount -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:Consumption/cac:TelecommunicationsSupply/cac:TelecommunicationsSupplyLine/cac:TelecommunicationsService/cac:Price/cac:AllowanceCharge/cbc:BaseAmount">
+			<sch:extends rule="PosZeroNumberCheck"/>
+		</sch:rule>
+		<!-- Validate AllowanceCharge/TaxCategory -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:Consumption/cac:TelecommunicationsSupply/cac:TelecommunicationsSupplyLine/cac:TelecommunicationsService/cac:Price/cac:AllowanceCharge/cac:TaxCategory">
+			<sch:extends rule="TaxCategoryCheck"/>
+		</sch:rule>
+		<!-- Validate AllowanceCharge/TaxCategory/TaxScheme -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:Consumption/cac:TelecommunicationsSupply/cac:TelecommunicationsSupplyLine/cac:TelecommunicationsService/cac:Price/cac:AllowanceCharge/cac:TaxCategory/cac:TaxScheme">
+			<sch:extends rule="TaxSchemeCheck"/>
+		</sch:rule>
+
+
+		<!-- Validate Country -->
+		<!-- Validate Country/IdentificationCode -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:Consumption/cac:TelecommunicationsSupply/cac:TelecommunicationsSupplyLine/cac:TelecommunicationsService/cac:Country/cbc:IdentificationCode">
+			<sch:extends rule="CountryCodeCheck"/>
+		</sch:rule>
+
+		<!-- Validate ExchangeRate -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:Consumption/cac:TelecommunicationsSupply/cac:TelecommunicationsSupplyLine/cac:TelecommunicationsService/cac:ExchangeRate">
+			<sch:extends rule="ExchangeRateCheck"/>
+		</sch:rule>
+		<!-- Validate ExchangeRate/ForeignExchangeContract/ValidityPeriod -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:Consumption/cac:TelecommunicationsSupply/cac:TelecommunicationsSupplyLine/cac:TelecommunicationsService/cac:ExchangeRate/cac:ForeignExchangeContract/cac:ValidityPeriod">
+			<sch:extends rule="PeriodCheck"/>
+			<sch:extends rule="DescriptionLanguageCheckNew"/>
+		</sch:rule>
+		<!-- Validate ExchangeRate/ForeignExchangeContract/ValidityPeriod/Description -->
+		
+		<!-- Validate ExchangeRate/ForeignExchangeContract/ContractDocumentReference -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:Consumption/cac:TelecommunicationsSupply/cac:TelecommunicationsSupplyLine/cac:TelecommunicationsService/cac:ExchangeRate/cac:ForeignExchangeContract/cac:ContractDocumentReference">
+			<sch:extends rule="KnownDocumentReferenceCheck"/>
+		</sch:rule>
+
+		<!-- Validate AllowanceCharge -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:Consumption/cac:TelecommunicationsSupply/cac:TelecommunicationsSupplyLine/cac:TelecommunicationsService/cac:AllowanceCharge">
+			<sch:extends rule="AllowanceChargeTopCheck"/>
+			<sch:extends rule="AccountingCostCheck"/>
+		</sch:rule>
+		<!-- Validate AllowanceCharge/SequenceNumeric -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:Consumption/cac:TelecommunicationsSupply/cac:TelecommunicationsSupplyLine/cac:TelecommunicationsService/cac:AllowanceCharge/cbc:SequenceNumeric">
+			<sch:extends rule="PosNumberCheck"/>
+		</sch:rule>
+		<!-- Validate AllowanceCharge/Amount -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:Consumption/cac:TelecommunicationsSupply/cac:TelecommunicationsSupplyLine/cac:TelecommunicationsService/cac:AllowanceCharge/cbc:Amount">
+			<sch:extends rule="PosZeroNumberCheck"/>
+		</sch:rule>
+		<!-- Validate AllowanceCharge/BaseAmount -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:Consumption/cac:TelecommunicationsSupply/cac:TelecommunicationsSupplyLine/cac:TelecommunicationsService/cac:AllowanceCharge/cbc:BaseAmount">
+			<sch:extends rule="PosZeroNumberCheck"/>
+		</sch:rule>
+		<!-- Validate AllowanceCharge/TaxCategory -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:Consumption/cac:TelecommunicationsSupply/cac:TelecommunicationsSupplyLine/cac:TelecommunicationsService/cac:AllowanceCharge/cac:TaxCategory">
+			<sch:extends rule="TaxCategoryCheck"/>
+		</sch:rule>
+		<!-- Validate AllowanceCharge/TaxCategory/TaxScheme -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:Consumption/cac:TelecommunicationsSupply/cac:TelecommunicationsSupplyLine/cac:TelecommunicationsService/cac:AllowanceCharge/cac:TaxCategory/cac:TaxScheme">
+			<sch:extends rule="TaxSchemeCheck"/>
+		</sch:rule>
+
+		<!-- Validate TaxTotal -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:Consumption/cac:TelecommunicationsSupply/cac:TelecommunicationsSupplyLine/cac:TelecommunicationsService/cac:TaxTotal">
+			<sch:extends rule="TaxTotalCheck"/>
+		</sch:rule>
+		<!-- Validate TaxTotal/TaxSubtotal -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:Consumption/cac:TelecommunicationsSupply/cac:TelecommunicationsSupplyLine/cac:TelecommunicationsService/cac:TaxTotal/cac:TaxSubtotal">
+			<sch:extends rule="TaxSubtotalCheck"/>
+		</sch:rule>
+		<!-- Validate TaxTotal/TaxSubtotal/TaxCategory -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:Consumption/cac:TelecommunicationsSupply/cac:TelecommunicationsSupplyLine/cac:TelecommunicationsService/cac:TaxTotal/cac:TaxSubtotal/cac:TaxCategory">
+			<sch:extends rule="TaxCategoryCheck"/>
+		</sch:rule>
+		<!-- Validate TaxTotal/TaxSubtotal/TaxCategory/TaxScheme -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:Consumption/cac:TelecommunicationsSupply/cac:TelecommunicationsSupplyLine/cac:TelecommunicationsService/cac:TaxTotal/cac:TaxSubtotal/cac:TaxCategory/cac:TaxScheme">
+			<sch:extends rule="TaxSchemeCheck"/>
+		</sch:rule>
+
+
+		<!-- - - - - - - - - - - -  CallDuty - - - - - - - - - - -  -->
+		<!-- Validate CallDuty/DutyCode -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:Consumption/cac:TelecommunicationsSupply/cac:TelecommunicationsSupplyLine/cac:TelecommunicationsService/cac:CallDuty/cbc:DutyCode">
+			<sch:assert test="./@listID = $UtilityDutyCode_listID">[W-UTS102] Invalid listID. Must be '<sch:value-of select="$UtilityDutyCode_listID"/>'</sch:assert>
+			<sch:assert test="./@listAgencyID = $UtilityDutyCode_agencyID">[W-UTS103] Invalid listAgencyID. Must be '<sch:value-of select="$UtilityDutyCode_agencyID"/>'</sch:assert>
+			<sch:assert test="contains($UtilityDutyCode, concat(',',.,','))">[F-UTS104] Invalid DutyCode: '<sch:value-of select="."/>'. Must be a value from the codelist</sch:assert>
+		</sch:rule>
+		<!-- Validate CallDuty/TaxCategory -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:Consumption/cac:TelecommunicationsSupply/cac:TelecommunicationsSupplyLine/cac:TelecommunicationsService/cac:CallDuty/cac:TaxCategory">
+			<sch:extends rule="TaxCategoryCheck"/>
+		</sch:rule>
+		<!-- Validate CallDuty/TaxCategory/TaxScheme -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:Consumption/cac:TelecommunicationsSupply/cac:TelecommunicationsSupplyLine/cac:TelecommunicationsService/cac:CallDuty/cac:TaxCategory/cac:TaxScheme">
+			<sch:extends rule="TaxSchemeCheck"/>
+		</sch:rule>
+
+
+		<!-- - - - - - - - - - - -  TimeDuty - - - - - - - - - - -  -->
+		<!-- Validate TimeDuty/DutyCode -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:Consumption/cac:TelecommunicationsSupply/cac:TelecommunicationsSupplyLine/cac:TelecommunicationsService/cac:TimeDuty/cbc:DutyCode">
+			<sch:assert test="./@listID = $UtilityDutyCode_listID">[W-UTS105] Invalid listID. Must be '<sch:value-of select="$UtilityDutyCode_listID"/>'</sch:assert>
+			<sch:assert test="./@listAgencyID = $UtilityDutyCode_agencyID">[W-UTS106] Invalid listAgencyID. Must be '<sch:value-of select="$UtilityDutyCode_agencyID"/>'</sch:assert>
+			<sch:assert test="contains($UtilityDutyCode, concat(',',.,','))">[F-UTS107] Invalid DutyCode: '<sch:value-of select="."/>'. Must be a value from the codelist</sch:assert>
+		</sch:rule>
+		<!-- Validate TimeDuty/TaxCategory -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:Consumption/cac:TelecommunicationsSupply/cac:TelecommunicationsSupplyLine/cac:TelecommunicationsService/cac:TimeDuty/cac:TaxCategory">
+			<sch:extends rule="TaxCategoryCheck"/>
+		</sch:rule>
+		<!-- Validate TimeDuty/TaxCategory/TaxScheme -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:Consumption/cac:TelecommunicationsSupply/cac:TelecommunicationsSupplyLine/cac:TelecommunicationsService/cac:TimeDuty/cac:TaxCategory/cac:TaxScheme">
+			<sch:extends rule="TaxSchemeCheck"/>
+		</sch:rule>
+
+
+
+		<!-- - - - - - - - - - - -  LegalMonetaryTotal - - - - - - - - - - -  -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:Consumption/cac:LegalMonetaryTotal">
+		</sch:rule>
+
+
+		<!-- - - - - - - - - - - -  SupplierConsumption - - - - - - - - - - -  -->
+
+		<!-- Validate UtilitySupplyerParty -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:SupplierConsumption/cac:UtilitySupplierParty">
+			<!-- Check for excluded elements -->
+			<sch:extends rule="PartyExcludedCheck"/>
+			<!-- Check for mandatory elements -->
+			<!-- Validate -->
+			<sch:extends rule="PartyNameCheck"/>
+			<sch:extends rule="EndpointIDCheck"/>
+			<sch:assert test="count(cac:PartyLegalEntity) = 1">[F-UTS108] One PartyLegalEntity class must be present</sch:assert>
+		</sch:rule>
+		<!-- Validate PartyIdentification -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:SupplierConsumption/cac:UtilitySupplierParty/cac:PartyIdentification">
+			<sch:extends rule="PartyIdentificationCheck"/>
+		</sch:rule>
+		<!-- Validate PartyName -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:SupplierConsumption/cac:UtilitySupplierParty/cac:PartyName">
+			<sch:extends rule="PartyNameLanguageCheck"/>
+		</sch:rule>
+		<!-- Validate PostalAddress -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:SupplierConsumption/cac:UtilitySupplierParty/cac:PostalAddress">
+			<sch:extends rule="AddressCheck"/>
+		</sch:rule>
+		<!-- Validate PhysicalLocation -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:SupplierConsumption/cac:UtilitySupplierParty/cac:PhysicalLocation">
+			<sch:extends rule="AddressIDCheck"/>
+		</sch:rule>
+		<!-- Validate PhysicalLocation/ValidityPeriod -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:SupplierConsumption/cac:UtilitySupplierParty/cac:PhysicalLocation/cac:ValidityPeriod">
+			<sch:extends rule="PeriodCheck"/>
+			<sch:extends rule="DescriptionLanguageCheckNew"/>
+		</sch:rule>
+		<!-- Validate PhysicalLocation/ValidityPeriod/Description -->
+	
+		<!-- Validate PhysicalLocation/Address -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:SupplierConsumption/cac:UtilitySupplierParty/cac:PhysicalLocation/cac:Address">
+			<sch:extends rule="AddressCheck"/>
+		</sch:rule>
+		<!-- Validate PartyTaxScheme -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:SupplierConsumption/cac:UtilitySupplierParty/cac:PartyTaxScheme">
+			<sch:extends rule="PartyTaxSchemeCheck"/>
+		</sch:rule>
+		<!-- Validate PartyTaxScheme/TaxScheme -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:SupplierConsumption/cac:UtilitySupplierParty/cac:PartyTaxScheme/cac:TaxScheme">
+			<sch:extends rule="TaxSchemeCheck"/>
+		</sch:rule>
+		<!-- Validate PartyLegalEntity -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:SupplierConsumption/cac:UtilitySupplierParty/cac:PartyLegalEntity">
+			<sch:extends rule="PartyLegalEntityCheck"/>
+		</sch:rule>
+		<!-- Validate Contact -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:SupplierConsumption/cac:UtilitySupplierParty/cac:Contact">
+			<sch:extends rule="ContactCheck"/>
+		</sch:rule>
+		<!-- Validate Person -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:SupplierConsumption/cac:UtilitySupplierParty/cac:Person">
+			<sch:extends rule="Person/FirstNameCheck"/>
+		</sch:rule>
+
+
+		<!-- Validate UtilityCustomerParty -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:SupplierConsumption/cac:UtilityCustomerParty">
+			<!-- Check for excluded elements -->
+			<sch:extends rule="PartyExcludedCheck"/>
+			<!-- Check for mandatory elements -->
+			<!-- Validate -->
+			<sch:extends rule="PartyNameCheck"/>
+			<sch:extends rule="EndpointIDCheck"/>
+			<sch:report test="count(cac:PartyLegalEntity) &gt; 1">[F-UTS109] No more than one PartyLegalEntity class may be present</sch:report>
+		</sch:rule>
+		<!-- Validate PartyIdentification -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:SupplierConsumption/cac:UtilityCustomerParty/cac:PartyIdentification">
+			<sch:extends rule="PartyIdentificationCheck"/>
+		</sch:rule>
+		<!-- Validate PartyName -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:SupplierConsumption/cac:UtilityCustomerParty/cac:PartyName">
+			<sch:extends rule="PartyNameLanguageCheck"/>
+		</sch:rule>
+		<!-- Validate PostalAddress -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:SupplierConsumption/cac:UtilityCustomerParty/cac:PostalAddress">
+			<sch:extends rule="AddressCheck"/>
+		</sch:rule>
+		<!-- Validate PhysicalLocation -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:SupplierConsumption/cac:UtilityCustomerParty/cac:PhysicalLocation">
+			<sch:extends rule="AddressIDCheck"/>
+		</sch:rule>
+		<!-- Validate PhysicalLocation/ValidityPeriod -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:SupplierConsumption/cac:UtilityCustomerParty/cac:PhysicalLocation/cac:ValidityPeriod">
+			<sch:extends rule="PeriodCheck"/>
+			<sch:extends rule="DescriptionLanguageCheckNew"/>
+		</sch:rule>
+		<!-- Validate PhysicalLocation/ValidityPeriod/Description -->
+	
+		<!-- Validate PhysicalLocation/Address -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:SupplierConsumption/cac:UtilityCustomerParty/cac:PhysicalLocation/cac:Address">
+			<sch:extends rule="AddressCheck"/>
+		</sch:rule>
+		<!-- Validate PartyTaxScheme -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:SupplierConsumption/cac:UtilityCustomerParty/cac:PartyTaxScheme">
+			<sch:extends rule="PartyTaxSchemeCheck"/>
+		</sch:rule>
+		<!-- Validate PartyTaxScheme/TaxScheme -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:SupplierConsumption/cac:UtilityCustomerParty/cac:PartyTaxScheme/cac:TaxScheme">
+			<sch:extends rule="TaxSchemeCheck"/>
+		</sch:rule>
+		<!-- Validate PartyLegalEntity -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:SupplierConsumption/cac:UtilityCustomerParty/cac:PartyLegalEntity">
+			<sch:extends rule="PartyLegalEntityCheck"/>
+		</sch:rule>
+		<!-- Validate Contact -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:SupplierConsumption/cac:UtilityCustomerParty/cac:Contact">
+			<sch:extends rule="ContactCheck"/>
+		</sch:rule>
+		<!-- Validate Person -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:SupplierConsumption/cac:UtilityCustomerParty/cac:Person">
+			<sch:extends rule="Person/FirstNameCheck"/>
+		</sch:rule>
+
+
+
+		<!-- - - - - - - - - - - -  Consumption - - - - - - - - - - -  -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:SupplierConsumption/cac:Consumption">
+			<sch:assert test="count(cac:TelecommunicationsSupply) = 0">[F-UTS113] TelecommunicationsSupply class must be excluded</sch:assert>
+		</sch:rule>
+
+		<!-- Validate UtilityStatementTypeCode -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:SupplierConsumption/cac:Consumption/cbc:UtilityStatementTypeCode">
+			<sch:assert test="./@listID = $UtilityStatType_listID">[W-UTS110] Invalid listID. Must be '<sch:value-of select="$UtilityStatType_listID"/>'</sch:assert>
+			<sch:assert test="./@listAgencyID = $UtilityStatType_agencyID">[W-UTS111] Invalid listAgencyID. Must be '<sch:value-of select="$UtilityStatType_agencyID"/>'</sch:assert>
+			<sch:assert test="contains($UtilityStatType, concat(',',.,','))">[F-UTS112] Invalid UtilityStatementTypeCode: '<sch:value-of select="."/>'. Must be a value from the codelist</sch:assert>
+		</sch:rule>
+
+		<!-- Validate MainPeriod -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:SupplierConsumption/cac:Consumption/cac:MainPeriod">
+			<sch:extends rule="PeriodCheck"/>
+			<sch:extends rule="DescriptionLanguageCheckNew"/>
+		</sch:rule>
+		<!-- Validate MainPeriod/Description -->
+		
+
+		<!-- - - - - - - - - - - -  AllowanceCharge - - - - - - - - - - -  -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:SupplierConsumption/cac:Consumption/cac:AllowanceCharge">
+			<sch:extends rule="AllowanceChargeTopCheck"/>
+			<sch:extends rule="AccountingCostCheck"/>
+		</sch:rule>
+		<!-- Validate AllowanceCharge/SequenceNumeric -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:SupplierConsumption/cac:Consumption/cac:AllowanceCharge/cbc:SequenceNumeric">
+			<sch:extends rule="PosNumberCheck"/>
+		</sch:rule>
+		<!-- Validate AllowanceCharge/Amount -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:SupplierConsumption/cac:Consumption/cac:AllowanceCharge/cbc:Amount">
+			<sch:extends rule="PosZeroNumberCheck"/>
+		</sch:rule>
+		<!-- Validate AllowanceCharge/BaseAmount -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:SupplierConsumption/cac:Consumption/cac:AllowanceCharge/cbc:BaseAmount">
+			<sch:extends rule="PosZeroNumberCheck"/>
+		</sch:rule>
+		<!-- Validate AllowanceCharge/TaxCategory -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:SupplierConsumption/cac:Consumption/cac:AllowanceCharge/cac:TaxCategory">
+			<sch:extends rule="TaxCategoryCheck"/>
+		</sch:rule>
+		<!-- Validate AllowanceCharge/TaxCategory/TaxScheme -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:SupplierConsumption/cac:Consumption/cac:AllowanceCharge/cac:TaxCategory/cac:TaxScheme">
+			<sch:extends rule="TaxSchemeCheck"/>
+		</sch:rule>
+
+
+		<!-- - - - - - - - - - - -  TaxTotal - - - - - - - - - - -  -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:SupplierConsumption/cac:Consumption/cac:TaxTotal">
+			<sch:extends rule="TaxTotalCheck"/>
+		</sch:rule>
+		<!-- Validate TaxTotal/TaxSubtotal -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:SupplierConsumption/cac:Consumption/cac:TaxTotal/cac:TaxSubtotal">
+			<sch:extends rule="TaxSubtotalCheck"/>
+		</sch:rule>
+		<!-- Validate TaxTotal/TaxSubtotal/TaxCategory -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:SupplierConsumption/cac:Consumption/cac:TaxTotal/cac:TaxSubtotal/cac:TaxCategory">
+			<sch:extends rule="TaxCategoryCheck"/>
+		</sch:rule>
+		<!-- Validate TaxTotal/TaxSubtotal/TaxCategory/TaxScheme -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:SupplierConsumption/cac:Consumption/cac:TaxTotal/cac:TaxSubtotal/cac:TaxCategory/cac:TaxScheme">
+			<sch:extends rule="TaxSchemeCheck"/>
+		</sch:rule>
+
+
+		<!-- - - - - - - - - - - - EnergyWaterSupply - - - - - - - - - - -  -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:SupplierConsumption/cac:Consumption/cac:EnergyWaterSupply">
+		</sch:rule>
+
+
+		<!-- - - - - - - - - - - -  ConsumptionReport - - - - - - - - - - -  -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:SupplierConsumption/cac:Consumption/cac:EnergyWaterSupply/cac:ConsumptionReport">
+			<!-- [Release 20111201] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=623 -->
+			<sch:assert test="normalize-space(cbc:ID) != ''">[F-UTS114] Invalid ID. Must contain a value</sch:assert>
+			<sch:extends rule="DescriptionLanguageCheckNew"/>
+		</sch:rule>
+
+		<!-- Validate ConsumptionTypeCode -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:SupplierConsumption/cac:Consumption/cac:EnergyWaterSupply/cac:ConsumptionReport/cbc:ConsumptionTypeCode">
+			<sch:assert test="./@listID = $UtilityConTypeCode_listID">[W-UTS115] Invalid listID. Must be '<sch:value-of select="$UtilityConTypeCode_listID"/>'</sch:assert>
+			<sch:assert test="./@listAgencyID = $UtilityConTypeCode_agencyID">[W-UTS116] Invalid listAgencyID. Must be '<sch:value-of select="$UtilityConTypeCode_agencyID"/>'</sch:assert>
+			<sch:assert test="contains($UtilityConTypeCode, concat(',',.,','))">[F-UTS117] Invalid ConsumptionTypeCode: '<sch:value-of select="."/>'. Must be a value from the codelist</sch:assert>
+		</sch:rule>
+
+		<!-- Validate Description -->
+	
+
+		<!-- Validate ConsumersEnergyLevelCode -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:SupplierConsumption/cac:Consumption/cac:EnergyWaterSupply/cac:ConsumptionReport/cbc:ConsumersEnergyLevelCode">
+			<sch:assert test="./@listID = $UtilityCELCode_listID">[W-UTS118] Invalid listID. Must be '<sch:value-of select="$UtilityCELCode_listID"/>'</sch:assert>
+			<sch:assert test="./@listAgencyID = $UtilityCELCode_agencyID">[W-UTS119] Invalid listAgencyID. Must be '<sch:value-of select="$UtilityCELCode_agencyID"/>'</sch:assert>
+			<sch:assert test="contains($UtilityCELCode, concat(',',.,','))">[F-UTS120] Invalid ConsumersEnergyLevelCode: '<sch:value-of select="."/>'. Must be a value from the codelist</sch:assert>
+		</sch:rule>
+
+		<!-- Validate ResidenseTypeCode -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:SupplierConsumption/cac:Consumption/cac:EnergyWaterSupply/cac:ConsumptionReport/cbc:ConsumersEnergyLevelCode">
+			<sch:assert test="./@listID = $UtilityResTypeCode_listID">[W-UTS121] Invalid listID. Must be '<sch:value-of select="$UtilityResTypeCode_listID"/>'</sch:assert>
+			<sch:assert test="./@listAgencyID = $UtilityResTypeCode_agencyID">[W-UTS122] Invalid listAgencyID. Must be '<sch:value-of select="$UtilityResTypeCode_agencyID"/>'</sch:assert>
+			<sch:assert test="contains($UtilityResTypeCode, concat(',',.,','))">[F-UTS123] Invalid ResidenseTypeCode: '<sch:value-of select="."/>'. Must be a value from the codelist</sch:assert>
+		</sch:rule>
+
+		<!-- Validate HeatingTypeCode -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:SupplierConsumption/cac:Consumption/cac:EnergyWaterSupply/cac:ConsumptionReport/cbc:HeatingTypeCode">
+			<sch:assert test="./@listID = $UtilityHeaTypeCode_listID">[W-UTS124] Invalid listID. Must be '<sch:value-of select="$UtilityHeaTypeCode_listID"/>'</sch:assert>
+			<sch:assert test="./@listAgencyID = $UtilityHeaTypeCode_agencyID">[W-UTS125] Invalid listAgencyID. Must be '<sch:value-of select="$UtilityHeaTypeCode_agencyID"/>'</sch:assert>
+			<sch:assert test="contains($UtilityHeaTypeCode, concat(',',.,','))">[F-UTS126] Invalid HeatingTypeCode: '<sch:value-of select="."/>'. Must be a value from the codelist</sch:assert>
+		</sch:rule>
+
+		<!-- Validate Period -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:SupplierConsumption/cac:Consumption/cac:EnergyWaterSupply/cac:ConsumptionReport/cac:Period">
+			<sch:extends rule="PeriodCheck"/>
+			<sch:extends rule="DescriptionLanguageCheckNew"/>
+		</sch:rule>
+		<!-- Validate Period/Description -->
+		
+
+		<!-- Validate GuidanceDocumentReference -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:SupplierConsumption/cac:Consumption/cac:EnergyWaterSupply/cac:ConsumptionReport/cac:GuidanceDocumentReference">
+			<sch:extends rule="KnownDocumentReferenceCheck"/>
+		</sch:rule>
+
+		<!-- Validate DocumentReference -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:SupplierConsumption/cac:Consumption/cac:EnergyWaterSupply/cac:ConsumptionReport/cac:DocumentReference">
+			<sch:extends rule="DocumentReferenceCheck"/>
+		</sch:rule>
+
+		<!-- Validate ConsumptionReportReference -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:SupplierConsumption/cac:Consumption/cac:EnergyWaterSupply/cac:ConsumptionReport/cac:ConsumptionReportReference">
+			<!-- [Release 20111201] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=623 -->
+			<sch:assert test="normalize-space(cbc:ConsumptionReportID) != ''">[F-UTS127] Invalid ConsumptionReportID. Must contain a value</sch:assert>
+		</sch:rule>
+		<!-- Validate ConsumptionReportReference/ConsumptionTypeCode -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:SupplierConsumption/cac:Consumption/cac:EnergyWaterSupply/cac:ConsumptionReport/cac:ConsumptionReportReference/cbc:ConsumptionTypeCode">
+			<sch:assert test="./@listID = $UtilityConTypeCode_listID">[W-UTS128] Invalid listID. Must be '<sch:value-of select="$UtilityConTypeCode_listID"/>'</sch:assert>
+			<sch:assert test="./@listAgencyID = $UtilityConTypeCode_agencyID">[W-UTS129] Invalid listAgencyID. Must be '<sch:value-of select="$UtilityConTypeCode_agencyID"/>'</sch:assert>
+			<sch:assert test="contains($UtilityConTypeCode, concat(',',.,','))">[F-UTS130] Invalid ConsumptionTypeCode: '<sch:value-of select="."/>'. Must be a value from the codelist</sch:assert>
+		</sch:rule>
+		<!-- Validate ConsumptionReportReference/Period -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:SupplierConsumption/cac:Consumption/cac:EnergyWaterSupply/cac:ConsumptionReport/cac:ConsumptionReportReference/cac:Period">
+			<sch:extends rule="PeriodCheck"/>
+			<sch:extends rule="DescriptionLanguageCheckNew"/>
+		</sch:rule>
+		<!-- Validate ConsumptionReportReference/Period/Description -->
+		
+
+		<!-- Validate ConsumptionHistory -->
+		<!-- Validate ConsumptionLevelCode -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:SupplierConsumption/cac:Consumption/cac:EnergyWaterSupply/cac:ConsumptionReport/cac:ConsumptionHistory/cbc:ConsumptionLevelCode">
+			<sch:assert test="./@listID = $UtilityCELCode_listID">[W-UTS131] Invalid listID. Must be '<sch:value-of select="$UtilityCELCode_listID"/>'</sch:assert>
+			<sch:assert test="./@listAgencyID = $UtilityCELCode_agencyID">[W-UTS132] Invalid listAgencyID. Must be '<sch:value-of select="$UtilityCELCode_agencyID"/>'</sch:assert>
+			<sch:assert test="contains($UtilityCELCode, concat(',',.,','))">[F-UTS133] Invalid ConsumptionLevelCode: '<sch:value-of select="."/>'. Must be a value from the codelist</sch:assert>
+		</sch:rule>
+		<!-- Validate Description -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:SupplierConsumption/cac:Consumption/cac:EnergyWaterSupply/cac:ConsumptionReport/cac:ConsumptionHistory">
+			<sch:extends rule="DescriptionLanguageCheck"/>
+		</sch:rule>
+		<!-- Validate Period -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:SupplierConsumption/cac:Consumption/cac:EnergyWaterSupply/cac:ConsumptionReport/cac:ConsumptionHistory/cac:Period">
+			<sch:extends rule="PeriodCheck"/>
+			<sch:extends rule="DescriptionLanguageCheckNew"/>
+		</sch:rule>
+		<!-- Validate Period/Description -->
+	
+
+
+		<!-- - - - - - - - - - - -  EnergyTaxReport - - - - - - - - - - -  -->
+		<!-- Validate TaxScheme -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:SupplierConsumption/cac:Consumption/cac:EnergyWaterSupply/cac:EnergyTaxReport/cac:TaxScheme">
+			<sch:extends rule="TaxSchemeCheck"/>
+		</sch:rule>
+
+
+		<!-- - - - - - - - - - - -  ConsumptionAverage - - - - - - - - - - -  -->
+
+
+		<!-- - - - - - - - - - - -  EnergyWaterCorrection - - - - - - - - - - -  -->
+		<!-- Validate CorrectionTypeCode -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:SupplierConsumption/cac:Consumption/cac:EnergyWaterSupply/cac:EnergyWaterCorrection/cbc:CorrectionTypeCode">
+			<sch:assert test="./@listID = $UtilityCorTypeCode_listID">[W-UTS134] Invalid listID. Must be '<sch:value-of select="$UtilityCorTypeCode_listID"/>'</sch:assert>
+			<sch:assert test="./@listAgencyID = $UtilityCorTypeCode_agencyID">[W-UTS135] Invalid listAgencyID. Must be '<sch:value-of select="$UtilityCorTypeCode_agencyID"/>'</sch:assert>
+			<sch:assert test="contains($UtilityCorTypeCode, concat(',',.,','))">[F-UTS136] Invalid CorrectionTypeCode: '<sch:value-of select="."/>'. Must be a value from the codelist</sch:assert>
+		</sch:rule>
+
+
+
+		<!-- - - - - - - - - - - - TelecommunicationsSupply (Excluded) - - - - - - - - - - -  -->
+
+
+		<!-- - - - - - - - - - - -  LegalMonetaryTotal - - - - - - - - - - -  -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:SupplierConsumption/cac:Consumption/cac:LegalMonetaryTotal">
+		</sch:rule>
+
+
+		<!-- - - - - - - - - - - -  ConsumptionLine - - - - - - - - - - -  -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:SupplierConsumption/cac:ConsumptionLine">
+			<!-- Variables -->
+			<!-- [Release 20120615] Variable added according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=927 -->
+			<sch:let name="NegativeLEA" value="starts-with(cbc:InvoicedQuantity,'-')"/>
+			<sch:let name="NegativePA" value="starts-with(cac:Price/cbc:PriceAmount,'-')"/>
+			
+			<!-- [Release 20221128] Support for AllowanceCharge - NH-3158 --> -->
+			<sch:let name="NegativeAllowancePriceAmount" value="boolean(cac:Price/cac:AllowanceCharge/cbc:Amount[starts-with(.,'-')])"/>
+			<sch:let name="NegativeAllowanceAmount" value="boolean(cac:AllowanceCharge/cbc:Amount[starts-with(.,'-')])"/>
+
+			<!-- [Release 20111201] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=623 -->
+			<sch:assert test="normalize-space(cbc:ID) != ''">[F-UTS137] Invalid ID. Must contain a value</sch:assert>
+			<sch:report test="cac:Price and cac:UnstructuredPrice">[F-UTS138] Use either Price or UnstructuredPrice</sch:report>
+			<sch:report test="count(cac:Price) = 0 and count(cac:UnstructuredPrice) = 0">[F-UTS139] You must provide either Price or UnstructuredPrice</sch:report>
+
+			<!-- [Release 20120615] Check added according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=927 -->
+            <!-- [Release 20140915] New error is. Spelling: https://bugs.softwareborsen.dk/show_bug.cgi?id=1333-->
+			<sch:report test="not($NegativeLEA or $NegativePA) and $NegativeAllowanceAmount">[F-UTS173] AllowanceCharge.Amount can not be negative, if InvoicedQuantity or Price.PriceAmount is not negative.</sch:report>
+			<sch:report test="not($NegativeLEA or $NegativePA) and $NegativeAllowancePriceAmount">[F-UTS173] AllowanceCharge.Amount can not be negative, if InvoicedQuantity or Price.PriceAmount is not negative.</sch:report>
+
+		</sch:rule>
+
+		<!-- Validate InvoicedQuantity -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:SupplierConsumption/cac:ConsumptionLine/cbc:InvoicedQuantity">
+			<sch:extends rule="unitCodeCheck"/>
+		</sch:rule>
+
+		<!-- Validate ConsumptionLine/Period -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:SupplierConsumption/cac:ConsumptionLine/cac:Period">
+			<sch:extends rule="PeriodCheck"/>
+			<sch:extends rule="DescriptionLanguageCheckNew"/>
+		</sch:rule>
+		<!-- Validate Period/Description -->
+	
+
+		<!-- Validate ConsumptionLine/Delivery -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:SupplierConsumption/cac:ConsumptionLine/cac:Delivery">
+			<!-- Check for excluded elements -->
+			<sch:assert test="count(cbc:ID) = 0">[F-UTS140] ID element must be excluded</sch:assert>
+			<sch:assert test="count(cbc:MinimumQuantity) = 0">[F-UTS141] MinimumQuantity element must be excluded</sch:assert>
+			<sch:assert test="count(cbc:MaximumQuantity) = 0">[F-UTS142] MaximumQuantity element must be excluded</sch:assert>
+			<sch:assert test="count(cbc:ActualDeliveryTime) = 0">[F-UTS143] ActualDeliveryTime element must be excluded</sch:assert>
+			<sch:assert test="count(cbc:LatestDeliveryDate) = 0">[F-UTS144] LatestDeliveryDate element must be excluded</sch:assert>
+			<sch:assert test="count(cbc:LatestDeliveryTime) = 0">[F-UTS145] LatestDeliveryTime element must be excluded</sch:assert>
+			<sch:assert test="count(cac:DeliveryAddress) = 0">[F-UTS146] DeliveryAddress class must be excluded</sch:assert>
+			<sch:assert test="count(cac:PromisedDeliveryPeriod) = 0">[F-UTS147] PromisedDeliveryPeriod class must be excluded</sch:assert>
+			<sch:assert test="count(cac:EstimatedDeliveryPeriod) = 0">[F-UTS148] EstimatedDeliveryPeriod class must be excluded</sch:assert>
+			<!-- Check for mandatory elements -->
+			<!-- Validate -->
+			<!-- <sch:report test="cac:Despath">[I-UTS999] Validation not yet implemented!</sch:report> -->
+		</sch:rule>
+		<!-- Validate DeliveryLocation -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:SupplierConsumption/cac:ConsumptionLine/cac:Delivery/cac:DeliveryLocation">
+			<!-- Check for mandatory elements -->
+			<sch:report test="not(cbc:ID) and not(cac:Address)">[F-UTS149] Address is mandatory when ID is not specified</sch:report>
+			<!-- Validate -->
+			<!-- ID -->
+			<!-- Description -->
+			<!-- Conditions -->
+			<!-- CountrySubentity -->
+			<!-- CountrySubentityCode -->
+		</sch:rule>
+		<!-- Validate DeliveryLocation/ValidityPeriod -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:SupplierConsumption/cac:ConsumptionLine/cac:Delivery/cac:DeliveryLocation/cac:ValidityPeriod">
+			<sch:extends rule="PeriodCheck"/>
+			<sch:extends rule="DescriptionLanguageCheckNew"/>
+		</sch:rule>
+		<!-- Validate DeliveryLocation/ValidityPeriod/Description -->
+		
+		<!-- Validate DeliveryLocation/Address -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:SupplierConsumption/cac:ConsumptionLine/cac:Delivery/cac:DeliveryLocation/cac:Address">
+			<sch:extends rule="AddressCheck"/>
+		</sch:rule>
+		<!-- Validate RequestedDeliveryPeriod -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:SupplierConsumption/cac:ConsumptionLine/cac:Delivery/cac:RequestedDeliveryPeriod">
+			<sch:extends rule="PeriodCheck"/>
+			<sch:extends rule="DescriptionLanguageCheckNew"/>
+		</sch:rule>
+		<!-- Validate RequestedDeliveryPeriod/Description -->
+		
+		<!-- Validate DeliveryParty -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:SupplierConsumption/cac:ConsumptionLine/cac:Delivery/cac:DeliveryParty">
+			<!-- Check for excluded elements -->
+			<sch:extends rule="PartyExcludedCheck"/>
+			<!-- Check for mandatory elements -->
+			<!-- Validate -->
+			<sch:extends rule="PartyNameCheck"/>
+			<sch:extends rule="EndpointIDCheck"/>
+			<sch:report test="count(cac:PartyLegalEntity) &gt; 1">[F-UTS150] No more than one PartyLegalEntity class may be present</sch:report>
+		</sch:rule>
+		<!-- Validate DeliveryParty/PartyIdentification -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:SupplierConsumption/cac:ConsumptionLine/cac:Delivery/cac:DeliveryParty/cac:PartyIdentification">
+			<sch:extends rule="PartyIdentificationCheck"/>
+		</sch:rule>
+		<!-- Validate DeliveryParty/PartyName -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:SupplierConsumption/cac:ConsumptionLine/cac:Delivery/cac:DeliveryParty/cac:PartyName">
+			<sch:extends rule="PartyNameLanguageCheck"/>
+		</sch:rule>
+		<!-- Validate DeliveryParty/PostalAddress -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:SupplierConsumption/cac:ConsumptionLine/cac:Delivery/cac:DeliveryParty/cac:PostalAddress">
+			<sch:extends rule="AddressCheck"/>
+		</sch:rule>
+		<!-- Validate DeliveryParty/PhysicalLocation -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:SupplierConsumption/cac:ConsumptionLine/cac:Delivery/cac:DeliveryParty/cac:PhysicalLocation">
+			<sch:extends rule="AddressIDCheck"/>
+		</sch:rule>
+		<!-- Validate DeliveryParty/PhysicalLocation/ValidityPeriod -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:SupplierConsumption/cac:ConsumptionLine/cac:Delivery/cac:DeliveryParty/cac:PhysicalLocation/cac:ValidityPeriod">
+			<sch:extends rule="PeriodCheck"/>
+			<sch:extends rule="DescriptionLanguageCheckNew"/>
+		</sch:rule>
+		<!-- Validate DeliveryParty/PhysicalLocation/ValidityPeriod/Description -->
+		
+		<!-- Validate DeliveryParty/PhysicalLocation/Address -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:SupplierConsumption/cac:ConsumptionLine/cac:Delivery/cac:DeliveryParty/cac:PhysicalLocation/cac:Address">
+			<sch:extends rule="AddressCheck"/>
+		</sch:rule>
+		<!-- Validate DeliveryParty/PartyTaxScheme -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:SupplierConsumption/cac:ConsumptionLine/cac:Delivery/cac:DeliveryParty/cac:PartyTaxScheme">
+			<sch:extends rule="PartyTaxSchemeCheck"/>
+		</sch:rule>
+		<!-- Validate DeliveryParty/PartyTaxScheme/TaxScheme -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:SupplierConsumption/cac:ConsumptionLine/cac:Delivery/cac:DeliveryParty/cac:PartyTaxScheme/cac:TaxScheme">
+			<sch:extends rule="TaxSchemeCheck"/>
+		</sch:rule>
+		<!-- Validate DeliveryParty/PartyLegalEntity -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:SupplierConsumption/cac:ConsumptionLine/cac:Delivery/cac:DeliveryParty/cac:PartyLegalEntity">
+			<sch:extends rule="PartyLegalEntityCheck"/>
+		</sch:rule>
+		<!-- Validate DeliveryParty/Contact -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:SupplierConsumption/cac:ConsumptionLine/cac:Delivery/cac:DeliveryParty/cac:Contact">
+			<sch:extends rule="ContactCheck"/>
+		</sch:rule>
+		<!-- Validate DeliveryParty/Person -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:SupplierConsumption/cac:ConsumptionLine/cac:Delivery/cac:DeliveryParty/cac:Person">
+			<sch:extends rule="Person/FirstNameCheck"/>
+		</sch:rule>
+
+
+		<!-- Validate ConsumptionLine/AllowanceCharge -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:SupplierConsumption/cac:ConsumptionLine/cac:AllowanceCharge">
+			<sch:extends rule="AllowanceChargeTopCheck"/>
+			<sch:extends rule="AccountingCostCheck"/>
+		</sch:rule>
+		<!-- Validate AllowanceCharge/SequenceNumeric -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:SupplierConsumption/cac:ConsumptionLine/cac:AllowanceCharge/cbc:SequenceNumeric">
+			<sch:extends rule="PosNumberCheck"/>
+		</sch:rule>
+		<!-- Validate AllowanceCharge/Amount -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:SupplierConsumption/cac:ConsumptionLine/cac:AllowanceCharge/cbc:Amount">
+			<!-- [Release 20120615] Check removed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=927 -->
+			<!--<sch:extends rule="PosZeroNumberCheck"/>-->
+			<!-- [Release 20120615] Check added according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=927 -->
+			<sch:extends rule="ZeroNumberCheck"/>
+		</sch:rule>
+		<!-- Validate AllowanceCharge/BaseAmount -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:SupplierConsumption/cac:ConsumptionLine/cac:AllowanceCharge/cbc:BaseAmount">
+			<!-- [Release 20130315] Check changed according to issue: https://bugs.softwareborsen.dk/show_bug.cgi?id=1066 -->
+			<sch:extends rule="ZeroNumberCheck"/>
+		</sch:rule>
+		<!-- Validate AllowanceCharge/TaxCategory -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:SupplierConsumption/cac:ConsumptionLine/cac:AllowanceCharge/cac:TaxCategory">
+			<sch:extends rule="TaxCategoryCheck"/>
+		</sch:rule>
+		<!-- Validate AllowanceCharge/TaxCategory/TaxScheme -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:SupplierConsumption/cac:ConsumptionLine/cac:AllowanceCharge/cac:TaxCategory/cac:TaxScheme">
+			<sch:extends rule="TaxSchemeCheck"/>
+		</sch:rule>
+
+
+		<!-- Validate ConsumptionLine/TaxTotal -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:SupplierConsumption/cac:ConsumptionLine/cac:TaxTotal">
+			<sch:extends rule="TaxTotalCheck"/>
+		</sch:rule>
+		<!-- Validate TaxTotal/TaxSubtotal -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:SupplierConsumption/cac:ConsumptionLine/cac:TaxTotal/cac:TaxSubtotal">
+			<sch:extends rule="TaxSubtotalCheck"/>
+		</sch:rule>
+		<!-- Validate TaxTotal/TaxSubtotal/TaxCategory -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:SupplierConsumption/cac:ConsumptionLine/cac:TaxTotal/cac:TaxSubtotal/cac:TaxCategory">
+			<sch:extends rule="TaxCategoryCheck"/>
+		</sch:rule>
+		<!-- Validate TaxTotal/TaxSubtotal/TaxCategory/TaxScheme -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:SupplierConsumption/cac:ConsumptionLine/cac:TaxTotal/cac:TaxSubtotal/cac:TaxCategory/cac:TaxScheme">
+			<sch:extends rule="TaxSchemeCheck"/>
+		</sch:rule>
+
+
+		<!-- Validate UtilityItem -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:SupplierConsumption/cac:ConsumptionLine/cac:UtilityItem">
+			<!-- [Release 20111201] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=623 -->
+			<sch:assert test="normalize-space(cbc:ID) != ''">[F-UTS151] Invalid ID. Must contain a value</sch:assert>
+			<sch:extends rule="DescriptionLanguageCheckNew"/>
+		</sch:rule>
+		<!-- Validate SubscriberIDTypeCode - Findes ikke i XSD 2.1 -->
+		<!-- sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:SupplierConsumption/cac:ConsumptionLine/cac:UtilityItem/cbc:SubscriberIDTypeCode">
+			<sch:assert test="./@listID = $UtilitySubIDTypeCode_listID">[W-UTS152] Invalid listID. Must be '<sch:value-of select="$UtilitySubIDTypeCode_listID"/>'</sch:assert>
+			<sch:assert test="./@listAgencyID = $UtilitySubIDTypeCode_agencyID">[W-UTS153] Invalid listAgencyID. Must be '<sch:value-of select="$UtilitySubIDTypeCode_agencyID"/>'</sch:assert>
+			<sch:assert test="contains($UtilitySubIDTypeCode, concat(',',.,','))">[F-UTS154] Invalid SubscriberIDTypeCode: '<sch:value-of select="."/>'. Must be a value from the codelist</sch:assert>
+		</sch:rule -->
+		<!-- Validate Description -->
+		
+		<!-- Validate ConsumptionTypeCode -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:SupplierConsumption/cac:ConsumptionLine/cac:UtilityItem/cbc:ConsumptionTypeCode">
+			<sch:assert test="./@listID = $UtilityConTypeCode_listID">[W-UTS155] Invalid listID. Must be '<sch:value-of select="$UtilityConTypeCode_listID"/>'</sch:assert>
+			<sch:assert test="./@listAgencyID = $UtilityConTypeCode_agencyID">[W-UTS156] Invalid listAgencyID. Must be '<sch:value-of select="$UtilityConTypeCode_agencyID"/>'</sch:assert>
+			<sch:assert test="contains($UtilityConTypeCode, concat(',',.,','))">[F-UTS157] Invalid ConsumptionTypeCode: '<sch:value-of select="."/>'. Must be a value from the codelist</sch:assert>
+		</sch:rule>
+		<!-- Validate CurrentChargeTypeCode -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:SupplierConsumption/cac:ConsumptionLine/cac:UtilityItem/cbc:CurrentChargeTypeCode">
+			<sch:assert test="./@listID = $UtilityCCTypeCode_listID">[W-UTS158] Invalid listID. Must be '<sch:value-of select="$UtilityCCTypeCode_listID"/>'</sch:assert>
+			<sch:assert test="./@listAgencyID = $UtilityCCTypeCode_agencyID">[W-UTS159] Invalid listAgencyID. Must be '<sch:value-of select="$UtilityCCTypeCode_agencyID"/>'</sch:assert>
+			<sch:assert test="contains($UtilityCCTypeCode, concat(',',.,','))">[F-UTS160] Invalid CurrentChargeTypeCode: '<sch:value-of select="."/>'. Must be a value from the codelist</sch:assert>
+		</sch:rule>
+		<!-- Validate OneTimeChargeTypeCode -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:SupplierConsumption/cac:ConsumptionLine/cac:UtilityItem/cbc:OneTimeChargeTypeCode">
+			<sch:assert test="./@listID = $UtilityOTCTypeCode_listID">[W-UTS161] Invalid listID. Must be '<sch:value-of select="$UtilityOTCTypeCode_listID"/>'</sch:assert>
+			<sch:assert test="./@listAgencyID = $UtilityOTCTypeCode_agencyID">[W-UTS162] Invalid listAgencyID. Must be '<sch:value-of select="$UtilityOTCTypeCode_agencyID"/>'</sch:assert>
+			<sch:assert test="contains($UtilityOTCTypeCode, concat(',',.,','))">[F-UTS163] Invalid OneTimeChargeTypeCode: '<sch:value-of select="."/>'. Must be a value from the codelist</sch:assert>
+		</sch:rule>
+		<!-- Validate TaxCategory -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:SupplierConsumption/cac:ConsumptionLine/cac:UtilityItem/cac:TaxCategory">
+			<sch:extends rule="TaxCategoryCheck"/>
+		</sch:rule>
+		<!-- Validate TaxCategory/TaxScheme -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:SupplierConsumption/cac:ConsumptionLine/cac:UtilityItem/cac:TaxCategory/cac:TaxScheme">
+			<sch:extends rule="TaxSchemeCheck"/>
+		</sch:rule>
+		<!-- Validate Contract -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:SupplierConsumption/cac:ConsumptionLine/cac:UtilityItem/cac:Contract">
+			<sch:report test="cbc:ContractType and cbc:ContractTypeCode">[F-UTS164] Use either ContractType or ContractTypeCode</sch:report>
+			<sch:report test="count(cac:ContractDocumentReference) &gt; 1">[F-UTS165] No more than one ContractDocumentReference class may be present</sch:report>
+		</sch:rule>
+		<!-- Validate Contract/ValidityPeriod -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:SupplierConsumption/cac:ConsumptionLine/cac:UtilityItem/cac:Contract/cac:ValidityPeriod">
+		    <sch:extends rule="DescriptionLanguageCheckNew"/>
+			<sch:extends rule="PeriodCheck"/>
+		</sch:rule>
+		<!-- Validate Contract/ValidityPeriod/Description -->
+	
+		<!-- Validate Contract/ContractDocumentReference -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:SupplierConsumption/cac:ConsumptionLine/cac:UtilityItem/cac:Contract/cac:ContractDocumentReference">
+			<sch:extends rule="KnownDocumentReferenceCheck"/>
+		</sch:rule>
+
+
+		<!-- Validate Price -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:SupplierConsumption/cac:ConsumptionLine/cac:Price">
+			<!-- Check for excluded elements -->
+			<!-- Check for mandatory elements -->
+			<!-- Validate -->
+		</sch:rule>
+		<!-- Validate PriceAmount -->
+		<!-- Validate BaseQuantity -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:SupplierConsumption/cac:ConsumptionLine/cac:Price/cbc:BaseQuantity">
+			<sch:extends rule="unitCodeCheck"/>
+			<sch:extends rule="PosZeroNumberCheck"/>
+		</sch:rule>
+		<!-- Validate PriceChangeReason -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:SupplierConsumption/cac:ConsumptionLine/cac:Price/cbc:PriceChangeReason">
+			<sch:report test="count(../cbc:PriceChangeReason) &gt; 1 and not(./@languageID)">[W-UTS166] The attribute languageID should be used when more than one PriceChangeReason element is present</sch:report>
+			<sch:report test="following-sibling::*/@languageID = self::*/@languageID">[W-UTS167] Multilanguage error. Replicated PriceChangeReason elements with same languageID attribute value</sch:report>
+		</sch:rule>
+		<!-- Validate PriceTypeCode -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:SupplierConsumption/cac:ConsumptionLine/cac:Price/cbc:PriceTypeCode">
+			<sch:assert test="./@listID = 'UN/ECE 5387'">[F-UTS168] Invalid listID. Must be 'UN/ECE 5387'</sch:assert>
+		</sch:rule>
+		<!-- Validate PriceType -->
+		<!-- Validate OrderableUnitFactorRate -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:SupplierConsumption/cac:ConsumptionLine/cac:Price/cbc:OrderableUnitFactorRate">
+			<sch:extends rule="PosZeroNumberCheck"/>
+		</sch:rule>
+		<!-- Validate ValidityPeriod -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:SupplierConsumption/cac:ConsumptionLine/cac:Price/cac:ValidityPeriod">
+		    <sch:extends rule="DescriptionLanguageCheckNew"/>
+			<sch:extends rule="PeriodCheck"/>
+		</sch:rule>
+		<!-- Validate ValidityPeriod/Description -->
+		
+		<!-- Validate PriceList -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:SupplierConsumption/cac:ConsumptionLine/cac:Price/cac:PriceList">
+			<!-- <sch:report test="'1' = '1'">[I-UTS999] Validation not yet implemented!</sch:report> -->
+		</sch:rule>
+		<!-- Validate AllowanceCharge -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:SupplierConsumption/cac:ConsumptionLine/cac:Price/cac:AllowanceCharge">
+			<sch:extends rule="PriceAllowanceChargeTopCheck"/>
+		</sch:rule>
+		<!-- Validate AllowanceCharge/SequenceNumeric -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:SupplierConsumption/cac:ConsumptionLine/cac:Price/cac:AllowanceCharge/cbc:SequenceNumeric">
+			<sch:extends rule="PosNumberCheck"/>
+		</sch:rule>
+		<!-- Validate AllowanceCharge/Amount -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:SupplierConsumption/cac:ConsumptionLine/cac:Price/cac:AllowanceCharge/cbc:Amount">
+			<!-- [Release 20120615] Check removed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=927 -->
+			<!--<sch:extends rule="PosZeroNumberCheck"/>-->
+			<!-- [Release 20120615] Check added according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=927 -->
+			<sch:extends rule="ZeroNumberCheck"/>
+		</sch:rule>
+		<!-- Validate AllowanceCharge/BaseAmount -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:SupplierConsumption/cac:ConsumptionLine/cac:Price/cac:AllowanceCharge/cbc:BaseAmount">
+			<!-- [Release 20130315] Check changed according to issue: https://bugs.softwareborsen.dk/show_bug.cgi?id=1066 -->
+			<sch:extends rule="ZeroNumberCheck"/>
+		</sch:rule>
+		<!-- Validate AllowanceCharge/TaxCategory -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:SupplierConsumption/cac:ConsumptionLine/cac:Price/cac:AllowanceCharge/cac:TaxCategory">
+			<sch:extends rule="TaxCategoryCheck"/>
+		</sch:rule>
+		<!-- Validate AllowanceCharge/TaxCategory/TaxScheme -->
+		<sch:rule context="doc:UtilityStatement/cac:SubscriberConsumption/cac:SupplierConsumption/cac:ConsumptionLine/cac:Price/cac:AllowanceCharge/cac:TaxCategory/cac:TaxScheme">
+			<sch:extends rule="TaxSchemeCheck"/>
+		</sch:rule>
+
+
+		<!-- Validate UnstructuredPrice -->
+
+
+	</sch:pattern>
+
+</sch:schema>
