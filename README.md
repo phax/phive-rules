@@ -191,7 +191,7 @@ I hope that with the introduction of PINT, the versioning problem will be solved
   
 # News and noteworthy
  
-* v3.1.11 - work in progress
+* v3.1.11 - 2024-07-02
     * Added Peppol May 2024 release (Billing 3.0.17 and Upgrade 3.0.13)
     * Added Peppol A-NZ-PEPPOL 1.0.11 rules
     * Deprecated Peppol A-NZ-PEPPOL 1.0.9 rules
@@ -200,6 +200,7 @@ I hope that with the introduction of PINT, the versioning problem will be solved
     * Deprecated Simplerinvoicing Invoice 1.2.4 and Order 1.2.4
     * Deprecated Simplerinvoicing Invoice 2.0.3.7, Simplerinvoicing 2.0 G-Account extension 1.0.7 and NLCIUS-CII 1.0.3.6
     * Added Simplerinvoicing Invoice 2.0.3.9, Simplerinvoicing 2.0 G-Account extension 1.0.9 and NLCIUS-CII 1.0.3.8
+    * Added OIOUBL 1.14.2 rules
 * v3.1.10 - 2024-05-16
     * Added support for EN 16931 rules v1.3.12 format and deprecated v1.3.10
     * All OIOUBL 1.x validations are now correctly based on UBL 2.1 instead of UBL 2.0
