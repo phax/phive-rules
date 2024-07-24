@@ -163,25 +163,13 @@
           -->
           <!-- 
           <execution>
-            <id>pint-my-billing</id>
+            <id>pint-my</id>
             <goals>
               <goal>convert</goal>
             </goals>
             <configuration>
-              <schematronDirectory>src/test/resources/external/rule-source/pint-my/1.0.0/xslt/billing</schematronDirectory>
-              <xsltDirectory>src/main/resources/external/schematron/pint-my/1.0.0/xslt/billing</xsltDirectory>
-            </configuration>
-          </execution>
-          -->
-          <!-- 
-          <execution>
-            <id>pint-my-selfbilling</id>
-            <goals>
-              <goal>convert</goal>
-            </goals>
-            <configuration>
-              <schematronDirectory>src/test/resources/external/rule-source/pint-my/1.0.0/xslt/selfbilling</schematronDirectory>
-              <xsltDirectory>src/main/resources/external/schematron/pint-my/1.0.0/xslt/selfbilling</xsltDirectory>
+              <schematronDirectory>src/test/resources/external/rule-source/pint-my/1.0.0</schematronDirectory>
+              <xsltDirectory>src/main/resources/external/schematron/pint-my/1.0.0/xslt</xsltDirectory>
             </configuration>
           </execution>
           -->

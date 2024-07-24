@@ -193,7 +193,7 @@ I hope that with the introduction of PINT, the versioning problem will be solved
  
 * v3.1.12 - work in progress
     * Added Peppol PINT rules 1.0.2
-    * Added Peppol PINT A-NZ 1.0.1 rules
+    * Added Peppol PINT A-NZ 1.0.1 rules (billing and self-billing)
     * Added Peppol PINT Japan 1.0.2 rules
 * v3.1.11 - 2024-07-02
     * Added Peppol May 2024 release (Billing 3.0.17 and Upgrade 3.0.13)

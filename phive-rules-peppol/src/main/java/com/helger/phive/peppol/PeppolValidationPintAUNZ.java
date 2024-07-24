@@ -55,6 +55,12 @@ public final class PeppolValidationPintAUNZ
   public static final VESID VID_OPENPEPPOL_AUNZ_PINT_UBL_CREDIT_NOTE_1_0_1 = new VESID (GROUP_ID,
                                                                                         "creditnote",
                                                                                         "1.0.1");
+  public static final VESID VID_OPENPEPPOL_AUNZ_PINT_UBL_INVOICE_SELF_BILLING_1_0_1 = new VESID (GROUP_ID,
+                                                                                                 "invoice-self-billing",
+                                                                                                 "1.0.1");
+  public static final VESID VID_OPENPEPPOL_AUNZ_PINT_UBL_CREDIT_NOTE_SELF_BILLING_1_0_1 = new VESID (GROUP_ID,
+                                                                                                     "creditnote-self-billing",
+                                                                                                     "1.0.1");
 
   private PeppolValidationPintAUNZ ()
   {}
@@ -81,16 +87,16 @@ public final class PeppolValidationPintAUNZ
 
     // 1.0.1
     {
-      final String sBase = BASE_PATH + "1.0.1/xslt/";
+      final String sBaseBilling = BASE_PATH + "1.0.1/xslt/billing/";
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_AUNZ_PINT_UBL_INVOICE_1_0_1,
                                                                              "Peppol PINT A-NZ Invoice (UBL) 1.0.1",
                                                                              _createStatus (bNotDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
-                                                                             ValidationExecutorSchematron.createXSLT (new ClassPathResource (sBase +
+                                                                             ValidationExecutorSchematron.createXSLT (new ClassPathResource (sBaseBilling +
                                                                                                                                              "PINT-UBL-validation-preprocessed-inv.xslt",
                                                                                                                                              _getCL ()),
                                                                                                                       aNSCtxInvoice),
-                                                                             ValidationExecutorSchematron.createXSLT (new ClassPathResource (sBase +
+                                                                             ValidationExecutorSchematron.createXSLT (new ClassPathResource (sBaseBilling +
                                                                                                                                              "PINT-jurisdiction-aligned-rules-inv.xslt",
                                                                                                                                              _getCL ()),
                                                                                                                       aNSCtxInvoice)));
@@ -98,15 +104,40 @@ public final class PeppolValidationPintAUNZ
                                                                              "Peppol PINT A-NZ Credit Note (UBL) 1.0.1",
                                                                              _createStatus (bNotDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
-                                                                             ValidationExecutorSchematron.createXSLT (new ClassPathResource (sBase +
+                                                                             ValidationExecutorSchematron.createXSLT (new ClassPathResource (sBaseBilling +
                                                                                                                                              "PINT-UBL-validation-preprocessed-cn.xslt",
                                                                                                                                              _getCL ()),
                                                                                                                       aNSCtxInvoice),
-                                                                             ValidationExecutorSchematron.createXSLT (new ClassPathResource (sBase +
+                                                                             ValidationExecutorSchematron.createXSLT (new ClassPathResource (sBaseBilling +
                                                                                                                                              "PINT-jurisdiction-aligned-rules-cn.xslt",
                                                                                                                                              _getCL ()),
                                                                                                                       aNSCtxInvoice)));
 
+      final String sBaseSelfBilling = BASE_PATH + "1.0.1/xslt/selfbilling/";
+      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_AUNZ_PINT_UBL_INVOICE_SELF_BILLING_1_0_1,
+                                                                             "Peppol PINT A-NZ Invoice Self-Billing (UBL) 1.0.1",
+                                                                             _createStatus (bNotDeprecated),
+                                                                             ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
+                                                                             ValidationExecutorSchematron.createXSLT (new ClassPathResource (sBaseSelfBilling +
+                                                                                                                                             "PINT-UBL-validation-preprocessed-inv.xslt",
+                                                                                                                                             _getCL ()),
+                                                                                                                      aNSCtxInvoice),
+                                                                             ValidationExecutorSchematron.createXSLT (new ClassPathResource (sBaseSelfBilling +
+                                                                                                                                             "PINT-jurisdiction-aligned-rules-inv.xslt",
+                                                                                                                                             _getCL ()),
+                                                                                                                      aNSCtxInvoice)));
+      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_AUNZ_PINT_UBL_CREDIT_NOTE_SELF_BILLING_1_0_1,
+                                                                             "Peppol PINT A-NZ Credit Note Self-Billing (UBL) 1.0.1",
+                                                                             _createStatus (bNotDeprecated),
+                                                                             ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
+                                                                             ValidationExecutorSchematron.createXSLT (new ClassPathResource (sBaseSelfBilling +
+                                                                                                                                             "PINT-UBL-validation-preprocessed-cn.xslt",
+                                                                                                                                             _getCL ()),
+                                                                                                                      aNSCtxInvoice),
+                                                                             ValidationExecutorSchematron.createXSLT (new ClassPathResource (sBaseSelfBilling +
+                                                                                                                                             "PINT-jurisdiction-aligned-rules-cn.xslt",
+                                                                                                                                             _getCL ()),
+                                                                                                                      aNSCtxInvoice)));
     }
   }
 }
