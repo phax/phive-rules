@@ -39,7 +39,7 @@ import com.helger.xml.namespace.MapBasedNamespaceContext;
  * @author Philip Helger
  */
 @Immutable
-public final class PeppolValidationPINT
+public final class PeppolValidationPint
 {
   public static final String GROUP_ID = "org.peppol.pint";
   private static final String BASE_PATH = "external/schematron/pint/";
@@ -47,7 +47,7 @@ public final class PeppolValidationPINT
   @Nonnull
   private static ClassLoader _getCL ()
   {
-    return PeppolValidationPINT.class.getClassLoader ();
+    return PeppolValidationPint.class.getClassLoader ();
   }
 
   // 1.0.0
@@ -77,7 +77,7 @@ public final class PeppolValidationPINT
   public static final VESID VID_OPENPEPPOL_PINT_INVOICE_1_0_2 = new VESID (GROUP_ID, "invoice", "1.0.2");
   public static final VESID VID_OPENPEPPOL_PINT_CREDIT_NOTE_1_0_2 = new VESID (GROUP_ID, "credit-note", "1.0.2");
 
-  private PeppolValidationPINT ()
+  private PeppolValidationPint ()
   {}
 
   @Nonnull

@@ -40,12 +40,12 @@ import com.helger.xml.namespace.MapBasedNamespaceContext;
  * @author Philip Helger
  */
 @Immutable
-public final class PeppolValidationSG
+public final class PeppolValidationBisSG
 {
   @Nonnull
   private static ClassLoader _getCL ()
   {
-    return PeppolValidationSG.class.getClassLoader ();
+    return PeppolValidationBisSG.class.getClassLoader ();
   }
 
   private static final String BASE_PATH = "external/schematron/peppol-sg/";
@@ -66,7 +66,7 @@ public final class PeppolValidationSG
                                                                                         "creditnote",
                                                                                         "2023.12");
 
-  private PeppolValidationSG ()
+  private PeppolValidationBisSG ()
   {}
 
   @Nonnull

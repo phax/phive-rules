@@ -39,12 +39,12 @@ import com.helger.xml.namespace.MapBasedNamespaceContext;
  * @author Philip Helger
  */
 @Immutable
-public final class PeppolValidationJP
+public final class PeppolValidationPintJP
 {
   @Nonnull
   private static ClassLoader _getCL ()
   {
-    return PeppolValidationJP.class.getClassLoader ();
+    return PeppolValidationPintJP.class.getClassLoader ();
   }
 
   private static final String BASE_PATH = "external/schematron/pint-jp/";
@@ -55,7 +55,7 @@ public final class PeppolValidationJP
                                                                                 "credit-note",
                                                                                 "0.1.2");
 
-  private PeppolValidationJP ()
+  private PeppolValidationPintJP ()
   {}
 
   @Nonnull

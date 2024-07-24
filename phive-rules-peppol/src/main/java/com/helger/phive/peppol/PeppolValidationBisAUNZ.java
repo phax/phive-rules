@@ -40,12 +40,12 @@ import com.helger.xml.namespace.MapBasedNamespaceContext;
  * @author Philip Helger
  */
 @Immutable
-public final class PeppolValidationAUNZ
+public final class PeppolValidationBisAUNZ
 {
   @Nonnull
   private static ClassLoader _getCL ()
   {
-    return PeppolValidationAUNZ.class.getClassLoader ();
+    return PeppolValidationBisAUNZ.class.getClassLoader ();
   }
 
   private static final String BASE_PATH = "external/schematron/peppol-aunz/";
@@ -96,7 +96,7 @@ public final class PeppolValidationAUNZ
                                                                                                       "creditnote-self-billing",
                                                                                                       "1.0.11");
 
-  private PeppolValidationAUNZ ()
+  private PeppolValidationBisAUNZ ()
   {}
 
   @Nonnull

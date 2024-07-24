@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Invoice xmlns="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2" xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
+    <cbc:CustomizationID>urn:peppol:pint:billing-1@aunz-1</cbc:CustomizationID>
+    <cbc:ProfileID>urn:peppol:bis:billing</cbc:ProfileID>
+    <cbc:ID>1234567890</cbc:ID>
+    <cbc:IssueDate>2021-11-01</cbc:IssueDate>
+    <cbc:DueDate>2021-12-01</cbc:DueDate>
+    <cbc:InvoiceTypeCode>380</cbc:InvoiceTypeCode>
+    <cbc:DocumentCurrencyCode>AUD</cbc:DocumentCurrencyCode>
+    <cbc:BuyerReference>Your reference 123</cbc:BuyerReference><!--Customer Account-->
+       <cac:OrderReference>
+       <cbc:ID>PurchaseOrderReference</cbc:ID>
+    </cac:OrderReference>
+	
+	<cac:AccountingSupplierParty>
+        <cac:Party>
+            <cbc:EndpointID schemeID="0151">47555222000</cbc:EndpointID>
+            <cac:PartyIdentification>
+                <cbc:ID>47555222000</cbc:ID>
+            </cac:PartyIdentification>
+            <cac:PartyName>
+                <cbc:Name>Supplier ABC Pty Ltd</cbc:Name>
+            </cac:PartyName>
+            <cac:PostalAddress>
+                <cbc:StreetName>52 Rosewood St</cbc:StreetName>
+                <cbc:CityName>Sydney</cbc:CityName>
+                <cbc:PostalZone>2758</cbc:PostalZone>
+				<cbc:CountrySubentity>NSW</cbc:CountrySubentity>
+                <cac:Country>
+                    <cbc:IdentificationCode>AU</cbc:IdentificationCode>
+                </cac:Country>
+            </cac:PostalAddress>
+            <cac:PartyLegalEntity>
+                <cbc:RegistrationName>Supplier ABC Pty Ltd</cbc:RegistrationName>
+                <cbc:CompanyID schemeID="0151">47555222000</cbc:CompanyID>
+                <cbc:CompanyLegalForm>Partnership</cbc:CompanyLegalForm>
+            </cac:PartyLegalEntity>
+            <cac:Contact>
+                <cbc:Name>Supplier contact</cbc:Name>
+                <cbc:Telephone>Mobile 0430123456</cbc:Telephone>
+                <cbc:ElectronicMail>admin@ABC_Ltd.com.au</cbc:ElectronicMail>
+            </cac:Contact>
+        </cac:Party>
+    </cac:AccountingSupplierParty>
+	
+	<cac:AccountingCustomerParty>
+        <cac:Party>
+            <cbc:EndpointID schemeID="0151">57946356658</cbc:EndpointID>
+            <cac:PartyIdentification>
+                <cbc:ID schemeID="0151">57946356658</cbc:ID>
+            </cac:PartyIdentification>
+            <cac:PartyName>
+                <cbc:Name>Buyer CDE Pty Ltd</cbc:Name>
+            </cac:PartyName>
+            <cac:PostalAddress>
+                <cbc:StreetName>Building 123, EAST RD</cbc:StreetName>
+                <cbc:CityName>Sydney</cbc:CityName>
+                <cbc:PostalZone>2310</cbc:PostalZone>
+				<cbc:CountrySubentity>NSW</cbc:CountrySubentity>
+                <cac:Country>
+                    <cbc:IdentificationCode>AU</cbc:IdentificationCode>
+                </cac:Country>
+            </cac:PostalAddress>
+            <cac:PartyTaxScheme>
+                <cbc:CompanyID>57946356658</cbc:CompanyID>
+                <cac:TaxScheme>
+                    <cbc:ID>GST</cbc:ID>
+                </cac:TaxScheme>
+            </cac:PartyTaxScheme>
+            <cac:PartyLegalEntity>
+                <cbc:RegistrationName>Buyer CDE Pty Ltd</cbc:RegistrationName>
+                <cbc:CompanyID schemeID="0151">57946356658</cbc:CompanyID>
+            </cac:PartyLegalEntity>
+            <cac:Contact>
+                <cbc:Name>Accounts Payable</cbc:Name>
+            </cac:Contact>
+        </cac:Party>
+    </cac:AccountingCustomerParty>
+
+    <cac:Delivery>
+        <cbc:ActualDeliveryDate>2021-09-09</cbc:ActualDeliveryDate>
+        <cac:DeliveryLocation>
+            <cbc:ID schemeID="0088">9429033591476</cbc:ID>
+            <cac:Address>
+                <cbc:StreetName>Greenbank Road</cbc:StreetName>
+                <cbc:AdditionalStreetName>LOADING DOCK 4</cbc:AdditionalStreetName>
+                <cbc:CityName>Eastmead</cbc:CityName>
+                <cbc:PostalZone>2443</cbc:PostalZone>
+                <cbc:CountrySubentity>NSW</cbc:CountrySubentity>
+                <cac:Country>
+                    <cbc:IdentificationCode>AU</cbc:IdentificationCode>
+                </cac:Country>
+            </cac:Address>
+        </cac:DeliveryLocation>
+        <cac:DeliveryParty>
+            <cac:PartyName>
+                <cbc:Name>Buyer CDE Head office</cbc:Name>
+            </cac:PartyName>
+        </cac:DeliveryParty>
+    </cac:Delivery>
+	
+    <cac:PaymentMeans>
+        <cbc:PaymentMeansCode name="Credit transfer">30</cbc:PaymentMeansCode>
+        <cbc:PaymentID>PaymentReferenceText</cbc:PaymentID>
+        <cac:PayeeFinancialAccount>
+            <cbc:ID>AccountNumber</cbc:ID>
+            <cbc:Name>AccountName</cbc:Name>
+            <cac:FinancialInstitutionBranch>
+                <cbc:ID>BSB Number</cbc:ID>
+            </cac:FinancialInstitutionBranch>
+        </cac:PayeeFinancialAccount>  
+    </cac:PaymentMeans>
+    <cac:PaymentTerms>
+        <cbc:Note>Net 30 Days</cbc:Note>
+    </cac:PaymentTerms>
+  
+	
+    <cac:TaxTotal>
+        <cbc:TaxAmount currencyID="AUD">805.56</cbc:TaxAmount> <!--IBT-110-->
+        <cac:TaxSubtotal>
+            <cbc:TaxableAmount currencyID="AUD">8055.56</cbc:TaxableAmount>
+            <cbc:TaxAmount currencyID="AUD">805.56</cbc:TaxAmount>
+            <cac:TaxCategory>
+                <cbc:ID>S</cbc:ID>
+                <cbc:Percent>10</cbc:Percent>
+                <cac:TaxScheme>
+                    <cbc:ID>GST</cbc:ID>
+                </cac:TaxScheme>
+            </cac:TaxCategory>
+        </cac:TaxSubtotal>
+	</cac:TaxTotal>
+		
+    <cac:LegalMonetaryTotal>
+        <cbc:LineExtensionAmount currencyID="AUD">8055.56</cbc:LineExtensionAmount>
+        <cbc:TaxExclusiveAmount currencyID="AUD">8055.56</cbc:TaxExclusiveAmount> <!--IBT-109-->
+        <cbc:TaxInclusiveAmount currencyID="AUD">8861.12</cbc:TaxInclusiveAmount> <!--IBT-112-->
+        <cbc:PrepaidAmount currencyID="AUD">0.00</cbc:PrepaidAmount>
+        <cbc:PayableAmount currencyID="AUD">8861.12</cbc:PayableAmount> <!--IBT-115-->
+    </cac:LegalMonetaryTotal>
+ 
+    <cac:InvoiceLine>
+       <cbc:ID>1</cbc:ID>
+       <cbc:Note>Quantity 10</cbc:Note>
+       <cbc:InvoicedQuantity unitCode="EA">10</cbc:InvoicedQuantity>
+       <cbc:LineExtensionAmount currencyID="AUD">7987.20</cbc:LineExtensionAmount>
+           <cbc:AccountingCost>Accounting Cost</cbc:AccountingCost>
+       <cac:OrderLineReference>
+            <cbc:LineID>20</cbc:LineID>
+       </cac:OrderLineReference>
+		<cac:Item>
+			<cbc:Description>Product</cbc:Description>
+			<cbc:Name>Product name</cbc:Name>
+			<cac:StandardItemIdentification>
+				  <cbc:ID schemeID="0002">AG4546</cbc:ID>
+			</cac:StandardItemIdentification>
+				<cac:OriginCountry>
+					<cbc:IdentificationCode>AU</cbc:IdentificationCode>
+				</cac:OriginCountry>
+				<cac:ClassifiedTaxCategory>
+					<cbc:ID>S</cbc:ID>
+					<cbc:Percent>10</cbc:Percent>
+					<cac:TaxScheme>
+						<cbc:ID>GST</cbc:ID>
+					</cac:TaxScheme>
+				</cac:ClassifiedTaxCategory>
+        </cac:Item>
+		<cac:Price>
+           <cbc:PriceAmount currencyID="AUD">798.72</cbc:PriceAmount>
+       </cac:Price>
+	    </cac:InvoiceLine>
+		
+	<cac:InvoiceLine>	<!--line level freight charge-->
+       <cbc:ID>2</cbc:ID>
+       <cbc:InvoicedQuantity unitCode="EA">1</cbc:InvoicedQuantity>
+       <cbc:LineExtensionAmount currencyID="AUD">68.36</cbc:LineExtensionAmount>  
+		<cac:Item>
+			<cbc:Description>Freight charge</cbc:Description>
+			<cbc:Name>Freight</cbc:Name>
+				<cac:OriginCountry>
+					<cbc:IdentificationCode>AU</cbc:IdentificationCode>
+				</cac:OriginCountry>
+				<cac:ClassifiedTaxCategory>
+					<cbc:ID>S</cbc:ID>
+					<cbc:Percent>10</cbc:Percent>
+					<cac:TaxScheme>
+						<cbc:ID>GST</cbc:ID>
+					</cac:TaxScheme>
+				</cac:ClassifiedTaxCategory>
+        </cac:Item>
+		<cac:Price>
+           <cbc:PriceAmount currencyID="AUD">68.36</cbc:PriceAmount>
+       </cac:Price>
+		
+    </cac:InvoiceLine>
+	
+</Invoice>

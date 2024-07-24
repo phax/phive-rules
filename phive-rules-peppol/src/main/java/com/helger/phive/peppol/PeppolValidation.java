@@ -77,13 +77,14 @@ public final class PeppolValidation
     PeppolValidation2023_05.init (aRegistry);
     PeppolValidation2023_11.init (aRegistry);
     PeppolValidation2024_05.init (aRegistry);
-    PeppolValidationAUNZ.init (aRegistry);
-    PeppolValidationSG.init (aRegistry);
+    PeppolValidationBisAUNZ.init (aRegistry);
+    PeppolValidationBisSG.init (aRegistry);
     PeppolValidationDirectory.init (aRegistry);
     PeppolValidationReporting.init (aRegistry);
-    PeppolValidationPINT.init (aRegistry);
-    PeppolValidationJP.init (aRegistry);
-    PeppolValidationMY.init (aRegistry);
+    PeppolValidationPint.init (aRegistry);
+    PeppolValidationPintAUNZ.init (aRegistry);
+    PeppolValidationPintJP.init (aRegistry);
+    PeppolValidationPintMY.init (aRegistry);
   }
 
   @Nonnull

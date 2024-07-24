@@ -39,12 +39,12 @@ import com.helger.xml.namespace.MapBasedNamespaceContext;
  * @author Philip Helger
  */
 @Immutable
-public final class PeppolValidationMY
+public final class PeppolValidationPintMY
 {
   @Nonnull
   private static ClassLoader _getCL ()
   {
-    return PeppolValidationMY.class.getClassLoader ();
+    return PeppolValidationPintMY.class.getClassLoader ();
   }
 
   private static final String BASE_PATH = "external/schematron/pint-my/";
@@ -60,7 +60,7 @@ public final class PeppolValidationMY
                                                                                                    "creditnote-self-billing",
                                                                                                    "1.0.0");
 
-  private PeppolValidationMY ()
+  private PeppolValidationPintMY ()
   {}
 
   @Nonnull
@@ -95,7 +95,7 @@ public final class PeppolValidationMY
                                                                              "Malaysia PINT Invoice (UBL) 1.0.0",
                                                                              _createStatus (bNotDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
-                                                                             ValidationExecutorSchematron.createXSLT (PeppolValidationPINT.RES_OPENPEPPOL_PINT_1_0_1,
+                                                                             ValidationExecutorSchematron.createXSLT (PeppolValidationPint.RES_OPENPEPPOL_PINT_1_0_1,
                                                                                                                       aNSCtxInvoice),
                                                                              ValidationExecutorSchematron.createXSLT (aCPRBilling,
                                                                                                                       aNSCtxInvoice)));
@@ -103,7 +103,7 @@ public final class PeppolValidationMY
                                                                              "Malaysia PINT Credit Note (UBL) 1.0.0",
                                                                              _createStatus (bNotDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
-                                                                             ValidationExecutorSchematron.createXSLT (PeppolValidationPINT.RES_OPENPEPPOL_PINT_1_0_1,
+                                                                             ValidationExecutorSchematron.createXSLT (PeppolValidationPint.RES_OPENPEPPOL_PINT_1_0_1,
                                                                                                                       aNSCtxCreditNote),
                                                                              ValidationExecutorSchematron.createXSLT (aCPRBilling,
                                                                                                                       aNSCtxCreditNote)));
@@ -112,7 +112,7 @@ public final class PeppolValidationMY
                                                                              "Malaysia PINT Invoice Self-Billing (UBL) 1.0.0",
                                                                              _createStatus (bNotDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
-                                                                             ValidationExecutorSchematron.createXSLT (PeppolValidationPINT.RES_OPENPEPPOL_PINT_1_0_1,
+                                                                             ValidationExecutorSchematron.createXSLT (PeppolValidationPint.RES_OPENPEPPOL_PINT_1_0_1,
                                                                                                                       aNSCtxInvoice),
                                                                              ValidationExecutorSchematron.createXSLT (aCPRSelfBilling,
                                                                                                                       aNSCtxInvoice)));
@@ -120,7 +120,7 @@ public final class PeppolValidationMY
                                                                              "Malaysia PINT Credit Note Self-Billing (UBL) 1.0.0",
                                                                              _createStatus (bNotDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
-                                                                             ValidationExecutorSchematron.createXSLT (PeppolValidationPINT.RES_OPENPEPPOL_PINT_1_0_1,
+                                                                             ValidationExecutorSchematron.createXSLT (PeppolValidationPint.RES_OPENPEPPOL_PINT_1_0_1,
                                                                                                                       aNSCtxCreditNote),
                                                                              ValidationExecutorSchematron.createXSLT (aCPRSelfBilling,
                                                                                                                       aNSCtxCreditNote)));
