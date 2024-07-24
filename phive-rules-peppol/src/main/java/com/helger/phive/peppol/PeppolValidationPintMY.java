@@ -92,7 +92,7 @@ public final class PeppolValidationPintMY
                                                                        "1.0.0/xslt/selfbilling/PINT-jurisdiction-aligned-rules.xslt",
                                                                        _getCL ());
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_MY_PINT_UBL_INVOICE_1_0_0,
-                                                                             "Malaysia PINT Invoice (UBL) 1.0.0",
+                                                                             "Peppol PINT Malaysia Invoice (UBL) 1.0.0",
                                                                              _createStatus (bNotDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
                                                                              ValidationExecutorSchematron.createXSLT (PeppolValidationPint.RES_OPENPEPPOL_PINT_1_0_1,
@@ -100,7 +100,7 @@ public final class PeppolValidationPintMY
                                                                              ValidationExecutorSchematron.createXSLT (aCPRBilling,
                                                                                                                       aNSCtxInvoice)));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_MY_PINT_UBL_CREDIT_NOTE_1_0_0,
-                                                                             "Malaysia PINT Credit Note (UBL) 1.0.0",
+                                                                             "Peppol PINT Malaysia Credit Note (UBL) 1.0.0",
                                                                              _createStatus (bNotDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
                                                                              ValidationExecutorSchematron.createXSLT (PeppolValidationPint.RES_OPENPEPPOL_PINT_1_0_1,
@@ -109,7 +109,7 @@ public final class PeppolValidationPintMY
                                                                                                                       aNSCtxCreditNote)));
 
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_MY_PINT_UBL_INVOICE_SELF_BILLING_1_0_0,
-                                                                             "Malaysia PINT Invoice Self-Billing (UBL) 1.0.0",
+                                                                             "Peppol PINT Malaysia Invoice Self-Billing (UBL) 1.0.0",
                                                                              _createStatus (bNotDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
                                                                              ValidationExecutorSchematron.createXSLT (PeppolValidationPint.RES_OPENPEPPOL_PINT_1_0_1,
@@ -117,7 +117,7 @@ public final class PeppolValidationPintMY
                                                                              ValidationExecutorSchematron.createXSLT (aCPRSelfBilling,
                                                                                                                       aNSCtxInvoice)));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_MY_PINT_UBL_CREDIT_NOTE_SELF_BILLING_1_0_0,
-                                                                             "Malaysia PINT Credit Note Self-Billing (UBL) 1.0.0",
+                                                                             "Peppol PINT Malaysia Credit Note Self-Billing (UBL) 1.0.0",
                                                                              _createStatus (bNotDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
                                                                              ValidationExecutorSchematron.createXSLT (PeppolValidationPint.RES_OPENPEPPOL_PINT_1_0_1,

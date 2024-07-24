@@ -83,7 +83,7 @@ public final class PeppolValidationPintAUNZ
     {
       final String sBase = BASE_PATH + "1.0.1/xslt/";
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_AUNZ_PINT_UBL_INVOICE_1_0_1,
-                                                                             "AU-NZ PINT Invoice (UBL) 1.0.1",
+                                                                             "Peppol PINT A-NZ Invoice (UBL) 1.0.1",
                                                                              _createStatus (bNotDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
                                                                              ValidationExecutorSchematron.createXSLT (new ClassPathResource (sBase +
@@ -95,7 +95,7 @@ public final class PeppolValidationPintAUNZ
                                                                                                                                              _getCL ()),
                                                                                                                       aNSCtxInvoice)));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_AUNZ_PINT_UBL_CREDIT_NOTE_1_0_1,
-                                                                             "AU-NZ PINT Credit Note (UBL) 1.0.1",
+                                                                             "Peppol PINT A-NZ Credit Note (UBL) 1.0.1",
                                                                              _createStatus (bNotDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
                                                                              ValidationExecutorSchematron.createXSLT (new ClassPathResource (sBase +

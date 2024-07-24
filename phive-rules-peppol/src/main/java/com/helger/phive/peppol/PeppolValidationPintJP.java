@@ -87,7 +87,7 @@ public final class PeppolValidationPintJP
                                                              "0.1.2/xslt/PINT-jurisdiction-aligned-rules.xslt",
                                                              _getCL ());
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_JP_PINT_INVOICE_012,
-                                                                             "Japan PINT Invoice (UBL) 0.1.2",
+                                                                             "Peppol PINT Japan Invoice (UBL) 0.1.2",
                                                                              _createStatus (bNotDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
                                                                              ValidationExecutorSchematron.createXSLT (aCPR1,
@@ -95,7 +95,7 @@ public final class PeppolValidationPintJP
                                                                              ValidationExecutorSchematron.createXSLT (aCPR2,
                                                                                                                       aNSCtxInvoice)));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_JP_PINT_CREDIT_NOTE_012,
-                                                                             "Japan PINT Credit Note (UBL) 0.1.2",
+                                                                             "Peppol PINT Japan Credit Note (UBL) 0.1.2",
                                                                              _createStatus (bNotDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
                                                                              ValidationExecutorSchematron.createXSLT (aCPR1,
