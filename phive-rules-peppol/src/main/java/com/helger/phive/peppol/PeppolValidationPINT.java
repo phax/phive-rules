@@ -41,13 +41,14 @@ import com.helger.xml.namespace.MapBasedNamespaceContext;
 @Immutable
 public final class PeppolValidationPINT
 {
+  public static final String GROUP_ID = "org.peppol.pint";
+  private static final String BASE_PATH = "external/schematron/pint/";
+
   @Nonnull
   private static ClassLoader _getCL ()
   {
     return PeppolValidationPINT.class.getClassLoader ();
   }
-
-  private static final String BASE_PATH = "external/schematron/pint/";
 
   // 1.0.0
   @Deprecated
@@ -55,20 +56,26 @@ public final class PeppolValidationPINT
                                                                                            "1.0.0/xslt/PINT-UBL-validation-preprocessed.xslt",
                                                                                            _getCL ());
   @Deprecated
-  public static final VESID VID_OPENPEPPOL_PINT_INVOICE_1_0_0 = new VESID ("org.peppol.pint", "invoice", "1.0.0");
+  public static final VESID VID_OPENPEPPOL_PINT_INVOICE_1_0_0 = new VESID (GROUP_ID, "invoice", "1.0.0");
   @Deprecated
-  public static final VESID VID_OPENPEPPOL_PINT_CREDIT_NOTE_1_0_0 = new VESID ("org.peppol.pint",
-                                                                               "credit-note",
-                                                                               "1.0.0");
+  public static final VESID VID_OPENPEPPOL_PINT_CREDIT_NOTE_1_0_0 = new VESID (GROUP_ID, "credit-note", "1.0.0");
 
   // 1.0.1
   public static final ClassPathResource RES_OPENPEPPOL_PINT_1_0_1 = new ClassPathResource (BASE_PATH +
                                                                                            "1.0.1/xslt/PINT-UBL-validation-preprocessed.xslt",
                                                                                            _getCL ());
-  public static final VESID VID_OPENPEPPOL_PINT_INVOICE_1_0_1 = new VESID ("org.peppol.pint", "invoice", "1.0.1");
-  public static final VESID VID_OPENPEPPOL_PINT_CREDIT_NOTE_1_0_1 = new VESID ("org.peppol.pint",
-                                                                               "credit-note",
-                                                                               "1.0.1");
+  public static final VESID VID_OPENPEPPOL_PINT_INVOICE_1_0_1 = new VESID (GROUP_ID, "invoice", "1.0.1");
+  public static final VESID VID_OPENPEPPOL_PINT_CREDIT_NOTE_1_0_1 = new VESID (GROUP_ID, "credit-note", "1.0.1");
+
+  // 1.0.2
+  public static final ClassPathResource RES_OPENPEPPOL_PINT_INVOICE_1_0_2 = new ClassPathResource (BASE_PATH +
+                                                                                                   "1.0.2/xslt/PINT-UBL-validation-preprocessed-inv.xslt",
+                                                                                                   _getCL ());
+  public static final ClassPathResource RES_OPENPEPPOL_PINT_CREDIT_NOTE_1_0_2 = new ClassPathResource (BASE_PATH +
+                                                                                                       "1.0.2/xslt/PINT-UBL-validation-preprocessed-cn.xslt",
+                                                                                                       _getCL ());
+  public static final VESID VID_OPENPEPPOL_PINT_INVOICE_1_0_2 = new VESID (GROUP_ID, "invoice", "1.0.2");
+  public static final VESID VID_OPENPEPPOL_PINT_CREDIT_NOTE_1_0_2 = new VESID (GROUP_ID, "credit-note", "1.0.2");
 
   private PeppolValidationPINT ()
   {}
@@ -94,7 +101,7 @@ public final class PeppolValidationPINT
     final boolean bDeprecated = true;
     final boolean bNotDeprecated = false;
 
-    // 1.0.0
+    // 1.0.0 - 2023-07-07
     {
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_PINT_INVOICE_1_0_0,
                                                                              "OpenPeppol PINT Invoice (UBL) 1.0.0",
@@ -110,7 +117,7 @@ public final class PeppolValidationPINT
                                                                                                                       aNSCtxCreditNote)));
     }
 
-    // 1.0.1
+    // 1.0.1 - November 2023
     {
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_PINT_INVOICE_1_0_1,
                                                                              "OpenPeppol PINT Invoice (UBL) 1.0.1",
@@ -123,6 +130,22 @@ public final class PeppolValidationPINT
                                                                              _createStatus (bNotDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
                                                                              ValidationExecutorSchematron.createXSLT (RES_OPENPEPPOL_PINT_1_0_1,
+                                                                                                                      aNSCtxCreditNote)));
+    }
+
+    // 1.0.2 - May 2024
+    {
+      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_PINT_INVOICE_1_0_2,
+                                                                             "OpenPeppol PINT Invoice (UBL) 1.0.2",
+                                                                             _createStatus (bNotDeprecated),
+                                                                             ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
+                                                                             ValidationExecutorSchematron.createXSLT (RES_OPENPEPPOL_PINT_INVOICE_1_0_2,
+                                                                                                                      aNSCtxInvoice)));
+      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_PINT_CREDIT_NOTE_1_0_2,
+                                                                             "OpenPeppol PINT Credit Note (UBL) 1.0.2",
+                                                                             _createStatus (bNotDeprecated),
+                                                                             ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
+                                                                             ValidationExecutorSchematron.createXSLT (RES_OPENPEPPOL_PINT_CREDIT_NOTE_1_0_2,
                                                                                                                       aNSCtxCreditNote)));
     }
   }
