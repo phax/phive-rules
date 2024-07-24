@@ -145,15 +145,17 @@ public final class CTestFiles
                                             PeppolValidationReporting.VID_OPENPEPPOL_TSR_V104,
                                             PeppolValidationReporting.VID_OPENPEPPOL_TSR_V105,
 
-                                            /* PINT AUNZ */
+                                            /* PINT A-NZ */
                                             PeppolValidationPintAUNZ.VID_OPENPEPPOL_AUNZ_PINT_UBL_INVOICE_1_0_1,
                                             PeppolValidationPintAUNZ.VID_OPENPEPPOL_AUNZ_PINT_UBL_CREDIT_NOTE_1_0_1,
 
-                                            /* Japan */
+                                            /* PINT Japan */
                                             PeppolValidationPintJP.VID_OPENPEPPOL_JP_PINT_INVOICE_012,
                                             PeppolValidationPintJP.VID_OPENPEPPOL_JP_PINT_CREDIT_NOTE_012,
+                                            PeppolValidationPintJP.VID_OPENPEPPOL_JP_PINT_INVOICE_1_0_2,
+                                            PeppolValidationPintJP.VID_OPENPEPPOL_JP_PINT_CREDIT_NOTE_1_0_2,
 
-                                            /* Malaysia */
+                                            /* PINT Malaysia */
                                             PeppolValidationPintMY.VID_OPENPEPPOL_MY_PINT_UBL_INVOICE_1_0_0,
                                             PeppolValidationPintMY.VID_OPENPEPPOL_MY_PINT_UBL_CREDIT_NOTE_1_0_0,
                                             PeppolValidationPintMY.VID_OPENPEPPOL_MY_PINT_UBL_INVOICE_SELF_BILLING_1_0_0,
@@ -699,6 +701,28 @@ public final class CTestFiles
                                                               "Japan PINT Invoice UBL Example9-SumInv1 and O.xml"));
     }
     if (aVESID.equals (PeppolValidationPintJP.VID_OPENPEPPOL_JP_PINT_CREDIT_NOTE_012))
+    {
+      // empty
+      return new CommonsArrayList <> ();
+    }
+    if (aVESID.equals (PeppolValidationPintJP.VID_OPENPEPPOL_JP_PINT_INVOICE_1_0_2))
+    {
+      final String sPrefix = sPrefix0 + "pint-jp/1.0.2/";
+      return new CommonsArrayList <> (new FileSystemResource (sPrefix + "Japan PINT Invoice UBL Example.xml"),
+                                      new FileSystemResource (sPrefix + "Japan PINT Invoice UBL Example1-minimum.xml"),
+                                      new FileSystemResource (sPrefix +
+                                                              "Japan PINT Invoice UBL Example2-TaxAcctCur.xml"),
+                                      new FileSystemResource (sPrefix + "Japan PINT Invoice UBL Example3-SumInv1.xml"),
+                                      new FileSystemResource (sPrefix + "Japan PINT Invoice UBL Example4-SumInv2.xml"),
+                                      new FileSystemResource (sPrefix +
+                                                              "Japan PINT Invoice UBL Example5-AllowanceCharge.xml"),
+                                      new FileSystemResource (sPrefix + "Japan PINT Invoice UBL Example6-CorrInv.xml"),
+                                      new FileSystemResource (sPrefix +
+                                                              "Japan PINT Invoice UBL Example7-Return.Quan.ItPr.xml"),
+                                      new FileSystemResource (sPrefix +
+                                                              "Japan PINT Invoice UBL Example9-SumInv1 and O.xml"));
+    }
+    if (aVESID.equals (PeppolValidationPintJP.VID_OPENPEPPOL_JP_PINT_CREDIT_NOTE_1_0_2))
     {
       // empty
       return new CommonsArrayList <> ();

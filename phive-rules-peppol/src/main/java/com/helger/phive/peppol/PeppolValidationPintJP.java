@@ -41,19 +41,24 @@ import com.helger.xml.namespace.MapBasedNamespaceContext;
 @Immutable
 public final class PeppolValidationPintJP
 {
+  public static final String GROUP_ID = "org.peppol.jp.pint";
+  private static final String BASE_PATH = "external/schematron/pint-jp/";
+
   @Nonnull
   private static ClassLoader _getCL ()
   {
     return PeppolValidationPintJP.class.getClassLoader ();
   }
 
-  private static final String BASE_PATH = "external/schematron/pint-jp/";
-
   // 0.1.2
-  public static final VESID VID_OPENPEPPOL_JP_PINT_INVOICE_012 = new VESID ("org.peppol.jp.pint", "invoice", "0.1.2");
-  public static final VESID VID_OPENPEPPOL_JP_PINT_CREDIT_NOTE_012 = new VESID ("org.peppol.jp.pint",
-                                                                                "credit-note",
-                                                                                "0.1.2");
+  @Deprecated
+  public static final VESID VID_OPENPEPPOL_JP_PINT_INVOICE_012 = new VESID (GROUP_ID, "invoice", "0.1.2");
+  @Deprecated
+  public static final VESID VID_OPENPEPPOL_JP_PINT_CREDIT_NOTE_012 = new VESID (GROUP_ID, "credit-note", "0.1.2");
+
+  // 1.0.2
+  public static final VESID VID_OPENPEPPOL_JP_PINT_INVOICE_1_0_2 = new VESID (GROUP_ID, "invoice", "1.0.2");
+  public static final VESID VID_OPENPEPPOL_JP_PINT_CREDIT_NOTE_1_0_2 = new VESID (GROUP_ID, "credit-note", "1.0.2");
 
   private PeppolValidationPintJP ()
   {}
@@ -76,6 +81,7 @@ public final class PeppolValidationPintJP
     // For better error messages (merge both)
     SchematronNamespaceBeautifier.addMappings (aNSCtxCreditNote);
 
+    final boolean bDeprecated = false;
     final boolean bNotDeprecated = false;
 
     // 0.1.2
@@ -88,7 +94,7 @@ public final class PeppolValidationPintJP
                                                              _getCL ());
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_JP_PINT_INVOICE_012,
                                                                              "Peppol PINT Japan Invoice (UBL) 0.1.2",
-                                                                             _createStatus (bNotDeprecated),
+                                                                             _createStatus (bDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
                                                                              ValidationExecutorSchematron.createXSLT (aCPR1,
                                                                                                                       aNSCtxInvoice),
@@ -96,9 +102,32 @@ public final class PeppolValidationPintJP
                                                                                                                       aNSCtxInvoice)));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_JP_PINT_CREDIT_NOTE_012,
                                                                              "Peppol PINT Japan Credit Note (UBL) 0.1.2",
-                                                                             _createStatus (bNotDeprecated),
+                                                                             _createStatus (bDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
                                                                              ValidationExecutorSchematron.createXSLT (aCPR1,
+                                                                                                                      aNSCtxCreditNote),
+                                                                             ValidationExecutorSchematron.createXSLT (aCPR2,
+                                                                                                                      aNSCtxCreditNote)));
+    }
+
+    // 1.0.2
+    {
+      final ClassPathResource aCPR2 = new ClassPathResource (BASE_PATH +
+                                                             "1.0.2/xslt/PINT-jurisdiction-aligned-rules.xslt",
+                                                             _getCL ());
+      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_JP_PINT_INVOICE_1_0_2,
+                                                                             "Peppol PINT Japan Invoice (UBL) 1.0.2",
+                                                                             _createStatus (bNotDeprecated),
+                                                                             ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
+                                                                             ValidationExecutorSchematron.createXSLT (PeppolValidationPint.RES_OPENPEPPOL_PINT_1_0_1,
+                                                                                                                      aNSCtxCreditNote),
+                                                                             ValidationExecutorSchematron.createXSLT (aCPR2,
+                                                                                                                      aNSCtxInvoice)));
+      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_JP_PINT_CREDIT_NOTE_1_0_2,
+                                                                             "Peppol PINT Japan Credit Note (UBL) 1.0.2",
+                                                                             _createStatus (bNotDeprecated),
+                                                                             ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
+                                                                             ValidationExecutorSchematron.createXSLT (PeppolValidationPint.RES_OPENPEPPOL_PINT_1_0_1,
                                                                                                                       aNSCtxCreditNote),
                                                                              ValidationExecutorSchematron.createXSLT (aCPR2,
                                                                                                                       aNSCtxCreditNote)));
