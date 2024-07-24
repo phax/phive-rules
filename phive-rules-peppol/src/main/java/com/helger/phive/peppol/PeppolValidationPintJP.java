@@ -41,7 +41,7 @@ import com.helger.xml.namespace.MapBasedNamespaceContext;
 @Immutable
 public final class PeppolValidationPintJP
 {
-  public static final String GROUP_ID = "org.peppol.jp.pint";
+  public static final String GROUP_ID = "org.peppol.pint.jp";
   private static final String BASE_PATH = "external/schematron/pint-jp/";
 
   @Nonnull
@@ -50,11 +50,13 @@ public final class PeppolValidationPintJP
     return PeppolValidationPintJP.class.getClassLoader ();
   }
 
-  // 0.1.2
+  // 0.1.2 (typo in group ID)
   @Deprecated
-  public static final VESID VID_OPENPEPPOL_JP_PINT_INVOICE_012 = new VESID (GROUP_ID, "invoice", "0.1.2");
+  public static final VESID VID_OPENPEPPOL_JP_PINT_INVOICE_012 = new VESID ("org.peppol.jp.pint", "invoice", "0.1.2");
   @Deprecated
-  public static final VESID VID_OPENPEPPOL_JP_PINT_CREDIT_NOTE_012 = new VESID (GROUP_ID, "credit-note", "0.1.2");
+  public static final VESID VID_OPENPEPPOL_JP_PINT_CREDIT_NOTE_012 = new VESID ("org.peppol.jp.pint",
+                                                                                "credit-note",
+                                                                                "0.1.2");
 
   // 1.0.2
   public static final VESID VID_OPENPEPPOL_JP_PINT_INVOICE_1_0_2 = new VESID (GROUP_ID, "invoice", "1.0.2");
