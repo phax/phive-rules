@@ -40,6 +40,7 @@ import com.helger.phive.peppol.PeppolValidationDirectory;
 import com.helger.phive.peppol.PeppolValidationPintAUNZ;
 import com.helger.phive.peppol.PeppolValidationPintJP;
 import com.helger.phive.peppol.PeppolValidationPintMY;
+import com.helger.phive.peppol.PeppolValidationPintSG;
 import com.helger.phive.peppol.PeppolValidationReporting;
 import com.helger.phive.xml.source.IValidationSourceXML;
 
@@ -162,6 +163,10 @@ public final class CTestFiles
                                             PeppolValidationPintMY.VID_OPENPEPPOL_MY_PINT_UBL_CREDIT_NOTE_1_0_0,
                                             PeppolValidationPintMY.VID_OPENPEPPOL_MY_PINT_UBL_INVOICE_SELF_BILLING_1_0_0,
                                             PeppolValidationPintMY.VID_OPENPEPPOL_MY_PINT_UBL_CREDIT_NOTE_SELF_BILLING_1_0_0,
+
+                                            /* PINT Singapore */
+                                            PeppolValidationPintSG.VID_OPENPEPPOL_SG_PINT_UBL_INVOICE_1_1_0,
+                                            PeppolValidationPintSG.VID_OPENPEPPOL_SG_PINT_UBL_CREDIT_NOTE_1_1_0,
 
     })
       for (final IReadableResource aRes : getAllMatchingTestFiles (aESID))
@@ -698,6 +703,7 @@ public final class CTestFiles
     }
 
     /* Peppol JP */
+    // 0.1.2
     if (aVESID.equals (PeppolValidationPintJP.VID_OPENPEPPOL_JP_PINT_INVOICE_012))
     {
       final String sPrefix = sPrefix0 + "pint-jp/0.1.2/";
@@ -720,6 +726,8 @@ public final class CTestFiles
       // empty
       return new CommonsArrayList <> ();
     }
+
+    // 1.0.2
     if (aVESID.equals (PeppolValidationPintJP.VID_OPENPEPPOL_JP_PINT_INVOICE_1_0_2))
     {
       final String sPrefix = sPrefix0 + "pint-jp/1.0.2/";
@@ -744,6 +752,7 @@ public final class CTestFiles
     }
 
     /* Peppol Malaysia */
+    // 1.0.0
     if (aVESID.equals (PeppolValidationPintMY.VID_OPENPEPPOL_MY_PINT_UBL_INVOICE_1_0_0))
     {
       final String sPrefix = sPrefix0 + "pint-my/1.0.0/invoice/";
@@ -764,6 +773,40 @@ public final class CTestFiles
     {
       // empty
       return new CommonsArrayList <> ();
+    }
+
+    /* Peppol Singapore */
+    // 1.1.0
+    if (aVESID.equals (PeppolValidationPintSG.VID_OPENPEPPOL_SG_PINT_UBL_INVOICE_1_1_0))
+    {
+      final String sPrefix = sPrefix0 + "pint-sg/1.1.0/";
+      return new CommonsArrayList <> (new FileSystemResource (sPrefix +
+                                                              "PINT-SG INV example 02 - full valid invoice 1.xml"),
+                                      new FileSystemResource (sPrefix +
+                                                              "PINT-SG INV example 03 - Allowances and Charges.xml"),
+                                      new FileSystemResource (sPrefix +
+                                                              "PINT-SG INV example 04 - none GST registered.xml"),
+                                      new FileSystemResource (sPrefix +
+                                                              "PINT-SG INV example 05 - AGD compliant with II and PO reference.xml"),
+                                      new FileSystemResource (sPrefix +
+                                                              "PINT-SG INV example 06 - Foreign currency.xml"),
+                                      new FileSystemResource (sPrefix + "PINT-SG INV example 07 - Foreign buyer.xml"),
+                                      new FileSystemResource (sPrefix +
+                                                              "PINT-SG INV example 08 - Factored invoice.xml"),
+                                      new FileSystemResource (sPrefix + "PINT-SG INV example 09 - Zero rated GST.xml"),
+                                      new FileSystemResource (sPrefix + "PINT-SG INV example 10 - Prepayment.xml"),
+                                      new FileSystemResource (sPrefix + "PINT-SG INV example 11 - Decimals.xml"),
+                                      new FileSystemResource (sPrefix +
+                                                              "PINT-SG INV example 12 - SG bank transfer.xml"),
+                                      new FileSystemResource (sPrefix + "PINT-SG INV example 13 - SG GIRO.xml"),
+                                      new FileSystemResource (sPrefix + "PINT-SG INV example 14 - PayNow.xml"),
+                                      new FileSystemResource (sPrefix + "PINT-SG INV example 15 - Credit card.xml"),
+                                      new FileSystemResource (sPrefix + "PINT-SG INV example 16 - GST in SGD.xml"));
+    }
+    if (aVESID.equals (PeppolValidationPintSG.VID_OPENPEPPOL_SG_PINT_UBL_CREDIT_NOTE_1_1_0))
+    {
+      final String sPrefix = sPrefix0 + "pint-sg/1.1.0/";
+      return new CommonsArrayList <> (new FileSystemResource (sPrefix + "PINT-SG CN example 01 - Credit Note.xml"));
     }
 
     throw new IllegalArgumentException ("Invalid VESID: " + aVESID);

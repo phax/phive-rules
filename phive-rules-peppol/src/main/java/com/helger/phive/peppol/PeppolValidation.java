@@ -85,6 +85,7 @@ public final class PeppolValidation
     PeppolValidationPintAUNZ.init (aRegistry);
     PeppolValidationPintJP.init (aRegistry);
     PeppolValidationPintMY.init (aRegistry);
+    PeppolValidationPintSG.init (aRegistry);
   }
 
   @Nonnull
