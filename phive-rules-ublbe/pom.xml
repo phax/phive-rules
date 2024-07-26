@@ -110,9 +110,9 @@
             </goals>
             <id>ublbe</id>
             <configuration>
-              <schematronDirectory>${basedir}/src/test/resources/rule-source/en16931/v1.30</schematronDirectory>
+              <schematronDirectory>${basedir}/src/test/resources/external/rule-source/en16931/v1.31</schematronDirectory>
               <schematronPattern>*.sch</schematronPattern>
-              <xsltDirectory>${basedir}/src/main/resources/schematron/ublbe/en16931/v1.30</xsltDirectory>
+              <xsltDirectory>${basedir}/src/main/resources/external/schematron/ublbe/en16931/v1.31</xsltDirectory>
             </configuration>
           </execution>
        -->

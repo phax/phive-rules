@@ -98,8 +98,13 @@ public final class UBLBEValidation
   @Deprecated
   public static final VESID VID_UBL_BE_INVOICE_129 = new VESID (GROUPID_UBL_BE, "invoice", "1.2.9");
 
+  @Deprecated
   public static final VESID VID_UBL_BE_CREDIT_NOTE_130 = new VESID (GROUPID_UBL_BE, "credit-note", "1.30");
+  @Deprecated
   public static final VESID VID_UBL_BE_INVOICE_130 = new VESID (GROUPID_UBL_BE, "invoice", "1.30");
+
+  public static final VESID VID_UBL_BE_CREDIT_NOTE_131 = new VESID (GROUPID_UBL_BE, "credit-note", "1.31");
+  public static final VESID VID_UBL_BE_INVOICE_131 = new VESID (GROUPID_UBL_BE, "invoice", "1.31");
 
   @Nonnull
   private static ClassLoader _getCL ()
@@ -147,8 +152,12 @@ public final class UBLBEValidation
   private static final IReadableResource UBL_BE_129 = new ClassPathResource (BASE_PATH +
                                                                              "en16931/v1.2.9/GLOBALUBL.BE.xslt",
                                                                              _getCL ());
+  @Deprecated
   private static final IReadableResource UBL_BE_130 = new ClassPathResource (BASE_PATH +
                                                                              "en16931/v1.30/GLOBALUBL.BE.xslt",
+                                                                             _getCL ());
+  private static final IReadableResource UBL_BE_131 = new ClassPathResource (BASE_PATH +
+                                                                             "en16931/v1.31/GLOBALUBL.BE.xslt",
                                                                              _getCL ());
 
   private UBLBEValidation ()
@@ -331,14 +340,28 @@ public final class UBLBEValidation
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_UBL_BE_INVOICE_130,
                                                                            "UBL.BE Invoice " +
                                                                                                    VID_UBL_BE_INVOICE_130.getVersionString (),
-                                                                           _createStatus (bNotDeprecated),
+                                                                           _createStatus (bDeprecated),
                                                                            ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
                                                                            _createXSLT (UBL_BE_130)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_UBL_BE_CREDIT_NOTE_130,
                                                                            "UBL.BE Credit Note " +
                                                                                                        VID_UBL_BE_CREDIT_NOTE_130.getVersionString (),
-                                                                           _createStatus (bNotDeprecated),
+                                                                           _createStatus (bDeprecated),
                                                                            ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
                                                                            _createXSLT (UBL_BE_130)));
+
+    // v1.31
+    aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_UBL_BE_INVOICE_131,
+                                                                           "UBL.BE Invoice " +
+                                                                                                   VID_UBL_BE_INVOICE_131.getVersionString (),
+                                                                           _createStatus (bNotDeprecated),
+                                                                           ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
+                                                                           _createXSLT (UBL_BE_131)));
+    aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_UBL_BE_CREDIT_NOTE_131,
+                                                                           "UBL.BE Credit Note " +
+                                                                                                       VID_UBL_BE_CREDIT_NOTE_131.getVersionString (),
+                                                                           _createStatus (bNotDeprecated),
+                                                                           ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
+                                                                           _createXSLT (UBL_BE_131)));
   }
 }
