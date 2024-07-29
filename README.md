@@ -192,6 +192,7 @@ I hope that with the introduction of PINT, the versioning problem will be solved
 # News and noteworthy
  
 * v3.1.12 - work in progress
+    * Updated to phive 9.2.2
     * Added Peppol PINT rules 1.0.2
     * Added Peppol PINT A-NZ 1.0.1 rules (billing and self-billing)
     * Added Peppol PINT Japan 1.0.2 rules
