@@ -4,7 +4,9 @@
 
 A set of preconfigured rules for PHIVE (Philip Helger Integrative Validation Engine) - pronounced `[ˈfaɪv]`.
 
-All projects found in here rely on the PHIVE validation engine provided by https://github.com/phax/phive (formerly ph-bdve)
+This project is part of my Peppol solution stack. See https://github.com/phax/peppol for other components and libraries in that area.
+
+All projects found in here rely on the PHIVE validation engine provided by https://github.com/phax/phive
 
 This project is divided into sub-projects each keeping tracking of one document type set:
 * phive-rules-cii - Validation rules for pure UN CII (without any Schematron)
