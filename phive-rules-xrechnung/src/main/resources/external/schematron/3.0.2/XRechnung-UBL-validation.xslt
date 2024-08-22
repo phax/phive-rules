@@ -528,8 +528,7 @@
           <xsl:attribute name="location">
             <xsl:apply-templates mode="schematron-select-full-path" select="." />
           </xsl:attribute>
-          <svrl:text />
-        </svrl:failed-assert>
+          <svrl:text>Allowance/charge amount must equal base amount * percentage/100 if base amount and percentage exists</svrl:text>        </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
 
@@ -633,8 +632,7 @@
           <xsl:attribute name="location">
             <xsl:apply-templates mode="schematron-select-full-path" select="." />
           </xsl:attribute>
-          <svrl:text />
-        </svrl:failed-assert>
+          <svrl:text>Invoice line net amount MUST equal (Invoiced quantity * (Item net price/item price base quantity) + Sum of invoice line charge amount - sum of invoice line allowance amount</svrl:text>        </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
 
