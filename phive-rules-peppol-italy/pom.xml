@@ -77,6 +77,8 @@
   
   <properties>
     <agid-rules.version>3.1.0</agid-rules.version>
+    <!-- Must be ITA as the ENG rules are no identical (last checked for 3.1.0) -->
+    <agid-rules.lang>ITA</agid-rules.lang>
   </properties>
 
   <build>
@@ -106,59 +108,51 @@
               <goal>convert</goal>
             </goals>
             <configuration>
-              <schematronDirectory>src/test/resources/external/rule-source/${agid-rules.version}/peppolbis-trdm016-3.0-despatch-advice/Schematron/ENG</schematronDirectory>
+              <schematronDirectory>src/test/resources/external/rule-source/${agid-rules.version}/peppolbis-trdm016-3.0-despatch-advice/Schematron/${agid-rules.lang}</schematronDirectory>
               <schematronPattern>*.sch</schematronPattern>
               <xsltDirectory>src/main/resources/external/schematron/peppol-italy/${agid-rules.version}/despatch-advice</xsltDirectory>
             </configuration>
           </execution>
-          -->
-          <!--
           <execution>
             <id>invoice</id>
             <goals>
               <goal>convert</goal>
             </goals>
             <configuration>
-              <schematronDirectory>src/test/resources/external/rule-source/${agid-rules.version}/peppolbis-en16931-ubl-3.0-invoice/Schematron/ENG</schematronDirectory>
+              <schematronDirectory>src/test/resources/external/rule-source/${agid-rules.version}/peppolbis-en16931-ubl-3.0-invoice/Schematron/${agid-rules.lang}</schematronDirectory>
               <schematronPattern>*.sch</schematronPattern>
               <xsltDirectory>src/main/resources/external/schematron/peppol-italy/${agid-rules.version}/invoice</xsltDirectory>
             </configuration>
           </execution>
-          -->
-          <!-- 
           <execution>
             <id>order</id>
             <goals>
               <goal>convert</goal>
             </goals>
             <configuration>
-              <schematronDirectory>src/test/resources/external/rule-source/${agid-rules.version}/peppolbis-trdm001-3.0-order/Schematron/ENG</schematronDirectory>
+              <schematronDirectory>src/test/resources/external/rule-source/${agid-rules.version}/peppolbis-trdm001-3.0-order/Schematron/${agid-rules.lang}</schematronDirectory>
               <schematronPattern>*.sch</schematronPattern>
               <xsltDirectory>src/main/resources/external/schematron/peppol-italy/${agid-rules.version}/order</xsltDirectory>
             </configuration>
           </execution>
-          -->
-          <!-- 
           <execution>
             <id>order-agreement</id>
             <goals>
               <goal>convert</goal>
             </goals>
             <configuration>
-              <schematronDirectory>src/test/resources/external/rule-source/${agid-rules.version}/peppolbis-trdm110-3.0-order-agreement/Schematron/ENG</schematronDirectory>
+              <schematronDirectory>src/test/resources/external/rule-source/${agid-rules.version}/peppolbis-trdm110-3.0-order-agreement/Schematron/${agid-rules.lang}</schematronDirectory>
               <schematronPattern>*.sch</schematronPattern>
               <xsltDirectory>src/main/resources/external/schematron/peppol-italy/${agid-rules.version}/order-agreement</xsltDirectory>
             </configuration>
           </execution>
-          -->
-          <!-- 
           <execution>
             <id>order-response</id>
             <goals>
               <goal>convert</goal>
             </goals>
             <configuration>
-              <schematronDirectory>src/test/resources/external/rule-source/${agid-rules.version}/peppolbis-trdm076-3.0-order-response/Schematron/ENG</schematronDirectory>
+              <schematronDirectory>src/test/resources/external/rule-source/${agid-rules.version}/peppolbis-trdm076-3.0-order-response/Schematron/${agid-rules.lang}</schematronDirectory>
               <schematronPattern>*.sch</schematronPattern>
               <xsltDirectory>src/main/resources/external/schematron/peppol-italy/${agid-rules.version}/order-response</xsltDirectory>
             </configuration>

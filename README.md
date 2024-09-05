@@ -193,8 +193,8 @@ I hope that with the introduction of PINT, the versioning problem will be solved
   
 # News and noteworthy
  
-* v3.1.13 - work in progress
-    * Added support for Peppol Italy rules 3.1.0 (AGID Credit Note, Despatch Advice, Invoice, Order, Order Agreement and Order Response)
+* v3.1.13 - 2024-09-06
+    * Added support for Peppol Italy rules 3.1.0 (AGID Credit Note, Despatch Advice, Invoice, Order, Order Agreement and Order Response), Italian version
 * v3.1.12 - 2024-07-29
     * Updated to phive 9.2.2
     * Added Peppol PINT rules 1.0.2
