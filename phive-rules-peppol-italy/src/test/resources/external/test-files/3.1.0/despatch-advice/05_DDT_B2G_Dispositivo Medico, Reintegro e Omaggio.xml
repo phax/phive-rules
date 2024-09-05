@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DespatchAdvice xmlns="urn:oasis:names:specification:ubl:schema:xsd:DespatchAdvice-2"
+	xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+	xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
+	<cbc:CustomizationID>urn:fdc:peppol.eu:poacc:trns:despatch_advice:3:extended:urn:www.agid.gov.it:trns:ddt:3.1</cbc:CustomizationID>
+	<cbc:ProfileID>urn:fdc:peppol.eu:poacc:bis:despatch_advice:3</cbc:ProfileID>
+	<cbc:ID>05_DDT_BIS3_V02_B2G</cbc:ID>
+	<cbc:IssueDate>2023-05-13</cbc:IssueDate>
+	<cac:OrderReference>
+		<cbc:ID>1234#2023-03-12#O92KTP</cbc:ID>
+	</cac:OrderReference>
+	<cac:DespatchSupplierParty>
+		<cac:Party>
+			<cbc:EndpointID schemeID="0211">IT02188520544</cbc:EndpointID>
+			<cac:PartyIdentification>
+				<cbc:ID schemeID="0211">IT02188520544</cbc:ID>
+			</cac:PartyIdentification>
+			<cac:PostalAddress>
+				<cbc:StreetName>Via Lucio Dalla 1</cbc:StreetName>
+				<cbc:CityName>Bologna</cbc:CityName>
+				<cbc:PostalZone>40121</cbc:PostalZone>
+				<cbc:CountrySubentity>BO</cbc:CountrySubentity>
+				<cac:Country>
+					<cbc:IdentificationCode>IT</cbc:IdentificationCode>
+				</cac:Country>
+			</cac:PostalAddress>
+			<cac:PartyLegalEntity>
+				<cbc:RegistrationName>Fornitore SPA</cbc:RegistrationName>
+			</cac:PartyLegalEntity>
+			<cac:Contact>
+				<cbc:Name>Deposito Logistica Integrata</cbc:Name>
+				<cbc:Telephone>029506981</cbc:Telephone>
+			</cac:Contact>
+		</cac:Party>
+	</cac:DespatchSupplierParty>
+	<cac:DeliveryCustomerParty>
+		<cac:Party>
+			<cbc:EndpointID schemeID="0201">O92KTP</cbc:EndpointID>
+			<cac:PartyIdentification>
+				<cbc:ID schemeID="0210">01598570354</cbc:ID>
+			</cac:PartyIdentification>
+			<cac:PostalAddress>
+				<cbc:StreetName>Via De Gasperi, 8</cbc:StreetName>
+				<cbc:CityName>Ravenna</cbc:CityName>
+				<cbc:PostalZone>48121</cbc:PostalZone>
+				<cbc:CountrySubentity>RA</cbc:CountrySubentity>
+				<cac:Country>
+					<cbc:IdentificationCode>IT</cbc:IdentificationCode>
+				</cac:Country>
+			</cac:PostalAddress>
+			<cac:PartyLegalEntity>
+				<cbc:RegistrationName>Azienda USL della Romagna</cbc:RegistrationName>
+			</cac:PartyLegalEntity>
+		</cac:Party>
+		<cac:DeliveryContact>
+			<cbc:Name>Magazzino Unico di Area Vasta</cbc:Name>
+			<cbc:Telephone>0547394917</cbc:Telephone>
+		</cac:DeliveryContact>
+	</cac:DeliveryCustomerParty>
+	<cac:BuyerCustomerParty>
+		<cac:Party>
+			<cac:PartyIdentification>
+				<cbc:ID schemeID="0210">01598570354</cbc:ID>
+			</cac:PartyIdentification>
+			<cac:PartyName>
+				<cbc:Name>Azienda Ausl della Romagna</cbc:Name>
+			</cac:PartyName>
+			<cac:PostalAddress>
+				<cbc:StreetName>Via De Gasperi, 8</cbc:StreetName>
+				<cbc:CityName>Ravenna</cbc:CityName>
+				<cbc:PostalZone>48121</cbc:PostalZone>
+				<cbc:CountrySubentity>RA</cbc:CountrySubentity>
+				<cac:Country>
+					<cbc:IdentificationCode>IT</cbc:IdentificationCode>
+				</cac:Country>
+			</cac:PostalAddress>
+		</cac:Party>
+	</cac:BuyerCustomerParty>
+	<cac:SellerSupplierParty>
+		<cac:Party>
+			<cac:PartyIdentification>
+				<cbc:ID schemeID="0211">IT02188520544</cbc:ID>
+			</cac:PartyIdentification>
+			<cac:PartyName>
+				<cbc:Name>Fornitore S.p.A</cbc:Name>
+			</cac:PartyName>
+			<cac:PostalAddress>
+				<cbc:StreetName>Via Lucio Dalla 1</cbc:StreetName>
+				<cbc:CityName>Bologna</cbc:CityName>
+				<cbc:PostalZone>40121</cbc:PostalZone>
+				<cbc:CountrySubentity>BO</cbc:CountrySubentity>
+				<cac:Country>
+					<cbc:IdentificationCode>IT</cbc:IdentificationCode>
+				</cac:Country>
+			</cac:PostalAddress>
+		</cac:Party>
+	</cac:SellerSupplierParty>
+	<cac:OriginatorCustomerParty>
+		<cac:Party>
+			<cac:PartyName>
+				<cbc:Name>Pronto Soccorso e Osservazione Breve</cbc:Name>
+			</cac:PartyName>
+		</cac:Party>
+	</cac:OriginatorCustomerParty>
+	<cac:Shipment>
+		<cbc:ID>Spedizione 23/03</cbc:ID>
+		<cbc:Information>Reintegro</cbc:Information>
+		<cbc:GrossWeightMeasure unitCode="KGM">100</cbc:GrossWeightMeasure>
+		<cbc:TotalTransportHandlingUnitQuantity>25</cbc:TotalTransportHandlingUnitQuantity>
+		<cac:Consignment>
+			<cbc:ID>010221</cbc:ID>
+			<cac:CarrierParty>
+				<cac:PartyIdentification>
+					<cbc:ID schemeID="0211">IT00204260285</cbc:ID>
+				</cac:PartyIdentification>
+				<cac:PartyName>
+					<cbc:Name>EURODIFARM SRL</cbc:Name>
+				</cac:PartyName>
+				<cac:PostalAddress>
+					<cbc:StreetName>Via Europa 100</cbc:StreetName>
+					<cbc:AdditionalStreetName>Palazzo A</cbc:AdditionalStreetName>
+					<cbc:CityName>Bologna</cbc:CityName>
+					<cbc:PostalZone>40121</cbc:PostalZone>
+					<cbc:CountrySubentity>BO</cbc:CountrySubentity>
+					<cac:Country>
+						<cbc:IdentificationCode>IT</cbc:IdentificationCode>
+					</cac:Country>
+				</cac:PostalAddress>
+			</cac:CarrierParty>
+		</cac:Consignment>
+		<cac:Delivery>
+			<cac:EstimatedDeliveryPeriod>
+				<cbc:StartDate>2023-05-16</cbc:StartDate>
+				<cbc:StartTime>14:00:00</cbc:StartTime>
+			</cac:EstimatedDeliveryPeriod>
+			<cac:Despatch>
+				<cac:DespatchAddress>
+					<cbc:StreetName>Via Grecia 4</cbc:StreetName>
+					<cbc:CityName>Modena</cbc:CityName>
+					<cbc:PostalZone>41124</cbc:PostalZone>
+					<cbc:CountrySubentity>MO</cbc:CountrySubentity>
+					<cac:AddressLine>
+						<cbc:Line>Centro logistica Beni Sanitari</cbc:Line>
+					</cac:AddressLine>
+					<cac:Country>
+						<cbc:IdentificationCode>IT</cbc:IdentificationCode>
+					</cac:Country>
+				</cac:DespatchAddress>
+			</cac:Despatch>
+		</cac:Delivery>
+	</cac:Shipment>
+	<cac:DespatchLine>
+		<cbc:ID>1</cbc:ID>
+		<cbc:Note>ACCORDO DI REINTEGRO</cbc:Note>
+		<cbc:DeliveredQuantity unitCode="C62">1</cbc:DeliveredQuantity>
+		<cac:OrderLineReference>
+			<cbc:LineID>1</cbc:LineID>
+		</cac:OrderLineReference>
+		<cac:Item>
+			<cbc:Name>SYNERGY PROTESI VASCOLARE BIFORCATA 22X11MM LUNGH.50CM INTEGARD KNITTED</cbc:Name>
+			<cac:SellersItemIdentification>
+				<cbc:ID>IVIGK2211SG</cbc:ID>
+			</cac:SellersItemIdentification>
+			<cac:CommodityClassification>
+				<cbc:ItemClassificationCode listID="STO">P09070302</cbc:ItemClassificationCode>
+			</cac:CommodityClassification>
+			<cac:CommodityClassification>
+				<cbc:ItemClassificationCode listID="ZZZ">DM1:229026</cbc:ItemClassificationCode>
+			</cac:CommodityClassification>
+			<cac:ItemInstance>
+				<cac:LotIdentification>
+					<cbc:LotNumberID>1022796908/14J26</cbc:LotNumberID>
+					<cbc:ExpiryDate>2025-08-31</cbc:ExpiryDate>
+				</cac:LotIdentification>
+			</cac:ItemInstance>
+		</cac:Item>
+	</cac:DespatchLine>
+	<cac:DespatchLine>
+		<cbc:ID>2</cbc:ID>
+		<cbc:Note>ACCORDO DI REINTEGRO</cbc:Note>
+		<cbc:DeliveredQuantity unitCode="C62">20</cbc:DeliveredQuantity>
+		<cac:OrderLineReference>
+			<cbc:LineID>2</cbc:LineID>
+		</cac:OrderLineReference>
+		<cac:Item>
+			<cbc:Name>Strisce per glucosio</cbc:Name>
+			<cbc:AdditionalInformation>OMAGGIO</cbc:AdditionalInformation>
+			<cac:SellersItemIdentification>
+				<cbc:ID>123456</cbc:ID>
+			</cac:SellersItemIdentification>
+			<cac:ItemInstance>
+				<cac:LotIdentification>
+					<cbc:LotNumberID>123456</cbc:LotNumberID>
+					<cbc:ExpiryDate>2025-03-12</cbc:ExpiryDate>
+				</cac:LotIdentification>
+			</cac:ItemInstance>
+		</cac:Item>
+	</cac:DespatchLine>
+</DespatchAdvice>

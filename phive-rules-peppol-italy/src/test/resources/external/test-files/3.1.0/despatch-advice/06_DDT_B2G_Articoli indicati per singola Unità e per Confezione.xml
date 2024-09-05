@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DespatchAdvice xmlns="urn:oasis:names:specification:ubl:schema:xsd:DespatchAdvice-2"
+	xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+	xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
+	<cbc:CustomizationID>urn:fdc:peppol.eu:poacc:trns:despatch_advice:3:extended:urn:www.agid.gov.it:trns:ddt:3.1</cbc:CustomizationID>
+	<cbc:ProfileID>urn:fdc:peppol.eu:poacc:bis:despatch_advice:3</cbc:ProfileID>
+	<cbc:ID>06_DDT_BIS3_V02_B2G</cbc:ID>
+	<cbc:IssueDate>2023-05-28</cbc:IssueDate>
+	<cac:OrderReference>
+		<cbc:ID>ORD04#2023-03-12#O92KTP</cbc:ID>
+	</cac:OrderReference>
+	<cac:DespatchSupplierParty>
+		<cac:Party>
+			<cbc:EndpointID schemeID="0211">IT02188520544</cbc:EndpointID>
+			<cac:PartyIdentification>
+				<cbc:ID schemeID="0211">IT02188520544</cbc:ID>
+			</cac:PartyIdentification>
+			<cac:PostalAddress>
+				<cbc:StreetName>Via Lucio Dalla 1</cbc:StreetName>
+				<cbc:CityName>Bologna</cbc:CityName>
+				<cbc:PostalZone>40121</cbc:PostalZone>
+				<cbc:CountrySubentity>BO</cbc:CountrySubentity>
+				<cac:Country>
+					<cbc:IdentificationCode>IT</cbc:IdentificationCode>
+				</cac:Country>
+			</cac:PostalAddress>
+			<cac:PartyLegalEntity>
+				<cbc:RegistrationName>Fornitore SPA</cbc:RegistrationName>
+			</cac:PartyLegalEntity>
+			<cac:Contact>
+				<cbc:Name>Deposito Logistica Integrata</cbc:Name>
+				<cbc:Telephone>029506981</cbc:Telephone>
+			</cac:Contact>
+		</cac:Party>
+	</cac:DespatchSupplierParty>
+	<cac:DeliveryCustomerParty>
+		<cac:Party>
+			<cbc:EndpointID schemeID="0201">O92KTP</cbc:EndpointID>
+			<cac:PartyIdentification>
+				<cbc:ID schemeID="0210">01598570354</cbc:ID>
+			</cac:PartyIdentification>
+			<cac:PostalAddress>
+				<cbc:StreetName>Via De Gasperi, 8</cbc:StreetName>
+				<cbc:CityName>Ravenna</cbc:CityName>
+				<cbc:PostalZone>48121</cbc:PostalZone>
+				<cbc:CountrySubentity>RA</cbc:CountrySubentity>
+				<cac:Country>
+					<cbc:IdentificationCode>IT</cbc:IdentificationCode>
+				</cac:Country>
+			</cac:PostalAddress>
+			<cac:PartyLegalEntity>
+				<cbc:RegistrationName>Azienda USL della Romagna</cbc:RegistrationName>
+			</cac:PartyLegalEntity>
+		</cac:Party>
+		<cac:DeliveryContact>
+			<cbc:Name>Magazzino Unico di Area Vasta</cbc:Name>
+			<cbc:Telephone>0547394917</cbc:Telephone>
+		</cac:DeliveryContact>
+	</cac:DeliveryCustomerParty>
+	<cac:BuyerCustomerParty>
+		<cac:Party>
+			<cac:PartyIdentification>
+				<cbc:ID schemeID="0210">01598570354</cbc:ID>
+			</cac:PartyIdentification>
+			<cac:PartyName>
+				<cbc:Name>Azienda Ausl della Romagna</cbc:Name>
+			</cac:PartyName>
+			<cac:PostalAddress>
+				<cbc:StreetName>Via De Gasperi, 8</cbc:StreetName>
+				<cbc:CityName>Ravenna</cbc:CityName>
+				<cbc:PostalZone>48121</cbc:PostalZone>
+				<cbc:CountrySubentity>RA</cbc:CountrySubentity>
+				<cac:Country>
+					<cbc:IdentificationCode>IT</cbc:IdentificationCode>
+				</cac:Country>
+			</cac:PostalAddress>
+		</cac:Party>
+	</cac:BuyerCustomerParty>
+	<cac:SellerSupplierParty>
+		<cac:Party>
+			<cac:PartyIdentification>
+				<cbc:ID schemeID="0211">IT02188520544</cbc:ID>
+			</cac:PartyIdentification>
+			<cac:PartyName>
+				<cbc:Name>Fornitore S.p.A</cbc:Name>
+			</cac:PartyName>
+			<cac:PostalAddress>
+				<cbc:StreetName>Via Lucio Dalla 1</cbc:StreetName>
+				<cbc:CityName>Bologna</cbc:CityName>
+				<cbc:PostalZone>40121</cbc:PostalZone>
+				<cbc:CountrySubentity>BO</cbc:CountrySubentity>
+				<cac:Country>
+					<cbc:IdentificationCode>IT</cbc:IdentificationCode>
+				</cac:Country>
+			</cac:PostalAddress>
+		</cac:Party>
+	</cac:SellerSupplierParty>
+	<cac:OriginatorCustomerParty>
+		<cac:Party>
+			<cac:PartyName>
+				<cbc:Name>Unità Organizzativa di Chirurgia</cbc:Name>
+			</cac:PartyName>
+		</cac:Party>
+	</cac:OriginatorCustomerParty>
+	<cac:Shipment>
+		<cbc:ID>STM 0001946113</cbc:ID>
+		<cbc:Information>Vendita</cbc:Information>
+		<cbc:GrossWeightMeasure unitCode="KGM">165.440</cbc:GrossWeightMeasure>
+		<cbc:TotalTransportHandlingUnitQuantity>22</cbc:TotalTransportHandlingUnitQuantity>
+		<cac:Consignment>
+			<cbc:ID>STM 0001946113</cbc:ID>
+			<cbc:Information>Targa veicolo FB278RK</cbc:Information>
+			<cac:CarrierParty>
+				<cac:PartyIdentification>
+					<cbc:ID schemeID="0211">IT00204260285</cbc:ID>
+				</cac:PartyIdentification>
+				<cac:PartyName>
+					<cbc:Name>EURODIFARM SRL</cbc:Name>
+				</cac:PartyName>
+				<cac:PostalAddress>
+					<cbc:StreetName>Via Europa 100</cbc:StreetName>
+					<cbc:AdditionalStreetName>Palazzo A</cbc:AdditionalStreetName>
+					<cbc:CityName>Bologna</cbc:CityName>
+					<cbc:PostalZone>40121</cbc:PostalZone>
+					<cbc:CountrySubentity>BO</cbc:CountrySubentity>
+					<cac:Country>
+						<cbc:IdentificationCode>IT</cbc:IdentificationCode>
+					</cac:Country>
+				</cac:PostalAddress>
+			</cac:CarrierParty>
+		</cac:Consignment>
+		<cac:Delivery>
+			<cbc:TrackingID>STM 0001946113</cbc:TrackingID>
+			<cac:EstimatedDeliveryPeriod>
+				<cbc:StartDate>2023-06-16</cbc:StartDate>
+				<cbc:StartTime>14:00:00</cbc:StartTime>
+			</cac:EstimatedDeliveryPeriod>
+			<cac:Despatch>
+				<cac:DespatchAddress>
+					<cbc:StreetName>Via Grecia 4</cbc:StreetName>
+					<cbc:CityName>Modena</cbc:CityName>
+					<cbc:PostalZone>41124</cbc:PostalZone>
+					<cbc:CountrySubentity>MO</cbc:CountrySubentity>
+					<cac:AddressLine>
+						<cbc:Line>Centro logistica Beni Sanitari</cbc:Line>
+					</cac:AddressLine>
+					<cac:Country>
+						<cbc:IdentificationCode>IT</cbc:IdentificationCode>
+					</cac:Country>
+				</cac:DespatchAddress>
+			</cac:Despatch>
+		</cac:Delivery>
+	</cac:Shipment>
+	<!--Articolo ordinato per singola unità-->
+	<cac:DespatchLine>
+		<cbc:ID>1</cbc:ID>
+		<!--5000 guanti -->
+		<cbc:DeliveredQuantity unitCode="C62">5000</cbc:DeliveredQuantity>
+		<cac:OrderLineReference>
+			<cbc:LineID>20</cbc:LineID>
+		</cac:OrderLineReference>
+		<cac:Item>
+			<cbc:Name>GUANTI</cbc:Name>
+			<cac:SellersItemIdentification>
+				<cbc:ID>GM00003562/M</cbc:ID>
+			</cac:SellersItemIdentification>
+			<cac:CommodityClassification>
+				<cbc:ItemClassificationCode listID="STO">P09070302</cbc:ItemClassificationCode>
+			</cac:CommodityClassification>
+			<cac:CommodityClassification>
+				<cbc:ItemClassificationCode listID="ZZZ">DM1:229026</cbc:ItemClassificationCode>
+			</cac:CommodityClassification>
+			<cac:AdditionalItemProperty>
+			  <!-- Una confezione contiene 500 pezzi -->
+				<cbc:Name>PackSizeNumeric</cbc:Name>
+				<cbc:Value>500</cbc:Value>
+			</cac:AdditionalItemProperty>
+			<cac:ItemInstance>
+				<cac:LotIdentification>
+					<cbc:LotNumberID>126200</cbc:LotNumberID>
+					<cbc:ExpiryDate>2030-06-30</cbc:ExpiryDate>
+				</cac:LotIdentification>
+			</cac:ItemInstance>
+		</cac:Item>
+	</cac:DespatchLine>
+	<!--Articolo ordinato a confezione-->
+	<cac:DespatchLine>
+		<cbc:ID>2</cbc:ID>
+		<!--10 confezioni di guanti -->
+		<cbc:DeliveredQuantity unitCode="XPK">10</cbc:DeliveredQuantity>
+		<cac:OrderLineReference>
+			<cbc:LineID>2</cbc:LineID>
+		</cac:OrderLineReference>
+		<cac:Item>
+			<cbc:Name>CONFEZIONE GUANTI</cbc:Name>
+			<cac:SellersItemIdentification>
+				<cbc:ID>CO00003332/M</cbc:ID>
+			</cac:SellersItemIdentification>
+			<cac:CommodityClassification>
+				<cbc:ItemClassificationCode listID="STO">P09070302</cbc:ItemClassificationCode>
+			</cac:CommodityClassification>
+			<cac:CommodityClassification>
+				<cbc:ItemClassificationCode listID="ZZZ">DM1:229026</cbc:ItemClassificationCode>
+			</cac:CommodityClassification>
+			<cac:AdditionalItemProperty>
+				<!-- Una confezione contiene 500 pezzi -->
+				<cbc:Name>PackQuantity</cbc:Name>
+				<cbc:Value>500</cbc:Value>
+			</cac:AdditionalItemProperty>
+			<cac:ItemInstance>
+				<cac:LotIdentification>
+					<cbc:LotNumberID>126200</cbc:LotNumberID>
+					<cbc:ExpiryDate>2030-06-30</cbc:ExpiryDate>
+				</cac:LotIdentification>
+			</cac:ItemInstance>
+		</cac:Item>
+	</cac:DespatchLine>
+</DespatchAdvice>

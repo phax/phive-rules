@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OrderResponse xmlns:xs="http://www.w3.org/2001/XMLSchema"		xmlns="urn:oasis:names:specification:ubl:schema:xsd:OrderResponse-2"		xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"		xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
+  <cbc:CustomizationID>urn:fdc:peppol.eu:poacc:trns:order_response:3:restrictive:urn:www.agid.gov.it:trns:risposta_ordine:3.0</cbc:CustomizationID>
+  <cbc:ProfileID>urn:fdc:peppol.eu:poacc:bis:ordering:3</cbc:ProfileID>
+  <cbc:ID>2018/10021125</cbc:ID>
+  <cbc:SalesOrderID>112233</cbc:SalesOrderID>
+  <cbc:IssueDate>2018-09-01</cbc:IssueDate>
+  <cbc:IssueTime>09:23:56</cbc:IssueTime>
+  <cbc:OrderResponseCode>CA</cbc:OrderResponseCode>
+  <cbc:Note>note della etstata</cbc:Note>
+  <cbc:DocumentCurrencyCode>EUR</cbc:DocumentCurrencyCode>
+  <cac:OrderReference>
+    <cbc:ID>34#2018-07-01#ABACOO</cbc:ID>
+  </cac:OrderReference>
+  <cac:SellerSupplierParty>
+    <cac:Party>
+      <cbc:EndpointID schemeID="0201">ABAOOD</cbc:EndpointID>
+      <cac:PartyIdentification>
+        <cbc:ID schemeID="0211">IT07673570539</cbc:ID>
+      </cac:PartyIdentification>
+      <cac:PartyLegalEntity>
+        <cbc:RegistrationName>Fornitore S.p.A.</cbc:RegistrationName>
+      </cac:PartyLegalEntity>
+    </cac:Party>
+  </cac:SellerSupplierParty>
+  <cac:BuyerCustomerParty>
+    <cac:Party>
+      <cbc:EndpointID schemeID="0201">ABACOO</cbc:EndpointID>
+      <cac:PartyIdentification>
+        <cbc:ID  schemeID="0201">ABACOO</cbc:ID>
+      </cac:PartyIdentification>
+      <cac:PartyLegalEntity>
+        <cbc:RegistrationName>Compratore S.p.A.</cbc:RegistrationName>
+      </cac:PartyLegalEntity>
+    </cac:Party>
+  </cac:BuyerCustomerParty>
+  <cac:Delivery>
+    <cac:PromisedDeliveryPeriod>
+      <cbc:StartDate>2018-10-01</cbc:StartDate>
+      <cbc:EndDate>2018-10-30</cbc:EndDate>
+    </cac:PromisedDeliveryPeriod>
+  </cac:Delivery>
+  <!--prima linea Prodotto A accettato-->
+  <cac:OrderLine>
+    <cac:LineItem>
+      <cbc:ID>1</cbc:ID>
+      <cbc:LineStatusCode>5</cbc:LineStatusCode>
+      <cac:Price>
+        <cbc:PriceAmount currencyID="EUR">50.00</cbc:PriceAmount>
+        <cbc:BaseQuantity unitCode="C62">1</cbc:BaseQuantity>
+      </cac:Price>
+      <cac:Item>
+        <cbc:Name>Prodotto A</cbc:Name>
+        <cac:SellersItemIdentification>
+          <cbc:ID>Pr00A</cbc:ID>
+        </cac:SellersItemIdentification>
+      </cac:Item>
+    </cac:LineItem>
+    <cac:OrderLineReference>
+      <cbc:LineID>1</cbc:LineID>
+    </cac:OrderLineReference>
+  </cac:OrderLine>
+<!--seconda linea Prodotto B rifiutato-->
+  <cac:OrderLine>
+    <cac:LineItem>
+      <cbc:ID>2</cbc:ID>
+      <cbc:LineStatusCode>3</cbc:LineStatusCode>
+      <cbc:Quantity unitCode="C62">4</cbc:Quantity>
+      <cac:Delivery>
+        <cac:PromisedDeliveryPeriod>
+          <cbc:StartDate>2018-10-01</cbc:StartDate>
+        </cac:PromisedDeliveryPeriod>
+      </cac:Delivery>
+      <cac:Price>
+        <cbc:PriceAmount currencyID="EUR">100.00</cbc:PriceAmount>
+        <cbc:BaseQuantity unitCode="C62">2</cbc:BaseQuantity>
+      </cac:Price>
+      <cac:Item>
+        <cbc:Name>Prodotto B</cbc:Name>
+        <cac:SellersItemIdentification>
+          <cbc:ID>Pr00B</cbc:ID>
+        </cac:SellersItemIdentification>
+      </cac:Item>
+    </cac:LineItem>
+    <cac:OrderLineReference>
+      <cbc:LineID>2</cbc:LineID>
+    </cac:OrderLineReference>
+  </cac:OrderLine>
+<!--terza linea Prodotto C sostituito con Prodotto D-->
+  <cac:OrderLine>
+    <cac:LineItem>
+      <cbc:ID>3</cbc:ID>
+      <cbc:LineStatusCode>1</cbc:LineStatusCode>
+      <cbc:Quantity unitCode="C62">1</cbc:Quantity>
+      <cac:Delivery>
+        <cac:PromisedDeliveryPeriod>
+          <cbc:StartDate>2018-10-05</cbc:StartDate>
+        </cac:PromisedDeliveryPeriod>
+      </cac:Delivery>
+      <cac:Price>
+        <cbc:PriceAmount currencyID="EUR">100.00</cbc:PriceAmount>
+        <cbc:BaseQuantity unitCode="C62">2</cbc:BaseQuantity>
+      </cac:Price>
+      <cac:Item>
+        <cbc:Name>Prodotto C</cbc:Name>
+        <cac:SellersItemIdentification>
+          <cbc:ID>Pr00C</cbc:ID>
+        </cac:SellersItemIdentification>
+      </cac:Item>
+    </cac:LineItem>
+    <cac:SellerSubstitutedLineItem>
+      <cbc:ID>1</cbc:ID>
+      <cac:Item>
+        <cbc:Name>Prodotto D</cbc:Name>
+        <cac:SellersItemIdentification>
+          <cbc:ID>Pr00D</cbc:ID>
+        </cac:SellersItemIdentification>
+        <cac:StandardItemIdentification>
+          <cbc:ID schemeID="0160">4040044</cbc:ID>
+        </cac:StandardItemIdentification>
+        <cac:CommodityClassification>
+          <cbc:ItemClassificationCode listID="STL">C08CA01</cbc:ItemClassificationCode>
+        </cac:CommodityClassification>
+        <cac:ClassifiedTaxCategory>
+          <cbc:ID>S</cbc:ID>
+          <cbc:Percent>24</cbc:Percent>
+          <cac:TaxScheme>
+            <cbc:ID>VAT</cbc:ID>
+          </cac:TaxScheme>
+        </cac:ClassifiedTaxCategory>
+        <cac:AdditionalItemProperty>
+          <cbc:Name>Colore</cbc:Name>
+          <cbc:Value>Grigio</cbc:Value>
+        </cac:AdditionalItemProperty>
+      </cac:Item>
+    </cac:SellerSubstitutedLineItem>
+    <cac:OrderLineReference>
+      <cbc:LineID>3</cbc:LineID>
+    </cac:OrderLineReference>
+  </cac:OrderLine>
+</OrderResponse>
