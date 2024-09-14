@@ -24,12 +24,12 @@
     <artifactId>phive-rules-parent-pom</artifactId>
     <version>3.1.14-SNAPSHOT</version>
   </parent>
-  <artifactId>phive-rules-cii</artifactId>
+  <artifactId>phive-rules-api</artifactId>
   <packaging>bundle</packaging>
-  <name>phive-rules-cii</name>
-  <description>CII validation rules for phive</description>
-  <url>https://github.com/phax/phive-rules/phive-rules-cii</url>
-  <inceptionYear>2018</inceptionYear>
+  <name>phive-rules-api</name>
+  <description>phive-rules API</description>
+  <url>https://github.com/phax/phive-rules/phive-rules-api</url>
+  <inceptionYear>2024</inceptionYear>
   
   <licenses>
     <license>
@@ -54,29 +54,6 @@
   </developers>
   
   <dependencies>
-    <dependency>
-      <groupId>com.helger.commons</groupId>
-      <artifactId>ph-commons</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>com.helger.cii</groupId>
-      <artifactId>ph-cii-d16b</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>com.helger.phive.rules</groupId>
-      <artifactId>phive-rules-api</artifactId>
-    </dependency>
-    
-    <dependency>
-      <groupId>org.slf4j</groupId>
-      <artifactId>slf4j-simple</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>com.helger.cii</groupId>
-      <artifactId>ph-cii-testfiles</artifactId>
-      <scope>test</scope>
-    </dependency>
   </dependencies>
   
   <build>
@@ -87,9 +64,9 @@
         <extensions>true</extensions>
         <configuration>
           <instructions>
-            <Automatic-Module-Name>com.helger.phive.cii</Automatic-Module-Name>
+            <Automatic-Module-Name>com.helger.phive.rules.api</Automatic-Module-Name>
             <Export-Package>
-              com.helger.phive.cii
+              com.helger.phive.rules.api
             </Export-Package>
             <Import-Package>!javax.annotation.*,*</Import-Package>
           </instructions>

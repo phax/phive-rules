@@ -22,11 +22,11 @@ import javax.annotation.concurrent.Immutable;
 import com.helger.cii.d16b.CCIID16B;
 import com.helger.cii.d16b.CIID16BNamespaceContext;
 import com.helger.commons.ValueEnforcer;
-import com.helger.diver.api.version.VESID;
+import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
 import com.helger.phive.api.executorset.ValidationExecutorSet;
-import com.helger.phive.api.executorset.status.IValidationExecutorSetStatus;
-import com.helger.phive.api.executorset.status.ValidationExecutorSetStatus;
+import com.helger.phive.api.validity.IValidityDeterminator;
+import com.helger.phive.rules.api.PhiveRulesHelper;
 import com.helger.phive.xml.schematron.SchematronNamespaceBeautifier;
 import com.helger.phive.xml.source.IValidationSourceXML;
 import com.helger.phive.xml.xsd.ValidationExecutorXSD;
@@ -42,18 +42,12 @@ public final class CIIValidation
   public static final String GROUP_ID = "un.unece.uncefact";
   public static final String VERSION_D16B = "D16B";
 
-  public static final VESID VID_CII_D16B_CROSSINDUSTRYINVOICE = new VESID (GROUP_ID,
-                                                                           "crossindustryinvoice",
-                                                                           VERSION_D16B);
+  public static final DVRCoordinate VID_CII_D16B_CROSSINDUSTRYINVOICE = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                           "crossindustryinvoice",
+                                                                                                           VERSION_D16B);
 
   private CIIValidation ()
   {}
-
-  @Nonnull
-  private static IValidationExecutorSetStatus _createStatus (final boolean bIsDeprecated)
-  {
-    return ValidationExecutorSetStatus.createDeprecatedNow (bIsDeprecated);
-  }
 
   /**
    * Register all standard CII D16B validation execution sets to the provided
@@ -74,7 +68,8 @@ public final class CIIValidation
     // No Schematrons here
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_CII_D16B_CROSSINDUSTRYINVOICE,
                                                                            "CII CrossIndustryInvoice " + VERSION_D16B,
-                                                                           _createStatus (bNotDeprecated),
-                                                                           ValidationExecutorXSD.create (CCIID16B.getXSDResource ())));
+                                                                           PhiveRulesHelper.createStatus (bNotDeprecated),
+                                                                           ValidationExecutorXSD.create (IValidityDeterminator.DEFAULT,
+                                                                                                         CCIID16B.getXSDResource ())));
   }
 }
