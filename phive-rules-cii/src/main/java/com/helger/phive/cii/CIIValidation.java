@@ -20,14 +20,11 @@ import javax.annotation.Nonnull;
 import javax.annotation.concurrent.Immutable;
 
 import com.helger.cii.d16b.CCIID16B;
-import com.helger.cii.d16b.CIID16BNamespaceContext;
 import com.helger.commons.ValueEnforcer;
 import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
 import com.helger.phive.api.executorset.ValidationExecutorSet;
-import com.helger.phive.api.validity.IValidityDeterminator;
 import com.helger.phive.rules.api.PhiveRulesHelper;
-import com.helger.phive.xml.schematron.SchematronNamespaceBeautifier;
 import com.helger.phive.xml.source.IValidationSourceXML;
 import com.helger.phive.xml.xsd.ValidationExecutorXSD;
 
@@ -60,16 +57,12 @@ public final class CIIValidation
   {
     ValueEnforcer.notNull (aRegistry, "Registry");
 
-    // For better error messages
-    SchematronNamespaceBeautifier.addMappings (CIID16BNamespaceContext.getInstance ());
-
     final boolean bNotDeprecated = false;
 
     // No Schematrons here
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_CII_D16B_CROSSINDUSTRYINVOICE,
                                                                            "CII CrossIndustryInvoice " + VERSION_D16B,
                                                                            PhiveRulesHelper.createStatus (bNotDeprecated),
-                                                                           ValidationExecutorXSD.create (IValidityDeterminator.DEFAULT,
-                                                                                                         CCIID16B.getXSDResource ())));
+                                                                           ValidationExecutorXSD.create (CCIID16B.getXSDResource ())));
   }
 }

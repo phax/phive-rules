@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Invoice xmlns="http://www.ebinterface.at/schema/6p1/" 
+         GeneratingSystem="Demo " 
+         DocumentType="Invoice" 
+         InvoiceCurrency="EUR" 
+         DocumentTitle="Testrechnung ph-ebinterface" 
+         Language="de">
+	<InvoiceNumber>RNR 4712</InvoiceNumber>
+	<InvoiceDate>2020-01-12</InvoiceDate>
+	<Biller>
+		<VATIdentificationNumber>ATU00000006</VATIdentificationNumber>
+		<Address>
+			<Name>Lieferant Mustermann</Name>
+			<Street>Favoritenstraße 329/32</Street>
+			<POBox>4711</POBox>
+			<Town>Wien</Town>
+			<ZIP>1040</ZIP>
+			<Country CountryCode="AT">Österreich</Country>
+			<Phone>+43 1 58801 8857452</Phone>
+			<Email>office@example.org</Email>
+		</Address>
+		<Contact>
+			<Salutation>Herr</Salutation>
+			<Name>Max Mustermann</Name>
+		</Contact>
+		<InvoiceRecipientsBillerID>ID39384</InvoiceRecipientsBillerID>
+	</Biller>
+	<InvoiceRecipient>
+		<VATIdentificationNumber>ATU00000000</VATIdentificationNumber>
+    <OrderReference>
+      <OrderID>1293</OrderID>
+      <ReferenceDate>2016-02-12</ReferenceDate>
+      <Description>Faxbestellung</Description>
+    </OrderReference>
+		<Address>
+			<Name>VGB GmbH &amp; Co KG</Name>
+			<Street>Walserbergstraße 32</Street>
+			<Town>Salzburg</Town>
+			<ZIP>5021</ZIP>
+			<Country CountryCode="AT">Österreich</Country>
+			<Phone>+43 662 565 585</Phone>
+			<Email>office@vgbgmbh.at</Email>
+		</Address>
+		<Contact>
+			<Salutation>Frau</Salutation>
+			<Name>Maxima Musterfrau</Name>
+		</Contact>
+		<BillersInvoiceRecipientID>39494</BillersInvoiceRecipientID>
+	</InvoiceRecipient>
+	<Details>
+		<ItemList>
+			<ListLineItem>
+				<PositionNumber>1</PositionNumber>
+				<Description>Produkt A</Description>
+				<Quantity Unit="STK">2</Quantity>
+				<UnitPrice BaseQuantity="1">5</UnitPrice>
+				<TaxItem>
+					<TaxableAmount>10</TaxableAmount>
+					<TaxPercent TaxCategoryCode="S">20</TaxPercent>
+				</TaxItem>
+				<LineItemAmount>10</LineItemAmount>
+			</ListLineItem>
+		</ItemList>
+    <BelowTheLineItem>
+      <Description>Test B-T-L</Description>
+      <LineItemAmount>1.5</LineItemAmount>
+      <Reason Date="2022-01-19">any</Reason>
+    </BelowTheLineItem>
+	</Details>
+	<Tax>
+		<TaxItem>
+			<TaxableAmount>10</TaxableAmount>
+			<TaxPercent TaxCategoryCode="S">20</TaxPercent>
+			<TaxAmount>2</TaxAmount>
+		</TaxItem>
+	</Tax>
+	<TotalGrossAmount>12</TotalGrossAmount>
+	<PayableAmount>13.5</PayableAmount>
+	<PaymentMethod>
+		<Comment>Zahlbar per Überweisung. Bitte SEPA Voraussetzungen berücksichtigen.</Comment>
+		<UniversalBankTransaction ConsolidatorPayable="true">
+			<BeneficiaryAccount>
+				<IBAN>23424234</IBAN>
+				<BankAccountOwner>Maxima Kontofrau</BankAccountOwner>
+			</BeneficiaryAccount>
+		</UniversalBankTransaction>
+	</PaymentMethod>
+	<PaymentConditions>
+		<DueDate>2020-08-13</DueDate>
+	</PaymentConditions>
+</Invoice>

@@ -67,11 +67,16 @@ public enum EEbInterfaceTestFiles
   V43 ("/external/test-files/v43/", new String [] { "testinstance-valid-schema.xml" }),
   V50 ("/external/test-files/v50/", new String [] { "testinstance-valid-schema.xml" }),
   V60 ("/external/test-files/v60/",
-       new String [] { "ebinterface_6p0_sample_dokumentation.xml", "ebinterface_6p0_sample.xml" });
+       new String [] { "ebinterface_6p0_sample_dokumentation.xml", "ebinterface_6p0_sample.xml" }),
+  V61 ("/external/test-files/v61/",
+       new String [] { "ebinterface_6p1_sample_dokumentation.xml",
+                       "ebinterface_6p1_sample_ecosio.xml",
+                       "ebinterface_6p1_sample_more_consistent.xml",
+                       "ebinterface_6p1_sample_ph1.xml" });
 
   private final ICommonsList <IReadableResource> m_aTestFiles = new CommonsArrayList <> ();
 
-  EEbInterfaceTestFiles (final String sBaseDir, final String [] aFiles)
+  EEbInterfaceTestFiles (@Nonnull final String sBaseDir, @Nonnull final String [] aFiles)
   {
     for (final String sFile : aFiles)
       m_aTestFiles.add (new ClassPathResource (sBaseDir + sFile));

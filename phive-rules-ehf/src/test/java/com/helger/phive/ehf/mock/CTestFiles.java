@@ -27,7 +27,7 @@ import com.helger.commons.collection.impl.CommonsArrayList;
 import com.helger.commons.collection.impl.ICommonsList;
 import com.helger.commons.io.resource.ClassPathResource;
 import com.helger.commons.io.resource.IReadableResource;
-import com.helger.diver.api.version.VESID;
+import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.phive.api.executorset.ValidationExecutorSetRegistry;
 import com.helger.phive.api.mock.TestFile;
 import com.helger.phive.ehf.EHFValidation;
@@ -54,71 +54,71 @@ public final class CTestFiles
   public static ICommonsList <TestFile> getAllTestFiles ()
   {
     final ICommonsList <TestFile> ret = new CommonsArrayList <> ();
-    for (final VESID aESID : new VESID [] { /* 2018-11 */
-                                            EHFValidationG2.VID_EHF_CATALOGUE_1_0_13,
-                                            EHFValidationG2.VID_EHF_CATALOGUE_RESPONSE_1_0_13,
-                                            EHFValidationG2.VID_EHF_CREDITNOTE_2_0_15,
-                                            EHFValidationG2.VID_EHF_DESPATCH_ADVICE_1_0_10,
-                                            EHFValidationG2.VID_EHF_INVOICE_2_0_15,
-                                            EHFValidationG2.VID_EHF_ORDER_1_0_11,
-                                            EHFValidationG2.VID_EHF_ORDER_AGREEMENT_1_0_2,
-                                            EHFValidationG2.VID_EHF_ORDER_RESPONSE_1_0_11,
-                                            EHFValidationG2.VID_EHF_PUNCH_OUT_1_0_1,
-                                            EHFValidationG2.VID_EHF_REMINDER_1_1_0,
-                                            /* 2019-06 */
-                                            EHFValidationG2.VID_EHF_CATALOGUE_1_0_14,
-                                            EHFValidationG2.VID_EHF_CATALOGUE_RESPONSE_1_0_14,
-                                            EHFValidationG2.VID_EHF_CREDITNOTE_2_0_16,
-                                            EHFValidationG2.VID_EHF_DESPATCH_ADVICE_1_0_11,
-                                            EHFValidationG2.VID_EHF_INVOICE_2_0_16,
-                                            EHFValidationG2.VID_EHF_ORDER_1_0_12,
-                                            EHFValidationG2.VID_EHF_ORDER_AGREEMENT_1_0_3,
-                                            EHFValidationG2.VID_EHF_ORDER_RESPONSE_1_0_12,
-                                            EHFValidationG2.VID_EHF_PUNCH_OUT_1_0_2,
-                                            /* 2019-12 */
-                                            EHFValidationG2.VID_EHF_CATALOGUE_1_0_15,
-                                            EHFValidationG2.VID_EHF_CATALOGUE_RESPONSE_1_0_15,
-                                            EHFValidationG2.VID_EHF_CREDITNOTE_2_0_17,
-                                            EHFValidationG2.VID_EHF_DESPATCH_ADVICE_1_0_12,
-                                            EHFValidationG2.VID_EHF_INVOICE_2_0_17,
-                                            EHFValidationG2.VID_EHF_ORDER_1_0_13,
-                                            EHFValidationG2.VID_EHF_ORDER_AGREEMENT_1_0_4,
-                                            EHFValidationG2.VID_EHF_ORDER_RESPONSE_1_0_13,
-                                            EHFValidationG2.VID_EHF_PUNCH_OUT_1_0_3,
+    for (final DVRCoordinate aESID : new DVRCoordinate [] { /* 2018-11 */
+                                                            EHFValidationG2.VID_EHF_CATALOGUE_1_0_13,
+                                                            EHFValidationG2.VID_EHF_CATALOGUE_RESPONSE_1_0_13,
+                                                            EHFValidationG2.VID_EHF_CREDITNOTE_2_0_15,
+                                                            EHFValidationG2.VID_EHF_DESPATCH_ADVICE_1_0_10,
+                                                            EHFValidationG2.VID_EHF_INVOICE_2_0_15,
+                                                            EHFValidationG2.VID_EHF_ORDER_1_0_11,
+                                                            EHFValidationG2.VID_EHF_ORDER_AGREEMENT_1_0_2,
+                                                            EHFValidationG2.VID_EHF_ORDER_RESPONSE_1_0_11,
+                                                            EHFValidationG2.VID_EHF_PUNCH_OUT_1_0_1,
+                                                            EHFValidationG2.VID_EHF_REMINDER_1_1_0,
+                                                            /* 2019-06 */
+                                                            EHFValidationG2.VID_EHF_CATALOGUE_1_0_14,
+                                                            EHFValidationG2.VID_EHF_CATALOGUE_RESPONSE_1_0_14,
+                                                            EHFValidationG2.VID_EHF_CREDITNOTE_2_0_16,
+                                                            EHFValidationG2.VID_EHF_DESPATCH_ADVICE_1_0_11,
+                                                            EHFValidationG2.VID_EHF_INVOICE_2_0_16,
+                                                            EHFValidationG2.VID_EHF_ORDER_1_0_12,
+                                                            EHFValidationG2.VID_EHF_ORDER_AGREEMENT_1_0_3,
+                                                            EHFValidationG2.VID_EHF_ORDER_RESPONSE_1_0_12,
+                                                            EHFValidationG2.VID_EHF_PUNCH_OUT_1_0_2,
+                                                            /* 2019-12 */
+                                                            EHFValidationG2.VID_EHF_CATALOGUE_1_0_15,
+                                                            EHFValidationG2.VID_EHF_CATALOGUE_RESPONSE_1_0_15,
+                                                            EHFValidationG2.VID_EHF_CREDITNOTE_2_0_17,
+                                                            EHFValidationG2.VID_EHF_DESPATCH_ADVICE_1_0_12,
+                                                            EHFValidationG2.VID_EHF_INVOICE_2_0_17,
+                                                            EHFValidationG2.VID_EHF_ORDER_1_0_13,
+                                                            EHFValidationG2.VID_EHF_ORDER_AGREEMENT_1_0_4,
+                                                            EHFValidationG2.VID_EHF_ORDER_RESPONSE_1_0_13,
+                                                            EHFValidationG2.VID_EHF_PUNCH_OUT_1_0_3,
 
-                                            /* 2020-03 */
-                                            EHFValidationG3.VID_EHF_ADVANCED_ORDER_CANCELLATION_300,
-                                            EHFValidationG3.VID_EHF_ADVANCED_ORDER_CHANGE_300,
-                                            EHFValidationG3.VID_EHF_ADVANCED_ORDER_INITIATION_300,
-                                            EHFValidationG3.VID_EHF_ADVANCED_ORDER_RESPONSE_300,
-                                            EHFValidationG3.VID_EHF_CATALOGUE_300,
-                                            EHFValidationG3.VID_EHF_CATALOGUE_RESPONSE_300,
-                                            EHFValidationG3.VID_EHF_DESPATCH_ADVICE_300,
-                                            EHFValidationG3.VID_EHF_FORWARD_BILLING_INVOICE_300,
-                                            EHFValidationG3.VID_EHF_FORWARD_BILLING_CREDIT_NOTE_300,
-                                            EHFValidationG3.VID_EHF_ORDER_AGREEMENT_300,
-                                            EHFValidationG3.VID_EHF_ORDER_300,
-                                            EHFValidationG3.VID_EHF_ORDER_RESPONSE_300,
-                                            EHFValidationG3.VID_EHF_PAYMENT_REQUEST_300,
-                                            EHFValidationG3.VID_EHF_PUNCH_OUT_300,
-                                            EHFValidationG3.VID_EHF_REMINDER_300,
+                                                            /* 2020-03 */
+                                                            EHFValidationG3.VID_EHF_ADVANCED_ORDER_CANCELLATION_300,
+                                                            EHFValidationG3.VID_EHF_ADVANCED_ORDER_CHANGE_300,
+                                                            EHFValidationG3.VID_EHF_ADVANCED_ORDER_INITIATION_300,
+                                                            EHFValidationG3.VID_EHF_ADVANCED_ORDER_RESPONSE_300,
+                                                            EHFValidationG3.VID_EHF_CATALOGUE_300,
+                                                            EHFValidationG3.VID_EHF_CATALOGUE_RESPONSE_300,
+                                                            EHFValidationG3.VID_EHF_DESPATCH_ADVICE_300,
+                                                            EHFValidationG3.VID_EHF_FORWARD_BILLING_INVOICE_300,
+                                                            EHFValidationG3.VID_EHF_FORWARD_BILLING_CREDIT_NOTE_300,
+                                                            EHFValidationG3.VID_EHF_ORDER_AGREEMENT_300,
+                                                            EHFValidationG3.VID_EHF_ORDER_300,
+                                                            EHFValidationG3.VID_EHF_ORDER_RESPONSE_300,
+                                                            EHFValidationG3.VID_EHF_PAYMENT_REQUEST_300,
+                                                            EHFValidationG3.VID_EHF_PUNCH_OUT_300,
+                                                            EHFValidationG3.VID_EHF_REMINDER_300,
 
-                                            /* 2023-02 */
-                                            EHFValidationG3_2023_02.VID_EHF_ADVANCED_ORDER_CANCELLATION_303,
-                                            EHFValidationG3_2023_02.VID_EHF_ADVANCED_ORDER_CHANGE_303,
-                                            EHFValidationG3_2023_02.VID_EHF_ADVANCED_ORDER_INITIATION_303,
-                                            EHFValidationG3_2023_02.VID_EHF_ADVANCED_ORDER_RESPONSE_303,
-                                            EHFValidationG3_2023_02.VID_EHF_CATALOGUE_303,
-                                            EHFValidationG3_2023_02.VID_EHF_CATALOGUE_RESPONSE_303,
-                                            EHFValidationG3_2023_02.VID_EHF_DESPATCH_ADVICE_302,
-                                            EHFValidationG3_2023_02.VID_EHF_FORWARD_BILLING_INVOICE_303,
-                                            EHFValidationG3_2023_02.VID_EHF_FORWARD_BILLING_CREDIT_NOTE_303,
-                                            EHFValidationG3_2023_02.VID_EHF_ORDER_AGREEMENT_303,
-                                            EHFValidationG3_2023_02.VID_EHF_ORDER_303,
-                                            EHFValidationG3_2023_02.VID_EHF_ORDER_RESPONSE_303,
-                                            EHFValidationG3_2023_02.VID_EHF_PAYMENT_REQUEST_302,
-                                            EHFValidationG3_2023_02.VID_EHF_PUNCH_OUT_303,
-                                            EHFValidationG3_2023_02.VID_EHF_REMINDER_303 })
+                                                            /* 2023-02 */
+                                                            EHFValidationG3_2023_02.VID_EHF_ADVANCED_ORDER_CANCELLATION_303,
+                                                            EHFValidationG3_2023_02.VID_EHF_ADVANCED_ORDER_CHANGE_303,
+                                                            EHFValidationG3_2023_02.VID_EHF_ADVANCED_ORDER_INITIATION_303,
+                                                            EHFValidationG3_2023_02.VID_EHF_ADVANCED_ORDER_RESPONSE_303,
+                                                            EHFValidationG3_2023_02.VID_EHF_CATALOGUE_303,
+                                                            EHFValidationG3_2023_02.VID_EHF_CATALOGUE_RESPONSE_303,
+                                                            EHFValidationG3_2023_02.VID_EHF_DESPATCH_ADVICE_302,
+                                                            EHFValidationG3_2023_02.VID_EHF_FORWARD_BILLING_INVOICE_303,
+                                                            EHFValidationG3_2023_02.VID_EHF_FORWARD_BILLING_CREDIT_NOTE_303,
+                                                            EHFValidationG3_2023_02.VID_EHF_ORDER_AGREEMENT_303,
+                                                            EHFValidationG3_2023_02.VID_EHF_ORDER_303,
+                                                            EHFValidationG3_2023_02.VID_EHF_ORDER_RESPONSE_303,
+                                                            EHFValidationG3_2023_02.VID_EHF_PAYMENT_REQUEST_302,
+                                                            EHFValidationG3_2023_02.VID_EHF_PUNCH_OUT_303,
+                                                            EHFValidationG3_2023_02.VID_EHF_REMINDER_303 })
       for (final IReadableResource aRes : getAllMatchingTestFiles (aESID))
       {
         assertTrue ("Not existing test file: " + aRes.getPath (), aRes.exists ());
@@ -129,7 +129,7 @@ public final class CTestFiles
 
   @Nonnull
   @ReturnsMutableCopy
-  public static ICommonsList <? extends IReadableResource> getAllMatchingTestFiles (@Nonnull final VESID aVESID)
+  public static ICommonsList <? extends IReadableResource> getAllMatchingTestFiles (@Nonnull final DVRCoordinate aVESID)
   {
     ValueEnforcer.notNull (aVESID, "VESID");
 

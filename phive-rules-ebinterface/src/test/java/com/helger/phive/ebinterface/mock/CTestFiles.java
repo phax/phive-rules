@@ -26,7 +26,7 @@ import com.helger.commons.annotation.ReturnsMutableCopy;
 import com.helger.commons.collection.impl.CommonsArrayList;
 import com.helger.commons.collection.impl.ICommonsList;
 import com.helger.commons.io.resource.IReadableResource;
-import com.helger.diver.api.version.VESID;
+import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.phive.api.executorset.ValidationExecutorSetRegistry;
 import com.helger.phive.api.mock.TestFile;
 import com.helger.phive.ebinterface.EbInterfaceValidation;
@@ -49,14 +49,15 @@ public final class CTestFiles
   public static ICommonsList <TestFile> getAllTestFiles ()
   {
     final ICommonsList <TestFile> ret = new CommonsArrayList <> ();
-    for (final VESID aVESID : new VESID [] { EbInterfaceValidation.VID_EBI_30,
-                                             EbInterfaceValidation.VID_EBI_302,
-                                             EbInterfaceValidation.VID_EBI_40,
-                                             EbInterfaceValidation.VID_EBI_41,
-                                             EbInterfaceValidation.VID_EBI_42,
-                                             EbInterfaceValidation.VID_EBI_43,
-                                             EbInterfaceValidation.VID_EBI_50,
-                                             EbInterfaceValidation.VID_EBI_60 })
+    for (final DVRCoordinate aVESID : new DVRCoordinate [] { EbInterfaceValidation.VID_EBI_30,
+                                                             EbInterfaceValidation.VID_EBI_302,
+                                                             EbInterfaceValidation.VID_EBI_40,
+                                                             EbInterfaceValidation.VID_EBI_41,
+                                                             EbInterfaceValidation.VID_EBI_42,
+                                                             EbInterfaceValidation.VID_EBI_43,
+                                                             EbInterfaceValidation.VID_EBI_50,
+                                                             EbInterfaceValidation.VID_EBI_60,
+                                                             EbInterfaceValidation.VID_EBI_61 })
       for (final IReadableResource aRes : getAllMatchingTestFiles (aVESID))
       {
         assertTrue ("Not existing test file: " + aRes.getPath (), aRes.exists ());
@@ -67,7 +68,7 @@ public final class CTestFiles
 
   @Nonnull
   @ReturnsMutableCopy
-  public static ICommonsList <? extends IReadableResource> getAllMatchingTestFiles (@Nonnull final VESID aVESID)
+  public static ICommonsList <? extends IReadableResource> getAllMatchingTestFiles (@Nonnull final DVRCoordinate aVESID)
   {
     ValueEnforcer.notNull (aVESID, "VESID");
 
@@ -87,6 +88,8 @@ public final class CTestFiles
       return EEbInterfaceTestFiles.V50.getTestResources ();
     if (aVESID.equals (EbInterfaceValidation.VID_EBI_60))
       return EEbInterfaceTestFiles.V60.getTestResources ();
+    if (aVESID.equals (EbInterfaceValidation.VID_EBI_61))
+      return EEbInterfaceTestFiles.V61.getTestResources ();
 
     throw new IllegalArgumentException ("Invalid VESID: " + aVESID);
   }
