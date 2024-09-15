@@ -28,7 +28,7 @@ import com.helger.commons.collection.impl.CommonsHashSet;
 import com.helger.commons.collection.impl.ICommonsList;
 import com.helger.commons.io.resource.ClassPathResource;
 import com.helger.commons.io.resource.IReadableResource;
-import com.helger.diver.api.version.VESID;
+import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.phive.api.executorset.ValidationExecutorSetRegistry;
 import com.helger.phive.api.mock.TestFile;
 import com.helger.phive.simplerinvoicing.SimplerInvoicingValidation;
@@ -52,62 +52,62 @@ public final class CTestFiles
   public static ICommonsList <TestFile> getAllTestFiles ()
   {
     final ICommonsList <TestFile> ret = new CommonsArrayList <> ();
-    for (final VESID aVESID : new VESID [] { SimplerInvoicingValidation.VID_SI_INVOICE_V10,
-                                             SimplerInvoicingValidation.VID_SI_INVOICE_V11,
-                                             SimplerInvoicingValidation.VID_SI_INVOICE_V12,
-                                             SimplerInvoicingValidation.VID_SI_ORDER_V12,
-                                             SimplerInvoicingValidation.VID_SI_INVOICE_V123,
-                                             SimplerInvoicingValidation.VID_SI_ORDER_V123,
-                                             SimplerInvoicingValidation.VID_SI_INVOICE_V124,
-                                             SimplerInvoicingValidation.VID_SI_ORDER_V124,
+    for (final DVRCoordinate aVESID : new DVRCoordinate [] { SimplerInvoicingValidation.VID_SI_INVOICE_V10,
+                                                             SimplerInvoicingValidation.VID_SI_INVOICE_V11,
+                                                             SimplerInvoicingValidation.VID_SI_INVOICE_V12,
+                                                             SimplerInvoicingValidation.VID_SI_ORDER_V12,
+                                                             SimplerInvoicingValidation.VID_SI_INVOICE_V123,
+                                                             SimplerInvoicingValidation.VID_SI_ORDER_V123,
+                                                             SimplerInvoicingValidation.VID_SI_INVOICE_V124,
+                                                             SimplerInvoicingValidation.VID_SI_ORDER_V124,
 
-                                             SimplerInvoicingValidation.VID_SI_INVOICE_V20,
-                                             SimplerInvoicingValidation.VID_SI_CREDIT_NOTE_V20,
-                                             SimplerInvoicingValidation.VID_SI_INVOICE_V201,
-                                             SimplerInvoicingValidation.VID_SI_CREDIT_NOTE_V201,
-                                             SimplerInvoicingValidation.VID_SI_INVOICE_V202,
-                                             SimplerInvoicingValidation.VID_SI_CREDIT_NOTE_V202,
-                                             SimplerInvoicingValidation.VID_SI_INVOICE_V203,
-                                             SimplerInvoicingValidation.VID_SI_CREDIT_NOTE_V203,
-                                             SimplerInvoicingValidation.VID_SI_INVOICE_V2031,
-                                             SimplerInvoicingValidation.VID_SI_CREDIT_NOTE_V2031,
-                                             SimplerInvoicingValidation.VID_SI_INVOICE_V2032,
-                                             SimplerInvoicingValidation.VID_SI_CREDIT_NOTE_V2032,
-                                             SimplerInvoicingValidation.VID_SI_INVOICE_V2033,
-                                             SimplerInvoicingValidation.VID_SI_CREDIT_NOTE_V2033,
-                                             SimplerInvoicingValidation.VID_SI_INVOICE_V2034,
-                                             SimplerInvoicingValidation.VID_SI_CREDIT_NOTE_V2034,
-                                             SimplerInvoicingValidation.VID_SI_INVOICE_V2035,
-                                             SimplerInvoicingValidation.VID_SI_CREDIT_NOTE_V2035,
-                                             SimplerInvoicingValidation.VID_SI_INVOICE_V2036,
-                                             SimplerInvoicingValidation.VID_SI_CREDIT_NOTE_V2036,
-                                             SimplerInvoicingValidation.VID_SI_INVOICE_V2037,
-                                             SimplerInvoicingValidation.VID_SI_CREDIT_NOTE_V2037,
-                                             SimplerInvoicingValidation.VID_SI_INVOICE_V2038,
-                                             SimplerInvoicingValidation.VID_SI_CREDIT_NOTE_V2038,
-                                             SimplerInvoicingValidation.VID_SI_INVOICE_V2039,
-                                             SimplerInvoicingValidation.VID_SI_CREDIT_NOTE_V2039,
+                                                             SimplerInvoicingValidation.VID_SI_INVOICE_V20,
+                                                             SimplerInvoicingValidation.VID_SI_CREDIT_NOTE_V20,
+                                                             SimplerInvoicingValidation.VID_SI_INVOICE_V201,
+                                                             SimplerInvoicingValidation.VID_SI_CREDIT_NOTE_V201,
+                                                             SimplerInvoicingValidation.VID_SI_INVOICE_V202,
+                                                             SimplerInvoicingValidation.VID_SI_CREDIT_NOTE_V202,
+                                                             SimplerInvoicingValidation.VID_SI_INVOICE_V203,
+                                                             SimplerInvoicingValidation.VID_SI_CREDIT_NOTE_V203,
+                                                             SimplerInvoicingValidation.VID_SI_INVOICE_V2031,
+                                                             SimplerInvoicingValidation.VID_SI_CREDIT_NOTE_V2031,
+                                                             SimplerInvoicingValidation.VID_SI_INVOICE_V2032,
+                                                             SimplerInvoicingValidation.VID_SI_CREDIT_NOTE_V2032,
+                                                             SimplerInvoicingValidation.VID_SI_INVOICE_V2033,
+                                                             SimplerInvoicingValidation.VID_SI_CREDIT_NOTE_V2033,
+                                                             SimplerInvoicingValidation.VID_SI_INVOICE_V2034,
+                                                             SimplerInvoicingValidation.VID_SI_CREDIT_NOTE_V2034,
+                                                             SimplerInvoicingValidation.VID_SI_INVOICE_V2035,
+                                                             SimplerInvoicingValidation.VID_SI_CREDIT_NOTE_V2035,
+                                                             SimplerInvoicingValidation.VID_SI_INVOICE_V2036,
+                                                             SimplerInvoicingValidation.VID_SI_CREDIT_NOTE_V2036,
+                                                             SimplerInvoicingValidation.VID_SI_INVOICE_V2037,
+                                                             SimplerInvoicingValidation.VID_SI_CREDIT_NOTE_V2037,
+                                                             SimplerInvoicingValidation.VID_SI_INVOICE_V2038,
+                                                             SimplerInvoicingValidation.VID_SI_CREDIT_NOTE_V2038,
+                                                             SimplerInvoicingValidation.VID_SI_INVOICE_V2039,
+                                                             SimplerInvoicingValidation.VID_SI_CREDIT_NOTE_V2039,
 
-                                             SimplerInvoicingValidation.VID_SI_INVOICE_20_GACCOUNT_V10,
-                                             SimplerInvoicingValidation.VID_SI_INVOICE_20_GACCOUNT_V101,
-                                             SimplerInvoicingValidation.VID_SI_INVOICE_20_GACCOUNT_V102,
-                                             SimplerInvoicingValidation.VID_SI_INVOICE_20_GACCOUNT_V103,
-                                             SimplerInvoicingValidation.VID_SI_INVOICE_20_GACCOUNT_V104,
-                                             SimplerInvoicingValidation.VID_SI_INVOICE_20_GACCOUNT_V105,
-                                             SimplerInvoicingValidation.VID_SI_INVOICE_20_GACCOUNT_V106,
-                                             SimplerInvoicingValidation.VID_SI_INVOICE_20_GACCOUNT_V107,
-                                             SimplerInvoicingValidation.VID_SI_INVOICE_20_GACCOUNT_V108,
-                                             SimplerInvoicingValidation.VID_SI_INVOICE_20_GACCOUNT_V109,
+                                                             SimplerInvoicingValidation.VID_SI_INVOICE_20_GACCOUNT_V10,
+                                                             SimplerInvoicingValidation.VID_SI_INVOICE_20_GACCOUNT_V101,
+                                                             SimplerInvoicingValidation.VID_SI_INVOICE_20_GACCOUNT_V102,
+                                                             SimplerInvoicingValidation.VID_SI_INVOICE_20_GACCOUNT_V103,
+                                                             SimplerInvoicingValidation.VID_SI_INVOICE_20_GACCOUNT_V104,
+                                                             SimplerInvoicingValidation.VID_SI_INVOICE_20_GACCOUNT_V105,
+                                                             SimplerInvoicingValidation.VID_SI_INVOICE_20_GACCOUNT_V106,
+                                                             SimplerInvoicingValidation.VID_SI_INVOICE_20_GACCOUNT_V107,
+                                                             SimplerInvoicingValidation.VID_SI_INVOICE_20_GACCOUNT_V108,
+                                                             SimplerInvoicingValidation.VID_SI_INVOICE_20_GACCOUNT_V109,
 
-                                             SimplerInvoicingValidation.VID_SI_NLCIUS_CII_V103,
-                                             SimplerInvoicingValidation.VID_SI_NLCIUS_CII_V1031,
-                                             SimplerInvoicingValidation.VID_SI_NLCIUS_CII_V1032,
-                                             SimplerInvoicingValidation.VID_SI_NLCIUS_CII_V1033,
-                                             SimplerInvoicingValidation.VID_SI_NLCIUS_CII_V1034,
-                                             SimplerInvoicingValidation.VID_SI_NLCIUS_CII_V1035,
-                                             SimplerInvoicingValidation.VID_SI_NLCIUS_CII_V1036,
-                                             SimplerInvoicingValidation.VID_SI_NLCIUS_CII_V1037,
-                                             SimplerInvoicingValidation.VID_SI_NLCIUS_CII_V1038 })
+                                                             SimplerInvoicingValidation.VID_SI_NLCIUS_CII_V103,
+                                                             SimplerInvoicingValidation.VID_SI_NLCIUS_CII_V1031,
+                                                             SimplerInvoicingValidation.VID_SI_NLCIUS_CII_V1032,
+                                                             SimplerInvoicingValidation.VID_SI_NLCIUS_CII_V1033,
+                                                             SimplerInvoicingValidation.VID_SI_NLCIUS_CII_V1034,
+                                                             SimplerInvoicingValidation.VID_SI_NLCIUS_CII_V1035,
+                                                             SimplerInvoicingValidation.VID_SI_NLCIUS_CII_V1036,
+                                                             SimplerInvoicingValidation.VID_SI_NLCIUS_CII_V1037,
+                                                             SimplerInvoicingValidation.VID_SI_NLCIUS_CII_V1038 })
     {
       for (final IReadableResource aRes : getAllMatchingGoodTestFiles (aVESID))
       {
@@ -138,7 +138,7 @@ public final class CTestFiles
 
   @Nonnull
   @ReturnsMutableCopy
-  public static ICommonsList <? extends IReadableResource> getAllMatchingGoodTestFiles (@Nonnull final VESID aVESID)
+  public static ICommonsList <? extends IReadableResource> getAllMatchingGoodTestFiles (@Nonnull final DVRCoordinate aVESID)
   {
     ValueEnforcer.notNull (aVESID, "VESID");
 
@@ -505,7 +505,7 @@ public final class CTestFiles
 
   @Nonnull
   @ReturnsMutableCopy
-  public static ICommonsList <? extends IReadableResource> getAllMatchingErrorTestFiles (@Nonnull final VESID aVESID)
+  public static ICommonsList <? extends IReadableResource> getAllMatchingErrorTestFiles (@Nonnull final DVRCoordinate aVESID)
   {
     ValueEnforcer.notNull (aVESID, "VESID");
 

@@ -28,7 +28,7 @@ import com.helger.commons.collection.impl.CommonsHashSet;
 import com.helger.commons.collection.impl.ICommonsList;
 import com.helger.commons.io.resource.ClassPathResource;
 import com.helger.commons.io.resource.IReadableResource;
-import com.helger.diver.api.version.VESID;
+import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.phive.api.executorset.ValidationExecutorSetRegistry;
 import com.helger.phive.api.mock.TestFile;
 import com.helger.phive.energieefactuur.EnergieEFactuurValidation;
@@ -51,11 +51,11 @@ public final class CTestFiles
   public static ICommonsList <TestFile> getAllTestFiles ()
   {
     final ICommonsList <TestFile> ret = new CommonsArrayList <> ();
-    for (final VESID aVESID : new VESID [] { EnergieEFactuurValidation.VID_ENERGIE_EFACTUUR_1_0_0,
-                                             EnergieEFactuurValidation.VID_ENERGIE_EFACTUUR_1_0_1,
-                                             EnergieEFactuurValidation.VID_ENERGIE_EFACTUUR_2_0_0,
-                                             EnergieEFactuurValidation.VID_ENERGIE_EFACTUUR_3_0_0,
-                                             EnergieEFactuurValidation.VID_ENERGIE_EFACTUUR_3_1_0 })
+    for (final DVRCoordinate aVESID : new DVRCoordinate [] { EnergieEFactuurValidation.VID_ENERGIE_EFACTUUR_1_0_0,
+                                                             EnergieEFactuurValidation.VID_ENERGIE_EFACTUUR_1_0_1,
+                                                             EnergieEFactuurValidation.VID_ENERGIE_EFACTUUR_2_0_0,
+                                                             EnergieEFactuurValidation.VID_ENERGIE_EFACTUUR_3_0_0,
+                                                             EnergieEFactuurValidation.VID_ENERGIE_EFACTUUR_3_1_0 })
     {
       for (final IReadableResource aRes : getAllMatchingTestFiles (aVESID))
       {
@@ -70,7 +70,7 @@ public final class CTestFiles
 
   @Nonnull
   @ReturnsMutableCopy
-  public static ICommonsList <? extends IReadableResource> getAllMatchingTestFiles (@Nonnull final VESID aVESID)
+  public static ICommonsList <? extends IReadableResource> getAllMatchingTestFiles (@Nonnull final DVRCoordinate aVESID)
   {
     ValueEnforcer.notNull (aVESID, "VESID");
 
@@ -123,7 +123,7 @@ public final class CTestFiles
 
   @Nonnull
   @ReturnsMutableCopy
-  public static ICommonsList <TestFile> getAllBadTestFiles (@Nonnull final VESID aVESID)
+  public static ICommonsList <TestFile> getAllBadTestFiles (@Nonnull final DVRCoordinate aVESID)
   {
     ValueEnforcer.notNull (aVESID, "VESID");
 
