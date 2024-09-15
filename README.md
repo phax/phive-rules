@@ -198,6 +198,7 @@ I hope that with the introduction of PINT, the versioning problem will be solved
     * Updated to phive 10
     * Marked Peppol Rules 2023-11 as deprecated
     * Removed old Peppol rules before 2020 (3.5.0 to 3.9.1)
+      * This lead to eFFF invoice also being removed, as it was depending on Peppol 3.7.0 rules
     * Removed old Peppol Thirdparty rules (AT BIS2 based) (class `PeppolLegacyThirdpartyValidation`)
     * Renamed class `EHFValidationG3` to `EHFValidationG3_2020_03`
 * v3.1.13 - 2024-09-06

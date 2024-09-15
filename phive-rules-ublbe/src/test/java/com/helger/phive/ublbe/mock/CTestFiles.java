@@ -29,10 +29,9 @@ import com.helger.commons.collection.impl.ICommonsList;
 import com.helger.commons.collection.impl.ICommonsMap;
 import com.helger.commons.io.resource.ClassPathResource;
 import com.helger.commons.io.resource.IReadableResource;
-import com.helger.diver.api.version.VESID;
+import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.phive.api.executorset.ValidationExecutorSetRegistry;
 import com.helger.phive.api.mock.TestFile;
-import com.helger.phive.peppol.legacy.PeppolLegacyValidation;
 import com.helger.phive.ublbe.UBLBEValidation;
 import com.helger.phive.xml.source.IValidationSourceXML;
 
@@ -43,8 +42,6 @@ public final class CTestFiles
   public static final ValidationExecutorSetRegistry <IValidationSourceXML> VES_REGISTRY = new ValidationExecutorSetRegistry <> ();
   static
   {
-    // Peppol is a prerequisite
-    PeppolLegacyValidation.init (VES_REGISTRY);
     UBLBEValidation.initUBLBE (VES_REGISTRY);
   }
 
@@ -56,28 +53,26 @@ public final class CTestFiles
   public static ICommonsList <TestFile> getAllTestFiles ()
   {
     final ICommonsList <TestFile> ret = new CommonsArrayList <> ();
-    for (final VESID aESID : new VESID [] { UBLBEValidation.VID_EFFF_INVOICE,
-                                            UBLBEValidation.VID_EFFF_CREDIT_NOTE,
-                                            UBLBEValidation.VID_UBL_BE_INVOICE_100,
-                                            UBLBEValidation.VID_UBL_BE_CREDIT_NOTE_100,
-                                            UBLBEValidation.VID_UBL_BE_INVOICE_110,
-                                            UBLBEValidation.VID_UBL_BE_CREDIT_NOTE_110,
-                                            UBLBEValidation.VID_UBL_BE_INVOICE_120,
-                                            UBLBEValidation.VID_UBL_BE_CREDIT_NOTE_120,
-                                            UBLBEValidation.VID_UBL_BE_INVOICE_123,
-                                            UBLBEValidation.VID_UBL_BE_CREDIT_NOTE_123,
-                                            UBLBEValidation.VID_UBL_BE_INVOICE_125,
-                                            UBLBEValidation.VID_UBL_BE_CREDIT_NOTE_125,
-                                            UBLBEValidation.VID_UBL_BE_INVOICE_126,
-                                            UBLBEValidation.VID_UBL_BE_CREDIT_NOTE_126,
-                                            UBLBEValidation.VID_UBL_BE_INVOICE_127,
-                                            UBLBEValidation.VID_UBL_BE_CREDIT_NOTE_127,
-                                            UBLBEValidation.VID_UBL_BE_INVOICE_128,
-                                            UBLBEValidation.VID_UBL_BE_CREDIT_NOTE_128,
-                                            UBLBEValidation.VID_UBL_BE_INVOICE_129,
-                                            UBLBEValidation.VID_UBL_BE_CREDIT_NOTE_129,
-                                            UBLBEValidation.VID_UBL_BE_INVOICE_130,
-                                            UBLBEValidation.VID_UBL_BE_CREDIT_NOTE_130 })
+    for (final DVRCoordinate aESID : new DVRCoordinate [] { UBLBEValidation.VID_UBL_BE_INVOICE_100,
+                                                            UBLBEValidation.VID_UBL_BE_CREDIT_NOTE_100,
+                                                            UBLBEValidation.VID_UBL_BE_INVOICE_110,
+                                                            UBLBEValidation.VID_UBL_BE_CREDIT_NOTE_110,
+                                                            UBLBEValidation.VID_UBL_BE_INVOICE_120,
+                                                            UBLBEValidation.VID_UBL_BE_CREDIT_NOTE_120,
+                                                            UBLBEValidation.VID_UBL_BE_INVOICE_123,
+                                                            UBLBEValidation.VID_UBL_BE_CREDIT_NOTE_123,
+                                                            UBLBEValidation.VID_UBL_BE_INVOICE_125,
+                                                            UBLBEValidation.VID_UBL_BE_CREDIT_NOTE_125,
+                                                            UBLBEValidation.VID_UBL_BE_INVOICE_126,
+                                                            UBLBEValidation.VID_UBL_BE_CREDIT_NOTE_126,
+                                                            UBLBEValidation.VID_UBL_BE_INVOICE_127,
+                                                            UBLBEValidation.VID_UBL_BE_CREDIT_NOTE_127,
+                                                            UBLBEValidation.VID_UBL_BE_INVOICE_128,
+                                                            UBLBEValidation.VID_UBL_BE_CREDIT_NOTE_128,
+                                                            UBLBEValidation.VID_UBL_BE_INVOICE_129,
+                                                            UBLBEValidation.VID_UBL_BE_CREDIT_NOTE_129,
+                                                            UBLBEValidation.VID_UBL_BE_INVOICE_130,
+                                                            UBLBEValidation.VID_UBL_BE_CREDIT_NOTE_130 })
       for (final IReadableResource aRes : getAllMatchingTestFiles (aESID))
       {
         assertTrue ("Not existing test file: " + aRes.getPath (), aRes.exists ());
@@ -88,21 +83,12 @@ public final class CTestFiles
 
   @Nonnull
   @ReturnsMutableCopy
-  public static ICommonsList <? extends IReadableResource> getAllMatchingTestFiles (@Nonnull final VESID aVESID)
+  public static ICommonsList <? extends IReadableResource> getAllMatchingTestFiles (@Nonnull final DVRCoordinate aVESID)
   {
     ValueEnforcer.notNull (aVESID, "VESID");
 
-    final ICommonsMap <VESID, ICommonsList <IReadableResource>> aMap = new CommonsHashMap <> ();
+    final ICommonsMap <DVRCoordinate, ICommonsList <IReadableResource>> aMap = new CommonsHashMap <> ();
     final String sPathPrefix = "/external/test-files/";
-    {
-      final String sPath = sPathPrefix + "3.0.0/";
-      aMap.put (UBLBEValidation.VID_EFFF_INVOICE,
-                new CommonsArrayList <> (new ClassPathResource (sPath + "efff_BE0827405743_V01-15000001-1.xml"),
-                                         new ClassPathResource (sPath + "UBLBE_BE0000000196_V01-15000001.xml")));
-
-      aMap.put (UBLBEValidation.VID_EFFF_CREDIT_NOTE,
-                new CommonsArrayList <> (new ClassPathResource (sPath + "UBLBE_BE0000000196_V01-15000002.xml")));
-    }
     // 1.0.0
     {
       final String sPath = sPathPrefix + "en16931/v1/";

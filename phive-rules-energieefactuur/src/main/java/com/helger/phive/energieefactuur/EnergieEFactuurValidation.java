@@ -81,17 +81,6 @@ public final class EnergieEFactuurValidation
     return EnergieEFactuurValidation.class.getClassLoader ();
   }
 
-  private static final ClassPathResource SEEF_EXT_XSD_1_0_0 = new ClassPathResource ("/external/schemas/energieefactuur/SEeF_UBLExtension_v1.0.0.xsd",
-                                                                                     _getCL ());
-  private static final ClassPathResource SEEF_EXT_XSD_1_0_1 = new ClassPathResource ("/external/schemas/energieefactuur/SEeF_UBLExtension_v1.0.1.xsd",
-                                                                                     _getCL ());
-  private static final ClassPathResource SEEF_EXT_XSD_2_0_0 = new ClassPathResource ("/external/schemas/energieefactuur/SEeF_UBLExtension_v2.0.0.xsd",
-                                                                                     _getCL ());
-  private static final ClassPathResource SEEF_EXT_XSD_3_0_0 = new ClassPathResource ("/external/schemas/energieefactuur/SEeF_UBLExtension_v3.0.0.xsd",
-                                                                                     _getCL ());
-  private static final ClassPathResource SEEF_EXT_XSD_3_1_0 = new ClassPathResource ("/external/schemas/energieefactuur/SEeF_UBLExtension_v3.1.0.xsd",
-                                                                                     _getCL ());
-
   private EnergieEFactuurValidation ()
   {}
 
@@ -125,7 +114,8 @@ public final class EnergieEFactuurValidation
                                                                                 "/eef1:UtilityConsumptionPoint");
 
       final ICommonsList <ClassPathResource> aPartialXSDs = UBL21Marshaller.getAllBaseXSDs ();
-      aPartialXSDs.add (SEEF_EXT_XSD_1_0_0);
+      aPartialXSDs.add (new ClassPathResource ("/external/schemas/energieefactuur/SEeF_UBLExtension_v1.0.0.xsd",
+                                               _getCL ()));
 
       // Same Schematrons as SimplerInvoicing - and same classloader!
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_ENERGIE_EFACTUUR_1_0_0,
@@ -154,7 +144,8 @@ public final class EnergieEFactuurValidation
                                                                                 "/eef101:SEEFExtensionWrapper");
 
       final ICommonsList <ClassPathResource> aPartialXSDs = UBL21Marshaller.getAllBaseXSDs ();
-      aPartialXSDs.add (SEEF_EXT_XSD_1_0_1);
+      aPartialXSDs.add (new ClassPathResource ("/external/schemas/energieefactuur/SEeF_UBLExtension_v1.0.1.xsd",
+                                               _getCL ()));
 
       // Same Schematrons as SimplerInvoicing - and same classloader!
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_ENERGIE_EFACTUUR_1_0_1,
@@ -183,7 +174,8 @@ public final class EnergieEFactuurValidation
                                                                                 "/eef2:SEEFExtensionWrapper");
 
       final ICommonsList <ClassPathResource> aPartialXSDs = UBL21Marshaller.getAllBaseXSDs ();
-      aPartialXSDs.add (SEEF_EXT_XSD_2_0_0);
+      aPartialXSDs.add (new ClassPathResource ("/external/schemas/energieefactuur/SEeF_UBLExtension_v2.0.0.xsd",
+                                               _getCL ()));
 
       // Same Schematrons as SimplerInvoicing - and same classloader!
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_ENERGIE_EFACTUUR_2_0_0,
@@ -212,7 +204,8 @@ public final class EnergieEFactuurValidation
                                                                                 "/eef3:SEEFExtensionWrapper");
 
       final ICommonsList <ClassPathResource> aPartialXSDs = UBL21Marshaller.getAllBaseXSDs ();
-      aPartialXSDs.add (SEEF_EXT_XSD_3_0_0);
+      aPartialXSDs.add (new ClassPathResource ("/external/schemas/energieefactuur/SEeF_UBLExtension_v3.0.0.xsd",
+                                               _getCL ()));
 
       // Same Schematrons as SimplerInvoicing - and same classloader!
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_ENERGIE_EFACTUUR_3_0_0,
@@ -241,7 +234,8 @@ public final class EnergieEFactuurValidation
                                                                                 "/eef31:SEEFExtensionWrapper");
 
       final ICommonsList <ClassPathResource> aPartialXSDs = UBL21Marshaller.getAllBaseXSDs ();
-      aPartialXSDs.add (SEEF_EXT_XSD_3_1_0);
+      aPartialXSDs.add (new ClassPathResource ("/external/schemas/energieefactuur/SEeF_UBLExtension_v3.1.0.xsd",
+                                               _getCL ()));
 
       // Same Schematrons as SimplerInvoicing - and same classloader!
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_ENERGIE_EFACTUUR_3_1_0,
