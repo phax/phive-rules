@@ -67,18 +67,19 @@
       <artifactId>ph-cii-d16b</artifactId>
     </dependency>
     <dependency>
-      <groupId>com.helger.schematron</groupId>
-      <artifactId>ph-schematron-xslt</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>com.helger.schematron</groupId>
-      <artifactId>ph-schematron-pure</artifactId>
+      <groupId>com.helger.phive.rules</groupId>
+      <artifactId>phive-rules-api</artifactId>
     </dependency>
     <dependency>
       <groupId>com.helger.phive.rules</groupId>
       <artifactId>phive-rules-peppol</artifactId>
     </dependency>
 
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <scope>test</scope>
+    </dependency>
     <dependency>
       <groupId>com.helger.peppol</groupId>
       <artifactId>peppol-testfiles</artifactId>

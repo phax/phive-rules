@@ -22,13 +22,10 @@ import javax.annotation.concurrent.Immutable;
 import com.helger.commons.ValueEnforcer;
 import com.helger.commons.io.resource.ClassPathResource;
 import com.helger.commons.io.resource.IReadableResource;
-import com.helger.diver.api.version.VESID;
+import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
 import com.helger.phive.api.executorset.ValidationExecutorSet;
-import com.helger.phive.api.executorset.status.IValidationExecutorSetStatus;
-import com.helger.phive.api.executorset.status.ValidationExecutorSetStatus;
-import com.helger.phive.xml.schematron.SchematronNamespaceBeautifier;
-import com.helger.phive.xml.schematron.ValidationExecutorSchematron;
+import com.helger.phive.rules.api.PhiveRulesHelper;
 import com.helger.phive.xml.source.IValidationSourceXML;
 import com.helger.phive.xml.xsd.ValidationExecutorXSD;
 import com.helger.ubl21.UBL21Marshaller;
@@ -52,37 +49,31 @@ public final class PeppolLegacyValidationSG
   private static final String BASE_PATH = "external/schematron/peppol-sg/";
 
   // 1.0.0 aka 1
-  public static final VESID VID_OPENPEPPOL_BIS3_SG_UBL_INVOICE_100 = new VESID ("eu.peppol.bis3.sg.ubl",
-                                                                                "invoice",
-                                                                                "1");
-  public static final VESID VID_OPENPEPPOL_BIS3_SG_UBL_CREDIT_NOTE_100 = new VESID ("eu.peppol.bis3.sg.ubl",
-                                                                                    "creditnote",
-                                                                                    "1");
+  public static final DVRCoordinate VID_OPENPEPPOL_BIS3_SG_UBL_INVOICE_100 = PhiveRulesHelper.createCoordinate ("eu.peppol.bis3.sg.ubl",
+                                                                                                                "invoice",
+                                                                                                                "1");
+  public static final DVRCoordinate VID_OPENPEPPOL_BIS3_SG_UBL_CREDIT_NOTE_100 = PhiveRulesHelper.createCoordinate ("eu.peppol.bis3.sg.ubl",
+                                                                                                                    "creditnote",
+                                                                                                                    "1");
 
   // 1.0.2
-  public static final VESID VID_OPENPEPPOL_BIS3_SG_UBL_INVOICE_102 = new VESID ("eu.peppol.bis3.sg.ubl",
-                                                                                "invoice",
-                                                                                "1.0.2");
-  public static final VESID VID_OPENPEPPOL_BIS3_SG_UBL_CREDIT_NOTE_102 = new VESID ("eu.peppol.bis3.sg.ubl",
-                                                                                    "creditnote",
-                                                                                    "1.0.2");
+  public static final DVRCoordinate VID_OPENPEPPOL_BIS3_SG_UBL_INVOICE_102 = PhiveRulesHelper.createCoordinate ("eu.peppol.bis3.sg.ubl",
+                                                                                                                "invoice",
+                                                                                                                "1.0.2");
+  public static final DVRCoordinate VID_OPENPEPPOL_BIS3_SG_UBL_CREDIT_NOTE_102 = PhiveRulesHelper.createCoordinate ("eu.peppol.bis3.sg.ubl",
+                                                                                                                    "creditnote",
+                                                                                                                    "1.0.2");
 
   // 1.0.3
-  public static final VESID VID_OPENPEPPOL_BIS3_SG_UBL_INVOICE_103 = new VESID ("eu.peppol.bis3.sg.ubl",
-                                                                                "invoice",
-                                                                                "1.0.3");
-  public static final VESID VID_OPENPEPPOL_BIS3_SG_UBL_CREDIT_NOTE_103 = new VESID ("eu.peppol.bis3.sg.ubl",
-                                                                                    "creditnote",
-                                                                                    "1.0.3");
+  public static final DVRCoordinate VID_OPENPEPPOL_BIS3_SG_UBL_INVOICE_103 = PhiveRulesHelper.createCoordinate ("eu.peppol.bis3.sg.ubl",
+                                                                                                                "invoice",
+                                                                                                                "1.0.3");
+  public static final DVRCoordinate VID_OPENPEPPOL_BIS3_SG_UBL_CREDIT_NOTE_103 = PhiveRulesHelper.createCoordinate ("eu.peppol.bis3.sg.ubl",
+                                                                                                                    "creditnote",
+                                                                                                                    "1.0.3");
 
   private PeppolLegacyValidationSG ()
   {}
-
-  @Nonnull
-  private static IValidationExecutorSetStatus _createStatus (final boolean bIsDeprecated)
-  {
-    return ValidationExecutorSetStatus.createDeprecatedNow (bIsDeprecated);
-  }
 
   public static void init (@Nonnull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
   {
@@ -92,9 +83,6 @@ public final class PeppolLegacyValidationSG
                                                                                                              .getRootElementNamespaceURI ());
     final MapBasedNamespaceContext aNSCtxCreditNote = PeppolLegacyValidation.createUBLNSContext (UBL21Marshaller.creditNote ()
                                                                                                                 .getRootElementNamespaceURI ());
-
-    // For better error messages (merge both)
-    SchematronNamespaceBeautifier.addMappings (aNSCtxCreditNote);
 
     final boolean bDeprecated = true;
 
@@ -109,20 +97,20 @@ public final class PeppolLegacyValidationSG
 
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_BIS3_SG_UBL_INVOICE_100,
                                                                              "SG Peppol BIS3 Invoice (UBL) 1.0.0",
-                                                                             _createStatus (bDeprecated),
+                                                                             PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
-                                                                             ValidationExecutorSchematron.createXSLT (BIS3_BILLING_SG_CEN_100,
-                                                                                                                      aNSCtxInvoice),
-                                                                             ValidationExecutorSchematron.createXSLT (BIS3_BILLING_SG_PEPPOL_100,
-                                                                                                                      aNSCtxInvoice)));
+                                                                             PhiveRulesHelper.createXSLT (BIS3_BILLING_SG_CEN_100,
+                                                                                                          aNSCtxInvoice),
+                                                                             PhiveRulesHelper.createXSLT (BIS3_BILLING_SG_PEPPOL_100,
+                                                                                                          aNSCtxInvoice)));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_BIS3_SG_UBL_CREDIT_NOTE_100,
                                                                              "SG Peppol BIS3 Credit Note (UBL) 1.0.0",
-                                                                             _createStatus (bDeprecated),
+                                                                             PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
-                                                                             ValidationExecutorSchematron.createXSLT (BIS3_BILLING_SG_CEN_100,
-                                                                                                                      aNSCtxCreditNote),
-                                                                             ValidationExecutorSchematron.createXSLT (BIS3_BILLING_SG_PEPPOL_100,
-                                                                                                                      aNSCtxCreditNote)));
+                                                                             PhiveRulesHelper.createXSLT (BIS3_BILLING_SG_CEN_100,
+                                                                                                          aNSCtxCreditNote),
+                                                                             PhiveRulesHelper.createXSLT (BIS3_BILLING_SG_PEPPOL_100,
+                                                                                                          aNSCtxCreditNote)));
     }
 
     // 1.0.2
@@ -136,20 +124,20 @@ public final class PeppolLegacyValidationSG
 
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_BIS3_SG_UBL_INVOICE_102,
                                                                              "SG Peppol BIS3 Invoice (UBL) 1.0.2",
-                                                                             _createStatus (bDeprecated),
+                                                                             PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
-                                                                             ValidationExecutorSchematron.createXSLT (BIS3_BILLING_SG_CEN_102,
-                                                                                                                      aNSCtxInvoice),
-                                                                             ValidationExecutorSchematron.createXSLT (BIS3_BILLING_SG_PEPPOL_102,
-                                                                                                                      aNSCtxInvoice)));
+                                                                             PhiveRulesHelper.createXSLT (BIS3_BILLING_SG_CEN_102,
+                                                                                                          aNSCtxInvoice),
+                                                                             PhiveRulesHelper.createXSLT (BIS3_BILLING_SG_PEPPOL_102,
+                                                                                                          aNSCtxInvoice)));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_BIS3_SG_UBL_CREDIT_NOTE_102,
                                                                              "SG Peppol BIS3 Credit Note (UBL) 1.0.2",
-                                                                             _createStatus (bDeprecated),
+                                                                             PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
-                                                                             ValidationExecutorSchematron.createXSLT (BIS3_BILLING_SG_CEN_102,
-                                                                                                                      aNSCtxCreditNote),
-                                                                             ValidationExecutorSchematron.createXSLT (BIS3_BILLING_SG_PEPPOL_102,
-                                                                                                                      aNSCtxCreditNote)));
+                                                                             PhiveRulesHelper.createXSLT (BIS3_BILLING_SG_CEN_102,
+                                                                                                          aNSCtxCreditNote),
+                                                                             PhiveRulesHelper.createXSLT (BIS3_BILLING_SG_PEPPOL_102,
+                                                                                                          aNSCtxCreditNote)));
     }
 
     // 1.0.3
@@ -162,20 +150,20 @@ public final class PeppolLegacyValidationSG
                                                                                   _getCL ());
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_BIS3_SG_UBL_INVOICE_103,
                                                                              "SG Peppol BIS3 Invoice (UBL) 1.0.3",
-                                                                             _createStatus (bDeprecated),
+                                                                             PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
-                                                                             ValidationExecutorSchematron.createXSLT (BIS3_BILLING_SG_CEN_103,
-                                                                                                                      aNSCtxInvoice),
-                                                                             ValidationExecutorSchematron.createXSLT (BIS3_BILLING_SG_PEPPOL_103,
-                                                                                                                      aNSCtxInvoice)));
+                                                                             PhiveRulesHelper.createXSLT (BIS3_BILLING_SG_CEN_103,
+                                                                                                          aNSCtxInvoice),
+                                                                             PhiveRulesHelper.createXSLT (BIS3_BILLING_SG_PEPPOL_103,
+                                                                                                          aNSCtxInvoice)));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_BIS3_SG_UBL_CREDIT_NOTE_103,
                                                                              "SG Peppol BIS3 Credit Note (UBL) 1.0.3",
-                                                                             _createStatus (bDeprecated),
+                                                                             PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
-                                                                             ValidationExecutorSchematron.createXSLT (BIS3_BILLING_SG_CEN_103,
-                                                                                                                      aNSCtxCreditNote),
-                                                                             ValidationExecutorSchematron.createXSLT (BIS3_BILLING_SG_PEPPOL_103,
-                                                                                                                      aNSCtxCreditNote)));
+                                                                             PhiveRulesHelper.createXSLT (BIS3_BILLING_SG_CEN_103,
+                                                                                                          aNSCtxCreditNote),
+                                                                             PhiveRulesHelper.createXSLT (BIS3_BILLING_SG_PEPPOL_103,
+                                                                                                          aNSCtxCreditNote)));
     }
   }
 }

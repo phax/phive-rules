@@ -41,9 +41,31 @@ public final class PhiveRulesHelper
                                                 @Nonnull @Nonempty final String sArtifactID,
                                                 @Nonnull @Nonempty final String sVersion)
   {
+    return createCoordinate (sGroupID, sArtifactID, sVersion, null);
+  }
+
+  /**
+   * Create coordinates, capturing version parsing exceptions
+   *
+   * @param sGroupID
+   *        Coordinate group ID
+   * @param sArtifactID
+   *        Coordinate artifact ID
+   * @param sVersion
+   *        Coordinate version
+   * @param sClassifier
+   *        Optional coordinate classifier
+   * @return The created {@link DVRCoordinate} and never <code>null</code>.
+   */
+  @Nonnull
+  public static DVRCoordinate createCoordinate (@Nonnull @Nonempty final String sGroupID,
+                                                @Nonnull @Nonempty final String sArtifactID,
+                                                @Nonnull @Nonempty final String sVersion,
+                                                @Nullable final String sClassifier)
+  {
     try
     {
-      return DVRCoordinate.create (sGroupID, sArtifactID, sVersion);
+      return DVRCoordinate.create (sGroupID, sArtifactID, sVersion, sClassifier);
     }
     catch (final DVRVersionException ex)
     {

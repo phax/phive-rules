@@ -193,6 +193,12 @@ I hope that with the introduction of PINT, the versioning problem will be solved
   
 # News and noteworthy
  
+* v3.2.0 - work in progress
+    * Updated to ph-diver 3.0.1
+    * Updated to phive 10
+    * Marked Peppol Rules 2023-11 as deprecated
+    * Removed old Peppol rules before 2020 (3.5.0 to 3.9.1)
+    * Removed old Peppol Thirdparty rules (AT BIS2 based) (class `PeppolLegacyThirdpartyValidation`)
 * v3.1.13 - 2024-09-06
     * Added support for Peppol Italy rules 3.1.0 (AGID Credit Note, Despatch Advice, Invoice, Order, Order Agreement and Order Response), Italian version
 * v3.1.12 - 2024-07-29
