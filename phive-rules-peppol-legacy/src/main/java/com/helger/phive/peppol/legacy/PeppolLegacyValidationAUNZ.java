@@ -26,6 +26,7 @@ import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
 import com.helger.phive.api.executorset.ValidationExecutorSet;
 import com.helger.phive.rules.api.PhiveRulesHelper;
+import com.helger.phive.rules.api.PhiveRulesUBLHelper;
 import com.helger.phive.xml.source.IValidationSourceXML;
 import com.helger.phive.xml.xsd.ValidationExecutorXSD;
 import com.helger.ubl21.UBL21Marshaller;
@@ -62,15 +63,15 @@ public final class PeppolLegacyValidationAUNZ
                                                                                                                                    "creditnote-self-billing",
                                                                                                                                    "1.0.0");
 
-  public static final IReadableResource BIS3_BILLING_AUNZ_PEPPOL_SELF_BILLING_100 = new ClassPathResource (BASE_PATH +
-                                                                                                           "1.0.0/xslt/AUNZ-PEPPOL-SB-validation.xslt",
-                                                                                                           _getCL ());
-  public static final IReadableResource BIS3_BILLING_AUNZ_PEPPOL_100 = new ClassPathResource (BASE_PATH +
-                                                                                              "1.0.0/xslt/AUNZ-PEPPOL-validation.xslt",
-                                                                                              _getCL ());
-  public static final IReadableResource BIS3_BILLING_AUNZ_UBL_100 = new ClassPathResource (BASE_PATH +
-                                                                                           "1.0.0/xslt/AUNZ-UBL-validation.xslt",
-                                                                                           _getCL ());
+  private static final IReadableResource BIS3_BILLING_AUNZ_PEPPOL_SELF_BILLING_100 = new ClassPathResource (BASE_PATH +
+                                                                                                            "1.0.0/xslt/AUNZ-PEPPOL-SB-validation.xslt",
+                                                                                                            _getCL ());
+  private static final IReadableResource BIS3_BILLING_AUNZ_PEPPOL_100 = new ClassPathResource (BASE_PATH +
+                                                                                               "1.0.0/xslt/AUNZ-PEPPOL-validation.xslt",
+                                                                                               _getCL ());
+  private static final IReadableResource BIS3_BILLING_AUNZ_UBL_100 = new ClassPathResource (BASE_PATH +
+                                                                                            "1.0.0/xslt/AUNZ-UBL-validation.xslt",
+                                                                                            _getCL ());
 
   // 1.0.1
   public static final DVRCoordinate VID_OPENPEPPOL_BIS3_AUNZ_UBL_INVOICE_101 = PhiveRulesHelper.createCoordinate ("eu.peppol.bis3.aunz.ubl",
@@ -86,15 +87,15 @@ public final class PeppolLegacyValidationAUNZ
                                                                                                                                    "creditnote-self-billing",
                                                                                                                                    "1.0.1");
 
-  public static final IReadableResource BIS3_BILLING_AUNZ_PEPPOL_SELF_BILLING_101 = new ClassPathResource (BASE_PATH +
-                                                                                                           "1.0.1/xslt/AUNZ-PEPPOL-SB-validation.xslt",
-                                                                                                           _getCL ());
-  public static final IReadableResource BIS3_BILLING_AUNZ_PEPPOL_101 = new ClassPathResource (BASE_PATH +
-                                                                                              "1.0.1/xslt/AUNZ-PEPPOL-validation.xslt",
-                                                                                              _getCL ());
-  public static final IReadableResource BIS3_BILLING_AUNZ_UBL_101 = new ClassPathResource (BASE_PATH +
-                                                                                           "1.0.1/xslt/AUNZ-UBL-validation.xslt",
-                                                                                           _getCL ());
+  private static final IReadableResource BIS3_BILLING_AUNZ_PEPPOL_SELF_BILLING_101 = new ClassPathResource (BASE_PATH +
+                                                                                                            "1.0.1/xslt/AUNZ-PEPPOL-SB-validation.xslt",
+                                                                                                            _getCL ());
+  private static final IReadableResource BIS3_BILLING_AUNZ_PEPPOL_101 = new ClassPathResource (BASE_PATH +
+                                                                                               "1.0.1/xslt/AUNZ-PEPPOL-validation.xslt",
+                                                                                               _getCL ());
+  private static final IReadableResource BIS3_BILLING_AUNZ_UBL_101 = new ClassPathResource (BASE_PATH +
+                                                                                            "1.0.1/xslt/AUNZ-UBL-validation.xslt",
+                                                                                            _getCL ());
 
   // 1.0.2
   public static final DVRCoordinate VID_OPENPEPPOL_BIS3_AUNZ_UBL_INVOICE_102 = PhiveRulesHelper.createCoordinate ("eu.peppol.bis3.aunz.ubl",
@@ -110,15 +111,15 @@ public final class PeppolLegacyValidationAUNZ
                                                                                                                                    "creditnote-self-billing",
                                                                                                                                    "1.0.2");
 
-  public static final IReadableResource BIS3_BILLING_AUNZ_PEPPOL_SELF_BILLING_102 = new ClassPathResource (BASE_PATH +
-                                                                                                           "1.0.2/xslt/AUNZ-PEPPOL-SB-validation.xslt",
-                                                                                                           _getCL ());
-  public static final IReadableResource BIS3_BILLING_AUNZ_PEPPOL_102 = new ClassPathResource (BASE_PATH +
-                                                                                              "1.0.2/xslt/AUNZ-PEPPOL-validation.xslt",
-                                                                                              _getCL ());
-  public static final IReadableResource BIS3_BILLING_AUNZ_UBL_102 = new ClassPathResource (BASE_PATH +
-                                                                                           "1.0.2/xslt/AUNZ-UBL-validation.xslt",
-                                                                                           _getCL ());
+  private static final IReadableResource BIS3_BILLING_AUNZ_PEPPOL_SELF_BILLING_102 = new ClassPathResource (BASE_PATH +
+                                                                                                            "1.0.2/xslt/AUNZ-PEPPOL-SB-validation.xslt",
+                                                                                                            _getCL ());
+  private static final IReadableResource BIS3_BILLING_AUNZ_PEPPOL_102 = new ClassPathResource (BASE_PATH +
+                                                                                               "1.0.2/xslt/AUNZ-PEPPOL-validation.xslt",
+                                                                                               _getCL ());
+  private static final IReadableResource BIS3_BILLING_AUNZ_UBL_102 = new ClassPathResource (BASE_PATH +
+                                                                                            "1.0.2/xslt/AUNZ-UBL-validation.xslt",
+                                                                                            _getCL ());
 
   // 1.0.3
   public static final DVRCoordinate VID_OPENPEPPOL_BIS3_AUNZ_UBL_INVOICE_103 = PhiveRulesHelper.createCoordinate ("eu.peppol.bis3.aunz.ubl",
@@ -134,15 +135,15 @@ public final class PeppolLegacyValidationAUNZ
                                                                                                                                    "creditnote-self-billing",
                                                                                                                                    "1.0.3");
 
-  public static final IReadableResource BIS3_BILLING_AUNZ_PEPPOL_SELF_BILLING_103 = new ClassPathResource (BASE_PATH +
-                                                                                                           "1.0.3/xslt/AUNZ-PEPPOL-SB-validation.xslt",
-                                                                                                           _getCL ());
-  public static final IReadableResource BIS3_BILLING_AUNZ_PEPPOL_103 = new ClassPathResource (BASE_PATH +
-                                                                                              "1.0.3/xslt/AUNZ-PEPPOL-validation.xslt",
-                                                                                              _getCL ());
-  public static final IReadableResource BIS3_BILLING_AUNZ_UBL_103 = new ClassPathResource (BASE_PATH +
-                                                                                           "1.0.3/xslt/AUNZ-UBL-validation.xslt",
-                                                                                           _getCL ());
+  private static final IReadableResource BIS3_BILLING_AUNZ_PEPPOL_SELF_BILLING_103 = new ClassPathResource (BASE_PATH +
+                                                                                                            "1.0.3/xslt/AUNZ-PEPPOL-SB-validation.xslt",
+                                                                                                            _getCL ());
+  private static final IReadableResource BIS3_BILLING_AUNZ_PEPPOL_103 = new ClassPathResource (BASE_PATH +
+                                                                                               "1.0.3/xslt/AUNZ-PEPPOL-validation.xslt",
+                                                                                               _getCL ());
+  private static final IReadableResource BIS3_BILLING_AUNZ_UBL_103 = new ClassPathResource (BASE_PATH +
+                                                                                            "1.0.3/xslt/AUNZ-UBL-validation.xslt",
+                                                                                            _getCL ());
 
   // 1.0.4
   public static final DVRCoordinate VID_OPENPEPPOL_BIS3_AUNZ_UBL_INVOICE_104 = PhiveRulesHelper.createCoordinate ("eu.peppol.bis3.aunz.ubl",
@@ -158,15 +159,15 @@ public final class PeppolLegacyValidationAUNZ
                                                                                                                                    "creditnote-self-billing",
                                                                                                                                    "1.0.4");
 
-  public static final IReadableResource BIS3_BILLING_AUNZ_PEPPOL_SELF_BILLING_104 = new ClassPathResource (BASE_PATH +
-                                                                                                           "1.0.4/xslt/AUNZ-PEPPOL-SB-validation.xslt",
-                                                                                                           _getCL ());
-  public static final IReadableResource BIS3_BILLING_AUNZ_PEPPOL_104 = new ClassPathResource (BASE_PATH +
-                                                                                              "1.0.4/xslt/AUNZ-PEPPOL-validation.xslt",
-                                                                                              _getCL ());
-  public static final IReadableResource BIS3_BILLING_AUNZ_UBL_104 = new ClassPathResource (BASE_PATH +
-                                                                                           "1.0.4/xslt/AUNZ-UBL-validation.xslt",
-                                                                                           _getCL ());
+  private static final IReadableResource BIS3_BILLING_AUNZ_PEPPOL_SELF_BILLING_104 = new ClassPathResource (BASE_PATH +
+                                                                                                            "1.0.4/xslt/AUNZ-PEPPOL-SB-validation.xslt",
+                                                                                                            _getCL ());
+  private static final IReadableResource BIS3_BILLING_AUNZ_PEPPOL_104 = new ClassPathResource (BASE_PATH +
+                                                                                               "1.0.4/xslt/AUNZ-PEPPOL-validation.xslt",
+                                                                                               _getCL ());
+  private static final IReadableResource BIS3_BILLING_AUNZ_UBL_104 = new ClassPathResource (BASE_PATH +
+                                                                                            "1.0.4/xslt/AUNZ-UBL-validation.xslt",
+                                                                                            _getCL ());
 
   // 1.0.5
   public static final DVRCoordinate VID_OPENPEPPOL_BIS3_AUNZ_UBL_INVOICE_105 = PhiveRulesHelper.createCoordinate ("eu.peppol.bis3.aunz.ubl",
@@ -182,15 +183,15 @@ public final class PeppolLegacyValidationAUNZ
                                                                                                                                    "creditnote-self-billing",
                                                                                                                                    "1.0.5");
 
-  public static final IReadableResource BIS3_BILLING_AUNZ_PEPPOL_SELF_BILLING_105 = new ClassPathResource (BASE_PATH +
-                                                                                                           "1.0.5/xslt/AUNZ-PEPPOL-SB-validation.xslt",
-                                                                                                           _getCL ());
-  public static final IReadableResource BIS3_BILLING_AUNZ_PEPPOL_105 = new ClassPathResource (BASE_PATH +
-                                                                                              "1.0.5/xslt/AUNZ-PEPPOL-validation.xslt",
-                                                                                              _getCL ());
-  public static final IReadableResource BIS3_BILLING_AUNZ_UBL_105 = new ClassPathResource (BASE_PATH +
-                                                                                           "1.0.5/xslt/AUNZ-UBL-validation.xslt",
-                                                                                           _getCL ());
+  private static final IReadableResource BIS3_BILLING_AUNZ_PEPPOL_SELF_BILLING_105 = new ClassPathResource (BASE_PATH +
+                                                                                                            "1.0.5/xslt/AUNZ-PEPPOL-SB-validation.xslt",
+                                                                                                            _getCL ());
+  private static final IReadableResource BIS3_BILLING_AUNZ_PEPPOL_105 = new ClassPathResource (BASE_PATH +
+                                                                                               "1.0.5/xslt/AUNZ-PEPPOL-validation.xslt",
+                                                                                               _getCL ());
+  private static final IReadableResource BIS3_BILLING_AUNZ_UBL_105 = new ClassPathResource (BASE_PATH +
+                                                                                            "1.0.5/xslt/AUNZ-UBL-validation.xslt",
+                                                                                            _getCL ());
 
   // 1.0.6
   public static final DVRCoordinate VID_OPENPEPPOL_BIS3_AUNZ_UBL_INVOICE_106 = PhiveRulesHelper.createCoordinate ("eu.peppol.bis3.aunz.ubl",
@@ -206,15 +207,15 @@ public final class PeppolLegacyValidationAUNZ
                                                                                                                                    "creditnote-self-billing",
                                                                                                                                    "1.0.6");
 
-  public static final IReadableResource BIS3_BILLING_AUNZ_PEPPOL_SELF_BILLING_106 = new ClassPathResource (BASE_PATH +
-                                                                                                           "1.0.6/xslt/AUNZ-PEPPOL-SB-validation.xslt",
-                                                                                                           _getCL ());
-  public static final IReadableResource BIS3_BILLING_AUNZ_PEPPOL_106 = new ClassPathResource (BASE_PATH +
-                                                                                              "1.0.6/xslt/AUNZ-PEPPOL-validation.xslt",
-                                                                                              _getCL ());
-  public static final IReadableResource BIS3_BILLING_AUNZ_UBL_106 = new ClassPathResource (BASE_PATH +
-                                                                                           "1.0.6/xslt/AUNZ-UBL-validation.xslt",
-                                                                                           _getCL ());
+  private static final IReadableResource BIS3_BILLING_AUNZ_PEPPOL_SELF_BILLING_106 = new ClassPathResource (BASE_PATH +
+                                                                                                            "1.0.6/xslt/AUNZ-PEPPOL-SB-validation.xslt",
+                                                                                                            _getCL ());
+  private static final IReadableResource BIS3_BILLING_AUNZ_PEPPOL_106 = new ClassPathResource (BASE_PATH +
+                                                                                               "1.0.6/xslt/AUNZ-PEPPOL-validation.xslt",
+                                                                                               _getCL ());
+  private static final IReadableResource BIS3_BILLING_AUNZ_UBL_106 = new ClassPathResource (BASE_PATH +
+                                                                                            "1.0.6/xslt/AUNZ-UBL-validation.xslt",
+                                                                                            _getCL ());
 
   // 1.0.7
   public static final DVRCoordinate VID_OPENPEPPOL_BIS3_AUNZ_UBL_INVOICE_107 = PhiveRulesHelper.createCoordinate ("eu.peppol.bis3.aunz.ubl",
@@ -251,10 +252,10 @@ public final class PeppolLegacyValidationAUNZ
   {
     ValueEnforcer.notNull (aRegistry, "Registry");
 
-    final MapBasedNamespaceContext aNSCtxInvoice = PeppolLegacyValidation.createUBLNSContext (UBL21Marshaller.invoice ()
-                                                                                                             .getRootElementNamespaceURI ());
-    final MapBasedNamespaceContext aNSCtxCreditNote = PeppolLegacyValidation.createUBLNSContext (UBL21Marshaller.creditNote ()
-                                                                                                                .getRootElementNamespaceURI ());
+    final MapBasedNamespaceContext aNSCtxInvoice = PhiveRulesUBLHelper.createUBL21NSContext (UBL21Marshaller.invoice ()
+                                                                                                            .getRootElementNamespaceURI ());
+    final MapBasedNamespaceContext aNSCtxCreditNote = PhiveRulesUBLHelper.createUBL21NSContext (UBL21Marshaller.creditNote ()
+                                                                                                               .getRootElementNamespaceURI ());
 
     final boolean bDeprecated = true;
 

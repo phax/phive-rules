@@ -106,46 +106,6 @@ public final class PeppolValidation3_14_0
     return PeppolValidation3_14_0.class.getClassLoader ();
   }
 
-  // Previously T10 and T14
-  private static final String PREFIX_XSLT = "external/schematron/openpeppol/" + VERSION_STR + "/xslt/";
-  public static final IReadableResource INVOICE_UBL_CEN = new ClassPathResource (PREFIX_XSLT + "CEN-EN16931-UBL.xslt",
-                                                                                 _getCL ());
-  public static final IReadableResource INVOICE_UBL_PEPPOL = new ClassPathResource (PREFIX_XSLT +
-                                                                                    "PEPPOL-EN16931-UBL.xslt",
-                                                                                    _getCL ());
-  // Introduced in v3.14.0
-  public static final IReadableResource INVOICE_CII_CEN = new ClassPathResource (PREFIX_XSLT + "CEN-EN16931-CII.xslt",
-                                                                                 _getCL ());
-  public static final IReadableResource INVOICE_CII_PEPPOL = new ClassPathResource (PREFIX_XSLT +
-                                                                                    "PEPPOL-EN16931-CII.xslt",
-                                                                                    _getCL ());
-
-  public static final IReadableResource ORDER = new ClassPathResource (PREFIX_XSLT + "PEPPOLBIS-T01.xslt", _getCL ());
-
-  public static final IReadableResource DESPATCH_ADVICE = new ClassPathResource (PREFIX_XSLT + "PEPPOLBIS-T16.xslt",
-                                                                                 _getCL ());
-
-  public static final IReadableResource CATALOGUE = new ClassPathResource (PREFIX_XSLT + "PEPPOLBIS-T19.xslt",
-                                                                           _getCL ());
-
-  public static final IReadableResource CATALOGUE_RESPONSE = new ClassPathResource (PREFIX_XSLT + "PEPPOLBIS-T58.xslt",
-                                                                                    _getCL ());
-
-  public static final IReadableResource MLR = new ClassPathResource (PREFIX_XSLT + "PEPPOLBIS-T71.xslt", _getCL ());
-
-  public static final IReadableResource ORDER_RESPONSE = new ClassPathResource (PREFIX_XSLT + "PEPPOLBIS-T76.xslt",
-                                                                                _getCL ());
-
-  public static final IReadableResource PUNCH_OUT = new ClassPathResource (PREFIX_XSLT + "PEPPOLBIS-T77.xslt",
-                                                                           _getCL ());
-
-  public static final IReadableResource ORDER_AGREEMENT = new ClassPathResource (PREFIX_XSLT + "PEPPOLBIS-T110.xslt",
-                                                                                 _getCL ());
-
-  public static final IReadableResource INVOICE_MESSAGE_RESPONSE = new ClassPathResource (PREFIX_XSLT +
-                                                                                          "PEPPOLBIS-T111.xslt",
-                                                                                          _getCL ());
-
   private PeppolValidation3_14_0 ()
   {}
 
@@ -171,6 +131,26 @@ public final class PeppolValidation3_14_0
     final String sAkaVersionBilling = " (aka BIS Billing 3.0.13)";
     // See https://docs.peppol.eu/poacc/upgrade-3/release-notes/
     final String sAkaVersionBIS = " (aka BIS 3.0.9)";
+
+    // Previously T10 and T14
+    final String PREFIX_XSLT = "external/schematron/openpeppol/" + VERSION_STR + "/xslt/";
+    final IReadableResource INVOICE_UBL_CEN = new ClassPathResource (PREFIX_XSLT + "CEN-EN16931-UBL.xslt", _getCL ());
+    final IReadableResource INVOICE_UBL_PEPPOL = new ClassPathResource (PREFIX_XSLT + "PEPPOL-EN16931-UBL.xslt",
+                                                                        _getCL ());
+    // Introduced in v3.14.0
+    final IReadableResource INVOICE_CII_CEN = new ClassPathResource (PREFIX_XSLT + "CEN-EN16931-CII.xslt", _getCL ());
+    final IReadableResource INVOICE_CII_PEPPOL = new ClassPathResource (PREFIX_XSLT + "PEPPOL-EN16931-CII.xslt",
+                                                                        _getCL ());
+    final IReadableResource ORDER = new ClassPathResource (PREFIX_XSLT + "PEPPOLBIS-T01.xslt", _getCL ());
+    final IReadableResource DESPATCH_ADVICE = new ClassPathResource (PREFIX_XSLT + "PEPPOLBIS-T16.xslt", _getCL ());
+    final IReadableResource CATALOGUE = new ClassPathResource (PREFIX_XSLT + "PEPPOLBIS-T19.xslt", _getCL ());
+    final IReadableResource CATALOGUE_RESPONSE = new ClassPathResource (PREFIX_XSLT + "PEPPOLBIS-T58.xslt", _getCL ());
+    final IReadableResource MLR = new ClassPathResource (PREFIX_XSLT + "PEPPOLBIS-T71.xslt", _getCL ());
+    final IReadableResource ORDER_RESPONSE = new ClassPathResource (PREFIX_XSLT + "PEPPOLBIS-T76.xslt", _getCL ());
+    final IReadableResource PUNCH_OUT = new ClassPathResource (PREFIX_XSLT + "PEPPOLBIS-T77.xslt", _getCL ());
+    final IReadableResource ORDER_AGREEMENT = new ClassPathResource (PREFIX_XSLT + "PEPPOLBIS-T110.xslt", _getCL ());
+    final IReadableResource INVOICE_MESSAGE_RESPONSE = new ClassPathResource (PREFIX_XSLT + "PEPPOLBIS-T111.xslt",
+                                                                              _getCL ());
 
     final boolean bDeprecated = true;
 

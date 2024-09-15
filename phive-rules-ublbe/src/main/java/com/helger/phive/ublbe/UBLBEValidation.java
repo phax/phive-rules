@@ -29,7 +29,6 @@ import com.helger.phive.api.executorset.ValidationExecutorSet;
 import com.helger.phive.api.executorset.status.IValidationExecutorSetStatus;
 import com.helger.phive.api.executorset.status.ValidationExecutorSetStatus;
 import com.helger.phive.peppol.legacy.PeppolValidation370;
-import com.helger.phive.xml.schematron.SchematronNamespaceBeautifier;
 import com.helger.phive.xml.schematron.ValidationExecutorSchematron;
 import com.helger.phive.xml.source.IValidationSourceXML;
 import com.helger.phive.xml.xsd.ValidationExecutorXSD;
@@ -185,9 +184,6 @@ public final class UBLBEValidation
   public static void initUBLBE (@Nonnull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
   {
     ValueEnforcer.notNull (aRegistry, "Registry");
-
-    // For better error messages
-    SchematronNamespaceBeautifier.addMappings (UBL21NamespaceContext.getInstance ());
 
     final IValidationExecutorSet <IValidationSourceXML> aVESInvoiceBIS2 = aRegistry.getOfID (PeppolValidation370.VID_OPENPEPPOL_T10_V2);
     final IValidationExecutorSet <IValidationSourceXML> aVESCreditNoteBIS2 = aRegistry.getOfID (PeppolValidation370.VID_OPENPEPPOL_T14_V2);

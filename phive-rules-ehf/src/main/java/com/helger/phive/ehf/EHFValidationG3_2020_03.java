@@ -38,7 +38,7 @@ import com.helger.ubl22.UBL22Marshaller;
  */
 @Immutable
 @Deprecated
-public final class EHFValidationG3
+public final class EHFValidationG3_2020_03
 {
   private static final String GROUP_ID = "no.ehf.g3";
 
@@ -87,13 +87,13 @@ public final class EHFValidationG3
                                                                                               "reminder",
                                                                                               "3.0.0");
 
-  private EHFValidationG3 ()
+  private EHFValidationG3_2020_03 ()
   {}
 
   @Nonnull
   private static ClassLoader _getCL ()
   {
-    return EHFValidationG3.class.getClassLoader ();
+    return EHFValidationG3_2020_03.class.getClassLoader ();
   }
 
   /**

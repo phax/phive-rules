@@ -41,7 +41,7 @@ import com.helger.ubl21.UBL21Marshaller;
 @Immutable
 public final class EN16931Validation
 {
-  private static final String GROUP_ID = "eu.cen.en16931";
+  public static final String GROUP_ID = "eu.cen.en16931";
 
   private static final String VERSION_100 = "1.0.0";
   private static final String VERSION_110 = "1.1.0";
@@ -264,156 +264,142 @@ public final class EN16931Validation
 
   // CII
   @Deprecated
-  public static final IReadableResource INVOICE_CII_100_XSLT = new ClassPathResource (PREFIX +
-                                                                                      "1.0.0/cii/xslt/EN16931-CII-validation.xslt",
-                                                                                      _getCL ());
+  private static final IReadableResource INVOICE_CII_100_XSLT = new ClassPathResource (PREFIX +
+                                                                                       "1.0.0/cii/xslt/EN16931-CII-validation.xslt",
+                                                                                       _getCL ());
   @Deprecated
-  public static final IReadableResource INVOICE_CII_110_XSLT = new ClassPathResource (PREFIX +
-                                                                                      "1.1.0/cii/xslt/EN16931-CII-validation.xslt",
-                                                                                      _getCL ());
+  private static final IReadableResource INVOICE_CII_110_XSLT = new ClassPathResource (PREFIX +
+                                                                                       "1.1.0/cii/xslt/EN16931-CII-validation.xslt",
+                                                                                       _getCL ());
   @Deprecated
-  public static final IReadableResource INVOICE_CII_120_XSLT = new ClassPathResource (PREFIX +
-                                                                                      "1.2.0/cii/xslt/EN16931-CII-validation.xslt",
-                                                                                      _getCL ());
+  private static final IReadableResource INVOICE_CII_120_XSLT = new ClassPathResource (PREFIX +
+                                                                                       "1.2.0/cii/xslt/EN16931-CII-validation.xslt",
+                                                                                       _getCL ());
   @Deprecated
-  public static final IReadableResource INVOICE_CII_121_XSLT = new ClassPathResource (PREFIX +
-                                                                                      "1.2.1/cii/xslt/EN16931-CII-validation.xslt",
-                                                                                      _getCL ());
+  private static final IReadableResource INVOICE_CII_121_XSLT = new ClassPathResource (PREFIX +
+                                                                                       "1.2.1/cii/xslt/EN16931-CII-validation.xslt",
+                                                                                       _getCL ());
   @Deprecated
-  public static final IReadableResource INVOICE_CII_123_XSLT = new ClassPathResource (PREFIX +
-                                                                                      "1.2.3/cii/xslt/EN16931-CII-validation.xslt",
-                                                                                      _getCL ());
+  private static final IReadableResource INVOICE_CII_123_XSLT = new ClassPathResource (PREFIX +
+                                                                                       "1.2.3/cii/xslt/EN16931-CII-validation.xslt",
+                                                                                       _getCL ());
   @Deprecated
-  public static final IReadableResource INVOICE_CII_130_XSLT = new ClassPathResource (PREFIX +
-                                                                                      "1.3.0/cii/xslt/EN16931-CII-validation.xslt",
-                                                                                      _getCL ());
+  private static final IReadableResource INVOICE_CII_130_XSLT = new ClassPathResource (PREFIX +
+                                                                                       "1.3.0/cii/xslt/EN16931-CII-validation.xslt",
+                                                                                       _getCL ());
   @Deprecated
-  public static final IReadableResource INVOICE_CII_131_XSLT = new ClassPathResource (PREFIX +
-                                                                                      "1.3.1/cii/xslt/EN16931-CII-validation.xslt",
-                                                                                      _getCL ());
+  private static final IReadableResource INVOICE_CII_131_XSLT = new ClassPathResource (PREFIX +
+                                                                                       "1.3.1/cii/xslt/EN16931-CII-validation.xslt",
+                                                                                       _getCL ());
   @Deprecated
-  public static final IReadableResource INVOICE_CII_132_XSLT = new ClassPathResource (PREFIX +
-                                                                                      "1.3.2/cii/xslt/EN16931-CII-validation.xslt",
-                                                                                      _getCL ());
+  private static final IReadableResource INVOICE_CII_132_XSLT = new ClassPathResource (PREFIX +
+                                                                                       "1.3.2/cii/xslt/EN16931-CII-validation.xslt",
+                                                                                       _getCL ());
   @Deprecated
-  public static final IReadableResource INVOICE_CII_133_XSLT = new ClassPathResource (PREFIX +
-                                                                                      "1.3.3/cii/xslt/EN16931-CII-validation.xslt",
-                                                                                      _getCL ());
+  private static final IReadableResource INVOICE_CII_133_XSLT = new ClassPathResource (PREFIX +
+                                                                                       "1.3.3/cii/xslt/EN16931-CII-validation.xslt",
+                                                                                       _getCL ());
   @Deprecated
-  public static final IReadableResource INVOICE_CII_134_XSLT = new ClassPathResource (PREFIX +
-                                                                                      "1.3.4/cii/xslt/EN16931-CII-validation.xslt",
-                                                                                      _getCL ());
+  private static final IReadableResource INVOICE_CII_134_XSLT = new ClassPathResource (PREFIX +
+                                                                                       "1.3.4/cii/xslt/EN16931-CII-validation.xslt",
+                                                                                       _getCL ());
   @Deprecated
-  public static final IReadableResource INVOICE_CII_135_XSLT = new ClassPathResource (PREFIX +
-                                                                                      "1.3.5/cii/EN16931-CII-validation.xslt",
-                                                                                      _getCL ());
+  private static final IReadableResource INVOICE_CII_135_XSLT = new ClassPathResource (PREFIX +
+                                                                                       "1.3.5/cii/EN16931-CII-validation.xslt",
+                                                                                       _getCL ());
   @Deprecated
-  public static final IReadableResource INVOICE_CII_136_XSLT = new ClassPathResource (PREFIX +
-                                                                                      "1.3.6/cii/EN16931-CII-validation.xslt",
-                                                                                      _getCL ());
+  private static final IReadableResource INVOICE_CII_136_XSLT = new ClassPathResource (PREFIX +
+                                                                                       "1.3.6/cii/EN16931-CII-validation.xslt",
+                                                                                       _getCL ());
   // Specific bugfix version for XRechnung 2.1.1 only
   @Deprecated
-  public static final IReadableResource INVOICE_CII_136A_XSLT = new ClassPathResource (PREFIX +
-                                                                                       "1.3.6a/cii/EN16931-CII-validation.xslt",
+  private static final IReadableResource INVOICE_CII_136A_XSLT = new ClassPathResource (PREFIX +
+                                                                                        "1.3.6a/cii/EN16931-CII-validation.xslt",
+                                                                                        _getCL ());
+  @Deprecated
+  private static final IReadableResource INVOICE_CII_137_XSLT = new ClassPathResource (PREFIX +
+                                                                                       "1.3.7/cii/EN16931-CII-validation.xslt",
                                                                                        _getCL ());
   @Deprecated
-  public static final IReadableResource INVOICE_CII_137_XSLT = new ClassPathResource (PREFIX +
-                                                                                      "1.3.7/cii/EN16931-CII-validation.xslt",
-                                                                                      _getCL ());
-  @Deprecated
-  public static final IReadableResource INVOICE_CII_138_XSLT = new ClassPathResource (PREFIX +
-                                                                                      "1.3.8/cii/EN16931-CII-validation.xslt",
-                                                                                      _getCL ());
-  @Deprecated
-  public static final IReadableResource INVOICE_CII_139_XSLT = new ClassPathResource (PREFIX +
-                                                                                      "1.3.9/cii/EN16931-CII-validation.xslt",
-                                                                                      _getCL ());
-  @Deprecated
-  public static final IReadableResource INVOICE_CII_1310_XSLT = new ClassPathResource (PREFIX +
-                                                                                       "1.3.10/cii/EN16931-CII-validation.xslt",
+  private static final IReadableResource INVOICE_CII_138_XSLT = new ClassPathResource (PREFIX +
+                                                                                       "1.3.8/cii/EN16931-CII-validation.xslt",
                                                                                        _getCL ());
-  public static final IReadableResource INVOICE_CII_1311_XSLT = new ClassPathResource (PREFIX +
-                                                                                       "1.3.11/cii/EN16931-CII-validation.xslt",
+  @Deprecated
+  private static final IReadableResource INVOICE_CII_139_XSLT = new ClassPathResource (PREFIX +
+                                                                                       "1.3.9/cii/EN16931-CII-validation.xslt",
                                                                                        _getCL ());
-  public static final IReadableResource INVOICE_CII_1312_XSLT = new ClassPathResource (PREFIX +
-                                                                                       "1.3.12/cii/EN16931-CII-validation.xslt",
-                                                                                       _getCL ());
+  @Deprecated
+  private static final IReadableResource INVOICE_CII_1310_XSLT = new ClassPathResource (PREFIX +
+                                                                                        "1.3.10/cii/EN16931-CII-validation.xslt",
+                                                                                        _getCL ());
+  private static final IReadableResource INVOICE_CII_1311_XSLT = new ClassPathResource (PREFIX +
+                                                                                        "1.3.11/cii/EN16931-CII-validation.xslt",
+                                                                                        _getCL ());
+  private static final IReadableResource INVOICE_CII_1312_XSLT = new ClassPathResource (PREFIX +
+                                                                                        "1.3.12/cii/EN16931-CII-validation.xslt",
+                                                                                        _getCL ());
 
   // UBL
   @Deprecated
-  public static final IReadableResource INVOICE_UBL_100_XSLT = new ClassPathResource (PREFIX +
-                                                                                      "1.0.0/ubl/xslt/EN16931-UBL-model.xslt",
-                                                                                      _getCL ());
+  private static final IReadableResource INVOICE_UBL_100_XSLT = new ClassPathResource (PREFIX +
+                                                                                       "1.0.0/ubl/xslt/EN16931-UBL-model.xslt",
+                                                                                       _getCL ());
   @Deprecated
-  public static final IReadableResource INVOICE_UBL_110_XSLT = new ClassPathResource (PREFIX +
-                                                                                      "1.1.0/ubl/xslt/EN16931-UBL-model.xslt",
-                                                                                      _getCL ());
+  private static final IReadableResource INVOICE_UBL_110_XSLT = new ClassPathResource (PREFIX +
+                                                                                       "1.1.0/ubl/xslt/EN16931-UBL-model.xslt",
+                                                                                       _getCL ());
   @Deprecated
-  public static final IReadableResource INVOICE_UBL_120_XSLT = new ClassPathResource (PREFIX +
-                                                                                      "1.2.0/ubl/xslt/EN16931-UBL-validation.xslt",
-                                                                                      _getCL ());
+  private static final IReadableResource INVOICE_UBL_120_XSLT = new ClassPathResource (PREFIX +
+                                                                                       "1.2.0/ubl/xslt/EN16931-UBL-validation.xslt",
+                                                                                       _getCL ());
   @Deprecated
-  public static final IReadableResource INVOICE_UBL_121_XSLT = new ClassPathResource (PREFIX +
-                                                                                      "1.2.1/ubl/xslt/EN16931-UBL-validation.xslt",
-                                                                                      _getCL ());
+  private static final IReadableResource INVOICE_UBL_121_XSLT = new ClassPathResource (PREFIX +
+                                                                                       "1.2.1/ubl/xslt/EN16931-UBL-validation.xslt",
+                                                                                       _getCL ());
   @Deprecated
-  public static final IReadableResource INVOICE_UBL_123_XSLT = new ClassPathResource (PREFIX +
-                                                                                      "1.2.3/ubl/xslt/EN16931-UBL-validation.xslt",
-                                                                                      _getCL ());
+  private static final IReadableResource INVOICE_UBL_123_XSLT = new ClassPathResource (PREFIX +
+                                                                                       "1.2.3/ubl/xslt/EN16931-UBL-validation.xslt",
+                                                                                       _getCL ());
   @Deprecated
-  public static final IReadableResource INVOICE_UBL_130_XSLT = new ClassPathResource (PREFIX +
-                                                                                      "1.3.0/ubl/xslt/EN16931-UBL-validation.xslt",
-                                                                                      _getCL ());
+  private static final IReadableResource INVOICE_UBL_130_XSLT = new ClassPathResource (PREFIX +
+                                                                                       "1.3.0/ubl/xslt/EN16931-UBL-validation.xslt",
+                                                                                       _getCL ());
   @Deprecated
-  public static final IReadableResource INVOICE_UBL_131_XSLT = new ClassPathResource (PREFIX +
-                                                                                      "1.3.1/ubl/xslt/EN16931-UBL-validation.xslt",
-                                                                                      _getCL ());
+  private static final IReadableResource INVOICE_UBL_131_XSLT = new ClassPathResource (PREFIX +
+                                                                                       "1.3.1/ubl/xslt/EN16931-UBL-validation.xslt",
+                                                                                       _getCL ());
   @Deprecated
-  public static final IReadableResource INVOICE_UBL_132_XSLT = new ClassPathResource (PREFIX +
-                                                                                      "1.3.2/ubl/xslt/EN16931-UBL-validation.xslt",
-                                                                                      _getCL ());
+  private static final IReadableResource INVOICE_UBL_132_XSLT = new ClassPathResource (PREFIX +
+                                                                                       "1.3.2/ubl/xslt/EN16931-UBL-validation.xslt",
+                                                                                       _getCL ());
   @Deprecated
-  public static final IReadableResource INVOICE_UBL_133_XSLT = new ClassPathResource (PREFIX +
-                                                                                      "1.3.3/ubl/xslt/EN16931-UBL-validation.xslt",
-                                                                                      _getCL ());
+  private static final IReadableResource INVOICE_UBL_133_XSLT = new ClassPathResource (PREFIX +
+                                                                                       "1.3.3/ubl/xslt/EN16931-UBL-validation.xslt",
+                                                                                       _getCL ());
   @Deprecated
-  public static final IReadableResource INVOICE_UBL_134_XSLT = new ClassPathResource (PREFIX +
-                                                                                      "1.3.4/ubl/xslt/EN16931-UBL-validation.xslt",
-                                                                                      _getCL ());
+  private static final IReadableResource INVOICE_UBL_134_XSLT = new ClassPathResource (PREFIX +
+                                                                                       "1.3.4/ubl/xslt/EN16931-UBL-validation.xslt",
+                                                                                       _getCL ());
   @Deprecated
-  public static final IReadableResource INVOICE_UBL_135_XSLT = new ClassPathResource (PREFIX +
-                                                                                      "1.3.5/ubl/EN16931-UBL-validation.xslt",
-                                                                                      _getCL ());
+  private static final IReadableResource INVOICE_UBL_135_XSLT = new ClassPathResource (PREFIX +
+                                                                                       "1.3.5/ubl/EN16931-UBL-validation.xslt",
+                                                                                       _getCL ());
   @Deprecated
-  public static final IReadableResource INVOICE_UBL_136_XSLT = new ClassPathResource (PREFIX +
-                                                                                      "1.3.6/ubl/EN16931-UBL-validation.xslt",
-                                                                                      _getCL ());
+  private static final IReadableResource INVOICE_UBL_136_XSLT = new ClassPathResource (PREFIX +
+                                                                                       "1.3.6/ubl/EN16931-UBL-validation.xslt",
+                                                                                       _getCL ());
   // Specific bugfix version for XRechnung 2.1.1 only
   @Deprecated
-  public static final IReadableResource INVOICE_UBL_136A_XSLT = new ClassPathResource (PREFIX +
-                                                                                       "1.3.6a/ubl/EN16931-UBL-validation.xslt",
+  private static final IReadableResource INVOICE_UBL_136A_XSLT = new ClassPathResource (PREFIX +
+                                                                                        "1.3.6a/ubl/EN16931-UBL-validation.xslt",
+                                                                                        _getCL ());
+  @Deprecated
+  private static final IReadableResource INVOICE_UBL_137_XSLT = new ClassPathResource (PREFIX +
+                                                                                       "1.3.7/ubl/EN16931-UBL-validation.xslt",
                                                                                        _getCL ());
   @Deprecated
-  public static final IReadableResource INVOICE_UBL_137_XSLT = new ClassPathResource (PREFIX +
-                                                                                      "1.3.7/ubl/EN16931-UBL-validation.xslt",
-                                                                                      _getCL ());
-  @Deprecated
-  public static final IReadableResource INVOICE_UBL_138_XSLT = new ClassPathResource (PREFIX +
-                                                                                      "1.3.8/ubl/EN16931-UBL-validation.xslt",
-                                                                                      _getCL ());
-  @Deprecated
-  public static final IReadableResource INVOICE_UBL_139_XSLT = new ClassPathResource (PREFIX +
-                                                                                      "1.3.9/ubl/EN16931-UBL-validation.xslt",
-                                                                                      _getCL ());
-  @Deprecated
-  public static final IReadableResource INVOICE_UBL_1310_XSLT = new ClassPathResource (PREFIX +
-                                                                                       "1.3.10/ubl/EN16931-UBL-validation.xslt",
-                                                                                       _getCL ());
-  public static final IReadableResource INVOICE_UBL_1311_XSLT = new ClassPathResource (PREFIX +
-                                                                                       "1.3.11/ubl/EN16931-UBL-validation.xslt",
-                                                                                       _getCL ());
-  public static final IReadableResource INVOICE_UBL_1312_XSLT = new ClassPathResource (PREFIX +
-                                                                                       "1.3.12/ubl/EN16931-UBL-validation.xslt",
+  private static final IReadableResource INVOICE_UBL_138_XSLT = new ClassPathResource (PREFIX +
+                                                                                       "1.3.8/ubl/EN16931-UBL-validation.xslt",
                                                                                        _getCL ());
 
   private EN16931Validation ()
@@ -764,6 +750,10 @@ public final class EN16931Validation
                                                                              PhiveRulesUBLHelper.createXSLT_UBL21 (INVOICE_UBL_138_XSLT)));
 
       // 1.3.9
+      final IReadableResource INVOICE_UBL_139_XSLT = new ClassPathResource (PREFIX +
+                                                                            "1.3.9/ubl/EN16931-UBL-validation.xslt",
+                                                                            _getCL ());
+
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_UBL_INVOICE_139,
                                                                              "EN 16931 UBL Invoice " +
                                                                                                   VID_UBL_INVOICE_139.getVersionString (),
@@ -778,6 +768,10 @@ public final class EN16931Validation
                                                                              PhiveRulesUBLHelper.createXSLT_UBL21 (INVOICE_UBL_139_XSLT)));
 
       // 1.3.10
+      final IReadableResource INVOICE_UBL_1310_XSLT = new ClassPathResource (PREFIX +
+                                                                             "1.3.10/ubl/EN16931-UBL-validation.xslt",
+                                                                             _getCL ());
+
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_UBL_INVOICE_1310,
                                                                              "EN 16931 UBL Invoice " +
                                                                                                    VID_UBL_INVOICE_1310.getVersionString (),
@@ -792,6 +786,10 @@ public final class EN16931Validation
                                                                              PhiveRulesUBLHelper.createXSLT_UBL21 (INVOICE_UBL_1310_XSLT)));
 
       // 1.3.11
+      final IReadableResource INVOICE_UBL_1311_XSLT = new ClassPathResource (PREFIX +
+                                                                             "1.3.11/ubl/EN16931-UBL-validation.xslt",
+                                                                             _getCL ());
+
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_UBL_INVOICE_1311,
                                                                              "EN 16931 UBL Invoice " +
                                                                                                    VID_UBL_INVOICE_1311.getVersionString (),
@@ -806,6 +804,10 @@ public final class EN16931Validation
                                                                              PhiveRulesUBLHelper.createXSLT_UBL21 (INVOICE_UBL_1311_XSLT)));
 
       // 1.3.12
+      final IReadableResource INVOICE_UBL_1312_XSLT = new ClassPathResource (PREFIX +
+                                                                             "1.3.12/ubl/EN16931-UBL-validation.xslt",
+                                                                             _getCL ());
+
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_UBL_INVOICE_1312,
                                                                              "EN 16931 UBL Invoice " +
                                                                                                    VID_UBL_INVOICE_1312.getVersionString (),

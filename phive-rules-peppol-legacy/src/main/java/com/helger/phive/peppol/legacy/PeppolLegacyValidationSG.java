@@ -26,6 +26,7 @@ import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
 import com.helger.phive.api.executorset.ValidationExecutorSet;
 import com.helger.phive.rules.api.PhiveRulesHelper;
+import com.helger.phive.rules.api.PhiveRulesUBLHelper;
 import com.helger.phive.xml.source.IValidationSourceXML;
 import com.helger.phive.xml.xsd.ValidationExecutorXSD;
 import com.helger.ubl21.UBL21Marshaller;
@@ -79,10 +80,10 @@ public final class PeppolLegacyValidationSG
   {
     ValueEnforcer.notNull (aRegistry, "Registry");
 
-    final MapBasedNamespaceContext aNSCtxInvoice = PeppolLegacyValidation.createUBLNSContext (UBL21Marshaller.invoice ()
-                                                                                                             .getRootElementNamespaceURI ());
-    final MapBasedNamespaceContext aNSCtxCreditNote = PeppolLegacyValidation.createUBLNSContext (UBL21Marshaller.creditNote ()
-                                                                                                                .getRootElementNamespaceURI ());
+    final MapBasedNamespaceContext aNSCtxInvoice = PhiveRulesUBLHelper.createUBL21NSContext (UBL21Marshaller.invoice ()
+                                                                                                            .getRootElementNamespaceURI ());
+    final MapBasedNamespaceContext aNSCtxCreditNote = PhiveRulesUBLHelper.createUBL21NSContext (UBL21Marshaller.creditNote ()
+                                                                                                               .getRootElementNamespaceURI ());
 
     final boolean bDeprecated = true;
 

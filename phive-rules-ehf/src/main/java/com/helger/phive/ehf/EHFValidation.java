@@ -43,7 +43,7 @@ public final class EHFValidation
   public static void initEHF (@Nonnull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
   {
     EHFValidationG2.initEHF (aRegistry);
-    EHFValidationG3.initEHF (aRegistry);
+    EHFValidationG3_2020_03.initEHF (aRegistry);
     EHFValidationG3_2023_02.initEHF (aRegistry);
   }
 }

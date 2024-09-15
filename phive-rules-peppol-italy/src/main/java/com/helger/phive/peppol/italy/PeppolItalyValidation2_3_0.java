@@ -64,22 +64,6 @@ public final class PeppolItalyValidation2_3_0
     return PeppolItalyValidation2_3_0.class.getClassLoader ();
   }
 
-  private static final String PREFIX_XSLT = "external/schematron/peppol-italy/" + VERSION_STR + "/";
-
-  public static final IReadableResource DESPATCH_ADVICE = new ClassPathResource (PREFIX_XSLT +
-                                                                                 "despatch-advice/AGID-PEPPOL-T16.xslt",
-                                                                                 _getCL ());
-  public static final IReadableResource INVOICE = new ClassPathResource (PREFIX_XSLT + "invoice/AGID-EN16931-UBL.xslt",
-                                                                         _getCL ());
-  public static final IReadableResource ORDER = new ClassPathResource (PREFIX_XSLT + "order/AGID-PEPPOL-T01.xslt",
-                                                                       _getCL ());
-  public static final IReadableResource ORDER_AGREEMENT = new ClassPathResource (PREFIX_XSLT +
-                                                                                 "order-agreement/AGID-PEPPOL-T110.xslt",
-                                                                                 _getCL ());
-  public static final IReadableResource ORDER_RESPONSE = new ClassPathResource (PREFIX_XSLT +
-                                                                                "order-response/AGID-PEPPOL-T76.xslt",
-                                                                                _getCL ());
-
   private PeppolItalyValidation2_3_0 ()
   {}
 
@@ -92,6 +76,18 @@ public final class PeppolItalyValidation2_3_0
 
     final boolean bDeprecated = true;
 
+    final String PREFIX_XSLT = "external/schematron/peppol-italy/" + VERSION_STR + "/";
+    final IReadableResource DESPATCH_ADVICE = new ClassPathResource (PREFIX_XSLT +
+                                                                     "despatch-advice/AGID-PEPPOL-T16.xslt",
+                                                                     _getCL ());
+    final IReadableResource INVOICE = new ClassPathResource (PREFIX_XSLT + "invoice/AGID-EN16931-UBL.xslt", _getCL ());
+    final IReadableResource ORDER = new ClassPathResource (PREFIX_XSLT + "order/AGID-PEPPOL-T01.xslt", _getCL ());
+    final IReadableResource ORDER_AGREEMENT = new ClassPathResource (PREFIX_XSLT +
+                                                                     "order-agreement/AGID-PEPPOL-T110.xslt",
+                                                                     _getCL ());
+    final IReadableResource ORDER_RESPONSE = new ClassPathResource (PREFIX_XSLT + "order-response/AGID-PEPPOL-T76.xslt",
+                                                                    _getCL ());
+
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_DESPATCH_ADVICE,
                                                                            "AGID Peppol Despatch Advice" +
                                                                                                 sVersion +
@@ -100,7 +96,7 @@ public final class PeppolItalyValidation2_3_0
                                                                            ValidationExecutorXSD.create (UBL21Marshaller.getAllDespatchAdviceXSDs ()),
                                                                            PhiveRulesHelper.createXSLT (DESPATCH_ADVICE,
                                                                                                         PhiveRulesUBLHelper.createUBL21NSContext (UBL21Marshaller.despatchAdvice ()
-                                                                                                         .getRootElementNamespaceURI ()))));
+                                                                                                                                                                 .getRootElementNamespaceURI ()))));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_INVOICE,
                                                                            "AGID Peppol Invoice" +
                                                                                         sVersion +
@@ -109,7 +105,7 @@ public final class PeppolItalyValidation2_3_0
                                                                            ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
                                                                            PhiveRulesHelper.createXSLT (INVOICE,
                                                                                                         PhiveRulesUBLHelper.createUBL21NSContext (UBL21Marshaller.invoice ()
-                                                                                                         .getRootElementNamespaceURI ()))));
+                                                                                                                                                                 .getRootElementNamespaceURI ()))));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_ORDER,
                                                                            "AGID Peppol Order" +
                                                                                       sVersion +
@@ -118,7 +114,7 @@ public final class PeppolItalyValidation2_3_0
                                                                            ValidationExecutorXSD.create (UBL21Marshaller.getAllOrderXSDs ()),
                                                                            PhiveRulesHelper.createXSLT (ORDER,
                                                                                                         PhiveRulesUBLHelper.createUBL21NSContext (UBL21Marshaller.order ()
-                                                                                                         .getRootElementNamespaceURI ()))));
+                                                                                                                                                                 .getRootElementNamespaceURI ()))));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_ORDER_AGREEMENT,
                                                                            "AGID Peppol Order Agreement" +
                                                                                                 sVersion +
@@ -127,7 +123,7 @@ public final class PeppolItalyValidation2_3_0
                                                                            ValidationExecutorXSD.create (UBL21Marshaller.getAllOrderResponseXSDs ()),
                                                                            PhiveRulesHelper.createXSLT (ORDER_AGREEMENT,
                                                                                                         PhiveRulesUBLHelper.createUBL21NSContext (UBL21Marshaller.orderResponse ()
-                                                                                                         .getRootElementNamespaceURI ()))));
+                                                                                                                                                                 .getRootElementNamespaceURI ()))));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_ORDER_RESPONSE,
                                                                            "AGID Peppol Order Response" +
                                                                                                sVersion +
@@ -136,6 +132,6 @@ public final class PeppolItalyValidation2_3_0
                                                                            ValidationExecutorXSD.create (UBL21Marshaller.getAllOrderResponseXSDs ()),
                                                                            PhiveRulesHelper.createXSLT (ORDER_RESPONSE,
                                                                                                         PhiveRulesUBLHelper.createUBL21NSContext (UBL21Marshaller.orderResponse ()
-                                                                                                         .getRootElementNamespaceURI ()))));
+                                                                                                                                                                 .getRootElementNamespaceURI ()))));
   }
 }

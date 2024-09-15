@@ -50,9 +50,9 @@ public final class PeppolValidationPint
 
   // 1.0.0
   @Deprecated
-  public static final ClassPathResource RES_OPENPEPPOL_PINT_1_0_0 = new ClassPathResource (BASE_PATH +
-                                                                                           "1.0.0/xslt/PINT-UBL-validation-preprocessed.xslt",
-                                                                                           _getCL ());
+  private static final ClassPathResource RES_OPENPEPPOL_PINT_1_0_0 = new ClassPathResource (BASE_PATH +
+                                                                                            "1.0.0/xslt/PINT-UBL-validation-preprocessed.xslt",
+                                                                                            _getCL ());
   @Deprecated
   public static final DVRCoordinate VID_OPENPEPPOL_PINT_INVOICE_1_0_0 = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                                            "invoice",
@@ -63,9 +63,9 @@ public final class PeppolValidationPint
                                                                                                                "1.0.0");
 
   // 1.0.1
-  public static final ClassPathResource RES_OPENPEPPOL_PINT_1_0_1 = new ClassPathResource (BASE_PATH +
-                                                                                           "1.0.1/xslt/PINT-UBL-validation-preprocessed.xslt",
-                                                                                           _getCL ());
+  private static final ClassPathResource RES_OPENPEPPOL_PINT_1_0_1 = new ClassPathResource (BASE_PATH +
+                                                                                            "1.0.1/xslt/PINT-UBL-validation-preprocessed.xslt",
+                                                                                            _getCL ());
   public static final DVRCoordinate VID_OPENPEPPOL_PINT_INVOICE_1_0_1 = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                                            "invoice",
                                                                                                            "1.0.1");
@@ -74,12 +74,12 @@ public final class PeppolValidationPint
                                                                                                                "1.0.1");
 
   // 1.0.2
-  public static final ClassPathResource RES_OPENPEPPOL_PINT_INVOICE_1_0_2 = new ClassPathResource (BASE_PATH +
-                                                                                                   "1.0.2/xslt/PINT-UBL-validation-preprocessed-inv.xslt",
-                                                                                                   _getCL ());
-  public static final ClassPathResource RES_OPENPEPPOL_PINT_CREDIT_NOTE_1_0_2 = new ClassPathResource (BASE_PATH +
-                                                                                                       "1.0.2/xslt/PINT-UBL-validation-preprocessed-cn.xslt",
-                                                                                                       _getCL ());
+  private static final ClassPathResource RES_OPENPEPPOL_PINT_INVOICE_1_0_2 = new ClassPathResource (BASE_PATH +
+                                                                                                    "1.0.2/xslt/PINT-UBL-validation-preprocessed-inv.xslt",
+                                                                                                    _getCL ());
+  private static final ClassPathResource RES_OPENPEPPOL_PINT_CREDIT_NOTE_1_0_2 = new ClassPathResource (BASE_PATH +
+                                                                                                        "1.0.2/xslt/PINT-UBL-validation-preprocessed-cn.xslt",
+                                                                                                        _getCL ());
   public static final DVRCoordinate VID_OPENPEPPOL_PINT_INVOICE_1_0_2 = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                                            "invoice",
                                                                                                            "1.0.2");

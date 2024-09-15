@@ -31,6 +31,7 @@ import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.phive.api.executorset.ValidationExecutorSetRegistry;
 import com.helger.phive.api.mock.TestFile;
 import com.helger.phive.ciusro.CIUS_ROValidation;
+import com.helger.phive.en16931.EN16931Validation;
 import com.helger.phive.xml.source.IValidationSourceXML;
 
 @Immutable
@@ -40,6 +41,7 @@ public final class CTestFiles
   public static final ValidationExecutorSetRegistry <IValidationSourceXML> VES_REGISTRY = new ValidationExecutorSetRegistry <> ();
   static
   {
+    EN16931Validation.initEN16931 (VES_REGISTRY);
     CIUS_ROValidation.initCIUS_RO (VES_REGISTRY);
   }
 

@@ -19,11 +19,8 @@ package com.helger.phive.peppol.legacy;
 import javax.annotation.Nonnull;
 import javax.annotation.concurrent.Immutable;
 
-import com.helger.commons.annotation.ReturnsMutableObject;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
-import com.helger.phive.rules.api.PhiveRulesUBLHelper;
 import com.helger.phive.xml.source.IValidationSourceXML;
-import com.helger.xml.namespace.MapBasedNamespaceContext;
 
 /**
  * Generic Legacy Peppol validation configuration. It contains only the old
@@ -55,12 +52,5 @@ public final class PeppolLegacyValidation
     PeppolValidation3_13_0.init (aRegistry);
     PeppolValidation3_14_0.init (aRegistry);
     PeppolValidation3_15_0.init (aRegistry);
-  }
-
-  @Nonnull
-  @ReturnsMutableObject
-  static MapBasedNamespaceContext createUBLNSContext (@Nonnull final String sNamespaceURI)
-  {
-    return PhiveRulesUBLHelper.createUBL21NSContext (sNamespaceURI);
   }
 }

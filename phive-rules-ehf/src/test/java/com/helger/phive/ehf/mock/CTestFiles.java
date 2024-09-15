@@ -32,7 +32,7 @@ import com.helger.phive.api.executorset.ValidationExecutorSetRegistry;
 import com.helger.phive.api.mock.TestFile;
 import com.helger.phive.ehf.EHFValidation;
 import com.helger.phive.ehf.EHFValidationG2;
-import com.helger.phive.ehf.EHFValidationG3;
+import com.helger.phive.ehf.EHFValidationG3_2020_03;
 import com.helger.phive.ehf.EHFValidationG3_2023_02;
 import com.helger.phive.xml.source.IValidationSourceXML;
 
@@ -87,21 +87,21 @@ public final class CTestFiles
                                                             EHFValidationG2.VID_EHF_PUNCH_OUT_1_0_3,
 
                                                             /* 2020-03 */
-                                                            EHFValidationG3.VID_EHF_ADVANCED_ORDER_CANCELLATION_300,
-                                                            EHFValidationG3.VID_EHF_ADVANCED_ORDER_CHANGE_300,
-                                                            EHFValidationG3.VID_EHF_ADVANCED_ORDER_INITIATION_300,
-                                                            EHFValidationG3.VID_EHF_ADVANCED_ORDER_RESPONSE_300,
-                                                            EHFValidationG3.VID_EHF_CATALOGUE_300,
-                                                            EHFValidationG3.VID_EHF_CATALOGUE_RESPONSE_300,
-                                                            EHFValidationG3.VID_EHF_DESPATCH_ADVICE_300,
-                                                            EHFValidationG3.VID_EHF_FORWARD_BILLING_INVOICE_300,
-                                                            EHFValidationG3.VID_EHF_FORWARD_BILLING_CREDIT_NOTE_300,
-                                                            EHFValidationG3.VID_EHF_ORDER_AGREEMENT_300,
-                                                            EHFValidationG3.VID_EHF_ORDER_300,
-                                                            EHFValidationG3.VID_EHF_ORDER_RESPONSE_300,
-                                                            EHFValidationG3.VID_EHF_PAYMENT_REQUEST_300,
-                                                            EHFValidationG3.VID_EHF_PUNCH_OUT_300,
-                                                            EHFValidationG3.VID_EHF_REMINDER_300,
+                                                            EHFValidationG3_2020_03.VID_EHF_ADVANCED_ORDER_CANCELLATION_300,
+                                                            EHFValidationG3_2020_03.VID_EHF_ADVANCED_ORDER_CHANGE_300,
+                                                            EHFValidationG3_2020_03.VID_EHF_ADVANCED_ORDER_INITIATION_300,
+                                                            EHFValidationG3_2020_03.VID_EHF_ADVANCED_ORDER_RESPONSE_300,
+                                                            EHFValidationG3_2020_03.VID_EHF_CATALOGUE_300,
+                                                            EHFValidationG3_2020_03.VID_EHF_CATALOGUE_RESPONSE_300,
+                                                            EHFValidationG3_2020_03.VID_EHF_DESPATCH_ADVICE_300,
+                                                            EHFValidationG3_2020_03.VID_EHF_FORWARD_BILLING_INVOICE_300,
+                                                            EHFValidationG3_2020_03.VID_EHF_FORWARD_BILLING_CREDIT_NOTE_300,
+                                                            EHFValidationG3_2020_03.VID_EHF_ORDER_AGREEMENT_300,
+                                                            EHFValidationG3_2020_03.VID_EHF_ORDER_300,
+                                                            EHFValidationG3_2020_03.VID_EHF_ORDER_RESPONSE_300,
+                                                            EHFValidationG3_2020_03.VID_EHF_PAYMENT_REQUEST_300,
+                                                            EHFValidationG3_2020_03.VID_EHF_PUNCH_OUT_300,
+                                                            EHFValidationG3_2020_03.VID_EHF_REMINDER_300,
 
                                                             /* 2023-02 */
                                                             EHFValidationG3_2023_02.VID_EHF_ADVANCED_ORDER_CANCELLATION_303,
@@ -284,71 +284,71 @@ public final class CTestFiles
 
     // 2020-03
     sPath = "/external/test-files/2020-03/";
-    if (aVESID.equals (EHFValidationG3.VID_EHF_ADVANCED_ORDER_CANCELLATION_300))
+    if (aVESID.equals (EHFValidationG3_2020_03.VID_EHF_ADVANCED_ORDER_CANCELLATION_300))
     {
       return new CommonsArrayList <> ();
     }
-    if (aVESID.equals (EHFValidationG3.VID_EHF_ADVANCED_ORDER_CHANGE_300))
+    if (aVESID.equals (EHFValidationG3_2020_03.VID_EHF_ADVANCED_ORDER_CHANGE_300))
     {
       return new CommonsArrayList <> ();
     }
-    if (aVESID.equals (EHFValidationG3.VID_EHF_ADVANCED_ORDER_INITIATION_300))
+    if (aVESID.equals (EHFValidationG3_2020_03.VID_EHF_ADVANCED_ORDER_INITIATION_300))
     {
       return new CommonsArrayList <> (new ClassPathResource (sPath +
                                                              "advanced-ordering-3.0/Advanced_Order_Example.xml"));
     }
-    if (aVESID.equals (EHFValidationG3.VID_EHF_ADVANCED_ORDER_RESPONSE_300))
+    if (aVESID.equals (EHFValidationG3_2020_03.VID_EHF_ADVANCED_ORDER_RESPONSE_300))
     {
       return new CommonsArrayList <> (new ClassPathResource (sPath +
                                                              "advanced-ordering-3.0/Advanced_OrderResponse_Example.xml"));
     }
-    if (aVESID.equals (EHFValidationG3.VID_EHF_CATALOGUE_300))
+    if (aVESID.equals (EHFValidationG3_2020_03.VID_EHF_CATALOGUE_300))
     {
       return new CommonsArrayList <> (new ClassPathResource (sPath + "catalogue-3.0/Catalogue_Example.xml"));
     }
-    if (aVESID.equals (EHFValidationG3.VID_EHF_CATALOGUE_RESPONSE_300))
+    if (aVESID.equals (EHFValidationG3_2020_03.VID_EHF_CATALOGUE_RESPONSE_300))
     {
       return new CommonsArrayList <> (new ClassPathResource (sPath + "catalogue-3.0/CatalogueResponse_Example.xml"));
     }
-    if (aVESID.equals (EHFValidationG3.VID_EHF_DESPATCH_ADVICE_300))
+    if (aVESID.equals (EHFValidationG3_2020_03.VID_EHF_DESPATCH_ADVICE_300))
     {
       return new CommonsArrayList <> (new ClassPathResource (sPath + "despatch-advice-3.0/DespatchAdvice_Example.xml"));
     }
-    if (aVESID.equals (EHFValidationG3.VID_EHF_FORWARD_BILLING_INVOICE_300))
+    if (aVESID.equals (EHFValidationG3_2020_03.VID_EHF_FORWARD_BILLING_INVOICE_300))
     {
       return new CommonsArrayList <> (new ClassPathResource (sPath +
                                                              "forward-billing-3.0/forward-billing-nettleie-business.xml"),
                                       new ClassPathResource (sPath +
                                                              "forward-billing-3.0/forward-billing-nettleie-consumer.xml"));
     }
-    if (aVESID.equals (EHFValidationG3.VID_EHF_FORWARD_BILLING_CREDIT_NOTE_300))
+    if (aVESID.equals (EHFValidationG3_2020_03.VID_EHF_FORWARD_BILLING_CREDIT_NOTE_300))
     {
       return new CommonsArrayList <> ();
     }
-    if (aVESID.equals (EHFValidationG3.VID_EHF_ORDER_AGREEMENT_300))
+    if (aVESID.equals (EHFValidationG3_2020_03.VID_EHF_ORDER_AGREEMENT_300))
     {
       return new CommonsArrayList <> (new ClassPathResource (sPath + "order-agreement-3.0/OrderAgreement_Example.xml"));
     }
-    if (aVESID.equals (EHFValidationG3.VID_EHF_ORDER_300))
+    if (aVESID.equals (EHFValidationG3_2020_03.VID_EHF_ORDER_300))
     {
       return new CommonsArrayList <> (new ClassPathResource (sPath + "ordering-3.0/Order_Example.xml"));
     }
-    if (aVESID.equals (EHFValidationG3.VID_EHF_ORDER_RESPONSE_300))
+    if (aVESID.equals (EHFValidationG3_2020_03.VID_EHF_ORDER_RESPONSE_300))
     {
       return new CommonsArrayList <> (new ClassPathResource (sPath + "ordering-3.0/OrderResponse_Example.xml"));
     }
-    if (aVESID.equals (EHFValidationG3.VID_EHF_PAYMENT_REQUEST_300))
+    if (aVESID.equals (EHFValidationG3_2020_03.VID_EHF_PAYMENT_REQUEST_300))
     {
       return new CommonsArrayList <> (new ClassPathResource (sPath +
                                                              "payment-request-3.0/PaymentRequest-example-1.xml"),
                                       new ClassPathResource (sPath +
                                                              "payment-request-3.0/PaymentRequest-example-2.xml"));
     }
-    if (aVESID.equals (EHFValidationG3.VID_EHF_PUNCH_OUT_300))
+    if (aVESID.equals (EHFValidationG3_2020_03.VID_EHF_PUNCH_OUT_300))
     {
       return new CommonsArrayList <> (new ClassPathResource (sPath + "punch-out-3.0/PunchOut_Example.xml"));
     }
-    if (aVESID.equals (EHFValidationG3.VID_EHF_REMINDER_300))
+    if (aVESID.equals (EHFValidationG3_2020_03.VID_EHF_REMINDER_300))
     {
       return new CommonsArrayList <> (new ClassPathResource (sPath + "reminder-3.0/Reminder-Example.xml"));
     }
