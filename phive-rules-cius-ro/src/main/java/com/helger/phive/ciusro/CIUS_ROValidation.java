@@ -108,14 +108,14 @@ public final class CIUS_ROValidation
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_CIUS_RO_UBL_CREDITNOTE_103,
                                                                            "CIUS-RO UBL Credit Note " +
                                                                                                            VID_CIUS_RO_UBL_CREDITNOTE_103.getVersionString (),
-                                                                           PhiveRulesHelper.createStatus (bDeprecated),
+                                                                           PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                            ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
                                                                            PhiveRulesUBLHelper.createXSLT_UBL21 (EN16931Validation.INVOICE_UBL_137_XSLT),
                                                                            PhiveRulesUBLHelper.createXSLT_UBL21 (RES_103)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_CIUS_RO_UBL_INVOICE_103,
                                                                            "CIUS-RO UBL Invoice " +
                                                                                                         VID_CIUS_RO_UBL_INVOICE_103.getVersionString (),
-                                                                           PhiveRulesHelper.createStatus (bDeprecated),
+                                                                           PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                            ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
                                                                            PhiveRulesUBLHelper.createXSLT_UBL21 (EN16931Validation.INVOICE_UBL_137_XSLT),
                                                                            PhiveRulesUBLHelper.createXSLT_UBL21 (RES_103)));
@@ -124,14 +124,14 @@ public final class CIUS_ROValidation
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_CIUS_RO_UBL_CREDITNOTE_104,
                                                                            "CIUS-RO UBL Credit Note " +
                                                                                                            VID_CIUS_RO_UBL_CREDITNOTE_104.getVersionString (),
-                                                                           PhiveRulesHelper.createStatus (bDeprecated),
+                                                                           PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                            ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
                                                                            PhiveRulesUBLHelper.createXSLT_UBL21 (EN16931Validation.INVOICE_UBL_137_XSLT),
                                                                            PhiveRulesUBLHelper.createXSLT_UBL21 (RES_104)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_CIUS_RO_UBL_INVOICE_104,
                                                                            "CIUS-RO UBL Invoice " +
                                                                                                         VID_CIUS_RO_UBL_INVOICE_104.getVersionString (),
-                                                                           PhiveRulesHelper.createStatus (bDeprecated),
+                                                                           PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                            ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
                                                                            PhiveRulesUBLHelper.createXSLT_UBL21 (EN16931Validation.INVOICE_UBL_137_XSLT),
                                                                            PhiveRulesUBLHelper.createXSLT_UBL21 (RES_104)));
@@ -140,14 +140,14 @@ public final class CIUS_ROValidation
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_CIUS_RO_UBL_CREDITNOTE_108,
                                                                            "CIUS-RO UBL Credit Note " +
                                                                                                            VID_CIUS_RO_UBL_CREDITNOTE_108.getVersionString (),
-                                                                           PhiveRulesHelper.createStatus (bNotDeprecated),
+                                                                           PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
                                                                            ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
                                                                            PhiveRulesUBLHelper.createXSLT_UBL21 (EN16931Validation.INVOICE_UBL_138_XSLT),
                                                                            PhiveRulesUBLHelper.createXSLT_UBL21 (RES_108)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_CIUS_RO_UBL_INVOICE_108,
                                                                            "CIUS-RO UBL Invoice " +
                                                                                                         VID_CIUS_RO_UBL_INVOICE_108.getVersionString (),
-                                                                           PhiveRulesHelper.createStatus (bNotDeprecated),
+                                                                           PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
                                                                            ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
                                                                            PhiveRulesUBLHelper.createXSLT_UBL21 (EN16931Validation.INVOICE_UBL_138_XSLT),
                                                                            PhiveRulesUBLHelper.createXSLT_UBL21 (RES_108)));

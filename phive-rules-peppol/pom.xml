@@ -71,13 +71,13 @@
       <artifactId>ph-cii-d16b</artifactId>
     </dependency>
     <dependency>
-      <groupId>com.helger.schematron</groupId>
-      <artifactId>ph-schematron-xslt</artifactId>
+      <groupId>com.helger.phive.rules</groupId>
+      <artifactId>phive-rules-api</artifactId>
     </dependency>
-    
+
     <dependency>
-      <groupId>com.helger.peppol</groupId>
-      <artifactId>peppol-testfiles</artifactId>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
       <scope>test</scope>
     </dependency>
     <dependency>
@@ -88,6 +88,11 @@
     <dependency>
       <groupId>com.sun.xml.bind</groupId>
       <artifactId>jaxb-impl</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.helger.peppol</groupId>
+      <artifactId>peppol-testfiles</artifactId>
       <scope>test</scope>
     </dependency>
   </dependencies>

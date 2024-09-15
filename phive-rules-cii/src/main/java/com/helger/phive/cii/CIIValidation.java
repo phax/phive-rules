@@ -62,7 +62,7 @@ public final class CIIValidation
     // No Schematrons here
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_CII_D16B_CROSSINDUSTRYINVOICE,
                                                                            "CII CrossIndustryInvoice " + VERSION_D16B,
-                                                                           PhiveRulesHelper.createStatus (bNotDeprecated),
+                                                                           PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
                                                                            ValidationExecutorXSD.create (CCIID16B.getXSDResource ())));
   }
 }

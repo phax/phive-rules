@@ -438,115 +438,115 @@ public final class EN16931Validation
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_CII_100,
                                                                              "EN 16931 CII " +
                                                                                           VID_CII_100.getVersionString (),
-                                                                             PhiveRulesHelper.createStatus (bDeprecated),
+                                                                             PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                              ValidationExecutorXSD.create (CCIID16B.getXSDResource ()),
                                                                              PhiveRulesCIIHelper.createXSLT_CII_D16B (INVOICE_CII_100_XSLT)));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_CII_110,
                                                                              "EN 16931 CII " +
                                                                                           VID_CII_110.getVersionString (),
-                                                                             PhiveRulesHelper.createStatus (bDeprecated),
+                                                                             PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                              ValidationExecutorXSD.create (CCIID16B.getXSDResource ()),
                                                                              PhiveRulesCIIHelper.createXSLT_CII_D16B (INVOICE_CII_110_XSLT)));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_CII_120,
                                                                              "EN 16931 CII " +
                                                                                           VID_CII_120.getVersionString (),
-                                                                             PhiveRulesHelper.createStatus (bDeprecated),
+                                                                             PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                              ValidationExecutorXSD.create (CCIID16B.getXSDResource ()),
                                                                              PhiveRulesCIIHelper.createXSLT_CII_D16B (INVOICE_CII_120_XSLT)));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_CII_121,
                                                                              "EN 16931 CII " +
                                                                                           VID_CII_121.getVersionString (),
-                                                                             PhiveRulesHelper.createStatus (bDeprecated),
+                                                                             PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                              ValidationExecutorXSD.create (CCIID16B.getXSDResource ()),
                                                                              PhiveRulesCIIHelper.createXSLT_CII_D16B (INVOICE_CII_121_XSLT)));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_CII_123,
                                                                              "EN 16931 CII " +
                                                                                           VID_CII_123.getVersionString (),
-                                                                             PhiveRulesHelper.createStatus (bDeprecated),
+                                                                             PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                              ValidationExecutorXSD.create (CCIID16B.getXSDResource ()),
                                                                              PhiveRulesCIIHelper.createXSLT_CII_D16B (INVOICE_CII_123_XSLT)));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_CII_130,
                                                                              "EN 16931 CII " +
                                                                                           VID_CII_130.getVersionString (),
-                                                                             PhiveRulesHelper.createStatus (bDeprecated),
+                                                                             PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                              ValidationExecutorXSD.create (CCIID16B.getXSDResource ()),
                                                                              PhiveRulesCIIHelper.createXSLT_CII_D16B (INVOICE_CII_130_XSLT)));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_CII_131,
                                                                              "EN 16931 CII " +
                                                                                           VID_CII_131.getVersionString (),
-                                                                             PhiveRulesHelper.createStatus (bDeprecated),
+                                                                             PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                              ValidationExecutorXSD.create (CCIID16B.getXSDResource ()),
                                                                              PhiveRulesCIIHelper.createXSLT_CII_D16B (INVOICE_CII_131_XSLT)));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_CII_132,
                                                                              "EN 16931 CII " +
                                                                                           VID_CII_132.getVersionString (),
-                                                                             PhiveRulesHelper.createStatus (bDeprecated),
+                                                                             PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                              ValidationExecutorXSD.create (CCIID16B.getXSDResource ()),
                                                                              PhiveRulesCIIHelper.createXSLT_CII_D16B (INVOICE_CII_132_XSLT)));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_CII_133,
                                                                              "EN 16931 CII " +
                                                                                           VID_CII_133.getVersionString (),
-                                                                             PhiveRulesHelper.createStatus (bDeprecated),
+                                                                             PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                              ValidationExecutorXSD.create (CCIID16B.getXSDResource ()),
                                                                              PhiveRulesCIIHelper.createXSLT_CII_D16B (INVOICE_CII_133_XSLT)));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_CII_134,
                                                                              "EN 16931 CII " +
                                                                                           VID_CII_134.getVersionString (),
-                                                                             PhiveRulesHelper.createStatus (bDeprecated),
+                                                                             PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                              ValidationExecutorXSD.create (CCIID16B.getXSDResource ()),
                                                                              PhiveRulesCIIHelper.createXSLT_CII_D16B (INVOICE_CII_134_XSLT)));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_CII_135,
                                                                              "EN 16931 CII " +
                                                                                           VID_CII_135.getVersionString (),
-                                                                             PhiveRulesHelper.createStatus (bDeprecated),
+                                                                             PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                              ValidationExecutorXSD.create (CCIID16B.getXSDResource ()),
                                                                              PhiveRulesCIIHelper.createXSLT_CII_D16B (INVOICE_CII_135_XSLT)));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_CII_136,
                                                                              "EN 16931 CII " +
                                                                                           VID_CII_136.getVersionString (),
-                                                                             PhiveRulesHelper.createStatus (bDeprecated),
+                                                                             PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                              ValidationExecutorXSD.create (CCIID16B.getXSDResource ()),
                                                                              PhiveRulesCIIHelper.createXSLT_CII_D16B (INVOICE_CII_136_XSLT)));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_CII_136A,
                                                                              "EN 16931 CII " +
                                                                                            VID_CII_136A.getVersionString (),
-                                                                             PhiveRulesHelper.createStatus (bDeprecated),
+                                                                             PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                              ValidationExecutorXSD.create (CCIID16B.getXSDResource ()),
                                                                              PhiveRulesCIIHelper.createXSLT_CII_D16B (INVOICE_CII_136A_XSLT)));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_CII_137,
                                                                              "EN 16931 CII " +
                                                                                           VID_CII_137.getVersionString (),
-                                                                             PhiveRulesHelper.createStatus (bDeprecated),
+                                                                             PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                              ValidationExecutorXSD.create (CCIID16B.getXSDResource ()),
                                                                              PhiveRulesCIIHelper.createXSLT_CII_D16B (INVOICE_CII_137_XSLT)));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_CII_138,
                                                                              "EN 16931 CII " +
                                                                                           VID_CII_138.getVersionString (),
-                                                                             PhiveRulesHelper.createStatus (bDeprecated),
+                                                                             PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                              ValidationExecutorXSD.create (CCIID16B.getXSDResource ()),
                                                                              PhiveRulesCIIHelper.createXSLT_CII_D16B (INVOICE_CII_138_XSLT)));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_CII_139,
                                                                              "EN 16931 CII " +
                                                                                           VID_CII_139.getVersionString (),
-                                                                             PhiveRulesHelper.createStatus (bDeprecated),
+                                                                             PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                              ValidationExecutorXSD.create (CCIID16B.getXSDResource ()),
                                                                              PhiveRulesCIIHelper.createXSLT_CII_D16B (INVOICE_CII_139_XSLT)));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_CII_1310,
                                                                              "EN 16931 CII " +
                                                                                            VID_CII_1310.getVersionString (),
-                                                                             PhiveRulesHelper.createStatus (bDeprecated),
+                                                                             PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                              ValidationExecutorXSD.create (CCIID16B.getXSDResource ()),
                                                                              PhiveRulesCIIHelper.createXSLT_CII_D16B (INVOICE_CII_1310_XSLT)));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_CII_1311,
                                                                              "EN 16931 CII " +
                                                                                            VID_CII_1311.getVersionString (),
-                                                                             PhiveRulesHelper.createStatus (bNotDeprecated),
+                                                                             PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
                                                                              ValidationExecutorXSD.create (CCIID16B.getXSDResource ()),
                                                                              PhiveRulesCIIHelper.createXSLT_CII_D16B (INVOICE_CII_1311_XSLT)));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_CII_1312,
                                                                              "EN 16931 CII " +
                                                                                            VID_CII_1312.getVersionString (),
-                                                                             PhiveRulesHelper.createStatus (bNotDeprecated),
+                                                                             PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
                                                                              ValidationExecutorXSD.create (CCIID16B.getXSDResource ()),
                                                                              PhiveRulesCIIHelper.createXSLT_CII_D16B (INVOICE_CII_1312_XSLT)));
     }
@@ -557,13 +557,13 @@ public final class EN16931Validation
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_UBL_INVOICE_100,
                                                                              "EN 16931 UBL Invoice " +
                                                                                                   VID_UBL_INVOICE_100.getVersionString (),
-                                                                             PhiveRulesHelper.createStatus (bDeprecated),
+                                                                             PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
                                                                              PhiveRulesUBLHelper.createXSLT_UBL21 (INVOICE_UBL_100_XSLT)));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_UBL_CREDIT_NOTE_100,
                                                                              "EN 16931 UBL Credit Note " +
                                                                                                       VID_UBL_CREDIT_NOTE_100.getVersionString (),
-                                                                             PhiveRulesHelper.createStatus (bDeprecated),
+                                                                             PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
                                                                              PhiveRulesUBLHelper.createXSLT_UBL21 (INVOICE_UBL_110_XSLT)));
 
@@ -571,13 +571,13 @@ public final class EN16931Validation
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_UBL_INVOICE_110,
                                                                              "EN 16931 UBL Invoice " +
                                                                                                   VID_UBL_INVOICE_110.getVersionString (),
-                                                                             PhiveRulesHelper.createStatus (bDeprecated),
+                                                                             PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
                                                                              PhiveRulesUBLHelper.createXSLT_UBL21 (INVOICE_UBL_110_XSLT)));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_UBL_CREDIT_NOTE_110,
                                                                              "EN 16931 UBL Credit Note " +
                                                                                                       VID_UBL_CREDIT_NOTE_110.getVersionString (),
-                                                                             PhiveRulesHelper.createStatus (bDeprecated),
+                                                                             PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
                                                                              PhiveRulesUBLHelper.createXSLT_UBL21 (INVOICE_UBL_110_XSLT)));
 
@@ -585,13 +585,13 @@ public final class EN16931Validation
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_UBL_INVOICE_120,
                                                                              "EN 16931 UBL Invoice " +
                                                                                                   VID_UBL_INVOICE_120.getVersionString (),
-                                                                             PhiveRulesHelper.createStatus (bDeprecated),
+                                                                             PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
                                                                              PhiveRulesUBLHelper.createXSLT_UBL21 (INVOICE_UBL_120_XSLT)));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_UBL_CREDIT_NOTE_120,
                                                                              "EN 16931 UBL Credit Note " +
                                                                                                       VID_UBL_CREDIT_NOTE_120.getVersionString (),
-                                                                             PhiveRulesHelper.createStatus (bDeprecated),
+                                                                             PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
                                                                              PhiveRulesUBLHelper.createXSLT_UBL21 (INVOICE_UBL_120_XSLT)));
 
@@ -599,13 +599,13 @@ public final class EN16931Validation
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_UBL_INVOICE_121,
                                                                              "EN 16931 UBL Invoice " +
                                                                                                   VID_UBL_INVOICE_121.getVersionString (),
-                                                                             PhiveRulesHelper.createStatus (bDeprecated),
+                                                                             PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
                                                                              PhiveRulesUBLHelper.createXSLT_UBL21 (INVOICE_UBL_121_XSLT)));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_UBL_CREDIT_NOTE_121,
                                                                              "EN 16931 UBL Credit Note " +
                                                                                                       VID_UBL_CREDIT_NOTE_121.getVersionString (),
-                                                                             PhiveRulesHelper.createStatus (bDeprecated),
+                                                                             PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
                                                                              PhiveRulesUBLHelper.createXSLT_UBL21 (INVOICE_UBL_121_XSLT)));
 
@@ -613,13 +613,13 @@ public final class EN16931Validation
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_UBL_INVOICE_123,
                                                                              "EN 16931 UBL Invoice " +
                                                                                                   VID_UBL_INVOICE_123.getVersionString (),
-                                                                             PhiveRulesHelper.createStatus (bDeprecated),
+                                                                             PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
                                                                              PhiveRulesUBLHelper.createXSLT_UBL21 (INVOICE_UBL_123_XSLT)));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_UBL_CREDIT_NOTE_123,
                                                                              "EN 16931 UBL Credit Note " +
                                                                                                       VID_UBL_CREDIT_NOTE_123.getVersionString (),
-                                                                             PhiveRulesHelper.createStatus (bDeprecated),
+                                                                             PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
                                                                              PhiveRulesUBLHelper.createXSLT_UBL21 (INVOICE_UBL_123_XSLT)));
 
@@ -627,13 +627,13 @@ public final class EN16931Validation
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_UBL_INVOICE_130,
                                                                              "EN 16931 UBL Invoice " +
                                                                                                   VID_UBL_INVOICE_130.getVersionString (),
-                                                                             PhiveRulesHelper.createStatus (bDeprecated),
+                                                                             PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
                                                                              PhiveRulesUBLHelper.createXSLT_UBL21 (INVOICE_UBL_130_XSLT)));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_UBL_CREDIT_NOTE_130,
                                                                              "EN 16931 UBL Credit Note " +
                                                                                                       VID_UBL_CREDIT_NOTE_130.getVersionString (),
-                                                                             PhiveRulesHelper.createStatus (bDeprecated),
+                                                                             PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
                                                                              PhiveRulesUBLHelper.createXSLT_UBL21 (INVOICE_UBL_130_XSLT)));
 
@@ -641,13 +641,13 @@ public final class EN16931Validation
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_UBL_INVOICE_131,
                                                                              "EN 16931 UBL Invoice " +
                                                                                                   VID_UBL_INVOICE_131.getVersionString (),
-                                                                             PhiveRulesHelper.createStatus (bDeprecated),
+                                                                             PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
                                                                              PhiveRulesUBLHelper.createXSLT_UBL21 (INVOICE_UBL_131_XSLT)));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_UBL_CREDIT_NOTE_131,
                                                                              "EN 16931 UBL Credit Note " +
                                                                                                       VID_UBL_CREDIT_NOTE_131.getVersionString (),
-                                                                             PhiveRulesHelper.createStatus (bDeprecated),
+                                                                             PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
                                                                              PhiveRulesUBLHelper.createXSLT_UBL21 (INVOICE_UBL_131_XSLT)));
 
@@ -655,13 +655,13 @@ public final class EN16931Validation
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_UBL_INVOICE_132,
                                                                              "EN 16931 UBL Invoice " +
                                                                                                   VID_UBL_INVOICE_132.getVersionString (),
-                                                                             PhiveRulesHelper.createStatus (bDeprecated),
+                                                                             PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
                                                                              PhiveRulesUBLHelper.createXSLT_UBL21 (INVOICE_UBL_132_XSLT)));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_UBL_CREDIT_NOTE_132,
                                                                              "EN 16931 UBL Credit Note " +
                                                                                                       VID_UBL_CREDIT_NOTE_132.getVersionString (),
-                                                                             PhiveRulesHelper.createStatus (bDeprecated),
+                                                                             PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
                                                                              PhiveRulesUBLHelper.createXSLT_UBL21 (INVOICE_UBL_132_XSLT)));
 
@@ -669,13 +669,13 @@ public final class EN16931Validation
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_UBL_INVOICE_133,
                                                                              "EN 16931 UBL Invoice " +
                                                                                                   VID_UBL_INVOICE_133.getVersionString (),
-                                                                             PhiveRulesHelper.createStatus (bDeprecated),
+                                                                             PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
                                                                              PhiveRulesUBLHelper.createXSLT_UBL21 (INVOICE_UBL_133_XSLT)));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_UBL_CREDIT_NOTE_133,
                                                                              "EN 16931 UBL Credit Note " +
                                                                                                       VID_UBL_CREDIT_NOTE_133.getVersionString (),
-                                                                             PhiveRulesHelper.createStatus (bDeprecated),
+                                                                             PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
                                                                              PhiveRulesUBLHelper.createXSLT_UBL21 (INVOICE_UBL_133_XSLT)));
 
@@ -683,13 +683,13 @@ public final class EN16931Validation
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_UBL_INVOICE_134,
                                                                              "EN 16931 UBL Invoice " +
                                                                                                   VID_UBL_INVOICE_134.getVersionString (),
-                                                                             PhiveRulesHelper.createStatus (bDeprecated),
+                                                                             PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
                                                                              PhiveRulesUBLHelper.createXSLT_UBL21 (INVOICE_UBL_134_XSLT)));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_UBL_CREDIT_NOTE_134,
                                                                              "EN 16931 UBL Credit Note " +
                                                                                                       VID_UBL_CREDIT_NOTE_134.getVersionString (),
-                                                                             PhiveRulesHelper.createStatus (bDeprecated),
+                                                                             PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
                                                                              PhiveRulesUBLHelper.createXSLT_UBL21 (INVOICE_UBL_134_XSLT)));
 
@@ -697,13 +697,13 @@ public final class EN16931Validation
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_UBL_INVOICE_135,
                                                                              "EN 16931 UBL Invoice " +
                                                                                                   VID_UBL_INVOICE_135.getVersionString (),
-                                                                             PhiveRulesHelper.createStatus (bDeprecated),
+                                                                             PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
                                                                              PhiveRulesUBLHelper.createXSLT_UBL21 (INVOICE_UBL_135_XSLT)));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_UBL_CREDIT_NOTE_135,
                                                                              "EN 16931 UBL Credit Note " +
                                                                                                       VID_UBL_CREDIT_NOTE_135.getVersionString (),
-                                                                             PhiveRulesHelper.createStatus (bDeprecated),
+                                                                             PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
                                                                              PhiveRulesUBLHelper.createXSLT_UBL21 (INVOICE_UBL_135_XSLT)));
 
@@ -711,13 +711,13 @@ public final class EN16931Validation
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_UBL_INVOICE_136,
                                                                              "EN 16931 UBL Invoice " +
                                                                                                   VID_UBL_INVOICE_136.getVersionString (),
-                                                                             PhiveRulesHelper.createStatus (bDeprecated),
+                                                                             PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
                                                                              PhiveRulesUBLHelper.createXSLT_UBL21 (INVOICE_UBL_136_XSLT)));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_UBL_CREDIT_NOTE_136,
                                                                              "EN 16931 UBL Credit Note " +
                                                                                                       VID_UBL_CREDIT_NOTE_136.getVersionString (),
-                                                                             PhiveRulesHelper.createStatus (bDeprecated),
+                                                                             PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
                                                                              PhiveRulesUBLHelper.createXSLT_UBL21 (INVOICE_UBL_136_XSLT)));
 
@@ -725,13 +725,13 @@ public final class EN16931Validation
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_UBL_INVOICE_136A,
                                                                              "EN 16931 UBL Invoice " +
                                                                                                    VID_UBL_INVOICE_136A.getVersionString (),
-                                                                             PhiveRulesHelper.createStatus (bDeprecated),
+                                                                             PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
                                                                              PhiveRulesUBLHelper.createXSLT_UBL21 (INVOICE_UBL_136A_XSLT)));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_UBL_CREDIT_NOTE_136A,
                                                                              "EN 16931 UBL Credit Note " +
                                                                                                        VID_UBL_CREDIT_NOTE_136A.getVersionString (),
-                                                                             PhiveRulesHelper.createStatus (bDeprecated),
+                                                                             PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
                                                                              PhiveRulesUBLHelper.createXSLT_UBL21 (INVOICE_UBL_136A_XSLT)));
 
@@ -739,13 +739,13 @@ public final class EN16931Validation
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_UBL_INVOICE_137,
                                                                              "EN 16931 UBL Invoice " +
                                                                                                   VID_UBL_INVOICE_137.getVersionString (),
-                                                                             PhiveRulesHelper.createStatus (bDeprecated),
+                                                                             PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
                                                                              PhiveRulesUBLHelper.createXSLT_UBL21 (INVOICE_UBL_137_XSLT)));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_UBL_CREDIT_NOTE_137,
                                                                              "EN 16931 UBL Credit Note " +
                                                                                                       VID_UBL_CREDIT_NOTE_137.getVersionString (),
-                                                                             PhiveRulesHelper.createStatus (bDeprecated),
+                                                                             PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
                                                                              PhiveRulesUBLHelper.createXSLT_UBL21 (INVOICE_UBL_137_XSLT)));
 
@@ -753,13 +753,13 @@ public final class EN16931Validation
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_UBL_INVOICE_138,
                                                                              "EN 16931 UBL Invoice " +
                                                                                                   VID_UBL_INVOICE_138.getVersionString (),
-                                                                             PhiveRulesHelper.createStatus (bDeprecated),
+                                                                             PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
                                                                              PhiveRulesUBLHelper.createXSLT_UBL21 (INVOICE_UBL_138_XSLT)));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_UBL_CREDIT_NOTE_138,
                                                                              "EN 16931 UBL Credit Note " +
                                                                                                       VID_UBL_CREDIT_NOTE_138.getVersionString (),
-                                                                             PhiveRulesHelper.createStatus (bDeprecated),
+                                                                             PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
                                                                              PhiveRulesUBLHelper.createXSLT_UBL21 (INVOICE_UBL_138_XSLT)));
 
@@ -767,13 +767,13 @@ public final class EN16931Validation
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_UBL_INVOICE_139,
                                                                              "EN 16931 UBL Invoice " +
                                                                                                   VID_UBL_INVOICE_139.getVersionString (),
-                                                                             PhiveRulesHelper.createStatus (bDeprecated),
+                                                                             PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
                                                                              PhiveRulesUBLHelper.createXSLT_UBL21 (INVOICE_UBL_139_XSLT)));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_UBL_CREDIT_NOTE_139,
                                                                              "EN 16931 UBL Credit Note " +
                                                                                                       VID_UBL_CREDIT_NOTE_139.getVersionString (),
-                                                                             PhiveRulesHelper.createStatus (bDeprecated),
+                                                                             PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
                                                                              PhiveRulesUBLHelper.createXSLT_UBL21 (INVOICE_UBL_139_XSLT)));
 
@@ -781,13 +781,13 @@ public final class EN16931Validation
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_UBL_INVOICE_1310,
                                                                              "EN 16931 UBL Invoice " +
                                                                                                    VID_UBL_INVOICE_1310.getVersionString (),
-                                                                             PhiveRulesHelper.createStatus (bDeprecated),
+                                                                             PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
                                                                              PhiveRulesUBLHelper.createXSLT_UBL21 (INVOICE_UBL_1310_XSLT)));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_UBL_CREDIT_NOTE_1310,
                                                                              "EN 16931 UBL Credit Note " +
                                                                                                        VID_UBL_CREDIT_NOTE_1310.getVersionString (),
-                                                                             PhiveRulesHelper.createStatus (bDeprecated),
+                                                                             PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
                                                                              PhiveRulesUBLHelper.createXSLT_UBL21 (INVOICE_UBL_1310_XSLT)));
 
@@ -795,13 +795,13 @@ public final class EN16931Validation
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_UBL_INVOICE_1311,
                                                                              "EN 16931 UBL Invoice " +
                                                                                                    VID_UBL_INVOICE_1311.getVersionString (),
-                                                                             PhiveRulesHelper.createStatus (bNotDeprecated),
+                                                                             PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
                                                                              PhiveRulesUBLHelper.createXSLT_UBL21 (INVOICE_UBL_1311_XSLT)));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_UBL_CREDIT_NOTE_1311,
                                                                              "EN 16931 UBL Credit Note " +
                                                                                                        VID_UBL_CREDIT_NOTE_1311.getVersionString (),
-                                                                             PhiveRulesHelper.createStatus (bNotDeprecated),
+                                                                             PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
                                                                              PhiveRulesUBLHelper.createXSLT_UBL21 (INVOICE_UBL_1311_XSLT)));
 
@@ -809,13 +809,13 @@ public final class EN16931Validation
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_UBL_INVOICE_1312,
                                                                              "EN 16931 UBL Invoice " +
                                                                                                    VID_UBL_INVOICE_1312.getVersionString (),
-                                                                             PhiveRulesHelper.createStatus (bNotDeprecated),
+                                                                             PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
                                                                              PhiveRulesUBLHelper.createXSLT_UBL21 (INVOICE_UBL_1312_XSLT)));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_UBL_CREDIT_NOTE_1312,
                                                                              "EN 16931 UBL Credit Note " +
                                                                                                        VID_UBL_CREDIT_NOTE_1312.getVersionString (),
-                                                                             PhiveRulesHelper.createStatus (bNotDeprecated),
+                                                                             PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
                                                                              PhiveRulesUBLHelper.createXSLT_UBL21 (INVOICE_UBL_1312_XSLT)));
     }

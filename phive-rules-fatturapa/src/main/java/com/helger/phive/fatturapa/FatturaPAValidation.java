@@ -20,12 +20,11 @@ import javax.annotation.Nonnull;
 import javax.annotation.concurrent.Immutable;
 
 import com.helger.commons.ValueEnforcer;
-import com.helger.diver.api.version.VESID;
+import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.fatturapa.CFatturaPA;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
 import com.helger.phive.api.executorset.ValidationExecutorSet;
-import com.helger.phive.api.executorset.status.IValidationExecutorSetStatus;
-import com.helger.phive.api.executorset.status.ValidationExecutorSetStatus;
+import com.helger.phive.rules.api.PhiveRulesHelper;
 import com.helger.phive.xml.source.IValidationSourceXML;
 import com.helger.phive.xml.xsd.ValidationExecutorXSD;
 
@@ -39,18 +38,18 @@ public final class FatturaPAValidation
 {
   public static final String GROUP_ID = "it.fatturapa";
 
-  public static final VESID VID_FATTURAPA_120 = new VESID (GROUP_ID, "invoice", "1.2.0");
-  public static final VESID VID_FATTURAPA_121 = new VESID (GROUP_ID, "invoice", "1.2.1");
-  public static final VESID VID_FATTURAPA_122 = new VESID (GROUP_ID, "invoice", "1.2.2");
+  public static final DVRCoordinate VID_FATTURAPA_120 = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                           "invoice",
+                                                                                           "1.2.0");
+  public static final DVRCoordinate VID_FATTURAPA_121 = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                           "invoice",
+                                                                                           "1.2.1");
+  public static final DVRCoordinate VID_FATTURAPA_122 = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                           "invoice",
+                                                                                           "1.2.2");
 
   private FatturaPAValidation ()
   {}
-
-  @Nonnull
-  private static IValidationExecutorSetStatus _createStatus (final boolean bIsDeprecated)
-  {
-    return ValidationExecutorSetStatus.createDeprecatedNow (bIsDeprecated);
-  }
 
   /**
    * Register all standard fatturaPA validation execution sets to the provided
@@ -70,17 +69,17 @@ public final class FatturaPAValidation
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_FATTURAPA_120,
                                                                            "fatturaPA " +
                                                                                               VID_FATTURAPA_120.getVersionString (),
-                                                                           _createStatus (bDeprecated),
+                                                                           PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                            ValidationExecutorXSD.create (CFatturaPA.getAllXSDFatturaPA120 ())));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_FATTURAPA_121,
                                                                            "fatturaPA " +
                                                                                               VID_FATTURAPA_121.getVersionString (),
-                                                                           _createStatus (bDeprecated),
+                                                                           PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                            ValidationExecutorXSD.create (CFatturaPA.getAllXSDFatturaPA121 ())));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_FATTURAPA_122,
                                                                            "fatturaPA " +
                                                                                               VID_FATTURAPA_122.getVersionString (),
-                                                                           _createStatus (bNotDeprecated),
+                                                                           PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
                                                                            ValidationExecutorXSD.create (CFatturaPA.getAllXSDFatturaPA122 ())));
   }
 }

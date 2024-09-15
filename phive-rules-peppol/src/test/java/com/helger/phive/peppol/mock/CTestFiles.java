@@ -27,7 +27,7 @@ import com.helger.commons.collection.impl.CommonsArrayList;
 import com.helger.commons.collection.impl.ICommonsList;
 import com.helger.commons.io.resource.FileSystemResource;
 import com.helger.commons.io.resource.IReadableResource;
-import com.helger.diver.api.version.VESID;
+import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.phive.api.executorset.ValidationExecutorSetRegistry;
 import com.helger.phive.api.mock.TestFile;
 import com.helger.phive.peppol.PeppolValidation;
@@ -62,111 +62,117 @@ public final class CTestFiles
   public static ICommonsList <TestFile> getAllTestFiles ()
   {
     final ICommonsList <TestFile> ret = new CommonsArrayList <> ();
-    for (final VESID aESID : new VESID [] { /* BIS AU_NZ */
-                                            PeppolValidationBisAUNZ.VID_OPENPEPPOL_BIS3_AUNZ_UBL_INVOICE_109,
-                                            PeppolValidationBisAUNZ.VID_OPENPEPPOL_BIS3_AUNZ_UBL_CREDIT_NOTE_109,
-                                            PeppolValidationBisAUNZ.VID_OPENPEPPOL_BIS3_AUNZ_UBL_INVOICE_SELF_BILLING_109,
-                                            PeppolValidationBisAUNZ.VID_OPENPEPPOL_BIS3_AUNZ_UBL_CREDIT_NOTE_SELF_BILLING_109,
+    for (final DVRCoordinate aESID : new DVRCoordinate [] { /* BIS AU_NZ */
+                                                            PeppolValidationBisAUNZ.VID_OPENPEPPOL_BIS3_AUNZ_UBL_INVOICE_109,
+                                                            PeppolValidationBisAUNZ.VID_OPENPEPPOL_BIS3_AUNZ_UBL_CREDIT_NOTE_109,
+                                                            PeppolValidationBisAUNZ.VID_OPENPEPPOL_BIS3_AUNZ_UBL_INVOICE_SELF_BILLING_109,
+                                                            PeppolValidationBisAUNZ.VID_OPENPEPPOL_BIS3_AUNZ_UBL_CREDIT_NOTE_SELF_BILLING_109,
 
-                                            PeppolValidationBisAUNZ.VID_OPENPEPPOL_BIS3_AUNZ_UBL_INVOICE_1_0_10,
-                                            PeppolValidationBisAUNZ.VID_OPENPEPPOL_BIS3_AUNZ_UBL_CREDIT_NOTE_1_0_10,
-                                            PeppolValidationBisAUNZ.VID_OPENPEPPOL_BIS3_AUNZ_UBL_INVOICE_SELF_BILLING_1_0_10,
-                                            PeppolValidationBisAUNZ.VID_OPENPEPPOL_BIS3_AUNZ_UBL_CREDIT_NOTE_SELF_BILLING_1_0_10,
+                                                            PeppolValidationBisAUNZ.VID_OPENPEPPOL_BIS3_AUNZ_UBL_INVOICE_1_0_10,
+                                                            PeppolValidationBisAUNZ.VID_OPENPEPPOL_BIS3_AUNZ_UBL_CREDIT_NOTE_1_0_10,
+                                                            PeppolValidationBisAUNZ.VID_OPENPEPPOL_BIS3_AUNZ_UBL_INVOICE_SELF_BILLING_1_0_10,
+                                                            PeppolValidationBisAUNZ.VID_OPENPEPPOL_BIS3_AUNZ_UBL_CREDIT_NOTE_SELF_BILLING_1_0_10,
 
-                                            PeppolValidationBisAUNZ.VID_OPENPEPPOL_BIS3_AUNZ_UBL_INVOICE_1_0_11,
-                                            PeppolValidationBisAUNZ.VID_OPENPEPPOL_BIS3_AUNZ_UBL_CREDIT_NOTE_1_0_11,
-                                            PeppolValidationBisAUNZ.VID_OPENPEPPOL_BIS3_AUNZ_UBL_INVOICE_SELF_BILLING_1_0_11,
-                                            PeppolValidationBisAUNZ.VID_OPENPEPPOL_BIS3_AUNZ_UBL_CREDIT_NOTE_SELF_BILLING_1_0_11,
+                                                            PeppolValidationBisAUNZ.VID_OPENPEPPOL_BIS3_AUNZ_UBL_INVOICE_1_0_11,
+                                                            PeppolValidationBisAUNZ.VID_OPENPEPPOL_BIS3_AUNZ_UBL_CREDIT_NOTE_1_0_11,
+                                                            PeppolValidationBisAUNZ.VID_OPENPEPPOL_BIS3_AUNZ_UBL_INVOICE_SELF_BILLING_1_0_11,
+                                                            PeppolValidationBisAUNZ.VID_OPENPEPPOL_BIS3_AUNZ_UBL_CREDIT_NOTE_SELF_BILLING_1_0_11,
 
-                                            /* BIS Singapore */
-                                            PeppolValidationBisSG.VID_OPENPEPPOL_BIS3_SG_UBL_INVOICE_2023_7,
-                                            PeppolValidationBisSG.VID_OPENPEPPOL_BIS3_SG_UBL_CREDIT_NOTE_2023_7,
+                                                            /* BIS Singapore */
+                                                            PeppolValidationBisSG.VID_OPENPEPPOL_BIS3_SG_UBL_INVOICE_2023_7,
+                                                            PeppolValidationBisSG.VID_OPENPEPPOL_BIS3_SG_UBL_CREDIT_NOTE_2023_7,
 
-                                            PeppolValidationBisSG.VID_OPENPEPPOL_BIS3_SG_UBL_INVOICE_2023_12,
-                                            PeppolValidationBisSG.VID_OPENPEPPOL_BIS3_SG_UBL_CREDIT_NOTE_2023_12,
+                                                            PeppolValidationBisSG.VID_OPENPEPPOL_BIS3_SG_UBL_INVOICE_2023_12,
+                                                            PeppolValidationBisSG.VID_OPENPEPPOL_BIS3_SG_UBL_CREDIT_NOTE_2023_12,
 
-                                            /* OpenPeppol BIS */
-                                            PeppolValidation2023_05.VID_OPENPEPPOL_INVOICE_UBL_V3,
-                                            PeppolValidation2023_05.VID_OPENPEPPOL_CREDIT_NOTE_UBL_V3,
-                                            // PeppolValidation2023_05.VID_OPENPEPPOL_INVOICE_CII_V3,
-                                            PeppolValidation2023_05.VID_OPENPEPPOL_ORDER_V3,
-                                            PeppolValidation2023_05.VID_OPENPEPPOL_DESPATCH_ADVICE_V3,
-                                            PeppolValidation2023_05.VID_OPENPEPPOL_CATALOGUE_V3,
-                                            PeppolValidation2023_05.VID_OPENPEPPOL_CATALOGUE_RESPONSE_V3,
-                                            PeppolValidation2023_05.VID_OPENPEPPOL_MLR_V3,
-                                            PeppolValidation2023_05.VID_OPENPEPPOL_ORDER_RESPONSE_V3,
-                                            PeppolValidation2023_05.VID_OPENPEPPOL_PUNCH_OUT_V3,
-                                            PeppolValidation2023_05.VID_OPENPEPPOL_ORDER_AGREEMENT_V3,
-                                            PeppolValidation2023_05.VID_OPENPEPPOL_INVOICE_MESSAGE_RESPONSE_V3,
-                                            PeppolValidation2023_05.VID_OPENPEPPOL_ORDER_CHANGE_V3,
-                                            PeppolValidation2023_05.VID_OPENPEPPOL_ORDER_CANCELLATION_V3,
-                                            PeppolValidation2023_05.VID_OPENPEPPOL_ORDER_RESPONSE_ADVANCED_V3,
+                                                            /* OpenPeppol BIS */
+                                                            PeppolValidation2023_05.VID_OPENPEPPOL_INVOICE_UBL_V3,
+                                                            PeppolValidation2023_05.VID_OPENPEPPOL_CREDIT_NOTE_UBL_V3,
+                                                            // PeppolValidation2023_05.VID_OPENPEPPOL_INVOICE_CII_V3,
+                                                            PeppolValidation2023_05.VID_OPENPEPPOL_ORDER_V3,
+                                                            PeppolValidation2023_05.VID_OPENPEPPOL_DESPATCH_ADVICE_V3,
+                                                            PeppolValidation2023_05.VID_OPENPEPPOL_CATALOGUE_V3,
+                                                            PeppolValidation2023_05.VID_OPENPEPPOL_CATALOGUE_RESPONSE_V3,
+                                                            PeppolValidation2023_05.VID_OPENPEPPOL_MLR_V3,
+                                                            PeppolValidation2023_05.VID_OPENPEPPOL_ORDER_RESPONSE_V3,
+                                                            PeppolValidation2023_05.VID_OPENPEPPOL_PUNCH_OUT_V3,
+                                                            PeppolValidation2023_05.VID_OPENPEPPOL_ORDER_AGREEMENT_V3,
+                                                            PeppolValidation2023_05.VID_OPENPEPPOL_INVOICE_MESSAGE_RESPONSE_V3,
+                                                            PeppolValidation2023_05.VID_OPENPEPPOL_ORDER_CHANGE_V3,
+                                                            PeppolValidation2023_05.VID_OPENPEPPOL_ORDER_CANCELLATION_V3,
+                                                            PeppolValidation2023_05.VID_OPENPEPPOL_ORDER_RESPONSE_ADVANCED_V3,
 
-                                            PeppolValidation2023_11.VID_OPENPEPPOL_INVOICE_UBL_V3,
-                                            PeppolValidation2023_11.VID_OPENPEPPOL_CREDIT_NOTE_UBL_V3,
-                                            // PeppolValidation2023_11.VID_OPENPEPPOL_INVOICE_CII_V3,
-                                            PeppolValidation2023_11.VID_OPENPEPPOL_ORDER_V3,
-                                            PeppolValidation2023_11.VID_OPENPEPPOL_DESPATCH_ADVICE_V3,
-                                            PeppolValidation2023_11.VID_OPENPEPPOL_CATALOGUE_V3,
-                                            PeppolValidation2023_11.VID_OPENPEPPOL_CATALOGUE_RESPONSE_V3,
-                                            PeppolValidation2023_11.VID_OPENPEPPOL_MLR_V3,
-                                            PeppolValidation2023_11.VID_OPENPEPPOL_ORDER_RESPONSE_V3,
-                                            PeppolValidation2023_11.VID_OPENPEPPOL_PUNCH_OUT_V3,
-                                            PeppolValidation2023_11.VID_OPENPEPPOL_ORDER_AGREEMENT_V3,
-                                            PeppolValidation2023_11.VID_OPENPEPPOL_INVOICE_MESSAGE_RESPONSE_V3,
-                                            PeppolValidation2023_11.VID_OPENPEPPOL_ORDER_CHANGE_V3,
-                                            PeppolValidation2023_11.VID_OPENPEPPOL_ORDER_CANCELLATION_V3,
-                                            PeppolValidation2023_11.VID_OPENPEPPOL_ORDER_RESPONSE_ADVANCED_V3,
+                                                            PeppolValidation2023_11.VID_OPENPEPPOL_INVOICE_UBL_V3,
+                                                            PeppolValidation2023_11.VID_OPENPEPPOL_CREDIT_NOTE_UBL_V3,
+                                                            // PeppolValidation2023_11.VID_OPENPEPPOL_INVOICE_CII_V3,
+                                                            PeppolValidation2023_11.VID_OPENPEPPOL_ORDER_V3,
+                                                            PeppolValidation2023_11.VID_OPENPEPPOL_DESPATCH_ADVICE_V3,
+                                                            PeppolValidation2023_11.VID_OPENPEPPOL_CATALOGUE_V3,
+                                                            PeppolValidation2023_11.VID_OPENPEPPOL_CATALOGUE_RESPONSE_V3,
+                                                            PeppolValidation2023_11.VID_OPENPEPPOL_MLR_V3,
+                                                            PeppolValidation2023_11.VID_OPENPEPPOL_ORDER_RESPONSE_V3,
+                                                            PeppolValidation2023_11.VID_OPENPEPPOL_PUNCH_OUT_V3,
+                                                            PeppolValidation2023_11.VID_OPENPEPPOL_ORDER_AGREEMENT_V3,
+                                                            PeppolValidation2023_11.VID_OPENPEPPOL_INVOICE_MESSAGE_RESPONSE_V3,
+                                                            PeppolValidation2023_11.VID_OPENPEPPOL_ORDER_CHANGE_V3,
+                                                            PeppolValidation2023_11.VID_OPENPEPPOL_ORDER_CANCELLATION_V3,
+                                                            PeppolValidation2023_11.VID_OPENPEPPOL_ORDER_RESPONSE_ADVANCED_V3,
 
-                                            PeppolValidation2024_05.VID_OPENPEPPOL_INVOICE_UBL_V3,
-                                            PeppolValidation2024_05.VID_OPENPEPPOL_CREDIT_NOTE_UBL_V3,
-                                            // PeppolValidation2024_05.VID_OPENPEPPOL_INVOICE_CII_V3,
-                                            PeppolValidation2024_05.VID_OPENPEPPOL_ORDER_V3,
-                                            PeppolValidation2024_05.VID_OPENPEPPOL_DESPATCH_ADVICE_V3,
-                                            PeppolValidation2024_05.VID_OPENPEPPOL_CATALOGUE_V3,
-                                            PeppolValidation2024_05.VID_OPENPEPPOL_CATALOGUE_RESPONSE_V3,
-                                            PeppolValidation2024_05.VID_OPENPEPPOL_MLR_V3,
-                                            PeppolValidation2024_05.VID_OPENPEPPOL_ORDER_RESPONSE_V3,
-                                            PeppolValidation2024_05.VID_OPENPEPPOL_PUNCH_OUT_V3,
-                                            PeppolValidation2024_05.VID_OPENPEPPOL_ORDER_AGREEMENT_V3,
-                                            PeppolValidation2024_05.VID_OPENPEPPOL_INVOICE_MESSAGE_RESPONSE_V3,
-                                            PeppolValidation2024_05.VID_OPENPEPPOL_ORDER_CHANGE_V3,
-                                            PeppolValidation2024_05.VID_OPENPEPPOL_ORDER_CANCELLATION_V3,
-                                            PeppolValidation2024_05.VID_OPENPEPPOL_ORDER_RESPONSE_ADVANCED_V3,
+                                                            PeppolValidation2024_05.VID_OPENPEPPOL_INVOICE_UBL_V3,
+                                                            PeppolValidation2024_05.VID_OPENPEPPOL_CREDIT_NOTE_UBL_V3,
+                                                            // PeppolValidation2024_05.VID_OPENPEPPOL_INVOICE_CII_V3,
+                                                            PeppolValidation2024_05.VID_OPENPEPPOL_ORDER_V3,
+                                                            PeppolValidation2024_05.VID_OPENPEPPOL_DESPATCH_ADVICE_V3,
+                                                            PeppolValidation2024_05.VID_OPENPEPPOL_CATALOGUE_V3,
+                                                            PeppolValidation2024_05.VID_OPENPEPPOL_CATALOGUE_RESPONSE_V3,
+                                                            PeppolValidation2024_05.VID_OPENPEPPOL_MLR_V3,
+                                                            PeppolValidation2024_05.VID_OPENPEPPOL_ORDER_RESPONSE_V3,
+                                                            PeppolValidation2024_05.VID_OPENPEPPOL_PUNCH_OUT_V3,
+                                                            PeppolValidation2024_05.VID_OPENPEPPOL_ORDER_AGREEMENT_V3,
+                                                            PeppolValidation2024_05.VID_OPENPEPPOL_INVOICE_MESSAGE_RESPONSE_V3,
+                                                            PeppolValidation2024_05.VID_OPENPEPPOL_ORDER_CHANGE_V3,
+                                                            PeppolValidation2024_05.VID_OPENPEPPOL_ORDER_CANCELLATION_V3,
+                                                            PeppolValidation2024_05.VID_OPENPEPPOL_ORDER_RESPONSE_ADVANCED_V3,
 
-                                            /* OpenPeppol Directory */
-                                            PeppolValidationDirectory.VID_OPENPEPPOL_BUSINESS_CARD_V1,
-                                            PeppolValidationDirectory.VID_OPENPEPPOL_BUSINESS_CARD_V2,
-                                            PeppolValidationDirectory.VID_OPENPEPPOL_BUSINESS_CARD_V3,
+                                                            /*
+                                                             * OpenPeppol
+                                                             * Directory
+                                                             */
+                                                            PeppolValidationDirectory.VID_OPENPEPPOL_BUSINESS_CARD_V1,
+                                                            PeppolValidationDirectory.VID_OPENPEPPOL_BUSINESS_CARD_V2,
+                                                            PeppolValidationDirectory.VID_OPENPEPPOL_BUSINESS_CARD_V3,
 
-                                            /* OpenPeppol Reporting */
-                                            PeppolValidationReporting.VID_OPENPEPPOL_EUSR_V114,
-                                            PeppolValidationReporting.VID_OPENPEPPOL_EUSR_V115,
+                                                            /*
+                                                             * OpenPeppol
+                                                             * Reporting
+                                                             */
+                                                            PeppolValidationReporting.VID_OPENPEPPOL_EUSR_V114,
+                                                            PeppolValidationReporting.VID_OPENPEPPOL_EUSR_V115,
 
-                                            PeppolValidationReporting.VID_OPENPEPPOL_TSR_V104,
-                                            PeppolValidationReporting.VID_OPENPEPPOL_TSR_V105,
+                                                            PeppolValidationReporting.VID_OPENPEPPOL_TSR_V104,
+                                                            PeppolValidationReporting.VID_OPENPEPPOL_TSR_V105,
 
-                                            /* PINT A-NZ */
-                                            PeppolValidationPintAUNZ.VID_OPENPEPPOL_AUNZ_PINT_UBL_INVOICE_1_0_1,
-                                            PeppolValidationPintAUNZ.VID_OPENPEPPOL_AUNZ_PINT_UBL_CREDIT_NOTE_1_0_1,
-                                            PeppolValidationPintAUNZ.VID_OPENPEPPOL_AUNZ_PINT_UBL_INVOICE_SELF_BILLING_1_0_1,
-                                            PeppolValidationPintAUNZ.VID_OPENPEPPOL_AUNZ_PINT_UBL_CREDIT_NOTE_SELF_BILLING_1_0_1,
+                                                            /* PINT A-NZ */
+                                                            PeppolValidationPintAUNZ.VID_OPENPEPPOL_AUNZ_PINT_UBL_INVOICE_1_0_1,
+                                                            PeppolValidationPintAUNZ.VID_OPENPEPPOL_AUNZ_PINT_UBL_CREDIT_NOTE_1_0_1,
+                                                            PeppolValidationPintAUNZ.VID_OPENPEPPOL_AUNZ_PINT_UBL_INVOICE_SELF_BILLING_1_0_1,
+                                                            PeppolValidationPintAUNZ.VID_OPENPEPPOL_AUNZ_PINT_UBL_CREDIT_NOTE_SELF_BILLING_1_0_1,
 
-                                            /* PINT Japan */
-                                            PeppolValidationPintJP.VID_OPENPEPPOL_JP_PINT_INVOICE_012,
-                                            PeppolValidationPintJP.VID_OPENPEPPOL_JP_PINT_CREDIT_NOTE_012,
-                                            PeppolValidationPintJP.VID_OPENPEPPOL_JP_PINT_INVOICE_1_0_2,
-                                            PeppolValidationPintJP.VID_OPENPEPPOL_JP_PINT_CREDIT_NOTE_1_0_2,
+                                                            /* PINT Japan */
+                                                            PeppolValidationPintJP.VID_OPENPEPPOL_JP_PINT_INVOICE_012,
+                                                            PeppolValidationPintJP.VID_OPENPEPPOL_JP_PINT_CREDIT_NOTE_012,
+                                                            PeppolValidationPintJP.VID_OPENPEPPOL_JP_PINT_INVOICE_1_0_2,
+                                                            PeppolValidationPintJP.VID_OPENPEPPOL_JP_PINT_CREDIT_NOTE_1_0_2,
 
-                                            /* PINT Malaysia */
-                                            PeppolValidationPintMY.VID_OPENPEPPOL_MY_PINT_UBL_INVOICE_1_0_0,
-                                            PeppolValidationPintMY.VID_OPENPEPPOL_MY_PINT_UBL_CREDIT_NOTE_1_0_0,
-                                            PeppolValidationPintMY.VID_OPENPEPPOL_MY_PINT_UBL_INVOICE_SELF_BILLING_1_0_0,
-                                            PeppolValidationPintMY.VID_OPENPEPPOL_MY_PINT_UBL_CREDIT_NOTE_SELF_BILLING_1_0_0,
+                                                            /* PINT Malaysia */
+                                                            PeppolValidationPintMY.VID_OPENPEPPOL_MY_PINT_UBL_INVOICE_1_0_0,
+                                                            PeppolValidationPintMY.VID_OPENPEPPOL_MY_PINT_UBL_CREDIT_NOTE_1_0_0,
+                                                            PeppolValidationPintMY.VID_OPENPEPPOL_MY_PINT_UBL_INVOICE_SELF_BILLING_1_0_0,
+                                                            PeppolValidationPintMY.VID_OPENPEPPOL_MY_PINT_UBL_CREDIT_NOTE_SELF_BILLING_1_0_0,
 
-                                            /* PINT Singapore */
-                                            PeppolValidationPintSG.VID_OPENPEPPOL_SG_PINT_UBL_INVOICE_1_1_0,
-                                            PeppolValidationPintSG.VID_OPENPEPPOL_SG_PINT_UBL_CREDIT_NOTE_1_1_0,
+                                                            /* PINT Singapore */
+                                                            PeppolValidationPintSG.VID_OPENPEPPOL_SG_PINT_UBL_INVOICE_1_1_0,
+                                                            PeppolValidationPintSG.VID_OPENPEPPOL_SG_PINT_UBL_CREDIT_NOTE_1_1_0,
 
     })
       for (final IReadableResource aRes : getAllMatchingTestFiles (aESID))
@@ -179,7 +185,7 @@ public final class CTestFiles
 
   @Nonnull
   @ReturnsMutableCopy
-  public static ICommonsList <? extends IReadableResource> getAllMatchingTestFiles (@Nonnull final VESID aVESID)
+  public static ICommonsList <? extends IReadableResource> getAllMatchingTestFiles (@Nonnull final DVRCoordinate aVESID)
   {
     ValueEnforcer.notNull (aVESID, "VESID");
 

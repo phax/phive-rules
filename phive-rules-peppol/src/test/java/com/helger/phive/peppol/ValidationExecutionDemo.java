@@ -21,10 +21,11 @@ import javax.annotation.Nullable;
 
 import org.w3c.dom.Document;
 
-import com.helger.diver.api.version.VESID;
+import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.phive.api.execute.ValidationExecutionManager;
 import com.helger.phive.api.executorset.IValidationExecutorSet;
 import com.helger.phive.api.result.ValidationResultList;
+import com.helger.phive.api.validity.IValidityDeterminator;
 import com.helger.phive.peppol.mock.CTestFiles;
 import com.helger.phive.xml.source.IValidationSourceXML;
 import com.helger.phive.xml.source.ValidationSourceXML;
@@ -40,7 +41,7 @@ public final class ValidationExecutionDemo
   public void testCode (@Nullable final String sSystemID, @Nonnull final byte [] aXML)
   {
     // Example: validate against orders
-    final VESID aVESID = PeppolValidation2023_11.VID_OPENPEPPOL_INVOICE_UBL_V3;
+    final DVRCoordinate aVESID = PeppolValidation2024_05.VID_OPENPEPPOL_INVOICE_UBL_V3;
 
     // Note: Use the currently active version
     final IValidationExecutorSet <IValidationSourceXML> aExecutors = CTestFiles.VES_REGISTRY.getOfID (aVESID);
@@ -52,7 +53,9 @@ public final class ValidationExecutionDemo
     final IValidationSourceXML aSource = ValidationSourceXML.create (sSystemID, aXMLDoc);
 
     // Perform the execution
-    final ValidationResultList aErrors = ValidationExecutionManager.executeValidation (aExecutors, aSource);
+    final ValidationResultList aErrors = ValidationExecutionManager.executeValidation (IValidityDeterminator.getDefault (),
+                                                                                       aExecutors,
+                                                                                       aSource);
     if (aErrors.containsNoError ())
     {
       // TODO success

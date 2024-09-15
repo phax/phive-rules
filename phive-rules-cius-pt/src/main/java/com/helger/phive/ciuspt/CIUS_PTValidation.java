@@ -100,13 +100,13 @@ public final class CIUS_PTValidation
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_CIUS_PT_UBL_CREDITNOTE_200,
                                                                            "CIUS-PT UBL Credit Note " +
                                                                                                            VID_CIUS_PT_UBL_CREDITNOTE_200.getVersionString (),
-                                                                           PhiveRulesHelper.createStatus (bDeprecated),
+                                                                           PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                            ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
                                                                            PhiveRulesUBLHelper.createXSLT_UBL21 (RES_200)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_CIUS_PT_UBL_INVOICE_200,
                                                                            "CIUS-PT UBL Invoice " +
                                                                                                         VID_CIUS_PT_UBL_INVOICE_200.getVersionString (),
-                                                                           PhiveRulesHelper.createStatus (bDeprecated),
+                                                                           PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                            ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
                                                                            PhiveRulesUBLHelper.createXSLT_UBL21 (RES_200)));
 
@@ -114,13 +114,13 @@ public final class CIUS_PTValidation
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_CIUS_PT_UBL_CREDITNOTE_211,
                                                                            "CIUS-PT UBL Credit Note " +
                                                                                                            VID_CIUS_PT_UBL_CREDITNOTE_211.getVersionString (),
-                                                                           PhiveRulesHelper.createStatus (bNotDeprecated),
+                                                                           PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
                                                                            ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
                                                                            PhiveRulesUBLHelper.createXSLT_UBL21 (RES_211)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_CIUS_PT_UBL_INVOICE_211,
                                                                            "CIUS-PT UBL Invoice " +
                                                                                                         VID_CIUS_PT_UBL_INVOICE_211.getVersionString (),
-                                                                           PhiveRulesHelper.createStatus (bNotDeprecated),
+                                                                           PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
                                                                            ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
                                                                            PhiveRulesUBLHelper.createXSLT_UBL21 (RES_211)));
   }

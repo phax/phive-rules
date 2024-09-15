@@ -27,7 +27,7 @@ import com.helger.commons.collection.impl.CommonsArrayList;
 import com.helger.commons.collection.impl.ICommonsList;
 import com.helger.commons.io.resource.FileSystemResource;
 import com.helger.commons.io.resource.IReadableResource;
-import com.helger.diver.api.version.VESID;
+import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.phive.api.executorset.ValidationExecutorSetRegistry;
 import com.helger.phive.api.mock.TestFile;
 import com.helger.phive.peppol.italy.PeppolItalyValidation;
@@ -55,29 +55,29 @@ public final class CTestFiles
   public static ICommonsList <TestFile> getAllTestFiles ()
   {
     final ICommonsList <TestFile> ret = new CommonsArrayList <> ();
-    for (final VESID aESID : new VESID [] { PeppolItalyValidation2_2_9.VID_DESPATCH_ADVICE,
-                                            PeppolItalyValidation2_2_9.VID_ORDER,
-                                            PeppolItalyValidation2_2_9.VID_ORDER_RESPONSE,
+    for (final DVRCoordinate aESID : new DVRCoordinate [] { PeppolItalyValidation2_2_9.VID_DESPATCH_ADVICE,
+                                                            PeppolItalyValidation2_2_9.VID_ORDER,
+                                                            PeppolItalyValidation2_2_9.VID_ORDER_RESPONSE,
 
-                                            PeppolItalyValidation2_3_0.VID_DESPATCH_ADVICE,
-                                            PeppolItalyValidation2_3_0.VID_INVOICE,
-                                            PeppolItalyValidation2_3_0.VID_ORDER,
-                                            PeppolItalyValidation2_3_0.VID_ORDER_AGREEMENT,
-                                            PeppolItalyValidation2_3_0.VID_ORDER_RESPONSE,
+                                                            PeppolItalyValidation2_3_0.VID_DESPATCH_ADVICE,
+                                                            PeppolItalyValidation2_3_0.VID_INVOICE,
+                                                            PeppolItalyValidation2_3_0.VID_ORDER,
+                                                            PeppolItalyValidation2_3_0.VID_ORDER_AGREEMENT,
+                                                            PeppolItalyValidation2_3_0.VID_ORDER_RESPONSE,
 
-                                            PeppolItalyValidation3_0_2.VID_CREDIT_NOTE,
-                                            PeppolItalyValidation3_0_2.VID_DESPATCH_ADVICE,
-                                            PeppolItalyValidation3_0_2.VID_INVOICE,
-                                            PeppolItalyValidation3_0_2.VID_ORDER,
-                                            PeppolItalyValidation3_0_2.VID_ORDER_AGREEMENT,
-                                            PeppolItalyValidation3_0_2.VID_ORDER_RESPONSE,
+                                                            PeppolItalyValidation3_0_2.VID_CREDIT_NOTE,
+                                                            PeppolItalyValidation3_0_2.VID_DESPATCH_ADVICE,
+                                                            PeppolItalyValidation3_0_2.VID_INVOICE,
+                                                            PeppolItalyValidation3_0_2.VID_ORDER,
+                                                            PeppolItalyValidation3_0_2.VID_ORDER_AGREEMENT,
+                                                            PeppolItalyValidation3_0_2.VID_ORDER_RESPONSE,
 
-                                            PeppolItalyValidation3_1_0.VID_CREDIT_NOTE,
-                                            PeppolItalyValidation3_1_0.VID_DESPATCH_ADVICE,
-                                            PeppolItalyValidation3_1_0.VID_INVOICE,
-                                            PeppolItalyValidation3_1_0.VID_ORDER,
-                                            PeppolItalyValidation3_1_0.VID_ORDER_AGREEMENT,
-                                            PeppolItalyValidation3_1_0.VID_ORDER_RESPONSE, })
+                                                            PeppolItalyValidation3_1_0.VID_CREDIT_NOTE,
+                                                            PeppolItalyValidation3_1_0.VID_DESPATCH_ADVICE,
+                                                            PeppolItalyValidation3_1_0.VID_INVOICE,
+                                                            PeppolItalyValidation3_1_0.VID_ORDER,
+                                                            PeppolItalyValidation3_1_0.VID_ORDER_AGREEMENT,
+                                                            PeppolItalyValidation3_1_0.VID_ORDER_RESPONSE, })
       for (final IReadableResource aRes : getAllMatchingTestFiles (aESID))
       {
         assertTrue ("Not existing test file: " + aRes.getPath (), aRes.exists ());
@@ -88,7 +88,7 @@ public final class CTestFiles
 
   @Nonnull
   @ReturnsMutableCopy
-  public static ICommonsList <? extends IReadableResource> getAllMatchingTestFiles (@Nonnull final VESID aVESID)
+  public static ICommonsList <? extends IReadableResource> getAllMatchingTestFiles (@Nonnull final DVRCoordinate aVESID)
   {
     ValueEnforcer.notNull (aVESID, "VESID");
 

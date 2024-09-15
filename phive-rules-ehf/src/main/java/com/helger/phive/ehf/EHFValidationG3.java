@@ -114,7 +114,7 @@ public final class EHFValidationG3
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_EHF_ADVANCED_ORDER_CANCELLATION_300,
                                                                            "EHF Advanced Order Cancellation " +
                                                                                                                     VID_EHF_ADVANCED_ORDER_CANCELLATION_300.getVersionString (),
-                                                                           PhiveRulesHelper.createStatus (bDeprecated),
+                                                                           PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                            ValidationExecutorXSD.create (UBL22Marshaller.getAllOrderCancellationXSDs ()),
                                                                            PhiveRulesUBLHelper.createXSLT_UBL22 (new ClassPathResource (sXSLT +
                                                                                                                                         "advanced-ordering-3.0/EHF-P09-3.0-ORDER-CANCELLATION.xslt",
@@ -122,7 +122,7 @@ public final class EHFValidationG3
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_EHF_ADVANCED_ORDER_CHANGE_300,
                                                                            "EHF Advanced Order Change " +
                                                                                                               VID_EHF_ADVANCED_ORDER_CHANGE_300.getVersionString (),
-                                                                           PhiveRulesHelper.createStatus (bDeprecated),
+                                                                           PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                            ValidationExecutorXSD.create (UBL22Marshaller.getAllOrderChangeXSDs ()),
                                                                            PhiveRulesUBLHelper.createXSLT_UBL22 (new ClassPathResource (sXSLT +
                                                                                                                                         "advanced-ordering-3.0/EHF-P09-3.0-ORDER-CHANGE.xslt",
@@ -130,7 +130,7 @@ public final class EHFValidationG3
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_EHF_ADVANCED_ORDER_INITIATION_300,
                                                                            "EHF Advanced Order Initiation " +
                                                                                                                   VID_EHF_ADVANCED_ORDER_INITIATION_300.getVersionString (),
-                                                                           PhiveRulesHelper.createStatus (bDeprecated),
+                                                                           PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                            ValidationExecutorXSD.create (UBL22Marshaller.getAllOrderXSDs ()),
                                                                            PhiveRulesUBLHelper.createXSLT_UBL22 (new ClassPathResource (sXSLT +
                                                                                                                                         "advanced-ordering-3.0/EHF-P09-3.0-ORDER-INITIATION.xslt",
@@ -138,7 +138,7 @@ public final class EHFValidationG3
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_EHF_ADVANCED_ORDER_RESPONSE_300,
                                                                            "EHF Advanced Order Response " +
                                                                                                                 VID_EHF_ADVANCED_ORDER_RESPONSE_300.getVersionString (),
-                                                                           PhiveRulesHelper.createStatus (bDeprecated),
+                                                                           PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                            ValidationExecutorXSD.create (UBL22Marshaller.getAllOrderResponseXSDs ()),
                                                                            PhiveRulesUBLHelper.createXSLT_UBL22 (new ClassPathResource (sXSLT +
                                                                                                                                         "advanced-ordering-3.0/EHF-P09-3.0-ORDER-RESPONSE.xslt",
@@ -146,7 +146,7 @@ public final class EHFValidationG3
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_EHF_CATALOGUE_300,
                                                                            "EHF Catalogue " +
                                                                                                   VID_EHF_CATALOGUE_300.getVersionString (),
-                                                                           PhiveRulesHelper.createStatus (bDeprecated),
+                                                                           PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                            ValidationExecutorXSD.create (UBL22Marshaller.getAllCatalogueXSDs ()),
                                                                            PhiveRulesUBLHelper.createXSLT_UBL22 (new ClassPathResource (sXSLT +
                                                                                                                                         "catalogue-3.0/EHF-CATALOGUE-3.0.xslt",
@@ -154,7 +154,7 @@ public final class EHFValidationG3
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_EHF_CATALOGUE_RESPONSE_300,
                                                                            "EHF Catalogue Response " +
                                                                                                            VID_EHF_CATALOGUE_RESPONSE_300.getVersionString (),
-                                                                           PhiveRulesHelper.createStatus (bDeprecated),
+                                                                           PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                            ValidationExecutorXSD.create (UBL22Marshaller.getAllApplicationResponseXSDs ()),
                                                                            PhiveRulesUBLHelper.createXSLT_UBL22 (new ClassPathResource (sXSLT +
                                                                                                                                         "catalogue-3.0/EHF-CATALOGUE-RESPONSE-3.0.xslt",
@@ -162,7 +162,7 @@ public final class EHFValidationG3
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_EHF_DESPATCH_ADVICE_300,
                                                                            "EHF Despatch Advice " +
                                                                                                         VID_EHF_DESPATCH_ADVICE_300.getVersionString (),
-                                                                           PhiveRulesHelper.createStatus (bDeprecated),
+                                                                           PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                            ValidationExecutorXSD.create (UBL22Marshaller.getAllDespatchAdviceXSDs ()),
                                                                            PhiveRulesUBLHelper.createXSLT_UBL22 (new ClassPathResource (sXSLT +
                                                                                                                                         "despatch-advice-3.0/EHF-DESPATCH-ADVICE-3.0.xslt",
@@ -170,7 +170,7 @@ public final class EHFValidationG3
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_EHF_FORWARD_BILLING_INVOICE_300,
                                                                            "EHF Forward Billing Invoice " +
                                                                                                                 VID_EHF_FORWARD_BILLING_INVOICE_300.getVersionString (),
-                                                                           PhiveRulesHelper.createStatus (bDeprecated),
+                                                                           PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                            ValidationExecutorXSD.create (UBL22Marshaller.getAllInvoiceXSDs ()),
                                                                            PhiveRulesUBLHelper.createXSLT_UBL22 (new ClassPathResource (sXSLT +
                                                                                                                                         "forward-billing-3.0/FORWARD-BILLING-CEN-EN16931-UBL.xslt",
@@ -181,7 +181,7 @@ public final class EHFValidationG3
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_EHF_FORWARD_BILLING_CREDIT_NOTE_300,
                                                                            "EHF Forward Billing Credit Note " +
                                                                                                                     VID_EHF_FORWARD_BILLING_CREDIT_NOTE_300.getVersionString (),
-                                                                           PhiveRulesHelper.createStatus (bDeprecated),
+                                                                           PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                            ValidationExecutorXSD.create (UBL22Marshaller.getAllCreditNoteXSDs ()),
                                                                            PhiveRulesUBLHelper.createXSLT_UBL22 (new ClassPathResource (sXSLT +
                                                                                                                                         "forward-billing-3.0/FORWARD-BILLING-CEN-EN16931-UBL.xslt",
@@ -192,7 +192,7 @@ public final class EHFValidationG3
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_EHF_ORDER_AGREEMENT_300,
                                                                            "EHF Order Agreement " +
                                                                                                         VID_EHF_ORDER_AGREEMENT_300.getVersionString (),
-                                                                           PhiveRulesHelper.createStatus (bDeprecated),
+                                                                           PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                            ValidationExecutorXSD.create (UBL22Marshaller.getAllOrderResponseXSDs ()),
                                                                            PhiveRulesUBLHelper.createXSLT_UBL22 (new ClassPathResource (sXSLT +
                                                                                                                                         "order-agreement-3.0/EHF-ORDER-AGREEMENT-3.0.xslt",
@@ -200,7 +200,7 @@ public final class EHFValidationG3
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_EHF_ORDER_300,
                                                                            "EHF Order " +
                                                                                               VID_EHF_ORDER_300.getVersionString (),
-                                                                           PhiveRulesHelper.createStatus (bDeprecated),
+                                                                           PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                            ValidationExecutorXSD.create (UBL22Marshaller.getAllOrderXSDs ()),
                                                                            PhiveRulesUBLHelper.createXSLT_UBL22 (new ClassPathResource (sXSLT +
                                                                                                                                         "ordering-3.0/EHF-ORDER-3.0.xslt",
@@ -208,7 +208,7 @@ public final class EHFValidationG3
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_EHF_ORDER_RESPONSE_300,
                                                                            "EHF Order Response " +
                                                                                                        VID_EHF_ORDER_RESPONSE_300.getVersionString (),
-                                                                           PhiveRulesHelper.createStatus (bDeprecated),
+                                                                           PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                            ValidationExecutorXSD.create (UBL22Marshaller.getAllOrderResponseXSDs ()),
                                                                            PhiveRulesUBLHelper.createXSLT_UBL22 (new ClassPathResource (sXSLT +
                                                                                                                                         "ordering-3.0/EHF-ORDER-RESPONSE-3.0.xslt",
@@ -216,14 +216,14 @@ public final class EHFValidationG3
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_EHF_PAYMENT_REQUEST_300,
                                                                            "EHF Payment Request " +
                                                                                                         VID_EHF_PAYMENT_REQUEST_300.getVersionString (),
-                                                                           PhiveRulesHelper.createStatus (bDeprecated),
+                                                                           PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                            ValidationExecutorXSD.create (UBL22Marshaller.getAllInvoiceXSDs ()),
                                                                            PhiveRulesUBLHelper.createXSLT_UBL22 (new ClassPathResource (sXSLT +
                                                                                                                                         "payment-request-3.0/EHF-P07-3.0-PAYMENT-REQUEST-3.0.xslt"))));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_EHF_PUNCH_OUT_300,
                                                                            "EHF Punch Out " +
                                                                                                   VID_EHF_PUNCH_OUT_300.getVersionString (),
-                                                                           PhiveRulesHelper.createStatus (bDeprecated),
+                                                                           PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                            ValidationExecutorXSD.create (UBL22Marshaller.getAllCatalogueXSDs ()),
                                                                            PhiveRulesUBLHelper.createXSLT_UBL22 (new ClassPathResource (sXSLT +
                                                                                                                                         "punch-out-3.0/EHF-PUNCH-OUT-3.0.xslt",
@@ -231,7 +231,7 @@ public final class EHFValidationG3
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_EHF_REMINDER_300,
                                                                            "EHF Reminder " +
                                                                                                  VID_EHF_REMINDER_300.getVersionString (),
-                                                                           PhiveRulesHelper.createStatus (bDeprecated),
+                                                                           PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                            ValidationExecutorXSD.create (UBL22Marshaller.getAllInvoiceXSDs ()),
                                                                            PhiveRulesUBLHelper.createXSLT_UBL22 (new ClassPathResource (sXSLT +
                                                                                                                                         "reminder-3.0/REMINDER-CEN-EN16931-UBL.xslt",

@@ -20,16 +20,11 @@ import java.time.LocalDate;
 
 import javax.annotation.Nonnull;
 import javax.annotation.concurrent.Immutable;
-import javax.xml.XMLConstants;
 
 import com.helger.commons.annotation.Nonempty;
-import com.helger.commons.annotation.ReturnsMutableObject;
 import com.helger.commons.datetime.PDTFactory;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
-import com.helger.phive.xml.schematron.SchematronNamespaceBeautifier;
 import com.helger.phive.xml.source.IValidationSourceXML;
-import com.helger.ubl21.UBL21NamespaceContext;
-import com.helger.xml.namespace.MapBasedNamespaceContext;
 
 /**
  * Generic Peppol validation configuration
@@ -71,9 +66,6 @@ public final class PeppolValidation
    */
   public static void initStandard (@Nonnull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
   {
-    // For better error messages
-    SchematronNamespaceBeautifier.addMappings (UBL21NamespaceContext.getInstance ());
-
     PeppolValidation2023_05.init (aRegistry);
     PeppolValidation2023_11.init (aRegistry);
     PeppolValidation2024_05.init (aRegistry);
@@ -86,20 +78,5 @@ public final class PeppolValidation
     PeppolValidationPintJP.init (aRegistry);
     PeppolValidationPintMY.init (aRegistry);
     PeppolValidationPintSG.init (aRegistry);
-  }
-
-  @Nonnull
-  @ReturnsMutableObject
-  static MapBasedNamespaceContext createUBLNSContext (@Nonnull final String sNamespaceURI)
-  {
-    final MapBasedNamespaceContext aNSContext = UBL21NamespaceContext.getInstance ().getClone ();
-
-    // Add the default mapping for the root namespace
-    aNSContext.addMapping (XMLConstants.DEFAULT_NS_PREFIX, sNamespaceURI);
-    // For historical reasons, the "ubl" prefix is also mapped to this
-    // namespace URI
-    aNSContext.addMapping ("ubl", sNamespaceURI);
-
-    return aNSContext;
   }
 }

@@ -62,7 +62,16 @@
       <groupId>com.helger.ubl</groupId>
       <artifactId>ph-ubl21</artifactId>
     </dependency>
-    
+    <dependency>
+      <groupId>com.helger.phive.rules</groupId>
+      <artifactId>phive-rules-api</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <scope>test</scope>
+    </dependency>
     <dependency>
       <groupId>org.slf4j</groupId>
       <artifactId>slf4j-simple</artifactId>

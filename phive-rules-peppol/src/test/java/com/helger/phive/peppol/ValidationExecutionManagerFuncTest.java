@@ -31,6 +31,7 @@ import com.helger.phive.api.execute.ValidationExecutionManager;
 import com.helger.phive.api.executorset.IValidationExecutorSet;
 import com.helger.phive.api.mock.TestFile;
 import com.helger.phive.api.result.ValidationResultList;
+import com.helger.phive.api.validity.IValidityDeterminator;
 import com.helger.phive.peppol.mock.CTestFiles;
 import com.helger.phive.xml.source.IValidationSourceXML;
 import com.helger.phive.xml.source.ValidationSourceXML;
@@ -61,7 +62,8 @@ public final class ValidationExecutionManagerFuncTest
 
       // Read as desired type
       final IValidationSourceXML aSource = ValidationSourceXML.create (aTestFile.getResource ());
-      final ValidationResultList aErrors = ValidationExecutionManager.executeValidation (aExecutors,
+      final ValidationResultList aErrors = ValidationExecutionManager.executeValidation (IValidityDeterminator.getDefault (),
+                                                                                         aExecutors,
                                                                                          aSource,
                                                                                          Locale.US);
       if (aTestFile.isGoodCase ())
@@ -74,7 +76,7 @@ public final class ValidationExecutionManagerFuncTest
   @Test
   public void testLargeFile ()
   {
-    final IValidationExecutorSet <IValidationSourceXML> aExecutors = CTestFiles.VES_REGISTRY.getOfID (PeppolValidation2023_11.VID_OPENPEPPOL_INVOICE_UBL_V3);
+    final IValidationExecutorSet <IValidationSourceXML> aExecutors = CTestFiles.VES_REGISTRY.getOfID (PeppolValidation2024_05.VID_OPENPEPPOL_INVOICE_UBL_V3);
     assertNotNull (aExecutors);
 
     for (final String s : new String [] { "22m", "50m", "70m", "100m", "125m", "200m" })
@@ -92,7 +94,8 @@ public final class ValidationExecutionManagerFuncTest
 
         // Read as desired type
         final IValidationSourceXML aSource = ValidationSourceXML.create (aRes);
-        final ValidationResultList aErrors = ValidationExecutionManager.executeValidation (aExecutors,
+        final ValidationResultList aErrors = ValidationExecutionManager.executeValidation (IValidityDeterminator.getDefault (),
+                                                                                           aExecutors,
                                                                                            aSource,
                                                                                            Locale.US);
         assertTrue (aErrors.getAllErrors ().toString (), aErrors.containsNoError ());

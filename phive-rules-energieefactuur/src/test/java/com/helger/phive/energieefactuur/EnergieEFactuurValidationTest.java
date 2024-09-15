@@ -50,8 +50,6 @@ public final class EnergieEFactuurValidationTest
   {
     for (final IValidationExecutorSet <IValidationSourceXML> aVES : CTestFiles.VES_REGISTRY.getAll ())
       for (final IValidationExecutor <IValidationSourceXML> aVE : aVES)
-      {
-        PhiveRulesTestHelper.isContentCorrect (aVE);
-      }
+        assertTrue (PhiveRulesTestHelper.isContentCorrect (aVE));
   }
 }

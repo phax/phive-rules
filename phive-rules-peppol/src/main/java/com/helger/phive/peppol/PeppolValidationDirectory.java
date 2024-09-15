@@ -22,11 +22,10 @@ import javax.annotation.concurrent.Immutable;
 import com.helger.commons.ValueEnforcer;
 import com.helger.commons.io.resource.ClassPathResource;
 import com.helger.commons.io.resource.IReadableResource;
-import com.helger.diver.api.version.VESID;
+import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
 import com.helger.phive.api.executorset.ValidationExecutorSet;
-import com.helger.phive.api.executorset.status.IValidationExecutorSetStatus;
-import com.helger.phive.api.executorset.status.ValidationExecutorSetStatus;
+import com.helger.phive.rules.api.PhiveRulesHelper;
 import com.helger.phive.xml.source.IValidationSourceXML;
 import com.helger.phive.xml.xsd.ValidationExecutorXSD;
 
@@ -48,25 +47,19 @@ public final class PeppolValidationDirectory
   private static final String BASE_PATH = "external/schemas/";
 
   @Deprecated
-  public static final VESID VID_OPENPEPPOL_BUSINESS_CARD_V1 = new VESID ("eu.peppol.directory",
-                                                                         "businesscard",
-                                                                         "1.0.0");
+  public static final DVRCoordinate VID_OPENPEPPOL_BUSINESS_CARD_V1 = PhiveRulesHelper.createCoordinate ("eu.peppol.directory",
+                                                                                                         "businesscard",
+                                                                                                         "1.0.0");
   @Deprecated
-  public static final VESID VID_OPENPEPPOL_BUSINESS_CARD_V2 = new VESID ("eu.peppol.directory",
-                                                                         "businesscard",
-                                                                         "2.0.0");
-  public static final VESID VID_OPENPEPPOL_BUSINESS_CARD_V3 = new VESID ("eu.peppol.directory",
-                                                                         "businesscard",
-                                                                         "3.0.0");
+  public static final DVRCoordinate VID_OPENPEPPOL_BUSINESS_CARD_V2 = PhiveRulesHelper.createCoordinate ("eu.peppol.directory",
+                                                                                                         "businesscard",
+                                                                                                         "2.0.0");
+  public static final DVRCoordinate VID_OPENPEPPOL_BUSINESS_CARD_V3 = PhiveRulesHelper.createCoordinate ("eu.peppol.directory",
+                                                                                                         "businesscard",
+                                                                                                         "3.0.0");
 
   private PeppolValidationDirectory ()
   {}
-
-  @Nonnull
-  private static IValidationExecutorSetStatus _createStatus (final boolean bIsDeprecated)
-  {
-    return ValidationExecutorSetStatus.createDeprecatedNow (bIsDeprecated);
-  }
 
   public static void init (@Nonnull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
   {
@@ -82,7 +75,7 @@ public final class PeppolValidationDirectory
                                                                     _getCL ());
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_BUSINESS_CARD_V1,
                                                                              "Peppol Directory BusinessCard v1",
-                                                                             _createStatus (bDeprecated),
+                                                                             PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                              ValidationExecutorXSD.create (DIRECTORY_V1)));
     }
 
@@ -93,7 +86,7 @@ public final class PeppolValidationDirectory
                                                                     _getCL ());
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_BUSINESS_CARD_V2,
                                                                              "Peppol Directory BusinessCard v2",
-                                                                             _createStatus (bDeprecated),
+                                                                             PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                              ValidationExecutorXSD.create (DIRECTORY_V2)));
     }
 
@@ -104,7 +97,7 @@ public final class PeppolValidationDirectory
                                                                     _getCL ());
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_BUSINESS_CARD_V3,
                                                                              "Peppol Directory BusinessCard v3",
-                                                                             _createStatus (bNotDeprecated),
+                                                                             PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
                                                                              ValidationExecutorXSD.create (DIRECTORY_V3)));
     }
   }

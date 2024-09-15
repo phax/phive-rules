@@ -22,11 +22,10 @@ import javax.annotation.concurrent.Immutable;
 import com.helger.commons.ValueEnforcer;
 import com.helger.commons.io.resource.ClassPathResource;
 import com.helger.commons.io.resource.IReadableResource;
-import com.helger.diver.api.version.VESID;
+import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
 import com.helger.phive.api.executorset.ValidationExecutorSet;
-import com.helger.phive.api.executorset.status.IValidationExecutorSetStatus;
-import com.helger.phive.api.executorset.status.ValidationExecutorSetStatus;
+import com.helger.phive.rules.api.PhiveRulesHelper;
 import com.helger.phive.xml.schematron.ValidationExecutorSchematron;
 import com.helger.phive.xml.source.IValidationSourceXML;
 import com.helger.phive.xml.xsd.ValidationExecutorXSD;
@@ -44,8 +43,8 @@ public final class ISDOCValidation
   public static final String GROUP_ID = "cz.isdoc";
 
   @Deprecated
-  public static final VESID VID_ISDOC_601 = new VESID (GROUP_ID, "isdoc", "6.0.1");
-  public static final VESID VID_ISDOC_602 = new VESID (GROUP_ID, "isdoc", "6.0.2");
+  public static final DVRCoordinate VID_ISDOC_601 = PhiveRulesHelper.createCoordinate (GROUP_ID, "isdoc", "6.0.1");
+  public static final DVRCoordinate VID_ISDOC_602 = PhiveRulesHelper.createCoordinate (GROUP_ID, "isdoc", "6.0.2");
 
   private ISDOCValidation ()
   {}
@@ -66,13 +65,7 @@ public final class ISDOCValidation
   @Nonnull
   private static ValidationExecutorSchematron _createXSLT (@Nonnull final IReadableResource aRes)
   {
-    return ValidationExecutorSchematron.createXSLT (aRes, NS_CTX.getClone ());
-  }
-
-  @Nonnull
-  private static IValidationExecutorSetStatus _createStatus (final boolean bIsDeprecated)
-  {
-    return ValidationExecutorSetStatus.createDeprecatedNow (bIsDeprecated);
+    return PhiveRulesHelper.createXSLT (aRes, NS_CTX.getClone ());
   }
 
   /**
@@ -91,17 +84,19 @@ public final class ISDOCValidation
 
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_ISDOC_601,
                                                                            "ISDOC " + VID_ISDOC_601.getVersionString (),
-                                                                           _createStatus (bDeprecated),
+                                                                           PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                            ValidationExecutorXSD.create (CXMLDSig.getXSDResource (),
                                                                                                          new ClassPathResource ("/external/schemas/isdoc/6.0.1/isdoc-invoice-dsig-6.0.1.xsd",
                                                                                                                                 _getCL ())),
-                                                                           _createXSLT (new ClassPathResource ("/external/schematron/isdoc/6.0.1/isdoc-6.0.1.xslt"))));
+                                                                           _createXSLT (new ClassPathResource ("/external/schematron/isdoc/6.0.1/isdoc-6.0.1.xslt",
+                                                                                                               _getCL ()))));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_ISDOC_602,
                                                                            "ISDOC " + VID_ISDOC_602.getVersionString (),
-                                                                           _createStatus (bNotDeprecated),
+                                                                           PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
                                                                            ValidationExecutorXSD.create (CXMLDSig.getXSDResource (),
                                                                                                          new ClassPathResource ("/external/schemas/isdoc/6.0.2/isdoc-invoice-dsig-6.0.2.xsd",
                                                                                                                                 _getCL ())),
-                                                                           _createXSLT (new ClassPathResource ("/external/schematron/isdoc/6.0.2/isdoc-6.0.2.xslt"))));
+                                                                           _createXSLT (new ClassPathResource ("/external/schematron/isdoc/6.0.2/isdoc-6.0.2.xslt",
+                                                                                                               _getCL ()))));
   }
 }

@@ -22,16 +22,14 @@ import javax.annotation.concurrent.Immutable;
 import com.helger.commons.ValueEnforcer;
 import com.helger.commons.io.resource.ClassPathResource;
 import com.helger.commons.io.resource.IReadableResource;
-import com.helger.diver.api.version.VESID;
+import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
 import com.helger.phive.api.executorset.ValidationExecutorSet;
-import com.helger.phive.api.executorset.status.IValidationExecutorSetStatus;
-import com.helger.phive.api.executorset.status.ValidationExecutorSetStatus;
-import com.helger.phive.xml.schematron.ValidationExecutorSchematron;
+import com.helger.phive.rules.api.PhiveRulesHelper;
+import com.helger.phive.rules.api.PhiveRulesUBLHelper;
 import com.helger.phive.xml.source.IValidationSourceXML;
 import com.helger.phive.xml.xsd.ValidationExecutorXSD;
 import com.helger.ubl21.UBL21Marshaller;
-import com.helger.xml.namespace.IIterableNamespaceContext;
 
 /**
  * Italian Peppol validation artefacts based on BIS 3.0.6.
@@ -47,9 +45,13 @@ public final class PeppolItalyValidation2_2_9
 
   // Standard
   private static final String GROUP_ID = "it.peppol";
-  public static final VESID VID_DESPATCH_ADVICE = new VESID (GROUP_ID, "despatch-advice", VERSION_STR);
-  public static final VESID VID_ORDER = new VESID (GROUP_ID, "order", VERSION_STR);
-  public static final VESID VID_ORDER_RESPONSE = new VESID (GROUP_ID, "order-response", VERSION_STR);
+  public static final DVRCoordinate VID_DESPATCH_ADVICE = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                             "despatch-advice",
+                                                                                             VERSION_STR);
+  public static final DVRCoordinate VID_ORDER = PhiveRulesHelper.createCoordinate (GROUP_ID, "order", VERSION_STR);
+  public static final DVRCoordinate VID_ORDER_RESPONSE = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                            "order-response",
+                                                                                            VERSION_STR);
 
   @Nonnull
   private static ClassLoader _getCL ()
@@ -67,19 +69,6 @@ public final class PeppolItalyValidation2_2_9
   private PeppolItalyValidation2_2_9 ()
   {}
 
-  @Nonnull
-  private static ValidationExecutorSchematron _createXSLT (@Nonnull final IReadableResource aRes,
-                                                           @Nonnull final IIterableNamespaceContext aNamespaceContext)
-  {
-    return ValidationExecutorSchematron.createXSLT (aRes, aNamespaceContext);
-  }
-
-  @Nonnull
-  private static IValidationExecutorSetStatus _createStatus (final boolean bIsDeprecated)
-  {
-    return ValidationExecutorSetStatus.createDeprecatedNow (bIsDeprecated);
-  }
-
   public static void init (@Nonnull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
   {
     ValueEnforcer.notNull (aRegistry, "Registry");
@@ -93,28 +82,28 @@ public final class PeppolItalyValidation2_2_9
                                                                            "AGID Peppol Despatch Advice" +
                                                                                                 sVersion +
                                                                                                 sAkaVersionBIS,
-                                                                           _createStatus (bDeprecated),
+                                                                           PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                            ValidationExecutorXSD.create (UBL21Marshaller.getAllDespatchAdviceXSDs ()),
-                                                                           _createXSLT (DESPATCH_ADVICE,
-                                                                                        PeppolItalyValidation.createUBLNSContext (UBL21Marshaller.despatchAdvice ()
-                                                                                                                                                 .getRootElementNamespaceURI ()))));
+                                                                           PhiveRulesHelper.createXSLT (DESPATCH_ADVICE,
+                                                                                                        PhiveRulesUBLHelper.createUBL21NSContext (UBL21Marshaller.despatchAdvice ()
+                                                                                                         .getRootElementNamespaceURI ()))));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_ORDER,
                                                                            "AGID Peppol Order" +
                                                                                       sVersion +
                                                                                       sAkaVersionBIS,
-                                                                           _createStatus (bDeprecated),
+                                                                           PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                            ValidationExecutorXSD.create (UBL21Marshaller.getAllOrderXSDs ()),
-                                                                           _createXSLT (ORDER,
-                                                                                        PeppolItalyValidation.createUBLNSContext (UBL21Marshaller.order ()
-                                                                                                                                                 .getRootElementNamespaceURI ()))));
+                                                                           PhiveRulesHelper.createXSLT (ORDER,
+                                                                                                        PhiveRulesUBLHelper.createUBL21NSContext (UBL21Marshaller.order ()
+                                                                                                         .getRootElementNamespaceURI ()))));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_ORDER_RESPONSE,
                                                                            "AGID Peppol Order Response" +
                                                                                                sVersion +
                                                                                                sAkaVersionBIS,
-                                                                           _createStatus (bDeprecated),
+                                                                           PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                            ValidationExecutorXSD.create (UBL21Marshaller.getAllOrderResponseXSDs ()),
-                                                                           _createXSLT (ORDER_RESPONSE,
-                                                                                        PeppolItalyValidation.createUBLNSContext (UBL21Marshaller.orderResponse ()
-                                                                                                                                                 .getRootElementNamespaceURI ()))));
+                                                                           PhiveRulesHelper.createXSLT (ORDER_RESPONSE,
+                                                                                                        PhiveRulesUBLHelper.createUBL21NSContext (UBL21Marshaller.orderResponse ()
+                                                                                                         .getRootElementNamespaceURI ()))));
   }
 }

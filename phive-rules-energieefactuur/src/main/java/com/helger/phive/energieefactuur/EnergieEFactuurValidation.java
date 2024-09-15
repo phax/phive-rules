@@ -30,8 +30,6 @@ import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
 import com.helger.phive.api.executorset.ValidationExecutorSet;
 import com.helger.phive.rules.api.PhiveRulesHelper;
 import com.helger.phive.simplerinvoicing.SimplerInvoicingValidation;
-import com.helger.phive.xml.schematron.SchematronNamespaceBeautifier;
-import com.helger.phive.xml.schematron.ValidationExecutorSchematron;
 import com.helger.phive.xml.source.IValidationSourceXML;
 import com.helger.phive.xml.xsd.ValidationExecutorXSD;
 import com.helger.phive.xml.xsd.ValidationExecutorXSDPartial;
@@ -117,11 +115,10 @@ public final class EnergieEFactuurValidation
       // Create XPathExpression for extension validation
       final XPathFactory aXF = XPathHelper.createXPathFactorySaxonFirst ();
       final XPath aXP = aXF.newXPath ();
-      final MapBasedNamespaceContext aCtx = UBL21NamespaceContext.getInstance ().getClone ();
-      aCtx.addMapping ("ubl", sUBL21InvoiceNamespaceURI);
-      aCtx.addMapping ("eef1", EEF_EXT_NS_1_0_0);
-      aXP.setNamespaceContext (aCtx);
-      SchematronNamespaceBeautifier.addMappings (aCtx);
+      final MapBasedNamespaceContext aNsCtx = UBL21NamespaceContext.getInstance ().getClone ();
+      aNsCtx.addMapping ("ubl", sUBL21InvoiceNamespaceURI);
+      aNsCtx.addMapping ("eef1", EEF_EXT_NS_1_0_0);
+      aXP.setNamespaceContext (aNsCtx);
 
       final XPathExpression aXE100 = XPathHelper.createNewXPathExpression (aXP,
                                                                            "/ubl:Invoice/cec:UBLExtensions/cec:UBLExtension/cec:ExtensionContent" +
@@ -134,24 +131,23 @@ public final class EnergieEFactuurValidation
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_ENERGIE_EFACTUUR_1_0_0,
                                                                              "Energie eFactuur " +
                                                                                                          VID_ENERGIE_EFACTUUR_1_0_0.getVersionString (),
-                                                                             PhiveRulesHelper.createStatus (bNotDeprecated),
+                                                                             PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
                                                                              ValidationExecutorXSDPartial.create (aPartialXSDs,
                                                                                                                   XSDPartialContext.create (aXE100,
                                                                                                                                             1,
                                                                                                                                             1)),
-                                                                             ValidationExecutorSchematron.createXSLT (SimplerInvoicingValidation.INVOICE_SI11,
-                                                                                                                      aCtx)));
+                                                                             PhiveRulesHelper.createXSLT (SimplerInvoicingValidation.INVOICE_SI11,
+                                                                                                          aNsCtx)));
     }
     {
       // Create XPathExpression for extension validation
       final XPathFactory aXF = XPathHelper.createXPathFactorySaxonFirst ();
       final XPath aXP = aXF.newXPath ();
-      final MapBasedNamespaceContext aCtx = UBL21NamespaceContext.getInstance ().getClone ();
-      aCtx.addMapping ("ubl", sUBL21InvoiceNamespaceURI);
-      aCtx.addMapping ("eef101", EEF_EXT_NS_1_0_1);
-      aXP.setNamespaceContext (aCtx);
-      SchematronNamespaceBeautifier.addMappings (aCtx);
+      final MapBasedNamespaceContext aNsCtx = UBL21NamespaceContext.getInstance ().getClone ();
+      aNsCtx.addMapping ("ubl", sUBL21InvoiceNamespaceURI);
+      aNsCtx.addMapping ("eef101", EEF_EXT_NS_1_0_1);
+      aXP.setNamespaceContext (aNsCtx);
 
       final XPathExpression aXE101 = XPathHelper.createNewXPathExpression (aXP,
                                                                            "/ubl:Invoice/cec:UBLExtensions/cec:UBLExtension/cec:ExtensionContent" +
@@ -164,24 +160,23 @@ public final class EnergieEFactuurValidation
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_ENERGIE_EFACTUUR_1_0_1,
                                                                              "Energie eFactuur " +
                                                                                                          VID_ENERGIE_EFACTUUR_1_0_1.getVersionString (),
-                                                                             PhiveRulesHelper.createStatus (bNotDeprecated),
+                                                                             PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
                                                                              ValidationExecutorXSDPartial.create (aPartialXSDs,
                                                                                                                   XSDPartialContext.create (aXE101,
                                                                                                                                             1,
                                                                                                                                             1)),
-                                                                             ValidationExecutorSchematron.createXSLT (SimplerInvoicingValidation.INVOICE_SI11,
-                                                                                                                      aCtx)));
+                                                                             PhiveRulesHelper.createXSLT (SimplerInvoicingValidation.INVOICE_SI11,
+                                                                                                          aNsCtx)));
     }
     {
       // Create XPathExpression for extension validation
       final XPathFactory aXF = XPathHelper.createXPathFactorySaxonFirst ();
       final XPath aXP = aXF.newXPath ();
-      final MapBasedNamespaceContext aCtx = UBL21NamespaceContext.getInstance ().getClone ();
-      aCtx.addMapping ("ubl", sUBL21InvoiceNamespaceURI);
-      aCtx.addMapping ("eef2", EEF_EXT_NS_2_0_0);
-      aXP.setNamespaceContext (aCtx);
-      SchematronNamespaceBeautifier.addMappings (aCtx);
+      final MapBasedNamespaceContext aNsCtx = UBL21NamespaceContext.getInstance ().getClone ();
+      aNsCtx.addMapping ("ubl", sUBL21InvoiceNamespaceURI);
+      aNsCtx.addMapping ("eef2", EEF_EXT_NS_2_0_0);
+      aXP.setNamespaceContext (aNsCtx);
 
       final XPathExpression aXE200 = XPathHelper.createNewXPathExpression (aXP,
                                                                            "/ubl:Invoice/cec:UBLExtensions/cec:UBLExtension/cec:ExtensionContent" +
@@ -194,24 +189,23 @@ public final class EnergieEFactuurValidation
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_ENERGIE_EFACTUUR_2_0_0,
                                                                              "Energie eFactuur " +
                                                                                                          VID_ENERGIE_EFACTUUR_2_0_0.getVersionString (),
-                                                                             PhiveRulesHelper.createStatus (bNotDeprecated),
+                                                                             PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
                                                                              ValidationExecutorXSDPartial.create (aPartialXSDs,
                                                                                                                   XSDPartialContext.create (aXE200,
                                                                                                                                             1,
                                                                                                                                             1)),
-                                                                             ValidationExecutorSchematron.createXSLT (SimplerInvoicingValidation.INVOICE_SI12,
-                                                                                                                      aCtx)));
+                                                                             PhiveRulesHelper.createXSLT (SimplerInvoicingValidation.INVOICE_SI12,
+                                                                                                          aNsCtx)));
     }
     {
       // Create XPathExpression for extension validation
       final XPathFactory aXF = XPathHelper.createXPathFactorySaxonFirst ();
       final XPath aXP = aXF.newXPath ();
-      final MapBasedNamespaceContext aCtx = UBL21NamespaceContext.getInstance ().getClone ();
-      aCtx.addMapping ("ubl", sUBL21InvoiceNamespaceURI);
-      aCtx.addMapping ("eef3", EEF_EXT_NS_3_0_0);
-      aXP.setNamespaceContext (aCtx);
-      SchematronNamespaceBeautifier.addMappings (aCtx);
+      final MapBasedNamespaceContext aNsCtx = UBL21NamespaceContext.getInstance ().getClone ();
+      aNsCtx.addMapping ("ubl", sUBL21InvoiceNamespaceURI);
+      aNsCtx.addMapping ("eef3", EEF_EXT_NS_3_0_0);
+      aXP.setNamespaceContext (aNsCtx);
 
       final XPathExpression aXE300 = XPathHelper.createNewXPathExpression (aXP,
                                                                            "/ubl:Invoice/cec:UBLExtensions/cec:UBLExtension/cec:ExtensionContent" +
@@ -224,24 +218,23 @@ public final class EnergieEFactuurValidation
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_ENERGIE_EFACTUUR_3_0_0,
                                                                              "Energie eFactuur " +
                                                                                                          VID_ENERGIE_EFACTUUR_3_0_0.getVersionString (),
-                                                                             PhiveRulesHelper.createStatus (bNotDeprecated),
+                                                                             PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
                                                                              ValidationExecutorXSDPartial.create (aPartialXSDs,
                                                                                                                   XSDPartialContext.create (aXE300,
                                                                                                                                             1,
                                                                                                                                             1)),
-                                                                             ValidationExecutorSchematron.createXSLT (SimplerInvoicingValidation.INVOICE_SI20,
-                                                                                                                      aCtx)));
+                                                                             PhiveRulesHelper.createXSLT (SimplerInvoicingValidation.INVOICE_SI20,
+                                                                                                          aNsCtx)));
     }
     {
       // Create XPathExpression for extension validation
       final XPathFactory aXF = XPathHelper.createXPathFactorySaxonFirst ();
       final XPath aXP = aXF.newXPath ();
-      final MapBasedNamespaceContext aCtx = UBL21NamespaceContext.getInstance ().getClone ();
-      aCtx.addMapping ("ubl", sUBL21InvoiceNamespaceURI);
-      aCtx.addMapping ("eef31", EEF_EXT_NS_3_1_0);
-      aXP.setNamespaceContext (aCtx);
-      SchematronNamespaceBeautifier.addMappings (aCtx);
+      final MapBasedNamespaceContext aNsCtx = UBL21NamespaceContext.getInstance ().getClone ();
+      aNsCtx.addMapping ("ubl", sUBL21InvoiceNamespaceURI);
+      aNsCtx.addMapping ("eef31", EEF_EXT_NS_3_1_0);
+      aXP.setNamespaceContext (aNsCtx);
 
       final XPathExpression aXE310 = XPathHelper.createNewXPathExpression (aXP,
                                                                            "/ubl:Invoice/cec:UBLExtensions/cec:UBLExtension/cec:ExtensionContent" +
@@ -254,14 +247,14 @@ public final class EnergieEFactuurValidation
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_ENERGIE_EFACTUUR_3_1_0,
                                                                              "Energie eFactuur " +
                                                                                                          VID_ENERGIE_EFACTUUR_3_1_0.getVersionString (),
-                                                                             PhiveRulesHelper.createStatus (bNotDeprecated),
+                                                                             PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
                                                                              ValidationExecutorXSDPartial.create (aPartialXSDs,
                                                                                                                   XSDPartialContext.create (aXE310,
                                                                                                                                             1,
                                                                                                                                             1)),
-                                                                             ValidationExecutorSchematron.createXSLT (SimplerInvoicingValidation.INVOICE_SI2035,
-                                                                                                                      aCtx)));
+                                                                             PhiveRulesHelper.createXSLT (SimplerInvoicingValidation.INVOICE_SI2035,
+                                                                                                          aNsCtx)));
     }
   }
 }

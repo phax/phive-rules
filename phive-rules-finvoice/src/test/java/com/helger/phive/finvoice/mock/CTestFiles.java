@@ -27,7 +27,7 @@ import com.helger.commons.collection.impl.CommonsArrayList;
 import com.helger.commons.collection.impl.ICommonsList;
 import com.helger.commons.io.resource.ClassPathResource;
 import com.helger.commons.io.resource.IReadableResource;
-import com.helger.diver.api.version.VESID;
+import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.phive.api.executorset.ValidationExecutorSetRegistry;
 import com.helger.phive.api.mock.TestFile;
 import com.helger.phive.finvoice.FinvoiceValidation;
@@ -50,23 +50,23 @@ public final class CTestFiles
   public static ICommonsList <TestFile> getAllTestFiles ()
   {
     final ICommonsList <TestFile> ret = new CommonsArrayList <> ();
-    for (final VESID aESID : new VESID [] { FinvoiceValidation.VID_FINVOICE_13,
-                                            FinvoiceValidation.VID_FINVOICE_20,
-                                            FinvoiceValidation.VID_FINVOICE_201,
-                                            FinvoiceValidation.VID_FINVOICE_30 })
-      for (final IReadableResource aRes : getAllMatchingTestFiles (aESID))
+    for (final DVRCoordinate aVESID : new DVRCoordinate [] { FinvoiceValidation.VID_FINVOICE_13,
+                                                            FinvoiceValidation.VID_FINVOICE_20,
+                                                            FinvoiceValidation.VID_FINVOICE_201,
+                                                            FinvoiceValidation.VID_FINVOICE_30 })
+      for (final IReadableResource aRes : getAllMatchingTestFiles (aVESID))
       {
         assertTrue ("Not existing test file: " + aRes.getPath (), aRes.exists ());
-        ret.add (TestFile.createGoodCase (aRes, aESID));
+        ret.add (TestFile.createGoodCase (aRes, aVESID));
       }
     return ret;
   }
 
   @Nonnull
   @ReturnsMutableCopy
-  public static ICommonsList <? extends IReadableResource> getAllMatchingTestFiles (@Nonnull final VESID aVESID)
+  public static ICommonsList <? extends IReadableResource> getAllMatchingTestFiles (@Nonnull final DVRCoordinate aVESID)
   {
-    ValueEnforcer.notNull (aVESID, "VESID");
+    ValueEnforcer.notNull (aVESID, "DVRCoordinate");
 
     final String sPrefix = "/external/test-files/";
 
@@ -97,6 +97,6 @@ public final class CTestFiles
                                       x -> new ClassPathResource (sPrefix + "3.0/" + x));
     }
 
-    throw new IllegalArgumentException ("Invalid VESID: " + aVESID);
+    throw new IllegalArgumentException ("Invalid DVRCoordinate: " + aVESID);
   }
 }
