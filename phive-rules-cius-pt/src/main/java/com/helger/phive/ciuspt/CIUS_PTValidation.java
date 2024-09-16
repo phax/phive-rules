@@ -68,11 +68,6 @@ public final class CIUS_PTValidation
                                                                                                      "ubl-invoice",
                                                                                                      "2.1.1");
 
-  private static final ClassPathResource RES_200 = new ClassPathResource ("/external/schematron/2.0.0/urn_feap.gov.pt_CIUS-PT_2.0.0.xslt",
-                                                                          _getCL ());
-  private static final ClassPathResource RES_211 = new ClassPathResource ("/external/schematron/2.1.1/urn_feap.gov.pt_CIUS-PT_2.1.1.xslt",
-                                                                          _getCL ());
-
   private CIUS_PTValidation ()
   {}
 
@@ -97,31 +92,39 @@ public final class CIUS_PTValidation
     final boolean bNotDeprecated = false;
 
     // V2.0.0 containing the underlying EN rules
-    aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_CIUS_PT_UBL_CREDITNOTE_200,
-                                                                           "CIUS-PT UBL Credit Note " +
-                                                                                                           VID_CIUS_PT_UBL_CREDITNOTE_200.getVersionString (),
-                                                                           PhiveRulesHelper.createSimpleStatus (bDeprecated),
-                                                                           ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
-                                                                           PhiveRulesUBLHelper.createXSLT_UBL21 (RES_200)));
-    aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_CIUS_PT_UBL_INVOICE_200,
-                                                                           "CIUS-PT UBL Invoice " +
-                                                                                                        VID_CIUS_PT_UBL_INVOICE_200.getVersionString (),
-                                                                           PhiveRulesHelper.createSimpleStatus (bDeprecated),
-                                                                           ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
-                                                                           PhiveRulesUBLHelper.createXSLT_UBL21 (RES_200)));
+    {
+      final ClassPathResource RES_200 = new ClassPathResource ("/external/schematron/2.0.0/urn_feap.gov.pt_CIUS-PT_2.0.0.xslt",
+                                                               _getCL ());
+      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_CIUS_PT_UBL_CREDITNOTE_200,
+                                                                             "CIUS-PT UBL Credit Note " +
+                                                                                                             VID_CIUS_PT_UBL_CREDITNOTE_200.getVersionString (),
+                                                                             PhiveRulesHelper.createSimpleStatus (bDeprecated),
+                                                                             ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
+                                                                             PhiveRulesUBLHelper.createXSLT_UBL21 (RES_200)));
+      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_CIUS_PT_UBL_INVOICE_200,
+                                                                             "CIUS-PT UBL Invoice " +
+                                                                                                          VID_CIUS_PT_UBL_INVOICE_200.getVersionString (),
+                                                                             PhiveRulesHelper.createSimpleStatus (bDeprecated),
+                                                                             ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
+                                                                             PhiveRulesUBLHelper.createXSLT_UBL21 (RES_200)));
+    }
 
     // V2.1.1 containing the underlying EN rules
-    aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_CIUS_PT_UBL_CREDITNOTE_211,
-                                                                           "CIUS-PT UBL Credit Note " +
-                                                                                                           VID_CIUS_PT_UBL_CREDITNOTE_211.getVersionString (),
-                                                                           PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
-                                                                           ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
-                                                                           PhiveRulesUBLHelper.createXSLT_UBL21 (RES_211)));
-    aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_CIUS_PT_UBL_INVOICE_211,
-                                                                           "CIUS-PT UBL Invoice " +
-                                                                                                        VID_CIUS_PT_UBL_INVOICE_211.getVersionString (),
-                                                                           PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
-                                                                           ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
-                                                                           PhiveRulesUBLHelper.createXSLT_UBL21 (RES_211)));
+    {
+      final ClassPathResource RES_211 = new ClassPathResource ("/external/schematron/2.1.1/urn_feap.gov.pt_CIUS-PT_2.1.1.xslt",
+                                                               _getCL ());
+      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_CIUS_PT_UBL_CREDITNOTE_211,
+                                                                             "CIUS-PT UBL Credit Note " +
+                                                                                                             VID_CIUS_PT_UBL_CREDITNOTE_211.getVersionString (),
+                                                                             PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
+                                                                             ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
+                                                                             PhiveRulesUBLHelper.createXSLT_UBL21 (RES_211)));
+      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_CIUS_PT_UBL_INVOICE_211,
+                                                                             "CIUS-PT UBL Invoice " +
+                                                                                                          VID_CIUS_PT_UBL_INVOICE_211.getVersionString (),
+                                                                             PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
+                                                                             ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
+                                                                             PhiveRulesUBLHelper.createXSLT_UBL21 (RES_211)));
+    }
   }
 }
