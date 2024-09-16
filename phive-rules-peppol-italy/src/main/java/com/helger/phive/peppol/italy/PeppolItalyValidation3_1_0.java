@@ -43,7 +43,7 @@ public final class PeppolItalyValidation3_1_0
   public static final String VERSION_STR = "3.1.0";
 
   // Standard
-  private static final String GROUP_ID = "it.peppol";
+  public static final String GROUP_ID = "it.peppol";
 
   public static final DVRCoordinate VID_CREDIT_NOTE = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                          "creditnote",

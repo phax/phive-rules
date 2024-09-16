@@ -21,15 +21,11 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 
 import com.helger.commons.io.resource.IReadableResource;
-import com.helger.phive.api.EValidationType;
-import com.helger.phive.api.artefact.IValidationArtefact;
 import com.helger.phive.api.execute.IValidationExecutor;
 import com.helger.phive.api.executorset.IValidationExecutorSet;
+import com.helger.phive.rules.api.PhiveRulesTestHelper;
 import com.helger.phive.xml.source.IValidationSourceXML;
 import com.helger.phive.xrechnung.mock.CTestFiles;
-import com.helger.schematron.pure.SchematronResourcePure;
-import com.helger.schematron.sch.SchematronResourceSCH;
-import com.helger.schematron.xslt.SchematronResourceXSLT;
 
 /**
  * Test class for class {@link XRechnungValidation}.
@@ -54,19 +50,6 @@ public final class XRechnungValidationTest
   {
     for (final IValidationExecutorSet <IValidationSourceXML> aVES : CTestFiles.VES_REGISTRY.getAll ())
       for (final IValidationExecutor <IValidationSourceXML> aVE : aVES)
-      {
-        final IValidationArtefact aVA = aVE.getValidationArtefact ();
-        final IReadableResource aRes = aVA.getRuleResource ();
-
-        // Check that the passed Schematron is valid
-        if (aVA.getValidationArtefactType () == EValidationType.SCHEMATRON_PURE)
-          assertTrue (aRes.toString (), new SchematronResourcePure (aRes).isValidSchematron ());
-        else
-          if (aVA.getValidationArtefactType () == EValidationType.SCHEMATRON_SCH)
-            assertTrue (aRes.toString (), new SchematronResourceSCH (aRes).isValidSchematron ());
-          else
-            if (aVA.getValidationArtefactType () == EValidationType.SCHEMATRON_XSLT)
-              assertTrue (aRes.toString (), new SchematronResourceXSLT (aRes).isValidSchematron ());
-      }
+        assertTrue (PhiveRulesTestHelper.isContentCorrect (aVE));
   }
 }

@@ -44,7 +44,7 @@ public final class PeppolItalyValidation2_3_0
   public static final String VERSION_STR = "2.3.0";
 
   // Standard
-  private static final String GROUP_ID = "it.peppol";
+  public static final String GROUP_ID = "it.peppol";
 
   public static final DVRCoordinate VID_DESPATCH_ADVICE = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                              "despatch-advice",

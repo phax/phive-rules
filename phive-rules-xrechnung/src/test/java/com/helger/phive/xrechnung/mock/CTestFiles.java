@@ -27,7 +27,7 @@ import com.helger.commons.collection.impl.CommonsArrayList;
 import com.helger.commons.collection.impl.ICommonsList;
 import com.helger.commons.io.resource.ClassPathResource;
 import com.helger.commons.io.resource.IReadableResource;
-import com.helger.diver.api.version.VESID;
+import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.phive.api.executorset.ValidationExecutorSetRegistry;
 import com.helger.phive.api.mock.TestFile;
 import com.helger.phive.en16931.EN16931Validation;
@@ -53,49 +53,49 @@ public final class CTestFiles
   public static ICommonsList <TestFile> getAllTestFiles ()
   {
     final ICommonsList <TestFile> ret = new CommonsArrayList <> ();
-    for (final VESID aESID : new VESID [] { XRechnungValidation.VID_XRECHNUNG_CII_302,
-                                            XRechnungValidation.VID_XRECHNUNG_UBL_CREDITNOTE_302,
-                                            XRechnungValidation.VID_XRECHNUNG_UBL_INVOICE_302,
+    for (final DVRCoordinate aESID : new DVRCoordinate [] { XRechnungValidation.VID_XRECHNUNG_CII_302,
+                                                            XRechnungValidation.VID_XRECHNUNG_UBL_CREDITNOTE_302,
+                                                            XRechnungValidation.VID_XRECHNUNG_UBL_INVOICE_302,
 
-                                            XRechnungValidation.VID_XRECHNUNG_CII_301,
-                                            XRechnungValidation.VID_XRECHNUNG_UBL_CREDITNOTE_301,
-                                            XRechnungValidation.VID_XRECHNUNG_UBL_INVOICE_301,
+                                                            XRechnungValidation.VID_XRECHNUNG_CII_301,
+                                                            XRechnungValidation.VID_XRECHNUNG_UBL_CREDITNOTE_301,
+                                                            XRechnungValidation.VID_XRECHNUNG_UBL_INVOICE_301,
 
-                                            XRechnungValidation.VID_XRECHNUNG_CII_300,
-                                            XRechnungValidation.VID_XRECHNUNG_UBL_CREDITNOTE_300,
-                                            XRechnungValidation.VID_XRECHNUNG_UBL_INVOICE_300,
+                                                            XRechnungValidation.VID_XRECHNUNG_CII_300,
+                                                            XRechnungValidation.VID_XRECHNUNG_UBL_CREDITNOTE_300,
+                                                            XRechnungValidation.VID_XRECHNUNG_UBL_INVOICE_300,
 
-                                            XRechnungValidation.VID_XRECHNUNG_CII_231,
-                                            XRechnungValidation.VID_XRECHNUNG_UBL_CREDITNOTE_231,
-                                            XRechnungValidation.VID_XRECHNUNG_UBL_INVOICE_231,
+                                                            XRechnungValidation.VID_XRECHNUNG_CII_231,
+                                                            XRechnungValidation.VID_XRECHNUNG_UBL_CREDITNOTE_231,
+                                                            XRechnungValidation.VID_XRECHNUNG_UBL_INVOICE_231,
 
-                                            XRechnungValidation.VID_XRECHNUNG_CII_220,
-                                            XRechnungValidation.VID_XRECHNUNG_UBL_CREDITNOTE_220,
-                                            XRechnungValidation.VID_XRECHNUNG_UBL_INVOICE_220,
+                                                            XRechnungValidation.VID_XRECHNUNG_CII_220,
+                                                            XRechnungValidation.VID_XRECHNUNG_UBL_CREDITNOTE_220,
+                                                            XRechnungValidation.VID_XRECHNUNG_UBL_INVOICE_220,
 
-                                            XRechnungValidation.VID_XRECHNUNG_CII_120,
-                                            XRechnungValidation.VID_XRECHNUNG_UBL_CREDITNOTE_120,
-                                            XRechnungValidation.VID_XRECHNUNG_UBL_INVOICE_120,
+                                                            XRechnungValidation.VID_XRECHNUNG_CII_120,
+                                                            XRechnungValidation.VID_XRECHNUNG_UBL_CREDITNOTE_120,
+                                                            XRechnungValidation.VID_XRECHNUNG_UBL_INVOICE_120,
 
-                                            XRechnungValidation.VID_XRECHNUNG_CII_121,
-                                            XRechnungValidation.VID_XRECHNUNG_UBL_CREDITNOTE_121,
-                                            XRechnungValidation.VID_XRECHNUNG_UBL_INVOICE_121,
+                                                            XRechnungValidation.VID_XRECHNUNG_CII_121,
+                                                            XRechnungValidation.VID_XRECHNUNG_UBL_CREDITNOTE_121,
+                                                            XRechnungValidation.VID_XRECHNUNG_UBL_INVOICE_121,
 
-                                            XRechnungValidation.VID_XRECHNUNG_CII_122,
-                                            XRechnungValidation.VID_XRECHNUNG_UBL_CREDITNOTE_122,
-                                            XRechnungValidation.VID_XRECHNUNG_UBL_INVOICE_122,
+                                                            XRechnungValidation.VID_XRECHNUNG_CII_122,
+                                                            XRechnungValidation.VID_XRECHNUNG_UBL_CREDITNOTE_122,
+                                                            XRechnungValidation.VID_XRECHNUNG_UBL_INVOICE_122,
 
-                                            XRechnungValidation.VID_XRECHNUNG_CII_200,
-                                            XRechnungValidation.VID_XRECHNUNG_UBL_CREDITNOTE_200,
-                                            XRechnungValidation.VID_XRECHNUNG_UBL_INVOICE_200,
+                                                            XRechnungValidation.VID_XRECHNUNG_CII_200,
+                                                            XRechnungValidation.VID_XRECHNUNG_UBL_CREDITNOTE_200,
+                                                            XRechnungValidation.VID_XRECHNUNG_UBL_INVOICE_200,
 
-                                            XRechnungValidation.VID_XRECHNUNG_CII_201,
-                                            XRechnungValidation.VID_XRECHNUNG_UBL_CREDITNOTE_201,
-                                            XRechnungValidation.VID_XRECHNUNG_UBL_INVOICE_201,
+                                                            XRechnungValidation.VID_XRECHNUNG_CII_201,
+                                                            XRechnungValidation.VID_XRECHNUNG_UBL_CREDITNOTE_201,
+                                                            XRechnungValidation.VID_XRECHNUNG_UBL_INVOICE_201,
 
-                                            XRechnungValidation.VID_XRECHNUNG_CII_211,
-                                            XRechnungValidation.VID_XRECHNUNG_UBL_CREDITNOTE_211,
-                                            XRechnungValidation.VID_XRECHNUNG_UBL_INVOICE_211, })
+                                                            XRechnungValidation.VID_XRECHNUNG_CII_211,
+                                                            XRechnungValidation.VID_XRECHNUNG_UBL_CREDITNOTE_211,
+                                                            XRechnungValidation.VID_XRECHNUNG_UBL_INVOICE_211, })
       for (final IReadableResource aRes : getAllMatchingTestFiles (aESID))
       {
         assertTrue ("Not existing test file: " + aRes.getPath (), aRes.exists ());
@@ -106,7 +106,7 @@ public final class CTestFiles
 
   @Nonnull
   @ReturnsMutableCopy
-  public static ICommonsList <? extends IReadableResource> getAllMatchingTestFiles (@Nonnull final VESID aVESID)
+  public static ICommonsList <? extends IReadableResource> getAllMatchingTestFiles (@Nonnull final DVRCoordinate aVESID)
   {
     ValueEnforcer.notNull (aVESID, "VESID");
 
