@@ -111,14 +111,27 @@
         <executions>
 <!--
           <execution>
-            <id>ubl</id>
+            <id>preproc</id>
+            <goals>
+              <goal>preprocess</goal>
+            </goals>
+            <configuration>
+              <sourceFile>${basedir}/src/test/resources/external/rule-source/1.0.9/EN16931-CIUS_RO-UBL-validation.sch</sourceFile>
+              <targetFile>${basedir}/src/test/resources/external/rule-source/1.0.9/preprocessed/ROeFactura-UBL-validation-Invoice_v1.0.9.sch</targetFile>
+              <keepTitles>true</keepTitles>
+            </configuration>
+          </execution>
+-->
+<!--
+          <execution>
+            <id>convert</id>
             <goals>
               <goal>convert</goal>
             </goals>
             <phase>generate-sources</phase>
             <configuration>
-              <schematronDirectory>${basedir}/src/test/resources/external/rule-source/1.0.8/preprocessed</schematronDirectory>
-              <xsltDirectory>${basedir}/src/main/resources/schematron/1.0.8</xsltDirectory>
+              <schematronDirectory>${basedir}/src/test/resources/external/rule-source/1.0.9/preprocessed</schematronDirectory>
+              <xsltDirectory>${basedir}/src/main/resources/external/schematron/1.0.9</xsltDirectory>
               <schematronPattern>ROeFactura*.sch</schematronPattern>
             </configuration>
           </execution>

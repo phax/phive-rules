@@ -60,7 +60,10 @@ public final class CTestFiles
                                                             CIUS_ROValidation.VID_CIUS_RO_UBL_INVOICE_104,
 
                                                             CIUS_ROValidation.VID_CIUS_RO_UBL_CREDITNOTE_108,
-                                                            CIUS_ROValidation.VID_CIUS_RO_UBL_INVOICE_108 })
+                                                            CIUS_ROValidation.VID_CIUS_RO_UBL_INVOICE_108,
+
+                                                            CIUS_ROValidation.VID_CIUS_RO_UBL_CREDITNOTE_109,
+                                                            CIUS_ROValidation.VID_CIUS_RO_UBL_INVOICE_109 })
       for (final IReadableResource aRes : getAllMatchingTestFiles (aESID))
       {
         assertTrue ("Not existing test file: " + aRes.getPath (), aRes.exists ());
@@ -136,6 +139,26 @@ public final class CTestFiles
                                                       "ubl_b2g_example9.xml",
                                                       "ubl_b2g_example10.xml" },
                                       x -> new ClassPathResource (sPrefix + "1.0.8/" + x));
+    }
+    if (aVESID.equals (CIUS_ROValidation.VID_CIUS_RO_UBL_CREDITNOTE_109))
+    {
+      return new CommonsArrayList <> (new String [] {}, x -> new ClassPathResource (sPrefix + "1.0.9/" + x));
+    }
+    if (aVESID.equals (CIUS_ROValidation.VID_CIUS_RO_UBL_INVOICE_109))
+    {
+      return new CommonsArrayList <> (new String [] { "ubl_b2g_example0.xml",
+                                                      "ubl_b2g_example1.xml",
+                                                      "ubl_b2g_example2.xml",
+                                                      "ubl_b2g_example3.xml",
+                                                      "ubl_b2g_example4.xml",
+                                                      "ubl_b2g_example5.xml",
+                                                      // too Buggy
+                                                      // "ubl_b2g_example6.xml",
+                                                      "ubl_b2g_example7.xml",
+                                                      "ubl_b2g_example8.xml",
+                                                      "ubl_b2g_example9.xml",
+                                                      "ubl_b2g_example10.xml" },
+                                      x -> new ClassPathResource (sPrefix + "1.0.9/" + x));
     }
 
     throw new IllegalArgumentException ("Invalid VESID: " + aVESID);

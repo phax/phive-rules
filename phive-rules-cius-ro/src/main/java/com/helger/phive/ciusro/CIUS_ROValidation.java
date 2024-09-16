@@ -60,12 +60,22 @@ public final class CIUS_ROValidation
                                                                                                      "1.0.4");
 
   // Version 1.0.8
+  @Deprecated
   public static final DVRCoordinate VID_CIUS_RO_UBL_CREDITNOTE_108 = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                                         "ubl-creditnote",
                                                                                                         "1.0.8");
+  @Deprecated
   public static final DVRCoordinate VID_CIUS_RO_UBL_INVOICE_108 = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                                      "ubl-invoice",
                                                                                                      "1.0.8");
+
+  // Version 1.0.9
+  public static final DVRCoordinate VID_CIUS_RO_UBL_CREDITNOTE_109 = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                        "ubl-creditnote",
+                                                                                                        "1.0.9");
+  public static final DVRCoordinate VID_CIUS_RO_UBL_INVOICE_109 = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                     "ubl-invoice",
+                                                                                                     "1.0.9");
 
   private CIUS_ROValidation ()
   {}
@@ -135,14 +145,32 @@ public final class CIUS_ROValidation
                                                                                     VID_CIUS_RO_UBL_CREDITNOTE_108,
                                                                                     "CIUS-RO UBL Credit Note " +
                                                                                                                     VID_CIUS_RO_UBL_CREDITNOTE_108.getVersionString (),
-                                                                                    PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
+                                                                                    PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                                     PhiveRulesUBLHelper.createXSLT_UBL21 (RES_108)));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.createDerived (aRegistry.getOfID (EN16931Validation.VID_UBL_INVOICE_138),
                                                                                     VID_CIUS_RO_UBL_INVOICE_108,
                                                                                     "CIUS-RO UBL Invoice " +
                                                                                                                  VID_CIUS_RO_UBL_INVOICE_108.getVersionString (),
-                                                                                    PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
+                                                                                    PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                                     PhiveRulesUBLHelper.createXSLT_UBL21 (RES_108)));
+    }
+
+    // V1.0.9 referencing the underlying EN rules, valid per 05.06.2024
+    {
+      final ClassPathResource RES_109 = new ClassPathResource ("/external/schematron/1.0.9/ROeFactura-UBL-validation-Invoice_v1.0.9.xslt",
+                                                               _getCL ());
+      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.createDerived (aRegistry.getOfID (EN16931Validation.VID_UBL_CREDIT_NOTE_138),
+                                                                                    VID_CIUS_RO_UBL_CREDITNOTE_109,
+                                                                                    "CIUS-RO UBL Credit Note " +
+                                                                                                                    VID_CIUS_RO_UBL_CREDITNOTE_109.getVersionString (),
+                                                                                    PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
+                                                                                    PhiveRulesUBLHelper.createXSLT_UBL21 (RES_109)));
+      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.createDerived (aRegistry.getOfID (EN16931Validation.VID_UBL_INVOICE_138),
+                                                                                    VID_CIUS_RO_UBL_INVOICE_109,
+                                                                                    "CIUS-RO UBL Invoice " +
+                                                                                                                 VID_CIUS_RO_UBL_INVOICE_109.getVersionString (),
+                                                                                    PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
+                                                                                    PhiveRulesUBLHelper.createXSLT_UBL21 (RES_109)));
     }
   }
 }

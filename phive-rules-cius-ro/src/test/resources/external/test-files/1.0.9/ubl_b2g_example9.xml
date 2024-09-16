@@ -1,0 +1,163 @@
+<!--
+
+    vanzator RO1111111111118 cumparator 4283414
+    moneda factura EUR
+    huge EmbeddedDocumentBinaryObject
+-->
+<Invoice xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2 ../../UBL-2.1(1)/xsd/maindoc/UBL-Invoice-2.1.xsd"
+    xmlns:qdt="urn:oasis:names:specification:ubl:schema:xsd:QualifiedDataTypes-2"
+    xmlns="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2"
+    xmlns:ccts="urn:un:unece:uncefact:documentation:2"
+    xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+    xmlns:udt="urn:oasis:names:specification:ubl:schema:xsd:UnqualifiedDataTypes-2"
+    xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
+    <!--<ext:UBLExtensions>
+		<ext:UBLExtension>
+			<ext:ExtensionURI>urn:www.ubl-italia.org:spec:fatturapa:xref:tipo_documento</ext:ExtensionURI>
+			<ext:ExtensionContent>
+				<cr:XCode>TD01</cr:XCode>
+			</ext:ExtensionContent>
+		</ext:UBLExtension>
+		<ext:UBLExtension>
+			<ext:ExtensionURI>urn:www.ubl-italia.org:spec:fatturapa:esigibilita_iva</ext:ExtensionURI>
+			<ext:ExtensionContent>
+				<cbc:TaxTypeCode>S</cbc:TaxTypeCode>
+			</ext:ExtensionContent>
+		</ext:UBLExtension>
+		<ext:UBLExtension>
+			<ext:ExtensionURI>urn:www.ubl-italia.org:spec:fatturapa:xref:modalita_pagamento</ext:ExtensionURI>
+			<ext:ExtensionContent>
+				<cr:XCode>MP05</cr:XCode>
+			</ext:ExtensionContent>
+		</ext:UBLExtension>
+	</ext:UBLExtensions>-->
+    <cbc:CustomizationID>urn:cen.eu:en16931:2017#compliant#urn:efactura.mfinante.ro:CIUS-RO:1.0.1</cbc:CustomizationID><!--BT-24 cen.eu:en16931:2017#compliant#urn:efactura.mfinante.ro:CIUS-RO:1.0.0-->
+    <cbc:ProfileID>urn:fdc:peppol.eu:2017:poacc:billing:01:1.0</cbc:ProfileID>
+    <cbc:ID>1316/85</cbc:ID>
+    <cbc:IssueDate>2020-02-13</cbc:IssueDate>
+    <cbc:InvoiceTypeCode>380</cbc:InvoiceTypeCode>
+    <cbc:Note>Scissione Pagamenti</cbc:Note>
+    <cbc:DocumentCurrencyCode>EUR</cbc:DocumentCurrencyCode>
+    <cbc:TaxCurrencyCode>RON</cbc:TaxCurrencyCode>
+    <cbc:BuyerReference>110#2020-02-05#ABCDEF</cbc:BuyerReference>
+    <cac:AdditionalDocumentReference>
+        <cbc:ID>1</cbc:ID>
+        <cac:Attachment>
+            <cbc:EmbeddedDocumentBinaryObject mimeCode="application/pdf" filename="mappatura_ubl_sdi.pdf">JVBE</cbc:EmbeddedDocumentBinaryObject>
+        </cac:Attachment>
+    </cac:AdditionalDocumentReference>
+    <cac:AccountingSupplierParty>
+        <cac:Party>
+            <cbc:EndpointID schemeID="0201">UF6WX8</cbc:EndpointID>
+            <cac:PartyName>
+                <cbc:Name>Azienda Unita Sanitaria Locale di Reggio Emilia</cbc:Name>
+            </cac:PartyName>
+            <cac:PostalAddress>
+                <cbc:StreetName>Via Amendola,2</cbc:StreetName>
+                <cbc:CityName>REGGIO EMILIA</cbc:CityName>
+                <cbc:PostalZone>42100</cbc:PostalZone>
+                <cbc:CountrySubentity>RE</cbc:CountrySubentity>
+                <cac:Country>
+                    <cbc:IdentificationCode>IT</cbc:IdentificationCode>
+                </cac:Country>
+            </cac:PostalAddress>
+            <cac:PartyTaxScheme>
+                <cbc:CompanyID>RO1111111111118</cbc:CompanyID>
+                <cac:TaxScheme>
+                    <cbc:ID>VAT</cbc:ID>
+                </cac:TaxScheme>
+            </cac:PartyTaxScheme>
+            <cac:PartyLegalEntity>
+                <cbc:RegistrationName>Azienda Unita Sanitaria Locale di Reggio Emilia</cbc:RegistrationName>
+            </cac:PartyLegalEntity>
+        </cac:Party>
+    </cac:AccountingSupplierParty>
+    <cac:AccountingCustomerParty>
+        <cac:Party>
+            <cbc:EndpointID schemeID="0201">UFLCTZ</cbc:EndpointID>
+            <cac:PartyName>
+                <cbc:Name>Ministerul Finantelor - Actiuni Generale</cbc:Name>
+            </cac:PartyName>
+            <cac:PostalAddress>
+                <cbc:StreetName>VIA SAN GIOVANNI DEL CANTONE 23</cbc:StreetName>
+                <cbc:CityName>MODENA</cbc:CityName>
+                <cbc:PostalZone>41121</cbc:PostalZone>
+                <cbc:CountrySubentity>MO</cbc:CountrySubentity>
+                <cac:Country>
+                    <cbc:IdentificationCode>IT</cbc:IdentificationCode>
+                </cac:Country>
+            </cac:PostalAddress>
+            <cac:PartyTaxScheme>
+                <cbc:CompanyID>IT4283414</cbc:CompanyID>
+                <cac:TaxScheme>
+                    <cbc:ID>VAT</cbc:ID>
+                </cac:TaxScheme>
+            </cac:PartyTaxScheme>
+            <cac:PartyLegalEntity>
+                <cbc:RegistrationName>Ministerul Finantelor - Actiuni Generale</cbc:RegistrationName>
+            </cac:PartyLegalEntity>
+        </cac:Party>
+    </cac:AccountingCustomerParty>
+    <cac:PaymentMeans>
+        <cbc:PaymentMeansCode>30</cbc:PaymentMeansCode>
+        <cac:PayeeFinancialAccount>
+            <cbc:ID>IT64W0100003245243300306301</cbc:ID>
+            <cac:FinancialInstitutionBranch>
+                <cbc:ID>UNCRIT2B</cbc:ID>
+            </cac:FinancialInstitutionBranch>
+        </cac:PayeeFinancialAccount>
+    </cac:PaymentMeans>
+    <cac:PaymentTerms>
+        <cbc:Note>D.LGS. 231/2002 S.M.I</cbc:Note>
+    </cac:PaymentTerms>
+    <cac:TaxTotal>
+        <cbc:TaxAmount currencyID="EUR">274.12</cbc:TaxAmount>
+        <cac:TaxSubtotal>
+            <cbc:TaxableAmount currencyID="EUR">1246.00</cbc:TaxableAmount>
+            <cbc:TaxAmount currencyID="EUR">274.12</cbc:TaxAmount>
+            <cac:TaxCategory>
+                <cbc:ID>B</cbc:ID>
+                <cbc:Percent>22</cbc:Percent>
+                <cac:TaxScheme>
+                    <cbc:ID>VAT</cbc:ID>
+                </cac:TaxScheme>
+            </cac:TaxCategory>
+        </cac:TaxSubtotal>
+    </cac:TaxTotal>
+    <cac:TaxTotal>
+        <cbc:TaxAmount currencyID="RON">628.62</cbc:TaxAmount>
+    </cac:TaxTotal>
+    <cac:LegalMonetaryTotal>
+        <cbc:LineExtensionAmount currencyID="EUR">1246.00</cbc:LineExtensionAmount>
+        <cbc:TaxExclusiveAmount currencyID="EUR">1246.00</cbc:TaxExclusiveAmount>
+        <cbc:TaxInclusiveAmount currencyID="EUR">1520.12</cbc:TaxInclusiveAmount>
+        <cbc:PrepaidAmount currencyID="EUR">274.12</cbc:PrepaidAmount>
+        <cbc:PayableAmount currencyID="EUR">1246.00</cbc:PayableAmount>
+    </cac:LegalMonetaryTotal>
+    <cac:InvoiceLine>
+        <cbc:ID>1</cbc:ID>
+        <cbc:InvoicedQuantity unitCode="C62">20</cbc:InvoicedQuantity>
+        <cbc:LineExtensionAmount currencyID="EUR">1246.00</cbc:LineExtensionAmount>
+        <cbc:AccountingCost>B09.01.068</cbc:AccountingCost>
+        <cac:DocumentReference>
+            <cbc:ID schemeID="ABT">229032/B</cbc:ID>
+        </cac:DocumentReference>
+        <cac:Item>
+            <cbc:Name>EBIXA 5MG/EROGAZIONE SOL. ORALE 50 ML</cbc:Name>
+            <cac:SellersItemIdentification>
+                <cbc:ID>689910</cbc:ID>
+            </cac:SellersItemIdentification>
+            <cac:ClassifiedTaxCategory>
+                <cbc:ID>B</cbc:ID>
+                <cbc:Percent>22</cbc:Percent>
+                <cac:TaxScheme>
+                    <cbc:ID>VAT</cbc:ID>
+                </cac:TaxScheme>
+            </cac:ClassifiedTaxCategory>
+        </cac:Item>
+        <cac:Price>
+            <cbc:PriceAmount currencyID="EUR">62.30</cbc:PriceAmount>
+        </cac:Price>
+    </cac:InvoiceLine>
+</Invoice>

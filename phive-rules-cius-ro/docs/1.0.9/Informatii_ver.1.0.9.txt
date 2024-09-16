@@ -1,0 +1,4 @@
+Artefacte de validare ver. 1.0.9, 05.06.2024.
+Au fost rezolvate urmatoarele probleme:
+- in anumite situatii, regula BR-27 Pretul net al articolului (BT-146) trebuie sa NU fie negativ. nu era evaluata, ceea ce a permis inregistrare in sistem de documente xml cu valori negative ale elementului cbc:PriceAmount 
+- in anumite situatii, elementele de tip 'Data' nu erau evaluate dupa regula 'YYYY-MM-DD', ceea ce a permis inregistrarea in sistem de valori cu lungimi mai mari de 10 digit.

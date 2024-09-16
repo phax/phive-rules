@@ -203,6 +203,7 @@ I hope that with the introduction of PINT, the versioning problem will be solved
         * Also lead to remove old "Peppol Thirdparty rules" (AT BIS2 based) (class `PeppolLegacyThirdpartyValidation`)
     * Renamed class `EHFValidationG3` to `EHFValidationG3_2020_03`
     * Made sure that only VESIDs are `public static final` whereas validation rules resources are not any more
+    * Added support for CIUS-RO 1.0.9 and deprecated CIUS-RO 1.0.8
 * v3.1.13 - 2024-09-06
     * Added support for Peppol Italy rules 3.1.0 (AGID Credit Note, Despatch Advice, Invoice, Order, Order Agreement and Order Response), Italian version
 * v3.1.12 - 2024-07-29
