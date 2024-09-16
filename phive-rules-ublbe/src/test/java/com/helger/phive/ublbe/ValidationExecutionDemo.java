@@ -53,7 +53,7 @@ public final class ValidationExecutionDemo
     final IValidationSourceXML aSource = ValidationSourceXML.create (sSystemID, aXMLDoc);
 
     // Perform the execution
-    final ValidationResultList aErrors = ValidationExecutionManager.executeValidation (IValidityDeterminator.getDefault (),
+    final ValidationResultList aErrors = ValidationExecutionManager.executeValidation (IValidityDeterminator.createDefault (),
                                                                                        aExecutors,
                                                                                        aSource);
     if (aErrors.containsNoError ())

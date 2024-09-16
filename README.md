@@ -193,14 +193,16 @@ I hope that with the introduction of PINT, the versioning problem will be solved
   
 # News and noteworthy
  
-* v3.2.0 - work in progress
+* v3.2.0 - 2024-09-16
     * Updated to ph-diver 3.0.1
-    * Updated to phive 10
+    * Updated to phive 10.0.0
+    * Created new sub-module `phive-rules-api` with a shared API
     * Marked Peppol Rules 2023-11 as deprecated
     * Removed old Peppol rules before 2020 (3.5.0 to 3.9.1)
-      * This lead to eFFF invoice also being removed, as it was depending on Peppol 3.7.0 rules
-    * Removed old Peppol Thirdparty rules (AT BIS2 based) (class `PeppolLegacyThirdpartyValidation`)
+        * This lead to remove old "eFFF invoice" rules, as it was depending on Peppol 3.7.0 rules
+        * Also lead to remove old "Peppol Thirdparty rules" (AT BIS2 based) (class `PeppolLegacyThirdpartyValidation`)
     * Renamed class `EHFValidationG3` to `EHFValidationG3_2020_03`
+    * Made sure that only VESIDs are `public static final` whereas validation rules resources are not any more
 * v3.1.13 - 2024-09-06
     * Added support for Peppol Italy rules 3.1.0 (AGID Credit Note, Despatch Advice, Invoice, Order, Order Agreement and Order Response), Italian version
 * v3.1.12 - 2024-07-29
