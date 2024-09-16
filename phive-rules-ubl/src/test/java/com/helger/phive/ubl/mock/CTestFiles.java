@@ -27,7 +27,7 @@ import com.helger.commons.collection.impl.CommonsArrayList;
 import com.helger.commons.collection.impl.ICommonsList;
 import com.helger.commons.io.resource.ClassPathResource;
 import com.helger.commons.io.resource.IReadableResource;
-import com.helger.diver.api.version.VESID;
+import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.phive.api.executorset.ValidationExecutorSetRegistry;
 import com.helger.phive.api.mock.TestFile;
 import com.helger.phive.ubl.UBLValidation;
@@ -51,11 +51,11 @@ public final class CTestFiles
   public static ICommonsList <TestFile> getAllTestFiles ()
   {
     final ICommonsList <TestFile> ret = new CommonsArrayList <> ();
-    for (final VESID aVESID : new VESID [] { UBLValidation.VID_UBL_20_INVOICE,
-                                             UBLValidation.VID_UBL_21_INVOICE,
-                                             UBLValidation.VID_UBL_22_INVOICE,
-                                             UBLValidation.VID_UBL_23_INVOICE,
-                                             UBLValidation.VID_UBL_24_INVOICE })
+    for (final DVRCoordinate aVESID : new DVRCoordinate [] { UBLValidation.VID_UBL_20_INVOICE,
+                                                             UBLValidation.VID_UBL_21_INVOICE,
+                                                             UBLValidation.VID_UBL_22_INVOICE,
+                                                             UBLValidation.VID_UBL_23_INVOICE,
+                                                             UBLValidation.VID_UBL_24_INVOICE })
       for (final IReadableResource aRes : getAllMatchingTestFiles (aVESID))
       {
         assertTrue ("Not existing test file: " + aRes.getPath (), aRes.exists ());
@@ -66,7 +66,7 @@ public final class CTestFiles
 
   @Nonnull
   @ReturnsMutableCopy
-  public static ICommonsList <? extends IReadableResource> getAllMatchingTestFiles (@Nonnull final VESID aVESID)
+  public static ICommonsList <? extends IReadableResource> getAllMatchingTestFiles (@Nonnull final DVRCoordinate aVESID)
   {
     ValueEnforcer.notNull (aVESID, "VESID");
 

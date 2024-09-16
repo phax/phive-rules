@@ -23,18 +23,17 @@ import javax.xml.xpath.XPathExpression;
 import javax.xml.xpath.XPathFactory;
 
 import com.helger.commons.ValueEnforcer;
+import com.helger.commons.collection.impl.CommonsArrayList;
+import com.helger.commons.collection.impl.ICommonsList;
 import com.helger.commons.io.resource.ClassPathResource;
-import com.helger.commons.io.resource.IReadableResource;
-import com.helger.diver.api.version.VESID;
+import com.helger.diver.api.coord.DVRCoordinate;
+import com.helger.phive.api.execute.IValidationExecutor;
+import com.helger.phive.api.executorset.IValidationExecutorSet;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
 import com.helger.phive.api.executorset.ValidationExecutorSet;
-import com.helger.phive.api.executorset.status.IValidationExecutorSetStatus;
-import com.helger.phive.api.executorset.status.ValidationExecutorSetStatus;
+import com.helger.phive.rules.api.PhiveRulesHelper;
 import com.helger.phive.simplerinvoicing.SimplerInvoicingValidation;
-import com.helger.phive.xml.schematron.SchematronNamespaceBeautifier;
-import com.helger.phive.xml.schematron.ValidationExecutorSchematron;
 import com.helger.phive.xml.source.IValidationSourceXML;
-import com.helger.phive.xml.xsd.ValidationExecutorXSD;
 import com.helger.phive.xml.xsd.ValidationExecutorXSDPartial;
 import com.helger.phive.xml.xsd.XSDPartialContext;
 import com.helger.ubl21.UBL21Marshaller;
@@ -51,22 +50,32 @@ import com.helger.xml.xpath.XPathHelper;
 public final class EnergieEFactuurValidation
 {
   public static final String GROUP_ID = "nl.energie-efactuur";
-  public static final VESID VID_ENERGIE_EFACTUUR_1_0_0 = new VESID (GROUP_ID, "energie-efactuur", "1.0.0");
-  public static final VESID VID_ENERGIE_EFACTUUR_1_0_1 = new VESID (GROUP_ID, "energie-efactuur", "1.0.1");
-  public static final VESID VID_ENERGIE_EFACTUUR_2_0_0 = new VESID (GROUP_ID, "energie-efactuur", "2.0.0");
-  public static final VESID VID_ENERGIE_EFACTUUR_3_0_0 = new VESID (GROUP_ID, "energie-efactuur", "3.0.0");
-  public static final VESID VID_ENERGIE_EFACTUUR_3_1_0 = new VESID (GROUP_ID, "energie-efactuur", "3.1.0");
+  public static final DVRCoordinate VID_ENERGIE_EFACTUUR_1_0_0 = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                    "energie-efactuur",
+                                                                                                    "1.0.0");
+  public static final DVRCoordinate VID_ENERGIE_EFACTUUR_1_0_1 = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                    "energie-efactuur",
+                                                                                                    "1.0.1");
+  public static final DVRCoordinate VID_ENERGIE_EFACTUUR_2_0_0 = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                    "energie-efactuur",
+                                                                                                    "2.0.0");
+  public static final DVRCoordinate VID_ENERGIE_EFACTUUR_3_0_0 = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                    "energie-efactuur",
+                                                                                                    "3.0.0");
+  public static final DVRCoordinate VID_ENERGIE_EFACTUUR_3_1_0 = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                    "energie-efactuur",
+                                                                                                    "3.1.0");
 
   /** Namespace URL for Energie e-Factuur 1.0.0 */
-  public static final String SEEF_EXT_NS_1_0_0 = "urn:www.energie-efactuur.nl:profile:invoice:ver1.0.0";
+  public static final String EEF_EXT_NS_1_0_0 = "urn:www.energie-efactuur.nl:profile:invoice:ver1.0.0";
   /** Namespace URL for Energie e-Factuur 1.0.1 */
-  public static final String SEEF_EXT_NS_1_0_1 = "urn:www.energie-efactuur.nl:profile:invoice:ver1.0";
+  public static final String EEF_EXT_NS_1_0_1 = "urn:www.energie-efactuur.nl:profile:invoice:ver1.0";
   /** Namespace URL for Energie e-Factuur 2.0.0 */
-  public static final String SEEF_EXT_NS_2_0_0 = "urn:www.energie-efactuur.nl:profile:invoice:ver2.0";
+  public static final String EEF_EXT_NS_2_0_0 = "urn:www.energie-efactuur.nl:profile:invoice:ver2.0";
   /** Namespace URL for Energie e-Factuur 3.0.0 */
-  public static final String SEEF_EXT_NS_3_0_0 = "urn:www.energie-efactuur.nl:profile:invoice:ver3.0";
+  public static final String EEF_EXT_NS_3_0_0 = "urn:www.energie-efactuur.nl:profile:invoice:ver3.0";
   /** Namespace URL for Energie e-Factuur 3.1.0 */
-  public static final String SEEF_EXT_NS_3_1_0 = "urn:www.energie-efactuur.nl:profile:invoice:ver3.1";
+  public static final String EEF_EXT_NS_3_1_0 = "urn:www.energie-efactuur.nl:profile:invoice:ver3.1";
 
   @Nonnull
   private static ClassLoader _getCL ()
@@ -74,25 +83,8 @@ public final class EnergieEFactuurValidation
     return EnergieEFactuurValidation.class.getClassLoader ();
   }
 
-  public static final IReadableResource SEEF_EXT_XSD_1_0_0 = new ClassPathResource ("/external/schemas/energieefactuur/SEeF_UBLExtension_v1.0.0.xsd",
-                                                                                    _getCL ());
-  public static final IReadableResource SEEF_EXT_XSD_1_0_1 = new ClassPathResource ("/external/schemas/energieefactuur/SEeF_UBLExtension_v1.0.1.xsd",
-                                                                                    _getCL ());
-  public static final IReadableResource SEEF_EXT_XSD_2_0_0 = new ClassPathResource ("/external/schemas/energieefactuur/SEeF_UBLExtension_v2.0.0.xsd",
-                                                                                    _getCL ());
-  public static final IReadableResource SEEF_EXT_XSD_3_0_0 = new ClassPathResource ("/external/schemas/energieefactuur/SEeF_UBLExtension_v3.0.0.xsd",
-                                                                                    _getCL ());
-  public static final IReadableResource SEEF_EXT_XSD_3_1_0 = new ClassPathResource ("/external/schemas/energieefactuur/SEeF_UBLExtension_v3.1.0.xsd",
-                                                                                    _getCL ());
-
   private EnergieEFactuurValidation ()
   {}
-
-  @Nonnull
-  private static IValidationExecutorSetStatus _createStatus (final boolean bIsDeprecated)
-  {
-    return ValidationExecutorSetStatus.createDeprecatedNow (bIsDeprecated);
-  }
 
   /**
    * Register all standard Energie eFactuur validation execution sets to the
@@ -106,132 +98,169 @@ public final class EnergieEFactuurValidation
   {
     ValueEnforcer.notNull (aRegistry, "Registry");
 
-    // For better error messages
-    SchematronNamespaceBeautifier.addMappings (UBL21NamespaceContext.getInstance ());
-
     final boolean bNotDeprecated = false;
 
     final String sUBL21InvoiceNamespaceURI = UBL21Marshaller.invoice ().getRootElementNamespaceURI ();
 
+    final IValidationExecutorSet <IValidationSourceXML> aSI11 = aRegistry.getOfID (SimplerInvoicingValidation.VID_SI_INVOICE_V11);
+    assert 2 == aSI11.executors ().size ();
+
     {
       // Create XPathExpression for extension validation
       final XPathFactory aXF = XPathHelper.createXPathFactorySaxonFirst ();
       final XPath aXP = aXF.newXPath ();
-      final MapBasedNamespaceContext aCtx = UBL21NamespaceContext.getInstance ().getClone ();
-      aCtx.addMapping ("ubl", sUBL21InvoiceNamespaceURI);
-      aCtx.addMapping ("seef", SEEF_EXT_NS_1_0_0);
-      aXP.setNamespaceContext (aCtx);
+      final MapBasedNamespaceContext aNsCtx = UBL21NamespaceContext.getInstance ().getClone ();
+      aNsCtx.addMapping ("ubl", sUBL21InvoiceNamespaceURI);
+      aNsCtx.addMapping ("eef1", EEF_EXT_NS_1_0_0);
+      aXP.setNamespaceContext (aNsCtx);
+
       final XPathExpression aXE100 = XPathHelper.createNewXPathExpression (aXP,
-                                                                           "/ubl:Invoice/cec:UBLExtensions/cec:UBLExtension/cec:ExtensionContent/seef:UtilityConsumptionPoint");
+                                                                           "/ubl:Invoice/cec:UBLExtensions/cec:UBLExtension/cec:ExtensionContent" +
+                                                                                "/eef1:UtilityConsumptionPoint");
+
+      final ICommonsList <ClassPathResource> aPartialXSDs = UBL21Marshaller.getAllBaseXSDs ();
+      aPartialXSDs.add (new ClassPathResource ("/external/schemas/energieefactuur/SEeF_UBLExtension_v1.0.0.xsd",
+                                               _getCL ()));
 
       // Same Schematrons as SimplerInvoicing - and same classloader!
+      final ICommonsList <IValidationExecutor <IValidationSourceXML>> aNewList = new CommonsArrayList <> (aSI11.executors ());
+      // Add the Partial XSD in the middle
+      aNewList.add (1, ValidationExecutorXSDPartial.create (aPartialXSDs, XSDPartialContext.createMandatory (aXE100)));
+
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_ENERGIE_EFACTUUR_1_0_0,
                                                                              "Energie eFactuur " +
                                                                                                          VID_ENERGIE_EFACTUUR_1_0_0.getVersionString (),
-                                                                             _createStatus (bNotDeprecated),
-                                                                             ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
-                                                                             ValidationExecutorXSDPartial.create (SEEF_EXT_XSD_1_0_0,
-                                                                                                                  XSDPartialContext.create (aXE100,
-                                                                                                                                            1,
-                                                                                                                                            1)),
-                                                                             ValidationExecutorSchematron.createXSLT (SimplerInvoicingValidation.INVOICE_SI11,
-                                                                                                                      aCtx)));
+                                                                             PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
+                                                                             aNewList));
     }
+
     {
       // Create XPathExpression for extension validation
       final XPathFactory aXF = XPathHelper.createXPathFactorySaxonFirst ();
       final XPath aXP = aXF.newXPath ();
-      final MapBasedNamespaceContext aCtx = UBL21NamespaceContext.getInstance ().getClone ();
-      aCtx.addMapping ("ubl", sUBL21InvoiceNamespaceURI);
-      aCtx.addMapping ("seef", SEEF_EXT_NS_1_0_1);
-      aXP.setNamespaceContext (aCtx);
+      final MapBasedNamespaceContext aNsCtx = UBL21NamespaceContext.getInstance ().getClone ();
+      aNsCtx.addMapping ("ubl", sUBL21InvoiceNamespaceURI);
+      aNsCtx.addMapping ("eef101", EEF_EXT_NS_1_0_1);
+      aXP.setNamespaceContext (aNsCtx);
+
       final XPathExpression aXE101 = XPathHelper.createNewXPathExpression (aXP,
-                                                                           "/ubl:Invoice/cec:UBLExtensions/cec:UBLExtension/cec:ExtensionContent/seef:SEEFExtensionWrapper");
+                                                                           "/ubl:Invoice/cec:UBLExtensions/cec:UBLExtension/cec:ExtensionContent" +
+                                                                                "/eef101:SEEFExtensionWrapper");
+
+      final ICommonsList <ClassPathResource> aPartialXSDs = UBL21Marshaller.getAllBaseXSDs ();
+      aPartialXSDs.add (new ClassPathResource ("/external/schemas/energieefactuur/SEeF_UBLExtension_v1.0.1.xsd",
+                                               _getCL ()));
+
+      // Same Schematrons as SimplerInvoicing - and same classloader!
+      final ICommonsList <IValidationExecutor <IValidationSourceXML>> aNewList = new CommonsArrayList <> (aSI11.executors ());
+      // Add the Partial XSD in the middle
+      aNewList.add (1, ValidationExecutorXSDPartial.create (aPartialXSDs, XSDPartialContext.createMandatory (aXE101)));
 
       // Same Schematrons as SimplerInvoicing - and same classloader!
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_ENERGIE_EFACTUUR_1_0_1,
                                                                              "Energie eFactuur " +
                                                                                                          VID_ENERGIE_EFACTUUR_1_0_1.getVersionString (),
-                                                                             _createStatus (bNotDeprecated),
-                                                                             ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
-                                                                             ValidationExecutorXSDPartial.create (SEEF_EXT_XSD_1_0_1,
-                                                                                                                  XSDPartialContext.create (aXE101,
-                                                                                                                                            1,
-                                                                                                                                            1)),
-                                                                             ValidationExecutorSchematron.createXSLT (SimplerInvoicingValidation.INVOICE_SI11,
-                                                                                                                      aCtx)));
+                                                                             PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
+                                                                             aNewList));
     }
+
     {
+      final IValidationExecutorSet <IValidationSourceXML> aSI12 = aRegistry.getOfID (SimplerInvoicingValidation.VID_SI_INVOICE_V12);
+      assert 2 == aSI12.executors ().size ();
+
       // Create XPathExpression for extension validation
       final XPathFactory aXF = XPathHelper.createXPathFactorySaxonFirst ();
       final XPath aXP = aXF.newXPath ();
-      final MapBasedNamespaceContext aCtx = UBL21NamespaceContext.getInstance ().getClone ();
-      aCtx.addMapping ("ubl", sUBL21InvoiceNamespaceURI);
-      aCtx.addMapping ("eef", SEEF_EXT_NS_2_0_0);
-      aXP.setNamespaceContext (aCtx);
+      final MapBasedNamespaceContext aNsCtx = UBL21NamespaceContext.getInstance ().getClone ();
+      aNsCtx.addMapping ("ubl", sUBL21InvoiceNamespaceURI);
+      aNsCtx.addMapping ("eef2", EEF_EXT_NS_2_0_0);
+      aXP.setNamespaceContext (aNsCtx);
+
       final XPathExpression aXE200 = XPathHelper.createNewXPathExpression (aXP,
-                                                                           "/ubl:Invoice/cec:UBLExtensions/cec:UBLExtension/cec:ExtensionContent/eef:SEEFExtensionWrapper");
+                                                                           "/ubl:Invoice/cec:UBLExtensions/cec:UBLExtension/cec:ExtensionContent" +
+                                                                                "/eef2:SEEFExtensionWrapper");
+
+      final ICommonsList <ClassPathResource> aPartialXSDs = UBL21Marshaller.getAllBaseXSDs ();
+      aPartialXSDs.add (new ClassPathResource ("/external/schemas/energieefactuur/SEeF_UBLExtension_v2.0.0.xsd",
+                                               _getCL ()));
+
+      // Same Schematrons as SimplerInvoicing - and same classloader!
+      final ICommonsList <IValidationExecutor <IValidationSourceXML>> aNewList = new CommonsArrayList <> (aSI12.executors ());
+      // Add the Partial XSD in the middle
+      aNewList.add (1, ValidationExecutorXSDPartial.create (aPartialXSDs, XSDPartialContext.createMandatory (aXE200)));
 
       // Same Schematrons as SimplerInvoicing - and same classloader!
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_ENERGIE_EFACTUUR_2_0_0,
                                                                              "Energie eFactuur " +
                                                                                                          VID_ENERGIE_EFACTUUR_2_0_0.getVersionString (),
-                                                                             _createStatus (bNotDeprecated),
-                                                                             ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
-                                                                             ValidationExecutorXSDPartial.create (SEEF_EXT_XSD_2_0_0,
-                                                                                                                  XSDPartialContext.create (aXE200,
-                                                                                                                                            1,
-                                                                                                                                            1)),
-                                                                             ValidationExecutorSchematron.createXSLT (SimplerInvoicingValidation.INVOICE_SI12,
-                                                                                                                      aCtx)));
+                                                                             PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
+                                                                             aNewList));
     }
+
     {
+      final IValidationExecutorSet <IValidationSourceXML> aSI20 = aRegistry.getOfID (SimplerInvoicingValidation.VID_SI_INVOICE_V20);
+      assert 2 == aSI20.executors ().size ();
+
       // Create XPathExpression for extension validation
       final XPathFactory aXF = XPathHelper.createXPathFactorySaxonFirst ();
       final XPath aXP = aXF.newXPath ();
-      final MapBasedNamespaceContext aCtx = UBL21NamespaceContext.getInstance ().getClone ();
-      aCtx.addMapping ("ubl", sUBL21InvoiceNamespaceURI);
-      aCtx.addMapping ("eef", SEEF_EXT_NS_3_0_0);
-      aXP.setNamespaceContext (aCtx);
+      final MapBasedNamespaceContext aNsCtx = UBL21NamespaceContext.getInstance ().getClone ();
+      aNsCtx.addMapping ("ubl", sUBL21InvoiceNamespaceURI);
+      aNsCtx.addMapping ("eef3", EEF_EXT_NS_3_0_0);
+      aXP.setNamespaceContext (aNsCtx);
+
       final XPathExpression aXE300 = XPathHelper.createNewXPathExpression (aXP,
-                                                                           "/ubl:Invoice/cec:UBLExtensions/cec:UBLExtension/cec:ExtensionContent/eef:SEEFExtensionWrapper");
+                                                                           "/ubl:Invoice/cec:UBLExtensions/cec:UBLExtension/cec:ExtensionContent" +
+                                                                                "/eef3:SEEFExtensionWrapper");
+
+      final ICommonsList <ClassPathResource> aPartialXSDs = UBL21Marshaller.getAllBaseXSDs ();
+      aPartialXSDs.add (new ClassPathResource ("/external/schemas/energieefactuur/SEeF_UBLExtension_v3.0.0.xsd",
+                                               _getCL ()));
+
+      // Same Schematrons as SimplerInvoicing - and same classloader!
+      final ICommonsList <IValidationExecutor <IValidationSourceXML>> aNewList = new CommonsArrayList <> (aSI20.executors ());
+      // Add the Partial XSD in the middle
+      aNewList.add (1, ValidationExecutorXSDPartial.create (aPartialXSDs, XSDPartialContext.createMandatory (aXE300)));
 
       // Same Schematrons as SimplerInvoicing - and same classloader!
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_ENERGIE_EFACTUUR_3_0_0,
                                                                              "Energie eFactuur " +
                                                                                                          VID_ENERGIE_EFACTUUR_3_0_0.getVersionString (),
-                                                                             _createStatus (bNotDeprecated),
-                                                                             ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
-                                                                             ValidationExecutorXSDPartial.create (SEEF_EXT_XSD_3_0_0,
-                                                                                                                  XSDPartialContext.create (aXE300,
-                                                                                                                                            1,
-                                                                                                                                            1)),
-                                                                             ValidationExecutorSchematron.createXSLT (SimplerInvoicingValidation.INVOICE_SI20,
-                                                                                                                      aCtx)));
+                                                                             PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
+                                                                             aNewList));
     }
+
     {
+      final IValidationExecutorSet <IValidationSourceXML> aSI2035 = aRegistry.getOfID (SimplerInvoicingValidation.VID_SI_INVOICE_V20);
+      assert 2 == aSI2035.executors ().size ();
+
       // Create XPathExpression for extension validation
       final XPathFactory aXF = XPathHelper.createXPathFactorySaxonFirst ();
       final XPath aXP = aXF.newXPath ();
-      final MapBasedNamespaceContext aCtx = UBL21NamespaceContext.getInstance ().getClone ();
-      aCtx.addMapping ("ubl", sUBL21InvoiceNamespaceURI);
-      aCtx.addMapping ("eef", SEEF_EXT_NS_3_1_0);
-      aXP.setNamespaceContext (aCtx);
+      final MapBasedNamespaceContext aNsCtx = UBL21NamespaceContext.getInstance ().getClone ();
+      aNsCtx.addMapping ("ubl", sUBL21InvoiceNamespaceURI);
+      aNsCtx.addMapping ("eef31", EEF_EXT_NS_3_1_0);
+      aXP.setNamespaceContext (aNsCtx);
+
       final XPathExpression aXE310 = XPathHelper.createNewXPathExpression (aXP,
-                                                                           "/ubl:Invoice/cec:UBLExtensions/cec:UBLExtension/cec:ExtensionContent/eef:SEEFExtensionWrapper");
+                                                                           "/ubl:Invoice/cec:UBLExtensions/cec:UBLExtension/cec:ExtensionContent" +
+                                                                                "/eef31:SEEFExtensionWrapper");
+
+      final ICommonsList <ClassPathResource> aPartialXSDs = UBL21Marshaller.getAllBaseXSDs ();
+      aPartialXSDs.add (new ClassPathResource ("/external/schemas/energieefactuur/SEeF_UBLExtension_v3.1.0.xsd",
+                                               _getCL ()));
+
+      // Same Schematrons as SimplerInvoicing - and same classloader!
+      final ICommonsList <IValidationExecutor <IValidationSourceXML>> aNewList = new CommonsArrayList <> (aSI2035.executors ());
+      // Add the Partial XSD in the middle
+      aNewList.add (1, ValidationExecutorXSDPartial.create (aPartialXSDs, XSDPartialContext.createMandatory (aXE310)));
 
       // Same Schematrons as SimplerInvoicing - and same classloader!
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_ENERGIE_EFACTUUR_3_1_0,
                                                                              "Energie eFactuur " +
                                                                                                          VID_ENERGIE_EFACTUUR_3_1_0.getVersionString (),
-                                                                             _createStatus (bNotDeprecated),
-                                                                             ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
-                                                                             ValidationExecutorXSDPartial.create (SEEF_EXT_XSD_3_1_0,
-                                                                                                                  XSDPartialContext.create (aXE310,
-                                                                                                                                            1,
-                                                                                                                                            1)),
-                                                                             ValidationExecutorSchematron.createXSLT (SimplerInvoicingValidation.INVOICE_SI2035,
-                                                                                                                      aCtx)));
+                                                                             PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
+                                                                             aNewList));
     }
   }
 }

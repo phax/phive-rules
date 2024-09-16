@@ -21,11 +21,10 @@ import javax.annotation.concurrent.Immutable;
 
 import com.helger.commons.ValueEnforcer;
 import com.helger.commons.io.resource.ClassPathResource;
-import com.helger.diver.api.version.VESID;
+import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
 import com.helger.phive.api.executorset.ValidationExecutorSet;
-import com.helger.phive.api.executorset.status.IValidationExecutorSetStatus;
-import com.helger.phive.api.executorset.status.ValidationExecutorSetStatus;
+import com.helger.phive.rules.api.PhiveRulesHelper;
 import com.helger.phive.xml.source.IValidationSourceXML;
 import com.helger.phive.xml.xsd.ValidationExecutorXSD;
 
@@ -39,10 +38,12 @@ public final class FinvoiceValidation
 {
   public static final String GROUP_ID = "fi.finvoice";
 
-  public static final VESID VID_FINVOICE_13 = new VESID (GROUP_ID, "finvoice", "1.3");
-  public static final VESID VID_FINVOICE_20 = new VESID (GROUP_ID, "finvoice", "2.0");
-  public static final VESID VID_FINVOICE_201 = new VESID (GROUP_ID, "finvoice", "2.0.1");
-  public static final VESID VID_FINVOICE_30 = new VESID (GROUP_ID, "finvoice", "3.0");
+  public static final DVRCoordinate VID_FINVOICE_13 = PhiveRulesHelper.createCoordinate (GROUP_ID, "finvoice", "1.3");
+  public static final DVRCoordinate VID_FINVOICE_20 = PhiveRulesHelper.createCoordinate (GROUP_ID, "finvoice", "2.0");
+  public static final DVRCoordinate VID_FINVOICE_201 = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                          "finvoice",
+                                                                                          "2.0.1");
+  public static final DVRCoordinate VID_FINVOICE_30 = PhiveRulesHelper.createCoordinate (GROUP_ID, "finvoice", "3.0");
 
   private FinvoiceValidation ()
   {}
@@ -51,12 +52,6 @@ public final class FinvoiceValidation
   private static ClassLoader _getCL ()
   {
     return FinvoiceValidation.class.getClassLoader ();
-  }
-
-  @Nonnull
-  private static IValidationExecutorSetStatus _createStatus (final boolean bIsDeprecated)
-  {
-    return ValidationExecutorSetStatus.createDeprecatedNow (bIsDeprecated);
   }
 
   /**
@@ -78,28 +73,28 @@ public final class FinvoiceValidation
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_FINVOICE_13,
                                                                            "Finvoice " +
                                                                                             VID_FINVOICE_13.getVersionString (),
-                                                                           _createStatus (bNotDeprecated),
+                                                                           PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
                                                                            ValidationExecutorXSD.create (new ClassPathResource (sPrefix +
                                                                                                                                 "Finvoice1.3.xsd",
                                                                                                                                 _getCL ()))));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_FINVOICE_20,
                                                                            "Finvoice " +
                                                                                             VID_FINVOICE_20.getVersionString (),
-                                                                           _createStatus (bNotDeprecated),
+                                                                           PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
                                                                            ValidationExecutorXSD.create (new ClassPathResource (sPrefix +
                                                                                                                                 "Finvoice2.0.xsd",
                                                                                                                                 _getCL ()))));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_FINVOICE_201,
                                                                            "Finvoice " +
                                                                                              VID_FINVOICE_201.getVersionString (),
-                                                                           _createStatus (bNotDeprecated),
+                                                                           PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
                                                                            ValidationExecutorXSD.create (new ClassPathResource (sPrefix +
                                                                                                                                 "Finvoice2.01.xsd",
                                                                                                                                 _getCL ()))));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_FINVOICE_30,
                                                                            "Finvoice " +
                                                                                             VID_FINVOICE_30.getVersionString (),
-                                                                           _createStatus (bNotDeprecated),
+                                                                           PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
                                                                            ValidationExecutorXSD.create (new ClassPathResource (sPrefix +
                                                                                                                                 "Finvoice3.0.xsd",
                                                                                                                                 _getCL ()))));

@@ -20,12 +20,11 @@ import javax.annotation.Nonnull;
 import javax.annotation.concurrent.Immutable;
 
 import com.helger.commons.ValueEnforcer;
-import com.helger.diver.api.version.VESID;
+import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.ebinterface.CEbInterface;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
 import com.helger.phive.api.executorset.ValidationExecutorSet;
-import com.helger.phive.api.executorset.status.IValidationExecutorSetStatus;
-import com.helger.phive.api.executorset.status.ValidationExecutorSetStatus;
+import com.helger.phive.rules.api.PhiveRulesHelper;
 import com.helger.phive.xml.source.IValidationSourceXML;
 import com.helger.phive.xml.xsd.ValidationExecutorXSD;
 
@@ -39,24 +38,18 @@ public final class EbInterfaceValidation
 {
   public static final String GROUP_ID = "at.ebinterface";
 
-  public static final VESID VID_EBI_30 = new VESID (GROUP_ID, "invoice", "3.0");
-  public static final VESID VID_EBI_302 = new VESID (GROUP_ID, "invoice", "3.0.2");
-  public static final VESID VID_EBI_40 = new VESID (GROUP_ID, "invoice", "4.0");
-  public static final VESID VID_EBI_41 = new VESID (GROUP_ID, "invoice", "4.1");
-  public static final VESID VID_EBI_42 = new VESID (GROUP_ID, "invoice", "4.2");
-  public static final VESID VID_EBI_43 = new VESID (GROUP_ID, "invoice", "4.3");
-  public static final VESID VID_EBI_50 = new VESID (GROUP_ID, "invoice", "5.0");
-  public static final VESID VID_EBI_60 = new VESID (GROUP_ID, "invoice", "6.0");
-  public static final VESID VID_EBI_61 = new VESID (GROUP_ID, "invoice", "6.1");
+  public static final DVRCoordinate VID_EBI_30 = PhiveRulesHelper.createCoordinate (GROUP_ID, "invoice", "3.0");
+  public static final DVRCoordinate VID_EBI_302 = PhiveRulesHelper.createCoordinate (GROUP_ID, "invoice", "3.0.2");
+  public static final DVRCoordinate VID_EBI_40 = PhiveRulesHelper.createCoordinate (GROUP_ID, "invoice", "4.0");
+  public static final DVRCoordinate VID_EBI_41 = PhiveRulesHelper.createCoordinate (GROUP_ID, "invoice", "4.1");
+  public static final DVRCoordinate VID_EBI_42 = PhiveRulesHelper.createCoordinate (GROUP_ID, "invoice", "4.2");
+  public static final DVRCoordinate VID_EBI_43 = PhiveRulesHelper.createCoordinate (GROUP_ID, "invoice", "4.3");
+  public static final DVRCoordinate VID_EBI_50 = PhiveRulesHelper.createCoordinate (GROUP_ID, "invoice", "5.0");
+  public static final DVRCoordinate VID_EBI_60 = PhiveRulesHelper.createCoordinate (GROUP_ID, "invoice", "6.0");
+  public static final DVRCoordinate VID_EBI_61 = PhiveRulesHelper.createCoordinate (GROUP_ID, "invoice", "6.1");
 
   private EbInterfaceValidation ()
   {}
-
-  @Nonnull
-  private static IValidationExecutorSetStatus _createStatus (final boolean bIsDeprecated)
-  {
-    return ValidationExecutorSetStatus.createDeprecatedNow (bIsDeprecated);
-  }
 
   /**
    * Register all standard ebInterface validation execution sets to the provided
@@ -75,39 +68,39 @@ public final class EbInterfaceValidation
     // No Schematrons here
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_EBI_30,
                                                                            "ebInterface 3.0",
-                                                                           _createStatus (bDeprecated),
+                                                                           PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                            ValidationExecutorXSD.create (CEbInterface.EBINTERFACE_30_XSDS)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_EBI_302,
                                                                            "ebInterface 3.0.2",
-                                                                           _createStatus (bDeprecated),
+                                                                           PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                            ValidationExecutorXSD.create (CEbInterface.EBINTERFACE_302_XSDS)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_EBI_40,
                                                                            "ebInterface 4.0",
-                                                                           _createStatus (bDeprecated),
+                                                                           PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                            ValidationExecutorXSD.create (CEbInterface.EBINTERFACE_40_XSDS)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_EBI_41,
                                                                            "ebInterface 4.1",
-                                                                           _createStatus (bDeprecated),
+                                                                           PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                            ValidationExecutorXSD.create (CEbInterface.EBINTERFACE_41_XSDS)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_EBI_42,
                                                                            "ebInterface 4.2",
-                                                                           _createStatus (bDeprecated),
+                                                                           PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                            ValidationExecutorXSD.create (CEbInterface.EBINTERFACE_42_XSDS)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_EBI_43,
                                                                            "ebInterface 4.3",
-                                                                           _createStatus (bNotDeprecated),
+                                                                           PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
                                                                            ValidationExecutorXSD.create (CEbInterface.EBINTERFACE_43_XSDS)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_EBI_50,
                                                                            "ebInterface 5.0",
-                                                                           _createStatus (bNotDeprecated),
+                                                                           PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
                                                                            ValidationExecutorXSD.create (CEbInterface.EBINTERFACE_50_XSDS)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_EBI_60,
                                                                            "ebInterface 6.0",
-                                                                           _createStatus (bNotDeprecated),
+                                                                           PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
                                                                            ValidationExecutorXSD.create (CEbInterface.EBINTERFACE_60_XSDS)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_EBI_61,
                                                                            "ebInterface 6.1",
-                                                                           _createStatus (bNotDeprecated),
+                                                                           PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
                                                                            ValidationExecutorXSD.create (CEbInterface.EBINTERFACE_61_XSDS)));
   }
 }

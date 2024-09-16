@@ -27,7 +27,7 @@ import com.helger.commons.collection.impl.CommonsArrayList;
 import com.helger.commons.collection.impl.ICommonsList;
 import com.helger.commons.io.resource.ClassPathResource;
 import com.helger.commons.io.resource.IReadableResource;
-import com.helger.diver.api.version.VESID;
+import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.phive.api.executorset.ValidationExecutorSetRegistry;
 import com.helger.phive.api.mock.TestFile;
 import com.helger.phive.oioubl.OIOUBLLegacyValidation;
@@ -53,94 +53,94 @@ public final class CTestFiles
   public static ICommonsList <TestFile> getAllTestFiles ()
   {
     final ICommonsList <TestFile> ret = new CommonsArrayList <> ();
-    for (final VESID aESID : new VESID [] { // Ancient 2.0.2
-                                            OIOUBLLegacyValidation.VID_OIOUBL_APPLICATION_RESPONSE,
-                                            OIOUBLLegacyValidation.VID_OIOUBL_CATALOGUE,
-                                            OIOUBLLegacyValidation.VID_OIOUBL_CATALOGUE_DELETION,
-                                            OIOUBLLegacyValidation.VID_OIOUBL_CATALOGUE_ITEM_SPECIFICATION_UPDATE,
-                                            OIOUBLLegacyValidation.VID_OIOUBL_CATALOGUE_PRICING_UPDATE,
-                                            OIOUBLLegacyValidation.VID_OIOUBL_CATALOGUE_REQUEST,
-                                            OIOUBLLegacyValidation.VID_OIOUBL_CREDIT_NOTE,
-                                            OIOUBLLegacyValidation.VID_OIOUBL_INVOICE,
-                                            OIOUBLLegacyValidation.VID_OIOUBL_ORDER,
-                                            OIOUBLLegacyValidation.VID_OIOUBL_ORDER_CANCELLATION,
-                                            OIOUBLLegacyValidation.VID_OIOUBL_ORDER_CHANGE,
-                                            OIOUBLLegacyValidation.VID_OIOUBL_ORDER_RESPONSE,
-                                            OIOUBLLegacyValidation.VID_OIOUBL_ORDER_RESPONSE_SIMPLE,
-                                            OIOUBLLegacyValidation.VID_OIOUBL_REMINDER,
-                                            OIOUBLLegacyValidation.VID_OIOUBL_STATEMENT,
+    for (final DVRCoordinate aESID : new DVRCoordinate [] { // Ancient 2.0.2
+                                                            OIOUBLLegacyValidation.VID_OIOUBL_APPLICATION_RESPONSE,
+                                                            OIOUBLLegacyValidation.VID_OIOUBL_CATALOGUE,
+                                                            OIOUBLLegacyValidation.VID_OIOUBL_CATALOGUE_DELETION,
+                                                            OIOUBLLegacyValidation.VID_OIOUBL_CATALOGUE_ITEM_SPECIFICATION_UPDATE,
+                                                            OIOUBLLegacyValidation.VID_OIOUBL_CATALOGUE_PRICING_UPDATE,
+                                                            OIOUBLLegacyValidation.VID_OIOUBL_CATALOGUE_REQUEST,
+                                                            OIOUBLLegacyValidation.VID_OIOUBL_CREDIT_NOTE,
+                                                            OIOUBLLegacyValidation.VID_OIOUBL_INVOICE,
+                                                            OIOUBLLegacyValidation.VID_OIOUBL_ORDER,
+                                                            OIOUBLLegacyValidation.VID_OIOUBL_ORDER_CANCELLATION,
+                                                            OIOUBLLegacyValidation.VID_OIOUBL_ORDER_CHANGE,
+                                                            OIOUBLLegacyValidation.VID_OIOUBL_ORDER_RESPONSE,
+                                                            OIOUBLLegacyValidation.VID_OIOUBL_ORDER_RESPONSE_SIMPLE,
+                                                            OIOUBLLegacyValidation.VID_OIOUBL_REMINDER,
+                                                            OIOUBLLegacyValidation.VID_OIOUBL_STATEMENT,
 
-                                            // 1.12.3
-                                            OIOUBLValidation.VID_OIOUBL_APPLICATION_RESPONSE_1_12_3,
-                                            OIOUBLValidation.VID_OIOUBL_CATALOGUE_1_12_3,
-                                            OIOUBLValidation.VID_OIOUBL_CATALOGUE_DELETION_1_12_3,
-                                            OIOUBLValidation.VID_OIOUBL_CATALOGUE_ITEM_SPECIFICATION_UPDATE_1_12_3,
-                                            OIOUBLValidation.VID_OIOUBL_CATALOGUE_PRICING_UPDATE_1_12_3,
-                                            OIOUBLValidation.VID_OIOUBL_CATALOGUE_REQUEST_1_12_3,
-                                            OIOUBLValidation.VID_OIOUBL_CREDIT_NOTE_1_12_3,
-                                            OIOUBLValidation.VID_OIOUBL_INVOICE_1_12_3,
-                                            OIOUBLValidation.VID_OIOUBL_ORDER_1_12_3,
-                                            OIOUBLValidation.VID_OIOUBL_ORDER_CANCELLATION_1_12_3,
-                                            OIOUBLValidation.VID_OIOUBL_ORDER_CHANGE_1_12_3,
-                                            OIOUBLValidation.VID_OIOUBL_ORDER_RESPONSE_1_12_3,
-                                            OIOUBLValidation.VID_OIOUBL_ORDER_RESPONSE_SIMPLE_1_12_3,
-                                            OIOUBLValidation.VID_OIOUBL_REMINDER_1_12_3,
-                                            OIOUBLValidation.VID_OIOUBL_STATEMENT_1_12_3,
-                                            OIOUBLValidation.VID_OIOUBL_UTILITY_STATEMENT_1_12_3,
+                                                            // 1.12.3
+                                                            OIOUBLValidation.VID_OIOUBL_APPLICATION_RESPONSE_1_12_3,
+                                                            OIOUBLValidation.VID_OIOUBL_CATALOGUE_1_12_3,
+                                                            OIOUBLValidation.VID_OIOUBL_CATALOGUE_DELETION_1_12_3,
+                                                            OIOUBLValidation.VID_OIOUBL_CATALOGUE_ITEM_SPECIFICATION_UPDATE_1_12_3,
+                                                            OIOUBLValidation.VID_OIOUBL_CATALOGUE_PRICING_UPDATE_1_12_3,
+                                                            OIOUBLValidation.VID_OIOUBL_CATALOGUE_REQUEST_1_12_3,
+                                                            OIOUBLValidation.VID_OIOUBL_CREDIT_NOTE_1_12_3,
+                                                            OIOUBLValidation.VID_OIOUBL_INVOICE_1_12_3,
+                                                            OIOUBLValidation.VID_OIOUBL_ORDER_1_12_3,
+                                                            OIOUBLValidation.VID_OIOUBL_ORDER_CANCELLATION_1_12_3,
+                                                            OIOUBLValidation.VID_OIOUBL_ORDER_CHANGE_1_12_3,
+                                                            OIOUBLValidation.VID_OIOUBL_ORDER_RESPONSE_1_12_3,
+                                                            OIOUBLValidation.VID_OIOUBL_ORDER_RESPONSE_SIMPLE_1_12_3,
+                                                            OIOUBLValidation.VID_OIOUBL_REMINDER_1_12_3,
+                                                            OIOUBLValidation.VID_OIOUBL_STATEMENT_1_12_3,
+                                                            OIOUBLValidation.VID_OIOUBL_UTILITY_STATEMENT_1_12_3,
 
-                                            // 1.13.0
-                                            OIOUBLValidation.VID_OIOUBL_APPLICATION_RESPONSE_1_13_0,
-                                            OIOUBLValidation.VID_OIOUBL_CATALOGUE_1_13_0,
-                                            OIOUBLValidation.VID_OIOUBL_CATALOGUE_DELETION_1_13_0,
-                                            OIOUBLValidation.VID_OIOUBL_CATALOGUE_ITEM_SPECIFICATION_UPDATE_1_13_0,
-                                            OIOUBLValidation.VID_OIOUBL_CATALOGUE_PRICING_UPDATE_1_13_0,
-                                            OIOUBLValidation.VID_OIOUBL_CATALOGUE_REQUEST_1_13_0,
-                                            OIOUBLValidation.VID_OIOUBL_CREDIT_NOTE_1_13_0,
-                                            OIOUBLValidation.VID_OIOUBL_INVOICE_1_13_0,
-                                            OIOUBLValidation.VID_OIOUBL_ORDER_1_13_0,
-                                            OIOUBLValidation.VID_OIOUBL_ORDER_CANCELLATION_1_13_0,
-                                            OIOUBLValidation.VID_OIOUBL_ORDER_CHANGE_1_13_0,
-                                            OIOUBLValidation.VID_OIOUBL_ORDER_RESPONSE_1_13_0,
-                                            OIOUBLValidation.VID_OIOUBL_ORDER_RESPONSE_SIMPLE_1_13_0,
-                                            OIOUBLValidation.VID_OIOUBL_REMINDER_1_13_0,
-                                            OIOUBLValidation.VID_OIOUBL_STATEMENT_1_13_0,
-                                            OIOUBLValidation.VID_OIOUBL_UTILITY_STATEMENT_1_13_0,
+                                                            // 1.13.0
+                                                            OIOUBLValidation.VID_OIOUBL_APPLICATION_RESPONSE_1_13_0,
+                                                            OIOUBLValidation.VID_OIOUBL_CATALOGUE_1_13_0,
+                                                            OIOUBLValidation.VID_OIOUBL_CATALOGUE_DELETION_1_13_0,
+                                                            OIOUBLValidation.VID_OIOUBL_CATALOGUE_ITEM_SPECIFICATION_UPDATE_1_13_0,
+                                                            OIOUBLValidation.VID_OIOUBL_CATALOGUE_PRICING_UPDATE_1_13_0,
+                                                            OIOUBLValidation.VID_OIOUBL_CATALOGUE_REQUEST_1_13_0,
+                                                            OIOUBLValidation.VID_OIOUBL_CREDIT_NOTE_1_13_0,
+                                                            OIOUBLValidation.VID_OIOUBL_INVOICE_1_13_0,
+                                                            OIOUBLValidation.VID_OIOUBL_ORDER_1_13_0,
+                                                            OIOUBLValidation.VID_OIOUBL_ORDER_CANCELLATION_1_13_0,
+                                                            OIOUBLValidation.VID_OIOUBL_ORDER_CHANGE_1_13_0,
+                                                            OIOUBLValidation.VID_OIOUBL_ORDER_RESPONSE_1_13_0,
+                                                            OIOUBLValidation.VID_OIOUBL_ORDER_RESPONSE_SIMPLE_1_13_0,
+                                                            OIOUBLValidation.VID_OIOUBL_REMINDER_1_13_0,
+                                                            OIOUBLValidation.VID_OIOUBL_STATEMENT_1_13_0,
+                                                            OIOUBLValidation.VID_OIOUBL_UTILITY_STATEMENT_1_13_0,
 
-                                            // 1.13.2
-                                            OIOUBLValidation.VID_OIOUBL_APPLICATION_RESPONSE_1_13_2,
-                                            OIOUBLValidation.VID_OIOUBL_CATALOGUE_1_13_2,
-                                            OIOUBLValidation.VID_OIOUBL_CATALOGUE_DELETION_1_13_2,
-                                            OIOUBLValidation.VID_OIOUBL_CATALOGUE_ITEM_SPECIFICATION_UPDATE_1_13_2,
-                                            OIOUBLValidation.VID_OIOUBL_CATALOGUE_PRICING_UPDATE_1_13_2,
-                                            OIOUBLValidation.VID_OIOUBL_CATALOGUE_REQUEST_1_13_2,
-                                            OIOUBLValidation.VID_OIOUBL_CREDIT_NOTE_1_13_2,
-                                            OIOUBLValidation.VID_OIOUBL_INVOICE_1_13_2,
-                                            OIOUBLValidation.VID_OIOUBL_ORDER_1_13_2,
-                                            OIOUBLValidation.VID_OIOUBL_ORDER_CANCELLATION_1_13_2,
-                                            OIOUBLValidation.VID_OIOUBL_ORDER_CHANGE_1_13_2,
-                                            OIOUBLValidation.VID_OIOUBL_ORDER_RESPONSE_1_13_2,
-                                            OIOUBLValidation.VID_OIOUBL_ORDER_RESPONSE_SIMPLE_1_13_2,
-                                            OIOUBLValidation.VID_OIOUBL_REMINDER_1_13_2,
-                                            OIOUBLValidation.VID_OIOUBL_STATEMENT_1_13_2,
-                                            OIOUBLValidation.VID_OIOUBL_UTILITY_STATEMENT_1_13_2,
+                                                            // 1.13.2
+                                                            OIOUBLValidation.VID_OIOUBL_APPLICATION_RESPONSE_1_13_2,
+                                                            OIOUBLValidation.VID_OIOUBL_CATALOGUE_1_13_2,
+                                                            OIOUBLValidation.VID_OIOUBL_CATALOGUE_DELETION_1_13_2,
+                                                            OIOUBLValidation.VID_OIOUBL_CATALOGUE_ITEM_SPECIFICATION_UPDATE_1_13_2,
+                                                            OIOUBLValidation.VID_OIOUBL_CATALOGUE_PRICING_UPDATE_1_13_2,
+                                                            OIOUBLValidation.VID_OIOUBL_CATALOGUE_REQUEST_1_13_2,
+                                                            OIOUBLValidation.VID_OIOUBL_CREDIT_NOTE_1_13_2,
+                                                            OIOUBLValidation.VID_OIOUBL_INVOICE_1_13_2,
+                                                            OIOUBLValidation.VID_OIOUBL_ORDER_1_13_2,
+                                                            OIOUBLValidation.VID_OIOUBL_ORDER_CANCELLATION_1_13_2,
+                                                            OIOUBLValidation.VID_OIOUBL_ORDER_CHANGE_1_13_2,
+                                                            OIOUBLValidation.VID_OIOUBL_ORDER_RESPONSE_1_13_2,
+                                                            OIOUBLValidation.VID_OIOUBL_ORDER_RESPONSE_SIMPLE_1_13_2,
+                                                            OIOUBLValidation.VID_OIOUBL_REMINDER_1_13_2,
+                                                            OIOUBLValidation.VID_OIOUBL_STATEMENT_1_13_2,
+                                                            OIOUBLValidation.VID_OIOUBL_UTILITY_STATEMENT_1_13_2,
 
-                                            // 1.14.2
-                                            OIOUBLValidation.VID_OIOUBL_APPLICATION_RESPONSE_1_14_2,
-                                            OIOUBLValidation.VID_OIOUBL_CATALOGUE_1_14_2,
-                                            OIOUBLValidation.VID_OIOUBL_CATALOGUE_DELETION_1_14_2,
-                                            OIOUBLValidation.VID_OIOUBL_CATALOGUE_ITEM_SPECIFICATION_UPDATE_1_14_2,
-                                            OIOUBLValidation.VID_OIOUBL_CATALOGUE_PRICING_UPDATE_1_14_2,
-                                            OIOUBLValidation.VID_OIOUBL_CATALOGUE_REQUEST_1_14_2,
-                                            OIOUBLValidation.VID_OIOUBL_CREDIT_NOTE_1_14_2,
-                                            OIOUBLValidation.VID_OIOUBL_INVOICE_1_14_2,
-                                            OIOUBLValidation.VID_OIOUBL_ORDER_1_14_2,
-                                            OIOUBLValidation.VID_OIOUBL_ORDER_CANCELLATION_1_14_2,
-                                            OIOUBLValidation.VID_OIOUBL_ORDER_CHANGE_1_14_2,
-                                            OIOUBLValidation.VID_OIOUBL_ORDER_RESPONSE_1_14_2,
-                                            OIOUBLValidation.VID_OIOUBL_ORDER_RESPONSE_SIMPLE_1_14_2,
-                                            OIOUBLValidation.VID_OIOUBL_REMINDER_1_14_2,
-                                            OIOUBLValidation.VID_OIOUBL_STATEMENT_1_14_2,
-                                            OIOUBLValidation.VID_OIOUBL_UTILITY_STATEMENT_1_14_2 })
+                                                            // 1.14.2
+                                                            OIOUBLValidation.VID_OIOUBL_APPLICATION_RESPONSE_1_14_2,
+                                                            OIOUBLValidation.VID_OIOUBL_CATALOGUE_1_14_2,
+                                                            OIOUBLValidation.VID_OIOUBL_CATALOGUE_DELETION_1_14_2,
+                                                            OIOUBLValidation.VID_OIOUBL_CATALOGUE_ITEM_SPECIFICATION_UPDATE_1_14_2,
+                                                            OIOUBLValidation.VID_OIOUBL_CATALOGUE_PRICING_UPDATE_1_14_2,
+                                                            OIOUBLValidation.VID_OIOUBL_CATALOGUE_REQUEST_1_14_2,
+                                                            OIOUBLValidation.VID_OIOUBL_CREDIT_NOTE_1_14_2,
+                                                            OIOUBLValidation.VID_OIOUBL_INVOICE_1_14_2,
+                                                            OIOUBLValidation.VID_OIOUBL_ORDER_1_14_2,
+                                                            OIOUBLValidation.VID_OIOUBL_ORDER_CANCELLATION_1_14_2,
+                                                            OIOUBLValidation.VID_OIOUBL_ORDER_CHANGE_1_14_2,
+                                                            OIOUBLValidation.VID_OIOUBL_ORDER_RESPONSE_1_14_2,
+                                                            OIOUBLValidation.VID_OIOUBL_ORDER_RESPONSE_SIMPLE_1_14_2,
+                                                            OIOUBLValidation.VID_OIOUBL_REMINDER_1_14_2,
+                                                            OIOUBLValidation.VID_OIOUBL_STATEMENT_1_14_2,
+                                                            OIOUBLValidation.VID_OIOUBL_UTILITY_STATEMENT_1_14_2 })
       for (final IReadableResource aRes : getAllMatchingTestFiles (aESID))
       {
         assertTrue ("Not existing test file: " + aRes.getPath (), aRes.exists ());
@@ -151,7 +151,7 @@ public final class CTestFiles
 
   @Nonnull
   @ReturnsMutableCopy
-  public static ICommonsList <? extends IReadableResource> getAllMatchingTestFiles (@Nonnull final VESID aVESID)
+  public static ICommonsList <? extends IReadableResource> getAllMatchingTestFiles (@Nonnull final DVRCoordinate aVESID)
   {
     ValueEnforcer.notNull (aVESID, "VESID");
 

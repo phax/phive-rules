@@ -21,16 +21,14 @@ import javax.annotation.concurrent.Immutable;
 
 import com.helger.commons.ValueEnforcer;
 import com.helger.commons.io.resource.ClassPathResource;
-import com.helger.diver.api.version.VESID;
+import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
 import com.helger.phive.api.executorset.ValidationExecutorSet;
-import com.helger.phive.api.executorset.status.IValidationExecutorSetStatus;
-import com.helger.phive.api.executorset.status.ValidationExecutorSetStatus;
-import com.helger.phive.xml.schematron.ValidationExecutorSchematron;
+import com.helger.phive.rules.api.PhiveRulesHelper;
+import com.helger.phive.rules.api.PhiveRulesUBLHelper;
 import com.helger.phive.xml.source.IValidationSourceXML;
 import com.helger.phive.xml.xsd.ValidationExecutorXSD;
 import com.helger.ubl21.UBL21Marshaller;
-import com.helger.ubl21.UBL21NamespaceContext;
 
 /**
  * Generic CIUS-PT validation configuration
@@ -44,23 +42,31 @@ public final class CIUS_PTValidation
 
   // Version 2.0.0
   @Deprecated
-  public static final VESID VID_CIUS_PT_UBL_CREDITNOTE_200 = new VESID (GROUP_ID, "ubl-creditnote", "2.0.0");
+  public static final DVRCoordinate VID_CIUS_PT_UBL_CREDITNOTE_200 = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                        "ubl-creditnote",
+                                                                                                        "2.0.0");
   @Deprecated
-  public static final VESID VID_CIUS_PT_UBL_INVOICE_200 = new VESID (GROUP_ID, "ubl-invoice", "2.0.0");
+  public static final DVRCoordinate VID_CIUS_PT_UBL_INVOICE_200 = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                     "ubl-invoice",
+                                                                                                     "2.0.0");
   /**
    * @deprecated Use {@link #VID_CIUS_PT_UBL_CREDITNOTE_200} instead
    */
   @Deprecated
-  public static final VESID VID_TEAPPS_UBL_CREDITNOTE_200 = VID_CIUS_PT_UBL_CREDITNOTE_200;
+  public static final DVRCoordinate VID_TEAPPS_UBL_CREDITNOTE_200 = VID_CIUS_PT_UBL_CREDITNOTE_200;
   /**
    * @deprecated Use {@link #VID_CIUS_PT_UBL_INVOICE_200} instead
    */
   @Deprecated
-  public static final VESID VID_TEAPPS_UBL_INVOICE_200 = VID_CIUS_PT_UBL_INVOICE_200;
+  public static final DVRCoordinate VID_TEAPPS_UBL_INVOICE_200 = VID_CIUS_PT_UBL_INVOICE_200;
 
   // Version 2.1.1
-  public static final VESID VID_CIUS_PT_UBL_CREDITNOTE_211 = new VESID (GROUP_ID, "ubl-creditnote", "2.1.1");
-  public static final VESID VID_CIUS_PT_UBL_INVOICE_211 = new VESID (GROUP_ID, "ubl-invoice", "2.1.1");
+  public static final DVRCoordinate VID_CIUS_PT_UBL_CREDITNOTE_211 = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                        "ubl-creditnote",
+                                                                                                        "2.1.1");
+  public static final DVRCoordinate VID_CIUS_PT_UBL_INVOICE_211 = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                     "ubl-invoice",
+                                                                                                     "2.1.1");
 
   private static final ClassPathResource RES_200 = new ClassPathResource ("/external/schematron/2.0.0/urn_feap.gov.pt_CIUS-PT_2.0.0.xslt",
                                                                           _getCL ());
@@ -74,12 +80,6 @@ public final class CIUS_PTValidation
   private static ClassLoader _getCL ()
   {
     return CIUS_PTValidation.class.getClassLoader ();
-  }
-
-  @Nonnull
-  private static IValidationExecutorSetStatus _createStatus (final boolean bIsDeprecated)
-  {
-    return ValidationExecutorSetStatus.createDeprecatedNow (bIsDeprecated);
   }
 
   /**
@@ -100,32 +100,28 @@ public final class CIUS_PTValidation
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_CIUS_PT_UBL_CREDITNOTE_200,
                                                                            "CIUS-PT UBL Credit Note " +
                                                                                                            VID_CIUS_PT_UBL_CREDITNOTE_200.getVersionString (),
-                                                                           _createStatus (bDeprecated),
+                                                                           PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                            ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
-                                                                           ValidationExecutorSchematron.createXSLT (RES_200,
-                                                                                                                    UBL21NamespaceContext.getInstance ())));
+                                                                           PhiveRulesUBLHelper.createXSLT_UBL21 (RES_200)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_CIUS_PT_UBL_INVOICE_200,
                                                                            "CIUS-PT UBL Invoice " +
                                                                                                         VID_CIUS_PT_UBL_INVOICE_200.getVersionString (),
-                                                                           _createStatus (bDeprecated),
+                                                                           PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                            ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
-                                                                           ValidationExecutorSchematron.createXSLT (RES_200,
-                                                                                                                    UBL21NamespaceContext.getInstance ())));
+                                                                           PhiveRulesUBLHelper.createXSLT_UBL21 (RES_200)));
 
     // V2.1.1 containing the underlying EN rules
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_CIUS_PT_UBL_CREDITNOTE_211,
                                                                            "CIUS-PT UBL Credit Note " +
                                                                                                            VID_CIUS_PT_UBL_CREDITNOTE_211.getVersionString (),
-                                                                           _createStatus (bNotDeprecated),
+                                                                           PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
                                                                            ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
-                                                                           ValidationExecutorSchematron.createXSLT (RES_211,
-                                                                                                                    UBL21NamespaceContext.getInstance ())));
+                                                                           PhiveRulesUBLHelper.createXSLT_UBL21 (RES_211)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_CIUS_PT_UBL_INVOICE_211,
                                                                            "CIUS-PT UBL Invoice " +
                                                                                                         VID_CIUS_PT_UBL_INVOICE_211.getVersionString (),
-                                                                           _createStatus (bNotDeprecated),
+                                                                           PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
                                                                            ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
-                                                                           ValidationExecutorSchematron.createXSLT (RES_211,
-                                                                                                                    UBL21NamespaceContext.getInstance ())));
+                                                                           PhiveRulesUBLHelper.createXSLT_UBL21 (RES_211)));
   }
 }

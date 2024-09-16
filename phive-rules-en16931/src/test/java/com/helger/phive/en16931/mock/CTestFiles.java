@@ -27,7 +27,7 @@ import com.helger.commons.collection.impl.CommonsArrayList;
 import com.helger.commons.collection.impl.ICommonsList;
 import com.helger.commons.io.resource.ClassPathResource;
 import com.helger.commons.io.resource.IReadableResource;
-import com.helger.diver.api.version.VESID;
+import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.phive.api.executorset.ValidationExecutorSetRegistry;
 import com.helger.phive.api.mock.TestFile;
 import com.helger.phive.en16931.EN16931Validation;
@@ -51,59 +51,59 @@ public final class CTestFiles
   public static ICommonsList <TestFile> getAllTestFiles ()
   {
     final ICommonsList <TestFile> ret = new CommonsArrayList <> ();
-    for (final VESID aVESID : new VESID [] { EN16931Validation.VID_CII_100,
-                                             EN16931Validation.VID_CII_110,
-                                             EN16931Validation.VID_CII_120,
-                                             EN16931Validation.VID_CII_121,
-                                             EN16931Validation.VID_CII_123,
-                                             EN16931Validation.VID_CII_130,
-                                             EN16931Validation.VID_CII_131,
-                                             EN16931Validation.VID_CII_132,
-                                             EN16931Validation.VID_CII_133,
-                                             EN16931Validation.VID_CII_134,
-                                             EN16931Validation.VID_CII_135,
-                                             EN16931Validation.VID_CII_136,
-                                             EN16931Validation.VID_CII_136A,
-                                             EN16931Validation.VID_CII_137,
-                                             EN16931Validation.VID_CII_138,
-                                             EN16931Validation.VID_CII_139,
-                                             EN16931Validation.VID_CII_1310,
-                                             EN16931Validation.VID_CII_1311,
-                                             EN16931Validation.VID_CII_1312,
+    for (final DVRCoordinate aVESID : new DVRCoordinate [] { EN16931Validation.VID_CII_100,
+                                                             EN16931Validation.VID_CII_110,
+                                                             EN16931Validation.VID_CII_120,
+                                                             EN16931Validation.VID_CII_121,
+                                                             EN16931Validation.VID_CII_123,
+                                                             EN16931Validation.VID_CII_130,
+                                                             EN16931Validation.VID_CII_131,
+                                                             EN16931Validation.VID_CII_132,
+                                                             EN16931Validation.VID_CII_133,
+                                                             EN16931Validation.VID_CII_134,
+                                                             EN16931Validation.VID_CII_135,
+                                                             EN16931Validation.VID_CII_136,
+                                                             EN16931Validation.VID_CII_136A,
+                                                             EN16931Validation.VID_CII_137,
+                                                             EN16931Validation.VID_CII_138,
+                                                             EN16931Validation.VID_CII_139,
+                                                             EN16931Validation.VID_CII_1310,
+                                                             EN16931Validation.VID_CII_1311,
+                                                             EN16931Validation.VID_CII_1312,
 
-                                             EN16931Validation.VID_UBL_INVOICE_100,
-                                             EN16931Validation.VID_UBL_INVOICE_110,
-                                             EN16931Validation.VID_UBL_INVOICE_120,
-                                             EN16931Validation.VID_UBL_INVOICE_121,
-                                             EN16931Validation.VID_UBL_INVOICE_123,
-                                             EN16931Validation.VID_UBL_INVOICE_130,
-                                             EN16931Validation.VID_UBL_CREDIT_NOTE_130,
-                                             EN16931Validation.VID_UBL_INVOICE_131,
-                                             EN16931Validation.VID_UBL_CREDIT_NOTE_131,
-                                             EN16931Validation.VID_UBL_INVOICE_132,
-                                             EN16931Validation.VID_UBL_CREDIT_NOTE_132,
-                                             EN16931Validation.VID_UBL_INVOICE_133,
-                                             EN16931Validation.VID_UBL_CREDIT_NOTE_133,
-                                             EN16931Validation.VID_UBL_INVOICE_134,
-                                             EN16931Validation.VID_UBL_CREDIT_NOTE_134,
-                                             EN16931Validation.VID_UBL_INVOICE_135,
-                                             EN16931Validation.VID_UBL_CREDIT_NOTE_135,
-                                             EN16931Validation.VID_UBL_INVOICE_136,
-                                             EN16931Validation.VID_UBL_CREDIT_NOTE_136,
-                                             EN16931Validation.VID_UBL_INVOICE_136A,
-                                             EN16931Validation.VID_UBL_CREDIT_NOTE_136A,
-                                             EN16931Validation.VID_UBL_INVOICE_137,
-                                             EN16931Validation.VID_UBL_CREDIT_NOTE_137,
-                                             EN16931Validation.VID_UBL_INVOICE_138,
-                                             EN16931Validation.VID_UBL_CREDIT_NOTE_138,
-                                             EN16931Validation.VID_UBL_INVOICE_139,
-                                             EN16931Validation.VID_UBL_CREDIT_NOTE_139,
-                                             EN16931Validation.VID_UBL_INVOICE_1310,
-                                             EN16931Validation.VID_UBL_CREDIT_NOTE_1310,
-                                             EN16931Validation.VID_UBL_INVOICE_1311,
-                                             EN16931Validation.VID_UBL_CREDIT_NOTE_1311,
-                                             EN16931Validation.VID_UBL_INVOICE_1312,
-                                             EN16931Validation.VID_UBL_CREDIT_NOTE_1312,
+                                                             EN16931Validation.VID_UBL_INVOICE_100,
+                                                             EN16931Validation.VID_UBL_INVOICE_110,
+                                                             EN16931Validation.VID_UBL_INVOICE_120,
+                                                             EN16931Validation.VID_UBL_INVOICE_121,
+                                                             EN16931Validation.VID_UBL_INVOICE_123,
+                                                             EN16931Validation.VID_UBL_INVOICE_130,
+                                                             EN16931Validation.VID_UBL_CREDIT_NOTE_130,
+                                                             EN16931Validation.VID_UBL_INVOICE_131,
+                                                             EN16931Validation.VID_UBL_CREDIT_NOTE_131,
+                                                             EN16931Validation.VID_UBL_INVOICE_132,
+                                                             EN16931Validation.VID_UBL_CREDIT_NOTE_132,
+                                                             EN16931Validation.VID_UBL_INVOICE_133,
+                                                             EN16931Validation.VID_UBL_CREDIT_NOTE_133,
+                                                             EN16931Validation.VID_UBL_INVOICE_134,
+                                                             EN16931Validation.VID_UBL_CREDIT_NOTE_134,
+                                                             EN16931Validation.VID_UBL_INVOICE_135,
+                                                             EN16931Validation.VID_UBL_CREDIT_NOTE_135,
+                                                             EN16931Validation.VID_UBL_INVOICE_136,
+                                                             EN16931Validation.VID_UBL_CREDIT_NOTE_136,
+                                                             EN16931Validation.VID_UBL_INVOICE_136A,
+                                                             EN16931Validation.VID_UBL_CREDIT_NOTE_136A,
+                                                             EN16931Validation.VID_UBL_INVOICE_137,
+                                                             EN16931Validation.VID_UBL_CREDIT_NOTE_137,
+                                                             EN16931Validation.VID_UBL_INVOICE_138,
+                                                             EN16931Validation.VID_UBL_CREDIT_NOTE_138,
+                                                             EN16931Validation.VID_UBL_INVOICE_139,
+                                                             EN16931Validation.VID_UBL_CREDIT_NOTE_139,
+                                                             EN16931Validation.VID_UBL_INVOICE_1310,
+                                                             EN16931Validation.VID_UBL_CREDIT_NOTE_1310,
+                                                             EN16931Validation.VID_UBL_INVOICE_1311,
+                                                             EN16931Validation.VID_UBL_CREDIT_NOTE_1311,
+                                                             EN16931Validation.VID_UBL_INVOICE_1312,
+                                                             EN16931Validation.VID_UBL_CREDIT_NOTE_1312,
 
     })
       for (final IReadableResource aRes : getAllMatchingTestFiles (aVESID))
@@ -116,7 +116,7 @@ public final class CTestFiles
 
   @Nonnull
   @ReturnsMutableCopy
-  public static ICommonsList <? extends IReadableResource> getAllMatchingTestFiles (@Nonnull final VESID aVESID)
+  public static ICommonsList <? extends IReadableResource> getAllMatchingTestFiles (@Nonnull final DVRCoordinate aVESID)
   {
     ValueEnforcer.notNull (aVESID, "VESID");
 
@@ -135,8 +135,7 @@ public final class CTestFiles
                                                       "CII_example6.xml",
                                                       "CII_example7.xml",
                                                       "CII_example8.xml",
-                                                      "CII_example9.xml" },
-                                      x -> new ClassPathResource (sPrefix + x));
+                                                      "CII_example9.xml" }, x -> new ClassPathResource (sPrefix + x));
     }
     if (aVESID.equals (EN16931Validation.VID_CII_110))
     {
@@ -151,8 +150,7 @@ public final class CTestFiles
                                                       "CII_example6.xml",
                                                       "CII_example7.xml",
                                                       "CII_example8.xml",
-                                                      "CII_example9.xml" },
-                                      x -> new ClassPathResource (sPrefix + x));
+                                                      "CII_example9.xml" }, x -> new ClassPathResource (sPrefix + x));
     }
     if (aVESID.equals (EN16931Validation.VID_CII_120))
     {
@@ -167,8 +165,7 @@ public final class CTestFiles
                                                       "CII_example6.xml",
                                                       "CII_example7.xml",
                                                       "CII_example8.xml",
-                                                      "CII_example9.xml" },
-                                      x -> new ClassPathResource (sPrefix + x));
+                                                      "CII_example9.xml" }, x -> new ClassPathResource (sPrefix + x));
     }
     if (aVESID.equals (EN16931Validation.VID_CII_121))
     {
@@ -183,8 +180,7 @@ public final class CTestFiles
                                                       "CII_example6.xml",
                                                       "CII_example7.xml",
                                                       "CII_example8.xml",
-                                                      "CII_example9.xml" },
-                                      x -> new ClassPathResource (sPrefix + x));
+                                                      "CII_example9.xml" }, x -> new ClassPathResource (sPrefix + x));
     }
     if (aVESID.equals (EN16931Validation.VID_CII_123))
     {
@@ -199,8 +195,7 @@ public final class CTestFiles
                                                       "CII_example6.xml",
                                                       "CII_example7.xml",
                                                       "CII_example8.xml",
-                                                      "CII_example9.xml" },
-                                      x -> new ClassPathResource (sPrefix + x));
+                                                      "CII_example9.xml" }, x -> new ClassPathResource (sPrefix + x));
     }
     if (aVESID.equals (EN16931Validation.VID_CII_130))
     {
@@ -215,8 +210,7 @@ public final class CTestFiles
                                                       "CII_example6.xml",
                                                       "CII_example7.xml",
                                                       "CII_example8.xml",
-                                                      "CII_example9.xml" },
-                                      x -> new ClassPathResource (sPrefix + x));
+                                                      "CII_example9.xml" }, x -> new ClassPathResource (sPrefix + x));
     }
     if (aVESID.equals (EN16931Validation.VID_CII_131))
     {
@@ -229,8 +223,7 @@ public final class CTestFiles
                                                       "CII_example6.xml",
                                                       "CII_example7.xml",
                                                       "CII_example8.xml",
-                                                      "CII_example9.xml" },
-                                      x -> new ClassPathResource (sPrefix + x));
+                                                      "CII_example9.xml" }, x -> new ClassPathResource (sPrefix + x));
     }
     if (aVESID.equals (EN16931Validation.VID_CII_132))
     {
@@ -243,8 +236,7 @@ public final class CTestFiles
                                                       "CII_example6.xml",
                                                       "CII_example7.xml",
                                                       "CII_example8.xml",
-                                                      "CII_example9.xml" },
-                                      x -> new ClassPathResource (sPrefix + x));
+                                                      "CII_example9.xml" }, x -> new ClassPathResource (sPrefix + x));
     }
     if (aVESID.equals (EN16931Validation.VID_CII_133))
     {
@@ -255,8 +247,7 @@ public final class CTestFiles
                                                       "CII_example6.xml",
                                                       "CII_example7.xml",
                                                       "CII_example8.xml",
-                                                      "CII_example9.xml" },
-                                      x -> new ClassPathResource (sPrefix + x));
+                                                      "CII_example9.xml" }, x -> new ClassPathResource (sPrefix + x));
     }
     if (aVESID.equals (EN16931Validation.VID_CII_134))
     {
@@ -269,8 +260,7 @@ public final class CTestFiles
                                                       "CII_example6.xml",
                                                       "CII_example7.xml",
                                                       "CII_example8.xml",
-                                                      "CII_example9.xml" },
-                                      x -> new ClassPathResource (sPrefix + x));
+                                                      "CII_example9.xml" }, x -> new ClassPathResource (sPrefix + x));
     }
     if (aVESID.equals (EN16931Validation.VID_CII_135))
     {
@@ -285,8 +275,7 @@ public final class CTestFiles
                                                       "CII_example7.xml",
                                                       "CII_example8.xml",
                                                       "CII_example9.xml",
-                                                      "XRechnung-O.xml" },
-                                      x -> new ClassPathResource (sPrefix + x));
+                                                      "XRechnung-O.xml" }, x -> new ClassPathResource (sPrefix + x));
     }
     if (aVESID.equals (EN16931Validation.VID_CII_136))
     {
@@ -301,8 +290,7 @@ public final class CTestFiles
                                                       "CII_example7.xml",
                                                       "CII_example8.xml",
                                                       "CII_example9.xml",
-                                                      "XRechnung-O.xml" },
-                                      x -> new ClassPathResource (sPrefix + x));
+                                                      "XRechnung-O.xml" }, x -> new ClassPathResource (sPrefix + x));
     }
     if (aVESID.equals (EN16931Validation.VID_CII_136A))
     {
@@ -332,8 +320,7 @@ public final class CTestFiles
                                                       "CII_example7.xml",
                                                       "CII_example8.xml",
                                                       "CII_example9.xml",
-                                                      "XRechnung-O.xml" },
-                                      x -> new ClassPathResource (sPrefix + x));
+                                                      "XRechnung-O.xml" }, x -> new ClassPathResource (sPrefix + x));
     }
     if (aVESID.equals (EN16931Validation.VID_CII_138))
     {
@@ -348,8 +335,7 @@ public final class CTestFiles
                                                       "CII_example7.xml",
                                                       "CII_example8.xml",
                                                       "CII_example9.xml",
-                                                      "XRechnung-O.xml" },
-                                      x -> new ClassPathResource (sPrefix + x));
+                                                      "XRechnung-O.xml" }, x -> new ClassPathResource (sPrefix + x));
     }
     if (aVESID.equals (EN16931Validation.VID_CII_139))
     {
@@ -364,8 +350,7 @@ public final class CTestFiles
                                                       "CII_example7.xml",
                                                       "CII_example8.xml",
                                                       "CII_example9.xml",
-                                                      "XRechnung-O.xml" },
-                                      x -> new ClassPathResource (sPrefix + x));
+                                                      "XRechnung-O.xml" }, x -> new ClassPathResource (sPrefix + x));
     }
     if (aVESID.equals (EN16931Validation.VID_CII_1310))
     {
@@ -379,8 +364,7 @@ public final class CTestFiles
                                                       "CII_example7.xml",
                                                       "CII_example8.xml",
                                                       "CII_example9.xml",
-                                                      "XRechnung-O.xml" },
-                                      x -> new ClassPathResource (sPrefix + x));
+                                                      "XRechnung-O.xml" }, x -> new ClassPathResource (sPrefix + x));
     }
     if (aVESID.equals (EN16931Validation.VID_CII_1311))
     {
@@ -394,8 +378,7 @@ public final class CTestFiles
                                                       "CII_example7.xml",
                                                       "CII_example8.xml",
                                                       "CII_example9.xml",
-                                                      "XRechnung-O.xml" },
-                                      x -> new ClassPathResource (sPrefix + x));
+                                                      "XRechnung-O.xml" }, x -> new ClassPathResource (sPrefix + x));
     }
     if (aVESID.equals (EN16931Validation.VID_CII_1312))
     {
@@ -412,8 +395,7 @@ public final class CTestFiles
                                                       "CII_example7.xml",
                                                       "CII_example8.xml",
                                                       "CII_example9.xml",
-                                                      "XRechnung-O.xml" },
-                                      x -> new ClassPathResource (sPrefix + x));
+                                                      "XRechnung-O.xml" }, x -> new ClassPathResource (sPrefix + x));
     }
 
     if (aVESID.equals (EN16931Validation.VID_UBL_INVOICE_100))

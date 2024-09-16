@@ -27,7 +27,7 @@ import com.helger.commons.collection.impl.CommonsArrayList;
 import com.helger.commons.collection.impl.ICommonsList;
 import com.helger.commons.io.resource.FileSystemResource;
 import com.helger.commons.io.resource.IReadableResource;
-import com.helger.diver.api.version.VESID;
+import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.phive.api.executorset.ValidationExecutorSetRegistry;
 import com.helger.phive.api.mock.TestFile;
 import com.helger.phive.isdoc.ISDOCValidation;
@@ -51,7 +51,8 @@ public final class CTestFiles
   public static ICommonsList <TestFile> getAllTestFiles ()
   {
     final ICommonsList <TestFile> ret = new CommonsArrayList <> ();
-    for (final VESID aESID : new VESID [] { ISDOCValidation.VID_ISDOC_601, ISDOCValidation.VID_ISDOC_602 })
+    for (final DVRCoordinate aESID : new DVRCoordinate [] { ISDOCValidation.VID_ISDOC_601,
+                                                            ISDOCValidation.VID_ISDOC_602 })
       for (final IReadableResource aRes : getAllMatchingTestFiles (aESID))
       {
         assertTrue ("Not existing test file: " + aRes.getPath (), aRes.exists ());
@@ -62,9 +63,9 @@ public final class CTestFiles
 
   @Nonnull
   @ReturnsMutableCopy
-  public static ICommonsList <? extends IReadableResource> getAllMatchingTestFiles (@Nonnull final VESID aVESID)
+  public static ICommonsList <? extends IReadableResource> getAllMatchingTestFiles (@Nonnull final DVRCoordinate aVESID)
   {
-    ValueEnforcer.notNull (aVESID, "VESID");
+    ValueEnforcer.notNull (aVESID, "DVRCoordinate");
 
     final String sBasePath = "src/test/resources/external/test-files/";
     if (aVESID.equals (ISDOCValidation.VID_ISDOC_601))
@@ -78,6 +79,6 @@ public final class CTestFiles
                                       x -> new FileSystemResource (sBasePath + "6.0.2/" + x));
     }
 
-    throw new IllegalArgumentException ("Invalid VESID: " + aVESID);
+    throw new IllegalArgumentException ("Invalid DVRCoordinate: " + aVESID);
   }
 }

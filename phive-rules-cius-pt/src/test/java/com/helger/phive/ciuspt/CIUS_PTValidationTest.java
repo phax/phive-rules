@@ -21,12 +21,11 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 
 import com.helger.commons.io.resource.IReadableResource;
-import com.helger.phive.api.artefact.IValidationArtefact;
 import com.helger.phive.api.execute.IValidationExecutor;
 import com.helger.phive.api.executorset.IValidationExecutorSet;
 import com.helger.phive.ciuspt.mock.CTestFiles;
+import com.helger.phive.rules.api.PhiveRulesTestHelper;
 import com.helger.phive.xml.source.IValidationSourceXML;
-import com.helger.schematron.xslt.SchematronResourceXSLT;
 
 /**
  * Test class for class {@link CIUS_PTValidation}.
@@ -51,13 +50,6 @@ public final class CIUS_PTValidationTest
   {
     for (final IValidationExecutorSet <IValidationSourceXML> aVES : CTestFiles.VES_REGISTRY.getAll ())
       for (final IValidationExecutor <IValidationSourceXML> aVE : aVES)
-      {
-        final IValidationArtefact aVA = aVE.getValidationArtefact ();
-        final IReadableResource aRes = aVA.getRuleResource ();
-
-        // Check that the passed Schematron is valid
-        if (aVA.getValidationArtefactType ().isSchematron ())
-          assertTrue (aRes.toString (), new SchematronResourceXSLT (aRes).isValidSchematron ());
-      }
+        assertTrue (PhiveRulesTestHelper.isContentCorrect (aVE));
   }
 }

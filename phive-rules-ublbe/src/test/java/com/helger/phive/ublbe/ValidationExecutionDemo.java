@@ -21,10 +21,11 @@ import javax.annotation.Nullable;
 
 import org.w3c.dom.Document;
 
-import com.helger.diver.api.version.VESID;
+import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.phive.api.execute.ValidationExecutionManager;
 import com.helger.phive.api.executorset.IValidationExecutorSet;
 import com.helger.phive.api.result.ValidationResultList;
+import com.helger.phive.api.validity.IValidityDeterminator;
 import com.helger.phive.ublbe.mock.CTestFiles;
 import com.helger.phive.xml.source.IValidationSourceXML;
 import com.helger.phive.xml.source.ValidationSourceXML;
@@ -40,7 +41,7 @@ public final class ValidationExecutionDemo
   public void testCode (@Nullable final String sSystemID, @Nonnull final byte [] aXML)
   {
     // Example: validate against orders
-    final VESID aVESID = UBLBEValidation.VID_UBL_BE_INVOICE_131;
+    final DVRCoordinate aVESID = UBLBEValidation.VID_UBL_BE_INVOICE_131;
 
     // Note: Use the currently active version
     final IValidationExecutorSet <IValidationSourceXML> aExecutors = CTestFiles.VES_REGISTRY.getOfID (aVESID);
@@ -52,7 +53,9 @@ public final class ValidationExecutionDemo
     final IValidationSourceXML aSource = ValidationSourceXML.create (sSystemID, aXMLDoc);
 
     // Perform the execution
-    final ValidationResultList aErrors = ValidationExecutionManager.executeValidation (aExecutors, aSource);
+    final ValidationResultList aErrors = ValidationExecutionManager.executeValidation (IValidityDeterminator.getDefault (),
+                                                                                       aExecutors,
+                                                                                       aSource);
     if (aErrors.containsNoError ())
     {
       // TODO success

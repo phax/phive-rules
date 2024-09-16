@@ -27,10 +27,11 @@ import com.helger.commons.collection.impl.CommonsArrayList;
 import com.helger.commons.collection.impl.ICommonsList;
 import com.helger.commons.io.resource.ClassPathResource;
 import com.helger.commons.io.resource.IReadableResource;
-import com.helger.diver.api.version.VESID;
+import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.phive.api.executorset.ValidationExecutorSetRegistry;
 import com.helger.phive.api.mock.TestFile;
 import com.helger.phive.ciusro.CIUS_ROValidation;
+import com.helger.phive.en16931.EN16931Validation;
 import com.helger.phive.xml.source.IValidationSourceXML;
 
 @Immutable
@@ -40,6 +41,7 @@ public final class CTestFiles
   public static final ValidationExecutorSetRegistry <IValidationSourceXML> VES_REGISTRY = new ValidationExecutorSetRegistry <> ();
   static
   {
+    EN16931Validation.initEN16931 (VES_REGISTRY);
     CIUS_ROValidation.initCIUS_RO (VES_REGISTRY);
   }
 
@@ -51,14 +53,14 @@ public final class CTestFiles
   public static ICommonsList <TestFile> getAllTestFiles ()
   {
     final ICommonsList <TestFile> ret = new CommonsArrayList <> ();
-    for (final VESID aESID : new VESID [] { CIUS_ROValidation.VID_CIUS_RO_UBL_CREDITNOTE_103,
-                                            CIUS_ROValidation.VID_CIUS_RO_UBL_INVOICE_103,
+    for (final DVRCoordinate aESID : new DVRCoordinate [] { CIUS_ROValidation.VID_CIUS_RO_UBL_CREDITNOTE_103,
+                                                            CIUS_ROValidation.VID_CIUS_RO_UBL_INVOICE_103,
 
-                                            CIUS_ROValidation.VID_CIUS_RO_UBL_CREDITNOTE_104,
-                                            CIUS_ROValidation.VID_CIUS_RO_UBL_INVOICE_104,
+                                                            CIUS_ROValidation.VID_CIUS_RO_UBL_CREDITNOTE_104,
+                                                            CIUS_ROValidation.VID_CIUS_RO_UBL_INVOICE_104,
 
-                                            CIUS_ROValidation.VID_CIUS_RO_UBL_CREDITNOTE_108,
-                                            CIUS_ROValidation.VID_CIUS_RO_UBL_INVOICE_108 })
+                                                            CIUS_ROValidation.VID_CIUS_RO_UBL_CREDITNOTE_108,
+                                                            CIUS_ROValidation.VID_CIUS_RO_UBL_INVOICE_108 })
       for (final IReadableResource aRes : getAllMatchingTestFiles (aESID))
       {
         assertTrue ("Not existing test file: " + aRes.getPath (), aRes.exists ());
@@ -69,7 +71,7 @@ public final class CTestFiles
 
   @Nonnull
   @ReturnsMutableCopy
-  public static ICommonsList <? extends IReadableResource> getAllMatchingTestFiles (@Nonnull final VESID aVESID)
+  public static ICommonsList <? extends IReadableResource> getAllMatchingTestFiles (@Nonnull final DVRCoordinate aVESID)
   {
     ValueEnforcer.notNull (aVESID, "VESID");
 

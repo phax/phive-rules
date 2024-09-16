@@ -21,11 +21,10 @@ import javax.annotation.concurrent.Immutable;
 
 import com.helger.commons.ValueEnforcer;
 import com.helger.commons.io.resource.ClassPathResource;
-import com.helger.diver.api.version.VESID;
+import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
 import com.helger.phive.api.executorset.ValidationExecutorSet;
-import com.helger.phive.api.executorset.status.IValidationExecutorSetStatus;
-import com.helger.phive.api.executorset.status.ValidationExecutorSetStatus;
+import com.helger.phive.rules.api.PhiveRulesHelper;
 import com.helger.phive.xml.source.IValidationSourceXML;
 import com.helger.phive.xml.xsd.ValidationExecutorXSD;
 
@@ -39,8 +38,8 @@ public final class TEAPPSValidation
 {
   public static final String GROUP_ID = "com.tieto";
 
-  public static final VESID VID_TEAPPS_272 = new VESID (GROUP_ID, "teappsxml", "2.7.2");
-  public static final VESID VID_TEAPPS_30 = new VESID (GROUP_ID, "teappsxml", "3.0");
+  public static final DVRCoordinate VID_TEAPPS_272 = PhiveRulesHelper.createCoordinate (GROUP_ID, "teappsxml", "2.7.2");
+  public static final DVRCoordinate VID_TEAPPS_30 = PhiveRulesHelper.createCoordinate (GROUP_ID, "teappsxml", "3.0");
 
   private TEAPPSValidation ()
   {}
@@ -49,12 +48,6 @@ public final class TEAPPSValidation
   private static ClassLoader _getCL ()
   {
     return TEAPPSValidation.class.getClassLoader ();
-  }
-
-  @Nonnull
-  private static IValidationExecutorSetStatus _createStatus (final boolean bIsDeprecated)
-  {
-    return ValidationExecutorSetStatus.createDeprecatedNow (bIsDeprecated);
   }
 
   /**
@@ -74,13 +67,13 @@ public final class TEAPPSValidation
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_TEAPPS_272,
                                                                            "TEAPPSXML " +
                                                                                            VID_TEAPPS_272.getVersionString (),
-                                                                           _createStatus (bNotDeprecated),
+                                                                           PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
                                                                            ValidationExecutorXSD.create (new ClassPathResource ("/external/schemas/TEAPPSXMLv272_schema_INVOICES.xsd",
                                                                                                                                 _getCL ()))));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_TEAPPS_30,
                                                                            "TEAPPSXML " +
                                                                                           VID_TEAPPS_30.getVersionString (),
-                                                                           _createStatus (bNotDeprecated),
+                                                                           PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
                                                                            ValidationExecutorXSD.create (new ClassPathResource ("/external/schemas/teappsxmlv30_schema_invoices_0.xsd",
                                                                                                                                 _getCL ()))));
   }

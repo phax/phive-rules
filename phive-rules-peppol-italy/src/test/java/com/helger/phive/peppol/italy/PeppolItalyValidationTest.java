@@ -17,18 +17,15 @@
 package com.helger.phive.peppol.italy;
 
 import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
 
 import org.junit.Test;
 
 import com.helger.commons.io.resource.IReadableResource;
-import com.helger.phive.api.EValidationType;
-import com.helger.phive.api.artefact.IValidationArtefact;
 import com.helger.phive.api.execute.IValidationExecutor;
 import com.helger.phive.api.executorset.IValidationExecutorSet;
 import com.helger.phive.peppol.italy.mock.CTestFiles;
+import com.helger.phive.rules.api.PhiveRulesTestHelper;
 import com.helger.phive.xml.source.IValidationSourceXML;
-import com.helger.schematron.xslt.SchematronResourceXSLT;
 
 /**
  * Test class for class {@link PeppolItalyValidation}.
@@ -53,16 +50,6 @@ public final class PeppolItalyValidationTest
   {
     for (final IValidationExecutorSet <IValidationSourceXML> aVES : CTestFiles.VES_REGISTRY.getAll ())
       for (final IValidationExecutor <IValidationSourceXML> aVE : aVES)
-      {
-        final IValidationArtefact aVA = aVE.getValidationArtefact ();
-        final IReadableResource aRes = aVA.getRuleResource ();
-
-        // Check that the passed Schematron is valid
-        if (aVA.getValidationArtefactType () == EValidationType.SCHEMATRON_XSLT)
-          assertTrue (aRes.toString (), new SchematronResourceXSLT (aRes).isValidSchematron ());
-        else
-          if (aVA.getValidationArtefactType () != EValidationType.XSD)
-            fail ("oops: " + aVA.getValidationArtefactType ());
-      }
+        assertTrue (PhiveRulesTestHelper.isContentCorrect (aVE));
   }
 }

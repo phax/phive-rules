@@ -26,7 +26,7 @@
   </parent>
   <groupId>com.helger.phive.rules</groupId>
   <artifactId>phive-rules-parent-pom</artifactId>
-  <version>3.1.14-SNAPSHOT</version>
+  <version>3.2.0-SNAPSHOT</version>
   <packaging>pom</packaging>
   <name>phive-rules-parent-pom</name>
   <description>Base POM to build the phive rules projects</description>
@@ -75,7 +75,7 @@
       <dependency>
         <groupId>com.helger.commons</groupId>
         <artifactId>ph-commons-parent-pom</artifactId>
-        <version>11.1.6</version>
+        <version>11.1.8</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
@@ -89,14 +89,14 @@
       <dependency>
         <groupId>com.helger.diver</groupId>
         <artifactId>ph-diver-parent-pom</artifactId>
-        <version>1.2.0</version>
+        <version>3.0.1</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
       <dependency>
         <groupId>com.helger.phive</groupId>
         <artifactId>phive-parent-pom</artifactId>
-        <version>9.2.2</version>
+        <version>10.0.0-SNAPSHOT</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
@@ -141,6 +141,11 @@
         <scope>import</scope>
       </dependency>
 
+      <dependency>
+        <groupId>com.helger.phive.rules</groupId>
+        <artifactId>phive-rules-api</artifactId>
+        <version>${project.version}</version>
+      </dependency>
       <dependency>
         <groupId>com.helger.phive.rules</groupId>
         <artifactId>phive-rules-cii</artifactId>
@@ -253,30 +258,10 @@
       </dependency>
     </dependencies>
   </dependencyManagement>
-
-  <dependencies>
-    <dependency>
-      <groupId>org.slf4j</groupId>
-      <artifactId>slf4j-api</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>com.helger.phive</groupId>
-      <artifactId>phive-xml</artifactId>
-    </dependency>
-
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.slf4j</groupId>
-      <artifactId>slf4j-simple</artifactId>
-      <scope>test</scope>
-    </dependency>
-  </dependencies>
   
   <modules>
+    <module>phive-rules-api</module>
+    <!-- formats: -->
     <module>phive-rules-cii</module>
     <module>phive-rules-cius-pt</module>
     <module>phive-rules-cius-ro</module>
