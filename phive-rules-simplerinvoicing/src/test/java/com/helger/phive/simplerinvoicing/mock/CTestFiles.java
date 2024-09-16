@@ -30,7 +30,7 @@ import com.helger.commons.io.resource.ClassPathResource;
 import com.helger.commons.io.resource.IReadableResource;
 import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.phive.api.executorset.ValidationExecutorSetRegistry;
-import com.helger.phive.api.mock.TestFile;
+import com.helger.phive.api.mock.PhiveTestFile;
 import com.helger.phive.simplerinvoicing.SimplerInvoicingValidation;
 import com.helger.phive.xml.source.IValidationSourceXML;
 
@@ -49,9 +49,9 @@ public final class CTestFiles
 
   @Nonnull
   @ReturnsMutableCopy
-  public static ICommonsList <TestFile> getAllTestFiles ()
+  public static ICommonsList <PhiveTestFile> getAllTestFiles ()
   {
-    final ICommonsList <TestFile> ret = new CommonsArrayList <> ();
+    final ICommonsList <PhiveTestFile> ret = new CommonsArrayList <> ();
     for (final DVRCoordinate aVESID : new DVRCoordinate [] { SimplerInvoicingValidation.VID_SI_INVOICE_V10,
                                                              SimplerInvoicingValidation.VID_SI_INVOICE_V11,
                                                              SimplerInvoicingValidation.VID_SI_INVOICE_V12,
@@ -112,13 +112,13 @@ public final class CTestFiles
       for (final IReadableResource aRes : getAllMatchingGoodTestFiles (aVESID))
       {
         assertTrue ("Not existing test file: " + aRes.getPath (), aRes.exists ());
-        ret.add (TestFile.createGoodCase (aRes, aVESID));
+        ret.add (PhiveTestFile.createGoodCase (aRes, aVESID));
       }
       for (final IReadableResource aRes : getAllMatchingErrorTestFiles (aVESID))
       {
         assertTrue ("Not existing test file: " + aRes.getPath (), aRes.exists ());
         // We don't check the exact errors
-        ret.add (new TestFile (aRes, aVESID, new CommonsHashSet <> ("bla")));
+        ret.add (new PhiveTestFile (aRes, aVESID, new CommonsHashSet <> ("bla")));
       }
     }
 

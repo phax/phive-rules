@@ -28,7 +28,7 @@ import com.helger.commons.collection.impl.ICommonsList;
 import com.helger.commons.io.resource.IReadableResource;
 import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.phive.api.executorset.ValidationExecutorSetRegistry;
-import com.helger.phive.api.mock.TestFile;
+import com.helger.phive.api.mock.PhiveTestFile;
 import com.helger.phive.fatturapa.FatturaPAValidation;
 import com.helger.phive.xml.source.IValidationSourceXML;
 
@@ -46,16 +46,16 @@ public final class CTestFiles
 
   @Nonnull
   @ReturnsMutableCopy
-  public static ICommonsList <TestFile> getAllTestFiles ()
+  public static ICommonsList <PhiveTestFile> getAllTestFiles ()
   {
-    final ICommonsList <TestFile> ret = new CommonsArrayList <> ();
+    final ICommonsList <PhiveTestFile> ret = new CommonsArrayList <> ();
     for (final DVRCoordinate aVESID : new DVRCoordinate [] { FatturaPAValidation.VID_FATTURAPA_120,
                                                              FatturaPAValidation.VID_FATTURAPA_121,
                                                              FatturaPAValidation.VID_FATTURAPA_122 })
       for (final IReadableResource aRes : getAllMatchingTestFiles (aVESID))
       {
         assertTrue ("Not existing test file: " + aRes.getPath (), aRes.exists ());
-        ret.add (TestFile.createGoodCase (aRes, aVESID));
+        ret.add (PhiveTestFile.createGoodCase (aRes, aVESID));
       }
     return ret;
   }

@@ -29,7 +29,7 @@ import com.helger.commons.io.resource.FileSystemResource;
 import com.helger.commons.io.resource.IReadableResource;
 import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.phive.api.executorset.ValidationExecutorSetRegistry;
-import com.helger.phive.api.mock.TestFile;
+import com.helger.phive.api.mock.PhiveTestFile;
 import com.helger.phive.isdoc.ISDOCValidation;
 import com.helger.phive.xml.source.IValidationSourceXML;
 
@@ -48,15 +48,15 @@ public final class CTestFiles
 
   @Nonnull
   @ReturnsMutableCopy
-  public static ICommonsList <TestFile> getAllTestFiles ()
+  public static ICommonsList <PhiveTestFile> getAllTestFiles ()
   {
-    final ICommonsList <TestFile> ret = new CommonsArrayList <> ();
+    final ICommonsList <PhiveTestFile> ret = new CommonsArrayList <> ();
     for (final DVRCoordinate aESID : new DVRCoordinate [] { ISDOCValidation.VID_ISDOC_601,
                                                             ISDOCValidation.VID_ISDOC_602 })
       for (final IReadableResource aRes : getAllMatchingTestFiles (aESID))
       {
         assertTrue ("Not existing test file: " + aRes.getPath (), aRes.exists ());
-        ret.add (TestFile.createGoodCase (aRes, aESID));
+        ret.add (PhiveTestFile.createGoodCase (aRes, aESID));
       }
     return ret;
   }

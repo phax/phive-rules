@@ -29,7 +29,7 @@ import com.helger.commons.io.resource.ClassPathResource;
 import com.helger.commons.io.resource.IReadableResource;
 import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.phive.api.executorset.ValidationExecutorSetRegistry;
-import com.helger.phive.api.mock.TestFile;
+import com.helger.phive.api.mock.PhiveTestFile;
 import com.helger.phive.finvoice.FinvoiceValidation;
 import com.helger.phive.xml.source.IValidationSourceXML;
 
@@ -47,9 +47,9 @@ public final class CTestFiles
 
   @Nonnull
   @ReturnsMutableCopy
-  public static ICommonsList <TestFile> getAllTestFiles ()
+  public static ICommonsList <PhiveTestFile> getAllTestFiles ()
   {
-    final ICommonsList <TestFile> ret = new CommonsArrayList <> ();
+    final ICommonsList <PhiveTestFile> ret = new CommonsArrayList <> ();
     for (final DVRCoordinate aVESID : new DVRCoordinate [] { FinvoiceValidation.VID_FINVOICE_13,
                                                             FinvoiceValidation.VID_FINVOICE_20,
                                                             FinvoiceValidation.VID_FINVOICE_201,
@@ -57,7 +57,7 @@ public final class CTestFiles
       for (final IReadableResource aRes : getAllMatchingTestFiles (aVESID))
       {
         assertTrue ("Not existing test file: " + aRes.getPath (), aRes.exists ());
-        ret.add (TestFile.createGoodCase (aRes, aVESID));
+        ret.add (PhiveTestFile.createGoodCase (aRes, aVESID));
       }
     return ret;
   }

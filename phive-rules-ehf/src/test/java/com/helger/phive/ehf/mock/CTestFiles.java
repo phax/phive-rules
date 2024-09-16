@@ -29,7 +29,7 @@ import com.helger.commons.io.resource.ClassPathResource;
 import com.helger.commons.io.resource.IReadableResource;
 import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.phive.api.executorset.ValidationExecutorSetRegistry;
-import com.helger.phive.api.mock.TestFile;
+import com.helger.phive.api.mock.PhiveTestFile;
 import com.helger.phive.ehf.EHFValidation;
 import com.helger.phive.ehf.EHFValidationG2;
 import com.helger.phive.ehf.EHFValidationG3_2020_03;
@@ -51,9 +51,9 @@ public final class CTestFiles
 
   @Nonnull
   @ReturnsMutableCopy
-  public static ICommonsList <TestFile> getAllTestFiles ()
+  public static ICommonsList <PhiveTestFile> getAllTestFiles ()
   {
-    final ICommonsList <TestFile> ret = new CommonsArrayList <> ();
+    final ICommonsList <PhiveTestFile> ret = new CommonsArrayList <> ();
     for (final DVRCoordinate aESID : new DVRCoordinate [] { /* 2018-11 */
                                                             EHFValidationG2.VID_EHF_CATALOGUE_1_0_13,
                                                             EHFValidationG2.VID_EHF_CATALOGUE_RESPONSE_1_0_13,
@@ -122,7 +122,7 @@ public final class CTestFiles
       for (final IReadableResource aRes : getAllMatchingTestFiles (aESID))
       {
         assertTrue ("Not existing test file: " + aRes.getPath (), aRes.exists ());
-        ret.add (TestFile.createGoodCase (aRes, aESID));
+        ret.add (PhiveTestFile.createGoodCase (aRes, aESID));
       }
     return ret;
   }

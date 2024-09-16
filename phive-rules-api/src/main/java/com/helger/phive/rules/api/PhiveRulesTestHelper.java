@@ -5,7 +5,7 @@ import javax.annotation.concurrent.Immutable;
 import com.helger.commons.io.resource.IReadableResource;
 import com.helger.phive.api.EValidationType;
 import com.helger.phive.api.artefact.IValidationArtefact;
-import com.helger.phive.api.execute.IValidationExecutor;
+import com.helger.phive.api.executor.IValidationExecutor;
 import com.helger.phive.xml.source.IValidationSourceXML;
 import com.helger.schematron.pure.SchematronResourcePure;
 import com.helger.schematron.sch.SchematronResourceSCH;

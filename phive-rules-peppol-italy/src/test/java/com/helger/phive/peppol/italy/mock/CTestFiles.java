@@ -29,7 +29,7 @@ import com.helger.commons.io.resource.FileSystemResource;
 import com.helger.commons.io.resource.IReadableResource;
 import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.phive.api.executorset.ValidationExecutorSetRegistry;
-import com.helger.phive.api.mock.TestFile;
+import com.helger.phive.api.mock.PhiveTestFile;
 import com.helger.phive.peppol.italy.PeppolItalyValidation;
 import com.helger.phive.peppol.italy.PeppolItalyValidation2_2_9;
 import com.helger.phive.peppol.italy.PeppolItalyValidation2_3_0;
@@ -52,9 +52,9 @@ public final class CTestFiles
 
   @Nonnull
   @ReturnsMutableCopy
-  public static ICommonsList <TestFile> getAllTestFiles ()
+  public static ICommonsList <PhiveTestFile> getAllTestFiles ()
   {
-    final ICommonsList <TestFile> ret = new CommonsArrayList <> ();
+    final ICommonsList <PhiveTestFile> ret = new CommonsArrayList <> ();
     for (final DVRCoordinate aESID : new DVRCoordinate [] { PeppolItalyValidation2_2_9.VID_DESPATCH_ADVICE,
                                                             PeppolItalyValidation2_2_9.VID_ORDER,
                                                             PeppolItalyValidation2_2_9.VID_ORDER_RESPONSE,
@@ -81,7 +81,7 @@ public final class CTestFiles
       for (final IReadableResource aRes : getAllMatchingTestFiles (aESID))
       {
         assertTrue ("Not existing test file: " + aRes.getPath (), aRes.exists ());
-        ret.add (TestFile.createGoodCase (aRes, aESID));
+        ret.add (PhiveTestFile.createGoodCase (aRes, aESID));
       }
     return ret;
   }

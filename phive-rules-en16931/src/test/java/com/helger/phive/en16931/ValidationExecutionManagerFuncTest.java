@@ -40,7 +40,7 @@ import com.helger.commons.io.resource.FileSystemResource;
 import com.helger.commons.string.StringHelper;
 import com.helger.phive.api.execute.ValidationExecutionManager;
 import com.helger.phive.api.executorset.IValidationExecutorSet;
-import com.helger.phive.api.mock.TestFile;
+import com.helger.phive.api.mock.PhiveTestFile;
 import com.helger.phive.api.result.ValidationResultList;
 import com.helger.phive.api.validity.IValidityDeterminator;
 import com.helger.phive.en16931.mock.CTestFiles;
@@ -63,7 +63,7 @@ public final class ValidationExecutionManagerFuncTest
   @Test
   public void testTestFiles ()
   {
-    for (final TestFile aTestFile : CTestFiles.getAllTestFiles ())
+    for (final PhiveTestFile aTestFile : CTestFiles.getAllTestFiles ())
     {
       final IValidationExecutorSet <IValidationSourceXML> aExecutors = CTestFiles.VES_REGISTRY.getOfID (aTestFile.getVESID ());
       assertNotNull (aExecutors);

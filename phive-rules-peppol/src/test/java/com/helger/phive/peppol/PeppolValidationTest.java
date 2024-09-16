@@ -21,7 +21,7 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 
 import com.helger.commons.io.resource.IReadableResource;
-import com.helger.phive.api.execute.IValidationExecutor;
+import com.helger.phive.api.executor.IValidationExecutor;
 import com.helger.phive.api.executorset.IValidationExecutorSet;
 import com.helger.phive.peppol.mock.CTestFiles;
 import com.helger.phive.rules.api.PhiveRulesTestHelper;

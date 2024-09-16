@@ -27,7 +27,7 @@ import com.helger.commons.collection.impl.CommonsArrayList;
 import com.helger.commons.collection.impl.ICommonsList;
 import com.helger.commons.io.resource.ClassPathResource;
 import com.helger.diver.api.coord.DVRCoordinate;
-import com.helger.phive.api.execute.IValidationExecutor;
+import com.helger.phive.api.executor.IValidationExecutor;
 import com.helger.phive.api.executorset.IValidationExecutorSet;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
 import com.helger.phive.api.executorset.ValidationExecutorSet;

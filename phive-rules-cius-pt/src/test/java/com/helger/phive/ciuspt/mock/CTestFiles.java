@@ -29,7 +29,7 @@ import com.helger.commons.io.resource.ClassPathResource;
 import com.helger.commons.io.resource.IReadableResource;
 import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.phive.api.executorset.ValidationExecutorSetRegistry;
-import com.helger.phive.api.mock.TestFile;
+import com.helger.phive.api.mock.PhiveTestFile;
 import com.helger.phive.ciuspt.CIUS_PTValidation;
 import com.helger.phive.xml.source.IValidationSourceXML;
 
@@ -48,9 +48,9 @@ public final class CTestFiles
 
   @Nonnull
   @ReturnsMutableCopy
-  public static ICommonsList <TestFile> getAllTestFiles ()
+  public static ICommonsList <PhiveTestFile> getAllTestFiles ()
   {
-    final ICommonsList <TestFile> ret = new CommonsArrayList <> ();
+    final ICommonsList <PhiveTestFile> ret = new CommonsArrayList <> ();
     for (final DVRCoordinate aESID : new DVRCoordinate [] { CIUS_PTValidation.VID_CIUS_PT_UBL_CREDITNOTE_200,
                                                             CIUS_PTValidation.VID_CIUS_PT_UBL_INVOICE_200,
                                                             CIUS_PTValidation.VID_CIUS_PT_UBL_CREDITNOTE_211,
@@ -58,7 +58,7 @@ public final class CTestFiles
       for (final IReadableResource aRes : getAllMatchingTestFiles (aESID))
       {
         assertTrue ("Not existing test file: " + aRes.getPath (), aRes.exists ());
-        ret.add (TestFile.createGoodCase (aRes, aESID));
+        ret.add (PhiveTestFile.createGoodCase (aRes, aESID));
       }
     return ret;
   }
