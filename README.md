@@ -195,7 +195,7 @@ I hope that with the introduction of PINT, the versioning problem will be solved
  
 * v3.2.0 - 2024-09-16
     * Updated to ph-diver 3.0.1
-    * Updated to phive 10.0.0
+    * Updated to phive 10.0.2
     * Created new sub-module `phive-rules-api` with a shared API
     * Marked Peppol Rules 2023-11 as deprecated
     * Removed old Peppol rules before 2020 (3.5.0 to 3.9.1)
