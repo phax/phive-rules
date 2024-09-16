@@ -22,6 +22,7 @@ import javax.annotation.concurrent.Immutable;
 import com.helger.commons.ValueEnforcer;
 import com.helger.commons.io.resource.ClassPathResource;
 import com.helger.diver.api.coord.DVRCoordinate;
+import com.helger.phive.api.executorset.IValidationExecutorSet;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
 import com.helger.phive.api.executorset.ValidationExecutorSet;
 import com.helger.phive.rules.api.PhiveRulesHelper;
@@ -40,13 +41,6 @@ import com.helger.xml.namespace.MapBasedNamespaceContext;
 public final class PeppolValidationPintJP
 {
   public static final String GROUP_ID = "org.peppol.pint.jp";
-  private static final String BASE_PATH = "external/schematron/pint-jp/";
-
-  @Nonnull
-  private static ClassLoader _getCL ()
-  {
-    return PeppolValidationPintJP.class.getClassLoader ();
-  }
 
   // 0.1.2 (typo in group ID)
   @Deprecated
@@ -69,6 +63,12 @@ public final class PeppolValidationPintJP
   private PeppolValidationPintJP ()
   {}
 
+  @Nonnull
+  private static ClassLoader _getCL ()
+  {
+    return PeppolValidationPintJP.class.getClassLoader ();
+  }
+
   public static void init (@Nonnull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
   {
     ValueEnforcer.notNull (aRegistry, "Registry");
@@ -77,6 +77,8 @@ public final class PeppolValidationPintJP
                                                                                                             .getRootElementNamespaceURI ());
     final MapBasedNamespaceContext aNSCtxCreditNote = PhiveRulesUBLHelper.createUBL21NSContext (UBL21Marshaller.creditNote ()
                                                                                                                .getRootElementNamespaceURI ());
+
+    final String BASE_PATH = "external/schematron/pint-jp/";
 
     final boolean bDeprecated = false;
     final boolean bNotDeprecated = false;
@@ -109,25 +111,24 @@ public final class PeppolValidationPintJP
 
     // 1.0.2
     {
+      final IValidationExecutorSet <IValidationSourceXML> aVESIDInv = aRegistry.getOfID (PeppolValidationPint.VID_OPENPEPPOL_PINT_INVOICE_1_0_1);
+      final IValidationExecutorSet <IValidationSourceXML> aVESIDCN = aRegistry.getOfID (PeppolValidationPint.VID_OPENPEPPOL_PINT_CREDIT_NOTE_1_0_1);
+
       final ClassPathResource aCPR2 = new ClassPathResource (BASE_PATH +
                                                              "1.0.2/xslt/PINT-jurisdiction-aligned-rules.xslt",
                                                              _getCL ());
-      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_JP_PINT_INVOICE_1_0_2,
-                                                                             "Peppol PINT Japan Invoice (UBL) 1.0.2",
-                                                                             PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
-                                                                             ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
-                                                                             PhiveRulesHelper.createXSLT (PeppolValidationPint.RES_OPENPEPPOL_PINT_1_0_1,
-                                                                                                          aNSCtxCreditNote),
-                                                                             PhiveRulesHelper.createXSLT (aCPR2,
-                                                                                                          aNSCtxInvoice)));
-      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_JP_PINT_CREDIT_NOTE_1_0_2,
-                                                                             "Peppol PINT Japan Credit Note (UBL) 1.0.2",
-                                                                             PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
-                                                                             ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
-                                                                             PhiveRulesHelper.createXSLT (PeppolValidationPint.RES_OPENPEPPOL_PINT_1_0_1,
-                                                                                                          aNSCtxCreditNote),
-                                                                             PhiveRulesHelper.createXSLT (aCPR2,
-                                                                                                          aNSCtxCreditNote)));
+      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.createDerived (aVESIDInv,
+                                                                                    VID_OPENPEPPOL_JP_PINT_INVOICE_1_0_2,
+                                                                                    "Peppol PINT Japan Invoice (UBL) 1.0.2",
+                                                                                    PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
+                                                                                    PhiveRulesHelper.createXSLT (aCPR2,
+                                                                                                                 aNSCtxInvoice)));
+      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.createDerived (aVESIDCN,
+                                                                                    VID_OPENPEPPOL_JP_PINT_CREDIT_NOTE_1_0_2,
+                                                                                    "Peppol PINT Japan Credit Note (UBL) 1.0.2",
+                                                                                    PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
+                                                                                    PhiveRulesHelper.createXSLT (aCPR2,
+                                                                                                                 aNSCtxCreditNote)));
     }
   }
 }

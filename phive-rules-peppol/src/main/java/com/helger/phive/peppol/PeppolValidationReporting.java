@@ -60,17 +60,14 @@ public final class PeppolValidationReporting
                                                                                                  "tsr",
                                                                                                  "1.0.5");
 
+  private PeppolValidationReporting ()
+  {}
+
   @Nonnull
   private static ClassLoader _getCL ()
   {
     return PeppolValidationReporting.class.getClassLoader ();
   }
-
-  private static final String BASE_PATH_XSD = "external/schemas/";
-  private static final String BASE_PATH_SCH = "external/schematron/reporting/";
-
-  private PeppolValidationReporting ()
-  {}
 
   public static void init (@Nonnull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
   {
@@ -78,6 +75,9 @@ public final class PeppolValidationReporting
 
     final boolean bDeprecated = true;
     final boolean bNotDeprecated = false;
+
+    final String BASE_PATH_XSD = "external/schemas/";
+    final String BASE_PATH_SCH = "external/schematron/reporting/";
 
     // EUSR
     {

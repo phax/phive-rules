@@ -40,19 +40,8 @@ import com.helger.xml.namespace.MapBasedNamespaceContext;
 public final class PeppolValidationPint
 {
   public static final String GROUP_ID = "org.peppol.pint";
-  private static final String BASE_PATH = "external/schematron/pint/";
-
-  @Nonnull
-  private static ClassLoader _getCL ()
-  {
-    return PeppolValidationPint.class.getClassLoader ();
-  }
 
   // 1.0.0
-  @Deprecated
-  private static final ClassPathResource RES_OPENPEPPOL_PINT_1_0_0 = new ClassPathResource (BASE_PATH +
-                                                                                            "1.0.0/xslt/PINT-UBL-validation-preprocessed.xslt",
-                                                                                            _getCL ());
   @Deprecated
   public static final DVRCoordinate VID_OPENPEPPOL_PINT_INVOICE_1_0_0 = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                                            "invoice",
@@ -63,9 +52,6 @@ public final class PeppolValidationPint
                                                                                                                "1.0.0");
 
   // 1.0.1
-  private static final ClassPathResource RES_OPENPEPPOL_PINT_1_0_1 = new ClassPathResource (BASE_PATH +
-                                                                                            "1.0.1/xslt/PINT-UBL-validation-preprocessed.xslt",
-                                                                                            _getCL ());
   public static final DVRCoordinate VID_OPENPEPPOL_PINT_INVOICE_1_0_1 = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                                            "invoice",
                                                                                                            "1.0.1");
@@ -74,12 +60,6 @@ public final class PeppolValidationPint
                                                                                                                "1.0.1");
 
   // 1.0.2
-  private static final ClassPathResource RES_OPENPEPPOL_PINT_INVOICE_1_0_2 = new ClassPathResource (BASE_PATH +
-                                                                                                    "1.0.2/xslt/PINT-UBL-validation-preprocessed-inv.xslt",
-                                                                                                    _getCL ());
-  private static final ClassPathResource RES_OPENPEPPOL_PINT_CREDIT_NOTE_1_0_2 = new ClassPathResource (BASE_PATH +
-                                                                                                        "1.0.2/xslt/PINT-UBL-validation-preprocessed-cn.xslt",
-                                                                                                        _getCL ());
   public static final DVRCoordinate VID_OPENPEPPOL_PINT_INVOICE_1_0_2 = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                                            "invoice",
                                                                                                            "1.0.2");
@@ -90,6 +70,12 @@ public final class PeppolValidationPint
   private PeppolValidationPint ()
   {}
 
+  @Nonnull
+  private static ClassLoader _getCL ()
+  {
+    return PeppolValidationPint.class.getClassLoader ();
+  }
+
   public static void init (@Nonnull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
   {
     ValueEnforcer.notNull (aRegistry, "Registry");
@@ -99,11 +85,17 @@ public final class PeppolValidationPint
     final MapBasedNamespaceContext aNSCtxCreditNote = PhiveRulesUBLHelper.createUBL21NSContext (UBL21Marshaller.creditNote ()
                                                                                                                .getRootElementNamespaceURI ());
 
+    final String BASE_PATH = "external/schematron/pint/";
+
     final boolean bDeprecated = true;
     final boolean bNotDeprecated = false;
 
     // 1.0.0 - 2023-07-07
     {
+      final ClassPathResource RES_OPENPEPPOL_PINT_1_0_0 = new ClassPathResource (BASE_PATH +
+                                                                                 "1.0.0/xslt/PINT-UBL-validation-preprocessed.xslt",
+                                                                                 _getCL ());
+
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_PINT_INVOICE_1_0_0,
                                                                              "OpenPeppol PINT Invoice (UBL) 1.0.0",
                                                                              PhiveRulesHelper.createSimpleStatus (bDeprecated),
@@ -120,6 +112,9 @@ public final class PeppolValidationPint
 
     // 1.0.1 - November 2023
     {
+      final ClassPathResource RES_OPENPEPPOL_PINT_1_0_1 = new ClassPathResource (BASE_PATH +
+                                                                                 "1.0.1/xslt/PINT-UBL-validation-preprocessed.xslt",
+                                                                                 _getCL ());
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_PINT_INVOICE_1_0_1,
                                                                              "OpenPeppol PINT Invoice (UBL) 1.0.1",
                                                                              PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
@@ -136,6 +131,12 @@ public final class PeppolValidationPint
 
     // 1.0.2 - May 2024
     {
+      final ClassPathResource RES_OPENPEPPOL_PINT_INVOICE_1_0_2 = new ClassPathResource (BASE_PATH +
+                                                                                         "1.0.2/xslt/PINT-UBL-validation-preprocessed-inv.xslt",
+                                                                                         _getCL ());
+      final ClassPathResource RES_OPENPEPPOL_PINT_CREDIT_NOTE_1_0_2 = new ClassPathResource (BASE_PATH +
+                                                                                             "1.0.2/xslt/PINT-UBL-validation-preprocessed-cn.xslt",
+                                                                                             _getCL ());
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_PINT_INVOICE_1_0_2,
                                                                              "OpenPeppol PINT Invoice (UBL) 1.0.2",
                                                                              PhiveRulesHelper.createSimpleStatus (bNotDeprecated),

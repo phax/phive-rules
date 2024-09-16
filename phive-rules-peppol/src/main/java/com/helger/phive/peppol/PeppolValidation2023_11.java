@@ -61,7 +61,7 @@ public final class PeppolValidation2023_11
   public static final OffsetDateTime VALID_PER_UTC = PDTFactory.createOffsetDateTimeUTC (VALID_PER);
 
   // Standard
-  private static final String GROUP_ID = "eu.peppol.bis3";
+  public static final String GROUP_ID = "eu.peppol.bis3";
   public static final DVRCoordinate VID_OPENPEPPOL_INVOICE_UBL_V3 = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                                        "invoice",
                                                                                                        VERSION_STR);
@@ -108,14 +108,14 @@ public final class PeppolValidation2023_11
                                                                                                                    "order-response-advanced",
                                                                                                                    VERSION_STR);
 
+  private PeppolValidation2023_11 ()
+  {}
+
   @Nonnull
   private static ClassLoader _getCL ()
   {
     return PeppolValidation2023_11.class.getClassLoader ();
   }
-
-  private PeppolValidation2023_11 ()
-  {}
 
   @Nonnull
   private static IValidationExecutorSetStatus _createStatus (final boolean bIsDeprecated)

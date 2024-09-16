@@ -23,15 +23,17 @@ import javax.xml.xpath.XPathExpression;
 import javax.xml.xpath.XPathFactory;
 
 import com.helger.commons.ValueEnforcer;
+import com.helger.commons.collection.impl.CommonsArrayList;
 import com.helger.commons.collection.impl.ICommonsList;
 import com.helger.commons.io.resource.ClassPathResource;
 import com.helger.diver.api.coord.DVRCoordinate;
+import com.helger.phive.api.execute.IValidationExecutor;
+import com.helger.phive.api.executorset.IValidationExecutorSet;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
 import com.helger.phive.api.executorset.ValidationExecutorSet;
 import com.helger.phive.rules.api.PhiveRulesHelper;
 import com.helger.phive.simplerinvoicing.SimplerInvoicingValidation;
 import com.helger.phive.xml.source.IValidationSourceXML;
-import com.helger.phive.xml.xsd.ValidationExecutorXSD;
 import com.helger.phive.xml.xsd.ValidationExecutorXSDPartial;
 import com.helger.phive.xml.xsd.XSDPartialContext;
 import com.helger.ubl21.UBL21Marshaller;
@@ -100,6 +102,9 @@ public final class EnergieEFactuurValidation
 
     final String sUBL21InvoiceNamespaceURI = UBL21Marshaller.invoice ().getRootElementNamespaceURI ();
 
+    final IValidationExecutorSet <IValidationSourceXML> aSI11 = aRegistry.getOfID (SimplerInvoicingValidation.VID_SI_INVOICE_V11);
+    assert 2 == aSI11.executors ().size ();
+
     {
       // Create XPathExpression for extension validation
       final XPathFactory aXF = XPathHelper.createXPathFactorySaxonFirst ();
@@ -118,18 +123,17 @@ public final class EnergieEFactuurValidation
                                                _getCL ()));
 
       // Same Schematrons as SimplerInvoicing - and same classloader!
+      final ICommonsList <IValidationExecutor <IValidationSourceXML>> aNewList = new CommonsArrayList <> (aSI11.executors ());
+      // Add the Partial XSD in the middle
+      aNewList.add (1, ValidationExecutorXSDPartial.create (aPartialXSDs, XSDPartialContext.createMandatory (aXE100)));
+
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_ENERGIE_EFACTUUR_1_0_0,
                                                                              "Energie eFactuur " +
                                                                                                          VID_ENERGIE_EFACTUUR_1_0_0.getVersionString (),
                                                                              PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
-                                                                             ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
-                                                                             ValidationExecutorXSDPartial.create (aPartialXSDs,
-                                                                                                                  XSDPartialContext.create (aXE100,
-                                                                                                                                            1,
-                                                                                                                                            1)),
-                                                                             PhiveRulesHelper.createXSLT (SimplerInvoicingValidation.INVOICE_SI11,
-                                                                                                          aNsCtx)));
+                                                                             aNewList));
     }
+
     {
       // Create XPathExpression for extension validation
       final XPathFactory aXF = XPathHelper.createXPathFactorySaxonFirst ();
@@ -148,19 +152,22 @@ public final class EnergieEFactuurValidation
                                                _getCL ()));
 
       // Same Schematrons as SimplerInvoicing - and same classloader!
+      final ICommonsList <IValidationExecutor <IValidationSourceXML>> aNewList = new CommonsArrayList <> (aSI11.executors ());
+      // Add the Partial XSD in the middle
+      aNewList.add (1, ValidationExecutorXSDPartial.create (aPartialXSDs, XSDPartialContext.createMandatory (aXE101)));
+
+      // Same Schematrons as SimplerInvoicing - and same classloader!
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_ENERGIE_EFACTUUR_1_0_1,
                                                                              "Energie eFactuur " +
                                                                                                          VID_ENERGIE_EFACTUUR_1_0_1.getVersionString (),
                                                                              PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
-                                                                             ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
-                                                                             ValidationExecutorXSDPartial.create (aPartialXSDs,
-                                                                                                                  XSDPartialContext.create (aXE101,
-                                                                                                                                            1,
-                                                                                                                                            1)),
-                                                                             PhiveRulesHelper.createXSLT (SimplerInvoicingValidation.INVOICE_SI11,
-                                                                                                          aNsCtx)));
+                                                                             aNewList));
     }
+
     {
+      final IValidationExecutorSet <IValidationSourceXML> aSI12 = aRegistry.getOfID (SimplerInvoicingValidation.VID_SI_INVOICE_V12);
+      assert 2 == aSI12.executors ().size ();
+
       // Create XPathExpression for extension validation
       final XPathFactory aXF = XPathHelper.createXPathFactorySaxonFirst ();
       final XPath aXP = aXF.newXPath ();
@@ -178,19 +185,22 @@ public final class EnergieEFactuurValidation
                                                _getCL ()));
 
       // Same Schematrons as SimplerInvoicing - and same classloader!
+      final ICommonsList <IValidationExecutor <IValidationSourceXML>> aNewList = new CommonsArrayList <> (aSI12.executors ());
+      // Add the Partial XSD in the middle
+      aNewList.add (1, ValidationExecutorXSDPartial.create (aPartialXSDs, XSDPartialContext.createMandatory (aXE200)));
+
+      // Same Schematrons as SimplerInvoicing - and same classloader!
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_ENERGIE_EFACTUUR_2_0_0,
                                                                              "Energie eFactuur " +
                                                                                                          VID_ENERGIE_EFACTUUR_2_0_0.getVersionString (),
                                                                              PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
-                                                                             ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
-                                                                             ValidationExecutorXSDPartial.create (aPartialXSDs,
-                                                                                                                  XSDPartialContext.create (aXE200,
-                                                                                                                                            1,
-                                                                                                                                            1)),
-                                                                             PhiveRulesHelper.createXSLT (SimplerInvoicingValidation.INVOICE_SI12,
-                                                                                                          aNsCtx)));
+                                                                             aNewList));
     }
+
     {
+      final IValidationExecutorSet <IValidationSourceXML> aSI20 = aRegistry.getOfID (SimplerInvoicingValidation.VID_SI_INVOICE_V20);
+      assert 2 == aSI20.executors ().size ();
+
       // Create XPathExpression for extension validation
       final XPathFactory aXF = XPathHelper.createXPathFactorySaxonFirst ();
       final XPath aXP = aXF.newXPath ();
@@ -208,19 +218,22 @@ public final class EnergieEFactuurValidation
                                                _getCL ()));
 
       // Same Schematrons as SimplerInvoicing - and same classloader!
+      final ICommonsList <IValidationExecutor <IValidationSourceXML>> aNewList = new CommonsArrayList <> (aSI20.executors ());
+      // Add the Partial XSD in the middle
+      aNewList.add (1, ValidationExecutorXSDPartial.create (aPartialXSDs, XSDPartialContext.createMandatory (aXE300)));
+
+      // Same Schematrons as SimplerInvoicing - and same classloader!
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_ENERGIE_EFACTUUR_3_0_0,
                                                                              "Energie eFactuur " +
                                                                                                          VID_ENERGIE_EFACTUUR_3_0_0.getVersionString (),
                                                                              PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
-                                                                             ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
-                                                                             ValidationExecutorXSDPartial.create (aPartialXSDs,
-                                                                                                                  XSDPartialContext.create (aXE300,
-                                                                                                                                            1,
-                                                                                                                                            1)),
-                                                                             PhiveRulesHelper.createXSLT (SimplerInvoicingValidation.INVOICE_SI20,
-                                                                                                          aNsCtx)));
+                                                                             aNewList));
     }
+
     {
+      final IValidationExecutorSet <IValidationSourceXML> aSI2035 = aRegistry.getOfID (SimplerInvoicingValidation.VID_SI_INVOICE_V20);
+      assert 2 == aSI2035.executors ().size ();
+
       // Create XPathExpression for extension validation
       final XPathFactory aXF = XPathHelper.createXPathFactorySaxonFirst ();
       final XPath aXP = aXF.newXPath ();
@@ -238,17 +251,16 @@ public final class EnergieEFactuurValidation
                                                _getCL ()));
 
       // Same Schematrons as SimplerInvoicing - and same classloader!
+      final ICommonsList <IValidationExecutor <IValidationSourceXML>> aNewList = new CommonsArrayList <> (aSI2035.executors ());
+      // Add the Partial XSD in the middle
+      aNewList.add (1, ValidationExecutorXSDPartial.create (aPartialXSDs, XSDPartialContext.createMandatory (aXE310)));
+
+      // Same Schematrons as SimplerInvoicing - and same classloader!
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_ENERGIE_EFACTUUR_3_1_0,
                                                                              "Energie eFactuur " +
                                                                                                          VID_ENERGIE_EFACTUUR_3_1_0.getVersionString (),
                                                                              PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
-                                                                             ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
-                                                                             ValidationExecutorXSDPartial.create (aPartialXSDs,
-                                                                                                                  XSDPartialContext.create (aXE310,
-                                                                                                                                            1,
-                                                                                                                                            1)),
-                                                                             PhiveRulesHelper.createXSLT (SimplerInvoicingValidation.INVOICE_SI2035,
-                                                                                                          aNsCtx)));
+                                                                             aNewList));
     }
   }
 }

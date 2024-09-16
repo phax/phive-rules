@@ -40,15 +40,7 @@ import com.helger.xml.namespace.MapBasedNamespaceContext;
 @Immutable
 public final class PeppolValidationBisSG
 {
-
-  @Nonnull
-  private static ClassLoader _getCL ()
-  {
-    return PeppolValidationBisSG.class.getClassLoader ();
-  }
-
-  private static final String BASE_PATH = "external/schematron/peppol-sg/";
-  private static final String GROUP_ID = "eu.peppol.bis3.sg.ubl";
+  public static final String GROUP_ID = "eu.peppol.bis3.sg.ubl";
 
   // 2023.7
   public static final DVRCoordinate VID_OPENPEPPOL_BIS3_SG_UBL_INVOICE_2023_7 = PhiveRulesHelper.createCoordinate (GROUP_ID,
@@ -69,6 +61,12 @@ public final class PeppolValidationBisSG
   private PeppolValidationBisSG ()
   {}
 
+  @Nonnull
+  private static ClassLoader _getCL ()
+  {
+    return PeppolValidationBisSG.class.getClassLoader ();
+  }
+
   public static void init (@Nonnull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
   {
     ValueEnforcer.notNull (aRegistry, "Registry");
@@ -81,6 +79,8 @@ public final class PeppolValidationBisSG
     @SuppressWarnings ("unused")
     final boolean bDeprecated = true;
     final boolean bNotDeprecated = false;
+
+    final String BASE_PATH = "external/schematron/peppol-sg/";
 
     // 2023.7
     {

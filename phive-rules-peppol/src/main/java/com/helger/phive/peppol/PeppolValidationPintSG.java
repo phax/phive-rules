@@ -39,14 +39,7 @@ import com.helger.xml.namespace.MapBasedNamespaceContext;
 @Immutable
 public final class PeppolValidationPintSG
 {
-  @Nonnull
-  private static ClassLoader _getCL ()
-  {
-    return PeppolValidationPintSG.class.getClassLoader ();
-  }
-
-  private static final String BASE_PATH = "external/schematron/pint-sg/";
-  private static final String GROUP_ID = "org.peppol.pint.sg";
+  public static final String GROUP_ID = "org.peppol.pint.sg";
 
   // 1.0.1
   public static final DVRCoordinate VID_OPENPEPPOL_SG_PINT_UBL_INVOICE_1_1_0 = PhiveRulesHelper.createCoordinate (GROUP_ID,
@@ -59,6 +52,12 @@ public final class PeppolValidationPintSG
   private PeppolValidationPintSG ()
   {}
 
+  @Nonnull
+  private static ClassLoader _getCL ()
+  {
+    return PeppolValidationPintSG.class.getClassLoader ();
+  }
+
   public static void init (@Nonnull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
   {
     ValueEnforcer.notNull (aRegistry, "Registry");
@@ -69,6 +68,8 @@ public final class PeppolValidationPintSG
                                                                                                                .getRootElementNamespaceURI ());
 
     final boolean bNotDeprecated = false;
+
+    final String BASE_PATH = "external/schematron/pint-sg/";
 
     // 1.0.1
     {

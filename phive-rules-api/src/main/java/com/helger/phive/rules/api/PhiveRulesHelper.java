@@ -78,7 +78,7 @@ public final class PhiveRulesHelper
                                                          @Nullable final IIterableNamespaceContext aNsCtx)
   {
     SchematronNamespaceBeautifier.addMappings (aNsCtx);
-    return ValidationExecutorSchematron.createXSLT (aRes, aNsCtx);
+    return ValidationExecutorSchematron.createXSLT (aRes, null, aNsCtx);
   }
 
   @Nonnull

@@ -38,28 +38,28 @@ import com.helger.phive.xml.xsd.ValidationExecutorXSD;
 @Immutable
 public final class PeppolValidationDirectory
 {
-  @Nonnull
-  private static ClassLoader _getCL ()
-  {
-    return PeppolValidationDirectory.class.getClassLoader ();
-  }
-
-  private static final String BASE_PATH = "external/schemas/";
+  public static final String GROUP_ID = "eu.peppol.directory";
 
   @Deprecated
-  public static final DVRCoordinate VID_OPENPEPPOL_BUSINESS_CARD_V1 = PhiveRulesHelper.createCoordinate ("eu.peppol.directory",
+  public static final DVRCoordinate VID_OPENPEPPOL_BUSINESS_CARD_V1 = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                                          "businesscard",
                                                                                                          "1.0.0");
   @Deprecated
-  public static final DVRCoordinate VID_OPENPEPPOL_BUSINESS_CARD_V2 = PhiveRulesHelper.createCoordinate ("eu.peppol.directory",
+  public static final DVRCoordinate VID_OPENPEPPOL_BUSINESS_CARD_V2 = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                                          "businesscard",
                                                                                                          "2.0.0");
-  public static final DVRCoordinate VID_OPENPEPPOL_BUSINESS_CARD_V3 = PhiveRulesHelper.createCoordinate ("eu.peppol.directory",
+  public static final DVRCoordinate VID_OPENPEPPOL_BUSINESS_CARD_V3 = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                                          "businesscard",
                                                                                                          "3.0.0");
 
   private PeppolValidationDirectory ()
   {}
+
+  @Nonnull
+  private static ClassLoader _getCL ()
+  {
+    return PeppolValidationDirectory.class.getClassLoader ();
+  }
 
   public static void init (@Nonnull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
   {
@@ -67,6 +67,8 @@ public final class PeppolValidationDirectory
 
     final boolean bDeprecated = true;
     final boolean bNotDeprecated = false;
+
+    final String BASE_PATH = "external/schemas/";
 
     // v1
     {

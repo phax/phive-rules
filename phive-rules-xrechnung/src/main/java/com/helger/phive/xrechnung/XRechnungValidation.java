@@ -219,30 +219,15 @@ public final class XRechnungValidation
     final boolean bNotDeprecated = false;
     final boolean bDeprecated = true;
 
-    // Extending third-party artefacts
-    final IValidationExecutorSet <IValidationSourceXML> aVESCII110 = aRegistry.getOfID (EN16931Validation.VID_CII_110);
-    final IValidationExecutorSet <IValidationSourceXML> aVESUBLCreditNote110 = aRegistry.getOfID (EN16931Validation.VID_UBL_CREDIT_NOTE_110);
-    final IValidationExecutorSet <IValidationSourceXML> aVESUBLInvoice110 = aRegistry.getOfID (EN16931Validation.VID_UBL_INVOICE_110);
-    if (aVESCII110 == null || aVESUBLCreditNote110 == null || aVESUBLInvoice110 == null)
-      throw new IllegalStateException ("EN16931 artefacts 1.1.0 must be registered before XRechnung artefacts!");
-
-    final IValidationExecutorSet <IValidationSourceXML> aVESCII121 = aRegistry.getOfID (EN16931Validation.VID_CII_121);
-    final IValidationExecutorSet <IValidationSourceXML> aVESUBLCreditNote121 = aRegistry.getOfID (EN16931Validation.VID_UBL_CREDIT_NOTE_121);
-    final IValidationExecutorSet <IValidationSourceXML> aVESUBLInvoice121 = aRegistry.getOfID (EN16931Validation.VID_UBL_INVOICE_121);
-    if (aVESCII121 == null || aVESUBLCreditNote121 == null || aVESUBLInvoice121 == null)
-      throw new IllegalStateException ("EN16931 artefacts 1.2.1 must be registered before XRechnung artefacts!");
-
-    final IValidationExecutorSet <IValidationSourceXML> aVESCII130 = aRegistry.getOfID (EN16931Validation.VID_CII_130);
-    final IValidationExecutorSet <IValidationSourceXML> aVESUBLCreditNote130 = aRegistry.getOfID (EN16931Validation.VID_UBL_CREDIT_NOTE_130);
-    final IValidationExecutorSet <IValidationSourceXML> aVESUBLInvoice130 = aRegistry.getOfID (EN16931Validation.VID_UBL_INVOICE_130);
-    if (aVESCII130 == null || aVESUBLCreditNote130 == null || aVESUBLInvoice130 == null)
-      throw new IllegalStateException ("EN16931 artefacts 1.3.0 must be registered before XRechnung artefacts!");
-
     final String sPrefix = "/external/schematron/";
 
     // Just new Schematrons on top
     // v1.2.0 (based on rule release 1.1.0)
     {
+      final IValidationExecutorSet <IValidationSourceXML> aVESCII110 = aRegistry.getOfID (EN16931Validation.VID_CII_110);
+      final IValidationExecutorSet <IValidationSourceXML> aVESUBLCreditNote110 = aRegistry.getOfID (EN16931Validation.VID_UBL_CREDIT_NOTE_110);
+      final IValidationExecutorSet <IValidationSourceXML> aVESUBLInvoice110 = aRegistry.getOfID (EN16931Validation.VID_UBL_INVOICE_110);
+
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.createDerived (aVESCII110,
                                                                                     VID_XRECHNUNG_CII_120,
                                                                                     "XRechnung CII " +
@@ -271,6 +256,10 @@ public final class XRechnungValidation
 
     // v1.2.1 (based on rule release 1.2.1)
     {
+      final IValidationExecutorSet <IValidationSourceXML> aVESCII121 = aRegistry.getOfID (EN16931Validation.VID_CII_121);
+      final IValidationExecutorSet <IValidationSourceXML> aVESUBLCreditNote121 = aRegistry.getOfID (EN16931Validation.VID_UBL_CREDIT_NOTE_121);
+      final IValidationExecutorSet <IValidationSourceXML> aVESUBLInvoice121 = aRegistry.getOfID (EN16931Validation.VID_UBL_INVOICE_121);
+
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.createDerived (aVESCII121,
                                                                                     VID_XRECHNUNG_CII_121,
                                                                                     "XRechnung CII " +
@@ -299,6 +288,10 @@ public final class XRechnungValidation
 
     // v1.2.2 (based on rule release 1.3.0)
     {
+      final IValidationExecutorSet <IValidationSourceXML> aVESCII130 = aRegistry.getOfID (EN16931Validation.VID_CII_130);
+      final IValidationExecutorSet <IValidationSourceXML> aVESUBLCreditNote130 = aRegistry.getOfID (EN16931Validation.VID_UBL_CREDIT_NOTE_130);
+      final IValidationExecutorSet <IValidationSourceXML> aVESUBLInvoice130 = aRegistry.getOfID (EN16931Validation.VID_UBL_INVOICE_130);
+
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.createDerived (aVESCII130,
                                                                                     VID_XRECHNUNG_CII_122,
                                                                                     "XRechnung CII " +
@@ -327,6 +320,10 @@ public final class XRechnungValidation
 
     // v2.0.0 (based on rule release 1.4.0)
     {
+      final IValidationExecutorSet <IValidationSourceXML> aVESCII132 = aRegistry.getOfID (EN16931Validation.VID_CII_132);
+      final IValidationExecutorSet <IValidationSourceXML> aVESUBLCreditNote132 = aRegistry.getOfID (EN16931Validation.VID_UBL_CREDIT_NOTE_132);
+      final IValidationExecutorSet <IValidationSourceXML> aVESUBLInvoice132 = aRegistry.getOfID (EN16931Validation.VID_UBL_INVOICE_132);
+
       final ICommonsMap <String, CustomErrorDetails> aCustomErrorLevels = new CommonsHashMap <> ();
       aCustomErrorLevels.put ("BR-CL-01", CustomErrorDetails.of (EErrorLevel.INFO));
       aCustomErrorLevels.put ("BR-CL-23", CustomErrorDetails.of (EErrorLevel.WARN));
@@ -337,7 +334,7 @@ public final class XRechnungValidation
                                                                                                     VID_XRECHNUNG_CII_200.getVersionString (),
                                                                              PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                              ValidationExecutorXSD.create (CCIID16B.getXSDResource ()),
-                                                                             PhiveRulesUBLHelper.createXSLT_UBL21 (EN16931Validation.INVOICE_CII_132_XSLT)
+                                                                             PhiveRulesUBLHelper.createXSLT_CII_D16B (EN16931Validation.INVOICE_CII_132_XSLT)
                                                                                                 .addCustomErrorDetails (aCustomErrorLevels),
                                                                              PhiveRulesCIIHelper.createXSLT_CII_D16B (new ClassPathResource (sPrefix +
                                                                                                                                              "2.0.0/XRechnung-CII-validation.xslt",
@@ -376,7 +373,7 @@ public final class XRechnungValidation
                                                                                                     VID_XRECHNUNG_CII_201.getVersionString (),
                                                                              PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                              ValidationExecutorXSD.create (CCIID16B.getXSDResource ()),
-                                                                             PhiveRulesUBLHelper.createXSLT_UBL21 (EN16931Validation.INVOICE_CII_133_XSLT)
+                                                                             PhiveRulesUBLHelper.createXSLT_CII_D16B (EN16931Validation.INVOICE_CII_133_XSLT)
                                                                                                 .addCustomErrorDetails (aCustomErrorLevels),
                                                                              PhiveRulesCIIHelper.createXSLT_CII_D16B (new ClassPathResource (sPrefix +
                                                                                                                                              "2.0.1/XRechnung-CII-validation.xslt",
@@ -417,7 +414,7 @@ public final class XRechnungValidation
                                                                                                     VID_XRECHNUNG_CII_211.getVersionString (),
                                                                              PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                              ValidationExecutorXSD.create (CCIID16B.getXSDResource ()),
-                                                                             PhiveRulesUBLHelper.createXSLT_UBL21 (EN16931Validation.INVOICE_CII_136A_XSLT)
+                                                                             PhiveRulesUBLHelper.createXSLT_CII_D16B (EN16931Validation.INVOICE_CII_136A_XSLT)
                                                                                                 .addCustomErrorDetails (aCustomErrorLevels),
                                                                              PhiveRulesCIIHelper.createXSLT_CII_D16B (new ClassPathResource (sPrefix +
                                                                                                                                              "2.1.1/XRechnung-CII-validation.xslt",
@@ -456,7 +453,7 @@ public final class XRechnungValidation
                                                                                                     VID_XRECHNUNG_CII_220.getVersionString (),
                                                                              PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                              ValidationExecutorXSD.create (CCIID16B.getXSDResource ()),
-                                                                             PhiveRulesUBLHelper.createXSLT_UBL21 (EN16931Validation.INVOICE_CII_137_XSLT)
+                                                                             PhiveRulesUBLHelper.createXSLT_CII_D16B (EN16931Validation.INVOICE_CII_137_XSLT)
                                                                                                 .addCustomErrorDetails (aCustomErrorLevels),
                                                                              PhiveRulesCIIHelper.createXSLT_CII_D16B (new ClassPathResource (sPrefix +
                                                                                                                                              "2.2.0/XRechnung-CII-validation.xslt",
@@ -494,7 +491,7 @@ public final class XRechnungValidation
                                                                                                     VID_XRECHNUNG_CII_231.getVersionString (),
                                                                              PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                              ValidationExecutorXSD.create (CCIID16B.getXSDResource ()),
-                                                                             PhiveRulesUBLHelper.createXSLT_UBL21 (EN16931Validation.INVOICE_CII_139_XSLT)
+                                                                             PhiveRulesUBLHelper.createXSLT_CII_D16B (EN16931Validation.INVOICE_CII_139_XSLT)
                                                                                                 .addCustomErrorDetails (aCustomErrorLevels),
                                                                              PhiveRulesCIIHelper.createXSLT_CII_D16B (new ClassPathResource (sPrefix +
                                                                                                                                              "2.3.1/XRechnung-CII-validation.xslt",
@@ -532,7 +529,7 @@ public final class XRechnungValidation
                                                                                                     VID_XRECHNUNG_CII_300.getVersionString (),
                                                                              PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
                                                                              ValidationExecutorXSD.create (CCIID16B.getXSDResource ()),
-                                                                             PhiveRulesUBLHelper.createXSLT_UBL21 (EN16931Validation.INVOICE_CII_1310_XSLT)
+                                                                             PhiveRulesUBLHelper.createXSLT_CII_D16B (EN16931Validation.INVOICE_CII_1310_XSLT)
                                                                                                 .addCustomErrorDetails (aCustomErrorLevels),
                                                                              PhiveRulesCIIHelper.createXSLT_CII_D16B (new ClassPathResource (sPrefix +
                                                                                                                                              "3.0.0/XRechnung-CII-validation.xslt",
@@ -570,7 +567,7 @@ public final class XRechnungValidation
                                                                                                     VID_XRECHNUNG_CII_301.getVersionString (),
                                                                              PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
                                                                              ValidationExecutorXSD.create (CCIID16B.getXSDResource ()),
-                                                                             PhiveRulesUBLHelper.createXSLT_UBL21 (EN16931Validation.INVOICE_CII_1311_XSLT)
+                                                                             PhiveRulesUBLHelper.createXSLT_CII_D16B (EN16931Validation.INVOICE_CII_1311_XSLT)
                                                                                                 .addCustomErrorDetails (aCustomErrorLevels),
                                                                              PhiveRulesCIIHelper.createXSLT_CII_D16B (new ClassPathResource (sPrefix +
                                                                                                                                              "3.0.1/XRechnung-CII-validation.xslt",
@@ -608,7 +605,7 @@ public final class XRechnungValidation
                                                                                                     VID_XRECHNUNG_CII_302.getVersionString (),
                                                                              PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
                                                                              ValidationExecutorXSD.create (CCIID16B.getXSDResource ()),
-                                                                             PhiveRulesUBLHelper.createXSLT_UBL21 (EN16931Validation.INVOICE_CII_1312_XSLT)
+                                                                             PhiveRulesUBLHelper.createXSLT_CII_D16B (EN16931Validation.INVOICE_CII_1312_XSLT)
                                                                                                 .addCustomErrorDetails (aCustomErrorLevels),
                                                                              PhiveRulesCIIHelper.createXSLT_CII_D16B (new ClassPathResource (sPrefix +
                                                                                                                                              "3.0.2/XRechnung-CII-validation.xslt",
