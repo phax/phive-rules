@@ -64,6 +64,7 @@ public final class EN16931Validation
   private static final String VERSION_1310 = "1.3.10";
   private static final String VERSION_1311 = "1.3.11";
   private static final String VERSION_1312 = "1.3.12";
+  private static final String VERSION_1313 = "1.3.13";
 
   // CII
   @Deprecated
@@ -100,8 +101,10 @@ public final class EN16931Validation
   public static final DVRCoordinate VID_CII_139 = PhiveRulesHelper.createCoordinate (GROUP_ID, "cii", VERSION_139);
   @Deprecated
   public static final DVRCoordinate VID_CII_1310 = PhiveRulesHelper.createCoordinate (GROUP_ID, "cii", VERSION_1310);
+  @Deprecated
   public static final DVRCoordinate VID_CII_1311 = PhiveRulesHelper.createCoordinate (GROUP_ID, "cii", VERSION_1311);
   public static final DVRCoordinate VID_CII_1312 = PhiveRulesHelper.createCoordinate (GROUP_ID, "cii", VERSION_1312);
+  public static final DVRCoordinate VID_CII_1313 = PhiveRulesHelper.createCoordinate (GROUP_ID, "cii", VERSION_1313);
 
   // UBL
   @Deprecated
@@ -172,12 +175,16 @@ public final class EN16931Validation
   public static final DVRCoordinate VID_UBL_INVOICE_1310 = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                               "ubl",
                                                                                               VERSION_1310);
+  @Deprecated
   public static final DVRCoordinate VID_UBL_INVOICE_1311 = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                               "ubl",
                                                                                               VERSION_1311);
   public static final DVRCoordinate VID_UBL_INVOICE_1312 = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                               "ubl",
                                                                                               VERSION_1312);
+  public static final DVRCoordinate VID_UBL_INVOICE_1313 = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                              "ubl",
+                                                                                              VERSION_1313);
 
   @Deprecated
   public static final DVRCoordinate VID_UBL_CREDIT_NOTE_100 = PhiveRulesHelper.createCoordinate (GROUP_ID,
@@ -247,12 +254,16 @@ public final class EN16931Validation
   public static final DVRCoordinate VID_UBL_CREDIT_NOTE_1310 = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                                   "ubl-creditnote",
                                                                                                   VERSION_1310);
+  @Deprecated
   public static final DVRCoordinate VID_UBL_CREDIT_NOTE_1311 = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                                   "ubl-creditnote",
                                                                                                   VERSION_1311);
   public static final DVRCoordinate VID_UBL_CREDIT_NOTE_1312 = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                                   "ubl-creditnote",
                                                                                                   VERSION_1312);
+  public static final DVRCoordinate VID_UBL_CREDIT_NOTE_1313 = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                  "ubl-creditnote",
+                                                                                                  VERSION_1313);
 
   @Nonnull
   private static ClassLoader _getCL ()
@@ -458,7 +469,7 @@ public final class EN16931Validation
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_CII_1311,
                                                                              "EN 16931 CII " +
                                                                                            VID_CII_1311.getVersionString (),
-                                                                             PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
+                                                                             PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                              ValidationExecutorXSD.create (CCIID16B.getXSDResource ()),
                                                                              PhiveRulesCIIHelper.createXSLT_CII_D16B (INVOICE_CII_1311_XSLT)));
 
@@ -471,6 +482,16 @@ public final class EN16931Validation
                                                                              PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
                                                                              ValidationExecutorXSD.create (CCIID16B.getXSDResource ()),
                                                                              PhiveRulesCIIHelper.createXSLT_CII_D16B (INVOICE_CII_1312_XSLT)));
+
+      final IReadableResource INVOICE_CII_1313_XSLT = new ClassPathResource (sPrefix +
+                                                                             "1.3.13/cii/EN16931-CII-validation.xslt",
+                                                                             _getCL ());
+      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_CII_1313,
+                                                                             "EN 16931 CII " +
+                                                                                           VID_CII_1313.getVersionString (),
+                                                                             PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
+                                                                             ValidationExecutorXSD.create (CCIID16B.getXSDResource ()),
+                                                                             PhiveRulesCIIHelper.createXSLT_CII_D16B (INVOICE_CII_1313_XSLT)));
     }
 
     // UBL
@@ -776,13 +797,13 @@ public final class EN16931Validation
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_UBL_INVOICE_1311,
                                                                              "EN 16931 UBL Invoice " +
                                                                                                    VID_UBL_INVOICE_1311.getVersionString (),
-                                                                             PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
+                                                                             PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
                                                                              PhiveRulesUBLHelper.createXSLT_UBL21 (INVOICE_UBL_1311_XSLT)));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_UBL_CREDIT_NOTE_1311,
                                                                              "EN 16931 UBL Credit Note " +
                                                                                                        VID_UBL_CREDIT_NOTE_1311.getVersionString (),
-                                                                             PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
+                                                                             PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
                                                                              PhiveRulesUBLHelper.createXSLT_UBL21 (INVOICE_UBL_1311_XSLT)));
 
@@ -803,6 +824,24 @@ public final class EN16931Validation
                                                                              PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
                                                                              PhiveRulesUBLHelper.createXSLT_UBL21 (INVOICE_UBL_1312_XSLT)));
+
+      // 1.3.13
+      final IReadableResource INVOICE_UBL_1313_XSLT = new ClassPathResource (sPrefix +
+                                                                             "1.3.13/ubl/EN16931-UBL-validation.xslt",
+                                                                             _getCL ());
+
+      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_UBL_INVOICE_1313,
+                                                                             "EN 16931 UBL Invoice " +
+                                                                                                   VID_UBL_INVOICE_1313.getVersionString (),
+                                                                             PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
+                                                                             ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
+                                                                             PhiveRulesUBLHelper.createXSLT_UBL21 (INVOICE_UBL_1313_XSLT)));
+      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_UBL_CREDIT_NOTE_1313,
+                                                                             "EN 16931 UBL Credit Note " +
+                                                                                                       VID_UBL_CREDIT_NOTE_1313.getVersionString (),
+                                                                             PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
+                                                                             ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
+                                                                             PhiveRulesUBLHelper.createXSLT_UBL21 (INVOICE_UBL_1313_XSLT)));
     }
   }
 }
