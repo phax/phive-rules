@@ -61,6 +61,7 @@
     <dependency>
       <groupId>com.helger</groupId>
       <artifactId>ph-fatturapa</artifactId>
+      <version>${ph-fatturapa.version}</version>
     </dependency>
     <dependency>
       <groupId>com.helger.phive.rules</groupId>

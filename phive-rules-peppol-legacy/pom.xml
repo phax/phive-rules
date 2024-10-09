@@ -55,22 +55,6 @@
 
   <dependencies>
     <dependency>
-      <groupId>com.helger.commons</groupId>
-      <artifactId>ph-commons</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>com.helger.ubl</groupId>
-      <artifactId>ph-ubl21</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>com.helger.cii</groupId>
-      <artifactId>ph-cii-d16b</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>com.helger.phive.rules</groupId>
-      <artifactId>phive-rules-api</artifactId>
-    </dependency>
-    <dependency>
       <groupId>com.helger.phive.rules</groupId>
       <artifactId>phive-rules-peppol</artifactId>
     </dependency>
@@ -83,6 +67,7 @@
     <dependency>
       <groupId>com.helger.peppol</groupId>
       <artifactId>peppol-testfiles</artifactId>
+      <version>${peppol-commons.version}</version>
       <scope>test</scope>
     </dependency>
     <dependency>

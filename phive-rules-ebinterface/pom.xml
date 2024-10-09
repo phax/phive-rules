@@ -55,12 +55,9 @@
   
   <dependencies>
     <dependency>
-      <groupId>com.helger.commons</groupId>
-      <artifactId>ph-commons</artifactId>
-    </dependency>
-    <dependency>
       <groupId>com.helger</groupId>
       <artifactId>ph-ebinterface</artifactId>
+      <version>${ph-ebinterface.version}</version>
     </dependency>
     <dependency>
       <groupId>com.helger.phive.rules</groupId>

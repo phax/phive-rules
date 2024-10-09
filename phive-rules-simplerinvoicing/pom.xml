@@ -57,10 +57,12 @@
     <dependency>
       <groupId>com.helger.ubl</groupId>
       <artifactId>ph-ubl21</artifactId>
+      <version>${ph-ubl.version}</version>
     </dependency>
     <dependency>
       <groupId>com.helger.cii</groupId>
       <artifactId>ph-cii-d16b</artifactId>
+      <version>${ph-cii.version}</version>
     </dependency>
     <dependency>
       <groupId>com.helger.phive.rules</groupId>
@@ -85,6 +87,7 @@
     <dependency>
       <groupId>com.helger.peppol</groupId>
       <artifactId>peppol-testfiles</artifactId>
+      <version>${peppol-commons.version}</version>
       <scope>test</scope>
     </dependency>
   </dependencies>
