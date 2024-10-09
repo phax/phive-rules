@@ -193,6 +193,8 @@ I hope that with the introduction of PINT, the versioning problem will be solved
   
 # News and noteworthy
  
+* v3.2.1 - 2024-10-09
+    * Added support for EN 16931 rules v1.3.13 format and deprecated v1.3.11
 * v3.2.0 - 2024-09-16
     * Updated to ph-diver 3.0.1
     * Updated to phive 10.0.2
