@@ -41,7 +41,7 @@ public final class PeppolValidationPintSG
 {
   public static final String GROUP_ID = "org.peppol.pint.sg";
 
-  // 1.0.1
+  // 1.1.0
   public static final DVRCoordinate VID_OPENPEPPOL_SG_PINT_UBL_INVOICE_1_1_0 = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                                                   "invoice",
                                                                                                                   "1.1.0");
