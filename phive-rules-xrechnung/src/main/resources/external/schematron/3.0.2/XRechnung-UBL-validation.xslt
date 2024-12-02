@@ -88,6 +88,23 @@
       <xsl:variable name="checksum" select="    (number($digits[8])*2) +    (number($digits[7])*4) +    (number($digits[6])*8) +    (number($digits[5])*16) +    (number($digits[4])*32) +    (number($digits[3])*64) +    (number($digits[2])*128) +    (number($digits[1])*256) " />
       <xsl:value-of select="($checksum  mod 11) mod 10 = number($digits[9])" />
    </xsl:function>
+  <xsl:function as="xs:boolean" name="u:checkSEOrgnr">
+      <xsl:param as="xs:string" name="number" />
+      <xsl:choose>
+         <xsl:when test="not(matches($number, '^\d+$'))">
+            <xsl:sequence select="false()" />
+         </xsl:when>
+         <xsl:otherwise>
+            <xsl:variable name="mainPart" select="substring($number, 1, 9)" />
+            <xsl:variable name="checkDigit" select="substring($number, 10, 1)" />
+            <xsl:variable as="xs:integer" name="sum">
+               <xsl:value-of select="sum(       for $pos in 1 to string-length($mainPart) return         if ($pos mod 2 = 1)         then (number(substring($mainPart, string-length($mainPart) - $pos + 1, 1)) * 2) mod 10 +           (number(substring($mainPart, string-length($mainPart) - $pos + 1, 1)) * 2) idiv 10         else number(substring($mainPart, string-length($mainPart) - $pos + 1, 1))      )" />
+            </xsl:variable>
+            <xsl:variable name="calculatedCheckDigit" select="(10 - $sum mod 10) mod 10" />
+            <xsl:sequence select="$calculatedCheckDigit = number($checkDigit)" />
+         </xsl:otherwise>
+      </xsl:choose>
+   </xsl:function>
 
 <!--DEFAULT RULES-->
 
@@ -252,7 +269,7 @@
         <xsl:attribute name="name">peppol-ubl-pattern-1</xsl:attribute>
         <xsl:apply-templates />
       </svrl:active-pattern>
-      <xsl:apply-templates mode="M33" select="/" />
+      <xsl:apply-templates mode="M34" select="/" />
       <svrl:active-pattern>
         <xsl:attribute name="document">
           <xsl:value-of select="document-uri(/)" />
@@ -261,7 +278,7 @@
         <xsl:attribute name="name">peppol-ubl-pattern-2</xsl:attribute>
         <xsl:apply-templates />
       </svrl:active-pattern>
-      <xsl:apply-templates mode="M34" select="/" />
+      <xsl:apply-templates mode="M35" select="/" />
       <svrl:active-pattern>
         <xsl:attribute name="document">
           <xsl:value-of select="document-uri(/)" />
@@ -270,7 +287,7 @@
         <xsl:attribute name="name">ubl-pattern</xsl:attribute>
         <xsl:apply-templates />
       </svrl:active-pattern>
-      <xsl:apply-templates mode="M35" select="/" />
+      <xsl:apply-templates mode="M36" select="/" />
       <svrl:active-pattern>
         <xsl:attribute name="document">
           <xsl:value-of select="document-uri(/)" />
@@ -279,7 +296,7 @@
         <xsl:attribute name="name">ubl-extension-pattern</xsl:attribute>
         <xsl:apply-templates />
       </svrl:active-pattern>
-      <xsl:apply-templates mode="M36" select="/" />
+      <xsl:apply-templates mode="M37" select="/" />
     </svrl:schematron-output>
   </xsl:template>
 
@@ -316,7 +333,7 @@
 
 
 	<!--RULE -->
-<xsl:template match="//*[not(*) and not(normalize-space())]" mode="M33" priority="1000">
+<xsl:template match="//*[not(*) and not(normalize-space())]" mode="M34" priority="1000">
     <svrl:fired-rule context="//*[not(*) and not(normalize-space())]" />
 
 		<!--ASSERT -->
@@ -333,18 +350,18 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M33" select="@*|*" />
+    <xsl:apply-templates mode="M34" select="@*|*" />
   </xsl:template>
-  <xsl:template match="text()" mode="M33" priority="-1" />
-  <xsl:template match="@*|node()" mode="M33" priority="-2">
-    <xsl:apply-templates mode="M33" select="@*|*" />
+  <xsl:template match="text()" mode="M34" priority="-1" />
+  <xsl:template match="@*|node()" mode="M34" priority="-2">
+    <xsl:apply-templates mode="M34" select="@*|*" />
   </xsl:template>
 
 <!--PATTERN peppol-ubl-pattern-2-->
 
 
 	<!--RULE -->
-<xsl:template match="ubl-creditnote:CreditNote | ubl-invoice:Invoice" mode="M34" priority="1012">
+<xsl:template match="ubl-creditnote:CreditNote | ubl-invoice:Invoice" mode="M35" priority="1012">
     <svrl:fired-rule context="ubl-creditnote:CreditNote | ubl-invoice:Invoice" />
 
 		<!--ASSERT -->
@@ -406,11 +423,11 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M34" select="@*|*" />
+    <xsl:apply-templates mode="M35" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="cbc:TaxCurrencyCode" mode="M34" priority="1011">
+<xsl:template match="cbc:TaxCurrencyCode" mode="M35" priority="1011">
     <svrl:fired-rule context="cbc:TaxCurrencyCode" />
 
 		<!--ASSERT -->
@@ -427,11 +444,11 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M34" select="@*|*" />
+    <xsl:apply-templates mode="M35" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="cac:AccountingCustomerParty/cac:Party" mode="M34" priority="1010">
+<xsl:template match="cac:AccountingCustomerParty/cac:Party" mode="M35" priority="1010">
     <svrl:fired-rule context="cac:AccountingCustomerParty/cac:Party" />
 
 		<!--ASSERT -->
@@ -448,11 +465,11 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M34" select="@*|*" />
+    <xsl:apply-templates mode="M35" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="cac:AccountingSupplierParty/cac:Party" mode="M34" priority="1009">
+<xsl:template match="cac:AccountingSupplierParty/cac:Party" mode="M35" priority="1009">
     <svrl:fired-rule context="cac:AccountingSupplierParty/cac:Party" />
 
 		<!--ASSERT -->
@@ -469,11 +486,11 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M34" select="@*|*" />
+    <xsl:apply-templates mode="M35" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="ubl-invoice:Invoice/cac:AllowanceCharge[cbc:MultiplierFactorNumeric and not(cbc:BaseAmount)] | ubl-invoice:Invoice/cac:InvoiceLine/cac:AllowanceCharge[cbc:MultiplierFactorNumeric and not(cbc:BaseAmount)] | ubl-creditnote:CreditNote/cac:AllowanceCharge[cbc:MultiplierFactorNumeric and not(cbc:BaseAmount)] | ubl-creditnote:CreditNote/cac:CreditNoteLine/cac:AllowanceCharge[cbc:MultiplierFactorNumeric and not(cbc:BaseAmount)]" mode="M34" priority="1008">
+<xsl:template match="ubl-invoice:Invoice/cac:AllowanceCharge[cbc:MultiplierFactorNumeric and not(cbc:BaseAmount)] | ubl-invoice:Invoice/cac:InvoiceLine/cac:AllowanceCharge[cbc:MultiplierFactorNumeric and not(cbc:BaseAmount)] | ubl-creditnote:CreditNote/cac:AllowanceCharge[cbc:MultiplierFactorNumeric and not(cbc:BaseAmount)] | ubl-creditnote:CreditNote/cac:CreditNoteLine/cac:AllowanceCharge[cbc:MultiplierFactorNumeric and not(cbc:BaseAmount)]" mode="M35" priority="1008">
     <svrl:fired-rule context="ubl-invoice:Invoice/cac:AllowanceCharge[cbc:MultiplierFactorNumeric and not(cbc:BaseAmount)] | ubl-invoice:Invoice/cac:InvoiceLine/cac:AllowanceCharge[cbc:MultiplierFactorNumeric and not(cbc:BaseAmount)] | ubl-creditnote:CreditNote/cac:AllowanceCharge[cbc:MultiplierFactorNumeric and not(cbc:BaseAmount)] | ubl-creditnote:CreditNote/cac:CreditNoteLine/cac:AllowanceCharge[cbc:MultiplierFactorNumeric and not(cbc:BaseAmount)]" />
 
 		<!--ASSERT -->
@@ -490,11 +507,11 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M34" select="@*|*" />
+    <xsl:apply-templates mode="M35" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="ubl-invoice:Invoice/cac:AllowanceCharge[not(cbc:MultiplierFactorNumeric) and cbc:BaseAmount] | ubl-invoice:Invoice/cac:InvoiceLine/cac:AllowanceCharge[not(cbc:MultiplierFactorNumeric) and cbc:BaseAmount] | ubl-creditnote:CreditNote/cac:AllowanceCharge[not(cbc:MultiplierFactorNumeric) and cbc:BaseAmount] | ubl-creditnote:CreditNote/cac:CreditNoteLine/cac:AllowanceCharge[not(cbc:MultiplierFactorNumeric) and cbc:BaseAmount]" mode="M34" priority="1007">
+<xsl:template match="ubl-invoice:Invoice/cac:AllowanceCharge[not(cbc:MultiplierFactorNumeric) and cbc:BaseAmount] | ubl-invoice:Invoice/cac:InvoiceLine/cac:AllowanceCharge[not(cbc:MultiplierFactorNumeric) and cbc:BaseAmount] | ubl-creditnote:CreditNote/cac:AllowanceCharge[not(cbc:MultiplierFactorNumeric) and cbc:BaseAmount] | ubl-creditnote:CreditNote/cac:CreditNoteLine/cac:AllowanceCharge[not(cbc:MultiplierFactorNumeric) and cbc:BaseAmount]" mode="M35" priority="1007">
     <svrl:fired-rule context="ubl-invoice:Invoice/cac:AllowanceCharge[not(cbc:MultiplierFactorNumeric) and cbc:BaseAmount] | ubl-invoice:Invoice/cac:InvoiceLine/cac:AllowanceCharge[not(cbc:MultiplierFactorNumeric) and cbc:BaseAmount] | ubl-creditnote:CreditNote/cac:AllowanceCharge[not(cbc:MultiplierFactorNumeric) and cbc:BaseAmount] | ubl-creditnote:CreditNote/cac:CreditNoteLine/cac:AllowanceCharge[not(cbc:MultiplierFactorNumeric) and cbc:BaseAmount]" />
 
 		<!--ASSERT -->
@@ -511,11 +528,11 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M34" select="@*|*" />
+    <xsl:apply-templates mode="M35" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="ubl-invoice:Invoice/cac:AllowanceCharge | ubl-invoice:Invoice/cac:InvoiceLine/cac:AllowanceCharge | ubl-creditnote:CreditNote/cac:AllowanceCharge | ubl-creditnote:CreditNote/cac:CreditNoteLine/cac:AllowanceCharge" mode="M34" priority="1006">
+<xsl:template match="ubl-invoice:Invoice/cac:AllowanceCharge | ubl-invoice:Invoice/cac:InvoiceLine/cac:AllowanceCharge | ubl-creditnote:CreditNote/cac:AllowanceCharge | ubl-creditnote:CreditNote/cac:CreditNoteLine/cac:AllowanceCharge" mode="M35" priority="1006">
     <svrl:fired-rule context="ubl-invoice:Invoice/cac:AllowanceCharge | ubl-invoice:Invoice/cac:InvoiceLine/cac:AllowanceCharge | ubl-creditnote:CreditNote/cac:AllowanceCharge | ubl-creditnote:CreditNote/cac:CreditNoteLine/cac:AllowanceCharge" />
 
 		<!--ASSERT -->
@@ -528,7 +545,7 @@
           <xsl:attribute name="location">
             <xsl:apply-templates mode="schematron-select-full-path" select="." />
           </xsl:attribute>
-          <svrl:text />
+          <svrl:text>Allowance/charge amount must equal base amount * percentage/100 if base amount and percentage exists</svrl:text>
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
@@ -547,11 +564,11 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M34" select="@*|*" />
+    <xsl:apply-templates mode="M35" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="         cac:PaymentMeans[some $code in tokenize('49 59', '\s')           satisfies normalize-space(cbc:PaymentMeansCode) = $code]" mode="M34" priority="1005">
+<xsl:template match="         cac:PaymentMeans[some $code in tokenize('49 59', '\s')           satisfies normalize-space(cbc:PaymentMeansCode) = $code]" mode="M35" priority="1005">
     <svrl:fired-rule context="         cac:PaymentMeans[some $code in tokenize('49 59', '\s')           satisfies normalize-space(cbc:PaymentMeansCode) = $code]" />
 
 		<!--ASSERT -->
@@ -568,11 +585,11 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M34" select="@*|*" />
+    <xsl:apply-templates mode="M35" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="ubl-invoice:Invoice[cac:InvoicePeriod/cbc:StartDate]/cac:InvoiceLine/cac:InvoicePeriod/cbc:StartDate | ubl-creditnote:CreditNote[cac:InvoicePeriod/cbc:StartDate]/cac:CreditNoteLine/cac:InvoicePeriod/cbc:StartDate" mode="M34" priority="1004">
+<xsl:template match="ubl-invoice:Invoice[cac:InvoicePeriod/cbc:StartDate]/cac:InvoiceLine/cac:InvoicePeriod/cbc:StartDate | ubl-creditnote:CreditNote[cac:InvoicePeriod/cbc:StartDate]/cac:CreditNoteLine/cac:InvoicePeriod/cbc:StartDate" mode="M35" priority="1004">
     <svrl:fired-rule context="ubl-invoice:Invoice[cac:InvoicePeriod/cbc:StartDate]/cac:InvoiceLine/cac:InvoicePeriod/cbc:StartDate | ubl-creditnote:CreditNote[cac:InvoicePeriod/cbc:StartDate]/cac:CreditNoteLine/cac:InvoicePeriod/cbc:StartDate" />
 
 		<!--ASSERT -->
@@ -589,11 +606,11 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M34" select="@*|*" />
+    <xsl:apply-templates mode="M35" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="ubl-invoice:Invoice[cac:InvoicePeriod/cbc:EndDate]/cac:InvoiceLine/cac:InvoicePeriod/cbc:EndDate | ubl-creditnote:CreditNote[cac:InvoicePeriod/cbc:EndDate]/cac:CreditNoteLine/cac:InvoicePeriod/cbc:EndDate" mode="M34" priority="1003">
+<xsl:template match="ubl-invoice:Invoice[cac:InvoicePeriod/cbc:EndDate]/cac:InvoiceLine/cac:InvoicePeriod/cbc:EndDate | ubl-creditnote:CreditNote[cac:InvoicePeriod/cbc:EndDate]/cac:CreditNoteLine/cac:InvoicePeriod/cbc:EndDate" mode="M35" priority="1003">
     <svrl:fired-rule context="ubl-invoice:Invoice[cac:InvoicePeriod/cbc:EndDate]/cac:InvoiceLine/cac:InvoicePeriod/cbc:EndDate | ubl-creditnote:CreditNote[cac:InvoicePeriod/cbc:EndDate]/cac:CreditNoteLine/cac:InvoicePeriod/cbc:EndDate" />
 
 		<!--ASSERT -->
@@ -610,11 +627,11 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M34" select="@*|*" />
+    <xsl:apply-templates mode="M35" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="cac:InvoiceLine | cac:CreditNoteLine" mode="M34" priority="1002">
+<xsl:template match="cac:InvoiceLine | cac:CreditNoteLine" mode="M35" priority="1002">
     <svrl:fired-rule context="cac:InvoiceLine | cac:CreditNoteLine" />
     <xsl:variable name="lineExtensionAmount" select="           if (cbc:LineExtensionAmount) then             xs:decimal(cbc:LineExtensionAmount)           else             0" />
     <xsl:variable name="quantity" select="           if (/ubl-invoice:Invoice) then             (if (cbc:InvoicedQuantity) then               xs:decimal(cbc:InvoicedQuantity)             else               1)           else             (if (cbc:CreditedQuantity) then               xs:decimal(cbc:CreditedQuantity)             else               1)" />
@@ -633,7 +650,7 @@
           <xsl:attribute name="location">
             <xsl:apply-templates mode="schematron-select-full-path" select="." />
           </xsl:attribute>
-          <svrl:text />
+          <svrl:text>Invoice line net amount MUST equal (Invoiced quantity * (Item net price/item price base quantity) + Sum of invoice line charge amount - sum of invoice line allowance amount</svrl:text>
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
@@ -667,11 +684,11 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M34" select="@*|*" />
+    <xsl:apply-templates mode="M35" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="cac:Price/cac:AllowanceCharge" mode="M34" priority="1001">
+<xsl:template match="cac:Price/cac:AllowanceCharge" mode="M35" priority="1001">
     <svrl:fired-rule context="cac:Price/cac:AllowanceCharge" />
 
 		<!--ASSERT -->
@@ -703,11 +720,11 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M34" select="@*|*" />
+    <xsl:apply-templates mode="M35" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="cac:Price/cbc:BaseQuantity[@unitCode]" mode="M34" priority="1000">
+<xsl:template match="cac:Price/cbc:BaseQuantity[@unitCode]" mode="M35" priority="1000">
     <svrl:fired-rule context="cac:Price/cbc:BaseQuantity[@unitCode]" />
     <xsl:variable name="hasQuantity" select="../../cbc:InvoicedQuantity or ../../cbc:CreditedQuantity" />
     <xsl:variable name="quantity" select="           if (/ubl-invoice:Invoice) then             ../../cbc:InvoicedQuantity           else             ../../cbc:CreditedQuantity" />
@@ -726,18 +743,18 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M34" select="@*|*" />
+    <xsl:apply-templates mode="M35" select="@*|*" />
   </xsl:template>
-  <xsl:template match="text()" mode="M34" priority="-1" />
-  <xsl:template match="@*|node()" mode="M34" priority="-2">
-    <xsl:apply-templates mode="M34" select="@*|*" />
+  <xsl:template match="text()" mode="M35" priority="-1" />
+  <xsl:template match="@*|node()" mode="M35" priority="-2">
+    <xsl:apply-templates mode="M35" select="@*|*" />
   </xsl:template>
 
 <!--PATTERN ubl-pattern-->
 
 
 	<!--RULE -->
-<xsl:template match="/ubl:Invoice | /cn:CreditNote" mode="M35" priority="1009">
+<xsl:template match="/ubl:Invoice | /cn:CreditNote" mode="M36" priority="1009">
     <svrl:fired-rule context="/ubl:Invoice | /cn:CreditNote" />
 
 		<!--ASSERT -->
@@ -901,11 +918,11 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M35" select="@*|*" />
+    <xsl:apply-templates mode="M36" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:Invoice/cac:AccountingSupplierParty | /cn:CreditNote/cac:AccountingSupplierParty" mode="M35" priority="1008">
+<xsl:template match="/ubl:Invoice/cac:AccountingSupplierParty | /cn:CreditNote/cac:AccountingSupplierParty" mode="M36" priority="1008">
     <svrl:fired-rule context="/ubl:Invoice/cac:AccountingSupplierParty | /cn:CreditNote/cac:AccountingSupplierParty" />
 
 		<!--ASSERT -->
@@ -922,11 +939,11 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M35" select="@*|*" />
+    <xsl:apply-templates mode="M36" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:Invoice/cac:AccountingSupplierParty/cac:Party/cac:PostalAddress | /cn:CreditNote/cac:AccountingSupplierParty/cac:Party/cac:PostalAddress" mode="M35" priority="1007">
+<xsl:template match="/ubl:Invoice/cac:AccountingSupplierParty/cac:Party/cac:PostalAddress | /cn:CreditNote/cac:AccountingSupplierParty/cac:Party/cac:PostalAddress" mode="M36" priority="1007">
     <svrl:fired-rule context="/ubl:Invoice/cac:AccountingSupplierParty/cac:Party/cac:PostalAddress | /cn:CreditNote/cac:AccountingSupplierParty/cac:Party/cac:PostalAddress" />
 
 		<!--ASSERT -->
@@ -958,11 +975,11 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M35" select="@*|*" />
+    <xsl:apply-templates mode="M36" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:Invoice/cac:AccountingSupplierParty/cac:Party/cac:Contact | /cn:CreditNote/cac:AccountingSupplierParty/cac:Party/cac:Contact" mode="M35" priority="1006">
+<xsl:template match="/ubl:Invoice/cac:AccountingSupplierParty/cac:Party/cac:Contact | /cn:CreditNote/cac:AccountingSupplierParty/cac:Party/cac:Contact" mode="M36" priority="1006">
     <svrl:fired-rule context="/ubl:Invoice/cac:AccountingSupplierParty/cac:Party/cac:Contact | /cn:CreditNote/cac:AccountingSupplierParty/cac:Party/cac:Contact" />
 
 		<!--ASSERT -->
@@ -1039,11 +1056,11 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M35" select="@*|*" />
+    <xsl:apply-templates mode="M36" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:Invoice/cac:AccountingCustomerParty/cac:Party/cac:PostalAddress | /cn:CreditNote/cac:AccountingCustomerParty/cac:Party/cac:PostalAddress" mode="M35" priority="1005">
+<xsl:template match="/ubl:Invoice/cac:AccountingCustomerParty/cac:Party/cac:PostalAddress | /cn:CreditNote/cac:AccountingCustomerParty/cac:Party/cac:PostalAddress" mode="M36" priority="1005">
     <svrl:fired-rule context="/ubl:Invoice/cac:AccountingCustomerParty/cac:Party/cac:PostalAddress | /cn:CreditNote/cac:AccountingCustomerParty/cac:Party/cac:PostalAddress" />
 
 		<!--ASSERT -->
@@ -1075,11 +1092,11 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M35" select="@*|*" />
+    <xsl:apply-templates mode="M36" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:Invoice/cac:Delivery/cac:DeliveryLocation/cac:Address | /cn:CreditNote/cac:Delivery/cac:DeliveryLocation/cac:Address" mode="M35" priority="1004">
+<xsl:template match="/ubl:Invoice/cac:Delivery/cac:DeliveryLocation/cac:Address | /cn:CreditNote/cac:Delivery/cac:DeliveryLocation/cac:Address" mode="M36" priority="1004">
     <svrl:fired-rule context="/ubl:Invoice/cac:Delivery/cac:DeliveryLocation/cac:Address | /cn:CreditNote/cac:Delivery/cac:DeliveryLocation/cac:Address" />
 
 		<!--ASSERT -->
@@ -1111,11 +1128,11 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M35" select="@*|*" />
+    <xsl:apply-templates mode="M36" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:Invoice/cac:PaymentMeans[cbc:PaymentMeansCode = (30,58)] | /cn:CreditNote/cac:PaymentMeans[cbc:PaymentMeansCode = (30,58)]" mode="M35" priority="1003">
+<xsl:template match="/ubl:Invoice/cac:PaymentMeans[cbc:PaymentMeansCode = (30,58)] | /cn:CreditNote/cac:PaymentMeans[cbc:PaymentMeansCode = (30,58)]" mode="M36" priority="1003">
     <svrl:fired-rule context="/ubl:Invoice/cac:PaymentMeans[cbc:PaymentMeansCode = (30,58)] | /cn:CreditNote/cac:PaymentMeans[cbc:PaymentMeansCode = (30,58)]" />
 
 		<!--ASSERT -->
@@ -1162,11 +1179,11 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M35" select="@*|*" />
+    <xsl:apply-templates mode="M36" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:Invoice/cac:PaymentMeans[cbc:PaymentMeansCode = (48,54,55)] |/cn:CreditNote/cac:PaymentMeans[cbc:PaymentMeansCode = (48,54,55)]" mode="M35" priority="1002">
+<xsl:template match="/ubl:Invoice/cac:PaymentMeans[cbc:PaymentMeansCode = (48,54,55)] |/cn:CreditNote/cac:PaymentMeans[cbc:PaymentMeansCode = (48,54,55)]" mode="M36" priority="1002">
     <svrl:fired-rule context="/ubl:Invoice/cac:PaymentMeans[cbc:PaymentMeansCode = (48,54,55)] |/cn:CreditNote/cac:PaymentMeans[cbc:PaymentMeansCode = (48,54,55)]" />
 
 		<!--ASSERT -->
@@ -1198,11 +1215,11 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M35" select="@*|*" />
+    <xsl:apply-templates mode="M36" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:Invoice/cac:PaymentMeans[cbc:PaymentMeansCode = 59] | /cn:CreditNote/cac:PaymentMeans[cbc:PaymentMeansCode = 59]" mode="M35" priority="1001">
+<xsl:template match="/ubl:Invoice/cac:PaymentMeans[cbc:PaymentMeansCode = 59] | /cn:CreditNote/cac:PaymentMeans[cbc:PaymentMeansCode = 59]" mode="M36" priority="1001">
     <svrl:fired-rule context="/ubl:Invoice/cac:PaymentMeans[cbc:PaymentMeansCode = 59] | /cn:CreditNote/cac:PaymentMeans[cbc:PaymentMeansCode = 59]" />
 
 		<!--ASSERT -->
@@ -1249,11 +1266,11 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M35" select="@*|*" />
+    <xsl:apply-templates mode="M36" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:Invoice/cac:TaxTotal/cac:TaxSubtotal | /cn:CreditNote/cac:TaxTotal/cac:TaxSubtotal" mode="M35" priority="1000">
+<xsl:template match="/ubl:Invoice/cac:TaxTotal/cac:TaxSubtotal | /cn:CreditNote/cac:TaxTotal/cac:TaxSubtotal" mode="M36" priority="1000">
     <svrl:fired-rule context="/ubl:Invoice/cac:TaxTotal/cac:TaxSubtotal | /cn:CreditNote/cac:TaxTotal/cac:TaxSubtotal" />
 
 		<!--ASSERT -->
@@ -1270,18 +1287,18 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M35" select="@*|*" />
+    <xsl:apply-templates mode="M36" select="@*|*" />
   </xsl:template>
-  <xsl:template match="text()" mode="M35" priority="-1" />
-  <xsl:template match="@*|node()" mode="M35" priority="-2">
-    <xsl:apply-templates mode="M35" select="@*|*" />
+  <xsl:template match="text()" mode="M36" priority="-1" />
+  <xsl:template match="@*|node()" mode="M36" priority="-2">
+    <xsl:apply-templates mode="M36" select="@*|*" />
   </xsl:template>
 
 <!--PATTERN ubl-extension-pattern-->
 <xsl:variable name="isExtension" select="exists(/ubl:Invoice/cbc:CustomizationID[text() = concat( 'urn:cen.eu:en16931:2017#compliant#urn:xeinkauf.de:kosit:xrechnung_', $XR-MAJOR-MINOR-VERSION ,'#conformant#urn:xeinkauf.de:kosit:extension:xrechnung_', $XR-MAJOR-MINOR-VERSION) ] | /cn:CreditNote/cbc:CustomizationID[text() = concat( 'urn:cen.eu:en16931:2017#compliant#urn:xeinkauf.de:kosit:xrechnung_', $XR-MAJOR-MINOR-VERSION ,'#conformant#urn:xeinkauf.de:kosit:extension:xrechnung_', $XR-MAJOR-MINOR-VERSION) ] )" />
 
 	<!--RULE -->
-<xsl:template match="cbc:EmbeddedDocumentBinaryObject[$isExtension]" mode="M36" priority="1008">
+<xsl:template match="cbc:EmbeddedDocumentBinaryObject[$isExtension]" mode="M37" priority="1008">
     <svrl:fired-rule context="cbc:EmbeddedDocumentBinaryObject[$isExtension]" />
 
 		<!--ASSERT -->
@@ -1302,11 +1319,11 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M36" select="@*|*" />
+    <xsl:apply-templates mode="M37" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:Invoice[$isExtension]" mode="M36" priority="1007">
+<xsl:template match="/ubl:Invoice[$isExtension]" mode="M37" priority="1007">
     <svrl:fired-rule context="/ubl:Invoice[$isExtension]" />
 
 		<!--ASSERT -->
@@ -1341,11 +1358,11 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M36" select="@*|*" />
+    <xsl:apply-templates mode="M37" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="cac:LegalMonetaryTotal[$isExtension]" mode="M36" priority="1006">
+<xsl:template match="cac:LegalMonetaryTotal[$isExtension]" mode="M37" priority="1006">
     <svrl:fired-rule context="cac:LegalMonetaryTotal[$isExtension]" />
     <xsl:variable name="prepaidamount" select="if (exists(cbc:PrepaidAmount)) then (xs:decimal(cbc:PrepaidAmount)) else (0)" />
     <xsl:variable name="payableroundingamount" select="if (exists(cbc:PayableRoundingAmount)) then (xs:decimal(cbc:PayableRoundingAmount)) else (0)" />
@@ -1365,11 +1382,11 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M36" select="@*|*" />
+    <xsl:apply-templates mode="M37" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="cac:PartyIdentification/cbc:ID[@schemeID and $isExtension]" mode="M36" priority="1005">
+<xsl:template match="cac:PartyIdentification/cbc:ID[@schemeID and $isExtension]" mode="M37" priority="1005">
     <svrl:fired-rule context="cac:PartyIdentification/cbc:ID[@schemeID and $isExtension]" />
 
 		<!--ASSERT -->
@@ -1388,11 +1405,11 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M36" select="@*|*" />
+    <xsl:apply-templates mode="M37" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="cac:PartyLegalEntity/cbc:CompanyID[@schemeID and $isExtension]" mode="M36" priority="1004">
+<xsl:template match="cac:PartyLegalEntity/cbc:CompanyID[@schemeID and $isExtension]" mode="M37" priority="1004">
     <svrl:fired-rule context="cac:PartyLegalEntity/cbc:CompanyID[@schemeID and $isExtension]" />
 
 		<!--ASSERT -->
@@ -1411,11 +1428,11 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M36" select="@*|*" />
+    <xsl:apply-templates mode="M37" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="cac:StandardItemIdentification/cbc:ID[@schemeID and $isExtension]" mode="M36" priority="1003">
+<xsl:template match="cac:StandardItemIdentification/cbc:ID[@schemeID and $isExtension]" mode="M37" priority="1003">
     <svrl:fired-rule context="cac:StandardItemIdentification/cbc:ID[@schemeID and $isExtension]" />
 
 		<!--ASSERT -->
@@ -1434,11 +1451,11 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M36" select="@*|*" />
+    <xsl:apply-templates mode="M37" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="cbc:EndpointID[@schemeID and $isExtension]" mode="M36" priority="1002">
+<xsl:template match="cbc:EndpointID[@schemeID and $isExtension]" mode="M37" priority="1002">
     <svrl:fired-rule context="cbc:EndpointID[@schemeID and $isExtension]" />
 
 		<!--ASSERT -->
@@ -1457,11 +1474,11 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M36" select="@*|*" />
+    <xsl:apply-templates mode="M37" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="cac:DeliveryLocation/cbc:ID[@schemeID and $isExtension]" mode="M36" priority="1001">
+<xsl:template match="cac:DeliveryLocation/cbc:ID[@schemeID and $isExtension]" mode="M37" priority="1001">
     <svrl:fired-rule context="cac:DeliveryLocation/cbc:ID[@schemeID and $isExtension]" />
 
 		<!--ASSERT -->
@@ -1480,11 +1497,11 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M36" select="@*|*" />
+    <xsl:apply-templates mode="M37" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:Invoice/cac:PrepaidPayment[$isExtension]" mode="M36" priority="1000">
+<xsl:template match="/ubl:Invoice/cac:PrepaidPayment[$isExtension]" mode="M37" priority="1000">
     <svrl:fired-rule context="/ubl:Invoice/cac:PrepaidPayment[$isExtension]" />
 
 		<!--ASSERT -->
@@ -1561,10 +1578,10 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M36" select="@*|*" />
+    <xsl:apply-templates mode="M37" select="@*|*" />
   </xsl:template>
-  <xsl:template match="text()" mode="M36" priority="-1" />
-  <xsl:template match="@*|node()" mode="M36" priority="-2">
-    <xsl:apply-templates mode="M36" select="@*|*" />
+  <xsl:template match="text()" mode="M37" priority="-1" />
+  <xsl:template match="@*|node()" mode="M37" priority="-2">
+    <xsl:apply-templates mode="M37" select="@*|*" />
   </xsl:template>
 </xsl:stylesheet>

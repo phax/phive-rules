@@ -86,6 +86,23 @@
       <xsl:param name="val" />
       <xsl:value-of select="( ((string-to-codepoints(substring($val,1,1)) - 49) * 10) + ((string-to-codepoints(substring($val,2,1)) - 48) * 1) + ((string-to-codepoints(substring($val,3,1)) - 48) * 3) + ((string-to-codepoints(substring($val,4,1)) - 48) * 5) + ((string-to-codepoints(substring($val,5,1)) - 48) * 7) + ((string-to-codepoints(substring($val,6,1)) - 48) * 9) + ((string-to-codepoints(substring($val,7,1)) - 48) * 11) + ((string-to-codepoints(substring($val,8,1)) - 48) * 13) + ((string-to-codepoints(substring($val,9,1)) - 48) * 15) + ((string-to-codepoints(substring($val,10,1)) - 48) * 17) + ((string-to-codepoints(substring($val,11,1)) - 48) * 19)) mod 89 = 0 " />
    </xsl:function>
+  <xsl:function as="xs:boolean" name="u:checkSEOrgnr">
+      <xsl:param as="xs:string" name="number" />
+      <xsl:choose>
+         <xsl:when test="not(matches($number, '^\d+$'))">
+            <xsl:sequence select="false()" />
+         </xsl:when>
+         <xsl:otherwise>
+            <xsl:variable name="mainPart" select="substring($number, 1, 9)" />
+            <xsl:variable name="checkDigit" select="substring($number, 10, 1)" />
+            <xsl:variable as="xs:integer" name="sum">
+               <xsl:value-of select="sum(       for $pos in 1 to string-length($mainPart) return         if ($pos mod 2 = 1)         then (number(substring($mainPart, string-length($mainPart) - $pos + 1, 1)) * 2) mod 10 +           (number(substring($mainPart, string-length($mainPart) - $pos + 1, 1)) * 2) idiv 10         else number(substring($mainPart, string-length($mainPart) - $pos + 1, 1))      )" />
+            </xsl:variable>
+            <xsl:variable name="calculatedCheckDigit" select="(10 - $sum mod 10) mod 10" />
+            <xsl:sequence select="$calculatedCheckDigit = number($checkDigit)" />
+         </xsl:otherwise>
+      </xsl:choose>
+   </xsl:function>
 
 <!--DEFAULT RULES-->
 
@@ -247,7 +264,7 @@
         <xsl:attribute name="name">peppol-cii-pattern-1</xsl:attribute>
         <xsl:apply-templates />
       </svrl:active-pattern>
-      <xsl:apply-templates mode="M26" select="/" />
+      <xsl:apply-templates mode="M27" select="/" />
       <svrl:active-pattern>
         <xsl:attribute name="document">
           <xsl:value-of select="document-uri(/)" />
@@ -256,7 +273,7 @@
         <xsl:attribute name="name">peppol-cii-pattern-0-a</xsl:attribute>
         <xsl:apply-templates />
       </svrl:active-pattern>
-      <xsl:apply-templates mode="M27" select="/" />
+      <xsl:apply-templates mode="M28" select="/" />
       <svrl:active-pattern>
         <xsl:attribute name="document">
           <xsl:value-of select="document-uri(/)" />
@@ -265,7 +282,7 @@
         <xsl:attribute name="name">peppol-cii-pattern-0-b</xsl:attribute>
         <xsl:apply-templates />
       </svrl:active-pattern>
-      <xsl:apply-templates mode="M28" select="/" />
+      <xsl:apply-templates mode="M29" select="/" />
       <svrl:active-pattern>
         <xsl:attribute name="document">
           <xsl:value-of select="document-uri(/)" />
@@ -274,7 +291,7 @@
         <xsl:attribute name="name">cii-pattern</xsl:attribute>
         <xsl:apply-templates />
       </svrl:active-pattern>
-      <xsl:apply-templates mode="M29" select="/" />
+      <xsl:apply-templates mode="M30" select="/" />
       <svrl:active-pattern>
         <xsl:attribute name="document">
           <xsl:value-of select="document-uri(/)" />
@@ -283,7 +300,7 @@
         <xsl:attribute name="name">cii-extension-pattern</xsl:attribute>
         <xsl:apply-templates />
       </svrl:active-pattern>
-      <xsl:apply-templates mode="M30" select="/" />
+      <xsl:apply-templates mode="M31" select="/" />
     </svrl:schematron-output>
   </xsl:template>
 
@@ -316,7 +333,7 @@
 
 
 	<!--RULE -->
-<xsl:template match="rsm:ExchangedDocumentContext" mode="M26" priority="1013">
+<xsl:template match="rsm:ExchangedDocumentContext" mode="M27" priority="1013">
     <svrl:fired-rule context="rsm:ExchangedDocumentContext" />
 
 		<!--ASSERT -->
@@ -325,7 +342,7 @@
       <xsl:otherwise>
         <svrl:failed-assert test="ram:BusinessProcessSpecifiedDocumentContextParameter/ram:ID">
           <xsl:attribute name="id">PEPPOL-EN16931-R001</xsl:attribute>
-          <xsl:attribute name="flag">warning</xsl:attribute>
+          <xsl:attribute name="flag">fatal</xsl:attribute>
           <xsl:attribute name="location">
             <xsl:apply-templates mode="schematron-select-full-path" select="." />
           </xsl:attribute>
@@ -333,11 +350,11 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M26" select="@*|*" />
+    <xsl:apply-templates mode="M27" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="ram:ApplicableHeaderTradeSettlement" mode="M26" priority="1012">
+<xsl:template match="ram:ApplicableHeaderTradeSettlement" mode="M27" priority="1012">
     <svrl:fired-rule context="ram:ApplicableHeaderTradeSettlement" />
 
 		<!--ASSERT -->
@@ -346,7 +363,7 @@
       <xsl:otherwise>
         <svrl:failed-assert test="not(ram:TaxCurrencyCode) or normalize-space(ram:TaxCurrencyCode/text()) != normalize-space(ram:InvoiceCurrencyCode/text())">
           <xsl:attribute name="id">PEPPOL-EN16931-R005</xsl:attribute>
-          <xsl:attribute name="flag">warning</xsl:attribute>
+          <xsl:attribute name="flag">fatal</xsl:attribute>
           <xsl:attribute name="location">
             <xsl:apply-templates mode="schematron-select-full-path" select="." />
           </xsl:attribute>
@@ -361,7 +378,7 @@
       <xsl:otherwise>
         <svrl:failed-assert test="count(ram:SpecifiedTradeSettlementHeaderMonetarySummation/ram:TaxTotalAmount[@currencyID = $documentCurrencyCode]) &lt;=1">
           <xsl:attribute name="id">PEPPOL-EN16931-R053</xsl:attribute>
-          <xsl:attribute name="flag">warning</xsl:attribute>
+          <xsl:attribute name="flag">fatal</xsl:attribute>
           <xsl:attribute name="location">
             <xsl:apply-templates mode="schematron-select-full-path" select="." />
           </xsl:attribute>
@@ -376,7 +393,7 @@
       <xsl:otherwise>
         <svrl:failed-assert test="count(ram:SpecifiedTradeSettlementHeaderMonetarySummation/ram:TaxTotalAmount[@currencyID != $documentCurrencyCode]) = (if (ram:TaxCurrencyCode) then 1 else 0)">
           <xsl:attribute name="id">PEPPOL-EN16931-R054</xsl:attribute>
-          <xsl:attribute name="flag">warning</xsl:attribute>
+          <xsl:attribute name="flag">fatal</xsl:attribute>
           <xsl:attribute name="location">
             <xsl:apply-templates mode="schematron-select-full-path" select="." />
           </xsl:attribute>
@@ -391,19 +408,19 @@
       <xsl:otherwise>
         <svrl:failed-assert test="not(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:TaxCurrencyCode and ram:SpecifiedTradeSettlementHeaderMonetarySummation/ram:TaxTotalAmount[@currencyID = $documentCurrencyCode]) or (ram:SpecifiedTradeSettlementHeaderMonetarySummation/ram:TaxTotalAmount[@currencyID = $taxCurrencyCode] &lt; 0 and ram:SpecifiedTradeSettlementHeaderMonetarySummation/ram:TaxTotalAmount[@currencyID = $documentCurrencyCode] &lt; 0) or (ram:SpecifiedTradeSettlementHeaderMonetarySummation/ram:TaxTotalAmount[@currencyID = $taxCurrencyCode] >= 0 and ram:SpecifiedTradeSettlementHeaderMonetarySummation/ram:TaxTotalAmount[@currencyID = $documentCurrencyCode] >= 0)">
           <xsl:attribute name="id">PEPPOL-EN16931-R055</xsl:attribute>
-          <xsl:attribute name="flag">warning</xsl:attribute>
+          <xsl:attribute name="flag">fatal</xsl:attribute>
           <xsl:attribute name="location">
             <xsl:apply-templates mode="schematron-select-full-path" select="." />
           </xsl:attribute>
-          <svrl:text />
+          <svrl:text>Invoice total VAT amount and Invoice total VAT amount in accounting currency MUST have the same operational sign</svrl:text>
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M26" select="@*|*" />
+    <xsl:apply-templates mode="M27" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="ram:BuyerTradeParty" mode="M26" priority="1011">
+<xsl:template match="ram:BuyerTradeParty" mode="M27" priority="1011">
     <svrl:fired-rule context="ram:BuyerTradeParty" />
 
 		<!--ASSERT -->
@@ -412,7 +429,7 @@
       <xsl:otherwise>
         <svrl:failed-assert test="ram:URIUniversalCommunication/ram:URIID">
           <xsl:attribute name="id">PEPPOL-EN16931-R010</xsl:attribute>
-          <xsl:attribute name="flag">warning</xsl:attribute>
+          <xsl:attribute name="flag">fatal</xsl:attribute>
           <xsl:attribute name="location">
             <xsl:apply-templates mode="schematron-select-full-path" select="." />
           </xsl:attribute>
@@ -420,11 +437,11 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M26" select="@*|*" />
+    <xsl:apply-templates mode="M27" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="ram:SellerTradeParty" mode="M26" priority="1010">
+<xsl:template match="ram:SellerTradeParty" mode="M27" priority="1010">
     <svrl:fired-rule context="ram:SellerTradeParty" />
 
 		<!--ASSERT -->
@@ -433,7 +450,7 @@
       <xsl:otherwise>
         <svrl:failed-assert test="ram:URIUniversalCommunication/ram:URIID">
           <xsl:attribute name="id">PEPPOL-EN16931-R020</xsl:attribute>
-          <xsl:attribute name="flag">warning</xsl:attribute>
+          <xsl:attribute name="flag">fatal</xsl:attribute>
           <xsl:attribute name="location">
             <xsl:apply-templates mode="schematron-select-full-path" select="." />
           </xsl:attribute>
@@ -441,11 +458,11 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M26" select="@*|*" />
+    <xsl:apply-templates mode="M27" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="ram:SpecifiedTradeAllowanceCharge[ram:CalculationPercent and not(ram:BasisAmount)]" mode="M26" priority="1009">
+<xsl:template match="ram:SpecifiedTradeAllowanceCharge[ram:CalculationPercent and not(ram:BasisAmount)]" mode="M27" priority="1009">
     <svrl:fired-rule context="ram:SpecifiedTradeAllowanceCharge[ram:CalculationPercent and not(ram:BasisAmount)]" />
 
 		<!--ASSERT -->
@@ -454,7 +471,7 @@
       <xsl:otherwise>
         <svrl:failed-assert test="false()">
           <xsl:attribute name="id">PEPPOL-EN16931-R041</xsl:attribute>
-          <xsl:attribute name="flag">warning</xsl:attribute>
+          <xsl:attribute name="flag">fatal</xsl:attribute>
           <xsl:attribute name="location">
             <xsl:apply-templates mode="schematron-select-full-path" select="." />
           </xsl:attribute>
@@ -463,11 +480,11 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M26" select="@*|*" />
+    <xsl:apply-templates mode="M27" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="ram:SpecifiedTradeAllowanceCharge[not(ram:CalculationPercent) and ram:BasisAmount]" mode="M26" priority="1008">
+<xsl:template match="ram:SpecifiedTradeAllowanceCharge[not(ram:CalculationPercent) and ram:BasisAmount]" mode="M27" priority="1008">
     <svrl:fired-rule context="ram:SpecifiedTradeAllowanceCharge[not(ram:CalculationPercent) and ram:BasisAmount]" />
 
 		<!--ASSERT -->
@@ -476,7 +493,7 @@
       <xsl:otherwise>
         <svrl:failed-assert test="false()">
           <xsl:attribute name="id">PEPPOL-EN16931-R042</xsl:attribute>
-          <xsl:attribute name="flag">warning</xsl:attribute>
+          <xsl:attribute name="flag">fatal</xsl:attribute>
           <xsl:attribute name="location">
             <xsl:apply-templates mode="schematron-select-full-path" select="." />
           </xsl:attribute>
@@ -485,11 +502,11 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M26" select="@*|*" />
+    <xsl:apply-templates mode="M27" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="ram:SpecifiedTradeAllowanceCharge" mode="M26" priority="1007">
+<xsl:template match="ram:SpecifiedTradeAllowanceCharge" mode="M27" priority="1007">
     <svrl:fired-rule context="ram:SpecifiedTradeAllowanceCharge" />
 
 		<!--ASSERT -->
@@ -498,11 +515,11 @@
       <xsl:otherwise>
         <svrl:failed-assert test="not(ram:CalculationPercent and ram:BasisAmount) or u:slack(if (ram:ActualAmount) then ram:ActualAmount else 0, (xs:decimal(ram:BasisAmount) * xs:decimal(ram:CalculationPercent)) div 100, $slackValue)">
           <xsl:attribute name="id">PEPPOL-EN16931-R040</xsl:attribute>
-          <xsl:attribute name="flag">warning</xsl:attribute>
+          <xsl:attribute name="flag">fatal</xsl:attribute>
           <xsl:attribute name="location">
             <xsl:apply-templates mode="schematron-select-full-path" select="." />
           </xsl:attribute>
-          <svrl:text />
+          <svrl:text>Allowance/charge amount must equal base amount * percentage/100 if base amount and percentage exists</svrl:text>
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
@@ -513,7 +530,7 @@
       <xsl:otherwise>
         <svrl:failed-assert test="normalize-space(ram:ChargeIndicator/udt:Indicator/text()) = 'true' or normalize-space(ram:ChargeIndicator/udt:Indicator/text()) = 'false'">
           <xsl:attribute name="id">PEPPOL-EN16931-R043-1</xsl:attribute>
-          <xsl:attribute name="flag">warning</xsl:attribute>
+          <xsl:attribute name="flag">fatal</xsl:attribute>
           <xsl:attribute name="location">
             <xsl:apply-templates mode="schematron-select-full-path" select="." />
           </xsl:attribute>
@@ -521,11 +538,11 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M26" select="@*|*" />
+    <xsl:apply-templates mode="M27" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="ram:AppliedTradeAllowanceCharge" mode="M26" priority="1006">
+<xsl:template match="ram:AppliedTradeAllowanceCharge" mode="M27" priority="1006">
     <svrl:fired-rule context="ram:AppliedTradeAllowanceCharge" />
 
 		<!--ASSERT -->
@@ -534,7 +551,7 @@
       <xsl:otherwise>
         <svrl:failed-assert test="normalize-space(ram:ChargeIndicator/udt:Indicator/text()) = 'true' or normalize-space(ram:ChargeIndicator/udt:Indicator/text()) = 'false'">
           <xsl:attribute name="id">PEPPOL-EN16931-R043-2</xsl:attribute>
-          <xsl:attribute name="flag">warning</xsl:attribute>
+          <xsl:attribute name="flag">fatal</xsl:attribute>
           <xsl:attribute name="location">
             <xsl:apply-templates mode="schematron-select-full-path" select="." />
           </xsl:attribute>
@@ -542,11 +559,11 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M26" select="@*|*" />
+    <xsl:apply-templates mode="M27" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="                 ram:SpecifiedTradeSettlementPaymentMeans[some $code in tokenize('49 59', '\s')                     satisfies normalize-space(ram:TypeCode) = $code]" mode="M26" priority="1005">
+<xsl:template match="                 ram:SpecifiedTradeSettlementPaymentMeans[some $code in tokenize('49 59', '\s')                     satisfies normalize-space(ram:TypeCode) = $code]" mode="M27" priority="1005">
     <svrl:fired-rule context="                 ram:SpecifiedTradeSettlementPaymentMeans[some $code in tokenize('49 59', '\s')                     satisfies normalize-space(ram:TypeCode) = $code]" />
 
 		<!--ASSERT -->
@@ -555,7 +572,7 @@
       <xsl:otherwise>
         <svrl:failed-assert test="../ram:SpecifiedTradePaymentTerms/ram:DirectDebitMandateID">
           <xsl:attribute name="id">PEPPOL-EN16931-R061</xsl:attribute>
-          <xsl:attribute name="flag">warning</xsl:attribute>
+          <xsl:attribute name="flag">fatal</xsl:attribute>
           <xsl:attribute name="location">
             <xsl:apply-templates mode="schematron-select-full-path" select="." />
           </xsl:attribute>
@@ -563,11 +580,11 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M26" select="@*|*" />
+    <xsl:apply-templates mode="M27" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="rsm:SupplyChainTradeTransaction[ram:ApplicableHeaderTradeSettlement/ram:BillingSpecifiedPeriod/ram:StartDateTime]/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeSettlement/ram:BillingSpecifiedPeriod/ram:StartDateTime" mode="M26" priority="1004">
+<xsl:template match="rsm:SupplyChainTradeTransaction[ram:ApplicableHeaderTradeSettlement/ram:BillingSpecifiedPeriod/ram:StartDateTime]/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeSettlement/ram:BillingSpecifiedPeriod/ram:StartDateTime" mode="M27" priority="1004">
     <svrl:fired-rule context="rsm:SupplyChainTradeTransaction[ram:ApplicableHeaderTradeSettlement/ram:BillingSpecifiedPeriod/ram:StartDateTime]/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeSettlement/ram:BillingSpecifiedPeriod/ram:StartDateTime" />
 
 		<!--ASSERT -->
@@ -576,7 +593,7 @@
       <xsl:otherwise>
         <svrl:failed-assert test="udt:DateTimeString >= ../../../../ram:ApplicableHeaderTradeSettlement/ram:BillingSpecifiedPeriod/ram:StartDateTime/udt:DateTimeString">
           <xsl:attribute name="id">PEPPOL-EN16931-R110</xsl:attribute>
-          <xsl:attribute name="flag">warning</xsl:attribute>
+          <xsl:attribute name="flag">fatal</xsl:attribute>
           <xsl:attribute name="location">
             <xsl:apply-templates mode="schematron-select-full-path" select="." />
           </xsl:attribute>
@@ -584,11 +601,11 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M26" select="@*|*" />
+    <xsl:apply-templates mode="M27" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="rsm:SupplyChainTradeTransaction[ram:ApplicableHeaderTradeSettlement/ram:BillingSpecifiedPeriod/ram:EndDateTime]/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeSettlement/ram:BillingSpecifiedPeriod/ram:EndDateTime" mode="M26" priority="1003">
+<xsl:template match="rsm:SupplyChainTradeTransaction[ram:ApplicableHeaderTradeSettlement/ram:BillingSpecifiedPeriod/ram:EndDateTime]/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeSettlement/ram:BillingSpecifiedPeriod/ram:EndDateTime" mode="M27" priority="1003">
     <svrl:fired-rule context="rsm:SupplyChainTradeTransaction[ram:ApplicableHeaderTradeSettlement/ram:BillingSpecifiedPeriod/ram:EndDateTime]/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeSettlement/ram:BillingSpecifiedPeriod/ram:EndDateTime" />
 
 		<!--ASSERT -->
@@ -597,7 +614,7 @@
       <xsl:otherwise>
         <svrl:failed-assert test="udt:DateTimeString &lt;= ../../../../ram:ApplicableHeaderTradeSettlement/ram:BillingSpecifiedPeriod/ram:EndDateTime/udt:DateTimeString">
           <xsl:attribute name="id">PEPPOL-EN16931-R111</xsl:attribute>
-          <xsl:attribute name="flag">warning</xsl:attribute>
+          <xsl:attribute name="flag">fatal</xsl:attribute>
           <xsl:attribute name="location">
             <xsl:apply-templates mode="schematron-select-full-path" select="." />
           </xsl:attribute>
@@ -605,11 +622,11 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M26" select="@*|*" />
+    <xsl:apply-templates mode="M27" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="ram:IncludedSupplyChainTradeLineItem" mode="M26" priority="1002">
+<xsl:template match="ram:IncludedSupplyChainTradeLineItem" mode="M27" priority="1002">
     <svrl:fired-rule context="ram:IncludedSupplyChainTradeLineItem" />
     <xsl:variable name="lineExtensionAmount" select="                     if (ram:SpecifiedLineTradeSettlement/ram:SpecifiedTradeSettlementLineMonetarySummation/ram:LineTotalAmount) then                         xs:decimal(ram:SpecifiedLineTradeSettlement/ram:SpecifiedTradeSettlementLineMonetarySummation/ram:LineTotalAmount)                     else                         0" />
     <xsl:variable name="quantity" select="                     if (ram:SpecifiedLineTradeDelivery/ram:BilledQuantity) then                         xs:decimal(ram:SpecifiedLineTradeDelivery/ram:BilledQuantity)                     else                         1" />
@@ -624,7 +641,7 @@
       <xsl:otherwise>
         <svrl:failed-assert test="(not(ram:SpecifiedLineTradeSettlement/ram:AdditionalReferencedDocument) or (ram:SpecifiedLineTradeSettlement/ram:AdditionalReferencedDocument/ram:TypeCode='130'))">
           <xsl:attribute name="id">PEPPOL-EN16931-R101</xsl:attribute>
-          <xsl:attribute name="flag">warning</xsl:attribute>
+          <xsl:attribute name="flag">fatal</xsl:attribute>
           <xsl:attribute name="location">
             <xsl:apply-templates mode="schematron-select-full-path" select="." />
           </xsl:attribute>
@@ -632,11 +649,11 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M26" select="@*|*" />
+    <xsl:apply-templates mode="M27" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="ram:NetPriceProductTradePrice | ram:GrossPriceProductTradePrice" mode="M26" priority="1001">
+<xsl:template match="ram:NetPriceProductTradePrice | ram:GrossPriceProductTradePrice" mode="M27" priority="1001">
     <svrl:fired-rule context="ram:NetPriceProductTradePrice | ram:GrossPriceProductTradePrice" />
 
 		<!--ASSERT -->
@@ -645,7 +662,7 @@
       <xsl:otherwise>
         <svrl:failed-assert test="not(ram:BasisQuantity) or xs:decimal(ram:BasisQuantity) > 0">
           <xsl:attribute name="id">PEPPOL-EN16931-R121</xsl:attribute>
-          <xsl:attribute name="flag">warning</xsl:attribute>
+          <xsl:attribute name="flag">fatal</xsl:attribute>
           <xsl:attribute name="location">
             <xsl:apply-templates mode="schematron-select-full-path" select="." />
           </xsl:attribute>
@@ -653,11 +670,11 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M26" select="@*|*" />
+    <xsl:apply-templates mode="M27" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="ram:NetPriceProductTradePrice/ram:BasisQuantity[@unitCode] | ram:GrossPriceProductTradePrice/ram:BasisQuantity[@unitCode]" mode="M26" priority="1000">
+<xsl:template match="ram:NetPriceProductTradePrice/ram:BasisQuantity[@unitCode] | ram:GrossPriceProductTradePrice/ram:BasisQuantity[@unitCode]" mode="M27" priority="1000">
     <svrl:fired-rule context="ram:NetPriceProductTradePrice/ram:BasisQuantity[@unitCode] | ram:GrossPriceProductTradePrice/ram:BasisQuantity[@unitCode]" />
 
 		<!--ASSERT -->
@@ -666,39 +683,11 @@
       <xsl:otherwise>
         <svrl:failed-assert test="@unitCode = ../../../ram:SpecifiedLineTradeDelivery/ram:BilledQuantity/@unitCode">
           <xsl:attribute name="id">PEPPOL-EN16931-R130</xsl:attribute>
-          <xsl:attribute name="flag">warning</xsl:attribute>
+          <xsl:attribute name="flag">fatal</xsl:attribute>
           <xsl:attribute name="location">
             <xsl:apply-templates mode="schematron-select-full-path" select="." />
           </xsl:attribute>
           <svrl:text>Unit code of price base quantity MUST be same as invoiced quantity.</svrl:text>
-        </svrl:failed-assert>
-      </xsl:otherwise>
-    </xsl:choose>
-    <xsl:apply-templates mode="M26" select="@*|*" />
-  </xsl:template>
-  <xsl:template match="text()" mode="M26" priority="-1" />
-  <xsl:template match="@*|node()" mode="M26" priority="-2">
-    <xsl:apply-templates mode="M26" select="@*|*" />
-  </xsl:template>
-
-<!--PATTERN peppol-cii-pattern-0-a-->
-
-
-	<!--RULE -->
-<xsl:template match="//*[not(name() = 'ram:ApplicableHeaderTradeDelivery') and not(*) and not(normalize-space())]" mode="M27" priority="1000">
-    <svrl:fired-rule context="//*[not(name() = 'ram:ApplicableHeaderTradeDelivery') and not(*) and not(normalize-space())]" />
-
-		<!--ASSERT -->
-<xsl:choose>
-      <xsl:when test="false()" />
-      <xsl:otherwise>
-        <svrl:failed-assert test="false()">
-          <xsl:attribute name="id">PEPPOL-EN16931-R008</xsl:attribute>
-          <xsl:attribute name="flag">warning</xsl:attribute>
-          <xsl:attribute name="location">
-            <xsl:apply-templates mode="schematron-select-full-path" select="." />
-          </xsl:attribute>
-          <svrl:text>Document MUST not contain empty elements.</svrl:text>
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
@@ -709,11 +698,39 @@
     <xsl:apply-templates mode="M27" select="@*|*" />
   </xsl:template>
 
+<!--PATTERN peppol-cii-pattern-0-a-->
+
+
+	<!--RULE -->
+<xsl:template match="//*[not(name() = 'ram:ApplicableHeaderTradeDelivery') and not(*) and not(normalize-space())]" mode="M28" priority="1000">
+    <svrl:fired-rule context="//*[not(name() = 'ram:ApplicableHeaderTradeDelivery') and not(*) and not(normalize-space())]" />
+
+		<!--ASSERT -->
+<xsl:choose>
+      <xsl:when test="false()" />
+      <xsl:otherwise>
+        <svrl:failed-assert test="false()">
+          <xsl:attribute name="id">PEPPOL-EN16931-R008</xsl:attribute>
+          <xsl:attribute name="flag">fatal</xsl:attribute>
+          <xsl:attribute name="location">
+            <xsl:apply-templates mode="schematron-select-full-path" select="." />
+          </xsl:attribute>
+          <svrl:text>Document MUST not contain empty elements.</svrl:text>
+        </svrl:failed-assert>
+      </xsl:otherwise>
+    </xsl:choose>
+    <xsl:apply-templates mode="M28" select="@*|*" />
+  </xsl:template>
+  <xsl:template match="text()" mode="M28" priority="-1" />
+  <xsl:template match="@*|node()" mode="M28" priority="-2">
+    <xsl:apply-templates mode="M28" select="@*|*" />
+  </xsl:template>
+
 <!--PATTERN peppol-cii-pattern-0-b-->
 
 
 	<!--RULE -->
-<xsl:template match="rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeAgreement/ram:GrossPriceProductTradePrice" mode="M28" priority="1000">
+<xsl:template match="rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeAgreement/ram:GrossPriceProductTradePrice" mode="M29" priority="1000">
     <svrl:fired-rule context="rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeAgreement/ram:GrossPriceProductTradePrice" />
 
 		<!--ASSERT -->
@@ -722,7 +739,7 @@
       <xsl:otherwise>
         <svrl:failed-assert test="not(ram:AppliedTradeAllowanceCharge/ram:ActualAmount) or ram:AppliedTradeAllowanceCharge/ram:ChargeIndicator/udt:Indicator = 'false'">
           <xsl:attribute name="id">PEPPOL-EN16931-R044</xsl:attribute>
-          <xsl:attribute name="flag">warning</xsl:attribute>
+          <xsl:attribute name="flag">fatal</xsl:attribute>
           <xsl:attribute name="location">
             <xsl:apply-templates mode="schematron-select-full-path" select="." />
           </xsl:attribute>
@@ -737,7 +754,7 @@
       <xsl:otherwise>
         <svrl:failed-assert test="not(ram:ChargeAmount) or xs:decimal(../ram:NetPriceProductTradePrice/ram:ChargeAmount) = xs:decimal(ram:ChargeAmount) - u:decimalOrZero(ram:AppliedTradeAllowanceCharge/ram:ActualAmount)">
           <xsl:attribute name="id">PEPPOL-EN16931-R046</xsl:attribute>
-          <xsl:attribute name="flag">warning</xsl:attribute>
+          <xsl:attribute name="flag">fatal</xsl:attribute>
           <xsl:attribute name="location">
             <xsl:apply-templates mode="schematron-select-full-path" select="." />
           </xsl:attribute>
@@ -745,18 +762,18 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M28" select="@*|*" />
+    <xsl:apply-templates mode="M29" select="@*|*" />
   </xsl:template>
-  <xsl:template match="text()" mode="M28" priority="-1" />
-  <xsl:template match="@*|node()" mode="M28" priority="-2">
-    <xsl:apply-templates mode="M28" select="@*|*" />
+  <xsl:template match="text()" mode="M29" priority="-1" />
+  <xsl:template match="@*|node()" mode="M29" priority="-2">
+    <xsl:apply-templates mode="M29" select="@*|*" />
   </xsl:template>
 
 <!--PATTERN cii-pattern-->
 
 
 	<!--RULE -->
-<xsl:template match="/rsm:CrossIndustryInvoice" mode="M29" priority="1010">
+<xsl:template match="/rsm:CrossIndustryInvoice" mode="M30" priority="1010">
     <svrl:fired-rule context="/rsm:CrossIndustryInvoice" />
     <xsl:variable name="BT-89-path" select="rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradePaymentTerms/ram:DirectDebitMandateID" />
     <xsl:variable name="BT-90-path" select="rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:CreditorReferenceID" />
@@ -903,11 +920,11 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M29" select="@*|*" />
+    <xsl:apply-templates mode="M30" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/rsm:CrossIndustryInvoice/rsm:ExchangedDocumentContext" mode="M29" priority="1009">
+<xsl:template match="/rsm:CrossIndustryInvoice/rsm:ExchangedDocumentContext" mode="M30" priority="1009">
     <svrl:fired-rule context="/rsm:CrossIndustryInvoice/rsm:ExchangedDocumentContext" />
 
 		<!--ASSERT -->
@@ -924,11 +941,11 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M29" select="@*|*" />
+    <xsl:apply-templates mode="M30" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SellerTradeParty" mode="M29" priority="1008">
+<xsl:template match="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SellerTradeParty" mode="M30" priority="1008">
     <svrl:fired-rule context="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SellerTradeParty" />
 
 		<!--ASSERT -->
@@ -945,11 +962,11 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M29" select="@*|*" />
+    <xsl:apply-templates mode="M30" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SellerTradeParty/ram:PostalTradeAddress" mode="M29" priority="1007">
+<xsl:template match="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SellerTradeParty/ram:PostalTradeAddress" mode="M30" priority="1007">
     <svrl:fired-rule context="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SellerTradeParty/ram:PostalTradeAddress" />
 
 		<!--ASSERT -->
@@ -981,11 +998,11 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M29" select="@*|*" />
+    <xsl:apply-templates mode="M30" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SellerTradeParty/ram:DefinedTradeContact" mode="M29" priority="1006">
+<xsl:template match="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SellerTradeParty/ram:DefinedTradeContact" mode="M30" priority="1006">
     <svrl:fired-rule context="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SellerTradeParty/ram:DefinedTradeContact" />
 
 		<!--ASSERT -->
@@ -1062,11 +1079,11 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M29" select="@*|*" />
+    <xsl:apply-templates mode="M30" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:BuyerTradeParty/ram:PostalTradeAddress" mode="M29" priority="1005">
+<xsl:template match="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:BuyerTradeParty/ram:PostalTradeAddress" mode="M30" priority="1005">
     <svrl:fired-rule context="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:BuyerTradeParty/ram:PostalTradeAddress" />
 
 		<!--ASSERT -->
@@ -1098,11 +1115,11 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M29" select="@*|*" />
+    <xsl:apply-templates mode="M30" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:ShipToTradeParty/ram:PostalTradeAddress" mode="M29" priority="1004">
+<xsl:template match="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:ShipToTradeParty/ram:PostalTradeAddress" mode="M30" priority="1004">
     <svrl:fired-rule context="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:ShipToTradeParty/ram:PostalTradeAddress" />
 
 		<!--ASSERT -->
@@ -1134,11 +1151,11 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M29" select="@*|*" />
+    <xsl:apply-templates mode="M30" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeSettlementPaymentMeans[ram:TypeCode = (30,58)]" mode="M29" priority="1003">
+<xsl:template match="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeSettlementPaymentMeans[ram:TypeCode = (30,58)]" mode="M30" priority="1003">
     <svrl:fired-rule context="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeSettlementPaymentMeans[ram:TypeCode = (30,58)]" />
 
 		<!--ASSERT -->
@@ -1185,11 +1202,11 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M29" select="@*|*" />
+    <xsl:apply-templates mode="M30" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeSettlementPaymentMeans[ram:TypeCode = (48,54,55)]" mode="M29" priority="1002">
+<xsl:template match="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeSettlementPaymentMeans[ram:TypeCode = (48,54,55)]" mode="M30" priority="1002">
     <svrl:fired-rule context="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeSettlementPaymentMeans[ram:TypeCode = (48,54,55)]" />
 
 		<!--ASSERT -->
@@ -1221,11 +1238,11 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M29" select="@*|*" />
+    <xsl:apply-templates mode="M30" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeSettlementPaymentMeans[ram:TypeCode = 59]" mode="M29" priority="1001">
+<xsl:template match="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeSettlementPaymentMeans[ram:TypeCode = 59]" mode="M30" priority="1001">
     <svrl:fired-rule context="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeSettlementPaymentMeans[ram:TypeCode = 59]" />
 
 		<!--ASSERT -->
@@ -1272,11 +1289,11 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M29" select="@*|*" />
+    <xsl:apply-templates mode="M30" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:ApplicableTradeTax" mode="M29" priority="1000">
+<xsl:template match="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:ApplicableTradeTax" mode="M30" priority="1000">
     <svrl:fired-rule context="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:ApplicableTradeTax" />
 
 		<!--ASSERT -->
@@ -1293,18 +1310,18 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M29" select="@*|*" />
+    <xsl:apply-templates mode="M30" select="@*|*" />
   </xsl:template>
-  <xsl:template match="text()" mode="M29" priority="-1" />
-  <xsl:template match="@*|node()" mode="M29" priority="-2">
-    <xsl:apply-templates mode="M29" select="@*|*" />
+  <xsl:template match="text()" mode="M30" priority="-1" />
+  <xsl:template match="@*|node()" mode="M30" priority="-2">
+    <xsl:apply-templates mode="M30" select="@*|*" />
   </xsl:template>
 
 <!--PATTERN cii-extension-pattern-->
 <xsl:variable name="isExtension" select="exists(/rsm:CrossIndustryInvoice/rsm:ExchangedDocumentContext/ram:GuidelineSpecifiedDocumentContextParameter/ram:ID[text() = concat( 'urn:cen.eu:en16931:2017#compliant#urn:xeinkauf.de:kosit:xrechnung_', $XR-MAJOR-MINOR-VERSION ,'#conformant#urn:xeinkauf.de:kosit:extension:xrechnung_', $XR-MAJOR-MINOR-VERSION) ] )" />
 
 	<!--RULE -->
-<xsl:template match="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:AssociatedDocumentLineDocument[$isExtension]" mode="M30" priority="1005">
+<xsl:template match="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:AssociatedDocumentLineDocument[$isExtension]" mode="M31" priority="1006">
     <svrl:fired-rule context="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:AssociatedDocumentLineDocument[$isExtension]" />
 
 		<!--ASSERT -->
@@ -1323,11 +1340,11 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M30" select="@*|*" />
+    <xsl:apply-templates mode="M31" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="//ram:GlobalID[@schemeID and $isExtension][not(ancestor::ram:SpecifiedTradeProduct) and not(ancestor::ram:ShipToTradeParty)]" mode="M30" priority="1004">
+<xsl:template match="//ram:GlobalID[@schemeID and $isExtension][not(ancestor::ram:SpecifiedTradeProduct) and not(ancestor::ram:ShipToTradeParty)]" mode="M31" priority="1005">
     <svrl:fired-rule context="//ram:GlobalID[@schemeID and $isExtension][not(ancestor::ram:SpecifiedTradeProduct) and not(ancestor::ram:ShipToTradeParty)]" />
 
 		<!--ASSERT -->
@@ -1346,11 +1363,11 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M30" select="@*|*" />
+    <xsl:apply-templates mode="M31" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="ram:ID[@schemeID and $isExtension][not(ancestor::ram:SpecifiedTaxRegistration)]" mode="M30" priority="1003">
+<xsl:template match="ram:ID[@schemeID and $isExtension][not(ancestor::ram:SpecifiedTaxRegistration)]" mode="M31" priority="1004">
     <svrl:fired-rule context="ram:ID[@schemeID and $isExtension][not(ancestor::ram:SpecifiedTaxRegistration)]" />
 
 		<!--ASSERT -->
@@ -1369,11 +1386,11 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M30" select="@*|*" />
+    <xsl:apply-templates mode="M31" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="ram:SpecifiedTradeProduct/ram:GlobalID[@schemeID and $isExtension]" mode="M30" priority="1002">
+<xsl:template match="ram:SpecifiedTradeProduct/ram:GlobalID[@schemeID and $isExtension]" mode="M31" priority="1003">
     <svrl:fired-rule context="ram:SpecifiedTradeProduct/ram:GlobalID[@schemeID and $isExtension]" />
 
 		<!--ASSERT -->
@@ -1392,11 +1409,11 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M30" select="@*|*" />
+    <xsl:apply-templates mode="M31" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="ram:URIUniversalCommunication/ram:URIID[@schemeID and $isExtension]" mode="M30" priority="1001">
+<xsl:template match="ram:URIUniversalCommunication/ram:URIID[@schemeID and $isExtension]" mode="M31" priority="1002">
     <svrl:fired-rule context="ram:URIUniversalCommunication/ram:URIID[@schemeID and $isExtension]" />
 
 		<!--ASSERT -->
@@ -1415,11 +1432,11 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M30" select="@*|*" />
+    <xsl:apply-templates mode="M31" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="ram:ApplicableHeaderTradeDelivery/ram:ShipToTradeParty/ram:GlobalID[@schemeID and $isExtension]" mode="M30" priority="1000">
+<xsl:template match="ram:ApplicableHeaderTradeDelivery/ram:ShipToTradeParty/ram:GlobalID[@schemeID and $isExtension]" mode="M31" priority="1001">
     <svrl:fired-rule context="ram:ApplicableHeaderTradeDelivery/ram:ShipToTradeParty/ram:GlobalID[@schemeID and $isExtension]" />
 
 		<!--ASSERT -->
@@ -1438,10 +1455,35 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M30" select="@*|*" />
+    <xsl:apply-templates mode="M31" select="@*|*" />
   </xsl:template>
-  <xsl:template match="text()" mode="M30" priority="-1" />
-  <xsl:template match="@*|node()" mode="M30" priority="-2">
-    <xsl:apply-templates mode="M30" select="@*|*" />
+
+	<!--RULE -->
+<xsl:template match="ram:AttachmentBinaryObject[$isExtension]" mode="M31" priority="1000">
+    <svrl:fired-rule context="ram:AttachmentBinaryObject[$isExtension]" />
+
+		<!--ASSERT -->
+<xsl:choose>
+      <xsl:when test=".[@mimeCode = 'application/pdf' or               @mimeCode = 'image/png' or               @mimeCode = 'image/jpeg' or               @mimeCode = 'text/csv' or               @mimeCode = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' or               @mimeCode = 'application/vnd.oasis.opendocument.spreadsheet' or               @mimeCode = 'application/xml']" />
+      <xsl:otherwise>
+        <svrl:failed-assert test=".[@mimeCode = 'application/pdf' or @mimeCode = 'image/png' or @mimeCode = 'image/jpeg' or @mimeCode = 'text/csv' or @mimeCode = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' or @mimeCode = 'application/vnd.oasis.opendocument.spreadsheet' or @mimeCode = 'application/xml']">
+          <xsl:attribute name="id">BR-DEX-01</xsl:attribute>
+          <xsl:attribute name="flag">fatal</xsl:attribute>
+          <xsl:attribute name="location">
+            <xsl:apply-templates mode="schematron-select-full-path" select="." />
+          </xsl:attribute>
+          <svrl:text>[BR-DEX-01] Das Element <xsl:text />
+            <xsl:value-of select="name(.)" />
+            <xsl:text /> "Attached Document" (BT-125) benutzt einen nicht zulässigen MIME-Code: <xsl:text />
+            <xsl:value-of select="@mimeCode" />
+            <xsl:text />. Im Falle einer Extension darf zusätzlich zu der Liste der mime codes (definiert in Abschnitt 8.2, "Binary Object") der MIME-Code application/xml genutzt werden.</svrl:text>
+        </svrl:failed-assert>
+      </xsl:otherwise>
+    </xsl:choose>
+    <xsl:apply-templates mode="M31" select="@*|*" />
+  </xsl:template>
+  <xsl:template match="text()" mode="M31" priority="-1" />
+  <xsl:template match="@*|node()" mode="M31" priority="-2">
+    <xsl:apply-templates mode="M31" select="@*|*" />
   </xsl:template>
 </xsl:stylesheet>

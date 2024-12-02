@@ -149,6 +149,25 @@
                 select="    (number($digits[8])*2) +    (number($digits[7])*4) +    (number($digits[6])*8) +    (number($digits[5])*16) +    (number($digits[4])*32) +    (number($digits[3])*64) +    (number($digits[2])*128) +    (number($digits[1])*256) "/>
       <value-of select="($checksum  mod 11) mod 10 = number($digits[9])"/>
    </function>
+   <function xmlns="http://www.w3.org/1999/XSL/Transform"
+             name="u:checkSEOrgnr"
+             as="xs:boolean">
+      <param name="number" as="xs:string"/>
+      <choose>
+         <when test="not(matches($number, '^\d+$'))">
+            <sequence select="false()"/>
+         </when>
+         <otherwise>
+            <variable name="mainPart" select="substring($number, 1, 9)"/>
+            <variable name="checkDigit" select="substring($number, 10, 1)"/>
+            <variable name="sum" as="xs:integer">
+               <value-of select="sum(       for $pos in 1 to string-length($mainPart) return         if ($pos mod 2 = 1)         then (number(substring($mainPart, string-length($mainPart) - $pos + 1, 1)) * 2) mod 10 +           (number(substring($mainPart, string-length($mainPart) - $pos + 1, 1)) * 2) idiv 10         else number(substring($mainPart, string-length($mainPart) - $pos + 1, 1))      )"/>
+            </variable>
+            <variable name="calculatedCheckDigit" select="(10 - $sum mod 10) mod 10"/>
+            <sequence select="$calculatedCheckDigit = number($checkDigit)"/>
+         </otherwise>
+      </choose>
+   </function>
    <!--END Functions from PEPPOL-->
    <!--BEGIN Pattern from PEPPOL-->
    <pattern id="peppol-ubl-pattern-1">
@@ -189,7 +208,7 @@
       <rule context="ubl-invoice:Invoice/cac:AllowanceCharge | ubl-invoice:Invoice/cac:InvoiceLine/cac:AllowanceCharge | ubl-creditnote:CreditNote/cac:AllowanceCharge | ubl-creditnote:CreditNote/cac:CreditNoteLine/cac:AllowanceCharge">
          <assert id="PEPPOL-EN16931-R040"
                  test="not(cbc:MultiplierFactorNumeric and cbc:BaseAmount) or u:slack(if (cbc:Amount) then cbc:Amount else 0, (xs:decimal(cbc:BaseAmount) * xs:decimal(cbc:MultiplierFactorNumeric)) div 100, $slackValue)"
-                 flag="fatal"/>
+                 flag="fatal">Allowance/charge amount must equal base amount * percentage/100 if base amount and percentage exists</assert>
          <assert id="PEPPOL-EN16931-R043"
                  test="normalize-space(cbc:ChargeIndicator/text()) = 'true' or normalize-space(cbc:ChargeIndicator/text()) = 'false'"
                  flag="fatal">Allowance/charge ChargeIndicator value MUST equal 'true' or 'false'</assert>
@@ -224,7 +243,7 @@
               value="           if (cac:AllowanceCharge[normalize-space(cbc:ChargeIndicator) = 'true']) then             round(sum(cac:AllowanceCharge[normalize-space(cbc:ChargeIndicator) = 'true']/cbc:Amount/xs:decimal(.)) * 10 * 10) div 100           else             0"/>
          <assert id="PEPPOL-EN16931-R120"
                  test="u:slack($lineExtensionAmount, ($quantity * ($priceAmount div $baseQuantity)) + $chargesTotal - $allowancesTotal, $slackValue)"
-                 flag="fatal"/>
+                 flag="fatal">Invoice line net amount MUST equal (Invoiced quantity * (Item net price/item price base quantity) + Sum of invoice line charge amount - sum of invoice line allowance amount</assert>
          <assert id="PEPPOL-EN16931-R121"
                  test="not(cac:Price/cbc:BaseQuantity) or xs:decimal(cac:Price/cbc:BaseQuantity) &gt; 0"
                  flag="fatal">Base quantity MUST be a positive number above zero.</assert>

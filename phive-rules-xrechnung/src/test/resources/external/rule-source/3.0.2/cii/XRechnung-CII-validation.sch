@@ -136,73 +136,92 @@
       <param name="val"/>
       <value-of select="( ((string-to-codepoints(substring($val,1,1)) - 49) * 10) + ((string-to-codepoints(substring($val,2,1)) - 48) * 1) + ((string-to-codepoints(substring($val,3,1)) - 48) * 3) + ((string-to-codepoints(substring($val,4,1)) - 48) * 5) + ((string-to-codepoints(substring($val,5,1)) - 48) * 7) + ((string-to-codepoints(substring($val,6,1)) - 48) * 9) + ((string-to-codepoints(substring($val,7,1)) - 48) * 11) + ((string-to-codepoints(substring($val,8,1)) - 48) * 13) + ((string-to-codepoints(substring($val,9,1)) - 48) * 15) + ((string-to-codepoints(substring($val,10,1)) - 48) * 17) + ((string-to-codepoints(substring($val,11,1)) - 48) * 19)) mod 89 = 0 "/>
    </function>
+   <function xmlns="http://www.w3.org/1999/XSL/Transform"
+             name="u:checkSEOrgnr"
+             as="xs:boolean">
+      <param name="number" as="xs:string"/>
+      <choose>
+         <when test="not(matches($number, '^\d+$'))">
+            <sequence select="false()"/>
+         </when>
+         <otherwise>
+            <variable name="mainPart" select="substring($number, 1, 9)"/>
+            <variable name="checkDigit" select="substring($number, 10, 1)"/>
+            <variable name="sum" as="xs:integer">
+               <value-of select="sum(       for $pos in 1 to string-length($mainPart) return         if ($pos mod 2 = 1)         then (number(substring($mainPart, string-length($mainPart) - $pos + 1, 1)) * 2) mod 10 +           (number(substring($mainPart, string-length($mainPart) - $pos + 1, 1)) * 2) idiv 10         else number(substring($mainPart, string-length($mainPart) - $pos + 1, 1))      )"/>
+            </variable>
+            <variable name="calculatedCheckDigit" select="(10 - $sum mod 10) mod 10"/>
+            <sequence select="$calculatedCheckDigit = number($checkDigit)"/>
+         </otherwise>
+      </choose>
+   </function>
    <!--END Functions from PEPPOL-->
    <!--BEGIN Pattern from PEPPOL-->
    <pattern id="peppol-cii-pattern-1">
       <rule context="rsm:ExchangedDocumentContext">
          <assert id="PEPPOL-EN16931-R001"
                  test="ram:BusinessProcessSpecifiedDocumentContextParameter/ram:ID"
-                 flag="warning">Business process MUST be provided.</assert>
+                 flag="fatal">Business process MUST be provided.</assert>
       </rule>
       <rule context="ram:ApplicableHeaderTradeSettlement">
          <assert id="PEPPOL-EN16931-R005"
                  test="not(ram:TaxCurrencyCode) or normalize-space(ram:TaxCurrencyCode/text()) != normalize-space(ram:InvoiceCurrencyCode/text())"
-                 flag="warning">VAT accounting currency code MUST be different from invoice currency code when provided.</assert>
+                 flag="fatal">VAT accounting currency code MUST be different from invoice currency code when provided.</assert>
          <assert id="PEPPOL-EN16931-R053"
                  test="count(ram:SpecifiedTradeSettlementHeaderMonetarySummation/ram:TaxTotalAmount[@currencyID = $documentCurrencyCode]) &lt;=1"
-                 flag="warning">No more than one tax total amount must be provided where currency id equals document currency code.</assert>
+                 flag="fatal">No more than one tax total amount must be provided where currency id equals document currency code.</assert>
          <assert id="PEPPOL-EN16931-R054"
                  test="                     count(ram:SpecifiedTradeSettlementHeaderMonetarySummation/ram:TaxTotalAmount[@currencyID != $documentCurrencyCode]) = (if (ram:TaxCurrencyCode) then                         1                     else                         0)"
-                 flag="warning">Only one tax total amount must be provided where currency id equals tax currency code, if tax currency code (BT-6) is provided.</assert>
+                 flag="fatal">Only one tax total amount must be provided where currency id equals tax currency code, if tax currency code (BT-6) is provided.</assert>
          <assert id="PEPPOL-EN16931-R055"
                  test="not(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:TaxCurrencyCode and ram:SpecifiedTradeSettlementHeaderMonetarySummation/ram:TaxTotalAmount[@currencyID = $documentCurrencyCode]) or (ram:SpecifiedTradeSettlementHeaderMonetarySummation/ram:TaxTotalAmount[@currencyID = $taxCurrencyCode] &lt; 0 and ram:SpecifiedTradeSettlementHeaderMonetarySummation/ram:TaxTotalAmount[@currencyID = $documentCurrencyCode] &lt; 0) or (ram:SpecifiedTradeSettlementHeaderMonetarySummation/ram:TaxTotalAmount[@currencyID = $taxCurrencyCode] &gt;= 0 and ram:SpecifiedTradeSettlementHeaderMonetarySummation/ram:TaxTotalAmount[@currencyID = $documentCurrencyCode] &gt;= 0)"
-                 flag="warning"/>
+                 flag="fatal">Invoice total VAT amount and Invoice total VAT amount in accounting currency MUST have the same operational sign</assert>
       </rule>
       <rule context="ram:BuyerTradeParty">
          <assert id="PEPPOL-EN16931-R010"
                  test="ram:URIUniversalCommunication/ram:URIID"
-                 flag="warning">Buyer electronic address MUST be provided</assert>
+                 flag="fatal">Buyer electronic address MUST be provided</assert>
       </rule>
       <rule context="ram:SellerTradeParty">
          <assert id="PEPPOL-EN16931-R020"
                  test="ram:URIUniversalCommunication/ram:URIID"
-                 flag="warning">Seller electronic address MUST be provided</assert>
+                 flag="fatal">Seller electronic address MUST be provided</assert>
       </rule>
       <rule context="ram:SpecifiedTradeAllowanceCharge[ram:CalculationPercent and not(ram:BasisAmount)]">
-         <assert id="PEPPOL-EN16931-R041" test="false()" flag="warning">Allowance/charge base
+         <assert id="PEPPOL-EN16931-R041" test="false()" flag="fatal">Allowance/charge base
                 amount MUST be provided when allowance/charge percentage is provided.</assert>
       </rule>
       <rule context="ram:SpecifiedTradeAllowanceCharge[not(ram:CalculationPercent) and ram:BasisAmount]">
-         <assert id="PEPPOL-EN16931-R042" test="false()" flag="warning">Allowance/charge percentage
+         <assert id="PEPPOL-EN16931-R042" test="false()" flag="fatal">Allowance/charge percentage
                 MUST be provided when allowance/charge base amount is provided.</assert>
       </rule>
       <rule context="ram:SpecifiedTradeAllowanceCharge">
          <assert id="PEPPOL-EN16931-R040"
                  test="not(ram:CalculationPercent and ram:BasisAmount) or u:slack(if (ram:ActualAmount) then ram:ActualAmount else 0, (xs:decimal(ram:BasisAmount) * xs:decimal(ram:CalculationPercent)) div 100, $slackValue)"
-                 flag="warning"/>
+                 flag="fatal">Allowance/charge amount must equal base amount * percentage/100 if base amount and percentage exists</assert>
          <assert id="PEPPOL-EN16931-R043-1"
                  test="normalize-space(ram:ChargeIndicator/udt:Indicator/text()) = 'true' or normalize-space(ram:ChargeIndicator/udt:Indicator/text()) = 'false'"
-                 flag="warning">Allowance/charge ChargeIndicator value MUST equal 'true' or 'false'</assert>
+                 flag="fatal">Allowance/charge ChargeIndicator value MUST equal 'true' or 'false'</assert>
       </rule>
       <rule context="ram:AppliedTradeAllowanceCharge">
          <assert id="PEPPOL-EN16931-R043-2"
                  test="normalize-space(ram:ChargeIndicator/udt:Indicator/text()) = 'true' or normalize-space(ram:ChargeIndicator/udt:Indicator/text()) = 'false'"
-                 flag="warning">Allowance/charge ChargeIndicator value MUST equal 'true' or 'false'</assert>
+                 flag="fatal">Allowance/charge ChargeIndicator value MUST equal 'true' or 'false'</assert>
       </rule>
       <rule context="                 ram:SpecifiedTradeSettlementPaymentMeans[some $code in tokenize('49 59', '\s')                     satisfies normalize-space(ram:TypeCode) = $code]">
          <assert id="PEPPOL-EN16931-R061"
                  test="../ram:SpecifiedTradePaymentTerms/ram:DirectDebitMandateID"
-                 flag="warning">Mandate reference MUST be provided for direct debit.</assert>
+                 flag="fatal">Mandate reference MUST be provided for direct debit.</assert>
       </rule>
       <rule context="rsm:SupplyChainTradeTransaction[ram:ApplicableHeaderTradeSettlement/ram:BillingSpecifiedPeriod/ram:StartDateTime]/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeSettlement/ram:BillingSpecifiedPeriod/ram:StartDateTime">
          <assert id="PEPPOL-EN16931-R110"
                  test="udt:DateTimeString &gt;= ../../../../ram:ApplicableHeaderTradeSettlement/ram:BillingSpecifiedPeriod/ram:StartDateTime/udt:DateTimeString"
-                 flag="warning">Start date of line period MUST be within invoice period.</assert>
+                 flag="fatal">Start date of line period MUST be within invoice period.</assert>
       </rule>
       <rule context="rsm:SupplyChainTradeTransaction[ram:ApplicableHeaderTradeSettlement/ram:BillingSpecifiedPeriod/ram:EndDateTime]/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeSettlement/ram:BillingSpecifiedPeriod/ram:EndDateTime">
          <assert id="PEPPOL-EN16931-R111"
                  test="udt:DateTimeString &lt;= ../../../../ram:ApplicableHeaderTradeSettlement/ram:BillingSpecifiedPeriod/ram:EndDateTime/udt:DateTimeString"
-                 flag="warning">End date of line period MUST be within invoice period.</assert>
+                 flag="fatal">End date of line period MUST be within invoice period.</assert>
       </rule>
       <rule context="ram:IncludedSupplyChainTradeLineItem">
          <let name="lineExtensionAmount"
@@ -219,32 +238,32 @@
               value="                     if (ram:SpecifiedLineTradeSettlement/ram:SpecifiedTradeAllowanceCharge[normalize-space(ram:ChargeIndicator/udt:Indicator) = 'true']) then                         round(sum(ram:SpecifiedLineTradeSettlement/ram:SpecifiedTradeAllowanceCharge[normalize-space(ram:ChargeIndicator/udt:Indicator) = 'true']/ram:ActualAmount/xs:decimal(.)) * 10 * 10) div 100                     else                         0"/>
          <assert id="PEPPOL-EN16931-R101"
                  test="(not(ram:SpecifiedLineTradeSettlement/ram:AdditionalReferencedDocument) or (ram:SpecifiedLineTradeSettlement/ram:AdditionalReferencedDocument/ram:TypeCode='130'))"
-                 flag="warning">Element Additional referenced document can only be used for Invoice line object.</assert>
+                 flag="fatal">Element Additional referenced document can only be used for Invoice line object.</assert>
       </rule>
       <rule context="ram:NetPriceProductTradePrice | ram:GrossPriceProductTradePrice">
          <assert id="PEPPOL-EN16931-R121"
                  test="not(ram:BasisQuantity) or xs:decimal(ram:BasisQuantity) &gt; 0"
-                 flag="warning">Base quantity MUST be a positive number above zero.</assert>
+                 flag="fatal">Base quantity MUST be a positive number above zero.</assert>
       </rule>
       <rule context="ram:NetPriceProductTradePrice/ram:BasisQuantity[@unitCode] | ram:GrossPriceProductTradePrice/ram:BasisQuantity[@unitCode]">
          <assert id="PEPPOL-EN16931-R130"
                  test="@unitCode = ../../../ram:SpecifiedLineTradeDelivery/ram:BilledQuantity/@unitCode"
-                 flag="warning">Unit code of price base quantity MUST be same as invoiced quantity.</assert>
+                 flag="fatal">Unit code of price base quantity MUST be same as invoiced quantity.</assert>
       </rule>
    </pattern>
    <pattern id="peppol-cii-pattern-0-a">
       <rule context="//*[not(name() = 'ram:ApplicableHeaderTradeDelivery') and not(*) and not(normalize-space())]">
-         <assert id="PEPPOL-EN16931-R008" test="false()" flag="warning">Document MUST not contain empty elements.</assert>
+         <assert id="PEPPOL-EN16931-R008" test="false()" flag="fatal">Document MUST not contain empty elements.</assert>
       </rule>
    </pattern>
    <pattern id="peppol-cii-pattern-0-b">
       <rule context="rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeAgreement/ram:GrossPriceProductTradePrice">
          <assert id="PEPPOL-EN16931-R044"
                  test="not(ram:AppliedTradeAllowanceCharge/ram:ActualAmount) or ram:AppliedTradeAllowanceCharge/ram:ChargeIndicator/udt:Indicator = 'false'"
-                 flag="warning">Charge on price level is NOT allowed. Only value 'false' allowed.</assert>
+                 flag="fatal">Charge on price level is NOT allowed. Only value 'false' allowed.</assert>
          <assert id="PEPPOL-EN16931-R046"
                  test="not(ram:ChargeAmount) or xs:decimal(../ram:NetPriceProductTradePrice/ram:ChargeAmount) = xs:decimal(ram:ChargeAmount) - u:decimalOrZero(ram:AppliedTradeAllowanceCharge/ram:ActualAmount)"
-                 flag="warning">Item net price MUST equal (Gross price - Allowance amount) when gross price is provided.</assert>
+                 flag="fatal">Item net price MUST equal (Gross price - Allowance amount) when gross price is provided.</assert>
       </rule>
    </pattern>
    <!--END Pattern from PEPPOL-->
@@ -411,6 +430,11 @@
          <assert test="((not(contains(normalize-space(@schemeID), ' ')) and contains($ISO-6523-ICD-EXT-CODES, concat(' ', normalize-space(@schemeID), ' '))))"
                  flag="fatal"
                  id="BR-DEX-08">[BR-DEX-08] Any scheme identifier for a Delivery location identifier in <name/> MUST be coded using one of the ISO 6523 ICD list. </assert>
+      </rule>
+      <rule context="ram:AttachmentBinaryObject[$isExtension]">
+         <assert test=".[@mimeCode = 'application/pdf' or               @mimeCode = 'image/png' or               @mimeCode = 'image/jpeg' or               @mimeCode = 'text/csv' or               @mimeCode = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' or               @mimeCode = 'application/vnd.oasis.opendocument.spreadsheet' or               @mimeCode = 'application/xml']"
+                 id="BR-DEX-01"
+                 flag="fatal">[BR-DEX-01] Das Element <name/> "Attached Document" (BT-125) benutzt einen nicht zulässigen MIME-Code: <value-of select="@mimeCode"/>. Im Falle einer Extension darf zusätzlich zu der Liste der mime codes (definiert in Abschnitt 8.2, "Binary Object") der MIME-Code application/xml genutzt werden.</assert>
       </rule>
    </pattern>
 </schema>
