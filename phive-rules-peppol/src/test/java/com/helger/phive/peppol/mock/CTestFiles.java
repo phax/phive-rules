@@ -41,6 +41,7 @@ import com.helger.phive.peppol.PeppolValidationDirectory;
 import com.helger.phive.peppol.PeppolValidationPintAUNZ;
 import com.helger.phive.peppol.PeppolValidationPintJP;
 import com.helger.phive.peppol.PeppolValidationPintJP_NTR;
+import com.helger.phive.peppol.PeppolValidationPintJP_SB;
 import com.helger.phive.peppol.PeppolValidationPintMY;
 import com.helger.phive.peppol.PeppolValidationPintSG;
 import com.helger.phive.peppol.PeppolValidationReporting;
@@ -187,6 +188,13 @@ public final class CTestFiles
                                                             /* PINT Japan NTR */
                                                             PeppolValidationPintJP_NTR.VID_OPENPEPPOL_JP_PINT_NTR_INVOICE_1_0_1,
                                                             PeppolValidationPintJP_NTR.VID_OPENPEPPOL_JP_PINT_NTR_CREDIT_NOTE_1_0_1,
+
+                                                            /*
+                                                             * PINT Japan Self
+                                                             * Billing
+                                                             */
+                                                            PeppolValidationPintJP_SB.VID_OPENPEPPOL_JP_PINT_SB_INVOICE_1_0_1,
+                                                            PeppolValidationPintJP_SB.VID_OPENPEPPOL_JP_PINT_SB_CREDIT_NOTE_1_0_1,
 
                                                             /* PINT Malaysia */
                                                             PeppolValidationPintMY.VID_OPENPEPPOL_MY_PINT_UBL_INVOICE_1_0_0,
@@ -911,6 +919,19 @@ public final class CTestFiles
                                                               "JP BIS Invoice for Non-tax Registered Businesses UBL Example-Return.Quan.ItPr.xml"));
     }
     if (aVESID.equals (PeppolValidationPintJP_NTR.VID_OPENPEPPOL_JP_PINT_NTR_CREDIT_NOTE_1_0_1))
+    {
+      // empty
+      return new CommonsArrayList <> ();
+    }
+
+    /* PINT Japan Self Billing */
+    // 1.0.1
+    if (aVESID.equals (PeppolValidationPintJP_SB.VID_OPENPEPPOL_JP_PINT_SB_INVOICE_1_0_1))
+    {
+      // empty
+      return new CommonsArrayList <> ();
+    }
+    if (aVESID.equals (PeppolValidationPintJP_SB.VID_OPENPEPPOL_JP_PINT_SB_CREDIT_NOTE_1_0_1))
     {
       // empty
       return new CommonsArrayList <> ();

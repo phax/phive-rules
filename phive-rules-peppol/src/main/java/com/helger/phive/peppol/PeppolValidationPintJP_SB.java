@@ -31,30 +31,30 @@ import com.helger.ubl21.UBL21Marshaller;
 import com.helger.xml.namespace.MapBasedNamespaceContext;
 
 /**
- * Peppol PINT Japan for Non-tax Registered Businesses validation configuration
+ * Peppol PINT Japan Self-Billing validation configuration
  *
  * @author Philip Helger
  */
 @Immutable
-public final class PeppolValidationPintJP_NTR
+public final class PeppolValidationPintJP_SB
 {
-  public static final String GROUP_ID = PeppolValidationPintJP.GROUP_ID + ".ntr";
+  public static final String GROUP_ID = PeppolValidationPintJP.GROUP_ID + ".sb";
 
   // 1.0.1
-  public static final DVRCoordinate VID_OPENPEPPOL_JP_PINT_NTR_INVOICE_1_0_1 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                                  "invoice",
-                                                                                                                  "1.0.1");
-  public static final DVRCoordinate VID_OPENPEPPOL_JP_PINT_NTR_CREDIT_NOTE_1_0_1 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                                      "credit-note",
-                                                                                                                      "1.0.1");
+  public static final DVRCoordinate VID_OPENPEPPOL_JP_PINT_SB_INVOICE_1_0_1 = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                                 "invoice",
+                                                                                                                 "1.0.1");
+  public static final DVRCoordinate VID_OPENPEPPOL_JP_PINT_SB_CREDIT_NOTE_1_0_1 = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                                     "credit-note",
+                                                                                                                     "1.0.1");
 
-  private PeppolValidationPintJP_NTR ()
+  private PeppolValidationPintJP_SB ()
   {}
 
   @Nonnull
   private static ClassLoader _getCL ()
   {
-    return PeppolValidationPintJP_NTR.class.getClassLoader ();
+    return PeppolValidationPintJP_SB.class.getClassLoader ();
   }
 
   public static void init (@Nonnull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
@@ -66,7 +66,7 @@ public final class PeppolValidationPintJP_NTR
     final MapBasedNamespaceContext aNSCtxCreditNote = PhiveRulesUBLHelper.createUBL21NSContext (UBL21Marshaller.creditNote ()
                                                                                                                .getRootElementNamespaceURI ());
 
-    final String BASE_PATH = "external/schematron/pint-jp-ntr/";
+    final String BASE_PATH = "external/schematron/pint-jp-sb/";
 
     // final boolean bDeprecated = true;
     final boolean bNotDeprecated = false;
@@ -79,15 +79,15 @@ public final class PeppolValidationPintJP_NTR
       final ClassPathResource aCPR2 = new ClassPathResource (BASE_PATH +
                                                              "1.0.1/xslt/PINT-jurisdiction-aligned-rules.xslt",
                                                              _getCL ());
-      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_JP_PINT_NTR_INVOICE_1_0_1,
-                                                                             "Peppol PINT Japan Invoice for Non-tax Registered Businesses (UBL) 1.0.1",
+      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_JP_PINT_SB_INVOICE_1_0_1,
+                                                                             "Peppol PINT Japan Self Billing Invoice (UBL) 1.0.1",
                                                                              PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
                                                                              PhiveRulesHelper.createXSLT (aCPR1,
                                                                                                           aNSCtxInvoice),
                                                                              PhiveRulesHelper.createXSLT (aCPR2,
                                                                                                           aNSCtxInvoice)));
-      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_JP_PINT_NTR_CREDIT_NOTE_1_0_1,
-                                                                             "Peppol PINT Japan Credit Note for Non-tax Registered Businesses (UBL) 1.0.1",
+      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_JP_PINT_SB_CREDIT_NOTE_1_0_1,
+                                                                             "Peppol PINT Japan Self Billing Credit Note (UBL) 1.0.1",
                                                                              PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
                                                                              PhiveRulesHelper.createXSLT (aCPR1,
                                                                                                           aNSCtxCreditNote),

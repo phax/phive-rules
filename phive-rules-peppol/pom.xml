@@ -204,6 +204,18 @@
           -->
           <!-- 
           <execution>
+            <id>pint-jp-sb</id>
+            <goals>
+              <goal>convert</goal>
+            </goals>
+            <configuration>
+              <schematronDirectory>src/test/resources/external/rule-source/pint-jp-sb/1.0.1</schematronDirectory>
+              <xsltDirectory>src/main/resources/external/schematron/pint-jp-sb/1.0.1/xslt</xsltDirectory>
+            </configuration>
+          </execution>
+          -->
+          <!-- 
+          <execution>
             <id>pint-my</id>
             <goals>
               <goal>convert</goal>
