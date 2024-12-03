@@ -16,57 +16,54 @@
  */
 package com.helger.phive.peppol;
 
+import java.time.LocalDate;
+
 import javax.annotation.Nonnull;
 import javax.annotation.concurrent.Immutable;
 
+import com.helger.commons.ValueEnforcer;
 import com.helger.commons.annotation.Nonempty;
+import com.helger.commons.datetime.PDTFactory;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
 import com.helger.phive.xml.source.IValidationSourceXML;
 
 /**
- * Generic Peppol validation configuration
+ * Peppol BIS Europe validation configuration
  *
  * @author Philip Helger
  */
 @Immutable
-public final class PeppolValidation
+public final class PeppolValidationBisEurope
 {
-  /**
-   * @return The currently active version number, dependent on the current date.
-   *         Never <code>null</code>.
-   * @since 5.1.8
-   * @deprecated Use the version from {@link PeppolValidationBisEurope}
-   */
-  @Nonnull
-  @Nonempty
-  @Deprecated (forRemoval = true, since = "3.2.2")
-  public static String getVersionToUse ()
-  {
-    return PeppolValidationBisEurope.getVersionToUse ();
-  }
-
-  private PeppolValidation ()
+  private PeppolValidationBisEurope ()
   {}
 
   /**
-   * Register all standard Peppol validation execution sets to the provided
-   * registry.
-   *
-   * @param aRegistry
-   *        The registry to add the artefacts. May not be <code>null</code>.
+   * @return The currently active version number, dependent on the current date.
+   *         Never <code>null</code>.
    */
-  public static void initStandard (@Nonnull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
+  @Nonnull
+  @Nonempty
+  public static String getVersionToUse ()
   {
-    PeppolValidationBisEurope.init (aRegistry);
-    PeppolValidationBisAUNZ.init (aRegistry);
-    PeppolValidationBisSG.init (aRegistry);
-    PeppolValidationDirectory.init (aRegistry);
-    PeppolValidationReporting.init (aRegistry);
-    PeppolValidationPint.init (aRegistry);
-    PeppolValidationPintAUNZ.init (aRegistry);
-    PeppolValidationPintJP.init (aRegistry);
-    PeppolValidationPintJP_NTR.init (aRegistry);
-    PeppolValidationPintMY.init (aRegistry);
-    PeppolValidationPintSG.init (aRegistry);
+    final LocalDate aNow = PDTFactory.getCurrentLocalDate ();
+    if (aNow.isBefore (PeppolValidation2024_11.VALID_PER))
+    {
+      // Previous version
+      return PeppolValidation2024_05.VERSION_STR;
+    }
+    // Latest version
+    return PeppolValidation2024_11.VERSION_STR;
+  }
+
+  @SuppressWarnings ("deprecation")
+  public static void init (@Nonnull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
+  {
+    ValueEnforcer.notNull (aRegistry, "Registry");
+
+    PeppolValidation2023_05.init (aRegistry);
+    PeppolValidation2023_11.init (aRegistry);
+    PeppolValidation2024_05.init (aRegistry);
+    PeppolValidation2024_11.init (aRegistry);
   }
 }
