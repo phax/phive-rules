@@ -60,6 +60,14 @@ public final class PeppolValidationPintJP
                                                                                                                   "credit-note",
                                                                                                                   "1.0.2");
 
+  // 1.0.3
+  public static final DVRCoordinate VID_OPENPEPPOL_JP_PINT_INVOICE_1_0_3 = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                              "invoice",
+                                                                                                              "1.0.3");
+  public static final DVRCoordinate VID_OPENPEPPOL_JP_PINT_CREDIT_NOTE_1_0_3 = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                                  "credit-note",
+                                                                                                                  "1.0.3");
+
   private PeppolValidationPintJP ()
   {}
 
@@ -129,6 +137,30 @@ public final class PeppolValidationPintJP
                                                                                     PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
                                                                                     PhiveRulesHelper.createXSLT (aCPR2,
                                                                                                                  aNSCtxCreditNote)));
+    }
+
+    // 1.0.3
+    {
+      final ClassPathResource aCPR1 = new ClassPathResource (BASE_PATH +
+                                                             "1.0.3/xslt/PINT-UBL-validation-preprocessed.xslt",
+                                                             _getCL ());
+      final ClassPathResource aCPR2 = new ClassPathResource (BASE_PATH +
+                                                             "1.0.3/xslt/PINT-jurisdiction-aligned-rules.xslt",
+                                                             _getCL ());
+      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_JP_PINT_INVOICE_1_0_3,
+                                                                             "Peppol PINT Japan Invoice (UBL) 1.0.3",
+                                                                             PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
+                                                                             PhiveRulesHelper.createXSLT (aCPR1,
+                                                                                                          aNSCtxInvoice),
+                                                                             PhiveRulesHelper.createXSLT (aCPR2,
+                                                                                                          aNSCtxInvoice)));
+      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_JP_PINT_CREDIT_NOTE_1_0_3,
+                                                                             "Peppol PINT Japan Credit Note (UBL) 1.0.3",
+                                                                             PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
+                                                                             PhiveRulesHelper.createXSLT (aCPR1,
+                                                                                                          aNSCtxCreditNote),
+                                                                             PhiveRulesHelper.createXSLT (aCPR2,
+                                                                                                          aNSCtxCreditNote)));
     }
   }
 }

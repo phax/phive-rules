@@ -180,6 +180,8 @@ public final class CTestFiles
                                                             PeppolValidationPintJP.VID_OPENPEPPOL_JP_PINT_CREDIT_NOTE_012,
                                                             PeppolValidationPintJP.VID_OPENPEPPOL_JP_PINT_INVOICE_1_0_2,
                                                             PeppolValidationPintJP.VID_OPENPEPPOL_JP_PINT_CREDIT_NOTE_1_0_2,
+                                                            PeppolValidationPintJP.VID_OPENPEPPOL_JP_PINT_INVOICE_1_0_3,
+                                                            PeppolValidationPintJP.VID_OPENPEPPOL_JP_PINT_CREDIT_NOTE_1_0_3,
 
                                                             /* PINT Malaysia */
                                                             PeppolValidationPintMY.VID_OPENPEPPOL_MY_PINT_UBL_INVOICE_1_0_0,
@@ -854,6 +856,30 @@ public final class CTestFiles
                                                               "Japan PINT Invoice UBL Example9-SumInv1 and O.xml"));
     }
     if (aVESID.equals (PeppolValidationPintJP.VID_OPENPEPPOL_JP_PINT_CREDIT_NOTE_1_0_2))
+    {
+      // empty
+      return new CommonsArrayList <> ();
+    }
+
+    // 1.0.3
+    if (aVESID.equals (PeppolValidationPintJP.VID_OPENPEPPOL_JP_PINT_INVOICE_1_0_3))
+    {
+      final String sPrefix = sPrefix0 + "pint-jp/1.0.3/";
+      return new CommonsArrayList <> (new FileSystemResource (sPrefix + "Japan PINT Invoice UBL Example.xml"),
+                                      new FileSystemResource (sPrefix + "Japan PINT Invoice UBL Example1-minimum.xml"),
+                                      new FileSystemResource (sPrefix +
+                                                              "Japan PINT Invoice UBL Example2-TaxAcctCur.xml"),
+                                      new FileSystemResource (sPrefix + "Japan PINT Invoice UBL Example3-SumInv1.xml"),
+                                      new FileSystemResource (sPrefix + "Japan PINT Invoice UBL Example4-SumInv2.xml"),
+                                      new FileSystemResource (sPrefix +
+                                                              "Japan PINT Invoice UBL Example5-AllowanceCharge.xml"),
+                                      new FileSystemResource (sPrefix + "Japan PINT Invoice UBL Example6-CorrInv.xml"),
+                                      new FileSystemResource (sPrefix +
+                                                              "Japan PINT Invoice UBL Example7-Return.Quan.ItPr.xml"),
+                                      new FileSystemResource (sPrefix +
+                                                              "Japan PINT Invoice UBL Example9-SumInv1 and O.xml"));
+    }
+    if (aVESID.equals (PeppolValidationPintJP.VID_OPENPEPPOL_JP_PINT_CREDIT_NOTE_1_0_3))
     {
       // empty
       return new CommonsArrayList <> ();
