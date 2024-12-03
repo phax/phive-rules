@@ -27,7 +27,7 @@
   <artifactId>phive-rules-peppol</artifactId>
   <packaging>bundle</packaging>
   <name>phive-rules-peppol</name>
-  <description>OpenPEPPOL validation rules for phive</description>
+  <description>OpenPeppol validation rules for phive</description>
   <url>https://github.com/phax/phive-rules/phive-rules-peppol</url>
   <inceptionYear>2014</inceptionYear>
 
@@ -187,6 +187,18 @@
             <configuration>
               <schematronDirectory>src/test/resources/external/rule-source/pint-jp/1.0.3</schematronDirectory>
               <xsltDirectory>src/main/resources/external/schematron/pint-jp/1.0.3/xslt</xsltDirectory>
+            </configuration>
+          </execution>
+          -->
+          <!-- 
+          <execution>
+            <id>pint-jp-ntr</id>
+            <goals>
+              <goal>convert</goal>
+            </goals>
+            <configuration>
+              <schematronDirectory>src/test/resources/external/rule-source/pint-jp-ntr/1.0.1</schematronDirectory>
+              <xsltDirectory>src/main/resources/external/schematron/pint-jp-ntr/1.0.1/xslt</xsltDirectory>
             </configuration>
           </execution>
           -->

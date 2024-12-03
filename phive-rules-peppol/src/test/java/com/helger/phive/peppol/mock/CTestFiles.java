@@ -40,6 +40,7 @@ import com.helger.phive.peppol.PeppolValidationBisSG;
 import com.helger.phive.peppol.PeppolValidationDirectory;
 import com.helger.phive.peppol.PeppolValidationPintAUNZ;
 import com.helger.phive.peppol.PeppolValidationPintJP;
+import com.helger.phive.peppol.PeppolValidationPintJP_NTR;
 import com.helger.phive.peppol.PeppolValidationPintMY;
 import com.helger.phive.peppol.PeppolValidationPintSG;
 import com.helger.phive.peppol.PeppolValidationReporting;
@@ -182,6 +183,10 @@ public final class CTestFiles
                                                             PeppolValidationPintJP.VID_OPENPEPPOL_JP_PINT_CREDIT_NOTE_1_0_2,
                                                             PeppolValidationPintJP.VID_OPENPEPPOL_JP_PINT_INVOICE_1_0_3,
                                                             PeppolValidationPintJP.VID_OPENPEPPOL_JP_PINT_CREDIT_NOTE_1_0_3,
+
+                                                            /* PINT Japan NTR */
+                                                            PeppolValidationPintJP_NTR.VID_OPENPEPPOL_JP_PINT_NTR_INVOICE_1_0_1,
+                                                            PeppolValidationPintJP_NTR.VID_OPENPEPPOL_JP_PINT_NTR_CREDIT_NOTE_1_0_1,
 
                                                             /* PINT Malaysia */
                                                             PeppolValidationPintMY.VID_OPENPEPPOL_MY_PINT_UBL_INVOICE_1_0_0,
@@ -880,6 +885,32 @@ public final class CTestFiles
                                                               "Japan PINT Invoice UBL Example9-SumInv1 and O.xml"));
     }
     if (aVESID.equals (PeppolValidationPintJP.VID_OPENPEPPOL_JP_PINT_CREDIT_NOTE_1_0_3))
+    {
+      // empty
+      return new CommonsArrayList <> ();
+    }
+
+    /* PINT Japan for non-tax registered Businesses */
+    // 1.0.1
+    if (aVESID.equals (PeppolValidationPintJP_NTR.VID_OPENPEPPOL_JP_PINT_NTR_INVOICE_1_0_1))
+    {
+      final String sPrefix = sPrefix0 + "pint-jp-ntr/1.0.1/";
+      return new CommonsArrayList <> (new FileSystemResource (sPrefix +
+                                                              "JP BIS Invoice for Non-tax Registered Businesses UBL Example.xml"),
+                                      new FileSystemResource (sPrefix +
+                                                              "JP BIS Invoice for Non-tax Registered Businesses UBL Example1-minimum.xml"),
+                                      new FileSystemResource (sPrefix +
+                                                              "JP BIS Invoice for Non-tax Registered Businesses UBL Example2-SumInv1.xml"),
+                                      new FileSystemResource (sPrefix +
+                                                              "JP BIS Invoice for Non-tax Registered Businesses UBL Example3-SumInv2.xml"),
+                                      new FileSystemResource (sPrefix +
+                                                              "JP BIS Invoice for Non-tax Registered Businesses UBL Example4-AllowanceCharge.xml"),
+                                      new FileSystemResource (sPrefix +
+                                                              "JP BIS Invoice for Non-tax Registered Businesses UBL Example5-CorrInv.xml"),
+                                      new FileSystemResource (sPrefix +
+                                                              "JP BIS Invoice for Non-tax Registered Businesses UBL Example-Return.Quan.ItPr.xml"));
+    }
+    if (aVESID.equals (PeppolValidationPintJP_NTR.VID_OPENPEPPOL_JP_PINT_NTR_CREDIT_NOTE_1_0_1))
     {
       // empty
       return new CommonsArrayList <> ();

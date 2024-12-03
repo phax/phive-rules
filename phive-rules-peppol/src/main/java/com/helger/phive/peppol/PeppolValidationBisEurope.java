@@ -31,6 +31,7 @@ import com.helger.phive.xml.source.IValidationSourceXML;
  * Peppol BIS Europe validation configuration
  *
  * @author Philip Helger
+ * @since 3.2.2
  */
 @Immutable
 public final class PeppolValidationBisEurope
