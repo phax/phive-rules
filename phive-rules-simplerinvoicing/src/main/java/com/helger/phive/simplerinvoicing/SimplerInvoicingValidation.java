@@ -25,6 +25,7 @@ import com.helger.commons.io.resource.ClassPathResource;
 import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
 import com.helger.phive.api.executorset.ValidationExecutorSet;
+import com.helger.phive.rules.api.PhiveRulesCIIHelper;
 import com.helger.phive.rules.api.PhiveRulesHelper;
 import com.helger.phive.rules.api.PhiveRulesUBLHelper;
 import com.helger.phive.xml.source.IValidationSourceXML;
@@ -164,9 +165,11 @@ public final class SimplerInvoicingValidation
                                                                                                   "creditnote",
                                                                                                   "2.0.3.7");
 
+  @Deprecated
   public static final DVRCoordinate VID_SI_INVOICE_V2038 = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                               "invoice",
                                                                                               "2.0.3.8");
+  @Deprecated
   public static final DVRCoordinate VID_SI_CREDIT_NOTE_V2038 = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                                   "creditnote",
                                                                                                   "2.0.3.8");
@@ -178,6 +181,14 @@ public final class SimplerInvoicingValidation
   public static final DVRCoordinate VID_SI_CREDIT_NOTE_V2039 = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                                   "creditnote",
                                                                                                   "2.0.3.9");
+
+  // In effect from February 17, 2025
+  public static final DVRCoordinate VID_SI_INVOICE_V2_0_3_10 = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                  "invoice",
+                                                                                                  "2.0.3.10");
+  public static final DVRCoordinate VID_SI_CREDIT_NOTE_V2_0_3_10 = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                      "creditnote",
+                                                                                                      "2.0.3.10");
 
   @Deprecated
   public static final DVRCoordinate VID_SI_INVOICE_20_GACCOUNT_V10 = PhiveRulesHelper.createCoordinate (GROUP_ID,
@@ -211,12 +222,16 @@ public final class SimplerInvoicingValidation
   public static final DVRCoordinate VID_SI_INVOICE_20_GACCOUNT_V107 = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                                          "invoice20.g-account",
                                                                                                          "1.0.7");
+  @Deprecated
   public static final DVRCoordinate VID_SI_INVOICE_20_GACCOUNT_V108 = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                                          "invoice20.g-account",
                                                                                                          "1.0.8");
   public static final DVRCoordinate VID_SI_INVOICE_20_GACCOUNT_V109 = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                                          "invoice20.g-account",
                                                                                                          "1.0.9");
+  public static final DVRCoordinate VID_SI_INVOICE_20_GACCOUNT_V1_0_10 = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                            "invoice20.g-account",
+                                                                                                            "1.0.10");
 
   @Deprecated
   public static final DVRCoordinate VID_SI_NLCIUS_CII_V103 = PhiveRulesHelper.createCoordinate (GROUP_ID,
@@ -246,12 +261,16 @@ public final class SimplerInvoicingValidation
   public static final DVRCoordinate VID_SI_NLCIUS_CII_V1036 = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                                  "nlcius-cii",
                                                                                                  "1.0.3.6");
+  @Deprecated
   public static final DVRCoordinate VID_SI_NLCIUS_CII_V1037 = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                                  "nlcius-cii",
                                                                                                  "1.0.3.7");
   public static final DVRCoordinate VID_SI_NLCIUS_CII_V1038 = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                                  "nlcius-cii",
                                                                                                  "1.0.3.8");
+  public static final DVRCoordinate VID_SI_NLCIUS_CII_V1039 = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                 "nlcius-cii",
+                                                                                                 "1.0.3.9");
 
   @Nonnull
   private static ClassLoader _getCL ()
@@ -350,197 +369,212 @@ public final class SimplerInvoicingValidation
 
     // 2.0
     {
-      final ClassPathResource INVOICE_SI20 = new ClassPathResource (PATH_SI + "si-ubl-2.0.xslt", _getCL ());
+      final ClassPathResource aRes = new ClassPathResource (PATH_SI + "si-ubl-2.0.xslt", _getCL ());
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_SI_INVOICE_V20,
                                                                              "Simplerinvoicing Invoice 2.0",
                                                                              PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
-                                                                             PhiveRulesUBLHelper.createXSLT_UBL21 (INVOICE_SI20)));
+                                                                             PhiveRulesUBLHelper.createXSLT_UBL21 (aRes)));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_SI_CREDIT_NOTE_V20,
                                                                              "Simplerinvoicing Credit Note 2.0",
                                                                              PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
-                                                                             PhiveRulesUBLHelper.createXSLT_UBL21 (INVOICE_SI20)));
+                                                                             PhiveRulesUBLHelper.createXSLT_UBL21 (aRes)));
     }
 
     // 2.0.1
     {
-      final ClassPathResource INVOICE_SI201 = new ClassPathResource (PATH_SI + "si-ubl-2.0.1.xslt", _getCL ());
+      final ClassPathResource aRes = new ClassPathResource (PATH_SI + "si-ubl-2.0.1.xslt", _getCL ());
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_SI_INVOICE_V201,
                                                                              "Simplerinvoicing Invoice 2.0.1",
                                                                              PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
-                                                                             PhiveRulesUBLHelper.createXSLT_UBL21 (INVOICE_SI201)));
+                                                                             PhiveRulesUBLHelper.createXSLT_UBL21 (aRes)));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_SI_CREDIT_NOTE_V201,
                                                                              "Simplerinvoicing Credit Note 2.0.1",
                                                                              PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
-                                                                             PhiveRulesUBLHelper.createXSLT_UBL21 (INVOICE_SI201)));
+                                                                             PhiveRulesUBLHelper.createXSLT_UBL21 (aRes)));
     }
 
     // 2.0.2
     {
-      final ClassPathResource INVOICE_SI202 = new ClassPathResource (PATH_SI + "si-ubl-2.0.2.xslt", _getCL ());
+      final ClassPathResource aRes = new ClassPathResource (PATH_SI + "si-ubl-2.0.2.xslt", _getCL ());
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_SI_INVOICE_V202,
                                                                              "Simplerinvoicing Invoice 2.0.2",
                                                                              PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
-                                                                             PhiveRulesUBLHelper.createXSLT_UBL21 (INVOICE_SI202)));
+                                                                             PhiveRulesUBLHelper.createXSLT_UBL21 (aRes)));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_SI_CREDIT_NOTE_V202,
                                                                              "Simplerinvoicing Credit Note 2.0.2",
                                                                              PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
-                                                                             PhiveRulesUBLHelper.createXSLT_UBL21 (INVOICE_SI202)));
+                                                                             PhiveRulesUBLHelper.createXSLT_UBL21 (aRes)));
     }
 
     // 2.0.3
     {
-      final ClassPathResource INVOICE_SI203 = new ClassPathResource (PATH_SI + "si-ubl-2.0.3.xslt", _getCL ());
+      final ClassPathResource aRes = new ClassPathResource (PATH_SI + "si-ubl-2.0.3.xslt", _getCL ());
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_SI_INVOICE_V203,
                                                                              "Simplerinvoicing Invoice 2.0.3",
                                                                              PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
-                                                                             PhiveRulesUBLHelper.createXSLT_UBL21 (INVOICE_SI203)));
+                                                                             PhiveRulesUBLHelper.createXSLT_UBL21 (aRes)));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_SI_CREDIT_NOTE_V203,
                                                                              "Simplerinvoicing Credit Note 2.0.3",
                                                                              PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
-                                                                             PhiveRulesUBLHelper.createXSLT_UBL21 (INVOICE_SI203)));
+                                                                             PhiveRulesUBLHelper.createXSLT_UBL21 (aRes)));
     }
 
     // 2.0.3.1
     {
-      final ClassPathResource INVOICE_SI2031 = new ClassPathResource (PATH_SI + "si-ubl-2.0.3.1.xslt", _getCL ());
+      final ClassPathResource aRes = new ClassPathResource (PATH_SI + "si-ubl-2.0.3.1.xslt", _getCL ());
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_SI_INVOICE_V2031,
                                                                              "Simplerinvoicing Invoice 2.0.3.1",
                                                                              PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
-                                                                             PhiveRulesUBLHelper.createXSLT_UBL21 (INVOICE_SI2031)));
+                                                                             PhiveRulesUBLHelper.createXSLT_UBL21 (aRes)));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_SI_CREDIT_NOTE_V2031,
                                                                              "Simplerinvoicing Credit Note 2.0.3.1",
                                                                              PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
-                                                                             PhiveRulesUBLHelper.createXSLT_UBL21 (INVOICE_SI2031)));
+                                                                             PhiveRulesUBLHelper.createXSLT_UBL21 (aRes)));
     }
 
     // 2.0.3.2
     {
-      final ClassPathResource INVOICE_SI2032 = new ClassPathResource (PATH_SI + "si-ubl-2.0.3.2.xslt", _getCL ());
+      final ClassPathResource aRes = new ClassPathResource (PATH_SI + "si-ubl-2.0.3.2.xslt", _getCL ());
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_SI_INVOICE_V2032,
                                                                              "Simplerinvoicing Invoice 2.0.3.2",
                                                                              PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
-                                                                             PhiveRulesUBLHelper.createXSLT_UBL21 (INVOICE_SI2032)));
+                                                                             PhiveRulesUBLHelper.createXSLT_UBL21 (aRes)));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_SI_CREDIT_NOTE_V2032,
                                                                              "Simplerinvoicing Credit Note 2.0.3.2",
                                                                              PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
-                                                                             PhiveRulesUBLHelper.createXSLT_UBL21 (INVOICE_SI2032)));
+                                                                             PhiveRulesUBLHelper.createXSLT_UBL21 (aRes)));
     }
 
     // 2.0.3.3
     {
-      final ClassPathResource INVOICE_SI2033 = new ClassPathResource (PATH_SI + "si-ubl-2.0.3.3.xslt", _getCL ());
+      final ClassPathResource aRes = new ClassPathResource (PATH_SI + "si-ubl-2.0.3.3.xslt", _getCL ());
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_SI_INVOICE_V2033,
                                                                              "Simplerinvoicing Invoice 2.0.3.3",
                                                                              PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
-                                                                             PhiveRulesUBLHelper.createXSLT_UBL21 (INVOICE_SI2033)));
+                                                                             PhiveRulesUBLHelper.createXSLT_UBL21 (aRes)));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_SI_CREDIT_NOTE_V2033,
                                                                              "Simplerinvoicing Credit Note 2.0.3.3",
                                                                              PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
-                                                                             PhiveRulesUBLHelper.createXSLT_UBL21 (INVOICE_SI2033)));
+                                                                             PhiveRulesUBLHelper.createXSLT_UBL21 (aRes)));
     }
 
     // 2.0.3.4
     {
-      final ClassPathResource INVOICE_SI2034 = new ClassPathResource (PATH_SI + "si-ubl-2.0.3.4.xslt", _getCL ());
+      final ClassPathResource aRes = new ClassPathResource (PATH_SI + "si-ubl-2.0.3.4.xslt", _getCL ());
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_SI_INVOICE_V2034,
                                                                              "Simplerinvoicing Invoice 2.0.3.4",
                                                                              PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
-                                                                             PhiveRulesUBLHelper.createXSLT_UBL21 (INVOICE_SI2034)));
+                                                                             PhiveRulesUBLHelper.createXSLT_UBL21 (aRes)));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_SI_CREDIT_NOTE_V2034,
                                                                              "Simplerinvoicing Credit Note 2.0.3.4",
                                                                              PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
-                                                                             PhiveRulesUBLHelper.createXSLT_UBL21 (INVOICE_SI2034)));
+                                                                             PhiveRulesUBLHelper.createXSLT_UBL21 (aRes)));
     }
 
     // 2.0.3.5
     {
-      final ClassPathResource INVOICE_SI2035 = new ClassPathResource (PATH_SI + "si-ubl-2.0.3.5.xslt", _getCL ());
+      final ClassPathResource aRes = new ClassPathResource (PATH_SI + "si-ubl-2.0.3.5.xslt", _getCL ());
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_SI_INVOICE_V2035,
                                                                              "Simplerinvoicing Invoice 2.0.3.5",
                                                                              PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
-                                                                             PhiveRulesUBLHelper.createXSLT_UBL21 (INVOICE_SI2035)));
+                                                                             PhiveRulesUBLHelper.createXSLT_UBL21 (aRes)));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_SI_CREDIT_NOTE_V2035,
                                                                              "Simplerinvoicing Credit Note 2.0.3.5",
                                                                              PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
-                                                                             PhiveRulesUBLHelper.createXSLT_UBL21 (INVOICE_SI2035)));
+                                                                             PhiveRulesUBLHelper.createXSLT_UBL21 (aRes)));
     }
 
     // 2.0.3.6
     {
-      final ClassPathResource INVOICE_SI2036 = new ClassPathResource (PATH_SI + "si-ubl-2.0.3.6.xslt", _getCL ());
+      final ClassPathResource aRes = new ClassPathResource (PATH_SI + "si-ubl-2.0.3.6.xslt", _getCL ());
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_SI_INVOICE_V2036,
                                                                              "Simplerinvoicing Invoice 2.0.3.6",
                                                                              PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
-                                                                             PhiveRulesUBLHelper.createXSLT_UBL21 (INVOICE_SI2036)));
+                                                                             PhiveRulesUBLHelper.createXSLT_UBL21 (aRes)));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_SI_CREDIT_NOTE_V2036,
                                                                              "Simplerinvoicing Credit Note 2.0.3.6",
                                                                              PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
-                                                                             PhiveRulesUBLHelper.createXSLT_UBL21 (INVOICE_SI2036)));
+                                                                             PhiveRulesUBLHelper.createXSLT_UBL21 (aRes)));
     }
 
     // 2.0.3.7
     {
-      final ClassPathResource INVOICE_SI2037 = new ClassPathResource (PATH_SI + "si-ubl-2.0.3.7.xslt", _getCL ());
+      final ClassPathResource aRes = new ClassPathResource (PATH_SI + "si-ubl-2.0.3.7.xslt", _getCL ());
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_SI_INVOICE_V2037,
                                                                              "Simplerinvoicing Invoice 2.0.3.7",
                                                                              PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
-                                                                             PhiveRulesUBLHelper.createXSLT_UBL21 (INVOICE_SI2037)));
+                                                                             PhiveRulesUBLHelper.createXSLT_UBL21 (aRes)));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_SI_CREDIT_NOTE_V2037,
                                                                              "Simplerinvoicing Credit Note 2.0.3.7",
                                                                              PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
-                                                                             PhiveRulesUBLHelper.createXSLT_UBL21 (INVOICE_SI2037)));
+                                                                             PhiveRulesUBLHelper.createXSLT_UBL21 (aRes)));
     }
 
     // 2.0.3.8
     {
-      final ClassPathResource INVOICE_SI2038 = new ClassPathResource (PATH_SI + "si-ubl-2.0.3.8.xslt", _getCL ());
+      final ClassPathResource aRes = new ClassPathResource (PATH_SI + "si-ubl-2.0.3.8.xslt", _getCL ());
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_SI_INVOICE_V2038,
                                                                              "Simplerinvoicing Invoice 2.0.3.8",
-                                                                             PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
+                                                                             PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
-                                                                             PhiveRulesUBLHelper.createXSLT_UBL21 (INVOICE_SI2038)));
+                                                                             PhiveRulesUBLHelper.createXSLT_UBL21 (aRes)));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_SI_CREDIT_NOTE_V2038,
                                                                              "Simplerinvoicing Credit Note 2.0.3.8",
-                                                                             PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
+                                                                             PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
-                                                                             PhiveRulesUBLHelper.createXSLT_UBL21 (INVOICE_SI2038)));
+                                                                             PhiveRulesUBLHelper.createXSLT_UBL21 (aRes)));
     }
 
     // 2.0.3.9
     {
-      final ClassPathResource INVOICE_SI2039 = new ClassPathResource (PATH_SI + "si-ubl-2.0.3.9.xslt", _getCL ());
+      final ClassPathResource aRes = new ClassPathResource (PATH_SI + "si-ubl-2.0.3.9.xslt", _getCL ());
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_SI_INVOICE_V2039,
                                                                              "Simplerinvoicing Invoice 2.0.3.9",
                                                                              PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
-                                                                             PhiveRulesUBLHelper.createXSLT_UBL21 (INVOICE_SI2039)));
+                                                                             PhiveRulesUBLHelper.createXSLT_UBL21 (aRes)));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_SI_CREDIT_NOTE_V2039,
                                                                              "Simplerinvoicing Credit Note 2.0.3.9",
                                                                              PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
-                                                                             PhiveRulesUBLHelper.createXSLT_UBL21 (INVOICE_SI2039)));
+                                                                             PhiveRulesUBLHelper.createXSLT_UBL21 (aRes)));
+    }
+
+    // 2.0.3.10
+    {
+      final ClassPathResource aRes = new ClassPathResource (PATH_SI + "si-ubl-2.0.3.10.xslt", _getCL ());
+      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_SI_INVOICE_V2_0_3_10,
+                                                                             "Simplerinvoicing Invoice 2.0.3.10",
+                                                                             PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
+                                                                             ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
+                                                                             PhiveRulesUBLHelper.createXSLT_UBL21 (aRes)));
+      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_SI_CREDIT_NOTE_V2_0_3_10,
+                                                                             "Simplerinvoicing Credit Note 2.0.3.10",
+                                                                             PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
+                                                                             ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
+                                                                             PhiveRulesUBLHelper.createXSLT_UBL21 (aRes)));
     }
 
     // 2.0 G-Account 1.0
@@ -618,7 +652,7 @@ public final class SimplerInvoicingValidation
     // 2.0 G-Account 1.0.8
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_SI_INVOICE_20_GACCOUNT_V108,
                                                                            "Simplerinvoicing 2.0 G-Account extension 1.0.8",
-                                                                           PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
+                                                                           PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                            ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
                                                                            PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (PATH_SI +
                                                                                                                                         "si-ubl-2.0-ext-gaccount-1.0.8.xslt",
@@ -633,6 +667,15 @@ public final class SimplerInvoicingValidation
                                                                                                                                         "si-ubl-2.0-ext-gaccount-1.0.9.xslt",
                                                                                                                                         _getCL ()))));
 
+    // 2.0 G-Account 1.0.10
+    aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_SI_INVOICE_20_GACCOUNT_V1_0_10,
+                                                                           "Simplerinvoicing 2.0 G-Account extension 1.0.10",
+                                                                           PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
+                                                                           ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
+                                                                           PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (PATH_SI +
+                                                                                                                                        "si-ubl-2.0-ext-gaccount-1.0.10.xslt",
+                                                                                                                                        _getCL ()))));
+
     final String PATH_NL_CIUS = "/external/schematron/nlcius/";
 
     // NLCIUS 1.0.3
@@ -640,80 +683,89 @@ public final class SimplerInvoicingValidation
                                                                            "NLCIUS-CII 1.0.3",
                                                                            PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                            ValidationExecutorXSD.create (CCIID16B.getXSDResource ()),
-                                                                           PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (PATH_NL_CIUS +
-                                                                                                                                        "nlcius-cii-1.0.3.xslt",
-                                                                                                                                        _getCL ()))));
+                                                                           PhiveRulesCIIHelper.createXSLT_CII_D16B (new ClassPathResource (PATH_NL_CIUS +
+                                                                                                                                           "nlcius-cii-1.0.3.xslt",
+                                                                                                                                           _getCL ()))));
 
     // NLCIUS 1.0.3.1
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_SI_NLCIUS_CII_V1031,
                                                                            "NLCIUS-CII 1.0.3.1",
                                                                            PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                            ValidationExecutorXSD.create (CCIID16B.getXSDResource ()),
-                                                                           PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (PATH_NL_CIUS +
-                                                                                                                                        "nlcius-cii-1.0.3.1.xslt",
-                                                                                                                                        _getCL ()))));
+                                                                           PhiveRulesCIIHelper.createXSLT_CII_D16B (new ClassPathResource (PATH_NL_CIUS +
+                                                                                                                                           "nlcius-cii-1.0.3.1.xslt",
+                                                                                                                                           _getCL ()))));
 
     // NLCIUS 1.0.3.2
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_SI_NLCIUS_CII_V1032,
                                                                            "NLCIUS-CII 1.0.3.2",
                                                                            PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                            ValidationExecutorXSD.create (CCIID16B.getXSDResource ()),
-                                                                           PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (PATH_NL_CIUS +
-                                                                                                                                        "nlcius-cii-1.0.3.2.xslt",
-                                                                                                                                        _getCL ()))));
+                                                                           PhiveRulesCIIHelper.createXSLT_CII_D16B (new ClassPathResource (PATH_NL_CIUS +
+                                                                                                                                           "nlcius-cii-1.0.3.2.xslt",
+                                                                                                                                           _getCL ()))));
 
     // NLCIUS 1.0.3.3
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_SI_NLCIUS_CII_V1033,
                                                                            "NLCIUS-CII 1.0.3.3",
                                                                            PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                            ValidationExecutorXSD.create (CCIID16B.getXSDResource ()),
-                                                                           PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (PATH_NL_CIUS +
-                                                                                                                                        "nlcius-cii-1.0.3.3.xslt",
-                                                                                                                                        _getCL ()))));
+                                                                           PhiveRulesCIIHelper.createXSLT_CII_D16B (new ClassPathResource (PATH_NL_CIUS +
+                                                                                                                                           "nlcius-cii-1.0.3.3.xslt",
+                                                                                                                                           _getCL ()))));
 
     // NLCIUS 1.0.3.4
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_SI_NLCIUS_CII_V1034,
                                                                            "NLCIUS-CII 1.0.3.4",
                                                                            PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                            ValidationExecutorXSD.create (CCIID16B.getXSDResource ()),
-                                                                           PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (PATH_NL_CIUS +
-                                                                                                                                        "nlcius-cii-1.0.3.4.xslt",
-                                                                                                                                        _getCL ()))));
+                                                                           PhiveRulesCIIHelper.createXSLT_CII_D16B (new ClassPathResource (PATH_NL_CIUS +
+                                                                                                                                           "nlcius-cii-1.0.3.4.xslt",
+                                                                                                                                           _getCL ()))));
 
     // NLCIUS 1.0.3.5
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_SI_NLCIUS_CII_V1035,
                                                                            "NLCIUS-CII 1.0.3.5",
                                                                            PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                            ValidationExecutorXSD.create (CCIID16B.getXSDResource ()),
-                                                                           PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (PATH_NL_CIUS +
-                                                                                                                                        "nlcius-cii-1.0.3.5.xslt",
-                                                                                                                                        _getCL ()))));
+                                                                           PhiveRulesCIIHelper.createXSLT_CII_D16B (new ClassPathResource (PATH_NL_CIUS +
+                                                                                                                                           "nlcius-cii-1.0.3.5.xslt",
+                                                                                                                                           _getCL ()))));
 
     // NLCIUS 1.0.3.6
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_SI_NLCIUS_CII_V1036,
                                                                            "NLCIUS-CII 1.0.3.6",
                                                                            PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                            ValidationExecutorXSD.create (CCIID16B.getXSDResource ()),
-                                                                           PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (PATH_NL_CIUS +
-                                                                                                                                        "nlcius-cii-1.0.3.6.xslt",
-                                                                                                                                        _getCL ()))));
+                                                                           PhiveRulesCIIHelper.createXSLT_CII_D16B (new ClassPathResource (PATH_NL_CIUS +
+                                                                                                                                           "nlcius-cii-1.0.3.6.xslt",
+                                                                                                                                           _getCL ()))));
 
     // NLCIUS 1.0.3.7
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_SI_NLCIUS_CII_V1037,
                                                                            "NLCIUS-CII 1.0.3.7",
-                                                                           PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
+                                                                           PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                            ValidationExecutorXSD.create (CCIID16B.getXSDResource ()),
-                                                                           PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (PATH_NL_CIUS +
-                                                                                                                                        "nlcius-cii-1.0.3.7.xslt",
-                                                                                                                                        _getCL ()))));
+                                                                           PhiveRulesCIIHelper.createXSLT_CII_D16B (new ClassPathResource (PATH_NL_CIUS +
+                                                                                                                                           "nlcius-cii-1.0.3.7.xslt",
+                                                                                                                                           _getCL ()))));
 
     // NLCIUS 1.0.3.8
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_SI_NLCIUS_CII_V1038,
                                                                            "NLCIUS-CII 1.0.3.8",
                                                                            PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
                                                                            ValidationExecutorXSD.create (CCIID16B.getXSDResource ()),
-                                                                           PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (PATH_NL_CIUS +
-                                                                                                                                        "nlcius-cii-1.0.3.8.xslt",
-                                                                                                                                        _getCL ()))));
+                                                                           PhiveRulesCIIHelper.createXSLT_CII_D16B (new ClassPathResource (PATH_NL_CIUS +
+                                                                                                                                           "nlcius-cii-1.0.3.8.xslt",
+                                                                                                                                           _getCL ()))));
+
+    // NLCIUS 1.0.3.9
+    aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_SI_NLCIUS_CII_V1039,
+                                                                           "NLCIUS-CII 1.0.3.9",
+                                                                           PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
+                                                                           ValidationExecutorXSD.create (CCIID16B.getXSDResource ()),
+                                                                           PhiveRulesCIIHelper.createXSLT_CII_D16B (new ClassPathResource (PATH_NL_CIUS +
+                                                                                                                                           "nlcius-cii-1.0.3.9.xslt",
+                                                                                                                                           _getCL ()))));
   }
 }

@@ -25,7 +25,7 @@ This project is divided into sub-projects each keeping tracking of one document 
 * phive-rules-peppol-legacy - older Peppol specific rules that are out of date (since v2.0.5)
 * phive-rules-peppol-italy - Peppol Italy specific rules (since v2.1.1)
 * phive-rules-setu - Dutch SETU selected standards (since v3.0.4)
-* phive-rules-Simplerinvoicing - Dutch Simplerinvoicing support from https://github.com/Simplerinvoicing/validation
+* phive-rules-simplerinvoicing - Dutch Simplerinvoicing support from https://github.com/Simplerinvoicing/validation
 * phive-rules-svefaktura - Validation rules for Swedish Svefaktura (since v1.0.6)
 * phive-rules-teapps - Validation rules for Finnish Tieto TEAPPSXML
 * phive-rules-ubl - Validation rules for pure OASIS UBL (without any Schematron)
@@ -138,7 +138,7 @@ Add the following to your `pom.xml` to use this artifact, replacing `x.y.z` with
 
 <dependency>
   <groupId>com.helger.phive.rules</groupId>
-  <artifactId>phive-rules-Simplerinvoicing</artifactId>
+  <artifactId>phive-rules-simplerinvoicing</artifactId>
   <version>x.y.z</version>
 </dependency>
 
@@ -199,6 +199,8 @@ I hope that with the introduction of PINT, the versioning problem will be solved
     * Added Peppol PINT JP 1.0.3 release
     * Added Peppol PINT JP for Non-tax Registered Businesses 1.0.1 release
     * Added Peppol PINT JP Self Billing 1.0.1 release
+    * Deprecated Simplerinvoicing Invoice 2.0.3.8, Simplerinvoicing 2.0 G-Account extension 1.0.8 and NLCIUS-CII 1.0.3.7
+    * Added Simplerinvoicing Invoice 2.0.3.10, Simplerinvoicing 2.0 G-Account extension 1.0.10 and NLCIUS-CII 1.0.3.9
 * v3.2.1 - 2024-10-09
     * Added support for EN 16931 rules v1.3.13 format and deprecated v1.3.11
 * v3.2.0 - 2024-09-16
