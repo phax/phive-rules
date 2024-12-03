@@ -67,6 +67,14 @@ public final class PeppolValidationPint
                                                                                                                "credit-note",
                                                                                                                "1.0.2");
 
+  // 1.0.3
+  public static final DVRCoordinate VID_OPENPEPPOL_PINT_INVOICE_1_0_3 = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                           "invoice",
+                                                                                                           "1.0.3");
+  public static final DVRCoordinate VID_OPENPEPPOL_PINT_CREDIT_NOTE_1_0_3 = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                               "credit-note",
+                                                                                                               "1.0.3");
+
   private PeppolValidationPint ()
   {}
 
@@ -92,62 +100,84 @@ public final class PeppolValidationPint
 
     // 1.0.0 - 2023-07-07
     {
-      final ClassPathResource RES_OPENPEPPOL_PINT_1_0_0 = new ClassPathResource (BASE_PATH +
-                                                                                 "1.0.0/xslt/PINT-UBL-validation-preprocessed.xslt",
-                                                                                 _getCL ());
+      final ClassPathResource aRes = new ClassPathResource (BASE_PATH +
+                                                            "1.0.0/xslt/PINT-UBL-validation-preprocessed.xslt",
+                                                            _getCL ());
 
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_PINT_INVOICE_1_0_0,
                                                                              "OpenPeppol PINT Invoice (UBL) 1.0.0",
                                                                              PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
-                                                                             PhiveRulesHelper.createXSLT (RES_OPENPEPPOL_PINT_1_0_0,
+                                                                             PhiveRulesHelper.createXSLT (aRes,
                                                                                                           aNSCtxInvoice)));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_PINT_CREDIT_NOTE_1_0_0,
                                                                              "OpenPeppol PINT Credit Note (UBL) 1.0.0",
                                                                              PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
-                                                                             PhiveRulesHelper.createXSLT (RES_OPENPEPPOL_PINT_1_0_0,
+                                                                             PhiveRulesHelper.createXSLT (aRes,
                                                                                                           aNSCtxCreditNote)));
     }
 
     // 1.0.1 - November 2023
     {
-      final ClassPathResource RES_OPENPEPPOL_PINT_1_0_1 = new ClassPathResource (BASE_PATH +
-                                                                                 "1.0.1/xslt/PINT-UBL-validation-preprocessed.xslt",
-                                                                                 _getCL ());
+      final ClassPathResource aRes = new ClassPathResource (BASE_PATH +
+                                                            "1.0.1/xslt/PINT-UBL-validation-preprocessed.xslt",
+                                                            _getCL ());
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_PINT_INVOICE_1_0_1,
                                                                              "OpenPeppol PINT Invoice (UBL) 1.0.1",
                                                                              PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
-                                                                             PhiveRulesHelper.createXSLT (RES_OPENPEPPOL_PINT_1_0_1,
+                                                                             PhiveRulesHelper.createXSLT (aRes,
                                                                                                           aNSCtxInvoice)));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_PINT_CREDIT_NOTE_1_0_1,
                                                                              "OpenPeppol PINT Credit Note (UBL) 1.0.1",
                                                                              PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
-                                                                             PhiveRulesHelper.createXSLT (RES_OPENPEPPOL_PINT_1_0_1,
+                                                                             PhiveRulesHelper.createXSLT (aRes,
                                                                                                           aNSCtxCreditNote)));
     }
 
     // 1.0.2 - May 2024
     {
-      final ClassPathResource RES_OPENPEPPOL_PINT_INVOICE_1_0_2 = new ClassPathResource (BASE_PATH +
-                                                                                         "1.0.2/xslt/PINT-UBL-validation-preprocessed-inv.xslt",
-                                                                                         _getCL ());
-      final ClassPathResource RES_OPENPEPPOL_PINT_CREDIT_NOTE_1_0_2 = new ClassPathResource (BASE_PATH +
-                                                                                             "1.0.2/xslt/PINT-UBL-validation-preprocessed-cn.xslt",
-                                                                                             _getCL ());
+      final ClassPathResource aResInvoice = new ClassPathResource (BASE_PATH +
+                                                                   "1.0.2/xslt/PINT-UBL-validation-preprocessed-inv.xslt",
+                                                                   _getCL ());
+      final ClassPathResource aResCreditNote = new ClassPathResource (BASE_PATH +
+                                                                      "1.0.2/xslt/PINT-UBL-validation-preprocessed-cn.xslt",
+                                                                      _getCL ());
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_PINT_INVOICE_1_0_2,
                                                                              "OpenPeppol PINT Invoice (UBL) 1.0.2",
                                                                              PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
-                                                                             PhiveRulesHelper.createXSLT (RES_OPENPEPPOL_PINT_INVOICE_1_0_2,
+                                                                             PhiveRulesHelper.createXSLT (aResInvoice,
                                                                                                           aNSCtxInvoice)));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_PINT_CREDIT_NOTE_1_0_2,
                                                                              "OpenPeppol PINT Credit Note (UBL) 1.0.2",
                                                                              PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
-                                                                             PhiveRulesHelper.createXSLT (RES_OPENPEPPOL_PINT_CREDIT_NOTE_1_0_2,
+                                                                             PhiveRulesHelper.createXSLT (aResCreditNote,
+                                                                                                          aNSCtxCreditNote)));
+    }
+
+    // 1.0.3 - November 2024
+    {
+      final ClassPathResource aResInvoice = new ClassPathResource (BASE_PATH +
+                                                                   "1.0.3/xslt/PINT-UBL-validation-preprocessed-inv.xslt",
+                                                                   _getCL ());
+      final ClassPathResource aResCreditNote = new ClassPathResource (BASE_PATH +
+                                                                      "1.0.3/xslt/PINT-UBL-validation-preprocessed-cn.xslt",
+                                                                      _getCL ());
+      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_PINT_INVOICE_1_0_3,
+                                                                             "OpenPeppol PINT Invoice (UBL) 1.0.3",
+                                                                             PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
+                                                                             ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
+                                                                             PhiveRulesHelper.createXSLT (aResInvoice,
+                                                                                                          aNSCtxInvoice)));
+      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_PINT_CREDIT_NOTE_1_0_3,
+                                                                             "OpenPeppol PINT Credit Note (UBL) 1.0.3",
+                                                                             PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
+                                                                             ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
+                                                                             PhiveRulesHelper.createXSLT (aResCreditNote,
                                                                                                           aNSCtxCreditNote)));
     }
   }
