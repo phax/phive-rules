@@ -43,7 +43,7 @@ import com.helger.phive.xml.xsd.ValidationExecutorXSD;
 public final class ZugferdValidation
 {
   public static final String GROUP_ID_ZUGFERD = "de.zugferd";
-  public static final String GROUP_ID_FACTUR_X = "fr.facturx";
+  public static final String GROUP_ID_FACTUR_X = "fr.factur-x";
 
   // v2.3.2
   public static final DVRCoordinate VID_ZUGFERD_2_3_2_MINIMUM = PhiveRulesHelper.createCoordinate (GROUP_ID_ZUGFERD,
