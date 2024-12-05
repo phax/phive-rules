@@ -50,8 +50,8 @@ public final class ZugferdValidation
                                                                                                    EZugferdProfile.MINIMUM.getArtifactID (),
                                                                                                    "2.3.2");
   public static final DVRCoordinate VID_ZUGFERD_2_3_2_BASIC_WL = PhiveRulesHelper.createCoordinate (GROUP_ID_ZUGFERD,
-                                                                                                   EZugferdProfile.BASIC_WL.getArtifactID (),
-                                                                                                   "2.3.2");
+                                                                                                    EZugferdProfile.BASIC_WL.getArtifactID (),
+                                                                                                    "2.3.2");
   public static final DVRCoordinate VID_ZUGFERD_2_3_2_BASIC = PhiveRulesHelper.createCoordinate (GROUP_ID_ZUGFERD,
                                                                                                  EZugferdProfile.BASIC.getArtifactID (),
                                                                                                  "2.3.2");
@@ -116,15 +116,17 @@ public final class ZugferdValidation
     // Zugferd 2.3.2 / Factur-X 1.07.2
     for (final EZugferdProfile eProfile : EZugferdProfile.values ())
     {
-      final String sVersion = "2.3.2";
+      final String sZugferdVersion = "2.3.2";
+
+      // Register as Zugferd
       final ValidationExecutorSet <IValidationSourceXML> aVES;
       aVES = ValidationExecutorSet.create (PhiveRulesHelper.createCoordinate (GROUP_ID_ZUGFERD,
                                                                               eProfile.getArtifactID (),
-                                                                              sVersion),
-                                           "ZUGFeRD " + sVersion + " (" + eProfile.getDisplayName () + ")",
+                                                                              sZugferdVersion),
+                                           "ZUGFeRD " + sZugferdVersion + " (" + eProfile.getDisplayName () + ")",
                                            PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
                                            ValidationExecutorXSD.create (new ClassPathResource ("/external/schemas/" +
-                                                                                                sVersion +
+                                                                                                sZugferdVersion +
                                                                                                 "/" +
                                                                                                 eProfile.getFolderName () +
                                                                                                 "/Factur-X_1.07.2_" +
@@ -132,12 +134,14 @@ public final class ZugferdValidation
                                                                                                 ".xsd",
                                                                                                 _getCL ())),
                                            PhiveRulesCIIHelper.createXSLT_CII_D22B (new ClassPathResource ("/external/schematron/" +
-                                                                                                           sVersion +
+                                                                                                           sZugferdVersion +
                                                                                                            "/Factur-X_1.07.2_" +
                                                                                                            eProfile.getFilenameSuffix () +
                                                                                                            ".xslt",
                                                                                                            _getCL ())));
       aRegistry.registerValidationExecutorSet (aVES);
+
+      // Also register alias as Factur-X
       _registerFacturXAlias (aRegistry, aVES);
     }
   }
