@@ -200,6 +200,8 @@ I hope that with the introduction of PINT, the versioning problem will be solved
   
 # News and noteworthy
  
+* v3.2.3 - work in progress
+    * Fixed Factur-X VES display name to include the profile name as well 
 * v3.2.2 - 2024-12-05
     * Updated to XRechnung 3.0.2 Schematron Rules 2.2.0
     * Added Peppol November 2024 release (Billing 3.0.18 and Upgrade 3.0.14)

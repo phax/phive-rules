@@ -110,12 +110,16 @@ public final class ZugferdValidation
   }
 
   private static void _registerFacturXAlias (@Nonnull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry,
+                                             @Nonnull final EZugferdProfile eProfile,
                                              @Nonnull final ValidationExecutorSet <IValidationSourceXML> aVES)
   {
     final DVRCoordinate aFacturXVESID = getMappedFacturXVESID (aVES.getID ());
     aRegistry.registerValidationExecutorSet (new ValidationExecutorSetAlias <> (aFacturXVESID,
                                                                                 "Factur-X " +
-                                                                                               aFacturXVESID.getVersionString (),
+                                                                                               aFacturXVESID.getVersionString () +
+                                                                                               " (" +
+                                                                                               eProfile.getDisplayName () +
+                                                                                               ")",
                                                                                 aVES));
   }
 
@@ -181,7 +185,7 @@ public final class ZugferdValidation
       aRegistry.registerValidationExecutorSet (aVES);
 
       // Also register alias as Factur-X
-      _registerFacturXAlias (aRegistry, aVES);
+      _registerFacturXAlias (aRegistry, eProfile, aVES);
     }
 
     // Zugferd 2.3.2 / Factur-X 1.0.7-2
@@ -213,7 +217,7 @@ public final class ZugferdValidation
       aRegistry.registerValidationExecutorSet (aVES);
 
       // Also register alias as Factur-X
-      _registerFacturXAlias (aRegistry, aVES);
+      _registerFacturXAlias (aRegistry, eProfile, aVES);
     }
   }
 }
