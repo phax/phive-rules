@@ -201,6 +201,7 @@ I hope that with the introduction of PINT, the versioning problem will be solved
     * Added Peppol PINT JP Self Billing 1.0.1 release
     * Deprecated Simplerinvoicing Invoice 2.0.3.8, Simplerinvoicing 2.0 G-Account extension 1.0.8 and NLCIUS-CII 1.0.3.7
     * Added Simplerinvoicing Invoice 2.0.3.10, Simplerinvoicing 2.0 G-Account extension 1.0.10 and NLCIUS-CII 1.0.3.9
+    * Added support for CII D22B XML Schema validation
 * v3.2.1 - 2024-10-09
     * Added support for EN 16931 rules v1.3.13 format and deprecated v1.3.11
 * v3.2.0 - 2024-09-16

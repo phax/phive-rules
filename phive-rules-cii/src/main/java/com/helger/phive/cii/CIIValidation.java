@@ -20,6 +20,7 @@ import javax.annotation.Nonnull;
 import javax.annotation.concurrent.Immutable;
 
 import com.helger.cii.d16b.CCIID16B;
+import com.helger.cii.d22b.CCIID22B;
 import com.helger.commons.ValueEnforcer;
 import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
@@ -38,20 +39,38 @@ public final class CIIValidation
 {
   public static final String GROUP_ID = "un.unece.uncefact";
   public static final String VERSION_D16B = "D16B";
+  public static final String VERSION_D22B = "D22B";
 
   public static final DVRCoordinate VID_CII_D16B_CROSSINDUSTRYINVOICE = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                                            "crossindustryinvoice",
                                                                                                            VERSION_D16B);
+  public static final DVRCoordinate VID_CII_D22B_CROSSINDUSTRYINVOICE = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                           "crossindustryinvoice",
+                                                                                                           VERSION_D22B);
 
   private CIIValidation ()
   {}
+
+  /**
+   * Register all supported CII validation execution sets to the provided
+   * registry.
+   *
+   * @param aRegistry
+   *        The registry to add the artefacts to. May not be <code>null</code>.
+   * @since 3.2.2
+   */
+  public static void initCII (@Nonnull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
+  {
+    initCIID16B (aRegistry);
+    initCIID22B (aRegistry);
+  }
 
   /**
    * Register all standard CII D16B validation execution sets to the provided
    * registry.
    *
    * @param aRegistry
-   *        The registry to add the artefacts. May not be <code>null</code>.
+   *        The registry to add the artefacts to. May not be <code>null</code>.
    */
   public static void initCIID16B (@Nonnull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
   {
@@ -64,5 +83,26 @@ public final class CIIValidation
                                                                            "CII CrossIndustryInvoice " + VERSION_D16B,
                                                                            PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
                                                                            ValidationExecutorXSD.create (CCIID16B.getXSDResource ())));
+  }
+
+  /**
+   * Register all standard CII D22B validation execution sets to the provided
+   * registry.
+   *
+   * @param aRegistry
+   *        The registry to add the artefacts to. May not be <code>null</code>.
+   * @since 3.2.2
+   */
+  public static void initCIID22B (@Nonnull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
+  {
+    ValueEnforcer.notNull (aRegistry, "Registry");
+
+    final boolean bNotDeprecated = false;
+
+    // No Schematrons here
+    aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_CII_D22B_CROSSINDUSTRYINVOICE,
+                                                                           "CII CrossIndustryInvoice " + VERSION_D22B,
+                                                                           PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
+                                                                           ValidationExecutorXSD.create (CCIID22B.getXSDResource ())));
   }
 }

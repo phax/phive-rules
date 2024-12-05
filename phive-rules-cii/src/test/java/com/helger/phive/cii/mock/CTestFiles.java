@@ -40,7 +40,7 @@ public final class CTestFiles
   public static final ValidationExecutorSetRegistry <IValidationSourceXML> VES_REGISTRY = new ValidationExecutorSetRegistry <> ();
   static
   {
-    CIIValidation.initCIID16B (VES_REGISTRY);
+    CIIValidation.initCII (VES_REGISTRY);
   }
 
   private CTestFiles ()
@@ -51,7 +51,8 @@ public final class CTestFiles
   public static ICommonsList <PhiveTestFile> getAllTestFiles ()
   {
     final ICommonsList <PhiveTestFile> ret = new CommonsArrayList <> ();
-    for (final DVRCoordinate aESID : new DVRCoordinate [] { CIIValidation.VID_CII_D16B_CROSSINDUSTRYINVOICE })
+    for (final DVRCoordinate aESID : new DVRCoordinate [] { CIIValidation.VID_CII_D16B_CROSSINDUSTRYINVOICE,
+                                                            CIIValidation.VID_CII_D22B_CROSSINDUSTRYINVOICE })
       for (final IReadableResource aRes : getAllMatchingTestFiles (aESID))
       {
         assertTrue ("Not existing test file: " + aRes.getPath (), aRes.exists ());
@@ -69,6 +70,10 @@ public final class CTestFiles
     if (aVESID.equals (CIIValidation.VID_CII_D16B_CROSSINDUSTRYINVOICE))
     {
       return new CommonsArrayList <> (CIITestFiles.D16B_FILES, ClassPathResource::new);
+    }
+    if (aVESID.equals (CIIValidation.VID_CII_D22B_CROSSINDUSTRYINVOICE))
+    {
+      return new CommonsArrayList <> (CIITestFiles.D22B_FILES, ClassPathResource::new);
     }
 
     throw new IllegalArgumentException ("Invalid VESID: " + aVESID);
