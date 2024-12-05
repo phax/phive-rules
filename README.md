@@ -31,6 +31,7 @@ This project is divided into sub-projects each keeping tracking of one document 
 * phive-rules-ubl - Validation rules for pure OASIS UBL (without any Schematron)
 * phive-rules-ublbe - Validation rules for Belgium e-FFF/UBL.BE
 * phive-rules-xrechnung - Validation rules for German XRechnung
+* phive-rules-zugferd - Validation rules for German ZuGFERD (XML part only) (since v3.2.2)
 
 The Java code in this project is licensed under the Apache 2 license.
 The code of the validation artefacts used may use a different license. 
@@ -171,6 +172,12 @@ Add the following to your `pom.xml` to use this artifact, replacing `x.y.z` with
   <artifactId>phive-rules-xrechnung</artifactId>
   <version>x.y.z</version>
 </dependency>
+
+<dependency>
+  <groupId>com.helger.phive.rules</groupId>
+  <artifactId>phive-rules-zugferd</artifactId>
+  <version>x.y.z</version>
+</dependency>
 ```
 
 Alternate usage as a Maven BOM:
@@ -202,6 +209,7 @@ I hope that with the introduction of PINT, the versioning problem will be solved
     * Deprecated Simplerinvoicing Invoice 2.0.3.8, Simplerinvoicing 2.0 G-Account extension 1.0.8 and NLCIUS-CII 1.0.3.7
     * Added Simplerinvoicing Invoice 2.0.3.10, Simplerinvoicing 2.0 G-Account extension 1.0.10 and NLCIUS-CII 1.0.3.9
     * Added support for CII D22B XML Schema validation
+    * Added support for ZuGFERD 2.3.2 - all profiles (XML only)
 * v3.2.1 - 2024-10-09
     * Added support for EN 16931 rules v1.3.13 format and deprecated v1.3.11
 * v3.2.0 - 2024-09-16

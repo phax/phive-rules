@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2020-2024 Philip Helger (www.helger.com)
+ * Copyright (C) 2024 Philip Helger (www.helger.com)
  * philip[at]helger[dot]com
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -25,7 +25,6 @@ import com.helger.phive.api.executor.IValidationExecutor;
 import com.helger.phive.api.executorset.IValidationExecutorSet;
 import com.helger.phive.rules.api.PhiveRulesTestHelper;
 import com.helger.phive.xml.source.IValidationSourceXML;
-import com.helger.phive.zugferd.ZugferdValidation;
 import com.helger.phive.zugferd.mock.CTestFiles;
 
 /**
@@ -33,7 +32,7 @@ import com.helger.phive.zugferd.mock.CTestFiles;
  *
  * @author Philip Helger
  */
-public final class FacturaeValidationTest
+public final class ZugferdValidationTest
 {
   @Test
   public void testFilesExist ()
