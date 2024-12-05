@@ -63,6 +63,10 @@
       <artifactId>phive-rules-api</artifactId>
     </dependency>
     <dependency>
+      <groupId>com.helger.phive.rules</groupId>
+      <artifactId>phive-rules-en16931</artifactId>
+    </dependency>
+    <dependency>
       <groupId>com.helger.cii</groupId>
       <artifactId>ph-cii-d16b</artifactId>
       <version>${ph-cii.version}</version>
@@ -86,6 +90,12 @@
     <dependency>
       <groupId>com.sun.xml.bind</groupId>
       <artifactId>jaxb-impl</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.pdfbox</groupId>
+      <artifactId>pdfbox</artifactId>
+      <version>3.0.3</version>
       <scope>test</scope>
     </dependency>
   </dependencies>
@@ -117,8 +127,8 @@
               <goal>convert</goal>
             </goals>
             <configuration>
-              <schematronDirectory>${basedir}/src/test/resources/external/rule-source/2.3.2</schematronDirectory>
-              <xsltDirectory>${basedir}/src/main/resources/external/schematron/2.3.2</xsltDirectory>
+              <schematronDirectory>${basedir}/src/test/resources/external/rule-source/2.2</schematronDirectory>
+              <xsltDirectory>${basedir}/src/main/resources/external/schematron/2.2</xsltDirectory>
               <schematronPattern>*.sch</schematronPattern>
             </configuration>
           </execution>

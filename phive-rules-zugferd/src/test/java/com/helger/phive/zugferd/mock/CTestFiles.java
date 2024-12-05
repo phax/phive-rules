@@ -32,6 +32,7 @@ import com.helger.commons.io.resource.IReadableResource;
 import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.phive.api.executorset.ValidationExecutorSetRegistry;
 import com.helger.phive.api.mock.PhiveTestFile;
+import com.helger.phive.en16931.EN16931Validation;
 import com.helger.phive.xml.source.IValidationSourceXML;
 import com.helger.phive.zugferd.EZugferdProfile;
 import com.helger.phive.zugferd.ZugferdValidation;
@@ -42,6 +43,7 @@ public final class CTestFiles
   public static final ValidationExecutorSetRegistry <IValidationSourceXML> VES_REGISTRY = new ValidationExecutorSetRegistry <> ();
   static
   {
+    EN16931Validation.initEN16931 (VES_REGISTRY);
     ZugferdValidation.initZugferd (VES_REGISTRY);
   }
 
@@ -53,7 +55,15 @@ public final class CTestFiles
   public static ICommonsList <PhiveTestFile> getAllTestFiles ()
   {
     final ICommonsList <PhiveTestFile> ret = new CommonsArrayList <> ();
-    for (final DVRCoordinate aVESID : new DVRCoordinate [] { ZugferdValidation.VID_ZUGFERD_2_3_2_MINIMUM,
+    for (final DVRCoordinate aVESID : new DVRCoordinate [] { // 2.2
+                                                             ZugferdValidation.VID_ZUGFERD_2_2_MINIMUM,
+                                                             ZugferdValidation.VID_ZUGFERD_2_2_BASIC_WL,
+                                                             ZugferdValidation.VID_ZUGFERD_2_2_BASIC,
+                                                             ZugferdValidation.VID_ZUGFERD_2_2_EN16931,
+                                                             ZugferdValidation.VID_ZUGFERD_2_2_EXTENDED,
+
+                                                             // 2.3.2
+                                                             ZugferdValidation.VID_ZUGFERD_2_3_2_MINIMUM,
                                                              ZugferdValidation.VID_ZUGFERD_2_3_2_BASIC_WL,
                                                              ZugferdValidation.VID_ZUGFERD_2_3_2_BASIC,
                                                              ZugferdValidation.VID_ZUGFERD_2_3_2_EN16931,
@@ -89,6 +99,20 @@ public final class CTestFiles
   public static ICommonsList <? extends IReadableResource> getAllMatchingTestFiles (@Nonnull final DVRCoordinate aVESID)
   {
     ValueEnforcer.notNull (aVESID, "VESID");
+
+    {
+      final String sVersion = "2.2";
+      if (aVESID.equals (ZugferdValidation.VID_ZUGFERD_2_2_MINIMUM))
+        return _createList (sVersion, 2, EZugferdProfile.MINIMUM);
+      if (aVESID.equals (ZugferdValidation.VID_ZUGFERD_2_2_BASIC_WL))
+        return _createList (sVersion, 1, EZugferdProfile.BASIC_WL);
+      if (aVESID.equals (ZugferdValidation.VID_ZUGFERD_2_2_BASIC))
+        return _createList (sVersion, 3, EZugferdProfile.BASIC);
+      if (aVESID.equals (ZugferdValidation.VID_ZUGFERD_2_2_EN16931))
+        return _createList (sVersion, 22, EZugferdProfile.EN16931);
+      if (aVESID.equals (ZugferdValidation.VID_ZUGFERD_2_2_EXTENDED))
+        return _createList (sVersion, 5, EZugferdProfile.EXTENDED);
+    }
 
     {
       final String sVersion = "2.3.2";

@@ -29,6 +29,8 @@ import com.helger.diver.api.version.DVRVersion;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
 import com.helger.phive.api.executorset.ValidationExecutorSet;
 import com.helger.phive.api.executorset.ValidationExecutorSetAlias;
+import com.helger.phive.api.executorset.status.IValidationExecutorSetStatus;
+import com.helger.phive.en16931.EN16931Validation;
 import com.helger.phive.rules.api.PhiveRulesCIIHelper;
 import com.helger.phive.rules.api.PhiveRulesHelper;
 import com.helger.phive.xml.source.IValidationSourceXML;
@@ -44,6 +46,23 @@ public final class ZugferdValidation
 {
   public static final String GROUP_ID_ZUGFERD = "de.zugferd";
   public static final String GROUP_ID_FACTUR_X = "fr.factur-x";
+
+  // v2.2
+  public static final DVRCoordinate VID_ZUGFERD_2_2_MINIMUM = PhiveRulesHelper.createCoordinate (GROUP_ID_ZUGFERD,
+                                                                                                 EZugferdProfile.MINIMUM.getArtifactID (),
+                                                                                                 "2.2");
+  public static final DVRCoordinate VID_ZUGFERD_2_2_BASIC_WL = PhiveRulesHelper.createCoordinate (GROUP_ID_ZUGFERD,
+                                                                                                  EZugferdProfile.BASIC_WL.getArtifactID (),
+                                                                                                  "2.2");
+  public static final DVRCoordinate VID_ZUGFERD_2_2_BASIC = PhiveRulesHelper.createCoordinate (GROUP_ID_ZUGFERD,
+                                                                                               EZugferdProfile.BASIC.getArtifactID (),
+                                                                                               "2.2");
+  public static final DVRCoordinate VID_ZUGFERD_2_2_EN16931 = PhiveRulesHelper.createCoordinate (GROUP_ID_ZUGFERD,
+                                                                                                 EZugferdProfile.EN16931.getArtifactID (),
+                                                                                                 "2.2");
+  public static final DVRCoordinate VID_ZUGFERD_2_2_EXTENDED = PhiveRulesHelper.createCoordinate (GROUP_ID_ZUGFERD,
+                                                                                                  EZugferdProfile.EXTENDED.getArtifactID (),
+                                                                                                  "2.2");
 
   // v2.3.2
   public static final DVRCoordinate VID_ZUGFERD_2_3_2_MINIMUM = PhiveRulesHelper.createCoordinate (GROUP_ID_ZUGFERD,
@@ -66,7 +85,8 @@ public final class ZugferdValidation
   private static final ICommonsMap <DVRVersion, DVRVersion> ZUGFERD_TO_FACTURX_MAP = new CommonsHashMap <> ();
   static
   {
-    ZUGFERD_TO_FACTURX_MAP.put (DVRVersion.parseOrNull ("2.3.2"), DVRVersion.parseOrNull ("1.7.2"));
+    ZUGFERD_TO_FACTURX_MAP.put (DVRVersion.parseOrNull ("2.2"), DVRVersion.parseOrNull ("1.0.6"));
+    ZUGFERD_TO_FACTURX_MAP.put (DVRVersion.parseOrNull ("2.3.2"), DVRVersion.parseOrNull ("1.0.7-2"));
   }
 
   private ZugferdValidation ()
@@ -106,6 +126,7 @@ public final class ZugferdValidation
    * @param aRegistry
    *        The registry to add the artefacts. May not be <code>null</code>.
    */
+  @SuppressWarnings ("deprecation")
   public static void initZugferd (@Nonnull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
   {
     ValueEnforcer.notNull (aRegistry, "Registry");
@@ -113,7 +134,57 @@ public final class ZugferdValidation
     // final boolean bDeprecated = true;
     final boolean bNotDeprecated = false;
 
-    // Zugferd 2.3.2 / Factur-X 1.07.2
+    // Zugferd 2.2 / Factur-X 1.0.6
+    for (final EZugferdProfile eProfile : EZugferdProfile.values ())
+    {
+      final String sZugferdVersion = "2.2";
+      final String sFilenameSuffix = eProfile == EZugferdProfile.BASIC_WL ? "BASIC-WL" : eProfile.getFilenameSuffix ();
+
+      final var aVESchematron = PhiveRulesCIIHelper.createXSLT_CII_D16B (new ClassPathResource ("/external/schematron/" +
+                                                                                                sZugferdVersion +
+                                                                                                "/Factur-X_" +
+                                                                                                sFilenameSuffix +
+                                                                                                ".xslt",
+                                                                                                _getCL ()));
+
+      // Register as Zugferd
+      final DVRCoordinate aVESID = PhiveRulesHelper.createCoordinate (GROUP_ID_ZUGFERD,
+                                                                      eProfile.getArtifactID (),
+                                                                      sZugferdVersion);
+      final String sDisplayName = "ZUGFeRD " + sZugferdVersion + " (" + eProfile.getDisplayName () + ")";
+      final IValidationExecutorSetStatus aStatus = PhiveRulesHelper.createSimpleStatus (bNotDeprecated);
+      final ValidationExecutorSet <IValidationSourceXML> aVES;
+      if (eProfile == EZugferdProfile.EN16931)
+      {
+        // Based on 1.3.7-SNAPSHOT
+        aVES = ValidationExecutorSet.createDerived (aRegistry.getOfID (EN16931Validation.VID_CII_137),
+                                                    aVESID,
+                                                    sDisplayName,
+                                                    aStatus,
+                                                    aVESchematron);
+      }
+      else
+      {
+        aVES = ValidationExecutorSet.create (aVESID,
+                                             sDisplayName,
+                                             aStatus,
+                                             ValidationExecutorXSD.create (new ClassPathResource ("/external/schemas/" +
+                                                                                                  sZugferdVersion +
+                                                                                                  "/" +
+                                                                                                  eProfile.getFolderName () +
+                                                                                                  "/Factur-X_" +
+                                                                                                  sFilenameSuffix +
+                                                                                                  ".xsd",
+                                                                                                  _getCL ())),
+                                             aVESchematron);
+      }
+      aRegistry.registerValidationExecutorSet (aVES);
+
+      // Also register alias as Factur-X
+      _registerFacturXAlias (aRegistry, aVES);
+    }
+
+    // Zugferd 2.3.2 / Factur-X 1.0.7-2
     for (final EZugferdProfile eProfile : EZugferdProfile.values ())
     {
       final String sZugferdVersion = "2.3.2";
