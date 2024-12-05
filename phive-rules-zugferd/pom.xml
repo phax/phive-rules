@@ -62,6 +62,16 @@
       <groupId>com.helger.phive.rules</groupId>
       <artifactId>phive-rules-api</artifactId>
     </dependency>
+    <dependency>
+      <groupId>com.helger.cii</groupId>
+      <artifactId>ph-cii-d16b</artifactId>
+      <version>${ph-cii.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.helger.cii</groupId>
+      <artifactId>ph-cii-d22b</artifactId>
+      <version>${ph-cii.version}</version>
+    </dependency>
 
     <dependency>
       <groupId>junit</groupId>
@@ -71,6 +81,11 @@
     <dependency>
       <groupId>org.slf4j</groupId>
       <artifactId>slf4j-simple</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.sun.xml.bind</groupId>
+      <artifactId>jaxb-impl</artifactId>
       <scope>test</scope>
     </dependency>
   </dependencies>
@@ -90,6 +105,25 @@
             <Import-Package>!javax.annotation.*,*</Import-Package>
           </instructions>
         </configuration>
+      </plugin>
+      <plugin>
+        <groupId>com.helger.maven</groupId>
+        <artifactId>ph-schematron-maven-plugin</artifactId>
+        <executions>
+        <!--
+          <execution>
+            <id>zugferd</id>
+            <goals>
+              <goal>convert</goal>
+            </goals>
+            <configuration>
+              <schematronDirectory>${basedir}/src/test/resources/external/rule-source/2.3.2</schematronDirectory>
+              <xsltDirectory>${basedir}/src/main/resources/external/schematron/2.3.2</xsltDirectory>
+              <schematronPattern>*.sch</schematronPattern>
+            </configuration>
+          </execution>
+         -->
+        </executions>
       </plugin>
     </plugins>
   </build>

@@ -69,6 +69,12 @@
       <optional>true</optional>
     </dependency>
     <dependency>
+      <groupId>com.helger.cii</groupId>
+      <artifactId>ph-cii-d22b</artifactId>
+      <version>${ph-cii.version}</version>
+      <optional>true</optional>
+    </dependency>
+    <dependency>
       <groupId>com.helger.ubl</groupId>
       <artifactId>ph-ubl20</artifactId>
       <version>${ph-ubl.version}</version>

@@ -29,6 +29,7 @@ import com.helger.diver.api.version.DVRVersion;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
 import com.helger.phive.api.executorset.ValidationExecutorSet;
 import com.helger.phive.api.executorset.ValidationExecutorSetAlias;
+import com.helger.phive.rules.api.PhiveRulesCIIHelper;
 import com.helger.phive.rules.api.PhiveRulesHelper;
 import com.helger.phive.xml.source.IValidationSourceXML;
 import com.helger.phive.xml.xsd.ValidationExecutorXSD;
@@ -106,7 +107,9 @@ public final class ZugferdValidation
                                            "ZUGFeRD " + VID_ZUGFERD_2_3_2_MINIMUM.getVersionString (),
                                            PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
                                            ValidationExecutorXSD.create (new ClassPathResource ("/external/schemas/2.3.2/minimum/Factur-X_1.07.2_MINIMUM.xsd",
-                                                                                                _getCL ())));
+                                                                                                _getCL ())),
+                                           PhiveRulesCIIHelper.createXSLT_CII_D22B (new ClassPathResource ("/external/schematron/2.3.2/Factur-X_1.07.2_MINIMUM.xslt",
+                                                                                                           _getCL ())));
       aRegistry.registerValidationExecutorSet (aVES);
       _registerFacturXAlias (aRegistry, aVES);
     }

@@ -20,6 +20,7 @@ import javax.annotation.Nonnull;
 import javax.annotation.concurrent.Immutable;
 
 import com.helger.cii.d16b.CIID16BNamespaceContext;
+import com.helger.cii.d22b.CIID22BNamespaceContext;
 import com.helger.commons.io.resource.IReadableResource;
 import com.helger.phive.xml.schematron.ValidationExecutorSchematron;
 
@@ -38,5 +39,11 @@ public final class PhiveRulesCIIHelper
   public static ValidationExecutorSchematron createXSLT_CII_D16B (@Nonnull final IReadableResource aRes)
   {
     return PhiveRulesHelper.createXSLT (aRes, CIID16BNamespaceContext.getInstance ());
+  }
+
+  @Nonnull
+  public static ValidationExecutorSchematron createXSLT_CII_D22B (@Nonnull final IReadableResource aRes)
+  {
+    return PhiveRulesHelper.createXSLT (aRes, CIID22BNamespaceContext.getInstance ());
   }
 }
