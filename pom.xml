@@ -71,7 +71,7 @@
     <ph-ebinterface.version>7.1.0</ph-ebinterface.version>
     <ph-fatturapa.version>2.0.2</ph-fatturapa.version>
     <ph-jaxb-plugin.version>4.0.3</ph-jaxb-plugin.version>
-    <ph-schematron.version>8.0.4</ph-schematron.version>
+    <ph-schematron.version>8.0.5</ph-schematron.version>
     <ph-ubl.version>9.0.3</ph-ubl.version>
   </properties>
   
