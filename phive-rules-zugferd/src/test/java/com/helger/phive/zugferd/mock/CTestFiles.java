@@ -55,7 +55,14 @@ public final class CTestFiles
   public static ICommonsList <PhiveTestFile> getAllTestFiles ()
   {
     final ICommonsList <PhiveTestFile> ret = new CommonsArrayList <> ();
-    for (final DVRCoordinate aVESID : new DVRCoordinate [] { // 2.2
+    for (final DVRCoordinate aVESID : new DVRCoordinate [] { // 2.1
+                                                             ZugferdValidation.VID_ZUGFERD_2_1_MINIMUM,
+                                                             ZugferdValidation.VID_ZUGFERD_2_1_BASIC_WL,
+                                                             ZugferdValidation.VID_ZUGFERD_2_1_BASIC,
+                                                             ZugferdValidation.VID_ZUGFERD_2_1_EN16931,
+                                                             ZugferdValidation.VID_ZUGFERD_2_1_EXTENDED,
+
+                                                             // 2.2
                                                              ZugferdValidation.VID_ZUGFERD_2_2_MINIMUM,
                                                              ZugferdValidation.VID_ZUGFERD_2_2_BASIC_WL,
                                                              ZugferdValidation.VID_ZUGFERD_2_2_BASIC,
@@ -78,9 +85,9 @@ public final class CTestFiles
 
   @Nonnull
   @Nonempty
-  private static ICommonsList <? extends IReadableResource> _createList (@Nonnull final String sZugferdVersion,
-                                                                         @Nonnegative final int nCount,
-                                                                         @Nonnull final EZugferdProfile eProfile)
+  private static ICommonsList <? extends IReadableResource> _createListFacturX (@Nonnull final String sZugferdVersion,
+                                                                                @Nonnegative final int nCount,
+                                                                                @Nonnull final EZugferdProfile eProfile)
   {
     final ICommonsList <IReadableResource> ret = new CommonsArrayList <> (nCount);
     for (int i = 1; i <= nCount; ++i)
@@ -101,31 +108,45 @@ public final class CTestFiles
     ValueEnforcer.notNull (aVESID, "VESID");
 
     {
+      final String sVersion = "2.1";
+      if (aVESID.equals (ZugferdValidation.VID_ZUGFERD_2_1_MINIMUM))
+        return _createListFacturX (sVersion, 2, EZugferdProfile.MINIMUM);
+      if (aVESID.equals (ZugferdValidation.VID_ZUGFERD_2_1_BASIC_WL))
+        return _createListFacturX (sVersion, 2, EZugferdProfile.BASIC_WL);
+      if (aVESID.equals (ZugferdValidation.VID_ZUGFERD_2_1_BASIC))
+        return _createListFacturX (sVersion, 3, EZugferdProfile.BASIC);
+      if (aVESID.equals (ZugferdValidation.VID_ZUGFERD_2_1_EN16931))
+        return _createListFacturX (sVersion, 26, EZugferdProfile.EN16931);
+      if (aVESID.equals (ZugferdValidation.VID_ZUGFERD_2_1_EXTENDED))
+        return _createListFacturX (sVersion, 5, EZugferdProfile.EXTENDED);
+    }
+
+    {
       final String sVersion = "2.2";
       if (aVESID.equals (ZugferdValidation.VID_ZUGFERD_2_2_MINIMUM))
-        return _createList (sVersion, 2, EZugferdProfile.MINIMUM);
+        return _createListFacturX (sVersion, 2, EZugferdProfile.MINIMUM);
       if (aVESID.equals (ZugferdValidation.VID_ZUGFERD_2_2_BASIC_WL))
-        return _createList (sVersion, 1, EZugferdProfile.BASIC_WL);
+        return _createListFacturX (sVersion, 1, EZugferdProfile.BASIC_WL);
       if (aVESID.equals (ZugferdValidation.VID_ZUGFERD_2_2_BASIC))
-        return _createList (sVersion, 3, EZugferdProfile.BASIC);
+        return _createListFacturX (sVersion, 3, EZugferdProfile.BASIC);
       if (aVESID.equals (ZugferdValidation.VID_ZUGFERD_2_2_EN16931))
-        return _createList (sVersion, 22, EZugferdProfile.EN16931);
+        return _createListFacturX (sVersion, 22, EZugferdProfile.EN16931);
       if (aVESID.equals (ZugferdValidation.VID_ZUGFERD_2_2_EXTENDED))
-        return _createList (sVersion, 5, EZugferdProfile.EXTENDED);
+        return _createListFacturX (sVersion, 5, EZugferdProfile.EXTENDED);
     }
 
     {
       final String sVersion = "2.3.2";
       if (aVESID.equals (ZugferdValidation.VID_ZUGFERD_2_3_2_MINIMUM))
-        return _createList (sVersion, 2, EZugferdProfile.MINIMUM);
+        return _createListFacturX (sVersion, 2, EZugferdProfile.MINIMUM);
       if (aVESID.equals (ZugferdValidation.VID_ZUGFERD_2_3_2_BASIC_WL))
-        return _createList (sVersion, 1, EZugferdProfile.BASIC_WL);
+        return _createListFacturX (sVersion, 1, EZugferdProfile.BASIC_WL);
       if (aVESID.equals (ZugferdValidation.VID_ZUGFERD_2_3_2_BASIC))
-        return _createList (sVersion, 3, EZugferdProfile.BASIC);
+        return _createListFacturX (sVersion, 3, EZugferdProfile.BASIC);
       if (aVESID.equals (ZugferdValidation.VID_ZUGFERD_2_3_2_EN16931))
-        return _createList (sVersion, 22, EZugferdProfile.EN16931);
+        return _createListFacturX (sVersion, 22, EZugferdProfile.EN16931);
       if (aVESID.equals (ZugferdValidation.VID_ZUGFERD_2_3_2_EXTENDED))
-        return _createList (sVersion, 6, EZugferdProfile.EXTENDED);
+        return _createListFacturX (sVersion, 6, EZugferdProfile.EXTENDED);
     }
 
     throw new IllegalArgumentException ("Invalid VESID: " + aVESID);

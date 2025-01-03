@@ -191,9 +191,11 @@ VKE/Geb: 1
         <ram:GrossPriceProductTradePrice>
           <ram:ChargeAmount>1.5000</ram:ChargeAmount>
           <ram:AppliedTradeAllowanceCharge>
+          <!--  [PH] disabled
 			<ram:ChargeIndicator>
 				<udt:Indicator>false</udt:Indicator>
 			</ram:ChargeIndicator>
+       -->
             <ram:ActualAmount>0.05</ram:ActualAmount>
           </ram:AppliedTradeAllowanceCharge>
         </ram:GrossPriceProductTradePrice>
