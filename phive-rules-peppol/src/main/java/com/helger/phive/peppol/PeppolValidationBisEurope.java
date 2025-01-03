@@ -57,13 +57,11 @@ public final class PeppolValidationBisEurope
     return PeppolValidation2024_11.VERSION_STR;
   }
 
-  @SuppressWarnings ("deprecation")
+  // @SuppressWarnings ("deprecation")
   public static void init (@Nonnull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
   {
     ValueEnforcer.notNull (aRegistry, "Registry");
 
-    PeppolValidation2023_05.init (aRegistry);
-    PeppolValidation2023_11.init (aRegistry);
     PeppolValidation2024_05.init (aRegistry);
     PeppolValidation2024_11.init (aRegistry);
   }

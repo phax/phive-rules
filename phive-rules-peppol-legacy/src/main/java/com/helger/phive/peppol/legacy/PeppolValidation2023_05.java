@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.helger.phive.peppol;
+package com.helger.phive.peppol.legacy;
 
 import java.time.LocalDate;
 import java.time.Month;
@@ -44,20 +44,20 @@ import com.helger.ubl21.UBL21Marshaller;
 import com.helger.ubl23.UBL23Marshaller;
 
 /**
- * OpenPeppol validation artefacts release 2023.11.<br>
- * November 2023 release 2023-11-28.<br>
- * Valid from Monday, 26 February 2024
+ * OpenPeppol validation artefacts release 2023.5.<br>
+ * May 2023 release 2023-05-06.<br>
+ * Valid from Monday, 7 August 2023
  *
  * @author Philip Helger
  */
 @Immutable
 @Deprecated
-public final class PeppolValidation2023_11
+public final class PeppolValidation2023_05
 {
   // Standard resources
-  public static final Version PEPPOL_VALIDATION_ARTEFACT_VERSION = new Version (2023, 11, 0);
+  public static final Version PEPPOL_VALIDATION_ARTEFACT_VERSION = new Version (2023, 5, 0);
   public static final String VERSION_STR = PEPPOL_VALIDATION_ARTEFACT_VERSION.getAsString (false);
-  public static final LocalDate VALID_PER = PDTFactory.createLocalDate (2024, Month.FEBRUARY, 26);
+  public static final LocalDate VALID_PER = PDTFactory.createLocalDate (2023, Month.AUGUST, 7);
   public static final OffsetDateTime VALID_PER_UTC = PDTFactory.createOffsetDateTimeUTC (VALID_PER);
 
   // Standard
@@ -108,13 +108,13 @@ public final class PeppolValidation2023_11
                                                                                                                    "order-response-advanced",
                                                                                                                    VERSION_STR);
 
-  private PeppolValidation2023_11 ()
+  private PeppolValidation2023_05 ()
   {}
 
   @Nonnull
   private static ClassLoader _getCL ()
   {
-    return PeppolValidation2023_11.class.getClassLoader ();
+    return PeppolValidation2023_05.class.getClassLoader ();
   }
 
   @Nonnull
@@ -124,7 +124,7 @@ public final class PeppolValidation2023_11
                                             bIsDeprecated ? EValidationExecutorStatusType.DEPRECATED
                                                           : EValidationExecutorStatusType.VALID,
                                             VALID_PER_UTC,
-                                            PeppolValidation2024_05.VALID_PER_UTC,
+                                            PeppolValidation2023_11.VALID_PER_UTC,
                                             (String) null,
                                             (DVRCoordinate) null,
                                             (ICommonsList <ValidationExecutorSetStatusHistoryItem>) null);
@@ -136,9 +136,9 @@ public final class PeppolValidation2023_11
 
     final String sVersion = " (" + VERSION_STR + ")";
     // See https://docs.peppol.eu/poacc/billing/3.0/release-notes/
-    final String sAkaVersionBilling = " (aka BIS Billing 3.0.16)";
+    final String sAkaVersionBilling = " (aka BIS Billing 3.0.15)";
     // See https://docs.peppol.eu/poacc/upgrade-3/release-notes/
-    final String sAkaVersionBIS = " (aka BIS 3.0.12)";
+    final String sAkaVersionBIS = " (aka BIS 3.0.11)";
 
     final boolean bDeprecated = true;
 
@@ -182,7 +182,7 @@ public final class PeppolValidation2023_11
     // "OpenPeppol CII Invoice" +
     // sVersion +
     // sAkaVersionBilling,
-    // _createStatus (bNotDeprecated),
+    // bNotDeprecated,
     // ValidationExecutorXSD.create (CCIID16B.getXSDResource ()),
     // _createXsltCII (INVOICE_CII_CEN),
     // _createXsltCII (INVOICE_CII_PEPPOL)));

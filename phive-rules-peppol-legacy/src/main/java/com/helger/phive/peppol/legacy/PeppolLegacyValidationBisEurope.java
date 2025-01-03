@@ -30,9 +30,9 @@ import com.helger.phive.xml.source.IValidationSourceXML;
  */
 @Immutable
 @SuppressWarnings ("deprecation")
-public final class PeppolLegacyValidation
+public final class PeppolLegacyValidationBisEurope
 {
-  private PeppolLegacyValidation ()
+  private PeppolLegacyValidationBisEurope ()
   {}
 
   /**
@@ -52,5 +52,7 @@ public final class PeppolLegacyValidation
     PeppolValidation3_13_0.init (aRegistry);
     PeppolValidation3_14_0.init (aRegistry);
     PeppolValidation3_15_0.init (aRegistry);
+    PeppolValidation2023_05.init (aRegistry);
+    PeppolValidation2023_11.init (aRegistry);
   }
 }

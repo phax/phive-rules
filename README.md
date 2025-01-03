@@ -204,6 +204,8 @@ I hope that with the introduction of PINT, the versioning problem will be solved
     * Fixed Factur-X VES display name to include the profile name as well 
     * Added Peppol A-NZ-PEPPOL 1.0.12 rules
     * Deprecated Peppol A-NZ-PEPPOL 1.0.10 rules
+    * Moved Peppol A-NZ-PEPPOL 1.0.9 and 1.0.10 rules from `phive-rules-peppol` to `phive-rules-peppol-legacy`
+    * Moved Peppol 2023-05 and 2023-11 rules from `phive-rules-peppol` to `phive-rules-peppol-legacy`
     * Added support for ZuGFERD 2.0.1 - all profiles (XML only)
     * Added support for ZuGFERD 2.1 - all profiles (XML only)
 * v3.2.2 - 2024-12-05
