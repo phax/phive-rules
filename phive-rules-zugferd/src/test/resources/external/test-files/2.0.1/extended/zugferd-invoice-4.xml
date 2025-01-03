@@ -101,7 +101,8 @@ GLN 4304171000002
       </ram:SpecifiedLineTradeAgreement>
       <ram:SpecifiedLineTradeDelivery>
         <ram:BilledQuantity unitCode="C62">-5.0000</ram:BilledQuantity>
-        <ram:PackageQuantity unitCode="BO">1.0000</ram:PackageQuantity>
+        <!-- [PH] changed from BO -->
+        <ram:PackageQuantity unitCode="C62">1.0000</ram:PackageQuantity>
       </ram:SpecifiedLineTradeDelivery>
       <ram:SpecifiedLineTradeSettlement>
         <ram:ApplicableTradeTax>
@@ -147,7 +148,8 @@ GLN 4304171000002
       </ram:SpecifiedLineTradeAgreement>
       <ram:SpecifiedLineTradeDelivery>
         <ram:BilledQuantity unitCode="C62">-2.0000</ram:BilledQuantity>
-        <ram:PackageQuantity unitCode="CT">1.0000</ram:PackageQuantity>
+        <!-- [PH] changed from CT -->
+        <ram:PackageQuantity unitCode="C62">1.0000</ram:PackageQuantity>
       </ram:SpecifiedLineTradeDelivery>
       <ram:SpecifiedLineTradeSettlement>
         <ram:ApplicableTradeTax>

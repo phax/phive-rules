@@ -49,7 +49,7 @@ public final class ValidationExecutionManagerFuncTest
     for (final PhiveTestFile aTestFile : CTestFiles.getAllTestFiles ())
     {
       final IValidationExecutorSet <IValidationSourceXML> aExecutors = CTestFiles.VES_REGISTRY.getOfID (aTestFile.getVESID ());
-      assertNotNull (aExecutors);
+      assertNotNull ("Failed to resolve VESID '" + aTestFile.getVESID () + "'", aExecutors);
 
       LOGGER.info ("Validating " +
                    aTestFile.getResource ().getPath () +

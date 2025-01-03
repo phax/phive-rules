@@ -41,9 +41,13 @@ Gewinn, Datenverlust, Kommunikationsverlust, Einnahmeausfall, Vertragseinbußen,
 Schäden, Verluste oder Haftpflichten im Zusammenhang mit einer Unterbrechung der Geschäftstätigkeit, noch für konkrete, 
 beiläufig entstandene, mittelbare Schäden, Straf- oder Folgeschäden und zwar auch dann nicht, wenn die Möglichkeit der 
 Kosten, Verluste bzw. Schäden hätte normalerweise vorhergesehen werden können.-->
-<rsm:CrossIndustryInvoice xmlns:a="urn:un:unece:uncefact:data:standard:QualifiedDataType:100" xmlns:rsm="urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100" xmlns:qdt="urn:un:unece:uncefact:data:standard:QualifiedDataType:10" xmlns:ram="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:udt="urn:un:unece:uncefact:data:standard:UnqualifiedDataType:100">
+<rsm:CrossIndustryInvoice xmlns:a="urn:un:unece:uncefact:data:standard:QualifiedDataType:100"
+  xmlns:rsm="urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100"
+  xmlns:qdt="urn:un:unece:uncefact:data:standard:QualifiedDataType:10"
+  xmlns:ram="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:udt="urn:un:unece:uncefact:data:standard:UnqualifiedDataType:100">
   <rsm:ExchangedDocumentContext>
-   <ram:GuidelineSpecifiedDocumentContextParameter>
+    <ram:GuidelineSpecifiedDocumentContextParameter>
       <ram:ID>urn:zugferd.de:2p0:minimum</ram:ID>
     </ram:GuidelineSpecifiedDocumentContextParameter>
   </rsm:ExchangedDocumentContext>
@@ -86,12 +90,26 @@ Kosten, Verluste bzw. Schäden hätte normalerweise vorhergesehen werden können
     </ram:ApplicableHeaderTradeDelivery>
     <ram:ApplicableHeaderTradeSettlement>
       <ram:InvoiceCurrencyCode>EUR</ram:InvoiceCurrencyCode>
+      <!--  [PH] added for XSD compliance -->
+      <ram:ApplicableTradeTax>
+        <ram:CalculatedAmount>37.62</ram:CalculatedAmount>
+        <ram:TypeCode>VAT</ram:TypeCode>
+        <ram:BasisAmount>198.00</ram:BasisAmount>
+        <ram:CategoryCode>S</ram:CategoryCode>
+        <ram:RateApplicablePercent>19.00</ram:RateApplicablePercent>
+      </ram:ApplicableTradeTax>
+      <!--  [PH] added for Schematron compliance -->
+      <ram:SpecifiedTradePaymentTerms>
+        <ram:DueDateDateTime>
+          <udt:DateTimeString format="102">20180404</udt:DateTimeString>
+        </ram:DueDateDateTime>
+      </ram:SpecifiedTradePaymentTerms>
       <ram:SpecifiedTradeSettlementHeaderMonetarySummation>
         <ram:LineTotalAmount>198.00</ram:LineTotalAmount>
         <ram:TaxBasisTotalAmount>198.00</ram:TaxBasisTotalAmount>
         <ram:TaxTotalAmount currencyID="EUR">37.62</ram:TaxTotalAmount>
         <ram:GrandTotalAmount>235.62</ram:GrandTotalAmount>
-		<ram:DuePayableAmount>235.62</ram:DuePayableAmount>
+        <ram:DuePayableAmount>235.62</ram:DuePayableAmount>
       </ram:SpecifiedTradeSettlementHeaderMonetarySummation>
     </ram:ApplicableHeaderTradeSettlement>
   </rsm:SupplyChainTradeTransaction>

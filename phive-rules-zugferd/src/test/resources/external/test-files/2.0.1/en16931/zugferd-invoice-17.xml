@@ -148,8 +148,10 @@ VKE/Geb: 1
           <ram:ChargeAmount>1.5000</ram:ChargeAmount>
           <ram:AppliedTradeAllowanceCharge>
             <ram:ActualAmount>0.05</ram:ActualAmount>
+          <!-- [PH] disabled due to Schematron check
             <ram:Reason>Artikelrabatt 1: -2,00%  Basis: -1,500 €  Rabatt: 0,03 €/Stk.
                         Artikelrabatt 2:         Basis:           Rabatt: 0,02 €/Stk.</ram:Reason>
+          -->              
           </ram:AppliedTradeAllowanceCharge>
         </ram:GrossPriceProductTradePrice>
         <ram:NetPriceProductTradePrice>

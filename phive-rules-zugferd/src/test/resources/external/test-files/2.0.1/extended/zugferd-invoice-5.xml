@@ -114,7 +114,8 @@ WEEE-Reg-Nr.: DE87654321
       </ram:SpecifiedLineTradeAgreement>
       <ram:SpecifiedLineTradeDelivery>
         <ram:BilledQuantity unitCode="C62">100.0000</ram:BilledQuantity>
-        <ram:PackageQuantity unitCode="CT">4.0000</ram:PackageQuantity>
+        <!-- [PH] changed from CT -->
+        <ram:PackageQuantity unitCode="C62">4.0000</ram:PackageQuantity>
       </ram:SpecifiedLineTradeDelivery>
       <ram:SpecifiedLineTradeSettlement>
         <ram:ApplicableTradeTax>
@@ -160,7 +161,8 @@ WEEE-Reg-Nr.: DE87654321
       </ram:SpecifiedLineTradeAgreement>
       <ram:SpecifiedLineTradeDelivery>
         <ram:BilledQuantity unitCode="C62">50.0000</ram:BilledQuantity>
-        <ram:PackageQuantity unitCode="CT">1.0000</ram:PackageQuantity>
+        <!-- [PH] changed from CT -->
+        <ram:PackageQuantity unitCode="C62">1.0000</ram:PackageQuantity>
       </ram:SpecifiedLineTradeDelivery>
       <ram:SpecifiedLineTradeSettlement>
         <ram:ApplicableTradeTax>
@@ -193,7 +195,8 @@ WEEE-Reg-Nr.: DE87654321
       </ram:SpecifiedLineTradeAgreement>
       <ram:SpecifiedLineTradeDelivery>
         <ram:BilledQuantity unitCode="C62">10.0000</ram:BilledQuantity>
-        <ram:PackageQuantity unitCode="CT">1.0000</ram:PackageQuantity>
+        <!-- [PH] changed from CT -->
+        <ram:PackageQuantity unitCode="C62">1.0000</ram:PackageQuantity>
       </ram:SpecifiedLineTradeDelivery>
       <ram:SpecifiedLineTradeSettlement>
         <ram:ApplicableTradeTax>
@@ -231,7 +234,8 @@ WEEE-Reg-Nr.: DE87654321
       </ram:SpecifiedLineTradeAgreement>
       <ram:SpecifiedLineTradeDelivery>
         <ram:BilledQuantity unitCode="C62">15.0000</ram:BilledQuantity>
-        <ram:PackageQuantity unitCode="BO">20.0000</ram:PackageQuantity>
+        <!-- [PH] changed from BO -->
+        <ram:PackageQuantity unitCode="C62">20.0000</ram:PackageQuantity>
       </ram:SpecifiedLineTradeDelivery>
       <ram:SpecifiedLineTradeSettlement>
         <ram:ApplicableTradeTax>
@@ -268,7 +272,8 @@ WEEE-Reg-Nr.: DE87654321
       </ram:SpecifiedLineTradeAgreement>
       <ram:SpecifiedLineTradeDelivery>
         <ram:BilledQuantity unitCode="C62">15.0000</ram:BilledQuantity>
-        <ram:PackageQuantity unitCode="BC">1.0000</ram:PackageQuantity>
+        <!-- [PH] changed from BC -->
+        <ram:PackageQuantity unitCode="C62">1.0000</ram:PackageQuantity>
       </ram:SpecifiedLineTradeDelivery>
       <ram:SpecifiedLineTradeSettlement>
         <ram:ApplicableTradeTax>
@@ -329,7 +334,8 @@ WEEE-Reg-Nr.: DE87654321
       </ram:SpecifiedLineTradeAgreement>
       <ram:SpecifiedLineTradeDelivery>
         <ram:BilledQuantity unitCode="C62">2.0000</ram:BilledQuantity>
-        <ram:PackageQuantity unitCode="PX">1.0000</ram:PackageQuantity>
+        <!-- [PH] changed from PX -->
+        <ram:PackageQuantity unitCode="C62">1.0000</ram:PackageQuantity>
       </ram:SpecifiedLineTradeDelivery>
       <ram:SpecifiedLineTradeSettlement>
         <ram:ApplicableTradeTax>

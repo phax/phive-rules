@@ -55,7 +55,14 @@ public final class CTestFiles
   public static ICommonsList <PhiveTestFile> getAllTestFiles ()
   {
     final ICommonsList <PhiveTestFile> ret = new CommonsArrayList <> ();
-    for (final DVRCoordinate aVESID : new DVRCoordinate [] { // 2.1
+    for (final DVRCoordinate aVESID : new DVRCoordinate [] { // 2.0.1
+                                                             ZugferdValidation.VID_ZUGFERD_2_0_1_MINIMUM,
+                                                             ZugferdValidation.VID_ZUGFERD_2_0_1_BASIC_WL,
+                                                             ZugferdValidation.VID_ZUGFERD_2_0_1_BASIC,
+                                                             ZugferdValidation.VID_ZUGFERD_2_0_1_EN16931,
+                                                             ZugferdValidation.VID_ZUGFERD_2_0_1_EXTENDED,
+
+                                                             // 2.1
                                                              ZugferdValidation.VID_ZUGFERD_2_1_MINIMUM,
                                                              ZugferdValidation.VID_ZUGFERD_2_1_BASIC_WL,
                                                              ZugferdValidation.VID_ZUGFERD_2_1_BASIC,
@@ -85,9 +92,10 @@ public final class CTestFiles
 
   @Nonnull
   @Nonempty
-  private static ICommonsList <? extends IReadableResource> _createListFacturX (@Nonnull final String sZugferdVersion,
-                                                                                @Nonnegative final int nCount,
-                                                                                @Nonnull final EZugferdProfile eProfile)
+  private static ICommonsList <? extends IReadableResource> _createList (@Nonnull final String sZugferdVersion,
+                                                                         @Nonnegative final int nCount,
+                                                                         @Nonnull final EZugferdProfile eProfile,
+                                                                         @Nonnull final String sFilenamePrefix)
   {
     final ICommonsList <IReadableResource> ret = new CommonsArrayList <> (nCount);
     for (int i = 1; i <= nCount; ++i)
@@ -95,10 +103,21 @@ public final class CTestFiles
                                       sZugferdVersion +
                                       "/" +
                                       eProfile.getFolderName () +
-                                      "/factur-x-" +
+                                      "/" +
+                                      sFilenamePrefix +
+                                      "-" +
                                       i +
                                       ".xml"));
     return ret;
+  }
+
+  @Nonnull
+  @Nonempty
+  private static ICommonsList <? extends IReadableResource> _createListFacturX (@Nonnull final String sZugferdVersion,
+                                                                                @Nonnegative final int nCount,
+                                                                                @Nonnull final EZugferdProfile eProfile)
+  {
+    return _createList (sZugferdVersion, nCount, eProfile, "factur-x");
   }
 
   @Nonnull
@@ -106,6 +125,21 @@ public final class CTestFiles
   public static ICommonsList <? extends IReadableResource> getAllMatchingTestFiles (@Nonnull final DVRCoordinate aVESID)
   {
     ValueEnforcer.notNull (aVESID, "VESID");
+
+    {
+      final String sVersion = "2.0.1";
+      final String sFilenamePrefix = "zugferd-invoice";
+      if (aVESID.equals (ZugferdValidation.VID_ZUGFERD_2_0_1_MINIMUM))
+        return _createList (sVersion, 1, EZugferdProfile.MINIMUM, sFilenamePrefix);
+      if (aVESID.equals (ZugferdValidation.VID_ZUGFERD_2_0_1_BASIC_WL))
+        return _createList (sVersion, 0, EZugferdProfile.BASIC_WL, sFilenamePrefix);
+      if (aVESID.equals (ZugferdValidation.VID_ZUGFERD_2_0_1_BASIC))
+        return _createList (sVersion, 3, EZugferdProfile.BASIC, sFilenamePrefix);
+      if (aVESID.equals (ZugferdValidation.VID_ZUGFERD_2_0_1_EN16931))
+        return _createList (sVersion, 20, EZugferdProfile.EN16931, sFilenamePrefix);
+      if (aVESID.equals (ZugferdValidation.VID_ZUGFERD_2_0_1_EXTENDED))
+        return _createList (sVersion, 5, EZugferdProfile.EXTENDED, sFilenamePrefix);
+    }
 
     {
       final String sVersion = "2.1";

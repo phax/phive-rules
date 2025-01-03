@@ -98,7 +98,9 @@ Handelsregisternummer: H A 123
           <ram:ChargeAmount>4.0000</ram:ChargeAmount>
           <ram:AppliedTradeAllowanceCharge>
           <ram:ActualAmount>0.6667</ram:ActualAmount>
+          <!-- [PH] disabled due to Schematron check
             <ram:Reason>Rabatt</ram:Reason>
+             -->
           </ram:AppliedTradeAllowanceCharge>
         </ram:GrossPriceProductTradePrice>
         <ram:NetPriceProductTradePrice>
