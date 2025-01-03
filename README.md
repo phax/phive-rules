@@ -208,6 +208,7 @@ I hope that with the introduction of PINT, the versioning problem will be solved
     * Moved Peppol 2023-05 and 2023-11 rules from `phive-rules-peppol` to `phive-rules-peppol-legacy`
     * Added support for ZuGFERD 2.0.1 - all profiles (XML only)
     * Added support for ZuGFERD 2.1 - all profiles (XML only)
+    * Added support for OIOUBL 3.0.1 rules - this requires the EN16931 validation artefacts to be available as well
 * v3.2.2 - 2024-12-05
     * Updated to XRechnung 3.0.2 Schematron Rules 2.2.0
     * Added Peppol November 2024 release (Billing 3.0.18 and Upgrade 3.0.14)

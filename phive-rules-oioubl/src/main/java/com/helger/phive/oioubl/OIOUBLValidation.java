@@ -26,6 +26,7 @@ import com.helger.commons.io.resource.ClassPathResource;
 import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
 import com.helger.phive.api.executorset.ValidationExecutorSet;
+import com.helger.phive.en16931.EN16931Validation;
 import com.helger.phive.rules.api.PhiveRulesHelper;
 import com.helger.phive.rules.api.PhiveRulesUBLHelper;
 import com.helger.phive.xml.source.IValidationSourceXML;
@@ -285,6 +286,21 @@ public final class OIOUBLValidation
                                                                                                              "utility-statement",
                                                                                                              VERSION_1_14_2);
 
+  // 3.0.1
+  private static final String VERSION_3_0_1 = "3.0.1";
+  public static final DVRCoordinate VID_OIOUBL_CREDIT_NOTE_3_0_1 = PhiveRulesHelper.createCoordinate (GROUPID,
+                                                                                                      "credit-note",
+                                                                                                      VERSION_3_0_1);
+  public static final DVRCoordinate VID_OIOUBL_INVOICE_3_0_1 = PhiveRulesHelper.createCoordinate (GROUPID,
+                                                                                                  "invoice",
+                                                                                                  VERSION_3_0_1);
+  public static final DVRCoordinate VID_OIOUBL_INVOICE_RESPONSE_3_0_1 = PhiveRulesHelper.createCoordinate (GROUPID,
+                                                                                                           "invoice-response",
+                                                                                                           VERSION_3_0_1);
+  public static final DVRCoordinate VID_OIOUBL_MLR_3_0_1 = PhiveRulesHelper.createCoordinate (GROUPID,
+                                                                                              "mlr",
+                                                                                              VERSION_3_0_1);
+
   private OIOUBLValidation ()
   {}
 
@@ -303,18 +319,18 @@ public final class OIOUBLValidation
     final boolean bNotDeprecated = false;
 
     // MUST be UBL 2.0 as an include refers to a file only available in UBL 2.0
-    final ICommonsList <ClassPathResource> XSD_UTITLITY_STATEMENT = new CommonsArrayList <> (CUBL20.XSD_CODELIST_UNIT_CODE,
-                                                                                             CUBL20.XSD_CODELIST_MIME_MEDIA_TYPE_CODE,
-                                                                                             CUBL20.XSD_CODELIST_CURRENCY_CODE,
-                                                                                             CUBL20.XSD_CODELIST_LANGUAGE_CODE,
-                                                                                             CUBL20.XSD_UNQUALIFIED_DATA_TYPES,
-                                                                                             CUBL20.XSD_QUALIFIED_DATA_TYPES,
-                                                                                             new ClassPathResource ("external/schemas/OIOUBL_v2.1-b/common/OIOUBL_UTS-CommonBasicComponents-2.1.xsd",
-                                                                                                                    _getCL ()),
-                                                                                             new ClassPathResource ("external/schemas/OIOUBL_v2.1-b/common/OIOUBL_UTS-CommonAggregateComponents-2.1.xsd",
-                                                                                                                    _getCL ()),
-                                                                                             new ClassPathResource ("external/schemas/OIOUBL_v2.1-b/maindoc/UBL-UtilityStatement-2.1.xsd",
-                                                                                                                    _getCL ()));
+    final ICommonsList <ClassPathResource> aXSDUtilityStatement = new CommonsArrayList <> (CUBL20.XSD_CODELIST_UNIT_CODE,
+                                                                                           CUBL20.XSD_CODELIST_MIME_MEDIA_TYPE_CODE,
+                                                                                           CUBL20.XSD_CODELIST_CURRENCY_CODE,
+                                                                                           CUBL20.XSD_CODELIST_LANGUAGE_CODE,
+                                                                                           CUBL20.XSD_UNQUALIFIED_DATA_TYPES,
+                                                                                           CUBL20.XSD_QUALIFIED_DATA_TYPES,
+                                                                                           new ClassPathResource ("external/schemas/OIOUBL_v2.1-b/common/OIOUBL_UTS-CommonBasicComponents-2.1.xsd",
+                                                                                                                  _getCL ()),
+                                                                                           new ClassPathResource ("external/schemas/OIOUBL_v2.1-b/common/OIOUBL_UTS-CommonAggregateComponents-2.1.xsd",
+                                                                                                                  _getCL ()),
+                                                                                           new ClassPathResource ("external/schemas/OIOUBL_v2.1-b/maindoc/UBL-UtilityStatement-2.1.xsd",
+                                                                                                                  _getCL ()));
 
     // 1.12.3
     {
@@ -444,7 +460,7 @@ public final class OIOUBLValidation
                                                                              "OIOUBL Utility Statement " +
                                                                                                                   VID_OIOUBL_UTILITY_STATEMENT_1_12_3.getVersionString (),
                                                                              PhiveRulesHelper.createSimpleStatus (bDeprecated),
-                                                                             ValidationExecutorXSD.create (XSD_UTITLITY_STATEMENT),
+                                                                             ValidationExecutorXSD.create (aXSDUtilityStatement),
                                                                              PhiveRulesUBLHelper.createXSLT_UBL20 (new ClassPathResource (sPath +
                                                                                                                                           "OIOUBL_UtilityStatement_Schematron.xslt",
                                                                                                                                           _getCL ()))));
@@ -578,7 +594,7 @@ public final class OIOUBLValidation
                                                                              "OIOUBL Utility Statement " +
                                                                                                                   VID_OIOUBL_UTILITY_STATEMENT_1_13_0.getVersionString (),
                                                                              PhiveRulesHelper.createSimpleStatus (bDeprecated),
-                                                                             ValidationExecutorXSD.create (XSD_UTITLITY_STATEMENT),
+                                                                             ValidationExecutorXSD.create (aXSDUtilityStatement),
                                                                              PhiveRulesUBLHelper.createXSLT_UBL20 (new ClassPathResource (sPath +
                                                                                                                                           "OIOUBL_UtilityStatement_Schematron.xslt",
                                                                                                                                           _getCL ()))));
@@ -712,7 +728,7 @@ public final class OIOUBLValidation
                                                                              "OIOUBL Utility Statement " +
                                                                                                                   VID_OIOUBL_UTILITY_STATEMENT_1_13_2.getVersionString (),
                                                                              PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
-                                                                             ValidationExecutorXSD.create (XSD_UTITLITY_STATEMENT),
+                                                                             ValidationExecutorXSD.create (aXSDUtilityStatement),
                                                                              PhiveRulesUBLHelper.createXSLT_UBL20 (new ClassPathResource (sPath +
                                                                                                                                           "OIOUBL_UtilityStatement_Schematron.xslt",
                                                                                                                                           _getCL ()))));
@@ -723,15 +739,14 @@ public final class OIOUBLValidation
       final String sPath = "/external/schematron/oioubl/1.14.2/xslt/";
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OIOUBL_APPLICATION_RESPONSE_1_14_2,
                                                                              "OIOUBL Application Response " +
-                                                                                                                     VID_OIOUBL_APPLICATION_RESPONSE_1_14_2.getVersionString (),
+                                                                                                                     VERSION_1_14_2,
                                                                              PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllApplicationResponseXSDs ()),
                                                                              PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                                                           "OIOUBL_ApplicationResponse_Schematron.xslt",
                                                                                                                                           _getCL ()))));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OIOUBL_CATALOGUE_1_14_2,
-                                                                             "OIOUBL Catalogue " +
-                                                                                                          VID_OIOUBL_CATALOGUE_1_14_2.getVersionString (),
+                                                                             "OIOUBL Catalogue " + VERSION_1_14_2,
                                                                              PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllCatalogueXSDs ()),
                                                                              PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
@@ -739,7 +754,7 @@ public final class OIOUBLValidation
                                                                                                                                           _getCL ()))));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OIOUBL_CATALOGUE_DELETION_1_14_2,
                                                                              "OIOUBL Catalogue Deletion " +
-                                                                                                                   VID_OIOUBL_CATALOGUE_DELETION_1_14_2.getVersionString (),
+                                                                                                                   VERSION_1_14_2,
                                                                              PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllCatalogueDeletionXSDs ()),
                                                                              PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
@@ -747,7 +762,7 @@ public final class OIOUBLValidation
                                                                                                                                           _getCL ()))));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OIOUBL_CATALOGUE_ITEM_SPECIFICATION_UPDATE_1_14_2,
                                                                              "OIOUBL Catalogue Item Specification Update " +
-                                                                                                                                    VID_OIOUBL_CATALOGUE_ITEM_SPECIFICATION_UPDATE_1_14_2.getVersionString (),
+                                                                                                                                    VERSION_1_14_2,
                                                                              PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllCatalogueItemSpecificationUpdateXSDs ()),
                                                                              PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
@@ -755,7 +770,7 @@ public final class OIOUBLValidation
                                                                                                                                           _getCL ()))));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OIOUBL_CATALOGUE_PRICING_UPDATE_1_14_2,
                                                                              "OIOUBL Catalogue Pricing Update " +
-                                                                                                                         VID_OIOUBL_CATALOGUE_PRICING_UPDATE_1_14_2.getVersionString (),
+                                                                                                                         VERSION_1_14_2,
                                                                              PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllCataloguePricingUpdateXSDs ()),
                                                                              PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
@@ -763,31 +778,28 @@ public final class OIOUBLValidation
                                                                                                                                           _getCL ()))));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OIOUBL_CATALOGUE_REQUEST_1_14_2,
                                                                              "OIOUBL Catalogue Request " +
-                                                                                                                  VID_OIOUBL_CATALOGUE_REQUEST_1_14_2.getVersionString (),
+                                                                                                                  VERSION_1_14_2,
                                                                              PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllCatalogueRequestXSDs ()),
                                                                              PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                                                           "OIOUBL_CatalogueRequest_Schematron.xslt",
                                                                                                                                           _getCL ()))));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OIOUBL_CREDIT_NOTE_1_14_2,
-                                                                             "OIOUBL Credit Note " +
-                                                                                                            VID_OIOUBL_CREDIT_NOTE_1_14_2.getVersionString (),
+                                                                             "OIOUBL Credit Note " + VERSION_1_14_2,
                                                                              PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
                                                                              PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                                                           "OIOUBL_CreditNote_Schematron.xslt",
                                                                                                                                           _getCL ()))));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OIOUBL_INVOICE_1_14_2,
-                                                                             "OIOUBL Invoice " +
-                                                                                                        VID_OIOUBL_INVOICE_1_14_2.getVersionString (),
+                                                                             "OIOUBL Invoice " + VERSION_1_14_2,
                                                                              PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
                                                                              PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                                                           "OIOUBL_Invoice_Schematron.xslt",
                                                                                                                                           _getCL ()))));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OIOUBL_ORDER_1_14_2,
-                                                                             "OIOUBL Order " +
-                                                                                                      VID_OIOUBL_ORDER_1_14_2.getVersionString (),
+                                                                             "OIOUBL Order " + VERSION_1_14_2,
                                                                              PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllOrderXSDs ()),
                                                                              PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
@@ -795,23 +807,21 @@ public final class OIOUBLValidation
                                                                                                                                           _getCL ()))));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OIOUBL_ORDER_CANCELLATION_1_14_2,
                                                                              "OIOUBL Order Cancellation " +
-                                                                                                                   VID_OIOUBL_ORDER_CANCELLATION_1_14_2.getVersionString (),
+                                                                                                                   VERSION_1_14_2,
                                                                              PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllOrderCancellationXSDs ()),
                                                                              PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                                                           "OIOUBL_OrderCancellation_Schematron.xslt",
                                                                                                                                           _getCL ()))));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OIOUBL_ORDER_CHANGE_1_14_2,
-                                                                             "OIOUBL Order Change " +
-                                                                                                             VID_OIOUBL_ORDER_CHANGE_1_14_2.getVersionString (),
+                                                                             "OIOUBL Order Change " + VERSION_1_14_2,
                                                                              PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllOrderChangeXSDs ()),
                                                                              PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                                                           "OIOUBL_OrderChange_Schematron.xslt",
                                                                                                                                           _getCL ()))));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OIOUBL_ORDER_RESPONSE_1_14_2,
-                                                                             "OIOUBL Order Response " +
-                                                                                                               VID_OIOUBL_ORDER_RESPONSE_1_14_2.getVersionString (),
+                                                                             "OIOUBL Order Response " + VERSION_1_14_2,
                                                                              PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllOrderResponseXSDs ()),
                                                                              PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
@@ -819,23 +829,21 @@ public final class OIOUBLValidation
                                                                                                                                           _getCL ()))));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OIOUBL_ORDER_RESPONSE_SIMPLE_1_14_2,
                                                                              "OIOUBL Order Response Simple " +
-                                                                                                                      VID_OIOUBL_ORDER_RESPONSE_SIMPLE_1_14_2.getVersionString (),
+                                                                                                                      VERSION_1_14_2,
                                                                              PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllOrderResponseSimpleXSDs ()),
                                                                              PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                                                           "OIOUBL_OrderResponseSimple_Schematron.xslt",
                                                                                                                                           _getCL ()))));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OIOUBL_REMINDER_1_14_2,
-                                                                             "OIOUBL Reminder " +
-                                                                                                         VID_OIOUBL_REMINDER_1_14_2.getVersionString (),
+                                                                             "OIOUBL Reminder " + VERSION_1_14_2,
                                                                              PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllReminderXSDs ()),
                                                                              PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                                                           "OIOUBL_Reminder_Schematron.xslt",
                                                                                                                                           _getCL ()))));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OIOUBL_STATEMENT_1_14_2,
-                                                                             "OIOUBL Statement " +
-                                                                                                          VID_OIOUBL_STATEMENT_1_14_2.getVersionString (),
+                                                                             "OIOUBL Statement " + VERSION_1_14_2,
                                                                              PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllStatementXSDs ()),
                                                                              PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
@@ -844,11 +852,52 @@ public final class OIOUBLValidation
 
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OIOUBL_UTILITY_STATEMENT_1_14_2,
                                                                              "OIOUBL Utility Statement " +
-                                                                                                                  VID_OIOUBL_UTILITY_STATEMENT_1_14_2.getVersionString (),
+                                                                                                                  VERSION_1_14_2,
                                                                              PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
-                                                                             ValidationExecutorXSD.create (XSD_UTITLITY_STATEMENT),
+                                                                             ValidationExecutorXSD.create (aXSDUtilityStatement),
                                                                              PhiveRulesUBLHelper.createXSLT_UBL20 (new ClassPathResource (sPath +
                                                                                                                                           "OIOUBL_UtilityStatement_Schematron.xslt",
+                                                                                                                                          _getCL ()))));
+    }
+
+    // 3.0.1
+    {
+      final String sPath = "/external/schematron/oioubl/3.0.1/xslt/";
+      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.createDerived (aRegistry.getOfID (EN16931Validation.VID_UBL_CREDIT_NOTE_1313),
+                                                                                    VID_OIOUBL_CREDIT_NOTE_3_0_1,
+                                                                                    "OIOUBL Credit Note " +
+                                                                                                                  VERSION_3_0_1,
+                                                                                    PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
+                                                                                    PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
+                                                                                                                                                 "OIOUBL-Creditnote.xslt",
+                                                                                                                                                 _getCL ()))));
+      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.createDerived (aRegistry.getOfID (EN16931Validation.VID_UBL_INVOICE_1313),
+                                                                                    VID_OIOUBL_INVOICE_3_0_1,
+                                                                                    "OIOUBL Invoice " + VERSION_3_0_1,
+                                                                                    PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
+                                                                                    PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
+                                                                                                                                                 "OIOUBL-Invoice.xslt",
+                                                                                                                                                 _getCL ()))));
+      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OIOUBL_INVOICE_RESPONSE_3_0_1,
+                                                                             "OIOUBL Invoice Response " + VERSION_3_0_1,
+                                                                             PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
+                                                                             ValidationExecutorXSD.create (UBL21Marshaller.getAllApplicationResponseXSDs ()),
+                                                                             PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
+                                                                                                                                          "DK-PEPPOLBIS-T111.xslt",
+                                                                                                                                          _getCL ())),
+                                                                             PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
+                                                                                                                                          "OIOUBL-Invoice-Response.xslt",
+                                                                                                                                          _getCL ()))));
+      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OIOUBL_MLR_3_0_1,
+                                                                             "OIOUBL Message Level Response " +
+                                                                                                   VERSION_3_0_1,
+                                                                             PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
+                                                                             ValidationExecutorXSD.create (UBL21Marshaller.getAllApplicationResponseXSDs ()),
+                                                                             PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
+                                                                                                                                          "DK-PEPPOLBIS-T71.xslt",
+                                                                                                                                          _getCL ())),
+                                                                             PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
+                                                                                                                                          "OIOUBL-Message-Level-Response.xslt",
                                                                                                                                           _getCL ()))));
     }
   }

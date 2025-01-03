@@ -53,6 +53,10 @@
     </developer>
   </developers>
   
+  <properties>
+    <oioubl3.version>3.0.1</oioubl3.version>
+  </properties>
+  
   <dependencies>
     <dependency>
       <groupId>com.helger.commons</groupId>
@@ -71,6 +75,10 @@
     <dependency>
       <groupId>com.helger.phive.rules</groupId>
       <artifactId>phive-rules-api</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.helger.phive.rules</groupId>
+      <artifactId>phive-rules-en16931</artifactId>
     </dependency>
 
     <dependency>
@@ -204,6 +212,73 @@
               <parameters>
                 <allow-foreign>true</allow-foreign>
               </parameters>
+            </configuration>
+          </execution>
+          -->
+          <!-- 
+          <execution>
+            <id>pp-cn</id>
+            <goals>
+              <goal>preprocess</goal>
+            </goals>
+            <configuration>
+              <sourceFile>src/test/resources/external/rule-source/oioubl/${oioubl3.version}/OIOUBL-Creditnote.sch</sourceFile>
+              <targetFile>src/test/resources/external/rule-source/oioubl/${oioubl3.version}/pp/OIOUBL-Creditnote.sch</targetFile>
+            </configuration>
+          </execution>
+          <execution>
+            <id>pp-inv</id>
+            <goals>
+              <goal>preprocess</goal>
+            </goals>
+            <configuration>
+              <sourceFile>src/test/resources/external/rule-source/oioubl/${oioubl3.version}/OIOUBL-Invoice.sch</sourceFile>
+              <targetFile>src/test/resources/external/rule-source/oioubl/${oioubl3.version}/pp/OIOUBL-Invoice.sch</targetFile>
+            </configuration>
+          </execution>
+          <execution>
+            <id>pp-ir</id>
+            <goals>
+              <goal>preprocess</goal>
+            </goals>
+            <configuration>
+              <sourceFile>src/test/resources/external/rule-source/oioubl/${oioubl3.version}/OIOUBL-Invoice-Response.sch</sourceFile>
+              <targetFile>src/test/resources/external/rule-source/oioubl/${oioubl3.version}/pp/OIOUBL-Invoice-Response.sch</targetFile>
+            </configuration>
+          </execution>
+          <execution>
+            <id>pp-mlr</id>
+            <goals>
+              <goal>preprocess</goal>
+            </goals>
+            <configuration>
+              <sourceFile>src/test/resources/external/rule-source/oioubl/${oioubl3.version}/OIOUBL-Message-Level-Response.sch</sourceFile>
+              <targetFile>src/test/resources/external/rule-source/oioubl/${oioubl3.version}/pp/OIOUBL-Message-Level-Response.sch</targetFile>
+            </configuration>
+          </execution>
+          <execution>
+            <id>oioubl3-pp</id>
+            <goals>
+              <goal>convert</goal>
+            </goals>
+            <configuration>
+              <schematronDirectory>src/test/resources/external/rule-source/oioubl/${oioubl3.version}/pp</schematronDirectory>
+              <schematronPattern>*.sch</schematronPattern>
+              <xsltDirectory>src/main/resources/external/schematron/oioubl/${oioubl3.version}/xslt</xsltDirectory>
+              <parameters>
+                <allow-foreign>true</allow-foreign>
+              </parameters>
+            </configuration>
+          </execution>
+          <execution>
+            <id>oioubl3-peppol</id>
+            <goals>
+              <goal>convert</goal>
+            </goals>
+            <configuration>
+              <schematronDirectory>src/test/resources/external/rule-source/oioubl/${oioubl3.version}</schematronDirectory>
+              <schematronPattern>DK*.sch</schematronPattern>
+              <xsltDirectory>src/main/resources/external/schematron/oioubl/${oioubl3.version}/xslt</xsltDirectory>
             </configuration>
           </execution>
           -->

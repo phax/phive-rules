@@ -1,0 +1,26 @@
+ <function name="u:checkPIVAseIT" as="xs:boolean" xmlns="http://www.w3.org/1999/XSL/Transform">
+    <param name="arg" as="xs:string"/>
+    <variable name="paese" select="substring($arg,1,2)"/>
+    <variable name="codice" select="substring($arg,3)"/>
+    <sequence select="
+		
+			if ( $paese = 'IT' or $paese = 'it' )
+			then
+			(
+				if ( ( string-length($codice) = 11 ) and ( if (u:checkPIVA($codice)!=0) then false() else true() ))
+				then 
+				(
+					true()
+				)
+				else
+				(
+					false()
+				)
+			)
+			else
+			(
+				true()
+			)
+		
+		"/>
+  </function>

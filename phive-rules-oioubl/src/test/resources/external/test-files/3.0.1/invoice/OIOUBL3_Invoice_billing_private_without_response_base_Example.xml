@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Invoice xmlns="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2"
+         xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+         xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
+
+    <cbc:UBLVersionID>2.1</cbc:UBLVersionID>
+    <cbc:CustomizationID>urn:fdc:oioubl.dk:trns:billing:invoice:3.0</cbc:CustomizationID>
+    <cbc:ProfileID>urn:fdc:oioubl.dk:bis:billing_private_without_response:3</cbc:ProfileID>
+    <cbc:ID>202400095678</cbc:ID>
+    <cbc:IssueDate>2024-05-20</cbc:IssueDate>
+    <cbc:DueDate>2024-05-25</cbc:DueDate>
+    <cbc:InvoiceTypeCode>380</cbc:InvoiceTypeCode>
+    <cbc:DocumentCurrencyCode>DKK</cbc:DocumentCurrencyCode>
+    <cbc:AccountingCost>5250124502</cbc:AccountingCost>
+    <cac:OrderReference>
+        <cbc:ID>5002701</cbc:ID>
+    </cac:OrderReference>
+    <cac:AccountingSupplierParty>
+        <cac:Party>
+            <cbc:EndpointID schemeID="0184">16356706</cbc:EndpointID>
+            <cac:PartyIdentification>
+                <cbc:ID schemeID="0184">16356706</cbc:ID>
+            </cac:PartyIdentification>
+            <cac:PartyName>
+                <cbc:Name>Tavleverandøren</cbc:Name>
+            </cac:PartyName>
+            <cac:PostalAddress>
+                <cbc:StreetName>Leverandørvej</cbc:StreetName>
+                <cbc:BuildingNumber>11</cbc:BuildingNumber>
+                <cbc:CityName>Dyssegård</cbc:CityName>
+                <cbc:PostalZone>2870</cbc:PostalZone>
+                <cac:Country>
+                    <cbc:IdentificationCode>DK</cbc:IdentificationCode>
+                </cac:Country>
+            </cac:PostalAddress>
+            <cac:PartyTaxScheme>
+                <cbc:CompanyID schemeID="ZZZ">DK-PRIVATE</cbc:CompanyID>
+                <cac:TaxScheme>
+                    <cbc:ID>VAT</cbc:ID>
+                </cac:TaxScheme>
+            </cac:PartyTaxScheme>
+            <cac:PartyLegalEntity>
+                <cbc:RegistrationName>Tavleleverandøren</cbc:RegistrationName>
+                <cbc:CompanyID schemeID="0184">16356706</cbc:CompanyID>
+            </cac:PartyLegalEntity>
+            <cac:Contact>
+                <cbc:Name>Hugo Jensen</cbc:Name>
+                <cbc:Telephone>+4515812337</cbc:Telephone>
+                <cbc:ElectronicMail>Hugo@tavl.dk</cbc:ElectronicMail>
+            </cac:Contact>
+        </cac:Party>
+    </cac:AccountingSupplierParty>
+    <cac:AccountingCustomerParty>
+        <cac:Party>
+            <cbc:EndpointID schemeID="0088">5798009811578</cbc:EndpointID>
+            <cac:PartyIdentification>
+                <cbc:ID schemeID="0088">5798009811578</cbc:ID>
+            </cac:PartyIdentification>
+            <cac:PartyName>
+                <cbc:Name>Customer A/S</cbc:Name>
+            </cac:PartyName>
+            <cac:PostalAddress>
+                <cbc:StreetName>Fredericiavej</cbc:StreetName>
+                <cbc:BuildingNumber>8</cbc:BuildingNumber>
+                <cbc:CityName>Helsingør</cbc:CityName>
+                <cbc:PostalZone>3000</cbc:PostalZone>
+                <cac:Country>
+                    <cbc:IdentificationCode>DK</cbc:IdentificationCode>
+                </cac:Country>
+            </cac:PostalAddress>
+            <cac:PartyTaxScheme>
+                <cbc:CompanyID schemeID="0198">DK12345678</cbc:CompanyID>
+                <cac:TaxScheme>
+                    <cbc:ID>VAT</cbc:ID>
+                </cac:TaxScheme>
+            </cac:PartyTaxScheme>
+            <cac:PartyLegalEntity>
+                <cbc:RegistrationName>Customer A A/S</cbc:RegistrationName>
+                <cbc:CompanyID schemeID="0184">12345678</cbc:CompanyID>
+            </cac:PartyLegalEntity>
+            <cac:Contact>
+                <cbc:Name>Hans Hansen</cbc:Name>
+                <cbc:Telephone>004526532147</cbc:Telephone>
+                <cbc:ElectronicMail>Hans@dls.dk</cbc:ElectronicMail>
+            </cac:Contact>
+        </cac:Party>
+    </cac:AccountingCustomerParty>
+    <cac:Delivery>
+        <cbc:ActualDeliveryDate>2024-05-15</cbc:ActualDeliveryDate>
+    </cac:Delivery>
+    <cac:PaymentMeans>
+        <cbc:PaymentMeansCode>42</cbc:PaymentMeansCode>
+        <cac:PayeeFinancialAccount>
+            <cbc:ID>1234567890</cbc:ID>
+            <cac:FinancialInstitutionBranch>
+                <cbc:ID>1234</cbc:ID>
+            </cac:FinancialInstitutionBranch>
+        </cac:PayeeFinancialAccount>
+    </cac:PaymentMeans>
+    <cac:TaxTotal>
+        <cbc:TaxAmount currencyID="DKK">1262.50</cbc:TaxAmount>
+        <cac:TaxSubtotal>
+            <cbc:TaxableAmount currencyID="DKK">5050.00</cbc:TaxableAmount>
+            <cbc:TaxAmount currencyID="DKK">1262.50</cbc:TaxAmount>
+            <cac:TaxCategory>
+                <cbc:ID>S</cbc:ID>
+                <cbc:Percent>25</cbc:Percent>
+                <cac:TaxScheme>
+                    <cbc:ID>VAT</cbc:ID>
+                </cac:TaxScheme>
+            </cac:TaxCategory>
+        </cac:TaxSubtotal>
+    </cac:TaxTotal>
+    <cac:LegalMonetaryTotal>
+        <cbc:LineExtensionAmount currencyID="DKK">5050.00</cbc:LineExtensionAmount>
+        <cbc:TaxExclusiveAmount currencyID="DKK">5050.00</cbc:TaxExclusiveAmount>
+        <cbc:TaxInclusiveAmount currencyID="DKK">6312.50</cbc:TaxInclusiveAmount>
+        <cbc:PayableAmount currencyID="DKK">6312.50</cbc:PayableAmount>
+    </cac:LegalMonetaryTotal>
+    <cac:InvoiceLine>
+        <cbc:ID>1</cbc:ID>
+        <cbc:InvoicedQuantity unitCode="EA">1.00</cbc:InvoicedQuantity>
+        <cbc:LineExtensionAmount currencyID="DKK">5000.00</cbc:LineExtensionAmount>
+        <cac:OrderLineReference>
+            <cbc:LineID>1</cbc:LineID>
+        </cac:OrderLineReference>
+        <cac:TaxTotal>
+            <cbc:TaxAmount currencyID="DKK">1250.00</cbc:TaxAmount>
+            <cac:TaxSubtotal>
+                <cbc:TaxableAmount currencyID="DKK">5000.00</cbc:TaxableAmount>
+                <cbc:TaxAmount currencyID="DKK">1250.00</cbc:TaxAmount>
+                <cac:TaxCategory>
+                    <cbc:ID>S</cbc:ID>
+                    <cbc:Percent>25</cbc:Percent>
+                    <cac:TaxScheme>
+                        <cbc:ID>VAT</cbc:ID>
+                    </cac:TaxScheme>
+                </cac:TaxCategory>
+            </cac:TaxSubtotal>
+        </cac:TaxTotal>
+        <cac:Item>
+            <cbc:Description>Hejsetavle</cbc:Description>
+            <cbc:Name>Hejsetavle</cbc:Name>
+            <cac:ClassifiedTaxCategory>
+                <cbc:ID>S</cbc:ID>
+                <cbc:Percent>25</cbc:Percent>
+                <cac:TaxScheme>
+                    <cbc:ID>VAT</cbc:ID>
+                </cac:TaxScheme>
+            </cac:ClassifiedTaxCategory>
+        </cac:Item>
+        <cac:Price>
+            <cbc:PriceAmount currencyID="DKK">5000.00</cbc:PriceAmount>
+            <cbc:BaseQuantity unitCode="EA">1</cbc:BaseQuantity>
+        </cac:Price>
+    </cac:InvoiceLine>
+    <cac:InvoiceLine>
+        <cbc:ID>2</cbc:ID>
+        <cbc:InvoicedQuantity unitCode="EA">2.00</cbc:InvoicedQuantity>
+        <cbc:LineExtensionAmount currencyID="DKK">50.00</cbc:LineExtensionAmount>
+        <cac:OrderLineReference>
+            <cbc:LineID>2</cbc:LineID>
+        </cac:OrderLineReference>
+        <cac:TaxTotal>
+            <cbc:TaxAmount currencyID="DKK">12.50</cbc:TaxAmount>
+            <cac:TaxSubtotal>
+                <cbc:TaxableAmount currencyID="DKK">50.00</cbc:TaxableAmount>
+                <cbc:TaxAmount currencyID="DKK">12.50</cbc:TaxAmount>
+                <cac:TaxCategory>
+                    <cbc:ID>S</cbc:ID>
+                    <cbc:Percent>25</cbc:Percent>
+                    <cac:TaxScheme>
+                        <cbc:ID>VAT</cbc:ID>
+                    </cac:TaxScheme>
+                </cac:TaxCategory>
+            </cac:TaxSubtotal>
+        </cac:TaxTotal>
+        <cac:Item>
+            <cbc:Description>Beslag</cbc:Description>
+            <cbc:Name>Beslag</cbc:Name>
+            <cac:ClassifiedTaxCategory>
+                <cbc:ID>S</cbc:ID>
+                <cbc:Percent>25</cbc:Percent>
+                <cac:TaxScheme>
+                    <cbc:ID>VAT</cbc:ID>
+                </cac:TaxScheme>
+            </cac:ClassifiedTaxCategory>
+        </cac:Item>
+        <cac:Price>
+            <cbc:PriceAmount currencyID="DKK">25.00</cbc:PriceAmount>
+            <cbc:BaseQuantity unitCode="EA">1</cbc:BaseQuantity>
+        </cac:Price>
+    </cac:InvoiceLine>
+</Invoice>

@@ -18,6 +18,8 @@ package com.helger.phive.oioubl.mock;
 
 import static org.junit.Assert.assertTrue;
 
+import java.io.File;
+
 import javax.annotation.Nonnull;
 import javax.annotation.concurrent.Immutable;
 
@@ -25,11 +27,13 @@ import com.helger.commons.ValueEnforcer;
 import com.helger.commons.annotation.ReturnsMutableCopy;
 import com.helger.commons.collection.impl.CommonsArrayList;
 import com.helger.commons.collection.impl.ICommonsList;
+import com.helger.commons.io.file.FileSystemIterator;
 import com.helger.commons.io.resource.ClassPathResource;
 import com.helger.commons.io.resource.IReadableResource;
 import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.phive.api.executorset.ValidationExecutorSetRegistry;
 import com.helger.phive.api.mock.PhiveTestFile;
+import com.helger.phive.en16931.EN16931Validation;
 import com.helger.phive.oioubl.OIOUBLLegacyValidation;
 import com.helger.phive.oioubl.OIOUBLValidation;
 import com.helger.phive.xml.source.IValidationSourceXML;
@@ -41,6 +45,7 @@ public final class CTestFiles
   public static final ValidationExecutorSetRegistry <IValidationSourceXML> VES_REGISTRY = new ValidationExecutorSetRegistry <> ();
   static
   {
+    EN16931Validation.initEN16931 (VES_REGISTRY);
     OIOUBLValidation.initOIOUBL (VES_REGISTRY);
     OIOUBLLegacyValidation.initLegacyOIOUBL (VES_REGISTRY);
   }
@@ -140,7 +145,13 @@ public final class CTestFiles
                                                             OIOUBLValidation.VID_OIOUBL_ORDER_RESPONSE_SIMPLE_1_14_2,
                                                             OIOUBLValidation.VID_OIOUBL_REMINDER_1_14_2,
                                                             OIOUBLValidation.VID_OIOUBL_STATEMENT_1_14_2,
-                                                            OIOUBLValidation.VID_OIOUBL_UTILITY_STATEMENT_1_14_2 })
+                                                            OIOUBLValidation.VID_OIOUBL_UTILITY_STATEMENT_1_14_2,
+
+                                                            // 3.0.1
+                                                            OIOUBLValidation.VID_OIOUBL_CREDIT_NOTE_3_0_1,
+                                                            OIOUBLValidation.VID_OIOUBL_INVOICE_3_0_1,
+                                                            OIOUBLValidation.VID_OIOUBL_INVOICE_RESPONSE_3_0_1,
+                                                            OIOUBLValidation.VID_OIOUBL_MLR_3_0_1 })
       for (final IReadableResource aRes : getAllMatchingTestFiles (aESID))
       {
         assertTrue ("Not existing test file: " + aRes.getPath (), aRes.exists ());
@@ -792,6 +803,38 @@ public final class CTestFiles
                                       })
                                         ret.add (new ClassPathResource (sPrefix + s));
                                     }
+    }
+
+    // 3.0.1
+    {
+      final String sVerPrefix = sPrefix0 + "3.0.1/";
+      if (aVESID.equals (OIOUBLValidation.VID_OIOUBL_CREDIT_NOTE_3_0_1))
+      {
+        final String sPrefix = sVerPrefix + "creditnote/";
+        for (final File f : new FileSystemIterator (new File ("src/test/resources" + sPrefix)))
+          ret.add (new ClassPathResource (sPrefix + f.getName ()));
+      }
+      else
+        if (aVESID.equals (OIOUBLValidation.VID_OIOUBL_INVOICE_3_0_1))
+        {
+          final String sPrefix = sVerPrefix + "invoice/";
+          for (final File f : new FileSystemIterator (new File ("src/test/resources" + sPrefix)))
+            ret.add (new ClassPathResource (sPrefix + f.getName ()));
+        }
+        else
+          if (aVESID.equals (OIOUBLValidation.VID_OIOUBL_INVOICE_RESPONSE_3_0_1))
+          {
+            final String sPrefix = sVerPrefix + "ir/";
+            for (final File f : new FileSystemIterator (new File ("src/test/resources" + sPrefix)))
+              ret.add (new ClassPathResource (sPrefix + f.getName ()));
+          }
+          else
+            if (aVESID.equals (OIOUBLValidation.VID_OIOUBL_MLR_3_0_1))
+            {
+              final String sPrefix = sVerPrefix + "mlr/";
+              for (final File f : new FileSystemIterator (new File ("src/test/resources" + sPrefix)))
+                ret.add (new ClassPathResource (sPrefix + f.getName ()));
+            }
     }
 
     return ret;
