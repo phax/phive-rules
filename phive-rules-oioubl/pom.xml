@@ -215,6 +215,10 @@
             </configuration>
           </execution>
           -->
+          <!--
+             OIOUBL 3 first requires the preprocessing of the files and than they can be converted.
+             It seems like the ISO Schematron include resolver is not smart enough.
+          -->
           <!-- 
           <execution>
             <id>pp-cn</id>

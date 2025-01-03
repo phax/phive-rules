@@ -45,15 +45,15 @@
 	</phase>
 
 	<!-- Load functions -->
-	<include href="file:_common/Schematron/sch/function/gln.xml"/>
+	<include href="_common/Schematron/sch/function/gln.xml"/>
 
 	<!-- Excecute common rules -->
-	<include href="file:_common/Schematron/sch/common-OIOUBL.sch"/>
+	<include href="_common/Schematron/sch/common-OIOUBL.sch"/>
 
 	<!-- Excecute common rules for ApplicationResponse documents -->
-	<include href="file:_common/Schematron/sch/common-application-response.sch"/>
-	<include href="file:_common/Schematron/sch/Excluded-Elements.sch"/>
-	<include href="file:_common/Schematron/sch/environmental-aspects.sch"/>
+	<include href="_common/Schematron/sch/common-application-response.sch"/>
+	<include href="_common/Schematron/sch/Excluded-Elements.sch"/>
+	<include href="_common/Schematron/sch/environmental-aspects.sch"/>
 
 	<!-- - - - - - - - - - - -  Profile - - - - - - - - - - - - -  -->
 	<pattern id="profile">

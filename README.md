@@ -200,7 +200,7 @@ I hope that with the introduction of PINT, the versioning problem will be solved
   
 # News and noteworthy
  
-* v3.2.3 - work in progress
+* v3.2.3 - 2025-01-03
     * Fixed Factur-X VES display name to include the profile name as well 
     * Added Peppol A-NZ-PEPPOL 1.0.12 rules
     * Deprecated Peppol A-NZ-PEPPOL 1.0.10 rules

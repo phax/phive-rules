@@ -26,18 +26,18 @@
 
 
     <!-- Functions -->
-    <include href="file:_common/Schematron/sch/function/gln.xml"/>
-    <include href="file:_common/Schematron/sch/function/slack.xml"/>
-    <include href="file:_common/Schematron/sch/function/checkCF.xml"/>
-    <include href="file:_common/Schematron/sch/function/mod11.xml"/>
-    <include href="file:_common/Schematron/sch/function/mod97-0208.xml"/>
-    <include href="file:_common/Schematron/sch/function/checkCodiceIPA.xml"/>
-    <include href="file:_common/Schematron/sch/function/checkPIVAseIT.xml"/>
-    <include href="file:_common/Schematron/sch/function/abn.xml"/>
-    <include href="file:_common/Schematron/sch/function/checkCF16.xml"/>
-    <include href="file:_common/Schematron/sch/function/checkPIVA.xml"/>
-    <include href="file:_common/Schematron/sch/function/checkSEOrgnr.xml"/>
-    <include href="file:_common/Schematron/sch/function/addPIVA.xml"/>
+    <include href="_common/Schematron/sch/function/gln.xml"/>
+    <include href="_common/Schematron/sch/function/slack.xml"/>
+    <include href="_common/Schematron/sch/function/checkCF.xml"/>
+    <include href="_common/Schematron/sch/function/mod11.xml"/>
+    <include href="_common/Schematron/sch/function/mod97-0208.xml"/>
+    <include href="_common/Schematron/sch/function/checkCodiceIPA.xml"/>
+    <include href="_common/Schematron/sch/function/checkPIVAseIT.xml"/>
+    <include href="_common/Schematron/sch/function/abn.xml"/>
+    <include href="_common/Schematron/sch/function/checkCF16.xml"/>
+    <include href="_common/Schematron/sch/function/checkPIVA.xml"/>
+    <include href="_common/Schematron/sch/function/checkSEOrgnr.xml"/>
+    <include href="_common/Schematron/sch/function/addPIVA.xml"/>
 
     <pattern>
         <title>OIOUBL 3 Invoice validation</title>
@@ -51,14 +51,14 @@
 
 
     <!-- Schematrons  -->
-    <include href="file:_common/Schematron/sch/Excluded-Elements.sch"/>
-    <include href="file:_common/Schematron/sch/Miscellaneous.sch"/>
-    <include href="file:_common/Schematron/sch/Peppol-billing-EN16931-Main.sch"/>
-    <include href="file:_common/Schematron/sch/Peppol-billing-EN16931-Common.sch"/>
-    <include href="file:_common/Schematron/sch/common-OIOUBL-billing.sch"/>
-    <include href="file:_common/Schematron/sch/common-OIOUBL-billing-PaymentMeans.sch"/>
-    <include href="file:_common/Schematron/sch/common-OIOUBL.sch"/>
-    <include href="file:_common/Schematron/sch/environmental-aspects.sch"/>
+    <include href="_common/Schematron/sch/Excluded-Elements.sch"/>
+    <include href="_common/Schematron/sch/Miscellaneous.sch"/>
+    <include href="_common/Schematron/sch/Peppol-billing-EN16931-Main.sch"/>
+    <include href="_common/Schematron/sch/Peppol-billing-EN16931-Common.sch"/>
+    <include href="_common/Schematron/sch/common-OIOUBL-billing.sch"/>
+    <include href="_common/Schematron/sch/common-OIOUBL-billing-PaymentMeans.sch"/>
+    <include href="_common/Schematron/sch/common-OIOUBL.sch"/>
+    <include href="_common/Schematron/sch/environmental-aspects.sch"/>
 
 
 
