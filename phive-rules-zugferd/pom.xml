@@ -127,8 +127,8 @@
               <goal>convert</goal>
             </goals>
             <configuration>
-              <schematronDirectory>${basedir}/src/test/resources/external/rule-source/2.2</schematronDirectory>
-              <xsltDirectory>${basedir}/src/main/resources/external/schematron/2.2</xsltDirectory>
+              <schematronDirectory>${basedir}/src/test/resources/external/rule-source/2.0.1</schematronDirectory>
+              <xsltDirectory>${basedir}/src/main/resources/external/schematron/2.0.1</xsltDirectory>
               <schematronPattern>*.sch</schematronPattern>
             </configuration>
           </execution>
