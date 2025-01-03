@@ -137,8 +137,8 @@
               <goal>convert</goal>
             </goals>
             <configuration>
-              <schematronDirectory>src/test/resources/external/rule-source/aunz-peppol/1.0.11</schematronDirectory>
-              <xsltDirectory>src/main/resources/external/schematron/peppol-aunz/1.0.11/xslt</xsltDirectory>
+              <schematronDirectory>src/test/resources/external/rule-source/aunz-peppol/1.0.12</schematronDirectory>
+              <xsltDirectory>src/main/resources/external/schematron/peppol-aunz/1.0.12/xslt</xsltDirectory>
             </configuration>
           </execution>
           -->

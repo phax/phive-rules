@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This example demonstrates an einvoicing order agreement in New Zealand. An einvoicing order agreement is a digital document that outlines the terms and conditions between a buyer and a supplier regarding the electronic invoicing process -->
+<OrderResponse xmlns="urn:oasis:names:specification:ubl:schema:xsd:OrderResponse-2"
+			   xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+			   xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
+	<cbc:CustomizationID>urn:fdc:peppol.eu:poacc:trns:order_agreement:3</cbc:CustomizationID>
+	<cbc:ProfileID>urn:fdc:peppol.eu:poacc:bis:order_agreement:3</cbc:ProfileID>
+	<cbc:ID>0263bf48-9a55-4d15-adf5-2c2921036d1c</cbc:ID>
+	<cbc:SalesOrderID>101-111</cbc:SalesOrderID>
+	<cbc:IssueDate>2020-07-01</cbc:IssueDate>
+	<cbc:IssueTime>06:10:10</cbc:IssueTime>
+	<cbc:Note>We have a new phone number 021-1090448</cbc:Note>
+	<cbc:DocumentCurrencyCode>NZD</cbc:DocumentCurrencyCode>
+	<cbc:CustomerReference>ABC-123</cbc:CustomerReference>
+	<cac:OrderReference>
+		<cbc:ID>11233</cbc:ID>
+	</cac:OrderReference>
+	<cac:OriginatorDocumentReference>
+		<cbc:ID>123456</cbc:ID>
+	</cac:OriginatorDocumentReference>
+	<cac:AdditionalDocumentReference>
+		<cbc:ID>147852</cbc:ID>
+		<cbc:DocumentType>Timesheet</cbc:DocumentType>
+		<cac:Attachment>
+			<cbc:EmbeddedDocumentBinaryObject mimeCode="image/tiff" filename="hours-spend.csv">UjBsR09EbGhjZ0dTQUxNQUFBUUNBRU1tQ1p0dU1GUXhEUzhi</cbc:EmbeddedDocumentBinaryObject>
+			<cac:ExternalReference>
+				<cbc:URI>http://www.example.com/index.html</cbc:URI>
+			</cac:ExternalReference>
+		</cac:Attachment>
+	</cac:AdditionalDocumentReference>
+	<cac:Contract>
+		<cbc:ID>CON-12345</cbc:ID>
+	</cac:Contract>
+	<cac:SellerSupplierParty>
+		<cac:Party>
+			<cbc:EndpointID schemeID="0088">9429033591476</cbc:EndpointID>
+			<cac:PartyIdentification>
+				<cbc:ID schemeID="0088">9429033591476</cbc:ID>
+			</cac:PartyIdentification>
+		
+			<cac:PostalAddress>
+				<cbc:StreetName>5 Stout Street</cbc:StreetName>
+				<cbc:AdditionalStreetName>additional</cbc:AdditionalStreetName>
+				<cbc:CityName>Wellington</cbc:CityName>
+				<cbc:PostalZone>0123</cbc:PostalZone>
+				<cbc:CountrySubentity>Region</cbc:CountrySubentity>
+				<cac:AddressLine>
+					<cbc:Line>Address Line 3</cbc:Line>
+				</cac:AddressLine>
+				<cac:Country>
+					<cbc:IdentificationCode>NZ</cbc:IdentificationCode>
+				</cac:Country>
+			</cac:PostalAddress>
+			<cac:PartyLegalEntity>
+				<cbc:RegistrationName>The Supplier AB</cbc:RegistrationName>
+			</cac:PartyLegalEntity>
+			<cac:Contact>
+				<cbc:Name>Henry Buyer</cbc:Name>
+				<cbc:Telephone>021-1090333</cbc:Telephone>
+				<cbc:ElectronicMail>henry@supplier.com</cbc:ElectronicMail>
+			</cac:Contact>
+		</cac:Party>
+	</cac:SellerSupplierParty>
+
+	<cac:BuyerCustomerParty>
+		<cac:Party>
+			<cbc:EndpointID schemeID="0088">9429033821733</cbc:EndpointID>
+			<cac:PartyIdentification>
+				<cbc:ID schemeID="0088">9429033821733</cbc:ID>
+			</cac:PartyIdentification>
+			<cac:PostalAddress>
+				<cbc:StreetName>1 Queen Street</cbc:StreetName>
+				<cbc:AdditionalStreetName>Additional B</cbc:AdditionalStreetName>
+				<cbc:CityName>Auckland</cbc:CityName>
+				<cbc:PostalZone>2345</cbc:PostalZone>
+				<cbc:CountrySubentity>Region</cbc:CountrySubentity>
+				<cac:AddressLine>
+					<cbc:Line>Address Line 3</cbc:Line>
+				</cac:AddressLine>
+				<cac:Country>
+					<cbc:IdentificationCode>NZ</cbc:IdentificationCode>
+				</cac:Country>
+			</cac:PostalAddress>
+			<cac:PartyLegalEntity>
+				<cbc:RegistrationName>City Hospital</cbc:RegistrationName>
+			</cac:PartyLegalEntity>
+		</cac:Party>
+		<cac:DeliveryContact>
+			<cbc:Name>Peter Parker</cbc:Name>
+			<cbc:Telephone>021-1090678</cbc:Telephone>
+			<cbc:ElectronicMail>pp@hospital.co.nz</cbc:ElectronicMail>
+		</cac:DeliveryContact>
+	</cac:BuyerCustomerParty>
+
+	<cac:OriginatorCustomerParty>
+		<cac:Party>
+			<cac:PartyIdentification>
+				<cbc:ID schemeID="0088">9429033821733</cbc:ID>
+			</cac:PartyIdentification>
+			<cac:PartyName>
+				<cbc:Name>Dr Who</cbc:Name>
+			</cac:PartyName>
+		</cac:Party>
+	</cac:OriginatorCustomerParty>
+
+	<cac:AccountingCustomerParty>
+		<cac:Party>
+			<cac:PartyIdentification>
+				<cbc:ID schemeID="0088">9429033821733</cbc:ID>
+			</cac:PartyIdentification>
+			<cac:PartyName>
+				<cbc:Name>Accounting</cbc:Name>
+			</cac:PartyName>
+		</cac:Party>
+	</cac:AccountingCustomerParty>
+
+	<cac:AllowanceCharge>
+		<cbc:ChargeIndicator>true</cbc:ChargeIndicator>
+		<cbc:AllowanceChargeReasonCode>ABK</cbc:AllowanceChargeReasonCode>
+		<cbc:AllowanceChargeReason>Miscellaneous services</cbc:AllowanceChargeReason>
+<!--	<cbc:MultiplierFactorNumeric>10</cbc:MultiplierFactorNumeric>
+-->		<cbc:Amount currencyID="NZD">2.00</cbc:Amount>
+<!--	<cbc:BaseAmount currencyID="NZD">32.50</cbc:BaseAmount>
+-->		<cac:TaxCategory>
+			<cbc:ID>S</cbc:ID>
+			<cbc:Percent>15</cbc:Percent>
+			<cac:TaxScheme>
+				<cbc:ID>GST</cbc:ID>
+			</cac:TaxScheme>
+		</cac:TaxCategory>
+	</cac:AllowanceCharge>
+	<cac:AllowanceCharge>
+		<cbc:ChargeIndicator>false</cbc:ChargeIndicator>
+		<cbc:AllowanceChargeReasonCode>95</cbc:AllowanceChargeReasonCode>
+		<cbc:AllowanceChargeReason>Discount</cbc:AllowanceChargeReason>
+		<cbc:MultiplierFactorNumeric>10</cbc:MultiplierFactorNumeric>
+		<cbc:Amount currencyID="NZD">3.25</cbc:Amount>
+		<cbc:BaseAmount currencyID="NZD">32.50</cbc:BaseAmount>
+		<cac:TaxCategory>
+			<cbc:ID>S</cbc:ID>
+			<cbc:Percent>15</cbc:Percent>
+			<cac:TaxScheme>
+				<cbc:ID>GST</cbc:ID>
+			</cac:TaxScheme>
+		</cac:TaxCategory>
+	</cac:AllowanceCharge>
+	<cac:TaxTotal>
+		<cbc:TaxAmount currencyID="NZD">4.69</cbc:TaxAmount>
+		<cac:TaxSubtotal>
+			<cbc:TaxableAmount currencyID="NZD">31.25</cbc:TaxableAmount>
+			<cbc:TaxAmount currencyID="NZD">4.69</cbc:TaxAmount>
+			<cac:TaxCategory>
+				<cbc:ID>S</cbc:ID>
+				<cbc:Percent>15</cbc:Percent>			
+				<cac:TaxScheme>
+					<cbc:ID>GST</cbc:ID>
+				</cac:TaxScheme>
+			</cac:TaxCategory>
+		</cac:TaxSubtotal>
+
+
+	</cac:TaxTotal>
+	<cac:LegalMonetaryTotal>
+		<cbc:LineExtensionAmount currencyID="NZD">32.5</cbc:LineExtensionAmount>
+		<cbc:TaxExclusiveAmount currencyID="NZD">31.25</cbc:TaxExclusiveAmount>
+		<cbc:TaxInclusiveAmount currencyID="NZD">35.94</cbc:TaxInclusiveAmount>
+		<cbc:AllowanceTotalAmount currencyID="NZD">3.25</cbc:AllowanceTotalAmount>
+		<cbc:ChargeTotalAmount currencyID="NZD">2.00</cbc:ChargeTotalAmount>
+		<cbc:PrepaidAmount currencyID="NZD">10.00</cbc:PrepaidAmount>
+		<cbc:PayableRoundingAmount currencyID="NZD">0.06</cbc:PayableRoundingAmount>
+		<cbc:PayableAmount currencyID="NZD">26.00</cbc:PayableAmount>
+	</cac:LegalMonetaryTotal>
+
+
+	<cac:OrderLine>
+		<cac:LineItem>
+			<cbc:ID>1</cbc:ID>
+			<cbc:Note>Order line note text</cbc:Note>
+			<cbc:Quantity unitCode="C62">15</cbc:Quantity>
+			<cbc:LineExtensionAmount currencyID="NZD">22.50</cbc:LineExtensionAmount>
+			<cac:Delivery>
+				<cbc:Quantity unitCode="C62">15.00</cbc:Quantity>
+				<cac:PromisedDeliveryPeriod>
+					<cbc:StartDate>2020-08-10</cbc:StartDate>
+					<cbc:StartTime>12:00:00</cbc:StartTime>
+					<cbc:EndDate>2020-08-12</cbc:EndDate>
+					<cbc:EndTime>12:00:00</cbc:EndTime>
+				</cac:PromisedDeliveryPeriod>
+			</cac:Delivery>
+			<cac:Price>
+				<cbc:PriceAmount currencyID="NZD">1.50</cbc:PriceAmount>
+				<cbc:BaseQuantity unitCode="C62">1</cbc:BaseQuantity>
+				<cbc:PriceType>AAA</cbc:PriceType>
+				<cac:AllowanceCharge>
+					<cbc:ChargeIndicator>false</cbc:ChargeIndicator>
+					<cbc:Amount currencyID="NZD">0.20</cbc:Amount>
+					<cbc:BaseAmount currencyID="NZD">1.70</cbc:BaseAmount>
+				</cac:AllowanceCharge>
+			</cac:Price>
+			<cac:Item>
+				<cbc:Description>Brown sauce - long description</cbc:Description>
+				<cbc:Name>Brown sauce</cbc:Name>
+				<cac:SellersItemIdentification>
+					<cbc:ID>SN-33</cbc:ID>
+				</cac:SellersItemIdentification>
+				<cac:StandardItemIdentification>
+					<cbc:ID schemeID="0160">7400000001234</cbc:ID>
+				</cac:StandardItemIdentification>
+				<cac:ItemSpecificationDocumentReference>
+					<cbc:ID>147852</cbc:ID>
+					<cbc:DocumentType>Timesheet</cbc:DocumentType>
+					<cac:Attachment>
+						<cbc:EmbeddedDocumentBinaryObject mimeCode="image/tiff" filename="hours-spend.csv">UjBsR09EbGhjZ0dTQUxNQUFBUUNBRU1tQ1p0dU1GUXhEUzhi</cbc:EmbeddedDocumentBinaryObject>
+						<cac:ExternalReference>
+							<cbc:URI>http://www.example.com/index.html</cbc:URI>
+						</cac:ExternalReference>
+					</cac:Attachment>
+				</cac:ItemSpecificationDocumentReference>
+				<cac:CommodityClassification>
+					<cbc:ItemClassificationCode listID="MP" listVersionID="19.0501">12345678</cbc:ItemClassificationCode>
+				</cac:CommodityClassification>
+				<cac:TransactionConditions>
+					<cbc:ActionCode>CT</cbc:ActionCode>
+				</cac:TransactionConditions>
+				<cac:ClassifiedTaxCategory>
+					<cbc:ID>S</cbc:ID>
+					<cbc:Percent>15</cbc:Percent>
+					<cac:TaxScheme>
+						<cbc:ID>GST</cbc:ID>
+					</cac:TaxScheme>
+				</cac:ClassifiedTaxCategory>
+				<cac:AdditionalItemProperty>
+					<cbc:Name>Length</cbc:Name>
+					<cbc:NameCode listID="NN">test</cbc:NameCode>
+					<cbc:Value>30 mm</cbc:Value>
+					
+				</cac:AdditionalItemProperty>
+				<cac:Certificate>
+					<cbc:ID>EU EcoLabel</cbc:ID>
+					<cbc:CertificateTypeCode>NA</cbc:CertificateTypeCode>
+					<cbc:CertificateType>Environmental</cbc:CertificateType>
+					<cbc:Remarks>Item labl value</cbc:Remarks>
+					<cac:IssuerParty>
+						<cac:PartyName>
+							<cbc:Name>Issuer party name</cbc:Name>
+						</cac:PartyName>
+					</cac:IssuerParty>
+					<cac:DocumentReference>
+						<cbc:ID>http://www.label.eu/test/</cbc:ID>
+					</cac:DocumentReference>
+				</cac:Certificate>
+			</cac:Item>
+		</cac:LineItem>
+	</cac:OrderLine>
+	<cac:OrderLine>
+		<cac:LineItem>
+			<cbc:ID>2</cbc:ID>
+			<cbc:Quantity unitCode="C62">1</cbc:Quantity>
+			<cbc:LineExtensionAmount currencyID="NZD">10</cbc:LineExtensionAmount>
+			<cac:Price>
+				<cbc:PriceAmount currencyID="NZD">10.00</cbc:PriceAmount>
+			</cac:Price>
+			<cac:Item>
+				<cbc:Name>White sauce</cbc:Name>
+				<cac:SellersItemIdentification>
+					<cbc:ID>SN-34</cbc:ID>
+				</cac:SellersItemIdentification>
+			</cac:Item>
+		</cac:LineItem>
+	</cac:OrderLine>
+</OrderResponse>

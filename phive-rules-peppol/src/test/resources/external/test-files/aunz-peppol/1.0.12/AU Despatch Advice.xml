@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This example demonstrates an Australian simple despatch advice. A despatch advice is used in the fulfillment process by the sender to notify the receiver about the despatch and delivery period for the goods being sent, as well as details about the goods for cross checking with the order -->
+<!--
+                Content:
+                This file is created based on the Peppol UBL Despatch Adivce.
+
+                Errors:
+                None
+                
+                Warnings:
+                None
+				(Peppol 2020 November release)
+-->
+<DespatchAdvice xmlns="urn:oasis:names:specification:ubl:schema:xsd:DespatchAdvice-2" xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2">
+	<cbc:CustomizationID>urn:fdc:peppol.eu:poacc:trns:despatch_advice:3</cbc:CustomizationID>
+	<cbc:ProfileID>urn:fdc:peppol.eu:poacc:bis:despatch_advice:3</cbc:ProfileID>
+	<cbc:ID>565899</cbc:ID>
+	<cbc:IssueDate>2020-03-01</cbc:IssueDate>
+	<cbc:IssueTime>12:00:00</cbc:IssueTime>
+	<cbc:Note>This is a sample Despatch Notice</cbc:Note>
+	<cac:OrderReference>
+		<cbc:ID>AEG012345</cbc:ID>
+	</cac:OrderReference>
+	<cac:DespatchSupplierParty>
+		<cac:Party>
+			<cbc:EndpointID schemeID="0151">26008672179</cbc:EndpointID>
+			<cac:PartyIdentification>
+				<cbc:ID schemeID="0151">26008672179</cbc:ID>
+			</cac:PartyIdentification>
+			<cac:PostalAddress>
+				<cbc:StreetName>Street Name</cbc:StreetName>
+				<cbc:CityName>City Name</cbc:CityName>
+				<cbc:PostalZone>2000</cbc:PostalZone>
+				<cbc:CountrySubentity>Region</cbc:CountrySubentity>
+				<cac:AddressLine>
+					<cbc:Line>Address Line 1</cbc:Line>
+				</cac:AddressLine>
+				<cac:Country>
+					<cbc:IdentificationCode>AU</cbc:IdentificationCode>
+				</cac:Country>
+			</cac:PostalAddress>
+			<cac:PartyLegalEntity>
+				<cbc:RegistrationName>Bunnings Ltd</cbc:RegistrationName>
+			</cac:PartyLegalEntity>
+			<cac:Contact>
+				<cbc:Name>Bunnings contact</cbc:Name>
+				<cbc:Telephone>03 8123 4567</cbc:Telephone>
+				<cbc:ElectronicMail>admin@bunning.com.au</cbc:ElectronicMail>
+			</cac:Contact>
+		</cac:Party>
+	</cac:DespatchSupplierParty>
+	<cac:DeliveryCustomerParty>
+		<cac:Party>
+			<cbc:EndpointID schemeID="0151">51824753556</cbc:EndpointID>
+			<cac:PartyIdentification>
+				<cbc:ID schemeID="0151">51824753556</cbc:ID>
+			</cac:PartyIdentification>
+			<cac:PostalAddress>
+				<cbc:StreetName>Street Name</cbc:StreetName>
+				<cbc:AdditionalStreetName>Additional street name</cbc:AdditionalStreetName>
+				<cbc:CityName>City Name</cbc:CityName>
+				<cbc:PostalZone>2000</cbc:PostalZone>
+				<cbc:CountrySubentity>Avon</cbc:CountrySubentity>
+				<cac:AddressLine>
+					<cbc:Line>3rd Floor</cbc:Line>
+				</cac:AddressLine>
+				<cac:Country>
+					<cbc:IdentificationCode>AU</cbc:IdentificationCode>
+				</cac:Country>
+			</cac:PostalAddress>
+			<cac:PartyLegalEntity>
+				<cbc:RegistrationName>The Australian Taxation Office</cbc:RegistrationName>
+			</cac:PartyLegalEntity>
+		</cac:Party>
+		<cac:DeliveryContact>
+			<cbc:Name>Mr John Smith</cbc:Name>
+			<cbc:Telephone>02 6123 4567</cbc:Telephone>
+			<cbc:ElectronicMail>JS@ato.gov.au</cbc:ElectronicMail>
+		</cac:DeliveryContact>
+	</cac:DeliveryCustomerParty>
+	<cac:BuyerCustomerParty>
+		<cac:Party>
+			<cac:PartyIdentification>
+				<cbc:ID schemeID="0151">51824753556</cbc:ID>
+			</cac:PartyIdentification>
+			<cac:PartyName>
+				<cbc:Name>The Australian Taxation Office</cbc:Name>
+			</cac:PartyName>
+			<cac:PostalAddress>
+				<cbc:StreetName>Street Name</cbc:StreetName>
+				<cbc:AdditionalStreetName>additional street name</cbc:AdditionalStreetName>
+				<cbc:CityName>City Name</cbc:CityName>
+				<cbc:PostalZone>2000 postcode</cbc:PostalZone>
+				<cbc:CountrySubentity>Region</cbc:CountrySubentity>
+				<cac:Country>
+					<cbc:IdentificationCode>AU</cbc:IdentificationCode>
+				</cac:Country>
+			</cac:PostalAddress>
+		</cac:Party>
+	</cac:BuyerCustomerParty>
+	<cac:SellerSupplierParty>
+		<cac:Party>
+			<cac:PartyIdentification>
+				<cbc:ID schemeID="0151">26008672179</cbc:ID>
+			</cac:PartyIdentification>
+			<cac:PartyName>
+				<cbc:Name>Bunnings Ltd</cbc:Name>
+			</cac:PartyName>
+			<cac:PostalAddress>
+				<cbc:StreetName>Street Name</cbc:StreetName>
+				<cbc:AdditionalStreetName>additional street name</cbc:AdditionalStreetName>
+				<cbc:CityName>City Name</cbc:CityName>
+				<cbc:PostalZone>2000 postcode</cbc:PostalZone>
+				<cbc:CountrySubentity>Region</cbc:CountrySubentity>
+				<cac:Country>
+					<cbc:IdentificationCode>AU</cbc:IdentificationCode>
+				</cac:Country>
+			</cac:PostalAddress>
+		</cac:Party>
+	</cac:SellerSupplierParty>
+	<cac:Shipment>
+		<cbc:ID>1</cbc:ID>
+		<cbc:Information>text</cbc:Information>
+		<cbc:GrossWeightMeasure unitCode="C62">1</cbc:GrossWeightMeasure>
+		<cbc:GrossVolumeMeasure unitCode="C62">1</cbc:GrossVolumeMeasure>
+		<cbc:TotalTransportHandlingUnitQuantity>3</cbc:TotalTransportHandlingUnitQuantity>
+		<cac:Consignment>
+			<cbc:ID>1</cbc:ID>
+			<cbc:Information>text</cbc:Information>
+			<cac:CarrierParty>
+				<cac:PartyName>
+					<cbc:Name>Rapid Delivery Pty Ltd</cbc:Name>
+				</cac:PartyName>
+				<cac:Person>
+					<cac:IdentityDocumentReference>
+						<cbc:ID>123456</cbc:ID>
+						<cbc:DocumentType>Driver licence</cbc:DocumentType>
+					</cac:IdentityDocumentReference>
+				</cac:Person>
+			</cac:CarrierParty>
+		</cac:Consignment>
+		<cac:Delivery>
+			<cbc:TrackingID>456789</cbc:TrackingID>
+			<cac:EstimatedDeliveryPeriod>
+				<cbc:StartDate>2020-03-15</cbc:StartDate>
+				<cbc:StartTime>12:00:00</cbc:StartTime>
+				<cbc:EndDate>2020-03-30</cbc:EndDate>
+				<cbc:EndTime>12:00:00</cbc:EndTime>
+			</cac:EstimatedDeliveryPeriod>
+			<cac:Despatch>
+				<cbc:ActualDespatchDate>2020-03-02</cbc:ActualDespatchDate>
+				<cbc:ActualDespatchTime>13:00:00</cbc:ActualDespatchTime>
+				<cac:DespatchAddress>
+					<cbc:StreetName>street name</cbc:StreetName>
+					<cbc:AdditionalStreetName>additional street name</cbc:AdditionalStreetName>
+					<cbc:CityName>city name</cbc:CityName>
+					<cbc:PostalZone>postcode</cbc:PostalZone>
+					<cbc:CountrySubentity>Region</cbc:CountrySubentity>
+					<cac:AddressLine>
+						<cbc:Line>3rd Floor, Room 5</cbc:Line>
+					</cac:AddressLine>
+					<cac:Country>
+						<cbc:IdentificationCode>AU</cbc:IdentificationCode>
+					</cac:Country>
+				</cac:DespatchAddress>
+			</cac:Despatch>
+		</cac:Delivery>
+	</cac:Shipment>
+	<cac:DespatchLine>
+		<cbc:ID>1</cbc:ID>
+		<cbc:Note>Mrs Green agreed to waive charge</cbc:Note>
+		<cbc:DeliveredQuantity unitCode="EA">10</cbc:DeliveredQuantity>
+		<cbc:OutstandingQuantity unitCode="EA">2</cbc:OutstandingQuantity>
+		<cbc:OutstandingReason>text</cbc:OutstandingReason>
+		<cac:OrderLineReference>
+			<cbc:LineID>1</cbc:LineID>
+			<cac:OrderReference>
+				<cbc:ID>Order012345</cbc:ID>
+			</cac:OrderReference>
+		</cac:OrderLineReference>
+		<cac:Item>
+			<cbc:Name>beeswax</cbc:Name>
+			<cac:BuyersItemIdentification>
+				<cbc:ID>6578489</cbc:ID>
+			</cac:BuyersItemIdentification>
+			<cac:SellersItemIdentification>
+				<cbc:ID>17589683</cbc:ID>
+			</cac:SellersItemIdentification>
+			<cac:StandardItemIdentification>
+				<cbc:ID schemeID="0160">1234567891234</cbc:ID>
+				<cbc:ExtendedID>22114455</cbc:ExtendedID>
+			</cac:StandardItemIdentification>
+			<cac:HazardousItem>
+				<cbc:UNDGCode>ADR</cbc:UNDGCode>
+				<cbc:HazardClassID>Code</cbc:HazardClassID>
+			</cac:HazardousItem>
+			<cac:AdditionalItemProperty>
+				<cbc:Name>Colour</cbc:Name>
+				<cbc:Value>Blue</cbc:Value>
+			</cac:AdditionalItemProperty>
+			<cac:ItemInstance>
+				<cbc:ManufactureDate>2020-01-01</cbc:ManufactureDate>
+				<cbc:BestBeforeDate>2025-01-01</cbc:BestBeforeDate>
+				<cbc:SerialID>4558784</cbc:SerialID>
+				<cac:LotIdentification>
+					<cbc:LotNumberID>546378239</cbc:LotNumberID>
+					<cbc:ExpiryDate>2010-01-01</cbc:ExpiryDate>
+				</cac:LotIdentification>
+			</cac:ItemInstance>
+		</cac:Item>
+		<cac:Shipment>
+			<cbc:ID>NA</cbc:ID>
+			<cac:TransportHandlingUnit>
+				<cbc:ID>5454</cbc:ID>
+				<cbc:TransportHandlingUnitTypeCode>4H</cbc:TransportHandlingUnitTypeCode>
+				<cbc:HazardousRiskIndicator>false</cbc:HazardousRiskIndicator>
+				<cbc:ShippingMarks>text</cbc:ShippingMarks>
+				<cac:MeasurementDimension>
+					<cbc:AttributeID>AAW</cbc:AttributeID>
+					<cbc:Measure unitCode="C62">1</cbc:Measure>
+				</cac:MeasurementDimension>
+				<cac:Package>
+					<cbc:ID>126</cbc:ID>
+					<cbc:PackagingTypeCode>BX</cbc:PackagingTypeCode>
+				</cac:Package>
+				<cac:Package>
+					<cbc:ID>667</cbc:ID>
+					<cbc:PackagingTypeCode>BX</cbc:PackagingTypeCode>
+				</cac:Package>
+			</cac:TransportHandlingUnit>
+		</cac:Shipment>
+	</cac:DespatchLine>
+</DespatchAdvice>
