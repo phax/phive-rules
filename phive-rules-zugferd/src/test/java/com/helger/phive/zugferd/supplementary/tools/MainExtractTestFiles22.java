@@ -33,6 +33,7 @@ import org.apache.pdfbox.pdmodel.common.filespecification.PDEmbeddedFile;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.helger.commons.annotation.Nonempty;
 import com.helger.commons.collection.impl.CommonsArrayList;
 import com.helger.commons.collection.impl.ICommonsList;
 import com.helger.commons.io.file.FileSystemIterator;
@@ -73,11 +74,12 @@ public final class MainExtractTestFiles22
   }
 
   @Nonnull
-  private static byte [] _extractFacturX (@Nonnull final Map <String, PDComplexFileSpecification> aNames) throws IOException
+  private static byte [] _extractFacturX (@Nonnull final Map <String, PDComplexFileSpecification> aNames,
+                                          @Nonnull @Nonempty final String sAttachmentFilename) throws IOException
   {
-    final PDComplexFileSpecification aFileSpec = aNames.get ("factur-x.xml");
+    final PDComplexFileSpecification aFileSpec = aNames.get (sAttachmentFilename);
     if (aFileSpec == null)
-      throw new IllegalStateException ("Failed to find factur-x.xml in " + aNames.keySet ());
+      throw new IllegalStateException ("Failed to find '" + sAttachmentFilename + "' in " + aNames.keySet ());
 
     final PDEmbeddedFile aEmbeddedFile = _getEmbeddedFile (aFileSpec);
     if (aEmbeddedFile == null)
@@ -86,7 +88,7 @@ public final class MainExtractTestFiles22
   }
 
   @Nullable
-  private static byte [] _extractFacturX (@Nonnull final File fExampleFile)
+  static byte [] extractAttachment (@Nonnull final File fExampleFile, @Nonnull @Nonempty final String sAttachmentFilename)
   {
     try (final PDDocument aPDDoc = Loader.loadPDF (fExampleFile))
     {
@@ -98,13 +100,13 @@ public final class MainExtractTestFiles22
         // Direct match?
         var aNames = aEmbeddedFiles.getNames ();
         if (aNames != null)
-          return _extractFacturX (aNames);
+          return _extractFacturX (aNames, sAttachmentFilename);
 
         // Kids match?
         for (final var aNode : aEmbeddedFiles.getKids ())
         {
           aNames = aNode.getNames ();
-          final byte [] ret = _extractFacturX (aNames);
+          final byte [] ret = _extractFacturX (aNames, sAttachmentFilename);
           if (ret != null)
             return ret;
         }
@@ -117,10 +119,15 @@ public final class MainExtractTestFiles22
     return null;
   }
 
+  @Nullable
+  static byte [] extractFacturX (@Nonnull final File fExampleFile)
+  {
+    return extractAttachment (fExampleFile, "factur-x.xml");
+  }
+
   public static void main (final String [] args)
   {
-    // TODO edit the following 2 lines for a new version
-    final File fBasePath = new File ("docs/zugferd22en/DE/Examples").getAbsoluteFile ();
+    final File fBasePath = new File ("docs/2.2/zugferd22en/DE/Examples").getAbsoluteFile ();
     final File fTargetPath = new File ("src/test/resources/external/test-files/2.2").getAbsoluteFile ();
 
     // For all profiles
@@ -144,13 +151,14 @@ public final class MainExtractTestFiles22
       for (final File fExampleFile : aExampleFiles)
       {
         // Extract XML from PDF
-        final byte [] aFacturX = _extractFacturX (fExampleFile);
+        final byte [] aFacturX = extractFacturX (fExampleFile);
         if (aFacturX == null)
           throw new IllegalStateException ();
 
         // write file
         SimpleFileIO.writeFile (new File (fTargetPath,
-                                          eProfile.getFolderName () + "/factur-x-" + nExampleIndex + ".xml"), aFacturX);
+                                          eProfile.getFolderName () + "/factur-x-" + nExampleIndex + ".xml"),
+                                aFacturX);
         nExampleIndex++;
         nExampleCount++;
       }

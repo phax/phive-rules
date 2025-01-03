@@ -36,7 +36,7 @@ public final class MainExtractTestFiles23
   public static void main (final String [] args)
   {
     // TODO edit the following 2 lines for a new version
-    final File fBasePath = new File ("docs/ZF232_EN/Examples").getAbsoluteFile ();
+    final File fBasePath = new File ("docs/2.3.2/ZF232_EN/Examples").getAbsoluteFile ();
     final File fTargetPath = new File ("src/test/resources/external/test-files/2.3.2").getAbsoluteFile ();
 
     // For all profiles
