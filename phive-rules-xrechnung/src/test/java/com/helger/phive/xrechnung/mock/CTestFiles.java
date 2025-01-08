@@ -94,10 +94,12 @@ public final class CTestFiles
                                                             XRechnungValidation.VID_XRECHNUNG_CII_201,
                                                             XRechnungValidation.VID_XRECHNUNG_UBL_CREDITNOTE_201,
                                                             XRechnungValidation.VID_XRECHNUNG_UBL_INVOICE_201,
+                                                            XRechnungValidation.VID_XRECHNUNG_EXTENSION_UBL_INVOICE_201,
 
                                                             XRechnungValidation.VID_XRECHNUNG_CII_211,
                                                             XRechnungValidation.VID_XRECHNUNG_UBL_CREDITNOTE_211,
-                                                            XRechnungValidation.VID_XRECHNUNG_UBL_INVOICE_211, })
+                                                            XRechnungValidation.VID_XRECHNUNG_UBL_INVOICE_211,
+                                                            XRechnungValidation.VID_XRECHNUNG_EXTENSION_UBL_INVOICE_211, })
       for (final IReadableResource aRes : getAllMatchingTestFiles (aESID))
       {
         assertTrue ("Not existing test file: " + aRes.getPath (), aRes.exists ());
@@ -375,14 +377,6 @@ public final class CTestFiles
                                                 "ubl-inv-br-de-20-paymentmeans-code59-test-56-remove.xml",
                                                 "ubl-inv-br-de-21-check-unique-file-name-test-100-identity.xml",
                                                 "ubl-inv-br-de-21-check-unique-file-name-test-99-identity.xml",
-                                                "ubl-inv-br-de-21-extension_mime_code_test-87-identity.xml",
-                                                "ubl-inv-br-de-21-extension_mime_code_test-90-remove.xml",
-                                                "ubl-inv-br-de-21-extension_mime_code_test-91-code-application_xml.xml",
-                                                "ubl-inv-br-de-21-extension_mime_code_test-92-code-application_pdf.xml",
-                                                "ubl-inv-br-de-21-extension_mime_code_test-93-code-image_png.xml",
-                                                "ubl-inv-br-de-21-extension_mime_code_test-94-code-image_jpeg.xml",
-                                                "ubl-inv-br-de-21-extension_mime_code_test-95-code-text_csv.xml",
-                                                "ubl-inv-br-de-21-extension_mime_code_test-96-code-application_vnd.openxmlformats-officedocument.spreadsheetml.sheet.xml",
                                                 "ubl-inv-br-dex-02-some-invoicelines-with-sub-174-identity.xml",
                                                 "ubl-inv-paymentmeans-test-115-identity.xml",
                                                 "ubl-inv-paymentmeans-test-116-code-326.xml",
@@ -401,6 +395,20 @@ public final class CTestFiles
                                                 "ubl-inv-paymentmeans-test-130-code-sdsfsadgfa.xml" })
             ret.add (new ClassPathResource (sPrefix + s));
         }
+        else
+          if (aVESID.equals (XRechnungValidation.VID_XRECHNUNG_EXTENSION_UBL_INVOICE_201))
+          {
+            final String sPrefix = sPrefix0 + "2.0.1/ubl-inv/";
+            for (final String s : new String [] { "ubl-inv-br-de-21-extension_mime_code_test-87-identity.xml",
+                                                  "ubl-inv-br-de-21-extension_mime_code_test-90-remove.xml",
+                                                  "ubl-inv-br-de-21-extension_mime_code_test-91-code-application_xml.xml",
+                                                  "ubl-inv-br-de-21-extension_mime_code_test-92-code-application_pdf.xml",
+                                                  "ubl-inv-br-de-21-extension_mime_code_test-93-code-image_png.xml",
+                                                  "ubl-inv-br-de-21-extension_mime_code_test-94-code-image_jpeg.xml",
+                                                  "ubl-inv-br-de-21-extension_mime_code_test-95-code-text_csv.xml",
+                                                  "ubl-inv-br-de-21-extension_mime_code_test-96-code-application_vnd.openxmlformats-officedocument.spreadsheetml.sheet.xml" })
+              ret.add (new ClassPathResource (sPrefix + s));
+          }
 
     // 2.1.1
     if (aVESID.equals (XRechnungValidation.VID_XRECHNUNG_CII_211))
@@ -519,15 +527,6 @@ public final class CTestFiles
                                                 "ubl-inv-br-de-2-test-207-identity.xml",
                                                 "ubl-inv-br-de-21-check-unique-file-name-test-118-identity.xml",
                                                 "ubl-inv-br-de-21-check-unique-file-name-test-119-identity.xml",
-                                                "ubl-inv-br-de-21-extension_mime_code_test-104-identity.xml",
-                                                "ubl-inv-br-de-21-extension_mime_code_test-105-code-invalid_customizationid.xml",
-                                                "ubl-inv-br-de-21-extension_mime_code_test-107-remove.xml",
-                                                "ubl-inv-br-de-21-extension_mime_code_test-108-code-application_xml.xml",
-                                                "ubl-inv-br-de-21-extension_mime_code_test-109-code-application_pdf.xml",
-                                                "ubl-inv-br-de-21-extension_mime_code_test-110-code-image_png.xml",
-                                                "ubl-inv-br-de-21-extension_mime_code_test-111-code-image_jpeg.xml",
-                                                "ubl-inv-br-de-21-extension_mime_code_test-112-code-text_csv.xml",
-                                                "ubl-inv-br-de-21-extension_mime_code_test-113-code-application_vnd.openxmlformats-officedocument.spreadsheetml.sheet.xml",
                                                 "ubl-inv-br-de-23-test-bg-17-100-code-58.xml",
                                                 "ubl-inv-br-de-23-test-bg-17-101-identity.xml",
                                                 "ubl-inv-br-de-23-test-bg-17-99-code-30.xml",
@@ -548,6 +547,21 @@ public final class CTestFiles
                                                 "ubl-inv-br-dex-02-some-invoicelines-with-sub-195-identity.xml" })
             ret.add (new ClassPathResource (sPrefix + s));
         }
+        else
+          if (aVESID.equals (XRechnungValidation.VID_XRECHNUNG_EXTENSION_UBL_INVOICE_211))
+          {
+            final String sPrefix = sPrefix0 + "2.1.1/ubl-inv/";
+            for (final String s : new String [] { "ubl-inv-br-de-21-extension_mime_code_test-104-identity.xml",
+                                                  "ubl-inv-br-de-21-extension_mime_code_test-105-code-invalid_customizationid.xml",
+                                                  "ubl-inv-br-de-21-extension_mime_code_test-107-remove.xml",
+                                                  "ubl-inv-br-de-21-extension_mime_code_test-108-code-application_xml.xml",
+                                                  "ubl-inv-br-de-21-extension_mime_code_test-109-code-application_pdf.xml",
+                                                  "ubl-inv-br-de-21-extension_mime_code_test-110-code-image_png.xml",
+                                                  "ubl-inv-br-de-21-extension_mime_code_test-111-code-image_jpeg.xml",
+                                                  "ubl-inv-br-de-21-extension_mime_code_test-112-code-text_csv.xml",
+                                                  "ubl-inv-br-de-21-extension_mime_code_test-113-code-application_vnd.openxmlformats-officedocument.spreadsheetml.sheet.xml" })
+              ret.add (new ClassPathResource (sPrefix + s));
+          }
 
     // 2.2.0
     if (aVESID.equals (XRechnungValidation.VID_XRECHNUNG_CII_220))

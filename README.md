@@ -201,7 +201,7 @@ I hope that with the introduction of PINT, the versioning problem will be solved
 # News and noteworthy
 
 * v3.2.4 - 2025-01-08
-    * Added specific support for XRechnung Extension (for versions 2.1.1, 2.2.0, 2.3.1, 3.0.0, 3.0.1 and 3.0.2)
+    * Added specific support for XRechnung Extension (for versions 2.0.1, 2.1.1, 2.2.0, 2.3.1, 3.0.0, 3.0.1 and 3.0.2)
 * v3.2.3 - 2025-01-03
     * Fixed Factur-X VES display name to include the profile name as well 
     * Added Peppol A-NZ-PEPPOL 1.0.12 rules
