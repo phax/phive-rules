@@ -135,12 +135,20 @@ public final class XRechnungValidation
   public static final DVRCoordinate VID_XRECHNUNG_UBL_INVOICE_211 = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                                        "ubl-invoice",
                                                                                                        "2.1.1");
+  @Deprecated
+  public static final DVRCoordinate VID_XRECHNUNG_EXTENSION_UBL_INVOICE_211 = PhiveRulesHelper.createCoordinate (GROUP_ID_EXT,
+                                                                                                                 "ubl-invoice",
+                                                                                                                 "2.1.1");
 
   // Valid from 01.08.2022 - 31.07.2023
   @Deprecated
   public static final DVRCoordinate VID_XRECHNUNG_CII_220 = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                                "cii",
                                                                                                "2.2.0");
+  @Deprecated
+  public static final DVRCoordinate VID_XRECHNUNG_EXTENSION_CII_220 = PhiveRulesHelper.createCoordinate (GROUP_ID_EXT,
+                                                                                                         "cii",
+                                                                                                         "2.2.0");
   @Deprecated
   public static final DVRCoordinate VID_XRECHNUNG_UBL_CREDITNOTE_220 = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                                           "ubl-creditnote",
@@ -149,12 +157,20 @@ public final class XRechnungValidation
   public static final DVRCoordinate VID_XRECHNUNG_UBL_INVOICE_220 = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                                        "ubl-invoice",
                                                                                                        "2.2.0");
+  @Deprecated
+  public static final DVRCoordinate VID_XRECHNUNG_EXTENSION_UBL_INVOICE_220 = PhiveRulesHelper.createCoordinate (GROUP_ID_EXT,
+                                                                                                                 "ubl-invoice",
+                                                                                                                 "2.2.0");
 
   // Valid from 01.08.2023 - 31.01.2024
   @Deprecated
   public static final DVRCoordinate VID_XRECHNUNG_CII_231 = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                                "cii",
                                                                                                "2.3.1");
+  @Deprecated
+  public static final DVRCoordinate VID_XRECHNUNG_EXTENSION_CII_231 = PhiveRulesHelper.createCoordinate (GROUP_ID_EXT,
+                                                                                                         "cii",
+                                                                                                         "2.3.1");
   @Deprecated
   public static final DVRCoordinate VID_XRECHNUNG_UBL_CREDITNOTE_231 = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                                           "ubl-creditnote",
@@ -163,6 +179,10 @@ public final class XRechnungValidation
   public static final DVRCoordinate VID_XRECHNUNG_UBL_INVOICE_231 = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                                        "ubl-invoice",
                                                                                                        "2.3.1");
+  @Deprecated
+  public static final DVRCoordinate VID_XRECHNUNG_EXTENSION_UBL_INVOICE_231 = PhiveRulesHelper.createCoordinate (GROUP_ID_EXT,
+                                                                                                                 "ubl-invoice",
+                                                                                                                 "2.3.1");
 
   // Valid from 01.02.2024
   public static final DVRCoordinate VID_XRECHNUNG_CII_300 = PhiveRulesHelper.createCoordinate (GROUP_ID,
@@ -415,13 +435,12 @@ public final class XRechnungValidation
       final IValidationExecutorSet <IValidationSourceXML> aVESUBLCreditNote133 = aRegistry.getOfID (EN16931Validation.VID_UBL_CREDIT_NOTE_133);
       final IValidationExecutorSet <IValidationSourceXML> aVESUBLInvoice133 = aRegistry.getOfID (EN16931Validation.VID_UBL_INVOICE_133);
 
-      final ICommonsMap <String, CustomErrorDetails> aCustomErrorLevels = new CommonsHashMap <> ();
-      aCustomErrorLevels.put ("BR-CL-01", CustomErrorDetails.of (EErrorLevel.INFO));
-      aCustomErrorLevels.put ("BR-CL-23", CustomErrorDetails.of (EErrorLevel.WARN));
-      aCustomErrorLevels.put ("BR-CL-21", CustomErrorDetails.of (EErrorLevel.WARN));
-      aCustomErrorLevels.put ("BR-CL-24", CustomErrorDetails.of (EErrorLevel.INFO));
-
       {
+        final ICommonsMap <String, CustomErrorDetails> aCustomErrorLevels = new CommonsHashMap <> ();
+        aCustomErrorLevels.put ("BR-CL-01", CustomErrorDetails.of (EErrorLevel.INFO));
+        aCustomErrorLevels.put ("BR-CL-23", CustomErrorDetails.of (EErrorLevel.WARN));
+        aCustomErrorLevels.put ("BR-CL-21", CustomErrorDetails.of (EErrorLevel.WARN));
+
         final ICommonsList <IValidationExecutor <IValidationSourceXML>> aNewList = _getListWithCustomErrorDetails (aVESCII133,
                                                                                                                    aCustomErrorLevels);
         aNewList.add (PhiveRulesCIIHelper.createXSLT_CII_D16B (new ClassPathResource (sPrefix +
@@ -433,7 +452,13 @@ public final class XRechnungValidation
                                                                                PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                                aNewList));
       }
+
       {
+        final ICommonsMap <String, CustomErrorDetails> aCustomErrorLevels = new CommonsHashMap <> ();
+        aCustomErrorLevels.put ("BR-CL-01", CustomErrorDetails.of (EErrorLevel.INFO));
+        aCustomErrorLevels.put ("BR-CL-23", CustomErrorDetails.of (EErrorLevel.WARN));
+        aCustomErrorLevels.put ("BR-CL-21", CustomErrorDetails.of (EErrorLevel.WARN));
+
         final ICommonsList <IValidationExecutor <IValidationSourceXML>> aNewList = _getListWithCustomErrorDetails (aVESUBLCreditNote133,
                                                                                                                    aCustomErrorLevels);
         aNewList.add (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix +
@@ -445,7 +470,13 @@ public final class XRechnungValidation
                                                                                PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                                aNewList));
       }
+
       {
+        final ICommonsMap <String, CustomErrorDetails> aCustomErrorLevels = new CommonsHashMap <> ();
+        aCustomErrorLevels.put ("BR-CL-01", CustomErrorDetails.of (EErrorLevel.INFO));
+        aCustomErrorLevels.put ("BR-CL-23", CustomErrorDetails.of (EErrorLevel.WARN));
+        aCustomErrorLevels.put ("BR-CL-21", CustomErrorDetails.of (EErrorLevel.WARN));
+
         final ICommonsList <IValidationExecutor <IValidationSourceXML>> aNewList = _getListWithCustomErrorDetails (aVESUBLInvoice133,
                                                                                                                    aCustomErrorLevels);
         aNewList.add (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix +
@@ -467,13 +498,12 @@ public final class XRechnungValidation
       final IValidationExecutorSet <IValidationSourceXML> aVESUBLCreditNote136a = aRegistry.getOfID (EN16931Validation.VID_UBL_CREDIT_NOTE_136A);
       final IValidationExecutorSet <IValidationSourceXML> aVESUBLInvoice136a = aRegistry.getOfID (EN16931Validation.VID_UBL_INVOICE_136A);
 
-      final ICommonsMap <String, CustomErrorDetails> aCustomErrorLevels = new CommonsHashMap <> ();
-      aCustomErrorLevels.put ("BR-CL-01", CustomErrorDetails.of (EErrorLevel.INFO));
-      aCustomErrorLevels.put ("BR-CL-23", CustomErrorDetails.of (EErrorLevel.WARN));
-      aCustomErrorLevels.put ("BR-CL-21", CustomErrorDetails.of (EErrorLevel.WARN));
-      aCustomErrorLevels.put ("BR-CL-24", CustomErrorDetails.of (EErrorLevel.INFO));
-
       {
+        final ICommonsMap <String, CustomErrorDetails> aCustomErrorLevels = new CommonsHashMap <> ();
+        aCustomErrorLevels.put ("BR-CL-01", CustomErrorDetails.of (EErrorLevel.INFO));
+        aCustomErrorLevels.put ("BR-CL-23", CustomErrorDetails.of (EErrorLevel.WARN));
+        aCustomErrorLevels.put ("BR-CL-21", CustomErrorDetails.of (EErrorLevel.WARN));
+
         final ICommonsList <IValidationExecutor <IValidationSourceXML>> aNewList = _getListWithCustomErrorDetails (aVESCII136a,
                                                                                                                    aCustomErrorLevels);
         aNewList.add (PhiveRulesCIIHelper.createXSLT_CII_D16B (new ClassPathResource (sPrefix +
@@ -485,7 +515,13 @@ public final class XRechnungValidation
                                                                                PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                                aNewList));
       }
+
       {
+        final ICommonsMap <String, CustomErrorDetails> aCustomErrorLevels = new CommonsHashMap <> ();
+        aCustomErrorLevels.put ("BR-CL-01", CustomErrorDetails.of (EErrorLevel.INFO));
+        aCustomErrorLevels.put ("BR-CL-23", CustomErrorDetails.of (EErrorLevel.WARN));
+        aCustomErrorLevels.put ("BR-CL-21", CustomErrorDetails.of (EErrorLevel.WARN));
+
         final ICommonsList <IValidationExecutor <IValidationSourceXML>> aNewList = _getListWithCustomErrorDetails (aVESUBLCreditNote136a,
                                                                                                                    aCustomErrorLevels);
         aNewList.add (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix +
@@ -497,7 +533,13 @@ public final class XRechnungValidation
                                                                                PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                                aNewList));
       }
+
       {
+        final ICommonsMap <String, CustomErrorDetails> aCustomErrorLevels = new CommonsHashMap <> ();
+        aCustomErrorLevels.put ("BR-CL-01", CustomErrorDetails.of (EErrorLevel.INFO));
+        aCustomErrorLevels.put ("BR-CL-23", CustomErrorDetails.of (EErrorLevel.WARN));
+        aCustomErrorLevels.put ("BR-CL-21", CustomErrorDetails.of (EErrorLevel.WARN));
+
         final ICommonsList <IValidationExecutor <IValidationSourceXML>> aNewList = _getListWithCustomErrorDetails (aVESUBLInvoice136a,
                                                                                                                    aCustomErrorLevels);
         aNewList.add (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix +
@@ -506,6 +548,25 @@ public final class XRechnungValidation
         aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_XRECHNUNG_UBL_INVOICE_211,
                                                                                "XRechnung UBL Invoice " +
                                                                                                               VID_XRECHNUNG_UBL_INVOICE_211.getVersionString (),
+                                                                               PhiveRulesHelper.createSimpleStatus (bDeprecated),
+                                                                               aNewList));
+      }
+      {
+        final ICommonsMap <String, CustomErrorDetails> aCustomErrorLevels = new CommonsHashMap <> ();
+        aCustomErrorLevels.put ("BR-CL-01", CustomErrorDetails.of (EErrorLevel.INFO));
+        aCustomErrorLevels.put ("BR-CL-21", CustomErrorDetails.of (EErrorLevel.WARN));
+        aCustomErrorLevels.put ("BR-CL-23", CustomErrorDetails.of (EErrorLevel.WARN));
+        aCustomErrorLevels.put ("BR-CL-24", CustomErrorDetails.of (EErrorLevel.WARN));
+
+        final ICommonsList <IValidationExecutor <IValidationSourceXML>> aNewList = _getListWithCustomErrorDetails (aVESUBLInvoice136a,
+                                                                                                                   aCustomErrorLevels);
+        aNewList.add (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix +
+                                                                                   "2.1.1/XRechnung-UBL-validation-Invoice.xslt",
+                                                                                   _getCL ())));
+        aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_XRECHNUNG_EXTENSION_UBL_INVOICE_211,
+                                                                               "XRechnung UBL Invoice " +
+                                                                                                                        VID_XRECHNUNG_EXTENSION_UBL_INVOICE_211.getVersionString () +
+                                                                                                                        " Extension",
                                                                                PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                                aNewList));
       }
@@ -518,12 +579,12 @@ public final class XRechnungValidation
       final IValidationExecutorSet <IValidationSourceXML> aVESUBLCreditNote137 = aRegistry.getOfID (EN16931Validation.VID_UBL_CREDIT_NOTE_137);
       final IValidationExecutorSet <IValidationSourceXML> aVESUBLInvoice137 = aRegistry.getOfID (EN16931Validation.VID_UBL_INVOICE_137);
 
-      final ICommonsMap <String, CustomErrorDetails> aCustomErrorLevels = new CommonsHashMap <> ();
-      aCustomErrorLevels.put ("BR-CL-01", CustomErrorDetails.of (EErrorLevel.INFO));
-      aCustomErrorLevels.put ("BR-CL-23", CustomErrorDetails.of (EErrorLevel.WARN));
-      aCustomErrorLevels.put ("BR-CL-21", CustomErrorDetails.of (EErrorLevel.WARN));
-
       {
+        final ICommonsMap <String, CustomErrorDetails> aCustomErrorLevels = new CommonsHashMap <> ();
+        aCustomErrorLevels.put ("BR-CL-01", CustomErrorDetails.of (EErrorLevel.INFO));
+        aCustomErrorLevels.put ("BR-CL-23", CustomErrorDetails.of (EErrorLevel.WARN));
+        aCustomErrorLevels.put ("BR-CL-21", CustomErrorDetails.of (EErrorLevel.WARN));
+
         final ICommonsList <IValidationExecutor <IValidationSourceXML>> aNewList = _getListWithCustomErrorDetails (aVESCII137,
                                                                                                                    aCustomErrorLevels);
         aNewList.add (PhiveRulesCIIHelper.createXSLT_CII_D16B (new ClassPathResource (sPrefix +
@@ -537,6 +598,35 @@ public final class XRechnungValidation
                                                                                aNewList));
       }
       {
+        final ICommonsMap <String, CustomErrorDetails> aCustomErrorLevels = new CommonsHashMap <> ();
+        aCustomErrorLevels.put ("BR-CL-01", CustomErrorDetails.of (EErrorLevel.INFO));
+        aCustomErrorLevels.put ("BR-CL-23", CustomErrorDetails.of (EErrorLevel.WARN));
+        aCustomErrorLevels.put ("BR-CL-21", CustomErrorDetails.of (EErrorLevel.INFO));
+        aCustomErrorLevels.put ("BR-CL-11", CustomErrorDetails.of (EErrorLevel.INFO));
+        aCustomErrorLevels.put ("BR-CL-10", CustomErrorDetails.of (EErrorLevel.INFO));
+        aCustomErrorLevels.put ("BR-CL-25", CustomErrorDetails.of (EErrorLevel.INFO));
+        aCustomErrorLevels.put ("BR-CL-26", CustomErrorDetails.of (EErrorLevel.INFO));
+
+        final ICommonsList <IValidationExecutor <IValidationSourceXML>> aNewList = _getListWithCustomErrorDetails (aVESCII137,
+                                                                                                                   aCustomErrorLevels);
+        aNewList.add (PhiveRulesCIIHelper.createXSLT_CII_D16B (new ClassPathResource (sPrefix +
+                                                                                      "2.2.0/XRechnung-CII-validation.xslt",
+                                                                                      _getCL ())));
+
+        aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_XRECHNUNG_EXTENSION_CII_220,
+                                                                               "XRechnung CII " +
+                                                                                                                VID_XRECHNUNG_EXTENSION_CII_220.getVersionString () +
+                                                                                                                " Extension",
+                                                                               PhiveRulesHelper.createSimpleStatus (bDeprecated),
+                                                                               aNewList));
+      }
+
+      {
+        final ICommonsMap <String, CustomErrorDetails> aCustomErrorLevels = new CommonsHashMap <> ();
+        aCustomErrorLevels.put ("BR-CL-01", CustomErrorDetails.of (EErrorLevel.INFO));
+        aCustomErrorLevels.put ("BR-CL-23", CustomErrorDetails.of (EErrorLevel.WARN));
+        aCustomErrorLevels.put ("BR-CL-21", CustomErrorDetails.of (EErrorLevel.WARN));
+
         final ICommonsList <IValidationExecutor <IValidationSourceXML>> aNewList = _getListWithCustomErrorDetails (aVESUBLCreditNote137,
                                                                                                                    aCustomErrorLevels);
         aNewList.add (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix +
@@ -549,7 +639,13 @@ public final class XRechnungValidation
                                                                                PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                                aNewList));
       }
+
       {
+        final ICommonsMap <String, CustomErrorDetails> aCustomErrorLevels = new CommonsHashMap <> ();
+        aCustomErrorLevels.put ("BR-CL-01", CustomErrorDetails.of (EErrorLevel.INFO));
+        aCustomErrorLevels.put ("BR-CL-23", CustomErrorDetails.of (EErrorLevel.WARN));
+        aCustomErrorLevels.put ("BR-CL-21", CustomErrorDetails.of (EErrorLevel.WARN));
+
         final ICommonsList <IValidationExecutor <IValidationSourceXML>> aNewList = _getListWithCustomErrorDetails (aVESUBLInvoice137,
                                                                                                                    aCustomErrorLevels);
         aNewList.add (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix +
@@ -562,6 +658,30 @@ public final class XRechnungValidation
                                                                                PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                                aNewList));
       }
+      {
+        final ICommonsMap <String, CustomErrorDetails> aCustomErrorLevels = new CommonsHashMap <> ();
+        aCustomErrorLevels.put ("BR-CL-01", CustomErrorDetails.of (EErrorLevel.INFO));
+        aCustomErrorLevels.put ("BR-CL-21", CustomErrorDetails.of (EErrorLevel.INFO));
+        aCustomErrorLevels.put ("BR-CL-23", CustomErrorDetails.of (EErrorLevel.WARN));
+        aCustomErrorLevels.put ("BR-CL-24", CustomErrorDetails.of (EErrorLevel.WARN));
+        aCustomErrorLevels.put ("BR-CL-10", CustomErrorDetails.of (EErrorLevel.INFO));
+        aCustomErrorLevels.put ("BR-CL-11", CustomErrorDetails.of (EErrorLevel.INFO));
+        aCustomErrorLevels.put ("BR-CL-25", CustomErrorDetails.of (EErrorLevel.INFO));
+        aCustomErrorLevels.put ("BR-CL-26", CustomErrorDetails.of (EErrorLevel.INFO));
+
+        final ICommonsList <IValidationExecutor <IValidationSourceXML>> aNewList = _getListWithCustomErrorDetails (aVESUBLInvoice137,
+                                                                                                                   aCustomErrorLevels);
+        aNewList.add (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix +
+                                                                                   "2.2.0/XRechnung-UBL-validation-Invoice.xslt",
+                                                                                   _getCL ())));
+
+        aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_XRECHNUNG_EXTENSION_UBL_INVOICE_220,
+                                                                               "XRechnung UBL Invoice " +
+                                                                                                                        VID_XRECHNUNG_EXTENSION_UBL_INVOICE_220.getVersionString () +
+                                                                                                                        " Extension",
+                                                                               PhiveRulesHelper.createSimpleStatus (bDeprecated),
+                                                                               aNewList));
+      }
     }
 
     // v2.3.1 (based on rule release 1.8.1)
@@ -571,11 +691,11 @@ public final class XRechnungValidation
       final IValidationExecutorSet <IValidationSourceXML> aVESUBLCreditNote139 = aRegistry.getOfID (EN16931Validation.VID_UBL_CREDIT_NOTE_139);
       final IValidationExecutorSet <IValidationSourceXML> aVESUBLInvoice139 = aRegistry.getOfID (EN16931Validation.VID_UBL_INVOICE_139);
 
-      final ICommonsMap <String, CustomErrorDetails> aCustomErrorLevels = new CommonsHashMap <> ();
-      aCustomErrorLevels.put ("BR-CL-23", CustomErrorDetails.of (EErrorLevel.WARN));
-      aCustomErrorLevels.put ("BR-CL-21", CustomErrorDetails.of (EErrorLevel.WARN));
-
       {
+        final ICommonsMap <String, CustomErrorDetails> aCustomErrorLevels = new CommonsHashMap <> ();
+        aCustomErrorLevels.put ("BR-CL-23", CustomErrorDetails.of (EErrorLevel.WARN));
+        aCustomErrorLevels.put ("BR-CL-21", CustomErrorDetails.of (EErrorLevel.WARN));
+
         final ICommonsList <IValidationExecutor <IValidationSourceXML>> aNewList = _getListWithCustomErrorDetails (aVESCII139,
                                                                                                                    aCustomErrorLevels);
         aNewList.add (PhiveRulesCIIHelper.createXSLT_CII_D16B (new ClassPathResource (sPrefix +
@@ -589,6 +709,33 @@ public final class XRechnungValidation
                                                                                aNewList));
       }
       {
+        final ICommonsMap <String, CustomErrorDetails> aCustomErrorLevels = new CommonsHashMap <> ();
+        aCustomErrorLevels.put ("BR-CL-23", CustomErrorDetails.of (EErrorLevel.WARN));
+        aCustomErrorLevels.put ("BR-CL-21", CustomErrorDetails.of (EErrorLevel.INFO));
+        aCustomErrorLevels.put ("BR-CL-11", CustomErrorDetails.of (EErrorLevel.INFO));
+        aCustomErrorLevels.put ("BR-CL-10", CustomErrorDetails.of (EErrorLevel.INFO));
+        aCustomErrorLevels.put ("BR-CL-25", CustomErrorDetails.of (EErrorLevel.INFO));
+        aCustomErrorLevels.put ("BR-CL-26", CustomErrorDetails.of (EErrorLevel.INFO));
+
+        final ICommonsList <IValidationExecutor <IValidationSourceXML>> aNewList = _getListWithCustomErrorDetails (aVESCII139,
+                                                                                                                   aCustomErrorLevels);
+        aNewList.add (PhiveRulesCIIHelper.createXSLT_CII_D16B (new ClassPathResource (sPrefix +
+                                                                                      "2.3.1/XRechnung-CII-validation.xslt",
+                                                                                      _getCL ())));
+
+        aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_XRECHNUNG_EXTENSION_CII_231,
+                                                                               "XRechnung CII " +
+                                                                                                                VID_XRECHNUNG_EXTENSION_CII_231.getVersionString () +
+                                                                                                                "Extension",
+                                                                               PhiveRulesHelper.createSimpleStatus (bDeprecated),
+                                                                               aNewList));
+      }
+
+      {
+        final ICommonsMap <String, CustomErrorDetails> aCustomErrorLevels = new CommonsHashMap <> ();
+        aCustomErrorLevels.put ("BR-CL-23", CustomErrorDetails.of (EErrorLevel.WARN));
+        aCustomErrorLevels.put ("BR-CL-21", CustomErrorDetails.of (EErrorLevel.WARN));
+
         final ICommonsList <IValidationExecutor <IValidationSourceXML>> aNewList = _getListWithCustomErrorDetails (aVESUBLCreditNote139,
                                                                                                                    aCustomErrorLevels);
         aNewList.add (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix +
@@ -601,7 +748,12 @@ public final class XRechnungValidation
                                                                                PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                                aNewList));
       }
+
       {
+        final ICommonsMap <String, CustomErrorDetails> aCustomErrorLevels = new CommonsHashMap <> ();
+        aCustomErrorLevels.put ("BR-CL-23", CustomErrorDetails.of (EErrorLevel.WARN));
+        aCustomErrorLevels.put ("BR-CL-21", CustomErrorDetails.of (EErrorLevel.WARN));
+
         final ICommonsList <IValidationExecutor <IValidationSourceXML>> aNewList = _getListWithCustomErrorDetails (aVESUBLInvoice139,
                                                                                                                    aCustomErrorLevels);
         aNewList.add (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix +
@@ -611,6 +763,31 @@ public final class XRechnungValidation
         aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_XRECHNUNG_UBL_INVOICE_231,
                                                                                "XRechnung UBL Invoice " +
                                                                                                               VID_XRECHNUNG_UBL_INVOICE_231.getVersionString (),
+                                                                               PhiveRulesHelper.createSimpleStatus (bDeprecated),
+                                                                               aNewList));
+      }
+      {
+        final ICommonsMap <String, CustomErrorDetails> aCustomErrorLevels = new CommonsHashMap <> ();
+        aCustomErrorLevels.put ("BR-CL-21", CustomErrorDetails.of (EErrorLevel.INFO));
+        aCustomErrorLevels.put ("BR-CL-23", CustomErrorDetails.of (EErrorLevel.WARN));
+        aCustomErrorLevels.put ("BR-CL-24", CustomErrorDetails.of (EErrorLevel.WARN));
+        aCustomErrorLevels.put ("BR-CL-10", CustomErrorDetails.of (EErrorLevel.INFO));
+        aCustomErrorLevels.put ("BR-CL-11", CustomErrorDetails.of (EErrorLevel.INFO));
+        aCustomErrorLevels.put ("BR-CL-25", CustomErrorDetails.of (EErrorLevel.INFO));
+        aCustomErrorLevels.put ("BR-CL-26", CustomErrorDetails.of (EErrorLevel.INFO));
+        aCustomErrorLevels.put ("BR-CO-16", CustomErrorDetails.of (EErrorLevel.INFO));
+        aCustomErrorLevels.put ("UBL-CR-470", CustomErrorDetails.of (EErrorLevel.INFO));
+
+        final ICommonsList <IValidationExecutor <IValidationSourceXML>> aNewList = _getListWithCustomErrorDetails (aVESUBLInvoice139,
+                                                                                                                   aCustomErrorLevels);
+        aNewList.add (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix +
+                                                                                   "2.3.1/XRechnung-UBL-validation.xslt",
+                                                                                   _getCL ())));
+
+        aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_XRECHNUNG_EXTENSION_UBL_INVOICE_231,
+                                                                               "XRechnung UBL Invoice " +
+                                                                                                                        VID_XRECHNUNG_EXTENSION_UBL_INVOICE_231.getVersionString () +
+                                                                                                                        " Extension",
                                                                                PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                                aNewList));
       }
@@ -658,8 +835,9 @@ public final class XRechnungValidation
                                                                                       _getCL ())));
 
         aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_XRECHNUNG_EXTENSION_CII_300,
-                                                                               "XRechnung Extension CII " +
-                                                                                                                VID_XRECHNUNG_EXTENSION_CII_300.getVersionString (),
+                                                                               "XRechnung CII " +
+                                                                                                                VID_XRECHNUNG_EXTENSION_CII_300.getVersionString () +
+                                                                                                                " Extension",
                                                                                PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
                                                                                aNewList));
       }
@@ -717,8 +895,9 @@ public final class XRechnungValidation
                                                                                    _getCL ())));
 
         aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_XRECHNUNG_EXTENSION_UBL_INVOICE_300,
-                                                                               "XRechnung Extension_UBL Invoice " +
-                                                                                                                        VID_XRECHNUNG_EXTENSION_UBL_INVOICE_300.getVersionString (),
+                                                                               "XRechnung UBL Invoice " +
+                                                                                                                        VID_XRECHNUNG_EXTENSION_UBL_INVOICE_300.getVersionString () +
+                                                                                                                        " Extension",
                                                                                PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
                                                                                aNewList));
       }
@@ -771,8 +950,9 @@ public final class XRechnungValidation
                                                                                       _getCL ())));
 
         aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_XRECHNUNG_EXTENSION_CII_301,
-                                                                               "XRechnung ExtensionCII " +
-                                                                                                                VID_XRECHNUNG_EXTENSION_CII_301.getVersionString (),
+                                                                               "XRechnung CII " +
+                                                                                                                VID_XRECHNUNG_EXTENSION_CII_301.getVersionString () +
+                                                                                                                " Extension",
                                                                                PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
                                                                                aNewList));
       }
@@ -831,8 +1011,9 @@ public final class XRechnungValidation
                                                                                    _getCL ())));
 
         aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_XRECHNUNG_EXTENSION_UBL_INVOICE_301,
-                                                                               "XRechnung Extension UBL Invoice " +
-                                                                                                                        VID_XRECHNUNG_EXTENSION_UBL_INVOICE_301.getVersionString (),
+                                                                               "XRechnung UBL Invoice " +
+                                                                                                                        VID_XRECHNUNG_EXTENSION_UBL_INVOICE_301.getVersionString () +
+                                                                                                                        " Extension",
                                                                                PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
                                                                                aNewList));
       }
@@ -885,8 +1066,9 @@ public final class XRechnungValidation
                                                                                       _getCL ())));
 
         aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_XRECHNUNG_EXTENSION_CII_302,
-                                                                               "XRechnung Extension CII " +
-                                                                                                                VID_XRECHNUNG_EXTENSION_CII_302.getVersionString (),
+                                                                               "XRechnung CII " +
+                                                                                                                VID_XRECHNUNG_EXTENSION_CII_302.getVersionString () +
+                                                                                                                " Extension",
                                                                                PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
                                                                                aNewList));
       }
@@ -945,8 +1127,9 @@ public final class XRechnungValidation
                                                                                    _getCL ())));
 
         aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_XRECHNUNG_EXTENSION_UBL_INVOICE_302,
-                                                                               "XRechnung Extension UBL Invoice " +
-                                                                                                                        VID_XRECHNUNG_EXTENSION_UBL_INVOICE_302.getVersionString (),
+                                                                               "XRechnung UBL Invoice " +
+                                                                                                                        VID_XRECHNUNG_EXTENSION_UBL_INVOICE_302.getVersionString () +
+                                                                                                                        " Extension",
                                                                                PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
                                                                                aNewList));
       }
