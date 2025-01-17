@@ -56,7 +56,7 @@ public final class PeppolValidation2024_11
   // Standard resources
   public static final Version PEPPOL_VALIDATION_ARTEFACT_VERSION = new Version (2024, 11, 0);
   public static final String VERSION_STR = PEPPOL_VALIDATION_ARTEFACT_VERSION.getAsString (false);
-  public static final LocalDate VALID_PER = PDTFactory.createLocalDate (2024, Month.FEBRUARY, 17);
+  public static final LocalDate VALID_PER = PDTFactory.createLocalDate (2025, Month.FEBRUARY, 17);
   public static final OffsetDateTime VALID_PER_UTC = PDTFactory.createOffsetDateTimeUTC (VALID_PER);
 
   // Standard
