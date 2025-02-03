@@ -52,6 +52,10 @@
       <url>http://www.helger.com</url>
     </developer>
   </developers>
+  
+  <properties>
+    <pdfbox.version>3.0.4</pdfbox.version>
+  </properties>
 
   <dependencies>
     <dependency>
@@ -95,7 +99,7 @@
     <dependency>
       <groupId>org.apache.pdfbox</groupId>
       <artifactId>pdfbox</artifactId>
-      <version>3.0.3</version>
+      <version>${pdfbox.version}</version>
       <scope>test</scope>
     </dependency>
   </dependencies>
