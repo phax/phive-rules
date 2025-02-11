@@ -16,7 +16,7 @@ This project is divided into sub-projects each keeping tracking of one document 
 * phive-rules-ehf - Validation rules for Norwegian EHF (Norwegian public procurement)
 * phive-rules-en16931 - Validation rules for the EN 16931 (European e-Invoicing norm based on CEN TC 434)
 * phive-rules-energieefactuur - Validation rules for Dutch Energie eFactuur
-* phive-rules-facturae - Validation rules for the Spanisch Facturae (since v1.0.11)
+* phive-rules-facturae - Validation rules for the Spanish Facturae (since v1.0.11)
 * phive-rules-fatturapa - Validation rules for Italian fattura PA (since v1.0.4)
 * phive-rules-finvoice - Validation rules for Finvoice (since v1.0.6)
 * phive-rules-isdoc - Validation rules for ISDOC (since v2.0.2)
@@ -202,6 +202,8 @@ I hope that with the introduction of PINT, the versioning problem will be solved
 
 * v3.2.6 - 2025-02-11
     * Added Peppol 2024-11 Hotfix Schematron rules (replacing the previous ones)
+    * Added OIOUBL 1.15.0-rc rules
+    * Deprecated OIOUBL 1.13.2 rules
 * v3.2.5 - 2025-02-03
     * Fixed the "valid per" date of the Peppol 2024-11 release. See [#26](https://github.com/phax/phive-rules/issues/26) - thx @wildhai
 * v3.2.4 - 2025-01-08
