@@ -5,7 +5,7 @@
         schemaVersion="iso"
         queryBinding="xslt2">
 
-    <title>Rules for PEPPOL Order Agreement transaction 3.1</title>
+    <title>Rules for Peppol Order Agreement transaction 3.1</title>
 
     <ns uri="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
        prefix="cbc"/>
@@ -214,8 +214,6 @@
     <pattern xmlns:ns2="http://www.schematron-quickfix.com/validator/process">
       <let name="cleas"
            value="tokenize('0002 0007 0009 0037 0060 0088 0096 0097 0106 0130 0135 0142 0151 0177 0183 0184 0188 0190 0191 0192 0193 0195 0196 0198 0199 0200 0201 0202 0204 0208 0209 0210 0211 0212 0213 0215 0216 0218 0221 0230 0235 9901 9910 9913 9914 9915 9918 9919 9920 9922 9923 9924 9925 9926 9927 9928 9929 9930 9931 9932 9933 9934 9935 9936 9937 9938 9939 9940 9941 9942 9943 9944 9945 9946 9947 9948 9949 9950 9951 9952 9953 9957 9959', '\s')"/>
-      <let name="clImage"
-           value="tokenize('PRODUCT_IMAGE TRADE_ITEM_DESCRIPTION', '\s')"/>
       <let name="clISO4217"
            value="tokenize('AED AFN ALL AMD ANG AOA ARS AUD AWG AZN BAM BBD BDT BGN BHD BIF BMD BND BOB BOV BRL BSD BTN BWP BYN BZD CAD CDF CHE CHF CHW CLF CLP CNY COP COU CRC CUC CUP CVE CZK DJF DKK DOP DZD EGP ERN ETB EUR FJD FKP GBP GEL GHS GIP GMD GNF GTQ GYD HKD HNL HTG HUF IDR ILS INR IQD IRR ISK JMD JOD JPY KES KGS KHR KMF KPW KRW KWD KYD KZT LAK LBP LKR LRD LSL LYD MAD MDL MGA MKD MMK MNT MOP MRU MUR MVR MWK MXN MXV MYR MZN NAD NGN NIO NOK NPR NZD OMR PAB PEN PGK PHP PKR PLN PYG QAR RON RSD RUB RWF SAR SBD SCR SDG SEK SGD SHP SLE SOS SRD SSP STN SVC SYP SZL THB TJS TMT TND TOP TRY TTD TWD TZS UAH UGX USD USN UYI UYU UYW UZS VED VES VND VUV WST XAF XAG XAU XBA XBB XBC XBD XCD XDR XOF XPD XPF XPT XSU XTS XUA YER ZAR ZMW ZWG ZWL', '\s')"/>
       <let name="clTrueFalse" value="tokenize('true false', '\s')"/>
@@ -235,6 +233,8 @@
            value="tokenize('application/pdf image/png image/jpeg image/tiff application/acad application/dwg drawing/dwg application/vnd.openxmlformats-officedocument.spreadsheetml.sheet application/vnd.oasis.opendocument.spreadsheet', '\s')"/>
       <let name="clUNCL5189"
            value="tokenize('41 42 60 62 63 64 65 66 67 68 70 71 88 95 100 102 103 104 105', '\s')"/>
+      <let name="clImage"
+           value="tokenize('PRODUCT_IMAGE TRADE_ITEM_DESCRIPTION', '\s')"/>
       <rule context="/ubl:OrderResponse">
          <assert test="cbc:CustomizationID" flag="fatal" id="PEPPOL-T110-B00101">Element 'cbc:CustomizationID' MUST be provided.</assert>
          <assert test="cbc:ProfileID" flag="fatal" id="PEPPOL-T110-B00102">Element 'cbc:ProfileID' MUST be provided.</assert>
@@ -585,7 +585,7 @@
       <rule context="/ubl:OrderResponse/cac:AllowanceCharge/cbc:ChargeIndicator">
          <assert test="(some $code in $clTrueFalse satisfies $code = normalize-space(text()))"
                  flag="fatal"
-                 id="PEPPOL-T110-B12801">Value MUST be part of code list 'Boolean indicator (openPEPPOL)'.</assert>
+                 id="PEPPOL-T110-B12801">Value MUST be part of code list 'Boolean indicator (OpenPeppol)'.</assert>
       </rule>
       <rule context="/ubl:OrderResponse/cac:AllowanceCharge/cbc:AllowanceChargeReasonCode">
          <assert test="(some $code in $clUNCL5189 satisfies $code = normalize-space(text())) or (some $code in $clUNCL7161 satisfies $code = normalize-space(text()))"
@@ -854,7 +854,7 @@
       <rule context="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item/cac:ItemSpecificationDocumentReference/cbc:DocumentTypeCode">
          <assert test="(some $code in $clUNCL1001 satisfies $code = normalize-space(text())) or (some $code in $clImage satisfies $code = normalize-space(text()))"
                  flag="fatal"
-                 id="PEPPOL-T110-B21201">Value MUST be part of code list 'Document name code, full list (UNCL1001)' or 'Image code (openPEPPOL)'.</assert>
+                 id="PEPPOL-T110-B21201">Value MUST be part of code list 'Document name code, full list (UNCL1001)' or 'Image code (OpenPeppol)'.</assert>
       </rule>
       <rule context="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item/cac:ItemSpecificationDocumentReference/cbc:DocumentType"/>
       <rule context="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item/cac:ItemSpecificationDocumentReference/cac:Attachment"/>
@@ -917,26 +917,7 @@
          <assert test="cbc:Name" flag="fatal" id="PEPPOL-T110-B23201">Element 'cbc:Name' MUST be provided.</assert>
          <assert test="cbc:Value" flag="fatal" id="PEPPOL-T110-B23202">Element 'cbc:Value' MUST be provided.</assert>
       </rule>
-      <rule context="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item/cac:AdditionalItemProperty/cbc:ID">
-         <assert test="@schemeDataURI" flag="fatal" id="PEPPOL-T110-B23301">Element '@schemeDataURI' MUST be provided.</assert>
-         <assert test="@schemeID" flag="fatal" id="PEPPOL-T110-B23302">Element '@schemeID' MUST be provided.</assert>
-         <assert test="@schemeVersionID" flag="fatal" id="PEPPOL-T110-B23303">Element '@schemeVersionID' MUST be provided.</assert>
-      </rule>
-      <rule context="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item/cac:AdditionalItemProperty/cbc:ID/@schemeDataURI"/>
-      <rule context="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item/cac:AdditionalItemProperty/cbc:ID/@schemeDataURI/*">
-         <assert test="false()" flag="fatal" id="PEPPOL-T110-B23401">Document MUST NOT contain elements not part of the data model.</assert>
-      </rule>
-      <rule context="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item/cac:AdditionalItemProperty/cbc:ID/@schemeID"/>
-      <rule context="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item/cac:AdditionalItemProperty/cbc:ID/@schemeID/*">
-         <assert test="false()" flag="fatal" id="PEPPOL-T110-B23501">Document MUST NOT contain elements not part of the data model.</assert>
-      </rule>
-      <rule context="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item/cac:AdditionalItemProperty/cbc:ID/@schemeVersionID"/>
-      <rule context="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item/cac:AdditionalItemProperty/cbc:ID/@schemeVersionID/*">
-         <assert test="false()" flag="fatal" id="PEPPOL-T110-B23601">Document MUST NOT contain elements not part of the data model.</assert>
-      </rule>
-      <rule context="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item/cac:AdditionalItemProperty/cbc:ID/*">
-         <assert test="false()" flag="fatal" id="PEPPOL-T110-B23304">Document MUST NOT contain elements not part of the data model.</assert>
-      </rule>
+      <rule context="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item/cac:AdditionalItemProperty/cbc:ID"/>
       <rule context="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item/cac:AdditionalItemProperty/cbc:Name"/>
       <rule context="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item/cac:AdditionalItemProperty/cbc:NameCode">
          <assert test="@listID" flag="fatal" id="PEPPOL-T110-B23801">Attribute 'listID' MUST be present.</assert>

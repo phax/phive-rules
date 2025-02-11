@@ -200,6 +200,8 @@ I hope that with the introduction of PINT, the versioning problem will be solved
   
 # News and noteworthy
 
+* v3.2.6 - 2025-02-11
+    * Added Peppol 2024-11 Hotfix Schematron rules (replacing the previous ones)
 * v3.2.5 - 2025-02-03
     * Fixed the "valid per" date of the Peppol 2024-11 release. See [#26](https://github.com/phax/phive-rules/issues/26) - thx @wildhai
 * v3.2.4 - 2025-01-08

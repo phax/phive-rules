@@ -5,7 +5,7 @@
         schemaVersion="iso"
         queryBinding="xslt2">
 
-    <title>Rules for PEPPOL Order Cancellation transaction 3.0</title>
+    <title>Rules for Peppol Order Cancellation transaction 3.0</title>
 
     <ns uri="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
        prefix="cbc"/>

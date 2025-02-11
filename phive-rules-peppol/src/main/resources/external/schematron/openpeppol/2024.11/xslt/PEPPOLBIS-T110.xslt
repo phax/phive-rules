@@ -237,7 +237,7 @@
 
 <!--SCHEMA SETUP-->
 <xsl:template match="/">
-    <svrl:schematron-output schemaVersion="iso" title="Rules for PEPPOL Order Agreement transaction 3.1">
+    <svrl:schematron-output schemaVersion="iso" title="Rules for Peppol Order Agreement transaction 3.1">
       <xsl:comment>
         <xsl:value-of select="$archiveDirParameter" />   
 		 <xsl:value-of select="$archiveNameParameter" />  
@@ -253,11 +253,17 @@
         <xsl:attribute name="document">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
+        <xsl:attribute name="documents">
+          <xsl:value-of select="document-uri(/)" />
+        </xsl:attribute>
         <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M19" select="/" />
       <svrl:active-pattern>
         <xsl:attribute name="document">
+          <xsl:value-of select="document-uri(/)" />
+        </xsl:attribute>
+        <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
         <xsl:apply-templates />
@@ -267,11 +273,17 @@
         <xsl:attribute name="document">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
+        <xsl:attribute name="documents">
+          <xsl:value-of select="document-uri(/)" />
+        </xsl:attribute>
         <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M21" select="/" />
       <svrl:active-pattern>
         <xsl:attribute name="document">
+          <xsl:value-of select="document-uri(/)" />
+        </xsl:attribute>
+        <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
         <xsl:apply-templates />
@@ -281,7 +293,7 @@
   </xsl:template>
 
 <!--SCHEMATRON PATTERNS-->
-<svrl:text>Rules for PEPPOL Order Agreement transaction 3.1</svrl:text>
+<svrl:text>Rules for Peppol Order Agreement transaction 3.1</svrl:text>
 
 <!--PATTERN -->
 
@@ -572,7 +584,6 @@
 
 <!--PATTERN -->
 <xsl:variable name="cleas" select="tokenize('0002 0007 0009 0037 0060 0088 0096 0097 0106 0130 0135 0142 0151 0177 0183 0184 0188 0190 0191 0192 0193 0195 0196 0198 0199 0200 0201 0202 0204 0208 0209 0210 0211 0212 0213 0215 0216 0218 0221 0230 0235 9901 9910 9913 9914 9915 9918 9919 9920 9922 9923 9924 9925 9926 9927 9928 9929 9930 9931 9932 9933 9934 9935 9936 9937 9938 9939 9940 9941 9942 9943 9944 9945 9946 9947 9948 9949 9950 9951 9952 9953 9957 9959', '\s')" />
-  <xsl:variable name="clImage" select="tokenize('PRODUCT_IMAGE TRADE_ITEM_DESCRIPTION', '\s')" />
   <xsl:variable name="clISO4217" select="tokenize('AED AFN ALL AMD ANG AOA ARS AUD AWG AZN BAM BBD BDT BGN BHD BIF BMD BND BOB BOV BRL BSD BTN BWP BYN BZD CAD CDF CHE CHF CHW CLF CLP CNY COP COU CRC CUC CUP CVE CZK DJF DKK DOP DZD EGP ERN ETB EUR FJD FKP GBP GEL GHS GIP GMD GNF GTQ GYD HKD HNL HTG HUF IDR ILS INR IQD IRR ISK JMD JOD JPY KES KGS KHR KMF KPW KRW KWD KYD KZT LAK LBP LKR LRD LSL LYD MAD MDL MGA MKD MMK MNT MOP MRU MUR MVR MWK MXN MXV MYR MZN NAD NGN NIO NOK NPR NZD OMR PAB PEN PGK PHP PKR PLN PYG QAR RON RSD RUB RWF SAR SBD SCR SDG SEK SGD SHP SLE SOS SRD SSP STN SVC SYP SZL THB TJS TMT TND TOP TRY TTD TWD TZS UAH UGX USD USN UYI UYU UYW UZS VED VES VND VUV WST XAF XAG XAU XBA XBB XBC XBD XCD XDR XOF XPD XPF XPT XSU XTS XUA YER ZAR ZMW ZWG ZWL', '\s')" />
   <xsl:variable name="clTrueFalse" select="tokenize('true false', '\s')" />
   <xsl:variable name="clUNCL7161" select="tokenize('AA AAA AAC AAD AAE AAF AAH AAI AAS AAT AAV AAY AAZ ABA ABB ABC ABD ABF ABK ABL ABN ABR ABS ABT ABU ACF ACG ACH ACI ACJ ACK ACL ACM ACS ADC ADE ADJ ADK ADL ADM ADN ADO ADP ADQ ADR ADT ADW ADY ADZ AEA AEB AEC AED AEF AEH AEI AEJ AEK AEL AEM AEN AEO AEP AES AET AEU AEV AEW AEX AEY AEZ AJ AU CA CAB CAD CAE CAF CAI CAJ CAK CAL CAM CAN CAO CAP CAQ CAR CAS CAT CAU CAV CAW CD CG CS CT DAB DAD DL EG EP ER FAA FAB FAC FC FH FI GAA HAA HD HH IAA IAB ID IF IR IS KO L1 LA LAA LAB LF MAE MI ML NAA OA PA PAA PC PL RAB RAC RAD RAF RE RF RH RV SA SAA SAD SAE SAI SG SH SM SU TAB TAC TT TV V1 V2 WH XAA YY ZZZ', '\s')" />
@@ -583,9 +594,10 @@
   <xsl:variable name="clICD" select="tokenize('0002 0003 0004 0005 0006 0007 0008 0009 0010 0011 0012 0013 0014 0015 0016 0017 0018 0019 0020 0021 0022 0023 0024 0025 0026 0027 0028 0029 0030 0031 0032 0033 0034 0035 0036 0037 0038 0039 0040 0041 0042 0043 0044 0045 0046 0047 0048 0049 0050 0051 0052 0053 0054 0055 0056 0057 0058 0059 0060 0061 0062 0063 0064 0065 0066 0067 0068 0069 0070 0071 0072 0073 0074 0075 0076 0077 0078 0079 0080 0081 0082 0083 0084 0085 0086 0087 0088 0089 0090 0091 0093 0094 0095 0096 0097 0098 0099 0100 0101 0102 0104 0105 0106 0107 0108 0109 0110 0111 0112 0113 0114 0115 0116 0117 0118 0119 0120 0121 0122 0123 0124 0125 0126 0127 0128 0129 0130 0131 0132 0133 0134 0135 0136 0137 0138 0139 0140 0141 0142 0143 0144 0145 0146 0147 0148 0149 0150 0151 0152 0153 0154 0155 0156 0157 0158 0159 0160 0161 0162 0163 0164 0165 0166 0167 0168 0169 0170 0171 0172 0173 0174 0175 0176 0177 0178 0179 0180 0183 0184 0185 0186 0187 0188 0189 0190 0191 0192 0193 0194 0195 0196 0197 0198 0199 0200 0201 0202 0203 0204 0205 0206 0207 0208 0209 0210 0211 0212 0213 0214 0215 0216 0217 0218 0219 0220 0221 0222 0223 0224 0225 0226 0227 0228 0229 0230 0231 0232 0233 0234 0235 0236 0237 0238', '\s')" />
   <xsl:variable name="clMimeCode" select="tokenize('application/pdf image/png image/jpeg image/tiff application/acad application/dwg drawing/dwg application/vnd.openxmlformats-officedocument.spreadsheetml.sheet application/vnd.oasis.opendocument.spreadsheet', '\s')" />
   <xsl:variable name="clUNCL5189" select="tokenize('41 42 60 62 63 64 65 66 67 68 70 71 88 95 100 102 103 104 105', '\s')" />
+  <xsl:variable name="clImage" select="tokenize('PRODUCT_IMAGE TRADE_ITEM_DESCRIPTION', '\s')" />
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse" mode="M21" priority="1278">
+<xsl:template match="/ubl:OrderResponse" mode="M21" priority="1271">
     <svrl:fired-rule context="/ubl:OrderResponse" />
 
 		<!--ASSERT -->
@@ -726,13 +738,13 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cbc:CustomizationID" mode="M21" priority="1277">
+<xsl:template match="/ubl:OrderResponse/cbc:CustomizationID" mode="M21" priority="1270">
     <svrl:fired-rule context="/ubl:OrderResponse/cbc:CustomizationID" />
     <xsl:apply-templates mode="M21" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cbc:ProfileID" mode="M21" priority="1276">
+<xsl:template match="/ubl:OrderResponse/cbc:ProfileID" mode="M21" priority="1269">
     <svrl:fired-rule context="/ubl:OrderResponse/cbc:ProfileID" />
 
 		<!--ASSERT -->
@@ -753,37 +765,37 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cbc:ID" mode="M21" priority="1275">
+<xsl:template match="/ubl:OrderResponse/cbc:ID" mode="M21" priority="1268">
     <svrl:fired-rule context="/ubl:OrderResponse/cbc:ID" />
     <xsl:apply-templates mode="M21" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cbc:SalesOrderID" mode="M21" priority="1274">
+<xsl:template match="/ubl:OrderResponse/cbc:SalesOrderID" mode="M21" priority="1267">
     <svrl:fired-rule context="/ubl:OrderResponse/cbc:SalesOrderID" />
     <xsl:apply-templates mode="M21" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cbc:IssueDate" mode="M21" priority="1273">
+<xsl:template match="/ubl:OrderResponse/cbc:IssueDate" mode="M21" priority="1266">
     <svrl:fired-rule context="/ubl:OrderResponse/cbc:IssueDate" />
     <xsl:apply-templates mode="M21" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cbc:IssueTime" mode="M21" priority="1272">
+<xsl:template match="/ubl:OrderResponse/cbc:IssueTime" mode="M21" priority="1265">
     <svrl:fired-rule context="/ubl:OrderResponse/cbc:IssueTime" />
     <xsl:apply-templates mode="M21" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cbc:Note" mode="M21" priority="1271">
+<xsl:template match="/ubl:OrderResponse/cbc:Note" mode="M21" priority="1264">
     <svrl:fired-rule context="/ubl:OrderResponse/cbc:Note" />
     <xsl:apply-templates mode="M21" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cbc:DocumentCurrencyCode" mode="M21" priority="1270">
+<xsl:template match="/ubl:OrderResponse/cbc:DocumentCurrencyCode" mode="M21" priority="1263">
     <svrl:fired-rule context="/ubl:OrderResponse/cbc:DocumentCurrencyCode" />
 
 		<!--ASSERT -->
@@ -804,13 +816,13 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cbc:CustomerReference" mode="M21" priority="1269">
+<xsl:template match="/ubl:OrderResponse/cbc:CustomerReference" mode="M21" priority="1262">
     <svrl:fired-rule context="/ubl:OrderResponse/cbc:CustomerReference" />
     <xsl:apply-templates mode="M21" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:OrderReference" mode="M21" priority="1268">
+<xsl:template match="/ubl:OrderResponse/cac:OrderReference" mode="M21" priority="1261">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:OrderReference" />
 
 		<!--ASSERT -->
@@ -831,13 +843,13 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:OrderReference/cbc:ID" mode="M21" priority="1267">
+<xsl:template match="/ubl:OrderResponse/cac:OrderReference/cbc:ID" mode="M21" priority="1260">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:OrderReference/cbc:ID" />
     <xsl:apply-templates mode="M21" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:OrderReference/*" mode="M21" priority="1266">
+<xsl:template match="/ubl:OrderResponse/cac:OrderReference/*" mode="M21" priority="1259">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:OrderReference/*" />
 
 		<!--ASSERT -->
@@ -858,7 +870,7 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:OriginatorDocumentReference" mode="M21" priority="1265">
+<xsl:template match="/ubl:OrderResponse/cac:OriginatorDocumentReference" mode="M21" priority="1258">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:OriginatorDocumentReference" />
 
 		<!--ASSERT -->
@@ -879,13 +891,13 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:OriginatorDocumentReference/cbc:ID" mode="M21" priority="1264">
+<xsl:template match="/ubl:OrderResponse/cac:OriginatorDocumentReference/cbc:ID" mode="M21" priority="1257">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:OriginatorDocumentReference/cbc:ID" />
     <xsl:apply-templates mode="M21" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:OriginatorDocumentReference/*" mode="M21" priority="1263">
+<xsl:template match="/ubl:OrderResponse/cac:OriginatorDocumentReference/*" mode="M21" priority="1256">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:OriginatorDocumentReference/*" />
 
 		<!--ASSERT -->
@@ -906,7 +918,7 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:AdditionalDocumentReference" mode="M21" priority="1262">
+<xsl:template match="/ubl:OrderResponse/cac:AdditionalDocumentReference" mode="M21" priority="1255">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:AdditionalDocumentReference" />
 
 		<!--ASSERT -->
@@ -927,25 +939,25 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:AdditionalDocumentReference/cbc:ID" mode="M21" priority="1261">
+<xsl:template match="/ubl:OrderResponse/cac:AdditionalDocumentReference/cbc:ID" mode="M21" priority="1254">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:AdditionalDocumentReference/cbc:ID" />
     <xsl:apply-templates mode="M21" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:AdditionalDocumentReference/cbc:DocumentType" mode="M21" priority="1260">
+<xsl:template match="/ubl:OrderResponse/cac:AdditionalDocumentReference/cbc:DocumentType" mode="M21" priority="1253">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:AdditionalDocumentReference/cbc:DocumentType" />
     <xsl:apply-templates mode="M21" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:AdditionalDocumentReference/cac:Attachment" mode="M21" priority="1259">
+<xsl:template match="/ubl:OrderResponse/cac:AdditionalDocumentReference/cac:Attachment" mode="M21" priority="1252">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:AdditionalDocumentReference/cac:Attachment" />
     <xsl:apply-templates mode="M21" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:AdditionalDocumentReference/cac:Attachment/cbc:EmbeddedDocumentBinaryObject" mode="M21" priority="1258">
+<xsl:template match="/ubl:OrderResponse/cac:AdditionalDocumentReference/cac:Attachment/cbc:EmbeddedDocumentBinaryObject" mode="M21" priority="1251">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:AdditionalDocumentReference/cac:Attachment/cbc:EmbeddedDocumentBinaryObject" />
 
 		<!--ASSERT -->
@@ -996,7 +1008,7 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:AdditionalDocumentReference/cac:Attachment/cac:ExternalReference" mode="M21" priority="1257">
+<xsl:template match="/ubl:OrderResponse/cac:AdditionalDocumentReference/cac:Attachment/cac:ExternalReference" mode="M21" priority="1250">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:AdditionalDocumentReference/cac:Attachment/cac:ExternalReference" />
 
 		<!--ASSERT -->
@@ -1017,13 +1029,13 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:AdditionalDocumentReference/cac:Attachment/cac:ExternalReference/cbc:URI" mode="M21" priority="1256">
+<xsl:template match="/ubl:OrderResponse/cac:AdditionalDocumentReference/cac:Attachment/cac:ExternalReference/cbc:URI" mode="M21" priority="1249">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:AdditionalDocumentReference/cac:Attachment/cac:ExternalReference/cbc:URI" />
     <xsl:apply-templates mode="M21" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:AdditionalDocumentReference/cac:Attachment/cac:ExternalReference/*" mode="M21" priority="1255">
+<xsl:template match="/ubl:OrderResponse/cac:AdditionalDocumentReference/cac:Attachment/cac:ExternalReference/*" mode="M21" priority="1248">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:AdditionalDocumentReference/cac:Attachment/cac:ExternalReference/*" />
 
 		<!--ASSERT -->
@@ -1044,7 +1056,7 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:AdditionalDocumentReference/cac:Attachment/*" mode="M21" priority="1254">
+<xsl:template match="/ubl:OrderResponse/cac:AdditionalDocumentReference/cac:Attachment/*" mode="M21" priority="1247">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:AdditionalDocumentReference/cac:Attachment/*" />
 
 		<!--ASSERT -->
@@ -1065,7 +1077,7 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:AdditionalDocumentReference/*" mode="M21" priority="1253">
+<xsl:template match="/ubl:OrderResponse/cac:AdditionalDocumentReference/*" mode="M21" priority="1246">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:AdditionalDocumentReference/*" />
 
 		<!--ASSERT -->
@@ -1086,7 +1098,7 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:Contract" mode="M21" priority="1252">
+<xsl:template match="/ubl:OrderResponse/cac:Contract" mode="M21" priority="1245">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:Contract" />
 
 		<!--ASSERT -->
@@ -1107,13 +1119,13 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:Contract/cbc:ID" mode="M21" priority="1251">
+<xsl:template match="/ubl:OrderResponse/cac:Contract/cbc:ID" mode="M21" priority="1244">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:Contract/cbc:ID" />
     <xsl:apply-templates mode="M21" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:Contract/*" mode="M21" priority="1250">
+<xsl:template match="/ubl:OrderResponse/cac:Contract/*" mode="M21" priority="1243">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:Contract/*" />
 
 		<!--ASSERT -->
@@ -1134,7 +1146,7 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:SellerSupplierParty" mode="M21" priority="1249">
+<xsl:template match="/ubl:OrderResponse/cac:SellerSupplierParty" mode="M21" priority="1242">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:SellerSupplierParty" />
 
 		<!--ASSERT -->
@@ -1155,7 +1167,7 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:SellerSupplierParty/cac:Party" mode="M21" priority="1248">
+<xsl:template match="/ubl:OrderResponse/cac:SellerSupplierParty/cac:Party" mode="M21" priority="1241">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:SellerSupplierParty/cac:Party" />
 
 		<!--ASSERT -->
@@ -1191,7 +1203,7 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:SellerSupplierParty/cac:Party/cbc:EndpointID" mode="M21" priority="1247">
+<xsl:template match="/ubl:OrderResponse/cac:SellerSupplierParty/cac:Party/cbc:EndpointID" mode="M21" priority="1240">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:SellerSupplierParty/cac:Party/cbc:EndpointID" />
 
 		<!--ASSERT -->
@@ -1227,7 +1239,7 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:SellerSupplierParty/cac:Party/cac:PartyIdentification" mode="M21" priority="1246">
+<xsl:template match="/ubl:OrderResponse/cac:SellerSupplierParty/cac:Party/cac:PartyIdentification" mode="M21" priority="1239">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:SellerSupplierParty/cac:Party/cac:PartyIdentification" />
 
 		<!--ASSERT -->
@@ -1248,7 +1260,7 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:SellerSupplierParty/cac:Party/cac:PartyIdentification/cbc:ID" mode="M21" priority="1245">
+<xsl:template match="/ubl:OrderResponse/cac:SellerSupplierParty/cac:Party/cac:PartyIdentification/cbc:ID" mode="M21" priority="1238">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:SellerSupplierParty/cac:Party/cac:PartyIdentification/cbc:ID" />
 
 		<!--ASSERT -->
@@ -1269,7 +1281,7 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:SellerSupplierParty/cac:Party/cac:PostalAddress" mode="M21" priority="1244">
+<xsl:template match="/ubl:OrderResponse/cac:SellerSupplierParty/cac:Party/cac:PostalAddress" mode="M21" priority="1237">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:SellerSupplierParty/cac:Party/cac:PostalAddress" />
 
 		<!--ASSERT -->
@@ -1290,49 +1302,49 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:SellerSupplierParty/cac:Party/cac:PostalAddress/cbc:StreetName" mode="M21" priority="1243">
+<xsl:template match="/ubl:OrderResponse/cac:SellerSupplierParty/cac:Party/cac:PostalAddress/cbc:StreetName" mode="M21" priority="1236">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:SellerSupplierParty/cac:Party/cac:PostalAddress/cbc:StreetName" />
     <xsl:apply-templates mode="M21" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:SellerSupplierParty/cac:Party/cac:PostalAddress/cbc:AdditionalStreetName" mode="M21" priority="1242">
+<xsl:template match="/ubl:OrderResponse/cac:SellerSupplierParty/cac:Party/cac:PostalAddress/cbc:AdditionalStreetName" mode="M21" priority="1235">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:SellerSupplierParty/cac:Party/cac:PostalAddress/cbc:AdditionalStreetName" />
     <xsl:apply-templates mode="M21" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:SellerSupplierParty/cac:Party/cac:PostalAddress/cbc:CityName" mode="M21" priority="1241">
+<xsl:template match="/ubl:OrderResponse/cac:SellerSupplierParty/cac:Party/cac:PostalAddress/cbc:CityName" mode="M21" priority="1234">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:SellerSupplierParty/cac:Party/cac:PostalAddress/cbc:CityName" />
     <xsl:apply-templates mode="M21" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:SellerSupplierParty/cac:Party/cac:PostalAddress/cbc:PostalZone" mode="M21" priority="1240">
+<xsl:template match="/ubl:OrderResponse/cac:SellerSupplierParty/cac:Party/cac:PostalAddress/cbc:PostalZone" mode="M21" priority="1233">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:SellerSupplierParty/cac:Party/cac:PostalAddress/cbc:PostalZone" />
     <xsl:apply-templates mode="M21" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:SellerSupplierParty/cac:Party/cac:PostalAddress/cbc:CountrySubentity" mode="M21" priority="1239">
+<xsl:template match="/ubl:OrderResponse/cac:SellerSupplierParty/cac:Party/cac:PostalAddress/cbc:CountrySubentity" mode="M21" priority="1232">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:SellerSupplierParty/cac:Party/cac:PostalAddress/cbc:CountrySubentity" />
     <xsl:apply-templates mode="M21" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:SellerSupplierParty/cac:Party/cac:PostalAddress/cac:AddressLine" mode="M21" priority="1238">
+<xsl:template match="/ubl:OrderResponse/cac:SellerSupplierParty/cac:Party/cac:PostalAddress/cac:AddressLine" mode="M21" priority="1231">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:SellerSupplierParty/cac:Party/cac:PostalAddress/cac:AddressLine" />
     <xsl:apply-templates mode="M21" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:SellerSupplierParty/cac:Party/cac:PostalAddress/cac:AddressLine/cbc:Line" mode="M21" priority="1237">
+<xsl:template match="/ubl:OrderResponse/cac:SellerSupplierParty/cac:Party/cac:PostalAddress/cac:AddressLine/cbc:Line" mode="M21" priority="1230">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:SellerSupplierParty/cac:Party/cac:PostalAddress/cac:AddressLine/cbc:Line" />
     <xsl:apply-templates mode="M21" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:SellerSupplierParty/cac:Party/cac:PostalAddress/cac:Country" mode="M21" priority="1236">
+<xsl:template match="/ubl:OrderResponse/cac:SellerSupplierParty/cac:Party/cac:PostalAddress/cac:Country" mode="M21" priority="1229">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:SellerSupplierParty/cac:Party/cac:PostalAddress/cac:Country" />
 
 		<!--ASSERT -->
@@ -1353,7 +1365,7 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:SellerSupplierParty/cac:Party/cac:PostalAddress/cac:Country/cbc:IdentificationCode" mode="M21" priority="1235">
+<xsl:template match="/ubl:OrderResponse/cac:SellerSupplierParty/cac:Party/cac:PostalAddress/cac:Country/cbc:IdentificationCode" mode="M21" priority="1228">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:SellerSupplierParty/cac:Party/cac:PostalAddress/cac:Country/cbc:IdentificationCode" />
 
 		<!--ASSERT -->
@@ -1374,7 +1386,7 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:SellerSupplierParty/cac:Party/cac:PostalAddress/cac:Country/*" mode="M21" priority="1234">
+<xsl:template match="/ubl:OrderResponse/cac:SellerSupplierParty/cac:Party/cac:PostalAddress/cac:Country/*" mode="M21" priority="1227">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:SellerSupplierParty/cac:Party/cac:PostalAddress/cac:Country/*" />
 
 		<!--ASSERT -->
@@ -1395,7 +1407,7 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:SellerSupplierParty/cac:Party/cac:PostalAddress/*" mode="M21" priority="1233">
+<xsl:template match="/ubl:OrderResponse/cac:SellerSupplierParty/cac:Party/cac:PostalAddress/*" mode="M21" priority="1226">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:SellerSupplierParty/cac:Party/cac:PostalAddress/*" />
 
 		<!--ASSERT -->
@@ -1416,7 +1428,7 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:SellerSupplierParty/cac:Party/cac:PartyLegalEntity" mode="M21" priority="1232">
+<xsl:template match="/ubl:OrderResponse/cac:SellerSupplierParty/cac:Party/cac:PartyLegalEntity" mode="M21" priority="1225">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:SellerSupplierParty/cac:Party/cac:PartyLegalEntity" />
 
 		<!--ASSERT -->
@@ -1437,13 +1449,13 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:SellerSupplierParty/cac:Party/cac:PartyLegalEntity/cbc:RegistrationName" mode="M21" priority="1231">
+<xsl:template match="/ubl:OrderResponse/cac:SellerSupplierParty/cac:Party/cac:PartyLegalEntity/cbc:RegistrationName" mode="M21" priority="1224">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:SellerSupplierParty/cac:Party/cac:PartyLegalEntity/cbc:RegistrationName" />
     <xsl:apply-templates mode="M21" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:SellerSupplierParty/cac:Party/cac:PartyLegalEntity/cbc:CompanyID" mode="M21" priority="1230">
+<xsl:template match="/ubl:OrderResponse/cac:SellerSupplierParty/cac:Party/cac:PartyLegalEntity/cbc:CompanyID" mode="M21" priority="1223">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:SellerSupplierParty/cac:Party/cac:PartyLegalEntity/cbc:CompanyID" />
 
 		<!--ASSERT -->
@@ -1464,7 +1476,7 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:SellerSupplierParty/cac:Party/cac:PartyLegalEntity/*" mode="M21" priority="1229">
+<xsl:template match="/ubl:OrderResponse/cac:SellerSupplierParty/cac:Party/cac:PartyLegalEntity/*" mode="M21" priority="1222">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:SellerSupplierParty/cac:Party/cac:PartyLegalEntity/*" />
 
 		<!--ASSERT -->
@@ -1485,31 +1497,31 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:SellerSupplierParty/cac:Party/cac:Contact" mode="M21" priority="1228">
+<xsl:template match="/ubl:OrderResponse/cac:SellerSupplierParty/cac:Party/cac:Contact" mode="M21" priority="1221">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:SellerSupplierParty/cac:Party/cac:Contact" />
     <xsl:apply-templates mode="M21" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:SellerSupplierParty/cac:Party/cac:Contact/cbc:Name" mode="M21" priority="1227">
+<xsl:template match="/ubl:OrderResponse/cac:SellerSupplierParty/cac:Party/cac:Contact/cbc:Name" mode="M21" priority="1220">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:SellerSupplierParty/cac:Party/cac:Contact/cbc:Name" />
     <xsl:apply-templates mode="M21" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:SellerSupplierParty/cac:Party/cac:Contact/cbc:Telephone" mode="M21" priority="1226">
+<xsl:template match="/ubl:OrderResponse/cac:SellerSupplierParty/cac:Party/cac:Contact/cbc:Telephone" mode="M21" priority="1219">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:SellerSupplierParty/cac:Party/cac:Contact/cbc:Telephone" />
     <xsl:apply-templates mode="M21" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:SellerSupplierParty/cac:Party/cac:Contact/cbc:ElectronicMail" mode="M21" priority="1225">
+<xsl:template match="/ubl:OrderResponse/cac:SellerSupplierParty/cac:Party/cac:Contact/cbc:ElectronicMail" mode="M21" priority="1218">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:SellerSupplierParty/cac:Party/cac:Contact/cbc:ElectronicMail" />
     <xsl:apply-templates mode="M21" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:SellerSupplierParty/cac:Party/cac:Contact/*" mode="M21" priority="1224">
+<xsl:template match="/ubl:OrderResponse/cac:SellerSupplierParty/cac:Party/cac:Contact/*" mode="M21" priority="1217">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:SellerSupplierParty/cac:Party/cac:Contact/*" />
 
 		<!--ASSERT -->
@@ -1530,7 +1542,7 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:SellerSupplierParty/cac:Party/*" mode="M21" priority="1223">
+<xsl:template match="/ubl:OrderResponse/cac:SellerSupplierParty/cac:Party/*" mode="M21" priority="1216">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:SellerSupplierParty/cac:Party/*" />
 
 		<!--ASSERT -->
@@ -1551,7 +1563,7 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:SellerSupplierParty/*" mode="M21" priority="1222">
+<xsl:template match="/ubl:OrderResponse/cac:SellerSupplierParty/*" mode="M21" priority="1215">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:SellerSupplierParty/*" />
 
 		<!--ASSERT -->
@@ -1572,7 +1584,7 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:BuyerCustomerParty" mode="M21" priority="1221">
+<xsl:template match="/ubl:OrderResponse/cac:BuyerCustomerParty" mode="M21" priority="1214">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:BuyerCustomerParty" />
 
 		<!--ASSERT -->
@@ -1593,7 +1605,7 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:BuyerCustomerParty/cac:Party" mode="M21" priority="1220">
+<xsl:template match="/ubl:OrderResponse/cac:BuyerCustomerParty/cac:Party" mode="M21" priority="1213">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:BuyerCustomerParty/cac:Party" />
 
 		<!--ASSERT -->
@@ -1629,7 +1641,7 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:BuyerCustomerParty/cac:Party/cbc:EndpointID" mode="M21" priority="1219">
+<xsl:template match="/ubl:OrderResponse/cac:BuyerCustomerParty/cac:Party/cbc:EndpointID" mode="M21" priority="1212">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:BuyerCustomerParty/cac:Party/cbc:EndpointID" />
 
 		<!--ASSERT -->
@@ -1665,7 +1677,7 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:BuyerCustomerParty/cac:Party/cac:PartyIdentification" mode="M21" priority="1218">
+<xsl:template match="/ubl:OrderResponse/cac:BuyerCustomerParty/cac:Party/cac:PartyIdentification" mode="M21" priority="1211">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:BuyerCustomerParty/cac:Party/cac:PartyIdentification" />
 
 		<!--ASSERT -->
@@ -1686,7 +1698,7 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:BuyerCustomerParty/cac:Party/cac:PartyIdentification/cbc:ID" mode="M21" priority="1217">
+<xsl:template match="/ubl:OrderResponse/cac:BuyerCustomerParty/cac:Party/cac:PartyIdentification/cbc:ID" mode="M21" priority="1210">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:BuyerCustomerParty/cac:Party/cac:PartyIdentification/cbc:ID" />
 
 		<!--ASSERT -->
@@ -1707,7 +1719,7 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:BuyerCustomerParty/cac:Party/cac:PostalAddress" mode="M21" priority="1216">
+<xsl:template match="/ubl:OrderResponse/cac:BuyerCustomerParty/cac:Party/cac:PostalAddress" mode="M21" priority="1209">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:BuyerCustomerParty/cac:Party/cac:PostalAddress" />
 
 		<!--ASSERT -->
@@ -1728,49 +1740,49 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:BuyerCustomerParty/cac:Party/cac:PostalAddress/cbc:StreetName" mode="M21" priority="1215">
+<xsl:template match="/ubl:OrderResponse/cac:BuyerCustomerParty/cac:Party/cac:PostalAddress/cbc:StreetName" mode="M21" priority="1208">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:BuyerCustomerParty/cac:Party/cac:PostalAddress/cbc:StreetName" />
     <xsl:apply-templates mode="M21" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:BuyerCustomerParty/cac:Party/cac:PostalAddress/cbc:AdditionalStreetName" mode="M21" priority="1214">
+<xsl:template match="/ubl:OrderResponse/cac:BuyerCustomerParty/cac:Party/cac:PostalAddress/cbc:AdditionalStreetName" mode="M21" priority="1207">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:BuyerCustomerParty/cac:Party/cac:PostalAddress/cbc:AdditionalStreetName" />
     <xsl:apply-templates mode="M21" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:BuyerCustomerParty/cac:Party/cac:PostalAddress/cbc:CityName" mode="M21" priority="1213">
+<xsl:template match="/ubl:OrderResponse/cac:BuyerCustomerParty/cac:Party/cac:PostalAddress/cbc:CityName" mode="M21" priority="1206">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:BuyerCustomerParty/cac:Party/cac:PostalAddress/cbc:CityName" />
     <xsl:apply-templates mode="M21" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:BuyerCustomerParty/cac:Party/cac:PostalAddress/cbc:PostalZone" mode="M21" priority="1212">
+<xsl:template match="/ubl:OrderResponse/cac:BuyerCustomerParty/cac:Party/cac:PostalAddress/cbc:PostalZone" mode="M21" priority="1205">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:BuyerCustomerParty/cac:Party/cac:PostalAddress/cbc:PostalZone" />
     <xsl:apply-templates mode="M21" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:BuyerCustomerParty/cac:Party/cac:PostalAddress/cbc:CountrySubentity" mode="M21" priority="1211">
+<xsl:template match="/ubl:OrderResponse/cac:BuyerCustomerParty/cac:Party/cac:PostalAddress/cbc:CountrySubentity" mode="M21" priority="1204">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:BuyerCustomerParty/cac:Party/cac:PostalAddress/cbc:CountrySubentity" />
     <xsl:apply-templates mode="M21" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:BuyerCustomerParty/cac:Party/cac:PostalAddress/cac:AddressLine" mode="M21" priority="1210">
+<xsl:template match="/ubl:OrderResponse/cac:BuyerCustomerParty/cac:Party/cac:PostalAddress/cac:AddressLine" mode="M21" priority="1203">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:BuyerCustomerParty/cac:Party/cac:PostalAddress/cac:AddressLine" />
     <xsl:apply-templates mode="M21" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:BuyerCustomerParty/cac:Party/cac:PostalAddress/cac:AddressLine/cbc:Line" mode="M21" priority="1209">
+<xsl:template match="/ubl:OrderResponse/cac:BuyerCustomerParty/cac:Party/cac:PostalAddress/cac:AddressLine/cbc:Line" mode="M21" priority="1202">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:BuyerCustomerParty/cac:Party/cac:PostalAddress/cac:AddressLine/cbc:Line" />
     <xsl:apply-templates mode="M21" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:BuyerCustomerParty/cac:Party/cac:PostalAddress/cac:Country" mode="M21" priority="1208">
+<xsl:template match="/ubl:OrderResponse/cac:BuyerCustomerParty/cac:Party/cac:PostalAddress/cac:Country" mode="M21" priority="1201">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:BuyerCustomerParty/cac:Party/cac:PostalAddress/cac:Country" />
 
 		<!--ASSERT -->
@@ -1791,7 +1803,7 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:BuyerCustomerParty/cac:Party/cac:PostalAddress/cac:Country/cbc:IdentificationCode" mode="M21" priority="1207">
+<xsl:template match="/ubl:OrderResponse/cac:BuyerCustomerParty/cac:Party/cac:PostalAddress/cac:Country/cbc:IdentificationCode" mode="M21" priority="1200">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:BuyerCustomerParty/cac:Party/cac:PostalAddress/cac:Country/cbc:IdentificationCode" />
 
 		<!--ASSERT -->
@@ -1812,7 +1824,7 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:BuyerCustomerParty/cac:Party/cac:PostalAddress/cac:Country/*" mode="M21" priority="1206">
+<xsl:template match="/ubl:OrderResponse/cac:BuyerCustomerParty/cac:Party/cac:PostalAddress/cac:Country/*" mode="M21" priority="1199">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:BuyerCustomerParty/cac:Party/cac:PostalAddress/cac:Country/*" />
 
 		<!--ASSERT -->
@@ -1833,7 +1845,7 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:BuyerCustomerParty/cac:Party/cac:PostalAddress/*" mode="M21" priority="1205">
+<xsl:template match="/ubl:OrderResponse/cac:BuyerCustomerParty/cac:Party/cac:PostalAddress/*" mode="M21" priority="1198">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:BuyerCustomerParty/cac:Party/cac:PostalAddress/*" />
 
 		<!--ASSERT -->
@@ -1854,7 +1866,7 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:BuyerCustomerParty/cac:Party/cac:PartyLegalEntity" mode="M21" priority="1204">
+<xsl:template match="/ubl:OrderResponse/cac:BuyerCustomerParty/cac:Party/cac:PartyLegalEntity" mode="M21" priority="1197">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:BuyerCustomerParty/cac:Party/cac:PartyLegalEntity" />
 
 		<!--ASSERT -->
@@ -1875,13 +1887,13 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:BuyerCustomerParty/cac:Party/cac:PartyLegalEntity/cbc:RegistrationName" mode="M21" priority="1203">
+<xsl:template match="/ubl:OrderResponse/cac:BuyerCustomerParty/cac:Party/cac:PartyLegalEntity/cbc:RegistrationName" mode="M21" priority="1196">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:BuyerCustomerParty/cac:Party/cac:PartyLegalEntity/cbc:RegistrationName" />
     <xsl:apply-templates mode="M21" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:BuyerCustomerParty/cac:Party/cac:PartyLegalEntity/cbc:CompanyID" mode="M21" priority="1202">
+<xsl:template match="/ubl:OrderResponse/cac:BuyerCustomerParty/cac:Party/cac:PartyLegalEntity/cbc:CompanyID" mode="M21" priority="1195">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:BuyerCustomerParty/cac:Party/cac:PartyLegalEntity/cbc:CompanyID" />
 
 		<!--ASSERT -->
@@ -1902,7 +1914,7 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:BuyerCustomerParty/cac:Party/cac:PartyLegalEntity/*" mode="M21" priority="1201">
+<xsl:template match="/ubl:OrderResponse/cac:BuyerCustomerParty/cac:Party/cac:PartyLegalEntity/*" mode="M21" priority="1194">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:BuyerCustomerParty/cac:Party/cac:PartyLegalEntity/*" />
 
 		<!--ASSERT -->
@@ -1923,7 +1935,7 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:BuyerCustomerParty/cac:Party/*" mode="M21" priority="1200">
+<xsl:template match="/ubl:OrderResponse/cac:BuyerCustomerParty/cac:Party/*" mode="M21" priority="1193">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:BuyerCustomerParty/cac:Party/*" />
 
 		<!--ASSERT -->
@@ -1944,31 +1956,31 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:BuyerCustomerParty/cac:DeliveryContact" mode="M21" priority="1199">
+<xsl:template match="/ubl:OrderResponse/cac:BuyerCustomerParty/cac:DeliveryContact" mode="M21" priority="1192">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:BuyerCustomerParty/cac:DeliveryContact" />
     <xsl:apply-templates mode="M21" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:BuyerCustomerParty/cac:DeliveryContact/cbc:Name" mode="M21" priority="1198">
+<xsl:template match="/ubl:OrderResponse/cac:BuyerCustomerParty/cac:DeliveryContact/cbc:Name" mode="M21" priority="1191">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:BuyerCustomerParty/cac:DeliveryContact/cbc:Name" />
     <xsl:apply-templates mode="M21" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:BuyerCustomerParty/cac:DeliveryContact/cbc:Telephone" mode="M21" priority="1197">
+<xsl:template match="/ubl:OrderResponse/cac:BuyerCustomerParty/cac:DeliveryContact/cbc:Telephone" mode="M21" priority="1190">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:BuyerCustomerParty/cac:DeliveryContact/cbc:Telephone" />
     <xsl:apply-templates mode="M21" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:BuyerCustomerParty/cac:DeliveryContact/cbc:ElectronicMail" mode="M21" priority="1196">
+<xsl:template match="/ubl:OrderResponse/cac:BuyerCustomerParty/cac:DeliveryContact/cbc:ElectronicMail" mode="M21" priority="1189">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:BuyerCustomerParty/cac:DeliveryContact/cbc:ElectronicMail" />
     <xsl:apply-templates mode="M21" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:BuyerCustomerParty/cac:DeliveryContact/*" mode="M21" priority="1195">
+<xsl:template match="/ubl:OrderResponse/cac:BuyerCustomerParty/cac:DeliveryContact/*" mode="M21" priority="1188">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:BuyerCustomerParty/cac:DeliveryContact/*" />
 
 		<!--ASSERT -->
@@ -1989,7 +2001,7 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:BuyerCustomerParty/*" mode="M21" priority="1194">
+<xsl:template match="/ubl:OrderResponse/cac:BuyerCustomerParty/*" mode="M21" priority="1187">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:BuyerCustomerParty/*" />
 
 		<!--ASSERT -->
@@ -2010,19 +2022,19 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:OriginatorCustomerParty" mode="M21" priority="1193">
+<xsl:template match="/ubl:OrderResponse/cac:OriginatorCustomerParty" mode="M21" priority="1186">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:OriginatorCustomerParty" />
     <xsl:apply-templates mode="M21" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:OriginatorCustomerParty/cac:Party" mode="M21" priority="1192">
+<xsl:template match="/ubl:OrderResponse/cac:OriginatorCustomerParty/cac:Party" mode="M21" priority="1185">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:OriginatorCustomerParty/cac:Party" />
     <xsl:apply-templates mode="M21" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:OriginatorCustomerParty/cac:Party/cac:PartyIdentification" mode="M21" priority="1191">
+<xsl:template match="/ubl:OrderResponse/cac:OriginatorCustomerParty/cac:Party/cac:PartyIdentification" mode="M21" priority="1184">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:OriginatorCustomerParty/cac:Party/cac:PartyIdentification" />
 
 		<!--ASSERT -->
@@ -2043,7 +2055,7 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:OriginatorCustomerParty/cac:Party/cac:PartyIdentification/cbc:ID" mode="M21" priority="1190">
+<xsl:template match="/ubl:OrderResponse/cac:OriginatorCustomerParty/cac:Party/cac:PartyIdentification/cbc:ID" mode="M21" priority="1183">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:OriginatorCustomerParty/cac:Party/cac:PartyIdentification/cbc:ID" />
 
 		<!--ASSERT -->
@@ -2064,7 +2076,7 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:OriginatorCustomerParty/cac:Party/cac:PartyName" mode="M21" priority="1189">
+<xsl:template match="/ubl:OrderResponse/cac:OriginatorCustomerParty/cac:Party/cac:PartyName" mode="M21" priority="1182">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:OriginatorCustomerParty/cac:Party/cac:PartyName" />
 
 		<!--ASSERT -->
@@ -2085,13 +2097,13 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:OriginatorCustomerParty/cac:Party/cac:PartyName/cbc:Name" mode="M21" priority="1188">
+<xsl:template match="/ubl:OrderResponse/cac:OriginatorCustomerParty/cac:Party/cac:PartyName/cbc:Name" mode="M21" priority="1181">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:OriginatorCustomerParty/cac:Party/cac:PartyName/cbc:Name" />
     <xsl:apply-templates mode="M21" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:OriginatorCustomerParty/cac:Party/*" mode="M21" priority="1187">
+<xsl:template match="/ubl:OrderResponse/cac:OriginatorCustomerParty/cac:Party/*" mode="M21" priority="1180">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:OriginatorCustomerParty/cac:Party/*" />
 
 		<!--ASSERT -->
@@ -2112,7 +2124,7 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:OriginatorCustomerParty/*" mode="M21" priority="1186">
+<xsl:template match="/ubl:OrderResponse/cac:OriginatorCustomerParty/*" mode="M21" priority="1179">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:OriginatorCustomerParty/*" />
 
 		<!--ASSERT -->
@@ -2133,19 +2145,19 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:AccountingCustomerParty" mode="M21" priority="1185">
+<xsl:template match="/ubl:OrderResponse/cac:AccountingCustomerParty" mode="M21" priority="1178">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:AccountingCustomerParty" />
     <xsl:apply-templates mode="M21" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:AccountingCustomerParty/cac:Party" mode="M21" priority="1184">
+<xsl:template match="/ubl:OrderResponse/cac:AccountingCustomerParty/cac:Party" mode="M21" priority="1177">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:AccountingCustomerParty/cac:Party" />
     <xsl:apply-templates mode="M21" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:AccountingCustomerParty/cac:Party/cac:PartyIdentification" mode="M21" priority="1183">
+<xsl:template match="/ubl:OrderResponse/cac:AccountingCustomerParty/cac:Party/cac:PartyIdentification" mode="M21" priority="1176">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:AccountingCustomerParty/cac:Party/cac:PartyIdentification" />
 
 		<!--ASSERT -->
@@ -2166,7 +2178,7 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:AccountingCustomerParty/cac:Party/cac:PartyIdentification/cbc:ID" mode="M21" priority="1182">
+<xsl:template match="/ubl:OrderResponse/cac:AccountingCustomerParty/cac:Party/cac:PartyIdentification/cbc:ID" mode="M21" priority="1175">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:AccountingCustomerParty/cac:Party/cac:PartyIdentification/cbc:ID" />
 
 		<!--ASSERT -->
@@ -2187,7 +2199,7 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:AccountingCustomerParty/cac:Party/cac:PartyName" mode="M21" priority="1181">
+<xsl:template match="/ubl:OrderResponse/cac:AccountingCustomerParty/cac:Party/cac:PartyName" mode="M21" priority="1174">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:AccountingCustomerParty/cac:Party/cac:PartyName" />
 
 		<!--ASSERT -->
@@ -2208,13 +2220,13 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:AccountingCustomerParty/cac:Party/cac:PartyName/cbc:Name" mode="M21" priority="1180">
+<xsl:template match="/ubl:OrderResponse/cac:AccountingCustomerParty/cac:Party/cac:PartyName/cbc:Name" mode="M21" priority="1173">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:AccountingCustomerParty/cac:Party/cac:PartyName/cbc:Name" />
     <xsl:apply-templates mode="M21" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:AccountingCustomerParty/cac:Party/*" mode="M21" priority="1179">
+<xsl:template match="/ubl:OrderResponse/cac:AccountingCustomerParty/cac:Party/*" mode="M21" priority="1172">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:AccountingCustomerParty/cac:Party/*" />
 
 		<!--ASSERT -->
@@ -2235,7 +2247,7 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:AccountingCustomerParty/*" mode="M21" priority="1178">
+<xsl:template match="/ubl:OrderResponse/cac:AccountingCustomerParty/*" mode="M21" priority="1171">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:AccountingCustomerParty/*" />
 
 		<!--ASSERT -->
@@ -2256,13 +2268,13 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:Delivery" mode="M21" priority="1177">
+<xsl:template match="/ubl:OrderResponse/cac:Delivery" mode="M21" priority="1170">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:Delivery" />
     <xsl:apply-templates mode="M21" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:Delivery/cac:PromisedDeliveryPeriod" mode="M21" priority="1176">
+<xsl:template match="/ubl:OrderResponse/cac:Delivery/cac:PromisedDeliveryPeriod" mode="M21" priority="1169">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:Delivery/cac:PromisedDeliveryPeriod" />
 
 		<!--ASSERT -->
@@ -2283,31 +2295,31 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:Delivery/cac:PromisedDeliveryPeriod/cbc:StartDate" mode="M21" priority="1175">
+<xsl:template match="/ubl:OrderResponse/cac:Delivery/cac:PromisedDeliveryPeriod/cbc:StartDate" mode="M21" priority="1168">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:Delivery/cac:PromisedDeliveryPeriod/cbc:StartDate" />
     <xsl:apply-templates mode="M21" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:Delivery/cac:PromisedDeliveryPeriod/cbc:StartTime" mode="M21" priority="1174">
+<xsl:template match="/ubl:OrderResponse/cac:Delivery/cac:PromisedDeliveryPeriod/cbc:StartTime" mode="M21" priority="1167">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:Delivery/cac:PromisedDeliveryPeriod/cbc:StartTime" />
     <xsl:apply-templates mode="M21" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:Delivery/cac:PromisedDeliveryPeriod/cbc:EndDate" mode="M21" priority="1173">
+<xsl:template match="/ubl:OrderResponse/cac:Delivery/cac:PromisedDeliveryPeriod/cbc:EndDate" mode="M21" priority="1166">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:Delivery/cac:PromisedDeliveryPeriod/cbc:EndDate" />
     <xsl:apply-templates mode="M21" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:Delivery/cac:PromisedDeliveryPeriod/cbc:EndTime" mode="M21" priority="1172">
+<xsl:template match="/ubl:OrderResponse/cac:Delivery/cac:PromisedDeliveryPeriod/cbc:EndTime" mode="M21" priority="1165">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:Delivery/cac:PromisedDeliveryPeriod/cbc:EndTime" />
     <xsl:apply-templates mode="M21" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:Delivery/cac:PromisedDeliveryPeriod/*" mode="M21" priority="1171">
+<xsl:template match="/ubl:OrderResponse/cac:Delivery/cac:PromisedDeliveryPeriod/*" mode="M21" priority="1164">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:Delivery/cac:PromisedDeliveryPeriod/*" />
 
 		<!--ASSERT -->
@@ -2328,13 +2340,13 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:Delivery/cac:DeliveryParty" mode="M21" priority="1170">
+<xsl:template match="/ubl:OrderResponse/cac:Delivery/cac:DeliveryParty" mode="M21" priority="1163">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:Delivery/cac:DeliveryParty" />
     <xsl:apply-templates mode="M21" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:Delivery/cac:DeliveryParty/cac:PartyIdentification" mode="M21" priority="1169">
+<xsl:template match="/ubl:OrderResponse/cac:Delivery/cac:DeliveryParty/cac:PartyIdentification" mode="M21" priority="1162">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:Delivery/cac:DeliveryParty/cac:PartyIdentification" />
 
 		<!--ASSERT -->
@@ -2355,7 +2367,7 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:Delivery/cac:DeliveryParty/cac:PartyIdentification/cbc:ID" mode="M21" priority="1168">
+<xsl:template match="/ubl:OrderResponse/cac:Delivery/cac:DeliveryParty/cac:PartyIdentification/cbc:ID" mode="M21" priority="1161">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:Delivery/cac:DeliveryParty/cac:PartyIdentification/cbc:ID" />
 
 		<!--ASSERT -->
@@ -2376,7 +2388,7 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:Delivery/cac:DeliveryParty/cac:PartyName" mode="M21" priority="1167">
+<xsl:template match="/ubl:OrderResponse/cac:Delivery/cac:DeliveryParty/cac:PartyName" mode="M21" priority="1160">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:Delivery/cac:DeliveryParty/cac:PartyName" />
 
 		<!--ASSERT -->
@@ -2397,61 +2409,61 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:Delivery/cac:DeliveryParty/cac:PartyName/cbc:Name" mode="M21" priority="1166">
+<xsl:template match="/ubl:OrderResponse/cac:Delivery/cac:DeliveryParty/cac:PartyName/cbc:Name" mode="M21" priority="1159">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:Delivery/cac:DeliveryParty/cac:PartyName/cbc:Name" />
     <xsl:apply-templates mode="M21" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:Delivery/cac:DeliveryParty/cac:PostalAddress" mode="M21" priority="1165">
+<xsl:template match="/ubl:OrderResponse/cac:Delivery/cac:DeliveryParty/cac:PostalAddress" mode="M21" priority="1158">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:Delivery/cac:DeliveryParty/cac:PostalAddress" />
     <xsl:apply-templates mode="M21" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:Delivery/cac:DeliveryParty/cac:PostalAddress/cbc:StreetName" mode="M21" priority="1164">
+<xsl:template match="/ubl:OrderResponse/cac:Delivery/cac:DeliveryParty/cac:PostalAddress/cbc:StreetName" mode="M21" priority="1157">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:Delivery/cac:DeliveryParty/cac:PostalAddress/cbc:StreetName" />
     <xsl:apply-templates mode="M21" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:Delivery/cac:DeliveryParty/cac:PostalAddress/cbc:AdditionalStreetName" mode="M21" priority="1163">
+<xsl:template match="/ubl:OrderResponse/cac:Delivery/cac:DeliveryParty/cac:PostalAddress/cbc:AdditionalStreetName" mode="M21" priority="1156">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:Delivery/cac:DeliveryParty/cac:PostalAddress/cbc:AdditionalStreetName" />
     <xsl:apply-templates mode="M21" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:Delivery/cac:DeliveryParty/cac:PostalAddress/cbc:CityName" mode="M21" priority="1162">
+<xsl:template match="/ubl:OrderResponse/cac:Delivery/cac:DeliveryParty/cac:PostalAddress/cbc:CityName" mode="M21" priority="1155">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:Delivery/cac:DeliveryParty/cac:PostalAddress/cbc:CityName" />
     <xsl:apply-templates mode="M21" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:Delivery/cac:DeliveryParty/cac:PostalAddress/cbc:PostalZone" mode="M21" priority="1161">
+<xsl:template match="/ubl:OrderResponse/cac:Delivery/cac:DeliveryParty/cac:PostalAddress/cbc:PostalZone" mode="M21" priority="1154">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:Delivery/cac:DeliveryParty/cac:PostalAddress/cbc:PostalZone" />
     <xsl:apply-templates mode="M21" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:Delivery/cac:DeliveryParty/cac:PostalAddress/cbc:CountrySubentity" mode="M21" priority="1160">
+<xsl:template match="/ubl:OrderResponse/cac:Delivery/cac:DeliveryParty/cac:PostalAddress/cbc:CountrySubentity" mode="M21" priority="1153">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:Delivery/cac:DeliveryParty/cac:PostalAddress/cbc:CountrySubentity" />
     <xsl:apply-templates mode="M21" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:Delivery/cac:DeliveryParty/cac:PostalAddress/cac:AddressLine" mode="M21" priority="1159">
+<xsl:template match="/ubl:OrderResponse/cac:Delivery/cac:DeliveryParty/cac:PostalAddress/cac:AddressLine" mode="M21" priority="1152">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:Delivery/cac:DeliveryParty/cac:PostalAddress/cac:AddressLine" />
     <xsl:apply-templates mode="M21" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:Delivery/cac:DeliveryParty/cac:PostalAddress/cac:AddressLine/cbc:Line" mode="M21" priority="1158">
+<xsl:template match="/ubl:OrderResponse/cac:Delivery/cac:DeliveryParty/cac:PostalAddress/cac:AddressLine/cbc:Line" mode="M21" priority="1151">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:Delivery/cac:DeliveryParty/cac:PostalAddress/cac:AddressLine/cbc:Line" />
     <xsl:apply-templates mode="M21" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:Delivery/cac:DeliveryParty/cac:PostalAddress/cac:Country" mode="M21" priority="1157">
+<xsl:template match="/ubl:OrderResponse/cac:Delivery/cac:DeliveryParty/cac:PostalAddress/cac:Country" mode="M21" priority="1150">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:Delivery/cac:DeliveryParty/cac:PostalAddress/cac:Country" />
 
 		<!--ASSERT -->
@@ -2472,7 +2484,7 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:Delivery/cac:DeliveryParty/cac:PostalAddress/cac:Country/cbc:IdentificationCode" mode="M21" priority="1156">
+<xsl:template match="/ubl:OrderResponse/cac:Delivery/cac:DeliveryParty/cac:PostalAddress/cac:Country/cbc:IdentificationCode" mode="M21" priority="1149">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:Delivery/cac:DeliveryParty/cac:PostalAddress/cac:Country/cbc:IdentificationCode" />
 
 		<!--ASSERT -->
@@ -2493,7 +2505,7 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:Delivery/cac:DeliveryParty/cac:PostalAddress/cac:Country/*" mode="M21" priority="1155">
+<xsl:template match="/ubl:OrderResponse/cac:Delivery/cac:DeliveryParty/cac:PostalAddress/cac:Country/*" mode="M21" priority="1148">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:Delivery/cac:DeliveryParty/cac:PostalAddress/cac:Country/*" />
 
 		<!--ASSERT -->
@@ -2514,7 +2526,7 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:Delivery/cac:DeliveryParty/cac:PostalAddress/*" mode="M21" priority="1154">
+<xsl:template match="/ubl:OrderResponse/cac:Delivery/cac:DeliveryParty/cac:PostalAddress/*" mode="M21" priority="1147">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:Delivery/cac:DeliveryParty/cac:PostalAddress/*" />
 
 		<!--ASSERT -->
@@ -2535,7 +2547,7 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:Delivery/cac:DeliveryParty/*" mode="M21" priority="1153">
+<xsl:template match="/ubl:OrderResponse/cac:Delivery/cac:DeliveryParty/*" mode="M21" priority="1146">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:Delivery/cac:DeliveryParty/*" />
 
 		<!--ASSERT -->
@@ -2556,7 +2568,7 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:Delivery/*" mode="M21" priority="1152">
+<xsl:template match="/ubl:OrderResponse/cac:Delivery/*" mode="M21" priority="1145">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:Delivery/*" />
 
 		<!--ASSERT -->
@@ -2577,25 +2589,25 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:DeliveryTerms" mode="M21" priority="1151">
+<xsl:template match="/ubl:OrderResponse/cac:DeliveryTerms" mode="M21" priority="1144">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:DeliveryTerms" />
     <xsl:apply-templates mode="M21" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:DeliveryTerms/cbc:ID" mode="M21" priority="1150">
+<xsl:template match="/ubl:OrderResponse/cac:DeliveryTerms/cbc:ID" mode="M21" priority="1143">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:DeliveryTerms/cbc:ID" />
     <xsl:apply-templates mode="M21" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:DeliveryTerms/cbc:SpecialTerms" mode="M21" priority="1149">
+<xsl:template match="/ubl:OrderResponse/cac:DeliveryTerms/cbc:SpecialTerms" mode="M21" priority="1142">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:DeliveryTerms/cbc:SpecialTerms" />
     <xsl:apply-templates mode="M21" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:DeliveryTerms/cac:DeliveryLocation" mode="M21" priority="1148">
+<xsl:template match="/ubl:OrderResponse/cac:DeliveryTerms/cac:DeliveryLocation" mode="M21" priority="1141">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:DeliveryTerms/cac:DeliveryLocation" />
 
 		<!--ASSERT -->
@@ -2616,61 +2628,61 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:DeliveryTerms/cac:DeliveryLocation/cbc:ID" mode="M21" priority="1147">
+<xsl:template match="/ubl:OrderResponse/cac:DeliveryTerms/cac:DeliveryLocation/cbc:ID" mode="M21" priority="1140">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:DeliveryTerms/cac:DeliveryLocation/cbc:ID" />
     <xsl:apply-templates mode="M21" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:DeliveryTerms/cac:DeliveryLocation/cac:Address" mode="M21" priority="1146">
+<xsl:template match="/ubl:OrderResponse/cac:DeliveryTerms/cac:DeliveryLocation/cac:Address" mode="M21" priority="1139">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:DeliveryTerms/cac:DeliveryLocation/cac:Address" />
     <xsl:apply-templates mode="M21" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:DeliveryTerms/cac:DeliveryLocation/cac:Address/cbc:StreetName" mode="M21" priority="1145">
+<xsl:template match="/ubl:OrderResponse/cac:DeliveryTerms/cac:DeliveryLocation/cac:Address/cbc:StreetName" mode="M21" priority="1138">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:DeliveryTerms/cac:DeliveryLocation/cac:Address/cbc:StreetName" />
     <xsl:apply-templates mode="M21" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:DeliveryTerms/cac:DeliveryLocation/cac:Address/cbc:AdditionalStreetName" mode="M21" priority="1144">
+<xsl:template match="/ubl:OrderResponse/cac:DeliveryTerms/cac:DeliveryLocation/cac:Address/cbc:AdditionalStreetName" mode="M21" priority="1137">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:DeliveryTerms/cac:DeliveryLocation/cac:Address/cbc:AdditionalStreetName" />
     <xsl:apply-templates mode="M21" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:DeliveryTerms/cac:DeliveryLocation/cac:Address/cbc:CityName" mode="M21" priority="1143">
+<xsl:template match="/ubl:OrderResponse/cac:DeliveryTerms/cac:DeliveryLocation/cac:Address/cbc:CityName" mode="M21" priority="1136">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:DeliveryTerms/cac:DeliveryLocation/cac:Address/cbc:CityName" />
     <xsl:apply-templates mode="M21" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:DeliveryTerms/cac:DeliveryLocation/cac:Address/cbc:PostalZone" mode="M21" priority="1142">
+<xsl:template match="/ubl:OrderResponse/cac:DeliveryTerms/cac:DeliveryLocation/cac:Address/cbc:PostalZone" mode="M21" priority="1135">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:DeliveryTerms/cac:DeliveryLocation/cac:Address/cbc:PostalZone" />
     <xsl:apply-templates mode="M21" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:DeliveryTerms/cac:DeliveryLocation/cac:Address/cbc:CountrySubentity" mode="M21" priority="1141">
+<xsl:template match="/ubl:OrderResponse/cac:DeliveryTerms/cac:DeliveryLocation/cac:Address/cbc:CountrySubentity" mode="M21" priority="1134">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:DeliveryTerms/cac:DeliveryLocation/cac:Address/cbc:CountrySubentity" />
     <xsl:apply-templates mode="M21" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:DeliveryTerms/cac:DeliveryLocation/cac:Address/cac:AddressLine" mode="M21" priority="1140">
+<xsl:template match="/ubl:OrderResponse/cac:DeliveryTerms/cac:DeliveryLocation/cac:Address/cac:AddressLine" mode="M21" priority="1133">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:DeliveryTerms/cac:DeliveryLocation/cac:Address/cac:AddressLine" />
     <xsl:apply-templates mode="M21" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:DeliveryTerms/cac:DeliveryLocation/cac:Address/cac:AddressLine/cbc:Line" mode="M21" priority="1139">
+<xsl:template match="/ubl:OrderResponse/cac:DeliveryTerms/cac:DeliveryLocation/cac:Address/cac:AddressLine/cbc:Line" mode="M21" priority="1132">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:DeliveryTerms/cac:DeliveryLocation/cac:Address/cac:AddressLine/cbc:Line" />
     <xsl:apply-templates mode="M21" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:DeliveryTerms/cac:DeliveryLocation/cac:Address/cac:Country" mode="M21" priority="1138">
+<xsl:template match="/ubl:OrderResponse/cac:DeliveryTerms/cac:DeliveryLocation/cac:Address/cac:Country" mode="M21" priority="1131">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:DeliveryTerms/cac:DeliveryLocation/cac:Address/cac:Country" />
 
 		<!--ASSERT -->
@@ -2691,7 +2703,7 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:DeliveryTerms/cac:DeliveryLocation/cac:Address/cac:Country/cbc:IdentificationCode" mode="M21" priority="1137">
+<xsl:template match="/ubl:OrderResponse/cac:DeliveryTerms/cac:DeliveryLocation/cac:Address/cac:Country/cbc:IdentificationCode" mode="M21" priority="1130">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:DeliveryTerms/cac:DeliveryLocation/cac:Address/cac:Country/cbc:IdentificationCode" />
 
 		<!--ASSERT -->
@@ -2712,7 +2724,7 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:DeliveryTerms/cac:DeliveryLocation/cac:Address/cac:Country/*" mode="M21" priority="1136">
+<xsl:template match="/ubl:OrderResponse/cac:DeliveryTerms/cac:DeliveryLocation/cac:Address/cac:Country/*" mode="M21" priority="1129">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:DeliveryTerms/cac:DeliveryLocation/cac:Address/cac:Country/*" />
 
 		<!--ASSERT -->
@@ -2733,7 +2745,7 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:DeliveryTerms/cac:DeliveryLocation/cac:Address/*" mode="M21" priority="1135">
+<xsl:template match="/ubl:OrderResponse/cac:DeliveryTerms/cac:DeliveryLocation/cac:Address/*" mode="M21" priority="1128">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:DeliveryTerms/cac:DeliveryLocation/cac:Address/*" />
 
 		<!--ASSERT -->
@@ -2754,7 +2766,7 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:DeliveryTerms/cac:DeliveryLocation/*" mode="M21" priority="1134">
+<xsl:template match="/ubl:OrderResponse/cac:DeliveryTerms/cac:DeliveryLocation/*" mode="M21" priority="1127">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:DeliveryTerms/cac:DeliveryLocation/*" />
 
 		<!--ASSERT -->
@@ -2775,7 +2787,7 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:DeliveryTerms/*" mode="M21" priority="1133">
+<xsl:template match="/ubl:OrderResponse/cac:DeliveryTerms/*" mode="M21" priority="1126">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:DeliveryTerms/*" />
 
 		<!--ASSERT -->
@@ -2796,7 +2808,7 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:AllowanceCharge" mode="M21" priority="1132">
+<xsl:template match="/ubl:OrderResponse/cac:AllowanceCharge" mode="M21" priority="1125">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:AllowanceCharge" />
 
 		<!--ASSERT -->
@@ -2847,7 +2859,7 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:AllowanceCharge/cbc:ChargeIndicator" mode="M21" priority="1131">
+<xsl:template match="/ubl:OrderResponse/cac:AllowanceCharge/cbc:ChargeIndicator" mode="M21" priority="1124">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:AllowanceCharge/cbc:ChargeIndicator" />
 
 		<!--ASSERT -->
@@ -2860,7 +2872,7 @@
           <xsl:attribute name="location">
             <xsl:apply-templates mode="schematron-select-full-path" select="." />
           </xsl:attribute>
-          <svrl:text>Value MUST be part of code list 'Boolean indicator (openPEPPOL)'.</svrl:text>
+          <svrl:text>Value MUST be part of code list 'Boolean indicator (OpenPeppol)'.</svrl:text>
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
@@ -2868,7 +2880,7 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:AllowanceCharge/cbc:AllowanceChargeReasonCode" mode="M21" priority="1130">
+<xsl:template match="/ubl:OrderResponse/cac:AllowanceCharge/cbc:AllowanceChargeReasonCode" mode="M21" priority="1123">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:AllowanceCharge/cbc:AllowanceChargeReasonCode" />
 
 		<!--ASSERT -->
@@ -2889,19 +2901,19 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:AllowanceCharge/cbc:AllowanceChargeReason" mode="M21" priority="1129">
+<xsl:template match="/ubl:OrderResponse/cac:AllowanceCharge/cbc:AllowanceChargeReason" mode="M21" priority="1122">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:AllowanceCharge/cbc:AllowanceChargeReason" />
     <xsl:apply-templates mode="M21" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:AllowanceCharge/cbc:MultiplierFactorNumeric" mode="M21" priority="1128">
+<xsl:template match="/ubl:OrderResponse/cac:AllowanceCharge/cbc:MultiplierFactorNumeric" mode="M21" priority="1121">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:AllowanceCharge/cbc:MultiplierFactorNumeric" />
     <xsl:apply-templates mode="M21" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:AllowanceCharge/cbc:Amount" mode="M21" priority="1127">
+<xsl:template match="/ubl:OrderResponse/cac:AllowanceCharge/cbc:Amount" mode="M21" priority="1120">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:AllowanceCharge/cbc:Amount" />
 
 		<!--ASSERT -->
@@ -2937,7 +2949,7 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:AllowanceCharge/cbc:BaseAmount" mode="M21" priority="1126">
+<xsl:template match="/ubl:OrderResponse/cac:AllowanceCharge/cbc:BaseAmount" mode="M21" priority="1119">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:AllowanceCharge/cbc:BaseAmount" />
 
 		<!--ASSERT -->
@@ -2973,7 +2985,7 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:AllowanceCharge/cac:TaxCategory" mode="M21" priority="1125">
+<xsl:template match="/ubl:OrderResponse/cac:AllowanceCharge/cac:TaxCategory" mode="M21" priority="1118">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:AllowanceCharge/cac:TaxCategory" />
 
 		<!--ASSERT -->
@@ -3009,19 +3021,19 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:AllowanceCharge/cac:TaxCategory/cbc:ID" mode="M21" priority="1124">
+<xsl:template match="/ubl:OrderResponse/cac:AllowanceCharge/cac:TaxCategory/cbc:ID" mode="M21" priority="1117">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:AllowanceCharge/cac:TaxCategory/cbc:ID" />
     <xsl:apply-templates mode="M21" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:AllowanceCharge/cac:TaxCategory/cbc:Percent" mode="M21" priority="1123">
+<xsl:template match="/ubl:OrderResponse/cac:AllowanceCharge/cac:TaxCategory/cbc:Percent" mode="M21" priority="1116">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:AllowanceCharge/cac:TaxCategory/cbc:Percent" />
     <xsl:apply-templates mode="M21" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:AllowanceCharge/cac:TaxCategory/cac:TaxScheme" mode="M21" priority="1122">
+<xsl:template match="/ubl:OrderResponse/cac:AllowanceCharge/cac:TaxCategory/cac:TaxScheme" mode="M21" priority="1115">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:AllowanceCharge/cac:TaxCategory/cac:TaxScheme" />
 
 		<!--ASSERT -->
@@ -3042,13 +3054,13 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:AllowanceCharge/cac:TaxCategory/cac:TaxScheme/cbc:ID" mode="M21" priority="1121">
+<xsl:template match="/ubl:OrderResponse/cac:AllowanceCharge/cac:TaxCategory/cac:TaxScheme/cbc:ID" mode="M21" priority="1114">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:AllowanceCharge/cac:TaxCategory/cac:TaxScheme/cbc:ID" />
     <xsl:apply-templates mode="M21" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:AllowanceCharge/cac:TaxCategory/cac:TaxScheme/*" mode="M21" priority="1120">
+<xsl:template match="/ubl:OrderResponse/cac:AllowanceCharge/cac:TaxCategory/cac:TaxScheme/*" mode="M21" priority="1113">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:AllowanceCharge/cac:TaxCategory/cac:TaxScheme/*" />
 
 		<!--ASSERT -->
@@ -3069,7 +3081,7 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:AllowanceCharge/cac:TaxCategory/*" mode="M21" priority="1119">
+<xsl:template match="/ubl:OrderResponse/cac:AllowanceCharge/cac:TaxCategory/*" mode="M21" priority="1112">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:AllowanceCharge/cac:TaxCategory/*" />
 
 		<!--ASSERT -->
@@ -3090,7 +3102,7 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:AllowanceCharge/*" mode="M21" priority="1118">
+<xsl:template match="/ubl:OrderResponse/cac:AllowanceCharge/*" mode="M21" priority="1111">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:AllowanceCharge/*" />
 
 		<!--ASSERT -->
@@ -3111,7 +3123,7 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:TaxTotal" mode="M21" priority="1117">
+<xsl:template match="/ubl:OrderResponse/cac:TaxTotal" mode="M21" priority="1110">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:TaxTotal" />
 
 		<!--ASSERT -->
@@ -3132,7 +3144,7 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:TaxTotal/cbc:TaxAmount" mode="M21" priority="1116">
+<xsl:template match="/ubl:OrderResponse/cac:TaxTotal/cbc:TaxAmount" mode="M21" priority="1109">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:TaxTotal/cbc:TaxAmount" />
 
 		<!--ASSERT -->
@@ -3168,7 +3180,7 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:TaxTotal/cac:TaxSubtotal" mode="M21" priority="1115">
+<xsl:template match="/ubl:OrderResponse/cac:TaxTotal/cac:TaxSubtotal" mode="M21" priority="1108">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:TaxTotal/cac:TaxSubtotal" />
 
 		<!--ASSERT -->
@@ -3219,7 +3231,7 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:TaxTotal/cac:TaxSubtotal/cbc:TaxableAmount" mode="M21" priority="1114">
+<xsl:template match="/ubl:OrderResponse/cac:TaxTotal/cac:TaxSubtotal/cbc:TaxableAmount" mode="M21" priority="1107">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:TaxTotal/cac:TaxSubtotal/cbc:TaxableAmount" />
 
 		<!--ASSERT -->
@@ -3255,7 +3267,7 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:TaxTotal/cac:TaxSubtotal/cbc:TaxAmount" mode="M21" priority="1113">
+<xsl:template match="/ubl:OrderResponse/cac:TaxTotal/cac:TaxSubtotal/cbc:TaxAmount" mode="M21" priority="1106">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:TaxTotal/cac:TaxSubtotal/cbc:TaxAmount" />
 
 		<!--ASSERT -->
@@ -3291,7 +3303,7 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:TaxTotal/cac:TaxSubtotal/cac:TaxCategory" mode="M21" priority="1112">
+<xsl:template match="/ubl:OrderResponse/cac:TaxTotal/cac:TaxSubtotal/cac:TaxCategory" mode="M21" priority="1105">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:TaxTotal/cac:TaxSubtotal/cac:TaxCategory" />
 
 		<!--ASSERT -->
@@ -3327,25 +3339,25 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:TaxTotal/cac:TaxSubtotal/cac:TaxCategory/cbc:ID" mode="M21" priority="1111">
+<xsl:template match="/ubl:OrderResponse/cac:TaxTotal/cac:TaxSubtotal/cac:TaxCategory/cbc:ID" mode="M21" priority="1104">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:TaxTotal/cac:TaxSubtotal/cac:TaxCategory/cbc:ID" />
     <xsl:apply-templates mode="M21" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:TaxTotal/cac:TaxSubtotal/cac:TaxCategory/cbc:Percent" mode="M21" priority="1110">
+<xsl:template match="/ubl:OrderResponse/cac:TaxTotal/cac:TaxSubtotal/cac:TaxCategory/cbc:Percent" mode="M21" priority="1103">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:TaxTotal/cac:TaxSubtotal/cac:TaxCategory/cbc:Percent" />
     <xsl:apply-templates mode="M21" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:TaxTotal/cac:TaxSubtotal/cac:TaxCategory/cbc:TaxExemptionReason" mode="M21" priority="1109">
+<xsl:template match="/ubl:OrderResponse/cac:TaxTotal/cac:TaxSubtotal/cac:TaxCategory/cbc:TaxExemptionReason" mode="M21" priority="1102">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:TaxTotal/cac:TaxSubtotal/cac:TaxCategory/cbc:TaxExemptionReason" />
     <xsl:apply-templates mode="M21" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:TaxTotal/cac:TaxSubtotal/cac:TaxCategory/cac:TaxScheme" mode="M21" priority="1108">
+<xsl:template match="/ubl:OrderResponse/cac:TaxTotal/cac:TaxSubtotal/cac:TaxCategory/cac:TaxScheme" mode="M21" priority="1101">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:TaxTotal/cac:TaxSubtotal/cac:TaxCategory/cac:TaxScheme" />
 
 		<!--ASSERT -->
@@ -3366,13 +3378,13 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:TaxTotal/cac:TaxSubtotal/cac:TaxCategory/cac:TaxScheme/cbc:ID" mode="M21" priority="1107">
+<xsl:template match="/ubl:OrderResponse/cac:TaxTotal/cac:TaxSubtotal/cac:TaxCategory/cac:TaxScheme/cbc:ID" mode="M21" priority="1100">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:TaxTotal/cac:TaxSubtotal/cac:TaxCategory/cac:TaxScheme/cbc:ID" />
     <xsl:apply-templates mode="M21" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:TaxTotal/cac:TaxSubtotal/cac:TaxCategory/cac:TaxScheme/*" mode="M21" priority="1106">
+<xsl:template match="/ubl:OrderResponse/cac:TaxTotal/cac:TaxSubtotal/cac:TaxCategory/cac:TaxScheme/*" mode="M21" priority="1099">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:TaxTotal/cac:TaxSubtotal/cac:TaxCategory/cac:TaxScheme/*" />
 
 		<!--ASSERT -->
@@ -3393,7 +3405,7 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:TaxTotal/cac:TaxSubtotal/cac:TaxCategory/*" mode="M21" priority="1105">
+<xsl:template match="/ubl:OrderResponse/cac:TaxTotal/cac:TaxSubtotal/cac:TaxCategory/*" mode="M21" priority="1098">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:TaxTotal/cac:TaxSubtotal/cac:TaxCategory/*" />
 
 		<!--ASSERT -->
@@ -3414,7 +3426,7 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:TaxTotal/cac:TaxSubtotal/*" mode="M21" priority="1104">
+<xsl:template match="/ubl:OrderResponse/cac:TaxTotal/cac:TaxSubtotal/*" mode="M21" priority="1097">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:TaxTotal/cac:TaxSubtotal/*" />
 
 		<!--ASSERT -->
@@ -3435,7 +3447,7 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:TaxTotal/*" mode="M21" priority="1103">
+<xsl:template match="/ubl:OrderResponse/cac:TaxTotal/*" mode="M21" priority="1096">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:TaxTotal/*" />
 
 		<!--ASSERT -->
@@ -3456,7 +3468,7 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:LegalMonetaryTotal" mode="M21" priority="1102">
+<xsl:template match="/ubl:OrderResponse/cac:LegalMonetaryTotal" mode="M21" priority="1095">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:LegalMonetaryTotal" />
 
 		<!--ASSERT -->
@@ -3522,7 +3534,7 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:LegalMonetaryTotal/cbc:LineExtensionAmount" mode="M21" priority="1101">
+<xsl:template match="/ubl:OrderResponse/cac:LegalMonetaryTotal/cbc:LineExtensionAmount" mode="M21" priority="1094">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:LegalMonetaryTotal/cbc:LineExtensionAmount" />
 
 		<!--ASSERT -->
@@ -3558,7 +3570,7 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:LegalMonetaryTotal/cbc:TaxExclusiveAmount" mode="M21" priority="1100">
+<xsl:template match="/ubl:OrderResponse/cac:LegalMonetaryTotal/cbc:TaxExclusiveAmount" mode="M21" priority="1093">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:LegalMonetaryTotal/cbc:TaxExclusiveAmount" />
 
 		<!--ASSERT -->
@@ -3594,7 +3606,7 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:LegalMonetaryTotal/cbc:TaxInclusiveAmount" mode="M21" priority="1099">
+<xsl:template match="/ubl:OrderResponse/cac:LegalMonetaryTotal/cbc:TaxInclusiveAmount" mode="M21" priority="1092">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:LegalMonetaryTotal/cbc:TaxInclusiveAmount" />
 
 		<!--ASSERT -->
@@ -3630,7 +3642,7 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:LegalMonetaryTotal/cbc:AllowanceTotalAmount" mode="M21" priority="1098">
+<xsl:template match="/ubl:OrderResponse/cac:LegalMonetaryTotal/cbc:AllowanceTotalAmount" mode="M21" priority="1091">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:LegalMonetaryTotal/cbc:AllowanceTotalAmount" />
 
 		<!--ASSERT -->
@@ -3666,7 +3678,7 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:LegalMonetaryTotal/cbc:ChargeTotalAmount" mode="M21" priority="1097">
+<xsl:template match="/ubl:OrderResponse/cac:LegalMonetaryTotal/cbc:ChargeTotalAmount" mode="M21" priority="1090">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:LegalMonetaryTotal/cbc:ChargeTotalAmount" />
 
 		<!--ASSERT -->
@@ -3702,7 +3714,7 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:LegalMonetaryTotal/cbc:PrepaidAmount" mode="M21" priority="1096">
+<xsl:template match="/ubl:OrderResponse/cac:LegalMonetaryTotal/cbc:PrepaidAmount" mode="M21" priority="1089">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:LegalMonetaryTotal/cbc:PrepaidAmount" />
 
 		<!--ASSERT -->
@@ -3738,7 +3750,7 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:LegalMonetaryTotal/cbc:PayableRoundingAmount" mode="M21" priority="1095">
+<xsl:template match="/ubl:OrderResponse/cac:LegalMonetaryTotal/cbc:PayableRoundingAmount" mode="M21" priority="1088">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:LegalMonetaryTotal/cbc:PayableRoundingAmount" />
 
 		<!--ASSERT -->
@@ -3774,7 +3786,7 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:LegalMonetaryTotal/cbc:PayableAmount" mode="M21" priority="1094">
+<xsl:template match="/ubl:OrderResponse/cac:LegalMonetaryTotal/cbc:PayableAmount" mode="M21" priority="1087">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:LegalMonetaryTotal/cbc:PayableAmount" />
 
 		<!--ASSERT -->
@@ -3810,7 +3822,7 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:LegalMonetaryTotal/*" mode="M21" priority="1093">
+<xsl:template match="/ubl:OrderResponse/cac:LegalMonetaryTotal/*" mode="M21" priority="1086">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:LegalMonetaryTotal/*" />
 
 		<!--ASSERT -->
@@ -3831,7 +3843,7 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:OrderLine" mode="M21" priority="1092">
+<xsl:template match="/ubl:OrderResponse/cac:OrderLine" mode="M21" priority="1085">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:OrderLine" />
 
 		<!--ASSERT -->
@@ -3852,7 +3864,7 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:OrderLine/cac:LineItem" mode="M21" priority="1091">
+<xsl:template match="/ubl:OrderResponse/cac:OrderLine/cac:LineItem" mode="M21" priority="1084">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:OrderLine/cac:LineItem" />
 
 		<!--ASSERT -->
@@ -3918,19 +3930,19 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cbc:ID" mode="M21" priority="1090">
+<xsl:template match="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cbc:ID" mode="M21" priority="1083">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cbc:ID" />
     <xsl:apply-templates mode="M21" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cbc:Note" mode="M21" priority="1089">
+<xsl:template match="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cbc:Note" mode="M21" priority="1082">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cbc:Note" />
     <xsl:apply-templates mode="M21" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cbc:Quantity" mode="M21" priority="1088">
+<xsl:template match="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cbc:Quantity" mode="M21" priority="1081">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cbc:Quantity" />
 
 		<!--ASSERT -->
@@ -3966,7 +3978,7 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cbc:LineExtensionAmount" mode="M21" priority="1087">
+<xsl:template match="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cbc:LineExtensionAmount" mode="M21" priority="1080">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cbc:LineExtensionAmount" />
 
 		<!--ASSERT -->
@@ -4002,13 +4014,13 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Delivery" mode="M21" priority="1086">
+<xsl:template match="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Delivery" mode="M21" priority="1079">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Delivery" />
     <xsl:apply-templates mode="M21" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Delivery/cbc:Quantity" mode="M21" priority="1085">
+<xsl:template match="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Delivery/cbc:Quantity" mode="M21" priority="1078">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Delivery/cbc:Quantity" />
 
 		<!--ASSERT -->
@@ -4044,7 +4056,7 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Delivery/cac:PromisedDeliveryPeriod" mode="M21" priority="1084">
+<xsl:template match="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Delivery/cac:PromisedDeliveryPeriod" mode="M21" priority="1077">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Delivery/cac:PromisedDeliveryPeriod" />
 
 		<!--ASSERT -->
@@ -4065,31 +4077,31 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Delivery/cac:PromisedDeliveryPeriod/cbc:StartDate" mode="M21" priority="1083">
+<xsl:template match="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Delivery/cac:PromisedDeliveryPeriod/cbc:StartDate" mode="M21" priority="1076">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Delivery/cac:PromisedDeliveryPeriod/cbc:StartDate" />
     <xsl:apply-templates mode="M21" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Delivery/cac:PromisedDeliveryPeriod/cbc:StartTime" mode="M21" priority="1082">
+<xsl:template match="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Delivery/cac:PromisedDeliveryPeriod/cbc:StartTime" mode="M21" priority="1075">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Delivery/cac:PromisedDeliveryPeriod/cbc:StartTime" />
     <xsl:apply-templates mode="M21" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Delivery/cac:PromisedDeliveryPeriod/cbc:EndDate" mode="M21" priority="1081">
+<xsl:template match="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Delivery/cac:PromisedDeliveryPeriod/cbc:EndDate" mode="M21" priority="1074">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Delivery/cac:PromisedDeliveryPeriod/cbc:EndDate" />
     <xsl:apply-templates mode="M21" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Delivery/cac:PromisedDeliveryPeriod/cbc:EndTime" mode="M21" priority="1080">
+<xsl:template match="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Delivery/cac:PromisedDeliveryPeriod/cbc:EndTime" mode="M21" priority="1073">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Delivery/cac:PromisedDeliveryPeriod/cbc:EndTime" />
     <xsl:apply-templates mode="M21" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Delivery/cac:PromisedDeliveryPeriod/*" mode="M21" priority="1079">
+<xsl:template match="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Delivery/cac:PromisedDeliveryPeriod/*" mode="M21" priority="1072">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Delivery/cac:PromisedDeliveryPeriod/*" />
 
 		<!--ASSERT -->
@@ -4110,7 +4122,7 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Delivery/*" mode="M21" priority="1078">
+<xsl:template match="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Delivery/*" mode="M21" priority="1071">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Delivery/*" />
 
 		<!--ASSERT -->
@@ -4131,7 +4143,7 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Price" mode="M21" priority="1077">
+<xsl:template match="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Price" mode="M21" priority="1070">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Price" />
 
 		<!--ASSERT -->
@@ -4152,7 +4164,7 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Price/cbc:PriceAmount" mode="M21" priority="1076">
+<xsl:template match="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Price/cbc:PriceAmount" mode="M21" priority="1069">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Price/cbc:PriceAmount" />
 
 		<!--ASSERT -->
@@ -4188,7 +4200,7 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Price/cbc:BaseQuantity" mode="M21" priority="1075">
+<xsl:template match="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Price/cbc:BaseQuantity" mode="M21" priority="1068">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Price/cbc:BaseQuantity" />
 
 		<!--ASSERT -->
@@ -4209,13 +4221,13 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Price/cbc:PriceType" mode="M21" priority="1074">
+<xsl:template match="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Price/cbc:PriceType" mode="M21" priority="1067">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Price/cbc:PriceType" />
     <xsl:apply-templates mode="M21" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Price/cac:AllowanceCharge" mode="M21" priority="1073">
+<xsl:template match="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Price/cac:AllowanceCharge" mode="M21" priority="1066">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Price/cac:AllowanceCharge" />
 
 		<!--ASSERT -->
@@ -4251,7 +4263,7 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Price/cac:AllowanceCharge/cbc:ChargeIndicator" mode="M21" priority="1072">
+<xsl:template match="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Price/cac:AllowanceCharge/cbc:ChargeIndicator" mode="M21" priority="1065">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Price/cac:AllowanceCharge/cbc:ChargeIndicator" />
 
 		<!--ASSERT -->
@@ -4272,7 +4284,7 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Price/cac:AllowanceCharge/cbc:Amount" mode="M21" priority="1071">
+<xsl:template match="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Price/cac:AllowanceCharge/cbc:Amount" mode="M21" priority="1064">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Price/cac:AllowanceCharge/cbc:Amount" />
 
 		<!--ASSERT -->
@@ -4308,7 +4320,7 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Price/cac:AllowanceCharge/cbc:BaseAmount" mode="M21" priority="1070">
+<xsl:template match="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Price/cac:AllowanceCharge/cbc:BaseAmount" mode="M21" priority="1063">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Price/cac:AllowanceCharge/cbc:BaseAmount" />
 
 		<!--ASSERT -->
@@ -4344,7 +4356,7 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Price/cac:AllowanceCharge/*" mode="M21" priority="1069">
+<xsl:template match="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Price/cac:AllowanceCharge/*" mode="M21" priority="1062">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Price/cac:AllowanceCharge/*" />
 
 		<!--ASSERT -->
@@ -4365,7 +4377,7 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Price/*" mode="M21" priority="1068">
+<xsl:template match="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Price/*" mode="M21" priority="1061">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Price/*" />
 
 		<!--ASSERT -->
@@ -4386,7 +4398,7 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item" mode="M21" priority="1067">
+<xsl:template match="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item" mode="M21" priority="1060">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item" />
 
 		<!--ASSERT -->
@@ -4407,19 +4419,19 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item/cbc:Description" mode="M21" priority="1066">
+<xsl:template match="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item/cbc:Description" mode="M21" priority="1059">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item/cbc:Description" />
     <xsl:apply-templates mode="M21" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item/cbc:Name" mode="M21" priority="1065">
+<xsl:template match="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item/cbc:Name" mode="M21" priority="1058">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item/cbc:Name" />
     <xsl:apply-templates mode="M21" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item/cac:BuyersItemIdentification" mode="M21" priority="1064">
+<xsl:template match="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item/cac:BuyersItemIdentification" mode="M21" priority="1057">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item/cac:BuyersItemIdentification" />
 
 		<!--ASSERT -->
@@ -4440,13 +4452,13 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item/cac:BuyersItemIdentification/cbc:ID" mode="M21" priority="1063">
+<xsl:template match="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item/cac:BuyersItemIdentification/cbc:ID" mode="M21" priority="1056">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item/cac:BuyersItemIdentification/cbc:ID" />
     <xsl:apply-templates mode="M21" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item/cac:BuyersItemIdentification/*" mode="M21" priority="1062">
+<xsl:template match="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item/cac:BuyersItemIdentification/*" mode="M21" priority="1055">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item/cac:BuyersItemIdentification/*" />
 
 		<!--ASSERT -->
@@ -4467,7 +4479,7 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item/cac:SellersItemIdentification" mode="M21" priority="1061">
+<xsl:template match="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item/cac:SellersItemIdentification" mode="M21" priority="1054">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item/cac:SellersItemIdentification" />
 
 		<!--ASSERT -->
@@ -4488,13 +4500,13 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item/cac:SellersItemIdentification/cbc:ID" mode="M21" priority="1060">
+<xsl:template match="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item/cac:SellersItemIdentification/cbc:ID" mode="M21" priority="1053">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item/cac:SellersItemIdentification/cbc:ID" />
     <xsl:apply-templates mode="M21" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item/cac:SellersItemIdentification/*" mode="M21" priority="1059">
+<xsl:template match="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item/cac:SellersItemIdentification/*" mode="M21" priority="1052">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item/cac:SellersItemIdentification/*" />
 
 		<!--ASSERT -->
@@ -4515,7 +4527,7 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item/cac:StandardItemIdentification" mode="M21" priority="1058">
+<xsl:template match="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item/cac:StandardItemIdentification" mode="M21" priority="1051">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item/cac:StandardItemIdentification" />
 
 		<!--ASSERT -->
@@ -4536,7 +4548,7 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item/cac:StandardItemIdentification/cbc:ID" mode="M21" priority="1057">
+<xsl:template match="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item/cac:StandardItemIdentification/cbc:ID" mode="M21" priority="1050">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item/cac:StandardItemIdentification/cbc:ID" />
 
 		<!--ASSERT -->
@@ -4572,7 +4584,7 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item/cac:StandardItemIdentification/*" mode="M21" priority="1056">
+<xsl:template match="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item/cac:StandardItemIdentification/*" mode="M21" priority="1049">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item/cac:StandardItemIdentification/*" />
 
 		<!--ASSERT -->
@@ -4593,7 +4605,7 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item/cac:ItemSpecificationDocumentReference" mode="M21" priority="1055">
+<xsl:template match="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item/cac:ItemSpecificationDocumentReference" mode="M21" priority="1048">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item/cac:ItemSpecificationDocumentReference" />
 
 		<!--ASSERT -->
@@ -4614,13 +4626,13 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item/cac:ItemSpecificationDocumentReference/cbc:ID" mode="M21" priority="1054">
+<xsl:template match="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item/cac:ItemSpecificationDocumentReference/cbc:ID" mode="M21" priority="1047">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item/cac:ItemSpecificationDocumentReference/cbc:ID" />
     <xsl:apply-templates mode="M21" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item/cac:ItemSpecificationDocumentReference/cbc:DocumentTypeCode" mode="M21" priority="1053">
+<xsl:template match="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item/cac:ItemSpecificationDocumentReference/cbc:DocumentTypeCode" mode="M21" priority="1046">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item/cac:ItemSpecificationDocumentReference/cbc:DocumentTypeCode" />
 
 		<!--ASSERT -->
@@ -4633,7 +4645,7 @@
           <xsl:attribute name="location">
             <xsl:apply-templates mode="schematron-select-full-path" select="." />
           </xsl:attribute>
-          <svrl:text>Value MUST be part of code list 'Document name code, full list (UNCL1001)' or 'Image code (openPEPPOL)'.</svrl:text>
+          <svrl:text>Value MUST be part of code list 'Document name code, full list (UNCL1001)' or 'Image code (OpenPeppol)'.</svrl:text>
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
@@ -4641,19 +4653,19 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item/cac:ItemSpecificationDocumentReference/cbc:DocumentType" mode="M21" priority="1052">
+<xsl:template match="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item/cac:ItemSpecificationDocumentReference/cbc:DocumentType" mode="M21" priority="1045">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item/cac:ItemSpecificationDocumentReference/cbc:DocumentType" />
     <xsl:apply-templates mode="M21" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item/cac:ItemSpecificationDocumentReference/cac:Attachment" mode="M21" priority="1051">
+<xsl:template match="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item/cac:ItemSpecificationDocumentReference/cac:Attachment" mode="M21" priority="1044">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item/cac:ItemSpecificationDocumentReference/cac:Attachment" />
     <xsl:apply-templates mode="M21" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item/cac:ItemSpecificationDocumentReference/cac:Attachment/cbc:EmbeddedDocumentBinaryObject" mode="M21" priority="1050">
+<xsl:template match="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item/cac:ItemSpecificationDocumentReference/cac:Attachment/cbc:EmbeddedDocumentBinaryObject" mode="M21" priority="1043">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item/cac:ItemSpecificationDocumentReference/cac:Attachment/cbc:EmbeddedDocumentBinaryObject" />
 
 		<!--ASSERT -->
@@ -4704,19 +4716,19 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item/cac:ItemSpecificationDocumentReference/cac:Attachment/cac:ExternalReference" mode="M21" priority="1049">
+<xsl:template match="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item/cac:ItemSpecificationDocumentReference/cac:Attachment/cac:ExternalReference" mode="M21" priority="1042">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item/cac:ItemSpecificationDocumentReference/cac:Attachment/cac:ExternalReference" />
     <xsl:apply-templates mode="M21" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item/cac:ItemSpecificationDocumentReference/cac:Attachment/cac:ExternalReference/cbc:URI" mode="M21" priority="1048">
+<xsl:template match="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item/cac:ItemSpecificationDocumentReference/cac:Attachment/cac:ExternalReference/cbc:URI" mode="M21" priority="1041">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item/cac:ItemSpecificationDocumentReference/cac:Attachment/cac:ExternalReference/cbc:URI" />
     <xsl:apply-templates mode="M21" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item/cac:ItemSpecificationDocumentReference/cac:Attachment/cac:ExternalReference/*" mode="M21" priority="1047">
+<xsl:template match="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item/cac:ItemSpecificationDocumentReference/cac:Attachment/cac:ExternalReference/*" mode="M21" priority="1040">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item/cac:ItemSpecificationDocumentReference/cac:Attachment/cac:ExternalReference/*" />
 
 		<!--ASSERT -->
@@ -4737,7 +4749,7 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item/cac:ItemSpecificationDocumentReference/cac:Attachment/*" mode="M21" priority="1046">
+<xsl:template match="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item/cac:ItemSpecificationDocumentReference/cac:Attachment/*" mode="M21" priority="1039">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item/cac:ItemSpecificationDocumentReference/cac:Attachment/*" />
 
 		<!--ASSERT -->
@@ -4758,7 +4770,7 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item/cac:ItemSpecificationDocumentReference/*" mode="M21" priority="1045">
+<xsl:template match="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item/cac:ItemSpecificationDocumentReference/*" mode="M21" priority="1038">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item/cac:ItemSpecificationDocumentReference/*" />
 
 		<!--ASSERT -->
@@ -4779,13 +4791,13 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item/cac:CommodityClassification" mode="M21" priority="1044">
+<xsl:template match="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item/cac:CommodityClassification" mode="M21" priority="1037">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item/cac:CommodityClassification" />
     <xsl:apply-templates mode="M21" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item/cac:CommodityClassification/cbc:ItemClassificationCode" mode="M21" priority="1043">
+<xsl:template match="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item/cac:CommodityClassification/cbc:ItemClassificationCode" mode="M21" priority="1036">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item/cac:CommodityClassification/cbc:ItemClassificationCode" />
 
 		<!--ASSERT -->
@@ -4821,7 +4833,7 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item/cac:CommodityClassification/*" mode="M21" priority="1042">
+<xsl:template match="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item/cac:CommodityClassification/*" mode="M21" priority="1035">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item/cac:CommodityClassification/*" />
 
 		<!--ASSERT -->
@@ -4842,7 +4854,7 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item/cac:TransactionConditions" mode="M21" priority="1041">
+<xsl:template match="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item/cac:TransactionConditions" mode="M21" priority="1034">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item/cac:TransactionConditions" />
 
 		<!--ASSERT -->
@@ -4863,7 +4875,7 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item/cac:TransactionConditions/cbc:ActionCode" mode="M21" priority="1040">
+<xsl:template match="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item/cac:TransactionConditions/cbc:ActionCode" mode="M21" priority="1033">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item/cac:TransactionConditions/cbc:ActionCode" />
 
 		<!--ASSERT -->
@@ -4884,7 +4896,7 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item/cac:TransactionConditions/*" mode="M21" priority="1039">
+<xsl:template match="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item/cac:TransactionConditions/*" mode="M21" priority="1032">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item/cac:TransactionConditions/*" />
 
 		<!--ASSERT -->
@@ -4905,7 +4917,7 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item/cac:ClassifiedTaxCategory" mode="M21" priority="1038">
+<xsl:template match="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item/cac:ClassifiedTaxCategory" mode="M21" priority="1031">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item/cac:ClassifiedTaxCategory" />
 
 		<!--ASSERT -->
@@ -4941,19 +4953,19 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item/cac:ClassifiedTaxCategory/cbc:ID" mode="M21" priority="1037">
+<xsl:template match="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item/cac:ClassifiedTaxCategory/cbc:ID" mode="M21" priority="1030">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item/cac:ClassifiedTaxCategory/cbc:ID" />
     <xsl:apply-templates mode="M21" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item/cac:ClassifiedTaxCategory/cbc:Percent" mode="M21" priority="1036">
+<xsl:template match="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item/cac:ClassifiedTaxCategory/cbc:Percent" mode="M21" priority="1029">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item/cac:ClassifiedTaxCategory/cbc:Percent" />
     <xsl:apply-templates mode="M21" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item/cac:ClassifiedTaxCategory/cac:TaxScheme" mode="M21" priority="1035">
+<xsl:template match="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item/cac:ClassifiedTaxCategory/cac:TaxScheme" mode="M21" priority="1028">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item/cac:ClassifiedTaxCategory/cac:TaxScheme" />
 
 		<!--ASSERT -->
@@ -4974,13 +4986,13 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item/cac:ClassifiedTaxCategory/cac:TaxScheme/cbc:ID" mode="M21" priority="1034">
+<xsl:template match="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item/cac:ClassifiedTaxCategory/cac:TaxScheme/cbc:ID" mode="M21" priority="1027">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item/cac:ClassifiedTaxCategory/cac:TaxScheme/cbc:ID" />
     <xsl:apply-templates mode="M21" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item/cac:ClassifiedTaxCategory/cac:TaxScheme/*" mode="M21" priority="1033">
+<xsl:template match="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item/cac:ClassifiedTaxCategory/cac:TaxScheme/*" mode="M21" priority="1026">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item/cac:ClassifiedTaxCategory/cac:TaxScheme/*" />
 
 		<!--ASSERT -->
@@ -5001,7 +5013,7 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item/cac:ClassifiedTaxCategory/*" mode="M21" priority="1032">
+<xsl:template match="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item/cac:ClassifiedTaxCategory/*" mode="M21" priority="1025">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item/cac:ClassifiedTaxCategory/*" />
 
 		<!--ASSERT -->
@@ -5022,7 +5034,7 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item/cac:AdditionalItemProperty" mode="M21" priority="1031">
+<xsl:template match="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item/cac:AdditionalItemProperty" mode="M21" priority="1024">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item/cac:AdditionalItemProperty" />
 
 		<!--ASSERT -->
@@ -5058,155 +5070,8 @@
   </xsl:template>
 
 	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item/cac:AdditionalItemProperty/cbc:ID" mode="M21" priority="1030">
+<xsl:template match="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item/cac:AdditionalItemProperty/cbc:ID" mode="M21" priority="1023">
     <svrl:fired-rule context="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item/cac:AdditionalItemProperty/cbc:ID" />
-
-		<!--ASSERT -->
-<xsl:choose>
-      <xsl:when test="@schemeDataURI" />
-      <xsl:otherwise>
-        <svrl:failed-assert test="@schemeDataURI">
-          <xsl:attribute name="id">PEPPOL-T110-B23301</xsl:attribute>
-          <xsl:attribute name="flag">fatal</xsl:attribute>
-          <xsl:attribute name="location">
-            <xsl:apply-templates mode="schematron-select-full-path" select="." />
-          </xsl:attribute>
-          <svrl:text>Element '@schemeDataURI' MUST be provided.</svrl:text>
-        </svrl:failed-assert>
-      </xsl:otherwise>
-    </xsl:choose>
-
-		<!--ASSERT -->
-<xsl:choose>
-      <xsl:when test="@schemeID" />
-      <xsl:otherwise>
-        <svrl:failed-assert test="@schemeID">
-          <xsl:attribute name="id">PEPPOL-T110-B23302</xsl:attribute>
-          <xsl:attribute name="flag">fatal</xsl:attribute>
-          <xsl:attribute name="location">
-            <xsl:apply-templates mode="schematron-select-full-path" select="." />
-          </xsl:attribute>
-          <svrl:text>Element '@schemeID' MUST be provided.</svrl:text>
-        </svrl:failed-assert>
-      </xsl:otherwise>
-    </xsl:choose>
-
-		<!--ASSERT -->
-<xsl:choose>
-      <xsl:when test="@schemeVersionID" />
-      <xsl:otherwise>
-        <svrl:failed-assert test="@schemeVersionID">
-          <xsl:attribute name="id">PEPPOL-T110-B23303</xsl:attribute>
-          <xsl:attribute name="flag">fatal</xsl:attribute>
-          <xsl:attribute name="location">
-            <xsl:apply-templates mode="schematron-select-full-path" select="." />
-          </xsl:attribute>
-          <svrl:text>Element '@schemeVersionID' MUST be provided.</svrl:text>
-        </svrl:failed-assert>
-      </xsl:otherwise>
-    </xsl:choose>
-    <xsl:apply-templates mode="M21" select="@*|*" />
-  </xsl:template>
-
-	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item/cac:AdditionalItemProperty/cbc:ID/@schemeDataURI" mode="M21" priority="1029">
-    <svrl:fired-rule context="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item/cac:AdditionalItemProperty/cbc:ID/@schemeDataURI" />
-    <xsl:apply-templates mode="M21" select="@*|*" />
-  </xsl:template>
-
-	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item/cac:AdditionalItemProperty/cbc:ID/@schemeDataURI/*" mode="M21" priority="1028">
-    <svrl:fired-rule context="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item/cac:AdditionalItemProperty/cbc:ID/@schemeDataURI/*" />
-
-		<!--ASSERT -->
-<xsl:choose>
-      <xsl:when test="false()" />
-      <xsl:otherwise>
-        <svrl:failed-assert test="false()">
-          <xsl:attribute name="id">PEPPOL-T110-B23401</xsl:attribute>
-          <xsl:attribute name="flag">fatal</xsl:attribute>
-          <xsl:attribute name="location">
-            <xsl:apply-templates mode="schematron-select-full-path" select="." />
-          </xsl:attribute>
-          <svrl:text>Document MUST NOT contain elements not part of the data model.</svrl:text>
-        </svrl:failed-assert>
-      </xsl:otherwise>
-    </xsl:choose>
-    <xsl:apply-templates mode="M21" select="@*|*" />
-  </xsl:template>
-
-	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item/cac:AdditionalItemProperty/cbc:ID/@schemeID" mode="M21" priority="1027">
-    <svrl:fired-rule context="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item/cac:AdditionalItemProperty/cbc:ID/@schemeID" />
-    <xsl:apply-templates mode="M21" select="@*|*" />
-  </xsl:template>
-
-	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item/cac:AdditionalItemProperty/cbc:ID/@schemeID/*" mode="M21" priority="1026">
-    <svrl:fired-rule context="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item/cac:AdditionalItemProperty/cbc:ID/@schemeID/*" />
-
-		<!--ASSERT -->
-<xsl:choose>
-      <xsl:when test="false()" />
-      <xsl:otherwise>
-        <svrl:failed-assert test="false()">
-          <xsl:attribute name="id">PEPPOL-T110-B23501</xsl:attribute>
-          <xsl:attribute name="flag">fatal</xsl:attribute>
-          <xsl:attribute name="location">
-            <xsl:apply-templates mode="schematron-select-full-path" select="." />
-          </xsl:attribute>
-          <svrl:text>Document MUST NOT contain elements not part of the data model.</svrl:text>
-        </svrl:failed-assert>
-      </xsl:otherwise>
-    </xsl:choose>
-    <xsl:apply-templates mode="M21" select="@*|*" />
-  </xsl:template>
-
-	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item/cac:AdditionalItemProperty/cbc:ID/@schemeVersionID" mode="M21" priority="1025">
-    <svrl:fired-rule context="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item/cac:AdditionalItemProperty/cbc:ID/@schemeVersionID" />
-    <xsl:apply-templates mode="M21" select="@*|*" />
-  </xsl:template>
-
-	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item/cac:AdditionalItemProperty/cbc:ID/@schemeVersionID/*" mode="M21" priority="1024">
-    <svrl:fired-rule context="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item/cac:AdditionalItemProperty/cbc:ID/@schemeVersionID/*" />
-
-		<!--ASSERT -->
-<xsl:choose>
-      <xsl:when test="false()" />
-      <xsl:otherwise>
-        <svrl:failed-assert test="false()">
-          <xsl:attribute name="id">PEPPOL-T110-B23601</xsl:attribute>
-          <xsl:attribute name="flag">fatal</xsl:attribute>
-          <xsl:attribute name="location">
-            <xsl:apply-templates mode="schematron-select-full-path" select="." />
-          </xsl:attribute>
-          <svrl:text>Document MUST NOT contain elements not part of the data model.</svrl:text>
-        </svrl:failed-assert>
-      </xsl:otherwise>
-    </xsl:choose>
-    <xsl:apply-templates mode="M21" select="@*|*" />
-  </xsl:template>
-
-	<!--RULE -->
-<xsl:template match="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item/cac:AdditionalItemProperty/cbc:ID/*" mode="M21" priority="1023">
-    <svrl:fired-rule context="/ubl:OrderResponse/cac:OrderLine/cac:LineItem/cac:Item/cac:AdditionalItemProperty/cbc:ID/*" />
-
-		<!--ASSERT -->
-<xsl:choose>
-      <xsl:when test="false()" />
-      <xsl:otherwise>
-        <svrl:failed-assert test="false()">
-          <xsl:attribute name="id">PEPPOL-T110-B23304</xsl:attribute>
-          <xsl:attribute name="flag">fatal</xsl:attribute>
-          <xsl:attribute name="location">
-            <xsl:apply-templates mode="schematron-select-full-path" select="." />
-          </xsl:attribute>
-          <svrl:text>Document MUST NOT contain elements not part of the data model.</svrl:text>
-        </svrl:failed-assert>
-      </xsl:otherwise>
-    </xsl:choose>
     <xsl:apply-templates mode="M21" select="@*|*" />
   </xsl:template>
 

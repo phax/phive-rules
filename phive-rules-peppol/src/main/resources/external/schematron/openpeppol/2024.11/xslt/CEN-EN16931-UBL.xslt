@@ -172,6 +172,9 @@
         <xsl:attribute name="document">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
+        <xsl:attribute name="documents">
+          <xsl:value-of select="document-uri(/)" />
+        </xsl:attribute>
         <xsl:attribute name="id">UBL-model</xsl:attribute>
         <xsl:attribute name="name">UBL-model</xsl:attribute>
         <xsl:apply-templates />
@@ -181,6 +184,9 @@
         <xsl:attribute name="document">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
+        <xsl:attribute name="documents">
+          <xsl:value-of select="document-uri(/)" />
+        </xsl:attribute>
         <xsl:attribute name="id">UBL-syntax</xsl:attribute>
         <xsl:attribute name="name">UBL-syntax</xsl:attribute>
         <xsl:apply-templates />
@@ -188,6 +194,9 @@
       <xsl:apply-templates mode="M12" select="/" />
       <svrl:active-pattern>
         <xsl:attribute name="document">
+          <xsl:value-of select="document-uri(/)" />
+        </xsl:attribute>
+        <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
         <xsl:attribute name="id">Codesmodel</xsl:attribute>
