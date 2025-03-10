@@ -52,7 +52,7 @@
       <url>http://www.helger.com</url>
     </developer>
   </developers>
-  
+
   <properties>
     <pdfbox.version>3.0.4</pdfbox.version>
   </properties>
