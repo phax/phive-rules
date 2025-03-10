@@ -16,16 +16,22 @@
  */
 package com.helger.phive.rules.api;
 
+import java.time.OffsetDateTime;
+
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import javax.annotation.concurrent.Immutable;
 
 import com.helger.commons.annotation.Nonempty;
+import com.helger.commons.collection.impl.ICommonsList;
+import com.helger.commons.datetime.PDTFactory;
 import com.helger.commons.io.resource.IReadableResource;
 import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.diver.api.version.DVRVersionException;
+import com.helger.phive.api.executorset.status.EValidationExecutorStatusType;
 import com.helger.phive.api.executorset.status.IValidationExecutorSetStatus;
 import com.helger.phive.api.executorset.status.ValidationExecutorSetStatus;
+import com.helger.phive.api.executorset.status.ValidationExecutorSetStatusHistoryItem;
 import com.helger.phive.xml.schematron.SchematronNamespaceBeautifier;
 import com.helger.phive.xml.schematron.ValidationExecutorSchematron;
 import com.helger.xml.namespace.IIterableNamespaceContext;
@@ -101,5 +107,19 @@ public final class PhiveRulesHelper
   public static IValidationExecutorSetStatus createSimpleStatus (final boolean bIsDeprecated)
   {
     return ValidationExecutorSetStatus.createDeprecatedNow (bIsDeprecated);
+  }
+
+  @Nonnull
+  public static IValidationExecutorSetStatus createSimpleStatus (final boolean bIsDeprecated,
+                                                                 @Nonnull final OffsetDateTime aValidPer)
+  {
+    return new ValidationExecutorSetStatus (PDTFactory.getCurrentOffsetDateTime (),
+                                            bIsDeprecated ? EValidationExecutorStatusType.DEPRECATED
+                                                          : EValidationExecutorStatusType.VALID,
+                                            aValidPer,
+                                            (OffsetDateTime) null,
+                                            (String) null,
+                                            (DVRCoordinate) null,
+                                            (ICommonsList <ValidationExecutorSetStatusHistoryItem>) null);
   }
 }
