@@ -31,6 +31,7 @@ This project is divided into sub-projects each keeping tracking of one document 
 * phive-rules-ubl - Validation rules for pure OASIS UBL (without any Schematron)
 * phive-rules-ublbe - Validation rules for Belgium e-FFF/UBL.BE
 * phive-rules-xrechnung - Validation rules for German XRechnung
+* phive-rules-zatca - Validation rules for Saudi Arabian ZATCA/FATOORA format (since v3.2.7)
 * phive-rules-zugferd - Validation rules for German ZuGFERD (XML part only) (since v3.2.2)
 
 The Java code in this project is licensed under the Apache 2 license.
@@ -175,6 +176,12 @@ Add the following to your `pom.xml` to use this artifact, replacing `x.y.z` with
 
 <dependency>
   <groupId>com.helger.phive.rules</groupId>
+  <artifactId>phive-rules-zatca</artifactId>
+  <version>x.y.z</version>
+</dependency>
+
+<dependency>
+  <groupId>com.helger.phive.rules</groupId>
   <artifactId>phive-rules-zugferd</artifactId>
   <version>x.y.z</version>
 </dependency>
@@ -206,6 +213,7 @@ I hope that with the introduction of PINT, the versioning problem will be solved
     * Added PINT JP 1.1.0 rules and deprecated the old rules
     * Added PINT MY 1.1.0 rules and deprecated v1.0.0 rules
     * Added PINT SG 1.2.0 rules and deprecated v1.1.0 rules
+    * Added initial version of Saudia Arabian ZATCA/FATOORA format in new submodule `phive-rules-zatca`
 * v3.2.6 - 2025-02-11
     * Added Peppol 2024-11 Hotfix Schematron rules (replacing the previous ones)
     * Added OIOUBL 1.15.0-rc rules

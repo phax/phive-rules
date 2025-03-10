@@ -71,7 +71,7 @@
     <ph-ebinterface.version>7.1.0</ph-ebinterface.version>
     <ph-fatturapa.version>2.0.2</ph-fatturapa.version>
     <ph-jaxb-plugin.version>4.0.3</ph-jaxb-plugin.version>
-    <ph-schematron.version>8.0.5</ph-schematron.version>
+    <ph-schematron.version>8.0.6-SNAPSHOT</ph-schematron.version>
     <ph-ubl.version>9.0.3</ph-ubl.version>
   </properties>
   
@@ -223,6 +223,11 @@
       </dependency>
       <dependency>
         <groupId>com.helger.phive.rules</groupId>
+        <artifactId>phive-rules-zatca</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.helger.phive.rules</groupId>
         <artifactId>phive-rules-zugferd</artifactId>
         <version>${project.version}</version>
       </dependency>
@@ -238,7 +243,6 @@
     <module>phive-rules-ebinterface</module>
     <module>phive-rules-ehf</module>
     <module>phive-rules-en16931</module>
-    <module>phive-rules-energieefactuur</module>
     <module>phive-rules-facturae</module>
     <module>phive-rules-fatturapa</module>
     <module>phive-rules-finvoice</module>
@@ -255,8 +259,11 @@
     <module>phive-rules-zugferd</module>
     <!-- depends on en16931 -->
     <module>phive-rules-xrechnung</module>
+    <module>phive-rules-zatca</module>
     <!-- depends on peppol -->
     <module>phive-rules-ublbe</module>
+    <!-- depends on SimplerInvoicing -->
+    <module>phive-rules-energieefactuur</module>
   </modules>
   
   <build>

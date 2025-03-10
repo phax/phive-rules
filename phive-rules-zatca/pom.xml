@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 
-    Copyright (C) 2024-2025 Philip Helger (www.helger.com)
+    Copyright (C) 2025 Philip Helger (www.helger.com)
     philip[at]helger[dot]com
 
     Licensed under the Apache License, Version 2.0 (the "License");
@@ -63,18 +63,9 @@
       <artifactId>phive-rules-api</artifactId>
     </dependency>
     <dependency>
-      <groupId>com.helger.phive.rules</groupId>
-      <artifactId>phive-rules-en16931</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>com.helger.cii</groupId>
-      <artifactId>ph-cii-d16b</artifactId>
-      <version>${ph-cii.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>com.helger.cii</groupId>
-      <artifactId>ph-cii-d22b</artifactId>
-      <version>${ph-cii.version}</version>
+      <groupId>com.helger.ubl</groupId>
+      <artifactId>ph-ubl21</artifactId>
+      <version>${ph-ubl.version}</version>
     </dependency>
 
     <dependency>
@@ -92,12 +83,6 @@
       <artifactId>jaxb-impl</artifactId>
       <scope>test</scope>
     </dependency>
-    <dependency>
-      <groupId>org.apache.pdfbox</groupId>
-      <artifactId>pdfbox</artifactId>
-      <version>${pdfbox.version}</version>
-      <scope>test</scope>
-    </dependency>
   </dependencies>
 
   <build>
@@ -108,9 +93,9 @@
         <extensions>true</extensions>
         <configuration>
           <instructions>
-            <Automatic-Module-Name>com.helger.phive.zugferd</Automatic-Module-Name>
+            <Automatic-Module-Name>com.helger.phive.zatca</Automatic-Module-Name>
             <Export-Package>
-              com.helger.phive.zugferd
+              com.helger.phive.zatca
             </Export-Package>
             <Import-Package>!javax.annotation.*,*</Import-Package>
           </instructions>
@@ -122,7 +107,7 @@
         <executions>
         <!--
           <execution>
-            <id>zugferd</id>
+            <id>zatca</id>
             <goals>
               <goal>convert</goal>
             </goals>
