@@ -221,12 +221,12 @@
               <goal>convert</goal>
             </goals>
             <configuration>
-              <schematronDirectory>src/test/resources/external/rule-source/pint-my/1.0.0</schematronDirectory>
-              <xsltDirectory>src/main/resources/external/schematron/pint-my/1.0.0/xslt</xsltDirectory>
+              <schematronDirectory>src/test/resources/external/rule-source/pint-my/1.1.0</schematronDirectory>
+              <xsltDirectory>src/main/resources/external/schematron/pint-my/1.1.0/xslt</xsltDirectory>
             </configuration>
           </execution>
           -->
-         <!-- 
+          <!-- 
           <execution>
             <id>pint-sg</id>
             <goals>
