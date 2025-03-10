@@ -115,16 +115,14 @@ public final class CTestFiles
                                                             PeppolValidation2024_11.VID_OPENPEPPOL_ORDER_RESPONSE_ADVANCED_V3,
 
                                                             /*
-                                                             * OpenPeppol
-                                                             * Directory
+                                                             * OpenPeppol Directory
                                                              */
                                                             PeppolValidationDirectory.VID_OPENPEPPOL_BUSINESS_CARD_V1,
                                                             PeppolValidationDirectory.VID_OPENPEPPOL_BUSINESS_CARD_V2,
                                                             PeppolValidationDirectory.VID_OPENPEPPOL_BUSINESS_CARD_V3,
 
                                                             /*
-                                                             * OpenPeppol
-                                                             * Reporting
+                                                             * OpenPeppol Reporting
                                                              */
                                                             PeppolValidationReporting.VID_OPENPEPPOL_EUSR_V114,
                                                             PeppolValidationReporting.VID_OPENPEPPOL_EUSR_V115,
@@ -137,6 +135,11 @@ public final class CTestFiles
                                                             PeppolValidationPintAUNZ.VID_OPENPEPPOL_AUNZ_PINT_UBL_CREDIT_NOTE_1_0_1,
                                                             PeppolValidationPintAUNZ.VID_OPENPEPPOL_AUNZ_PINT_UBL_INVOICE_SELF_BILLING_1_0_1,
                                                             PeppolValidationPintAUNZ.VID_OPENPEPPOL_AUNZ_PINT_UBL_CREDIT_NOTE_SELF_BILLING_1_0_1,
+
+                                                            PeppolValidationPintAUNZ.VID_OPENPEPPOL_AUNZ_PINT_UBL_INVOICE_1_1_0,
+                                                            PeppolValidationPintAUNZ.VID_OPENPEPPOL_AUNZ_PINT_UBL_CREDIT_NOTE_1_1_0,
+                                                            PeppolValidationPintAUNZ.VID_OPENPEPPOL_AUNZ_PINT_UBL_INVOICE_SELF_BILLING_1_1_0,
+                                                            PeppolValidationPintAUNZ.VID_OPENPEPPOL_AUNZ_PINT_UBL_CREDIT_NOTE_SELF_BILLING_1_1_0,
 
                                                             /* PINT Japan */
                                                             PeppolValidationPintJP.VID_OPENPEPPOL_JP_PINT_INVOICE_012,
@@ -151,8 +154,7 @@ public final class CTestFiles
                                                             PeppolValidationPintJP_NTR.VID_OPENPEPPOL_JP_PINT_NTR_CREDIT_NOTE_1_0_1,
 
                                                             /*
-                                                             * PINT Japan Self
-                                                             * Billing
+                                                             * PINT Japan Self Billing
                                                              */
                                                             PeppolValidationPintJP_SB.VID_OPENPEPPOL_JP_PINT_SB_INVOICE_1_0_1,
                                                             PeppolValidationPintJP_SB.VID_OPENPEPPOL_JP_PINT_SB_CREDIT_NOTE_1_0_1,
@@ -566,6 +568,7 @@ public final class CTestFiles
     }
 
     /* PINT AUNZ */
+    // 1.0.1
     if (aVESID.equals (PeppolValidationPintAUNZ.VID_OPENPEPPOL_AUNZ_PINT_UBL_INVOICE_1_0_1))
     {
       final String sPrefix = sPrefix0 + "pint-aunz/1.0.1/billing/";
@@ -603,6 +606,48 @@ public final class CTestFiles
     if (aVESID.equals (PeppolValidationPintAUNZ.VID_OPENPEPPOL_AUNZ_PINT_UBL_CREDIT_NOTE_SELF_BILLING_1_0_1))
     {
       final String sPrefix = sPrefix0 + "pint-aunz/1.0.1/selfbilling/";
+      return new CommonsArrayList <> (new FileSystemResource (sPrefix + "AU Self Billed Credit Note.xml"),
+                                      new FileSystemResource (sPrefix + "NZ Self Billed Credit note.xml"));
+    }
+
+    // 1.1.0
+    if (aVESID.equals (PeppolValidationPintAUNZ.VID_OPENPEPPOL_AUNZ_PINT_UBL_INVOICE_1_1_0))
+    {
+      final String sPrefix = sPrefix0 + "pint-aunz/1.1.0/billing/";
+      return new CommonsArrayList <> (new FileSystemResource (sPrefix + "AU Freight - Document Level.xml"),
+                                      new FileSystemResource (sPrefix + "AU Freight - Line Item.xml"),
+                                      new FileSystemResource (sPrefix + "AU Freight Only - Line Item.xml"),
+                                      new FileSystemResource (sPrefix + "AU GST Only.xml"),
+                                      new FileSystemResource (sPrefix + "AU GST Only - Prepaid.xml"),
+                                      new FileSystemResource (sPrefix + "AU Invoice.xml"),
+                                      new FileSystemResource (sPrefix + "AU Invoice Energy Bill Example_1.xml"),
+                                      new FileSystemResource (sPrefix + "AU Invoice Energy Bill Example_2.xml"),
+                                      new FileSystemResource (sPrefix +
+                                                              "AU Invoice Energy Bill Example_3_negative_inv.xml"),
+                                      new FileSystemResource (sPrefix + "NZ Allowance On Invoice Line.xml"),
+                                      new FileSystemResource (sPrefix + "NZ Invoice Level Allowance.xml"),
+                                      new FileSystemResource (sPrefix + "NZ Invoice Level Charge.xml"),
+                                      new FileSystemResource (sPrefix + "NZ No Allowances.xml"),
+                                      new FileSystemResource (sPrefix + "NZ Prepaid Amount.xml"),
+                                      new FileSystemResource (sPrefix + "PINT_AUNZ_invoice.xml"),
+                                      new FileSystemResource (sPrefix + "PINT_AUNZ_negative_invoice.xml"));
+    }
+    if (aVESID.equals (PeppolValidationPintAUNZ.VID_OPENPEPPOL_AUNZ_PINT_UBL_CREDIT_NOTE_1_1_0))
+    {
+      final String sPrefix = sPrefix0 + "pint-aunz/1.1.0/billing/";
+      return new CommonsArrayList <> (new FileSystemResource (sPrefix + "AU Credit note.xml"),
+                                      new FileSystemResource (sPrefix + "NZ Credit note.xml"));
+    }
+    if (aVESID.equals (PeppolValidationPintAUNZ.VID_OPENPEPPOL_AUNZ_PINT_UBL_INVOICE_SELF_BILLING_1_1_0))
+    {
+      final String sPrefix = sPrefix0 + "pint-aunz/1.1.0/selfbilling/";
+      return new CommonsArrayList <> (new FileSystemResource (sPrefix + "AUNZ Self Billing.xml"),
+                                      new FileSystemResource (sPrefix + "AU Self Billing - Negative Invoice.xml"),
+                                      new FileSystemResource (sPrefix + "NZ Self Billing.xml"));
+    }
+    if (aVESID.equals (PeppolValidationPintAUNZ.VID_OPENPEPPOL_AUNZ_PINT_UBL_CREDIT_NOTE_SELF_BILLING_1_1_0))
+    {
+      final String sPrefix = sPrefix0 + "pint-aunz/1.1.0/selfbilling/";
       return new CommonsArrayList <> (new FileSystemResource (sPrefix + "AU Self Billed Credit Note.xml"),
                                       new FileSystemResource (sPrefix + "NZ Self Billed Credit note.xml"));
     }
@@ -700,20 +745,12 @@ public final class CTestFiles
                                       new FileSystemResource (sPrefix +
                                                               "JP BIS Invoice for Non-tax Registered Businesses UBL Example-Return.Quan.ItPr.xml"));
     }
-    if (aVESID.equals (PeppolValidationPintJP_NTR.VID_OPENPEPPOL_JP_PINT_NTR_CREDIT_NOTE_1_0_1))
-    {
-      // empty
-      return new CommonsArrayList <> ();
-    }
 
     /* PINT Japan Self Billing */
     // 1.0.1
-    if (aVESID.equals (PeppolValidationPintJP_SB.VID_OPENPEPPOL_JP_PINT_SB_INVOICE_1_0_1))
-    {
-      // empty
-      return new CommonsArrayList <> ();
-    }
-    if (aVESID.equals (PeppolValidationPintJP_SB.VID_OPENPEPPOL_JP_PINT_SB_CREDIT_NOTE_1_0_1))
+    if (aVESID.equals (PeppolValidationPintJP_NTR.VID_OPENPEPPOL_JP_PINT_NTR_CREDIT_NOTE_1_0_1) ||
+        aVESID.equals (PeppolValidationPintJP_SB.VID_OPENPEPPOL_JP_PINT_SB_INVOICE_1_0_1) ||
+        aVESID.equals (PeppolValidationPintJP_SB.VID_OPENPEPPOL_JP_PINT_SB_CREDIT_NOTE_1_0_1))
     {
       // empty
       return new CommonsArrayList <> ();
@@ -727,17 +764,7 @@ public final class CTestFiles
       return new CommonsArrayList <> (new FileSystemResource (sPrefix + "17022014MyPINT0.9Sample_MultiTaxRate.xml"),
                                       new FileSystemResource (sPrefix + "17022024MyPINT0.9Sample_Common.xml"));
     }
-    if (aVESID.equals (PeppolValidationPintMY.VID_OPENPEPPOL_MY_PINT_UBL_CREDIT_NOTE_1_0_0))
-    {
-      // empty
-      return new CommonsArrayList <> ();
-    }
-    if (aVESID.equals (PeppolValidationPintMY.VID_OPENPEPPOL_MY_PINT_UBL_INVOICE_SELF_BILLING_1_0_0))
-    {
-      // empty
-      return new CommonsArrayList <> ();
-    }
-    if (aVESID.equals (PeppolValidationPintMY.VID_OPENPEPPOL_MY_PINT_UBL_CREDIT_NOTE_SELF_BILLING_1_0_0))
+    if (aVESID.equals (PeppolValidationPintMY.VID_OPENPEPPOL_MY_PINT_UBL_CREDIT_NOTE_1_0_0) || aVESID.equals (PeppolValidationPintMY.VID_OPENPEPPOL_MY_PINT_UBL_INVOICE_SELF_BILLING_1_0_0) || aVESID.equals (PeppolValidationPintMY.VID_OPENPEPPOL_MY_PINT_UBL_CREDIT_NOTE_SELF_BILLING_1_0_0))
     {
       // empty
       return new CommonsArrayList <> ();

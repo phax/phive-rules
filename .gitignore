@@ -4,11 +4,13 @@ target/
 poacc-upgrade-3-3.0.*/
 xrechnung-*-schematron-*/
 
+base-example-large-*.xml
+~*.xlsx
 *.pmd
 *.iml
-.project 
+
+.DS_Store
 .classpath 
-~*.xlsx
+.project 
 release.properties
 zz
-base-example-large-*.xml
