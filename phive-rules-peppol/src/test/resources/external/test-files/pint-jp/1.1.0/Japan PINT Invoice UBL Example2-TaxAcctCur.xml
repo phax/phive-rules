@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Invoice xmlns="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2" xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" xmlns:ccts="urn:un:unece:uncefact:documentation:2" xmlns:ext="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2" xmlns:qdt="urn:oasis:names:specification:ubl:schema:xsd:QualifiedDatatypes-2" xmlns:udt="urn:un:unece:uncefact:data:specification:UnqualifiedDataTypesSchemaModule:2" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+<!-- 
+Japan common commercial invoice, example2-Foreign Currency
+-->
+
+	<cbc:UBLVersionID>2.1</cbc:UBLVersionID>
+	<cbc:CustomizationID>urn:peppol:pint:billing-1@jp-1</cbc:CustomizationID> 	<!-- IBT-024 - Specification identifier -->
+	<cbc:ProfileID>urn:peppol:bis:billing</cbc:ProfileID> <!-- IBT-023 - Business process type -->
+	<cbc:ID>156</cbc:ID> <!-- IBT-001 - Invoice number -->
+	<cbc:IssueDate>2023-10-24</cbc:IssueDate> <!-- IBT-002 - Invoice issue date -->
+	<cbc:DueDate>2023-11-20</cbc:DueDate> <!-- IBT-009 - Payment due date -->
+	<cbc:InvoiceTypeCode>380</cbc:InvoiceTypeCode> <!-- IBT-003 - Invoice type code -->
+	<cbc:DocumentCurrencyCode>EUR</cbc:DocumentCurrencyCode> <!-- IBT-005 - Invoice currency code -->
+	<cbc:TaxCurrencyCode>JPY</cbc:TaxCurrencyCode> <!-- IBT-006 - Tax accounting currency -->
+	<cac:InvoicePeriod> <!-- IBG-14 - INVOICING PERIOD -->
+		<cbc:StartDate>2023-10-18</cbc:StartDate> <!-- IBT-073 - Invoicing period start date -->
+		<cbc:EndDate>2023-10-18</cbc:EndDate> <!-- IBT-074 - Invoicing period end date -->
+	</cac:InvoicePeriod>
+	<cac:AccountingSupplierParty> <!-- IBG-04 - SELLER -->
+		<cac:Party>
+			<cbc:EndpointID schemeID="0088">9482348239847239874</cbc:EndpointID> <!-- IBT-034 - Seller electronic address, IBT-034-1 - Scheme identifier -->
+			<cac:PostalAddress> <!-- IBG-05 - SELLER POSTAL ADDRESS -->
+				<cac:Country>
+					<cbc:IdentificationCode>GB</cbc:IdentificationCode> <!-- IBT-040 - Seller country code -->
+				</cac:Country>
+			</cac:PostalAddress>
+			<cac:PartyTaxScheme>
+				<cbc:CompanyID>T1234567890123</cbc:CompanyID> <!-- IBT-031 - Seller TAX identifier -->
+				<cac:TaxScheme>
+					<cbc:ID>VAT</cbc:ID> <!-- IBT-031, qualifier -->
+				</cac:TaxScheme>
+			</cac:PartyTaxScheme>
+			<cac:PartyLegalEntity>
+				<cbc:RegistrationName>XYZ Digital Learning Services, Inc.</cbc:RegistrationName> <!-- IBT-027 - Seller name -->
+			</cac:PartyLegalEntity>
+		</cac:Party>
+	</cac:AccountingSupplierParty>
+	<cac:AccountingCustomerParty> <!-- IBG-07 - BUYER -->
+		<cac:Party>
+			<cbc:EndpointID schemeID="0188">3210987654321</cbc:EndpointID> <!-- IBT-049 - Buyer electronic address, IBT-049-1 - Scheme identifier -->
+			<cac:PostalAddress> <!-- IBG-08 - BUYER POSTAL ADDRESS -->
+				<cac:Country>
+					<cbc:IdentificationCode>JP</cbc:IdentificationCode> <!-- IBT-055 - Buyer country code -->
+				</cac:Country>
+			</cac:PostalAddress>
+			<cac:PartyLegalEntity>
+				<cbc:RegistrationName>〇〇 Bussan Co., Ltd.</cbc:RegistrationName> <!-- IBT-044 - Buyer name -->
+			</cac:PartyLegalEntity>
+		</cac:Party>
+	</cac:AccountingCustomerParty>
+	<cac:TaxRepresentativeParty> <!-- IBG-11 - SELLER TAX REPRESENTATIVE PARTY -->
+    	<cac:PartyName>
+        	<cbc:Name>TaxRepresentative Name</cbc:Name> <!-- IBT-062 - Seller tax representative name -->
+    	</cac:PartyName>
+    	<cac:PostalAddress> <!-- IBG-12 - SELLER TAX REPRESENTATIVE POSTAL ADDRESS -->
+        	<cac:Country>
+            	<cbc:IdentificationCode>JP</cbc:IdentificationCode> <!-- IBT-069 - Tax representative country code -->
+        	</cac:Country>
+    	</cac:PostalAddress>
+    	<cac:PartyTaxScheme>
+        	<cbc:CompanyID>T7654321098765</cbc:CompanyID> <!-- IBT-063 - Seller tax representative TAX identifier --> 
+        	<cac:TaxScheme>
+            	<cbc:ID>VAT</cbc:ID> <!-- IBT-063, qualifier -->
+        	</cac:TaxScheme>
+    	</cac:PartyTaxScheme>
+	</cac:TaxRepresentativeParty>
+	<cac:PaymentMeans> <!-- IBG-16 - PAYMENT INSTRUCTIONS -->
+	    <cbc:PaymentMeansCode name="Credit card">54</cbc:PaymentMeansCode> <!-- IBT-081 - Payment means type code, IBT-082 Payment means text -->
+		<cbc:PaymentID>9387439</cbc:PaymentID> <!-- IBT-083 Remittance information -->
+		<cac:CardAccount> <!-- IBG-18 PAYMENT CARD INFORMATION -->
+        	<cbc:PrimaryAccountNumberID>123236</cbc:PrimaryAccountNumberID> <!-- IBT-087 Payment card primary account number -->
+        	<cbc:NetworkID>VISA</cbc:NetworkID>
+        	<cbc:HolderName>Card holders name</cbc:HolderName> <!-- IBT-088 Payment card holder name -->
+    	</cac:CardAccount>
+	</cac:PaymentMeans> 
+	<cac:TaxTotal>
+		<cbc:TaxAmount currencyID="EUR">250</cbc:TaxAmount> <!-- IBT-110 - Invoice total TAX amount -->
+		<cac:TaxSubtotal> <!-- IBG-23 - TAX BREAKDOWN -->
+			<cbc:TaxableAmount currencyID="EUR">2500</cbc:TaxableAmount> <!-- IBT-116 - TAX category taxable amount -->
+			<cbc:TaxAmount currencyID="EUR">250</cbc:TaxAmount> <!-- IBT-117 - TAX category tax amount -->
+			<cac:TaxCategory>
+				<cbc:ID>S</cbc:ID> <!-- IBT-118 - TAX category code -->
+				<cbc:Percent>10</cbc:Percent> <!-- IBT-119 - TAX category rate -->
+				<cac:TaxScheme>
+					<cbc:ID>VAT</cbc:ID> <!-- IBT-118, qualifier -->
+				</cac:TaxScheme>
+			</cac:TaxCategory>
+		</cac:TaxSubtotal>
+	</cac:TaxTotal>
+	<cac:TaxTotal> <!-- IBG-37 - DOCUMENT TOTALS IN TAX ACCOUNTING CURRENCY -->
+		<cbc:TaxAmount currencyID="JPY">32500</cbc:TaxAmount> <!-- IBT-111 - Invoice total TAX amount in tax accounting currency -->
+		<cac:TaxSubtotal> <!-- IBG-38 - TAX BREAKDOWN IN ACCOUNTING CURRENCY -->
+			<cbc:TaxAmount currencyID="JPY">32500</cbc:TaxAmount> <!-- IBT-190 - TAX category tax amount in accounting currency -->
+			<cac:TaxCategory>
+				<cbc:ID>S</cbc:ID> <!-- IBT-192 - TAX category code for tax category tax amount in accounting currency -->
+				<cbc:Percent>10</cbc:Percent> <!-- IBT-193 - TAX category rate for tax category tax amount in accounting currency -->
+				<cac:TaxScheme>
+					<cbc:ID>VAT</cbc:ID> <!-- IBT-192, qualifier -->
+				</cac:TaxScheme>
+			</cac:TaxCategory>
+		</cac:TaxSubtotal>
+	</cac:TaxTotal>
+	<cac:LegalMonetaryTotal> <!-- IBG-22 - DOCUMENT TOTALS -->
+		<cbc:LineExtensionAmount currencyID="EUR">2500</cbc:LineExtensionAmount> <!-- IBT-106 - Sum of Invoice line net amount -->
+		<cbc:TaxExclusiveAmount currencyID="EUR">2500</cbc:TaxExclusiveAmount> <!-- IBT-109 - Invoice total amount without TAX -->
+		<cbc:TaxInclusiveAmount currencyID="EUR">2750</cbc:TaxInclusiveAmount> <!-- IBT-112 - Invoice total amount with TAX -->
+		<cbc:AllowanceTotalAmount currencyID="EUR">0</cbc:AllowanceTotalAmount> <!-- IBT-107 - Sum of allowances on document level -->
+		<cbc:ChargeTotalAmount currencyID="EUR">0</cbc:ChargeTotalAmount> <!-- IBT-108 - Sum of charges on document level -->
+		<cbc:PrepaidAmount currencyID="EUR">0</cbc:PrepaidAmount> <!-- IBT-113 - Paid amount -->
+		<cbc:PayableRoundingAmount currencyID="EUR">0</cbc:PayableRoundingAmount> <!-- IBT-114 - Rounding amount -->
+		<cbc:PayableAmount currencyID="EUR">2750</cbc:PayableAmount> <!-- IBT-115 - Amount due for payment -->
+	</cac:LegalMonetaryTotal>
+	<cac:InvoiceLine> <!-- IBG-25 - INVOICE LINE -->
+		<cbc:ID>1</cbc:ID> <!-- IBT-126 - Invoice line identifier -->
+		<cbc:InvoicedQuantity unitCode="H87">5</cbc:InvoicedQuantity> <!-- IBT-129 - Invoiced quantity, IBT-130 - Invoiced quantity unit of measure code -->
+		<cbc:LineExtensionAmount currencyID="EUR">2500</cbc:LineExtensionAmount> <!-- IBT-131 - Invoice line net amount -->
+		<cac:InvoicePeriod> <!-- IBG-26 - INVOICE LINE PERIOD -->
+			<cbc:StartDate>2023-10-18</cbc:StartDate> <!-- IBT-134 - Invoice line period start date -->
+			<cbc:EndDate>2023-10-18</cbc:EndDate> <!-- IBT-135 - Invoice line period end date -->
+		</cac:InvoicePeriod>
+		<cac:OrderLineReference>
+			<cbc:LineID>1</cbc:LineID> <!-- IBT-132 - Referenced purchase order line reference -->
+			<cac:OrderReference>
+				<cbc:ID>OR-123</cbc:ID> <!-- IBT-183 - Purchase order reference -->
+			</cac:OrderReference>
+		</cac:OrderLineReference>
+		<cac:Item> <!-- IBG-31 - ITEM INFORMATION -->
+			<cbc:Name>1-day online lecture course</cbc:Name> <!-- IBT-153 - Item name -->
+			<cac:OriginCountry>
+				<cbc:IdentificationCode>BE</cbc:IdentificationCode> <!-- IBT-159 - Item country of origin -->
+			</cac:OriginCountry>
+			<cac:ClassifiedTaxCategory> <!-- IBG-30 - LINE TAX INFORMATION -->
+				<cbc:ID>S</cbc:ID> <!-- IBT-151 - Invoiced item TAX category code -->
+				<cbc:Percent>10</cbc:Percent> <!-- IBT-152 - Invoiced item TAX rate -->
+				<!-- cbc:PerUnitAmount, IBT-166 - Unit TAX -->
+				<cac:TaxScheme>
+					<cbc:ID>VAT</cbc:ID> <!-- IBT-167 - Tax Scheme --> 
+				</cac:TaxScheme>
+			</cac:ClassifiedTaxCategory>
+		</cac:Item>
+		<cac:Price> <!-- IBG-29 - PRICE DETAILS -->
+			<cbc:PriceAmount currencyID="EUR">500</cbc:PriceAmount> <!-- IBT-146 - Item net price -->
+			<cbc:BaseQuantity unitCode="H87">1</cbc:BaseQuantity> <!-- IBT-149 - Item price base quantity, IBT-150 - Item price base quantity unit of measure code -->
+		</cac:Price>
+	</cac:InvoiceLine>
+</Invoice>

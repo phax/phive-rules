@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Invoice xmlns="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2" xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" xmlns:ccts="urn:un:unece:uncefact:documentation:2" xmlns:ext="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2" xmlns:qdt="urn:oasis:names:specification:ubl:schema:xsd:QualifiedDatatypes-2" xmlns:udt="urn:un:unece:uncefact:data:specification:UnqualifiedDataTypesSchemaModule:2" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+<!-- 
+Japan common commercial invoice, example4-SumInv2
+-->
+
+	<cbc:UBLVersionID>2.1</cbc:UBLVersionID>
+	<cbc:CustomizationID>urn:peppol:pint:billing-1@jp-1</cbc:CustomizationID> 	<!-- IBT-024 - Specification identifier -->
+	<cbc:ProfileID>urn:peppol:bis:billing</cbc:ProfileID> <!-- IBT-023 - Business process type -->
+	<cbc:ID>103</cbc:ID> <!-- IBT-001 - Invoice number -->
+	<cbc:IssueDate>2023-11-01</cbc:IssueDate> <!-- IBT-002 - Invoice issue date -->
+	<cbc:DueDate>2023-11-20</cbc:DueDate> <!-- IBT-009 - Payment due date -->
+	<cbc:InvoiceTypeCode>380</cbc:InvoiceTypeCode> <!-- IBT-003 - Invoice type code -->
+	<cbc:DocumentCurrencyCode>JPY</cbc:DocumentCurrencyCode> <!-- IBT-005 - Invoice currency code -->
+	<cac:InvoicePeriod> <!-- IBG-14 - INVOICING PERIOD -->
+		<cbc:StartDate>2023-10-01</cbc:StartDate> <!-- IBT-073 - Invoicing period start date -->
+		<cbc:EndDate>2023-10-31</cbc:EndDate> <!-- IBT-074 - Invoicing period end date -->
+	</cac:InvoicePeriod>
+	<cac:AdditionalDocumentReference>
+		<cbc:ID>doc1</cbc:ID>  <!-- IBT-122 - Supporting document reference -->
+		<cbc:DocumentDescription>Usage summary</cbc:DocumentDescription> <!-- IBT-123 - Supporting document description -->
+		<cac:Attachment>
+			<cbc:EmbeddedDocumentBinaryObject filename="report.csv" mimeCode="text/csv">aHR0cHM6Ly90ZXN0LXZlZmEuZGlmaS5uby9wZXBwb2xiaXMvcG9hY2MvYmlsbGluZy8zLjAvYmlzLw==</cbc:EmbeddedDocumentBinaryObject> 
+			<!-- IBT-125 - Attached document, IBT-125-1 - Attached document Mime code, IBT-125-2 - Attached document Filename -->
+			<cac:ExternalReference>
+				<cbc:URI>http://www.salescompany.com/summary001.html</cbc:URI> <!-- IBT-124 - External document location -->
+			</cac:ExternalReference>
+		</cac:Attachment>
+	</cac:AdditionalDocumentReference>	
+	<cac:AdditionalDocumentReference>
+		<cbc:ID>doc2</cbc:ID> <!-- IBT-122 - Supporting document reference -->
+		<cbc:DocumentDescription>Usage breakdown</cbc:DocumentDescription> <!-- IBT-123 - Supporting document description -->
+		<cac:Attachment>
+			<cac:ExternalReference>
+				<cbc:URI>http://www.salescompany.com/breakdown001.html</cbc:URI> <!-- IBT-124 - External document location -->
+			</cac:ExternalReference>
+		</cac:Attachment>
+	</cac:AdditionalDocumentReference>
+	<cac:AccountingSupplierParty> <!-- IBG-04 - SELLER -->
+		<cac:Party>
+			<cbc:EndpointID schemeID="0188">1234567890123</cbc:EndpointID> <!-- IBT-034 - Seller electronic address, IBT-034-1 - Scheme identifier -->
+			<cac:PartyIdentification>
+				<cbc:ID schemeID="0147">123456:000123:0147:1</cbc:ID> <!-- IBT-029 Seller identifier, IBT-029-1 Scheme identifier -->
+			</cac:PartyIdentification>
+			<cac:PartyName>
+				<cbc:Name>株式会社 〇〇商事</cbc:Name> <!-- IBT-028 - Seller trading name -->
+			</cac:PartyName>
+			<cac:PostalAddress> <!-- IBG-05 - SELLER POSTAL ADDRESS -->
+				<cbc:StreetName>四谷4-29-X</cbc:StreetName> <!-- IBT-035 - Seller address line 1 -->
+				<cbc:AdditionalStreetName>〇〇商事ビル</cbc:AdditionalStreetName> <!-- IBT-036 - Seller address line 2 -->
+				<cbc:CityName>新宿区</cbc:CityName> <!-- IBT-037 - Seller city -->
+				<cbc:PostalZone>1600044</cbc:PostalZone> <!-- IBT-038 - Seller post code -->
+				<cbc:CountrySubentity>東京都</cbc:CountrySubentity> <!-- IBT-039 - Seller country subdivision -->
+				<cac:Country>
+					<cbc:IdentificationCode>JP</cbc:IdentificationCode> <!-- IBT-040 - Seller country code -->
+				</cac:Country>
+			</cac:PostalAddress>
+			<cac:PartyTaxScheme>
+				<cbc:CompanyID>T1234567890123</cbc:CompanyID> <!-- IBT-031 - Seller TAX identifier -->
+				<cac:TaxScheme>
+					<cbc:ID>VAT</cbc:ID> <!-- IBT-031, qualifier -->
+				</cac:TaxScheme>
+			</cac:PartyTaxScheme>
+			<cac:PartyLegalEntity>
+				<cbc:RegistrationName>株式会社 〇〇商事</cbc:RegistrationName> <!-- IBT-027 - Seller name -->
+				<cbc:CompanyID schemeID="0188">1234567890123</cbc:CompanyID> <!-- IBT-030 - Seller legal registration identifier, IBT-030-1 - Scheme identifier -->
+				<cbc:CompanyLegalForm>Private Limited Company</cbc:CompanyLegalForm> <!-- IBT-033 - Seller additional legal information -->
+			</cac:PartyLegalEntity>
+			<cac:Contact> <!-- IBG-06 - SELLER CONTACT -->
+				<cbc:Name>青木 志郎</cbc:Name> <!-- IBT-041 - Seller contact point -->
+				<cbc:Telephone>03-3xxx-0001</cbc:Telephone> <!-- IBT-042 - Seller contact telephone number -->
+				<cbc:ElectronicMail>shirou_aoki@〇〇co.jp</cbc:ElectronicMail> <!-- IBT-043 - Seller contact email address -->
+			</cac:Contact>
+		</cac:Party>
+	</cac:AccountingSupplierParty>
+	<cac:AccountingCustomerParty> <!-- IBG-07 - BUYER -->
+		<cac:Party>
+			<cbc:EndpointID schemeID="0188">3210987654321</cbc:EndpointID> <!-- IBT-049 - Buyer electronic address, IBT-049-1 - Scheme identifier -->
+			<cac:PartyIdentification>
+				<cbc:ID schemeID="0147">654321:000321:0147:1</cbc:ID> <!-- IBT-046 - Buyer identifier, IBT-046-1 - Scheme identifier -->
+			</cac:PartyIdentification>
+			<cac:PartyName>
+				<cbc:Name>株式会社 〇〇物産</cbc:Name> <!-- IBT-045 - Buyer trading name -->
+			</cac:PartyName>
+			<cac:PostalAddress> <!-- IBG-08 - BUYER POSTAL ADDRESS -->
+				<cbc:StreetName>北区</cbc:StreetName> <!-- IBT-050 - Buyer address line 1 -->
+				<cbc:AdditionalStreetName>北十二条西76-X</cbc:AdditionalStreetName> <!-- IBT-051 - Buyer address line 2 -->
+				<cbc:CityName>札幌市</cbc:CityName> <!-- IBT-052 - Buyer city	 -->
+				<cbc:PostalZone>0010012</cbc:PostalZone> <!-- IBT-053 - Buyer post code -->
+				<cbc:CountrySubentity>北海道</cbc:CountrySubentity> <!-- IBT-054 - Buyer country subdivision -->
+				<cac:Country>
+					<cbc:IdentificationCode>JP</cbc:IdentificationCode> <!-- IBT-055 - Buyer country code -->
+				</cac:Country>
+			</cac:PostalAddress>
+			<cac:PartyTaxScheme>
+            	<cbc:CompanyID>>T3210987654321</cbc:CompanyID> <!-- IBT-048 - Buyer TAX identifier -->
+            	<cac:TaxScheme>
+                	<cbc:ID>VAT</cbc:ID> <!-- IBT-048, qualifier --> 
+            	</cac:TaxScheme>
+        	</cac:PartyTaxScheme>
+			<cac:PartyLegalEntity>
+				<cbc:RegistrationName>株式会社 〇〇物産</cbc:RegistrationName> <!-- IBT-044 - Buyer name -->
+				<cbc:CompanyID schemeID="0147">654321:000321:0147:1</cbc:CompanyID> <!-- IBT-047 - Buyer legal registration identifier, IBT-047-1 - Scheme identifier -->
+			</cac:PartyLegalEntity>
+			<cac:Contact> <!-- IBG-09 - BUYER CONTACT -->
+				<cbc:Name>株式会社 〇〇物産</cbc:Name> <!-- IBT-056 - Buyer contact point -->
+				<cbc:Telephone>011-757-1xxx</cbc:Telephone> <!-- IBT-057 - Buyer contact telephone number -->
+				<cbc:ElectronicMail>purchaser@oobussan.co.jp</cbc:ElectronicMail> <!-- IBT-058 - Buyer contact email address -->
+			</cac:Contact>
+		</cac:Party>
+	</cac:AccountingCustomerParty>
+	<cac:Delivery> <!-- IBG-13 - DELIVERY INFORMATION -->
+		<cac:DeliveryLocation>
+			<cbc:ID schemeID="0147">123456:000123:0147:1</cbc:ID> <!-- IBT-071 - Deliver to location identifier, IBT-071-1 - Scheme identifier -->
+			<cac:Address> <!-- IBG-15 - DELIVER TO ADDRESS -->
+				<cbc:StreetName>北区</cbc:StreetName> <!-- IBT-075 - Deliver to address line 1 -->
+				<cbc:AdditionalStreetName>北十二条西76-X</cbc:AdditionalStreetName> <!-- IBT-076 - Deliver to address line 2 -->
+				<cbc:CityName>札幌市</cbc:CityName> <!-- IBT-077 - Deliver to city -->
+				<cbc:PostalZone>0010012</cbc:PostalZone> <!-- IBT-078 - Deliver to post code -->
+				<cbc:CountrySubentity>北海道</cbc:CountrySubentity> <!-- IBT-079 - Deliver to country subdivision -->
+				<cac:Country>
+					<cbc:IdentificationCode>JP</cbc:IdentificationCode> <!-- IBT-080 - Deliver to country code -->
+				</cac:Country>
+			</cac:Address>
+		</cac:DeliveryLocation>
+		<cac:DeliveryParty>
+			<cac:PartyName>
+				<cbc:Name>株式会社 〇〇物産 札幌支社</cbc:Name> <!-- IBT-070 - Deliver to party name -->
+			</cac:PartyName>
+		</cac:DeliveryParty>
+	</cac:Delivery>
+	<cac:PaymentMeans> <!-- IBG-16 - PAYMENT INSTRUCTIONS -->
+	   	<cbc:PaymentMeansCode name="Credit transfer">30</cbc:PaymentMeansCode> <!-- IBT-081 - Payment means type code, IBT-082 - Payment means text -->
+		<cac:PayeeFinancialAccount> <!-- IBG-17 - CREDIT TRANSFER -->
+        	<cbc:ID>1234:567:1:3242394</cbc:ID> <!-- IBT-084 - Payment account identifier, IBT-084-1 - Scheme identifier -->
+        	<cbc:Name>ｶ)ﾏﾙﾏﾙｼﾖｳｼﾞ</cbc:Name> <!-- IBT-085 - Payment account name -->
+		</cac:PayeeFinancialAccount>
+	</cac:PaymentMeans> 
+	<cac:PaymentTerms> <!-- IBG-33 - INVOICE TERMS -->
+		<cbc:Note>月末締め翌月20日払い, 銀行手数料振込人負担</cbc:Note> <!-- IBT-020 - Payment terms -->
+	</cac:PaymentTerms>
+	<cac:TaxTotal>
+		<cbc:TaxAmount currencyID="JPY">26000</cbc:TaxAmount> <!-- IBT-110 - Invoice total TAX amount -->
+		<cac:TaxSubtotal> <!-- IBG-23 - TAX BREAKDOWN -->
+			<cbc:TaxableAmount currencyID="JPY">260000</cbc:TaxableAmount> <!-- IBT-116 - TAX category taxable amount -->
+			<cbc:TaxAmount currencyID="JPY">26000</cbc:TaxAmount> <!-- IBT-117 - TAX category tax amount -->
+			<cac:TaxCategory>
+				<cbc:ID>S</cbc:ID> <!-- IBT-118 - TAX category code -->
+				<cbc:Percent>10</cbc:Percent> <!-- IBT-119 - TAX category rate -->
+				<cac:TaxScheme>
+					<cbc:ID>VAT</cbc:ID> <!-- IBT-118, qualifier -->
+				</cac:TaxScheme>
+			</cac:TaxCategory>
+		</cac:TaxSubtotal>
+		<cac:TaxSubtotal> <!-- IBG-23 - TAX BREAKDOWN -->
+			<cbc:TaxableAmount currencyID="JPY">3490</cbc:TaxableAmount> <!-- IBT-116 - TAX category taxable amount -->
+			<cbc:TaxAmount currencyID="JPY">0</cbc:TaxAmount> <!-- IBT-117 - TAX category tax amount -->
+			<cac:TaxCategory>
+				<cbc:ID>E</cbc:ID> <!-- IBT-118 - TAX category code -->
+				<cbc:Percent>0</cbc:Percent> <!-- IBT-119 - TAX category rate -->
+				<cac:TaxScheme>
+					<cbc:ID>VAT</cbc:ID> <!-- IBT-118, qualifier -->
+				</cac:TaxScheme>
+			</cac:TaxCategory>
+		</cac:TaxSubtotal>
+	</cac:TaxTotal>
+	<cac:LegalMonetaryTotal> <!-- IBG-22 - DOCUMENT TOTALS -->
+		<cbc:LineExtensionAmount currencyID="JPY">263490</cbc:LineExtensionAmount> <!-- IBT-106 - Sum of Invoice line net amount -->
+		<cbc:TaxExclusiveAmount currencyID="JPY">263490</cbc:TaxExclusiveAmount> <!-- IBT-109 - Invoice total amount without TAX -->
+		<cbc:TaxInclusiveAmount currencyID="JPY">289490</cbc:TaxInclusiveAmount> <!-- IBT-112 - Invoice total amount with TAX -->
+		<cbc:AllowanceTotalAmount currencyID="JPY">0</cbc:AllowanceTotalAmount> <!-- IBT-107 - Sum of allowances on document level -->
+		<cbc:ChargeTotalAmount currencyID="JPY">0</cbc:ChargeTotalAmount> <!-- IBT-108 - Sum of charges on document level -->
+		<cbc:PrepaidAmount currencyID="JPY">0</cbc:PrepaidAmount> <!-- IBT-113 - Paid amount -->
+		<cbc:PayableRoundingAmount currencyID="JPY">0</cbc:PayableRoundingAmount> <!-- IBT-114 - Rounding amount -->
+		<cbc:PayableAmount currencyID="JPY">289490</cbc:PayableAmount> <!-- IBT-115 - Amount due for payment -->
+	</cac:LegalMonetaryTotal>
+	<cac:InvoiceLine> <!-- IBG-25 - INVOICE LINE -->
+		<cbc:ID>1</cbc:ID> <!-- IBT-126 - Invoice line identifier -->
+		<cbc:InvoicedQuantity unitCode="H87">1</cbc:InvoicedQuantity> <!-- IBT-129 - Invoiced quantity, IBT-130 - Invoiced quantity unit of measure code -->
+		<cbc:LineExtensionAmount currencyID="JPY">257500</cbc:LineExtensionAmount> <!-- IBT-131 - Invoice line net amount -->
+		<cac:InvoicePeriod> <!-- IBG-26 - INVOICE LINE PERIOD -->
+			<cbc:StartDate>2023-10-16</cbc:StartDate> <!-- IBT-134 - Invoice line period start date -->
+			<cbc:EndDate>2023-10-16</cbc:EndDate> <!-- IBT-135 - Invoice line period end date -->
+		</cac:InvoicePeriod>
+		<cac:Item> <!-- IBG-31 - ITEM INFORMATION -->
+			<cbc:Name>D001-1</cbc:Name> <!-- IBT-153 - Item name -->
+			<cac:ClassifiedTaxCategory> <!-- IBG-30 - LINE TAX INFORMATION -->
+				<cbc:ID>S</cbc:ID> <!-- IBT-151 - Invoiced item TAX category code -->
+				<cbc:Percent>10</cbc:Percent> <!-- IBT-152 - Invoiced item TAX rate -->
+				<cac:TaxScheme>
+					<cbc:ID>VAT</cbc:ID> <!-- IBT-167 - Tax Scheme --> 
+				</cac:TaxScheme>
+			</cac:ClassifiedTaxCategory>
+		</cac:Item>
+		<cac:Price> <!-- IBG-29 - PRICE DETAILS -->
+			<cbc:PriceAmount currencyID="JPY">257500</cbc:PriceAmount> <!-- IBT-146 - Item net price -->
+			<cbc:BaseQuantity unitCode="H87">1</cbc:BaseQuantity> <!-- IBT-149 - Item price base quantity, IBT-150 - Item price base quantity unit of measure code -->
+		</cac:Price>
+	</cac:InvoiceLine>
+	<cac:InvoiceLine> <!-- IBG-25 - INVOICE LINE -->
+		<cbc:ID>2</cbc:ID> <!-- IBT-126 - Invoice line identifier -->
+		<cbc:InvoicedQuantity unitCode="H87">1</cbc:InvoicedQuantity> <!-- IBT-130 - Invoiced quantity unit of measure code, IBT-129 - Invoiced quantity -->
+		<cbc:LineExtensionAmount currencyID="JPY">2500</cbc:LineExtensionAmount> <!-- IBT-131 - Invoice line net amount -->
+		<cac:InvoicePeriod> <!-- IBG-26 - INVOICE LINE PERIOD -->
+			<cbc:StartDate>2023-10-18</cbc:StartDate> <!-- IBT-134 - Invoice line period start date -->
+			<cbc:EndDate>2023-10-18</cbc:EndDate> <!-- IBT-135 - Invoice line period end date -->
+		</cac:InvoicePeriod>
+		<cac:Item> <!-- IBG-31 - ITEM INFORMATION -->
+			<cbc:Name>D001-2</cbc:Name> <!-- IBT-153 - Item name -->
+			<cac:ClassifiedTaxCategory> <!-- IBG-30 - LINE TAX INFORMATION -->
+				<cbc:ID>S</cbc:ID> <!-- IBT-151 - Invoiced item TAX category code -->
+				<cbc:Percent>10</cbc:Percent> <!-- IBT-152 - Invoiced item TAX rate -->
+				<!-- cbc:PerUnitAmount, IBT-166 - Unit TAX -->
+				<cac:TaxScheme>
+					<cbc:ID>VAT</cbc:ID> <!-- IBT-167 - Tax Scheme -->
+				</cac:TaxScheme>
+			</cac:ClassifiedTaxCategory> <!-- IBG-32 - ITEM ATTRIBUTES -->
+		</cac:Item>
+		<cac:Price> <!-- IBG-29 - PRICE DETAILS -->
+			<cbc:PriceAmount currencyID="JPY">2500</cbc:PriceAmount> <!-- IBT-146 - Item net price -->
+			<cbc:BaseQuantity unitCode="H87">1</cbc:BaseQuantity> <!-- IBT-149 - Item price base quantity, IBT-150 - Item price base quantity unit of measure code -->
+		</cac:Price>
+	</cac:InvoiceLine>
+		<cac:InvoiceLine> <!-- IBG-25 - INVOICE LINE -->
+		<cbc:ID>3</cbc:ID> <!-- IBT-126 - Invoice line identifier -->
+		<cbc:InvoicedQuantity unitCode="H87">1</cbc:InvoicedQuantity> <!-- IBT-130 - Invoiced quantity unit of measure code, IBT-129 - Invoiced quantity -->
+		<cbc:LineExtensionAmount currencyID="JPY">3490</cbc:LineExtensionAmount> <!-- IBT-131 - Invoice line net amount -->
+		<cac:InvoicePeriod> <!-- IBG-26 - INVOICE LINE PERIOD -->
+			<cbc:StartDate>2023-10-20</cbc:StartDate> <!-- IBT-134 - Invoice line period start date -->
+			<cbc:EndDate>2023-10-20</cbc:EndDate> <!-- IBT-135 - Invoice line period end date -->
+		</cac:InvoicePeriod>
+		<cac:Item> <!-- IBG-31 - ITEM INFORMATION -->
+			<cbc:Name>D001-3</cbc:Name> <!-- IBT-153 - Item name -->
+			<cac:ClassifiedTaxCategory> <!-- IBG-30 - LINE TAX INFORMATION -->
+				<cbc:ID>E</cbc:ID> <!-- IBT-151 - Invoiced item TAX category code -->
+				<cbc:Percent>0</cbc:Percent> <!-- IBT-152 - Invoiced item TAX rate -->
+				<cac:TaxScheme>
+					<cbc:ID>VAT</cbc:ID> <!-- IBT-167 - Tax Scheme -->
+				</cac:TaxScheme>
+			</cac:ClassifiedTaxCategory>
+		</cac:Item>
+		<cac:Price> <!-- IBG-29 - PRICE DETAILS -->
+			<cbc:PriceAmount currencyID="JPY">3490</cbc:PriceAmount> <!-- IBT-146 - Item net price -->
+			<cbc:BaseQuantity unitCode="H87">1</cbc:BaseQuantity> <!-- IBT-149 - Item price base quantity, IBT-150 - Item price base quantity unit of measure code -->
+		</cac:Price>
+	</cac:InvoiceLine>
+</Invoice>

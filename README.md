@@ -203,6 +203,7 @@ I hope that with the introduction of PINT, the versioning problem will be solved
 * v3.2.7 - work in progress
     * Deprecated Peppol BIS Billing 2024.5 release, as 2024.11 release is already mandatory
     * Added PINT AUNZ 1.1.0 rules and deprecated v1.0.1 rules
+    * Added PINT JP 1.1.0 rules and deprecated the old rules
     * Added PINT MY 1.1.0 rules and deprecated v1.0.0 rules
 * v3.2.6 - 2025-02-11
     * Added Peppol 2024-11 Hotfix Schematron rules (replacing the previous ones)

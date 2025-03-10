@@ -185,8 +185,8 @@
               <goal>convert</goal>
             </goals>
             <configuration>
-              <schematronDirectory>src/test/resources/external/rule-source/pint-jp/1.0.3</schematronDirectory>
-              <xsltDirectory>src/main/resources/external/schematron/pint-jp/1.0.3/xslt</xsltDirectory>
+              <schematronDirectory>src/test/resources/external/rule-source/pint-jp/1.1.0</schematronDirectory>
+              <xsltDirectory>src/main/resources/external/schematron/pint-jp/1.1.0/xslt</xsltDirectory>
             </configuration>
           </execution>
           -->
@@ -197,8 +197,8 @@
               <goal>convert</goal>
             </goals>
             <configuration>
-              <schematronDirectory>src/test/resources/external/rule-source/pint-jp-ntr/1.0.1</schematronDirectory>
-              <xsltDirectory>src/main/resources/external/schematron/pint-jp-ntr/1.0.1/xslt</xsltDirectory>
+              <schematronDirectory>src/test/resources/external/rule-source/pint-jp-ntr/1.1.0</schematronDirectory>
+              <xsltDirectory>src/main/resources/external/schematron/pint-jp-ntr/1.1.0/xslt</xsltDirectory>
             </configuration>
           </execution>
           -->
@@ -209,8 +209,8 @@
               <goal>convert</goal>
             </goals>
             <configuration>
-              <schematronDirectory>src/test/resources/external/rule-source/pint-jp-sb/1.0.1</schematronDirectory>
-              <xsltDirectory>src/main/resources/external/schematron/pint-jp-sb/1.0.1/xslt</xsltDirectory>
+              <schematronDirectory>src/test/resources/external/rule-source/pint-jp-sb/1.1.0</schematronDirectory>
+              <xsltDirectory>src/main/resources/external/schematron/pint-jp-sb/1.1.0/xslt</xsltDirectory>
             </configuration>
           </execution>
           -->
