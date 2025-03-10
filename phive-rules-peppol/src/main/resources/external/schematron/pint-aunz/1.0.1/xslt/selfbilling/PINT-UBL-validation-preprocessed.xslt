@@ -233,6 +233,9 @@
         <xsl:attribute name="document">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
+        <xsl:attribute name="documents">
+          <xsl:value-of select="document-uri(/)" />
+        </xsl:attribute>
         <xsl:attribute name="id">UBL-model</xsl:attribute>
         <xsl:attribute name="name">UBL-model</xsl:attribute>
         <xsl:apply-templates />
@@ -240,6 +243,9 @@
       <xsl:apply-templates mode="M22" select="/" />
       <svrl:active-pattern>
         <xsl:attribute name="document">
+          <xsl:value-of select="document-uri(/)" />
+        </xsl:attribute>
+        <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
         <xsl:attribute name="id">Codesmodel</xsl:attribute>
@@ -2861,15 +2867,15 @@
 
 		<!--ASSERT -->
 <xsl:choose>
-      <xsl:when test="(self::cbc:InvoiceTypeCode and ((not(contains(normalize-space(.), ' ')) and contains(' 80 82 84 380 383 386 388 393 395 575 623 780 71 102 218 219 331 382 480 553 817 870 875 876 877 ', concat(' ', normalize-space(.), ' '))))) or (self::cbc:CreditNoteTypeCode and ((not(contains(normalize-space(.), ' ')) and contains(' 81 83 381 396 532 ', concat(' ', normalize-space(.), ' ')))))" />
+      <xsl:when test="(self::cbc:InvoiceTypeCode and ((not(contains(normalize-space(.), ' ')) and contains(' 389 ', concat(' ', normalize-space(.), ' '))))) or (self::cbc:CreditNoteTypeCode and ((not(contains(normalize-space(.), ' ')) and contains(' 261 ', concat(' ', normalize-space(.), ' ')))))" />
       <xsl:otherwise>
-        <svrl:failed-assert test="(self::cbc:InvoiceTypeCode and ((not(contains(normalize-space(.), ' ')) and contains(' 80 82 84 380 383 386 388 393 395 575 623 780 71 102 218 219 331 382 480 553 817 870 875 876 877 ', concat(' ', normalize-space(.), ' '))))) or (self::cbc:CreditNoteTypeCode and ((not(contains(normalize-space(.), ' ')) and contains(' 81 83 381 396 532 ', concat(' ', normalize-space(.), ' ')))))">
-          <xsl:attribute name="id">ibr-cl-01</xsl:attribute>
+        <svrl:failed-assert test="(self::cbc:InvoiceTypeCode and ((not(contains(normalize-space(.), ' ')) and contains(' 389 ', concat(' ', normalize-space(.), ' '))))) or (self::cbc:CreditNoteTypeCode and ((not(contains(normalize-space(.), ' ')) and contains(' 261 ', concat(' ', normalize-space(.), ' ')))))">
+          <xsl:attribute name="id">ibr-cl-01-aunz-sb</xsl:attribute>
           <xsl:attribute name="flag">fatal</xsl:attribute>
           <xsl:attribute name="location">
             <xsl:apply-templates mode="schematron-select-full-path" select="." />
           </xsl:attribute>
-          <svrl:text>[ibr-cl-01]-The document type code  (ibt-003) MUST be coded by the invoice and credit note related code lists of UNTDID 1001.</svrl:text>
+          <svrl:text>[ibr-cl-01-aunz-sb]-The document type code (ibt-003) MUST be coded by the self-billed invoice and credit note related code lists of UNTDID 1001.</svrl:text>
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>

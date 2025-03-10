@@ -178,6 +178,9 @@
         <xsl:attribute name="document">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
+        <xsl:attribute name="documents">
+          <xsl:value-of select="document-uri(/)" />
+        </xsl:attribute>
         <xsl:attribute name="id">UBL-modelaligned</xsl:attribute>
         <xsl:attribute name="name">UBL-modelaligned</xsl:attribute>
         <xsl:apply-templates />
@@ -185,6 +188,9 @@
       <xsl:apply-templates mode="M14" select="/" />
       <svrl:active-pattern>
         <xsl:attribute name="document">
+          <xsl:value-of select="document-uri(/)" />
+        </xsl:attribute>
+        <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
         <xsl:attribute name="id">Codesmodelaligned</xsl:attribute>
