@@ -88,8 +88,8 @@ public final class PeppolValidationBisAUNZ
     final MapBasedNamespaceContext aNSCtxCreditNote = PhiveRulesUBLHelper.createUBL21NSContext (UBL21Marshaller.creditNote ()
                                                                                                                .getRootElementNamespaceURI ());
 
-    // final boolean bDeprecated = true;
-    final boolean bNotDeprecated = false;
+    final boolean bDeprecated = true;
+    final boolean bNotDeprecated = !bDeprecated;
 
     final String BASE_PATH = "external/schematron/peppol-aunz/";
 

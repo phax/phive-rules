@@ -76,9 +76,8 @@ public final class PeppolValidationBisSG
     final MapBasedNamespaceContext aNSCtxCreditNote = PhiveRulesUBLHelper.createUBL21NSContext (UBL21Marshaller.creditNote ()
                                                                                                                .getRootElementNamespaceURI ());
 
-    @SuppressWarnings ("unused")
     final boolean bDeprecated = true;
-    final boolean bNotDeprecated = false;
+    final boolean bNotDeprecated = !bDeprecated;
 
     final String BASE_PATH = "external/schematron/peppol-sg/";
 

@@ -66,7 +66,7 @@ public final class PeppolValidationDirectory
     ValueEnforcer.notNull (aRegistry, "Registry");
 
     final boolean bDeprecated = true;
-    final boolean bNotDeprecated = false;
+    final boolean bNotDeprecated = !bDeprecated;
 
     final String BASE_PATH = "external/schemas/";
 

@@ -86,7 +86,7 @@ public final class PeppolValidationPintJP_SB
     final String BASE_PATH = "external/schematron/pint-jp-sb/";
 
     final boolean bDeprecated = true;
-    final boolean bNotDeprecated = false;
+    final boolean bNotDeprecated = !bDeprecated;
 
     // 1.0.1
     {

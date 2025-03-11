@@ -85,7 +85,7 @@ public final class PeppolValidationPintSG
                                                                                                                .getRootElementNamespaceURI ());
 
     final boolean bDeprecated = true;
-    final boolean bNotDeprecated = false;
+    final boolean bNotDeprecated = !bDeprecated;
 
     final String BASE_PATH = "external/schematron/pint-sg/";
 

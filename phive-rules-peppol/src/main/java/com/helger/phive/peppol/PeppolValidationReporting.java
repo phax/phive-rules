@@ -74,7 +74,7 @@ public final class PeppolValidationReporting
     ValueEnforcer.notNull (aRegistry, "Registry");
 
     final boolean bDeprecated = true;
-    final boolean bNotDeprecated = false;
+    final boolean bNotDeprecated = !bDeprecated;
 
     final String BASE_PATH_XSD = "external/schemas/";
     final String BASE_PATH_SCH = "external/schematron/reporting/";
