@@ -30,9 +30,11 @@ import com.helger.commons.io.resource.IReadableResource;
 import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.phive.api.executorset.ValidationExecutorSetRegistry;
 import com.helger.phive.api.mock.PhiveTestFile;
+import com.helger.phive.en16931.EN16931Validation;
 import com.helger.phive.peppol.PeppolValidation;
 import com.helger.phive.peppol.PeppolValidation2024_05;
 import com.helger.phive.peppol.PeppolValidation2024_11;
+import com.helger.phive.peppol.PeppolValidation2025_03;
 import com.helger.phive.peppol.PeppolValidationBisAUNZ;
 import com.helger.phive.peppol.PeppolValidationBisSG;
 import com.helger.phive.peppol.PeppolValidationDirectory;
@@ -52,6 +54,7 @@ public final class CTestFiles
   public static final ValidationExecutorSetRegistry <IValidationSourceXML> VES_REGISTRY = new ValidationExecutorSetRegistry <> ();
   static
   {
+    EN16931Validation.initEN16931 (VES_REGISTRY);
     PeppolValidation.initStandard (VES_REGISTRY);
   }
 
@@ -114,15 +117,20 @@ public final class CTestFiles
                                                             PeppolValidation2024_11.VID_OPENPEPPOL_ORDER_CANCELLATION_V3,
                                                             PeppolValidation2024_11.VID_OPENPEPPOL_ORDER_RESPONSE_ADVANCED_V3,
 
+                                                            PeppolValidation2025_03.VID_OPENPEPPOL_INVOICE_SELF_BILLING_UBL_V3,
+                                                            PeppolValidation2025_03.VID_OPENPEPPOL_CREDIT_NOTE_SELF_BILLING_UBL_V3,
+
                                                             /*
-                                                             * OpenPeppol Directory
+                                                             * OpenPeppol
+                                                             * Directory
                                                              */
                                                             PeppolValidationDirectory.VID_OPENPEPPOL_BUSINESS_CARD_V1,
                                                             PeppolValidationDirectory.VID_OPENPEPPOL_BUSINESS_CARD_V2,
                                                             PeppolValidationDirectory.VID_OPENPEPPOL_BUSINESS_CARD_V3,
 
                                                             /*
-                                                             * OpenPeppol Reporting
+                                                             * OpenPeppol
+                                                             * Reporting
                                                              */
                                                             PeppolValidationReporting.VID_OPENPEPPOL_EUSR_V114,
                                                             PeppolValidationReporting.VID_OPENPEPPOL_EUSR_V115,
@@ -158,7 +166,8 @@ public final class CTestFiles
                                                             PeppolValidationPintJP_NTR.VID_OPENPEPPOL_JP_PINT_NTR_CREDIT_NOTE_1_1_0,
 
                                                             /*
-                                                             * PINT Japan Self Billing
+                                                             * PINT Japan Self
+                                                             * Billing
                                                              */
                                                             PeppolValidationPintJP_SB.VID_OPENPEPPOL_JP_PINT_SB_INVOICE_1_0_1,
                                                             PeppolValidationPintJP_SB.VID_OPENPEPPOL_JP_PINT_SB_CREDIT_NOTE_1_0_1,
@@ -506,6 +515,26 @@ public final class CTestFiles
         return new CommonsArrayList <> (new FileSystemResource (sPrefix + "OrderCancellation_Example.xml"));
       if (aVESID.equals (PeppolValidation2024_11.VID_OPENPEPPOL_ORDER_RESPONSE_ADVANCED_V3))
         return new CommonsArrayList <> (new FileSystemResource (sPrefix + "OrderResponseAdvanced_Example.xml"));
+    }
+
+    // 2025-03
+    {
+      final String sPrefix = sPrefix0 + "openpeppol/2025.3/";
+      if (aVESID.equals (PeppolValidation2025_03.VID_OPENPEPPOL_INVOICE_SELF_BILLING_UBL_V3))
+      {
+        return new CommonsArrayList <> (new FileSystemResource (sPrefix + "SB-Allowance-example.xml"),
+                                        new FileSystemResource (sPrefix + "SB-base-example.xml"),
+                                        new FileSystemResource (sPrefix + "SB-base-negative-inv-correction.xml"),
+                                        new FileSystemResource (sPrefix + "SB-sales-order-example.xml"),
+                                        new FileSystemResource (sPrefix + "SB-vat-category-E.xml"),
+                                        new FileSystemResource (sPrefix + "SB-vat-category-O.xml"),
+                                        new FileSystemResource (sPrefix + "SB-vat-category-S.xml"),
+                                        new FileSystemResource (sPrefix + "SB-vat-category-Z.xml"));
+      }
+      if (aVESID.equals (PeppolValidation2025_03.VID_OPENPEPPOL_CREDIT_NOTE_SELF_BILLING_UBL_V3))
+      {
+        return new CommonsArrayList <> (new FileSystemResource (sPrefix + "SB-base-creditnote-correction.xml"));
+      }
     }
 
     /* Peppol Directory BusinessCard */
