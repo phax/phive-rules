@@ -207,8 +207,9 @@ I hope that with the introduction of PINT, the versioning problem will be solved
   
 # News and noteworthy
 
-* v3.2.8 - work in progress
+* v3.2.8 - 2025-03-19
     * Added Peppol BIS Self-Billing 2025.3 validation rules
+    * Added OIOUBL 1.15.1 rules
 * v3.2.7 - 2025-03-10
     * Deprecated Peppol BIS Billing 2024.5 release, as 2024.11 release is already mandatory
     * Added Peppol PINT AUNZ 1.1.0 rules and deprecated v1.0.1 rules
