@@ -526,7 +526,7 @@ public final class CTestFiles
                                         new FileSystemResource (sPrefix + "SB-sales-order-example.xml"),
                                         new FileSystemResource (sPrefix + "SB-vat-category-E.xml"),
                                         new FileSystemResource (sPrefix + "SB-vat-category-O.xml"),
-                                        new FileSystemResource (sPrefix + "SB-vat-category-S.xml"),
+                                        new FileSystemResource (sPrefix + "SB-Vat-category-S.xml"),
                                         new FileSystemResource (sPrefix + "SB-vat-category-Z.xml"));
       }
       if (aVESID.equals (PeppolValidation2025_03.VID_OPENPEPPOL_CREDIT_NOTE_SELF_BILLING_UBL_V3))
