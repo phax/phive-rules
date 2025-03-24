@@ -121,16 +121,14 @@ public final class CTestFiles
                                                             PeppolValidation2025_03.VID_OPENPEPPOL_CREDIT_NOTE_SELF_BILLING_UBL_V3,
 
                                                             /*
-                                                             * OpenPeppol
-                                                             * Directory
+                                                             * OpenPeppol Directory
                                                              */
                                                             PeppolValidationDirectory.VID_OPENPEPPOL_BUSINESS_CARD_V1,
                                                             PeppolValidationDirectory.VID_OPENPEPPOL_BUSINESS_CARD_V2,
                                                             PeppolValidationDirectory.VID_OPENPEPPOL_BUSINESS_CARD_V3,
 
                                                             /*
-                                                             * OpenPeppol
-                                                             * Reporting
+                                                             * OpenPeppol Reporting
                                                              */
                                                             PeppolValidationReporting.VID_OPENPEPPOL_EUSR_V114,
                                                             PeppolValidationReporting.VID_OPENPEPPOL_EUSR_V115,
@@ -166,8 +164,7 @@ public final class CTestFiles
                                                             PeppolValidationPintJP_NTR.VID_OPENPEPPOL_JP_PINT_NTR_CREDIT_NOTE_1_1_0,
 
                                                             /*
-                                                             * PINT Japan Self
-                                                             * Billing
+                                                             * PINT Japan Self Billing
                                                              */
                                                             PeppolValidationPintJP_SB.VID_OPENPEPPOL_JP_PINT_SB_INVOICE_1_0_1,
                                                             PeppolValidationPintJP_SB.VID_OPENPEPPOL_JP_PINT_SB_CREDIT_NOTE_1_0_1,
@@ -439,6 +436,7 @@ public final class CTestFiles
       if (aVESID.equals (PeppolValidation2024_11.VID_OPENPEPPOL_INVOICE_UBL_V3))
         return new CommonsArrayList <> (new FileSystemResource (sPrefix + "billing/Allowance-example.xml"),
                                         new FileSystemResource (sPrefix + "billing/base-example.xml"),
+                                        new FileSystemResource (sPrefix + "billing/base-example-de.xml"),
                                         new FileSystemResource (sPrefix + "billing/base-negative-inv-correction.xml"),
                                         new FileSystemResource (sPrefix + "billing/vat-category-E.xml"),
                                         new FileSystemResource (sPrefix + "billing/vat-category-O.xml"),
