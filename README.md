@@ -207,6 +207,8 @@ I hope that with the introduction of PINT, the versioning problem will be solved
   
 # News and noteworthy
 
+* v3.2.9 - work in progress
+    * Updated to XRechnung 3.0.2 Schematron Rules 2.3.0
 * v3.2.8 - 2025-03-19
     * Added Peppol BIS Self-Billing 2025.3 validation rules
     * Added OIOUBL 1.15.1 rules
