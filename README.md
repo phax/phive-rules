@@ -207,7 +207,7 @@ I hope that with the introduction of PINT, the versioning problem will be solved
   
 # News and noteworthy
 
-* v3.2.9 - work in progress
+* v3.2.9 - 2025-03-27
     * Updated to XRechnung 3.0.2 Schematron Rules 2.3.0
     * Added Peppol BIS Singapore 2024.12 (aka BIS 3.0.14). See [#28](https://github.com/phax/phive-rules/issues/28) - thx @xiongnan2603
     * Deprecated Peppol BIS Singapore 2023.7 and 2023.12
