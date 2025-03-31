@@ -38,6 +38,7 @@ import com.helger.phive.peppol.PeppolValidation2025_03;
 import com.helger.phive.peppol.PeppolValidationBisAUNZ;
 import com.helger.phive.peppol.PeppolValidationBisSG;
 import com.helger.phive.peppol.PeppolValidationDirectory;
+import com.helger.phive.peppol.PeppolValidationPintAE;
 import com.helger.phive.peppol.PeppolValidationPintAUNZ;
 import com.helger.phive.peppol.PeppolValidationPintJP;
 import com.helger.phive.peppol.PeppolValidationPintJP_NTR;
@@ -138,6 +139,12 @@ public final class CTestFiles
 
                                                             PeppolValidationReporting.VID_OPENPEPPOL_TSR_V104,
                                                             PeppolValidationReporting.VID_OPENPEPPOL_TSR_V105,
+
+                                                            /* PINT AE */
+                                                            PeppolValidationPintAE.VID_OPENPEPPOL_AE_PINT_INVOICE_0_9_0,
+                                                            PeppolValidationPintAE.VID_OPENPEPPOL_AE_PINT_CREDIT_NOTE_0_9_0,
+                                                            PeppolValidationPintAE.VID_OPENPEPPOL_AE_PINT_SB_INVOICE_0_9_0,
+                                                            PeppolValidationPintAE.VID_OPENPEPPOL_AE_PINT_SB_CREDIT_NOTE_0_9_0,
 
                                                             /* PINT A-NZ */
                                                             PeppolValidationPintAUNZ.VID_OPENPEPPOL_AUNZ_PINT_UBL_INVOICE_1_0_1,
@@ -640,6 +647,44 @@ public final class CTestFiles
                                       new FileSystemResource (sPrefix + "transaction-statistics-3.xml"),
                                       new FileSystemResource (sPrefix + "transaction-statistics-4.xml"),
                                       new FileSystemResource (sPrefix + "transaction-statistics-minimal.xml"));
+    }
+
+    /* PINT AE */
+    // 0.9.0
+    if (aVESID.equals (PeppolValidationPintAE.VID_OPENPEPPOL_AE_PINT_INVOICE_0_9_0))
+    {
+      final String sPrefix = sPrefix0 + "pint-ae/0.9.0/billing/inv/";
+      return new CommonsArrayList <> (new FileSystemResource (sPrefix + "Commercial invoice.xml"),
+                                      new FileSystemResource (sPrefix + "Continuous supplies.xml"),
+                                      new FileSystemResource (sPrefix + "Deemed supply.xml"),
+                                      new FileSystemResource (sPrefix + "Disclosed agent billing.xml"),
+                                      new FileSystemResource (sPrefix + "Exports.xml"),
+                                      new FileSystemResource (sPrefix + "Margin scheme.xml"),
+                                      new FileSystemResource (sPrefix + "Standard invoice.xml"),
+                                      new FileSystemResource (sPrefix + "Standard invoice - Extensive.xml"),
+                                      new FileSystemResource (sPrefix + "Standard invoice Mandatory fields.xml"),
+                                      new FileSystemResource (sPrefix + "Standard tax invoice.xml"),
+                                      new FileSystemResource (sPrefix + "Summary tax invoice.xml"),
+                                      new FileSystemResource (sPrefix + "Supply involving free trade zone.xml"),
+                                      new FileSystemResource (sPrefix + "Supply through e-commerce.xml"),
+                                      new FileSystemResource (sPrefix + "Supply under Reverse charge mechanism.xml"),
+                                      new FileSystemResource (sPrefix + "Zero rated supplies.xml"));
+    }
+    if (aVESID.equals (PeppolValidationPintAE.VID_OPENPEPPOL_AE_PINT_CREDIT_NOTE_0_9_0))
+    {
+      final String sPrefix = sPrefix0 + "pint-ae/0.9.0/billing/cn/";
+      return new CommonsArrayList <> (new FileSystemResource (sPrefix + "Disclosed agent billing tax credit note.xml"),
+                                      new FileSystemResource (sPrefix + "Standard tax credit Note.xml"));
+    }
+    if (aVESID.equals (PeppolValidationPintAE.VID_OPENPEPPOL_AE_PINT_SB_INVOICE_0_9_0))
+    {
+      final String sPrefix = sPrefix0 + "pint-ae/0.9.0/selfbilling/inv/";
+      return new CommonsArrayList <> (new FileSystemResource (sPrefix + "Self Billing.xml"));
+    }
+    if (aVESID.equals (PeppolValidationPintAE.VID_OPENPEPPOL_AE_PINT_SB_CREDIT_NOTE_0_9_0))
+    {
+      final String sPrefix = sPrefix0 + "pint-ae/0.9.0/selfbilling/cn/";
+      return new CommonsArrayList <> (new FileSystemResource (sPrefix + "Self billing tax credit note.xml"));
     }
 
     /* PINT AUNZ */

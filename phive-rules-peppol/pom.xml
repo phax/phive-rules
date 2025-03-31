@@ -172,6 +172,18 @@
           -->
           <!-- 
           <execution>
+            <id>pint-ae</id>
+            <goals>
+              <goal>convert</goal>
+            </goals>
+            <configuration>
+              <schematronDirectory>src/test/resources/external/rule-source/pint-ae/0.9.0</schematronDirectory>
+              <xsltDirectory>src/main/resources/external/schematron/pint-ae/0.9.0/xslt</xsltDirectory>
+            </configuration>
+          </execution>
+          -->
+          <!-- 
+          <execution>
             <id>pint-aunz</id>
             <goals>
               <goal>convert</goal>

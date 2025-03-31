@@ -207,6 +207,8 @@ I hope that with the introduction of PINT, the versioning problem will be solved
   
 # News and noteworthy
 
+* v3.2.10 - 2025-03-31
+    * Added Peppol PINT AE 0.9.0 (public preview version)
 * v3.2.9 - 2025-03-27
     * Updated to XRechnung 3.0.2 Schematron Rules 2.3.0
     * Added Peppol BIS Singapore 2024.12 (aka BIS 3.0.14). See [#28](https://github.com/phax/phive-rules/issues/28) - thx @xiongnan2603

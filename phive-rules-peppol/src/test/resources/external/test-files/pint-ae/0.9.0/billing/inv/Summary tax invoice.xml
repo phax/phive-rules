@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+            Copyright (C) 2020-2023 OpenPEPPOL AISBL
+
+            Licensed under the Apache License, Version 2.0 (the "License");
+            you may not use this file except in compliance with the License.
+            You may obtain a copy of the License at
+
+                    http://www.apache.org/licenses/LICENSE-2.0
+
+            Unless required by applicable law or agreed to in writing, software
+            distributed under the License is distributed on an "AS IS" BASIS,
+            WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+            See the License for the specific language governing permissions and
+            limitations under the License.
+
+-->
+<Invoice xmlns="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2"
+	xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+	xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2 http://docs.oasis-open.org/ubl/os-UBL-2.1/xsd/maindoc/UBL-Invoice-2.1.xsd">
+	<cbc:CustomizationID>urn:peppol:pint:billing-1@ae-1</cbc:CustomizationID> <!--  IBT-024 --> 
+	<cbc:ProfileID>urn:peppol:bis:billing</cbc:ProfileID> <!--  IBT-023 -->
+	<cbc:ProfileExecutionID>00010000</cbc:ProfileExecutionID>
+	<cbc:ID>AE-010TEST</cbc:ID>
+	<cbc:UUID>108f8b54-9d31-461f-b9be-1de67837f4d4</cbc:UUID>
+	<cbc:IssueDate>2025-02-07</cbc:IssueDate>
+	<cbc:DueDate>2025-02-21</cbc:DueDate>
+	<cbc:InvoiceTypeCode>380</cbc:InvoiceTypeCode>
+	<cbc:Note>Tax invoice</cbc:Note>	
+	<cbc:DocumentCurrencyCode>AED</cbc:DocumentCurrencyCode>
+	<cac:InvoicePeriod>
+		<cbc:StartDate>2025-01-31</cbc:StartDate>
+		<cbc:EndDate>2025-02-07</cbc:EndDate>
+	</cac:InvoicePeriod>
+	<cac:AdditionalDocumentReference>
+		<cbc:ID>DC</cbc:ID>
+		<cac:Attachment>
+		<cac:ExternalReference>
+		<cbc:URI>https://www.site.ae/deliverychallans.pdf</cbc:URI>
+		</cac:ExternalReference>
+		</cac:Attachment>
+		</cac:AdditionalDocumentReference>
+		<cac:AdditionalDocumentReference>
+		<cbc:ID>Delivery Challans</cbc:ID>
+		<cac:Attachment>
+			<cbc:EmbeddedDocumentBinaryObject mimeCode="application/pdf" filename="Sample_invoice.pdf">PmFzZTY0IKNvbnRlbnQgZXhhbXBsZQ==</cbc:EmbeddedDocumentBinaryObject>
+		</cac:Attachment>
+	</cac:AdditionalDocumentReference>
+	<cac:AccountingSupplierParty>
+		<cac:Party>
+			<cbc:EndpointID schemeID="0235">1278906543</cbc:EndpointID>
+			<cac:PartyName>
+				<cbc:Name>Supplier Trade Name</cbc:Name>
+			</cac:PartyName>
+			<cac:PostalAddress>
+				<cbc:StreetName>Street Name</cbc:StreetName>
+				<cbc:CityName>Abu Dhabi</cbc:CityName>
+				<cbc:CountrySubentity>AUH</cbc:CountrySubentity>
+				<cac:Country>
+					<cbc:IdentificationCode>AE</cbc:IdentificationCode>
+				</cac:Country>
+			</cac:PostalAddress>
+			<cac:PartyTaxScheme>
+				<cbc:CompanyID>127890654301003</cbc:CompanyID>
+				<cac:TaxScheme>
+					<cbc:ID>VAT</cbc:ID>
+				</cac:TaxScheme>
+			</cac:PartyTaxScheme>
+			<cac:PartyLegalEntity>
+				<cbc:RegistrationName>Supplier Legal Name</cbc:RegistrationName>
+				<cbc:CompanyID schemeAgencyID="TL" schemeAgencyName="Trade License issuing Authority">112345678900003</cbc:CompanyID>
+				<cbc:CompanyLegalForm>Merchant</cbc:CompanyLegalForm>
+			</cac:PartyLegalEntity>
+			<cac:Contact>
+				<cbc:Name>Contact Name</cbc:Name>
+				<cbc:Telephone>Contact number</cbc:Telephone>
+				<cbc:ElectronicMail>emailAddress</cbc:ElectronicMail>
+			</cac:Contact>
+		</cac:Party>
+	</cac:AccountingSupplierParty>
+	<cac:AccountingCustomerParty>
+		<cac:Party>
+			<cbc:EndpointID schemeID="0235">1347809543</cbc:EndpointID>
+			<cac:PostalAddress>
+				<cbc:StreetName>Street Name</cbc:StreetName>
+				<cbc:CityName>Sharjah</cbc:CityName>
+				<cbc:CountrySubentity>SHJ</cbc:CountrySubentity>
+				<cac:Country>
+					<cbc:IdentificationCode>AE</cbc:IdentificationCode>
+				</cac:Country>
+			</cac:PostalAddress>
+			<cac:PartyTaxScheme>
+				<cbc:CompanyID>134780954301003</cbc:CompanyID>
+				<cac:TaxScheme>
+					<cbc:ID>VAT</cbc:ID>
+				</cac:TaxScheme>
+			</cac:PartyTaxScheme>
+			<cac:PartyLegalEntity>
+				<cbc:RegistrationName>Noor Electronics</cbc:RegistrationName>
+				<cbc:CompanyID schemeAgencyID="TL" schemeAgencyName="Trade License issuing Authority">112345679000001</cbc:CompanyID>
+			</cac:PartyLegalEntity>
+			<cac:Contact>
+				<cbc:Name>Contact Name</cbc:Name>
+				<cbc:Telephone>Contact Number</cbc:Telephone>
+				<cbc:ElectronicMail>Emailaddress</cbc:ElectronicMail>
+			</cac:Contact>
+		</cac:Party>
+	</cac:AccountingCustomerParty>
+	<cac:PaymentMeans>
+		<cbc:PaymentMeansCode name="Credit transfer">30</cbc:PaymentMeansCode>
+		<cac:PayeeFinancialAccount>
+			<cbc:ID schemeID="IBAN">AE0000000001</cbc:ID>
+			<cbc:Name>current account</cbc:Name>
+			<cac:FinancialInstitutionBranch>
+				<cbc:ID>236000</cbc:ID>
+			</cac:FinancialInstitutionBranch>
+		</cac:PayeeFinancialAccount>
+	</cac:PaymentMeans>
+	<cac:PaymentTerms>
+		<cbc:Note>Within 15 days</cbc:Note>
+	</cac:PaymentTerms>
+	<cac:AllowanceCharge>
+		<cbc:ChargeIndicator>false</cbc:ChargeIndicator>
+		<cbc:AllowanceChargeReasonCode>100</cbc:AllowanceChargeReasonCode>
+		<cbc:AllowanceChargeReason>Special rebate</cbc:AllowanceChargeReason>
+		<cbc:MultiplierFactorNumeric>0.75</cbc:MultiplierFactorNumeric>
+		<cbc:Amount currencyID="AED">80.16</cbc:Amount>
+		<cbc:BaseAmount currencyID="AED">10687.5</cbc:BaseAmount>
+		<cac:TaxCategory>
+			<cbc:ID>S</cbc:ID>
+			<cbc:Percent>5</cbc:Percent>
+			<cac:TaxScheme>
+				<cbc:ID>VAT</cbc:ID>
+			</cac:TaxScheme>
+		</cac:TaxCategory>
+	</cac:AllowanceCharge>
+	<cac:TaxTotal>
+		<cbc:TaxAmount currencyID="AED">530.37</cbc:TaxAmount>
+		<cbc:TaxIncludedIndicator>false</cbc:TaxIncludedIndicator>
+		<cac:TaxSubtotal>
+			<cbc:TaxableAmount currencyID="AED">10607.34</cbc:TaxableAmount>
+			<cbc:TaxAmount currencyID="AED">530.367</cbc:TaxAmount>
+			<cac:TaxCategory>
+				<cbc:ID>S</cbc:ID>
+				<cbc:Percent>5</cbc:Percent>
+				<cac:TaxScheme>
+					<cbc:ID>VAT</cbc:ID>
+				</cac:TaxScheme>
+			</cac:TaxCategory>
+		</cac:TaxSubtotal>
+		<cac:TaxSubtotal>
+			<cbc:TaxableAmount currencyID="AED">2970</cbc:TaxableAmount>
+			<cbc:TaxAmount currencyID="AED">0</cbc:TaxAmount>
+			<cac:TaxCategory>
+				<cbc:ID>AE</cbc:ID>
+				<cbc:Percent>5</cbc:Percent>
+				<cac:TaxScheme>
+					<cbc:ID>VAT</cbc:ID>
+				</cac:TaxScheme>
+			</cac:TaxCategory>
+		</cac:TaxSubtotal>
+	</cac:TaxTotal>
+	<cac:LegalMonetaryTotal>
+		<cbc:LineExtensionAmount currencyID="AED">13657.5</cbc:LineExtensionAmount>
+		<cbc:TaxExclusiveAmount currencyID="AED">13577.34</cbc:TaxExclusiveAmount>
+		<cbc:TaxInclusiveAmount currencyID="AED">14107.71</cbc:TaxInclusiveAmount>
+		<cbc:AllowanceTotalAmount currencyID="AED">80.16</cbc:AllowanceTotalAmount>
+		<cbc:PayableRoundingAmount currencyID="AED">0.29</cbc:PayableRoundingAmount>
+		<cbc:PayableAmount currencyID="AED">14108</cbc:PayableAmount>
+	</cac:LegalMonetaryTotal>	
+	<cac:InvoiceLine>
+		<cbc:ID>1</cbc:ID>
+		<cbc:InvoicedQuantity unitCode="H87">100</cbc:InvoicedQuantity>
+		<cbc:LineExtensionAmount currencyID="AED">1425</cbc:LineExtensionAmount>
+		<cac:InvoicePeriod>
+			<cbc:StartDate>2025-01-31</cbc:StartDate>
+			<cbc:EndDate>2025-02-07</cbc:EndDate>
+		</cac:InvoicePeriod>
+		<cac:TaxTotal>
+		<cbc:TaxAmount currencyID="AED">71.25</cbc:TaxAmount>
+		</cac:TaxTotal>
+		<cac:Item>
+			<cbc:Description>Item Description</cbc:Description>
+			<cbc:Name>Item Name</cbc:Name>
+			<cac:CommodityClassification>
+				<cbc:CommodityCode>G</cbc:CommodityCode>
+				<cbc:ItemClassificationCode listID="HS">11223344</cbc:ItemClassificationCode>
+			</cac:CommodityClassification>
+			<cac:ClassifiedTaxCategory>
+				<cbc:ID>S</cbc:ID>
+				<cbc:Percent>5</cbc:Percent>
+				<cac:TaxScheme>
+					<cbc:ID>VAT</cbc:ID>
+				</cac:TaxScheme>
+			</cac:ClassifiedTaxCategory>
+		</cac:Item>
+		<cac:Price>
+			<cbc:PriceAmount currencyID="AED">14.25</cbc:PriceAmount>			
+			<cbc:BaseQuantity unitCode="H87">1</cbc:BaseQuantity>
+			<cac:AllowanceCharge>
+				<cbc:ChargeIndicator>false</cbc:ChargeIndicator>
+				<cbc:Amount currencyID="AED">0.75</cbc:Amount>
+				<cbc:BaseAmount currencyID="AED">15</cbc:BaseAmount>
+			</cac:AllowanceCharge>
+		</cac:Price>
+	</cac:InvoiceLine>
+	<cac:InvoiceLine>
+		<cbc:ID>2</cbc:ID>
+		<cbc:InvoicedQuantity unitCode="H87">150</cbc:InvoicedQuantity>
+		<cbc:LineExtensionAmount currencyID="AED">3562.5</cbc:LineExtensionAmount>
+		<cac:InvoicePeriod>
+			<cbc:StartDate>2025-01-31</cbc:StartDate>
+			<cbc:EndDate>2025-02-07</cbc:EndDate>
+		</cac:InvoicePeriod>
+		<cac:TaxTotal>
+		<cbc:TaxAmount currencyID="AED">178.125</cbc:TaxAmount>
+		</cac:TaxTotal>
+		<cac:Item>
+			<cbc:Description>Item Description</cbc:Description>
+			<cbc:Name>Item Name</cbc:Name>
+			<cac:CommodityClassification>
+				<cbc:CommodityCode>G</cbc:CommodityCode>
+				<cbc:ItemClassificationCode listID="HS">224455</cbc:ItemClassificationCode>
+			</cac:CommodityClassification>
+			<cac:ClassifiedTaxCategory>
+				<cbc:ID>S</cbc:ID>
+				<cbc:Percent>5</cbc:Percent>
+				<cac:TaxScheme>
+					<cbc:ID>VAT</cbc:ID>
+				</cac:TaxScheme>
+			</cac:ClassifiedTaxCategory>
+		</cac:Item>
+		<cac:Price>
+			<cbc:PriceAmount currencyID="AED">23.75</cbc:PriceAmount>			
+			<cbc:BaseQuantity unitCode="H87">1</cbc:BaseQuantity>
+			<cac:AllowanceCharge>
+				<cbc:ChargeIndicator>false</cbc:ChargeIndicator>
+				<cbc:Amount currencyID="AED">1.25</cbc:Amount>
+				<cbc:BaseAmount currencyID="AED">25</cbc:BaseAmount>
+			</cac:AllowanceCharge>
+		</cac:Price>
+	</cac:InvoiceLine>
+	<cac:InvoiceLine>
+		<cbc:ID>3</cbc:ID>
+		<cbc:InvoicedQuantity unitCode="H87">200</cbc:InvoicedQuantity>
+		<cbc:LineExtensionAmount currencyID="AED">5700</cbc:LineExtensionAmount>
+		<cac:InvoicePeriod>
+			<cbc:StartDate>2025-01-31</cbc:StartDate>
+			<cbc:EndDate>2025-02-07</cbc:EndDate>
+		</cac:InvoicePeriod>
+		<cac:TaxTotal>
+		<cbc:TaxAmount currencyID="AED">285</cbc:TaxAmount>
+		</cac:TaxTotal>
+		<cac:Item>
+			<cbc:Description>Item Description</cbc:Description>
+			<cbc:Name>Item Name</cbc:Name>
+			<cac:CommodityClassification>
+				<cbc:CommodityCode>G</cbc:CommodityCode>
+				<cbc:ItemClassificationCode listID="HS">123456</cbc:ItemClassificationCode>
+			</cac:CommodityClassification>
+			<cac:ClassifiedTaxCategory>
+				<cbc:ID>S</cbc:ID>
+				<cbc:Percent>5</cbc:Percent>
+				<cac:TaxScheme>
+					<cbc:ID>VAT</cbc:ID>
+				</cac:TaxScheme>
+			</cac:ClassifiedTaxCategory>
+		</cac:Item>
+		<cac:Price>
+			<cbc:PriceAmount currencyID="AED">28.5</cbc:PriceAmount>			
+			<cbc:BaseQuantity unitCode="H87">1</cbc:BaseQuantity>
+			<cac:AllowanceCharge>
+				<cbc:ChargeIndicator>false</cbc:ChargeIndicator>
+				<cbc:Amount currencyID="AED">1.5</cbc:Amount>
+				<cbc:BaseAmount currencyID="AED">30</cbc:BaseAmount>
+			</cac:AllowanceCharge>
+		</cac:Price>
+	</cac:InvoiceLine>
+	<cac:InvoiceLine>
+		<cbc:ID>4</cbc:ID>
+		<cbc:InvoicedQuantity unitCode="K6">30</cbc:InvoicedQuantity>
+		<cbc:LineExtensionAmount currencyID="AED">2970</cbc:LineExtensionAmount>
+		<cac:InvoicePeriod>
+			<cbc:StartDate>2025-01-31</cbc:StartDate>
+			<cbc:EndDate>2025-01-31</cbc:EndDate>
+		</cac:InvoicePeriod>
+		<cac:TaxTotal>
+		<cbc:TaxAmount currencyID="AED">0</cbc:TaxAmount>
+		</cac:TaxTotal>
+		<cac:Item>
+			<cbc:Description>Item Description</cbc:Description>
+			<cbc:Name>Item Name</cbc:Name>
+			<cac:StandardItemIdentification>
+				<cbc:ID schemeID="0160">34092834029</cbc:ID>
+			</cac:StandardItemIdentification>
+			<cac:CommodityClassification>
+				<cbc:NatureCode>DL8.48.3.1</cbc:NatureCode>
+				<cbc:CommodityCode>G</cbc:CommodityCode>				
+				<cbc:ItemClassificationCode listID="HS" listVersionID="1.0">88098432324</cbc:ItemClassificationCode>
+			</cac:CommodityClassification>
+			<cac:ClassifiedTaxCategory>
+				<cbc:ID>AE</cbc:ID>
+				<cbc:Percent>5</cbc:Percent>
+				<cac:TaxScheme>
+					<cbc:ID>VAT</cbc:ID>
+				</cac:TaxScheme>
+			</cac:ClassifiedTaxCategory>
+		</cac:Item>
+		<cac:Price>
+			<cbc:PriceAmount currencyID="AED">99</cbc:PriceAmount>			
+			<cbc:BaseQuantity unitCode="K6">1</cbc:BaseQuantity>
+			<cac:AllowanceCharge>
+				<cbc:ChargeIndicator>false</cbc:ChargeIndicator>
+				<cbc:Amount currencyID="AED">1</cbc:Amount>
+				<cbc:BaseAmount currencyID="AED">100</cbc:BaseAmount>
+			</cac:AllowanceCharge>
+		</cac:Price>
+	</cac:InvoiceLine>
+</Invoice>

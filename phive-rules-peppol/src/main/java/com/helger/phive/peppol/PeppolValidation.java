@@ -32,9 +32,8 @@ import com.helger.phive.xml.source.IValidationSourceXML;
 public final class PeppolValidation
 {
   /**
-   * @return The currently active version number, dependent on the current date.
-   *         Never <code>null</code>.
-   * @since 5.1.8
+   * @return The currently active version number, dependent on the current date. Never
+   *         <code>null</code>.
    * @deprecated Use the version from {@link PeppolValidationBisEurope}
    */
   @Nonnull
@@ -49,8 +48,7 @@ public final class PeppolValidation
   {}
 
   /**
-   * Register all standard Peppol validation execution sets to the provided
-   * registry.
+   * Register all standard Peppol validation execution sets to the provided registry.
    *
    * @param aRegistry
    *        The registry to add the artefacts. May not be <code>null</code>.
@@ -63,6 +61,7 @@ public final class PeppolValidation
     PeppolValidationDirectory.init (aRegistry);
     PeppolValidationReporting.init (aRegistry);
     PeppolValidationPint.init (aRegistry);
+    PeppolValidationPintAE.init (aRegistry);
     PeppolValidationPintAUNZ.init (aRegistry);
     PeppolValidationPintJP.init (aRegistry);
     PeppolValidationPintJP_NTR.init (aRegistry);
