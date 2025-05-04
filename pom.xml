@@ -68,7 +68,7 @@
     <jaxb-plugin.version>4.0.9</jaxb-plugin.version>
     <peppol-commons.version>10.3.2</peppol-commons.version>
     <ph-cii.version>3.1.0</ph-cii.version>
-    <ph-ebinterface.version>7.1.0</ph-ebinterface.version>
+    <ph-ebinterface.version>7.1.1</ph-ebinterface.version>
     <ph-fatturapa.version>2.0.2</ph-fatturapa.version>
     <ph-jaxb-plugin.version>4.0.3</ph-jaxb-plugin.version>
     <ph-schematron.version>8.0.6</ph-schematron.version>
