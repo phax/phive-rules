@@ -207,7 +207,7 @@ I hope that with the introduction of PINT, the versioning problem will be solved
   
 # News and noteworthy
 
-* v3.2.11 - work in progress
+* v3.2.11 - 2025-05-20
     * Added support for EN 16931 rules v1.3.14.1 format and deprecated v1.3.12
     * Added support for ZuGFERD 2.3.3 - all profiles (XML only)
 * v3.2.10 - 2025-03-31
