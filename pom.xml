@@ -66,7 +66,7 @@
     <jaxb-plugin.group>org.jvnet.jaxb</jaxb-plugin.group>
     <jaxb-plugin.artifact>jaxb-maven-plugin</jaxb-plugin.artifact>
     <jaxb-plugin.version>4.0.9</jaxb-plugin.version>
-    <peppol-commons.version>10.5.0</peppol-commons.version>
+    <peppol-commons.version>11.0.0</peppol-commons.version>
     <ph-cii.version>3.1.0</ph-cii.version>
     <ph-ebinterface.version>7.1.1</ph-ebinterface.version>
     <ph-fatturapa.version>2.0.2</ph-fatturapa.version>
@@ -80,7 +80,7 @@
       <dependency>
         <groupId>com.helger.commons</groupId>
         <artifactId>ph-commons-parent-pom</artifactId>
-        <version>11.2.5</version>
+        <version>11.2.6</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
