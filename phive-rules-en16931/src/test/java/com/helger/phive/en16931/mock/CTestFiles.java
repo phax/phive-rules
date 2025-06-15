@@ -72,6 +72,7 @@ public final class CTestFiles
                                                              EN16931Validation.VID_CII_1312,
                                                              EN16931Validation.VID_CII_1313,
                                                              EN16931Validation.VID_CII_1314_1,
+                                                             EN16931Validation.VID_CII_1314_2,
 
                                                              EN16931Validation.VID_UBL_INVOICE_100,
                                                              EN16931Validation.VID_UBL_INVOICE_110,
@@ -110,6 +111,8 @@ public final class CTestFiles
                                                              EN16931Validation.VID_UBL_CREDIT_NOTE_1313,
                                                              EN16931Validation.VID_UBL_INVOICE_1314_1,
                                                              EN16931Validation.VID_UBL_CREDIT_NOTE_1314_1,
+                                                             EN16931Validation.VID_UBL_INVOICE_1314_2,
+                                                             EN16931Validation.VID_UBL_CREDIT_NOTE_1314_2,
 
     })
       for (final IReadableResource aRes : getAllMatchingTestFiles (aVESID))
@@ -141,8 +144,7 @@ public final class CTestFiles
                                                       "CII_example6.xml",
                                                       "CII_example7.xml",
                                                       "CII_example8.xml",
-                                                      "CII_example9.xml" },
-                                      x -> new ClassPathResource (sPrefix + x));
+                                                      "CII_example9.xml" }, x -> new ClassPathResource (sPrefix + x));
     }
     if (aVESID.equals (EN16931Validation.VID_CII_110))
     {
@@ -157,8 +159,7 @@ public final class CTestFiles
                                                       "CII_example6.xml",
                                                       "CII_example7.xml",
                                                       "CII_example8.xml",
-                                                      "CII_example9.xml" },
-                                      x -> new ClassPathResource (sPrefix + x));
+                                                      "CII_example9.xml" }, x -> new ClassPathResource (sPrefix + x));
     }
     if (aVESID.equals (EN16931Validation.VID_CII_120))
     {
@@ -173,8 +174,7 @@ public final class CTestFiles
                                                       "CII_example6.xml",
                                                       "CII_example7.xml",
                                                       "CII_example8.xml",
-                                                      "CII_example9.xml" },
-                                      x -> new ClassPathResource (sPrefix + x));
+                                                      "CII_example9.xml" }, x -> new ClassPathResource (sPrefix + x));
     }
     if (aVESID.equals (EN16931Validation.VID_CII_121))
     {
@@ -189,8 +189,7 @@ public final class CTestFiles
                                                       "CII_example6.xml",
                                                       "CII_example7.xml",
                                                       "CII_example8.xml",
-                                                      "CII_example9.xml" },
-                                      x -> new ClassPathResource (sPrefix + x));
+                                                      "CII_example9.xml" }, x -> new ClassPathResource (sPrefix + x));
     }
     if (aVESID.equals (EN16931Validation.VID_CII_123))
     {
@@ -205,8 +204,7 @@ public final class CTestFiles
                                                       "CII_example6.xml",
                                                       "CII_example7.xml",
                                                       "CII_example8.xml",
-                                                      "CII_example9.xml" },
-                                      x -> new ClassPathResource (sPrefix + x));
+                                                      "CII_example9.xml" }, x -> new ClassPathResource (sPrefix + x));
     }
     if (aVESID.equals (EN16931Validation.VID_CII_130))
     {
@@ -221,8 +219,7 @@ public final class CTestFiles
                                                       "CII_example6.xml",
                                                       "CII_example7.xml",
                                                       "CII_example8.xml",
-                                                      "CII_example9.xml" },
-                                      x -> new ClassPathResource (sPrefix + x));
+                                                      "CII_example9.xml" }, x -> new ClassPathResource (sPrefix + x));
     }
     if (aVESID.equals (EN16931Validation.VID_CII_131))
     {
@@ -235,8 +232,7 @@ public final class CTestFiles
                                                       "CII_example6.xml",
                                                       "CII_example7.xml",
                                                       "CII_example8.xml",
-                                                      "CII_example9.xml" },
-                                      x -> new ClassPathResource (sPrefix + x));
+                                                      "CII_example9.xml" }, x -> new ClassPathResource (sPrefix + x));
     }
     if (aVESID.equals (EN16931Validation.VID_CII_132))
     {
@@ -249,8 +245,7 @@ public final class CTestFiles
                                                       "CII_example6.xml",
                                                       "CII_example7.xml",
                                                       "CII_example8.xml",
-                                                      "CII_example9.xml" },
-                                      x -> new ClassPathResource (sPrefix + x));
+                                                      "CII_example9.xml" }, x -> new ClassPathResource (sPrefix + x));
     }
     if (aVESID.equals (EN16931Validation.VID_CII_133))
     {
@@ -261,8 +256,7 @@ public final class CTestFiles
                                                       "CII_example6.xml",
                                                       "CII_example7.xml",
                                                       "CII_example8.xml",
-                                                      "CII_example9.xml" },
-                                      x -> new ClassPathResource (sPrefix + x));
+                                                      "CII_example9.xml" }, x -> new ClassPathResource (sPrefix + x));
     }
     if (aVESID.equals (EN16931Validation.VID_CII_134))
     {
@@ -275,8 +269,7 @@ public final class CTestFiles
                                                       "CII_example6.xml",
                                                       "CII_example7.xml",
                                                       "CII_example8.xml",
-                                                      "CII_example9.xml" },
-                                      x -> new ClassPathResource (sPrefix + x));
+                                                      "CII_example9.xml" }, x -> new ClassPathResource (sPrefix + x));
     }
     if (aVESID.equals (EN16931Validation.VID_CII_135))
     {
@@ -291,8 +284,7 @@ public final class CTestFiles
                                                       "CII_example7.xml",
                                                       "CII_example8.xml",
                                                       "CII_example9.xml",
-                                                      "XRechnung-O.xml" },
-                                      x -> new ClassPathResource (sPrefix + x));
+                                                      "XRechnung-O.xml" }, x -> new ClassPathResource (sPrefix + x));
     }
     if (aVESID.equals (EN16931Validation.VID_CII_136))
     {
@@ -307,8 +299,7 @@ public final class CTestFiles
                                                       "CII_example7.xml",
                                                       "CII_example8.xml",
                                                       "CII_example9.xml",
-                                                      "XRechnung-O.xml" },
-                                      x -> new ClassPathResource (sPrefix + x));
+                                                      "XRechnung-O.xml" }, x -> new ClassPathResource (sPrefix + x));
     }
     if (aVESID.equals (EN16931Validation.VID_CII_136A))
     {
@@ -338,8 +329,7 @@ public final class CTestFiles
                                                       "CII_example7.xml",
                                                       "CII_example8.xml",
                                                       "CII_example9.xml",
-                                                      "XRechnung-O.xml" },
-                                      x -> new ClassPathResource (sPrefix + x));
+                                                      "XRechnung-O.xml" }, x -> new ClassPathResource (sPrefix + x));
     }
     if (aVESID.equals (EN16931Validation.VID_CII_138))
     {
@@ -354,8 +344,7 @@ public final class CTestFiles
                                                       "CII_example7.xml",
                                                       "CII_example8.xml",
                                                       "CII_example9.xml",
-                                                      "XRechnung-O.xml" },
-                                      x -> new ClassPathResource (sPrefix + x));
+                                                      "XRechnung-O.xml" }, x -> new ClassPathResource (sPrefix + x));
     }
     if (aVESID.equals (EN16931Validation.VID_CII_139))
     {
@@ -370,8 +359,7 @@ public final class CTestFiles
                                                       "CII_example7.xml",
                                                       "CII_example8.xml",
                                                       "CII_example9.xml",
-                                                      "XRechnung-O.xml" },
-                                      x -> new ClassPathResource (sPrefix + x));
+                                                      "XRechnung-O.xml" }, x -> new ClassPathResource (sPrefix + x));
     }
     if (aVESID.equals (EN16931Validation.VID_CII_1310))
     {
@@ -385,8 +373,7 @@ public final class CTestFiles
                                                       "CII_example7.xml",
                                                       "CII_example8.xml",
                                                       "CII_example9.xml",
-                                                      "XRechnung-O.xml" },
-                                      x -> new ClassPathResource (sPrefix + x));
+                                                      "XRechnung-O.xml" }, x -> new ClassPathResource (sPrefix + x));
     }
     if (aVESID.equals (EN16931Validation.VID_CII_1311))
     {
@@ -400,8 +387,7 @@ public final class CTestFiles
                                                       "CII_example7.xml",
                                                       "CII_example8.xml",
                                                       "CII_example9.xml",
-                                                      "XRechnung-O.xml" },
-                                      x -> new ClassPathResource (sPrefix + x));
+                                                      "XRechnung-O.xml" }, x -> new ClassPathResource (sPrefix + x));
     }
     if (aVESID.equals (EN16931Validation.VID_CII_1312))
     {
@@ -418,8 +404,7 @@ public final class CTestFiles
                                                       "CII_example7.xml",
                                                       "CII_example8.xml",
                                                       "CII_example9.xml",
-                                                      "XRechnung-O.xml" },
-                                      x -> new ClassPathResource (sPrefix + x));
+                                                      "XRechnung-O.xml" }, x -> new ClassPathResource (sPrefix + x));
     }
     if (aVESID.equals (EN16931Validation.VID_CII_1313))
     {
@@ -438,8 +423,7 @@ public final class CTestFiles
                                                       "CII_example9.xml",
                                                       "CII-BR-CO-10-RoundingIssue.xml",
                                                       "huf_example_cii.xml",
-                                                      "XRechnung-O.xml" },
-                                      x -> new ClassPathResource (sPrefix + x));
+                                                      "XRechnung-O.xml" }, x -> new ClassPathResource (sPrefix + x));
     }
     if (aVESID.equals (EN16931Validation.VID_CII_1314_1))
     {
@@ -460,8 +444,28 @@ public final class CTestFiles
                                                       "CII-BR-CO-10-RoundingIssue.xml",
                                                       "huf_example_cii.xml",
                                                       "huf_example_cii 2.xml",
-                                                      "XRechnung-O.xml" },
-                                      x -> new ClassPathResource (sPrefix + x));
+                                                      "XRechnung-O.xml" }, x -> new ClassPathResource (sPrefix + x));
+    }
+    if (aVESID.equals (EN16931Validation.VID_CII_1314_2))
+    {
+      final String sPrefix = sPrefix0 + "1.3.14.2/cii/";
+      return new CommonsArrayList <> (new String [] { "CII_business_example_01.xml",
+                                                      "CII_business_example_02.xml",
+                                                      "CII_business_example_Z.xml",
+                                                      "CII_example1.xml",
+                                                      "CII_example2.xml",
+                                                      "CII_example3.xml",
+                                                      "CII_example4.xml",
+                                                      "CII_example5.xml",
+                                                      "CII_example5 2.xml",
+                                                      "CII_example6.xml",
+                                                      "CII_example7.xml",
+                                                      "CII_example8.xml",
+                                                      "CII_example9.xml",
+                                                      "CII-BR-CO-10-RoundingIssue.xml",
+                                                      "huf_example_cii.xml",
+                                                      "huf_example_cii 2.xml",
+                                                      "XRechnung-O.xml" }, x -> new ClassPathResource (sPrefix + x));
     }
 
     if (aVESID.equals (EN16931Validation.VID_UBL_INVOICE_100))
@@ -915,6 +919,24 @@ public final class CTestFiles
     if (aVESID.equals (EN16931Validation.VID_UBL_CREDIT_NOTE_1314_1))
     {
       final String sPrefix = sPrefix0 + "1.3.14.1/ubl/";
+      return new CommonsArrayList <> (new String [] {}, x -> new ClassPathResource (sPrefix + x));
+    }
+    if (aVESID.equals (EN16931Validation.VID_UBL_INVOICE_1314_2))
+    {
+      final String sPrefix = sPrefix0 + "1.3.14.2/ubl/";
+      return new CommonsArrayList <> (new String [] { "BIS3_Invoice_negativ.XML",
+                                                      "BIS3_Invoice_positive.XML",
+                                                      "guide-example1.xml",
+                                                      "guide-example2.xml",
+                                                      "guide-example3.xml",
+                                                      "issue116.xml",
+                                                      "sample-discount-price.xml",
+                                                      "ubl-tc434-example10.xml" },
+                                      x -> new ClassPathResource (sPrefix + x));
+    }
+    if (aVESID.equals (EN16931Validation.VID_UBL_CREDIT_NOTE_1314_2))
+    {
+      final String sPrefix = sPrefix0 + "1.3.14.2/ubl/";
       return new CommonsArrayList <> (new String [] {}, x -> new ClassPathResource (sPrefix + x));
     }
     throw new IllegalArgumentException ("Invalid VESID: " + aVESID);
