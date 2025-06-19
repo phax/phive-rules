@@ -209,6 +209,7 @@ I hope that with the introduction of PINT, the versioning problem will be solved
 
 * v3.2.13 - work in progress
     * Added support for EN 16931 rules v1.3.14.2 format and deprecated v1.3.14.1
+    * Added Peppol BIS 2025-05 release
 * v3.2.12 - 2025-06-10
     * Added Peppol PINT AE 2025-Q2 (first public version)
 * v3.2.11 - 2025-05-20
@@ -224,7 +225,7 @@ I hope that with the introduction of PINT, the versioning problem will be solved
     * Added Peppol BIS Self-Billing 2025.3 validation rules
     * Added OIOUBL 1.15.1 rules
 * v3.2.7 - 2025-03-10
-    * Deprecated Peppol BIS Billing 2024.5 release, as 2024.11 release is already mandatory
+    * Deprecated Peppol BIS 2024.5 release, as 2024.11 release is already mandatory
     * Added Peppol PINT AUNZ 1.1.0 rules and deprecated v1.0.1 rules
     * Added Peppol PINT JP 1.1.0 rules and deprecated the old rules
     * Added Peppol PINT MY 1.1.0 rules and deprecated v1.0.0 rules
