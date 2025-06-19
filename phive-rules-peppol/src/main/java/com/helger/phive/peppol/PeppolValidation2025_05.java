@@ -40,8 +40,8 @@ import com.helger.ubl23.UBL23Marshaller;
 
 /**
  * OpenPeppol validation artefacts release 2025-Q2.<br>
- * Announcement date: 2025-06-11.<br>
- * Valid from: Monday 2025-09-15
+ * Announcement date: 2025-05-22.<br>
+ * Valid from: Monday 2025-08-25
  *
  * @author Philip Helger
  */
@@ -51,7 +51,7 @@ public final class PeppolValidation2025_05
   // Standard resources
   public static final Version PEPPOL_VALIDATION_ARTEFACT_VERSION = new Version (2025, 5, 0);
   public static final String VERSION_STR = PEPPOL_VALIDATION_ARTEFACT_VERSION.getAsString (false);
-  public static final LocalDate VALID_PER = PDTFactory.createLocalDate (2025, Month.SEPTEMBER, 15);
+  public static final LocalDate VALID_PER = PDTFactory.createLocalDate (2025, Month.AUGUST, 25);
   public static final OffsetDateTime VALID_PER_UTC = PDTFactory.createOffsetDateTimeUTC (VALID_PER);
 
   // Standard
