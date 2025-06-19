@@ -146,7 +146,7 @@
             </goals>
             <id>convert-si</id>
             <configuration>
-              <schematronDirectory>${basedir}/src/test/resources/external/rule-source/simplerinvoicing/2.0.3.10</schematronDirectory>
+              <schematronDirectory>${basedir}/src/test/resources/external/rule-source/simplerinvoicing/2.0.3.11</schematronDirectory>
               <schematronPattern>si-ubl-*.sch</schematronPattern>
               <xsltDirectory>${basedir}/src/main/resources/external/schematron/simplerinvoicing</xsltDirectory>
             </configuration>
@@ -160,7 +160,7 @@
             </goals>
             <id>convert-nlcius</id>
             <configuration>
-              <schematronDirectory>${basedir}/src/test/resources/external/rule-source/nlcius/1.0.3.9</schematronDirectory>
+              <schematronDirectory>${basedir}/src/test/resources/external/rule-source/nlcius/1.0.3.11</schematronDirectory>
               <schematronPattern>nlcius-*.sch</schematronPattern>
               <xsltDirectory>${basedir}/src/main/resources/external/schematron/nlcius</xsltDirectory>
             </configuration>
