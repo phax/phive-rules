@@ -59,6 +59,7 @@ public final class PeppolValidation
     PeppolValidationBisAUNZ.init (aRegistry);
     PeppolValidationBisSG.init (aRegistry);
     PeppolValidationDirectory.init (aRegistry);
+    PeppolValidationMLS.init (aRegistry);
     PeppolValidationReporting.init (aRegistry);
     PeppolValidationPint.init (aRegistry);
     PeppolValidationPintAE.init (aRegistry);

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApplicationResponse xmlns="urn:oasis:names:specification:ubl:schema:xsd:ApplicationResponse-2"
+                     xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+                     xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
+  <cbc:CustomizationID>urn:peppol:edec:mls:1.0</cbc:CustomizationID>
+  <cbc:ProfileID>urn:peppol:edec:mls</cbc:ProfileID>
+  <cbc:ID>MLS-ID123</cbc:ID>
+  <cbc:IssueDate>2025-03-11</cbc:IssueDate>
+  <cbc:IssueTime>12:00:00Z</cbc:IssueTime>
+  
+  <cac:SenderParty>
+    <cbc:EndpointID schemeID="0299">123456</cbc:EndpointID>
+  </cac:SenderParty>
+  
+  <cac:ReceiverParty>
+    <cbc:EndpointID schemeID="0299">234567</cbc:EndpointID>
+  </cac:ReceiverParty>
+  
+  <cac:DocumentResponse>
+    <cac:Response>
+      <cbc:ResponseCode>AP</cbc:ResponseCode>
+    </cac:Response>
+    <cac:DocumentReference>
+      <!-- The SBDH envelope InstanceIdentifier of the source message -->
+      <cbc:ID>90f14eff-3705-4869-ad3c-caae270a234e</cbc:ID>
+    </cac:DocumentReference>
+  </cac:DocumentResponse>
+</ApplicationResponse>

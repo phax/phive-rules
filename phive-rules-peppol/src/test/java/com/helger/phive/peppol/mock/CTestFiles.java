@@ -39,6 +39,7 @@ import com.helger.phive.peppol.PeppolValidation2025_05;
 import com.helger.phive.peppol.PeppolValidationBisAUNZ;
 import com.helger.phive.peppol.PeppolValidationBisSG;
 import com.helger.phive.peppol.PeppolValidationDirectory;
+import com.helger.phive.peppol.PeppolValidationMLS;
 import com.helger.phive.peppol.PeppolValidationPintAE;
 import com.helger.phive.peppol.PeppolValidationPintAUNZ;
 import com.helger.phive.peppol.PeppolValidationPintJP;
@@ -147,6 +148,9 @@ public final class CTestFiles
                                                             PeppolValidationDirectory.VID_OPENPEPPOL_BUSINESS_CARD_V1,
                                                             PeppolValidationDirectory.VID_OPENPEPPOL_BUSINESS_CARD_V2,
                                                             PeppolValidationDirectory.VID_OPENPEPPOL_BUSINESS_CARD_V3,
+
+                                                            // OpenPeppol MLS
+                                                            PeppolValidationMLS.VID_OPENPEPPOL_MLS_V100,
 
                                                             /*
                                                              * OpenPeppol Reporting
@@ -713,6 +717,20 @@ public final class CTestFiles
                                       new FileSystemResource (sPrefix + "business-card-example-spec-v3.xml"),
                                       new FileSystemResource (sPrefix + "business-card-test1.xml"),
                                       new FileSystemResource (sPrefix + "business-card-test2.xml"));
+    }
+
+    // Peppol MLS
+    if (aVESID.equals (PeppolValidationMLS.VID_OPENPEPPOL_MLS_V100))
+    {
+      final String sPrefix = sPrefix0 + "mls/1.0.0/";
+      return new CommonsArrayList <> (new FileSystemResource (sPrefix + "MessageLevelStatus_Example_AB.xml"),
+                                      new FileSystemResource (sPrefix + "MessageLevelStatus_Example_AB2.xml"),
+                                      new FileSystemResource (sPrefix + "MessageLevelStatus_Example_AB3.xml"),
+                                      new FileSystemResource (sPrefix + "MessageLevelStatus_Example_AP.xml"),
+                                      new FileSystemResource (sPrefix + "MessageLevelStatus_Example_RE.xml"),
+                                      new FileSystemResource (sPrefix + "MessageLevelStatus_Example_RE2.xml"),
+                                      new FileSystemResource (sPrefix + "MessageLevelStatus_Example_RE3.xml"),
+                                      new FileSystemResource (sPrefix + "MessageLevelStatus_Example_RE4.xml"));
     }
 
     /* Peppol Reporting */

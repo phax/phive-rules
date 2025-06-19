@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApplicationResponse xmlns="urn:oasis:names:specification:ubl:schema:xsd:ApplicationResponse-2"
+                     xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+                     xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
+  <cbc:CustomizationID>urn:peppol:edec:mls:1.0</cbc:CustomizationID>
+  <cbc:ProfileID>urn:peppol:edec:mls</cbc:ProfileID>
+  <cbc:ID>MLS-ID123</cbc:ID>
+  <cbc:IssueDate>2025-03-11</cbc:IssueDate>
+  <cbc:IssueTime>12:00:00Z</cbc:IssueTime>
+  
+  <cac:SenderParty>
+    <cbc:EndpointID schemeID="0299">123456</cbc:EndpointID>
+  </cac:SenderParty>
+  
+  <cac:ReceiverParty>
+    <cbc:EndpointID schemeID="0299">234567</cbc:EndpointID>
+  </cac:ReceiverParty>
+  
+  <cac:DocumentResponse>
+    <cac:Response>
+      <cbc:ResponseCode>RE</cbc:ResponseCode>
+      <!-- The overall human readable response text -->
+      <cbc:Description>Rejected due to validation errors</cbc:Description>
+    </cac:Response>
+    
+    <cac:DocumentReference>
+      <!-- The SBDH envelope InstanceIdentifier of the source message -->
+      <cbc:ID>90f14eff-3705-4869-ad3c-caae270a234e</cbc:ID>
+    </cac:DocumentReference>
+    
+    <cac:LineResponse>
+      <cac:LineReference>
+        <!-- LineID is a mandatory field and the constant "NA" means "not applicable" meaning that
+             no line ID is available. -->
+        <cbc:LineID>/Catalogue/cac:CatalogueLine[3]/cac:Item[1]/cac:ClassifiedTaxCategory[1]/cbc:ID[1]</cbc:LineID>
+      </cac:LineReference>
+      <cac:Response>
+        <!-- The overall human readable response text -->
+        <cbc:Description>Validation gives error [CL-T77-R002]- Tax categories MUST be coded using UN/ECE 5305 code list</cbc:Description>
+        <cac:Status>
+          <!-- Must be one of "SV" (syntax violation),
+                 "BV" (rule violation fatal) or
+                 "BW" (rule violation warning) or
+                 "FD" (failure of delivery) -->
+          <cbc:StatusReasonCode>BV</cbc:StatusReasonCode>
+        </cac:Status>
+      </cac:Response>
+    </cac:LineResponse>
+    
+    <cac:LineResponse>
+      <cac:LineReference>
+        <!-- Different Line ID requires a different LineResponse element -->
+        <cbc:LineID>/Catalogue/cac:CatalogueLine[4]/cac:Item[1]/cac:ClassifiedTaxCategory[1]/cbc:ID[1]</cbc:LineID>
+      </cac:LineReference>
+      <cac:Response>
+        <!-- The overall human readable response text -->
+        <cbc:Description>Validation gives error [CL-T77-R002]- Tax categories MUST be coded using UN/ECE 5305 code list</cbc:Description>
+        <cac:Status>
+          <!-- Must be one of "SV" (syntax violation),
+                 "BV" (rule violation fatal) or
+                 "BW" (rule violation warning) or
+                 "FD" (failure of delivery) -->
+          <cbc:StatusReasonCode>BV</cbc:StatusReasonCode>
+        </cac:Status>
+      </cac:Response>
+    </cac:LineResponse>
+  </cac:DocumentResponse>
+</ApplicationResponse>
