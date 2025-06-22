@@ -33,6 +33,7 @@ import com.helger.phive.api.validity.IValidityDeterminator;
 import com.helger.phive.oioubl.mock.CTestFiles;
 import com.helger.phive.xml.source.IValidationSourceXML;
 import com.helger.phive.xml.source.ValidationSourceXML;
+import com.helger.schematron.xslt.SchematronResourceXSLTCache;
 
 /**
  * Test class for class {@link ValidationExecutionManager}.
@@ -72,6 +73,9 @@ public final class ValidationExecutionManagerFuncTest
         }
         else
           assertTrue (aErrors.containsAtLeastOneError ());
+
+        // Avoid OutOfMemoryException in GitHub actions
+        SchematronResourceXSLTCache.clearCache ();
       }
       catch (final OutOfMemoryError ex)
       {
