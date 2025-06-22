@@ -23,6 +23,10 @@ https://nemhandel.dk/oioubl-schematron-version-1132-hotfix
 Source:
 https://rep.erst.dk/git/openebusiness/common/
 
+Release:
+https://git.erst.dk/openebusiness/common/-/tree/master/released/oioubl
+https://git.erst.dk/openebusiness/common/-/tree/master/released/peppol
+
 Other news items:
 https://www.digitaliser.dk/group/56183/resources
 https://digitaliser.dk/resource/3718578
