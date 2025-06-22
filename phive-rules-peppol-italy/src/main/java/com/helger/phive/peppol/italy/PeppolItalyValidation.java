@@ -23,8 +23,7 @@ import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
 import com.helger.phive.xml.source.IValidationSourceXML;
 
 /**
- * Generic Peppol Italy validation configuration. It contains only the old
- * validation rules.
+ * Generic Peppol Italy validation configuration. It contains only the old validation rules.
  *
  * @author Philip Helger
  */
@@ -35,8 +34,7 @@ public final class PeppolItalyValidation
   {}
 
   /**
-   * Register all Peppol Italy validation execution sets to the provided
-   * registry.
+   * Register all Peppol Italy validation execution sets to the provided registry.
    *
    * @param aRegistry
    *        The registry to add the artefacts. May not be <code>null</code>.
@@ -48,5 +46,6 @@ public final class PeppolItalyValidation
     PeppolItalyValidation2_3_0.init (aRegistry);
     PeppolItalyValidation3_0_2.init (aRegistry);
     PeppolItalyValidation3_1_0.init (aRegistry);
+    PeppolItalyValidation3_2_1.init (aRegistry);
   }
 }

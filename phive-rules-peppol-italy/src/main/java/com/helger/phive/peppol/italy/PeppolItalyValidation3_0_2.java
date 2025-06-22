@@ -37,6 +37,7 @@ import com.helger.ubl21.UBL21Marshaller;
  * @author Philip Helger
  */
 @Immutable
+@Deprecated
 public final class PeppolItalyValidation3_0_2
 {
   // Standard resources
@@ -88,13 +89,13 @@ public final class PeppolItalyValidation3_0_2
     final IReadableResource ORDER_RESPONSE = new ClassPathResource (PREFIX_XSLT + "order-response/AGID-PEPPOL-T76.xslt",
                                                                     _getCL ());
 
-    final boolean bNotDeprecated = false;
+    final boolean bDeprecated = true;
 
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_DESPATCH_ADVICE,
                                                                            "AGID Peppol Despatch Advice" +
                                                                                                 sVersion +
                                                                                                 sAkaVersionBIS,
-                                                                           PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
+                                                                           PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                            ValidationExecutorXSD.create (UBL21Marshaller.getAllDespatchAdviceXSDs ()),
                                                                            PhiveRulesHelper.createXSLT (DESPATCH_ADVICE,
                                                                                                         PhiveRulesUBLHelper.createUBL21NSContext (UBL21Marshaller.despatchAdvice ()
@@ -103,7 +104,7 @@ public final class PeppolItalyValidation3_0_2
                                                                            "AGID Peppol Invoice" +
                                                                                         sVersion +
                                                                                         sAkaVersionBIS,
-                                                                           PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
+                                                                           PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                            ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
                                                                            PhiveRulesHelper.createXSLT (INVOICE,
                                                                                                         PhiveRulesUBLHelper.createUBL21NSContext (UBL21Marshaller.invoice ()
@@ -112,7 +113,7 @@ public final class PeppolItalyValidation3_0_2
                                                                            "AGID Peppol Credit Note" +
                                                                                             sVersion +
                                                                                             sAkaVersionBIS,
-                                                                           PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
+                                                                           PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                            ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
                                                                            PhiveRulesHelper.createXSLT (INVOICE,
                                                                                                         PhiveRulesUBLHelper.createUBL21NSContext (UBL21Marshaller.creditNote ()
@@ -121,7 +122,7 @@ public final class PeppolItalyValidation3_0_2
                                                                            "AGID Peppol Order" +
                                                                                       sVersion +
                                                                                       sAkaVersionBIS,
-                                                                           PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
+                                                                           PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                            ValidationExecutorXSD.create (UBL21Marshaller.getAllOrderXSDs ()),
                                                                            PhiveRulesHelper.createXSLT (ORDER,
                                                                                                         PhiveRulesUBLHelper.createUBL21NSContext (UBL21Marshaller.order ()
@@ -130,7 +131,7 @@ public final class PeppolItalyValidation3_0_2
                                                                            "AGID Peppol Order Agreement" +
                                                                                                 sVersion +
                                                                                                 sAkaVersionBIS,
-                                                                           PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
+                                                                           PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                            ValidationExecutorXSD.create (UBL21Marshaller.getAllOrderResponseXSDs ()),
                                                                            PhiveRulesHelper.createXSLT (ORDER_AGREEMENT,
                                                                                                         PhiveRulesUBLHelper.createUBL21NSContext (UBL21Marshaller.orderResponse ()
@@ -139,7 +140,7 @@ public final class PeppolItalyValidation3_0_2
                                                                            "AGID Peppol Order Response" +
                                                                                                sVersion +
                                                                                                sAkaVersionBIS,
-                                                                           PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
+                                                                           PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                            ValidationExecutorXSD.create (UBL21Marshaller.getAllOrderResponseXSDs ()),
                                                                            PhiveRulesHelper.createXSLT (ORDER_RESPONSE,
                                                                                                         PhiveRulesUBLHelper.createUBL21NSContext (UBL21Marshaller.orderResponse ()

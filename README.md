@@ -215,6 +215,7 @@ I hope that with the introduction of PINT, the versioning problem will be solved
     * Added Simplerinvoicing Invoice 2.0.3.11, Simplerinvoicing 2.0 G-Account extension 1.0.11 and NLCIUS-CII 1.0.3.10 (deprecated) and 1.0.3.11
     * Added OIOUBL 1.15.2 rules
     * Deprecated all previous OIOUBL 1.1x releases
+    * Added support for Peppol Italy rules 3.2.1 (AGID Credit Note, Despatch Advice, Invoice, Order, Order Agreement and Order Response), Italian version
 * v3.2.12 - 2025-06-10
     * Added Peppol PINT AE 2025-Q2 (first public version)
 * v3.2.11 - 2025-05-20

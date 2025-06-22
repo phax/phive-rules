@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Invoice xsi:schemaLocation="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2 UBL-Invoice-2.1.xsd" xmlns="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2" xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" xmlns:ccts="urn:un:unece:uncefact:documentation:2" xmlns:ext="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2" xmlns:qdt="urn:oasis:names:specification:ubl:schema:xsd:QualifiedDatatypes-2" xmlns:udt="urn:un:unece:uncefact:data:specification:UnqualifiedDataTypesSchemaModule:2" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:cr="http://www.ubl-italia.org/ns/CrossReference">
+	<ext:UBLExtensions>
+		<ext:UBLExtension>
+			<ext:ExtensionURI>urn:fdc:agid.gov.it:fatturapa:TipoDocumento</ext:ExtensionURI>
+			<ext:ExtensionContent>
+				<cbc:TypeCode>TD29</cbc:TypeCode>
+			</ext:ExtensionContent>
+		</ext:UBLExtension>
+	</ext:UBLExtensions>
+	<cbc:CustomizationID>urn:cen.eu:en16931:2017#compliant#urn:fdc:peppol.eu:2017:poacc:billing:3.0#conformant#urn:www.agid.gov.it:trns:fattura:3</cbc:CustomizationID>
+	<cbc:ProfileID>urn:fdc:peppol.eu:2017:poacc:billing:01:1.0</cbc:ProfileID>
+	<cbc:ID>28_FT_BIS3_V35_B2G</cbc:ID>
+	<cbc:IssueDate>2025-02-28</cbc:IssueDate>
+	<cbc:InvoiceTypeCode>380</cbc:InvoiceTypeCode>
+	<cbc:DocumentCurrencyCode>EUR</cbc:DocumentCurrencyCode>
+	<cac:OrderReference>
+		<cbc:ID>#NO#</cbc:ID>
+	</cac:OrderReference>
+	<cac:AccountingSupplierParty>
+		<cac:Party>
+			<cbc:EndpointID schemeID="0211">IT02188520544</cbc:EndpointID>
+			<cac:PartyIdentification>
+				<cbc:ID>REA:MI#323284</cbc:ID>
+			</cac:PartyIdentification>
+			<cac:PostalAddress>
+				<cbc:StreetName>Via Amendola,2</cbc:StreetName>
+				<cbc:CityName>REGGIO EMILIA</cbc:CityName>
+				<cbc:PostalZone>42100</cbc:PostalZone>
+				<cbc:CountrySubentity>RE</cbc:CountrySubentity>
+				<cac:Country>
+					<cbc:IdentificationCode>IT</cbc:IdentificationCode>
+				</cac:Country>
+			</cac:PostalAddress>
+			<cac:PartyTaxScheme>
+				<cbc:CompanyID>IT02188520544</cbc:CompanyID>
+				<cac:TaxScheme>
+					<cbc:ID>VAT</cbc:ID>
+				</cac:TaxScheme>
+			</cac:PartyTaxScheme>
+			<cac:PartyLegalEntity>
+				<cbc:RegistrationName>Fornitore privato</cbc:RegistrationName>
+				<cbc:CompanyID schemeID="0210">02188520544</cbc:CompanyID>
+				<cbc:CompanyLegalForm>20000.00#SM#LN</cbc:CompanyLegalForm>
+			</cac:PartyLegalEntity>
+		</cac:Party>
+	</cac:AccountingSupplierParty>
+	<cac:AccountingCustomerParty>
+		<cac:Party>
+			<cbc:EndpointID schemeID="0201">O92KTP</cbc:EndpointID>
+			<cac:PostalAddress>
+				<cbc:StreetName>Via Cliente,2</cbc:StreetName>
+				<cbc:CityName>REGGIO EMILIA</cbc:CityName>
+				<cbc:PostalZone>42100</cbc:PostalZone>
+				<cbc:CountrySubentity>RE</cbc:CountrySubentity>
+				<cac:Country>
+					<cbc:IdentificationCode>IT</cbc:IdentificationCode>
+				</cac:Country>
+			</cac:PostalAddress>
+			<cac:PartyTaxScheme>
+				<cbc:CompanyID>IT01598570354</cbc:CompanyID>
+				<cac:TaxScheme>
+					<cbc:ID>VAT</cbc:ID>
+				</cac:TaxScheme>
+			</cac:PartyTaxScheme>
+			<cac:PartyLegalEntity>
+				<cbc:RegistrationName>USL Cliente</cbc:RegistrationName>
+				<cbc:CompanyID schemeID="0210">01598570354</cbc:CompanyID>
+			</cac:PartyLegalEntity>
+		</cac:Party>
+	</cac:AccountingCustomerParty>
+	<cac:PaymentMeans>
+		<cbc:PaymentMeansCode>58</cbc:PaymentMeansCode>
+		<cac:PayeeFinancialAccount>
+			<cbc:ID>IT70X0638502437100000046454</cbc:ID>
+			<cac:FinancialInstitutionBranch>
+				<cbc:ID>UNCRIT2B</cbc:ID>
+			</cac:FinancialInstitutionBranch>
+		</cac:PayeeFinancialAccount>
+	</cac:PaymentMeans>
+	<cac:PaymentTerms>
+		<cbc:Note>TP02</cbc:Note>
+	</cac:PaymentTerms>
+	<cac:TaxTotal>
+		<cbc:TaxAmount currencyID="EUR">0.00</cbc:TaxAmount>
+		<cac:TaxSubtotal>
+			<cbc:TaxableAmount currencyID="EUR">10000.00</cbc:TaxableAmount>
+			<cbc:TaxAmount currencyID="EUR">0.00</cbc:TaxAmount>
+			<cac:TaxCategory>
+				<cbc:ID>AE</cbc:ID>
+				<cbc:Percent>0</cbc:Percent>
+				<cbc:TaxExemptionReasonCode>vatex-eu-ae</cbc:TaxExemptionReasonCode>
+				<cbc:TaxExemptionReason>N6.9#Art.6 comma 8 D. LGS. 471/97</cbc:TaxExemptionReason>
+				<cac:TaxScheme>
+					<cbc:ID>VAT</cbc:ID>
+				</cac:TaxScheme>
+			</cac:TaxCategory>
+		</cac:TaxSubtotal>
+	</cac:TaxTotal>
+	<cac:LegalMonetaryTotal>
+		<cbc:LineExtensionAmount currencyID="EUR">10000.00</cbc:LineExtensionAmount>
+		<cbc:TaxExclusiveAmount currencyID="EUR">10000.00</cbc:TaxExclusiveAmount>
+		<cbc:TaxInclusiveAmount currencyID="EUR">10000.00</cbc:TaxInclusiveAmount>
+		<cbc:PrepaidAmount currencyID="EUR">0.00</cbc:PrepaidAmount>
+		<cbc:PayableAmount currencyID="EUR">10000.00</cbc:PayableAmount>
+	</cac:LegalMonetaryTotal>
+	<cac:InvoiceLine>
+		<cbc:ID>1</cbc:ID>
+		<cbc:InvoicedQuantity unitCode="C62">1.00000000</cbc:InvoicedQuantity>
+		<cbc:LineExtensionAmount currencyID="EUR">10000.00</cbc:LineExtensionAmount>
+		<cac:Item>
+			<cbc:Name>Canone di locazione_Immobile Piazza Grande</cbc:Name>
+			<cac:ClassifiedTaxCategory>
+				<cbc:ID>AE</cbc:ID>
+				<cbc:Percent>0</cbc:Percent>
+				<cac:TaxScheme>
+					<cbc:ID>VAT</cbc:ID>
+				</cac:TaxScheme>
+			</cac:ClassifiedTaxCategory>
+			<cac:AdditionalItemProperty>
+				<cbc:Name>NATURA</cbc:Name>
+				<cbc:Value>N6.9</cbc:Value>
+			</cac:AdditionalItemProperty>
+		</cac:Item>
+		<cac:Price>
+			<cbc:PriceAmount currencyID="EUR">10000.00</cbc:PriceAmount>
+			<cbc:BaseQuantity unitCode="C62">1</cbc:BaseQuantity>
+			<cac:AllowanceCharge>
+				<cbc:ChargeIndicator>false</cbc:ChargeIndicator>
+				<cbc:Amount currencyID="EUR">0.00</cbc:Amount>
+				<cbc:BaseAmount currencyID="EUR">10000.00</cbc:BaseAmount>
+			</cac:AllowanceCharge>
+		</cac:Price>
+	</cac:InvoiceLine>
+</Invoice>

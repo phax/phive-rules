@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DespatchAdvice xmlns="urn:oasis:names:specification:ubl:schema:xsd:DespatchAdvice-2"
+	xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+	xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
+	<cbc:CustomizationID>urn:fdc:peppol.eu:poacc:trns:despatch_advice:3:extended:urn:www.agid.gov.it:trns:ddt:3.1</cbc:CustomizationID>
+	<cbc:ProfileID>urn:fdc:peppol.eu:poacc:bis:despatch_advice:3</cbc:ProfileID>
+	<cbc:ID>03_DDT_BIS3_V02_B2G</cbc:ID>
+	<cbc:IssueDate>2023-04-28</cbc:IssueDate>
+	<cac:DespatchSupplierParty>
+		<cac:Party>
+			<cbc:EndpointID schemeID="0211">IT02188520544</cbc:EndpointID>
+			<cac:PartyIdentification>
+				<cbc:ID schemeID="0211">IT02188520544</cbc:ID>
+			</cac:PartyIdentification>
+			<cac:PostalAddress>
+				<cbc:StreetName>Via Lucio Dalla 1</cbc:StreetName>
+				<cbc:CityName>Bologna</cbc:CityName>
+				<cbc:PostalZone>40121</cbc:PostalZone>
+				<cbc:CountrySubentity>BO</cbc:CountrySubentity>
+				<cac:Country>
+					<cbc:IdentificationCode>IT</cbc:IdentificationCode>
+				</cac:Country>
+			</cac:PostalAddress>
+			<cac:PartyLegalEntity>
+				<cbc:RegistrationName>Fornitore SPA</cbc:RegistrationName>
+			</cac:PartyLegalEntity>
+			<cac:Contact>
+				<cbc:Name>Deposito Logistica Integrata</cbc:Name>
+				<cbc:Telephone>029506981</cbc:Telephone>
+			</cac:Contact>
+		</cac:Party>
+	</cac:DespatchSupplierParty>
+	<cac:DeliveryCustomerParty>
+		<cac:Party>
+			<cbc:EndpointID schemeID="0201">O92KTP</cbc:EndpointID>
+			<cac:PartyIdentification>
+				<cbc:ID schemeID="0210">01598570354</cbc:ID>
+			</cac:PartyIdentification>
+			<cac:PostalAddress>
+				<cbc:StreetName>Via De Gasperi, 8</cbc:StreetName>
+				<cbc:CityName>Ravenna</cbc:CityName>
+				<cbc:PostalZone>48121</cbc:PostalZone>
+				<cbc:CountrySubentity>RA</cbc:CountrySubentity>
+				<cac:Country>
+					<cbc:IdentificationCode>IT</cbc:IdentificationCode>
+				</cac:Country>
+			</cac:PostalAddress>
+			<cac:PartyLegalEntity>
+				<cbc:RegistrationName>Azienda USL della Romagna</cbc:RegistrationName>
+			</cac:PartyLegalEntity>
+		</cac:Party>
+		<cac:DeliveryContact>
+			<cbc:Name>Magazzino Unico di Area Vasta</cbc:Name>
+			<cbc:Telephone>0547394917</cbc:Telephone>
+		</cac:DeliveryContact>
+	</cac:DeliveryCustomerParty>
+	<cac:BuyerCustomerParty>
+		<cac:Party>
+			<cac:PartyIdentification>
+				<cbc:ID schemeID="0210">01598570354</cbc:ID>
+			</cac:PartyIdentification>
+			<cac:PartyName>
+				<cbc:Name>Azienda Ausl della Romagna</cbc:Name>
+			</cac:PartyName>
+			<cac:PostalAddress>
+				<cbc:StreetName>Via De Gasperi, 8</cbc:StreetName>
+				<cbc:CityName>Ravenna</cbc:CityName>
+				<cbc:PostalZone>48121</cbc:PostalZone>
+				<cbc:CountrySubentity>RA</cbc:CountrySubentity>
+				<cac:Country>
+					<cbc:IdentificationCode>IT</cbc:IdentificationCode>
+				</cac:Country>
+			</cac:PostalAddress>
+		</cac:Party>
+	</cac:BuyerCustomerParty>
+	<cac:SellerSupplierParty>
+		<cac:Party>
+			<cac:PartyIdentification>
+				<cbc:ID schemeID="0211">IT02188520544</cbc:ID>
+			</cac:PartyIdentification>
+			<cac:PartyName>
+				<cbc:Name>Fornitore S.p.A</cbc:Name>
+			</cac:PartyName>
+			<cac:PostalAddress>
+				<cbc:StreetName>Via Lucio Dalla 1</cbc:StreetName>
+				<cbc:CityName>Bologna</cbc:CityName>
+				<cbc:PostalZone>40121</cbc:PostalZone>
+				<cbc:CountrySubentity>BO</cbc:CountrySubentity>
+				<cac:Country>
+					<cbc:IdentificationCode>IT</cbc:IdentificationCode>
+				</cac:Country>
+			</cac:PostalAddress>
+		</cac:Party>
+	</cac:SellerSupplierParty>
+	<cac:OriginatorCustomerParty>
+		<cac:Party>
+			<cac:PartyName>
+				<cbc:Name>Pronto Soccorso e Osservazione Breve</cbc:Name>
+			</cac:PartyName>
+		</cac:Party>
+	</cac:OriginatorCustomerParty>
+	<cac:Shipment>
+		<cbc:ID>STM 0001946113</cbc:ID>
+		<cbc:GrossWeightMeasure unitCode="KGM">165.440</cbc:GrossWeightMeasure>
+		<cbc:TotalTransportHandlingUnitQuantity>22</cbc:TotalTransportHandlingUnitQuantity>
+		<cac:Consignment>
+			<cbc:ID>STM 0001946113</cbc:ID>
+			<cac:CarrierParty>
+				<cac:PartyIdentification>
+					<cbc:ID schemeID="0211">IT00204260285</cbc:ID>
+				</cac:PartyIdentification>
+				<cac:PartyName>
+					<cbc:Name>EURODIFARM SRL</cbc:Name>
+				</cac:PartyName>
+				<cac:PostalAddress>
+					<cbc:StreetName>Via Europa 100</cbc:StreetName>
+					<cbc:AdditionalStreetName>Palazzo A</cbc:AdditionalStreetName>
+					<cbc:CityName>Bologna</cbc:CityName>
+					<cbc:PostalZone>40121</cbc:PostalZone>
+					<cbc:CountrySubentity>BO</cbc:CountrySubentity>
+					<cac:Country>
+						<cbc:IdentificationCode>IT</cbc:IdentificationCode>
+					</cac:Country>
+				</cac:PostalAddress>
+			</cac:CarrierParty>
+		</cac:Consignment>
+		<cac:Delivery>
+			<cbc:TrackingID>STM 0001946113</cbc:TrackingID>
+			<cac:EstimatedDeliveryPeriod>
+				<cbc:StartDate>2023-04-29</cbc:StartDate>
+				<cbc:StartTime>08:30:50</cbc:StartTime>
+				<cbc:EndDate>2023-04-29</cbc:EndDate>
+				<cbc:EndTime>12:30:50</cbc:EndTime>
+			</cac:EstimatedDeliveryPeriod>
+			<cac:Despatch>
+				<cac:DespatchAddress>
+					<cbc:ID>01598570354-MOD095</cbc:ID>
+					<cbc:StreetName>Via Grecia 4</cbc:StreetName>
+					<cbc:CityName>Modena</cbc:CityName>
+					<cbc:PostalZone>41124</cbc:PostalZone>
+					<cbc:CountrySubentity>MO</cbc:CountrySubentity>
+					<cac:AddressLine>
+						<cbc:Line>Magazzino Unico AOSP</cbc:Line>
+					</cac:AddressLine>
+					<cac:Country>
+						<cbc:IdentificationCode>IT</cbc:IdentificationCode>
+					</cac:Country>
+				</cac:DespatchAddress>
+			</cac:Despatch>
+		</cac:Delivery>
+	</cac:Shipment>
+	<cac:DespatchLine>
+		<cbc:ID>1</cbc:ID>
+		<cbc:Note>Quantità Ordinati su Ordine:10 Prova Inevasa 1</cbc:Note>
+		<cbc:DeliveredQuantity unitCode="C62">6</cbc:DeliveredQuantity>
+		<cbc:OutstandingQuantity unitCode="C62">4</cbc:OutstandingQuantity>
+		<cbc:OutstandingReason>Quantità da spedire successivamente con altro DDT</cbc:OutstandingReason>
+		<cac:OrderLineReference>
+			<cbc:LineID>1</cbc:LineID>
+			<cac:OrderReference>
+				<cbc:ID>100#2023-04-25#O92KTP</cbc:ID>
+			</cac:OrderReference>
+		</cac:OrderLineReference>
+		<cac:Item>
+			<cbc:Name>CONNETTIVINA CREMA PLUS 25G</cbc:Name>
+			<cac:SellersItemIdentification>
+				<cbc:ID>101500H</cbc:ID>
+			</cac:SellersItemIdentification>
+			<cac:StandardItemIdentification>
+				<cbc:ID schemeID="0160">028440030</cbc:ID>
+			</cac:StandardItemIdentification>
+			<cac:ItemInstance>
+				<cac:LotIdentification>
+					<cbc:LotNumberID>126200</cbc:LotNumberID>
+					<cbc:ExpiryDate>2024-06-30</cbc:ExpiryDate>
+				</cac:LotIdentification>
+			</cac:ItemInstance>
+		</cac:Item>
+	</cac:DespatchLine>
+	<cac:DespatchLine>
+		<cbc:ID>2</cbc:ID>
+		<cbc:Note>Quantità Ordinati su Ordine:10 Prova Inevasa 2</cbc:Note>
+		<cbc:DeliveredQuantity unitCode="C62">6</cbc:DeliveredQuantity>
+		<cbc:OutstandingQuantity unitCode="C62">0</cbc:OutstandingQuantity>
+		<cbc:OutstandingReason>Non presenti in magazzino</cbc:OutstandingReason>
+		<cac:OrderLineReference>
+			<cbc:LineID>1</cbc:LineID>
+			<cac:OrderReference>
+				<cbc:ID>200#2023-04-25#O92KTP</cbc:ID>
+			</cac:OrderReference>
+		</cac:OrderLineReference>
+		<cac:Item>
+			<cbc:Name>MAALOX</cbc:Name>
+			<cac:SellersItemIdentification>
+				<cbc:ID>AICFARMACO:680075745</cbc:ID>
+			</cac:SellersItemIdentification>
+			<cac:StandardItemIdentification>
+				<cbc:ID schemeID="0160">022440070</cbc:ID>
+			</cac:StandardItemIdentification>
+			<cac:ItemInstance>
+				<cac:LotIdentification>
+					<cbc:LotNumberID>987645FF</cbc:LotNumberID>
+					<cbc:ExpiryDate>2024-06-20</cbc:ExpiryDate>
+				</cac:LotIdentification>
+			</cac:ItemInstance>
+		</cac:Item>
+	</cac:DespatchLine>
+	<cac:DespatchLine>
+		<cbc:ID>3</cbc:ID>
+		<cbc:Note>Quantità Ordinati su Ordine:10 Prova Inevasa 3</cbc:Note>
+		<cbc:DeliveredQuantity unitCode="C62">6</cbc:DeliveredQuantity>
+		<cbc:OutstandingQuantity unitCode="C62">3</cbc:OutstandingQuantity>
+		<cbc:OutstandingReason>Quantità da spedire successivamente con altro DDT. Uno fuori mercato</cbc:OutstandingReason>
+		<cac:OrderLineReference>
+			<cbc:LineID>1</cbc:LineID>
+			<cac:OrderReference>
+				<cbc:ID>300#2023-04-25#O92KTP</cbc:ID>
+			</cac:OrderReference>
+		</cac:OrderLineReference>
+		<cac:Item>
+			<cbc:Name>Buscopan</cbc:Name>
+			<cac:SellersItemIdentification>
+				<cbc:ID>AICFARMACO:009875545</cbc:ID>
+			</cac:SellersItemIdentification>
+			<cac:StandardItemIdentification>
+				<cbc:ID schemeID="0160">045640070</cbc:ID>
+			</cac:StandardItemIdentification>
+			<cac:ItemInstance>
+				<cac:LotIdentification>
+					<cbc:LotNumberID>987325HB</cbc:LotNumberID>
+					<cbc:ExpiryDate>2025-02-15</cbc:ExpiryDate>
+				</cac:LotIdentification>
+			</cac:ItemInstance>
+		</cac:Item>
+	</cac:DespatchLine>
+</DespatchAdvice>

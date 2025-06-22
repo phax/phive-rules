@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DespatchAdvice xmlns="urn:oasis:names:specification:ubl:schema:xsd:DespatchAdvice-2"
+	xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+	xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
+	<cbc:CustomizationID>urn:fdc:peppol.eu:poacc:trns:despatch_advice:3:extended:urn:www.agid.gov.it:trns:ddt:3.1</cbc:CustomizationID>
+	<cbc:ProfileID>urn:fdc:peppol.eu:poacc:bis:despatch_advice:3</cbc:ProfileID>
+	<cbc:ID>02_DDT_BIS3_V02_B2G</cbc:ID>
+	<cbc:IssueDate>2023-01-01</cbc:IssueDate>
+	<cac:DespatchSupplierParty>
+		<cac:Party>
+			<cbc:EndpointID schemeID="0211">IT02188520544</cbc:EndpointID>
+			<cac:PartyIdentification>
+				<cbc:ID schemeID="0211">IT02188520544</cbc:ID>
+			</cac:PartyIdentification>
+			<cac:PostalAddress>
+				<cbc:StreetName>Via Lucio Dalla 1</cbc:StreetName>
+				<cbc:CityName>Bologna</cbc:CityName>
+				<cbc:PostalZone>40121</cbc:PostalZone>
+				<cbc:CountrySubentity>BO</cbc:CountrySubentity>
+				<cac:Country>
+					<cbc:IdentificationCode>IT</cbc:IdentificationCode>
+				</cac:Country>
+			</cac:PostalAddress>
+			<cac:PartyLegalEntity>
+				<cbc:RegistrationName>Speditore SPA</cbc:RegistrationName>
+			</cac:PartyLegalEntity>
+			<cac:Contact>
+				<cbc:Name>Deposito Logistica Integrata</cbc:Name>
+				<cbc:Telephone>029506981</cbc:Telephone>
+			</cac:Contact>
+		</cac:Party>
+	</cac:DespatchSupplierParty>
+	<cac:DeliveryCustomerParty>
+		<cac:Party>
+			<cbc:EndpointID schemeID="0201">O92KTP</cbc:EndpointID>
+			<cac:PartyIdentification>
+				<cbc:ID schemeID="0210">02241850367</cbc:ID>
+			</cac:PartyIdentification>
+			<cac:PostalAddress>
+				<cbc:StreetName>Via S. Giovanni del cantone, 23</cbc:StreetName>
+				<cbc:CityName>Modena</cbc:CityName>
+				<cbc:PostalZone>41121</cbc:PostalZone>
+				<cbc:CountrySubentity>MO</cbc:CountrySubentity>
+				<cac:Country>
+					<cbc:IdentificationCode>IT</cbc:IdentificationCode>
+				</cac:Country>
+			</cac:PostalAddress>
+			<cac:PartyLegalEntity>
+				<cbc:RegistrationName>Azienda USL di Modena</cbc:RegistrationName>
+			</cac:PartyLegalEntity>
+		</cac:Party>
+	</cac:DeliveryCustomerParty>
+	<cac:BuyerCustomerParty>
+		<cac:Party>
+			<cac:PartyIdentification>
+				<cbc:ID schemeID="0210">01598570354</cbc:ID>
+			</cac:PartyIdentification>
+			<cac:PartyName>
+				<cbc:Name>Azienda Ospedaliero-Universitaria di Modena</cbc:Name>
+			</cac:PartyName>
+			<cac:PostalAddress>
+				<cbc:StreetName>Via del Pozzo 71</cbc:StreetName>
+				<cbc:CityName>Modena</cbc:CityName>
+				<cbc:PostalZone>41124</cbc:PostalZone>
+				<cbc:CountrySubentity>MO</cbc:CountrySubentity>
+				<cac:Country>
+					<cbc:IdentificationCode>IT</cbc:IdentificationCode>
+				</cac:Country>
+			</cac:PostalAddress>
+		</cac:Party>
+	</cac:BuyerCustomerParty>
+	<cac:SellerSupplierParty>
+		<cac:Party>
+			<cac:PartyIdentification>
+				<cbc:ID schemeID="0211">IT00832400154</cbc:ID>
+			</cac:PartyIdentification>
+			<cac:PartyName>
+				<cbc:Name>Fornitore S.p.A</cbc:Name>
+			</cac:PartyName>
+			<cac:PostalAddress>
+				<cbc:StreetName>Viale Luigi Bodio 12</cbc:StreetName>
+				<cbc:CityName>Milano</cbc:CityName>
+				<cbc:PostalZone>20158</cbc:PostalZone>
+				<cbc:CountrySubentity>MI</cbc:CountrySubentity>
+				<cac:Country>
+					<cbc:IdentificationCode>IT</cbc:IdentificationCode>
+				</cac:Country>
+			</cac:PostalAddress>
+		</cac:Party>
+	</cac:SellerSupplierParty>
+	<cac:Shipment>
+		<cbc:ID>STM 0001946113</cbc:ID>
+		<cbc:Information>Vendita</cbc:Information>
+		<cbc:GrossWeightMeasure unitCode="KGM">165.440</cbc:GrossWeightMeasure>
+		<cbc:TotalTransportHandlingUnitQuantity>22</cbc:TotalTransportHandlingUnitQuantity>
+		<cac:Consignment>
+			<cbc:ID>STM 0001946113</cbc:ID>
+			<cac:CarrierParty>
+				<cac:PartyIdentification>
+					<cbc:ID schemeID="0211">IT00204260285</cbc:ID>
+				</cac:PartyIdentification>
+				<cac:PartyName>
+					<cbc:Name>EURODIFARM SRL</cbc:Name>
+				</cac:PartyName>
+				<cac:PostalAddress>
+					<cbc:StreetName>Via Europa 100</cbc:StreetName>
+					<cbc:AdditionalStreetName>Palazzo A</cbc:AdditionalStreetName>
+					<cbc:CityName>Bologna</cbc:CityName>
+					<cbc:PostalZone>40121</cbc:PostalZone>
+					<cbc:CountrySubentity>BO</cbc:CountrySubentity>
+					<cac:Country>
+						<cbc:IdentificationCode>IT</cbc:IdentificationCode>
+					</cac:Country>
+				</cac:PostalAddress>
+			</cac:CarrierParty>
+		</cac:Consignment>
+		<cac:ShipmentStage>
+			<cbc:TransportModeCode>2</cbc:TransportModeCode>
+		</cac:ShipmentStage>
+		<cac:Delivery>
+			<cbc:TrackingID>STM 0001946113</cbc:TrackingID>
+			<cac:Despatch>
+				<cac:DespatchAddress>
+					<cbc:ID>01598570354-MOD095</cbc:ID>
+					<cbc:StreetName>Via Grecia 4</cbc:StreetName>
+					<cbc:CityName>Modena</cbc:CityName>
+					<cbc:PostalZone>41124</cbc:PostalZone>
+					<cbc:CountrySubentity>MO</cbc:CountrySubentity>
+					<cac:AddressLine>
+						<cbc:Line>Magazzino Unico AUSL</cbc:Line>
+					</cac:AddressLine>
+					<cac:Country>
+							<cbc:IdentificationCode>IT</cbc:IdentificationCode>
+					</cac:Country>
+				</cac:DespatchAddress>
+			</cac:Despatch>
+		</cac:Delivery>
+	</cac:Shipment>
+	<cac:DespatchLine>
+		<cbc:ID>1</cbc:ID>
+		<cbc:DeliveredQuantity unitCode="C62">960</cbc:DeliveredQuantity>
+		<cac:OrderLineReference>
+			<cbc:LineID>1</cbc:LineID>
+			<cac:OrderReference>
+				<cbc:ID>ORD01#2022-12-01#O92KTP</cbc:ID>
+			</cac:OrderReference>
+		</cac:OrderLineReference>
+		<cac:Item>
+			<cbc:Name>CONNETTIVINA CREMA PLUS 25G</cbc:Name>
+			<cac:SellersItemIdentification>
+				<cbc:ID>101500H</cbc:ID>
+			</cac:SellersItemIdentification>
+			<cac:StandardItemIdentification>
+				<cbc:ID schemeID="0160">028440030</cbc:ID>
+			</cac:StandardItemIdentification>
+			<cac:ItemInstance>
+				<cac:LotIdentification>
+					<cbc:LotNumberID>126200</cbc:LotNumberID>
+					<cbc:ExpiryDate>2024-06-30</cbc:ExpiryDate>
+				</cac:LotIdentification>
+			</cac:ItemInstance>
+		</cac:Item>
+	</cac:DespatchLine>
+	<cac:DespatchLine>
+		<cbc:ID>2</cbc:ID>
+		<cbc:DeliveredQuantity unitCode="C62">960</cbc:DeliveredQuantity>
+		<cac:OrderLineReference>
+			<cbc:LineID>4</cbc:LineID>
+			<cac:OrderReference>
+				<cbc:ID>ORD02#2022-12-01#O92KTP</cbc:ID>
+			</cac:OrderReference>
+		</cac:OrderLineReference>
+		<cac:Item>
+			<cbc:Name>CONNETTIVINA CREMA PLUS 50G</cbc:Name>
+			<cac:SellersItemIdentification>
+				<cbc:ID>106009H</cbc:ID>
+			</cac:SellersItemIdentification>
+			<cac:StandardItemIdentification>
+				<cbc:ID schemeID="0160">028440040</cbc:ID>
+			</cac:StandardItemIdentification>
+			<cac:ItemInstance>
+				<cac:LotIdentification>
+					<cbc:LotNumberID>126300</cbc:LotNumberID>
+					<cbc:ExpiryDate>2024-06-30</cbc:ExpiryDate>
+				</cac:LotIdentification>
+			</cac:ItemInstance>
+		</cac:Item>
+	</cac:DespatchLine>
+</DespatchAdvice>

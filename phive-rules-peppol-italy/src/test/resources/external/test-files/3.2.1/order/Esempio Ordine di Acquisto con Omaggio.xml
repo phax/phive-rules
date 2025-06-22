@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Order xmlns:xs="http://www.w3.org/2001/XMLSchema"
+		xmlns="urn:oasis:names:specification:ubl:schema:xsd:Order-2"
+		xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+		xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
+	<cbc:CustomizationID>urn:fdc:peppol.eu:poacc:trns:order:3:restrictive:urn:www.agid.gov.it:trns:ordine:3.1</cbc:CustomizationID>
+	<cbc:ProfileID>urn:fdc:peppol.eu:poacc:bis:order_only:3</cbc:ProfileID>
+	<cbc:ID>2018/10021125</cbc:ID>
+	<cbc:IssueDate>2018-07-01</cbc:IssueDate>
+	<cbc:OrderTypeCode>220</cbc:OrderTypeCode>
+	<cbc:Note>Ordine di Acquisto con Omaggio</cbc:Note>
+	<cbc:DocumentCurrencyCode>EUR</cbc:DocumentCurrencyCode>
+	<cac:ValidityPeriod>
+		<cbc:EndDate>2018-12-31</cbc:EndDate>
+	</cac:ValidityPeriod>
+	<cac:OriginatorDocumentReference>
+		<cbc:ID>63185432A2</cbc:ID>
+	</cac:OriginatorDocumentReference>
+	<cac:Contract>
+		<cbc:ID>2016.123</cbc:ID>
+	</cac:Contract>
+	<cac:BuyerCustomerParty>
+		<cac:Party>
+			<cbc:EndpointID schemeID="0201">ABCDEF</cbc:EndpointID>
+			<cac:PartyName>
+				<cbc:Name>Acquirente Pubblico - Azienda Sanitaria</cbc:Name>
+			</cac:PartyName>
+			<cac:PostalAddress>
+				<cbc:StreetName>Via Albertoni, 15</cbc:StreetName>
+				<cbc:CityName>Bologna</cbc:CityName>
+				<cbc:PostalZone>40138</cbc:PostalZone>
+				<cbc:CountrySubentity>BO</cbc:CountrySubentity>
+				<cac:AddressLine>
+					<cbc:Line>Zona Periferia</cbc:Line>
+				</cac:AddressLine>
+				<cac:Country>
+					<cbc:IdentificationCode>IT</cbc:IdentificationCode>
+				</cac:Country>
+			</cac:PostalAddress>
+			<cac:PartyTaxScheme>
+				<cbc:CompanyID>IT92038610371</cbc:CompanyID>
+				<cac:TaxScheme>
+					<cbc:ID>VAT</cbc:ID>
+				</cac:TaxScheme>
+			</cac:PartyTaxScheme>
+			<cac:PartyLegalEntity>
+				<cbc:RegistrationName>Acquirente Pubblico - Azienda Sanitaria</cbc:RegistrationName>
+			</cac:PartyLegalEntity>
+			<cac:Contact>
+				<cbc:Name>Tizio Tizio</cbc:Name>
+				<cbc:ElectronicMail>Acquirente@Aosp.BO.it</cbc:ElectronicMail>
+			</cac:Contact>
+		</cac:Party>
+	</cac:BuyerCustomerParty>
+	<cac:SellerSupplierParty>
+		<cac:Party>
+			<cbc:EndpointID schemeID="0211">IT02188520544</cbc:EndpointID>
+			<cac:PartyName>
+				<cbc:Name>Venditore S.p.A.</cbc:Name>
+			</cac:PartyName>
+			<cac:PostalAddress>
+				<cbc:StreetName>Via della Colombaia, 12</cbc:StreetName>
+				<cbc:AdditionalStreetName>Deposito Consegnatario: ARS CHIRURGICA SRL (PMC), 05191815</cbc:AdditionalStreetName>
+				<cbc:CityName>San Giovanni in Persiceto</cbc:CityName>
+				<cbc:PostalZone>40017</cbc:PostalZone>
+				<cbc:CountrySubentity>BO</cbc:CountrySubentity>
+				<cac:AddressLine>
+					<cbc:Line>Deposito Consegnatario: Venditore S.p.A</cbc:Line>
+				</cac:AddressLine>
+				<cac:Country>
+					<cbc:IdentificationCode>IT</cbc:IdentificationCode>
+				</cac:Country>
+			</cac:PostalAddress>
+			<cac:PartyLegalEntity>
+				<cbc:RegistrationName>Venditore S.p.A.</cbc:RegistrationName>
+			</cac:PartyLegalEntity>
+			<cac:Contact>
+				<cbc:Name>Caio Caio</cbc:Name>
+				<cbc:ElectronicMail>Venditore@italia.it</cbc:ElectronicMail>
+			</cac:Contact>
+		</cac:Party>
+	</cac:SellerSupplierParty>
+	<cac:AccountingCustomerParty>
+		<cac:Party>
+			<cbc:EndpointID schemeID="0201">ABCDEF</cbc:EndpointID>
+			<cac:PartyIdentification>
+				<cbc:ID schemeID="0201">ABCDEF</cbc:ID>
+			</cac:PartyIdentification>
+			<cac:PartyName>
+				<cbc:Name>Acquirente Pubblico - Azienda Sanitaria</cbc:Name>
+			</cac:PartyName>
+			<cac:PostalAddress>
+				<cbc:StreetName>Via Albertoni, 15</cbc:StreetName>
+				<cbc:AdditionalStreetName>Risorse Economiche e Finanziarie</cbc:AdditionalStreetName>
+				<cbc:CityName>Bologna</cbc:CityName>
+				<cbc:PostalZone>40138</cbc:PostalZone>
+				<cbc:CountrySubentity>BO</cbc:CountrySubentity>
+				<cac:AddressLine>
+					<cbc:Line>Risorse Economiche e Finanziarie:Stanza 18</cbc:Line>
+				</cac:AddressLine>
+				<cac:Country>
+					<cbc:IdentificationCode>IT</cbc:IdentificationCode>
+				</cac:Country>
+			</cac:PostalAddress>
+			<cac:PartyLegalEntity>
+				<cbc:RegistrationName>Acquirente Pubblico - Azienda Sanitaria</cbc:RegistrationName>
+			</cac:PartyLegalEntity>
+			<cac:Contact>
+				<cbc:Name>ResponsabileFatturazione</cbc:Name>
+				<cbc:ElectronicMail>responsabile.fatturazione@ospedale.it</cbc:ElectronicMail>
+			</cac:Contact>
+		</cac:Party>
+	</cac:AccountingCustomerParty>
+	<cac:Delivery>
+		<cac:DeliveryLocation>
+			<cbc:ID>92038610371-C34</cbc:ID>
+			<cac:Address>
+				<cbc:StreetName>Viale Ercolani, 4</cbc:StreetName>
+				<cbc:CityName>Bologna</cbc:CityName>
+				<cbc:PostalZone>40138</cbc:PostalZone>
+				<cbc:CountrySubentity>BO</cbc:CountrySubentity>
+				<cac:AddressLine>
+					<cbc:Line>Orario: Lun. - Ven. 8:00-13:00 / Sab. 8:00-12:00</cbc:Line>
+				</cac:AddressLine>
+				<cac:Country>
+					<cbc:IdentificationCode>IT</cbc:IdentificationCode>
+				</cac:Country>
+			</cac:Address>
+		</cac:DeliveryLocation>
+		<cac:DeliveryParty>
+			<cac:PartyIdentification>
+				<cbc:ID schemeID="0201">ABCDEF</cbc:ID>
+			</cac:PartyIdentification>
+			<cac:PartyName>
+				<cbc:Name>Centro Logistico Beni Sanit-Ecom Area 2</cbc:Name>
+			</cac:PartyName>
+			<cac:Contact>
+				<cbc:Name>ResponsabileMagazzino</cbc:Name>
+				<cbc:Telephone>0516361509</cbc:Telephone>
+				<cbc:ElectronicMail>responsabile.magazzino@azienda sanitaria.it</cbc:ElectronicMail>
+			</cac:Contact>
+		</cac:DeliveryParty>
+	</cac:Delivery>
+	<cac:DeliveryTerms>
+		<cbc:ID>PORTO FRANCO</cbc:ID>
+	</cac:DeliveryTerms>
+	<cac:PaymentTerms>
+		<cbc:Note>D.LGS. 231/2002 S.M.I.</cbc:Note>
+	</cac:PaymentTerms>
+	<cac:TaxTotal>
+		<cbc:TaxAmount currencyID="EUR">25.99</cbc:TaxAmount>
+	</cac:TaxTotal>
+	<!--Gestione Arrotondamenti su 0.5 (eccesso, difetto)-->
+	<cac:AnticipatedMonetaryTotal>
+		<cbc:LineExtensionAmount currencyID="EUR">118.13</cbc:LineExtensionAmount>
+		<cbc:TaxExclusiveAmount currencyID="EUR">118.13</cbc:TaxExclusiveAmount>
+		<cbc:TaxInclusiveAmount currencyID="EUR">144.12</cbc:TaxInclusiveAmount>
+		<cbc:PayableAmount currencyID="EUR">144.12</cbc:PayableAmount>
+	</cac:AnticipatedMonetaryTotal>
+	<cac:OrderLine>
+		<cac:LineItem>
+			<cbc:ID>1</cbc:ID>
+			<cbc:Quantity unitCode="XPK">25</cbc:Quantity>
+			<cbc:LineExtensionAmount currencyID="EUR">118.13</cbc:LineExtensionAmount>
+			<cac:Price>
+				<cbc:PriceAmount currencyID="EUR">4.72500</cbc:PriceAmount>
+				<cbc:BaseQuantity unitCode="XPK">1</cbc:BaseQuantity>
+			</cac:Price>
+			<cac:Item>
+				<cbc:Description>128481</cbc:Description>
+				<cbc:Name>CONFEZIONE GUANTI VINILE MONOUSO</cbc:Name>
+				<cac:SellersItemIdentification>
+					<cbc:ID>79847-E</cbc:ID>
+				</cac:SellersItemIdentification>
+				<cac:ClassifiedTaxCategory>
+					<cbc:ID>S</cbc:ID>
+					<cbc:Percent>22</cbc:Percent>
+					<cac:TaxScheme>
+						<cbc:ID>VAT</cbc:ID>
+					</cac:TaxScheme>
+				</cac:ClassifiedTaxCategory>
+				<cac:AdditionalItemProperty>
+          <!--Un articolo (confezione) contiene 500 pezzi-->
+          <cbc:Name>PackQuantity</cbc:Name>
+          <cbc:Value>500</cbc:Value>
+        </cac:AdditionalItemProperty>
+			</cac:Item>
+		</cac:LineItem>
+	</cac:OrderLine>
+	<cac:OrderLine>
+		<cac:LineItem>
+			<cbc:ID>2</cbc:ID>
+			<cbc:Quantity unitCode="XPK">5</cbc:Quantity>
+			<cbc:LineExtensionAmount currencyID="EUR">0.00</cbc:LineExtensionAmount>
+			<cac:Price>
+				<cbc:PriceAmount currencyID="EUR">0.00000</cbc:PriceAmount>
+				<cbc:BaseQuantity unitCode="XPK">1</cbc:BaseQuantity>
+				<cac:AllowanceCharge>
+		        <cbc:ChargeIndicator>false</cbc:ChargeIndicator>
+		        <cbc:Amount currencyID="EUR">4.72500</cbc:Amount>
+            <cbc:BaseAmount currencyID="EUR">4.72500</cbc:BaseAmount>
+        </cac:AllowanceCharge>
+			</cac:Price>
+			<cac:Item>
+				<cbc:Description>128481</cbc:Description>
+				<cbc:Name>CONFEZIONE GUANTI VINILE MONOUSO</cbc:Name>
+				<cac:SellersItemIdentification>
+					<cbc:ID>79847-E</cbc:ID>
+				</cac:SellersItemIdentification>
+				<cac:ClassifiedTaxCategory>
+					<cbc:ID>O</cbc:ID>
+					<cbc:Percent>0</cbc:Percent>
+					<cac:TaxScheme>
+						<cbc:ID>VAT</cbc:ID>
+					</cac:TaxScheme>
+				</cac:ClassifiedTaxCategory>
+				<cac:AdditionalItemProperty>
+          <!--Un articolo (confezione) contiene 500 pezzi-->
+          <cbc:Name>PackQuantity</cbc:Name>
+          <cbc:Value>500</cbc:Value>
+        </cac:AdditionalItemProperty>
+			</cac:Item>
+		</cac:LineItem>
+	</cac:OrderLine>
+</Order>
