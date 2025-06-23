@@ -207,7 +207,7 @@ I hope that with the introduction of PINT, the versioning problem will be solved
   
 # News and noteworthy
 
-* v3.2.13 - work in progress
+* v3.2.13 - 2025-06-23
     * Added support for EN 16931 rules v1.3.14.2 format and deprecated v1.3.14.1
     * Added Peppol BIS 2025-05 release
     * Added Peppol MLS 1.0.0 with VESID `org.peppol:mls:*`
