@@ -54,6 +54,7 @@ public final class PeppolValidationPintJP_NTR
   public static final DVRCoordinate VID_OPENPEPPOL_JP_PINT_NTR_CREDIT_NOTE_1_0_1 = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                                                       "credit-note",
                                                                                                                       "1.0.1");
+
   // 1.1.0
   public static final LocalDate V1_1_0_VALID_PER = PDTFactory.createLocalDate (2025, Month.MARCH, 10);
   public static final OffsetDateTime V1_1_0_VALID_PER_UTC = PDTFactory.createOffsetDateTimeUTC (V1_1_0_VALID_PER);
@@ -63,6 +64,16 @@ public final class PeppolValidationPintJP_NTR
   public static final DVRCoordinate VID_OPENPEPPOL_JP_PINT_NTR_CREDIT_NOTE_1_1_0 = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                                                       "credit-note",
                                                                                                                       "1.1.0");
+
+  // 1.1.1
+  public static final LocalDate V1_1_1_VALID_PER = PDTFactory.createLocalDate (2025, Month.SEPTEMBER, 25);
+  public static final OffsetDateTime V1_1_1_VALID_PER_UTC = PDTFactory.createOffsetDateTimeUTC (V1_1_1_VALID_PER);
+  public static final DVRCoordinate VID_OPENPEPPOL_JP_PINT_NTR_INVOICE_1_1_1 = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                                  "invoice",
+                                                                                                                  "1.1.1");
+  public static final DVRCoordinate VID_OPENPEPPOL_JP_PINT_NTR_CREDIT_NOTE_1_1_1 = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                                      "credit-note",
+                                                                                                                      "1.1.1");
 
   private PeppolValidationPintJP_NTR ()
   {}
@@ -131,6 +142,32 @@ public final class PeppolValidationPintJP_NTR
                                                                              "Peppol PINT Japan Credit Note for Non-tax Registered Businesses (UBL) 1.1.0",
                                                                              PhiveRulesHelper.createSimpleStatus (bNotDeprecated,
                                                                                                                   V1_1_0_VALID_PER_UTC),
+                                                                             PhiveRulesHelper.createXSLT (aCPR1,
+                                                                                                          aNSCtxCreditNote),
+                                                                             PhiveRulesHelper.createXSLT (aCPR2,
+                                                                                                          aNSCtxCreditNote)));
+    }
+
+    // 1.1.1
+    {
+      final ClassPathResource aCPR1 = new ClassPathResource (BASE_PATH +
+                                                             "1.1.1/xslt/PINT-UBL-validation-preprocessed.xslt",
+                                                             _getCL ());
+      final ClassPathResource aCPR2 = new ClassPathResource (BASE_PATH +
+                                                             "1.1.1/xslt/PINT-jurisdiction-aligned-rules.xslt",
+                                                             _getCL ());
+      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_JP_PINT_NTR_INVOICE_1_1_1,
+                                                                             "Peppol PINT Japan Invoice for Non-tax Registered Businesses (UBL) 1.1.1",
+                                                                             PhiveRulesHelper.createSimpleStatus (bNotDeprecated,
+                                                                                                                  V1_1_1_VALID_PER_UTC),
+                                                                             PhiveRulesHelper.createXSLT (aCPR1,
+                                                                                                          aNSCtxInvoice),
+                                                                             PhiveRulesHelper.createXSLT (aCPR2,
+                                                                                                          aNSCtxInvoice)));
+      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_JP_PINT_NTR_CREDIT_NOTE_1_1_1,
+                                                                             "Peppol PINT Japan Credit Note for Non-tax Registered Businesses (UBL) 1.1.1",
+                                                                             PhiveRulesHelper.createSimpleStatus (bNotDeprecated,
+                                                                                                                  V1_1_1_VALID_PER_UTC),
                                                                              PhiveRulesHelper.createXSLT (aCPR1,
                                                                                                           aNSCtxCreditNote),
                                                                              PhiveRulesHelper.createXSLT (aCPR2,
