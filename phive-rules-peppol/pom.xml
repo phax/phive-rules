@@ -201,8 +201,8 @@
               <goal>convert</goal>
             </goals>
             <configuration>
-              <schematronDirectory>src/test/resources/external/rule-source/pint-aunz/1.1.0</schematronDirectory>
-              <xsltDirectory>src/main/resources/external/schematron/pint-aunz/1.1.0/xslt</xsltDirectory>
+              <schematronDirectory>src/test/resources/external/rule-source/pint-aunz/1.1.1</schematronDirectory>
+              <xsltDirectory>src/main/resources/external/schematron/pint-aunz/1.1.1/xslt</xsltDirectory>
             </configuration>
           </execution>
           -->
