@@ -80,6 +80,22 @@ public final class PeppolValidationPintMY
                                                                                                                                    "creditnote-self-billing",
                                                                                                                                    "1.1.0");
 
+  // 1.2.1
+  public static final LocalDate V1_2_1_VALID_PER = PDTFactory.createLocalDate (2025, Month.MARCH, 10);
+  public static final OffsetDateTime V1_2_1_VALID_PER_UTC = PDTFactory.createOffsetDateTimeUTC (V1_2_1_VALID_PER);
+  public static final DVRCoordinate VID_OPENPEPPOL_MY_PINT_UBL_INVOICE_1_2_1 = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                                  "invoice",
+                                                                                                                  "1.2.1");
+  public static final DVRCoordinate VID_OPENPEPPOL_MY_PINT_UBL_CREDIT_NOTE_1_2_1 = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                                      "creditnote",
+                                                                                                                      "1.2.1");
+  public static final DVRCoordinate VID_OPENPEPPOL_MY_PINT_UBL_INVOICE_SELF_BILLING_1_2_1 = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                                               "invoice-self-billing",
+                                                                                                                               "1.2.1");
+  public static final DVRCoordinate VID_OPENPEPPOL_MY_PINT_UBL_CREDIT_NOTE_SELF_BILLING_1_2_1 = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                                                   "creditnote-self-billing",
+                                                                                                                                   "1.2.1");
+
   private PeppolValidationPintMY ()
   {}
 
@@ -186,6 +202,57 @@ public final class PeppolValidationPintMY
                                                                              "Peppol PINT Malaysia Credit Note Self-Billing (UBL) 1.1.0",
                                                                              PhiveRulesHelper.createSimpleStatus (bNotDeprecated,
                                                                                                                   V1_1_0_VALID_PER_UTC),
+                                                                             PhiveRulesHelper.createXSLT (aCPRSelfBillingBase,
+                                                                                                          aNSCtxCreditNote),
+                                                                             PhiveRulesHelper.createXSLT (aCPRSelfBilling,
+                                                                                                          aNSCtxCreditNote)));
+    }
+
+    // 1.2.1
+    {
+      final ClassPathResource aCPRBillingBase = new ClassPathResource (BASE_PATH +
+                                                                       "1.2.1/xslt/billing/PINT-UBL-validation-preprocessed.xslt",
+                                                                       _getCL ());
+      final ClassPathResource aCPRBilling = new ClassPathResource (BASE_PATH +
+                                                                   "1.2.1/xslt/billing/PINT-jurisdiction-aligned-rules.xslt",
+                                                                   _getCL ());
+
+      final ClassPathResource aCPRSelfBillingBase = new ClassPathResource (BASE_PATH +
+                                                                           "1.2.1/xslt/selfbilling/PINT-UBL-validation-preprocessed.xslt",
+                                                                           _getCL ());
+      final ClassPathResource aCPRSelfBilling = new ClassPathResource (BASE_PATH +
+                                                                       "1.2.1/xslt/selfbilling/PINT-jurisdiction-aligned-rules.xslt",
+                                                                       _getCL ());
+
+      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_MY_PINT_UBL_INVOICE_1_2_1,
+                                                                             "Peppol PINT Malaysia Invoice (UBL) 1.2.1",
+                                                                             PhiveRulesHelper.createSimpleStatus (bNotDeprecated,
+                                                                                                                  V1_2_1_VALID_PER_UTC),
+                                                                             PhiveRulesHelper.createXSLT (aCPRBillingBase,
+                                                                                                          aNSCtxInvoice),
+                                                                             PhiveRulesHelper.createXSLT (aCPRBilling,
+                                                                                                          aNSCtxInvoice)));
+      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_MY_PINT_UBL_CREDIT_NOTE_1_2_1,
+                                                                             "Peppol PINT Malaysia Credit Note (UBL) 1.2.1",
+                                                                             PhiveRulesHelper.createSimpleStatus (bNotDeprecated,
+                                                                                                                  V1_2_1_VALID_PER_UTC),
+                                                                             PhiveRulesHelper.createXSLT (aCPRBillingBase,
+                                                                                                          aNSCtxCreditNote),
+                                                                             PhiveRulesHelper.createXSLT (aCPRBilling,
+                                                                                                          aNSCtxCreditNote)));
+
+      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_MY_PINT_UBL_INVOICE_SELF_BILLING_1_2_1,
+                                                                             "Peppol PINT Malaysia Invoice Self-Billing (UBL) 1.2.1",
+                                                                             PhiveRulesHelper.createSimpleStatus (bNotDeprecated,
+                                                                                                                  V1_2_1_VALID_PER_UTC),
+                                                                             PhiveRulesHelper.createXSLT (aCPRSelfBillingBase,
+                                                                                                          aNSCtxInvoice),
+                                                                             PhiveRulesHelper.createXSLT (aCPRSelfBilling,
+                                                                                                          aNSCtxInvoice)));
+      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_MY_PINT_UBL_CREDIT_NOTE_SELF_BILLING_1_2_1,
+                                                                             "Peppol PINT Malaysia Credit Note Self-Billing (UBL) 1.2.1",
+                                                                             PhiveRulesHelper.createSimpleStatus (bNotDeprecated,
+                                                                                                                  V1_2_1_VALID_PER_UTC),
                                                                              PhiveRulesHelper.createXSLT (aCPRSelfBillingBase,
                                                                                                           aNSCtxCreditNote),
                                                                              PhiveRulesHelper.createXSLT (aCPRSelfBilling,

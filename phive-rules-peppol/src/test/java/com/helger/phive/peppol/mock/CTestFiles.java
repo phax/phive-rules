@@ -226,6 +226,11 @@ public final class CTestFiles
                                                             PeppolValidationPintMY.VID_OPENPEPPOL_MY_PINT_UBL_INVOICE_SELF_BILLING_1_1_0,
                                                             PeppolValidationPintMY.VID_OPENPEPPOL_MY_PINT_UBL_CREDIT_NOTE_SELF_BILLING_1_1_0,
 
+                                                            PeppolValidationPintMY.VID_OPENPEPPOL_MY_PINT_UBL_INVOICE_1_2_1,
+                                                            PeppolValidationPintMY.VID_OPENPEPPOL_MY_PINT_UBL_CREDIT_NOTE_1_2_1,
+                                                            PeppolValidationPintMY.VID_OPENPEPPOL_MY_PINT_UBL_INVOICE_SELF_BILLING_1_2_1,
+                                                            PeppolValidationPintMY.VID_OPENPEPPOL_MY_PINT_UBL_CREDIT_NOTE_SELF_BILLING_1_2_1,
+
                                                             /* PINT Singapore */
                                                             PeppolValidationPintSG.VID_OPENPEPPOL_SG_PINT_UBL_INVOICE_1_1_0,
                                                             PeppolValidationPintSG.VID_OPENPEPPOL_SG_PINT_UBL_CREDIT_NOTE_1_1_0,
@@ -1243,6 +1248,28 @@ public final class CTestFiles
     }
     if (aVESID.equals (PeppolValidationPintMY.VID_OPENPEPPOL_MY_PINT_UBL_INVOICE_SELF_BILLING_1_1_0) ||
         aVESID.equals (PeppolValidationPintMY.VID_OPENPEPPOL_MY_PINT_UBL_CREDIT_NOTE_SELF_BILLING_1_1_0))
+    {
+      // empty
+      return new CommonsArrayList <> ();
+    }
+
+    // 1.2.1
+    if (aVESID.equals (PeppolValidationPintMY.VID_OPENPEPPOL_MY_PINT_UBL_INVOICE_1_2_1))
+    {
+      final String sPrefix = sPrefix0 + "pint-my/1.2.1/inv/";
+      return new CommonsArrayList <> (new FileSystemResource (sPrefix + "17022014MyPINT0.9Sample_MultiTaxRate.xml"),
+                                      new FileSystemResource (sPrefix + "17022024MyPINT0.9Sample_Common.xml"),
+                                      new FileSystemResource (sPrefix + "MyPINT1.0.0Sample_Common.xml"),
+                                      new FileSystemResource (sPrefix + "SAMPLE_COMMON_INVOICES_V1.1.xml"));
+    }
+    if (aVESID.equals (PeppolValidationPintMY.VID_OPENPEPPOL_MY_PINT_UBL_CREDIT_NOTE_1_2_1))
+    {
+      final String sPrefix = sPrefix0 + "pint-my/1.2.1/cn/";
+      return new CommonsArrayList <> (new FileSystemResource (sPrefix + "MyPINTSample1.0.0_CreditNote.xml"),
+                                      new FileSystemResource (sPrefix + "SAMPLE_COMMON_CREDITNOTE_V1.1.xml"));
+    }
+    if (aVESID.equals (PeppolValidationPintMY.VID_OPENPEPPOL_MY_PINT_UBL_INVOICE_SELF_BILLING_1_2_1) ||
+        aVESID.equals (PeppolValidationPintMY.VID_OPENPEPPOL_MY_PINT_UBL_CREDIT_NOTE_SELF_BILLING_1_2_1))
     {
       // empty
       return new CommonsArrayList <> ();

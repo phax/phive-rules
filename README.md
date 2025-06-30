@@ -210,6 +210,7 @@ I hope that with the introduction of PINT, the versioning problem will be solved
 * v3.2.14 - work in progress
     * Added support for Peppol PINT AUNZ 1.1.1
     * Added support for Peppol PINT JP 1.1.1
+    * Added support for Peppol PINT MY 1.2.1
 * v3.2.13 - 2025-06-23
     * Added support for EN 16931 rules v1.3.14.2 format and deprecated v1.3.14.1
     * Added Peppol BIS 2025-05 release
