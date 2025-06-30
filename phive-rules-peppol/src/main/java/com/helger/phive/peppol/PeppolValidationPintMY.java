@@ -81,7 +81,7 @@ public final class PeppolValidationPintMY
                                                                                                                                    "1.1.0");
 
   // 1.2.1
-  public static final LocalDate V1_2_1_VALID_PER = PDTFactory.createLocalDate (2025, Month.MARCH, 10);
+  public static final LocalDate V1_2_1_VALID_PER = PDTFactory.createLocalDate (2025, Month.SEPTEMBER, 25);
   public static final OffsetDateTime V1_2_1_VALID_PER_UTC = PDTFactory.createOffsetDateTimeUTC (V1_2_1_VALID_PER);
   public static final DVRCoordinate VID_OPENPEPPOL_MY_PINT_UBL_INVOICE_1_2_1 = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                                                   "invoice",

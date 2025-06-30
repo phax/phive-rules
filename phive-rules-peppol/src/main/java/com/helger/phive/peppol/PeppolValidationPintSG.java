@@ -66,6 +66,16 @@ public final class PeppolValidationPintSG
                                                                                                                       "creditnote",
                                                                                                                       "1.2.0");
 
+  // 1.3.0
+  public static final LocalDate V1_3_0_VALID_PER = PDTFactory.createLocalDate (2025, Month.SEPTEMBER, 25);
+  public static final OffsetDateTime V1_3_0_VALID_PER_UTC = PDTFactory.createOffsetDateTimeUTC (V1_3_0_VALID_PER);
+  public static final DVRCoordinate VID_OPENPEPPOL_SG_PINT_UBL_INVOICE_1_3_0 = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                                  "invoice",
+                                                                                                                  "1.3.0");
+  public static final DVRCoordinate VID_OPENPEPPOL_SG_PINT_UBL_CREDIT_NOTE_1_3_0 = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                                      "creditnote",
+                                                                                                                      "1.3.0");
+
   private PeppolValidationPintSG ()
   {}
 
@@ -138,6 +148,37 @@ public final class PeppolValidationPintSG
                                                                              "Peppol PINT Singapore Credit Note (UBL) 1.2.0",
                                                                              PhiveRulesHelper.createSimpleStatus (bNotDeprecated,
                                                                                                                   V1_2_0_VALID_PER_UTC),
+                                                                             ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
+                                                                             PhiveRulesHelper.createXSLT (new ClassPathResource (sBaseBilling +
+                                                                                                                                 "PINT-UBL-validation-preprocessed.xslt",
+                                                                                                                                 _getCL ()),
+                                                                                                          aNSCtxCreditNote),
+                                                                             PhiveRulesHelper.createXSLT (new ClassPathResource (sBaseBilling +
+                                                                                                                                 "PINT-jurisdiction-aligned-rules.xslt",
+                                                                                                                                 _getCL ()),
+                                                                                                          aNSCtxCreditNote)));
+    }
+
+    // 1.3.0
+    {
+      final String sBaseBilling = BASE_PATH + "1.3.0/xslt/";
+      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_SG_PINT_UBL_INVOICE_1_3_0,
+                                                                             "Peppol PINT Singapore Invoice (UBL) 1.3.0",
+                                                                             PhiveRulesHelper.createSimpleStatus (bNotDeprecated,
+                                                                                                                  V1_3_0_VALID_PER_UTC),
+                                                                             ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
+                                                                             PhiveRulesHelper.createXSLT (new ClassPathResource (sBaseBilling +
+                                                                                                                                 "PINT-UBL-validation-preprocessed.xslt",
+                                                                                                                                 _getCL ()),
+                                                                                                          aNSCtxInvoice),
+                                                                             PhiveRulesHelper.createXSLT (new ClassPathResource (sBaseBilling +
+                                                                                                                                 "PINT-jurisdiction-aligned-rules.xslt",
+                                                                                                                                 _getCL ()),
+                                                                                                          aNSCtxInvoice)));
+      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_SG_PINT_UBL_CREDIT_NOTE_1_3_0,
+                                                                             "Peppol PINT Singapore Credit Note (UBL) 1.3.0",
+                                                                             PhiveRulesHelper.createSimpleStatus (bNotDeprecated,
+                                                                                                                  V1_3_0_VALID_PER_UTC),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
                                                                              PhiveRulesHelper.createXSLT (new ClassPathResource (sBaseBilling +
                                                                                                                                  "PINT-UBL-validation-preprocessed.xslt",
