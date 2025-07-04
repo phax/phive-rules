@@ -207,7 +207,7 @@ I hope that with the introduction of PINT, the versioning problem will be solved
   
 # News and noteworthy
 
-* v3.2.14 - work in progress
+* v3.2.14 - 2025-07-04
     * Added support for Peppol PINT AUNZ 1.1.1
     * Added support for Peppol PINT JP 1.1.1
     * Added support for Peppol PINT MY 1.2.1
