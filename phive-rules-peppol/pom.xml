@@ -189,8 +189,8 @@
               <goal>convert</goal>
             </goals>
             <configuration>
-              <schematronDirectory>src/test/resources/external/rule-source/pint-ae/2025.6</schematronDirectory>
-              <xsltDirectory>src/main/resources/external/schematron/pint-ae/2025.6/xslt</xsltDirectory>
+              <schematronDirectory>src/test/resources/external/rule-source/pint-ae/2025.7</schematronDirectory>
+              <xsltDirectory>src/main/resources/external/schematron/pint-ae/2025.7/xslt</xsltDirectory>
             </configuration>
           </execution>
           -->
