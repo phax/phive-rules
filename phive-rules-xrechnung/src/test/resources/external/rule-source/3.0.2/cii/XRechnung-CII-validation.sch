@@ -8,7 +8,7 @@
         xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
         xmlns:u="utils"
         queryBinding="xslt2">
-   <title>Schematron Version 2.3.0 - XRechnung 3.0.2 compatible - CII</title>
+   <title>Schematron Version 2.4.0 - XRechnung 3.0.2 compatible - CII</title>
    <ns prefix="rsm"
        uri="urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100"/>
    <ns prefix="ccts"
@@ -40,6 +40,7 @@
       <active pattern="variable-pattern"/>
       <active pattern="cii-pattern"/>
       <active pattern="cii-extension-pattern"/>
+      <active pattern="cii-cvd-pattern"/>
       <active pattern="peppol-cii-pattern-0-a"/>
       <active pattern="peppol-cii-pattern-0-b"/>
       <active pattern="peppol-cii-pattern-1"/>
@@ -313,7 +314,7 @@
                  id="BR-DE-26">[BR-DE-26] Wenn im Element Invoice type code (BT-3) der Code 384 (Corrected invoice) übergeben wird, soll PRECEDING INVOICE REFERENCE BG-3 mind. einmal vorhanden sein.</assert>
       </rule>
       <rule context="/rsm:CrossIndustryInvoice/rsm:ExchangedDocumentContext">
-         <assert test="ram:GuidelineSpecifiedDocumentContextParameter/ram:ID = $XR-CIUS-ID or                     ram:GuidelineSpecifiedDocumentContextParameter/ram:ID = $XR-EXTENSION-ID"
+         <assert test="ram:GuidelineSpecifiedDocumentContextParameter/ram:ID = $XR-CIUS-ID or                     ram:GuidelineSpecifiedDocumentContextParameter/ram:ID = $XR-EXTENSION-ID or                     ram:GuidelineSpecifiedDocumentContextParameter/ram:ID = $XR-CVD-ID"
                  flag="warning"
                  id="BR-DE-21">[BR-DE-21] Das Element "Specification identifier" (BT-24) soll syntaktisch der Kennung des Standards XRechnung entsprechen.</assert>
       </rule>
@@ -401,6 +402,18 @@
                  flag="fatal"
                  id="BR-DE-14">[BR-DE-14] Das Element "VAT category rate" (BT-119) muss übermittelt werden.</assert>
       </rule>
+      <rule context="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction">
+         <assert test="         ram:ApplicableHeaderTradeDelivery/ram:ActualDeliverySupplyChainEvent/ram:OccurrenceDateTime         or ram:ApplicableHeaderTradeSettlement/ram:BillingSpecifiedPeriod         or (every $line in ram:IncludedSupplyChainTradeLineItem             satisfies $line/ram:SpecifiedLineTradeSettlement/ram:BillingSpecifiedPeriod)"
+                 flag="information"
+                 id="BR-DE-TMP-32">
+        [BR-DE-TMP-32] Eine Rechnung sollte zur Angabe des Liefer-/Leistungsdatums entweder BT-72 "Actual delivery date", BG-14 "Invoicing period" oder in jeder Rechnungsposition BG-26 "Invoice line period" enthalten.
+      </assert>
+      </rule>
+      <rule context="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeAgreement">
+         <assert test="not(./ram:NetPriceProductTradePrice/ram:BasisQuantity and ./ram:GrossPriceProductTradePrice/ram:BasisQuantity) or (./ram:NetPriceProductTradePrice/ram:BasisQuantity = ./ram:GrossPriceProductTradePrice/ram:BasisQuantity and ./ram:NetPriceProductTradePrice/ram:BasisQuantity/@unitCode = ./ram:GrossPriceProductTradePrice/ram:BasisQuantity/@unitCode)"
+                 flag="fatal"
+                 id="BR-TMP-3">[BR-TMP-3] If both elements to which BT-149 and BT-150 can be mapped are present, both must be equal.</assert>
+      </rule>
    </pattern>
    <pattern id="cii-extension-pattern">
       <let name="isExtension"
@@ -441,6 +454,60 @@
          <assert test=".[@mimeCode = 'application/pdf' or               @mimeCode = 'image/png' or               @mimeCode = 'image/jpeg' or               @mimeCode = 'text/csv' or               @mimeCode = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' or               @mimeCode = 'application/vnd.oasis.opendocument.spreadsheet' or               @mimeCode = 'application/xml']"
                  id="BR-DEX-01"
                  flag="fatal">[BR-DEX-01] Das Element <name/> "Attached Document" (BT-125) benutzt einen nicht zulässigen MIME-Code: <value-of select="@mimeCode"/>. Im Falle einer Extension darf zusätzlich zu der Liste der mime codes (definiert in Abschnitt 8.2, "Binary Object") der MIME-Code application/xml genutzt werden.</assert>
+      </rule>
+   </pattern>
+   <pattern id="cii-cvd-pattern">
+      <let name="isCVD"
+           value="rsm:CrossIndustryInvoice/rsm:ExchangedDocumentContext/ram:GuidelineSpecifiedDocumentContextParameter/ram:ID/text() = $XR-CVD-ID"/>
+      <rule context="/rsm:CrossIndustryInvoice[$isCVD]/rsm:SupplyChainTradeTransaction">
+         <assert test="ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedTradeProduct[ram:DesignatedProductClassification/ram:ClassCode/@listID = 'CVD' and ram:ApplicableProductCharacteristic/ram:Description = 'cva']"
+                 flag="fatal"
+                 id="BR-DE-CVD-03">
+                [BR-DE-CVD-03] In einer Rechnung muss mindestens eine <name/> INVOICE LINE (BG-25) enthalten sein, in der der Scheme identifier von <name/> "Item classification identifier" (BT-158) den Wert 'CVD' und der <name/> "Item attribute name" (BT-160) den Wert 'cva' enthält.
+            </assert>
+      </rule>
+      <rule context="/rsm:CrossIndustryInvoice[$isCVD]/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedTradeProduct">
+         <assert test="not(ram:ApplicableProductCharacteristic/ram:Description = 'cva') or count(ram:DesignatedProductClassification/ram:ClassCode[@listID = 'CVD']) = 1"
+                 flag="fatal"
+                 id="BR-DE-CVD-06-b">
+                [BR-DE-CVD-06-b] Wenn <name/> "Item attribute name" (BT-160) mit dem Wert 'cva' angegeben ist, muss in derselben Rechnungszeile genau ein <name/> "Item classification identifier" (BT-158) mit dem Scheme identifier 'CVD' vorhanden sein.
+            </assert>
+         <assert test="not(ram:DesignatedProductClassification/ram:ClassCode/@listID = 'CVD') or count(ram:ApplicableProductCharacteristic[ram:Description = 'cva']) = 1"
+                 flag="fatal"
+                 id="BR-DE-CVD-06-a">
+                [BR-DE-CVD-06-a] Wenn der Scheme identifier von <name/> "Item classification identifier" (BT-158) mit dem Wert 'CVD' angegeben ist, muss in derselben Rechnungszeile genau ein <name/> "Item attribute name" (BT-160) mit dem Wert 'cva' vorhanden sein.
+            </assert>
+      </rule>
+      <rule context="/rsm:CrossIndustryInvoice[$isCVD]/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedTradeProduct/ram:DesignatedProductClassification/ram:ClassCode">
+         <assert test="((not(contains(normalize-space(@listID), ' ')) and contains($UNTDID-7143-CVD-CODES, concat(' ', normalize-space(@listID), ' '))))"
+                 flag="fatal"
+                 id="BR-TMP-CVD-01">
+                [BR-TMP-CVD-01] Das Bildungsschema für <name/> "Item classification identifier" (BT-158) ist aus der Codeliste UNTDID 7143 zu wählen.
+            </assert>
+         <assert test="not(normalize-space(@listID) = 'CVD') or normalize-space(.) = $CVD-VEHICLE-CATEGORY"
+                 flag="fatal"
+                 id="BR-DE-CVD-04">
+                [BR-DE-CVD-04] Ein <name/> "Item classification identifier" (BT-158) mit dem Scheme identifier 'CVD' muss einen Wert aus der Liste der zulässigen Fahrzeugkategorien enthalten.
+            </assert>
+      </rule>
+      <rule context="/rsm:CrossIndustryInvoice[$isCVD]/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedTradeProduct/ram:ApplicableProductCharacteristic[ram:Description = 'cva']">
+         <assert test="normalize-space(ram:Value) = $CVA-CODES"
+                 flag="fatal"
+                 id="BR-DE-CVD-05">
+                [BR-DE-CVD-05] Wenn innerhalb von <name/> ITEM ATTRIBUTES (BG-32) der <name/> "Item attribute name" (BT-160) den Wert 'cva' hat, muss der <name/> "Item attribute value" (BT-161) einen der zulässigen Werte enthalten.
+            </assert>
+      </rule>
+      <rule context="/rsm:CrossIndustryInvoice[$isCVD]/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement">
+         <assert test="ram:ContractReferencedDocument/ram:IssuerAssignedID[boolean(normalize-space(.))]"
+                 flag="fatal"
+                 id="BR-DE-CVD-01">
+                [BR-DE-CVD-01] Das Element <name/> "Contract reference" (BT-12) muss übermittelt werden.
+            </assert>
+         <assert test="ram:AdditionalReferencedDocument[normalize-space(ram:TypeCode) = '50' and normalize-space(ram:IssuerAssignedID)]"
+                 flag="fatal"
+                 id="BR-DE-CVD-02">
+                [BR-DE-CVD-02] Das Element <name/> "Tender or lot reference" (BT-17) muss übermittelt werden.
+            </assert>
       </rule>
    </pattern>
 </schema>

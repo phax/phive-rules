@@ -4,7 +4,7 @@
         xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
         xmlns:u="utils"
         queryBinding="xslt2">
-   <title>Schematron Version 2.3.0 - XRechnung 3.0.2 compatible - UBL - Invoice / Creditnote</title>
+   <title>Schematron Version 2.4.0 - XRechnung 3.0.2 compatible - UBL - Invoice / Creditnote</title>
    <ns prefix="cbc"
        uri="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"/>
    <ns prefix="cac"
@@ -48,6 +48,7 @@
       <active pattern="variable-pattern"/>
       <active pattern="ubl-pattern"/>
       <active pattern="ubl-extension-pattern"/>
+      <active pattern="ubl-cvd-pattern"/>
       <active pattern="peppol-ubl-pattern-1"/>
       <active pattern="peppol-ubl-pattern-2"/>
    </phase>
@@ -305,7 +306,7 @@
          <assert test="every $line in             cac:PaymentTerms/cbc:Note[1]/tokenize(. , '(\r?\n)')[starts-with( normalize-space(.) , '#')]              satisfies matches ( normalize-space ($line), $XR-SKONTO-REGEX)                                  and                                 matches( cac:PaymentTerms/cbc:Note[1]/tokenize(. ,  '#.+#')[last()], '^\s*\n' )"
                  flag="fatal"
                  id="BR-DE-18">[BR-DE-18] Skonto Zeilen in <name/> müssen diesem regulärem Ausdruck entsprechen: <value-of select="$XR-SKONTO-REGEX"/>. Die Informationen zur Gewährung von Skonto müssen wie folgt im Element "Payment terms" (BT-20) übermittelt werden: Anzugeben ist im ersten Segment "SKONTO", im zweiten "TAGE=n", im dritten "PROZENT=n". Prozentzahlen sind ohne Vorzeichen sowie mit Punkt getrennt von zwei Nachkommastellen anzugeben. Liegt dem zu berechnenden Betrag nicht BT-115, "fälliger Betrag" zugrunde, sondern nur ein Teil des fälligen Betrags der Rechnung, ist der Grundwert zur Berechnung von Skonto als viertes Segment "BASISBETRAG=n" gemäß dem semantischen Datentypen Amount anzugeben. Jeder Eintrag beginnt mit einer #, die Segmente sind mit einer # getrennt und eine Zeile schließt mit einer # ab. Am Ende einer vollständigen Skontoangabe muss ein XML-konformer Zeilenumbruch folgen. Alle Angaben zur Gewährung von Skonto müssen in Großbuchstaben gemacht werden. Zusätzliches Whitespace (Leerzeichen, Tabulatoren oder Zeilenumbrüche) ist nicht zulässig. Andere Zeichen oder Texte als in den oberen Vorgaben genannt sind nicht zulässig.</assert>
-         <assert test="cbc:CustomizationID = $XR-CIUS-ID or                     cbc:CustomizationID = $XR-EXTENSION-ID"
+         <assert test="cbc:CustomizationID = $XR-CIUS-ID or                     cbc:CustomizationID = $XR-EXTENSION-ID or                     cbc:CustomizationID = $XR-CVD-ID"
                  flag="warning"
                  id="BR-DE-21">[BR-DE-21] Das Element "Specification identifier" (BT-24) soll syntaktisch der Kennung des Standards XRechnung entsprechen.</assert>
          <assert test="count(cac:AdditionalDocumentReference) =                      count(cac:AdditionalDocumentReference[not(./cac:Attachment/cbc:EmbeddedDocumentBinaryObject/@filename = preceding-sibling::cac:AdditionalDocumentReference/cac:Attachment/cbc:EmbeddedDocumentBinaryObject/@filename)])"
@@ -320,6 +321,11 @@
          <assert test="not(cac:PaymentMeans/cac:PaymentMandate) or (cac:PaymentMeans/cac:PaymentMandate/cac:PayerFinancialAccount/cbc:ID)"
                  flag="fatal"
                  id="BR-DE-31">[BR-DE-31] Wenn "DIRECT DEBIT" BG-19 vorhanden ist, dann muss "Debited account identifier" BT-91 übermittelt werden.</assert>
+         <assert test="cac:Delivery/cbc:ActualDeliveryDate         or cac:InvoicePeriod         or (every $line in (cac:InvoiceLine | cac:CreditNoteLine) satisfies $line/cac:InvoicePeriod)"
+                 flag="information"
+                 id="BR-DE-TMP-32">
+        [BR-DE-TMP-32] Eine Rechnung sollte zur Angabe des Liefer-/Leistungsdatums entweder BT-72 "Actual delivery date", BG-14 "Invoicing period" oder in jeder Rechnungsposition BG-26 "Invoice line period" enthalten.
+      </assert>
       </rule>
       <rule context="/ubl:Invoice/cac:AdditionalDocumentReference/cac:Attachment/cac:ExternalReference | /cn:CreditNote/cac:AdditionalDocumentReference/cac:Attachment/cac:ExternalReference">
          <assert test="matches(cbc:URI, $XR-URL-REGEX)" flag="warning" id="BR-TMP-2">[BR-TMP-2] BT-124 "External document location" muss eine absolute URL mit gültigem Schema enthalten.</assert>
@@ -427,7 +433,7 @@
               value="if (exists(../cac:PrepaidPayment/cbc:PaidAmount[boolean(normalize-space(xs:string(.)))])) then (sum(../cac:PrepaidPayment/xs:decimal(cbc:PaidAmount))) else (0)"/>
          <assert test="(round((xs:decimal(cbc:PayableAmount) - $payableroundingamount) * 10 * 10) div 100) = (round((xs:decimal(cbc:TaxInclusiveAmount) - $prepaidamount + $thirdpartyprepaidamount) * 10 * 10) div 100)"
                  flag="fatal"
-                 id="BR-DEX-09">[BR-DEX-09] Amount due for payment (BT-115) = Invoice total amount with VAT (BT-112) - Paid amount (BT-113) + Rounding amount (BT-114) - Σ Third party payment amount (BT-DEX-002).</assert>
+                 id="BR-DEX-09">[BR-DEX-09] Amount due for payment (BT-115) = Invoice total amount with VAT (BT-112) - Paid amount (BT-113) + Rounding amount (BT-114) + Σ Third party payment amount (BT-DEX-002).</assert>
       </rule>
       <rule context="cac:PartyIdentification/cbc:ID[@schemeID and $isExtension]">
          <assert test="((not(contains(normalize-space(@schemeID), ' ')) and contains($ISO-6523-ICD-EXT-CODES, concat(' ', normalize-space(@schemeID), ' '))))  or ((not(contains(normalize-space(@schemeID), ' ')) and contains(' SEPA ', concat(' ', normalize-space(@schemeID), ' '))) and ((ancestor::cac:AccountingSupplierParty) or (ancestor::cac:PayeeParty)))"
@@ -470,6 +476,58 @@
          <assert test="cbc:PaidAmount/@currencyID = parent::node()/cbc:DocumentCurrencyCode"
                  flag="fatal"
                  id="BR-DEX-14">[BR-DEX-14] Die Währungsangabe von "Third party payment amount" BT-DEX-002 muss BT-5 ("Invoice currency code") entsprechen.</assert>
+      </rule>
+   </pattern>
+   <pattern id="ubl-cvd-pattern">
+      <let name="isCVD"
+           value="(/ubl:Invoice | /cn:CreditNote)/cbc:CustomizationID/text() = $XR-CVD-ID"/>
+      <rule context="(/ubl:Invoice | /cn:CreditNote)[$isCVD]">
+         <assert test="cac:OriginatorDocumentReference/cbc:ID[boolean(normalize-space(.))]"
+                 flag="fatal"
+                 id="BR-DE-CVD-02">
+        [BR-DE-CVD-02] Das Element <name/> "Tender or lot reference" (BT-17) muss übermittelt werden.
+      </assert>
+         <assert test="cac:ContractDocumentReference/cbc:ID[boolean(normalize-space(.))]"
+                 flag="fatal"
+                 id="BR-DE-CVD-01">
+        [BR-DE-CVD-01] Das Element <name/> "Contract reference" (BT-12) muss übermittelt werden.
+      </assert>
+         <assert test="(cac:InvoiceLine/cac:Item | cac:CreditNoteLine/cac:Item)[cac:CommodityClassification/cbc:ItemClassificationCode/@listID = 'CVD'         and         cac:AdditionalItemProperty/cbc:Name = 'cva']"
+                 flag="fatal"
+                 id="BR-DE-CVD-03">
+        [BR-DE-CVD-03] In einer Rechnung muss mindestens eine <name/> INVOICE LINE (BG-25) enthalten sein, in der der Scheme identifier von <name/> "Item classification identifier" (BT-158) den Wert 'CVD' und der <name/> "Item attribute name" (BT-160) den Wert 'cva' enthält.
+      </assert>
+      </rule>
+      <rule context="(/ubl:Invoice[$isCVD]/cac:InvoiceLine | /cn:CreditNote[$isCVD]/cac:CreditNoteLine)/cac:Item">
+         <assert test="not(cac:CommodityClassification/cbc:ItemClassificationCode[@listID = 'CVD']) or count(cac:AdditionalItemProperty[cbc:Name = 'cva']) = 1"
+                 flag="fatal"
+                 id="BR-DE-CVD-06-a">
+        [BR-DE-CVD-06-a] Wenn der Scheme identifier von <name/> "Item classification identifier" (BT-158) mit dem Wert 'CVD' angegeben ist, muss in derselben Rechnungszeile genau ein <name/> "Item attribute name" (BT-160) mit dem Wert 'cva' vorhanden sein.
+      </assert>
+         <assert test="not(cac:AdditionalItemProperty[cbc:Name = 'cva']) or count(cac:CommodityClassification/cbc:ItemClassificationCode[@listID = 'CVD']) = 1"
+                 flag="fatal"
+                 id="BR-DE-CVD-06-b">
+        [BR-DE-CVD-06-b] Wenn <name/> "Item attribute name" (BT-160) mit dem Wert 'cva' angegeben ist, muss in derselben Rechnungszeile genau ein <name/> "Item classification identifier" (BT-158) mit dem Scheme identifier 'CVD' vorhanden sein.
+      </assert>
+      </rule>
+      <rule context="(/ubl:Invoice[$isCVD]/cac:InvoiceLine | /cn:CreditNote[$isCVD]/cac:CreditNoteLine)/cac:Item/cac:CommodityClassification/cbc:ItemClassificationCode">
+         <assert test="((not(contains(normalize-space(@listID), ' ')) and contains($UNTDID-7143-CVD-CODES, concat(' ', normalize-space(@listID), ' '))))"
+                 flag="fatal"
+                 id="BR-TMP-CVD-01">
+        [BR-TMP-CVD-01] Das Bildungsschema für <name/> "Item classification identifier" (BT-158) ist aus der Codeliste UNTDID 7143 zu wählen.
+      </assert>
+         <assert test="not(normalize-space(@listID) = 'CVD') or normalize-space(.) = $CVD-VEHICLE-CATEGORY"
+                 flag="fatal"
+                 id="BR-DE-CVD-04">
+        [BR-DE-CVD-04] Ein <name/> "Item classification identifier" (BT-158) mit dem Scheme identifier 'CVD' muss einen Wert aus der Liste der zulässigen Fahrzeugkategorien enthalten.
+      </assert>
+      </rule>
+      <rule context="(/ubl:Invoice[$isCVD]/cac:InvoiceLine | /cn:CreditNote[$isCVD]/cac:CreditNoteLine)/cac:Item/cac:AdditionalItemProperty[cbc:Name = 'cva']">
+         <assert test="normalize-space(cbc:Value) = $CVA-CODES"
+                 flag="fatal"
+                 id="BR-DE-CVD-05">
+        [BR-DE-CVD-05] Wenn innerhalb von <name/> ITEM ATTRIBUTES (BG-32) der <name/> "Item attribute name" (BT-160) den Wert 'cva' hat, muss der <name/> "Item attribute value" (BT-161) einen der zulässigen Werte enthalten.
+      </assert>
       </rule>
    </pattern>
 </schema>

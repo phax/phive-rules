@@ -209,6 +209,7 @@ I hope that with the introduction of PINT, the versioning problem will be solved
 
 * v3.2.15 - 2025-08-10
     * Added support for Peppol PINT AE 1.0.1 (v2025.7)
+    * Updated to XRechnung 3.0.2 Schematron Rules 2.4.0
 * v3.2.14 - 2025-07-04
     * Added support for Peppol PINT AUNZ 1.1.1
     * Added support for Peppol PINT JP 1.1.1
