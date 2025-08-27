@@ -16,11 +16,11 @@
  */
 package com.helger.phive.peppol.italy;
 
-import javax.annotation.Nonnull;
-import javax.annotation.concurrent.Immutable;
-
+import com.helger.annotation.concurrent.Immutable;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
 import com.helger.phive.xml.source.IValidationSourceXML;
+
+import jakarta.annotation.Nonnull;
 
 /**
  * Generic Peppol Italy validation configuration. It contains only the old validation rules.

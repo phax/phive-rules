@@ -16,18 +16,19 @@
  */
 package com.helger.phive.rules.api;
 
-import javax.annotation.Nonnull;
-import javax.annotation.concurrent.Immutable;
 import javax.xml.XMLConstants;
 
-import com.helger.commons.annotation.ReturnsMutableObject;
-import com.helger.commons.io.resource.IReadableResource;
+import com.helger.annotation.concurrent.Immutable;
+import com.helger.annotation.style.ReturnsMutableObject;
+import com.helger.io.resource.IReadableResource;
 import com.helger.phive.xml.schematron.ValidationExecutorSchematron;
 import com.helger.ubl20.UBL20NamespaceContext;
 import com.helger.ubl21.UBL21NamespaceContext;
 import com.helger.ubl22.UBL22NamespaceContext;
 import com.helger.ubl23.UBL23NamespaceContext;
 import com.helger.xml.namespace.MapBasedNamespaceContext;
+
+import jakarta.annotation.Nonnull;
 
 /**
  * Utility class around UBL for phive-rules libs.

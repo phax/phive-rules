@@ -90,6 +90,11 @@
       <version>${peppol-commons.version}</version>
       <scope>test</scope>
     </dependency>
+    <dependency>
+      <groupId>com.helger.commons</groupId>
+      <artifactId>ph-unittest-support-ext</artifactId>
+      <scope>test</scope>
+    </dependency>
   </dependencies>
   
   <build>
@@ -104,7 +109,7 @@
             <Export-Package>
               com.helger.phive.simplerinvoicing
             </Export-Package>
-            <Import-Package>!javax.annotation.*,*</Import-Package>
+            <Import-Package>!jakarta.annotation.*,*</Import-Package>
           </instructions>
         </configuration>
       </plugin>

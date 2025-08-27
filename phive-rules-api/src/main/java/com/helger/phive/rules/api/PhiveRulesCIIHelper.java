@@ -16,13 +16,13 @@
  */
 package com.helger.phive.rules.api;
 
-import javax.annotation.Nonnull;
-import javax.annotation.concurrent.Immutable;
-
+import com.helger.annotation.concurrent.Immutable;
 import com.helger.cii.d16b.CIID16BNamespaceContext;
 import com.helger.cii.d22b.CIID22BNamespaceContext;
-import com.helger.commons.io.resource.IReadableResource;
+import com.helger.io.resource.IReadableResource;
 import com.helger.phive.xml.schematron.ValidationExecutorSchematron;
+
+import jakarta.annotation.Nonnull;
 
 /**
  * Utility class around CII for phive-rules libs.

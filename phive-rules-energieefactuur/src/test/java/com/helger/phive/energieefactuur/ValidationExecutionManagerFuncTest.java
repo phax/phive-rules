@@ -25,8 +25,8 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.helger.commons.error.IError;
-import com.helger.commons.string.StringHelper;
+import com.helger.base.string.StringImplode;
+import com.helger.diagnostics.error.IError;
 import com.helger.phive.api.execute.ValidationExecutionManager;
 import com.helger.phive.api.executorset.IValidationExecutorSet;
 import com.helger.phive.api.mock.PhiveTestFile;
@@ -69,12 +69,12 @@ public final class ValidationExecutionManagerFuncTest
       if (aTestFile.isGoodCase ())
         assertTrue (aErrors.getAllCount (IError::isError) +
                     " error(s):\n" +
-                    StringHelper.getImploded ('\n', aErrors.getAllErrors ()),
+                    StringImplode.imploder ().source (aErrors.getAllErrors ()).separator ('\n').build (),
                     aErrors.containsNoError ());
       else
         assertTrue (aErrors.getAllCount (IError::isError) +
                     " error(s):\n" +
-                    StringHelper.getImploded ('\n', aErrors.getAllErrors ()),
+                    StringImplode.imploder ().source (aErrors.getAllErrors ()).separator ('\n').build (),
                     aErrors.containsAtLeastOneError ());
     }
   }

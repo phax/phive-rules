@@ -16,13 +16,11 @@
  */
 package com.helger.phive.oioubl;
 
-import javax.annotation.Nonnull;
-import javax.annotation.concurrent.Immutable;
-
-import com.helger.commons.ValueEnforcer;
-import com.helger.commons.io.resource.ClassPathResource;
-import com.helger.commons.io.resource.IReadableResource;
+import com.helger.annotation.concurrent.Immutable;
+import com.helger.base.enforce.ValueEnforcer;
 import com.helger.diver.api.coord.DVRCoordinate;
+import com.helger.io.resource.ClassPathResource;
+import com.helger.io.resource.IReadableResource;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
 import com.helger.phive.api.executorset.ValidationExecutorSet;
 import com.helger.phive.rules.api.PhiveRulesHelper;
@@ -33,6 +31,8 @@ import com.helger.phive.xml.xsd.ValidationExecutorXSD;
 import com.helger.ubl20.UBL20Marshaller;
 import com.helger.ubl20.UBL20NamespaceContext;
 import com.helger.xml.namespace.IIterableNamespaceContext;
+
+import jakarta.annotation.Nonnull;
 
 /**
  * Generic OIOUBL validation configuration

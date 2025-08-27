@@ -16,9 +16,6 @@
  */
 package com.helger.phive.ublbe;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-
 import org.w3c.dom.Document;
 
 import com.helger.diver.api.coord.DVRCoordinate;
@@ -30,6 +27,9 @@ import com.helger.phive.ublbe.mock.CTestFiles;
 import com.helger.phive.xml.source.IValidationSourceXML;
 import com.helger.phive.xml.source.ValidationSourceXML;
 import com.helger.xml.serialize.read.DOMReader;
+
+import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 
 /**
  * Demo code for validating against order rules

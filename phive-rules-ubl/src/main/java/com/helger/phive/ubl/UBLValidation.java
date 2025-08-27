@@ -16,10 +16,8 @@
  */
 package com.helger.phive.ubl;
 
-import javax.annotation.Nonnull;
-import javax.annotation.concurrent.Immutable;
-
-import com.helger.commons.ValueEnforcer;
+import com.helger.annotation.concurrent.Immutable;
+import com.helger.base.enforce.ValueEnforcer;
 import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
 import com.helger.phive.api.executorset.ValidationExecutorSet;
@@ -31,6 +29,8 @@ import com.helger.ubl21.UBL21Marshaller;
 import com.helger.ubl22.UBL22Marshaller;
 import com.helger.ubl23.UBL23Marshaller;
 import com.helger.ubl24.UBL24Marshaller;
+
+import jakarta.annotation.Nonnull;
 
 /**
  * Generic UBL validation configuration

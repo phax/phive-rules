@@ -16,9 +16,9 @@
  */
 package com.helger.phive.zugferd;
 
-import javax.annotation.Nonnull;
+import com.helger.annotation.Nonempty;
 
-import com.helger.commons.annotation.Nonempty;
+import jakarta.annotation.Nonnull;
 
 /**
  * Contains a list of all Zugferd profiles.

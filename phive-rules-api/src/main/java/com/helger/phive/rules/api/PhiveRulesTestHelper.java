@@ -16,9 +16,8 @@
  */
 package com.helger.phive.rules.api;
 
-import javax.annotation.concurrent.Immutable;
-
-import com.helger.commons.io.resource.IReadableResource;
+import com.helger.annotation.concurrent.Immutable;
+import com.helger.io.resource.IReadableResource;
 import com.helger.phive.api.EValidationType;
 import com.helger.phive.api.artefact.IValidationArtefact;
 import com.helger.phive.api.executor.IValidationExecutor;

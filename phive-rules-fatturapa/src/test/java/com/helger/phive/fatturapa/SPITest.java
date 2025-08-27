@@ -18,7 +18,7 @@ package com.helger.phive.fatturapa;
 
 import org.junit.Test;
 
-import com.helger.commons.mock.SPITestHelper;
+import com.helger.unittestext.SPITestHelper;
 
 /**
  * Test SPI definitions

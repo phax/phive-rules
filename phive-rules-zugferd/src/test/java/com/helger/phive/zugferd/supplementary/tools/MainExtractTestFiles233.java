@@ -22,11 +22,11 @@ import java.util.Comparator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.helger.commons.collection.impl.CommonsArrayList;
-import com.helger.commons.collection.impl.ICommonsList;
-import com.helger.commons.io.file.FileOperationManager;
-import com.helger.commons.io.file.FileSystemIterator;
-import com.helger.commons.io.file.IFileFilter;
+import com.helger.collection.commons.CommonsArrayList;
+import com.helger.collection.commons.ICommonsList;
+import com.helger.io.file.FileOperationManager;
+import com.helger.io.file.FileSystemIterator;
+import com.helger.io.file.IFileFilter;
 import com.helger.phive.zugferd.EZugferdProfile;
 
 public final class MainExtractTestFiles233

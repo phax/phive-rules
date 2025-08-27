@@ -20,17 +20,17 @@ import java.io.File;
 import java.util.Comparator;
 import java.util.Map;
 
-import com.helger.commons.collection.impl.CommonsArrayList;
-import com.helger.commons.collection.impl.CommonsTreeMap;
-import com.helger.commons.collection.impl.ICommonsMap;
-import com.helger.commons.compare.IComparator;
-import com.helger.commons.io.file.FileSystemRecursiveIterator;
+import com.helger.collection.commons.CommonsArrayList;
+import com.helger.collection.commons.CommonsTreeMap;
+import com.helger.collection.commons.ICommonsMap;
+import com.helger.io.file.FileSystemRecursiveIterator;
+import com.helger.text.compare.ComparatorHelper;
 
 public class MainAssignTestFilesToDocTypes
 {
   public static void main (final String [] args)
   {
-    final ICommonsMap <String, String> aMap = new CommonsTreeMap <> (IComparator.getComparatorStringLongestFirst (false));
+    final ICommonsMap <String, String> aMap = new CommonsTreeMap <> (ComparatorHelper.getComparatorStringLongestFirst (false));
     aMap.put ("ApplicationResponse", "APPLICATION_RESPONSE");
     aMap.put ("Catalogue", "CATALOGUE");
     aMap.put ("CatalogueDeletion", "CATALOGUE_DELETION");

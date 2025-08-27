@@ -55,10 +55,6 @@
 
   <dependencies>
     <dependency>
-      <groupId>com.helger.commons</groupId>
-      <artifactId>ph-commons</artifactId>
-    </dependency>
-    <dependency>
       <groupId>com.helger.cii</groupId>
       <artifactId>ph-cii-d16b</artifactId>
       <version>${ph-cii.version}</version>
@@ -88,6 +84,11 @@
       <artifactId>jaxb-impl</artifactId>
       <scope>test</scope>
     </dependency>
+    <dependency>
+      <groupId>com.helger.commons</groupId>
+      <artifactId>ph-unittest-support-ext</artifactId>
+      <scope>test</scope>
+    </dependency>
   </dependencies>
 
   <build>
@@ -102,7 +103,7 @@
             <Export-Package>
               com.helger.phive.xrechnung
             </Export-Package>
-            <Import-Package>!javax.annotation.*,*</Import-Package>
+            <Import-Package>!jakarta.annotation.*,*</Import-Package>
           </instructions>
         </configuration>
       </plugin>
