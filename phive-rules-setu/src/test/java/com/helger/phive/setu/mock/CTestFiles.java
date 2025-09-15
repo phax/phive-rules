@@ -51,6 +51,8 @@ public final class CTestFiles
   {
     final ICommonsList <PhiveTestFile> ret = new CommonsArrayList <> ();
     for (final DVRCoordinate aESID : new DVRCoordinate [] { SETUValidation.VID_SETU_ASSIGNMENT_14,
+                                                            SETUValidation.VID_SETU_HUMAN_RESOURCE_14,
+                                                            SETUValidation.VID_SETU_STAFFING_ORDER_14,
                                                             SETUValidation.VID_SETU_TIMECARD_14 })
       for (final IReadableResource aRes : getAllMatchingTestFiles (aESID))
       {
@@ -67,11 +69,24 @@ public final class CTestFiles
     ValueEnforcer.notNull (aVESID, "VESID");
 
     final String sBasePath = "src/test/resources/external/test-files/";
+
+    // v1.4
     if (aVESID.equals (SETUValidation.VID_SETU_ASSIGNMENT_14))
     {
       return new CommonsArrayList <> (new String [] { "AssignmentExample_v1.4.xml",
                                                       "StatusAssignmentExample_v1.4.xml" },
                                       x -> new FileSystemResource (sBasePath + "1.4/assignment/" + x));
+    }
+    if (aVESID.equals (SETUValidation.VID_SETU_HUMAN_RESOURCE_14))
+    {
+      return new CommonsArrayList <> (new String [] { "HumanResourceExample_offer_v1.4.xml",
+                                                      "HumanResourceExample_x-assigned_v1.4.xml" },
+                                      x -> new FileSystemResource (sBasePath + "1.4/humanresource/" + x));
+    }
+    if (aVESID.equals (SETUValidation.VID_SETU_STAFFING_ORDER_14))
+    {
+      return new CommonsArrayList <> (new String [] { "StaffingOrderExample_order_v1.4.xml" },
+                                      x -> new FileSystemResource (sBasePath + "1.4/staffingorder/" + x));
     }
     if (aVESID.equals (SETUValidation.VID_SETU_TIMECARD_14))
     {

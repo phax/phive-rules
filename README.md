@@ -19,6 +19,7 @@ This project is divided into sub-projects each keeping tracking of one document 
 * phive-rules-facturae - Validation rules for the Spanish Facturae (since v1.0.11)
 * phive-rules-fatturapa - Validation rules for Italian fattura PA (since v1.0.4)
 * phive-rules-finvoice - Validation rules for Finvoice (since v1.0.6)
+* phive-rules-france - Validation rules for France (since v4.0.1)
 * phive-rules-isdoc - Validation rules for ISDOC (since v2.0.2)
 * phive-rules-oioubl - Validation rules for Danish OIOUBL
 * phive-rules-peppol - the Peppol specific rules - always the latest two rule sets
@@ -32,7 +33,7 @@ This project is divided into sub-projects each keeping tracking of one document 
 * phive-rules-ublbe - Validation rules for Belgium e-FFF/UBL.BE
 * phive-rules-xrechnung - Validation rules for German XRechnung
 * phive-rules-zatca - Validation rules for Saudi Arabian ZATCA/FATOORA format (since v3.2.7)
-* phive-rules-zugferd - Validation rules for German ZuGFERD (XML part only) (since v3.2.2)
+* phive-rules-zugferd - Validation rules for German ZuGFERD and French Factur-X (XML part only) (since v3.2.2)
 
 The Java code in this project is licensed under the Apache 2 license.
 The code of the validation artefacts used may use a different license. 
@@ -99,6 +100,12 @@ Add the following to your `pom.xml` to use this artifact, replacing `x.y.z` with
 <dependency>
   <groupId>com.helger.phive.rules</groupId>
   <artifactId>phive-rules-finvoice</artifactId>
+  <version>x.y.z</version>
+</dependency>
+
+<dependency>
+  <groupId>com.helger.phive.rules</groupId>
+  <artifactId>phive-rules-france</artifactId>
   <version>x.y.z</version>
 </dependency>
 
@@ -206,6 +213,10 @@ As OpenPeppol is only changing the "micro" version part (3.0.x), whereas I start
 I hope that with the introduction of PINT, the versioning problem will be solved.
 
 # News and noteworthy
+
+v4.0.1 - 2025-09-15
+* Added support for France CTC 0.1 validation rules
+* Added additional SETU document types "Assignment", "Human Resource" and "Staffing Order" that are supported on the Peppol Network
 
 v4.0.0 - 2025-08-27
 * Requires Java 17 as the minimum version
