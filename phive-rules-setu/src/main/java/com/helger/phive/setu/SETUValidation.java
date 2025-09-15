@@ -42,7 +42,19 @@ public final class SETUValidation
 {
   public static final String GROUP_ID = "nl.setu";
 
-  public static final DVRCoordinate VID_TIMECARD_14 = PhiveRulesHelper.createCoordinate (GROUP_ID, "timecard", "1.4");
+  // V1.4
+  public static final DVRCoordinate VID_SETU_ASSIGNMENT_14 = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                "assignment",
+                                                                                                "1.4");
+  public static final DVRCoordinate VID_SETU_TIMECARD_14 = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                              "timecard",
+                                                                                              "1.4");
+
+  /**
+   * @deprecated Use {@link #VID_SETU_TIMECARD_14} instead
+   */
+  @Deprecated (forRemoval = true, since = "4.0.1")
+  public static final DVRCoordinate VID_TIMECARD_14 = VID_SETU_TIMECARD_14;
 
   private SETUValidation ()
   {}
@@ -66,8 +78,7 @@ public final class SETUValidation
   }
 
   /**
-   * Register all standard SETU validation execution sets to the provided
-   * registry.
+   * Register all standard SETU validation execution sets to the provided registry.
    *
    * @param aRegistry
    *        The registry to add the artefacts. May not be <code>null</code>.
@@ -78,16 +89,28 @@ public final class SETUValidation
 
     final boolean bNotDeprecated = false;
 
-    aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_TIMECARD_14,
-                                                                           "SETU Timcard " +
-                                                                                            VID_TIMECARD_14.getVersionString (),
+    // V1.4
+    aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_SETU_ASSIGNMENT_14,
+                                                                           "SETU Assignment " +
+                                                                                                   VID_SETU_ASSIGNMENT_14.getVersionString (),
                                                                            PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
                                                                            ValidationExecutorXSD.create (CXML_XSD.getXSDResource (),
-                                                                                                         new ClassPathResource ("/external/schemas/hr-xml-2007/SIDES/TimeCardAdditionalData.xsd",
+                                                                                                         new ClassPathResource ("/external/schemas/setu/schemas/2020-01/AssignmentAdditionalNL.xsd",
                                                                                                                                 _getCL ()),
-                                                                                                         new ClassPathResource ("/external/schemas/hr-xml-2007/TimeCard/TimeCard.xsd",
+                                                                                                         new ClassPathResource ("/external/schemas/hr-xml/SIDES/Assignment.xsd",
                                                                                                                                 _getCL ())),
-                                                                           _createXSLT (new ClassPathResource ("/external/schematron/timecard/1.4/xslt/RTE-v1.4-TimeCard.xslt",
+                                                                           _createXSLT (new ClassPathResource ("/external/schematron/setu/1.4/xslt/Assignment-v1.4-Assignment.xslt",
+                                                                                                               _getCL ()))));
+    aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_SETU_TIMECARD_14,
+                                                                           "SETU Timcard " +
+                                                                                                 VID_SETU_TIMECARD_14.getVersionString (),
+                                                                           PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
+                                                                           ValidationExecutorXSD.create (CXML_XSD.getXSDResource (),
+                                                                                                         new ClassPathResource ("/external/schemas/hr-xml/SIDES/TimeCardAdditionalData.xsd",
+                                                                                                                                _getCL ()),
+                                                                                                         new ClassPathResource ("/external/schemas/hr-xml/TimeCard/TimeCard.xsd",
+                                                                                                                                _getCL ())),
+                                                                           _createXSLT (new ClassPathResource ("/external/schematron/setu/1.4/xslt/RTE-v1.4-TimeCard.xslt",
                                                                                                                _getCL ()))));
   }
 }

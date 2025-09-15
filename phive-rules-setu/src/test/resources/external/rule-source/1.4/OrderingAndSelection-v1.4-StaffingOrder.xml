@@ -1,0 +1,736 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sch:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+    xmlns:fn="http://www.w3.org/2005/xpath-functions" 
+    xmlns:sch="http://purl.oclc.org/dsdl/schematron" schemaVersion="nl.setu.200801.businessrules.staffingorder">
+
+    <!--
+        ** CHANGELOG **
+        * The namespace of the 'nl' prefix is changed, due to change in namespace of HumanResourceAdditionalNL schema
+        * Added allowed value for PositionType: 'payroll'
+        * Added rule: nl.setu.businessrule.280 (= SETU BR 280)
+        * Changed rule: nl.setu.200801.businessrules.staffingorder.businessrule.SETUVersionId.1 -> use value 1.4
+        * Removed rule: nl.setu.200801.businessrules.staffingorder.businessrule.StaffingShift.5 (= SETU BR 140)
+        * Removed rule: nl.setu.200801.businessrules.staffingorder.businessrule.StaffingShift.2 (= SETU BR 200)
+        * Added rule: nl.setu.businessrule.281 (= SETU BR 281)
+        * Removed x:4weekly from StaffingShift list
+
+        ** CHANGELOG 03/06/2022 **
+        * Added rule: nl.setu.2022.businessrules.staffingorder.businessrule.CustomerRateClassification.1
+
+        ** CHANGELOG 07/10/2024 v1.4.1 **
+        * Revised rule: nl.setu.2022.businessrules.assignment.businessrule.CustomerRateClassification.1 -> add Break as value to codelist
+        * Issue 226: Replaced nl.setu.businessrule.280 with nl.setu.businessrule.320. Validation of the rule remained the same
+        * Issue 226: Replaced nl.setu.businessrule.281 with nl.setu.businessrule.321. Validation of the rule remained the same
+    -->
+
+    <sch:title>Business rules voor het controleren van een staffingorder bericht (SETU Standard for Ordering &amp; Selection versie 1.4).</sch:title>
+    <sch:ns prefix="setu" uri="http://ns.hr-xml.org/2007-04-15"/>
+    <sch:ns prefix="nl" uri="http://ns.setu.nl/2020-01"/>
+    
+    <!-- Lijst met waarden voor rule staffingorder OrderType.1 -->
+    <sch:let name="OrderType" value="',RFQ,order,'"/>
+
+    <!-- Lijst met waarden voor rule staffingorder OrderStatus.1 -->
+    <sch:let name="OrderStatus" value="',new,closed,'"/>
+
+    <!-- Lijst met waarden voor rule staffingorder OrderContact.1 -->
+    <sch:let name="OrderContact" value="',created by,authorized by,first day contact,placed by,placed on behalf of,supervisor,submitted by,'"/>
+
+    <!-- Lijst met waarden voor rule staffingorder PositionType.1 -->
+    <sch:let name="PositionType" value="',recruitment and selection,secondment,temporary staffing,payroll,'"/>
+
+    <!-- Lijst met waarden voor rule staffingorder PositionReason.1 -->
+    <sch:let name="PositionReason" value="',Illness,Peak,Project,Reorganisation,Position,Vacation,Maternity,Season,Replacement,Recruitment,Structural,Other,'"/>
+
+    <!-- Lijst met waarden voor rule staffingorder RateType.1 -->
+    <sch:let name="RateType" value="',bill,pay,minPayRate,maxPayRate,minBillRate,maxBillRate,'"/>
+
+    <!-- Lijst met waarden voor rule staffingorder RateStatus.1 -->
+    <sch:let name="RateStatus" value="',proposed,agreed,'"/>
+
+    <!-- Lijst met waarden voor rule staffingorder Amount.1 -->
+    <sch:let name="Amount" value="',hourly,x:hourlysplit,x:hourlyconsolidated,daily,weekly,x:4weekly,monthly,yearly,flatfee,'"/>
+
+    <!-- Lijst met waarden voor rule staffingorder Class.1 -->
+    <sch:let name="Class" value="',TimeInterval,Allowance,Expense,'"/>
+
+    <!-- Lijst met waarden voor rule staffingorder StaffingShift.3 -->
+    <sch:let name="StaffingShift" value="',daily,weekly,monthly,'"/>
+
+    <!-- Lijst met waarden voor rule staffingorder Degree.1 en WorkingAndThinkingLevel.1 -->
+    <sch:let name="Degree" value="',1,2,3,4,5,6,'"/>
+
+    <!-- Lijst met waarden voor idOwner -->
+    <sch:let name="IdOwner" value="',StaffingCustomer,StaffingCompany,KvK,OIN,BTW,Fi,'"/>
+
+    <!-- Lijst met waarden voor affix attribute van PersonName -->
+    <sch:let name="Affix" value="',aristocraticTitle,formOfAddress,generation,qualification,'"/>
+
+    <!-- Lijst met waarden voor rules:
+        nl.setu.2022.businessrules.staffingorder.businessrule.CustomerRateClassification.1
+    -->
+    <sch:let name="SETU_CL_HourTypes" value="',Additional wage dispensation,Adoption leave,Child-birth sick time,Internship,Overtime wage dispensation,Pregnancy sick time,Regular wage dispensation,Shift wage dispensation,Transition allowance,Vacation additional,Additionalplus,Regular canceled,Shift canceled,Shiftplus canceled,Additional canceled,Additionalplus canceled,Regular complemented,Additional complemented,Shift complemented,Overtime complemented,Overtime canceled,Overtimeplus canceled,Regular,Overtime,Overtimeplus,Shift,Shiftplus,Attendance,Travel,Additional,Internal,Time for time hour build-up,Time for time overtime hour build-up,Special Leave,Short leave,Holiday,Unpaid leave,Training,Vacation,Reduction of working hours,Sick time,Work underload,Care Leave,WTR (work time reduction),Compensation leave,Funeral,Maternity Leave,Withdrawal time for time hours,Contract hours,Standby,Break,'"/>
+
+    <!-- Lijst met waarden voor rules:
+        nl.setu.2022.businessrules.staffingorder.businessrule.CustomerRateClassification.1
+    -->
+    <sch:let name="SETU_CL_ExpenseAllowanceTypes" value="',100,100B,100O,101,101B,101O,102,102B,102O,103,103B,103O,104,104B,104O,105,105B,105O,106,106B,106O,107,107B,107O,201,201B,201O,202,202B,202O,203,203B,203O,300,300B,300O,301,301B,301O,302,302B,302O,303,303B,303O,304,304B,304O,400,400B,400O,501,501B,501O,502,502B,502O,503,503B,503O,600,600B,600O,601,601B,601O,602,602B,602O,603,603B,603O,604,604B,604O,701,701B,701O,702,702B,702O,703,703B,703O,801,801B,801O,802,802B,802O,803,803B,803O,900,900B,900O,901,901B,901O,903,903B,903O,904,904B,904O,905,905B,905O,906,906B,906O,907,907B,907O,908,908B,908O,909,909B,909O,910,910B,910O,911,911B,911O,912,912B,912O,913,913B,913O,914,914B,914O,'"/>
+
+    <sch:pattern>
+        <sch:rule id="nl.setu.200801.businessrules.staffingorder.businessrule.OrderId.1" fpi="Controleren of het attribuut idOwner van OrderId aanwezig is en een juiste waarde bevat." context="/setu:StaffingOrder/setu:OrderId" flag="error">
+            <sch:assert test="(count(@idOwner)= 1) and ((normalize-space(@idOwner) = 'StaffingCustomer') or (normalize-space(@idOwner) = 'StaffingCompany')) ">
+                The attribute idOwner of OrderId may exist exactly once and should have a valid value, either 'StaffingCustomer' or 'StaffingCompany'.
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.200801.businessrules.staffingorder.businessrule.OrderId.2" fpi="Controleren of het element IdValue van OrderId aanwezig is en niet leeg." context="/setu:StaffingOrder/setu:OrderId" flag="error">
+            <sch:assert test="(count(setu:IdValue)= 1) and (normalize-space(setu:IdValue) != '') ">
+                The element IdValue of OrderId may exist exactly once and should have a valid value.
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.200801.businessrules.staffingorder.businessrule.ValidFrom.1" fpi="Controleren of het attribuut validFrom van OrderId niet aanwezig is als OrderType='order'." context="/setu:StaffingOrder" flag="error">
+            <sch:assert test="((normalize-space(setu:OrderClassification/setu:OrderType) = 'order') and (count(setu:OrderId/@validFrom)= 0)) or not(normalize-space(setu:OrderClassification/setu:OrderType) = 'order')">
+                The attribute validFrom may not exist when OrderType='order'. 
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.200801.businessrules.staffingorder.businessrule.ValidTo.1" fpi="Controleren of het attribuut validTo van OrderId niet aanwezig is als OrderType='order'." context="/setu:StaffingOrder" flag="error">
+            <sch:assert test="((normalize-space(setu:OrderClassification/setu:OrderType) = 'order') and (count(setu:OrderId/@validTo)= 0)) or not (normalize-space(setu:OrderClassification/setu:OrderType) = 'order')">
+                The attribute validTo may not exist when OrderType='order'. 
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.200801.businessrules.staffingorder.businessrule.PositionQuantity.1" fpi="Controleren of het element PositionQuantity een waarde heeft groter dan 0." context="/setu:StaffingOrder/setu:PositionQuantity" flag="error">
+            <sch:assert test=". &gt; 0">
+                The value of the element PositionQuantity must be larger than 0. 
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.200801.businessrules.staffingorder.businessrule.MultiVendorDistribution.1" fpi="Controleren of het element MultiVendorDistribution waarde 'false' heeft als OrderType='order'." context="/setu:StaffingOrder" flag="error">
+            <sch:assert test="((normalize-space(setu:OrderClassification/setu:OrderType)='order') and (normalize-space(setu:MultiVerdorDistribution)='false')) or not(normalize-space(setu:OrderClassification/setu:OrderType)='order')">
+                The element MultiVendorDistribution must contain the value 'false' whenever the element OrderType has value 'order'.
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.200801.businessrules.staffingorder.businessrule.ReferenceInformation.1" fpi="Controleren of het element ReferenceInformation de juiste elementen bevat." context="/setu:StaffingOrder/setu:ReferenceInformation" flag="error">
+            <sch:assert test="(count(setu:IntermediaryId)=0) and (count(setu:BillToEntityId)=0) and (count(setu:TimeCardId)=0) and (count(setu:InvoiceId)=0) and (count(setu:AssignmentId)=0) and (count(setu:HumanResourceId)=0) and (count(setu:StaffingOrganizationId)=0) and (count(setu:UserArea)=0)">
+                The element ReferenceInformation contains (a) subelement(s) that is/are not allowed.
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.200801.businessrules.staffingorder.businessrule.StaffingCustomerId.1" fpi="Controleren of voor elke idOwner het element StaffingCustomerId 1x gebruikt wordt." context="/setu:StaffingOrder/setu:ReferenceInformation" flag="error">
+            <sch:assert test="count(setu:StaffingCustomerId) = count(setu:StaffingCustomerId[not(@idOwner = preceding-sibling::setu:StaffingCustomerId/@idOwner)])">
+                The idOwner attributes of the StaffingCustomerId elements are not unique. 
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.200801.businessrules.staffingorder.businessrule.StaffingCustomerId.2" fpi="Controleren of het element StaffingCustomerId minimaal 1x voorkomt." context="/setu:StaffingOrder/setu:ReferenceInformation" flag="error">
+            <sch:assert test="count(setu:StaffingCustomerId) &gt;=1  ">
+                The element StaffingCustomerId must exist at least once. 
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.200801.businessrules.staffingorder.businessrule.StaffingCustomerId.3" fpi="Controleren of het attribuut idOwner van het element StaffingCustomerId exact 1x aanwezig is en een juiste waarde bevat." context="/setu:StaffingOrder/setu:ReferenceInformation//setu:StaffingCustomerId" flag="error">
+            <sch:assert test="(count(@idOwner)=1) and contains($IdOwner, concat(',', @idOwner, ','))">
+                The attribute idOwner of the element StaffingCustomerId must exist exactly once and should have a valid value: <sch:value-of select="$IdOwner"/>
+                Currently '<sch:value-of select="@idOwner"/>' is used.
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.200801.businessrules.staffingorder.businessrule.StaffingCustomerId.4" fpi="Controleren of het subelement IdValue van het element StaffingCustomerId exact 1x voorkomt." context="/setu:StaffingOrder/setu:ReferenceInformation//setu:StaffingCustomerId" flag="error">
+            <sch:assert test="(count(setu:IdValue)=1) and (normalize-space(setu:IdValue)!='')">
+                The subelement IdValue of the element StaffingCustomerId must exist exactly once.
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.200801.businessrules.staffingorder.businessrule.StaffingCustomerOrgUnitId.1" fpi="Controleren of voor elke idOwner het element StaffingCustomerOrgUnitId 1x gebruikt wordt." context="/setu:StaffingOrder/setu:ReferenceInformation" flag="error">
+            <sch:assert test="count(setu:StaffingCustomerOrgUnitId) = count(setu:StaffingCustomerOrgUnitId[not(@idOwner = preceding-sibling::setu:StaffingCustomerOrgUnitId/@idOwner)])">
+                The idOwner attributes of the StaffingCustomerOrgUnitId elements are not unique. 
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.200801.businessrules.staffingorder.businessrule.StaffingCustomerOrgUnitId.3" fpi="Controleren of het attribuut idOwner van het element StaffingCustomerOrgUnitId exact 1x aanwezig is en een juiste waarde bevat." context="/setu:StaffingOrder/setu:ReferenceInformation//setu:StaffingCustomerOrgUnitId" flag="error">
+            <sch:assert test="(count(@idOwner)=1) and contains($IdOwner, concat(',', @idOwner, ','))">
+                The attribute idOwner of the element StaffingCustomerOrgUnitId must exist exactly once and should have a valid value: <sch:value-of select="$IdOwner"/>
+                Currently '<sch:value-of select="@idOwner"/>' is used.
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.200801.businessrules.staffingorder.businessrule.StaffingCustomerOrgUnitId.4" fpi="Controleren of het subelement IdValue van het element StaffingCustomerOrgUnitId exact 1x voorkomt." context="/setu:StaffingOrder/setu:ReferenceInformation//setu:StaffingCustomerOrgUnitId" flag="error">
+            <sch:assert test="(count(setu:IdValue)=1) and (normalize-space(setu:IdValue)!='')">
+                The subelement IdValue of the element StaffingCustomerOrgUnitId must exist exactly once.
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.200801.businessrules.staffingorder.businessrule.StaffingSupplierId.1" fpi="Controleren of voor elke idOwner het element StaffingSupplierId 1x gebruikt wordt." context="/setu:StaffingOrder/setu:ReferenceInformation" flag="error">
+            <sch:assert test="count(setu:StaffingSupplierId) = count(setu:StaffingSupplierId[not(@idOwner = preceding-sibling::setu:StaffingSupplierId/@idOwner)])">
+                The idOwner attributes of the StaffingSupplierId elements are not unique. 
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.200801.businessrules.staffingorder.businessrule.StaffingSupplierId.3" fpi="Controleren of het attribuut idOwner van het element StaffingSupplierId exact 1x aanwezig is en een juiste waarde bevat." context="/setu:StaffingOrder/setu:ReferenceInformation//setu:StaffingSupplierId" flag="error">
+            <sch:assert test="(count(@idOwner)=1) and contains($IdOwner, concat(',', @idOwner, ','))">
+                The attribute idOwner of the element StaffingSupplierId must exist exactly once and should have a valid value: <sch:value-of select="$IdOwner"/>
+                Currently '<sch:value-of select="@idOwner"/>' is used.
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.200801.businessrules.staffingorder.businessrule.StaffingSupplierId.4" fpi="Controleren of het subelement IdValue van het element StaffingSupplierId exact 1x voorkomt." context="/setu:StaffingOrder/setu:ReferenceInformation//setu:StaffingSupplierId" flag="error">
+            <sch:assert test="(count(setu:IdValue)=1) and (normalize-space(setu:IdValue)!='')">
+                The subelement IdValue of the element StaffingSupplierId must exist exactly once.
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.200801.businessrules.staffingorder.businessrule.StaffingSupplierOrgUnitId.1" fpi="Controleren of voor elke idOwner het element StaffingSupplierOrgUnitId 1x gebruikt wordt." context="/setu:StaffingOrder/setu:ReferenceInformation" flag="error">
+            <sch:assert test="count(setu:StaffingSupplierOrgUnitId) = count(setu:StaffingSupplierOrgUnitId[not(@idOwner = preceding-sibling::setu:StaffingSupplierOrgUnitId/@idOwner)])">
+                The idOwner attributes of the StaffingSupplierOrgUnitId elements are not unique. 
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.200801.businessrules.staffingorder.businessrule.StaffingSupplierOrgUnitId.3" fpi="Controleren of het attribuut idOwner van het element StaffingSupplierOrgUnitId exact 1x aanwezig is en een juiste waarde bevat." context="/setu:StaffingOrder/setu:ReferenceInformation//setu:StaffingSupplierOrgUnitId" flag="error">
+            <sch:assert test="(count(@idOwner)=1) and contains($IdOwner, concat(',', @idOwner, ','))">
+                The attribute idOwner of the element StaffingSupplierOrgUnitId must exist exactly once and should have a valid value: <sch:value-of select="$IdOwner"/>
+                Currently '<sch:value-of select="@idOwner"/>' is used.
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.200801.businessrules.staffingorder.businessrule.StaffingSupplierOrgUnitId.4" fpi="Controleren of het subelement IdValue van het element StaffingSupplierOrgUnitId exact 1x voorkomt." context="/setu:StaffingOrder/setu:ReferenceInformation//setu:StaffingSupplierOrgUnitId" flag="error">
+            <sch:assert test="(count(setu:IdValue)=1) and (normalize-space(setu:IdValue)!='')">
+                The subelement IdValue of the element StaffingSupplierOrgUnitId must exist exactly once.
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.200801.businessrules.staffingorder.businessrule.CustomerReportingRequirements.1" fpi="Controleren of het element CustomerReportingRequirements juiste elementen bevat." context="//setu:CustomerReportingRequirements" flag="error">
+            <sch:assert test="(count(setu:SupervisorName)=0) and (count(setu:LocationCode)=0) and (count(setu:LocationName)=0) and (count(setu:CustomerJobCode)=0) and (count(setu:CustomerJobDescription)=0) and (count(setu:AccountCode)=0) and (count(setu:ExternalOrderNumber)=0) and (count(setu:ExternalReqNumber)=0) and (count(setu:Entity)=0) and (count(setu:SubEntity)=0) and (count(setu:Shift)=0) and (count(setu:PurchaseOrderLineItem)=0)">
+                The element CustomerReportingRequirements contains (a) subelement(s) that is/are not allowed.
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.200801.businessrules.staffingorder.businessrule.AdditionalRequirement.1" fpi="Controleren of het attribuut requirementTitle exact 1x aanwezig is en niet leeg is bij elk aanwezige element AdditionalRequirement." context="/setu:StaffingOrder/setu:ReferenceInformation//setu:AdditionalRequirement" flag="error">
+            <sch:assert test="count(@requirementTitle)=1 and normalize-space(@requirementTitle)!=''">
+                For each AdditionalRequirement the attribute requirementTitle must exist exactly once and may not be empty .
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.200801.businessrules.staffingorder.businessrule.OrderStatus.1" fpi="Controleren of attribuut orderStatus van OrderClassification een correcte waarde heeft." context="/setu:StaffingOrder/setu:OrderClassification" flag="error">
+            <sch:assert test="contains($OrderStatus, concat(',', @orderStatus, ','))">
+                The attribute orderStatus of the element OrderClassification must contain one of the following values: <sch:value-of select="$OrderStatus"/>
+                Currently '<sch:value-of select="@orderStatus"/>' is used.
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.200801.businessrules.staffingorder.businessrule.OrderType.1" fpi="Controleren of attribuut orderType van OrderClassification een correcte waarde heeft." context="/setu:StaffingOrder/setu:OrderClassification" flag="error">
+            <sch:assert test="contains($OrderType, concat(',', @orderType, ','))">
+                The attribute orderType of the element OrderClassification must contain one of the following values: <sch:value-of select="$OrderType"/>
+                Currently '<sch:value-of select="@orderType"/>' is used.
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.200801.businessrules.staffingorder.businessrule.OrderContact.1" fpi="Controleren of voor elk contactType het element OrderContact 1x gebruikt wordt." context="/setu:StaffingOrder" flag="error">
+            <sch:assert test="count(setu:OrderContact) = count(setu:OrderContact[not(@contactType = preceding-sibling::setu:OrderContact/@contactType)])">
+                The contactType attributes of the OrderContact elements are not unique. 
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.200801.businessrules.staffingorder.businessrule.OrderContact.2" fpi="Controleren of het element OrderContact maximaal 7x voorkomt." context="/setu:StaffingOrder" flag="error">
+            <sch:assert test="count(setu:OrderContact) &lt;=7 ">
+                The element OrderContact may exist at most seven times. 
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.200801.businessrules.staffingorder.businessrule.OrderContact.3" fpi="Controleren of het attribuut contactType van het element OrderContact een juiste waarde bevat." context="/setu:StaffingOrder//setu:OrderContact" flag="error">
+            <sch:assert test="contains($OrderContact, concat(',', @contactType, ','))">
+                The attribute contactType of the element OrderContact must exist exactly once and should have a valid value: <sch:value-of select="$OrderContact"/>
+                Currently '<sch:value-of select="@contactType"/>' is used.
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.200801.businessrules.staffingorder.businessrule.PersonName.1" fpi="Controleren of het element PersonName de juiste elementen bevat." context="/setu:StaffingOrder//setu:OrderContact/setu:ContactInfo/setu:PersonName" flag="error">
+            <sch:assert test="count(setu:FormattedName)=1">
+                The element PersonName must contain a FormattedName element.
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.200801.businessrules.staffingorder.businessrule.OrderContact.1" fpi="Controleren of het element OrderContact minimaal 1x voorkomt." context="/setu:StaffingOrder" flag="error">
+            <sch:assert test="count(setu:OrderContact)&gt;= 1">
+                The contactType attributes of the OrderContact elements are not unique. 
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.200801.businessrules.staffingorder.businessrule.ContactMethod.1" fpi="Controleren of het element ContactMethod exact 1x voorkomt." context="/setu:StaffingOrder//setu:OrderContact/setu:ContactInfo" flag="error">
+            <sch:assert test="count(setu:ContactMethod)=1">
+                The element ContactMethod must exist exactly once.
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.200801.businessrules.staffingorder.businessrule.ContactMethod.2" fpi="Controleren of het element ContactMethod de juiste elementen bevat." context="/setu:StaffingOrder//setu:OrderContact/setu:ContactInfo/setu:ContactMethod" flag="error">
+            <sch:assert test="(count(setu:Use)=0) and (count(setu:Location)=0) and (count(setu:WhenAvailable)=0) and (count(setu:Pager)=0) and (count(setu:TTYTDD)=0) and (count(setu:InternetMailAddress)=0)">
+                The element ContactMethod contains (a) subelement(s) that is/are not allowed.
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.200801.businessrules.staffingorder.businessrule.Telephone.1" fpi="Controleren of het element Telephone de juiste elementen bevat." context="/setu:StaffingOrder//setu:OrderContact/setu:ContactInfo/setu:ContactMethod/setu:Telephone" flag="error">
+            <sch:assert test="(count(setu:InternationalCountryCode)=0) and (count(setu:NationalNumber)=0) and (count(setu:AreaCityCode)=0) and (count(setu:SubscriberNumber)=0) and (count(setu:Extension)=0)">
+                The element Telephone contains (a) subelement(s) that is/are not allowed.
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.200801.businessrules.staffingorder.businessrule.Telephone.2" fpi="Controleren of het element Telephone de juiste elementen bevat." context="/setu:StaffingOrder//setu:OrderContact/setu:ContactInfo/setu:ContactMethod/setu:Telephone" flag="error">
+            <sch:assert test="(count(setu:FormattedNumber)=1) and (normalize-space(setu:FormattedNumber) != '')">
+                The element Telephone must contain exactly 1 FormattedNumber element, which must not be empty.
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.200801.businessrules.staffingorder.businessrule.Mobile.1" fpi="Controleren of het element Mobile de juiste elementen bevat." context="/setu:StaffingOrder//setu:OrderContact/setu:ContactInfo/setu:ContactMethod/setu:Mobile" flag="error">
+            <sch:assert test="(count(setu:InternationalCountryCode)=0) and (count(setu:NationalNumber)=0) and (count(setu:AreaCityCode)=0) and (count(setu:SubscriberNumber)=0) and (count(setu:Extension)=0)">
+                The element Mobile contains (a) subelement(s) that is/are not allowed.
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.200801.businessrules.staffingorder.businessrule.Mobile.2" fpi="Controleren of het element Mobile de juiste elementen bevat." context="/setu:StaffingOrder//setu:OrderContact/setu:ContactInfo/setu:ContactMethod/setu:Mobile" flag="error">
+            <sch:assert test="(count(setu:FormattedNumber)=1) and (normalize-space(setu:FormattedNumber) != '')">
+                The element Mobile must contain exactly 1 FormattedNumber element, which must not be empty.
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.200801.businessrules.staffingorder.businessrule.Fax.1" fpi="Controleren of het element Fax de juiste elementen bevat." context="/setu:StaffingOrder//setu:OrderContact/setu:ContactInfo/setu:ContactMethod/setu:Fax" flag="error">
+            <sch:assert test="(count(setu:InternationalCountryCode)=0) and (count(setu:NationalNumber)=0) and (count(setu:AreaCityCode)=0) and (count(setu:SubscriberNumber)=0) and (count(setu:Extension)=0)">
+                The element Fax contains (a) subelement(s) that is/are not allowed.
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.200801.businessrules.staffingorder.businessrule.Fax.2" fpi="Controleren of het element Fax de juiste elementen bevat." context="/setu:StaffingOrder//setu:OrderContact/setu:ContactInfo/setu:ContactMethod/setu:Fax" flag="error">
+            <sch:assert test="(count(setu:FormattedNumber)=1) and (normalize-space(setu:FormattedNumber) != '')">
+                The element Fax must contain exactly 1 FormattedNumber element, which must not be empty.
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.200801.businessrules.staffingorder.businessrule.StaffingPosition.1" fpi="Controleren of het element StaffingPosition exact 1x voorkomt." context="/setu:StaffingOrder" flag="error">
+            <sch:assert test="count(setu:StaffingPosition)=1">
+                The element StaffingPosition must exist exactly once.
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.200801.businessrules.staffingorder.businessrule.PositionId.1" fpi="Controleren of het attribuut Id van het element PositionId leeg is." context="/setu:StaffingOrder/setu:StaffingPosition/setu:PositionHeader/setu:PositionId" flag="error">
+            <sch:assert test="normalize-space(@Id)=''">
+                The attribute Id of the element PositionId must be empty.
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.200801.businessrules.staffingorder.businessrule.PositionType.1" fpi="Controleren of het element PositionType een correcte waarde heeft." context="/setu:StaffingOrder/setu:StaffingPosition/setu:PositionHeader/setu:PositionType" flag="error">
+            <sch:assert test="contains($PositionType, concat(',', ., ','))">
+                The element PositionType must contain one of the following values: <sch:value-of select="$PositionType"/>
+                Currently '<sch:value-of select="."/>' is used.
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.200801.businessrules.staffingorder.businessrule.RequestedPerson.1" fpi="Controleren of het element RequestedPerson maximaal 1x voorkomt." context="/setu:StaffingOrder/setu:StaffingPosition/setu:PositionHeader" flag="error">
+            <sch:assert test="count(setu:RequestedPerson) &lt;= 1">
+                The element RequestedPerson may exist at most 1 time.
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.200801.businessrules.staffingorder.businessrule.FamilyName.1" fpi="Controleren of het element FamilyName maximaal 2x voorkomt." context="/setu:StaffingOrder/setu:StaffingPosition/setu:PositionHeader/setu:RequestedPerson/setu:PersonName" flag="error">
+            <sch:assert test="count(setu:FamilyName) &lt;= 2">
+                The element FamilyName may exist at most 2 times.
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.200801.businessrules.staffingorder.businessrule.FamilyName.2" fpi="Controleren of het attribuut primary van het element FamilyName een correcte waarde heeft." context="/setu:StaffingOrder/setu:StaffingPosition/setu:PositionHeader/setu:RequestedPerson/setu:PersonName//setu:FamilyName" flag="error">
+            <sch:assert test="(normalize-space(@primary)='true') or (normalize-space(@primary)='false')">
+                The attribute primary of the element FamilyName must contain one of the following values: true, false.
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.200801.businessrules.staffingorder.businessrule.Affix.1" fpi="Controleren of het attribuut Type van element Affix een toegestane waarde bevat." context="/setu:StaffingOrder//setu:OrderContact/setu:ContactInfo/setu:PersonName/setu:Affix" flag="error">
+            <sch:assert test="(count(@type)=1) and contains($Affix, concat(',', @type, ','))">
+                The attribute primary of the element FamilyName must contain one of the following values: <sch:value-of select="$Affix"/>
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.200801.businessrules.staffingorder.businessrule.PersonId.1" fpi="Controleren of het element PersonId maximaal 1x voorkomt." context="/setu:StaffingOrder/setu:StaffingPosition/setu:PositionHeader/setu:RequestedPerson" flag="error">
+            <sch:assert test="count(setu:PersonId) &lt;= 1">
+                The element PersonId may exist at most 2 times.
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.200801.businessrules.staffingorder.businessrule.PersonId.2" fpi="Controleren of het element PersonId aanwezig is als het element PersonName niet aanwezig is." context="/setu:StaffingOrder/setu:StaffingPosition/setu:PositionHeader/setu:RequestedPerson" flag="error">
+            <sch:assert test="((count(setu:PersonName)=0) and (count(setu:PersonId) &gt;= 0)) or not(count(setu:PersonName)=0)">
+                The element PersonId must exist in case the element PersonName does not exist.
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.200801.businessrules.staffingorder.businessrule.PersonId.3" fpi="Controleren of het attribuut idOwner van het element PersonId exact 1x voorkomt en niet leeg is." context="/setu:StaffingOrder/setu:StaffingPosition/setu:PositionHeader/setu:RequestedPerson//setu:PersonId" flag="error">
+            <sch:assert test="(count(@idOwner) = 1) and ((normalize-space(@idOwner)='StaffingCustomer') or (normalize-space(@idOwner)='StaffingCompany'))">
+                The attribute idOwner of OrderId may exist exactly once and should have a valid value, either 'StaffingCustomer' or 'StaffingCompany'.
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.200801.businessrules.staffingorder.businessrule.PersonId.4" fpi="Controleren of het subelement IdValue van het element PersonId exact 1x voorkomt." context="/setu:StaffingOrder/setu:StaffingPosition/setu:PositionHeader/setu:RequestedPerson//setu:PersonId" flag="error">
+            <sch:assert test="count(setu:IdValue) = 1">
+                The subelement IdValue of the element PersonId must exist exactly once.
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.200801.businessrules.staffingorder.businessrule.ShiftWork.1" fpi="Controleren of het attribuut haveShiftWork van het element ShiftWork een correcte waarde heeft." context="/setu:StaffingOrder/setu:StaffingPosition/setu:PositionHeader/setu:ShiftWork" flag="error">
+            <sch:assert test="normalize-space(@haveShiftWork)='true'">
+                The attribute haveShiftWork of the element ShiftWork must contain the following value: true.
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.200801.businessrules.staffingorder.businessrule.ShiftWork.2" fpi="Controleren of het subelement Description van het element ShiftWork exact 1x voorkomt en niet leeg is." context="/setu:StaffingOrder/setu:StaffingPosition/setu:PositionHeader/setu:ShiftWork" flag="error">
+            <sch:assert test="(count(setu:Description)=1) and (normalize-space(setu:Description)!='')">
+                The subelement Description of the element ShiftWork must exist exactly once and may not be empty.
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.200801.businessrules.staffingorder.businessrule.CustomerReportingRequirements.2" fpi="Controleren of het element CustomerReportingRequirements geen subelementen bevat." context="/setu:StaffingOrder/setu:StaffingPosition/setu:CustomerReportingRequirements" flag="error">
+            <sch:assert test="not(*)">
+                The element CustomerReportingRequirements of the element StaffingPosition may not contain any subelements.
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.200801.businessrules.staffingorder.businessrule.PositionReason.1" fpi="Controleren of het element PositionReason een correcte waarde heeft." context="/setu:StaffingOrder/setu:StaffingPosition/setu:PositionReason" flag="error">
+            <sch:assert test="contains($PositionReason, concat(',', ., ','))">
+                The element PositionReason must contain one of the following values: <sch:value-of select="$PositionReason"/>
+                Currently '<sch:value-of select="."/>' is used.
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.200801.businessrules.staffingorder.businessrule.PositionDateRange.1" fpi="Controleren of het element PositionDateRange de juiste elementen bevat." context="/setu:StaffingOrder/setu:StaffingPosition/setu:PositionDateRange" flag="error">
+            <sch:assert test="(count(setu:ActualEndDate)=0) and (count(setu:MaxStartDate)=0) and (count(setu:StartAsSoonAsPossible)=0) and (count(setu:MaxNeedEndDate)=0) and (count(setu:PositionDuration)=0) and (count(setu:ExtensionParameters)=0)">
+                The element PositionDateRange contains (a) subelement(s) that is/are not allowed.
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.200801.businessrules.staffingorder.businessrule.RateType.1" fpi="Controleren of het attribuut rateType van het element Rates een correcte waarde bevat." context="/setu:StaffingOrder/setu:StaffingPosition//setu:Rates" flag="error">
+            <sch:assert test="contains($RateType, concat(',', @rateType, ','))">
+                The attribute rateType of the element Rates must contain one of the following values: <sch:value-of select="$RateType"/>
+                Currently '<sch:value-of select="@rateType"/>' is used.
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.200801.businessrules.staffingorder.businessrule.RateStatus.1" fpi="Controleren of het attribuut rateStatus van het element Rates een correcte waarde bevat." context="/setu:StaffingOrder/setu:StaffingPosition//setu:Rates" flag="error">
+            <sch:assert test="contains($RateStatus, concat(',', @rateStatus, ','))">
+                The attribute rateStatus of the element Rates ust contain one of the following values: <sch:value-of select="$RateStatus"/>
+                Currently '<sch:value-of select="@rateType"/>' is used.
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.200801.businessrules.staffingorder.businessrule.ExternalRateSetId.1" fpi="Controleren of het subelement IdValue van het element ExternalRateSetId exact 1x voorkomt." context="/setu:StaffingOrder/setu:StaffingPosition//setu:Rates/setu:ExternalRateSetId" flag="error">
+            <sch:assert test="count(setu:IdValue)=1">
+                The subelement IdValue of the element ExternalRateSetId must exist exactly once.
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.200801.businessrules.staffingorder.businessrule.Amount.1" fpi="Controleren of het attribuut rateAmountPeriod van het element Amount een correcte waarde bevat." context="/setu:StaffingOrder/setu:StaffingPosition//setu:Rates/setu:Amount" flag="error">
+            <sch:assert test="contains($Amount, concat(',', @rateAmountPeriod, ','))">
+                The attribute rateAmountPeriod of the element Amount must contain one of the following values: <sch:value-of select="$Amount"/>
+                Currently '<sch:value-of select="@rateAmountPeriod"/>' is used.
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.200801.businessrules.staffingorder.businessrule.Class.1" fpi="Controleren of het element Class van het element Rates een correcte waarde bevat." context="/setu:StaffingOrder/setu:StaffingPosition//setu:Rates/setu:Class" flag="error">
+            <sch:assert test="contains($Class, concat(',', ., ',')) or (. = '')">
+                The element Class must be empty or contain one of the following values: <sch:value-of select="$Class"/>
+                Currently '<sch:value-of select="."/>' is used.
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.200801.businessrules.staffingorder.businessrule.Multiplier.1" fpi="Controleren of het element Multiplier maximaal 1x voorkomt." context="/setu:StaffingOrder/setu:StaffingPosition//setu:Rates" flag="error">
+            <sch:assert test="count(setu:Multiplier) &lt;= 1">
+                The subelement Multiplier of the element Rates may exist at most once.
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.200801.businessrules.staffingorder.businessrule.RatesId.1" fpi="Controleren of het subelement IdValue van het element RatesId exact 1x voorkomt." context="/setu:StaffingOrder/setu:StaffingPosition//setu:Rates/setu:RatesId" flag="error">
+            <sch:assert test="count(setu:IdValue)=1">
+                The subelement IdValue of the element RatesId must exist exactly once.
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.200801.businessrules.staffingorder.businessrule.CustomerRateClassification.1" fpi="Controleren of het subelement IdValue van het element CustomerRateClassification exact 1x voorkomt." context="/setu:StaffingOrder/setu:StaffingPosition//setu:Rates/setu:CustomerRateClassification" flag="error">
+            <sch:assert test="count(setu:IdValue)=1">
+                The subelement IdValue of the element CustomerRateClassification must exist exactly once.
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.200801.businessrules.staffingorder.businessrule.PostalAddress.1" fpi="Controleren of het element AddressLine van DeliveryAddress niet voorkomt." context="/setu:StaffingOrder/setu:StaffingPosition/setu:WorkSite/setu:PostalAddress/setu:DeliveryAddress" flag="error">
+            <sch:assert test="count(setu:AddressLine)=0">
+                The element AddressLine of the element DeliveryAddress may not exist.
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.200801.businessrules.staffingorder.businessrule.PostalAddress.2" fpi="Controleren of DeliveryAddress subelementen bevat." context="/setu:StaffingOrder/setu:StaffingPosition/setu:WorkSite/setu:PostalAddress/setu:DeliveryAddress" flag="error">
+            <sch:assert test="count(./*) &gt;= 1">
+                The element DeliveryAddress must contain at least one sub-element.
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.200801.businessrules.staffingorder.businessrule.StaffingShift.1" fpi="Controleren of het element StaffingShift exact 1x voorkomt." context="/setu:StaffingOrder/setu:StaffingPosition" flag="error">
+            <sch:assert test="count(setu:StaffingShift)=1">
+                The element StaffingShift must exist exactly once.
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.200801.businessrules.staffingorder.businessrule.StaffingShift.3" fpi="Controleren of het attribuut shiftPeriod van het element StaffingShift een correcte waarde bevat." context="/setu:StaffingOrder/setu:StaffingPosition/setu:StaffingShift" flag="error">
+            <sch:assert test="contains($StaffingShift, concat(',', @shiftPeriod, ',')) or not(@shiftPeriod)">
+                The attribute shiftPeriod of the element StaffingShift must contain one of the following values: <sch:value-of select="$StaffingShift"/>
+                Currently '<sch:value-of select="@shiftPeriod"/>' is used.
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.200801.businessrules.staffingorder.businessrule.StaffingShift.4" fpi="Controleren of het subelement IdValue van het element Id van het element StaffingShift leeg is." context="/setu:StaffingOrder/setu:StaffingPosition/setu:StaffingShift/setu:Id//setu:IdValue" flag="error">
+            <sch:assert test="normalize-space(.)=''">
+                The subelement IdValue of the element Id of the element StaffingShift must be empty.
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.200801.businessrules.staffingorder.businessrule.UserArea.1" fpi="Controleren of het element UserArea onder het element StaffingOrder minimaal 1x voorkomt." context="/setu:StaffingOrder" flag="error">
+            <sch:assert test="count(setu:UserArea) &gt; 0">
+                The element UserArea must exist at least once.
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.200801.businessrules.staffingorder.businessrule.StaffingOrderAdditionalNL.1" fpi="Controleren of het element StaffingOrderAdditionalNL onder het element UserArea exact 1x voorkomt." context="/setu:StaffingOrder/setu:UserArea" flag="error">
+            <sch:assert test="count(nl:StaffingOrderAdditionalNL)=1">
+                The element StaffingOrderAdditionalNL must exist exactly once.
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.200801.businessrules.staffingorder.businessrule.SETUVersionId.1" fpi="Controleren of het element SETUVersionId onder het element StaffingOrderAdditionalNL de correcte waarde bevat." context="/setu:StaffingOrder/setu:UserArea/nl:StaffingOrderAdditionalNL" flag="error">
+            <sch:assert test="normalize-space(nl:SETUVersionId)='1.4'">
+                The element SETUVersionId must contain the following value: 1.4.
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.200801.businessrules.staffingorder.businessrule.OfferId.1" fpi="Controleren of het element OfferId enkel wordt gebruikt als orderType='order'." context="/setu:StaffingOrder" flag="error">
+            <sch:assert test="((count(setu:UserArea/nl:StaffingOrderAdditionalNL/nl:OfferId)=1) and (normalize-space(setu:OrderClassification/@orderType) = 'order')) or not(count(setu:UserArea/nl:StaffingOrderAdditionalNL/nl:OfferId)=1)">
+                The element OfferId may only be used when orderType='order'.
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.200801.businessrules.staffingorder.businessrule.OfferId.2" fpi="Controleren of het attribuut idOwner van het element OfferId exact 1x voorkomt en de correcte waarde bevat." context="/setu:StaffingOrder/setu:UserArea/nl:StaffingOrderAdditionalNL/nl:OfferId" flag="error">
+            <sch:assert test="(count(@idOwner)=1) and (normalize-space(@idOwner) = 'StaffingCompany')">
+                The attribute idOwner of the element OfferId must exist exactly once and contain the following value: StaffingCompany.
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.200801.businessrules.staffingorder.businessrule.OfferId.3" fpi="Controleren of het subelement IdValue van het element OfferId exact 1x voorkomt en niet leeg is." context="/setu:StaffingOrder/setu:UserArea/nl:StaffingOrderAdditionalNL/nl:OfferId" flag="error">
+            <sch:assert test="(count(setu:IdValue)=1) and (normalize-space(setu:IdValue) != '')">
+                The subelement IdValue of the element OfferId must exist exactly once and may not be empty.
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.200801.businessrules.staffingorder.businessrule.PreviousOrderId.1" fpi="Controleren of het attribuut idOwner van het element PreviousOrderId exact 1x voorkomt en een correcte waarde bevat." context="/setu:StaffingOrder/setu:UserArea/nl:StaffingOrderAdditionalNL/nl:PreviousOrderId" flag="error">
+            <sch:assert test="(count(@idOwner)=1) and ((normalize-space(@idOwner) = 'StaffingCustomer') or (normalize-space(@idOwner) = 'StaffingCompany'))">
+                The attribute idOwner of PreviousOrderId may exist exactly once and should have a valid value, either 'StaffingCustomer' or 'StaffingCompany'.
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.200801.businessrules.staffingorder.businessrule.PreviousOrderId.2" fpi="Controleren of het subelement IdValue van het element PreviousOrderId exact 1x voorkomt en niet leeg is." context="/setu:StaffingOrder/setu:UserArea/nl:StaffingOrderAdditionalNL/nl:PreviousOrderId" flag="error">
+            <sch:assert test="(count(setu:IdValue)=1) and (normalize-space(setu:IdValue) != '')">
+                The subelement IdValue of the element PreviousOrderId must exist exactly once and may not be empty.
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.200801.businessrules.staffingorder.businessrule.RFQOrderId.1" fpi="Controleren of het element RFQOrderId enkel wordt gebruikt als orderType='order'." context="/setu:StaffingOrder" flag="error">
+            <sch:assert test="((count(setu:UserArea/nl:StaffingOrderAdditionalNL/nl:RFQOrderId)=1) and (normalize-space(setu:OrderClassification/@orderType) = 'order')) or not(count(setu:UserArea/nl:StaffingOrderAdditionalNL/nl:RFQOrderId)=1)">
+                The element RFQOrderId may only be used when orderType='order'.
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.200801.businessrules.staffingorder.businessrule.RFQOrderId.2" fpi="Controleren of het attribuut idOwner van het element RFQOrderId exact 1x voorkomt en een correcte waarde bevat." context="/setu:StaffingOrder/setu:UserArea/nl:StaffingOrderAdditionalNL/nl:RFQOrderId" flag="error">
+            <sch:assert test="(count(@idOwner)=1) and ((normalize-space(@idOwner) = 'StaffingCustomer') or (normalize-space(@idOwner) = 'StaffingCompany'))">
+                The attribute idOwner of RFQOrderId may exist exactly once and should have a valid value, either 'StaffingCustomer' or 'StaffingCompany'.
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.200801.businessrules.staffingorder.businessrule.RFQOrderId.3" fpi="Controleren of het subelement IdValue van het element RFQOrderId exact 1x voorkomt en niet leeg is." context="/setu:StaffingOrder/setu:UserArea/nl:StaffingOrderAdditionalNL/nl:RFQOrderId" flag="error">
+            <sch:assert test="(count(setu:IdValue)=1) and (normalize-space(setu:IdValue) != '')">
+                The subelement IdValue of the element RFQOrderId must exist exactly once and may not be empty.
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.200801.businessrules.staffingorder.businessrule.Degree.1" fpi="Controleren of het attribuut degreeType van het element Degree een correcte waarde bevat." context="/setu:StaffingOrder/setu:UserArea/nl:StaffingOrderAdditionalNL/nl:StructuredXMLResume/setu:EducationHistory/setu:SchoolOrInstitution/setu:Degree" flag="error">
+            <sch:assert test="contains($Degree, concat(',', @degreeType, ','))">
+                The attribute degreeType of the element Degree must contain one of the following values: <sch:value-of select="$Degree"/>
+                Currently '<sch:value-of select="@degreeType"/>' is used.
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.200801.businessrules.staffingorder.businessrule.LocalInstitutionClassification.1" fpi="Controleren of het element LocalInstitutionClassification maximaal 1x voorkomt." context="/setu:StaffingOrder/setu:UserArea/nl:StaffingOrderAdditionalNL/nl:StructuredXMLResume/setu:EducationHistory/setu:SchoolOrInstitution" flag="error">
+            <sch:assert test="count(setu:LocalInstitutionClassification) &lt;= 1">
+                The element LocalInstitutionClassification may exist at most 1 time.
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.200801.businessrules.staffingorder.businessrule.LocalInstitutionClassification.2" fpi="Controleren of het subelement IdValue van het element LocalInstitutionClassification exact 1x voorkomt." context="/setu:StaffingOrder/setu:UserArea/nl:StaffingOrderAdditionalNL/nl:StructuredXMLResume/setu:EducationHistory/setu:SchoolOrInstitution/setu:LocalInstitutionClassification/setu:Id" flag="error">
+            <sch:assert test="count(setu:IdValue)=1">
+                The subelement Id/IdValue of the element LocalInstitutionClassification must exist exactly once.
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.200801.businessrules.staffingorder.businessrule.LocalInstitutionClassification.3" fpi="Controleren of het attribuut idOwner van het element LocalInstitutionClassification exact 1x voorkomt en niet leeg is." context="/setu:StaffingOrder/setu:UserArea/nl:StaffingOrderAdditionalNL/nl:StructuredXMLResume/setu:EducationHistory/setu:SchoolOrInstitution/setu:LocalInstitutionClassification/setu:Id" flag="error">
+            <sch:assert test="(count(@idOwner) = 1) and (normalize-space(@idOwner)!='')">
+                The attribute idOwner of the element LocalInstitutionClassification must exist exactly once and may not be empty.
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.200801.businessrules.staffingorder.businessrule.LocalInstitutionClassification.4" fpi="Controleren of het element Degree maximaal 1x voorkomt." context="/setu:StaffingOrder/setu:UserArea/nl:StaffingOrderAdditionalNL/nl:StructuredXMLResume/setu:EducationHistory/setu:SchoolOrInstitution" flag="error">
+            <sch:assert test="count(setu:Degree) &lt;= 1">
+                The subelement Degree of the element LocalInstitutionClassification may exist at most 1 time.
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.200801.businessrules.staffingorder.businessrule.WorkingAndThinkingLevel.1" fpi="Controleren of het attribuut description van het element WorkingAndThinkingLevel een correcte waarde bevat." context="/setu:StaffingOrder/setu:UserArea/nl:StaffingOrderAdditionalNL/nl:StructuredXMLResume/setu:Qualitifications//setu:Competency" flag="error">
+            <sch:assert test="((normalize-space(@name)='WorkingAndThinkingLevel') and contains($Degree, concat(',', @description, ','))) or not((normalize-space(@name)='WorkingAndThinkingLevel'))">
+                The attribute description of the element Compentency must contain one of the following values when name = 'WorkingAndThinkingLevel': <sch:value-of select="$Degree"/>
+                Currently '<sch:value-of select="@description"/>' is used.
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.200801.businessrules.staffingorder.businessrule.Competency.1" fpi="Controleren of het attribuut name van het element Competency exact 1x voorkomt en niet leeg is." context="/setu:StaffingOrder/setu:UserArea/nl:StaffingOrderAdditionalNL/nl:StructuredXMLResume/setu:Qualitifications//setu:Competency" flag="error">
+            <sch:assert test="(count(@name) = 1) and (normalize-space(@name)!='')">
+                The attribute name of the element Competency must exist exactly once and may not be empty.
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.200801.businessrules.staffingorder.businessrule.Competency.2" fpi="Controleren of het attribuut description van het element Competency exact 1x voorkomt en niet leeg is." context="/setu:StaffingOrder/setu:UserArea/nl:StaffingOrderAdditionalNL/nl:StructuredXMLResume/setu:Qualitifications//setu:Competency" flag="error">
+            <sch:assert test="(count(@description) = 1) and (normalize-space(@description)!='')">
+                The attribute description of the element Competency must exist exactly once and may not be empty.
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.200801.businessrules.staffingorder.businessrule.CLAReference.1" fpi="Controleren of het element CLAReference tenminste een Description element of een CLAId element bevat" context="//nl:CLAReference" flag="error">
+            <sch:assert test="(count(nl:Description) = 1) or (count(nl:CLAId) = 1)">
+                The element CLAReference must at least contain either Description or CLAId. Both is allowed as well.
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.200801.businessrules.staffingorder.businessrule.InclusiveRate.1" fpi="Controleren of het element InclusiveRate aanwezig is indien er een Rates element aanweizg is." context="/setu:StaffingOrder" flag="error">
+            <sch:assert test="((count(setu:StaffingPosition/setu:Rates) &gt; 0) and  (count(setu:UserArea/nl:StaffingOrderAdditionalNL/nl:InclusiveRate) = 1)) or not(count(setu:StaffingPosition/setu:Rates) &gt; 0)">
+                The element InclusiveRate must exist when an element Rates is present.
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.businessrule.320" 
+            fpi="For the StaffingShift it is mandatory to specify at least one of the elements Hours, MinimumHours (in StaffingShiftAddition) or MaximumHours (in StaffingShiftAddition). If you specify Hours, do not use MinimumHours and MaximumHours. If you specify MinimumHours and/or MaximumHours, do no use Hours."
+            context="/setu:StaffingOrder"
+            flag="error">
+            <!-- x and not(y) or not(x) and y -->
+            <sch:assert test="((count(setu:StaffingPosition/setu:StaffingShift/setu:Hours) &gt; 0) and not(count(setu:UserArea/nl:StaffingOrderAdditionalNL/nl:StaffingShiftAddition) &gt; 0)) 
+                                    or (not(count(setu:StaffingPosition/setu:StaffingShift/setu:Hours) &gt; 0) and (count(setu:UserArea/nl:StaffingOrderAdditionalNL/nl:StaffingShiftAddition) &gt; 0))">
+                If you specify Hours, do not use MinimumHours and MaximumHours. If you specify MinimumHours and/or MaximumHours, do no use Hours.
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.businessrule.321" 
+            fpi="The shiftPeriod attribute is mandatory, except to specify a '4weekly', 'quarterly' or 'yearly' period. Then AdditionalRequirement with requirementTitle 'shiftPeriodExtension' must be specified."
+            context="/setu:StaffingOrder"
+            flag="error">
+            <sch:assert test="(count(setu:StaffingPosition/setu:StaffingShift[@shiftPeriod]) &gt; 0) 
+                    or (count(setu:CustomerReportingRequirements/setu:AdditionalRequirement[@requirementTitle = 'shiftPeriodExtension']) &gt; 0)">
+                You must specify the shiftPeriod
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.2022.businessrules.staffingorder.businessrule.CustomerRateClassification.1" fpi="Controleren of IdValue de goede waarde bevat." context="//setu:Rates/setu:CustomerRateClassification/setu:IdValue" flag="error">
+            <sch:assert test="contains($SETU_CL_HourTypes, concat(',', ., ',')) or contains($SETU_CL_ExpenseAllowanceTypes, concat(',', ., ','))">
+            Value '
+            <sch:value-of select="."/>
+            ' is not part of codelist Hour types or Expense and Allowance types.
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+</sch:schema>

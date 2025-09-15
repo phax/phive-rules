@@ -112,9 +112,9 @@
             </goals>
             <id>ublbe</id>
             <configuration>
-              <schematronDirectory>${basedir}/src/test/resources/external/rule-source/timecard/1.4</schematronDirectory>
+              <schematronDirectory>${basedir}/src/test/resources/external/rule-source/1.4</schematronDirectory>
               <schematronPattern>*.xml</schematronPattern>
-              <xsltDirectory>${basedir}/src/main/resources/external/schematron/timecard/1.4/xslt</xsltDirectory>
+              <xsltDirectory>${basedir}/src/main/resources/external/schematron/setu/1.4/xslt</xsltDirectory>
             </configuration>
           </execution>
        -->

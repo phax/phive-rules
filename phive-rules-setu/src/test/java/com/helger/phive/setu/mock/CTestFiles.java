@@ -50,7 +50,8 @@ public final class CTestFiles
   public static ICommonsList <PhiveTestFile> getAllTestFiles ()
   {
     final ICommonsList <PhiveTestFile> ret = new CommonsArrayList <> ();
-    for (final DVRCoordinate aESID : new DVRCoordinate [] { SETUValidation.VID_TIMECARD_14 })
+    for (final DVRCoordinate aESID : new DVRCoordinate [] { SETUValidation.VID_SETU_ASSIGNMENT_14,
+                                                            SETUValidation.VID_SETU_TIMECARD_14 })
       for (final IReadableResource aRes : getAllMatchingTestFiles (aESID))
       {
         assertTrue ("Not existing test file: " + aRes.getPath (), aRes.exists ());
@@ -66,10 +67,16 @@ public final class CTestFiles
     ValueEnforcer.notNull (aVESID, "VESID");
 
     final String sBasePath = "src/test/resources/external/test-files/";
-    if (aVESID.equals (SETUValidation.VID_TIMECARD_14))
+    if (aVESID.equals (SETUValidation.VID_SETU_ASSIGNMENT_14))
     {
-      return new CommonsArrayList <> (new String [] { "TimecardExample_v1.4.xml", },
-                                      x -> new FileSystemResource (sBasePath + "timecard/1.4/" + x));
+      return new CommonsArrayList <> (new String [] { "AssignmentExample_v1.4.xml",
+                                                      "StatusAssignmentExample_v1.4.xml" },
+                                      x -> new FileSystemResource (sBasePath + "1.4/assignment/" + x));
+    }
+    if (aVESID.equals (SETUValidation.VID_SETU_TIMECARD_14))
+    {
+      return new CommonsArrayList <> (new String [] { "TimecardExample_v1.4.xml" },
+                                      x -> new FileSystemResource (sBasePath + "1.4/timecard/" + x));
     }
 
     throw new IllegalArgumentException ("Invalid VESID: " + aVESID);

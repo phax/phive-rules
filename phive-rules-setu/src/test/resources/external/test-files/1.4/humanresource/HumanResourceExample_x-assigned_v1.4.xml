@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<HumanResource xmlns="http://ns.hr-xml.org/2007-04-15" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:nl="http://ns.setu.nl/2020-01" xsi:schemaLocation="http://ns.hr-xml.org/2007-04-15 ../../../hr-xml/SIDES/HumanResource.xsd http://ns.setu.nl/2020-01 ../../schemas/2020-01/HumanResourceAdditionalNL.xsd">
+<!--
+	Name: 		HumanResourceExample_x-assigned_v1.4.xml
+	Purpose: 	Example of HumanResource message.
+	Author(s): 	SETU
+	Standard: 	SETU Standard for Ordering & Selection v1.4
+	Date: 		2020-08-19
+	Last edit: 	2020-11-25
+-->
+	<HumanResourceId idOwner="StaffingCompany">
+		<IdValue>179943169</IdValue>
+	</HumanResourceId>
+	<HumanResourceStatus status="x:assigned"/>
+	<ReferenceInformation>
+		<StaffingSupplierId idOwner="StaffingCompany">
+			<IdValue>79001895</IdValue>
+		</StaffingSupplierId>
+		<StaffingCustomerId idOwner="StaffingCompany">
+			<IdValue>223445</IdValue>
+		</StaffingCustomerId>
+		<OrderId idOwner="StaffingCustomer">
+			<IdValue>RFQ123789</IdValue>
+		</OrderId>
+		<StaffingCustomerOrgUnitId idOwner="StaffingCompany">
+			<IdValue>1234</IdValue>
+		</StaffingCustomerOrgUnitId>
+	</ReferenceInformation>
+	<ResourceInformation>
+		<PersonName>
+			<FormattedName>Piet van der Berg</FormattedName>
+			<LegalName>Pieter Arend van der Berg</LegalName>
+			<GivenName>Pieter</GivenName>
+			<GivenName>Arend</GivenName>
+			<PreferredGivenName>Piet</PreferredGivenName>
+			<MiddleName>P.A.</MiddleName>
+			<FamilyName primary="true" prefix="van der">Berg</FamilyName>
+		</PersonName>
+		<EntityContactInfo>
+			<EntityName>Piet van der Berg</EntityName>
+			<ContactMethod>
+				<Mobile>
+					<FormattedNumber>06-09090909</FormattedNumber>
+				</Mobile>
+				<InternetEmailAddress>piet.vanderberg@hotmail.nl</InternetEmailAddress>
+			</ContactMethod>				
+		</EntityContactInfo>
+		<PostalAddress>
+			<CountryCode>NL</CountryCode>
+			<PostalCode>1382 TT</PostalCode>
+			<Municipality>Weesp</Municipality>
+			<DeliveryAddress>
+				<StreetName>M.Nijhoffstraat</StreetName>
+				<BuildingNumber>132</BuildingNumber>
+			</DeliveryAddress>
+		</PostalAddress>
+		<AvailabilityDate>
+			<AvailabilityStartDate>2017-08-01</AvailabilityStartDate>
+			<AvailabilityEndDate>2018-02-01</AvailabilityEndDate>
+		</AvailabilityDate>
+	</ResourceInformation>
+	<Rates rateType="bill" rateStatus="agreed">
+		<Amount rateAmountPeriod="hourly" currency="EUR">16.00</Amount>
+		<Class>TimeInterval</Class>
+		<StartDate>2017-08-01</StartDate>
+		<EndDate>2018-02-01</EndDate>
+		<CustomerRateClassification>
+			<IdValue>Regular</IdValue>
+		</CustomerRateClassification>
+	</Rates>
+	<Rates rateType="pay" rateStatus="agreed">
+		<Amount rateAmountPeriod="hourly" currency="EUR">12.00</Amount>
+		<Class>TimeInterval</Class>
+		<StartDate>2017-08-01</StartDate>
+		<EndDate>2018-02-01</EndDate>
+		<CustomerRateClassification>
+			<IdValue>Regular</IdValue>
+		</CustomerRateClassification>
+	</Rates>	
+	<Profile>
+		<Resume>
+			<StructuredXMLResume>
+				<EmploymentHistory>
+					<EmployerOrg>
+						<EmployerOrgName>Lasbedrijf X</EmployerOrgName>
+						<EmployerContactInfo>
+							<PersonName>
+								<FormattedName>Guus Galop</FormattedName>
+							</PersonName>
+						</EmployerContactInfo>
+						<PositionHistory>
+							<OrgName>
+								<OrganizationName>Lasbedrijf X</OrganizationName>
+							</OrgName>
+							<Description>Lasser</Description>
+							<StartDate>
+								<AnyDate>2015-09-01</AnyDate>
+							</StartDate>
+							<EndDate>
+								<AnyDate>2017-04-01</AnyDate>
+							</EndDate>
+						</PositionHistory>
+					</EmployerOrg>
+				</EmploymentHistory>
+				<EducationHistory>
+					<SchoolOrInstitution schoolType="secundair onderwijs, tweede fase">
+						<Degree degreeType="4"/>
+						<DatesOfAttendance>
+								<StartDate>
+									<AnyDate>2012-09-01</AnyDate>
+								</StartDate>
+								<EndDate>
+									<AnyDate>2015-09-01</AnyDate>
+								</EndDate>
+						</DatesOfAttendance>
+						<LocalInstitutionClassification>
+							<Id idOwner="SOI2006">
+								<IdValue>64</IdValue>
+							</Id>
+						</LocalInstitutionClassification>
+					</SchoolOrInstitution>
+				</EducationHistory>
+				<LicensesAndCertifications>
+					<LicenseOrCertification>
+						<Name>Rijbewijs</Name>
+						<Id>B</Id>
+						<IssuingAuthority>CBR</IssuingAuthority>
+						<EffectiveDate>
+							<ValidFrom>
+								<AnyDate>2009-10-03</AnyDate>
+							</ValidFrom>
+							<ValidTo>
+								<AnyDate>2019-10-03</AnyDate>
+							</ValidTo>
+							<FirstIssuedDate>
+								<AnyDate>2009-10-03</AnyDate>
+							</FirstIssuedDate>
+						</EffectiveDate>
+					</LicenseOrCertification>
+				</LicensesAndCertifications>
+				<Qualifications>
+					<Competency name="WorkingAndThinkingLevel" description="4"/>
+					<Competency name="Kwaliteit Lasser" description="Certificaat van Vakbekwaamheid - Lasser kwalificatiecertificaat - AWS D1.1"/>
+				</Qualifications>
+			</StructuredXMLResume>
+		</Resume>
+	</Profile>
+	<Preferences/>
+	<HumanResourceComments>Extra opmerking.</HumanResourceComments>
+	<UserArea>
+		<nl:HumanResourceAdditionalNL>
+			<nl:SETUVersionId>1.4</nl:SETUVersionId>
+			<nl:OfferId idOwner="StaffingCompany">
+				<IdValue>7654323</IdValue>
+			</nl:OfferId>
+			<nl:StaffingShift shiftPeriod="weekly">
+				<Id>
+					<IdValue/>
+				</Id>
+				<Hours>32</Hours>
+			</nl:StaffingShift>
+			<nl:DaysPerWeek>4</nl:DaysPerWeek>
+			<nl:ReasonOfChange/>
+			<nl:BirthDate>1991-03-18</nl:BirthDate>
+			<nl:Sex>male</nl:Sex>
+			<nl:CustomerReportingRequirements>
+				<ManagerName>M.A. Nager</ManagerName>	
+				<ContactName>I.N. ter Cedent</ContactName>
+				<PurchaseOrderNumber>PO123789</PurchaseOrderNumber>
+				<DepartmentCode>12</DepartmentCode>
+				<DepartmentName>Productie</DepartmentName>
+				<CostCenterCode>173</CostCenterCode>
+				<CostCenterName>Staalproductie</CostCenterName>
+				<ProjectCode>012.30303</ProjectCode>
+				<CustomerReferenceNumber>20171023</CustomerReferenceNumber>
+			</nl:CustomerReportingRequirements>
+			<nl:IdentificationDocument>
+				<nl:Format>Paspoort</nl:Format>
+				<nl:Id>NL72431234</nl:Id>
+				<nl:EffectiveDate>
+					<nl:ValidFrom>2016-06-07</nl:ValidFrom>
+					<nl:ValidTo>2021-06-07</nl:ValidTo>
+				</nl:EffectiveDate>
+			</nl:IdentificationDocument>
+			<nl:SupplierContactInfo>
+				<EntityName>Medewerker Plaatsing</EntityName>
+				<ContactMethod>
+					<Mobile>
+						<FormattedNumber>06-00001111</FormattedNumber>
+					</Mobile>
+					<InternetEmailAddress>plaatsing@uitzendbureaux.nl</InternetEmailAddress>
+					<InternetWebAddress>http://www.plaatsing.uitzendbureaux.nl</InternetWebAddress>
+				</ContactMethod>				
+			</nl:SupplierContactInfo>
+			<nl:InclusiveRate>true</nl:InclusiveRate>
+			<nl:InCaseOfEmergency>06-00002222</nl:InCaseOfEmergency>
+		</nl:HumanResourceAdditionalNL>
+	</UserArea>
+</HumanResource>

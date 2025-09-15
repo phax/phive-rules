@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns="http://ns.setu.nl/2020-01" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:hr="http://ns.hr-xml.org/2007-04-15" targetNamespace="http://ns.setu.nl/2020-01" elementFormDefault="qualified" version="2020-01">
+	<xsd:annotation>
+		<xsd:documentation>
+		Name: 		StaffingOrderAdditionalNL.xsd
+		Purpose: 	Defines the additional StaffingOrder schema elements for the Netherlands.
+		Author(s): 	SETU (helpdesk@setu.nl)
+		Standard: 	SETU Standard for Ordering and Selection v1.4
+		Date: 		2020-08-19
+		Last edit: 	2020-11-24
+		</xsd:documentation>
+	</xsd:annotation>
+    <xsd:import namespace="http://ns.hr-xml.org/2007-04-15" schemaLocation="../../../hr-xml/SIDES/StaffingOrder.xsd"/>
+    <xsd:import namespace="http://ns.hr-xml.org/2007-04-15" schemaLocation="../../../hr-xml/SEP/Resume.xsd"/>
+	<xsd:import namespace="http://ns.hr-xml.org/2007-04-15" schemaLocation="../../../hr-xml/CPO/EntityIdType.xsd"/>
+	<xsd:import namespace="http://ns.hr-xml.org/2007-04-15" schemaLocation="../../../hr-xml/CPO/DateTimeDataTypes.xsd"/>
+    
+	<xsd:element name="StaffingOrderAdditionalNL" type="StaffingOrderAdditionalNLType"/>
+	<xsd:complexType name="CLAReferenceType">
+		<xsd:sequence>
+			<xsd:element name="Description" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="CLAId" type="xsd:string" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="StaffingShiftAdditionType">
+		<xsd:sequence>
+			<xsd:element name="MinimumHours" type="xsd:decimal" minOccurs="0"/>
+			<xsd:element name="MaximumHours" type="xsd:decimal" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="StaffingOrderAdditionalNLType">
+		<xsd:sequence>
+			<xsd:element name="SETUVersionId" type="xsd:string"/>
+			<xsd:element name="OfferId" type="hr:EntityIdType" minOccurs="0"/>
+			<xsd:element name="PreviousOrderId" type="hr:EntityIdType" minOccurs="0"/>
+			<xsd:element name="RFQOrderId" type="hr:EntityIdType" minOccurs="0"/>
+			<xsd:element name="DaysPerWeek" type="xsd:decimal" minOccurs="0"/>
+			<xsd:element name="StructuredXMLResume" type="hr:StructuredXMLResumeType" minOccurs="0"/>
+			<xsd:element name="ReasonOfChange" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="CLAReference" type="CLAReferenceType" minOccurs="0"/>
+			<xsd:element name="InclusiveRate" type="xsd:boolean" minOccurs="0"/>
+			<xsd:element name="OfferRequirements" minOccurs="0">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="MinimalRequiredValidityEndDate" type="hr:AnyDateTimeType" minOccurs="0"/>
+						<xsd:element name="SubmittancePeriod" minOccurs="0">
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element name="StartDate" type="hr:AnyDateTimeType" minOccurs="0"/>
+									<xsd:element name="EndDate" type="hr:AnyDateTimeType" minOccurs="0"/>
+								</xsd:sequence>
+							</xsd:complexType>
+						</xsd:element>
+						<xsd:element name="AwardDate" type="hr:AnyDateTimeType" minOccurs="0"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="StaffingShiftAddition" type="StaffingShiftAdditionType" minOccurs="0" />
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

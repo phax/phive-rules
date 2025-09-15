@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns="http://ns.setu.nl/2020-01" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:hr="http://ns.hr-xml.org/2007-04-15" targetNamespace="http://ns.setu.nl/2020-01" elementFormDefault="qualified" version="2020-01">
+	<xsd:annotation>
+		<xsd:documentation>
+		Name: 		HumanResourceAdditionalNL.xsd
+		Purpose: 	Defines the additional HumanResource schema elements for the Netherlands.
+		Author(s): 	SETU (helpdesk@setu.nl)
+		Standard: 	SETU Standard for Ordering and Selection v1.4
+		Date: 		2020-08-19
+		Last edit: 	2020-11-24
+		</xsd:documentation>
+	</xsd:annotation>
+    <xsd:import namespace="http://ns.hr-xml.org/2007-04-15" schemaLocation="../../../hr-xml/SIDES/HumanResource.xsd"/>
+	<xsd:import namespace="http://ns.hr-xml.org/2007-04-15" schemaLocation="../../../hr-xml/SIDES/StaffingShift.xsd"/>
+	<xsd:import namespace="http://ns.hr-xml.org/2007-04-15" schemaLocation="../../../hr-xml/SIDES/CustomerReportingRequirements.xsd"/>
+	<xsd:import namespace="http://ns.hr-xml.org/2007-04-15" schemaLocation="../../../hr-xml/CPO/EntityIdType.xsd"/>
+	<xsd:import namespace="http://ns.hr-xml.org/2007-04-15" schemaLocation="../../../hr-xml/SIDES/ContactInfo.xsd"/>
+    
+	<xsd:element name="HumanResourceAdditionalNL" type="HumanResourceAdditionalNLType"/>
+	<xsd:simpleType name="SexType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="male"/>
+			<xsd:enumeration value="female"/>
+			<xsd:enumeration value="unknown"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:complexType name="EffectiveDateType">
+		<xsd:sequence>
+			<xsd:element name="ValidFrom" type="xsd:date" minOccurs="0"/>
+			<xsd:element name="ValidTo" type="xsd:date" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="IdentificationDocumentType">
+		<xsd:sequence>
+			<xsd:element name="Format" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="Id" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="EffectiveDate" type="EffectiveDateType" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="HumanResourceAdditionalNLType">
+		<xsd:sequence>
+			<xsd:element name="SETUVersionId" type="xsd:string"/>
+			<xsd:element name="OfferId" type="hr:EntityIdType" minOccurs="0"/>
+			<xsd:element name="StaffingShift" type="hr:StaffingShiftType" minOccurs="0"/>
+			<xsd:element name="DaysPerWeek" type="xsd:decimal" minOccurs="0"/>
+			<xsd:element name="ReasonOfChange" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="BirthDate" type="xsd:date" minOccurs="0"/>
+			<xsd:element name="Sex" type="SexType" minOccurs="0"/>
+			<xsd:element name="CustomerReportingRequirements" type="hr:CustomerReportingRequirementsType" minOccurs="0"/>
+			<xsd:element name="IdentificationDocument" type="IdentificationDocumentType" minOccurs="0"/>
+			<xsd:element name="SupplierContactInfo" type="hr:EntityContactInfoType" minOccurs="0"/>
+			<xsd:element name="InclusiveRate" type="xsd:boolean" minOccurs="0"/>
+			<xsd:element name="InCaseOfEmergency" type="xsd:string" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

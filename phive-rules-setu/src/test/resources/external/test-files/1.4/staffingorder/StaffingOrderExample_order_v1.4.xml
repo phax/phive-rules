@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StaffingOrder xmlns="http://ns.hr-xml.org/2007-04-15" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:nl="http://ns.setu.nl/2020-01" xsi:schemaLocation="http://ns.hr-xml.org/2007-04-15 ../../../hr-xml/SIDES/StaffingOrder.xsd http://ns.setu.nl/2020-01 ../../schemas/2020-01/StaffingOrderAdditionalNL.xsd">
+<!--
+	Name: 		StaffingOrderExample_order_v1.4.xml
+	Purpose: 	Example of StaffingOrder message.
+	Author(s): 	SETU
+	Standard: 	SETU Standard for Ordering & Selection v1.4
+	Date: 		2020-08-19
+	Last edit:	2020-11-25
+-->
+	<OrderId idOwner="StaffingCustomer">
+		<IdValue>PO123789</IdValue>
+	</OrderId>
+	<ReferenceInformation>
+		<MasterOrderId idOwner="StaffingCompany">
+			<IdValue>FA5623467</IdValue>
+		</MasterOrderId>
+		<StaffingCustomerId idOwner="StaffingCustomer">
+			<IdValue>445123</IdValue>
+		</StaffingCustomerId>
+		<StaffingCustomerId idOwner="StaffingCompany">
+			<IdValue>223445</IdValue>
+		</StaffingCustomerId>
+		<StaffingCustomerOrgUnitId idOwner="StaffingCustomer">
+			<IdValue>9876</IdValue>
+		</StaffingCustomerOrgUnitId>
+		<StaffingSupplierId idOwner="StaffingCustomer">
+			<IdValue>39876</IdValue>
+		</StaffingSupplierId>
+	</ReferenceInformation>
+	<CustomerReportingRequirements>
+		<ManagerName>M.A. Nager</ManagerName>
+		<ContactName>I.N. ter Cedent</ContactName>
+		<DepartmentCode>12</DepartmentCode>
+		<DepartmentName>Productie</DepartmentName>
+		<CostCenterCode>173</CostCenterCode>
+		<CostCenterName>Staalproductie</CostCenterName>
+		<ProjectCode>012.30303</ProjectCode>
+		<CustomerReferenceNumber>20171023</CustomerReferenceNumber>
+	</CustomerReportingRequirements>
+	<OrderClassification orderStatus="new" orderType="order"/>
+	<OrderContact contactType="placed by">
+		<ContactInfo>
+			<PersonName>
+				<FormattedName>Henk de Vries</FormattedName>
+			</PersonName>
+			<ContactMethod>
+				<Mobile>
+					<FormattedNumber>06-11223344</FormattedNumber>
+				</Mobile>
+				<InternetEmailAddress>henk.devries@vanklanterenbv.nl</InternetEmailAddress>
+				<InternetWebAddress>http://www.vanklanterenbv.nl</InternetWebAddress>
+			</ContactMethod>
+		</ContactInfo>
+	</OrderContact>
+	<OrderComments>Plaats hier een opmerking over de order.</OrderComments>
+	<PositionQuantity>1</PositionQuantity>
+	<MultiVendorDistribution>false</MultiVendorDistribution>
+	<StaffingPosition>
+		<PositionHeader>
+			<PositionId>
+				<Id/>
+			</PositionId>
+			<JobId>
+				<Id>9</Id>
+			</JobId>
+			<PositionTitle>Lasser</PositionTitle>
+			<PositionType>secondment</PositionType>
+			<PositionDescription>Lasser voor de montage van aluminium hekwerken, productiewerk in de werkplaats en het lassen van staal en/of aluminium.</PositionDescription>
+			<RequestedPerson>
+				<PersonName>
+					<FormattedName>Piet van der Berg</FormattedName>
+				</PersonName>
+				<PersonId idOwner="StaffingCompany">
+					<IdValue>179943169</IdValue>
+				</PersonId>
+			</RequestedPerson>
+			<ShiftWork haveShiftWork="true">
+				<Description>4-shift work</Description>
+			</ShiftWork>
+		</PositionHeader>
+		<CustomerReportingRequirements/>
+		<PositionDateRange>
+			<StartDate>2017-08-01</StartDate>
+			<ExpectedEndDate>2018-02-01</ExpectedEndDate>
+		</PositionDateRange>
+		<Rates rateType="bill" rateStatus="agreed">
+			<Amount rateAmountPeriod="hourly" currency="EUR">16.00</Amount>
+			<Class>TimeInterval</Class>
+			<StartDate>2017-08-01</StartDate>
+			<EndDate>2018-02-01</EndDate>
+			<CustomerRateClassification>
+				<IdValue>Regular</IdValue>
+			</CustomerRateClassification>
+		</Rates>
+		<Rates rateType="pay" rateStatus="agreed">
+			<Amount rateAmountPeriod="hourly" currency="EUR">12.00</Amount>
+			<Class>TimeInterval</Class>
+			<StartDate>2017-08-01</StartDate>
+			<EndDate>2018-02-01</EndDate>
+			<CustomerRateClassification>
+				<IdValue>Regular</IdValue>
+			</CustomerRateClassification>
+		</Rates>
+		<WorkSite>
+			<WorkSiteName>Werkplaats</WorkSiteName>
+			<PostalAddress>
+				<CountryCode>NL</CountryCode>
+				<PostalCode>1112 XK</PostalCode>
+				<Municipality>Diemen</Municipality>
+				<DeliveryAddress>
+					<StreetName>Wisselwerking</StreetName>
+					<BuildingNumber>2</BuildingNumber>
+				</DeliveryAddress>
+			</PostalAddress>
+		</WorkSite>
+		<StaffingShift shiftPeriod="weekly">
+			<Id>
+				<IdValue/>
+			</Id>
+			<Hours>32</Hours>
+		</StaffingShift>
+	</StaffingPosition>
+	<UserArea>
+		<nl:StaffingOrderAdditionalNL>
+			<nl:SETUVersionId>1.4</nl:SETUVersionId>
+			<nl:OfferId idOwner="StaffingCompany">
+				<IdValue>7654323</IdValue>
+			</nl:OfferId>
+			<nl:RFQOrderId idOwner="StaffingCustomer">
+				<IdValue>RFQ123789</IdValue>
+			</nl:RFQOrderId>
+			<nl:DaysPerWeek>4</nl:DaysPerWeek>
+			<nl:CLAReference>
+				<nl:Description>CAO MT METAALBEWERKINGSBEDRIJF</nl:Description>
+				<nl:CLAId>824</nl:CLAId>
+			</nl:CLAReference>
+			<nl:InclusiveRate>true</nl:InclusiveRate>
+		</nl:StaffingOrderAdditionalNL>
+	</UserArea>
+</StaffingOrder>

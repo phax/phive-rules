@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Assignment xmlns="http://ns.hr-xml.org/2007-04-15" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:nl="http://ns.setu.nl/2020-01" xsi:schemaLocation="http://ns.hr-xml.org/2007-04-15 ../../../hr-xml/SIDES/Assignment.xsd http://ns.setu.nl/2020-01 ../../schemas/2020-01/AssignmentAdditionalNL.xsd" assignmentStatus="active" xml:lang="en-gb">
+<!--
+	Name: 		AssignmentExample_v1.4.xml
+	Purpose: 	Example of Assignment message.
+	Author(s): 	SETU
+	Standard: 	SETU Standard for Assignment v1.4
+	Date: 		2020-09-23
+	Last edit:	2020-11-25
+-->
+	<AssignmentId idOwner="StaffingCompany">
+		<IdValue>1234/1234561</IdValue>
+	</AssignmentId>
+	<ReferenceInformation>
+		<StaffingCustomerId idOwner="StaffingCompany">
+			<IdValue>223445</IdValue>
+		</StaffingCustomerId>
+		<StaffingCustomerOrgUnitId idOwner="StaffingCustomer">
+			<IdValue>9876</IdValue>
+		</StaffingCustomerOrgUnitId>
+		<OrderId idOwner="StaffingCompany">
+			<IdValue>RFQ123789</IdValue>
+		</OrderId>
+		<HumanResourceId idOwner="StaffingCompany">
+			<IdValue>179943169</IdValue>
+		</HumanResourceId>
+		<HumanResourceId idOwner="StaffingCustomer">
+			<IdValue>23456</IdValue>
+		</HumanResourceId>
+		<PositionId>
+			<IdValue/>
+		</PositionId>
+		<StaffingSupplierId idOwner="StaffingCustomer">
+			<IdValue>39876</IdValue>
+		</StaffingSupplierId>
+		<StaffingSupplierOrgUnitId idOwner="StaffingCustomer">
+			<IdValue>53954</IdValue>
+		</StaffingSupplierOrgUnitId>
+	</ReferenceInformation>
+	<CustomerReportingRequirements>
+		<ManagerName>M.A. Nager</ManagerName>		
+		<ContactName>I.N. ter Cedent</ContactName>
+		<PurchaseOrderNumber>PO123789</PurchaseOrderNumber>
+		<DepartmentCode>12</DepartmentCode>
+		<DepartmentName>Productie</DepartmentName>
+		<CostCenterCode>173</CostCenterCode>
+		<CostCenterName>Staalproductie</CostCenterName>
+		<ProjectCode>012.30303</ProjectCode>
+	</CustomerReportingRequirements>
+	<Rates rateStatus="agreed" rateType="bill">
+		<Amount currency="EUR" rateAmountPeriod="x:hourlyconsolidated">16.00</Amount>
+		<Class>TimeInterval</Class>
+		<Multiplier>100</Multiplier>
+		<StartDate>2017-08-01</StartDate>
+		<EndDate>2018-02-01</EndDate>
+		<RatesId>
+			<IdValue>1</IdValue>
+		</RatesId>
+		<CustomerRateClassification>
+			<IdValue>Regular</IdValue>
+		</CustomerRateClassification>
+	</Rates>
+	<Rates rateStatus="agreed" rateType="pay">
+		<Amount currency="EUR" rateAmountPeriod="x:hourlyconsolidated">12.00</Amount>
+		<Class>TimeInterval</Class>
+		<Multiplier>100</Multiplier>
+		<StartDate>2017-08-01</StartDate>
+		<EndDate>2018-02-01</EndDate>
+		<RatesId>
+			<IdValue>2</IdValue>
+		</RatesId>
+		<CustomerRateClassification>
+			<IdValue>Regular</IdValue>
+		</CustomerRateClassification>
+	</Rates>
+	<Rates rateStatus="agreed" rateType="bill">
+		<Amount currency="EUR" rateAmountPeriod="x:hourlyconsolidated">24.00</Amount>
+		<Class>TimeInterval</Class>
+		<Multiplier>150</Multiplier>
+		<StartDate>2017-08-01</StartDate>
+		<EndDate>2018-02-01</EndDate>
+		<RatesId>
+			<IdValue>3</IdValue>
+		</RatesId>
+		<CustomerRateClassification>
+			<IdValue>Overtime</IdValue>
+		</CustomerRateClassification>
+	</Rates>
+	<Rates rateStatus="agreed" rateType="pay">
+		<Amount currency="EUR" rateAmountPeriod="x:hourlyconsolidated">18.00</Amount>
+		<Class>TimeInterval</Class>
+		<Multiplier>150</Multiplier>
+		<StartDate>2017-08-01</StartDate>
+		<EndDate>2018-02-01</EndDate>
+		<RatesId>
+			<IdValue>4</IdValue>
+		</RatesId>
+		<CustomerRateClassification>
+			<IdValue>Overtime</IdValue>
+		</CustomerRateClassification>
+	</Rates>
+	<Rates rateStatus="agreed" rateType="bill">
+		<Amount currency="EUR" rateAmountPeriod="x:hourlyconsolidated">20.00</Amount>
+		<Class>TimeInterval</Class>
+		<Multiplier>125</Multiplier>
+		<StartDate>2017-08-01</StartDate>
+		<EndDate>2018-02-01</EndDate>
+		<RatesId>
+			<IdValue>5</IdValue>
+		</RatesId>
+		<CustomerRateClassification>
+			<IdValue>Shift</IdValue>
+		</CustomerRateClassification>
+	</Rates>
+	<Rates rateStatus="agreed" rateType="pay">
+		<Amount currency="EUR" rateAmountPeriod="x:hourlyconsolidated">16.00</Amount>
+		<Class>TimeInterval</Class>
+		<Multiplier>125</Multiplier>
+		<StartDate>2017-08-01</StartDate>
+		<EndDate>2018-02-01</EndDate>
+		<RatesId>
+			<IdValue>6</IdValue>
+		</RatesId>
+		<CustomerRateClassification>
+			<IdValue>Shift</IdValue>
+		</CustomerRateClassification>
+	</Rates>
+	<Rates rateStatus="agreed" rateType="bill">
+		<Amount currency="EUR" rateAmountPeriod="daily">5.20</Amount>
+		<Class>Allowance</Class>
+		<StartDate>2017-08-01</StartDate>
+		<EndDate>2018-02-01</EndDate>
+		<Description>Reiskosten woonwerk vast per dag</Description>
+		<CustomerRateClassification>
+			<IdValue name="Travel expenses">102B</IdValue>
+		</CustomerRateClassification>
+	</Rates>
+	<Rates rateStatus="agreed" rateType="pay">
+		<Amount currency="EUR" rateAmountPeriod="daily">5.20</Amount>
+		<Class>Allowance</Class>
+		<StartDate>2017-08-01</StartDate>
+		<EndDate>2018-02-01</EndDate>
+		<Description>Reiskosten woonwerk vast per dag</Description>
+		<CustomerRateClassification>
+			<IdValue name="Travel expenses">102B</IdValue>
+		</CustomerRateClassification>
+	</Rates>
+	<StaffingShift shiftPeriod="weekly">
+		<Id>
+			<IdValue/>
+		</Id>
+		<Hours>32</Hours>
+	</StaffingShift>
+	<AssignmentDateRange>
+		<StartDate>2017-08-01</StartDate>
+		<ExpectedEndDate>2018-02-01</ExpectedEndDate>
+	</AssignmentDateRange>
+	<UserArea>
+		<nl:AssignmentAdditionalNL>
+			<nl:SETUVersionId>1.4</nl:SETUVersionId>
+			<nl:JobTitle>Lasser</nl:JobTitle>
+			<nl:JobId>9</nl:JobId>
+			<nl:JobGroup>6</nl:JobGroup>
+			<nl:StaffingWorkSite>
+				<WorkSiteName>Werkplaats</WorkSiteName>
+				<PostalAddress>
+					<CountryCode>NL</CountryCode>
+					<PostalCode>1112 XK</PostalCode>
+					<Municipality>Diemen</Municipality>
+					<DeliveryAddress>
+						<StreetName>Wisselwerking</StreetName>
+						<BuildingNumber>2</BuildingNumber>
+					</DeliveryAddress>
+				</PostalAddress>
+			</nl:StaffingWorkSite>
+			<nl:ShiftType>4-shift work</nl:ShiftType>
+			<nl:CLAReference>
+				<nl:Description>CAO MT METAALBEWERKINGSBEDRIJF</nl:Description>
+				<nl:CLAId>824</nl:CLAId>
+			</nl:CLAReference>
+			<nl:InclusiveRate>true</nl:InclusiveRate>
+			<nl:HumanResourceInformation>
+				<nl:SalaryScale>5;4</nl:SalaryScale>
+				<nl:InsuranceGroup>B</nl:InsuranceGroup>
+				<nl:SingleCommuterTrafficDistance>8.2</nl:SingleCommuterTrafficDistance>
+				<nl:EmployeePhase>A</nl:EmployeePhase>
+				<nl:EmployeeContract>true</nl:EmployeeContract>
+				<nl:VacationWorker>false</nl:VacationWorker>
+				<nl:RecruitedBy>StaffingCompany</nl:RecruitedBy>
+				<nl:OnCallContract validFrom="2017-08-01" validTo="2018-08-01">false</nl:OnCallContract>
+				<nl:ContractStaffingShift contractShiftPeriod="weekly" validFrom="2017-08-01" validTo="2018-08-01">
+					<nl:MinimumHours>28</nl:MinimumHours>
+					<nl:MaximumHours>36</nl:MaximumHours>
+				</nl:ContractStaffingShift>
+			</nl:HumanResourceInformation>
+			<nl:PositionType>secondment</nl:PositionType>
+		</nl:AssignmentAdditionalNL>
+	</UserArea>
+</Assignment>

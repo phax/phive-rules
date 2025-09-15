@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns="http://ns.setu.nl/2020-01" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:hr="http://ns.hr-xml.org/2007-04-15" xmlns:ns1="http://ns.setu.nl/2020-01" targetNamespace="http://ns.setu.nl/2020-01" elementFormDefault="qualified" version="2020-01">
+	<xsd:annotation>
+		<xsd:documentation>	
+		Name: 		AssignmentAdditionalNL.xsd
+		Purpose: 	Defines the additional Assignment schema elements for the Netherlands.
+		Author(s): 	SETU (helpdesk@setu.nl)
+		Standard: 	SETU Standard for Assignment v1.4
+		Date:		2020-08-04
+		Last edit: 	2021-04-21
+		</xsd:documentation>
+	</xsd:annotation>
+	<xsd:import namespace="http://ns.hr-xml.org/2007-04-15" schemaLocation="../../../hr-xml/SIDES/Assignment.xsd"/>
+	<xsd:import namespace="http://ns.hr-xml.org/2007-04-15" schemaLocation="../../../hr-xml/SIDES/StaffingWorkSite.xsd"/>
+    
+	<xsd:element name="AssignmentAdditionalNL" type="AssignmentAdditionalNLType"/>
+	<xsd:complexType name="CLAReferenceType">
+		<xsd:sequence>
+			<xsd:element name="Description" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="CLAId" type="xsd:string" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="OnCallContractType">
+		<xsd:simpleContent>
+			<xsd:extension base="xsd:boolean">
+				<xsd:attribute name="validFrom" type="xsd:date"/>
+				<xsd:attribute name="validTo" type="xsd:date"/>
+			</xsd:extension>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="StaffingShiftAdditionType">
+		<xsd:sequence>
+			<xsd:element name="MinimumHours" type="xsd:decimal" minOccurs="0"/>
+			<xsd:element name="MaximumHours" type="xsd:decimal" minOccurs="0"/>
+		</xsd:sequence>
+		<xsd:attribute name="shiftPeriod" type="xsd:string" use="required"/>
+	</xsd:complexType>
+	<xsd:complexType name="ContractStaffingShiftType">
+		<xsd:sequence>
+			<xsd:element name="Hours" type="xsd:decimal" minOccurs="0"/>
+			<xsd:element name="MinimumHours" type="xsd:decimal" minOccurs="0"/>
+			<xsd:element name="MaximumHours" type="xsd:decimal" minOccurs="0"/>
+		</xsd:sequence>
+		<xsd:attribute name="contractShiftPeriod" type="xsd:string" use="required"/>
+		<xsd:attribute name="validFrom" type="xsd:date" use="optional"/>
+		<xsd:attribute name="validTo" type="xsd:date" use="optional"/>
+	</xsd:complexType>
+	<xsd:complexType name="AssignmentAdditionalNLType">
+		<xsd:sequence>
+			<xsd:element name="SETUVersionId" type="xsd:string"/>
+			<xsd:element name="JobTitle" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="JobId" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="JobGroup" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="StaffingWorkSite" type="hr:StaffingWorkSiteType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="ShiftType" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="CLAReference" type="CLAReferenceType" minOccurs="0"/>
+			<xsd:element name="ReasonOfChange" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="InclusiveRate" type="xsd:boolean" minOccurs="0"/>
+			<xsd:element name="HumanResourceInformation" minOccurs="0">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="SalaryScale" type="xsd:string" minOccurs="0"/>
+						<xsd:element name="InsuranceGroup" type="xsd:string" minOccurs="0"/>
+						<xsd:element name="SingleCommuterTrafficDistance" type="xsd:decimal" minOccurs="0"/>
+						<xsd:element name="EmployeePhase" type="xsd:string" minOccurs="0"/>
+						<xsd:element name="EmployeeContract" type="xsd:boolean" minOccurs="0"/>
+						<xsd:element name="VacationWorker" type="xsd:boolean" minOccurs="0"/>
+						<xsd:element name="RecruitedBy" type="xsd:string" minOccurs="0"/>
+						<xsd:element name="OnCallContract" type="OnCallContractType" minOccurs="0" maxOccurs="unbounded"/>
+						<xsd:element name="StaffingShiftAddition" type="StaffingShiftAdditionType" minOccurs="0" maxOccurs="unbounded" />
+						<xsd:element name="ContractStaffingShift" type="ContractStaffingShiftType" minOccurs="0" maxOccurs="unbounded"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		<xsd:element name="PositionType" type="xsd:string" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>
