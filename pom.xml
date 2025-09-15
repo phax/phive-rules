@@ -164,6 +164,11 @@
       </dependency>
       <dependency>
         <groupId>com.helger.phive.rules</groupId>
+        <artifactId>phive-rules-france</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.helger.phive.rules</groupId>
         <artifactId>phive-rules-isdoc</artifactId>
         <version>${project.version}</version>
       </dependency>
@@ -238,15 +243,18 @@
   <modules>
     <module>phive-rules-api</module>
     <!-- formats: -->
+    <!-- Prerequisite for a lot of things -->
+    <module>phive-rules-en16931</module>
+    <!-- Remaining formats -->
     <module>phive-rules-cii</module>
     <module>phive-rules-cius-pt</module>
     <module>phive-rules-cius-ro</module>
     <module>phive-rules-ebinterface</module>
     <module>phive-rules-ehf</module>
-    <module>phive-rules-en16931</module>
     <module>phive-rules-facturae</module>
     <module>phive-rules-fatturapa</module>
     <module>phive-rules-finvoice</module>
+    <module>phive-rules-france</module>
     <module>phive-rules-isdoc</module>
     <module>phive-rules-oioubl</module>
     <module>phive-rules-peppol-legacy</module>
@@ -254,17 +262,16 @@
     <module>phive-rules-peppol-italy</module>
     <module>phive-rules-setu</module>
     <module>phive-rules-simplerinvoicing</module>
+    <!-- depends on SimplerInvoicing -->
+    <module>phive-rules-energieefactuur</module>
     <module>phive-rules-svefaktura</module>
     <module>phive-rules-teapps</module>
     <module>phive-rules-ubl</module>
-    <module>phive-rules-zugferd</module>
-    <!-- depends on en16931 -->
-    <module>phive-rules-xrechnung</module>
-    <module>phive-rules-zatca</module>
     <!-- depends on peppol -->
     <module>phive-rules-ublbe</module>
-    <!-- depends on SimplerInvoicing -->
-    <module>phive-rules-energieefactuur</module>
+    <module>phive-rules-xrechnung</module>
+    <module>phive-rules-zatca</module>
+    <module>phive-rules-zugferd</module>
   </modules>
   
   <build>
