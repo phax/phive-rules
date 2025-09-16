@@ -75,14 +75,14 @@ public final class FranceCTCValidation
     {
       final String sPrefix0 = sPrefix + "0.1/xslt/";
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_FR_CTC_UBL_INV_0_1,
-                                                                             "XRechnung UBL Invoice " +
+                                                                             "France CTC Invoice " +
                                                                                                      VID_FR_CTC_UBL_INV_0_1.getVersionString (),
                                                                              PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
                                                                              PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix0 +
                                                                                                                                           "20250731_BR-FR-Flux2-Schematron-UBL_V0.1.xslt",
                                                                                                                                           _getCL ()))));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_FR_CTC_UBL_CN_0_1,
-                                                                             "XRechnung UBL Credit Note " +
+                                                                             "France CTC Credit Note " +
                                                                                                     VID_FR_CTC_UBL_CN_0_1.getVersionString (),
                                                                              PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
                                                                              PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix0 +
