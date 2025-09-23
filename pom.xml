@@ -174,6 +174,11 @@
       </dependency>
       <dependency>
         <groupId>com.helger.phive.rules</groupId>
+        <artifactId>phive-rules-ksef</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.helger.phive.rules</groupId>
         <artifactId>phive-rules-oioubl</artifactId>
         <version>${project.version}</version>
       </dependency>
@@ -256,6 +261,7 @@
     <module>phive-rules-finvoice</module>
     <module>phive-rules-france</module>
     <module>phive-rules-isdoc</module>
+    <module>phive-rules-ksef</module>
     <module>phive-rules-oioubl</module>
     <module>phive-rules-peppol-legacy</module>
     <module>phive-rules-peppol</module>
