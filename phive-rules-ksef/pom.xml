@@ -46,6 +46,12 @@
 
   <developers>
     <developer>
+      <id>philip</id>
+      <name>Philip Helger</name>
+      <email>ph(at)helger.com</email>
+      <url>http://www.helger.com</url>
+    </developer>
+    <developer>
       <id>kris</id>
       <name>Kris Raich</name>
       <email>kris.raich@ecosio.com</email>

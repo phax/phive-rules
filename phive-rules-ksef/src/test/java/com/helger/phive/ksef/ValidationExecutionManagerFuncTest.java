@@ -63,6 +63,10 @@ public final class ValidationExecutionManagerFuncTest
 
       // Read as desired type
       final IValidationSourceXML aSource = ValidationSourceXML.create (aTestFile.getResource ());
+
+      //todo: set properly
+      System.setProperty("jdk.xml.maxOccurLimit", "20000");
+
       final ValidationResultList aErrors = ValidationExecutionManager.executeValidation (IValidityDeterminator.createDefault (),
                                                                                          aExecutors,
                                                                                          aSource,
