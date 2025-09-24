@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Faktura xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2021/06/09/eD/DefinicjeTypy/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns="http://crd.gov.pl/wzor/2021/11/29/11089/">
+	<Naglowek>
+		<KodFormularza kodSystemowy="FA (1)" wersjaSchemy="1-0E">FA</KodFormularza>
+		<WariantFormularza>1</WariantFormularza>
+		<DataWytworzeniaFa>2022-02-15T09:30:47Z</DataWytworzeniaFa>
+		<SystemInfo>Samplofaktur</SystemInfo>
+	</Naglowek>
+	<Podmiot1>
+		<DaneIdentyfikacyjne>
+			<NIP>9999999999</NIP>
+			<PelnaNazwa>ABC AGD sp. z o. o.</PelnaNazwa>
+		</DaneIdentyfikacyjne>
+		<Adres>
+		   	<AdresPol>
+				<KodKraju>PL</KodKraju>
+				<Ulica>Kwiatowa</Ulica>
+				<NrDomu>1</NrDomu>
+				<NrLokalu>2</NrLokalu>
+				<Miejscowosc>Warszawa</Miejscowosc>
+				<KodPocztowy>00-001</KodPocztowy>
+			</AdresPol>
+		</Adres>
+		<Email>abc@abc.pl</Email>
+		<Telefon>667444555</Telefon>		
+	</Podmiot1>
+	<Podmiot2>
+		<DaneIdentyfikacyjne>
+			<NIP>1111111111</NIP>
+		</DaneIdentyfikacyjne>
+	</Podmiot2>
+	<Fa>
+		<KodWaluty>PLN</KodWaluty>
+		<P_1>2022-02-15</P_1>
+		<P_2>FV2022/02/150</P_2>
+		<P_6>2022-01-03</P_6>
+		<P_15>450</P_15>
+		<Adnotacje>
+			<P_16>2</P_16>
+			<P_17>2</P_17>
+			<P_18>2</P_18>
+			<P_18A>2</P_18A>
+			<P_19>2</P_19>
+			<P_22>2</P_22>
+			<P_23>2</P_23>
+			<P_PMarzy>2</P_PMarzy>
+		</Adnotacje>
+		<RodzajFaktury>UPR</RodzajFaktury>
+		<FaWiersze>
+			<LiczbaWierszyFaktury>1</LiczbaWierszyFaktury>
+			<WartoscWierszyFaktury1>0</WartoscWierszyFaktury1>
+			<FaWiersz>
+				<NrWierszaFa>1</NrWierszaFa>
+				<P_7>wiertarka Wiertex mk5</P_7>
+				<P_12>23</P_12>
+			</FaWiersz>
+		</FaWiersze>
+	</Fa>
+	<Stopka>
+		<Informacje>
+			<StopkaFaktury>Kapiał zakładowy 5 000 000</StopkaFaktury>
+		</Informacje>
+		<Rejestry>
+			<KRS>0000099999</KRS>
+			<REGON>999999999</REGON>
+			<BDO>000099999</BDO>
+		</Rejestry>
+	</Stopka>
+</Faktura>

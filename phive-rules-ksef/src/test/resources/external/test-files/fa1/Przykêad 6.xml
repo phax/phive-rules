@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Faktura xmlns:etd="http://crd.gov.pl/xml/schematy/dziedzinowe/mf/2021/06/09/eD/DefinicjeTypy/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns="http://crd.gov.pl/wzor/2021/11/29/11089/">
+	<Naglowek>
+		<KodFormularza kodSystemowy="FA (1)" wersjaSchemy="1-0E">FA</KodFormularza>
+		<WariantFormularza>1</WariantFormularza>
+		<DataWytworzeniaFa>2022-02-15T09:30:47Z</DataWytworzeniaFa>
+		<SystemInfo>Samplofaktur</SystemInfo>
+	</Naglowek>
+	<Podmiot1>
+		<DaneIdentyfikacyjne>
+			<NIP>9999999999</NIP>
+			<PelnaNazwa>ABC AGD sp. z o. o.</PelnaNazwa>
+		</DaneIdentyfikacyjne>
+		<Adres>
+		   	<AdresPol>
+				<KodKraju>PL</KodKraju>
+				<Ulica>Kwiatowa</Ulica>
+				<NrDomu>1</NrDomu>
+				<NrLokalu>2</NrLokalu>
+				<Miejscowosc>Warszawa</Miejscowosc>
+				<KodPocztowy>00-001</KodPocztowy>
+			</AdresPol>
+		</Adres>
+		<Email>abc@abc.pl</Email>
+		<Telefon>667444555</Telefon>		
+	</Podmiot1>
+	<Podmiot2>
+		<DaneIdentyfikacyjne>
+			<NIP>1111111111</NIP>
+			<PelnaNazwa>CeDeE s.c.</PelnaNazwa>
+		</DaneIdentyfikacyjne>
+		<Adres>
+			<AdresPol>
+				<KodKraju>PL</KodKraju>
+				<Ulica>Sadowa</Ulica>
+				<NrDomu>1</NrDomu>
+				<NrLokalu>3</NrLokalu>
+				<Miejscowosc>Kraków</Miejscowosc>
+				<KodPocztowy>00-002</KodPocztowy>
+			</AdresPol>
+		</Adres>
+		<Email>cde@cde.pl</Email>
+		<Telefon>555777999</Telefon>
+		<NrKlienta>fdfd778343</NrKlienta>
+	</Podmiot2>
+	<Fa>
+		<KodWaluty>PLN</KodWaluty>
+		<P_1>2022-07-15</P_1>
+		<P_1M>Warszawa</P_1M>
+		<P_2>FK2022/07/243</P_2>
+		<P_13_1>-40650.41</P_13_1>
+		<P_14_1>-9349.59</P_14_1>
+		<P_15>-50000</P_15>
+		<Adnotacje>
+			<P_16>2</P_16>
+			<P_17>2</P_17>
+			<P_18>2</P_18>
+			<P_18A>2</P_18A>
+			<P_19>2</P_19>
+			<P_22>2</P_22>
+			<P_23>2</P_23>
+			<P_PMarzy>2</P_PMarzy>
+		</Adnotacje>
+		<RodzajFaktury>KOR</RodzajFaktury>
+		<PrzyczynaKorekty>rabat 50000 z uwagi na poziom zakupów pierwszym półroczu 2022</PrzyczynaKorekty>
+		<TypKorekty>2</TypKorekty>
+		<DaneFaKorygowanej>
+			<DataWystFaKorygowanej>2022-01-15</DataWystFaKorygowanej>
+			<NrFaKorygowanej>FV2022/01/134</NrFaKorygowanej>
+			<NrKSeFFaKorygowanej>1010000000-20200101-000001-000000-00</NrKSeFFaKorygowanej>
+		</DaneFaKorygowanej>
+		<DaneFaKorygowanej>
+			<DataWystFaKorygowanej>2022-02-15</DataWystFaKorygowanej>
+			<NrFaKorygowanej>FV2022/02/150</NrFaKorygowanej>
+			<NrKSeFFaKorygowanej>1010000000-20200101-000002-000000-00</NrKSeFFaKorygowanej>
+		</DaneFaKorygowanej>
+		<DaneFaKorygowanej>
+			<DataWystFaKorygowanej>2022-03-15</DataWystFaKorygowanej>
+			<NrFaKorygowanej>FV2022/03/143</NrFaKorygowanej>
+			<NrKSeFFaKorygowanej>1010000000-20200101-000003-000000-00</NrKSeFFaKorygowanej>
+		</DaneFaKorygowanej>
+		<DaneFaKorygowanej>
+			<DataWystFaKorygowanej>2022-04-15</DataWystFaKorygowanej>
+			<NrFaKorygowanej>FV2022/04/23</NrFaKorygowanej>
+			<NrKSeFFaKorygowanej>1010000000-20200101-000004-000000-00</NrKSeFFaKorygowanej>
+		</DaneFaKorygowanej>
+		<DaneFaKorygowanej>
+			<DataWystFaKorygowanej>2022-05-15</DataWystFaKorygowanej>
+			<NrFaKorygowanej>FV2022/05/54</NrFaKorygowanej>
+			<NrKSeFFaKorygowanej>1010000000-20200101-000005-000000-00</NrKSeFFaKorygowanej>
+		</DaneFaKorygowanej>
+		<DaneFaKorygowanej>
+			<DataWystFaKorygowanej>2022-06-15</DataWystFaKorygowanej>
+			<NrFaKorygowanej>FV2022/06/15</NrFaKorygowanej>
+			<NrKSeFFaKorygowanej>1010000000-20200101-000006-000000-00</NrKSeFFaKorygowanej>
+		</DaneFaKorygowanej>
+		<OkresFaKorygowanej>pierwsze półrocze 2022</OkresFaKorygowanej>
+	</Fa>
+	<Stopka>
+		<Informacje>
+			<StopkaFaktury>Kapiał zakładowy 5 000 000</StopkaFaktury>
+		</Informacje>
+		<Rejestry>
+			<KRS>0000099999</KRS>
+			<REGON>999999999</REGON>
+			<BDO>000099999</BDO>
+		</Rejestry>
+	</Stopka>
+</Faktura>

@@ -21,6 +21,7 @@ This project is divided into sub-projects each keeping tracking of one document 
 * phive-rules-finvoice - Validation rules for Finvoice (since v1.0.6)
 * phive-rules-france - Validation rules for France (since v4.0.1)
 * phive-rules-isdoc - Validation rules for ISDOC (since v2.0.2)
+* phive-rules-ksef - Validation rules for KSeF (since v4.0.2)
 * phive-rules-oioubl - Validation rules for Danish OIOUBL
 * phive-rules-peppol - the Peppol specific rules - always the latest two rule sets
 * phive-rules-peppol-legacy - older Peppol specific rules that are out of date (since v2.0.5)
@@ -112,6 +113,12 @@ Add the following to your `pom.xml` to use this artifact, replacing `x.y.z` with
 <dependency>
   <groupId>com.helger.phive.rules</groupId>
   <artifactId>phive-rules-isdoc</artifactId>
+  <version>x.y.z</version>
+</dependency>
+
+<dependency>
+  <groupId>com.helger.phive.rules</groupId>
+  <artifactId>phive-rules-ksef</artifactId>
   <version>x.y.z</version>
 </dependency>
 
@@ -213,6 +220,9 @@ As OpenPeppol is only changing the "micro" version part (3.0.x), whereas I start
 I hope that with the introduction of PINT, the versioning problem will be solved.
 
 # News and noteworthy
+
+v4.0.2 - 2025-09-23
+* Added support for Poland KSeF validation rules
 
 v4.0.1 - 2025-09-15
 * Added support for France CTC 0.1 validation rules
