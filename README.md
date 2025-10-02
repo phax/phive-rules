@@ -221,7 +221,7 @@ I hope that with the introduction of PINT, the versioning problem will be solved
 
 # News and noteworthy
 
-v4.0.3 - work in progress
+v4.0.3 - 2025-10-02
 * Added support for Peppol Singapore BIS Order Balance 1.0
 * Added support for Peppol PINT EU 1.0.0 (v2025.10)
 
