@@ -40,6 +40,7 @@ import com.helger.phive.peppol.PeppolValidationDirectory;
 import com.helger.phive.peppol.PeppolValidationMLS;
 import com.helger.phive.peppol.PeppolValidationPintAE;
 import com.helger.phive.peppol.PeppolValidationPintAUNZ;
+import com.helger.phive.peppol.PeppolValidationPintEU;
 import com.helger.phive.peppol.PeppolValidationPintJP;
 import com.helger.phive.peppol.PeppolValidationPintJP_NTR;
 import com.helger.phive.peppol.PeppolValidationPintJP_SB;
@@ -194,6 +195,10 @@ public final class CTestFiles
                                                             PeppolValidationPintAUNZ.VID_OPENPEPPOL_AUNZ_PINT_UBL_CREDIT_NOTE_1_1_1,
                                                             PeppolValidationPintAUNZ.VID_OPENPEPPOL_AUNZ_PINT_UBL_INVOICE_SELF_BILLING_1_1_1,
                                                             PeppolValidationPintAUNZ.VID_OPENPEPPOL_AUNZ_PINT_UBL_CREDIT_NOTE_SELF_BILLING_1_1_1,
+
+                                                            /* PINT EU */
+                                                            PeppolValidationPintEU.VID_OPENPEPPOL_EU_PINT_INVOICE_2025_10,
+                                                            PeppolValidationPintEU.VID_OPENPEPPOL_EU_PINT_CREDIT_NOTE_2025_10,
 
                                                             /* PINT Japan */
                                                             PeppolValidationPintJP.VID_OPENPEPPOL_JP_PINT_INVOICE_012,
@@ -1051,6 +1056,25 @@ public final class CTestFiles
       final String sPrefix = sPrefix0 + "pint-aunz/1.1.1/selfbilling/";
       return new CommonsArrayList <> (new FileSystemResource (sPrefix + "AU Self Billed Credit Note.xml"),
                                       new FileSystemResource (sPrefix + "NZ Self Billed Credit note.xml"));
+    }
+
+    /* PINT EU */
+    if (aVESID.equals (PeppolValidationPintEU.VID_OPENPEPPOL_EU_PINT_INVOICE_2025_10))
+    {
+      final String sPrefix = sPrefix0 + "pint-eu/1.0.0/";
+      return new CommonsArrayList <> (new FileSystemResource (sPrefix + "Allowance-example.xml"),
+                                      new FileSystemResource (sPrefix + "base-example.xml"),
+                                      new FileSystemResource (sPrefix + "base-negative-inv-correction.xml"),
+                                      new FileSystemResource (sPrefix + "sales-order-example.xml"),
+                                      new FileSystemResource (sPrefix + "vat-category-E.xml"),
+                                      new FileSystemResource (sPrefix + "vat-category-O.xml"),
+                                      new FileSystemResource (sPrefix + "Vat-category-S.xml"),
+                                      new FileSystemResource (sPrefix + "vat-category-Z.xml"));
+    }
+    if (aVESID.equals (PeppolValidationPintEU.VID_OPENPEPPOL_EU_PINT_CREDIT_NOTE_2025_10))
+    {
+      final String sPrefix = sPrefix0 + "pint-eu/1.0.0/";
+      return new CommonsArrayList <> (new FileSystemResource (sPrefix + "base-creditnote-correction.xml"));
     }
 
     /* Peppol JP */

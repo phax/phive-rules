@@ -213,6 +213,18 @@
           -->
           <!-- 
           <execution>
+            <id>pint-eu</id>
+            <goals>
+              <goal>convert</goal>
+            </goals>
+            <configuration>
+              <schematronDirectory>src/test/resources/external/rule-source/pint-eu/1.0.0</schematronDirectory>
+              <xsltDirectory>src/main/resources/external/schematron/pint-eu/1.0.0/xslt</xsltDirectory>
+            </configuration>
+          </execution>
+          -->
+          <!-- 
+          <execution>
             <id>pint-jp</id>
             <goals>
               <goal>convert</goal>
