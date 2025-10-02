@@ -90,6 +90,8 @@ public final class CTestFiles
                                                             PeppolValidationBisSG.VID_OPENPEPPOL_BIS3_SG_UBL_INVOICE_2024_12,
                                                             PeppolValidationBisSG.VID_OPENPEPPOL_BIS3_SG_UBL_CREDIT_NOTE_2024_12,
 
+                                                            PeppolValidationBisSG.VID_PEPPOL_SG_ORDER_BALANCE_1_0,
+
                                                             /* OpenPeppol BIS */
                                                             PeppolValidation2024_05.VID_OPENPEPPOL_INVOICE_UBL_V3,
                                                             PeppolValidation2024_05.VID_OPENPEPPOL_CREDIT_NOTE_UBL_V3,
@@ -433,6 +435,15 @@ public final class CTestFiles
     {
       final String sPrefix = sPrefix0 + "sg-peppol/2024.12/";
       return new CommonsArrayList <> (new FileSystemResource (sPrefix + "SG CN example 01 - Credit Note.xml"));
+    }
+
+    // SG OB 1.0
+    if (aVESID.equals (PeppolValidationBisSG.VID_PEPPOL_SG_ORDER_BALANCE_1_0))
+    {
+      final String sPrefix = sPrefix0 + "sg-peppol/ob-1.0/";
+      return new CommonsArrayList <> (new FileSystemResource (sPrefix + "Order_balance_finalized.xml"),
+                                      new FileSystemResource (sPrefix + "Order_balance_MAX.xml"),
+                                      new FileSystemResource (sPrefix + "Order_balance.xml"));
     }
 
     // 2024-05

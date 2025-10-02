@@ -45,37 +45,43 @@ import jakarta.annotation.Nonnull;
 @Immutable
 public final class PeppolValidationBisSG
 {
-  public static final String GROUP_ID = "eu.peppol.bis3.sg.ubl";
+  public static final String GROUP_ID_BIS_BILLING = "eu.peppol.bis3.sg.ubl";
+  public static final String GROUP_ID_ORDER_BALANCE = "org.peppol.sg";
 
   // 2023.7
   @Deprecated
-  public static final DVRCoordinate VID_OPENPEPPOL_BIS3_SG_UBL_INVOICE_2023_7 = PhiveRulesHelper.createCoordinate (GROUP_ID,
+  public static final DVRCoordinate VID_OPENPEPPOL_BIS3_SG_UBL_INVOICE_2023_7 = PhiveRulesHelper.createCoordinate (GROUP_ID_BIS_BILLING,
                                                                                                                    "invoice",
                                                                                                                    "2023.7");
   @Deprecated
-  public static final DVRCoordinate VID_OPENPEPPOL_BIS3_SG_UBL_CREDIT_NOTE_2023_7 = PhiveRulesHelper.createCoordinate (GROUP_ID,
+  public static final DVRCoordinate VID_OPENPEPPOL_BIS3_SG_UBL_CREDIT_NOTE_2023_7 = PhiveRulesHelper.createCoordinate (GROUP_ID_BIS_BILLING,
                                                                                                                        "creditnote",
                                                                                                                        "2023.7");
 
   // 2023.12
   @Deprecated
-  public static final DVRCoordinate VID_OPENPEPPOL_BIS3_SG_UBL_INVOICE_2023_12 = PhiveRulesHelper.createCoordinate (GROUP_ID,
+  public static final DVRCoordinate VID_OPENPEPPOL_BIS3_SG_UBL_INVOICE_2023_12 = PhiveRulesHelper.createCoordinate (GROUP_ID_BIS_BILLING,
                                                                                                                     "invoice",
                                                                                                                     "2023.12");
   @Deprecated
-  public static final DVRCoordinate VID_OPENPEPPOL_BIS3_SG_UBL_CREDIT_NOTE_2023_12 = PhiveRulesHelper.createCoordinate (GROUP_ID,
+  public static final DVRCoordinate VID_OPENPEPPOL_BIS3_SG_UBL_CREDIT_NOTE_2023_12 = PhiveRulesHelper.createCoordinate (GROUP_ID_BIS_BILLING,
                                                                                                                         "creditnote",
                                                                                                                         "2023.12");
 
   // 2024.12
   public static final LocalDate VALID_PER_2024_12 = PDTFactory.createLocalDate (2025, Month.MARCH, 3);
   public static final OffsetDateTime VALID_PER_UTC_2014_12 = PDTFactory.createOffsetDateTimeUTC (VALID_PER_2024_12);
-  public static final DVRCoordinate VID_OPENPEPPOL_BIS3_SG_UBL_INVOICE_2024_12 = PhiveRulesHelper.createCoordinate (GROUP_ID,
+  public static final DVRCoordinate VID_OPENPEPPOL_BIS3_SG_UBL_INVOICE_2024_12 = PhiveRulesHelper.createCoordinate (GROUP_ID_BIS_BILLING,
                                                                                                                     "invoice",
                                                                                                                     "2024.12");
-  public static final DVRCoordinate VID_OPENPEPPOL_BIS3_SG_UBL_CREDIT_NOTE_2024_12 = PhiveRulesHelper.createCoordinate (GROUP_ID,
+  public static final DVRCoordinate VID_OPENPEPPOL_BIS3_SG_UBL_CREDIT_NOTE_2024_12 = PhiveRulesHelper.createCoordinate (GROUP_ID_BIS_BILLING,
                                                                                                                         "creditnote",
                                                                                                                         "2024.12");
+
+  // Order Balance
+  public static final DVRCoordinate VID_PEPPOL_SG_ORDER_BALANCE_1_0 = PhiveRulesHelper.createCoordinate (GROUP_ID_ORDER_BALANCE,
+                                                                                                         "order-balance",
+                                                                                                         "1.0");
 
   private PeppolValidationBisSG ()
   {}
@@ -94,6 +100,8 @@ public final class PeppolValidationBisSG
                                                                                                             .getRootElementNamespaceURI ());
     final MapBasedNamespaceContext aNSCtxCreditNote = PhiveRulesUBLHelper.createUBL21NSContext (UBL21Marshaller.creditNote ()
                                                                                                                .getRootElementNamespaceURI ());
+    final MapBasedNamespaceContext aNSCtxOrder = PhiveRulesUBLHelper.createUBL21NSContext (UBL21Marshaller.order ()
+                                                                                                          .getRootElementNamespaceURI ());
 
     final boolean bDeprecated = true;
     final boolean bNotDeprecated = !bDeprecated;
@@ -211,6 +219,18 @@ public final class PeppolValidationBisSG
                                                                                                           aNSCtxCreditNote),
                                                                              PhiveRulesHelper.createXSLT (BIS3_BILLING_SG_2024_12,
                                                                                                           aNSCtxCreditNote)));
+    }
+
+    // Order Balance 1.0
+    {
+      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_PEPPOL_SG_ORDER_BALANCE_1_0,
+                                                                             "SG Peppol Order Balance 1.0",
+                                                                             PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
+                                                                             ValidationExecutorXSD.create (UBL21Marshaller.getAllOrderXSDs ()),
+                                                                             PhiveRulesHelper.createXSLT (new ClassPathResource (BASE_PATH +
+                                                                                                                                 "ob-1.0/xslt/SGBIS-TOB.xslt",
+                                                                                                                                 _getCL ()),
+                                                                                                          aNSCtxOrder)));
     }
   }
 }

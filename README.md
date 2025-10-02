@@ -221,6 +221,9 @@ I hope that with the introduction of PINT, the versioning problem will be solved
 
 # News and noteworthy
 
+v4.0.3 - work in progress
+* Added support for Peppol Singapore BIS Order Balance 1.0
+
 v4.0.2 - 2025-09-26
 * Added support for Poland KSeF validation rules. See [#20](https://github.com/phax/phive-rules/issues/20) - thx @krisraich
 
