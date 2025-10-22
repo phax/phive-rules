@@ -59,6 +59,8 @@ public final class KSeFValidation
 
   public static final DVRCoordinate KSEF_2 = PhiveRulesHelper.createCoordinate (GROUP_ID, "ksef", "2.0.0");
 
+  public static final DVRCoordinate KSEF_3 = PhiveRulesHelper.createCoordinate (GROUP_ID, "ksef", "3.0.0");
+
   private static final Logger LOGGER = LoggerFactory.getLogger (KSeFValidation.class);
 
   private KSeFValidation ()
@@ -83,12 +85,14 @@ public final class KSeFValidation
     final boolean bDeprecated = true;
     final boolean bNotDeprecated = false;
 
-    // KSeF 2.0
     final SchemaFactory aCustomSF = SchemaFactory.newInstance (XMLConstants.W3C_XML_SCHEMA_NS_URI);
     try
     {
+      // KSeF 2.0
       // <xsd:element name="NowySrodekTransportu" maxOccurs="10000">
-      aCustomSF.setProperty ("jdk.xml.maxOccurLimit", Integer.valueOf (10000));
+      // KSeF 3.0
+      // <xsd:element name="DaneFaKorygowanej" maxOccurs="50000">
+      aCustomSF.setProperty ("jdk.xml.maxOccurLimit", Integer.valueOf (50_000));
     }
     catch (final SAXNotRecognizedException | SAXNotSupportedException ex)
     {
@@ -118,6 +122,20 @@ public final class KSeFValidation
                                                                                                         _getCL ()));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (KSEF_2,
                                                                              "KSeF " + KSEF_2.getVersionString (),
+                                                                             PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
+                                                                             new ValidationExecutorXSD (new ValidationArtefact (EValidationType.XSD,
+                                                                                                                                aResList.getLastOrNull ()),
+                                                                                                        () -> aCustomSchemaCache.getSchema (aResList))));
+    }
+
+    {
+      final ICommonsList <ClassPathResource> aResList = new CommonsArrayList <> (CXMLDSig.getXSDResource (),
+                                                                                 new ClassPathResource ("/external/schemas/3.0.0/StrukturyDanych_v10-0E.xsd",
+                                                                                                        _getCL ()),
+                                                                                 new ClassPathResource ("/external/schemas/3.0.0/schemat.xsd",
+                                                                                                        _getCL ()));
+      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (KSEF_3,
+                                                                             "KSeF " + KSEF_3.getVersionString (),
                                                                              PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
                                                                              new ValidationExecutorXSD (new ValidationArtefact (EValidationType.XSD,
                                                                                                                                 aResList.getLastOrNull ()),
