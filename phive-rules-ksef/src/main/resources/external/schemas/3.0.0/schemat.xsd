@@ -2891,7 +2891,8 @@ dokonaną na rzecz podatnika dostawę towarów lub świadczenie usług, o który
 										<xsd:documentation>Typ skutku korekty w ewidencji dla podatku od towarów i usług</xsd:documentation>
 									</xsd:annotation>
 								</xsd:element>
-								<xsd:element name="DaneFaKorygowanej" maxOccurs="50000">
+								<!-- [PH] changed to unbounded, because the value of "50000" lead to runtime issues -->
+								<xsd:element name="DaneFaKorygowanej" maxOccurs="unbounded">
 									<xsd:annotation>
 										<xsd:documentation>Dane faktury korygowanej</xsd:documentation>
 									</xsd:annotation>

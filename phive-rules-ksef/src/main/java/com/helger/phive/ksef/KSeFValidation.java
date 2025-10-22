@@ -92,7 +92,9 @@ public final class KSeFValidation
       // <xsd:element name="NowySrodekTransportu" maxOccurs="10000">
       // KSeF 3.0
       // <xsd:element name="DaneFaKorygowanej" maxOccurs="50000">
-      aCustomSF.setProperty ("jdk.xml.maxOccurLimit", Integer.valueOf (50_000));
+      // --> was changed to unbounded by author
+      // 0 means "no limit"
+      aCustomSF.setProperty ("jdk.xml.maxOccurLimit", Integer.valueOf (10_000));
     }
     catch (final SAXNotRecognizedException | SAXNotSupportedException ex)
     {
