@@ -32,7 +32,7 @@ import com.helger.phive.xml.source.IValidationSourceXML;
  *
  * @author Philip Helger
  */
-public final class PeppolLegacyValidationTest
+public final class PeppolLegacyValidationBisEuropeTest
 {
   @Test
   public void testFilesExist ()

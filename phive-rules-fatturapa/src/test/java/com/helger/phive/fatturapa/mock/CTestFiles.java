@@ -67,11 +67,11 @@ public final class CTestFiles
     ValueEnforcer.notNull (aVESID, "VESID");
 
     if (aVESID.equals (FatturaPAValidation.VID_FATTURAPA_120))
-      return FatturaPATestFiles.V120.getTestResources ();
+      return EFatturaPATestFiles.V120.getTestResources ();
     if (aVESID.equals (FatturaPAValidation.VID_FATTURAPA_121))
-      return FatturaPATestFiles.V121.getTestResources ();
+      return EFatturaPATestFiles.V121.getTestResources ();
     if (aVESID.equals (FatturaPAValidation.VID_FATTURAPA_122))
-      return FatturaPATestFiles.V122.getTestResources ();
+      return EFatturaPATestFiles.V122.getTestResources ();
 
     throw new IllegalArgumentException ("Invalid VESID: " + aVESID);
   }

@@ -25,7 +25,7 @@ import com.helger.collection.commons.ICommonsList;
 import com.helger.io.resource.ClassPathResource;
 import com.helger.io.resource.IReadableResource;
 
-public enum FatturaPATestFiles
+public enum EFatturaPATestFiles
 {
   V120 ("/external/test-files/120/good/",
         new String [] { "IT01234567890_FPA01.xml",
@@ -51,7 +51,7 @@ public enum FatturaPATestFiles
 
   private final ICommonsList <IReadableResource> m_aTestFiles = new CommonsArrayList <> ();
 
-  FatturaPATestFiles (final String sBaseDir, final String [] aFiles)
+  EFatturaPATestFiles (final String sBaseDir, final String [] aFiles)
   {
     for (final String sFile : aFiles)
       m_aTestFiles.add (new ClassPathResource (sBaseDir + sFile));

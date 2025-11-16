@@ -32,7 +32,7 @@ import com.helger.phive.xml.source.IValidationSourceXML;
  *
  * @author Philip Helger
  */
-public final class CSimplerInvoicingValidationArtefactTest
+public final class SimplerInvoicingValidationTest
 {
   @Test
   public void testFilesExist ()
