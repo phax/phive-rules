@@ -16,6 +16,9 @@
  */
 package com.helger.phive.zugferd;
 
+import org.jspecify.annotations.NonNull;
+import org.jspecify.annotations.Nullable;
+
 import com.helger.annotation.concurrent.Immutable;
 import com.helger.base.enforce.ValueEnforcer;
 import com.helger.collection.commons.CommonsHashMap;
@@ -32,9 +35,6 @@ import com.helger.phive.rules.api.PhiveRulesCIIHelper;
 import com.helger.phive.rules.api.PhiveRulesHelper;
 import com.helger.phive.xml.source.IValidationSourceXML;
 import com.helger.phive.xml.xsd.ValidationExecutorXSD;
-
-import jakarta.annotation.Nonnull;
-import jakarta.annotation.Nullable;
 
 /**
  * Generic Facturae validation configuration
@@ -161,14 +161,14 @@ public final class ZugferdValidation
   private ZugferdValidation ()
   {}
 
-  @Nonnull
+  @NonNull
   private static ClassLoader _getCL ()
   {
     return ZugferdValidation.class.getClassLoader ();
   }
 
   @Nullable
-  public static DVRCoordinate getMappedFacturXVESID (@Nonnull final DVRCoordinate aZugferdVESID)
+  public static DVRCoordinate getMappedFacturXVESID (@NonNull final DVRCoordinate aZugferdVESID)
   {
     ValueEnforcer.notNull (aZugferdVESID, "ZugferdVESID");
     final DVRVersion aFacturXVersion = ZUGFERD_TO_FACTURX_MAP.get (aZugferdVESID.getVersionObj ());
@@ -178,9 +178,9 @@ public final class ZugferdValidation
     return new DVRCoordinate (GROUP_ID_FACTUR_X, aZugferdVESID.getArtifactID (), aFacturXVersion);
   }
 
-  private static void _registerFacturXAlias (@Nonnull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry,
-                                             @Nonnull final EZugferdProfile eProfile,
-                                             @Nonnull final ValidationExecutorSet <IValidationSourceXML> aVES)
+  private static void _registerFacturXAlias (@NonNull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry,
+                                             @NonNull final EZugferdProfile eProfile,
+                                             @NonNull final ValidationExecutorSet <IValidationSourceXML> aVES)
   {
     final DVRCoordinate aFacturXVESID = getMappedFacturXVESID (aVES.getID ());
     aRegistry.registerValidationExecutorSet (new ValidationExecutorSetAlias <> (aFacturXVESID,
@@ -199,7 +199,7 @@ public final class ZugferdValidation
    *        The registry to add the artefacts. May not be <code>null</code>.
    */
   @SuppressWarnings ("deprecation")
-  public static void initZugferd (@Nonnull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
+  public static void initZugferd (@NonNull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
   {
     ValueEnforcer.notNull (aRegistry, "Registry");
 

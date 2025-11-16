@@ -16,6 +16,8 @@
  */
 package com.helger.phive.ciuspt;
 
+import org.jspecify.annotations.NonNull;
+
 import com.helger.annotation.concurrent.Immutable;
 import com.helger.base.enforce.ValueEnforcer;
 import com.helger.diver.api.coord.DVRCoordinate;
@@ -27,8 +29,6 @@ import com.helger.phive.rules.api.PhiveRulesUBLHelper;
 import com.helger.phive.xml.source.IValidationSourceXML;
 import com.helger.phive.xml.xsd.ValidationExecutorXSD;
 import com.helger.ubl21.UBL21Marshaller;
-
-import jakarta.annotation.Nonnull;
 
 /**
  * Generic CIUS-PT validation configuration
@@ -71,7 +71,7 @@ public final class CIUS_PTValidation
   private CIUS_PTValidation ()
   {}
 
-  @Nonnull
+  @NonNull
   private static ClassLoader _getCL ()
   {
     return CIUS_PTValidation.class.getClassLoader ();
@@ -84,7 +84,7 @@ public final class CIUS_PTValidation
    * @param aRegistry
    *        The registry to add the artefacts. May not be <code>null</code>.
    */
-  public static void initCIUS_PT (@Nonnull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
+  public static void initCIUS_PT (@NonNull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
   {
     ValueEnforcer.notNull (aRegistry, "Registry");
 

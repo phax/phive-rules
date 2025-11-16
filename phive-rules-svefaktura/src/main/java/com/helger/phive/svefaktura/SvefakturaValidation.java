@@ -16,6 +16,8 @@
  */
 package com.helger.phive.svefaktura;
 
+import org.jspecify.annotations.NonNull;
+
 import com.helger.annotation.concurrent.Immutable;
 import com.helger.base.enforce.ValueEnforcer;
 import com.helger.diver.api.coord.DVRCoordinate;
@@ -27,8 +29,6 @@ import com.helger.phive.xml.source.IValidationSourceXML;
 import com.helger.phive.xml.xsd.ValidationExecutorXSD;
 import com.helger.xml.namespace.IIterableNamespaceContext;
 import com.helger.xml.namespace.MapBasedNamespaceContext;
-
-import jakarta.annotation.Nonnull;
 
 /**
  * Generic Svefaktura validation configuration
@@ -69,7 +69,7 @@ public final class SvefakturaValidation
                                                                                          .addMapping ("cur",
                                                                                                       "urn:oasis:names:tc:ubl:codelist:CurrencyCode:1:0");
 
-  @Nonnull
+  @NonNull
   private static ClassLoader _getCL ()
   {
     return SvefakturaValidation.class.getClassLoader ();
@@ -82,7 +82,7 @@ public final class SvefakturaValidation
    * @param aRegistry
    *        The registry to add the artefacts. May not be <code>null</code>.
    */
-  public static void initSvefaktura (@Nonnull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
+  public static void initSvefaktura (@NonNull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
   {
     ValueEnforcer.notNull (aRegistry, "Registry");
 

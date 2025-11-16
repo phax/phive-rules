@@ -16,6 +16,8 @@
  */
 package com.helger.phive.teapps;
 
+import org.jspecify.annotations.NonNull;
+
 import com.helger.annotation.concurrent.Immutable;
 import com.helger.base.enforce.ValueEnforcer;
 import com.helger.diver.api.coord.DVRCoordinate;
@@ -25,8 +27,6 @@ import com.helger.phive.api.executorset.ValidationExecutorSet;
 import com.helger.phive.rules.api.PhiveRulesHelper;
 import com.helger.phive.xml.source.IValidationSourceXML;
 import com.helger.phive.xml.xsd.ValidationExecutorXSD;
-
-import jakarta.annotation.Nonnull;
 
 /**
  * Generic TEAPPS validation configuration
@@ -44,7 +44,7 @@ public final class TEAPPSValidation
   private TEAPPSValidation ()
   {}
 
-  @Nonnull
+  @NonNull
   private static ClassLoader _getCL ()
   {
     return TEAPPSValidation.class.getClassLoader ();
@@ -57,7 +57,7 @@ public final class TEAPPSValidation
    * @param aRegistry
    *        The registry to add the artefacts. May not be <code>null</code>.
    */
-  public static void initTEAPPS (@Nonnull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
+  public static void initTEAPPS (@NonNull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
   {
     ValueEnforcer.notNull (aRegistry, "Registry");
 

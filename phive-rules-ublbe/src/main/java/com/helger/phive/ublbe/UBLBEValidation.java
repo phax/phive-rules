@@ -16,6 +16,8 @@
  */
 package com.helger.phive.ublbe;
 
+import org.jspecify.annotations.NonNull;
+
 import com.helger.annotation.concurrent.Immutable;
 import com.helger.base.enforce.ValueEnforcer;
 import com.helger.diver.api.coord.DVRCoordinate;
@@ -28,8 +30,6 @@ import com.helger.phive.rules.api.PhiveRulesUBLHelper;
 import com.helger.phive.xml.source.IValidationSourceXML;
 import com.helger.phive.xml.xsd.ValidationExecutorXSD;
 import com.helger.ubl21.UBL21Marshaller;
-
-import jakarta.annotation.Nonnull;
 
 /**
  * Generic e-FFF/UBL.BE validation configuration
@@ -137,7 +137,7 @@ public final class UBLBEValidation
                                                                                                 "invoice",
                                                                                                 "1.31");
 
-  @Nonnull
+  @NonNull
   private static ClassLoader _getCL ()
   {
     return UBLBEValidation.class.getClassLoader ();
@@ -153,7 +153,7 @@ public final class UBLBEValidation
    * @param aRegistry
    *        The registry to add the artefacts. May not be <code>null</code>.
    */
-  public static void initUBLBE (@Nonnull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
+  public static void initUBLBE (@NonNull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
   {
     ValueEnforcer.notNull (aRegistry, "Registry");
 

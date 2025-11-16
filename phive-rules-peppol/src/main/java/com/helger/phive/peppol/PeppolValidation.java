@@ -16,12 +16,12 @@
  */
 package com.helger.phive.peppol;
 
+import org.jspecify.annotations.NonNull;
+
 import com.helger.annotation.Nonempty;
 import com.helger.annotation.concurrent.Immutable;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
 import com.helger.phive.xml.source.IValidationSourceXML;
-
-import jakarta.annotation.Nonnull;
 
 /**
  * Generic Peppol validation configuration
@@ -36,7 +36,7 @@ public final class PeppolValidation
    *         <code>null</code>.
    * @deprecated Use the version from {@link PeppolValidationBisEurope}
    */
-  @Nonnull
+  @NonNull
   @Nonempty
   @Deprecated (forRemoval = true, since = "3.2.2")
   public static String getVersionToUse ()
@@ -53,7 +53,7 @@ public final class PeppolValidation
    * @param aRegistry
    *        The registry to add the artefacts. May not be <code>null</code>.
    */
-  public static void initStandard (@Nonnull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
+  public static void initStandard (@NonNull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
   {
     PeppolValidationBisEurope.init (aRegistry);
     PeppolValidationBisAUNZ.init (aRegistry);

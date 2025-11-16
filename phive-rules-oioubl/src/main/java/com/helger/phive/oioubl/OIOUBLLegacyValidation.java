@@ -16,6 +16,8 @@
  */
 package com.helger.phive.oioubl;
 
+import org.jspecify.annotations.NonNull;
+
 import com.helger.annotation.concurrent.Immutable;
 import com.helger.base.enforce.ValueEnforcer;
 import com.helger.diver.api.coord.DVRCoordinate;
@@ -32,8 +34,6 @@ import com.helger.ubl20.UBL20Marshaller;
 import com.helger.ubl20.UBL20NamespaceContext;
 import com.helger.xml.namespace.IIterableNamespaceContext;
 
-import jakarta.annotation.Nonnull;
-
 /**
  * Generic OIOUBL validation configuration
  *
@@ -44,7 +44,7 @@ public final class OIOUBLLegacyValidation
 {
   public static final String GROUPID = "dk.oioubl";
 
-  @Nonnull
+  @NonNull
   private static ClassLoader _getCL ()
   {
     return OIOUBLLegacyValidation.class.getClassLoader ();
@@ -116,8 +116,8 @@ public final class OIOUBLLegacyValidation
   private OIOUBLLegacyValidation ()
   {}
 
-  @Nonnull
-  private static ValidationExecutorSchematron _createOIOUBL (@Nonnull final IReadableResource aRes)
+  @NonNull
+  private static ValidationExecutorSchematron _createOIOUBL (@NonNull final IReadableResource aRes)
   {
     final IIterableNamespaceContext aNsCtx = UBL20NamespaceContext.getInstance ();
     SchematronNamespaceBeautifier.addMappings (aNsCtx);
@@ -131,7 +131,7 @@ public final class OIOUBLLegacyValidation
    * @param aRegistry
    *        The registry to add the artefacts. May not be <code>null</code>.
    */
-  public static void initLegacyOIOUBL (@Nonnull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
+  public static void initLegacyOIOUBL (@NonNull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
   {
     ValueEnforcer.notNull (aRegistry, "Registry");
 

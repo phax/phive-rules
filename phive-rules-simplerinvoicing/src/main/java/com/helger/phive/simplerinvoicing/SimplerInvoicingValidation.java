@@ -16,6 +16,8 @@
  */
 package com.helger.phive.simplerinvoicing;
 
+import org.jspecify.annotations.NonNull;
+
 import com.helger.annotation.concurrent.Immutable;
 import com.helger.base.enforce.ValueEnforcer;
 import com.helger.cii.d16b.CCIID16B;
@@ -29,8 +31,6 @@ import com.helger.phive.rules.api.PhiveRulesUBLHelper;
 import com.helger.phive.xml.source.IValidationSourceXML;
 import com.helger.phive.xml.xsd.ValidationExecutorXSD;
 import com.helger.ubl21.UBL21Marshaller;
-
-import jakarta.annotation.Nonnull;
 
 /**
  * SimplerInvoicing validation configuration<br>
@@ -290,7 +290,7 @@ public final class SimplerInvoicingValidation
                                                                                                      "nlcius-cii",
                                                                                                      "1.0.3.11");
 
-  @Nonnull
+  @NonNull
   private static ClassLoader _getCL ()
   {
     return SimplerInvoicingValidation.class.getClassLoader ();
@@ -305,7 +305,7 @@ public final class SimplerInvoicingValidation
    * @param aRegistry
    *        The registry to add the artefacts. May not be <code>null</code>.
    */
-  public static void initSimplerInvoicing (@Nonnull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
+  public static void initSimplerInvoicing (@NonNull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
   {
     ValueEnforcer.notNull (aRegistry, "Registry");
 

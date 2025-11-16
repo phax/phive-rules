@@ -16,6 +16,8 @@
  */
 package com.helger.phive.peppol.italy;
 
+import org.jspecify.annotations.NonNull;
+
 import com.helger.annotation.concurrent.Immutable;
 import com.helger.base.enforce.ValueEnforcer;
 import com.helger.diver.api.coord.DVRCoordinate;
@@ -28,8 +30,6 @@ import com.helger.phive.rules.api.PhiveRulesUBLHelper;
 import com.helger.phive.xml.source.IValidationSourceXML;
 import com.helger.phive.xml.xsd.ValidationExecutorXSD;
 import com.helger.ubl21.UBL21Marshaller;
-
-import jakarta.annotation.Nonnull;
 
 /**
  * Italian Peppol validation artefacts based on BIS 3.0.17.
@@ -60,7 +60,7 @@ public final class PeppolItalyValidation3_1_0
                                                                                             "order-response",
                                                                                             VERSION_STR);
 
-  @Nonnull
+  @NonNull
   private static ClassLoader _getCL ()
   {
     return PeppolItalyValidation3_1_0.class.getClassLoader ();
@@ -69,7 +69,7 @@ public final class PeppolItalyValidation3_1_0
   private PeppolItalyValidation3_1_0 ()
   {}
 
-  public static void init (@Nonnull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
+  public static void init (@NonNull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
   {
     ValueEnforcer.notNull (aRegistry, "Registry");
 

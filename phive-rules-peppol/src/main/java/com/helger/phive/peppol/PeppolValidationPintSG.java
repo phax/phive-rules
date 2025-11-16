@@ -20,6 +20,8 @@ import java.time.LocalDate;
 import java.time.Month;
 import java.time.OffsetDateTime;
 
+import org.jspecify.annotations.NonNull;
+
 import com.helger.annotation.concurrent.Immutable;
 import com.helger.base.enforce.ValueEnforcer;
 import com.helger.datetime.helper.PDTFactory;
@@ -33,8 +35,6 @@ import com.helger.phive.xml.source.IValidationSourceXML;
 import com.helger.phive.xml.xsd.ValidationExecutorXSD;
 import com.helger.ubl21.UBL21Marshaller;
 import com.helger.xml.namespace.MapBasedNamespaceContext;
-
-import jakarta.annotation.Nonnull;
 
 /**
  * Peppol Singapore validation configuration
@@ -79,13 +79,13 @@ public final class PeppolValidationPintSG
   private PeppolValidationPintSG ()
   {}
 
-  @Nonnull
+  @NonNull
   private static ClassLoader _getCL ()
   {
     return PeppolValidationPintSG.class.getClassLoader ();
   }
 
-  public static void init (@Nonnull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
+  public static void init (@NonNull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
   {
     ValueEnforcer.notNull (aRegistry, "Registry");
 

@@ -20,6 +20,8 @@ import java.time.LocalDate;
 import java.time.Month;
 import java.time.OffsetDateTime;
 
+import org.jspecify.annotations.NonNull;
+
 import com.helger.annotation.concurrent.Immutable;
 import com.helger.base.enforce.ValueEnforcer;
 import com.helger.collection.commons.CommonsArrayList;
@@ -37,8 +39,6 @@ import com.helger.phive.xml.xsd.ValidationExecutorXSD;
 import com.helger.ubl20.CUBL20;
 import com.helger.ubl21.UBL21Marshaller;
 
-import jakarta.annotation.Nonnull;
-
 /**
  * Generic OIOUBL validation configuration
  *
@@ -49,7 +49,7 @@ public final class OIOUBLValidation
 {
   public static final String GROUPID = "dk.oioubl";
 
-  @Nonnull
+  @NonNull
   private static ClassLoader _getCL ()
   {
     return OIOUBLValidation.class.getClassLoader ();
@@ -536,7 +536,7 @@ public final class OIOUBLValidation
    * @param aRegistry
    *        The registry to add the artefacts. May not be <code>null</code>.
    */
-  public static void initOIOUBL (@Nonnull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
+  public static void initOIOUBL (@NonNull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
   {
     ValueEnforcer.notNull (aRegistry, "Registry");
 

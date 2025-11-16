@@ -16,6 +16,8 @@
  */
 package com.helger.phive.ehf;
 
+import org.jspecify.annotations.NonNull;
+
 import com.helger.annotation.concurrent.Immutable;
 import com.helger.base.enforce.ValueEnforcer;
 import com.helger.diver.api.coord.DVRCoordinate;
@@ -27,8 +29,6 @@ import com.helger.phive.rules.api.PhiveRulesUBLHelper;
 import com.helger.phive.xml.source.IValidationSourceXML;
 import com.helger.phive.xml.xsd.ValidationExecutorXSD;
 import com.helger.ubl22.UBL22Marshaller;
-
-import jakarta.annotation.Nonnull;
 
 /**
  * EHF G3 Validation configuration 2020-03. Use {@link EHFValidationG3_2023_02}
@@ -90,7 +90,7 @@ public final class EHFValidationG3_2020_03
   private EHFValidationG3_2020_03 ()
   {}
 
-  @Nonnull
+  @NonNull
   private static ClassLoader _getCL ()
   {
     return EHFValidationG3_2020_03.class.getClassLoader ();
@@ -103,7 +103,7 @@ public final class EHFValidationG3_2020_03
    * @param aRegistry
    *        The registry to add the artefacts. May not be <code>null</code>.
    */
-  public static void initEHF (@Nonnull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
+  public static void initEHF (@NonNull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
   {
     ValueEnforcer.notNull (aRegistry, "Registry");
 

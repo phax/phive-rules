@@ -16,6 +16,8 @@
  */
 package com.helger.phive.setu;
 
+import org.jspecify.annotations.NonNull;
+
 import com.helger.annotation.concurrent.Immutable;
 import com.helger.base.enforce.ValueEnforcer;
 import com.helger.diver.api.coord.DVRCoordinate;
@@ -29,8 +31,6 @@ import com.helger.phive.xml.source.IValidationSourceXML;
 import com.helger.phive.xml.xsd.ValidationExecutorXSD;
 import com.helger.xml.namespace.MapBasedNamespaceContext;
 import com.helger.xsds.xml.CXML_XSD;
-
-import jakarta.annotation.Nonnull;
 
 /**
  * Generic ISDOC validation configuration
@@ -65,7 +65,7 @@ public final class SETUValidation
   private SETUValidation ()
   {}
 
-  @Nonnull
+  @NonNull
   private static ClassLoader _getCL ()
   {
     return SETUValidation.class.getClassLoader ();
@@ -77,8 +77,8 @@ public final class SETUValidation
     NS_CTX.setDefaultNamespaceURI ("http://ns.hr-xml.org/2007-04-15");
   }
 
-  @Nonnull
-  private static ValidationExecutorSchematron _createXSLT (@Nonnull final IReadableResource aRes)
+  @NonNull
+  private static ValidationExecutorSchematron _createXSLT (@NonNull final IReadableResource aRes)
   {
     return PhiveRulesHelper.createXSLT (aRes, NS_CTX.getClone ());
   }
@@ -89,7 +89,7 @@ public final class SETUValidation
    * @param aRegistry
    *        The registry to add the artefacts. May not be <code>null</code>.
    */
-  public static void initSETU (@Nonnull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
+  public static void initSETU (@NonNull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
   {
     ValueEnforcer.notNull (aRegistry, "Registry");
 

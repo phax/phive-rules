@@ -18,6 +18,9 @@ package com.helger.phive.rules.api;
 
 import java.time.OffsetDateTime;
 
+import org.jspecify.annotations.NonNull;
+import org.jspecify.annotations.Nullable;
+
 import com.helger.annotation.Nonempty;
 import com.helger.annotation.concurrent.Immutable;
 import com.helger.collection.commons.ICommonsList;
@@ -32,9 +35,6 @@ import com.helger.phive.api.executorset.status.ValidationExecutorSetStatusHistor
 import com.helger.phive.xml.schematron.SchematronNamespaceBeautifier;
 import com.helger.phive.xml.schematron.ValidationExecutorSchematron;
 import com.helger.xml.namespace.IIterableNamespaceContext;
-
-import jakarta.annotation.Nonnull;
-import jakarta.annotation.Nullable;
 
 /**
  * Utility class for phive-rules libs.
@@ -58,10 +58,10 @@ public final class PhiveRulesHelper
    *        Coordinate version
    * @return The created {@link DVRCoordinate} and never <code>null</code>.
    */
-  @Nonnull
-  public static DVRCoordinate createCoordinate (@Nonnull @Nonempty final String sGroupID,
-                                                @Nonnull @Nonempty final String sArtifactID,
-                                                @Nonnull @Nonempty final String sVersion)
+  @NonNull
+  public static DVRCoordinate createCoordinate (@NonNull @Nonempty final String sGroupID,
+                                                @NonNull @Nonempty final String sArtifactID,
+                                                @NonNull @Nonempty final String sVersion)
   {
     return createCoordinate (sGroupID, sArtifactID, sVersion, null);
   }
@@ -79,10 +79,10 @@ public final class PhiveRulesHelper
    *        Optional coordinate classifier
    * @return The created {@link DVRCoordinate} and never <code>null</code>.
    */
-  @Nonnull
-  public static DVRCoordinate createCoordinate (@Nonnull @Nonempty final String sGroupID,
-                                                @Nonnull @Nonempty final String sArtifactID,
-                                                @Nonnull @Nonempty final String sVersion,
+  @NonNull
+  public static DVRCoordinate createCoordinate (@NonNull @Nonempty final String sGroupID,
+                                                @NonNull @Nonempty final String sArtifactID,
+                                                @NonNull @Nonempty final String sVersion,
                                                 @Nullable final String sClassifier)
   {
     try
@@ -95,23 +95,23 @@ public final class PhiveRulesHelper
     }
   }
 
-  @Nonnull
-  public static ValidationExecutorSchematron createXSLT (@Nonnull final IReadableResource aRes,
+  @NonNull
+  public static ValidationExecutorSchematron createXSLT (@NonNull final IReadableResource aRes,
                                                          @Nullable final IIterableNamespaceContext aNsCtx)
   {
     SchematronNamespaceBeautifier.addMappings (aNsCtx);
     return ValidationExecutorSchematron.createXSLT (aRes, null, aNsCtx);
   }
 
-  @Nonnull
+  @NonNull
   public static IValidationExecutorSetStatus createSimpleStatus (final boolean bIsDeprecated)
   {
     return ValidationExecutorSetStatus.createDeprecatedNow (bIsDeprecated);
   }
 
-  @Nonnull
+  @NonNull
   public static IValidationExecutorSetStatus createSimpleStatus (final boolean bIsDeprecated,
-                                                                 @Nonnull final OffsetDateTime aValidPer)
+                                                                 @NonNull final OffsetDateTime aValidPer)
   {
     return new ValidationExecutorSetStatus (PDTFactory.getCurrentOffsetDateTime (),
                                             bIsDeprecated ? EValidationExecutorStatusType.DEPRECATED

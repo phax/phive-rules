@@ -16,11 +16,11 @@
  */
 package com.helger.phive.peppol.italy;
 
+import org.jspecify.annotations.NonNull;
+
 import com.helger.annotation.concurrent.Immutable;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
 import com.helger.phive.xml.source.IValidationSourceXML;
-
-import jakarta.annotation.Nonnull;
 
 /**
  * Generic Peppol Italy validation configuration. It contains only the old validation rules.
@@ -40,7 +40,7 @@ public final class PeppolItalyValidation
    *        The registry to add the artefacts. May not be <code>null</code>.
    */
   @SuppressWarnings ("deprecation")
-  public static void init (@Nonnull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
+  public static void init (@NonNull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
   {
     PeppolItalyValidation2_2_9.init (aRegistry);
     PeppolItalyValidation2_3_0.init (aRegistry);

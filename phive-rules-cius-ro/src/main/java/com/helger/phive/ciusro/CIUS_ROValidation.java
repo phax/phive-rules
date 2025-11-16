@@ -16,6 +16,8 @@
  */
 package com.helger.phive.ciusro;
 
+import org.jspecify.annotations.NonNull;
+
 import com.helger.annotation.concurrent.Immutable;
 import com.helger.base.enforce.ValueEnforcer;
 import com.helger.diver.api.coord.DVRCoordinate;
@@ -26,8 +28,6 @@ import com.helger.phive.en16931.EN16931Validation;
 import com.helger.phive.rules.api.PhiveRulesHelper;
 import com.helger.phive.rules.api.PhiveRulesUBLHelper;
 import com.helger.phive.xml.source.IValidationSourceXML;
-
-import jakarta.annotation.Nonnull;
 
 /**
  * Generic CIUS-RO validation configuration
@@ -80,7 +80,7 @@ public final class CIUS_ROValidation
   private CIUS_ROValidation ()
   {}
 
-  @Nonnull
+  @NonNull
   private static ClassLoader _getCL ()
   {
     return CIUS_ROValidation.class.getClassLoader ();
@@ -94,7 +94,7 @@ public final class CIUS_ROValidation
    *        The registry to add the artefacts. May not be <code>null</code>.
    */
   @SuppressWarnings ("deprecation")
-  public static void initCIUS_RO (@Nonnull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
+  public static void initCIUS_RO (@NonNull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
   {
     ValueEnforcer.notNull (aRegistry, "Registry");
 

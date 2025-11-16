@@ -18,6 +18,8 @@ package com.helger.phive.ebinterface.mock;
 
 import static org.junit.Assert.assertTrue;
 
+import org.jspecify.annotations.NonNull;
+
 import com.helger.annotation.concurrent.Immutable;
 import com.helger.annotation.style.ReturnsMutableCopy;
 import com.helger.base.enforce.ValueEnforcer;
@@ -29,8 +31,6 @@ import com.helger.phive.api.executorset.ValidationExecutorSetRegistry;
 import com.helger.phive.api.mock.PhiveTestFile;
 import com.helger.phive.ebinterface.EbInterfaceValidation;
 import com.helger.phive.xml.source.IValidationSourceXML;
-
-import jakarta.annotation.Nonnull;
 
 @Immutable
 public final class CTestFiles
@@ -44,7 +44,7 @@ public final class CTestFiles
   private CTestFiles ()
   {}
 
-  @Nonnull
+  @NonNull
   @ReturnsMutableCopy
   public static ICommonsList <PhiveTestFile> getAllTestFiles ()
   {
@@ -66,9 +66,9 @@ public final class CTestFiles
     return ret;
   }
 
-  @Nonnull
+  @NonNull
   @ReturnsMutableCopy
-  public static ICommonsList <? extends IReadableResource> getAllMatchingTestFiles (@Nonnull final DVRCoordinate aVESID)
+  public static ICommonsList <? extends IReadableResource> getAllMatchingTestFiles (@NonNull final DVRCoordinate aVESID)
   {
     ValueEnforcer.notNull (aVESID, "VESID");
 

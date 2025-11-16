@@ -27,6 +27,8 @@ import org.apache.pdfbox.pdmodel.PDDocumentNameDictionary;
 import org.apache.pdfbox.pdmodel.PDEmbeddedFilesNameTreeNode;
 import org.apache.pdfbox.pdmodel.common.filespecification.PDComplexFileSpecification;
 import org.apache.pdfbox.pdmodel.common.filespecification.PDEmbeddedFile;
+import org.jspecify.annotations.NonNull;
+import org.jspecify.annotations.Nullable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -38,15 +40,12 @@ import com.helger.io.file.IFileFilter;
 import com.helger.io.file.SimpleFileIO;
 import com.helger.phive.zugferd.EZugferdProfile;
 
-import jakarta.annotation.Nonnull;
-import jakarta.annotation.Nullable;
-
 public final class MainExtractTestFiles22
 {
   private static final Logger LOGGER = LoggerFactory.getLogger (MainExtractTestFiles22.class);
 
   @Nullable
-  private static PDEmbeddedFile _getEmbeddedFile (@Nonnull final PDComplexFileSpecification aFileSpec)
+  private static PDEmbeddedFile _getEmbeddedFile (@NonNull final PDComplexFileSpecification aFileSpec)
   {
     // search for the first available alternative of the embedded file
     PDEmbeddedFile ret = null;
@@ -73,9 +72,9 @@ public final class MainExtractTestFiles22
     return ret;
   }
 
-  @Nonnull
-  private static byte [] _extractFacturX (@Nonnull final Map <String, PDComplexFileSpecification> aNames,
-                                          @Nonnull @Nonempty final String sAttachmentFilename) throws IOException
+  @NonNull
+  private static byte [] _extractFacturX (@NonNull final Map <String, PDComplexFileSpecification> aNames,
+                                          @NonNull @Nonempty final String sAttachmentFilename) throws IOException
   {
     final PDComplexFileSpecification aFileSpec = aNames.get (sAttachmentFilename);
     if (aFileSpec == null)
@@ -88,7 +87,7 @@ public final class MainExtractTestFiles22
   }
 
   @Nullable
-  static byte [] extractAttachment (@Nonnull final File fExampleFile, @Nonnull @Nonempty final String sAttachmentFilename)
+  static byte [] extractAttachment (@NonNull final File fExampleFile, @NonNull @Nonempty final String sAttachmentFilename)
   {
     try (final PDDocument aPDDoc = Loader.loadPDF (fExampleFile))
     {
@@ -120,7 +119,7 @@ public final class MainExtractTestFiles22
   }
 
   @Nullable
-  static byte [] extractFacturX (@Nonnull final File fExampleFile)
+  static byte [] extractFacturX (@NonNull final File fExampleFile)
   {
     return extractAttachment (fExampleFile, "factur-x.xml");
   }

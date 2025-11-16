@@ -16,9 +16,9 @@
  */
 package com.helger.phive.zugferd;
 
-import com.helger.annotation.Nonempty;
+import org.jspecify.annotations.NonNull;
 
-import jakarta.annotation.Nonnull;
+import com.helger.annotation.Nonempty;
 
 /**
  * Contains a list of all Zugferd profiles.
@@ -38,10 +38,10 @@ public enum EZugferdProfile
   private final String m_sFilenameSuffix;
   private final String m_sDisplayName;
 
-  EZugferdProfile (@Nonnull @Nonempty final String sArtifactID,
-                   @Nonnull @Nonempty final String sFolderName,
-                   @Nonnull @Nonempty final String sFilenameSuffix,
-                   @Nonnull @Nonempty final String sDisplayName)
+  EZugferdProfile (@NonNull @Nonempty final String sArtifactID,
+                   @NonNull @Nonempty final String sFolderName,
+                   @NonNull @Nonempty final String sFilenameSuffix,
+                   @NonNull @Nonempty final String sDisplayName)
   {
     m_sArtifactID = sArtifactID;
     m_sFolderName = sFolderName;
@@ -49,28 +49,28 @@ public enum EZugferdProfile
     m_sDisplayName = sDisplayName;
   }
 
-  @Nonnull
+  @NonNull
   @Nonempty
   public String getArtifactID ()
   {
     return m_sArtifactID;
   }
 
-  @Nonnull
+  @NonNull
   @Nonempty
   public String getFolderName ()
   {
     return m_sFolderName;
   }
 
-  @Nonnull
+  @NonNull
   @Nonempty
   public String getFilenameSuffix ()
   {
     return m_sFilenameSuffix;
   }
 
-  @Nonnull
+  @NonNull
   @Nonempty
   public String getDisplayName ()
   {

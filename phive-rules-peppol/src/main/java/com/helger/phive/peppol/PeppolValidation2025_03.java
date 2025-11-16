@@ -16,6 +16,8 @@
  */
 package com.helger.phive.peppol;
 
+import org.jspecify.annotations.NonNull;
+
 import com.helger.annotation.concurrent.Immutable;
 import com.helger.base.enforce.ValueEnforcer;
 import com.helger.base.exception.InitializationException;
@@ -30,8 +32,6 @@ import com.helger.phive.en16931.EN16931Validation;
 import com.helger.phive.rules.api.PhiveRulesHelper;
 import com.helger.phive.rules.api.PhiveRulesUBLHelper;
 import com.helger.phive.xml.source.IValidationSourceXML;
-
-import jakarta.annotation.Nonnull;
 
 /**
  * OpenPeppol Self-Billing artefacts March 2025 - initial version
@@ -57,13 +57,13 @@ public final class PeppolValidation2025_03
   private PeppolValidation2025_03 ()
   {}
 
-  @Nonnull
+  @NonNull
   private static ClassLoader _getCL ()
   {
     return PeppolValidation2025_03.class.getClassLoader ();
   }
 
-  public static void init (@Nonnull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
+  public static void init (@NonNull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
   {
     ValueEnforcer.notNull (aRegistry, "Registry");
 

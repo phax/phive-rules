@@ -18,6 +18,8 @@ package com.helger.phive.rules.api;
 
 import javax.xml.XMLConstants;
 
+import org.jspecify.annotations.NonNull;
+
 import com.helger.annotation.concurrent.Immutable;
 import com.helger.annotation.style.ReturnsMutableObject;
 import com.helger.io.resource.IReadableResource;
@@ -27,8 +29,6 @@ import com.helger.ubl21.UBL21NamespaceContext;
 import com.helger.ubl22.UBL22NamespaceContext;
 import com.helger.ubl23.UBL23NamespaceContext;
 import com.helger.xml.namespace.MapBasedNamespaceContext;
-
-import jakarta.annotation.Nonnull;
 
 /**
  * Utility class around UBL for phive-rules libs.
@@ -41,9 +41,9 @@ public final class PhiveRulesUBLHelper
   private PhiveRulesUBLHelper ()
   {}
 
-  @Nonnull
+  @NonNull
   @ReturnsMutableObject
-  public static MapBasedNamespaceContext createUBL21NSContext (@Nonnull final String sNamespaceURI)
+  public static MapBasedNamespaceContext createUBL21NSContext (@NonNull final String sNamespaceURI)
   {
     final MapBasedNamespaceContext aNSContext = UBL21NamespaceContext.getInstance ().getClone ();
 
@@ -56,26 +56,26 @@ public final class PhiveRulesUBLHelper
     return aNSContext;
   }
 
-  @Nonnull
-  public static ValidationExecutorSchematron createXSLT_UBL20 (@Nonnull final IReadableResource aRes)
+  @NonNull
+  public static ValidationExecutorSchematron createXSLT_UBL20 (@NonNull final IReadableResource aRes)
   {
     return PhiveRulesHelper.createXSLT (aRes, UBL20NamespaceContext.getInstance ());
   }
 
-  @Nonnull
-  public static ValidationExecutorSchematron createXSLT_UBL21 (@Nonnull final IReadableResource aRes)
+  @NonNull
+  public static ValidationExecutorSchematron createXSLT_UBL21 (@NonNull final IReadableResource aRes)
   {
     return PhiveRulesHelper.createXSLT (aRes, UBL21NamespaceContext.getInstance ());
   }
 
-  @Nonnull
-  public static ValidationExecutorSchematron createXSLT_UBL22 (@Nonnull final IReadableResource aRes)
+  @NonNull
+  public static ValidationExecutorSchematron createXSLT_UBL22 (@NonNull final IReadableResource aRes)
   {
     return PhiveRulesHelper.createXSLT (aRes, UBL22NamespaceContext.getInstance ());
   }
 
-  @Nonnull
-  public static ValidationExecutorSchematron createXSLT_UBL23 (@Nonnull final IReadableResource aRes)
+  @NonNull
+  public static ValidationExecutorSchematron createXSLT_UBL23 (@NonNull final IReadableResource aRes)
   {
     return PhiveRulesHelper.createXSLT (aRes, UBL23NamespaceContext.getInstance ());
   }

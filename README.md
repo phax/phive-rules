@@ -221,7 +221,9 @@ I hope that with the introduction of PINT, the versioning problem will be solved
 
 # News and noteworthy
 
-v4.0.4 - work in progress
+v4.1.0 - 2025-11-16
+* Updated to ph-commons 12.1.0
+* Using JSpecify annotations
 * Added Poland KSeF FA(3) format. See [#39](https://github.com/phax/phive-rules/issues/39)
 
 v4.0.3 - 2025-10-02

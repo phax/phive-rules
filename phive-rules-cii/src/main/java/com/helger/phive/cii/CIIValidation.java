@@ -16,6 +16,8 @@
  */
 package com.helger.phive.cii;
 
+import org.jspecify.annotations.NonNull;
+
 import com.helger.annotation.concurrent.Immutable;
 import com.helger.base.enforce.ValueEnforcer;
 import com.helger.cii.d16b.CCIID16B;
@@ -26,8 +28,6 @@ import com.helger.phive.api.executorset.ValidationExecutorSet;
 import com.helger.phive.rules.api.PhiveRulesHelper;
 import com.helger.phive.xml.source.IValidationSourceXML;
 import com.helger.phive.xml.xsd.ValidationExecutorXSD;
-
-import jakarta.annotation.Nonnull;
 
 /**
  * Generic CII validation configuration
@@ -59,7 +59,7 @@ public final class CIIValidation
    *        The registry to add the artefacts to. May not be <code>null</code>.
    * @since 3.2.2
    */
-  public static void initCII (@Nonnull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
+  public static void initCII (@NonNull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
   {
     initCIID16B (aRegistry);
     initCIID22B (aRegistry);
@@ -72,7 +72,7 @@ public final class CIIValidation
    * @param aRegistry
    *        The registry to add the artefacts to. May not be <code>null</code>.
    */
-  public static void initCIID16B (@Nonnull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
+  public static void initCIID16B (@NonNull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
   {
     ValueEnforcer.notNull (aRegistry, "Registry");
 
@@ -93,7 +93,7 @@ public final class CIIValidation
    *        The registry to add the artefacts to. May not be <code>null</code>.
    * @since 3.2.2
    */
-  public static void initCIID22B (@Nonnull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
+  public static void initCIID22B (@NonNull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
   {
     ValueEnforcer.notNull (aRegistry, "Registry");
 

@@ -20,6 +20,8 @@ import java.time.LocalDate;
 import java.time.Month;
 import java.time.OffsetDateTime;
 
+import org.jspecify.annotations.NonNull;
+
 import com.helger.annotation.concurrent.Immutable;
 import com.helger.base.enforce.ValueEnforcer;
 import com.helger.base.version.Version;
@@ -35,8 +37,6 @@ import com.helger.phive.xml.source.IValidationSourceXML;
 import com.helger.phive.xml.xsd.ValidationExecutorXSD;
 import com.helger.ubl21.UBL21Marshaller;
 import com.helger.ubl23.UBL23Marshaller;
-
-import jakarta.annotation.Nonnull;
 
 /**
  * OpenPeppol validation artefacts release 2025-Q2.<br>
@@ -105,13 +105,13 @@ public final class PeppolValidation2025_05
   private PeppolValidation2025_05 ()
   {}
 
-  @Nonnull
+  @NonNull
   private static ClassLoader _getCL ()
   {
     return PeppolValidation2025_05.class.getClassLoader ();
   }
 
-  public static void init (@Nonnull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
+  public static void init (@NonNull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
   {
     ValueEnforcer.notNull (aRegistry, "Registry");
 

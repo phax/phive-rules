@@ -16,11 +16,11 @@
  */
 package com.helger.phive.peppol.legacy;
 
+import org.jspecify.annotations.NonNull;
+
 import com.helger.annotation.concurrent.Immutable;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
 import com.helger.phive.xml.source.IValidationSourceXML;
-
-import jakarta.annotation.Nonnull;
 
 /**
  * Generic Legacy Peppol validation configuration. It contains only the old
@@ -42,7 +42,7 @@ public final class PeppolLegacyValidationBisEurope
    * @param aRegistry
    *        The registry to add the artefacts. May not be <code>null</code>.
    */
-  public static void init (@Nonnull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
+  public static void init (@NonNull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
   {
     PeppolValidation3_10_0.init (aRegistry);
     PeppolValidation3_10_1.init (aRegistry);

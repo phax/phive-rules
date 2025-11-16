@@ -18,6 +18,8 @@ package com.helger.phive.zugferd.mock;
 
 import static org.junit.Assert.assertTrue;
 
+import org.jspecify.annotations.NonNull;
+
 import com.helger.annotation.Nonempty;
 import com.helger.annotation.Nonnegative;
 import com.helger.annotation.concurrent.Immutable;
@@ -35,8 +37,6 @@ import com.helger.phive.xml.source.IValidationSourceXML;
 import com.helger.phive.zugferd.EZugferdProfile;
 import com.helger.phive.zugferd.ZugferdValidation;
 
-import jakarta.annotation.Nonnull;
-
 @Immutable
 public final class CTestFiles
 {
@@ -51,7 +51,7 @@ public final class CTestFiles
   {}
 
   @SuppressWarnings ("deprecation")
-  @Nonnull
+  @NonNull
   @ReturnsMutableCopy
   public static ICommonsList <PhiveTestFile> getAllTestFiles ()
   {
@@ -98,12 +98,12 @@ public final class CTestFiles
     return ret;
   }
 
-  @Nonnull
+  @NonNull
   @Nonempty
-  private static ICommonsList <? extends IReadableResource> _createList (@Nonnull final String sZugferdVersion,
+  private static ICommonsList <? extends IReadableResource> _createList (@NonNull final String sZugferdVersion,
                                                                          @Nonnegative final int nCount,
-                                                                         @Nonnull final EZugferdProfile eProfile,
-                                                                         @Nonnull final String sFilenamePrefix)
+                                                                         @NonNull final EZugferdProfile eProfile,
+                                                                         @NonNull final String sFilenamePrefix)
   {
     final ICommonsList <IReadableResource> ret = new CommonsArrayList <> (nCount);
     for (int i = 1; i <= nCount; ++i)
@@ -119,19 +119,19 @@ public final class CTestFiles
     return ret;
   }
 
-  @Nonnull
+  @NonNull
   @Nonempty
-  private static ICommonsList <? extends IReadableResource> _createListFacturX (@Nonnull final String sZugferdVersion,
+  private static ICommonsList <? extends IReadableResource> _createListFacturX (@NonNull final String sZugferdVersion,
                                                                                 @Nonnegative final int nCount,
-                                                                                @Nonnull final EZugferdProfile eProfile)
+                                                                                @NonNull final EZugferdProfile eProfile)
   {
     return _createList (sZugferdVersion, nCount, eProfile, "factur-x");
   }
 
   @SuppressWarnings ("deprecation")
-  @Nonnull
+  @NonNull
   @ReturnsMutableCopy
-  public static ICommonsList <? extends IReadableResource> getAllMatchingTestFiles (@Nonnull final DVRCoordinate aVESID)
+  public static ICommonsList <? extends IReadableResource> getAllMatchingTestFiles (@NonNull final DVRCoordinate aVESID)
   {
     ValueEnforcer.notNull (aVESID, "VESID");
 

@@ -16,6 +16,8 @@
  */
 package com.helger.phive.ubl;
 
+import org.jspecify.annotations.NonNull;
+
 import com.helger.annotation.concurrent.Immutable;
 import com.helger.base.enforce.ValueEnforcer;
 import com.helger.diver.api.coord.DVRCoordinate;
@@ -29,8 +31,6 @@ import com.helger.ubl21.UBL21Marshaller;
 import com.helger.ubl22.UBL22Marshaller;
 import com.helger.ubl23.UBL23Marshaller;
 import com.helger.ubl24.UBL24Marshaller;
-
-import jakarta.annotation.Nonnull;
 
 /**
  * Generic UBL validation configuration
@@ -1151,7 +1151,7 @@ public final class UBLValidation
    *        The registry to add the artefacts. May not be <code>null</code>.
    * @since 5.1.15
    */
-  public static void initUBLAllVersions (@Nonnull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
+  public static void initUBLAllVersions (@NonNull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
   {
     initUBL20 (aRegistry);
     initUBL21 (aRegistry);
@@ -1167,7 +1167,7 @@ public final class UBLValidation
    * @param aRegistry
    *        The registry to add the artefacts. May not be <code>null</code>.
    */
-  public static void initUBL20 (@Nonnull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
+  public static void initUBL20 (@NonNull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
   {
     ValueEnforcer.notNull (aRegistry, "Registry");
 
@@ -1308,7 +1308,7 @@ public final class UBLValidation
    * @param aRegistry
    *        The registry to add the artefacts. May not be <code>null</code>.
    */
-  public static void initUBL21 (@Nonnull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
+  public static void initUBL21 (@NonNull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
   {
     ValueEnforcer.notNull (aRegistry, "Registry");
 
@@ -1593,7 +1593,7 @@ public final class UBLValidation
    * @param aRegistry
    *        The registry to add the artefacts. May not be <code>null</code>.
    */
-  public static void initUBL22 (@Nonnull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
+  public static void initUBL22 (@NonNull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
   {
     ValueEnforcer.notNull (aRegistry, "Registry");
 
@@ -1948,7 +1948,7 @@ public final class UBLValidation
    * @param aRegistry
    *        The registry to add the artefacts. May not be <code>null</code>.
    */
-  public static void initUBL23 (@Nonnull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
+  public static void initUBL23 (@NonNull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
   {
     ValueEnforcer.notNull (aRegistry, "Registry");
 
@@ -2349,7 +2349,7 @@ public final class UBLValidation
    * @param aRegistry
    *        The registry to add the artefacts. May not be <code>null</code>.
    */
-  public static void initUBL24 (@Nonnull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
+  public static void initUBL24 (@NonNull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
   {
     ValueEnforcer.notNull (aRegistry, "Registry");
 

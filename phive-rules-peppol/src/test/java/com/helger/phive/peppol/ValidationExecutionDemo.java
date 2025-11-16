@@ -16,6 +16,8 @@
  */
 package com.helger.phive.peppol;
 
+import org.jspecify.annotations.NonNull;
+import org.jspecify.annotations.Nullable;
 import org.w3c.dom.Document;
 
 import com.helger.diver.api.coord.DVRCoordinate;
@@ -28,9 +30,6 @@ import com.helger.phive.xml.source.IValidationSourceXML;
 import com.helger.phive.xml.source.ValidationSourceXML;
 import com.helger.xml.serialize.read.DOMReader;
 
-import jakarta.annotation.Nonnull;
-import jakarta.annotation.Nullable;
-
 /**
  * Demo code for validating against order rules
  *
@@ -38,7 +37,7 @@ import jakarta.annotation.Nullable;
  */
 public final class ValidationExecutionDemo
 {
-  public void testCode (@Nullable final String sSystemID, @Nonnull final byte [] aXML)
+  public void testCode (@Nullable final String sSystemID, @NonNull final byte [] aXML)
   {
     // Example: validate against orders
     final DVRCoordinate aVESID = PeppolValidation2024_11.VID_OPENPEPPOL_INVOICE_UBL_V3;

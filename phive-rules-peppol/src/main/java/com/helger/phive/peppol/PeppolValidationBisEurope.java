@@ -18,14 +18,14 @@ package com.helger.phive.peppol;
 
 import java.time.LocalDate;
 
+import org.jspecify.annotations.NonNull;
+
 import com.helger.annotation.Nonempty;
 import com.helger.annotation.concurrent.Immutable;
 import com.helger.base.enforce.ValueEnforcer;
 import com.helger.datetime.helper.PDTFactory;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
 import com.helger.phive.xml.source.IValidationSourceXML;
-
-import jakarta.annotation.Nonnull;
 
 /**
  * Peppol BIS Europe validation configuration
@@ -44,7 +44,7 @@ public final class PeppolValidationBisEurope
    * @return The currently active version number, dependent on the current date. Never
    *         <code>null</code>.
    */
-  @Nonnull
+  @NonNull
   @Nonempty
   public static String getVersionToUse ()
   {
@@ -59,7 +59,7 @@ public final class PeppolValidationBisEurope
   }
 
   // @SuppressWarnings ("deprecation")
-  public static void init (@Nonnull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
+  public static void init (@NonNull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
   {
     ValueEnforcer.notNull (aRegistry, "Registry");
 

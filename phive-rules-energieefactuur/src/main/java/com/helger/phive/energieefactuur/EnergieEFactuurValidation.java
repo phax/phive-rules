@@ -20,6 +20,8 @@ import javax.xml.xpath.XPath;
 import javax.xml.xpath.XPathExpression;
 import javax.xml.xpath.XPathFactory;
 
+import org.jspecify.annotations.NonNull;
+
 import com.helger.annotation.concurrent.Immutable;
 import com.helger.base.enforce.ValueEnforcer;
 import com.helger.collection.commons.CommonsArrayList;
@@ -39,8 +41,6 @@ import com.helger.ubl21.UBL21Marshaller;
 import com.helger.ubl21.UBL21NamespaceContext;
 import com.helger.xml.namespace.MapBasedNamespaceContext;
 import com.helger.xml.xpath.XPathHelper;
-
-import jakarta.annotation.Nonnull;
 
 /**
  * Energie e-Factuur validation configuration
@@ -78,7 +78,7 @@ public final class EnergieEFactuurValidation
   /** Namespace URL for Energie e-Factuur 3.1.0 */
   public static final String EEF_EXT_NS_3_1_0 = "urn:www.energie-efactuur.nl:profile:invoice:ver3.1";
 
-  @Nonnull
+  @NonNull
   private static ClassLoader _getCL ()
   {
     return EnergieEFactuurValidation.class.getClassLoader ();
@@ -95,7 +95,7 @@ public final class EnergieEFactuurValidation
    *        The registry to add the artefacts. May not be <code>null</code>.
    */
   @SuppressWarnings ("deprecation")
-  public static void initEnergieEFactuur (@Nonnull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
+  public static void initEnergieEFactuur (@NonNull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
   {
     ValueEnforcer.notNull (aRegistry, "Registry");
 

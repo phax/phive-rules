@@ -16,6 +16,8 @@
  */
 package com.helger.phive.xrechnung;
 
+import org.jspecify.annotations.NonNull;
+
 import com.helger.annotation.concurrent.Immutable;
 import com.helger.annotation.style.ReturnsMutableCopy;
 import com.helger.base.enforce.ValueEnforcer;
@@ -37,8 +39,6 @@ import com.helger.phive.rules.api.PhiveRulesUBLHelper;
 import com.helger.phive.xml.schematron.CustomErrorDetails;
 import com.helger.phive.xml.schematron.ValidationExecutorSchematron;
 import com.helger.phive.xml.source.IValidationSourceXML;
-
-import jakarta.annotation.Nonnull;
 
 /**
  * Generic XRechnung validation configuration. It is based on the EN16931 validation artefacts.
@@ -241,16 +241,16 @@ public final class XRechnungValidation
   private XRechnungValidation ()
   {}
 
-  @Nonnull
+  @NonNull
   private static ClassLoader _getCL ()
   {
     return XRechnungValidation.class.getClassLoader ();
   }
 
-  @Nonnull
+  @NonNull
   @ReturnsMutableCopy
-  private static ICommonsList <IValidationExecutor <IValidationSourceXML>> _getListWithCustomErrorDetails (@Nonnull final IValidationExecutorSet <IValidationSourceXML> aSrc,
-                                                                                                           @Nonnull final ICommonsMap <String, CustomErrorDetails> aCustomErrors)
+  private static ICommonsList <IValidationExecutor <IValidationSourceXML>> _getListWithCustomErrorDetails (@NonNull final IValidationExecutorSet <IValidationSourceXML> aSrc,
+                                                                                                           @NonNull final ICommonsMap <String, CustomErrorDetails> aCustomErrors)
   {
     // Same Schematrons as base VES, but modified customization
     final ICommonsList <IValidationExecutor <IValidationSourceXML>> ret = new CommonsArrayList <> (aSrc.executors ()
@@ -271,7 +271,7 @@ public final class XRechnungValidation
    *        The registry to add the artefacts. May not be <code>null</code>.
    */
   @SuppressWarnings ("deprecation")
-  public static void initXRechnung (@Nonnull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
+  public static void initXRechnung (@NonNull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
   {
     ValueEnforcer.notNull (aRegistry, "Registry");
 

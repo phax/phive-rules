@@ -18,6 +18,8 @@ package com.helger.phive.simplerinvoicing.mock;
 
 import static org.junit.Assert.assertTrue;
 
+import org.jspecify.annotations.NonNull;
+
 import com.helger.annotation.concurrent.Immutable;
 import com.helger.annotation.style.ReturnsMutableCopy;
 import com.helger.base.enforce.ValueEnforcer;
@@ -32,8 +34,6 @@ import com.helger.phive.api.mock.PhiveTestFile;
 import com.helger.phive.simplerinvoicing.SimplerInvoicingValidation;
 import com.helger.phive.xml.source.IValidationSourceXML;
 
-import jakarta.annotation.Nonnull;
-
 @Immutable
 @SuppressWarnings ("deprecation")
 public final class CTestFiles
@@ -47,7 +47,7 @@ public final class CTestFiles
   private CTestFiles ()
   {}
 
-  @Nonnull
+  @NonNull
   @ReturnsMutableCopy
   public static ICommonsList <PhiveTestFile> getAllTestFiles ()
   {
@@ -144,9 +144,9 @@ public final class CTestFiles
   private static final String PATH_2032 = PREFIX + "SI-UBL-2.0.3.2/";
   private static final String PATH_GACCOUNT_10 = PREFIX + "si-ubl-2.0-ext-gaccount-1.0/";
 
-  @Nonnull
+  @NonNull
   @ReturnsMutableCopy
-  public static ICommonsList <? extends IReadableResource> getAllMatchingGoodTestFiles (@Nonnull final DVRCoordinate aVESID)
+  public static ICommonsList <? extends IReadableResource> getAllMatchingGoodTestFiles (@NonNull final DVRCoordinate aVESID)
   {
     ValueEnforcer.notNull (aVESID, "VESID");
 
@@ -519,9 +519,9 @@ public final class CTestFiles
     return ret;
   }
 
-  @Nonnull
+  @NonNull
   @ReturnsMutableCopy
-  public static ICommonsList <? extends IReadableResource> getAllMatchingErrorTestFiles (@Nonnull final DVRCoordinate aVESID)
+  public static ICommonsList <? extends IReadableResource> getAllMatchingErrorTestFiles (@NonNull final DVRCoordinate aVESID)
   {
     ValueEnforcer.notNull (aVESID, "VESID");
 

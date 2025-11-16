@@ -16,14 +16,14 @@
  */
 package com.helger.phive.fatturapa.mock;
 
+import org.jspecify.annotations.NonNull;
+
 import com.helger.annotation.Nonempty;
 import com.helger.annotation.style.ReturnsMutableCopy;
 import com.helger.collection.commons.CommonsArrayList;
 import com.helger.collection.commons.ICommonsList;
 import com.helger.io.resource.ClassPathResource;
 import com.helger.io.resource.IReadableResource;
-
-import jakarta.annotation.Nonnull;
 
 public enum FatturaPATestFiles
 {
@@ -57,7 +57,7 @@ public enum FatturaPATestFiles
       m_aTestFiles.add (new ClassPathResource (sBaseDir + sFile));
   }
 
-  @Nonnull
+  @NonNull
   @Nonempty
   @ReturnsMutableCopy
   public ICommonsList <IReadableResource> getTestResources ()

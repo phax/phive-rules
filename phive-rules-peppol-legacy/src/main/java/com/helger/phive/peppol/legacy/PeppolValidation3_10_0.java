@@ -20,6 +20,8 @@ import java.time.LocalDate;
 import java.time.Month;
 import java.time.OffsetDateTime;
 
+import org.jspecify.annotations.NonNull;
+
 import com.helger.annotation.concurrent.Immutable;
 import com.helger.base.enforce.ValueEnforcer;
 import com.helger.base.version.Version;
@@ -39,8 +41,6 @@ import com.helger.phive.rules.api.PhiveRulesUBLHelper;
 import com.helger.phive.xml.source.IValidationSourceXML;
 import com.helger.phive.xml.xsd.ValidationExecutorXSD;
 import com.helger.ubl21.UBL21Marshaller;
-
-import jakarta.annotation.Nonnull;
 
 /**
  * OpenPeppol validation artefacts release 3.10.0. Spring 2020 release. Valid per May 15th, 2020
@@ -165,7 +165,7 @@ public final class PeppolValidation3_10_0
                                                                                                 "t111",
                                                                                                 VERSION_STR);
 
-  @Nonnull
+  @NonNull
   private static ClassLoader _getCL ()
   {
     return PeppolValidation3_10_0.class.getClassLoader ();
@@ -174,7 +174,7 @@ public final class PeppolValidation3_10_0
   private PeppolValidation3_10_0 ()
   {}
 
-  @Nonnull
+  @NonNull
   private static IValidationExecutorSetStatus _createStatus (final boolean bIsDeprecated)
   {
     return new ValidationExecutorSetStatus (PDTFactory.getCurrentOffsetDateTime (),
@@ -187,7 +187,7 @@ public final class PeppolValidation3_10_0
                                             (ICommonsList <ValidationExecutorSetStatusHistoryItem>) null);
   }
 
-  public static void init (@Nonnull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
+  public static void init (@NonNull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
   {
     ValueEnforcer.notNull (aRegistry, "Registry");
 

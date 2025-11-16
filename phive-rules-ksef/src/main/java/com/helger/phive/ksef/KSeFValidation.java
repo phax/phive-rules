@@ -19,6 +19,7 @@ package com.helger.phive.ksef;
 import javax.xml.XMLConstants;
 import javax.xml.validation.SchemaFactory;
 
+import org.jspecify.annotations.NonNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.xml.sax.SAXNotRecognizedException;
@@ -42,8 +43,6 @@ import com.helger.xml.sax.LoggingSAXErrorHandler;
 import com.helger.xml.schema.XMLSchemaCache;
 import com.helger.xsds.xmldsig.CXMLDSig;
 
-import jakarta.annotation.Nonnull;
-
 /**
  * Generic KSeF validation configuration
  *
@@ -66,7 +65,7 @@ public final class KSeFValidation
   private KSeFValidation ()
   {}
 
-  @Nonnull
+  @NonNull
   private static ClassLoader _getCL ()
   {
     return KSeFValidation.class.getClassLoader ();
@@ -78,7 +77,7 @@ public final class KSeFValidation
    * @param aRegistry
    *        The registry to add the artefacts. May not be <code>null</code>.
    */
-  public static void initKSeF (@Nonnull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
+  public static void initKSeF (@NonNull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
   {
     ValueEnforcer.notNull (aRegistry, "Registry");
 

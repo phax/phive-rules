@@ -16,13 +16,13 @@
  */
 package com.helger.phive.rules.api;
 
+import org.jspecify.annotations.NonNull;
+
 import com.helger.annotation.concurrent.Immutable;
 import com.helger.cii.d16b.CIID16BNamespaceContext;
 import com.helger.cii.d22b.CIID22BNamespaceContext;
 import com.helger.io.resource.IReadableResource;
 import com.helger.phive.xml.schematron.ValidationExecutorSchematron;
-
-import jakarta.annotation.Nonnull;
 
 /**
  * Utility class around CII for phive-rules libs.
@@ -35,14 +35,14 @@ public final class PhiveRulesCIIHelper
   private PhiveRulesCIIHelper ()
   {}
 
-  @Nonnull
-  public static ValidationExecutorSchematron createXSLT_CII_D16B (@Nonnull final IReadableResource aRes)
+  @NonNull
+  public static ValidationExecutorSchematron createXSLT_CII_D16B (@NonNull final IReadableResource aRes)
   {
     return PhiveRulesHelper.createXSLT (aRes, CIID16BNamespaceContext.getInstance ());
   }
 
-  @Nonnull
-  public static ValidationExecutorSchematron createXSLT_CII_D22B (@Nonnull final IReadableResource aRes)
+  @NonNull
+  public static ValidationExecutorSchematron createXSLT_CII_D22B (@NonNull final IReadableResource aRes)
   {
     return PhiveRulesHelper.createXSLT (aRes, CIID22BNamespaceContext.getInstance ());
   }

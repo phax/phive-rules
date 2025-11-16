@@ -122,7 +122,7 @@
               oioubl.names.specification.oioubl.schema.xsd.commonbasiccomponents_2,
               oioubl.names.specification.oioubl.schema.xsd.utilitystatement_2
             </Export-Package>
-            <Import-Package>!jakarta.annotation.*,*</Import-Package>
+            <Import-Package>!org.jspecify.annotations.*,*</Import-Package>
           </instructions>
         </configuration>
       </plugin>
@@ -161,6 +161,7 @@
             <arg>-quiet</arg>
             <arg>-Xph-default-locale</arg>
             <arg>en_US</arg>
+            <arg>-Xph-package-null-marked</arg>
             <arg>-Xph-annotate</arg>
             <arg>-Xph-fields-private</arg>
             <arg>-Xph-code-quality</arg>

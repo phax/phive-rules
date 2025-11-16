@@ -16,11 +16,11 @@
  */
 package com.helger.phive.ehf;
 
+import org.jspecify.annotations.NonNull;
+
 import com.helger.annotation.concurrent.Immutable;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
 import com.helger.phive.xml.source.IValidationSourceXML;
-
-import jakarta.annotation.Nonnull;
 
 /**
  * EHF validation G2 and G3.
@@ -40,7 +40,7 @@ public final class EHFValidation
    *        The registry to register to. May not be <code>null</code>.
    */
   @SuppressWarnings ("deprecation")
-  public static void initEHF (@Nonnull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
+  public static void initEHF (@NonNull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
   {
     EHFValidationG2.initEHF (aRegistry);
     EHFValidationG3_2020_03.initEHF (aRegistry);

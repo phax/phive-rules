@@ -16,6 +16,8 @@
  */
 package com.helger.phive.isdoc;
 
+import org.jspecify.annotations.NonNull;
+
 import com.helger.annotation.concurrent.Immutable;
 import com.helger.base.enforce.ValueEnforcer;
 import com.helger.diver.api.coord.DVRCoordinate;
@@ -29,8 +31,6 @@ import com.helger.phive.xml.source.IValidationSourceXML;
 import com.helger.phive.xml.xsd.ValidationExecutorXSD;
 import com.helger.xml.namespace.MapBasedNamespaceContext;
 import com.helger.xsds.xmldsig.CXMLDSig;
-
-import jakarta.annotation.Nonnull;
 
 /**
  * Generic ISDOC validation configuration
@@ -49,7 +49,7 @@ public final class ISDOCValidation
   private ISDOCValidation ()
   {}
 
-  @Nonnull
+  @NonNull
   private static ClassLoader _getCL ()
   {
     return ISDOCValidation.class.getClassLoader ();
@@ -62,8 +62,8 @@ public final class ISDOCValidation
     NS_CTX.addMapping (CXMLDSig.DEFAULT_PREFIX, CXMLDSig.NAMESPACE_URI);
   }
 
-  @Nonnull
-  private static ValidationExecutorSchematron _createXSLT (@Nonnull final IReadableResource aRes)
+  @NonNull
+  private static ValidationExecutorSchematron _createXSLT (@NonNull final IReadableResource aRes)
   {
     return PhiveRulesHelper.createXSLT (aRes, NS_CTX.getClone ());
   }
@@ -75,7 +75,7 @@ public final class ISDOCValidation
    * @param aRegistry
    *        The registry to add the artefacts. May not be <code>null</code>.
    */
-  public static void initISDOC (@Nonnull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
+  public static void initISDOC (@NonNull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
   {
     ValueEnforcer.notNull (aRegistry, "Registry");
 
