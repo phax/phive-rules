@@ -228,11 +228,11 @@ I hope that with the introduction of PINT, the versioning problem will be solved
 
 # News and noteworthy
 
-v4.1.1 - work in progress
+v4.1.1 - 2025-11-18
 * Added support for CDAR D22B XML Schema
 * Added support for France CTC 1.2.0 validation rules and deprecated rules v0.1 (on UBL, CII and CDAR)
-* Added support for EN 16931 rules v1.3.15 format and deprecated v1.3.13
-* Added support for Croatian eRacun v1.0.0 rules 
+* Added support for EN 16931 rules v1.3.15 format and deprecated v1.3.13. See [#41](https://github.com/phax/phive-rules/issues/41)
+* Added support for Croatian eRacun v1.0.0 rules (new submodule `phive-rules-eracun`). See [#40](https://github.com/phax/phive-rules/issues/40)
 
 v4.1.0 - 2025-11-16
 * Updated to ph-commons 12.1.0
