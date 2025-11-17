@@ -24,11 +24,13 @@ import org.jspecify.annotations.NonNull;
 
 import com.helger.annotation.concurrent.Immutable;
 import com.helger.base.enforce.ValueEnforcer;
+import com.helger.base.exception.InitializationException;
 import com.helger.collection.commons.CommonsArrayList;
 import com.helger.collection.commons.ICommonsList;
 import com.helger.datetime.helper.PDTFactory;
 import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.io.resource.ClassPathResource;
+import com.helger.phive.api.executorset.IValidationExecutorSet;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
 import com.helger.phive.api.executorset.ValidationExecutorSet;
 import com.helger.phive.en16931.EN16931Validation;
@@ -541,7 +543,7 @@ public final class OIOUBLValidation
     ValueEnforcer.notNull (aRegistry, "Registry");
 
     final boolean bDeprecated = true;
-    final boolean bNotDeprecated = false;
+    final boolean bNotDeprecated = !bDeprecated;
 
     // MUST be UBL 2.0 as an include refers to a file only available in UBL 2.0
     final ICommonsList <ClassPathResource> aXSDUtilityStatement = new CommonsArrayList <> (CUBL20.XSD_CODELIST_UNIT_CODE,
@@ -1498,8 +1500,13 @@ public final class OIOUBLValidation
 
     // 3.0.1
     {
+      final IValidationExecutorSet <IValidationSourceXML> aVESUBLCreditNote_1_3_13 = aRegistry.getOfID (EN16931Validation.VID_UBL_CREDIT_NOTE_1313);
+      final IValidationExecutorSet <IValidationSourceXML> aVESUBLInvoice_1_3_13 = aRegistry.getOfID (EN16931Validation.VID_UBL_INVOICE_1313);
+      if (aVESUBLCreditNote_1_3_13 == null || aVESUBLInvoice_1_3_13 == null)
+        throw new InitializationException ("The EN 16931 VES are missing. Make sure to call EN16931Validation.initEN16931 first.");
+
       final String sPath = "/external/schematron/oioubl/3.0.1/xslt/";
-      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.createDerived (aRegistry.getOfID (EN16931Validation.VID_UBL_CREDIT_NOTE_1313),
+      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.createDerived (aVESUBLCreditNote_1_3_13,
                                                                                     VID_OIOUBL_CREDIT_NOTE_3_0_1,
                                                                                     "OIOUBL Credit Note " +
                                                                                                                   VERSION_3_0_1,
@@ -1507,7 +1514,7 @@ public final class OIOUBLValidation
                                                                                     PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                                                                  "OIOUBL-Creditnote.xslt",
                                                                                                                                                  _getCL ()))));
-      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.createDerived (aRegistry.getOfID (EN16931Validation.VID_UBL_INVOICE_1313),
+      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.createDerived (aVESUBLInvoice_1_3_13,
                                                                                     VID_OIOUBL_INVOICE_3_0_1,
                                                                                     "OIOUBL Invoice " + VERSION_3_0_1,
                                                                                     PhiveRulesHelper.createSimpleStatus (bNotDeprecated),

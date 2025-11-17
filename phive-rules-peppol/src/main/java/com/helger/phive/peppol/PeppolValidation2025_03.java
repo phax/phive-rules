@@ -79,7 +79,7 @@ public final class PeppolValidation2025_03
     final IValidationExecutorSet <IValidationSourceXML> aVESUBLInvoice_1_3_13 = aRegistry.getOfID (EN16931Validation.VID_UBL_INVOICE_1313);
     final IValidationExecutorSet <IValidationSourceXML> aVESUBLCreditNote_1_3_13 = aRegistry.getOfID (EN16931Validation.VID_UBL_CREDIT_NOTE_1313);
     if (aVESUBLCreditNote_1_3_13 == null || aVESUBLInvoice_1_3_13 == null)
-      throw new InitializationException ("The EN 16931 VES are missing");
+      throw new InitializationException ("The EN 16931 VES are missing. Make sure to call EN16931Validation.initEN16931 first.");
 
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.createDerived (aVESUBLInvoice_1_3_13,
                                                                                   VID_OPENPEPPOL_INVOICE_SELF_BILLING_UBL_V3,

@@ -20,8 +20,10 @@ import org.jspecify.annotations.NonNull;
 
 import com.helger.annotation.concurrent.Immutable;
 import com.helger.base.enforce.ValueEnforcer;
+import com.helger.base.exception.InitializationException;
 import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.io.resource.ClassPathResource;
+import com.helger.phive.api.executorset.IValidationExecutorSet;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
 import com.helger.phive.api.executorset.ValidationExecutorSet;
 import com.helger.phive.en16931.EN16931Validation;
@@ -87,8 +89,7 @@ public final class CIUS_ROValidation
   }
 
   /**
-   * Register all standard CIUS-RO validation execution sets to the provided
-   * registry.
+   * Register all standard CIUS-RO validation execution sets to the provided registry.
    *
    * @param aRegistry
    *        The registry to add the artefacts. May not be <code>null</code>.
@@ -99,19 +100,26 @@ public final class CIUS_ROValidation
     ValueEnforcer.notNull (aRegistry, "Registry");
 
     final boolean bDeprecated = true;
-    final boolean bNotDeprecated = false;
+    final boolean bNotDeprecated = !bDeprecated;
+
+    final IValidationExecutorSet <IValidationSourceXML> aVESUBLCreditNote_1_3_7 = aRegistry.getOfID (EN16931Validation.VID_UBL_CREDIT_NOTE_137);
+    final IValidationExecutorSet <IValidationSourceXML> aVESUBLInvoice_1_3_7 = aRegistry.getOfID (EN16931Validation.VID_UBL_INVOICE_137);
+    final IValidationExecutorSet <IValidationSourceXML> aVESUBLCreditNote_1_3_8 = aRegistry.getOfID (EN16931Validation.VID_UBL_CREDIT_NOTE_138);
+    final IValidationExecutorSet <IValidationSourceXML> aVESUBLInvoice_1_3_8 = aRegistry.getOfID (EN16931Validation.VID_UBL_INVOICE_138);
+    if (aVESUBLCreditNote_1_3_7 == null || aVESUBLInvoice_1_3_7 == null)
+      throw new InitializationException ("The EN 16931 VES are missing. Make sure to call EN16931Validation.initEN16931 first.");
 
     // V1.0.3 referencing the underlying EN rules
     {
       final ClassPathResource RES_103 = new ClassPathResource ("/external/schematron/1.0.3/ROeFactura-UBL-validation-Invoice_v1.0.3.xslt",
                                                                _getCL ());
-      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.createDerived (aRegistry.getOfID (EN16931Validation.VID_UBL_CREDIT_NOTE_137),
+      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.createDerived (aVESUBLCreditNote_1_3_7,
                                                                                     VID_CIUS_RO_UBL_CREDITNOTE_103,
                                                                                     "CIUS-RO UBL Credit Note " +
                                                                                                                     VID_CIUS_RO_UBL_CREDITNOTE_103.getVersionString (),
                                                                                     PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                                     PhiveRulesUBLHelper.createXSLT_UBL21 (RES_103)));
-      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.createDerived (aRegistry.getOfID (EN16931Validation.VID_UBL_INVOICE_137),
+      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.createDerived (aVESUBLInvoice_1_3_7,
                                                                                     VID_CIUS_RO_UBL_INVOICE_103,
                                                                                     "CIUS-RO UBL Invoice " +
                                                                                                                  VID_CIUS_RO_UBL_INVOICE_103.getVersionString (),
@@ -123,13 +131,13 @@ public final class CIUS_ROValidation
     {
       final ClassPathResource RES_104 = new ClassPathResource ("/external/schematron/1.0.4/ROeFactura-UBL-validation-Invoice_v1.0.4.xslt",
                                                                _getCL ());
-      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.createDerived (aRegistry.getOfID (EN16931Validation.VID_UBL_CREDIT_NOTE_137),
+      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.createDerived (aVESUBLCreditNote_1_3_7,
                                                                                     VID_CIUS_RO_UBL_CREDITNOTE_104,
                                                                                     "CIUS-RO UBL Credit Note " +
                                                                                                                     VID_CIUS_RO_UBL_CREDITNOTE_104.getVersionString (),
                                                                                     PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                                     PhiveRulesUBLHelper.createXSLT_UBL21 (RES_104)));
-      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.createDerived (aRegistry.getOfID (EN16931Validation.VID_UBL_INVOICE_137),
+      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.createDerived (aVESUBLInvoice_1_3_7,
                                                                                     VID_CIUS_RO_UBL_INVOICE_104,
                                                                                     "CIUS-RO UBL Invoice " +
                                                                                                                  VID_CIUS_RO_UBL_INVOICE_104.getVersionString (),
@@ -141,13 +149,13 @@ public final class CIUS_ROValidation
     {
       final ClassPathResource RES_108 = new ClassPathResource ("/external/schematron/1.0.8/ROeFactura-UBL-validation-Invoice_v1.0.8.xslt",
                                                                _getCL ());
-      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.createDerived (aRegistry.getOfID (EN16931Validation.VID_UBL_CREDIT_NOTE_138),
+      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.createDerived (aVESUBLCreditNote_1_3_8,
                                                                                     VID_CIUS_RO_UBL_CREDITNOTE_108,
                                                                                     "CIUS-RO UBL Credit Note " +
                                                                                                                     VID_CIUS_RO_UBL_CREDITNOTE_108.getVersionString (),
                                                                                     PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                                     PhiveRulesUBLHelper.createXSLT_UBL21 (RES_108)));
-      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.createDerived (aRegistry.getOfID (EN16931Validation.VID_UBL_INVOICE_138),
+      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.createDerived (aVESUBLInvoice_1_3_8,
                                                                                     VID_CIUS_RO_UBL_INVOICE_108,
                                                                                     "CIUS-RO UBL Invoice " +
                                                                                                                  VID_CIUS_RO_UBL_INVOICE_108.getVersionString (),
@@ -159,13 +167,13 @@ public final class CIUS_ROValidation
     {
       final ClassPathResource RES_109 = new ClassPathResource ("/external/schematron/1.0.9/ROeFactura-UBL-validation-Invoice_v1.0.9.xslt",
                                                                _getCL ());
-      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.createDerived (aRegistry.getOfID (EN16931Validation.VID_UBL_CREDIT_NOTE_138),
+      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.createDerived (aVESUBLCreditNote_1_3_8,
                                                                                     VID_CIUS_RO_UBL_CREDITNOTE_109,
                                                                                     "CIUS-RO UBL Credit Note " +
                                                                                                                     VID_CIUS_RO_UBL_CREDITNOTE_109.getVersionString (),
                                                                                     PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
                                                                                     PhiveRulesUBLHelper.createXSLT_UBL21 (RES_109)));
-      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.createDerived (aRegistry.getOfID (EN16931Validation.VID_UBL_INVOICE_138),
+      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.createDerived (aVESUBLInvoice_1_3_8,
                                                                                     VID_CIUS_RO_UBL_INVOICE_109,
                                                                                     "CIUS-RO UBL Invoice " +
                                                                                                                  VID_CIUS_RO_UBL_INVOICE_109.getVersionString (),

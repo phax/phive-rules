@@ -24,6 +24,7 @@ import org.jspecify.annotations.NonNull;
 
 import com.helger.annotation.concurrent.Immutable;
 import com.helger.base.enforce.ValueEnforcer;
+import com.helger.base.exception.InitializationException;
 import com.helger.datetime.helper.PDTFactory;
 import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.io.resource.ClassPathResource;
@@ -150,6 +151,8 @@ public final class PeppolValidationPintJP
     {
       final IValidationExecutorSet <IValidationSourceXML> aVESIDInv = aRegistry.getOfID (PeppolValidationPint.VID_OPENPEPPOL_PINT_INVOICE_1_0_1);
       final IValidationExecutorSet <IValidationSourceXML> aVESIDCN = aRegistry.getOfID (PeppolValidationPint.VID_OPENPEPPOL_PINT_CREDIT_NOTE_1_0_1);
+      if (aVESIDInv == null || aVESIDCN == null)
+        throw new InitializationException ("The Generic PINT VES are missing. Make sure to call PeppolValidationPint.init first.");
 
       final ClassPathResource aCPR2 = new ClassPathResource (BASE_PATH +
                                                              "1.0.2/xslt/PINT-jurisdiction-aligned-rules.xslt",

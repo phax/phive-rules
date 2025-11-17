@@ -24,6 +24,7 @@ import org.jspecify.annotations.NonNull;
 
 import com.helger.annotation.concurrent.Immutable;
 import com.helger.base.enforce.ValueEnforcer;
+import com.helger.base.exception.InitializationException;
 import com.helger.collection.commons.CommonsArrayList;
 import com.helger.collection.commons.ICommonsList;
 import com.helger.diver.api.coord.DVRCoordinate;
@@ -88,8 +89,7 @@ public final class EnergieEFactuurValidation
   {}
 
   /**
-   * Register all standard Energie eFactuur validation execution sets to the
-   * provided registry.
+   * Register all standard Energie eFactuur validation execution sets to the provided registry.
    *
    * @param aRegistry
    *        The registry to add the artefacts. May not be <code>null</code>.
@@ -104,6 +104,8 @@ public final class EnergieEFactuurValidation
     final String sUBL21InvoiceNamespaceURI = UBL21Marshaller.invoice ().getRootElementNamespaceURI ();
 
     final IValidationExecutorSet <IValidationSourceXML> aSI11 = aRegistry.getOfID (SimplerInvoicingValidation.VID_SI_INVOICE_V11);
+    if (aSI11 == null)
+      throw new InitializationException ("The SimplerInvoicing VES are missing. Make sure to call SimplerInvoicingValidation.initSimplerInvoicing first.");
     assert 2 == aSI11.executors ().size ();
 
     {
@@ -232,7 +234,7 @@ public final class EnergieEFactuurValidation
     }
 
     {
-      final IValidationExecutorSet <IValidationSourceXML> aSI2035 = aRegistry.getOfID (SimplerInvoicingValidation.VID_SI_INVOICE_V20);
+      final IValidationExecutorSet <IValidationSourceXML> aSI2035 = aRegistry.getOfID (SimplerInvoicingValidation.VID_SI_INVOICE_V2035);
       assert 2 == aSI2035.executors ().size ();
 
       // Create XPathExpression for extension validation

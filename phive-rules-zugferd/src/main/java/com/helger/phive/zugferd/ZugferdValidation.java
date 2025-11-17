@@ -21,11 +21,13 @@ import org.jspecify.annotations.Nullable;
 
 import com.helger.annotation.concurrent.Immutable;
 import com.helger.base.enforce.ValueEnforcer;
+import com.helger.base.exception.InitializationException;
 import com.helger.collection.commons.CommonsHashMap;
 import com.helger.collection.commons.ICommonsMap;
 import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.diver.api.version.DVRVersion;
 import com.helger.io.resource.ClassPathResource;
+import com.helger.phive.api.executorset.IValidationExecutorSet;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
 import com.helger.phive.api.executorset.ValidationExecutorSet;
 import com.helger.phive.api.executorset.ValidationExecutorSetAlias;
@@ -210,24 +212,13 @@ public final class ZugferdValidation
     for (final EZugferdProfile eProfile : EZugferdProfile.values ())
     {
       final String sZugferdVersion = "2.0.1";
-      final String sProfileNamePart;
-      switch (eProfile)
+      final String sProfileNamePart = switch (eProfile)
       {
-        case MINIMUM:
-        case BASIC_WL:
-          sProfileNamePart = "basicwl_minimum";
-          break;
-        case BASIC:
-        case EN16931:
-          sProfileNamePart = "en16931";
-          break;
-        case EXTENDED:
-          sProfileNamePart = "extended";
-          break;
-        default:
-          throw new IllegalStateException ();
-      }
-
+        case MINIMUM, BASIC_WL -> "basicwl_minimum";
+        case BASIC, EN16931 -> "en16931";
+        case EXTENDED -> "extended";
+        default -> throw new IllegalStateException ();
+      };
       final var aVESchematron = PhiveRulesCIIHelper.createXSLT_CII_D16B (new ClassPathResource ("/external/schematron/" +
                                                                                                 sZugferdVersion +
                                                                                                 "/zugferd2p0_" +
@@ -282,11 +273,11 @@ public final class ZugferdValidation
       if (eProfile == EZugferdProfile.EN16931)
       {
         // Based on 1.3.1
-        aVES = ValidationExecutorSet.createDerived (aRegistry.getOfID (EN16931Validation.VID_CII_131),
-                                                    aVESID,
-                                                    sDisplayName,
-                                                    aStatus,
-                                                    aVESchematron);
+        final IValidationExecutorSet <IValidationSourceXML> aVESCII_1_3_1 = aRegistry.getOfID (EN16931Validation.VID_CII_131);
+        if (aVESCII_1_3_1 == null)
+          throw new InitializationException ("The EN 16931 VES are missing. Make sure to call EN16931Validation.initEN16931 first.");
+
+        aVES = ValidationExecutorSet.createDerived (aVESCII_1_3_1, aVESID, sDisplayName, aStatus, aVESchematron);
       }
       else
       {
