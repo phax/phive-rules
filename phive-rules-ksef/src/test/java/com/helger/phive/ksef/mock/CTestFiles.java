@@ -140,7 +140,7 @@ public final class CTestFiles
                                                       "Fa_3_Przykład_17.xml",
                                                       "Fa_3_Przykład_18.xml",
                                                       "Fa_3_Przykład_19.xml",
-                                                      "FA_3_Przykład_20.xml",
+                                                      "Fa_3_Przykład_20.xml",
                                                       "FA_3_Przykład_21.xml",
                                                       "FA_3_Przykład_22.xml",
                                                       "FA_3_Przykład_23.xml",
