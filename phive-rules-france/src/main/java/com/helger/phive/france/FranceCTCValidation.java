@@ -20,6 +20,7 @@ import org.jspecify.annotations.NonNull;
 
 import com.helger.annotation.concurrent.Immutable;
 import com.helger.base.enforce.ValueEnforcer;
+import com.helger.cii.d22b.CCIID22B;
 import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.io.resource.ClassPathResource;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
@@ -28,6 +29,8 @@ import com.helger.phive.rules.api.PhiveRulesCIIHelper;
 import com.helger.phive.rules.api.PhiveRulesHelper;
 import com.helger.phive.rules.api.PhiveRulesUBLHelper;
 import com.helger.phive.xml.source.IValidationSourceXML;
+import com.helger.phive.xml.xsd.ValidationExecutorXSD;
+import com.helger.ubl21.UBL21Marshaller;
 
 /**
  * France CTC validation configuration
@@ -40,13 +43,25 @@ public final class FranceCTCValidation
   public static final String GROUP_ID = "fr.ctc";
 
   // v0.1
+  @Deprecated
   public static final DVRCoordinate VID_FR_CTC_UBL_INV_0_1 = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                                 "ubl-invoice",
                                                                                                 "0.1");
+  @Deprecated
   public static final DVRCoordinate VID_FR_CTC_UBL_CN_0_1 = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                                "ubl-creditnote",
                                                                                                "0.1");
+  @Deprecated
   public static final DVRCoordinate VID_FR_CTC_CII_0_1 = PhiveRulesHelper.createCoordinate (GROUP_ID, "cii", "0.1");
+
+  // v1.2.0
+  public static final DVRCoordinate VID_FR_CTC_UBL_INV_1_2_0 = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                  "ubl-invoice",
+                                                                                                  "1.2.0");
+  public static final DVRCoordinate VID_FR_CTC_UBL_CN_1_2_0 = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                 "ubl-creditnote",
+                                                                                                 "1.2.0");
+  public static final DVRCoordinate VID_FR_CTC_CII_1_2_0 = PhiveRulesHelper.createCoordinate (GROUP_ID, "cii", "1.2.0");
 
   private FranceCTCValidation ()
   {}
@@ -67,7 +82,8 @@ public final class FranceCTCValidation
   {
     ValueEnforcer.notNull (aRegistry, "Registry");
 
-    final boolean bNotDeprecated = false;
+    final boolean bDeprecated = true;
+    final boolean bNotDeprecated = !bDeprecated;
 
     final String sPrefix = "/external/schematron/ctc/";
 
@@ -77,23 +93,55 @@ public final class FranceCTCValidation
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_FR_CTC_UBL_INV_0_1,
                                                                              "France CTC Invoice " +
                                                                                                      VID_FR_CTC_UBL_INV_0_1.getVersionString (),
-                                                                             PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
+                                                                             PhiveRulesHelper.createSimpleStatus (bDeprecated),
+                                                                             ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
                                                                              PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix0 +
                                                                                                                                           "20250731_BR-FR-Flux2-Schematron-UBL_V0.1.xslt",
                                                                                                                                           _getCL ()))));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_FR_CTC_UBL_CN_0_1,
                                                                              "France CTC Credit Note " +
                                                                                                     VID_FR_CTC_UBL_CN_0_1.getVersionString (),
-                                                                             PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
+                                                                             PhiveRulesHelper.createSimpleStatus (bDeprecated),
+                                                                             ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
                                                                              PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix0 +
                                                                                                                                           "20250731_BR-FR-Flux2-Schematron-UBL_V0.1.xslt",
                                                                                                                                           _getCL ()))));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_FR_CTC_CII_0_1,
                                                                              "France CTC CII " +
                                                                                                  VID_FR_CTC_CII_0_1.getVersionString (),
-                                                                             PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
-                                                                             PhiveRulesCIIHelper.createXSLT_CII_D16B (new ClassPathResource (sPrefix0 +
+                                                                             PhiveRulesHelper.createSimpleStatus (bDeprecated),
+                                                                             ValidationExecutorXSD.create (CCIID22B.getXSDResource ()),
+                                                                             PhiveRulesCIIHelper.createXSLT_CII_D22B (new ClassPathResource (sPrefix0 +
                                                                                                                                              "20250731_BR-FR-Flux2-Schematron-CII_V0.1.xslt",
+                                                                                                                                             _getCL ()))));
+    }
+
+    // CTC 1.2.0
+    {
+      final String sPrefix0 = sPrefix + "1.2.0/xslt/";
+      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_FR_CTC_UBL_INV_1_2_0,
+                                                                             "France CTC Invoice " +
+                                                                                                       VID_FR_CTC_UBL_INV_1_2_0.getVersionString (),
+                                                                             PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
+                                                                             ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
+                                                                             PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix0 +
+                                                                                                                                          "20251114_BR-FR-Flux2-Schematron-UBL_V1.2.0.xslt",
+                                                                                                                                          _getCL ()))));
+      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_FR_CTC_UBL_CN_1_2_0,
+                                                                             "France CTC Credit Note " +
+                                                                                                      VID_FR_CTC_UBL_CN_1_2_0.getVersionString (),
+                                                                             PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
+                                                                             ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
+                                                                             PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix0 +
+                                                                                                                                          "20251114_BR-FR-Flux2-Schematron-UBL_V1.2.0.xslt",
+                                                                                                                                          _getCL ()))));
+      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_FR_CTC_CII_1_2_0,
+                                                                             "France CTC CII " +
+                                                                                                   VID_FR_CTC_CII_1_2_0.getVersionString (),
+                                                                             PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
+                                                                             ValidationExecutorXSD.create (CCIID22B.getXSDResource ()),
+                                                                             PhiveRulesCIIHelper.createXSLT_CII_D22B (new ClassPathResource (sPrefix0 +
+                                                                                                                                             "20251114_BR-FR-Flux2-Schematron-CII_V1.2.0.xslt",
                                                                                                                                              _getCL ()))));
     }
   }

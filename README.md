@@ -221,6 +221,9 @@ I hope that with the introduction of PINT, the versioning problem will be solved
 
 # News and noteworthy
 
+v4.1.1 - work in progress
+* Added support for France CTC 1.2.0 validation rules and deprecated rules v0.1
+
 v4.1.0 - 2025-11-16
 * Updated to ph-commons 12.1.0
 * Using JSpecify annotations

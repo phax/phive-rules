@@ -59,8 +59,14 @@
       <artifactId>phive-rules-api</artifactId>
     </dependency>
     <dependency>
-      <groupId>com.helger.phive.rules</groupId>
-      <artifactId>phive-rules-en16931</artifactId>
+      <groupId>com.helger.ubl</groupId>
+      <artifactId>ph-ubl21</artifactId>
+      <version>${ph-ubl.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.helger.cii</groupId>
+      <artifactId>ph-cii-d22b</artifactId>
+      <version>${ph-cii.version}</version>
     </dependency>
 
     <dependency>
@@ -107,9 +113,9 @@
             </goals>
             <id>ublbe</id>
             <configuration>
-              <schematronDirectory>${basedir}/src/test/resources/external/rule-source/ctc/0.1</schematronDirectory>
+              <schematronDirectory>${basedir}/src/test/resources/external/rule-source/ctc/1.2.0</schematronDirectory>
               <schematronPattern>*.sch</schematronPattern>
-              <xsltDirectory>${basedir}/src/main/resources/external/schematron/ctc/0.1/xslt</xsltDirectory>
+              <xsltDirectory>${basedir}/src/main/resources/external/schematron/ctc/1.2.0/xslt</xsltDirectory>
             </configuration>
           </execution>
        -->

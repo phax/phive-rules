@@ -51,7 +51,11 @@ public final class CTestFiles
     final ICommonsList <PhiveTestFile> ret = new CommonsArrayList <> ();
     for (final DVRCoordinate aVESID : new DVRCoordinate [] { FranceCTCValidation.VID_FR_CTC_UBL_INV_0_1,
                                                              FranceCTCValidation.VID_FR_CTC_UBL_CN_0_1,
-                                                             FranceCTCValidation.VID_FR_CTC_CII_0_1 })
+                                                             FranceCTCValidation.VID_FR_CTC_CII_0_1,
+
+                                                             FranceCTCValidation.VID_FR_CTC_UBL_INV_1_2_0,
+                                                             FranceCTCValidation.VID_FR_CTC_UBL_CN_1_2_0,
+                                                             FranceCTCValidation.VID_FR_CTC_CII_1_2_0 })
       for (final IReadableResource aRes : getAllMatchingTestFiles (aVESID))
       {
         assertTrue ("Not existing test file: " + aRes.getPath (), aRes.exists ());
@@ -71,6 +75,14 @@ public final class CTestFiles
     if (aVESID.equals (FranceCTCValidation.VID_FR_CTC_UBL_INV_0_1) ||
         aVESID.equals (FranceCTCValidation.VID_FR_CTC_UBL_CN_0_1) ||
         aVESID.equals (FranceCTCValidation.VID_FR_CTC_CII_0_1))
+    {
+      // No test files available
+      return new CommonsArrayList <> ();
+    }
+
+    if (aVESID.equals (FranceCTCValidation.VID_FR_CTC_UBL_INV_1_2_0) ||
+        aVESID.equals (FranceCTCValidation.VID_FR_CTC_UBL_CN_1_2_0) ||
+        aVESID.equals (FranceCTCValidation.VID_FR_CTC_CII_1_2_0))
     {
       // No test files available
       return new CommonsArrayList <> ();
