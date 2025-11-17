@@ -62,6 +62,9 @@ public final class FranceCTCValidation
                                                                                                  "ubl-creditnote",
                                                                                                  "1.2.0");
   public static final DVRCoordinate VID_FR_CTC_CII_1_2_0 = PhiveRulesHelper.createCoordinate (GROUP_ID, "cii", "1.2.0");
+  public static final DVRCoordinate VID_FR_CTC_CDAR_1_2_0 = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                               "cdar",
+                                                                                               "1.2.0");
 
   private FranceCTCValidation ()
   {}
@@ -139,9 +142,17 @@ public final class FranceCTCValidation
                                                                              "France CTC CII " +
                                                                                                    VID_FR_CTC_CII_1_2_0.getVersionString (),
                                                                              PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
-                                                                             ValidationExecutorXSD.create (CCIID22B.getXSDResource ()),
+                                                                             ValidationExecutorXSD.create (CCIID22B.getXSDResourceCII ()),
                                                                              PhiveRulesCIIHelper.createXSLT_CII_D22B (new ClassPathResource (sPrefix0 +
                                                                                                                                              "20251114_BR-FR-Flux2-Schematron-CII_V1.2.0.xslt",
+                                                                                                                                             _getCL ()))));
+      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_FR_CTC_CDAR_1_2_0,
+                                                                             "France CTC CDAR " +
+                                                                                                    VID_FR_CTC_CDAR_1_2_0.getVersionString (),
+                                                                             PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
+                                                                             ValidationExecutorXSD.create (CCIID22B.getXSDResourceCDAR ()),
+                                                                             PhiveRulesCIIHelper.createXSLT_CII_D22B (new ClassPathResource (sPrefix0 +
+                                                                                                                                             "20251114_BR-FR-CDV-Schematron-CDAR_V1.2.0.xslt",
                                                                                                                                              _getCL ()))));
     }
   }

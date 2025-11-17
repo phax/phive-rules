@@ -23,9 +23,11 @@ import org.jspecify.annotations.NonNull;
 import com.helger.annotation.concurrent.Immutable;
 import com.helger.annotation.style.ReturnsMutableCopy;
 import com.helger.base.enforce.ValueEnforcer;
+import com.helger.cii.testfiles.CDARTestFiles;
 import com.helger.collection.commons.CommonsArrayList;
 import com.helger.collection.commons.ICommonsList;
 import com.helger.diver.api.coord.DVRCoordinate;
+import com.helger.io.resource.ClassPathResource;
 import com.helger.io.resource.IReadableResource;
 import com.helger.phive.api.executorset.ValidationExecutorSetRegistry;
 import com.helger.phive.api.mock.PhiveTestFile;
@@ -55,7 +57,8 @@ public final class CTestFiles
 
                                                              FranceCTCValidation.VID_FR_CTC_UBL_INV_1_2_0,
                                                              FranceCTCValidation.VID_FR_CTC_UBL_CN_1_2_0,
-                                                             FranceCTCValidation.VID_FR_CTC_CII_1_2_0 })
+                                                             FranceCTCValidation.VID_FR_CTC_CII_1_2_0,
+                                                             FranceCTCValidation.VID_FR_CTC_CDAR_1_2_0 })
       for (final IReadableResource aRes : getAllMatchingTestFiles (aVESID))
       {
         assertTrue ("Not existing test file: " + aRes.getPath (), aRes.exists ());
@@ -86,6 +89,10 @@ public final class CTestFiles
     {
       // No test files available
       return new CommonsArrayList <> ();
+    }
+    if (aVESID.equals (FranceCTCValidation.VID_FR_CTC_CDAR_1_2_0))
+    {
+      return new CommonsArrayList <> (CDARTestFiles.D22B_FILES, ClassPathResource::new);
     }
 
     throw new IllegalArgumentException ("Invalid DVRCoordinate: " + aVESID);

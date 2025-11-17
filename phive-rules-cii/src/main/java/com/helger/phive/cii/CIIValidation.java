@@ -47,13 +47,15 @@ public final class CIIValidation
   public static final DVRCoordinate VID_CII_D22B_CROSSINDUSTRYINVOICE = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                                            "crossindustryinvoice",
                                                                                                            VERSION_D22B);
+  public static final DVRCoordinate VID_CII_D22B_CDAR = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                           "cdar",
+                                                                                           VERSION_D22B);
 
   private CIIValidation ()
   {}
 
   /**
-   * Register all supported CII validation execution sets to the provided
-   * registry.
+   * Register all supported CII validation execution sets to the provided registry.
    *
    * @param aRegistry
    *        The registry to add the artefacts to. May not be <code>null</code>.
@@ -66,8 +68,7 @@ public final class CIIValidation
   }
 
   /**
-   * Register all standard CII D16B validation execution sets to the provided
-   * registry.
+   * Register all standard CII D16B validation execution sets to the provided registry.
    *
    * @param aRegistry
    *        The registry to add the artefacts to. May not be <code>null</code>.
@@ -86,8 +87,7 @@ public final class CIIValidation
   }
 
   /**
-   * Register all standard CII D22B validation execution sets to the provided
-   * registry.
+   * Register all standard CII D22B validation execution sets to the provided registry.
    *
    * @param aRegistry
    *        The registry to add the artefacts to. May not be <code>null</code>.
@@ -103,6 +103,11 @@ public final class CIIValidation
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_CII_D22B_CROSSINDUSTRYINVOICE,
                                                                            "CII CrossIndustryInvoice " + VERSION_D22B,
                                                                            PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
-                                                                           ValidationExecutorXSD.create (CCIID22B.getXSDResource ())));
+                                                                           ValidationExecutorXSD.create (CCIID22B.getXSDResourceCII ())));
+
+    aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_CII_D22B_CDAR,
+                                                                           "CDAR " + VERSION_D22B,
+                                                                           PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
+                                                                           ValidationExecutorXSD.create (CCIID22B.getXSDResourceCDAR ())));
   }
 }
