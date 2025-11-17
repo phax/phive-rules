@@ -16,6 +16,7 @@ This project is divided into sub-projects each keeping tracking of one document 
 * phive-rules-ehf - Validation rules for Norwegian EHF (Norwegian public procurement)
 * phive-rules-en16931 - Validation rules for the EN 16931 (European e-Invoicing norm based on CEN TC 434)
 * phive-rules-energieefactuur - Validation rules for Dutch Energie eFactuur
+* phive-rules-eracun - Validation rules for Croatian eRacun (since v4.1.11)
 * phive-rules-facturae - Validation rules for the Spanish Facturae (since v1.0.11)
 * phive-rules-fatturapa - Validation rules for Italian fattura PA (since v1.0.4)
 * phive-rules-finvoice - Validation rules for Finvoice (since v1.0.6)
@@ -83,6 +84,12 @@ Add the following to your `pom.xml` to use this artifact, replacing `x.y.z` with
 <dependency>
   <groupId>com.helger.phive.rules</groupId>
   <artifactId>phive-rules-energieefactuur</artifactId>
+  <version>x.y.z</version>
+</dependency>
+
+<dependency>
+  <groupId>com.helger.phive.rules</groupId>
+  <artifactId>phive-rules-eracun</artifactId>
   <version>x.y.z</version>
 </dependency>
 
@@ -225,6 +232,7 @@ v4.1.1 - work in progress
 * Added support for CDAR D22B XML Schema
 * Added support for France CTC 1.2.0 validation rules and deprecated rules v0.1 (on UBL, CII and CDAR)
 * Added support for EN 16931 rules v1.3.15 format and deprecated v1.3.13
+* Added support for Croatian eRacun v1.0.0 rules 
 
 v4.1.0 - 2025-11-16
 * Updated to ph-commons 12.1.0

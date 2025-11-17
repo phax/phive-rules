@@ -144,6 +144,11 @@
       </dependency>
       <dependency>
         <groupId>com.helger.phive.rules</groupId>
+        <artifactId>phive-rules-eracun</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.helger.phive.rules</groupId>
         <artifactId>phive-rules-energieefactuur</artifactId>
         <version>${project.version}</version>
       </dependency>
@@ -256,6 +261,7 @@
     <module>phive-rules-cius-ro</module>
     <module>phive-rules-ebinterface</module>
     <module>phive-rules-ehf</module>
+    <module>phive-rules-eracun</module>
     <module>phive-rules-facturae</module>
     <module>phive-rules-fatturapa</module>
     <module>phive-rules-finvoice</module>
