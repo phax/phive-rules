@@ -308,7 +308,6 @@
           </execution>
           -->
           <!--
-          -->
           <execution>
             <id>reporting-tdd-ae</id>
             <goals>
@@ -319,6 +318,7 @@
               <xsltDirectory>src/main/resources/external/schematron/tdd/ae/xslt</xsltDirectory>
             </configuration>
           </execution>
+          -->
         </executions>
       </plugin>
     </plugins>
