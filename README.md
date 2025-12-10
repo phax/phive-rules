@@ -232,6 +232,7 @@ v4.1.2 - work in progress
 * Added support for Peppol AE Tax Data Document v1.0.0. See [#43](https://github.com/phax/phive-rules/issues/43)
 * Added support for ZuGFERD 2.4 - all profiles (XML only). See [#44](https://github.com/phax/phive-rules/issues/44)
 * Deprected ZuGFERD 2.3.2 version
+* Added OIOUBL 1.16.1 rules. See [#42](https://github.com/phax/phive-rules/issues/42) - thx @NielsenEDI
 
 v4.1.1 - 2025-11-18
 * Added support for CDAR D22B XML Schema

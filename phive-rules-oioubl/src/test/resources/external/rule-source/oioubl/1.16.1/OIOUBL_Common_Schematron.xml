@@ -1,0 +1,1439 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+******************************************************************************************************************
+
+		OIOUBL Schematron
+
+		publisher:          NemHandel / Erhvervsstyrelsen
+        Repository path:    $HeadURL$
+        File version:       $Revision$
+        Last changed by:    $Author$
+        Last changed date:  $Date$
+
+		Description:        This document is produced as part of the OIOUBL schematron package
+		Rights:             It can be used following the Common Creative Licence
+
+		all terms derived from http://dublincore.org/documents/dcmi-terms/
+
+		For more information, see www.oioubl.info or email support@nemhandel.dk
+
+
+Revisionlog
+***********
+Ver 1.13.0 Dev
+- NH-sag: Opdatering af alle OIOUBL XSL’er til ver. 2.0, samt konsekvens rettelser grundet opdatering til XLS 2.0 (Rettelser ikke udspecificeret i de enkle rettelser below )
+
+******************************************************************************************************************
+-->
+
+<sch:pattern xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:sch="http://purl.oclc.org/dsdl/schematron" name="AbstractRules" id="abstracts">
+    <!-- - - - - - - - - - - -  Common OIOUBL rules (LIB308) - - - - - - - - - - -  -->
+    <sch:p>Pattern for storing abstract rules</sch:p>
+
+    <!-- [Release 20120615] Check added according to issue: https://bugs.softwareborsen.dk/show_bug.cgi?id=934 -->
+    <!-- Rule to validate UBLExtensions -->
+    <sch:rule abstract="true" id="UBLExtensionsCheck">
+        <sch:report
+            test="ext:UBLExtensions/ext:UBLExtension/ext:ExtensionAgencyID = 'Digitaliseringsstyrelsen' and (ext:UBLExtensions/ext:UBLExtension/cbc:ID &lt; '1001' or ext:UBLExtensions/ext:UBLExtension/cbc:ID &gt; '1999')"
+            >[F-LIB313] Invalid UBLExtension/ID when UBLExtension/ExtensionAgencyID is equal to 'Digitaliseringsstyrelsen'. ID must be an assigned value between '1001' and '1999'.</sch:report>
+    </sch:rule>
+
+    <!-- Rule to validate UBLVersionID -->
+    <sch:rule abstract="true" id="UBLVersionIDCheck">
+        <sch:assert test="cbc:UBLVersionID = '2.0' or cbc:UBLVersionID = '2.1'">[F-LIB001] Invalid UBLVersionID. Must be '2.0' or '2.1'</sch:assert>
+    </sch:rule>
+
+    <!-- Rule to validate CustomizationID -->
+    <sch:rule abstract="true" id="CustomizationIDCheck">
+        <sch:assert test="cbc:CustomizationID = 'OIOUBL-2.01' or cbc:CustomizationID = 'OIOUBL-2.02' or cbc:CustomizationID = 'OIOUBL-2.1'"
+            >[F-LIB002]Invalid CustomizationID. Must be either 'OIOUBL-2.01', 'OIOUBL-2.02' or 'OIOUBL-2.1'</sch:assert>
+    </sch:rule>
+
+    <sch:rule abstract="true" id="CustomizationIDCheckUTS">
+        <sch:assert test="cbc:CustomizationID = 'OIOUBL-2.1'">[F-LIB260]Invalid CustomizationID. Must be 'OIOUBL-2.1'</sch:assert>
+    </sch:rule>
+
+    <!-- Rule to validate ProfileID -->
+    <sch:rule abstract="true" id="ProfileIDCheck">
+        <!-- [Release 20140915] Added new profile according to issue: https://bugs.softwareborsen.dk/show_bug.cgi?id=1364,  -->
+        <!-- [Release 20150915] Added new profile according to issue: https://bugs.softwareborsen.dk/show_bug.cgi?id=1495,  -->
+        <sch:assert
+            test="cbc:ProfileID/@schemeID = $Profile1_schemeID or cbc:ProfileID/@schemeID = $Profile2_schemeID or cbc:ProfileID/@schemeID = $Profile3_schemeID or cbc:ProfileID/@schemeID = $Profile4_schemeID or cbc:ProfileID/@schemeID = $Profile5_schemeID or cbc:ProfileID/@schemeID = $Profile6_schemeID"
+                >[W-LIB003] Invalid schemeID. Must be '<sch:value-of select="$Profile1_schemeID" />' or '<sch:value-of select="$Profile2_schemeID" />' or '<sch:value-of select="$Profile3_schemeID"
+                 />' or '<sch:value-of select="$Profile4_schemeID" />' or '<sch:value-of select="$Profile5_schemeID" />' or '<sch:value-of select="$Profile6_schemeID" />'</sch:assert>
+        <sch:assert test="cbc:ProfileID/@schemeAgencyID = $Profile1_agencyID">[W-LIB203] Invalid schemeAgencyID. Must be '<sch:value-of select="$Profile1_agencyID" />'</sch:assert>
+        <sch:report test="cbc:ProfileID/@schemeID = $Profile1_schemeID and not(contains($Profile1, concat(',', cbc:ProfileID, ',')))">[F-LIB004] Invalid ProfileID: '<sch:value-of
+                select="cbc:ProfileID" />'. Must be a value from the codelist</sch:report>
+        <sch:report test="cbc:ProfileID/@schemeID = $Profile2_schemeID and not(contains($Profile2, concat(',', cbc:ProfileID, ',')))">[F-LIB302] Invalid ProfileID: '<sch:value-of
+                select="cbc:ProfileID" />'. Must be a value from the codelist</sch:report>
+        <sch:report test="cbc:ProfileID/@schemeID = $Profile3_schemeID and not(contains($Profile3, concat(',', cbc:ProfileID, ',')))">[F-LIB308] Invalid ProfileID: '<sch:value-of
+                select="cbc:ProfileID" />'. Must be a value from the codelist</sch:report>
+        <!-- [Release 20140915] Added new profile according to issue: https://bugs.softwareborsen.dk/show_bug.cgi?id=1364,  -->
+        <sch:report test="cbc:ProfileID/@schemeID = $Profile4_schemeID and not(contains($Profile4, concat(',', cbc:ProfileID, ',')))">[F-LIB325] Invalid ProfileID: '<sch:value-of
+                select="cbc:ProfileID" />'. Must be a value from the codelist</sch:report>
+        <!-- [Release 20150915] Added new profile according to issue: https://bugs.softwareborsen.dk/show_bug.cgi?id=1495,  -->
+        <sch:report test="cbc:ProfileID/@schemeID = $Profile5_schemeID and not(contains($Profile5, concat(',', cbc:ProfileID, ',')))">[F-LIB327] Invalid ProfileID: '<sch:value-of
+                select="cbc:ProfileID" />'. Must be a value from the codelist</sch:report>
+
+        <sch:report test="cbc:ProfileID/@schemeID = $Profile6_schemeID and not(contains($Profile6, concat(',', cbc:ProfileID, ',')))">[F-LIB351] Invalid ProfileID: '<sch:value-of
+                select="cbc:ProfileID" />'. Must be a value from the codelist</sch:report>
+        <!-- Validate that the different profiles, is only used in the desired document typee. like a Catalogue can not be sendt in a Procurement-Bil-Sim profile -->
+        <!-- Variables -->
+        <sch:let name="Profile" value="cbc:ProfileID" />
+        <sch:let name="Document" value="local-name(/*)" />
+        <sch:report test="($Profile = 'Procurement-OrdRes-1.0') and not($Document = 'OrderResponse')">[F-LIB328] The profile '<sch:value-of select="$Profile"
+                 />' is not allowed in the document type '<sch:value-of select="$Document" />'</sch:report>
+        <sch:report test="($Profile = 'Procurement-BilSimReminderOnly-1.0') and not($Document = 'Reminder')">[F-LIB352] The profile '<sch:value-of select="$Profile"
+                 />' is not allowed in the document type '<sch:value-of select="$Document" />'</sch:report>
+    </sch:rule>
+
+    <!-- Rule to validate UUID -->
+    <sch:rule abstract="true" id="UUIDCheck">
+        <sch:assert test="string-length(string(.)) = 36">[F-LIB006] Invalid <sch:name />. Must be of this form '6E09886B-DC6E-439F-82D1-7CCAC7F4E3B1'</sch:assert>
+    </sch:rule>
+
+    <!-- Rule to validate CurrencyCode -->
+    <sch:rule abstract="true" id="CurrencyCodeCheck">
+        <sch:report test="./@listID and ./@listID != $CurrencyCode_listID">[F-LIB296] Invalid listID. Must be '<sch:value-of select="$CurrencyCode_listID" />'</sch:report>
+        <sch:report test="./@listAgencyID and ./@listAgencyID != $CurrencyCode_agencyID">[F-LIB297] Invalid listAgencyID. Must be '<sch:value-of select="$CurrencyCode_agencyID" />'</sch:report>
+        <sch:assert test="contains($CurrencyCode, concat(',', ., ','))">[F-LIB298] Invalid CurrencyCode: '<sch:value-of select="." />'. Must be a value from the codelist</sch:assert>
+    </sch:rule>
+
+    <!-- Rule to validate CountryCode -->
+    <sch:rule abstract="true" id="CountryCodeCheck">
+        <!--<sch:report test="cac:Country/cbc:IdentificationCode/@listID and cac:Country/cbc:IdentificationCode/@listID != $CountryCode_listID">[F-LIB299] Invalid listID. Must be '<sch:value-of select="$CountryCode_listID"/>'</sch:report>-->
+        <!--<sch:report test="cac:Country/cbc:IdentificationCode/@listAgencyID and cac:Country/cbc:IdentificationCode/@listAgencyID != $CountryCode_agencyID">[F-LIB300] Invalid listAgencyID. Must be '<sch:value-of select="$CountryCode_agencyID"/>'</sch:report>-->
+        <!-- [Release 20130315] Check changed according to issue: https://bugs.softwareborsen.dk/show_bug.cgi?id=945 -->
+        <sch:report test="cac:Country/cbc:IdentificationCode and not(contains($CountryCode, concat(',', cac:Country/cbc:IdentificationCode, ',')))"
+                >[F-LIB301] Invalid Country/IdentificationCode: '<sch:value-of select="cac:Country/cbc:IdentificationCode" />'. Must be a value from the codelist</sch:report>
+    </sch:rule>
+
+    <!-- Rule to validate unitCode -->
+    <sch:rule abstract="true" id="unitCodeCheck">
+        <sch:report test="not(./@unitCode)">[F-LIB007] Attribute unitCode must be used for <sch:name />
+        </sch:report>
+        <sch:assert test="string-length(./@unitCode) &gt; 1">[W-LIB008] The value of unitCode attribute should be a valid UOM measure</sch:assert>
+        <!-- [Release 20130315] Check added according to issue: https://bugs.softwareborsen.dk/show_bug.cgi?id=964 -->
+        <sch:assert test="contains($Quantity_unitCode, concat(',', ./@unitCode, ','))">[F-LIB318] Invalid unitCode: '<sch:value-of select="./@unitCode"
+             />'. Must be a value from the codelist urn:un:unece:uncefact:codelist:specification:66411:2001.</sch:assert>
+    </sch:rule>
+
+    <!-- Rule to validate Note (languageID) -->
+    <sch:rule abstract="true" id="NoteCheck">
+        <sch:report test="count(../cbc:Note) &gt; 1 and not(./@languageID)">[W-LIB011] The attribute languageID should be used when more than one <sch:name /> element is present</sch:report>
+        <sch:report test="following-sibling::*/@languageID = self::*/@languageID">[W-LIB012] Multilanguage error. Replicated <sch:name /> elements with same languageID attribute value</sch:report>
+    </sch:rule>
+
+    <!-- Rule to validate Description (languageID) -->
+    <!-- Not in use [060123] -->
+    <sch:rule abstract="true" id="DescriptionLanguageCheck">
+        <sch:report test="count(../cbc:Description) &gt; 1 and not(./@languageID)">[W-LIB222] The attribute languageID should be used when more than one Description element is present</sch:report>
+        <sch:report test="following-sibling::*/@languageID = self::*/@languageID">[W-LIB223] Multilanguage error. Replicated Description elements with same languageID '<xsl:value-of
+                select="@languageID" />' attribute value</sch:report>
+    </sch:rule>
+
+    <!-- Rule to validate the use of languageID on Description -->
+    <!-- [Prepeared - Not Released] - To correct problems with reporting false error when using languageID on other elements that Description -->
+    <sch:rule abstract="true" id="DescriptionLanguageCheckNew">
+
+        <!-- NH-3431 [060123] -->
+        <sch:report test="count(cbc:Description) &gt; 1 and not(xs:int(count(cbc:Description) = xs:int(count(cbc:Description/@languageID))))"
+            >[W-LIB222] The attribute languageID should be used when more than one Description element is present</sch:report>
+
+        <xsl:for-each-group select="cbc:Description" group-by="@languageID">
+
+            <xsl:if test="count(current-group()) &gt; 1">
+                <Error>
+                    <xsl:attribute name="context">
+                        <xsl:value-of select="concat(name(parent::*), '/', name())" />
+                    </xsl:attribute>
+                    <Pattern>count(current-group()) &gt; 1</Pattern>
+                    <Description>[W-LIB223] Multilanguage error. Replicated Description elements with same languageID attribute value '<xsl:value-of select="@languageID" />'</Description>
+                    <Xpath>
+                        <xsl:for-each select="ancestor-or-self::*">/<xsl:value-of select="name()" />[<xsl:value-of select="count(preceding-sibling::*[name(.) = name(current())]) + 1"
+                             />]</xsl:for-each>
+                    </Xpath>
+                </Error>
+            </xsl:if>
+        </xsl:for-each-group>
+
+    </sch:rule>
+
+
+    <!-- Rule to validate that a number start with a decimal ( .00, .50 is invalid, should be 0.00 or 0.50) -->
+    <!-- [Release 20140915] Rule added according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=1199 -->
+    <sch:rule abstract="true" id="PrecedingDecCheck">
+        <!-- [Release 20140915] Rule added according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=1199 -->
+        <!-- The validation rule was remove again, as 4 to 5 procent of documents failed   -->
+        <!-- <sch:report test="starts-with(.,'.')">[F-LIB324] Invalid <sch:name/>. Must begin with a decimal</sch:report> -->
+    </sch:rule>
+
+    <!-- [Release 20140915] Rule added according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=1199 -->
+    <!-- Select all nodes, that have a currencyID attribute, and apply the PrecedingDecCheck -->
+    <sch:rule context="//*[@currencyID]">
+        <sch:extends rule="PrecedingDecCheck" />
+    </sch:rule>
+
+    <!-- Rule to validate Positive number not zero, and two decimals -->
+    <sch:rule abstract="true" id="PosZeroDecNumberCheck">
+        <sch:assert test="not(starts-with(., '-')) and . != 0">[F-LIB013] Invalid <sch:name />. Must not be negative or zero</sch:assert>
+        <sch:extends rule="DecNumberCheck" />
+    </sch:rule>
+
+    <!-- Rule to validate Positive number not zero, and two decimals -->
+    <!-- [Release 20190315] Added http://bugs.softwareborsen.dk/show_bug.cgi?id=2010  -->
+    <sch:rule abstract="true" id="PosZeroDecNumberOrConvertedCheck">
+        <sch:assert test="(not(starts-with(., '-')) and . != 0) or (/*/cac:AdditionalDocumentReference/cbc:DocumentTypeCode[@listAgencyName = 'ERST'] = 'PEPPOLBIS32OIOUBL')"
+            >[F-LIB374] Invalid <sch:name />. Must not be negative or zero, unless it has been converted from PEPPOL BIS3</sch:assert>
+        <sch:extends rule="DecNumberCheck" />
+    </sch:rule>
+
+    <!-- Rule to validate number not zero, and two decimals -->
+    <sch:rule abstract="true" id="ZeroDecNumberCheck">
+        <sch:assert test=". != 0">[F-LIB303] Invalid <sch:name />. Must not be zero</sch:assert>
+        <!-- [Release 20140915] Changing check according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=1309 -->
+        <!-- sch:report test="string-length(substring-after(., '.')) != 2">[F-LIB304] Invalid <sch:name/>. Must have 2 decimals</sch:report -->
+        <sch:extends rule="DecNumberCheck" />
+    </sch:rule>
+
+    <!-- Rule to validate Positive number, and two decimals -->
+    <sch:rule abstract="true" id="PosDecNumberCheck">
+        <sch:assert test="not(starts-with(., '-'))">[F-LIB016] Invalid <sch:name />. Must not be negative</sch:assert>
+        <!-- [Release 20140915] Changing check according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=1309 -->
+        <!-- sch:report test="string-length(substring-after(., '.')) != 2">[F-LIB017] Invalid <sch:name/>. Must have 2 decimals</sch:report -->
+        <sch:extends rule="DecNumberCheck" />
+    </sch:rule>
+
+    <!-- [Release 20190315] Added http://bugs.softwareborsen.dk/show_bug.cgi?id=2010  -->
+    <sch:rule abstract="true" id="PosDecNumberOrConvertedCheck">
+        <sch:assert test="not(starts-with(., '-')) or (/*/cac:AdditionalDocumentReference/cbc:DocumentTypeCode[@listAgencyName = 'ERST'] = 'PEPPOLBIS32OIOUBL')"
+            >[F-LIB375] Invalid <sch:name />. Must not be negative, unless it has been converted from PEPPOL BIS3</sch:assert>
+        <!-- [Release 20140915] Changing check according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=1309 -->
+        <!-- sch:report test="string-length(substring-after(., '.')) != 2">[F-LIB017] Invalid <sch:name/>. Must have 2 decimals</sch:report -->
+        <sch:extends rule="DecNumberCheck" />
+    </sch:rule>
+
+    <!-- Rule to validate Positive number not zero -->
+    <sch:rule abstract="true" id="PosZeroNumberCheck">
+        <sch:assert test="not(starts-with(., '-')) and . != 0">[F-LIB019] Invalid <sch:name />. Must not be negative or zero</sch:assert>
+    </sch:rule>
+
+    <!-- [Release 20190315] Added http://bugs.softwareborsen.dk/show_bug.cgi?id=2010  -->
+    <sch:rule abstract="true" id="PosZeroNumberOrConvertedCheck">
+        <sch:assert test="(not(starts-with(., '-')) and . != 0) or (/*/cac:AdditionalDocumentReference/cbc:DocumentTypeCode[@listAgencyName = 'ERST'] = 'PEPPOLBIS32OIOUBL')"
+            >[F-LIB376] Invalid <sch:name />. Must not be negative or zero, unless it has been converted from PEPPOL BIS3</sch:assert>
+    </sch:rule>
+
+    <sch:rule abstract="true" id="NumberCheck">
+        <!-- ??? check that we can format it to a number, and it does not start with '.' like '.50' where '0.50' should have been used. ??? -->
+    </sch:rule>
+
+    <!-- [Release 20120615] Rule added according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=927 -->
+    <!-- Rule to validate number not zero -->
+    <sch:rule abstract="true" id="ZeroNumberCheck">
+        <sch:assert test=". != 0">[F-LIB317] Invalid <sch:name />. Must not be zero</sch:assert>
+    </sch:rule>
+
+    <!-- Rule to validate Positive number -->
+    <sch:rule abstract="true" id="PosNumberCheck">
+        <sch:assert test="not(starts-with(., '-'))">[F-LIB020] Invalid <sch:name />. Must not be negative</sch:assert>
+    </sch:rule>
+
+    <!-- [Release 20140915] Changing check according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=1309 -->
+    <!-- Rule to validate number two decimals -->
+    <sch:rule abstract="true" id="DecNumberCheck">
+        <sch:extends rule="NumberCheck" />
+        <!-- [Release 20140915] Changing check according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=1309 -->
+        <sch:report test="string-length(substring-after(., '.')) != 2">[F-LIB014] Invalid <sch:name />. Must have 2 decimals</sch:report>
+    </sch:rule>
+
+    <!-- Rule to validate AccountingCost -->
+    <sch:rule abstract="true" id="AccountingCostCheck">
+        <sch:report test="cbc:AccountingCost and cbc:AccountingCostCode">[F-LIB021] Use either AccountingCost or AccountingCostCode</sch:report>
+    </sch:rule>
+
+    <!-- Rule to validate PartyName -->
+    <sch:rule abstract="true" id="PartyNameCheck">
+        <sch:report test="(not(cac:PartyIdentification) or cac:PartyIdentification/cbc:ID = '') and (not(cac:PartyName) or cac:PartyName/cbc:Name = '')"
+            >[F-LIB022] PartyName/Name is mandatory if PartyIdentification/ID is not found</sch:report>
+    </sch:rule>
+
+    <!-- Rule to validate PartyName (languageID) -->
+    <sch:rule abstract="true" id="PartyNameLanguageCheck">
+        <sch:report test="count(../cac:PartyName) &gt; 1 and not(./cbc:Name/@languageID)"
+            >[W-LIB219] The attribute Name@languageID should be used when more than one PartyName class is present</sch:report>
+        <sch:report test="following-sibling::*/cbc:Name/@languageID = self::*/cbc:Name/@languageID"
+            >[W-LIB220] Multilanguage error. Replicated PartyName classes with same Name@languageID attribute value</sch:report>
+    </sch:rule>
+
+    <!-- Rule to validate AddressID -->
+    <sch:rule abstract="true" id="AddressIDCheck">
+        <sch:report test="(not(cbc:ID) or cbc:ID = '') and (count(cac:Address) = 0)">[F-LIB221] If ID not specified, Address is mandatory</sch:report>
+    </sch:rule>
+
+    <!-- Rule to validate Contact -->
+    <sch:rule abstract="true" id="ContactCheck">
+        <!-- [Release 20150915] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=1555 -->
+        <sch:report
+            test="(not(cbc:ID) or cbc:ID = '') and (not(cbc:Name) or cbc:Name = '') and (not(cbc:Telephone) or cbc:Telephone = '') and (not(cbc:Telefax) or cbc:Telefax = '') and (not(cbc:ElectronicMail) or cbc:ElectronicMail = '') and (not(cbc:Note) or cbc:Note = '') and not(cac:OtherCommunication)"
+            >[F-LIB235] At least one field in the Contact class should be specified</sch:report>
+        <sch:report test="cac:OtherCommunication/cbc:ChannelCode and cac:OtherCommunication/cbc:Channel">[F-LIB236] Use either ChannelCode or Channel</sch:report>
+        <!-- [Release 20111201] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=623 -->
+        <sch:report test="cac:OtherCommunication/cbc:Value = ''">[F-LIB237] When Contact/OtherCommunication is used, the element Contact/OtherCommunication/Value must be filled out.</sch:report>
+
+    </sch:rule>
+
+
+
+    <!-- Rule to validate Person/FirstName -->
+    <sch:rule abstract="true" id="Person/FirstNameCheck">
+        <sch:report test="(not(cbc:FamilyName) or cbc:FamilyName = '') and (not(cbc:FirstName) or cbc:FirstName = '')"
+            >[F-LIB024] There must be a FirstName if the FamilyName is not present</sch:report>
+    </sch:rule>
+
+    <!-- Rule to validate Address -->
+    <sch:rule abstract="true" id="AddressCheck">
+        <!-- Check for excluded elements -->
+        <sch:assert test="count(cbc:BlockName) = 0">[F-LIB210] BlockName element must be excluded</sch:assert>
+        <sch:assert test="count(cbc:TimezoneOffset) = 0">[F-LIB211] TimezoneOffset element must be excluded</sch:assert>
+        <sch:assert test="count(cac:LocationCoordinate) = 0">[F-LIB212] LocationCoordinate class must be excluded</sch:assert>
+        <!-- Check for mandatory elements -->
+        <!-- [Release 20111201] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=623 -->
+        <sch:assert test="normalize-space(cbc:AddressFormatCode) != ''">[F-LIB025] Invalid AddressFormatCode. Must contain a value</sch:assert>
+        <!-- Validate -->
+        <sch:report test="cbc:AddressTypeCode and not(cbc:AddressTypeCode/@listID = 'urn:oioubl:codelist:addresstypecode-1.1')"
+            >[F-LIB204] Invalid listID. Must be 'urn:oioubl:codelist:addresstypecode-1.1'</sch:report>
+        <sch:report test="cbc:AddressTypeCode and not(cbc:AddressTypeCode/@listAgencyID = '320')">[F-LIB205] Invalid listAgencyID. Must be '320'</sch:report>
+        <sch:report test="cbc:AddressTypeCode and not(cbc:AddressTypeCode = 'Home' or cbc:AddressTypeCode = 'Business')"
+            >[F-LIB206] Invalid AddressTypeCode. Must be a value from the codelist</sch:report>
+        <sch:assert test="cbc:AddressFormatCode/@listID = 'urn:oioubl:codelist:addressformatcode-1.1' or cbc:AddressFormatCode/@listID = 'UN/ECE 3477'"
+            >[F-LIB026] Invalid listID. Must be either 'urn:oioubl:codelist:addressformatcode-1.1' or 'UN/ECE 3477'</sch:assert>
+        <sch:report test="cbc:AddressFormatCode/@listID = 'urn:oioubl:codelist:addressformatcode-1.1' and not(cbc:AddressFormatCode/@listAgencyID = '320')"
+            >[F-LIB207] Invalid listAgencyID. Must be '320'</sch:report>
+        <sch:report
+            test="cbc:AddressFormatCode/@listID = 'urn:oioubl:codelist:addressformatcode-1.1' and not(normalize-space(cbc:AddressFormatCode) = 'StructuredDK' or normalize-space(cbc:AddressFormatCode) = 'StructuredLax' or normalize-space(cbc:AddressFormatCode) = 'StructuredID' or normalize-space(cbc:AddressFormatCode) = 'StructuredRegion' or normalize-space(cbc:AddressFormatCode) = 'Unstructured')"
+            >[F-LIB027] Invalid AddressFormatCode. Must be a value from the codelist</sch:report>
+        <sch:report test="cbc:AddressFormatCode/@listID = 'UN/ECE 3477' and not(cbc:AddressFormatCode/@listAgencyID = '6')">[F-LIB208] Invalid listAgencyID. Must be '6'</sch:report>
+        <sch:report
+            test="cbc:AddressFormatCode/@listID = 'UN/ECE 3477' and not(cbc:AddressFormatCode = '1' or cbc:AddressFormatCode = '2' or cbc:AddressFormatCode = '3' or cbc:AddressFormatCode = '4' or cbc:AddressFormatCode = '5' or cbc:AddressFormatCode = '6' or cbc:AddressFormatCode = '7' or cbc:AddressFormatCode = '8' or cbc:AddressFormatCode = '9')"
+            >[F-LIB209] Invalid AddressFormatCode. Must be a value from the codelist</sch:report>
+        <sch:report test="cac:Country and not(cac:Country/cbc:IdentificationCode != '')">[F-LIB213] When Country is used, the element Country/IdentificationCode must be filled out</sch:report>
+        <sch:extends rule="UnstructuredCheck" />
+        <sch:extends rule="StructuredDKCheck" />
+        <sch:extends rule="StructuredLaxCheck" />
+        <sch:extends rule="StructuredIDCheck" />
+        <sch:extends rule="StructuredRegionCheck" />
+        <sch:report test="cbc:ID and not(string-length(cbc:ID/@schemeID) &gt; 0)">[F-LIB028] When ID is used under Address the attribute schemeID is used to give an addressregister</sch:report>
+        <sch:report test="cbc:ID and not(cbc:ID/@schemeID)">[F-LIB029] schemeID attribute must be present on an address ID</sch:report>
+        <!-- [Release 20150915] Check removed according to issue: https://bugs.softwareborsen.dk/show_bug.cgi?id=1424 -->
+        <!-- sch:report test="cbc:Postbox and not(number(cbc:Postbox)=((cbc:Postbox + 1)-1))">[F-LIB030] The value of Postbox must always be a number</sch:report -->
+        <!-- [Release 20130315] Check added according to issue: https://bugs.softwareborsen.dk/show_bug.cgi?id=945 -->
+        <sch:extends rule="CountryCodeCheck" />
+    </sch:rule>
+
+    <!-- Rule to validate Unstructured address -->
+    <sch:rule abstract="true" id="UnstructuredCheck">
+        <sch:report
+            test="(cbc:AddressFormatCode = 'Unstructured') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0 or count(cac:Country) != 0)"
+            >[F-LIB031] An Unstructured address is only allowed to have AddressLine elements</sch:report>
+    </sch:rule>
+
+    <!-- Rule to validate StructuredDK address -->
+    <sch:rule abstract="true" id="StructuredDKCheck">
+        <sch:report test="(cbc:AddressFormatCode = 'StructuredDK') and cac:AddressLine">[F-LIB032] AddressLine elements not allowed for a StructuredDK address type</sch:report>
+        <!-- [Release 20111201] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=623 -->
+        <sch:report test="(cbc:AddressFormatCode = 'StructuredDK') and (not(cbc:PostalZone) or normalize-space(cbc:PostalZone) = '')"
+            >[F-LIB033] PostalZone is mandatory for a StructuredDK address type</sch:report>
+        <!-- [Release 20111201] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=623 -->
+        <sch:report test="(cbc:AddressFormatCode = 'StructuredDK') and ((not(cbc:StreetName) or normalize-space(cbc:StreetName) = '') and (not(cbc:Postbox) or normalize-space(cbc:Postbox) = ''))"
+            >[F-LIB034] There should be either a StreetName or a Postbox for a StructuredDK address type</sch:report>
+        <!-- [Release 20111201] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=623 -->
+        <sch:report
+            test="(cbc:AddressFormatCode = 'StructuredDK') and ((not(cbc:BuildingNumber) or normalize-space(cbc:BuildingNumber) = '') and (not(cbc:Postbox) or normalize-space(cbc:Postbox) = ''))"
+            >[F-LIB035] There should be either a BuildingNumber or a Postbox for a StructuredDK address type</sch:report>
+    </sch:rule>
+
+    <!-- Rule to validate StructuredLax address -->
+    <sch:rule abstract="true" id="StructuredLaxCheck">
+        <sch:report test="(cbc:AddressFormatCode = 'StructuredLax') and cac:AddressLine">[F-LIB036] AddressLine elements not allowed for a StructuredLax address type</sch:report>
+    </sch:rule>
+
+    <!-- Rule to validate StructuredID address -->
+    <sch:rule abstract="true" id="StructuredIDCheck">
+        <sch:report test="(cbc:AddressFormatCode = 'StructuredID') and (not(cbc:ID) or cbc:ID = '')">[F-LIB037] ID is required for a StructuredID address type</sch:report>
+        <sch:report
+            test="(cbc:AddressFormatCode = 'StructuredID') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0 or count(cac:Country) != 0)"
+            >[F-LIB038] Only the ID is used for a StructuredID address type</sch:report>
+    </sch:rule>
+
+    <!-- Rule to validate StructuredRegion address -->
+    <sch:rule abstract="true" id="StructuredRegionCheck">
+        <sch:report
+            test="(cbc:AddressFormatCode = 'StructuredRegion') and ((not(cac:Country/cbc:IdentificationCode) or cac:Country/cbc:IdentificationCode = '') and (not(cbc:Region) or cbc:Region = '') and (not(cbc:District) or cbc:District = ''))"
+            >[F-LIB039] Region or District or Country/IdentificationCode is required for a StructuredRegion address type</sch:report>
+        <sch:report test="(cbc:AddressFormatCode = 'StructuredRegion') and (count(cbc:StreetName) != 0 or count(cbc:BuildingNumber) != 0 or count(cbc:CityName) != 0 or count(cbc:PostalZone) != 0)"
+            >[F-LIB040] Only Region, District, and/or Country/IdentificationCode can be used for a StructuredRegion address type</sch:report>
+    </sch:rule>
+
+    <!-- Rule to validate TaxScheme -->
+    <sch:rule abstract="true" id="TaxSchemeCheck">
+        <!-- Check for excluded elements -->
+        <sch:assert test="count(cac:JurisdictionRegionAddress/cbc:ID) = 0">[F-LIB041] ID element must be excluded</sch:assert>
+        <sch:assert test="count(cac:JurisdictionRegionAddress/cbc:AddressTypeCode) = 0">[F-LIB042] AddressTypeCode element must be excluded</sch:assert>
+        <sch:assert test="count(cac:JurisdictionRegionAddress/cbc:Postbox) = 0">[F-LIB043] Postbox element must be excluded</sch:assert>
+        <sch:assert test="count(cac:JurisdictionRegionAddress/cbc:Floor) = 0">[F-LIB044] Floor element must be excluded</sch:assert>
+        <sch:assert test="count(cac:JurisdictionRegionAddress/cbc:Room) = 0">[F-LIB045] Room element must be excluded</sch:assert>
+        <sch:assert test="count(cac:JurisdictionRegionAddress/cbc:StreetName) = 0">[F-LIB046] StreetName element must be excluded</sch:assert>
+        <sch:assert test="count(cac:JurisdictionRegionAddress/cbc:AdditionalStreetName) = 0">[F-LIB047] AdditionalStreetName element must be excluded</sch:assert>
+        <sch:assert test="count(cac:JurisdictionRegionAddress/cbc:BlockName) = 0">[F-LIB048] BlockName element must be excluded</sch:assert>
+        <sch:assert test="count(cac:JurisdictionRegionAddress/cbc:BuildingName) = 0">[F-LIB049] BuildingName element must be excluded</sch:assert>
+        <sch:assert test="count(cac:JurisdictionRegionAddress/cbc:BuildingNumber) = 0">[F-LIB050] BuildingNumber element must be excluded</sch:assert>
+        <sch:assert test="count(cac:JurisdictionRegionAddress/cbc:InhouseMail) = 0">[F-LIB051] InhouseMail element must be excluded</sch:assert>
+        <sch:assert test="count(cac:JurisdictionRegionAddress/cbc:Department) = 0">[F-LIB052] Department element must be excluded</sch:assert>
+        <sch:assert test="count(cac:JurisdictionRegionAddress/cbc:MarkAttention) = 0">[F-LIB053] MarkAttention element must be excluded</sch:assert>
+        <sch:assert test="count(cac:JurisdictionRegionAddress/cbc:MarkCare) = 0">[F-LIB054] MarkCare element must be excluded</sch:assert>
+        <sch:assert test="count(cac:JurisdictionRegionAddress/cbc:PlotIdentification) = 0">[F-LIB055] PlotIdentification element must be excluded</sch:assert>
+        <sch:assert test="count(cac:JurisdictionRegionAddress/cbc:CitySubdivisionName) = 0">[F-LIB056] CitySubdivisionName element must be excluded</sch:assert>
+        <sch:assert test="count(cac:JurisdictionRegionAddress/cbc:CityName) = 0">[F-LIB057] CityName element must be excluded</sch:assert>
+        <sch:assert test="count(cac:JurisdictionRegionAddress/cbc:PostalZone) = 0">[F-LIB058] PostalZone element must be excluded</sch:assert>
+        <sch:assert test="count(cac:JurisdictionRegionAddress/cbc:CountrySubentity) = 0">[F-LIB059] CountrySubentity element must be excluded</sch:assert>
+        <sch:assert test="count(cac:JurisdictionRegionAddress/cbc:CountrySubentityCode) = 0">[F-LIB060] CountrySubentityCode element must be excluded</sch:assert>
+        <sch:assert test="count(cac:JurisdictionRegionAddress/cbc:TimezoneOffset) = 0">[F-LIB063] TimezoneOffset element must be excluded</sch:assert>
+        <sch:assert test="count(cac:JurisdictionRegionAddress/cac:AddressLine) = 0">[F-LIB234] AddressLine class must be excluded</sch:assert>
+        <sch:assert test="count(cac:JurisdictionRegionAddress/cac:LocationCoordinate) = 0">[F-LIB064] LocationCoordinate class must be excluded</sch:assert>
+        <sch:report test="(cbc:ID = '63') and cbc:TaxTypeCode">[F-LIB067] TaxTypeCode is not allowed when TaxScheme/ID equals '63' (Moms)</sch:report>
+        <!-- Check for mandatory elements -->
+        <!-- [Release 20111201] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=623 -->
+        <!-- [Release 20160915] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=1586 -->
+        <sch:assert test="normalize-space(cbc:ID) != ''">[F-LIB065] Invalid TaxScheme/ID. Must contain a value.</sch:assert>
+        <!-- [Release 20111201] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=623 -->
+        <sch:assert test="normalize-space(cbc:Name) != ''">[F-LIB066] Invalid Name. Must contain a value</sch:assert>
+
+        <!-- [Release 20140915] Check changed according to issue: https://bugs.softwareborsen.dk/show_bug.cgi?id=1255, http://bugs.softwareborsen.dk/show_bug.cgi?id=1363, https://bugs.softwareborsen.dk/show_bug.cgi?id=1395 -->
+        <!-- sch:report test="(cbc:ID != '63') and not(cbc:TaxTypeCode)">[F-LIB197] TaxTypeCode is mandatory when TaxScheme/ID is different from '63' (Moms)</sch:report -->
+
+        <sch:report test="not((cbc:ID = '63' or cbc:ID = 'VAT')) and not(contains($TaxType2, concat(',', cbc:TaxTypeCode, ',')))">[F-LIB197] TaxTypeCode must be a value from the '<sch:value-of
+                select="$TaxType_listID2" />' codelist when TaxScheme/ID is different from '63' or 'VAT' (Moms)</sch:report>
+        <!-- ID '<sch:value-of select="cbc:ID"/>' and TaxTypeCode '<sch:value-of select="cbc:TaxTypeCode"/>'. -->
+
+        <!-- Validate -->
+        <!-- [Release 20130315] Check changed according to issue: https://bugs.softwareborsen.dk/show_bug.cgi?id=1107 -->
+        <!-- [Release 20170915] Check changed according to issue: https://bugs.softwareborsen.dk/show_bug.cgi?id=1834 -->
+        <sch:assert test="cbc:ID/@schemeID = $TaxScheme_schemeID or cbc:ID/@schemeID = $TaxScheme2_schemeID or cbc:ID/@schemeID = $TaxScheme4_schemeID or cbc:ID/@schemeID = $TaxScheme5_schemeID"
+                >[F-LIB070] Invalid schemeID. Must be either '<sch:value-of select="$TaxScheme_schemeID" />', '<sch:value-of select="$TaxScheme2_schemeID" />', '<sch:value-of
+                select="$TaxScheme4_schemeID" />' or '<sch:value-of select="$TaxScheme5_schemeID" />'</sch:assert>
+
+        <!-- [Release 20140915] Check changed according to issue: https://bugs.softwareborsen.dk/show_bug.cgi?id=1255, https://bugs.softwareborsen.dk/show_bug.cgi?id=1395 -->
+        <sch:report test="(cbc:TaxTypeCode) and not((cbc:TaxTypeCode/@listID = $TaxType_listID) or (cbc:TaxTypeCode/@listID = $TaxType_listID2))"
+                >[F-LIB071] Invalid listID. Must be either '<sch:value-of select="$TaxType_listID" />' or '<sch:value-of select="$TaxType_listID2" />'</sch:report>
+
+        <sch:report test="(cbc:ID = '63') and cbc:Name != 'Moms'">[F-LIB198] Name must equal 'Moms' when TaxScheme/ID equals '63' (Moms)</sch:report>
+        <sch:report test="(cbc:ID != '63') and cbc:Name = 'Moms'">[F-LIB199] Name must correspond to the value of TaxScheme/ID</sch:report>
+        <!-- [Release 20160915] Check added according to issue: https://bugs.softwareborsen.dk/show_bug.cgi?id=1255, https://bugs.softwareborsen.dk/show_bug.cgi?id=1632 -->
+        <!-- sch:report test="(cac:JurisdictionRegionAddress) and not(cac:JurisdictionRegionAddress/cbc:AddressFormatCode)">[F-LIB332] The AddressFormatCode under JurisdictionRegionAddress must be present.</sch:report -->
+        <sch:report
+            test="(cac:JurisdictionRegionAddress/cac:Country/cbc:IdentificationCode) and not(contains($CountryCode, concat(',', cac:JurisdictionRegionAddress/cac:Country/cbc:IdentificationCode, ',')))"
+                >[F-LIB337] Invalid Country/IdentificationCode: '<sch:value-of select="cac:JurisdictionRegionAddress/cac:Country/cbc:IdentificationCode"
+             />'. Must be a value from the country codelist</sch:report>
+        <sch:report test="(cac:JurisdictionRegionAddress) and cac:JurisdictionRegionAddress/cbc:AddressFormatCode != 'StructuredRegion'"
+            >[F-LIB233] The AddressFormatCode under JurisdictionRegionAddress must always equal 'StructuredRegion'</sch:report>
+    </sch:rule>
+
+    <!-- Rule to validate TaxCategory -->
+    <sch:rule abstract="true" id="TaxCategoryCheck">
+        <!-- Check for excluded elements -->
+        <sch:assert test="count(cbc:TierRange) = 0">[F-LIB072] TierRange element must be excluded</sch:assert>
+        <sch:assert test="count(cbc:TierRatePercent) = 0">[F-LIB073] TierRatePercent element must be excluded</sch:assert>
+        <!-- Check for mandatory elements -->
+        <!-- [Release 20111201] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=623 -->
+        <!-- [Release 20160915] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=1586 -->
+        <sch:assert test="normalize-space(cbc:ID) != ''">[F-LIB074] Invalid TaxCategory/ID. Must contain a value.</sch:assert>
+        <!-- Validate -->
+        <!-- [Release 20120315] Check changed according to issue: https://bugs.softwareborsen.dk/show_bug.cgi?id=841 -->
+        <!-- [Release 20170915] Check changed according to issue: https://bugs.softwareborsen.dk/show_bug.cgi?id=1834 -->
+        <sch:assert test="cbc:ID/@schemeID = $TaxCategory1_schemeID or cbc:ID/@schemeID = $TaxCategory2_schemeID or cbc:ID/@schemeID = $TaxCategory3_schemeID"
+                >[F-LIB075] Invalid schemeID. Must be either '<sch:value-of select="$TaxCategory1_schemeID" />', '<sch:value-of select="$TaxCategory2_schemeID" />' or '<sch:value-of
+                select="$TaxCategory3_schemeID" />'.</sch:assert>
+        <!-- [Release 20120315] Check changed according to issue: https://bugs.softwareborsen.dk/show_bug.cgi?id=841 -->
+        <sch:assert test="cbc:ID/@schemeAgencyID = $TaxCategory2_agencyID">[W-LIB229] Invalid schemeAgencyID. Must be '320'</sch:assert>
+        <!-- [Release 20111201] Check added according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=660 -->
+        <!-- [Release 20120315] Check changed according to issue: https://bugs.softwareborsen.dk/show_bug.cgi?id=841 -->
+
+        <!-- [Release 20170915] Check changed according to issue: https://bugs.softwareborsen.dk/show_bug.cgi?id=1834 -->
+        <sch:report
+            test="((cbc:ID/@schemeID = $TaxCategory1_schemeID) and not(contains($TaxCategory1, concat(',', cbc:ID, ',')))) or ((cbc:ID/@schemeID = $TaxCategory2_schemeID) and not(contains($TaxCategory2, concat(',', cbc:ID, ',')))) or ((cbc:ID/@schemeID = $TaxCategory3_schemeID) and not(contains($TaxCategory3, concat(',', cbc:ID, ','))))"
+                >[F-LIB309] Invalid ID: '<sch:value-of select="cbc:ID" />'. Must be a value from the codelist</sch:report>
+        <sch:report test="(cbc:Name != '') and not(contains(/doc:Invoice/cbc:ProfileID, 'nesubl.eu'))">[W-LIB230] Name should only be used within NES profiles</sch:report>
+        <sch:report test="cbc:PerUnitAmount and cbc:Percent">[F-LIB231] Use either PerUnitAmount or Percent</sch:report>
+        <sch:report test="cbc:PerUnitAmount and not(cbc:BaseUnitMeasure != '')">[F-LIB232] When PerUnitAmount is used, BaseUnitMeasure is mandatory</sch:report>
+
+        <!-- NH-3423 [060123]-->
+        <!--sch:report test="cbc:ID = 'StandardRated' and (cbc:Percent = '-0.00' or cbc:Percent = '-0.0' or cbc:Percent = '-0' or cbc:Percent = '-.0' or cbc:Percent = '-.00' or cbc:Percent = '.00' or cbc:Percent = '.0' or cbc:Percent = '0' or cbc:Percent = '00' or cbc:Percent = '0.0' or cbc:Percent = '0.00')">[F-LIB382] When 'TaxCategor\ID' = 'StandardRated', 'TaxCategory\Percent' can not be '<sch:value-of select="cbc:Percent"/>'</sch:report-->
+
+        <sch:report test="cbc:ID = 'StandardRated' and (string(cbc:Percent) = '' or xs:decimal(cbc:Percent) = 0.00)">
+            [F-LIB382] When 'TaxCategory\ID' = 'StandardRated', 'TaxCategory\Percent' must be present and greater than 0.00. 
+            Found value: '<sch:value-of select="cbc:Percent" />'.
+        </sch:report>
+        
+
+
+
+    </sch:rule>
+
+    <!-- Rule to validate Period -->
+    <sch:rule abstract="true" id="PeriodCheck">
+        <!-- Check for excluded elements -->
+        <sch:assert test="count(cbc:DurationMeasure) = 0">[F-LIB076] DurationMeasure element must be excluded</sch:assert>
+        <sch:assert test="count(cbc:DescriptionCode) = 0">[F-LIB077] DescriptionCode element must be excluded</sch:assert>
+        <!-- Check for mandatory elements -->
+        <sch:report test="(cbc:StartTime) and (not(cbc:StartDate) or cbc:StartDate = '')">[F-LIB078] There must be a StartDate if you have a StartTime</sch:report>
+        <sch:report test="(cbc:EndTime) and (not(cbc:EndDate) or cbc:EndDate = '')">[F-LIB079] There must be a EndDate if you have a EndTime</sch:report>
+        <!-- Validate -->
+        <sch:report
+            test="(cbc:StartDate and cbc:EndDate) and not(number(translate(cbc:EndDate, '-', '')) &gt; number(translate(cbc:StartDate, '-', '')) or number(translate(cbc:EndDate, '-', '')) = number(translate(cbc:StartDate, '-', '')))"
+            >[F-LIB080] The EndDate must be greater or equal to the startdate</sch:report>
+        <sch:report
+            test="(cbc:StartTime and cbc:EndTime) and not(number(translate(cbc:EndTime, ':', '')) &gt; number(translate(cbc:StartTime, ':', '')) or number(translate(cbc:EndTime, ':', '')) = number(translate(cbc:StartTime, ':', '')))"
+            >[F-LIB081] EndTime must be greater or equal to StartTime</sch:report>
+    </sch:rule>
+
+    <!-- Rule to validate Language -->
+    <sch:rule abstract="true" id="LanguageCheck">
+        <!-- Check for excluded elements -->
+        <sch:assert test="count(cbc:LocaleCode) = 0">[F-LIB082] LocaleCode element must be excluded</sch:assert>
+        <!-- Check for mandatory elements -->
+        <!-- Validate -->
+    </sch:rule>
+
+    <!-- Rule to validate ExchangeRate -->
+    <sch:rule abstract="true" id="ExchangeRateCheck">
+        <!-- Check for excluded elements -->
+        <!-- Check for mandatory elements -->
+        <!-- [Release 20111201] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=623 -->
+        <!-- [Release 20160915] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=1586 -->
+        <sch:report test="cac:ForeignExchangeContract and not(normalize-space(cac:ForeignExchangeContract/cbc:ID) != '')"
+            >[F-LIB238] Invalid TaxExchangeRate/ForeignExchangeRate/ID. Must contain a value.</sch:report>
+        <!-- Validate -->
+        <!-- [Release 20111201] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=623 -->
+        <sch:assert test="normalize-space(cbc:SourceCurrencyCode) != ''">[F-LIB083] Invalid SourceCurrencyCode. Must contain a value</sch:assert>
+        <!-- [Release 20111201] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=623 -->
+        <sch:assert test="normalize-space(cbc:TargetCurrencyCode) != ''">[F-LIB084] Invalid TargetCurrencyCode. Must contain a value</sch:assert>
+        <sch:report test="cbc:SourceCurrencyBaseRate and (starts-with(cbc:SourceCurrencyBaseRate, '-') or cbc:SourceCurrencyBaseRate = 0)"
+            >[F-LIB085] Invalid SourceCurrencyBaseRate. Must not be negative or zero</sch:report>
+        <sch:report test="cbc:SourceCurrencyBaseRate and string-length(substring-after(cbc:SourceCurrencyBaseRate, '.')) != 4"
+            >[F-LIB086] Invalid SourceCurrencyBaseRate. Must have 4 decimals</sch:report>
+        <sch:report test="cbc:TargetCurrencyBaseRate and (starts-with(cbc:TargetCurrencyBaseRate, '-') or cbc:TargetCurrencyBaseRate = 0)"
+            >[F-LIB087] Invalid TargetCurrencyBaseRate. Must not be negative or zero</sch:report>
+        <sch:report test="cbc:TargetCurrencyBaseRate and string-length(substring-after(cbc:TargetCurrencyBaseRate, '.')) != 4"
+            >[F-LIB088] Invalid TargetCurrencyBaseRate. Must have 4 decimals</sch:report>
+        <sch:report test="cbc:CalculationRate and (starts-with(cbc:CalculationRate, '-') or cbc:CalculationRate = 0)">[F-LIB089] Invalid CalculationRate. Must not be negative or zero</sch:report>
+        <sch:report test="cbc:CalculationRate and string-length(substring-after(cbc:CalculationRate, '.')) != 4">[F-LIB090] Invalid CalculationRate. Must have 4 decimals</sch:report>
+        <!-- [Release 20111201] Added check according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=659 -->
+        <sch:report test="cbc:MathematicOperatorCode != 'multiply' and cbc:MathematicOperatorCode != 'divide'"
+            >[F-LIB310] Invalid MathematicOperatorCode. Must either be 'multiply' or 'divide'</sch:report>
+        <sch:report test="cac:ForeignExchangeContract/cbc:ContractTypeCode and cac:ForeignExchangeContract/cbc:ContractType">[F-LIB239] Use either ContractTypeCode or ContractType</sch:report>
+        <sch:report test="count(cac:ForeignExchangeContract/cac:ContractDocumentReference) &gt; 1">[F-LIB240] No more than one ContractDocumentReference class may be present</sch:report>
+    </sch:rule>
+
+    <!-- Rule to validate EmbeddedDocumentBinaryObject -->
+    <sch:rule abstract="true" id="EmbeddedDocumentBinaryObjectCheck">
+        <!-- Bliver kald fra OIOUBL_AttachedDocument_Schematron.xml, og der findes en kopi i: OIOUBL_Quotation_Schematron.xml, OIOUBL_RequestForQuotation_Schematron.xml, OIOUBL_SelfBilledCreditNote_Schematron.xml, OIOUBL_SelfBilledInvoice_Schematron.xml, som ikke er opdateret.  -->
+        <!-- [Release 20190315] Updated check according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=2005 -->
+        <!-- 101121: NH-836 - Two mimeCode added -->
+        <sch:assert
+            test="./@mimeCode = 'image/tiff' or ./@mimeCode = 'image/png' or ./@mimeCode = 'image/jpeg' or ./@mimeCode = 'image/gif' or ./@mimeCode = 'application/pdf' or ./@mimeCode = 'text/xml' or ./@mimeCode = 'text/csv' or ./@mimeCode = 'application/vnd.ms-excel' or ./@mimeCode = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' or ./@mimeCode = 'application/vnd.oasis.opendocument.spreadsheet'"
+            >[F-LIB091] Attribute mimeCode must be a value from the codelist</sch:assert>
+    </sch:rule>
+
+    <!-- Rule to validate DocumentReference -->
+    <sch:rule abstract="true" id="DocumentReferenceCheck">
+        <!-- Check for excluded elements -->
+        <!-- Check for mandatory elements -->
+        <sch:assert test="cbc:DocumentType or cbc:DocumentTypeCode">[F-LIB092] Use either DocumentType or DocumentTypeCode</sch:assert>
+        <!-- Validate -->
+        <sch:report test="cac:Attachment and cbc:XPath">[F-LIB093] Use either Attachment or XPath</sch:report>
+        <!-- [Release 20190315] Removed according to issue: https://bugs.softwareborsen.dk/show_bug.cgi?id=2044 -->
+        <!-- <sch:report test="cbc:DocumentType and cbc:DocumentTypeCode != 'ZZZ'">[F-LIB094] Use either DocumentType or DocumentTypeCode</sch:report> -->
+        <sch:report test="cac:Attachment/cbc:EmbeddedDocumentBinaryObject and cac:Attachment/cac:ExternalReference">[F-LIB095] Use either EmbeddedDocumentBinaryObject or ExternalReference</sch:report>
+        <sch:report test="cbc:UUID and not(string-length(string(cbc:UUID)) = 36)">[F-LIB097] Invalid UUID. Must be of this form '6E09886B-DC6E-439F-82D1-7CCAC7F4E3B1'</sch:report>
+
+        <!-- [Release 20190315] Updated check according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=2005 -->
+        <!-- 101121: NH-836 - Two mimeCode added -->
+        <sch:report
+            test="cac:Attachment/cbc:EmbeddedDocumentBinaryObject and not(cac:Attachment/cbc:EmbeddedDocumentBinaryObject/@mimeCode = 'image/tiff' or cac:Attachment/cbc:EmbeddedDocumentBinaryObject/@mimeCode = 'image/png' or cac:Attachment/cbc:EmbeddedDocumentBinaryObject/@mimeCode = 'image/jpeg' or cac:Attachment/cbc:EmbeddedDocumentBinaryObject/@mimeCode = 'image/gif' or cac:Attachment/cbc:EmbeddedDocumentBinaryObject/@mimeCode = 'application/pdf' or cac:Attachment/cbc:EmbeddedDocumentBinaryObject/@mimeCode = 'text/xml' or cac:Attachment/cbc:EmbeddedDocumentBinaryObject/@mimeCode = 'text/csv' or cac:Attachment/cbc:EmbeddedDocumentBinaryObject/@mimeCode = 'application/vnd.ms-excel' or cac:Attachment/cbc:EmbeddedDocumentBinaryObject/@mimeCode = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' or cac:Attachment/cbc:EmbeddedDocumentBinaryObject/@mimeCode = 'application/vnd.oasis.opendocument.spreadsheet')"
+            >[F-LIB098] Attribute mimeCode must be a value from the codelist</sch:report>
+        <sch:report test="cac:Attachment/cac:ExternalReference and not(cac:Attachment/cac:ExternalReference/cbc:URI != '')">[F-LIB279] When using ExternalReference, URI is mandatory</sch:report>
+
+        <!-- [Release 20160916] New codelist according to issue: https://bugs.softwareborsen.dk/show_bug.cgi?id=1704 -->
+        <sch:report test="(cbc:DocumentTypeCode = 'PersonalSecure') and not(contains($PersonalSecure, concat(',', cbc:ID, ',')))"
+            >[F-LIB335] When DocumentTypeCode equals 'PersonalSecure', the ID must be either '1' or '2'.</sch:report>
+    </sch:rule>
+
+    <!-- Rule to validate PaymentMeansID -->
+    <sch:rule abstract="true" id="PaymentMeansIDCheck">
+        <sch:assert test="/*/cac:PaymentMeans/cbc:ID = self::*/text()">[F-LIB099] There must be one PaymentMeans/ID that matches the PaymentMeansID under PaymentTerms</sch:assert>
+    </sch:rule>
+
+    <!-- [Release 20180916] New validations according to issue: https://bugs.softwareborsen.dk/show_bug.cgi?id=2000 -->
+    <sch:rule abstract="true" id="TaxRepresentativePartyCheck">
+        <!-- Excluded elements -->
+        <sch:assert test="count(cbc:WebsiteURI) = 0">[F-LIB355] WebsiteURI element must be excluded</sch:assert>
+        <sch:assert test="count(cbc:LogoReferenceID) = 0">[F-LIB356] LogoReferenceID element must be excluded</sch:assert>
+        <sch:assert test="count(cbc:EndpointID) = 0">[F-LIB357] EndpointID element must be excluded</sch:assert>
+        <sch:assert test="count(cac:PartyIdentification) = 0">[F-LIB358] PartyIdentification element must be excluded</sch:assert>
+        <sch:assert test="count(cac:Language) = 0">[F-LIB359] Language element must be excluded</sch:assert>
+        <sch:assert test="count(cac:PhysicalLocation) = 0">[F-LIB360] PhysicalLocation element must be excluded</sch:assert>
+        <sch:assert test="count(cac:PartyLegalEntity) = 0">[F-LIB361] PartyLegalEntity element must be excluded</sch:assert>
+        <sch:assert test="count(cac:Contact) = 0">[F-LIB362] Contact element must be excluded</sch:assert>
+        <sch:assert test="count(cac:Person) = 0">[F-LIB363] Person element must be excluded</sch:assert>
+
+        <!-- Required elements -->
+        <sch:assert test="cac:PartyName and cac:PartyName/cbc:Name and (normalize-space(cac:PartyName/cbc:Name) != '')">[F-LIB353] PartyName/Name is mandatory in TaxRepresentativeParty</sch:assert>
+        <sch:assert test="cac:PostalAddress and cac:PostalAddress/cbc:AddressFormatCode and (normalize-space(cac:PostalAddress/cbc:AddressFormatCode) != '')"
+            >[F-LIB354] PostalAddress/AddressFormatCode is mandatory in TaxRepresentativeParty</sch:assert>
+
+        <sch:assert test="cac:PartyTaxScheme">[F-LIB371] PartyTaxScheme is mandatory in TaxRepresentativeParty</sch:assert>
+        <sch:assert test="(not(cac:PartyTaxScheme)) or cac:PartyTaxScheme/cac:TaxScheme">[F-LIB372] PartyTaxScheme/TaxScheme is mandatory in TaxRepresentativeParty</sch:assert>
+    </sch:rule>
+
+    <!-- Rule to validate PaymentMeans (top level) -->
+    <sch:rule abstract="true" id="PaymentMeansCheck">
+        <!-- Check for excluded elements -->
+        <!-- [Release 20180915] Remove exclusion according to issue: https://bugs.softwareborsen.dk/show_bug.cgi?id=2001 -->
+        <!-- <sch:assert test="count(cac:CardAccount) = 0">[F-LIB242] CardAccount class must be excluded</sch:assert> -->
+        <sch:extends rule="CardAccountCheck" />
+        <sch:assert test="count(cac:PayerFinancialAccount/cac:FinancialInstitutionBranch/cac:Address) = 0">[F-LIB151] Address class must be excluded</sch:assert>
+        <sch:assert test="count(cac:PayerFinancialAccount/cac:Country) = 0">[F-LIB162] Country class must be excluded</sch:assert>
+        <sch:assert test="count(cac:PayeeFinancialAccount/cac:FinancialInstitutionBranch/cac:FinancialInstitution/cac:Address) = 0">[F-LIB243] Address class must be excluded</sch:assert>
+        <sch:assert test="count(cac:PayeeFinancialAccount/cac:Country) = 0">[F-LIB244] Country class must be excluded</sch:assert>
+
+        <!-- Check for mandatory elements -->
+
+        <!-- Validate -->
+        <!-- [Release 20190315] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=2136 -->
+        <sch:assert
+            test="cbc:PaymentMeansCode = '1' or cbc:PaymentMeansCode = '10' or cbc:PaymentMeansCode = '20' or cbc:PaymentMeansCode = '31' or cbc:PaymentMeansCode = '42' or cbc:PaymentMeansCode = '48' or cbc:PaymentMeansCode = '49' or cbc:PaymentMeansCode = '50' or cbc:PaymentMeansCode = '58' or cbc:PaymentMeansCode = '59' or cbc:PaymentMeansCode = '93' or cbc:PaymentMeansCode = '97'"
+            >[F-LIB100] Invalid PaymentMeansCode. Must be a value from the codelist</sch:assert>
+        <sch:report test="count(../cac:PaymentMeans) &gt; 1 and not(cbc:ID != '')"
+            >[W-LIB241] PaymentMeans/ID should be used when more than one instance of the PaymentMeans class is present.</sch:report>
+        <sch:report test="cac:PayerFinancialAccount/cbc:AccountTypeCode and not(cac:PayerFinancialAccount/cbc:AccountTypeCode/@listID = 'urn:oioubl:codelist:accounttypecode-1.1')"
+            >[F-LIB105] Invalid listID. Must be 'urn:oioubl:codelist:accounttypecode-1.1'</sch:report>
+        <sch:report test="cac:PayerFinancialAccount/cbc:AccountTypeCode and not(cac:PayerFinancialAccount/cbc:AccountTypeCode/@listAgencyID = '320')"
+            >[W-LIB121] Invalid listAgencyID. Must be '320'</sch:report>
+        <sch:report test="cac:PayeeFinancialAccount/cbc:AccountTypeCode and not(cac:PayeeFinancialAccount/cbc:AccountTypeCode/@listID = 'urn:oioubl:codelist:accounttypecode-1.1')"
+            >[F-LIB136] Invalid listID. Must be 'urn:oioubl:codelist:accounttypecode-1.1'</sch:report>
+        <sch:report test="cac:PayeeFinancialAccount/cbc:AccountTypeCode and not(cac:PayeeFinancialAccount/cbc:AccountTypeCode/@listAgencyID = '320')"
+            >[W-LIB141] Invalid listAgencyID. Must be '320'</sch:report>
+    </sch:rule>
+
+
+    <!-- Rule to validate PaymentMeansCode31 -->
+    <sch:rule abstract="true" id="PaymentMeansCode31Check">
+        <!-- Check for excluded elements -->
+        <!-- [Release 20160915] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=1379 -->
+        <!-- sch:report test="(cbc:PaymentMeansCode = '31') and cbc:InstructionID">[F-LIB102] PaymentMeansCode = 31, InstructionID element not allowed</sch:report -->
+
+        <!-- [Release 20190315] Check removed according to issue: https://bugs.softwareborsen.dk/show_bug.cgi?id=2011 -->
+        <!-- <sch:report test="(cbc:PaymentMeansCode = '31') and (cbc:InstructionID != '') and ((string-length(cbc:InstructionID)&gt; 25) or not(starts-with(cbc:InstructionID, 'RF')) )">[F-LIB330] PaymentMeansCode = 31, InstructionID element must start with 'RF' and be no more than 25 characters.</sch:report> -->
+        <sch:report test="(cbc:PaymentMeansCode = '31') and cbc:InstructionNote">[F-LIB103] PaymentMeansCode = 31, InstructionNote element not allowed</sch:report>
+
+        <!-- [Release 20190315] Check removed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=2011 -->
+        <!-- <sch:report test="(cbc:PaymentMeansCode = '31') and cbc:PaymentID">[F-LIB104] PaymentMeansCode = 31, PaymentID element not allowed</sch:report> -->
+        <!-- Check for mandatory elements -->
+        <sch:report test="(cbc:PaymentMeansCode = '31') and not(cbc:PaymentChannelCode/@listID = 'urn:oioubl:codelist:paymentchannelcode-1.1')"
+            >[F-LIB106] PaymentMeansCode = 31, Invalid listID. Must be 'urn:oioubl:codelist:paymentchannelcode-1.1'</sch:report>
+        <sch:report test="(cbc:PaymentMeansCode = '31') and not(cac:PayeeFinancialAccount/cbc:ID)">[F-LIB107] PaymentMeansCode = 31, ID element is mandatory</sch:report>
+        <!-- Validate -->
+        <sch:report test="(cbc:PaymentMeansCode = '31') and not(cbc:PaymentChannelCode = 'IBAN' or cbc:PaymentChannelCode = 'ZZZ')"
+            >[F-LIB109] PaymentMeansCode = 31, PaymentChannelCode must equal IBAN or ZZZ</sch:report>
+        <sch:report test="(cbc:PaymentMeansCode = '31') and string-length(cac:PayerFinancialAccount/cbc:PaymentNote) &gt; 20"
+            >[F-LIB110] PaymentMeansCode = 31, PaymentNote must be no more than 20 characters</sch:report>
+        <sch:report test="(cbc:PaymentMeansCode = '31') and string-length(cac:PayeeFinancialAccount/cbc:PaymentNote) &gt; 20"
+            >[F-LIB111] PaymentMeansCode = 31, PaymentNote must be no more than 20 characters</sch:report>
+        <sch:report test="(cbc:PaymentMeansCode = '31') and string-length(cac:CreditAccount/cbc:AccountID) &gt; 8"
+            >[F-LIB112] PaymentMeansCode = 31, AccountID must be no more than 8 characters</sch:report>
+        <!-- Validate rules for IBAN -->
+        <sch:report test="(cbc:PaymentMeansCode = '31' and cbc:PaymentChannelCode = 'IBAN') and (cac:PayeeFinancialAccount/cac:FinancialInstitutionBranch/cbc:ID)"
+            >[F-LIB108] PaymentMeansCode = 31, FinancialInstitutionBranch/ID (Registreringsnummer) element is not used, when PaymentChannelCode equals IBAN</sch:report>
+
+        <!-- [Release 20170915] Last minute change: https://bugs.softwareborsen.dk/show_bug.cgi?id=1780 Implementated - but roolback at 20170823 -->
+        <!-- <sch:report test="(cbc:PaymentMeansCode = '31' and cbc:PaymentChannelCode = 'IBAN') and not(contains($IbanOnly, concat(',',substring(cac:PayeeFinancialAccount/cbc:ID,0,3),','))) and not(cac:PayeeFinancialAccount/cac:FinancialInstitutionBranch/cac:FinancialInstitution/cbc:ID)">[F-LIB113] PaymentMeansCode = 31, ID element is mandatory</sch:report> -->
+        <!-- [Release 20170915] Last minute change: https://bugs.softwareborsen.dk/show_bug.cgi?id=1780 and replaced with the original -->
+        <sch:report test="(cbc:PaymentMeansCode = '31' and cbc:PaymentChannelCode = 'IBAN') and not(cac:PayeeFinancialAccount/cac:FinancialInstitutionBranch/cac:FinancialInstitution/cbc:ID)"
+            >[F-LIB113] PaymentMeansCode = 31, ID element is mandatory</sch:report>
+
+        <sch:report test="(cbc:PaymentMeansCode = '31' and cbc:PaymentChannelCode = 'IBAN') and string-length(cac:PayeeFinancialAccount/cbc:ID) &gt; 34"
+            >[F-LIB114] PaymentMeansCode = 31, Account ID must be no more than 34 characters</sch:report>
+
+        <!-- [Release 20130315] Check changed according to issue: https://bugs.softwareborsen.dk/show_bug.cgi?id=1164 -->
+        <sch:report test="(cbc:PaymentMeansCode = '31' and cbc:PaymentChannelCode = 'IBAN') and string-length(cac:PayeeFinancialAccount/cbc:ID) &lt; 1"
+            >[F-LIB115] PaymentMeansCode = 31, Account ID must must not be empty.</sch:report>
+        <!-- Validate rules for ZZZ -->
+        <!-- [Release 20190315] Check changed according to issue: https://bugs.softwareborsen.dk/show_bug.cgi?id=2004 -->
+        <!-- Reverted - postproned to next release, so the next 3 check has been re-added. -->
+        <sch:report test="(cbc:PaymentMeansCode = '31' and cbc:PaymentChannelCode = 'ZZZ') and not(cac:PayeeFinancialAccount/cac:FinancialInstitutionBranch/cbc:ID)"
+            >[F-LIB276] PaymentMeansCode = 31, FinancialInstitutionBranch/ID (Registreringsnummer) element is mandatory, when PaymentChannelCode equals ZZZ</sch:report>
+        <sch:report test="(cbc:PaymentMeansCode = '31' and cbc:PaymentChannelCode = 'ZZZ') and not(cac:PayeeFinancialAccount/cac:FinancialInstitutionBranch/cbc:Name)"
+            >[F-LIB116] PaymentMeansCode = 31, FinancialInstitutionBranch/Name element is mandatory</sch:report>
+        <sch:report test="(cbc:PaymentMeansCode = '31' and cbc:PaymentChannelCode = 'ZZZ') and not(cac:PayeeFinancialAccount/cac:FinancialInstitutionBranch/cac:Address)"
+            >[F-LIB117] PaymentMeansCode = 31, FinancialInstitutionBranch/Address class is mandatory</sch:report>
+    </sch:rule>
+
+    <!-- Rule to validate PaymentMeansCode42 -->
+    <sch:rule abstract="true" id="PaymentMeansCode42Check">
+        <!-- [Release 20170915] Check added according to issue: https://bugs.softwareborsen.dk/show_bug.cgi?id=1780 -->
+        <!-- Common -->
+        <!-- Common - Check for mandatory elements -->
+        <sch:report test="(cbc:PaymentMeansCode = '42') and cac:CreditAccount">[F-LIB122] PaymentMeansCode = 42, CreditAccount class not allowed</sch:report>
+
+        <!-- [Release 20190315] Check removed according to issue: https://bugs.softwareborsen.dk/show_bug.cgi?id=2011 -->
+        <!-- <sch:report test="(cbc:PaymentMeansCode = '42') and cbc:PaymentID">[F-LIB120] PaymentMeansCode = 42, PaymentID element not allowed</sch:report> -->
+        <sch:report test="(cbc:PaymentMeansCode = '42') and cbc:InstructionNote">[F-LIB119] PaymentMeansCode = 42, InstructionNote element not allowed</sch:report>
+
+        <!-- [Release 20190315] Check removed according to issue: https://bugs.softwareborsen.dk/show_bug.cgi?id=2011 -->
+        <!-- <sch:report test="(cbc:PaymentMeansCode = '42') and (cbc:InstructionID != '') and ((string-length(cbc:InstructionID)&gt; 25) or not(starts-with(cbc:InstructionID, 'RF')) )">[F-LIB331] PaymentMeansCode = 42, InstructionID element must be maximum 25 characters and start with 'RF'.</sch:report> -->
+        <sch:report test="(cbc:PaymentMeansCode = '42') and not(cbc:PaymentChannelCode/@listID = 'urn:oioubl:codelist:paymentchannelcode-1.1')"
+            >[F-LIB123] PaymentMeansCode = 42, Invalid listID. Must be 'urn:oioubl:codelist:paymentchannelcode-1.1'</sch:report>
+        <!-- Common - Validate -->
+
+        <!-- [Release 20170915] Last minute change: https://bugs.softwareborsen.dk/show_bug.cgi?id=1780 Implementated - but roolback at 20170823 -->
+        <!-- <sch:report test="(cbc:PaymentMeansCode = '42') and not (cbc:PaymentChannelCode = 'DK:BANK' or cbc:PaymentChannelCode = 'IBAN')">[F-LIB128] PaymentMeansCode = 42, PaymentChannelCode must equal DK:BANK or IBAN</sch:report> -->
+        <!-- [Release 20170915] Last minute change: https://bugs.softwareborsen.dk/show_bug.cgi?id=1780 and replaced with the original -->
+        <sch:report test="(cbc:PaymentMeansCode = '42') and cbc:PaymentChannelCode != 'DK:BANK'">[F-LIB128] PaymentMeansCode = 42, PaymentChannelCode must equal DK:BANK</sch:report>
+
+
+        <sch:report test="(cbc:PaymentMeansCode = '42') and string-length(cac:PayerFinancialAccount/cbc:PaymentNote) &gt; 20"
+            >[F-LIB129] PaymentMeansCode = 42, PaymentNote must be no more than 20 characters</sch:report>
+        <sch:report test="(cbc:PaymentMeansCode = '42') and string-length(cac:PayeeFinancialAccount/cbc:PaymentNote) &gt; 20"
+            >[F-LIB133] PaymentMeansCode = 42, PaymentNote must be no more than 20 characters</sch:report>
+
+        <!-- PaymentChannelCode = DK:BANK -->
+        <!-- PaymentChannelCode = DK:BANK - Check for mandatory elements -->
+
+        <!-- [Release 20170915] Last minute change: https://bugs.softwareborsen.dk/show_bug.cgi?id=1780 Implementated - but roolback at 20170823 -->
+        <!-- <sch:report test="(cbc:PaymentMeansCode = '42' and cbc:PaymentChannelCode = 'DK:BANK') and (cac:PayerFinancialAccount/cac:FinancialInstitutionBranch) and not(cac:PayerFinancialAccount/cac:FinancialInstitutionBranch/cbc:ID)">[F-LIB124] PaymentMeansCode = 42 and PaymentChannelCode = DK:BANK and PayerFinancialAccount/FinancialInstitutionBranch, then FinancialInstitutionBranch/ID (Registreringsnummer) element is mandatory</sch:report> -->
+        <!-- [Release 20170915] Last minute change: https://bugs.softwareborsen.dk/show_bug.cgi?id=1780 and replaced with the original -->
+        <sch:report test="(cbc:PaymentMeansCode = '42') and (cac:PayerFinancialAccount/cac:FinancialInstitutionBranch) and not(cac:PayerFinancialAccount/cac:FinancialInstitutionBranch/cbc:ID)"
+            >[F-LIB124] PaymentMeansCode = 42, FinancialInstitutionBranch/ID (Registreringsnummer) element is mandatory</sch:report>
+
+        <!-- [Release 20170915] Last minute change: https://bugs.softwareborsen.dk/show_bug.cgi?id=1780 Implementated - but roolback at 20170823 -->
+        <!-- <sch:report test="(cbc:PaymentMeansCode = '42' and cbc:PaymentChannelCode = 'DK:BANK') and not(cac:PayeeFinancialAccount)">[F-LIB125] PaymentMeansCode = 42 and PaymentChannelCode = DK:BANK, PayeeFinancialAccount class is mandatory</sch:report> -->
+        <!-- [Release 20170915] Last minute change: https://bugs.softwareborsen.dk/show_bug.cgi?id=1780 and replaced with the original -->
+        <sch:report test="(cbc:PaymentMeansCode = '42') and not(cac:PayeeFinancialAccount)">[F-LIB125] PaymentMeansCode = 42, PayeeFinancialAccount class is mandatory</sch:report>
+
+        <!-- [Release 20170915] Last minute change: https://bugs.softwareborsen.dk/show_bug.cgi?id=1780 Implementated - but roolback at 20170823 -->
+        <!-- <sch:report test="(cbc:PaymentMeansCode = '42' and cbc:PaymentChannelCode = 'DK:BANK') and not(cac:PayeeFinancialAccount/cbc:ID)">[F-LIB126] PaymentMeansCode = 42 and PaymentChannelCode = DK:BANK, Account ID element is mandatory</sch:report> -->
+        <!-- [Release 20170915] Last minute change: https://bugs.softwareborsen.dk/show_bug.cgi?id=1780 and replaced with the original -->
+        <sch:report test="(cbc:PaymentMeansCode = '42') and not(cac:PayeeFinancialAccount/cbc:ID)">[F-LIB126] PaymentMeansCode = 42, Account ID element is mandatory</sch:report>
+
+        <!-- [Release 20170915] Last minute change: https://bugs.softwareborsen.dk/show_bug.cgi?id=1780 Implementated - but roolback at 20170823 -->
+        <!-- <sch:report test="(cbc:PaymentMeansCode = '42' and cbc:PaymentChannelCode = 'DK:BANK') and not(cac:PayeeFinancialAccount/cac:FinancialInstitutionBranch/cbc:ID)">[F-LIB127] PaymentMeansCode = 42 and PaymentChannelCode = DK:BANK, FinancialInstitutionBranch/ID (Registreringsnummer) element is mandatory</sch:report> -->
+        <!-- [Release 20170915] Last minute change: https://bugs.softwareborsen.dk/show_bug.cgi?id=1780 and replaced with the original -->
+        <sch:report test="(cbc:PaymentMeansCode = '42') and not(cac:PayeeFinancialAccount/cac:FinancialInstitutionBranch/cbc:ID)"
+            >[F-LIB127] PaymentMeansCode = 42, FinancialInstitutionBranch/ID (Registreringsnummer)  element is mandatory</sch:report>
+
+        <!-- PaymentChannelCode = DK:BANK - Validate -->
+
+        <!-- [Release 20170915] Last minute change: https://bugs.softwareborsen.dk/show_bug.cgi?id=1780 Implementated - but roolback at 20170823 -->
+        <!-- <sch:report test="(cbc:PaymentMeansCode = '42' and cbc:PaymentChannelCode = 'DK:BANK') and string-length(cac:PayerFinancialAccount/cac:FinancialInstitutionBranch/cbc:ID) &gt; 4">[F-LIB130] PaymentMeansCode = 42 and PaymentChannelCode = DK:BANK, FinancialInstitutionBranch/ID (Registreringsnummer) must be no more than 4 numerical characters</sch:report> -->
+        <!-- [Release 20170915] Last minute change: https://bugs.softwareborsen.dk/show_bug.cgi?id=1780 and replaced with the original -->
+        <sch:report test="(cbc:PaymentMeansCode = '42') and string-length(cac:PayerFinancialAccount/cac:FinancialInstitutionBranch/cbc:ID) &gt; 4"
+            >[F-LIB130] PaymentMeansCode = 42, FinancialInstitutionBranch/ID (Registreringsnummer) must be no more than 4 numerical characters</sch:report>
+
+        <!-- [Release 20170915] Last minute change: https://bugs.softwareborsen.dk/show_bug.cgi?id=1780 Implementated - but roolback at 20170823 -->
+        <!-- <sch:report test="(cbc:PaymentMeansCode = '42' and cbc:PaymentChannelCode = 'DK:BANK') and string-length(cac:PayeeFinancialAccount/cbc:ID)&gt; 10">[F-LIB131] PaymentMeansCode = 42 and PaymentChannelCode = DK:BANK, Account ID must be no more than 10 characters</sch:report> -->
+        <!-- [Release 20170915] Last minute change: https://bugs.softwareborsen.dk/show_bug.cgi?id=1780 and replaced with the original -->
+        <sch:report test="(cbc:PaymentMeansCode = '42') and string-length(cac:PayeeFinancialAccount/cbc:ID) &gt; 10"
+            >[F-LIB131] PaymentMeansCode = 42,  Account ID must be no more than 10 characters</sch:report>
+
+        <!-- [Release 20170915] Last minute change: https://bugs.softwareborsen.dk/show_bug.cgi?id=1780 Implementated - but roolback at 20170823 -->
+        <!-- <sch:report test="(cbc:PaymentMeansCode = '42' and cbc:PaymentChannelCode = 'DK:BANK') and string-length(cac:PayeeFinancialAccount/cac:FinancialInstitutionBranch/cbc:ID)&gt; 4">[F-LIB132] PaymentMeansCode = 42 and PaymentChannelCode = DK:BANK, FinancialInstitutionBranch/ID (Registreringsnummer) must be no more than 4 numerical characters</sch:report> -->
+        <!-- [Release 20170915] Last minute change: https://bugs.softwareborsen.dk/show_bug.cgi?id=1780 and replaced with the original -->
+        <sch:report test="(cbc:PaymentMeansCode = '42') and string-length(cac:PayeeFinancialAccount/cac:FinancialInstitutionBranch/cbc:ID) &gt; 4"
+            >[F-LIB132] PaymentMeansCode = 42, FinancialInstitutionBranch/ID (Registreringsnummer) must be no more than 4 numerical characters</sch:report>
+
+        <!-- [Release 20170915] Last minute change: https://bugs.softwareborsen.dk/show_bug.cgi?id=1780 Implementated - but roolback at 20170823 -->
+        <!-- <sch:report test="(cbc:PaymentMeansCode = '42' and cbc:PaymentChannelCode = 'DK:BANK') and not(number(cac:PayeeFinancialAccount/cac:FinancialInstitutionBranch/cbc:ID))">[F-LIB311] PaymentMeansCode = 42 and PaymentChannelCode = DK:BANK, FinancialInstitutionBranch/ID (Registreringsnummer) must contain a numerical value</sch:report> -->
+        <!-- [Release 20170915] Last minute change: https://bugs.softwareborsen.dk/show_bug.cgi?id=1780 and replaced with the original -->
+        <sch:report test="(cbc:PaymentMeansCode = '42') and not(number(cac:PayeeFinancialAccount/cac:FinancialInstitutionBranch/cbc:ID))"
+            >[F-LIB311] FinancialInstitutionBranch/ID (Registreringsnummer) must contain a numerical value</sch:report>
+
+        <!-- PaymentChannelCode = IBAN -->
+        <!-- PaymentChannelCode = IBAN - Check for mandatory elements -->
+        <!-- [Release 20170915] Last minute change: https://bugs.softwareborsen.dk/show_bug.cgi?id=1780 Implementated - but roolback at 20170823 -->
+        <!-- <sch:report test="(cbc:PaymentMeansCode = '42' and cbc:PaymentChannelCode = 'IBAN') and (cac:PayeeFinancialAccount/cac:FinancialInstitutionBranch/cbc:ID)">[F-LIB338] PaymentMeansCode = 42, FinancialInstitutionBranch/ID (Registreringsnummer) element is not used, when PaymentChannelCode equals IBAN</sch:report> -->
+
+        <!-- [Release 20170915] Last minute change: https://bugs.softwareborsen.dk/show_bug.cgi?id=1780 Implementated - but roolback at 20170823 -->
+        <!-- <sch:report test="(cbc:PaymentMeansCode = '42' and cbc:PaymentChannelCode = 'IBAN') and not(contains($IbanOnly, concat(',',substring(cac:PayeeFinancialAccount/cbc:ID,0,3),','))) and not(cac:PayeeFinancialAccount/cac:FinancialInstitutionBranch/cac:FinancialInstitution/cbc:ID)">[F-LIB339] PaymentMeansCode = 42 and PaymentChannelCode = IBAN, PayeeFinancialAccount/FinancialInstitutionBranch/FinancialInstitution/ID element is mandatory</sch:report> -->
+
+        <!-- [Release 20170915] Last minute change: https://bugs.softwareborsen.dk/show_bug.cgi?id=1780 Implementated - but roolback at 20170823 -->
+        <!-- <sch:report test="(cbc:PaymentMeansCode = '42' and cbc:PaymentChannelCode = 'IBAN') and string-length(cac:PayeeFinancialAccount/cbc:ID) &gt; 34">[F-LIB340] PaymentMeansCode = 42 and PaymentChannelCode = IBAN, PayeeFinancialAccount/ID must be no more than 34 characters</sch:report> -->
+
+        <!-- PaymentChannelCode = IBAN - Validate -->
+        <!-- [Release 20170915] Last minute change: https://bugs.softwareborsen.dk/show_bug.cgi?id=1780 Implementated - but roolback at 20170823 -->
+        <!-- <sch:report test="(cbc:PaymentMeansCode = '42' and cbc:PaymentChannelCode = 'IBAN') and string-length(cac:PayeeFinancialAccount/cbc:ID) &lt; 1">[F-LIB341] PaymentMeansCode = 42 and PaymentChannelCode = IBAN, PayeeFinancialAccount/ID must not be empty.</sch:report> -->
+    </sch:rule>
+
+    <!-- Rule to validate PaymentMeansCode48 -->
+    <sch:rule abstract="true" id="PaymentMeansCode48Check">
+        <!-- Check for excluded elements -->
+
+        <!-- [Release 20180915] Added CardAccount, according to issue: https://bugs.softwareborsen.dk/show_bug.cgi?id=2001 -->
+        <!-- [Release 20190315] Check removed according to issue: https://bugs.softwareborsen.dk/show_bug.cgi?id=2011 -->
+        <!-- <sch:report test="cbc:PaymentMeansCode = '48' and cbc:PaymentDueDate">[F-LIB364] When PaymentMeansCode is '48', PaymentDueDate class must be excluded</sch:report> -->
+        <sch:report test="cbc:PaymentMeansCode = '48' and cbc:PaymentChannelCode">[F-LIB365] When PaymentMeansCode is '48', PaymentChannelCode class must be excluded</sch:report>
+        <sch:report test="cbc:PaymentMeansCode = '48' and cbc:InstructionID">[F-LIB366] When PaymentMeansCode is '48', InstructionID class must be excluded</sch:report>
+        <sch:report test="cbc:PaymentMeansCode = '48' and cbc:InstructionNote">[F-LIB367] When PaymentMeansCode is '48', InstructionNote class must be excluded</sch:report>
+        <sch:report test="cbc:PaymentMeansCode = '48' and cac:PayerFinancialAccount">[F-LIB368] When PaymentMeansCode is '48', PayerFinancialAccount class must be excluded</sch:report>
+        <sch:report test="cbc:PaymentMeansCode = '48' and cac:PayeeFinancialAccount">[F-LIB369] When PaymentMeansCode is '48', PayeeFinancialAccount class must be excluded</sch:report>
+        <sch:report test="cbc:PaymentMeansCode = '48' and cac:CreditAccount">[F-LIB370] When PaymentMeansCode is '48', CreditAccount class must be excluded</sch:report>
+
+
+        <sch:report test="cbc:PaymentMeansCode = '48' and not(cac:CardAccount)">[F-LIB342] When PaymentMeansCode is '48', the CardAccount class must be used</sch:report>
+        <sch:report test="cbc:PaymentMeansCode = '48' and cac:CardAccount/cbc:CardTypeCode">[F-LIB343] When PaymentMeansCode is '48', CardAccount/CardTypeCode class must be excluded</sch:report>
+        <sch:report test="cbc:PaymentMeansCode = '48' and cac:CardAccount/cbc:ValidityStartDate"
+            >[F-LIB344] When PaymentMeansCode is '48', CardAccount/ValidityStartDate class must be excluded</sch:report>
+        <sch:report test="cbc:PaymentMeansCode = '48' and cac:CardAccount/cbc:ExpiryDate">[F-LIB345] When PaymentMeansCode is '48', CardAccount/ExpiryDate class must be excluded</sch:report>
+        <sch:report test="cbc:PaymentMeansCode = '48' and cac:CardAccount/cbc:IssuerID">[F-LIB346] When PaymentMeansCode is '48', CardAccount/IssuerID class must be excluded</sch:report>
+        <sch:report test="cbc:PaymentMeansCode = '48' and cac:CardAccount/cbc:IssueNumberID">[F-LIB347] When PaymentMeansCode is '48', CardAccount/IssueNumberID class must be excluded</sch:report>
+        <sch:report test="cbc:PaymentMeansCode = '48' and cac:CardAccount/cbc:CV2ID">[F-LIB348] When PaymentMeansCode is '48', CardAccount/CV2ID class must be excluded</sch:report>
+        <sch:report test="cbc:PaymentMeansCode = '48' and cac:CardAccount/cbc:CardChipCode">[F-LIB349] When PaymentMeansCode is '48', CardAccount/CardChipCode class must be excluded</sch:report>
+        <sch:report test="cbc:PaymentMeansCode = '48' and cac:CardAccount/cbc:ChipApplicationID"
+            >[F-LIB350] When PaymentMeansCode is '48', CardAccount/ChipApplicationID class must be excluded</sch:report>
+
+
+        <!-- Check for mandatory elements -->
+        <!-- Validate -->
+    </sch:rule>
+
+    <!-- Rule to validate PaymentMeansCode49 -->
+    <sch:rule abstract="true" id="PaymentMeansCode49Check">
+        <!-- Check for excluded elements -->
+        <sch:report test="(cbc:PaymentMeansCode = '49') and cbc:InstructionNote">[F-LIB135] PaymentMeansCode = 49, InstructionNote element not allowed</sch:report>
+        <sch:report test="(cbc:PaymentMeansCode = '49') and cac:CreditAccount">[F-LIB137] PaymentMeansCode = 49, CreditAccount class not allowed</sch:report>
+        <!-- Check for mandatory elements -->
+        <!-- Validate -->
+        <!-- [Release 20170915] Removed according to issue: https://bugs.softwareborsen.dk/show_bug.cgi?id=1780 -->
+        <!-- [Release 20170915] Last minute change: https://bugs.softwareborsen.dk/show_bug.cgi?id=1780 removed - but roolback at 20170823 -->
+        <sch:report test="(cbc:PaymentMeansCode = '49') and cbc:PaymentChannelCode and cbc:InstructionID"
+            >[F-LIB134] PaymentMeansCode = 49, Use either PaymentChannelCode or InstructionID element</sch:report>
+
+
+        <sch:report test="(cbc:PaymentMeansCode = '49') and string-length(cac:PayerFinancialAccount/cbc:PaymentNote) &gt; 20"
+            >[F-LIB288] PaymentMeansCode = 49, PaymentNote must be no more than 20 characters</sch:report>
+        <sch:report test="(cbc:PaymentMeansCode = '49' and cbc:PaymentChannelCode) and not(cbc:PaymentChannelCode = 'IBAN' or cbc:PaymentChannelCode = 'DK:BANK')"
+            >[F-LIB289] PaymentMeansCode = 49, If present, PaymentChannelCode must equal IBAN or DK:BANK</sch:report>
+        <!-- Validate PBS -->
+        <sch:report test="(cbc:PaymentMeansCode = '49') and string-length(cbc:InstructionID) &gt; 60">[F-LIB140] PaymentMeansCode = 49, InstructionID must be no more than 60 characters</sch:report>
+        <!-- Validate National Direct Debit -->
+        <sch:report test="(cbc:PaymentMeansCode = '49' and cbc:PaymentChannelCode = 'DK:BANK') and (string-length(cac:PayerFinancialAccount/cbc:ID) != 10)"
+            >[F-LIB290] PaymentMeansCode = 49, For DK:BANK, Account ID must be 10 characters</sch:report>
+        <sch:report test="(cbc:PaymentMeansCode = '49' and cbc:PaymentChannelCode = 'DK:BANK') and (string-length(cac:PayerFinancialAccount/cac:FinancialInstitutionBranch/cbc:ID) != 4)"
+            >[F-LIB291] PaymentMeansCode = 49, For DK:BANK, FinancialInstitutionBranch/ID (Registreringsnummer) must be 4 numerical characters</sch:report>
+        <!-- Validate International Direct Debit -->
+        <sch:report test="(cbc:PaymentMeansCode = '49' and cbc:PaymentChannelCode = 'IBAN') and string-length(cac:PayerFinancialAccount/cbc:ID) &gt; 34"
+            >[F-LIB292] PaymentMeansCode = 49, For IBAN, Account ID must be no more than 34 characters</sch:report>
+        <sch:report test="(cbc:PaymentMeansCode = '49' and cbc:PaymentChannelCode = 'IBAN') and string-length(cac:PayerFinancialAccount/cbc:ID) &lt; 18"
+            >[F-LIB293] PaymentMeansCode = 49, For IBAN, Account ID must be at least 18 characters</sch:report>
+        <sch:report test="(cbc:PaymentMeansCode = '49' and cbc:PaymentChannelCode = 'IBAN') and (cac:PayerFinancialAccount/cac:FinancialInstitutionBranch/cbc:ID)"
+            >[F-LIB294] PaymentMeansCode = 49, FinancialInstitutionBranch/ID (Registreringsnummer) element is not used, when PaymentChannelCode equals IBAN</sch:report>
+        <!-- [Release 20170915] Check remove according to issue: https://bugs.softwareborsen.dk/show_bug.cgi?id=1780 -->
+        <!-- [Release 20170915] Last minute change: https://bugs.softwareborsen.dk/show_bug.cgi?id=1780 removed - but roolback at 20170823 -->
+        <!-- <sch:report test="(cbc:PaymentMeansCode = '49' and cbc:PaymentChannelCode = 'IBAN') and not(contains($IbanOnly, concat(',',substring(cac:PayerFinancialAccount/cbc:ID,0,3),','))) and not(cac:PayerFinancialAccount/cac:FinancialInstitutionBranch/cac:FinancialInstitution/cbc:ID)">[F-LIB295] PaymentMeansCode = 49, For IBAN, ID element is mandatory</sch:report> -->
+        <!-- [Release 20170915] Last minute change: https://bugs.softwareborsen.dk/show_bug.cgi?id=1780 and replaced with the original -->
+        <sch:report test="(cbc:PaymentMeansCode = '49' and cbc:PaymentChannelCode = 'IBAN') and not(cac:PayerFinancialAccount/cac:FinancialInstitutionBranch/cac:FinancialInstitution/cbc:ID)"
+            >[F-LIB295] PaymentMeansCode = 49, For IBAN, ID element is mandatory</sch:report>
+    </sch:rule>
+
+    <!-- Rule to validate PaymentMeansCode50 -->
+    <sch:rule abstract="true" id="PaymentMeansCode50Check">
+        <!-- Check for excluded elements -->
+        <sch:report test="(cbc:PaymentMeansCode = '50') and cac:CreditAccount">[F-LIB142] PaymentMeansCode = 50, CreditAccount class not allowed</sch:report>
+        <!-- Check for mandatory elements -->
+        <sch:report test="(cbc:PaymentMeansCode = '50') and not(cbc:PaymentID)">[F-LIB144] PaymentMeansCode = 50, PaymentID element is mandatory</sch:report>
+        <!-- [Release 20130315] Two checks added according to issue: https://bugs.softwareborsen.dk/show_bug.cgi?id=1016 -->
+        <sch:report test="(cbc:PaymentMeansCode = '50') and not(cac:PayeeFinancialAccount)">[F-LIB319] PaymentMeansCode = 50, PayeeFinancialAccount class is mandatory.</sch:report>
+        <sch:report test="(cbc:PaymentMeansCode = '50') and not(cac:PayeeFinancialAccount/cbc:ID)">[F-LIB320] PaymentMeansCode = 50, PayeeFinancialAccount.ID element is mandatory.</sch:report>
+        <sch:report test="(cbc:PaymentMeansCode = '50') and (cbc:PaymentID = '04' or cbc:PaymentID = '15') and not(cbc:InstructionID)"
+            >[F-LIB145] PaymentMeansCode = 50, InstructionID is mandatory when PaymentID equals 04 or 15</sch:report>
+        <!-- Validate -->
+        <sch:report test="(cbc:PaymentMeansCode = '50' and cbc:PaymentChannelCode) and cbc:PaymentChannelCode != 'DK:GIRO'"
+            >[F-LIB146] PaymentMeansCode = 50, PaymentChannelCode must equal DK:GIRO</sch:report>
+        <sch:report test="(cbc:PaymentMeansCode = '50' and cbc:PaymentChannelCode) and not(cbc:PaymentChannelCode/@listID = 'urn:oioubl:codelist:paymentchannelcode-1.1')"
+            >[F-LIB143] PaymentMeansCode = 50, Invalid listID. Must be 'urn:oioubl:codelist:paymentchannelcode-1.1'</sch:report>
+        <sch:report test="(cbc:PaymentMeansCode = '50') and not(cbc:PaymentID = '01' or cbc:PaymentID = '04' or cbc:PaymentID = '15')"
+            >[F-LIB147] PaymentMeansCode = 50, PaymentID must equal 01, 04 or 15</sch:report>
+        <sch:report test="(cbc:PaymentMeansCode = '50') and cbc:InstructionNote and not(cbc:PaymentID = '01')"
+            >[F-LIB148] PaymentMeansCode = 50, InstructionNote only allowed if PaymentID equals 01</sch:report>
+        <sch:report test="(cbc:PaymentMeansCode = '50') and string-length(cbc:InstructionID) &gt; 16">[F-LIB149] PaymentMeansCode = 50, InstructionID must be no more than 16 characters</sch:report>
+        <!-- [Release 20120615] Check added according to issue: https://bugs.softwareborsen.dk/show_bug.cgi?id=848 -->
+
+        <!-- NH-3434 [060123]-->
+        <!--
+        <sch:report test="(cbc:PaymentMeansCode = '50') and ((cbc:PaymentID = '04' or cbc:PaymentID = '15')  and (not(exists(cbc:InstructionID)) or (matches(cbc:InstructionID, '[^\d]+'[.])) or (cbc:InstructionID = '')))">[F-LIB312] PaymentMeansCode = 50, InstructionID must be a numeric value when PaymentID equals 04 or 15.</sch:report>
+        -->
+
+        <!-- NH-34366 [180123] F-LIB312 has been redesiged to valide for "InstructionID must not be blank" and a new rule (F-LIB313) has been introduced and validate for "InstructionID must be numeric.".-->
+        <sch:report test="(cbc:PaymentMeansCode = '50') and ((cbc:PaymentID = '04' or cbc:PaymentID = '15') and (cbc:InstructionID = ''))"
+            >[F-LIB312] When PaymentMeansCode = 50 and PaymentID = '04' or '15', InstructionID must not be blank.</sch:report>
+        <sch:report test="(cbc:PaymentMeansCode = '50') and ((cbc:PaymentID = '04' or cbc:PaymentID = '15') and (matches(cbc:InstructionID, '[^\d]+'[.])))"
+            >[F-LIB390] When PaymentMeansCode = 50 and PaymentID = '04' or '15', InstructionID must be numeric.</sch:report>
+
+        <!-- [Release 20130315] Check added according to issue: https://bugs.softwareborsen.dk/show_bug.cgi?id=1016 -->
+        <sch:report
+            test="(cbc:PaymentMeansCode = '50' or cbc:PaymentChannelCode = 'DK:GIRO') and (string-length(cac:PayeeFinancialAccount/cbc:ID) &lt; 7 or string-length(cac:PayeeFinancialAccount/cbc:ID) &gt; 8 or string(number(cac:PayeeFinancialAccount/cbc:ID)) = 'NaN')"
+            >[F-LIB321] PaymentMeansCode = 50 or PaymentChannelCode = DK:GIRO, PayeeFinancialAccount.ID must consist of 7 or 8 numerical characters.</sch:report>
+    </sch:rule>
+
+    <sch:rule abstract="true" id="PaymentMeansCode58Check">
+        <sch:report test="(cbc:PaymentMeansCode = '58') and (not(cac:PayeeFinancialAccount/cbc:ID) or normalize-space(cac:PayeeFinancialAccount/cbc:ID) = '')"
+            >[F-LIB377] PaymentMeansCode = 58, PayeeFinancialAccount.ID must be used</sch:report>
+        <!-- [Release 20190315] Check added according to issue: https://bugs.softwareborsen.dk/show_bug.cgi?id=2136 -->
+        <sch:report test="(cbc:PaymentMeansCode = '58') and (cbc:PaymentChannelCode) and not(cbc:PaymentChannelCode = 'IBAN')"
+            >[F-LIB379] PaymentMeansCode = 58, when PaymentChannelCode is used it must be 'IBAN'.</sch:report>
+    </sch:rule>
+
+    <sch:rule abstract="true" id="PaymentMeansCode59Check">
+        <!-- [Release 20190315] Check removed according to issue: https://bugs.softwareborsen.dk/show_bug.cgi?id=2011 -->
+        <!-- <sch:report test="(cbc:PaymentMeansCode = '59') and (not(cbc:InstructionID) or normalize-space(cbc:InstructionID) = '')">[F-LIB378] PaymentMeansCode = 59, InstructionID must be used</sch:report> -->
+        <!-- [Release 20190315] Check added according to issue: https://bugs.softwareborsen.dk/show_bug.cgi?id=2136 -->
+        <sch:report test="(cbc:PaymentMeansCode = '59') and (cbc:PaymentChannelCode) and not(cbc:PaymentChannelCode = 'IBAN')"
+            >[F-LIB380] PaymentMeansCode = 59, when PaymentChannelCode is used it must be 'IBAN'.</sch:report>
+    </sch:rule>
+
+    <!-- Rule to validate PaymentMeansCode93 -->
+    <sch:rule abstract="true" id="PaymentMeansCode93Check">
+        <!-- Check for excluded elements -->
+        <!-- Check for mandatory elements -->
+        <sch:report test="(cbc:PaymentMeansCode = '93') and not(cbc:PaymentID)">[F-LIB152] PaymentMeansCode = 93, PaymentID element is mandatory</sch:report>
+        <sch:report test="(cbc:PaymentMeansCode = '93') and (cbc:PaymentID = '71' or cbc:PaymentID = '75') and not(cbc:InstructionID)"
+            >[F-LIB153] PaymentMeansCode = 93, InstructionID is mandatory when PaymentID equals 71 or 75</sch:report>
+        <!-- Validate -->
+        <sch:report test="(cbc:PaymentMeansCode = '93' and cbc:PaymentChannelCode) and cbc:PaymentChannelCode != 'DK:FIK'"
+            >[F-LIB277] PaymentMeansCode = 93, PaymentChannelCode must equal DK:FIK</sch:report>
+        <sch:report test="(cbc:PaymentMeansCode = '93' and cbc:PaymentChannelCode) and not(cbc:PaymentChannelCode/@listID = 'urn:oioubl:codelist:paymentchannelcode-1.1')"
+            >[F-LIB278] PaymentMeansCode = 93, Invalid listID. Must be 'urn:oioubl:codelist:paymentchannelcode-1.1'</sch:report>
+        <sch:report test="(cbc:PaymentMeansCode = '93') and cbc:InstructionNote and not(cbc:PaymentID = '73' or cbc:PaymentID = '75')"
+            >[F-LIB154] PaymentMeansCode = 93, InstructionNote only allowed if PaymentID equals 73 or 75</sch:report>
+        <sch:report test="(cbc:PaymentMeansCode = '93') and not(cbc:PaymentID = '71' or cbc:PaymentID = '73' or cbc:PaymentID = '75')"
+            >[F-LIB155] PaymentMeansCode = 93, PaymentID must equal 71, 73 or 75</sch:report>
+        <!-- [Release 20130315] Check changed according to issue: https://bugs.softwareborsen.dk/show_bug.cgi?id=1067 -->
+        <sch:report test="(cbc:PaymentMeansCode = '93') and cbc:PaymentID = '71' and string-length(cbc:InstructionID) != 15"
+            >[F-LIB156] PaymentMeansCode = 93, InstructionID must be equal to 15 characters (when PaymentID equals 71)</sch:report>
+        <!-- [Release 20130315] Check changed according to issue: https://bugs.softwareborsen.dk/show_bug.cgi?id=1067 -->
+        <sch:report test="(cbc:PaymentMeansCode = '93') and cbc:PaymentID = '75' and string-length(cbc:InstructionID) != 16"
+            >[F-LIB157] PaymentMeansCode = 93, InstructionID must be equal to 16 characters (when PaymentID equals 75)</sch:report>
+        <!-- [Release 20120615] Check added according to issue: https://bugs.softwareborsen.dk/show_bug.cgi?id=848 -->
+        <!-- NH-3434 [060123]-->
+        <sch:report
+            test="(cbc:PaymentMeansCode = '93') and ((cbc:PaymentID = '71' or cbc:PaymentID = '75') and (not(exists(cbc:InstructionID)) or (matches(cbc:InstructionID, '[^\d]+'[.]))) or (cbc:InstructionID = ''))"
+            >[F-LIB336] PaymentMeansCode = 93, InstructionID must be a numeric value when PaymentID equals 71 or 75.</sch:report>
+        <sch:report test="(cbc:PaymentMeansCode = '93') and cbc:PaymentID = '73' and cbc:InstructionID"
+            >[F-LIB275] PaymentMeansCode = 93, InstructionID only allowed if PaymentID equals 71 or 75</sch:report>
+        <sch:report test="(cbc:PaymentMeansCode = '93') and string-length(cac:CreditAccount/cbc:AccountID) != 8">[F-LIB305] PaymentMeansCode = 93, AccountID must be 8 characters</sch:report>
+    </sch:rule>
+
+    <!-- Rule to validate PaymentMeansCode97 -->
+    <sch:rule abstract="true" id="PaymentMeansCode97Check">
+        <!-- Check for excluded elements -->
+        <sch:report test="(cbc:PaymentMeansCode = '97') and cbc:PaymentChannelCode and not(cbc:PaymentChannelCode = 'DK:NEMKONTO')"
+            >[F-LIB158] PaymentMeansCode = 97, PaymentChannelCode element only allowed with value = "DK:NEMKONTO"</sch:report>
+        <sch:report test="(cbc:PaymentMeansCode = '97') and cbc:InstructionID">[F-LIB159] PaymentMeansCode = 97, InstructionID element not allowed</sch:report>
+        <sch:report test="(cbc:PaymentMeansCode = '97') and cbc:InstructionNote">[F-LIB160] PaymentMeansCode = 97, InstructionNote element not allowed</sch:report>
+        <sch:report test="(cbc:PaymentMeansCode = '97') and cbc:PaymentID">[F-LIB161] PaymentMeansCode = 97, PaymentID element not allowed</sch:report>
+        <sch:report test="(cbc:PaymentMeansCode = '97') and cac:PayerFinancialAccount">[F-LIB163] PaymentMeansCode = 97, PayerFinancialAccount class not allowed</sch:report>
+        <sch:report test="(cbc:PaymentMeansCode = '97') and cac:PayeeFinancialAccount">[F-LIB164] PaymentMeansCode = 97, PayeeFinancialAccount class not allowed</sch:report>
+        <sch:report test="(cbc:PaymentMeansCode = '97') and cac:CreditAccount">[F-LIB165] PaymentMeansCode = 97, CreditAccount class not allowed</sch:report>
+    </sch:rule>
+
+    <!-- Rule to validate PaymentTerms -->
+    <sch:rule abstract="true" id="PaymentTermsCheck">
+        <!-- Check for excluded elements -->
+        <!-- Check for mandatory elements -->
+        <!-- Validate -->
+        <sch:report test="count(../cac:PaymentTerms) &gt; 1 and not(cbc:ID != '')">[W-LIB245]: ID should be used when more than one instance of the PaymentTerms class is present</sch:report>
+        <sch:report test="cbc:ID = 'Factoring' and not(cbc:Note != '')">[F-LIB246] when ID equals 'Factoring', Note element is mandatory (factoring note)</sch:report>
+        <sch:report test="count(cbc:Note) &gt; 1">[F-LIB247] No more than one Note element may be present</sch:report>
+    </sch:rule>
+
+    <!-- Rule to validate Party (excluded elements) -->
+    <sch:rule abstract="true" id="PartyExcludedCheck">
+        <!-- Check for excluded elements -->
+        <sch:assert test="count(cbc:MarkCareIndicator) = 0">[F-LIB166] MarkCareIndicator element must be excluded</sch:assert>
+        <sch:assert test="count(cbc:MarkAttentionIndicator) = 0">[F-LIB167] MarkAttentionIndicator element must be excluded</sch:assert>
+        <sch:assert test="count(cac:AgentParty) = 0">[F-LIB168] AgentParty class must be excluded</sch:assert>
+    </sch:rule>
+
+    <!-- Rule to validate KnownDocumentReference -->
+    <sch:rule abstract="true" id="KnownDocumentReferenceCheck">
+        <!-- Check for excluded elements -->
+        <sch:assert test="count(cbc:DocumentType) = 0">[F-LIB170] DocumentType element must be excluded</sch:assert>
+        <sch:assert test="count(cbc:DocumentTypeCode) = 0">[F-LIB172] DocumentTypeCode element must be excluded</sch:assert>
+        <!-- Check for mandatory elements -->
+        <!-- Validate -->
+        <sch:report test="cac:Attachment and cbc:XPath">[F-LIB169] Use either Attachment or XPath</sch:report>
+        <sch:report test="cac:Attachment/cbc:EmbeddedDocumentBinaryObject and cac:Attachment/cac:ExternalReference">[F-LIB171] Use either EmbeddedDocumentBinaryObject or ExternalReference</sch:report>
+        <sch:report test="cbc:UUID and not(string-length(string(cbc:UUID)) = 36)">[F-LIB173] Invalid UUID. Must be of this form '6E09886B-DC6E-439F-82D1-7CCAC7F4E3B1'</sch:report>
+
+        <!-- [Release 20190315] Updated check according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=2005 -->
+        <!-- 101121: NH-836 - Two mimeCode added -->
+        <sch:report
+            test="cac:Attachment/cbc:EmbeddedDocumentBinaryObject and not(cac:Attachment/cbc:EmbeddedDocumentBinaryObject/@mimeCode = 'image/tiff' or cac:Attachment/cbc:EmbeddedDocumentBinaryObject/@mimeCode = 'image/png' or cac:Attachment/cbc:EmbeddedDocumentBinaryObject/@mimeCode = 'image/jpeg' or cac:Attachment/cbc:EmbeddedDocumentBinaryObject/@mimeCode = 'image/gif' or cac:Attachment/cbc:EmbeddedDocumentBinaryObject/@mimeCode = 'application/pdf' or cac:Attachment/cbc:EmbeddedDocumentBinaryObject/@mimeCode = 'text/xml' or cac:Attachment/cbc:EmbeddedDocumentBinaryObject/@mimeCode = 'text/csv' or cac:Attachment/cbc:EmbeddedDocumentBinaryObject/@mimeCode = 'application/vnd.ms-excel' or cac:Attachment/cbc:EmbeddedDocumentBinaryObject/@mimeCode = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' or cac:Attachment/cbc:EmbeddedDocumentBinaryObject/@mimeCode = 'application/vnd.oasis.opendocument.spreadsheet')"
+            >[F-LIB174] Attribute mimeCode must be a value from the codelist</sch:report>
+        <sch:report test="cac:Attachment/cac:ExternalReference and not(cac:Attachment/cac:ExternalReference/cbc:URI != '')">[F-LIB096] When using ExternalReference, URI is mandatory</sch:report>
+    </sch:rule>
+
+    <!-- Rule to validate DefaultItemIdentification -->
+    <sch:rule abstract="true" id="DefaultItemIdentificationCheck">
+        <!-- Check for excluded elements -->
+        <sch:assert test="count(cac:PhysicalAttribute) = 0">[F-LIB175] PhysicalAttribute class must be excluded</sch:assert>
+        <sch:assert test="count(cac:MeasurementDimension) = 0">[F-LIB176] MeasurementDimension class must be excluded</sch:assert>
+        <!-- Check for mandatory elements -->
+        <!-- Validate -->
+        <!-- [Release 20111201] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=623 -->
+        <!-- [Release 20160915] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=1586 -->
+        <sch:assert test="normalize-space(cbc:ID) != ''">[F-LIB177] Invalid ItemIdentification/ID. Must contain a value.</sch:assert>
+        <!-- <sch:report test="cac:IssuerParty">[I-LIB999] Validation not yet implemented!</sch:report> -->
+    </sch:rule>
+
+    <!-- Rule to validate ItemIdentificationType2 -->
+    <sch:rule abstract="true" id="ItemIdentificationType2Check">
+        <!-- Check for excluded elements -->
+        <sch:assert test="count(cac:PhysicalAttribute) = 0">[F-LIB280] PhysicalAttribute class must be excluded</sch:assert>
+        <sch:assert test="count(cac:MeasurementDimension) = 0">[F-LIB281] MeasurementDimension class must be excluded</sch:assert>
+        <sch:assert test="count(cac:IssuerParty) = 0">[F-LIB282] IssuerParty class must be excluded</sch:assert>
+        <!-- Check for mandatory elements -->
+        <!-- Validate -->
+        <!-- [Release 20111201] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=623 -->
+        <!-- [Release 20160915] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=1586 -->
+        <sch:assert test="normalize-space(cbc:ID) != ''">[F-LIB283] Invalid ItemIdentification/ID. Must contain a value.</sch:assert>
+    </sch:rule>
+
+    <!-- Rule to validate EndpointID -->
+    <sch:rule abstract="true" id="EndpointIDCheck">
+        <!-- [Release 20120615] Check changed according to issue: https://bugs.softwareborsen.dk/show_bug.cgi?id=957 -->
+        <!--<sch:report test="cbc:EndpointID and not(cbc:EndpointID/@schemeID = 'GLN' or cbc:EndpointID/@schemeID = 'DUNS' or cbc:EndpointID/@schemeID = 'DK:P' or cbc:EndpointID/@schemeID = 'DK:CVR' or cbc:EndpointID/@schemeID = 'DK:CPR' or cbc:EndpointID/@schemeID = 'DK:SE' or cbc:EndpointID/@schemeID = 'DK:VANS' or cbc:EndpointID/@schemeID = 'IBAN' or cbc:EndpointID/@schemeID = 'ISO 6523')">[F-LIB179] Invalid schemeID. Must be a valid scheme for EndpointID</sch:report>-->
+        <sch:report test="cbc:EndpointID and not(contains($EndpointID_schemeID, concat(',', cbc:EndpointID/@schemeID, ',')))">[F-LIB179] Invalid schemeID: '<sch:value-of
+                select="cbc:EndpointID/@schemeID" />'. Must be a value from the codelist: '<sch:value-of select="$EndpointID_schemeID" />'</sch:report>
+        <sch:report test="(cbc:EndpointID/@schemeID = 'DK:CVR') and (string-length(cbc:EndpointID) != 10 or substring(cbc:EndpointID, 1, 2) != 'DK')"
+                >[F-LIB180] schemeID = DK:CVR, EndpointID must be a valid CVR number (like 'DK12345678', value found: '<sch:value-of select="cbc:EndpointID" />')</sch:report>
+        <!-- NH-2571 [Q4 2023] Remove CPR
+        <sch:report test="(cbc:EndpointID/@schemeID = 'DK:CPR') and not(string-length(cbc:EndpointID) = 10)">[F-LIB215] schemeID = DK:CPR, EndpointID must be a valid CPR number (like '1234560000', value found: '<sch:value-of select="cbc:EndpointID"/>')</sch:report>
+       -->
+        <sch:report test="(cbc:EndpointID/@schemeID = 'GLN') and not(string-length(cbc:EndpointID) = 13)"
+                >[F-LIB181] schemeID = GLN, EndpointID must be a valid GLN number (like '1234567890123', value found: '<sch:value-of select="cbc:EndpointID" />')</sch:report>
+        <sch:report test="(cbc:EndpointID/@schemeID = 'EAN') and not(string-length(cbc:EndpointID) = 13)"
+                >[F-LIB216] schemeID = EAN, EndpointID must be a valid EAN number (like '1234567890123', value found: '<sch:value-of select="cbc:EndpointID" />')</sch:report>
+    </sch:rule>
+
+    <!-- Rule to validate PartyIdentification -->
+    <sch:rule abstract="true" id="PartyIdentificationCheck">
+        <!-- [Release 20120615] Check changed according to issue: https://bugs.softwareborsen.dk/show_bug.cgi?id=957 -->
+        <!--			<sch:assert test="cbc:ID/@schemeID = 'DUNS' or cbc:ID/@schemeID = 'GLN' or cbc:ID/@schemeID = 'IBAN' or cbc:ID/@schemeID = 'ISO 6523' or cbc:ID/@schemeID = 'ZZZ' or cbc:ID/@schemeID = 'DK:CPR' or cbc:ID/@schemeID = 'DK:CVR' or cbc:ID/@schemeID = 'DK:P' or cbc:ID/@schemeID = 'DK:SE' or cbc:ID/@schemeID = 'DK:TELEFON' or cbc:ID/@schemeID = 'FI:ORGNR' or cbc:ID/@schemeID = 'IS:KT' or cbc:ID/@schemeID = 'IS:VSKNR' or cbc:ID/@schemeID = 'NO:EFO' or cbc:ID/@schemeID = 'NO:NOBB' or cbc:ID/@schemeID = 'NO:NODI' or cbc:ID/@schemeID = 'NO:ORGNR' or cbc:ID/@schemeID = 'NO:VAT' or cbc:ID/@schemeID = 'SE:ORGNR' or cbc:ID/@schemeID = 'SE:VAT'">[F-LIB183] Invalid schemeID. Must be a valid scheme for PartyIdentification/ID</sch:assert>-->
+        <sch:report test="not(contains($PartyID_schemeID, concat(',', cbc:ID/@schemeID, ',')))">[F-LIB183] Invalid schemeID: '<sch:value-of select="cbc:ID/@schemeID"
+                 />'. Must be a value from the codelist: '<sch:value-of select="$PartyID_schemeID" />'</sch:report>
+        <sch:report test="(cbc:ID/@schemeID = 'DK:CVR') and (string-length(cbc:ID) != 10 or substring(cbc:ID, 1, 2) != 'DK')"
+                >[F-LIB184] schemeID = DK:CVR, ID must be a valid CVR number (like 'DK12345678', value found: '<sch:value-of select="cbc:ID" />')</sch:report>
+        <sch:report test="(cbc:ID/@schemeID = 'DK:CPR') and not(string-length(cbc:ID) = 10)">[F-LIB217] schemeID = DK:CPR, ID must be a valid CPR number (like '1234560000', value found: '<sch:value-of
+                select="cbc:ID" />')</sch:report>
+        <sch:report test="(cbc:ID/@schemeID = 'GLN') and not(string-length(cbc:ID) = 13)">[F-LIB185] schemeID = GLN, ID must be a valid GLN number (like '1234567890123', value found: '<sch:value-of
+                select="cbc:ID" />')</sch:report>
+        <sch:report test="(cbc:ID/@schemeID = 'EAN') and not(string-length(cbc:ID) = 13)">[F-LIB218] schemeID = EAN, ID must be a valid EAN number (like '1234567890123', value found: '<sch:value-of
+                select="cbc:ID" />')</sch:report>
+        <sch:report test="(cbc:ID/@schemeID = 'DK:P') and not(string-length(cbc:ID) = 10)">[F-LIB287] schemeID = DK:P, ID must be a valid P number (like '1234567890', value found: '<sch:value-of
+                select="cbc:ID" />')</sch:report>
+    </sch:rule>
+
+    <!-- Rule to validate PartyLegalEntity -->
+    <sch:rule abstract="true" id="PartyLegalEntityCheck">
+        <!-- Check for excluded elements -->
+        <sch:assert test="count(cac:CorporateRegistrationScheme) = 0">[F-LIB186] CorporateRegistrationScheme class must be excluded</sch:assert>
+        <!-- Check for mandatory elements -->
+        <!-- [Release 20111201] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=623 -->
+        <sch:assert test="normalize-space(cbc:CompanyID) != ''">[F-LIB187] Invalid CompanyID. Must contain a value</sch:assert>
+        <!-- Validate -->
+        <!--
+         <sch:assert test="cbc:CompanyID/@schemeID = 'DK:CVR' or cbc:CompanyID/@schemeID = 'DK:CPR' or cbc:CompanyID/@schemeID = 'ZZZ'">[F-LIB189] Invalid schemeID. Must be a valid scheme for PartyLegalEntity/CompanyID</sch:assert>
+         -->
+        <sch:assert test="cbc:CompanyID/@schemeID != '' and contains($PartyLegalID, concat(',', cbc:CompanyID/@schemeID, ','))">[F-LIB189] Invalid schemeID. Must be a valid scheme for PartyLegalEntity/CompanyID</sch:assert>
+        <!-- [Release 20111201] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=623 -->
+        <sch:report test="(cbc:CompanyID/@schemeID = 'DK:CVR') and (string-length(normalize-space(cbc:CompanyID)) != 10 or substring(cbc:CompanyID, 1, 2) != 'DK')"
+                >[F-LIB190] schemeID = DK:CVR, CompanyID must be a valid CVR number (like 'DK12345678', value found: '<sch:value-of select="cbc:CompanyID" />')</sch:report>
+        <sch:report test="(cbc:CompanyID/@schemeID = 'DK:CPR') and not(string-length(cbc:CompanyID) = 10)"
+                >[F-LIB191] schemeID = DK:CPR, CompanyID must be a valid CPR number (like '1234560000', value found: '<sch:value-of select="cbc:CompanyID" />')</sch:report>
+        -->
+    </sch:rule>
+
+    <!-- Rule to validate PartyTaxScheme -->
+    <sch:rule abstract="true" id="PartyTaxSchemeCheck">
+        <!-- Check for excluded elements -->
+        <sch:assert test="count(cbc:TaxLevelCode) = 0">[F-LIB192] TaxLevelCode element must be excluded</sch:assert>
+        <!-- Check for mandatory elements -->
+        <!-- [Release 20111201] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=623 -->
+        <sch:assert test="normalize-space(cbc:CompanyID) != ''">[F-LIB193] Invalid CompanyID. Must contain a value</sch:assert>
+        <!-- Validate -->
+        <sch:assert test="cbc:CompanyID/@schemeID = 'DK:SE' or cbc:CompanyID/@schemeID = 'ZZZ'">[F-LIB195] Invalid schemeID. Must be a valid scheme for PartyTaxScheme/CompanyID</sch:assert>
+        <!-- [Release 20111201] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=623 -->
+        <sch:report test="(cbc:CompanyID/@schemeID = 'DK:SE') and (string-length(normalize-space(cbc:CompanyID)) != 10 or substring(cbc:CompanyID, 1, 2) != 'DK')"
+                >[F-LIB196] schemeID = DK:SE, CompanyID must be a valid SE number (like 'DK12345678', value found: '<sch:value-of select="cbc:CompanyID" />')</sch:report>
+    </sch:rule>
+
+    <!-- Rule to validate AllowanceCharge (toplevel only) -->
+    <sch:rule abstract="true" id="AllowanceChargeTopCheck">
+        <!-- Check for excluded elements -->
+        <sch:assert test="count(cac:TaxTotal) = 0">[F-LIB224] TaxTotal class must be excluded</sch:assert>
+        <sch:assert test="count(cac:PaymentMeans) = 0">[F-LIB225] PaymentMeans class must be excluded</sch:assert>
+        <!-- Check for mandatory elements -->
+        <sch:assert test="count(cac:TaxCategory) = 1">[F-LIB226] One TaxCategory class must be present</sch:assert>
+        <!-- Validate -->
+        <sch:report test="cbc:MultiplierFactorNumeric and not(cbc:BaseAmount != '')">[F-LIB248] When MultiplierFactorNumeric is used, BaseAmount is mandatory</sch:report>
+        <sch:report test="starts-with(cbc:MultiplierFactorNumeric, '-')">[F-LIB227] MultiplierFactorNumeric must be a positive number</sch:report>
+        <!-- [PatchRelease 20120227] Tolerance added to check according to issue: https://bugs.softwareborsen.dk/show_bug.cgi?id=823 -->
+        <sch:report
+            test="cbc:MultiplierFactorNumeric and ((cbc:Amount - (cbc:BaseAmount * cbc:MultiplierFactorNumeric) &lt; -1.00) or (cbc:Amount - (cbc:BaseAmount * cbc:MultiplierFactorNumeric) &gt; 1.00))"
+            >[F-LIB228] Amount must equal BaseAmount * MultiplierFactorNumeric</sch:report>
+    </sch:rule>
+
+    <!-- Rule to validate PriceAllowanceCharge (toplevel only) -->
+    <!-- [Release 20170915] Kreditnota - tillad negativ MultiplierFactorNumeric: https://bugs.softwareborsen.dk/show_bug.cgi?id=1804 -->
+    <sch:rule abstract="true" id="PriceAllowanceChargeTopCheck">
+        <sch:report test="starts-with(cbc:MultiplierFactorNumeric, '-')">[F-LIB271] MultiplierFactorNumeric must be a positive number</sch:report>
+        <sch:extends rule="PriceAllowanceChargeTopCheckCommon" />
+    </sch:rule>
+    <sch:rule abstract="true" id="PriceAllowanceChargeTopCheckMultiplierFactor">
+        <sch:extends rule="PriceAllowanceChargeTopCheckCommon" />
+    </sch:rule>
+
+    <sch:rule abstract="true" id="PriceAllowanceChargeTopCheckCommon">
+        <!-- Check for excluded elements -->
+        <sch:assert test="count(cac:TaxTotal) = 0">[F-LIB268] TaxTotal class must be excluded</sch:assert>
+        <sch:assert test="count(cac:PaymentMeans) = 0">[F-LIB269] PaymentMeans class must be excluded</sch:assert>
+        <sch:assert test="count(cbc:AccountingCostCode) = 0">[F-LIB273] AccountingCostCode element must be excluded</sch:assert>
+        <sch:assert test="count(cbc:AccountingCost) = 0">[F-LIB274] AccountingCost element must be excluded</sch:assert>
+        <!-- Check for mandatory elements -->
+        <!-- Validate -->
+        <sch:report test="cbc:MultiplierFactorNumeric and not(cbc:BaseAmount != '')">[F-LIB270] When MultiplierFactorNumeric is used, BaseAmount is mandatory</sch:report>
+
+        <!-- [Release 20111201] Check exchanged with same as for AllowanceCharge according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=658 -->
+        <!--<sch:report test="cbc:MultiplierFactorNumeric and not(cbc:Amount = (cbc:BaseAmount * cbc:MultiplierFactorNumeric))">[F-LIB272] Amount must equal BaseAmount * MultiplierFactorNumeric</sch:report>-->
+        <!-- [PatchRelease 20120227] Tolerance added to check according to issue: https://bugs.softwareborsen.dk/show_bug.cgi?id=823 -->
+        <sch:report
+            test="cbc:MultiplierFactorNumeric and ((cbc:Amount - (cbc:BaseAmount * cbc:MultiplierFactorNumeric) &lt; -1.00) or (cbc:Amount - (cbc:BaseAmount * cbc:MultiplierFactorNumeric) &gt; 1.00))"
+            >[F-LIB228] Amount must equal BaseAmount * MultiplierFactorNumeric</sch:report>
+    </sch:rule>
+
+    <!-- Rule to validate TaxTotal -->
+    <sch:rule abstract="true" id="TaxTotalCheck">
+        <!-- Variables -->
+        <!-- Check for excluded elements -->
+        <!-- Check for mandatory elements -->
+
+        <!-- [Release 20120615] New check based on: https://bugs.softwareborsen.dk/show_bug.cgi?id=828 -->
+        <sch:report test="cac:TaxSubtotal/cac:TaxCategory/cac:TaxScheme/cbc:ID = ./following-sibling::*/cac:TaxSubtotal/cac:TaxCategory/cac:TaxScheme/cbc:ID"
+            >[F-LIB314] Using the same TaxScheme ID in two different TaxTotal classes are not allowed.</sch:report>
+
+        <!-- [PatchRelease 20140915] according to issue: https://bugs.softwareborsen.dk/show_bug.cgi?id=1389 -->
+        <!-- count(Invoice/cac:TaxTotal/cac:TaxSubtotal[cac:TaxCategory/cbc:ID = '63' or cac:TaxCategory/cbc:ID = 'VAT']) -->
+        <!-- sch:assert test="count(cac:TaxSubtotal) != 0">[F-LIB306] One or more TaxSubtotal classes must be present</sch:assert -->
+        <sch:assert test="count(../cac:TaxTotal[cac:TaxSubtotal/cac:TaxCategory/cac:TaxScheme/cbc:ID = '63' or cac:TaxSubtotal/cac:TaxCategory/cac:TaxScheme/cbc:ID = 'VAT']) = 1"
+            >[F-LIB306] Exactly one TaxTotal class must contain VAT (Moms)</sch:assert>
+        <!-- Validate -->
+        <sch:report test="string-length(substring-after(cbc:TaxAmount, '.')) != 2">[F-LIB250] Invalid TaxAmount. Must have 2 decimals</sch:report>
+        <sch:report test="cbc:RoundingAmount and (cbc:RoundingAmount = 0)">[F-LIB251] Invalid RoundingAmount. Must not be zero</sch:report>
+        <sch:report test="cbc:RoundingAmount and string-length(substring-after(cbc:RoundingAmount, '.')) != 2">[F-LIB252] Invalid RoundingAmount. Must have 2 decimals</sch:report>
+        <sch:report test="cbc:TaxEvidenceIndicator = 'false' and /doc:Invoice/cbc:InvoiceTypeCode != '325'">[F-LIB253] Can only be false if proforma invoice (InvoiceTypeCode = '325')</sch:report>
+        <sch:report test="cbc:TransactionCurrencyTaxAmount and not(cac:TaxCategory/cbc:ID = 'StandardRated')"
+            >[F-LIB373] TransactionCurrencyTaxAmount only valid when TaxCategory/ID = 'StandardRated'</sch:report>
+
+        <sch:assert test="(xs:decimal(child::cbc:TaxAmount) = round((sum(cac:TaxSubtotal/xs:decimal(cbc:TaxAmount)) * 10 * 10)) div 100) or not(cac:TaxSubtotal)">[F-LIB385] TaxAmount of '<sch:value-of
+                select="child::cbc:TaxAmount" />' must equal the sum of all following TaxSubtotal/TaxAmount '<sch:value-of select="sum(cac:TaxSubtotal/xs:decimal(cbc:TaxAmount))"
+             />' </sch:assert>
+
+
+    </sch:rule>
+
+
+
+
+    <!-- Rule to validate TaxSubtotal -->
+    <sch:rule abstract="true" id="TaxSubtotalCheck">
+        <!-- Variables -->
+        <!-- [Release 20120615] Variable added according to issue: https://bugs.softwareborsen.dk/show_bug.cgi?id=828 -->
+        <sch:let name="ID63" value="cac:TaxCategory/cac:TaxScheme/cbc:ID = '63'" />
+        <!-- Check for excluded elements -->
+        <sch:let name="TaxCategoryID" value="cac:TaxCategory/cbc:ID = 'StandardRated'" />
+        <sch:assert test="count(cbc:Percent) = 0">[F-LIB254] Percent element must be excluded</sch:assert>
+        <sch:assert test="count(cbc:BaseUnitMeasure) = 0">[F-LIB255] BaseUnitMeasure element must be excluded</sch:assert>
+        <sch:assert test="count(cbc:PerUnitAmount) = 0">[F-LIB256] PerUnitAmount element must be excluded</sch:assert>
+        <sch:assert test="count(cbc:TierRange) = 0">[F-LIB257] TierRange element must be excluded</sch:assert>
+        <sch:assert test="count(cbc:TierRatePercent) = 0">[F-LIB258] TierRatePercent element must be excluded</sch:assert>
+        <!-- Check for mandatory elements -->
+        <!-- [Release 20111201] Check changed according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=623 -->
+        <sch:assert test="normalize-space(cbc:TaxableAmount) != ''">[F-LIB259] Invalid TaxableAmount. Must contain a value</sch:assert>
+        <!-- Validate -->
+        <!-- [Release 20120615] Added 3 new checks according to issue: https://bugs.softwareborsen.dk/show_bug.cgi?id=828 -->
+        <sch:report
+            test="$ID63 and cac:TaxCategory/cac:TaxScheme/cbc:ID = ./following-sibling::*/cac:TaxCategory/cac:TaxScheme/cbc:ID and cac:TaxCategory/cbc:ID = ./following-sibling::*/cac:TaxCategory/cbc:ID"
+            >[F-LIB315] Specifying the same TaxSubtotal.TaxCategory.ID in one TaxTotal class is not allowed</sch:report>
+        <!-- [Release 20120615] Removing check according to issue: https://bugs.softwareborsen.dk/show_bug.cgi?id=1245 -->
+        <!-- sch:report test="not($ID63) and cac:TaxCategory/cac:TaxScheme/cbc:ID = ./following-sibling::*/cac:TaxCategory/cac:TaxScheme/cbc:ID and format-number(cac:TaxCategory/cbc:Percent, '0.00') = format-number(./following-sibling::*/cac:TaxCategory/cbc:Percent, '0.00')">[F-LIB315] Specifying the same TaxSubtotal.TaxCategory.ID in one TaxTotal class is not allowed</sch:report -->
+        <sch:report test="cac:TaxCategory/cac:TaxScheme/cbc:ID != ./following-sibling::*/cac:TaxCategory/cac:TaxScheme/cbc:ID"
+            >[F-LIB316] Specifying different TaxScheme.ID in same TaxTotal class is not allowed.</sch:report>
+
+        <sch:report test="string-length(substring-after(cbc:TaxableAmount, '.')) != 2">[F-LIB261] Invalid TaxableAmount. Must have 2 decimals</sch:report>
+        <sch:report test="string-length(substring-after(cbc:TaxAmount, '.')) != 2">[F-LIB263] Invalid TaxAmount. Must have 2 decimals</sch:report>
+        <sch:report test="cbc:CalculationSequenceNumeric and (starts-with(cbc:CalculationSequenceNumeric, '-') or cbc:CalculationSequenceNumeric = 0)"
+            >[F-LIB264] Invalid CalculationSequenceNumeric. Must not be negative or zero</sch:report>
+        <!-- [Release 20190315] Removing check according to issue: https://bugs.softwareborsen.dk/show_bug.cgi?id=2002 -->
+        <!-- <sch:report test="/doc:Invoice/cac:TaxExchangeRate and count(cbc:TransactionCurrencyTaxAmount) = 0">[F-LIB265] if Tax Currency is different from Document Currency, TransactionCurrencyTaxAmount is mandatory</sch:report> -->
+
+        <!-- [Release 20190315] Updated checks according to issue: https://bugs.softwareborsen.dk/show_bug.cgi?id=2008 -->
+        <sch:report
+            test="cbc:TransactionCurrencyTaxAmount and (number(cbc:TransactionCurrencyTaxAmount) != 0) and (cac:TaxCategory/cbc:ID = 'StandardRated') and (((number(cbc:TransactionCurrencyTaxAmount) &lt; 0) and (number(../cbc:TaxAmount) &gt; 0)) or ((number(cbc:TransactionCurrencyTaxAmount) &gt; 0) and (number(../cbc:TaxAmount) &lt; 0)))"
+            >[F-LIB266] Invalid TransactionCurrencyTaxAmount. Must be negative if TaxTotal/TaxAmount is negative, and must be be positive if TaxTotal/TaxAmount is positive</sch:report>
+        <!-- <sch:report test="'a'='a'">TEST. TransactionCurrencyTaxAmount: '<sch:value-of select="cbc:TransactionCurrencyTaxAmount"/>'. TransactionCurrencyTaxAmount: '<sch:value-of select="(number(cbc:TransactionCurrencyTaxAmount) != 0)"/>'. StandardRated: '<sch:value-of select="(cac:TaxCategory/cbc:ID = 'StandardRated')"/>'.  lt: '<sch:value-of select="((number(cbc:TransactionCurrencyTaxAmount) &lt; 0) and (number(../cac:TaxAmount) &gt; 0))"/>'. gt: '<sch:value-of select="((number(cbc:TransactionCurrencyTaxAmount) &gt; 0)  and (number(../cac:TaxAmount) &lt; 0))"/>'.</sch:report> -->
+        <!-- <sch:report test="'a'='a'">TEST. TaxAmount: '<sch:value-of select="(number(../cac:TaxAmount))"/>'.</sch:report> -->
+
+
+        <sch:report test="cbc:TransactionCurrencyTaxAmount and string-length(substring-after(cbc:TransactionCurrencyTaxAmount, '.')) != 2"
+            >[F-LIB267] Invalid TransactionCurrencyTaxAmount. Must have 2 decimals</sch:report>
+
+        <!-- NH-3424 [060123]-->
+        <sch:let name="CalculatedVat" value="(cbc:TaxableAmount div 100) * cac:TaxCategory/cbc:Percent" />
+        <sch:report test="cac:TaxCategory/cbc:ID = 'StandardRated' and xs:decimal(cbc:TaxableAmount) > 0 and xs:decimal(cbc:TaxAmount) = 0 and xs:decimal($CalculatedVat) >= 0.005"
+                >[F-LIB381] Invalid VAT TaxAmount - When TaxCategory/ID are 'StandardRated' and TaxableAmount > 0 (<sch:value-of select="cbc:TaxableAmount" />) TaxAmount can't be '(<sch:value-of
+                select="cbc:TaxAmount" />)' unless calculated vat '(<sch:value-of select="$CalculatedVat" />)' are less then 0.005</sch:report>
+
+
+        <sch:report test="cbc:TransactionCurrencyTaxAmount and not(cac:TaxCategory/cbc:ID = 'StandardRated')"
+            >[F-LIB373] TransactionCurrencyTaxAmount only valid when TaxCategory/ID = 'StandardRated'</sch:report>
+    </sch:rule>
+
+    <sch:rule abstract="true" id="TaxSubtotalCalculationHeader">
+        <!-- Check that the Calculation ot the TaxAmount is correct -->
+        <!-- [Release N/A] Added check according to issue: https://bugs.softwareborsen.dk/show_bug.cgi?id=1361 -->
+        <!-- Removed from version 1.7 in last minute! -->
+        <!--<sch:report test="(cac:TaxCategory/cac:TaxScheme/cbc:ID = 63) and ((((cbc:TaxableAmount * (cac:TaxCategory/cbc:Percent div 100)) - cbc:TaxAmount) &lt; '-0.50') or (((cbc:TaxableAmount * (cac:TaxCategory/cbc:Percent div 100)) - cbc:TaxAmount) &gt; '0.50') )">[F-LIB326] In TaxTotal/TaxSubTotal (header), the TaxableAmount multiplied by TaxCategory/Precent must equal TaxAmount</sch:report>-->
+
+        <!-- [Release 20160915] Added check according to issue: https://bugs.softwareborsen.dk/show_bug.cgi?id=1679 -->
+        <sch:report test="(cac:TaxCategory/cac:TaxScheme/cbc:ID = 'VAT') and not(cac:TaxCategory/cbc:Percent)"
+            >[F-LIB333] When TaxCategory/TaxScheme/Id is VAT, the TaxCategory/Percent must be present.</sch:report>
+        <sch:report test="(cac:TaxCategory/cac:TaxScheme/cbc:ID = 'VAT') and ((cac:TaxCategory/cbc:Percent = '') or (string-length(substring-after(cac:TaxCategory/cbc:Percent, '.')) > 2))"
+            >[F-LIB334] The TaxCategory/Percent must contain a decimal value with maximum 2 decimals.</sch:report>
+        <sch:report test="cbc:TransactionCurrencyTaxAmount and not(cac:TaxCategory/cbc:ID = 'StandardRated')"
+            >[F-LIB373] TransactionCurrencyTaxAmount only valid when TaxCategory/ID = 'StandardRated'</sch:report>
+
+
+
+
+    </sch:rule>
+    <sch:rule abstract="true" id="TaxSubtotalCalculationLine">
+        <!-- Check that the Calculation ot the TaxAmount is correct -->
+        <!-- [Release N/A] Added check according to issue: https://bugs.softwareborsen.dk/show_bug.cgi?id=1361 -->
+        <!-- Removed from version 1.7 in last minute! -->
+        <!--<sch:report test="(cac:TaxCategory/cac:TaxScheme/cbc:ID = 63) and (number(cbc:TaxAmount) &gt; 0) and ((((cbc:TaxableAmount * (cac:TaxCategory/cbc:Percent div 100)) - cbc:TaxAmount) &lt; '-0.15') or (((cbc:TaxableAmount * (cac:TaxCategory/cbc:Percent div 100)) - cbc:TaxAmount) &gt; '0.15') )">[F-LIB329] In TaxTotal/TaxSubTotal (line), if calculated, the TaxableAmount multiplied by TaxCategory/Precent must equal TaxAmount</sch:report>-->
+    </sch:rule>
+
+    <!-- Rule to validate Attachment -->
+    <sch:rule abstract="true" id="AttachmentCheck">
+        <!-- Check for excluded elements -->
+        <!-- Check for mandatory elements -->
+        <!-- Validate -->
+        <sch:report test="cbc:EmbeddedDocumentBinaryObject and cac:ExternalReference">[F-LIB284] Use either EmbeddedDocumentBinaryObject or ExternalReference</sch:report>
+
+        <!-- [Release 20190315] Updated check according to issue: http://bugs.softwareborsen.dk/show_bug.cgi?id=2005 -->
+        <!-- 101121: NH-836 - Two mimeCode added -->
+        <sch:report
+            test="cbc:EmbeddedDocumentBinaryObject and not(cbc:EmbeddedDocumentBinaryObject/@mimeCode = 'image/tiff' or cbc:EmbeddedDocumentBinaryObject/@mimeCode = 'image/png' or cbc:EmbeddedDocumentBinaryObject/@mimeCode = 'image/jpeg' or cbc:EmbeddedDocumentBinaryObject/@mimeCode = 'image/gif' or cbc:EmbeddedDocumentBinaryObject/@mimeCode = 'application/pdf' or cbc:EmbeddedDocumentBinaryObject/@mimeCode = 'text/xml' or cbc:EmbeddedDocumentBinaryObject/@mimeCode = 'text/csv' or cbc:EmbeddedDocumentBinaryObject/@mimeCode = 'application/vnd.ms-excel' or cbc:EmbeddedDocumentBinaryObject/@mimeCode = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' or cbc:EmbeddedDocumentBinaryObject/@mimeCode = 'application/vnd.oasis.opendocument.spreadsheet')"
+            >[F-LIB285] Attribute mimeCode must be a value from the codelist</sch:report>
+        <sch:report test="cac:ExternalReference and not(cac:ExternalReference/cbc:URI != '')">[F-LIB286] When using ExternalReference, URI is mandatory</sch:report>
+    </sch:rule>
+
+
+    <sch:rule abstract="true" id="CheckValuesWhenZeroRated">
+        <sch:assert test="
+            cbc:ID != 'ZeroRated'
+            or (number(../cbc:TaxAmount) = 0 and (not(cbc:Percent) or number(normalize-space(cbc:Percent)) = 0))">
+            [F-LIB400] When "TaxCategory/ID" is "ZeroRated", "TaxAmount" and "Percent" must be 0.">
+
+            Values found:
+            - TaxCategoty/ID: <sch:value-of select="cbc:ID" />
+            - TaxCategory/Percent: <sch:value-of select="cbc:Percent" />
+            - TaxAmount: <sch:value-of select="../cbc:TaxAmount" />
+        </sch:assert>
+    </sch:rule>
+
+
+    <sch:rule abstract="true" id="CheckTaxAmount">
+        <sch:assert test="
+        not(cbc:ID = 'StandardRated')
+        or
+        (
+        (xs:decimal(cbc:Percent) = 0 and xs:decimal(../cbc:TaxAmount) = 0)
+        or
+        (xs:decimal(cbc:Percent) > 0 and
+        abs(
+        xs:decimal(../cbc:TaxAmount) -
+        (round((xs:decimal(../cbc:TaxableAmount) * xs:decimal(cbc:Percent) div 100) * 100) div 100)
+        ) &lt;= 1
+        )
+        )
+        ">
+            [F-LIB401] If Percent is greater than 0, TaxSubtotal/TaxAmount must be correctly calculated within a tolerance of +/- 1.
+
+            Values found:
+            - TaxCategory/ID: <sch:value-of select="cbc:ID" />
+            - TaxAmount (TaxSubtotal): <sch:value-of select="../cbc:TaxAmount" />
+            - TaxableAmount: <sch:value-of select="../cbc:TaxableAmount" />
+            - TaxCategory/Percent: <sch:value-of select="cbc:Percent" />
+            - Calculated TaxAmount (rounded): <sch:value-of select="round((xs:decimal(../cbc:TaxableAmount) * xs:decimal(cbc:Percent) div 100) * 100) div 100" />
+            - Difference: <sch:value-of select="abs(xs:decimal(../cbc:TaxAmount) - (round((xs:decimal(../cbc:TaxableAmount) * xs:decimal(cbc:Percent) div 100) * 100) div 100))" />
+        </sch:assert>
+    </sch:rule>
+
+
+    <sch:rule abstract="true" id="CheckTaxAmountOnHeader">
+            <sch:assert test="
+                (not(current()/cac:TaxCategory/cbc:ID = 'StandardRated'
+                or current()/cac:TaxCategory/cbc:ID = 'ZeroRated'
+                or current()/cac:TaxCategory/cbc:ID = 'ReverseCharge'))
+                or
+                (
+                not(exists(../../cac:InvoiceLine/cac:TaxTotal/cac:TaxSubtotal[
+                cac:TaxCategory/cbc:ID = current()/cac:TaxCategory/cbc:ID and
+                cac:TaxCategory/cac:TaxScheme/cbc:ID = current()/cac:TaxCategory/cac:TaxScheme/cbc:ID and
+                cbc:TaxableAmount/@currencyID = current()/cbc:TaxableAmount/@currencyID
+                ]))
+                and
+                not(exists(../../cac:CreditNoteLine/cac:TaxTotal/cac:TaxSubtotal[
+                cac:TaxCategory/cbc:ID = current()/cac:TaxCategory/cbc:ID and
+                cac:TaxCategory/cac:TaxScheme/cbc:ID = current()/cac:TaxCategory/cac:TaxScheme/cbc:ID and
+                cbc:TaxableAmount/@currencyID = current()/cbc:TaxableAmount/@currencyID
+                ]))
+                or
+                abs(xs:decimal(cbc:TaxableAmount) - (
+                sum(../../cac:InvoiceLine/cac:TaxTotal/cac:TaxSubtotal[
+                cac:TaxCategory/cac:TaxScheme/cbc:ID = current()/cac:TaxCategory/cac:TaxScheme/cbc:ID and
+                cac:TaxCategory/cbc:ID = current()/cac:TaxCategory/cbc:ID and
+                cbc:TaxableAmount/@currencyID = current()/cbc:TaxableAmount/@currencyID
+                ]/cbc:TaxableAmount)
+                + sum(../../cac:CreditNoteLine/cac:TaxTotal/cac:TaxSubtotal[
+                cac:TaxCategory/cac:TaxScheme/cbc:ID = current()/cac:TaxCategory/cac:TaxScheme/cbc:ID and
+                cac:TaxCategory/cbc:ID = current()/cac:TaxCategory/cbc:ID and
+                cbc:TaxableAmount/@currencyID = current()/cbc:TaxableAmount/@currencyID
+                ]/cbc:TaxableAmount)
+                - sum(../../cac:AllowanceCharge[
+                cbc:ChargeIndicator = false() and
+                cac:TaxCategory/cbc:ID = current()/cac:TaxCategory/cbc:ID and
+                cac:TaxCategory/cac:TaxScheme/cbc:ID = current()/cac:TaxCategory/cac:TaxScheme/cbc:ID and
+                cbc:Amount/@currencyID = current()/cbc:TaxableAmount/@currencyID
+                ]/cbc:Amount)
+                + sum(../../cac:AllowanceCharge[
+                cbc:ChargeIndicator = true() and
+                cac:TaxCategory/cbc:ID = current()/cac:TaxCategory/cbc:ID and
+                cac:TaxCategory/cac:TaxScheme/cbc:ID = current()/cac:TaxCategory/cac:TaxScheme/cbc:ID and
+                cbc:Amount/@currencyID = current()/cbc:TaxableAmount/@currencyID
+                ]/cbc:Amount)
+                )) &lt;= 1
+                )
+                ">
+            [F-LIB402] The taxable amount on the <sch:value-of select="name(/*)" /> when currency: '<sch:value-of select="cbc:TaxableAmount/@currencyID" />', Tax Category ID: '<sch:value-of select="cac:TaxCategory/cbc:ID" />' and Tax Scheme ID: '<sch:value-of select="cac:TaxCategory/cac:TaxScheme/cbc:ID" />', does not match the sum of taxable amounts from the invoice or credit note lines, after adjusting for allowances (discounts) and charges (fees). A rounding difference of up to +/- 1 is allowed.
+            
+            Values found:
+            - Taxable amount on the <sch:value-of select="name(/*)" />: <sch:value-of select="cbc:TaxableAmount" />          
+            - Calculated taxable amount (sum of lines adjusted for discounts and charges): <sch:value-of select=" 
+                round(( 
+                sum(../../cac:InvoiceLine/cac:TaxTotal/cac:TaxSubtotal[
+                cac:TaxCategory/cac:TaxScheme/cbc:ID = current()/cac:TaxCategory/cac:TaxScheme/cbc:ID and
+                cac:TaxCategory/cbc:ID = current()/cac:TaxCategory/cbc:ID and
+                cbc:TaxableAmount/@currencyID = current()/cbc:TaxableAmount/@currencyID
+                ]/cbc:TaxableAmount)
+                + sum(../../cac:CreditNoteLine/cac:TaxTotal/cac:TaxSubtotal[
+                cac:TaxCategory/cac:TaxScheme/cbc:ID = current()/cac:TaxCategory/cac:TaxScheme/cbc:ID and
+                cac:TaxCategory/cbc:ID = current()/cac:TaxCategory/cbc:ID and
+                cbc:TaxableAmount/@currencyID = current()/cbc:TaxableAmount/@currencyID
+                ]/cbc:TaxableAmount)
+                - sum(../../cac:AllowanceCharge[
+                cbc:ChargeIndicator = false() and
+                cac:TaxCategory/cbc:ID = current()/cac:TaxCategory/cbc:ID and
+                cac:TaxCategory/cac:TaxScheme/cbc:ID = current()/cac:TaxCategory/cac:TaxScheme/cbc:ID and
+                cbc:Amount/@currencyID = current()/cbc:TaxableAmount/@currencyID
+                ]/cbc:Amount)
+                + sum(../../cac:AllowanceCharge[
+                cbc:ChargeIndicator = true() and
+                cac:TaxCategory/cbc:ID = current()/cac:TaxCategory/cbc:ID and
+                cac:TaxCategory/cac:TaxScheme/cbc:ID = current()/cac:TaxCategory/cac:TaxScheme/cbc:ID and
+                cbc:Amount/@currencyID = current()/cbc:TaxableAmount/@currencyID
+                ]/cbc:Amount)
+                ) * 10000) div 10000
+                " />
+            - Difference: <sch:value-of select="
+                round((
+                abs(xs:decimal(cbc:TaxableAmount) - (
+                sum(../../cac:InvoiceLine/cac:TaxTotal/cac:TaxSubtotal[
+                cac:TaxCategory/cac:TaxScheme/cbc:ID = current()/cac:TaxCategory/cac:TaxScheme/cbc:ID and
+                cac:TaxCategory/cbc:ID = current()/cac:TaxCategory/cbc:ID and
+                cbc:TaxableAmount/@currencyID = current()/cbc:TaxableAmount/@currencyID
+                ]/cbc:TaxableAmount)
+                + sum(../../cac:CreditNoteLine/cac:TaxTotal/cac:TaxSubtotal[
+                cac:TaxCategory/cac:TaxScheme/cbc:ID = current()/cac:TaxCategory/cac:TaxScheme/cbc:ID and
+                cac:TaxCategory/cbc:ID = current()/cac:TaxCategory/cbc:ID and
+                cbc:TaxableAmount/@currencyID = current()/cbc:TaxableAmount/@currencyID
+                ]/cbc:TaxableAmount)
+                - sum(../../cac:AllowanceCharge[
+                cbc:ChargeIndicator = false() and
+                cac:TaxCategory/cbc:ID = current()/cac:TaxCategory/cbc:ID and
+                cac:TaxCategory/cac:TaxScheme/cbc:ID = current()/cac:TaxCategory/cac:TaxScheme/cbc:ID and
+                cbc:Amount/@currencyID = current()/cbc:TaxableAmount/@currencyID
+                ]/cbc:Amount)
+                + sum(../../cac:AllowanceCharge[
+                cbc:ChargeIndicator = true() and
+                cac:TaxCategory/cbc:ID = current()/cac:TaxCategory/cbc:ID and
+                cac:TaxCategory/cac:TaxScheme/cbc:ID = current()/cac:TaxCategory/cac:TaxScheme/cbc:ID and
+                cbc:Amount/@currencyID = current()/cbc:TaxableAmount/@currencyID
+                ]/cbc:Amount)
+                ))
+                ) * 10000) div 10000"
+            />
+        </sch:assert>
+    </sch:rule>
+    <!-- NHD-292 -->
+    <!-- Rule to validate AdditionalItemProperty -->
+    <sch:rule abstract="true" id="AdditionalItemPropertyCheck">
+        <sch:assert test="not(cbc:Name = 'EmissionFactor') or (number(cbc:Value) = number(cbc:Value))">[OIOUBL-Common-GP004] If AdditionalItemProperty/Name is 'EmissionFactor', then the AdditionalItemProperty/Value must be a valid numeric value
+        </sch:assert>
+
+        <sch:assert test="not(cbc:Name = 'NetEmissionQuantity') or
+                        (
+                        round(number(../cac:AdditionalItemProperty[cbc:Name = 'EmissionFactor']/cbc:Value) * number(../../cbc:InvoicedQuantity) * 10000) div 10000 = round(number(cbc:Value)*10000) div 10000 or
+                        round(number(../cac:AdditionalItemProperty[cbc:Name = 'EmissionFactor']/cbc:Value) * number(../../cbc:CreditedQuantity) * 10000) div 10000 = round(number(cbc:Value)*10000) div 10000
+                        )">[OIOUBL-Common-GP005] if Name is 'NetEmissionQuantity', then its Value must equal EmissionFactor * Quantity (InvoicedQuantity / CreditedQuantity)" Values found
+                        - NetEmissionQuantity value <sch:value-of select="number(cbc:Value)"/>'
+                        - NetEmissionFactor value <sch:value-of select="number(../cac:AdditionalItemProperty[cbc:Name = 'EmissionFactor']/cbc:Value)"/>'
+                        - Quantity <sch:value-of select="number(../../cbc:InvoicedQuantity)"/>'
+        </sch:assert>
+
+        <sch:assert test="not(cbc:Name = 'EmissionFactorSource') or (cbc:Value = 'Database' or cbc:Value = 'Internal')">[OIOUBL-Common-GP006] If AdditionalItemProperty/Name is 'EmissionFactorSource', then AdditionalItemProperty/Value must be either 'Database' or 'Internal'
+        </sch:assert>
+
+        <sch:assert test="not(cbc:Name = 'EmissionFactor') or (../cac:AdditionalItemProperty[cbc:Name = 'EmissionFactorSource'])">[OIOUBL-Common-GP007] If AdditionalItemProperty/Name is 'EmissionFactor', then another AdditionalItemProperty/Name = 'EmissionFactorSource' must exist
+        </sch:assert>
+
+        <sch:assert
+                test="not(cbc:Name = 'EmissionFactorCalculationUnit') or contains($Quantity_unitCode, concat(',', normalize-space(cbc:Value), ','))"> [OIOUBL-Common-GP008] If AdditionalItemProperty/Name equals
+            'EmissionFactorCalculationUnit' then AdditionalItemProperty/Value must have a valid UnitCode value from the codelist urn:un:unece:uncefact:codelist:specification:66411:2001.
+        </sch:assert>
+
+        <sch:assert test="not(cbc:Name = 'CalculationRate') or (number(cbc:Value) = number(cbc:Value))">[OIOUBL-Common-GP009] If AdditionalItemProperty/Name is 'CalculationRate', then the AdditionalItemProperty/Value must be a valid numeric value
+        </sch:assert>
+    </sch:rule>
+
+    <!-- NHD-297 -->
+    <!-- Rule to validate that currencyID is set correct on all amount nodes -->
+    <sch:rule context="//*[cbc:Amount/@currencyID]">
+        <sch:assert test="contains($CurrencyCode, concat(',', cbc:Amount/@currencyID, ','))">[F-LIB403] Invalid CurrencyCode: '<sch:value-of select="cbc:Amount/@currencyID" />'. Must be a value from the codelist</sch:assert>
+    </sch:rule>
+
+    <!-- - - - - - - - - - - -  End common rules  - - - - - - - - - - -  -->
+</sch:pattern>
