@@ -307,6 +307,18 @@
             </configuration>
           </execution>
           -->
+          <!--
+          -->
+          <execution>
+            <id>reporting-tdd-ae</id>
+            <goals>
+              <goal>convert</goal>
+            </goals>
+            <configuration>
+              <schematronDirectory>src/test/resources/external/rule-source/tdd/ae</schematronDirectory>
+              <xsltDirectory>src/main/resources/external/schematron/tdd/ae/xslt</xsltDirectory>
+            </configuration>
+          </execution>
         </executions>
       </plugin>
     </plugins>

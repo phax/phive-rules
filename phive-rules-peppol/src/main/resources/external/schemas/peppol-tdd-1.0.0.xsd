@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:tns="urn:peppol:schema:taxdata:1.0"
+           xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+           xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+           xmlns:cec="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2"
+           xmlns:udt="urn:oasis:names:specification:ubl:schema:xsd:UnqualifiedDataTypes-2"
+           targetNamespace="urn:peppol:schema:taxdata:1.0"
+           elementFormDefault="qualified"
+           attributeFormDefault="unqualified">
+  <!-- 
+    OpenPeppol TDD schema
+    
+    History:
+      v1.0.0 - 2025-11-18 - Philip Helger
+        - Changed the namespace URI to "urn:peppol:schema:taxdata:1.0"
+        - Added "schemaLocation" attribute to XS imports
+      v1.0.0-RC - 2025-08-10 - Philip Helger
+        - initial version
+  -->
+  
+  <!-- All imports refer to OASIS UBL 2.1 imports -->
+  <!-- Note: schemaLocation improved for efficient processing -->
+  <xs:import namespace="urn:oasis:names:specification:ubl:schema:xsd:UnqualifiedDataTypes-2" />
+  <xs:import namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" />
+  <xs:import namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" />
+  <xs:import namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2" />
+  
+  <xs:annotation>
+    <xs:documentation>OpenPeppol TDD XML Schema</xs:documentation>
+  </xs:annotation>
+  
+  <!-- XSD derived types in UBL style -->
+
+  <xs:complexType name="TaxDataDocumentTypeCodeType">
+    <xs:simpleContent>
+      <xs:extension base="udt:CodeType" />
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <xs:complexType name="TaxDataDocumentScopeType">
+    <xs:simpleContent>
+      <xs:extension base="udt:CodeType" />
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <xs:complexType name="TaxDataDocumentReporterRoleType">
+    <xs:simpleContent>
+      <xs:extension base="udt:CodeType" />
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <xs:complexType name="TransportHeaderIDType">
+    <xs:simpleContent>
+      <xs:extension base="udt:IdentifierType" />
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <xs:complexType name="ReferencedDocumentTypeCodeType">
+    <xs:simpleContent>
+      <xs:extension base="udt:CodeType" />
+    </xs:simpleContent>
+  </xs:complexType>
+  
+  <xs:complexType name="MonetaryTotalType">
+    <xs:annotation>
+      <xs:documentation>
+        A specific version of the UBL LegalMonetaryTotal element where the payable amount is not mandatory
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element ref="cbc:TaxExclusiveAmount" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>
+            The total amount excluding taxes
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element ref="cbc:TaxInclusiveAmount" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>
+            The total amount including taxes
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="ReportedDocumentType">
+    <xs:sequence>
+      <xs:element ref="cbc:CustomizationID" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Reported Document Specification identifier</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+
+      <xs:element ref="cbc:ProfileID" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Reported Document Business process type</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+
+      <xs:element ref="cbc:ID" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Reported Document number</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+
+      <xs:element ref="cbc:UUID" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Reported Document unique ID</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      
+      <xs:element ref="cbc:IssueDate" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Reported Document issue date</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+
+      <xs:element ref="cbc:IssueTime" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Reported Document issue time</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+
+      <xs:element name="DocumentTypeCode" type="tns:ReferencedDocumentTypeCodeType" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Reported Document type code</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      
+      <xs:element ref="cbc:DocumentCurrencyCode" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Reported Document document currency code</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      
+      <xs:element ref="cbc:TaxCurrencyCode" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Reported Document accounting currency code</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      
+      <xs:element ref="cac:AccountingSupplierParty" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Reported Document accounting supplier party</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      
+      <xs:element ref="cac:AccountingCustomerParty" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Reported Document accounting customer party</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      
+      <xs:element ref="cac:TaxTotal" minOccurs="0" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>Reported Document tax total</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      
+      <xs:element name="MonetaryTotal" type="tns:MonetaryTotalType" minOccurs="0" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>Reported Document legal monetary total</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="CustomContentType">
+    <xs:sequence>
+      <xs:element ref="cbc:ID" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Contains the ID of the custom content field</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:choice>
+        <xs:element ref="cbc:Value" minOccurs="1" maxOccurs="1">
+          <xs:annotation>
+            <xs:documentation>Contains a custom content field which is a simple value</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element ref="cec:ExtensionContent" minOccurs="1" maxOccurs="1">
+          <xs:annotation>
+            <xs:documentation>Contains a custom content field which is a complex value</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+      </xs:choice>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="ReportedTransactionType">
+    <xs:sequence>
+      <xs:element name="TransportHeaderID" type="tns:TransportHeaderIDType" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Reported Document transport header (SBDH) unique ID</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+
+      <xs:element name="ReportedDocument" type="tns:ReportedDocumentType" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Contains the details of the Reported Document (if it could be read)</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+
+      <xs:element name="CustomContent" type="tns:CustomContentType" minOccurs="0" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>Custom content (e.g. distince elements)</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+
+      <xs:element name="SourceDocument" type="cec:UBLExtensionType" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Full source Document</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  
+
+  <xs:complexType name="TaxDataType">
+    <xs:annotation>
+      <xs:documentation>The data type for the root element</xs:documentation>
+    </xs:annotation>
+
+    <xs:sequence>
+      <xs:element ref="cbc:CustomizationID" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>TDD Specification identifier</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+
+      <xs:element ref="cbc:ProfileID" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>TDD Business process type</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+
+      <xs:element ref="cbc:ID" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>TDD number</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      
+      <xs:element ref="cbc:IssueDate" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>TDD issue date. Must not include a timezone.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+
+      <xs:element ref="cbc:IssueTime" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>TDD issue time. Must include the timezone.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+
+      <xs:element name="DocumentTypeCode" type="tns:TaxDataDocumentTypeCodeType" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>TDD type code</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+
+      <xs:element name="DocumentScope" type="tns:TaxDataDocumentScopeType" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>TDD scope</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+
+      <xs:element name="ReporterRole" type="tns:TaxDataDocumentReporterRoleType" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>Reporters role</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      
+      <xs:element name="ReportingParty" type="cac:PartyType" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>TDD Reporter</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      
+      <xs:element name="ReceivingParty" type="cac:PartyType" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>TDD Receiver - usually a Tax Authority</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+     
+      <xs:element name="ReportersRepresentative" type="cac:PartyType" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>TDD Reporters Representative</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+     
+      <xs:element name="ReportedTransaction" type="tns:ReportedTransactionType" minOccurs="0" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation>Contains the details on the transmissions this TDD refers to</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:element name="TaxData" type="tns:TaxDataType" />
+</xs:schema>

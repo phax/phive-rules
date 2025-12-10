@@ -49,6 +49,7 @@ import com.helger.phive.peppol.PeppolValidationPintJP_SB;
 import com.helger.phive.peppol.PeppolValidationPintMY;
 import com.helger.phive.peppol.PeppolValidationPintSG;
 import com.helger.phive.peppol.PeppolValidationReporting;
+import com.helger.phive.peppol.PeppolValidationTaxData;
 import com.helger.phive.xml.source.IValidationSourceXML;
 
 @Immutable
@@ -163,6 +164,9 @@ public final class CTestFiles
 
                                                             PeppolValidationReporting.VID_OPENPEPPOL_TSR_V104,
                                                             PeppolValidationReporting.VID_OPENPEPPOL_TSR_V105,
+
+                                                            /* Peppol TaxData */
+                                                            PeppolValidationTaxData.VID_OPENPEPPOL_TDD_AE_1_0_0,
 
                                                             /* PINT AE */
                                                             PeppolValidationPintAE.VID_OPENPEPPOL_AE_PINT_INVOICE_0_9_0,
@@ -812,6 +816,16 @@ public final class CTestFiles
                                       new FileSystemResource (sPrefix + "transaction-statistics-3.xml"),
                                       new FileSystemResource (sPrefix + "transaction-statistics-4.xml"),
                                       new FileSystemResource (sPrefix + "transaction-statistics-minimal.xml"));
+    }
+
+    // TaxData
+    if (aVESID.equals (PeppolValidationTaxData.VID_OPENPEPPOL_TDD_AE_1_0_0))
+    {
+      final String sPrefix = sPrefix0 + "tdd/ae/1.0.0/";
+      return new CommonsArrayList <> (new FileSystemResource (sPrefix + "commercial-invoice-tdd.xml"),
+                                      new FileSystemResource (sPrefix + "simple.xml"),
+                                      new FileSystemResource (sPrefix + "standard-invoice-tdd.xml"),
+                                      new FileSystemResource (sPrefix + "tax-currency.xml"));
     }
 
     /* PINT AE */

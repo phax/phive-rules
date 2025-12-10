@@ -228,6 +228,9 @@ I hope that with the introduction of PINT, the versioning problem will be solved
 
 # News and noteworthy
 
+v4.1.2 - work in progress
+* Added support for Peppol AE Tax Data Document v1.0.0
+
 v4.1.1 - 2025-11-18
 * Added support for CDAR D22B XML Schema
 * Added support for France CTC 1.2.0 validation rules and deprecated rules v0.1 (on UBL, CII and CDAR)
