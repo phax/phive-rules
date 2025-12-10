@@ -113,7 +113,7 @@ public final class FranceCTCValidation
                                                                              "France CTC CII " +
                                                                                                  VID_FR_CTC_CII_0_1.getVersionString (),
                                                                              PhiveRulesHelper.createSimpleStatus (bDeprecated),
-                                                                             ValidationExecutorXSD.create (CCIID22B.getXSDResource ()),
+                                                                             ValidationExecutorXSD.create (CCIID22B.getXSDResourceCII ()),
                                                                              PhiveRulesCIIHelper.createXSLT_CII_D22B (new ClassPathResource (sPrefix0 +
                                                                                                                                              "20250731_BR-FR-Flux2-Schematron-CII_V0.1.xslt",
                                                                                                                                              _getCL ()))));

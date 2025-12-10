@@ -63,6 +63,7 @@ public final class PeppolValidation2025_03
     return PeppolValidation2025_03.class.getClassLoader ();
   }
 
+  @SuppressWarnings ("deprecation")
   public static void init (@NonNull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
   {
     ValueEnforcer.notNull (aRegistry, "Registry");

@@ -72,7 +72,7 @@
     <ph-cii.version>4.1.1</ph-cii.version>
     <ph-ebinterface.version>8.1.0</ph-ebinterface.version>
     <ph-fatturapa.version>3.1.0</ph-fatturapa.version>
-    <ph-schematron.version>9.1.1-SNAPSHOT</ph-schematron.version>
+    <ph-schematron.version>9.1.1</ph-schematron.version>
     <ph-ubl.version>10.1.0</ph-ubl.version>
   </properties>
   
@@ -102,7 +102,7 @@
       <dependency>
         <groupId>com.helger.phive</groupId>
         <artifactId>phive-parent-pom</artifactId>
-        <version>11.1.0</version>
+        <version>11.1.1</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>

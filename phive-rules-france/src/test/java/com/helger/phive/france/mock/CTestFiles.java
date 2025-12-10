@@ -46,6 +46,7 @@ public final class CTestFiles
   private CTestFiles ()
   {}
 
+  @SuppressWarnings ("deprecation")
   @NonNull
   @ReturnsMutableCopy
   public static ICommonsList <PhiveTestFile> getAllTestFiles ()
@@ -67,6 +68,7 @@ public final class CTestFiles
     return ret;
   }
 
+  @SuppressWarnings ("deprecation")
   @NonNull
   @ReturnsMutableCopy
   public static ICommonsList <? extends IReadableResource> getAllMatchingTestFiles (@NonNull final DVRCoordinate aVESID)
