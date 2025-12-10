@@ -233,6 +233,8 @@ v4.1.2 - work in progress
 * Added support for ZuGFERD 2.4 - all profiles (XML only). See [#44](https://github.com/phax/phive-rules/issues/44)
 * Deprected ZuGFERD 2.3.2 version
 * Added OIOUBL 1.16.1 rules. See [#42](https://github.com/phax/phive-rules/issues/42) - thx @NielsenEDI
+* Deprecated Simplerinvoicing Invoice 2.0.3.10, Simplerinvoicing 2.0 G-Account extension 1.0.10 and NLCIUS-CII 1.0.3.9
+* Added Simplerinvoicing Invoice 2.0.3.12, Simplerinvoicing 2.0 G-Account extension 1.0.12 and NLCIUS-CII 1.0.3.12. See [#45](https://github.com/phax/phive-rules/issues/45)
 
 v4.1.1 - 2025-11-18
 * Added support for CDAR D22B XML Schema

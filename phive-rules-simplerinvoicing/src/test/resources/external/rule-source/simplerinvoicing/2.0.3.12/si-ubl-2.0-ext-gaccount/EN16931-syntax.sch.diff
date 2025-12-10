@@ -1,0 +1,41 @@
+--- ./ubl/schematron/abstract/EN16931-syntax.sch	2023-11-07 16:59:27.818872136 +0100
++++ /home/jelte/ionite/repos/validation/schematron/si-ubl-2.0-ext-gaccount/EN16931-syntax-modified.sch	2023-11-07 17:01:25.303439672 +0100
+@@ -2,6 +2,13 @@
+ 
+     Licensed under European Union Public Licence (EUPL) version 1.2.
+ 
++    Original file: ubl/schematron/abstract/EN16931-syntax.sch
++
++    Modifications:
++    - removed rule UBL-CR-411
++    - removed rule UBL-CR-453
++    - removed rule UBL-CR-459
++
+ -->
+ <!-- Abstract rules for syntax -->
+ <pattern xmlns="http://purl.oclc.org/dsdl/schematron" abstract="true" id="syntax">
+@@ -441,7 +448,7 @@
+     <assert test="$UBL-CR-408" flag="warning" id="UBL-CR-408">[UBL-CR-408]-A UBL invoice should not include the Delivery MaximumDeliveryUnit</assert>
+     <assert test="$UBL-CR-409" flag="warning" id="UBL-CR-409">[UBL-CR-409]-A UBL invoice should not include the Delivery Shipment</assert>
+     <assert test="$UBL-CR-410" flag="warning" id="UBL-CR-410">[UBL-CR-410]-A UBL invoice should not include the DeliveryTerms</assert>
+-    <assert test="$UBL-CR-411" flag="warning" id="UBL-CR-411">[UBL-CR-411]-A UBL invoice should not include the PaymentMeans ID</assert>
++    <!--<assert test="$UBL-CR-411" flag="warning" id="UBL-CR-411">[UBL-CR-411]-A UBL invoice should not include the PaymentMeans ID</assert>-->
+     <assert test="$UBL-CR-412" flag="warning" id="UBL-CR-412">[UBL-CR-412]-A UBL invoice should not include the PaymentMeans PaymentDueDate</assert>
+     <assert test="$UBL-CR-413" flag="warning" id="UBL-CR-413">[UBL-CR-413]-A UBL invoice should not include the PaymentMeans PaymentChannelCode</assert>
+     <assert test="$UBL-CR-414" flag="warning" id="UBL-CR-414">[UBL-CR-414]-A UBL invoice should not include the PaymentMeans InstructionID</assert>
+@@ -482,13 +489,13 @@
+     <assert test="$UBL-CR-450" flag="warning" id="UBL-CR-450">[UBL-CR-450]-A UBL invoice should not include the PaymentMeans PaymentMandate Clause</assert>
+     <assert test="$UBL-CR-451" flag="warning" id="UBL-CR-451">[UBL-CR-451]-A UBL invoice should not include the PaymentMeans TradeFinancing</assert>
+     <assert test="$UBL-CR-452" flag="warning" id="UBL-CR-452">[UBL-CR-452]-A UBL invoice should not include the PaymentTerms ID</assert>
+-    <assert test="$UBL-CR-453" flag="warning" id="UBL-CR-453">[UBL-CR-453]-A UBL invoice should not include the PaymentTerms PaymentMeansID</assert>
++    <!--<assert test="$UBL-CR-453" flag="warning" id="UBL-CR-453">[UBL-CR-453]-A UBL invoice should not include the PaymentTerms PaymentMeansID</assert>-->
+     <assert test="$UBL-CR-454" flag="warning" id="UBL-CR-454">[UBL-CR-454]-A UBL invoice should not include the PaymentTerms PrepaidPaymentReferenceID</assert>
+     <assert test="$UBL-CR-455" flag="warning" id="UBL-CR-455">[UBL-CR-455]-A UBL invoice should not include the PaymentTerms ReferenceEventCode</assert>
+     <assert test="$UBL-CR-456" flag="warning" id="UBL-CR-456">[UBL-CR-456]-A UBL invoice should not include the PaymentTerms SettlementDiscountPercent</assert>
+     <assert test="$UBL-CR-457" flag="warning" id="UBL-CR-457">[UBL-CR-457]-A UBL invoice should not include the PaymentTerms PenaltySurchargePercent</assert>
+     <assert test="$UBL-CR-458" flag="warning" id="UBL-CR-458">[UBL-CR-458]-A UBL invoice should not include the PaymentTerms PaymentPercent</assert>
+-    <assert test="$UBL-CR-459" flag="warning" id="UBL-CR-459">[UBL-CR-459]-A UBL invoice should not include the PaymentTerms Amount</assert>
++    <!--<assert test="$UBL-CR-459" flag="warning" id="UBL-CR-459">[UBL-CR-459]-A UBL invoice should not include the PaymentTerms Amount</assert>-->
+     <assert test="$UBL-CR-460" flag="warning" id="UBL-CR-460">[UBL-CR-460]-A UBL invoice should not include the PaymentTerms SettlementDiscountAmount</assert>
+     <assert test="$UBL-CR-461" flag="warning" id="UBL-CR-461">[UBL-CR-461]-A UBL invoice should not include the PaymentTerms PenaltyAmount</assert>
+     <assert test="$UBL-CR-462" flag="warning" id="UBL-CR-462">[UBL-CR-462]-A UBL invoice should not include the PaymentTerms PaymentTermsDetailsURI</assert>
