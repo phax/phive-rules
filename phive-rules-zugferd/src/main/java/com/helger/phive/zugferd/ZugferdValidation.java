@@ -116,18 +116,23 @@ public final class ZugferdValidation
                                                                                                   "2.2");
 
   // v2.3.2
+  @Deprecated
   public static final DVRCoordinate VID_ZUGFERD_2_3_2_MINIMUM = PhiveRulesHelper.createCoordinate (GROUP_ID_ZUGFERD,
                                                                                                    EZugferdProfile.MINIMUM.getArtifactID (),
                                                                                                    "2.3.2");
+  @Deprecated
   public static final DVRCoordinate VID_ZUGFERD_2_3_2_BASIC_WL = PhiveRulesHelper.createCoordinate (GROUP_ID_ZUGFERD,
                                                                                                     EZugferdProfile.BASIC_WL.getArtifactID (),
                                                                                                     "2.3.2");
+  @Deprecated
   public static final DVRCoordinate VID_ZUGFERD_2_3_2_BASIC = PhiveRulesHelper.createCoordinate (GROUP_ID_ZUGFERD,
                                                                                                  EZugferdProfile.BASIC.getArtifactID (),
                                                                                                  "2.3.2");
+  @Deprecated
   public static final DVRCoordinate VID_ZUGFERD_2_3_2_EN16931 = PhiveRulesHelper.createCoordinate (GROUP_ID_ZUGFERD,
                                                                                                    EZugferdProfile.EN16931.getArtifactID (),
                                                                                                    "2.3.2");
+  @Deprecated
   public static final DVRCoordinate VID_ZUGFERD_2_3_2_EXTENDED = PhiveRulesHelper.createCoordinate (GROUP_ID_ZUGFERD,
                                                                                                     EZugferdProfile.EXTENDED.getArtifactID (),
                                                                                                     "2.3.2");
@@ -149,6 +154,23 @@ public final class ZugferdValidation
                                                                                                     EZugferdProfile.EXTENDED.getArtifactID (),
                                                                                                     "2.3.3");
 
+  // v2.4
+  public static final DVRCoordinate VID_ZUGFERD_2_4_MINIMUM = PhiveRulesHelper.createCoordinate (GROUP_ID_ZUGFERD,
+                                                                                                 EZugferdProfile.MINIMUM.getArtifactID (),
+                                                                                                 "2.4");
+  public static final DVRCoordinate VID_ZUGFERD_2_4_BASIC_WL = PhiveRulesHelper.createCoordinate (GROUP_ID_ZUGFERD,
+                                                                                                  EZugferdProfile.BASIC_WL.getArtifactID (),
+                                                                                                  "2.4");
+  public static final DVRCoordinate VID_ZUGFERD_2_4_BASIC = PhiveRulesHelper.createCoordinate (GROUP_ID_ZUGFERD,
+                                                                                               EZugferdProfile.BASIC.getArtifactID (),
+                                                                                               "2.4");
+  public static final DVRCoordinate VID_ZUGFERD_2_4_EN16931 = PhiveRulesHelper.createCoordinate (GROUP_ID_ZUGFERD,
+                                                                                                 EZugferdProfile.EN16931.getArtifactID (),
+                                                                                                 "2.4");
+  public static final DVRCoordinate VID_ZUGFERD_2_4_EXTENDED = PhiveRulesHelper.createCoordinate (GROUP_ID_ZUGFERD,
+                                                                                                  EZugferdProfile.EXTENDED.getArtifactID (),
+                                                                                                  "2.4");
+
   // Global version map
   private static final ICommonsMap <DVRVersion, DVRVersion> ZUGFERD_TO_FACTURX_MAP = new CommonsHashMap <> ();
   static
@@ -158,6 +180,7 @@ public final class ZugferdValidation
     ZUGFERD_TO_FACTURX_MAP.put (DVRVersion.parseOrNull ("2.2"), DVRVersion.parseOrNull ("1.0.6"));
     ZUGFERD_TO_FACTURX_MAP.put (DVRVersion.parseOrNull ("2.3.2"), DVRVersion.parseOrNull ("1.0.7-2"));
     ZUGFERD_TO_FACTURX_MAP.put (DVRVersion.parseOrNull ("2.3.3"), DVRVersion.parseOrNull ("1.0.7-3"));
+    ZUGFERD_TO_FACTURX_MAP.put (DVRVersion.parseOrNull ("2.4"), DVRVersion.parseOrNull ("1.0.8"));
   }
 
   private ZugferdValidation ()
@@ -410,6 +433,40 @@ public final class ZugferdValidation
                                                                                                                                                               sZugferdVersion +
                                                                                                                                                               "/Factur-X_1.07.3_" +
                                                                                                                                                               eProfile.getFilenameSuffix () +
+                                                                                                                                                              ".xslt",
+                                                                                                                                                              _getCL ())));
+      aRegistry.registerValidationExecutorSet (aVES);
+
+      // Also register alias as Factur-X
+      _registerFacturXAlias (aRegistry, eProfile, aVES);
+    }
+
+    // Zugferd 2.4 / Factur-X 1.0.8
+    for (final EZugferdProfile eProfile : EZugferdProfile.values ())
+    {
+      final String sZugferdVersion = "2.4";
+
+      final ValidationExecutorSet <IValidationSourceXML> aVES = ValidationExecutorSet.create (PhiveRulesHelper.createCoordinate (GROUP_ID_ZUGFERD,
+                                                                                                                                 eProfile.getArtifactID (),
+                                                                                                                                 sZugferdVersion),
+                                                                                              "ZUGFeRD " +
+                                                                                                                                                   sZugferdVersion +
+                                                                                                                                                   " (" +
+                                                                                                                                                   eProfile.getDisplayName () +
+                                                                                                                                                   ")",
+                                                                                              PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
+                                                                                              ValidationExecutorXSD.create (new ClassPathResource ("/external/schemas/" +
+                                                                                                                                                   sZugferdVersion +
+                                                                                                                                                   "/" +
+                                                                                                                                                   eProfile.getFolderName () +
+                                                                                                                                                   "/FACTUR-X_" +
+                                                                                                                                                   eProfile.getFilenameSuffix24onwards () +
+                                                                                                                                                   ".xsd",
+                                                                                                                                                   _getCL ())),
+                                                                                              PhiveRulesCIIHelper.createXSLT_CII_D22B (new ClassPathResource ("/external/schematron/" +
+                                                                                                                                                              sZugferdVersion +
+                                                                                                                                                              "/FACTUR-X_" +
+                                                                                                                                                              eProfile.getFilenameSuffix24onwards () +
                                                                                                                                                               ".xslt",
                                                                                                                                                               _getCL ())));
       aRegistry.registerValidationExecutorSet (aVES);

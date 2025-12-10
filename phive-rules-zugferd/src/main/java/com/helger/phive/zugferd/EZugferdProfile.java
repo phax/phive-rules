@@ -27,25 +27,28 @@ import com.helger.annotation.Nonempty;
  */
 public enum EZugferdProfile
 {
-  MINIMUM ("minimum", "minimum", "MINIMUM", "MINIMUM"),
-  BASIC_WL ("basicwl", "basicwl", "BASICWL", "BASIC WL"),
-  BASIC ("basic", "basic", "BASIC", "BASIC"),
-  EN16931 ("en16931", "en16931", "EN16931", "EN 16931"),
-  EXTENDED ("extended", "extended", "EXTENDED", "EXTENDED");
+  MINIMUM ("minimum", "minimum", "MINIMUM", "MINIMUM", "MINIMUM"),
+  BASIC_WL ("basicwl", "basicwl", "BASICWL", "BASIC-WL", "BASIC WL"),
+  BASIC ("basic", "basic", "BASIC", "BASIC", "BASIC"),
+  EN16931 ("en16931", "en16931", "EN16931", "EN16931", "EN 16931"),
+  EXTENDED ("extended", "extended", "EXTENDED", "EXTENDED", "EXTENDED");
 
   private final String m_sArtifactID;
   private final String m_sFolderName;
   private final String m_sFilenameSuffix;
+  private final String m_sFilenameSuffix24onwards;
   private final String m_sDisplayName;
 
   EZugferdProfile (@NonNull @Nonempty final String sArtifactID,
                    @NonNull @Nonempty final String sFolderName,
                    @NonNull @Nonempty final String sFilenameSuffix,
+                   @NonNull @Nonempty final String sFilenameSuffix24onwards,
                    @NonNull @Nonempty final String sDisplayName)
   {
     m_sArtifactID = sArtifactID;
     m_sFolderName = sFolderName;
     m_sFilenameSuffix = sFilenameSuffix;
+    m_sFilenameSuffix24onwards = sFilenameSuffix24onwards;
     m_sDisplayName = sDisplayName;
   }
 
@@ -68,6 +71,13 @@ public enum EZugferdProfile
   public String getFilenameSuffix ()
   {
     return m_sFilenameSuffix;
+  }
+
+  @NonNull
+  @Nonempty
+  public String getFilenameSuffix24onwards ()
+  {
+    return m_sFilenameSuffix24onwards;
   }
 
   @NonNull

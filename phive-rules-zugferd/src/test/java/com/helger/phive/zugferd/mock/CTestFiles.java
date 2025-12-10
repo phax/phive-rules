@@ -89,7 +89,14 @@ public final class CTestFiles
                                                              ZugferdValidation.VID_ZUGFERD_2_3_3_BASIC_WL,
                                                              ZugferdValidation.VID_ZUGFERD_2_3_3_BASIC,
                                                              ZugferdValidation.VID_ZUGFERD_2_3_3_EN16931,
-                                                             ZugferdValidation.VID_ZUGFERD_2_3_3_EXTENDED })
+                                                             ZugferdValidation.VID_ZUGFERD_2_3_3_EXTENDED,
+
+                                                             // 2.4
+                                                             ZugferdValidation.VID_ZUGFERD_2_4_MINIMUM,
+                                                             ZugferdValidation.VID_ZUGFERD_2_4_BASIC_WL,
+                                                             ZugferdValidation.VID_ZUGFERD_2_4_BASIC,
+                                                             ZugferdValidation.VID_ZUGFERD_2_4_EN16931,
+                                                             ZugferdValidation.VID_ZUGFERD_2_4_EXTENDED })
       for (final IReadableResource aRes : getAllMatchingTestFiles (aVESID))
       {
         assertTrue ("Not existing test file: " + aRes.getPath (), aRes.exists ());
@@ -204,6 +211,20 @@ public final class CTestFiles
         return _createListFacturX (sVersion, 22, EZugferdProfile.EN16931);
       if (aVESID.equals (ZugferdValidation.VID_ZUGFERD_2_3_3_EXTENDED))
         return _createListFacturX (sVersion, 6, EZugferdProfile.EXTENDED);
+    }
+
+    {
+      final String sVersion = "2.4";
+      if (aVESID.equals (ZugferdValidation.VID_ZUGFERD_2_4_MINIMUM))
+        return _createListFacturX (sVersion, 2, EZugferdProfile.MINIMUM);
+      if (aVESID.equals (ZugferdValidation.VID_ZUGFERD_2_4_BASIC_WL))
+        return _createListFacturX (sVersion, 2, EZugferdProfile.BASIC_WL);
+      if (aVESID.equals (ZugferdValidation.VID_ZUGFERD_2_4_BASIC))
+        return _createListFacturX (sVersion, 3, EZugferdProfile.BASIC);
+      if (aVESID.equals (ZugferdValidation.VID_ZUGFERD_2_4_EN16931))
+        return _createListFacturX (sVersion, 25, EZugferdProfile.EN16931);
+      if (aVESID.equals (ZugferdValidation.VID_ZUGFERD_2_4_EXTENDED))
+        return _createListFacturX (sVersion, 18, EZugferdProfile.EXTENDED);
     }
 
     throw new IllegalArgumentException ("Invalid VESID: " + aVESID);
