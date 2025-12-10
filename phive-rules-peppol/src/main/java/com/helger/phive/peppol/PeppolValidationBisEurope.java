@@ -49,13 +49,13 @@ public final class PeppolValidationBisEurope
   public static String getVersionToUse ()
   {
     final LocalDate aNow = PDTFactory.getCurrentLocalDate ();
-    if (aNow.isBefore (PeppolValidation2025_05.VALID_PER))
+    if (aNow.isBefore (PeppolValidation2025_11.VALID_PER))
     {
       // Previous version
-      return PeppolValidation2024_11.VERSION_STR;
+      return PeppolValidation2025_05.VERSION_STR;
     }
     // Latest version
-    return PeppolValidation2025_05.VERSION_STR;
+    return PeppolValidation2025_11.VERSION_STR;
   }
 
   // @SuppressWarnings ("deprecation")
@@ -67,5 +67,6 @@ public final class PeppolValidationBisEurope
     PeppolValidation2024_11.init (aRegistry);
     PeppolValidation2025_03.init (aRegistry);
     PeppolValidation2025_05.init (aRegistry);
+    PeppolValidation2025_11.init (aRegistry);
   }
 }

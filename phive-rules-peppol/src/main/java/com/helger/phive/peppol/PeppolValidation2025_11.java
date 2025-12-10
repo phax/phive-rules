@@ -39,20 +39,19 @@ import com.helger.ubl21.UBL21Marshaller;
 import com.helger.ubl23.UBL23Marshaller;
 
 /**
- * OpenPeppol validation artefacts release 2024.11.<br>
- * November 2024 release 2024-05-27.<br>
- * Valid from Monday, 17 February 2025
+ * OpenPeppol validation artefacts release 2025-Q4.<br>
+ * Announcement date: 2025-11-24.<br>
+ * Valid from: Monday 2026-02-23
  *
  * @author Philip Helger
  */
 @Immutable
-@Deprecated
-public final class PeppolValidation2024_11
+public final class PeppolValidation2025_11
 {
   // Standard resources
-  public static final Version PEPPOL_VALIDATION_ARTEFACT_VERSION = new Version (2024, 11, 0);
+  public static final Version PEPPOL_VALIDATION_ARTEFACT_VERSION = new Version (2025, 11, 0);
   public static final String VERSION_STR = PEPPOL_VALIDATION_ARTEFACT_VERSION.getAsString (false);
-  public static final LocalDate VALID_PER = PDTFactory.createLocalDate (2025, Month.FEBRUARY, 17);
+  public static final LocalDate VALID_PER = PDTFactory.createLocalDate (2026, Month.FEBRUARY, 23);
   public static final OffsetDateTime VALID_PER_UTC = PDTFactory.createOffsetDateTimeUTC (VALID_PER);
 
   // Standard
@@ -103,13 +102,13 @@ public final class PeppolValidation2024_11
                                                                                                                    "order-response-advanced",
                                                                                                                    VERSION_STR);
 
-  private PeppolValidation2024_11 ()
+  private PeppolValidation2025_11 ()
   {}
 
   @NonNull
   private static ClassLoader _getCL ()
   {
-    return PeppolValidation2024_11.class.getClassLoader ();
+    return PeppolValidation2025_11.class.getClassLoader ();
   }
 
   public static void init (@NonNull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
@@ -118,11 +117,11 @@ public final class PeppolValidation2024_11
 
     final String sVersion = " (" + VERSION_STR + ")";
     // See https://docs.peppol.eu/poacc/billing/3.0/release-notes/
-    final String sAkaVersionBilling = " (aka BIS Billing 3.0.18)";
+    final String sAkaVersionBilling = " (aka BIS Billing 3.0.20)";
     // See https://docs.peppol.eu/poacc/upgrade-3/release-notes/
-    final String sAkaVersionBIS = " (aka BIS 3.0.14)";
+    final String sAkaVersionBIS = " (aka BIS 3.0.16)";
 
-    final boolean bDeprecated = true;
+    final boolean bNotDeprecated = false;
 
     final String PREFIX_XSLT = "external/schematron/openpeppol/" + VERSION_STR + "/xslt/";
     final IReadableResource INVOICE_UBL_CEN = new ClassPathResource (PREFIX_XSLT + "CEN-EN16931-UBL.xslt", _getCL ());
@@ -147,7 +146,7 @@ public final class PeppolValidation2024_11
                                                                            "OpenPeppol UBL Invoice" +
                                                                                                           sVersion +
                                                                                                           sAkaVersionBilling,
-                                                                           PhiveRulesHelper.createSimpleStatus (bDeprecated,
+                                                                           PhiveRulesHelper.createSimpleStatus (bNotDeprecated,
                                                                                                                 VALID_PER_UTC),
                                                                            ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
                                                                            PhiveRulesUBLHelper.createXSLT_UBL21 (INVOICE_UBL_CEN),
@@ -156,7 +155,7 @@ public final class PeppolValidation2024_11
                                                                            "OpenPeppol UBL Credit Note" +
                                                                                                               sVersion +
                                                                                                               sAkaVersionBilling,
-                                                                           PhiveRulesHelper.createSimpleStatus (bDeprecated,
+                                                                           PhiveRulesHelper.createSimpleStatus (bNotDeprecated,
                                                                                                                 VALID_PER_UTC),
                                                                            ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
                                                                            PhiveRulesUBLHelper.createXSLT_UBL21 (INVOICE_UBL_CEN),
@@ -174,7 +173,7 @@ public final class PeppolValidation2024_11
                                                                            "OpenPeppol Order" +
                                                                                                     sVersion +
                                                                                                     sAkaVersionBIS,
-                                                                           PhiveRulesHelper.createSimpleStatus (bDeprecated,
+                                                                           PhiveRulesHelper.createSimpleStatus (bNotDeprecated,
                                                                                                                 VALID_PER_UTC),
                                                                            ValidationExecutorXSD.create (UBL21Marshaller.getAllOrderXSDs ()),
                                                                            PhiveRulesUBLHelper.createXSLT_UBL21 (ORDER)));
@@ -182,7 +181,7 @@ public final class PeppolValidation2024_11
                                                                            "OpenPeppol Despatch Advice" +
                                                                                                               sVersion +
                                                                                                               sAkaVersionBIS,
-                                                                           PhiveRulesHelper.createSimpleStatus (bDeprecated,
+                                                                           PhiveRulesHelper.createSimpleStatus (bNotDeprecated,
                                                                                                                 VALID_PER_UTC),
                                                                            ValidationExecutorXSD.create (UBL21Marshaller.getAllDespatchAdviceXSDs ()),
                                                                            PhiveRulesUBLHelper.createXSLT_UBL21 (DESPATCH_ADVICE)));
@@ -190,7 +189,7 @@ public final class PeppolValidation2024_11
                                                                            "OpenPeppol Catalogue" +
                                                                                                         sVersion +
                                                                                                         sAkaVersionBIS,
-                                                                           PhiveRulesHelper.createSimpleStatus (bDeprecated,
+                                                                           PhiveRulesHelper.createSimpleStatus (bNotDeprecated,
                                                                                                                 VALID_PER_UTC),
                                                                            ValidationExecutorXSD.create (UBL21Marshaller.getAllCatalogueXSDs ()),
                                                                            PhiveRulesUBLHelper.createXSLT_UBL21 (CATALOGUE)));
@@ -198,13 +197,13 @@ public final class PeppolValidation2024_11
                                                                            "OpenPeppol Catalogue Response" +
                                                                                                                  sVersion +
                                                                                                                  sAkaVersionBIS,
-                                                                           PhiveRulesHelper.createSimpleStatus (bDeprecated,
+                                                                           PhiveRulesHelper.createSimpleStatus (bNotDeprecated,
                                                                                                                 VALID_PER_UTC),
                                                                            ValidationExecutorXSD.create (UBL21Marshaller.getAllApplicationResponseXSDs ()),
                                                                            PhiveRulesUBLHelper.createXSLT_UBL21 (CATALOGUE_RESPONSE)));
     aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_MLR_V3,
                                                                            "OpenPeppol MLR" + sVersion + sAkaVersionBIS,
-                                                                           PhiveRulesHelper.createSimpleStatus (bDeprecated,
+                                                                           PhiveRulesHelper.createSimpleStatus (bNotDeprecated,
                                                                                                                 VALID_PER_UTC),
                                                                            ValidationExecutorXSD.create (UBL21Marshaller.getAllApplicationResponseXSDs ()),
                                                                            PhiveRulesUBLHelper.createXSLT_UBL21 (MLR)));
@@ -212,7 +211,7 @@ public final class PeppolValidation2024_11
                                                                            "OpenPeppol Order Response" +
                                                                                                              sVersion +
                                                                                                              sAkaVersionBIS,
-                                                                           PhiveRulesHelper.createSimpleStatus (bDeprecated,
+                                                                           PhiveRulesHelper.createSimpleStatus (bNotDeprecated,
                                                                                                                 VALID_PER_UTC),
                                                                            ValidationExecutorXSD.create (UBL21Marshaller.getAllOrderResponseXSDs ()),
                                                                            PhiveRulesUBLHelper.createXSLT_UBL21 (ORDER_RESPONSE)));
@@ -220,7 +219,7 @@ public final class PeppolValidation2024_11
                                                                            "OpenPeppol Punch Out" +
                                                                                                         sVersion +
                                                                                                         sAkaVersionBIS,
-                                                                           PhiveRulesHelper.createSimpleStatus (bDeprecated,
+                                                                           PhiveRulesHelper.createSimpleStatus (bNotDeprecated,
                                                                                                                 VALID_PER_UTC),
                                                                            ValidationExecutorXSD.create (UBL21Marshaller.getAllCatalogueXSDs ()),
                                                                            PhiveRulesUBLHelper.createXSLT_UBL21 (PUNCH_OUT)));
@@ -228,7 +227,7 @@ public final class PeppolValidation2024_11
                                                                            "OpenPeppol Order Agreement" +
                                                                                                               sVersion +
                                                                                                               sAkaVersionBIS,
-                                                                           PhiveRulesHelper.createSimpleStatus (bDeprecated,
+                                                                           PhiveRulesHelper.createSimpleStatus (bNotDeprecated,
                                                                                                                 VALID_PER_UTC),
                                                                            ValidationExecutorXSD.create (UBL21Marshaller.getAllOrderResponseXSDs ()),
                                                                            PhiveRulesUBLHelper.createXSLT_UBL21 (ORDER_AGREEMENT)));
@@ -236,7 +235,7 @@ public final class PeppolValidation2024_11
                                                                            "OpenPeppol Invoice Message Response" +
                                                                                                                        sVersion +
                                                                                                                        sAkaVersionBIS,
-                                                                           PhiveRulesHelper.createSimpleStatus (bDeprecated,
+                                                                           PhiveRulesHelper.createSimpleStatus (bNotDeprecated,
                                                                                                                 VALID_PER_UTC),
                                                                            ValidationExecutorXSD.create (UBL21Marshaller.getAllApplicationResponseXSDs ()),
                                                                            PhiveRulesUBLHelper.createXSLT_UBL21 (INVOICE_MESSAGE_RESPONSE)));
@@ -245,7 +244,7 @@ public final class PeppolValidation2024_11
                                                                            "OpenPeppol Order Change" +
                                                                                                            sVersion +
                                                                                                            sAkaVersionBIS,
-                                                                           PhiveRulesHelper.createSimpleStatus (bDeprecated,
+                                                                           PhiveRulesHelper.createSimpleStatus (bNotDeprecated,
                                                                                                                 VALID_PER_UTC),
                                                                            ValidationExecutorXSD.create (UBL23Marshaller.getAllOrderChangeXSDs ()),
                                                                            PhiveRulesUBLHelper.createXSLT_UBL23 (ORDER_CHANGE)));
@@ -254,7 +253,7 @@ public final class PeppolValidation2024_11
                                                                            "OpenPeppol Order Cancellation" +
                                                                                                                  sVersion +
                                                                                                                  sAkaVersionBIS,
-                                                                           PhiveRulesHelper.createSimpleStatus (bDeprecated,
+                                                                           PhiveRulesHelper.createSimpleStatus (bNotDeprecated,
                                                                                                                 VALID_PER_UTC),
                                                                            ValidationExecutorXSD.create (UBL23Marshaller.getAllOrderCancellationXSDs ()),
                                                                            PhiveRulesUBLHelper.createXSLT_UBL23 (ORDER_CANCELLATION)));
@@ -263,7 +262,7 @@ public final class PeppolValidation2024_11
                                                                            "OpenPeppol Order Response Advanced" +
                                                                                                                       sVersion +
                                                                                                                       sAkaVersionBIS,
-                                                                           PhiveRulesHelper.createSimpleStatus (bDeprecated,
+                                                                           PhiveRulesHelper.createSimpleStatus (bNotDeprecated,
                                                                                                                 VALID_PER_UTC),
                                                                            ValidationExecutorXSD.create (UBL23Marshaller.getAllOrderResponseXSDs ()),
                                                                            PhiveRulesUBLHelper.createXSLT_UBL23 (ORDER_RESPONSE_ADVANCED)));
