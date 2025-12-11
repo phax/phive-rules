@@ -52,9 +52,11 @@ public final class PeppolValidationPint
                                                                                                                "1.0.0");
 
   // 1.0.1
+  @Deprecated
   public static final DVRCoordinate VID_OPENPEPPOL_PINT_INVOICE_1_0_1 = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                                            "invoice",
                                                                                                            "1.0.1");
+  @Deprecated
   public static final DVRCoordinate VID_OPENPEPPOL_PINT_CREDIT_NOTE_1_0_1 = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                                                "credit-note",
                                                                                                                "1.0.1");
@@ -66,6 +68,14 @@ public final class PeppolValidationPint
   public static final DVRCoordinate VID_OPENPEPPOL_PINT_CREDIT_NOTE_1_0_2 = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                                                "credit-note",
                                                                                                                "1.0.2");
+
+  // 1.1.2
+  public static final DVRCoordinate VID_OPENPEPPOL_PINT_INVOICE_1_1_2 = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                           "invoice",
+                                                                                                           "1.1.2");
+  public static final DVRCoordinate VID_OPENPEPPOL_PINT_CREDIT_NOTE_1_1_2 = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                               "credit-note",
+                                                                                                               "1.1.2");
 
   private PeppolValidationPint ()
   {}
@@ -117,13 +127,13 @@ public final class PeppolValidationPint
                                                             _getCL ());
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_PINT_INVOICE_1_0_1,
                                                                              "OpenPeppol PINT Invoice (UBL) 1.0.1",
-                                                                             PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
+                                                                             PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
                                                                              PhiveRulesHelper.createXSLT (aRes,
                                                                                                           aNSCtxInvoice)));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_PINT_CREDIT_NOTE_1_0_1,
                                                                              "OpenPeppol PINT Credit Note (UBL) 1.0.1",
-                                                                             PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
+                                                                             PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
                                                                              PhiveRulesHelper.createXSLT (aRes,
                                                                                                           aNSCtxCreditNote)));
@@ -148,6 +158,25 @@ public final class PeppolValidationPint
                                                                              PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
                                                                              ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
                                                                              PhiveRulesHelper.createXSLT (aResCreditNote,
+                                                                                                          aNSCtxCreditNote)));
+    }
+
+    // 1.1.2 - November 2025
+    {
+      final ClassPathResource aRes = new ClassPathResource (BASE_PATH +
+                                                            "1.1.2/xslt/PINT-UBL-validation-preprocessed.xslt",
+                                                            _getCL ());
+      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_PINT_INVOICE_1_1_2,
+                                                                             "OpenPeppol PINT Invoice (UBL) 1.1.2",
+                                                                             PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
+                                                                             ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
+                                                                             PhiveRulesHelper.createXSLT (aRes,
+                                                                                                          aNSCtxInvoice)));
+      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_PINT_CREDIT_NOTE_1_1_2,
+                                                                             "OpenPeppol PINT Credit Note (UBL) 1.1.2",
+                                                                             PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
+                                                                             ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
+                                                                             PhiveRulesHelper.createXSLT (aRes,
                                                                                                           aNSCtxCreditNote)));
     }
   }

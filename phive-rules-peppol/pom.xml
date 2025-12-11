@@ -182,8 +182,8 @@
               <goal>convert</goal>
             </goals>
             <configuration>
-              <schematronDirectory>src/test/resources/external/rule-source/pint/1.0.2</schematronDirectory>
-              <xsltDirectory>src/main/resources/external/schematron/pint/1.0.2/xslt</xsltDirectory>
+              <schematronDirectory>src/test/resources/external/rule-source/pint/1.1.2</schematronDirectory>
+              <xsltDirectory>src/main/resources/external/schematron/pint/1.1.2/xslt</xsltDirectory>
             </configuration>
           </execution>
           -->
