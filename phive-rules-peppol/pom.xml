@@ -212,17 +212,17 @@
           </execution>
           -->
           <!-- 
+          -->
           <execution>
             <id>pint-eu</id>
             <goals>
               <goal>convert</goal>
             </goals>
             <configuration>
-              <schematronDirectory>src/test/resources/external/rule-source/pint-eu/1.0.0</schematronDirectory>
-              <xsltDirectory>src/main/resources/external/schematron/pint-eu/1.0.0/xslt</xsltDirectory>
+              <schematronDirectory>src/test/resources/external/rule-source/pint-eu/1.0.1</schematronDirectory>
+              <xsltDirectory>src/main/resources/external/schematron/pint-eu/1.0.1/xslt</xsltDirectory>
             </configuration>
           </execution>
-          -->
           <!-- 
           <execution>
             <id>pint-jp</id>
