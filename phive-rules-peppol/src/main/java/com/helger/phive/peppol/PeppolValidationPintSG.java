@@ -47,11 +47,11 @@ public final class PeppolValidationPintSG
   public static final String GROUP_ID = "org.peppol.pint.sg";
 
   // 1.1.0
-  @Deprecated
+  @Deprecated (forRemoval = false)
   public static final DVRCoordinate VID_OPENPEPPOL_SG_PINT_UBL_INVOICE_1_1_0 = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                                                   "invoice",
                                                                                                                   "1.1.0");
-  @Deprecated
+  @Deprecated (forRemoval = false)
   public static final DVRCoordinate VID_OPENPEPPOL_SG_PINT_UBL_CREDIT_NOTE_1_1_0 = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                                                       "creditnote",
                                                                                                                       "1.1.0");

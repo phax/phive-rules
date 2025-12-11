@@ -60,15 +60,19 @@ public final class PeppolValidationPintAE
                                                                                                                      "0.9.0");
 
   // 2025-Q2 from 2025-06-10
+  @Deprecated (forRemoval = false)
   public static final DVRCoordinate VID_OPENPEPPOL_AE_PINT_INVOICE_2025_06 = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                                                 "invoice",
                                                                                                                 "2025.6");
+  @Deprecated (forRemoval = false)
   public static final DVRCoordinate VID_OPENPEPPOL_AE_PINT_CREDIT_NOTE_2025_06 = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                                                     "creditnote",
                                                                                                                     "2025.6");
+  @Deprecated (forRemoval = false)
   public static final DVRCoordinate VID_OPENPEPPOL_AE_PINT_SB_INVOICE_2025_06 = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                                                    "invoice-self-billing",
                                                                                                                    "2025.6");
+  @Deprecated (forRemoval = false)
   public static final DVRCoordinate VID_OPENPEPPOL_AE_PINT_SB_CREDIT_NOTE_2025_06 = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                                                        "creditnote-self-billing",
                                                                                                                        "2025.6");

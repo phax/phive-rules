@@ -46,7 +46,7 @@ import com.helger.ubl23.UBL23Marshaller;
  * @author Philip Helger
  */
 @Immutable
-@Deprecated
+@Deprecated (forRemoval = false)
 public final class PeppolValidation2024_11
 {
   // Standard resources

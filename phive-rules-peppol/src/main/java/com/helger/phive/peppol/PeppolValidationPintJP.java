@@ -49,31 +49,31 @@ public final class PeppolValidationPintJP
   public static final String GROUP_ID = "org.peppol.pint.jp";
 
   // 0.1.2 (typo in group ID)
-  @Deprecated
+  @Deprecated (forRemoval = false)
   public static final DVRCoordinate VID_OPENPEPPOL_JP_PINT_INVOICE_012 = PhiveRulesHelper.createCoordinate ("org.peppol.jp.pint",
                                                                                                             "invoice",
                                                                                                             "0.1.2");
-  @Deprecated
+  @Deprecated (forRemoval = false)
   public static final DVRCoordinate VID_OPENPEPPOL_JP_PINT_CREDIT_NOTE_012 = PhiveRulesHelper.createCoordinate ("org.peppol.jp.pint",
                                                                                                                 "credit-note",
                                                                                                                 "0.1.2");
 
   // 1.0.2
-  @Deprecated
+  @Deprecated (forRemoval = false)
   public static final DVRCoordinate VID_OPENPEPPOL_JP_PINT_INVOICE_1_0_2 = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                                               "invoice",
                                                                                                               "1.0.2");
-  @Deprecated
+  @Deprecated (forRemoval = false)
   public static final DVRCoordinate VID_OPENPEPPOL_JP_PINT_CREDIT_NOTE_1_0_2 = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                                                   "credit-note",
                                                                                                                   "1.0.2");
 
   // 1.0.3
-  @Deprecated
+  @Deprecated (forRemoval = false)
   public static final DVRCoordinate VID_OPENPEPPOL_JP_PINT_INVOICE_1_0_3 = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                                               "invoice",
                                                                                                               "1.0.3");
-  @Deprecated
+  @Deprecated (forRemoval = false)
   public static final DVRCoordinate VID_OPENPEPPOL_JP_PINT_CREDIT_NOTE_1_0_3 = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                                                   "credit-note",
                                                                                                                   "1.0.3");

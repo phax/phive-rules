@@ -49,21 +49,21 @@ public final class PeppolValidationBisSG
   public static final String GROUP_ID_ORDER_BALANCE = "org.peppol.sg";
 
   // 2023.7
-  @Deprecated
+  @Deprecated (forRemoval = false)
   public static final DVRCoordinate VID_OPENPEPPOL_BIS3_SG_UBL_INVOICE_2023_7 = PhiveRulesHelper.createCoordinate (GROUP_ID_BIS_BILLING,
                                                                                                                    "invoice",
                                                                                                                    "2023.7");
-  @Deprecated
+  @Deprecated (forRemoval = false)
   public static final DVRCoordinate VID_OPENPEPPOL_BIS3_SG_UBL_CREDIT_NOTE_2023_7 = PhiveRulesHelper.createCoordinate (GROUP_ID_BIS_BILLING,
                                                                                                                        "creditnote",
                                                                                                                        "2023.7");
 
   // 2023.12
-  @Deprecated
+  @Deprecated (forRemoval = false)
   public static final DVRCoordinate VID_OPENPEPPOL_BIS3_SG_UBL_INVOICE_2023_12 = PhiveRulesHelper.createCoordinate (GROUP_ID_BIS_BILLING,
                                                                                                                     "invoice",
                                                                                                                     "2023.12");
-  @Deprecated
+  @Deprecated (forRemoval = false)
   public static final DVRCoordinate VID_OPENPEPPOL_BIS3_SG_UBL_CREDIT_NOTE_2023_12 = PhiveRulesHelper.createCoordinate (GROUP_ID_BIS_BILLING,
                                                                                                                         "creditnote",
                                                                                                                         "2023.12");

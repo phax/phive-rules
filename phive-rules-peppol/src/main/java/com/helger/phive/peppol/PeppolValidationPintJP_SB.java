@@ -46,11 +46,11 @@ public final class PeppolValidationPintJP_SB
   public static final String GROUP_ID = PeppolValidationPintJP.GROUP_ID + ".sb";
 
   // 1.0.1
-  @Deprecated
+  @Deprecated (forRemoval = false)
   public static final DVRCoordinate VID_OPENPEPPOL_JP_PINT_SB_INVOICE_1_0_1 = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                                                  "invoice",
                                                                                                                  "1.0.1");
-  @Deprecated
+  @Deprecated (forRemoval = false)
   public static final DVRCoordinate VID_OPENPEPPOL_JP_PINT_SB_CREDIT_NOTE_1_0_1 = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                                                      "credit-note",
                                                                                                                      "1.0.1");

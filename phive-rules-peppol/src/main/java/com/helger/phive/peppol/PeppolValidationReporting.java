@@ -42,7 +42,7 @@ public final class PeppolValidationReporting
 
   // EUSR
 
-  @Deprecated
+  @Deprecated (forRemoval = false)
   public static final DVRCoordinate VID_OPENPEPPOL_EUSR_V114 = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                                   "eusr",
                                                                                                   "1.1.4");
@@ -52,7 +52,7 @@ public final class PeppolValidationReporting
 
   // TSR
 
-  @Deprecated
+  @Deprecated (forRemoval = false)
   public static final DVRCoordinate VID_OPENPEPPOL_TSR_V104 = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                                  "tsr",
                                                                                                  "1.0.4");

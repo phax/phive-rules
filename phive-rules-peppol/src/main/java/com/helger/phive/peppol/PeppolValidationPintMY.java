@@ -48,19 +48,19 @@ public final class PeppolValidationPintMY
   public static final String GROUP_ID = "org.peppol.pint.my";
 
   // 1.0.0
-  @Deprecated
+  @Deprecated (forRemoval = false)
   public static final DVRCoordinate VID_OPENPEPPOL_MY_PINT_UBL_INVOICE_1_0_0 = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                                                   "invoice",
                                                                                                                   "1.0.0");
-  @Deprecated
+  @Deprecated (forRemoval = false)
   public static final DVRCoordinate VID_OPENPEPPOL_MY_PINT_UBL_CREDIT_NOTE_1_0_0 = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                                                       "creditnote",
                                                                                                                       "1.0.0");
-  @Deprecated
+  @Deprecated (forRemoval = false)
   public static final DVRCoordinate VID_OPENPEPPOL_MY_PINT_UBL_INVOICE_SELF_BILLING_1_0_0 = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                                                                "invoice-self-billing",
                                                                                                                                "1.0.0");
-  @Deprecated
+  @Deprecated (forRemoval = false)
   public static final DVRCoordinate VID_OPENPEPPOL_MY_PINT_UBL_CREDIT_NOTE_SELF_BILLING_1_0_0 = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                                                                    "creditnote-self-billing",
                                                                                                                                    "1.0.0");
