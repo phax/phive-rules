@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Example of a simple self-billing negative invoice -->
+<Invoice xmlns="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2" xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
+	<cbc:CustomizationID>urn:peppol:pint:selfbilling-1@aunz-1</cbc:CustomizationID>
+	<cbc:ProfileID>urn:peppol:bis:selfbilling</cbc:ProfileID>
+	<cbc:ID>INV_00483</cbc:ID>
+	<cbc:IssueDate>2022-07-29</cbc:IssueDate>
+	<cbc:DueDate>2022-08-30</cbc:DueDate>
+	<cbc:InvoiceTypeCode>389</cbc:InvoiceTypeCode>
+	<cbc:Note>Adjustment note to reverse prior bill INV_00397</cbc:Note>
+	<cbc:DocumentCurrencyCode>AUD</cbc:DocumentCurrencyCode>
+	<cbc:AccountingCost>4025:123:4343</cbc:AccountingCost>
+	<cbc:BuyerReference>0150abc</cbc:BuyerReference>
+	<cac:InvoicePeriod>
+		<cbc:StartDate>2022-06-01</cbc:StartDate>
+		<cbc:EndDate>2022-07-31</cbc:EndDate>
+		<cbc:DescriptionCode>3</cbc:DescriptionCode>
+	</cac:InvoicePeriod>
+	<cac:OrderReference>
+		<cbc:ID>PO1245</cbc:ID>
+		<cbc:SalesOrderID>SO34678</cbc:SalesOrderID>
+	</cac:OrderReference>
+	<cac:BillingReference>
+		<cac:InvoiceDocumentReference>
+			<cbc:ID>INV_00397</cbc:ID>
+			<cbc:IssueDate>2022-05-30</cbc:IssueDate>
+		</cac:InvoiceDocumentReference>
+	</cac:BillingReference>
+	<cac:AdditionalDocumentReference>
+		<cbc:ID>INV_00483</cbc:ID>
+		<cbc:DocumentDescription>Invoice_with_additional_information</cbc:DocumentDescription>
+		<cac:Attachment>
+			<!-- For brevity, this sample Attachment is not representative of an embedded pdf -->
+			<cbc:EmbeddedDocumentBinaryObject mimeCode="application/pdf" filename="INV_00483.pdf">UGxhaW4gdGV4dCBpbiBwbGFjZSBvZiBwZGYgYXR0YWNobWVudCBmb3Igc2FtcGxlIGludm9pY2Vz</cbc:EmbeddedDocumentBinaryObject>
+		</cac:Attachment>
+	</cac:AdditionalDocumentReference>
+	<cac:AccountingSupplierParty>
+		<cac:Party>
+			<cbc:EndpointID schemeID="0151">47555222000</cbc:EndpointID>
+			<cac:PartyIdentification>
+				<cbc:ID schemeID="0151">47555222000</cbc:ID>
+			</cac:PartyIdentification>
+			<cac:PartyName>
+				<cbc:Name>Supplier Trading Name Ltd</cbc:Name>
+			</cac:PartyName>
+			<cac:PostalAddress>
+				<cbc:StreetName>Office 12</cbc:StreetName>
+				<cbc:AdditionalStreetName>Main street 1</cbc:AdditionalStreetName>
+				<cbc:CityName>Harrison</cbc:CityName>
+				<cbc:PostalZone>2912</cbc:PostalZone>
+				<cbc:CountrySubentity>NSW</cbc:CountrySubentity>
+				<cac:AddressLine>
+					<cbc:Line>c/o front desk</cbc:Line>
+				</cac:AddressLine>
+				<cac:Country>
+					<cbc:IdentificationCode>AU</cbc:IdentificationCode>
+				</cac:Country>
+			</cac:PostalAddress>
+			<cac:PartyLegalEntity>
+				<cbc:RegistrationName>Supplier Official Name Ltd</cbc:RegistrationName>
+				<cbc:CompanyID schemeID="0151">47555222000</cbc:CompanyID>
+			</cac:PartyLegalEntity>
+			<cac:Contact>
+				<cbc:Name>Ronald Ekk</cbc:Name>
+				<cbc:Telephone>Mobile 0430123456</cbc:Telephone>
+				<cbc:ElectronicMail>ronald.ekk@qualitygoods.com.au</cbc:ElectronicMail>
+			</cac:Contact>
+		</cac:Party>
+	</cac:AccountingSupplierParty>
+	<cac:AccountingCustomerParty>
+		<cac:Party>
+			<cbc:EndpointID schemeID="0151">91888222000</cbc:EndpointID>
+			<cac:PartyIdentification>
+				<cbc:ID schemeID="0088">1234567890135</cbc:ID>
+			</cac:PartyIdentification>
+			<cac:PartyName>
+				<cbc:Name>Trotters Trading Co Ltd</cbc:Name>
+			</cac:PartyName>
+			<cac:PostalAddress>
+				<cbc:StreetName>Floor 15</cbc:StreetName>
+				<cbc:AdditionalStreetName>100 Queen Street</cbc:AdditionalStreetName>
+				<cbc:CityName>Sydney</cbc:CityName>
+				<cbc:PostalZone>2000</cbc:PostalZone>
+				<cbc:CountrySubentity>NSW</cbc:CountrySubentity>
+				<cac:AddressLine>
+					<cbc:Line>c/o reception</cbc:Line>
+				</cac:AddressLine>
+				<cac:Country>
+					<cbc:IdentificationCode>AU</cbc:IdentificationCode>
+				</cac:Country>
+			</cac:PostalAddress>
+			<cac:PartyLegalEntity>
+				<cbc:RegistrationName>Trotters Incorporated</cbc:RegistrationName>
+				<cbc:CompanyID schemeID="0151">91888222000</cbc:CompanyID>
+			</cac:PartyLegalEntity>
+			<cac:Contact>
+				<cbc:Name>Lisa Johnson</cbc:Name>
+				<cbc:Telephone>0261234567</cbc:Telephone>
+				<cbc:ElectronicMail>lj@buyer.com.au</cbc:ElectronicMail>
+			</cac:Contact>
+		</cac:Party>
+	</cac:AccountingCustomerParty>
+	<cac:AllowanceCharge>
+		<cbc:ChargeIndicator>true</cbc:ChargeIndicator>
+		<cbc:AllowanceChargeReasonCode>SAA</cbc:AllowanceChargeReasonCode>
+		<cbc:AllowanceChargeReason>Refund Shipping and Handling</cbc:AllowanceChargeReason>
+		<cbc:MultiplierFactorNumeric>-10</cbc:MultiplierFactorNumeric>
+		<cbc:Amount currencyID="AUD">-150.00</cbc:Amount>
+		<cbc:BaseAmount currencyID="AUD">1500</cbc:BaseAmount>
+		<cac:TaxCategory>
+			<cbc:ID>S</cbc:ID>
+			<cbc:Percent>10</cbc:Percent>
+			<cac:TaxScheme>
+				<cbc:ID>GST</cbc:ID>
+			</cac:TaxScheme>
+		</cac:TaxCategory>
+	</cac:AllowanceCharge>
+	<cac:AllowanceCharge>
+		<cbc:ChargeIndicator>false</cbc:ChargeIndicator>
+		<cbc:AllowanceChargeReasonCode>65</cbc:AllowanceChargeReasonCode>
+		<cbc:AllowanceChargeReason>discount product with production error</cbc:AllowanceChargeReason>
+		<cbc:MultiplierFactorNumeric>-20</cbc:MultiplierFactorNumeric>
+		<cbc:Amount currencyID="AUD">-10.00</cbc:Amount>
+		<cbc:BaseAmount currencyID="AUD">50</cbc:BaseAmount>
+		<cac:TaxCategory>
+			<cbc:ID>S</cbc:ID>
+			<cbc:Percent>10</cbc:Percent>
+			<cac:TaxScheme>
+				<cbc:ID>GST</cbc:ID>
+			</cac:TaxScheme>
+		</cac:TaxCategory>
+	</cac:AllowanceCharge>
+	<cac:TaxTotal>
+		<cbc:TaxAmount currencyID="AUD">-152.74</cbc:TaxAmount>
+		<cac:TaxSubtotal>
+			<cbc:TaxableAmount currencyID="AUD">-1527.40</cbc:TaxableAmount>
+			<cbc:TaxAmount currencyID="AUD">-152.74</cbc:TaxAmount>
+			<cac:TaxCategory>
+				<cbc:ID>S</cbc:ID>
+				<cbc:Percent>10</cbc:Percent>
+				<cac:TaxScheme>
+					<cbc:ID>GST</cbc:ID>
+				</cac:TaxScheme>
+			</cac:TaxCategory>
+		</cac:TaxSubtotal>
+		<cac:TaxSubtotal>
+			<cbc:TaxableAmount currencyID="AUD">-100.00</cbc:TaxableAmount>
+			<cbc:TaxAmount currencyID="AUD">0.00</cbc:TaxAmount>
+			<cac:TaxCategory>
+				<cbc:ID>Z</cbc:ID>
+				<cbc:Percent>0</cbc:Percent>
+				<cac:TaxScheme>
+					<cbc:ID>GST</cbc:ID>
+				</cac:TaxScheme>
+			</cac:TaxCategory>
+		</cac:TaxSubtotal>
+	</cac:TaxTotal>
+	<cac:LegalMonetaryTotal>
+		<cbc:LineExtensionAmount currencyID="AUD">-1487.40</cbc:LineExtensionAmount>
+		<cbc:TaxExclusiveAmount currencyID="AUD">-1627.40</cbc:TaxExclusiveAmount>
+		<cbc:TaxInclusiveAmount currencyID="AUD">-1780.14</cbc:TaxInclusiveAmount>
+		<cbc:AllowanceTotalAmount currencyID="AUD">-10.00</cbc:AllowanceTotalAmount>
+		<cbc:ChargeTotalAmount currencyID="AUD">-150.00</cbc:ChargeTotalAmount>
+		<cbc:PrepaidAmount currencyID="AUD">-50.00</cbc:PrepaidAmount>
+		<cbc:PayableRoundingAmount currencyID="AUD">0.14</cbc:PayableRoundingAmount>
+		<cbc:PayableAmount currencyID="AUD">-1730.00</cbc:PayableAmount>
+	</cac:LegalMonetaryTotal>
+	<cac:InvoiceLine>
+		<cbc:ID>1</cbc:ID>
+		<cbc:Note>Free text giving more information about the Invoice Line</cbc:Note>
+		<cbc:InvoicedQuantity unitCode="E99">-10</cbc:InvoicedQuantity>
+		<cbc:LineExtensionAmount currencyID="AUD">-299.90</cbc:LineExtensionAmount>
+		<cbc:AccountingCost>Consulting Fees</cbc:AccountingCost>
+		<cac:InvoicePeriod>
+			<cbc:StartDate>2022-06-01</cbc:StartDate>
+			<cbc:EndDate>2022-07-30</cbc:EndDate>
+		</cac:InvoicePeriod>
+		<cac:OrderLineReference>
+			<cbc:LineID>123</cbc:LineID>
+		</cac:OrderLineReference>
+		<cac:DocumentReference>
+			<cbc:ID schemeID="HWB">9000074677</cbc:ID>
+			<cbc:DocumentTypeCode>130</cbc:DocumentTypeCode>
+		</cac:DocumentReference>
+		<cac:Item>
+			<cbc:Description>Widgets True and Fair</cbc:Description>
+			<cbc:Name>True-Widgets</cbc:Name>
+			<cac:BuyersItemIdentification>
+				<cbc:ID>W659590</cbc:ID>
+			</cac:BuyersItemIdentification>
+			<cac:SellersItemIdentification>
+				<cbc:ID>WG546767</cbc:ID>
+			</cac:SellersItemIdentification>
+			<cac:StandardItemIdentification>
+				<cbc:ID schemeID="0160">12345678901231</cbc:ID>
+			</cac:StandardItemIdentification>
+			<cac:OriginCountry>
+				<cbc:IdentificationCode>AU</cbc:IdentificationCode>
+			</cac:OriginCountry>
+			<cac:CommodityClassification>
+				<cbc:ItemClassificationCode listID="SRV" listVersionID="v1.3">09348023</cbc:ItemClassificationCode>
+			</cac:CommodityClassification>
+			<cac:CommodityClassification>
+				<cbc:ItemClassificationCode listID="SRV" listVersionID="v1.3">1009348023</cbc:ItemClassificationCode>
+			</cac:CommodityClassification>
+			<cac:ClassifiedTaxCategory>
+				<cbc:ID>S</cbc:ID>
+				<cbc:Percent>10</cbc:Percent>
+				<cac:TaxScheme>
+					<cbc:ID>GST</cbc:ID>
+				</cac:TaxScheme>
+			</cac:ClassifiedTaxCategory>
+			<cac:AdditionalItemProperty>
+				<cbc:Name>QA</cbc:Name>
+				<cbc:Value>Class A</cbc:Value>
+			</cac:AdditionalItemProperty>
+			<cac:AdditionalItemProperty>
+				<cbc:Name>WARRANTY</cbc:Name>
+				<cbc:Value>2 years</cbc:Value>
+			</cac:AdditionalItemProperty>
+		</cac:Item>
+		<cac:Price>
+			<cbc:PriceAmount currencyID="AUD">29.99</cbc:PriceAmount>
+			<cac:AllowanceCharge>
+				<cbc:ChargeIndicator>false</cbc:ChargeIndicator>
+				<cbc:Amount currencyID="AUD">0.01</cbc:Amount>
+				<cbc:BaseAmount currencyID="AUD">30.00</cbc:BaseAmount>
+			</cac:AllowanceCharge>
+		</cac:Price>
+	</cac:InvoiceLine>
+	<cac:InvoiceLine>
+		<cbc:ID>2</cbc:ID>
+		<cbc:Note>Daily rate includes travel time but not travel expenses</cbc:Note>
+		<cbc:InvoicedQuantity unitCode="DAY">-4</cbc:InvoicedQuantity>
+		<cbc:LineExtensionAmount currencyID="AUD">-900.00</cbc:LineExtensionAmount>
+		<cac:OrderLineReference>
+			<cbc:LineID>123</cbc:LineID>
+		</cac:OrderLineReference>
+		<cac:AllowanceCharge>
+			<cbc:ChargeIndicator>true</cbc:ChargeIndicator>
+			<cbc:AllowanceChargeReasonCode>AAF</cbc:AllowanceChargeReasonCode>
+			<cbc:AllowanceChargeReason>Off premise service delivery</cbc:AllowanceChargeReason>
+			<cbc:MultiplierFactorNumeric>-25</cbc:MultiplierFactorNumeric>
+			<cbc:Amount currencyID="AUD">-200.00</cbc:Amount>
+			<cbc:BaseAmount currencyID="AUD">800</cbc:BaseAmount>
+		</cac:AllowanceCharge>
+		<cac:AllowanceCharge>
+			<cbc:ChargeIndicator>false</cbc:ChargeIndicator>
+			<cbc:AllowanceChargeReasonCode>95</cbc:AllowanceChargeReasonCode>
+			<cbc:AllowanceChargeReason>Discount as per contract</cbc:AllowanceChargeReason>
+			<cbc:MultiplierFactorNumeric>-12.5</cbc:MultiplierFactorNumeric>
+			<cbc:Amount currencyID="AUD">-100.00</cbc:Amount>
+			<cbc:BaseAmount currencyID="AUD">800</cbc:BaseAmount>
+		</cac:AllowanceCharge>
+		<cac:Item>
+			<cbc:Description>Description 2</cbc:Description>
+			<cbc:Name>item name 2</cbc:Name>
+			<cac:StandardItemIdentification>
+				<cbc:ID schemeID="0160">12345678901248</cbc:ID>
+			</cac:StandardItemIdentification>
+			<cac:OriginCountry>
+				<cbc:IdentificationCode>NO</cbc:IdentificationCode>
+			</cac:OriginCountry>
+			<cac:CommodityClassification>
+				<cbc:ItemClassificationCode listID="SRV">09348023</cbc:ItemClassificationCode>
+			</cac:CommodityClassification>
+			<cac:ClassifiedTaxCategory>
+				<cbc:ID>S</cbc:ID>
+				<cbc:Percent>10</cbc:Percent>
+				<cac:TaxScheme>
+					<cbc:ID>GST</cbc:ID>
+				</cac:TaxScheme>
+			</cac:ClassifiedTaxCategory>
+		</cac:Item>
+		<cac:Price>
+			<cbc:PriceAmount currencyID="AUD">400</cbc:PriceAmount>
+			<cbc:BaseQuantity unitCode="DAY">2</cbc:BaseQuantity>
+		</cac:Price>
+	</cac:InvoiceLine>
+	<cac:InvoiceLine>
+		<cbc:ID>3</cbc:ID>
+		<cbc:Note>Invoice Line Description</cbc:Note>
+		<cbc:InvoicedQuantity unitCode="M66">-25</cbc:InvoicedQuantity>
+		<cbc:LineExtensionAmount currencyID="AUD">-187.50</cbc:LineExtensionAmount>
+		<cbc:AccountingCost>Consulting Fees</cbc:AccountingCost>
+		<cac:InvoicePeriod>
+			<cbc:StartDate>2022-06-01</cbc:StartDate>
+			<cbc:EndDate>2022-07-30</cbc:EndDate>
+		</cac:InvoicePeriod>
+		<cac:OrderLineReference>
+			<cbc:LineID>123</cbc:LineID>
+		</cac:OrderLineReference>
+		<cac:DocumentReference>
+			<cbc:ID schemeID="HWB">9000074677</cbc:ID>
+			<cbc:DocumentTypeCode>130</cbc:DocumentTypeCode>
+		</cac:DocumentReference>
+		<cac:Item>
+			<cbc:Description>Widgets seconds</cbc:Description>
+			<cbc:Name>Widgets (seconds)</cbc:Name>
+			<cac:BuyersItemIdentification>
+				<cbc:ID>W659590</cbc:ID>
+			</cac:BuyersItemIdentification>
+			<cac:SellersItemIdentification>
+				<cbc:ID>WG546767</cbc:ID>
+			</cac:SellersItemIdentification>
+			<cac:StandardItemIdentification>
+				<cbc:ID schemeID="0160">12345678901255</cbc:ID>
+			</cac:StandardItemIdentification>
+			<cac:OriginCountry>
+				<cbc:IdentificationCode>AU</cbc:IdentificationCode>
+			</cac:OriginCountry>
+			<cac:CommodityClassification>
+				<cbc:ItemClassificationCode listID="SRV">09348023</cbc:ItemClassificationCode>
+			</cac:CommodityClassification>
+			<cac:ClassifiedTaxCategory>
+				<cbc:ID>S</cbc:ID>
+				<cbc:Percent>10</cbc:Percent>
+				<cac:TaxScheme>
+					<cbc:ID>GST</cbc:ID>
+				</cac:TaxScheme>
+			</cac:ClassifiedTaxCategory>
+		</cac:Item>
+		<cac:Price>
+			<cbc:PriceAmount currencyID="AUD">7.50</cbc:PriceAmount>
+			<cac:AllowanceCharge>
+				<cbc:ChargeIndicator>false</cbc:ChargeIndicator>
+				<cbc:Amount currencyID="AUD">0.00</cbc:Amount>
+				<cbc:BaseAmount currencyID="AUD">7.50</cbc:BaseAmount>
+			</cac:AllowanceCharge>
+		</cac:Price>
+	</cac:InvoiceLine>
+	<cac:InvoiceLine>
+		<cbc:ID>4</cbc:ID>
+		<cbc:InvoicedQuantity unitCode="DAY">-2</cbc:InvoicedQuantity>
+		<cbc:LineExtensionAmount currencyID="AUD">-100.00</cbc:LineExtensionAmount>
+		<cac:OrderLineReference>
+			<cbc:LineID>123</cbc:LineID>
+		</cac:OrderLineReference>
+		<cac:Item>
+			<cbc:Description>Description 4</cbc:Description>
+			<cbc:Name>item name 4</cbc:Name>
+			<cac:ClassifiedTaxCategory>
+				<cbc:ID>Z</cbc:ID>
+				<cbc:Percent>0</cbc:Percent>
+				<cac:TaxScheme>
+					<cbc:ID>GST</cbc:ID>
+				</cac:TaxScheme>
+			</cac:ClassifiedTaxCategory>
+		</cac:Item>
+		<cac:Price>
+			<cbc:PriceAmount currencyID="AUD">50</cbc:PriceAmount>
+		</cac:Price>
+	</cac:InvoiceLine>
+</Invoice>
