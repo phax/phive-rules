@@ -237,7 +237,8 @@ v4.1.2 - work in progress
 * Added Simplerinvoicing Invoice 2.0.3.12, Simplerinvoicing 2.0 G-Account extension 1.0.12 and NLCIUS-CII 1.0.3.12. See [#45](https://github.com/phax/phive-rules/issues/45)
 * Deprecated Peppol BIS 2024.11 release, as 2025.5 release is already mandatory
 * Added Peppol BIS 2025-11 release. See [#46](https://github.com/phax/phive-rules/issues/46)
-* Added Peppol PINT 2025-11 release. See [#47](https://github.com/phax/phive-rules/issues/47)
+* Added Peppol PINT 2025-11 releases. See [#47](https://github.com/phax/phive-rules/issues/47)
+* Deprecated Peppol PINT AE 2025.06 release.
 
 v4.1.1 - 2025-11-18
 * Added support for CDAR D22B XML Schema

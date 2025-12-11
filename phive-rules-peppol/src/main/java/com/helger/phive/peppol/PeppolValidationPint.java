@@ -69,7 +69,7 @@ public final class PeppolValidationPint
                                                                                                                "credit-note",
                                                                                                                "1.0.2");
 
-  // 1.1.2
+  // 1.1.2 - from 2026-03-09
   public static final DVRCoordinate VID_OPENPEPPOL_PINT_INVOICE_1_1_2 = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                                            "invoice",
                                                                                                            "1.1.2");
