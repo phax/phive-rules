@@ -274,6 +274,9 @@ public final class CTestFiles
                                                             PeppolValidationPintSG.VID_OPENPEPPOL_SG_PINT_UBL_INVOICE_1_3_0,
                                                             PeppolValidationPintSG.VID_OPENPEPPOL_SG_PINT_UBL_CREDIT_NOTE_1_3_0,
 
+                                                            PeppolValidationPintSG.VID_OPENPEPPOL_SG_PINT_UBL_INVOICE_1_4_0,
+                                                            PeppolValidationPintSG.VID_OPENPEPPOL_SG_PINT_UBL_CREDIT_NOTE_1_4_0,
+
     })
       for (final IReadableResource aRes : getAllMatchingTestFiles (aESID))
       {
@@ -1730,6 +1733,39 @@ public final class CTestFiles
     if (aVESID.equals (PeppolValidationPintSG.VID_OPENPEPPOL_SG_PINT_UBL_CREDIT_NOTE_1_3_0))
     {
       final String sPrefix = sPrefix0 + "pint-sg/1.3.0/";
+      return new CommonsArrayList <> (new FileSystemResource (sPrefix + "PINT-SG CN example 01 - Credit Note.xml"));
+    }
+
+    // 1.4.0
+    if (aVESID.equals (PeppolValidationPintSG.VID_OPENPEPPOL_SG_PINT_UBL_INVOICE_1_4_0))
+    {
+      final String sPrefix = sPrefix0 + "pint-sg/1.4.0/";
+      return new CommonsArrayList <> (new FileSystemResource (sPrefix +
+                                                              "PINT-SG INV example 02 - full valid invoice 1.xml"),
+                                      new FileSystemResource (sPrefix +
+                                                              "PINT-SG INV example 03 - Allowances and Charges.xml"),
+                                      new FileSystemResource (sPrefix +
+                                                              "PINT-SG INV example 04 - none GST registered.xml"),
+                                      new FileSystemResource (sPrefix +
+                                                              "PINT-SG INV example 05 - AGD compliant with II and PO reference.xml"),
+                                      new FileSystemResource (sPrefix +
+                                                              "PINT-SG INV example 06 - Foreign currency.xml"),
+                                      new FileSystemResource (sPrefix + "PINT-SG INV example 07 - Foreign buyer.xml"),
+                                      new FileSystemResource (sPrefix +
+                                                              "PINT-SG INV example 08 - Factored invoice.xml"),
+                                      new FileSystemResource (sPrefix + "PINT-SG INV example 09 - Zero rated GST.xml"),
+                                      new FileSystemResource (sPrefix + "PINT-SG INV example 10 - Prepayment.xml"),
+                                      new FileSystemResource (sPrefix + "PINT-SG INV example 11 - Decimals.xml"),
+                                      new FileSystemResource (sPrefix +
+                                                              "PINT-SG INV example 12 - SG bank transfer.xml"),
+                                      new FileSystemResource (sPrefix + "PINT-SG INV example 13 - SG GIRO.xml"),
+                                      new FileSystemResource (sPrefix + "PINT-SG INV example 14 - PayNow.xml"),
+                                      new FileSystemResource (sPrefix + "PINT-SG INV example 15 - Credit card.xml"),
+                                      new FileSystemResource (sPrefix + "PINT-SG INV example 16 - GST in SGD.xml"));
+    }
+    if (aVESID.equals (PeppolValidationPintSG.VID_OPENPEPPOL_SG_PINT_UBL_CREDIT_NOTE_1_4_0))
+    {
+      final String sPrefix = sPrefix0 + "pint-sg/1.4.0/";
       return new CommonsArrayList <> (new FileSystemResource (sPrefix + "PINT-SG CN example 01 - Credit Note.xml"));
     }
 

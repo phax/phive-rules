@@ -278,8 +278,8 @@
               <goal>convert</goal>
             </goals>
             <configuration>
-              <schematronDirectory>src/test/resources/external/rule-source/pint-sg/1.3.0</schematronDirectory>
-              <xsltDirectory>src/main/resources/external/schematron/pint-sg/1.3.0/xslt</xsltDirectory>
+              <schematronDirectory>src/test/resources/external/rule-source/pint-sg/1.4.0</schematronDirectory>
+              <xsltDirectory>src/main/resources/external/schematron/pint-sg/1.4.0/xslt</xsltDirectory>
             </configuration>
           </execution>
           -->
