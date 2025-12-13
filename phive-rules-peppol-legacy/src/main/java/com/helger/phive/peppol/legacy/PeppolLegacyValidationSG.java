@@ -38,7 +38,7 @@ import com.helger.xml.namespace.MapBasedNamespaceContext;
  * @author Philip Helger
  */
 @Immutable
-@Deprecated
+@Deprecated (forRemoval = false)
 public final class PeppolLegacyValidationSG
 {
   @NonNull
@@ -50,25 +50,31 @@ public final class PeppolLegacyValidationSG
   private static final String BASE_PATH = "external/schematron/peppol-sg/";
 
   // 1.0.0 aka 1
+  @Deprecated (forRemoval = false)
   public static final DVRCoordinate VID_OPENPEPPOL_BIS3_SG_UBL_INVOICE_100 = PhiveRulesHelper.createCoordinate ("eu.peppol.bis3.sg.ubl",
                                                                                                                 "invoice",
                                                                                                                 "1");
+  @Deprecated (forRemoval = false)
   public static final DVRCoordinate VID_OPENPEPPOL_BIS3_SG_UBL_CREDIT_NOTE_100 = PhiveRulesHelper.createCoordinate ("eu.peppol.bis3.sg.ubl",
                                                                                                                     "creditnote",
                                                                                                                     "1");
 
   // 1.0.2
+  @Deprecated (forRemoval = false)
   public static final DVRCoordinate VID_OPENPEPPOL_BIS3_SG_UBL_INVOICE_102 = PhiveRulesHelper.createCoordinate ("eu.peppol.bis3.sg.ubl",
                                                                                                                 "invoice",
                                                                                                                 "1.0.2");
+  @Deprecated (forRemoval = false)
   public static final DVRCoordinate VID_OPENPEPPOL_BIS3_SG_UBL_CREDIT_NOTE_102 = PhiveRulesHelper.createCoordinate ("eu.peppol.bis3.sg.ubl",
                                                                                                                     "creditnote",
                                                                                                                     "1.0.2");
 
   // 1.0.3
+  @Deprecated (forRemoval = false)
   public static final DVRCoordinate VID_OPENPEPPOL_BIS3_SG_UBL_INVOICE_103 = PhiveRulesHelper.createCoordinate ("eu.peppol.bis3.sg.ubl",
                                                                                                                 "invoice",
                                                                                                                 "1.0.3");
+  @Deprecated (forRemoval = false)
   public static final DVRCoordinate VID_OPENPEPPOL_BIS3_SG_UBL_CREDIT_NOTE_103 = PhiveRulesHelper.createCoordinate ("eu.peppol.bis3.sg.ubl",
                                                                                                                     "creditnote",
                                                                                                                     "1.0.3");
@@ -76,6 +82,7 @@ public final class PeppolLegacyValidationSG
   private PeppolLegacyValidationSG ()
   {}
 
+  @Deprecated (forRemoval = false)
   public static void init (@NonNull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
   {
     ValueEnforcer.notNull (aRegistry, "Registry");

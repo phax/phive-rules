@@ -50,47 +50,62 @@ import com.helger.ubl21.UBL21Marshaller;
  * @author Philip Helger
  */
 @Immutable
-@Deprecated
+@Deprecated (forRemoval = false)
 public final class PeppolValidation3_13_0
 {
   // Standard resources
+  @Deprecated (forRemoval = false)
   public static final Version PEPPOL_VALIDATION_ARTEFACT_VERSION = new Version (3, 13, 0);
+  @Deprecated (forRemoval = false)
   public static final String VERSION_STR = PEPPOL_VALIDATION_ARTEFACT_VERSION.getAsString (true);
+  @Deprecated (forRemoval = false)
   public static final LocalDate VALID_PER = PDTFactory.createLocalDate (2021, Month.NOVEMBER, 15);
+  @Deprecated (forRemoval = false)
   public static final OffsetDateTime VALID_PER_UTC = PDTFactory.createOffsetDateTimeUTC (VALID_PER);
 
   // Standard
   private static final String GROUP_ID = "eu.peppol.bis3";
+  @Deprecated (forRemoval = false)
   public static final DVRCoordinate VID_OPENPEPPOL_INVOICE_V3 = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                                    "invoice",
                                                                                                    VERSION_STR);
+  @Deprecated (forRemoval = false)
   public static final DVRCoordinate VID_OPENPEPPOL_CREDIT_NOTE_V3 = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                                        "creditnote",
                                                                                                        VERSION_STR);
+  @Deprecated (forRemoval = false)
   public static final DVRCoordinate VID_OPENPEPPOL_ORDER_V3 = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                                  "order",
                                                                                                  VERSION_STR);
+  @Deprecated (forRemoval = false)
   public static final DVRCoordinate VID_OPENPEPPOL_DESPATCH_ADVICE_V3 = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                                            "despatch-advice",
                                                                                                            VERSION_STR);
+  @Deprecated (forRemoval = false)
   public static final DVRCoordinate VID_OPENPEPPOL_CATALOGUE_V3 = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                                      "catalogue",
                                                                                                      VERSION_STR);
+  @Deprecated (forRemoval = false)
   public static final DVRCoordinate VID_OPENPEPPOL_CATALOGUE_RESPONSE_V3 = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                                               "catalogue-response",
                                                                                                               VERSION_STR);
+  @Deprecated (forRemoval = false)
   public static final DVRCoordinate VID_OPENPEPPOL_MLR_V3 = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                                "mlr",
                                                                                                VERSION_STR);
+  @Deprecated (forRemoval = false)
   public static final DVRCoordinate VID_OPENPEPPOL_ORDER_RESPONSE_V3 = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                                           "order-response",
                                                                                                           VERSION_STR);
+  @Deprecated (forRemoval = false)
   public static final DVRCoordinate VID_OPENPEPPOL_PUNCH_OUT_V3 = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                                      "punch-out",
                                                                                                      VERSION_STR);
+  @Deprecated (forRemoval = false)
   public static final DVRCoordinate VID_OPENPEPPOL_ORDER_AGREEMENT_V3 = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                                            "order-agreement",
                                                                                                            VERSION_STR);
+  @Deprecated (forRemoval = false)
   public static final DVRCoordinate VID_OPENPEPPOL_INVOICE_MESSAGE_RESPONSE_V3 = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                                                     "invoice-message-response",
                                                                                                                     VERSION_STR);
@@ -117,6 +132,7 @@ public final class PeppolValidation3_13_0
                                             (ICommonsList <ValidationExecutorSetStatusHistoryItem>) null);
   }
 
+  @Deprecated
   public static void init (@NonNull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
   {
     ValueEnforcer.notNull (aRegistry, "Registry");
