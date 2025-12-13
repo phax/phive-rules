@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.helger.phive.peppol;
+package com.helger.phive.peppol.legacy;
 
 import java.time.LocalDate;
 import java.time.Month;
@@ -39,20 +39,20 @@ import com.helger.ubl21.UBL21Marshaller;
 import com.helger.ubl23.UBL23Marshaller;
 
 /**
- * OpenPeppol validation artefacts release 2024.11.<br>
- * November 2024 release 2024-05-27.<br>
- * Valid from Monday, 17 February 2025
+ * OpenPeppol validation artefacts release 2024.5.<br>
+ * May 2025 release 2024-05-27.<br>
+ * Valid from Monday, 27 August 2024
  *
  * @author Philip Helger
  */
 @Immutable
 @Deprecated (forRemoval = false)
-public final class PeppolValidation2024_11
+public final class PeppolValidation2024_05
 {
   // Standard resources
-  public static final Version PEPPOL_VALIDATION_ARTEFACT_VERSION = new Version (2024, 11, 0);
+  public static final Version PEPPOL_VALIDATION_ARTEFACT_VERSION = new Version (2024, 5, 0);
   public static final String VERSION_STR = PEPPOL_VALIDATION_ARTEFACT_VERSION.getAsString (false);
-  public static final LocalDate VALID_PER = PDTFactory.createLocalDate (2025, Month.FEBRUARY, 17);
+  public static final LocalDate VALID_PER = PDTFactory.createLocalDate (2024, Month.AUGUST, 27);
   public static final OffsetDateTime VALID_PER_UTC = PDTFactory.createOffsetDateTimeUTC (VALID_PER);
 
   // Standard
@@ -103,13 +103,13 @@ public final class PeppolValidation2024_11
                                                                                                                    "order-response-advanced",
                                                                                                                    VERSION_STR);
 
-  private PeppolValidation2024_11 ()
+  private PeppolValidation2024_05 ()
   {}
 
   @NonNull
   private static ClassLoader _getCL ()
   {
-    return PeppolValidation2024_11.class.getClassLoader ();
+    return PeppolValidation2024_05.class.getClassLoader ();
   }
 
   public static void init (@NonNull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
@@ -118,9 +118,9 @@ public final class PeppolValidation2024_11
 
     final String sVersion = " (" + VERSION_STR + ")";
     // See https://docs.peppol.eu/poacc/billing/3.0/release-notes/
-    final String sAkaVersionBilling = " (aka BIS Billing 3.0.18)";
+    final String sAkaVersionBilling = " (aka BIS Billing 3.0.17)";
     // See https://docs.peppol.eu/poacc/upgrade-3/release-notes/
-    final String sAkaVersionBIS = " (aka BIS 3.0.14)";
+    final String sAkaVersionBIS = " (aka BIS 3.0.13)";
 
     final boolean bDeprecated = true;
 

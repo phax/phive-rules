@@ -23,8 +23,7 @@ import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
 import com.helger.phive.xml.source.IValidationSourceXML;
 
 /**
- * Generic Legacy Peppol validation configuration. It contains only the old
- * validation rules.
+ * Generic Legacy Peppol validation configuration. It contains only the old validation rules.
  *
  * @author Philip Helger
  */
@@ -36,8 +35,7 @@ public final class PeppolLegacyValidationBisEurope
   {}
 
   /**
-   * Register all legacy Peppol validation execution sets to the provided
-   * registry.
+   * Register all legacy Peppol validation execution sets to the provided registry.
    *
    * @param aRegistry
    *        The registry to add the artefacts. May not be <code>null</code>.
@@ -54,5 +52,7 @@ public final class PeppolLegacyValidationBisEurope
     PeppolValidation3_15_0.init (aRegistry);
     PeppolValidation2023_05.init (aRegistry);
     PeppolValidation2023_11.init (aRegistry);
+    PeppolValidation2024_05.init (aRegistry);
+    PeppolValidation2024_11.init (aRegistry);
   }
 }

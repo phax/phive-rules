@@ -242,6 +242,7 @@ v4.1.2 - work in progress
 * Deprecated Peppol PINT JP 1.1.0 release.
 * Deprecated Peppol PINT MY 1.1.0 release.
 * Deprecated Peppol PINT SG 1.2.0 release.
+* Moved Peppol BIS 2024.5 and 2024.11 from `phive-rules-peppol` to `phive-rules-peppol-legacy`
 
 v4.1.1 - 2025-11-18
 * Added support for CDAR D22B XML Schema
