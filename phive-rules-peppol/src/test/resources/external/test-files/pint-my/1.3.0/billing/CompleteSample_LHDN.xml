@@ -1,0 +1,489 @@
+<ubl:Invoice xmlns:ubl="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2" xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
+	<cbc:CustomizationID>urn:peppol:pint:billing-1@my-1</cbc:CustomizationID>
+	<cbc:ProfileID>urn:peppol:bis:billing</cbc:ProfileID>
+	<!-- e-invoice code / number-->
+		<cbc:ID>INV-2025-1001</cbc:ID>
+		<!-- e-invoce Date-->
+			<cbc:IssueDate>2025-10-10</cbc:IssueDate>
+			<!-- e-invoice Time-->
+				<cbc:IssueTime>10:31:41</cbc:IssueTime>
+				<cbc:DueDate>2025-10-10</cbc:DueDate>
+				<!-- e-invoice Type Code-->
+					<cbc:InvoiceTypeCode>380</cbc:InvoiceTypeCode>
+					<cbc:Note>Demo invoice for testing purposes</cbc:Note>
+					<!-- Invoice Currency Code -->
+						<cbc:DocumentCurrencyCode>MYR</cbc:DocumentCurrencyCode>
+						<cbc:AccountingCost>CostCenter-001</cbc:AccountingCost>
+						<cbc:BuyerReference>BR-2025-1001</cbc:BuyerReference>
+						<cac:InvoicePeriod>
+							<!-- Billing Period Start Date-->
+								<cbc:StartDate>2025-10-10</cbc:StartDate>
+								<!-- Billing Period End Date-->
+									<cbc:EndDate>2025-10-10</cbc:EndDate>
+									<!-- Frequency of Billing -->
+										<cbc:Description>Monthly</cbc:Description>
+									</cac:InvoicePeriod>
+									<cac:OrderReference>
+										<cbc:ID>PO-2025-555</cbc:ID>
+										<cbc:SalesOrderID>SO-2025-555</cbc:SalesOrderID>
+									</cac:OrderReference>
+									<!-- Original e-Invoice Reference Number -->
+									<cac:BillingReference>
+										<cac:InvoiceDocumentReference>
+											<!-- “Internal ID” / e-Invoice Code / Number -->
+											<cbc:ID>INV-2024-0001</cbc:ID>
+											<!-- LHDNM Unique Identifier Number -->
+											<cbc:UUID>11111111-2222-3333-4444-555555555555</cbc:UUID>
+											<cbc:IssueDate>2025-10-10</cbc:IssueDate>
+										</cac:InvoiceDocumentReference>
+									</cac:BillingReference>
+									<cac:DespatchDocumentReference>
+										<cbc:ID>DESP-2025-1001</cbc:ID>
+									</cac:DespatchDocumentReference>
+									<cac:ReceiptDocumentReference>
+										<cbc:ID>RCPT-2025-1001</cbc:ID>
+									</cac:ReceiptDocumentReference>
+									<cac:OriginatorDocumentReference>
+										<cbc:ID>ORIG-2025-1001</cbc:ID>
+									</cac:OriginatorDocumentReference>
+									<cac:ContractDocumentReference>
+										<cbc:ID>CTR-2024-777</cbc:ID>
+									</cac:ContractDocumentReference>
+									<!-- Free Trade Agreement (FTA) Information [For export only, if applicable]-->
+									<cac:AdditionalDocumentReference>
+										<!-- cbc:ID = “FTA”, The actual value-->
+										<cbc:ID>ASEAN-Australia-New Zealand FTA (AANZFTA)</cbc:ID>
+										<!-- cbc:DocumentType = “FreeTradeAgreement”-->
+										<cbc:DocumentType>FreeTradeAgreement</cbc:DocumentType>
+										<cbc:DocumentDescription>More description</cbc:DocumentDescription>
+									</cac:AdditionalDocumentReference>
+									<!-- Authorisation Number for Certified Exporter (e.g., ATIGA number) [For export only, if applicable]-->
+									<cac:AdditionalDocumentReference>
+										<cbc:ID>CPT-CCN-W-211111-KL-000002</cbc:ID>
+										<cbc:DocumentType>CertEx</cbc:DocumentType>
+									</cac:AdditionalDocumentReference>
+									<!-- Reference Number of Customs Form No.2 -->
+									<cac:AdditionalDocumentReference>
+										<cbc:ID>E12345678912</cbc:ID>
+										<cbc:DocumentType>K2</cbc:DocumentType>
+									</cac:AdditionalDocumentReference>
+									<cac:AdditionalDocumentReference>
+										<cbc:ID>11111111-2222-3333-4444-555555555555</cbc:ID>
+										<cbc:DocumentTypeCode>938</cbc:DocumentTypeCode>
+										<cac:Attachment>
+											<cac:ExternalReference>
+												<cbc:URI>https://thelink</cbc:URI>
+											</cac:ExternalReference>
+										</cac:Attachment>
+										<cac:ResultOfVerification>
+											<cbc:ValidationDate>2024-10-02</cbc:ValidationDate>
+											<cbc:ValidationTime>12:00:00</cbc:ValidationTime>
+										</cac:ResultOfVerification>
+									</cac:AdditionalDocumentReference>
+									<!-- Reference Number of Customs Form No.1, 9, etc. -->
+									<cac:AdditionalDocumentReference>
+										<cbc:ID>Customs Form No. 1, 9, etc.</cbc:ID>
+										<!-- 914: CustomsImportForm-->
+										<cbc:DocumentTypeCode>914</cbc:DocumentTypeCode>
+									</cac:AdditionalDocumentReference>
+									<cac:AdditionalDocumentReference>
+										<cbc:ID>Atch56890</cbc:ID>
+										<cbc:DocumentDescription>Link to PDF Attchment</cbc:DocumentDescription>
+										<cac:Attachment>
+											<cac:ExternalReference>
+												<cbc:URI>https://thelink</cbc:URI>
+											</cac:ExternalReference>
+										</cac:Attachment>
+									</cac:AdditionalDocumentReference>
+									<cac:ProjectReference>
+										<cbc:ID>PROJ-2025-01</cbc:ID>
+									</cac:ProjectReference>
+									<cac:AccountingSupplierParty>
+										<cac:Party>
+											<cbc:EndpointID schemeID="0230">2023010000001</cbc:EndpointID>
+											<!-- Supplier’s Malaysia Standard Industrial Classification (MSIC) Code -->
+											 <!-- https://sdk.myinvois.hasil.gov.my/codes/msic-codes/ -->
+											  <!-- @name: Supplier’s Business Activity Description-->
+											<cbc:IndustryClassificationCode name="Growing of maize">01111</cbc:IndustryClassificationCode>
+											<cac:PartyIdentification>
+												<cbc:ID schemeID="0230">2023010000001</cbc:ID>
+											</cac:PartyIdentification>
+											<!-- Location for TIN when document has Tourism Tax (TTX)-->
+											<cac:PartyIdentification>
+												<cbc:ID>TIN20211100090911</cbc:ID>
+											</cac:PartyIdentification>
+											<cac:PartyName>
+												<cbc:Name>Monitor ERP Sdn Bhd</cbc:Name>
+											</cac:PartyName>
+											<cac:PostalAddress>
+												<!-- Address Line 0 -->
+												<cbc:StreetName>Lot 66</cbc:StreetName>
+												<!-- Address Line 1 -->
+												<cbc:AdditionalStreetName>Bangunan Merdeka</cbc:AdditionalStreetName>
+												<!-- City Name-->
+												<cbc:CityName>Kuala Lumpur</cbc:CityName>
+												<!-- Postal Zone -->
+												<cbc:PostalZone>50480</cbc:PostalZone>
+												<!-- State: https://sdk.myinvois.hasil.gov.my/codes/state-codes/-->
+												 <!-- Kedah: 01 in LHDN to cbc:CountrySubentityCode -->
+												<cbc:CountrySubentity>Kedah</cbc:CountrySubentity>
+												<!-- Address Line 2-->
+												<cac:AddressLine>
+													<cbc:Line>Persiaran Jaya</cbc:Line>
+												</cac:AddressLine>
+												<!-- Country: https://sdk.myinvois.hasil.gov.my/codes/countries/-->
+												 <!-- MY to MYS in LHDN -->
+												<cac:Country>
+													<cbc:IdentificationCode>MY</cbc:IdentificationCode>
+												</cac:Country>
+											</cac:PostalAddress>
+											<!-- Location for TIN when a document is other than Tourism Tax (TTX)-->
+											<cac:PartyTaxScheme>
+												<cbc:CompanyID>TIN20211100090911</cbc:CompanyID>
+												<cac:TaxScheme>
+													<cbc:ID>GST</cbc:ID>
+												</cac:TaxScheme>
+											</cac:PartyTaxScheme>
+											<!-- SST Registration number-->
+											<cac:PartyTaxScheme>
+												<cbc:CompanyID>X88-1907-12345678</cbc:CompanyID>
+												<cac:TaxScheme>
+													<cbc:ID>VAT</cbc:ID>
+												</cac:TaxScheme>
+											</cac:PartyTaxScheme>
+											<cac:PartyLegalEntity>
+												<cbc:RegistrationName>Monitor ERP Sdn Bhd</cbc:RegistrationName>
+												<!-- BRN Number-->
+												<cbc:CompanyID>2023010000001</cbc:CompanyID>
+												<cbc:CompanyLegalForm>SENDIRIAN BERHAD</cbc:CompanyLegalForm>
+											</cac:PartyLegalEntity>
+											<cac:Contact>
+												<cbc:Name>General AMS</cbc:Name>
+												<cbc:Telephone>+60123456789</cbc:Telephone>
+												<cbc:ElectronicMail>general.ams@supplier.com</cbc:ElectronicMail>
+											</cac:Contact>
+										</cac:Party>
+									</cac:AccountingSupplierParty>
+									<cac:AccountingCustomerParty>
+										<cac:Party>
+											<cbc:EndpointID schemeID="0230">20201234567</cbc:EndpointID>
+											<cac:PartyIdentification>
+												<cbc:ID schemeID="0230">20201234567</cbc:ID>
+											</cac:PartyIdentification>
+											<cac:PartyName>
+												<cbc:Name>Amazing HQ</cbc:Name>
+											</cac:PartyName>
+											<cac:PostalAddress>
+												<!-- Address Line 0 -->
+												<cbc:StreetName>Menara Amazing</cbc:StreetName>
+												<!-- Address Line 1 -->
+												<cbc:AdditionalStreetName>Jalan Jalan</cbc:AdditionalStreetName>
+												<!-- City Name-->
+												<cbc:CityName>Petaling Jaya</cbc:CityName>
+												<!-- Postal Zone-->
+												<cbc:PostalZone>47500</cbc:PostalZone>
+												<cbc:CountrySubentity>14 Texas 17</cbc:CountrySubentity>
+												<!-- Address Line 2 -->
+												<cac:AddressLine>
+													<cbc:Line>20</cbc:Line>
+												</cac:AddressLine>
+												<!-- Country: https://sdk.myinvois.hasil.gov.my/codes/countries/-->
+												 <!-- MY to MYS in LHDN -->
+												<cac:Country>
+													<cbc:IdentificationCode>MY</cbc:IdentificationCode>
+												</cac:Country>
+											</cac:PostalAddress>
+											<!-- Buyer tax registration -->
+											<cac:PartyTaxScheme>
+												<cbc:CompanyID>X81-0708-12345678</cbc:CompanyID>
+												<cac:TaxScheme>
+													<cbc:ID>VAT</cbc:ID>
+												</cac:TaxScheme>
+											</cac:PartyTaxScheme>
+											<cac:PartyLegalEntity>
+												<cbc:RegistrationName>Amazing HQ</cbc:RegistrationName>
+												<!-- BRN Number-->
+												<cbc:CompanyID>20201234567</cbc:CompanyID>
+											</cac:PartyLegalEntity>
+											<cac:Contact>
+												<cbc:Name>Danny Khoo</cbc:Name>
+												<cbc:Telephone>0175622845</cbc:Telephone>
+												<cbc:ElectronicMail>Danny.khoo@amazing.com.my</cbc:ElectronicMail>
+											</cac:Contact>
+										</cac:Party>
+									</cac:AccountingCustomerParty>
+									<cac:PayeeParty>
+										<cac:PartyIdentification>
+											<cbc:ID schemeID="0230">6715595</cbc:ID>
+										</cac:PartyIdentification>
+										<cac:PartyName>
+											<cbc:Name>Amazing HQ</cbc:Name>
+										</cac:PartyName>
+										<cac:PartyLegalEntity>
+											<cbc:CompanyID>6715595</cbc:CompanyID>
+										</cac:PartyLegalEntity>
+									</cac:PayeeParty>
+									<cac:TaxRepresentativeParty>
+										<cac:PartyName>
+											<cbc:Name>TTMY Audit</cbc:Name>
+										</cac:PartyName>
+										<cac:PostalAddress>
+											<cbc:StreetName>Unit4.02, Menara Maybank</cbc:StreetName>
+											<cbc:AdditionalStreetName>Jalan Plumbum 8</cbc:AdditionalStreetName>
+											<cbc:CityName>Shah Alam</cbc:CityName>
+											<cbc:PostalZone>47110</cbc:PostalZone>
+											<cbc:CountrySubentity>Subentity</cbc:CountrySubentity>
+											<cac:AddressLine>
+												<cbc:Line>Kepayan</cbc:Line>
+											</cac:AddressLine>
+											<cac:Country>
+												<cbc:IdentificationCode>MY</cbc:IdentificationCode>
+											</cac:Country>
+										</cac:PostalAddress>
+										<cac:PartyTaxScheme>
+											<cbc:CompanyID>MY200824324535</cbc:CompanyID>
+											<cac:TaxScheme>
+												<cbc:ID>VAT</cbc:ID>
+											</cac:TaxScheme>
+										</cac:PartyTaxScheme>
+									</cac:TaxRepresentativeParty>
+									<cac:Delivery>
+										<cbc:ActualDeliveryDate>2025-10-10</cbc:ActualDeliveryDate>
+										<cac:DeliveryLocation>
+											<cbc:ID schemeID="0230">7300010000001</cbc:ID>
+											<cac:Address>
+												<cbc:StreetName>Jalan Amazing 88</cbc:StreetName>
+												<cbc:AdditionalStreetName>Pandamaran</cbc:AdditionalStreetName>
+												<cbc:CityName>Klang</cbc:CityName>
+												<cbc:PostalZone>41200</cbc:PostalZone>
+												<cac:AddressLine>
+													<cbc:Line>Amazing Sdn Bhd</cbc:Line>
+												</cac:AddressLine>
+												<cac:Country>
+													<cbc:IdentificationCode>MY</cbc:IdentificationCode>
+												</cac:Country>
+											</cac:Address>
+										</cac:DeliveryLocation>
+										<cac:DeliveryParty>
+											<cac:PartyIdentification>
+												<cbc:ID schemeID="0230">0088005554443</cbc:ID>
+											</cac:PartyIdentification>
+											<cac:PartyName>
+												<cbc:Name>Example Buyer Ltd</cbc:Name>
+											</cac:PartyName>
+											<cac:PartyLegalEntity>
+												<cbc:CompanyID>BUYER-ENT-001</cbc:CompanyID>
+											</cac:PartyLegalEntity>
+										</cac:DeliveryParty>
+										<cac:Shipment>
+											<cbc:ID>SHIP-2025-1001</cbc:ID>
+											<cac:Consignment>
+												<cbc:ID>CON-2025-1001</cbc:ID>
+												<cac:DeliveryTerms>
+													<cbc:ID>DDP</cbc:ID>
+												</cac:DeliveryTerms>
+											</cac:Consignment>
+											<!-- Details of other charges -->
+											<cac:FreightAllowanceCharge>
+												<cbc:ChargeIndicator>true</cbc:ChargeIndicator>
+												<cbc:AllowanceChargeReason>Freight charge</cbc:AllowanceChargeReason>
+												<cbc:Amount currencyID="MYR">100.00</cbc:Amount>
+											</cac:FreightAllowanceCharge>
+										</cac:Shipment>
+									</cac:Delivery>
+									<cac:PaymentMeans>
+										<cbc:ID>PM-01</cbc:ID>
+										<cbc:PaymentMeansCode name="BankTransfer">42</cbc:PaymentMeansCode>
+										<cbc:PaymentID schemeID="PMREF">PAYREF-2025-1001</cbc:PaymentID>
+										<cac:CardAccount>
+											<cbc:PrimaryAccountNumberID>4111111111111111</cbc:PrimaryAccountNumberID>
+											<cbc:NetworkID>VISA</cbc:NetworkID>
+											<cbc:HolderName>Demo Supplier Pvt Ltd</cbc:HolderName>
+										</cac:CardAccount>
+										<cac:PayeeFinancialAccount>
+											<cbc:ID schemeID="IBAN">DE89370400440532013000</cbc:ID>
+											<cbc:Name>Demo Supplier Account</cbc:Name>
+											<cac:FinancialInstitutionBranch>
+												<cbc:ID>BR-DEMO-01</cbc:ID>
+											</cac:FinancialInstitutionBranch>
+										</cac:PayeeFinancialAccount>
+										<cac:PaymentMandate>
+											<cbc:ID>MANDATE-2025-01</cbc:ID>
+											<cac:PayerFinancialAccount>
+												<cbc:ID>PA-ACC-2025-01</cbc:ID>
+											</cac:PayerFinancialAccount>
+										</cac:PaymentMandate>
+									</cac:PaymentMeans>
+									<cac:PaymentTerms>
+										<cbc:Note>Payment due on receipt</cbc:Note>
+									</cac:PaymentTerms>
+									<cac:PrepaidPayment>
+										<cbc:ID>PP-2025-01</cbc:ID>
+										<cbc:PaidAmount currencyID="MYR">0.00</cbc:PaidAmount>
+										<cbc:ReceivedDate>2025-10-10</cbc:ReceivedDate>
+										<cbc:PaidTime>10:31:41</cbc:PaidTime>
+									</cac:PrepaidPayment>
+									<cac:AllowanceCharge>
+										<cbc:ChargeIndicator>false</cbc:ChargeIndicator>
+										<cbc:AllowanceChargeReasonCode>95</cbc:AllowanceChargeReasonCode>
+										<cbc:AllowanceChargeReason>Early payment discount</cbc:AllowanceChargeReason>
+										<cbc:MultiplierFactorNumeric>0.00</cbc:MultiplierFactorNumeric>
+										<cbc:Amount currencyID="MYR">0.00</cbc:Amount>
+										<cbc:BaseAmount currencyID="MYR">0.00</cbc:BaseAmount>
+										<cac:TaxCategory>
+											<cbc:ID>LVG</cbc:ID>
+											<cbc:Percent>0.00</cbc:Percent>
+											<cac:TaxScheme>
+												<cbc:ID>VAT</cbc:ID>
+											</cac:TaxScheme>
+										</cac:TaxCategory>
+									</cac:AllowanceCharge>
+									<cac:AllowanceCharge>
+										<cbc:ChargeIndicator>true</cbc:ChargeIndicator>
+										<cbc:AllowanceChargeReasonCode>FC</cbc:AllowanceChargeReasonCode>
+										<cbc:AllowanceChargeReason>Freight service</cbc:AllowanceChargeReason>
+										<cbc:MultiplierFactorNumeric>0.00</cbc:MultiplierFactorNumeric>
+										<cbc:Amount currencyID="MYR">0.00</cbc:Amount>
+										<cbc:BaseAmount currencyID="MYR">0.00</cbc:BaseAmount>
+										<cac:TaxCategory>
+											<cbc:ID>LVG</cbc:ID>
+											<cbc:Percent>0.00</cbc:Percent>
+											<cac:TaxScheme>
+												<cbc:ID>VAT</cbc:ID>
+											</cac:TaxScheme>
+										</cac:TaxCategory>
+									</cac:AllowanceCharge>
+									<cac:TaxExchangeRate>
+										<cbc:SourceCurrencyCode>MYR</cbc:SourceCurrencyCode>
+										<cbc:TargetCurrencyCode>EUR</cbc:TargetCurrencyCode>
+										<cbc:CalculationRate>0.05</cbc:CalculationRate>
+									</cac:TaxExchangeRate>
+									<cac:TaxTotal>
+										<cbc:TaxAmount currencyID="MYR">5.00</cbc:TaxAmount>
+										<cac:TaxSubtotal>
+											<cbc:TaxableAmount currencyID="MYR">100.00</cbc:TaxableAmount>
+											<cbc:TaxAmount currencyID="MYR">5.00</cbc:TaxAmount>
+											<cac:TaxCategory>
+												<cbc:ID>LVG</cbc:ID>
+												<cbc:Percent>5.00</cbc:Percent>
+												<cac:TaxScheme>
+													<cbc:ID>VAT</cbc:ID>
+												</cac:TaxScheme>
+											</cac:TaxCategory>
+										</cac:TaxSubtotal>
+									</cac:TaxTotal>
+									<cac:LegalMonetaryTotal>
+										<cbc:LineExtensionAmount currencyID="MYR">100.00</cbc:LineExtensionAmount>
+										<cbc:TaxExclusiveAmount currencyID="MYR">100.00</cbc:TaxExclusiveAmount>
+										<cbc:TaxInclusiveAmount currencyID="MYR">105.00</cbc:TaxInclusiveAmount>
+										<cbc:AllowanceTotalAmount currencyID="MYR">0.00</cbc:AllowanceTotalAmount>
+										<cbc:ChargeTotalAmount currencyID="MYR">0.00</cbc:ChargeTotalAmount>
+										<cbc:PrepaidAmount currencyID="MYR">0.00</cbc:PrepaidAmount>
+										<cbc:PayableRoundingAmount currencyID="MYR">0.00</cbc:PayableRoundingAmount>
+										<cbc:PayableAmount currencyID="MYR">105.00</cbc:PayableAmount>
+									</cac:LegalMonetaryTotal>
+									<cac:InvoiceLine>
+										<cbc:ID>1</cbc:ID>
+										<cbc:Note>Line 1 - consulting services (demo)</cbc:Note>
+										<cbc:InvoicedQuantity unitCode="HUR">10</cbc:InvoicedQuantity>
+										<cbc:LineExtensionAmount currencyID="MYR">100.00</cbc:LineExtensionAmount>
+										<cbc:AccountingCost>CostCenter-001</cbc:AccountingCost>
+										<cac:InvoicePeriod>
+											<cbc:StartDate>2025-10-10</cbc:StartDate>
+											<cbc:EndDate>2025-10-10</cbc:EndDate>
+										</cac:InvoicePeriod>
+										<cac:OrderLineReference>
+											<cbc:LineID>1</cbc:LineID>
+										</cac:OrderLineReference>
+										<cac:DocumentReference>
+											<cbc:ID schemeID="DOC">DOC-1001</cbc:ID>
+											<cbc:DocumentTypeCode>801</cbc:DocumentTypeCode>
+										</cac:DocumentReference>
+										<cac:AllowanceCharge>
+											<cbc:ChargeIndicator>false</cbc:ChargeIndicator>
+											<cbc:AllowanceChargeReasonCode>95</cbc:AllowanceChargeReasonCode>
+											<cbc:AllowanceChargeReason>Early payment discount</cbc:AllowanceChargeReason>
+											<cbc:MultiplierFactorNumeric>0.00</cbc:MultiplierFactorNumeric>
+											<cbc:Amount currencyID="MYR">0.00</cbc:Amount>
+											<cbc:BaseAmount currencyID="MYR">0.00</cbc:BaseAmount>
+										</cac:AllowanceCharge>
+										<cac:AllowanceCharge>
+											<cbc:ChargeIndicator>true</cbc:ChargeIndicator>
+											<cbc:AllowanceChargeReasonCode>FC</cbc:AllowanceChargeReasonCode>
+											<cbc:AllowanceChargeReason>Freight Fee</cbc:AllowanceChargeReason>
+											<cbc:MultiplierFactorNumeric>0.00</cbc:MultiplierFactorNumeric>
+											<cbc:Amount currencyID="MYR">0.00</cbc:Amount>
+											<cbc:BaseAmount currencyID="MYR">0.00</cbc:BaseAmount>
+										</cac:AllowanceCharge>
+										<cac:TaxTotal>
+											<cbc:TaxAmount currencyID="MYR">100.00</cbc:TaxAmount>
+											<cac:TaxSubtotal>
+												<cbc:TaxableAmount currencyID="MYR">100.00</cbc:TaxableAmount>
+												<cbc:TaxAmount currencyID="MYR">5.00</cbc:TaxAmount>
+												<!-- Note: The Number of Units (e.g., the number of nights)- Applicable for Fixed Rate -->
+												<cbc:BaseUnitMeasure unitCode="EA">1</cbc:BaseUnitMeasure>
+												<!-- Note: Total Amount per Unit (e.g., 10) -->
+												<cbc:PerUnitAmount currencyID="MYR">10.00</cbc:PerUnitAmount>
+												<cac:TaxCategory>
+													<cbc:ID>LVG</cbc:ID>
+													<cbc:Percent>5.00</cbc:Percent>
+													<cac:TaxScheme>
+														<cbc:ID>VAT</cbc:ID>
+													</cac:TaxScheme>
+												</cac:TaxCategory>
+											</cac:TaxSubtotal>
+										</cac:TaxTotal>
+										<cac:Item>
+											<cbc:Description>Professional consulting services (demo)</cbc:Description>
+											<cbc:Name>Consulting Service</cbc:Name>
+											<cac:BuyersItemIdentification>
+												<cbc:ID>BUY-ITEM-001</cbc:ID>
+											</cac:BuyersItemIdentification>
+											<cac:SellersItemIdentification>
+												<cbc:ID>SELL-ITEM-001</cbc:ID>
+											</cac:SellersItemIdentification>
+											<cac:StandardItemIdentification>
+												<cbc:ID schemeID="0230">00012345600012</cbc:ID>
+											</cac:StandardItemIdentification>
+											<cac:OriginCountry>
+												<cbc:IdentificationCode>MY</cbc:IdentificationCode>
+											</cac:OriginCountry>
+											<cac:CommodityClassification>
+												<cbc:CommodityCode>998312</cbc:CommodityCode>
+												<!-- LHDN listID CLASS is CG in MY PINT-->
+												 <!-- LHDN listID PTC is HS. in MY PINT-->
+												<cbc:ItemClassificationCode listID="CG" listVersionID="2008">001</cbc:ItemClassificationCode>
+											</cac:CommodityClassification>
+											<cac:ClassifiedTaxCategory>
+												<cbc:ID>LVG</cbc:ID>
+												<cbc:Percent>5.00</cbc:Percent>
+												<cac:TaxScheme>
+													<cbc:ID>VAT</cbc:ID>
+												</cac:TaxScheme>
+											</cac:ClassifiedTaxCategory>
+											<cac:AdditionalItemProperty>
+												<cbc:Name>ServiceLevel</cbc:Name>
+												<cbc:Value>Standard</cbc:Value>
+											</cac:AdditionalItemProperty>
+											<cac:ItemInstance>
+												<cac:LotIdentification>
+													<cbc:LotNumberID>LOT-1001</cbc:LotNumberID>
+													<cbc:ExpiryDate>2025-10-10</cbc:ExpiryDate>
+												</cac:LotIdentification>
+											</cac:ItemInstance>
+										</cac:Item>
+										<cac:Price>
+											<cbc:PriceAmount currencyID="MYR">10.00</cbc:PriceAmount>
+											<cbc:BaseQuantity unitCode="HUR">10</cbc:BaseQuantity>
+											<cac:AllowanceCharge>
+												<cbc:ChargeIndicator>false</cbc:ChargeIndicator>
+												<cbc:Amount currencyID="MYR">0.00</cbc:Amount>
+												<cbc:BaseAmount currencyID="MYR">0.00</cbc:BaseAmount>
+											</cac:AllowanceCharge>
+										</cac:Price>
+										<!-- Subtotal -->
+										<cac:ItemPriceExtension>
+											<cbc:Amount currencyID="MYR">0.00</cbc:Amount>
+										</cac:ItemPriceExtension>
+									</cac:InvoiceLine>
+								</ubl:Invoice>

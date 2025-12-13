@@ -240,6 +240,8 @@ v4.1.2 - work in progress
 * Added Peppol PINT 2025-11 releases. See [#47](https://github.com/phax/phive-rules/issues/47)
 * Deprecated Peppol PINT AE 2025.06 release.
 * Deprecated Peppol PINT JP 1.1.0 release.
+* Deprecated Peppol PINT MY 1.1.0 release.
+* Deprecated Peppol PINT SG 1.2.0 release.
 
 v4.1.1 - 2025-11-18
 * Added support for CDAR D22B XML Schema

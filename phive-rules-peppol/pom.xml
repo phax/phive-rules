@@ -266,8 +266,8 @@
               <goal>convert</goal>
             </goals>
             <configuration>
-              <schematronDirectory>src/test/resources/external/rule-source/pint-my/1.2.1</schematronDirectory>
-              <xsltDirectory>src/main/resources/external/schematron/pint-my/1.2.1/xslt</xsltDirectory>
+              <schematronDirectory>src/test/resources/external/rule-source/pint-my/1.3.0</schematronDirectory>
+              <xsltDirectory>src/main/resources/external/schematron/pint-my/1.3.0/xslt</xsltDirectory>
             </configuration>
           </execution>
           -->

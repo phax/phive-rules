@@ -264,6 +264,11 @@ public final class CTestFiles
                                                             PeppolValidationPintMY.VID_OPENPEPPOL_MY_PINT_UBL_INVOICE_SELF_BILLING_1_2_1,
                                                             PeppolValidationPintMY.VID_OPENPEPPOL_MY_PINT_UBL_CREDIT_NOTE_SELF_BILLING_1_2_1,
 
+                                                            PeppolValidationPintMY.VID_OPENPEPPOL_MY_PINT_UBL_INVOICE_1_3_0,
+                                                            PeppolValidationPintMY.VID_OPENPEPPOL_MY_PINT_UBL_CREDIT_NOTE_1_3_0,
+                                                            PeppolValidationPintMY.VID_OPENPEPPOL_MY_PINT_UBL_INVOICE_SELF_BILLING_1_3_0,
+                                                            PeppolValidationPintMY.VID_OPENPEPPOL_MY_PINT_UBL_CREDIT_NOTE_SELF_BILLING_1_3_0,
+
                                                             /* PINT Singapore */
                                                             PeppolValidationPintSG.VID_OPENPEPPOL_SG_PINT_UBL_INVOICE_1_1_0,
                                                             PeppolValidationPintSG.VID_OPENPEPPOL_SG_PINT_UBL_CREDIT_NOTE_1_1_0,
@@ -1634,6 +1639,48 @@ public final class CTestFiles
     {
       // empty
       return new CommonsArrayList <> ();
+    }
+
+    // 1.3.0
+    if (aVESID.equals (PeppolValidationPintMY.VID_OPENPEPPOL_MY_PINT_UBL_INVOICE_1_3_0))
+    {
+      final String sPrefix = sPrefix0 + "pint-my/1.3.0/billing/";
+      return new CommonsArrayList <> (new FileSystemResource (sPrefix + "CompleteSample_LHDN.xml"),
+                                      new FileSystemResource (sPrefix + "Invoice-Sample-HVG_1.3.0.xml"),
+                                      new FileSystemResource (sPrefix + "Invoice-Sample-LVG_1.3.0.xml"),
+                                      new FileSystemResource (sPrefix + "Invoice-Sample-SA_1.3.0.xml"),
+                                      new FileSystemResource (sPrefix + "Invoice-Sample-SE_1.3.0.xml"),
+                                      new FileSystemResource (sPrefix + "Invoice-Sample-TTX_1.3.0.xml"));
+    }
+    if (aVESID.equals (PeppolValidationPintMY.VID_OPENPEPPOL_MY_PINT_UBL_CREDIT_NOTE_1_3_0))
+    {
+      final String sPrefix = sPrefix0 + "pint-my/1.3.0/billing/";
+      return new CommonsArrayList <> (new FileSystemResource (sPrefix + "CompleteSample_LHDN-CreditNote.xml"),
+                                      new FileSystemResource (sPrefix + "CreditNote-Sample-HVG_1.3.0.xml"),
+                                      new FileSystemResource (sPrefix + "CreditNote-Sample-LVG_1.3.0.xml"),
+                                      new FileSystemResource (sPrefix + "CreditNote-Sample-SA_1.3.0.xml"),
+                                      new FileSystemResource (sPrefix + "CreditNote-Sample-SE_1.3.0.xml"),
+                                      new FileSystemResource (sPrefix + "CreditNote-Sample-TTX_1.3.0.xml"));
+    }
+    if (aVESID.equals (PeppolValidationPintMY.VID_OPENPEPPOL_MY_PINT_UBL_INVOICE_SELF_BILLING_1_3_0))
+    {
+      final String sPrefix = sPrefix0 + "pint-my/1.3.0/selfbilling/";
+      return new CommonsArrayList <> (new FileSystemResource (sPrefix + "SB_Invoice-Sample-HVG_1.3.0.xml"),
+                                      new FileSystemResource (sPrefix + "SB_Invoice-Sample-LVG_1.3.0.xml"),
+                                      new FileSystemResource (sPrefix + "SB_Invoice-Sample-SA_1.3.0.xml"),
+                                      new FileSystemResource (sPrefix + "SB_Invoice-Sample-SE_1.3.0.xml"),
+                                      new FileSystemResource (sPrefix + "SB_Invoice-Sample-TTX_1.3.0.xml"),
+                                      new FileSystemResource (sPrefix + "SB-CompleteSample_LHDN.xml"));
+    }
+    if (aVESID.equals (PeppolValidationPintMY.VID_OPENPEPPOL_MY_PINT_UBL_CREDIT_NOTE_SELF_BILLING_1_3_0))
+    {
+      final String sPrefix = sPrefix0 + "pint-my/1.3.0/selfbilling/";
+      return new CommonsArrayList <> (new FileSystemResource (sPrefix + "SB_CreditNote-Sample-HVG_1.3.0.xml"),
+                                      new FileSystemResource (sPrefix + "SB_CreditNote-Sample-LVG_1.3.0.xml"),
+                                      new FileSystemResource (sPrefix + "SB_CreditNote-Sample-SA_1.3.0.xml"),
+                                      new FileSystemResource (sPrefix + "SB_CreditNote-Sample-SE_1.3.0.xml"),
+                                      new FileSystemResource (sPrefix + "SB_CreditNote-Sample-TTX_1.3.0.xml"),
+                                      new FileSystemResource (sPrefix + "SB-CompleteSample_LHDN-CreditNote.xml"));
     }
 
     /* Peppol Singapore */
