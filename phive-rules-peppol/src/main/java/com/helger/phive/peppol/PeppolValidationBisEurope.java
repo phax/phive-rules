@@ -33,7 +33,6 @@ import com.helger.phive.xml.source.IValidationSourceXML;
  * @author Philip Helger
  * @since 3.2.2
  */
-@SuppressWarnings ("deprecation")
 @Immutable
 public final class PeppolValidationBisEurope
 {

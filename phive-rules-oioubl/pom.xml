@@ -54,7 +54,7 @@
   </developers>
   
   <properties>
-    <oioubl3.version>3.0.2</oioubl3.version>
+    <oioubl3.version>3.0.3</oioubl3.version>
   </properties>
   
   <dependencies>

@@ -118,6 +118,7 @@ public final class PeppolValidationPintJP
     return PeppolValidationPintJP.class.getClassLoader ();
   }
 
+  @SuppressWarnings ("deprecation")
   public static void init (@NonNull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
   {
     ValueEnforcer.notNull (aRegistry, "Registry");
