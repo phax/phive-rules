@@ -37,23 +37,30 @@ import com.helger.ubl21.UBL21Marshaller;
  * @author Philip Helger
  */
 @Immutable
-@Deprecated
+@Deprecated (forRemoval = false)
 public final class PeppolItalyValidation2_3_0
 {
   // Standard resources
+  @Deprecated
   public static final String VERSION_STR = "2.3.0";
 
   // Standard
+  @Deprecated
   public static final String GROUP_ID = "it.peppol";
 
+  @Deprecated
   public static final DVRCoordinate VID_DESPATCH_ADVICE = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                              "despatch-advice",
                                                                                              VERSION_STR);
+  @Deprecated
   public static final DVRCoordinate VID_INVOICE = PhiveRulesHelper.createCoordinate (GROUP_ID, "invoice", VERSION_STR);
+  @Deprecated
   public static final DVRCoordinate VID_ORDER = PhiveRulesHelper.createCoordinate (GROUP_ID, "order", VERSION_STR);
+  @Deprecated
   public static final DVRCoordinate VID_ORDER_AGREEMENT = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                              "order-agreement",
                                                                                              VERSION_STR);
+  @Deprecated
   public static final DVRCoordinate VID_ORDER_RESPONSE = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                             "order-response",
                                                                                             VERSION_STR);
@@ -67,6 +74,7 @@ public final class PeppolItalyValidation2_3_0
   private PeppolItalyValidation2_3_0 ()
   {}
 
+  @Deprecated
   public static void init (@NonNull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
   {
     ValueEnforcer.notNull (aRegistry, "Registry");

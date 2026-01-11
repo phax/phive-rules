@@ -37,98 +37,126 @@ import com.helger.ubl21.UBL21Marshaller;
  * @author Philip Helger
  */
 @Immutable
-@Deprecated
+@Deprecated (forRemoval = false)
 public class EHFValidationG2
 {
   private static final String GROUP_ID = "no.ehf";
 
   // 2018-11
+  @Deprecated
   public static final DVRCoordinate VID_EHF_CATALOGUE_1_0_13 = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                                   "catalogue",
                                                                                                   "1.0.13");
+  @Deprecated
   public static final DVRCoordinate VID_EHF_CATALOGUE_RESPONSE_1_0_13 = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                                            "catalogue-response",
                                                                                                            "1.0.13");
+  @Deprecated
   public static final DVRCoordinate VID_EHF_CREDITNOTE_2_0_15 = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                                    "creditnote",
                                                                                                    "2.0.15");
+  @Deprecated
   public static final DVRCoordinate VID_EHF_DESPATCH_ADVICE_1_0_10 = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                                         "despatch-advice",
                                                                                                         "1.0.10");
+  @Deprecated
   public static final DVRCoordinate VID_EHF_INVOICE_2_0_15 = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                                 "invoice",
                                                                                                 "2.0.15");
+  @Deprecated
   public static final DVRCoordinate VID_EHF_ORDER_1_0_11 = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                               "order",
                                                                                               "1.0.11");
+  @Deprecated
   public static final DVRCoordinate VID_EHF_ORDER_AGREEMENT_1_0_2 = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                                        "order-agreement",
                                                                                                        "1.0.2");
+  @Deprecated
   public static final DVRCoordinate VID_EHF_ORDER_RESPONSE_1_0_11 = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                                        "order-response",
                                                                                                        "1.0.11");
+  @Deprecated
   public static final DVRCoordinate VID_EHF_PUNCH_OUT_1_0_1 = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                                  "punch-out",
                                                                                                  "1.0.1");
+  @Deprecated
   public static final DVRCoordinate VID_EHF_REMINDER_1_1_0 = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                                 "reminder",
                                                                                                 "1.1.0");
 
   // 2019-06
+  @Deprecated
   public static final DVRCoordinate VID_EHF_CATALOGUE_1_0_14 = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                                   "catalogue",
                                                                                                   "1.0.14");
+  @Deprecated
   public static final DVRCoordinate VID_EHF_CATALOGUE_RESPONSE_1_0_14 = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                                            "catalogue-response",
                                                                                                            "1.0.14");
+  @Deprecated
   public static final DVRCoordinate VID_EHF_CREDITNOTE_2_0_16 = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                                    "creditnote",
                                                                                                    "2.0.16");
+  @Deprecated
   public static final DVRCoordinate VID_EHF_DESPATCH_ADVICE_1_0_11 = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                                         "despatch-advice",
                                                                                                         "1.0.11");
+  @Deprecated
   public static final DVRCoordinate VID_EHF_INVOICE_2_0_16 = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                                 "invoice",
                                                                                                 "2.0.16");
+  @Deprecated
   public static final DVRCoordinate VID_EHF_ORDER_1_0_12 = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                               "order",
                                                                                               "1.0.12");
+  @Deprecated
   public static final DVRCoordinate VID_EHF_ORDER_AGREEMENT_1_0_3 = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                                        "order-agreement",
                                                                                                        "1.0.3");
+  @Deprecated
   public static final DVRCoordinate VID_EHF_ORDER_RESPONSE_1_0_12 = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                                        "order-response",
                                                                                                        "1.0.12");
+  @Deprecated
   public static final DVRCoordinate VID_EHF_PUNCH_OUT_1_0_2 = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                                  "punch-out",
                                                                                                  "1.0.2");
   // Reminder is unchanged 1.1.0
 
   // 2019-12
+  @Deprecated
   public static final DVRCoordinate VID_EHF_CATALOGUE_1_0_15 = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                                   "catalogue",
                                                                                                   "1.0.15");
+  @Deprecated
   public static final DVRCoordinate VID_EHF_CATALOGUE_RESPONSE_1_0_15 = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                                            "catalogue-response",
                                                                                                            "1.0.15");
+  @Deprecated
   public static final DVRCoordinate VID_EHF_CREDITNOTE_2_0_17 = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                                    "creditnote",
                                                                                                    "2.0.17");
+  @Deprecated
   public static final DVRCoordinate VID_EHF_DESPATCH_ADVICE_1_0_12 = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                                         "despatch-advice",
                                                                                                         "1.0.12");
+  @Deprecated
   public static final DVRCoordinate VID_EHF_INVOICE_2_0_17 = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                                 "invoice",
                                                                                                 "2.0.17");
+  @Deprecated
   public static final DVRCoordinate VID_EHF_ORDER_1_0_13 = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                               "order",
                                                                                               "1.0.13");
+  @Deprecated
   public static final DVRCoordinate VID_EHF_ORDER_AGREEMENT_1_0_4 = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                                        "order-agreement",
                                                                                                        "1.0.4");
+  @Deprecated
   public static final DVRCoordinate VID_EHF_ORDER_RESPONSE_1_0_13 = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                                        "order-response",
                                                                                                        "1.0.13");
+  @Deprecated
   public static final DVRCoordinate VID_EHF_PUNCH_OUT_1_0_3 = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                                  "punch-out",
                                                                                                  "1.0.3");
@@ -236,12 +264,12 @@ public class EHFValidationG2
   {}
 
   /**
-   * Register all standard EHF validation execution sets to the provided
-   * registry.
+   * Register all standard EHF validation execution sets to the provided registry.
    *
    * @param aRegistry
    *        The registry to add the artefacts. May not be <code>null</code>.
    */
+  @Deprecated
   public static void initEHF (@NonNull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
   {
     ValueEnforcer.notNull (aRegistry, "Registry");

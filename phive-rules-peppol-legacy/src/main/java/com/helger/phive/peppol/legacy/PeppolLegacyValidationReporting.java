@@ -35,7 +35,7 @@ import com.helger.phive.xml.xsd.ValidationExecutorXSD;
  * @since 3.1.8
  */
 @Immutable
-@Deprecated
+@Deprecated (forRemoval = false)
 public final class PeppolLegacyValidationReporting
 {
   @NonNull
@@ -51,39 +51,50 @@ public final class PeppolLegacyValidationReporting
 
   // EUSR
 
+  @Deprecated
   public static final DVRCoordinate VID_OPENPEPPOL_EUSR_V100RC2 = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                                      "eusr",
                                                                                                      "1.0.0-RC2");
+  @Deprecated
   public static final DVRCoordinate VID_OPENPEPPOL_EUSR_V100 = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                                   "eusr",
                                                                                                   "1.0.0");
+  @Deprecated
   public static final DVRCoordinate VID_OPENPEPPOL_EUSR_V101 = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                                   "eusr",
                                                                                                   "1.0.1");
+  @Deprecated
   public static final DVRCoordinate VID_OPENPEPPOL_EUSR_V110 = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                                   "eusr",
                                                                                                   "1.1.0");
+  @Deprecated
   public static final DVRCoordinate VID_OPENPEPPOL_EUSR_V111 = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                                   "eusr",
                                                                                                   "1.1.1");
+  @Deprecated
   public static final DVRCoordinate VID_OPENPEPPOL_EUSR_V112 = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                                   "eusr",
                                                                                                   "1.1.2");
+  @Deprecated
   public static final DVRCoordinate VID_OPENPEPPOL_EUSR_V113 = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                                   "eusr",
                                                                                                   "1.1.3");
 
   // TSR
 
+  @Deprecated
   public static final DVRCoordinate VID_OPENPEPPOL_TSR_V100 = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                                  "tsr",
                                                                                                  "1.0.0");
+  @Deprecated
   public static final DVRCoordinate VID_OPENPEPPOL_TSR_V101 = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                                  "tsr",
                                                                                                  "1.0.1");
+  @Deprecated
   public static final DVRCoordinate VID_OPENPEPPOL_TSR_V102 = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                                  "tsr",
                                                                                                  "1.0.2");
+  @Deprecated
   public static final DVRCoordinate VID_OPENPEPPOL_TSR_V103 = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                                  "tsr",
                                                                                                  "1.0.3");
@@ -91,6 +102,7 @@ public final class PeppolLegacyValidationReporting
   private PeppolLegacyValidationReporting ()
   {}
 
+  @Deprecated
   public static void init (@NonNull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
   {
     ValueEnforcer.notNull (aRegistry, "Registry");
