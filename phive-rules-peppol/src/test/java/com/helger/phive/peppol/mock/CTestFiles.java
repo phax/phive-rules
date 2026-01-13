@@ -150,6 +150,7 @@ public final class CTestFiles
 
                                                             /* Peppol TaxData */
                                                             PeppolValidationTaxData.VID_OPENPEPPOL_TDD_AE_1_0_0,
+                                                            PeppolValidationTaxData.VID_OPENPEPPOL_TDD_AE_1_0_1,
 
                                                             /* PINT AE */
                                                             PeppolValidationPintAE.VID_OPENPEPPOL_AE_PINT_INVOICE_0_9_0,
@@ -741,11 +742,23 @@ public final class CTestFiles
                                       new FileSystemResource (sPrefix + "transaction-statistics-minimal.xml"));
     }
 
-    // TaxData
+    // AE TDD 1.0.0
     if (aVESID.equals (PeppolValidationTaxData.VID_OPENPEPPOL_TDD_AE_1_0_0))
     {
       final String sPrefix = sPrefix0 + "tdd/ae/1.0.0/";
       return new CommonsArrayList <> (new FileSystemResource (sPrefix + "commercial-invoice-tdd.xml"),
+                                      new FileSystemResource (sPrefix + "simple.xml"),
+                                      new FileSystemResource (sPrefix + "standard-invoice-tdd.xml"),
+                                      new FileSystemResource (sPrefix + "tax-currency.xml"));
+    }
+
+    // AE TDD 1.0.1
+    if (aVESID.equals (PeppolValidationTaxData.VID_OPENPEPPOL_TDD_AE_1_0_1))
+    {
+      final String sPrefix = sPrefix0 + "tdd/ae/1.0.1/";
+      return new CommonsArrayList <> (new FileSystemResource (sPrefix + "commercial-invoice-tdd.xml"),
+                                      new FileSystemResource (sPrefix + "example-tds-no-repdoc.xml"),
+                                      new FileSystemResource (sPrefix + "example-tds-with-repdoc.xml"),
                                       new FileSystemResource (sPrefix + "simple.xml"),
                                       new FileSystemResource (sPrefix + "standard-invoice-tdd.xml"),
                                       new FileSystemResource (sPrefix + "tax-currency.xml"));

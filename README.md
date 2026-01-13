@@ -228,6 +228,9 @@ I hope that with the introduction of PINT, the versioning problem will be solved
 
 # News and noteworthy
 
+v4.1.3 - 2026-01-13
+* Added support for Peppol AE TDD v1.0.1. See [#48](https://github.com/phax/phive-rules/issues/48)
+
 v4.1.2 - 2025-12-13
 * Added support for Peppol AE Tax Data Document v1.0.0. See [#43](https://github.com/phax/phive-rules/issues/43)
 * Added support for ZuGFERD 2.4 - all profiles (XML only). See [#44](https://github.com/phax/phive-rules/issues/44)

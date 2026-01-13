@@ -43,9 +43,13 @@ public final class PeppolValidationTaxData
 {
   public static final String GROUP_ID = "org.peppol.taxdata";
 
+  @Deprecated (forRemoval = false)
   public static final DVRCoordinate VID_OPENPEPPOL_TDD_AE_1_0_0 = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                                      "ae",
                                                                                                      "1.0.0");
+  public static final DVRCoordinate VID_OPENPEPPOL_TDD_AE_1_0_1 = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                     "ae",
+                                                                                                     "1.0.1");
 
   private PeppolValidationTaxData ()
   {}
@@ -66,20 +70,35 @@ public final class PeppolValidationTaxData
     final String BASE_PATH_XSD = "external/schemas/";
     final String BASE_PATH_SCH = "external/schematron/tdd/";
 
-    // AE
-    {
-      final ICommonsList <ClassPathResource> aXSDs = UBL21Marshaller.getAllBaseXSDs ();
-      aXSDs.add (new ClassPathResource (BASE_PATH_XSD + "peppol-tdd-1.0.0.xsd", _getCL ()));
+    final ICommonsList <ClassPathResource> aXSDs_AE_100 = UBL21Marshaller.getAllBaseXSDs ();
+    aXSDs_AE_100.add (new ClassPathResource (BASE_PATH_XSD + "peppol-tdd-1.0.0.xsd", _getCL ()));
 
+    // TDD AE 1.0.0
+    {
       final MapBasedNamespaceContext aNsCtx = UBL21NamespaceContext.getInstance ().getClone ();
       aNsCtx.addMapping ("pxs", "urn:peppol:schema:taxdata:1.0");
 
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_TDD_AE_1_0_0,
                                                                              "AE Tax Data Document v1.0.0",
-                                                                             PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
-                                                                             ValidationExecutorXSD.create (aXSDs),
+                                                                             PhiveRulesHelper.createSimpleStatus (bDeprecated),
+                                                                             ValidationExecutorXSD.create (aXSDs_AE_100),
                                                                              PhiveRulesHelper.createXSLT (new ClassPathResource (BASE_PATH_SCH +
                                                                                                                                  "ae/xslt/peppol-ae-tdd-1.0.0.xslt",
+                                                                                                                                 _getCL ()),
+                                                                                                          aNsCtx)));
+    }
+
+    // TDD AE 1.0.1
+    {
+      final MapBasedNamespaceContext aNsCtx = UBL21NamespaceContext.getInstance ().getClone ();
+      aNsCtx.addMapping ("pxs", "urn:peppol:schema:taxdata:1.0");
+
+      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_TDD_AE_1_0_1,
+                                                                             "AE Tax Data Document v1.0.1",
+                                                                             PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
+                                                                             ValidationExecutorXSD.create (aXSDs_AE_100),
+                                                                             PhiveRulesHelper.createXSLT (new ClassPathResource (BASE_PATH_SCH +
+                                                                                                                                 "ae/xslt/peppol-ae-tdd-1.0.1.xslt",
                                                                                                                                  _getCL ()),
                                                                                                           aNsCtx)));
     }
