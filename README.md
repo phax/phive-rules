@@ -228,7 +228,7 @@ I hope that with the introduction of PINT, the versioning problem will be solved
 
 # News and noteworthy
 
-v4.1.4 - work in progress
+v4.1.4 - 2026-01-23
 * Added Croatian eRacun v1.0.1 rules. See [#49](https://github.com/phax/phive-rules/issues/49)
 * Added OIOUBL 1.17.0-RC rules. See [#50](https://github.com/phax/phive-rules/issues/50)
 * Fixed validity start date of OIOUBL 1.16.1 rules to be in November 2025
