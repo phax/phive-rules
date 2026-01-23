@@ -219,6 +219,24 @@ public final class CTestFiles
                                                             OIOUBLValidation.VID_OIOUBL_STATEMENT_1_16_1,
                                                             OIOUBLValidation.VID_OIOUBL_UTILITY_STATEMENT_1_16_1,
 
+                                                            // 1.17.0-rc
+                                                            OIOUBLValidation.VID_OIOUBL_APPLICATION_RESPONSE_1_17_0_RC,
+                                                            OIOUBLValidation.VID_OIOUBL_CATALOGUE_1_17_0_RC,
+                                                            OIOUBLValidation.VID_OIOUBL_CATALOGUE_DELETION_1_17_0_RC,
+                                                            OIOUBLValidation.VID_OIOUBL_CATALOGUE_ITEM_SPECIFICATION_UPDATE_1_17_0_RC,
+                                                            OIOUBLValidation.VID_OIOUBL_CATALOGUE_PRICING_UPDATE_1_17_0_RC,
+                                                            OIOUBLValidation.VID_OIOUBL_CATALOGUE_REQUEST_1_17_0_RC,
+                                                            OIOUBLValidation.VID_OIOUBL_CREDIT_NOTE_1_17_0_RC,
+                                                            OIOUBLValidation.VID_OIOUBL_INVOICE_1_17_0_RC,
+                                                            OIOUBLValidation.VID_OIOUBL_ORDER_1_17_0_RC,
+                                                            OIOUBLValidation.VID_OIOUBL_ORDER_CANCELLATION_1_17_0_RC,
+                                                            OIOUBLValidation.VID_OIOUBL_ORDER_CHANGE_1_17_0_RC,
+                                                            OIOUBLValidation.VID_OIOUBL_ORDER_RESPONSE_1_17_0_RC,
+                                                            OIOUBLValidation.VID_OIOUBL_ORDER_RESPONSE_SIMPLE_1_17_0_RC,
+                                                            OIOUBLValidation.VID_OIOUBL_REMINDER_1_17_0_RC,
+                                                            OIOUBLValidation.VID_OIOUBL_STATEMENT_1_17_0_RC,
+                                                            OIOUBLValidation.VID_OIOUBL_UTILITY_STATEMENT_1_17_0_RC,
+
                                                             // 3.0.1
                                                             OIOUBLValidation.VID_OIOUBL_CREDIT_NOTE_3_0_1,
                                                             OIOUBLValidation.VID_OIOUBL_INVOICE_3_0_1,
@@ -1209,7 +1227,7 @@ public final class CTestFiles
 
     // 1.16.1
     {
-      final String sPrefix = sPrefix0 + "1.15.2/";
+      final String sPrefix = sPrefix0 + "1.16.1/";
       if (aVESID.equals (OIOUBLValidation.VID_OIOUBL_APPLICATION_RESPONSE_1_16_1))
       {
         for (final String s : new String [] { "OIOUBL_ApplicationResponse_v2p2.xml" })
@@ -1308,6 +1326,115 @@ public final class CTestFiles
                                   }
                                   else
                                     if (aVESID.equals (OIOUBLValidation.VID_OIOUBL_UTILITY_STATEMENT_1_16_1))
+                                    {
+                                      for (final String s : new String [] {
+                                          // broken
+                                          // "OIOUBL_UtilityStatement_v2p2.xml"
+                                      })
+                                        ret.add (new ClassPathResource (sPrefix + s));
+                                    }
+    }
+    // 1.17.0-rc
+    {
+      final String sPrefix = sPrefix0 + "1.17.0-rc/";
+      if (aVESID.equals (OIOUBLValidation.VID_OIOUBL_APPLICATION_RESPONSE_1_17_0_RC))
+      {
+        for (final String s : new String [] { "OIOUBL_ApplicationResponse_v2p2.xml" })
+          ret.add (new ClassPathResource (sPrefix + s));
+      }
+      else
+        if (aVESID.equals (OIOUBLValidation.VID_OIOUBL_CATALOGUE_1_17_0_RC))
+        {
+          for (final String s : new String [] { "OIOUBL_Catalogue_v2p2.xml" })
+            ret.add (new ClassPathResource (sPrefix + s));
+        }
+        else
+          if (aVESID.equals (OIOUBLValidation.VID_OIOUBL_CATALOGUE_DELETION_1_17_0_RC))
+          {
+            for (final String s : new String [] { "OIOUBL_CatalogueDeletion_v2p2.xml" })
+              ret.add (new ClassPathResource (sPrefix + s));
+          }
+          else
+            if (aVESID.equals (OIOUBLValidation.VID_OIOUBL_CATALOGUE_ITEM_SPECIFICATION_UPDATE_1_17_0_RC))
+            {
+              for (final String s : new String [] { "OIOUBL_CatalogueItemSpecificationUpdate_v2p2.xml" })
+                ret.add (new ClassPathResource (sPrefix + s));
+            }
+            else
+              if (aVESID.equals (OIOUBLValidation.VID_OIOUBL_CATALOGUE_PRICING_UPDATE_1_17_0_RC))
+              {
+                for (final String s : new String [] { "OIOUBL_CataloguePricingUpdate_v2p2.xml" })
+                  ret.add (new ClassPathResource (sPrefix + s));
+              }
+              else
+                if (aVESID.equals (OIOUBLValidation.VID_OIOUBL_CATALOGUE_REQUEST_1_17_0_RC))
+                {
+                  for (final String s : new String [] { "OIOUBL_CatalogueRequest_v2p2.xml" })
+                    ret.add (new ClassPathResource (sPrefix + s));
+                }
+                else
+                  if (aVESID.equals (OIOUBLValidation.VID_OIOUBL_CREDIT_NOTE_1_17_0_RC))
+                  {
+                    for (final String s : new String [] { "OIOUBL_CreditNote_v2p2.xml",
+                        // broken
+                        // "OIOUBL_CreditNoteCertificate.xml"
+                    })
+                      ret.add (new ClassPathResource (sPrefix + s));
+                  }
+                  else
+                    if (aVESID.equals (OIOUBLValidation.VID_OIOUBL_INVOICE_1_17_0_RC))
+                    {
+                      for (final String s : new String [] { "OIOUBL_Invoice_UBLExtensions_v2p2.xml",
+                                                            "OIOUBL_Invoice_v2p2.xml",
+                          // broken
+                          // "OIOUBL_InvoiceCerticate.xml"
+                      })
+                        ret.add (new ClassPathResource (sPrefix + s));
+                    }
+                    else
+                      if (aVESID.equals (OIOUBLValidation.VID_OIOUBL_ORDER_1_17_0_RC))
+                      {
+                        for (final String s : new String [] { "OIOUBL_Order_v2p2.xml" })
+                          ret.add (new ClassPathResource (sPrefix + s));
+                      }
+                      else
+                        if (aVESID.equals (OIOUBLValidation.VID_OIOUBL_ORDER_CANCELLATION_1_17_0_RC))
+                        {
+                          for (final String s : new String [] { "OIOUBL_OrderCancellation_v2p2.xml" })
+                            ret.add (new ClassPathResource (sPrefix + s));
+                        }
+                        else
+                          if (aVESID.equals (OIOUBLValidation.VID_OIOUBL_ORDER_CHANGE_1_17_0_RC))
+                          {
+                            for (final String s : new String [] { "OIOUBL_OrderChange_v2p2.xml" })
+                              ret.add (new ClassPathResource (sPrefix + s));
+                          }
+                          else
+                            if (aVESID.equals (OIOUBLValidation.VID_OIOUBL_ORDER_RESPONSE_1_17_0_RC))
+                            {
+                              for (final String s : new String [] { "OIOUBL_OrderResponse_v2p2.xml" })
+                                ret.add (new ClassPathResource (sPrefix + s));
+                            }
+                            else
+                              if (aVESID.equals (OIOUBLValidation.VID_OIOUBL_ORDER_RESPONSE_SIMPLE_1_17_0_RC))
+                              {
+                                for (final String s : new String [] { "OIOUBL_OrderResponseSimple_v2p2.xml" })
+                                  ret.add (new ClassPathResource (sPrefix + s));
+                              }
+                              else
+                                if (aVESID.equals (OIOUBLValidation.VID_OIOUBL_REMINDER_1_17_0_RC))
+                                {
+                                  for (final String s : new String [] { "OIOUBL_Reminder_v2p2.xml" })
+                                    ret.add (new ClassPathResource (sPrefix + s));
+                                }
+                                else
+                                  if (aVESID.equals (OIOUBLValidation.VID_OIOUBL_STATEMENT_1_17_0_RC))
+                                  {
+                                    for (final String s : new String [] { "OIOUBL_Statement_v2p2.xml" })
+                                      ret.add (new ClassPathResource (sPrefix + s));
+                                  }
+                                  else
+                                    if (aVESID.equals (OIOUBLValidation.VID_OIOUBL_UTILITY_STATEMENT_1_17_0_RC))
                                     {
                                       for (final String s : new String [] {
                                           // broken
