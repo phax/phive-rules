@@ -53,7 +53,9 @@ public final class CTestFiles
   {
     final ICommonsList <PhiveTestFile> ret = new CommonsArrayList <> ();
     for (final DVRCoordinate aESID : new DVRCoordinate [] { HReRacunValidation.VID_HR_ERACUN_UBL_CREDITNOTE_100,
-                                                            HReRacunValidation.VID_HR_ERACUN_UBL_INVOICE_100 })
+                                                            HReRacunValidation.VID_HR_ERACUN_UBL_INVOICE_100,
+                                                            HReRacunValidation.VID_HR_ERACUN_UBL_CREDITNOTE_101,
+                                                            HReRacunValidation.VID_HR_ERACUN_UBL_INVOICE_101 })
       for (final IReadableResource aRes : getAllMatchingTestFiles (aESID))
       {
         assertTrue ("Not existing test file: " + aRes.getPath (), aRes.exists ());
@@ -70,13 +72,28 @@ public final class CTestFiles
 
     final String sPrefix = "/external/test-files/";
 
+    // 1.0.0
     if (aVESID.equals (HReRacunValidation.VID_HR_ERACUN_UBL_CREDITNOTE_100))
     {
+      // No test files
       return new CommonsArrayList <> (new String [] {}, x -> new ClassPathResource (sPrefix + "1.0.0/" + x));
     }
     if (aVESID.equals (HReRacunValidation.VID_HR_ERACUN_UBL_INVOICE_100))
     {
+      // No test files
       return new CommonsArrayList <> (new String [] {}, x -> new ClassPathResource (sPrefix + "1.0.0/" + x));
+    }
+
+    // 1.0.1
+    if (aVESID.equals (HReRacunValidation.VID_HR_ERACUN_UBL_CREDITNOTE_101))
+    {
+      // No test files
+      return new CommonsArrayList <> (new String [] {}, x -> new ClassPathResource (sPrefix + "1.0.1/" + x));
+    }
+    if (aVESID.equals (HReRacunValidation.VID_HR_ERACUN_UBL_INVOICE_101))
+    {
+      // No test files
+      return new CommonsArrayList <> (new String [] {}, x -> new ClassPathResource (sPrefix + "1.0.1/" + x));
     }
 
     throw new IllegalArgumentException ("Invalid VESID: " + aVESID);

@@ -228,6 +228,9 @@ I hope that with the introduction of PINT, the versioning problem will be solved
 
 # News and noteworthy
 
+v4.1.4 - work in progress
+* Added support for Croatian eRacun v1.0.1 rules. See [#49](https://github.com/phax/phive-rules/issues/49)
+
 v4.1.3 - 2026-01-13
 * Added support for Peppol AE TDD v1.0.1. See [#48](https://github.com/phax/phive-rules/issues/48)
 
