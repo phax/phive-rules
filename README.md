@@ -228,6 +228,10 @@ I hope that with the introduction of PINT, the versioning problem will be solved
 
 # News and noteworthy
 
+v4.1.5 - 2026-01-27
+* Added AE TDD 1.0.2 rules. See [#51](https://github.com/phax/phive-rules/issues/51)
+* Updated AE PINT 1.0.2-hotfix rules. See [#51](https://github.com/phax/phive-rules/issues/51)
+
 v4.1.4 - 2026-01-23
 * Added Croatian eRacun v1.0.1 rules. See [#49](https://github.com/phax/phive-rules/issues/49)
 * Added OIOUBL 1.17.0-RC rules. See [#50](https://github.com/phax/phive-rules/issues/50)
