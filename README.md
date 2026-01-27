@@ -230,7 +230,8 @@ I hope that with the introduction of PINT, the versioning problem will be solved
 
 v4.1.5 - 2026-01-27
 * Added AE TDD 1.0.2 rules. See [#51](https://github.com/phax/phive-rules/issues/51)
-* Updated AE PINT 1.0.2-hotfix rules. See [#51](https://github.com/phax/phive-rules/issues/51)
+* Updated to AE PINT 1.0.2-hotfix rules. See [#51](https://github.com/phax/phive-rules/issues/51)
+* Updated to Peppol BIS Billing 3.0.20-hotfix rules. See [#52](https://github.com/phax/phive-rules/issues/52)
 
 v4.1.4 - 2026-01-23
 * Added Croatian eRacun v1.0.1 rules. See [#49](https://github.com/phax/phive-rules/issues/49)
