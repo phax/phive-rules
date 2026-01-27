@@ -47,9 +47,13 @@ public final class PeppolValidationTaxData
   public static final DVRCoordinate VID_OPENPEPPOL_TDD_AE_1_0_0 = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                                      "ae",
                                                                                                      "1.0.0");
+  @Deprecated (forRemoval = false)
   public static final DVRCoordinate VID_OPENPEPPOL_TDD_AE_1_0_1 = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                                      "ae",
                                                                                                      "1.0.1");
+  public static final DVRCoordinate VID_OPENPEPPOL_TDD_AE_1_0_2 = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                     "ae",
+                                                                                                     "1.0.2");
 
   private PeppolValidationTaxData ()
   {}
@@ -95,10 +99,25 @@ public final class PeppolValidationTaxData
 
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_TDD_AE_1_0_1,
                                                                              "AE Tax Data Document v1.0.1",
-                                                                             PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
+                                                                             PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                              ValidationExecutorXSD.create (aXSDs_AE_100),
                                                                              PhiveRulesHelper.createXSLT (new ClassPathResource (BASE_PATH_SCH +
                                                                                                                                  "ae/xslt/peppol-ae-tdd-1.0.1.xslt",
+                                                                                                                                 _getCL ()),
+                                                                                                          aNsCtx)));
+    }
+
+    // TDD AE 1.0.2
+    {
+      final MapBasedNamespaceContext aNsCtx = UBL21NamespaceContext.getInstance ().getClone ();
+      aNsCtx.addMapping ("pxs", "urn:peppol:schema:taxdata:1.0");
+
+      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_TDD_AE_1_0_2,
+                                                                             "AE Tax Data Document v1.0.2",
+                                                                             PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
+                                                                             ValidationExecutorXSD.create (aXSDs_AE_100),
+                                                                             PhiveRulesHelper.createXSLT (new ClassPathResource (BASE_PATH_SCH +
+                                                                                                                                 "ae/xslt/peppol-ae-tdd-1.0.2.xslt",
                                                                                                                                  _getCL ()),
                                                                                                           aNsCtx)));
     }
