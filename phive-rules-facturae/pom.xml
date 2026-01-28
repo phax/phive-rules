@@ -22,7 +22,7 @@
   <parent>
     <groupId>com.helger.phive.rules</groupId>
     <artifactId>phive-rules-parent-pom</artifactId>
-    <version>4.1.6</version>
+    <version>4.1.7-SNAPSHOT</version>
   </parent>
   <artifactId>phive-rules-facturae</artifactId>
   <packaging>bundle</packaging>
