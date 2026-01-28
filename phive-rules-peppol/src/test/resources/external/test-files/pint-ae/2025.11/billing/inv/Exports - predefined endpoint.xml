@@ -124,11 +124,11 @@
 	<cac:PaymentTerms>
 		<cbc:Note>within 1 month</cbc:Note>
 	</cac:PaymentTerms>
-	<cac:PricingExchangeRate>
+	<cac:TaxExchangeRate>
 		<cbc:SourceCurrencyCode>USD</cbc:SourceCurrencyCode>
 		<cbc:TargetCurrencyCode>AED</cbc:TargetCurrencyCode>
 		<cbc:CalculationRate>3.67285</cbc:CalculationRate>
-	</cac:PricingExchangeRate>
+	</cac:TaxExchangeRate>
 	<cac:TaxTotal>
 		<cbc:TaxAmount currencyID="USD">0</cbc:TaxAmount>
 		<cbc:TaxIncludedIndicator>false</cbc:TaxIncludedIndicator>

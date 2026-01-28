@@ -100,6 +100,9 @@
 			</cac:Contact>
 		</cac:Party>
 	</cac:AccountingCustomerParty>
+	<cac:PaymentMeans>
+		<cbc:PaymentMeansCode name="Instrument Not Defined">1</cbc:PaymentMeansCode>
+	</cac:PaymentMeans>
 	<cac:AllowanceCharge>
 		<cbc:ChargeIndicator>false</cbc:ChargeIndicator>
 		<cbc:AllowanceChargeReasonCode>100</cbc:AllowanceChargeReasonCode>

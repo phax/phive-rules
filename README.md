@@ -229,6 +229,9 @@ I hope that with the introduction of PINT, the versioning problem will be solved
 
 # News and noteworthy
 
+v4.1.6 - 2026-01-28
+* Updated to AE PINT 1.0.2-hotfix2 rules.
+
 v4.1.5 - 2026-01-27
 * Added AE TDD 1.0.2 rules. See [#51](https://github.com/phax/phive-rules/issues/51)
 * Updated to AE PINT 1.0.2-hotfix rules. See [#51](https://github.com/phax/phive-rules/issues/51)

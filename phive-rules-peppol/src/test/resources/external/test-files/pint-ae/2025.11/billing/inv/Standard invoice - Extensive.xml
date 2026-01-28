@@ -4,7 +4,7 @@
 	xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2 http://docs.oasis-open.org/ubl/os-UBL-2.1/xsd/maindoc/UBL-Invoice-2.1.xsd">
 	<cbc:CustomizationID>urn:peppol:pint:billing-1@ae-1</cbc:CustomizationID>  <!--  IBT-024 -->
-	<cbc:ProfileID>'urn:peppol:bis:billing</cbc:ProfileID>  <!--  IBT-023 -->
+	<cbc:ProfileID>urn:peppol:bis:billing</cbc:ProfileID>  <!--  IBT-023 -->
 	<cbc:ProfileExecutionID>10001010</cbc:ProfileExecutionID>	<!--  BTAE-02 -->
 	<cbc:ID>INV-001/2025</cbc:ID> <!--  IBT-001 -->
 	<cbc:UUID>4b6000ca-0128-4bdc-99a6-406f2909247f</cbc:UUID> <!--  BTAE-07 -->
