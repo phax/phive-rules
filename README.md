@@ -229,6 +229,9 @@ I hope that with the introduction of PINT, the versioning problem will be solved
 
 # News and noteworthy
 
+v4.1.8 - work in progress
+* Added Croatian eRacun v1.0.2 rules (release 2026-01-24)
+
 v4.1.7 - 2026-01-28
 * Updated to AE PINT Self-Billing 1.0.2-hotfix2 rules.
 
