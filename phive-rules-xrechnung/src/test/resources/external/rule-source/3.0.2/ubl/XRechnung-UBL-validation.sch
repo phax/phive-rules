@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema xmlns="http://purl.oclc.org/dsdl/schematron"
-        xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
         xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+        xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
         xmlns:u="utils"
         queryBinding="xslt2">
-   <title>Schematron Version 2.4.0 - XRechnung 3.0.2 compatible - UBL - Invoice / Creditnote</title>
+   <title>Schematron Version 2.5.0 - XRechnung 3.0.2 compatible - UBL - Invoice / Creditnote</title>
    <ns prefix="cbc"
        uri="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"/>
    <ns prefix="cac"
@@ -52,7 +52,6 @@
       <active pattern="peppol-ubl-pattern-1"/>
       <active pattern="peppol-ubl-pattern-2"/>
    </phase>
-   <include href="../common.sch"/>
    <!--BEGIN Functions from PEPPOL-->
    <function xmlns="http://www.w3.org/1999/XSL/Transform"
              name="u:gln"
@@ -63,7 +62,7 @@
                 select="reverse(for $i in string-to-codepoints(substring($val, 0, $length + 1)) return $i - 48)"/>
       <variable name="weightedSum"
                 select="sum(for $i in (0 to $length - 1) return $digits[$i + 1] * (1 + ((($i + 1) mod 2) * 2)))"/>
-      <value-of select="(10 - ($weightedSum mod 10)) mod 10 = number(substring($val, $length + 1, 1))"/>
+      <sequence select="(10 - ($weightedSum mod 10)) mod 10 = number(substring($val, $length + 1, 1))"/>
    </function>
    <function xmlns="http://www.w3.org/1999/XSL/Transform"
              name="u:slack"
@@ -71,7 +70,7 @@
       <param name="exp" as="xs:decimal"/>
       <param name="val" as="xs:decimal"/>
       <param name="slack" as="xs:decimal"/>
-      <value-of select="xs:decimal($exp + $slack) &gt;= $val and xs:decimal($exp - $slack) &lt;= $val"/>
+      <sequence select="xs:decimal($exp + $slack) &gt;= $val and xs:decimal($exp - $slack) &lt;= $val"/>
    </function>
    <function xmlns="http://www.w3.org/1999/XSL/Transform"
              name="u:mod11"
@@ -82,7 +81,7 @@
                 select="reverse(for $i in string-to-codepoints(substring($val, 0, $length + 1)) return $i - 48)"/>
       <variable name="weightedSum"
                 select="sum(for $i in (0 to $length - 1) return $digits[$i + 1] * (($i mod 6) + 2))"/>
-      <value-of select="number($val) &gt; 0 and (11 - ($weightedSum mod 11)) mod 11 = number(substring($val, $length + 1, 1))"/>
+      <sequence select="number($val) &gt; 0 and (11 - ($weightedSum mod 11)) mod 11 = number(substring($val, $length + 1, 1))"/>
    </function>
    <function xmlns="http://www.w3.org/1999/XSL/Transform"
              name="u:mod97-0208"
@@ -91,7 +90,7 @@
       <variable name="checkdigits" select="substring($val,9,2)"/>
       <variable name="calculated_digits"
                 select="xs:string(97 - (xs:integer(substring($val,1,8)) mod 97))"/>
-      <value-of select="number($checkdigits) = number($calculated_digits)"/>
+      <sequence select="number($checkdigits) = number($calculated_digits)"/>
    </function>
    <function xmlns="http://www.w3.org/1999/XSL/Transform"
              name="u:checkCodiceIPA"
@@ -142,7 +141,7 @@
              name="u:abn"
              as="xs:boolean">
       <param name="val"/>
-      <value-of select="( ((string-to-codepoints(substring($val,1,1)) - 49) * 10) + ((string-to-codepoints(substring($val,2,1)) - 48) * 1) + ((string-to-codepoints(substring($val,3,1)) - 48) * 3) + ((string-to-codepoints(substring($val,4,1)) - 48) * 5) + ((string-to-codepoints(substring($val,5,1)) - 48) * 7) + ((string-to-codepoints(substring($val,6,1)) - 48) * 9) + ((string-to-codepoints(substring($val,7,1)) - 48) * 11) + ((string-to-codepoints(substring($val,8,1)) - 48) * 13) + ((string-to-codepoints(substring($val,9,1)) - 48) * 15) + ((string-to-codepoints(substring($val,10,1)) - 48) * 17) + ((string-to-codepoints(substring($val,11,1)) - 48) * 19)) mod 89 = 0 "/>
+      <sequence select="( ((string-to-codepoints(substring($val,1,1)) - 49) * 10) + ((string-to-codepoints(substring($val,2,1)) - 48) * 1) + ((string-to-codepoints(substring($val,3,1)) - 48) * 3) + ((string-to-codepoints(substring($val,4,1)) - 48) * 5) + ((string-to-codepoints(substring($val,5,1)) - 48) * 7) + ((string-to-codepoints(substring($val,6,1)) - 48) * 9) + ((string-to-codepoints(substring($val,7,1)) - 48) * 11) + ((string-to-codepoints(substring($val,8,1)) - 48) * 13) + ((string-to-codepoints(substring($val,9,1)) - 48) * 15) + ((string-to-codepoints(substring($val,10,1)) - 48) * 17) + ((string-to-codepoints(substring($val,11,1)) - 48) * 19)) mod 89 = 0 "/>
    </function>
    <function xmlns="http://www.w3.org/1999/XSL/Transform"
              name="u:TinVerification"
@@ -152,21 +151,23 @@
                 select="    for $ch in string-to-codepoints($val)    return codepoints-to-string($ch)"/>
       <variable name="checksum"
                 select="    (number($digits[8])*2) +    (number($digits[7])*4) +    (number($digits[6])*8) +    (number($digits[5])*16) +    (number($digits[4])*32) +    (number($digits[3])*64) +    (number($digits[2])*128) +    (number($digits[1])*256) "/>
-      <value-of select="($checksum  mod 11) mod 10 = number($digits[9])"/>
+      <sequence select="($checksum  mod 11) mod 10 = number($digits[9])"/>
    </function>
    <function xmlns="http://www.w3.org/1999/XSL/Transform"
              name="u:checkSEOrgnr"
              as="xs:boolean">
       <param name="number" as="xs:string"/>
       <choose>
+      
          <when test="not(matches($number, '^\d+$'))">
             <sequence select="false()"/>
          </when>
          <otherwise>
+        
             <variable name="mainPart" select="substring($number, 1, 9)"/>
             <variable name="checkDigit" select="substring($number, 10, 1)"/>
             <variable name="sum" as="xs:integer">
-               <value-of select="sum(       for $pos in 1 to string-length($mainPart) return         if ($pos mod 2 = 1)         then (number(substring($mainPart, string-length($mainPart) - $pos + 1, 1)) * 2) mod 10 +           (number(substring($mainPart, string-length($mainPart) - $pos + 1, 1)) * 2) idiv 10         else number(substring($mainPart, string-length($mainPart) - $pos + 1, 1))      )"/>
+               <sequence select="xs:integer(sum(       for $pos in 1 to string-length($mainPart) return         if ($pos mod 2 = 1)         then (number(substring($mainPart, string-length($mainPart) - $pos + 1, 1)) * 2) mod 10 +           (number(substring($mainPart, string-length($mainPart) - $pos + 1, 1)) * 2) idiv 10         else number(substring($mainPart, string-length($mainPart) - $pos + 1, 1))      ))"/>
             </variable>
             <variable name="calculatedCheckDigit" select="(10 - $sum mod 10) mod 10"/>
             <sequence select="$calculatedCheckDigit = number($checkDigit)"/>
@@ -174,6 +175,7 @@
       </choose>
    </function>
    <!--END Functions from PEPPOL-->
+   <include href="../common.sch"/>
    <!--BEGIN Pattern from PEPPOL-->
    <pattern id="peppol-ubl-pattern-1">
       <rule context="//*[not(*) and not(normalize-space())]">
@@ -181,8 +183,13 @@
       </rule>
    </pattern>
    <pattern id="peppol-ubl-pattern-2">
+    
       <rule context="ubl-creditnote:CreditNote | ubl-invoice:Invoice">
          <assert id="PEPPOL-EN16931-R001" test="cbc:ProfileID" flag="fatal">Business process MUST be provided.</assert>
+      
+      
+      
+      
          <assert id="PEPPOL-EN16931-R053"
                  test="count(cac:TaxTotal[cac:TaxSubtotal]) = 1"
                  flag="fatal">Only one tax total with tax subtotals MUST be provided.</assert>
@@ -198,12 +205,15 @@
                  test="not(normalize-space(text()) = normalize-space(../cbc:DocumentCurrencyCode/text()))"
                  flag="fatal">VAT accounting currency code MUST be different from invoice currency code when provided.</assert>
       </rule>
+    
       <rule context="cac:AccountingCustomerParty/cac:Party">
          <assert id="PEPPOL-EN16931-R010" test="cbc:EndpointID" flag="fatal">Buyer electronic address MUST be provided</assert>
       </rule>
+    
       <rule context="cac:AccountingSupplierParty/cac:Party">
          <assert id="PEPPOL-EN16931-R020" test="cbc:EndpointID" flag="fatal">Seller electronic address MUST be provided</assert>
       </rule>
+    
       <rule context="ubl-invoice:Invoice/cac:AllowanceCharge[cbc:MultiplierFactorNumeric and not(cbc:BaseAmount)] | ubl-invoice:Invoice/cac:InvoiceLine/cac:AllowanceCharge[cbc:MultiplierFactorNumeric and not(cbc:BaseAmount)] | ubl-creditnote:CreditNote/cac:AllowanceCharge[cbc:MultiplierFactorNumeric and not(cbc:BaseAmount)] | ubl-creditnote:CreditNote/cac:CreditNoteLine/cac:AllowanceCharge[cbc:MultiplierFactorNumeric and not(cbc:BaseAmount)]">
          <assert id="PEPPOL-EN16931-R041" test="false()" flag="fatal">Allowance/charge base amount MUST be provided when allowance/charge percentage is provided.</assert>
       </rule>
@@ -218,11 +228,15 @@
                  test="normalize-space(cbc:ChargeIndicator/text()) = 'true' or normalize-space(cbc:ChargeIndicator/text()) = 'false'"
                  flag="fatal">Allowance/charge ChargeIndicator value MUST equal 'true' or 'false'</assert>
       </rule>
+    
       <rule context="         cac:PaymentMeans[some $code in tokenize('49 59', '\s')           satisfies normalize-space(cbc:PaymentMeansCode) = $code]">
          <assert id="PEPPOL-EN16931-R061"
                  test="cac:PaymentMandate/cbc:ID"
                  flag="fatal">Mandate reference MUST be provided for direct debit.</assert>
       </rule>
+    
+    
+    
       <rule context="ubl-invoice:Invoice[cac:InvoicePeriod/cbc:StartDate]/cac:InvoiceLine/cac:InvoicePeriod/cbc:StartDate | ubl-creditnote:CreditNote[cac:InvoicePeriod/cbc:StartDate]/cac:CreditNoteLine/cac:InvoicePeriod/cbc:StartDate">
          <assert id="PEPPOL-EN16931-R110"
                  test="xs:date(text()) &gt;= xs:date(../../../cac:InvoicePeriod/cbc:StartDate)"
@@ -233,6 +247,7 @@
                  test="xs:date(text()) &lt;= xs:date(../../../cac:InvoicePeriod/cbc:EndDate)"
                  flag="fatal">End date of line period MUST be within invoice period.</assert>
       </rule>
+    
       <rule context="cac:InvoiceLine | cac:CreditNoteLine">
          <let name="lineExtensionAmount"
               value="           if (cbc:LineExtensionAmount) then             xs:decimal(cbc:LineExtensionAmount)           else             0"/>
@@ -248,14 +263,16 @@
               value="           if (cac:AllowanceCharge[normalize-space(cbc:ChargeIndicator) = 'true']) then             round(sum(cac:AllowanceCharge[normalize-space(cbc:ChargeIndicator) = 'true']/cbc:Amount/xs:decimal(.)) * 10 * 10) div 100           else             0"/>
          <assert id="PEPPOL-EN16931-R120"
                  test="u:slack($lineExtensionAmount, ($quantity * ($priceAmount div $baseQuantity)) + $chargesTotal - $allowancesTotal, $slackValue)"
-                 flag="fatal">Invoice line net amount MUST equal (Invoiced quantity * (Item net price/item price base quantity) + Sum of invoice line charge amount - sum of invoice line allowance amount</assert>
+                 flag="warning">Invoice line net amount MUST equal (Invoiced quantity * (Item net price/item price base quantity) + Sum of invoice line charge amount - sum of invoice line allowance amount</assert>
          <assert id="PEPPOL-EN16931-R121"
                  test="not(cac:Price/cbc:BaseQuantity) or xs:decimal(cac:Price/cbc:BaseQuantity) &gt; 0"
                  flag="fatal">Base quantity MUST be a positive number above zero.</assert>
+      
          <assert id="PEPPOL-EN16931-R101"
                  test="(not(cac:DocumentReference) or (cac:DocumentReference/cbc:DocumentTypeCode='130'))"
                  flag="fatal">Element Document reference can only be used for Invoice line object</assert>
       </rule>
+    
       <rule context="cac:Price/cac:AllowanceCharge">
          <assert id="PEPPOL-EN16931-R044"
                  test="normalize-space(cbc:ChargeIndicator) = 'false'"
@@ -264,6 +281,7 @@
                  test="not(cbc:BaseAmount) or xs:decimal(../cbc:PriceAmount) = xs:decimal(cbc:BaseAmount) - xs:decimal(cbc:Amount)"
                  flag="fatal">Item net price MUST equal (Gross price - Allowance amount) when gross price is provided.</assert>
       </rule>
+    
       <rule context="cac:Price/cbc:BaseQuantity[@unitCode]">
          <let name="hasQuantity"
               value="../../cbc:InvoicedQuantity or ../../cbc:CreditedQuantity"/>
@@ -273,6 +291,20 @@
                  test="not($hasQuantity) or @unitCode = $quantity/@unitCode"
                  flag="fatal">Unit code of price base quantity MUST be same as invoiced quantity.</assert>
       </rule>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
    </pattern>
    <!--END Pattern from PEPPOL-->
    <pattern id="ubl-pattern">
@@ -406,20 +438,25 @@
       </rule>
    </pattern>
    <pattern id="ubl-extension-pattern">
+    
       <let name="isExtension"
            value="exists(/ubl:Invoice/cbc:CustomizationID[text() = concat( 'urn:cen.eu:en16931:2017#compliant#urn:xeinkauf.de:kosit:xrechnung_', $XR-MAJOR-MINOR-VERSION ,'#conformant#urn:xeinkauf.de:kosit:extension:xrechnung_', $XR-MAJOR-MINOR-VERSION) ] | /cn:CreditNote/cbc:CustomizationID[text() = concat( 'urn:cen.eu:en16931:2017#compliant#urn:xeinkauf.de:kosit:xrechnung_', $XR-MAJOR-MINOR-VERSION ,'#conformant#urn:xeinkauf.de:kosit:extension:xrechnung_', $XR-MAJOR-MINOR-VERSION) ] )"/>
       <rule context="cbc:EmbeddedDocumentBinaryObject[$isExtension]">
+      
          <assert test=".[@mimeCode = 'application/pdf' or         @mimeCode = 'image/png' or         @mimeCode = 'image/jpeg' or         @mimeCode = 'text/csv' or         @mimeCode = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' or         @mimeCode = 'application/vnd.oasis.opendocument.spreadsheet' or         @mimeCode = 'application/xml']"
                  id="BR-DEX-01"
                  flag="fatal">[BR-DEX-01] Das Element <name/> "Attached Document" (BT-125) benutzt einen nicht zulässigen MIME-Code: <value-of select="@mimeCode"/>. Im Falle einer Extension darf zusätzlich zu der Liste der mime codes (definiert in Abschnitt 8.2, "Binary Object") der MIME-Code application/xml genutzt werden.</assert>
       </rule>
       <rule context="/ubl:Invoice[$isExtension]">
+      
          <assert test="(every $invoiceline          in /ubl:Invoice/cac:InvoiceLine[ exists (./cac:SubInvoiceLine) ]          satisfies $invoiceline/xs:decimal(cbc:LineExtensionAmount) = sum($invoiceline/cac:SubInvoiceLine/xs:decimal(cbc:LineExtensionAmount))) and         (count( //cac:SubInvoiceLine [count(cac:SubInvoiceLine) &gt; 0 and xs:decimal(cbc:LineExtensionAmount) = sum(cac:SubInvoiceLine/xs:decimal(cbc:LineExtensionAmount))]) = count(//cac:SubInvoiceLine [count(cac:SubInvoiceLine) &gt; 0]))"
                  flag="warning"
                  id="BR-DEX-02">[BR-DEX-02] Der Wert von "Invoice line net amount" (BT-131) einer "INVOICE LINE"
         (BG-25) oder einer "SUB INVOICE LINE" (BG-DEX-01) soll der Summe
         der "Invoice line net amount" (BT-131) der direkt darunterliegenden "SUB
         INVOICE LINE" (BG-DEX-01) entsprechen.</assert>
+      
+      
          <assert test="not(exists(//cac:SubInvoiceLine/cac:Item[ count ( cac:ClassifiedTaxCategory) != 1]))"
                  flag="fatal"
                  id="BR-DEX-03">[BR-DEX-03] Eine Sub Invoice Line (BG-DEX-01) muss genau eine "SUB INVOICE LINE VAT INFORMATION" (BG-DEX-06) enthalten.</assert>
@@ -431,31 +468,37 @@
               value="if (exists(cbc:PayableRoundingAmount)) then (xs:decimal(cbc:PayableRoundingAmount)) else (0)"/>
          <let name="thirdpartyprepaidamount"
               value="if (exists(../cac:PrepaidPayment/cbc:PaidAmount[boolean(normalize-space(xs:string(.)))])) then (sum(../cac:PrepaidPayment/xs:decimal(cbc:PaidAmount))) else (0)"/>
+      
          <assert test="(round((xs:decimal(cbc:PayableAmount) - $payableroundingamount) * 10 * 10) div 100) = (round((xs:decimal(cbc:TaxInclusiveAmount) - $prepaidamount + $thirdpartyprepaidamount) * 10 * 10) div 100)"
                  flag="fatal"
                  id="BR-DEX-09">[BR-DEX-09] Amount due for payment (BT-115) = Invoice total amount with VAT (BT-112) - Paid amount (BT-113) + Rounding amount (BT-114) + Σ Third party payment amount (BT-DEX-002).</assert>
       </rule>
       <rule context="cac:PartyIdentification/cbc:ID[@schemeID and $isExtension]">
+      
          <assert test="((not(contains(normalize-space(@schemeID), ' ')) and contains($ISO-6523-ICD-EXT-CODES, concat(' ', normalize-space(@schemeID), ' '))))  or ((not(contains(normalize-space(@schemeID), ' ')) and contains(' SEPA ', concat(' ', normalize-space(@schemeID), ' '))) and ((ancestor::cac:AccountingSupplierParty) or (ancestor::cac:PayeeParty)))"
                  flag="fatal"
                  id="BR-DEX-04">[BR-DEX-04] Any scheme identifier in <name/> MUST be coded using one of the ISO 6523 ICD list. </assert>
       </rule>
       <rule context="cac:PartyLegalEntity/cbc:CompanyID[@schemeID and $isExtension]">
+      
          <assert test="((not(contains(normalize-space(@schemeID), ' ')) and contains($ISO-6523-ICD-EXT-CODES, concat(' ', normalize-space(@schemeID), ' '))))"
                  flag="fatal"
                  id="BR-DEX-05">[BR-DEX-05] Any scheme identifier in <name/> MUST be coded using one of the ISO 6523 ICD list. </assert>
       </rule>
       <rule context="cac:StandardItemIdentification/cbc:ID[@schemeID and $isExtension]">
+      
          <assert test="((not(contains(normalize-space(@schemeID), ' ')) and contains($ISO-6523-ICD-EXT-CODES, concat(' ', normalize-space(@schemeID), ' '))))"
                  flag="fatal"
                  id="BR-DEX-06">[BR-DEX-06] Any scheme identifier in <name/> MUST be coded using one of the ISO 6523 ICD list. </assert>
       </rule>
       <rule context="cbc:EndpointID[@schemeID and $isExtension]">
+      
          <assert test="((not(contains(normalize-space(@schemeID), ' ')) and contains($CEF-EAS-EXT-CODES, concat(' ', normalize-space(@schemeID), ' '))))"
                  flag="fatal"
                  id="BR-DEX-07">[BR-DEX-07] Any scheme identifier for an Endpoint Identifier in <name/> MUST belong to the CEF EAS code list. </assert>
       </rule>
       <rule context="cac:DeliveryLocation/cbc:ID[@schemeID and $isExtension]">
+      
          <assert test="((not(contains(normalize-space(@schemeID), ' ')) and contains($ISO-6523-ICD-EXT-CODES, concat(' ', normalize-space(@schemeID), ' '))))"
                  flag="fatal"
                  id="BR-DEX-08">[BR-DEX-08] Any scheme identifier for a Delivery location identifier in <name/> MUST be coded using one of the ISO 6523 ICD list. </assert>

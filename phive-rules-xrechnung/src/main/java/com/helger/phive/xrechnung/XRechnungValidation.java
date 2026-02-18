@@ -1043,13 +1043,13 @@ public final class XRechnungValidation
       }
     }
 
-    // v3.0.2 (based on rule release 2.4.0)
-    // Uses CEN rules 1.3.14.2
+    // v3.0.2 (based on rule release 2.5.0)
+    // Uses CEN rules 1.3.15
     {
-      final IValidationExecutorSet <IValidationSourceXML> aVESCII = aRegistry.getOfID (EN16931Validation.VID_CII_1314_2);
-      final IValidationExecutorSet <IValidationSourceXML> aVESUBLCreditNote = aRegistry.getOfID (EN16931Validation.VID_UBL_CREDIT_NOTE_1314_2);
-      final IValidationExecutorSet <IValidationSourceXML> aVESUBLInvoice = aRegistry.getOfID (EN16931Validation.VID_UBL_INVOICE_1314_2);
-      final String sAkaVersion = " (rules v2.4.0)";
+      final IValidationExecutorSet <IValidationSourceXML> aVESCII = aRegistry.getOfID (EN16931Validation.VID_CII_1315);
+      final IValidationExecutorSet <IValidationSourceXML> aVESUBLCreditNote = aRegistry.getOfID (EN16931Validation.VID_UBL_CREDIT_NOTE_1315);
+      final IValidationExecutorSet <IValidationSourceXML> aVESUBLInvoice = aRegistry.getOfID (EN16931Validation.VID_UBL_INVOICE_1315);
+      final String sAkaVersion = " (rules v2.5.0)";
 
       {
         final ICommonsMap <String, CustomErrorDetails> aCustomErrorLevels = new CommonsHashMap <> ();

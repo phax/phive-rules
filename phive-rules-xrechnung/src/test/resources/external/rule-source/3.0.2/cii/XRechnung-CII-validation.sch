@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema xmlns="http://purl.oclc.org/dsdl/schematron"
-        xmlns:rsm="urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100"
         xmlns:ccts="urn:un:unece:uncefact:documentation:standard:CoreComponentsTechnicalSpecification:2"
-        xmlns:udt="urn:un:unece:uncefact:data:standard:UnqualifiedDataType:100"
         xmlns:qdt="urn:un:unece:uncefact:data:standard:QualifiedDataType:100"
         xmlns:ram="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100"
-        xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+        xmlns:rsm="urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100"
         xmlns:u="utils"
+        xmlns:udt="urn:un:unece:uncefact:data:standard:UnqualifiedDataType:100"
+        xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
         queryBinding="xslt2">
-   <title>Schematron Version 2.4.0 - XRechnung 3.0.2 compatible - CII</title>
+   <title>Schematron Version 2.5.0 - XRechnung 3.0.2 compatible - CII</title>
    <ns prefix="rsm"
        uri="urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100"/>
    <ns prefix="ccts"
@@ -45,7 +45,6 @@
       <active pattern="peppol-cii-pattern-0-b"/>
       <active pattern="peppol-cii-pattern-1"/>
    </phase>
-   <include href="../common.sch"/>
    <!--BEGIN Functions from PEPPOL-->
    <function xmlns="http://www.w3.org/1999/XSL/Transform"
              name="u:gln"
@@ -56,7 +55,7 @@
                 select="reverse(for $i in string-to-codepoints(substring($val, 0, $length + 1)) return $i - 48)"/>
       <variable name="weightedSum"
                 select="sum(for $i in (0 to $length - 1) return $digits[$i + 1] * (1 + ((($i + 1) mod 2) * 2)))"/>
-      <value-of select="(10 - ($weightedSum mod 10)) mod 10 = number(substring($val, $length + 1, 1))"/>
+      <sequence select="(10 - ($weightedSum mod 10)) mod 10 = number(substring($val, $length + 1, 1))"/>
    </function>
    <function xmlns="http://www.w3.org/1999/XSL/Transform"
              name="u:slack"
@@ -64,7 +63,7 @@
       <param name="exp" as="xs:decimal"/>
       <param name="val" as="xs:decimal"/>
       <param name="slack" as="xs:decimal"/>
-      <value-of select="xs:decimal($exp + $slack) &gt;= $val and xs:decimal($exp - $slack) &lt;= $val"/>
+      <sequence select="xs:decimal($exp + $slack) &gt;= $val and xs:decimal($exp - $slack) &lt;= $val"/>
    </function>
    <function xmlns="http://www.w3.org/1999/XSL/Transform"
              name="u:mod11"
@@ -75,7 +74,7 @@
                 select="reverse(for $i in string-to-codepoints(substring($val, 0, $length + 1)) return $i - 48)"/>
       <variable name="weightedSum"
                 select="sum(for $i in (0 to $length - 1) return $digits[$i + 1] * (($i mod 6) + 2))"/>
-      <value-of select="number($val) &gt; 0 and (11 - ($weightedSum mod 11)) mod 11 = number(substring($val, $length + 1, 1))"/>
+      <sequence select="number($val) &gt; 0 and (11 - ($weightedSum mod 11)) mod 11 = number(substring($val, $length + 1, 1))"/>
    </function>
    <function xmlns="http://www.w3.org/1999/XSL/Transform"
              name="u:mod97-0208"
@@ -84,7 +83,7 @@
       <variable name="checkdigits" select="substring($val,9,2)"/>
       <variable name="calculated_digits"
                 select="xs:string(97 - (xs:integer(substring($val,1,8)) mod 97))"/>
-      <value-of select="number($checkdigits) = number($calculated_digits)"/>
+      <sequence select="number($checkdigits) = number($calculated_digits)"/>
    </function>
    <function xmlns="http://www.w3.org/1999/XSL/Transform"
              name="u:checkCodiceIPA"
@@ -135,21 +134,23 @@
              name="u:abn"
              as="xs:boolean">
       <param name="val"/>
-      <value-of select="( ((string-to-codepoints(substring($val,1,1)) - 49) * 10) + ((string-to-codepoints(substring($val,2,1)) - 48) * 1) + ((string-to-codepoints(substring($val,3,1)) - 48) * 3) + ((string-to-codepoints(substring($val,4,1)) - 48) * 5) + ((string-to-codepoints(substring($val,5,1)) - 48) * 7) + ((string-to-codepoints(substring($val,6,1)) - 48) * 9) + ((string-to-codepoints(substring($val,7,1)) - 48) * 11) + ((string-to-codepoints(substring($val,8,1)) - 48) * 13) + ((string-to-codepoints(substring($val,9,1)) - 48) * 15) + ((string-to-codepoints(substring($val,10,1)) - 48) * 17) + ((string-to-codepoints(substring($val,11,1)) - 48) * 19)) mod 89 = 0 "/>
+      <sequence select="( ((string-to-codepoints(substring($val,1,1)) - 49) * 10) + ((string-to-codepoints(substring($val,2,1)) - 48) * 1) + ((string-to-codepoints(substring($val,3,1)) - 48) * 3) + ((string-to-codepoints(substring($val,4,1)) - 48) * 5) + ((string-to-codepoints(substring($val,5,1)) - 48) * 7) + ((string-to-codepoints(substring($val,6,1)) - 48) * 9) + ((string-to-codepoints(substring($val,7,1)) - 48) * 11) + ((string-to-codepoints(substring($val,8,1)) - 48) * 13) + ((string-to-codepoints(substring($val,9,1)) - 48) * 15) + ((string-to-codepoints(substring($val,10,1)) - 48) * 17) + ((string-to-codepoints(substring($val,11,1)) - 48) * 19)) mod 89 = 0 "/>
    </function>
    <function xmlns="http://www.w3.org/1999/XSL/Transform"
              name="u:checkSEOrgnr"
              as="xs:boolean">
       <param name="number" as="xs:string"/>
       <choose>
+		
          <when test="not(matches($number, '^\d+$'))">
             <sequence select="false()"/>
          </when>
          <otherwise>
+			
             <variable name="mainPart" select="substring($number, 1, 9)"/>
             <variable name="checkDigit" select="substring($number, 10, 1)"/>
             <variable name="sum" as="xs:integer">
-               <value-of select="sum(       for $pos in 1 to string-length($mainPart) return         if ($pos mod 2 = 1)         then (number(substring($mainPart, string-length($mainPart) - $pos + 1, 1)) * 2) mod 10 +           (number(substring($mainPart, string-length($mainPart) - $pos + 1, 1)) * 2) idiv 10         else number(substring($mainPart, string-length($mainPart) - $pos + 1, 1))      )"/>
+               <sequence select="xs:integer(sum(       for $pos in 1 to string-length($mainPart) return         if ($pos mod 2 = 1)         then (number(substring($mainPart, string-length($mainPart) - $pos + 1, 1)) * 2) mod 10 +           (number(substring($mainPart, string-length($mainPart) - $pos + 1, 1)) * 2) idiv 10         else number(substring($mainPart, string-length($mainPart) - $pos + 1, 1))      ))"/>
             </variable>
             <variable name="calculatedCheckDigit" select="(10 - $sum mod 10) mod 10"/>
             <sequence select="$calculatedCheckDigit = number($checkDigit)"/>
@@ -157,13 +158,17 @@
       </choose>
    </function>
    <!--END Functions from PEPPOL-->
+   <include href="../common.sch"/>
    <!--BEGIN Pattern from PEPPOL-->
    <pattern id="peppol-cii-pattern-1">
       <rule context="rsm:ExchangedDocumentContext">
          <assert id="PEPPOL-EN16931-R001"
                  test="ram:BusinessProcessSpecifiedDocumentContextParameter/ram:ID"
                  flag="fatal">Business process MUST be provided.</assert>
+      
+      
       </rule>
+    
       <rule context="ram:ApplicableHeaderTradeSettlement">
          <assert id="PEPPOL-EN16931-R005"
                  test="not(ram:TaxCurrencyCode) or normalize-space(ram:TaxCurrencyCode/text()) != normalize-space(ram:InvoiceCurrencyCode/text())"
@@ -178,6 +183,8 @@
                  test="not(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:TaxCurrencyCode and ram:SpecifiedTradeSettlementHeaderMonetarySummation/ram:TaxTotalAmount[@currencyID = $documentCurrencyCode]) or (ram:SpecifiedTradeSettlementHeaderMonetarySummation/ram:TaxTotalAmount[@currencyID = $taxCurrencyCode] &lt; 0 and ram:SpecifiedTradeSettlementHeaderMonetarySummation/ram:TaxTotalAmount[@currencyID = $documentCurrencyCode] &lt; 0) or (ram:SpecifiedTradeSettlementHeaderMonetarySummation/ram:TaxTotalAmount[@currencyID = $taxCurrencyCode] &gt;= 0 and ram:SpecifiedTradeSettlementHeaderMonetarySummation/ram:TaxTotalAmount[@currencyID = $documentCurrencyCode] &gt;= 0)"
                  flag="fatal">Invoice total VAT amount and Invoice total VAT amount in accounting currency MUST have the same operational sign</assert>
       </rule>
+    
+    
       <rule context="ram:BuyerTradeParty">
          <assert id="PEPPOL-EN16931-R010"
                  test="ram:URIUniversalCommunication/ram:URIID"
@@ -232,11 +239,15 @@
          <let name="priceAmount"
               value="                     if (ram:SpecifiedLineTradeAgreement/ram:NetPriceProductTradePrice/ram:ChargeAmount) then                         xs:decimal(ram:SpecifiedLineTradeAgreement/ram:NetPriceProductTradePrice/ram:ChargeAmount)                     else                         0"/>
          <let name="baseQuantity"
-              value="                     if (ram:SpecifiedLineTradeAgreement/ram:NetPriceProductTradePrice/ram:BasisQuantity and xs:decimal(ram:SpecifiedLineTradeAgreement/ram:NetPriceProductTradePrice/ram:BasisQuantity) != 0) then                         xs:decimal(ram:SpecifiedLineTradeAgreement/ram:NetPriceProductTradePrice/ram:BasisQuantity)                     else                         1"/>
+              value="if (ram:SpecifiedLineTradeAgreement/ram:NetPriceProductTradePrice/ram:BasisQuantity and xs:decimal(ram:SpecifiedLineTradeAgreement/ram:NetPriceProductTradePrice/ram:BasisQuantity) != 0) then xs:decimal(ram:SpecifiedLineTradeAgreement/ram:NetPriceProductTradePrice/ram:BasisQuantity) else if (ram:SpecifiedLineTradeAgreement/ram:GrossPriceProductTradePrice/ram:BasisQuantity and xs:decimal(ram:SpecifiedLineTradeAgreement/ram:GrossPriceProductTradePrice/ram:BasisQuantity) != 0) then xs:decimal(ram:SpecifiedLineTradeAgreement/ram:GrossPriceProductTradePrice/ram:BasisQuantity) else 1"/>
          <let name="allowancesTotal"
               value="                     if (ram:SpecifiedLineTradeSettlement/ram:SpecifiedTradeAllowanceCharge[normalize-space(ram:ChargeIndicator/udt:Indicator) = 'false']) then                         round(sum(ram:SpecifiedLineTradeSettlement/ram:SpecifiedTradeAllowanceCharge[normalize-space(ram:ChargeIndicator/udt:Indicator) = 'false']/ram:ActualAmount/xs:decimal(.)) * 10 * 10) div 100                     else                         0"/>
          <let name="chargesTotal"
               value="                     if (ram:SpecifiedLineTradeSettlement/ram:SpecifiedTradeAllowanceCharge[normalize-space(ram:ChargeIndicator/udt:Indicator) = 'true']) then                         round(sum(ram:SpecifiedLineTradeSettlement/ram:SpecifiedTradeAllowanceCharge[normalize-space(ram:ChargeIndicator/udt:Indicator) = 'true']/ram:ActualAmount/xs:decimal(.)) * 10 * 10) div 100                     else                         0"/>
+         <assert id="PEPPOL-EN16931-R120"
+                 test="u:slack($lineExtensionAmount, ($quantity * ($priceAmount div $baseQuantity)) + $chargesTotal - $allowancesTotal, $slackValue)"
+                 flag="warning">Invoice line net amount MUST equal (Invoiced quantity * (Item net price/item price base quantity) + Sum of invoice line charge amount - sum of invoice line allowance amount</assert>
+      
          <assert id="PEPPOL-EN16931-R101"
                  test="(not(ram:SpecifiedLineTradeSettlement/ram:AdditionalReferencedDocument) or (ram:SpecifiedLineTradeSettlement/ram:AdditionalReferencedDocument/ram:TypeCode='130'))"
                  flag="fatal">Element Additional referenced document can only be used for Invoice line object.</assert>
@@ -246,11 +257,27 @@
                  test="not(ram:BasisQuantity) or xs:decimal(ram:BasisQuantity) &gt; 0"
                  flag="fatal">Base quantity MUST be a positive number above zero.</assert>
       </rule>
+    
+    
       <rule context="ram:NetPriceProductTradePrice/ram:BasisQuantity[@unitCode] | ram:GrossPriceProductTradePrice/ram:BasisQuantity[@unitCode]">
          <assert id="PEPPOL-EN16931-R130"
                  test="@unitCode = ../../../ram:SpecifiedLineTradeDelivery/ram:BilledQuantity/@unitCode"
                  flag="fatal">Unit code of price base quantity MUST be same as invoiced quantity.</assert>
       </rule>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+	
    </pattern>
    <pattern id="peppol-cii-pattern-0-a">
       <rule context="//*[not(name() = 'ram:ApplicableHeaderTradeDelivery') and not(*) and not(normalize-space())]">
@@ -393,7 +420,7 @@
          <assert test="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradePaymentTerms/ram:DirectDebitMandateID or                     /rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:CreditorReferenceID or                     ram:PayerPartyDebtorFinancialAccount/ram:IBANID"
                  flag="fatal"
                  id="BR-DE-25-a">[BR-DE-25-a] Wenn BT-81 "Payment means type code" einen Schlüssel für Lastschriften enthält (59), muss genau BG-19 "DIRECT DEBIT" übermittelt werden.</assert>
-         <assert test="not(ram:PayeePartyCreditorFinancialAccount) and                     not(ram:ApplicableTradeSettlementFinancialCard)"
+         <assert test="not(ram:PayeePartyCreditorFinancialAccount) and                     not(ram:PayeeSpecifiedCreditorFinancialInstitution) and                     not(ram:PayerSpecifiedDebtorFinancialInstitution) and                     not(ram:ApplicableTradeSettlementFinancialCard)"
                  flag="fatal"
                  id="BR-DE-25-b">[BR-DE-25-b] Wenn BT-81 "Payment means type code" einen Schlüssel für Lastschriften enthält (59), dürfen BG-17 und BG-18 nicht übermittelt werden.</assert>
       </rule>
@@ -403,19 +430,20 @@
                  id="BR-DE-14">[BR-DE-14] Das Element "VAT category rate" (BT-119) muss übermittelt werden.</assert>
       </rule>
       <rule context="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction">
-         <assert test="         ram:ApplicableHeaderTradeDelivery/ram:ActualDeliverySupplyChainEvent/ram:OccurrenceDateTime         or ram:ApplicableHeaderTradeSettlement/ram:BillingSpecifiedPeriod         or (every $line in ram:IncludedSupplyChainTradeLineItem             satisfies $line/ram:SpecifiedLineTradeSettlement/ram:BillingSpecifiedPeriod)"
+         <assert test="               ram:ApplicableHeaderTradeDelivery/ram:ActualDeliverySupplyChainEvent/ram:OccurrenceDateTime               or ram:ApplicableHeaderTradeSettlement/ram:BillingSpecifiedPeriod               or (every $line in ram:IncludedSupplyChainTradeLineItem               satisfies $line/ram:SpecifiedLineTradeSettlement/ram:BillingSpecifiedPeriod)"
                  flag="information"
                  id="BR-DE-TMP-32">
-        [BR-DE-TMP-32] Eine Rechnung sollte zur Angabe des Liefer-/Leistungsdatums entweder BT-72 "Actual delivery date", BG-14 "Invoicing period" oder in jeder Rechnungsposition BG-26 "Invoice line period" enthalten.
-      </assert>
+              [BR-DE-TMP-32] Eine Rechnung sollte zur Angabe des Liefer-/Leistungsdatums entweder BT-72 "Actual delivery date", BG-14 "Invoicing period" oder in jeder Rechnungsposition BG-26 "Invoice line period" enthalten.
+          </assert>
       </rule>
-      <rule context="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeAgreement">
-         <assert test="not(./ram:NetPriceProductTradePrice/ram:BasisQuantity and ./ram:GrossPriceProductTradePrice/ram:BasisQuantity) or (./ram:NetPriceProductTradePrice/ram:BasisQuantity = ./ram:GrossPriceProductTradePrice/ram:BasisQuantity and ./ram:NetPriceProductTradePrice/ram:BasisQuantity/@unitCode = ./ram:GrossPriceProductTradePrice/ram:BasisQuantity/@unitCode)"
+      <rule context="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem">
+         <assert test="not(ram:SpecifiedLineTradeAgreement/ram:GrossPriceProductTradePrice/ram:BasisQuantity                         and                         ram:SpecifiedLineTradeAgreement/ram:NetPriceProductTradePrice/ram:BasisQuantity)                     or                     (ram:SpecifiedLineTradeAgreement/ram:GrossPriceProductTradePrice/ram:BasisQuantity =                      ram:SpecifiedLineTradeAgreement/ram:NetPriceProductTradePrice/ram:BasisQuantity                      and                      (not(ram:SpecifiedLineTradeAgreement/ram:NetPriceProductTradePrice/ram:BasisQuantity/@unitCode                      and                      ram:SpecifiedLineTradeAgreement/ram:GrossPriceProductTradePrice/ram:BasisQuantity/@unitCode)                       or                       ram:SpecifiedLineTradeAgreement/ram:GrossPriceProductTradePrice/ram:BasisQuantity/@unitCode =                       ram:SpecifiedLineTradeAgreement/ram:NetPriceProductTradePrice/ram:BasisQuantity/@unitCode))"
                  flag="fatal"
-                 id="BR-TMP-3">[BR-TMP-3] If both elements to which BT-149 and BT-150 can be mapped are present, both must be equal.</assert>
+                 id="BR-TMP-3">[BR-TMP-3] Wenn BT-149 (Item price base quantity) sowohl in GrossPriceProductTradePrice als auch in NetPriceProductTradePrice vorhanden ist, müssen die Werte identisch sein. Wenn BT-150 (unit of measure code) auf dem NetPrice-Pfad vorhanden ist, muss es auch auf dem GrossPrice-Pfad vorhanden und identisch sein.</assert>
       </rule>
    </pattern>
    <pattern id="cii-extension-pattern">
+    
       <let name="isExtension"
            value="exists(/rsm:CrossIndustryInvoice/rsm:ExchangedDocumentContext/ram:GuidelineSpecifiedDocumentContextParameter/ram:ID[text() = concat( 'urn:cen.eu:en16931:2017#compliant#urn:xeinkauf.de:kosit:xrechnung_', $XR-MAJOR-MINOR-VERSION ,'#conformant#urn:xeinkauf.de:kosit:extension:xrechnung_', $XR-MAJOR-MINOR-VERSION) ] )"/>
       <rule context="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:AssociatedDocumentLineDocument[$isExtension]">
@@ -426,31 +454,37 @@
           </assert>
       </rule>
       <rule context="//ram:GlobalID[@schemeID and $isExtension][not(ancestor::ram:SpecifiedTradeProduct) and not(ancestor::ram:ShipToTradeParty)]">
+        
          <assert test="((not(contains(normalize-space(@schemeID), ' ')) and contains($ISO-6523-ICD-EXT-CODES, concat(' ', normalize-space(@schemeID), ' '))))"
                  flag="fatal"
                  id="BR-DEX-04">[BR-DEX-04] Any scheme identifier in <name/> MUST be coded using one of the ISO 6523 ICD list. </assert>
       </rule>
       <rule context="ram:ID[@schemeID and $isExtension][not(ancestor::ram:SpecifiedTaxRegistration)]">
+        
          <assert test="((not(contains(normalize-space(@schemeID), ' ')) and contains($ISO-6523-ICD-EXT-CODES, concat(' ', normalize-space(@schemeID), ' '))))"
                  flag="fatal"
                  id="BR-DEX-05">[BR-DEX-05] Any scheme identifier in <name/> MUST be coded using one of the ISO 6523 ICD list. </assert>
       </rule>
       <rule context="ram:SpecifiedTradeProduct/ram:GlobalID[@schemeID and $isExtension]">
+        
          <assert test="((not(contains(normalize-space(@schemeID), ' ')) and contains($ISO-6523-ICD-EXT-CODES, concat(' ', normalize-space(@schemeID), ' '))))"
                  flag="fatal"
                  id="BR-DEX-06">[BR-DEX-06] Any scheme identifier in <name/> MUST be coded using one of the ISO 6523 ICD list. </assert>
       </rule>
       <rule context="ram:URIUniversalCommunication/ram:URIID[@schemeID and $isExtension]">
+        
          <assert test="((not(contains(normalize-space(@schemeID), ' ')) and contains($CEF-EAS-EXT-CODES, concat(' ', normalize-space(@schemeID), ' '))))"
                  flag="fatal"
                  id="BR-DEX-07">[BR-DEX-07] Any scheme identifier for an Endpoint Identifier in <name/> MUST belong to the CEF EAS code list. </assert>
       </rule>
       <rule context="ram:ApplicableHeaderTradeDelivery/ram:ShipToTradeParty/ram:GlobalID[@schemeID and $isExtension]">
+        
          <assert test="((not(contains(normalize-space(@schemeID), ' ')) and contains($ISO-6523-ICD-EXT-CODES, concat(' ', normalize-space(@schemeID), ' '))))"
                  flag="fatal"
                  id="BR-DEX-08">[BR-DEX-08] Any scheme identifier for a Delivery location identifier in <name/> MUST be coded using one of the ISO 6523 ICD list. </assert>
       </rule>
       <rule context="ram:AttachmentBinaryObject[$isExtension]">
+          
          <assert test=".[@mimeCode = 'application/pdf' or               @mimeCode = 'image/png' or               @mimeCode = 'image/jpeg' or               @mimeCode = 'text/csv' or               @mimeCode = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' or               @mimeCode = 'application/vnd.oasis.opendocument.spreadsheet' or               @mimeCode = 'application/xml']"
                  id="BR-DEX-01"
                  flag="fatal">[BR-DEX-01] Das Element <name/> "Attached Document" (BT-125) benutzt einen nicht zulässigen MIME-Code: <value-of select="@mimeCode"/>. Im Falle einer Extension darf zusätzlich zu der Liste der mime codes (definiert in Abschnitt 8.2, "Binary Object") der MIME-Code application/xml genutzt werden.</assert>
