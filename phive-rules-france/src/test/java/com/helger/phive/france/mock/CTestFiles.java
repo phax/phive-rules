@@ -31,6 +31,7 @@ import com.helger.io.resource.ClassPathResource;
 import com.helger.io.resource.IReadableResource;
 import com.helger.phive.api.executorset.ValidationExecutorSetRegistry;
 import com.helger.phive.api.mock.PhiveTestFile;
+import com.helger.phive.en16931.EN16931Validation;
 import com.helger.phive.france.FranceCTCValidation;
 import com.helger.phive.xml.source.IValidationSourceXML;
 
@@ -40,6 +41,7 @@ public final class CTestFiles
   public static final ValidationExecutorSetRegistry <IValidationSourceXML> VES_REGISTRY = new ValidationExecutorSetRegistry <> ();
   static
   {
+    EN16931Validation.initEN16931 (VES_REGISTRY);
     FranceCTCValidation.initFranceCTC (VES_REGISTRY);
   }
 

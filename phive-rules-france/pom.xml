@@ -68,6 +68,10 @@
       <artifactId>ph-cii-d22b</artifactId>
       <version>${ph-cii.version}</version>
     </dependency>
+    <dependency>
+      <groupId>com.helger.phive.rules</groupId>
+      <artifactId>phive-rules-en16931</artifactId>
+    </dependency>
 
     <dependency>
       <groupId>junit</groupId>

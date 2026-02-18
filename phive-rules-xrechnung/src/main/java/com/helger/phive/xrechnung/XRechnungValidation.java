@@ -284,13 +284,13 @@ public final class XRechnungValidation
     // Just new Schematrons on top
     // v1.2.0 (based on rule release 1.1.0)
     {
-      final IValidationExecutorSet <IValidationSourceXML> aVESCII110 = aRegistry.getOfID (EN16931Validation.VID_CII_110);
-      final IValidationExecutorSet <IValidationSourceXML> aVESUBLCreditNote110 = aRegistry.getOfID (EN16931Validation.VID_UBL_CREDIT_NOTE_110);
-      final IValidationExecutorSet <IValidationSourceXML> aVESUBLInvoice110 = aRegistry.getOfID (EN16931Validation.VID_UBL_INVOICE_110);
-      if (aVESCII110 == null || aVESUBLCreditNote110 == null || aVESUBLInvoice110 == null)
+      final IValidationExecutorSet <IValidationSourceXML> aVESCII = aRegistry.getOfID (EN16931Validation.VID_CII_110);
+      final IValidationExecutorSet <IValidationSourceXML> aVESUBLCreditNote = aRegistry.getOfID (EN16931Validation.VID_UBL_CREDIT_NOTE_110);
+      final IValidationExecutorSet <IValidationSourceXML> aVESUBLInvoice = aRegistry.getOfID (EN16931Validation.VID_UBL_INVOICE_110);
+      if (aVESCII == null || aVESUBLCreditNote == null || aVESUBLInvoice == null)
         throw new InitializationException ("The EN 16931 VES are missing. Make sure to call EN16931Validation.initEN16931 first.");
 
-      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.createDerived (aVESCII110,
+      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.createDerived (aVESCII,
                                                                                     VID_XRECHNUNG_CII_120,
                                                                                     "XRechnung CII " +
                                                                                                            VID_XRECHNUNG_CII_120.getVersionString (),
@@ -298,7 +298,7 @@ public final class XRechnungValidation
                                                                                     PhiveRulesCIIHelper.createXSLT_CII_D16B (new ClassPathResource (sPrefix +
                                                                                                                                                     "1.2.0/XRechnung-CII-validation.xslt",
                                                                                                                                                     _getCL ()))));
-      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.createDerived (aVESUBLCreditNote110,
+      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.createDerived (aVESUBLCreditNote,
                                                                                     VID_XRECHNUNG_UBL_CREDITNOTE_120,
                                                                                     "XRechnung UBL Credit Note " +
                                                                                                                       VID_XRECHNUNG_UBL_CREDITNOTE_120.getVersionString (),
@@ -306,7 +306,7 @@ public final class XRechnungValidation
                                                                                     PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix +
                                                                                                                                                  "1.2.0/XRechnung-UBL-validation-CreditNote.xslt",
                                                                                                                                                  _getCL ()))));
-      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.createDerived (aVESUBLInvoice110,
+      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.createDerived (aVESUBLInvoice,
                                                                                     VID_XRECHNUNG_UBL_INVOICE_120,
                                                                                     "XRechnung UBL Invoice " +
                                                                                                                    VID_XRECHNUNG_UBL_INVOICE_120.getVersionString (),
@@ -318,11 +318,13 @@ public final class XRechnungValidation
 
     // v1.2.1 (based on rule release 1.2.1)
     {
-      final IValidationExecutorSet <IValidationSourceXML> aVESCII121 = aRegistry.getOfID (EN16931Validation.VID_CII_121);
-      final IValidationExecutorSet <IValidationSourceXML> aVESUBLCreditNote121 = aRegistry.getOfID (EN16931Validation.VID_UBL_CREDIT_NOTE_121);
-      final IValidationExecutorSet <IValidationSourceXML> aVESUBLInvoice121 = aRegistry.getOfID (EN16931Validation.VID_UBL_INVOICE_121);
+      final IValidationExecutorSet <IValidationSourceXML> aVESCII = aRegistry.getOfID (EN16931Validation.VID_CII_121);
+      final IValidationExecutorSet <IValidationSourceXML> aVESUBLCreditNote = aRegistry.getOfID (EN16931Validation.VID_UBL_CREDIT_NOTE_121);
+      final IValidationExecutorSet <IValidationSourceXML> aVESUBLInvoice = aRegistry.getOfID (EN16931Validation.VID_UBL_INVOICE_121);
+      if (aVESCII == null || aVESUBLCreditNote == null || aVESUBLInvoice == null)
+        throw new InitializationException ("The EN 16931 VES are missing. Make sure to call EN16931Validation.initEN16931 first.");
 
-      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.createDerived (aVESCII121,
+      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.createDerived (aVESCII,
                                                                                     VID_XRECHNUNG_CII_121,
                                                                                     "XRechnung CII " +
                                                                                                            VID_XRECHNUNG_CII_121.getVersionString (),
@@ -330,7 +332,7 @@ public final class XRechnungValidation
                                                                                     PhiveRulesCIIHelper.createXSLT_CII_D16B (new ClassPathResource (sPrefix +
                                                                                                                                                     "1.2.1/XRechnung-CII-validation.xslt",
                                                                                                                                                     _getCL ()))));
-      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.createDerived (aVESUBLCreditNote121,
+      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.createDerived (aVESUBLCreditNote,
                                                                                     VID_XRECHNUNG_UBL_CREDITNOTE_121,
                                                                                     "XRechnung UBL Credit Note " +
                                                                                                                       VID_XRECHNUNG_UBL_CREDITNOTE_121.getVersionString (),
@@ -338,7 +340,7 @@ public final class XRechnungValidation
                                                                                     PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix +
                                                                                                                                                  "1.2.1/XRechnung-UBL-validation-CreditNote.xslt",
                                                                                                                                                  _getCL ()))));
-      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.createDerived (aVESUBLInvoice121,
+      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.createDerived (aVESUBLInvoice,
                                                                                     VID_XRECHNUNG_UBL_INVOICE_121,
                                                                                     "XRechnung UBL Invoice " +
                                                                                                                    VID_XRECHNUNG_UBL_INVOICE_121.getVersionString (),
@@ -350,11 +352,13 @@ public final class XRechnungValidation
 
     // v1.2.2 (based on rule release 1.3.0)
     {
-      final IValidationExecutorSet <IValidationSourceXML> aVESCII130 = aRegistry.getOfID (EN16931Validation.VID_CII_130);
-      final IValidationExecutorSet <IValidationSourceXML> aVESUBLCreditNote130 = aRegistry.getOfID (EN16931Validation.VID_UBL_CREDIT_NOTE_130);
-      final IValidationExecutorSet <IValidationSourceXML> aVESUBLInvoice130 = aRegistry.getOfID (EN16931Validation.VID_UBL_INVOICE_130);
+      final IValidationExecutorSet <IValidationSourceXML> aVESCII = aRegistry.getOfID (EN16931Validation.VID_CII_130);
+      final IValidationExecutorSet <IValidationSourceXML> aVESUBLCreditNote = aRegistry.getOfID (EN16931Validation.VID_UBL_CREDIT_NOTE_130);
+      final IValidationExecutorSet <IValidationSourceXML> aVESUBLInvoice = aRegistry.getOfID (EN16931Validation.VID_UBL_INVOICE_130);
+      if (aVESCII == null || aVESUBLCreditNote == null || aVESUBLInvoice == null)
+        throw new InitializationException ("The EN 16931 VES are missing. Make sure to call EN16931Validation.initEN16931 first.");
 
-      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.createDerived (aVESCII130,
+      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.createDerived (aVESCII,
                                                                                     VID_XRECHNUNG_CII_122,
                                                                                     "XRechnung CII " +
                                                                                                            VID_XRECHNUNG_CII_122.getVersionString (),
@@ -362,7 +366,7 @@ public final class XRechnungValidation
                                                                                     PhiveRulesCIIHelper.createXSLT_CII_D16B (new ClassPathResource (sPrefix +
                                                                                                                                                     "1.2.2/XRechnung-CII-validation.xslt",
                                                                                                                                                     _getCL ()))));
-      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.createDerived (aVESUBLCreditNote130,
+      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.createDerived (aVESUBLCreditNote,
                                                                                     VID_XRECHNUNG_UBL_CREDITNOTE_122,
                                                                                     "XRechnung UBL Credit Note " +
                                                                                                                       VID_XRECHNUNG_UBL_CREDITNOTE_122.getVersionString (),
@@ -370,7 +374,7 @@ public final class XRechnungValidation
                                                                                     PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix +
                                                                                                                                                  "1.2.2/XRechnung-UBL-validation-CreditNote.xslt",
                                                                                                                                                  _getCL ()))));
-      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.createDerived (aVESUBLInvoice130,
+      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.createDerived (aVESUBLInvoice,
                                                                                     VID_XRECHNUNG_UBL_INVOICE_122,
                                                                                     "XRechnung UBL Invoice " +
                                                                                                                    VID_XRECHNUNG_UBL_INVOICE_122.getVersionString (),
@@ -382,9 +386,11 @@ public final class XRechnungValidation
 
     // v2.0.0 (based on rule release 1.4.0)
     {
-      final IValidationExecutorSet <IValidationSourceXML> aVESCII132 = aRegistry.getOfID (EN16931Validation.VID_CII_132);
-      final IValidationExecutorSet <IValidationSourceXML> aVESUBLCreditNote132 = aRegistry.getOfID (EN16931Validation.VID_UBL_CREDIT_NOTE_132);
-      final IValidationExecutorSet <IValidationSourceXML> aVESUBLInvoice132 = aRegistry.getOfID (EN16931Validation.VID_UBL_INVOICE_132);
+      final IValidationExecutorSet <IValidationSourceXML> aVESCII = aRegistry.getOfID (EN16931Validation.VID_CII_132);
+      final IValidationExecutorSet <IValidationSourceXML> aVESUBLCreditNote = aRegistry.getOfID (EN16931Validation.VID_UBL_CREDIT_NOTE_132);
+      final IValidationExecutorSet <IValidationSourceXML> aVESUBLInvoice = aRegistry.getOfID (EN16931Validation.VID_UBL_INVOICE_132);
+      if (aVESCII == null || aVESUBLCreditNote == null || aVESUBLInvoice == null)
+        throw new InitializationException ("The EN 16931 VES are missing. Make sure to call EN16931Validation.initEN16931 first.");
 
       final ICommonsMap <String, CustomErrorDetails> aCustomErrorLevels = new CommonsHashMap <> ();
       aCustomErrorLevels.put ("BR-CL-01", CustomErrorDetails.of (EErrorLevel.INFO));
@@ -393,7 +399,7 @@ public final class XRechnungValidation
       aCustomErrorLevels.put ("BR-CL-24", CustomErrorDetails.of (EErrorLevel.INFO));
 
       {
-        final ICommonsList <IValidationExecutor <IValidationSourceXML>> aNewList = _getListWithCustomErrorDetails (aVESCII132,
+        final ICommonsList <IValidationExecutor <IValidationSourceXML>> aNewList = _getListWithCustomErrorDetails (aVESCII,
                                                                                                                    aCustomErrorLevels);
         aNewList.add (PhiveRulesCIIHelper.createXSLT_CII_D16B (new ClassPathResource (sPrefix +
                                                                                       "2.0.0/XRechnung-CII-validation.xslt",
@@ -406,7 +412,7 @@ public final class XRechnungValidation
                                                                                aNewList));
       }
       {
-        final ICommonsList <IValidationExecutor <IValidationSourceXML>> aNewList = _getListWithCustomErrorDetails (aVESUBLCreditNote132,
+        final ICommonsList <IValidationExecutor <IValidationSourceXML>> aNewList = _getListWithCustomErrorDetails (aVESUBLCreditNote,
                                                                                                                    aCustomErrorLevels);
         aNewList.add (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix +
                                                                                    "2.0.0/XRechnung-UBL-validation-CreditNote.xslt",
@@ -419,7 +425,7 @@ public final class XRechnungValidation
                                                                                aNewList));
       }
       {
-        final ICommonsList <IValidationExecutor <IValidationSourceXML>> aNewList = _getListWithCustomErrorDetails (aVESUBLInvoice132,
+        final ICommonsList <IValidationExecutor <IValidationSourceXML>> aNewList = _getListWithCustomErrorDetails (aVESUBLInvoice,
                                                                                                                    aCustomErrorLevels);
         aNewList.add (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix +
                                                                                    "2.0.0/XRechnung-UBL-validation-Invoice.xslt",
@@ -435,9 +441,11 @@ public final class XRechnungValidation
 
     // v2.0.1 (based on rule release 1.5.0)
     {
-      final IValidationExecutorSet <IValidationSourceXML> aVESCII133 = aRegistry.getOfID (EN16931Validation.VID_CII_133);
-      final IValidationExecutorSet <IValidationSourceXML> aVESUBLCreditNote133 = aRegistry.getOfID (EN16931Validation.VID_UBL_CREDIT_NOTE_133);
-      final IValidationExecutorSet <IValidationSourceXML> aVESUBLInvoice133 = aRegistry.getOfID (EN16931Validation.VID_UBL_INVOICE_133);
+      final IValidationExecutorSet <IValidationSourceXML> aVESCII = aRegistry.getOfID (EN16931Validation.VID_CII_133);
+      final IValidationExecutorSet <IValidationSourceXML> aVESUBLCreditNote = aRegistry.getOfID (EN16931Validation.VID_UBL_CREDIT_NOTE_133);
+      final IValidationExecutorSet <IValidationSourceXML> aVESUBLInvoice = aRegistry.getOfID (EN16931Validation.VID_UBL_INVOICE_133);
+      if (aVESCII == null || aVESUBLCreditNote == null || aVESUBLInvoice == null)
+        throw new InitializationException ("The EN 16931 VES are missing. Make sure to call EN16931Validation.initEN16931 first.");
 
       {
         final ICommonsMap <String, CustomErrorDetails> aCustomErrorLevels = new CommonsHashMap <> ();
@@ -445,7 +453,7 @@ public final class XRechnungValidation
         aCustomErrorLevels.put ("BR-CL-23", CustomErrorDetails.of (EErrorLevel.WARN));
         aCustomErrorLevels.put ("BR-CL-21", CustomErrorDetails.of (EErrorLevel.WARN));
 
-        final ICommonsList <IValidationExecutor <IValidationSourceXML>> aNewList = _getListWithCustomErrorDetails (aVESCII133,
+        final ICommonsList <IValidationExecutor <IValidationSourceXML>> aNewList = _getListWithCustomErrorDetails (aVESCII,
                                                                                                                    aCustomErrorLevels);
         aNewList.add (PhiveRulesCIIHelper.createXSLT_CII_D16B (new ClassPathResource (sPrefix +
                                                                                       "2.0.1/XRechnung-CII-validation.xslt",
@@ -463,7 +471,7 @@ public final class XRechnungValidation
         aCustomErrorLevels.put ("BR-CL-23", CustomErrorDetails.of (EErrorLevel.WARN));
         aCustomErrorLevels.put ("BR-CL-21", CustomErrorDetails.of (EErrorLevel.WARN));
 
-        final ICommonsList <IValidationExecutor <IValidationSourceXML>> aNewList = _getListWithCustomErrorDetails (aVESUBLCreditNote133,
+        final ICommonsList <IValidationExecutor <IValidationSourceXML>> aNewList = _getListWithCustomErrorDetails (aVESUBLCreditNote,
                                                                                                                    aCustomErrorLevels);
         aNewList.add (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix +
                                                                                    "2.0.1/XRechnung-UBL-validation-CreditNote.xslt",
@@ -481,7 +489,7 @@ public final class XRechnungValidation
         aCustomErrorLevels.put ("BR-CL-23", CustomErrorDetails.of (EErrorLevel.WARN));
         aCustomErrorLevels.put ("BR-CL-21", CustomErrorDetails.of (EErrorLevel.WARN));
 
-        final ICommonsList <IValidationExecutor <IValidationSourceXML>> aNewList = _getListWithCustomErrorDetails (aVESUBLInvoice133,
+        final ICommonsList <IValidationExecutor <IValidationSourceXML>> aNewList = _getListWithCustomErrorDetails (aVESUBLInvoice,
                                                                                                                    aCustomErrorLevels);
         aNewList.add (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix +
                                                                                    "2.0.1/XRechnung-UBL-validation-Invoice.xslt",
@@ -500,7 +508,7 @@ public final class XRechnungValidation
         // added PH
         aCustomErrorLevels.put ("BR-CL-24", CustomErrorDetails.of (EErrorLevel.INFO));
 
-        final ICommonsList <IValidationExecutor <IValidationSourceXML>> aNewList = _getListWithCustomErrorDetails (aVESUBLInvoice133,
+        final ICommonsList <IValidationExecutor <IValidationSourceXML>> aNewList = _getListWithCustomErrorDetails (aVESUBLInvoice,
                                                                                                                    aCustomErrorLevels);
         aNewList.add (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix +
                                                                                    "2.0.1/XRechnung-UBL-validation-Invoice.xslt",
@@ -518,9 +526,11 @@ public final class XRechnungValidation
     // Based on the EN16931 rules in this fork:
     // https://github.com/phax/eInvoicing-EN16931/releases/tag/validation-1.3.6a
     {
-      final IValidationExecutorSet <IValidationSourceXML> aVESCII136a = aRegistry.getOfID (EN16931Validation.VID_CII_136A);
-      final IValidationExecutorSet <IValidationSourceXML> aVESUBLCreditNote136a = aRegistry.getOfID (EN16931Validation.VID_UBL_CREDIT_NOTE_136A);
-      final IValidationExecutorSet <IValidationSourceXML> aVESUBLInvoice136a = aRegistry.getOfID (EN16931Validation.VID_UBL_INVOICE_136A);
+      final IValidationExecutorSet <IValidationSourceXML> aVESCII = aRegistry.getOfID (EN16931Validation.VID_CII_136A);
+      final IValidationExecutorSet <IValidationSourceXML> aVESUBLCreditNote = aRegistry.getOfID (EN16931Validation.VID_UBL_CREDIT_NOTE_136A);
+      final IValidationExecutorSet <IValidationSourceXML> aVESUBLInvoice = aRegistry.getOfID (EN16931Validation.VID_UBL_INVOICE_136A);
+      if (aVESCII == null || aVESUBLCreditNote == null || aVESUBLInvoice == null)
+        throw new InitializationException ("The EN 16931 VES are missing. Make sure to call EN16931Validation.initEN16931 first.");
 
       {
         final ICommonsMap <String, CustomErrorDetails> aCustomErrorLevels = new CommonsHashMap <> ();
@@ -528,7 +538,7 @@ public final class XRechnungValidation
         aCustomErrorLevels.put ("BR-CL-23", CustomErrorDetails.of (EErrorLevel.WARN));
         aCustomErrorLevels.put ("BR-CL-21", CustomErrorDetails.of (EErrorLevel.WARN));
 
-        final ICommonsList <IValidationExecutor <IValidationSourceXML>> aNewList = _getListWithCustomErrorDetails (aVESCII136a,
+        final ICommonsList <IValidationExecutor <IValidationSourceXML>> aNewList = _getListWithCustomErrorDetails (aVESCII,
                                                                                                                    aCustomErrorLevels);
         aNewList.add (PhiveRulesCIIHelper.createXSLT_CII_D16B (new ClassPathResource (sPrefix +
                                                                                       "2.1.1/XRechnung-CII-validation.xslt",
@@ -546,7 +556,7 @@ public final class XRechnungValidation
         aCustomErrorLevels.put ("BR-CL-23", CustomErrorDetails.of (EErrorLevel.WARN));
         aCustomErrorLevels.put ("BR-CL-21", CustomErrorDetails.of (EErrorLevel.WARN));
 
-        final ICommonsList <IValidationExecutor <IValidationSourceXML>> aNewList = _getListWithCustomErrorDetails (aVESUBLCreditNote136a,
+        final ICommonsList <IValidationExecutor <IValidationSourceXML>> aNewList = _getListWithCustomErrorDetails (aVESUBLCreditNote,
                                                                                                                    aCustomErrorLevels);
         aNewList.add (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix +
                                                                                    "2.1.1/XRechnung-UBL-validation-CreditNote.xslt",
@@ -564,7 +574,7 @@ public final class XRechnungValidation
         aCustomErrorLevels.put ("BR-CL-23", CustomErrorDetails.of (EErrorLevel.WARN));
         aCustomErrorLevels.put ("BR-CL-21", CustomErrorDetails.of (EErrorLevel.WARN));
 
-        final ICommonsList <IValidationExecutor <IValidationSourceXML>> aNewList = _getListWithCustomErrorDetails (aVESUBLInvoice136a,
+        final ICommonsList <IValidationExecutor <IValidationSourceXML>> aNewList = _getListWithCustomErrorDetails (aVESUBLInvoice,
                                                                                                                    aCustomErrorLevels);
         aNewList.add (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix +
                                                                                    "2.1.1/XRechnung-UBL-validation-Invoice.xslt",
@@ -582,7 +592,7 @@ public final class XRechnungValidation
         aCustomErrorLevels.put ("BR-CL-23", CustomErrorDetails.of (EErrorLevel.WARN));
         aCustomErrorLevels.put ("BR-CL-24", CustomErrorDetails.of (EErrorLevel.WARN));
 
-        final ICommonsList <IValidationExecutor <IValidationSourceXML>> aNewList = _getListWithCustomErrorDetails (aVESUBLInvoice136a,
+        final ICommonsList <IValidationExecutor <IValidationSourceXML>> aNewList = _getListWithCustomErrorDetails (aVESUBLInvoice,
                                                                                                                    aCustomErrorLevels);
         aNewList.add (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix +
                                                                                    "2.1.1/XRechnung-UBL-validation-Invoice.xslt",
@@ -599,9 +609,11 @@ public final class XRechnungValidation
     // v2.2.0 (based on rule release 1.7.1)
     // Uses CEN release 1.3.7
     {
-      final IValidationExecutorSet <IValidationSourceXML> aVESCII137 = aRegistry.getOfID (EN16931Validation.VID_CII_137);
-      final IValidationExecutorSet <IValidationSourceXML> aVESUBLCreditNote137 = aRegistry.getOfID (EN16931Validation.VID_UBL_CREDIT_NOTE_137);
-      final IValidationExecutorSet <IValidationSourceXML> aVESUBLInvoice137 = aRegistry.getOfID (EN16931Validation.VID_UBL_INVOICE_137);
+      final IValidationExecutorSet <IValidationSourceXML> aVESCII = aRegistry.getOfID (EN16931Validation.VID_CII_137);
+      final IValidationExecutorSet <IValidationSourceXML> aVESUBLCreditNote = aRegistry.getOfID (EN16931Validation.VID_UBL_CREDIT_NOTE_137);
+      final IValidationExecutorSet <IValidationSourceXML> aVESUBLInvoice = aRegistry.getOfID (EN16931Validation.VID_UBL_INVOICE_137);
+      if (aVESCII == null || aVESUBLCreditNote == null || aVESUBLInvoice == null)
+        throw new InitializationException ("The EN 16931 VES are missing. Make sure to call EN16931Validation.initEN16931 first.");
 
       {
         final ICommonsMap <String, CustomErrorDetails> aCustomErrorLevels = new CommonsHashMap <> ();
@@ -609,7 +621,7 @@ public final class XRechnungValidation
         aCustomErrorLevels.put ("BR-CL-23", CustomErrorDetails.of (EErrorLevel.WARN));
         aCustomErrorLevels.put ("BR-CL-21", CustomErrorDetails.of (EErrorLevel.WARN));
 
-        final ICommonsList <IValidationExecutor <IValidationSourceXML>> aNewList = _getListWithCustomErrorDetails (aVESCII137,
+        final ICommonsList <IValidationExecutor <IValidationSourceXML>> aNewList = _getListWithCustomErrorDetails (aVESCII,
                                                                                                                    aCustomErrorLevels);
         aNewList.add (PhiveRulesCIIHelper.createXSLT_CII_D16B (new ClassPathResource (sPrefix +
                                                                                       "2.2.0/XRechnung-CII-validation.xslt",
@@ -631,7 +643,7 @@ public final class XRechnungValidation
         aCustomErrorLevels.put ("BR-CL-25", CustomErrorDetails.of (EErrorLevel.INFO));
         aCustomErrorLevels.put ("BR-CL-26", CustomErrorDetails.of (EErrorLevel.INFO));
 
-        final ICommonsList <IValidationExecutor <IValidationSourceXML>> aNewList = _getListWithCustomErrorDetails (aVESCII137,
+        final ICommonsList <IValidationExecutor <IValidationSourceXML>> aNewList = _getListWithCustomErrorDetails (aVESCII,
                                                                                                                    aCustomErrorLevels);
         aNewList.add (PhiveRulesCIIHelper.createXSLT_CII_D16B (new ClassPathResource (sPrefix +
                                                                                       "2.2.0/XRechnung-CII-validation.xslt",
@@ -651,7 +663,7 @@ public final class XRechnungValidation
         aCustomErrorLevels.put ("BR-CL-23", CustomErrorDetails.of (EErrorLevel.WARN));
         aCustomErrorLevels.put ("BR-CL-21", CustomErrorDetails.of (EErrorLevel.WARN));
 
-        final ICommonsList <IValidationExecutor <IValidationSourceXML>> aNewList = _getListWithCustomErrorDetails (aVESUBLCreditNote137,
+        final ICommonsList <IValidationExecutor <IValidationSourceXML>> aNewList = _getListWithCustomErrorDetails (aVESUBLCreditNote,
                                                                                                                    aCustomErrorLevels);
         aNewList.add (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix +
                                                                                    "2.2.0/XRechnung-UBL-validation-CreditNote.xslt",
@@ -670,7 +682,7 @@ public final class XRechnungValidation
         aCustomErrorLevels.put ("BR-CL-23", CustomErrorDetails.of (EErrorLevel.WARN));
         aCustomErrorLevels.put ("BR-CL-21", CustomErrorDetails.of (EErrorLevel.WARN));
 
-        final ICommonsList <IValidationExecutor <IValidationSourceXML>> aNewList = _getListWithCustomErrorDetails (aVESUBLInvoice137,
+        final ICommonsList <IValidationExecutor <IValidationSourceXML>> aNewList = _getListWithCustomErrorDetails (aVESUBLInvoice,
                                                                                                                    aCustomErrorLevels);
         aNewList.add (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix +
                                                                                    "2.2.0/XRechnung-UBL-validation-Invoice.xslt",
@@ -693,7 +705,7 @@ public final class XRechnungValidation
         aCustomErrorLevels.put ("BR-CL-25", CustomErrorDetails.of (EErrorLevel.INFO));
         aCustomErrorLevels.put ("BR-CL-26", CustomErrorDetails.of (EErrorLevel.INFO));
 
-        final ICommonsList <IValidationExecutor <IValidationSourceXML>> aNewList = _getListWithCustomErrorDetails (aVESUBLInvoice137,
+        final ICommonsList <IValidationExecutor <IValidationSourceXML>> aNewList = _getListWithCustomErrorDetails (aVESUBLInvoice,
                                                                                                                    aCustomErrorLevels);
         aNewList.add (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix +
                                                                                    "2.2.0/XRechnung-UBL-validation-Invoice.xslt",
@@ -711,16 +723,18 @@ public final class XRechnungValidation
     // v2.3.1 (based on rule release 1.8.1)
     // Uses CEN rules 1.3.9
     {
-      final IValidationExecutorSet <IValidationSourceXML> aVESCII139 = aRegistry.getOfID (EN16931Validation.VID_CII_139);
-      final IValidationExecutorSet <IValidationSourceXML> aVESUBLCreditNote139 = aRegistry.getOfID (EN16931Validation.VID_UBL_CREDIT_NOTE_139);
-      final IValidationExecutorSet <IValidationSourceXML> aVESUBLInvoice139 = aRegistry.getOfID (EN16931Validation.VID_UBL_INVOICE_139);
+      final IValidationExecutorSet <IValidationSourceXML> aVESCII = aRegistry.getOfID (EN16931Validation.VID_CII_139);
+      final IValidationExecutorSet <IValidationSourceXML> aVESUBLCreditNote = aRegistry.getOfID (EN16931Validation.VID_UBL_CREDIT_NOTE_139);
+      final IValidationExecutorSet <IValidationSourceXML> aVESUBLInvoice = aRegistry.getOfID (EN16931Validation.VID_UBL_INVOICE_139);
+      if (aVESCII == null || aVESUBLCreditNote == null || aVESUBLInvoice == null)
+        throw new InitializationException ("The EN 16931 VES are missing. Make sure to call EN16931Validation.initEN16931 first.");
 
       {
         final ICommonsMap <String, CustomErrorDetails> aCustomErrorLevels = new CommonsHashMap <> ();
         aCustomErrorLevels.put ("BR-CL-23", CustomErrorDetails.of (EErrorLevel.WARN));
         aCustomErrorLevels.put ("BR-CL-21", CustomErrorDetails.of (EErrorLevel.WARN));
 
-        final ICommonsList <IValidationExecutor <IValidationSourceXML>> aNewList = _getListWithCustomErrorDetails (aVESCII139,
+        final ICommonsList <IValidationExecutor <IValidationSourceXML>> aNewList = _getListWithCustomErrorDetails (aVESCII,
                                                                                                                    aCustomErrorLevels);
         aNewList.add (PhiveRulesCIIHelper.createXSLT_CII_D16B (new ClassPathResource (sPrefix +
                                                                                       "2.3.1/XRechnung-CII-validation.xslt",
@@ -741,7 +755,7 @@ public final class XRechnungValidation
         aCustomErrorLevels.put ("BR-CL-25", CustomErrorDetails.of (EErrorLevel.INFO));
         aCustomErrorLevels.put ("BR-CL-26", CustomErrorDetails.of (EErrorLevel.INFO));
 
-        final ICommonsList <IValidationExecutor <IValidationSourceXML>> aNewList = _getListWithCustomErrorDetails (aVESCII139,
+        final ICommonsList <IValidationExecutor <IValidationSourceXML>> aNewList = _getListWithCustomErrorDetails (aVESCII,
                                                                                                                    aCustomErrorLevels);
         aNewList.add (PhiveRulesCIIHelper.createXSLT_CII_D16B (new ClassPathResource (sPrefix +
                                                                                       "2.3.1/XRechnung-CII-validation.xslt",
@@ -760,7 +774,7 @@ public final class XRechnungValidation
         aCustomErrorLevels.put ("BR-CL-23", CustomErrorDetails.of (EErrorLevel.WARN));
         aCustomErrorLevels.put ("BR-CL-21", CustomErrorDetails.of (EErrorLevel.WARN));
 
-        final ICommonsList <IValidationExecutor <IValidationSourceXML>> aNewList = _getListWithCustomErrorDetails (aVESUBLCreditNote139,
+        final ICommonsList <IValidationExecutor <IValidationSourceXML>> aNewList = _getListWithCustomErrorDetails (aVESUBLCreditNote,
                                                                                                                    aCustomErrorLevels);
         aNewList.add (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix +
                                                                                    "2.3.1/XRechnung-UBL-validation.xslt",
@@ -778,7 +792,7 @@ public final class XRechnungValidation
         aCustomErrorLevels.put ("BR-CL-23", CustomErrorDetails.of (EErrorLevel.WARN));
         aCustomErrorLevels.put ("BR-CL-21", CustomErrorDetails.of (EErrorLevel.WARN));
 
-        final ICommonsList <IValidationExecutor <IValidationSourceXML>> aNewList = _getListWithCustomErrorDetails (aVESUBLInvoice139,
+        final ICommonsList <IValidationExecutor <IValidationSourceXML>> aNewList = _getListWithCustomErrorDetails (aVESUBLInvoice,
                                                                                                                    aCustomErrorLevels);
         aNewList.add (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix +
                                                                                    "2.3.1/XRechnung-UBL-validation.xslt",
@@ -802,7 +816,7 @@ public final class XRechnungValidation
         aCustomErrorLevels.put ("BR-CO-16", CustomErrorDetails.of (EErrorLevel.INFO));
         aCustomErrorLevels.put ("UBL-CR-470", CustomErrorDetails.of (EErrorLevel.INFO));
 
-        final ICommonsList <IValidationExecutor <IValidationSourceXML>> aNewList = _getListWithCustomErrorDetails (aVESUBLInvoice139,
+        final ICommonsList <IValidationExecutor <IValidationSourceXML>> aNewList = _getListWithCustomErrorDetails (aVESUBLInvoice,
                                                                                                                    aCustomErrorLevels);
         aNewList.add (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix +
                                                                                    "2.3.1/XRechnung-UBL-validation.xslt",
@@ -820,9 +834,11 @@ public final class XRechnungValidation
     // v3.0.0 (based on rule release 2.0.0)
     // Uses CEN rules 1.3.10
     {
-      final IValidationExecutorSet <IValidationSourceXML> aVESCII1310 = aRegistry.getOfID (EN16931Validation.VID_CII_1310);
-      final IValidationExecutorSet <IValidationSourceXML> aVESUBLCreditNote1310 = aRegistry.getOfID (EN16931Validation.VID_UBL_CREDIT_NOTE_1310);
-      final IValidationExecutorSet <IValidationSourceXML> aVESUBLInvoice1310 = aRegistry.getOfID (EN16931Validation.VID_UBL_INVOICE_1310);
+      final IValidationExecutorSet <IValidationSourceXML> aVESCII = aRegistry.getOfID (EN16931Validation.VID_CII_1310);
+      final IValidationExecutorSet <IValidationSourceXML> aVESUBLCreditNote = aRegistry.getOfID (EN16931Validation.VID_UBL_CREDIT_NOTE_1310);
+      final IValidationExecutorSet <IValidationSourceXML> aVESUBLInvoice = aRegistry.getOfID (EN16931Validation.VID_UBL_INVOICE_1310);
+      if (aVESCII == null || aVESUBLCreditNote == null || aVESUBLInvoice == null)
+        throw new InitializationException ("The EN 16931 VES are missing. Make sure to call EN16931Validation.initEN16931 first.");
 
       {
         final ICommonsMap <String, CustomErrorDetails> aCustomErrorLevels = new CommonsHashMap <> ();
@@ -830,7 +846,7 @@ public final class XRechnungValidation
         aCustomErrorLevels.put ("BR-CL-21", CustomErrorDetails.of (EErrorLevel.WARN));
         aCustomErrorLevels.put ("CII-SR-453", CustomErrorDetails.of (EErrorLevel.ERROR));
 
-        final ICommonsList <IValidationExecutor <IValidationSourceXML>> aNewList = _getListWithCustomErrorDetails (aVESCII1310,
+        final ICommonsList <IValidationExecutor <IValidationSourceXML>> aNewList = _getListWithCustomErrorDetails (aVESCII,
                                                                                                                    aCustomErrorLevels);
         aNewList.add (PhiveRulesCIIHelper.createXSLT_CII_D16B (new ClassPathResource (sPrefix +
                                                                                       "3.0.0/XRechnung-CII-validation.xslt",
@@ -852,7 +868,7 @@ public final class XRechnungValidation
         aCustomErrorLevels.put ("BR-CL-26", CustomErrorDetails.of (EErrorLevel.INFO));
         aCustomErrorLevels.put ("CII-SR-453", CustomErrorDetails.of (EErrorLevel.ERROR));
 
-        final ICommonsList <IValidationExecutor <IValidationSourceXML>> aNewList = _getListWithCustomErrorDetails (aVESCII1310,
+        final ICommonsList <IValidationExecutor <IValidationSourceXML>> aNewList = _getListWithCustomErrorDetails (aVESCII,
                                                                                                                    aCustomErrorLevels);
         aNewList.add (PhiveRulesCIIHelper.createXSLT_CII_D16B (new ClassPathResource (sPrefix +
                                                                                       "3.0.0/XRechnung-CII-validation.xslt",
@@ -870,7 +886,7 @@ public final class XRechnungValidation
         aCustomErrorLevels.put ("BR-CL-23", CustomErrorDetails.of (EErrorLevel.WARN));
         aCustomErrorLevels.put ("BR-CL-21", CustomErrorDetails.of (EErrorLevel.WARN));
 
-        final ICommonsList <IValidationExecutor <IValidationSourceXML>> aNewList = _getListWithCustomErrorDetails (aVESUBLCreditNote1310,
+        final ICommonsList <IValidationExecutor <IValidationSourceXML>> aNewList = _getListWithCustomErrorDetails (aVESUBLCreditNote,
                                                                                                                    aCustomErrorLevels);
         aNewList.add (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix +
                                                                                    "3.0.0/XRechnung-UBL-validation.xslt",
@@ -888,7 +904,7 @@ public final class XRechnungValidation
         aCustomErrorLevels.put ("BR-CL-23", CustomErrorDetails.of (EErrorLevel.WARN));
         aCustomErrorLevels.put ("BR-CL-21", CustomErrorDetails.of (EErrorLevel.WARN));
 
-        final ICommonsList <IValidationExecutor <IValidationSourceXML>> aNewList = _getListWithCustomErrorDetails (aVESUBLInvoice1310,
+        final ICommonsList <IValidationExecutor <IValidationSourceXML>> aNewList = _getListWithCustomErrorDetails (aVESUBLInvoice,
                                                                                                                    aCustomErrorLevels);
         aNewList.add (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix +
                                                                                    "3.0.0/XRechnung-UBL-validation.xslt",
@@ -912,7 +928,7 @@ public final class XRechnungValidation
         aCustomErrorLevels.put ("BR-CO-16", CustomErrorDetails.of (EErrorLevel.INFO));
         aCustomErrorLevels.put ("UBL-CR-470", CustomErrorDetails.of (EErrorLevel.INFO));
 
-        final ICommonsList <IValidationExecutor <IValidationSourceXML>> aNewList = _getListWithCustomErrorDetails (aVESUBLInvoice1310,
+        final ICommonsList <IValidationExecutor <IValidationSourceXML>> aNewList = _getListWithCustomErrorDetails (aVESUBLInvoice,
                                                                                                                    aCustomErrorLevels);
         aNewList.add (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix +
                                                                                    "3.0.0/XRechnung-UBL-validation.xslt",
@@ -930,9 +946,11 @@ public final class XRechnungValidation
     // v3.0.1 (based on rule release 2.0.2)
     // Uses CEN rules 1.3.11
     {
-      final IValidationExecutorSet <IValidationSourceXML> aVESCII1311 = aRegistry.getOfID (EN16931Validation.VID_CII_1311);
-      final IValidationExecutorSet <IValidationSourceXML> aVESUBLCreditNote1311 = aRegistry.getOfID (EN16931Validation.VID_UBL_CREDIT_NOTE_1311);
-      final IValidationExecutorSet <IValidationSourceXML> aVESUBLInvoice1311 = aRegistry.getOfID (EN16931Validation.VID_UBL_INVOICE_1311);
+      final IValidationExecutorSet <IValidationSourceXML> aVESCII = aRegistry.getOfID (EN16931Validation.VID_CII_1311);
+      final IValidationExecutorSet <IValidationSourceXML> aVESUBLCreditNote = aRegistry.getOfID (EN16931Validation.VID_UBL_CREDIT_NOTE_1311);
+      final IValidationExecutorSet <IValidationSourceXML> aVESUBLInvoice = aRegistry.getOfID (EN16931Validation.VID_UBL_INVOICE_1311);
+      if (aVESCII == null || aVESUBLCreditNote == null || aVESUBLInvoice == null)
+        throw new InitializationException ("The EN 16931 VES are missing. Make sure to call EN16931Validation.initEN16931 first.");
 
       {
         final ICommonsMap <String, CustomErrorDetails> aCustomErrorLevels = new CommonsHashMap <> ();
@@ -942,7 +960,7 @@ public final class XRechnungValidation
         aCustomErrorLevels.put ("CII-SR-453", CustomErrorDetails.of (EErrorLevel.ERROR));
         aCustomErrorLevels.put ("CII-SR-454", CustomErrorDetails.of (EErrorLevel.ERROR));
 
-        final ICommonsList <IValidationExecutor <IValidationSourceXML>> aNewList = _getListWithCustomErrorDetails (aVESCII1311,
+        final ICommonsList <IValidationExecutor <IValidationSourceXML>> aNewList = _getListWithCustomErrorDetails (aVESCII,
                                                                                                                    aCustomErrorLevels);
         aNewList.add (PhiveRulesCIIHelper.createXSLT_CII_D16B (new ClassPathResource (sPrefix +
                                                                                       "3.0.1/XRechnung-CII-validation.xslt",
@@ -967,7 +985,7 @@ public final class XRechnungValidation
         aCustomErrorLevels.put ("CII-SR-453", CustomErrorDetails.of (EErrorLevel.ERROR));
         aCustomErrorLevels.put ("CII-SR-454", CustomErrorDetails.of (EErrorLevel.ERROR));
 
-        final ICommonsList <IValidationExecutor <IValidationSourceXML>> aNewList = _getListWithCustomErrorDetails (aVESCII1311,
+        final ICommonsList <IValidationExecutor <IValidationSourceXML>> aNewList = _getListWithCustomErrorDetails (aVESCII,
                                                                                                                    aCustomErrorLevels);
         aNewList.add (PhiveRulesCIIHelper.createXSLT_CII_D16B (new ClassPathResource (sPrefix +
                                                                                       "3.0.1/XRechnung-CII-validation.xslt",
@@ -986,7 +1004,7 @@ public final class XRechnungValidation
         aCustomErrorLevels.put ("BR-CL-23", CustomErrorDetails.of (EErrorLevel.WARN));
         aCustomErrorLevels.put ("BR-CL-21", CustomErrorDetails.of (EErrorLevel.WARN));
 
-        final ICommonsList <IValidationExecutor <IValidationSourceXML>> aNewList = _getListWithCustomErrorDetails (aVESUBLCreditNote1311,
+        final ICommonsList <IValidationExecutor <IValidationSourceXML>> aNewList = _getListWithCustomErrorDetails (aVESUBLCreditNote,
                                                                                                                    aCustomErrorLevels);
         aNewList.add (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix +
                                                                                    "3.0.1/XRechnung-UBL-validation.xslt",
@@ -1004,7 +1022,7 @@ public final class XRechnungValidation
         aCustomErrorLevels.put ("BR-CL-23", CustomErrorDetails.of (EErrorLevel.WARN));
         aCustomErrorLevels.put ("BR-CL-21", CustomErrorDetails.of (EErrorLevel.WARN));
 
-        final ICommonsList <IValidationExecutor <IValidationSourceXML>> aNewList = _getListWithCustomErrorDetails (aVESUBLInvoice1311,
+        final ICommonsList <IValidationExecutor <IValidationSourceXML>> aNewList = _getListWithCustomErrorDetails (aVESUBLInvoice,
                                                                                                                    aCustomErrorLevels);
         aNewList.add (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix +
                                                                                    "3.0.1/XRechnung-UBL-validation.xslt",
@@ -1028,7 +1046,7 @@ public final class XRechnungValidation
         aCustomErrorLevels.put ("BR-CO-16", CustomErrorDetails.of (EErrorLevel.INFO));
         aCustomErrorLevels.put ("UBL-CR-470", CustomErrorDetails.of (EErrorLevel.INFO));
 
-        final ICommonsList <IValidationExecutor <IValidationSourceXML>> aNewList = _getListWithCustomErrorDetails (aVESUBLInvoice1311,
+        final ICommonsList <IValidationExecutor <IValidationSourceXML>> aNewList = _getListWithCustomErrorDetails (aVESUBLInvoice,
                                                                                                                    aCustomErrorLevels);
         aNewList.add (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix +
                                                                                    "3.0.1/XRechnung-UBL-validation.xslt",
@@ -1049,6 +1067,9 @@ public final class XRechnungValidation
       final IValidationExecutorSet <IValidationSourceXML> aVESCII = aRegistry.getOfID (EN16931Validation.VID_CII_1315);
       final IValidationExecutorSet <IValidationSourceXML> aVESUBLCreditNote = aRegistry.getOfID (EN16931Validation.VID_UBL_CREDIT_NOTE_1315);
       final IValidationExecutorSet <IValidationSourceXML> aVESUBLInvoice = aRegistry.getOfID (EN16931Validation.VID_UBL_INVOICE_1315);
+      if (aVESCII == null || aVESUBLCreditNote == null || aVESUBLInvoice == null)
+        throw new InitializationException ("The EN 16931 VES are missing. Make sure to call EN16931Validation.initEN16931 first.");
+
       final String sAkaVersion = " (rules v2.5.0)";
 
       {
