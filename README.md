@@ -232,6 +232,7 @@ I hope that with the introduction of PINT, the versioning problem will be solved
 v4.1.8 - work in progress
 * Added Croatian eRacun v1.0.2 rules (release 2026-01-24)
 * Updated to XRechnung 3.0.2 Schematron Rules 2.5.0
+* Added support for France CTC 1.3.0 validation rules
 
 v4.1.7 - 2026-01-28
 * Updated to AE PINT Self-Billing 1.0.2-hotfix2 rules.
