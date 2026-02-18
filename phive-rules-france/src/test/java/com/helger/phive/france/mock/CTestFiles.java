@@ -59,7 +59,12 @@ public final class CTestFiles
                                                              FranceCTCValidation.VID_FR_CTC_UBL_INV_1_2_0,
                                                              FranceCTCValidation.VID_FR_CTC_UBL_CN_1_2_0,
                                                              FranceCTCValidation.VID_FR_CTC_CII_1_2_0,
-                                                             FranceCTCValidation.VID_FR_CTC_CDAR_1_2_0 })
+                                                             FranceCTCValidation.VID_FR_CTC_CDAR_1_2_0,
+
+                                                             FranceCTCValidation.VID_FR_CTC_UBL_INV_1_3_0,
+                                                             FranceCTCValidation.VID_FR_CTC_UBL_CN_1_3_0,
+                                                             FranceCTCValidation.VID_FR_CTC_CII_1_3_0,
+                                                             FranceCTCValidation.VID_FR_CTC_CDAR_1_3_0 })
       for (final IReadableResource aRes : getAllMatchingTestFiles (aVESID))
       {
         assertTrue ("Not existing test file: " + aRes.getPath (), aRes.exists ());
@@ -93,6 +98,18 @@ public final class CTestFiles
       return new CommonsArrayList <> ();
     }
     if (aVESID.equals (FranceCTCValidation.VID_FR_CTC_CDAR_1_2_0))
+    {
+      return new CommonsArrayList <> (CDARTestFiles.D22B_FILES, ClassPathResource::new);
+    }
+
+    if (aVESID.equals (FranceCTCValidation.VID_FR_CTC_UBL_INV_1_3_0) ||
+        aVESID.equals (FranceCTCValidation.VID_FR_CTC_UBL_CN_1_3_0) ||
+        aVESID.equals (FranceCTCValidation.VID_FR_CTC_CII_1_3_0))
+    {
+      // No test files available
+      return new CommonsArrayList <> ();
+    }
+    if (aVESID.equals (FranceCTCValidation.VID_FR_CTC_CDAR_1_3_0))
     {
       return new CommonsArrayList <> (CDARTestFiles.D22B_FILES, ClassPathResource::new);
     }
