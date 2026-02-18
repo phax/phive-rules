@@ -257,8 +257,8 @@ public final class XRechnungValidation
     final ICommonsList <IValidationExecutor <IValidationSourceXML>> ret = new CommonsArrayList <> (aSrc.executors ()
                                                                                                        .size () + 1);
     for (final var aItem : aSrc)
-      if (aItem instanceof ValidationExecutorSchematron)
-        ret.add (((ValidationExecutorSchematron) aItem).getClone ().addCustomErrorDetails (aCustomErrors));
+      if (aItem instanceof final ValidationExecutorSchematron aSch)
+        ret.add (aSch.getClone ().addCustomErrorDetails (aCustomErrors));
       else
         ret.add (aItem);
     return ret;
