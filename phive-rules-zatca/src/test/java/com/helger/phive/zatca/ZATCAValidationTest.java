@@ -28,7 +28,7 @@ import com.helger.phive.xml.source.IValidationSourceXML;
 import com.helger.phive.zatca.mock.CTestFiles;
 
 /**
- * Test class for class {@link XRechnungValidation}.
+ * Test class for class {@link ZATCAValidation}.
  *
  * @author Philip Helger
  */
