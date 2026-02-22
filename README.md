@@ -229,6 +229,9 @@ I hope that with the introduction of PINT, the versioning problem will be solved
 
 # News and noteworthy
 
+v4.2.0 - 2026-02-22
+* Updated to phive 12.x
+
 v4.1.8 - 2026-02-18
 * Added Croatian eRacun v1.0.2 rules (release 2026-01-24)
 * Updated to XRechnung 3.0.2 Schematron Rules 2.5.0
@@ -450,7 +453,7 @@ v3.1.6 - 2023-11-30
 
 v3.1.5 - 2023-11-10
 * Added support for Peppol Reporting EUSR v1.1.4 and deprecated v1.1.3
-* Added support for Czech ISDOC v6.0.2 and deprecated v6.0.1 [original Schematron had errors]
+* Added support for Czech ISDOC v6.0.2 and deprecated v6.0.1 (original Schematron had errors)
 
 v3.1.4 - 2023-11-06
 * Re-release of 3.1.3 because publishing to Maven Central created an error
@@ -475,7 +478,7 @@ v3.1.1 - 2023-09-21
 v3.1.0 - 2023-09-14
 * Updated to phive 9.0.0
 
-v3.1.0-beta2 - 2023-09-06 [not recommended for production use]
+v3.1.0-beta2 - 2023-09-06 (not recommended for production use)
 * Deprecated Peppol 3.15.0 rules
 * Moved Peppol 3.14.0 rules from `phive-rules-peppol` to `phive-rules-peppol-legacy`
 * Updated to phive 9.0.0 Beta2 with the strict version number check
@@ -483,7 +486,7 @@ v3.1.0-beta2 - 2023-09-06 [not recommended for production use]
     * `eu.cen.en16931:cii:1.3.6a` is now `eu.cen.en16931:cii:1.3.6.a`  
     * `at.ebinterface:invoice:3.02` is now `at.ebinterface:invoice:3.0.2`  
 
-v3.1.0-beta1 - 2023-08-30 [not recommended for production use]
+v3.1.0-beta1 - 2023-08-30 (not recommended for production use)
 * Updated to phive 9.0.0 Beta1
 
 v3.0.5 - 2023-07-02
