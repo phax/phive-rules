@@ -312,7 +312,7 @@ public final class PeppolValidationPintAE
     {
       final String sBase = BASE_PATH + "2025.11/xslt/";
       final String sBaseBilling = sBase + "billing/";
-      final String sAkaVersion = " (aka 1.0.1)";
+      final String sAkaVersion = " (aka 1.0.2)";
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_AE_PINT_INVOICE_2025_11,
                                                                              "Peppol PINT UAE Invoice (UBL) 2025-1" +
                                                                                                                      sAkaVersion,
