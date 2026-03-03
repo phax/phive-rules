@@ -75,6 +75,12 @@ public final class CTestFiles
                                                             OIOUBLLegacyValidation.VID_OIOUBL_REMINDER,
                                                             OIOUBLLegacyValidation.VID_OIOUBL_STATEMENT,
 
+                                                            // 3.0.1 - deprecated by government
+                                                            OIOUBLLegacyValidation.VID_OIOUBL_CREDIT_NOTE_3_0_1,
+                                                            OIOUBLLegacyValidation.VID_OIOUBL_INVOICE_3_0_1,
+                                                            OIOUBLLegacyValidation.VID_OIOUBL_INVOICE_RESPONSE_3_0_1,
+                                                            OIOUBLLegacyValidation.VID_OIOUBL_MLR_3_0_1,
+
                                                             // 1.12.3
                                                             OIOUBLValidation.VID_OIOUBL_APPLICATION_RESPONSE_1_12_3,
                                                             OIOUBLValidation.VID_OIOUBL_CATALOGUE_1_12_3,
@@ -235,13 +241,7 @@ public final class CTestFiles
                                                             OIOUBLValidation.VID_OIOUBL_ORDER_RESPONSE_SIMPLE_1_17_0_RC,
                                                             OIOUBLValidation.VID_OIOUBL_REMINDER_1_17_0_RC,
                                                             OIOUBLValidation.VID_OIOUBL_STATEMENT_1_17_0_RC,
-                                                            OIOUBLValidation.VID_OIOUBL_UTILITY_STATEMENT_1_17_0_RC,
-
-                                                            // 3.0.1
-                                                            OIOUBLValidation.VID_OIOUBL_CREDIT_NOTE_3_0_1,
-                                                            OIOUBLValidation.VID_OIOUBL_INVOICE_3_0_1,
-                                                            OIOUBLValidation.VID_OIOUBL_INVOICE_RESPONSE_3_0_1,
-                                                            OIOUBLValidation.VID_OIOUBL_MLR_3_0_1 })
+                                                            OIOUBLValidation.VID_OIOUBL_UTILITY_STATEMENT_1_17_0_RC })
       for (final IReadableResource aRes : getAllMatchingTestFiles (aESID))
       {
         assertTrue ("Not existing test file: " + aRes.getPath (), aRes.exists ());
@@ -1447,28 +1447,28 @@ public final class CTestFiles
     // 3.0.1
     {
       final String sVerPrefix = sPrefix0 + "3.0.1/";
-      if (aVESID.equals (OIOUBLValidation.VID_OIOUBL_CREDIT_NOTE_3_0_1))
+      if (aVESID.equals (OIOUBLLegacyValidation.VID_OIOUBL_CREDIT_NOTE_3_0_1))
       {
         final String sPrefix = sVerPrefix + "creditnote/";
         for (final File f : new FileSystemIterator (new File ("src/test/resources" + sPrefix)))
           ret.add (new ClassPathResource (sPrefix + f.getName ()));
       }
       else
-        if (aVESID.equals (OIOUBLValidation.VID_OIOUBL_INVOICE_3_0_1))
+        if (aVESID.equals (OIOUBLLegacyValidation.VID_OIOUBL_INVOICE_3_0_1))
         {
           final String sPrefix = sVerPrefix + "invoice/";
           for (final File f : new FileSystemIterator (new File ("src/test/resources" + sPrefix)))
             ret.add (new ClassPathResource (sPrefix + f.getName ()));
         }
         else
-          if (aVESID.equals (OIOUBLValidation.VID_OIOUBL_INVOICE_RESPONSE_3_0_1))
+          if (aVESID.equals (OIOUBLLegacyValidation.VID_OIOUBL_INVOICE_RESPONSE_3_0_1))
           {
             final String sPrefix = sVerPrefix + "ir/";
             for (final File f : new FileSystemIterator (new File ("src/test/resources" + sPrefix)))
               ret.add (new ClassPathResource (sPrefix + f.getName ()));
           }
           else
-            if (aVESID.equals (OIOUBLValidation.VID_OIOUBL_MLR_3_0_1))
+            if (aVESID.equals (OIOUBLLegacyValidation.VID_OIOUBL_MLR_3_0_1))
             {
               final String sPrefix = sVerPrefix + "mlr/";
               for (final File f : new FileSystemIterator (new File ("src/test/resources" + sPrefix)))
