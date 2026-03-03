@@ -229,6 +229,11 @@ I hope that with the introduction of PINT, the versioning problem will be solved
 
 # News and noteworthy
 
+v4.2.1 - work in progress
+* Renamed all "Peppol PINT UAE" to "Peppol PINT AE" for consistency
+* Fixed the version suffix for "Peppol PINT AE" relese 2025-11 from "1.0.1" to "1.0.2"
+* Moved the OIOUBL rules to the class `OIOUBLLegacyValidation` as it was discontinued from the government. See [#53](https://github.com/phax/phive-rules/issues/53)
+
 v4.2.0 - 2026-02-22
 * Updated to phive 12.x
 
