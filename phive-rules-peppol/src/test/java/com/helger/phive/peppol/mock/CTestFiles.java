@@ -35,6 +35,7 @@ import com.helger.phive.peppol.PeppolValidation;
 import com.helger.phive.peppol.PeppolValidation2025_03;
 import com.helger.phive.peppol.PeppolValidation2025_05;
 import com.helger.phive.peppol.PeppolValidation2025_11;
+import com.helger.phive.peppol.PeppolValidation2026_03;
 import com.helger.phive.peppol.PeppolValidationBisAUNZ;
 import com.helger.phive.peppol.PeppolValidationBisSG;
 import com.helger.phive.peppol.PeppolValidationDirectory;
@@ -128,6 +129,9 @@ public final class CTestFiles
                                                             PeppolValidation2025_11.VID_OPENPEPPOL_ORDER_CHANGE_V3,
                                                             PeppolValidation2025_11.VID_OPENPEPPOL_ORDER_CANCELLATION_V3,
                                                             PeppolValidation2025_11.VID_OPENPEPPOL_ORDER_RESPONSE_ADVANCED_V3,
+
+                                                            PeppolValidation2026_03.VID_OPENPEPPOL_INVOICE_SELF_BILLING_UBL_V3,
+                                                            PeppolValidation2026_03.VID_OPENPEPPOL_CREDIT_NOTE_SELF_BILLING_UBL_V3,
 
                                                             /*
                                                              * OpenPeppol Directory
@@ -655,6 +659,26 @@ public final class CTestFiles
         return new CommonsArrayList <> (new FileSystemResource (sPrefix + "OrderCancellation_Example.xml"));
       if (aVESID.equals (PeppolValidation2025_11.VID_OPENPEPPOL_ORDER_RESPONSE_ADVANCED_V3))
         return new CommonsArrayList <> (new FileSystemResource (sPrefix + "OrderResponseAdvanced_Example.xml"));
+    }
+
+    // 2026-03
+    {
+      final String sPrefix = sPrefix0 + "openpeppol/2026.3/";
+      if (aVESID.equals (PeppolValidation2026_03.VID_OPENPEPPOL_INVOICE_SELF_BILLING_UBL_V3))
+      {
+        return new CommonsArrayList <> (new FileSystemResource (sPrefix + "SB-Allowance-example.xml"),
+                                        new FileSystemResource (sPrefix + "SB-base-example.xml"),
+                                        new FileSystemResource (sPrefix + "SB-base-negative-inv-correction.xml"),
+                                        new FileSystemResource (sPrefix + "SB-sales-order-example.xml"),
+                                        new FileSystemResource (sPrefix + "SB-vat-category-E.xml"),
+                                        new FileSystemResource (sPrefix + "SB-vat-category-O.xml"),
+                                        new FileSystemResource (sPrefix + "SB-Vat-category-S.xml"),
+                                        new FileSystemResource (sPrefix + "SB-vat-category-Z.xml"));
+      }
+      if (aVESID.equals (PeppolValidation2026_03.VID_OPENPEPPOL_CREDIT_NOTE_SELF_BILLING_UBL_V3))
+      {
+        return new CommonsArrayList <> (new FileSystemResource (sPrefix + "SB-base-creditnote-correction.xml"));
+      }
     }
 
     /* Peppol Directory BusinessCard */

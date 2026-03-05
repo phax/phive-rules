@@ -229,6 +229,9 @@ I hope that with the introduction of PINT, the versioning problem will be solved
 
 # News and noteworthy
 
+v4.2.2 - 2026-03-05
+* Added Peppol BIS Self-Billing 2026.3 (aka 3.0.1) validation rules
+
 v4.2.1 - 2026-03-03
 * Renamed all "Peppol PINT UAE" to "Peppol PINT AE" for consistency
 * Fixed the version suffix for "Peppol PINT AE" relese 2025-11 from "1.0.1" to "1.0.2"

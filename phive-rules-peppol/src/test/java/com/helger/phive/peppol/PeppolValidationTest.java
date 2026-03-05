@@ -50,6 +50,7 @@ public final class PeppolValidationTest
   {
     for (final IValidationExecutorSet <IValidationSourceXML> aVES : CTestFiles.VES_REGISTRY.getAll ())
       for (final IValidationExecutor <IValidationSourceXML> aVE : aVES)
-        assertTrue (PhiveRulesTestHelper.isContentCorrect (aVE));
+        assertTrue (aVE.getValidationArtefact ().getRuleResourcePath () + " is not valid",
+                    PhiveRulesTestHelper.isContentCorrect (aVE));
   }
 }

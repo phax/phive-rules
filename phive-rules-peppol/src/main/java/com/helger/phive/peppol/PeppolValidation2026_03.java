@@ -20,29 +20,26 @@ import org.jspecify.annotations.NonNull;
 
 import com.helger.annotation.concurrent.Immutable;
 import com.helger.base.enforce.ValueEnforcer;
-import com.helger.base.exception.InitializationException;
 import com.helger.base.version.Version;
 import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.io.resource.ClassPathResource;
 import com.helger.io.resource.IReadableResource;
-import com.helger.phive.api.executorset.IValidationExecutorSet;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
 import com.helger.phive.api.executorset.ValidationExecutorSet;
-import com.helger.phive.en16931.EN16931Validation;
 import com.helger.phive.rules.api.PhiveRulesHelper;
 import com.helger.phive.rules.api.PhiveRulesUBLHelper;
 import com.helger.phive.xml.source.IValidationSourceXML;
 
 /**
- * OpenPeppol Self-Billing artefacts March 2025 - initial version
+ * OpenPeppol Self-Billing artefacts March 2026 - v3.0.1
  *
  * @author Philip Helger
  */
 @Immutable
-public final class PeppolValidation2025_03
+public final class PeppolValidation2026_03
 {
   // Standard resources
-  public static final Version PEPPOL_VALIDATION_ARTEFACT_VERSION = new Version (2025, 3, 0);
+  public static final Version PEPPOL_VALIDATION_ARTEFACT_VERSION = new Version (2026, 3, 0);
   public static final String VERSION_STR = PEPPOL_VALIDATION_ARTEFACT_VERSION.getAsString (false);
 
   // Standard
@@ -54,46 +51,41 @@ public final class PeppolValidation2025_03
                                                                                                                         "creditnote-self-billing",
                                                                                                                         VERSION_STR);
 
-  private PeppolValidation2025_03 ()
+  private PeppolValidation2026_03 ()
   {}
 
   @NonNull
   private static ClassLoader _getCL ()
   {
-    return PeppolValidation2025_03.class.getClassLoader ();
+    return PeppolValidation2026_03.class.getClassLoader ();
   }
 
-  @SuppressWarnings ("deprecation")
   public static void init (@NonNull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
   {
     ValueEnforcer.notNull (aRegistry, "Registry");
 
     final String sVersion = " (" + VERSION_STR + ")";
-    final String sAkaVersionBilling = "";
+    final String sAkaVersionBilling = " (aka BIS 3.0.1)";
 
     final boolean bNotDeprecated = false;
 
     final String PREFIX_XSLT = "external/schematron/openpeppol/" + VERSION_STR + "/xslt/";
+    final IReadableResource aCENSB = new ClassPathResource (PREFIX_XSLT + "CEN-EN16931-UBL.xslt", _getCL ());
     final IReadableResource aPeppolSB = new ClassPathResource (PREFIX_XSLT + "PEPPOL-EN16931-UBL-SB.xslt", _getCL ());
 
-    final IValidationExecutorSet <IValidationSourceXML> aVESUBLInvoice_1_3_13 = aRegistry.getOfID (EN16931Validation.VID_UBL_INVOICE_1313);
-    final IValidationExecutorSet <IValidationSourceXML> aVESUBLCreditNote_1_3_13 = aRegistry.getOfID (EN16931Validation.VID_UBL_CREDIT_NOTE_1313);
-    if (aVESUBLCreditNote_1_3_13 == null || aVESUBLInvoice_1_3_13 == null)
-      throw new InitializationException ("The EN 16931 VES are missing. Make sure to call EN16931Validation.initEN16931 first.");
-
-    aRegistry.registerValidationExecutorSet (ValidationExecutorSet.createDerived (aVESUBLInvoice_1_3_13,
-                                                                                  VID_OPENPEPPOL_INVOICE_SELF_BILLING_UBL_V3,
-                                                                                  "OpenPeppol UBL Invoice Self-Billing" +
-                                                                                                                              sVersion +
-                                                                                                                              sAkaVersionBilling,
-                                                                                  PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
-                                                                                  PhiveRulesUBLHelper.createXSLT_UBL21 (aPeppolSB)));
-    aRegistry.registerValidationExecutorSet (ValidationExecutorSet.createDerived (aVESUBLCreditNote_1_3_13,
-                                                                                  VID_OPENPEPPOL_CREDIT_NOTE_SELF_BILLING_UBL_V3,
-                                                                                  "OpenPeppol UBL Credit Note Self-Billing" +
-                                                                                                                                  sVersion +
-                                                                                                                                  sAkaVersionBilling,
-                                                                                  PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
-                                                                                  PhiveRulesUBLHelper.createXSLT_UBL21 (aPeppolSB)));
+    aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_INVOICE_SELF_BILLING_UBL_V3,
+                                                                           "OpenPeppol UBL Invoice Self-Billing" +
+                                                                                                                       sVersion +
+                                                                                                                       sAkaVersionBilling,
+                                                                           PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
+                                                                           PhiveRulesUBLHelper.createXSLT_UBL21 (aCENSB),
+                                                                           PhiveRulesUBLHelper.createXSLT_UBL21 (aPeppolSB)));
+    aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_CREDIT_NOTE_SELF_BILLING_UBL_V3,
+                                                                           "OpenPeppol UBL Credit Note Self-Billing" +
+                                                                                                                           sVersion +
+                                                                                                                           sAkaVersionBilling,
+                                                                           PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
+                                                                           PhiveRulesUBLHelper.createXSLT_UBL21 (aCENSB),
+                                                                           PhiveRulesUBLHelper.createXSLT_UBL21 (aPeppolSB)));
   }
 }
