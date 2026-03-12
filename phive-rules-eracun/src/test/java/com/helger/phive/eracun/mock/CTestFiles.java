@@ -34,6 +34,7 @@ import com.helger.phive.en16931.EN16931Validation;
 import com.helger.phive.eracun.HReRacunValidation;
 import com.helger.phive.xml.source.IValidationSourceXML;
 
+@SuppressWarnings ("deprecation")
 @Immutable
 public final class CTestFiles
 {
@@ -47,7 +48,6 @@ public final class CTestFiles
   private CTestFiles ()
   {}
 
-  @SuppressWarnings ("deprecation")
   @NonNull
   @ReturnsMutableCopy
   public static ICommonsList <PhiveTestFile> getAllTestFiles ()

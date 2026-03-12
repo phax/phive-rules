@@ -142,7 +142,6 @@ public final class PeppolValidation2023_11
     return new ValidationExecutorSetStatus (PDTFactory.getCurrentOffsetDateTime (),
                                             bIsDeprecated ? EValidationExecutorStatusType.DEPRECATED
                                                           : EValidationExecutorStatusType.VALID,
-                                            (String) null,
                                             VALID_PER_UTC,
                                             PeppolValidation2024_05.VALID_PER_UTC,
                                             (String) null,
