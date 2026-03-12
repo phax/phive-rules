@@ -47,6 +47,7 @@ public final class CTestFiles
   private CTestFiles ()
   {}
 
+  @SuppressWarnings ("deprecation")
   @NonNull
   @ReturnsMutableCopy
   public static ICommonsList <PhiveTestFile> getAllTestFiles ()
@@ -54,10 +55,15 @@ public final class CTestFiles
     final ICommonsList <PhiveTestFile> ret = new CommonsArrayList <> ();
     for (final DVRCoordinate aESID : new DVRCoordinate [] { HReRacunValidation.VID_HR_ERACUN_UBL_CREDITNOTE_100,
                                                             HReRacunValidation.VID_HR_ERACUN_UBL_INVOICE_100,
+
                                                             HReRacunValidation.VID_HR_ERACUN_UBL_CREDITNOTE_101,
                                                             HReRacunValidation.VID_HR_ERACUN_UBL_INVOICE_101,
+
                                                             HReRacunValidation.VID_HR_ERACUN_UBL_CREDITNOTE_102,
-                                                            HReRacunValidation.VID_HR_ERACUN_UBL_INVOICE_102 })
+                                                            HReRacunValidation.VID_HR_ERACUN_UBL_INVOICE_102,
+
+                                                            HReRacunValidation.VID_HR_ERACUN_UBL_CREDITNOTE_103,
+                                                            HReRacunValidation.VID_HR_ERACUN_UBL_INVOICE_103 })
       for (final IReadableResource aRes : getAllMatchingTestFiles (aESID))
       {
         assertTrue ("Not existing test file: " + aRes.getPath (), aRes.exists ());
@@ -108,6 +114,18 @@ public final class CTestFiles
     {
       // No test files
       return new CommonsArrayList <> (new String [] {}, x -> new ClassPathResource (sPrefix + "1.0.2/" + x));
+    }
+
+    // 1.0.3
+    if (aVESID.equals (HReRacunValidation.VID_HR_ERACUN_UBL_CREDITNOTE_103))
+    {
+      // No test files
+      return new CommonsArrayList <> (new String [] {}, x -> new ClassPathResource (sPrefix + "1.0.3/" + x));
+    }
+    if (aVESID.equals (HReRacunValidation.VID_HR_ERACUN_UBL_INVOICE_103))
+    {
+      // No test files
+      return new CommonsArrayList <> (new String [] {}, x -> new ClassPathResource (sPrefix + "1.0.3/" + x));
     }
 
     throw new IllegalArgumentException ("Invalid VESID: " + aVESID);

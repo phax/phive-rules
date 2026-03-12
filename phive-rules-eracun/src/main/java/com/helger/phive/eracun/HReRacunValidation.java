@@ -43,17 +43,21 @@ public final class HReRacunValidation
   public static final String GROUP_ID = "hr.gov.porezna.eracun";
 
   // Version 1.0.0
+  @Deprecated
   public static final DVRCoordinate VID_HR_ERACUN_UBL_CREDITNOTE_100 = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                                           "ubl-creditnote",
                                                                                                           "1.0.0");
+  @Deprecated
   public static final DVRCoordinate VID_HR_ERACUN_UBL_INVOICE_100 = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                                        "ubl-invoice",
                                                                                                        "1.0.0");
 
   // Version 1.0.1
+  @Deprecated
   public static final DVRCoordinate VID_HR_ERACUN_UBL_CREDITNOTE_101 = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                                           "ubl-creditnote",
                                                                                                           "1.0.1");
+  @Deprecated
   public static final DVRCoordinate VID_HR_ERACUN_UBL_INVOICE_101 = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                                        "ubl-invoice",
                                                                                                        "1.0.1");
@@ -65,6 +69,14 @@ public final class HReRacunValidation
   public static final DVRCoordinate VID_HR_ERACUN_UBL_INVOICE_102 = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                                        "ubl-invoice",
                                                                                                        "1.0.2");
+
+  // Version 1.0.3
+  public static final DVRCoordinate VID_HR_ERACUN_UBL_CREDITNOTE_103 = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                          "ubl-creditnote",
+                                                                                                          "1.0.3");
+  public static final DVRCoordinate VID_HR_ERACUN_UBL_INVOICE_103 = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                       "ubl-invoice",
+                                                                                                       "1.0.3");
 
   private HReRacunValidation ()
   {}
@@ -119,13 +131,13 @@ public final class HReRacunValidation
                                                                                     VID_HR_ERACUN_UBL_CREDITNOTE_101,
                                                                                     "HR eRacun Credit Note " +
                                                                                                                       VID_HR_ERACUN_UBL_CREDITNOTE_101.getVersionString (),
-                                                                                    PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
+                                                                                    PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                                     PhiveRulesUBLHelper.createXSLT_UBL21 (aXslt)));
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.createDerived (aVESUBLInvoice_1_3_15,
                                                                                     VID_HR_ERACUN_UBL_INVOICE_101,
                                                                                     "HR eRacun Invoice " +
                                                                                                                    VID_HR_ERACUN_UBL_INVOICE_101.getVersionString (),
-                                                                                    PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
+                                                                                    PhiveRulesHelper.createSimpleStatus (bDeprecated),
                                                                                     PhiveRulesUBLHelper.createXSLT_UBL21 (aXslt)));
     }
 
@@ -143,6 +155,24 @@ public final class HReRacunValidation
                                                                                     VID_HR_ERACUN_UBL_INVOICE_102,
                                                                                     "HR eRacun Invoice " +
                                                                                                                    VID_HR_ERACUN_UBL_INVOICE_102.getVersionString (),
+                                                                                    PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
+                                                                                    PhiveRulesUBLHelper.createXSLT_UBL21 (aXslt)));
+    }
+
+    // V1.0.3 referencing v1.3.15 of the EN rules
+    {
+      final ClassPathResource aXslt = new ClassPathResource ("/external/schematron/1.0.3/HR-CIUS-EXT-EN16931-UBL.xslt",
+                                                             _getCL ());
+      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.createDerived (aVESUBLCreditNote_1_3_15,
+                                                                                    VID_HR_ERACUN_UBL_CREDITNOTE_103,
+                                                                                    "HR eRacun Credit Note " +
+                                                                                                                      VID_HR_ERACUN_UBL_CREDITNOTE_103.getVersionString (),
+                                                                                    PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
+                                                                                    PhiveRulesUBLHelper.createXSLT_UBL21 (aXslt)));
+      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.createDerived (aVESUBLInvoice_1_3_15,
+                                                                                    VID_HR_ERACUN_UBL_INVOICE_103,
+                                                                                    "HR eRacun Invoice " +
+                                                                                                                   VID_HR_ERACUN_UBL_INVOICE_103.getVersionString (),
                                                                                     PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
                                                                                     PhiveRulesUBLHelper.createXSLT_UBL21 (aXslt)));
     }

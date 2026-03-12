@@ -229,6 +229,9 @@ I hope that with the introduction of PINT, the versioning problem will be solved
 
 # News and noteworthy
 
+v4.2.3 - 2026-03-12
+* Added Croatian eRacun v1.0.3 rules (release 2026-03-06)
+
 v4.2.2 - 2026-03-05
 * Added Peppol BIS Self-Billing 2026.3 (aka 3.0.1) validation rules
 
