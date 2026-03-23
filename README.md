@@ -231,6 +231,9 @@ I hope that with the introduction of PINT, the versioning problem will be solved
 
 # News and noteworthy
 
+v4.2.4 - 2026-03-23
+* Updated to AE PINT 1.0.3 rules
+
 v4.2.3 - 2026-03-12
 * Requires phive 12.0.1 or later
 * Added Croatian eRacun v1.0.3 rules (release 2026-03-06). See [#56](https://github.com/phax/phive-rules/issues/56)
@@ -242,7 +245,7 @@ v4.2.2 - 2026-03-05
 
 v4.2.1 - 2026-03-03
 * Renamed all "Peppol PINT UAE" to "Peppol PINT AE" for consistency
-* Fixed the version suffix for "Peppol PINT AE" relese 2025-11 from "1.0.1" to "1.0.2"
+* Fixed the version suffix for "Peppol PINT AE" release 2025-11 from "1.0.1" to "1.0.2"
 * Moved the OIOUBL rules to the class `OIOUBLLegacyValidation` as it was discontinued from the government. See [#53](https://github.com/phax/phive-rules/issues/53)
 
 v4.2.0 - 2026-02-22
