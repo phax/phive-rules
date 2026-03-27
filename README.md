@@ -231,8 +231,11 @@ I hope that with the introduction of PINT, the versioning problem will be solved
 
 # News and noteworthy
 
+v4.2.5 - 2026-03-27
+* Updated to final AE PINT 1.0.3 rules
+
 v4.2.4 - 2026-03-23
-* Updated to AE PINT 1.0.3 rules
+* Added preliminary AE PINT 1.0.3 rules
 
 v4.2.3 - 2026-03-12
 * Requires phive 12.0.1 or later

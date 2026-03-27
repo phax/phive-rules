@@ -243,15 +243,15 @@
 
 		<!--ASSERT -->
 <xsl:choose>
-      <xsl:when test="cbc:EndpointID/@schemeID != &quot;0235&quot; or starts-with(normalize-space(cbc:EndpointID), &quot;1&quot;) or exists(cac:PartyTaxScheme/cbc:CompanyID)" />
+      <xsl:when test="cbc:EndpointID/@schemeID != &quot;0235&quot; or matches(normalize-space(cbc:EndpointID), &quot;^[19]&quot;) or exists(cac:PartyTaxScheme/cbc:CompanyID)" />
       <xsl:otherwise>
-        <svrl:failed-assert test="cbc:EndpointID/@schemeID != &quot;0235&quot; or starts-with(normalize-space(cbc:EndpointID), &quot;1&quot;) or exists(cac:PartyTaxScheme/cbc:CompanyID)">
+        <svrl:failed-assert test="cbc:EndpointID/@schemeID != &quot;0235&quot; or matches(normalize-space(cbc:EndpointID), &quot;^[19]&quot;) or exists(cac:PartyTaxScheme/cbc:CompanyID)">
           <xsl:attribute name="id">ibr-149-ae</xsl:attribute>
           <xsl:attribute name="flag">fatal</xsl:attribute>
           <xsl:attribute name="location">
             <xsl:apply-templates mode="schematron-select-full-path" select="." />
           </xsl:attribute>
-          <svrl:text>[ibr-149-ae]-The buyer legal registration identifier (IBT-047) MUST be provided when the scheme identifier (IBT-049-1) is '0235' and buyer electronic address (IBT-049) is not '1XXXXXXXXX'</svrl:text>
+          <svrl:text>[ibr-149-ae]-The buyer legal registration identifier (IBT-047) MUST be provided when the scheme identifier (IBT-049-1) is '0235' and buyer electronic address (IBT-049) is not '1XXXXXXXXX' or '9XXXXXXXXX'</svrl:text>
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
@@ -303,9 +303,9 @@
 
 		<!--ASSERT -->
 <xsl:choose>
-      <xsl:when test="not(cac:PartyLegalEntity/cbc:CompanyID) or not(cbc:EndpointID[@schemeID = &quot;0235&quot;]) or  starts-with(cbc:EndpointID, &quot;1&quot;) or cac:PartyLegalEntity/cbc:CompanyID/@schemeAgencyID = (&quot;CL&quot;, &quot;EID&quot;, &quot;PAS&quot;, &quot;CD&quot;)" />
+      <xsl:when test="not(cac:PartyLegalEntity/cbc:CompanyID) or not(cbc:EndpointID[@schemeID = &quot;0235&quot;]) or  matches(normalize-space(cbc:EndpointID), &quot;^[19]&quot;) or cac:PartyLegalEntity/cbc:CompanyID/@schemeAgencyID = (&quot;TL&quot;,&quot;CL&quot;, &quot;EID&quot;, &quot;PAS&quot;, &quot;CD&quot;)" />
       <xsl:otherwise>
-        <svrl:failed-assert test="not(cac:PartyLegalEntity/cbc:CompanyID) or not(cbc:EndpointID[@schemeID = &quot;0235&quot;]) or starts-with(cbc:EndpointID, &quot;1&quot;) or cac:PartyLegalEntity/cbc:CompanyID/@schemeAgencyID = (&quot;CL&quot;, &quot;EID&quot;, &quot;PAS&quot;, &quot;CD&quot;)">
+        <svrl:failed-assert test="not(cac:PartyLegalEntity/cbc:CompanyID) or not(cbc:EndpointID[@schemeID = &quot;0235&quot;]) or matches(normalize-space(cbc:EndpointID), &quot;^[19]&quot;) or cac:PartyLegalEntity/cbc:CompanyID/@schemeAgencyID = (&quot;TL&quot;,&quot;CL&quot;, &quot;EID&quot;, &quot;PAS&quot;, &quot;CD&quot;)">
           <xsl:attribute name="id">ibr-183-ae</xsl:attribute>
           <xsl:attribute name="flag">fatal</xsl:attribute>
           <xsl:attribute name="location">
@@ -612,9 +612,9 @@
 
 		<!--ASSERT -->
 <xsl:choose>
-      <xsl:when test="not(exists(cbc:BaseAmount) and exists(cbc:MultiplierFactorNumeric)) or (cbc:Amount = round(cbc:BaseAmount * cbc:MultiplierFactorNumeric) div 100)" />
+      <xsl:when test="not(exists(cbc:BaseAmount) and exists(cbc:MultiplierFactorNumeric)) or number(cbc:Amount) = (number(cbc:BaseAmount) * number(cbc:MultiplierFactorNumeric) div 100) or number(cbc:Amount) = round((number(cbc:BaseAmount) * number(cbc:MultiplierFactorNumeric) div 100) * 100) div 100" />
       <xsl:otherwise>
-        <svrl:failed-assert test="not(exists(cbc:BaseAmount) and exists(cbc:MultiplierFactorNumeric)) or (cbc:Amount = round(cbc:BaseAmount * cbc:MultiplierFactorNumeric) div 100)">
+        <svrl:failed-assert test="not(exists(cbc:BaseAmount) and exists(cbc:MultiplierFactorNumeric)) or number(cbc:Amount) = (number(cbc:BaseAmount) * number(cbc:MultiplierFactorNumeric) div 100) or number(cbc:Amount) = round((number(cbc:BaseAmount) * number(cbc:MultiplierFactorNumeric) div 100) * 100) div 100">
           <xsl:attribute name="id">ibr-131-ae</xsl:attribute>
           <xsl:attribute name="flag">fatal</xsl:attribute>
           <xsl:attribute name="location">
@@ -693,9 +693,9 @@
 
 		<!--ASSERT -->
 <xsl:choose>
-      <xsl:when test="not(exists(cbc:BaseAmount) and exists(cbc:MultiplierFactorNumeric)) or number(cbc:Amount) = round((number(cbc:BaseAmount) * number(cbc:MultiplierFactorNumeric) div 100) * 100) div 100" />
+      <xsl:when test="not(exists(cbc:BaseAmount) and exists(cbc:MultiplierFactorNumeric)) or number(cbc:Amount) = (number(cbc:BaseAmount) * number(cbc:MultiplierFactorNumeric) div 100) or number(cbc:Amount) = round((number(cbc:BaseAmount) * number(cbc:MultiplierFactorNumeric) div 100) * 100) div 100" />
       <xsl:otherwise>
-        <svrl:failed-assert test="not(exists(cbc:BaseAmount) and exists(cbc:MultiplierFactorNumeric)) or number(cbc:Amount) = round((number(cbc:BaseAmount) * number(cbc:MultiplierFactorNumeric) div 100) * 100) div 100">
+        <svrl:failed-assert test="not(exists(cbc:BaseAmount) and exists(cbc:MultiplierFactorNumeric)) or number(cbc:Amount) = (number(cbc:BaseAmount) * number(cbc:MultiplierFactorNumeric) div 100) or number(cbc:Amount) = round((number(cbc:BaseAmount) * number(cbc:MultiplierFactorNumeric) div 100) * 100) div 100">
           <xsl:attribute name="id">ibr-146-ae</xsl:attribute>
           <xsl:attribute name="flag">fatal</xsl:attribute>
           <xsl:attribute name="location">
@@ -744,9 +744,9 @@
 
 		<!--ASSERT -->
 <xsl:choose>
-      <xsl:when test="not(matches(., concat('^[0-9]+\.[0-9]', codepoints-to-string(123), '7,', codepoints-to-string(125), '$')))" />
+      <xsl:when test="matches(., concat('^[0-9]+(\.[0-9]', codepoints-to-string(123), '1,6', codepoints-to-string(125), ')?$'))" />
       <xsl:otherwise>
-        <svrl:failed-assert test="not(matches(., concat('^[0-9]+\.[0-9]', codepoints-to-string(123), '7,', codepoints-to-string(125), '$')))">
+        <svrl:failed-assert test="matches(., concat('^[0-9]+(\.[0-9]', codepoints-to-string(123), '1,6', codepoints-to-string(125), ')?$'))">
           <xsl:attribute name="id">ibr-002-ae</xsl:attribute>
           <xsl:attribute name="flag">fatal</xsl:attribute>
           <xsl:attribute name="location">
