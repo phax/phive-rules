@@ -23,11 +23,10 @@ import com.helger.base.enforce.ValueEnforcer;
 import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.io.resource.ClassPathResource;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
-import com.helger.phive.api.executorset.ValidationExecutorSet;
+import com.helger.phive.rules.api.PhiveRulesBuilder;
 import com.helger.phive.rules.api.PhiveRulesHelper;
 import com.helger.phive.rules.api.PhiveRulesUBLHelper;
 import com.helger.phive.xml.source.IValidationSourceXML;
-import com.helger.phive.xml.xsd.ValidationExecutorXSD;
 import com.helger.ubl22.UBL22Marshaller;
 
 /**
@@ -103,8 +102,7 @@ public final class EHFValidationG3_2023_02
   }
 
   /**
-   * Register all standard EHF validation execution sets to the provided
-   * registry.
+   * Register all standard EHF validation execution sets to the provided registry.
    *
    * @param aRegistry
    *        The registry to add the artefacts. May not be <code>null</code>.
@@ -113,140 +111,153 @@ public final class EHFValidationG3_2023_02
   {
     ValueEnforcer.notNull (aRegistry, "Registry");
 
-    final boolean bNotDeprecated = false;
-
     // 2020-03-23
     final String sXSLT = "/external/schematron/2023-02/xslt/";
-    aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_EHF_ADVANCED_ORDER_CANCELLATION_303,
-                                                                           "EHF Advanced Order Cancellation " +
-                                                                                                                    VID_EHF_ADVANCED_ORDER_CANCELLATION_303.getVersionString (),
-                                                                           PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
-                                                                           ValidationExecutorXSD.create (UBL22Marshaller.getAllOrderCancellationXSDs ()),
-                                                                           PhiveRulesUBLHelper.createXSLT_UBL22 (new ClassPathResource (sXSLT +
-                                                                                                                                        "advanced-ordering-3.0/EHF-P09-3.0-ORDER-CANCELLATION.xslt",
-                                                                                                                                        _getCL ()))));
-    aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_EHF_ADVANCED_ORDER_CHANGE_303,
-                                                                           "EHF Advanced Order Change " +
-                                                                                                              VID_EHF_ADVANCED_ORDER_CHANGE_303.getVersionString (),
-                                                                           PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
-                                                                           ValidationExecutorXSD.create (UBL22Marshaller.getAllOrderChangeXSDs ()),
-                                                                           PhiveRulesUBLHelper.createXSLT_UBL22 (new ClassPathResource (sXSLT +
-                                                                                                                                        "advanced-ordering-3.0/EHF-P09-3.0-ORDER-CHANGE.xslt",
-                                                                                                                                        _getCL ()))));
-    aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_EHF_ADVANCED_ORDER_INITIATION_303,
-                                                                           "EHF Advanced Order Initiation " +
-                                                                                                                  VID_EHF_ADVANCED_ORDER_INITIATION_303.getVersionString (),
-                                                                           PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
-                                                                           ValidationExecutorXSD.create (UBL22Marshaller.getAllOrderXSDs ()),
-                                                                           PhiveRulesUBLHelper.createXSLT_UBL22 (new ClassPathResource (sXSLT +
-                                                                                                                                        "advanced-ordering-3.0/EHF-P09-3.0-ORDER-INITIATION.xslt",
-                                                                                                                                        _getCL ()))));
-    aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_EHF_ADVANCED_ORDER_RESPONSE_303,
-                                                                           "EHF Advanced Order Response " +
-                                                                                                                VID_EHF_ADVANCED_ORDER_RESPONSE_303.getVersionString (),
-                                                                           PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
-                                                                           ValidationExecutorXSD.create (UBL22Marshaller.getAllOrderResponseXSDs ()),
-                                                                           PhiveRulesUBLHelper.createXSLT_UBL22 (new ClassPathResource (sXSLT +
-                                                                                                                                        "advanced-ordering-3.0/EHF-P09-3.0-ORDER-RESPONSE.xslt",
-                                                                                                                                        _getCL ()))));
-    aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_EHF_CATALOGUE_303,
-                                                                           "EHF Catalogue " +
-                                                                                                  VID_EHF_CATALOGUE_303.getVersionString (),
-                                                                           PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
-                                                                           ValidationExecutorXSD.create (UBL22Marshaller.getAllCatalogueXSDs ()),
-                                                                           PhiveRulesUBLHelper.createXSLT_UBL22 (new ClassPathResource (sXSLT +
-                                                                                                                                        "catalogue-3.0/EHF-CATALOGUE-3.0.xslt",
-                                                                                                                                        _getCL ()))));
-    aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_EHF_CATALOGUE_RESPONSE_303,
-                                                                           "EHF Catalogue Response " +
-                                                                                                           VID_EHF_CATALOGUE_RESPONSE_303.getVersionString (),
-                                                                           PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
-                                                                           ValidationExecutorXSD.create (UBL22Marshaller.getAllApplicationResponseXSDs ()),
-                                                                           PhiveRulesUBLHelper.createXSLT_UBL22 (new ClassPathResource (sXSLT +
-                                                                                                                                        "catalogue-3.0/EHF-CATALOGUE-RESPONSE-3.0.xslt",
-                                                                                                                                        _getCL ()))));
-    aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_EHF_DESPATCH_ADVICE_302,
-                                                                           "EHF Despatch Advice " +
-                                                                                                        VID_EHF_DESPATCH_ADVICE_302.getVersionString (),
-                                                                           PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
-                                                                           ValidationExecutorXSD.create (UBL22Marshaller.getAllDespatchAdviceXSDs ()),
-                                                                           PhiveRulesUBLHelper.createXSLT_UBL22 (new ClassPathResource (sXSLT +
-                                                                                                                                        "despatch-advice-3.0/EHF-DESPATCH-ADVICE-3.0.xslt",
-                                                                                                                                        _getCL ()))));
-    aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_EHF_FORWARD_BILLING_INVOICE_303,
-                                                                           "EHF Forward Billing Invoice " +
-                                                                                                                VID_EHF_FORWARD_BILLING_INVOICE_303.getVersionString (),
-                                                                           PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
-                                                                           ValidationExecutorXSD.create (UBL22Marshaller.getAllInvoiceXSDs ()),
-                                                                           PhiveRulesUBLHelper.createXSLT_UBL22 (new ClassPathResource (sXSLT +
-                                                                                                                                        "forward-billing-3.0/FORWARD-BILLING-CEN-EN16931-UBL.xslt",
-                                                                                                                                        _getCL ())),
-                                                                           PhiveRulesUBLHelper.createXSLT_UBL22 (new ClassPathResource (sXSLT +
-                                                                                                                                        "forward-billing-3.0/FORWARD-BILLING-PEPPOL-EN16931-UBL.xslt",
-                                                                                                                                        _getCL ()))));
-    aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_EHF_FORWARD_BILLING_CREDIT_NOTE_303,
-                                                                           "EHF Forward Billing Credit Note " +
-                                                                                                                    VID_EHF_FORWARD_BILLING_CREDIT_NOTE_303.getVersionString (),
-                                                                           PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
-                                                                           ValidationExecutorXSD.create (UBL22Marshaller.getAllCreditNoteXSDs ()),
-                                                                           PhiveRulesUBLHelper.createXSLT_UBL22 (new ClassPathResource (sXSLT +
-                                                                                                                                        "forward-billing-3.0/FORWARD-BILLING-CEN-EN16931-UBL.xslt",
-                                                                                                                                        _getCL ())),
-                                                                           PhiveRulesUBLHelper.createXSLT_UBL22 (new ClassPathResource (sXSLT +
-                                                                                                                                        "forward-billing-3.0/FORWARD-BILLING-PEPPOL-EN16931-UBL.xslt",
-                                                                                                                                        _getCL ()))));
-    aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_EHF_ORDER_AGREEMENT_303,
-                                                                           "EHF Order Agreement " +
-                                                                                                        VID_EHF_ORDER_AGREEMENT_303.getVersionString (),
-                                                                           PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
-                                                                           ValidationExecutorXSD.create (UBL22Marshaller.getAllOrderResponseXSDs ()),
-                                                                           PhiveRulesUBLHelper.createXSLT_UBL22 (new ClassPathResource (sXSLT +
-                                                                                                                                        "order-agreement-3.0/EHF-ORDER-AGREEMENT-3.0.xslt",
-                                                                                                                                        _getCL ()))));
-    aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_EHF_ORDER_303,
-                                                                           "EHF Order " +
-                                                                                              VID_EHF_ORDER_303.getVersionString (),
-                                                                           PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
-                                                                           ValidationExecutorXSD.create (UBL22Marshaller.getAllOrderXSDs ()),
-                                                                           PhiveRulesUBLHelper.createXSLT_UBL22 (new ClassPathResource (sXSLT +
-                                                                                                                                        "ordering-3.0/EHF-ORDER-3.0.xslt",
-                                                                                                                                        _getCL ()))));
-    aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_EHF_ORDER_RESPONSE_303,
-                                                                           "EHF Order Response " +
-                                                                                                       VID_EHF_ORDER_RESPONSE_303.getVersionString (),
-                                                                           PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
-                                                                           ValidationExecutorXSD.create (UBL22Marshaller.getAllOrderResponseXSDs ()),
-                                                                           PhiveRulesUBLHelper.createXSLT_UBL22 (new ClassPathResource (sXSLT +
-                                                                                                                                        "ordering-3.0/EHF-ORDER-RESPONSE-3.0.xslt",
-                                                                                                                                        _getCL ()))));
-    aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_EHF_PAYMENT_REQUEST_302,
-                                                                           "EHF Payment Request " +
-                                                                                                        VID_EHF_PAYMENT_REQUEST_302.getVersionString (),
-                                                                           PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
-                                                                           ValidationExecutorXSD.create (UBL22Marshaller.getAllInvoiceXSDs ()),
-                                                                           PhiveRulesUBLHelper.createXSLT_UBL22 (new ClassPathResource (sXSLT +
-                                                                                                                                        "payment-request-3.0/EHF-P07-3.0-PAYMENT-REQUEST-3.0.xslt"))));
-    aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_EHF_PUNCH_OUT_303,
-                                                                           "EHF Punch Out " +
-                                                                                                  VID_EHF_PUNCH_OUT_303.getVersionString (),
-                                                                           PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
-                                                                           ValidationExecutorXSD.create (UBL22Marshaller.getAllCatalogueXSDs ()),
-                                                                           PhiveRulesUBLHelper.createXSLT_UBL22 (new ClassPathResource (sXSLT +
-                                                                                                                                        "punch-out-3.0/EHF-PUNCH-OUT-3.0.xslt",
-                                                                                                                                        _getCL ()))));
-    aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_EHF_REMINDER_303,
-                                                                           "EHF Reminder " +
-                                                                                                 VID_EHF_REMINDER_303.getVersionString (),
-                                                                           PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
-                                                                           ValidationExecutorXSD.create (UBL22Marshaller.getAllInvoiceXSDs ()),
-                                                                           PhiveRulesUBLHelper.createXSLT_UBL22 (new ClassPathResource (sXSLT +
-                                                                                                                                        "reminder-3.0/REMINDER-CEN-EN16931-UBL.xslt",
-                                                                                                                                        _getCL ())),
-                                                                           PhiveRulesUBLHelper.createXSLT_UBL22 (new ClassPathResource (sXSLT +
-                                                                                                                                        "reminder-3.0/REMINDER-PEPPOL-EN16931-UBL.xslt",
-                                                                                                                                        _getCL ())),
-                                                                           PhiveRulesUBLHelper.createXSLT_UBL22 (new ClassPathResource (sXSLT +
-                                                                                                                                        "reminder-3.0/EHF-P06-3.0-REMINDER.xslt",
-                                                                                                                                        _getCL ()))));
+    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .vesID (VID_EHF_ADVANCED_ORDER_CANCELLATION_303)
+                     .displayNamePrefix ("EHF Advanced Order Cancellation ")
+                     .notDeprecated ()
+                     .addXSD (UBL22Marshaller.getAllOrderCancellationXSDs ())
+                     .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL22 (new ClassPathResource (sXSLT +
+                                                                                                  "advanced-ordering-3.0/EHF-P09-3.0-ORDER-CANCELLATION.xslt",
+                                                                                                  _getCL ())))
+                     .registerInto ();
+    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .vesID (VID_EHF_ADVANCED_ORDER_CHANGE_303)
+                     .displayNamePrefix ("EHF Advanced Order Change ")
+                     .notDeprecated ()
+                     .addXSD (UBL22Marshaller.getAllOrderChangeXSDs ())
+                     .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL22 (new ClassPathResource (sXSLT +
+                                                                                                  "advanced-ordering-3.0/EHF-P09-3.0-ORDER-CHANGE.xslt",
+                                                                                                  _getCL ())))
+                     .registerInto ();
+    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .vesID (VID_EHF_ADVANCED_ORDER_INITIATION_303)
+                     .displayNamePrefix ("EHF Advanced Order Initiation ")
+                     .notDeprecated ()
+                     .addXSD (UBL22Marshaller.getAllOrderXSDs ())
+                     .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL22 (new ClassPathResource (sXSLT +
+                                                                                                  "advanced-ordering-3.0/EHF-P09-3.0-ORDER-INITIATION.xslt",
+                                                                                                  _getCL ())))
+                     .registerInto ();
+    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .vesID (VID_EHF_ADVANCED_ORDER_RESPONSE_303)
+                     .displayNamePrefix ("EHF Advanced Order Response ")
+                     .notDeprecated ()
+                     .addXSD (UBL22Marshaller.getAllOrderResponseXSDs ())
+                     .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL22 (new ClassPathResource (sXSLT +
+                                                                                                  "advanced-ordering-3.0/EHF-P09-3.0-ORDER-RESPONSE.xslt",
+                                                                                                  _getCL ())))
+                     .registerInto ();
+    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .vesID (VID_EHF_CATALOGUE_303)
+                     .displayNamePrefix ("EHF Catalogue ")
+                     .notDeprecated ()
+                     .addXSD (UBL22Marshaller.getAllCatalogueXSDs ())
+                     .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL22 (new ClassPathResource (sXSLT +
+                                                                                                  "catalogue-3.0/EHF-CATALOGUE-3.0.xslt",
+                                                                                                  _getCL ())))
+                     .registerInto ();
+    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .vesID (VID_EHF_CATALOGUE_RESPONSE_303)
+                     .displayNamePrefix ("EHF Catalogue Response ")
+                     .notDeprecated ()
+                     .addXSD (UBL22Marshaller.getAllApplicationResponseXSDs ())
+                     .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL22 (new ClassPathResource (sXSLT +
+                                                                                                  "catalogue-3.0/EHF-CATALOGUE-RESPONSE-3.0.xslt",
+                                                                                                  _getCL ())))
+                     .registerInto ();
+    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .vesID (VID_EHF_DESPATCH_ADVICE_302)
+                     .displayNamePrefix ("EHF Despatch Advice ")
+                     .notDeprecated ()
+                     .addXSD (UBL22Marshaller.getAllDespatchAdviceXSDs ())
+                     .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL22 (new ClassPathResource (sXSLT +
+                                                                                                  "despatch-advice-3.0/EHF-DESPATCH-ADVICE-3.0.xslt",
+                                                                                                  _getCL ())))
+                     .registerInto ();
+    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .vesID (VID_EHF_FORWARD_BILLING_INVOICE_303)
+                     .displayNamePrefix ("EHF Forward Billing Invoice ")
+                     .notDeprecated ()
+                     .addXSD (UBL22Marshaller.getAllInvoiceXSDs ())
+                     .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL22 (new ClassPathResource (sXSLT +
+                                                                                                  "forward-billing-3.0/FORWARD-BILLING-CEN-EN16931-UBL.xslt",
+                                                                                                  _getCL ())))
+                     .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL22 (new ClassPathResource (sXSLT +
+                                                                                                  "forward-billing-3.0/FORWARD-BILLING-PEPPOL-EN16931-UBL.xslt",
+                                                                                                  _getCL ())))
+                     .registerInto ();
+    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .vesID (VID_EHF_FORWARD_BILLING_CREDIT_NOTE_303)
+                     .displayNamePrefix ("EHF Forward Billing Credit Note ")
+                     .notDeprecated ()
+                     .addXSD (UBL22Marshaller.getAllCreditNoteXSDs ())
+                     .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL22 (new ClassPathResource (sXSLT +
+                                                                                                  "forward-billing-3.0/FORWARD-BILLING-CEN-EN16931-UBL.xslt",
+                                                                                                  _getCL ())))
+                     .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL22 (new ClassPathResource (sXSLT +
+                                                                                                  "forward-billing-3.0/FORWARD-BILLING-PEPPOL-EN16931-UBL.xslt",
+                                                                                                  _getCL ())))
+                     .registerInto ();
+    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .vesID (VID_EHF_ORDER_AGREEMENT_303)
+                     .displayNamePrefix ("EHF Order Agreement ")
+                     .notDeprecated ()
+                     .addXSD (UBL22Marshaller.getAllOrderResponseXSDs ())
+                     .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL22 (new ClassPathResource (sXSLT +
+                                                                                                  "order-agreement-3.0/EHF-ORDER-AGREEMENT-3.0.xslt",
+                                                                                                  _getCL ())))
+                     .registerInto ();
+    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .vesID (VID_EHF_ORDER_303)
+                     .displayNamePrefix ("EHF Order ")
+                     .notDeprecated ()
+                     .addXSD (UBL22Marshaller.getAllOrderXSDs ())
+                     .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL22 (new ClassPathResource (sXSLT +
+                                                                                                  "ordering-3.0/EHF-ORDER-3.0.xslt",
+                                                                                                  _getCL ())))
+                     .registerInto ();
+    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .vesID (VID_EHF_ORDER_RESPONSE_303)
+                     .displayNamePrefix ("EHF Order Response ")
+                     .notDeprecated ()
+                     .addXSD (UBL22Marshaller.getAllOrderResponseXSDs ())
+                     .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL22 (new ClassPathResource (sXSLT +
+                                                                                                  "ordering-3.0/EHF-ORDER-RESPONSE-3.0.xslt",
+                                                                                                  _getCL ())))
+                     .registerInto ();
+    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .vesID (VID_EHF_PAYMENT_REQUEST_302)
+                     .displayNamePrefix ("EHF Payment Request ")
+                     .notDeprecated ()
+                     .addXSD (UBL22Marshaller.getAllInvoiceXSDs ())
+                     .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL22 (new ClassPathResource (sXSLT +
+                                                                                                  "payment-request-3.0/EHF-P07-3.0-PAYMENT-REQUEST-3.0.xslt")))
+                     .registerInto ();
+    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .vesID (VID_EHF_PUNCH_OUT_303)
+                     .displayNamePrefix ("EHF Punch Out ")
+                     .notDeprecated ()
+                     .addXSD (UBL22Marshaller.getAllCatalogueXSDs ())
+                     .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL22 (new ClassPathResource (sXSLT +
+                                                                                                  "punch-out-3.0/EHF-PUNCH-OUT-3.0.xslt",
+                                                                                                  _getCL ())))
+                     .registerInto ();
+    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .vesID (VID_EHF_REMINDER_303)
+                     .displayNamePrefix ("EHF Reminder ")
+                     .notDeprecated ()
+                     .addXSD (UBL22Marshaller.getAllInvoiceXSDs ())
+                     .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL22 (new ClassPathResource (sXSLT +
+                                                                                                  "reminder-3.0/REMINDER-CEN-EN16931-UBL.xslt",
+                                                                                                  _getCL ())))
+                     .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL22 (new ClassPathResource (sXSLT +
+                                                                                                  "reminder-3.0/REMINDER-PEPPOL-EN16931-UBL.xslt",
+                                                                                                  _getCL ())))
+                     .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL22 (new ClassPathResource (sXSLT +
+                                                                                                  "reminder-3.0/EHF-P06-3.0-REMINDER.xslt",
+                                                                                                  _getCL ())))
+                     .registerInto ();
   }
 }

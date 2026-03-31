@@ -25,8 +25,8 @@ import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.io.resource.ClassPathResource;
 import com.helger.phive.api.executorset.IValidationExecutorSet;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
-import com.helger.phive.api.executorset.ValidationExecutorSet;
 import com.helger.phive.en16931.EN16931Validation;
+import com.helger.phive.rules.api.PhiveRulesBuilder;
 import com.helger.phive.rules.api.PhiveRulesHelper;
 import com.helger.phive.rules.api.PhiveRulesUBLHelper;
 import com.helger.phive.xml.source.IValidationSourceXML;
@@ -97,9 +97,6 @@ public final class HReRacunValidation
   {
     ValueEnforcer.notNull (aRegistry, "Registry");
 
-    final boolean bDeprecated = true;
-    final boolean bNotDeprecated = !bDeprecated;
-
     final IValidationExecutorSet <IValidationSourceXML> aVESUBLCreditNote_1_3_15 = aRegistry.getOfID (EN16931Validation.VID_UBL_CREDIT_NOTE_1315);
     final IValidationExecutorSet <IValidationSourceXML> aVESUBLInvoice_1_3_15 = aRegistry.getOfID (EN16931Validation.VID_UBL_INVOICE_1315);
     if (aVESUBLCreditNote_1_3_15 == null || aVESUBLInvoice_1_3_15 == null)
@@ -109,72 +106,80 @@ public final class HReRacunValidation
     {
       final ClassPathResource aXslt = new ClassPathResource ("/external/schematron/1.0.0/HR-CIUS-EXT-EN16931-UBL.xslt",
                                                              _getCL ());
-      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.createDerived (aVESUBLCreditNote_1_3_15,
-                                                                                    VID_HR_ERACUN_UBL_CREDITNOTE_100,
-                                                                                    "HR eRacun Credit Note " +
-                                                                                                                      VID_HR_ERACUN_UBL_CREDITNOTE_100.getVersionString (),
-                                                                                    PhiveRulesHelper.createSimpleStatus (bDeprecated),
-                                                                                    PhiveRulesUBLHelper.createXSLT_UBL21 (aXslt)));
-      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.createDerived (aVESUBLInvoice_1_3_15,
-                                                                                    VID_HR_ERACUN_UBL_INVOICE_100,
-                                                                                    "HR eRacun Invoice " +
-                                                                                                                   VID_HR_ERACUN_UBL_INVOICE_100.getVersionString (),
-                                                                                    PhiveRulesHelper.createSimpleStatus (bDeprecated),
-                                                                                    PhiveRulesUBLHelper.createXSLT_UBL21 (aXslt)));
+      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .vesID (VID_HR_ERACUN_UBL_CREDITNOTE_100)
+                       .displayNamePrefix ("HR eRacun Credit Note ")
+                       .deprecated ()
+                       .basedOn (aVESUBLCreditNote_1_3_15)
+                       .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aXslt))
+                       .registerInto ();
+      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .vesID (VID_HR_ERACUN_UBL_INVOICE_100)
+                       .displayNamePrefix ("HR eRacun Invoice ")
+                       .deprecated ()
+                       .basedOn (aVESUBLInvoice_1_3_15)
+                       .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aXslt))
+                       .registerInto ();
     }
 
     // V1.0.1 referencing v1.3.15 of the EN rules
     {
       final ClassPathResource aXslt = new ClassPathResource ("/external/schematron/1.0.1/HR-CIUS-EXT-EN16931-UBL.xslt",
                                                              _getCL ());
-      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.createDerived (aVESUBLCreditNote_1_3_15,
-                                                                                    VID_HR_ERACUN_UBL_CREDITNOTE_101,
-                                                                                    "HR eRacun Credit Note " +
-                                                                                                                      VID_HR_ERACUN_UBL_CREDITNOTE_101.getVersionString (),
-                                                                                    PhiveRulesHelper.createSimpleStatus (bDeprecated),
-                                                                                    PhiveRulesUBLHelper.createXSLT_UBL21 (aXslt)));
-      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.createDerived (aVESUBLInvoice_1_3_15,
-                                                                                    VID_HR_ERACUN_UBL_INVOICE_101,
-                                                                                    "HR eRacun Invoice " +
-                                                                                                                   VID_HR_ERACUN_UBL_INVOICE_101.getVersionString (),
-                                                                                    PhiveRulesHelper.createSimpleStatus (bDeprecated),
-                                                                                    PhiveRulesUBLHelper.createXSLT_UBL21 (aXslt)));
+      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .vesID (VID_HR_ERACUN_UBL_CREDITNOTE_101)
+                       .displayNamePrefix ("HR eRacun Credit Note ")
+                       .deprecated ()
+                       .basedOn (aVESUBLCreditNote_1_3_15)
+                       .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aXslt))
+                       .registerInto ();
+      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .vesID (VID_HR_ERACUN_UBL_INVOICE_101)
+                       .displayNamePrefix ("HR eRacun Invoice ")
+                       .deprecated ()
+                       .basedOn (aVESUBLInvoice_1_3_15)
+                       .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aXslt))
+                       .registerInto ();
     }
 
     // V1.0.2 referencing v1.3.15 of the EN rules
     {
       final ClassPathResource aXslt = new ClassPathResource ("/external/schematron/1.0.2/HR-CIUS-EXT-EN16931-UBL.xslt",
                                                              _getCL ());
-      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.createDerived (aVESUBLCreditNote_1_3_15,
-                                                                                    VID_HR_ERACUN_UBL_CREDITNOTE_102,
-                                                                                    "HR eRacun Credit Note " +
-                                                                                                                      VID_HR_ERACUN_UBL_CREDITNOTE_102.getVersionString (),
-                                                                                    PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
-                                                                                    PhiveRulesUBLHelper.createXSLT_UBL21 (aXslt)));
-      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.createDerived (aVESUBLInvoice_1_3_15,
-                                                                                    VID_HR_ERACUN_UBL_INVOICE_102,
-                                                                                    "HR eRacun Invoice " +
-                                                                                                                   VID_HR_ERACUN_UBL_INVOICE_102.getVersionString (),
-                                                                                    PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
-                                                                                    PhiveRulesUBLHelper.createXSLT_UBL21 (aXslt)));
+      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .vesID (VID_HR_ERACUN_UBL_CREDITNOTE_102)
+                       .displayNamePrefix ("HR eRacun Credit Note ")
+                       .notDeprecated ()
+                       .basedOn (aVESUBLCreditNote_1_3_15)
+                       .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aXslt))
+                       .registerInto ();
+      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .vesID (VID_HR_ERACUN_UBL_INVOICE_102)
+                       .displayNamePrefix ("HR eRacun Invoice ")
+                       .notDeprecated ()
+                       .basedOn (aVESUBLInvoice_1_3_15)
+                       .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aXslt))
+                       .registerInto ();
     }
 
     // V1.0.3 referencing v1.3.15 of the EN rules
     {
       final ClassPathResource aXslt = new ClassPathResource ("/external/schematron/1.0.3/HR-CIUS-EXT-EN16931-UBL.xslt",
                                                              _getCL ());
-      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.createDerived (aVESUBLCreditNote_1_3_15,
-                                                                                    VID_HR_ERACUN_UBL_CREDITNOTE_103,
-                                                                                    "HR eRacun Credit Note " +
-                                                                                                                      VID_HR_ERACUN_UBL_CREDITNOTE_103.getVersionString (),
-                                                                                    PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
-                                                                                    PhiveRulesUBLHelper.createXSLT_UBL21 (aXslt)));
-      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.createDerived (aVESUBLInvoice_1_3_15,
-                                                                                    VID_HR_ERACUN_UBL_INVOICE_103,
-                                                                                    "HR eRacun Invoice " +
-                                                                                                                   VID_HR_ERACUN_UBL_INVOICE_103.getVersionString (),
-                                                                                    PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
-                                                                                    PhiveRulesUBLHelper.createXSLT_UBL21 (aXslt)));
+      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .vesID (VID_HR_ERACUN_UBL_CREDITNOTE_103)
+                       .displayNamePrefix ("HR eRacun Credit Note ")
+                       .notDeprecated ()
+                       .basedOn (aVESUBLCreditNote_1_3_15)
+                       .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aXslt))
+                       .registerInto ();
+      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .vesID (VID_HR_ERACUN_UBL_INVOICE_103)
+                       .displayNamePrefix ("HR eRacun Invoice ")
+                       .notDeprecated ()
+                       .basedOn (aVESUBLInvoice_1_3_15)
+                       .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aXslt))
+                       .registerInto ();
     }
   }
 }

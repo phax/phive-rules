@@ -87,7 +87,8 @@ public final class MainExtractTestFiles22
   }
 
   @Nullable
-  static byte [] extractAttachment (@NonNull final File fExampleFile, @NonNull @Nonempty final String sAttachmentFilename)
+  static byte [] extractAttachment (@NonNull final File fExampleFile,
+                                    @NonNull @Nonempty final String sAttachmentFilename)
   {
     try (final PDDocument aPDDoc = Loader.loadPDF (fExampleFile))
     {
@@ -156,8 +157,7 @@ public final class MainExtractTestFiles22
 
         // write file
         SimpleFileIO.writeFile (new File (fTargetPath,
-                                          eProfile.getFolderName () + "/factur-x-" + nExampleIndex + ".xml"),
-                                aFacturX);
+                                          eProfile.getFolderName () + "/factur-x-" + nExampleIndex + ".xml"), aFacturX);
         nExampleIndex++;
         nExampleCount++;
       }

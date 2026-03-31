@@ -24,11 +24,10 @@ import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.io.resource.ClassPathResource;
 import com.helger.io.resource.IReadableResource;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
-import com.helger.phive.api.executorset.ValidationExecutorSet;
+import com.helger.phive.rules.api.PhiveRulesBuilder;
 import com.helger.phive.rules.api.PhiveRulesHelper;
 import com.helger.phive.xml.schematron.ValidationExecutorSchematron;
 import com.helger.phive.xml.source.IValidationSourceXML;
-import com.helger.phive.xml.xsd.ValidationExecutorXSD;
 import com.helger.xml.namespace.MapBasedNamespaceContext;
 import com.helger.xsds.xmldsig.CXMLDSig;
 
@@ -69,8 +68,7 @@ public final class ISDOCValidation
   }
 
   /**
-   * Register all standard ISDOC validation execution sets to the provided
-   * registry.
+   * Register all standard ISDOC validation execution sets to the provided registry.
    *
    * @param aRegistry
    *        The registry to add the artefacts. May not be <code>null</code>.
@@ -79,24 +77,25 @@ public final class ISDOCValidation
   {
     ValueEnforcer.notNull (aRegistry, "Registry");
 
-    final boolean bDeprecated = true;
-    final boolean bNotDeprecated = false;
-
-    aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_ISDOC_601,
-                                                                           "ISDOC " + VID_ISDOC_601.getVersionString (),
-                                                                           PhiveRulesHelper.createSimpleStatus (bDeprecated),
-                                                                           ValidationExecutorXSD.create (CXMLDSig.getXSDResource (),
-                                                                                                         new ClassPathResource ("/external/schemas/isdoc/6.0.1/isdoc-invoice-dsig-6.0.1.xsd",
-                                                                                                                                _getCL ())),
-                                                                           _createXSLT (new ClassPathResource ("/external/schematron/isdoc/6.0.1/isdoc-6.0.1.xslt",
-                                                                                                               _getCL ()))));
-    aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_ISDOC_602,
-                                                                           "ISDOC " + VID_ISDOC_602.getVersionString (),
-                                                                           PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
-                                                                           ValidationExecutorXSD.create (CXMLDSig.getXSDResource (),
-                                                                                                         new ClassPathResource ("/external/schemas/isdoc/6.0.2/isdoc-invoice-dsig-6.0.2.xsd",
-                                                                                                                                _getCL ())),
-                                                                           _createXSLT (new ClassPathResource ("/external/schematron/isdoc/6.0.2/isdoc-6.0.2.xslt",
-                                                                                                               _getCL ()))));
+    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .vesID (VID_ISDOC_601)
+                     .displayNamePrefix ("ISDOC ")
+                     .deprecated ()
+                     .addXSD (CXMLDSig.getXSDResource (),
+                              new ClassPathResource ("/external/schemas/isdoc/6.0.1/isdoc-invoice-dsig-6.0.1.xsd",
+                                                     _getCL ()))
+                     .addSchematron (_createXSLT (new ClassPathResource ("/external/schematron/isdoc/6.0.1/isdoc-6.0.1.xslt",
+                                                                         _getCL ())))
+                     .registerInto ();
+    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .vesID (VID_ISDOC_602)
+                     .displayNamePrefix ("ISDOC ")
+                     .notDeprecated ()
+                     .addXSD (CXMLDSig.getXSDResource (),
+                              new ClassPathResource ("/external/schemas/isdoc/6.0.2/isdoc-invoice-dsig-6.0.2.xsd",
+                                                     _getCL ()))
+                     .addSchematron (_createXSLT (new ClassPathResource ("/external/schematron/isdoc/6.0.2/isdoc-6.0.2.xslt",
+                                                                         _getCL ())))
+                     .registerInto ();
   }
 }

@@ -25,10 +25,11 @@ import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.io.resource.ClassPathResource;
 import com.helger.io.resource.IReadableResource;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
-import com.helger.phive.api.executorset.ValidationExecutorSet;
+import com.helger.phive.rules.api.PhiveRulesBuilder;
 import com.helger.phive.rules.api.PhiveRulesHelper;
 import com.helger.phive.rules.api.PhiveRulesUBLHelper;
 import com.helger.phive.xml.source.IValidationSourceXML;
+import com.helger.ubl21.UBL21Marshaller;
 
 /**
  * OpenPeppol Self-Billing artefacts March 2026 - v3.0.1
@@ -67,25 +68,25 @@ public final class PeppolValidation2026_03
     final String sVersion = " (" + VERSION_STR + ")";
     final String sAkaVersionBilling = " (aka BIS 3.0.1)";
 
-    final boolean bNotDeprecated = false;
-
     final String PREFIX_XSLT = "external/schematron/openpeppol/" + VERSION_STR + "/xslt/";
     final IReadableResource aCENSB = new ClassPathResource (PREFIX_XSLT + "CEN-EN16931-UBL.xslt", _getCL ());
     final IReadableResource aPeppolSB = new ClassPathResource (PREFIX_XSLT + "PEPPOL-EN16931-UBL-SB.xslt", _getCL ());
 
-    aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_INVOICE_SELF_BILLING_UBL_V3,
-                                                                           "OpenPeppol UBL Invoice Self-Billing" +
-                                                                                                                       sVersion +
-                                                                                                                       sAkaVersionBilling,
-                                                                           PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
-                                                                           PhiveRulesUBLHelper.createXSLT_UBL21 (aCENSB),
-                                                                           PhiveRulesUBLHelper.createXSLT_UBL21 (aPeppolSB)));
-    aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_CREDIT_NOTE_SELF_BILLING_UBL_V3,
-                                                                           "OpenPeppol UBL Credit Note Self-Billing" +
-                                                                                                                           sVersion +
-                                                                                                                           sAkaVersionBilling,
-                                                                           PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
-                                                                           PhiveRulesUBLHelper.createXSLT_UBL21 (aCENSB),
-                                                                           PhiveRulesUBLHelper.createXSLT_UBL21 (aPeppolSB)));
+    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .vesID (VID_OPENPEPPOL_INVOICE_SELF_BILLING_UBL_V3)
+                     .displayName ("OpenPeppol UBL Invoice Self-Billing" + sVersion + sAkaVersionBilling)
+                     .notDeprecated ()
+                     .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
+                     .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aCENSB))
+                     .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aPeppolSB))
+                     .registerInto ();
+    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .vesID (VID_OPENPEPPOL_CREDIT_NOTE_SELF_BILLING_UBL_V3)
+                     .displayName ("OpenPeppol UBL Credit Note Self-Billing" + sVersion + sAkaVersionBilling)
+                     .notDeprecated ()
+                     .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
+                     .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aCENSB))
+                     .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aPeppolSB))
+                     .registerInto ();
   }
 }

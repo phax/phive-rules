@@ -65,8 +65,7 @@ public final class MainExtractTestFiles21
 
         // write file
         SimpleFileIO.writeFile (new File (fTargetPath,
-                                          eProfile.getFolderName () + "/factur-x-" + nExampleIndex + ".xml"),
-                                aFacturX);
+                                          eProfile.getFolderName () + "/factur-x-" + nExampleIndex + ".xml"), aFacturX);
         nExampleIndex++;
         nExampleCount++;
       }

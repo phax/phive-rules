@@ -23,10 +23,9 @@ import com.helger.base.enforce.ValueEnforcer;
 import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.io.resource.ClassPathResource;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
-import com.helger.phive.api.executorset.ValidationExecutorSet;
+import com.helger.phive.rules.api.PhiveRulesBuilder;
 import com.helger.phive.rules.api.PhiveRulesHelper;
 import com.helger.phive.xml.source.IValidationSourceXML;
-import com.helger.phive.xml.xsd.ValidationExecutorXSD;
 import com.helger.xsds.xmldsig.CXMLDSig;
 
 /**
@@ -61,8 +60,7 @@ public final class FacturaeValidation
   }
 
   /**
-   * Register all standard Facturae validation execution sets to the provided
-   * registry.
+   * Register all standard Facturae validation execution sets to the provided registry.
    *
    * @param aRegistry
    *        The registry to add the artefacts. May not be <code>null</code>.
@@ -71,44 +69,41 @@ public final class FacturaeValidation
   {
     ValueEnforcer.notNull (aRegistry, "Registry");
 
-    final boolean bDeprecated = true;
-    final boolean bNotDeprecated = false;
-
     // No Schematrons here
-    aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_FACTURAE_300,
-                                                                           "Facturae " +
-                                                                                             VID_FACTURAE_300.getVersionString (),
-                                                                           PhiveRulesHelper.createSimpleStatus (bDeprecated),
-                                                                           ValidationExecutorXSD.create (CXMLDSig.getXSDResource (),
-                                                                                                         new ClassPathResource ("/external/schemas/Facturae30.xsd",
-                                                                                                                                _getCL ()))));
-    aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_FACTURAE_310,
-                                                                           "Facturae " +
-                                                                                             VID_FACTURAE_310.getVersionString (),
-                                                                           PhiveRulesHelper.createSimpleStatus (bDeprecated),
-                                                                           ValidationExecutorXSD.create (CXMLDSig.getXSDResource (),
-                                                                                                         new ClassPathResource ("/external/schemas/Facturaev31.xsd",
-                                                                                                                                _getCL ()))));
-    aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_FACTURAE_320,
-                                                                           "Facturae " +
-                                                                                             VID_FACTURAE_320.getVersionString (),
-                                                                           PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
-                                                                           ValidationExecutorXSD.create (CXMLDSig.getXSDResource (),
-                                                                                                         new ClassPathResource ("/external/schemas/Facturaev3_2.xsd",
-                                                                                                                                _getCL ()))));
-    aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_FACTURAE_321,
-                                                                           "Facturae " +
-                                                                                             VID_FACTURAE_321.getVersionString (),
-                                                                           PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
-                                                                           ValidationExecutorXSD.create (CXMLDSig.getXSDResource (),
-                                                                                                         new ClassPathResource ("/external/schemas/Facturaev3_2_1.xsd",
-                                                                                                                                _getCL ()))));
-    aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_FACTURAE_322,
-                                                                           "Facturae " +
-                                                                                             VID_FACTURAE_322.getVersionString (),
-                                                                           PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
-                                                                           ValidationExecutorXSD.create (CXMLDSig.getXSDResource (),
-                                                                                                         new ClassPathResource ("/external/schemas/Facturaev3_2_2.xsd",
-                                                                                                                                _getCL ()))));
+    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .vesID (VID_FACTURAE_300)
+                     .displayNamePrefix ("Facturae ")
+                     .deprecated ()
+                     .addXSD (CXMLDSig.getXSDResource (),
+                              new ClassPathResource ("/external/schemas/Facturae30.xsd", _getCL ()))
+                     .registerInto ();
+    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .vesID (VID_FACTURAE_310)
+                     .displayNamePrefix ("Facturae ")
+                     .deprecated ()
+                     .addXSD (CXMLDSig.getXSDResource (),
+                              new ClassPathResource ("/external/schemas/Facturaev31.xsd", _getCL ()))
+                     .registerInto ();
+    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .vesID (VID_FACTURAE_320)
+                     .displayNamePrefix ("Facturae ")
+                     .notDeprecated ()
+                     .addXSD (CXMLDSig.getXSDResource (),
+                              new ClassPathResource ("/external/schemas/Facturaev3_2.xsd", _getCL ()))
+                     .registerInto ();
+    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .vesID (VID_FACTURAE_321)
+                     .displayNamePrefix ("Facturae ")
+                     .notDeprecated ()
+                     .addXSD (CXMLDSig.getXSDResource (),
+                              new ClassPathResource ("/external/schemas/Facturaev3_2_1.xsd", _getCL ()))
+                     .registerInto ();
+    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .vesID (VID_FACTURAE_322)
+                     .displayNamePrefix ("Facturae ")
+                     .notDeprecated ()
+                     .addXSD (CXMLDSig.getXSDResource (),
+                              new ClassPathResource ("/external/schemas/Facturaev3_2_2.xsd", _getCL ()))
+                     .registerInto ();
   }
 }

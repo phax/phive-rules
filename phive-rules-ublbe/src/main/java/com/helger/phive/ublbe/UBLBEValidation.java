@@ -24,11 +24,10 @@ import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.io.resource.ClassPathResource;
 import com.helger.io.resource.IReadableResource;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
-import com.helger.phive.api.executorset.ValidationExecutorSet;
+import com.helger.phive.rules.api.PhiveRulesBuilder;
 import com.helger.phive.rules.api.PhiveRulesHelper;
 import com.helger.phive.rules.api.PhiveRulesUBLHelper;
 import com.helger.phive.xml.source.IValidationSourceXML;
-import com.helger.phive.xml.xsd.ValidationExecutorXSD;
 import com.helger.ubl21.UBL21Marshaller;
 
 /**
@@ -147,8 +146,7 @@ public final class UBLBEValidation
   {}
 
   /**
-   * Register all standard e-FFF/UBL.BE validation execution sets to the
-   * provided registry.
+   * Register all standard e-FFF/UBL.BE validation execution sets to the provided registry.
    *
    * @param aRegistry
    *        The registry to add the artefacts. May not be <code>null</code>.
@@ -157,207 +155,226 @@ public final class UBLBEValidation
   {
     ValueEnforcer.notNull (aRegistry, "Registry");
 
-    final boolean bDeprecated = true;
-    final boolean bNotDeprecated = false;
-
     final String BASE_PATH = "/external/schematron/ublbe/";
 
     // v1.0.0
     {
       final IReadableResource UBL_BE_100 = new ClassPathResource (BASE_PATH + "en16931/v1/GLOBALUBL.BE.xslt",
                                                                   _getCL ());
-      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_UBL_BE_INVOICE_100,
-                                                                             "UBL.BE Invoice " +
-                                                                                                     VID_UBL_BE_INVOICE_100.getVersionString (),
-                                                                             PhiveRulesHelper.createSimpleStatus (bDeprecated),
-                                                                             ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
-                                                                             PhiveRulesUBLHelper.createXSLT_UBL21 (UBL_BE_100)));
-      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_UBL_BE_CREDIT_NOTE_100,
-                                                                             "UBL.BE Credit Note " +
-                                                                                                         VID_UBL_BE_CREDIT_NOTE_100.getVersionString (),
-                                                                             PhiveRulesHelper.createSimpleStatus (bDeprecated),
-                                                                             ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
-                                                                             PhiveRulesUBLHelper.createXSLT_UBL21 (UBL_BE_100)));
+      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .vesID (VID_UBL_BE_INVOICE_100)
+                       .displayNamePrefix ("UBL.BE Invoice ")
+                       .deprecated ()
+                       .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
+                       .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (UBL_BE_100))
+                       .registerInto ();
+      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .vesID (VID_UBL_BE_CREDIT_NOTE_100)
+                       .displayNamePrefix ("UBL.BE Credit Note ")
+                       .deprecated ()
+                       .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
+                       .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (UBL_BE_100))
+                       .registerInto ();
     }
 
     // v1.1.0
     {
       final IReadableResource UBL_BE_110 = new ClassPathResource (BASE_PATH + "en16931/v1.1/GLOBALUBL.BE-201911.xslt",
                                                                   _getCL ());
-      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_UBL_BE_INVOICE_110,
-                                                                             "UBL.BE Invoice " +
-                                                                                                     VID_UBL_BE_INVOICE_110.getVersionString (),
-                                                                             PhiveRulesHelper.createSimpleStatus (bDeprecated),
-                                                                             ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
-                                                                             PhiveRulesUBLHelper.createXSLT_UBL21 (UBL_BE_110)));
-      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_UBL_BE_CREDIT_NOTE_110,
-                                                                             "UBL.BE Credit Note " +
-                                                                                                         VID_UBL_BE_CREDIT_NOTE_110.getVersionString (),
-                                                                             PhiveRulesHelper.createSimpleStatus (bDeprecated),
-                                                                             ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
-                                                                             PhiveRulesUBLHelper.createXSLT_UBL21 (UBL_BE_110)));
+      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .vesID (VID_UBL_BE_INVOICE_110)
+                       .displayNamePrefix ("UBL.BE Invoice ")
+                       .deprecated ()
+                       .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
+                       .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (UBL_BE_110))
+                       .registerInto ();
+      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .vesID (VID_UBL_BE_CREDIT_NOTE_110)
+                       .displayNamePrefix ("UBL.BE Credit Note ")
+                       .deprecated ()
+                       .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
+                       .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (UBL_BE_110))
+                       .registerInto ();
     }
 
     // v1.2.0
     {
       final IReadableResource UBL_BE_120 = new ClassPathResource (BASE_PATH + "en16931/v1.2/GLOBALUBL.BE.xslt",
                                                                   _getCL ());
-      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_UBL_BE_INVOICE_120,
-                                                                             "UBL.BE Invoice " +
-                                                                                                     VID_UBL_BE_INVOICE_120.getVersionString (),
-                                                                             PhiveRulesHelper.createSimpleStatus (bDeprecated),
-                                                                             ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
-                                                                             PhiveRulesUBLHelper.createXSLT_UBL21 (UBL_BE_120)));
-      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_UBL_BE_CREDIT_NOTE_120,
-                                                                             "UBL.BE Credit Note " +
-                                                                                                         VID_UBL_BE_CREDIT_NOTE_120.getVersionString (),
-                                                                             PhiveRulesHelper.createSimpleStatus (bDeprecated),
-                                                                             ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
-                                                                             PhiveRulesUBLHelper.createXSLT_UBL21 (UBL_BE_120)));
+      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .vesID (VID_UBL_BE_INVOICE_120)
+                       .displayNamePrefix ("UBL.BE Invoice ")
+                       .deprecated ()
+                       .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
+                       .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (UBL_BE_120))
+                       .registerInto ();
+      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .vesID (VID_UBL_BE_CREDIT_NOTE_120)
+                       .displayNamePrefix ("UBL.BE Credit Note ")
+                       .deprecated ()
+                       .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
+                       .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (UBL_BE_120))
+                       .registerInto ();
     }
 
     // v1.2.3
     {
       final IReadableResource UBL_BE_123 = new ClassPathResource (BASE_PATH + "en16931/v1.2.3/GLOBALUBL.BE.xslt",
                                                                   _getCL ());
-      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_UBL_BE_INVOICE_123,
-                                                                             "UBL.BE Invoice " +
-                                                                                                     VID_UBL_BE_INVOICE_123.getVersionString (),
-                                                                             PhiveRulesHelper.createSimpleStatus (bDeprecated),
-                                                                             ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
-                                                                             PhiveRulesUBLHelper.createXSLT_UBL21 (UBL_BE_123)));
-      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_UBL_BE_CREDIT_NOTE_123,
-                                                                             "UBL.BE Credit Note " +
-                                                                                                         VID_UBL_BE_CREDIT_NOTE_123.getVersionString (),
-                                                                             PhiveRulesHelper.createSimpleStatus (bDeprecated),
-                                                                             ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
-                                                                             PhiveRulesUBLHelper.createXSLT_UBL21 (UBL_BE_123)));
+      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .vesID (VID_UBL_BE_INVOICE_123)
+                       .displayNamePrefix ("UBL.BE Invoice ")
+                       .deprecated ()
+                       .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
+                       .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (UBL_BE_123))
+                       .registerInto ();
+      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .vesID (VID_UBL_BE_CREDIT_NOTE_123)
+                       .displayNamePrefix ("UBL.BE Credit Note ")
+                       .deprecated ()
+                       .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
+                       .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (UBL_BE_123))
+                       .registerInto ();
     }
 
     // v1.2.5
     {
       final IReadableResource UBL_BE_125 = new ClassPathResource (BASE_PATH + "en16931/v1.2.5/GLOBALUBL.BE.xslt",
                                                                   _getCL ());
-      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_UBL_BE_INVOICE_125,
-                                                                             "UBL.BE Invoice " +
-                                                                                                     VID_UBL_BE_INVOICE_125.getVersionString (),
-                                                                             PhiveRulesHelper.createSimpleStatus (bDeprecated),
-                                                                             ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
-                                                                             PhiveRulesUBLHelper.createXSLT_UBL21 (UBL_BE_125)));
-      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_UBL_BE_CREDIT_NOTE_125,
-                                                                             "UBL.BE Credit Note " +
-                                                                                                         VID_UBL_BE_CREDIT_NOTE_125.getVersionString (),
-                                                                             PhiveRulesHelper.createSimpleStatus (bDeprecated),
-                                                                             ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
-                                                                             PhiveRulesUBLHelper.createXSLT_UBL21 (UBL_BE_125)));
+      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .vesID (VID_UBL_BE_INVOICE_125)
+                       .displayNamePrefix ("UBL.BE Invoice ")
+                       .deprecated ()
+                       .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
+                       .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (UBL_BE_125))
+                       .registerInto ();
+      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .vesID (VID_UBL_BE_CREDIT_NOTE_125)
+                       .displayNamePrefix ("UBL.BE Credit Note ")
+                       .deprecated ()
+                       .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
+                       .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (UBL_BE_125))
+                       .registerInto ();
     }
 
     // v1.2.6
     {
       final IReadableResource UBL_BE_126 = new ClassPathResource (BASE_PATH + "en16931/v1.2.6/GLOBALUBL.BE.xslt",
                                                                   _getCL ());
-      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_UBL_BE_INVOICE_126,
-                                                                             "UBL.BE Invoice " +
-                                                                                                     VID_UBL_BE_INVOICE_126.getVersionString (),
-                                                                             PhiveRulesHelper.createSimpleStatus (bDeprecated),
-                                                                             ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
-                                                                             PhiveRulesUBLHelper.createXSLT_UBL21 (UBL_BE_126)));
-      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_UBL_BE_CREDIT_NOTE_126,
-                                                                             "UBL.BE Credit Note " +
-                                                                                                         VID_UBL_BE_CREDIT_NOTE_126.getVersionString (),
-                                                                             PhiveRulesHelper.createSimpleStatus (bDeprecated),
-                                                                             ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
-                                                                             PhiveRulesUBLHelper.createXSLT_UBL21 (UBL_BE_126)));
+      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .vesID (VID_UBL_BE_INVOICE_126)
+                       .displayNamePrefix ("UBL.BE Invoice ")
+                       .deprecated ()
+                       .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
+                       .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (UBL_BE_126))
+                       .registerInto ();
+      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .vesID (VID_UBL_BE_CREDIT_NOTE_126)
+                       .displayNamePrefix ("UBL.BE Credit Note ")
+                       .deprecated ()
+                       .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
+                       .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (UBL_BE_126))
+                       .registerInto ();
     }
 
     // v1.2.7
     {
       final IReadableResource UBL_BE_127 = new ClassPathResource (BASE_PATH + "en16931/v1.2.7/GLOBALUBL.BE.xslt",
                                                                   _getCL ());
-      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_UBL_BE_INVOICE_127,
-                                                                             "UBL.BE Invoice " +
-                                                                                                     VID_UBL_BE_INVOICE_127.getVersionString (),
-                                                                             PhiveRulesHelper.createSimpleStatus (bDeprecated),
-                                                                             ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
-                                                                             PhiveRulesUBLHelper.createXSLT_UBL21 (UBL_BE_127)));
-      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_UBL_BE_CREDIT_NOTE_127,
-                                                                             "UBL.BE Credit Note " +
-                                                                                                         VID_UBL_BE_CREDIT_NOTE_127.getVersionString (),
-                                                                             PhiveRulesHelper.createSimpleStatus (bDeprecated),
-                                                                             ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
-                                                                             PhiveRulesUBLHelper.createXSLT_UBL21 (UBL_BE_127)));
+      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .vesID (VID_UBL_BE_INVOICE_127)
+                       .displayNamePrefix ("UBL.BE Invoice ")
+                       .deprecated ()
+                       .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
+                       .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (UBL_BE_127))
+                       .registerInto ();
+      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .vesID (VID_UBL_BE_CREDIT_NOTE_127)
+                       .displayNamePrefix ("UBL.BE Credit Note ")
+                       .deprecated ()
+                       .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
+                       .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (UBL_BE_127))
+                       .registerInto ();
     }
 
     // v1.2.8
     {
       final IReadableResource UBL_BE_128 = new ClassPathResource (BASE_PATH + "en16931/v1.2.8/GLOBALUBL.BE.xslt",
                                                                   _getCL ());
-      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_UBL_BE_INVOICE_128,
-                                                                             "UBL.BE Invoice " +
-                                                                                                     VID_UBL_BE_INVOICE_128.getVersionString (),
-                                                                             PhiveRulesHelper.createSimpleStatus (bDeprecated),
-                                                                             ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
-                                                                             PhiveRulesUBLHelper.createXSLT_UBL21 (UBL_BE_128)));
-      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_UBL_BE_CREDIT_NOTE_128,
-                                                                             "UBL.BE Credit Note " +
-                                                                                                         VID_UBL_BE_CREDIT_NOTE_128.getVersionString (),
-                                                                             PhiveRulesHelper.createSimpleStatus (bDeprecated),
-                                                                             ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
-                                                                             PhiveRulesUBLHelper.createXSLT_UBL21 (UBL_BE_128)));
+      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .vesID (VID_UBL_BE_INVOICE_128)
+                       .displayNamePrefix ("UBL.BE Invoice ")
+                       .deprecated ()
+                       .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
+                       .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (UBL_BE_128))
+                       .registerInto ();
+      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .vesID (VID_UBL_BE_CREDIT_NOTE_128)
+                       .displayNamePrefix ("UBL.BE Credit Note ")
+                       .deprecated ()
+                       .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
+                       .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (UBL_BE_128))
+                       .registerInto ();
     }
 
     // v1.2.9
     {
       final IReadableResource UBL_BE_129 = new ClassPathResource (BASE_PATH + "en16931/v1.2.9/GLOBALUBL.BE.xslt",
                                                                   _getCL ());
-      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_UBL_BE_INVOICE_129,
-                                                                             "UBL.BE Invoice " +
-                                                                                                     VID_UBL_BE_INVOICE_129.getVersionString (),
-                                                                             PhiveRulesHelper.createSimpleStatus (bDeprecated),
-                                                                             ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
-                                                                             PhiveRulesUBLHelper.createXSLT_UBL21 (UBL_BE_129)));
-      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_UBL_BE_CREDIT_NOTE_129,
-                                                                             "UBL.BE Credit Note " +
-                                                                                                         VID_UBL_BE_CREDIT_NOTE_129.getVersionString (),
-                                                                             PhiveRulesHelper.createSimpleStatus (bDeprecated),
-                                                                             ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
-                                                                             PhiveRulesUBLHelper.createXSLT_UBL21 (UBL_BE_129)));
+      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .vesID (VID_UBL_BE_INVOICE_129)
+                       .displayNamePrefix ("UBL.BE Invoice ")
+                       .deprecated ()
+                       .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
+                       .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (UBL_BE_129))
+                       .registerInto ();
+      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .vesID (VID_UBL_BE_CREDIT_NOTE_129)
+                       .displayNamePrefix ("UBL.BE Credit Note ")
+                       .deprecated ()
+                       .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
+                       .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (UBL_BE_129))
+                       .registerInto ();
     }
 
     // v1.30
     {
       final IReadableResource UBL_BE_130 = new ClassPathResource (BASE_PATH + "en16931/v1.30/GLOBALUBL.BE.xslt",
                                                                   _getCL ());
-      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_UBL_BE_INVOICE_130,
-                                                                             "UBL.BE Invoice " +
-                                                                                                     VID_UBL_BE_INVOICE_130.getVersionString (),
-                                                                             PhiveRulesHelper.createSimpleStatus (bDeprecated),
-                                                                             ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
-                                                                             PhiveRulesUBLHelper.createXSLT_UBL21 (UBL_BE_130)));
-      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_UBL_BE_CREDIT_NOTE_130,
-                                                                             "UBL.BE Credit Note " +
-                                                                                                         VID_UBL_BE_CREDIT_NOTE_130.getVersionString (),
-                                                                             PhiveRulesHelper.createSimpleStatus (bDeprecated),
-                                                                             ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
-                                                                             PhiveRulesUBLHelper.createXSLT_UBL21 (UBL_BE_130)));
+      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .vesID (VID_UBL_BE_INVOICE_130)
+                       .displayNamePrefix ("UBL.BE Invoice ")
+                       .deprecated ()
+                       .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
+                       .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (UBL_BE_130))
+                       .registerInto ();
+      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .vesID (VID_UBL_BE_CREDIT_NOTE_130)
+                       .displayNamePrefix ("UBL.BE Credit Note ")
+                       .deprecated ()
+                       .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
+                       .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (UBL_BE_130))
+                       .registerInto ();
     }
 
     // v1.31
     {
       final IReadableResource UBL_BE_131 = new ClassPathResource (BASE_PATH + "en16931/v1.31/GLOBALUBL.BE.xslt",
                                                                   _getCL ());
-      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_UBL_BE_INVOICE_131,
-                                                                             "UBL.BE Invoice " +
-                                                                                                     VID_UBL_BE_INVOICE_131.getVersionString (),
-                                                                             PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
-                                                                             ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
-                                                                             PhiveRulesUBLHelper.createXSLT_UBL21 (UBL_BE_131)));
-      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_UBL_BE_CREDIT_NOTE_131,
-                                                                             "UBL.BE Credit Note " +
-                                                                                                         VID_UBL_BE_CREDIT_NOTE_131.getVersionString (),
-                                                                             PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
-                                                                             ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
-                                                                             PhiveRulesUBLHelper.createXSLT_UBL21 (UBL_BE_131)));
+      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .vesID (VID_UBL_BE_INVOICE_131)
+                       .displayNamePrefix ("UBL.BE Invoice ")
+                       .notDeprecated ()
+                       .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
+                       .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (UBL_BE_131))
+                       .registerInto ();
+      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .vesID (VID_UBL_BE_CREDIT_NOTE_131)
+                       .displayNamePrefix ("UBL.BE Credit Note ")
+                       .notDeprecated ()
+                       .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
+                       .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (UBL_BE_131))
+                       .registerInto ();
     }
   }
 }

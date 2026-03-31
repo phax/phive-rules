@@ -23,10 +23,9 @@ import com.helger.base.enforce.ValueEnforcer;
 import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.io.resource.ClassPathResource;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
-import com.helger.phive.api.executorset.ValidationExecutorSet;
+import com.helger.phive.rules.api.PhiveRulesBuilder;
 import com.helger.phive.rules.api.PhiveRulesHelper;
 import com.helger.phive.xml.source.IValidationSourceXML;
-import com.helger.phive.xml.xsd.ValidationExecutorXSD;
 import com.helger.xml.namespace.IIterableNamespaceContext;
 import com.helger.xml.namespace.MapBasedNamespaceContext;
 
@@ -76,8 +75,7 @@ public final class SvefakturaValidation
   }
 
   /**
-   * Register all standard Svefaktura validation execution sets to the provided
-   * registry.
+   * Register all standard Svefaktura validation execution sets to the provided registry.
    *
    * @param aRegistry
    *        The registry to add the artefacts. May not be <code>null</code>.
@@ -86,24 +84,23 @@ public final class SvefakturaValidation
   {
     ValueEnforcer.notNull (aRegistry, "Registry");
 
-    final boolean bNotDeprecated = false;
-
-    aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_SVEFAKTURA_10,
-                                                                           "SvefakturaXML " +
-                                                                                              VID_SVEFAKTURA_10.getVersionString (),
-                                                                           PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
-                                                                           ValidationExecutorXSD.create (new ClassPathResource ("/external/schemas/1.0/maindoc/SFTI-BasicInvoice-1.0.xsd",
-                                                                                                                                _getCL ())),
-                                                                           PhiveRulesHelper.createXSLT (new ClassPathResource ("/external/schemas/1.0/svenfaktura-1.0-sch.xslt",
-                                                                                                                               _getCL ()),
-                                                                                                        NS_CTX)));
+    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .vesID (VID_SVEFAKTURA_10)
+                     .displayNamePrefix ("SvefakturaXML ")
+                     .notDeprecated ()
+                     .addXSD (new ClassPathResource ("/external/schemas/1.0/maindoc/SFTI-BasicInvoice-1.0.xsd",
+                                                     _getCL ()))
+                     .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource ("/external/schemas/1.0/svenfaktura-1.0-sch.xslt",
+                                                                                         _getCL ()), NS_CTX))
+                     .registerInto ();
 
     // No Schematrons here
-    aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OBJECT_ENVELOPE_10,
-                                                                           "SvefakturaXML ObjectEnvelope " +
-                                                                                                   VID_OBJECT_ENVELOPE_10.getVersionString (),
-                                                                           PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
-                                                                           ValidationExecutorXSD.create (new ClassPathResource ("/external/schemas/1.0/maindoc/SFTI-ObjectEnvelope-1.0.xsd",
-                                                                                                                                _getCL ()))));
+    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .vesID (VID_OBJECT_ENVELOPE_10)
+                     .displayNamePrefix ("SvefakturaXML ObjectEnvelope ")
+                     .notDeprecated ()
+                     .addXSD (new ClassPathResource ("/external/schemas/1.0/maindoc/SFTI-ObjectEnvelope-1.0.xsd",
+                                                     _getCL ()))
+                     .registerInto ();
   }
 }

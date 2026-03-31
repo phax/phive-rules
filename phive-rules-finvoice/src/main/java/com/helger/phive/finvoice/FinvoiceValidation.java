@@ -23,10 +23,9 @@ import com.helger.base.enforce.ValueEnforcer;
 import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.io.resource.ClassPathResource;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
-import com.helger.phive.api.executorset.ValidationExecutorSet;
+import com.helger.phive.rules.api.PhiveRulesBuilder;
 import com.helger.phive.rules.api.PhiveRulesHelper;
 import com.helger.phive.xml.source.IValidationSourceXML;
-import com.helger.phive.xml.xsd.ValidationExecutorXSD;
 
 /**
  * Generic Finvoice validation configuration
@@ -55,8 +54,7 @@ public final class FinvoiceValidation
   }
 
   /**
-   * Register all standard Finvoice validation execution sets to the provided
-   * registry.
+   * Register all standard Finvoice validation execution sets to the provided registry.
    *
    * @param aRegistry
    *        The registry to add the artefacts. May not be <code>null</code>.
@@ -65,38 +63,32 @@ public final class FinvoiceValidation
   {
     ValueEnforcer.notNull (aRegistry, "Registry");
 
-    final boolean bNotDeprecated = false;
-
     final String sPrefix = "/external/schemas/";
 
     // No Schematrons here
-    aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_FINVOICE_13,
-                                                                           "Finvoice " +
-                                                                                            VID_FINVOICE_13.getVersionString (),
-                                                                           PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
-                                                                           ValidationExecutorXSD.create (new ClassPathResource (sPrefix +
-                                                                                                                                "Finvoice1.3.xsd",
-                                                                                                                                _getCL ()))));
-    aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_FINVOICE_20,
-                                                                           "Finvoice " +
-                                                                                            VID_FINVOICE_20.getVersionString (),
-                                                                           PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
-                                                                           ValidationExecutorXSD.create (new ClassPathResource (sPrefix +
-                                                                                                                                "Finvoice2.0.xsd",
-                                                                                                                                _getCL ()))));
-    aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_FINVOICE_201,
-                                                                           "Finvoice " +
-                                                                                             VID_FINVOICE_201.getVersionString (),
-                                                                           PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
-                                                                           ValidationExecutorXSD.create (new ClassPathResource (sPrefix +
-                                                                                                                                "Finvoice2.01.xsd",
-                                                                                                                                _getCL ()))));
-    aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_FINVOICE_30,
-                                                                           "Finvoice " +
-                                                                                            VID_FINVOICE_30.getVersionString (),
-                                                                           PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
-                                                                           ValidationExecutorXSD.create (new ClassPathResource (sPrefix +
-                                                                                                                                "Finvoice3.0.xsd",
-                                                                                                                                _getCL ()))));
+    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .vesID (VID_FINVOICE_13)
+                     .displayNamePrefix ("Finvoice ")
+                     .notDeprecated ()
+                     .addXSD (new ClassPathResource (sPrefix + "Finvoice1.3.xsd", _getCL ()))
+                     .registerInto ();
+    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .vesID (VID_FINVOICE_20)
+                     .displayNamePrefix ("Finvoice ")
+                     .notDeprecated ()
+                     .addXSD (new ClassPathResource (sPrefix + "Finvoice2.0.xsd", _getCL ()))
+                     .registerInto ();
+    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .vesID (VID_FINVOICE_201)
+                     .displayNamePrefix ("Finvoice ")
+                     .notDeprecated ()
+                     .addXSD (new ClassPathResource (sPrefix + "Finvoice2.01.xsd", _getCL ()))
+                     .registerInto ();
+    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .vesID (VID_FINVOICE_30)
+                     .displayNamePrefix ("Finvoice ")
+                     .notDeprecated ()
+                     .addXSD (new ClassPathResource (sPrefix + "Finvoice3.0.xsd", _getCL ()))
+                     .registerInto ();
   }
 }

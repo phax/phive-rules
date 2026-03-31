@@ -52,10 +52,10 @@ public final class CTestFiles
   {
     final ICommonsList <PhiveTestFile> ret = new CommonsArrayList <> ();
     for (final DVRCoordinate aVESID : new DVRCoordinate [] { FacturaeValidation.VID_FACTURAE_300,
-                                                            FacturaeValidation.VID_FACTURAE_310,
-                                                            FacturaeValidation.VID_FACTURAE_320,
-                                                            FacturaeValidation.VID_FACTURAE_321,
-                                                            FacturaeValidation.VID_FACTURAE_322 })
+                                                             FacturaeValidation.VID_FACTURAE_310,
+                                                             FacturaeValidation.VID_FACTURAE_320,
+                                                             FacturaeValidation.VID_FACTURAE_321,
+                                                             FacturaeValidation.VID_FACTURAE_322 })
       for (final IReadableResource aRes : getAllMatchingTestFiles (aVESID))
       {
         assertTrue ("Not existing test file: " + aRes.getPath (), aRes.exists ());

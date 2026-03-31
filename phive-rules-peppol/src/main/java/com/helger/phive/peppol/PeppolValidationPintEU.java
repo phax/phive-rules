@@ -23,11 +23,10 @@ import com.helger.base.enforce.ValueEnforcer;
 import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.io.resource.ClassPathResource;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
-import com.helger.phive.api.executorset.ValidationExecutorSet;
+import com.helger.phive.rules.api.PhiveRulesBuilder;
 import com.helger.phive.rules.api.PhiveRulesHelper;
 import com.helger.phive.rules.api.PhiveRulesUBLHelper;
 import com.helger.phive.xml.source.IValidationSourceXML;
-import com.helger.phive.xml.xsd.ValidationExecutorXSD;
 import com.helger.ubl21.UBL21Marshaller;
 import com.helger.xml.namespace.MapBasedNamespaceContext;
 
@@ -75,9 +74,6 @@ public final class PeppolValidationPintEU
     final MapBasedNamespaceContext aNSCtxCreditNote = PhiveRulesUBLHelper.createUBL21NSContext (UBL21Marshaller.creditNote ()
                                                                                                                .getRootElementNamespaceURI ());
 
-    final boolean bDeprecated = true;
-    final boolean bNotDeprecated = !bDeprecated;
-
     final String BASE_PATH = "external/schematron/pint-eu/";
 
     // 2025.10 (aka 1.0.0)
@@ -85,40 +81,39 @@ public final class PeppolValidationPintEU
       final String sBase = BASE_PATH + "1.0.0/xslt/";
       final String sBaseBilling = sBase + "";
       final String sAkaVersion = " (aka 1.0.0)";
-      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_EU_PINT_INVOICE_2025_10,
-                                                                             "Peppol PINT EU Invoice (UBL) 2025-10" +
-                                                                                                                     sAkaVersion,
-                                                                             PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
-                                                                             ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
-                                                                             PhiveRulesHelper.createXSLT (new ClassPathResource (sBaseBilling +
-                                                                                                                                 "PINT-UBL-validation-preprocessed.xslt",
-                                                                                                                                 _getCL ()),
-                                                                                                          aNSCtxInvoice),
-                                                                             PhiveRulesHelper.createXSLT (new ClassPathResource (sBaseBilling +
-                                                                                                                                 "PINT-EN16931-aligned-rules.xslt",
-                                                                                                                                 _getCL ()),
-                                                                                                          aNSCtxInvoice),
-                                                                             PhiveRulesHelper.createXSLT (new ClassPathResource (sBaseBilling +
-                                                                                                                                 "PINT-jurisdiction-aligned-rules.xslt",
-                                                                                                                                 _getCL ()),
-                                                                                                          aNSCtxInvoice)));
-      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_EU_PINT_CREDIT_NOTE_2025_10,
-                                                                             "Peppol PINT EU Credit Note (UBL) 2025-10" +
-                                                                                                                         sAkaVersion,
-                                                                             PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
-                                                                             ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
-                                                                             PhiveRulesHelper.createXSLT (new ClassPathResource (sBaseBilling +
-                                                                                                                                 "PINT-UBL-validation-preprocessed.xslt",
-                                                                                                                                 _getCL ()),
-                                                                                                          aNSCtxCreditNote),
-                                                                             PhiveRulesHelper.createXSLT (new ClassPathResource (sBaseBilling +
-                                                                                                                                 "PINT-EN16931-aligned-rules.xslt",
-                                                                                                                                 _getCL ()),
-                                                                                                          aNSCtxCreditNote),
-                                                                             PhiveRulesHelper.createXSLT (new ClassPathResource (sBaseBilling +
-                                                                                                                                 "PINT-jurisdiction-aligned-rules.xslt",
-                                                                                                                                 _getCL ()),
-                                                                                                          aNSCtxCreditNote)));
+      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .vesID (VID_OPENPEPPOL_EU_PINT_INVOICE_2025_10)
+                       .displayName ("Peppol PINT EU Invoice (UBL) 2025-10" + sAkaVersion)
+                       .notDeprecated ()
+                       .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
+                       .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (sBaseBilling +
+                                                                                           "PINT-UBL-validation-preprocessed.xslt",
+                                                                                           _getCL ()), aNSCtxInvoice))
+                       .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (sBaseBilling +
+                                                                                           "PINT-EN16931-aligned-rules.xslt",
+                                                                                           _getCL ()), aNSCtxInvoice))
+                       .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (sBaseBilling +
+                                                                                           "PINT-jurisdiction-aligned-rules.xslt",
+                                                                                           _getCL ()), aNSCtxInvoice))
+                       .registerInto ();
+      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .vesID (VID_OPENPEPPOL_EU_PINT_CREDIT_NOTE_2025_10)
+                       .displayName ("Peppol PINT EU Credit Note (UBL) 2025-10" + sAkaVersion)
+                       .notDeprecated ()
+                       .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
+                       .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (sBaseBilling +
+                                                                                           "PINT-UBL-validation-preprocessed.xslt",
+                                                                                           _getCL ()),
+                                                                    aNSCtxCreditNote))
+                       .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (sBaseBilling +
+                                                                                           "PINT-EN16931-aligned-rules.xslt",
+                                                                                           _getCL ()),
+                                                                    aNSCtxCreditNote))
+                       .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (sBaseBilling +
+                                                                                           "PINT-jurisdiction-aligned-rules.xslt",
+                                                                                           _getCL ()),
+                                                                    aNSCtxCreditNote))
+                       .registerInto ();
     }
 
     // 2025.11 (aka 1.0.1)
@@ -126,40 +121,39 @@ public final class PeppolValidationPintEU
       final String sBase = BASE_PATH + "1.0.1/xslt/";
       final String sBaseBilling = sBase + "";
       final String sAkaVersion = " (aka 1.0.1)";
-      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_EU_PINT_INVOICE_2025_11,
-                                                                             "Peppol PINT EU Invoice (UBL) 2025-11" +
-                                                                                                                     sAkaVersion,
-                                                                             PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
-                                                                             ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
-                                                                             PhiveRulesHelper.createXSLT (new ClassPathResource (sBaseBilling +
-                                                                                                                                 "PINT-UBL-validation-preprocessed.xslt",
-                                                                                                                                 _getCL ()),
-                                                                                                          aNSCtxInvoice),
-                                                                             PhiveRulesHelper.createXSLT (new ClassPathResource (sBaseBilling +
-                                                                                                                                 "PINT-EN16931-aligned-rules.xslt",
-                                                                                                                                 _getCL ()),
-                                                                                                          aNSCtxInvoice),
-                                                                             PhiveRulesHelper.createXSLT (new ClassPathResource (sBaseBilling +
-                                                                                                                                 "PINT-jurisdiction-aligned-rules.xslt",
-                                                                                                                                 _getCL ()),
-                                                                                                          aNSCtxInvoice)));
-      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_EU_PINT_CREDIT_NOTE_2025_11,
-                                                                             "Peppol PINT EU Credit Note (UBL) 2025-11" +
-                                                                                                                         sAkaVersion,
-                                                                             PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
-                                                                             ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
-                                                                             PhiveRulesHelper.createXSLT (new ClassPathResource (sBaseBilling +
-                                                                                                                                 "PINT-UBL-validation-preprocessed.xslt",
-                                                                                                                                 _getCL ()),
-                                                                                                          aNSCtxCreditNote),
-                                                                             PhiveRulesHelper.createXSLT (new ClassPathResource (sBaseBilling +
-                                                                                                                                 "PINT-EN16931-aligned-rules.xslt",
-                                                                                                                                 _getCL ()),
-                                                                                                          aNSCtxCreditNote),
-                                                                             PhiveRulesHelper.createXSLT (new ClassPathResource (sBaseBilling +
-                                                                                                                                 "PINT-jurisdiction-aligned-rules.xslt",
-                                                                                                                                 _getCL ()),
-                                                                                                          aNSCtxCreditNote)));
+      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .vesID (VID_OPENPEPPOL_EU_PINT_INVOICE_2025_11)
+                       .displayName ("Peppol PINT EU Invoice (UBL) 2025-11" + sAkaVersion)
+                       .notDeprecated ()
+                       .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
+                       .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (sBaseBilling +
+                                                                                           "PINT-UBL-validation-preprocessed.xslt",
+                                                                                           _getCL ()), aNSCtxInvoice))
+                       .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (sBaseBilling +
+                                                                                           "PINT-EN16931-aligned-rules.xslt",
+                                                                                           _getCL ()), aNSCtxInvoice))
+                       .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (sBaseBilling +
+                                                                                           "PINT-jurisdiction-aligned-rules.xslt",
+                                                                                           _getCL ()), aNSCtxInvoice))
+                       .registerInto ();
+      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .vesID (VID_OPENPEPPOL_EU_PINT_CREDIT_NOTE_2025_11)
+                       .displayName ("Peppol PINT EU Credit Note (UBL) 2025-11" + sAkaVersion)
+                       .notDeprecated ()
+                       .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
+                       .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (sBaseBilling +
+                                                                                           "PINT-UBL-validation-preprocessed.xslt",
+                                                                                           _getCL ()),
+                                                                    aNSCtxCreditNote))
+                       .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (sBaseBilling +
+                                                                                           "PINT-EN16931-aligned-rules.xslt",
+                                                                                           _getCL ()),
+                                                                    aNSCtxCreditNote))
+                       .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (sBaseBilling +
+                                                                                           "PINT-jurisdiction-aligned-rules.xslt",
+                                                                                           _getCL ()),
+                                                                    aNSCtxCreditNote))
+                       .registerInto ();
     }
   }
 }

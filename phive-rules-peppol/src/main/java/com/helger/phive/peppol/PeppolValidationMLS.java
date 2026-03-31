@@ -23,11 +23,10 @@ import com.helger.base.enforce.ValueEnforcer;
 import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.io.resource.ClassPathResource;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
-import com.helger.phive.api.executorset.ValidationExecutorSet;
+import com.helger.phive.rules.api.PhiveRulesBuilder;
 import com.helger.phive.rules.api.PhiveRulesHelper;
 import com.helger.phive.rules.api.PhiveRulesUBLHelper;
 import com.helger.phive.xml.source.IValidationSourceXML;
-import com.helger.phive.xml.xsd.ValidationExecutorXSD;
 import com.helger.ubl21.UBL21Marshaller;
 
 /**
@@ -58,20 +57,19 @@ public final class PeppolValidationMLS
   {
     ValueEnforcer.notNull (aRegistry, "Registry");
 
-    final boolean bDeprecated = true;
-    final boolean bNotDeprecated = !bDeprecated;
-
     final String BASE_PATH_SCH = "external/schematron/mls/";
 
     // v1.0.0
     {
-      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_MLS_V100,
-                                                                             "Peppol Message Level Status v1.0.0",
-                                                                             PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
-                                                                             ValidationExecutorXSD.create (UBL21Marshaller.getAllApplicationResponseXSDs ()),
-                                                                             PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (BASE_PATH_SCH +
-                                                                                                                                          "1.0.0/xslt/peppol-mls-1.0.0.xslt",
-                                                                                                                                          _getCL ()))));
+      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .vesID (VID_OPENPEPPOL_MLS_V100)
+                       .displayName ("Peppol Message Level Status v1.0.0")
+                       .notDeprecated ()
+                       .addXSD (UBL21Marshaller.getAllApplicationResponseXSDs ())
+                       .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (BASE_PATH_SCH +
+                                                                                                    "1.0.0/xslt/peppol-mls-1.0.0.xslt",
+                                                                                                    _getCL ())))
+                       .registerInto ();
     }
   }
 }

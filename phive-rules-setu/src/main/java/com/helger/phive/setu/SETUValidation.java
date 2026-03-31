@@ -24,11 +24,10 @@ import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.io.resource.ClassPathResource;
 import com.helger.io.resource.IReadableResource;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
-import com.helger.phive.api.executorset.ValidationExecutorSet;
+import com.helger.phive.rules.api.PhiveRulesBuilder;
 import com.helger.phive.rules.api.PhiveRulesHelper;
 import com.helger.phive.xml.schematron.ValidationExecutorSchematron;
 import com.helger.phive.xml.source.IValidationSourceXML;
-import com.helger.phive.xml.xsd.ValidationExecutorXSD;
 import com.helger.xml.namespace.MapBasedNamespaceContext;
 import com.helger.xsds.xml.CXML_XSD;
 
@@ -93,66 +92,55 @@ public final class SETUValidation
   {
     ValueEnforcer.notNull (aRegistry, "Registry");
 
-    final boolean bNotDeprecated = false;
     final String sPrefixXSD = "/external/schemas/";
     final String sPrefixSCH = "/external/schematron/setu/";
 
     // V1.4
-    aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_SETU_ASSIGNMENT_14,
-                                                                           "SETU Assignment " +
-                                                                                                   VID_SETU_ASSIGNMENT_14.getVersionString (),
-                                                                           PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
-                                                                           ValidationExecutorXSD.create (CXML_XSD.getXSDResource (),
-                                                                                                         new ClassPathResource (sPrefixXSD +
-                                                                                                                                "setu/schemas/2020-01/AssignmentAdditionalNL.xsd",
-                                                                                                                                _getCL ()),
-                                                                                                         new ClassPathResource (sPrefixXSD +
-                                                                                                                                "hr-xml/SIDES/Assignment.xsd",
-                                                                                                                                _getCL ())),
-                                                                           _createXSLT (new ClassPathResource (sPrefixSCH +
-                                                                                                               "1.4/xslt/Assignment-v1.4-Assignment.xslt",
-                                                                                                               _getCL ()))));
-    aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_SETU_HUMAN_RESOURCE_14,
-                                                                           "SETU Human Resource " +
-                                                                                                       VID_SETU_HUMAN_RESOURCE_14.getVersionString (),
-                                                                           PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
-                                                                           ValidationExecutorXSD.create (CXML_XSD.getXSDResource (),
-                                                                                                         new ClassPathResource (sPrefixXSD +
-                                                                                                                                "setu/schemas/2020-01/HumanResourceAdditionalNL.xsd",
-                                                                                                                                _getCL ()),
-                                                                                                         new ClassPathResource (sPrefixXSD +
-                                                                                                                                "hr-xml/SIDES/HumanResource.xsd",
-                                                                                                                                _getCL ())),
-                                                                           _createXSLT (new ClassPathResource (sPrefixSCH +
-                                                                                                               "1.4/xslt/OrderingAndSelection-v1.4-HumanResource.xslt",
-                                                                                                               _getCL ()))));
-    aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_SETU_STAFFING_ORDER_14,
-                                                                           "SETU Staffing Order " +
-                                                                                                       VID_SETU_STAFFING_ORDER_14.getVersionString (),
-                                                                           PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
-                                                                           ValidationExecutorXSD.create (CXML_XSD.getXSDResource (),
-                                                                                                         new ClassPathResource (sPrefixXSD +
-                                                                                                                                "setu/schemas/2020-01/StaffingOrderAdditionalNL.xsd",
-                                                                                                                                _getCL ()),
-                                                                                                         new ClassPathResource (sPrefixXSD +
-                                                                                                                                "hr-xml/SIDES/StaffingOrder.xsd",
-                                                                                                                                _getCL ())),
-                                                                           _createXSLT (new ClassPathResource (sPrefixSCH +
-                                                                                                               "1.4/xslt/OrderingAndSelection-v1.4-StaffingOrder.xslt",
-                                                                                                               _getCL ()))));
-    aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_SETU_TIMECARD_14,
-                                                                           "SETU Timcard " +
-                                                                                                 VID_SETU_TIMECARD_14.getVersionString (),
-                                                                           PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
-                                                                           ValidationExecutorXSD.create (CXML_XSD.getXSDResource (),
-                                                                                                         new ClassPathResource (sPrefixXSD +
-                                                                                                                                "hr-xml/SIDES/TimeCardAdditionalData.xsd",
-                                                                                                                                _getCL ()),
-                                                                                                         new ClassPathResource (sPrefixXSD +
-                                                                                                                                "hr-xml/TimeCard/TimeCard.xsd",
-                                                                                                                                _getCL ())),
-                                                                           _createXSLT (new ClassPathResource (sPrefixSCH +
-                                                                                                               "1.4/xslt/RTE-v1.4-TimeCard.xslt",
-                                                                                                               _getCL ()))));
+    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .vesID (VID_SETU_ASSIGNMENT_14)
+                     .displayNamePrefix ("SETU Assignment ")
+                     .notDeprecated ()
+                     .addXSD (CXML_XSD.getXSDResource (),
+                              new ClassPathResource (sPrefixXSD + "setu/schemas/2020-01/AssignmentAdditionalNL.xsd",
+                                                     _getCL ()),
+                              new ClassPathResource (sPrefixXSD + "hr-xml/SIDES/Assignment.xsd", _getCL ()))
+                     .addSchematron (_createXSLT (new ClassPathResource (sPrefixSCH +
+                                                                         "1.4/xslt/Assignment-v1.4-Assignment.xslt",
+                                                                         _getCL ())))
+                     .registerInto ();
+    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .vesID (VID_SETU_HUMAN_RESOURCE_14)
+                     .displayNamePrefix ("SETU Human Resource ")
+                     .notDeprecated ()
+                     .addXSD (CXML_XSD.getXSDResource (),
+                              new ClassPathResource (sPrefixXSD + "setu/schemas/2020-01/HumanResourceAdditionalNL.xsd",
+                                                     _getCL ()),
+                              new ClassPathResource (sPrefixXSD + "hr-xml/SIDES/HumanResource.xsd", _getCL ()))
+                     .addSchematron (_createXSLT (new ClassPathResource (sPrefixSCH +
+                                                                         "1.4/xslt/OrderingAndSelection-v1.4-HumanResource.xslt",
+                                                                         _getCL ())))
+                     .registerInto ();
+    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .vesID (VID_SETU_STAFFING_ORDER_14)
+                     .displayNamePrefix ("SETU Staffing Order ")
+                     .notDeprecated ()
+                     .addXSD (CXML_XSD.getXSDResource (),
+                              new ClassPathResource (sPrefixXSD + "setu/schemas/2020-01/StaffingOrderAdditionalNL.xsd",
+                                                     _getCL ()),
+                              new ClassPathResource (sPrefixXSD + "hr-xml/SIDES/StaffingOrder.xsd", _getCL ()))
+                     .addSchematron (_createXSLT (new ClassPathResource (sPrefixSCH +
+                                                                         "1.4/xslt/OrderingAndSelection-v1.4-StaffingOrder.xslt",
+                                                                         _getCL ())))
+                     .registerInto ();
+    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .vesID (VID_SETU_TIMECARD_14)
+                     .displayNamePrefix ("SETU Timcard ")
+                     .notDeprecated ()
+                     .addXSD (CXML_XSD.getXSDResource (),
+                              new ClassPathResource (sPrefixXSD + "hr-xml/SIDES/TimeCardAdditionalData.xsd", _getCL ()),
+                              new ClassPathResource (sPrefixXSD + "hr-xml/TimeCard/TimeCard.xsd", _getCL ()))
+                     .addSchematron (_createXSLT (new ClassPathResource (sPrefixSCH + "1.4/xslt/RTE-v1.4-TimeCard.xslt",
+                                                                         _getCL ())))
+                     .registerInto ();
   }
 }

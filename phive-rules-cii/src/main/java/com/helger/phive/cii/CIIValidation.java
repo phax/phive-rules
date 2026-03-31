@@ -24,10 +24,9 @@ import com.helger.cii.d16b.CCIID16B;
 import com.helger.cii.d22b.CCIID22B;
 import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
-import com.helger.phive.api.executorset.ValidationExecutorSet;
+import com.helger.phive.rules.api.PhiveRulesBuilder;
 import com.helger.phive.rules.api.PhiveRulesHelper;
 import com.helger.phive.xml.source.IValidationSourceXML;
-import com.helger.phive.xml.xsd.ValidationExecutorXSD;
 
 /**
  * Generic CII validation configuration
@@ -77,13 +76,13 @@ public final class CIIValidation
   {
     ValueEnforcer.notNull (aRegistry, "Registry");
 
-    final boolean bNotDeprecated = false;
-
     // No Schematrons here
-    aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_CII_D16B_CROSSINDUSTRYINVOICE,
-                                                                           "CII CrossIndustryInvoice " + VERSION_D16B,
-                                                                           PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
-                                                                           ValidationExecutorXSD.create (CCIID16B.getXSDResource ())));
+    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .vesID (VID_CII_D16B_CROSSINDUSTRYINVOICE)
+                     .displayName ("CII CrossIndustryInvoice " + VERSION_D16B)
+                     .notDeprecated ()
+                     .addXSD (CCIID16B.getXSDResource ())
+                     .registerInto ();
   }
 
   /**
@@ -97,17 +96,19 @@ public final class CIIValidation
   {
     ValueEnforcer.notNull (aRegistry, "Registry");
 
-    final boolean bNotDeprecated = false;
-
     // No Schematrons here
-    aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_CII_D22B_CROSSINDUSTRYINVOICE,
-                                                                           "CII CrossIndustryInvoice " + VERSION_D22B,
-                                                                           PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
-                                                                           ValidationExecutorXSD.create (CCIID22B.getXSDResourceCII ())));
+    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .vesID (VID_CII_D22B_CROSSINDUSTRYINVOICE)
+                     .displayName ("CII CrossIndustryInvoice " + VERSION_D22B)
+                     .notDeprecated ()
+                     .addXSD (CCIID22B.getXSDResourceCII ())
+                     .registerInto ();
 
-    aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_CII_D22B_CDAR,
-                                                                           "CDAR " + VERSION_D22B,
-                                                                           PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
-                                                                           ValidationExecutorXSD.create (CCIID22B.getXSDResourceCDAR ())));
+    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .vesID (VID_CII_D22B_CDAR)
+                     .displayName ("CDAR " + VERSION_D22B)
+                     .notDeprecated ()
+                     .addXSD (CCIID22B.getXSDResourceCDAR ())
+                     .registerInto ();
   }
 }

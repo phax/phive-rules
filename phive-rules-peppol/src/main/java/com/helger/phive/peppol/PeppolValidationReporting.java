@@ -23,10 +23,9 @@ import com.helger.base.enforce.ValueEnforcer;
 import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.io.resource.ClassPathResource;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
-import com.helger.phive.api.executorset.ValidationExecutorSet;
+import com.helger.phive.rules.api.PhiveRulesBuilder;
 import com.helger.phive.rules.api.PhiveRulesHelper;
 import com.helger.phive.xml.source.IValidationSourceXML;
-import com.helger.phive.xml.xsd.ValidationExecutorXSD;
 import com.helger.xml.namespace.MapBasedNamespaceContext;
 
 /**
@@ -73,9 +72,6 @@ public final class PeppolValidationReporting
   {
     ValueEnforcer.notNull (aRegistry, "Registry");
 
-    final boolean bDeprecated = true;
-    final boolean bNotDeprecated = !bDeprecated;
-
     final String BASE_PATH_XSD = "external/schemas/";
     final String BASE_PATH_SCH = "external/schematron/reporting/";
 
@@ -87,22 +83,24 @@ public final class PeppolValidationReporting
 
       final MapBasedNamespaceContext aNsCtx = new MapBasedNamespaceContext ().setDefaultNamespaceURI ("urn:fdc:peppol:end-user-statistics-report:1.1");
 
-      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_EUSR_V114,
-                                                                             "Peppol End User Statistics Report v1.1.4",
-                                                                             PhiveRulesHelper.createSimpleStatus (bDeprecated),
-                                                                             ValidationExecutorXSD.create (aXSD11),
-                                                                             PhiveRulesHelper.createXSLT (new ClassPathResource (BASE_PATH_SCH +
-                                                                                                                                 "eusr/1.1.4/xslt/peppol-end-user-statistics-reporting-1.1.4.xslt",
-                                                                                                                                 _getCL ()),
-                                                                                                          aNsCtx)));
-      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_EUSR_V115,
-                                                                             "Peppol End User Statistics Report v1.1.5",
-                                                                             PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
-                                                                             ValidationExecutorXSD.create (aXSD11),
-                                                                             PhiveRulesHelper.createXSLT (new ClassPathResource (BASE_PATH_SCH +
-                                                                                                                                 "eusr/1.1.5/xslt/peppol-end-user-statistics-reporting-1.1.5.xslt",
-                                                                                                                                 _getCL ()),
-                                                                                                          aNsCtx)));
+      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .vesID (VID_OPENPEPPOL_EUSR_V114)
+                       .displayName ("Peppol End User Statistics Report v1.1.4")
+                       .deprecated ()
+                       .addXSD (aXSD11)
+                       .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (BASE_PATH_SCH +
+                                                                                           "eusr/1.1.4/xslt/peppol-end-user-statistics-reporting-1.1.4.xslt",
+                                                                                           _getCL ()), aNsCtx))
+                       .registerInto ();
+      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .vesID (VID_OPENPEPPOL_EUSR_V115)
+                       .displayName ("Peppol End User Statistics Report v1.1.5")
+                       .notDeprecated ()
+                       .addXSD (aXSD11)
+                       .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (BASE_PATH_SCH +
+                                                                                           "eusr/1.1.5/xslt/peppol-end-user-statistics-reporting-1.1.5.xslt",
+                                                                                           _getCL ()), aNsCtx))
+                       .registerInto ();
     }
 
     // TSR
@@ -113,22 +111,24 @@ public final class PeppolValidationReporting
 
       final MapBasedNamespaceContext aNsCtx = new MapBasedNamespaceContext ().setDefaultNamespaceURI ("urn:fdc:peppol:transaction-statistics-report:1.0");
 
-      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_TSR_V104,
-                                                                             "Peppol Transaction Statistics Report v1.0.4",
-                                                                             PhiveRulesHelper.createSimpleStatus (bDeprecated),
-                                                                             ValidationExecutorXSD.create (aXSD101),
-                                                                             PhiveRulesHelper.createXSLT (new ClassPathResource (BASE_PATH_SCH +
-                                                                                                                                 "tsr/1.0.4/xslt/peppol-transaction-statistics-reporting-1.0.4.xslt",
-                                                                                                                                 _getCL ()),
-                                                                                                          aNsCtx)));
-      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_TSR_V105,
-                                                                             "Peppol Transaction Statistics Report v1.0.5",
-                                                                             PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
-                                                                             ValidationExecutorXSD.create (aXSD101),
-                                                                             PhiveRulesHelper.createXSLT (new ClassPathResource (BASE_PATH_SCH +
-                                                                                                                                 "tsr/1.0.5/xslt/peppol-transaction-statistics-reporting-1.0.5.xslt",
-                                                                                                                                 _getCL ()),
-                                                                                                          aNsCtx)));
+      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .vesID (VID_OPENPEPPOL_TSR_V104)
+                       .displayName ("Peppol Transaction Statistics Report v1.0.4")
+                       .deprecated ()
+                       .addXSD (aXSD101)
+                       .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (BASE_PATH_SCH +
+                                                                                           "tsr/1.0.4/xslt/peppol-transaction-statistics-reporting-1.0.4.xslt",
+                                                                                           _getCL ()), aNsCtx))
+                       .registerInto ();
+      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .vesID (VID_OPENPEPPOL_TSR_V105)
+                       .displayName ("Peppol Transaction Statistics Report v1.0.5")
+                       .notDeprecated ()
+                       .addXSD (aXSD101)
+                       .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (BASE_PATH_SCH +
+                                                                                           "tsr/1.0.5/xslt/peppol-transaction-statistics-reporting-1.0.5.xslt",
+                                                                                           _getCL ()), aNsCtx))
+                       .registerInto ();
     }
   }
 }

@@ -29,11 +29,10 @@ import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.io.resource.ClassPathResource;
 import com.helger.io.resource.IReadableResource;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
-import com.helger.phive.api.executorset.ValidationExecutorSet;
+import com.helger.phive.rules.api.PhiveRulesBuilder;
 import com.helger.phive.rules.api.PhiveRulesHelper;
 import com.helger.phive.rules.api.PhiveRulesUBLHelper;
 import com.helger.phive.xml.source.IValidationSourceXML;
-import com.helger.phive.xml.xsd.ValidationExecutorXSD;
 import com.helger.ubl21.UBL21Marshaller;
 import com.helger.xml.namespace.MapBasedNamespaceContext;
 
@@ -103,9 +102,6 @@ public final class PeppolValidationBisSG
     final MapBasedNamespaceContext aNSCtxOrder = PhiveRulesUBLHelper.createUBL21NSContext (UBL21Marshaller.order ()
                                                                                                           .getRootElementNamespaceURI ());
 
-    final boolean bDeprecated = true;
-    final boolean bNotDeprecated = !bDeprecated;
-
     final String BASE_PATH = "external/schematron/peppol-sg/";
 
     // 2023.7
@@ -121,28 +117,24 @@ public final class PeppolValidationBisSG
                                                                                _getCL ());
       final String sAkaVersionBilling = " (aka BIS 3.0.11)";
 
-      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_BIS3_SG_UBL_INVOICE_2023_7,
-                                                                             "SG Peppol BIS3 Invoice (UBL) 2023.7" +
-                                                                                                                        sAkaVersionBilling,
-                                                                             PhiveRulesHelper.createSimpleStatus (bDeprecated),
-                                                                             ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
-                                                                             PhiveRulesHelper.createXSLT (BIS3_BILLING_SG_CEN_2023_07,
-                                                                                                          aNSCtxInvoice),
-                                                                             PhiveRulesHelper.createXSLT (BIS3_BILLING_SG_PEPPOL_2023_07,
-                                                                                                          aNSCtxInvoice),
-                                                                             PhiveRulesHelper.createXSLT (BIS3_BILLING_SG_2023_07,
-                                                                                                          aNSCtxInvoice)));
-      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_BIS3_SG_UBL_CREDIT_NOTE_2023_7,
-                                                                             "SG Peppol BIS3 Credit Note (UBL) 2023.7" +
-                                                                                                                            sAkaVersionBilling,
-                                                                             PhiveRulesHelper.createSimpleStatus (bDeprecated),
-                                                                             ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
-                                                                             PhiveRulesHelper.createXSLT (BIS3_BILLING_SG_CEN_2023_07,
-                                                                                                          aNSCtxCreditNote),
-                                                                             PhiveRulesHelper.createXSLT (BIS3_BILLING_SG_PEPPOL_2023_07,
-                                                                                                          aNSCtxCreditNote),
-                                                                             PhiveRulesHelper.createXSLT (BIS3_BILLING_SG_2023_07,
-                                                                                                          aNSCtxCreditNote)));
+      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .vesID (VID_OPENPEPPOL_BIS3_SG_UBL_INVOICE_2023_7)
+                       .displayName ("SG Peppol BIS3 Invoice (UBL) 2023.7" + sAkaVersionBilling)
+                       .deprecated ()
+                       .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
+                       .addSchematron (PhiveRulesHelper.createXSLT (BIS3_BILLING_SG_CEN_2023_07, aNSCtxInvoice))
+                       .addSchematron (PhiveRulesHelper.createXSLT (BIS3_BILLING_SG_PEPPOL_2023_07, aNSCtxInvoice))
+                       .addSchematron (PhiveRulesHelper.createXSLT (BIS3_BILLING_SG_2023_07, aNSCtxInvoice))
+                       .registerInto ();
+      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .vesID (VID_OPENPEPPOL_BIS3_SG_UBL_CREDIT_NOTE_2023_7)
+                       .displayName ("SG Peppol BIS3 Credit Note (UBL) 2023.7" + sAkaVersionBilling)
+                       .deprecated ()
+                       .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
+                       .addSchematron (PhiveRulesHelper.createXSLT (BIS3_BILLING_SG_CEN_2023_07, aNSCtxCreditNote))
+                       .addSchematron (PhiveRulesHelper.createXSLT (BIS3_BILLING_SG_PEPPOL_2023_07, aNSCtxCreditNote))
+                       .addSchematron (PhiveRulesHelper.createXSLT (BIS3_BILLING_SG_2023_07, aNSCtxCreditNote))
+                       .registerInto ();
     }
 
     // 2023.12
@@ -158,28 +150,24 @@ public final class PeppolValidationBisSG
                                                                                _getCL ());
       final String sAkaVersionBilling = " (aka BIS 3.0.12)";
 
-      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_BIS3_SG_UBL_INVOICE_2023_12,
-                                                                             "SG Peppol BIS3 Invoice (UBL) 2023.12" +
-                                                                                                                         sAkaVersionBilling,
-                                                                             PhiveRulesHelper.createSimpleStatus (bDeprecated),
-                                                                             ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
-                                                                             PhiveRulesHelper.createXSLT (BIS3_BILLING_SG_CEN_2023_12,
-                                                                                                          aNSCtxInvoice),
-                                                                             PhiveRulesHelper.createXSLT (BIS3_BILLING_SG_PEPPOL_2023_12,
-                                                                                                          aNSCtxInvoice),
-                                                                             PhiveRulesHelper.createXSLT (BIS3_BILLING_SG_2023_12,
-                                                                                                          aNSCtxInvoice)));
-      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_BIS3_SG_UBL_CREDIT_NOTE_2023_12,
-                                                                             "SG Peppol BIS3 Credit Note (UBL) 2023.12" +
-                                                                                                                             sAkaVersionBilling,
-                                                                             PhiveRulesHelper.createSimpleStatus (bDeprecated),
-                                                                             ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
-                                                                             PhiveRulesHelper.createXSLT (BIS3_BILLING_SG_CEN_2023_12,
-                                                                                                          aNSCtxCreditNote),
-                                                                             PhiveRulesHelper.createXSLT (BIS3_BILLING_SG_PEPPOL_2023_12,
-                                                                                                          aNSCtxCreditNote),
-                                                                             PhiveRulesHelper.createXSLT (BIS3_BILLING_SG_2023_12,
-                                                                                                          aNSCtxCreditNote)));
+      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .vesID (VID_OPENPEPPOL_BIS3_SG_UBL_INVOICE_2023_12)
+                       .displayName ("SG Peppol BIS3 Invoice (UBL) 2023.12" + sAkaVersionBilling)
+                       .deprecated ()
+                       .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
+                       .addSchematron (PhiveRulesHelper.createXSLT (BIS3_BILLING_SG_CEN_2023_12, aNSCtxInvoice))
+                       .addSchematron (PhiveRulesHelper.createXSLT (BIS3_BILLING_SG_PEPPOL_2023_12, aNSCtxInvoice))
+                       .addSchematron (PhiveRulesHelper.createXSLT (BIS3_BILLING_SG_2023_12, aNSCtxInvoice))
+                       .registerInto ();
+      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .vesID (VID_OPENPEPPOL_BIS3_SG_UBL_CREDIT_NOTE_2023_12)
+                       .displayName ("SG Peppol BIS3 Credit Note (UBL) 2023.12" + sAkaVersionBilling)
+                       .deprecated ()
+                       .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
+                       .addSchematron (PhiveRulesHelper.createXSLT (BIS3_BILLING_SG_CEN_2023_12, aNSCtxCreditNote))
+                       .addSchematron (PhiveRulesHelper.createXSLT (BIS3_BILLING_SG_PEPPOL_2023_12, aNSCtxCreditNote))
+                       .addSchematron (PhiveRulesHelper.createXSLT (BIS3_BILLING_SG_2023_12, aNSCtxCreditNote))
+                       .registerInto ();
     }
 
     // 2024.12
@@ -195,42 +183,37 @@ public final class PeppolValidationBisSG
                                                                                _getCL ());
       final String sAkaVersionBilling = " (aka BIS 3.0.14)";
 
-      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_BIS3_SG_UBL_INVOICE_2024_12,
-                                                                             "SG Peppol BIS3 Invoice (UBL) 2024.12" +
-                                                                                                                         sAkaVersionBilling,
-                                                                             PhiveRulesHelper.createSimpleStatus (bNotDeprecated,
-                                                                                                                  VALID_PER_UTC_2014_12),
-                                                                             ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
-                                                                             PhiveRulesHelper.createXSLT (BIS3_BILLING_SG_CEN_2024_12,
-                                                                                                          aNSCtxInvoice),
-                                                                             PhiveRulesHelper.createXSLT (BIS3_BILLING_SG_PEPPOL_2024_12,
-                                                                                                          aNSCtxInvoice),
-                                                                             PhiveRulesHelper.createXSLT (BIS3_BILLING_SG_2024_12,
-                                                                                                          aNSCtxInvoice)));
-      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_OPENPEPPOL_BIS3_SG_UBL_CREDIT_NOTE_2024_12,
-                                                                             "SG Peppol BIS3 Credit Note (UBL) 2024.12" +
-                                                                                                                             sAkaVersionBilling,
-                                                                             PhiveRulesHelper.createSimpleStatus (bNotDeprecated,
-                                                                                                                  VALID_PER_UTC_2014_12),
-                                                                             ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
-                                                                             PhiveRulesHelper.createXSLT (BIS3_BILLING_SG_CEN_2024_12,
-                                                                                                          aNSCtxCreditNote),
-                                                                             PhiveRulesHelper.createXSLT (BIS3_BILLING_SG_PEPPOL_2024_12,
-                                                                                                          aNSCtxCreditNote),
-                                                                             PhiveRulesHelper.createXSLT (BIS3_BILLING_SG_2024_12,
-                                                                                                          aNSCtxCreditNote)));
+      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .vesID (VID_OPENPEPPOL_BIS3_SG_UBL_INVOICE_2024_12)
+                       .displayName ("SG Peppol BIS3 Invoice (UBL) 2024.12" + sAkaVersionBilling)
+                       .status (PhiveRulesHelper.createSimpleStatus (false, VALID_PER_UTC_2014_12))
+                       .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
+                       .addSchematron (PhiveRulesHelper.createXSLT (BIS3_BILLING_SG_CEN_2024_12, aNSCtxInvoice))
+                       .addSchematron (PhiveRulesHelper.createXSLT (BIS3_BILLING_SG_PEPPOL_2024_12, aNSCtxInvoice))
+                       .addSchematron (PhiveRulesHelper.createXSLT (BIS3_BILLING_SG_2024_12, aNSCtxInvoice))
+                       .registerInto ();
+      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .vesID (VID_OPENPEPPOL_BIS3_SG_UBL_CREDIT_NOTE_2024_12)
+                       .displayName ("SG Peppol BIS3 Credit Note (UBL) 2024.12" + sAkaVersionBilling)
+                       .status (PhiveRulesHelper.createSimpleStatus (false, VALID_PER_UTC_2014_12))
+                       .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
+                       .addSchematron (PhiveRulesHelper.createXSLT (BIS3_BILLING_SG_CEN_2024_12, aNSCtxCreditNote))
+                       .addSchematron (PhiveRulesHelper.createXSLT (BIS3_BILLING_SG_PEPPOL_2024_12, aNSCtxCreditNote))
+                       .addSchematron (PhiveRulesHelper.createXSLT (BIS3_BILLING_SG_2024_12, aNSCtxCreditNote))
+                       .registerInto ();
     }
 
     // Order Balance 1.0
     {
-      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_PEPPOL_SG_ORDER_BALANCE_1_0,
-                                                                             "SG Peppol Order Balance 1.0",
-                                                                             PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
-                                                                             ValidationExecutorXSD.create (UBL21Marshaller.getAllOrderXSDs ()),
-                                                                             PhiveRulesHelper.createXSLT (new ClassPathResource (BASE_PATH +
-                                                                                                                                 "ob-1.0/xslt/SGBIS-TOB.xslt",
-                                                                                                                                 _getCL ()),
-                                                                                                          aNSCtxOrder)));
+      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .vesID (VID_PEPPOL_SG_ORDER_BALANCE_1_0)
+                       .displayName ("SG Peppol Order Balance 1.0")
+                       .notDeprecated ()
+                       .addXSD (UBL21Marshaller.getAllOrderXSDs ())
+                       .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (BASE_PATH +
+                                                                                           "ob-1.0/xslt/SGBIS-TOB.xslt",
+                                                                                           _getCL ()), aNSCtxOrder))
+                       .registerInto ();
     }
   }
 }

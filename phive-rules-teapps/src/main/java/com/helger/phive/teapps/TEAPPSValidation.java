@@ -23,10 +23,9 @@ import com.helger.base.enforce.ValueEnforcer;
 import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.io.resource.ClassPathResource;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
-import com.helger.phive.api.executorset.ValidationExecutorSet;
+import com.helger.phive.rules.api.PhiveRulesBuilder;
 import com.helger.phive.rules.api.PhiveRulesHelper;
 import com.helger.phive.xml.source.IValidationSourceXML;
-import com.helger.phive.xml.xsd.ValidationExecutorXSD;
 
 /**
  * Generic TEAPPS validation configuration
@@ -51,8 +50,7 @@ public final class TEAPPSValidation
   }
 
   /**
-   * Register all standard TEAPPS validation execution sets to the provided
-   * registry.
+   * Register all standard TEAPPS validation execution sets to the provided registry.
    *
    * @param aRegistry
    *        The registry to add the artefacts. May not be <code>null</code>.
@@ -61,20 +59,18 @@ public final class TEAPPSValidation
   {
     ValueEnforcer.notNull (aRegistry, "Registry");
 
-    final boolean bNotDeprecated = false;
-
     // No Schematrons here
-    aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_TEAPPS_272,
-                                                                           "TEAPPSXML " +
-                                                                                           VID_TEAPPS_272.getVersionString (),
-                                                                           PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
-                                                                           ValidationExecutorXSD.create (new ClassPathResource ("/external/schemas/TEAPPSXMLv272_schema_INVOICES.xsd",
-                                                                                                                                _getCL ()))));
-    aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_TEAPPS_30,
-                                                                           "TEAPPSXML " +
-                                                                                          VID_TEAPPS_30.getVersionString (),
-                                                                           PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
-                                                                           ValidationExecutorXSD.create (new ClassPathResource ("/external/schemas/teappsxmlv30_schema_invoices_0.xsd",
-                                                                                                                                _getCL ()))));
+    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .vesID (VID_TEAPPS_272)
+                     .displayNamePrefix ("TEAPPSXML ")
+                     .notDeprecated ()
+                     .addXSD (new ClassPathResource ("/external/schemas/TEAPPSXMLv272_schema_INVOICES.xsd", _getCL ()))
+                     .registerInto ();
+    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .vesID (VID_TEAPPS_30)
+                     .displayNamePrefix ("TEAPPSXML ")
+                     .notDeprecated ()
+                     .addXSD (new ClassPathResource ("/external/schemas/teappsxmlv30_schema_invoices_0.xsd", _getCL ()))
+                     .registerInto ();
   }
 }

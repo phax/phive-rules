@@ -23,10 +23,9 @@ import com.helger.base.enforce.ValueEnforcer;
 import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.fatturapa.CFatturaPA;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
-import com.helger.phive.api.executorset.ValidationExecutorSet;
+import com.helger.phive.rules.api.PhiveRulesBuilder;
 import com.helger.phive.rules.api.PhiveRulesHelper;
 import com.helger.phive.xml.source.IValidationSourceXML;
-import com.helger.phive.xml.xsd.ValidationExecutorXSD;
 
 /**
  * Generic fatturaPA validation configuration
@@ -61,24 +60,24 @@ public final class FatturaPAValidation
   {
     ValueEnforcer.notNull (aRegistry, "Registry");
 
-    final boolean bDeprecated = true;
-    final boolean bNotDeprecated = false;
-
     // No Schematrons here
-    aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_FATTURAPA_120,
-                                                                           "fatturaPA " +
-                                                                                              VID_FATTURAPA_120.getVersionString (),
-                                                                           PhiveRulesHelper.createSimpleStatus (bDeprecated),
-                                                                           ValidationExecutorXSD.create (CFatturaPA.getAllXSDFatturaPA120 ())));
-    aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_FATTURAPA_121,
-                                                                           "fatturaPA " +
-                                                                                              VID_FATTURAPA_121.getVersionString (),
-                                                                           PhiveRulesHelper.createSimpleStatus (bDeprecated),
-                                                                           ValidationExecutorXSD.create (CFatturaPA.getAllXSDFatturaPA121 ())));
-    aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_FATTURAPA_122,
-                                                                           "fatturaPA " +
-                                                                                              VID_FATTURAPA_122.getVersionString (),
-                                                                           PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
-                                                                           ValidationExecutorXSD.create (CFatturaPA.getAllXSDFatturaPA122 ())));
+    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .vesID (VID_FATTURAPA_120)
+                     .displayNamePrefix ("fatturaPA ")
+                     .deprecated ()
+                     .addXSD (CFatturaPA.getAllXSDFatturaPA120 ())
+                     .registerInto ();
+    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .vesID (VID_FATTURAPA_121)
+                     .displayNamePrefix ("fatturaPA ")
+                     .deprecated ()
+                     .addXSD (CFatturaPA.getAllXSDFatturaPA121 ())
+                     .registerInto ();
+    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .vesID (VID_FATTURAPA_122)
+                     .displayNamePrefix ("fatturaPA ")
+                     .notDeprecated ()
+                     .addXSD (CFatturaPA.getAllXSDFatturaPA122 ())
+                     .registerInto ();
   }
 }

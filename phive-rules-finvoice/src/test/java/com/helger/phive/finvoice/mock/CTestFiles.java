@@ -51,9 +51,9 @@ public final class CTestFiles
   {
     final ICommonsList <PhiveTestFile> ret = new CommonsArrayList <> ();
     for (final DVRCoordinate aVESID : new DVRCoordinate [] { FinvoiceValidation.VID_FINVOICE_13,
-                                                            FinvoiceValidation.VID_FINVOICE_20,
-                                                            FinvoiceValidation.VID_FINVOICE_201,
-                                                            FinvoiceValidation.VID_FINVOICE_30 })
+                                                             FinvoiceValidation.VID_FINVOICE_20,
+                                                             FinvoiceValidation.VID_FINVOICE_201,
+                                                             FinvoiceValidation.VID_FINVOICE_30 })
       for (final IReadableResource aRes : getAllMatchingTestFiles (aVESID))
       {
         assertTrue ("Not existing test file: " + aRes.getPath (), aRes.exists ());

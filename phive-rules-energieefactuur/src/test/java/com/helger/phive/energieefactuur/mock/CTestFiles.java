@@ -145,14 +145,14 @@ public final class CTestFiles
         if (aVESID.equals (EnergieEFactuurValidation.VID_ENERGIE_EFACTUUR_2_0_0))
         {
           ret.add (new PhiveTestFile (new ClassPathResource (sPrefix + "2.0.0/bad/bad-meternumber-twice.xml"),
-                                 aVESID,
-                                 new CommonsHashSet <> ("")));
+                                      aVESID,
+                                      new CommonsHashSet <> ("")));
           ret.add (new PhiveTestFile (new ClassPathResource (sPrefix + "2.0.0/bad/bad-no-extension.xml"),
-                                 aVESID,
-                                 new CommonsHashSet <> ("")));
+                                      aVESID,
+                                      new CommonsHashSet <> ("")));
           ret.add (new PhiveTestFile (new ClassPathResource (sPrefix + "2.0.0/bad/bad-two-extensions.xml"),
-                                 aVESID,
-                                 new CommonsHashSet <> ("")));
+                                      aVESID,
+                                      new CommonsHashSet <> ("")));
         }
         else
           if (aVESID.equals (EnergieEFactuurValidation.VID_ENERGIE_EFACTUUR_3_0_0))

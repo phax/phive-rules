@@ -23,11 +23,10 @@ import com.helger.base.enforce.ValueEnforcer;
 import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.io.resource.ClassPathResource;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
-import com.helger.phive.api.executorset.ValidationExecutorSet;
+import com.helger.phive.rules.api.PhiveRulesBuilder;
 import com.helger.phive.rules.api.PhiveRulesHelper;
 import com.helger.phive.rules.api.PhiveRulesUBLHelper;
 import com.helger.phive.xml.source.IValidationSourceXML;
-import com.helger.phive.xml.xsd.ValidationExecutorXSD;
 import com.helger.ubl21.UBL21Marshaller;
 
 /**
@@ -78,8 +77,7 @@ public final class CIUS_PTValidation
   }
 
   /**
-   * Register all standard CIUS-PT validation execution sets to the provided
-   * registry.
+   * Register all standard CIUS-PT validation execution sets to the provided registry.
    *
    * @param aRegistry
    *        The registry to add the artefacts. May not be <code>null</code>.
@@ -88,43 +86,44 @@ public final class CIUS_PTValidation
   {
     ValueEnforcer.notNull (aRegistry, "Registry");
 
-    final boolean bDeprecated = true;
-    final boolean bNotDeprecated = false;
-
     // V2.0.0 containing the underlying EN rules
     {
       final ClassPathResource RES_200 = new ClassPathResource ("/external/schematron/2.0.0/urn_feap.gov.pt_CIUS-PT_2.0.0.xslt",
                                                                _getCL ());
-      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_CIUS_PT_UBL_CREDITNOTE_200,
-                                                                             "CIUS-PT UBL Credit Note " +
-                                                                                                             VID_CIUS_PT_UBL_CREDITNOTE_200.getVersionString (),
-                                                                             PhiveRulesHelper.createSimpleStatus (bDeprecated),
-                                                                             ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
-                                                                             PhiveRulesUBLHelper.createXSLT_UBL21 (RES_200)));
-      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_CIUS_PT_UBL_INVOICE_200,
-                                                                             "CIUS-PT UBL Invoice " +
-                                                                                                          VID_CIUS_PT_UBL_INVOICE_200.getVersionString (),
-                                                                             PhiveRulesHelper.createSimpleStatus (bDeprecated),
-                                                                             ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
-                                                                             PhiveRulesUBLHelper.createXSLT_UBL21 (RES_200)));
+      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .vesID (VID_CIUS_PT_UBL_CREDITNOTE_200)
+                       .displayNamePrefix ("CIUS-PT UBL Credit Note ")
+                       .deprecated ()
+                       .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
+                       .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (RES_200))
+                       .registerInto ();
+      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .vesID (VID_CIUS_PT_UBL_INVOICE_200)
+                       .displayNamePrefix ("CIUS-PT UBL Invoice ")
+                       .deprecated ()
+                       .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
+                       .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (RES_200))
+                       .registerInto ();
     }
 
     // V2.1.1 containing the underlying EN rules
     {
       final ClassPathResource RES_211 = new ClassPathResource ("/external/schematron/2.1.1/urn_feap.gov.pt_CIUS-PT_2.1.1.xslt",
                                                                _getCL ());
-      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_CIUS_PT_UBL_CREDITNOTE_211,
-                                                                             "CIUS-PT UBL Credit Note " +
-                                                                                                             VID_CIUS_PT_UBL_CREDITNOTE_211.getVersionString (),
-                                                                             PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
-                                                                             ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
-                                                                             PhiveRulesUBLHelper.createXSLT_UBL21 (RES_211)));
-      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_CIUS_PT_UBL_INVOICE_211,
-                                                                             "CIUS-PT UBL Invoice " +
-                                                                                                          VID_CIUS_PT_UBL_INVOICE_211.getVersionString (),
-                                                                             PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
-                                                                             ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
-                                                                             PhiveRulesUBLHelper.createXSLT_UBL21 (RES_211)));
+      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .vesID (VID_CIUS_PT_UBL_CREDITNOTE_211)
+                       .displayNamePrefix ("CIUS-PT UBL Credit Note ")
+                       .notDeprecated ()
+                       .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
+                       .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (RES_211))
+                       .registerInto ();
+      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .vesID (VID_CIUS_PT_UBL_INVOICE_211)
+                       .displayNamePrefix ("CIUS-PT UBL Invoice ")
+                       .notDeprecated ()
+                       .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
+                       .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (RES_211))
+                       .registerInto ();
     }
   }
 }
