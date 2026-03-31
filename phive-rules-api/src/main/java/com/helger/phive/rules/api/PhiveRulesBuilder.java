@@ -51,6 +51,15 @@ import com.helger.phive.xml.xsd.ValidationExecutorXSD;
 @NotThreadSafe
 public class PhiveRulesBuilder
 {
+  /**
+   * An alias definition for registering the same {@link ValidationExecutorSet} under an additional
+   * {@link DVRCoordinate} with a different display name (e.g. ZUGFeRD / Factur-X dual branding).
+   *
+   * @param vesID
+   *        The alias VES ID. May not be <code>null</code>.
+   * @param displayName
+   *        The alias display name. May neither be <code>null</code> nor empty.
+   */
   public static record Alias (@NonNull DVRCoordinate vesID, @NonNull @Nonempty String displayName)
   {
     public Alias
@@ -69,15 +78,30 @@ public class PhiveRulesBuilder
   private final ICommonsList <IValidationExecutor <IValidationSourceXML>> m_aExecutors = new CommonsArrayList <> ();
   private final ICommonsList <Alias> m_aAliases = new CommonsArrayList <> ();
 
+  /**
+   * Constructor. Use {@link #builder()} as the preferred entry point.
+   */
   protected PhiveRulesBuilder ()
   {}
 
+  /**
+   * Create a new builder instance.
+   *
+   * @return A new {@link PhiveRulesBuilder}. Never <code>null</code>.
+   */
   @NonNull
   public static PhiveRulesBuilder builder ()
   {
     return new PhiveRulesBuilder ();
   }
 
+  /**
+   * Set the VES ID (validation executor set coordinate). This is required.
+   *
+   * @param aVESID
+   *        The VES ID to use. May not be <code>null</code>.
+   * @return this for chaining
+   */
   @NonNull
   public PhiveRulesBuilder vesID (@NonNull final DVRCoordinate aVESID)
   {
@@ -85,6 +109,14 @@ public class PhiveRulesBuilder
     return this;
   }
 
+  /**
+   * Set the display name for the VES. Either this or {@link #displayNamePrefix(String)} must be
+   * called.
+   *
+   * @param sDisplayName
+   *        The display name. May neither be <code>null</code> nor empty.
+   * @return this for chaining
+   */
   @NonNull
   public PhiveRulesBuilder displayName (@NonNull @Nonempty final String sDisplayName)
   {
@@ -92,6 +124,14 @@ public class PhiveRulesBuilder
     return this;
   }
 
+  /**
+   * Set a display name prefix that will be combined with {@link DVRCoordinate#getVersionString()}
+   * to form the full display name. Either this or {@link #displayName(String)} must be called.
+   *
+   * @param sDisplayNamePrefix
+   *        The display name prefix. May neither be <code>null</code> nor empty.
+   * @return this for chaining
+   */
   @NonNull
   public PhiveRulesBuilder displayNamePrefix (@NonNull @Nonempty final String sDisplayNamePrefix)
   {
@@ -99,6 +139,14 @@ public class PhiveRulesBuilder
     return this;
   }
 
+  /**
+   * Set the validation executor set status. This is required. Alternatively use
+   * {@link #deprecated()}, {@link #notDeprecated()}, or {@link #deprecated(boolean)}.
+   *
+   * @param aStatus
+   *        The status to use. May not be <code>null</code>.
+   * @return this for chaining
+   */
   @NonNull
   public PhiveRulesBuilder status (@NonNull final IValidationExecutorSetStatus aStatus)
   {
@@ -106,39 +154,84 @@ public class PhiveRulesBuilder
     return this;
   }
 
+  /**
+   * Set the status to deprecated or not deprecated via
+   * {@link PhiveRulesHelper#createSimpleStatus(boolean)}.
+   *
+   * @param bIsDeprecated
+   *        <code>true</code> to mark as deprecated, <code>false</code> for active.
+   * @return this for chaining
+   */
   @NonNull
   public PhiveRulesBuilder deprecated (final boolean bIsDeprecated)
   {
     return status (PhiveRulesHelper.createSimpleStatus (bIsDeprecated));
   }
 
+  /**
+   * Mark the VES as deprecated. Shorthand for <code>deprecated (true)</code>.
+   *
+   * @return this for chaining
+   */
   @NonNull
   public PhiveRulesBuilder deprecated ()
   {
     return deprecated (true);
   }
 
+  /**
+   * Mark the VES as not deprecated. Shorthand for <code>deprecated (false)</code>.
+   *
+   * @return this for chaining
+   */
   @NonNull
   public PhiveRulesBuilder notDeprecated ()
   {
     return deprecated (false);
   }
 
+  /**
+   * Derive this VES from an existing base VES. When set, the executors from the base VES are copied
+   * first, then the executors added via {@link #addSchematron(ValidationExecutorSchematron)} etc.
+   * are appended.
+   *
+   * @param aBaseVES
+   *        The base VES to derive from. May not be <code>null</code>.
+   * @return this for chaining
+   */
   @NonNull
   public PhiveRulesBuilder basedOn (@NonNull final IValidationExecutorSet <IValidationSourceXML> aBaseVES)
   {
     return basedOn (aBaseVES, null);
   }
 
+  /**
+   * Derive this VES from an existing base VES, optionally applying custom error details to copied
+   * Schematron executors.
+   *
+   * @param aBaseVES
+   *        The base VES to derive from. May not be <code>null</code>.
+   * @param aCustomErrorLevels
+   *        Optional custom error details to apply to Schematron executors copied from the base VES.
+   *        May be <code>null</code>.
+   * @return this for chaining
+   */
   @NonNull
   public PhiveRulesBuilder basedOn (@NonNull final IValidationExecutorSet <IValidationSourceXML> aBaseVES,
                                     @Nullable final ICommonsMap <String, CustomErrorDetails> aCustomErrorLevels)
   {
     m_aBaseVES = ValueEnforcer.notNull (aBaseVES, "BaseVES");
-    m_aCustomErrorLevels = new CommonsHashMap <> (aCustomErrorLevels);
-    return null;
+    m_aCustomErrorLevels = aCustomErrorLevels != null ? new CommonsHashMap <> (aCustomErrorLevels) : null;
+    return this;
   }
 
+  /**
+   * Add an XSD validation executor for a single XSD resource.
+   *
+   * @param aXSDRes
+   *        The XSD resource. May not be <code>null</code>.
+   * @return this for chaining
+   */
   @NonNull
   public PhiveRulesBuilder addXSD (@NonNull final IReadableResource aXSDRes)
   {
@@ -147,6 +240,14 @@ public class PhiveRulesBuilder
     return this;
   }
 
+  /**
+   * Add an XSD validation executor for multiple XSD resources.
+   *
+   * @param aXSDRes
+   *        The XSD resources. May neither be <code>null</code> nor empty, and no element may be
+   *        <code>null</code>.
+   * @return this for chaining
+   */
   @NonNull
   public PhiveRulesBuilder addXSD (@NonNull final IReadableResource... aXSDRes)
   {
@@ -155,6 +256,14 @@ public class PhiveRulesBuilder
     return this;
   }
 
+  /**
+   * Add an XSD validation executor for multiple XSD resources provided as a list.
+   *
+   * @param aXSDRes
+   *        The XSD resources. May neither be <code>null</code> nor empty, and no element may be
+   *        <code>null</code>.
+   * @return this for chaining
+   */
   @NonNull
   public PhiveRulesBuilder addXSD (@NonNull final List <? extends IReadableResource> aXSDRes)
   {
@@ -163,6 +272,16 @@ public class PhiveRulesBuilder
     return this;
   }
 
+  /**
+   * Add a Schematron validation executor.
+   *
+   * @param aSchematron
+   *        The Schematron executor, typically created via
+   *        {@link PhiveRulesUBLHelper#createXSLT_UBL21(IReadableResource)},
+   *        {@link PhiveRulesCIIHelper#createXSLT_CII_D16B(IReadableResource)} or similar helper
+   *        methods. May not be <code>null</code>.
+   * @return this for chaining
+   */
   @NonNull
   public PhiveRulesBuilder addSchematron (@NonNull final ValidationExecutorSchematron aSchematron)
   {
@@ -171,6 +290,15 @@ public class PhiveRulesBuilder
     return this;
   }
 
+  /**
+   * Add a pre-built collection of validation executors. Use this when executor lists are assembled
+   * manually (e.g. with partial XSD validation or custom insertion order).
+   *
+   * @param aExecutors
+   *        The executors to add. May neither be <code>null</code> nor empty, and no element may be
+   *        <code>null</code>.
+   * @return this for chaining
+   */
   @NonNull
   public PhiveRulesBuilder addExecutorsManually (@NonNull final Collection <? extends IValidationExecutor <IValidationSourceXML>> aExecutors)
   {
@@ -179,6 +307,16 @@ public class PhiveRulesBuilder
     return this;
   }
 
+  /**
+   * Add an alias registration that will be created when
+   * {@link #registerInto(IValidationExecutorSetRegistry)} is called. The alias is a
+   * {@link ValidationExecutorSetAlias} pointing to the same VES under a different ID and display
+   * name.
+   *
+   * @param aAlias
+   *        The alias definition. May not be <code>null</code>.
+   * @return this for chaining
+   */
   @NonNull
   public PhiveRulesBuilder addAlias (@NonNull final Alias aAlias)
   {
@@ -198,6 +336,15 @@ public class PhiveRulesBuilder
     throw new IllegalStateException ("Either displayName or displayNamePrefix must be set");
   }
 
+  /**
+   * Build the {@link ValidationExecutorSet} from the configured properties without registering it.
+   * Requires that {@link #vesID(DVRCoordinate)}, a display name (via {@link #displayName(String)}
+   * or {@link #displayNamePrefix(String)}), and a status have been set.
+   *
+   * @return The newly created VES. Never <code>null</code>.
+   * @throws IllegalStateException
+   *         if required properties are missing.
+   */
   @NonNull
   public ValidationExecutorSet <IValidationSourceXML> createVES ()
   {
@@ -239,6 +386,13 @@ public class PhiveRulesBuilder
     return aVES;
   }
 
+  /**
+   * Build the VES via {@link #createVES()}, register it in the provided registry, and also register
+   * any aliases added via {@link #addAlias(Alias)}.
+   *
+   * @param aRegistry
+   *        The registry to register the VES into. May not be <code>null</code>.
+   */
   public void registerInto (@NonNull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
   {
     ValueEnforcer.notNull (aRegistry, "Registry");
@@ -248,8 +402,10 @@ public class PhiveRulesBuilder
 
     // Finally register also all aliases (e.g. for Zugferd)
     for (final Alias aAlias : m_aAliases)
+    {
       aRegistry.registerValidationExecutorSet (new ValidationExecutorSetAlias <> (aAlias.vesID (),
                                                                                   aAlias.displayName (),
                                                                                   aVES));
+    }
   }
 }
