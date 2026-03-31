@@ -734,7 +734,7 @@ public final class OIOUBLValidation
     // 1.12.3
     {
       final String sPath = "/external/schematron/oioubl/1.12.3/xslt/";
-      PhiveRulesBuilder.forRegistry (aRegistry)
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_APPLICATION_RESPONSE_1_12_3)
                        .displayNamePrefix ("OIOUBL Application Response ")
                        .deprecated ()
@@ -742,8 +742,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_ApplicationResponse_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_CATALOGUE_1_12_3)
                        .displayNamePrefix ("OIOUBL Catalogue ")
                        .deprecated ()
@@ -751,8 +751,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_Catalogue_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_CATALOGUE_DELETION_1_12_3)
                        .displayNamePrefix ("OIOUBL Catalogue Deletion ")
                        .deprecated ()
@@ -760,8 +760,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_CatalogueDeletion_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_CATALOGUE_ITEM_SPECIFICATION_UPDATE_1_12_3)
                        .displayNamePrefix ("OIOUBL Catalogue Item Specification Update ")
                        .deprecated ()
@@ -769,8 +769,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_CatalogueItemSpecificationUpdate_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_CATALOGUE_PRICING_UPDATE_1_12_3)
                        .displayNamePrefix ("OIOUBL Catalogue Pricing Update ")
                        .deprecated ()
@@ -778,8 +778,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_CataloguePricingUpdate_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_CATALOGUE_REQUEST_1_12_3)
                        .displayNamePrefix ("OIOUBL Catalogue Request ")
                        .deprecated ()
@@ -787,8 +787,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_CatalogueRequest_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_CREDIT_NOTE_1_12_3)
                        .displayNamePrefix ("OIOUBL Credit Note ")
                        .deprecated ()
@@ -796,8 +796,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_CreditNote_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_INVOICE_1_12_3)
                        .displayNamePrefix ("OIOUBL Invoice ")
                        .deprecated ()
@@ -805,8 +805,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_Invoice_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_ORDER_1_12_3)
                        .displayNamePrefix ("OIOUBL Order ")
                        .deprecated ()
@@ -814,8 +814,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_Order_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_ORDER_CANCELLATION_1_12_3)
                        .displayNamePrefix ("OIOUBL Order Cancellation ")
                        .deprecated ()
@@ -823,8 +823,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_OrderCancellation_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_ORDER_CHANGE_1_12_3)
                        .displayNamePrefix ("OIOUBL Order Change ")
                        .deprecated ()
@@ -832,8 +832,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_OrderChange_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_ORDER_RESPONSE_1_12_3)
                        .displayNamePrefix ("OIOUBL Order Response ")
                        .deprecated ()
@@ -841,8 +841,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_OrderResponse_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_ORDER_RESPONSE_SIMPLE_1_12_3)
                        .displayNamePrefix ("OIOUBL Order Response Simple ")
                        .deprecated ()
@@ -850,8 +850,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_OrderResponseSimple_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_REMINDER_1_12_3)
                        .displayNamePrefix ("OIOUBL Reminder ")
                        .deprecated ()
@@ -859,8 +859,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_Reminder_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_STATEMENT_1_12_3)
                        .displayNamePrefix ("OIOUBL Statement ")
                        .deprecated ()
@@ -868,9 +868,9 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_Statement_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
+                       .registerInto (aRegistry);
 
-      PhiveRulesBuilder.forRegistry (aRegistry)
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_UTILITY_STATEMENT_1_12_3)
                        .displayNamePrefix ("OIOUBL Utility Statement ")
                        .deprecated ()
@@ -878,13 +878,13 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL20 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_UtilityStatement_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
+                       .registerInto (aRegistry);
     }
 
     // 1.13.0
     {
       final String sPath = "/external/schematron/oioubl/1.13.0/xslt/";
-      PhiveRulesBuilder.forRegistry (aRegistry)
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_APPLICATION_RESPONSE_1_13_0)
                        .displayNamePrefix ("OIOUBL Application Response ")
                        .deprecated ()
@@ -892,8 +892,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_ApplicationResponse_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_CATALOGUE_1_13_0)
                        .displayNamePrefix ("OIOUBL Catalogue ")
                        .deprecated ()
@@ -901,8 +901,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_Catalogue_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_CATALOGUE_DELETION_1_13_0)
                        .displayNamePrefix ("OIOUBL Catalogue Deletion ")
                        .deprecated ()
@@ -910,8 +910,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_CatalogueDeletion_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_CATALOGUE_ITEM_SPECIFICATION_UPDATE_1_13_0)
                        .displayNamePrefix ("OIOUBL Catalogue Item Specification Update ")
                        .deprecated ()
@@ -919,8 +919,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_CatalogueItemSpecificationUpdate_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_CATALOGUE_PRICING_UPDATE_1_13_0)
                        .displayNamePrefix ("OIOUBL Catalogue Pricing Update ")
                        .deprecated ()
@@ -928,8 +928,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_CataloguePricingUpdate_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_CATALOGUE_REQUEST_1_13_0)
                        .displayNamePrefix ("OIOUBL Catalogue Request ")
                        .deprecated ()
@@ -937,8 +937,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_CatalogueRequest_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_CREDIT_NOTE_1_13_0)
                        .displayNamePrefix ("OIOUBL Credit Note ")
                        .deprecated ()
@@ -946,8 +946,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_CreditNote_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_INVOICE_1_13_0)
                        .displayNamePrefix ("OIOUBL Invoice ")
                        .deprecated ()
@@ -955,8 +955,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_Invoice_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_ORDER_1_13_0)
                        .displayNamePrefix ("OIOUBL Order ")
                        .deprecated ()
@@ -964,8 +964,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_Order_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_ORDER_CANCELLATION_1_13_0)
                        .displayNamePrefix ("OIOUBL Order Cancellation ")
                        .deprecated ()
@@ -973,8 +973,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_OrderCancellation_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_ORDER_CHANGE_1_13_0)
                        .displayNamePrefix ("OIOUBL Order Change ")
                        .deprecated ()
@@ -982,8 +982,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_OrderChange_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_ORDER_RESPONSE_1_13_0)
                        .displayNamePrefix ("OIOUBL Order Response ")
                        .deprecated ()
@@ -991,8 +991,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_OrderResponse_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_ORDER_RESPONSE_SIMPLE_1_13_0)
                        .displayNamePrefix ("OIOUBL Order Response Simple ")
                        .deprecated ()
@@ -1000,8 +1000,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_OrderResponseSimple_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_REMINDER_1_13_0)
                        .displayNamePrefix ("OIOUBL Reminder ")
                        .deprecated ()
@@ -1009,8 +1009,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_Reminder_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_STATEMENT_1_13_0)
                        .displayNamePrefix ("OIOUBL Statement ")
                        .deprecated ()
@@ -1018,9 +1018,9 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_Statement_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
+                       .registerInto (aRegistry);
 
-      PhiveRulesBuilder.forRegistry (aRegistry)
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_UTILITY_STATEMENT_1_13_0)
                        .displayNamePrefix ("OIOUBL Utility Statement ")
                        .deprecated ()
@@ -1028,13 +1028,13 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL20 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_UtilityStatement_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
+                       .registerInto (aRegistry);
     }
 
     // 1.13.2
     {
       final String sPath = "/external/schematron/oioubl/1.13.2/xslt/";
-      PhiveRulesBuilder.forRegistry (aRegistry)
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_APPLICATION_RESPONSE_1_13_2)
                        .displayNamePrefix ("OIOUBL Application Response ")
                        .deprecated ()
@@ -1042,8 +1042,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_ApplicationResponse_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_CATALOGUE_1_13_2)
                        .displayNamePrefix ("OIOUBL Catalogue ")
                        .deprecated ()
@@ -1051,8 +1051,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_Catalogue_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_CATALOGUE_DELETION_1_13_2)
                        .displayNamePrefix ("OIOUBL Catalogue Deletion ")
                        .deprecated ()
@@ -1060,8 +1060,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_CatalogueDeletion_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_CATALOGUE_ITEM_SPECIFICATION_UPDATE_1_13_2)
                        .displayNamePrefix ("OIOUBL Catalogue Item Specification Update ")
                        .deprecated ()
@@ -1069,8 +1069,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_CatalogueItemSpecificationUpdate_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_CATALOGUE_PRICING_UPDATE_1_13_2)
                        .displayNamePrefix ("OIOUBL Catalogue Pricing Update ")
                        .deprecated ()
@@ -1078,8 +1078,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_CataloguePricingUpdate_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_CATALOGUE_REQUEST_1_13_2)
                        .displayNamePrefix ("OIOUBL Catalogue Request ")
                        .deprecated ()
@@ -1087,8 +1087,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_CatalogueRequest_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_CREDIT_NOTE_1_13_2)
                        .displayNamePrefix ("OIOUBL Credit Note ")
                        .deprecated ()
@@ -1096,8 +1096,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_CreditNote_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_INVOICE_1_13_2)
                        .displayNamePrefix ("OIOUBL Invoice ")
                        .deprecated ()
@@ -1105,8 +1105,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_Invoice_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_ORDER_1_13_2)
                        .displayNamePrefix ("OIOUBL Order ")
                        .deprecated ()
@@ -1114,8 +1114,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_Order_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_ORDER_CANCELLATION_1_13_2)
                        .displayNamePrefix ("OIOUBL Order Cancellation ")
                        .deprecated ()
@@ -1123,8 +1123,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_OrderCancellation_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_ORDER_CHANGE_1_13_2)
                        .displayNamePrefix ("OIOUBL Order Change ")
                        .deprecated ()
@@ -1132,8 +1132,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_OrderChange_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_ORDER_RESPONSE_1_13_2)
                        .displayNamePrefix ("OIOUBL Order Response ")
                        .deprecated ()
@@ -1141,8 +1141,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_OrderResponse_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_ORDER_RESPONSE_SIMPLE_1_13_2)
                        .displayNamePrefix ("OIOUBL Order Response Simple ")
                        .deprecated ()
@@ -1150,8 +1150,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_OrderResponseSimple_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_REMINDER_1_13_2)
                        .displayNamePrefix ("OIOUBL Reminder ")
                        .deprecated ()
@@ -1159,8 +1159,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_Reminder_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_STATEMENT_1_13_2)
                        .displayNamePrefix ("OIOUBL Statement ")
                        .deprecated ()
@@ -1168,9 +1168,9 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_Statement_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
+                       .registerInto (aRegistry);
 
-      PhiveRulesBuilder.forRegistry (aRegistry)
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_UTILITY_STATEMENT_1_13_2)
                        .displayNamePrefix ("OIOUBL Utility Statement ")
                        .deprecated ()
@@ -1178,13 +1178,13 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL20 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_UtilityStatement_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
+                       .registerInto (aRegistry);
     }
 
     // 1.14.2
     {
       final String sPath = "/external/schematron/oioubl/1.14.2/xslt/";
-      PhiveRulesBuilder.forRegistry (aRegistry)
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_APPLICATION_RESPONSE_1_14_2)
                        .displayName ("OIOUBL Application Response " + VERSION_1_14_2)
                        .deprecated ()
@@ -1192,8 +1192,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_ApplicationResponse_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_CATALOGUE_1_14_2)
                        .displayName ("OIOUBL Catalogue " + VERSION_1_14_2)
                        .deprecated ()
@@ -1201,8 +1201,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_Catalogue_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_CATALOGUE_DELETION_1_14_2)
                        .displayName ("OIOUBL Catalogue Deletion " + VERSION_1_14_2)
                        .deprecated ()
@@ -1210,8 +1210,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_CatalogueDeletion_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_CATALOGUE_ITEM_SPECIFICATION_UPDATE_1_14_2)
                        .displayName ("OIOUBL Catalogue Item Specification Update " + VERSION_1_14_2)
                        .deprecated ()
@@ -1219,8 +1219,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_CatalogueItemSpecificationUpdate_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_CATALOGUE_PRICING_UPDATE_1_14_2)
                        .displayName ("OIOUBL Catalogue Pricing Update " + VERSION_1_14_2)
                        .deprecated ()
@@ -1228,8 +1228,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_CataloguePricingUpdate_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_CATALOGUE_REQUEST_1_14_2)
                        .displayName ("OIOUBL Catalogue Request " + VERSION_1_14_2)
                        .deprecated ()
@@ -1237,8 +1237,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_CatalogueRequest_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_CREDIT_NOTE_1_14_2)
                        .displayName ("OIOUBL Credit Note " + VERSION_1_14_2)
                        .deprecated ()
@@ -1246,8 +1246,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_CreditNote_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_INVOICE_1_14_2)
                        .displayName ("OIOUBL Invoice " + VERSION_1_14_2)
                        .deprecated ()
@@ -1255,8 +1255,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_Invoice_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_ORDER_1_14_2)
                        .displayName ("OIOUBL Order " + VERSION_1_14_2)
                        .deprecated ()
@@ -1264,8 +1264,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_Order_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_ORDER_CANCELLATION_1_14_2)
                        .displayName ("OIOUBL Order Cancellation " + VERSION_1_14_2)
                        .deprecated ()
@@ -1273,8 +1273,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_OrderCancellation_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_ORDER_CHANGE_1_14_2)
                        .displayName ("OIOUBL Order Change " + VERSION_1_14_2)
                        .deprecated ()
@@ -1282,8 +1282,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_OrderChange_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_ORDER_RESPONSE_1_14_2)
                        .displayName ("OIOUBL Order Response " + VERSION_1_14_2)
                        .deprecated ()
@@ -1291,8 +1291,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_OrderResponse_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_ORDER_RESPONSE_SIMPLE_1_14_2)
                        .displayName ("OIOUBL Order Response Simple " + VERSION_1_14_2)
                        .deprecated ()
@@ -1300,8 +1300,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_OrderResponseSimple_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_REMINDER_1_14_2)
                        .displayName ("OIOUBL Reminder " + VERSION_1_14_2)
                        .deprecated ()
@@ -1309,8 +1309,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_Reminder_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_STATEMENT_1_14_2)
                        .displayName ("OIOUBL Statement " + VERSION_1_14_2)
                        .deprecated ()
@@ -1318,9 +1318,9 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_Statement_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
+                       .registerInto (aRegistry);
 
-      PhiveRulesBuilder.forRegistry (aRegistry)
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_UTILITY_STATEMENT_1_14_2)
                        .displayName ("OIOUBL Utility Statement " + VERSION_1_14_2)
                        .deprecated ()
@@ -1328,13 +1328,13 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL20 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_UtilityStatement_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
+                       .registerInto (aRegistry);
     }
 
     // 1.15.0-rc
     {
       final String sPath = "/external/schematron/oioubl/1.15.0-rc/xslt/";
-      PhiveRulesBuilder.forRegistry (aRegistry)
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_APPLICATION_RESPONSE_1_15_0_RC)
                        .displayName ("OIOUBL Application Response " + VERSION_1_15_0_RC)
                        .deprecated ()
@@ -1342,8 +1342,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_ApplicationResponse_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_CATALOGUE_1_15_0_RC)
                        .displayName ("OIOUBL Catalogue " + VERSION_1_15_0_RC)
                        .deprecated ()
@@ -1351,8 +1351,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_Catalogue_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_CATALOGUE_DELETION_1_15_0_RC)
                        .displayName ("OIOUBL Catalogue Deletion " + VERSION_1_15_0_RC)
                        .deprecated ()
@@ -1360,8 +1360,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_CatalogueDeletion_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_CATALOGUE_ITEM_SPECIFICATION_UPDATE_1_15_0_RC)
                        .displayName ("OIOUBL Catalogue Item Specification Update " + VERSION_1_15_0_RC)
                        .deprecated ()
@@ -1369,8 +1369,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_CatalogueItemSpecificationUpdate_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_CATALOGUE_PRICING_UPDATE_1_15_0_RC)
                        .displayName ("OIOUBL Catalogue Pricing Update " + VERSION_1_15_0_RC)
                        .deprecated ()
@@ -1378,8 +1378,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_CataloguePricingUpdate_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_CATALOGUE_REQUEST_1_15_0_RC)
                        .displayName ("OIOUBL Catalogue Request " + VERSION_1_15_0_RC)
                        .deprecated ()
@@ -1387,8 +1387,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_CatalogueRequest_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_CREDIT_NOTE_1_15_0_RC)
                        .displayName ("OIOUBL Credit Note " + VERSION_1_15_0_RC)
                        .deprecated ()
@@ -1396,8 +1396,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_CreditNote_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_INVOICE_1_15_0_RC)
                        .displayName ("OIOUBL Invoice " + VERSION_1_15_0_RC)
                        .deprecated ()
@@ -1405,8 +1405,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_Invoice_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_ORDER_1_15_0_RC)
                        .displayName ("OIOUBL Order " + VERSION_1_15_0_RC)
                        .deprecated ()
@@ -1414,8 +1414,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_Order_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_ORDER_CANCELLATION_1_15_0_RC)
                        .displayName ("OIOUBL Order Cancellation " + VERSION_1_15_0_RC)
                        .deprecated ()
@@ -1423,8 +1423,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_OrderCancellation_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_ORDER_CHANGE_1_15_0_RC)
                        .displayName ("OIOUBL Order Change " + VERSION_1_15_0_RC)
                        .deprecated ()
@@ -1432,8 +1432,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_OrderChange_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_ORDER_RESPONSE_1_15_0_RC)
                        .displayName ("OIOUBL Order Response " + VERSION_1_15_0_RC)
                        .deprecated ()
@@ -1441,8 +1441,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_OrderResponse_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_ORDER_RESPONSE_SIMPLE_1_15_0_RC)
                        .displayName ("OIOUBL Order Response Simple " + VERSION_1_15_0_RC)
                        .deprecated ()
@@ -1450,8 +1450,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_OrderResponseSimple_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_REMINDER_1_15_0_RC)
                        .displayName ("OIOUBL Reminder " + VERSION_1_15_0_RC)
                        .deprecated ()
@@ -1459,8 +1459,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_Reminder_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_STATEMENT_1_15_0_RC)
                        .displayName ("OIOUBL Statement " + VERSION_1_15_0_RC)
                        .deprecated ()
@@ -1468,9 +1468,9 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_Statement_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
+                       .registerInto (aRegistry);
 
-      PhiveRulesBuilder.forRegistry (aRegistry)
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_UTILITY_STATEMENT_1_15_0_RC)
                        .displayName ("OIOUBL Utility Statement " + VERSION_1_15_0_RC)
                        .deprecated ()
@@ -1478,13 +1478,13 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL20 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_UtilityStatement_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
+                       .registerInto (aRegistry);
     }
 
     // 1.15.1
     {
       final String sPath = "/external/schematron/oioubl/1.15.1/xslt/";
-      PhiveRulesBuilder.forRegistry (aRegistry)
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_APPLICATION_RESPONSE_1_15_1)
                        .displayName ("OIOUBL Application Response " + VERSION_1_15_1)
                        .status (PhiveRulesHelper.createSimpleStatus (bDeprecated, VERSION_1_15_1_VALID_PER_UTC))
@@ -1492,8 +1492,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_ApplicationResponse_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_CATALOGUE_1_15_1)
                        .displayName ("OIOUBL Catalogue " + VERSION_1_15_1)
                        .status (PhiveRulesHelper.createSimpleStatus (bDeprecated, VERSION_1_15_1_VALID_PER_UTC))
@@ -1501,8 +1501,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_Catalogue_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_CATALOGUE_DELETION_1_15_1)
                        .displayName ("OIOUBL Catalogue Deletion " + VERSION_1_15_1)
                        .status (PhiveRulesHelper.createSimpleStatus (bDeprecated, VERSION_1_15_1_VALID_PER_UTC))
@@ -1510,8 +1510,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_CatalogueDeletion_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_CATALOGUE_ITEM_SPECIFICATION_UPDATE_1_15_1)
                        .displayName ("OIOUBL Catalogue Item Specification Update " + VERSION_1_15_1)
                        .status (PhiveRulesHelper.createSimpleStatus (bDeprecated, VERSION_1_15_1_VALID_PER_UTC))
@@ -1519,8 +1519,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_CatalogueItemSpecificationUpdate_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_CATALOGUE_PRICING_UPDATE_1_15_1)
                        .displayName ("OIOUBL Catalogue Pricing Update " + VERSION_1_15_1)
                        .status (PhiveRulesHelper.createSimpleStatus (bDeprecated, VERSION_1_15_1_VALID_PER_UTC))
@@ -1528,8 +1528,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_CataloguePricingUpdate_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_CATALOGUE_REQUEST_1_15_1)
                        .displayName ("OIOUBL Catalogue Request " + VERSION_1_15_1)
                        .status (PhiveRulesHelper.createSimpleStatus (bDeprecated, VERSION_1_15_1_VALID_PER_UTC))
@@ -1537,8 +1537,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_CatalogueRequest_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_CREDIT_NOTE_1_15_1)
                        .displayName ("OIOUBL Credit Note " + VERSION_1_15_1)
                        .status (PhiveRulesHelper.createSimpleStatus (bDeprecated, VERSION_1_15_1_VALID_PER_UTC))
@@ -1546,8 +1546,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_CreditNote_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_INVOICE_1_15_1)
                        .displayName ("OIOUBL Invoice " + VERSION_1_15_1)
                        .status (PhiveRulesHelper.createSimpleStatus (bDeprecated, VERSION_1_15_1_VALID_PER_UTC))
@@ -1555,8 +1555,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_Invoice_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_ORDER_1_15_1)
                        .displayName ("OIOUBL Order " + VERSION_1_15_1)
                        .status (PhiveRulesHelper.createSimpleStatus (bDeprecated, VERSION_1_15_1_VALID_PER_UTC))
@@ -1564,8 +1564,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_Order_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_ORDER_CANCELLATION_1_15_1)
                        .displayName ("OIOUBL Order Cancellation " + VERSION_1_15_1)
                        .status (PhiveRulesHelper.createSimpleStatus (bDeprecated, VERSION_1_15_1_VALID_PER_UTC))
@@ -1573,8 +1573,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_OrderCancellation_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_ORDER_CHANGE_1_15_1)
                        .displayName ("OIOUBL Order Change " + VERSION_1_15_1)
                        .status (PhiveRulesHelper.createSimpleStatus (bDeprecated, VERSION_1_15_1_VALID_PER_UTC))
@@ -1582,8 +1582,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_OrderChange_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_ORDER_RESPONSE_1_15_1)
                        .displayName ("OIOUBL Order Response " + VERSION_1_15_1)
                        .status (PhiveRulesHelper.createSimpleStatus (bDeprecated, VERSION_1_15_1_VALID_PER_UTC))
@@ -1591,8 +1591,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_OrderResponse_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_ORDER_RESPONSE_SIMPLE_1_15_1)
                        .displayName ("OIOUBL Order Response Simple " + VERSION_1_15_1)
                        .status (PhiveRulesHelper.createSimpleStatus (bDeprecated, VERSION_1_15_1_VALID_PER_UTC))
@@ -1600,8 +1600,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_OrderResponseSimple_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_REMINDER_1_15_1)
                        .displayName ("OIOUBL Reminder " + VERSION_1_15_1)
                        .status (PhiveRulesHelper.createSimpleStatus (bDeprecated, VERSION_1_15_1_VALID_PER_UTC))
@@ -1609,8 +1609,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_Reminder_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_STATEMENT_1_15_1)
                        .displayName ("OIOUBL Statement " + VERSION_1_15_1)
                        .status (PhiveRulesHelper.createSimpleStatus (bDeprecated, VERSION_1_15_1_VALID_PER_UTC))
@@ -1618,9 +1618,9 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_Statement_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
+                       .registerInto (aRegistry);
 
-      PhiveRulesBuilder.forRegistry (aRegistry)
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_UTILITY_STATEMENT_1_15_1)
                        .displayName ("OIOUBL Utility Statement " + VERSION_1_15_1)
                        .status (PhiveRulesHelper.createSimpleStatus (bDeprecated, VERSION_1_15_1_VALID_PER_UTC))
@@ -1628,13 +1628,13 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL20 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_UtilityStatement_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
+                       .registerInto (aRegistry);
     }
 
     // 1.15.2
     {
       final String sPath = "/external/schematron/oioubl/1.15.2/xslt/";
-      PhiveRulesBuilder.forRegistry (aRegistry)
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_APPLICATION_RESPONSE_1_15_2)
                        .displayName ("OIOUBL Application Response " + VERSION_1_15_2)
                        .status (PhiveRulesHelper.createSimpleStatus (bDeprecated, VERSION_1_15_2_VALID_PER_UTC))
@@ -1642,8 +1642,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_ApplicationResponse_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_CATALOGUE_1_15_2)
                        .displayName ("OIOUBL Catalogue " + VERSION_1_15_2)
                        .status (PhiveRulesHelper.createSimpleStatus (bDeprecated, VERSION_1_15_2_VALID_PER_UTC))
@@ -1651,8 +1651,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_Catalogue_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_CATALOGUE_DELETION_1_15_2)
                        .displayName ("OIOUBL Catalogue Deletion " + VERSION_1_15_2)
                        .status (PhiveRulesHelper.createSimpleStatus (bDeprecated, VERSION_1_15_2_VALID_PER_UTC))
@@ -1660,8 +1660,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_CatalogueDeletion_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_CATALOGUE_ITEM_SPECIFICATION_UPDATE_1_15_2)
                        .displayName ("OIOUBL Catalogue Item Specification Update " + VERSION_1_15_2)
                        .status (PhiveRulesHelper.createSimpleStatus (bDeprecated, VERSION_1_15_2_VALID_PER_UTC))
@@ -1669,8 +1669,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_CatalogueItemSpecificationUpdate_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_CATALOGUE_PRICING_UPDATE_1_15_2)
                        .displayName ("OIOUBL Catalogue Pricing Update " + VERSION_1_15_2)
                        .status (PhiveRulesHelper.createSimpleStatus (bDeprecated, VERSION_1_15_2_VALID_PER_UTC))
@@ -1678,8 +1678,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_CataloguePricingUpdate_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_CATALOGUE_REQUEST_1_15_2)
                        .displayName ("OIOUBL Catalogue Request " + VERSION_1_15_2)
                        .status (PhiveRulesHelper.createSimpleStatus (bDeprecated, VERSION_1_15_2_VALID_PER_UTC))
@@ -1687,8 +1687,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_CatalogueRequest_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_CREDIT_NOTE_1_15_2)
                        .displayName ("OIOUBL Credit Note " + VERSION_1_15_2)
                        .status (PhiveRulesHelper.createSimpleStatus (bDeprecated, VERSION_1_15_2_VALID_PER_UTC))
@@ -1696,8 +1696,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_CreditNote_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_INVOICE_1_15_2)
                        .displayName ("OIOUBL Invoice " + VERSION_1_15_2)
                        .status (PhiveRulesHelper.createSimpleStatus (bDeprecated, VERSION_1_15_2_VALID_PER_UTC))
@@ -1705,8 +1705,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_Invoice_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_ORDER_1_15_2)
                        .displayName ("OIOUBL Order " + VERSION_1_15_2)
                        .status (PhiveRulesHelper.createSimpleStatus (bDeprecated, VERSION_1_15_2_VALID_PER_UTC))
@@ -1714,8 +1714,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_Order_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_ORDER_CANCELLATION_1_15_2)
                        .displayName ("OIOUBL Order Cancellation " + VERSION_1_15_2)
                        .status (PhiveRulesHelper.createSimpleStatus (bDeprecated, VERSION_1_15_2_VALID_PER_UTC))
@@ -1723,8 +1723,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_OrderCancellation_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_ORDER_CHANGE_1_15_2)
                        .displayName ("OIOUBL Order Change " + VERSION_1_15_2)
                        .status (PhiveRulesHelper.createSimpleStatus (bDeprecated, VERSION_1_15_2_VALID_PER_UTC))
@@ -1732,8 +1732,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_OrderChange_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_ORDER_RESPONSE_1_15_2)
                        .displayName ("OIOUBL Order Response " + VERSION_1_15_2)
                        .status (PhiveRulesHelper.createSimpleStatus (bDeprecated, VERSION_1_15_2_VALID_PER_UTC))
@@ -1741,8 +1741,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_OrderResponse_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_ORDER_RESPONSE_SIMPLE_1_15_2)
                        .displayName ("OIOUBL Order Response Simple " + VERSION_1_15_2)
                        .status (PhiveRulesHelper.createSimpleStatus (bDeprecated, VERSION_1_15_2_VALID_PER_UTC))
@@ -1750,8 +1750,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_OrderResponseSimple_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_REMINDER_1_15_2)
                        .displayName ("OIOUBL Reminder " + VERSION_1_15_2)
                        .status (PhiveRulesHelper.createSimpleStatus (bDeprecated, VERSION_1_15_2_VALID_PER_UTC))
@@ -1759,8 +1759,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_Reminder_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_STATEMENT_1_15_2)
                        .displayName ("OIOUBL Statement " + VERSION_1_15_2)
                        .status (PhiveRulesHelper.createSimpleStatus (bDeprecated, VERSION_1_15_2_VALID_PER_UTC))
@@ -1768,9 +1768,9 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_Statement_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
+                       .registerInto (aRegistry);
 
-      PhiveRulesBuilder.forRegistry (aRegistry)
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_UTILITY_STATEMENT_1_15_2)
                        .displayName ("OIOUBL Utility Statement " + VERSION_1_15_2)
                        .status (PhiveRulesHelper.createSimpleStatus (bDeprecated, VERSION_1_15_2_VALID_PER_UTC))
@@ -1778,13 +1778,13 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL20 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_UtilityStatement_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
+                       .registerInto (aRegistry);
     }
 
     // 1.16.1
     {
       final String sPath = "/external/schematron/oioubl/1.16.1/xslt/";
-      PhiveRulesBuilder.forRegistry (aRegistry)
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_APPLICATION_RESPONSE_1_16_1)
                        .displayName ("OIOUBL Application Response " + VERSION_1_16_1)
                        .status (PhiveRulesHelper.createSimpleStatus (bNotDeprecated, VERSION_1_16_1_VALID_PER_UTC))
@@ -1792,8 +1792,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_ApplicationResponse_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_CATALOGUE_1_16_1)
                        .displayName ("OIOUBL Catalogue " + VERSION_1_16_1)
                        .status (PhiveRulesHelper.createSimpleStatus (bNotDeprecated, VERSION_1_16_1_VALID_PER_UTC))
@@ -1801,8 +1801,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_Catalogue_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_CATALOGUE_DELETION_1_16_1)
                        .displayName ("OIOUBL Catalogue Deletion " + VERSION_1_16_1)
                        .status (PhiveRulesHelper.createSimpleStatus (bNotDeprecated, VERSION_1_16_1_VALID_PER_UTC))
@@ -1810,8 +1810,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_CatalogueDeletion_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_CATALOGUE_ITEM_SPECIFICATION_UPDATE_1_16_1)
                        .displayName ("OIOUBL Catalogue Item Specification Update " + VERSION_1_16_1)
                        .status (PhiveRulesHelper.createSimpleStatus (bNotDeprecated, VERSION_1_16_1_VALID_PER_UTC))
@@ -1819,8 +1819,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_CatalogueItemSpecificationUpdate_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_CATALOGUE_PRICING_UPDATE_1_16_1)
                        .displayName ("OIOUBL Catalogue Pricing Update " + VERSION_1_16_1)
                        .status (PhiveRulesHelper.createSimpleStatus (bNotDeprecated, VERSION_1_16_1_VALID_PER_UTC))
@@ -1828,8 +1828,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_CataloguePricingUpdate_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_CATALOGUE_REQUEST_1_16_1)
                        .displayName ("OIOUBL Catalogue Request " + VERSION_1_16_1)
                        .status (PhiveRulesHelper.createSimpleStatus (bNotDeprecated, VERSION_1_16_1_VALID_PER_UTC))
@@ -1837,8 +1837,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_CatalogueRequest_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_CREDIT_NOTE_1_16_1)
                        .displayName ("OIOUBL Credit Note " + VERSION_1_16_1)
                        .status (PhiveRulesHelper.createSimpleStatus (bNotDeprecated, VERSION_1_16_1_VALID_PER_UTC))
@@ -1846,8 +1846,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_CreditNote_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_INVOICE_1_16_1)
                        .displayName ("OIOUBL Invoice " + VERSION_1_16_1)
                        .status (PhiveRulesHelper.createSimpleStatus (bNotDeprecated, VERSION_1_16_1_VALID_PER_UTC))
@@ -1855,8 +1855,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_Invoice_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_ORDER_1_16_1)
                        .displayName ("OIOUBL Order " + VERSION_1_16_1)
                        .status (PhiveRulesHelper.createSimpleStatus (bNotDeprecated, VERSION_1_16_1_VALID_PER_UTC))
@@ -1864,8 +1864,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_Order_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_ORDER_CANCELLATION_1_16_1)
                        .displayName ("OIOUBL Order Cancellation " + VERSION_1_16_1)
                        .status (PhiveRulesHelper.createSimpleStatus (bNotDeprecated, VERSION_1_16_1_VALID_PER_UTC))
@@ -1873,8 +1873,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_OrderCancellation_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_ORDER_CHANGE_1_16_1)
                        .displayName ("OIOUBL Order Change " + VERSION_1_16_1)
                        .status (PhiveRulesHelper.createSimpleStatus (bNotDeprecated, VERSION_1_16_1_VALID_PER_UTC))
@@ -1882,8 +1882,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_OrderChange_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_ORDER_RESPONSE_1_16_1)
                        .displayName ("OIOUBL Order Response " + VERSION_1_16_1)
                        .status (PhiveRulesHelper.createSimpleStatus (bNotDeprecated, VERSION_1_16_1_VALID_PER_UTC))
@@ -1891,8 +1891,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_OrderResponse_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_ORDER_RESPONSE_SIMPLE_1_16_1)
                        .displayName ("OIOUBL Order Response Simple " + VERSION_1_16_1)
                        .status (PhiveRulesHelper.createSimpleStatus (bNotDeprecated, VERSION_1_16_1_VALID_PER_UTC))
@@ -1900,8 +1900,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_OrderResponseSimple_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_REMINDER_1_16_1)
                        .displayName ("OIOUBL Reminder " + VERSION_1_16_1)
                        .status (PhiveRulesHelper.createSimpleStatus (bNotDeprecated, VERSION_1_16_1_VALID_PER_UTC))
@@ -1909,8 +1909,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_Reminder_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_STATEMENT_1_16_1)
                        .displayName ("OIOUBL Statement " + VERSION_1_16_1)
                        .status (PhiveRulesHelper.createSimpleStatus (bNotDeprecated, VERSION_1_16_1_VALID_PER_UTC))
@@ -1918,9 +1918,9 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_Statement_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
+                       .registerInto (aRegistry);
 
-      PhiveRulesBuilder.forRegistry (aRegistry)
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_UTILITY_STATEMENT_1_16_1)
                        .displayName ("OIOUBL Utility Statement " + VERSION_1_16_1)
                        .status (PhiveRulesHelper.createSimpleStatus (bNotDeprecated, VERSION_1_16_1_VALID_PER_UTC))
@@ -1928,13 +1928,13 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL20 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_UtilityStatement_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
+                       .registerInto (aRegistry);
     }
 
     // 1.17.0-rc
     {
       final String sPath = "/external/schematron/oioubl/1.17.0-rc/xslt/";
-      PhiveRulesBuilder.forRegistry (aRegistry)
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_APPLICATION_RESPONSE_1_17_0_RC)
                        .displayName ("OIOUBL Application Response " + VERSION_1_17_0_RC)
                        .status (PhiveRulesHelper.createSimpleStatus (bDeprecated, VERSION_1_17_0_RC_VALID_PER_UTC))
@@ -1942,8 +1942,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_ApplicationResponse_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_CATALOGUE_1_17_0_RC)
                        .displayName ("OIOUBL Catalogue " + VERSION_1_17_0_RC)
                        .status (PhiveRulesHelper.createSimpleStatus (bDeprecated, VERSION_1_17_0_RC_VALID_PER_UTC))
@@ -1951,8 +1951,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_Catalogue_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_CATALOGUE_DELETION_1_17_0_RC)
                        .displayName ("OIOUBL Catalogue Deletion " + VERSION_1_17_0_RC)
                        .status (PhiveRulesHelper.createSimpleStatus (bDeprecated, VERSION_1_17_0_RC_VALID_PER_UTC))
@@ -1960,8 +1960,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_CatalogueDeletion_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_CATALOGUE_ITEM_SPECIFICATION_UPDATE_1_17_0_RC)
                        .displayName ("OIOUBL Catalogue Item Specification Update " + VERSION_1_17_0_RC)
                        .status (PhiveRulesHelper.createSimpleStatus (bDeprecated, VERSION_1_17_0_RC_VALID_PER_UTC))
@@ -1969,8 +1969,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_CatalogueItemSpecificationUpdate_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_CATALOGUE_PRICING_UPDATE_1_17_0_RC)
                        .displayName ("OIOUBL Catalogue Pricing Update " + VERSION_1_17_0_RC)
                        .status (PhiveRulesHelper.createSimpleStatus (bDeprecated, VERSION_1_17_0_RC_VALID_PER_UTC))
@@ -1978,8 +1978,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_CataloguePricingUpdate_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_CATALOGUE_REQUEST_1_17_0_RC)
                        .displayName ("OIOUBL Catalogue Request " + VERSION_1_17_0_RC)
                        .status (PhiveRulesHelper.createSimpleStatus (bDeprecated, VERSION_1_17_0_RC_VALID_PER_UTC))
@@ -1987,8 +1987,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_CatalogueRequest_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_CREDIT_NOTE_1_17_0_RC)
                        .displayName ("OIOUBL Credit Note " + VERSION_1_17_0_RC)
                        .status (PhiveRulesHelper.createSimpleStatus (bDeprecated, VERSION_1_17_0_RC_VALID_PER_UTC))
@@ -1996,8 +1996,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_CreditNote_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_INVOICE_1_17_0_RC)
                        .displayName ("OIOUBL Invoice " + VERSION_1_17_0_RC)
                        .status (PhiveRulesHelper.createSimpleStatus (bDeprecated, VERSION_1_17_0_RC_VALID_PER_UTC))
@@ -2005,8 +2005,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_Invoice_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_ORDER_1_17_0_RC)
                        .displayName ("OIOUBL Order " + VERSION_1_17_0_RC)
                        .status (PhiveRulesHelper.createSimpleStatus (bDeprecated, VERSION_1_17_0_RC_VALID_PER_UTC))
@@ -2014,8 +2014,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_Order_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_ORDER_CANCELLATION_1_17_0_RC)
                        .displayName ("OIOUBL Order Cancellation " + VERSION_1_17_0_RC)
                        .status (PhiveRulesHelper.createSimpleStatus (bDeprecated, VERSION_1_17_0_RC_VALID_PER_UTC))
@@ -2023,8 +2023,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_OrderCancellation_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_ORDER_CHANGE_1_17_0_RC)
                        .displayName ("OIOUBL Order Change " + VERSION_1_17_0_RC)
                        .status (PhiveRulesHelper.createSimpleStatus (bDeprecated, VERSION_1_17_0_RC_VALID_PER_UTC))
@@ -2032,8 +2032,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_OrderChange_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_ORDER_RESPONSE_1_17_0_RC)
                        .displayName ("OIOUBL Order Response " + VERSION_1_17_0_RC)
                        .status (PhiveRulesHelper.createSimpleStatus (bDeprecated, VERSION_1_17_0_RC_VALID_PER_UTC))
@@ -2041,8 +2041,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_OrderResponse_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_ORDER_RESPONSE_SIMPLE_1_17_0_RC)
                        .displayName ("OIOUBL Order Response Simple " + VERSION_1_17_0_RC)
                        .status (PhiveRulesHelper.createSimpleStatus (bDeprecated, VERSION_1_17_0_RC_VALID_PER_UTC))
@@ -2050,8 +2050,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_OrderResponseSimple_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_REMINDER_1_17_0_RC)
                        .displayName ("OIOUBL Reminder " + VERSION_1_17_0_RC)
                        .status (PhiveRulesHelper.createSimpleStatus (bDeprecated, VERSION_1_17_0_RC_VALID_PER_UTC))
@@ -2059,8 +2059,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_Reminder_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_STATEMENT_1_17_0_RC)
                        .displayName ("OIOUBL Statement " + VERSION_1_17_0_RC)
                        .status (PhiveRulesHelper.createSimpleStatus (bDeprecated, VERSION_1_17_0_RC_VALID_PER_UTC))
@@ -2068,9 +2068,9 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_Statement_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
+                       .registerInto (aRegistry);
 
-      PhiveRulesBuilder.forRegistry (aRegistry)
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_UTILITY_STATEMENT_1_17_0_RC)
                        .displayName ("OIOUBL Utility Statement " + VERSION_1_17_0_RC)
                        .status (PhiveRulesHelper.createSimpleStatus (bDeprecated, VERSION_1_17_0_RC_VALID_PER_UTC))
@@ -2078,13 +2078,13 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL20 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_UtilityStatement_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
+                       .registerInto (aRegistry);
     }
 
     // 1.17.1
     {
       final String sPath = "/external/schematron/oioubl/1.17.1/xslt/";
-      PhiveRulesBuilder.forRegistry (aRegistry)
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_APPLICATION_RESPONSE_1_17_1)
                        .displayName ("OIOUBL Application Response " + VERSION_1_17_1)
                        .status (PhiveRulesHelper.createSimpleStatus (bNotDeprecated, VERSION_1_17_1_VALID_PER_UTC))
@@ -2092,8 +2092,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_ApplicationResponse_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_CATALOGUE_1_17_1)
                        .displayName ("OIOUBL Catalogue " + VERSION_1_17_1)
                        .status (PhiveRulesHelper.createSimpleStatus (bNotDeprecated, VERSION_1_17_1_VALID_PER_UTC))
@@ -2101,8 +2101,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_Catalogue_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_CATALOGUE_DELETION_1_17_1)
                        .displayName ("OIOUBL Catalogue Deletion " + VERSION_1_17_1)
                        .status (PhiveRulesHelper.createSimpleStatus (bNotDeprecated, VERSION_1_17_1_VALID_PER_UTC))
@@ -2110,8 +2110,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_CatalogueDeletion_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_CATALOGUE_ITEM_SPECIFICATION_UPDATE_1_17_1)
                        .displayName ("OIOUBL Catalogue Item Specification Update " + VERSION_1_17_1)
                        .status (PhiveRulesHelper.createSimpleStatus (bNotDeprecated, VERSION_1_17_1_VALID_PER_UTC))
@@ -2119,8 +2119,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_CatalogueItemSpecificationUpdate_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_CATALOGUE_PRICING_UPDATE_1_17_1)
                        .displayName ("OIOUBL Catalogue Pricing Update " + VERSION_1_17_1)
                        .status (PhiveRulesHelper.createSimpleStatus (bNotDeprecated, VERSION_1_17_1_VALID_PER_UTC))
@@ -2128,8 +2128,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_CataloguePricingUpdate_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_CATALOGUE_REQUEST_1_17_1)
                        .displayName ("OIOUBL Catalogue Request " + VERSION_1_17_1)
                        .status (PhiveRulesHelper.createSimpleStatus (bNotDeprecated, VERSION_1_17_1_VALID_PER_UTC))
@@ -2137,8 +2137,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_CatalogueRequest_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_CREDIT_NOTE_1_17_1)
                        .displayName ("OIOUBL Credit Note " + VERSION_1_17_1)
                        .status (PhiveRulesHelper.createSimpleStatus (bNotDeprecated, VERSION_1_17_1_VALID_PER_UTC))
@@ -2146,8 +2146,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_CreditNote_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_INVOICE_1_17_1)
                        .displayName ("OIOUBL Invoice " + VERSION_1_17_1)
                        .status (PhiveRulesHelper.createSimpleStatus (bNotDeprecated, VERSION_1_17_1_VALID_PER_UTC))
@@ -2155,8 +2155,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_Invoice_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_ORDER_1_17_1)
                        .displayName ("OIOUBL Order " + VERSION_1_17_1)
                        .status (PhiveRulesHelper.createSimpleStatus (bNotDeprecated, VERSION_1_17_1_VALID_PER_UTC))
@@ -2164,8 +2164,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_Order_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_ORDER_CANCELLATION_1_17_1)
                        .displayName ("OIOUBL Order Cancellation " + VERSION_1_17_1)
                        .status (PhiveRulesHelper.createSimpleStatus (bNotDeprecated, VERSION_1_17_1_VALID_PER_UTC))
@@ -2173,8 +2173,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_OrderCancellation_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_ORDER_CHANGE_1_17_1)
                        .displayName ("OIOUBL Order Change " + VERSION_1_17_1)
                        .status (PhiveRulesHelper.createSimpleStatus (bNotDeprecated, VERSION_1_17_1_VALID_PER_UTC))
@@ -2182,8 +2182,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_OrderChange_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_ORDER_RESPONSE_1_17_1)
                        .displayName ("OIOUBL Order Response " + VERSION_1_17_1)
                        .status (PhiveRulesHelper.createSimpleStatus (bNotDeprecated, VERSION_1_17_1_VALID_PER_UTC))
@@ -2191,8 +2191,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_OrderResponse_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_ORDER_RESPONSE_SIMPLE_1_17_1)
                        .displayName ("OIOUBL Order Response Simple " + VERSION_1_17_1)
                        .status (PhiveRulesHelper.createSimpleStatus (bNotDeprecated, VERSION_1_17_1_VALID_PER_UTC))
@@ -2200,8 +2200,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_OrderResponseSimple_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_REMINDER_1_17_1)
                        .displayName ("OIOUBL Reminder " + VERSION_1_17_1)
                        .status (PhiveRulesHelper.createSimpleStatus (bNotDeprecated, VERSION_1_17_1_VALID_PER_UTC))
@@ -2209,8 +2209,8 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_Reminder_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_STATEMENT_1_17_1)
                        .displayName ("OIOUBL Statement " + VERSION_1_17_1)
                        .status (PhiveRulesHelper.createSimpleStatus (bNotDeprecated, VERSION_1_17_1_VALID_PER_UTC))
@@ -2218,9 +2218,9 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_Statement_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
+                       .registerInto (aRegistry);
 
-      PhiveRulesBuilder.forRegistry (aRegistry)
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_UTILITY_STATEMENT_1_17_1)
                        .displayName ("OIOUBL Utility Statement " + VERSION_1_17_1)
                        .status (PhiveRulesHelper.createSimpleStatus (bNotDeprecated, VERSION_1_17_1_VALID_PER_UTC))
@@ -2228,7 +2228,7 @@ public final class OIOUBLValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL20 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_UtilityStatement_Schematron.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
+                       .registerInto (aRegistry);
     }
   }
 }

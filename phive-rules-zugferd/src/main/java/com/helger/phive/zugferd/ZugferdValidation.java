@@ -31,12 +31,11 @@ import com.helger.phive.api.executorset.IValidationExecutorSet;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
 import com.helger.phive.api.executorset.ValidationExecutorSet;
 import com.helger.phive.api.executorset.ValidationExecutorSetAlias;
-import com.helger.phive.api.executorset.status.IValidationExecutorSetStatus;
 import com.helger.phive.en16931.EN16931Validation;
+import com.helger.phive.rules.api.PhiveRulesBuilder;
 import com.helger.phive.rules.api.PhiveRulesCIIHelper;
 import com.helger.phive.rules.api.PhiveRulesHelper;
 import com.helger.phive.xml.source.IValidationSourceXML;
-import com.helger.phive.xml.xsd.ValidationExecutorXSD;
 
 /**
  * Generic Facturae validation configuration
@@ -228,9 +227,6 @@ public final class ZugferdValidation
   {
     ValueEnforcer.notNull (aRegistry, "Registry");
 
-    final boolean bDeprecated = true;
-    final boolean bNotDeprecated = false;
-
     // Zugferd 2.0.1 / Factur-X 1.0.3
     for (final EZugferdProfile eProfile : EZugferdProfile.values ())
     {
@@ -254,20 +250,20 @@ public final class ZugferdValidation
                                                                       eProfile.getArtifactID (),
                                                                       sZugferdVersion);
       final String sDisplayName = "ZUGFeRD " + sZugferdVersion + " (" + eProfile.getDisplayName () + ")";
-      final IValidationExecutorSetStatus aStatus = PhiveRulesHelper.createSimpleStatus (bDeprecated);
-      final ValidationExecutorSet <IValidationSourceXML> aVES = ValidationExecutorSet.create (aVESID,
-                                                                                              sDisplayName,
-                                                                                              aStatus,
-                                                                                              ValidationExecutorXSD.create (new ClassPathResource ("/external/schemas/" +
-                                                                                                                                                   sZugferdVersion +
-                                                                                                                                                   "/" +
-                                                                                                                                                   sProfileNamePart +
-                                                                                                                                                   "/zugferd2p0_" +
-                                                                                                                                                   sProfileNamePart +
-                                                                                                                                                   ".xsd",
-                                                                                                                                                   _getCL ())),
-                                                                                              aVESchematron);
-      aRegistry.registerValidationExecutorSet (aVES);
+      final ValidationExecutorSet <IValidationSourceXML> aVES = PhiveRulesBuilder.builder ()
+                                                                                 .vesID (aVESID)
+                                                                                 .displayName (sDisplayName)
+                                                                                 .deprecated ()
+                                                                                 .addXSD (new ClassPathResource ("/external/schemas/" +
+                                                                                                                 sZugferdVersion +
+                                                                                                                 "/" +
+                                                                                                                 sProfileNamePart +
+                                                                                                                 "/zugferd2p0_" +
+                                                                                                                 sProfileNamePart +
+                                                                                                                 ".xsd",
+                                                                                                                 _getCL ()))
+                                                                                 .addSchematron (aVESchematron)
+                                                                                 .registerAndGet (aRegistry);
 
       // Also register alias as Factur-X
       _registerFacturXAlias (aRegistry, eProfile, aVES);
@@ -291,7 +287,6 @@ public final class ZugferdValidation
                                                                       eProfile.getArtifactID (),
                                                                       sZugferdVersion);
       final String sDisplayName = "ZUGFeRD " + sZugferdVersion + " (" + eProfile.getDisplayName () + ")";
-      final IValidationExecutorSetStatus aStatus = PhiveRulesHelper.createSimpleStatus (bDeprecated);
       final ValidationExecutorSet <IValidationSourceXML> aVES;
       if (eProfile == EZugferdProfile.EN16931)
       {
@@ -300,24 +295,31 @@ public final class ZugferdValidation
         if (aVESCII_1_3_1 == null)
           throw new InitializationException ("The EN 16931 VES are missing. Make sure to call EN16931Validation.initEN16931 first.");
 
-        aVES = ValidationExecutorSet.createDerived (aVESCII_1_3_1, aVESID, sDisplayName, aStatus, aVESchematron);
+        aVES = PhiveRulesBuilder.builder ()
+                                .vesID (aVESID)
+                                .displayName (sDisplayName)
+                                .deprecated ()
+                                .basedOn (aVESCII_1_3_1)
+                                .addSchematron (aVESchematron)
+                                .registerAndGet (aRegistry);
       }
       else
       {
-        aVES = ValidationExecutorSet.create (aVESID,
-                                             sDisplayName,
-                                             aStatus,
-                                             ValidationExecutorXSD.create (new ClassPathResource ("/external/schemas/" +
-                                                                                                  sZugferdVersion +
-                                                                                                  "/" +
-                                                                                                  eProfile.getFolderName () +
-                                                                                                  "/FACTUR-X_" +
-                                                                                                  sFilenameSuffix +
-                                                                                                  ".xsd",
-                                                                                                  _getCL ())),
-                                             aVESchematron);
+        aVES = PhiveRulesBuilder.builder ()
+                                .vesID (aVESID)
+                                .displayName (sDisplayName)
+                                .deprecated ()
+                                .addXSD (new ClassPathResource ("/external/schemas/" +
+                                                                sZugferdVersion +
+                                                                "/" +
+                                                                eProfile.getFolderName () +
+                                                                "/FACTUR-X_" +
+                                                                sFilenameSuffix +
+                                                                ".xsd",
+                                                                _getCL ()))
+                                .addSchematron (aVESchematron)
+                                .registerAndGet (aRegistry);
       }
-      aRegistry.registerValidationExecutorSet (aVES);
 
       // Also register alias as Factur-X
       _registerFacturXAlias (aRegistry, eProfile, aVES);
@@ -341,33 +343,35 @@ public final class ZugferdValidation
                                                                       eProfile.getArtifactID (),
                                                                       sZugferdVersion);
       final String sDisplayName = "ZUGFeRD " + sZugferdVersion + " (" + eProfile.getDisplayName () + ")";
-      final IValidationExecutorSetStatus aStatus = PhiveRulesHelper.createSimpleStatus (bDeprecated);
       final ValidationExecutorSet <IValidationSourceXML> aVES;
       if (eProfile == EZugferdProfile.EN16931)
       {
         // Based on 1.3.7-SNAPSHOT
-        aVES = ValidationExecutorSet.createDerived (aRegistry.getOfID (EN16931Validation.VID_CII_137),
-                                                    aVESID,
-                                                    sDisplayName,
-                                                    aStatus,
-                                                    aVESchematron);
+        aVES = PhiveRulesBuilder.builder ()
+                                .vesID (aVESID)
+                                .displayName (sDisplayName)
+                                .deprecated ()
+                                .basedOn (aRegistry.getOfID (EN16931Validation.VID_CII_137))
+                                .addSchematron (aVESchematron)
+                                .registerAndGet (aRegistry);
       }
       else
       {
-        aVES = ValidationExecutorSet.create (aVESID,
-                                             sDisplayName,
-                                             aStatus,
-                                             ValidationExecutorXSD.create (new ClassPathResource ("/external/schemas/" +
-                                                                                                  sZugferdVersion +
-                                                                                                  "/" +
-                                                                                                  eProfile.getFolderName () +
-                                                                                                  "/FACTUR-X_" +
-                                                                                                  sFilenameSuffix +
-                                                                                                  ".xsd",
-                                                                                                  _getCL ())),
-                                             aVESchematron);
+        aVES = PhiveRulesBuilder.builder ()
+                                .vesID (aVESID)
+                                .displayName (sDisplayName)
+                                .deprecated ()
+                                .addXSD (new ClassPathResource ("/external/schemas/" +
+                                                                sZugferdVersion +
+                                                                "/" +
+                                                                eProfile.getFolderName () +
+                                                                "/FACTUR-X_" +
+                                                                sFilenameSuffix +
+                                                                ".xsd",
+                                                                _getCL ()))
+                                .addSchematron (aVESchematron)
+                                .registerAndGet (aRegistry);
       }
-      aRegistry.registerValidationExecutorSet (aVES);
 
       // Also register alias as Factur-X
       _registerFacturXAlias (aRegistry, eProfile, aVES);
@@ -378,30 +382,31 @@ public final class ZugferdValidation
     {
       final String sZugferdVersion = "2.3.2";
 
-      final ValidationExecutorSet <IValidationSourceXML> aVES = ValidationExecutorSet.create (PhiveRulesHelper.createCoordinate (GROUP_ID_ZUGFERD,
-                                                                                                                                 eProfile.getArtifactID (),
-                                                                                                                                 sZugferdVersion),
-                                                                                              "ZUGFeRD " +
-                                                                                                                                                   sZugferdVersion +
-                                                                                                                                                   " (" +
-                                                                                                                                                   eProfile.getDisplayName () +
-                                                                                                                                                   ")",
-                                                                                              PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
-                                                                                              ValidationExecutorXSD.create (new ClassPathResource ("/external/schemas/" +
-                                                                                                                                                   sZugferdVersion +
-                                                                                                                                                   "/" +
-                                                                                                                                                   eProfile.getFolderName () +
-                                                                                                                                                   "/Factur-X_1.07.2_" +
-                                                                                                                                                   eProfile.getFilenameSuffix () +
-                                                                                                                                                   ".xsd",
-                                                                                                                                                   _getCL ())),
-                                                                                              PhiveRulesCIIHelper.createXSLT_CII_D22B (new ClassPathResource ("/external/schematron/" +
-                                                                                                                                                              sZugferdVersion +
-                                                                                                                                                              "/Factur-X_1.07.2_" +
-                                                                                                                                                              eProfile.getFilenameSuffix () +
-                                                                                                                                                              ".xslt",
-                                                                                                                                                              _getCL ())));
-      aRegistry.registerValidationExecutorSet (aVES);
+      final ValidationExecutorSet <IValidationSourceXML> aVES = PhiveRulesBuilder.builder ()
+                                                                                 .vesID (PhiveRulesHelper.createCoordinate (GROUP_ID_ZUGFERD,
+                                                                                                                            eProfile.getArtifactID (),
+                                                                                                                            sZugferdVersion))
+                                                                                 .displayName ("ZUGFeRD " +
+                                                                                               sZugferdVersion +
+                                                                                               " (" +
+                                                                                               eProfile.getDisplayName () +
+                                                                                               ")")
+                                                                                 .deprecated ()
+                                                                                 .addXSD (new ClassPathResource ("/external/schemas/" +
+                                                                                                                 sZugferdVersion +
+                                                                                                                 "/" +
+                                                                                                                 eProfile.getFolderName () +
+                                                                                                                 "/Factur-X_1.07.2_" +
+                                                                                                                 eProfile.getFilenameSuffix () +
+                                                                                                                 ".xsd",
+                                                                                                                 _getCL ()))
+                                                                                 .addSchematron (PhiveRulesCIIHelper.createXSLT_CII_D22B (new ClassPathResource ("/external/schematron/" +
+                                                                                                                                                                 sZugferdVersion +
+                                                                                                                                                                 "/Factur-X_1.07.2_" +
+                                                                                                                                                                 eProfile.getFilenameSuffix () +
+                                                                                                                                                                 ".xslt",
+                                                                                                                                                                 _getCL ())))
+                                                                                 .registerAndGet (aRegistry);
 
       // Also register alias as Factur-X
       _registerFacturXAlias (aRegistry, eProfile, aVES);
@@ -412,30 +417,31 @@ public final class ZugferdValidation
     {
       final String sZugferdVersion = "2.3.3";
 
-      final ValidationExecutorSet <IValidationSourceXML> aVES = ValidationExecutorSet.create (PhiveRulesHelper.createCoordinate (GROUP_ID_ZUGFERD,
-                                                                                                                                 eProfile.getArtifactID (),
-                                                                                                                                 sZugferdVersion),
-                                                                                              "ZUGFeRD " +
-                                                                                                                                                   sZugferdVersion +
-                                                                                                                                                   " (" +
-                                                                                                                                                   eProfile.getDisplayName () +
-                                                                                                                                                   ")",
-                                                                                              PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
-                                                                                              ValidationExecutorXSD.create (new ClassPathResource ("/external/schemas/" +
-                                                                                                                                                   sZugferdVersion +
-                                                                                                                                                   "/" +
-                                                                                                                                                   eProfile.getFolderName () +
-                                                                                                                                                   "/Factur-X_1.07.3_" +
-                                                                                                                                                   eProfile.getFilenameSuffix () +
-                                                                                                                                                   ".xsd",
-                                                                                                                                                   _getCL ())),
-                                                                                              PhiveRulesCIIHelper.createXSLT_CII_D22B (new ClassPathResource ("/external/schematron/" +
-                                                                                                                                                              sZugferdVersion +
-                                                                                                                                                              "/Factur-X_1.07.3_" +
-                                                                                                                                                              eProfile.getFilenameSuffix () +
-                                                                                                                                                              ".xslt",
-                                                                                                                                                              _getCL ())));
-      aRegistry.registerValidationExecutorSet (aVES);
+      final ValidationExecutorSet <IValidationSourceXML> aVES = PhiveRulesBuilder.builder ()
+                                                                                 .vesID (PhiveRulesHelper.createCoordinate (GROUP_ID_ZUGFERD,
+                                                                                                                            eProfile.getArtifactID (),
+                                                                                                                            sZugferdVersion))
+                                                                                 .displayName ("ZUGFeRD " +
+                                                                                               sZugferdVersion +
+                                                                                               " (" +
+                                                                                               eProfile.getDisplayName () +
+                                                                                               ")")
+                                                                                 .notDeprecated ()
+                                                                                 .addXSD (new ClassPathResource ("/external/schemas/" +
+                                                                                                                 sZugferdVersion +
+                                                                                                                 "/" +
+                                                                                                                 eProfile.getFolderName () +
+                                                                                                                 "/Factur-X_1.07.3_" +
+                                                                                                                 eProfile.getFilenameSuffix () +
+                                                                                                                 ".xsd",
+                                                                                                                 _getCL ()))
+                                                                                 .addSchematron (PhiveRulesCIIHelper.createXSLT_CII_D22B (new ClassPathResource ("/external/schematron/" +
+                                                                                                                                                                 sZugferdVersion +
+                                                                                                                                                                 "/Factur-X_1.07.3_" +
+                                                                                                                                                                 eProfile.getFilenameSuffix () +
+                                                                                                                                                                 ".xslt",
+                                                                                                                                                                 _getCL ())))
+                                                                                 .registerAndGet (aRegistry);
 
       // Also register alias as Factur-X
       _registerFacturXAlias (aRegistry, eProfile, aVES);
@@ -446,30 +452,31 @@ public final class ZugferdValidation
     {
       final String sZugferdVersion = "2.4";
 
-      final ValidationExecutorSet <IValidationSourceXML> aVES = ValidationExecutorSet.create (PhiveRulesHelper.createCoordinate (GROUP_ID_ZUGFERD,
-                                                                                                                                 eProfile.getArtifactID (),
-                                                                                                                                 sZugferdVersion),
-                                                                                              "ZUGFeRD " +
-                                                                                                                                                   sZugferdVersion +
-                                                                                                                                                   " (" +
-                                                                                                                                                   eProfile.getDisplayName () +
-                                                                                                                                                   ")",
-                                                                                              PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
-                                                                                              ValidationExecutorXSD.create (new ClassPathResource ("/external/schemas/" +
-                                                                                                                                                   sZugferdVersion +
-                                                                                                                                                   "/" +
-                                                                                                                                                   eProfile.getFolderName () +
-                                                                                                                                                   "/FACTUR-X_" +
-                                                                                                                                                   eProfile.getFilenameSuffix24onwards () +
-                                                                                                                                                   ".xsd",
-                                                                                                                                                   _getCL ())),
-                                                                                              PhiveRulesCIIHelper.createXSLT_CII_D22B (new ClassPathResource ("/external/schematron/" +
-                                                                                                                                                              sZugferdVersion +
-                                                                                                                                                              "/FACTUR-X_" +
-                                                                                                                                                              eProfile.getFilenameSuffix24onwards () +
-                                                                                                                                                              ".xslt",
-                                                                                                                                                              _getCL ())));
-      aRegistry.registerValidationExecutorSet (aVES);
+      final ValidationExecutorSet <IValidationSourceXML> aVES = PhiveRulesBuilder.builder ()
+                                                                                 .vesID (PhiveRulesHelper.createCoordinate (GROUP_ID_ZUGFERD,
+                                                                                                                            eProfile.getArtifactID (),
+                                                                                                                            sZugferdVersion))
+                                                                                 .displayName ("ZUGFeRD " +
+                                                                                               sZugferdVersion +
+                                                                                               " (" +
+                                                                                               eProfile.getDisplayName () +
+                                                                                               ")")
+                                                                                 .notDeprecated ()
+                                                                                 .addXSD (new ClassPathResource ("/external/schemas/" +
+                                                                                                                 sZugferdVersion +
+                                                                                                                 "/" +
+                                                                                                                 eProfile.getFolderName () +
+                                                                                                                 "/FACTUR-X_" +
+                                                                                                                 eProfile.getFilenameSuffix24onwards () +
+                                                                                                                 ".xsd",
+                                                                                                                 _getCL ()))
+                                                                                 .addSchematron (PhiveRulesCIIHelper.createXSLT_CII_D22B (new ClassPathResource ("/external/schematron/" +
+                                                                                                                                                                 sZugferdVersion +
+                                                                                                                                                                 "/FACTUR-X_" +
+                                                                                                                                                                 eProfile.getFilenameSuffix24onwards () +
+                                                                                                                                                                 ".xslt",
+                                                                                                                                                                 _getCL ())))
+                                                                                 .registerAndGet (aRegistry);
 
       // Also register alias as Factur-X
       _registerFacturXAlias (aRegistry, eProfile, aVES);

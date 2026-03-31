@@ -71,12 +71,12 @@ public final class PeppolValidationDirectory
       final IReadableResource DIRECTORY_V1 = new ClassPathResource (BASE_PATH +
                                                                     "peppol-directory-business-card-20160112.xsd",
                                                                     _getCL ());
-      PhiveRulesBuilder.forRegistry (aRegistry)
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_BUSINESS_CARD_V1)
                        .displayName ("Peppol Directory BusinessCard v1")
                        .deprecated ()
                        .addXSD (DIRECTORY_V1)
-                       .registerInto ();
+                       .registerInto (aRegistry);
     }
 
     // v2
@@ -84,12 +84,12 @@ public final class PeppolValidationDirectory
       final IReadableResource DIRECTORY_V2 = new ClassPathResource (BASE_PATH +
                                                                     "peppol-directory-business-card-20161123.xsd",
                                                                     _getCL ());
-      PhiveRulesBuilder.forRegistry (aRegistry)
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_BUSINESS_CARD_V2)
                        .displayName ("Peppol Directory BusinessCard v2")
                        .deprecated ()
                        .addXSD (DIRECTORY_V2)
-                       .registerInto ();
+                       .registerInto (aRegistry);
     }
 
     // v3
@@ -97,12 +97,12 @@ public final class PeppolValidationDirectory
       final IReadableResource DIRECTORY_V3 = new ClassPathResource (BASE_PATH +
                                                                     "peppol-directory-business-card-20180621.xsd",
                                                                     _getCL ());
-      PhiveRulesBuilder.forRegistry (aRegistry)
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_BUSINESS_CARD_V3)
                        .displayName ("Peppol Directory BusinessCard v3")
                        .notDeprecated ()
                        .addXSD (DIRECTORY_V3)
-                       .registerInto ();
+                       .registerInto (aRegistry);
     }
   }
 }

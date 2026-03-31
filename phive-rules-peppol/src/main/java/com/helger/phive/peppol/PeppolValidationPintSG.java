@@ -110,7 +110,7 @@ public final class PeppolValidationPintSG
     // 1.1.0
     {
       final String sBaseBilling = BASE_PATH + "1.1.0/xslt/";
-      PhiveRulesBuilder.forRegistry (aRegistry)
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_SG_PINT_UBL_INVOICE_1_1_0)
                        .displayName ("Peppol PINT Singapore Invoice (UBL) 1.1.0")
                        .deprecated ()
@@ -121,8 +121,8 @@ public final class PeppolValidationPintSG
                        .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (sBaseBilling +
                                                                                            "PINT-jurisdiction-aligned-rules-inv.xslt",
                                                                                            _getCL ()), aNSCtxInvoice))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_SG_PINT_UBL_CREDIT_NOTE_1_1_0)
                        .displayName ("Peppol PINT Singapore Credit Note (UBL) 1.1.0")
                        .deprecated ()
@@ -135,13 +135,13 @@ public final class PeppolValidationPintSG
                                                                                            "PINT-jurisdiction-aligned-rules-cn.xslt",
                                                                                            _getCL ()),
                                                                     aNSCtxCreditNote))
-                       .registerInto ();
+                       .registerInto (aRegistry);
     }
 
     // 1.2.0
     {
       final String sBaseBilling = BASE_PATH + "1.2.0/xslt/";
-      PhiveRulesBuilder.forRegistry (aRegistry)
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_SG_PINT_UBL_INVOICE_1_2_0)
                        .displayName ("Peppol PINT Singapore Invoice (UBL) 1.2.0")
                        .status (PhiveRulesHelper.createSimpleStatus (true, V1_2_0_VALID_PER_UTC))
@@ -152,8 +152,8 @@ public final class PeppolValidationPintSG
                        .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (sBaseBilling +
                                                                                            "PINT-jurisdiction-aligned-rules.xslt",
                                                                                            _getCL ()), aNSCtxInvoice))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_SG_PINT_UBL_CREDIT_NOTE_1_2_0)
                        .displayName ("Peppol PINT Singapore Credit Note (UBL) 1.2.0")
                        .status (PhiveRulesHelper.createSimpleStatus (true, V1_2_0_VALID_PER_UTC))
@@ -166,13 +166,13 @@ public final class PeppolValidationPintSG
                                                                                            "PINT-jurisdiction-aligned-rules.xslt",
                                                                                            _getCL ()),
                                                                     aNSCtxCreditNote))
-                       .registerInto ();
+                       .registerInto (aRegistry);
     }
 
     // 1.3.0
     {
       final String sBaseBilling = BASE_PATH + "1.3.0/xslt/";
-      PhiveRulesBuilder.forRegistry (aRegistry)
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_SG_PINT_UBL_INVOICE_1_3_0)
                        .displayName ("Peppol PINT Singapore Invoice (UBL) 1.3.0")
                        .status (PhiveRulesHelper.createSimpleStatus (false, V1_3_0_VALID_PER_UTC))
@@ -183,8 +183,8 @@ public final class PeppolValidationPintSG
                        .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (sBaseBilling +
                                                                                            "PINT-jurisdiction-aligned-rules.xslt",
                                                                                            _getCL ()), aNSCtxInvoice))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_SG_PINT_UBL_CREDIT_NOTE_1_3_0)
                        .displayName ("Peppol PINT Singapore Credit Note (UBL) 1.3.0")
                        .status (PhiveRulesHelper.createSimpleStatus (false, V1_3_0_VALID_PER_UTC))
@@ -197,13 +197,13 @@ public final class PeppolValidationPintSG
                                                                                            "PINT-jurisdiction-aligned-rules.xslt",
                                                                                            _getCL ()),
                                                                     aNSCtxCreditNote))
-                       .registerInto ();
+                       .registerInto (aRegistry);
     }
 
     // 1.4.0
     {
       final String sBaseBilling = BASE_PATH + "1.4.0/xslt/";
-      PhiveRulesBuilder.forRegistry (aRegistry)
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_SG_PINT_UBL_INVOICE_1_4_0)
                        .displayName ("Peppol PINT Singapore Invoice (UBL) 1.4.0")
                        .status (PhiveRulesHelper.createSimpleStatus (false, V1_4_0_VALID_PER_UTC))
@@ -214,8 +214,8 @@ public final class PeppolValidationPintSG
                        .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (sBaseBilling +
                                                                                            "PINT-jurisdiction-aligned-rules.xslt",
                                                                                            _getCL ()), aNSCtxInvoice))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_SG_PINT_UBL_CREDIT_NOTE_1_4_0)
                        .displayName ("Peppol PINT Singapore Credit Note (UBL) 1.4.0")
                        .status (PhiveRulesHelper.createSimpleStatus (false, V1_4_0_VALID_PER_UTC))
@@ -228,7 +228,7 @@ public final class PeppolValidationPintSG
                                                                                            "PINT-jurisdiction-aligned-rules.xslt",
                                                                                            _getCL ()),
                                                                     aNSCtxCreditNote))
-                       .registerInto ();
+                       .registerInto (aRegistry);
     }
   }
 }

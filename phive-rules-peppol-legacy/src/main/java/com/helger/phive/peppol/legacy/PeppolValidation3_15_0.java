@@ -168,92 +168,92 @@ public final class PeppolValidation3_15_0
     final IReadableResource INVOICE_MESSAGE_RESPONSE = new ClassPathResource (PREFIX_XSLT + "PEPPOLBIS-T111.xslt",
                                                                               _getCL ());
 
-    PhiveRulesBuilder.forRegistry (aRegistry)
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_OPENPEPPOL_INVOICE_UBL_V3)
                      .displayName ("OpenPeppol UBL Invoice" + sVersion + sAkaVersionBilling)
                      .status (_createStatus (bDeprecated))
                      .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (INVOICE_UBL_CEN))
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (INVOICE_UBL_PEPPOL))
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_OPENPEPPOL_CREDIT_NOTE_UBL_V3)
                      .displayName ("OpenPeppol UBL Credit Note" + sVersion + sAkaVersionBilling)
                      .status (_createStatus (bDeprecated))
                      .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (INVOICE_UBL_CEN))
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (INVOICE_UBL_PEPPOL))
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_OPENPEPPOL_INVOICE_CII_V3)
                      .displayName ("OpenPeppol CII Invoice" + sVersion + sAkaVersionBilling)
                      .status (_createStatus (bDeprecated))
                      .addXSD (CCIID16B.getXSDResource ())
                      .addSchematron (PhiveRulesCIIHelper.createXSLT_CII_D16B (INVOICE_CII_CEN))
                      .addSchematron (PhiveRulesCIIHelper.createXSLT_CII_D16B (INVOICE_CII_PEPPOL))
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_OPENPEPPOL_ORDER_V3)
                      .displayName ("OpenPeppol Order" + sVersion + sAkaVersionBIS)
                      .status (_createStatus (bDeprecated))
                      .addXSD (UBL21Marshaller.getAllOrderXSDs ())
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (ORDER))
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_OPENPEPPOL_DESPATCH_ADVICE_V3)
                      .displayName ("OpenPeppol Despatch Advice" + sVersion + sAkaVersionBIS)
                      .status (_createStatus (bDeprecated))
                      .addXSD (UBL21Marshaller.getAllDespatchAdviceXSDs ())
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (DESPATCH_ADVICE))
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_OPENPEPPOL_CATALOGUE_V3)
                      .displayName ("OpenPeppol Catalogue" + sVersion + sAkaVersionBIS)
                      .status (_createStatus (bDeprecated))
                      .addXSD (UBL21Marshaller.getAllCatalogueXSDs ())
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (CATALOGUE))
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_OPENPEPPOL_CATALOGUE_RESPONSE_V3)
                      .displayName ("OpenPeppol Catalogue Response" + sVersion + sAkaVersionBIS)
                      .status (_createStatus (bDeprecated))
                      .addXSD (UBL21Marshaller.getAllApplicationResponseXSDs ())
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (CATALOGUE_RESPONSE))
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_OPENPEPPOL_MLR_V3)
                      .displayName ("OpenPeppol MLR" + sVersion + sAkaVersionBIS)
                      .status (_createStatus (bDeprecated))
                      .addXSD (UBL21Marshaller.getAllApplicationResponseXSDs ())
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (MLR))
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_OPENPEPPOL_ORDER_RESPONSE_V3)
                      .displayName ("OpenPeppol Order Response" + sVersion + sAkaVersionBIS)
                      .status (_createStatus (bDeprecated))
                      .addXSD (UBL21Marshaller.getAllOrderResponseXSDs ())
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (ORDER_RESPONSE))
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_OPENPEPPOL_PUNCH_OUT_V3)
                      .displayName ("OpenPeppol Punch Out" + sVersion + sAkaVersionBIS)
                      .status (_createStatus (bDeprecated))
                      .addXSD (UBL21Marshaller.getAllCatalogueXSDs ())
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (PUNCH_OUT))
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_OPENPEPPOL_ORDER_AGREEMENT_V3)
                      .displayName ("OpenPeppol Order Agreement" + sVersion + sAkaVersionBIS)
                      .status (_createStatus (bDeprecated))
                      .addXSD (UBL21Marshaller.getAllOrderResponseXSDs ())
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (ORDER_AGREEMENT))
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_OPENPEPPOL_INVOICE_MESSAGE_RESPONSE_V3)
                      .displayName ("OpenPeppol Invoice Message Response" + sVersion + sAkaVersionBIS)
                      .status (_createStatus (bDeprecated))
                      .addXSD (UBL21Marshaller.getAllApplicationResponseXSDs ())
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (INVOICE_MESSAGE_RESPONSE))
-                     .registerInto ();
+                     .registerInto (aRegistry);
   }
 }

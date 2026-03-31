@@ -122,7 +122,7 @@ public final class EHFValidationG3_2020_03
 
     // 2020-03-23
     final String sXSLT = "/external/schematron/2020-03/xslt/";
-    PhiveRulesBuilder.forRegistry (aRegistry)
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_EHF_ADVANCED_ORDER_CANCELLATION_300)
                      .displayNamePrefix ("EHF Advanced Order Cancellation ")
                      .deprecated ()
@@ -130,8 +130,8 @@ public final class EHFValidationG3_2020_03
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL22 (new ClassPathResource (sXSLT +
                                                                                                   "advanced-ordering-3.0/EHF-P09-3.0-ORDER-CANCELLATION.xslt",
                                                                                                   _getCL ())))
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_EHF_ADVANCED_ORDER_CHANGE_300)
                      .displayNamePrefix ("EHF Advanced Order Change ")
                      .deprecated ()
@@ -139,8 +139,8 @@ public final class EHFValidationG3_2020_03
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL22 (new ClassPathResource (sXSLT +
                                                                                                   "advanced-ordering-3.0/EHF-P09-3.0-ORDER-CHANGE.xslt",
                                                                                                   _getCL ())))
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_EHF_ADVANCED_ORDER_INITIATION_300)
                      .displayNamePrefix ("EHF Advanced Order Initiation ")
                      .deprecated ()
@@ -148,8 +148,8 @@ public final class EHFValidationG3_2020_03
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL22 (new ClassPathResource (sXSLT +
                                                                                                   "advanced-ordering-3.0/EHF-P09-3.0-ORDER-INITIATION.xslt",
                                                                                                   _getCL ())))
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_EHF_ADVANCED_ORDER_RESPONSE_300)
                      .displayNamePrefix ("EHF Advanced Order Response ")
                      .deprecated ()
@@ -157,8 +157,8 @@ public final class EHFValidationG3_2020_03
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL22 (new ClassPathResource (sXSLT +
                                                                                                   "advanced-ordering-3.0/EHF-P09-3.0-ORDER-RESPONSE.xslt",
                                                                                                   _getCL ())))
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_EHF_CATALOGUE_300)
                      .displayNamePrefix ("EHF Catalogue ")
                      .deprecated ()
@@ -166,8 +166,8 @@ public final class EHFValidationG3_2020_03
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL22 (new ClassPathResource (sXSLT +
                                                                                                   "catalogue-3.0/EHF-CATALOGUE-3.0.xslt",
                                                                                                   _getCL ())))
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_EHF_CATALOGUE_RESPONSE_300)
                      .displayNamePrefix ("EHF Catalogue Response ")
                      .deprecated ()
@@ -175,8 +175,8 @@ public final class EHFValidationG3_2020_03
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL22 (new ClassPathResource (sXSLT +
                                                                                                   "catalogue-3.0/EHF-CATALOGUE-RESPONSE-3.0.xslt",
                                                                                                   _getCL ())))
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_EHF_DESPATCH_ADVICE_300)
                      .displayNamePrefix ("EHF Despatch Advice ")
                      .deprecated ()
@@ -184,8 +184,8 @@ public final class EHFValidationG3_2020_03
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL22 (new ClassPathResource (sXSLT +
                                                                                                   "despatch-advice-3.0/EHF-DESPATCH-ADVICE-3.0.xslt",
                                                                                                   _getCL ())))
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_EHF_FORWARD_BILLING_INVOICE_300)
                      .displayNamePrefix ("EHF Forward Billing Invoice ")
                      .deprecated ()
@@ -196,8 +196,8 @@ public final class EHFValidationG3_2020_03
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL22 (new ClassPathResource (sXSLT +
                                                                                                   "forward-billing-3.0/FORWARD-BILLING-PEPPOL-EN16931-UBL.xslt",
                                                                                                   _getCL ())))
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_EHF_FORWARD_BILLING_CREDIT_NOTE_300)
                      .displayNamePrefix ("EHF Forward Billing Credit Note ")
                      .deprecated ()
@@ -208,8 +208,8 @@ public final class EHFValidationG3_2020_03
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL22 (new ClassPathResource (sXSLT +
                                                                                                   "forward-billing-3.0/FORWARD-BILLING-PEPPOL-EN16931-UBL.xslt",
                                                                                                   _getCL ())))
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_EHF_ORDER_AGREEMENT_300)
                      .displayNamePrefix ("EHF Order Agreement ")
                      .deprecated ()
@@ -217,8 +217,8 @@ public final class EHFValidationG3_2020_03
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL22 (new ClassPathResource (sXSLT +
                                                                                                   "order-agreement-3.0/EHF-ORDER-AGREEMENT-3.0.xslt",
                                                                                                   _getCL ())))
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_EHF_ORDER_300)
                      .displayNamePrefix ("EHF Order ")
                      .deprecated ()
@@ -226,8 +226,8 @@ public final class EHFValidationG3_2020_03
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL22 (new ClassPathResource (sXSLT +
                                                                                                   "ordering-3.0/EHF-ORDER-3.0.xslt",
                                                                                                   _getCL ())))
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_EHF_ORDER_RESPONSE_300)
                      .displayNamePrefix ("EHF Order Response ")
                      .deprecated ()
@@ -235,16 +235,16 @@ public final class EHFValidationG3_2020_03
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL22 (new ClassPathResource (sXSLT +
                                                                                                   "ordering-3.0/EHF-ORDER-RESPONSE-3.0.xslt",
                                                                                                   _getCL ())))
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_EHF_PAYMENT_REQUEST_300)
                      .displayNamePrefix ("EHF Payment Request ")
                      .deprecated ()
                      .addXSD (UBL22Marshaller.getAllInvoiceXSDs ())
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL22 (new ClassPathResource (sXSLT +
                                                                                                   "payment-request-3.0/EHF-P07-3.0-PAYMENT-REQUEST-3.0.xslt")))
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_EHF_PUNCH_OUT_300)
                      .displayNamePrefix ("EHF Punch Out ")
                      .deprecated ()
@@ -252,8 +252,8 @@ public final class EHFValidationG3_2020_03
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL22 (new ClassPathResource (sXSLT +
                                                                                                   "punch-out-3.0/EHF-PUNCH-OUT-3.0.xslt",
                                                                                                   _getCL ())))
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_EHF_REMINDER_300)
                      .displayNamePrefix ("EHF Reminder ")
                      .deprecated ()
@@ -267,6 +267,6 @@ public final class EHFValidationG3_2020_03
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL22 (new ClassPathResource (sXSLT +
                                                                                                   "reminder-3.0/EHF-P06-3.0-REMINDER.xslt",
                                                                                                   _getCL ())))
-                     .registerInto ();
+                     .registerInto (aRegistry);
   }
 }

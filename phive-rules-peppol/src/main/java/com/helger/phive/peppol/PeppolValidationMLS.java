@@ -61,7 +61,7 @@ public final class PeppolValidationMLS
 
     // v1.0.0
     {
-      PhiveRulesBuilder.forRegistry (aRegistry)
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_MLS_V100)
                        .displayName ("Peppol Message Level Status v1.0.0")
                        .notDeprecated ()
@@ -69,7 +69,7 @@ public final class PeppolValidationMLS
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (BASE_PATH_SCH +
                                                                                                     "1.0.0/xslt/peppol-mls-1.0.0.xslt",
                                                                                                     _getCL ())))
-                       .registerInto ();
+                       .registerInto (aRegistry);
     }
   }
 }

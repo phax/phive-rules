@@ -32,8 +32,8 @@ import com.helger.io.resource.ClassPathResource;
 import com.helger.phive.api.executor.IValidationExecutor;
 import com.helger.phive.api.executorset.IValidationExecutorSet;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
-import com.helger.phive.api.executorset.ValidationExecutorSet;
 import com.helger.phive.en16931.EN16931Validation;
+import com.helger.phive.rules.api.PhiveRulesBuilder;
 import com.helger.phive.rules.api.PhiveRulesCIIHelper;
 import com.helger.phive.rules.api.PhiveRulesHelper;
 import com.helger.phive.rules.api.PhiveRulesUBLHelper;
@@ -290,30 +290,33 @@ public final class XRechnungValidation
       if (aVESCII == null || aVESUBLCreditNote == null || aVESUBLInvoice == null)
         throw new InitializationException ("The EN 16931 VES are missing. Make sure to call EN16931Validation.initEN16931 first.");
 
-      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.createDerived (aVESCII,
-                                                                                    VID_XRECHNUNG_CII_120,
-                                                                                    "XRechnung CII " +
-                                                                                                           VID_XRECHNUNG_CII_120.getVersionString (),
-                                                                                    PhiveRulesHelper.createSimpleStatus (bDeprecated),
-                                                                                    PhiveRulesCIIHelper.createXSLT_CII_D16B (new ClassPathResource (sPrefix +
-                                                                                                                                                    "1.2.0/XRechnung-CII-validation.xslt",
-                                                                                                                                                    _getCL ()))));
-      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.createDerived (aVESUBLCreditNote,
-                                                                                    VID_XRECHNUNG_UBL_CREDITNOTE_120,
-                                                                                    "XRechnung UBL Credit Note " +
-                                                                                                                      VID_XRECHNUNG_UBL_CREDITNOTE_120.getVersionString (),
-                                                                                    PhiveRulesHelper.createSimpleStatus (bDeprecated),
-                                                                                    PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix +
-                                                                                                                                                 "1.2.0/XRechnung-UBL-validation-CreditNote.xslt",
-                                                                                                                                                 _getCL ()))));
-      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.createDerived (aVESUBLInvoice,
-                                                                                    VID_XRECHNUNG_UBL_INVOICE_120,
-                                                                                    "XRechnung UBL Invoice " +
-                                                                                                                   VID_XRECHNUNG_UBL_INVOICE_120.getVersionString (),
-                                                                                    PhiveRulesHelper.createSimpleStatus (bDeprecated),
-                                                                                    PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix +
-                                                                                                                                                 "1.2.0/XRechnung-UBL-validation-Invoice.xslt",
-                                                                                                                                                 _getCL ()))));
+      PhiveRulesBuilder.builder ()
+                       .vesID (VID_XRECHNUNG_CII_120)
+                       .displayNamePrefix ("XRechnung CII ")
+                       .deprecated (bDeprecated)
+                       .basedOn (aVESCII)
+                       .addSchematron (PhiveRulesCIIHelper.createXSLT_CII_D16B (new ClassPathResource (sPrefix +
+                                                                                                       "1.2.0/XRechnung-CII-validation.xslt",
+                                                                                                       _getCL ())))
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
+                       .vesID (VID_XRECHNUNG_UBL_CREDITNOTE_120)
+                       .displayNamePrefix ("XRechnung UBL Credit Note ")
+                       .deprecated (bDeprecated)
+                       .basedOn (aVESUBLCreditNote)
+                       .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix +
+                                                                                                    "1.2.0/XRechnung-UBL-validation-CreditNote.xslt",
+                                                                                                    _getCL ())))
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
+                       .vesID (VID_XRECHNUNG_UBL_INVOICE_120)
+                       .displayNamePrefix ("XRechnung UBL Invoice ")
+                       .deprecated (bDeprecated)
+                       .basedOn (aVESUBLInvoice)
+                       .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix +
+                                                                                                    "1.2.0/XRechnung-UBL-validation-Invoice.xslt",
+                                                                                                    _getCL ())))
+                       .registerInto (aRegistry);
     }
 
     // v1.2.1 (based on rule release 1.2.1)
@@ -324,30 +327,33 @@ public final class XRechnungValidation
       if (aVESCII == null || aVESUBLCreditNote == null || aVESUBLInvoice == null)
         throw new InitializationException ("The EN 16931 VES are missing. Make sure to call EN16931Validation.initEN16931 first.");
 
-      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.createDerived (aVESCII,
-                                                                                    VID_XRECHNUNG_CII_121,
-                                                                                    "XRechnung CII " +
-                                                                                                           VID_XRECHNUNG_CII_121.getVersionString (),
-                                                                                    PhiveRulesHelper.createSimpleStatus (bDeprecated),
-                                                                                    PhiveRulesCIIHelper.createXSLT_CII_D16B (new ClassPathResource (sPrefix +
-                                                                                                                                                    "1.2.1/XRechnung-CII-validation.xslt",
-                                                                                                                                                    _getCL ()))));
-      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.createDerived (aVESUBLCreditNote,
-                                                                                    VID_XRECHNUNG_UBL_CREDITNOTE_121,
-                                                                                    "XRechnung UBL Credit Note " +
-                                                                                                                      VID_XRECHNUNG_UBL_CREDITNOTE_121.getVersionString (),
-                                                                                    PhiveRulesHelper.createSimpleStatus (bDeprecated),
-                                                                                    PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix +
-                                                                                                                                                 "1.2.1/XRechnung-UBL-validation-CreditNote.xslt",
-                                                                                                                                                 _getCL ()))));
-      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.createDerived (aVESUBLInvoice,
-                                                                                    VID_XRECHNUNG_UBL_INVOICE_121,
-                                                                                    "XRechnung UBL Invoice " +
-                                                                                                                   VID_XRECHNUNG_UBL_INVOICE_121.getVersionString (),
-                                                                                    PhiveRulesHelper.createSimpleStatus (bDeprecated),
-                                                                                    PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix +
-                                                                                                                                                 "1.2.1/XRechnung-UBL-validation-Invoice.xslt",
-                                                                                                                                                 _getCL ()))));
+      PhiveRulesBuilder.builder ()
+                       .vesID (VID_XRECHNUNG_CII_121)
+                       .displayNamePrefix ("XRechnung CII ")
+                       .deprecated (bDeprecated)
+                       .basedOn (aVESCII)
+                       .addSchematron (PhiveRulesCIIHelper.createXSLT_CII_D16B (new ClassPathResource (sPrefix +
+                                                                                                       "1.2.1/XRechnung-CII-validation.xslt",
+                                                                                                       _getCL ())))
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
+                       .vesID (VID_XRECHNUNG_UBL_CREDITNOTE_121)
+                       .displayNamePrefix ("XRechnung UBL Credit Note ")
+                       .deprecated (bDeprecated)
+                       .basedOn (aVESUBLCreditNote)
+                       .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix +
+                                                                                                    "1.2.1/XRechnung-UBL-validation-CreditNote.xslt",
+                                                                                                    _getCL ())))
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
+                       .vesID (VID_XRECHNUNG_UBL_INVOICE_121)
+                       .displayNamePrefix ("XRechnung UBL Invoice ")
+                       .deprecated (bDeprecated)
+                       .basedOn (aVESUBLInvoice)
+                       .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix +
+                                                                                                    "1.2.1/XRechnung-UBL-validation-Invoice.xslt",
+                                                                                                    _getCL ())))
+                       .registerInto (aRegistry);
     }
 
     // v1.2.2 (based on rule release 1.3.0)
@@ -358,30 +364,33 @@ public final class XRechnungValidation
       if (aVESCII == null || aVESUBLCreditNote == null || aVESUBLInvoice == null)
         throw new InitializationException ("The EN 16931 VES are missing. Make sure to call EN16931Validation.initEN16931 first.");
 
-      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.createDerived (aVESCII,
-                                                                                    VID_XRECHNUNG_CII_122,
-                                                                                    "XRechnung CII " +
-                                                                                                           VID_XRECHNUNG_CII_122.getVersionString (),
-                                                                                    PhiveRulesHelper.createSimpleStatus (bDeprecated),
-                                                                                    PhiveRulesCIIHelper.createXSLT_CII_D16B (new ClassPathResource (sPrefix +
-                                                                                                                                                    "1.2.2/XRechnung-CII-validation.xslt",
-                                                                                                                                                    _getCL ()))));
-      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.createDerived (aVESUBLCreditNote,
-                                                                                    VID_XRECHNUNG_UBL_CREDITNOTE_122,
-                                                                                    "XRechnung UBL Credit Note " +
-                                                                                                                      VID_XRECHNUNG_UBL_CREDITNOTE_122.getVersionString (),
-                                                                                    PhiveRulesHelper.createSimpleStatus (bDeprecated),
-                                                                                    PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix +
-                                                                                                                                                 "1.2.2/XRechnung-UBL-validation-CreditNote.xslt",
-                                                                                                                                                 _getCL ()))));
-      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.createDerived (aVESUBLInvoice,
-                                                                                    VID_XRECHNUNG_UBL_INVOICE_122,
-                                                                                    "XRechnung UBL Invoice " +
-                                                                                                                   VID_XRECHNUNG_UBL_INVOICE_122.getVersionString (),
-                                                                                    PhiveRulesHelper.createSimpleStatus (bDeprecated),
-                                                                                    PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix +
-                                                                                                                                                 "1.2.2/XRechnung-UBL-validation-Invoice.xslt",
-                                                                                                                                                 _getCL ()))));
+      PhiveRulesBuilder.builder ()
+                       .vesID (VID_XRECHNUNG_CII_122)
+                       .displayNamePrefix ("XRechnung CII ")
+                       .deprecated (bDeprecated)
+                       .basedOn (aVESCII)
+                       .addSchematron (PhiveRulesCIIHelper.createXSLT_CII_D16B (new ClassPathResource (sPrefix +
+                                                                                                       "1.2.2/XRechnung-CII-validation.xslt",
+                                                                                                       _getCL ())))
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
+                       .vesID (VID_XRECHNUNG_UBL_CREDITNOTE_122)
+                       .displayNamePrefix ("XRechnung UBL Credit Note ")
+                       .deprecated (bDeprecated)
+                       .basedOn (aVESUBLCreditNote)
+                       .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix +
+                                                                                                    "1.2.2/XRechnung-UBL-validation-CreditNote.xslt",
+                                                                                                    _getCL ())))
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
+                       .vesID (VID_XRECHNUNG_UBL_INVOICE_122)
+                       .displayNamePrefix ("XRechnung UBL Invoice ")
+                       .deprecated (bDeprecated)
+                       .basedOn (aVESUBLInvoice)
+                       .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix +
+                                                                                                    "1.2.2/XRechnung-UBL-validation-Invoice.xslt",
+                                                                                                    _getCL ())))
+                       .registerInto (aRegistry);
     }
 
     // v2.0.0 (based on rule release 1.4.0)
@@ -405,11 +414,12 @@ public final class XRechnungValidation
                                                                                       "2.0.0/XRechnung-CII-validation.xslt",
                                                                                       _getCL ())));
 
-        aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_XRECHNUNG_CII_200,
-                                                                               "XRechnung CII " +
-                                                                                                      VID_XRECHNUNG_CII_200.getVersionString (),
-                                                                               PhiveRulesHelper.createSimpleStatus (bDeprecated),
-                                                                               aNewList));
+        PhiveRulesBuilder.builder ()
+                         .vesID (VID_XRECHNUNG_CII_200)
+                         .displayNamePrefix ("XRechnung CII ")
+                         .deprecated (bDeprecated)
+                         .addExecutors (aNewList)
+                         .registerInto (aRegistry);
       }
       {
         final ICommonsList <IValidationExecutor <IValidationSourceXML>> aNewList = _getListWithCustomErrorDetails (aVESUBLCreditNote,
@@ -418,11 +428,12 @@ public final class XRechnungValidation
                                                                                    "2.0.0/XRechnung-UBL-validation-CreditNote.xslt",
                                                                                    _getCL ())));
 
-        aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_XRECHNUNG_UBL_CREDITNOTE_200,
-                                                                               "XRechnung UBL Credit Note " +
-                                                                                                                 VID_XRECHNUNG_UBL_CREDITNOTE_200.getVersionString (),
-                                                                               PhiveRulesHelper.createSimpleStatus (bDeprecated),
-                                                                               aNewList));
+        PhiveRulesBuilder.builder ()
+                         .vesID (VID_XRECHNUNG_UBL_CREDITNOTE_200)
+                         .displayNamePrefix ("XRechnung UBL Credit Note ")
+                         .deprecated (bDeprecated)
+                         .addExecutors (aNewList)
+                         .registerInto (aRegistry);
       }
       {
         final ICommonsList <IValidationExecutor <IValidationSourceXML>> aNewList = _getListWithCustomErrorDetails (aVESUBLInvoice,
@@ -431,11 +442,12 @@ public final class XRechnungValidation
                                                                                    "2.0.0/XRechnung-UBL-validation-Invoice.xslt",
                                                                                    _getCL ())));
 
-        aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_XRECHNUNG_UBL_INVOICE_200,
-                                                                               "XRechnung UBL Invoice " +
-                                                                                                              VID_XRECHNUNG_UBL_INVOICE_200.getVersionString (),
-                                                                               PhiveRulesHelper.createSimpleStatus (bDeprecated),
-                                                                               aNewList));
+        PhiveRulesBuilder.builder ()
+                         .vesID (VID_XRECHNUNG_UBL_INVOICE_200)
+                         .displayNamePrefix ("XRechnung UBL Invoice ")
+                         .deprecated (bDeprecated)
+                         .addExecutors (aNewList)
+                         .registerInto (aRegistry);
       }
     }
 
@@ -458,11 +470,12 @@ public final class XRechnungValidation
         aNewList.add (PhiveRulesCIIHelper.createXSLT_CII_D16B (new ClassPathResource (sPrefix +
                                                                                       "2.0.1/XRechnung-CII-validation.xslt",
                                                                                       _getCL ())));
-        aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_XRECHNUNG_CII_201,
-                                                                               "XRechnung CII " +
-                                                                                                      VID_XRECHNUNG_CII_201.getVersionString (),
-                                                                               PhiveRulesHelper.createSimpleStatus (bDeprecated),
-                                                                               aNewList));
+        PhiveRulesBuilder.builder ()
+                         .vesID (VID_XRECHNUNG_CII_201)
+                         .displayNamePrefix ("XRechnung CII ")
+                         .deprecated (bDeprecated)
+                         .addExecutors (aNewList)
+                         .registerInto (aRegistry);
       }
 
       {
@@ -476,11 +489,12 @@ public final class XRechnungValidation
         aNewList.add (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix +
                                                                                    "2.0.1/XRechnung-UBL-validation-CreditNote.xslt",
                                                                                    _getCL ())));
-        aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_XRECHNUNG_UBL_CREDITNOTE_201,
-                                                                               "XRechnung UBL Credit Note " +
-                                                                                                                 VID_XRECHNUNG_UBL_CREDITNOTE_201.getVersionString (),
-                                                                               PhiveRulesHelper.createSimpleStatus (bDeprecated),
-                                                                               aNewList));
+        PhiveRulesBuilder.builder ()
+                         .vesID (VID_XRECHNUNG_UBL_CREDITNOTE_201)
+                         .displayNamePrefix ("XRechnung UBL Credit Note ")
+                         .deprecated (bDeprecated)
+                         .addExecutors (aNewList)
+                         .registerInto (aRegistry);
       }
 
       {
@@ -494,11 +508,12 @@ public final class XRechnungValidation
         aNewList.add (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix +
                                                                                    "2.0.1/XRechnung-UBL-validation-Invoice.xslt",
                                                                                    _getCL ())));
-        aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_XRECHNUNG_UBL_INVOICE_201,
-                                                                               "XRechnung UBL Invoice " +
-                                                                                                              VID_XRECHNUNG_UBL_INVOICE_201.getVersionString (),
-                                                                               PhiveRulesHelper.createSimpleStatus (bDeprecated),
-                                                                               aNewList));
+        PhiveRulesBuilder.builder ()
+                         .vesID (VID_XRECHNUNG_UBL_INVOICE_201)
+                         .displayNamePrefix ("XRechnung UBL Invoice ")
+                         .deprecated (bDeprecated)
+                         .addExecutors (aNewList)
+                         .registerInto (aRegistry);
       }
       {
         final ICommonsMap <String, CustomErrorDetails> aCustomErrorLevels = new CommonsHashMap <> ();
@@ -513,12 +528,14 @@ public final class XRechnungValidation
         aNewList.add (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix +
                                                                                    "2.0.1/XRechnung-UBL-validation-Invoice.xslt",
                                                                                    _getCL ())));
-        aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_XRECHNUNG_EXTENSION_UBL_INVOICE_201,
-                                                                               "XRechnung UBL Invoice " +
-                                                                                                                        VID_XRECHNUNG_EXTENSION_UBL_INVOICE_201.getVersionString () +
-                                                                                                                        " Extension",
-                                                                               PhiveRulesHelper.createSimpleStatus (bDeprecated),
-                                                                               aNewList));
+        PhiveRulesBuilder.builder ()
+                         .vesID (VID_XRECHNUNG_EXTENSION_UBL_INVOICE_201)
+                         .displayName ("XRechnung UBL Invoice " +
+                                       VID_XRECHNUNG_EXTENSION_UBL_INVOICE_201.getVersionString () +
+                                       " Extension")
+                         .deprecated (bDeprecated)
+                         .addExecutors (aNewList)
+                         .registerInto (aRegistry);
       }
     }
 
@@ -543,11 +560,12 @@ public final class XRechnungValidation
         aNewList.add (PhiveRulesCIIHelper.createXSLT_CII_D16B (new ClassPathResource (sPrefix +
                                                                                       "2.1.1/XRechnung-CII-validation.xslt",
                                                                                       _getCL ())));
-        aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_XRECHNUNG_CII_211,
-                                                                               "XRechnung CII " +
-                                                                                                      VID_XRECHNUNG_CII_211.getVersionString (),
-                                                                               PhiveRulesHelper.createSimpleStatus (bDeprecated),
-                                                                               aNewList));
+        PhiveRulesBuilder.builder ()
+                         .vesID (VID_XRECHNUNG_CII_211)
+                         .displayNamePrefix ("XRechnung CII ")
+                         .deprecated (bDeprecated)
+                         .addExecutors (aNewList)
+                         .registerInto (aRegistry);
       }
 
       {
@@ -561,11 +579,12 @@ public final class XRechnungValidation
         aNewList.add (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix +
                                                                                    "2.1.1/XRechnung-UBL-validation-CreditNote.xslt",
                                                                                    _getCL ())));
-        aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_XRECHNUNG_UBL_CREDITNOTE_211,
-                                                                               "XRechnung UBL Credit Note " +
-                                                                                                                 VID_XRECHNUNG_UBL_CREDITNOTE_211.getVersionString (),
-                                                                               PhiveRulesHelper.createSimpleStatus (bDeprecated),
-                                                                               aNewList));
+        PhiveRulesBuilder.builder ()
+                         .vesID (VID_XRECHNUNG_UBL_CREDITNOTE_211)
+                         .displayNamePrefix ("XRechnung UBL Credit Note ")
+                         .deprecated (bDeprecated)
+                         .addExecutors (aNewList)
+                         .registerInto (aRegistry);
       }
 
       {
@@ -579,11 +598,12 @@ public final class XRechnungValidation
         aNewList.add (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix +
                                                                                    "2.1.1/XRechnung-UBL-validation-Invoice.xslt",
                                                                                    _getCL ())));
-        aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_XRECHNUNG_UBL_INVOICE_211,
-                                                                               "XRechnung UBL Invoice " +
-                                                                                                              VID_XRECHNUNG_UBL_INVOICE_211.getVersionString (),
-                                                                               PhiveRulesHelper.createSimpleStatus (bDeprecated),
-                                                                               aNewList));
+        PhiveRulesBuilder.builder ()
+                         .vesID (VID_XRECHNUNG_UBL_INVOICE_211)
+                         .displayNamePrefix ("XRechnung UBL Invoice ")
+                         .deprecated (bDeprecated)
+                         .addExecutors (aNewList)
+                         .registerInto (aRegistry);
       }
       {
         final ICommonsMap <String, CustomErrorDetails> aCustomErrorLevels = new CommonsHashMap <> ();
@@ -597,12 +617,14 @@ public final class XRechnungValidation
         aNewList.add (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix +
                                                                                    "2.1.1/XRechnung-UBL-validation-Invoice.xslt",
                                                                                    _getCL ())));
-        aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_XRECHNUNG_EXTENSION_UBL_INVOICE_211,
-                                                                               "XRechnung UBL Invoice " +
-                                                                                                                        VID_XRECHNUNG_EXTENSION_UBL_INVOICE_211.getVersionString () +
-                                                                                                                        " Extension",
-                                                                               PhiveRulesHelper.createSimpleStatus (bDeprecated),
-                                                                               aNewList));
+        PhiveRulesBuilder.builder ()
+                         .vesID (VID_XRECHNUNG_EXTENSION_UBL_INVOICE_211)
+                         .displayName ("XRechnung UBL Invoice " +
+                                       VID_XRECHNUNG_EXTENSION_UBL_INVOICE_211.getVersionString () +
+                                       " Extension")
+                         .deprecated (bDeprecated)
+                         .addExecutors (aNewList)
+                         .registerInto (aRegistry);
       }
     }
 
@@ -627,11 +649,12 @@ public final class XRechnungValidation
                                                                                       "2.2.0/XRechnung-CII-validation.xslt",
                                                                                       _getCL ())));
 
-        aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_XRECHNUNG_CII_220,
-                                                                               "XRechnung CII " +
-                                                                                                      VID_XRECHNUNG_CII_220.getVersionString (),
-                                                                               PhiveRulesHelper.createSimpleStatus (bDeprecated),
-                                                                               aNewList));
+        PhiveRulesBuilder.builder ()
+                         .vesID (VID_XRECHNUNG_CII_220)
+                         .displayNamePrefix ("XRechnung CII ")
+                         .deprecated (bDeprecated)
+                         .addExecutors (aNewList)
+                         .registerInto (aRegistry);
       }
       {
         final ICommonsMap <String, CustomErrorDetails> aCustomErrorLevels = new CommonsHashMap <> ();
@@ -649,12 +672,14 @@ public final class XRechnungValidation
                                                                                       "2.2.0/XRechnung-CII-validation.xslt",
                                                                                       _getCL ())));
 
-        aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_XRECHNUNG_EXTENSION_CII_220,
-                                                                               "XRechnung CII " +
-                                                                                                                VID_XRECHNUNG_EXTENSION_CII_220.getVersionString () +
-                                                                                                                " Extension",
-                                                                               PhiveRulesHelper.createSimpleStatus (bDeprecated),
-                                                                               aNewList));
+        PhiveRulesBuilder.builder ()
+                         .vesID (VID_XRECHNUNG_EXTENSION_CII_220)
+                         .displayName ("XRechnung CII " +
+                                       VID_XRECHNUNG_EXTENSION_CII_220.getVersionString () +
+                                       " Extension")
+                         .deprecated (bDeprecated)
+                         .addExecutors (aNewList)
+                         .registerInto (aRegistry);
       }
 
       {
@@ -669,11 +694,12 @@ public final class XRechnungValidation
                                                                                    "2.2.0/XRechnung-UBL-validation-CreditNote.xslt",
                                                                                    _getCL ())));
 
-        aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_XRECHNUNG_UBL_CREDITNOTE_220,
-                                                                               "XRechnung UBL Credit Note " +
-                                                                                                                 VID_XRECHNUNG_UBL_CREDITNOTE_220.getVersionString (),
-                                                                               PhiveRulesHelper.createSimpleStatus (bDeprecated),
-                                                                               aNewList));
+        PhiveRulesBuilder.builder ()
+                         .vesID (VID_XRECHNUNG_UBL_CREDITNOTE_220)
+                         .displayNamePrefix ("XRechnung UBL Credit Note ")
+                         .deprecated (bDeprecated)
+                         .addExecutors (aNewList)
+                         .registerInto (aRegistry);
       }
 
       {
@@ -688,11 +714,12 @@ public final class XRechnungValidation
                                                                                    "2.2.0/XRechnung-UBL-validation-Invoice.xslt",
                                                                                    _getCL ())));
 
-        aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_XRECHNUNG_UBL_INVOICE_220,
-                                                                               "XRechnung UBL Invoice " +
-                                                                                                              VID_XRECHNUNG_UBL_INVOICE_220.getVersionString (),
-                                                                               PhiveRulesHelper.createSimpleStatus (bDeprecated),
-                                                                               aNewList));
+        PhiveRulesBuilder.builder ()
+                         .vesID (VID_XRECHNUNG_UBL_INVOICE_220)
+                         .displayNamePrefix ("XRechnung UBL Invoice ")
+                         .deprecated (bDeprecated)
+                         .addExecutors (aNewList)
+                         .registerInto (aRegistry);
       }
       {
         final ICommonsMap <String, CustomErrorDetails> aCustomErrorLevels = new CommonsHashMap <> ();
@@ -711,12 +738,14 @@ public final class XRechnungValidation
                                                                                    "2.2.0/XRechnung-UBL-validation-Invoice.xslt",
                                                                                    _getCL ())));
 
-        aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_XRECHNUNG_EXTENSION_UBL_INVOICE_220,
-                                                                               "XRechnung UBL Invoice " +
-                                                                                                                        VID_XRECHNUNG_EXTENSION_UBL_INVOICE_220.getVersionString () +
-                                                                                                                        " Extension",
-                                                                               PhiveRulesHelper.createSimpleStatus (bDeprecated),
-                                                                               aNewList));
+        PhiveRulesBuilder.builder ()
+                         .vesID (VID_XRECHNUNG_EXTENSION_UBL_INVOICE_220)
+                         .displayName ("XRechnung UBL Invoice " +
+                                       VID_XRECHNUNG_EXTENSION_UBL_INVOICE_220.getVersionString () +
+                                       " Extension")
+                         .deprecated (bDeprecated)
+                         .addExecutors (aNewList)
+                         .registerInto (aRegistry);
       }
     }
 
@@ -740,11 +769,12 @@ public final class XRechnungValidation
                                                                                       "2.3.1/XRechnung-CII-validation.xslt",
                                                                                       _getCL ())));
 
-        aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_XRECHNUNG_CII_231,
-                                                                               "XRechnung CII " +
-                                                                                                      VID_XRECHNUNG_CII_231.getVersionString (),
-                                                                               PhiveRulesHelper.createSimpleStatus (bDeprecated),
-                                                                               aNewList));
+        PhiveRulesBuilder.builder ()
+                         .vesID (VID_XRECHNUNG_CII_231)
+                         .displayNamePrefix ("XRechnung CII ")
+                         .deprecated (bDeprecated)
+                         .addExecutors (aNewList)
+                         .registerInto (aRegistry);
       }
       {
         final ICommonsMap <String, CustomErrorDetails> aCustomErrorLevels = new CommonsHashMap <> ();
@@ -761,12 +791,14 @@ public final class XRechnungValidation
                                                                                       "2.3.1/XRechnung-CII-validation.xslt",
                                                                                       _getCL ())));
 
-        aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_XRECHNUNG_EXTENSION_CII_231,
-                                                                               "XRechnung CII " +
-                                                                                                                VID_XRECHNUNG_EXTENSION_CII_231.getVersionString () +
-                                                                                                                "Extension",
-                                                                               PhiveRulesHelper.createSimpleStatus (bDeprecated),
-                                                                               aNewList));
+        PhiveRulesBuilder.builder ()
+                         .vesID (VID_XRECHNUNG_EXTENSION_CII_231)
+                         .displayName ("XRechnung CII " +
+                                       VID_XRECHNUNG_EXTENSION_CII_231.getVersionString () +
+                                       "Extension")
+                         .deprecated (bDeprecated)
+                         .addExecutors (aNewList)
+                         .registerInto (aRegistry);
       }
 
       {
@@ -780,11 +812,12 @@ public final class XRechnungValidation
                                                                                    "2.3.1/XRechnung-UBL-validation.xslt",
                                                                                    _getCL ())));
 
-        aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_XRECHNUNG_UBL_CREDITNOTE_231,
-                                                                               "XRechnung UBL Credit Note " +
-                                                                                                                 VID_XRECHNUNG_UBL_CREDITNOTE_231.getVersionString (),
-                                                                               PhiveRulesHelper.createSimpleStatus (bDeprecated),
-                                                                               aNewList));
+        PhiveRulesBuilder.builder ()
+                         .vesID (VID_XRECHNUNG_UBL_CREDITNOTE_231)
+                         .displayNamePrefix ("XRechnung UBL Credit Note ")
+                         .deprecated (bDeprecated)
+                         .addExecutors (aNewList)
+                         .registerInto (aRegistry);
       }
 
       {
@@ -798,11 +831,12 @@ public final class XRechnungValidation
                                                                                    "2.3.1/XRechnung-UBL-validation.xslt",
                                                                                    _getCL ())));
 
-        aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_XRECHNUNG_UBL_INVOICE_231,
-                                                                               "XRechnung UBL Invoice " +
-                                                                                                              VID_XRECHNUNG_UBL_INVOICE_231.getVersionString (),
-                                                                               PhiveRulesHelper.createSimpleStatus (bDeprecated),
-                                                                               aNewList));
+        PhiveRulesBuilder.builder ()
+                         .vesID (VID_XRECHNUNG_UBL_INVOICE_231)
+                         .displayNamePrefix ("XRechnung UBL Invoice ")
+                         .deprecated (bDeprecated)
+                         .addExecutors (aNewList)
+                         .registerInto (aRegistry);
       }
       {
         final ICommonsMap <String, CustomErrorDetails> aCustomErrorLevels = new CommonsHashMap <> ();
@@ -822,12 +856,14 @@ public final class XRechnungValidation
                                                                                    "2.3.1/XRechnung-UBL-validation.xslt",
                                                                                    _getCL ())));
 
-        aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_XRECHNUNG_EXTENSION_UBL_INVOICE_231,
-                                                                               "XRechnung UBL Invoice " +
-                                                                                                                        VID_XRECHNUNG_EXTENSION_UBL_INVOICE_231.getVersionString () +
-                                                                                                                        " Extension",
-                                                                               PhiveRulesHelper.createSimpleStatus (bDeprecated),
-                                                                               aNewList));
+        PhiveRulesBuilder.builder ()
+                         .vesID (VID_XRECHNUNG_EXTENSION_UBL_INVOICE_231)
+                         .displayName ("XRechnung UBL Invoice " +
+                                       VID_XRECHNUNG_EXTENSION_UBL_INVOICE_231.getVersionString () +
+                                       " Extension")
+                         .deprecated (bDeprecated)
+                         .addExecutors (aNewList)
+                         .registerInto (aRegistry);
       }
     }
 
@@ -852,11 +888,12 @@ public final class XRechnungValidation
                                                                                       "3.0.0/XRechnung-CII-validation.xslt",
                                                                                       _getCL ())));
 
-        aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_XRECHNUNG_CII_300,
-                                                                               "XRechnung CII " +
-                                                                                                      VID_XRECHNUNG_CII_300.getVersionString (),
-                                                                               PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
-                                                                               aNewList));
+        PhiveRulesBuilder.builder ()
+                         .vesID (VID_XRECHNUNG_CII_300)
+                         .displayNamePrefix ("XRechnung CII ")
+                         .notDeprecated ()
+                         .addExecutors (aNewList)
+                         .registerInto (aRegistry);
       }
       {
         final ICommonsMap <String, CustomErrorDetails> aCustomErrorLevels = new CommonsHashMap <> ();
@@ -874,12 +911,14 @@ public final class XRechnungValidation
                                                                                       "3.0.0/XRechnung-CII-validation.xslt",
                                                                                       _getCL ())));
 
-        aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_XRECHNUNG_EXTENSION_CII_300,
-                                                                               "XRechnung CII " +
-                                                                                                                VID_XRECHNUNG_EXTENSION_CII_300.getVersionString () +
-                                                                                                                " Extension",
-                                                                               PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
-                                                                               aNewList));
+        PhiveRulesBuilder.builder ()
+                         .vesID (VID_XRECHNUNG_EXTENSION_CII_300)
+                         .displayName ("XRechnung CII " +
+                                       VID_XRECHNUNG_EXTENSION_CII_300.getVersionString () +
+                                       " Extension")
+                         .notDeprecated ()
+                         .addExecutors (aNewList)
+                         .registerInto (aRegistry);
       }
       {
         final ICommonsMap <String, CustomErrorDetails> aCustomErrorLevels = new CommonsHashMap <> ();
@@ -892,11 +931,12 @@ public final class XRechnungValidation
                                                                                    "3.0.0/XRechnung-UBL-validation.xslt",
                                                                                    _getCL ())));
 
-        aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_XRECHNUNG_UBL_CREDITNOTE_300,
-                                                                               "XRechnung UBL Credit Note " +
-                                                                                                                 VID_XRECHNUNG_UBL_CREDITNOTE_300.getVersionString (),
-                                                                               PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
-                                                                               aNewList));
+        PhiveRulesBuilder.builder ()
+                         .vesID (VID_XRECHNUNG_UBL_CREDITNOTE_300)
+                         .displayNamePrefix ("XRechnung UBL Credit Note ")
+                         .notDeprecated ()
+                         .addExecutors (aNewList)
+                         .registerInto (aRegistry);
       }
 
       {
@@ -910,11 +950,12 @@ public final class XRechnungValidation
                                                                                    "3.0.0/XRechnung-UBL-validation.xslt",
                                                                                    _getCL ())));
 
-        aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_XRECHNUNG_UBL_INVOICE_300,
-                                                                               "XRechnung UBL Invoice " +
-                                                                                                              VID_XRECHNUNG_UBL_INVOICE_300.getVersionString (),
-                                                                               PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
-                                                                               aNewList));
+        PhiveRulesBuilder.builder ()
+                         .vesID (VID_XRECHNUNG_UBL_INVOICE_300)
+                         .displayNamePrefix ("XRechnung UBL Invoice ")
+                         .notDeprecated ()
+                         .addExecutors (aNewList)
+                         .registerInto (aRegistry);
       }
       {
         final ICommonsMap <String, CustomErrorDetails> aCustomErrorLevels = new CommonsHashMap <> ();
@@ -934,12 +975,14 @@ public final class XRechnungValidation
                                                                                    "3.0.0/XRechnung-UBL-validation.xslt",
                                                                                    _getCL ())));
 
-        aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_XRECHNUNG_EXTENSION_UBL_INVOICE_300,
-                                                                               "XRechnung UBL Invoice " +
-                                                                                                                        VID_XRECHNUNG_EXTENSION_UBL_INVOICE_300.getVersionString () +
-                                                                                                                        " Extension",
-                                                                               PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
-                                                                               aNewList));
+        PhiveRulesBuilder.builder ()
+                         .vesID (VID_XRECHNUNG_EXTENSION_UBL_INVOICE_300)
+                         .displayName ("XRechnung UBL Invoice " +
+                                       VID_XRECHNUNG_EXTENSION_UBL_INVOICE_300.getVersionString () +
+                                       " Extension")
+                         .notDeprecated ()
+                         .addExecutors (aNewList)
+                         .registerInto (aRegistry);
       }
     }
 
@@ -966,11 +1009,12 @@ public final class XRechnungValidation
                                                                                       "3.0.1/XRechnung-CII-validation.xslt",
                                                                                       _getCL ())));
 
-        aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_XRECHNUNG_CII_301,
-                                                                               "XRechnung CII " +
-                                                                                                      VID_XRECHNUNG_CII_301.getVersionString (),
-                                                                               PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
-                                                                               aNewList));
+        PhiveRulesBuilder.builder ()
+                         .vesID (VID_XRECHNUNG_CII_301)
+                         .displayNamePrefix ("XRechnung CII ")
+                         .notDeprecated ()
+                         .addExecutors (aNewList)
+                         .registerInto (aRegistry);
       }
       {
         final ICommonsMap <String, CustomErrorDetails> aCustomErrorLevels = new CommonsHashMap <> ();
@@ -991,12 +1035,14 @@ public final class XRechnungValidation
                                                                                       "3.0.1/XRechnung-CII-validation.xslt",
                                                                                       _getCL ())));
 
-        aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_XRECHNUNG_EXTENSION_CII_301,
-                                                                               "XRechnung CII " +
-                                                                                                                VID_XRECHNUNG_EXTENSION_CII_301.getVersionString () +
-                                                                                                                " Extension",
-                                                                               PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
-                                                                               aNewList));
+        PhiveRulesBuilder.builder ()
+                         .vesID (VID_XRECHNUNG_EXTENSION_CII_301)
+                         .displayName ("XRechnung CII " +
+                                       VID_XRECHNUNG_EXTENSION_CII_301.getVersionString () +
+                                       " Extension")
+                         .notDeprecated ()
+                         .addExecutors (aNewList)
+                         .registerInto (aRegistry);
       }
 
       {
@@ -1010,11 +1056,12 @@ public final class XRechnungValidation
                                                                                    "3.0.1/XRechnung-UBL-validation.xslt",
                                                                                    _getCL ())));
 
-        aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_XRECHNUNG_UBL_CREDITNOTE_301,
-                                                                               "XRechnung UBL Credit Note " +
-                                                                                                                 VID_XRECHNUNG_UBL_CREDITNOTE_301.getVersionString (),
-                                                                               PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
-                                                                               aNewList));
+        PhiveRulesBuilder.builder ()
+                         .vesID (VID_XRECHNUNG_UBL_CREDITNOTE_301)
+                         .displayNamePrefix ("XRechnung UBL Credit Note ")
+                         .notDeprecated ()
+                         .addExecutors (aNewList)
+                         .registerInto (aRegistry);
       }
 
       {
@@ -1028,11 +1075,12 @@ public final class XRechnungValidation
                                                                                    "3.0.1/XRechnung-UBL-validation.xslt",
                                                                                    _getCL ())));
 
-        aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_XRECHNUNG_UBL_INVOICE_301,
-                                                                               "XRechnung UBL Invoice " +
-                                                                                                              VID_XRECHNUNG_UBL_INVOICE_301.getVersionString (),
-                                                                               PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
-                                                                               aNewList));
+        PhiveRulesBuilder.builder ()
+                         .vesID (VID_XRECHNUNG_UBL_INVOICE_301)
+                         .displayNamePrefix ("XRechnung UBL Invoice ")
+                         .notDeprecated ()
+                         .addExecutors (aNewList)
+                         .registerInto (aRegistry);
       }
       {
         final ICommonsMap <String, CustomErrorDetails> aCustomErrorLevels = new CommonsHashMap <> ();
@@ -1052,12 +1100,14 @@ public final class XRechnungValidation
                                                                                    "3.0.1/XRechnung-UBL-validation.xslt",
                                                                                    _getCL ())));
 
-        aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_XRECHNUNG_EXTENSION_UBL_INVOICE_301,
-                                                                               "XRechnung UBL Invoice " +
-                                                                                                                        VID_XRECHNUNG_EXTENSION_UBL_INVOICE_301.getVersionString () +
-                                                                                                                        " Extension",
-                                                                               PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
-                                                                               aNewList));
+        PhiveRulesBuilder.builder ()
+                         .vesID (VID_XRECHNUNG_EXTENSION_UBL_INVOICE_301)
+                         .displayName ("XRechnung UBL Invoice " +
+                                       VID_XRECHNUNG_EXTENSION_UBL_INVOICE_301.getVersionString () +
+                                       " Extension")
+                         .notDeprecated ()
+                         .addExecutors (aNewList)
+                         .registerInto (aRegistry);
       }
     }
 
@@ -1086,12 +1136,14 @@ public final class XRechnungValidation
                                                                                       "3.0.2/XRechnung-CII-validation.xslt",
                                                                                       _getCL ())));
 
-        aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_XRECHNUNG_CII_302,
-                                                                               "XRechnung CII " +
-                                                                                                      VID_XRECHNUNG_CII_302.getVersionString () +
-                                                                                                      sAkaVersion,
-                                                                               PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
-                                                                               aNewList));
+        PhiveRulesBuilder.builder ()
+                         .vesID (VID_XRECHNUNG_CII_302)
+                         .displayName ("XRechnung CII " +
+                                       VID_XRECHNUNG_CII_302.getVersionString () +
+                                       sAkaVersion)
+                         .notDeprecated ()
+                         .addExecutors (aNewList)
+                         .registerInto (aRegistry);
       }
       {
         final ICommonsMap <String, CustomErrorDetails> aCustomErrorLevels = new CommonsHashMap <> ();
@@ -1112,13 +1164,15 @@ public final class XRechnungValidation
                                                                                       "3.0.2/XRechnung-CII-validation.xslt",
                                                                                       _getCL ())));
 
-        aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_XRECHNUNG_EXTENSION_CII_302,
-                                                                               "XRechnung CII " +
-                                                                                                                VID_XRECHNUNG_EXTENSION_CII_302.getVersionString () +
-                                                                                                                " Extension" +
-                                                                                                                sAkaVersion,
-                                                                               PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
-                                                                               aNewList));
+        PhiveRulesBuilder.builder ()
+                         .vesID (VID_XRECHNUNG_EXTENSION_CII_302)
+                         .displayName ("XRechnung CII " +
+                                       VID_XRECHNUNG_EXTENSION_CII_302.getVersionString () +
+                                       " Extension" +
+                                       sAkaVersion)
+                         .notDeprecated ()
+                         .addExecutors (aNewList)
+                         .registerInto (aRegistry);
       }
 
       {
@@ -1132,12 +1186,14 @@ public final class XRechnungValidation
                                                                                    "3.0.2/XRechnung-UBL-validation.xslt",
                                                                                    _getCL ())));
 
-        aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_XRECHNUNG_UBL_CREDITNOTE_302,
-                                                                               "XRechnung UBL Credit Note " +
-                                                                                                                 VID_XRECHNUNG_UBL_CREDITNOTE_302.getVersionString () +
-                                                                                                                 sAkaVersion,
-                                                                               PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
-                                                                               aNewList));
+        PhiveRulesBuilder.builder ()
+                         .vesID (VID_XRECHNUNG_UBL_CREDITNOTE_302)
+                         .displayName ("XRechnung UBL Credit Note " +
+                                       VID_XRECHNUNG_UBL_CREDITNOTE_302.getVersionString () +
+                                       sAkaVersion)
+                         .notDeprecated ()
+                         .addExecutors (aNewList)
+                         .registerInto (aRegistry);
       }
 
       {
@@ -1151,12 +1207,14 @@ public final class XRechnungValidation
                                                                                    "3.0.2/XRechnung-UBL-validation.xslt",
                                                                                    _getCL ())));
 
-        aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_XRECHNUNG_UBL_INVOICE_302,
-                                                                               "XRechnung UBL Invoice " +
-                                                                                                              VID_XRECHNUNG_UBL_INVOICE_302.getVersionString () +
-                                                                                                              sAkaVersion,
-                                                                               PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
-                                                                               aNewList));
+        PhiveRulesBuilder.builder ()
+                         .vesID (VID_XRECHNUNG_UBL_INVOICE_302)
+                         .displayName ("XRechnung UBL Invoice " +
+                                       VID_XRECHNUNG_UBL_INVOICE_302.getVersionString () +
+                                       sAkaVersion)
+                         .notDeprecated ()
+                         .addExecutors (aNewList)
+                         .registerInto (aRegistry);
       }
       {
         final ICommonsMap <String, CustomErrorDetails> aCustomErrorLevels = new CommonsHashMap <> ();
@@ -1176,13 +1234,15 @@ public final class XRechnungValidation
                                                                                    "3.0.2/XRechnung-UBL-validation.xslt",
                                                                                    _getCL ())));
 
-        aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_XRECHNUNG_EXTENSION_UBL_INVOICE_302,
-                                                                               "XRechnung UBL Invoice " +
-                                                                                                                        VID_XRECHNUNG_EXTENSION_UBL_INVOICE_302.getVersionString () +
-                                                                                                                        " Extension" +
-                                                                                                                        sAkaVersion,
-                                                                               PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
-                                                                               aNewList));
+        PhiveRulesBuilder.builder ()
+                         .vesID (VID_XRECHNUNG_EXTENSION_UBL_INVOICE_302)
+                         .displayName ("XRechnung UBL Invoice " +
+                                       VID_XRECHNUNG_EXTENSION_UBL_INVOICE_302.getVersionString () +
+                                       " Extension" +
+                                       sAkaVersion)
+                         .notDeprecated ()
+                         .addExecutors (aNewList)
+                         .registerInto (aRegistry);
       }
     }
   }

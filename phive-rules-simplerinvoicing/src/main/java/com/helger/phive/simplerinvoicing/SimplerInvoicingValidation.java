@@ -332,395 +332,395 @@ public final class SimplerInvoicingValidation
     // 1.0
     {
       final ClassPathResource INVOICE_SI10 = new ClassPathResource (PATH_SI + "si-ubl-1.0.xslt", _getCL ());
-      PhiveRulesBuilder.forRegistry (aRegistry)
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_SI_INVOICE_V10)
                        .displayName ("Simplerinvoicing Invoice 1.0")
                        .deprecated ()
                        .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (INVOICE_SI10))
-                       .registerInto ();
+                       .registerInto (aRegistry);
     }
 
     // 1.1
     {
       final ClassPathResource INVOICE_SI11 = new ClassPathResource (PATH_SI + "si-ubl-1.1.xslt", _getCL ());
-      PhiveRulesBuilder.forRegistry (aRegistry)
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_SI_INVOICE_V11)
                        .displayName ("Simplerinvoicing Invoice 1.1")
                        .deprecated ()
                        .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (INVOICE_SI11))
-                       .registerInto ();
+                       .registerInto (aRegistry);
     }
 
     // 1.2
     {
       final ClassPathResource INVOICE_SI12 = new ClassPathResource (PATH_SI + "si-ubl-1.2.xslt", _getCL ());
-      PhiveRulesBuilder.forRegistry (aRegistry)
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_SI_INVOICE_V12)
                        .displayName ("Simplerinvoicing Invoice 1.2")
                        .deprecated ()
                        .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (INVOICE_SI12))
-                       .registerInto ();
+                       .registerInto (aRegistry);
       final ClassPathResource ORDER_SI12 = new ClassPathResource (PATH_SI + "si-ubl-1.2-purchaseorder.xslt", _getCL ());
-      PhiveRulesBuilder.forRegistry (aRegistry)
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_SI_ORDER_V12)
                        .displayName ("Simplerinvoicing Order 1.2")
                        .deprecated ()
                        .addXSD (UBL21Marshaller.getAllOrderXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (ORDER_SI12))
-                       .registerInto ();
+                       .registerInto (aRegistry);
     }
 
     // 1.2.3
     {
       final ClassPathResource INVOICE_SI123 = new ClassPathResource (PATH_SI + "si-ubl-1.2.3.xslt", _getCL ());
-      PhiveRulesBuilder.forRegistry (aRegistry)
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_SI_INVOICE_V123)
                        .displayName ("Simplerinvoicing Invoice 1.2.3")
                        .deprecated ()
                        .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (INVOICE_SI123))
-                       .registerInto ();
+                       .registerInto (aRegistry);
       final ClassPathResource ORDER_SI123 = new ClassPathResource (PATH_SI + "si-ubl-1.2.3-purchaseorder.xslt",
                                                                    _getCL ());
-      PhiveRulesBuilder.forRegistry (aRegistry)
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_SI_ORDER_V123)
                        .displayName ("Simplerinvoicing Order 1.2.3")
                        .deprecated ()
                        .addXSD (UBL21Marshaller.getAllOrderXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (ORDER_SI123))
-                       .registerInto ();
+                       .registerInto (aRegistry);
     }
 
     // 1.2.4
     {
       final ClassPathResource INVOICE_SI124 = new ClassPathResource (PATH_SI + "si-ubl-1.2.4.xslt", _getCL ());
-      PhiveRulesBuilder.forRegistry (aRegistry)
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_SI_INVOICE_V124)
                        .displayName ("Simplerinvoicing Invoice 1.2.4")
                        .deprecated ()
                        .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (INVOICE_SI124))
-                       .registerInto ();
+                       .registerInto (aRegistry);
       final ClassPathResource ORDER_SI124 = new ClassPathResource (PATH_SI + "si-ubl-1.2.4-purchaseorder.xslt",
                                                                    _getCL ());
-      PhiveRulesBuilder.forRegistry (aRegistry)
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_SI_ORDER_V124)
                        .displayName ("Simplerinvoicing Order 1.2.4")
                        .deprecated ()
                        .addXSD (UBL21Marshaller.getAllOrderXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (ORDER_SI124))
-                       .registerInto ();
+                       .registerInto (aRegistry);
     }
 
     // 2.0
     {
       final ClassPathResource aRes = new ClassPathResource (PATH_SI + "si-ubl-2.0.xslt", _getCL ());
-      PhiveRulesBuilder.forRegistry (aRegistry)
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_SI_INVOICE_V20)
                        .displayName ("Simplerinvoicing Invoice 2.0")
                        .deprecated ()
                        .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aRes))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_SI_CREDIT_NOTE_V20)
                        .displayName ("Simplerinvoicing Credit Note 2.0")
                        .deprecated ()
                        .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aRes))
-                       .registerInto ();
+                       .registerInto (aRegistry);
     }
 
     // 2.0.1
     {
       final ClassPathResource aRes = new ClassPathResource (PATH_SI + "si-ubl-2.0.1.xslt", _getCL ());
-      PhiveRulesBuilder.forRegistry (aRegistry)
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_SI_INVOICE_V201)
                        .displayName ("Simplerinvoicing Invoice 2.0.1")
                        .deprecated ()
                        .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aRes))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_SI_CREDIT_NOTE_V201)
                        .displayName ("Simplerinvoicing Credit Note 2.0.1")
                        .deprecated ()
                        .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aRes))
-                       .registerInto ();
+                       .registerInto (aRegistry);
     }
 
     // 2.0.2
     {
       final ClassPathResource aRes = new ClassPathResource (PATH_SI + "si-ubl-2.0.2.xslt", _getCL ());
-      PhiveRulesBuilder.forRegistry (aRegistry)
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_SI_INVOICE_V202)
                        .displayName ("Simplerinvoicing Invoice 2.0.2")
                        .deprecated ()
                        .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aRes))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_SI_CREDIT_NOTE_V202)
                        .displayName ("Simplerinvoicing Credit Note 2.0.2")
                        .deprecated ()
                        .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aRes))
-                       .registerInto ();
+                       .registerInto (aRegistry);
     }
 
     // 2.0.3
     {
       final ClassPathResource aRes = new ClassPathResource (PATH_SI + "si-ubl-2.0.3.xslt", _getCL ());
-      PhiveRulesBuilder.forRegistry (aRegistry)
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_SI_INVOICE_V203)
                        .displayName ("Simplerinvoicing Invoice 2.0.3")
                        .deprecated ()
                        .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aRes))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_SI_CREDIT_NOTE_V203)
                        .displayName ("Simplerinvoicing Credit Note 2.0.3")
                        .deprecated ()
                        .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aRes))
-                       .registerInto ();
+                       .registerInto (aRegistry);
     }
 
     // 2.0.3.1
     {
       final ClassPathResource aRes = new ClassPathResource (PATH_SI + "si-ubl-2.0.3.1.xslt", _getCL ());
-      PhiveRulesBuilder.forRegistry (aRegistry)
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_SI_INVOICE_V2031)
                        .displayName ("Simplerinvoicing Invoice 2.0.3.1")
                        .deprecated ()
                        .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aRes))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_SI_CREDIT_NOTE_V2031)
                        .displayName ("Simplerinvoicing Credit Note 2.0.3.1")
                        .deprecated ()
                        .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aRes))
-                       .registerInto ();
+                       .registerInto (aRegistry);
     }
 
     // 2.0.3.2
     {
       final ClassPathResource aRes = new ClassPathResource (PATH_SI + "si-ubl-2.0.3.2.xslt", _getCL ());
-      PhiveRulesBuilder.forRegistry (aRegistry)
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_SI_INVOICE_V2032)
                        .displayName ("Simplerinvoicing Invoice 2.0.3.2")
                        .deprecated ()
                        .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aRes))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_SI_CREDIT_NOTE_V2032)
                        .displayName ("Simplerinvoicing Credit Note 2.0.3.2")
                        .deprecated ()
                        .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aRes))
-                       .registerInto ();
+                       .registerInto (aRegistry);
     }
 
     // 2.0.3.3
     {
       final ClassPathResource aRes = new ClassPathResource (PATH_SI + "si-ubl-2.0.3.3.xslt", _getCL ());
-      PhiveRulesBuilder.forRegistry (aRegistry)
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_SI_INVOICE_V2033)
                        .displayName ("Simplerinvoicing Invoice 2.0.3.3")
                        .deprecated ()
                        .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aRes))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_SI_CREDIT_NOTE_V2033)
                        .displayName ("Simplerinvoicing Credit Note 2.0.3.3")
                        .deprecated ()
                        .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aRes))
-                       .registerInto ();
+                       .registerInto (aRegistry);
     }
 
     // 2.0.3.4
     {
       final ClassPathResource aRes = new ClassPathResource (PATH_SI + "si-ubl-2.0.3.4.xslt", _getCL ());
-      PhiveRulesBuilder.forRegistry (aRegistry)
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_SI_INVOICE_V2034)
                        .displayName ("Simplerinvoicing Invoice 2.0.3.4")
                        .deprecated ()
                        .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aRes))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_SI_CREDIT_NOTE_V2034)
                        .displayName ("Simplerinvoicing Credit Note 2.0.3.4")
                        .deprecated ()
                        .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aRes))
-                       .registerInto ();
+                       .registerInto (aRegistry);
     }
 
     // 2.0.3.5
     {
       final ClassPathResource aRes = new ClassPathResource (PATH_SI + "si-ubl-2.0.3.5.xslt", _getCL ());
-      PhiveRulesBuilder.forRegistry (aRegistry)
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_SI_INVOICE_V2035)
                        .displayName ("Simplerinvoicing Invoice 2.0.3.5")
                        .deprecated ()
                        .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aRes))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_SI_CREDIT_NOTE_V2035)
                        .displayName ("Simplerinvoicing Credit Note 2.0.3.5")
                        .deprecated ()
                        .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aRes))
-                       .registerInto ();
+                       .registerInto (aRegistry);
     }
 
     // 2.0.3.6
     {
       final ClassPathResource aRes = new ClassPathResource (PATH_SI + "si-ubl-2.0.3.6.xslt", _getCL ());
-      PhiveRulesBuilder.forRegistry (aRegistry)
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_SI_INVOICE_V2036)
                        .displayName ("Simplerinvoicing Invoice 2.0.3.6")
                        .deprecated ()
                        .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aRes))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_SI_CREDIT_NOTE_V2036)
                        .displayName ("Simplerinvoicing Credit Note 2.0.3.6")
                        .deprecated ()
                        .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aRes))
-                       .registerInto ();
+                       .registerInto (aRegistry);
     }
 
     // 2.0.3.7
     {
       final ClassPathResource aRes = new ClassPathResource (PATH_SI + "si-ubl-2.0.3.7.xslt", _getCL ());
-      PhiveRulesBuilder.forRegistry (aRegistry)
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_SI_INVOICE_V2037)
                        .displayName ("Simplerinvoicing Invoice 2.0.3.7")
                        .deprecated ()
                        .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aRes))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_SI_CREDIT_NOTE_V2037)
                        .displayName ("Simplerinvoicing Credit Note 2.0.3.7")
                        .deprecated ()
                        .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aRes))
-                       .registerInto ();
+                       .registerInto (aRegistry);
     }
 
     // 2.0.3.8
     {
       final ClassPathResource aRes = new ClassPathResource (PATH_SI + "si-ubl-2.0.3.8.xslt", _getCL ());
-      PhiveRulesBuilder.forRegistry (aRegistry)
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_SI_INVOICE_V2038)
                        .displayName ("Simplerinvoicing Invoice 2.0.3.8")
                        .deprecated ()
                        .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aRes))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_SI_CREDIT_NOTE_V2038)
                        .displayName ("Simplerinvoicing Credit Note 2.0.3.8")
                        .deprecated ()
                        .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aRes))
-                       .registerInto ();
+                       .registerInto (aRegistry);
     }
 
     // 2.0.3.9
     {
       final ClassPathResource aRes = new ClassPathResource (PATH_SI + "si-ubl-2.0.3.9.xslt", _getCL ());
-      PhiveRulesBuilder.forRegistry (aRegistry)
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_SI_INVOICE_V2039)
                        .displayName ("Simplerinvoicing Invoice 2.0.3.9")
                        .deprecated ()
                        .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aRes))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_SI_CREDIT_NOTE_V2039)
                        .displayName ("Simplerinvoicing Credit Note 2.0.3.9")
                        .deprecated ()
                        .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aRes))
-                       .registerInto ();
+                       .registerInto (aRegistry);
     }
 
     // 2.0.3.10
     {
       final ClassPathResource aRes = new ClassPathResource (PATH_SI + "si-ubl-2.0.3.10.xslt", _getCL ());
-      PhiveRulesBuilder.forRegistry (aRegistry)
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_SI_INVOICE_V2_0_3_10)
                        .displayName ("Simplerinvoicing Invoice 2.0.3.10")
                        .deprecated ()
                        .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aRes))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_SI_CREDIT_NOTE_V2_0_3_10)
                        .displayName ("Simplerinvoicing Credit Note 2.0.3.10")
                        .deprecated ()
                        .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aRes))
-                       .registerInto ();
+                       .registerInto (aRegistry);
     }
 
     // 2.0.3.11
     {
       final ClassPathResource aRes = new ClassPathResource (PATH_SI + "si-ubl-2.0.3.11.xslt", _getCL ());
-      PhiveRulesBuilder.forRegistry (aRegistry)
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_SI_INVOICE_V2_0_3_11)
                        .displayName ("Simplerinvoicing Invoice 2.0.3.11")
                        .notDeprecated ()
                        .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aRes))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_SI_CREDIT_NOTE_V2_0_3_11)
                        .displayName ("Simplerinvoicing Credit Note 2.0.3.11")
                        .notDeprecated ()
                        .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aRes))
-                       .registerInto ();
+                       .registerInto (aRegistry);
     }
 
     // 2.0.3.12
     {
       final ClassPathResource aRes = new ClassPathResource (PATH_SI + "si-ubl-2.0.3.12.xslt", _getCL ());
-      PhiveRulesBuilder.forRegistry (aRegistry)
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_SI_INVOICE_V2_0_3_12)
                        .displayName ("Simplerinvoicing Invoice 2.0.3.12")
                        .notDeprecated ()
                        .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aRes))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_SI_CREDIT_NOTE_V2_0_3_12)
                        .displayName ("Simplerinvoicing Credit Note 2.0.3.12")
                        .notDeprecated ()
                        .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aRes))
-                       .registerInto ();
+                       .registerInto (aRegistry);
     }
 
     // 2.0 G-Account 1.0
-    PhiveRulesBuilder.forRegistry (aRegistry)
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_SI_INVOICE_20_GACCOUNT_V10)
                      .displayName ("Simplerinvoicing 2.0 G-Account extension 1.0")
                      .deprecated ()
@@ -728,10 +728,10 @@ public final class SimplerInvoicingValidation
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (PATH_SI +
                                                                                                   "si-ubl-2.0-ext-gaccount-1.0.xslt",
                                                                                                   _getCL ())))
-                     .registerInto ();
+                     .registerInto (aRegistry);
 
     // 2.0 G-Account 1.0.1
-    PhiveRulesBuilder.forRegistry (aRegistry)
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_SI_INVOICE_20_GACCOUNT_V101)
                      .displayName ("Simplerinvoicing 2.0 G-Account extension 1.0.1")
                      .deprecated ()
@@ -739,10 +739,10 @@ public final class SimplerInvoicingValidation
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (PATH_SI +
                                                                                                   "si-ubl-2.0-ext-gaccount-1.0.1.xslt",
                                                                                                   _getCL ())))
-                     .registerInto ();
+                     .registerInto (aRegistry);
 
     // 2.0 G-Account 1.0.2
-    PhiveRulesBuilder.forRegistry (aRegistry)
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_SI_INVOICE_20_GACCOUNT_V102)
                      .displayName ("Simplerinvoicing 2.0 G-Account extension 1.0.2")
                      .deprecated ()
@@ -750,10 +750,10 @@ public final class SimplerInvoicingValidation
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (PATH_SI +
                                                                                                   "si-ubl-2.0-ext-gaccount-1.0.2.xslt",
                                                                                                   _getCL ())))
-                     .registerInto ();
+                     .registerInto (aRegistry);
 
     // 2.0 G-Account 1.0.3
-    PhiveRulesBuilder.forRegistry (aRegistry)
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_SI_INVOICE_20_GACCOUNT_V103)
                      .displayName ("Simplerinvoicing 2.0 G-Account extension 1.0.3")
                      .deprecated ()
@@ -761,10 +761,10 @@ public final class SimplerInvoicingValidation
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (PATH_SI +
                                                                                                   "si-ubl-2.0-ext-gaccount-1.0.3.xslt",
                                                                                                   _getCL ())))
-                     .registerInto ();
+                     .registerInto (aRegistry);
 
     // 2.0 G-Account 1.0.4
-    PhiveRulesBuilder.forRegistry (aRegistry)
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_SI_INVOICE_20_GACCOUNT_V104)
                      .displayName ("Simplerinvoicing 2.0 G-Account extension 1.0.4")
                      .deprecated ()
@@ -772,10 +772,10 @@ public final class SimplerInvoicingValidation
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (PATH_SI +
                                                                                                   "si-ubl-2.0-ext-gaccount-1.0.4.xslt",
                                                                                                   _getCL ())))
-                     .registerInto ();
+                     .registerInto (aRegistry);
 
     // 2.0 G-Account 1.0.5
-    PhiveRulesBuilder.forRegistry (aRegistry)
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_SI_INVOICE_20_GACCOUNT_V105)
                      .displayName ("Simplerinvoicing 2.0 G-Account extension 1.0.5")
                      .deprecated ()
@@ -783,10 +783,10 @@ public final class SimplerInvoicingValidation
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (PATH_SI +
                                                                                                   "si-ubl-2.0-ext-gaccount-1.0.5.xslt",
                                                                                                   _getCL ())))
-                     .registerInto ();
+                     .registerInto (aRegistry);
 
     // 2.0 G-Account 1.0.6
-    PhiveRulesBuilder.forRegistry (aRegistry)
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_SI_INVOICE_20_GACCOUNT_V106)
                      .displayName ("Simplerinvoicing 2.0 G-Account extension 1.0.6")
                      .deprecated ()
@@ -794,10 +794,10 @@ public final class SimplerInvoicingValidation
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (PATH_SI +
                                                                                                   "si-ubl-2.0-ext-gaccount-1.0.6.xslt",
                                                                                                   _getCL ())))
-                     .registerInto ();
+                     .registerInto (aRegistry);
 
     // 2.0 G-Account 1.0.7
-    PhiveRulesBuilder.forRegistry (aRegistry)
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_SI_INVOICE_20_GACCOUNT_V107)
                      .displayName ("Simplerinvoicing 2.0 G-Account extension 1.0.7")
                      .deprecated ()
@@ -805,10 +805,10 @@ public final class SimplerInvoicingValidation
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (PATH_SI +
                                                                                                   "si-ubl-2.0-ext-gaccount-1.0.7.xslt",
                                                                                                   _getCL ())))
-                     .registerInto ();
+                     .registerInto (aRegistry);
 
     // 2.0 G-Account 1.0.8
-    PhiveRulesBuilder.forRegistry (aRegistry)
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_SI_INVOICE_20_GACCOUNT_V108)
                      .displayName ("Simplerinvoicing 2.0 G-Account extension 1.0.8")
                      .deprecated ()
@@ -816,10 +816,10 @@ public final class SimplerInvoicingValidation
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (PATH_SI +
                                                                                                   "si-ubl-2.0-ext-gaccount-1.0.8.xslt",
                                                                                                   _getCL ())))
-                     .registerInto ();
+                     .registerInto (aRegistry);
 
     // 2.0 G-Account 1.0.9
-    PhiveRulesBuilder.forRegistry (aRegistry)
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_SI_INVOICE_20_GACCOUNT_V109)
                      .displayName ("Simplerinvoicing 2.0 G-Account extension 1.0.9")
                      .deprecated ()
@@ -827,10 +827,10 @@ public final class SimplerInvoicingValidation
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (PATH_SI +
                                                                                                   "si-ubl-2.0-ext-gaccount-1.0.9.xslt",
                                                                                                   _getCL ())))
-                     .registerInto ();
+                     .registerInto (aRegistry);
 
     // 2.0 G-Account 1.0.10
-    PhiveRulesBuilder.forRegistry (aRegistry)
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_SI_INVOICE_20_GACCOUNT_V1_0_10)
                      .displayName ("Simplerinvoicing 2.0 G-Account extension 1.0.10")
                      .deprecated ()
@@ -838,10 +838,10 @@ public final class SimplerInvoicingValidation
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (PATH_SI +
                                                                                                   "si-ubl-2.0-ext-gaccount-1.0.10.xslt",
                                                                                                   _getCL ())))
-                     .registerInto ();
+                     .registerInto (aRegistry);
 
     // 2.0 G-Account 1.0.11
-    PhiveRulesBuilder.forRegistry (aRegistry)
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_SI_INVOICE_20_GACCOUNT_V1_0_11)
                      .displayName ("Simplerinvoicing 2.0 G-Account extension 1.0.11")
                      .notDeprecated ()
@@ -849,10 +849,10 @@ public final class SimplerInvoicingValidation
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (PATH_SI +
                                                                                                   "si-ubl-2.0-ext-gaccount-1.0.11.xslt",
                                                                                                   _getCL ())))
-                     .registerInto ();
+                     .registerInto (aRegistry);
 
     // 2.0 G-Account 1.0.12
-    PhiveRulesBuilder.forRegistry (aRegistry)
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_SI_INVOICE_20_GACCOUNT_V1_0_12)
                      .displayName ("Simplerinvoicing 2.0 G-Account extension 1.0.12")
                      .notDeprecated ()
@@ -860,12 +860,12 @@ public final class SimplerInvoicingValidation
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (PATH_SI +
                                                                                                   "si-ubl-2.0-ext-gaccount-1.0.12.xslt",
                                                                                                   _getCL ())))
-                     .registerInto ();
+                     .registerInto (aRegistry);
 
     final String PATH_NL_CIUS = "/external/schematron/nlcius/";
 
     // NLCIUS 1.0.3
-    PhiveRulesBuilder.forRegistry (aRegistry)
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_SI_NLCIUS_CII_V103)
                      .displayName ("NLCIUS-CII 1.0.3")
                      .deprecated ()
@@ -873,10 +873,10 @@ public final class SimplerInvoicingValidation
                      .addSchematron (PhiveRulesCIIHelper.createXSLT_CII_D16B (new ClassPathResource (PATH_NL_CIUS +
                                                                                                      "nlcius-cii-1.0.3.xslt",
                                                                                                      _getCL ())))
-                     .registerInto ();
+                     .registerInto (aRegistry);
 
     // NLCIUS 1.0.3.1
-    PhiveRulesBuilder.forRegistry (aRegistry)
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_SI_NLCIUS_CII_V1031)
                      .displayName ("NLCIUS-CII 1.0.3.1")
                      .deprecated ()
@@ -884,10 +884,10 @@ public final class SimplerInvoicingValidation
                      .addSchematron (PhiveRulesCIIHelper.createXSLT_CII_D16B (new ClassPathResource (PATH_NL_CIUS +
                                                                                                      "nlcius-cii-1.0.3.1.xslt",
                                                                                                      _getCL ())))
-                     .registerInto ();
+                     .registerInto (aRegistry);
 
     // NLCIUS 1.0.3.2
-    PhiveRulesBuilder.forRegistry (aRegistry)
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_SI_NLCIUS_CII_V1032)
                      .displayName ("NLCIUS-CII 1.0.3.2")
                      .deprecated ()
@@ -895,10 +895,10 @@ public final class SimplerInvoicingValidation
                      .addSchematron (PhiveRulesCIIHelper.createXSLT_CII_D16B (new ClassPathResource (PATH_NL_CIUS +
                                                                                                      "nlcius-cii-1.0.3.2.xslt",
                                                                                                      _getCL ())))
-                     .registerInto ();
+                     .registerInto (aRegistry);
 
     // NLCIUS 1.0.3.3
-    PhiveRulesBuilder.forRegistry (aRegistry)
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_SI_NLCIUS_CII_V1033)
                      .displayName ("NLCIUS-CII 1.0.3.3")
                      .deprecated ()
@@ -906,10 +906,10 @@ public final class SimplerInvoicingValidation
                      .addSchematron (PhiveRulesCIIHelper.createXSLT_CII_D16B (new ClassPathResource (PATH_NL_CIUS +
                                                                                                      "nlcius-cii-1.0.3.3.xslt",
                                                                                                      _getCL ())))
-                     .registerInto ();
+                     .registerInto (aRegistry);
 
     // NLCIUS 1.0.3.4
-    PhiveRulesBuilder.forRegistry (aRegistry)
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_SI_NLCIUS_CII_V1034)
                      .displayName ("NLCIUS-CII 1.0.3.4")
                      .deprecated ()
@@ -917,10 +917,10 @@ public final class SimplerInvoicingValidation
                      .addSchematron (PhiveRulesCIIHelper.createXSLT_CII_D16B (new ClassPathResource (PATH_NL_CIUS +
                                                                                                      "nlcius-cii-1.0.3.4.xslt",
                                                                                                      _getCL ())))
-                     .registerInto ();
+                     .registerInto (aRegistry);
 
     // NLCIUS 1.0.3.5
-    PhiveRulesBuilder.forRegistry (aRegistry)
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_SI_NLCIUS_CII_V1035)
                      .displayName ("NLCIUS-CII 1.0.3.5")
                      .deprecated ()
@@ -928,10 +928,10 @@ public final class SimplerInvoicingValidation
                      .addSchematron (PhiveRulesCIIHelper.createXSLT_CII_D16B (new ClassPathResource (PATH_NL_CIUS +
                                                                                                      "nlcius-cii-1.0.3.5.xslt",
                                                                                                      _getCL ())))
-                     .registerInto ();
+                     .registerInto (aRegistry);
 
     // NLCIUS 1.0.3.6
-    PhiveRulesBuilder.forRegistry (aRegistry)
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_SI_NLCIUS_CII_V1036)
                      .displayName ("NLCIUS-CII 1.0.3.6")
                      .deprecated ()
@@ -939,10 +939,10 @@ public final class SimplerInvoicingValidation
                      .addSchematron (PhiveRulesCIIHelper.createXSLT_CII_D16B (new ClassPathResource (PATH_NL_CIUS +
                                                                                                      "nlcius-cii-1.0.3.6.xslt",
                                                                                                      _getCL ())))
-                     .registerInto ();
+                     .registerInto (aRegistry);
 
     // NLCIUS 1.0.3.7
-    PhiveRulesBuilder.forRegistry (aRegistry)
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_SI_NLCIUS_CII_V1037)
                      .displayName ("NLCIUS-CII 1.0.3.7")
                      .deprecated ()
@@ -950,10 +950,10 @@ public final class SimplerInvoicingValidation
                      .addSchematron (PhiveRulesCIIHelper.createXSLT_CII_D16B (new ClassPathResource (PATH_NL_CIUS +
                                                                                                      "nlcius-cii-1.0.3.7.xslt",
                                                                                                      _getCL ())))
-                     .registerInto ();
+                     .registerInto (aRegistry);
 
     // NLCIUS 1.0.3.8
-    PhiveRulesBuilder.forRegistry (aRegistry)
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_SI_NLCIUS_CII_V1038)
                      .displayName ("NLCIUS-CII 1.0.3.8")
                      .deprecated ()
@@ -961,10 +961,10 @@ public final class SimplerInvoicingValidation
                      .addSchematron (PhiveRulesCIIHelper.createXSLT_CII_D16B (new ClassPathResource (PATH_NL_CIUS +
                                                                                                      "nlcius-cii-1.0.3.8.xslt",
                                                                                                      _getCL ())))
-                     .registerInto ();
+                     .registerInto (aRegistry);
 
     // NLCIUS 1.0.3.9
-    PhiveRulesBuilder.forRegistry (aRegistry)
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_SI_NLCIUS_CII_V1039)
                      .displayName ("NLCIUS-CII 1.0.3.9")
                      .deprecated ()
@@ -972,12 +972,12 @@ public final class SimplerInvoicingValidation
                      .addSchematron (PhiveRulesCIIHelper.createXSLT_CII_D16B (new ClassPathResource (PATH_NL_CIUS +
                                                                                                      "nlcius-cii-1.0.3.9.xslt",
                                                                                                      _getCL ())))
-                     .registerInto ();
+                     .registerInto (aRegistry);
 
     // NLCIUS 1.0.3.10 was buggy and is therefore not provided
 
     // NLCIUS 1.0.3.11
-    PhiveRulesBuilder.forRegistry (aRegistry)
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_SI_NLCIUS_CII_V1_0_3_11)
                      .displayName ("NLCIUS-CII 1.0.3.11")
                      .notDeprecated ()
@@ -985,10 +985,10 @@ public final class SimplerInvoicingValidation
                      .addSchematron (PhiveRulesCIIHelper.createXSLT_CII_D16B (new ClassPathResource (PATH_NL_CIUS +
                                                                                                      "nlcius-cii-1.0.3.11.xslt",
                                                                                                      _getCL ())))
-                     .registerInto ();
+                     .registerInto (aRegistry);
 
     // NLCIUS 1.0.3.12
-    PhiveRulesBuilder.forRegistry (aRegistry)
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_SI_NLCIUS_CII_V1_0_3_12)
                      .displayName ("NLCIUS-CII 1.0.3.12")
                      .notDeprecated ()
@@ -996,6 +996,6 @@ public final class SimplerInvoicingValidation
                      .addSchematron (PhiveRulesCIIHelper.createXSLT_CII_D16B (new ClassPathResource (PATH_NL_CIUS +
                                                                                                      "nlcius-cii-1.0.3.12.xslt",
                                                                                                      _getCL ())))
-                     .registerInto ();
+                     .registerInto (aRegistry);
   }
 }

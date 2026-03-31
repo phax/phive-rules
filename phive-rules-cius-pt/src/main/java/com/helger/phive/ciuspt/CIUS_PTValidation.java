@@ -90,40 +90,40 @@ public final class CIUS_PTValidation
     {
       final ClassPathResource RES_200 = new ClassPathResource ("/external/schematron/2.0.0/urn_feap.gov.pt_CIUS-PT_2.0.0.xslt",
                                                                _getCL ());
-      PhiveRulesBuilder.forRegistry (aRegistry)
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_CIUS_PT_UBL_CREDITNOTE_200)
                        .displayNamePrefix ("CIUS-PT UBL Credit Note ")
                        .deprecated ()
                        .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (RES_200))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_CIUS_PT_UBL_INVOICE_200)
                        .displayNamePrefix ("CIUS-PT UBL Invoice ")
                        .deprecated ()
                        .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (RES_200))
-                       .registerInto ();
+                       .registerInto (aRegistry);
     }
 
     // V2.1.1 containing the underlying EN rules
     {
       final ClassPathResource RES_211 = new ClassPathResource ("/external/schematron/2.1.1/urn_feap.gov.pt_CIUS-PT_2.1.1.xslt",
                                                                _getCL ());
-      PhiveRulesBuilder.forRegistry (aRegistry)
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_CIUS_PT_UBL_CREDITNOTE_211)
                        .displayNamePrefix ("CIUS-PT UBL Credit Note ")
                        .notDeprecated ()
                        .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (RES_211))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_CIUS_PT_UBL_INVOICE_211)
                        .displayNamePrefix ("CIUS-PT UBL Invoice ")
                        .notDeprecated ()
                        .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (RES_211))
-                       .registerInto ();
+                       .registerInto (aRegistry);
     }
   }
 }

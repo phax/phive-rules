@@ -32,7 +32,7 @@ import com.helger.io.resource.ClassPathResource;
 import com.helger.phive.api.executor.IValidationExecutor;
 import com.helger.phive.api.executorset.IValidationExecutorSet;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
-import com.helger.phive.api.executorset.ValidationExecutorSet;
+import com.helger.phive.rules.api.PhiveRulesBuilder;
 import com.helger.phive.rules.api.PhiveRulesHelper;
 import com.helger.phive.simplerinvoicing.SimplerInvoicingValidation;
 import com.helger.phive.xml.source.IValidationSourceXML;
@@ -99,8 +99,6 @@ public final class EnergieEFactuurValidation
   {
     ValueEnforcer.notNull (aRegistry, "Registry");
 
-    final boolean bNotDeprecated = false;
-
     final String sUBL21InvoiceNamespaceURI = UBL21Marshaller.invoice ().getRootElementNamespaceURI ();
 
     final IValidationExecutorSet <IValidationSourceXML> aSI11 = aRegistry.getOfID (SimplerInvoicingValidation.VID_SI_INVOICE_V11);
@@ -130,11 +128,12 @@ public final class EnergieEFactuurValidation
       // Add the Partial XSD in the middle
       aNewList.add (1, ValidationExecutorXSDPartial.create (aPartialXSDs, XSDPartialContext.createMandatory (aXE100)));
 
-      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_ENERGIE_EFACTUUR_1_0_0,
-                                                                             "Energie eFactuur " +
-                                                                                                         VID_ENERGIE_EFACTUUR_1_0_0.getVersionString (),
-                                                                             PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
-                                                                             aNewList));
+      PhiveRulesBuilder.builder ()
+                       .vesID (VID_ENERGIE_EFACTUUR_1_0_0)
+                       .displayNamePrefix ("Energie eFactuur ")
+                       .notDeprecated ()
+                       .addExecutors (aNewList)
+                       .registerInto (aRegistry);
     }
 
     {
@@ -160,11 +159,12 @@ public final class EnergieEFactuurValidation
       aNewList.add (1, ValidationExecutorXSDPartial.create (aPartialXSDs, XSDPartialContext.createMandatory (aXE101)));
 
       // Same Schematrons as SimplerInvoicing - and same classloader!
-      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_ENERGIE_EFACTUUR_1_0_1,
-                                                                             "Energie eFactuur " +
-                                                                                                         VID_ENERGIE_EFACTUUR_1_0_1.getVersionString (),
-                                                                             PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
-                                                                             aNewList));
+      PhiveRulesBuilder.builder ()
+                       .vesID (VID_ENERGIE_EFACTUUR_1_0_1)
+                       .displayNamePrefix ("Energie eFactuur ")
+                       .notDeprecated ()
+                       .addExecutors (aNewList)
+                       .registerInto (aRegistry);
     }
 
     {
@@ -193,11 +193,12 @@ public final class EnergieEFactuurValidation
       aNewList.add (1, ValidationExecutorXSDPartial.create (aPartialXSDs, XSDPartialContext.createMandatory (aXE200)));
 
       // Same Schematrons as SimplerInvoicing - and same classloader!
-      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_ENERGIE_EFACTUUR_2_0_0,
-                                                                             "Energie eFactuur " +
-                                                                                                         VID_ENERGIE_EFACTUUR_2_0_0.getVersionString (),
-                                                                             PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
-                                                                             aNewList));
+      PhiveRulesBuilder.builder ()
+                       .vesID (VID_ENERGIE_EFACTUUR_2_0_0)
+                       .displayNamePrefix ("Energie eFactuur ")
+                       .notDeprecated ()
+                       .addExecutors (aNewList)
+                       .registerInto (aRegistry);
     }
 
     {
@@ -226,11 +227,12 @@ public final class EnergieEFactuurValidation
       aNewList.add (1, ValidationExecutorXSDPartial.create (aPartialXSDs, XSDPartialContext.createMandatory (aXE300)));
 
       // Same Schematrons as SimplerInvoicing - and same classloader!
-      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_ENERGIE_EFACTUUR_3_0_0,
-                                                                             "Energie eFactuur " +
-                                                                                                         VID_ENERGIE_EFACTUUR_3_0_0.getVersionString (),
-                                                                             PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
-                                                                             aNewList));
+      PhiveRulesBuilder.builder ()
+                       .vesID (VID_ENERGIE_EFACTUUR_3_0_0)
+                       .displayNamePrefix ("Energie eFactuur ")
+                       .notDeprecated ()
+                       .addExecutors (aNewList)
+                       .registerInto (aRegistry);
     }
 
     {
@@ -259,11 +261,12 @@ public final class EnergieEFactuurValidation
       aNewList.add (1, ValidationExecutorXSDPartial.create (aPartialXSDs, XSDPartialContext.createMandatory (aXE310)));
 
       // Same Schematrons as SimplerInvoicing - and same classloader!
-      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_ENERGIE_EFACTUUR_3_1_0,
-                                                                             "Energie eFactuur " +
-                                                                                                         VID_ENERGIE_EFACTUUR_3_1_0.getVersionString (),
-                                                                             PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
-                                                                             aNewList));
+      PhiveRulesBuilder.builder ()
+                       .vesID (VID_ENERGIE_EFACTUUR_3_1_0)
+                       .displayNamePrefix ("Energie eFactuur ")
+                       .notDeprecated ()
+                       .addExecutors (aNewList)
+                       .registerInto (aRegistry);
     }
   }
 }

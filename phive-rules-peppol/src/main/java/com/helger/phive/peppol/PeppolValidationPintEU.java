@@ -81,7 +81,7 @@ public final class PeppolValidationPintEU
       final String sBase = BASE_PATH + "1.0.0/xslt/";
       final String sBaseBilling = sBase + "";
       final String sAkaVersion = " (aka 1.0.0)";
-      PhiveRulesBuilder.forRegistry (aRegistry)
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_EU_PINT_INVOICE_2025_10)
                        .displayName ("Peppol PINT EU Invoice (UBL) 2025-10" + sAkaVersion)
                        .notDeprecated ()
@@ -95,8 +95,8 @@ public final class PeppolValidationPintEU
                        .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (sBaseBilling +
                                                                                            "PINT-jurisdiction-aligned-rules.xslt",
                                                                                            _getCL ()), aNSCtxInvoice))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_EU_PINT_CREDIT_NOTE_2025_10)
                        .displayName ("Peppol PINT EU Credit Note (UBL) 2025-10" + sAkaVersion)
                        .notDeprecated ()
@@ -113,7 +113,7 @@ public final class PeppolValidationPintEU
                                                                                            "PINT-jurisdiction-aligned-rules.xslt",
                                                                                            _getCL ()),
                                                                     aNSCtxCreditNote))
-                       .registerInto ();
+                       .registerInto (aRegistry);
     }
 
     // 2025.11 (aka 1.0.1)
@@ -121,7 +121,7 @@ public final class PeppolValidationPintEU
       final String sBase = BASE_PATH + "1.0.1/xslt/";
       final String sBaseBilling = sBase + "";
       final String sAkaVersion = " (aka 1.0.1)";
-      PhiveRulesBuilder.forRegistry (aRegistry)
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_EU_PINT_INVOICE_2025_11)
                        .displayName ("Peppol PINT EU Invoice (UBL) 2025-11" + sAkaVersion)
                        .notDeprecated ()
@@ -135,8 +135,8 @@ public final class PeppolValidationPintEU
                        .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (sBaseBilling +
                                                                                            "PINT-jurisdiction-aligned-rules.xslt",
                                                                                            _getCL ()), aNSCtxInvoice))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_EU_PINT_CREDIT_NOTE_2025_11)
                        .displayName ("Peppol PINT EU Credit Note (UBL) 2025-11" + sAkaVersion)
                        .notDeprecated ()
@@ -153,7 +153,7 @@ public final class PeppolValidationPintEU
                                                                                            "PINT-jurisdiction-aligned-rules.xslt",
                                                                                            _getCL ()),
                                                                     aNSCtxCreditNote))
-                       .registerInto ();
+                       .registerInto (aRegistry);
     }
   }
 }

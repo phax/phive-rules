@@ -102,22 +102,22 @@ public final class PeppolLegacyValidationSG
                                                                                   "1.0.0/xslt/PEPPOL-EN16931-UBL-SG-Conformant.xslt",
                                                                                   _getCL ());
 
-      PhiveRulesBuilder.forRegistry (aRegistry)
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_BIS3_SG_UBL_INVOICE_100)
                        .displayName ("SG Peppol BIS3 Invoice (UBL) 1.0.0")
                        .deprecated ()
                        .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
                        .addSchematron (PhiveRulesHelper.createXSLT (BIS3_BILLING_SG_CEN_100, aNSCtxInvoice))
                        .addSchematron (PhiveRulesHelper.createXSLT (BIS3_BILLING_SG_PEPPOL_100, aNSCtxInvoice))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_BIS3_SG_UBL_CREDIT_NOTE_100)
                        .displayName ("SG Peppol BIS3 Credit Note (UBL) 1.0.0")
                        .deprecated ()
                        .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
                        .addSchematron (PhiveRulesHelper.createXSLT (BIS3_BILLING_SG_CEN_100, aNSCtxCreditNote))
                        .addSchematron (PhiveRulesHelper.createXSLT (BIS3_BILLING_SG_PEPPOL_100, aNSCtxCreditNote))
-                       .registerInto ();
+                       .registerInto (aRegistry);
     }
 
     // 1.0.2
@@ -129,22 +129,22 @@ public final class PeppolLegacyValidationSG
                                                                                   "1.0.2/xslt/PEPPOL-EN16931-UBL-SG-Conformant.xslt",
                                                                                   _getCL ());
 
-      PhiveRulesBuilder.forRegistry (aRegistry)
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_BIS3_SG_UBL_INVOICE_102)
                        .displayName ("SG Peppol BIS3 Invoice (UBL) 1.0.2")
                        .deprecated ()
                        .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
                        .addSchematron (PhiveRulesHelper.createXSLT (BIS3_BILLING_SG_CEN_102, aNSCtxInvoice))
                        .addSchematron (PhiveRulesHelper.createXSLT (BIS3_BILLING_SG_PEPPOL_102, aNSCtxInvoice))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_BIS3_SG_UBL_CREDIT_NOTE_102)
                        .displayName ("SG Peppol BIS3 Credit Note (UBL) 1.0.2")
                        .deprecated ()
                        .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
                        .addSchematron (PhiveRulesHelper.createXSLT (BIS3_BILLING_SG_CEN_102, aNSCtxCreditNote))
                        .addSchematron (PhiveRulesHelper.createXSLT (BIS3_BILLING_SG_PEPPOL_102, aNSCtxCreditNote))
-                       .registerInto ();
+                       .registerInto (aRegistry);
     }
 
     // 1.0.3
@@ -155,22 +155,22 @@ public final class PeppolLegacyValidationSG
       final IReadableResource BIS3_BILLING_SG_PEPPOL_103 = new ClassPathResource (BASE_PATH +
                                                                                   "1.0.3/xslt/PEPPOL-EN16931-UBL-SG-Conformant.xslt",
                                                                                   _getCL ());
-      PhiveRulesBuilder.forRegistry (aRegistry)
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_BIS3_SG_UBL_INVOICE_103)
                        .displayName ("SG Peppol BIS3 Invoice (UBL) 1.0.3")
                        .deprecated ()
                        .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
                        .addSchematron (PhiveRulesHelper.createXSLT (BIS3_BILLING_SG_CEN_103, aNSCtxInvoice))
                        .addSchematron (PhiveRulesHelper.createXSLT (BIS3_BILLING_SG_PEPPOL_103, aNSCtxInvoice))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_BIS3_SG_UBL_CREDIT_NOTE_103)
                        .displayName ("SG Peppol BIS3 Credit Note (UBL) 1.0.3")
                        .deprecated ()
                        .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
                        .addSchematron (PhiveRulesHelper.createXSLT (BIS3_BILLING_SG_CEN_103, aNSCtxCreditNote))
                        .addSchematron (PhiveRulesHelper.createXSLT (BIS3_BILLING_SG_PEPPOL_103, aNSCtxCreditNote))
-                       .registerInto ();
+                       .registerInto (aRegistry);
     }
   }
 }

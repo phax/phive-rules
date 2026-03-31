@@ -1169,192 +1169,192 @@ public final class UBLValidation
     ValueEnforcer.notNull (aRegistry, "Registry");
 
     // No Schematrons here
-    PhiveRulesBuilder.forRegistry (aRegistry)
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_20_APPLICATIONRESPONSE)
                      .displayName ("UBL Application Response " + VERSION_20)
                      .notDeprecated ()
                      .addXSD (UBL20Marshaller.getAllApplicationResponseXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_20_ATTACHEDDOCUMENT)
                      .displayName ("UBL Attached Document " + VERSION_20)
                      .notDeprecated ()
                      .addXSD (UBL20Marshaller.getAllAttachedDocumentXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_20_BILLOFLADING)
                      .displayName ("UBL Bill Of Lading " + VERSION_20)
                      .notDeprecated ()
                      .addXSD (UBL20Marshaller.getAllBillOfLadingXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_20_CATALOGUE)
                      .displayName ("UBL Catalogue " + VERSION_20)
                      .notDeprecated ()
                      .addXSD (UBL20Marshaller.getAllCatalogueXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_20_CATALOGUEDELETION)
                      .displayName ("UBL Catalogue Deletion " + VERSION_20)
                      .notDeprecated ()
                      .addXSD (UBL20Marshaller.getAllCatalogueDeletionXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_20_CATALOGUEITEMSPECIFICATIONUPDATE)
                      .displayName ("UBL Catalogue Item Specification Update " + VERSION_20)
                      .notDeprecated ()
                      .addXSD (UBL20Marshaller.getAllCatalogueItemSpecificationUpdateXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_20_CATALOGUEPRICINGUPDATE)
                      .displayName ("UBL Catalogue Pricing Update " + VERSION_20)
                      .notDeprecated ()
                      .addXSD (UBL20Marshaller.getAllCataloguePricingUpdateXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_20_CATALOGUEREQUEST)
                      .displayName ("UBL Catalogue Request " + VERSION_20)
                      .notDeprecated ()
                      .addXSD (UBL20Marshaller.getAllCatalogueRequestXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_20_CERTIFICATEOFORIGIN)
                      .displayName ("UBL Certificate Of Origin " + VERSION_20)
                      .notDeprecated ()
                      .addXSD (UBL20Marshaller.getAllCertificateOfOriginXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_20_CREDITNOTE)
                      .displayName ("UBL Credit Note " + VERSION_20)
                      .notDeprecated ()
                      .addXSD (UBL20Marshaller.getAllCreditNoteXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_20_DEBITNOTE)
                      .displayName ("UBL Debit Note " + VERSION_20)
                      .notDeprecated ()
                      .addXSD (UBL20Marshaller.getAllDebitNoteXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_20_DESPATCHADVICE)
                      .displayName ("UBL Despatch Advice " + VERSION_20)
                      .notDeprecated ()
                      .addXSD (UBL20Marshaller.getAllDespatchAdviceXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_20_FORWARDINGINSTRUCTIONS)
                      .displayName ("UBL Forwarding Instructions " + VERSION_20)
                      .notDeprecated ()
                      .addXSD (UBL20Marshaller.getAllForwardingInstructionsXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_20_FREIGHTINVOICE)
                      .displayName ("UBL Freight Invoice " + VERSION_20)
                      .notDeprecated ()
                      .addXSD (UBL20Marshaller.getAllFreightInvoiceXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_20_INVOICE)
                      .displayName ("UBL Invoice " + VERSION_20)
                      .notDeprecated ()
                      .addXSD (UBL20Marshaller.getAllInvoiceXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_20_ORDER)
                      .displayName ("UBL Order " + VERSION_20)
                      .notDeprecated ()
                      .addXSD (UBL20Marshaller.getAllOrderXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_20_ORDERCANCELLATION)
                      .displayName ("UBL Order Cancellation " + VERSION_20)
                      .notDeprecated ()
                      .addXSD (UBL20Marshaller.getAllOrderCancellationXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_20_ORDERCHANGE)
                      .displayName ("UBL Order Change " + VERSION_20)
                      .notDeprecated ()
                      .addXSD (UBL20Marshaller.getAllOrderChangeXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_20_ORDERRESPONSE)
                      .displayName ("UBL Order Response " + VERSION_20)
                      .notDeprecated ()
                      .addXSD (UBL20Marshaller.getAllOrderResponseXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_20_ORDERRESPONSESIMPLE)
                      .displayName ("UBL Order Response Simple " + VERSION_20)
                      .notDeprecated ()
                      .addXSD (UBL20Marshaller.getAllOrderResponseSimpleXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_20_PACKINGLIST)
                      .displayName ("UBL Packing List " + VERSION_20)
                      .notDeprecated ()
                      .addXSD (UBL20Marshaller.getAllPackingListXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_20_QUOTATION)
                      .displayName ("UBL Quotation " + VERSION_20)
                      .notDeprecated ()
                      .addXSD (UBL20Marshaller.getAllQuotationXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_20_RECEIPTADVICE)
                      .displayName ("UBL Receipt Advice " + VERSION_20)
                      .notDeprecated ()
                      .addXSD (UBL20Marshaller.getAllReceiptAdviceXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_20_REMINDER)
                      .displayName ("UBL Reminder " + VERSION_20)
                      .notDeprecated ()
                      .addXSD (UBL20Marshaller.getAllReminderXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_20_REMITTANCEADVICE)
                      .displayName ("UBL Remittance Advice " + VERSION_20)
                      .notDeprecated ()
                      .addXSD (UBL20Marshaller.getAllRemittanceAdviceXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_20_REQUESTFORQUOTATION)
                      .displayName ("UBL Request For Quotation " + VERSION_20)
                      .notDeprecated ()
                      .addXSD (UBL20Marshaller.getAllRequestForQuotationXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_20_SELFBILLEDCREDITNOTE)
                      .displayName ("UBL Self Billed Credit Note " + VERSION_20)
                      .notDeprecated ()
                      .addXSD (UBL20Marshaller.getAllSelfBilledCreditNoteXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_20_SELFBILLEDINVOICE)
                      .displayName ("UBL Self Billed Invoice " + VERSION_20)
                      .notDeprecated ()
                      .addXSD (UBL20Marshaller.getAllSelfBilledInvoiceXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_20_STATEMENT)
                      .displayName ("UBL Statement " + VERSION_20)
                      .notDeprecated ()
                      .addXSD (UBL20Marshaller.getAllStatementXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_20_TRANSPORTATIONSTATUS)
                      .displayName ("UBL Transportation Status " + VERSION_20)
                      .notDeprecated ()
                      .addXSD (UBL20Marshaller.getAllTransportationStatusXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_20_WAYBILL)
                      .displayName ("UBL Waybill " + VERSION_20)
                      .notDeprecated ()
                      .addXSD (UBL20Marshaller.getAllWaybillXSDs ())
-                     .registerInto ();
+                     .registerInto (aRegistry);
   }
 
   /**
@@ -1367,396 +1367,396 @@ public final class UBLValidation
   {
     ValueEnforcer.notNull (aRegistry, "Registry");
 
-    PhiveRulesBuilder.forRegistry (aRegistry)
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_21_APPLICATIONRESPONSE)
                      .displayName ("UBL Application Response " + VERSION_21)
                      .notDeprecated ()
                      .addXSD (UBL21Marshaller.getAllApplicationResponseXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_21_ATTACHEDDOCUMENT)
                      .displayName ("UBL Attached Document " + VERSION_21)
                      .notDeprecated ()
                      .addXSD (UBL21Marshaller.getAllAttachedDocumentXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_21_AWARDEDNOTIFICATION)
                      .displayName ("UBL Awarded Notification " + VERSION_21)
                      .notDeprecated ()
                      .addXSD (UBL21Marshaller.getAllAwardedNotificationXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_21_BILLOFLADING)
                      .displayName ("UBL Bill Of Lading " + VERSION_21)
                      .notDeprecated ()
                      .addXSD (UBL21Marshaller.getAllBillOfLadingXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_21_CALLFORTENDERS)
                      .displayName ("UBL Call For Tenders " + VERSION_21)
                      .notDeprecated ()
                      .addXSD (UBL21Marshaller.getAllCallForTendersXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_21_CATALOGUE)
                      .displayName ("UBL Catalogue " + VERSION_21)
                      .notDeprecated ()
                      .addXSD (UBL21Marshaller.getAllCatalogueXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_21_CATALOGUEDELETION)
                      .displayName ("UBL Catalogue Deletion " + VERSION_21)
                      .notDeprecated ()
                      .addXSD (UBL21Marshaller.getAllCatalogueDeletionXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_21_CATALOGUEITEMSPECIFICATIONUPDATE)
                      .displayName ("UBL Catalogue Item Specification Update " + VERSION_21)
                      .notDeprecated ()
                      .addXSD (UBL21Marshaller.getAllCatalogueItemSpecificationUpdateXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_21_CATALOGUEPRICINGUPDATE)
                      .displayName ("UBL Catalogue Pricing Update " + VERSION_21)
                      .notDeprecated ()
                      .addXSD (UBL21Marshaller.getAllCataloguePricingUpdateXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_21_CATALOGUEREQUEST)
                      .displayName ("UBL Catalogue Request " + VERSION_21)
                      .notDeprecated ()
                      .addXSD (UBL21Marshaller.getAllCatalogueRequestXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_21_CERTIFICATEOFORIGIN)
                      .displayName ("UBL Certificate Of Origin " + VERSION_21)
                      .notDeprecated ()
                      .addXSD (UBL21Marshaller.getAllCertificateOfOriginXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_21_CONTRACTAWARDNOTICE)
                      .displayName ("UBL Contract Award Notice " + VERSION_21)
                      .notDeprecated ()
                      .addXSD (UBL21Marshaller.getAllContractAwardNoticeXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_21_CONTRACTNOTICE)
                      .displayName ("UBL Contract Notice " + VERSION_21)
                      .notDeprecated ()
                      .addXSD (UBL21Marshaller.getAllContractNoticeXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_21_CREDITNOTE)
                      .displayName ("UBL Credit Note " + VERSION_21)
                      .notDeprecated ()
                      .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_21_DEBITNOTE)
                      .displayName ("UBL Debit Note " + VERSION_21)
                      .notDeprecated ()
                      .addXSD (UBL21Marshaller.getAllDebitNoteXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_21_DESPATCHADVICE)
                      .displayName ("UBL Despatch Advice " + VERSION_21)
                      .notDeprecated ()
                      .addXSD (UBL21Marshaller.getAllDespatchAdviceXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_21_DOCUMENTSTATUS)
                      .displayName ("UBL Document Status " + VERSION_21)
                      .notDeprecated ()
                      .addXSD (UBL21Marshaller.getAllDocumentStatusXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_21_DOCUMENTSTATUSREQUEST)
                      .displayName ("UBL Document Status Request " + VERSION_21)
                      .notDeprecated ()
                      .addXSD (UBL21Marshaller.getAllDocumentStatusRequestXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_21_EXCEPTIONCRITERIA)
                      .displayName ("UBL Exception Criteria " + VERSION_21)
                      .notDeprecated ()
                      .addXSD (UBL21Marshaller.getAllExceptionCriteriaXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_21_EXCEPTIONNOTIFICATION)
                      .displayName ("UBL Exception Notification " + VERSION_21)
                      .notDeprecated ()
                      .addXSD (UBL21Marshaller.getAllExceptionNotificationXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_21_FORECAST)
                      .displayName ("UBL Forecast " + VERSION_21)
                      .notDeprecated ()
                      .addXSD (UBL21Marshaller.getAllForecastXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_21_FORECASTREVISION)
                      .displayName ("UBL Forecast Revision " + VERSION_21)
                      .notDeprecated ()
                      .addXSD (UBL21Marshaller.getAllForecastRevisionXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_21_FORWARDINGINSTRUCTIONS)
                      .displayName ("UBL Forwarding Instructions " + VERSION_21)
                      .notDeprecated ()
                      .addXSD (UBL21Marshaller.getAllForwardingInstructionsXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_21_FREIGHTINVOICE)
                      .displayName ("UBL Freight Invoice " + VERSION_21)
                      .notDeprecated ()
                      .addXSD (UBL21Marshaller.getAllFreightInvoiceXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_21_FULFILMENTCANCELLATION)
                      .displayName ("UBL Fulfilment Cancellation " + VERSION_21)
                      .notDeprecated ()
                      .addXSD (UBL21Marshaller.getAllFulfilmentCancellationXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_21_GOODSITEMITINERARY)
                      .displayName ("UBL Goods Item Itinerary " + VERSION_21)
                      .notDeprecated ()
                      .addXSD (UBL21Marshaller.getAllGoodsItemItineraryXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_21_GUARANTEECERTIFICATE)
                      .displayName ("UBL Guarantee Certificate " + VERSION_21)
                      .notDeprecated ()
                      .addXSD (UBL21Marshaller.getAllGuaranteeCertificateXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_21_INSTRUCTIONFORRETURNS)
                      .displayName ("UBL Instruction For Returns " + VERSION_21)
                      .notDeprecated ()
                      .addXSD (UBL21Marshaller.getAllInstructionForReturnsXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_21_INVENTORYREPORT)
                      .displayName ("UBL Inventory Report " + VERSION_21)
                      .notDeprecated ()
                      .addXSD (UBL21Marshaller.getAllInventoryReportXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_21_INVOICE)
                      .displayName ("UBL Invoice " + VERSION_21)
                      .notDeprecated ()
                      .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_21_ITEMINFORMATIONREQUEST)
                      .displayName ("UBL Item Information Request " + VERSION_21)
                      .notDeprecated ()
                      .addXSD (UBL21Marshaller.getAllItemInformationRequestXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_21_ORDER)
                      .displayName ("UBL Order " + VERSION_21)
                      .notDeprecated ()
                      .addXSD (UBL21Marshaller.getAllOrderXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_21_ORDERCANCELLATION)
                      .displayName ("UBL Order Cancellation " + VERSION_21)
                      .notDeprecated ()
                      .addXSD (UBL21Marshaller.getAllOrderCancellationXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_21_ORDERCHANGE)
                      .displayName ("UBL Order Change " + VERSION_21)
                      .notDeprecated ()
                      .addXSD (UBL21Marshaller.getAllOrderChangeXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_21_ORDERRESPONSE)
                      .displayName ("UBL Order Response " + VERSION_21)
                      .notDeprecated ()
                      .addXSD (UBL21Marshaller.getAllOrderResponseXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_21_ORDERRESPONSESIMPLE)
                      .displayName ("UBL Order Response Simple " + VERSION_21)
                      .notDeprecated ()
                      .addXSD (UBL21Marshaller.getAllOrderResponseSimpleXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_21_PACKINGLIST)
                      .displayName ("UBL Packing List " + VERSION_21)
                      .notDeprecated ()
                      .addXSD (UBL21Marshaller.getAllPackingListXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_21_PRIORINFORMATIONNOTICE)
                      .displayName ("UBL Prior Information Notice " + VERSION_21)
                      .notDeprecated ()
                      .addXSD (UBL21Marshaller.getAllPriorInformationNoticeXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_21_PRODUCTACTIVITY)
                      .displayName ("UBL Product Activity " + VERSION_21)
                      .notDeprecated ()
                      .addXSD (UBL21Marshaller.getAllProductActivityXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_21_QUOTATION)
                      .displayName ("UBL Quotation " + VERSION_21)
                      .notDeprecated ()
                      .addXSD (UBL21Marshaller.getAllQuotationXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_21_RECEIPTADVICE)
                      .displayName ("UBL Receipt Advice " + VERSION_21)
                      .notDeprecated ()
                      .addXSD (UBL21Marshaller.getAllReceiptAdviceXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_21_REMINDER)
                      .displayName ("UBL Reminder " + VERSION_21)
                      .notDeprecated ()
                      .addXSD (UBL21Marshaller.getAllReminderXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_21_REMITTANCEADVICE)
                      .displayName ("UBL Remittance Advice " + VERSION_21)
                      .notDeprecated ()
                      .addXSD (UBL21Marshaller.getAllRemittanceAdviceXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_21_REQUESTFORQUOTATION)
                      .displayName ("UBL Request For Quotation " + VERSION_21)
                      .notDeprecated ()
                      .addXSD (UBL21Marshaller.getAllRequestForQuotationXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_21_RETAILEVENT)
                      .displayName ("UBL Retail Event " + VERSION_21)
                      .notDeprecated ()
                      .addXSD (UBL21Marshaller.getAllRetailEventXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_21_SELFBILLEDCREDITNOTE)
                      .displayName ("UBL Self Billed Credit Note " + VERSION_21)
                      .notDeprecated ()
                      .addXSD (UBL21Marshaller.getAllSelfBilledCreditNoteXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_21_SELFBILLEDINVOICE)
                      .displayName ("UBL Self Billed Invoice " + VERSION_21)
                      .notDeprecated ()
                      .addXSD (UBL21Marshaller.getAllSelfBilledInvoiceXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_21_STATEMENT)
                      .displayName ("UBL Statement " + VERSION_21)
                      .notDeprecated ()
                      .addXSD (UBL21Marshaller.getAllStatementXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_21_STOCKAVAILABILITYREPORT)
                      .displayName ("UBL Stock Availability Report " + VERSION_21)
                      .notDeprecated ()
                      .addXSD (UBL21Marshaller.getAllStockAvailabilityReportXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_21_TENDER)
                      .displayName ("UBL Tender " + VERSION_21)
                      .notDeprecated ()
                      .addXSD (UBL21Marshaller.getAllTenderXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_21_TENDERERQUALIFICATION)
                      .displayName ("UBL Tenderer Qualification " + VERSION_21)
                      .notDeprecated ()
                      .addXSD (UBL21Marshaller.getAllTendererQualificationXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_21_TENDERERQUALIFICATIONRESPONSE)
                      .displayName ("UBL Tenderer Qualification Response " + VERSION_21)
                      .notDeprecated ()
                      .addXSD (UBL21Marshaller.getAllTendererQualificationResponseXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_21_TENDERRECEIPT)
                      .displayName ("UBL Tender Receipt " + VERSION_21)
                      .notDeprecated ()
                      .addXSD (UBL21Marshaller.getAllTenderReceiptXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_21_TRADEITEMLOCATIONPROFILE)
                      .displayName ("UBL Trade Item Location Profile " + VERSION_21)
                      .notDeprecated ()
                      .addXSD (UBL21Marshaller.getAllTradeItemLocationProfileXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_21_TRANSPORTATIONSTATUS)
                      .displayName ("UBL Transportation Status " + VERSION_21)
                      .notDeprecated ()
                      .addXSD (UBL21Marshaller.getAllTransportationStatusXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_21_TRANSPORTATIONSTATUSREQUEST)
                      .displayName ("UBL Transportation Status Request " + VERSION_21)
                      .notDeprecated ()
                      .addXSD (UBL21Marshaller.getAllTransportationStatusRequestXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_21_TRANSPORTEXECUTIONPLAN)
                      .displayName ("UBL Transport Execution Plan " + VERSION_21)
                      .notDeprecated ()
                      .addXSD (UBL21Marshaller.getAllTransportExecutionPlanXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_21_TRANSPORTEXECUTIONPLANREQUEST)
                      .displayName ("UBL Transport Execution Plan Request " + VERSION_21)
                      .notDeprecated ()
                      .addXSD (UBL21Marshaller.getAllTransportExecutionPlanRequestXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_21_TRANSPORTPROGRESSSTATUS)
                      .displayName ("UBL Transport Progress Status " + VERSION_21)
                      .notDeprecated ()
                      .addXSD (UBL21Marshaller.getAllTransportProgressStatusXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_21_TRANSPORTPROGRESSSTATUSREQUEST)
                      .displayName ("UBL Transport Progress Status Request " + VERSION_21)
                      .notDeprecated ()
                      .addXSD (UBL21Marshaller.getAllTransportProgressStatusRequestXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_21_TRANSPORTSERVICEDESCRIPTION)
                      .displayName ("UBL Transport Service Description " + VERSION_21)
                      .notDeprecated ()
                      .addXSD (UBL21Marshaller.getAllTransportServiceDescriptionXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_21_TRANSPORTSERVICEDESCRIPTIONREQUEST)
                      .displayName ("UBL Transport Service Description Request " + VERSION_21)
                      .notDeprecated ()
                      .addXSD (UBL21Marshaller.getAllTransportServiceDescriptionRequestXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_21_UNAWARDEDNOTIFICATION)
                      .displayName ("UBL Unawarded Notification " + VERSION_21)
                      .notDeprecated ()
                      .addXSD (UBL21Marshaller.getAllUnawardedNotificationXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_21_UTILITYSTATEMENT)
                      .displayName ("UBL Utility Statement " + VERSION_21)
                      .notDeprecated ()
                      .addXSD (UBL21Marshaller.getAllUtilityStatementXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_21_WAYBILL)
                      .displayName ("UBL Waybill " + VERSION_21)
                      .notDeprecated ()
                      .addXSD (UBL21Marshaller.getAllWaybillXSDs ())
-                     .registerInto ();
+                     .registerInto (aRegistry);
   }
 
   /**
@@ -1769,492 +1769,492 @@ public final class UBLValidation
   {
     ValueEnforcer.notNull (aRegistry, "Registry");
 
-    PhiveRulesBuilder.forRegistry (aRegistry)
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_22_APPLICATIONRESPONSE)
                      .displayName ("UBL Application Response " + VERSION_22)
                      .notDeprecated ()
                      .addXSD (UBL22Marshaller.getAllApplicationResponseXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_22_ATTACHEDDOCUMENT)
                      .displayName ("UBL Attached Document " + VERSION_22)
                      .notDeprecated ()
                      .addXSD (UBL22Marshaller.getAllAttachedDocumentXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_22_AWARDEDNOTIFICATION)
                      .displayName ("UBL Awarded Notification " + VERSION_22)
                      .notDeprecated ()
                      .addXSD (UBL22Marshaller.getAllAwardedNotificationXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_22_BILLOFLADING)
                      .displayName ("UBL Bill Of Lading " + VERSION_22)
                      .notDeprecated ()
                      .addXSD (UBL22Marshaller.getAllBillOfLadingXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_22_BUSINESSCARD)
                      .displayName ("UBL Business Card " + VERSION_22)
                      .notDeprecated ()
                      .addXSD (UBL22Marshaller.getAllBusinessCardXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_22_CALLFORTENDERS)
                      .displayName ("UBL Call For Tenders " + VERSION_22)
                      .notDeprecated ()
                      .addXSD (UBL22Marshaller.getAllCallForTendersXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_22_CATALOGUE)
                      .displayName ("UBL Catalogue " + VERSION_22)
                      .notDeprecated ()
                      .addXSD (UBL22Marshaller.getAllCatalogueXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_22_CATALOGUEDELETION)
                      .displayName ("UBL Catalogue Deletion " + VERSION_22)
                      .notDeprecated ()
                      .addXSD (UBL22Marshaller.getAllCatalogueDeletionXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_22_CATALOGUEITEMSPECIFICATIONUPDATE)
                      .displayName ("UBL Catalogue Item Specification Update " + VERSION_22)
                      .notDeprecated ()
                      .addXSD (UBL22Marshaller.getAllCatalogueItemSpecificationUpdateXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_22_CATALOGUEPRICINGUPDATE)
                      .displayName ("UBL Catalogue Pricing Update " + VERSION_22)
                      .notDeprecated ()
                      .addXSD (UBL22Marshaller.getAllCataloguePricingUpdateXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_22_CATALOGUEREQUEST)
                      .displayName ("UBL Catalogue Request " + VERSION_22)
                      .notDeprecated ()
                      .addXSD (UBL22Marshaller.getAllCatalogueRequestXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_22_CERTIFICATEOFORIGIN)
                      .displayName ("UBL Certificate Of Origin " + VERSION_22)
                      .notDeprecated ()
                      .addXSD (UBL22Marshaller.getAllCertificateOfOriginXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_22_CONTRACTAWARDNOTICE)
                      .displayName ("UBL Contract Award Notice " + VERSION_22)
                      .notDeprecated ()
                      .addXSD (UBL22Marshaller.getAllContractAwardNoticeXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_22_CONTRACTNOTICE)
                      .displayName ("UBL Contract Notice " + VERSION_22)
                      .notDeprecated ()
                      .addXSD (UBL22Marshaller.getAllContractNoticeXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_22_CREDITNOTE)
                      .displayName ("UBL Credit Note " + VERSION_22)
                      .notDeprecated ()
                      .addXSD (UBL22Marshaller.getAllCreditNoteXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_22_DEBITNOTE)
                      .displayName ("UBL Debit Note " + VERSION_22)
                      .notDeprecated ()
                      .addXSD (UBL22Marshaller.getAllDebitNoteXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_22_DESPATCHADVICE)
                      .displayName ("UBL Despatch Advice " + VERSION_22)
                      .notDeprecated ()
                      .addXSD (UBL22Marshaller.getAllDespatchAdviceXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_22_DIGITALAGREEMENT)
                      .displayName ("UBL Digital Agreement " + VERSION_22)
                      .notDeprecated ()
                      .addXSD (UBL22Marshaller.getAllDigitalAgreementXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_22_DIGITALCAPABILITY)
                      .displayName ("UBL Digital Capability " + VERSION_22)
                      .notDeprecated ()
                      .addXSD (UBL22Marshaller.getAllDigitalCapabilityXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_22_DOCUMENTSTATUS)
                      .displayName ("UBL Document Status " + VERSION_22)
                      .notDeprecated ()
                      .addXSD (UBL22Marshaller.getAllDocumentStatusXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_22_DOCUMENTSTATUSREQUEST)
                      .displayName ("UBL Document Status Request " + VERSION_22)
                      .notDeprecated ()
                      .addXSD (UBL22Marshaller.getAllDocumentStatusRequestXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_22_ENQUIRY)
                      .displayName ("UBL Enquiry " + VERSION_22)
                      .notDeprecated ()
                      .addXSD (UBL22Marshaller.getAllEnquiryXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_22_ENQUIRYRESPONSE)
                      .displayName ("UBL Enquiry Response " + VERSION_22)
                      .notDeprecated ()
                      .addXSD (UBL22Marshaller.getAllEnquiryResponseXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_22_EXCEPTIONCRITERIA)
                      .displayName ("UBL Exception Criteria " + VERSION_22)
                      .notDeprecated ()
                      .addXSD (UBL22Marshaller.getAllExceptionCriteriaXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_22_EXCEPTIONNOTIFICATION)
                      .displayName ("UBL Exception Notification " + VERSION_22)
                      .notDeprecated ()
                      .addXSD (UBL22Marshaller.getAllExceptionNotificationXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_22_EXPRESSIONOFINTERESTREQUEST)
                      .displayName ("UBL Expression Of Interest Request " + VERSION_22)
                      .notDeprecated ()
                      .addXSD (UBL22Marshaller.getAllExpressionOfInterestRequestXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_22_EXPRESSIONOFINTERESTRESPONSE)
                      .displayName ("UBL Expression Of Interest Response " + VERSION_22)
                      .notDeprecated ()
                      .addXSD (UBL22Marshaller.getAllExpressionOfInterestResponseXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_22_FORECAST)
                      .displayName ("UBL Forecast " + VERSION_22)
                      .notDeprecated ()
                      .addXSD (UBL22Marshaller.getAllForecastXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_22_FORECASTREVISION)
                      .displayName ("UBL Forecast Revision " + VERSION_22)
                      .notDeprecated ()
                      .addXSD (UBL22Marshaller.getAllForecastRevisionXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_22_FORWARDINGINSTRUCTIONS)
                      .displayName ("UBL Forwarding Instructions " + VERSION_22)
                      .notDeprecated ()
                      .addXSD (UBL22Marshaller.getAllForwardingInstructionsXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_22_FREIGHTINVOICE)
                      .displayName ("UBL Freight Invoice " + VERSION_22)
                      .notDeprecated ()
                      .addXSD (UBL22Marshaller.getAllFreightInvoiceXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_22_FULFILMENTCANCELLATION)
                      .displayName ("UBL Fulfilment Cancellation " + VERSION_22)
                      .notDeprecated ()
                      .addXSD (UBL22Marshaller.getAllFulfilmentCancellationXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_22_GOODSITEMITINERARY)
                      .displayName ("UBL Goods Item Itinerary " + VERSION_22)
                      .notDeprecated ()
                      .addXSD (UBL22Marshaller.getAllGoodsItemItineraryXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_22_GUARANTEECERTIFICATE)
                      .displayName ("UBL Guarantee Certificate " + VERSION_22)
                      .notDeprecated ()
                      .addXSD (UBL22Marshaller.getAllGuaranteeCertificateXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_22_INSTRUCTIONFORRETURNS)
                      .displayName ("UBL Instruction For Returns " + VERSION_22)
                      .notDeprecated ()
                      .addXSD (UBL22Marshaller.getAllInstructionForReturnsXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_22_INVENTORYREPORT)
                      .displayName ("UBL Inventory Report " + VERSION_22)
                      .notDeprecated ()
                      .addXSD (UBL22Marshaller.getAllInventoryReportXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_22_INVOICE)
                      .displayName ("UBL Invoice " + VERSION_22)
                      .notDeprecated ()
                      .addXSD (UBL22Marshaller.getAllInvoiceXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_22_ITEMINFORMATIONREQUEST)
                      .displayName ("UBL Item Information Request " + VERSION_22)
                      .notDeprecated ()
                      .addXSD (UBL22Marshaller.getAllItemInformationRequestXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_22_ORDER)
                      .displayName ("UBL Order " + VERSION_22)
                      .notDeprecated ()
                      .addXSD (UBL22Marshaller.getAllOrderXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_22_ORDERCANCELLATION)
                      .displayName ("UBL Order Cancellation " + VERSION_22)
                      .notDeprecated ()
                      .addXSD (UBL22Marshaller.getAllOrderCancellationXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_22_ORDERCHANGE)
                      .displayName ("UBL Order Change " + VERSION_22)
                      .notDeprecated ()
                      .addXSD (UBL22Marshaller.getAllOrderChangeXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_22_ORDERRESPONSE)
                      .displayName ("UBL Order Response " + VERSION_22)
                      .notDeprecated ()
                      .addXSD (UBL22Marshaller.getAllOrderResponseXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_22_ORDERRESPONSESIMPLE)
                      .displayName ("UBL Order Response Simple " + VERSION_22)
                      .notDeprecated ()
                      .addXSD (UBL22Marshaller.getAllOrderResponseSimpleXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_22_PACKINGLIST)
                      .displayName ("UBL Packing List " + VERSION_22)
                      .notDeprecated ()
                      .addXSD (UBL22Marshaller.getAllPackingListXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_22_PRIORINFORMATIONNOTICE)
                      .displayName ("UBL Prior Information Notice " + VERSION_22)
                      .notDeprecated ()
                      .addXSD (UBL22Marshaller.getAllPriorInformationNoticeXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_22_PRODUCTACTIVITY)
                      .displayName ("UBL Product Activity " + VERSION_22)
                      .notDeprecated ()
                      .addXSD (UBL22Marshaller.getAllProductActivityXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_22_QUALIFICATIONAPPLICATIONREQUEST)
                      .displayName ("UBL Qualification Application Request " + VERSION_22)
                      .notDeprecated ()
                      .addXSD (UBL22Marshaller.getAllQualificationApplicationRequestXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_22_QUALIFICATIONAPPLICATIONRESPONSE)
                      .displayName ("UBL Qualification Application Response " + VERSION_22)
                      .notDeprecated ()
                      .addXSD (UBL22Marshaller.getAllQualificationApplicationResponseXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_22_QUOTATION)
                      .displayName ("UBL Quotation " + VERSION_22)
                      .notDeprecated ()
                      .addXSD (UBL22Marshaller.getAllQuotationXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_22_RECEIPTADVICE)
                      .displayName ("UBL Receipt Advice " + VERSION_22)
                      .notDeprecated ()
                      .addXSD (UBL22Marshaller.getAllReceiptAdviceXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_22_REMINDER)
                      .displayName ("UBL Reminder " + VERSION_22)
                      .notDeprecated ()
                      .addXSD (UBL22Marshaller.getAllReminderXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_22_REMITTANCEADVICE)
                      .displayName ("UBL Remittance Advice " + VERSION_22)
                      .notDeprecated ()
                      .addXSD (UBL22Marshaller.getAllRemittanceAdviceXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_22_REQUESTFORQUOTATION)
                      .displayName ("UBL Request For Quotation " + VERSION_22)
                      .notDeprecated ()
                      .addXSD (UBL22Marshaller.getAllRequestForQuotationXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_22_RETAILEVENT)
                      .displayName ("UBL Retail Event " + VERSION_22)
                      .notDeprecated ()
                      .addXSD (UBL22Marshaller.getAllRetailEventXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_22_SELFBILLEDCREDITNOTE)
                      .displayName ("UBL Self Billed Credit Note " + VERSION_22)
                      .notDeprecated ()
                      .addXSD (UBL22Marshaller.getAllSelfBilledCreditNoteXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_22_SELFBILLEDINVOICE)
                      .displayName ("UBL Self Billed Invoice " + VERSION_22)
                      .notDeprecated ()
                      .addXSD (UBL22Marshaller.getAllSelfBilledInvoiceXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_22_STATEMENT)
                      .displayName ("UBL Statement " + VERSION_22)
                      .notDeprecated ()
                      .addXSD (UBL22Marshaller.getAllStatementXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_22_STOCKAVAILABILITYREPORT)
                      .displayName ("UBL Stock Availability Report " + VERSION_22)
                      .notDeprecated ()
                      .addXSD (UBL22Marshaller.getAllStockAvailabilityReportXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_22_TENDER)
                      .displayName ("UBL Tender " + VERSION_22)
                      .notDeprecated ()
                      .addXSD (UBL22Marshaller.getAllTenderXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_22_TENDERCONTRACT)
                      .displayName ("UBL Tender Contract " + VERSION_22)
                      .notDeprecated ()
                      .addXSD (UBL22Marshaller.getAllTenderContractXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_22_TENDERERQUALIFICATION)
                      .displayName ("UBL Tenderer Qualification " + VERSION_22)
                      .notDeprecated ()
                      .addXSD (UBL22Marshaller.getAllTendererQualificationXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_22_TENDERERQUALIFICATIONRESPONSE)
                      .displayName ("UBL Tenderer Qualification Response " + VERSION_22)
                      .notDeprecated ()
                      .addXSD (UBL22Marshaller.getAllTendererQualificationResponseXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_22_TENDERRECEIPT)
                      .displayName ("UBL Tender Receipt " + VERSION_22)
                      .notDeprecated ()
                      .addXSD (UBL22Marshaller.getAllTenderReceiptXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_22_TENDERSTATUS)
                      .displayName ("UBL Tender Status " + VERSION_22)
                      .notDeprecated ()
                      .addXSD (UBL22Marshaller.getAllTenderStatusXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_22_TENDERSTATUSREQUEST)
                      .displayName ("UBL Tender Status Request " + VERSION_22)
                      .notDeprecated ()
                      .addXSD (UBL22Marshaller.getAllTenderStatusRequestXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_22_TENDERWITHDRAWAL)
                      .displayName ("UBL Tender Withdrawal " + VERSION_22)
                      .notDeprecated ()
                      .addXSD (UBL22Marshaller.getAllTenderWithdrawalXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_22_TRADEITEMLOCATIONPROFILE)
                      .displayName ("UBL Trade Item Location Profile " + VERSION_22)
                      .notDeprecated ()
                      .addXSD (UBL22Marshaller.getAllTradeItemLocationProfileXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_22_TRANSPORTATIONSTATUS)
                      .displayName ("UBL Transportation Status " + VERSION_22)
                      .notDeprecated ()
                      .addXSD (UBL22Marshaller.getAllTransportationStatusXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_22_TRANSPORTATIONSTATUSREQUEST)
                      .displayName ("UBL Transportation Status Request " + VERSION_22)
                      .notDeprecated ()
                      .addXSD (UBL22Marshaller.getAllTransportationStatusRequestXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_22_TRANSPORTEXECUTIONPLAN)
                      .displayName ("UBL Transport Execution Plan " + VERSION_22)
                      .notDeprecated ()
                      .addXSD (UBL22Marshaller.getAllTransportExecutionPlanXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_22_TRANSPORTEXECUTIONPLANREQUEST)
                      .displayName ("UBL Transport Execution Plan Request " + VERSION_22)
                      .notDeprecated ()
                      .addXSD (UBL22Marshaller.getAllTransportExecutionPlanRequestXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_22_TRANSPORTPROGRESSSTATUS)
                      .displayName ("UBL Transport Progress Status " + VERSION_22)
                      .notDeprecated ()
                      .addXSD (UBL22Marshaller.getAllTransportProgressStatusXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_22_TRANSPORTPROGRESSSTATUSREQUEST)
                      .displayName ("UBL Transport Progress Status Request " + VERSION_22)
                      .notDeprecated ()
                      .addXSD (UBL22Marshaller.getAllTransportProgressStatusRequestXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_22_TRANSPORTSERVICEDESCRIPTION)
                      .displayName ("UBL Transport Service Description " + VERSION_22)
                      .notDeprecated ()
                      .addXSD (UBL22Marshaller.getAllTransportServiceDescriptionXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_22_TRANSPORTSERVICEDESCRIPTIONREQUEST)
                      .displayName ("UBL Transport Service Description Request " + VERSION_22)
                      .notDeprecated ()
                      .addXSD (UBL22Marshaller.getAllTransportServiceDescriptionRequestXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_22_UNAWARDEDNOTIFICATION)
                      .displayName ("UBL Unawarded Notification " + VERSION_22)
                      .notDeprecated ()
                      .addXSD (UBL22Marshaller.getAllUnawardedNotificationXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_22_UNSUBSCRIBEFROMPROCEDUREREQUEST)
                      .displayName ("UBL Unsubscribe From Procedure Request " + VERSION_22)
                      .notDeprecated ()
                      .addXSD (UBL22Marshaller.getAllUnsubscribeFromProcedureRequestXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_22_UNSUBSCRIBEFROMPROCEDURERESPONSE)
                      .displayName ("UBL Unsubscribe From Procedure Response " + VERSION_22)
                      .notDeprecated ()
                      .addXSD (UBL22Marshaller.getAllUnsubscribeFromProcedureResponseXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_22_UTILITYSTATEMENT)
                      .displayName ("UBL Utility Statement " + VERSION_22)
                      .notDeprecated ()
                      .addXSD (UBL22Marshaller.getAllUtilityStatementXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_22_WAYBILL)
                      .displayName ("UBL Waybill " + VERSION_22)
                      .notDeprecated ()
                      .addXSD (UBL22Marshaller.getAllWaybillXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_22_WEIGHTSTATEMENT)
                      .displayName ("UBL Weight Statement " + VERSION_22)
                      .notDeprecated ()
                      .addXSD (UBL22Marshaller.getAllWeightStatementXSDs ())
-                     .registerInto ();
+                     .registerInto (aRegistry);
   }
 
   /**
@@ -2267,552 +2267,552 @@ public final class UBLValidation
   {
     ValueEnforcer.notNull (aRegistry, "Registry");
 
-    PhiveRulesBuilder.forRegistry (aRegistry)
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_23_APPLICATIONRESPONSE)
                      .displayName ("UBL Application Response " + VERSION_23)
                      .notDeprecated ()
                      .addXSD (UBL23Marshaller.getAllApplicationResponseXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_23_ATTACHEDDOCUMENT)
                      .displayName ("UBL Attached Document " + VERSION_23)
                      .notDeprecated ()
                      .addXSD (UBL23Marshaller.getAllAttachedDocumentXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_23_AWARDEDNOTIFICATION)
                      .displayName ("UBL Awarded Notification " + VERSION_23)
                      .notDeprecated ()
                      .addXSD (UBL23Marshaller.getAllAwardedNotificationXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_23_BILLOFLADING)
                      .displayName ("UBL Bill Of Lading " + VERSION_23)
                      .notDeprecated ()
                      .addXSD (UBL23Marshaller.getAllBillOfLadingXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_23_BUSINESSCARD)
                      .displayName ("UBL Business Card " + VERSION_23)
                      .notDeprecated ()
                      .addXSD (UBL23Marshaller.getAllBusinessCardXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_23_CALLFORTENDERS)
                      .displayName ("UBL Call For Tenders " + VERSION_23)
                      .notDeprecated ()
                      .addXSD (UBL23Marshaller.getAllCallForTendersXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_23_CATALOGUE)
                      .displayName ("UBL Catalogue " + VERSION_23)
                      .notDeprecated ()
                      .addXSD (UBL23Marshaller.getAllCatalogueXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_23_CATALOGUEDELETION)
                      .displayName ("UBL Catalogue Deletion " + VERSION_23)
                      .notDeprecated ()
                      .addXSD (UBL23Marshaller.getAllCatalogueDeletionXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_23_CATALOGUEITEMSPECIFICATIONUPDATE)
                      .displayName ("UBL Catalogue Item Specification Update " + VERSION_23)
                      .notDeprecated ()
                      .addXSD (UBL23Marshaller.getAllCatalogueItemSpecificationUpdateXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_23_CATALOGUEPRICINGUPDATE)
                      .displayName ("UBL Catalogue Pricing Update " + VERSION_23)
                      .notDeprecated ()
                      .addXSD (UBL23Marshaller.getAllCataloguePricingUpdateXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_23_CATALOGUEREQUEST)
                      .displayName ("UBL Catalogue Request " + VERSION_23)
                      .notDeprecated ()
                      .addXSD (UBL23Marshaller.getAllCatalogueRequestXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_23_CERTIFICATEOFORIGIN)
                      .displayName ("UBL Certificate Of Origin " + VERSION_23)
                      .notDeprecated ()
                      .addXSD (UBL23Marshaller.getAllCertificateOfOriginXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_23_COMMONTRANSPORTATIONREPORT)
                      .displayName ("UBL Common Transportation Report " + VERSION_23)
                      .notDeprecated ()
                      .addXSD (UBL23Marshaller.getAllCommonTransportationReportXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_23_CONTRACTAWARDNOTICE)
                      .displayName ("UBL Contract Award Notice " + VERSION_23)
                      .notDeprecated ()
                      .addXSD (UBL23Marshaller.getAllContractAwardNoticeXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_23_CONTRACTNOTICE)
                      .displayName ("UBL Contract Notice " + VERSION_23)
                      .notDeprecated ()
                      .addXSD (UBL23Marshaller.getAllContractNoticeXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_23_CREDITNOTE)
                      .displayName ("UBL Credit Note " + VERSION_23)
                      .notDeprecated ()
                      .addXSD (UBL23Marshaller.getAllCreditNoteXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_23_DEBITNOTE)
                      .displayName ("UBL Debit Note " + VERSION_23)
                      .notDeprecated ()
                      .addXSD (UBL23Marshaller.getAllDebitNoteXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_23_DESPATCHADVICE)
                      .displayName ("UBL Despatch Advice " + VERSION_23)
                      .notDeprecated ()
                      .addXSD (UBL23Marshaller.getAllDespatchAdviceXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_23_DIGITALAGREEMENT)
                      .displayName ("UBL Digital Agreement " + VERSION_23)
                      .notDeprecated ()
                      .addXSD (UBL23Marshaller.getAllDigitalAgreementXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_23_DIGITALCAPABILITY)
                      .displayName ("UBL Digital Capability " + VERSION_23)
                      .notDeprecated ()
                      .addXSD (UBL23Marshaller.getAllDigitalCapabilityXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_23_DOCUMENTSTATUS)
                      .displayName ("UBL Document Status " + VERSION_23)
                      .notDeprecated ()
                      .addXSD (UBL23Marshaller.getAllDocumentStatusXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_23_DOCUMENTSTATUSREQUEST)
                      .displayName ("UBL Document Status Request " + VERSION_23)
                      .notDeprecated ()
                      .addXSD (UBL23Marshaller.getAllDocumentStatusRequestXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_23_ENQUIRY)
                      .displayName ("UBL Enquiry " + VERSION_23)
                      .notDeprecated ()
                      .addXSD (UBL23Marshaller.getAllEnquiryXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_23_ENQUIRYRESPONSE)
                      .displayName ("UBL Enquiry Response " + VERSION_23)
                      .notDeprecated ()
                      .addXSD (UBL23Marshaller.getAllEnquiryResponseXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_23_EXCEPTIONCRITERIA)
                      .displayName ("UBL Exception Criteria " + VERSION_23)
                      .notDeprecated ()
                      .addXSD (UBL23Marshaller.getAllExceptionCriteriaXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_23_EXCEPTIONNOTIFICATION)
                      .displayName ("UBL Exception Notification " + VERSION_23)
                      .notDeprecated ()
                      .addXSD (UBL23Marshaller.getAllExceptionNotificationXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_23_EXPORTCUSTOMSDECLARATION)
                      .displayName ("UBL Export Customs Declaration " + VERSION_23)
                      .notDeprecated ()
                      .addXSD (UBL23Marshaller.getAllExportCustomsDeclarationXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_23_EXPRESSIONOFINTERESTREQUEST)
                      .displayName ("UBL Expression Of Interest Request " + VERSION_23)
                      .notDeprecated ()
                      .addXSD (UBL23Marshaller.getAllExpressionOfInterestRequestXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_23_EXPRESSIONOFINTERESTRESPONSE)
                      .displayName ("UBL Expression Of Interest Response " + VERSION_23)
                      .notDeprecated ()
                      .addXSD (UBL23Marshaller.getAllExpressionOfInterestResponseXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_23_FORECAST)
                      .displayName ("UBL Forecast " + VERSION_23)
                      .notDeprecated ()
                      .addXSD (UBL23Marshaller.getAllForecastXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_23_FORECASTREVISION)
                      .displayName ("UBL Forecast Revision " + VERSION_23)
                      .notDeprecated ()
                      .addXSD (UBL23Marshaller.getAllForecastRevisionXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_23_FORWARDINGINSTRUCTIONS)
                      .displayName ("UBL Forwarding Instructions " + VERSION_23)
                      .notDeprecated ()
                      .addXSD (UBL23Marshaller.getAllForwardingInstructionsXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_23_FREIGHTINVOICE)
                      .displayName ("UBL Freight Invoice " + VERSION_23)
                      .notDeprecated ()
                      .addXSD (UBL23Marshaller.getAllFreightInvoiceXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_23_FULFILMENTCANCELLATION)
                      .displayName ("UBL Fulfilment Cancellation " + VERSION_23)
                      .notDeprecated ()
                      .addXSD (UBL23Marshaller.getAllFulfilmentCancellationXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_23_GOODSCERTIFICATE)
                      .displayName ("UBL Goods Certificate " + VERSION_23)
                      .notDeprecated ()
                      .addXSD (UBL23Marshaller.getAllGoodsCertificateXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_23_GOODSITEMITINERARY)
                      .displayName ("UBL Goods Item Itinerary " + VERSION_23)
                      .notDeprecated ()
                      .addXSD (UBL23Marshaller.getAllGoodsItemItineraryXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_23_GOODSITEMPASSPORT)
                      .displayName ("UBL Goods Item Passport " + VERSION_23)
                      .notDeprecated ()
                      .addXSD (UBL23Marshaller.getAllGoodsItemPassportXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_23_GUARANTEECERTIFICATE)
                      .displayName ("UBL Guarantee Certificate " + VERSION_23)
                      .notDeprecated ()
                      .addXSD (UBL23Marshaller.getAllGuaranteeCertificateXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_23_IMPORTCUSTOMSDECLARATION)
                      .displayName ("UBL Import Customs Declaration " + VERSION_23)
                      .notDeprecated ()
                      .addXSD (UBL23Marshaller.getAllImportCustomsDeclarationXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_23_INSTRUCTIONFORRETURNS)
                      .displayName ("UBL Instruction For Returns " + VERSION_23)
                      .notDeprecated ()
                      .addXSD (UBL23Marshaller.getAllInstructionForReturnsXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_23_INVENTORYREPORT)
                      .displayName ("UBL Inventory Report " + VERSION_23)
                      .notDeprecated ()
                      .addXSD (UBL23Marshaller.getAllInventoryReportXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_23_INVOICE)
                      .displayName ("UBL Invoice " + VERSION_23)
                      .notDeprecated ()
                      .addXSD (UBL23Marshaller.getAllInvoiceXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_23_ITEMINFORMATIONREQUEST)
                      .displayName ("UBL Item Information Request " + VERSION_23)
                      .notDeprecated ()
                      .addXSD (UBL23Marshaller.getAllItemInformationRequestXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_23_MANIFEST)
                      .displayName ("UBL Manifest " + VERSION_23)
                      .notDeprecated ()
                      .addXSD (UBL23Marshaller.getAllManifestXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_23_ORDER)
                      .displayName ("UBL Order " + VERSION_23)
                      .notDeprecated ()
                      .addXSD (UBL23Marshaller.getAllOrderXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_23_ORDERCANCELLATION)
                      .displayName ("UBL Order Cancellation " + VERSION_23)
                      .notDeprecated ()
                      .addXSD (UBL23Marshaller.getAllOrderCancellationXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_23_ORDERCHANGE)
                      .displayName ("UBL Order Change " + VERSION_23)
                      .notDeprecated ()
                      .addXSD (UBL23Marshaller.getAllOrderChangeXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_23_ORDERRESPONSE)
                      .displayName ("UBL Order Response " + VERSION_23)
                      .notDeprecated ()
                      .addXSD (UBL23Marshaller.getAllOrderResponseXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_23_ORDERRESPONSESIMPLE)
                      .displayName ("UBL Order Response Simple " + VERSION_23)
                      .notDeprecated ()
                      .addXSD (UBL23Marshaller.getAllOrderResponseSimpleXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_23_PACKINGLIST)
                      .displayName ("UBL Packing List " + VERSION_23)
                      .notDeprecated ()
                      .addXSD (UBL23Marshaller.getAllPackingListXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_23_PRIORINFORMATIONNOTICE)
                      .displayName ("UBL Prior Information Notice " + VERSION_23)
                      .notDeprecated ()
                      .addXSD (UBL23Marshaller.getAllPriorInformationNoticeXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_23_PRODUCTACTIVITY)
                      .displayName ("UBL Product Activity " + VERSION_23)
                      .notDeprecated ()
                      .addXSD (UBL23Marshaller.getAllProductActivityXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_23_PROOFOFREEXPORTATION)
                      .displayName ("UBL Proof Of Reexportation " + VERSION_23)
                      .notDeprecated ()
                      .addXSD (UBL23Marshaller.getAllProofOfReexportationXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_23_PROOFOFREEXPORTATIONREMINDER)
                      .displayName ("UBL Proof Of Reexportation Reminder " + VERSION_23)
                      .notDeprecated ()
                      .addXSD (UBL23Marshaller.getAllProofOfReexportationReminderXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_23_PROOFOFREEXPORTATIONREQUEST)
                      .displayName ("UBL Proof Of Reexportation Request " + VERSION_23)
                      .notDeprecated ()
                      .addXSD (UBL23Marshaller.getAllProofOfReexportationRequestXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_23_QUALIFICATIONAPPLICATIONREQUEST)
                      .displayName ("UBL Qualification Application Request " + VERSION_23)
                      .notDeprecated ()
                      .addXSD (UBL23Marshaller.getAllQualificationApplicationRequestXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_23_QUALIFICATIONAPPLICATIONRESPONSE)
                      .displayName ("UBL Qualification Application Response " + VERSION_23)
                      .notDeprecated ()
                      .addXSD (UBL23Marshaller.getAllQualificationApplicationResponseXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_23_QUOTATION)
                      .displayName ("UBL Quotation " + VERSION_23)
                      .notDeprecated ()
                      .addXSD (UBL23Marshaller.getAllQuotationXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_23_RECEIPTADVICE)
                      .displayName ("UBL Receipt Advice " + VERSION_23)
                      .notDeprecated ()
                      .addXSD (UBL23Marshaller.getAllReceiptAdviceXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_23_REMINDER)
                      .displayName ("UBL Reminder " + VERSION_23)
                      .notDeprecated ()
                      .addXSD (UBL23Marshaller.getAllReminderXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_23_REMITTANCEADVICE)
                      .displayName ("UBL Remittance Advice " + VERSION_23)
                      .notDeprecated ()
                      .addXSD (UBL23Marshaller.getAllRemittanceAdviceXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_23_REQUESTFORQUOTATION)
                      .displayName ("UBL Request For Quotation " + VERSION_23)
                      .notDeprecated ()
                      .addXSD (UBL23Marshaller.getAllRequestForQuotationXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_23_RETAILEVENT)
                      .displayName ("UBL Retail Event " + VERSION_23)
                      .notDeprecated ()
                      .addXSD (UBL23Marshaller.getAllRetailEventXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_23_SELFBILLEDCREDITNOTE)
                      .displayName ("UBL Self Billed Credit Note " + VERSION_23)
                      .notDeprecated ()
                      .addXSD (UBL23Marshaller.getAllSelfBilledCreditNoteXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_23_SELFBILLEDINVOICE)
                      .displayName ("UBL Self Billed Invoice " + VERSION_23)
                      .notDeprecated ()
                      .addXSD (UBL23Marshaller.getAllSelfBilledInvoiceXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_23_STATEMENT)
                      .displayName ("UBL Statement " + VERSION_23)
                      .notDeprecated ()
                      .addXSD (UBL23Marshaller.getAllStatementXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_23_STOCKAVAILABILITYREPORT)
                      .displayName ("UBL Stock Availability Report " + VERSION_23)
                      .notDeprecated ()
                      .addXSD (UBL23Marshaller.getAllStockAvailabilityReportXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_23_TENDER)
                      .displayName ("UBL Tender " + VERSION_23)
                      .notDeprecated ()
                      .addXSD (UBL23Marshaller.getAllTenderXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_23_TENDERCONTRACT)
                      .displayName ("UBL Tender Contract " + VERSION_23)
                      .notDeprecated ()
                      .addXSD (UBL23Marshaller.getAllTenderContractXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_23_TENDERERQUALIFICATION)
                      .displayName ("UBL Tenderer Qualification " + VERSION_23)
                      .notDeprecated ()
                      .addXSD (UBL23Marshaller.getAllTendererQualificationXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_23_TENDERERQUALIFICATIONRESPONSE)
                      .displayName ("UBL Tenderer Qualification Response " + VERSION_23)
                      .notDeprecated ()
                      .addXSD (UBL23Marshaller.getAllTendererQualificationResponseXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_23_TENDERRECEIPT)
                      .displayName ("UBL Tender Receipt " + VERSION_23)
                      .notDeprecated ()
                      .addXSD (UBL23Marshaller.getAllTenderReceiptXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_23_TENDERSTATUS)
                      .displayName ("UBL Tender Status " + VERSION_23)
                      .notDeprecated ()
                      .addXSD (UBL23Marshaller.getAllTenderStatusXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_23_TENDERSTATUSREQUEST)
                      .displayName ("UBL Tender Status Request " + VERSION_23)
                      .notDeprecated ()
                      .addXSD (UBL23Marshaller.getAllTenderStatusRequestXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_23_TENDERWITHDRAWAL)
                      .displayName ("UBL Tender Withdrawal " + VERSION_23)
                      .notDeprecated ()
                      .addXSD (UBL23Marshaller.getAllTenderWithdrawalXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_23_TRADEITEMLOCATIONPROFILE)
                      .displayName ("UBL Trade Item Location Profile " + VERSION_23)
                      .notDeprecated ()
                      .addXSD (UBL23Marshaller.getAllTradeItemLocationProfileXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_23_TRANSITCUSTOMSDECLARATION)
                      .displayName ("UBL Transit Customs Declaration " + VERSION_23)
                      .notDeprecated ()
                      .addXSD (UBL23Marshaller.getAllTransitCustomsDeclarationXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_23_TRANSPORTATIONSTATUS)
                      .displayName ("UBL Transportation Status " + VERSION_23)
                      .notDeprecated ()
                      .addXSD (UBL23Marshaller.getAllTransportationStatusXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_23_TRANSPORTATIONSTATUSREQUEST)
                      .displayName ("UBL Transportation Status Request " + VERSION_23)
                      .notDeprecated ()
                      .addXSD (UBL23Marshaller.getAllTransportationStatusRequestXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_23_TRANSPORTEXECUTIONPLAN)
                      .displayName ("UBL Transport Execution Plan " + VERSION_23)
                      .notDeprecated ()
                      .addXSD (UBL23Marshaller.getAllTransportExecutionPlanXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_23_TRANSPORTEXECUTIONPLANREQUEST)
                      .displayName ("UBL Transport Execution Plan Request " + VERSION_23)
                      .notDeprecated ()
                      .addXSD (UBL23Marshaller.getAllTransportExecutionPlanRequestXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_23_TRANSPORTPROGRESSSTATUS)
                      .displayName ("UBL Transport Progress Status " + VERSION_23)
                      .notDeprecated ()
                      .addXSD (UBL23Marshaller.getAllTransportProgressStatusXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_23_TRANSPORTPROGRESSSTATUSREQUEST)
                      .displayName ("UBL Transport Progress Status Request " + VERSION_23)
                      .notDeprecated ()
                      .addXSD (UBL23Marshaller.getAllTransportProgressStatusRequestXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_23_TRANSPORTSERVICEDESCRIPTION)
                      .displayName ("UBL Transport Service Description " + VERSION_23)
                      .notDeprecated ()
                      .addXSD (UBL23Marshaller.getAllTransportServiceDescriptionXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_23_TRANSPORTSERVICEDESCRIPTIONREQUEST)
                      .displayName ("UBL Transport Service Description Request " + VERSION_23)
                      .notDeprecated ()
                      .addXSD (UBL23Marshaller.getAllTransportServiceDescriptionRequestXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_23_UNAWARDEDNOTIFICATION)
                      .displayName ("UBL Unawarded Notification " + VERSION_23)
                      .notDeprecated ()
                      .addXSD (UBL23Marshaller.getAllUnawardedNotificationXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_23_UNSUBSCRIBEFROMPROCEDUREREQUEST)
                      .displayName ("UBL Unsubscribe From Procedure Request " + VERSION_23)
                      .notDeprecated ()
                      .addXSD (UBL23Marshaller.getAllUnsubscribeFromProcedureRequestXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_23_UNSUBSCRIBEFROMPROCEDURERESPONSE)
                      .displayName ("UBL Unsubscribe From Procedure Response " + VERSION_23)
                      .notDeprecated ()
                      .addXSD (UBL23Marshaller.getAllUnsubscribeFromProcedureResponseXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_23_UTILITYSTATEMENT)
                      .displayName ("UBL Utility Statement " + VERSION_23)
                      .notDeprecated ()
                      .addXSD (UBL23Marshaller.getAllUtilityStatementXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_23_WAYBILL)
                      .displayName ("UBL Waybill " + VERSION_23)
                      .notDeprecated ()
                      .addXSD (UBL23Marshaller.getAllWaybillXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_23_WEIGHTSTATEMENT)
                      .displayName ("UBL Weight Statement " + VERSION_23)
                      .notDeprecated ()
                      .addXSD (UBL23Marshaller.getAllWeightStatementXSDs ())
-                     .registerInto ();
+                     .registerInto (aRegistry);
   }
 
   /**
@@ -2825,563 +2825,563 @@ public final class UBLValidation
   {
     ValueEnforcer.notNull (aRegistry, "Registry");
 
-    PhiveRulesBuilder.forRegistry (aRegistry)
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_24_APPLICATIONRESPONSE)
                      .displayName ("UBL Application Response " + VERSION_24)
                      .notDeprecated ()
                      .addXSD (UBL24Marshaller.getAllApplicationResponseXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_24_ATTACHEDDOCUMENT)
                      .displayName ("UBL Attached Document " + VERSION_24)
                      .notDeprecated ()
                      .addXSD (UBL24Marshaller.getAllAttachedDocumentXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_24_AWARDEDNOTIFICATION)
                      .displayName ("UBL Awarded Notification " + VERSION_24)
                      .notDeprecated ()
                      .addXSD (UBL24Marshaller.getAllAwardedNotificationXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_24_BILLOFLADING)
                      .displayName ("UBL Bill Of Lading " + VERSION_24)
                      .notDeprecated ()
                      .addXSD (UBL24Marshaller.getAllBillOfLadingXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_24_BUSINESSCARD)
                      .displayName ("UBL Business Card " + VERSION_24)
                      .notDeprecated ()
                      .addXSD (UBL24Marshaller.getAllBusinessCardXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_24_BUSINESSINFORMATION)
                      .displayName ("UBL Business Information " + VERSION_24)
                      .notDeprecated ()
                      .addXSD (UBL24Marshaller.getAllBusinessInformationXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_24_CALLFORTENDERS)
                      .displayName ("UBL Call For Tenders " + VERSION_24)
                      .notDeprecated ()
                      .addXSD (UBL24Marshaller.getAllCallForTendersXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_24_CATALOGUE)
                      .displayName ("UBL Catalogue " + VERSION_24)
                      .notDeprecated ()
                      .addXSD (UBL24Marshaller.getAllCatalogueXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_24_CATALOGUEDELETION)
                      .displayName ("UBL Catalogue Deletion " + VERSION_24)
                      .notDeprecated ()
                      .addXSD (UBL24Marshaller.getAllCatalogueDeletionXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_24_CATALOGUEITEMSPECIFICATIONUPDATE)
                      .displayName ("UBL Catalogue Item Specification Update " + VERSION_24)
                      .notDeprecated ()
                      .addXSD (UBL24Marshaller.getAllCatalogueItemSpecificationUpdateXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_24_CATALOGUEPRICINGUPDATE)
                      .displayName ("UBL Catalogue Pricing Update " + VERSION_24)
                      .notDeprecated ()
                      .addXSD (UBL24Marshaller.getAllCataloguePricingUpdateXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_24_CATALOGUEREQUEST)
                      .displayName ("UBL Catalogue Request " + VERSION_24)
                      .notDeprecated ()
                      .addXSD (UBL24Marshaller.getAllCatalogueRequestXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_24_CERTIFICATEOFORIGIN)
                      .displayName ("UBL Certificate Of Origin " + VERSION_24)
                      .notDeprecated ()
                      .addXSD (UBL24Marshaller.getAllCertificateOfOriginXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_24_COMMONTRANSPORTATIONREPORT)
                      .displayName ("UBL Common Transportation Report " + VERSION_24)
                      .notDeprecated ()
                      .addXSD (UBL24Marshaller.getAllCommonTransportationReportXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_24_CONTRACTAWARDNOTICE)
                      .displayName ("UBL Contract Award Notice " + VERSION_24)
                      .notDeprecated ()
                      .addXSD (UBL24Marshaller.getAllContractAwardNoticeXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_24_CONTRACTNOTICE)
                      .displayName ("UBL Contract Notice " + VERSION_24)
                      .notDeprecated ()
                      .addXSD (UBL24Marshaller.getAllContractNoticeXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_24_CREDITNOTE)
                      .displayName ("UBL Credit Note " + VERSION_24)
                      .notDeprecated ()
                      .addXSD (UBL24Marshaller.getAllCreditNoteXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_24_DEBITNOTE)
                      .displayName ("UBL Debit Note " + VERSION_24)
                      .notDeprecated ()
                      .addXSD (UBL24Marshaller.getAllDebitNoteXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_24_DESPATCHADVICE)
                      .displayName ("UBL Despatch Advice " + VERSION_24)
                      .notDeprecated ()
                      .addXSD (UBL24Marshaller.getAllDespatchAdviceXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_24_DIGITALAGREEMENT)
                      .displayName ("UBL Digital Agreement " + VERSION_24)
                      .notDeprecated ()
                      .addXSD (UBL24Marshaller.getAllDigitalAgreementXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_24_DIGITALCAPABILITY)
                      .displayName ("UBL Digital Capability " + VERSION_24)
                      .notDeprecated ()
                      .addXSD (UBL24Marshaller.getAllDigitalCapabilityXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_24_DOCUMENTSTATUS)
                      .displayName ("UBL Document Status " + VERSION_24)
                      .notDeprecated ()
                      .addXSD (UBL24Marshaller.getAllDocumentStatusXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_24_DOCUMENTSTATUSREQUEST)
                      .displayName ("UBL Document Status Request " + VERSION_24)
                      .notDeprecated ()
                      .addXSD (UBL24Marshaller.getAllDocumentStatusRequestXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_24_ENQUIRY)
                      .displayName ("UBL Enquiry " + VERSION_24)
                      .notDeprecated ()
                      .addXSD (UBL24Marshaller.getAllEnquiryXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_24_ENQUIRYRESPONSE)
                      .displayName ("UBL Enquiry Response " + VERSION_24)
                      .notDeprecated ()
                      .addXSD (UBL24Marshaller.getAllEnquiryResponseXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_24_EXCEPTIONCRITERIA)
                      .displayName ("UBL Exception Criteria " + VERSION_24)
                      .notDeprecated ()
                      .addXSD (UBL24Marshaller.getAllExceptionCriteriaXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_24_EXCEPTIONNOTIFICATION)
                      .displayName ("UBL Exception Notification " + VERSION_24)
                      .notDeprecated ()
                      .addXSD (UBL24Marshaller.getAllExceptionNotificationXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_24_EXPORTCUSTOMSDECLARATION)
                      .displayName ("UBL Export Customs Declaration " + VERSION_24)
                      .notDeprecated ()
                      .addXSD (UBL24Marshaller.getAllExportCustomsDeclarationXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_24_EXPRESSIONOFINTERESTREQUEST)
                      .displayName ("UBL Expression Of Interest Request " + VERSION_24)
                      .notDeprecated ()
                      .addXSD (UBL24Marshaller.getAllExpressionOfInterestRequestXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_24_EXPRESSIONOFINTERESTRESPONSE)
                      .displayName ("UBL Expression Of Interest Response " + VERSION_24)
                      .notDeprecated ()
                      .addXSD (UBL24Marshaller.getAllExpressionOfInterestResponseXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_24_FORECAST)
                      .displayName ("UBL Forecast " + VERSION_24)
                      .notDeprecated ()
                      .addXSD (UBL24Marshaller.getAllForecastXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_24_FORECASTREVISION)
                      .displayName ("UBL Forecast Revision " + VERSION_24)
                      .notDeprecated ()
                      .addXSD (UBL24Marshaller.getAllForecastRevisionXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_24_FORWARDINGINSTRUCTIONS)
                      .displayName ("UBL Forwarding Instructions " + VERSION_24)
                      .notDeprecated ()
                      .addXSD (UBL24Marshaller.getAllForwardingInstructionsXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_24_FREIGHTINVOICE)
                      .displayName ("UBL Freight Invoice " + VERSION_24)
                      .notDeprecated ()
                      .addXSD (UBL24Marshaller.getAllFreightInvoiceXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_24_FULFILMENTCANCELLATION)
                      .displayName ("UBL Fulfilment Cancellation " + VERSION_24)
                      .notDeprecated ()
                      .addXSD (UBL24Marshaller.getAllFulfilmentCancellationXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_24_GOODSCERTIFICATE)
                      .displayName ("UBL Goods Certificate " + VERSION_24)
                      .notDeprecated ()
                      .addXSD (UBL24Marshaller.getAllGoodsCertificateXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_24_GOODSITEMITINERARY)
                      .displayName ("UBL Goods Item Itinerary " + VERSION_24)
                      .notDeprecated ()
                      .addXSD (UBL24Marshaller.getAllGoodsItemItineraryXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_24_GOODSITEMPASSPORT)
                      .displayName ("UBL Goods Item Passport " + VERSION_24)
                      .notDeprecated ()
                      .addXSD (UBL24Marshaller.getAllGoodsItemPassportXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_24_GUARANTEECERTIFICATE)
                      .displayName ("UBL Guarantee Certificate " + VERSION_24)
                      .notDeprecated ()
                      .addXSD (UBL24Marshaller.getAllGuaranteeCertificateXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_24_IMPORTCUSTOMSDECLARATION)
                      .displayName ("UBL Import Customs Declaration " + VERSION_24)
                      .notDeprecated ()
                      .addXSD (UBL24Marshaller.getAllImportCustomsDeclarationXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_24_INSTRUCTIONFORRETURNS)
                      .displayName ("UBL Instruction For Returns " + VERSION_24)
                      .notDeprecated ()
                      .addXSD (UBL24Marshaller.getAllInstructionForReturnsXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_24_INVENTORYREPORT)
                      .displayName ("UBL Inventory Report " + VERSION_24)
                      .notDeprecated ()
                      .addXSD (UBL24Marshaller.getAllInventoryReportXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_24_INVOICE)
                      .displayName ("UBL Invoice " + VERSION_24)
                      .notDeprecated ()
                      .addXSD (UBL24Marshaller.getAllInvoiceXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_24_ITEMINFORMATIONREQUEST)
                      .displayName ("UBL Item Information Request " + VERSION_24)
                      .notDeprecated ()
                      .addXSD (UBL24Marshaller.getAllItemInformationRequestXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_24_MANIFEST)
                      .displayName ("UBL Manifest " + VERSION_24)
                      .notDeprecated ()
                      .addXSD (UBL24Marshaller.getAllManifestXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_24_ORDER)
                      .displayName ("UBL Order " + VERSION_24)
                      .notDeprecated ()
                      .addXSD (UBL24Marshaller.getAllOrderXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_24_ORDERCANCELLATION)
                      .displayName ("UBL Order Cancellation " + VERSION_24)
                      .notDeprecated ()
                      .addXSD (UBL24Marshaller.getAllOrderCancellationXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_24_ORDERCHANGE)
                      .displayName ("UBL Order Change " + VERSION_24)
                      .notDeprecated ()
                      .addXSD (UBL24Marshaller.getAllOrderChangeXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_24_ORDERRESPONSE)
                      .displayName ("UBL Order Response " + VERSION_24)
                      .notDeprecated ()
                      .addXSD (UBL24Marshaller.getAllOrderResponseXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_24_ORDERRESPONSESIMPLE)
                      .displayName ("UBL Order Response Simple " + VERSION_24)
                      .notDeprecated ()
                      .addXSD (UBL24Marshaller.getAllOrderResponseSimpleXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_24_PACKINGLIST)
                      .displayName ("UBL Packing List " + VERSION_24)
                      .notDeprecated ()
                      .addXSD (UBL24Marshaller.getAllPackingListXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_24_PRIORINFORMATIONNOTICE)
                      .displayName ("UBL Prior Information Notice " + VERSION_24)
                      .notDeprecated ()
                      .addXSD (UBL24Marshaller.getAllPriorInformationNoticeXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_24_PRODUCTACTIVITY)
                      .displayName ("UBL Product Activity " + VERSION_24)
                      .notDeprecated ()
                      .addXSD (UBL24Marshaller.getAllProductActivityXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_24_PROOFOFREEXPORTATION)
                      .displayName ("UBL Proof Of Reexportation " + VERSION_24)
                      .notDeprecated ()
                      .addXSD (UBL24Marshaller.getAllProofOfReexportationXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_24_PROOFOFREEXPORTATIONREMINDER)
                      .displayName ("UBL Proof Of Reexportation Reminder " + VERSION_24)
                      .notDeprecated ()
                      .addXSD (UBL24Marshaller.getAllProofOfReexportationReminderXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_24_PROOFOFREEXPORTATIONREQUEST)
                      .displayName ("UBL Proof Of Reexportation Request " + VERSION_24)
                      .notDeprecated ()
                      .addXSD (UBL24Marshaller.getAllProofOfReexportationRequestXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_24_PURCHASERECEIPT)
                      .displayName ("UBL Purchase Receipt " + VERSION_24)
                      .notDeprecated ()
                      .addXSD (UBL24Marshaller.getAllPurchaseReceiptXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_24_QUALIFICATIONAPPLICATIONREQUEST)
                      .displayName ("UBL Qualification Application Request " + VERSION_24)
                      .notDeprecated ()
                      .addXSD (UBL24Marshaller.getAllQualificationApplicationRequestXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_24_QUALIFICATIONAPPLICATIONRESPONSE)
                      .displayName ("UBL Qualification Application Response " + VERSION_24)
                      .notDeprecated ()
                      .addXSD (UBL24Marshaller.getAllQualificationApplicationResponseXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_24_QUOTATION)
                      .displayName ("UBL Quotation " + VERSION_24)
                      .notDeprecated ()
                      .addXSD (UBL24Marshaller.getAllQuotationXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_24_RECEIPTADVICE)
                      .displayName ("UBL Receipt Advice " + VERSION_24)
                      .notDeprecated ()
                      .addXSD (UBL24Marshaller.getAllReceiptAdviceXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_24_REMINDER)
                      .displayName ("UBL Reminder " + VERSION_24)
                      .notDeprecated ()
                      .addXSD (UBL24Marshaller.getAllReminderXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_24_REMITTANCEADVICE)
                      .displayName ("UBL Remittance Advice " + VERSION_24)
                      .notDeprecated ()
                      .addXSD (UBL24Marshaller.getAllRemittanceAdviceXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_24_REQUESTFORQUOTATION)
                      .displayName ("UBL Request For Quotation " + VERSION_24)
                      .notDeprecated ()
                      .addXSD (UBL24Marshaller.getAllRequestForQuotationXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_24_RETAILEVENT)
                      .displayName ("UBL Retail Event " + VERSION_24)
                      .notDeprecated ()
                      .addXSD (UBL24Marshaller.getAllRetailEventXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_24_SELFBILLEDCREDITNOTE)
                      .displayName ("UBL Self Billed Credit Note " + VERSION_24)
                      .notDeprecated ()
                      .addXSD (UBL24Marshaller.getAllSelfBilledCreditNoteXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_24_SELFBILLEDINVOICE)
                      .displayName ("UBL Self Billed Invoice " + VERSION_24)
                      .notDeprecated ()
                      .addXSD (UBL24Marshaller.getAllSelfBilledInvoiceXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_24_STATEMENT)
                      .displayName ("UBL Statement " + VERSION_24)
                      .notDeprecated ()
                      .addXSD (UBL24Marshaller.getAllStatementXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_24_STOCKAVAILABILITYREPORT)
                      .displayName ("UBL Stock Availability Report " + VERSION_24)
                      .notDeprecated ()
                      .addXSD (UBL24Marshaller.getAllStockAvailabilityReportXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_24_TENDER)
                      .displayName ("UBL Tender " + VERSION_24)
                      .notDeprecated ()
                      .addXSD (UBL24Marshaller.getAllTenderXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_24_TENDERCONTRACT)
                      .displayName ("UBL Tender Contract " + VERSION_24)
                      .notDeprecated ()
                      .addXSD (UBL24Marshaller.getAllTenderContractXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_24_TENDERERQUALIFICATION)
                      .displayName ("UBL Tenderer Qualification " + VERSION_24)
                      .notDeprecated ()
                      .addXSD (UBL24Marshaller.getAllTendererQualificationXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_24_TENDERERQUALIFICATIONRESPONSE)
                      .displayName ("UBL Tenderer Qualification Response " + VERSION_24)
                      .notDeprecated ()
                      .addXSD (UBL24Marshaller.getAllTendererQualificationResponseXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_24_TENDERRECEIPT)
                      .displayName ("UBL Tender Receipt " + VERSION_24)
                      .notDeprecated ()
                      .addXSD (UBL24Marshaller.getAllTenderReceiptXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_24_TENDERSTATUS)
                      .displayName ("UBL Tender Status " + VERSION_24)
                      .notDeprecated ()
                      .addXSD (UBL24Marshaller.getAllTenderStatusXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_24_TENDERSTATUSREQUEST)
                      .displayName ("UBL Tender Status Request " + VERSION_24)
                      .notDeprecated ()
                      .addXSD (UBL24Marshaller.getAllTenderStatusRequestXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_24_TENDERWITHDRAWAL)
                      .displayName ("UBL Tender Withdrawal " + VERSION_24)
                      .notDeprecated ()
                      .addXSD (UBL24Marshaller.getAllTenderWithdrawalXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_24_TRADEITEMLOCATIONPROFILE)
                      .displayName ("UBL Trade Item Location Profile " + VERSION_24)
                      .notDeprecated ()
                      .addXSD (UBL24Marshaller.getAllTradeItemLocationProfileXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_24_TRANSITCUSTOMSDECLARATION)
                      .displayName ("UBL Transit Customs Declaration " + VERSION_24)
                      .notDeprecated ()
                      .addXSD (UBL24Marshaller.getAllTransitCustomsDeclarationXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_24_TRANSPORTATIONSTATUS)
                      .displayName ("UBL Transportation Status " + VERSION_24)
                      .notDeprecated ()
                      .addXSD (UBL24Marshaller.getAllTransportationStatusXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_24_TRANSPORTATIONSTATUSREQUEST)
                      .displayName ("UBL Transportation Status Request " + VERSION_24)
                      .notDeprecated ()
                      .addXSD (UBL24Marshaller.getAllTransportationStatusRequestXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_24_TRANSPORTEXECUTIONPLAN)
                      .displayName ("UBL Transport Execution Plan " + VERSION_24)
                      .notDeprecated ()
                      .addXSD (UBL24Marshaller.getAllTransportExecutionPlanXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_24_TRANSPORTEXECUTIONPLANREQUEST)
                      .displayName ("UBL Transport Execution Plan Request " + VERSION_24)
                      .notDeprecated ()
                      .addXSD (UBL24Marshaller.getAllTransportExecutionPlanRequestXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_24_TRANSPORTPROGRESSSTATUS)
                      .displayName ("UBL Transport Progress Status " + VERSION_24)
                      .notDeprecated ()
                      .addXSD (UBL24Marshaller.getAllTransportProgressStatusXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_24_TRANSPORTPROGRESSSTATUSREQUEST)
                      .displayName ("UBL Transport Progress Status Request " + VERSION_24)
                      .notDeprecated ()
                      .addXSD (UBL24Marshaller.getAllTransportProgressStatusRequestXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_24_TRANSPORTSERVICEDESCRIPTION)
                      .displayName ("UBL Transport Service Description " + VERSION_24)
                      .notDeprecated ()
                      .addXSD (UBL24Marshaller.getAllTransportServiceDescriptionXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_24_TRANSPORTSERVICEDESCRIPTIONREQUEST)
                      .displayName ("UBL Transport Service Description Request " + VERSION_24)
                      .notDeprecated ()
                      .addXSD (UBL24Marshaller.getAllTransportServiceDescriptionRequestXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_24_UNAWARDEDNOTIFICATION)
                      .displayName ("UBL Unawarded Notification " + VERSION_24)
                      .notDeprecated ()
                      .addXSD (UBL24Marshaller.getAllUnawardedNotificationXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_24_UNSUBSCRIBEFROMPROCEDUREREQUEST)
                      .displayName ("UBL Unsubscribe From Procedure Request " + VERSION_24)
                      .notDeprecated ()
                      .addXSD (UBL24Marshaller.getAllUnsubscribeFromProcedureRequestXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_24_UNSUBSCRIBEFROMPROCEDURERESPONSE)
                      .displayName ("UBL Unsubscribe From Procedure Response " + VERSION_24)
                      .notDeprecated ()
                      .addXSD (UBL24Marshaller.getAllUnsubscribeFromProcedureResponseXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_24_UTILITYSTATEMENT)
                      .displayName ("UBL Utility Statement " + VERSION_24)
                      .notDeprecated ()
                      .addXSD (UBL24Marshaller.getAllUtilityStatementXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_24_WAYBILL)
                      .displayName ("UBL Waybill " + VERSION_24)
                      .notDeprecated ()
                      .addXSD (UBL24Marshaller.getAllWaybillXSDs ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_UBL_24_WEIGHTSTATEMENT)
                      .displayName ("UBL Weight Statement " + VERSION_24)
                      .notDeprecated ()
                      .addXSD (UBL24Marshaller.getAllWeightStatementXSDs ())
-                     .registerInto ();
+                     .registerInto (aRegistry);
   }
 }

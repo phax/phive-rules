@@ -99,40 +99,40 @@ public final class PeppolValidationBisAUNZ
                                                                   _getCL ());
 
       final String sVersion = VID_OPENPEPPOL_BIS3_AUNZ_UBL_INVOICE_1_0_11.getVersionString ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_BIS3_AUNZ_UBL_INVOICE_1_0_11)
                        .displayName ("A-NZ Peppol BIS3 Invoice (UBL) " + sVersion)
                        .notDeprecated ()
                        .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
                        .addSchematron (PhiveRulesHelper.createXSLT (aResInv, aNSCtxInvoice))
                        .addSchematron (PhiveRulesHelper.createXSLT (aResShared, aNSCtxInvoice))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_BIS3_AUNZ_UBL_CREDIT_NOTE_1_0_11)
                        .displayName ("A-NZ Peppol BIS3 Credit Note (UBL) " + sVersion)
                        .notDeprecated ()
                        .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
                        .addSchematron (PhiveRulesHelper.createXSLT (aResInv, aNSCtxCreditNote))
                        .addSchematron (PhiveRulesHelper.createXSLT (aResShared, aNSCtxCreditNote))
-                       .registerInto ();
+                       .registerInto (aRegistry);
 
       // Self-billing
-      PhiveRulesBuilder.forRegistry (aRegistry)
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_BIS3_AUNZ_UBL_INVOICE_SELF_BILLING_1_0_11)
                        .displayName ("A-NZ Peppol BIS3 Invoice Self-Billing (UBL) " + sVersion)
                        .notDeprecated ()
                        .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
                        .addSchematron (PhiveRulesHelper.createXSLT (aResSB, aNSCtxInvoice))
                        .addSchematron (PhiveRulesHelper.createXSLT (aResShared, aNSCtxInvoice))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_BIS3_AUNZ_UBL_CREDIT_NOTE_SELF_BILLING_1_0_11)
                        .displayName ("A-NZ Peppol BIS3 Credit Note Self-Billing (UBL) " + sVersion)
                        .notDeprecated ()
                        .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
                        .addSchematron (PhiveRulesHelper.createXSLT (aResSB, aNSCtxCreditNote))
                        .addSchematron (PhiveRulesHelper.createXSLT (aResShared, aNSCtxCreditNote))
-                       .registerInto ();
+                       .registerInto (aRegistry);
     }
 
     // 1.0.12
@@ -145,40 +145,40 @@ public final class PeppolValidationBisAUNZ
                                                                   _getCL ());
 
       final String sVersion = VID_OPENPEPPOL_BIS3_AUNZ_UBL_INVOICE_1_0_12.getVersionString ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_BIS3_AUNZ_UBL_INVOICE_1_0_12)
                        .displayName ("A-NZ Peppol BIS3 Invoice (UBL) " + sVersion)
                        .notDeprecated ()
                        .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
                        .addSchematron (PhiveRulesHelper.createXSLT (aResInv, aNSCtxInvoice))
                        .addSchematron (PhiveRulesHelper.createXSLT (aResShared, aNSCtxInvoice))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_BIS3_AUNZ_UBL_CREDIT_NOTE_1_0_12)
                        .displayName ("A-NZ Peppol BIS3 Credit Note (UBL) " + sVersion)
                        .notDeprecated ()
                        .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
                        .addSchematron (PhiveRulesHelper.createXSLT (aResInv, aNSCtxCreditNote))
                        .addSchematron (PhiveRulesHelper.createXSLT (aResShared, aNSCtxCreditNote))
-                       .registerInto ();
+                       .registerInto (aRegistry);
 
       // Self-billing
-      PhiveRulesBuilder.forRegistry (aRegistry)
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_BIS3_AUNZ_UBL_INVOICE_SELF_BILLING_1_0_12)
                        .displayName ("A-NZ Peppol BIS3 Invoice Self-Billing (UBL) " + sVersion)
                        .notDeprecated ()
                        .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
                        .addSchematron (PhiveRulesHelper.createXSLT (aResSB, aNSCtxInvoice))
                        .addSchematron (PhiveRulesHelper.createXSLT (aResShared, aNSCtxInvoice))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_BIS3_AUNZ_UBL_CREDIT_NOTE_SELF_BILLING_1_0_12)
                        .displayName ("A-NZ Peppol BIS3 Credit Note Self-Billing (UBL) " + sVersion)
                        .notDeprecated ()
                        .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
                        .addSchematron (PhiveRulesHelper.createXSLT (aResSB, aNSCtxCreditNote))
                        .addSchematron (PhiveRulesHelper.createXSLT (aResShared, aNSCtxCreditNote))
-                       .registerInto ();
+                       .registerInto (aRegistry);
     }
   }
 }

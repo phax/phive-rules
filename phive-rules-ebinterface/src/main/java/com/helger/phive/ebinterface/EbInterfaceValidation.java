@@ -61,59 +61,59 @@ public final class EbInterfaceValidation
     ValueEnforcer.notNull (aRegistry, "Registry");
 
     // No Schematrons here
-    PhiveRulesBuilder.forRegistry (aRegistry)
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_EBI_30)
                      .displayName ("ebInterface 3.0")
                      .deprecated ()
                      .addXSD (CEbInterface.EBINTERFACE_30_XSDS)
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_EBI_302)
                      .displayName ("ebInterface 3.0.2")
                      .deprecated ()
                      .addXSD (CEbInterface.EBINTERFACE_302_XSDS)
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_EBI_40)
                      .displayName ("ebInterface 4.0")
                      .deprecated ()
                      .addXSD (CEbInterface.EBINTERFACE_40_XSDS)
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_EBI_41)
                      .displayName ("ebInterface 4.1")
                      .deprecated ()
                      .addXSD (CEbInterface.EBINTERFACE_41_XSDS)
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_EBI_42)
                      .displayName ("ebInterface 4.2")
                      .deprecated ()
                      .addXSD (CEbInterface.EBINTERFACE_42_XSDS)
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_EBI_43)
                      .displayName ("ebInterface 4.3")
                      .notDeprecated ()
                      .addXSD (CEbInterface.EBINTERFACE_43_XSDS)
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_EBI_50)
                      .displayName ("ebInterface 5.0")
                      .notDeprecated ()
                      .addXSD (CEbInterface.EBINTERFACE_50_XSDS)
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_EBI_60)
                      .displayName ("ebInterface 6.0")
                      .notDeprecated ()
                      .addXSD (CEbInterface.EBINTERFACE_60_XSDS)
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_EBI_61)
                      .displayName ("ebInterface 6.1")
                      .notDeprecated ()
                      .addXSD (CEbInterface.EBINTERFACE_61_XSDS)
-                     .registerInto ();
+                     .registerInto (aRegistry);
   }
 }

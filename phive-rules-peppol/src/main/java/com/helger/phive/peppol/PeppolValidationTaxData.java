@@ -78,7 +78,7 @@ public final class PeppolValidationTaxData
       final MapBasedNamespaceContext aNsCtx = UBL21NamespaceContext.getInstance ().getClone ();
       aNsCtx.addMapping ("pxs", "urn:peppol:schema:taxdata:1.0");
 
-      PhiveRulesBuilder.forRegistry (aRegistry)
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_TDD_AE_1_0_0)
                        .displayName ("AE Tax Data Document v1.0.0")
                        .deprecated ()
@@ -86,7 +86,7 @@ public final class PeppolValidationTaxData
                        .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (BASE_PATH_SCH +
                                                                                            "ae/xslt/peppol-ae-tdd-1.0.0.xslt",
                                                                                            _getCL ()), aNsCtx))
-                       .registerInto ();
+                       .registerInto (aRegistry);
     }
 
     // TDD AE 1.0.1
@@ -94,7 +94,7 @@ public final class PeppolValidationTaxData
       final MapBasedNamespaceContext aNsCtx = UBL21NamespaceContext.getInstance ().getClone ();
       aNsCtx.addMapping ("pxs", "urn:peppol:schema:taxdata:1.0");
 
-      PhiveRulesBuilder.forRegistry (aRegistry)
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_TDD_AE_1_0_1)
                        .displayName ("AE Tax Data Document v1.0.1")
                        .deprecated ()
@@ -102,7 +102,7 @@ public final class PeppolValidationTaxData
                        .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (BASE_PATH_SCH +
                                                                                            "ae/xslt/peppol-ae-tdd-1.0.1.xslt",
                                                                                            _getCL ()), aNsCtx))
-                       .registerInto ();
+                       .registerInto (aRegistry);
     }
 
     // TDD AE 1.0.2
@@ -110,7 +110,7 @@ public final class PeppolValidationTaxData
       final MapBasedNamespaceContext aNsCtx = UBL21NamespaceContext.getInstance ().getClone ();
       aNsCtx.addMapping ("pxs", "urn:peppol:schema:taxdata:1.0");
 
-      PhiveRulesBuilder.forRegistry (aRegistry)
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_TDD_AE_1_0_2)
                        .displayName ("AE Tax Data Document v1.0.2")
                        .notDeprecated ()
@@ -118,7 +118,7 @@ public final class PeppolValidationTaxData
                        .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (BASE_PATH_SCH +
                                                                                            "ae/xslt/peppol-ae-tdd-1.0.2.xslt",
                                                                                            _getCL ()), aNsCtx))
-                       .registerInto ();
+                       .registerInto (aRegistry);
     }
   }
 }

@@ -96,7 +96,7 @@ public final class SETUValidation
     final String sPrefixSCH = "/external/schematron/setu/";
 
     // V1.4
-    PhiveRulesBuilder.forRegistry (aRegistry)
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_SETU_ASSIGNMENT_14)
                      .displayNamePrefix ("SETU Assignment ")
                      .notDeprecated ()
@@ -107,8 +107,8 @@ public final class SETUValidation
                      .addSchematron (_createXSLT (new ClassPathResource (sPrefixSCH +
                                                                          "1.4/xslt/Assignment-v1.4-Assignment.xslt",
                                                                          _getCL ())))
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_SETU_HUMAN_RESOURCE_14)
                      .displayNamePrefix ("SETU Human Resource ")
                      .notDeprecated ()
@@ -119,8 +119,8 @@ public final class SETUValidation
                      .addSchematron (_createXSLT (new ClassPathResource (sPrefixSCH +
                                                                          "1.4/xslt/OrderingAndSelection-v1.4-HumanResource.xslt",
                                                                          _getCL ())))
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_SETU_STAFFING_ORDER_14)
                      .displayNamePrefix ("SETU Staffing Order ")
                      .notDeprecated ()
@@ -131,8 +131,8 @@ public final class SETUValidation
                      .addSchematron (_createXSLT (new ClassPathResource (sPrefixSCH +
                                                                          "1.4/xslt/OrderingAndSelection-v1.4-StaffingOrder.xslt",
                                                                          _getCL ())))
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_SETU_TIMECARD_14)
                      .displayNamePrefix ("SETU Timcard ")
                      .notDeprecated ()
@@ -141,6 +141,6 @@ public final class SETUValidation
                               new ClassPathResource (sPrefixXSD + "hr-xml/TimeCard/TimeCard.xsd", _getCL ()))
                      .addSchematron (_createXSLT (new ClassPathResource (sPrefixSCH + "1.4/xslt/RTE-v1.4-TimeCard.xslt",
                                                                          _getCL ())))
-                     .registerInto ();
+                     .registerInto (aRegistry);
   }
 }

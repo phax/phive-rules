@@ -61,23 +61,23 @@ public final class FatturaPAValidation
     ValueEnforcer.notNull (aRegistry, "Registry");
 
     // No Schematrons here
-    PhiveRulesBuilder.forRegistry (aRegistry)
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_FATTURAPA_120)
                      .displayNamePrefix ("fatturaPA ")
                      .deprecated ()
                      .addXSD (CFatturaPA.getAllXSDFatturaPA120 ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_FATTURAPA_121)
                      .displayNamePrefix ("fatturaPA ")
                      .deprecated ()
                      .addXSD (CFatturaPA.getAllXSDFatturaPA121 ())
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_FATTURAPA_122)
                      .displayNamePrefix ("fatturaPA ")
                      .notDeprecated ()
                      .addXSD (CFatturaPA.getAllXSDFatturaPA122 ())
-                     .registerInto ();
+                     .registerInto (aRegistry);
   }
 }

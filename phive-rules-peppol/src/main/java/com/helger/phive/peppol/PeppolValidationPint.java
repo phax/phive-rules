@@ -102,20 +102,20 @@ public final class PeppolValidationPint
                                                             "1.0.0/xslt/PINT-UBL-validation-preprocessed.xslt",
                                                             _getCL ());
 
-      PhiveRulesBuilder.forRegistry (aRegistry)
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_PINT_INVOICE_1_0_0)
                        .displayName ("OpenPeppol PINT Invoice (UBL) 1.0.0")
                        .deprecated ()
                        .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
                        .addSchematron (PhiveRulesHelper.createXSLT (aRes, aNSCtxInvoice))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_PINT_CREDIT_NOTE_1_0_0)
                        .displayName ("OpenPeppol PINT Credit Note (UBL) 1.0.0")
                        .deprecated ()
                        .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
                        .addSchematron (PhiveRulesHelper.createXSLT (aRes, aNSCtxCreditNote))
-                       .registerInto ();
+                       .registerInto (aRegistry);
     }
 
     // 1.0.1 - November 2023
@@ -123,20 +123,20 @@ public final class PeppolValidationPint
       final ClassPathResource aRes = new ClassPathResource (BASE_PATH +
                                                             "1.0.1/xslt/PINT-UBL-validation-preprocessed.xslt",
                                                             _getCL ());
-      PhiveRulesBuilder.forRegistry (aRegistry)
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_PINT_INVOICE_1_0_1)
                        .displayName ("OpenPeppol PINT Invoice (UBL) 1.0.1")
                        .deprecated ()
                        .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
                        .addSchematron (PhiveRulesHelper.createXSLT (aRes, aNSCtxInvoice))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_PINT_CREDIT_NOTE_1_0_1)
                        .displayName ("OpenPeppol PINT Credit Note (UBL) 1.0.1")
                        .deprecated ()
                        .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
                        .addSchematron (PhiveRulesHelper.createXSLT (aRes, aNSCtxCreditNote))
-                       .registerInto ();
+                       .registerInto (aRegistry);
     }
 
     // 1.0.2 - May 2024
@@ -147,20 +147,20 @@ public final class PeppolValidationPint
       final ClassPathResource aResCreditNote = new ClassPathResource (BASE_PATH +
                                                                       "1.0.2/xslt/PINT-UBL-validation-preprocessed-cn.xslt",
                                                                       _getCL ());
-      PhiveRulesBuilder.forRegistry (aRegistry)
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_PINT_INVOICE_1_0_2)
                        .displayName ("OpenPeppol PINT Invoice (UBL) 1.0.2")
                        .notDeprecated ()
                        .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
                        .addSchematron (PhiveRulesHelper.createXSLT (aResInvoice, aNSCtxInvoice))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_PINT_CREDIT_NOTE_1_0_2)
                        .displayName ("OpenPeppol PINT Credit Note (UBL) 1.0.2")
                        .notDeprecated ()
                        .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
                        .addSchematron (PhiveRulesHelper.createXSLT (aResCreditNote, aNSCtxCreditNote))
-                       .registerInto ();
+                       .registerInto (aRegistry);
     }
 
     // 1.1.2 - November 2025
@@ -168,20 +168,20 @@ public final class PeppolValidationPint
       final ClassPathResource aRes = new ClassPathResource (BASE_PATH +
                                                             "1.1.2/xslt/PINT-UBL-validation-preprocessed.xslt",
                                                             _getCL ());
-      PhiveRulesBuilder.forRegistry (aRegistry)
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_PINT_INVOICE_1_1_2)
                        .displayName ("OpenPeppol PINT Invoice (UBL) 1.1.2")
                        .notDeprecated ()
                        .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
                        .addSchematron (PhiveRulesHelper.createXSLT (aRes, aNSCtxInvoice))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_PINT_CREDIT_NOTE_1_1_2)
                        .displayName ("OpenPeppol PINT Credit Note (UBL) 1.1.2")
                        .notDeprecated ()
                        .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
                        .addSchematron (PhiveRulesHelper.createXSLT (aRes, aNSCtxCreditNote))
-                       .registerInto ();
+                       .registerInto (aRegistry);
     }
   }
 }

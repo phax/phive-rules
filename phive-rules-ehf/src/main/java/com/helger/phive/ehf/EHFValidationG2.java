@@ -274,7 +274,7 @@ public class EHFValidationG2
     ValueEnforcer.notNull (aRegistry, "Registry");
 
     // 2018-11
-    PhiveRulesBuilder.forRegistry (aRegistry)
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_EHF_CATALOGUE_1_0_13)
                      .displayNamePrefix ("EHF Catalogue ")
                      .deprecated ()
@@ -287,8 +287,8 @@ public class EHFValidationG2
                                                                                                   _getCL ())))
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (EHF_COMMON_V1_0_4))
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (EHF_CATALOGUE_V1_0_13))
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_EHF_CATALOGUE_RESPONSE_1_0_13)
                      .displayNamePrefix ("EHF Catalogue Response ")
                      .deprecated ()
@@ -301,8 +301,8 @@ public class EHFValidationG2
                                                                                                   _getCL ())))
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (EHF_COMMON_V1_0_4))
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (EHF_CATALOGUE_RESPONSE_V1_0_13))
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_EHF_CREDITNOTE_2_0_15)
                      .displayNamePrefix ("EHF Creditnote ")
                      .deprecated ()
@@ -315,8 +315,8 @@ public class EHFValidationG2
                                                                                                   _getCL ())))
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (EHF_COMMON_V1_0_4))
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (EHF_CREDITNOTE_V2_0_15))
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_EHF_DESPATCH_ADVICE_1_0_10)
                      .displayNamePrefix ("EHF Despatch Advice ")
                      .deprecated ()
@@ -329,8 +329,8 @@ public class EHFValidationG2
                                                                                                   _getCL ())))
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (EHF_COMMON_V1_0_4))
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (EHF_DESPATCH_ADVICE_V1_0_10))
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_EHF_INVOICE_2_0_15)
                      .displayNamePrefix ("EHF Invoice ")
                      .deprecated ()
@@ -343,8 +343,8 @@ public class EHFValidationG2
                                                                                                   _getCL ())))
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (EHF_COMMON_V1_0_4))
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (EHF_INVOICE_V2_0_15))
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_EHF_ORDER_1_0_11)
                      .displayNamePrefix ("EHF Ordering ")
                      .deprecated ()
@@ -357,8 +357,8 @@ public class EHFValidationG2
                                                                                                   _getCL ())))
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (EHF_COMMON_V1_0_4))
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (EHF_ORDER_V1_0_11))
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_EHF_ORDER_AGREEMENT_1_0_2)
                      .displayNamePrefix ("EHF Order Agreement ")
                      .deprecated ()
@@ -371,8 +371,8 @@ public class EHFValidationG2
                                                                                                   _getCL ())))
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (EHF_COMMON_V1_0_4))
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (EHF_ORDER_AGREEMENT_V1_0_2))
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_EHF_ORDER_RESPONSE_1_0_11)
                      .displayNamePrefix ("EHF Order Response ")
                      .deprecated ()
@@ -385,8 +385,8 @@ public class EHFValidationG2
                                                                                                   _getCL ())))
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (EHF_COMMON_V1_0_4))
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (EHF_ORDER_RESPONSE_V1_0_11))
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_EHF_PUNCH_OUT_1_0_1)
                      .displayNamePrefix ("EHF Punch Out ")
                      .deprecated ()
@@ -399,20 +399,20 @@ public class EHFValidationG2
                                                                                                   _getCL ())))
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (EHF_COMMON_V1_0_4))
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (EHF_PUNCH_OUT_V1_0_1))
-                     .registerInto ();
+                     .registerInto (aRegistry);
 
     // Reminder is NOT in PEPPOL
-    PhiveRulesBuilder.forRegistry (aRegistry)
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_EHF_REMINDER_1_1_0)
                      .displayNamePrefix ("EHF Reminder ")
                      .deprecated ()
                      .addXSD (UBL21Marshaller.getAllReminderXSDs ())
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (EHF_COMMON_V1_0_4))
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (EHF_REMINDER_V1_1_0))
-                     .registerInto ();
+                     .registerInto (aRegistry);
 
     // 2019-06
-    PhiveRulesBuilder.forRegistry (aRegistry)
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_EHF_CATALOGUE_1_0_14)
                      .displayNamePrefix ("EHF Catalogue ")
                      .deprecated ()
@@ -425,8 +425,8 @@ public class EHFValidationG2
                                                                                                   _getCL ())))
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (EHF_COMMON_V1_0_4B))
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (EHF_CATALOGUE_V1_0_14))
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_EHF_CATALOGUE_RESPONSE_1_0_14)
                      .displayNamePrefix ("EHF Catalogue Response ")
                      .deprecated ()
@@ -439,8 +439,8 @@ public class EHFValidationG2
                                                                                                   _getCL ())))
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (EHF_COMMON_V1_0_4B))
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (EHF_CATALOGUE_RESPONSE_V1_0_14))
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_EHF_CREDITNOTE_2_0_16)
                      .displayNamePrefix ("EHF Creditnote ")
                      .deprecated ()
@@ -453,8 +453,8 @@ public class EHFValidationG2
                                                                                                   _getCL ())))
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (EHF_COMMON_V1_0_4B))
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (EHF_CREDITNOTE_V2_0_16))
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_EHF_DESPATCH_ADVICE_1_0_11)
                      .displayNamePrefix ("EHF Despatch Advice ")
                      .deprecated ()
@@ -467,8 +467,8 @@ public class EHFValidationG2
                                                                                                   _getCL ())))
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (EHF_COMMON_V1_0_4B))
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (EHF_DESPATCH_ADVICE_V1_0_11))
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_EHF_INVOICE_2_0_16)
                      .displayNamePrefix ("EHF Invoice ")
                      .deprecated ()
@@ -481,8 +481,8 @@ public class EHFValidationG2
                                                                                                   _getCL ())))
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (EHF_COMMON_V1_0_4B))
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (EHF_INVOICE_V2_0_16))
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_EHF_ORDER_1_0_12)
                      .displayNamePrefix ("EHF Ordering ")
                      .deprecated ()
@@ -495,8 +495,8 @@ public class EHFValidationG2
                                                                                                   _getCL ())))
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (EHF_COMMON_V1_0_4B))
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (EHF_ORDER_V1_0_12))
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_EHF_ORDER_AGREEMENT_1_0_3)
                      .displayNamePrefix ("EHF Order Agreement ")
                      .deprecated ()
@@ -509,8 +509,8 @@ public class EHFValidationG2
                                                                                                   _getCL ())))
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (EHF_COMMON_V1_0_4B))
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (EHF_ORDER_AGREEMENT_V1_0_3))
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_EHF_ORDER_RESPONSE_1_0_12)
                      .displayNamePrefix ("EHF Order Response ")
                      .deprecated ()
@@ -523,8 +523,8 @@ public class EHFValidationG2
                                                                                                   _getCL ())))
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (EHF_COMMON_V1_0_4B))
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (EHF_ORDER_RESPONSE_V1_0_12))
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_EHF_PUNCH_OUT_1_0_2)
                      .displayNamePrefix ("EHF Punch Out ")
                      .deprecated ()
@@ -537,11 +537,11 @@ public class EHFValidationG2
                                                                                                   _getCL ())))
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (EHF_COMMON_V1_0_4B))
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (EHF_PUNCH_OUT_V1_0_2))
-                     .registerInto ();
+                     .registerInto (aRegistry);
     // Reminder is from 2018-11
 
     // 2019-12
-    PhiveRulesBuilder.forRegistry (aRegistry)
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_EHF_CATALOGUE_1_0_15)
                      .displayNamePrefix ("EHF Catalogue ")
                      .deprecated ()
@@ -554,8 +554,8 @@ public class EHFValidationG2
                                                                                                   _getCL ())))
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (EHF_COMMON_V1_0_4C))
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (EHF_CATALOGUE_V1_0_15))
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_EHF_CATALOGUE_RESPONSE_1_0_15)
                      .displayNamePrefix ("EHF Catalogue Response ")
                      .deprecated ()
@@ -568,8 +568,8 @@ public class EHFValidationG2
                                                                                                   _getCL ())))
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (EHF_COMMON_V1_0_4C))
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (EHF_CATALOGUE_RESPONSE_V1_0_15))
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_EHF_CREDITNOTE_2_0_17)
                      .displayNamePrefix ("EHF Creditnote ")
                      .deprecated ()
@@ -582,8 +582,8 @@ public class EHFValidationG2
                                                                                                   _getCL ())))
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (EHF_COMMON_V1_0_4C))
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (EHF_CREDITNOTE_V2_0_17))
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_EHF_DESPATCH_ADVICE_1_0_12)
                      .displayNamePrefix ("EHF Despatch Advice ")
                      .deprecated ()
@@ -596,8 +596,8 @@ public class EHFValidationG2
                                                                                                   _getCL ())))
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (EHF_COMMON_V1_0_4C))
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (EHF_DESPATCH_ADVICE_V1_0_12))
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_EHF_INVOICE_2_0_17)
                      .displayNamePrefix ("EHF Invoice ")
                      .deprecated ()
@@ -610,8 +610,8 @@ public class EHFValidationG2
                                                                                                   _getCL ())))
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (EHF_COMMON_V1_0_4C))
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (EHF_INVOICE_V2_0_17))
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_EHF_ORDER_1_0_13)
                      .displayNamePrefix ("EHF Ordering ")
                      .deprecated ()
@@ -624,8 +624,8 @@ public class EHFValidationG2
                                                                                                   _getCL ())))
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (EHF_COMMON_V1_0_4C))
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (EHF_ORDER_V1_0_13))
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_EHF_ORDER_AGREEMENT_1_0_4)
                      .displayNamePrefix ("EHF Order Agreement ")
                      .deprecated ()
@@ -638,8 +638,8 @@ public class EHFValidationG2
                                                                                                   _getCL ())))
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (EHF_COMMON_V1_0_4C))
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (EHF_ORDER_AGREEMENT_V1_0_4))
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_EHF_ORDER_RESPONSE_1_0_13)
                      .displayNamePrefix ("EHF Order Response ")
                      .deprecated ()
@@ -652,8 +652,8 @@ public class EHFValidationG2
                                                                                                   _getCL ())))
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (EHF_COMMON_V1_0_4C))
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (EHF_ORDER_RESPONSE_V1_0_13))
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_EHF_PUNCH_OUT_1_0_3)
                      .displayNamePrefix ("EHF Punch Out ")
                      .deprecated ()
@@ -666,7 +666,7 @@ public class EHFValidationG2
                                                                                                   _getCL ())))
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (EHF_COMMON_V1_0_4C))
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (EHF_PUNCH_OUT_V1_0_3))
-                     .registerInto ();
+                     .registerInto (aRegistry);
     // Reminder is from 2018-11
   }
 }

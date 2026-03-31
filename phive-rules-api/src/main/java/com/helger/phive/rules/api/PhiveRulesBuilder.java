@@ -43,7 +43,6 @@ import com.helger.phive.xml.xsd.ValidationExecutorXSD;
  */
 public class PhiveRulesBuilder
 {
-  private final IValidationExecutorSetRegistry <IValidationSourceXML> m_aRegistry;
   private DVRCoordinate m_aVESID;
   private String m_sDisplayName;
   private String m_sDisplayNamePrefix;
@@ -51,15 +50,13 @@ public class PhiveRulesBuilder
   private IValidationExecutorSet <IValidationSourceXML> m_aBaseVES;
   private final ICommonsList <IValidationExecutor <IValidationSourceXML>> m_aExecutors = new CommonsArrayList <> ();
 
-  public PhiveRulesBuilder (@NonNull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
-  {
-    m_aRegistry = ValueEnforcer.notNull (aRegistry, "Registry");
-  }
+  public PhiveRulesBuilder ()
+  {}
 
   @NonNull
-  public static PhiveRulesBuilder forRegistry (@NonNull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
+  public static PhiveRulesBuilder builder ()
   {
-    return new PhiveRulesBuilder (aRegistry);
+    return new PhiveRulesBuilder ();
   }
 
   @NonNull
@@ -175,10 +172,12 @@ public class PhiveRulesBuilder
   }
 
   @NonNull
-  public IValidationExecutorSet <IValidationSourceXML> registerAndGet ()
+  public ValidationExecutorSet <IValidationSourceXML> createVES ()
   {
-    ValueEnforcer.notNull (m_aVESID, "VESID");
-    ValueEnforcer.notNull (m_aStatus, "Status");
+    if (m_aVESID == null)
+      throw new IllegalStateException ("VESID is missing");
+    if (m_aStatus == null)
+      throw new IllegalStateException ("Status is missing");
 
     final String sName = _resolveDisplayName ();
 
@@ -193,12 +192,21 @@ public class PhiveRulesBuilder
     for (final IValidationExecutor <IValidationSourceXML> aVE : m_aExecutors)
       aVES.addExecutor (aVE);
 
-    m_aRegistry.registerValidationExecutorSet (aVES);
     return aVES;
   }
 
-  public void registerInto ()
+  @NonNull
+  public ValidationExecutorSet <IValidationSourceXML> registerAndGet (@NonNull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
   {
-    registerAndGet ();
+    ValueEnforcer.notNull (aRegistry, "Registry");
+
+    final ValidationExecutorSet <IValidationSourceXML> aVES = createVES ();
+    aRegistry.registerValidationExecutorSet (aVES);
+    return aVES;
+  }
+
+  public void registerInto (@NonNull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
+  {
+    registerAndGet (aRegistry);
   }
 }

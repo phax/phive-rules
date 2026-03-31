@@ -72,21 +72,21 @@ public final class PeppolValidation2026_03
     final IReadableResource aCENSB = new ClassPathResource (PREFIX_XSLT + "CEN-EN16931-UBL.xslt", _getCL ());
     final IReadableResource aPeppolSB = new ClassPathResource (PREFIX_XSLT + "PEPPOL-EN16931-UBL-SB.xslt", _getCL ());
 
-    PhiveRulesBuilder.forRegistry (aRegistry)
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_OPENPEPPOL_INVOICE_SELF_BILLING_UBL_V3)
                      .displayName ("OpenPeppol UBL Invoice Self-Billing" + sVersion + sAkaVersionBilling)
                      .notDeprecated ()
                      .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aCENSB))
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aPeppolSB))
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_OPENPEPPOL_CREDIT_NOTE_SELF_BILLING_UBL_V3)
                      .displayName ("OpenPeppol UBL Credit Note Self-Billing" + sVersion + sAkaVersionBilling)
                      .notDeprecated ()
                      .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aCENSB))
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aPeppolSB))
-                     .registerInto ();
+                     .registerInto (aRegistry);
   }
 }

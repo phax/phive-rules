@@ -60,17 +60,17 @@ public final class TEAPPSValidation
     ValueEnforcer.notNull (aRegistry, "Registry");
 
     // No Schematrons here
-    PhiveRulesBuilder.forRegistry (aRegistry)
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_TEAPPS_272)
                      .displayNamePrefix ("TEAPPSXML ")
                      .notDeprecated ()
                      .addXSD (new ClassPathResource ("/external/schemas/TEAPPSXMLv272_schema_INVOICES.xsd", _getCL ()))
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_TEAPPS_30)
                      .displayNamePrefix ("TEAPPSXML ")
                      .notDeprecated ()
                      .addXSD (new ClassPathResource ("/external/schemas/teappsxmlv30_schema_invoices_0.xsd", _getCL ()))
-                     .registerInto ();
+                     .registerInto (aRegistry);
   }
 }

@@ -66,29 +66,29 @@ public final class FinvoiceValidation
     final String sPrefix = "/external/schemas/";
 
     // No Schematrons here
-    PhiveRulesBuilder.forRegistry (aRegistry)
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_FINVOICE_13)
                      .displayNamePrefix ("Finvoice ")
                      .notDeprecated ()
                      .addXSD (new ClassPathResource (sPrefix + "Finvoice1.3.xsd", _getCL ()))
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_FINVOICE_20)
                      .displayNamePrefix ("Finvoice ")
                      .notDeprecated ()
                      .addXSD (new ClassPathResource (sPrefix + "Finvoice2.0.xsd", _getCL ()))
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_FINVOICE_201)
                      .displayNamePrefix ("Finvoice ")
                      .notDeprecated ()
                      .addXSD (new ClassPathResource (sPrefix + "Finvoice2.01.xsd", _getCL ()))
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_FINVOICE_30)
                      .displayNamePrefix ("Finvoice ")
                      .notDeprecated ()
                      .addXSD (new ClassPathResource (sPrefix + "Finvoice3.0.xsd", _getCL ()))
-                     .registerInto ();
+                     .registerInto (aRegistry);
   }
 }

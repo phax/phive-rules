@@ -24,11 +24,10 @@ import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.io.resource.ClassPathResource;
 import com.helger.io.resource.IReadableResource;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
-import com.helger.phive.api.executorset.ValidationExecutorSet;
+import com.helger.phive.rules.api.PhiveRulesBuilder;
 import com.helger.phive.rules.api.PhiveRulesHelper;
 import com.helger.phive.rules.api.PhiveRulesUBLHelper;
 import com.helger.phive.xml.source.IValidationSourceXML;
-import com.helger.phive.xml.xsd.ValidationExecutorXSD;
 import com.helger.ubl21.UBL21Marshaller;
 
 /**
@@ -98,61 +97,59 @@ public final class PeppolItalyValidation3_0_2
     final IReadableResource ORDER_RESPONSE = new ClassPathResource (PREFIX_XSLT + "order-response/AGID-PEPPOL-T76.xslt",
                                                                     _getCL ());
 
-    final boolean bDeprecated = true;
-
-    aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_DESPATCH_ADVICE,
-                                                                           "AGID Peppol Despatch Advice" +
-                                                                                                sVersion +
-                                                                                                sAkaVersionBIS,
-                                                                           PhiveRulesHelper.createSimpleStatus (bDeprecated),
-                                                                           ValidationExecutorXSD.create (UBL21Marshaller.getAllDespatchAdviceXSDs ()),
-                                                                           PhiveRulesHelper.createXSLT (DESPATCH_ADVICE,
-                                                                                                        PhiveRulesUBLHelper.createUBL21NSContext (UBL21Marshaller.despatchAdvice ()
-                                                                                                                                                                 .getRootElementNamespaceURI ()))));
-    aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_INVOICE,
-                                                                           "AGID Peppol Invoice" +
-                                                                                        sVersion +
-                                                                                        sAkaVersionBIS,
-                                                                           PhiveRulesHelper.createSimpleStatus (bDeprecated),
-                                                                           ValidationExecutorXSD.create (UBL21Marshaller.getAllInvoiceXSDs ()),
-                                                                           PhiveRulesHelper.createXSLT (INVOICE,
-                                                                                                        PhiveRulesUBLHelper.createUBL21NSContext (UBL21Marshaller.invoice ()
-                                                                                                                                                                 .getRootElementNamespaceURI ()))));
-    aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_CREDIT_NOTE,
-                                                                           "AGID Peppol Credit Note" +
-                                                                                            sVersion +
-                                                                                            sAkaVersionBIS,
-                                                                           PhiveRulesHelper.createSimpleStatus (bDeprecated),
-                                                                           ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
-                                                                           PhiveRulesHelper.createXSLT (INVOICE,
-                                                                                                        PhiveRulesUBLHelper.createUBL21NSContext (UBL21Marshaller.creditNote ()
-                                                                                                                                                                 .getRootElementNamespaceURI ()))));
-    aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_ORDER,
-                                                                           "AGID Peppol Order" +
-                                                                                      sVersion +
-                                                                                      sAkaVersionBIS,
-                                                                           PhiveRulesHelper.createSimpleStatus (bDeprecated),
-                                                                           ValidationExecutorXSD.create (UBL21Marshaller.getAllOrderXSDs ()),
-                                                                           PhiveRulesHelper.createXSLT (ORDER,
-                                                                                                        PhiveRulesUBLHelper.createUBL21NSContext (UBL21Marshaller.order ()
-                                                                                                                                                                 .getRootElementNamespaceURI ()))));
-    aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_ORDER_AGREEMENT,
-                                                                           "AGID Peppol Order Agreement" +
-                                                                                                sVersion +
-                                                                                                sAkaVersionBIS,
-                                                                           PhiveRulesHelper.createSimpleStatus (bDeprecated),
-                                                                           ValidationExecutorXSD.create (UBL21Marshaller.getAllOrderResponseXSDs ()),
-                                                                           PhiveRulesHelper.createXSLT (ORDER_AGREEMENT,
-                                                                                                        PhiveRulesUBLHelper.createUBL21NSContext (UBL21Marshaller.orderResponse ()
-                                                                                                                                                                 .getRootElementNamespaceURI ()))));
-    aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_ORDER_RESPONSE,
-                                                                           "AGID Peppol Order Response" +
-                                                                                               sVersion +
-                                                                                               sAkaVersionBIS,
-                                                                           PhiveRulesHelper.createSimpleStatus (bDeprecated),
-                                                                           ValidationExecutorXSD.create (UBL21Marshaller.getAllOrderResponseXSDs ()),
-                                                                           PhiveRulesHelper.createXSLT (ORDER_RESPONSE,
-                                                                                                        PhiveRulesUBLHelper.createUBL21NSContext (UBL21Marshaller.orderResponse ()
-                                                                                                                                                                 .getRootElementNamespaceURI ()))));
+    PhiveRulesBuilder.builder ()
+                     .vesID (VID_DESPATCH_ADVICE)
+                     .displayName ("AGID Peppol Despatch Advice" + sVersion + sAkaVersionBIS)
+                     .deprecated ()
+                     .addXSD (UBL21Marshaller.getAllDespatchAdviceXSDs ())
+                     .addSchematron (PhiveRulesHelper.createXSLT (DESPATCH_ADVICE,
+                                                                  PhiveRulesUBLHelper.createUBL21NSContext (UBL21Marshaller.despatchAdvice ()
+                                                                                                                           .getRootElementNamespaceURI ())))
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
+                     .vesID (VID_INVOICE)
+                     .displayName ("AGID Peppol Invoice" + sVersion + sAkaVersionBIS)
+                     .deprecated ()
+                     .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
+                     .addSchematron (PhiveRulesHelper.createXSLT (INVOICE,
+                                                                  PhiveRulesUBLHelper.createUBL21NSContext (UBL21Marshaller.invoice ()
+                                                                                                                           .getRootElementNamespaceURI ())))
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
+                     .vesID (VID_CREDIT_NOTE)
+                     .displayName ("AGID Peppol Credit Note" + sVersion + sAkaVersionBIS)
+                     .deprecated ()
+                     .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
+                     .addSchematron (PhiveRulesHelper.createXSLT (INVOICE,
+                                                                  PhiveRulesUBLHelper.createUBL21NSContext (UBL21Marshaller.creditNote ()
+                                                                                                                           .getRootElementNamespaceURI ())))
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
+                     .vesID (VID_ORDER)
+                     .displayName ("AGID Peppol Order" + sVersion + sAkaVersionBIS)
+                     .deprecated ()
+                     .addXSD (UBL21Marshaller.getAllOrderXSDs ())
+                     .addSchematron (PhiveRulesHelper.createXSLT (ORDER,
+                                                                  PhiveRulesUBLHelper.createUBL21NSContext (UBL21Marshaller.order ()
+                                                                                                                           .getRootElementNamespaceURI ())))
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
+                     .vesID (VID_ORDER_AGREEMENT)
+                     .displayName ("AGID Peppol Order Agreement" + sVersion + sAkaVersionBIS)
+                     .deprecated ()
+                     .addXSD (UBL21Marshaller.getAllOrderResponseXSDs ())
+                     .addSchematron (PhiveRulesHelper.createXSLT (ORDER_AGREEMENT,
+                                                                  PhiveRulesUBLHelper.createUBL21NSContext (UBL21Marshaller.orderResponse ()
+                                                                                                                           .getRootElementNamespaceURI ())))
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
+                     .vesID (VID_ORDER_RESPONSE)
+                     .displayName ("AGID Peppol Order Response" + sVersion + sAkaVersionBIS)
+                     .deprecated ()
+                     .addXSD (UBL21Marshaller.getAllOrderResponseXSDs ())
+                     .addSchematron (PhiveRulesHelper.createXSLT (ORDER_RESPONSE,
+                                                                  PhiveRulesUBLHelper.createUBL21NSContext (UBL21Marshaller.orderResponse ()
+                                                                                                                           .getRootElementNamespaceURI ())))
+                     .registerInto (aRegistry);
   }
 }

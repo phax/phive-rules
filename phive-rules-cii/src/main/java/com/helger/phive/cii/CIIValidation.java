@@ -77,12 +77,12 @@ public final class CIIValidation
     ValueEnforcer.notNull (aRegistry, "Registry");
 
     // No Schematrons here
-    PhiveRulesBuilder.forRegistry (aRegistry)
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_CII_D16B_CROSSINDUSTRYINVOICE)
                      .displayName ("CII CrossIndustryInvoice " + VERSION_D16B)
                      .notDeprecated ()
                      .addXSD (CCIID16B.getXSDResource ())
-                     .registerInto ();
+                     .registerInto (aRegistry);
   }
 
   /**
@@ -97,18 +97,18 @@ public final class CIIValidation
     ValueEnforcer.notNull (aRegistry, "Registry");
 
     // No Schematrons here
-    PhiveRulesBuilder.forRegistry (aRegistry)
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_CII_D22B_CROSSINDUSTRYINVOICE)
                      .displayName ("CII CrossIndustryInvoice " + VERSION_D22B)
                      .notDeprecated ()
                      .addXSD (CCIID22B.getXSDResourceCII ())
-                     .registerInto ();
+                     .registerInto (aRegistry);
 
-    PhiveRulesBuilder.forRegistry (aRegistry)
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_CII_D22B_CDAR)
                      .displayName ("CDAR " + VERSION_D22B)
                      .notDeprecated ()
                      .addXSD (CCIID22B.getXSDResourceCDAR ())
-                     .registerInto ();
+                     .registerInto (aRegistry);
   }
 }

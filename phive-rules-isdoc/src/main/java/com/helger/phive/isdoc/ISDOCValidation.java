@@ -77,7 +77,7 @@ public final class ISDOCValidation
   {
     ValueEnforcer.notNull (aRegistry, "Registry");
 
-    PhiveRulesBuilder.forRegistry (aRegistry)
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_ISDOC_601)
                      .displayNamePrefix ("ISDOC ")
                      .deprecated ()
@@ -86,8 +86,8 @@ public final class ISDOCValidation
                                                      _getCL ()))
                      .addSchematron (_createXSLT (new ClassPathResource ("/external/schematron/isdoc/6.0.1/isdoc-6.0.1.xslt",
                                                                          _getCL ())))
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_ISDOC_602)
                      .displayNamePrefix ("ISDOC ")
                      .notDeprecated ()
@@ -96,6 +96,6 @@ public final class ISDOCValidation
                                                      _getCL ()))
                      .addSchematron (_createXSLT (new ClassPathResource ("/external/schematron/isdoc/6.0.2/isdoc-6.0.2.xslt",
                                                                          _getCL ())))
-                     .registerInto ();
+                     .registerInto (aRegistry);
   }
 }

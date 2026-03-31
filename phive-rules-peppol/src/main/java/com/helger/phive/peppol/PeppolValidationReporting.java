@@ -83,7 +83,7 @@ public final class PeppolValidationReporting
 
       final MapBasedNamespaceContext aNsCtx = new MapBasedNamespaceContext ().setDefaultNamespaceURI ("urn:fdc:peppol:end-user-statistics-report:1.1");
 
-      PhiveRulesBuilder.forRegistry (aRegistry)
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_EUSR_V114)
                        .displayName ("Peppol End User Statistics Report v1.1.4")
                        .deprecated ()
@@ -91,8 +91,8 @@ public final class PeppolValidationReporting
                        .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (BASE_PATH_SCH +
                                                                                            "eusr/1.1.4/xslt/peppol-end-user-statistics-reporting-1.1.4.xslt",
                                                                                            _getCL ()), aNsCtx))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_EUSR_V115)
                        .displayName ("Peppol End User Statistics Report v1.1.5")
                        .notDeprecated ()
@@ -100,7 +100,7 @@ public final class PeppolValidationReporting
                        .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (BASE_PATH_SCH +
                                                                                            "eusr/1.1.5/xslt/peppol-end-user-statistics-reporting-1.1.5.xslt",
                                                                                            _getCL ()), aNsCtx))
-                       .registerInto ();
+                       .registerInto (aRegistry);
     }
 
     // TSR
@@ -111,7 +111,7 @@ public final class PeppolValidationReporting
 
       final MapBasedNamespaceContext aNsCtx = new MapBasedNamespaceContext ().setDefaultNamespaceURI ("urn:fdc:peppol:transaction-statistics-report:1.0");
 
-      PhiveRulesBuilder.forRegistry (aRegistry)
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_TSR_V104)
                        .displayName ("Peppol Transaction Statistics Report v1.0.4")
                        .deprecated ()
@@ -119,8 +119,8 @@ public final class PeppolValidationReporting
                        .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (BASE_PATH_SCH +
                                                                                            "tsr/1.0.4/xslt/peppol-transaction-statistics-reporting-1.0.4.xslt",
                                                                                            _getCL ()), aNsCtx))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_TSR_V105)
                        .displayName ("Peppol Transaction Statistics Report v1.0.5")
                        .notDeprecated ()
@@ -128,7 +128,7 @@ public final class PeppolValidationReporting
                        .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (BASE_PATH_SCH +
                                                                                            "tsr/1.0.5/xslt/peppol-transaction-statistics-reporting-1.0.5.xslt",
                                                                                            _getCL ()), aNsCtx))
-                       .registerInto ();
+                       .registerInto (aRegistry);
     }
   }
 }

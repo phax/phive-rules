@@ -117,7 +117,7 @@ public final class PeppolValidationBisSG
                                                                                _getCL ());
       final String sAkaVersionBilling = " (aka BIS 3.0.11)";
 
-      PhiveRulesBuilder.forRegistry (aRegistry)
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_BIS3_SG_UBL_INVOICE_2023_7)
                        .displayName ("SG Peppol BIS3 Invoice (UBL) 2023.7" + sAkaVersionBilling)
                        .deprecated ()
@@ -125,8 +125,8 @@ public final class PeppolValidationBisSG
                        .addSchematron (PhiveRulesHelper.createXSLT (BIS3_BILLING_SG_CEN_2023_07, aNSCtxInvoice))
                        .addSchematron (PhiveRulesHelper.createXSLT (BIS3_BILLING_SG_PEPPOL_2023_07, aNSCtxInvoice))
                        .addSchematron (PhiveRulesHelper.createXSLT (BIS3_BILLING_SG_2023_07, aNSCtxInvoice))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_BIS3_SG_UBL_CREDIT_NOTE_2023_7)
                        .displayName ("SG Peppol BIS3 Credit Note (UBL) 2023.7" + sAkaVersionBilling)
                        .deprecated ()
@@ -134,7 +134,7 @@ public final class PeppolValidationBisSG
                        .addSchematron (PhiveRulesHelper.createXSLT (BIS3_BILLING_SG_CEN_2023_07, aNSCtxCreditNote))
                        .addSchematron (PhiveRulesHelper.createXSLT (BIS3_BILLING_SG_PEPPOL_2023_07, aNSCtxCreditNote))
                        .addSchematron (PhiveRulesHelper.createXSLT (BIS3_BILLING_SG_2023_07, aNSCtxCreditNote))
-                       .registerInto ();
+                       .registerInto (aRegistry);
     }
 
     // 2023.12
@@ -150,7 +150,7 @@ public final class PeppolValidationBisSG
                                                                                _getCL ());
       final String sAkaVersionBilling = " (aka BIS 3.0.12)";
 
-      PhiveRulesBuilder.forRegistry (aRegistry)
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_BIS3_SG_UBL_INVOICE_2023_12)
                        .displayName ("SG Peppol BIS3 Invoice (UBL) 2023.12" + sAkaVersionBilling)
                        .deprecated ()
@@ -158,8 +158,8 @@ public final class PeppolValidationBisSG
                        .addSchematron (PhiveRulesHelper.createXSLT (BIS3_BILLING_SG_CEN_2023_12, aNSCtxInvoice))
                        .addSchematron (PhiveRulesHelper.createXSLT (BIS3_BILLING_SG_PEPPOL_2023_12, aNSCtxInvoice))
                        .addSchematron (PhiveRulesHelper.createXSLT (BIS3_BILLING_SG_2023_12, aNSCtxInvoice))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_BIS3_SG_UBL_CREDIT_NOTE_2023_12)
                        .displayName ("SG Peppol BIS3 Credit Note (UBL) 2023.12" + sAkaVersionBilling)
                        .deprecated ()
@@ -167,7 +167,7 @@ public final class PeppolValidationBisSG
                        .addSchematron (PhiveRulesHelper.createXSLT (BIS3_BILLING_SG_CEN_2023_12, aNSCtxCreditNote))
                        .addSchematron (PhiveRulesHelper.createXSLT (BIS3_BILLING_SG_PEPPOL_2023_12, aNSCtxCreditNote))
                        .addSchematron (PhiveRulesHelper.createXSLT (BIS3_BILLING_SG_2023_12, aNSCtxCreditNote))
-                       .registerInto ();
+                       .registerInto (aRegistry);
     }
 
     // 2024.12
@@ -183,7 +183,7 @@ public final class PeppolValidationBisSG
                                                                                _getCL ());
       final String sAkaVersionBilling = " (aka BIS 3.0.14)";
 
-      PhiveRulesBuilder.forRegistry (aRegistry)
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_BIS3_SG_UBL_INVOICE_2024_12)
                        .displayName ("SG Peppol BIS3 Invoice (UBL) 2024.12" + sAkaVersionBilling)
                        .status (PhiveRulesHelper.createSimpleStatus (false, VALID_PER_UTC_2014_12))
@@ -191,8 +191,8 @@ public final class PeppolValidationBisSG
                        .addSchematron (PhiveRulesHelper.createXSLT (BIS3_BILLING_SG_CEN_2024_12, aNSCtxInvoice))
                        .addSchematron (PhiveRulesHelper.createXSLT (BIS3_BILLING_SG_PEPPOL_2024_12, aNSCtxInvoice))
                        .addSchematron (PhiveRulesHelper.createXSLT (BIS3_BILLING_SG_2024_12, aNSCtxInvoice))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_BIS3_SG_UBL_CREDIT_NOTE_2024_12)
                        .displayName ("SG Peppol BIS3 Credit Note (UBL) 2024.12" + sAkaVersionBilling)
                        .status (PhiveRulesHelper.createSimpleStatus (false, VALID_PER_UTC_2014_12))
@@ -200,12 +200,12 @@ public final class PeppolValidationBisSG
                        .addSchematron (PhiveRulesHelper.createXSLT (BIS3_BILLING_SG_CEN_2024_12, aNSCtxCreditNote))
                        .addSchematron (PhiveRulesHelper.createXSLT (BIS3_BILLING_SG_PEPPOL_2024_12, aNSCtxCreditNote))
                        .addSchematron (PhiveRulesHelper.createXSLT (BIS3_BILLING_SG_2024_12, aNSCtxCreditNote))
-                       .registerInto ();
+                       .registerInto (aRegistry);
     }
 
     // Order Balance 1.0
     {
-      PhiveRulesBuilder.forRegistry (aRegistry)
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_PEPPOL_SG_ORDER_BALANCE_1_0)
                        .displayName ("SG Peppol Order Balance 1.0")
                        .notDeprecated ()
@@ -213,7 +213,7 @@ public final class PeppolValidationBisSG
                        .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (BASE_PATH +
                                                                                            "ob-1.0/xslt/SGBIS-TOB.xslt",
                                                                                            _getCL ()), aNSCtxOrder))
-                       .registerInto ();
+                       .registerInto (aRegistry);
     }
   }
 }

@@ -110,80 +110,80 @@ public final class CIUS_ROValidation
     {
       final ClassPathResource RES_103 = new ClassPathResource ("/external/schematron/1.0.3/ROeFactura-UBL-validation-Invoice_v1.0.3.xslt",
                                                                _getCL ());
-      PhiveRulesBuilder.forRegistry (aRegistry)
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_CIUS_RO_UBL_CREDITNOTE_103)
                        .displayNamePrefix ("CIUS-RO UBL Credit Note ")
                        .deprecated ()
                        .basedOn (aVESUBLCreditNote_1_3_7)
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (RES_103))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_CIUS_RO_UBL_INVOICE_103)
                        .displayNamePrefix ("CIUS-RO UBL Invoice ")
                        .deprecated ()
                        .basedOn (aVESUBLInvoice_1_3_7)
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (RES_103))
-                       .registerInto ();
+                       .registerInto (aRegistry);
     }
 
     // V1.0.4 referencing the underlying EN rules
     {
       final ClassPathResource RES_104 = new ClassPathResource ("/external/schematron/1.0.4/ROeFactura-UBL-validation-Invoice_v1.0.4.xslt",
                                                                _getCL ());
-      PhiveRulesBuilder.forRegistry (aRegistry)
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_CIUS_RO_UBL_CREDITNOTE_104)
                        .displayNamePrefix ("CIUS-RO UBL Credit Note ")
                        .deprecated ()
                        .basedOn (aVESUBLCreditNote_1_3_7)
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (RES_104))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_CIUS_RO_UBL_INVOICE_104)
                        .displayNamePrefix ("CIUS-RO UBL Invoice ")
                        .deprecated ()
                        .basedOn (aVESUBLInvoice_1_3_7)
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (RES_104))
-                       .registerInto ();
+                       .registerInto (aRegistry);
     }
 
     // V1.0.8 referencing the underlying EN rules, valid per 27.12.2022
     {
       final ClassPathResource RES_108 = new ClassPathResource ("/external/schematron/1.0.8/ROeFactura-UBL-validation-Invoice_v1.0.8.xslt",
                                                                _getCL ());
-      PhiveRulesBuilder.forRegistry (aRegistry)
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_CIUS_RO_UBL_CREDITNOTE_108)
                        .displayNamePrefix ("CIUS-RO UBL Credit Note ")
                        .deprecated ()
                        .basedOn (aVESUBLCreditNote_1_3_8)
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (RES_108))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_CIUS_RO_UBL_INVOICE_108)
                        .displayNamePrefix ("CIUS-RO UBL Invoice ")
                        .deprecated ()
                        .basedOn (aVESUBLInvoice_1_3_8)
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (RES_108))
-                       .registerInto ();
+                       .registerInto (aRegistry);
     }
 
     // V1.0.9 referencing the underlying EN rules, valid per 05.06.2024
     {
       final ClassPathResource RES_109 = new ClassPathResource ("/external/schematron/1.0.9/ROeFactura-UBL-validation-Invoice_v1.0.9.xslt",
                                                                _getCL ());
-      PhiveRulesBuilder.forRegistry (aRegistry)
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_CIUS_RO_UBL_CREDITNOTE_109)
                        .displayNamePrefix ("CIUS-RO UBL Credit Note ")
                        .notDeprecated ()
                        .basedOn (aVESUBLCreditNote_1_3_8)
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (RES_109))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_CIUS_RO_UBL_INVOICE_109)
                        .displayNamePrefix ("CIUS-RO UBL Invoice ")
                        .notDeprecated ()
                        .basedOn (aVESUBLInvoice_1_3_8)
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (RES_109))
-                       .registerInto ();
+                       .registerInto (aRegistry);
     }
   }
 }

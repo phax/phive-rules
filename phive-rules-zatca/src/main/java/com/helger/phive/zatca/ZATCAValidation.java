@@ -75,7 +75,7 @@ public final class ZATCAValidation
     // SDK 2.0.3
     {
       final String sPath = sPrefix + "2.0.3/";
-      PhiveRulesBuilder.forRegistry (aRegistry)
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_INVOICE_UBL_2_0_3)
                        .displayName ("ZATCA/FATOORA Invoice (SDK 2.0.3)")
                        .deprecated ()
@@ -86,13 +86,13 @@ public final class ZATCAValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "20210819_ZATCA_E-invoice_Validation_Rules.xsl",
                                                                                                     _getCL ())))
-                       .registerInto ();
+                       .registerInto (aRegistry);
     }
 
     // SDK 2.3.8
     {
       final String sPath = sPrefix + "2.3.8/";
-      PhiveRulesBuilder.forRegistry (aRegistry)
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_INVOICE_UBL_2_3_8)
                        .displayName ("ZATCA/FATOORA Invoice (SDK 2.3.8)")
                        .notDeprecated ()
@@ -103,7 +103,7 @@ public final class ZATCAValidation
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                     "20210819_ZATCA_E-invoice_Validation_Rules.xsl",
                                                                                                     _getCL ())))
-                       .registerInto ();
+                       .registerInto (aRegistry);
     }
   }
 }

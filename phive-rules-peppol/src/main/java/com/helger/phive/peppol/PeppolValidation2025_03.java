@@ -81,19 +81,19 @@ public final class PeppolValidation2025_03
     if (aVESUBLCreditNote_1_3_13 == null || aVESUBLInvoice_1_3_13 == null)
       throw new InitializationException ("The EN 16931 VES are missing. Make sure to call EN16931Validation.initEN16931 first.");
 
-    PhiveRulesBuilder.forRegistry (aRegistry)
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_OPENPEPPOL_INVOICE_SELF_BILLING_UBL_V3)
                      .displayName ("OpenPeppol UBL Invoice Self-Billing" + sVersion + sAkaVersionBilling)
                      .notDeprecated ()
                      .basedOn (aVESUBLInvoice_1_3_13)
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aPeppolSB))
-                     .registerInto ();
-    PhiveRulesBuilder.forRegistry (aRegistry)
+                     .registerInto (aRegistry);
+    PhiveRulesBuilder.builder ()
                      .vesID (VID_OPENPEPPOL_CREDIT_NOTE_SELF_BILLING_UBL_V3)
                      .displayName ("OpenPeppol UBL Credit Note Self-Billing" + sVersion + sAkaVersionBilling)
                      .notDeprecated ()
                      .basedOn (aVESUBLCreditNote_1_3_13)
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aPeppolSB))
-                     .registerInto ();
+                     .registerInto (aRegistry);
   }
 }

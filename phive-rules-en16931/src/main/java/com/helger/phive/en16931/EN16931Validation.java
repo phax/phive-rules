@@ -330,278 +330,278 @@ public final class EN16931Validation
       final IReadableResource aInvoiceCII100Xslt = new ClassPathResource (sPrefix +
                                                                           "1.0.0/cii/xslt/EN16931-CII-validation.xslt",
                                                                           _getCL ());
-      PhiveRulesBuilder.forRegistry (aRegistry)
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_CII_100)
                        .displayNamePrefix ("EN 16931 CII ")
                        .deprecated (bDeprecated)
                        .addXSD (CCIID16B.getXSDResource ())
                        .addSchematron (PhiveRulesCIIHelper.createXSLT_CII_D16B (aInvoiceCII100Xslt))
-                       .registerInto ();
+                       .registerInto (aRegistry);
     }
     {
       final IReadableResource aInvoiceCII110Xslt = new ClassPathResource (sPrefix +
                                                                           "1.1.0/cii/xslt/EN16931-CII-validation.xslt",
                                                                           _getCL ());
-      PhiveRulesBuilder.forRegistry (aRegistry)
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_CII_110)
                        .displayNamePrefix ("EN 16931 CII ")
                        .deprecated (bDeprecated)
                        .addXSD (CCIID16B.getXSDResource ())
                        .addSchematron (PhiveRulesCIIHelper.createXSLT_CII_D16B (aInvoiceCII110Xslt))
-                       .registerInto ();
+                       .registerInto (aRegistry);
     }
     {
       final IReadableResource aInvoiceCII120Xslt = new ClassPathResource (sPrefix +
                                                                           "1.2.0/cii/xslt/EN16931-CII-validation.xslt",
                                                                           _getCL ());
-      PhiveRulesBuilder.forRegistry (aRegistry)
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_CII_120)
                        .displayNamePrefix ("EN 16931 CII ")
                        .deprecated (bDeprecated)
                        .addXSD (CCIID16B.getXSDResource ())
                        .addSchematron (PhiveRulesCIIHelper.createXSLT_CII_D16B (aInvoiceCII120Xslt))
-                       .registerInto ();
+                       .registerInto (aRegistry);
     }
     {
       final IReadableResource aInvoiceCII121Xslt = new ClassPathResource (sPrefix +
                                                                           "1.2.1/cii/xslt/EN16931-CII-validation.xslt",
                                                                           _getCL ());
-      PhiveRulesBuilder.forRegistry (aRegistry)
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_CII_121)
                        .displayNamePrefix ("EN 16931 CII ")
                        .deprecated (bDeprecated)
                        .addXSD (CCIID16B.getXSDResource ())
                        .addSchematron (PhiveRulesCIIHelper.createXSLT_CII_D16B (aInvoiceCII121Xslt))
-                       .registerInto ();
+                       .registerInto (aRegistry);
     }
     {
       final IReadableResource aInvoiceCII123Xslt = new ClassPathResource (sPrefix +
                                                                           "1.2.3/cii/xslt/EN16931-CII-validation.xslt",
                                                                           _getCL ());
-      PhiveRulesBuilder.forRegistry (aRegistry)
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_CII_123)
                        .displayNamePrefix ("EN 16931 CII ")
                        .deprecated (bDeprecated)
                        .addXSD (CCIID16B.getXSDResource ())
                        .addSchematron (PhiveRulesCIIHelper.createXSLT_CII_D16B (aInvoiceCII123Xslt))
-                       .registerInto ();
+                       .registerInto (aRegistry);
     }
     {
       final IReadableResource aInvoiceCII130Xslt = new ClassPathResource (sPrefix +
                                                                           "1.3.0/cii/xslt/EN16931-CII-validation.xslt",
                                                                           _getCL ());
-      PhiveRulesBuilder.forRegistry (aRegistry)
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_CII_130)
                        .displayNamePrefix ("EN 16931 CII ")
                        .deprecated (bDeprecated)
                        .addXSD (CCIID16B.getXSDResource ())
                        .addSchematron (PhiveRulesCIIHelper.createXSLT_CII_D16B (aInvoiceCII130Xslt))
-                       .registerInto ();
+                       .registerInto (aRegistry);
     }
     {
       final IReadableResource aInvoiceCII131Xslt = new ClassPathResource (sPrefix +
                                                                           "1.3.1/cii/xslt/EN16931-CII-validation.xslt",
                                                                           _getCL ());
-      PhiveRulesBuilder.forRegistry (aRegistry)
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_CII_131)
                        .displayNamePrefix ("EN 16931 CII ")
                        .deprecated (bDeprecated)
                        .addXSD (CCIID16B.getXSDResource ())
                        .addSchematron (PhiveRulesCIIHelper.createXSLT_CII_D16B (aInvoiceCII131Xslt))
-                       .registerInto ();
+                       .registerInto (aRegistry);
     }
     {
       final IReadableResource aInvoiceCII132Xslt = new ClassPathResource (sPrefix +
                                                                           "1.3.2/cii/xslt/EN16931-CII-validation.xslt",
                                                                           _getCL ());
-      PhiveRulesBuilder.forRegistry (aRegistry)
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_CII_132)
                        .displayNamePrefix ("EN 16931 CII ")
                        .deprecated (bDeprecated)
                        .addXSD (CCIID16B.getXSDResource ())
                        .addSchematron (PhiveRulesCIIHelper.createXSLT_CII_D16B (aInvoiceCII132Xslt))
-                       .registerInto ();
+                       .registerInto (aRegistry);
     }
     {
       final IReadableResource aInvoiceCII133Xslt = new ClassPathResource (sPrefix +
                                                                           "1.3.3/cii/xslt/EN16931-CII-validation.xslt",
                                                                           _getCL ());
-      PhiveRulesBuilder.forRegistry (aRegistry)
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_CII_133)
                        .displayNamePrefix ("EN 16931 CII ")
                        .deprecated (bDeprecated)
                        .addXSD (CCIID16B.getXSDResource ())
                        .addSchematron (PhiveRulesCIIHelper.createXSLT_CII_D16B (aInvoiceCII133Xslt))
-                       .registerInto ();
+                       .registerInto (aRegistry);
     }
     {
       final IReadableResource aInvoiceCII134Xslt = new ClassPathResource (sPrefix +
                                                                           "1.3.4/cii/xslt/EN16931-CII-validation.xslt",
                                                                           _getCL ());
-      PhiveRulesBuilder.forRegistry (aRegistry)
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_CII_134)
                        .displayNamePrefix ("EN 16931 CII ")
                        .deprecated (bDeprecated)
                        .addXSD (CCIID16B.getXSDResource ())
                        .addSchematron (PhiveRulesCIIHelper.createXSLT_CII_D16B (aInvoiceCII134Xslt))
-                       .registerInto ();
+                       .registerInto (aRegistry);
     }
     {
       final IReadableResource aInvoiceCII135Xslt = new ClassPathResource (sPrefix +
                                                                           "1.3.5/cii/EN16931-CII-validation.xslt",
                                                                           _getCL ());
-      PhiveRulesBuilder.forRegistry (aRegistry)
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_CII_135)
                        .displayNamePrefix ("EN 16931 CII ")
                        .deprecated (bDeprecated)
                        .addXSD (CCIID16B.getXSDResource ())
                        .addSchematron (PhiveRulesCIIHelper.createXSLT_CII_D16B (aInvoiceCII135Xslt))
-                       .registerInto ();
+                       .registerInto (aRegistry);
     }
     {
       final IReadableResource aInvoiceCII136Xslt = new ClassPathResource (sPrefix +
                                                                           "1.3.6/cii/EN16931-CII-validation.xslt",
                                                                           _getCL ());
-      PhiveRulesBuilder.forRegistry (aRegistry)
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_CII_136)
                        .displayNamePrefix ("EN 16931 CII ")
                        .deprecated (bDeprecated)
                        .addXSD (CCIID16B.getXSDResource ())
                        .addSchematron (PhiveRulesCIIHelper.createXSLT_CII_D16B (aInvoiceCII136Xslt))
-                       .registerInto ();
+                       .registerInto (aRegistry);
     }
     {
       // Specific bugfix version for XRechnung 2.1.1 only
       final IReadableResource INVOICE_CII_136A_XSLT = new ClassPathResource (sPrefix +
                                                                              "1.3.6a/cii/EN16931-CII-validation.xslt",
                                                                              _getCL ());
-      PhiveRulesBuilder.forRegistry (aRegistry)
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_CII_136A)
                        .displayNamePrefix ("EN 16931 CII ")
                        .deprecated (bDeprecated)
                        .addXSD (CCIID16B.getXSDResource ())
                        .addSchematron (PhiveRulesCIIHelper.createXSLT_CII_D16B (INVOICE_CII_136A_XSLT))
-                       .registerInto ();
+                       .registerInto (aRegistry);
     }
     {
       final IReadableResource aInvoiceCII137Xslt = new ClassPathResource (sPrefix +
                                                                           "1.3.7/cii/EN16931-CII-validation.xslt",
                                                                           _getCL ());
-      PhiveRulesBuilder.forRegistry (aRegistry)
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_CII_137)
                        .displayNamePrefix ("EN 16931 CII ")
                        .deprecated (bDeprecated)
                        .addXSD (CCIID16B.getXSDResource ())
                        .addSchematron (PhiveRulesCIIHelper.createXSLT_CII_D16B (aInvoiceCII137Xslt))
-                       .registerInto ();
+                       .registerInto (aRegistry);
     }
     {
       final IReadableResource aInvoiceCII138Xslt = new ClassPathResource (sPrefix +
                                                                           "1.3.8/cii/EN16931-CII-validation.xslt",
                                                                           _getCL ());
-      PhiveRulesBuilder.forRegistry (aRegistry)
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_CII_138)
                        .displayNamePrefix ("EN 16931 CII ")
                        .deprecated (bDeprecated)
                        .addXSD (CCIID16B.getXSDResource ())
                        .addSchematron (PhiveRulesCIIHelper.createXSLT_CII_D16B (aInvoiceCII138Xslt))
-                       .registerInto ();
+                       .registerInto (aRegistry);
     }
     {
       final IReadableResource aInvoiceCII139Xslt = new ClassPathResource (sPrefix +
                                                                           "1.3.9/cii/EN16931-CII-validation.xslt",
                                                                           _getCL ());
-      PhiveRulesBuilder.forRegistry (aRegistry)
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_CII_139)
                        .displayNamePrefix ("EN 16931 CII ")
                        .deprecated (bDeprecated)
                        .addXSD (CCIID16B.getXSDResource ())
                        .addSchematron (PhiveRulesCIIHelper.createXSLT_CII_D16B (aInvoiceCII139Xslt))
-                       .registerInto ();
+                       .registerInto (aRegistry);
     }
     {
       final IReadableResource aInvoiceCII1310Xslt = new ClassPathResource (sPrefix +
                                                                            "1.3.10/cii/EN16931-CII-validation.xslt",
                                                                            _getCL ());
-      PhiveRulesBuilder.forRegistry (aRegistry)
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_CII_1310)
                        .displayNamePrefix ("EN 16931 CII ")
                        .deprecated (bDeprecated)
                        .addXSD (CCIID16B.getXSDResource ())
                        .addSchematron (PhiveRulesCIIHelper.createXSLT_CII_D16B (aInvoiceCII1310Xslt))
-                       .registerInto ();
+                       .registerInto (aRegistry);
     }
     {
       final IReadableResource aInvoiceCII1311Xslt = new ClassPathResource (sPrefix +
                                                                            "1.3.11/cii/EN16931-CII-validation.xslt",
                                                                            _getCL ());
-      PhiveRulesBuilder.forRegistry (aRegistry)
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_CII_1311)
                        .displayNamePrefix ("EN 16931 CII ")
                        .deprecated (bDeprecated)
                        .addXSD (CCIID16B.getXSDResource ())
                        .addSchematron (PhiveRulesCIIHelper.createXSLT_CII_D16B (aInvoiceCII1311Xslt))
-                       .registerInto ();
+                       .registerInto (aRegistry);
     }
     {
       final IReadableResource aInvoiceCII1312Xslt = new ClassPathResource (sPrefix +
                                                                            "1.3.12/cii/EN16931-CII-validation.xslt",
                                                                            _getCL ());
-      PhiveRulesBuilder.forRegistry (aRegistry)
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_CII_1312)
                        .displayNamePrefix ("EN 16931 CII ")
                        .deprecated (bDeprecated)
                        .addXSD (CCIID16B.getXSDResource ())
                        .addSchematron (PhiveRulesCIIHelper.createXSLT_CII_D16B (aInvoiceCII1312Xslt))
-                       .registerInto ();
+                       .registerInto (aRegistry);
     }
     {
       final IReadableResource aInvoiceCII1313Xslt = new ClassPathResource (sPrefix +
                                                                            "1.3.13/cii/EN16931-CII-validation.xslt",
                                                                            _getCL ());
-      PhiveRulesBuilder.forRegistry (aRegistry)
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_CII_1313)
                        .displayNamePrefix ("EN 16931 CII ")
                        .deprecated (bDeprecated)
                        .addXSD (CCIID16B.getXSDResource ())
                        .addSchematron (PhiveRulesCIIHelper.createXSLT_CII_D16B (aInvoiceCII1313Xslt))
-                       .registerInto ();
+                       .registerInto (aRegistry);
     }
     {
       final IReadableResource aInvoiceCII1314_1Xslt = new ClassPathResource (sPrefix +
                                                                              "1.3.14.1/cii/EN16931-CII-validation.xslt",
                                                                              _getCL ());
-      PhiveRulesBuilder.forRegistry (aRegistry)
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_CII_1314_1)
                        .displayNamePrefix ("EN 16931 CII ")
                        .deprecated (bDeprecated)
                        .addXSD (CCIID16B.getXSDResource ())
                        .addSchematron (PhiveRulesCIIHelper.createXSLT_CII_D16B (aInvoiceCII1314_1Xslt))
-                       .registerInto ();
+                       .registerInto (aRegistry);
     }
     {
       final IReadableResource aInvoiceCII1314_2Xslt = new ClassPathResource (sPrefix +
                                                                              "1.3.14.2/cii/EN16931-CII-validation.xslt",
                                                                              _getCL ());
-      PhiveRulesBuilder.forRegistry (aRegistry)
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_CII_1314_2)
                        .displayNamePrefix ("EN 16931 CII ")
                        .deprecated (bNotDeprecated)
                        .addXSD (CCIID16B.getXSDResource ())
                        .addSchematron (PhiveRulesCIIHelper.createXSLT_CII_D16B (aInvoiceCII1314_2Xslt))
-                       .registerInto ();
+                       .registerInto (aRegistry);
     }
     {
       final IReadableResource aInvoiceCII1315Xslt = new ClassPathResource (sPrefix +
                                                                            "1.3.15/cii/EN16931-CII-validation.xslt",
                                                                            _getCL ());
-      PhiveRulesBuilder.forRegistry (aRegistry)
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_CII_1315)
                        .displayNamePrefix ("EN 16931 CII ")
                        .deprecated (bNotDeprecated)
                        .addXSD (CCIID16B.getXSDResource ())
                        .addSchematron (PhiveRulesCIIHelper.createXSLT_CII_D16B (aInvoiceCII1315Xslt))
-                       .registerInto ();
+                       .registerInto (aRegistry);
     }
 
     // UBL
@@ -610,240 +610,240 @@ public final class EN16931Validation
       final IReadableResource aInvoiceUBL100Xslt = new ClassPathResource (sPrefix +
                                                                           "1.0.0/ubl/xslt/EN16931-UBL-model.xslt",
                                                                           _getCL ());
-      PhiveRulesBuilder.forRegistry (aRegistry)
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_UBL_INVOICE_100)
                        .displayNamePrefix ("EN 16931 UBL Invoice ")
                        .deprecated (bDeprecated)
                        .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aInvoiceUBL100Xslt))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_UBL_CREDIT_NOTE_100)
                        .displayNamePrefix ("EN 16931 UBL Credit Note ")
                        .deprecated (bDeprecated)
                        .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aInvoiceUBL100Xslt))
-                       .registerInto ();
+                       .registerInto (aRegistry);
     }
     {
       // 1.1.0
       final IReadableResource aInvoiceUBL110Xslt = new ClassPathResource (sPrefix +
                                                                           "1.1.0/ubl/xslt/EN16931-UBL-model.xslt",
                                                                           _getCL ());
-      PhiveRulesBuilder.forRegistry (aRegistry)
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_UBL_INVOICE_110)
                        .displayNamePrefix ("EN 16931 UBL Invoice ")
                        .deprecated (bDeprecated)
                        .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aInvoiceUBL110Xslt))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_UBL_CREDIT_NOTE_110)
                        .displayNamePrefix ("EN 16931 UBL Credit Note ")
                        .deprecated (bDeprecated)
                        .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aInvoiceUBL110Xslt))
-                       .registerInto ();
+                       .registerInto (aRegistry);
     }
     {
       // 1.2.0
       final IReadableResource aInvoiceUBL120Xslt = new ClassPathResource (sPrefix +
                                                                           "1.2.0/ubl/xslt/EN16931-UBL-validation.xslt",
                                                                           _getCL ());
-      PhiveRulesBuilder.forRegistry (aRegistry)
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_UBL_INVOICE_120)
                        .displayNamePrefix ("EN 16931 UBL Invoice ")
                        .deprecated (bDeprecated)
                        .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aInvoiceUBL120Xslt))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_UBL_CREDIT_NOTE_120)
                        .displayNamePrefix ("EN 16931 UBL Credit Note ")
                        .deprecated (bDeprecated)
                        .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aInvoiceUBL120Xslt))
-                       .registerInto ();
+                       .registerInto (aRegistry);
     }
     {
       // 1.2.1
       final IReadableResource aInvoiceUBL121Xslt = new ClassPathResource (sPrefix +
                                                                           "1.2.1/ubl/xslt/EN16931-UBL-validation.xslt",
                                                                           _getCL ());
-      PhiveRulesBuilder.forRegistry (aRegistry)
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_UBL_INVOICE_121)
                        .displayNamePrefix ("EN 16931 UBL Invoice ")
                        .deprecated (bDeprecated)
                        .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aInvoiceUBL121Xslt))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_UBL_CREDIT_NOTE_121)
                        .displayNamePrefix ("EN 16931 UBL Credit Note ")
                        .deprecated (bDeprecated)
                        .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aInvoiceUBL121Xslt))
-                       .registerInto ();
+                       .registerInto (aRegistry);
     }
     {
       // 1.2.3
       final IReadableResource aInvoiceUBL123Xslt = new ClassPathResource (sPrefix +
                                                                           "1.2.3/ubl/xslt/EN16931-UBL-validation.xslt",
                                                                           _getCL ());
-      PhiveRulesBuilder.forRegistry (aRegistry)
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_UBL_INVOICE_123)
                        .displayNamePrefix ("EN 16931 UBL Invoice ")
                        .deprecated (bDeprecated)
                        .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aInvoiceUBL123Xslt))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_UBL_CREDIT_NOTE_123)
                        .displayNamePrefix ("EN 16931 UBL Credit Note ")
                        .deprecated (bDeprecated)
                        .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aInvoiceUBL123Xslt))
-                       .registerInto ();
+                       .registerInto (aRegistry);
     }
     {
       // 1.3.0
       final IReadableResource aInvoiceUBL130Xslt = new ClassPathResource (sPrefix +
                                                                           "1.3.0/ubl/xslt/EN16931-UBL-validation.xslt",
                                                                           _getCL ());
-      PhiveRulesBuilder.forRegistry (aRegistry)
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_UBL_INVOICE_130)
                        .displayNamePrefix ("EN 16931 UBL Invoice ")
                        .deprecated (bDeprecated)
                        .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aInvoiceUBL130Xslt))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_UBL_CREDIT_NOTE_130)
                        .displayNamePrefix ("EN 16931 UBL Credit Note ")
                        .deprecated (bDeprecated)
                        .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aInvoiceUBL130Xslt))
-                       .registerInto ();
+                       .registerInto (aRegistry);
     }
     {
       // 1.3.1
       final IReadableResource aInvoiceUBL131Xslt = new ClassPathResource (sPrefix +
                                                                           "1.3.1/ubl/xslt/EN16931-UBL-validation.xslt",
                                                                           _getCL ());
-      PhiveRulesBuilder.forRegistry (aRegistry)
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_UBL_INVOICE_131)
                        .displayNamePrefix ("EN 16931 UBL Invoice ")
                        .deprecated (bDeprecated)
                        .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aInvoiceUBL131Xslt))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_UBL_CREDIT_NOTE_131)
                        .displayNamePrefix ("EN 16931 UBL Credit Note ")
                        .deprecated (bDeprecated)
                        .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aInvoiceUBL131Xslt))
-                       .registerInto ();
+                       .registerInto (aRegistry);
     }
     {
       // 1.3.2
       final IReadableResource aInvoiceUBL132Xslt = new ClassPathResource (sPrefix +
                                                                           "1.3.2/ubl/xslt/EN16931-UBL-validation.xslt",
                                                                           _getCL ());
-      PhiveRulesBuilder.forRegistry (aRegistry)
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_UBL_INVOICE_132)
                        .displayNamePrefix ("EN 16931 UBL Invoice ")
                        .deprecated (bDeprecated)
                        .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aInvoiceUBL132Xslt))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_UBL_CREDIT_NOTE_132)
                        .displayNamePrefix ("EN 16931 UBL Credit Note ")
                        .deprecated (bDeprecated)
                        .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aInvoiceUBL132Xslt))
-                       .registerInto ();
+                       .registerInto (aRegistry);
     }
     {
       // 1.3.3
       final IReadableResource aInvoiceUBL133Xslt = new ClassPathResource (sPrefix +
                                                                           "1.3.3/ubl/xslt/EN16931-UBL-validation.xslt",
                                                                           _getCL ());
-      PhiveRulesBuilder.forRegistry (aRegistry)
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_UBL_INVOICE_133)
                        .displayNamePrefix ("EN 16931 UBL Invoice ")
                        .deprecated (bDeprecated)
                        .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aInvoiceUBL133Xslt))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_UBL_CREDIT_NOTE_133)
                        .displayNamePrefix ("EN 16931 UBL Credit Note ")
                        .deprecated (bDeprecated)
                        .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aInvoiceUBL133Xslt))
-                       .registerInto ();
+                       .registerInto (aRegistry);
     }
     {
       // 1.3.4
       final IReadableResource aInvoiceUBL134Xslt = new ClassPathResource (sPrefix +
                                                                           "1.3.4/ubl/xslt/EN16931-UBL-validation.xslt",
                                                                           _getCL ());
-      PhiveRulesBuilder.forRegistry (aRegistry)
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_UBL_INVOICE_134)
                        .displayNamePrefix ("EN 16931 UBL Invoice ")
                        .deprecated (bDeprecated)
                        .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aInvoiceUBL134Xslt))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_UBL_CREDIT_NOTE_134)
                        .displayNamePrefix ("EN 16931 UBL Credit Note ")
                        .deprecated (bDeprecated)
                        .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aInvoiceUBL134Xslt))
-                       .registerInto ();
+                       .registerInto (aRegistry);
     }
     {
       // 1.3.5
       final IReadableResource aInvoiceUBL135Xslt = new ClassPathResource (sPrefix +
                                                                           "1.3.5/ubl/EN16931-UBL-validation.xslt",
                                                                           _getCL ());
-      PhiveRulesBuilder.forRegistry (aRegistry)
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_UBL_INVOICE_135)
                        .displayNamePrefix ("EN 16931 UBL Invoice ")
                        .deprecated (bDeprecated)
                        .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aInvoiceUBL135Xslt))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_UBL_CREDIT_NOTE_135)
                        .displayNamePrefix ("EN 16931 UBL Credit Note ")
                        .deprecated (bDeprecated)
                        .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aInvoiceUBL135Xslt))
-                       .registerInto ();
+                       .registerInto (aRegistry);
     }
     {
       // 1.3.6
       final IReadableResource aInvoiceUBL136Xslt = new ClassPathResource (sPrefix +
                                                                           "1.3.6/ubl/EN16931-UBL-validation.xslt",
                                                                           _getCL ());
-      PhiveRulesBuilder.forRegistry (aRegistry)
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_UBL_INVOICE_136)
                        .displayNamePrefix ("EN 16931 UBL Invoice ")
                        .deprecated (bDeprecated)
                        .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aInvoiceUBL136Xslt))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_UBL_CREDIT_NOTE_136)
                        .displayNamePrefix ("EN 16931 UBL Credit Note ")
                        .deprecated (bDeprecated)
                        .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aInvoiceUBL136Xslt))
-                       .registerInto ();
+                       .registerInto (aRegistry);
     }
     {
       // 1.3.6a
@@ -851,220 +851,220 @@ public final class EN16931Validation
       final IReadableResource INVOICE_UBL_136A_XSLT = new ClassPathResource (sPrefix +
                                                                              "1.3.6a/ubl/EN16931-UBL-validation.xslt",
                                                                              _getCL ());
-      PhiveRulesBuilder.forRegistry (aRegistry)
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_UBL_INVOICE_136A)
                        .displayNamePrefix ("EN 16931 UBL Invoice ")
                        .deprecated (bDeprecated)
                        .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (INVOICE_UBL_136A_XSLT))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_UBL_CREDIT_NOTE_136A)
                        .displayNamePrefix ("EN 16931 UBL Credit Note ")
                        .deprecated (bDeprecated)
                        .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (INVOICE_UBL_136A_XSLT))
-                       .registerInto ();
+                       .registerInto (aRegistry);
     }
     {
       // 1.3.7
       final IReadableResource aInvoiceUBL137Xslt = new ClassPathResource (sPrefix +
                                                                           "1.3.7/ubl/EN16931-UBL-validation.xslt",
                                                                           _getCL ());
-      PhiveRulesBuilder.forRegistry (aRegistry)
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_UBL_INVOICE_137)
                        .displayNamePrefix ("EN 16931 UBL Invoice ")
                        .deprecated (bDeprecated)
                        .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aInvoiceUBL137Xslt))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_UBL_CREDIT_NOTE_137)
                        .displayNamePrefix ("EN 16931 UBL Credit Note ")
                        .deprecated (bDeprecated)
                        .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aInvoiceUBL137Xslt))
-                       .registerInto ();
+                       .registerInto (aRegistry);
     }
     {
       // 1.3.8
       final IReadableResource aInvoiceUBL138Xslt = new ClassPathResource (sPrefix +
                                                                           "1.3.8/ubl/EN16931-UBL-validation.xslt",
                                                                           _getCL ());
-      PhiveRulesBuilder.forRegistry (aRegistry)
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_UBL_INVOICE_138)
                        .displayNamePrefix ("EN 16931 UBL Invoice ")
                        .deprecated (bDeprecated)
                        .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aInvoiceUBL138Xslt))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_UBL_CREDIT_NOTE_138)
                        .displayNamePrefix ("EN 16931 UBL Credit Note ")
                        .deprecated (bDeprecated)
                        .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aInvoiceUBL138Xslt))
-                       .registerInto ();
+                       .registerInto (aRegistry);
     }
     {
       // 1.3.9
       final IReadableResource aInvoiceUBL139Xslt = new ClassPathResource (sPrefix +
                                                                           "1.3.9/ubl/EN16931-UBL-validation.xslt",
                                                                           _getCL ());
-      PhiveRulesBuilder.forRegistry (aRegistry)
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_UBL_INVOICE_139)
                        .displayNamePrefix ("EN 16931 UBL Invoice ")
                        .deprecated (bDeprecated)
                        .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aInvoiceUBL139Xslt))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_UBL_CREDIT_NOTE_139)
                        .displayNamePrefix ("EN 16931 UBL Credit Note ")
                        .deprecated (bDeprecated)
                        .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aInvoiceUBL139Xslt))
-                       .registerInto ();
+                       .registerInto (aRegistry);
     }
     {
       // 1.3.10
       final IReadableResource aInvoiceUBL1310Xslt = new ClassPathResource (sPrefix +
                                                                            "1.3.10/ubl/EN16931-UBL-validation.xslt",
                                                                            _getCL ());
-      PhiveRulesBuilder.forRegistry (aRegistry)
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_UBL_INVOICE_1310)
                        .displayNamePrefix ("EN 16931 UBL Invoice ")
                        .deprecated (bDeprecated)
                        .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aInvoiceUBL1310Xslt))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_UBL_CREDIT_NOTE_1310)
                        .displayNamePrefix ("EN 16931 UBL Credit Note ")
                        .deprecated (bDeprecated)
                        .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aInvoiceUBL1310Xslt))
-                       .registerInto ();
+                       .registerInto (aRegistry);
     }
     {
       // 1.3.11
       final IReadableResource aInvoiceUBL1311Xslt = new ClassPathResource (sPrefix +
                                                                            "1.3.11/ubl/EN16931-UBL-validation.xslt",
                                                                            _getCL ());
-      PhiveRulesBuilder.forRegistry (aRegistry)
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_UBL_INVOICE_1311)
                        .displayNamePrefix ("EN 16931 UBL Invoice ")
                        .deprecated (bDeprecated)
                        .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aInvoiceUBL1311Xslt))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_UBL_CREDIT_NOTE_1311)
                        .displayNamePrefix ("EN 16931 UBL Credit Note ")
                        .deprecated (bDeprecated)
                        .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aInvoiceUBL1311Xslt))
-                       .registerInto ();
+                       .registerInto (aRegistry);
     }
     {
       // 1.3.12
       final IReadableResource aInvoiceUBL1312Xslt = new ClassPathResource (sPrefix +
                                                                            "1.3.12/ubl/EN16931-UBL-validation.xslt",
                                                                            _getCL ());
-      PhiveRulesBuilder.forRegistry (aRegistry)
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_UBL_INVOICE_1312)
                        .displayNamePrefix ("EN 16931 UBL Invoice ")
                        .deprecated (bDeprecated)
                        .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aInvoiceUBL1312Xslt))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_UBL_CREDIT_NOTE_1312)
                        .displayNamePrefix ("EN 16931 UBL Credit Note ")
                        .deprecated (bDeprecated)
                        .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aInvoiceUBL1312Xslt))
-                       .registerInto ();
+                       .registerInto (aRegistry);
     }
     {
       // 1.3.13
       final IReadableResource aInvoiceUBL1313Xslt = new ClassPathResource (sPrefix +
                                                                            "1.3.13/ubl/EN16931-UBL-validation.xslt",
                                                                            _getCL ());
-      PhiveRulesBuilder.forRegistry (aRegistry)
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_UBL_INVOICE_1313)
                        .displayNamePrefix ("EN 16931 UBL Invoice ")
                        .deprecated (bDeprecated)
                        .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aInvoiceUBL1313Xslt))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_UBL_CREDIT_NOTE_1313)
                        .displayNamePrefix ("EN 16931 UBL Credit Note ")
                        .deprecated (bDeprecated)
                        .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aInvoiceUBL1313Xslt))
-                       .registerInto ();
+                       .registerInto (aRegistry);
     }
     {
       // 1.3.14.1
       final IReadableResource aInvoiceUBL1314_1Xslt = new ClassPathResource (sPrefix +
                                                                              "1.3.14.1/ubl/EN16931-UBL-validation.xslt",
                                                                              _getCL ());
-      PhiveRulesBuilder.forRegistry (aRegistry)
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_UBL_INVOICE_1314_1)
                        .displayNamePrefix ("EN 16931 UBL Invoice ")
                        .deprecated (bDeprecated)
                        .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aInvoiceUBL1314_1Xslt))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_UBL_CREDIT_NOTE_1314_1)
                        .displayNamePrefix ("EN 16931 UBL Credit Note ")
                        .deprecated (bDeprecated)
                        .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aInvoiceUBL1314_1Xslt))
-                       .registerInto ();
+                       .registerInto (aRegistry);
     }
     {
       // 1.3.14.2
       final IReadableResource aInvoiceUBL1314_2Xslt = new ClassPathResource (sPrefix +
                                                                              "1.3.14.2/ubl/EN16931-UBL-validation.xslt",
                                                                              _getCL ());
-      PhiveRulesBuilder.forRegistry (aRegistry)
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_UBL_INVOICE_1314_2)
                        .displayNamePrefix ("EN 16931 UBL Invoice ")
                        .deprecated (bNotDeprecated)
                        .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aInvoiceUBL1314_2Xslt))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_UBL_CREDIT_NOTE_1314_2)
                        .displayNamePrefix ("EN 16931 UBL Credit Note ")
                        .deprecated (bNotDeprecated)
                        .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aInvoiceUBL1314_2Xslt))
-                       .registerInto ();
+                       .registerInto (aRegistry);
     }
     {
       // 1.3.15
       final IReadableResource aInvoiceUBL1315Xslt = new ClassPathResource (sPrefix +
                                                                            "1.3.15/ubl/EN16931-UBL-validation.xslt",
                                                                            _getCL ());
-      PhiveRulesBuilder.forRegistry (aRegistry)
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_UBL_INVOICE_1315)
                        .displayNamePrefix ("EN 16931 UBL Invoice ")
                        .deprecated (bNotDeprecated)
                        .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aInvoiceUBL1315Xslt))
-                       .registerInto ();
-      PhiveRulesBuilder.forRegistry (aRegistry)
+                       .registerInto (aRegistry);
+      PhiveRulesBuilder.builder ()
                        .vesID (VID_UBL_CREDIT_NOTE_1315)
                        .displayNamePrefix ("EN 16931 UBL Credit Note ")
                        .deprecated (bNotDeprecated)
                        .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aInvoiceUBL1315Xslt))
-                       .registerInto ();
+                       .registerInto (aRegistry);
     }
   }
 }
