@@ -70,14 +70,16 @@ public final class PeppolValidationPintSG
   // 1.3.0
   public static final LocalDate V1_3_0_VALID_PER = PDTFactory.createLocalDate (2025, Month.SEPTEMBER, 25);
   public static final OffsetDateTime V1_3_0_VALID_PER_UTC = PDTFactory.createOffsetDateTimeUTC (V1_3_0_VALID_PER);
+  @Deprecated (forRemoval = false)
   public static final DVRCoordinate VID_OPENPEPPOL_SG_PINT_UBL_INVOICE_1_3_0 = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                                                   "invoice",
                                                                                                                   "1.3.0");
+  @Deprecated (forRemoval = false)
   public static final DVRCoordinate VID_OPENPEPPOL_SG_PINT_UBL_CREDIT_NOTE_1_3_0 = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                                                       "creditnote",
                                                                                                                       "1.3.0");
 
-  // 1.4.0
+  // 1.4.0 - 09.03.2026
   public static final LocalDate V1_4_0_VALID_PER = PDTFactory.createLocalDate (2026, Month.MARCH, 9);
   public static final OffsetDateTime V1_4_0_VALID_PER_UTC = PDTFactory.createOffsetDateTimeUTC (V1_4_0_VALID_PER);
   public static final DVRCoordinate VID_OPENPEPPOL_SG_PINT_UBL_INVOICE_1_4_0 = PhiveRulesHelper.createCoordinate (GROUP_ID,
@@ -144,7 +146,8 @@ public final class PeppolValidationPintSG
       PhiveRulesBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_SG_PINT_UBL_INVOICE_1_2_0)
                        .displayName ("Peppol PINT Singapore Invoice (UBL) 1.2.0")
-                       .status (PhiveRulesHelper.createSimpleStatus (true, V1_2_0_VALID_PER_UTC))
+                       .deprecated ()
+                       .validFrom (V1_2_0_VALID_PER_UTC)
                        .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
                        .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (sBaseBilling +
                                                                                            "PINT-UBL-validation-preprocessed.xslt",
@@ -156,7 +159,8 @@ public final class PeppolValidationPintSG
       PhiveRulesBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_SG_PINT_UBL_CREDIT_NOTE_1_2_0)
                        .displayName ("Peppol PINT Singapore Credit Note (UBL) 1.2.0")
-                       .status (PhiveRulesHelper.createSimpleStatus (true, V1_2_0_VALID_PER_UTC))
+                       .deprecated ()
+                       .validFrom (V1_2_0_VALID_PER_UTC)
                        .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
                        .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (sBaseBilling +
                                                                                            "PINT-UBL-validation-preprocessed.xslt",
@@ -175,7 +179,8 @@ public final class PeppolValidationPintSG
       PhiveRulesBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_SG_PINT_UBL_INVOICE_1_3_0)
                        .displayName ("Peppol PINT Singapore Invoice (UBL) 1.3.0")
-                       .status (PhiveRulesHelper.createSimpleStatus (false, V1_3_0_VALID_PER_UTC))
+                       .deprecated ()
+                       .validFrom (V1_3_0_VALID_PER_UTC)
                        .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
                        .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (sBaseBilling +
                                                                                            "PINT-UBL-validation-preprocessed.xslt",
@@ -187,7 +192,8 @@ public final class PeppolValidationPintSG
       PhiveRulesBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_SG_PINT_UBL_CREDIT_NOTE_1_3_0)
                        .displayName ("Peppol PINT Singapore Credit Note (UBL) 1.3.0")
-                       .status (PhiveRulesHelper.createSimpleStatus (false, V1_3_0_VALID_PER_UTC))
+                       .deprecated ()
+                       .validFrom (V1_3_0_VALID_PER_UTC)
                        .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
                        .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (sBaseBilling +
                                                                                            "PINT-UBL-validation-preprocessed.xslt",
@@ -206,7 +212,8 @@ public final class PeppolValidationPintSG
       PhiveRulesBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_SG_PINT_UBL_INVOICE_1_4_0)
                        .displayName ("Peppol PINT Singapore Invoice (UBL) 1.4.0")
-                       .status (PhiveRulesHelper.createSimpleStatus (false, V1_4_0_VALID_PER_UTC))
+                       .notDeprecated ()
+                       .validFrom (V1_4_0_VALID_PER_UTC)
                        .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
                        .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (sBaseBilling +
                                                                                            "PINT-UBL-validation-preprocessed.xslt",
@@ -218,7 +225,8 @@ public final class PeppolValidationPintSG
       PhiveRulesBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_SG_PINT_UBL_CREDIT_NOTE_1_4_0)
                        .displayName ("Peppol PINT Singapore Credit Note (UBL) 1.4.0")
-                       .status (PhiveRulesHelper.createSimpleStatus (false, V1_4_0_VALID_PER_UTC))
+                       .notDeprecated ()
+                       .validFrom (V1_4_0_VALID_PER_UTC)
                        .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
                        .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (sBaseBilling +
                                                                                            "PINT-UBL-validation-preprocessed.xslt",

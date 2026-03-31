@@ -86,15 +86,19 @@ public final class PeppolValidationPintAUNZ
   // 1.1.1
   public static final LocalDate V1_1_1_VALID_PER = PDTFactory.createLocalDate (2025, Month.SEPTEMBER, 15);
   public static final OffsetDateTime V1_1_1_VALID_PER_UTC = PDTFactory.createOffsetDateTimeUTC (V1_1_1_VALID_PER);
+  @Deprecated (forRemoval = false)
   public static final DVRCoordinate VID_OPENPEPPOL_AUNZ_PINT_UBL_INVOICE_1_1_1 = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                                                     "invoice",
                                                                                                                     "1.1.1");
+  @Deprecated (forRemoval = false)
   public static final DVRCoordinate VID_OPENPEPPOL_AUNZ_PINT_UBL_CREDIT_NOTE_1_1_1 = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                                                         "creditnote",
                                                                                                                         "1.1.1");
+  @Deprecated (forRemoval = false)
   public static final DVRCoordinate VID_OPENPEPPOL_AUNZ_PINT_UBL_INVOICE_SELF_BILLING_1_1_1 = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                                                                  "invoice-self-billing",
                                                                                                                                  "1.1.1");
+  @Deprecated (forRemoval = false)
   public static final DVRCoordinate VID_OPENPEPPOL_AUNZ_PINT_UBL_CREDIT_NOTE_SELF_BILLING_1_1_1 = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                                                                      "creditnote-self-billing",
                                                                                                                                      "1.1.1");
@@ -144,12 +148,10 @@ public final class PeppolValidationPintAUNZ
                        .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
                        .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (sBaseBilling +
                                                                                            "PINT-UBL-validation-preprocessed.xslt",
-                                                                                           _getCL ()),
-                                                                    aNSCtxInvoice))
+                                                                                           _getCL ()), aNSCtxInvoice))
                        .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (sBaseBilling +
                                                                                            "PINT-jurisdiction-aligned-rules.xslt",
-                                                                                           _getCL ()),
-                                                                    aNSCtxInvoice))
+                                                                                           _getCL ()), aNSCtxInvoice))
                        .registerInto (aRegistry);
       PhiveRulesBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_AUNZ_PINT_UBL_CREDIT_NOTE_1_0_1)
@@ -174,12 +176,10 @@ public final class PeppolValidationPintAUNZ
                        .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
                        .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (sBaseSelfBilling +
                                                                                            "PINT-UBL-validation-preprocessed.xslt",
-                                                                                           _getCL ()),
-                                                                    aNSCtxInvoice))
+                                                                                           _getCL ()), aNSCtxInvoice))
                        .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (sBaseSelfBilling +
                                                                                            "PINT-jurisdiction-aligned-rules.xslt",
-                                                                                           _getCL ()),
-                                                                    aNSCtxInvoice))
+                                                                                           _getCL ()), aNSCtxInvoice))
                        .registerInto (aRegistry);
       PhiveRulesBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_AUNZ_PINT_UBL_CREDIT_NOTE_SELF_BILLING_1_0_1)
@@ -203,21 +203,21 @@ public final class PeppolValidationPintAUNZ
       PhiveRulesBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_AUNZ_PINT_UBL_INVOICE_1_1_0)
                        .displayName ("Peppol PINT A-NZ Invoice (UBL) 1.1.0")
-                       .status (PhiveRulesHelper.createSimpleStatus (false, V1_1_0_VALID_PER_UTC))
+                       .deprecated ()
+                       .validFrom (V1_1_0_VALID_PER_UTC)
                        .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
                        .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (sBaseBilling +
                                                                                            "PINT-UBL-validation-preprocessed.xslt",
-                                                                                           _getCL ()),
-                                                                    aNSCtxInvoice))
+                                                                                           _getCL ()), aNSCtxInvoice))
                        .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (sBaseBilling +
                                                                                            "PINT-jurisdiction-aligned-rules.xslt",
-                                                                                           _getCL ()),
-                                                                    aNSCtxInvoice))
+                                                                                           _getCL ()), aNSCtxInvoice))
                        .registerInto (aRegistry);
       PhiveRulesBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_AUNZ_PINT_UBL_CREDIT_NOTE_1_1_0)
                        .displayName ("Peppol PINT A-NZ Credit Note (UBL) 1.1.0")
-                       .status (PhiveRulesHelper.createSimpleStatus (false, V1_1_0_VALID_PER_UTC))
+                       .deprecated ()
+                       .validFrom (V1_1_0_VALID_PER_UTC)
                        .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
                        .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (sBaseBilling +
                                                                                            "PINT-UBL-validation-preprocessed.xslt",
@@ -233,21 +233,21 @@ public final class PeppolValidationPintAUNZ
       PhiveRulesBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_AUNZ_PINT_UBL_INVOICE_SELF_BILLING_1_1_0)
                        .displayName ("Peppol PINT A-NZ Invoice Self-Billing (UBL) 1.1.0")
-                       .status (PhiveRulesHelper.createSimpleStatus (false, V1_1_0_VALID_PER_UTC))
+                       .deprecated ()
+                       .validFrom (V1_1_0_VALID_PER_UTC)
                        .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
                        .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (sBaseSelfBilling +
                                                                                            "PINT-UBL-validation-preprocessed.xslt",
-                                                                                           _getCL ()),
-                                                                    aNSCtxInvoice))
+                                                                                           _getCL ()), aNSCtxInvoice))
                        .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (sBaseSelfBilling +
                                                                                            "PINT-jurisdiction-aligned-rules.xslt",
-                                                                                           _getCL ()),
-                                                                    aNSCtxInvoice))
+                                                                                           _getCL ()), aNSCtxInvoice))
                        .registerInto (aRegistry);
       PhiveRulesBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_AUNZ_PINT_UBL_CREDIT_NOTE_SELF_BILLING_1_1_0)
                        .displayName ("Peppol PINT A-NZ Credit Note Self-Billing (UBL) 1.1.0")
-                       .status (PhiveRulesHelper.createSimpleStatus (false, V1_1_0_VALID_PER_UTC))
+                       .deprecated ()
+                       .validFrom (V1_1_0_VALID_PER_UTC)
                        .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
                        .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (sBaseSelfBilling +
                                                                                            "PINT-UBL-validation-preprocessed.xslt",
@@ -266,21 +266,21 @@ public final class PeppolValidationPintAUNZ
       PhiveRulesBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_AUNZ_PINT_UBL_INVOICE_1_1_1)
                        .displayName ("Peppol PINT A-NZ Invoice (UBL) 1.1.1")
-                       .status (PhiveRulesHelper.createSimpleStatus (false, V1_1_1_VALID_PER_UTC))
+                       .deprecated ()
+                       .validFrom (V1_1_1_VALID_PER_UTC)
                        .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
                        .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (sBaseBilling +
                                                                                            "PINT-UBL-validation-preprocessed.xslt",
-                                                                                           _getCL ()),
-                                                                    aNSCtxInvoice))
+                                                                                           _getCL ()), aNSCtxInvoice))
                        .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (sBaseBilling +
                                                                                            "PINT-jurisdiction-aligned-rules.xslt",
-                                                                                           _getCL ()),
-                                                                    aNSCtxInvoice))
+                                                                                           _getCL ()), aNSCtxInvoice))
                        .registerInto (aRegistry);
       PhiveRulesBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_AUNZ_PINT_UBL_CREDIT_NOTE_1_1_1)
                        .displayName ("Peppol PINT A-NZ Credit Note (UBL) 1.1.1")
-                       .status (PhiveRulesHelper.createSimpleStatus (false, V1_1_1_VALID_PER_UTC))
+                       .deprecated ()
+                       .validFrom (V1_1_1_VALID_PER_UTC)
                        .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
                        .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (sBaseBilling +
                                                                                            "PINT-UBL-validation-preprocessed.xslt",
@@ -296,21 +296,21 @@ public final class PeppolValidationPintAUNZ
       PhiveRulesBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_AUNZ_PINT_UBL_INVOICE_SELF_BILLING_1_1_1)
                        .displayName ("Peppol PINT A-NZ Invoice Self-Billing (UBL) 1.1.1")
-                       .status (PhiveRulesHelper.createSimpleStatus (false, V1_1_1_VALID_PER_UTC))
+                       .deprecated ()
+                       .validFrom (V1_1_1_VALID_PER_UTC)
                        .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
                        .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (sBaseSelfBilling +
                                                                                            "PINT-UBL-validation-preprocessed.xslt",
-                                                                                           _getCL ()),
-                                                                    aNSCtxInvoice))
+                                                                                           _getCL ()), aNSCtxInvoice))
                        .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (sBaseSelfBilling +
                                                                                            "PINT-jurisdiction-aligned-rules.xslt",
-                                                                                           _getCL ()),
-                                                                    aNSCtxInvoice))
+                                                                                           _getCL ()), aNSCtxInvoice))
                        .registerInto (aRegistry);
       PhiveRulesBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_AUNZ_PINT_UBL_CREDIT_NOTE_SELF_BILLING_1_1_1)
                        .displayName ("Peppol PINT A-NZ Credit Note Self-Billing (UBL) 1.1.1")
-                       .status (PhiveRulesHelper.createSimpleStatus (false, V1_1_1_VALID_PER_UTC))
+                       .deprecated ()
+                       .validFrom (V1_1_1_VALID_PER_UTC)
                        .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
                        .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (sBaseSelfBilling +
                                                                                            "PINT-UBL-validation-preprocessed.xslt",
@@ -329,21 +329,21 @@ public final class PeppolValidationPintAUNZ
       PhiveRulesBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_AUNZ_PINT_UBL_INVOICE_1_1_2)
                        .displayName ("Peppol PINT A-NZ Invoice (UBL) 1.1.2")
-                       .status (PhiveRulesHelper.createSimpleStatus (false, V1_1_2_VALID_PER_UTC))
+                       .notDeprecated ()
+                       .validFrom (V1_1_2_VALID_PER_UTC)
                        .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
                        .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (sBaseBilling +
                                                                                            "PINT-UBL-validation-preprocessed.xslt",
-                                                                                           _getCL ()),
-                                                                    aNSCtxInvoice))
+                                                                                           _getCL ()), aNSCtxInvoice))
                        .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (sBaseBilling +
                                                                                            "PINT-jurisdiction-aligned-rules.xslt",
-                                                                                           _getCL ()),
-                                                                    aNSCtxInvoice))
+                                                                                           _getCL ()), aNSCtxInvoice))
                        .registerInto (aRegistry);
       PhiveRulesBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_AUNZ_PINT_UBL_CREDIT_NOTE_1_1_2)
                        .displayName ("Peppol PINT A-NZ Credit Note (UBL) 1.1.2")
-                       .status (PhiveRulesHelper.createSimpleStatus (false, V1_1_2_VALID_PER_UTC))
+                       .notDeprecated ()
+                       .validFrom (V1_1_2_VALID_PER_UTC)
                        .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
                        .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (sBaseBilling +
                                                                                            "PINT-UBL-validation-preprocessed.xslt",
@@ -359,21 +359,21 @@ public final class PeppolValidationPintAUNZ
       PhiveRulesBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_AUNZ_PINT_UBL_INVOICE_SELF_BILLING_1_1_2)
                        .displayName ("Peppol PINT A-NZ Invoice Self-Billing (UBL) 1.1.2")
-                       .status (PhiveRulesHelper.createSimpleStatus (false, V1_1_2_VALID_PER_UTC))
+                       .notDeprecated ()
+                       .validFrom (V1_1_2_VALID_PER_UTC)
                        .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
                        .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (sBaseSelfBilling +
                                                                                            "PINT-UBL-validation-preprocessed.xslt",
-                                                                                           _getCL ()),
-                                                                    aNSCtxInvoice))
+                                                                                           _getCL ()), aNSCtxInvoice))
                        .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (sBaseSelfBilling +
                                                                                            "PINT-jurisdiction-aligned-rules.xslt",
-                                                                                           _getCL ()),
-                                                                    aNSCtxInvoice))
+                                                                                           _getCL ()), aNSCtxInvoice))
                        .registerInto (aRegistry);
       PhiveRulesBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_AUNZ_PINT_UBL_CREDIT_NOTE_SELF_BILLING_1_1_2)
                        .displayName ("Peppol PINT A-NZ Credit Note Self-Billing (UBL) 1.1.2")
-                       .status (PhiveRulesHelper.createSimpleStatus (false, V1_1_2_VALID_PER_UTC))
+                       .notDeprecated ()
+                       .validFrom (V1_1_2_VALID_PER_UTC)
                        .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
                        .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (sBaseSelfBilling +
                                                                                            "PINT-UBL-validation-preprocessed.xslt",

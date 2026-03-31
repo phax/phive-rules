@@ -16,6 +16,7 @@
  */
 package com.helger.phive.rules.api;
 
+import java.time.OffsetDateTime;
 import java.util.Collection;
 import java.util.List;
 
@@ -25,10 +26,12 @@ import org.jspecify.annotations.Nullable;
 import com.helger.annotation.Nonempty;
 import com.helger.annotation.concurrent.NotThreadSafe;
 import com.helger.base.enforce.ValueEnforcer;
+import com.helger.base.string.StringReplace;
 import com.helger.collection.commons.CommonsArrayList;
 import com.helger.collection.commons.CommonsHashMap;
 import com.helger.collection.commons.ICommonsList;
 import com.helger.collection.commons.ICommonsMap;
+import com.helger.datetime.helper.PDTFactory;
 import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.io.resource.IReadableResource;
 import com.helger.phive.api.EValidationType;
@@ -38,7 +41,10 @@ import com.helger.phive.api.executorset.IValidationExecutorSet;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
 import com.helger.phive.api.executorset.ValidationExecutorSet;
 import com.helger.phive.api.executorset.ValidationExecutorSetAlias;
+import com.helger.phive.api.executorset.status.EValidationExecutorStatusType;
 import com.helger.phive.api.executorset.status.IValidationExecutorSetStatus;
+import com.helger.phive.api.executorset.status.ValidationExecutorSetStatus;
+import com.helger.phive.api.executorset.status.ValidationExecutorSetStatusHistoryItem;
 import com.helger.phive.xml.schematron.CustomErrorDetails;
 import com.helger.phive.xml.schematron.ValidationExecutorSchematron;
 import com.helger.phive.xml.source.IValidationSourceXML;
@@ -72,10 +78,13 @@ public class PhiveRulesBuilder
     }
   }
 
+  public static final String VERSION_PLACEHOLDER = "{ver}";
+
   private DVRCoordinate m_aVESID;
   private String m_sDisplayName;
-  private String m_sDisplayNamePrefix;
-  private IValidationExecutorSetStatus m_aStatus;
+  private boolean m_bIsDeprecated = false;
+  private OffsetDateTime m_aValidFrom;
+  private OffsetDateTime m_aValidTo;
   private IValidationExecutorSet <IValidationSourceXML> m_aBaseVES;
   private ICommonsMap <String, CustomErrorDetails> m_aCustomErrorLevels;
   private final ICommonsList <IValidationExecutor <IValidationSourceXML>> m_aExecutors = new CommonsArrayList <> ();
@@ -138,28 +147,12 @@ public class PhiveRulesBuilder
   @NonNull
   public PhiveRulesBuilder displayNamePrefix (@NonNull @Nonempty final String sDisplayNamePrefix)
   {
-    m_sDisplayNamePrefix = ValueEnforcer.notEmpty (sDisplayNamePrefix, "DisplayNamePrefix");
-    return this;
+    ValueEnforcer.notEmpty (sDisplayNamePrefix, "DisplayNamePrefix");
+    return displayName (sDisplayNamePrefix + VERSION_PLACEHOLDER);
   }
 
   /**
-   * Set the validation executor set status. This is required. Alternatively use
-   * {@link #deprecated()}, {@link #notDeprecated()}, or {@link #deprecated(boolean)}.
-   *
-   * @param aStatus
-   *        The status to use. May not be <code>null</code>.
-   * @return this for chaining
-   */
-  @NonNull
-  public PhiveRulesBuilder status (@NonNull final IValidationExecutorSetStatus aStatus)
-  {
-    m_aStatus = ValueEnforcer.notNull (aStatus, "Status");
-    return this;
-  }
-
-  /**
-   * Set the status to deprecated or not deprecated via
-   * {@link PhiveRulesHelper#createSimpleStatus(boolean)}.
+   * Remember the status property "deprecated".
    *
    * @param bIsDeprecated
    *        <code>true</code> to mark as deprecated, <code>false</code> for active.
@@ -168,7 +161,8 @@ public class PhiveRulesBuilder
   @NonNull
   public PhiveRulesBuilder deprecated (final boolean bIsDeprecated)
   {
-    return status (PhiveRulesHelper.createSimpleStatus (bIsDeprecated));
+    m_bIsDeprecated = bIsDeprecated;
+    return this;
   }
 
   /**
@@ -191,6 +185,34 @@ public class PhiveRulesBuilder
   public PhiveRulesBuilder notDeprecated ()
   {
     return deprecated (false);
+  }
+
+  /**
+   * Remember the status property "valid from".
+   *
+   * @param aValidFrom
+   *        Define the date and time from which on this VES is valid. May be <code>null</code>.
+   * @return this for chaining
+   */
+  @NonNull
+  public PhiveRulesBuilder validFrom (@Nullable final OffsetDateTime aValidFrom)
+  {
+    m_aValidFrom = aValidFrom;
+    return this;
+  }
+
+  /**
+   * Remember the status property "valid to".
+   *
+   * @param aValidTo
+   *        Define the date and time until which on this VES is valid. May be <code>null</code>.
+   * @return this for chaining
+   */
+  @NonNull
+  public PhiveRulesBuilder validTo (@Nullable final OffsetDateTime aValidTo)
+  {
+    m_aValidTo = aValidTo;
+    return this;
   }
 
   /**
@@ -239,7 +261,7 @@ public class PhiveRulesBuilder
   public PhiveRulesBuilder addXSD (@NonNull final IReadableResource aXSDRes)
   {
     ValueEnforcer.notNull (aXSDRes, "XSDRes");
-    return addXSD (ValidationExecutorXSD.create (aXSDRes));
+    return _addXSD (ValidationExecutorXSD.create (aXSDRes));
   }
 
   /**
@@ -254,7 +276,7 @@ public class PhiveRulesBuilder
   public PhiveRulesBuilder addXSD (@NonNull final IReadableResource... aXSDRes)
   {
     ValueEnforcer.notEmptyNoNullValue (aXSDRes, "XSDRes");
-    return addXSD (ValidationExecutorXSD.create (aXSDRes));
+    return _addXSD (ValidationExecutorXSD.create (aXSDRes));
   }
 
   /**
@@ -269,7 +291,7 @@ public class PhiveRulesBuilder
   public PhiveRulesBuilder addXSD (@NonNull final List <? extends IReadableResource> aXSDRes)
   {
     ValueEnforcer.notEmptyNoNullValue (aXSDRes, "XSDRes");
-    return addXSD (ValidationExecutorXSD.create (aXSDRes));
+    return _addXSD (ValidationExecutorXSD.create (aXSDRes));
   }
 
   /**
@@ -289,8 +311,8 @@ public class PhiveRulesBuilder
   {
     ValueEnforcer.notEmptyNoNullValue (aXSDRes, "XSDRes");
     ValueEnforcer.notNull (aCustomSchemaCache, "CustomSchemaCache");
-    return addXSD (new ValidationExecutorXSD (new ValidationArtefact (EValidationType.XSD, aXSDRes.getLastOrNull ()),
-                                              () -> aCustomSchemaCache.getSchema (aXSDRes)));
+    return _addXSD (new ValidationExecutorXSD (new ValidationArtefact (EValidationType.XSD, aXSDRes.getLastOrNull ()),
+                                               () -> aCustomSchemaCache.getSchema (aXSDRes)));
   }
 
   /**
@@ -301,7 +323,7 @@ public class PhiveRulesBuilder
    * @return this for chaining
    */
   @NonNull
-  private PhiveRulesBuilder addXSD (@NonNull final ValidationExecutorXSD aXSD)
+  private PhiveRulesBuilder _addXSD (@NonNull final ValidationExecutorXSD aXSD)
   {
     ValueEnforcer.notNull (aXSD, "XSD");
     m_aExecutors.add (aXSD);
@@ -364,12 +386,7 @@ public class PhiveRulesBuilder
   @NonNull
   private String _resolveDisplayName ()
   {
-    if (m_sDisplayName != null)
-      return m_sDisplayName;
-    if (m_sDisplayNamePrefix != null)
-      return m_sDisplayNamePrefix + m_aVESID.getVersionString ();
-
-    throw new IllegalStateException ("Either displayName or displayNamePrefix must be set");
+    return StringReplace.replaceAll (m_sDisplayName, VERSION_PLACEHOLDER, m_aVESID.getVersionString ());
   }
 
   /**
@@ -386,12 +403,19 @@ public class PhiveRulesBuilder
   {
     if (m_aVESID == null)
       throw new IllegalStateException ("VESID is missing");
-    if (m_aStatus == null)
-      throw new IllegalStateException ("Status is missing");
 
     final String sName = _resolveDisplayName ();
 
-    final ValidationExecutorSet <IValidationSourceXML> aVES = new ValidationExecutorSet <> (m_aVESID, sName, m_aStatus);
+    // Build the status
+    final IValidationExecutorSetStatus aStatus = new ValidationExecutorSetStatus (PDTFactory.getCurrentOffsetDateTime (),
+                                                                                  m_bIsDeprecated ? EValidationExecutorStatusType.DEPRECATED
+                                                                                                  : EValidationExecutorStatusType.VALID,
+                                                                                  m_aValidFrom,
+                                                                                  m_aValidTo,
+                                                                                  (String) null,
+                                                                                  (DVRCoordinate) null,
+                                                                                  (ICommonsList <ValidationExecutorSetStatusHistoryItem>) null);
+    final ValidationExecutorSet <IValidationSourceXML> aVES = new ValidationExecutorSet <> (m_aVESID, sName, aStatus);
 
     if (m_aBaseVES != null)
     {

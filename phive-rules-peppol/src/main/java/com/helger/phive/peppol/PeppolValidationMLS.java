@@ -63,7 +63,7 @@ public final class PeppolValidationMLS
     {
       PhiveRulesBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_MLS_V100)
-                       .displayName ("Peppol Message Level Status v1.0.0")
+                       .displayNamePrefix ("Peppol Message Level Status ")
                        .notDeprecated ()
                        .addXSD (UBL21Marshaller.getAllApplicationResponseXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (BASE_PATH_SCH +

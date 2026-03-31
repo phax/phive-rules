@@ -306,7 +306,7 @@ public final class OIOUBLLegacyValidation
       final String sPath = "/external/schematron/oioubl/3.0.1/xslt/";
       PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_CREDIT_NOTE_3_0_1)
-                       .displayName ("OIOUBL Credit Note " + VERSION_3_0_1)
+                       .displayNamePrefix ("OIOUBL Credit Note ")
                        .deprecated ()
                        .basedOn (aVESUBLCreditNote_1_3_13)
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
@@ -315,7 +315,7 @@ public final class OIOUBLLegacyValidation
                        .registerInto (aRegistry);
       PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_INVOICE_3_0_1)
-                       .displayName ("OIOUBL Invoice " + VERSION_3_0_1)
+                       .displayNamePrefix ("OIOUBL Invoice ")
                        .deprecated ()
                        .basedOn (aVESUBLInvoice_1_3_13)
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
@@ -324,7 +324,7 @@ public final class OIOUBLLegacyValidation
                        .registerInto (aRegistry);
       PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_INVOICE_RESPONSE_3_0_1)
-                       .displayName ("OIOUBL Invoice Response " + VERSION_3_0_1)
+                       .displayNamePrefix ("OIOUBL Invoice Response ")
                        .deprecated ()
                        .addXSD (UBL21Marshaller.getAllApplicationResponseXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
@@ -336,7 +336,7 @@ public final class OIOUBLLegacyValidation
                        .registerInto (aRegistry);
       PhiveRulesBuilder.builder ()
                        .vesID (VID_OIOUBL_MLR_3_0_1)
-                       .displayName ("OIOUBL Message Level Response " + VERSION_3_0_1)
+                       .displayNamePrefix ("OIOUBL Message Level Response ")
                        .deprecated ()
                        .addXSD (UBL21Marshaller.getAllApplicationResponseXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +

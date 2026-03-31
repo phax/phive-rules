@@ -105,7 +105,7 @@ public final class KSeFValidation
                                                                                                         _getCL ()));
       PhiveRulesBuilder.builder ()
                        .vesID (KSEF_1)
-                       .displayName ("KSeF " + KSEF_1.getVersionString ())
+                       .displayNamePrefix ("KSeF ")
                        .deprecated ()
                        .addXSD (aResList)
                        .registerInto (aRegistry);
@@ -119,7 +119,7 @@ public final class KSeFValidation
                                                                                                         _getCL ()));
       PhiveRulesBuilder.builder ()
                        .vesID (KSEF_2)
-                       .displayName ("KSeF " + KSEF_2.getVersionString ())
+                       .displayNamePrefix ("KSeF ")
                        .notDeprecated ()
                        .addXSD (aResList, aCustomSchemaCache)
                        .registerInto (aRegistry);
@@ -133,7 +133,7 @@ public final class KSeFValidation
                                                                                                         _getCL ()));
       PhiveRulesBuilder.builder ()
                        .vesID (KSEF_3)
-                       .displayName ("KSeF " + KSEF_3.getVersionString ())
+                       .displayNamePrefix ("KSeF ")
                        .notDeprecated ()
                        .addXSD (aResList, aCustomSchemaCache)
                        .registerInto (aRegistry);
