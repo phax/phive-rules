@@ -205,7 +205,6 @@ public final class FranceCTCValidation
                                                                                     "France CTC UBL Credit Note " +
                                                                                                              VID_FR_CTC_UBL_CN_1_3_0.getVersionString (),
                                                                                     PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
-                                                                                    ValidationExecutorXSD.create (UBL21Marshaller.getAllCreditNoteXSDs ()),
                                                                                     PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix0 +
                                                                                                                                                  "20260216_BR-FR-Flux2-Schematron-UBL_V1.3.0.xslt",
                                                                                                                                                  _getCL ()))));
@@ -214,10 +213,10 @@ public final class FranceCTCValidation
                                                                                     "France CTC CII " +
                                                                                                           VID_FR_CTC_CII_1_3_0.getVersionString (),
                                                                                     PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
-                                                                                    ValidationExecutorXSD.create (CCIID22B.getXSDResourceCII ()),
                                                                                     PhiveRulesCIIHelper.createXSLT_CII_D22B (new ClassPathResource (sPrefix0 +
                                                                                                                                                     "20260216_BR-FR-Flux2-Schematron-CII_V1.3.0.xslt",
                                                                                                                                                     _getCL ()))));
+
       // Extended invoice based on special EN subset
       aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (VID_FR_EXTENDED_CTC_UBL_INV_1_3_0,
                                                                              "France Extended CTC UBL Invoice " +
