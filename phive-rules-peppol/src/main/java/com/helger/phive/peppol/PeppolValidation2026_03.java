@@ -84,7 +84,7 @@ public final class PeppolValidation2026_03
                      .vesID (VID_OPENPEPPOL_CREDIT_NOTE_SELF_BILLING_UBL_V3)
                      .displayName ("OpenPeppol UBL Credit Note Self-Billing" + sVersion + sAkaVersionBilling)
                      .notDeprecated ()
-                     .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
+                     .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aCENSB))
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aPeppolSB))
                      .registerInto (aRegistry);
