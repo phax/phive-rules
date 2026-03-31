@@ -1,16 +1,17 @@
+.claude/
 .settings/
 .idea/
 target/
 poacc-upgrade-3-3.0.*/
 xrechnung-*-schematron-*/
 
+.classpath 
+.DS_Store
+.project 
+release.properties
+zz
+
 base-example-large-*.xml
 ~*.xlsx
 *.pmd
 *.iml
-
-.DS_Store
-.classpath 
-.project 
-release.properties
-zz

@@ -320,9 +320,6 @@ public final class EN16931Validation
   {
     ValueEnforcer.notNull (aRegistry, "Registry");
 
-    final boolean bDeprecated = true;
-    final boolean bNotDeprecated = false;
-
     final String sPrefix = "/external/schematron/";
 
     // CII
@@ -333,7 +330,7 @@ public final class EN16931Validation
       PhiveRulesBuilder.builder ()
                        .vesID (VID_CII_100)
                        .displayNamePrefix ("EN 16931 CII ")
-                       .deprecated (bDeprecated)
+                       .deprecated ()
                        .addXSD (CCIID16B.getXSDResource ())
                        .addSchematron (PhiveRulesCIIHelper.createXSLT_CII_D16B (aInvoiceCII100Xslt))
                        .registerInto (aRegistry);
@@ -345,7 +342,7 @@ public final class EN16931Validation
       PhiveRulesBuilder.builder ()
                        .vesID (VID_CII_110)
                        .displayNamePrefix ("EN 16931 CII ")
-                       .deprecated (bDeprecated)
+                       .deprecated ()
                        .addXSD (CCIID16B.getXSDResource ())
                        .addSchematron (PhiveRulesCIIHelper.createXSLT_CII_D16B (aInvoiceCII110Xslt))
                        .registerInto (aRegistry);
@@ -357,7 +354,7 @@ public final class EN16931Validation
       PhiveRulesBuilder.builder ()
                        .vesID (VID_CII_120)
                        .displayNamePrefix ("EN 16931 CII ")
-                       .deprecated (bDeprecated)
+                       .deprecated ()
                        .addXSD (CCIID16B.getXSDResource ())
                        .addSchematron (PhiveRulesCIIHelper.createXSLT_CII_D16B (aInvoiceCII120Xslt))
                        .registerInto (aRegistry);
@@ -369,7 +366,7 @@ public final class EN16931Validation
       PhiveRulesBuilder.builder ()
                        .vesID (VID_CII_121)
                        .displayNamePrefix ("EN 16931 CII ")
-                       .deprecated (bDeprecated)
+                       .deprecated ()
                        .addXSD (CCIID16B.getXSDResource ())
                        .addSchematron (PhiveRulesCIIHelper.createXSLT_CII_D16B (aInvoiceCII121Xslt))
                        .registerInto (aRegistry);
@@ -381,7 +378,7 @@ public final class EN16931Validation
       PhiveRulesBuilder.builder ()
                        .vesID (VID_CII_123)
                        .displayNamePrefix ("EN 16931 CII ")
-                       .deprecated (bDeprecated)
+                       .deprecated ()
                        .addXSD (CCIID16B.getXSDResource ())
                        .addSchematron (PhiveRulesCIIHelper.createXSLT_CII_D16B (aInvoiceCII123Xslt))
                        .registerInto (aRegistry);
@@ -393,7 +390,7 @@ public final class EN16931Validation
       PhiveRulesBuilder.builder ()
                        .vesID (VID_CII_130)
                        .displayNamePrefix ("EN 16931 CII ")
-                       .deprecated (bDeprecated)
+                       .deprecated ()
                        .addXSD (CCIID16B.getXSDResource ())
                        .addSchematron (PhiveRulesCIIHelper.createXSLT_CII_D16B (aInvoiceCII130Xslt))
                        .registerInto (aRegistry);
@@ -405,7 +402,7 @@ public final class EN16931Validation
       PhiveRulesBuilder.builder ()
                        .vesID (VID_CII_131)
                        .displayNamePrefix ("EN 16931 CII ")
-                       .deprecated (bDeprecated)
+                       .deprecated ()
                        .addXSD (CCIID16B.getXSDResource ())
                        .addSchematron (PhiveRulesCIIHelper.createXSLT_CII_D16B (aInvoiceCII131Xslt))
                        .registerInto (aRegistry);
@@ -417,7 +414,7 @@ public final class EN16931Validation
       PhiveRulesBuilder.builder ()
                        .vesID (VID_CII_132)
                        .displayNamePrefix ("EN 16931 CII ")
-                       .deprecated (bDeprecated)
+                       .deprecated ()
                        .addXSD (CCIID16B.getXSDResource ())
                        .addSchematron (PhiveRulesCIIHelper.createXSLT_CII_D16B (aInvoiceCII132Xslt))
                        .registerInto (aRegistry);
@@ -429,7 +426,7 @@ public final class EN16931Validation
       PhiveRulesBuilder.builder ()
                        .vesID (VID_CII_133)
                        .displayNamePrefix ("EN 16931 CII ")
-                       .deprecated (bDeprecated)
+                       .deprecated ()
                        .addXSD (CCIID16B.getXSDResource ())
                        .addSchematron (PhiveRulesCIIHelper.createXSLT_CII_D16B (aInvoiceCII133Xslt))
                        .registerInto (aRegistry);
@@ -441,7 +438,7 @@ public final class EN16931Validation
       PhiveRulesBuilder.builder ()
                        .vesID (VID_CII_134)
                        .displayNamePrefix ("EN 16931 CII ")
-                       .deprecated (bDeprecated)
+                       .deprecated ()
                        .addXSD (CCIID16B.getXSDResource ())
                        .addSchematron (PhiveRulesCIIHelper.createXSLT_CII_D16B (aInvoiceCII134Xslt))
                        .registerInto (aRegistry);
@@ -453,7 +450,7 @@ public final class EN16931Validation
       PhiveRulesBuilder.builder ()
                        .vesID (VID_CII_135)
                        .displayNamePrefix ("EN 16931 CII ")
-                       .deprecated (bDeprecated)
+                       .deprecated ()
                        .addXSD (CCIID16B.getXSDResource ())
                        .addSchematron (PhiveRulesCIIHelper.createXSLT_CII_D16B (aInvoiceCII135Xslt))
                        .registerInto (aRegistry);
@@ -465,7 +462,7 @@ public final class EN16931Validation
       PhiveRulesBuilder.builder ()
                        .vesID (VID_CII_136)
                        .displayNamePrefix ("EN 16931 CII ")
-                       .deprecated (bDeprecated)
+                       .deprecated ()
                        .addXSD (CCIID16B.getXSDResource ())
                        .addSchematron (PhiveRulesCIIHelper.createXSLT_CII_D16B (aInvoiceCII136Xslt))
                        .registerInto (aRegistry);
@@ -478,7 +475,7 @@ public final class EN16931Validation
       PhiveRulesBuilder.builder ()
                        .vesID (VID_CII_136A)
                        .displayNamePrefix ("EN 16931 CII ")
-                       .deprecated (bDeprecated)
+                       .deprecated ()
                        .addXSD (CCIID16B.getXSDResource ())
                        .addSchematron (PhiveRulesCIIHelper.createXSLT_CII_D16B (INVOICE_CII_136A_XSLT))
                        .registerInto (aRegistry);
@@ -490,7 +487,7 @@ public final class EN16931Validation
       PhiveRulesBuilder.builder ()
                        .vesID (VID_CII_137)
                        .displayNamePrefix ("EN 16931 CII ")
-                       .deprecated (bDeprecated)
+                       .deprecated ()
                        .addXSD (CCIID16B.getXSDResource ())
                        .addSchematron (PhiveRulesCIIHelper.createXSLT_CII_D16B (aInvoiceCII137Xslt))
                        .registerInto (aRegistry);
@@ -502,7 +499,7 @@ public final class EN16931Validation
       PhiveRulesBuilder.builder ()
                        .vesID (VID_CII_138)
                        .displayNamePrefix ("EN 16931 CII ")
-                       .deprecated (bDeprecated)
+                       .deprecated ()
                        .addXSD (CCIID16B.getXSDResource ())
                        .addSchematron (PhiveRulesCIIHelper.createXSLT_CII_D16B (aInvoiceCII138Xslt))
                        .registerInto (aRegistry);
@@ -514,7 +511,7 @@ public final class EN16931Validation
       PhiveRulesBuilder.builder ()
                        .vesID (VID_CII_139)
                        .displayNamePrefix ("EN 16931 CII ")
-                       .deprecated (bDeprecated)
+                       .deprecated ()
                        .addXSD (CCIID16B.getXSDResource ())
                        .addSchematron (PhiveRulesCIIHelper.createXSLT_CII_D16B (aInvoiceCII139Xslt))
                        .registerInto (aRegistry);
@@ -526,7 +523,7 @@ public final class EN16931Validation
       PhiveRulesBuilder.builder ()
                        .vesID (VID_CII_1310)
                        .displayNamePrefix ("EN 16931 CII ")
-                       .deprecated (bDeprecated)
+                       .deprecated ()
                        .addXSD (CCIID16B.getXSDResource ())
                        .addSchematron (PhiveRulesCIIHelper.createXSLT_CII_D16B (aInvoiceCII1310Xslt))
                        .registerInto (aRegistry);
@@ -538,7 +535,7 @@ public final class EN16931Validation
       PhiveRulesBuilder.builder ()
                        .vesID (VID_CII_1311)
                        .displayNamePrefix ("EN 16931 CII ")
-                       .deprecated (bDeprecated)
+                       .deprecated ()
                        .addXSD (CCIID16B.getXSDResource ())
                        .addSchematron (PhiveRulesCIIHelper.createXSLT_CII_D16B (aInvoiceCII1311Xslt))
                        .registerInto (aRegistry);
@@ -550,7 +547,7 @@ public final class EN16931Validation
       PhiveRulesBuilder.builder ()
                        .vesID (VID_CII_1312)
                        .displayNamePrefix ("EN 16931 CII ")
-                       .deprecated (bDeprecated)
+                       .deprecated ()
                        .addXSD (CCIID16B.getXSDResource ())
                        .addSchematron (PhiveRulesCIIHelper.createXSLT_CII_D16B (aInvoiceCII1312Xslt))
                        .registerInto (aRegistry);
@@ -562,7 +559,7 @@ public final class EN16931Validation
       PhiveRulesBuilder.builder ()
                        .vesID (VID_CII_1313)
                        .displayNamePrefix ("EN 16931 CII ")
-                       .deprecated (bDeprecated)
+                       .deprecated ()
                        .addXSD (CCIID16B.getXSDResource ())
                        .addSchematron (PhiveRulesCIIHelper.createXSLT_CII_D16B (aInvoiceCII1313Xslt))
                        .registerInto (aRegistry);
@@ -574,7 +571,7 @@ public final class EN16931Validation
       PhiveRulesBuilder.builder ()
                        .vesID (VID_CII_1314_1)
                        .displayNamePrefix ("EN 16931 CII ")
-                       .deprecated (bDeprecated)
+                       .deprecated ()
                        .addXSD (CCIID16B.getXSDResource ())
                        .addSchematron (PhiveRulesCIIHelper.createXSLT_CII_D16B (aInvoiceCII1314_1Xslt))
                        .registerInto (aRegistry);
@@ -586,7 +583,7 @@ public final class EN16931Validation
       PhiveRulesBuilder.builder ()
                        .vesID (VID_CII_1314_2)
                        .displayNamePrefix ("EN 16931 CII ")
-                       .deprecated (bNotDeprecated)
+                       .notDeprecated ()
                        .addXSD (CCIID16B.getXSDResource ())
                        .addSchematron (PhiveRulesCIIHelper.createXSLT_CII_D16B (aInvoiceCII1314_2Xslt))
                        .registerInto (aRegistry);
@@ -598,7 +595,7 @@ public final class EN16931Validation
       PhiveRulesBuilder.builder ()
                        .vesID (VID_CII_1315)
                        .displayNamePrefix ("EN 16931 CII ")
-                       .deprecated (bNotDeprecated)
+                       .notDeprecated ()
                        .addXSD (CCIID16B.getXSDResource ())
                        .addSchematron (PhiveRulesCIIHelper.createXSLT_CII_D16B (aInvoiceCII1315Xslt))
                        .registerInto (aRegistry);
@@ -613,14 +610,14 @@ public final class EN16931Validation
       PhiveRulesBuilder.builder ()
                        .vesID (VID_UBL_INVOICE_100)
                        .displayNamePrefix ("EN 16931 UBL Invoice ")
-                       .deprecated (bDeprecated)
+                       .deprecated ()
                        .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aInvoiceUBL100Xslt))
                        .registerInto (aRegistry);
       PhiveRulesBuilder.builder ()
                        .vesID (VID_UBL_CREDIT_NOTE_100)
                        .displayNamePrefix ("EN 16931 UBL Credit Note ")
-                       .deprecated (bDeprecated)
+                       .deprecated ()
                        .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aInvoiceUBL100Xslt))
                        .registerInto (aRegistry);
@@ -633,14 +630,14 @@ public final class EN16931Validation
       PhiveRulesBuilder.builder ()
                        .vesID (VID_UBL_INVOICE_110)
                        .displayNamePrefix ("EN 16931 UBL Invoice ")
-                       .deprecated (bDeprecated)
+                       .deprecated ()
                        .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aInvoiceUBL110Xslt))
                        .registerInto (aRegistry);
       PhiveRulesBuilder.builder ()
                        .vesID (VID_UBL_CREDIT_NOTE_110)
                        .displayNamePrefix ("EN 16931 UBL Credit Note ")
-                       .deprecated (bDeprecated)
+                       .deprecated ()
                        .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aInvoiceUBL110Xslt))
                        .registerInto (aRegistry);
@@ -653,14 +650,14 @@ public final class EN16931Validation
       PhiveRulesBuilder.builder ()
                        .vesID (VID_UBL_INVOICE_120)
                        .displayNamePrefix ("EN 16931 UBL Invoice ")
-                       .deprecated (bDeprecated)
+                       .deprecated ()
                        .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aInvoiceUBL120Xslt))
                        .registerInto (aRegistry);
       PhiveRulesBuilder.builder ()
                        .vesID (VID_UBL_CREDIT_NOTE_120)
                        .displayNamePrefix ("EN 16931 UBL Credit Note ")
-                       .deprecated (bDeprecated)
+                       .deprecated ()
                        .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aInvoiceUBL120Xslt))
                        .registerInto (aRegistry);
@@ -673,14 +670,14 @@ public final class EN16931Validation
       PhiveRulesBuilder.builder ()
                        .vesID (VID_UBL_INVOICE_121)
                        .displayNamePrefix ("EN 16931 UBL Invoice ")
-                       .deprecated (bDeprecated)
+                       .deprecated ()
                        .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aInvoiceUBL121Xslt))
                        .registerInto (aRegistry);
       PhiveRulesBuilder.builder ()
                        .vesID (VID_UBL_CREDIT_NOTE_121)
                        .displayNamePrefix ("EN 16931 UBL Credit Note ")
-                       .deprecated (bDeprecated)
+                       .deprecated ()
                        .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aInvoiceUBL121Xslt))
                        .registerInto (aRegistry);
@@ -693,14 +690,14 @@ public final class EN16931Validation
       PhiveRulesBuilder.builder ()
                        .vesID (VID_UBL_INVOICE_123)
                        .displayNamePrefix ("EN 16931 UBL Invoice ")
-                       .deprecated (bDeprecated)
+                       .deprecated ()
                        .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aInvoiceUBL123Xslt))
                        .registerInto (aRegistry);
       PhiveRulesBuilder.builder ()
                        .vesID (VID_UBL_CREDIT_NOTE_123)
                        .displayNamePrefix ("EN 16931 UBL Credit Note ")
-                       .deprecated (bDeprecated)
+                       .deprecated ()
                        .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aInvoiceUBL123Xslt))
                        .registerInto (aRegistry);
@@ -713,14 +710,14 @@ public final class EN16931Validation
       PhiveRulesBuilder.builder ()
                        .vesID (VID_UBL_INVOICE_130)
                        .displayNamePrefix ("EN 16931 UBL Invoice ")
-                       .deprecated (bDeprecated)
+                       .deprecated ()
                        .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aInvoiceUBL130Xslt))
                        .registerInto (aRegistry);
       PhiveRulesBuilder.builder ()
                        .vesID (VID_UBL_CREDIT_NOTE_130)
                        .displayNamePrefix ("EN 16931 UBL Credit Note ")
-                       .deprecated (bDeprecated)
+                       .deprecated ()
                        .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aInvoiceUBL130Xslt))
                        .registerInto (aRegistry);
@@ -733,14 +730,14 @@ public final class EN16931Validation
       PhiveRulesBuilder.builder ()
                        .vesID (VID_UBL_INVOICE_131)
                        .displayNamePrefix ("EN 16931 UBL Invoice ")
-                       .deprecated (bDeprecated)
+                       .deprecated ()
                        .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aInvoiceUBL131Xslt))
                        .registerInto (aRegistry);
       PhiveRulesBuilder.builder ()
                        .vesID (VID_UBL_CREDIT_NOTE_131)
                        .displayNamePrefix ("EN 16931 UBL Credit Note ")
-                       .deprecated (bDeprecated)
+                       .deprecated ()
                        .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aInvoiceUBL131Xslt))
                        .registerInto (aRegistry);
@@ -753,14 +750,14 @@ public final class EN16931Validation
       PhiveRulesBuilder.builder ()
                        .vesID (VID_UBL_INVOICE_132)
                        .displayNamePrefix ("EN 16931 UBL Invoice ")
-                       .deprecated (bDeprecated)
+                       .deprecated ()
                        .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aInvoiceUBL132Xslt))
                        .registerInto (aRegistry);
       PhiveRulesBuilder.builder ()
                        .vesID (VID_UBL_CREDIT_NOTE_132)
                        .displayNamePrefix ("EN 16931 UBL Credit Note ")
-                       .deprecated (bDeprecated)
+                       .deprecated ()
                        .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aInvoiceUBL132Xslt))
                        .registerInto (aRegistry);
@@ -773,14 +770,14 @@ public final class EN16931Validation
       PhiveRulesBuilder.builder ()
                        .vesID (VID_UBL_INVOICE_133)
                        .displayNamePrefix ("EN 16931 UBL Invoice ")
-                       .deprecated (bDeprecated)
+                       .deprecated ()
                        .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aInvoiceUBL133Xslt))
                        .registerInto (aRegistry);
       PhiveRulesBuilder.builder ()
                        .vesID (VID_UBL_CREDIT_NOTE_133)
                        .displayNamePrefix ("EN 16931 UBL Credit Note ")
-                       .deprecated (bDeprecated)
+                       .deprecated ()
                        .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aInvoiceUBL133Xslt))
                        .registerInto (aRegistry);
@@ -793,14 +790,14 @@ public final class EN16931Validation
       PhiveRulesBuilder.builder ()
                        .vesID (VID_UBL_INVOICE_134)
                        .displayNamePrefix ("EN 16931 UBL Invoice ")
-                       .deprecated (bDeprecated)
+                       .deprecated ()
                        .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aInvoiceUBL134Xslt))
                        .registerInto (aRegistry);
       PhiveRulesBuilder.builder ()
                        .vesID (VID_UBL_CREDIT_NOTE_134)
                        .displayNamePrefix ("EN 16931 UBL Credit Note ")
-                       .deprecated (bDeprecated)
+                       .deprecated ()
                        .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aInvoiceUBL134Xslt))
                        .registerInto (aRegistry);
@@ -813,14 +810,14 @@ public final class EN16931Validation
       PhiveRulesBuilder.builder ()
                        .vesID (VID_UBL_INVOICE_135)
                        .displayNamePrefix ("EN 16931 UBL Invoice ")
-                       .deprecated (bDeprecated)
+                       .deprecated ()
                        .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aInvoiceUBL135Xslt))
                        .registerInto (aRegistry);
       PhiveRulesBuilder.builder ()
                        .vesID (VID_UBL_CREDIT_NOTE_135)
                        .displayNamePrefix ("EN 16931 UBL Credit Note ")
-                       .deprecated (bDeprecated)
+                       .deprecated ()
                        .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aInvoiceUBL135Xslt))
                        .registerInto (aRegistry);
@@ -833,14 +830,14 @@ public final class EN16931Validation
       PhiveRulesBuilder.builder ()
                        .vesID (VID_UBL_INVOICE_136)
                        .displayNamePrefix ("EN 16931 UBL Invoice ")
-                       .deprecated (bDeprecated)
+                       .deprecated ()
                        .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aInvoiceUBL136Xslt))
                        .registerInto (aRegistry);
       PhiveRulesBuilder.builder ()
                        .vesID (VID_UBL_CREDIT_NOTE_136)
                        .displayNamePrefix ("EN 16931 UBL Credit Note ")
-                       .deprecated (bDeprecated)
+                       .deprecated ()
                        .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aInvoiceUBL136Xslt))
                        .registerInto (aRegistry);
@@ -854,14 +851,14 @@ public final class EN16931Validation
       PhiveRulesBuilder.builder ()
                        .vesID (VID_UBL_INVOICE_136A)
                        .displayNamePrefix ("EN 16931 UBL Invoice ")
-                       .deprecated (bDeprecated)
+                       .deprecated ()
                        .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (INVOICE_UBL_136A_XSLT))
                        .registerInto (aRegistry);
       PhiveRulesBuilder.builder ()
                        .vesID (VID_UBL_CREDIT_NOTE_136A)
                        .displayNamePrefix ("EN 16931 UBL Credit Note ")
-                       .deprecated (bDeprecated)
+                       .deprecated ()
                        .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (INVOICE_UBL_136A_XSLT))
                        .registerInto (aRegistry);
@@ -874,14 +871,14 @@ public final class EN16931Validation
       PhiveRulesBuilder.builder ()
                        .vesID (VID_UBL_INVOICE_137)
                        .displayNamePrefix ("EN 16931 UBL Invoice ")
-                       .deprecated (bDeprecated)
+                       .deprecated ()
                        .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aInvoiceUBL137Xslt))
                        .registerInto (aRegistry);
       PhiveRulesBuilder.builder ()
                        .vesID (VID_UBL_CREDIT_NOTE_137)
                        .displayNamePrefix ("EN 16931 UBL Credit Note ")
-                       .deprecated (bDeprecated)
+                       .deprecated ()
                        .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aInvoiceUBL137Xslt))
                        .registerInto (aRegistry);
@@ -894,14 +891,14 @@ public final class EN16931Validation
       PhiveRulesBuilder.builder ()
                        .vesID (VID_UBL_INVOICE_138)
                        .displayNamePrefix ("EN 16931 UBL Invoice ")
-                       .deprecated (bDeprecated)
+                       .deprecated ()
                        .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aInvoiceUBL138Xslt))
                        .registerInto (aRegistry);
       PhiveRulesBuilder.builder ()
                        .vesID (VID_UBL_CREDIT_NOTE_138)
                        .displayNamePrefix ("EN 16931 UBL Credit Note ")
-                       .deprecated (bDeprecated)
+                       .deprecated ()
                        .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aInvoiceUBL138Xslt))
                        .registerInto (aRegistry);
@@ -914,14 +911,14 @@ public final class EN16931Validation
       PhiveRulesBuilder.builder ()
                        .vesID (VID_UBL_INVOICE_139)
                        .displayNamePrefix ("EN 16931 UBL Invoice ")
-                       .deprecated (bDeprecated)
+                       .deprecated ()
                        .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aInvoiceUBL139Xslt))
                        .registerInto (aRegistry);
       PhiveRulesBuilder.builder ()
                        .vesID (VID_UBL_CREDIT_NOTE_139)
                        .displayNamePrefix ("EN 16931 UBL Credit Note ")
-                       .deprecated (bDeprecated)
+                       .deprecated ()
                        .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aInvoiceUBL139Xslt))
                        .registerInto (aRegistry);
@@ -934,14 +931,14 @@ public final class EN16931Validation
       PhiveRulesBuilder.builder ()
                        .vesID (VID_UBL_INVOICE_1310)
                        .displayNamePrefix ("EN 16931 UBL Invoice ")
-                       .deprecated (bDeprecated)
+                       .deprecated ()
                        .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aInvoiceUBL1310Xslt))
                        .registerInto (aRegistry);
       PhiveRulesBuilder.builder ()
                        .vesID (VID_UBL_CREDIT_NOTE_1310)
                        .displayNamePrefix ("EN 16931 UBL Credit Note ")
-                       .deprecated (bDeprecated)
+                       .deprecated ()
                        .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aInvoiceUBL1310Xslt))
                        .registerInto (aRegistry);
@@ -954,14 +951,14 @@ public final class EN16931Validation
       PhiveRulesBuilder.builder ()
                        .vesID (VID_UBL_INVOICE_1311)
                        .displayNamePrefix ("EN 16931 UBL Invoice ")
-                       .deprecated (bDeprecated)
+                       .deprecated ()
                        .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aInvoiceUBL1311Xslt))
                        .registerInto (aRegistry);
       PhiveRulesBuilder.builder ()
                        .vesID (VID_UBL_CREDIT_NOTE_1311)
                        .displayNamePrefix ("EN 16931 UBL Credit Note ")
-                       .deprecated (bDeprecated)
+                       .deprecated ()
                        .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aInvoiceUBL1311Xslt))
                        .registerInto (aRegistry);
@@ -974,14 +971,14 @@ public final class EN16931Validation
       PhiveRulesBuilder.builder ()
                        .vesID (VID_UBL_INVOICE_1312)
                        .displayNamePrefix ("EN 16931 UBL Invoice ")
-                       .deprecated (bDeprecated)
+                       .deprecated ()
                        .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aInvoiceUBL1312Xslt))
                        .registerInto (aRegistry);
       PhiveRulesBuilder.builder ()
                        .vesID (VID_UBL_CREDIT_NOTE_1312)
                        .displayNamePrefix ("EN 16931 UBL Credit Note ")
-                       .deprecated (bDeprecated)
+                       .deprecated ()
                        .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aInvoiceUBL1312Xslt))
                        .registerInto (aRegistry);
@@ -994,14 +991,14 @@ public final class EN16931Validation
       PhiveRulesBuilder.builder ()
                        .vesID (VID_UBL_INVOICE_1313)
                        .displayNamePrefix ("EN 16931 UBL Invoice ")
-                       .deprecated (bDeprecated)
+                       .deprecated ()
                        .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aInvoiceUBL1313Xslt))
                        .registerInto (aRegistry);
       PhiveRulesBuilder.builder ()
                        .vesID (VID_UBL_CREDIT_NOTE_1313)
                        .displayNamePrefix ("EN 16931 UBL Credit Note ")
-                       .deprecated (bDeprecated)
+                       .deprecated ()
                        .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aInvoiceUBL1313Xslt))
                        .registerInto (aRegistry);
@@ -1014,14 +1011,14 @@ public final class EN16931Validation
       PhiveRulesBuilder.builder ()
                        .vesID (VID_UBL_INVOICE_1314_1)
                        .displayNamePrefix ("EN 16931 UBL Invoice ")
-                       .deprecated (bDeprecated)
+                       .deprecated ()
                        .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aInvoiceUBL1314_1Xslt))
                        .registerInto (aRegistry);
       PhiveRulesBuilder.builder ()
                        .vesID (VID_UBL_CREDIT_NOTE_1314_1)
                        .displayNamePrefix ("EN 16931 UBL Credit Note ")
-                       .deprecated (bDeprecated)
+                       .deprecated ()
                        .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aInvoiceUBL1314_1Xslt))
                        .registerInto (aRegistry);
@@ -1034,14 +1031,14 @@ public final class EN16931Validation
       PhiveRulesBuilder.builder ()
                        .vesID (VID_UBL_INVOICE_1314_2)
                        .displayNamePrefix ("EN 16931 UBL Invoice ")
-                       .deprecated (bNotDeprecated)
+                       .notDeprecated ()
                        .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aInvoiceUBL1314_2Xslt))
                        .registerInto (aRegistry);
       PhiveRulesBuilder.builder ()
                        .vesID (VID_UBL_CREDIT_NOTE_1314_2)
                        .displayNamePrefix ("EN 16931 UBL Credit Note ")
-                       .deprecated (bNotDeprecated)
+                       .notDeprecated ()
                        .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aInvoiceUBL1314_2Xslt))
                        .registerInto (aRegistry);
@@ -1054,14 +1051,14 @@ public final class EN16931Validation
       PhiveRulesBuilder.builder ()
                        .vesID (VID_UBL_INVOICE_1315)
                        .displayNamePrefix ("EN 16931 UBL Invoice ")
-                       .deprecated (bNotDeprecated)
+                       .notDeprecated ()
                        .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aInvoiceUBL1315Xslt))
                        .registerInto (aRegistry);
       PhiveRulesBuilder.builder ()
                        .vesID (VID_UBL_CREDIT_NOTE_1315)
                        .displayNamePrefix ("EN 16931 UBL Credit Note ")
-                       .deprecated (bNotDeprecated)
+                       .notDeprecated ()
                        .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aInvoiceUBL1315Xslt))
                        .registerInto (aRegistry);

@@ -20,18 +20,25 @@ import java.util.Collection;
 import java.util.List;
 
 import org.jspecify.annotations.NonNull;
+import org.jspecify.annotations.Nullable;
 
 import com.helger.annotation.Nonempty;
+import com.helger.annotation.concurrent.NotThreadSafe;
 import com.helger.base.enforce.ValueEnforcer;
 import com.helger.collection.commons.CommonsArrayList;
+import com.helger.collection.commons.CommonsHashMap;
 import com.helger.collection.commons.ICommonsList;
+import com.helger.collection.commons.ICommonsMap;
 import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.io.resource.IReadableResource;
 import com.helger.phive.api.executor.IValidationExecutor;
 import com.helger.phive.api.executorset.IValidationExecutorSet;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
 import com.helger.phive.api.executorset.ValidationExecutorSet;
+import com.helger.phive.api.executorset.ValidationExecutorSetAlias;
 import com.helger.phive.api.executorset.status.IValidationExecutorSetStatus;
+import com.helger.phive.xml.schematron.CustomErrorDetails;
+import com.helger.phive.xml.schematron.ValidationExecutorSchematron;
 import com.helger.phive.xml.source.IValidationSourceXML;
 import com.helger.phive.xml.xsd.ValidationExecutorXSD;
 
@@ -41,16 +48,28 @@ import com.helger.phive.xml.xsd.ValidationExecutorXSD;
  *
  * @author Philip Helger
  */
+@NotThreadSafe
 public class PhiveRulesBuilder
 {
+  public static record Alias (@NonNull DVRCoordinate vesID, @NonNull @Nonempty String displayName)
+  {
+    public Alias
+    {
+      ValueEnforcer.notNull (vesID, "VESID");
+      ValueEnforcer.notEmpty (displayName, "DisplayName");
+    }
+  }
+
   private DVRCoordinate m_aVESID;
   private String m_sDisplayName;
   private String m_sDisplayNamePrefix;
   private IValidationExecutorSetStatus m_aStatus;
   private IValidationExecutorSet <IValidationSourceXML> m_aBaseVES;
+  private ICommonsMap <String, CustomErrorDetails> m_aCustomErrorLevels;
   private final ICommonsList <IValidationExecutor <IValidationSourceXML>> m_aExecutors = new CommonsArrayList <> ();
+  private final ICommonsList <Alias> m_aAliases = new CommonsArrayList <> ();
 
-  public PhiveRulesBuilder ()
+  protected PhiveRulesBuilder ()
   {}
 
   @NonNull
@@ -108,8 +127,16 @@ public class PhiveRulesBuilder
   @NonNull
   public PhiveRulesBuilder basedOn (@NonNull final IValidationExecutorSet <IValidationSourceXML> aBaseVES)
   {
+    return basedOn (aBaseVES, null);
+  }
+
+  @NonNull
+  public PhiveRulesBuilder basedOn (@NonNull final IValidationExecutorSet <IValidationSourceXML> aBaseVES,
+                                    @Nullable final ICommonsMap <String, CustomErrorDetails> aCustomErrorLevels)
+  {
     m_aBaseVES = ValueEnforcer.notNull (aBaseVES, "BaseVES");
-    return this;
+    m_aCustomErrorLevels = new CommonsHashMap <> (aCustomErrorLevels);
+    return null;
   }
 
   @NonNull
@@ -137,7 +164,7 @@ public class PhiveRulesBuilder
   }
 
   @NonNull
-  public PhiveRulesBuilder addSchematron (@NonNull final IValidationExecutor <IValidationSourceXML> aSchematron)
+  public PhiveRulesBuilder addSchematron (@NonNull final ValidationExecutorSchematron aSchematron)
   {
     ValueEnforcer.notNull (aSchematron, "Schematron");
     m_aExecutors.add (aSchematron);
@@ -145,18 +172,18 @@ public class PhiveRulesBuilder
   }
 
   @NonNull
-  public PhiveRulesBuilder addExecutor (@NonNull final IValidationExecutor <IValidationSourceXML> aExecutor)
+  public PhiveRulesBuilder addExecutorsManually (@NonNull final Collection <? extends IValidationExecutor <IValidationSourceXML>> aExecutors)
   {
-    ValueEnforcer.notNull (aExecutor, "Executor");
-    m_aExecutors.add (aExecutor);
+    ValueEnforcer.notEmptyNoNullValue (aExecutors, "Executors");
+    m_aExecutors.addAll (aExecutors);
     return this;
   }
 
   @NonNull
-  public PhiveRulesBuilder addExecutors (@NonNull final Collection <? extends IValidationExecutor <IValidationSourceXML>> aExecutors)
+  public PhiveRulesBuilder addAlias (@NonNull final Alias aAlias)
   {
-    ValueEnforcer.notEmptyNoNullValue (aExecutors, "Executors");
-    m_aExecutors.addAll (aExecutors);
+    ValueEnforcer.notNull (aAlias, "Alias");
+    m_aAliases.add (aAlias);
     return this;
   }
 
@@ -183,30 +210,46 @@ public class PhiveRulesBuilder
 
     final ValidationExecutorSet <IValidationSourceXML> aVES = new ValidationExecutorSet <> (m_aVESID, sName, m_aStatus);
 
-    // If derived, copy all executors from the base VES first
     if (m_aBaseVES != null)
+    {
+      // If derived, copy all executors from the base VES first
       for (final IValidationExecutor <IValidationSourceXML> aVE : m_aBaseVES)
-        aVES.addExecutor (aVE);
+      {
+        if (aVE instanceof final ValidationExecutorSchematron aSch)
+        {
+          if (m_aCustomErrorLevels != null && m_aCustomErrorLevels.isNotEmpty ())
+          {
+            // Explicitly apply the custom error levels
+            aVES.addExecutor (aSch.getClone ().addCustomErrorDetails (m_aCustomErrorLevels));
+          }
+          else
+            aVES.addExecutor (aSch);
+        }
+        else
+          aVES.addExecutor (aVE);
+      }
+    }
 
     // Add all configured executors
     for (final IValidationExecutor <IValidationSourceXML> aVE : m_aExecutors)
+    {
       aVES.addExecutor (aVE);
+    }
 
-    return aVES;
-  }
-
-  @NonNull
-  public ValidationExecutorSet <IValidationSourceXML> registerAndGet (@NonNull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
-  {
-    ValueEnforcer.notNull (aRegistry, "Registry");
-
-    final ValidationExecutorSet <IValidationSourceXML> aVES = createVES ();
-    aRegistry.registerValidationExecutorSet (aVES);
     return aVES;
   }
 
   public void registerInto (@NonNull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
   {
-    registerAndGet (aRegistry);
+    ValueEnforcer.notNull (aRegistry, "Registry");
+
+    final ValidationExecutorSet <IValidationSourceXML> aVES = createVES ();
+    aRegistry.registerValidationExecutorSet (aVES);
+
+    // Finally register also all aliases (e.g. for Zugferd)
+    for (final Alias aAlias : m_aAliases)
+      aRegistry.registerValidationExecutorSet (new ValidationExecutorSetAlias <> (aAlias.vesID (),
+                                                                                  aAlias.displayName (),
+                                                                                  aVES));
   }
 }

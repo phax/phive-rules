@@ -91,8 +91,6 @@ public final class PeppolLegacyValidationSG
     final MapBasedNamespaceContext aNSCtxCreditNote = PhiveRulesUBLHelper.createUBL21NSContext (UBL21Marshaller.creditNote ()
                                                                                                                .getRootElementNamespaceURI ());
 
-    final boolean bDeprecated = true;
-
     // 1.0.0
     {
       final IReadableResource BIS3_BILLING_SG_CEN_100 = new ClassPathResource (BASE_PATH +

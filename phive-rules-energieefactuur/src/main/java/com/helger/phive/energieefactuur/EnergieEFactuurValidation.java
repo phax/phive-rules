@@ -132,7 +132,7 @@ public final class EnergieEFactuurValidation
                        .vesID (VID_ENERGIE_EFACTUUR_1_0_0)
                        .displayNamePrefix ("Energie eFactuur ")
                        .notDeprecated ()
-                       .addExecutors (aNewList)
+                       .addExecutorsManually (aNewList)
                        .registerInto (aRegistry);
     }
 
@@ -163,7 +163,7 @@ public final class EnergieEFactuurValidation
                        .vesID (VID_ENERGIE_EFACTUUR_1_0_1)
                        .displayNamePrefix ("Energie eFactuur ")
                        .notDeprecated ()
-                       .addExecutors (aNewList)
+                       .addExecutorsManually (aNewList)
                        .registerInto (aRegistry);
     }
 
@@ -197,7 +197,7 @@ public final class EnergieEFactuurValidation
                        .vesID (VID_ENERGIE_EFACTUUR_2_0_0)
                        .displayNamePrefix ("Energie eFactuur ")
                        .notDeprecated ()
-                       .addExecutors (aNewList)
+                       .addExecutorsManually (aNewList)
                        .registerInto (aRegistry);
     }
 
@@ -231,7 +231,7 @@ public final class EnergieEFactuurValidation
                        .vesID (VID_ENERGIE_EFACTUUR_3_0_0)
                        .displayNamePrefix ("Energie eFactuur ")
                        .notDeprecated ()
-                       .addExecutors (aNewList)
+                       .addExecutorsManually (aNewList)
                        .registerInto (aRegistry);
     }
 
@@ -265,7 +265,7 @@ public final class EnergieEFactuurValidation
                        .vesID (VID_ENERGIE_EFACTUUR_3_1_0)
                        .displayNamePrefix ("Energie eFactuur ")
                        .notDeprecated ()
-                       .addExecutors (aNewList)
+                       .addExecutorsManually (aNewList)
                        .registerInto (aRegistry);
     }
   }

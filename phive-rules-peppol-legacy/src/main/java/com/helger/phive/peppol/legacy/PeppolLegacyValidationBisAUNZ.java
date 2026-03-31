@@ -332,8 +332,6 @@ public final class PeppolLegacyValidationBisAUNZ
     final MapBasedNamespaceContext aNSCtxCreditNote = PhiveRulesUBLHelper.createUBL21NSContext (UBL21Marshaller.creditNote ()
                                                                                                                .getRootElementNamespaceURI ());
 
-    final boolean bDeprecated = true;
-
     // 1.0.0
     final String sVersion100 = VID_OPENPEPPOL_BIS3_AUNZ_UBL_INVOICE_100.getVersionString ();
     PhiveRulesBuilder.builder ()

@@ -71,8 +71,6 @@ public final class PeppolValidation2025_03
     final String sVersion = " (" + VERSION_STR + ")";
     final String sAkaVersionBilling = "";
 
-    final boolean bNotDeprecated = false;
-
     final String PREFIX_XSLT = "external/schematron/openpeppol/" + VERSION_STR + "/xslt/";
     final IReadableResource aPeppolSB = new ClassPathResource (PREFIX_XSLT + "PEPPOL-EN16931-UBL-SB.xslt", _getCL ());
 

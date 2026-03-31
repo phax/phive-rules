@@ -106,8 +106,6 @@ public final class PeppolLegacyValidationReporting
   {
     ValueEnforcer.notNull (aRegistry, "Registry");
 
-    final boolean bDeprecated = true;
-
     // EUSR
     {
       PhiveRulesBuilder.builder ()
