@@ -31,6 +31,8 @@ import com.helger.collection.commons.ICommonsList;
 import com.helger.collection.commons.ICommonsMap;
 import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.io.resource.IReadableResource;
+import com.helger.phive.api.EValidationType;
+import com.helger.phive.api.artefact.ValidationArtefact;
 import com.helger.phive.api.executor.IValidationExecutor;
 import com.helger.phive.api.executorset.IValidationExecutorSet;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
@@ -41,6 +43,7 @@ import com.helger.phive.xml.schematron.CustomErrorDetails;
 import com.helger.phive.xml.schematron.ValidationExecutorSchematron;
 import com.helger.phive.xml.source.IValidationSourceXML;
 import com.helger.phive.xml.xsd.ValidationExecutorXSD;
+import com.helger.xml.schema.XMLSchemaCache;
 
 /**
  * Fluent builder for creating and registering
@@ -236,8 +239,7 @@ public class PhiveRulesBuilder
   public PhiveRulesBuilder addXSD (@NonNull final IReadableResource aXSDRes)
   {
     ValueEnforcer.notNull (aXSDRes, "XSDRes");
-    m_aExecutors.add (ValidationExecutorXSD.create (aXSDRes));
-    return this;
+    return addXSD (ValidationExecutorXSD.create (aXSDRes));
   }
 
   /**
@@ -252,8 +254,7 @@ public class PhiveRulesBuilder
   public PhiveRulesBuilder addXSD (@NonNull final IReadableResource... aXSDRes)
   {
     ValueEnforcer.notEmptyNoNullValue (aXSDRes, "XSDRes");
-    m_aExecutors.add (ValidationExecutorXSD.create (aXSDRes));
-    return this;
+    return addXSD (ValidationExecutorXSD.create (aXSDRes));
   }
 
   /**
@@ -268,7 +269,42 @@ public class PhiveRulesBuilder
   public PhiveRulesBuilder addXSD (@NonNull final List <? extends IReadableResource> aXSDRes)
   {
     ValueEnforcer.notEmptyNoNullValue (aXSDRes, "XSDRes");
-    m_aExecutors.add (ValidationExecutorXSD.create (aXSDRes));
+    return addXSD (ValidationExecutorXSD.create (aXSDRes));
+  }
+
+  /**
+   * Add an XSD validation executor for multiple XSD resources provided as a list. For KSeF this
+   * special overload with a custom XML Schema cache is needed.
+   *
+   * @param aXSDRes
+   *        The XSD resources. May neither be <code>null</code> nor empty, and no element may be
+   *        <code>null</code>.
+   * @param aCustomSchemaCache
+   *        Custom XML Schema cache to be used. May not be <code>null</code>.
+   * @return this for chaining
+   */
+  @NonNull
+  public PhiveRulesBuilder addXSD (@NonNull final ICommonsList <? extends IReadableResource> aXSDRes,
+                                   @NonNull final XMLSchemaCache aCustomSchemaCache)
+  {
+    ValueEnforcer.notEmptyNoNullValue (aXSDRes, "XSDRes");
+    ValueEnforcer.notNull (aCustomSchemaCache, "CustomSchemaCache");
+    return addXSD (new ValidationExecutorXSD (new ValidationArtefact (EValidationType.XSD, aXSDRes.getLastOrNull ()),
+                                              () -> aCustomSchemaCache.getSchema (aXSDRes)));
+  }
+
+  /**
+   * Add an XSD validation executor.
+   *
+   * @param aXSD
+   *        The XSD validation executor. May not be <code>null</code>.
+   * @return this for chaining
+   */
+  @NonNull
+  private PhiveRulesBuilder addXSD (@NonNull final ValidationExecutorXSD aXSD)
+  {
+    ValueEnforcer.notNull (aXSD, "XSD");
+    m_aExecutors.add (aXSD);
     return this;
   }
 

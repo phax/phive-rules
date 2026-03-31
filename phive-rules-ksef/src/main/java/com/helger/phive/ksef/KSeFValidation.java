@@ -31,13 +31,10 @@ import com.helger.collection.commons.CommonsArrayList;
 import com.helger.collection.commons.ICommonsList;
 import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.io.resource.ClassPathResource;
-import com.helger.phive.api.EValidationType;
-import com.helger.phive.api.artefact.ValidationArtefact;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
-import com.helger.phive.api.executorset.ValidationExecutorSet;
+import com.helger.phive.rules.api.PhiveRulesBuilder;
 import com.helger.phive.rules.api.PhiveRulesHelper;
 import com.helger.phive.xml.source.IValidationSourceXML;
-import com.helger.phive.xml.xsd.ValidationExecutorXSD;
 import com.helger.xml.ls.SimpleLSResourceResolver;
 import com.helger.xml.sax.LoggingSAXErrorHandler;
 import com.helger.xml.schema.XMLSchemaCache;
@@ -81,9 +78,6 @@ public final class KSeFValidation
   {
     ValueEnforcer.notNull (aRegistry, "Registry");
 
-    final boolean bDeprecated = true;
-    final boolean bNotDeprecated = false;
-
     final SchemaFactory aCustomSF = SchemaFactory.newInstance (XMLConstants.W3C_XML_SCHEMA_NS_URI);
     try
     {
@@ -109,10 +103,12 @@ public final class KSeFValidation
                                                                                                         _getCL ()),
                                                                                  new ClassPathResource ("/external/schemas/1.0.0/schema.xsd",
                                                                                                         _getCL ()));
-      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (KSEF_1,
-                                                                             "KSeF " + KSEF_1.getVersionString (),
-                                                                             PhiveRulesHelper.createSimpleStatus (bDeprecated),
-                                                                             ValidationExecutorXSD.create (aResList)));
+      PhiveRulesBuilder.builder ()
+                       .vesID (KSEF_1)
+                       .displayName ("KSeF " + KSEF_1.getVersionString ())
+                       .deprecated ()
+                       .addXSD (aResList)
+                       .registerInto (aRegistry);
     }
 
     {
@@ -121,12 +117,12 @@ public final class KSeFValidation
                                                                                                         _getCL ()),
                                                                                  new ClassPathResource ("/external/schemas/2.0.0/schema.xsd",
                                                                                                         _getCL ()));
-      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (KSEF_2,
-                                                                             "KSeF " + KSEF_2.getVersionString (),
-                                                                             PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
-                                                                             new ValidationExecutorXSD (new ValidationArtefact (EValidationType.XSD,
-                                                                                                                                aResList.getLastOrNull ()),
-                                                                                                        () -> aCustomSchemaCache.getSchema (aResList))));
+      PhiveRulesBuilder.builder ()
+                       .vesID (KSEF_2)
+                       .displayName ("KSeF " + KSEF_2.getVersionString ())
+                       .notDeprecated ()
+                       .addXSD (aResList, aCustomSchemaCache)
+                       .registerInto (aRegistry);
     }
 
     {
@@ -135,12 +131,12 @@ public final class KSeFValidation
                                                                                                         _getCL ()),
                                                                                  new ClassPathResource ("/external/schemas/3.0.0/schemat.xsd",
                                                                                                         _getCL ()));
-      aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create (KSEF_3,
-                                                                             "KSeF " + KSEF_3.getVersionString (),
-                                                                             PhiveRulesHelper.createSimpleStatus (bNotDeprecated),
-                                                                             new ValidationExecutorXSD (new ValidationArtefact (EValidationType.XSD,
-                                                                                                                                aResList.getLastOrNull ()),
-                                                                                                        () -> aCustomSchemaCache.getSchema (aResList))));
+      PhiveRulesBuilder.builder ()
+                       .vesID (KSEF_3)
+                       .displayName ("KSeF " + KSEF_3.getVersionString ())
+                       .notDeprecated ()
+                       .addXSD (aResList, aCustomSchemaCache)
+                       .registerInto (aRegistry);
     }
   }
 }
