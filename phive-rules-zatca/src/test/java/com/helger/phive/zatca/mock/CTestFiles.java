@@ -78,7 +78,13 @@ public final class CTestFiles
     // 2.3.8
     if (aVESID.equals (ZATCAValidation.VID_INVOICE_UBL_2_3_8))
     {
-      final String sPrefix = sPrefix0 + "2.3.8/";
+      return new CommonsArrayList <> ();
+    }
+
+    // 3.0.8
+    if (aVESID.equals (ZATCAValidation.VID_INVOICE_UBL_3_0_8))
+    {
+      final String sPrefix = sPrefix0 + "3.0.8/";
       return new CommonsArrayList <> (new String [] { "Simplified/Credit/Credit Note of a Simplified Tax Invoice.xml",
                                                       "Simplified/Credit/Simplified_Credit_Note.xml",
                                                       "Simplified/Debit/Simplified_Debit_Note.xml",
