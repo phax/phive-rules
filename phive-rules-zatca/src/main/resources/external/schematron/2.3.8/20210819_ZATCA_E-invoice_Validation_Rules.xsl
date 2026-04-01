@@ -456,7 +456,9 @@ The License text is included within the LICENSE.txt file in the root folder.
                         <svrl:message-category>KSA - business rules (BR-KSA)</svrl:message-category>
                      </svrl:failed-assert>
                   </xsl:if>
+                  <!-- [PH] commented out
                   \
+                  -->
                </xsl:for-each>
                <xsl:if test="not(exists(cbc:IssueTime) and (cbc:IssueTime) != '' and (matches(cbc:IssueTime, '^([01][0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])$') or matches(cbc:IssueTime, '^([01][0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])Z$')))">
                   <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" location="{schxslt:location(.)}" flag="error" id="BR-KSA-70">
