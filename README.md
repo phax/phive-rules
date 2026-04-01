@@ -233,6 +233,7 @@ I hope that with the introduction of PINT, the versioning problem will be solved
 
 v4.2.6 - work in progress
 * The internal rule registration was reworked to use a builder-based approach using `PhiveRulesBuilder`
+* Fixed an error in the ZATCA 2.3.8 XSLT that created invalid SVRL
 
 v4.2.5 - 2026-03-27
 * Updated to final AE PINT 1.0.3 rules
