@@ -56,6 +56,7 @@ import com.helger.xml.schema.XMLSchemaCache;
  * {@link IValidationExecutorSet}&lt;{@link IValidationSourceXML}&gt; objects.
  *
  * @author Philip Helger
+ * @since 4.3.0
  */
 @NotThreadSafe
 public class PhiveRulesBuilder

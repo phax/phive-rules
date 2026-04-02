@@ -231,7 +231,7 @@ I hope that with the introduction of PINT, the versioning problem will be solved
 
 # News and noteworthy
 
-v4.2.6 - work in progress
+v4.3.0 - work in progress
 * The internal rule registration was reworked to use a builder-based approach using `PhiveRulesBuilder`
 * Fixed an error in the ZATCA/FATOORA 2.3.8 XSLT that created invalid SVRL
 * Added ZATCA/FATOORA 3.4.6 rules
