@@ -61,16 +61,16 @@ public final class TEAPPSValidation
 
     // No Schematrons here
     VesXmlBuilder.builder ()
-                     .vesID (VID_TEAPPS_272)
-                     .displayNamePrefix ("TEAPPSXML ")
-                     .notDeprecated ()
-                     .addXSD (new ClassPathResource ("/external/schemas/TEAPPSXMLv272_schema_INVOICES.xsd", _getCL ()))
-                     .registerInto (aRegistry);
+                 .vesID (VID_TEAPPS_272)
+                 .displayNamePrefix ("TEAPPSXML ")
+                 .notDeprecated ()
+                 .addXSD (new ClassPathResource ("/external/schemas/TEAPPSXMLv272_schema_INVOICES.xsd", _getCL ()))
+                 .registerInto (aRegistry);
     VesXmlBuilder.builder ()
-                     .vesID (VID_TEAPPS_30)
-                     .displayNamePrefix ("TEAPPSXML ")
-                     .notDeprecated ()
-                     .addXSD (new ClassPathResource ("/external/schemas/teappsxmlv30_schema_invoices_0.xsd", _getCL ()))
-                     .registerInto (aRegistry);
+                 .vesID (VID_TEAPPS_30)
+                 .displayNamePrefix ("TEAPPSXML ")
+                 .notDeprecated ()
+                 .addXSD (new ClassPathResource ("/external/schemas/teappsxmlv30_schema_invoices_0.xsd", _getCL ()))
+                 .registerInto (aRegistry);
   }
 }

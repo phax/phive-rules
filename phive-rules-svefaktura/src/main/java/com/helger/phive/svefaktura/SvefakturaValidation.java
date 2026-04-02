@@ -85,22 +85,21 @@ public final class SvefakturaValidation
     ValueEnforcer.notNull (aRegistry, "Registry");
 
     VesXmlBuilder.builder ()
-                     .vesID (VID_SVEFAKTURA_10)
-                     .displayNamePrefix ("SvefakturaXML ")
-                     .notDeprecated ()
-                     .addXSD (new ClassPathResource ("/external/schemas/1.0/maindoc/SFTI-BasicInvoice-1.0.xsd",
-                                                     _getCL ()))
-                     .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource ("/external/schemas/1.0/svenfaktura-1.0-sch.xslt",
-                                                                                         _getCL ()), NS_CTX))
-                     .registerInto (aRegistry);
+                 .vesID (VID_SVEFAKTURA_10)
+                 .displayNamePrefix ("SvefakturaXML ")
+                 .notDeprecated ()
+                 .addXSD (new ClassPathResource ("/external/schemas/1.0/maindoc/SFTI-BasicInvoice-1.0.xsd", _getCL ()))
+                 .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource ("/external/schemas/1.0/svenfaktura-1.0-sch.xslt",
+                                                                                     _getCL ()), NS_CTX))
+                 .registerInto (aRegistry);
 
     // No Schematrons here
     VesXmlBuilder.builder ()
-                     .vesID (VID_OBJECT_ENVELOPE_10)
-                     .displayNamePrefix ("SvefakturaXML ObjectEnvelope ")
-                     .notDeprecated ()
-                     .addXSD (new ClassPathResource ("/external/schemas/1.0/maindoc/SFTI-ObjectEnvelope-1.0.xsd",
-                                                     _getCL ()))
-                     .registerInto (aRegistry);
+                 .vesID (VID_OBJECT_ENVELOPE_10)
+                 .displayNamePrefix ("SvefakturaXML ObjectEnvelope ")
+                 .notDeprecated ()
+                 .addXSD (new ClassPathResource ("/external/schemas/1.0/maindoc/SFTI-ObjectEnvelope-1.0.xsd",
+                                                 _getCL ()))
+                 .registerInto (aRegistry);
   }
 }

@@ -201,15 +201,15 @@ public final class ZugferdValidation
   }
 
   private static VesXmlBuilder.@NonNull Alias _createFacturXAlias (@NonNull final DVRCoordinate aVESID,
-                                                                       @NonNull final EZugferdProfile eProfile)
+                                                                   @NonNull final EZugferdProfile eProfile)
   {
     final DVRCoordinate aFacturXVESID = getMappedFacturXVESID (aVESID);
     return new VesXmlBuilder.Alias (aFacturXVESID,
-                                        "Factur-X " +
-                                                       aFacturXVESID.getVersionString () +
-                                                       " (" +
-                                                       eProfile.getDisplayName () +
-                                                       ")");
+                                    "Factur-X " +
+                                                   aFacturXVESID.getVersionString () +
+                                                   " (" +
+                                                   eProfile.getDisplayName () +
+                                                   ")");
   }
 
   /**
@@ -247,20 +247,20 @@ public final class ZugferdValidation
                                                                       sZugferdVersion);
       final String sDisplayName = "ZUGFeRD " + sZugferdVersion + " (" + eProfile.getDisplayName () + ")";
       VesXmlBuilder.builder ()
-                       .vesID (aVESID)
-                       .displayName (sDisplayName)
-                       .deprecated ()
-                       .addXSD (new ClassPathResource ("/external/schemas/" +
-                                                       sZugferdVersion +
-                                                       "/" +
-                                                       sProfileNamePart +
-                                                       "/zugferd2p0_" +
-                                                       sProfileNamePart +
-                                                       ".xsd",
-                                                       _getCL ()))
-                       .addSchematron (aVESchematron)
-                       .addAlias (_createFacturXAlias (aVESID, eProfile))
-                       .registerInto (aRegistry);
+                   .vesID (aVESID)
+                   .displayName (sDisplayName)
+                   .deprecated ()
+                   .addXSD (new ClassPathResource ("/external/schemas/" +
+                                                   sZugferdVersion +
+                                                   "/" +
+                                                   sProfileNamePart +
+                                                   "/zugferd2p0_" +
+                                                   sProfileNamePart +
+                                                   ".xsd",
+                                                   _getCL ()))
+                   .addSchematron (aVESchematron)
+                   .addAlias (_createFacturXAlias (aVESID, eProfile))
+                   .registerInto (aRegistry);
     }
 
     // Zugferd 2.1 / Factur-X 1.0.5
@@ -289,31 +289,31 @@ public final class ZugferdValidation
           throw new InitializationException ("The EN 16931 VES are missing. Make sure to call EN16931Validation.initEN16931 first.");
 
         VesXmlBuilder.builder ()
-                         .vesID (aVESID)
-                         .displayName (sDisplayName)
-                         .deprecated ()
-                         .basedOn (aVESCII_1_3_1)
-                         .addSchematron (aVESchematron)
-                         .addAlias (_createFacturXAlias (aVESID, eProfile))
-                         .registerInto (aRegistry);
+                     .vesID (aVESID)
+                     .displayName (sDisplayName)
+                     .deprecated ()
+                     .basedOn (aVESCII_1_3_1)
+                     .addSchematron (aVESchematron)
+                     .addAlias (_createFacturXAlias (aVESID, eProfile))
+                     .registerInto (aRegistry);
       }
       else
       {
         VesXmlBuilder.builder ()
-                         .vesID (aVESID)
-                         .displayName (sDisplayName)
-                         .deprecated ()
-                         .addXSD (new ClassPathResource ("/external/schemas/" +
-                                                         sZugferdVersion +
-                                                         "/" +
-                                                         eProfile.getFolderName () +
-                                                         "/FACTUR-X_" +
-                                                         sFilenameSuffix +
-                                                         ".xsd",
-                                                         _getCL ()))
-                         .addSchematron (aVESchematron)
-                         .addAlias (_createFacturXAlias (aVESID, eProfile))
-                         .registerInto (aRegistry);
+                     .vesID (aVESID)
+                     .displayName (sDisplayName)
+                     .deprecated ()
+                     .addXSD (new ClassPathResource ("/external/schemas/" +
+                                                     sZugferdVersion +
+                                                     "/" +
+                                                     eProfile.getFolderName () +
+                                                     "/FACTUR-X_" +
+                                                     sFilenameSuffix +
+                                                     ".xsd",
+                                                     _getCL ()))
+                     .addSchematron (aVESchematron)
+                     .addAlias (_createFacturXAlias (aVESID, eProfile))
+                     .registerInto (aRegistry);
       }
     }
 
@@ -339,31 +339,31 @@ public final class ZugferdValidation
       {
         // Based on 1.3.7-SNAPSHOT
         VesXmlBuilder.builder ()
-                         .vesID (aVESID)
-                         .displayName (sDisplayName)
-                         .deprecated ()
-                         .basedOn (aRegistry.getOfID (EN16931Validation.VID_CII_137))
-                         .addSchematron (aVESchematron)
-                         .addAlias (_createFacturXAlias (aVESID, eProfile))
-                         .registerInto (aRegistry);
+                     .vesID (aVESID)
+                     .displayName (sDisplayName)
+                     .deprecated ()
+                     .basedOn (aRegistry.getOfID (EN16931Validation.VID_CII_137))
+                     .addSchematron (aVESchematron)
+                     .addAlias (_createFacturXAlias (aVESID, eProfile))
+                     .registerInto (aRegistry);
       }
       else
       {
         VesXmlBuilder.builder ()
-                         .vesID (aVESID)
-                         .displayName (sDisplayName)
-                         .deprecated ()
-                         .addXSD (new ClassPathResource ("/external/schemas/" +
-                                                         sZugferdVersion +
-                                                         "/" +
-                                                         eProfile.getFolderName () +
-                                                         "/FACTUR-X_" +
-                                                         sFilenameSuffix +
-                                                         ".xsd",
-                                                         _getCL ()))
-                         .addSchematron (aVESchematron)
-                         .addAlias (_createFacturXAlias (aVESID, eProfile))
-                         .registerInto (aRegistry);
+                     .vesID (aVESID)
+                     .displayName (sDisplayName)
+                     .deprecated ()
+                     .addXSD (new ClassPathResource ("/external/schemas/" +
+                                                     sZugferdVersion +
+                                                     "/" +
+                                                     eProfile.getFolderName () +
+                                                     "/FACTUR-X_" +
+                                                     sFilenameSuffix +
+                                                     ".xsd",
+                                                     _getCL ()))
+                     .addSchematron (aVESchematron)
+                     .addAlias (_createFacturXAlias (aVESID, eProfile))
+                     .registerInto (aRegistry);
       }
     }
 
@@ -376,25 +376,25 @@ public final class ZugferdValidation
                                                                       sZugferdVersion);
 
       VesXmlBuilder.builder ()
-                       .vesID (aVESID)
-                       .displayName ("ZUGFeRD " + sZugferdVersion + " (" + eProfile.getDisplayName () + ")")
-                       .deprecated ()
-                       .addXSD (new ClassPathResource ("/external/schemas/" +
-                                                       sZugferdVersion +
-                                                       "/" +
-                                                       eProfile.getFolderName () +
-                                                       "/Factur-X_1.07.2_" +
-                                                       eProfile.getFilenameSuffix () +
-                                                       ".xsd",
-                                                       _getCL ()))
-                       .addSchematron (PhiveRulesCIIHelper.createXSLT_CII_D22B (new ClassPathResource ("/external/schematron/" +
-                                                                                                       sZugferdVersion +
-                                                                                                       "/Factur-X_1.07.2_" +
-                                                                                                       eProfile.getFilenameSuffix () +
-                                                                                                       ".xslt",
-                                                                                                       _getCL ())))
-                       .addAlias (_createFacturXAlias (aVESID, eProfile))
-                       .registerInto (aRegistry);
+                   .vesID (aVESID)
+                   .displayName ("ZUGFeRD " + sZugferdVersion + " (" + eProfile.getDisplayName () + ")")
+                   .deprecated ()
+                   .addXSD (new ClassPathResource ("/external/schemas/" +
+                                                   sZugferdVersion +
+                                                   "/" +
+                                                   eProfile.getFolderName () +
+                                                   "/Factur-X_1.07.2_" +
+                                                   eProfile.getFilenameSuffix () +
+                                                   ".xsd",
+                                                   _getCL ()))
+                   .addSchematron (PhiveRulesCIIHelper.createXSLT_CII_D22B (new ClassPathResource ("/external/schematron/" +
+                                                                                                   sZugferdVersion +
+                                                                                                   "/Factur-X_1.07.2_" +
+                                                                                                   eProfile.getFilenameSuffix () +
+                                                                                                   ".xslt",
+                                                                                                   _getCL ())))
+                   .addAlias (_createFacturXAlias (aVESID, eProfile))
+                   .registerInto (aRegistry);
     }
 
     // Zugferd 2.3.3 / Factur-X 1.0.7-3
@@ -406,25 +406,25 @@ public final class ZugferdValidation
                                                                       sZugferdVersion);
 
       VesXmlBuilder.builder ()
-                       .vesID (aVESID)
-                       .displayName ("ZUGFeRD " + sZugferdVersion + " (" + eProfile.getDisplayName () + ")")
-                       .notDeprecated ()
-                       .addXSD (new ClassPathResource ("/external/schemas/" +
-                                                       sZugferdVersion +
-                                                       "/" +
-                                                       eProfile.getFolderName () +
-                                                       "/Factur-X_1.07.3_" +
-                                                       eProfile.getFilenameSuffix () +
-                                                       ".xsd",
-                                                       _getCL ()))
-                       .addSchematron (PhiveRulesCIIHelper.createXSLT_CII_D22B (new ClassPathResource ("/external/schematron/" +
-                                                                                                       sZugferdVersion +
-                                                                                                       "/Factur-X_1.07.3_" +
-                                                                                                       eProfile.getFilenameSuffix () +
-                                                                                                       ".xslt",
-                                                                                                       _getCL ())))
-                       .addAlias (_createFacturXAlias (aVESID, eProfile))
-                       .registerInto (aRegistry);
+                   .vesID (aVESID)
+                   .displayName ("ZUGFeRD " + sZugferdVersion + " (" + eProfile.getDisplayName () + ")")
+                   .notDeprecated ()
+                   .addXSD (new ClassPathResource ("/external/schemas/" +
+                                                   sZugferdVersion +
+                                                   "/" +
+                                                   eProfile.getFolderName () +
+                                                   "/Factur-X_1.07.3_" +
+                                                   eProfile.getFilenameSuffix () +
+                                                   ".xsd",
+                                                   _getCL ()))
+                   .addSchematron (PhiveRulesCIIHelper.createXSLT_CII_D22B (new ClassPathResource ("/external/schematron/" +
+                                                                                                   sZugferdVersion +
+                                                                                                   "/Factur-X_1.07.3_" +
+                                                                                                   eProfile.getFilenameSuffix () +
+                                                                                                   ".xslt",
+                                                                                                   _getCL ())))
+                   .addAlias (_createFacturXAlias (aVESID, eProfile))
+                   .registerInto (aRegistry);
     }
 
     // Zugferd 2.4 / Factur-X 1.0.8
@@ -436,25 +436,25 @@ public final class ZugferdValidation
                                                                       sZugferdVersion);
 
       VesXmlBuilder.builder ()
-                       .vesID (aVESID)
-                       .displayName ("ZUGFeRD " + sZugferdVersion + " (" + eProfile.getDisplayName () + ")")
-                       .notDeprecated ()
-                       .addXSD (new ClassPathResource ("/external/schemas/" +
-                                                       sZugferdVersion +
-                                                       "/" +
-                                                       eProfile.getFolderName () +
-                                                       "/FACTUR-X_" +
-                                                       eProfile.getFilenameSuffix24onwards () +
-                                                       ".xsd",
-                                                       _getCL ()))
-                       .addSchematron (PhiveRulesCIIHelper.createXSLT_CII_D22B (new ClassPathResource ("/external/schematron/" +
-                                                                                                       sZugferdVersion +
-                                                                                                       "/FACTUR-X_" +
-                                                                                                       eProfile.getFilenameSuffix24onwards () +
-                                                                                                       ".xslt",
-                                                                                                       _getCL ())))
-                       .addAlias (_createFacturXAlias (aVESID, eProfile))
-                       .registerInto (aRegistry);
+                   .vesID (aVESID)
+                   .displayName ("ZUGFeRD " + sZugferdVersion + " (" + eProfile.getDisplayName () + ")")
+                   .notDeprecated ()
+                   .addXSD (new ClassPathResource ("/external/schemas/" +
+                                                   sZugferdVersion +
+                                                   "/" +
+                                                   eProfile.getFolderName () +
+                                                   "/FACTUR-X_" +
+                                                   eProfile.getFilenameSuffix24onwards () +
+                                                   ".xsd",
+                                                   _getCL ()))
+                   .addSchematron (PhiveRulesCIIHelper.createXSLT_CII_D22B (new ClassPathResource ("/external/schematron/" +
+                                                                                                   sZugferdVersion +
+                                                                                                   "/FACTUR-X_" +
+                                                                                                   eProfile.getFilenameSuffix24onwards () +
+                                                                                                   ".xslt",
+                                                                                                   _getCL ())))
+                   .addAlias (_createFacturXAlias (aVESID, eProfile))
+                   .registerInto (aRegistry);
     }
   }
 }
