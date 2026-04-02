@@ -104,12 +104,14 @@ public final class PhiveRulesHelper
   }
 
   @NonNull
+  @Deprecated (forRemoval = true, since = "4.3.0")
   public static IValidationExecutorSetStatus createSimpleStatus (final boolean bIsDeprecated)
   {
     return ValidationExecutorSetStatus.createDeprecatedNow (bIsDeprecated);
   }
 
   @NonNull
+  @Deprecated (forRemoval = true, since = "4.3.0")
   public static IValidationExecutorSetStatus createSimpleStatus (final boolean bIsDeprecated,
                                                                  @NonNull final OffsetDateTime aValidPer)
   {
