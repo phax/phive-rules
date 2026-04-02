@@ -69,6 +69,8 @@
     <ph-jaxb-plugin.version>5.1.1</ph-jaxb-plugin.version>
 
     <peppol-commons.version>12.4.0</peppol-commons.version>
+    <peppol-uae.version>0.9.2</peppol-uae.version>
+    <peppol-vida.version>0.2.1</peppol-vida.version>
     <ph-cii.version>4.1.1</ph-cii.version>
     <ph-ebinterface.version>8.1.0</ph-ebinterface.version>
     <ph-fatturapa.version>3.1.0</ph-fatturapa.version>
@@ -102,7 +104,7 @@
       <dependency>
         <groupId>com.helger.phive</groupId>
         <artifactId>phive-parent-pom</artifactId>
-        <version>12.0.2-SNAPSHOT</version>
+        <version>12.0.2</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>

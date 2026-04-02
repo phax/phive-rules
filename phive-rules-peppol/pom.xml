@@ -77,6 +77,16 @@
       <groupId>com.helger.phive.rules</groupId>
       <artifactId>phive-rules-en16931</artifactId>
     </dependency>
+    <dependency>
+      <groupId>com.helger.peppol</groupId>
+      <artifactId>peppol-uae-tdd-datatypes</artifactId>
+      <version>${peppol-uae.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.helger.peppol</groupId>
+      <artifactId>peppol-vida-tdd-datatypes</artifactId>
+      <version>${peppol-vida.version}</version>
+    </dependency>
 
     <dependency>
       <groupId>junit</groupId>

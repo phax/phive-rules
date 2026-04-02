@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pxs:TaxData xmlns:pxs="urn:peppol:schema:vida-taxdata:1.0"
+	xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+	xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+	xmlns:cec="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2">
+	<cbc:CustomizationID>urn:peppol:taxdata:vida-1</cbc:CustomizationID>
+	<cbc:ProfileID>urn:peppol:taxreporting</cbc:ProfileID>
+	<cbc:UUID>123e4567-e89b-12d3-a456-426614174000</cbc:UUID>
+	<cbc:IssueDate>2025-01-10</cbc:IssueDate>
+	<cbc:IssueTime>15:30:00.0Z</cbc:IssueTime>
+	<pxs:TaxDataTypeCode>S</pxs:TaxDataTypeCode>
+	<pxs:DocumentScope>D</pxs:DocumentScope>
+	<pxs:ReporterRole>C2</pxs:ReporterRole>
+	<pxs:TaxAuthority>
+		<cbc:ID>BE-TAX</cbc:ID>
+		<cbc:Name>Belgian Tax Authority</cbc:Name>
+	</pxs:TaxAuthority>
+	<pxs:ReportingParty>
+		<cbc:EndpointID schemeID="9925">BE0123456789</cbc:EndpointID>
+	</pxs:ReportingParty>
+	<pxs:ReceivingParty>
+		<cbc:EndpointID schemeID="0242">1234567894</cbc:EndpointID>
+	</pxs:ReceivingParty>
+	<pxs:ReportersRepresentative>
+		<cac:PartyIdentification>
+			<cbc:ID schemeID="0242">0078742000008</cbc:ID>
+		</cac:PartyIdentification>
+	</pxs:ReportersRepresentative>
+	<pxs:ReportedTransaction>
+		<pxs:ReportedDocument>
+			<cbc:CustomizationID>urn:cen.eu:en16931:2017#compliant#urn:fdc:peppol.eu:2017:poacc:selfbilling:3.0</cbc:CustomizationID>
+			<cbc:ProfileID>urn:fdc:peppol.eu:2017:poacc:selfbilling:01:1.0</cbc:ProfileID>
+			<cbc:ID>INV-2025-0001</cbc:ID>
+			<cbc:UUID>f47ac10b-58cc-4372-a567-0e02b2c3d479</cbc:UUID>
+			<cbc:IssueDate>2025-01-10</cbc:IssueDate>
+			<pxs:DocumentTypeCode>527</pxs:DocumentTypeCode>
+			<cbc:Note>Monthly facility maintenance services provided during January 2025.</cbc:Note>
+			<cbc:DocumentCurrencyCode>EUR</cbc:DocumentCurrencyCode>
+			<cbc:TaxCurrencyCode>USD</cbc:TaxCurrencyCode>
+			<cac:InvoicePeriod>
+				<cbc:StartDate>2024-12-01</cbc:StartDate>
+				<cbc:EndDate>2024-12-31</cbc:EndDate>
+				<cbc:DescriptionCode>3</cbc:DescriptionCode>
+			</cac:InvoicePeriod>
+			<cac:BillingReference>
+				<cac:InvoiceDocumentReference>
+					<cbc:ID>PREV-INV-2024-099</cbc:ID>
+					<cbc:IssueDate>2024-12-31</cbc:IssueDate>
+				</cac:InvoiceDocumentReference>
+			</cac:BillingReference>
+			<cac:AccountingSupplierParty>
+				<cac:Party>
+					<cac:PostalAddress>
+						<cac:Country>
+							<cbc:IdentificationCode>BE</cbc:IdentificationCode>
+						</cac:Country>
+					</cac:PostalAddress>
+					<cac:PartyTaxScheme>
+						<cbc:CompanyID>BE0477472701</cbc:CompanyID>
+						<cac:TaxScheme>
+							<cbc:ID>VAT</cbc:ID>
+						</cac:TaxScheme>
+					</cac:PartyTaxScheme>
+				</cac:Party>
+			</cac:AccountingSupplierParty>
+			<cac:AccountingCustomerParty>
+				<cac:Party>
+					<cac:PostalAddress>
+						<cac:Country>
+							<cbc:IdentificationCode>BE</cbc:IdentificationCode>
+						</cac:Country>
+					</cac:PostalAddress>
+					<cac:PartyTaxScheme>
+						<cbc:CompanyID>BE0837465231</cbc:CompanyID>
+						<cac:TaxScheme>
+							<cbc:ID>VAT</cbc:ID>
+						</cac:TaxScheme>
+					</cac:PartyTaxScheme>
+				</cac:Party>
+			</cac:AccountingCustomerParty>
+			<cac:TaxRepresentativeParty>
+				<cac:PostalAddress>
+					<cac:Country>
+						<cbc:IdentificationCode>NL</cbc:IdentificationCode>
+					</cac:Country>
+				</cac:PostalAddress>
+				<cac:PartyTaxScheme>
+					<cbc:CompanyID>NL999999999B01</cbc:CompanyID>
+					<cac:TaxScheme>
+						<cbc:ID>VAT</cbc:ID>
+					</cac:TaxScheme>
+				</cac:PartyTaxScheme>
+			</cac:TaxRepresentativeParty>
+			<!-- Payment Means -->
+			<cac:PaymentMeans>
+				<cbc:PaymentMeansCode name="CreditTransfer">31</cbc:PaymentMeansCode>
+				<cbc:PaymentID>INV-2025-0001</cbc:PaymentID>
+				<cac:CardAccount>
+					<cbc:PrimaryAccountNumberID>0004</cbc:PrimaryAccountNumberID>
+					<cbc:NetworkID>VISA</cbc:NetworkID>
+					<cbc:HolderName>Finance Department</cbc:HolderName>
+				</cac:CardAccount>
+				<cac:PayeeFinancialAccount>
+					<cbc:ID>BE72000000001616</cbc:ID>
+					<cac:FinancialInstitutionBranch>
+						<cbc:ID>GEBABEBB</cbc:ID>
+					</cac:FinancialInstitutionBranch>
+				</cac:PayeeFinancialAccount>
+				<cac:PaymentMandate>
+					<cbc:ID>MANDATE-01</cbc:ID>
+					<cac:PayerFinancialAccount>
+						<cbc:ID>NL91ABNA0417164300</cbc:ID>
+					</cac:PayerFinancialAccount>
+				</cac:PaymentMandate>
+			</cac:PaymentMeans>
+			<cac:AllowanceCharge>
+				<cbc:ChargeIndicator>true</cbc:ChargeIndicator>
+				<cbc:AllowanceChargeReasonCode>CG</cbc:AllowanceChargeReasonCode>
+				<cbc:AllowanceChargeReason>Cleaning</cbc:AllowanceChargeReason>
+				<cbc:MultiplierFactorNumeric>20</cbc:MultiplierFactorNumeric>
+				<cbc:Amount currencyID="EUR">200</cbc:Amount>
+				<cbc:BaseAmount currencyID="EUR">1000</cbc:BaseAmount>
+				<cac:TaxCategory>
+					<cbc:ID>S</cbc:ID>
+					<cbc:Percent>25</cbc:Percent>
+					<cac:TaxScheme>
+						<cbc:ID>VAT</cbc:ID>
+					</cac:TaxScheme>
+				</cac:TaxCategory>
+			</cac:AllowanceCharge>
+			<cac:AllowanceCharge>
+				<cbc:ChargeIndicator>false</cbc:ChargeIndicator>
+				<cbc:AllowanceChargeReasonCode>95</cbc:AllowanceChargeReasonCode>
+				<cbc:AllowanceChargeReason>Discount</cbc:AllowanceChargeReason>
+				<cbc:Amount currencyID="EUR">200</cbc:Amount>
+				<cac:TaxCategory>
+					<cbc:ID>S</cbc:ID>
+					<cbc:Percent>25</cbc:Percent>
+					<cac:TaxScheme>
+						<cbc:ID>VAT</cbc:ID>
+					</cac:TaxScheme>
+				</cac:TaxCategory>
+			</cac:AllowanceCharge>
+			<cac:TaxTotal>
+				<cbc:TaxAmount currencyID="EUR">1225.00</cbc:TaxAmount>
+				<cac:TaxSubtotal>
+					<cbc:TaxableAmount currencyID="EUR">4900.0</cbc:TaxableAmount>
+					<cbc:TaxAmount currencyID="EUR">1225</cbc:TaxAmount>
+					<cac:TaxCategory>
+						<cbc:ID>S</cbc:ID>
+						<cbc:Percent>25</cbc:Percent>
+						<cac:TaxScheme>
+							<cbc:ID>VAT</cbc:ID>
+						</cac:TaxScheme>
+					</cac:TaxCategory>
+				</cac:TaxSubtotal>
+				<cac:TaxSubtotal>
+					<cbc:TaxableAmount currencyID="EUR">1000.0</cbc:TaxableAmount>
+					<cbc:TaxAmount currencyID="EUR">0</cbc:TaxAmount>
+					<cac:TaxCategory>
+						<cbc:ID>E</cbc:ID>
+						<cbc:Percent>0</cbc:Percent>
+						<cbc:TaxExemptionReason>Intra-community supply of services exempt under EU
+							VAT Directive Article 44.</cbc:TaxExemptionReason>
+						<cac:TaxScheme>
+							<cbc:ID>VAT</cbc:ID>
+						</cac:TaxScheme>
+					</cac:TaxCategory>
+				</cac:TaxSubtotal>
+			</cac:TaxTotal>
+			<cac:TaxTotal>
+				<cbc:TaxAmount currencyID="USD">9324.00</cbc:TaxAmount>
+			</cac:TaxTotal>
+			<pxs:MonetaryTotal>
+				<cbc:LineExtensionAmount currencyID="EUR">5900</cbc:LineExtensionAmount>
+				<cbc:TaxExclusiveAmount currencyID="EUR">5900</cbc:TaxExclusiveAmount>
+				<cbc:TaxInclusiveAmount currencyID="EUR">7125</cbc:TaxInclusiveAmount>
+				<cbc:AllowanceTotalAmount currencyID="EUR">200</cbc:AllowanceTotalAmount>
+				<cbc:ChargeTotalAmount currencyID="EUR">200</cbc:ChargeTotalAmount>
+				<cbc:PrepaidAmount currencyID="EUR">1000</cbc:PrepaidAmount>
+				<cbc:PayableAmount currencyID="EUR">6125.00</cbc:PayableAmount>
+			</pxs:MonetaryTotal>
+			<pxs:DocumentLine>
+				<cbc:ID>1</cbc:ID>
+				<cbc:Note>Service provided during January 2025</cbc:Note>
+				<cbc:InvoicedQuantity unitCode="C62">10</cbc:InvoicedQuantity>
+				<cbc:LineExtensionAmount currencyID="EUR">4000.00</cbc:LineExtensionAmount>
+				<cac:InvoicePeriod>
+					<cbc:StartDate>2024-12-01</cbc:StartDate>
+					<cbc:EndDate>2024-12-31</cbc:EndDate>
+				</cac:InvoicePeriod>
+				<cac:AllowanceCharge>
+					<cbc:ChargeIndicator>true</cbc:ChargeIndicator>
+					<cbc:AllowanceChargeReasonCode>CG</cbc:AllowanceChargeReasonCode>
+					<cbc:AllowanceChargeReason>Cleaning</cbc:AllowanceChargeReason>
+					<cbc:MultiplierFactorNumeric>1</cbc:MultiplierFactorNumeric>
+					<cbc:Amount currencyID="EUR">1</cbc:Amount>
+					<cbc:BaseAmount currencyID="EUR">100</cbc:BaseAmount>
+				</cac:AllowanceCharge>
+				<cac:AllowanceCharge>
+					<cbc:ChargeIndicator>false</cbc:ChargeIndicator>
+					<cbc:AllowanceChargeReasonCode>95</cbc:AllowanceChargeReasonCode>
+					<cbc:AllowanceChargeReason>Discount</cbc:AllowanceChargeReason>
+					<cbc:Amount currencyID="EUR">101</cbc:Amount>
+				</cac:AllowanceCharge>
+				<cac:Item>
+					<cbc:Description>Facility maintenance service for warehouse premises</cbc:Description>
+					<cbc:Name>Maintenance service</cbc:Name>
+					<cac:CommodityClassification>
+						<cbc:ItemClassificationCode listID="SRV">72101509</cbc:ItemClassificationCode>
+					</cac:CommodityClassification>
+					<cac:ClassifiedTaxCategory>
+						<cbc:ID>S</cbc:ID>
+						<cbc:Percent>25.0</cbc:Percent>
+						<cac:TaxScheme>
+							<cbc:ID>VAT</cbc:ID>
+						</cac:TaxScheme>
+					</cac:ClassifiedTaxCategory>
+				</cac:Item>
+				<cac:Price>
+					<cbc:PriceAmount currencyID="EUR">410</cbc:PriceAmount>
+				</cac:Price>
+			</pxs:DocumentLine>
+			<pxs:DocumentLine>
+				<cbc:ID>2</cbc:ID>
+				<cbc:Note>Service provided during January 2025</cbc:Note>
+				<cbc:InvoicedQuantity unitCode="C62">10</cbc:InvoicedQuantity>
+				<cbc:LineExtensionAmount currencyID="EUR">1000.00</cbc:LineExtensionAmount>
+				<cac:InvoicePeriod>
+					<cbc:StartDate>2024-12-01</cbc:StartDate>
+					<cbc:EndDate>2024-12-31</cbc:EndDate>
+				</cac:InvoicePeriod>
+				<cac:Item>
+					<cbc:Description>Consulting services related to logistics process optimisation</cbc:Description>
+					<cbc:Name>Logistics consulting service</cbc:Name>
+					<cac:CommodityClassification>
+						<cbc:ItemClassificationCode listID="SRV">80101507</cbc:ItemClassificationCode>
+					</cac:CommodityClassification>
+					<cac:ClassifiedTaxCategory>
+						<cbc:ID>E</cbc:ID>
+						<cbc:Percent>0.0</cbc:Percent>
+						<cac:TaxScheme>
+							<cbc:ID>VAT</cbc:ID>
+						</cac:TaxScheme>
+					</cac:ClassifiedTaxCategory>
+				</cac:Item>
+				<cac:Price>
+					<cbc:PriceAmount currencyID="EUR">100</cbc:PriceAmount>
+				</cac:Price>
+			</pxs:DocumentLine>
+			<pxs:DocumentLine>
+				<cbc:ID>3</cbc:ID>
+				<cbc:Note>Service provided during January 2025</cbc:Note>
+				<cbc:InvoicedQuantity unitCode="C62">10</cbc:InvoicedQuantity>
+				<cbc:LineExtensionAmount currencyID="EUR">900.00</cbc:LineExtensionAmount>
+				<cac:InvoicePeriod>
+					<cbc:StartDate>2024-12-01</cbc:StartDate>
+					<cbc:EndDate>2024-12-31</cbc:EndDate>
+				</cac:InvoicePeriod>
+				<cac:AllowanceCharge>
+					<cbc:ChargeIndicator>true</cbc:ChargeIndicator>
+					<cbc:AllowanceChargeReasonCode>CG</cbc:AllowanceChargeReasonCode>
+					<cbc:AllowanceChargeReason>Charge</cbc:AllowanceChargeReason>
+					<cbc:MultiplierFactorNumeric>1</cbc:MultiplierFactorNumeric>
+					<cbc:Amount currencyID="EUR">1</cbc:Amount>
+					<cbc:BaseAmount currencyID="EUR">100</cbc:BaseAmount>
+				</cac:AllowanceCharge>
+				<cac:AllowanceCharge>
+					<cbc:ChargeIndicator>false</cbc:ChargeIndicator>
+					<cbc:AllowanceChargeReasonCode>95</cbc:AllowanceChargeReasonCode>
+					<cbc:AllowanceChargeReason>Discount</cbc:AllowanceChargeReason>
+					<cbc:Amount currencyID="EUR">101</cbc:Amount>
+				</cac:AllowanceCharge>
+				<cac:Item>
+					<cbc:Description>Technical support services for facility equipment</cbc:Description>
+					<cbc:Name>Technical support service</cbc:Name>
+					<cac:CommodityClassification>
+						<cbc:ItemClassificationCode listID="SRV">81111812</cbc:ItemClassificationCode>
+					</cac:CommodityClassification>
+					<cac:ClassifiedTaxCategory>
+						<cbc:ID>S</cbc:ID>
+						<cbc:Percent>25.0</cbc:Percent>
+						<cac:TaxScheme>
+							<cbc:ID>VAT</cbc:ID>
+						</cac:TaxScheme>
+					</cac:ClassifiedTaxCategory>
+				</cac:Item>
+				<cac:Price>
+					<cbc:PriceAmount currencyID="EUR">100</cbc:PriceAmount>
+				</cac:Price>
+			</pxs:DocumentLine>
+		</pxs:ReportedDocument>
+	</pxs:ReportedTransaction>
+</pxs:TaxData>

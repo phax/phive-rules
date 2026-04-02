@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pxs:TaxData xmlns:pxs="urn:peppol:schema:vida-taxdata:1.0"
+	xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+	xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+	xmlns:cec="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2">
+	<cbc:CustomizationID>urn:peppol:taxdata:vida-1</cbc:CustomizationID>
+	<cbc:ProfileID>urn:peppol:taxreporting</cbc:ProfileID>
+	<cbc:UUID>123e4567-e89b-12d3-a456-426614174000</cbc:UUID>
+	<cbc:IssueDate>2025-03-06</cbc:IssueDate>
+	<cbc:IssueTime>15:33:00.0Z</cbc:IssueTime>
+	<pxs:TaxDataTypeCode>S</pxs:TaxDataTypeCode>
+	<pxs:DocumentScope>D</pxs:DocumentScope>
+	<pxs:ReporterRole>C2</pxs:ReporterRole>
+	<pxs:TaxAuthority>
+		<cbc:ID>GB-TAX</cbc:ID>
+		<cbc:Name>British Tax Authority</cbc:Name>
+	</pxs:TaxAuthority>
+	<pxs:ReportingParty>
+		<cbc:EndpointID schemeID="0088">7300010000001</cbc:EndpointID>
+	</pxs:ReportingParty>
+	<pxs:ReceivingParty>
+		<cbc:EndpointID schemeID="0242">FR23342</cbc:EndpointID>
+	</pxs:ReceivingParty>
+	<pxs:ReportersRepresentative>
+		<cac:PartyIdentification>
+			<cbc:ID schemeID="0242">0078742000008</cbc:ID>
+		</cac:PartyIdentification>
+	</pxs:ReportersRepresentative>
+	<pxs:ReportedTransaction>
+		<pxs:ReportedDocument>
+			<cbc:CustomizationID>urn:cen.eu:en16931:2017#compliant#urn:fdc:peppol.eu:2017:poacc:billing:3.0</cbc:CustomizationID>
+			<cbc:ProfileID>urn:fdc:peppol.eu:2017:poacc:billing:01:1.0</cbc:ProfileID>
+			<cbc:ID>INV-2025-0310</cbc:ID>
+			<cbc:UUID>4d9c7b1e-2f1a-4e5c-9b74-6e5a2c8d3f21</cbc:UUID>
+			<cbc:IssueDate>2025-03-06</cbc:IssueDate>
+			<pxs:DocumentTypeCode>380</pxs:DocumentTypeCode>
+			<cbc:DocumentCurrencyCode>EUR</cbc:DocumentCurrencyCode>
+			<cac:AccountingSupplierParty>
+				<cac:Party>
+					<cac:PostalAddress>
+						<cac:Country>
+							<cbc:IdentificationCode>GB</cbc:IdentificationCode>
+						</cac:Country>
+					</cac:PostalAddress>
+					<cac:PartyTaxScheme>
+						<cbc:CompanyID>GB123456789</cbc:CompanyID>
+						<cac:TaxScheme>
+							<cbc:ID>VAT</cbc:ID>
+						</cac:TaxScheme>
+					</cac:PartyTaxScheme>
+				</cac:Party>
+			</cac:AccountingSupplierParty>
+			<cac:AccountingCustomerParty>
+				<cac:Party>
+					<cac:PostalAddress>
+						<cac:Country>
+							<cbc:IdentificationCode>SE</cbc:IdentificationCode>
+						</cac:Country>
+					</cac:PostalAddress>
+					<cac:PartyTaxScheme>
+						<cbc:CompanyID>SE556677889901</cbc:CompanyID>
+						<cac:TaxScheme>
+							<cbc:ID>VAT</cbc:ID>
+						</cac:TaxScheme>
+					</cac:PartyTaxScheme>
+				</cac:Party>
+			</cac:AccountingCustomerParty>
+			<cac:PaymentMeans>
+				<cbc:PaymentMeansCode name="Credit transfer">30</cbc:PaymentMeansCode>
+				<cbc:PaymentID>INV-2025-0310</cbc:PaymentID>
+				<cac:PayeeFinancialAccount>
+					<cbc:ID>GB29NWBK60161331926819</cbc:ID>
+					<cac:FinancialInstitutionBranch>
+						<cbc:ID>NWBKGB2L</cbc:ID>
+					</cac:FinancialInstitutionBranch>
+				</cac:PayeeFinancialAccount>
+			</cac:PaymentMeans>
+			<cac:AllowanceCharge>
+				<cbc:ChargeIndicator>true</cbc:ChargeIndicator>
+				<cbc:AllowanceChargeReason>Cleaning</cbc:AllowanceChargeReason>
+				<cbc:Amount currencyID="EUR">200</cbc:Amount>
+				<cac:TaxCategory>
+					<cbc:ID>S</cbc:ID>
+					<cbc:Percent>25</cbc:Percent>
+					<cac:TaxScheme>
+						<cbc:ID>VAT</cbc:ID>
+					</cac:TaxScheme>
+				</cac:TaxCategory>
+			</cac:AllowanceCharge>
+			<cac:AllowanceCharge>
+				<cbc:ChargeIndicator>false</cbc:ChargeIndicator>
+				<cbc:AllowanceChargeReason>Discount</cbc:AllowanceChargeReason>
+				<cbc:Amount currencyID="EUR">100</cbc:Amount>
+				<cac:TaxCategory>
+					<cbc:ID>S</cbc:ID>
+					<cbc:Percent>25</cbc:Percent>
+					<cac:TaxScheme>
+						<cbc:ID>VAT</cbc:ID>
+					</cac:TaxScheme>
+				</cac:TaxCategory>
+			</cac:AllowanceCharge>
+			<cac:TaxTotal>
+				<cbc:TaxAmount currencyID="EUR">1550.00</cbc:TaxAmount>
+				<cac:TaxSubtotal>
+					<cbc:TaxableAmount currencyID="EUR">5000.0</cbc:TaxableAmount>
+					<cbc:TaxAmount currencyID="EUR">1250</cbc:TaxAmount>
+					<cac:TaxCategory>
+						<cbc:ID>S</cbc:ID>
+						<cbc:Percent>25</cbc:Percent>
+						<cac:TaxScheme>
+							<cbc:ID>VAT</cbc:ID>
+						</cac:TaxScheme>
+					</cac:TaxCategory>
+				</cac:TaxSubtotal>
+				<cac:TaxSubtotal>
+					<cbc:TaxableAmount currencyID="EUR">2000.0</cbc:TaxableAmount>
+					<cbc:TaxAmount currencyID="EUR">300</cbc:TaxAmount>
+					<cac:TaxCategory>
+						<cbc:ID>S</cbc:ID>
+						<cbc:Percent>15</cbc:Percent>
+						<cac:TaxScheme>
+							<cbc:ID>VAT</cbc:ID>
+						</cac:TaxScheme>
+					</cac:TaxCategory>
+				</cac:TaxSubtotal>
+			</cac:TaxTotal>
+			<pxs:MonetaryTotal>
+				<cbc:LineExtensionAmount currencyID="EUR">6900</cbc:LineExtensionAmount>
+				<cbc:TaxExclusiveAmount currencyID="EUR">7000</cbc:TaxExclusiveAmount>
+				<cbc:TaxInclusiveAmount currencyID="EUR">8550</cbc:TaxInclusiveAmount>
+				<cbc:AllowanceTotalAmount currencyID="EUR">100</cbc:AllowanceTotalAmount>
+				<cbc:ChargeTotalAmount currencyID="EUR">200</cbc:ChargeTotalAmount>
+				<cbc:PayableAmount currencyID="EUR">8550</cbc:PayableAmount>
+			</pxs:MonetaryTotal>
+			<pxs:DocumentLine>
+				<cbc:ID>1</cbc:ID>
+				<cbc:Note>Services delivered during January to February maintenance period</cbc:Note>
+				<cbc:InvoicedQuantity unitCode="C62">10</cbc:InvoicedQuantity>
+				<cbc:LineExtensionAmount currencyID="EUR">4000.00</cbc:LineExtensionAmount>
+				<cac:InvoicePeriod>
+					<cbc:StartDate>2025-01-01</cbc:StartDate>
+					<cbc:EndDate>2025-03-05</cbc:EndDate>
+				</cac:InvoicePeriod>
+				<cac:Item>
+					<cbc:Description>On-site facility maintenance services</cbc:Description>
+					<cbc:Name>Maintenance service</cbc:Name>
+					<cac:CommodityClassification>
+						<cbc:ItemClassificationCode listID="SRV">72101509</cbc:ItemClassificationCode>
+					</cac:CommodityClassification>
+					<cac:ClassifiedTaxCategory>
+						<cbc:ID>S</cbc:ID>
+						<cbc:Percent>25.0</cbc:Percent>
+						<cac:TaxScheme>
+							<cbc:ID>VAT</cbc:ID>
+						</cac:TaxScheme>
+					</cac:ClassifiedTaxCategory>
+				</cac:Item>
+				<cac:Price>
+					<cbc:PriceAmount currencyID="EUR">400</cbc:PriceAmount>
+				</cac:Price>
+			</pxs:DocumentLine>
+			<pxs:DocumentLine>
+				<cbc:ID>2</cbc:ID>
+				<cbc:InvoicedQuantity unitCode="C62">10</cbc:InvoicedQuantity>
+				<cbc:LineExtensionAmount currencyID="EUR">2000.00</cbc:LineExtensionAmount>
+				<cac:Item>
+					<cbc:Description>Specialised technical consulting services</cbc:Description>
+					<cbc:Name>Technical consulting</cbc:Name>
+					<cac:CommodityClassification>
+						<cbc:ItemClassificationCode listID="SRV">80101507</cbc:ItemClassificationCode>
+					</cac:CommodityClassification>
+					<cac:ClassifiedTaxCategory>
+						<cbc:ID>S</cbc:ID>
+						<cbc:Percent>15.0</cbc:Percent>
+						<cac:TaxScheme>
+							<cbc:ID>VAT</cbc:ID>
+						</cac:TaxScheme>
+					</cac:ClassifiedTaxCategory>
+				</cac:Item>
+				<cac:Price>
+					<cbc:PriceAmount currencyID="EUR">200</cbc:PriceAmount>
+				</cac:Price>
+			</pxs:DocumentLine>
+			<pxs:DocumentLine>
+				<cbc:ID>3</cbc:ID>
+				<cbc:InvoicedQuantity unitCode="C62">10</cbc:InvoicedQuantity>
+				<cbc:LineExtensionAmount currencyID="EUR">900.00</cbc:LineExtensionAmount>
+				<cac:Item>
+					<cbc:Description>Equipment inspection and safety verification</cbc:Description>
+					<cbc:Name>Inspection service</cbc:Name>
+					<cac:CommodityClassification>
+						<cbc:ItemClassificationCode listID="SRV">81141805</cbc:ItemClassificationCode>
+					</cac:CommodityClassification>
+					<cac:ClassifiedTaxCategory>
+						<cbc:ID>S</cbc:ID>
+						<cbc:Percent>25.0</cbc:Percent>
+						<cac:TaxScheme>
+							<cbc:ID>VAT</cbc:ID>
+						</cac:TaxScheme>
+					</cac:ClassifiedTaxCategory>
+				</cac:Item>
+				<cac:Price>
+					<cbc:PriceAmount currencyID="EUR">90</cbc:PriceAmount>
+				</cac:Price>
+			</pxs:DocumentLine>
+		</pxs:ReportedDocument>
+	</pxs:ReportedTransaction>
+</pxs:TaxData>

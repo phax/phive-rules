@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pxs:TaxData xmlns:pxs="urn:peppol:schema:vida-taxdata:1.0"
+	xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+	xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+	xmlns:cec="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2">
+	<cbc:CustomizationID>urn:peppol:taxdata:vida-1</cbc:CustomizationID>
+	<cbc:ProfileID>urn:peppol:taxreporting</cbc:ProfileID>
+	<cbc:UUID>123e4567-e89b-12d3-a456-426614174000</cbc:UUID>
+	<cbc:IssueDate>2025-03-03</cbc:IssueDate>
+	<cbc:IssueTime>15:32:00.0Z</cbc:IssueTime>
+	<pxs:TaxDataTypeCode>S</pxs:TaxDataTypeCode>
+	<pxs:DocumentScope>D</pxs:DocumentScope>
+	<pxs:ReporterRole>C2</pxs:ReporterRole>
+	<pxs:TaxAuthority>
+		<cbc:ID>SE-TAX</cbc:ID>
+		<cbc:Name>Swedish Tax Authority</cbc:Name>
+	</pxs:TaxAuthority>
+	<pxs:ReportingParty>
+		<cbc:EndpointID schemeID="0088">7300010000001</cbc:EndpointID>
+	</pxs:ReportingParty>
+	<pxs:ReceivingParty>
+		<cbc:EndpointID schemeID="0242">987654325</cbc:EndpointID>
+	</pxs:ReceivingParty>
+	<pxs:ReportersRepresentative>
+		<cac:PartyIdentification>
+			<cbc:ID schemeID="0242">0078742000008</cbc:ID>
+		</cac:PartyIdentification>
+	</pxs:ReportersRepresentative>
+	<pxs:ReportedTransaction>
+		<pxs:ReportedDocument>
+			<cbc:CustomizationID>urn:cen.eu:en16931:2017#compliant#urn:fdc:peppol.eu:2017:poacc:selfbilling:3.0</cbc:CustomizationID>
+			<cbc:ProfileID>urn:fdc:peppol.eu:2017:poacc:selfbilling:01:1.0</cbc:ProfileID>
+			<cbc:ID>INV-2025-0215</cbc:ID>
+			<cbc:UUID>8c1d2a3f-7b9c-4e45-9a7d-5b6a1d2e3f4c</cbc:UUID>
+			<cbc:IssueDate>2025-03-03</cbc:IssueDate>
+			<pxs:DocumentTypeCode>389</pxs:DocumentTypeCode>
+			<cbc:DocumentCurrencyCode>SEK</cbc:DocumentCurrencyCode>
+			<cac:AccountingSupplierParty>
+				<cac:Party>
+					<cac:PostalAddress>
+						<cac:Country>
+							<cbc:IdentificationCode>SE</cbc:IdentificationCode>
+						</cac:Country>
+					</cac:PostalAddress>
+				</cac:Party>
+			</cac:AccountingSupplierParty>
+			<cac:AccountingCustomerParty>
+				<cac:Party>
+					<cac:PostalAddress>
+						<cac:Country>
+							<cbc:IdentificationCode>NO</cbc:IdentificationCode>
+						</cac:Country>
+					</cac:PostalAddress>
+				</cac:Party>
+			</cac:AccountingCustomerParty>
+			<cac:PaymentMeans>
+				<cbc:PaymentMeansCode>30</cbc:PaymentMeansCode>
+				<cac:PayeeFinancialAccount>
+					<cbc:ID>SE4550000000058398257466</cbc:ID>
+					<cac:FinancialInstitutionBranch>
+						<cbc:ID>ESSESESS</cbc:ID>
+					</cac:FinancialInstitutionBranch>
+				</cac:PayeeFinancialAccount>
+			</cac:PaymentMeans>
+			<cac:TaxTotal>
+				<cbc:TaxAmount currencyID="SEK">0.00</cbc:TaxAmount>
+				<cac:TaxSubtotal>
+					<cbc:TaxableAmount currencyID="SEK">3200.00</cbc:TaxableAmount>
+					<cbc:TaxAmount currencyID="SEK">0.00</cbc:TaxAmount>
+					<cac:TaxCategory>
+						<cbc:ID>O</cbc:ID>
+						<cbc:TaxExemptionReason>Statutory road tax outside the scope of VAT</cbc:TaxExemptionReason>
+						<cac:TaxScheme>
+							<cbc:ID>VAT</cbc:ID>
+						</cac:TaxScheme>
+					</cac:TaxCategory>
+				</cac:TaxSubtotal>
+			</cac:TaxTotal>
+			<pxs:MonetaryTotal>
+				<cbc:LineExtensionAmount currencyID="SEK">3200.00</cbc:LineExtensionAmount>
+				<cbc:TaxExclusiveAmount currencyID="SEK">3200.00</cbc:TaxExclusiveAmount>
+				<cbc:TaxInclusiveAmount currencyID="SEK">3200.00</cbc:TaxInclusiveAmount>
+				<cbc:PayableAmount currencyID="SEK">3200.00</cbc:PayableAmount>
+			</pxs:MonetaryTotal>
+			<pxs:DocumentLine>
+				<cbc:ID>1</cbc:ID>
+				<cbc:InvoicedQuantity unitCode="EA">1</cbc:InvoicedQuantity>
+				<cbc:LineExtensionAmount currencyID="SEK">3200.00</cbc:LineExtensionAmount>
+				<cac:Item>
+					<cbc:Description>Annual vehicle road tax for commercial vehicle (3000 kg)</cbc:Description>
+					<cbc:Name>Vehicle road tax</cbc:Name>
+					<cac:ClassifiedTaxCategory>
+						<cbc:ID>O</cbc:ID>
+						<cac:TaxScheme>
+							<cbc:ID>VAT</cbc:ID>
+						</cac:TaxScheme>
+					</cac:ClassifiedTaxCategory>
+				</cac:Item>
+				<cac:Price>
+					<cbc:PriceAmount currencyID="SEK">3200.00</cbc:PriceAmount>
+				</cac:Price>
+			</pxs:DocumentLine>
+		</pxs:ReportedDocument>
+	</pxs:ReportedTransaction>
+</pxs:TaxData>

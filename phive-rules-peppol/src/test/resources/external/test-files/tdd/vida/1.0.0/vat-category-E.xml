@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pxs:TaxData xmlns:pxs="urn:peppol:schema:vida-taxdata:1.0" xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" xmlns:cec="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2">
+	<cbc:CustomizationID>urn:peppol:taxdata:vida-1</cbc:CustomizationID>
+	<cbc:ProfileID>urn:peppol:taxreporting</cbc:ProfileID>
+	<cbc:UUID>123e4567-e89b-12d3-a456-426614174000</cbc:UUID>
+	<cbc:IssueDate>2025-03-01</cbc:IssueDate>
+	<cbc:IssueTime>15:31:00.0Z</cbc:IssueTime>
+	<pxs:TaxDataTypeCode>S</pxs:TaxDataTypeCode>
+	<pxs:DocumentScope>D</pxs:DocumentScope>
+	<pxs:ReporterRole>C2</pxs:ReporterRole>
+	<pxs:TaxAuthority>
+		<cbc:ID>GB-TAX</cbc:ID>
+		<cbc:Name>British Tax Authority</cbc:Name>
+	</pxs:TaxAuthority>
+	<pxs:ReportingParty>
+		<cbc:EndpointID schemeID="0088">7300010000001</cbc:EndpointID>
+	</pxs:ReportingParty>
+	<pxs:ReceivingParty>
+		<cbc:EndpointID schemeID="0242">12345678</cbc:EndpointID>
+	</pxs:ReceivingParty>
+	<pxs:ReportersRepresentative>
+		<cac:PartyIdentification>
+			<cbc:ID schemeID="0242">0078742000008</cbc:ID>
+		</cac:PartyIdentification>
+	</pxs:ReportersRepresentative>
+	<pxs:ReportedTransaction>
+		<pxs:ReportedDocument>
+			<cbc:CustomizationID>urn:cen.eu:en16931:2017#compliant#urn:fdc:peppol.eu:2017:poacc:billing:3.0</cbc:CustomizationID>
+			<cbc:ProfileID>urn:fdc:peppol.eu:2017:poacc:billing:01:1.0</cbc:ProfileID>
+			<cbc:ID>INV-2025-0102</cbc:ID>
+			<cbc:UUID>6b5d1a72-1c8c-4e52-b1c4-5d72a1a6c3f9</cbc:UUID>
+			<cbc:IssueDate>2025-03-01</cbc:IssueDate>
+			<pxs:DocumentTypeCode>380</pxs:DocumentTypeCode>
+			<cbc:DocumentCurrencyCode>GBP</cbc:DocumentCurrencyCode>
+			<cac:AccountingSupplierParty>
+				<cac:Party>
+					<cac:PostalAddress>
+						<cac:Country>
+							<cbc:IdentificationCode>GB</cbc:IdentificationCode>
+						</cac:Country>
+					</cac:PostalAddress>
+					<cac:PartyTaxScheme>
+						<cbc:CompanyID>GB123456789</cbc:CompanyID>
+						<cac:TaxScheme>
+							<cbc:ID>VAT</cbc:ID>
+						</cac:TaxScheme>
+					</cac:PartyTaxScheme>
+				</cac:Party>
+			</cac:AccountingSupplierParty>
+			<cac:AccountingCustomerParty>
+				<cac:Party>
+					<cac:PostalAddress>
+						<cac:Country>
+							<cbc:IdentificationCode>DK</cbc:IdentificationCode>
+						</cac:Country>
+					</cac:PostalAddress>
+					<cac:PartyTaxScheme>
+						<cbc:CompanyID>DK12345678</cbc:CompanyID>
+						<cac:TaxScheme>
+							<cbc:ID>VAT</cbc:ID>
+						</cac:TaxScheme>
+					</cac:PartyTaxScheme>
+				</cac:Party>
+			</cac:AccountingCustomerParty>
+			<cac:PaymentMeans>
+				<cbc:PaymentMeansCode>30</cbc:PaymentMeansCode>
+				<cac:PayeeFinancialAccount>
+					<cbc:ID>GB29NWBK60161331926819</cbc:ID>
+					<cac:FinancialInstitutionBranch>
+						<cbc:ID>NWBKGB2L</cbc:ID>
+					</cac:FinancialInstitutionBranch>
+				</cac:PayeeFinancialAccount>
+			</cac:PaymentMeans>
+			<cac:TaxTotal>
+				<cbc:TaxAmount currencyID="GBP">0.00</cbc:TaxAmount>
+				<cac:TaxSubtotal>
+					<cbc:TaxableAmount currencyID="GBP">1200.00</cbc:TaxableAmount>
+					<cbc:TaxAmount currencyID="GBP">0.00</cbc:TaxAmount>
+					<cac:TaxCategory>
+						<cbc:ID>E</cbc:ID>
+						<cbc:Percent>0</cbc:Percent>
+						<cbc:TaxExemptionReasonCode>VATEX-EU-F</cbc:TaxExemptionReasonCode>
+						<cac:TaxScheme>
+							<cbc:ID>VAT</cbc:ID>
+						</cac:TaxScheme>
+					</cac:TaxCategory>
+				</cac:TaxSubtotal>
+			</cac:TaxTotal>
+			<pxs:MonetaryTotal>
+				<cbc:LineExtensionAmount currencyID="GBP">1200.00</cbc:LineExtensionAmount>
+				<cbc:TaxExclusiveAmount currencyID="GBP">1200.00</cbc:TaxExclusiveAmount>
+				<cbc:TaxInclusiveAmount currencyID="GBP">1200.00</cbc:TaxInclusiveAmount>
+				<cbc:PayableAmount currencyID="GBP">1200.00</cbc:PayableAmount>
+			</pxs:MonetaryTotal>
+			<pxs:DocumentLine>
+				<cbc:ID>1</cbc:ID>
+				<cbc:InvoicedQuantity unitCode="EA">10</cbc:InvoicedQuantity>
+				<cbc:LineExtensionAmount currencyID="GBP">1200.00</cbc:LineExtensionAmount>
+				<cac:Item>
+					<cbc:Name>IT consulting services provided remotely</cbc:Name>
+					<cac:ClassifiedTaxCategory>
+						<cbc:ID>E</cbc:ID>
+						<cbc:Percent>0</cbc:Percent>
+						<cac:TaxScheme>
+							<cbc:ID>VAT</cbc:ID>
+						</cac:TaxScheme>
+					</cac:ClassifiedTaxCategory>
+				</cac:Item>
+				<cac:Price>
+					<cbc:PriceAmount currencyID="GBP">120.00</cbc:PriceAmount>
+				</cac:Price>
+			</pxs:DocumentLine>
+		</pxs:ReportedDocument>
+	</pxs:ReportedTransaction>
+</pxs:TaxData>
