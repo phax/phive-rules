@@ -237,6 +237,7 @@ v4.3.0 - work in progress
 * Fixed an error in the ZATCA/FATOORA 2.3.8 XSLT that created invalid SVRL
 * Added ZATCA/FATOORA 3.4.6 rules
 * Added support for Peppol ViDA Pilot TDD 1.0.0 rules
+* Added support for Peppol SK TDD 1.0.0 rules
 
 v4.2.5 - 2026-03-27
 * Updated to final AE PINT 1.0.3 rules

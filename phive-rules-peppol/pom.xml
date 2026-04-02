@@ -79,6 +79,11 @@
     </dependency>
     <dependency>
       <groupId>com.helger.peppol</groupId>
+      <artifactId>peppol-sk-tdd-datatypes</artifactId>
+      <version>${peppol-sk.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.helger.peppol</groupId>
       <artifactId>peppol-uae-tdd-datatypes</artifactId>
       <version>${peppol-uae.version}</version>
     </dependency>
@@ -314,6 +319,18 @@
             <configuration>
               <schematronDirectory>src/test/resources/external/rule-source/reporting/tsr/1.0.5</schematronDirectory>
               <xsltDirectory>src/main/resources/external/schematron/reporting/tsr/1.0.5/xslt</xsltDirectory>
+            </configuration>
+          </execution>
+          -->
+          <!--
+          <execution>
+            <id>reporting-tdd-sk</id>
+            <goals>
+              <goal>convert</goal>
+            </goals>
+            <configuration>
+              <schematronDirectory>src/test/resources/external/rule-source/tdd/sk/1.0.0</schematronDirectory>
+              <xsltDirectory>src/main/resources/external/schematron/tdd/sk/1.0.0</xsltDirectory>
             </configuration>
           </execution>
           -->

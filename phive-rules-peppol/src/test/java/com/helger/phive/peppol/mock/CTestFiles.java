@@ -157,6 +157,8 @@ public final class CTestFiles
                                                              PeppolValidationTaxData.VID_OPENPEPPOL_TDD_AE_1_0_1,
                                                              PeppolValidationTaxData.VID_OPENPEPPOL_TDD_AE_1_0_2,
 
+                                                             PeppolValidationTaxData.VID_OPENPEPPOL_TDD_SK_1_0_0,
+
                                                              PeppolValidationTaxData.VID_OPENPEPPOL_TDD_VIDA_1_0_0,
 
                                                              /* PINT AE */
@@ -756,6 +758,22 @@ public final class CTestFiles
                       "simple.xml",
                       "standard-invoice-tdd.xml",
                       "tax-currency.xml");
+    }
+
+    // SK TDD 1.0.0
+    if (aVESID.equals (PeppolValidationTaxData.VID_OPENPEPPOL_TDD_SK_1_0_0))
+    {
+      return _getAll ("tdd/sk/1.0.0/",
+                      "Allowance-example.xml",
+                      "base-creditnote-correction.xml",
+                      "base-example.xml",
+                      "base-negative-inv-correction.xml",
+                      "vat-category-E.xml",
+                      "vat-category-O.xml",
+                      "Vat-category-S.xml",
+                      "vat-category-Z.xml"
+      // ,"WithoutTaxes-example.xml"
+      );
     }
 
     // ViDA Pilot TDD 1.0.0

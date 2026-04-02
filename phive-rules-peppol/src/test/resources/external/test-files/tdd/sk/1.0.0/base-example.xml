@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pxs:TaxData xmlns:pxs="urn:peppol:schema:sk-taxdata:1.0" xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" xmlns:cec="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2">
+	<cbc:CustomizationID>urn:peppol:taxdata:sk-1</cbc:CustomizationID>
+	<cbc:ProfileID>urn:peppol:taxreporting</cbc:ProfileID>
+	<cbc:UUID>123e4567-e89b-12d3-a456-426614174000</cbc:UUID>
+	<cbc:IssueDate>2025-01-25</cbc:IssueDate>
+	<cbc:IssueTime>15:50:00.0Z</cbc:IssueTime>
+	<pxs:TaxDataTypeCode>S</pxs:TaxDataTypeCode>
+	
+	<pxs:DocumentScope>D</pxs:DocumentScope>
+	<pxs:ReporterRole>C2</pxs:ReporterRole>
+	<pxs:TaxAuthority>
+		<cbc:ID>SE-TAX</cbc:ID>
+		<cbc:Name>Swedish Tax Authority</cbc:Name>
+	</pxs:TaxAuthority>
+	
+	<pxs:ReportingParty>
+		<cbc:EndpointID schemeID="0088">9482348239847239874</cbc:EndpointID>
+	</pxs:ReportingParty>
+	<pxs:ReceivingParty>
+		<cbc:EndpointID schemeID="0242">FR23342</cbc:EndpointID>
+	</pxs:ReceivingParty>
+	<pxs:ReportersRepresentative>
+		<cac:PartyIdentification>
+			<cbc:ID schemeID="0242">0078742000008</cbc:ID>
+		</cac:PartyIdentification>
+	</pxs:ReportersRepresentative>
+	<pxs:ReportedTransaction>
+		<pxs:ReportedDocument>
+			<cbc:CustomizationID>urn:cen.eu:en16931:2017#compliant#urn:fdc:peppol.eu:2017:poacc:billing:3.0</cbc:CustomizationID>
+			<cbc:ProfileID>urn:fdc:peppol.eu:2017:poacc:billing:01:1.0</cbc:ProfileID>
+			<cbc:ID>Snippet1</cbc:ID>
+			<cbc:UUID>aa11bb22-cc33-dd44-ee55-ff6677889900</cbc:UUID>
+			<cbc:IssueDate>2017-11-13</cbc:IssueDate>
+			<pxs:DocumentTypeCode>380</pxs:DocumentTypeCode>
+			<cbc:DocumentCurrencyCode>EUR</cbc:DocumentCurrencyCode>
+			<cac:AccountingSupplierParty>
+				<cac:Party>
+					<cac:PostalAddress>
+						<cac:Country>
+							<cbc:IdentificationCode>GB</cbc:IdentificationCode>
+						</cac:Country>
+					</cac:PostalAddress>
+					<cac:PartyTaxScheme>
+						<cbc:CompanyID>GB1232434</cbc:CompanyID>
+						<cac:TaxScheme>
+							<cbc:ID>VAT</cbc:ID>
+						</cac:TaxScheme>
+					</cac:PartyTaxScheme>
+				</cac:Party>
+			</cac:AccountingSupplierParty>
+			<cac:AccountingCustomerParty>
+				<cac:Party>
+					<cac:PostalAddress>
+						<cac:Country>
+							<cbc:IdentificationCode>SE</cbc:IdentificationCode>
+						</cac:Country>
+					</cac:PostalAddress>
+					<cac:PartyTaxScheme>
+						<cbc:CompanyID>SE4598375937</cbc:CompanyID>
+						<cac:TaxScheme>
+							<cbc:ID>VAT</cbc:ID>
+						</cac:TaxScheme>
+					</cac:PartyTaxScheme>
+					<cac:PartyLegalEntity>
+								<cbc:RegistrationName>ABC Ltd</cbc:RegistrationName>
+							</cac:PartyLegalEntity>
+				</cac:Party>
+			</cac:AccountingCustomerParty>
+			<cac:PaymentMeans>
+				<cbc:PaymentMeansCode name="Credit transfer">30</cbc:PaymentMeansCode>
+				<cbc:PaymentID>Snippet1</cbc:PaymentID>
+				<cac:PayeeFinancialAccount>
+					<cbc:ID>IBAN32423940</cbc:ID>
+					<cac:FinancialInstitutionBranch>
+						<cbc:ID>BIC324098</cbc:ID>
+					</cac:FinancialInstitutionBranch>
+				</cac:PayeeFinancialAccount>
+			</cac:PaymentMeans>
+			<cac:AllowanceCharge>
+				<cbc:ChargeIndicator>true</cbc:ChargeIndicator>
+				<cbc:AllowanceChargeReason>Insurance</cbc:AllowanceChargeReason>
+				<cbc:Amount currencyID="EUR">25</cbc:Amount>
+				<cac:TaxCategory>
+					<cbc:ID>S</cbc:ID>
+					<cbc:Percent>25.0</cbc:Percent>
+					<cac:TaxScheme>
+						<cbc:ID>VAT</cbc:ID>
+					</cac:TaxScheme>
+				</cac:TaxCategory>
+			</cac:AllowanceCharge>
+			<cac:TaxTotal>
+				<cbc:TaxAmount currencyID="EUR">331.25</cbc:TaxAmount>
+				<cac:TaxSubtotal>
+					<cbc:TaxableAmount currencyID="EUR">1325</cbc:TaxableAmount>
+					<cbc:TaxAmount currencyID="EUR">331.25</cbc:TaxAmount>
+					<cac:TaxCategory>
+						<cbc:ID>S</cbc:ID>
+						<cbc:Percent>25.0</cbc:Percent>
+						<cac:TaxScheme>
+							<cbc:ID>VAT</cbc:ID>
+						</cac:TaxScheme>
+					</cac:TaxCategory>
+				</cac:TaxSubtotal>
+			</cac:TaxTotal>
+			<pxs:MonetaryTotal>
+				<cbc:LineExtensionAmount currencyID="EUR">1300</cbc:LineExtensionAmount>
+				<cbc:TaxExclusiveAmount currencyID="EUR">1325</cbc:TaxExclusiveAmount>
+				<cbc:TaxInclusiveAmount currencyID="EUR">1656.25</cbc:TaxInclusiveAmount>
+				<cbc:ChargeTotalAmount currencyID="EUR">25</cbc:ChargeTotalAmount>
+				<cbc:PayableAmount currencyID="EUR">1656.25</cbc:PayableAmount>
+			</pxs:MonetaryTotal>
+			<pxs:DocumentLine>
+				<cbc:ID>1</cbc:ID>
+				<cbc:InvoicedQuantity unitCode="DAY">7</cbc:InvoicedQuantity>
+				<cbc:LineExtensionAmount currencyID= "EUR">2800</cbc:LineExtensionAmount>
+				<cac:Item>
+					<cbc:Description>Description of item</cbc:Description>
+					<cbc:Name>item name</cbc:Name>
+					<cac:CommodityClassification>
+						<cbc:ItemClassificationCode listID="SRV">09348023</cbc:ItemClassificationCode>
+					</cac:CommodityClassification>
+					<cac:ClassifiedTaxCategory>
+						<cbc:ID>S</cbc:ID>
+						<cbc:Percent>25.0</cbc:Percent>
+						<cac:TaxScheme>
+							<cbc:ID>VAT</cbc:ID>
+						</cac:TaxScheme>
+					</cac:ClassifiedTaxCategory>
+				</cac:Item>
+				<cac:Price>
+					<cbc:PriceAmount currencyID="EUR">400</cbc:PriceAmount>
+				</cac:Price>
+			</pxs:DocumentLine>
+			<pxs:DocumentLine>
+				<cbc:ID>2</cbc:ID>
+				<cbc:InvoicedQuantity unitCode="DAY">-3</cbc:InvoicedQuantity>
+				<cbc:LineExtensionAmount currencyID="EUR">-1500</cbc:LineExtensionAmount>
+				<cac:Item>
+					<cbc:Description>Description 2</cbc:Description>
+					<cbc:Name>item name 2</cbc:Name>
+					<cac:CommodityClassification>
+						<cbc:ItemClassificationCode listID="SRV">09348023</cbc:ItemClassificationCode>
+					</cac:CommodityClassification>
+					<cac:ClassifiedTaxCategory>
+						<cbc:ID>S</cbc:ID>
+						<cbc:Percent>25.0</cbc:Percent>
+						<cac:TaxScheme>
+							<cbc:ID>VAT</cbc:ID>
+						</cac:TaxScheme>
+					</cac:ClassifiedTaxCategory>
+				</cac:Item>
+				<cac:Price>
+					<cbc:PriceAmount currencyID="EUR">500</cbc:PriceAmount>
+				</cac:Price>
+			</pxs:DocumentLine>
+		</pxs:ReportedDocument>
+	</pxs:ReportedTransaction>
+</pxs:TaxData>
