@@ -27,10 +27,10 @@ import com.helger.io.resource.ClassPathResource;
 import com.helger.phive.api.executorset.IValidationExecutorSet;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
 import com.helger.phive.en16931.EN16931Validation;
-import com.helger.phive.rules.api.PhiveRulesBuilder;
 import com.helger.phive.rules.api.PhiveRulesCIIHelper;
 import com.helger.phive.rules.api.PhiveRulesHelper;
 import com.helger.phive.rules.api.PhiveRulesUBLHelper;
+import com.helger.phive.xml.executorset.VesXmlBuilder;
 import com.helger.phive.xml.source.IValidationSourceXML;
 import com.helger.ubl21.UBL21Marshaller;
 
@@ -114,7 +114,7 @@ public final class FranceCTCValidation
     // CTC 0.1
     {
       final String sPrefix0 = sPrefix + "0.1/xslt/";
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_FR_CTC_UBL_INV_0_1)
                        .displayNamePrefix ("France CTC UBL Invoice ")
                        .deprecated ()
@@ -123,7 +123,7 @@ public final class FranceCTCValidation
                                                                                                     "20250731_BR-FR-Flux2-Schematron-UBL_V0.1.xslt",
                                                                                                     _getCL ())))
                        .registerInto (aRegistry);
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_FR_CTC_UBL_CN_0_1)
                        .displayNamePrefix ("France CTC UBL Credit Note ")
                        .deprecated ()
@@ -132,7 +132,7 @@ public final class FranceCTCValidation
                                                                                                     "20250731_BR-FR-Flux2-Schematron-UBL_V0.1.xslt",
                                                                                                     _getCL ())))
                        .registerInto (aRegistry);
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_FR_CTC_CII_0_1)
                        .displayNamePrefix ("France CTC CII ")
                        .deprecated ()
@@ -146,7 +146,7 @@ public final class FranceCTCValidation
     // CTC 1.2.0
     {
       final String sPrefix0 = sPrefix + "1.2.0/xslt/";
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_FR_CTC_UBL_INV_1_2_0)
                        .displayNamePrefix ("France CTC UBL Invoice ")
                        .notDeprecated ()
@@ -155,7 +155,7 @@ public final class FranceCTCValidation
                                                                                                     "20251114_BR-FR-Flux2-Schematron-UBL_V1.2.0.xslt",
                                                                                                     _getCL ())))
                        .registerInto (aRegistry);
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_FR_CTC_UBL_CN_1_2_0)
                        .displayNamePrefix ("France CTC UBL Credit Note ")
                        .notDeprecated ()
@@ -164,7 +164,7 @@ public final class FranceCTCValidation
                                                                                                     "20251114_BR-FR-Flux2-Schematron-UBL_V1.2.0.xslt",
                                                                                                     _getCL ())))
                        .registerInto (aRegistry);
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_FR_CTC_CII_1_2_0)
                        .displayNamePrefix ("France CTC CII ")
                        .notDeprecated ()
@@ -173,7 +173,7 @@ public final class FranceCTCValidation
                                                                                                        "20251114_BR-FR-Flux2-Schematron-CII_V1.2.0.xslt",
                                                                                                        _getCL ())))
                        .registerInto (aRegistry);
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_FR_CTC_CDAR_1_2_0)
                        .displayNamePrefix ("France CTC CDAR ")
                        .notDeprecated ()
@@ -195,7 +195,7 @@ public final class FranceCTCValidation
       final String sPrefix0 = sPrefix + "1.3.0/xslt/";
 
       // Base Invoice based on EN16931
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_FR_CTC_UBL_INV_1_3_0)
                        .displayNamePrefix ("France CTC UBL Invoice ")
                        .notDeprecated ()
@@ -204,7 +204,7 @@ public final class FranceCTCValidation
                                                                                                     "20260216_BR-FR-Flux2-Schematron-UBL_V1.3.0.xslt",
                                                                                                     _getCL ())))
                        .registerInto (aRegistry);
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_FR_CTC_UBL_CN_1_3_0)
                        .displayNamePrefix ("France CTC UBL Credit Note ")
                        .notDeprecated ()
@@ -213,7 +213,7 @@ public final class FranceCTCValidation
                                                                                                     "20260216_BR-FR-Flux2-Schematron-UBL_V1.3.0.xslt",
                                                                                                     _getCL ())))
                        .registerInto (aRegistry);
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_FR_CTC_CII_1_3_0)
                        .displayNamePrefix ("France CTC CII ")
                        .notDeprecated ()
@@ -224,7 +224,7 @@ public final class FranceCTCValidation
                        .registerInto (aRegistry);
 
       // Extended invoice based on special EN subset
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_FR_EXTENDED_CTC_UBL_INV_1_3_0)
                        .displayNamePrefix ("France Extended CTC UBL Invoice ")
                        .notDeprecated ()
@@ -236,7 +236,7 @@ public final class FranceCTCValidation
                                                                                                     "20260216_BR-FR-Flux2-Schematron-UBL_V1.3.0.xslt",
                                                                                                     _getCL ())))
                        .registerInto (aRegistry);
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_FR_EXTENDED_CTC_UBL_CN_1_3_0)
                        .displayNamePrefix ("France Extended CTC UBL Credit Note ")
                        .notDeprecated ()
@@ -248,7 +248,7 @@ public final class FranceCTCValidation
                                                                                                     "20260216_BR-FR-Flux2-Schematron-UBL_V1.3.0.xslt",
                                                                                                     _getCL ())))
                        .registerInto (aRegistry);
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_FR_EXTENDED_CTC_CII_1_3_0)
                        .displayNamePrefix ("France Extended CTC CII ")
                        .notDeprecated ()
@@ -262,7 +262,7 @@ public final class FranceCTCValidation
                        .registerInto (aRegistry);
 
       // CDAR
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_FR_CTC_CDAR_1_3_0)
                        .displayNamePrefix ("France CTC CDAR ")
                        .notDeprecated ()

@@ -30,9 +30,9 @@ import com.helger.io.resource.ClassPathResource;
 import com.helger.phive.api.executorset.IValidationExecutorSet;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
 import com.helger.phive.en16931.EN16931Validation;
-import com.helger.phive.rules.api.PhiveRulesBuilder;
 import com.helger.phive.rules.api.PhiveRulesCIIHelper;
 import com.helger.phive.rules.api.PhiveRulesHelper;
+import com.helger.phive.xml.executorset.VesXmlBuilder;
 import com.helger.phive.xml.source.IValidationSourceXML;
 
 /**
@@ -200,11 +200,11 @@ public final class ZugferdValidation
     return new DVRCoordinate (GROUP_ID_FACTUR_X, aZugferdVESID.getArtifactID (), aFacturXVersion);
   }
 
-  private static PhiveRulesBuilder.@NonNull Alias _createFacturXAlias (@NonNull final DVRCoordinate aVESID,
+  private static VesXmlBuilder.@NonNull Alias _createFacturXAlias (@NonNull final DVRCoordinate aVESID,
                                                                        @NonNull final EZugferdProfile eProfile)
   {
     final DVRCoordinate aFacturXVESID = getMappedFacturXVESID (aVESID);
-    return new PhiveRulesBuilder.Alias (aFacturXVESID,
+    return new VesXmlBuilder.Alias (aFacturXVESID,
                                         "Factur-X " +
                                                        aFacturXVESID.getVersionString () +
                                                        " (" +
@@ -246,7 +246,7 @@ public final class ZugferdValidation
                                                                       eProfile.getArtifactID (),
                                                                       sZugferdVersion);
       final String sDisplayName = "ZUGFeRD " + sZugferdVersion + " (" + eProfile.getDisplayName () + ")";
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (aVESID)
                        .displayName (sDisplayName)
                        .deprecated ()
@@ -288,7 +288,7 @@ public final class ZugferdValidation
         if (aVESCII_1_3_1 == null)
           throw new InitializationException ("The EN 16931 VES are missing. Make sure to call EN16931Validation.initEN16931 first.");
 
-        PhiveRulesBuilder.builder ()
+        VesXmlBuilder.builder ()
                          .vesID (aVESID)
                          .displayName (sDisplayName)
                          .deprecated ()
@@ -299,7 +299,7 @@ public final class ZugferdValidation
       }
       else
       {
-        PhiveRulesBuilder.builder ()
+        VesXmlBuilder.builder ()
                          .vesID (aVESID)
                          .displayName (sDisplayName)
                          .deprecated ()
@@ -338,7 +338,7 @@ public final class ZugferdValidation
       if (eProfile == EZugferdProfile.EN16931)
       {
         // Based on 1.3.7-SNAPSHOT
-        PhiveRulesBuilder.builder ()
+        VesXmlBuilder.builder ()
                          .vesID (aVESID)
                          .displayName (sDisplayName)
                          .deprecated ()
@@ -349,7 +349,7 @@ public final class ZugferdValidation
       }
       else
       {
-        PhiveRulesBuilder.builder ()
+        VesXmlBuilder.builder ()
                          .vesID (aVESID)
                          .displayName (sDisplayName)
                          .deprecated ()
@@ -375,7 +375,7 @@ public final class ZugferdValidation
                                                                       eProfile.getArtifactID (),
                                                                       sZugferdVersion);
 
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (aVESID)
                        .displayName ("ZUGFeRD " + sZugferdVersion + " (" + eProfile.getDisplayName () + ")")
                        .deprecated ()
@@ -405,7 +405,7 @@ public final class ZugferdValidation
                                                                       eProfile.getArtifactID (),
                                                                       sZugferdVersion);
 
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (aVESID)
                        .displayName ("ZUGFeRD " + sZugferdVersion + " (" + eProfile.getDisplayName () + ")")
                        .notDeprecated ()
@@ -435,7 +435,7 @@ public final class ZugferdValidation
                                                                       eProfile.getArtifactID (),
                                                                       sZugferdVersion);
 
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (aVESID)
                        .displayName ("ZUGFeRD " + sZugferdVersion + " (" + eProfile.getDisplayName () + ")")
                        .notDeprecated ()

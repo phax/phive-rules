@@ -28,9 +28,9 @@ import com.helger.io.resource.IReadableResource;
 import com.helger.phive.api.executorset.IValidationExecutorSet;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
 import com.helger.phive.en16931.EN16931Validation;
-import com.helger.phive.rules.api.PhiveRulesBuilder;
 import com.helger.phive.rules.api.PhiveRulesHelper;
 import com.helger.phive.rules.api.PhiveRulesUBLHelper;
+import com.helger.phive.xml.executorset.VesXmlBuilder;
 import com.helger.phive.xml.source.IValidationSourceXML;
 
 /**
@@ -79,14 +79,14 @@ public final class PeppolValidation2025_03
     if (aVESUBLCreditNote_1_3_13 == null || aVESUBLInvoice_1_3_13 == null)
       throw new InitializationException ("The EN 16931 VES are missing. Make sure to call EN16931Validation.initEN16931 first.");
 
-    PhiveRulesBuilder.builder ()
+    VesXmlBuilder.builder ()
                      .vesID (VID_OPENPEPPOL_INVOICE_SELF_BILLING_UBL_V3)
                      .displayName ("OpenPeppol UBL Invoice Self-Billing" + sVersion + sAkaVersionBilling)
                      .notDeprecated ()
                      .basedOn (aVESUBLInvoice_1_3_13)
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aPeppolSB))
                      .registerInto (aRegistry);
-    PhiveRulesBuilder.builder ()
+    VesXmlBuilder.builder ()
                      .vesID (VID_OPENPEPPOL_CREDIT_NOTE_SELF_BILLING_UBL_V3)
                      .displayName ("OpenPeppol UBL Credit Note Self-Billing" + sVersion + sAkaVersionBilling)
                      .notDeprecated ()

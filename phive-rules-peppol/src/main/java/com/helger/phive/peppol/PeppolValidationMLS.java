@@ -23,9 +23,9 @@ import com.helger.base.enforce.ValueEnforcer;
 import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.io.resource.ClassPathResource;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
-import com.helger.phive.rules.api.PhiveRulesBuilder;
 import com.helger.phive.rules.api.PhiveRulesHelper;
 import com.helger.phive.rules.api.PhiveRulesUBLHelper;
+import com.helger.phive.xml.executorset.VesXmlBuilder;
 import com.helger.phive.xml.source.IValidationSourceXML;
 import com.helger.ubl21.UBL21Marshaller;
 
@@ -61,7 +61,7 @@ public final class PeppolValidationMLS
 
     // v1.0.0
     {
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_MLS_V100)
                        .displayNamePrefix ("Peppol Message Level Status ")
                        .notDeprecated ()

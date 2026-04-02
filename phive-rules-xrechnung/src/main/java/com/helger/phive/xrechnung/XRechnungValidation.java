@@ -29,10 +29,10 @@ import com.helger.io.resource.ClassPathResource;
 import com.helger.phive.api.executorset.IValidationExecutorSet;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
 import com.helger.phive.en16931.EN16931Validation;
-import com.helger.phive.rules.api.PhiveRulesBuilder;
 import com.helger.phive.rules.api.PhiveRulesCIIHelper;
 import com.helger.phive.rules.api.PhiveRulesHelper;
 import com.helger.phive.rules.api.PhiveRulesUBLHelper;
+import com.helger.phive.xml.executorset.VesXmlBuilder;
 import com.helger.phive.xml.schematron.CustomErrorDetails;
 import com.helger.phive.xml.source.IValidationSourceXML;
 
@@ -266,7 +266,7 @@ public final class XRechnungValidation
       if (aVESCII == null || aVESUBLCreditNote == null || aVESUBLInvoice == null)
         throw new InitializationException ("The EN 16931 VES are missing. Make sure to call EN16931Validation.initEN16931 first.");
 
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_XRECHNUNG_CII_120)
                        .displayNamePrefix ("XRechnung CII ")
                        .deprecated ()
@@ -275,7 +275,7 @@ public final class XRechnungValidation
                                                                                                        "1.2.0/XRechnung-CII-validation.xslt",
                                                                                                        _getCL ())))
                        .registerInto (aRegistry);
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_XRECHNUNG_UBL_CREDITNOTE_120)
                        .displayNamePrefix ("XRechnung UBL Credit Note ")
                        .deprecated ()
@@ -284,7 +284,7 @@ public final class XRechnungValidation
                                                                                                     "1.2.0/XRechnung-UBL-validation-CreditNote.xslt",
                                                                                                     _getCL ())))
                        .registerInto (aRegistry);
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_XRECHNUNG_UBL_INVOICE_120)
                        .displayNamePrefix ("XRechnung UBL Invoice ")
                        .deprecated ()
@@ -303,7 +303,7 @@ public final class XRechnungValidation
       if (aVESCII == null || aVESUBLCreditNote == null || aVESUBLInvoice == null)
         throw new InitializationException ("The EN 16931 VES are missing. Make sure to call EN16931Validation.initEN16931 first.");
 
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_XRECHNUNG_CII_121)
                        .displayNamePrefix ("XRechnung CII ")
                        .deprecated ()
@@ -312,7 +312,7 @@ public final class XRechnungValidation
                                                                                                        "1.2.1/XRechnung-CII-validation.xslt",
                                                                                                        _getCL ())))
                        .registerInto (aRegistry);
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_XRECHNUNG_UBL_CREDITNOTE_121)
                        .displayNamePrefix ("XRechnung UBL Credit Note ")
                        .deprecated ()
@@ -321,7 +321,7 @@ public final class XRechnungValidation
                                                                                                     "1.2.1/XRechnung-UBL-validation-CreditNote.xslt",
                                                                                                     _getCL ())))
                        .registerInto (aRegistry);
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_XRECHNUNG_UBL_INVOICE_121)
                        .displayNamePrefix ("XRechnung UBL Invoice ")
                        .deprecated ()
@@ -340,7 +340,7 @@ public final class XRechnungValidation
       if (aVESCII == null || aVESUBLCreditNote == null || aVESUBLInvoice == null)
         throw new InitializationException ("The EN 16931 VES are missing. Make sure to call EN16931Validation.initEN16931 first.");
 
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_XRECHNUNG_CII_122)
                        .displayNamePrefix ("XRechnung CII ")
                        .deprecated ()
@@ -349,7 +349,7 @@ public final class XRechnungValidation
                                                                                                        "1.2.2/XRechnung-CII-validation.xslt",
                                                                                                        _getCL ())))
                        .registerInto (aRegistry);
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_XRECHNUNG_UBL_CREDITNOTE_122)
                        .displayNamePrefix ("XRechnung UBL Credit Note ")
                        .deprecated ()
@@ -358,7 +358,7 @@ public final class XRechnungValidation
                                                                                                     "1.2.2/XRechnung-UBL-validation-CreditNote.xslt",
                                                                                                     _getCL ())))
                        .registerInto (aRegistry);
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_XRECHNUNG_UBL_INVOICE_122)
                        .displayNamePrefix ("XRechnung UBL Invoice ")
                        .deprecated ()
@@ -383,7 +383,7 @@ public final class XRechnungValidation
       aCustomErrorLevels.put ("BR-CL-21", CustomErrorDetails.of (EErrorLevel.WARN));
       aCustomErrorLevels.put ("BR-CL-24", CustomErrorDetails.of (EErrorLevel.INFO));
 
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_XRECHNUNG_CII_200)
                        .displayNamePrefix ("XRechnung CII ")
                        .deprecated ()
@@ -393,7 +393,7 @@ public final class XRechnungValidation
                                                                                                        _getCL ())))
                        .registerInto (aRegistry);
 
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_XRECHNUNG_UBL_CREDITNOTE_200)
                        .displayNamePrefix ("XRechnung UBL Credit Note ")
                        .deprecated ()
@@ -403,7 +403,7 @@ public final class XRechnungValidation
                                                                                                     _getCL ())))
                        .registerInto (aRegistry);
 
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_XRECHNUNG_UBL_INVOICE_200)
                        .displayNamePrefix ("XRechnung UBL Invoice ")
                        .deprecated ()
@@ -428,7 +428,7 @@ public final class XRechnungValidation
         aCustomErrorLevels.put ("BR-CL-23", CustomErrorDetails.of (EErrorLevel.WARN));
         aCustomErrorLevels.put ("BR-CL-21", CustomErrorDetails.of (EErrorLevel.WARN));
 
-        PhiveRulesBuilder.builder ()
+        VesXmlBuilder.builder ()
                          .vesID (VID_XRECHNUNG_CII_201)
                          .displayNamePrefix ("XRechnung CII ")
                          .deprecated ()
@@ -445,7 +445,7 @@ public final class XRechnungValidation
         aCustomErrorLevels.put ("BR-CL-23", CustomErrorDetails.of (EErrorLevel.WARN));
         aCustomErrorLevels.put ("BR-CL-21", CustomErrorDetails.of (EErrorLevel.WARN));
 
-        PhiveRulesBuilder.builder ()
+        VesXmlBuilder.builder ()
                          .vesID (VID_XRECHNUNG_UBL_CREDITNOTE_201)
                          .displayNamePrefix ("XRechnung UBL Credit Note ")
                          .deprecated ()
@@ -462,7 +462,7 @@ public final class XRechnungValidation
         aCustomErrorLevels.put ("BR-CL-23", CustomErrorDetails.of (EErrorLevel.WARN));
         aCustomErrorLevels.put ("BR-CL-21", CustomErrorDetails.of (EErrorLevel.WARN));
 
-        PhiveRulesBuilder.builder ()
+        VesXmlBuilder.builder ()
                          .vesID (VID_XRECHNUNG_UBL_INVOICE_201)
                          .displayNamePrefix ("XRechnung UBL Invoice ")
                          .deprecated ()
@@ -480,7 +480,7 @@ public final class XRechnungValidation
         // added PH
         aCustomErrorLevels.put ("BR-CL-24", CustomErrorDetails.of (EErrorLevel.INFO));
 
-        PhiveRulesBuilder.builder ()
+        VesXmlBuilder.builder ()
                          .vesID (VID_XRECHNUNG_EXTENSION_UBL_INVOICE_201)
                          .displayName ("XRechnung UBL Invoice " +
                                        VID_XRECHNUNG_EXTENSION_UBL_INVOICE_201.getVersionString () +
@@ -510,7 +510,7 @@ public final class XRechnungValidation
         aCustomErrorLevels.put ("BR-CL-23", CustomErrorDetails.of (EErrorLevel.WARN));
         aCustomErrorLevels.put ("BR-CL-21", CustomErrorDetails.of (EErrorLevel.WARN));
 
-        PhiveRulesBuilder.builder ()
+        VesXmlBuilder.builder ()
                          .vesID (VID_XRECHNUNG_CII_211)
                          .displayNamePrefix ("XRechnung CII ")
                          .deprecated ()
@@ -527,7 +527,7 @@ public final class XRechnungValidation
         aCustomErrorLevels.put ("BR-CL-23", CustomErrorDetails.of (EErrorLevel.WARN));
         aCustomErrorLevels.put ("BR-CL-21", CustomErrorDetails.of (EErrorLevel.WARN));
 
-        PhiveRulesBuilder.builder ()
+        VesXmlBuilder.builder ()
                          .vesID (VID_XRECHNUNG_UBL_CREDITNOTE_211)
                          .displayNamePrefix ("XRechnung UBL Credit Note ")
                          .deprecated ()
@@ -544,7 +544,7 @@ public final class XRechnungValidation
         aCustomErrorLevels.put ("BR-CL-23", CustomErrorDetails.of (EErrorLevel.WARN));
         aCustomErrorLevels.put ("BR-CL-21", CustomErrorDetails.of (EErrorLevel.WARN));
 
-        PhiveRulesBuilder.builder ()
+        VesXmlBuilder.builder ()
                          .vesID (VID_XRECHNUNG_UBL_INVOICE_211)
                          .displayNamePrefix ("XRechnung UBL Invoice ")
                          .deprecated ()
@@ -561,7 +561,7 @@ public final class XRechnungValidation
         aCustomErrorLevels.put ("BR-CL-23", CustomErrorDetails.of (EErrorLevel.WARN));
         aCustomErrorLevels.put ("BR-CL-24", CustomErrorDetails.of (EErrorLevel.WARN));
 
-        PhiveRulesBuilder.builder ()
+        VesXmlBuilder.builder ()
                          .vesID (VID_XRECHNUNG_EXTENSION_UBL_INVOICE_211)
                          .displayName ("XRechnung UBL Invoice " +
                                        VID_XRECHNUNG_EXTENSION_UBL_INVOICE_211.getVersionString () +
@@ -590,7 +590,7 @@ public final class XRechnungValidation
         aCustomErrorLevels.put ("BR-CL-23", CustomErrorDetails.of (EErrorLevel.WARN));
         aCustomErrorLevels.put ("BR-CL-21", CustomErrorDetails.of (EErrorLevel.WARN));
 
-        PhiveRulesBuilder.builder ()
+        VesXmlBuilder.builder ()
                          .vesID (VID_XRECHNUNG_CII_220)
                          .displayNamePrefix ("XRechnung CII ")
                          .deprecated ()
@@ -610,7 +610,7 @@ public final class XRechnungValidation
         aCustomErrorLevels.put ("BR-CL-25", CustomErrorDetails.of (EErrorLevel.INFO));
         aCustomErrorLevels.put ("BR-CL-26", CustomErrorDetails.of (EErrorLevel.INFO));
 
-        PhiveRulesBuilder.builder ()
+        VesXmlBuilder.builder ()
                          .vesID (VID_XRECHNUNG_EXTENSION_CII_220)
                          .displayName ("XRechnung CII " +
                                        VID_XRECHNUNG_EXTENSION_CII_220.getVersionString () +
@@ -629,7 +629,7 @@ public final class XRechnungValidation
         aCustomErrorLevels.put ("BR-CL-23", CustomErrorDetails.of (EErrorLevel.WARN));
         aCustomErrorLevels.put ("BR-CL-21", CustomErrorDetails.of (EErrorLevel.WARN));
 
-        PhiveRulesBuilder.builder ()
+        VesXmlBuilder.builder ()
                          .vesID (VID_XRECHNUNG_UBL_CREDITNOTE_220)
                          .displayNamePrefix ("XRechnung UBL Credit Note ")
                          .deprecated ()
@@ -646,7 +646,7 @@ public final class XRechnungValidation
         aCustomErrorLevels.put ("BR-CL-23", CustomErrorDetails.of (EErrorLevel.WARN));
         aCustomErrorLevels.put ("BR-CL-21", CustomErrorDetails.of (EErrorLevel.WARN));
 
-        PhiveRulesBuilder.builder ()
+        VesXmlBuilder.builder ()
                          .vesID (VID_XRECHNUNG_UBL_INVOICE_220)
                          .displayNamePrefix ("XRechnung UBL Invoice ")
                          .deprecated ()
@@ -667,7 +667,7 @@ public final class XRechnungValidation
         aCustomErrorLevels.put ("BR-CL-25", CustomErrorDetails.of (EErrorLevel.INFO));
         aCustomErrorLevels.put ("BR-CL-26", CustomErrorDetails.of (EErrorLevel.INFO));
 
-        PhiveRulesBuilder.builder ()
+        VesXmlBuilder.builder ()
                          .vesID (VID_XRECHNUNG_EXTENSION_UBL_INVOICE_220)
                          .displayName ("XRechnung UBL Invoice " +
                                        VID_XRECHNUNG_EXTENSION_UBL_INVOICE_220.getVersionString () +
@@ -695,7 +695,7 @@ public final class XRechnungValidation
         aCustomErrorLevels.put ("BR-CL-23", CustomErrorDetails.of (EErrorLevel.WARN));
         aCustomErrorLevels.put ("BR-CL-21", CustomErrorDetails.of (EErrorLevel.WARN));
 
-        PhiveRulesBuilder.builder ()
+        VesXmlBuilder.builder ()
                          .vesID (VID_XRECHNUNG_CII_231)
                          .displayNamePrefix ("XRechnung CII ")
                          .deprecated ()
@@ -714,7 +714,7 @@ public final class XRechnungValidation
         aCustomErrorLevels.put ("BR-CL-25", CustomErrorDetails.of (EErrorLevel.INFO));
         aCustomErrorLevels.put ("BR-CL-26", CustomErrorDetails.of (EErrorLevel.INFO));
 
-        PhiveRulesBuilder.builder ()
+        VesXmlBuilder.builder ()
                          .vesID (VID_XRECHNUNG_EXTENSION_CII_231)
                          .displayName ("XRechnung CII " +
                                        VID_XRECHNUNG_EXTENSION_CII_231.getVersionString () +
@@ -732,7 +732,7 @@ public final class XRechnungValidation
         aCustomErrorLevels.put ("BR-CL-23", CustomErrorDetails.of (EErrorLevel.WARN));
         aCustomErrorLevels.put ("BR-CL-21", CustomErrorDetails.of (EErrorLevel.WARN));
 
-        PhiveRulesBuilder.builder ()
+        VesXmlBuilder.builder ()
                          .vesID (VID_XRECHNUNG_UBL_CREDITNOTE_231)
                          .displayNamePrefix ("XRechnung UBL Credit Note ")
                          .deprecated ()
@@ -748,7 +748,7 @@ public final class XRechnungValidation
         aCustomErrorLevels.put ("BR-CL-23", CustomErrorDetails.of (EErrorLevel.WARN));
         aCustomErrorLevels.put ("BR-CL-21", CustomErrorDetails.of (EErrorLevel.WARN));
 
-        PhiveRulesBuilder.builder ()
+        VesXmlBuilder.builder ()
                          .vesID (VID_XRECHNUNG_UBL_INVOICE_231)
                          .displayNamePrefix ("XRechnung UBL Invoice ")
                          .deprecated ()
@@ -770,7 +770,7 @@ public final class XRechnungValidation
         aCustomErrorLevels.put ("BR-CO-16", CustomErrorDetails.of (EErrorLevel.INFO));
         aCustomErrorLevels.put ("UBL-CR-470", CustomErrorDetails.of (EErrorLevel.INFO));
 
-        PhiveRulesBuilder.builder ()
+        VesXmlBuilder.builder ()
                          .vesID (VID_XRECHNUNG_EXTENSION_UBL_INVOICE_231)
                          .displayName ("XRechnung UBL Invoice " +
                                        VID_XRECHNUNG_EXTENSION_UBL_INVOICE_231.getVersionString () +
@@ -799,7 +799,7 @@ public final class XRechnungValidation
         aCustomErrorLevels.put ("BR-CL-21", CustomErrorDetails.of (EErrorLevel.WARN));
         aCustomErrorLevels.put ("CII-SR-453", CustomErrorDetails.of (EErrorLevel.ERROR));
 
-        PhiveRulesBuilder.builder ()
+        VesXmlBuilder.builder ()
                          .vesID (VID_XRECHNUNG_CII_300)
                          .displayNamePrefix ("XRechnung CII ")
                          .notDeprecated ()
@@ -819,7 +819,7 @@ public final class XRechnungValidation
         aCustomErrorLevels.put ("BR-CL-26", CustomErrorDetails.of (EErrorLevel.INFO));
         aCustomErrorLevels.put ("CII-SR-453", CustomErrorDetails.of (EErrorLevel.ERROR));
 
-        PhiveRulesBuilder.builder ()
+        VesXmlBuilder.builder ()
                          .vesID (VID_XRECHNUNG_EXTENSION_CII_300)
                          .displayName ("XRechnung CII " +
                                        VID_XRECHNUNG_EXTENSION_CII_300.getVersionString () +
@@ -836,7 +836,7 @@ public final class XRechnungValidation
         aCustomErrorLevels.put ("BR-CL-23", CustomErrorDetails.of (EErrorLevel.WARN));
         aCustomErrorLevels.put ("BR-CL-21", CustomErrorDetails.of (EErrorLevel.WARN));
 
-        PhiveRulesBuilder.builder ()
+        VesXmlBuilder.builder ()
                          .vesID (VID_XRECHNUNG_UBL_CREDITNOTE_300)
                          .displayNamePrefix ("XRechnung UBL Credit Note ")
                          .notDeprecated ()
@@ -852,7 +852,7 @@ public final class XRechnungValidation
         aCustomErrorLevels.put ("BR-CL-23", CustomErrorDetails.of (EErrorLevel.WARN));
         aCustomErrorLevels.put ("BR-CL-21", CustomErrorDetails.of (EErrorLevel.WARN));
 
-        PhiveRulesBuilder.builder ()
+        VesXmlBuilder.builder ()
                          .vesID (VID_XRECHNUNG_UBL_INVOICE_300)
                          .displayNamePrefix ("XRechnung UBL Invoice ")
                          .notDeprecated ()
@@ -874,7 +874,7 @@ public final class XRechnungValidation
         aCustomErrorLevels.put ("BR-CO-16", CustomErrorDetails.of (EErrorLevel.INFO));
         aCustomErrorLevels.put ("UBL-CR-470", CustomErrorDetails.of (EErrorLevel.INFO));
 
-        PhiveRulesBuilder.builder ()
+        VesXmlBuilder.builder ()
                          .vesID (VID_XRECHNUNG_EXTENSION_UBL_INVOICE_300)
                          .displayName ("XRechnung UBL Invoice " +
                                        VID_XRECHNUNG_EXTENSION_UBL_INVOICE_300.getVersionString () +
@@ -905,7 +905,7 @@ public final class XRechnungValidation
         aCustomErrorLevels.put ("CII-SR-453", CustomErrorDetails.of (EErrorLevel.ERROR));
         aCustomErrorLevels.put ("CII-SR-454", CustomErrorDetails.of (EErrorLevel.ERROR));
 
-        PhiveRulesBuilder.builder ()
+        VesXmlBuilder.builder ()
                          .vesID (VID_XRECHNUNG_CII_301)
                          .displayNamePrefix ("XRechnung CII ")
                          .notDeprecated ()
@@ -928,7 +928,7 @@ public final class XRechnungValidation
         aCustomErrorLevels.put ("CII-SR-453", CustomErrorDetails.of (EErrorLevel.ERROR));
         aCustomErrorLevels.put ("CII-SR-454", CustomErrorDetails.of (EErrorLevel.ERROR));
 
-        PhiveRulesBuilder.builder ()
+        VesXmlBuilder.builder ()
                          .vesID (VID_XRECHNUNG_EXTENSION_CII_301)
                          .displayName ("XRechnung CII " +
                                        VID_XRECHNUNG_EXTENSION_CII_301.getVersionString () +
@@ -946,7 +946,7 @@ public final class XRechnungValidation
         aCustomErrorLevels.put ("BR-CL-23", CustomErrorDetails.of (EErrorLevel.WARN));
         aCustomErrorLevels.put ("BR-CL-21", CustomErrorDetails.of (EErrorLevel.WARN));
 
-        PhiveRulesBuilder.builder ()
+        VesXmlBuilder.builder ()
                          .vesID (VID_XRECHNUNG_UBL_CREDITNOTE_301)
                          .displayNamePrefix ("XRechnung UBL Credit Note ")
                          .notDeprecated ()
@@ -962,7 +962,7 @@ public final class XRechnungValidation
         aCustomErrorLevels.put ("BR-CL-23", CustomErrorDetails.of (EErrorLevel.WARN));
         aCustomErrorLevels.put ("BR-CL-21", CustomErrorDetails.of (EErrorLevel.WARN));
 
-        PhiveRulesBuilder.builder ()
+        VesXmlBuilder.builder ()
                          .vesID (VID_XRECHNUNG_UBL_INVOICE_301)
                          .displayNamePrefix ("XRechnung UBL Invoice ")
                          .notDeprecated ()
@@ -984,7 +984,7 @@ public final class XRechnungValidation
         aCustomErrorLevels.put ("BR-CO-16", CustomErrorDetails.of (EErrorLevel.INFO));
         aCustomErrorLevels.put ("UBL-CR-470", CustomErrorDetails.of (EErrorLevel.INFO));
 
-        PhiveRulesBuilder.builder ()
+        VesXmlBuilder.builder ()
                          .vesID (VID_XRECHNUNG_EXTENSION_UBL_INVOICE_301)
                          .displayName ("XRechnung UBL Invoice " +
                                        VID_XRECHNUNG_EXTENSION_UBL_INVOICE_301.getVersionString () +
@@ -1017,7 +1017,7 @@ public final class XRechnungValidation
         aCustomErrorLevels.put ("CII-SR-453", CustomErrorDetails.of (EErrorLevel.ERROR));
         aCustomErrorLevels.put ("CII-SR-454", CustomErrorDetails.of (EErrorLevel.ERROR));
 
-        PhiveRulesBuilder.builder ()
+        VesXmlBuilder.builder ()
                          .vesID (VID_XRECHNUNG_CII_302)
                          .displayName ("XRechnung CII " + VID_XRECHNUNG_CII_302.getVersionString () + sAkaVersion)
                          .notDeprecated ()
@@ -1040,7 +1040,7 @@ public final class XRechnungValidation
         aCustomErrorLevels.put ("CII-SR-453", CustomErrorDetails.of (EErrorLevel.ERROR));
         aCustomErrorLevels.put ("CII-SR-454", CustomErrorDetails.of (EErrorLevel.ERROR));
 
-        PhiveRulesBuilder.builder ()
+        VesXmlBuilder.builder ()
                          .vesID (VID_XRECHNUNG_EXTENSION_CII_302)
                          .displayName ("XRechnung CII " +
                                        VID_XRECHNUNG_EXTENSION_CII_302.getVersionString () +
@@ -1059,7 +1059,7 @@ public final class XRechnungValidation
         aCustomErrorLevels.put ("BR-CL-23", CustomErrorDetails.of (EErrorLevel.WARN));
         aCustomErrorLevels.put ("BR-CL-21", CustomErrorDetails.of (EErrorLevel.WARN));
 
-        PhiveRulesBuilder.builder ()
+        VesXmlBuilder.builder ()
                          .vesID (VID_XRECHNUNG_UBL_CREDITNOTE_302)
                          .displayName ("XRechnung UBL Credit Note " +
                                        VID_XRECHNUNG_UBL_CREDITNOTE_302.getVersionString () +
@@ -1077,7 +1077,7 @@ public final class XRechnungValidation
         aCustomErrorLevels.put ("BR-CL-23", CustomErrorDetails.of (EErrorLevel.WARN));
         aCustomErrorLevels.put ("BR-CL-21", CustomErrorDetails.of (EErrorLevel.WARN));
 
-        PhiveRulesBuilder.builder ()
+        VesXmlBuilder.builder ()
                          .vesID (VID_XRECHNUNG_UBL_INVOICE_302)
                          .displayName ("XRechnung UBL Invoice " +
                                        VID_XRECHNUNG_UBL_INVOICE_302.getVersionString () +
@@ -1101,7 +1101,7 @@ public final class XRechnungValidation
         aCustomErrorLevels.put ("BR-CO-16", CustomErrorDetails.of (EErrorLevel.INFO));
         aCustomErrorLevels.put ("UBL-CR-470", CustomErrorDetails.of (EErrorLevel.INFO));
 
-        PhiveRulesBuilder.builder ()
+        VesXmlBuilder.builder ()
                          .vesID (VID_XRECHNUNG_EXTENSION_UBL_INVOICE_302)
                          .displayName ("XRechnung UBL Invoice " +
                                        VID_XRECHNUNG_EXTENSION_UBL_INVOICE_302.getVersionString () +

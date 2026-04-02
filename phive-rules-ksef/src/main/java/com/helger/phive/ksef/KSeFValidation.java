@@ -32,8 +32,8 @@ import com.helger.collection.commons.ICommonsList;
 import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.io.resource.ClassPathResource;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
-import com.helger.phive.rules.api.PhiveRulesBuilder;
 import com.helger.phive.rules.api.PhiveRulesHelper;
+import com.helger.phive.xml.executorset.VesXmlBuilder;
 import com.helger.phive.xml.source.IValidationSourceXML;
 import com.helger.xml.ls.SimpleLSResourceResolver;
 import com.helger.xml.sax.LoggingSAXErrorHandler;
@@ -103,7 +103,7 @@ public final class KSeFValidation
                                                                                                         _getCL ()),
                                                                                  new ClassPathResource ("/external/schemas/1.0.0/schema.xsd",
                                                                                                         _getCL ()));
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (KSEF_1)
                        .displayNamePrefix ("KSeF ")
                        .deprecated ()
@@ -117,7 +117,7 @@ public final class KSeFValidation
                                                                                                         _getCL ()),
                                                                                  new ClassPathResource ("/external/schemas/2.0.0/schema.xsd",
                                                                                                         _getCL ()));
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (KSEF_2)
                        .displayNamePrefix ("KSeF ")
                        .notDeprecated ()
@@ -131,7 +131,7 @@ public final class KSeFValidation
                                                                                                         _getCL ()),
                                                                                  new ClassPathResource ("/external/schemas/3.0.0/schemat.xsd",
                                                                                                         _getCL ()));
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (KSEF_3)
                        .displayNamePrefix ("KSeF ")
                        .notDeprecated ()

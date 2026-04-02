@@ -32,9 +32,9 @@ import com.helger.io.resource.ClassPathResource;
 import com.helger.phive.api.executor.IValidationExecutor;
 import com.helger.phive.api.executorset.IValidationExecutorSet;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
-import com.helger.phive.rules.api.PhiveRulesBuilder;
 import com.helger.phive.rules.api.PhiveRulesHelper;
 import com.helger.phive.simplerinvoicing.SimplerInvoicingValidation;
+import com.helger.phive.xml.executorset.VesXmlBuilder;
 import com.helger.phive.xml.source.IValidationSourceXML;
 import com.helger.phive.xml.xsd.ValidationExecutorXSDPartial;
 import com.helger.phive.xml.xsd.XSDPartialContext;
@@ -128,7 +128,7 @@ public final class EnergieEFactuurValidation
       // Add the Partial XSD in the middle
       aNewList.add (1, ValidationExecutorXSDPartial.create (aPartialXSDs, XSDPartialContext.createMandatory (aXE100)));
 
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_ENERGIE_EFACTUUR_1_0_0)
                        .displayNamePrefix ("Energie eFactuur ")
                        .notDeprecated ()
@@ -159,7 +159,7 @@ public final class EnergieEFactuurValidation
       aNewList.add (1, ValidationExecutorXSDPartial.create (aPartialXSDs, XSDPartialContext.createMandatory (aXE101)));
 
       // Same Schematrons as SimplerInvoicing - and same classloader!
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_ENERGIE_EFACTUUR_1_0_1)
                        .displayNamePrefix ("Energie eFactuur ")
                        .notDeprecated ()
@@ -193,7 +193,7 @@ public final class EnergieEFactuurValidation
       aNewList.add (1, ValidationExecutorXSDPartial.create (aPartialXSDs, XSDPartialContext.createMandatory (aXE200)));
 
       // Same Schematrons as SimplerInvoicing - and same classloader!
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_ENERGIE_EFACTUUR_2_0_0)
                        .displayNamePrefix ("Energie eFactuur ")
                        .notDeprecated ()
@@ -227,7 +227,7 @@ public final class EnergieEFactuurValidation
       aNewList.add (1, ValidationExecutorXSDPartial.create (aPartialXSDs, XSDPartialContext.createMandatory (aXE300)));
 
       // Same Schematrons as SimplerInvoicing - and same classloader!
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_ENERGIE_EFACTUUR_3_0_0)
                        .displayNamePrefix ("Energie eFactuur ")
                        .notDeprecated ()
@@ -261,7 +261,7 @@ public final class EnergieEFactuurValidation
       aNewList.add (1, ValidationExecutorXSDPartial.create (aPartialXSDs, XSDPartialContext.createMandatory (aXE310)));
 
       // Same Schematrons as SimplerInvoicing - and same classloader!
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_ENERGIE_EFACTUUR_3_1_0)
                        .displayNamePrefix ("Energie eFactuur ")
                        .notDeprecated ()

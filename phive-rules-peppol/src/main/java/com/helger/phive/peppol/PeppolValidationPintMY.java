@@ -30,9 +30,9 @@ import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.io.resource.ClassPathResource;
 import com.helger.phive.api.executorset.IValidationExecutorSet;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
-import com.helger.phive.rules.api.PhiveRulesBuilder;
 import com.helger.phive.rules.api.PhiveRulesHelper;
 import com.helger.phive.rules.api.PhiveRulesUBLHelper;
+import com.helger.phive.xml.executorset.VesXmlBuilder;
 import com.helger.phive.xml.source.IValidationSourceXML;
 import com.helger.ubl21.UBL21Marshaller;
 import com.helger.xml.namespace.MapBasedNamespaceContext;
@@ -151,14 +151,14 @@ public final class PeppolValidationPintMY
       final ClassPathResource aCPRSelfBilling = new ClassPathResource (BASE_PATH +
                                                                        "1.0.0/xslt/selfbilling/PINT-jurisdiction-aligned-rules.xslt",
                                                                        _getCL ());
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_MY_PINT_UBL_INVOICE_1_0_0)
                        .displayName ("Peppol PINT Malaysia Invoice (UBL) 1.0.0")
                        .deprecated ()
                        .basedOn (aVESIDInv)
                        .addSchematron (PhiveRulesHelper.createXSLT (aCPRBilling, aNSCtxInvoice))
                        .registerInto (aRegistry);
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_MY_PINT_UBL_CREDIT_NOTE_1_0_0)
                        .displayName ("Peppol PINT Malaysia Credit Note (UBL) 1.0.0")
                        .deprecated ()
@@ -166,14 +166,14 @@ public final class PeppolValidationPintMY
                        .addSchematron (PhiveRulesHelper.createXSLT (aCPRBilling, aNSCtxCreditNote))
                        .registerInto (aRegistry);
 
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_MY_PINT_UBL_INVOICE_SELF_BILLING_1_0_0)
                        .displayName ("Peppol PINT Malaysia Invoice Self-Billing (UBL) 1.0.0")
                        .deprecated ()
                        .basedOn (aVESIDInv)
                        .addSchematron (PhiveRulesHelper.createXSLT (aCPRSelfBilling, aNSCtxInvoice))
                        .registerInto (aRegistry);
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_MY_PINT_UBL_CREDIT_NOTE_SELF_BILLING_1_0_0)
                        .displayName ("Peppol PINT Malaysia Credit Note Self-Billing (UBL) 1.0.0")
                        .deprecated ()
@@ -198,7 +198,7 @@ public final class PeppolValidationPintMY
                                                                        "1.1.0/xslt/selfbilling/PINT-jurisdiction-aligned-rules.xslt",
                                                                        _getCL ());
 
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_MY_PINT_UBL_INVOICE_1_1_0)
                        .displayName ("Peppol PINT Malaysia Invoice (UBL) 1.1.0")
                        .deprecated ()
@@ -206,7 +206,7 @@ public final class PeppolValidationPintMY
                        .addSchematron (PhiveRulesHelper.createXSLT (aCPRBillingBase, aNSCtxInvoice))
                        .addSchematron (PhiveRulesHelper.createXSLT (aCPRBilling, aNSCtxInvoice))
                        .registerInto (aRegistry);
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_MY_PINT_UBL_CREDIT_NOTE_1_1_0)
                        .displayName ("Peppol PINT Malaysia Credit Note (UBL) 1.1.0")
                        .deprecated ()
@@ -215,7 +215,7 @@ public final class PeppolValidationPintMY
                        .addSchematron (PhiveRulesHelper.createXSLT (aCPRBilling, aNSCtxCreditNote))
                        .registerInto (aRegistry);
 
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_MY_PINT_UBL_INVOICE_SELF_BILLING_1_1_0)
                        .displayName ("Peppol PINT Malaysia Invoice Self-Billing (UBL) 1.1.0")
                        .deprecated ()
@@ -223,7 +223,7 @@ public final class PeppolValidationPintMY
                        .addSchematron (PhiveRulesHelper.createXSLT (aCPRSelfBillingBase, aNSCtxInvoice))
                        .addSchematron (PhiveRulesHelper.createXSLT (aCPRSelfBilling, aNSCtxInvoice))
                        .registerInto (aRegistry);
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_MY_PINT_UBL_CREDIT_NOTE_SELF_BILLING_1_1_0)
                        .displayName ("Peppol PINT Malaysia Credit Note Self-Billing (UBL) 1.1.0")
                        .deprecated ()
@@ -249,7 +249,7 @@ public final class PeppolValidationPintMY
                                                                        "1.2.1/xslt/selfbilling/PINT-jurisdiction-aligned-rules.xslt",
                                                                        _getCL ());
 
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_MY_PINT_UBL_INVOICE_1_2_1)
                        .displayName ("Peppol PINT Malaysia Invoice (UBL) 1.2.1")
                        .notDeprecated ()
@@ -257,7 +257,7 @@ public final class PeppolValidationPintMY
                        .addSchematron (PhiveRulesHelper.createXSLT (aCPRBillingBase, aNSCtxInvoice))
                        .addSchematron (PhiveRulesHelper.createXSLT (aCPRBilling, aNSCtxInvoice))
                        .registerInto (aRegistry);
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_MY_PINT_UBL_CREDIT_NOTE_1_2_1)
                        .displayName ("Peppol PINT Malaysia Credit Note (UBL) 1.2.1")
                        .notDeprecated ()
@@ -266,7 +266,7 @@ public final class PeppolValidationPintMY
                        .addSchematron (PhiveRulesHelper.createXSLT (aCPRBilling, aNSCtxCreditNote))
                        .registerInto (aRegistry);
 
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_MY_PINT_UBL_INVOICE_SELF_BILLING_1_2_1)
                        .displayName ("Peppol PINT Malaysia Invoice Self-Billing (UBL) 1.2.1")
                        .notDeprecated ()
@@ -274,7 +274,7 @@ public final class PeppolValidationPintMY
                        .addSchematron (PhiveRulesHelper.createXSLT (aCPRSelfBillingBase, aNSCtxInvoice))
                        .addSchematron (PhiveRulesHelper.createXSLT (aCPRSelfBilling, aNSCtxInvoice))
                        .registerInto (aRegistry);
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_MY_PINT_UBL_CREDIT_NOTE_SELF_BILLING_1_2_1)
                        .displayName ("Peppol PINT Malaysia Credit Note Self-Billing (UBL) 1.2.1")
                        .notDeprecated ()
@@ -300,7 +300,7 @@ public final class PeppolValidationPintMY
                                                                        "1.3.0/xslt/selfbilling/PINT-jurisdiction-aligned-rules.xslt",
                                                                        _getCL ());
 
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_MY_PINT_UBL_INVOICE_1_3_0)
                        .displayName ("Peppol PINT Malaysia Invoice (UBL) 1.3.0")
                        .notDeprecated ()
@@ -308,7 +308,7 @@ public final class PeppolValidationPintMY
                        .addSchematron (PhiveRulesHelper.createXSLT (aCPRBillingBase, aNSCtxInvoice))
                        .addSchematron (PhiveRulesHelper.createXSLT (aCPRBilling, aNSCtxInvoice))
                        .registerInto (aRegistry);
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_MY_PINT_UBL_CREDIT_NOTE_1_3_0)
                        .displayName ("Peppol PINT Malaysia Credit Note (UBL) 1.3.0")
                        .notDeprecated ()
@@ -317,7 +317,7 @@ public final class PeppolValidationPintMY
                        .addSchematron (PhiveRulesHelper.createXSLT (aCPRBilling, aNSCtxCreditNote))
                        .registerInto (aRegistry);
 
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_MY_PINT_UBL_INVOICE_SELF_BILLING_1_3_0)
                        .displayName ("Peppol PINT Malaysia Invoice Self-Billing (UBL) 1.3.0")
                        .notDeprecated ()
@@ -325,7 +325,7 @@ public final class PeppolValidationPintMY
                        .addSchematron (PhiveRulesHelper.createXSLT (aCPRSelfBillingBase, aNSCtxInvoice))
                        .addSchematron (PhiveRulesHelper.createXSLT (aCPRSelfBilling, aNSCtxInvoice))
                        .registerInto (aRegistry);
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_MY_PINT_UBL_CREDIT_NOTE_SELF_BILLING_1_3_0)
                        .displayName ("Peppol PINT Malaysia Credit Note Self-Billing (UBL) 1.3.0")
                        .notDeprecated ()

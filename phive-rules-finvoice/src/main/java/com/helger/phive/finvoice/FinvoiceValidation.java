@@ -23,8 +23,8 @@ import com.helger.base.enforce.ValueEnforcer;
 import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.io.resource.ClassPathResource;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
-import com.helger.phive.rules.api.PhiveRulesBuilder;
 import com.helger.phive.rules.api.PhiveRulesHelper;
+import com.helger.phive.xml.executorset.VesXmlBuilder;
 import com.helger.phive.xml.source.IValidationSourceXML;
 
 /**
@@ -66,25 +66,25 @@ public final class FinvoiceValidation
     final String sPrefix = "/external/schemas/";
 
     // No Schematrons here
-    PhiveRulesBuilder.builder ()
+    VesXmlBuilder.builder ()
                      .vesID (VID_FINVOICE_13)
                      .displayNamePrefix ("Finvoice ")
                      .notDeprecated ()
                      .addXSD (new ClassPathResource (sPrefix + "Finvoice1.3.xsd", _getCL ()))
                      .registerInto (aRegistry);
-    PhiveRulesBuilder.builder ()
+    VesXmlBuilder.builder ()
                      .vesID (VID_FINVOICE_20)
                      .displayNamePrefix ("Finvoice ")
                      .notDeprecated ()
                      .addXSD (new ClassPathResource (sPrefix + "Finvoice2.0.xsd", _getCL ()))
                      .registerInto (aRegistry);
-    PhiveRulesBuilder.builder ()
+    VesXmlBuilder.builder ()
                      .vesID (VID_FINVOICE_201)
                      .displayNamePrefix ("Finvoice ")
                      .notDeprecated ()
                      .addXSD (new ClassPathResource (sPrefix + "Finvoice2.01.xsd", _getCL ()))
                      .registerInto (aRegistry);
-    PhiveRulesBuilder.builder ()
+    VesXmlBuilder.builder ()
                      .vesID (VID_FINVOICE_30)
                      .displayNamePrefix ("Finvoice ")
                      .notDeprecated ()

@@ -30,9 +30,9 @@ import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.io.resource.ClassPathResource;
 import com.helger.phive.api.executorset.IValidationExecutorSet;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
-import com.helger.phive.rules.api.PhiveRulesBuilder;
 import com.helger.phive.rules.api.PhiveRulesHelper;
 import com.helger.phive.rules.api.PhiveRulesUBLHelper;
+import com.helger.phive.xml.executorset.VesXmlBuilder;
 import com.helger.phive.xml.source.IValidationSourceXML;
 import com.helger.ubl21.UBL21Marshaller;
 import com.helger.xml.namespace.MapBasedNamespaceContext;
@@ -139,7 +139,7 @@ public final class PeppolValidationPintJP
       final ClassPathResource aCPR2 = new ClassPathResource (BASE_PATH +
                                                              "0.1.2/xslt/PINT-jurisdiction-aligned-rules.xslt",
                                                              _getCL ());
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_JP_PINT_INVOICE_012)
                        .displayNamePrefix ("Peppol PINT Japan Invoice (UBL) ")
                        .deprecated ()
@@ -147,7 +147,7 @@ public final class PeppolValidationPintJP
                        .addSchematron (PhiveRulesHelper.createXSLT (aCPR1, aNSCtxInvoice))
                        .addSchematron (PhiveRulesHelper.createXSLT (aCPR2, aNSCtxInvoice))
                        .registerInto (aRegistry);
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_JP_PINT_CREDIT_NOTE_012)
                        .displayNamePrefix ("Peppol PINT Japan Credit Note (UBL) ")
                        .deprecated ()
@@ -167,14 +167,14 @@ public final class PeppolValidationPintJP
       final ClassPathResource aCPR2 = new ClassPathResource (BASE_PATH +
                                                              "1.0.2/xslt/PINT-jurisdiction-aligned-rules.xslt",
                                                              _getCL ());
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_JP_PINT_INVOICE_1_0_2)
                        .displayNamePrefix ("Peppol PINT Japan Invoice (UBL) ")
                        .deprecated ()
                        .basedOn (aVESIDInv)
                        .addSchematron (PhiveRulesHelper.createXSLT (aCPR2, aNSCtxInvoice))
                        .registerInto (aRegistry);
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_JP_PINT_CREDIT_NOTE_1_0_2)
                        .displayNamePrefix ("Peppol PINT Japan Credit Note (UBL) ")
                        .deprecated ()
@@ -191,14 +191,14 @@ public final class PeppolValidationPintJP
       final ClassPathResource aCPR2 = new ClassPathResource (BASE_PATH +
                                                              "1.0.3/xslt/PINT-jurisdiction-aligned-rules.xslt",
                                                              _getCL ());
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_JP_PINT_INVOICE_1_0_3)
                        .displayNamePrefix ("Peppol PINT Japan Invoice (UBL) ")
                        .deprecated ()
                        .addSchematron (PhiveRulesHelper.createXSLT (aCPR1, aNSCtxInvoice))
                        .addSchematron (PhiveRulesHelper.createXSLT (aCPR2, aNSCtxInvoice))
                        .registerInto (aRegistry);
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_JP_PINT_CREDIT_NOTE_1_0_3)
                        .displayNamePrefix ("Peppol PINT Japan Credit Note (UBL) ")
                        .deprecated ()
@@ -215,7 +215,7 @@ public final class PeppolValidationPintJP
       final ClassPathResource aCPR2 = new ClassPathResource (BASE_PATH +
                                                              "1.1.0/xslt/PINT-jurisdiction-aligned-rules.xslt",
                                                              _getCL ());
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_JP_PINT_INVOICE_1_1_0)
                        .displayNamePrefix ("Peppol PINT Japan Invoice (UBL) ")
                        .deprecated ()
@@ -223,7 +223,7 @@ public final class PeppolValidationPintJP
                        .addSchematron (PhiveRulesHelper.createXSLT (aCPR1, aNSCtxInvoice))
                        .addSchematron (PhiveRulesHelper.createXSLT (aCPR2, aNSCtxInvoice))
                        .registerInto (aRegistry);
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_JP_PINT_CREDIT_NOTE_1_1_0)
                        .displayNamePrefix ("Peppol PINT Japan Credit Note (UBL) ")
                        .deprecated ()
@@ -241,7 +241,7 @@ public final class PeppolValidationPintJP
       final ClassPathResource aCPR2 = new ClassPathResource (BASE_PATH +
                                                              "1.1.1/xslt/PINT-jurisdiction-aligned-rules.xslt",
                                                              _getCL ());
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_JP_PINT_INVOICE_1_1_1)
                        .displayNamePrefix ("Peppol PINT Japan Invoice (UBL) ")
                        .deprecated ()
@@ -249,7 +249,7 @@ public final class PeppolValidationPintJP
                        .addSchematron (PhiveRulesHelper.createXSLT (aCPR1, aNSCtxInvoice))
                        .addSchematron (PhiveRulesHelper.createXSLT (aCPR2, aNSCtxInvoice))
                        .registerInto (aRegistry);
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_JP_PINT_CREDIT_NOTE_1_1_1)
                        .displayNamePrefix ("Peppol PINT Japan Credit Note (UBL) ")
                        .deprecated ()
@@ -267,7 +267,7 @@ public final class PeppolValidationPintJP
       final ClassPathResource aCPR2 = new ClassPathResource (BASE_PATH +
                                                              "1.1.2/xslt/PINT-jurisdiction-aligned-rules.xslt",
                                                              _getCL ());
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_JP_PINT_INVOICE_1_1_2)
                        .displayNamePrefix ("Peppol PINT Japan Invoice (UBL) ")
                        .notDeprecated ()
@@ -275,7 +275,7 @@ public final class PeppolValidationPintJP
                        .addSchematron (PhiveRulesHelper.createXSLT (aCPR1, aNSCtxInvoice))
                        .addSchematron (PhiveRulesHelper.createXSLT (aCPR2, aNSCtxInvoice))
                        .registerInto (aRegistry);
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_JP_PINT_CREDIT_NOTE_1_1_2)
                        .displayNamePrefix ("Peppol PINT Japan Credit Note (UBL) ")
                        .notDeprecated ()

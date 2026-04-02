@@ -27,9 +27,9 @@ import com.helger.io.resource.IReadableResource;
 import com.helger.phive.api.executorset.IValidationExecutorSet;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
 import com.helger.phive.en16931.EN16931Validation;
-import com.helger.phive.rules.api.PhiveRulesBuilder;
 import com.helger.phive.rules.api.PhiveRulesHelper;
 import com.helger.phive.rules.api.PhiveRulesUBLHelper;
+import com.helger.phive.xml.executorset.VesXmlBuilder;
 import com.helger.phive.xml.schematron.SchematronNamespaceBeautifier;
 import com.helger.phive.xml.schematron.ValidationExecutorSchematron;
 import com.helger.phive.xml.source.IValidationSourceXML;
@@ -161,7 +161,7 @@ public final class OIOUBLLegacyValidation
     // 2.0.2 - ancient old version
     {
       final String sPath202 = "/external/schematron/oioubl/2.0.2/";
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_OIOUBL_APPLICATION_RESPONSE)
                        .displayNamePrefix ("OIOUBL Application Response ")
                        .deprecated ()
@@ -170,7 +170,7 @@ public final class OIOUBLLegacyValidation
                                                                              "OIOUBL_ApplicationResponse_Schematron.xsl",
                                                                              _getCL ())))
                        .registerInto (aRegistry);
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_OIOUBL_CATALOGUE)
                        .displayNamePrefix ("OIOUBL Catalogue ")
                        .deprecated ()
@@ -179,7 +179,7 @@ public final class OIOUBLLegacyValidation
                                                                              "OIOUBL_Catalogue_Schematron.xsl",
                                                                              _getCL ())))
                        .registerInto (aRegistry);
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_OIOUBL_CATALOGUE_DELETION)
                        .displayNamePrefix ("OIOUBL Catalogue Deletion ")
                        .deprecated ()
@@ -188,7 +188,7 @@ public final class OIOUBLLegacyValidation
                                                                              "OIOUBL_CatalogueDeletion_Schematron.xsl",
                                                                              _getCL ())))
                        .registerInto (aRegistry);
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_OIOUBL_CATALOGUE_ITEM_SPECIFICATION_UPDATE)
                        .displayNamePrefix ("OIOUBL Catalogue Item Specification Update ")
                        .deprecated ()
@@ -197,7 +197,7 @@ public final class OIOUBLLegacyValidation
                                                                              "OIOUBL_CatalogueItemSpecificationUpdate_Schematron.xsl",
                                                                              _getCL ())))
                        .registerInto (aRegistry);
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_OIOUBL_CATALOGUE_PRICING_UPDATE)
                        .displayNamePrefix ("OIOUBL Catalogue Pricing Update ")
                        .deprecated ()
@@ -206,7 +206,7 @@ public final class OIOUBLLegacyValidation
                                                                              "OIOUBL_CataloguePricingUpdate_Schematron.xsl",
                                                                              _getCL ())))
                        .registerInto (aRegistry);
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_OIOUBL_CATALOGUE_REQUEST)
                        .displayNamePrefix ("OIOUBL Catalogue Request ")
                        .deprecated ()
@@ -215,7 +215,7 @@ public final class OIOUBLLegacyValidation
                                                                              "OIOUBL_CatalogueRequest_Schematron.xsl",
                                                                              _getCL ())))
                        .registerInto (aRegistry);
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_OIOUBL_CREDIT_NOTE)
                        .displayNamePrefix ("OIOUBL Credit Note ")
                        .deprecated ()
@@ -224,7 +224,7 @@ public final class OIOUBLLegacyValidation
                                                                              "OIOUBL_CreditNote_Schematron.xsl",
                                                                              _getCL ())))
                        .registerInto (aRegistry);
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_OIOUBL_INVOICE)
                        .displayNamePrefix ("OIOUBL Invoice ")
                        .deprecated ()
@@ -232,7 +232,7 @@ public final class OIOUBLLegacyValidation
                        .addSchematron (_createOIOUBL (new ClassPathResource (sPath202 + "OIOUBL_Invoice_Schematron.xsl",
                                                                              _getCL ())))
                        .registerInto (aRegistry);
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_OIOUBL_ORDER)
                        .displayNamePrefix ("OIOUBL Order ")
                        .deprecated ()
@@ -240,7 +240,7 @@ public final class OIOUBLLegacyValidation
                        .addSchematron (_createOIOUBL (new ClassPathResource (sPath202 + "OIOUBL_Order_Schematron.xsl",
                                                                              _getCL ())))
                        .registerInto (aRegistry);
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_OIOUBL_ORDER_CANCELLATION)
                        .displayNamePrefix ("OIOUBL Order Cancellation ")
                        .deprecated ()
@@ -249,7 +249,7 @@ public final class OIOUBLLegacyValidation
                                                                              "OIOUBL_OrderCancellation_Schematron.xsl",
                                                                              _getCL ())))
                        .registerInto (aRegistry);
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_OIOUBL_ORDER_CHANGE)
                        .displayNamePrefix ("OIOUBL Order Change ")
                        .deprecated ()
@@ -258,7 +258,7 @@ public final class OIOUBLLegacyValidation
                                                                              "OIOUBL_OrderChange_Schematron.xsl",
                                                                              _getCL ())))
                        .registerInto (aRegistry);
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_OIOUBL_ORDER_RESPONSE)
                        .displayNamePrefix ("OIOUBL Order Response ")
                        .deprecated ()
@@ -267,7 +267,7 @@ public final class OIOUBLLegacyValidation
                                                                              "OIOUBL_OrderResponse_Schematron.xsl",
                                                                              _getCL ())))
                        .registerInto (aRegistry);
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_OIOUBL_ORDER_RESPONSE_SIMPLE)
                        .displayNamePrefix ("OIOUBL Order Response Simple ")
                        .deprecated ()
@@ -276,7 +276,7 @@ public final class OIOUBLLegacyValidation
                                                                              "OIOUBL_OrderResponseSimple_Schematron.xsl",
                                                                              _getCL ())))
                        .registerInto (aRegistry);
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_OIOUBL_REMINDER)
                        .displayNamePrefix ("OIOUBL Reminder ")
                        .deprecated ()
@@ -285,7 +285,7 @@ public final class OIOUBLLegacyValidation
                                                                              "OIOUBL_Reminder_Schematron.xsl",
                                                                              _getCL ())))
                        .registerInto (aRegistry);
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_OIOUBL_STATEMENT)
                        .displayNamePrefix ("OIOUBL Statement ")
                        .deprecated ()
@@ -304,7 +304,7 @@ public final class OIOUBLLegacyValidation
         throw new InitializationException ("The EN 16931 VES are missing. Make sure to call EN16931Validation.initEN16931 first.");
 
       final String sPath = "/external/schematron/oioubl/3.0.1/xslt/";
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_OIOUBL_CREDIT_NOTE_3_0_1)
                        .displayNamePrefix ("OIOUBL Credit Note ")
                        .deprecated ()
@@ -313,7 +313,7 @@ public final class OIOUBLLegacyValidation
                                                                                                     "OIOUBL-Creditnote.xslt",
                                                                                                     _getCL ())))
                        .registerInto (aRegistry);
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_OIOUBL_INVOICE_3_0_1)
                        .displayNamePrefix ("OIOUBL Invoice ")
                        .deprecated ()
@@ -322,7 +322,7 @@ public final class OIOUBLLegacyValidation
                                                                                                     "OIOUBL-Invoice.xslt",
                                                                                                     _getCL ())))
                        .registerInto (aRegistry);
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_OIOUBL_INVOICE_RESPONSE_3_0_1)
                        .displayNamePrefix ("OIOUBL Invoice Response ")
                        .deprecated ()
@@ -334,7 +334,7 @@ public final class OIOUBLLegacyValidation
                                                                                                     "OIOUBL-Invoice-Response.xslt",
                                                                                                     _getCL ())))
                        .registerInto (aRegistry);
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_OIOUBL_MLR_3_0_1)
                        .displayNamePrefix ("OIOUBL Message Level Response ")
                        .deprecated ()

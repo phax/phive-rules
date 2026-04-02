@@ -26,9 +26,9 @@ import com.helger.io.resource.ClassPathResource;
 import com.helger.phive.api.executorset.IValidationExecutorSet;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
 import com.helger.phive.en16931.EN16931Validation;
-import com.helger.phive.rules.api.PhiveRulesBuilder;
 import com.helger.phive.rules.api.PhiveRulesHelper;
 import com.helger.phive.rules.api.PhiveRulesUBLHelper;
+import com.helger.phive.xml.executorset.VesXmlBuilder;
 import com.helger.phive.xml.source.IValidationSourceXML;
 
 /**
@@ -106,14 +106,14 @@ public final class HReRacunValidation
     {
       final ClassPathResource aXslt = new ClassPathResource ("/external/schematron/1.0.0/HR-CIUS-EXT-EN16931-UBL.xslt",
                                                              _getCL ());
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_HR_ERACUN_UBL_CREDITNOTE_100)
                        .displayNamePrefix ("HR eRacun Credit Note ")
                        .deprecated ()
                        .basedOn (aVESUBLCreditNote_1_3_15)
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aXslt))
                        .registerInto (aRegistry);
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_HR_ERACUN_UBL_INVOICE_100)
                        .displayNamePrefix ("HR eRacun Invoice ")
                        .deprecated ()
@@ -126,14 +126,14 @@ public final class HReRacunValidation
     {
       final ClassPathResource aXslt = new ClassPathResource ("/external/schematron/1.0.1/HR-CIUS-EXT-EN16931-UBL.xslt",
                                                              _getCL ());
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_HR_ERACUN_UBL_CREDITNOTE_101)
                        .displayNamePrefix ("HR eRacun Credit Note ")
                        .deprecated ()
                        .basedOn (aVESUBLCreditNote_1_3_15)
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aXslt))
                        .registerInto (aRegistry);
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_HR_ERACUN_UBL_INVOICE_101)
                        .displayNamePrefix ("HR eRacun Invoice ")
                        .deprecated ()
@@ -146,14 +146,14 @@ public final class HReRacunValidation
     {
       final ClassPathResource aXslt = new ClassPathResource ("/external/schematron/1.0.2/HR-CIUS-EXT-EN16931-UBL.xslt",
                                                              _getCL ());
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_HR_ERACUN_UBL_CREDITNOTE_102)
                        .displayNamePrefix ("HR eRacun Credit Note ")
                        .notDeprecated ()
                        .basedOn (aVESUBLCreditNote_1_3_15)
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aXslt))
                        .registerInto (aRegistry);
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_HR_ERACUN_UBL_INVOICE_102)
                        .displayNamePrefix ("HR eRacun Invoice ")
                        .notDeprecated ()
@@ -166,14 +166,14 @@ public final class HReRacunValidation
     {
       final ClassPathResource aXslt = new ClassPathResource ("/external/schematron/1.0.3/HR-CIUS-EXT-EN16931-UBL.xslt",
                                                              _getCL ());
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_HR_ERACUN_UBL_CREDITNOTE_103)
                        .displayNamePrefix ("HR eRacun Credit Note ")
                        .notDeprecated ()
                        .basedOn (aVESUBLCreditNote_1_3_15)
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aXslt))
                        .registerInto (aRegistry);
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_HR_ERACUN_UBL_INVOICE_103)
                        .displayNamePrefix ("HR eRacun Invoice ")
                        .notDeprecated ()

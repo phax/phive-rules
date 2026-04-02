@@ -24,8 +24,8 @@ import com.helger.cii.d16b.CCIID16B;
 import com.helger.cii.d22b.CCIID22B;
 import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
-import com.helger.phive.rules.api.PhiveRulesBuilder;
 import com.helger.phive.rules.api.PhiveRulesHelper;
+import com.helger.phive.xml.executorset.VesXmlBuilder;
 import com.helger.phive.xml.source.IValidationSourceXML;
 
 /**
@@ -77,12 +77,12 @@ public final class CIIValidation
     ValueEnforcer.notNull (aRegistry, "Registry");
 
     // No Schematrons here
-    PhiveRulesBuilder.builder ()
-                     .vesID (VID_CII_D16B_CROSSINDUSTRYINVOICE)
-                     .displayName ("CII CrossIndustryInvoice " + VERSION_D16B)
-                     .notDeprecated ()
-                     .addXSD (CCIID16B.getXSDResource ())
-                     .registerInto (aRegistry);
+    VesXmlBuilder.builder ()
+                 .vesID (VID_CII_D16B_CROSSINDUSTRYINVOICE)
+                 .displayName ("CII CrossIndustryInvoice " + VERSION_D16B)
+                 .notDeprecated ()
+                 .addXSD (CCIID16B.getXSDResource ())
+                 .registerInto (aRegistry);
   }
 
   /**
@@ -97,18 +97,18 @@ public final class CIIValidation
     ValueEnforcer.notNull (aRegistry, "Registry");
 
     // No Schematrons here
-    PhiveRulesBuilder.builder ()
-                     .vesID (VID_CII_D22B_CROSSINDUSTRYINVOICE)
-                     .displayName ("CII CrossIndustryInvoice " + VERSION_D22B)
-                     .notDeprecated ()
-                     .addXSD (CCIID22B.getXSDResourceCII ())
-                     .registerInto (aRegistry);
+    VesXmlBuilder.builder ()
+                 .vesID (VID_CII_D22B_CROSSINDUSTRYINVOICE)
+                 .displayName ("CII CrossIndustryInvoice " + VERSION_D22B)
+                 .notDeprecated ()
+                 .addXSD (CCIID22B.getXSDResourceCII ())
+                 .registerInto (aRegistry);
 
-    PhiveRulesBuilder.builder ()
-                     .vesID (VID_CII_D22B_CDAR)
-                     .displayName ("CDAR " + VERSION_D22B)
-                     .notDeprecated ()
-                     .addXSD (CCIID22B.getXSDResourceCDAR ())
-                     .registerInto (aRegistry);
+    VesXmlBuilder.builder ()
+                 .vesID (VID_CII_D22B_CDAR)
+                 .displayName ("CDAR " + VERSION_D22B)
+                 .notDeprecated ()
+                 .addXSD (CCIID22B.getXSDResourceCDAR ())
+                 .registerInto (aRegistry);
   }
 }

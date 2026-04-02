@@ -29,9 +29,9 @@ import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.io.resource.ClassPathResource;
 import com.helger.io.resource.IReadableResource;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
-import com.helger.phive.rules.api.PhiveRulesBuilder;
 import com.helger.phive.rules.api.PhiveRulesHelper;
 import com.helger.phive.rules.api.PhiveRulesUBLHelper;
+import com.helger.phive.xml.executorset.VesXmlBuilder;
 import com.helger.phive.xml.source.IValidationSourceXML;
 import com.helger.ubl21.UBL21Marshaller;
 import com.helger.xml.namespace.MapBasedNamespaceContext;
@@ -117,7 +117,7 @@ public final class PeppolValidationBisSG
                                                                                _getCL ());
       final String sAkaVersionBilling = " (aka BIS 3.0.11)";
 
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_BIS3_SG_UBL_INVOICE_2023_7)
                        .displayName ("SG Peppol BIS3 Invoice (UBL) 2023.7" + sAkaVersionBilling)
                        .deprecated ()
@@ -126,7 +126,7 @@ public final class PeppolValidationBisSG
                        .addSchematron (PhiveRulesHelper.createXSLT (BIS3_BILLING_SG_PEPPOL_2023_07, aNSCtxInvoice))
                        .addSchematron (PhiveRulesHelper.createXSLT (BIS3_BILLING_SG_2023_07, aNSCtxInvoice))
                        .registerInto (aRegistry);
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_BIS3_SG_UBL_CREDIT_NOTE_2023_7)
                        .displayName ("SG Peppol BIS3 Credit Note (UBL) 2023.7" + sAkaVersionBilling)
                        .deprecated ()
@@ -150,7 +150,7 @@ public final class PeppolValidationBisSG
                                                                                _getCL ());
       final String sAkaVersionBilling = " (aka BIS 3.0.12)";
 
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_BIS3_SG_UBL_INVOICE_2023_12)
                        .displayName ("SG Peppol BIS3 Invoice (UBL) 2023.12" + sAkaVersionBilling)
                        .deprecated ()
@@ -159,7 +159,7 @@ public final class PeppolValidationBisSG
                        .addSchematron (PhiveRulesHelper.createXSLT (BIS3_BILLING_SG_PEPPOL_2023_12, aNSCtxInvoice))
                        .addSchematron (PhiveRulesHelper.createXSLT (BIS3_BILLING_SG_2023_12, aNSCtxInvoice))
                        .registerInto (aRegistry);
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_BIS3_SG_UBL_CREDIT_NOTE_2023_12)
                        .displayName ("SG Peppol BIS3 Credit Note (UBL) 2023.12" + sAkaVersionBilling)
                        .deprecated ()
@@ -183,7 +183,7 @@ public final class PeppolValidationBisSG
                                                                                _getCL ());
       final String sAkaVersionBilling = " (aka BIS 3.0.14)";
 
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_BIS3_SG_UBL_INVOICE_2024_12)
                        .displayName ("SG Peppol BIS3 Invoice (UBL) 2024.12" + sAkaVersionBilling)
                        .notDeprecated ()
@@ -193,7 +193,7 @@ public final class PeppolValidationBisSG
                        .addSchematron (PhiveRulesHelper.createXSLT (BIS3_BILLING_SG_PEPPOL_2024_12, aNSCtxInvoice))
                        .addSchematron (PhiveRulesHelper.createXSLT (BIS3_BILLING_SG_2024_12, aNSCtxInvoice))
                        .registerInto (aRegistry);
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_BIS3_SG_UBL_CREDIT_NOTE_2024_12)
                        .displayName ("SG Peppol BIS3 Credit Note (UBL) 2024.12" + sAkaVersionBilling)
                        .notDeprecated ()
@@ -207,7 +207,7 @@ public final class PeppolValidationBisSG
 
     // Order Balance 1.0
     {
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_PEPPOL_SG_ORDER_BALANCE_1_0)
                        .displayName ("SG Peppol Order Balance 1.0")
                        .notDeprecated ()

@@ -28,9 +28,9 @@ import com.helger.datetime.helper.PDTFactory;
 import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.io.resource.ClassPathResource;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
-import com.helger.phive.rules.api.PhiveRulesBuilder;
 import com.helger.phive.rules.api.PhiveRulesHelper;
 import com.helger.phive.rules.api.PhiveRulesUBLHelper;
+import com.helger.phive.xml.executorset.VesXmlBuilder;
 import com.helger.phive.xml.source.IValidationSourceXML;
 import com.helger.ubl21.UBL21Marshaller;
 import com.helger.xml.namespace.MapBasedNamespaceContext;
@@ -112,7 +112,7 @@ public final class PeppolValidationPintSG
     // 1.1.0
     {
       final String sBaseBilling = BASE_PATH + "1.1.0/xslt/";
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_SG_PINT_UBL_INVOICE_1_1_0)
                        .displayName ("Peppol PINT Singapore Invoice (UBL) 1.1.0")
                        .deprecated ()
@@ -124,7 +124,7 @@ public final class PeppolValidationPintSG
                                                                                            "PINT-jurisdiction-aligned-rules-inv.xslt",
                                                                                            _getCL ()), aNSCtxInvoice))
                        .registerInto (aRegistry);
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_SG_PINT_UBL_CREDIT_NOTE_1_1_0)
                        .displayName ("Peppol PINT Singapore Credit Note (UBL) 1.1.0")
                        .deprecated ()
@@ -143,7 +143,7 @@ public final class PeppolValidationPintSG
     // 1.2.0
     {
       final String sBaseBilling = BASE_PATH + "1.2.0/xslt/";
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_SG_PINT_UBL_INVOICE_1_2_0)
                        .displayName ("Peppol PINT Singapore Invoice (UBL) 1.2.0")
                        .deprecated ()
@@ -156,7 +156,7 @@ public final class PeppolValidationPintSG
                                                                                            "PINT-jurisdiction-aligned-rules.xslt",
                                                                                            _getCL ()), aNSCtxInvoice))
                        .registerInto (aRegistry);
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_SG_PINT_UBL_CREDIT_NOTE_1_2_0)
                        .displayName ("Peppol PINT Singapore Credit Note (UBL) 1.2.0")
                        .deprecated ()
@@ -176,7 +176,7 @@ public final class PeppolValidationPintSG
     // 1.3.0
     {
       final String sBaseBilling = BASE_PATH + "1.3.0/xslt/";
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_SG_PINT_UBL_INVOICE_1_3_0)
                        .displayName ("Peppol PINT Singapore Invoice (UBL) 1.3.0")
                        .deprecated ()
@@ -189,7 +189,7 @@ public final class PeppolValidationPintSG
                                                                                            "PINT-jurisdiction-aligned-rules.xslt",
                                                                                            _getCL ()), aNSCtxInvoice))
                        .registerInto (aRegistry);
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_SG_PINT_UBL_CREDIT_NOTE_1_3_0)
                        .displayName ("Peppol PINT Singapore Credit Note (UBL) 1.3.0")
                        .deprecated ()
@@ -209,7 +209,7 @@ public final class PeppolValidationPintSG
     // 1.4.0
     {
       final String sBaseBilling = BASE_PATH + "1.4.0/xslt/";
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_SG_PINT_UBL_INVOICE_1_4_0)
                        .displayName ("Peppol PINT Singapore Invoice (UBL) 1.4.0")
                        .notDeprecated ()
@@ -222,7 +222,7 @@ public final class PeppolValidationPintSG
                                                                                            "PINT-jurisdiction-aligned-rules.xslt",
                                                                                            _getCL ()), aNSCtxInvoice))
                        .registerInto (aRegistry);
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_SG_PINT_UBL_CREDIT_NOTE_1_4_0)
                        .displayName ("Peppol PINT Singapore Credit Note (UBL) 1.4.0")
                        .notDeprecated ()

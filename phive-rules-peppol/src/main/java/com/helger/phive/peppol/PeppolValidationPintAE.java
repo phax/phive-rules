@@ -28,9 +28,9 @@ import com.helger.datetime.helper.PDTFactory;
 import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.io.resource.ClassPathResource;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
-import com.helger.phive.rules.api.PhiveRulesBuilder;
 import com.helger.phive.rules.api.PhiveRulesHelper;
 import com.helger.phive.rules.api.PhiveRulesUBLHelper;
+import com.helger.phive.xml.executorset.VesXmlBuilder;
 import com.helger.phive.xml.source.IValidationSourceXML;
 import com.helger.ubl21.UBL21Marshaller;
 import com.helger.xml.namespace.MapBasedNamespaceContext;
@@ -151,7 +151,7 @@ public final class PeppolValidationPintAE
     {
       final String sBase = BASE_PATH + "0.9.0/xslt/";
       final String sBaseBilling = sBase + "billing/";
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_AE_PINT_INVOICE_0_9_0)
                        .displayNamePrefix ("Peppol PINT AE Invoice (UBL) ")
                        .deprecated ()
@@ -163,7 +163,7 @@ public final class PeppolValidationPintAE
                                                                                            "PINT-jurisdiction-aligned-rules.xslt",
                                                                                            _getCL ()), aNSCtxInvoice))
                        .registerInto (aRegistry);
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_AE_PINT_CREDIT_NOTE_0_9_0)
                        .displayNamePrefix ("Peppol PINT AE Credit Note (UBL) ")
                        .deprecated ()
@@ -179,7 +179,7 @@ public final class PeppolValidationPintAE
                        .registerInto (aRegistry);
 
       final String sBaseSelfBilling = sBase + "selfbilling/";
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_AE_PINT_SB_INVOICE_0_9_0)
                        .displayNamePrefix ("Peppol PINT AE Invoice Self-Billing (UBL) ")
                        .deprecated ()
@@ -191,7 +191,7 @@ public final class PeppolValidationPintAE
                                                                                            "PINT-jurisdiction-aligned-rules.xslt",
                                                                                            _getCL ()), aNSCtxInvoice))
                        .registerInto (aRegistry);
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_AE_PINT_SB_CREDIT_NOTE_0_9_0)
                        .displayNamePrefix ("Peppol PINT AE Credit Note Self-Billing (UBL) ")
                        .deprecated ()
@@ -211,7 +211,7 @@ public final class PeppolValidationPintAE
     {
       final String sBase = BASE_PATH + "2025.6/xslt/";
       final String sBaseBilling = sBase + "billing/";
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_AE_PINT_INVOICE_2025_06)
                        .displayName ("Peppol PINT AE Invoice (UBL) 2025-06")
                        .deprecated ()
@@ -223,7 +223,7 @@ public final class PeppolValidationPintAE
                                                                                            "PINT-jurisdiction-aligned-rules.xslt",
                                                                                            _getCL ()), aNSCtxInvoice))
                        .registerInto (aRegistry);
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_AE_PINT_CREDIT_NOTE_2025_06)
                        .displayName ("Peppol PINT AE Credit Note (UBL) 2025-06")
                        .deprecated ()
@@ -239,7 +239,7 @@ public final class PeppolValidationPintAE
                        .registerInto (aRegistry);
 
       final String sBaseSelfBilling = sBase + "selfbilling/";
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_AE_PINT_SB_INVOICE_2025_06)
                        .displayName ("Peppol PINT AE Invoice Self-Billing (UBL) 2025-06")
                        .deprecated ()
@@ -251,7 +251,7 @@ public final class PeppolValidationPintAE
                                                                                            "PINT-jurisdiction-aligned-rules.xslt",
                                                                                            _getCL ()), aNSCtxInvoice))
                        .registerInto (aRegistry);
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_AE_PINT_SB_CREDIT_NOTE_2025_06)
                        .displayName ("Peppol PINT AE Credit Note Self-Billing (UBL) 2025-06")
                        .deprecated ()
@@ -272,7 +272,7 @@ public final class PeppolValidationPintAE
       final String sBase = BASE_PATH + "2025.7/xslt/";
       final String sBaseBilling = sBase + "billing/";
       final String sAkaVersion = " (aka 1.0.1)";
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_AE_PINT_INVOICE_2025_07)
                        .displayName ("Peppol PINT AE Invoice (UBL) 2025-07" + sAkaVersion)
                        .notDeprecated ()
@@ -284,7 +284,7 @@ public final class PeppolValidationPintAE
                                                                                            "PINT-jurisdiction-aligned-rules.xslt",
                                                                                            _getCL ()), aNSCtxInvoice))
                        .registerInto (aRegistry);
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_AE_PINT_CREDIT_NOTE_2025_07)
                        .displayName ("Peppol PINT AE Credit Note (UBL) 2025-07" + sAkaVersion)
                        .notDeprecated ()
@@ -300,7 +300,7 @@ public final class PeppolValidationPintAE
                        .registerInto (aRegistry);
 
       final String sBaseSelfBilling = sBase + "selfbilling/";
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_AE_PINT_SB_INVOICE_2025_07)
                        .displayName ("Peppol PINT AE Invoice Self-Billing (UBL) 2025-07" + sAkaVersion)
                        .notDeprecated ()
@@ -312,7 +312,7 @@ public final class PeppolValidationPintAE
                                                                                            "PINT-jurisdiction-aligned-rules.xslt",
                                                                                            _getCL ()), aNSCtxInvoice))
                        .registerInto (aRegistry);
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_AE_PINT_SB_CREDIT_NOTE_2025_07)
                        .displayName ("Peppol PINT AE Credit Note Self-Billing (UBL) 2025-07" + sAkaVersion)
                        .notDeprecated ()
@@ -333,7 +333,7 @@ public final class PeppolValidationPintAE
       final String sBase = BASE_PATH + "2025.11/xslt/";
       final String sBaseBilling = sBase + "billing/";
       final String sAkaVersion = " (aka 1.0.2)";
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_AE_PINT_INVOICE_2025_11)
                        .displayName ("Peppol PINT AE Invoice (UBL) 2025-11" + sAkaVersion)
                        .notDeprecated ()
@@ -346,7 +346,7 @@ public final class PeppolValidationPintAE
                                                                                            "PINT-jurisdiction-aligned-rules.xslt",
                                                                                            _getCL ()), aNSCtxInvoice))
                        .registerInto (aRegistry);
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_AE_PINT_CREDIT_NOTE_2025_11)
                        .displayName ("Peppol PINT AE Credit Note (UBL) 2025-11" + sAkaVersion)
                        .notDeprecated ()
@@ -363,7 +363,7 @@ public final class PeppolValidationPintAE
                        .registerInto (aRegistry);
 
       final String sBaseSelfBilling = sBase + "selfbilling/";
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_AE_PINT_SB_INVOICE_2025_11)
                        .displayName ("Peppol PINT AE Invoice Self-Billing (UBL) 2025-11" + sAkaVersion)
                        .notDeprecated ()
@@ -376,7 +376,7 @@ public final class PeppolValidationPintAE
                                                                                            "PINT-jurisdiction-aligned-rules.xslt",
                                                                                            _getCL ()), aNSCtxInvoice))
                        .registerInto (aRegistry);
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_AE_PINT_SB_CREDIT_NOTE_2025_11)
                        .displayName ("Peppol PINT AE Credit Note Self-Billing (UBL) 2025-11" + sAkaVersion)
                        .notDeprecated ()
@@ -398,7 +398,7 @@ public final class PeppolValidationPintAE
       final String sBase = BASE_PATH + "2026.3/";
       final String sBaseBilling = sBase + "billing/";
       final String sAkaVersion = " (aka 1.0.3)";
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_AE_PINT_INVOICE_2026_03)
                        .displayName ("Peppol PINT AE Invoice (UBL) 2026-03" + sAkaVersion)
                        .notDeprecated ()
@@ -411,7 +411,7 @@ public final class PeppolValidationPintAE
                                                                                            "PINT-jurisdiction-aligned-rules.xslt",
                                                                                            _getCL ()), aNSCtxInvoice))
                        .registerInto (aRegistry);
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_AE_PINT_CREDIT_NOTE_2026_03)
                        .displayName ("Peppol PINT AE Credit Note (UBL) 2026-03" + sAkaVersion)
                        .notDeprecated ()
@@ -428,7 +428,7 @@ public final class PeppolValidationPintAE
                        .registerInto (aRegistry);
 
       final String sBaseSelfBilling = sBase + "selfbilling/";
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_AE_PINT_SB_INVOICE_2026_03)
                        .displayName ("Peppol PINT AE Invoice Self-Billing (UBL) 2026-03" + sAkaVersion)
                        .notDeprecated ()
@@ -441,7 +441,7 @@ public final class PeppolValidationPintAE
                                                                                            "PINT-jurisdiction-aligned-rules.xslt",
                                                                                            _getCL ()), aNSCtxInvoice))
                        .registerInto (aRegistry);
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_AE_PINT_SB_CREDIT_NOTE_2026_03)
                        .displayName ("Peppol PINT AE Credit Note Self-Billing (UBL) 2026-03" + sAkaVersion)
                        .notDeprecated ()

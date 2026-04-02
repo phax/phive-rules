@@ -23,8 +23,8 @@ import com.helger.base.enforce.ValueEnforcer;
 import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.io.resource.ClassPathResource;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
-import com.helger.phive.rules.api.PhiveRulesBuilder;
 import com.helger.phive.rules.api.PhiveRulesHelper;
+import com.helger.phive.xml.executorset.VesXmlBuilder;
 import com.helger.phive.xml.source.IValidationSourceXML;
 
 /**
@@ -60,13 +60,13 @@ public final class TEAPPSValidation
     ValueEnforcer.notNull (aRegistry, "Registry");
 
     // No Schematrons here
-    PhiveRulesBuilder.builder ()
+    VesXmlBuilder.builder ()
                      .vesID (VID_TEAPPS_272)
                      .displayNamePrefix ("TEAPPSXML ")
                      .notDeprecated ()
                      .addXSD (new ClassPathResource ("/external/schemas/TEAPPSXMLv272_schema_INVOICES.xsd", _getCL ()))
                      .registerInto (aRegistry);
-    PhiveRulesBuilder.builder ()
+    VesXmlBuilder.builder ()
                      .vesID (VID_TEAPPS_30)
                      .displayNamePrefix ("TEAPPSXML ")
                      .notDeprecated ()

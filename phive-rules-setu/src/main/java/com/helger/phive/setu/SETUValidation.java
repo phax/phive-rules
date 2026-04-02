@@ -24,8 +24,8 @@ import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.io.resource.ClassPathResource;
 import com.helger.io.resource.IReadableResource;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
-import com.helger.phive.rules.api.PhiveRulesBuilder;
 import com.helger.phive.rules.api.PhiveRulesHelper;
+import com.helger.phive.xml.executorset.VesXmlBuilder;
 import com.helger.phive.xml.schematron.ValidationExecutorSchematron;
 import com.helger.phive.xml.source.IValidationSourceXML;
 import com.helger.xml.namespace.MapBasedNamespaceContext;
@@ -96,7 +96,7 @@ public final class SETUValidation
     final String sPrefixSCH = "/external/schematron/setu/";
 
     // V1.4
-    PhiveRulesBuilder.builder ()
+    VesXmlBuilder.builder ()
                      .vesID (VID_SETU_ASSIGNMENT_14)
                      .displayNamePrefix ("SETU Assignment ")
                      .notDeprecated ()
@@ -108,7 +108,7 @@ public final class SETUValidation
                                                                          "1.4/xslt/Assignment-v1.4-Assignment.xslt",
                                                                          _getCL ())))
                      .registerInto (aRegistry);
-    PhiveRulesBuilder.builder ()
+    VesXmlBuilder.builder ()
                      .vesID (VID_SETU_HUMAN_RESOURCE_14)
                      .displayNamePrefix ("SETU Human Resource ")
                      .notDeprecated ()
@@ -120,7 +120,7 @@ public final class SETUValidation
                                                                          "1.4/xslt/OrderingAndSelection-v1.4-HumanResource.xslt",
                                                                          _getCL ())))
                      .registerInto (aRegistry);
-    PhiveRulesBuilder.builder ()
+    VesXmlBuilder.builder ()
                      .vesID (VID_SETU_STAFFING_ORDER_14)
                      .displayNamePrefix ("SETU Staffing Order ")
                      .notDeprecated ()
@@ -132,7 +132,7 @@ public final class SETUValidation
                                                                          "1.4/xslt/OrderingAndSelection-v1.4-StaffingOrder.xslt",
                                                                          _getCL ())))
                      .registerInto (aRegistry);
-    PhiveRulesBuilder.builder ()
+    VesXmlBuilder.builder ()
                      .vesID (VID_SETU_TIMECARD_14)
                      .displayNamePrefix ("SETU Timcard ")
                      .notDeprecated ()

@@ -23,8 +23,8 @@ import com.helger.base.enforce.ValueEnforcer;
 import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.io.resource.ClassPathResource;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
-import com.helger.phive.rules.api.PhiveRulesBuilder;
 import com.helger.phive.rules.api.PhiveRulesHelper;
+import com.helger.phive.xml.executorset.VesXmlBuilder;
 import com.helger.phive.xml.source.IValidationSourceXML;
 import com.helger.xsds.xmldsig.CXMLDSig;
 
@@ -70,35 +70,35 @@ public final class FacturaeValidation
     ValueEnforcer.notNull (aRegistry, "Registry");
 
     // No Schematrons here
-    PhiveRulesBuilder.builder ()
+    VesXmlBuilder.builder ()
                      .vesID (VID_FACTURAE_300)
                      .displayNamePrefix ("Facturae ")
                      .deprecated ()
                      .addXSD (CXMLDSig.getXSDResource (),
                               new ClassPathResource ("/external/schemas/Facturae30.xsd", _getCL ()))
                      .registerInto (aRegistry);
-    PhiveRulesBuilder.builder ()
+    VesXmlBuilder.builder ()
                      .vesID (VID_FACTURAE_310)
                      .displayNamePrefix ("Facturae ")
                      .deprecated ()
                      .addXSD (CXMLDSig.getXSDResource (),
                               new ClassPathResource ("/external/schemas/Facturaev31.xsd", _getCL ()))
                      .registerInto (aRegistry);
-    PhiveRulesBuilder.builder ()
+    VesXmlBuilder.builder ()
                      .vesID (VID_FACTURAE_320)
                      .displayNamePrefix ("Facturae ")
                      .notDeprecated ()
                      .addXSD (CXMLDSig.getXSDResource (),
                               new ClassPathResource ("/external/schemas/Facturaev3_2.xsd", _getCL ()))
                      .registerInto (aRegistry);
-    PhiveRulesBuilder.builder ()
+    VesXmlBuilder.builder ()
                      .vesID (VID_FACTURAE_321)
                      .displayNamePrefix ("Facturae ")
                      .notDeprecated ()
                      .addXSD (CXMLDSig.getXSDResource (),
                               new ClassPathResource ("/external/schemas/Facturaev3_2_1.xsd", _getCL ()))
                      .registerInto (aRegistry);
-    PhiveRulesBuilder.builder ()
+    VesXmlBuilder.builder ()
                      .vesID (VID_FACTURAE_322)
                      .displayNamePrefix ("Facturae ")
                      .notDeprecated ()

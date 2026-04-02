@@ -24,9 +24,9 @@ import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.io.resource.ClassPathResource;
 import com.helger.io.resource.IReadableResource;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
-import com.helger.phive.rules.api.PhiveRulesBuilder;
 import com.helger.phive.rules.api.PhiveRulesHelper;
 import com.helger.phive.rules.api.PhiveRulesUBLHelper;
+import com.helger.phive.xml.executorset.VesXmlBuilder;
 import com.helger.phive.xml.source.IValidationSourceXML;
 import com.helger.ubl21.UBL21Marshaller;
 
@@ -93,7 +93,7 @@ public final class PeppolItalyValidation2_3_0
     final IReadableResource ORDER_RESPONSE = new ClassPathResource (PREFIX_XSLT + "order-response/AGID-PEPPOL-T76.xslt",
                                                                     _getCL ());
 
-    PhiveRulesBuilder.builder ()
+    VesXmlBuilder.builder ()
                      .vesID (VID_DESPATCH_ADVICE)
                      .displayName ("AGID Peppol Despatch Advice" + sVersion + sAkaVersionBIS)
                      .deprecated ()
@@ -102,7 +102,7 @@ public final class PeppolItalyValidation2_3_0
                                                                   PhiveRulesUBLHelper.createUBL21NSContext (UBL21Marshaller.despatchAdvice ()
                                                                                                                            .getRootElementNamespaceURI ())))
                      .registerInto (aRegistry);
-    PhiveRulesBuilder.builder ()
+    VesXmlBuilder.builder ()
                      .vesID (VID_INVOICE)
                      .displayName ("AGID Peppol Invoice" + sVersion + sAkaVersionBIS)
                      .deprecated ()
@@ -111,7 +111,7 @@ public final class PeppolItalyValidation2_3_0
                                                                   PhiveRulesUBLHelper.createUBL21NSContext (UBL21Marshaller.invoice ()
                                                                                                                            .getRootElementNamespaceURI ())))
                      .registerInto (aRegistry);
-    PhiveRulesBuilder.builder ()
+    VesXmlBuilder.builder ()
                      .vesID (VID_ORDER)
                      .displayName ("AGID Peppol Order" + sVersion + sAkaVersionBIS)
                      .deprecated ()
@@ -120,7 +120,7 @@ public final class PeppolItalyValidation2_3_0
                                                                   PhiveRulesUBLHelper.createUBL21NSContext (UBL21Marshaller.order ()
                                                                                                                            .getRootElementNamespaceURI ())))
                      .registerInto (aRegistry);
-    PhiveRulesBuilder.builder ()
+    VesXmlBuilder.builder ()
                      .vesID (VID_ORDER_AGREEMENT)
                      .displayName ("AGID Peppol Order Agreement" + sVersion + sAkaVersionBIS)
                      .deprecated ()
@@ -129,7 +129,7 @@ public final class PeppolItalyValidation2_3_0
                                                                   PhiveRulesUBLHelper.createUBL21NSContext (UBL21Marshaller.orderResponse ()
                                                                                                                            .getRootElementNamespaceURI ())))
                      .registerInto (aRegistry);
-    PhiveRulesBuilder.builder ()
+    VesXmlBuilder.builder ()
                      .vesID (VID_ORDER_RESPONSE)
                      .displayName ("AGID Peppol Order Response" + sVersion + sAkaVersionBIS)
                      .deprecated ()

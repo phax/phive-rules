@@ -24,8 +24,8 @@ import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.io.resource.ClassPathResource;
 import com.helger.io.resource.IReadableResource;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
-import com.helger.phive.rules.api.PhiveRulesBuilder;
 import com.helger.phive.rules.api.PhiveRulesHelper;
+import com.helger.phive.xml.executorset.VesXmlBuilder;
 import com.helger.phive.xml.schematron.ValidationExecutorSchematron;
 import com.helger.phive.xml.source.IValidationSourceXML;
 import com.helger.xml.namespace.MapBasedNamespaceContext;
@@ -77,7 +77,7 @@ public final class ISDOCValidation
   {
     ValueEnforcer.notNull (aRegistry, "Registry");
 
-    PhiveRulesBuilder.builder ()
+    VesXmlBuilder.builder ()
                      .vesID (VID_ISDOC_601)
                      .displayNamePrefix ("ISDOC ")
                      .deprecated ()
@@ -87,7 +87,7 @@ public final class ISDOCValidation
                      .addSchematron (_createXSLT (new ClassPathResource ("/external/schematron/isdoc/6.0.1/isdoc-6.0.1.xslt",
                                                                          _getCL ())))
                      .registerInto (aRegistry);
-    PhiveRulesBuilder.builder ()
+    VesXmlBuilder.builder ()
                      .vesID (VID_ISDOC_602)
                      .displayNamePrefix ("ISDOC ")
                      .notDeprecated ()

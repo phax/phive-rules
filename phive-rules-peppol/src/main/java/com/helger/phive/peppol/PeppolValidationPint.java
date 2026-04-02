@@ -23,9 +23,9 @@ import com.helger.base.enforce.ValueEnforcer;
 import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.io.resource.ClassPathResource;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
-import com.helger.phive.rules.api.PhiveRulesBuilder;
 import com.helger.phive.rules.api.PhiveRulesHelper;
 import com.helger.phive.rules.api.PhiveRulesUBLHelper;
+import com.helger.phive.xml.executorset.VesXmlBuilder;
 import com.helger.phive.xml.source.IValidationSourceXML;
 import com.helger.ubl21.UBL21Marshaller;
 import com.helger.xml.namespace.MapBasedNamespaceContext;
@@ -102,14 +102,14 @@ public final class PeppolValidationPint
                                                             "1.0.0/xslt/PINT-UBL-validation-preprocessed.xslt",
                                                             _getCL ());
 
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_PINT_INVOICE_1_0_0)
                        .displayNamePrefix ("OpenPeppol PINT Invoice (UBL) ")
                        .deprecated ()
                        .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
                        .addSchematron (PhiveRulesHelper.createXSLT (aRes, aNSCtxInvoice))
                        .registerInto (aRegistry);
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_PINT_CREDIT_NOTE_1_0_0)
                        .displayNamePrefix ("OpenPeppol PINT Credit Note (UBL) ")
                        .deprecated ()
@@ -123,14 +123,14 @@ public final class PeppolValidationPint
       final ClassPathResource aRes = new ClassPathResource (BASE_PATH +
                                                             "1.0.1/xslt/PINT-UBL-validation-preprocessed.xslt",
                                                             _getCL ());
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_PINT_INVOICE_1_0_1)
                        .displayNamePrefix ("OpenPeppol PINT Invoice (UBL) ")
                        .deprecated ()
                        .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
                        .addSchematron (PhiveRulesHelper.createXSLT (aRes, aNSCtxInvoice))
                        .registerInto (aRegistry);
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_PINT_CREDIT_NOTE_1_0_1)
                        .displayNamePrefix ("OpenPeppol PINT Credit Note (UBL) ")
                        .deprecated ()
@@ -147,14 +147,14 @@ public final class PeppolValidationPint
       final ClassPathResource aResCreditNote = new ClassPathResource (BASE_PATH +
                                                                       "1.0.2/xslt/PINT-UBL-validation-preprocessed-cn.xslt",
                                                                       _getCL ());
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_PINT_INVOICE_1_0_2)
                        .displayNamePrefix ("OpenPeppol PINT Invoice (UBL) ")
                        .notDeprecated ()
                        .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
                        .addSchematron (PhiveRulesHelper.createXSLT (aResInvoice, aNSCtxInvoice))
                        .registerInto (aRegistry);
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_PINT_CREDIT_NOTE_1_0_2)
                        .displayNamePrefix ("OpenPeppol PINT Credit Note (UBL) ")
                        .notDeprecated ()
@@ -168,14 +168,14 @@ public final class PeppolValidationPint
       final ClassPathResource aRes = new ClassPathResource (BASE_PATH +
                                                             "1.1.2/xslt/PINT-UBL-validation-preprocessed.xslt",
                                                             _getCL ());
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_PINT_INVOICE_1_1_2)
                        .displayNamePrefix ("OpenPeppol PINT Invoice (UBL) ")
                        .notDeprecated ()
                        .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
                        .addSchematron (PhiveRulesHelper.createXSLT (aRes, aNSCtxInvoice))
                        .registerInto (aRegistry);
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_PINT_CREDIT_NOTE_1_1_2)
                        .displayNamePrefix ("OpenPeppol PINT Credit Note (UBL) ")
                        .notDeprecated ()

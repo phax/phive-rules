@@ -24,8 +24,8 @@ import com.helger.collection.commons.ICommonsList;
 import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.io.resource.ClassPathResource;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
-import com.helger.phive.rules.api.PhiveRulesBuilder;
 import com.helger.phive.rules.api.PhiveRulesHelper;
+import com.helger.phive.xml.executorset.VesXmlBuilder;
 import com.helger.phive.xml.source.IValidationSourceXML;
 import com.helger.ubl21.UBL21Marshaller;
 import com.helger.ubl21.UBL21NamespaceContext;
@@ -78,7 +78,7 @@ public final class PeppolValidationTaxData
       final MapBasedNamespaceContext aNsCtx = UBL21NamespaceContext.getInstance ().getClone ();
       aNsCtx.addMapping ("pxs", "urn:peppol:schema:taxdata:1.0");
 
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_TDD_AE_1_0_0)
                        .displayName ("AE Tax Data Document v1.0.0")
                        .deprecated ()
@@ -94,7 +94,7 @@ public final class PeppolValidationTaxData
       final MapBasedNamespaceContext aNsCtx = UBL21NamespaceContext.getInstance ().getClone ();
       aNsCtx.addMapping ("pxs", "urn:peppol:schema:taxdata:1.0");
 
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_TDD_AE_1_0_1)
                        .displayName ("AE Tax Data Document v1.0.1")
                        .deprecated ()
@@ -110,7 +110,7 @@ public final class PeppolValidationTaxData
       final MapBasedNamespaceContext aNsCtx = UBL21NamespaceContext.getInstance ().getClone ();
       aNsCtx.addMapping ("pxs", "urn:peppol:schema:taxdata:1.0");
 
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_TDD_AE_1_0_2)
                        .displayName ("AE Tax Data Document v1.0.2")
                        .notDeprecated ()

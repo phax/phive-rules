@@ -23,8 +23,8 @@ import com.helger.base.enforce.ValueEnforcer;
 import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.io.resource.ClassPathResource;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
-import com.helger.phive.rules.api.PhiveRulesBuilder;
 import com.helger.phive.rules.api.PhiveRulesHelper;
+import com.helger.phive.xml.executorset.VesXmlBuilder;
 import com.helger.phive.xml.source.IValidationSourceXML;
 
 /**
@@ -108,7 +108,7 @@ public final class PeppolLegacyValidationReporting
 
     // EUSR
     {
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_EUSR_V100RC2)
                        .displayName ("Peppol End User Statistics Report v1.0.0-RC2")
                        .deprecated ()
@@ -122,7 +122,7 @@ public final class PeppolLegacyValidationReporting
       final ClassPathResource aXSD100 = new ClassPathResource (BASE_PATH_XSD +
                                                                "peppol-end-user-statistics-reporting-1.0.0.xsd",
                                                                _getCL ());
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_EUSR_V100)
                        .displayName ("Peppol End User Statistics Report v1.0.0")
                        .deprecated ()
@@ -131,7 +131,7 @@ public final class PeppolLegacyValidationReporting
                                                                                            "eusr/1.0.0/xslt/peppol-end-user-statistics-reporting-1.0.0.xslt",
                                                                                            _getCL ()), null))
                        .registerInto (aRegistry);
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_EUSR_V101)
                        .displayName ("Peppol End User Statistics Report v1.0.1")
                        .deprecated ()
@@ -144,7 +144,7 @@ public final class PeppolLegacyValidationReporting
       final ClassPathResource aXSD11 = new ClassPathResource (BASE_PATH_XSD +
                                                               "peppol-end-user-statistics-reporting-1.1.xsd",
                                                               _getCL ());
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_EUSR_V110)
                        .displayName ("Peppol End User Statistics Report v1.1.0")
                        .deprecated ()
@@ -153,7 +153,7 @@ public final class PeppolLegacyValidationReporting
                                                                                            "eusr/1.1.0/xslt/peppol-end-user-statistics-reporting-1.1.0.xslt",
                                                                                            _getCL ()), null))
                        .registerInto (aRegistry);
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_EUSR_V111)
                        .displayName ("Peppol End User Statistics Report v1.1.1")
                        .deprecated ()
@@ -162,7 +162,7 @@ public final class PeppolLegacyValidationReporting
                                                                                            "eusr/1.1.1/xslt/peppol-end-user-statistics-reporting-1.1.1.xslt",
                                                                                            _getCL ()), null))
                        .registerInto (aRegistry);
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_EUSR_V112)
                        .displayName ("Peppol End User Statistics Report v1.1.2")
                        .deprecated ()
@@ -171,7 +171,7 @@ public final class PeppolLegacyValidationReporting
                                                                                            "eusr/1.1.2/xslt/peppol-end-user-statistics-reporting-1.1.2.xslt",
                                                                                            _getCL ()), null))
                        .registerInto (aRegistry);
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_EUSR_V113)
                        .displayName ("Peppol End User Statistics Report v1.1.3")
                        .deprecated ()
@@ -184,7 +184,7 @@ public final class PeppolLegacyValidationReporting
 
     // TSR
     {
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_TSR_V100)
                        .displayName ("Peppol Transaction Statistics Report v1.0.0")
                        .deprecated ()
@@ -199,7 +199,7 @@ public final class PeppolLegacyValidationReporting
       final ClassPathResource aXSD101 = new ClassPathResource (BASE_PATH_XSD +
                                                                "peppol-transaction-statistics-reporting-1.0.1.xsd",
                                                                _getCL ());
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_TSR_V101)
                        .displayName ("Peppol Transaction Statistics Report v1.0.1")
                        .deprecated ()
@@ -208,7 +208,7 @@ public final class PeppolLegacyValidationReporting
                                                                                            "tsr/1.0.1/xslt/peppol-transaction-statistics-reporting-1.0.1.xslt",
                                                                                            _getCL ()), null))
                        .registerInto (aRegistry);
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_TSR_V102)
                        .displayName ("Peppol Transaction Statistics Report v1.0.2")
                        .deprecated ()
@@ -217,7 +217,7 @@ public final class PeppolLegacyValidationReporting
                                                                                            "tsr/1.0.2/xslt/peppol-transaction-statistics-reporting-1.0.2.xslt",
                                                                                            _getCL ()), null))
                        .registerInto (aRegistry);
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_TSR_V103)
                        .displayName ("Peppol Transaction Statistics Report v1.0.3")
                        .deprecated ()

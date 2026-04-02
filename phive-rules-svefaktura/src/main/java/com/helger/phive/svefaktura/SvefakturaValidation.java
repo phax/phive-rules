@@ -23,8 +23,8 @@ import com.helger.base.enforce.ValueEnforcer;
 import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.io.resource.ClassPathResource;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
-import com.helger.phive.rules.api.PhiveRulesBuilder;
 import com.helger.phive.rules.api.PhiveRulesHelper;
+import com.helger.phive.xml.executorset.VesXmlBuilder;
 import com.helger.phive.xml.source.IValidationSourceXML;
 import com.helger.xml.namespace.IIterableNamespaceContext;
 import com.helger.xml.namespace.MapBasedNamespaceContext;
@@ -84,7 +84,7 @@ public final class SvefakturaValidation
   {
     ValueEnforcer.notNull (aRegistry, "Registry");
 
-    PhiveRulesBuilder.builder ()
+    VesXmlBuilder.builder ()
                      .vesID (VID_SVEFAKTURA_10)
                      .displayNamePrefix ("SvefakturaXML ")
                      .notDeprecated ()
@@ -95,7 +95,7 @@ public final class SvefakturaValidation
                      .registerInto (aRegistry);
 
     // No Schematrons here
-    PhiveRulesBuilder.builder ()
+    VesXmlBuilder.builder ()
                      .vesID (VID_OBJECT_ENVELOPE_10)
                      .displayNamePrefix ("SvefakturaXML ObjectEnvelope ")
                      .notDeprecated ()

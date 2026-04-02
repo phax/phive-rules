@@ -24,9 +24,9 @@ import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.io.resource.ClassPathResource;
 import com.helger.io.resource.IReadableResource;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
-import com.helger.phive.rules.api.PhiveRulesBuilder;
 import com.helger.phive.rules.api.PhiveRulesHelper;
 import com.helger.phive.rules.api.PhiveRulesUBLHelper;
+import com.helger.phive.xml.executorset.VesXmlBuilder;
 import com.helger.phive.xml.source.IValidationSourceXML;
 import com.helger.ubl21.UBL21Marshaller;
 import com.helger.xml.namespace.MapBasedNamespaceContext;
@@ -99,7 +99,7 @@ public final class PeppolValidationBisAUNZ
                                                                   _getCL ());
 
       final String sVersion = VID_OPENPEPPOL_BIS3_AUNZ_UBL_INVOICE_1_0_11.getVersionString ();
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_BIS3_AUNZ_UBL_INVOICE_1_0_11)
                        .displayName ("A-NZ Peppol BIS3 Invoice (UBL) " + sVersion)
                        .notDeprecated ()
@@ -107,7 +107,7 @@ public final class PeppolValidationBisAUNZ
                        .addSchematron (PhiveRulesHelper.createXSLT (aResInv, aNSCtxInvoice))
                        .addSchematron (PhiveRulesHelper.createXSLT (aResShared, aNSCtxInvoice))
                        .registerInto (aRegistry);
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_BIS3_AUNZ_UBL_CREDIT_NOTE_1_0_11)
                        .displayName ("A-NZ Peppol BIS3 Credit Note (UBL) " + sVersion)
                        .notDeprecated ()
@@ -117,7 +117,7 @@ public final class PeppolValidationBisAUNZ
                        .registerInto (aRegistry);
 
       // Self-billing
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_BIS3_AUNZ_UBL_INVOICE_SELF_BILLING_1_0_11)
                        .displayName ("A-NZ Peppol BIS3 Invoice Self-Billing (UBL) " + sVersion)
                        .notDeprecated ()
@@ -125,7 +125,7 @@ public final class PeppolValidationBisAUNZ
                        .addSchematron (PhiveRulesHelper.createXSLT (aResSB, aNSCtxInvoice))
                        .addSchematron (PhiveRulesHelper.createXSLT (aResShared, aNSCtxInvoice))
                        .registerInto (aRegistry);
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_BIS3_AUNZ_UBL_CREDIT_NOTE_SELF_BILLING_1_0_11)
                        .displayName ("A-NZ Peppol BIS3 Credit Note Self-Billing (UBL) " + sVersion)
                        .notDeprecated ()
@@ -145,7 +145,7 @@ public final class PeppolValidationBisAUNZ
                                                                   _getCL ());
 
       final String sVersion = VID_OPENPEPPOL_BIS3_AUNZ_UBL_INVOICE_1_0_12.getVersionString ();
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_BIS3_AUNZ_UBL_INVOICE_1_0_12)
                        .displayName ("A-NZ Peppol BIS3 Invoice (UBL) " + sVersion)
                        .notDeprecated ()
@@ -153,7 +153,7 @@ public final class PeppolValidationBisAUNZ
                        .addSchematron (PhiveRulesHelper.createXSLT (aResInv, aNSCtxInvoice))
                        .addSchematron (PhiveRulesHelper.createXSLT (aResShared, aNSCtxInvoice))
                        .registerInto (aRegistry);
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_BIS3_AUNZ_UBL_CREDIT_NOTE_1_0_12)
                        .displayName ("A-NZ Peppol BIS3 Credit Note (UBL) " + sVersion)
                        .notDeprecated ()
@@ -163,7 +163,7 @@ public final class PeppolValidationBisAUNZ
                        .registerInto (aRegistry);
 
       // Self-billing
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_BIS3_AUNZ_UBL_INVOICE_SELF_BILLING_1_0_12)
                        .displayName ("A-NZ Peppol BIS3 Invoice Self-Billing (UBL) " + sVersion)
                        .notDeprecated ()
@@ -171,7 +171,7 @@ public final class PeppolValidationBisAUNZ
                        .addSchematron (PhiveRulesHelper.createXSLT (aResSB, aNSCtxInvoice))
                        .addSchematron (PhiveRulesHelper.createXSLT (aResShared, aNSCtxInvoice))
                        .registerInto (aRegistry);
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_BIS3_AUNZ_UBL_CREDIT_NOTE_SELF_BILLING_1_0_12)
                        .displayName ("A-NZ Peppol BIS3 Credit Note Self-Billing (UBL) " + sVersion)
                        .notDeprecated ()

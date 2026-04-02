@@ -319,6 +319,18 @@
             </configuration>
           </execution>
           -->
+          <!--
+          <execution>
+            <id>reporting-tdd-vida</id>
+            <goals>
+              <goal>convert</goal>
+            </goals>
+            <configuration>
+              <schematronDirectory>src/test/resources/external/rule-source/tdd/vida/1.0.0</schematronDirectory>
+              <xsltDirectory>src/main/resources/external/schematron/tdd/vida/1.0.0</xsltDirectory>
+            </configuration>
+          </execution>
+          -->
         </executions>
       </plugin>
     </plugins>

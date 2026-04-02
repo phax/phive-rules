@@ -23,8 +23,8 @@ import com.helger.base.enforce.ValueEnforcer;
 import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.fatturapa.CFatturaPA;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
-import com.helger.phive.rules.api.PhiveRulesBuilder;
 import com.helger.phive.rules.api.PhiveRulesHelper;
+import com.helger.phive.xml.executorset.VesXmlBuilder;
 import com.helger.phive.xml.source.IValidationSourceXML;
 
 /**
@@ -61,19 +61,19 @@ public final class FatturaPAValidation
     ValueEnforcer.notNull (aRegistry, "Registry");
 
     // No Schematrons here
-    PhiveRulesBuilder.builder ()
+    VesXmlBuilder.builder ()
                      .vesID (VID_FATTURAPA_120)
                      .displayNamePrefix ("fatturaPA ")
                      .deprecated ()
                      .addXSD (CFatturaPA.getAllXSDFatturaPA120 ())
                      .registerInto (aRegistry);
-    PhiveRulesBuilder.builder ()
+    VesXmlBuilder.builder ()
                      .vesID (VID_FATTURAPA_121)
                      .displayNamePrefix ("fatturaPA ")
                      .deprecated ()
                      .addXSD (CFatturaPA.getAllXSDFatturaPA121 ())
                      .registerInto (aRegistry);
-    PhiveRulesBuilder.builder ()
+    VesXmlBuilder.builder ()
                      .vesID (VID_FATTURAPA_122)
                      .displayNamePrefix ("fatturaPA ")
                      .notDeprecated ()

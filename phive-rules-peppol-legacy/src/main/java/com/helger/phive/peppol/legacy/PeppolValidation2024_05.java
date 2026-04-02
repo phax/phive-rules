@@ -30,9 +30,9 @@ import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.io.resource.ClassPathResource;
 import com.helger.io.resource.IReadableResource;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
-import com.helger.phive.rules.api.PhiveRulesBuilder;
 import com.helger.phive.rules.api.PhiveRulesHelper;
 import com.helger.phive.rules.api.PhiveRulesUBLHelper;
+import com.helger.phive.xml.executorset.VesXmlBuilder;
 import com.helger.phive.xml.source.IValidationSourceXML;
 import com.helger.ubl21.UBL21Marshaller;
 import com.helger.ubl23.UBL23Marshaller;
@@ -160,7 +160,7 @@ public final class PeppolValidation2024_05
     final IReadableResource ORDER_RESPONSE_ADVANCED = new ClassPathResource (PREFIX_XSLT + "PEPPOLBIS-T116.xslt",
                                                                              _getCL ());
 
-    PhiveRulesBuilder.builder ()
+    VesXmlBuilder.builder ()
                      .vesID (VID_OPENPEPPOL_INVOICE_UBL_V3)
                      .displayName ("OpenPeppol UBL Invoice" + sVersion + sAkaVersionBilling)
                      .deprecated ()
@@ -170,7 +170,7 @@ public final class PeppolValidation2024_05
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (INVOICE_UBL_CEN))
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (INVOICE_UBL_PEPPOL))
                      .registerInto (aRegistry);
-    PhiveRulesBuilder.builder ()
+    VesXmlBuilder.builder ()
                      .vesID (VID_OPENPEPPOL_CREDIT_NOTE_UBL_V3)
                      .displayName ("OpenPeppol UBL Credit Note" + sVersion + sAkaVersionBilling)
                      .deprecated ()
@@ -189,7 +189,7 @@ public final class PeppolValidation2024_05
     // ValidationExecutorXSD.create (CCIID16B.getXSDResource ()),
     // _createXsltCII (INVOICE_CII_CEN),
     // _createXsltCII (INVOICE_CII_PEPPOL)));
-    PhiveRulesBuilder.builder ()
+    VesXmlBuilder.builder ()
                      .vesID (VID_OPENPEPPOL_ORDER_V3)
                      .displayName ("OpenPeppol Order" + sVersion + sAkaVersionBIS)
                      .deprecated ()
@@ -198,7 +198,7 @@ public final class PeppolValidation2024_05
                      .addXSD (UBL21Marshaller.getAllOrderXSDs ())
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (ORDER))
                      .registerInto (aRegistry);
-    PhiveRulesBuilder.builder ()
+    VesXmlBuilder.builder ()
                      .vesID (VID_OPENPEPPOL_DESPATCH_ADVICE_V3)
                      .displayName ("OpenPeppol Despatch Advice" + sVersion + sAkaVersionBIS)
                      .deprecated ()
@@ -207,7 +207,7 @@ public final class PeppolValidation2024_05
                      .addXSD (UBL21Marshaller.getAllDespatchAdviceXSDs ())
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (DESPATCH_ADVICE))
                      .registerInto (aRegistry);
-    PhiveRulesBuilder.builder ()
+    VesXmlBuilder.builder ()
                      .vesID (VID_OPENPEPPOL_CATALOGUE_V3)
                      .displayName ("OpenPeppol Catalogue" + sVersion + sAkaVersionBIS)
                      .deprecated ()
@@ -216,7 +216,7 @@ public final class PeppolValidation2024_05
                      .addXSD (UBL21Marshaller.getAllCatalogueXSDs ())
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (CATALOGUE))
                      .registerInto (aRegistry);
-    PhiveRulesBuilder.builder ()
+    VesXmlBuilder.builder ()
                      .vesID (VID_OPENPEPPOL_CATALOGUE_RESPONSE_V3)
                      .displayName ("OpenPeppol Catalogue Response" + sVersion + sAkaVersionBIS)
                      .deprecated ()
@@ -225,7 +225,7 @@ public final class PeppolValidation2024_05
                      .addXSD (UBL21Marshaller.getAllApplicationResponseXSDs ())
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (CATALOGUE_RESPONSE))
                      .registerInto (aRegistry);
-    PhiveRulesBuilder.builder ()
+    VesXmlBuilder.builder ()
                      .vesID (VID_OPENPEPPOL_MLR_V3)
                      .displayName ("OpenPeppol MLR" + sVersion + sAkaVersionBIS)
                      .deprecated ()
@@ -234,7 +234,7 @@ public final class PeppolValidation2024_05
                      .addXSD (UBL21Marshaller.getAllApplicationResponseXSDs ())
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (MLR))
                      .registerInto (aRegistry);
-    PhiveRulesBuilder.builder ()
+    VesXmlBuilder.builder ()
                      .vesID (VID_OPENPEPPOL_ORDER_RESPONSE_V3)
                      .displayName ("OpenPeppol Order Response" + sVersion + sAkaVersionBIS)
                      .deprecated ()
@@ -243,7 +243,7 @@ public final class PeppolValidation2024_05
                      .addXSD (UBL21Marshaller.getAllOrderResponseXSDs ())
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (ORDER_RESPONSE))
                      .registerInto (aRegistry);
-    PhiveRulesBuilder.builder ()
+    VesXmlBuilder.builder ()
                      .vesID (VID_OPENPEPPOL_PUNCH_OUT_V3)
                      .displayName ("OpenPeppol Punch Out" + sVersion + sAkaVersionBIS)
                      .deprecated ()
@@ -252,7 +252,7 @@ public final class PeppolValidation2024_05
                      .addXSD (UBL21Marshaller.getAllCatalogueXSDs ())
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (PUNCH_OUT))
                      .registerInto (aRegistry);
-    PhiveRulesBuilder.builder ()
+    VesXmlBuilder.builder ()
                      .vesID (VID_OPENPEPPOL_ORDER_AGREEMENT_V3)
                      .displayName ("OpenPeppol Order Agreement" + sVersion + sAkaVersionBIS)
                      .deprecated ()
@@ -261,7 +261,7 @@ public final class PeppolValidation2024_05
                      .addXSD (UBL21Marshaller.getAllOrderResponseXSDs ())
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (ORDER_AGREEMENT))
                      .registerInto (aRegistry);
-    PhiveRulesBuilder.builder ()
+    VesXmlBuilder.builder ()
                      .vesID (VID_OPENPEPPOL_INVOICE_MESSAGE_RESPONSE_V3)
                      .displayName ("OpenPeppol Invoice Message Response" + sVersion + sAkaVersionBIS)
                      .deprecated ()
@@ -271,7 +271,7 @@ public final class PeppolValidation2024_05
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (INVOICE_MESSAGE_RESPONSE))
                      .registerInto (aRegistry);
     // UBL 2.3!
-    PhiveRulesBuilder.builder ()
+    VesXmlBuilder.builder ()
                      .vesID (VID_OPENPEPPOL_ORDER_CHANGE_V3)
                      .displayName ("OpenPeppol Order Change" + sVersion + sAkaVersionBIS)
                      .deprecated ()
@@ -281,7 +281,7 @@ public final class PeppolValidation2024_05
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL23 (ORDER_CHANGE))
                      .registerInto (aRegistry);
     // UBL 2.3!
-    PhiveRulesBuilder.builder ()
+    VesXmlBuilder.builder ()
                      .vesID (VID_OPENPEPPOL_ORDER_CANCELLATION_V3)
                      .displayName ("OpenPeppol Order Cancellation" + sVersion + sAkaVersionBIS)
                      .deprecated ()
@@ -291,7 +291,7 @@ public final class PeppolValidation2024_05
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL23 (ORDER_CANCELLATION))
                      .registerInto (aRegistry);
     // UBL 2.3!
-    PhiveRulesBuilder.builder ()
+    VesXmlBuilder.builder ()
                      .vesID (VID_OPENPEPPOL_ORDER_RESPONSE_ADVANCED_V3)
                      .displayName ("OpenPeppol Order Response Advanced" + sVersion + sAkaVersionBIS)
                      .deprecated ()

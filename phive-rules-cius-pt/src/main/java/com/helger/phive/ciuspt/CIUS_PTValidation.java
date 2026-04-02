@@ -23,9 +23,9 @@ import com.helger.base.enforce.ValueEnforcer;
 import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.io.resource.ClassPathResource;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
-import com.helger.phive.rules.api.PhiveRulesBuilder;
 import com.helger.phive.rules.api.PhiveRulesHelper;
 import com.helger.phive.rules.api.PhiveRulesUBLHelper;
+import com.helger.phive.xml.executorset.VesXmlBuilder;
 import com.helger.phive.xml.source.IValidationSourceXML;
 import com.helger.ubl21.UBL21Marshaller;
 
@@ -90,14 +90,14 @@ public final class CIUS_PTValidation
     {
       final ClassPathResource RES_200 = new ClassPathResource ("/external/schematron/2.0.0/urn_feap.gov.pt_CIUS-PT_2.0.0.xslt",
                                                                _getCL ());
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_CIUS_PT_UBL_CREDITNOTE_200)
                        .displayNamePrefix ("CIUS-PT UBL Credit Note ")
                        .deprecated ()
                        .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (RES_200))
                        .registerInto (aRegistry);
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_CIUS_PT_UBL_INVOICE_200)
                        .displayNamePrefix ("CIUS-PT UBL Invoice ")
                        .deprecated ()
@@ -110,14 +110,14 @@ public final class CIUS_PTValidation
     {
       final ClassPathResource RES_211 = new ClassPathResource ("/external/schematron/2.1.1/urn_feap.gov.pt_CIUS-PT_2.1.1.xslt",
                                                                _getCL ());
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_CIUS_PT_UBL_CREDITNOTE_211)
                        .displayNamePrefix ("CIUS-PT UBL Credit Note ")
                        .notDeprecated ()
                        .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (RES_211))
                        .registerInto (aRegistry);
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_CIUS_PT_UBL_INVOICE_211)
                        .displayNamePrefix ("CIUS-PT UBL Invoice ")
                        .notDeprecated ()

@@ -23,9 +23,9 @@ import com.helger.base.enforce.ValueEnforcer;
 import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.io.resource.ClassPathResource;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
-import com.helger.phive.rules.api.PhiveRulesBuilder;
 import com.helger.phive.rules.api.PhiveRulesHelper;
 import com.helger.phive.rules.api.PhiveRulesUBLHelper;
+import com.helger.phive.xml.executorset.VesXmlBuilder;
 import com.helger.phive.xml.source.IValidationSourceXML;
 import com.helger.ubl21.UBL21Marshaller;
 
@@ -82,7 +82,7 @@ public final class ZATCAValidation
     // SDK 2.0.3
     {
       final String sPath = sPrefix + "2.0.3/";
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_INVOICE_UBL_2_0_3)
                        .displayName ("ZATCA/FATOORA Invoice (SDK 2.0.3)")
                        .deprecated ()
@@ -99,7 +99,7 @@ public final class ZATCAValidation
     // SDK 2.3.8
     {
       final String sPath = sPrefix + "2.3.8/";
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_INVOICE_UBL_2_3_8)
                        .displayName ("ZATCA/FATOORA Invoice (SDK 2.3.8)")
                        .deprecated ()
@@ -116,7 +116,7 @@ public final class ZATCAValidation
     // SDK 3.4.6
     {
       final String sPath = sPrefix + "3.4.6/";
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_INVOICE_UBL_3_4_6)
                        .displayName ("ZATCA/FATOORA Invoice (SDK 3.4.6)")
                        .notDeprecated ()

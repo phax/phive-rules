@@ -24,9 +24,9 @@ import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.io.resource.ClassPathResource;
 import com.helger.io.resource.IReadableResource;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
-import com.helger.phive.rules.api.PhiveRulesBuilder;
 import com.helger.phive.rules.api.PhiveRulesHelper;
 import com.helger.phive.rules.api.PhiveRulesUBLHelper;
+import com.helger.phive.xml.executorset.VesXmlBuilder;
 import com.helger.phive.xml.source.IValidationSourceXML;
 import com.helger.ubl21.UBL21Marshaller;
 import com.helger.xml.namespace.MapBasedNamespaceContext;
@@ -100,7 +100,7 @@ public final class PeppolLegacyValidationSG
                                                                                   "1.0.0/xslt/PEPPOL-EN16931-UBL-SG-Conformant.xslt",
                                                                                   _getCL ());
 
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_BIS3_SG_UBL_INVOICE_100)
                        .displayName ("SG Peppol BIS3 Invoice (UBL) 1.0.0")
                        .deprecated ()
@@ -108,7 +108,7 @@ public final class PeppolLegacyValidationSG
                        .addSchematron (PhiveRulesHelper.createXSLT (BIS3_BILLING_SG_CEN_100, aNSCtxInvoice))
                        .addSchematron (PhiveRulesHelper.createXSLT (BIS3_BILLING_SG_PEPPOL_100, aNSCtxInvoice))
                        .registerInto (aRegistry);
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_BIS3_SG_UBL_CREDIT_NOTE_100)
                        .displayName ("SG Peppol BIS3 Credit Note (UBL) 1.0.0")
                        .deprecated ()
@@ -127,7 +127,7 @@ public final class PeppolLegacyValidationSG
                                                                                   "1.0.2/xslt/PEPPOL-EN16931-UBL-SG-Conformant.xslt",
                                                                                   _getCL ());
 
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_BIS3_SG_UBL_INVOICE_102)
                        .displayName ("SG Peppol BIS3 Invoice (UBL) 1.0.2")
                        .deprecated ()
@@ -135,7 +135,7 @@ public final class PeppolLegacyValidationSG
                        .addSchematron (PhiveRulesHelper.createXSLT (BIS3_BILLING_SG_CEN_102, aNSCtxInvoice))
                        .addSchematron (PhiveRulesHelper.createXSLT (BIS3_BILLING_SG_PEPPOL_102, aNSCtxInvoice))
                        .registerInto (aRegistry);
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_BIS3_SG_UBL_CREDIT_NOTE_102)
                        .displayName ("SG Peppol BIS3 Credit Note (UBL) 1.0.2")
                        .deprecated ()
@@ -153,7 +153,7 @@ public final class PeppolLegacyValidationSG
       final IReadableResource BIS3_BILLING_SG_PEPPOL_103 = new ClassPathResource (BASE_PATH +
                                                                                   "1.0.3/xslt/PEPPOL-EN16931-UBL-SG-Conformant.xslt",
                                                                                   _getCL ());
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_BIS3_SG_UBL_INVOICE_103)
                        .displayName ("SG Peppol BIS3 Invoice (UBL) 1.0.3")
                        .deprecated ()
@@ -161,7 +161,7 @@ public final class PeppolLegacyValidationSG
                        .addSchematron (PhiveRulesHelper.createXSLT (BIS3_BILLING_SG_CEN_103, aNSCtxInvoice))
                        .addSchematron (PhiveRulesHelper.createXSLT (BIS3_BILLING_SG_PEPPOL_103, aNSCtxInvoice))
                        .registerInto (aRegistry);
-      PhiveRulesBuilder.builder ()
+      VesXmlBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_BIS3_SG_UBL_CREDIT_NOTE_103)
                        .displayName ("SG Peppol BIS3 Credit Note (UBL) 1.0.3")
                        .deprecated ()
