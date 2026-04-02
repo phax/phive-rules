@@ -36,74 +36,93 @@ import com.helger.ubl21.UBL21Marshaller;
  * @author Philip Helger
  */
 @Immutable
-public final class ZATCAValidation
-{
-  public static final String GROUP_ID = "sa.zatca";
+public final class ZATCAValidation {
+    public static final String GROUP_ID = "sa.zatca";
 
-  // v2.0.3
-  @Deprecated
-  public static final DVRCoordinate VID_INVOICE_UBL_2_0_3 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                               "ubl-invoice",
-                                                                                               "2.0.3");
+    // v2.0.3
+    @Deprecated
+    public static final DVRCoordinate VID_INVOICE_UBL_2_0_3 = PhiveRulesHelper.createCoordinate(GROUP_ID,
+            "ubl-invoice",
+            "2.0.3");
 
-  // v2.3.8
-  public static final DVRCoordinate VID_INVOICE_UBL_2_3_8 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                               "ubl-invoice",
-                                                                                               "2.3.8");
+    // v2.3.8
+    @Deprecated
+    public static final DVRCoordinate VID_INVOICE_UBL_2_3_8 = PhiveRulesHelper.createCoordinate(GROUP_ID,
+            "ubl-invoice",
+            "2.3.8");
 
-  private ZATCAValidation ()
-  {}
+    // v3.0.8
+    public static final DVRCoordinate VID_INVOICE_UBL_3_0_8 = PhiveRulesHelper.createCoordinate(GROUP_ID,
+            "ubl-invoice",
+            "3.0.8");
 
-  @NonNull
-  private static ClassLoader _getCL ()
-  {
-    return ZATCAValidation.class.getClassLoader ();
-  }
-
-  /**
-   * Register all standard ZATCA validation execution sets to the provided registry.
-   *
-   * @param aRegistry
-   *        The registry to add the artefacts. May not be <code>null</code>.
-   */
-  public static void initZATCA (@NonNull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
-  {
-    ValueEnforcer.notNull (aRegistry, "Registry");
-
-    final String sPrefix = "/external/schematron/";
-
-    // SDK 2.0.3
-    {
-      final String sPath = sPrefix + "2.0.3/";
-      PhiveRulesBuilder.builder ()
-                       .vesID (VID_INVOICE_UBL_2_0_3)
-                       .displayName ("ZATCA/FATOORA Invoice (SDK 2.0.3)")
-                       .deprecated ()
-                       .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
-                       .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
-                                                                                                    "CEN-EN16931-UBL.xsl",
-                                                                                                    _getCL ())))
-                       .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
-                                                                                                    "20210819_ZATCA_E-invoice_Validation_Rules.xsl",
-                                                                                                    _getCL ())))
-                       .registerInto (aRegistry);
+    private ZATCAValidation() {
     }
 
-    // SDK 2.3.8
-    {
-      final String sPath = sPrefix + "2.3.8/";
-      PhiveRulesBuilder.builder ()
-                       .vesID (VID_INVOICE_UBL_2_3_8)
-                       .displayName ("ZATCA/FATOORA Invoice (SDK 2.3.8)")
-                       .notDeprecated ()
-                       .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
-                       .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
-                                                                                                    "CEN-EN16931-UBL.xsl",
-                                                                                                    _getCL ())))
-                       .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
-                                                                                                    "20210819_ZATCA_E-invoice_Validation_Rules.xsl",
-                                                                                                    _getCL ())))
-                       .registerInto (aRegistry);
+    @NonNull
+    private static ClassLoader _getCL() {
+        return ZATCAValidation.class.getClassLoader();
     }
-  }
+
+    /**
+     * Register all standard ZATCA validation execution sets to the provided registry.
+     *
+     * @param aRegistry The registry to add the artefacts. May not be <code>null</code>.
+     */
+    public static void initZATCA(@NonNull final IValidationExecutorSetRegistry<IValidationSourceXML> aRegistry) {
+        ValueEnforcer.notNull(aRegistry, "Registry");
+
+        final String sPrefix = "/external/schematron/";
+
+        // SDK 2.0.3
+        {
+            final String sPath = sPrefix + "2.0.3/";
+            PhiveRulesBuilder.builder()
+                    .vesID(VID_INVOICE_UBL_2_0_3)
+                    .displayName("ZATCA/FATOORA Invoice (SDK 2.0.3)")
+                    .deprecated()
+                    .addXSD(UBL21Marshaller.getAllInvoiceXSDs())
+                    .addSchematron(PhiveRulesUBLHelper.createXSLT_UBL21(new ClassPathResource(sPath +
+                            "CEN-EN16931-UBL.xsl",
+                            _getCL())))
+                    .addSchematron(PhiveRulesUBLHelper.createXSLT_UBL21(new ClassPathResource(sPath +
+                            "20210819_ZATCA_E-invoice_Validation_Rules.xsl",
+                            _getCL())))
+                    .registerInto(aRegistry);
+        }
+
+        // SDK 2.3.8
+        {
+            final String sPath = sPrefix + "2.3.8/";
+            PhiveRulesBuilder.builder()
+                    .vesID(VID_INVOICE_UBL_2_3_8)
+                    .displayName("ZATCA/FATOORA Invoice (SDK 2.3.8)")
+                    .notDeprecated()
+                    .addXSD(UBL21Marshaller.getAllInvoiceXSDs())
+                    .addSchematron(PhiveRulesUBLHelper.createXSLT_UBL21(new ClassPathResource(sPath +
+                            "CEN-EN16931-UBL.xsl",
+                            _getCL())))
+                    .addSchematron(PhiveRulesUBLHelper.createXSLT_UBL21(new ClassPathResource(sPath +
+                            "20210819_ZATCA_E-invoice_Validation_Rules.xsl",
+                            _getCL())))
+                    .registerInto(aRegistry);
+        }
+
+        // SDK 3.0.8
+        {
+            final String sPath = sPrefix + "3.0.8/";
+            PhiveRulesBuilder.builder()
+                    .vesID(VID_INVOICE_UBL_3_0_8)
+                    .displayName("ZATCA/FATOORA Invoice (SDK 3.0.8)")
+                    .notDeprecated()
+                    .addXSD(UBL21Marshaller.getAllInvoiceXSDs())
+                    .addSchematron(PhiveRulesUBLHelper.createXSLT_UBL21(new ClassPathResource(sPath +
+                            "CEN-EN16931-UBL.xsl",
+                            _getCL())))
+                    .addSchematron(PhiveRulesUBLHelper.createXSLT_UBL21(new ClassPathResource(sPath +
+                            "20210819_ZATCA_E-invoice_Validation_Rules.xsl",
+                            _getCL())))
+                    .registerInto(aRegistry);
+        }
+    }
 }

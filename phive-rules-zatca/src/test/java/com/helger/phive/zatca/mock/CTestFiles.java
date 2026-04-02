@@ -16,6 +16,7 @@
  */
 package com.helger.phive.zatca.mock;
 
+import static com.helger.phive.zatca.ZATCAValidation.*;
 import static org.junit.Assert.assertTrue;
 
 import org.jspecify.annotations.NonNull;
@@ -51,7 +52,7 @@ public final class CTestFiles
   public static ICommonsList <PhiveTestFile> getAllTestFiles ()
   {
     final ICommonsList <PhiveTestFile> ret = new CommonsArrayList <> ();
-    for (final DVRCoordinate aESID : new DVRCoordinate [] { ZATCAValidation.VID_INVOICE_UBL_2_0_3,
+    for (final DVRCoordinate aESID : new DVRCoordinate [] { VID_INVOICE_UBL_2_0_3,
                                                             ZATCAValidation.VID_INVOICE_UBL_2_3_8 })
       for (final IReadableResource aRes : getAllMatchingTestFiles (aESID))
       {
@@ -70,13 +71,13 @@ public final class CTestFiles
     final String sPrefix0 = "/external/test-files/";
 
     // 2.0.3
-    if (aVESID.equals (ZATCAValidation.VID_INVOICE_UBL_2_0_3))
+    if (VID_INVOICE_UBL_2_0_3.equals (aVESID))
     {
       return new CommonsArrayList <> ();
     }
 
-    // 2.3.8
-    if (aVESID.equals (ZATCAValidation.VID_INVOICE_UBL_2_3_8))
+    // 2.3.8 & 3.0.8
+    if (VID_INVOICE_UBL_2_3_8.equals (aVESID) || VID_INVOICE_UBL_3_0_8.equals (aVESID))
     {
       final String sPrefix = sPrefix0 + "2.3.8/";
       return new CommonsArrayList <> (new String [] { "Simplified/Credit/Credit Note of a Simplified Tax Invoice.xml",
