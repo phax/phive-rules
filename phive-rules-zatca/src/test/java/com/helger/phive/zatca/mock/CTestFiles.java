@@ -53,7 +53,8 @@ public final class CTestFiles
   {
     final ICommonsList <PhiveTestFile> ret = new CommonsArrayList <> ();
     for (final DVRCoordinate aESID : new DVRCoordinate [] { VID_INVOICE_UBL_2_0_3,
-                                                            ZATCAValidation.VID_INVOICE_UBL_2_3_8 })
+                                                            VID_INVOICE_UBL_2_3_8,
+                                                            VID_INVOICE_UBL_3_4_6 })
       for (final IReadableResource aRes : getAllMatchingTestFiles (aESID))
       {
         assertTrue ("Not existing test file: " + aRes.getPath (), aRes.exists ());
