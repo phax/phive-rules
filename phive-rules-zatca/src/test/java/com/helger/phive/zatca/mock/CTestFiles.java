@@ -76,8 +76,8 @@ public final class CTestFiles
       return new CommonsArrayList <> ();
     }
 
-    // 2.3.8 & 3.0.8
-    if (VID_INVOICE_UBL_2_3_8.equals (aVESID) || VID_INVOICE_UBL_3_0_8.equals (aVESID))
+    // 2.3.8
+    if (VID_INVOICE_UBL_2_3_8.equals (aVESID))
     {
       final String sPrefix = sPrefix0 + "2.3.8/";
       return new CommonsArrayList <> (new String [] { "Simplified/Credit/Credit Note of a Simplified Tax Invoice.xml",
@@ -104,6 +104,32 @@ public final class CTestFiles
 
       }, x -> new ClassPathResource (sPrefix + x));
     }
+
+    if (VID_INVOICE_UBL_3_4_6.equals (aVESID))
+    {
+      final String sPrefix = sPrefix0 + "3.4.6/";
+      return new CommonsArrayList <> (new String [] { "Advance Payment adjustments with foreign currency invoice.xml",
+                                                      "Nominal supply invoice.xml",
+                                                      "Simplified_Invoice.xml",
+                                                      "Standard Invoice with Payable Rounding Adjustment.xml",
+                                                      "Advance Payment adjustments with rate change scenarios.xml",
+                                                      "Out of Scope Standard Tax Invoice.xml",
+                                                      "Simplified Tax Invoice with Zero Rated Item.xml",
+                                                      "Standard_Invoice.xml",
+                                                      "Advance Payment adjustments.xml",
+                                                      "Self-billing invoice.xml",
+                                                      "Standard_Credit_Note.xml",
+                                                      "Summary Invoice.xml",
+                                                      "Exempt Tax Invoice.xml",
+                                                      "Simplified_Credit_Note.xml",
+                                                      "Standard_Debit_Note.xml",
+                                                      "Third party billing.xml",
+                                                      "Export invoice.xml",
+                                                      "Simplified_Debit_Note.xml",
+                                                      "Standard Invoice with Document Level Charge.xml"
+      }, x -> new ClassPathResource (sPrefix + x));
+    }
+
     throw new IllegalStateException ("Unsupported VESID " + aVESID);
   }
 }

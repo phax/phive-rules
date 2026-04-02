@@ -51,10 +51,10 @@ public final class ZATCAValidation {
             "ubl-invoice",
             "2.3.8");
 
-    // v3.0.8
-    public static final DVRCoordinate VID_INVOICE_UBL_3_0_8 = PhiveRulesHelper.createCoordinate(GROUP_ID,
+    // v3.4.6
+    public static final DVRCoordinate VID_INVOICE_UBL_3_4_6 = PhiveRulesHelper.createCoordinate(GROUP_ID,
             "ubl-invoice",
-            "3.0.8");
+            "3.4.6");
 
     private ZATCAValidation() {
     }
@@ -108,12 +108,12 @@ public final class ZATCAValidation {
                     .registerInto(aRegistry);
         }
 
-        // SDK 3.0.8
+        // SDK 3.4.6
         {
-            final String sPath = sPrefix + "3.0.8/";
+            final String sPath = sPrefix + "3.4.6/";
             PhiveRulesBuilder.builder()
-                    .vesID(VID_INVOICE_UBL_3_0_8)
-                    .displayName("ZATCA/FATOORA Invoice (SDK 3.0.8)")
+                    .vesID(VID_INVOICE_UBL_3_4_6)
+                    .displayName("ZATCA/FATOORA Invoice (SDK 3.4.6)")
                     .notDeprecated()
                     .addXSD(UBL21Marshaller.getAllInvoiceXSDs())
                     .addSchematron(PhiveRulesUBLHelper.createXSLT_UBL21(new ClassPathResource(sPath +
