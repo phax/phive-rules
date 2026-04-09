@@ -24,7 +24,7 @@ import java.util.Locale;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.w3c.dom.Node;
+import org.w3c.dom.Document;
 
 import com.helger.phive.api.execute.ValidationExecutionManager;
 import com.helger.phive.api.executorset.IValidationExecutorSet;
@@ -60,11 +60,11 @@ public final class ValidationExecutionManagerFuncTest
                    " validation layers using " +
                    aTestFile.getVESID ().getAsSingleID ());
 
-      final Node aNode = DOMReader.readXMLDOM (aTestFile.getResource ());
-      assertNotNull (aNode);
+      final Document aDoc = DOMReader.readXMLDOM (aTestFile.getResource ());
+      assertNotNull (aDoc);
 
       // Read as desired type
-      final IValidationSourceXML aSource = ValidationSourceXML.create (aTestFile.getResource ().getPath (), aNode);
+      final IValidationSourceXML aSource = ValidationSourceXML.create (aTestFile.getResource ().getPath (), aDoc);
       final ValidationResultList aErrors = ValidationExecutionManager.executeValidation (IValidityDeterminator.createDefault (),
                                                                                          aExecutors,
                                                                                          aSource,
