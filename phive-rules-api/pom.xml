@@ -25,12 +25,11 @@
     <version>4.3.1-SNAPSHOT</version>
   </parent>
   <artifactId>phive-rules-api</artifactId>
-  <packaging>bundle</packaging>
+  <packaging>jar</packaging>
   <name>phive-rules-api</name>
   <description>phive-rules API</description>
   <url>https://github.com/phax/phive-rules/phive-rules-api</url>
   <inceptionYear>2024</inceptionYear>
-
   <licenses>
     <license>
       <name>Apache 2</name>
@@ -38,12 +37,10 @@
       <distribution>repo</distribution>
     </license>
   </licenses>
-
   <organization>
     <name>Philip Helger</name>
     <url>http://www.helger.com</url>
   </organization>
-
   <developers>
     <developer>
       <id>philip</id>
@@ -52,7 +49,6 @@
       <url>http://www.helger.com</url>
     </developer>
   </developers>
-
   <dependencies>
     <dependency>
       <groupId>org.slf4j</groupId>
@@ -98,7 +94,6 @@
       <version>${ph-ubl.version}</version>
       <optional>true</optional>
     </dependency>
-
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
@@ -115,23 +110,4 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
-
-  <build>
-    <plugins>
-      <plugin>
-        <groupId>org.apache.felix</groupId>
-        <artifactId>maven-bundle-plugin</artifactId>
-        <extensions>true</extensions>
-        <configuration>
-          <instructions>
-            <Automatic-Module-Name>com.helger.phive.rules.api</Automatic-Module-Name>
-            <Export-Package>
-              com.helger.phive.rules.api
-            </Export-Package>
-            <Import-Package>!org.jspecify.annotations.*,*</Import-Package>
-          </instructions>
-        </configuration>
-      </plugin>
-    </plugins>
-  </build>
 </project>

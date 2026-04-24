@@ -25,12 +25,11 @@
     <version>4.3.1-SNAPSHOT</version>
   </parent>
   <artifactId>phive-rules-ksef</artifactId>
-  <packaging>bundle</packaging>
+  <packaging>jar</packaging>
   <name>phive-rules-ksef</name>
   <description>Polish KSeF validation rules for phive</description>
   <url>https://github.com/phax/phive-rules/phive-rules-ksef</url>
   <inceptionYear>2021</inceptionYear>
-
   <licenses>
     <license>
       <name>Apache 2</name>
@@ -38,12 +37,10 @@
       <distribution>repo</distribution>
     </license>
   </licenses>
-
   <organization>
     <name>Philip Helger</name>
     <url>http://www.helger.com</url>
   </organization>
-
   <developers>
     <developer>
       <id>philip</id>
@@ -58,7 +55,6 @@
       <url>https://ecosio.com</url>
     </developer>
   </developers>
-
   <dependencies>
     <dependency>
       <groupId>com.helger.xsd</groupId>
@@ -68,7 +64,6 @@
       <groupId>com.helger.phive.rules</groupId>
       <artifactId>phive-rules-api</artifactId>
     </dependency>
-
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
@@ -90,23 +85,8 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
-
   <build>
     <plugins>
-      <plugin>
-        <groupId>org.apache.felix</groupId>
-        <artifactId>maven-bundle-plugin</artifactId>
-        <extensions>true</extensions>
-        <configuration>
-          <instructions>
-            <Automatic-Module-Name>com.helger.phive.ksef</Automatic-Module-Name>
-            <Export-Package>
-              com.helger.phive.ksef
-            </Export-Package>
-            <Import-Package>!org.jspecify.annotations.*,*</Import-Package>
-          </instructions>
-        </configuration>
-      </plugin>
       <plugin>
         <groupId>com.helger.maven</groupId>
         <artifactId>ph-schematron-maven-plugin</artifactId>

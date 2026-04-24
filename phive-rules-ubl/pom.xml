@@ -25,12 +25,11 @@
     <version>4.3.1-SNAPSHOT</version>
   </parent>
   <artifactId>phive-rules-ubl</artifactId>
-  <packaging>bundle</packaging>
+  <packaging>jar</packaging>
   <name>phive-rules-ubl</name>
   <description>UBL validation rules for phive</description>
   <url>https://github.com/phax/phive-rules/phive-rules-ubl</url>
   <inceptionYear>2018</inceptionYear>
-
   <licenses>
     <license>
       <name>Apache 2</name>
@@ -38,12 +37,10 @@
       <distribution>repo</distribution>
     </license>
   </licenses>
-
   <organization>
     <name>Philip Helger</name>
     <url>http://www.helger.com</url>
   </organization>
-
   <developers>
     <developer>
       <id>philip</id>
@@ -52,7 +49,6 @@
       <url>http://www.helger.com</url>
     </developer>
   </developers>
-
   <dependencies>
     <dependency>
       <groupId>com.helger.ubl</groupId>
@@ -83,7 +79,6 @@
       <groupId>com.helger.phive.rules</groupId>
       <artifactId>phive-rules-api</artifactId>
     </dependency>
-    
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
@@ -106,23 +101,4 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
-  
-  <build>
-    <plugins>
-      <plugin>
-        <groupId>org.apache.felix</groupId>
-        <artifactId>maven-bundle-plugin</artifactId>
-        <extensions>true</extensions>
-        <configuration>
-          <instructions>
-            <Automatic-Module-Name>com.helger.phive.ubl</Automatic-Module-Name>
-            <Export-Package>
-              com.helger.phive.ubl
-            </Export-Package>
-            <Import-Package>!org.jspecify.annotations.*,*</Import-Package>
-          </instructions>
-        </configuration>
-      </plugin>
-    </plugins>
-  </build>
 </project>
