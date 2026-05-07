@@ -241,7 +241,10 @@ I hope that with the introduction of PINT, the versioning problem will be solved
 v4.3.1 - work in progress
 * Removed OSGI bundling
 * Added support for France CTC 1.3.1 validation rules. See [#63](https://github.com/phax/phive-rules/issues/63) - thx @gastoncocco
-* Added stub submodule `phive-rules-turkey` for Turkey UBL-TR / e-Fatura. See [#62](https://github.com/phax/phive-rules/issues/62)
+* Added new submodule `phive-rules-turkey` for Turkey UBL-TR 1.2.1 / e-Fatura validation. See [#62](https://github.com/phax/phive-rules/issues/62)
+    * Bare UBL VES coordinates `tr.efatura:invoice:1.2.1`, `tr.efatura:application-response:1.2.1`, `tr.efatura:despatch-advice:1.2.1` and `tr.efatura:receipt-advice:1.2.1` — UBL 2.1 XSD plus the GİB `UBL-TR_Main_Schematron` rules
+    * SBDH-wrapped Zarf VES coordinate `tr.efatura:zarf:1.2.1` — validates the full envelope (`sh:StandardBusinessDocument` + `ef:Package` + inner UBL document) using `ph-sbdh` for the wrapper schemas; only this VES exercises the envelope-tier rules (envelope-type / element-type compatibility, sender/receiver `VKN_TCKN`, package cardinality, sender ↔ inner-document party cross-checks)
+    * Local fix to the GİB Schematron: reordered `<sch:ns>` declarations to come before `<sch:include>` so the compiled XSLT emits SVRL with valid element ordering (`ns-prefix-in-attribute-values` before `active-pattern`); without this, ph-schematron's strict SVRL parser threw "Internal error interpreting Schematron result" on every document
 
 v4.3.0 - 2026-04-02
 * Requires phive 12.0.2 or later

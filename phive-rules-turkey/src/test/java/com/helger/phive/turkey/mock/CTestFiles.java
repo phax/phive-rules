@@ -125,8 +125,8 @@ public final class CTestFiles
     }
     if (aVESID.equals (TurkeyEFaturaValidation.VID_TR_EFATURA_ZARF_1_2_1))
     {
-      // No test files registered for the SBDH-wrapped Zarf VES yet
-      return new CommonsArrayList <> ();
+      return new CommonsArrayList <> (new String [] { "Good_TemelFatura_Zarf.xml" },
+                                      s -> new ClassPathResource (PREFIX + "zarf/" + s));
     }
 
     throw new IllegalArgumentException ("Invalid DVRCoordinate: " + aVESID);

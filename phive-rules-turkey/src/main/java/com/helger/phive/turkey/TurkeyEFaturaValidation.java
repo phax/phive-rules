@@ -20,7 +20,7 @@ import org.jspecify.annotations.NonNull;
 
 import com.helger.annotation.concurrent.Immutable;
 import com.helger.base.enforce.ValueEnforcer;
-import com.helger.collection.commons.CommonsHashSet;
+import com.helger.collection.commons.CommonsLinkedHashSet;
 import com.helger.collection.commons.ICommonsSet;
 import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.io.resource.ClassPathResource;
@@ -128,7 +128,7 @@ public final class TurkeyEFaturaValidation
 
       // SBDH-wrapped Zarf — XSD set is SBDH wrapper plus all four UBL document schemas, so the
       // <xs:any processContents="lax"/> inner payload is also strictly validated.
-      final ICommonsSet <IReadableResource> aZarfXSDs = new CommonsHashSet <> ();
+      final ICommonsSet <IReadableResource> aZarfXSDs = new CommonsLinkedHashSet <> ();
       aZarfXSDs.addAll (CSBDH.SBDH_XSDS);
       aZarfXSDs.addAll (UBL21Marshaller.getAllInvoiceXSDs ());
       aZarfXSDs.addAll (UBL21Marshaller.getAllApplicationResponseXSDs ());
