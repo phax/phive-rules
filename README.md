@@ -233,6 +233,7 @@ I hope that with the introduction of PINT, the versioning problem will be solved
 
 v4.3.1 - work in progress
 * Removed OSGI bundling
+* Added support for France CTC 1.3.1 validation rules. See [#63](https://github.com/phax/phive-rules/issues/63) - thx @gastoncocco
 
 v4.3.0 - 2026-04-02
 * Requires phive 12.0.2 or later
