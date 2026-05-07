@@ -34,6 +34,7 @@ This project is divided into sub-projects each keeping tracking of one document 
 * phive-rules-simplerinvoicing - Dutch Simplerinvoicing support from https://github.com/Simplerinvoicing/validation
 * phive-rules-svefaktura - Validation rules for Swedish Svefaktura (since v1.0.6)
 * phive-rules-teapps - Validation rules for Finnish Tieto TEAPPSXML
+* phive-rules-turkey - Validation rules for Turkey UBL-TR / e-Fatura (since v4.3.1)
 * phive-rules-ubl - Validation rules for pure OASIS UBL (without any Schematron)
 * phive-rules-ublbe - Validation rules for Belgium e-FFF/UBL.BE
 * phive-rules-xrechnung - Validation rules for German XRechnung
@@ -182,6 +183,12 @@ Add the following to your `pom.xml` to use this artifact, replacing `x.y.z` with
 
 <dependency>
   <groupId>com.helger.phive.rules</groupId>
+  <artifactId>phive-rules-turkey</artifactId>
+  <version>x.y.z</version>
+</dependency>
+
+<dependency>
+  <groupId>com.helger.phive.rules</groupId>
   <artifactId>phive-rules-ubl</artifactId>
   <version>x.y.z</version>
 </dependency>
@@ -234,6 +241,7 @@ I hope that with the introduction of PINT, the versioning problem will be solved
 v4.3.1 - work in progress
 * Removed OSGI bundling
 * Added support for France CTC 1.3.1 validation rules. See [#63](https://github.com/phax/phive-rules/issues/63) - thx @gastoncocco
+* Added stub submodule `phive-rules-turkey` for Turkey UBL-TR / e-Fatura. See [#62](https://github.com/phax/phive-rules/issues/62)
 
 v4.3.0 - 2026-04-02
 * Requires phive 12.0.2 or later

@@ -1,0 +1,100 @@
+<ApplicationResponse xmlns="urn:oasis:names:specification:ubl:schema:xsd:ApplicationResponse-2"
+	xmlns:ext="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2"
+	xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:xades="http://uri.etsi.org/01903/v1.3.2#"
+	xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+	xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="urn:oasis:names:specification:ubl:schema:xsd:ApplicationResponse-2  ../xsdrt/maindoc/UBL-ApplicationResponse-2.1.xsd">
+	<cbc:UBLVersionID>2.1</cbc:UBLVersionID>
+	<cbc:CustomizationID>TR1.2</cbc:CustomizationID>
+	<cbc:ProfileID>IHRACAT</cbc:ProfileID>
+	<cbc:ID>GTB2016000000002</cbc:ID>
+	<cbc:UUID>5C2365EA-077B-4835-B19F-4B9CAF1256A2</cbc:UUID>
+	<cbc:IssueDate>2015-08-03</cbc:IssueDate>
+	<cbc:IssueTime>15:44:22</cbc:IssueTime>
+	<cbc:Note>Belge GTB tarafından onaylanmıştır.</cbc:Note>	
+	<cac:SenderParty>
+		<cac:PartyIdentification>
+			<cbc:ID schemeID="VKN">1460415308</cbc:ID>
+		</cac:PartyIdentification>
+		<cac:PartyIdentification>
+			<cbc:ID schemeID="GTB_REFNO">16545419880849000000392</cbc:ID> <!-- 23 haneli referans numarası - hem kabul hem red uygulama yanıtında - Opsiyonel -->
+		</cac:PartyIdentification>
+		<cac:PartyIdentification>
+			<cbc:ID schemeID="GTB_GCB_TESCILNO">00060200EX000293</cbc:ID> <!-- Gümrük çıkış beyannamesi tescil no(Kabullerde zorunlu) -->
+		</cac:PartyIdentification>
+		<cac:PartyIdentification>
+			<cbc:ID schemeID="GTB_FIILI_IHRACAT_TARIHI">2015-08-03</cbc:ID> <!-- Ihraç mallarının gümrük çıkış kapısından çıktığı tarih(Kabullerde zorunlu) -->
+		</cac:PartyIdentification>
+		<cac:PartyName>
+			<cbc:Name>GÜMRÜK VE TİCARET BAKANLIĞI BİLGİ İŞLEM DAİRESİ BAŞKANLIĞI</cbc:Name>
+		</cac:PartyName>
+		<cac:PostalAddress>
+			<cbc:StreetName>Üniversiteler Mahallesi Dumlupınar Bulvarı</cbc:StreetName>
+			<cbc:BuildingNumber>151</cbc:BuildingNumber>
+			<cbc:CitySubdivisionName>Çankaya</cbc:CitySubdivisionName>
+			<cbc:CityName>Ankara</cbc:CityName>
+			<cac:Country>
+				<cbc:Name>Türkiye</cbc:Name>
+			</cac:Country>
+		</cac:PostalAddress>
+		<cac:PartyTaxScheme>
+			<cac:TaxScheme>
+				<cbc:Name>Ulus</cbc:Name>
+			</cac:TaxScheme>
+		</cac:PartyTaxScheme>
+	</cac:SenderParty>
+	<cac:ReceiverParty>
+		<cbc:WebsiteURI>http://www.aaa.com.tr/</cbc:WebsiteURI>
+		<cac:PartyIdentification>
+			<cbc:ID schemeID="VKN">1111111111</cbc:ID>
+		</cac:PartyIdentification>
+		<cac:PartyName>
+			<cbc:Name>AAA Anonim Şirketi</cbc:Name>
+		</cac:PartyName>
+		<cac:PostalAddress>
+			<cbc:ID>1234567890</cbc:ID>
+			<cbc:StreetName>Papatya Caddesi Yasemin Sokak</cbc:StreetName>
+			<cbc:BuildingNumber>21</cbc:BuildingNumber>
+			<cbc:CitySubdivisionName>Beşiktaş</cbc:CitySubdivisionName>
+			<cbc:CityName>İstanbul</cbc:CityName>
+			<cbc:PostalZone>34100</cbc:PostalZone>
+			<cac:Country>
+				<cbc:Name>Türkiye</cbc:Name>
+			</cac:Country>
+		</cac:PostalAddress>
+		<cac:PartyTaxScheme>
+			<cac:TaxScheme>
+				<cbc:Name>Büyük Mükellefler</cbc:Name>
+			</cac:TaxScheme>
+		</cac:PartyTaxScheme>
+		<cac:Contact>
+			<cbc:Telephone>(212) 925 51515</cbc:Telephone>
+			<cbc:Telefax>(212) 925505015</cbc:Telefax>
+			<cbc:ElectronicMail>aa@aaa.com.tr</cbc:ElectronicMail>
+		</cac:Contact>
+	</cac:ReceiverParty>
+	<cac:DocumentResponse>
+		<cac:Response>
+			<cbc:ReferenceID>12345678910</cbc:ReferenceID>
+			<cbc:ResponseCode>KABUL</cbc:ResponseCode>
+			<cbc:Description>Kabul</cbc:Description>
+		</cac:Response>
+		<cac:DocumentReference>
+			<cbc:ID>Yanıta konu olan Fatura UUID(ETTN) yazılacaktır</cbc:ID>
+			<cbc:IssueDate>2015-07-26</cbc:IssueDate>
+			<cbc:DocumentTypeCode>INVOICE</cbc:DocumentTypeCode>
+			<cbc:DocumentType>INVOICE</cbc:DocumentType>
+		</cac:DocumentReference>
+		<cac:LineResponse>
+			<cac:LineReference>
+				<cbc:LineID/>
+			</cac:LineReference>
+			<cac:Response>
+				<cbc:ReferenceID>12345678911</cbc:ReferenceID>
+				<cbc:ResponseCode>KABUL</cbc:ResponseCode>
+				<cbc:Description>Kabul</cbc:Description>
+			</cac:Response>
+		</cac:LineResponse>
+	</cac:DocumentResponse>
+</ApplicationResponse>

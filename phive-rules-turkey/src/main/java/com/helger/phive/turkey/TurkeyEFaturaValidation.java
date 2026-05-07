@@ -20,20 +20,26 @@ import org.jspecify.annotations.NonNull;
 
 import com.helger.annotation.concurrent.Immutable;
 import com.helger.base.enforce.ValueEnforcer;
+import com.helger.collection.commons.CommonsHashSet;
+import com.helger.collection.commons.ICommonsSet;
 import com.helger.diver.api.coord.DVRCoordinate;
+import com.helger.io.resource.ClassPathResource;
+import com.helger.io.resource.IReadableResource;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
 import com.helger.phive.rules.api.PhiveRulesHelper;
+import com.helger.phive.rules.api.PhiveRulesUBLHelper;
 import com.helger.phive.xml.executorset.VesXmlBuilder;
 import com.helger.phive.xml.source.IValidationSourceXML;
+import com.helger.sbdh.CSBDH;
 import com.helger.ubl21.UBL21Marshaller;
 
 /**
  * Turkey UBL-TR / e-Fatura validation configuration.
  * <p>
  * The Turkish Revenue Administration (GİB) e-Fatura format is based on UBL-TR 1.2.1 (XSDs) and the
- * e-Fatura Schematron package. This module currently only registers the UBL 2.1 XSD validation for
- * the four covered document types: Invoice, ApplicationResponse, DespatchAdvice and ReceiptAdvice.
- * The Schematron rules from the e-Fatura package still need to be added.
+ * e-Fatura Schematron package. The four covered document types are Invoice, ApplicationResponse,
+ * DespatchAdvice and ReceiptAdvice. Each is validated against the UBL 2.1 XSD plus the GİB
+ * <code>UBL-TR_Main_Schematron</code> rules.
  *
  * @author Philip Helger
  */
@@ -55,9 +61,25 @@ public final class TurkeyEFaturaValidation
   public static final DVRCoordinate VID_TR_EFATURA_RECEIPT_1_2_1 = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                                       "receipt-advice",
                                                                                                       "1.2.1");
+  /**
+   * SBDH-wrapped Zarf (envelope) — the on-the-wire transport unit. Validates the GS1/UN-CEFACT
+   * Standard Business Document wrapper, the GİB <code>ef:Package</code> payload and the inner UBL
+   * document(s) all in one go. Use this when the input is the Zarf XML; for an unwrapped UBL
+   * document use the bare <code>VID_TR_EFATURA_INVOICE_1_2_1</code> / -APPRESP / -DESPATCH /
+   * -RECEIPT instead.
+   */
+  public static final DVRCoordinate VID_TR_EFATURA_ZARF_1_2_1 = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                   "zarf",
+                                                                                                   "1.2.1");
 
   private TurkeyEFaturaValidation ()
   {}
+
+  @NonNull
+  private static ClassLoader _getCL ()
+  {
+    return TurkeyEFaturaValidation.class.getClassLoader ();
+  }
 
   /**
    * Register all standard Turkey e-Fatura validation execution sets to the provided registry.
@@ -69,33 +91,56 @@ public final class TurkeyEFaturaValidation
   {
     ValueEnforcer.notNull (aRegistry, "Registry");
 
-    // UBL-TR 1.2.1
-    // TODO add e-Fatura Schematron rules from https://efatura.gov.tr/ when available
+    // UBL-TR 1.2.1 — e-Fatura business rules (originally authored against the SBDH-wrapped Zarf
+    // payload; envelope-level patterns silently no-op when the document is unwrapped UBL).
     {
+      final String sPrefix = "/external/schematron/efatura/1.2.1/xslt/";
+      final ClassPathResource aSchematron = new ClassPathResource (sPrefix + "UBL-TR_Main_Schematron.xslt", _getCL ());
+
       VesXmlBuilder.builder ()
-                       .vesID (VID_TR_EFATURA_INVOICE_1_2_1)
-                       .displayNamePrefix ("Turkey e-Fatura UBL Invoice ")
-                       .notDeprecated ()
-                       .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
-                       .registerInto (aRegistry);
+                   .vesID (VID_TR_EFATURA_INVOICE_1_2_1)
+                   .displayNamePrefix ("Turkey e-Fatura UBL Invoice ")
+                   .notDeprecated ()
+                   .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
+                   .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aSchematron))
+                   .registerInto (aRegistry);
       VesXmlBuilder.builder ()
-                       .vesID (VID_TR_EFATURA_APPRESP_1_2_1)
-                       .displayNamePrefix ("Turkey e-Fatura UBL Application Response ")
-                       .notDeprecated ()
-                       .addXSD (UBL21Marshaller.getAllApplicationResponseXSDs ())
-                       .registerInto (aRegistry);
+                   .vesID (VID_TR_EFATURA_APPRESP_1_2_1)
+                   .displayNamePrefix ("Turkey e-Fatura UBL Application Response ")
+                   .notDeprecated ()
+                   .addXSD (UBL21Marshaller.getAllApplicationResponseXSDs ())
+                   .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aSchematron))
+                   .registerInto (aRegistry);
       VesXmlBuilder.builder ()
-                       .vesID (VID_TR_EFATURA_DESPATCH_1_2_1)
-                       .displayNamePrefix ("Turkey e-Fatura UBL Despatch Advice ")
-                       .notDeprecated ()
-                       .addXSD (UBL21Marshaller.getAllDespatchAdviceXSDs ())
-                       .registerInto (aRegistry);
+                   .vesID (VID_TR_EFATURA_DESPATCH_1_2_1)
+                   .displayNamePrefix ("Turkey e-Fatura UBL Despatch Advice ")
+                   .notDeprecated ()
+                   .addXSD (UBL21Marshaller.getAllDespatchAdviceXSDs ())
+                   .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aSchematron))
+                   .registerInto (aRegistry);
       VesXmlBuilder.builder ()
-                       .vesID (VID_TR_EFATURA_RECEIPT_1_2_1)
-                       .displayNamePrefix ("Turkey e-Fatura UBL Receipt Advice ")
-                       .notDeprecated ()
-                       .addXSD (UBL21Marshaller.getAllReceiptAdviceXSDs ())
-                       .registerInto (aRegistry);
+                   .vesID (VID_TR_EFATURA_RECEIPT_1_2_1)
+                   .displayNamePrefix ("Turkey e-Fatura UBL Receipt Advice ")
+                   .notDeprecated ()
+                   .addXSD (UBL21Marshaller.getAllReceiptAdviceXSDs ())
+                   .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aSchematron))
+                   .registerInto (aRegistry);
+
+      // SBDH-wrapped Zarf — XSD set is SBDH wrapper plus all four UBL document schemas, so the
+      // <xs:any processContents="lax"/> inner payload is also strictly validated.
+      final ICommonsSet <IReadableResource> aZarfXSDs = new CommonsHashSet <> ();
+      aZarfXSDs.addAll (CSBDH.SBDH_XSDS);
+      aZarfXSDs.addAll (UBL21Marshaller.getAllInvoiceXSDs ());
+      aZarfXSDs.addAll (UBL21Marshaller.getAllApplicationResponseXSDs ());
+      aZarfXSDs.addAll (UBL21Marshaller.getAllDespatchAdviceXSDs ());
+      aZarfXSDs.addAll (UBL21Marshaller.getAllReceiptAdviceXSDs ());
+      VesXmlBuilder.builder ()
+                   .vesID (VID_TR_EFATURA_ZARF_1_2_1)
+                   .displayNamePrefix ("Turkey e-Fatura Zarf ")
+                   .notDeprecated ()
+                   .addXSD (aZarfXSDs.getCopyAsList ())
+                   .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aSchematron))
+                   .registerInto (aRegistry);
     }
   }
 }

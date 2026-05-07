@@ -1,0 +1,82 @@
+<ApplicationResponse xmlns="urn:oasis:names:specification:ubl:schema:xsd:ApplicationResponse-2"
+	xmlns:ext="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2"
+	xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:xades="http://uri.etsi.org/01903/v1.3.2#"
+	xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+	xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="urn:oasis:names:specification:ubl:schema:xsd:ApplicationResponse-2  ../xsdrt/maindoc/UBL-ApplicationResponse-2.1.xsd">
+	<cbc:UBLVersionID>2.1</cbc:UBLVersionID>
+	<cbc:CustomizationID>TR1.2</cbc:CustomizationID>
+	<cbc:ProfileID>YOLCUBERABERFATURA</cbc:ProfileID>
+	<cbc:ID>0lhta0zjke11zh</cbc:ID>
+	<cbc:UUID>5C2365EA-077B-4835-B19F-4B9CAF1256A2</cbc:UUID>
+	<cbc:IssueDate>2015-08-03</cbc:IssueDate>
+	<cbc:IssueTime>15:44:22</cbc:IssueTime>
+	<cbc:Note>Belge GTB tarafından onaylanmıştır.</cbc:Note>
+	<cbc:Note>Satıcı VKN:1111111157</cbc:Note>
+	<cbc:Note>Fatura No:GIB2015000000181</cbc:Note>
+	<cbc:Note>Fatura Tarihi:2015-08-07</cbc:Note>
+	<cbc:Note>Ödenecek Tutar:118</cbc:Note>
+	<cbc:Note>Pasaport No:FR-U 274555</cbc:Note>
+	<cbc:Note>Yolcu Ad :John</cbc:Note>
+	<cbc:Note>Yolcu Soyad:Doe</cbc:Note>
+	<cbc:Note>Yolcu Uyruk:ZW</cbc:Note>
+	<cbc:Note>Kapı No:A33</cbc:Note>
+	<cbc:Note>Vergi Tutar:18</cbc:Note>
+	<cac:SenderParty>
+		<cbc:EndpointID>Gümrük Çıkış Kapı no</cbc:EndpointID>
+		<cac:PartyIdentification>
+			<cbc:ID schemeID="VKN">1460415308</cbc:ID>
+		</cac:PartyIdentification>
+		<cac:PartyName>
+			<cbc:Name>GÜMRÜK VE TİCARET BAKANLIĞI BİLGİ İŞLEM DAİRESİ BAŞKANLIĞI</cbc:Name>
+		</cac:PartyName>
+		<cac:PostalAddress>
+			<cbc:CitySubdivisionName/>
+			<cbc:CityName>Ankara</cbc:CityName>
+			<cac:Country>
+				<cbc:Name>Türkiye</cbc:Name>
+			</cac:Country>
+		</cac:PostalAddress>
+	</cac:SenderParty>
+	<cac:ReceiverParty>
+		<cac:PartyIdentification>
+			<cbc:ID schemeID="VKN">1231231231</cbc:ID>
+		</cac:PartyIdentification>
+		<cac:PostalAddress>
+			<cbc:CitySubdivisionName>Çankaya</cbc:CitySubdivisionName>
+			<cbc:CityName>Ankara</cbc:CityName>
+			<cac:Country>
+				<cbc:Name>Türkiye</cbc:Name>
+			</cac:Country>
+		</cac:PostalAddress>
+	</cac:ReceiverParty>
+	<cac:DocumentResponse>
+		<cac:Response>
+			<cbc:ReferenceID>0lhta0zjke11zi</cbc:ReferenceID>
+			<cbc:ResponseCode>GUMRUKONAY</cbc:ResponseCode>
+			<cbc:Description>Alindi</cbc:Description>
+		</cac:Response>
+		<cac:DocumentReference>
+			<cbc:ID>05AB3E33-A4AD-4135-8413-5FD264CA0AAA</cbc:ID>
+			<cbc:IssueDate>2014-03-26</cbc:IssueDate>
+			<cbc:DocumentTypeCode>INVOICE</cbc:DocumentTypeCode>
+			<cbc:DocumentType>INVOICE</cbc:DocumentType>
+			<cbc:DocumentDescription>Onaylanan yolcu beraber eşya faturasının aslı</cbc:DocumentDescription>
+			<cac:Attachment>
+				<cbc:EmbeddedDocumentBinaryObject mimeCode="application/zip" encodingCode="Base64"
+					characterSetCode="UTF-8" filename="91BD2213-767A-47E4-9C76-5C6F212A637F.zip"></cbc:EmbeddedDocumentBinaryObject>
+			</cac:Attachment>
+		</cac:DocumentReference>
+		<cac:LineResponse>
+			<cac:LineReference>
+				<cbc:LineID/>
+			</cac:LineReference>
+			<cac:Response>
+				<cbc:ReferenceID>0lhta0zjke11zj</cbc:ReferenceID>
+				<cbc:ResponseCode>GUMRUKONAY</cbc:ResponseCode>
+				<cbc:Description>Alindi</cbc:Description>
+			</cac:Response>
+		</cac:LineResponse>
+	</cac:DocumentResponse>
+</ApplicationResponse>

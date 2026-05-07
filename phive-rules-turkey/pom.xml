@@ -60,6 +60,11 @@
       <version>${ph-ubl.version}</version>
     </dependency>
     <dependency>
+      <groupId>com.helger</groupId>
+      <artifactId>ph-sbdh</artifactId>
+      <version>${ph-sbdh.version}</version>
+    </dependency>
+    <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <scope>test</scope>
