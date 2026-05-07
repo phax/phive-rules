@@ -16,12 +16,17 @@
  */
 package com.helger.phive.france;
 
+import java.time.LocalTime;
+import java.time.Month;
+import java.time.OffsetDateTime;
+
 import org.jspecify.annotations.NonNull;
 
 import com.helger.annotation.concurrent.Immutable;
 import com.helger.base.enforce.ValueEnforcer;
 import com.helger.base.exception.InitializationException;
 import com.helger.cii.d22b.CCIID22B;
+import com.helger.datetime.helper.PDTFactory;
 import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.io.resource.ClassPathResource;
 import com.helger.phive.api.executorset.IValidationExecutorSet;
@@ -308,6 +313,7 @@ public final class FranceCTCValidation
         throw new InitializationException ("The EN 16931 VES are missing. Make sure to call EN16931Validation.initEN16931 first.");
 
       final String sPrefix0 = sPrefix + "1.3.1/xslt/";
+      final OffsetDateTime aValidFrom = PDTFactory.createOffsetDate (2026, Month.JULY, 1).atTime (LocalTime.MIDNIGHT);
 
       // Base Invoice based on EN16931
       VesXmlBuilder.builder ()
@@ -318,6 +324,7 @@ public final class FranceCTCValidation
                    .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix0 +
                                                                                                 "20260430_BR-FR-Flux2-Schematron-UBL_V1.3.1.xslt",
                                                                                                 _getCL ())))
+                   .validFrom (aValidFrom)
                    .registerInto (aRegistry);
       VesXmlBuilder.builder ()
                    .vesID (VID_FR_CTC_UBL_CN_1_3_1)
@@ -336,6 +343,7 @@ public final class FranceCTCValidation
                    .addSchematron (PhiveRulesCIIHelper.createXSLT_CII_D22B (new ClassPathResource (sPrefix0 +
                                                                                                    "20260430_BR-FR-Flux2-Schematron-CII_V1.3.1.xslt",
                                                                                                    _getCL ())))
+                   .validFrom (aValidFrom)
                    .registerInto (aRegistry);
 
       // Extended invoice based on special EN subset
@@ -350,6 +358,7 @@ public final class FranceCTCValidation
                    .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix0 +
                                                                                                 "20260430_BR-FR-Flux2-Schematron-UBL_V1.3.1.xslt",
                                                                                                 _getCL ())))
+                   .validFrom (aValidFrom)
                    .registerInto (aRegistry);
       VesXmlBuilder.builder ()
                    .vesID (VID_FR_EXTENDED_CTC_UBL_CN_1_3_1)
@@ -362,6 +371,7 @@ public final class FranceCTCValidation
                    .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix0 +
                                                                                                 "20260430_BR-FR-Flux2-Schematron-UBL_V1.3.1.xslt",
                                                                                                 _getCL ())))
+                   .validFrom (aValidFrom)
                    .registerInto (aRegistry);
       VesXmlBuilder.builder ()
                    .vesID (VID_FR_EXTENDED_CTC_CII_1_3_1)
@@ -374,6 +384,7 @@ public final class FranceCTCValidation
                    .addSchematron (PhiveRulesCIIHelper.createXSLT_CII_D22B (new ClassPathResource (sPrefix0 +
                                                                                                    "20260430_BR-FR-Flux2-Schematron-CII_V1.3.1.xslt",
                                                                                                    _getCL ())))
+                   .validFrom (aValidFrom)
                    .registerInto (aRegistry);
 
       // CDAR
@@ -385,6 +396,7 @@ public final class FranceCTCValidation
                    .addSchematron (PhiveRulesCIIHelper.createXSLT_CII_D22B (new ClassPathResource (sPrefix0 +
                                                                                                    "20260430_BR-FR-CDV-Schematron-CDAR_V1.3.1.xslt",
                                                                                                    _getCL ())))
+                   .validFrom (aValidFrom)
                    .registerInto (aRegistry);
     }
   }
