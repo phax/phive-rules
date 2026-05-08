@@ -108,9 +108,9 @@
             </goals>
             <id>ublbe</id>
             <configuration>
-              <schematronDirectory>${basedir}/src/test/resources/external/rule-source/ctc/1.3.0</schematronDirectory>
+              <schematronDirectory>${basedir}/src/test/resources/external/rule-source/ctc/1.3.1</schematronDirectory>
               <schematronPattern>*.sch</schematronPattern>
-              <xsltDirectory>${basedir}/src/main/resources/external/schematron/ctc/1.3.0/xslt</xsltDirectory>
+              <xsltDirectory>${basedir}/src/main/resources/external/schematron/ctc/1.3.1/xslt</xsltDirectory>
             </configuration>
           </execution>
        -->

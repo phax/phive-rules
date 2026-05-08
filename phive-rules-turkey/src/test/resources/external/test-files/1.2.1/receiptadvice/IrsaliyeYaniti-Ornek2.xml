@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="irsaliyeyaniti.xslt"?>
+<ReceiptAdvice xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns="urn:oasis:names:specification:ubl:schema:xsd:ReceiptAdvice-2"
+	xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+	xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+	xmlns:ext="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2"
+	xmlns:qdt="urn:oasis:names:specification:ubl:schema:xsd:QualifiedDataTypes-2"
+	xmlns:udt="urn:oasis:names:specification:ubl:schema:xsd:UnqualifiedDataTypes-2"
+	xmlns:ccts-cct="urn:un:unece:uncefact:data:specification:CoreComponentTypeSchemaModule:2"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="urn:oasis:names:specification:ubl:schema:xsd:ReceiptAdvice-2 ../xsdrt/maindoc/UBL-ReceiptAdvice-2.1.xsd"
+	xmlns:n4="http://www.altova.com/samplexml/other-namespace">
+	<ext:UBLExtensions>
+		<ext:UBLExtension>
+			<ext:ExtensionContent>
+				<n4:auto-generated_for_wildcard/>
+			</ext:ExtensionContent>
+		</ext:UBLExtension>
+	</ext:UBLExtensions>
+	<cbc:UBLVersionID>2.1</cbc:UBLVersionID>
+	<cbc:CustomizationID>TR1.2.1</cbc:CustomizationID>
+	<cbc:ProfileID>TEMELIRSALIYE</cbc:ProfileID>
+	<cbc:ID>GIB2016000000015</cbc:ID>
+	<cbc:CopyIndicator>false</cbc:CopyIndicator>
+	<cbc:UUID>F47AC10B-58CC-4372-A567-0E02B2C3D480</cbc:UUID>
+	<cbc:IssueDate>2016-08-16</cbc:IssueDate>
+	<cbc:IssueTime>15:03:52</cbc:IssueTime>
+	<cbc:ReceiptAdviceTypeCode>SEVK</cbc:ReceiptAdviceTypeCode>
+	<cbc:Note>Bütün ürünler kabul edildi. Ürünler geç teslim edildi.</cbc:Note>
+	<cac:OrderReference>
+		<cbc:ID>GIB2016000000033</cbc:ID>
+		<cbc:IssueDate>2016-08-14</cbc:IssueDate>
+	</cac:OrderReference>
+	<cac:DespatchDocumentReference>
+		<cbc:ID>F47AC10B-58CC-4372-A567-0E02B2C3D479</cbc:ID>
+		<cbc:IssueDate>2016-08-14</cbc:IssueDate>
+	</cac:DespatchDocumentReference>
+	<cac:AdditionalDocumentReference>
+		<cbc:ID>GIB2016000000023</cbc:ID> <!-- Yanıt olarak verilen irsaliye ID -->
+		<cbc:IssueDate>2016-08-14</cbc:IssueDate> <!-- Yanıt olarak verilen irsaliyenin tarihi -->
+		<cbc:DocumentTypeCode>DespatchAdviceID</cbc:DocumentTypeCode> <!-- Referansın irsaliye ID ile ilgili olduğunu gösteren kod -->
+		<cbc:DocumentType>DespatchAdvice ID</cbc:DocumentType>
+	</cac:AdditionalDocumentReference>	
+	<cac:Signature>
+		<cbc:ID schemeID="VKN_TCKN">1288331521</cbc:ID>
+		<cac:SignatoryParty>
+			<cac:PartyIdentification>
+				<cbc:ID schemeID="VKN">1288331521</cbc:ID>
+			</cac:PartyIdentification>
+			<cac:PostalAddress>
+				<cbc:StreetName>Papatya Caddesi Yasemin Sokak</cbc:StreetName>
+				<cbc:BuildingNumber>21</cbc:BuildingNumber>
+				<cbc:CitySubdivisionName>Beşiktaş</cbc:CitySubdivisionName>
+				<cbc:CityName>İstanbul</cbc:CityName>
+				<cbc:PostalZone>34100</cbc:PostalZone>
+				<cac:Country>
+					<cbc:Name>Türkiye</cbc:Name>
+				</cac:Country>
+			</cac:PostalAddress>
+		</cac:SignatoryParty>
+		<cac:DigitalSignatureAttachment>
+			<cac:ExternalReference>
+				<cbc:URI>#Signature</cbc:URI>
+			</cac:ExternalReference>
+		</cac:DigitalSignatureAttachment>
+	</cac:Signature>
+	<cac:DeliveryCustomerParty>
+		<cac:Party>
+			<cbc:WebsiteURI>http://www.bbb.com.tr/</cbc:WebsiteURI>
+			<cac:PartyIdentification>
+				<cbc:ID schemeID="VKN">9205121120</cbc:ID>
+			</cac:PartyIdentification>
+			<cac:PartyIdentification>
+				<cbc:ID schemeID="MUSTERINO">120010751</cbc:ID>
+			</cac:PartyIdentification>
+			<cac:PartyName>
+				<cbc:Name>BBB Limited Şirketi</cbc:Name>
+			</cac:PartyName>
+			<cac:PostalAddress>
+				<cbc:ID>1234567890</cbc:ID>
+				<cbc:StreetName>Ihlamur Mahallesi Selvi Caddesi Sedir Sokak</cbc:StreetName>
+				<cbc:BuildingNumber>75/A</cbc:BuildingNumber>
+				<cbc:CitySubdivisionName>Kızılay</cbc:CitySubdivisionName>
+				<cbc:CityName>Ankara</cbc:CityName>
+				<cbc:PostalZone>06100</cbc:PostalZone>
+				<cac:Country>
+					<cbc:Name>Türkiye</cbc:Name>
+				</cac:Country>
+			</cac:PostalAddress>
+			<cac:PartyTaxScheme>
+				<cac:TaxScheme>
+					<cbc:Name>Çankaya</cbc:Name>
+				</cac:TaxScheme>
+			</cac:PartyTaxScheme>
+			<cac:Contact>
+				<cbc:Telephone>(312) 621 1112</cbc:Telephone>
+				<cbc:Telefax>(312) 621 1011</cbc:Telefax>
+				<cbc:ElectronicMail>bb@bbb.com.tr</cbc:ElectronicMail>
+			</cac:Contact>
+		</cac:Party>
+		<cac:DeliveryContact>
+			<cbc:Name>Mustafa Temiz</cbc:Name>
+		</cac:DeliveryContact>	
+	</cac:DeliveryCustomerParty>
+	<cac:DespatchSupplierParty>
+		<cac:Party>
+			<cbc:WebsiteURI>http://www.aaa.com.tr/</cbc:WebsiteURI>
+			<cac:PartyIdentification>
+				<cbc:ID schemeID="VKN">1288331521</cbc:ID>
+			</cac:PartyIdentification>
+			<cac:PartyName>
+				<cbc:Name>AAA Anonim Şirketi</cbc:Name>
+			</cac:PartyName>
+			<cac:PostalAddress>
+				<cbc:ID>1234567890</cbc:ID>
+				<cbc:StreetName>Papatya Caddesi Yasemin Sokak</cbc:StreetName>
+				<cbc:BuildingNumber>21</cbc:BuildingNumber>
+				<cbc:CitySubdivisionName>Beşiktaş</cbc:CitySubdivisionName>
+				<cbc:CityName>İstanbul</cbc:CityName>
+				<cbc:PostalZone>34100</cbc:PostalZone>
+				<cac:Country>
+					<cbc:Name>Türkiye</cbc:Name>
+				</cac:Country>
+			</cac:PostalAddress>
+			<cac:PhysicalLocation>
+				<cbc:ID>Depo Şube</cbc:ID>
+				<cac:Address>
+					<cbc:ID>1234567895</cbc:ID>
+					<cbc:StreetName>Ihlamur Mahallesi Selvi Caddesi Sedir Sokak</cbc:StreetName>
+					<cbc:BuildingNumber>79/A</cbc:BuildingNumber>
+					<cbc:CitySubdivisionName>Balgat</cbc:CitySubdivisionName>
+					<cbc:CityName>Ankara</cbc:CityName>
+					<cbc:PostalZone>06800</cbc:PostalZone>
+					<cac:Country>
+						<cbc:Name>Türkiye</cbc:Name>
+					</cac:Country>
+				</cac:Address>
+			</cac:PhysicalLocation>
+			<cac:PartyTaxScheme>
+				<cac:TaxScheme>
+					<cbc:Name>Büyük Mükellefler</cbc:Name>
+				</cac:TaxScheme>
+			</cac:PartyTaxScheme>
+			<cac:Contact>
+				<cbc:Telephone>(212) 925 51515</cbc:Telephone>
+				<cbc:Telefax>(212) 925505015</cbc:Telefax>
+				<cbc:ElectronicMail>aa@aaa.com.tr</cbc:ElectronicMail>
+			</cac:Contact>
+		</cac:Party>
+		<cac:DespatchContact>
+			<cbc:Name>Celal Temiz</cbc:Name>
+		</cac:DespatchContact>
+	</cac:DespatchSupplierParty>
+	<cac:Shipment>
+		<cbc:ID/>
+		<cac:Delivery>
+			<cbc:ActualDeliveryDate>2016-08-15</cbc:ActualDeliveryDate>
+			<cbc:ActualDeliveryTime>15:03:52</cbc:ActualDeliveryTime>
+		</cac:Delivery>
+	</cac:Shipment>
+	<cac:ReceiptLine>
+		<cbc:ID>1</cbc:ID>
+		<cbc:ReceivedQuantity unitCode="C62">20</cbc:ReceivedQuantity>
+		<cbc:TimingComplaint>Ürünler geç gönderilmiştir. Faturada ceza
+			uygulanacaktır.</cbc:TimingComplaint>
+		<cac:OrderLineReference>
+			<cbc:LineID>1</cbc:LineID>
+		</cac:OrderLineReference>
+		<cac:DespatchLineReference>
+			<cbc:LineID>1</cbc:LineID>
+		</cac:DespatchLineReference>
+		<cac:Item>
+			<cbc:Name>Masa Üstü Bilgisayar</cbc:Name>
+			<cac:SellersItemIdentification>
+				<cbc:ID>PNC1234</cbc:ID>
+			</cac:SellersItemIdentification>
+		</cac:Item>
+	</cac:ReceiptLine>
+	<cac:ReceiptLine>
+		<cbc:ID>2</cbc:ID>
+		<cbc:ReceivedQuantity unitCode="C62">12</cbc:ReceivedQuantity>
+		<cbc:TimingComplaint>Ürünler geç gönderilmiştir. Faturada ceza
+			uygulanacaktır.</cbc:TimingComplaint>
+		<cac:OrderLineReference>
+			<cbc:LineID>2</cbc:LineID>
+		</cac:OrderLineReference>
+		<cac:DespatchLineReference>
+			<cbc:LineID>2</cbc:LineID>
+		</cac:DespatchLineReference>
+		<cac:Item>
+			<cbc:Name>Notebook Bilgisayar</cbc:Name>
+			<cac:SellersItemIdentification>
+				<cbc:ID>PNC1235</cbc:ID>
+			</cac:SellersItemIdentification>
+		</cac:Item>
+	</cac:ReceiptLine>
+	<cac:ReceiptLine>
+		<cbc:ID>3</cbc:ID>
+		<cbc:ReceivedQuantity unitCode="C62">12</cbc:ReceivedQuantity>
+		<cbc:TimingComplaint>Ürünler geç gönderilmiştir. Faturada ceza
+			uygulanacaktır.</cbc:TimingComplaint>
+		<cac:OrderLineReference>
+			<cbc:LineID>3</cbc:LineID>
+		</cac:OrderLineReference>
+		<cac:DespatchLineReference>
+			<cbc:LineID>3</cbc:LineID>
+		</cac:DespatchLineReference>
+		<cac:Item>
+			<cbc:Name>Notebook Çantası</cbc:Name>
+			<cac:SellersItemIdentification>
+				<cbc:ID>PNC1236</cbc:ID>
+			</cac:SellersItemIdentification>
+		</cac:Item>
+	</cac:ReceiptLine>
+	<cac:ReceiptLine>
+		<cbc:ID>4</cbc:ID>
+		<cbc:ReceivedQuantity unitCode="C62">2</cbc:ReceivedQuantity>
+		<cbc:TimingComplaint>Ürünler geç gönderilmiştir. Faturada ceza
+			uygulanacaktır.</cbc:TimingComplaint>
+		<cac:OrderLineReference>
+			<cbc:LineID>4</cbc:LineID>
+		</cac:OrderLineReference>
+		<cac:DespatchLineReference>
+			<cbc:LineID>4</cbc:LineID>
+		</cac:DespatchLineReference>
+		<cac:Item>
+			<cbc:Name>Yazıcı</cbc:Name>
+			<cac:SellersItemIdentification>
+				<cbc:ID>PNC1237</cbc:ID>
+			</cac:SellersItemIdentification>
+		</cac:Item>
+	</cac:ReceiptLine>
+</ReceiptAdvice>

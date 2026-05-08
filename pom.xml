@@ -75,6 +75,7 @@
     <ph-cii.version>4.1.1</ph-cii.version>
     <ph-ebinterface.version>8.1.0</ph-ebinterface.version>
     <ph-fatturapa.version>3.1.0</ph-fatturapa.version>
+    <ph-sbdh.version>6.1.0</ph-sbdh.version>
     <ph-schematron.version>9.1.1</ph-schematron.version>
     <ph-ubl.version>10.1.0</ph-ubl.version>
   </properties>
@@ -227,6 +228,11 @@
       </dependency>
       <dependency>
         <groupId>com.helger.phive.rules</groupId>
+        <artifactId>phive-rules-turkey</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.helger.phive.rules</groupId>
         <artifactId>phive-rules-ubl</artifactId>
         <version>${project.version}</version>
       </dependency>
@@ -281,6 +287,7 @@
     <module>phive-rules-energieefactuur</module>
     <module>phive-rules-svefaktura</module>
     <module>phive-rules-teapps</module>
+    <module>phive-rules-turkey</module>
     <module>phive-rules-ubl</module>
     <!-- depends on peppol -->
     <module>phive-rules-ublbe</module>
