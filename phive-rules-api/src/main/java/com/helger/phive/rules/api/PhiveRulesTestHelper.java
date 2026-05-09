@@ -16,6 +16,9 @@
  */
 package com.helger.phive.rules.api;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.helger.annotation.concurrent.Immutable;
 import com.helger.io.resource.IReadableResource;
 import com.helger.phive.api.EValidationType;
@@ -25,12 +28,15 @@ import com.helger.phive.xml.source.IValidationSourceXML;
 import com.helger.schematron.pure.SchematronResourcePure;
 import com.helger.schematron.sch.SchematronResourceSCH;
 import com.helger.schematron.schxslt.xslt2.SchematronResourceSchXslt_XSLT2;
+import com.helger.schematron.schxslt2.xslt.SchematronResourceSchXslt2;
 import com.helger.schematron.xslt.SchematronResourceXSLT;
 import com.helger.xml.schema.XMLSchemaCache;
 
 @Immutable
 public final class PhiveRulesTestHelper
 {
+  private static final Logger LOGGER = LoggerFactory.getLogger (PhiveRulesTestHelper.class);
+
   private PhiveRulesTestHelper ()
   {}
 
@@ -39,12 +45,15 @@ public final class PhiveRulesTestHelper
     final IValidationArtefact aVA = aVE.getValidationArtefact ();
     final IReadableResource aRes = aVA.getRuleResource ();
 
-    // Don't check XSD, because the dependency list will is not correctly
-    // available
-    if (false)
+    if (aVA.getValidationType () == EValidationType.XSD)
     {
-      if (aVA.getValidationType () == EValidationType.XSD)
+      // Don't check XSD, because the dependency list will is not correctly
+      // available
+      if (false)
+      {
         return XMLSchemaCache.getInstance ().getSchema (aRes) != null;
+      }
+      return true;
     }
 
     // Check that the passed Schematron is valid
@@ -52,12 +61,17 @@ public final class PhiveRulesTestHelper
       return new SchematronResourcePure (aRes).isValidSchematron ();
     if (aVA.getValidationType () == EValidationType.SCHEMATRON_SCH_ISO_XSLT2)
       return new SchematronResourceSCH (aRes).isValidSchematron ();
-    if (aVA.getValidationType () == EValidationType.SCHEMATRON_XSLT2)
+    if (aVA.getValidationType () == EValidationType.SCHEMATRON_XSLT1 ||
+        aVA.getValidationType () == EValidationType.SCHEMATRON_XSLT2 ||
+        aVA.getValidationType () == EValidationType.SCHEMATRON_XSLT3)
       return new SchematronResourceXSLT (aRes).isValidSchematron ();
     if (aVA.getValidationType () == EValidationType.SCHEMATRON_SCHXSLT1_XSLT2)
       return new SchematronResourceSchXslt_XSLT2 (aRes).isValidSchematron ();
+    if (aVA.getValidationType () == EValidationType.SCHEMATRON_SCHXSLT2_XSLT3)
+      return new SchematronResourceSchXslt2 (aRes).isValidSchematron ();
 
     // Assume success
+    LOGGER.warn ("Unexpected validation type: " + aVA.getValidationType () + " - assuming it is okay");
     return true;
   }
 }
