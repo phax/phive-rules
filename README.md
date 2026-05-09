@@ -245,6 +245,7 @@ v4.3.1 - work in progress
     * Bare UBL VES coordinates `tr.efatura:invoice:1.2.1`, `tr.efatura:application-response:1.2.1`, `tr.efatura:despatch-advice:1.2.1` and `tr.efatura:receipt-advice:1.2.1` — UBL 2.1 XSD plus the GİB `UBL-TR_Main_Schematron` rules
     * SBDH-wrapped Zarf VES coordinate `tr.efatura:zarf:1.2.1` — validates the full envelope (`sh:StandardBusinessDocument` + `ef:Package` + inner UBL document) using `ph-sbdh` for the wrapper schemas; only this VES exercises the envelope-tier rules (envelope-type / element-type compatibility, sender/receiver `VKN_TCKN`, package cardinality, sender ↔ inner-document party cross-checks)
     * Local fix to the GİB Schematron: reordered `<sch:ns>` declarations to come before `<sch:include>` so the compiled XSLT emits SVRL with valid element ordering (`ns-prefix-in-attribute-values` before `active-pattern`); without this, ph-schematron's strict SVRL parser threw "Internal error interpreting Schematron result" on every document
+* Added support for Peppol PINT Oman (OM) 1.0.0 rules (billing + self-billing) and Peppol OM TDD 1.0.0 rules
 
 v4.3.0 - 2026-04-02
 * Requires phive 12.0.2 or later
