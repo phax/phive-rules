@@ -238,7 +238,7 @@ I hope that with the introduction of PINT, the versioning problem will be solved
 
 # News and noteworthy
 
-v4.3.1 - work in progress
+v4.3.1 - 2026-05-09
 * Removed OSGI bundling
 * Added support for France CTC 1.3.1 validation rules. See [#63](https://github.com/phax/phive-rules/issues/63) - thx @gastoncocco
 * Added new submodule `phive-rules-turkey` for Turkey UBL-TR 1.2.1 / e-Fatura validation. See [#62](https://github.com/phax/phive-rules/issues/62)
