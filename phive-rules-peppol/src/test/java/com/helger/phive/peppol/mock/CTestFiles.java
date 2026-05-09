@@ -47,6 +47,7 @@ import com.helger.phive.peppol.PeppolValidationPintJP;
 import com.helger.phive.peppol.PeppolValidationPintJP_NTR;
 import com.helger.phive.peppol.PeppolValidationPintJP_SB;
 import com.helger.phive.peppol.PeppolValidationPintMY;
+import com.helger.phive.peppol.PeppolValidationPintOM;
 import com.helger.phive.peppol.PeppolValidationPintSG;
 import com.helger.phive.peppol.PeppolValidationReporting;
 import com.helger.phive.peppol.PeppolValidationTaxData;
@@ -156,6 +157,8 @@ public final class CTestFiles
                                                              PeppolValidationTaxData.VID_OPENPEPPOL_TDD_AE_1_0_0,
                                                              PeppolValidationTaxData.VID_OPENPEPPOL_TDD_AE_1_0_1,
                                                              PeppolValidationTaxData.VID_OPENPEPPOL_TDD_AE_1_0_2,
+
+                                                             PeppolValidationTaxData.VID_OPENPEPPOL_TDD_OM_1_0_0,
 
                                                              PeppolValidationTaxData.VID_OPENPEPPOL_TDD_SK_1_0_0,
 
@@ -268,6 +271,12 @@ public final class CTestFiles
                                                              PeppolValidationPintMY.VID_OPENPEPPOL_MY_PINT_UBL_CREDIT_NOTE_1_3_0,
                                                              PeppolValidationPintMY.VID_OPENPEPPOL_MY_PINT_UBL_INVOICE_SELF_BILLING_1_3_0,
                                                              PeppolValidationPintMY.VID_OPENPEPPOL_MY_PINT_UBL_CREDIT_NOTE_SELF_BILLING_1_3_0,
+
+                                                             /* PINT Oman */
+                                                             PeppolValidationPintOM.VID_OPENPEPPOL_OM_PINT_INVOICE_1_0_0,
+                                                             PeppolValidationPintOM.VID_OPENPEPPOL_OM_PINT_CREDIT_NOTE_1_0_0,
+                                                             PeppolValidationPintOM.VID_OPENPEPPOL_OM_PINT_SB_INVOICE_1_0_0,
+                                                             PeppolValidationPintOM.VID_OPENPEPPOL_OM_PINT_SB_CREDIT_NOTE_1_0_0,
 
                                                              /* PINT Singapore */
                                                              PeppolValidationPintSG.VID_OPENPEPPOL_SG_PINT_UBL_INVOICE_1_1_0,
@@ -755,6 +764,16 @@ public final class CTestFiles
                       "commercial-invoice-tdd.xml",
                       "example-tds-no-repdoc.xml",
                       "example-tds-with-repdoc.xml",
+                      "simple.xml",
+                      "standard-invoice-tdd.xml",
+                      "tax-currency.xml");
+    }
+
+    // OM TDD 1.0.0
+    if (aVESID.equals (PeppolValidationTaxData.VID_OPENPEPPOL_TDD_OM_1_0_0))
+    {
+      return _getAll ("tdd/om/1.0.0/",
+                      "commercial-invoice-tdd.xml",
                       "simple.xml",
                       "standard-invoice-tdd.xml",
                       "tax-currency.xml");
@@ -1506,6 +1525,49 @@ public final class CTestFiles
                       "SB_CreditNote-Sample-SE_1.3.0.xml",
                       "SB_CreditNote-Sample-TTX_1.3.0.xml",
                       "SB-CompleteSample_LHDN-CreditNote.xml");
+    }
+
+    /* PINT Oman */
+    // 1.0.0
+    if (aVESID.equals (PeppolValidationPintOM.VID_OPENPEPPOL_OM_PINT_INVOICE_1_0_0))
+    {
+      return _getAll ("pint-om/1.0.0/billing/inv/",
+                      "CommercialInvoice.xml",
+                      "ContinuousSupplies-2.xml",
+                      "ContinuousSupply.xml",
+                      // "DebitNote.xml" — sample has invalid UBL 2.1 element order
+                      "DeemedSupply-2.xml",
+                      "DeemedSupply.xml",
+                      "E-Commerce.xml",
+                      "Export.xml",
+                      "Exports-2.xml",
+                      "FullInvoice.xml",
+                      "FullInvoiceCategory-E.xml",
+                      "GoodsImport.xml",
+                      "ImportRCM.xml",
+                      "MarginScheme.xml",
+                      "Prepayment.xml",
+                      "ProfitMargin.xml",
+                      "SimplifiedInvoiceCategory-E.xml",
+                      "SimplifiedTaxInvoice.xml",
+                      "SpecialZone.xml",
+                      "Summary.xml",
+                      "ThirdParty.xml");
+    }
+    if (aVESID.equals (PeppolValidationPintOM.VID_OPENPEPPOL_OM_PINT_CREDIT_NOTE_1_0_0))
+    {
+      return _getAll ("pint-om/1.0.0/billing/cn/", "StandardCN.xml");
+    }
+    if (aVESID.equals (PeppolValidationPintOM.VID_OPENPEPPOL_OM_PINT_SB_INVOICE_1_0_0))
+    {
+      return _getAll ("pint-om/1.0.0/selfbilling/inv/",
+                      "ProfitMarginSelfInvoice.xml",
+                      "Self-Billing.xml",
+                      "SelfBilledInvoice.xml");
+    }
+    if (aVESID.equals (PeppolValidationPintOM.VID_OPENPEPPOL_OM_PINT_SB_CREDIT_NOTE_1_0_0))
+    {
+      return _getAll ("pint-om/1.0.0/selfbilling/cn/", "Self-BillingCN.xml");
     }
 
     /* Peppol Singapore */
