@@ -55,7 +55,8 @@ public final class CTestFiles
                                                              UBLValidation.VID_UBL_21_INVOICE,
                                                              UBLValidation.VID_UBL_22_INVOICE,
                                                              UBLValidation.VID_UBL_23_INVOICE,
-                                                             UBLValidation.VID_UBL_24_INVOICE })
+                                                             UBLValidation.VID_UBL_24_INVOICE,
+                                                             UBLValidation.VID_UBL_25_INVOICE })
       for (final IReadableResource aRes : getAllMatchingTestFiles (aVESID))
       {
         assertTrue ("Not existing test file: " + aRes.getPath (), aRes.exists ());
@@ -79,6 +80,8 @@ public final class CTestFiles
     if (aVESID.equals (UBLValidation.VID_UBL_23_INVOICE))
       return new CommonsArrayList <> (UBLTestFiles.INVOICE_FILES, ClassPathResource::new);
     if (aVESID.equals (UBLValidation.VID_UBL_24_INVOICE))
+      return new CommonsArrayList <> (UBLTestFiles.INVOICE_FILES, ClassPathResource::new);
+    if (aVESID.equals (UBLValidation.VID_UBL_25_INVOICE))
       return new CommonsArrayList <> (UBLTestFiles.INVOICE_FILES, ClassPathResource::new);
 
     throw new IllegalArgumentException ("Invalid VESID: " + aVESID);

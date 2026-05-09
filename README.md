@@ -247,6 +247,7 @@ v4.3.1 - work in progress
     * Local fix to the GİB Schematron: reordered `<sch:ns>` declarations to come before `<sch:include>` so the compiled XSLT emits SVRL with valid element ordering (`ns-prefix-in-attribute-values` before `active-pattern`); without this, ph-schematron's strict SVRL parser threw "Internal error interpreting Schematron result" on every document
 * Added support for Peppol PINT Oman (OM) 1.0.0 rules (billing + self-billing) and Peppol OM TDD 1.0.0 rules
 * Added support for EN 16931 validation rules 1.3.16 (UBL and CII) and deprecated 1.3.15
+* Added support for UBL 2.5-CS01
 
 v4.3.0 - 2026-04-02
 * Requires phive 12.0.2 or later

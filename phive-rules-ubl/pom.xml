@@ -76,6 +76,11 @@
       <version>${ph-ubl.version}</version>
     </dependency>
     <dependency>
+      <groupId>com.helger.ubl</groupId>
+      <artifactId>ph-ubl25</artifactId>
+      <version>${ph-ubl.version}</version>
+    </dependency>
+    <dependency>
       <groupId>com.helger.phive.rules</groupId>
       <artifactId>phive-rules-api</artifactId>
     </dependency>

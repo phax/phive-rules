@@ -30,6 +30,7 @@ import com.helger.ubl21.UBL21Marshaller;
 import com.helger.ubl22.UBL22Marshaller;
 import com.helger.ubl23.UBL23Marshaller;
 import com.helger.ubl24.UBL24Marshaller;
+import com.helger.ubl25.UBL25Marshaller;
 
 /**
  * Generic UBL validation configuration
@@ -45,6 +46,7 @@ public final class UBLValidation
   public static final String VERSION_22 = "2.2";
   public static final String VERSION_23 = "2.3";
   public static final String VERSION_24 = "2.4";
+  public static final String VERSION_25 = "2.5-CS01";
 
   // UBL 2.0
   public static final DVRCoordinate VID_UBL_20_APPLICATIONRESPONSE = PhiveRulesHelper.createCoordinate (GROUP_ID,
@@ -1139,6 +1141,311 @@ public final class UBLValidation
                                                                                                     "weightstatement",
                                                                                                     VERSION_24);
 
+  // UBL 2.5
+  public static final DVRCoordinate VID_UBL_25_APPLICATIONRESPONSE = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                        "applicationresponse",
+                                                                                                        VERSION_25);
+  public static final DVRCoordinate VID_UBL_25_ATTACHEDDOCUMENT = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                     "attacheddocument",
+                                                                                                     VERSION_25);
+  public static final DVRCoordinate VID_UBL_25_AWARDEDNOTIFICATION = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                        "awardednotification",
+                                                                                                        VERSION_25);
+  public static final DVRCoordinate VID_UBL_25_BILLOFLADING = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                 "billoflading",
+                                                                                                 VERSION_25);
+  public static final DVRCoordinate VID_UBL_25_BUSINESSCARD = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                 "businesscard",
+                                                                                                 VERSION_25);
+  public static final DVRCoordinate VID_UBL_25_BUSINESSINFORMATION = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                        "businessinformation",
+                                                                                                        VERSION_25);
+  public static final DVRCoordinate VID_UBL_25_CALLFORTENDERS = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                   "callfortenders",
+                                                                                                   VERSION_25);
+  public static final DVRCoordinate VID_UBL_25_CATALOGUE = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                              "catalogue",
+                                                                                              VERSION_25);
+  public static final DVRCoordinate VID_UBL_25_CATALOGUEDELETION = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                      "cataloguedeletion",
+                                                                                                      VERSION_25);
+  public static final DVRCoordinate VID_UBL_25_CATALOGUEITEMSPECIFICATIONUPDATE = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                                     "catalogueitemspecificationupdate",
+                                                                                                                     VERSION_25);
+  public static final DVRCoordinate VID_UBL_25_CATALOGUEPRICINGUPDATE = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                           "cataloguepricingupdate",
+                                                                                                           VERSION_25);
+  public static final DVRCoordinate VID_UBL_25_CATALOGUEREQUEST = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                     "cataloguerequest",
+                                                                                                     VERSION_25);
+  public static final DVRCoordinate VID_UBL_25_CERTIFICATEOFORIGIN = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                        "certificateoforigin",
+                                                                                                        VERSION_25);
+  public static final DVRCoordinate VID_UBL_25_COMMONTRANSPORTATIONREPORT = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                               "commontransportationreport",
+                                                                                                               VERSION_25);
+  public static final DVRCoordinate VID_UBL_25_CONTRACTAWARDNOTICE = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                        "contractawardnotice",
+                                                                                                        VERSION_25);
+  public static final DVRCoordinate VID_UBL_25_CONTRACTNOTICE = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                   "contractnotice",
+                                                                                                   VERSION_25);
+  public static final DVRCoordinate VID_UBL_25_CREDITNOTE = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                               "creditnote",
+                                                                                               VERSION_25);
+  public static final DVRCoordinate VID_UBL_25_DEBITNOTE = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                              "debitnote",
+                                                                                              VERSION_25);
+  public static final DVRCoordinate VID_UBL_25_DELIVERYNOTE = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                 "deliverynote",
+                                                                                                 VERSION_25);
+  public static final DVRCoordinate VID_UBL_25_DESPATCHADVICE = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                   "despatchadvice",
+                                                                                                   VERSION_25);
+  public static final DVRCoordinate VID_UBL_25_DIGITALAGREEMENT = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                     "digitalagreement",
+                                                                                                     VERSION_25);
+  public static final DVRCoordinate VID_UBL_25_DIGITALCAPABILITY = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                      "digitalcapability",
+                                                                                                      VERSION_25);
+  public static final DVRCoordinate VID_UBL_25_DOCUMENTSTATUS = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                   "documentstatus",
+                                                                                                   VERSION_25);
+  public static final DVRCoordinate VID_UBL_25_DOCUMENTSTATUSREQUEST = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                          "documentstatusrequest",
+                                                                                                          VERSION_25);
+  public static final DVRCoordinate VID_UBL_25_ENQUIRY = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                            "enquiry",
+                                                                                            VERSION_25);
+  public static final DVRCoordinate VID_UBL_25_ENQUIRYRESPONSE = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                    "enquiryresponse",
+                                                                                                    VERSION_25);
+  public static final DVRCoordinate VID_UBL_25_EXCEPTIONCRITERIA = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                      "exceptioncriteria",
+                                                                                                      VERSION_25);
+  public static final DVRCoordinate VID_UBL_25_EXCEPTIONNOTIFICATION = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                          "exceptionnotification",
+                                                                                                          VERSION_25);
+  public static final DVRCoordinate VID_UBL_25_EXPORTCUSTOMSDECLARATION = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                             "exportcustomsdeclaration",
+                                                                                                             VERSION_25);
+  public static final DVRCoordinate VID_UBL_25_EXPRESSIONOFINTERESTREQUEST = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                                "expressionofinterestrequest",
+                                                                                                                VERSION_25);
+  public static final DVRCoordinate VID_UBL_25_EXPRESSIONOFINTERESTRESPONSE = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                                 "expressionofinterestresponse",
+                                                                                                                 VERSION_25);
+  public static final DVRCoordinate VID_UBL_25_FORECAST = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                             "forecast",
+                                                                                             VERSION_25);
+  public static final DVRCoordinate VID_UBL_25_FORECASTREVISION = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                     "forecastrevision",
+                                                                                                     VERSION_25);
+  public static final DVRCoordinate VID_UBL_25_FORWARDINGINSTRUCTIONS = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                           "forwardinginstructions",
+                                                                                                           VERSION_25);
+  public static final DVRCoordinate VID_UBL_25_FREIGHTINVOICE = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                   "freightinvoice",
+                                                                                                   VERSION_25);
+  public static final DVRCoordinate VID_UBL_25_FULFILMENTCANCELLATION = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                           "fulfilmentcancellation",
+                                                                                                           VERSION_25);
+  public static final DVRCoordinate VID_UBL_25_GOODSCERTIFICATE = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                     "goodscertificate",
+                                                                                                     VERSION_25);
+  public static final DVRCoordinate VID_UBL_25_GOODSITEMITINERARY = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                       "goodsitemitinerary",
+                                                                                                       VERSION_25);
+  public static final DVRCoordinate VID_UBL_25_GOODSITEMPASSPORT = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                      "goodsitempassport",
+                                                                                                      VERSION_25);
+  public static final DVRCoordinate VID_UBL_25_GUARANTEECERTIFICATE = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                         "guaranteecertificate",
+                                                                                                         VERSION_25);
+  public static final DVRCoordinate VID_UBL_25_IMPORTCUSTOMSDECLARATION = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                             "importcustomsdeclaration",
+                                                                                                             VERSION_25);
+  public static final DVRCoordinate VID_UBL_25_INSTRUCTIONFORRETURNS = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                          "instructionforreturns",
+                                                                                                          VERSION_25);
+  public static final DVRCoordinate VID_UBL_25_INVENTORYREPORT = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                    "inventoryreport",
+                                                                                                    VERSION_25);
+  public static final DVRCoordinate VID_UBL_25_INVOICE = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                            "invoice",
+                                                                                            VERSION_25);
+  public static final DVRCoordinate VID_UBL_25_INVOICESTATUSREQUEST = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                         "invoicestatusrequest",
+                                                                                                         VERSION_25);
+  public static final DVRCoordinate VID_UBL_25_INVOICESTATUSRESPONSE = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                          "invoicestatusresponse",
+                                                                                                          VERSION_25);
+  public static final DVRCoordinate VID_UBL_25_ITEMINFORMATIONREQUEST = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                           "iteminformationrequest",
+                                                                                                           VERSION_25);
+  public static final DVRCoordinate VID_UBL_25_MANIFEST = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                             "manifest",
+                                                                                             VERSION_25);
+  public static final DVRCoordinate VID_UBL_25_ORDER = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                          "order",
+                                                                                          VERSION_25);
+  public static final DVRCoordinate VID_UBL_25_ORDERCANCELLATION = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                      "ordercancellation",
+                                                                                                      VERSION_25);
+  public static final DVRCoordinate VID_UBL_25_ORDERCHANGE = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                "orderchange",
+                                                                                                VERSION_25);
+  public static final DVRCoordinate VID_UBL_25_ORDERRESPONSE = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                  "orderresponse",
+                                                                                                  VERSION_25);
+  public static final DVRCoordinate VID_UBL_25_ORDERRESPONSESIMPLE = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                        "orderresponsesimple",
+                                                                                                        VERSION_25);
+  public static final DVRCoordinate VID_UBL_25_PACKINGLIST = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                "packinglist",
+                                                                                                VERSION_25);
+  public static final DVRCoordinate VID_UBL_25_PRIORINFORMATIONNOTICE = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                           "priorinformationnotice",
+                                                                                                           VERSION_25);
+  public static final DVRCoordinate VID_UBL_25_PROCUREMENTSTATUS = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                      "procurementstatus",
+                                                                                                      VERSION_25);
+  public static final DVRCoordinate VID_UBL_25_PROCUREMENTSTATUSREQUEST = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                             "procurementstatusrequest",
+                                                                                                             VERSION_25);
+  public static final DVRCoordinate VID_UBL_25_PRODUCTACTIVITY = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                    "productactivity",
+                                                                                                    VERSION_25);
+  public static final DVRCoordinate VID_UBL_25_PROOFOFREEXPORTATION = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                         "proofofreexportation",
+                                                                                                         VERSION_25);
+  public static final DVRCoordinate VID_UBL_25_PROOFOFREEXPORTATIONREMINDER = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                                 "proofofreexportationreminder",
+                                                                                                                 VERSION_25);
+  public static final DVRCoordinate VID_UBL_25_PROOFOFREEXPORTATIONREQUEST = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                                "proofofreexportationrequest",
+                                                                                                                VERSION_25);
+  public static final DVRCoordinate VID_UBL_25_PURCHASERECEIPT = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                    "purchasereceipt",
+                                                                                                    VERSION_25);
+  public static final DVRCoordinate VID_UBL_25_QUALIFICATIONAPPLICATIONREQUEST = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                                    "qualificationapplicationrequest",
+                                                                                                                    VERSION_25);
+  public static final DVRCoordinate VID_UBL_25_QUALIFICATIONAPPLICATIONRESPONSE = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                                     "qualificationapplicationresponse",
+                                                                                                                     VERSION_25);
+  public static final DVRCoordinate VID_UBL_25_QUOTATION = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                              "quotation",
+                                                                                              VERSION_25);
+  public static final DVRCoordinate VID_UBL_25_RECEIPTADVICE = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                  "receiptadvice",
+                                                                                                  VERSION_25);
+  public static final DVRCoordinate VID_UBL_25_REMINDER = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                             "reminder",
+                                                                                             VERSION_25);
+  public static final DVRCoordinate VID_UBL_25_REMITTANCEADVICE = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                     "remittanceadvice",
+                                                                                                     VERSION_25);
+  public static final DVRCoordinate VID_UBL_25_REQUESTFORQUOTATION = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                        "requestforquotation",
+                                                                                                        VERSION_25);
+  public static final DVRCoordinate VID_UBL_25_RETAILEVENT = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                "retailevent",
+                                                                                                VERSION_25);
+  public static final DVRCoordinate VID_UBL_25_SELFBILLEDCREDITNOTE = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                         "selfbilledcreditnote",
+                                                                                                         VERSION_25);
+  public static final DVRCoordinate VID_UBL_25_SELFBILLEDINVOICE = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                      "selfbilledinvoice",
+                                                                                                      VERSION_25);
+  public static final DVRCoordinate VID_UBL_25_STATEMENT = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                              "statement",
+                                                                                              VERSION_25);
+  public static final DVRCoordinate VID_UBL_25_STOCKAVAILABILITYREPORT = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                            "stockavailabilityreport",
+                                                                                                            VERSION_25);
+  public static final DVRCoordinate VID_UBL_25_TENDER = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                           "tender",
+                                                                                           VERSION_25);
+  public static final DVRCoordinate VID_UBL_25_TENDERCONTRACT = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                   "tendercontract",
+                                                                                                   VERSION_25);
+  public static final DVRCoordinate VID_UBL_25_TENDERERQUALIFICATION = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                          "tendererqualification",
+                                                                                                          VERSION_25);
+  public static final DVRCoordinate VID_UBL_25_TENDERERQUALIFICATIONRESPONSE = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                                  "tendererqualificationresponse",
+                                                                                                                  VERSION_25);
+  public static final DVRCoordinate VID_UBL_25_TENDERRECEIPT = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                  "tenderreceipt",
+                                                                                                  VERSION_25);
+  public static final DVRCoordinate VID_UBL_25_TENDERSTATUS = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                 "tenderstatus",
+                                                                                                 VERSION_25);
+  public static final DVRCoordinate VID_UBL_25_TENDERSTATUSREQUEST = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                        "tenderstatusrequest",
+                                                                                                        VERSION_25);
+  public static final DVRCoordinate VID_UBL_25_TENDERWITHDRAWAL = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                     "tenderwithdrawal",
+                                                                                                     VERSION_25);
+  public static final DVRCoordinate VID_UBL_25_TRADEITEMLOCATIONPROFILE = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                             "tradeitemlocationprofile",
+                                                                                                             VERSION_25);
+  public static final DVRCoordinate VID_UBL_25_TRANSITCUSTOMSDECLARATION = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                              "transitcustomsdeclaration",
+                                                                                                              VERSION_25);
+  public static final DVRCoordinate VID_UBL_25_TRANSPORTATIONSTATUS = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                         "transportationstatus",
+                                                                                                         VERSION_25);
+  public static final DVRCoordinate VID_UBL_25_TRANSPORTATIONSTATUSREQUEST = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                                "transportationstatusrequest",
+                                                                                                                VERSION_25);
+  public static final DVRCoordinate VID_UBL_25_TRANSPORTEXECUTIONPLAN = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                           "transportexecutionplan",
+                                                                                                           VERSION_25);
+  public static final DVRCoordinate VID_UBL_25_TRANSPORTEXECUTIONPLANREQUEST = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                                  "transportexecutionplanrequest",
+                                                                                                                  VERSION_25);
+  public static final DVRCoordinate VID_UBL_25_TRANSPORTPROGRESSSTATUS = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                            "transportprogressstatus",
+                                                                                                            VERSION_25);
+  public static final DVRCoordinate VID_UBL_25_TRANSPORTPROGRESSSTATUSREQUEST = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                                   "transportprogressstatusrequest",
+                                                                                                                   VERSION_25);
+  public static final DVRCoordinate VID_UBL_25_TRANSPORTSERVICEDESCRIPTION = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                                "transportservicedescription",
+                                                                                                                VERSION_25);
+  public static final DVRCoordinate VID_UBL_25_TRANSPORTSERVICEDESCRIPTIONREQUEST = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                                       "transportservicedescriptionrequest",
+                                                                                                                       VERSION_25);
+  public static final DVRCoordinate VID_UBL_25_UNAWARDEDNOTIFICATION = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                          "unawardednotification",
+                                                                                                          VERSION_25);
+  public static final DVRCoordinate VID_UBL_25_UNSUBSCRIBEFROMPROCEDUREREQUEST = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                                    "unsubscribefromprocedurerequest",
+                                                                                                                    VERSION_25);
+  public static final DVRCoordinate VID_UBL_25_UNSUBSCRIBEFROMPROCEDURERESPONSE = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                                     "unsubscribefromprocedureresponse",
+                                                                                                                     VERSION_25);
+  public static final DVRCoordinate VID_UBL_25_UTILITYSTATEMENT = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                     "utilitystatement",
+                                                                                                     VERSION_25);
+  public static final DVRCoordinate VID_UBL_25_WASTEMOVEMENT = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                  "wastemovement",
+                                                                                                  VERSION_25);
+  public static final DVRCoordinate VID_UBL_25_WASTENOTIFICATION = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                      "wastenotification",
+                                                                                                      VERSION_25);
+  public static final DVRCoordinate VID_UBL_25_WAYBILL = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                            "waybill",
+                                                                                            VERSION_25);
+  public static final DVRCoordinate VID_UBL_25_WEIGHTSTATEMENT = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                    "weightstatement",
+                                                                                                    VERSION_25);
+  public static final DVRCoordinate VID_UBL_25_WORKREPORT = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                               "workreport",
+                                                                                               VERSION_25);
+
   private UBLValidation ()
   {}
 
@@ -1156,6 +1463,7 @@ public final class UBLValidation
     initUBL22 (aRegistry);
     initUBL23 (aRegistry);
     initUBL24 (aRegistry);
+    initUBL25 (aRegistry);
   }
 
   /**
@@ -3382,6 +3690,624 @@ public final class UBLValidation
                  .displayName ("UBL Weight Statement " + VERSION_24)
                  .notDeprecated ()
                  .addXSD (UBL24Marshaller.getAllWeightStatementXSDs ())
+                 .registerInto (aRegistry);
+  }
+
+  /**
+   * Register all standard UBL 2.5 validation execution sets to the provided registry.
+   *
+   * @param aRegistry
+   *        The registry to add the artefacts. May not be <code>null</code>.
+   */
+  public static void initUBL25 (@NonNull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
+  {
+    ValueEnforcer.notNull (aRegistry, "Registry");
+
+    VesXmlBuilder.builder ()
+                 .vesID (VID_UBL_25_APPLICATIONRESPONSE)
+                 .displayName ("UBL Application Response " + VERSION_25)
+                 .notDeprecated ()
+                 .addXSD (UBL25Marshaller.getAllApplicationResponseXSDs ())
+                 .registerInto (aRegistry);
+    VesXmlBuilder.builder ()
+                 .vesID (VID_UBL_25_ATTACHEDDOCUMENT)
+                 .displayName ("UBL Attached Document " + VERSION_25)
+                 .notDeprecated ()
+                 .addXSD (UBL25Marshaller.getAllAttachedDocumentXSDs ())
+                 .registerInto (aRegistry);
+    VesXmlBuilder.builder ()
+                 .vesID (VID_UBL_25_AWARDEDNOTIFICATION)
+                 .displayName ("UBL Awarded Notification " + VERSION_25)
+                 .notDeprecated ()
+                 .addXSD (UBL25Marshaller.getAllAwardedNotificationXSDs ())
+                 .registerInto (aRegistry);
+    VesXmlBuilder.builder ()
+                 .vesID (VID_UBL_25_BILLOFLADING)
+                 .displayName ("UBL Bill Of Lading " + VERSION_25)
+                 .notDeprecated ()
+                 .addXSD (UBL25Marshaller.getAllBillOfLadingXSDs ())
+                 .registerInto (aRegistry);
+    VesXmlBuilder.builder ()
+                 .vesID (VID_UBL_25_BUSINESSCARD)
+                 .displayName ("UBL Business Card " + VERSION_25)
+                 .notDeprecated ()
+                 .addXSD (UBL25Marshaller.getAllBusinessCardXSDs ())
+                 .registerInto (aRegistry);
+    VesXmlBuilder.builder ()
+                 .vesID (VID_UBL_25_BUSINESSINFORMATION)
+                 .displayName ("UBL Business Information " + VERSION_25)
+                 .notDeprecated ()
+                 .addXSD (UBL25Marshaller.getAllBusinessInformationXSDs ())
+                 .registerInto (aRegistry);
+    VesXmlBuilder.builder ()
+                 .vesID (VID_UBL_25_CALLFORTENDERS)
+                 .displayName ("UBL Call For Tenders " + VERSION_25)
+                 .notDeprecated ()
+                 .addXSD (UBL25Marshaller.getAllCallForTendersXSDs ())
+                 .registerInto (aRegistry);
+    VesXmlBuilder.builder ()
+                 .vesID (VID_UBL_25_CATALOGUE)
+                 .displayName ("UBL Catalogue " + VERSION_25)
+                 .notDeprecated ()
+                 .addXSD (UBL25Marshaller.getAllCatalogueXSDs ())
+                 .registerInto (aRegistry);
+    VesXmlBuilder.builder ()
+                 .vesID (VID_UBL_25_CATALOGUEDELETION)
+                 .displayName ("UBL Catalogue Deletion " + VERSION_25)
+                 .notDeprecated ()
+                 .addXSD (UBL25Marshaller.getAllCatalogueDeletionXSDs ())
+                 .registerInto (aRegistry);
+    VesXmlBuilder.builder ()
+                 .vesID (VID_UBL_25_CATALOGUEITEMSPECIFICATIONUPDATE)
+                 .displayName ("UBL Catalogue Item Specification Update " + VERSION_25)
+                 .notDeprecated ()
+                 .addXSD (UBL25Marshaller.getAllCatalogueItemSpecificationUpdateXSDs ())
+                 .registerInto (aRegistry);
+    VesXmlBuilder.builder ()
+                 .vesID (VID_UBL_25_CATALOGUEPRICINGUPDATE)
+                 .displayName ("UBL Catalogue Pricing Update " + VERSION_25)
+                 .notDeprecated ()
+                 .addXSD (UBL25Marshaller.getAllCataloguePricingUpdateXSDs ())
+                 .registerInto (aRegistry);
+    VesXmlBuilder.builder ()
+                 .vesID (VID_UBL_25_CATALOGUEREQUEST)
+                 .displayName ("UBL Catalogue Request " + VERSION_25)
+                 .notDeprecated ()
+                 .addXSD (UBL25Marshaller.getAllCatalogueRequestXSDs ())
+                 .registerInto (aRegistry);
+    VesXmlBuilder.builder ()
+                 .vesID (VID_UBL_25_CERTIFICATEOFORIGIN)
+                 .displayName ("UBL Certificate Of Origin " + VERSION_25)
+                 .notDeprecated ()
+                 .addXSD (UBL25Marshaller.getAllCertificateOfOriginXSDs ())
+                 .registerInto (aRegistry);
+    VesXmlBuilder.builder ()
+                 .vesID (VID_UBL_25_COMMONTRANSPORTATIONREPORT)
+                 .displayName ("UBL Common Transportation Report " + VERSION_25)
+                 .notDeprecated ()
+                 .addXSD (UBL25Marshaller.getAllCommonTransportationReportXSDs ())
+                 .registerInto (aRegistry);
+    VesXmlBuilder.builder ()
+                 .vesID (VID_UBL_25_CONTRACTAWARDNOTICE)
+                 .displayName ("UBL Contract Award Notice " + VERSION_25)
+                 .notDeprecated ()
+                 .addXSD (UBL25Marshaller.getAllContractAwardNoticeXSDs ())
+                 .registerInto (aRegistry);
+    VesXmlBuilder.builder ()
+                 .vesID (VID_UBL_25_CONTRACTNOTICE)
+                 .displayName ("UBL Contract Notice " + VERSION_25)
+                 .notDeprecated ()
+                 .addXSD (UBL25Marshaller.getAllContractNoticeXSDs ())
+                 .registerInto (aRegistry);
+    VesXmlBuilder.builder ()
+                 .vesID (VID_UBL_25_CREDITNOTE)
+                 .displayName ("UBL Credit Note " + VERSION_25)
+                 .notDeprecated ()
+                 .addXSD (UBL25Marshaller.getAllCreditNoteXSDs ())
+                 .registerInto (aRegistry);
+    VesXmlBuilder.builder ()
+                 .vesID (VID_UBL_25_DEBITNOTE)
+                 .displayName ("UBL Debit Note " + VERSION_25)
+                 .notDeprecated ()
+                 .addXSD (UBL25Marshaller.getAllDebitNoteXSDs ())
+                 .registerInto (aRegistry);
+    VesXmlBuilder.builder ()
+                 .vesID (VID_UBL_25_DELIVERYNOTE)
+                 .displayName ("UBL Delivery Note " + VERSION_25)
+                 .notDeprecated ()
+                 .addXSD (UBL25Marshaller.getAllDeliveryNoteXSDs ())
+                 .registerInto (aRegistry);
+    VesXmlBuilder.builder ()
+                 .vesID (VID_UBL_25_DESPATCHADVICE)
+                 .displayName ("UBL Despatch Advice " + VERSION_25)
+                 .notDeprecated ()
+                 .addXSD (UBL25Marshaller.getAllDespatchAdviceXSDs ())
+                 .registerInto (aRegistry);
+    VesXmlBuilder.builder ()
+                 .vesID (VID_UBL_25_DIGITALAGREEMENT)
+                 .displayName ("UBL Digital Agreement " + VERSION_25)
+                 .notDeprecated ()
+                 .addXSD (UBL25Marshaller.getAllDigitalAgreementXSDs ())
+                 .registerInto (aRegistry);
+    VesXmlBuilder.builder ()
+                 .vesID (VID_UBL_25_DIGITALCAPABILITY)
+                 .displayName ("UBL Digital Capability " + VERSION_25)
+                 .notDeprecated ()
+                 .addXSD (UBL25Marshaller.getAllDigitalCapabilityXSDs ())
+                 .registerInto (aRegistry);
+    VesXmlBuilder.builder ()
+                 .vesID (VID_UBL_25_DOCUMENTSTATUS)
+                 .displayName ("UBL Document Status " + VERSION_25)
+                 .notDeprecated ()
+                 .addXSD (UBL25Marshaller.getAllDocumentStatusXSDs ())
+                 .registerInto (aRegistry);
+    VesXmlBuilder.builder ()
+                 .vesID (VID_UBL_25_DOCUMENTSTATUSREQUEST)
+                 .displayName ("UBL Document Status Request " + VERSION_25)
+                 .notDeprecated ()
+                 .addXSD (UBL25Marshaller.getAllDocumentStatusRequestXSDs ())
+                 .registerInto (aRegistry);
+    VesXmlBuilder.builder ()
+                 .vesID (VID_UBL_25_ENQUIRY)
+                 .displayName ("UBL Enquiry " + VERSION_25)
+                 .notDeprecated ()
+                 .addXSD (UBL25Marshaller.getAllEnquiryXSDs ())
+                 .registerInto (aRegistry);
+    VesXmlBuilder.builder ()
+                 .vesID (VID_UBL_25_ENQUIRYRESPONSE)
+                 .displayName ("UBL Enquiry Response " + VERSION_25)
+                 .notDeprecated ()
+                 .addXSD (UBL25Marshaller.getAllEnquiryResponseXSDs ())
+                 .registerInto (aRegistry);
+    VesXmlBuilder.builder ()
+                 .vesID (VID_UBL_25_EXCEPTIONCRITERIA)
+                 .displayName ("UBL Exception Criteria " + VERSION_25)
+                 .notDeprecated ()
+                 .addXSD (UBL25Marshaller.getAllExceptionCriteriaXSDs ())
+                 .registerInto (aRegistry);
+    VesXmlBuilder.builder ()
+                 .vesID (VID_UBL_25_EXCEPTIONNOTIFICATION)
+                 .displayName ("UBL Exception Notification " + VERSION_25)
+                 .notDeprecated ()
+                 .addXSD (UBL25Marshaller.getAllExceptionNotificationXSDs ())
+                 .registerInto (aRegistry);
+    VesXmlBuilder.builder ()
+                 .vesID (VID_UBL_25_EXPORTCUSTOMSDECLARATION)
+                 .displayName ("UBL Export Customs Declaration " + VERSION_25)
+                 .notDeprecated ()
+                 .addXSD (UBL25Marshaller.getAllExportCustomsDeclarationXSDs ())
+                 .registerInto (aRegistry);
+    VesXmlBuilder.builder ()
+                 .vesID (VID_UBL_25_EXPRESSIONOFINTERESTREQUEST)
+                 .displayName ("UBL Expression Of Interest Request " + VERSION_25)
+                 .notDeprecated ()
+                 .addXSD (UBL25Marshaller.getAllExpressionOfInterestRequestXSDs ())
+                 .registerInto (aRegistry);
+    VesXmlBuilder.builder ()
+                 .vesID (VID_UBL_25_EXPRESSIONOFINTERESTRESPONSE)
+                 .displayName ("UBL Expression Of Interest Response " + VERSION_25)
+                 .notDeprecated ()
+                 .addXSD (UBL25Marshaller.getAllExpressionOfInterestResponseXSDs ())
+                 .registerInto (aRegistry);
+    VesXmlBuilder.builder ()
+                 .vesID (VID_UBL_25_FORECAST)
+                 .displayName ("UBL Forecast " + VERSION_25)
+                 .notDeprecated ()
+                 .addXSD (UBL25Marshaller.getAllForecastXSDs ())
+                 .registerInto (aRegistry);
+    VesXmlBuilder.builder ()
+                 .vesID (VID_UBL_25_FORECASTREVISION)
+                 .displayName ("UBL Forecast Revision " + VERSION_25)
+                 .notDeprecated ()
+                 .addXSD (UBL25Marshaller.getAllForecastRevisionXSDs ())
+                 .registerInto (aRegistry);
+    VesXmlBuilder.builder ()
+                 .vesID (VID_UBL_25_FORWARDINGINSTRUCTIONS)
+                 .displayName ("UBL Forwarding Instructions " + VERSION_25)
+                 .notDeprecated ()
+                 .addXSD (UBL25Marshaller.getAllForwardingInstructionsXSDs ())
+                 .registerInto (aRegistry);
+    VesXmlBuilder.builder ()
+                 .vesID (VID_UBL_25_FREIGHTINVOICE)
+                 .displayName ("UBL Freight Invoice " + VERSION_25)
+                 .notDeprecated ()
+                 .addXSD (UBL25Marshaller.getAllFreightInvoiceXSDs ())
+                 .registerInto (aRegistry);
+    VesXmlBuilder.builder ()
+                 .vesID (VID_UBL_25_FULFILMENTCANCELLATION)
+                 .displayName ("UBL Fulfilment Cancellation " + VERSION_25)
+                 .notDeprecated ()
+                 .addXSD (UBL25Marshaller.getAllFulfilmentCancellationXSDs ())
+                 .registerInto (aRegistry);
+    VesXmlBuilder.builder ()
+                 .vesID (VID_UBL_25_GOODSCERTIFICATE)
+                 .displayName ("UBL Goods Certificate " + VERSION_25)
+                 .notDeprecated ()
+                 .addXSD (UBL25Marshaller.getAllGoodsCertificateXSDs ())
+                 .registerInto (aRegistry);
+    VesXmlBuilder.builder ()
+                 .vesID (VID_UBL_25_GOODSITEMITINERARY)
+                 .displayName ("UBL Goods Item Itinerary " + VERSION_25)
+                 .notDeprecated ()
+                 .addXSD (UBL25Marshaller.getAllGoodsItemItineraryXSDs ())
+                 .registerInto (aRegistry);
+    VesXmlBuilder.builder ()
+                 .vesID (VID_UBL_25_GOODSITEMPASSPORT)
+                 .displayName ("UBL Goods Item Passport " + VERSION_25)
+                 .notDeprecated ()
+                 .addXSD (UBL25Marshaller.getAllGoodsItemPassportXSDs ())
+                 .registerInto (aRegistry);
+    VesXmlBuilder.builder ()
+                 .vesID (VID_UBL_25_GUARANTEECERTIFICATE)
+                 .displayName ("UBL Guarantee Certificate " + VERSION_25)
+                 .notDeprecated ()
+                 .addXSD (UBL25Marshaller.getAllGuaranteeCertificateXSDs ())
+                 .registerInto (aRegistry);
+    VesXmlBuilder.builder ()
+                 .vesID (VID_UBL_25_IMPORTCUSTOMSDECLARATION)
+                 .displayName ("UBL Import Customs Declaration " + VERSION_25)
+                 .notDeprecated ()
+                 .addXSD (UBL25Marshaller.getAllImportCustomsDeclarationXSDs ())
+                 .registerInto (aRegistry);
+    VesXmlBuilder.builder ()
+                 .vesID (VID_UBL_25_INSTRUCTIONFORRETURNS)
+                 .displayName ("UBL Instruction For Returns " + VERSION_25)
+                 .notDeprecated ()
+                 .addXSD (UBL25Marshaller.getAllInstructionForReturnsXSDs ())
+                 .registerInto (aRegistry);
+    VesXmlBuilder.builder ()
+                 .vesID (VID_UBL_25_INVENTORYREPORT)
+                 .displayName ("UBL Inventory Report " + VERSION_25)
+                 .notDeprecated ()
+                 .addXSD (UBL25Marshaller.getAllInventoryReportXSDs ())
+                 .registerInto (aRegistry);
+    VesXmlBuilder.builder ()
+                 .vesID (VID_UBL_25_INVOICE)
+                 .displayName ("UBL Invoice " + VERSION_25)
+                 .notDeprecated ()
+                 .addXSD (UBL25Marshaller.getAllInvoiceXSDs ())
+                 .registerInto (aRegistry);
+    VesXmlBuilder.builder ()
+                 .vesID (VID_UBL_25_INVOICESTATUSREQUEST)
+                 .displayName ("UBL Invoice Status Request " + VERSION_25)
+                 .notDeprecated ()
+                 .addXSD (UBL25Marshaller.getAllInvoiceStatusRequestXSDs ())
+                 .registerInto (aRegistry);
+    VesXmlBuilder.builder ()
+                 .vesID (VID_UBL_25_INVOICESTATUSRESPONSE)
+                 .displayName ("UBL Invoice Status Response " + VERSION_25)
+                 .notDeprecated ()
+                 .addXSD (UBL25Marshaller.getAllInvoiceStatusResponseXSDs ())
+                 .registerInto (aRegistry);
+    VesXmlBuilder.builder ()
+                 .vesID (VID_UBL_25_ITEMINFORMATIONREQUEST)
+                 .displayName ("UBL Item Information Request " + VERSION_25)
+                 .notDeprecated ()
+                 .addXSD (UBL25Marshaller.getAllItemInformationRequestXSDs ())
+                 .registerInto (aRegistry);
+    VesXmlBuilder.builder ()
+                 .vesID (VID_UBL_25_MANIFEST)
+                 .displayName ("UBL Manifest " + VERSION_25)
+                 .notDeprecated ()
+                 .addXSD (UBL25Marshaller.getAllManifestXSDs ())
+                 .registerInto (aRegistry);
+    VesXmlBuilder.builder ()
+                 .vesID (VID_UBL_25_ORDER)
+                 .displayName ("UBL Order " + VERSION_25)
+                 .notDeprecated ()
+                 .addXSD (UBL25Marshaller.getAllOrderXSDs ())
+                 .registerInto (aRegistry);
+    VesXmlBuilder.builder ()
+                 .vesID (VID_UBL_25_ORDERCANCELLATION)
+                 .displayName ("UBL Order Cancellation " + VERSION_25)
+                 .notDeprecated ()
+                 .addXSD (UBL25Marshaller.getAllOrderCancellationXSDs ())
+                 .registerInto (aRegistry);
+    VesXmlBuilder.builder ()
+                 .vesID (VID_UBL_25_ORDERCHANGE)
+                 .displayName ("UBL Order Change " + VERSION_25)
+                 .notDeprecated ()
+                 .addXSD (UBL25Marshaller.getAllOrderChangeXSDs ())
+                 .registerInto (aRegistry);
+    VesXmlBuilder.builder ()
+                 .vesID (VID_UBL_25_ORDERRESPONSE)
+                 .displayName ("UBL Order Response " + VERSION_25)
+                 .notDeprecated ()
+                 .addXSD (UBL25Marshaller.getAllOrderResponseXSDs ())
+                 .registerInto (aRegistry);
+    VesXmlBuilder.builder ()
+                 .vesID (VID_UBL_25_ORDERRESPONSESIMPLE)
+                 .displayName ("UBL Order Response Simple " + VERSION_25)
+                 .notDeprecated ()
+                 .addXSD (UBL25Marshaller.getAllOrderResponseSimpleXSDs ())
+                 .registerInto (aRegistry);
+    VesXmlBuilder.builder ()
+                 .vesID (VID_UBL_25_PACKINGLIST)
+                 .displayName ("UBL Packing List " + VERSION_25)
+                 .notDeprecated ()
+                 .addXSD (UBL25Marshaller.getAllPackingListXSDs ())
+                 .registerInto (aRegistry);
+    VesXmlBuilder.builder ()
+                 .vesID (VID_UBL_25_PRIORINFORMATIONNOTICE)
+                 .displayName ("UBL Prior Information Notice " + VERSION_25)
+                 .notDeprecated ()
+                 .addXSD (UBL25Marshaller.getAllPriorInformationNoticeXSDs ())
+                 .registerInto (aRegistry);
+    VesXmlBuilder.builder ()
+                 .vesID (VID_UBL_25_PROCUREMENTSTATUS)
+                 .displayName ("UBL Procurement Status " + VERSION_25)
+                 .notDeprecated ()
+                 .addXSD (UBL25Marshaller.getAllProcurementStatusXSDs ())
+                 .registerInto (aRegistry);
+    VesXmlBuilder.builder ()
+                 .vesID (VID_UBL_25_PROCUREMENTSTATUSREQUEST)
+                 .displayName ("UBL Procurement Status Request " + VERSION_25)
+                 .notDeprecated ()
+                 .addXSD (UBL25Marshaller.getAllProcurementStatusRequestXSDs ())
+                 .registerInto (aRegistry);
+    VesXmlBuilder.builder ()
+                 .vesID (VID_UBL_25_PRODUCTACTIVITY)
+                 .displayName ("UBL Product Activity " + VERSION_25)
+                 .notDeprecated ()
+                 .addXSD (UBL25Marshaller.getAllProductActivityXSDs ())
+                 .registerInto (aRegistry);
+    VesXmlBuilder.builder ()
+                 .vesID (VID_UBL_25_PROOFOFREEXPORTATION)
+                 .displayName ("UBL Proof Of Reexportation " + VERSION_25)
+                 .notDeprecated ()
+                 .addXSD (UBL25Marshaller.getAllProofOfReexportationXSDs ())
+                 .registerInto (aRegistry);
+    VesXmlBuilder.builder ()
+                 .vesID (VID_UBL_25_PROOFOFREEXPORTATIONREMINDER)
+                 .displayName ("UBL Proof Of Reexportation Reminder " + VERSION_25)
+                 .notDeprecated ()
+                 .addXSD (UBL25Marshaller.getAllProofOfReexportationReminderXSDs ())
+                 .registerInto (aRegistry);
+    VesXmlBuilder.builder ()
+                 .vesID (VID_UBL_25_PROOFOFREEXPORTATIONREQUEST)
+                 .displayName ("UBL Proof Of Reexportation Request " + VERSION_25)
+                 .notDeprecated ()
+                 .addXSD (UBL25Marshaller.getAllProofOfReexportationRequestXSDs ())
+                 .registerInto (aRegistry);
+    VesXmlBuilder.builder ()
+                 .vesID (VID_UBL_25_PURCHASERECEIPT)
+                 .displayName ("UBL Purchase Receipt " + VERSION_25)
+                 .notDeprecated ()
+                 .addXSD (UBL25Marshaller.getAllPurchaseReceiptXSDs ())
+                 .registerInto (aRegistry);
+    VesXmlBuilder.builder ()
+                 .vesID (VID_UBL_25_QUALIFICATIONAPPLICATIONREQUEST)
+                 .displayName ("UBL Qualification Application Request " + VERSION_25)
+                 .notDeprecated ()
+                 .addXSD (UBL25Marshaller.getAllQualificationApplicationRequestXSDs ())
+                 .registerInto (aRegistry);
+    VesXmlBuilder.builder ()
+                 .vesID (VID_UBL_25_QUALIFICATIONAPPLICATIONRESPONSE)
+                 .displayName ("UBL Qualification Application Response " + VERSION_25)
+                 .notDeprecated ()
+                 .addXSD (UBL25Marshaller.getAllQualificationApplicationResponseXSDs ())
+                 .registerInto (aRegistry);
+    VesXmlBuilder.builder ()
+                 .vesID (VID_UBL_25_QUOTATION)
+                 .displayName ("UBL Quotation " + VERSION_25)
+                 .notDeprecated ()
+                 .addXSD (UBL25Marshaller.getAllQuotationXSDs ())
+                 .registerInto (aRegistry);
+    VesXmlBuilder.builder ()
+                 .vesID (VID_UBL_25_RECEIPTADVICE)
+                 .displayName ("UBL Receipt Advice " + VERSION_25)
+                 .notDeprecated ()
+                 .addXSD (UBL25Marshaller.getAllReceiptAdviceXSDs ())
+                 .registerInto (aRegistry);
+    VesXmlBuilder.builder ()
+                 .vesID (VID_UBL_25_REMINDER)
+                 .displayName ("UBL Reminder " + VERSION_25)
+                 .notDeprecated ()
+                 .addXSD (UBL25Marshaller.getAllReminderXSDs ())
+                 .registerInto (aRegistry);
+    VesXmlBuilder.builder ()
+                 .vesID (VID_UBL_25_REMITTANCEADVICE)
+                 .displayName ("UBL Remittance Advice " + VERSION_25)
+                 .notDeprecated ()
+                 .addXSD (UBL25Marshaller.getAllRemittanceAdviceXSDs ())
+                 .registerInto (aRegistry);
+    VesXmlBuilder.builder ()
+                 .vesID (VID_UBL_25_REQUESTFORQUOTATION)
+                 .displayName ("UBL Request For Quotation " + VERSION_25)
+                 .notDeprecated ()
+                 .addXSD (UBL25Marshaller.getAllRequestForQuotationXSDs ())
+                 .registerInto (aRegistry);
+    VesXmlBuilder.builder ()
+                 .vesID (VID_UBL_25_RETAILEVENT)
+                 .displayName ("UBL Retail Event " + VERSION_25)
+                 .notDeprecated ()
+                 .addXSD (UBL25Marshaller.getAllRetailEventXSDs ())
+                 .registerInto (aRegistry);
+    VesXmlBuilder.builder ()
+                 .vesID (VID_UBL_25_SELFBILLEDCREDITNOTE)
+                 .displayName ("UBL Self Billed Credit Note " + VERSION_25)
+                 .notDeprecated ()
+                 .addXSD (UBL25Marshaller.getAllSelfBilledCreditNoteXSDs ())
+                 .registerInto (aRegistry);
+    VesXmlBuilder.builder ()
+                 .vesID (VID_UBL_25_SELFBILLEDINVOICE)
+                 .displayName ("UBL Self Billed Invoice " + VERSION_25)
+                 .notDeprecated ()
+                 .addXSD (UBL25Marshaller.getAllSelfBilledInvoiceXSDs ())
+                 .registerInto (aRegistry);
+    VesXmlBuilder.builder ()
+                 .vesID (VID_UBL_25_STATEMENT)
+                 .displayName ("UBL Statement " + VERSION_25)
+                 .notDeprecated ()
+                 .addXSD (UBL25Marshaller.getAllStatementXSDs ())
+                 .registerInto (aRegistry);
+    VesXmlBuilder.builder ()
+                 .vesID (VID_UBL_25_STOCKAVAILABILITYREPORT)
+                 .displayName ("UBL Stock Availability Report " + VERSION_25)
+                 .notDeprecated ()
+                 .addXSD (UBL25Marshaller.getAllStockAvailabilityReportXSDs ())
+                 .registerInto (aRegistry);
+    VesXmlBuilder.builder ()
+                 .vesID (VID_UBL_25_TENDER)
+                 .displayName ("UBL Tender " + VERSION_25)
+                 .notDeprecated ()
+                 .addXSD (UBL25Marshaller.getAllTenderXSDs ())
+                 .registerInto (aRegistry);
+    VesXmlBuilder.builder ()
+                 .vesID (VID_UBL_25_TENDERCONTRACT)
+                 .displayName ("UBL Tender Contract " + VERSION_25)
+                 .notDeprecated ()
+                 .addXSD (UBL25Marshaller.getAllTenderContractXSDs ())
+                 .registerInto (aRegistry);
+    VesXmlBuilder.builder ()
+                 .vesID (VID_UBL_25_TENDERERQUALIFICATION)
+                 .displayName ("UBL Tenderer Qualification " + VERSION_25)
+                 .notDeprecated ()
+                 .addXSD (UBL25Marshaller.getAllTendererQualificationXSDs ())
+                 .registerInto (aRegistry);
+    VesXmlBuilder.builder ()
+                 .vesID (VID_UBL_25_TENDERERQUALIFICATIONRESPONSE)
+                 .displayName ("UBL Tenderer Qualification Response " + VERSION_25)
+                 .notDeprecated ()
+                 .addXSD (UBL25Marshaller.getAllTendererQualificationResponseXSDs ())
+                 .registerInto (aRegistry);
+    VesXmlBuilder.builder ()
+                 .vesID (VID_UBL_25_TENDERRECEIPT)
+                 .displayName ("UBL Tender Receipt " + VERSION_25)
+                 .notDeprecated ()
+                 .addXSD (UBL25Marshaller.getAllTenderReceiptXSDs ())
+                 .registerInto (aRegistry);
+    VesXmlBuilder.builder ()
+                 .vesID (VID_UBL_25_TENDERSTATUS)
+                 .displayName ("UBL Tender Status " + VERSION_25)
+                 .notDeprecated ()
+                 .addXSD (UBL25Marshaller.getAllTenderStatusXSDs ())
+                 .registerInto (aRegistry);
+    VesXmlBuilder.builder ()
+                 .vesID (VID_UBL_25_TENDERSTATUSREQUEST)
+                 .displayName ("UBL Tender Status Request " + VERSION_25)
+                 .notDeprecated ()
+                 .addXSD (UBL25Marshaller.getAllTenderStatusRequestXSDs ())
+                 .registerInto (aRegistry);
+    VesXmlBuilder.builder ()
+                 .vesID (VID_UBL_25_TENDERWITHDRAWAL)
+                 .displayName ("UBL Tender Withdrawal " + VERSION_25)
+                 .notDeprecated ()
+                 .addXSD (UBL25Marshaller.getAllTenderWithdrawalXSDs ())
+                 .registerInto (aRegistry);
+    VesXmlBuilder.builder ()
+                 .vesID (VID_UBL_25_TRADEITEMLOCATIONPROFILE)
+                 .displayName ("UBL Trade Item Location Profile " + VERSION_25)
+                 .notDeprecated ()
+                 .addXSD (UBL25Marshaller.getAllTradeItemLocationProfileXSDs ())
+                 .registerInto (aRegistry);
+    VesXmlBuilder.builder ()
+                 .vesID (VID_UBL_25_TRANSITCUSTOMSDECLARATION)
+                 .displayName ("UBL Transit Customs Declaration " + VERSION_25)
+                 .notDeprecated ()
+                 .addXSD (UBL25Marshaller.getAllTransitCustomsDeclarationXSDs ())
+                 .registerInto (aRegistry);
+    VesXmlBuilder.builder ()
+                 .vesID (VID_UBL_25_TRANSPORTATIONSTATUS)
+                 .displayName ("UBL Transportation Status " + VERSION_25)
+                 .notDeprecated ()
+                 .addXSD (UBL25Marshaller.getAllTransportationStatusXSDs ())
+                 .registerInto (aRegistry);
+    VesXmlBuilder.builder ()
+                 .vesID (VID_UBL_25_TRANSPORTATIONSTATUSREQUEST)
+                 .displayName ("UBL Transportation Status Request " + VERSION_25)
+                 .notDeprecated ()
+                 .addXSD (UBL25Marshaller.getAllTransportationStatusRequestXSDs ())
+                 .registerInto (aRegistry);
+    VesXmlBuilder.builder ()
+                 .vesID (VID_UBL_25_TRANSPORTEXECUTIONPLAN)
+                 .displayName ("UBL Transport Execution Plan " + VERSION_25)
+                 .notDeprecated ()
+                 .addXSD (UBL25Marshaller.getAllTransportExecutionPlanXSDs ())
+                 .registerInto (aRegistry);
+    VesXmlBuilder.builder ()
+                 .vesID (VID_UBL_25_TRANSPORTEXECUTIONPLANREQUEST)
+                 .displayName ("UBL Transport Execution Plan Request " + VERSION_25)
+                 .notDeprecated ()
+                 .addXSD (UBL25Marshaller.getAllTransportExecutionPlanRequestXSDs ())
+                 .registerInto (aRegistry);
+    VesXmlBuilder.builder ()
+                 .vesID (VID_UBL_25_TRANSPORTPROGRESSSTATUS)
+                 .displayName ("UBL Transport Progress Status " + VERSION_25)
+                 .notDeprecated ()
+                 .addXSD (UBL25Marshaller.getAllTransportProgressStatusXSDs ())
+                 .registerInto (aRegistry);
+    VesXmlBuilder.builder ()
+                 .vesID (VID_UBL_25_TRANSPORTPROGRESSSTATUSREQUEST)
+                 .displayName ("UBL Transport Progress Status Request " + VERSION_25)
+                 .notDeprecated ()
+                 .addXSD (UBL25Marshaller.getAllTransportProgressStatusRequestXSDs ())
+                 .registerInto (aRegistry);
+    VesXmlBuilder.builder ()
+                 .vesID (VID_UBL_25_TRANSPORTSERVICEDESCRIPTION)
+                 .displayName ("UBL Transport Service Description " + VERSION_25)
+                 .notDeprecated ()
+                 .addXSD (UBL25Marshaller.getAllTransportServiceDescriptionXSDs ())
+                 .registerInto (aRegistry);
+    VesXmlBuilder.builder ()
+                 .vesID (VID_UBL_25_TRANSPORTSERVICEDESCRIPTIONREQUEST)
+                 .displayName ("UBL Transport Service Description Request " + VERSION_25)
+                 .notDeprecated ()
+                 .addXSD (UBL25Marshaller.getAllTransportServiceDescriptionRequestXSDs ())
+                 .registerInto (aRegistry);
+    VesXmlBuilder.builder ()
+                 .vesID (VID_UBL_25_UNAWARDEDNOTIFICATION)
+                 .displayName ("UBL Unawarded Notification " + VERSION_25)
+                 .notDeprecated ()
+                 .addXSD (UBL25Marshaller.getAllUnawardedNotificationXSDs ())
+                 .registerInto (aRegistry);
+    VesXmlBuilder.builder ()
+                 .vesID (VID_UBL_25_UNSUBSCRIBEFROMPROCEDUREREQUEST)
+                 .displayName ("UBL Unsubscribe From Procedure Request " + VERSION_25)
+                 .notDeprecated ()
+                 .addXSD (UBL25Marshaller.getAllUnsubscribeFromProcedureRequestXSDs ())
+                 .registerInto (aRegistry);
+    VesXmlBuilder.builder ()
+                 .vesID (VID_UBL_25_UNSUBSCRIBEFROMPROCEDURERESPONSE)
+                 .displayName ("UBL Unsubscribe From Procedure Response " + VERSION_25)
+                 .notDeprecated ()
+                 .addXSD (UBL25Marshaller.getAllUnsubscribeFromProcedureResponseXSDs ())
+                 .registerInto (aRegistry);
+    VesXmlBuilder.builder ()
+                 .vesID (VID_UBL_25_UTILITYSTATEMENT)
+                 .displayName ("UBL Utility Statement " + VERSION_25)
+                 .notDeprecated ()
+                 .addXSD (UBL25Marshaller.getAllUtilityStatementXSDs ())
+                 .registerInto (aRegistry);
+    VesXmlBuilder.builder ()
+                 .vesID (VID_UBL_25_WASTEMOVEMENT)
+                 .displayName ("UBL Waste Movement " + VERSION_25)
+                 .notDeprecated ()
+                 .addXSD (UBL25Marshaller.getAllWasteMovementXSDs ())
+                 .registerInto (aRegistry);
+    VesXmlBuilder.builder ()
+                 .vesID (VID_UBL_25_WASTENOTIFICATION)
+                 .displayName ("UBL Waste Notification " + VERSION_25)
+                 .notDeprecated ()
+                 .addXSD (UBL25Marshaller.getAllWasteNotificationXSDs ())
+                 .registerInto (aRegistry);
+    VesXmlBuilder.builder ()
+                 .vesID (VID_UBL_25_WAYBILL)
+                 .displayName ("UBL Waybill " + VERSION_25)
+                 .notDeprecated ()
+                 .addXSD (UBL25Marshaller.getAllWaybillXSDs ())
+                 .registerInto (aRegistry);
+    VesXmlBuilder.builder ()
+                 .vesID (VID_UBL_25_WEIGHTSTATEMENT)
+                 .displayName ("UBL Weight Statement " + VERSION_25)
+                 .notDeprecated ()
+                 .addXSD (UBL25Marshaller.getAllWeightStatementXSDs ())
+                 .registerInto (aRegistry);
+    VesXmlBuilder.builder ()
+                 .vesID (VID_UBL_25_WORKREPORT)
+                 .displayName ("UBL Work Report " + VERSION_25)
+                 .notDeprecated ()
+                 .addXSD (UBL25Marshaller.getAllWorkReportXSDs ())
                  .registerInto (aRegistry);
   }
 }
