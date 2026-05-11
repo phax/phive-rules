@@ -52,7 +52,20 @@ Provides shared helpers used by all format modules:
 Each `{Format}Validation.java` class:
 1. Defines `GROUP_ID` and version constants
 2. Creates `DVRCoordinate` constants (e.g., `VID_UBL_130`) via `PhiveRulesHelper.createCoordinate()`
-3. Provides `init(IValidationExecutorSetRegistry<IValidationSourceXML>)` to register XSD + Schematron validation executor sets
+3. Provides `init…(IValidationExecutorSetRegistry<IValidationSourceXML>)` that registers each VES via the phive builder:
+   ```java
+   VesXmlBuilder.builder ()
+                .vesID (VID_…)
+                .displayNamePrefix ("…")
+                .addXSD (…)
+                .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aXslt))
+                .registerInto (aRegistry);
+   ```
+   Mark superseded VES with `.deprecated ()`. SPI registration is wired through `…ValidationSPI` classes that delegate to these `init…` methods.
+
+### Naming new VES Coordinates
+
+When adding a new module or a new VES coordinate, follow the **DVR Coordinate naming conventions** in `../ph-diver/README.md` (section "Naming Best Practices for Group ID and Artefact ID"): reverse-DNS lowercase Group IDs rooted on the owner (ISO country code, `org.`, `un.`, `eu.`, or reverse domain); lowercase kebab-case Artefact IDs that describe the artefact itself with no version number embedded; keep IDs stable across releases so pseudo-versions (`latest`, `latest-release`) work. Existing modules (`eu.cen.en16931`, `de.xrechnung`, `at.ebinterface`, `nl.setu`, `hu.gov.nav.osa`, `tr.efatura`, …) demonstrate the expected style.
 
 ### Key Dependencies
 
@@ -85,4 +98,4 @@ Validation rules are pre-compiled: `.sch` → `.xslt` via `ph-schematron-maven-p
 
 ## Packaging
 
-All modules produce OSGi bundles (`<packaging>bundle</packaging>`) with `Automatic-Module-Name` for Java 9+ module system compatibility.
+All format modules produce plain JARs (`<packaging>jar</packaging>`). OSGi bundling was removed in v4.3.1.
