@@ -27,6 +27,7 @@ This project is divided into sub-projects each keeping tracking of one document 
 * phive-rules-isdoc - Validation rules for ISDOC (since v2.0.2)
 * phive-rules-ksef - Validation rules for Polish KSeF (since v4.0.2)
 * phive-rules-oioubl - Validation rules for Danish OIOUBL
+* phive-rules-osa - Validation rules for Hungarian NAV Online Számla (OSA) v2.0 and v3.0 (since v4.3.2)
 * phive-rules-peppol - the Peppol specific rules - always the latest two rule sets
 * phive-rules-peppol-legacy - older Peppol specific rules that are out of date (since v2.0.5)
 * phive-rules-peppol-italy - Peppol Italy specific rules (since v2.1.1)
@@ -141,6 +142,12 @@ Add the following to your `pom.xml` to use this artifact, replacing `x.y.z` with
 
 <dependency>
   <groupId>com.helger.phive.rules</groupId>
+  <artifactId>phive-rules-osa</artifactId>
+  <version>x.y.z</version>
+</dependency>
+
+<dependency>
+  <groupId>com.helger.phive.rules</groupId>
   <artifactId>phive-rules-peppol</artifactId>
   <version>x.y.z</version>
 </dependency>
@@ -237,6 +244,10 @@ As OpenPeppol is only changing the "micro" version part (3.0.x), whereas I start
 I hope that with the introduction of PINT, the versioning problem will be solved.
 
 # News and noteworthy
+
+v4.3.2 - work in progress
+* Added new submodule `phive-rules-osa` for Hungarian NAV Online Számla (OSA) v2.0 and v3.0 XSD validation. See [#64](https://github.com/phax/phive-rules/issues/64) - thx @krisraich
+    * VES coordinates `hu.gov.nav.osa:invoiceData:2.0`, `hu.gov.nav.osa:invoiceAnnulment:2.0`, `hu.gov.nav.osa:invoiceData:3.0` and `hu.gov.nav.osa:invoiceAnnulment:3.0`
 
 v4.3.1 - 2026-05-09
 * Removed OSGI bundling

@@ -194,6 +194,11 @@
       </dependency>
       <dependency>
         <groupId>com.helger.phive.rules</groupId>
+        <artifactId>phive-rules-osa</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.helger.phive.rules</groupId>
         <artifactId>phive-rules-peppol-legacy</artifactId>
         <version>${project.version}</version>
       </dependency>
@@ -279,6 +284,7 @@
     <module>phive-rules-isdoc</module>
     <module>phive-rules-ksef</module>
     <module>phive-rules-oioubl</module>
+    <module>phive-rules-osa</module>
     <module>phive-rules-peppol-legacy</module>
     <module>phive-rules-peppol</module>
     <module>phive-rules-peppol-italy</module>
