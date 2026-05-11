@@ -39,18 +39,18 @@ public final class OSAValidation
 
   // v2.0
   public static final DVRCoordinate VID_OSA_INVOICE_DATA_20 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                 "invoiceData",
+                                                                                                 "invoice-data",
                                                                                                  "2.0");
   public static final DVRCoordinate VID_OSA_INVOICE_ANNULMENT_20 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                      "invoiceAnnulment",
+                                                                                                      "invoice-annulment",
                                                                                                       "2.0");
 
   // v3.0
   public static final DVRCoordinate VID_OSA_INVOICE_DATA_30 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                 "invoiceData",
+                                                                                                 "invoice-data",
                                                                                                  "3.0");
   public static final DVRCoordinate VID_OSA_INVOICE_ANNULMENT_30 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                      "invoiceAnnulment",
+                                                                                                      "invoice-annulment",
                                                                                                       "3.0");
 
   private OSAValidation ()
