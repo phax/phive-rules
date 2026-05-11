@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    ============================================================
+    PINT-OM Sample : ImportRCM-Royalties.xml
+    Scenario       : Import RCM - Royalty Payment
+    Bitmap         : 1XXXXXXX1XXXXXXXXXXX
+    Decoded        : FullTax, ImportRCM
+    Doc type code  : 380  (Commercial / Tax invoice)
+    Description    :
+      Royalty paid to a foreign IP holder for use of a brand.
+      Reverse-charged.
+    Notes          : Inline comments below mark each business-
+                     rule-relevant section.  All schemeID, listID
+                     and unitCode attribute values are preserved.
+    See            : docs/SCENARIOS.md for the master scope table.
+    ============================================================
+-->
+<Invoice xmlns="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2"
+	xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+	xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<!-- =================  Document metadata  ================= -->
+	<cbc:CustomizationID>urn:peppol:pint:billing-1@om-1</cbc:CustomizationID>
+	<cbc:ProfileID>urn:peppol:pint:billing</cbc:ProfileID>
+	<cbc:ID>OM-IRCM-ROY-2026-107</cbc:ID>
+	<cbc:UUID>f12f329f-6430-4399-b661-7c5cd9c3a9e6</cbc:UUID>
+	<cbc:IssueDate>2026-02-06</cbc:IssueDate>
+	<cbc:IssueTime>07:54:00</cbc:IssueTime>
+	<cbc:DueDate>2026-02-13</cbc:DueDate>
+	<!-- InvoiceTypeCode @name encodes the transaction-type bitmap (BTOM-001). -->
+	<cbc:InvoiceTypeCode name="1XXXXXXX1XXXXXXXXXXX">380</cbc:InvoiceTypeCode>
+	<cbc:Note>Royalty payment - reverse-charged</cbc:Note>
+	<cbc:DocumentCurrencyCode>OMR</cbc:DocumentCurrencyCode>
+	<!-- =================  Supplier (seller)  ================= -->
+	<cac:AccountingSupplierParty>
+		<cac:Party>
+			<cbc:EndpointID schemeID="0248">NL854123456B01</cbc:EndpointID>
+			<cac:PartyIdentification>
+				<cbc:ID schemeName="OTHID">OTHID-001</cbc:ID>
+			</cac:PartyIdentification>
+			<cac:PostalAddress>
+				<cbc:StreetName>Herengracht 401</cbc:StreetName>
+				<cbc:AdditionalStreetName>Herengracht 401</cbc:AdditionalStreetName>
+				<cbc:CityName>Amsterdam</cbc:CityName>
+				<cbc:PostalZone>1017 BP</cbc:PostalZone>
+				<cac:AddressLine>
+					<cbc:Line>P.O. Box -</cbc:Line>
+				</cac:AddressLine>
+				<cac:Country>
+					<cbc:IdentificationCode>NL</cbc:IdentificationCode>
+				</cac:Country>
+			</cac:PostalAddress>
+			<cac:PartyLegalEntity>
+				<cbc:RegistrationName>Brand IP Holdings BV</cbc:RegistrationName>
+			</cac:PartyLegalEntity>
+			<cac:Contact>
+				<cbc:Telephone>+968 24000000</cbc:Telephone>
+			</cac:Contact>
+		</cac:Party>
+	</cac:AccountingSupplierParty>
+	<!-- =================  Customer (buyer)   ================= -->
+	<cac:AccountingCustomerParty>
+		<cac:Party>
+			<cbc:EndpointID schemeID="0248">OM9988776655</cbc:EndpointID>
+			<cac:PostalAddress>
+				<cbc:StreetName>Al Khuwair, Block 14</cbc:StreetName>
+				<cbc:AdditionalStreetName>Al Khuwair, Block 14</cbc:AdditionalStreetName>
+				<cbc:CityName>Muscat</cbc:CityName>
+				<cbc:PostalZone>0133</cbc:PostalZone>
+				<cac:AddressLine>
+					<cbc:Line>P.O. Box 445</cbc:Line>
+				</cac:AddressLine>
+				<cac:Country>
+					<cbc:IdentificationCode>OM</cbc:IdentificationCode>
+				</cac:Country>
+			</cac:PostalAddress>
+			<cac:PartyTaxScheme>
+				<cbc:CompanyID>OM9988776655</cbc:CompanyID>
+				<cac:TaxScheme>
+					<cbc:ID>VAT</cbc:ID>
+				</cac:TaxScheme>
+			</cac:PartyTaxScheme>
+			<cac:PartyLegalEntity>
+				<cbc:RegistrationName>Khimji Ramdas LLC</cbc:RegistrationName>
+			</cac:PartyLegalEntity>
+			<cac:Contact>
+				<cbc:Telephone>+968 24000000</cbc:Telephone>
+			</cac:Contact>
+		</cac:Party>
+	</cac:AccountingCustomerParty>
+	<!-- =================  Delivery            ================= -->
+	<cac:Delivery>
+		<cac:DeliveryLocation>
+			<cac:Address>
+				<cac:Country>
+					<cbc:IdentificationCode>OM</cbc:IdentificationCode>
+				</cac:Country>
+			</cac:Address>
+		</cac:DeliveryLocation>
+	</cac:Delivery>
+	<!-- =================  Payment means     ================= -->
+	<cac:PaymentMeans>
+		<cbc:PaymentMeansCode name="Credit Transfer">30</cbc:PaymentMeansCode>
+		<cbc:PaymentID>PMT-001</cbc:PaymentID>
+		<cac:PayeeFinancialAccount>
+			<cbc:ID schemeID="IBAN">OM810010000000123456</cbc:ID>
+			<cbc:Name>Bank Muscat</cbc:Name>
+			<cac:FinancialInstitutionBranch>
+				<cbc:ID>BMUSOMRX</cbc:ID>
+			</cac:FinancialInstitutionBranch>
+		</cac:PayeeFinancialAccount>
+	</cac:PaymentMeans>
+	<!-- =================  Payment terms     ================= -->
+	<cac:PaymentTerms>
+		<cbc:Note>Quarterly, EUR invoice</cbc:Note>
+	</cac:PaymentTerms>
+	<!-- =================  Tax total          ================= -->
+	<cac:TaxTotal>
+		<cbc:TaxAmount currencyID="OMR">925</cbc:TaxAmount>
+		<cbc:TaxIncludedIndicator>false</cbc:TaxIncludedIndicator>
+		<cac:TaxSubtotal>
+			<cbc:TaxableAmount currencyID="OMR">18500</cbc:TaxableAmount>
+			<cbc:TaxAmount currencyID="OMR">925</cbc:TaxAmount>
+			<cac:TaxCategory>
+				<cbc:ID>S</cbc:ID>
+				<cbc:Percent>5</cbc:Percent>
+				<cac:TaxScheme>
+					<cbc:ID>VAT</cbc:ID>
+				</cac:TaxScheme>
+			</cac:TaxCategory>
+		</cac:TaxSubtotal>
+	</cac:TaxTotal>
+	<!-- =================  Legal monetary total ================= -->
+	<cac:LegalMonetaryTotal>
+		<cbc:LineExtensionAmount currencyID="OMR">18500</cbc:LineExtensionAmount>
+		<cbc:TaxExclusiveAmount currencyID="OMR">18500</cbc:TaxExclusiveAmount>
+		<cbc:TaxInclusiveAmount currencyID="OMR">19425</cbc:TaxInclusiveAmount>
+		<cbc:PayableAmount currencyID="OMR">19425</cbc:PayableAmount>
+	</cac:LegalMonetaryTotal>
+	<!-- =================  Invoice lines      ================= -->
+	<!-- Line 1: Royalty - reverse-charged. -->
+	<cac:InvoiceLine>
+		<cbc:ID>1</cbc:ID>
+		<cbc:InvoicedQuantity unitCode="EA">1</cbc:InvoicedQuantity>
+		<cbc:LineExtensionAmount currencyID="OMR">18500</cbc:LineExtensionAmount>
+		<cac:Item>
+			<cbc:Name>Q1 2026 royalty - 4% of net sales</cbc:Name>
+			<cac:CommodityClassification>
+				<cbc:NatureCode>S</cbc:NatureCode>
+				<cbc:ItemClassificationCode listID="HS">840110000000</cbc:ItemClassificationCode>
+			</cac:CommodityClassification>
+			<cac:ClassifiedTaxCategory>
+				<cbc:ID>S</cbc:ID>
+				<cbc:Percent>5</cbc:Percent>
+				<cac:TaxScheme>
+					<cbc:ID>VAT</cbc:ID>
+				</cac:TaxScheme>
+			</cac:ClassifiedTaxCategory>
+		</cac:Item>
+		<cac:Price>
+			<cbc:PriceAmount currencyID="OMR">18500</cbc:PriceAmount>
+			<cbc:BaseQuantity unitCode="EA">1</cbc:BaseQuantity>
+		</cac:Price>
+		<cac:ItemPriceExtension>
+			<cbc:Amount currencyID="OMR">19425</cbc:Amount>
+			<cac:TaxTotal>
+				<cbc:TaxAmount currencyID="OMR">925</cbc:TaxAmount>
+			</cac:TaxTotal>
+		</cac:ItemPriceExtension>
+	</cac:InvoiceLine>
+</Invoice>

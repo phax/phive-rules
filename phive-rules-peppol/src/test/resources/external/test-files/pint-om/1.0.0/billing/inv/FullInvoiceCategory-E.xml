@@ -11,7 +11,7 @@
 	<cbc:IssueDate>2025-02-06</cbc:IssueDate>
 	<cbc:IssueTime>07:54:00</cbc:IssueTime>
 	<cbc:DueDate>2025-02-13</cbc:DueDate>
-	<cbc:InvoiceTypeCode name="10000000000000000000">380</cbc:InvoiceTypeCode>
+	<cbc:InvoiceTypeCode name="1XXXXXXXXXXXXXXXXXXX">380</cbc:InvoiceTypeCode>
 	<cbc:Note>Tax invoice</cbc:Note>
 	<cbc:TaxPointDate>2025-01-30</cbc:TaxPointDate>
 	<cbc:DocumentCurrencyCode>OMR</cbc:DocumentCurrencyCode>
@@ -36,7 +36,8 @@
 		<cbc:ID>REC-1000</cbc:ID>
 	</cac:ReceiptDocumentReference>
 	<cac:OriginatorDocumentReference>
-		<cbc:ID>PO-OM-220</cbc:ID>
+		<cbc:ID>01TEST</cbc:ID>
+		<cbc:UUID>r12f329f-6430-4300-a661-7c5cd9c3a9e6</cbc:UUID>
 	</cac:OriginatorDocumentReference>
 	<cac:AdditionalDocumentReference>
 		<cbc:ID>BT-122</cbc:ID>
@@ -58,7 +59,7 @@
 	<cac:AccountingSupplierParty>
 		<cbc:AdditionalAccountID>f12f329f-6430-4399-b661-7c5cd9c3a9e6</cbc:AdditionalAccountID>
 		<cac:Party>
-			<cbc:EndpointID schemeID="0235">1987654321</cbc:EndpointID>
+			<cbc:EndpointID schemeID="0248">1987654321</cbc:EndpointID>
 			<cac:PartyIdentification>
 				<cbc:ID schemeName="OTHID">12345678</cbc:ID>
 			</cac:PartyIdentification>
@@ -66,14 +67,14 @@
 				<cbc:Name>Party Trade Name</cbc:Name>
 			</cac:PartyName>
 			<cac:PostalAddress>
-				<cbc:StreetName>Street Name</cbc:StreetName>
-				<cbc:AdditionalStreetName>Street Name</cbc:AdditionalStreetName>
-				<cbc:CityName>City</cbc:CityName>
+				<cbc:StreetName>Way 2317, Building 192</cbc:StreetName>
+				<cbc:AdditionalStreetName>Way 2317, Building 192</cbc:AdditionalStreetName>
+				<cbc:CityName>Muscat</cbc:CityName>
 				<cbc:PostalZone>1111</cbc:PostalZone>
 				<cbc:CountrySubentity>CS</cbc:CountrySubentity>
 				<cbc:CountrySubentityCode>SHRFZ</cbc:CountrySubentityCode>
 				<cac:AddressLine>
-					<cbc:Line>Line</cbc:Line>
+					<cbc:Line>P.O. Box 192</cbc:Line>
 				</cac:AddressLine>
 				<cac:Country>
 					<cbc:IdentificationCode>OM</cbc:IdentificationCode>
@@ -86,12 +87,12 @@
 				</cac:TaxScheme>
 			</cac:PartyTaxScheme>
 			<cac:PartyLegalEntity>
-				<cbc:RegistrationName>Supplier Legal Name</cbc:RegistrationName>
+				<cbc:RegistrationName>Oman Trading Company LLC</cbc:RegistrationName>
 				<cbc:CompanyID>112345678900003</cbc:CompanyID>
-				<cbc:CompanyLegalForm>Merchant</cbc:CompanyLegalForm>
+				<cbc:CompanyLegalForm>Limited Liability Company</cbc:CompanyLegalForm>
 			</cac:PartyLegalEntity>
 			<cac:Contact>
-				<cbc:Name>Contact Name</cbc:Name>
+				<cbc:Name>Ahmed Al-Balushi</cbc:Name>
 				<cbc:Telephone>Telephone number</cbc:Telephone>
 				<cbc:ElectronicMail>Email address</cbc:ElectronicMail>
 			</cac:Contact>
@@ -99,7 +100,7 @@
 	</cac:AccountingSupplierParty>
 	<cac:AccountingCustomerParty>
 		<cac:Party>
-			<cbc:EndpointID schemeID="0235">1345678901</cbc:EndpointID>
+			<cbc:EndpointID schemeID="0248">1345678901</cbc:EndpointID>
 			<cac:PartyIdentification>
 				<cbc:ID schemeName="OTHID">12345678</cbc:ID>
 			</cac:PartyIdentification>
@@ -107,14 +108,14 @@
 				<cbc:Name>Buyer Trade Name</cbc:Name>
 			</cac:PartyName>
 			<cac:PostalAddress>
-				<cbc:StreetName>Street Name</cbc:StreetName>
-				<cbc:AdditionalStreetName>Street Name</cbc:AdditionalStreetName>
-				<cbc:CityName>City</cbc:CityName>
+				<cbc:StreetName>Way 2317, Building 192</cbc:StreetName>
+				<cbc:AdditionalStreetName>Way 2317, Building 192</cbc:AdditionalStreetName>
+				<cbc:CityName>Muscat</cbc:CityName>
 				<cbc:PostalZone>1111</cbc:PostalZone>
 				<cbc:CountrySubentity>CS</cbc:CountrySubentity>
 				<cbc:CountrySubentityCode>SEZAD</cbc:CountrySubentityCode>
 				<cac:AddressLine>
-					<cbc:Line>Line</cbc:Line>
+					<cbc:Line>P.O. Box 192</cbc:Line>
 				</cac:AddressLine>
 				<cac:Country>
 					<cbc:IdentificationCode>OM</cbc:IdentificationCode>
@@ -131,7 +132,7 @@
 				<cbc:CompanyID>112345679000001</cbc:CompanyID>
 			</cac:PartyLegalEntity>
 			<cac:Contact>
-				<cbc:Name>Contact Name</cbc:Name>
+				<cbc:Name>Ahmed Al-Balushi</cbc:Name>
 				<cbc:Telephone>Telephone number</cbc:Telephone>
 				<cbc:ElectronicMail>Email address</cbc:ElectronicMail>
 			</cac:Contact>
@@ -142,14 +143,14 @@
 			<cbc:Name>TaxRepresentative Party Name</cbc:Name>
 		</cac:PartyName>
 		<cac:PostalAddress>
-			<cbc:StreetName>Street Name</cbc:StreetName>
-			<cbc:AdditionalStreetName>Street Name</cbc:AdditionalStreetName>
-			<cbc:CityName>City</cbc:CityName>
+			<cbc:StreetName>Way 2317, Building 192</cbc:StreetName>
+			<cbc:AdditionalStreetName>Way 2317, Building 192</cbc:AdditionalStreetName>
+			<cbc:CityName>Muscat</cbc:CityName>
 			<cbc:PostalZone>1111</cbc:PostalZone>
 			<cbc:CountrySubentity>CS</cbc:CountrySubentity>
 			<cbc:CountrySubentityCode>Test</cbc:CountrySubentityCode>
 			<cac:AddressLine>
-				<cbc:Line>Line</cbc:Line>
+				<cbc:Line>P.O. Box 192</cbc:Line>
 			</cac:AddressLine>
 			<cac:Country>
 				<cbc:IdentificationCode>OM</cbc:IdentificationCode>
@@ -165,16 +166,16 @@
 	<cac:Delivery>
 		<cbc:ActualDeliveryDate>2025-02-13</cbc:ActualDeliveryDate>
 		<cac:DeliveryLocation>
-			<cbc:ID schemeID="0235">12345678</cbc:ID>
+			<cbc:ID schemeID="0248">12345678</cbc:ID>
 			<cac:Address>
-				<cbc:StreetName>Street Name</cbc:StreetName>
-				<cbc:AdditionalStreetName>Street Name</cbc:AdditionalStreetName>
-				<cbc:CityName>City</cbc:CityName>
+				<cbc:StreetName>Way 2317, Building 192</cbc:StreetName>
+				<cbc:AdditionalStreetName>Way 2317, Building 192</cbc:AdditionalStreetName>
+				<cbc:CityName>Muscat</cbc:CityName>
 				<cbc:PostalZone>1111</cbc:PostalZone>
 				<cbc:CountrySubentity>CS</cbc:CountrySubentity>
 				<cbc:CountrySubentityCode>Test</cbc:CountrySubentityCode>
 				<cac:AddressLine>
-					<cbc:Line>Line</cbc:Line>
+					<cbc:Line>P.O. Box 192</cbc:Line>
 				</cac:AddressLine>
 				<cac:Country>
 					<cbc:IdentificationCode>OM</cbc:IdentificationCode>
@@ -211,14 +212,14 @@
 			<cac:FinancialInstitutionBranch>
 				<cbc:ID>OMBSTREWX</cbc:ID>
 				<cac:Address>
-					<cbc:StreetName>Street Name</cbc:StreetName>
-					<cbc:AdditionalStreetName>Street Name</cbc:AdditionalStreetName>
-					<cbc:CityName>City</cbc:CityName>
+					<cbc:StreetName>Way 2317, Building 192</cbc:StreetName>
+					<cbc:AdditionalStreetName>Way 2317, Building 192</cbc:AdditionalStreetName>
+					<cbc:CityName>Muscat</cbc:CityName>
 					<cbc:PostalZone>1111</cbc:PostalZone>
 					<cbc:CountrySubentity>CS</cbc:CountrySubentity>
 					<cbc:CountrySubentityCode>Test</cbc:CountrySubentityCode>
 					<cac:AddressLine>
-						<cbc:Line>Line</cbc:Line>
+						<cbc:Line>P.O. Box 192</cbc:Line>
 					</cac:AddressLine>
 					<cac:Country>
 						<cbc:IdentificationCode>OM</cbc:IdentificationCode>
@@ -338,8 +339,8 @@
 			<cbc:BaseAmount currencyID="OMR">9800</cbc:BaseAmount>
 		</cac:AllowanceCharge>
 		<cac:Item>
-			<cbc:Description>Item Description</cbc:Description>
-			<cbc:Name>Item Name</cbc:Name>
+			<cbc:Description>Centrifugal water pump, 15 kW motor, ISO 9001 certified, including spare seal kit.</cbc:Description>
+			<cbc:Name>Industrial water pump (15 kW)</cbc:Name>
 			<cac:BuyersItemIdentification>
 				<cbc:ID>Purchase goods</cbc:ID>
 			</cac:BuyersItemIdentification>
@@ -353,8 +354,8 @@
 				<cbc:IdentificationCode>OM</cbc:IdentificationCode>
 			</cac:OriginCountry>
 			<cac:CommodityClassification>
-				<cbc:NatureCode>GS</cbc:NatureCode>
-				<cbc:ItemClassificationCode listID="HS">123456789012</cbc:ItemClassificationCode>
+				<cbc:NatureCode>G</cbc:NatureCode>
+				<cbc:ItemClassificationCode listID="HS">010121100001</cbc:ItemClassificationCode>
 			</cac:CommodityClassification>
 			<cac:ClassifiedTaxCategory>
 				<cbc:ID>E</cbc:ID>

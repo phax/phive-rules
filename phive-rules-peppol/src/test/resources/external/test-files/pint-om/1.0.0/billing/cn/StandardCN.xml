@@ -8,7 +8,7 @@
 	<cbc:UUID>f1c9d83d-e31f-43fc-919f-10b961f599e7</cbc:UUID>
 	<cbc:IssueDate>2025-02-07</cbc:IssueDate>
 	<cbc:IssueTime>15:55:00</cbc:IssueTime>
-	<cbc:CreditNoteTypeCode name="10000000000000000000">381</cbc:CreditNoteTypeCode>
+	<cbc:CreditNoteTypeCode name="1XXXXXXXXXXXXXXXXXXX">381</cbc:CreditNoteTypeCode>
 	<cbc:Note>Tax Credit invoice</cbc:Note>
 	<cbc:DocumentCurrencyCode>OMR</cbc:DocumentCurrencyCode>
 	<cbc:AccountingCost>Regular sales</cbc:AccountingCost>
@@ -44,18 +44,18 @@
 	</cac:OriginatorDocumentReference>
 	<cac:AccountingSupplierParty>
 		<cac:Party>
-			<cbc:EndpointID schemeID="0235">1987654321</cbc:EndpointID>
+			<cbc:EndpointID schemeID="0248">1987654321</cbc:EndpointID>
 			<cac:PartyName>
-				<cbc:Name>Seller Trade Name</cbc:Name>
+				<cbc:Name>Salalah Logistics LLC</cbc:Name>
 			</cac:PartyName>
 			<cac:PostalAddress>
-				<cbc:StreetName>Street Name</cbc:StreetName>
-				<cbc:AdditionalStreetName>Street Name</cbc:AdditionalStreetName>
-				<cbc:CityName>City</cbc:CityName>
+				<cbc:StreetName>Al Khuwair Plaza, Office 12</cbc:StreetName>
+				<cbc:AdditionalStreetName>Al Khuwair Plaza, Office 12</cbc:AdditionalStreetName>
+				<cbc:CityName>Sohar</cbc:CityName>
 				<cbc:PostalZone>1111</cbc:PostalZone>
-				<cbc:CountrySubentity>CS</cbc:CountrySubentity>
+				<cbc:CountrySubentity>MO</cbc:CountrySubentity>
 				<cac:AddressLine>
-					<cbc:Line>Line</cbc:Line>
+					<cbc:Line>P.O. Box 1500</cbc:Line>
 				</cac:AddressLine>
 				<cac:Country>
 					<cbc:IdentificationCode>OM</cbc:IdentificationCode>
@@ -68,31 +68,31 @@
 				</cac:TaxScheme>
 			</cac:PartyTaxScheme>
 			<cac:PartyLegalEntity>
-				<cbc:RegistrationName>Supplier Legal Name</cbc:RegistrationName>
+				<cbc:RegistrationName>Salalah Logistics LLC</cbc:RegistrationName>
 				<cbc:CompanyID>112345678900003</cbc:CompanyID>
-				<cbc:CompanyLegalForm>Merchant</cbc:CompanyLegalForm>
+				<cbc:CompanyLegalForm>Sole Proprietorship</cbc:CompanyLegalForm>
 			</cac:PartyLegalEntity>
 			<cac:Contact>
-				<cbc:Name>Contact Name</cbc:Name>
-				<cbc:Telephone>Contact Number</cbc:Telephone>
+				<cbc:Name>Mohammed Al-Harthy</cbc:Name>
+				<cbc:Telephone>+96826112233</cbc:Telephone>
 				<cbc:ElectronicMail>Email address</cbc:ElectronicMail>
 			</cac:Contact>
 		</cac:Party>
 	</cac:AccountingSupplierParty>
 	<cac:AccountingCustomerParty>
 		<cac:Party>
-			<cbc:EndpointID schemeID="0235">1345678901</cbc:EndpointID>
+			<cbc:EndpointID schemeID="0248">1345678901</cbc:EndpointID>
 			<cac:PartyName>
 				<cbc:Name>Buyer Trade Name</cbc:Name>
 			</cac:PartyName>
 			<cac:PostalAddress>
-				<cbc:StreetName>Street Name</cbc:StreetName>
-				<cbc:AdditionalStreetName>Street Name</cbc:AdditionalStreetName>
-				<cbc:CityName>City</cbc:CityName>
+				<cbc:StreetName>Al Khuwair Plaza, Office 12</cbc:StreetName>
+				<cbc:AdditionalStreetName>Al Khuwair Plaza, Office 12</cbc:AdditionalStreetName>
+				<cbc:CityName>Sohar</cbc:CityName>
 				<cbc:PostalZone>2222</cbc:PostalZone>
-				<cbc:CountrySubentity>CS</cbc:CountrySubentity>
+				<cbc:CountrySubentity>MO</cbc:CountrySubentity>
 				<cac:AddressLine>
-					<cbc:Line>Line</cbc:Line>
+					<cbc:Line>P.O. Box 1500</cbc:Line>
 				</cac:AddressLine>
 				<cac:Country>
 					<cbc:IdentificationCode>OM</cbc:IdentificationCode>
@@ -105,12 +105,12 @@
 				</cac:TaxScheme>
 			</cac:PartyTaxScheme>
 			<cac:PartyLegalEntity>
-				<cbc:RegistrationName>Buyer Legal Name</cbc:RegistrationName>
+				<cbc:RegistrationName>Mazoon Holdings SAOC</cbc:RegistrationName>
 				<cbc:CompanyID>112345679000001</cbc:CompanyID>
 			</cac:PartyLegalEntity>
 			<cac:Contact>
-				<cbc:Name>Contact Name</cbc:Name>
-				<cbc:Telephone>Contact Number</cbc:Telephone>
+				<cbc:Name>Mohammed Al-Harthy</cbc:Name>
+				<cbc:Telephone>+96826112233</cbc:Telephone>
 				<cbc:ElectronicMail>Email address</cbc:ElectronicMail>
 			</cac:Contact>
 		</cac:Party>
@@ -161,7 +161,7 @@
 		<cbc:TaxIncludedIndicator>false</cbc:TaxIncludedIndicator>
 		<cac:TaxSubtotal>
 			<cbc:TaxableAmount currencyID="OMR">10643.29</cbc:TaxableAmount>
-			<cbc:TaxAmount currencyID="OMR">532.1645</cbc:TaxAmount>
+			<cbc:TaxAmount currencyID="OMR">532.165</cbc:TaxAmount>
 			<cac:TaxCategory>
 				<cbc:ID>S</cbc:ID>
 				<cbc:Percent>5</cbc:Percent>
@@ -212,8 +212,8 @@
 			<cbc:BaseAmount currencyID="OMR">9800</cbc:BaseAmount>
 		</cac:AllowanceCharge>
 		<cac:Item>
-			<cbc:Description>Item Description</cbc:Description>
-			<cbc:Name>Item Name</cbc:Name>
+			<cbc:Description>Hot-rolled deformed steel reinforcement bar, 12 mm dia, 12 m length, grade B500B.</cbc:Description>
+			<cbc:Name>Construction steel rebar 12 mm</cbc:Name>
 			<cac:BuyersItemIdentification>
 				<cbc:ID>Buyer Item Identification</cbc:ID>
 			</cac:BuyersItemIdentification>
@@ -224,8 +224,8 @@
 				<cbc:IdentificationCode>OM</cbc:IdentificationCode>
 			</cac:OriginCountry>
 			<cac:CommodityClassification>
-				<cbc:NatureCode>GS</cbc:NatureCode>
-				<cbc:ItemClassificationCode listID="HS">123456789012</cbc:ItemClassificationCode>
+				<cbc:NatureCode>G</cbc:NatureCode>
+				<cbc:ItemClassificationCode listID="HS">010121100001</cbc:ItemClassificationCode>
 			</cac:CommodityClassification>
 			<cac:ClassifiedTaxCategory>
 				<cbc:ID>S</cbc:ID>

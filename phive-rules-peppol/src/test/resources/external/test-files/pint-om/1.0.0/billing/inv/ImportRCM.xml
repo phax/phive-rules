@@ -11,7 +11,7 @@
 	<cbc:IssueDate>2025-02-06</cbc:IssueDate>
 	<cbc:IssueTime>07:54:00</cbc:IssueTime>
 	<cbc:DueDate>2025-02-13</cbc:DueDate>
-	<cbc:InvoiceTypeCode name="10000000100000000000">380</cbc:InvoiceTypeCode>
+	<cbc:InvoiceTypeCode name="1XXXXXXX1XXXXXXXXXXX">380</cbc:InvoiceTypeCode>
 	<cbc:DocumentCurrencyCode>OMR</cbc:DocumentCurrencyCode>
 	<cac:InvoicePeriod>
 		<cbc:StartDate>2025-01-01</cbc:StartDate>
@@ -29,17 +29,17 @@
 	</cac:AdditionalDocumentReference>
 	<cac:AccountingSupplierParty>
 		<cac:Party>
-			<cbc:EndpointID schemeID="0235">1987654321</cbc:EndpointID>
+			<cbc:EndpointID schemeID="0248">1987654321</cbc:EndpointID>
 			<cac:PartyIdentification>
 				<cbc:ID schemeName="OTHID">12345678</cbc:ID>
 			</cac:PartyIdentification>
 			<cac:PostalAddress>
-				<cbc:StreetName>Street Name</cbc:StreetName>
-				<cbc:AdditionalStreetName>Street Name</cbc:AdditionalStreetName>
-				<cbc:CityName>City</cbc:CityName>
+				<cbc:StreetName>Way 2317, Building 192</cbc:StreetName>
+				<cbc:AdditionalStreetName>Way 2317, Building 192</cbc:AdditionalStreetName>
+				<cbc:CityName>Muscat</cbc:CityName>
 				<cbc:PostalZone>1111</cbc:PostalZone>
 				<cac:AddressLine>
-					<cbc:Line>Line</cbc:Line>
+					<cbc:Line>P.O. Box 192</cbc:Line>
 				</cac:AddressLine>
 				<cac:Country>
 					<cbc:IdentificationCode>AE</cbc:IdentificationCode>
@@ -52,7 +52,7 @@
 				</cac:TaxScheme>
 			</cac:PartyTaxScheme>
 			<cac:PartyLegalEntity>
-				<cbc:RegistrationName>Supplier Legal Name</cbc:RegistrationName>
+				<cbc:RegistrationName>Oman Trading Company LLC</cbc:RegistrationName>
 			</cac:PartyLegalEntity>
 			<cac:Contact>
 				<cbc:Telephone>Telephone number</cbc:Telephone>
@@ -61,17 +61,17 @@
 	</cac:AccountingSupplierParty>
 	<cac:AccountingCustomerParty>
 		<cac:Party>
-			<cbc:EndpointID schemeID="0235">1345678901</cbc:EndpointID>
+			<cbc:EndpointID schemeID="0248">1345678901</cbc:EndpointID>
 			<cac:PartyIdentification>
 				<cbc:ID schemeName="OTHID">12345678</cbc:ID>
 			</cac:PartyIdentification>
 			<cac:PostalAddress>
-				<cbc:StreetName>Street Name</cbc:StreetName>
-				<cbc:AdditionalStreetName>Street Name</cbc:AdditionalStreetName>
-				<cbc:CityName>City</cbc:CityName>
+				<cbc:StreetName>Way 2317, Building 192</cbc:StreetName>
+				<cbc:AdditionalStreetName>Way 2317, Building 192</cbc:AdditionalStreetName>
+				<cbc:CityName>Muscat</cbc:CityName>
 				<cbc:PostalZone>1111</cbc:PostalZone>
 				<cac:AddressLine>
-					<cbc:Line>Line</cbc:Line>
+					<cbc:Line>P.O. Box 192</cbc:Line>
 				</cac:AddressLine>
 				<cac:Country>
 					<cbc:IdentificationCode>OM</cbc:IdentificationCode>
@@ -199,10 +199,10 @@
 			<cbc:BaseAmount currencyID="OMR">9800</cbc:BaseAmount>
 		</cac:AllowanceCharge>
 		<cac:Item>
-			<cbc:Name>Item Name</cbc:Name>
+			<cbc:Name>Industrial water pump (15 kW)</cbc:Name>
 			<cac:CommodityClassification>
-				<cbc:NatureCode>GS</cbc:NatureCode>
-				<cbc:ItemClassificationCode listID="HS">123456789012</cbc:ItemClassificationCode>
+				<cbc:NatureCode>G</cbc:NatureCode>
+				<cbc:ItemClassificationCode listID="HS">010121100001</cbc:ItemClassificationCode>
 			</cac:CommodityClassification>
 			<cac:ClassifiedTaxCategory>
 				<cbc:ID>S</cbc:ID>

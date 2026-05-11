@@ -1538,20 +1538,34 @@ public final class CTestFiles
                       // "DebitNote.xml" — sample has invalid UBL 2.1 element order
                       "DeemedSupply-2.xml",
                       "DeemedSupply.xml",
+                      "E-Commerce-Apparel.xml",
+                      "E-Commerce-DigitalSubscription.xml",
                       "E-Commerce.xml",
                       "Export.xml",
                       "Exports-2.xml",
+                      "FullInvoice-Mixed-Categories.xml",
                       "FullInvoice.xml",
                       "FullInvoiceCategory-E.xml",
+                      // "GoodsImport-PharmaMixed.xml" — sample has invalid UBL 2.1 element order (cac:DeliveryTerms after cac:Shipment)
+                      // "GoodsImport-Vehicle.xml" — sample has invalid UBL 2.1 element order (cac:DeliveryTerms after cac:Shipment)
                       "GoodsImport.xml",
+                      "ImportRCM-Royalties.xml",
+                      "ImportRCM-Software.xml",
                       "ImportRCM.xml",
                       "MarginScheme.xml",
+                      "Prepayment-Final-Net.xml",
+                      // "Prepayment-Hotel.xml" — sample has invalid UBL 2.1 element order (cac:OriginatorDocumentReference after cac:Delivery)
                       "Prepayment.xml",
                       "ProfitMargin.xml",
-                      "SimplifiedInvoiceCategory-E.xml",
                       "SimplifiedTaxInvoice.xml",
+                      "SpecialZone-SEZAD.xml",
+                      "SpecialZone-SHRFZ.xml",
                       "SpecialZone.xml",
+                      "Summary-Construction.xml",
+                      "Summary-Utilities.xml",
                       "Summary.xml",
+                      "ThirdParty-Marketplace.xml",
+                      "ThirdParty-Recovery.xml",
                       "ThirdParty.xml");
     }
     if (aVESID.equals (PeppolValidationPintOM.VID_OPENPEPPOL_OM_PINT_CREDIT_NOTE_1_0_0))
@@ -1561,6 +1575,7 @@ public final class CTestFiles
     if (aVESID.equals (PeppolValidationPintOM.VID_OPENPEPPOL_OM_PINT_SB_INVOICE_1_0_0))
     {
       return _getAll ("pint-om/1.0.0/selfbilling/inv/",
+                      "ProfitMarginSelfInvoice-Antiques.xml",
                       "ProfitMarginSelfInvoice.xml",
                       "Self-Billing.xml",
                       "SelfBilledInvoice.xml");

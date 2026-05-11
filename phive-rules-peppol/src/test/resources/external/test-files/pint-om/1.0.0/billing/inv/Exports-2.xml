@@ -28,7 +28,7 @@
 	<cbc:IssueDate>2025-02-07</cbc:IssueDate>
 	<cbc:IssueTime>17:31:00</cbc:IssueTime>
 	<cbc:DueDate>2025-02-22</cbc:DueDate>
-	<cbc:InvoiceTypeCode name="10000010000000000000">380</cbc:InvoiceTypeCode>
+	<cbc:InvoiceTypeCode name="1XXXXX1XXXXXXXXXXXXX">380</cbc:InvoiceTypeCode>
 	<cbc:Note>Tax invoice</cbc:Note>
 	<cbc:TaxPointDate>2025-01-31</cbc:TaxPointDate>
 	<cbc:DocumentCurrencyCode>USD</cbc:DocumentCurrencyCode>
@@ -40,25 +40,20 @@
 	<cac:StatementDocumentReference>
 		<cbc:ID>EXP010101234</cbc:ID>
 	</cac:StatementDocumentReference>
-	<cac:AdditionalDocumentReference>
-		<cbc:ID>OMR</cbc:ID>
-		<cbc:DocumentTypeCode>PM_TOTAL</cbc:DocumentTypeCode>
-		<cbc:DocumentDescription>OMR 913621.44</cbc:DocumentDescription>
-	</cac:AdditionalDocumentReference>
 	<cac:AccountingSupplierParty>
 		<cac:Party>
-			<cbc:EndpointID schemeID="0235">1987654321</cbc:EndpointID>
+			<cbc:EndpointID schemeID="0248">1987654321</cbc:EndpointID>
 			<cac:PartyName>
-				<cbc:Name>Seller Trade Name</cbc:Name>
+				<cbc:Name>Salalah Logistics LLC</cbc:Name>
 			</cac:PartyName>
 			<cac:PostalAddress>
-				<cbc:StreetName>Street Name</cbc:StreetName>
-				<cbc:AdditionalStreetName>Street Name</cbc:AdditionalStreetName>
-				<cbc:CityName>City</cbc:CityName>
-				<cbc:PostalZone>1111</cbc:PostalZone>
-				<cbc:CountrySubentity>CS</cbc:CountrySubentity>
+				<cbc:StreetName>Way 2317, Building 192</cbc:StreetName>
+				<cbc:AdditionalStreetName>Al Khuwair</cbc:AdditionalStreetName>
+				<cbc:CityName>Muscat</cbc:CityName>
+				<cbc:PostalZone>133</cbc:PostalZone>
+				<cbc:CountrySubentity>MO</cbc:CountrySubentity>
 				<cac:AddressLine>
-					<cbc:Line>Line</cbc:Line>
+					<cbc:Line>P.O. Box 192</cbc:Line>
 				</cac:AddressLine>
 				<cac:Country>
 					<cbc:IdentificationCode>OM</cbc:IdentificationCode>
@@ -71,14 +66,14 @@
 				</cac:TaxScheme>
 			</cac:PartyTaxScheme>
 			<cac:PartyLegalEntity>
-				<cbc:RegistrationName>Supplier Legal Name</cbc:RegistrationName>
+				<cbc:RegistrationName>Oman Trading Company LLC</cbc:RegistrationName>
 				<cbc:CompanyID>112345678900003</cbc:CompanyID>
-				<cbc:CompanyLegalForm>Merchant</cbc:CompanyLegalForm>
+				<cbc:CompanyLegalForm>Limited Liability Company</cbc:CompanyLegalForm>
 			</cac:PartyLegalEntity>
 			<cac:Contact>
-				<cbc:Name>Contact Name</cbc:Name>
-				<cbc:Telephone>Contact Number</cbc:Telephone>
-				<cbc:ElectronicMail>Email Address</cbc:ElectronicMail>
+				<cbc:Name>Ahmed Al-Balushi</cbc:Name>
+				<cbc:Telephone>+96824123456</cbc:Telephone>
+				<cbc:ElectronicMail>ahmed.balushi@omantrading.example.om</cbc:ElectronicMail>
 			</cac:Contact>
 		</cac:Party>
 	</cac:AccountingSupplierParty>
@@ -89,39 +84,39 @@
 				<cbc:ID schemeName="OTHID">12345678</cbc:ID>
 			</cac:PartyIdentification>
 			<cac:PartyName>
-				<cbc:Name>Buyer Legal Name</cbc:Name>
+				<cbc:Name>Mazoon Holdings SAOC</cbc:Name>
 			</cac:PartyName>
 			<cac:PostalAddress>
-				<cbc:StreetName>Street Name</cbc:StreetName>
-				<cbc:AdditionalStreetName>Street Name</cbc:AdditionalStreetName>
-				<cbc:CityName>City</cbc:CityName>
-				<cbc:PostalZone>1111</cbc:PostalZone>
-				<cbc:CountrySubentity>CS</cbc:CountrySubentity>
+				<cbc:StreetName>123 Collins Street</cbc:StreetName>
+				<cbc:AdditionalStreetName>Level 18</cbc:AdditionalStreetName>
+				<cbc:CityName>Melbourne</cbc:CityName>
+				<cbc:PostalZone>3000</cbc:PostalZone>
+				<cbc:CountrySubentity>VIC</cbc:CountrySubentity>
 				<cac:AddressLine>
-					<cbc:Line>Line</cbc:Line>
+					<cbc:Line>Building 12</cbc:Line>
 				</cac:AddressLine>
 				<cac:Country>
 					<cbc:IdentificationCode>AU</cbc:IdentificationCode>
 				</cac:Country>
 			</cac:PostalAddress>
 			<cac:PartyLegalEntity>
-				<cbc:RegistrationName>Export company</cbc:RegistrationName>
+				<cbc:RegistrationName>Aussie Imports Pty Ltd</cbc:RegistrationName>
 				<cbc:CompanyID>CN0102000001123</cbc:CompanyID>
 			</cac:PartyLegalEntity>
 			<cac:Contact>
-				<cbc:Name>Contact Name</cbc:Name>
-				<cbc:ElectronicMail>Email Address</cbc:ElectronicMail>
+				<cbc:Name>Sarah Johnson</cbc:Name>
+				<cbc:ElectronicMail>sarah.johnson@aussieimports.example.au</cbc:ElectronicMail>
 			</cac:Contact>
 		</cac:Party>
 	</cac:AccountingCustomerParty>
 	<cac:Delivery>
 		<cac:DeliveryLocation>
 			<cac:Address>
-				<cbc:StreetName>mm</cbc:StreetName>
-				<cbc:CityName>333</cbc:CityName>
-				<cbc:CountrySubentity>333</cbc:CountrySubentity>
+				<cbc:StreetName>Port of Melbourne, Berth 4</cbc:StreetName>
+				<cbc:CityName>Melbourne</cbc:CityName>
+				<cbc:CountrySubentity>VIC</cbc:CountrySubentity>
 				<cac:Country>
-					<cbc:IdentificationCode>US</cbc:IdentificationCode>
+					<cbc:IdentificationCode>AU</cbc:IdentificationCode>
 				</cac:Country>
 			</cac:Address>
 		</cac:DeliveryLocation>
@@ -173,11 +168,11 @@
 			<cbc:TaxAmount currencyID="USD">0</cbc:TaxAmount>
 		</cac:TaxTotal>
 		<cac:Item>
-			<cbc:Description>Item Description</cbc:Description>
-			<cbc:Name>Item Name</cbc:Name>
+			<cbc:Description>Frankincense resin, premium grade, packed in 1 kg sealed pouches.</cbc:Description>
+			<cbc:Name>Omani Frankincense (Hojari) - 1 kg</cbc:Name>
 			<cac:CommodityClassification>
-				<cbc:NatureCode>GS</cbc:NatureCode>
-				<cbc:ItemClassificationCode listID="HS" listVersionID="1.0">123456789012</cbc:ItemClassificationCode>
+				<cbc:NatureCode>G</cbc:NatureCode>
+				<cbc:ItemClassificationCode listID="HS" listVersionID="1.0">130190100000</cbc:ItemClassificationCode>
 			</cac:CommodityClassification>
 			<cac:ClassifiedTaxCategory>
 				<cbc:ID>Z</cbc:ID>

@@ -11,7 +11,7 @@
 	<cbc:IssueDate>2025-02-07</cbc:IssueDate>
 	<cbc:IssueTime>07:54:00</cbc:IssueTime>
 	<cbc:DueDate>2025-03-07</cbc:DueDate>
-	<cbc:InvoiceTypeCode name="01000100000000000000">380</cbc:InvoiceTypeCode>
+	<cbc:InvoiceTypeCode name="X1XXX1XXXXXXXXXXXXXX">380</cbc:InvoiceTypeCode>
 	<cbc:Note>Tax invoice</cbc:Note>
 	<cbc:TaxPointDate>2025-01-30</cbc:TaxPointDate>
 	<cbc:DocumentCurrencyCode>OMR</cbc:DocumentCurrencyCode>
@@ -40,18 +40,18 @@
 	</cac:AdditionalDocumentReference>
 	<cac:AccountingSupplierParty>
 		<cac:Party>
-			<cbc:EndpointID schemeID="0235">1987654321</cbc:EndpointID>
+			<cbc:EndpointID schemeID="0248">1987654321</cbc:EndpointID>
 			<cac:PartyName>
 				<cbc:Name>Supplier Trade Name</cbc:Name>
 			</cac:PartyName>
 			<cac:PostalAddress>
-				<cbc:StreetName>Street Name</cbc:StreetName>
-				<cbc:AdditionalStreetName>Street Name</cbc:AdditionalStreetName>
-				<cbc:CityName>City</cbc:CityName>
+				<cbc:StreetName>Al Mawalih Commercial Tower</cbc:StreetName>
+				<cbc:AdditionalStreetName>Al Mawalih Commercial Tower</cbc:AdditionalStreetName>
+				<cbc:CityName>Sur</cbc:CityName>
 				<cbc:PostalZone>1111</cbc:PostalZone>
-				<cbc:CountrySubentity>CS</cbc:CountrySubentity>
+				<cbc:CountrySubentity>MO</cbc:CountrySubentity>
 				<cac:AddressLine>
-					<cbc:Line>Line</cbc:Line>
+					<cbc:Line>P.O. Box 707</cbc:Line>
 				</cac:AddressLine>
 				<cac:Country>
 					<cbc:IdentificationCode>OM</cbc:IdentificationCode>
@@ -64,31 +64,31 @@
 				</cac:TaxScheme>
 			</cac:PartyTaxScheme>
 			<cac:PartyLegalEntity>
-				<cbc:RegistrationName>Supplier Legal Name</cbc:RegistrationName>
+				<cbc:RegistrationName>Al Hadhramy Trading LLC</cbc:RegistrationName>
 				<cbc:CompanyID>112345678900003</cbc:CompanyID>
-				<cbc:CompanyLegalForm>Merchant</cbc:CompanyLegalForm>
+				<cbc:CompanyLegalForm>Limited Liability Company</cbc:CompanyLegalForm>
 			</cac:PartyLegalEntity>
 			<cac:Contact>
-				<cbc:Name>Contact Name</cbc:Name>
-				<cbc:Telephone>Contact Number</cbc:Telephone>
-				<cbc:ElectronicMail>Email Address</cbc:ElectronicMail>
+				<cbc:Name>Mariam Al-Rawahi</cbc:Name>
+				<cbc:Telephone>+96825443322</cbc:Telephone>
+				<cbc:ElectronicMail>mariam.rawahi@example.om</cbc:ElectronicMail>
 			</cac:Contact>
 		</cac:Party>
 	</cac:AccountingSupplierParty>
 	<cac:AccountingCustomerParty>
 		<cac:Party>
-			<cbc:EndpointID schemeID="0235">1456789456</cbc:EndpointID>
+			<cbc:EndpointID schemeID="0248">1456789456</cbc:EndpointID>
 			<cac:PartyName>
 				<cbc:Name>Buyer Trade Name</cbc:Name>
 			</cac:PartyName>
 			<cac:PostalAddress>
-				<cbc:StreetName>Street Name</cbc:StreetName>
-				<cbc:AdditionalStreetName>Street Name</cbc:AdditionalStreetName>
-				<cbc:CityName>City</cbc:CityName>
+				<cbc:StreetName>Al Mawalih Commercial Tower</cbc:StreetName>
+				<cbc:AdditionalStreetName>Al Mawalih Commercial Tower</cbc:AdditionalStreetName>
+				<cbc:CityName>Sur</cbc:CityName>
 				<cbc:PostalZone>2222</cbc:PostalZone>
-				<cbc:CountrySubentity>CS</cbc:CountrySubentity>
+				<cbc:CountrySubentity>MO</cbc:CountrySubentity>
 				<cac:AddressLine>
-					<cbc:Line>Line</cbc:Line>
+					<cbc:Line>P.O. Box 707</cbc:Line>
 				</cac:AddressLine>
 				<cac:Country>
 					<cbc:IdentificationCode>OM</cbc:IdentificationCode>
@@ -101,13 +101,13 @@
 				</cac:TaxScheme>
 			</cac:PartyTaxScheme>
 			<cac:PartyLegalEntity>
-				<cbc:RegistrationName>Buyer Legal Name</cbc:RegistrationName>
+				<cbc:RegistrationName>Sohar Petroleum Services LLC</cbc:RegistrationName>
 				<cbc:CompanyID>112345679000001</cbc:CompanyID>
 			</cac:PartyLegalEntity>
 			<cac:Contact>
-				<cbc:Name>Contact Name</cbc:Name>
-				<cbc:Telephone>Contact Number</cbc:Telephone>
-				<cbc:ElectronicMail>Email Address</cbc:ElectronicMail>
+				<cbc:Name>Mariam Al-Rawahi</cbc:Name>
+				<cbc:Telephone>+96825443322</cbc:Telephone>
+				<cbc:ElectronicMail>mariam.rawahi@example.om</cbc:ElectronicMail>
 			</cac:Contact>
 		</cac:Party>
 	</cac:AccountingCustomerParty>
@@ -183,11 +183,11 @@
 			<cbc:EndDate>2025-02-07</cbc:EndDate>
 		</cac:InvoicePeriod>
 		<cac:Item>
-			<cbc:Description>Item Description</cbc:Description>
-			<cbc:Name>Item Name</cbc:Name>
+			<cbc:Description>Recessed LED ceiling panel 600x600 mm, 40 W, 4000 K, IP40, dimmable.</cbc:Description>
+			<cbc:Name>LED ceiling panel 600x600 40W</cbc:Name>
 			<cac:CommodityClassification>
-				<cbc:NatureCode>GS</cbc:NatureCode>
-				<cbc:ItemClassificationCode listID="HS">123456789012</cbc:ItemClassificationCode>
+				<cbc:NatureCode>G</cbc:NatureCode>
+				<cbc:ItemClassificationCode listID="HS">010121100001</cbc:ItemClassificationCode>
 			</cac:CommodityClassification>
 			<cac:ClassifiedTaxCategory>
 				<cbc:ID>S</cbc:ID>
@@ -222,8 +222,8 @@
 			<cbc:EndDate>2025-02-07</cbc:EndDate>
 		</cac:InvoicePeriod>
 		<cac:Item>
-			<cbc:Description>Item Description</cbc:Description>
-			<cbc:Name>Item Name</cbc:Name>
+			<cbc:Description>Recessed LED ceiling panel 600x600 mm, 40 W, 4000 K, IP40, dimmable.</cbc:Description>
+			<cbc:Name>LED ceiling panel 600x600 40W</cbc:Name>
 			<cac:ClassifiedTaxCategory>
 				<cbc:ID>E</cbc:ID>
 				<cbc:TaxExemptionReasonCode>VATEX-OM-04</cbc:TaxExemptionReasonCode>

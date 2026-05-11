@@ -2,17 +2,17 @@
 <Invoice xmlns="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2"
 	xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
 	xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2 http://docs.oasis-open.org/ubl/os-UBL-2.1/xsd/maindoc/UBL-Invoice-2.1.xsd">
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2 http://docs.oasis-open.org/ubl/os-UBL-2.1/xsd/maindoc/UBL-Invoice-2.1.xsd">
 	<cbc:CustomizationID>urn:peppol:pint:selfbilling-1@om-1</cbc:CustomizationID> <!--  IBT-024 -->
 	<cbc:ProfileID>urn:peppol:pint:selfbilling</cbc:ProfileID> <!--  IBT-023 -->
-	<cbc:ProfileExecutionID>00000000</cbc:ProfileExecutionID>
 	<cbc:ID>OM-01-SB-TEST</cbc:ID>
 	<cbc:UUID>68205910-ac6b-4e35-9fe7-d1f0a3e3ae72</cbc:UUID>
 	<cbc:IssueDate>2025-02-06</cbc:IssueDate>
 	<cbc:IssueTime>07:54:00</cbc:IssueTime>
 	<cbc:DueDate>2025-02-13</cbc:DueDate>
-	<cbc:InvoiceTypeCode name="10100000000000000000">389</cbc:InvoiceTypeCode>
-	<cbc:Note>Self Billing Tax invoice</cbc:Note>	
+	<cbc:InvoiceTypeCode name="1X1XXXXXXXXXXXXXXXXX">389</cbc:InvoiceTypeCode>
+	<cbc:Note>Self Billing Tax invoice</cbc:Note>
 	<cbc:TaxPointDate>2025-01-30</cbc:TaxPointDate>
 	<cbc:DocumentCurrencyCode>OMR</cbc:DocumentCurrencyCode>
 	<cbc:AccountingCost>Regular sales</cbc:AccountingCost>
@@ -33,19 +33,21 @@
 	</cac:BillingReference>
 	<cac:OriginatorDocumentReference>
 		<cbc:ID>PO-OM-220</cbc:ID>
+		<cbc:UUID>f12f329f-6430-4399-b661-7c5cd9c3a9e6</cbc:UUID>
 	</cac:OriginatorDocumentReference>
 	<cac:AdditionalDocumentReference>
 		<cbc:ID>PO-OM-220</cbc:ID>
 		<cac:Attachment>
-		<cac:ExternalReference>
-		<cbc:URI>https://www.site.ae/PO-OM-220.pdf</cbc:URI>
-		</cac:ExternalReference>
+			<cac:ExternalReference>
+				<cbc:URI>https://www.site.ae/PO-OM-220.pdf</cbc:URI>
+			</cac:ExternalReference>
 		</cac:Attachment>
-		</cac:AdditionalDocumentReference>
-		<cac:AdditionalDocumentReference>
+	</cac:AdditionalDocumentReference>
+	<cac:AdditionalDocumentReference>
 		<cbc:ID>PO-OM-220</cbc:ID>
 		<cac:Attachment>
-			<cbc:EmbeddedDocumentBinaryObject mimeCode="application/pdf" filename="PO-OM-220.pdf">QmFzZTY0IGNvbnRlbnQgZXhhbXBfZQ==</cbc:EmbeddedDocumentBinaryObject>
+			<cbc:EmbeddedDocumentBinaryObject mimeCode="application/pdf" filename="PO-OM-220.pdf">
+				QmFzZTY0IGNvbnRlbnQgZXhhbXBfZQ==</cbc:EmbeddedDocumentBinaryObject>
 		</cac:Attachment>
 	</cac:AdditionalDocumentReference>
 	<cac:ProjectReference>
@@ -53,18 +55,18 @@
 	</cac:ProjectReference>
 	<cac:AccountingSupplierParty>
 		<cac:Party>
-			<cbc:EndpointID schemeID="0235">1987654321</cbc:EndpointID>
+			<cbc:EndpointID schemeID="0248">1987654321</cbc:EndpointID>
 			<cac:PartyName>
 				<cbc:Name>Party Trade Name</cbc:Name>
 			</cac:PartyName>
 			<cac:PostalAddress>
-				<cbc:StreetName>Street Name</cbc:StreetName>
-				<cbc:AdditionalStreetName>Street Name</cbc:AdditionalStreetName>
-				<cbc:CityName>City</cbc:CityName>
+				<cbc:StreetName>Al Mawalih Commercial Tower</cbc:StreetName>
+				<cbc:AdditionalStreetName>Al Mawalih Commercial Tower</cbc:AdditionalStreetName>
+				<cbc:CityName>Sur</cbc:CityName>
 				<cbc:PostalZone>1111</cbc:PostalZone>
-				<cbc:CountrySubentity>CS</cbc:CountrySubentity>
+				<cbc:CountrySubentity>MO</cbc:CountrySubentity>
 				<cac:AddressLine>
-					<cbc:Line>Line</cbc:Line>
+					<cbc:Line>P.O. Box 707</cbc:Line>
 				</cac:AddressLine>
 				<cac:Country>
 					<cbc:IdentificationCode>OM</cbc:IdentificationCode>
@@ -77,12 +79,12 @@
 				</cac:TaxScheme>
 			</cac:PartyTaxScheme>
 			<cac:PartyLegalEntity>
-				<cbc:RegistrationName>Supplier Legal Name</cbc:RegistrationName>
+				<cbc:RegistrationName>Al Hadhramy Trading LLC</cbc:RegistrationName>
 				<cbc:CompanyID>112345678900003</cbc:CompanyID>
-				<cbc:CompanyLegalForm>Merchant</cbc:CompanyLegalForm>
+				<cbc:CompanyLegalForm>Limited Liability Company</cbc:CompanyLegalForm>
 			</cac:PartyLegalEntity>
 			<cac:Contact>
-				<cbc:Name>Contact Name</cbc:Name>
+				<cbc:Name>Mariam Al-Rawahi</cbc:Name>
 				<cbc:Telephone>Telephone number</cbc:Telephone>
 				<cbc:ElectronicMail>Email address</cbc:ElectronicMail>
 			</cac:Contact>
@@ -90,18 +92,18 @@
 	</cac:AccountingSupplierParty>
 	<cac:AccountingCustomerParty>
 		<cac:Party>
-			<cbc:EndpointID schemeID="0235">1345678901</cbc:EndpointID>
+			<cbc:EndpointID schemeID="0248">1345678901</cbc:EndpointID>
 			<cac:PartyName>
 				<cbc:Name>Buyer Trade Name</cbc:Name>
 			</cac:PartyName>
 			<cac:PostalAddress>
-				<cbc:StreetName>Street Name</cbc:StreetName>
-				<cbc:AdditionalStreetName>Street Name</cbc:AdditionalStreetName>
-				<cbc:CityName>City</cbc:CityName>
+				<cbc:StreetName>Al Mawalih Commercial Tower</cbc:StreetName>
+				<cbc:AdditionalStreetName>Al Mawalih Commercial Tower</cbc:AdditionalStreetName>
+				<cbc:CityName>Sur</cbc:CityName>
 				<cbc:PostalZone>2222</cbc:PostalZone>
-				<cbc:CountrySubentity>CS</cbc:CountrySubentity>
+				<cbc:CountrySubentity>MO</cbc:CountrySubentity>
 				<cac:AddressLine>
-					<cbc:Line>Line</cbc:Line>
+					<cbc:Line>P.O. Box 707</cbc:Line>
 				</cac:AddressLine>
 				<cac:Country>
 					<cbc:IdentificationCode>OM</cbc:IdentificationCode>
@@ -114,11 +116,11 @@
 				</cac:TaxScheme>
 			</cac:PartyTaxScheme>
 			<cac:PartyLegalEntity>
-				<cbc:RegistrationName>Buyer Legal Name</cbc:RegistrationName>
+				<cbc:RegistrationName>Sohar Petroleum Services LLC</cbc:RegistrationName>
 				<cbc:CompanyID>112345679000001</cbc:CompanyID>
 			</cac:PartyLegalEntity>
 			<cac:Contact>
-				<cbc:Name>Contact Name</cbc:Name>
+				<cbc:Name>Mariam Al-Rawahi</cbc:Name>
 				<cbc:Telephone>Telephone number</cbc:Telephone>
 				<cbc:ElectronicMail>Email address</cbc:ElectronicMail>
 			</cac:Contact>
@@ -170,7 +172,7 @@
 		<cbc:TaxIncludedIndicator>false</cbc:TaxIncludedIndicator>
 		<cac:TaxSubtotal>
 			<cbc:TaxableAmount currencyID="OMR">10643.29</cbc:TaxableAmount>
-			<cbc:TaxAmount currencyID="OMR">532.1645</cbc:TaxAmount>
+			<cbc:TaxAmount currencyID="OMR">532.16</cbc:TaxAmount>
 			<cac:TaxCategory>
 				<cbc:ID>S</cbc:ID>
 				<cbc:Percent>5</cbc:Percent>
@@ -188,22 +190,15 @@
 		<cbc:ChargeTotalAmount currencyID="OMR">419.44</cbc:ChargeTotalAmount>
 		<cbc:PayableRoundingAmount currencyID="OMR">0.05</cbc:PayableRoundingAmount>
 		<cbc:PayableAmount currencyID="OMR">11175.5</cbc:PayableAmount>
-	</cac:LegalMonetaryTotal>	
+	</cac:LegalMonetaryTotal>
 	<cac:InvoiceLine>
 		<cbc:ID>1</cbc:ID>
-		<cbc:Note>All items</cbc:Note>
 		<cbc:InvoicedQuantity unitCode="H87">2000</cbc:InvoicedQuantity>
 		<cbc:LineExtensionAmount currencyID="OMR">10486</cbc:LineExtensionAmount>
 		<cac:InvoicePeriod>
 			<cbc:StartDate>2025-01-31</cbc:StartDate>
-			<cbc:EndDate>2025-01-31</cbc:EndDate>
+			<cbc:EndDate>2025-02-06</cbc:EndDate>
 		</cac:InvoicePeriod>
-		<cac:OrderLineReference>
-			<cbc:LineID>1</cbc:LineID>
-		<cac:OrderReference>
-			<cbc:ID>PO-OMR-220</cbc:ID>
-		</cac:OrderReference>
-		</cac:OrderLineReference>
 		<cac:AllowanceCharge>
 			<cbc:ChargeIndicator>false</cbc:ChargeIndicator>
 			<cbc:AllowanceChargeReasonCode>95</cbc:AllowanceChargeReasonCode>
@@ -221,20 +216,10 @@
 			<cbc:BaseAmount currencyID="OMR">9800</cbc:BaseAmount>
 		</cac:AllowanceCharge>
 		<cac:Item>
-			<cbc:Description>Item Description</cbc:Description>
-			<cbc:Name>Item Name</cbc:Name>
-			<cac:BuyersItemIdentification>
-				<cbc:ID>Purchase goods</cbc:ID>
-			</cac:BuyersItemIdentification>
-			<cac:SellersItemIdentification>
-				<cbc:ID>Sales Goods</cbc:ID>
-			</cac:SellersItemIdentification>
-			<cac:OriginCountry>
-				<cbc:IdentificationCode>OM</cbc:IdentificationCode>
-			</cac:OriginCountry>
+			<cbc:Name>LED ceiling panel 600x600 40W</cbc:Name>
 			<cac:CommodityClassification>
-				<cbc:NatureCode>GS</cbc:NatureCode>
-				<cbc:ItemClassificationCode listID="HS">123456789012</cbc:ItemClassificationCode>
+				<cbc:NatureCode>G</cbc:NatureCode>
+				<cbc:ItemClassificationCode listID="HS">010121100001</cbc:ItemClassificationCode>
 			</cac:CommodityClassification>
 			<cac:ClassifiedTaxCategory>
 				<cbc:ID>S</cbc:ID>
@@ -249,7 +234,7 @@
 			</cac:AdditionalItemProperty>
 		</cac:Item>
 		<cac:Price>
-			<cbc:PriceAmount currencyID="OMR">4.9</cbc:PriceAmount>			
+			<cbc:PriceAmount currencyID="OMR">4.9</cbc:PriceAmount>
 			<cbc:BaseQuantity unitCode="H87">1</cbc:BaseQuantity>
 			<cac:AllowanceCharge>
 				<cbc:ChargeIndicator>false</cbc:ChargeIndicator>
@@ -258,7 +243,7 @@
 			</cac:AllowanceCharge>
 		</cac:Price>
 		<cac:ItemPriceExtension>
-			<cbc:Amount currencyID="OMR">11010.3</cbc:Amount> 
+			<cbc:Amount currencyID="OMR">11010.3</cbc:Amount>
 			<cac:TaxTotal>
 				<cbc:TaxAmount currencyID="OMR">524.3</cbc:TaxAmount>
 			</cac:TaxTotal>

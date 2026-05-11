@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    ============================================================
+    PINT-OM Sample : Summary-Construction.xml
+    Scenario       : Summary - Construction Progress Milestones
+    Bitmap         : 1XXX1XXXXXXXXXXXXXXX
+    Decoded        : FullTax, Summary
+    Doc type code  : 380  (Commercial / Tax invoice)
+    Description    :
+      A construction firm summarises multiple progress-milestone billings
+      for a single project in one invoice.
+    Notes          : Inline comments below mark each business-
+                     rule-relevant section.  All schemeID, listID
+                     and unitCode attribute values are preserved.
+    See            : docs/SCENARIOS.md for the master scope table.
+    ============================================================
+-->
+<Invoice xmlns="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2"
+	xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+	xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<!-- =================  Document metadata  ================= -->
+	<cbc:CustomizationID>urn:peppol:pint:billing-1@om-1</cbc:CustomizationID>
+	<cbc:ProfileID>urn:peppol:pint:billing</cbc:ProfileID>
+	<cbc:ID>OM-SUM-CON-2026-105</cbc:ID>
+	<cbc:UUID>f12f329f-6430-4399-b661-7c5cd9c3a9e6</cbc:UUID>
+	<cbc:IssueDate>2026-02-06</cbc:IssueDate>
+	<cbc:IssueTime>07:54:00</cbc:IssueTime>
+	<cbc:DueDate>2026-02-13</cbc:DueDate>
+	<!-- InvoiceTypeCode @name encodes the transaction-type bitmap (BTOM-001). -->
+	<cbc:InvoiceTypeCode name="1XXX1XXXXXXXXXXXXXXX">380</cbc:InvoiceTypeCode>
+	<cbc:Note>Project Falcon - milestones M3-M5</cbc:Note>
+	<cbc:DocumentCurrencyCode>OMR</cbc:DocumentCurrencyCode>
+	<!-- InvoicePeriod: applicable for continuous / summary / prepayment scenarios. -->
+	<cac:InvoicePeriod>
+		<cbc:StartDate>2026-04-01</cbc:StartDate>
+		<cbc:EndDate>2026-04-30</cbc:EndDate>
+		<cbc:DescriptionCode>35</cbc:DescriptionCode>
+	</cac:InvoicePeriod>
+	<!-- =================  Supplier (seller)  ================= -->
+	<cac:AccountingSupplierParty>
+		<cac:Party>
+			<cbc:EndpointID schemeID="0248">OM3300557711</cbc:EndpointID>
+			<cac:PostalAddress>
+				<cbc:StreetName>Bawshar</cbc:StreetName>
+				<cbc:AdditionalStreetName>Bawshar</cbc:AdditionalStreetName>
+				<cbc:CityName>Muscat</cbc:CityName>
+				<cbc:PostalZone>0124</cbc:PostalZone>
+				<cac:AddressLine>
+					<cbc:Line>P.O. Box 533</cbc:Line>
+				</cac:AddressLine>
+				<cac:Country>
+					<cbc:IdentificationCode>OM</cbc:IdentificationCode>
+				</cac:Country>
+			</cac:PostalAddress>
+			<cac:PartyTaxScheme>
+				<cbc:CompanyID>OM3300557711</cbc:CompanyID>
+				<cac:TaxScheme>
+					<cbc:ID>VAT</cbc:ID>
+				</cac:TaxScheme>
+			</cac:PartyTaxScheme>
+			<cac:PartyLegalEntity>
+				<cbc:RegistrationName>Galfar Engineering &amp; Contracting SAOG</cbc:RegistrationName>
+			</cac:PartyLegalEntity>
+			<cac:Contact>
+				<cbc:Telephone>+968 24000000</cbc:Telephone>
+			</cac:Contact>
+		</cac:Party>
+	</cac:AccountingSupplierParty>
+	<!-- =================  Customer (buyer)   ================= -->
+	<cac:AccountingCustomerParty>
+		<cac:Party>
+			<cbc:EndpointID schemeID="0248">OM9988776655</cbc:EndpointID>
+			<cac:PostalAddress>
+				<cbc:StreetName>Al Khuwair, Block 14</cbc:StreetName>
+				<cbc:AdditionalStreetName>Al Khuwair, Block 14</cbc:AdditionalStreetName>
+				<cbc:CityName>Muscat</cbc:CityName>
+				<cbc:PostalZone>0133</cbc:PostalZone>
+				<cac:AddressLine>
+					<cbc:Line>P.O. Box 445</cbc:Line>
+				</cac:AddressLine>
+				<cac:Country>
+					<cbc:IdentificationCode>OM</cbc:IdentificationCode>
+				</cac:Country>
+			</cac:PostalAddress>
+			<cac:PartyTaxScheme>
+				<cbc:CompanyID>OM9988776655</cbc:CompanyID>
+				<cac:TaxScheme>
+					<cbc:ID>VAT</cbc:ID>
+				</cac:TaxScheme>
+			</cac:PartyTaxScheme>
+			<cac:PartyLegalEntity>
+				<cbc:RegistrationName>Oman Investment Authority</cbc:RegistrationName>
+			</cac:PartyLegalEntity>
+			<cac:Contact>
+				<cbc:Telephone>+968 24000000</cbc:Telephone>
+			</cac:Contact>
+		</cac:Party>
+	</cac:AccountingCustomerParty>
+	<!-- =================  Delivery            ================= -->
+	<cac:Delivery>
+		<cac:DeliveryLocation>
+			<cac:Address>
+				<cac:Country>
+					<cbc:IdentificationCode>OM</cbc:IdentificationCode>
+				</cac:Country>
+			</cac:Address>
+		</cac:DeliveryLocation>
+	</cac:Delivery>
+	<!-- =================  Payment means     ================= -->
+	<cac:PaymentMeans>
+		<cbc:PaymentMeansCode name="Credit Transfer">30</cbc:PaymentMeansCode>
+		<cbc:PaymentID>PMT-001</cbc:PaymentID>
+		<cac:PayeeFinancialAccount>
+			<cbc:ID schemeID="IBAN">OM810010000000123456</cbc:ID>
+			<cbc:Name>Bank Muscat</cbc:Name>
+			<cac:FinancialInstitutionBranch>
+				<cbc:ID>BMUSOMRX</cbc:ID>
+			</cac:FinancialInstitutionBranch>
+		</cac:PayeeFinancialAccount>
+	</cac:PaymentMeans>
+	<!-- =================  Payment terms     ================= -->
+	<cac:PaymentTerms>
+		<cbc:Note>Net 60 days, retention 5%</cbc:Note>
+	</cac:PaymentTerms>
+	<!-- =================  Tax total          ================= -->
+	<cac:TaxTotal>
+		<cbc:TaxAmount currencyID="OMR">9350</cbc:TaxAmount>
+		<cbc:TaxIncludedIndicator>false</cbc:TaxIncludedIndicator>
+		<cac:TaxSubtotal>
+			<cbc:TaxableAmount currencyID="OMR">187000</cbc:TaxableAmount>
+			<cbc:TaxAmount currencyID="OMR">9350</cbc:TaxAmount>
+			<cac:TaxCategory>
+				<cbc:ID>S</cbc:ID>
+				<cbc:Percent>5</cbc:Percent>
+				<cac:TaxScheme>
+					<cbc:ID>VAT</cbc:ID>
+				</cac:TaxScheme>
+			</cac:TaxCategory>
+		</cac:TaxSubtotal>
+	</cac:TaxTotal>
+	<!-- =================  Legal monetary total ================= -->
+	<cac:LegalMonetaryTotal>
+		<cbc:LineExtensionAmount currencyID="OMR">187000</cbc:LineExtensionAmount>
+		<cbc:TaxExclusiveAmount currencyID="OMR">187000</cbc:TaxExclusiveAmount>
+		<cbc:TaxInclusiveAmount currencyID="OMR">196350</cbc:TaxInclusiveAmount>
+		<cbc:PayableAmount currencyID="OMR">196350</cbc:PayableAmount>
+	</cac:LegalMonetaryTotal>
+	<!-- =================  Invoice lines      ================= -->
+	<!-- Line 1: Completion-of-milestone billing. -->
+	<cac:InvoiceLine>
+		<cbc:ID>1</cbc:ID>
+		<cbc:InvoicedQuantity unitCode="EA">1</cbc:InvoicedQuantity>
+		<cbc:LineExtensionAmount currencyID="OMR">45000</cbc:LineExtensionAmount>
+		<cac:InvoicePeriod>
+			<cbc:StartDate>2026-04-01</cbc:StartDate>
+			<cbc:EndDate>2026-04-30</cbc:EndDate>
+		</cac:InvoicePeriod>
+		<cac:Item>
+			<cbc:Name>Milestone M3 - earthworks complete</cbc:Name>
+			<cac:CommodityClassification>
+				<cbc:NatureCode>S</cbc:NatureCode>
+				<cbc:ItemClassificationCode listID="HS">840110000000</cbc:ItemClassificationCode>
+			</cac:CommodityClassification>
+			<cac:ClassifiedTaxCategory>
+				<cbc:ID>S</cbc:ID>
+				<cbc:Percent>5</cbc:Percent>
+				<cac:TaxScheme>
+					<cbc:ID>VAT</cbc:ID>
+				</cac:TaxScheme>
+			</cac:ClassifiedTaxCategory>
+		</cac:Item>
+		<cac:Price>
+			<cbc:PriceAmount currencyID="OMR">45000</cbc:PriceAmount>
+			<cbc:BaseQuantity unitCode="EA">1</cbc:BaseQuantity>
+		</cac:Price>
+		<cac:ItemPriceExtension>
+			<cbc:Amount currencyID="OMR">47250</cbc:Amount>
+			<cac:TaxTotal>
+				<cbc:TaxAmount currencyID="OMR">2250</cbc:TaxAmount>
+			</cac:TaxTotal>
+		</cac:ItemPriceExtension>
+	</cac:InvoiceLine>
+	<!-- Line 2: Completion-of-milestone billing. -->
+	<cac:InvoiceLine>
+		<cbc:ID>2</cbc:ID>
+		<cbc:InvoicedQuantity unitCode="EA">1</cbc:InvoicedQuantity>
+		<cbc:LineExtensionAmount currencyID="OMR">82000</cbc:LineExtensionAmount>
+		<cac:InvoicePeriod>
+			<cbc:StartDate>2026-04-01</cbc:StartDate>
+			<cbc:EndDate>2026-04-30</cbc:EndDate>
+		</cac:InvoicePeriod>
+		<cac:Item>
+			<cbc:Name>Milestone M4 - foundations complete</cbc:Name>
+			<cac:CommodityClassification>
+				<cbc:NatureCode>S</cbc:NatureCode>
+				<cbc:ItemClassificationCode listID="HS">840110000000</cbc:ItemClassificationCode>
+			</cac:CommodityClassification>
+			<cac:ClassifiedTaxCategory>
+				<cbc:ID>S</cbc:ID>
+				<cbc:Percent>5</cbc:Percent>
+				<cac:TaxScheme>
+					<cbc:ID>VAT</cbc:ID>
+				</cac:TaxScheme>
+			</cac:ClassifiedTaxCategory>
+		</cac:Item>
+		<cac:Price>
+			<cbc:PriceAmount currencyID="OMR">82000</cbc:PriceAmount>
+			<cbc:BaseQuantity unitCode="EA">1</cbc:BaseQuantity>
+		</cac:Price>
+		<cac:ItemPriceExtension>
+			<cbc:Amount currencyID="OMR">86100</cbc:Amount>
+			<cac:TaxTotal>
+				<cbc:TaxAmount currencyID="OMR">4100</cbc:TaxAmount>
+			</cac:TaxTotal>
+		</cac:ItemPriceExtension>
+	</cac:InvoiceLine>
+	<!-- Line 3: Completion-of-milestone billing. -->
+	<cac:InvoiceLine>
+		<cbc:ID>3</cbc:ID>
+		<cbc:InvoicedQuantity unitCode="EA">1</cbc:InvoicedQuantity>
+		<cbc:LineExtensionAmount currencyID="OMR">60000</cbc:LineExtensionAmount>
+		<cac:InvoicePeriod>
+			<cbc:StartDate>2026-04-01</cbc:StartDate>
+			<cbc:EndDate>2026-04-30</cbc:EndDate>
+		</cac:InvoicePeriod>
+		<cac:Item>
+			<cbc:Name>Milestone M5 - frame to floor 3</cbc:Name>
+			<cac:CommodityClassification>
+				<cbc:NatureCode>S</cbc:NatureCode>
+				<cbc:ItemClassificationCode listID="HS">840110000000</cbc:ItemClassificationCode>
+			</cac:CommodityClassification>
+			<cac:ClassifiedTaxCategory>
+				<cbc:ID>S</cbc:ID>
+				<cbc:Percent>5</cbc:Percent>
+				<cac:TaxScheme>
+					<cbc:ID>VAT</cbc:ID>
+				</cac:TaxScheme>
+			</cac:ClassifiedTaxCategory>
+		</cac:Item>
+		<cac:Price>
+			<cbc:PriceAmount currencyID="OMR">60000</cbc:PriceAmount>
+			<cbc:BaseQuantity unitCode="EA">1</cbc:BaseQuantity>
+		</cac:Price>
+		<cac:ItemPriceExtension>
+			<cbc:Amount currencyID="OMR">63000</cbc:Amount>
+			<cac:TaxTotal>
+				<cbc:TaxAmount currencyID="OMR">3000</cbc:TaxAmount>
+			</cac:TaxTotal>
+		</cac:ItemPriceExtension>
+	</cac:InvoiceLine>
+</Invoice>

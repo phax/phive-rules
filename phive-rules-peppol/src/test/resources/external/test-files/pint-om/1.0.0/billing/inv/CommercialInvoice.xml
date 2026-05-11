@@ -10,21 +10,21 @@
 	<cbc:IssueDate>2025-02-07</cbc:IssueDate>
 	<cbc:IssueTime>17:38:00</cbc:IssueTime>
 	<cbc:DueDate>2025-02-07</cbc:DueDate>
-	<cbc:InvoiceTypeCode name="10000000000000000000">380</cbc:InvoiceTypeCode>
+	<cbc:InvoiceTypeCode name="1XXXXXXXXXXXXXXXXXXX">380</cbc:InvoiceTypeCode>
 	<cbc:DocumentCurrencyCode>OMR</cbc:DocumentCurrencyCode>
 	<cac:AccountingSupplierParty>
 		<cac:Party>
-			<cbc:EndpointID schemeID="0235">1987654321</cbc:EndpointID>
+			<cbc:EndpointID schemeID="0248">1987654321</cbc:EndpointID>
 			<cac:PartyName>
-				<cbc:Name>Seller Trade Name</cbc:Name>
+				<cbc:Name>Salalah Logistics LLC</cbc:Name>
 			</cac:PartyName>
 			<cac:PostalAddress>
-				<cbc:StreetName>Street Name</cbc:StreetName>
-				<cbc:AdditionalStreetName>Street Name</cbc:AdditionalStreetName>
-				<cbc:CityName>City</cbc:CityName>
+				<cbc:StreetName>Al Khuwair Plaza, Office 12</cbc:StreetName>
+				<cbc:AdditionalStreetName>Al Khuwair Plaza, Office 12</cbc:AdditionalStreetName>
+				<cbc:CityName>Sohar</cbc:CityName>
 				<cbc:PostalZone>1111</cbc:PostalZone>
 				<cac:AddressLine>
-					<cbc:Line>Line</cbc:Line>
+					<cbc:Line>P.O. Box 1500</cbc:Line>
 				</cac:AddressLine>
 				<cac:Country>
 					<cbc:IdentificationCode>OM</cbc:IdentificationCode>
@@ -37,27 +37,27 @@
 				</cac:TaxScheme>
 			</cac:PartyTaxScheme>
 			<cac:PartyLegalEntity>
-				<cbc:RegistrationName>Supplier Legal Name</cbc:RegistrationName>
+				<cbc:RegistrationName>Salalah Logistics LLC</cbc:RegistrationName>
 				<cbc:CompanyID schemeAgencyID="TL" schemeAgencyName="Trade License issuing Authority">112345678900003</cbc:CompanyID>
-				<cbc:CompanyLegalForm>Merchant</cbc:CompanyLegalForm>
+				<cbc:CompanyLegalForm>Sole Proprietorship</cbc:CompanyLegalForm>
 			</cac:PartyLegalEntity>
 			<cac:Contact>
-				<cbc:Name>Contact Name</cbc:Name>
-				<cbc:Telephone>Contact Number</cbc:Telephone>
+				<cbc:Name>Mohammed Al-Harthy</cbc:Name>
+				<cbc:Telephone>+96826112233</cbc:Telephone>
 				<cbc:ElectronicMail>Email address</cbc:ElectronicMail>
 			</cac:Contact>
 		</cac:Party>
 	</cac:AccountingSupplierParty>
 	<cac:AccountingCustomerParty>
 		<cac:Party>
-			<cbc:EndpointID schemeID="0235">1345678901</cbc:EndpointID>
+			<cbc:EndpointID schemeID="0248">1345678901</cbc:EndpointID>
 			<cac:PostalAddress>
-				<cbc:StreetName>Street Name</cbc:StreetName>
-				<cbc:AdditionalStreetName>Street Name</cbc:AdditionalStreetName>
-				<cbc:CityName>City</cbc:CityName>
+				<cbc:StreetName>Al Khuwair Plaza, Office 12</cbc:StreetName>
+				<cbc:AdditionalStreetName>Al Khuwair Plaza, Office 12</cbc:AdditionalStreetName>
+				<cbc:CityName>Sohar</cbc:CityName>
 				<cbc:PostalZone>2222</cbc:PostalZone>
 				<cac:AddressLine>
-					<cbc:Line>Line</cbc:Line>
+					<cbc:Line>P.O. Box 1500</cbc:Line>
 				</cac:AddressLine>
 				<cac:Country>
 					<cbc:IdentificationCode>OM</cbc:IdentificationCode>
@@ -70,13 +70,13 @@
 				</cac:TaxScheme>
 			</cac:PartyTaxScheme>
 			<cac:PartyLegalEntity>
-				<cbc:RegistrationName>Buyer Legal Name</cbc:RegistrationName>
+				<cbc:RegistrationName>Mazoon Holdings SAOC</cbc:RegistrationName>
 				<cbc:CompanyID>112345679000001</cbc:CompanyID>
 			</cac:PartyLegalEntity>
 			<cac:Contact>
-				<cbc:Name>Contact Name</cbc:Name>
-				<cbc:Telephone>Contact Number</cbc:Telephone>
-				<cbc:ElectronicMail>Email Address</cbc:ElectronicMail>
+				<cbc:Name>Mohammed Al-Harthy</cbc:Name>
+				<cbc:Telephone>+96826112233</cbc:Telephone>
+				<cbc:ElectronicMail>mohammed.harthy@example.om</cbc:ElectronicMail>
 			</cac:Contact>
 		</cac:Party>
 	</cac:AccountingCustomerParty>
@@ -119,11 +119,11 @@
 		<cbc:InvoicedQuantity unitCode="H87">1000</cbc:InvoicedQuantity>
 		<cbc:LineExtensionAmount currencyID="OMR">150000</cbc:LineExtensionAmount>
 		<cac:Item>
-			<cbc:Description>Item Description</cbc:Description>
-			<cbc:Name>Item Name</cbc:Name>
+			<cbc:Description>Hot-rolled deformed steel reinforcement bar, 12 mm dia, 12 m length, grade B500B.</cbc:Description>
+			<cbc:Name>Construction steel rebar 12 mm</cbc:Name>
 			<cac:CommodityClassification>
-				<cbc:NatureCode>GS</cbc:NatureCode>
-				<cbc:ItemClassificationCode listID="HS">123456789012</cbc:ItemClassificationCode>
+				<cbc:NatureCode>G</cbc:NatureCode>
+				<cbc:ItemClassificationCode listID="HS">010121100001</cbc:ItemClassificationCode>
 			</cac:CommodityClassification>
 			<cac:ClassifiedTaxCategory>
 				<cbc:ID>O</cbc:ID>

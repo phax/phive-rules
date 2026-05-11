@@ -6,13 +6,13 @@
 	xsi:schemaLocation="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2 http://docs.oasis-open.org/ubl/os-UBL-2.1/xsd/maindoc/UBL-Invoice-2.1.xsd">
 	<cbc:CustomizationID>urn:peppol:pint:billing-1@om-1</cbc:CustomizationID>
 	<cbc:ProfileID>urn:peppol:pint:billing</cbc:ProfileID>
-	<cbc:ProfileExecutionID>00100000</cbc:ProfileExecutionID>
+	
 	<cbc:ID>OM-001-Marginscheme-TEST</cbc:ID>
 	<cbc:UUID>e59f130c-eb13-4476-bc18-2202915f48cf</cbc:UUID>
 	<cbc:IssueDate>2025-02-11</cbc:IssueDate>
 	<cbc:IssueTime>07:54:00</cbc:IssueTime>
 	<cbc:DueDate>2025-02-11</cbc:DueDate>
-	<cbc:InvoiceTypeCode name="10000000010000000000">380</cbc:InvoiceTypeCode>
+	<cbc:InvoiceTypeCode name="1XXXXXXXX1XXXXXXXXXX">380</cbc:InvoiceTypeCode>
 	<cbc:Note>Tax invoice</cbc:Note>
 	<cbc:DocumentCurrencyCode>OMR</cbc:DocumentCurrencyCode>
 	<cac:BillingReference>
@@ -29,12 +29,12 @@
 	</cac:AdditionalDocumentReference>
 	<cac:AccountingSupplierParty>
 		<cac:Party>
-			<cbc:EndpointID schemeID="0235">112345678900003</cbc:EndpointID>
+			<cbc:EndpointID schemeID="0248">112345678900003</cbc:EndpointID>
 			<cac:PartyName>
 				<cbc:Name>Supplier Trade Name</cbc:Name>
 			</cac:PartyName>
 			<cac:PostalAddress>
-				<cbc:StreetName>Street Name</cbc:StreetName>
+				<cbc:StreetName>Sultan Qaboos Street, Building 45</cbc:StreetName>
 				<cbc:AdditionalStreetName>Additional Street Name</cbc:AdditionalStreetName>
 				<cbc:CityName>CN</cbc:CityName>
 				<cbc:PostalZone>Postal Zone</cbc:PostalZone>
@@ -52,25 +52,25 @@
 				</cac:TaxScheme>
 			</cac:PartyTaxScheme>
 			<cac:PartyLegalEntity>
-				<cbc:RegistrationName>Supplier Legal Name</cbc:RegistrationName>
+				<cbc:RegistrationName>Muscat Industries SAOC</cbc:RegistrationName>
 				<cbc:CompanyID>112345678900003</cbc:CompanyID>
-				<cbc:CompanyLegalForm>Merchant</cbc:CompanyLegalForm>
+				<cbc:CompanyLegalForm>SAOC - Joint Stock Company</cbc:CompanyLegalForm>
 			</cac:PartyLegalEntity>
 			<cac:Contact>
-				<cbc:Name>Contact Name</cbc:Name>
-				<cbc:Telephone>Contact Number</cbc:Telephone>
+				<cbc:Name>Fatima Al-Said</cbc:Name>
+				<cbc:Telephone>+96823654987</cbc:Telephone>
 				<cbc:ElectronicMail>Contact Email address</cbc:ElectronicMail>
 			</cac:Contact>
 		</cac:Party>
 	</cac:AccountingSupplierParty>
 	<cac:AccountingCustomerParty>
 		<cac:Party>
-			<cbc:EndpointID schemeID="0235">112345679000003</cbc:EndpointID>
+			<cbc:EndpointID schemeID="0248">112345679000003</cbc:EndpointID>
 			<cac:PartyName>
 				<cbc:Name>Buyer Trade Name</cbc:Name>
 			</cac:PartyName>
 			<cac:PostalAddress>
-				<cbc:StreetName>Street Name</cbc:StreetName>
+				<cbc:StreetName>Sultan Qaboos Street, Building 45</cbc:StreetName>
 				<cbc:AdditionalStreetName>Additional Street Name</cbc:AdditionalStreetName>
 				<cbc:CityName>CN</cbc:CityName>
 				<cbc:PostalZone>Postal Zone</cbc:PostalZone>
@@ -88,12 +88,12 @@
 				</cac:TaxScheme>
 			</cac:PartyTaxScheme>
 			<cac:PartyLegalEntity>
-				<cbc:RegistrationName>Buyer Legal Name</cbc:RegistrationName>
+				<cbc:RegistrationName>Al Mawasem Trading LLC</cbc:RegistrationName>
 				<cbc:CompanyID>112345679000001</cbc:CompanyID>
 			</cac:PartyLegalEntity>
 			<cac:Contact>
-				<cbc:Name>Contact Name</cbc:Name>
-				<cbc:Telephone>Contact Number</cbc:Telephone>
+				<cbc:Name>Fatima Al-Said</cbc:Name>
+				<cbc:Telephone>+96823654987</cbc:Telephone>
 				<cbc:ElectronicMail>Contact Email address</cbc:ElectronicMail>
 			</cac:Contact>
 		</cac:Party>
@@ -135,11 +135,11 @@
 		<cbc:InvoicedQuantity unitCode="H87">1</cbc:InvoicedQuantity>
 		<cbc:LineExtensionAmount currencyID="OMR">1000</cbc:LineExtensionAmount>
 		<cac:Item>
-			<cbc:Description>Item Description</cbc:Description>
-			<cbc:Name>Item Name</cbc:Name>
+			<cbc:Description>Mesh-back ergonomic office chair with adjustable lumbar support and PU armrests.</cbc:Description>
+			<cbc:Name>Office chair, ergonomic</cbc:Name>
 			<cac:CommodityClassification>
-				<cbc:NatureCode>GS</cbc:NatureCode>
-				<cbc:ItemClassificationCode listID="HS">123456789012</cbc:ItemClassificationCode>
+				<cbc:NatureCode>G</cbc:NatureCode>
+				<cbc:ItemClassificationCode listID="HS">980400000000</cbc:ItemClassificationCode>
 			</cac:CommodityClassification>
 			<cac:ClassifiedTaxCategory>
 				<cbc:ID>O</cbc:ID>

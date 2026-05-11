@@ -27,21 +27,21 @@
 	<cbc:UUID>08b06931-4698-4ff9-9862-2ebd2901a00c</cbc:UUID>
 	<cbc:IssueDate>2025-02-07</cbc:IssueDate>
 	<cbc:IssueTime>07:54:00</cbc:IssueTime>
-	<cbc:InvoiceTypeCode name="01000001000000000000">380</cbc:InvoiceTypeCode>
+	<cbc:InvoiceTypeCode name="X1XXXXX1XXXXXXXXXXXX">380</cbc:InvoiceTypeCode>
 	<cbc:Note>Tax invoice</cbc:Note>
 	<cbc:DocumentCurrencyCode>OMR</cbc:DocumentCurrencyCode>
 	<cac:AccountingSupplierParty>
 		<cac:Party>
-			<cbc:EndpointID schemeID="0235">1246801357</cbc:EndpointID>
+			<cbc:EndpointID schemeID="0248">1246801357</cbc:EndpointID>
 			<cac:PostalAddress>
-				<cbc:StreetName>Street Name</cbc:StreetName>
-				<cbc:AdditionalStreetName>Street Name</cbc:AdditionalStreetName>
-				<cbc:CityName>City</cbc:CityName>
+				<cbc:StreetName>Way 2317, Building 192</cbc:StreetName>
+				<cbc:AdditionalStreetName>Way 2317, Building 192</cbc:AdditionalStreetName>
+				<cbc:CityName>Muscat</cbc:CityName>
 				<cbc:PostalZone>1111</cbc:PostalZone>
 				<cbc:CountrySubentity>CS</cbc:CountrySubentity>
 				<cbc:CountrySubentityCode>SHRFZ</cbc:CountrySubentityCode>
 				<cac:AddressLine>
-					<cbc:Line>Line</cbc:Line>
+					<cbc:Line>P.O. Box 192</cbc:Line>
 				</cac:AddressLine>
 				<cac:Country>
 					<cbc:IdentificationCode>OM</cbc:IdentificationCode>
@@ -54,29 +54,29 @@
 				</cac:TaxScheme>
 			</cac:PartyTaxScheme>
 			<cac:PartyLegalEntity>
-				<cbc:RegistrationName>Supplier Legal Name</cbc:RegistrationName>
+				<cbc:RegistrationName>Oman Trading Company LLC</cbc:RegistrationName>
 				<cbc:CompanyID>112345678900003</cbc:CompanyID>
-				<cbc:CompanyLegalForm>Merchant</cbc:CompanyLegalForm>
+				<cbc:CompanyLegalForm>Limited Liability Company</cbc:CompanyLegalForm>
 			</cac:PartyLegalEntity>
 			<cac:Contact>
-				<cbc:Name>Contact Name</cbc:Name>
-				<cbc:Telephone>Contact Number</cbc:Telephone>
+				<cbc:Name>Ahmed Al-Balushi</cbc:Name>
+				<cbc:Telephone>+96824123456</cbc:Telephone>
 				<cbc:ElectronicMail>Email address</cbc:ElectronicMail>
 			</cac:Contact>
 		</cac:Party>
 	</cac:AccountingSupplierParty>
 	<cac:AccountingCustomerParty>
 		<cac:Party>
-			<cbc:EndpointID schemeID="0235">1012345678</cbc:EndpointID>
+			<cbc:EndpointID schemeID="0248">1012345678</cbc:EndpointID>
 			<cac:PostalAddress>
-				<cbc:StreetName>Street Name</cbc:StreetName>
-				<cbc:AdditionalStreetName>Street Name</cbc:AdditionalStreetName>
-				<cbc:CityName>City</cbc:CityName>
+				<cbc:StreetName>Way 2317, Building 192</cbc:StreetName>
+				<cbc:AdditionalStreetName>Way 2317, Building 192</cbc:AdditionalStreetName>
+				<cbc:CityName>Muscat</cbc:CityName>
 				<cbc:PostalZone>2222</cbc:PostalZone>
 				<cbc:CountrySubentity>CS</cbc:CountrySubentity>
 				<cbc:CountrySubentityCode>SHRFZ</cbc:CountrySubentityCode>
 				<cac:AddressLine>
-					<cbc:Line>Line</cbc:Line>
+					<cbc:Line>P.O. Box 192</cbc:Line>
 				</cac:AddressLine>
 				<cac:Country>
 					<cbc:IdentificationCode>AE</cbc:IdentificationCode>
@@ -89,13 +89,13 @@
 				</cac:TaxScheme>
 			</cac:PartyTaxScheme>
 			<cac:PartyLegalEntity>
-				<cbc:RegistrationName>Buyer Legal Name</cbc:RegistrationName>
+				<cbc:RegistrationName>Gulf Construction LLC</cbc:RegistrationName>
 				<cbc:CompanyID>112345679000001</cbc:CompanyID>
 			</cac:PartyLegalEntity>
 			<cac:Contact>
-				<cbc:Name>Contact Name</cbc:Name>
-				<cbc:Telephone>Contact Number</cbc:Telephone>
-				<cbc:ElectronicMail>Email Address</cbc:ElectronicMail>
+				<cbc:Name>Ahmed Al-Balushi</cbc:Name>
+				<cbc:Telephone>+96824123456</cbc:Telephone>
+				<cbc:ElectronicMail>ahmed.balushi@example.om</cbc:ElectronicMail>
 			</cac:Contact>
 		</cac:Party>
 	</cac:AccountingCustomerParty>
@@ -144,13 +144,13 @@
 		<cbc:InvoicedQuantity unitCode="H87">2</cbc:InvoicedQuantity>
 		<cbc:LineExtensionAmount currencyID="OMR">280</cbc:LineExtensionAmount>
 		<cac:Item>
-			<cbc:Description>Item Description</cbc:Description>
-			<cbc:Name>Item Name</cbc:Name>
+			<cbc:Description>Centrifugal water pump, 15 kW motor, ISO 9001 certified, including spare seal kit.</cbc:Description>
+			<cbc:Name>Industrial water pump (15 kW)</cbc:Name>
 			<cac:AdditionalItemIdentification>
 				<cbc:ID schemeID="SAC">Service</cbc:ID>
 			</cac:AdditionalItemIdentification>
 			<cac:CommodityClassification>
-				<cbc:ItemClassificationCode listID="HS" listVersionID="1.0">880984321111</cbc:ItemClassificationCode>
+				<cbc:ItemClassificationCode listID="HS" listVersionID="1.X">010121100001</cbc:ItemClassificationCode>
 			</cac:CommodityClassification>
 			<cac:ClassifiedTaxCategory>
 				<cbc:ID>S</cbc:ID>
