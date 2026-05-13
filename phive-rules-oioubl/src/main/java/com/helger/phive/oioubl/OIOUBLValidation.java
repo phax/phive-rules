@@ -652,54 +652,123 @@ public final class OIOUBLValidation
   private static final String VERSION_1_17_1 = "1.17.1";
   public static final LocalDate VERSION_1_17_1_VALID_PER = PDTFactory.createLocalDate (2026, Month.MAY, 15);
   public static final OffsetDateTime VERSION_1_17_1_VALID_PER_UTC = PDTFactory.createOffsetDateTimeUTC (VERSION_1_17_1_VALID_PER);
+  @Deprecated (forRemoval = false)
   public static final DVRCoordinate VID_OIOUBL_APPLICATION_RESPONSE_1_17_1 = PhiveRulesHelper.createCoordinate (GROUPID,
                                                                                                                 "application-response",
                                                                                                                 VERSION_1_17_1);
+  @Deprecated (forRemoval = false)
   public static final DVRCoordinate VID_OIOUBL_CATALOGUE_1_17_1 = PhiveRulesHelper.createCoordinate (GROUPID,
                                                                                                      "catalogue",
                                                                                                      VERSION_1_17_1);
+  @Deprecated (forRemoval = false)
   public static final DVRCoordinate VID_OIOUBL_CATALOGUE_DELETION_1_17_1 = PhiveRulesHelper.createCoordinate (GROUPID,
                                                                                                               "catalogue-deletion",
                                                                                                               VERSION_1_17_1);
+  @Deprecated (forRemoval = false)
   public static final DVRCoordinate VID_OIOUBL_CATALOGUE_ITEM_SPECIFICATION_UPDATE_1_17_1 = PhiveRulesHelper.createCoordinate (GROUPID,
                                                                                                                                "catalogue-item-specification-update",
                                                                                                                                VERSION_1_17_1);
+  @Deprecated (forRemoval = false)
   public static final DVRCoordinate VID_OIOUBL_CATALOGUE_PRICING_UPDATE_1_17_1 = PhiveRulesHelper.createCoordinate (GROUPID,
                                                                                                                     "catalogue-pricing-update",
                                                                                                                     VERSION_1_17_1);
+  @Deprecated (forRemoval = false)
   public static final DVRCoordinate VID_OIOUBL_CATALOGUE_REQUEST_1_17_1 = PhiveRulesHelper.createCoordinate (GROUPID,
                                                                                                              "catalogue-request",
                                                                                                              VERSION_1_17_1);
+  @Deprecated (forRemoval = false)
   public static final DVRCoordinate VID_OIOUBL_CREDIT_NOTE_1_17_1 = PhiveRulesHelper.createCoordinate (GROUPID,
                                                                                                        "credit-note",
                                                                                                        VERSION_1_17_1);
+  @Deprecated (forRemoval = false)
   public static final DVRCoordinate VID_OIOUBL_INVOICE_1_17_1 = PhiveRulesHelper.createCoordinate (GROUPID,
                                                                                                    "invoice",
                                                                                                    VERSION_1_17_1);
+  @Deprecated (forRemoval = false)
   public static final DVRCoordinate VID_OIOUBL_ORDER_1_17_1 = PhiveRulesHelper.createCoordinate (GROUPID,
                                                                                                  "order",
                                                                                                  VERSION_1_17_1);
+  @Deprecated (forRemoval = false)
   public static final DVRCoordinate VID_OIOUBL_ORDER_CANCELLATION_1_17_1 = PhiveRulesHelper.createCoordinate (GROUPID,
                                                                                                               "order-cancellation",
                                                                                                               VERSION_1_17_1);
+  @Deprecated (forRemoval = false)
   public static final DVRCoordinate VID_OIOUBL_ORDER_CHANGE_1_17_1 = PhiveRulesHelper.createCoordinate (GROUPID,
                                                                                                         "order-change",
                                                                                                         VERSION_1_17_1);
+  @Deprecated (forRemoval = false)
   public static final DVRCoordinate VID_OIOUBL_ORDER_RESPONSE_1_17_1 = PhiveRulesHelper.createCoordinate (GROUPID,
                                                                                                           "order-response",
                                                                                                           VERSION_1_17_1);
+  @Deprecated (forRemoval = false)
   public static final DVRCoordinate VID_OIOUBL_ORDER_RESPONSE_SIMPLE_1_17_1 = PhiveRulesHelper.createCoordinate (GROUPID,
                                                                                                                  "order-response-simple",
                                                                                                                  VERSION_1_17_1);
+  @Deprecated (forRemoval = false)
   public static final DVRCoordinate VID_OIOUBL_REMINDER_1_17_1 = PhiveRulesHelper.createCoordinate (GROUPID,
                                                                                                     "reminder",
                                                                                                     VERSION_1_17_1);
+  @Deprecated (forRemoval = false)
   public static final DVRCoordinate VID_OIOUBL_STATEMENT_1_17_1 = PhiveRulesHelper.createCoordinate (GROUPID,
                                                                                                      "statement",
                                                                                                      VERSION_1_17_1);
+  @Deprecated (forRemoval = false)
   public static final DVRCoordinate VID_OIOUBL_UTILITY_STATEMENT_1_17_1 = PhiveRulesHelper.createCoordinate (GROUPID,
                                                                                                              "utility-statement",
                                                                                                              VERSION_1_17_1);
+
+  // 1.17.2
+  private static final String VERSION_1_17_2 = "1.17.2";
+  public static final LocalDate VERSION_1_17_2_VALID_PER = PDTFactory.createLocalDate (2026, Month.MAY, 1);
+  public static final OffsetDateTime VERSION_1_17_2_VALID_PER_UTC = PDTFactory.createOffsetDateTimeUTC (VERSION_1_17_2_VALID_PER);
+  public static final DVRCoordinate VID_OIOUBL_APPLICATION_RESPONSE_1_17_2 = PhiveRulesHelper.createCoordinate (GROUPID,
+                                                                                                                "application-response",
+                                                                                                                VERSION_1_17_2);
+  public static final DVRCoordinate VID_OIOUBL_CATALOGUE_1_17_2 = PhiveRulesHelper.createCoordinate (GROUPID,
+                                                                                                     "catalogue",
+                                                                                                     VERSION_1_17_2);
+  public static final DVRCoordinate VID_OIOUBL_CATALOGUE_DELETION_1_17_2 = PhiveRulesHelper.createCoordinate (GROUPID,
+                                                                                                              "catalogue-deletion",
+                                                                                                              VERSION_1_17_2);
+  public static final DVRCoordinate VID_OIOUBL_CATALOGUE_ITEM_SPECIFICATION_UPDATE_1_17_2 = PhiveRulesHelper.createCoordinate (GROUPID,
+                                                                                                                               "catalogue-item-specification-update",
+                                                                                                                               VERSION_1_17_2);
+  public static final DVRCoordinate VID_OIOUBL_CATALOGUE_PRICING_UPDATE_1_17_2 = PhiveRulesHelper.createCoordinate (GROUPID,
+                                                                                                                    "catalogue-pricing-update",
+                                                                                                                    VERSION_1_17_2);
+  public static final DVRCoordinate VID_OIOUBL_CATALOGUE_REQUEST_1_17_2 = PhiveRulesHelper.createCoordinate (GROUPID,
+                                                                                                             "catalogue-request",
+                                                                                                             VERSION_1_17_2);
+  public static final DVRCoordinate VID_OIOUBL_CREDIT_NOTE_1_17_2 = PhiveRulesHelper.createCoordinate (GROUPID,
+                                                                                                       "credit-note",
+                                                                                                       VERSION_1_17_2);
+  public static final DVRCoordinate VID_OIOUBL_INVOICE_1_17_2 = PhiveRulesHelper.createCoordinate (GROUPID,
+                                                                                                   "invoice",
+                                                                                                   VERSION_1_17_2);
+  public static final DVRCoordinate VID_OIOUBL_ORDER_1_17_2 = PhiveRulesHelper.createCoordinate (GROUPID,
+                                                                                                 "order",
+                                                                                                 VERSION_1_17_2);
+  public static final DVRCoordinate VID_OIOUBL_ORDER_CANCELLATION_1_17_2 = PhiveRulesHelper.createCoordinate (GROUPID,
+                                                                                                              "order-cancellation",
+                                                                                                              VERSION_1_17_2);
+  public static final DVRCoordinate VID_OIOUBL_ORDER_CHANGE_1_17_2 = PhiveRulesHelper.createCoordinate (GROUPID,
+                                                                                                        "order-change",
+                                                                                                        VERSION_1_17_2);
+  public static final DVRCoordinate VID_OIOUBL_ORDER_RESPONSE_1_17_2 = PhiveRulesHelper.createCoordinate (GROUPID,
+                                                                                                          "order-response",
+                                                                                                          VERSION_1_17_2);
+  public static final DVRCoordinate VID_OIOUBL_ORDER_RESPONSE_SIMPLE_1_17_2 = PhiveRulesHelper.createCoordinate (GROUPID,
+                                                                                                                 "order-response-simple",
+                                                                                                                 VERSION_1_17_2);
+  public static final DVRCoordinate VID_OIOUBL_REMINDER_1_17_2 = PhiveRulesHelper.createCoordinate (GROUPID,
+                                                                                                    "reminder",
+                                                                                                    VERSION_1_17_2);
+  public static final DVRCoordinate VID_OIOUBL_STATEMENT_1_17_2 = PhiveRulesHelper.createCoordinate (GROUPID,
+                                                                                                     "statement",
+                                                                                                     VERSION_1_17_2);
+  public static final DVRCoordinate VID_OIOUBL_UTILITY_STATEMENT_1_17_2 = PhiveRulesHelper.createCoordinate (GROUPID,
+                                                                                                             "utility-statement",
+                                                                                                             VERSION_1_17_2);
 
   private OIOUBLValidation ()
   {}
@@ -2148,7 +2217,7 @@ public final class OIOUBLValidation
       VesXmlBuilder.builder ()
                        .vesID (VID_OIOUBL_APPLICATION_RESPONSE_1_17_1)
                        .displayNamePrefix ("OIOUBL Application Response ")
-                       .notDeprecated ()
+                       .deprecated ()
                        .validFrom (VERSION_1_17_1_VALID_PER_UTC)
                        .addXSD (UBL21Marshaller.getAllApplicationResponseXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
@@ -2158,7 +2227,7 @@ public final class OIOUBLValidation
       VesXmlBuilder.builder ()
                        .vesID (VID_OIOUBL_CATALOGUE_1_17_1)
                        .displayNamePrefix ("OIOUBL Catalogue ")
-                       .notDeprecated ()
+                       .deprecated ()
                        .validFrom (VERSION_1_17_1_VALID_PER_UTC)
                        .addXSD (UBL21Marshaller.getAllCatalogueXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
@@ -2168,7 +2237,7 @@ public final class OIOUBLValidation
       VesXmlBuilder.builder ()
                        .vesID (VID_OIOUBL_CATALOGUE_DELETION_1_17_1)
                        .displayNamePrefix ("OIOUBL Catalogue Deletion ")
-                       .notDeprecated ()
+                       .deprecated ()
                        .validFrom (VERSION_1_17_1_VALID_PER_UTC)
                        .addXSD (UBL21Marshaller.getAllCatalogueDeletionXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
@@ -2178,7 +2247,7 @@ public final class OIOUBLValidation
       VesXmlBuilder.builder ()
                        .vesID (VID_OIOUBL_CATALOGUE_ITEM_SPECIFICATION_UPDATE_1_17_1)
                        .displayNamePrefix ("OIOUBL Catalogue Item Specification Update ")
-                       .notDeprecated ()
+                       .deprecated ()
                        .validFrom (VERSION_1_17_1_VALID_PER_UTC)
                        .addXSD (UBL21Marshaller.getAllCatalogueItemSpecificationUpdateXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
@@ -2188,7 +2257,7 @@ public final class OIOUBLValidation
       VesXmlBuilder.builder ()
                        .vesID (VID_OIOUBL_CATALOGUE_PRICING_UPDATE_1_17_1)
                        .displayNamePrefix ("OIOUBL Catalogue Pricing Update ")
-                       .notDeprecated ()
+                       .deprecated ()
                        .validFrom (VERSION_1_17_1_VALID_PER_UTC)
                        .addXSD (UBL21Marshaller.getAllCataloguePricingUpdateXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
@@ -2198,7 +2267,7 @@ public final class OIOUBLValidation
       VesXmlBuilder.builder ()
                        .vesID (VID_OIOUBL_CATALOGUE_REQUEST_1_17_1)
                        .displayNamePrefix ("OIOUBL Catalogue Request ")
-                       .notDeprecated ()
+                       .deprecated ()
                        .validFrom (VERSION_1_17_1_VALID_PER_UTC)
                        .addXSD (UBL21Marshaller.getAllCatalogueRequestXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
@@ -2208,7 +2277,7 @@ public final class OIOUBLValidation
       VesXmlBuilder.builder ()
                        .vesID (VID_OIOUBL_CREDIT_NOTE_1_17_1)
                        .displayNamePrefix ("OIOUBL Credit Note ")
-                       .notDeprecated ()
+                       .deprecated ()
                        .validFrom (VERSION_1_17_1_VALID_PER_UTC)
                        .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
@@ -2218,7 +2287,7 @@ public final class OIOUBLValidation
       VesXmlBuilder.builder ()
                        .vesID (VID_OIOUBL_INVOICE_1_17_1)
                        .displayNamePrefix ("OIOUBL Invoice ")
-                       .notDeprecated ()
+                       .deprecated ()
                        .validFrom (VERSION_1_17_1_VALID_PER_UTC)
                        .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
@@ -2228,7 +2297,7 @@ public final class OIOUBLValidation
       VesXmlBuilder.builder ()
                        .vesID (VID_OIOUBL_ORDER_1_17_1)
                        .displayNamePrefix ("OIOUBL Order ")
-                       .notDeprecated ()
+                       .deprecated ()
                        .validFrom (VERSION_1_17_1_VALID_PER_UTC)
                        .addXSD (UBL21Marshaller.getAllOrderXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
@@ -2238,7 +2307,7 @@ public final class OIOUBLValidation
       VesXmlBuilder.builder ()
                        .vesID (VID_OIOUBL_ORDER_CANCELLATION_1_17_1)
                        .displayNamePrefix ("OIOUBL Order Cancellation ")
-                       .notDeprecated ()
+                       .deprecated ()
                        .validFrom (VERSION_1_17_1_VALID_PER_UTC)
                        .addXSD (UBL21Marshaller.getAllOrderCancellationXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
@@ -2248,7 +2317,7 @@ public final class OIOUBLValidation
       VesXmlBuilder.builder ()
                        .vesID (VID_OIOUBL_ORDER_CHANGE_1_17_1)
                        .displayNamePrefix ("OIOUBL Order Change ")
-                       .notDeprecated ()
+                       .deprecated ()
                        .validFrom (VERSION_1_17_1_VALID_PER_UTC)
                        .addXSD (UBL21Marshaller.getAllOrderChangeXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
@@ -2258,7 +2327,7 @@ public final class OIOUBLValidation
       VesXmlBuilder.builder ()
                        .vesID (VID_OIOUBL_ORDER_RESPONSE_1_17_1)
                        .displayNamePrefix ("OIOUBL Order Response ")
-                       .notDeprecated ()
+                       .deprecated ()
                        .validFrom (VERSION_1_17_1_VALID_PER_UTC)
                        .addXSD (UBL21Marshaller.getAllOrderResponseXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
@@ -2268,7 +2337,7 @@ public final class OIOUBLValidation
       VesXmlBuilder.builder ()
                        .vesID (VID_OIOUBL_ORDER_RESPONSE_SIMPLE_1_17_1)
                        .displayNamePrefix ("OIOUBL Order Response Simple ")
-                       .notDeprecated ()
+                       .deprecated ()
                        .validFrom (VERSION_1_17_1_VALID_PER_UTC)
                        .addXSD (UBL21Marshaller.getAllOrderResponseSimpleXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
@@ -2278,7 +2347,7 @@ public final class OIOUBLValidation
       VesXmlBuilder.builder ()
                        .vesID (VID_OIOUBL_REMINDER_1_17_1)
                        .displayNamePrefix ("OIOUBL Reminder ")
-                       .notDeprecated ()
+                       .deprecated ()
                        .validFrom (VERSION_1_17_1_VALID_PER_UTC)
                        .addXSD (UBL21Marshaller.getAllReminderXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
@@ -2288,7 +2357,7 @@ public final class OIOUBLValidation
       VesXmlBuilder.builder ()
                        .vesID (VID_OIOUBL_STATEMENT_1_17_1)
                        .displayNamePrefix ("OIOUBL Statement ")
-                       .notDeprecated ()
+                       .deprecated ()
                        .validFrom (VERSION_1_17_1_VALID_PER_UTC)
                        .addXSD (UBL21Marshaller.getAllStatementXSDs ())
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
@@ -2299,8 +2368,174 @@ public final class OIOUBLValidation
       VesXmlBuilder.builder ()
                        .vesID (VID_OIOUBL_UTILITY_STATEMENT_1_17_1)
                        .displayNamePrefix ("OIOUBL Utility Statement ")
-                       .notDeprecated ()
+                       .deprecated ()
                        .validFrom (VERSION_1_17_1_VALID_PER_UTC)
+                       .addXSD (aXSDUtilityStatement)
+                       .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL20 (new ClassPathResource (sPath +
+                                                                                                    "OIOUBL_UtilityStatement_Schematron.xslt",
+                                                                                                    _getCL ())))
+                       .registerInto (aRegistry);
+    }
+
+    // 1.17.2
+    {
+      final String sPath = "/external/schematron/oioubl/1.17.2/xslt/";
+      VesXmlBuilder.builder ()
+                       .vesID (VID_OIOUBL_APPLICATION_RESPONSE_1_17_2)
+                       .displayNamePrefix ("OIOUBL Application Response ")
+                       .notDeprecated ()
+                       .validFrom (VERSION_1_17_2_VALID_PER_UTC)
+                       .addXSD (UBL21Marshaller.getAllApplicationResponseXSDs ())
+                       .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
+                                                                                                    "OIOUBL_ApplicationResponse_Schematron.xslt",
+                                                                                                    _getCL ())))
+                       .registerInto (aRegistry);
+      VesXmlBuilder.builder ()
+                       .vesID (VID_OIOUBL_CATALOGUE_1_17_2)
+                       .displayNamePrefix ("OIOUBL Catalogue ")
+                       .notDeprecated ()
+                       .validFrom (VERSION_1_17_2_VALID_PER_UTC)
+                       .addXSD (UBL21Marshaller.getAllCatalogueXSDs ())
+                       .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
+                                                                                                    "OIOUBL_Catalogue_Schematron.xslt",
+                                                                                                    _getCL ())))
+                       .registerInto (aRegistry);
+      VesXmlBuilder.builder ()
+                       .vesID (VID_OIOUBL_CATALOGUE_DELETION_1_17_2)
+                       .displayNamePrefix ("OIOUBL Catalogue Deletion ")
+                       .notDeprecated ()
+                       .validFrom (VERSION_1_17_2_VALID_PER_UTC)
+                       .addXSD (UBL21Marshaller.getAllCatalogueDeletionXSDs ())
+                       .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
+                                                                                                    "OIOUBL_CatalogueDeletion_Schematron.xslt",
+                                                                                                    _getCL ())))
+                       .registerInto (aRegistry);
+      VesXmlBuilder.builder ()
+                       .vesID (VID_OIOUBL_CATALOGUE_ITEM_SPECIFICATION_UPDATE_1_17_2)
+                       .displayNamePrefix ("OIOUBL Catalogue Item Specification Update ")
+                       .notDeprecated ()
+                       .validFrom (VERSION_1_17_2_VALID_PER_UTC)
+                       .addXSD (UBL21Marshaller.getAllCatalogueItemSpecificationUpdateXSDs ())
+                       .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
+                                                                                                    "OIOUBL_CatalogueItemSpecificationUpdate_Schematron.xslt",
+                                                                                                    _getCL ())))
+                       .registerInto (aRegistry);
+      VesXmlBuilder.builder ()
+                       .vesID (VID_OIOUBL_CATALOGUE_PRICING_UPDATE_1_17_2)
+                       .displayNamePrefix ("OIOUBL Catalogue Pricing Update ")
+                       .notDeprecated ()
+                       .validFrom (VERSION_1_17_2_VALID_PER_UTC)
+                       .addXSD (UBL21Marshaller.getAllCataloguePricingUpdateXSDs ())
+                       .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
+                                                                                                    "OIOUBL_CataloguePricingUpdate_Schematron.xslt",
+                                                                                                    _getCL ())))
+                       .registerInto (aRegistry);
+      VesXmlBuilder.builder ()
+                       .vesID (VID_OIOUBL_CATALOGUE_REQUEST_1_17_2)
+                       .displayNamePrefix ("OIOUBL Catalogue Request ")
+                       .notDeprecated ()
+                       .validFrom (VERSION_1_17_2_VALID_PER_UTC)
+                       .addXSD (UBL21Marshaller.getAllCatalogueRequestXSDs ())
+                       .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
+                                                                                                    "OIOUBL_CatalogueRequest_Schematron.xslt",
+                                                                                                    _getCL ())))
+                       .registerInto (aRegistry);
+      VesXmlBuilder.builder ()
+                       .vesID (VID_OIOUBL_CREDIT_NOTE_1_17_2)
+                       .displayNamePrefix ("OIOUBL Credit Note ")
+                       .notDeprecated ()
+                       .validFrom (VERSION_1_17_2_VALID_PER_UTC)
+                       .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
+                       .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
+                                                                                                    "OIOUBL_CreditNote_Schematron.xslt",
+                                                                                                    _getCL ())))
+                       .registerInto (aRegistry);
+      VesXmlBuilder.builder ()
+                       .vesID (VID_OIOUBL_INVOICE_1_17_2)
+                       .displayNamePrefix ("OIOUBL Invoice ")
+                       .notDeprecated ()
+                       .validFrom (VERSION_1_17_2_VALID_PER_UTC)
+                       .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
+                       .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
+                                                                                                    "OIOUBL_Invoice_Schematron.xslt",
+                                                                                                    _getCL ())))
+                       .registerInto (aRegistry);
+      VesXmlBuilder.builder ()
+                       .vesID (VID_OIOUBL_ORDER_1_17_2)
+                       .displayNamePrefix ("OIOUBL Order ")
+                       .notDeprecated ()
+                       .validFrom (VERSION_1_17_2_VALID_PER_UTC)
+                       .addXSD (UBL21Marshaller.getAllOrderXSDs ())
+                       .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
+                                                                                                    "OIOUBL_Order_Schematron.xslt",
+                                                                                                    _getCL ())))
+                       .registerInto (aRegistry);
+      VesXmlBuilder.builder ()
+                       .vesID (VID_OIOUBL_ORDER_CANCELLATION_1_17_2)
+                       .displayNamePrefix ("OIOUBL Order Cancellation ")
+                       .notDeprecated ()
+                       .validFrom (VERSION_1_17_2_VALID_PER_UTC)
+                       .addXSD (UBL21Marshaller.getAllOrderCancellationXSDs ())
+                       .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
+                                                                                                    "OIOUBL_OrderCancellation_Schematron.xslt",
+                                                                                                    _getCL ())))
+                       .registerInto (aRegistry);
+      VesXmlBuilder.builder ()
+                       .vesID (VID_OIOUBL_ORDER_CHANGE_1_17_2)
+                       .displayNamePrefix ("OIOUBL Order Change ")
+                       .notDeprecated ()
+                       .validFrom (VERSION_1_17_2_VALID_PER_UTC)
+                       .addXSD (UBL21Marshaller.getAllOrderChangeXSDs ())
+                       .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
+                                                                                                    "OIOUBL_OrderChange_Schematron.xslt",
+                                                                                                    _getCL ())))
+                       .registerInto (aRegistry);
+      VesXmlBuilder.builder ()
+                       .vesID (VID_OIOUBL_ORDER_RESPONSE_1_17_2)
+                       .displayNamePrefix ("OIOUBL Order Response ")
+                       .notDeprecated ()
+                       .validFrom (VERSION_1_17_2_VALID_PER_UTC)
+                       .addXSD (UBL21Marshaller.getAllOrderResponseXSDs ())
+                       .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
+                                                                                                    "OIOUBL_OrderResponse_Schematron.xslt",
+                                                                                                    _getCL ())))
+                       .registerInto (aRegistry);
+      VesXmlBuilder.builder ()
+                       .vesID (VID_OIOUBL_ORDER_RESPONSE_SIMPLE_1_17_2)
+                       .displayNamePrefix ("OIOUBL Order Response Simple ")
+                       .notDeprecated ()
+                       .validFrom (VERSION_1_17_2_VALID_PER_UTC)
+                       .addXSD (UBL21Marshaller.getAllOrderResponseSimpleXSDs ())
+                       .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
+                                                                                                    "OIOUBL_OrderResponseSimple_Schematron.xslt",
+                                                                                                    _getCL ())))
+                       .registerInto (aRegistry);
+      VesXmlBuilder.builder ()
+                       .vesID (VID_OIOUBL_REMINDER_1_17_2)
+                       .displayNamePrefix ("OIOUBL Reminder ")
+                       .notDeprecated ()
+                       .validFrom (VERSION_1_17_2_VALID_PER_UTC)
+                       .addXSD (UBL21Marshaller.getAllReminderXSDs ())
+                       .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
+                                                                                                    "OIOUBL_Reminder_Schematron.xslt",
+                                                                                                    _getCL ())))
+                       .registerInto (aRegistry);
+      VesXmlBuilder.builder ()
+                       .vesID (VID_OIOUBL_STATEMENT_1_17_2)
+                       .displayNamePrefix ("OIOUBL Statement ")
+                       .notDeprecated ()
+                       .validFrom (VERSION_1_17_2_VALID_PER_UTC)
+                       .addXSD (UBL21Marshaller.getAllStatementXSDs ())
+                       .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
+                                                                                                    "OIOUBL_Statement_Schematron.xslt",
+                                                                                                    _getCL ())))
+                       .registerInto (aRegistry);
+
+      VesXmlBuilder.builder ()
+                       .vesID (VID_OIOUBL_UTILITY_STATEMENT_1_17_2)
+                       .displayNamePrefix ("OIOUBL Utility Statement ")
+                       .notDeprecated ()
+                       .validFrom (VERSION_1_17_2_VALID_PER_UTC)
                        .addXSD (aXSDUtilityStatement)
                        .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL20 (new ClassPathResource (sPath +
                                                                                                     "OIOUBL_UtilityStatement_Schematron.xslt",
