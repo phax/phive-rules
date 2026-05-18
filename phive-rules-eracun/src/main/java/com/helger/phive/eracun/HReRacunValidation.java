@@ -93,6 +93,7 @@ public final class HReRacunValidation
    * @param aRegistry
    *        The registry to add the artefacts. May not be <code>null</code>.
    */
+  @SuppressWarnings ("deprecation")
   public static void init (@NonNull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
   {
     ValueEnforcer.notNull (aRegistry, "Registry");
@@ -107,19 +108,19 @@ public final class HReRacunValidation
       final ClassPathResource aXslt = new ClassPathResource ("/external/schematron/1.0.0/HR-CIUS-EXT-EN16931-UBL.xslt",
                                                              _getCL ());
       VesXmlBuilder.builder ()
-                       .vesID (VID_HR_ERACUN_UBL_CREDITNOTE_100)
-                       .displayNamePrefix ("HR eRacun Credit Note ")
-                       .deprecated ()
-                       .basedOn (aVESUBLCreditNote_1_3_15)
-                       .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aXslt))
-                       .registerInto (aRegistry);
+                   .vesID (VID_HR_ERACUN_UBL_CREDITNOTE_100)
+                   .displayNamePrefix ("HR eRacun Credit Note ")
+                   .deprecated ()
+                   .basedOn (aVESUBLCreditNote_1_3_15)
+                   .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aXslt))
+                   .registerInto (aRegistry);
       VesXmlBuilder.builder ()
-                       .vesID (VID_HR_ERACUN_UBL_INVOICE_100)
-                       .displayNamePrefix ("HR eRacun Invoice ")
-                       .deprecated ()
-                       .basedOn (aVESUBLInvoice_1_3_15)
-                       .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aXslt))
-                       .registerInto (aRegistry);
+                   .vesID (VID_HR_ERACUN_UBL_INVOICE_100)
+                   .displayNamePrefix ("HR eRacun Invoice ")
+                   .deprecated ()
+                   .basedOn (aVESUBLInvoice_1_3_15)
+                   .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aXslt))
+                   .registerInto (aRegistry);
     }
 
     // V1.0.1 referencing v1.3.15 of the EN rules
@@ -127,19 +128,19 @@ public final class HReRacunValidation
       final ClassPathResource aXslt = new ClassPathResource ("/external/schematron/1.0.1/HR-CIUS-EXT-EN16931-UBL.xslt",
                                                              _getCL ());
       VesXmlBuilder.builder ()
-                       .vesID (VID_HR_ERACUN_UBL_CREDITNOTE_101)
-                       .displayNamePrefix ("HR eRacun Credit Note ")
-                       .deprecated ()
-                       .basedOn (aVESUBLCreditNote_1_3_15)
-                       .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aXslt))
-                       .registerInto (aRegistry);
+                   .vesID (VID_HR_ERACUN_UBL_CREDITNOTE_101)
+                   .displayNamePrefix ("HR eRacun Credit Note ")
+                   .deprecated ()
+                   .basedOn (aVESUBLCreditNote_1_3_15)
+                   .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aXslt))
+                   .registerInto (aRegistry);
       VesXmlBuilder.builder ()
-                       .vesID (VID_HR_ERACUN_UBL_INVOICE_101)
-                       .displayNamePrefix ("HR eRacun Invoice ")
-                       .deprecated ()
-                       .basedOn (aVESUBLInvoice_1_3_15)
-                       .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aXslt))
-                       .registerInto (aRegistry);
+                   .vesID (VID_HR_ERACUN_UBL_INVOICE_101)
+                   .displayNamePrefix ("HR eRacun Invoice ")
+                   .deprecated ()
+                   .basedOn (aVESUBLInvoice_1_3_15)
+                   .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aXslt))
+                   .registerInto (aRegistry);
     }
 
     // V1.0.2 referencing v1.3.15 of the EN rules
@@ -147,19 +148,19 @@ public final class HReRacunValidation
       final ClassPathResource aXslt = new ClassPathResource ("/external/schematron/1.0.2/HR-CIUS-EXT-EN16931-UBL.xslt",
                                                              _getCL ());
       VesXmlBuilder.builder ()
-                       .vesID (VID_HR_ERACUN_UBL_CREDITNOTE_102)
-                       .displayNamePrefix ("HR eRacun Credit Note ")
-                       .notDeprecated ()
-                       .basedOn (aVESUBLCreditNote_1_3_15)
-                       .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aXslt))
-                       .registerInto (aRegistry);
+                   .vesID (VID_HR_ERACUN_UBL_CREDITNOTE_102)
+                   .displayNamePrefix ("HR eRacun Credit Note ")
+                   .notDeprecated ()
+                   .basedOn (aVESUBLCreditNote_1_3_15)
+                   .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aXslt))
+                   .registerInto (aRegistry);
       VesXmlBuilder.builder ()
-                       .vesID (VID_HR_ERACUN_UBL_INVOICE_102)
-                       .displayNamePrefix ("HR eRacun Invoice ")
-                       .notDeprecated ()
-                       .basedOn (aVESUBLInvoice_1_3_15)
-                       .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aXslt))
-                       .registerInto (aRegistry);
+                   .vesID (VID_HR_ERACUN_UBL_INVOICE_102)
+                   .displayNamePrefix ("HR eRacun Invoice ")
+                   .notDeprecated ()
+                   .basedOn (aVESUBLInvoice_1_3_15)
+                   .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aXslt))
+                   .registerInto (aRegistry);
     }
 
     // V1.0.3 referencing v1.3.15 of the EN rules
@@ -167,19 +168,19 @@ public final class HReRacunValidation
       final ClassPathResource aXslt = new ClassPathResource ("/external/schematron/1.0.3/HR-CIUS-EXT-EN16931-UBL.xslt",
                                                              _getCL ());
       VesXmlBuilder.builder ()
-                       .vesID (VID_HR_ERACUN_UBL_CREDITNOTE_103)
-                       .displayNamePrefix ("HR eRacun Credit Note ")
-                       .notDeprecated ()
-                       .basedOn (aVESUBLCreditNote_1_3_15)
-                       .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aXslt))
-                       .registerInto (aRegistry);
+                   .vesID (VID_HR_ERACUN_UBL_CREDITNOTE_103)
+                   .displayNamePrefix ("HR eRacun Credit Note ")
+                   .notDeprecated ()
+                   .basedOn (aVESUBLCreditNote_1_3_15)
+                   .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aXslt))
+                   .registerInto (aRegistry);
       VesXmlBuilder.builder ()
-                       .vesID (VID_HR_ERACUN_UBL_INVOICE_103)
-                       .displayNamePrefix ("HR eRacun Invoice ")
-                       .notDeprecated ()
-                       .basedOn (aVESUBLInvoice_1_3_15)
-                       .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aXslt))
-                       .registerInto (aRegistry);
+                   .vesID (VID_HR_ERACUN_UBL_INVOICE_103)
+                   .displayNamePrefix ("HR eRacun Invoice ")
+                   .notDeprecated ()
+                   .basedOn (aVESUBLInvoice_1_3_15)
+                   .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aXslt))
+                   .registerInto (aRegistry);
     }
   }
 }
