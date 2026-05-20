@@ -161,8 +161,15 @@
 		<cbc:LineExtensionAmount currencyID="OMR">2700</cbc:LineExtensionAmount>
 		<cac:Item>
 			<cbc:Name>Industrial coupling, steel</cbc:Name>
+			<cac:AdditionalItemIdentification>
+				<cbc:ID schemeName="CC">000000</cbc:ID>
+			</cac:AdditionalItemIdentification>
+			<cac:ItemSpecificationDocumentReference>
+				<cbc:ID schemeName="MP">00000000</cbc:ID>
+				<cbc:DocumentTypeCode>G</cbc:DocumentTypeCode>
+			</cac:ItemSpecificationDocumentReference>
 			<cac:CommodityClassification>
-				<cbc:NatureCode>G</cbc:NatureCode>
+				
 				<cbc:ItemClassificationCode listID="HS">840110000000</cbc:ItemClassificationCode>
 			</cac:CommodityClassification>
 			<cac:ClassifiedTaxCategory>

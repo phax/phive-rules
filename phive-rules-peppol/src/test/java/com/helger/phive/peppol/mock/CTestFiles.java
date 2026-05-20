@@ -1535,7 +1535,7 @@ public final class CTestFiles
                       "CommercialInvoice.xml",
                       "ContinuousSupplies-2.xml",
                       "ContinuousSupply.xml",
-                      // "DebitNote.xml" — sample has invalid UBL 2.1 element order
+                      "DebitNote.xml",
                       "DeemedSupply-2.xml",
                       "DeemedSupply.xml",
                       "E-Commerce-Apparel.xml",
@@ -1547,14 +1547,14 @@ public final class CTestFiles
                       "FullInvoice.xml",
                       "FullInvoiceCategory-E.xml",
                       // "GoodsImport-PharmaMixed.xml" — sample has invalid UBL 2.1 element order (cac:DeliveryTerms after cac:Shipment)
-                      // "GoodsImport-Vehicle.xml" — sample has invalid UBL 2.1 element order (cac:DeliveryTerms after cac:Shipment)
+                      "GoodsImport-Vehicle.xml",
                       "GoodsImport.xml",
                       "ImportRCM-Royalties.xml",
                       "ImportRCM-Software.xml",
                       "ImportRCM.xml",
                       "MarginScheme.xml",
                       "Prepayment-Final-Net.xml",
-                      // "Prepayment-Hotel.xml" — sample has invalid UBL 2.1 element order (cac:OriginatorDocumentReference after cac:Delivery)
+                      "Prepayment-Hotel.xml",
                       "Prepayment.xml",
                       "ProfitMargin.xml",
                       "SimplifiedTaxInvoice.xml",

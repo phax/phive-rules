@@ -245,10 +245,13 @@ I hope that with the introduction of PINT, the versioning problem will be solved
 
 # News and noteworthy
 
+v4.3.3 - work in progress
+* Updated Peppol PINT Oman (OM) 1.0.0 rules (2026-Q2-FIN snapshot)
+
 v4.3.2 - 2026-05-13
 * Added new submodule `phive-rules-osa` for Hungarian NAV Online Számla (OSA) v2.0 and v3.0 XSD validation. See [#64](https://github.com/phax/phive-rules/issues/64) - thx @krisraich
     * VES coordinates `hu.gov.nav.osa:invoiceData:2.0`, `hu.gov.nav.osa:invoiceAnnulment:2.0`, `hu.gov.nav.osa:invoiceData:3.0` and `hu.gov.nav.osa:invoiceAnnulment:3.0`
-* Updated Peppol PINT Oman (OM) 1.0.0 rules
+* Updated Peppol PINT Oman (OM) 1.0.0 rules (2026-Q2-FIN snapshot)
 * Added OIOUBL 1.17.2 rules. See [#65](https://github.com/phax/phive-rules/issues/65)
 * Deprecated all previous OIOUBL 1.x releases (1.16.1 and 1.17.1)
 

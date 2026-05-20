@@ -220,135 +220,8 @@
         ======*****************************************************************************======
     </svrl:text>
          <svrl:text>
-
-        Change log:
-
-        
-            - Bug-fix: IBR-017-OM predicate $isProfitMargin (bit 10)
-                       replaced by $isProfitMarginSelf (bit 11) to
-                       match the message bitmap. Same class of bug
-                       v1.0.0 fixed for IBR-086/087.
-            - Bug-fix: IBR-020-OM same fix - PMS instead of PM.
-            - Bug-fix: IBR-019-OM predicate now also includes
-                       $isProfitMarginSelf so PMS invoices no longer
-                       bypass the buyer-address check.
-            - Bug-fix: d-CL-06-OM diagnostic now displays @schemeName
-                       (was incorrectly @schemeID); error reports now
-                       show the actual offending value.
-            - Cleanup : duplicate $cat let in the TaxSubtotal rule
-                       removed (only $vatCategory remains).
-            - Cleanup : dead let $vatTaxTotals removed.
-            - Cleanup : IBR-068-OM merged into IBR-038-OM (textually
-                       identical predicate).
-            - Cleanup : orphan diagnostics removed: d-028,
-                       d-BTOM-CUR-001, d-IBR-068, d-IBR-101,
-                       d-IBR-102, d-IBR-104.
-            - Bug-fix: ALIGNED-IBRP-Z-01-OM and ALIGNED-IBRP-SR-12 moved
-                       from the TaxSubtotal rule (where they fired once
-                       per breakdown) to the document-level rule.
-            - Bug-fix: IBR-080-OM scoped to listID='HS' so 6-digit ISIC
-                       and 8-digit UNGM service-type codes no longer
-                       fail the 12-digit minimum length check that was
-                       intended for HS codes only.
-            - Bug-fix: IBR-091-OM scoped to listID='HS'. Previously
-                       6-digit ISIC codes starting with '01' or '06'
-                       were incorrectly rejected on Profit Margin
-                       invoices.
-            - Bug-fix: ALIGNED-IBRP-E-05-OM and O-05-OM now use a
-                       cardinality test on cbc:Percent instead of a
-                       defaulted-to-zero `not($vatRate)` test that
-                       silently accepted a present 0% rate.
-            - Bug-fix: IBR-058-OM predicate aligned with its message;
-                       the rule now also fires when cbc:PrepaidAmount
-                       is present on a non-prepayment invoice.
-            - Bug-fix: u:slack returns false() when either operand is
-                       empty (was: silently coerced to 0.0). Forces
-                       calculation rules to fail loudly on missing
-                       inputs.
-            - Hardening: IBR-137-OM rewritten to use a named-element
-                       descendant union instead of //*[self::a or ...]
-                       (the latter visits every descendant element).
-            - Hardening: cbc:IssueDate now has its own format guard
-                       (IBR-171-A-OM); IBR-171-OM was silently passing
-                       on malformed dates.
-            - Cleanup : CL-* diagnostic IDs renamed to d-CL-* so they
-                       no longer collide with the assert IDs of the
-                       same name. Stricter ISO-Schematron processors
-                       no longer flag duplicate IDs.
-            - Cleanup : flag="fatal" / flag="warning" attributes now
-                       carry a matching role= for ISO-Schematron
-                       strict-mode compatibility.
-            - Cleanup : IBR-104-OM merged into IBR-053-OM (identical
-                       predicate); IBR-101-OM merged into IBR-095-OM;
-                       IBR-102-OM merged into IBR-096-OM. Combined
-                       asserts cite both IDs in the message.
-            - Cleanup : dead helper functions u:fmtCmp and u:roundTo2
-                       removed; the three call sites of u:roundTo2
-                       (E-08/O-08/Z-08) now inline the same expression
-                       used everywhere else.
-            - Cleanup : invalidTxnCombo / invalidTxnReason lets removed.
-                       Combination checks are solely enforced by
-                       IBR-138-OM..IBR-148-OM.
-            - DX     : phase id="debug" now overrides $debug=true(),
-                       and the [DOC-SUMMARY] info report is gated on
-                       $debug. Production phases no longer emit it.
-            - DX     : new pattern HsBucketSelfTest (debug phase only)
-                       asserts monotonicity, coverage, and exhaustive-
-                       ness of the HS-bucket boundary table feeding
-                       CL-08And12-OM, so future drift is caught
-                       immediately.
-            - DX     : CL-01-OM stub comment added so the gap in
-                       numbering is documented rather than silent.
-            - DX     : added v1.0.0 design note above the TaxSubtotal
-                       rule explaining why a currency-track split into
-                       separate rules is deferred to v2 (ISO-Schematron
-                       rule-ordering semantics).
-
-       
-            - Bug-fix: IBR-097-OM predicate corrected from $cat='O' to $cat='Z'
-                       so the rule (rate must be 0 in tax-currency) actually
-                       fires for Zero-rated breakdowns, as the message states.
-                       Previously contradicted IBR-096-OM for cat 'O'.
-            - Bug-fix: IBR-086-OM predicate switched from $isProfitMargin (bit 10)
-                       to $isProfitMarginSelf (bit 11) to match the message's
-                       "Profit Margin Self-Invoice" target. Ensures cat 'O'
-                       is enforced on PMS lines (private-seller acquisitions),
-                       not on regular profit-margin invoices.
-            - Bug-fix: IBR-087-OM predicate switched from $isProfitMargin (bit 10)
-                       to $isProfitMarginSelf (bit 11) - same reasoning as
-                       IBR-086. Seller country = OM applies to PMS only.
-            - Wording : IBR-176-OM message bitmap corrected from
-                       'XXXXXXXXXXXXXXX1XXXX' to 'XXXXXXXXXXXXXX1XXXXX' so it
-                       matches the actual prepayment bit position 15.
-            - Wording : IBR-175-OM message reference corrected from (BTOM-003)
-                       to (BTOM-001). BTOM-003 is the exchange rate; the rule
-                       is about transaction type.
-            - Hardening: IBR-104-OM now adds the $isTaxCurrency guard so it
-                       only fires on the tax-accounting-currency breakdown,
-                       matching the message text. Previously double-fired on
-                       dual-currency invoices.
-            - Hardening: IBR-082-OM widened to fire for both Profit Margin
-                       (bit 10) AND Profit Margin Self-Invoice (bit 11).
-                       PMS invoices also carry PM_TOTAL and need the
-                       integrity check.
-
-        
-            - Bug-fix: IBR-066-OM XPath corrected (cac:TaxTotal/cac:TaxSubtotal).
-            - Bug-fix: diagnostic IDs corrected for ALIGNED-IBRP-E-08-OM, ALIGNED-IBRP-Z-08-OM, IBR-057-OM.
-            - Bug-fix: IBR-068-OM now allows simplified tax invoice exception (alignment with IBR-038-OM).
-            - Bug-fix: IBR-039 / IBR-054 / IBR-077 protected against missing line VAT amount node.
-            - Bug-fix: IBR-002-OM enforces canonical UUID v4 (version + variant nibbles).
-            - Bug-fix: IBR-056-OM now permits @listID in ('HS','MP') to align with CL-12-OM.
-            - Bug-fix: IBR-016-OM message wording corrected (or instead of "and").
-            - Hardening: ALIGNED-IBRP-S-08/S-09/E-08/O-08/Z-08 now scoped to invoice currency.
-            - Hardening: structural root pre-check added (BTOM-PRE-001).
-            - DX:        $standardVatRate, $amountTolerance and $sevenDecimalScale promoted to top-level lets.
-            - DX:        new "full" phase activates both patterns; pattern titles added.
-            - DX:        version metadata emitted as information report.
-
-        
-            - Initial release.
-
+        Change log: see the project history (git log / VERSION.md) for previous
+        revisions. This file always documents the current ruleset only.
     </svrl:text>
          <svrl:ns-prefix-in-attribute-values uri="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
                                              prefix="cbc"/>
@@ -378,15 +251,6 @@
             <xsl:apply-templates/>
          </svrl:active-pattern>
          <xsl:apply-templates select="/" mode="M52"/>
-         <svrl:active-pattern>
-            <xsl:attribute name="document">
-               <xsl:value-of select="document-uri(/)"/>
-            </xsl:attribute>
-            <xsl:attribute name="id">HsBucketSelfTest</xsl:attribute>
-            <xsl:attribute name="name">HS bucket boundary self-test (debug only)</xsl:attribute>
-            <xsl:apply-templates/>
-         </svrl:active-pattern>
-         <xsl:apply-templates select="/" mode="M53"/>
       </svrl:schematron-output>
    </xsl:template>
    <!--SCHEMATRON PATTERNS-->
@@ -438,7 +302,7 @@
    <!--PATTERN Aligned-om-rulesPINT Oman - business rules and calculation consistency-->
    <svrl:text xmlns:svrl="http://purl.oclc.org/dsdl/svrl">PINT Oman - business rules and calculation consistency</svrl:text>
    <!--RULE -->
-   <xsl:template match="/" priority="1012" mode="M51">
+   <xsl:template match="/" priority="1013" mode="M51">
       <svrl:fired-rule xmlns:svrl="http://purl.oclc.org/dsdl/svrl" context="/"/>
       <!--ASSERT fatal-->
       <xsl:choose>
@@ -485,10 +349,10 @@
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M51"/>
+      <xsl:apply-templates select="*" mode="M51"/>
    </xsl:template>
    <!--RULE -->
-   <xsl:template match="ubl:Invoice | cn:CreditNote" priority="1011" mode="M51">
+   <xsl:template match="ubl:Invoice | cn:CreditNote" priority="1012" mode="M51">
       <svrl:fired-rule xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
                        context="ubl:Invoice | cn:CreditNote"/>
       <!--REPORT information-->
@@ -561,17 +425,19 @@
       </xsl:if>
       <xsl:variable name="customizationID" select="normalize-space(cbc:CustomizationID)"/>
       <xsl:variable name="profileID" select="normalize-space(cbc:ProfileID)"/>
-      <!--ASSERT -->
+      <!--ASSERT fatal-->
       <xsl:choose>
-         <xsl:when test="$txnType != '' and $isValidBitString and contains($txnType, '1') and contains($txnType, 'X')"/>
+         <xsl:when test="$txnType != '' and $isValidBitString and contains($txnType, '1')"/>
          <xsl:otherwise>
             <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
-                                test="$txnType != '' and $isValidBitString and contains($txnType, '1') and contains($txnType, 'X')">
+                                test="$txnType != '' and $isValidBitString and contains($txnType, '1')">
                <xsl:attribute name="id">ALIGNED-IBRP-000-OM</xsl:attribute>
+               <xsl:attribute name="flag">fatal</xsl:attribute>
+               <xsl:attribute name="role">fatal</xsl:attribute>
                <xsl:attribute name="location">
                   <xsl:apply-templates select="." mode="schematron-select-full-path"/>
                </xsl:attribute>
-               <svrl:text>[ALIGNED-IBRP-000-OM] - Transaction type (BTOM-001) must be present and must be one of the 20 defined transaction type codes (a 20-character string with exactly one '1' marking the type and 'X' in all other positions).</svrl:text>
+               <svrl:text>[ALIGNED-IBRP-000-OM] - Transaction type (BTOM-001) must be present and must be a 20-character bitmap of '1' and '0' with at least one '1' marking an active transaction type.</svrl:text>
                <svrl:diagnostic-reference diagnostic="d-000">
 
             Transaction type (BTOM-001)
@@ -582,9 +448,10 @@
                   <xsl:text/>'
 
             Expected:
-            A 20-character string of '1' and 'X', with at least one '1'
-            indicating an active transaction type. Multiple '1's are allowed
-            when more than one transaction type applies.
+            A 20-character bitmap of '1' and '0' with at least one '1'
+            marking an active transaction type. More than one '1' is allowed
+            when several transaction types apply concurrently (subject to
+            the mutual-exclusion rules IBR-138..149, IBR-176).
 
             Action:
             Provide a valid transaction type code.
@@ -930,7 +797,7 @@
                <xsl:attribute name="location">
                   <xsl:apply-templates select="." mode="schematron-select-full-path"/>
                </xsl:attribute>
-               <svrl:text>[IBR-001-OM] - Invoice transaction type (BTOM-001) must be a 20-character string consisting only of '1' and 'X'.</svrl:text>
+               <svrl:text>[IBR-001-OM] - Invoice transaction type (BTOM-001) must be a 20-character string consisting only of '1' and '0'.</svrl:text>
                <svrl:diagnostic-reference diagnostic="d-IBR-001">
 
             Invoice transaction type (BTOM-001)
@@ -941,10 +808,10 @@
                   <xsl:text/>'
 
             Expected:
-            A 20-character string containing only '1' and 'X'.
+            A 20-character string containing only '1' and '0'.
 
             Action:
-            Provide a valid 20-character transaction type using '1' and 'X' only.
+            Provide a valid 20-character transaction type using '1' and '0' only.
         </svrl:diagnostic-reference>
             </svrl:failed-assert>
          </xsl:otherwise>
@@ -1183,7 +1050,7 @@
                <xsl:attribute name="location">
                   <xsl:apply-templates select="." mode="schematron-select-full-path"/>
                </xsl:attribute>
-               <svrl:text>[IBR-012-OM] - Deliver to country code (IBT-080) must not be 'OM' if invoice transaction type (BTOM-001) is export invoice (XXXXXX1XXXXXXXXXXXXX) and atleast one VAT exemption reason code (IBT-121) is 'Export of service (VATZR-OM-09)'.</svrl:text>
+               <svrl:text>[IBR-012-OM] - Deliver to country code (IBT-080) must not be 'OM' if invoice transaction type (BTOM-001) is export invoice (XXXXXX1XXXXXXXXXXXXX) and at least one VAT exemption reason code (IBT-121) is 'Export of service (VATZR-OM-09)'.</svrl:text>
                <svrl:diagnostic-reference diagnostic="d-IBR-012">
 
             Deliver-to Country Code (IBT-080) conflict.
@@ -1214,7 +1081,7 @@
                <xsl:attribute name="location">
                   <xsl:apply-templates select="." mode="schematron-select-full-path"/>
                </xsl:attribute>
-               <svrl:text>[IBR-013-OM] - Supporting document reference (IBT-122) and Supporting document UUID (BTOM-023) must be provided if invoice transaction type (BTOM-001) is export invoice (XXXXXX1XXXXXXXXXXXXX) and atleast one VAT exemption reason code (IBT-121) is 'Re-export of goods (VATZR-OM-12)'.</svrl:text>
+               <svrl:text>[IBR-013-OM] - Supporting document reference (IBT-122) and Supporting document UUID (BTOM-023) must be provided if invoice transaction type (BTOM-001) is export invoice (XXXXXX1XXXXXXXXXXXXX) and at least one VAT exemption reason code (IBT-121) is 'Re-export of goods (VATZR-OM-12)'.</svrl:text>
                <svrl:diagnostic-reference diagnostic="d-IBR-013">
 
             Supporting document reference (IBT-122) and UUID (BTOM-023)
@@ -1243,7 +1110,7 @@
                <xsl:attribute name="location">
                   <xsl:apply-templates select="." mode="schematron-select-full-path"/>
                </xsl:attribute>
-               <svrl:text>[IBR-014-OM] - Deliver to country code (ibt-080) must be provided if invoice transaction type (BTOM-001) is export invoice (XXXXXX1XXXXXXXXXXXXX).</svrl:text>
+               <svrl:text>[IBR-014-OM] - Deliver to country code (IBT-080) must be provided if invoice transaction type (BTOM-001) is export invoice (XXXXXX1XXXXXXXXXXXXX).</svrl:text>
                <svrl:diagnostic-reference diagnostic="d-IBR-014">
 
             Deliver-to country code (IBT-080)
@@ -1604,7 +1471,7 @@
                <xsl:attribute name="location">
                   <xsl:apply-templates select="." mode="schematron-select-full-path"/>
                </xsl:attribute>
-               <svrl:text>[IBR-040-OM] - Deliver to address line 1 - Postal code (IBT-075), Deliver to address line 2 - Postal code area (ibt-076), Deliver to address line 3 - Area (IBT-165), Deliver to city (IBT-077), Deliver to post code - PO Box(IBT-078), Deliver to country code (IBT-080) MUST be present when the Invoice transaction type (BTOM-001) is E-commerce supplies (XXXXXXXXXXX1XXXXXXXX).</svrl:text>
+               <svrl:text>[IBR-040-OM] - Deliver to address line 1 - Postal code (IBT-075), Deliver to address line 2 - Postal code area (IBT-076), Deliver to address line 3 - Area (IBT-165), Deliver to city (IBT-077), Deliver to post code - PO Box(IBT-078), Deliver to country code (IBT-080) MUST be present when the Invoice transaction type (BTOM-001) is E-commerce supplies (XXXXXXXXXXX1XXXXXXXX).</svrl:text>
                <svrl:diagnostic-reference diagnostic="d-IBR-040">
 
             Delivery address validation (e-commerce supply)
@@ -1665,22 +1532,18 @@
       </xsl:choose>
       <!--ASSERT fatal-->
       <xsl:choose>
-         <xsl:when test="not($isPrepayment or exists(cac:LegalMonetaryTotal/cbc:PrepaidAmount))                         or (exists(cac:LegalMonetaryTotal/cbc:PrepaidAmount)                             and exists(cac:OriginatorDocumentReference/cbc:ID)                             and exists(cac:OriginatorDocumentReference/cbc:UUID))"/>
+         <xsl:when test="not(exists(cac:LegalMonetaryTotal/cbc:PrepaidAmount))                         or (exists(cac:OriginatorDocumentReference/cbc:ID)                             and exists(cac:OriginatorDocumentReference/cbc:UUID))"/>
          <xsl:otherwise>
             <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
-                                test="not($isPrepayment or exists(cac:LegalMonetaryTotal/cbc:PrepaidAmount)) or (exists(cac:LegalMonetaryTotal/cbc:PrepaidAmount) and exists(cac:OriginatorDocumentReference/cbc:ID) and exists(cac:OriginatorDocumentReference/cbc:UUID))">
+                                test="not(exists(cac:LegalMonetaryTotal/cbc:PrepaidAmount)) or (exists(cac:OriginatorDocumentReference/cbc:ID) and exists(cac:OriginatorDocumentReference/cbc:UUID))">
                <xsl:attribute name="id">IBR-058-OM</xsl:attribute>
                <xsl:attribute name="flag">fatal</xsl:attribute>
                <xsl:attribute name="role">fatal</xsl:attribute>
                <xsl:attribute name="location">
                   <xsl:apply-templates select="." mode="schematron-select-full-path"/>
                </xsl:attribute>
-               <svrl:text>[IBR-058-OM] - Prepayment invoice number (BTOM-027) and Prepayment invoice UUID (BTOM-014) must be provided if Paid amount (IBT-180) is present (or the invoice transaction type is Prepayment Invoice).</svrl:text>
+               <svrl:text>[IBR-058-OM] - Prepayment invoice number (BTOM-027) and Prepayment invoice UUID (BTOM-014) must be provided if Paid amount (IBT-180) is present.</svrl:text>
                <svrl:diagnostic-reference diagnostic="d-IBR-058">
-
-            Prepayment flag: '<xsl:text/>
-                  <xsl:value-of select="$isPrepayment"/>
-                  <xsl:text/>'
 
             Prepaid amount present: '<xsl:text/>
                   <xsl:value-of select="exists(cac:LegalMonetaryTotal/cbc:PrepaidAmount)"/>
@@ -1772,17 +1635,17 @@
       </xsl:choose>
       <!--ASSERT fatal-->
       <xsl:choose>
-         <xsl:when test="                 not($invoiceCurrency != 'OMR'                     and $doc//cac:TaxCategory/cbc:ID = 'S')                 or                 exists(                     $doc/cac:TaxTotal/cac:TaxSubtotal[                         cac:TaxCategory/cbc:ID = 'S'                         and cbc:TaxAmount                         and cac:TaxCategory/cbc:Percent                     ]                 )                 "/>
+         <xsl:when test="                 not($invoiceCurrency != 'OMR'                     and $doc//cac:TaxCategory/cbc:ID = 'S')                 or                 exists(                     $doc/cac:TaxTotal[cbc:TaxAmount/@currencyID = $taxCurrency]                         /cac:TaxSubtotal[                             cbc:TaxAmount/@currencyID = $taxCurrency                             and cac:TaxCategory/cbc:ID = 'S'                             and cbc:TaxAmount                             and cac:TaxCategory/cbc:Percent                         ]                 )                 "/>
          <xsl:otherwise>
             <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
-                                test="not($invoiceCurrency != 'OMR' and $doc//cac:TaxCategory/cbc:ID = 'S') or exists( $doc/cac:TaxTotal/cac:TaxSubtotal[ cac:TaxCategory/cbc:ID = 'S' and cbc:TaxAmount and cac:TaxCategory/cbc:Percent ] )">
+                                test="not($invoiceCurrency != 'OMR' and $doc//cac:TaxCategory/cbc:ID = 'S') or exists( $doc/cac:TaxTotal[cbc:TaxAmount/@currencyID = $taxCurrency] /cac:TaxSubtotal[ cbc:TaxAmount/@currencyID = $taxCurrency and cac:TaxCategory/cbc:ID = 'S' and cbc:TaxAmount and cac:TaxCategory/cbc:Percent ] )">
                <xsl:attribute name="id">IBR-066-OM</xsl:attribute>
                <xsl:attribute name="flag">fatal</xsl:attribute>
                <xsl:attribute name="role">fatal</xsl:attribute>
                <xsl:attribute name="location">
                   <xsl:apply-templates select="." mode="schematron-select-full-path"/>
                </xsl:attribute>
-               <svrl:text>[IBR-066-OM] - TAX category tax amount in accounting currency (IBT-190), TAX category code for tax category tax amount in accounting currency (IBT-192) and TAX category rate for tax category tax amount in accounting currency (IBT-193) must be provided when Invoice currency code [IBT-005] is not equal to 'OMR' and atleast one TAX category code (IBT-118) is equal to 'S'.</svrl:text>
+               <svrl:text>[IBR-066-OM] - TAX category tax amount in accounting currency (IBT-190), TAX category code for tax category tax amount in accounting currency (IBT-192) and TAX category rate for tax category tax amount in accounting currency (IBT-193) must be provided when Invoice currency code (IBT-005) is not equal to 'OMR' and at least one TAX category code (IBT-118) is equal to 'S'.</svrl:text>
                <svrl:diagnostic-reference diagnostic="d-IBR-066">
 
             Missing VAT breakdown details for foreign currency invoice.
@@ -1813,26 +1676,25 @@
                <xsl:attribute name="location">
                   <xsl:apply-templates select="." mode="schematron-select-full-path"/>
                </xsl:attribute>
-               <svrl:text>[IBR-082-OM] - When Invoice transaction type (BTOM-001) is Profit margin invoice (XXXXXXXXX1XXXXXXXXXX) or Profit Margin Self-Invoice (XXXXXXXXXX1XXXXXXXXX), then Total Amount Due (BTOM-030), should be provided and is mandatory and must be the sum of Total amount including VAT (BTOM-017).</svrl:text>
+               <svrl:text>[IBR-082-OM] - When Invoice transaction type (BTOM-001) is Profit margin invoice (XXXXXXXXX1XXXXXXXXXX) or Profit Margin Self-Invoice (XXXXXXXXXX1XXXXXXXXX), then Total Amount Due (BTOM-020), should be provided and is mandatory and must be the sum of Total amount including VAT (BTOM-017).</svrl:text>
                <svrl:diagnostic-reference diagnostic="d-IBR-082">
 
-            Context: Invoice total consistency validation across all monetary components.
+            Context: Profit-margin Total Amount Due (BTOM-020) integrity check.
 
-            Found: Total amount due does not match expected calculation.
-
-            Value observed: '<xsl:text/>
+            Found:
+            - Reported Total Amount Due (BTOM-020):  '<xsl:text/>
                   <xsl:value-of select="cac:AdditionalDocumentReference[cbc:DocumentTypeCode='PM_TOTAL']/cbc:DocumentDescription"/>
                   <xsl:text/>'
-            Our Calculation: '<xsl:text/>
-                  <xsl:value-of select="sum((cac:InvoiceLine | cac:CreditNoteLine)/cac:ItemPriceExtension/cbc:Amount)"/>
+            - Calculated Σ line totals including VAT (BTOM-017): '<xsl:text/>
+                  <xsl:value-of select="sum((cac:InvoiceLine | cac:CreditNoteLine)/cac:ItemPriceExtension/cbc:Amount/xs:decimal(.))"/>
                   <xsl:text/>'
-            Difference: '<xsl:text/>
-                  <xsl:value-of select="xs:decimal(sum((cac:InvoiceLine | cac:CreditNoteLine)/cac:ItemPriceExtension/cbc:Amount) - cac:AdditionalDocumentReference[cbc:DocumentTypeCode='PM_TOTAL']/cbc:DocumentDescription)"/>
+            - Difference (Calculated - Reported):    '<xsl:text/>
+                  <xsl:value-of select="xs:decimal(sum((cac:InvoiceLine | cac:CreditNoteLine)/cac:ItemPriceExtension/cbc:Amount/xs:decimal(.)) - xs:decimal(cac:AdditionalDocumentReference[cbc:DocumentTypeCode='PM_TOTAL']/cbc:DocumentDescription))"/>
                   <xsl:text/>'
 
-            Expected: Total amount due (BTOM-020) must equal Total amount including VAT (BTOM-017) adjusted for all applicable charges, allowances, and rounding rules.
+            Expected: Total Amount Due (BTOM-020) must equal the sum of Total amount including VAT (BTOM-017) over all invoice lines, within ±0.01.
 
-            Action: Recalculate the total payable amount ensuring consistency across VAT, charges, allowances, and rounding rules.
+            Action: Recalculate the Profit-Margin Total Amount Due value or correct the line totals so the two agree.
         </svrl:diagnostic-reference>
             </svrl:failed-assert>
          </xsl:otherwise>
@@ -1849,7 +1711,7 @@
                <xsl:attribute name="location">
                   <xsl:apply-templates select="." mode="schematron-select-full-path"/>
                </xsl:attribute>
-               <svrl:text>[IBR-085-OM] - If invoice transaction type (BTOM-001) is 'Import of Goods' (XXXXXXXXXXXX1XXXXXXX), import details (IBG-33-OM) MUST be present and must contain, Import date (BTOM-020), Custom Declaration number (BTOM-021) and Incoterms (BTOM-022).</svrl:text>
+               <svrl:text>[IBR-085-OM] - If invoice transaction type (BTOM-001) is 'Import of Goods' (XXXXXXXXXXXX1XXXXXXX), then Import date (BTOM-030), Custom Declaration number (BTOM-021) and Incoterms (BTOM-022).MUST be present.</svrl:text>
                <svrl:diagnostic-reference diagnostic="d-IBR-085">
 
             Import Goods flag: '<xsl:text/>
@@ -2377,17 +2239,17 @@
       </xsl:choose>
       <!--ASSERT fatal-->
       <xsl:choose>
-         <xsl:when test="                     not($isSpecialZone and cac:AccountingSupplierParty/cac:Party/cac:PostalAddress/cbc:CountrySubentityCode!='MO')                     or                     cac:AccountingSupplierParty/cac:Party/cac:PartyIdentification/cbc:ID                     "/>
+         <xsl:when test="                     not($isSpecialZone and cac:AccountingSupplierParty/cac:Party/cac:PostalAddress/cbc:CountrySubentityCode!='MO')                     or                     cac:AccountingSupplierParty/cac:Party/cac:PartyIdentification/cbc:ID[@schemeName='SZLN']                     "/>
          <xsl:otherwise>
             <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
-                                test="not($isSpecialZone and cac:AccountingSupplierParty/cac:Party/cac:PostalAddress/cbc:CountrySubentityCode!='MO') or cac:AccountingSupplierParty/cac:Party/cac:PartyIdentification/cbc:ID">
+                                test="not($isSpecialZone and cac:AccountingSupplierParty/cac:Party/cac:PostalAddress/cbc:CountrySubentityCode!='MO') or cac:AccountingSupplierParty/cac:Party/cac:PartyIdentification/cbc:ID[@schemeName='SZLN']">
                <xsl:attribute name="id">IBR-151-OM</xsl:attribute>
                <xsl:attribute name="flag">fatal</xsl:attribute>
                <xsl:attribute name="role">fatal</xsl:attribute>
                <xsl:attribute name="location">
                   <xsl:apply-templates select="." mode="schematron-select-full-path"/>
                </xsl:attribute>
-               <svrl:text>[IBR-151-OM] - Seller identifier (IBT-029) is mandatory with Scheme identifier (IBT-029-1) 'Special Zone License Number' if Invoice transaction type (BTOM-001) is Special zone supplies (XXXXXXXXXXXXX1XXXXXX) and Seller country subdivision code (BTOM-024) is not equal to 'MO'.</svrl:text>
+               <svrl:text>[IBR-151-OM] - Seller identifier (IBT-029) is mandatory with Scheme identifier (IBT-029-1) 'SZLN' (Special Zone License Number) if Invoice transaction type (BTOM-001) is Special zone supplies (XXXXXXXXXXXXX1XXXXXX) and Seller country subdivision code (BTOM-024) is not equal to 'MO'.</svrl:text>
                <svrl:diagnostic-reference diagnostic="d-IBR-151">
 
             Missing or invalid seller special zone identifier.
@@ -2411,17 +2273,17 @@
       </xsl:choose>
       <!--ASSERT fatal-->
       <xsl:choose>
-         <xsl:when test="                     not($isSpecialZone and cac:AccountingCustomerParty/cac:Party/cac:PostalAddress/cbc:CountrySubentityCode!='MO')                     or                     cac:AccountingCustomerParty/cac:Party/cac:PartyIdentification/cbc:ID                     "/>
+         <xsl:when test="                     not($isSpecialZone                         and cac:AccountingCustomerParty/cac:Party/cac:PostalAddress/cbc:CountrySubentityCode!='MO'                         and normalize-space(cac:AccountingCustomerParty/cac:Party/cbc:EndpointID) != '997770000099')                     or                     cac:AccountingCustomerParty/cac:Party/cac:PartyIdentification/cbc:ID[@schemeName='SZLN']                     "/>
          <xsl:otherwise>
             <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
-                                test="not($isSpecialZone and cac:AccountingCustomerParty/cac:Party/cac:PostalAddress/cbc:CountrySubentityCode!='MO') or cac:AccountingCustomerParty/cac:Party/cac:PartyIdentification/cbc:ID">
+                                test="not($isSpecialZone and cac:AccountingCustomerParty/cac:Party/cac:PostalAddress/cbc:CountrySubentityCode!='MO' and normalize-space(cac:AccountingCustomerParty/cac:Party/cbc:EndpointID) != '997770000099') or cac:AccountingCustomerParty/cac:Party/cac:PartyIdentification/cbc:ID[@schemeName='SZLN']">
                <xsl:attribute name="id">IBR-152-OM</xsl:attribute>
                <xsl:attribute name="flag">fatal</xsl:attribute>
                <xsl:attribute name="role">fatal</xsl:attribute>
                <xsl:attribute name="location">
                   <xsl:apply-templates select="." mode="schematron-select-full-path"/>
                </xsl:attribute>
-               <svrl:text>[IBR-152-OM] - Buyer identifier (IBT-046) is mandatory with Scheme identifier (IBT-046-1) 'Special Zone License Number' if Invoice transaction type (BTOM-001) is Special zone supplies (XXXXXXXXXXXXX1XXXXXX) and Buyer country subdivision code (BTOM-026) is not equal to 'MO' except when Buyer electronic address (IBT-049) is '997770000099'.</svrl:text>
+               <svrl:text>[IBR-152-OM] - Buyer identifier (IBT-046) is mandatory with Scheme identifier (IBT-046-1) 'SZLN' (Special Zone License Number) if Invoice transaction type (BTOM-001) is Special zone supplies (XXXXXXXXXXXXX1XXXXXX) and Buyer country subdivision code (BTOM-026) is not equal to 'MO' except when Buyer electronic address (IBT-049) is '997770000099'.</svrl:text>
                <svrl:diagnostic-reference diagnostic="d-IBR-152">
 
             Missing or invalid buyer special zone identifier.
@@ -2445,17 +2307,17 @@
       </xsl:choose>
       <!--ASSERT fatal-->
       <xsl:choose>
-         <xsl:when test="                     not($isImportGoods)                     or                     cac:AccountingCustomerParty/cac:Party/cac:PartyIdentification/cbc:ID                     "/>
+         <xsl:when test="                     not($isImportGoods)                     or                     cac:AccountingCustomerParty/cac:Party/cac:PartyIdentification/cbc:ID[@schemeName='ICID']                     "/>
          <xsl:otherwise>
             <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
-                                test="not($isImportGoods) or cac:AccountingCustomerParty/cac:Party/cac:PartyIdentification/cbc:ID">
+                                test="not($isImportGoods) or cac:AccountingCustomerParty/cac:Party/cac:PartyIdentification/cbc:ID[@schemeName='ICID']">
                <xsl:attribute name="id">IBR-153-OM</xsl:attribute>
                <xsl:attribute name="flag">fatal</xsl:attribute>
                <xsl:attribute name="role">fatal</xsl:attribute>
                <xsl:attribute name="location">
                   <xsl:apply-templates select="." mode="schematron-select-full-path"/>
                </xsl:attribute>
-               <svrl:text>[IBR-153-OM] - Buyer identifier (IBT-046) is mandatory with Scheme identifier (IBT-046-1) 'Importer Customs ID' if Invoice transaction type (BTOM-001) is Import of Goods (XXXXXXXXXXXX1XXXXXXX).</svrl:text>
+               <svrl:text>[IBR-153-OM] - Buyer identifier (IBT-046) is mandatory with Scheme identifier (IBT-046-1) 'ICID' (Importer Customs ID) if Invoice transaction type (BTOM-001) is Import of Goods (XXXXXXXXXXXX1XXXXXXX).</svrl:text>
                <svrl:diagnostic-reference diagnostic="d-IBR-153">
 
             Missing or invalid buyer importer identifier.
@@ -2476,28 +2338,33 @@
       </xsl:choose>
       <!--ASSERT fatal-->
       <xsl:choose>
-         <xsl:when test="not($isExport and $lines[cac:Item/cac:ClassifiedTaxCategory/cbc:TaxExemptionReasonCode ='VATZR-OM-09'])                   or $lines[cac:Item/cac:CommodityClassification/cbc:ItemClassificationCode]"/>
+         <xsl:when test="not($isExport and $lines[cac:Item/cac:ClassifiedTaxCategory/cbc:TaxExemptionReasonCode ='VATZR-OM-09'])                   or $lines[cac:Item/cac:ItemSpecificationDocumentReference/cbc:ID[@schemeName='MP']]"/>
          <xsl:otherwise>
             <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
-                                test="not($isExport and $lines[cac:Item/cac:ClassifiedTaxCategory/cbc:TaxExemptionReasonCode ='VATZR-OM-09']) or $lines[cac:Item/cac:CommodityClassification/cbc:ItemClassificationCode]">
+                                test="not($isExport and $lines[cac:Item/cac:ClassifiedTaxCategory/cbc:TaxExemptionReasonCode ='VATZR-OM-09']) or $lines[cac:Item/cac:ItemSpecificationDocumentReference/cbc:ID[@schemeName='MP']]">
                <xsl:attribute name="id">IBR-155-OM</xsl:attribute>
                <xsl:attribute name="flag">fatal</xsl:attribute>
                <xsl:attribute name="role">fatal</xsl:attribute>
                <xsl:attribute name="location">
                   <xsl:apply-templates select="." mode="schematron-select-full-path"/>
                </xsl:attribute>
-               <svrl:text>[IBR-155-OM] - If invoice transaction type (BTOM-001) is export invoice (XXXXXX1XXXXXXXXXXXXX) and atleast one VAT exemption reason code (IBT-121) is 'Export of service' then Service Type (BTOM-015) must be provided from the codelist for Type of Services (CL-12-OM).</svrl:text>
+               <svrl:text>[IBR-155-OM] - If invoice transaction type (BTOM-001) is export invoice (XXXXXX1XXXXXXXXXXXXX) and at least one VAT exemption reason code (IBT-121) is 'Export of service' then Service Type (BTOM-034) must be provided from the code list for Type of Services (CL-12-OM).</svrl:text>
                <svrl:diagnostic-reference diagnostic="d-IBR-155">
 
             Context: Export of services requires mandatory service type classification for regulatory reporting.
 
-            Found: Service type is missing or not provided (cac:Item/cac:CommodityClassification/cbc:ItemClassificationCode = '<xsl:text/>
-                  <xsl:value-of select="cac:Item/cac:CommodityClassification/cbc:ItemClassificationCode"/>
-                  <xsl:text/>').
+            Found: Service type (MP) is missing or not provided at
+                cac:Item/cac:ItemSpecificationDocumentReference/cbc:ID[@schemeName='MP']
+            on any invoice line. Existing service-type entries detected on this document:
+            '<xsl:text/>
+                  <xsl:value-of select="string-join($lines/cac:Item/cac:ItemSpecificationDocumentReference/cbc:ID[@schemeName='MP'], ', ')"/>
+                  <xsl:text/>'
 
-            Expected: Service type must be provided for export of services using a valid code from code list CL-12-OM.
+            Expected: Service type must be provided for export of services using a valid code from code list CL-12-OM (@schemeName='MP').
 
-            Action: Populate a valid service type code from CL-12-OM or verify correct classification of the exported service.
+            Action: Populate a valid service type code from CL-12-OM at
+                cac:Item/cac:ItemSpecificationDocumentReference/cbc:ID[@schemeName='MP']
+            or verify correct classification of the exported service.
         </svrl:diagnostic-reference>
             </svrl:failed-assert>
          </xsl:otherwise>
@@ -2570,7 +2437,7 @@
                <xsl:attribute name="location">
                   <xsl:apply-templates select="." mode="schematron-select-full-path"/>
                </xsl:attribute>
-               <svrl:text>[IBR-169-OM] - Currency of Total amount due (profit margin) (BTOM-030) MUST be 'OMR'.</svrl:text>
+               <svrl:text>[IBR-169-OM] - Currency of Total amount due (profit margin) (BTOM-020) MUST be 'OMR'.</svrl:text>
                <svrl:diagnostic-reference diagnostic="d-IBR-169">
 
             Context: Profit margin invoices require a fixed accounting currency to ensure regulatory consistency and correct tax computation.
@@ -2662,7 +2529,7 @@
                <xsl:attribute name="location">
                   <xsl:apply-templates select="." mode="schematron-select-full-path"/>
                </xsl:attribute>
-               <svrl:text>[IBR-173-OM] - If Buyer electronic address (IBT-049) is '997770000099' OR 'to be provided by OpenPeppol', Seller UUID (BTOM-004) MUST be present.</svrl:text>
+               <svrl:text>[IBR-173-OM] - If Buyer electronic address (IBT-049) is '997770000099', Seller UUID (BTOM-004) MUST be present.</svrl:text>
                <svrl:diagnostic-reference diagnostic="d-IBR-173">
 
             Missing seller UUID.
@@ -2702,7 +2569,7 @@
             Missing or incomplete preceding invoice reference for profit margin invoice.
 
             Found:
-            - Transaction type (BTOM-003): '<xsl:text/>
+            - Transaction type (BTOM-001): '<xsl:text/>
                   <xsl:value-of select="cbc:InvoiceTypeCode/@name | cbc:CreditNoteTypeCode/@name"/>
                   <xsl:text/>'
             - Preceding invoice reference (IBT-025): '<xsl:text/>
@@ -2775,15 +2642,15 @@
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M51"/>
+      <xsl:apply-templates select="*" mode="M51"/>
    </xsl:template>
    <!--RULE -->
    <xsl:template match="cbc:ReceivedDate | cbc:InstallmentDueDate"
-                 priority="1010"
+                 priority="1011"
                  mode="M51">
       <svrl:fired-rule xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
                        context="cbc:ReceivedDate | cbc:InstallmentDueDate"/>
-      <!--ASSERT -->
+      <!--ASSERT fatal-->
       <xsl:choose>
          <xsl:when test="string-length(text()) = 10 and (string(.) castable as xs:date)"/>
          <xsl:otherwise>
@@ -2791,55 +2658,112 @@
                                 test="string-length(text()) = 10 and (string(.) castable as xs:date)">
                <xsl:attribute name="id">IBR-171-A-OM</xsl:attribute>
                <xsl:attribute name="flag">fatal</xsl:attribute>
+               <xsl:attribute name="role">fatal</xsl:attribute>
                <xsl:attribute name="location">
                   <xsl:apply-templates select="." mode="schematron-select-full-path"/>
                </xsl:attribute>
-               <svrl:text>[ibr-073]-A date MUST be formatted YYYY-MM-DD in (ibt-177), (ibt-181), (ibt-009).</svrl:text>
-               <svrl:diagnostic-reference diagnostic="d-IBR-171">
+               <svrl:text>[IBR-171-A-OM] - A date MUST be formatted YYYY-MM-DD in (IBT-177), (IBT-181), (IBT-009).</svrl:text>
+               <svrl:diagnostic-reference diagnostic="d-IBR-171-A">
 
-            Invoice issue date is in the future.
+            Date format error on a payment / installment date.
 
             Found:
-            - Issue date (IBT-002): '<xsl:text/>
-                  <xsl:value-of select="cbc:IssueDate"/>
+            - Element: '<xsl:text/>
+                  <xsl:value-of select="name()"/>
                   <xsl:text/>'
-            - Current date: '<xsl:text/>
-                  <xsl:value-of select="current-date()"/>
+            - Value:   '<xsl:text/>
+                  <xsl:value-of select="."/>
                   <xsl:text/>'
 
             Expected:
-            Issue date must be less than or equal to the current date.
+            Dates carried in cbc:ReceivedDate (IBT-177), cbc:InstallmentDueDate
+            (IBT-181) and the payment-due-date family (IBT-009) MUST be
+            formatted YYYY-MM-DD and represent a valid calendar date.
 
             Fix:
-            Ensure the invoice issue date is not set in the future.
+            Reformat the value to a 10-character ISO-8601 date.
         </svrl:diagnostic-reference>
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M51"/>
+      <xsl:apply-templates select="*" mode="M51"/>
    </xsl:template>
    <!--RULE -->
-   <xsl:template match="cbc:Amount              | cbc:BaseAmount              | cbc:PriceAmount              | cbc:LineExtensionAmount              | cbc:TaxExclusiveAmount              | cbc:TaxInclusiveAmount              | cbc:AllowanceTotalAmount              | cbc:ChargeTotalAmount              | cbc:PrepaidAmount              | cbc:PayableRoundingAmount              | cbc:PayableAmount              | cac:TaxTotal/cbc:TaxAmount              | cac:TaxTotal/cbc:TaxableAmount              | cac:TaxTotal/cac:TaxSubtotal/cbc:TaxAmount              | cac:TaxTotal/cac:TaxSubtotal/cbc:TaxableAmount              | cac:AdditionalDocumentReference[cbc:DocumentTypeCode='PM_TOTAL']/cbc:DocumentDescription"
-                 priority="1009"
+   <xsl:template match="cac:TaxExchangeRate/cbc:CalculationRate              | cac:PricingExchangeRate/cbc:CalculationRate              | cac:PaymentExchangeRate/cbc:CalculationRate"
+                 priority="1010"
                  mode="M51">
       <svrl:fired-rule xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
-                       context="cbc:Amount              | cbc:BaseAmount              | cbc:PriceAmount              | cbc:LineExtensionAmount              | cbc:TaxExclusiveAmount              | cbc:TaxInclusiveAmount              | cbc:AllowanceTotalAmount              | cbc:ChargeTotalAmount              | cbc:PrepaidAmount              | cbc:PayableRoundingAmount              | cbc:PayableAmount              | cac:TaxTotal/cbc:TaxAmount              | cac:TaxTotal/cbc:TaxableAmount              | cac:TaxTotal/cac:TaxSubtotal/cbc:TaxAmount              | cac:TaxTotal/cac:TaxSubtotal/cbc:TaxableAmount              | cac:AdditionalDocumentReference[cbc:DocumentTypeCode='PM_TOTAL']/cbc:DocumentDescription"/>
+                       context="cac:TaxExchangeRate/cbc:CalculationRate              | cac:PricingExchangeRate/cbc:CalculationRate              | cac:PaymentExchangeRate/cbc:CalculationRate"/>
       <!--ASSERT fatal-->
       <xsl:choose>
-         <xsl:when test=". castable as xs:decimal and xs:decimal(.) = round(xs:decimal(.) * 1000) div 1000"/>
+         <xsl:when test=". castable as xs:decimal and xs:decimal(.) = round(xs:decimal(.) * 10000000) div 10000000"/>
          <xsl:otherwise>
             <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
-                                test=". castable as xs:decimal and xs:decimal(.) = round(xs:decimal(.) * 1000) div 1000">
-               <xsl:attribute name="id">ibr-decimals-om</xsl:attribute>
+                                test=". castable as xs:decimal and xs:decimal(.) = round(xs:decimal(.) * 10000000) div 10000000">
+               <xsl:attribute name="id">IBR-DEC-07-OM</xsl:attribute>
                <xsl:attribute name="flag">fatal</xsl:attribute>
                <xsl:attribute name="role">fatal</xsl:attribute>
                <xsl:attribute name="location">
                   <xsl:apply-templates select="." mode="schematron-select-full-path"/>
                </xsl:attribute>
                <svrl:text>
-                [IBR-088-OM, IBR-109-OM..IBR-135-OM] - All amount values (including BTOM-030 Total amount due in Profit Margin) must not contain more than 3 decimal places.
+                [IBR-DEC-07-OM] - Currency Exchange Rate (BTOM-003) MUST NOT contain more than 7 decimal places.
             </svrl:text>
-               <svrl:diagnostic-reference diagnostic="d-CL-DEC-03-OM">
+               <svrl:diagnostic-reference diagnostic="d-IBR-DEC-07-OM">
+
+            Currency Exchange Rate decimal precision validation (BTOM-003)
+
+            Found:
+            - Element: '<xsl:text/>
+                  <xsl:value-of select="name()"/>
+                  <xsl:text/>'
+            - Value: '<xsl:text/>
+                  <xsl:value-of select="normalize-space(.)"/>
+                  <xsl:text/>'
+
+            Expected:
+            The currency exchange rate MUST NOT contain more than 7 decimal places.
+
+            Examples of valid values:
+            - 1
+            - 0.385
+            - 0.3850000
+            - 1.2345678
+
+            Invalid examples:
+            - 1.23456789
+            - 0.38500001234
+
+            Action:
+            Round the exchange rate to a maximum of 7 fractional digits.
+        </svrl:diagnostic-reference>
+            </svrl:failed-assert>
+         </xsl:otherwise>
+      </xsl:choose>
+      <xsl:apply-templates select="*" mode="M51"/>
+   </xsl:template>
+   <!--RULE -->
+   <xsl:template match="cbc:Amount              | cbc:BaseAmount              | cbc:PriceAmount              | cbc:LineExtensionAmount[not(parent::cac:LegalMonetaryTotal)]              | cbc:TaxExclusiveAmount[not(parent::cac:LegalMonetaryTotal)]              | cbc:TaxInclusiveAmount[not(parent::cac:LegalMonetaryTotal)]              | cbc:AllowanceTotalAmount[not(parent::cac:LegalMonetaryTotal)]              | cbc:ChargeTotalAmount[not(parent::cac:LegalMonetaryTotal)]              | cbc:PrepaidAmount[not(parent::cac:LegalMonetaryTotal)]              | cbc:PayableRoundingAmount[not(parent::cac:LegalMonetaryTotal)]              | cbc:PayableAmount[not(parent::cac:LegalMonetaryTotal)]              | cac:TaxTotal/cbc:TaxAmount[not(parent::cac:TaxTotal[parent::*[local-name()='Invoice' or local-name()='CreditNote']])]              | cac:TaxTotal/cbc:TaxableAmount              | cac:TaxTotal/cac:TaxSubtotal/cbc:TaxAmount              | cac:TaxTotal/cac:TaxSubtotal/cbc:TaxableAmount              | cac:AdditionalDocumentReference[cbc:DocumentTypeCode='PM_TOTAL']/cbc:DocumentDescription"
+                 priority="1009"
+                 mode="M51">
+      <svrl:fired-rule xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
+                       context="cbc:Amount              | cbc:BaseAmount              | cbc:PriceAmount              | cbc:LineExtensionAmount[not(parent::cac:LegalMonetaryTotal)]              | cbc:TaxExclusiveAmount[not(parent::cac:LegalMonetaryTotal)]              | cbc:TaxInclusiveAmount[not(parent::cac:LegalMonetaryTotal)]              | cbc:AllowanceTotalAmount[not(parent::cac:LegalMonetaryTotal)]              | cbc:ChargeTotalAmount[not(parent::cac:LegalMonetaryTotal)]              | cbc:PrepaidAmount[not(parent::cac:LegalMonetaryTotal)]              | cbc:PayableRoundingAmount[not(parent::cac:LegalMonetaryTotal)]              | cbc:PayableAmount[not(parent::cac:LegalMonetaryTotal)]              | cac:TaxTotal/cbc:TaxAmount[not(parent::cac:TaxTotal[parent::*[local-name()='Invoice' or local-name()='CreditNote']])]              | cac:TaxTotal/cbc:TaxableAmount              | cac:TaxTotal/cac:TaxSubtotal/cbc:TaxAmount              | cac:TaxTotal/cac:TaxSubtotal/cbc:TaxableAmount              | cac:AdditionalDocumentReference[cbc:DocumentTypeCode='PM_TOTAL']/cbc:DocumentDescription"/>
+      <!--ASSERT fatal-->
+      <xsl:choose>
+         <xsl:when test=". castable as xs:decimal and xs:decimal(.) = round(xs:decimal(.) * 1000) div 1000"/>
+         <xsl:otherwise>
+            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
+                                test=". castable as xs:decimal and xs:decimal(.) = round(xs:decimal(.) * 1000) div 1000">
+               <xsl:attribute name="id">IBR-DEC-03-OM</xsl:attribute>
+               <xsl:attribute name="flag">fatal</xsl:attribute>
+               <xsl:attribute name="role">fatal</xsl:attribute>
+               <xsl:attribute name="location">
+                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
+               </xsl:attribute>
+               <svrl:text>
+                [IBR-DEC-03-OM] (covering IBR-088-OM, IBR-109-OM..IBR-135-OM) - All amount values (including BTOM-020 Total amount due in Profit Margin) MUST NOT contain more than 3 decimal places and the exchange rate by IBR-DEC-07-OM (7 decimals).
+            </svrl:text>
+               <svrl:diagnostic-reference diagnostic="d-IBR-DEC-03-OM">
 
             Amount decimal precision validation (BTAE-Amount)
 
@@ -2852,7 +2776,8 @@
                   <xsl:text/>'
 
             Expected:
-            Amount must contain no more than 3 decimal places.
+            Amount (except Shared) must contain no more than 3 decimal places.
+            the Exchange rate is validated by IBR-DEC-07-OM at 7 decimals.)
 
             Examples of valid values:
             - 100
@@ -2870,7 +2795,7 @@
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M51"/>
+      <xsl:apply-templates select="*" mode="M51"/>
    </xsl:template>
    <!--RULE -->
    <xsl:template match="ubl:Invoice/cac:TaxTotal/cac:TaxSubtotal | cn:CreditNote/cac:TaxTotal/cac:TaxSubtotal"
@@ -3001,7 +2926,7 @@
                <xsl:attribute name="location">
                   <xsl:apply-templates select="." mode="schematron-select-full-path"/>
                </xsl:attribute>
-               <svrl:text>[ALIGNED-IBRP-048] - Each VAT breakdown (ibg-23) MUST have a VAT category rate (ibt-119), except if the Invoice is not subject to VAT.</svrl:text>
+               <svrl:text>[ALIGNED-IBRP-048] - Each VAT breakdown (IBG-23) MUST have a VAT category rate (IBT-119), except if the Invoice is not subject to VAT.</svrl:text>
                <svrl:diagnostic-reference diagnostic="d-048">
 
             Context: VAT category and VAT rate must be consistent to ensure correct tax calculation.
@@ -3064,7 +2989,7 @@
                <xsl:attribute name="location">
                   <xsl:apply-templates select="." mode="schematron-select-full-path"/>
                </xsl:attribute>
-               <svrl:text>[ALIGNED-IBRP-E-09-OM] - The VAT category tax amount (ibt-117) In a VAT breakdown (ibg-23) where the VAT category code (ibt-118) equals "E" MUST equal 0 (zero) unless invoice transaction type is a simplified tax invoice (X1XXXXXXXXXXXXXXXXXX), where a VAT category tax amount (ibt-117) I is not required if VAT category code (ibt-118) equal to "E".</svrl:text>
+               <svrl:text>[ALIGNED-IBRP-E-09-OM] - The VAT category tax amount (IBT-117) In a VAT breakdown (IBG-23) where the VAT category code (IBT-118) equals "E" MUST equal 0 (zero) unless invoice transaction type is a simplified tax invoice (X1XXXXXXXXXXXXXXXXXX), where a VAT category tax amount (IBT-117) I is not required if VAT category code (IBT-118) equal to "E".</svrl:text>
                <svrl:diagnostic-reference diagnostic="d-E-09">
 
             VAT breakdown (IBG-23) – Category 'E' (Exempt)
@@ -3408,7 +3333,7 @@
                <xsl:attribute name="location">
                   <xsl:apply-templates select="." mode="schematron-select-full-path"/>
                </xsl:attribute>
-               <svrl:text>[IBR-069-OM] - A VAT breakdown (ibg-23) with VAT Category code (ibt-118) "E"  and/or "Z" must have a VAT exemption reason code (IBT-121).</svrl:text>
+               <svrl:text>[IBR-069-OM] - A VAT breakdown (IBG-23) with VAT Category code (IBT-118) "E"  and/or "Z" must have a VAT exemption reason code (IBT-121).</svrl:text>
                <svrl:diagnostic-reference diagnostic="d-IBR-069">
 
             Missing VAT exemption reason.
@@ -3440,7 +3365,7 @@
                <xsl:attribute name="location">
                   <xsl:apply-templates select="." mode="schematron-select-full-path"/>
                </xsl:attribute>
-               <svrl:text>[IBR-070-OM] - A VAT breakdown (ibg-23) with VAT Category code (ibt-118) "O" MUST not have a VAT exemption reason code (IBT-121).</svrl:text>
+               <svrl:text>[IBR-070-OM] - A VAT breakdown (IBG-23) with VAT Category code (IBT-118) "O" MUST not have a VAT exemption reason code (IBT-121).</svrl:text>
                <svrl:diagnostic-reference diagnostic="d-IBR-070">
 
             Invalid VAT exemption for category 'O'.
@@ -3526,7 +3451,7 @@
       </xsl:choose>
       <!--ASSERT fatal-->
       <xsl:choose>
-         <xsl:when test="not($taxCurrency != '' and $isTaxCurrency and $vatCategory='Z')                     or (cac:TaxCategory/cbc:Percent castable as xs:decimal and xs:decimal(cac:TaxCategory/cbc:Percent) = 0)"/>
+         <xsl:when test="not($taxCurrency != '' and $isTaxCurrency and $vatCategory='Z')                     or (cac:TaxCategory/cbc:Percent castable as xs:decimal                         and xs:decimal(cac:TaxCategory/cbc:Percent) = 0)"/>
          <xsl:otherwise>
             <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
                                 test="not($taxCurrency != '' and $isTaxCurrency and $vatCategory='Z') or (cac:TaxCategory/cbc:Percent castable as xs:decimal and xs:decimal(cac:TaxCategory/cbc:Percent) = 0)">
@@ -3536,7 +3461,7 @@
                <xsl:attribute name="location">
                   <xsl:apply-templates select="." mode="schematron-select-full-path"/>
                </xsl:attribute>
-               <svrl:text>[IBR-097-OM] - If TAX category code for tax category tax amount in accounting currency (IBT-192) is 'Z', TAX category rate for tax category tax amount in accounting currency (IBT-193) MUST be 0.</svrl:text>
+               <svrl:text>[IBR-097-OM, IBR-103-OM] - If TAX category code for tax category tax amount in accounting currency (IBT-192) is 'Z', TAX category rate for tax category tax amount in accounting currency (IBT-193) MUST be 0.</svrl:text>
                <svrl:diagnostic-reference diagnostic="d-IBR-097">
 
             Invalid VAT rate in accounting currency (VAT category 'Z' – Zero-rated).
@@ -3556,48 +3481,7 @@
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
-      <!--ASSERT fatal-->
-      <xsl:choose>
-         <xsl:when test="not($taxCurrency != '' and $isTaxCurrency and $vatCategory='Z')                     or (cac:TaxCategory/cbc:Percent castable as xs:decimal                         and xs:decimal(cac:TaxCategory/cbc:Percent) = 0)"/>
-         <xsl:otherwise>
-            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
-                                test="not($taxCurrency != '' and $isTaxCurrency and $vatCategory='Z') or (cac:TaxCategory/cbc:Percent castable as xs:decimal and xs:decimal(cac:TaxCategory/cbc:Percent) = 0)">
-               <xsl:attribute name="id">IBR-103-OM</xsl:attribute>
-               <xsl:attribute name="flag">fatal</xsl:attribute>
-               <xsl:attribute name="role">fatal</xsl:attribute>
-               <xsl:attribute name="location">
-                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
-               </xsl:attribute>
-               <svrl:text>[IBR-103-OM] - If TAX category code for tax category tax amount in accounting currency (IBT-192) is 'Z', TAX category rate for tax category tax amount in accounting currency (IBT-193) MUST be 0.</svrl:text>
-               <svrl:diagnostic-reference diagnostic="d-IBR-103">
-
-            Why this rule exists:
-            Zero-rated supplies must explicitly carry a 0% VAT rate when
-            reporting in the tax accounting currency, so consumers of the
-            invoice can distinguish 'zero' from 'absent'.
-
-            Found:
-            - VAT category (IBT-192): '<xsl:text/>
-                  <xsl:value-of select="cac:TaxCategory/cbc:ID"/>
-                  <xsl:text/>'
-            - VAT rate     (IBT-193): '<xsl:text/>
-                  <xsl:value-of select="cac:TaxCategory/cbc:Percent"/>
-                  <xsl:text/>'
-            - Currency:                '<xsl:text/>
-                  <xsl:value-of select="cbc:TaxAmount/@currencyID"/>
-                  <xsl:text/>'
-
-            Expected:
-            cbc:Percent = 0 when cbc:ID = 'Z'.
-
-            Action:
-            Set the VAT category rate (IBT-193) to 0 for the zero-rated VAT
-            subtotal in the tax accounting currency.
-        </svrl:diagnostic-reference>
-            </svrl:failed-assert>
-         </xsl:otherwise>
-      </xsl:choose>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M51"/>
+      <xsl:apply-templates select="*" mode="M51"/>
    </xsl:template>
    <!--RULE -->
    <xsl:template match="ubl:Invoice/cac:AllowanceCharge[cbc:ChargeIndicator = 'true'] | cn:CreditNote/cac:AllowanceCharge[cbc:ChargeIndicator = 'true']"
@@ -3706,7 +3590,7 @@
                <xsl:attribute name="location">
                   <xsl:apply-templates select="." mode="schematron-select-full-path"/>
                </xsl:attribute>
-               <svrl:text>[IBR-064-OM] - Document level charge (IBG-21) with Document level charge VAT category code (IBT-102) as 'E' or 'Z' MUST have a Document level charge VAT exemption reason code (IBT-198).</svrl:text>
+               <svrl:text>[IBR-064-OM, IBR-106-OM] - Document level charge (IBG-21) with Document level charge VAT category code (IBT-102) as 'E' (Exempt) or 'Z' (Zero rated) MUST have a Document level charge VAT exemption reason code (IBT-198).</svrl:text>
                <svrl:diagnostic-reference diagnostic="d-IBR-064">
 
             Context: VAT exemption justification is required for exempt or zero-rated charges.
@@ -3816,48 +3700,7 @@
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
-      <!--ASSERT fatal-->
-      <xsl:choose>
-         <xsl:when test="not($cat='E') or cac:TaxCategory/cbc:TaxExemptionReasonCode"/>
-         <xsl:otherwise>
-            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
-                                test="not($cat='E') or cac:TaxCategory/cbc:TaxExemptionReasonCode">
-               <xsl:attribute name="id">IBR-106-OM</xsl:attribute>
-               <xsl:attribute name="flag">fatal</xsl:attribute>
-               <xsl:attribute name="role">fatal</xsl:attribute>
-               <xsl:attribute name="location">
-                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
-               </xsl:attribute>
-               <svrl:text>[IBR-106-OM] - If Document level charge TAX category code (IBT-102) is 'E' (Exempt), Document level charge TAX exemption reason code (IBT-198) MUST be present.</svrl:text>
-               <svrl:diagnostic-reference diagnostic="d-IBR-106">
-
-            Why this rule exists:
-            Document-level charges classified as 'Exempt' must declare the
-            legal basis for the exemption so the Tax Authority can verify it.
-
-            Found:
-            - Charge VAT category (IBT-102): '<xsl:text/>
-                  <xsl:value-of select="cac:TaxCategory/cbc:ID"/>
-                  <xsl:text/>'
-            - Charge amount       (IBT-099): '<xsl:text/>
-                  <xsl:value-of select="cbc:Amount"/>
-                  <xsl:text/>'
-            - Exemption reason    (IBT-198): '<xsl:text/>
-                  <xsl:value-of select="cac:TaxCategory/cbc:TaxExemptionReasonCode"/>
-                  <xsl:text/>'
-
-            Expected:
-            A VAT exemption reason code (IBT-198) selected from the
-            Zero-Rating / Exemption codelist (CL-05-10-OM).
-
-            Action:
-            Add &lt;cac:TaxCategory&gt;&lt;cbc:TaxExemptionReasonCode&gt;…&lt;/cbc:TaxExemptionReasonCode&gt;
-            inside the document-level charge.
-        </svrl:diagnostic-reference>
-            </svrl:failed-assert>
-         </xsl:otherwise>
-      </xsl:choose>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M51"/>
+      <xsl:apply-templates select="*" mode="M51"/>
    </xsl:template>
    <!--RULE -->
    <xsl:template match="ubl:Invoice/cac:AllowanceCharge[cbc:ChargeIndicator = 'false'] | cn:CreditNote/cac:AllowanceCharge[cbc:ChargeIndicator = 'false']"
@@ -3979,7 +3822,7 @@
                <xsl:attribute name="location">
                   <xsl:apply-templates select="." mode="schematron-select-full-path"/>
                </xsl:attribute>
-               <svrl:text>[IBR-062-OM] - Document level allowances (IBG-20) with Document level allowance VAT category code (IBT-095) as 'E' or 'Z' MUST have a Document level allowance VAT exemption reason code (IBT-196)</svrl:text>
+               <svrl:text>[IBR-062-OM, IBR-105-OM] - Document level allowances (IBG-20) with Document level allowance VAT category code (IBT-095) as 'E' (Exempt) or 'Z' (Zero rated) MUST have a Document level allowance VAT exemption reason code (IBT-196).</svrl:text>
                <svrl:diagnostic-reference diagnostic="d-IBR-062">
 
             Context: VAT exemption justification is mandatory for exempt or zero-rated transactions.
@@ -4089,48 +3932,7 @@
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
-      <!--ASSERT fatal-->
-      <xsl:choose>
-         <xsl:when test="not($cat='E') or cac:TaxCategory/cbc:TaxExemptionReasonCode"/>
-         <xsl:otherwise>
-            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
-                                test="not($cat='E') or cac:TaxCategory/cbc:TaxExemptionReasonCode">
-               <xsl:attribute name="id">IBR-105-OM</xsl:attribute>
-               <xsl:attribute name="flag">fatal</xsl:attribute>
-               <xsl:attribute name="role">fatal</xsl:attribute>
-               <xsl:attribute name="location">
-                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
-               </xsl:attribute>
-               <svrl:text>[IBR-105-OM] - If Document level allowance TAX category code (IBT-095) is 'E' (Exempt), Document level allowance TAX exemption reason code (IBT-196) MUST be present.</svrl:text>
-               <svrl:diagnostic-reference diagnostic="d-IBR-105">
-
-            Why this rule exists:
-            Document-level allowances classified as 'Exempt' must declare the
-            legal basis for the exemption so the Tax Authority can verify it.
-
-            Found:
-            - Allowance VAT category (IBT-095): '<xsl:text/>
-                  <xsl:value-of select="cac:TaxCategory/cbc:ID"/>
-                  <xsl:text/>'
-            - Allowance amount       (IBT-092): '<xsl:text/>
-                  <xsl:value-of select="cbc:Amount"/>
-                  <xsl:text/>'
-            - Exemption reason code  (IBT-196): '<xsl:text/>
-                  <xsl:value-of select="cac:TaxCategory/cbc:TaxExemptionReasonCode"/>
-                  <xsl:text/>'
-
-            Expected:
-            A VAT exemption reason code (IBT-196) selected from the
-            Zero-Rating / Exemption codelist (CL-05-10-OM).
-
-            Action:
-            Add &lt;cac:TaxCategory&gt;&lt;cbc:TaxExemptionReasonCode&gt;…&lt;/cbc:TaxExemptionReasonCode&gt;
-            inside the document-level allowance.
-        </svrl:diagnostic-reference>
-            </svrl:failed-assert>
-         </xsl:otherwise>
-      </xsl:choose>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M51"/>
+      <xsl:apply-templates select="*" mode="M51"/>
    </xsl:template>
    <!--RULE -->
    <xsl:template match="ubl:Invoice/cac:AllowanceCharge | cn:CreditNote/cac:AllowanceCharge"
@@ -4190,7 +3992,7 @@
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M51"/>
+      <xsl:apply-templates select="*" mode="M51"/>
    </xsl:template>
    <!--RULE -->
    <xsl:template match="ubl:Invoice/cac:InvoiceLine/cac:AllowanceCharge | cn:CreditNote/cac:CreditNoteLine/cac:AllowanceCharge"
@@ -4255,7 +4057,7 @@
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M51"/>
+      <xsl:apply-templates select="*" mode="M51"/>
    </xsl:template>
    <!--RULE -->
    <xsl:template match="cbc:Percent" priority="1003" mode="M51">
@@ -4288,7 +4090,7 @@
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M51"/>
+      <xsl:apply-templates select="*" mode="M51"/>
    </xsl:template>
    <!--RULE -->
    <xsl:template match="             cac:AccountingSupplierParty/cac:Party/cac:PartyTaxScheme[cac:TaxScheme/cbc:ID='VAT']/cbc:CompanyID             | cac:AccountingCustomerParty/cac:Party/cac:PartyTaxScheme[cac:TaxScheme/cbc:ID='VAT']/cbc:CompanyID             | cac:AccountingSupplierParty/cac:Party/cac:AgentParty/cac:PartyTaxScheme[cac:TaxScheme/cbc:ID='VAT']/cbc:CompanyID             "
@@ -4309,10 +4111,10 @@
                <xsl:attribute name="location">
                   <xsl:apply-templates select="." mode="schematron-select-full-path"/>
                </xsl:attribute>
-               <svrl:text>[IBR-003-OM] - Seller VATIN (IBT-031), Buyer VATIN (IBT-048) and Third party VATIN (BTOM-006) MUST 10 alphanumeric digits, starting with OM.</svrl:text>
+               <svrl:text>[IBR-003-OM] - Seller VATIN (IBT-031), Buyer VATIN (IBT-048) and Third party VATIN (BTOM-006) MUST be 12 characters: 'OM' followed by exactly 10 digits.</svrl:text>
                <svrl:diagnostic-reference diagnostic="d-IBR-003">
 
-            VAT identifier (IBT-031)
+            VAT identifier (IBT-031 / IBT-048 / BTOM-006)
 
             Found:
             '<xsl:text/>
@@ -4320,15 +4122,15 @@
                   <xsl:text/>'
 
             Expected:
-            12 alphanumeric characters starting with 'OM'.
+            12 characters: 'OM' followed by exactly 10 digits (regex ^OM[0-9]{10}$).
 
             Action:
-            Provide a valid VAT identifier (e.g., OMXXXXXXXXXX).
+            Provide a valid VAT identifier (e.g., OM1234567890).
         </svrl:diagnostic-reference>
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M51"/>
+      <xsl:apply-templates select="*" mode="M51"/>
    </xsl:template>
    <!--RULE -->
    <xsl:template match="cac:ClassifiedTaxCategory | cac:TaxCategory | cac:PartyTaxScheme"
@@ -4353,7 +4155,7 @@
                <xsl:attribute name="location">
                   <xsl:apply-templates select="." mode="schematron-select-full-path"/>
                </xsl:attribute>
-               <svrl:text>[IBR-009-OM] - Tax scheme code, must provided in IBT-031-1 or BTOM-006-1 or IBT-048-1 or IBT-095-1 or IBT-102-1 or IBT-118-1 or IBT-167 and shall be 'VAT'.</svrl:text>
+               <svrl:text>[IBR-009-OM] - Tax scheme code, must be provided in IBT-031-1 or BTOM-006-1 or IBT-048-1 or IBT-095-1 or IBT-102-1 or IBT-118-1 or IBT-167 and shall be 'VAT'.</svrl:text>
                <svrl:diagnostic-reference diagnostic="d-IBR-009">
 
             Tax Scheme Validation Error.
@@ -4373,7 +4175,7 @@
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M51"/>
+      <xsl:apply-templates select="*" mode="M51"/>
    </xsl:template>
    <!--RULE -->
    <xsl:template match="cac:InvoiceLine | cac:CreditNoteLine"
@@ -4533,13 +4335,13 @@
 
             Context: Item classification scheme must conform to the required product classification standard.
 
-            Found: Item classification scheme = '<xsl:text/>
-                  <xsl:value-of select="cbc:ItemClassificationCode/@listID"/>
+            Found: Item classification scheme(s) = '<xsl:text/>
+                  <xsl:value-of select="string-join(cac:Item/cac:CommodityClassification/cbc:ItemClassificationCode/@listID, ', ')"/>
                   <xsl:text/>'.
 
-            Expected: Item classification scheme identifier must be 'HS' (Harmonized System classification).
+            Expected: Item classification scheme identifier (IBT-158-1) must be 'HS' (Harmonized System / goods, CL-08-OM) or 'MP' (Service Type, CL-12-OM).
 
-            Action: Update the item classification scheme to 'HS' or ensure correct mapping from product master data.
+            Action: Update the item classification scheme to 'HS' or 'MP', or ensure correct mapping from product master data. Note: ISIC codes (BTOM-018) now live under cac:AdditionalItemIdentification/cbc:ID[@schemeName='CC'] - they do NOT use cbc:ItemClassificationCode any more.
         </svrl:diagnostic-reference>
             </svrl:failed-assert>
          </xsl:otherwise>
@@ -4626,7 +4428,7 @@
                   <xsl:text/>'
 
             Expected: Line net amount must equal
-            (Quantity * (Price + Base quantity)) + Charges - Allowances,
+            (Quantity * (Price / Base quantity)) + Charges - Allowances,
             within an allowed tolerance of 0.01.
 
             Fix: Recalculate the line net amount (IBT-131) using the above components and ensure it matches the expected value.
@@ -4742,62 +4544,66 @@
       </xsl:choose>
       <!--ASSERT fatal-->
       <xsl:choose>
-         <xsl:when test="                 $isSimplified                 or                 cac:Item/cac:CommodityClassification/cbc:NatureCode                 "/>
+         <xsl:when test="                 $isSimplified                 or                 cac:Item/cac:ItemSpecificationDocumentReference[cbc:ID/@schemeName='MP']/cbc:DocumentTypeCode                 "/>
          <xsl:otherwise>
             <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
-                                test="$isSimplified or cac:Item/cac:CommodityClassification/cbc:NatureCode">
+                                test="$isSimplified or cac:Item/cac:ItemSpecificationDocumentReference[cbc:ID/@schemeName='MP']/cbc:DocumentTypeCode">
                <xsl:attribute name="id">IBR-078-OM</xsl:attribute>
                <xsl:attribute name="flag">fatal</xsl:attribute>
                <xsl:attribute name="role">fatal</xsl:attribute>
                <xsl:attribute name="location">
                   <xsl:apply-templates select="." mode="schematron-select-full-path"/>
                </xsl:attribute>
-               <svrl:text>[IBR-078-OM] - Item Type (BTOM-019) must be provided for each item name (IBT-153) except when Invoice transaction type (BTOM-001) is 'Simplified Tax Invoice' (X1XXXXXXXXXXXXXXXXXX).</svrl:text>
+               <svrl:text>[IBR-078-OM] - Goods or Services identification (BTOM-019) must be provided for each item name (IBT-153) except when Invoice transaction type (BTOM-001) is 'Simplified Tax Invoice' (X1XXXXXXXXXXXXXXXXXX).</svrl:text>
                <svrl:diagnostic-reference diagnostic="d-IBR-078">
 
             Context: Item type classification is required for proper invoice line-level product identification.
 
-            Found: Item type is missing or not provided at invoice line level (cac:Item/cac:CommodityClassification/cbc:NatureCode).
+            Found: Item type is missing or not provided at invoice line level
+                (cac:Item/cac:ItemSpecificationDocumentReference[cbc:ID/@schemeName='MP']/cbc:DocumentTypeCode).
 
             Transaction type (BTOM-001): '<xsl:text/>
                   <xsl:value-of select="cbc:InvoiceTypeCode/@name | cbc:CreditNoteTypeCode/@name"/>
                   <xsl:text/>'
 
-            Expected: Item type must be provided for standard invoice types unless the document is explicitly classified as a simplified invoice under applicable billing rules.
+            Expected: Item type ('G' = Goods, 'S' = Service) must be provided for standard invoice types unless the document is explicitly classified as a simplified invoice under applicable billing rules.
 
-            Action: Populate the item type (commodity classification nature code) or verify that the invoice qualifies as a simplified invoice where item-level classification is not required.
+            Action: Populate the item type at
+                cac:Item/cac:ItemSpecificationDocumentReference[cbc:ID/@schemeName='MP']/cbc:DocumentTypeCode
+            or verify that the invoice qualifies as a simplified invoice where item-level classification is not required.
         </svrl:diagnostic-reference>
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
       <!--ASSERT fatal-->
       <xsl:choose>
-         <xsl:when test="$isSimplified                   or not(cac:Item/cac:CommodityClassification/cbc:NatureCode='G')                   or cac:Item/cac:CommodityClassification/cbc:ItemClassificationCode"/>
+         <xsl:when test="$isSimplified                   or not(cac:Item/cac:ItemSpecificationDocumentReference[cbc:ID/@schemeName='MP']/cbc:DocumentTypeCode='G')                   or cac:Item/cac:CommodityClassification/cbc:ItemClassificationCode[@listID='HS']"/>
          <xsl:otherwise>
             <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
-                                test="$isSimplified or not(cac:Item/cac:CommodityClassification/cbc:NatureCode='G') or cac:Item/cac:CommodityClassification/cbc:ItemClassificationCode">
+                                test="$isSimplified or not(cac:Item/cac:ItemSpecificationDocumentReference[cbc:ID/@schemeName='MP']/cbc:DocumentTypeCode='G') or cac:Item/cac:CommodityClassification/cbc:ItemClassificationCode[@listID='HS']">
                <xsl:attribute name="id">IBR-079-OM</xsl:attribute>
                <xsl:attribute name="flag">fatal</xsl:attribute>
                <xsl:attribute name="role">fatal</xsl:attribute>
                <xsl:attribute name="location">
                   <xsl:apply-templates select="." mode="schematron-select-full-path"/>
                </xsl:attribute>
-               <svrl:text>[IBR-079-OM] - When Item type (BTOM-019) is 'Goods' then Item classification identifier (ibt-158) must be provided except when Invoice transaction type (BTOM-001) is 'Simplified Tax Invoice' (X1XXXXXXXXXXXXXXXXXX)</svrl:text>
+               <svrl:text>[IBR-079-OM] - When Goods or Services identification (BTOM-019) is 'Goods' then Item classification identifier (IBT-158, HS code) must be provided except when Invoice transaction type (BTOM-001) is 'Simplified Tax Invoice' (X1XXXXXXXXXXXXXXXXXX)</svrl:text>
                <svrl:diagnostic-reference diagnostic="d-IBR-079">
 
-            Missing classification code for goods.
+            Missing HS classification code for goods.
 
             Found:
-            - Item type: '<xsl:text/>
-                  <xsl:value-of select="cac:Item/cac:CommodityClassification/cbc:NatureCode"/>
+            - Goods or Services identification: '<xsl:text/>
+                  <xsl:value-of select="cac:Item/cac:ItemSpecificationDocumentReference[cbc:ID/@schemeName='MP']/cbc:DocumentTypeCode"/>
                   <xsl:text/>'.
-            - ClassificationCode: '<xsl:text/>
-                  <xsl:value-of select="cac:Item/cac:CommodityClassification/cbc:ItemClassificationCode"/>
+            - HS ClassificationCode: '<xsl:text/>
+                  <xsl:value-of select="cac:Item/cac:CommodityClassification/cbc:ItemClassificationCode[@listID='HS']"/>
                   <xsl:text/>'.
 
-            Expected: Goods items must include a valid classification code.
+            Expected: Goods items (Goods or Services identification 'G') must include a valid HS classification code (IBT-158, @listID='HS').
 
-            Fix: Provide the appropriate classification code for the goods item.
+            Fix: Provide the appropriate HS classification code for the goods item at
+                cac:Item/cac:CommodityClassification/cbc:ItemClassificationCode[@listID='HS'].
         </svrl:diagnostic-reference>
             </svrl:failed-assert>
          </xsl:otherwise>
@@ -4814,44 +4620,53 @@
                <xsl:attribute name="location">
                   <xsl:apply-templates select="." mode="schematron-select-full-path"/>
                </xsl:attribute>
-               <svrl:text>[IBR-080-OM] - When Item classification identifier (IBT-158) is provided with @listID='HS', it must be exactly 12 digits (Oman HS code). 6-digit ISIC and 8-digit service-type codes are validated separately under CL-08And12-OM.</svrl:text>
+               <svrl:text>[IBR-080-OM] - When Item classification identifier (IBT-158) is provided with @listID='HS', it must be exactly 12 digits (Oman HS code). 6-digit ISIC codes are validated separately under CL-08-OM-ISIC and 8-digit service-type codes under CL-12-OM.</svrl:text>
                <svrl:diagnostic-reference diagnostic="d-IBR-080">
 
-            Context: Commodity classification code must comply with minimum structural requirements.
+            Context: HS classification code must comply with the Oman HS code structural requirement.
 
-            Found: Classification code length = '<xsl:text/>
-                  <xsl:value-of select="string-length(cac:Item/cac:CommodityClassification/cbc:ItemClassificationCode)"/>
+            Found: HS code length = '<xsl:text/>
+                  <xsl:value-of select="string-length(normalize-space(cac:Item/cac:CommodityClassification/cbc:ItemClassificationCode[@listID='HS']))"/>
+                  <xsl:text/>'
+            Value: '<xsl:text/>
+                  <xsl:value-of select="cac:Item/cac:CommodityClassification/cbc:ItemClassificationCode[@listID='HS']"/>
                   <xsl:text/>'
 
-            Expected: Classification code must be at least 12 digits in length and conform to the required industrial classification standard.
+            Expected: Classification code with @listID='HS' must be exactly 12 digits (the Oman HS code length). 6-digit ISIC codes go under cac:AdditionalItemIdentification/cbc:ID[@schemeName='CC'] (CL-08-OM-ISIC); 8-digit service-type codes use @listID='MP' (CL-12-OM).
 
-            Action: Provide a valid classification code with a minimum length of 12 digits or correct the mapping from the product master data source.
+            Action: Provide a 12-digit Oman HS code or correct the mapping from the product master data source.
         </svrl:diagnostic-reference>
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
       <!--ASSERT fatal-->
       <xsl:choose>
-         <xsl:when test="$isSimplified or $isImportGoods or $isImportRCM or $isProfitMargin                   or cac:Item/cac:CommodityClassification/cbc:ItemClassificationCode"/>
+         <xsl:when test="$isSimplified or $isImportGoods or $isImportRCM or $isProfitMarginSelf                   or cac:Item/cac:AdditionalItemIdentification/cbc:ID[@schemeName='CC']"/>
          <xsl:otherwise>
             <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
-                                test="$isSimplified or $isImportGoods or $isImportRCM or $isProfitMargin or cac:Item/cac:CommodityClassification/cbc:ItemClassificationCode">
+                                test="$isSimplified or $isImportGoods or $isImportRCM or $isProfitMarginSelf or cac:Item/cac:AdditionalItemIdentification/cbc:ID[@schemeName='CC']">
                <xsl:attribute name="id">IBR-081-OM</xsl:attribute>
                <xsl:attribute name="flag">fatal</xsl:attribute>
                <xsl:attribute name="role">fatal</xsl:attribute>
                <xsl:attribute name="location">
                   <xsl:apply-templates select="." mode="schematron-select-full-path"/>
                </xsl:attribute>
-               <svrl:text>[IBR-081-OM] - Industrial Classification Code (BTOM-018) must be provided for each ITEM INFORMATION (IBG-31) except when Invoice transaction type (BTOM-001) is a simplified tax invoice (X1XXXXXXXXXXXXXXXXXX) and/or import of goods (XXXXXXXXXXXX1XXXXXXX) or import of service RCM (XXXXXXXX1XXXXXXXXXXX) or profit margin self invoice (XXXXXXXXXX1XXXXXXXXX).</svrl:text>
+               <svrl:text>[IBR-081-OM] - Industrial Classification Code (BTOM-033) must be provided for each ITEM INFORMATION (IBG-31) except when Invoice transaction type (BTOM-001) is a simplified tax invoice (X1XXXXXXXXXXXXXXXXXX) and/or import of goods (XXXXXXXXXXXX1XXXXXXX) or import of service RCM (XXXXXXXX1XXXXXXXXXXX) or profit margin self-invoice (XXXXXXXXXX1XXXXXXXXX).</svrl:text>
                <svrl:diagnostic-reference diagnostic="d-IBR-081">
 
-            Context: Industrial classification code is required for item-level product classification.
+            Context: Industrial classification code (ISIC) is required for item-level product classification.
 
-            Found: Missing industrial classification code (cac:Item/cac:CommodityClassification/cbc:ItemClassificationCode).
+            Found: Missing industrial classification code at
+                cac:Item/cac:AdditionalItemIdentification/cbc:ID[@schemeName='CC'].
+            Existing CC entries (if any): '<xsl:text/>
+                  <xsl:value-of select="string-join(cac:Item/cac:AdditionalItemIdentification/cbc:ID[@schemeName='CC'], ', ')"/>
+                  <xsl:text/>'
 
             Expected: Industrial classification code must be provided where applicable according to product classification rules.
 
-            Action: Populate the industrial classification code or verify whether the item is exempt from classification requirements.
+            Action: Populate the ISIC code at
+                cac:Item/cac:AdditionalItemIdentification/cbc:ID[@schemeName='CC']
+            or verify whether the item is exempt from classification requirements (simplified, import of goods, import of services RCM, or Profit-Margin Self-Invoice).
         </svrl:diagnostic-reference>
             </svrl:failed-assert>
          </xsl:otherwise>
@@ -4935,19 +4750,19 @@
                <svrl:text>[IBR-091-OM] - When Invoice transaction type (BTOM-001) is Profit margin invoice (XXXXXXXXX1XXXXXXXXXX), Item classification identifier (IBT-158, listID='HS') MUST NOT start with '7101', '7102', '7103', '7104', '01' or '06'.</svrl:text>
                <svrl:diagnostic-reference diagnostic="d-IBR-091">
 
-            Invalid item classification code for profit margin invoice.
+            Invalid HS item classification code for profit margin invoice.
 
             Transaction type (BTOM-001): '<xsl:text/>
                   <xsl:value-of select="cbc:InvoiceTypeCode/@name | cbc:CreditNoteTypeCode/@name"/>
                   <xsl:text/>'
-            Classification code (IBT-158): '<xsl:text/>
-                  <xsl:value-of select="cac:Item/cac:CommodityClassification/cbc:ItemClassificationCode"/>
+            HS classification codes (IBT-158, @listID='HS'): '<xsl:text/>
+                  <xsl:value-of select="string-join(cac:Item/cac:CommodityClassification/cbc:ItemClassificationCode[@listID='HS'], ', ')"/>
                   <xsl:text/>'
 
-            Expected: For profit margin transactions, the classification code must NOT start with any of the following prefixes:
+            Expected: For profit margin transactions, the HS classification code must NOT start with any of the following prefixes:
             '7101', '7102', '7103', '7104', '01', '06'.
 
-            Fix: Update the classification code so that it does not begin with a prohibited prefix for profit margin invoices.
+            Fix: Update the HS classification code so that it does not begin with a prohibited prefix for profit margin invoices.
         </svrl:diagnostic-reference>
             </svrl:failed-assert>
          </xsl:otherwise>
@@ -4964,7 +4779,7 @@
                <xsl:attribute name="location">
                   <xsl:apply-templates select="." mode="schematron-select-full-path"/>
                </xsl:attribute>
-               <svrl:text>[IBR-057-OM] - Invoice line period start date (ibt-134) and Invoice line period end date (ibt-135) when provided must belong to the same calendar month.</svrl:text>
+               <svrl:text>[IBR-057-OM] - Invoice line period start date (IBT-134) and Invoice line period end date (IBT-135) when provided must belong to the same calendar month.</svrl:text>
                <svrl:diagnostic-reference diagnostic="d-IBR-057">
 
             [IBR-057-OM]
@@ -5024,7 +4839,7 @@
                <xsl:attribute name="location">
                   <xsl:apply-templates select="." mode="schematron-select-full-path"/>
                </xsl:attribute>
-               <svrl:text>[IBR-072-OM] - Invoice line period start date (IBT-134) and Invoice line period end date (IBT-135) must be provided if where Invoice transaction type (BTOM-001) is a Full Tax Invoice AND summary invoice (XXXX1XXXXXXXXXXXXXXX).</svrl:text>
+               <svrl:text>[IBR-072-OM] - Invoice line period start date (IBT-134) and Invoice line period end date (IBT-135) must be provided when Invoice transaction type (BTOM-001) is a Full Tax Invoice AND Summary invoice (1XXX1XXXXXXXXXXXXXXX - both bit 1 and bit 5 set).</svrl:text>
                <svrl:diagnostic-reference diagnostic="d-IBR-072">
 
             Context: Invoice line period (IBG-26) validation for full and summary invoices.
@@ -5159,45 +4974,49 @@
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
-      <!--ASSERT warning-->
+      <!--ASSERT fatal-->
       <xsl:choose>
-         <xsl:when test="not(cac:Item/cbc:ItemClassificationCode)"/>
+         <xsl:when test="not(cac:Item/cac:ItemSpecificationDocumentReference[cbc:ID/@schemeName='MP']/cbc:DocumentTypeCode='G')                       or cac:Item/cac:CommodityClassification/cbc:ItemClassificationCode[@listID='HS']"/>
          <xsl:otherwise>
             <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
-                                test="not(cac:Item/cbc:ItemClassificationCode)">
+                                test="not(cac:Item/cac:ItemSpecificationDocumentReference[cbc:ID/@schemeName='MP']/cbc:DocumentTypeCode='G') or cac:Item/cac:CommodityClassification/cbc:ItemClassificationCode[@listID='HS']">
                <xsl:attribute name="id">IBR-174-OM</xsl:attribute>
-               <xsl:attribute name="flag">warning</xsl:attribute>
-               <xsl:attribute name="role">warning</xsl:attribute>
+               <xsl:attribute name="flag">fatal</xsl:attribute>
+               <xsl:attribute name="role">fatal</xsl:attribute>
                <xsl:attribute name="location">
                   <xsl:apply-templates select="." mode="schematron-select-full-path"/>
                </xsl:attribute>
-               <svrl:text>[IBR-174-OM] - Item classification identifier (HS Code) (IBT-158) must be provided from the Harmonized System (HS) Code list published by the Royal Oman Police (Directorate General of Customs).</svrl:text>
+               <svrl:text>[IBR-174-OM] - Item classification identifier (HS Code) (IBT-158) should be provided from the Harmonized System (HS) Code list published by the Royal Oman Police (Directorate General of Customs) when Goods or Services identification (BTOM-019) is 'G' (Goods).</svrl:text>
                <svrl:diagnostic-reference diagnostic="d-IBR-174">
 
             Context: Item classification must comply with customs tariff classification requirements for import/export declarations.
 
-            Found: Item classification code = '<xsl:text/>
-                  <xsl:value-of select="cac:Item/cbc:ItemClassificationCode"/>
+            Found:
+            - Goods or Services identification (BTOM-019): '<xsl:text/>
+                  <xsl:value-of select="cac:Item/cac:ItemSpecificationDocumentReference[cbc:ID/@schemeName='MP']/cbc:DocumentTypeCode"/>
+                  <xsl:text/>'
+            - HS code (IBT-158, @listID='HS'): '<xsl:text/>
+                  <xsl:value-of select="cac:Item/cac:CommodityClassification/cbc:ItemClassificationCode[@listID='HS']"/>
                   <xsl:text/>'
 
-            Expected: Item classification identifier must be a valid Harmonized System (HS) code as required under Royal Oman Police customs classification rules.
+            Expected: When Goods or Services identification is 'G' (Goods), the item classification identifier must be a valid Harmonized System (HS) code as required under Royal Oman Police customs classification rules.
 
-            Action: Provide a valid HS classification code compliant with Royal Oman Police customs tariff structure or correct the product mapping in the item master data.
+            Action: Provide a valid HS classification code (at cac:Item/cac:CommodityClassification/cbc:ItemClassificationCode[@listID='HS']) compliant with the Royal Oman Police customs tariff structure or correct the product mapping in the item master data.
         </svrl:diagnostic-reference>
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M51"/>
+      <xsl:apply-templates select="*" mode="M51"/>
    </xsl:template>
    <xsl:template match="text()" priority="-1" mode="M51"/>
    <xsl:template match="@*|node()" priority="-2" mode="M51">
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M51"/>
+      <xsl:apply-templates select="*" mode="M51"/>
    </xsl:template>
    <!--PATTERN AlignedCodelistsPINT Oman - codelist conformance-->
    <svrl:text xmlns:svrl="http://purl.oclc.org/dsdl/svrl">PINT Oman - codelist conformance</svrl:text>
    <!--RULE -->
    <xsl:template match="cac:BillingReference/cac:InvoiceDocumentReference/cbc:DocumentStatusCode"
-                 priority="1010"
+                 priority="1011"
                  mode="M52">
       <svrl:fired-rule xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
                        context="cac:BillingReference/cac:InvoiceDocumentReference/cbc:DocumentStatusCode"
@@ -5239,11 +5058,11 @@
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M52"/>
+      <xsl:apply-templates select="*" mode="M52"/>
    </xsl:template>
    <!--RULE -->
    <xsl:template match="cbc:InvoiceTypeCode[@name] | cbc:CreditNoteTypeCode[@name]"
-                 priority="1009"
+                 priority="1010"
                  mode="M52">
       <svrl:fired-rule xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
                        context="cbc:InvoiceTypeCode[@name] | cbc:CreditNoteTypeCode[@name]"/>
@@ -5306,11 +5125,11 @@
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M52"/>
+      <xsl:apply-templates select="*" mode="M52"/>
    </xsl:template>
    <!--RULE -->
    <xsl:template match="cac:TaxCategory/cbc:ID | cac:ClassifiedTaxCategory/cbc:ID"
-                 priority="1008"
+                 priority="1009"
                  mode="M52">
       <svrl:fired-rule xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
                        context="cac:TaxCategory/cbc:ID | cac:ClassifiedTaxCategory/cbc:ID"
@@ -5351,39 +5170,92 @@
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M52"/>
+      <xsl:apply-templates select="*" mode="M52"/>
    </xsl:template>
    <!--RULE -->
    <xsl:template match="cac:TaxCategory/cbc:TaxExemptionReasonCode | cac:ClassifiedTaxCategory/cbc:TaxExemptionReasonCode"
-                 priority="1007"
+                 priority="1008"
                  mode="M52">
       <svrl:fired-rule xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
                        context="cac:TaxCategory/cbc:TaxExemptionReasonCode | cac:ClassifiedTaxCategory/cbc:TaxExemptionReasonCode"
                        role="fatal"/>
+      <xsl:variable name="catCode" select="normalize-space(../cbc:ID)"/>
+      <xsl:variable name="reason" select="normalize-space(.)"/>
       <!--ASSERT fatal-->
       <xsl:choose>
-         <xsl:when test="((not(contains(normalize-space(.), ' ')) and contains(' VATZR-OM-01 VATZR-OM-02 VATZR-OM-03 VATZR-OM-04 VATZR-OM-05 VATZR-OM-06 VATZR-OM-07 VATZR-OM-08 VATZR-OM-09 VATZR-OM-10 VATZR-OM-11 VATZR-OM-12 VATZR-OM-13 VATZR-OM-14 VATZR-OM-15 VATZR-OM-16 VATEX-OM-01 VATEX-OM-02 VATEX-OM-03 VATEX-OM-04 VATEX-OM-05 VATEX-OM-06 VATEX-OM-07 VATEX-OM-08 VATEX-OM-09 VATEX-OM-10 VATEX-OM-11 VATEX-OM-12 ', concat(' ', normalize-space(.), ' '))))"/>
+         <xsl:when test="not($catCode = 'E')                       or (not(contains($reason, ' ')) and contains(' VATEX-OM-01 VATEX-OM-02 VATEX-OM-03 VATEX-OM-04 VATEX-OM-05 VATEX-OM-06 VATEX-OM-07 VATEX-OM-08 VATEX-OM-09 VATEX-OM-10 VATEX-OM-11 VATEX-OM-12 ', concat(' ', $reason, ' ')))"/>
          <xsl:otherwise>
             <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
-                                test="((not(contains(normalize-space(.), ' ')) and contains(' VATZR-OM-01 VATZR-OM-02 VATZR-OM-03 VATZR-OM-04 VATZR-OM-05 VATZR-OM-06 VATZR-OM-07 VATZR-OM-08 VATZR-OM-09 VATZR-OM-10 VATZR-OM-11 VATZR-OM-12 VATZR-OM-13 VATZR-OM-14 VATZR-OM-15 VATZR-OM-16 VATEX-OM-01 VATEX-OM-02 VATEX-OM-03 VATEX-OM-04 VATEX-OM-05 VATEX-OM-06 VATEX-OM-07 VATEX-OM-08 VATEX-OM-09 VATEX-OM-10 VATEX-OM-11 VATEX-OM-12 ', concat(' ', normalize-space(.), ' '))))">
-               <xsl:attribute name="id">CL-05-10-OM</xsl:attribute>
+                                test="not($catCode = 'E') or (not(contains($reason, ' ')) and contains(' VATEX-OM-01 VATEX-OM-02 VATEX-OM-03 VATEX-OM-04 VATEX-OM-05 VATEX-OM-06 VATEX-OM-07 VATEX-OM-08 VATEX-OM-09 VATEX-OM-10 VATEX-OM-11 VATEX-OM-12 ', concat(' ', $reason, ' ')))">
+               <xsl:attribute name="id">CL-05-OM</xsl:attribute>
                <xsl:attribute name="flag">fatal</xsl:attribute>
                <xsl:attribute name="role">fatal</xsl:attribute>
                <xsl:attribute name="location">
                   <xsl:apply-templates select="." mode="schematron-select-full-path"/>
                </xsl:attribute>
-               <svrl:text>[CL-05-OM, CL-10-OM, CL-70-OM, CL-75-OM, CL-80-OM, CL-85-OM, CL-90-OM, CL-95-OM] - VAT/TAX exemption reason code (IBT-121, IBT-186, IBT-196, IBT-198) - whether on a document-level allowance/charge, an invoice line, or a VAT breakdown - when category code is 'E' (Exempt) or 'Z' (Zero rated), MUST be coded using the Zero rating (VATZR-OM-*) or Exemption reason (VATEX-OM-*) codelists.</svrl:text>
-               <svrl:diagnostic-reference diagnostic="d-CL-05-10-OM">
+               <svrl:text>[CL-05-OM] - When VAT category code (IBT-118 / IBT-151 / IBT-095 / IBT-102 / IBT-192) is 'E' (Exempt), the VAT exemption reason code (IBT-121 / IBT-186 / IBT-196 / IBT-198) MUST be coded using the Exemption reason codelist (VATEX-OM-01..VATEX-OM-12).</svrl:text>
+               <svrl:diagnostic-reference diagnostic="d-CL-05-OM">
 
-            VAT exemption / zero rating reason code (IBT-196)
+            VAT exemption reason code (IBT-121 / IBT-186 / IBT-196 / IBT-198)
 
             Found:
-            - Value: '<xsl:text/>
+            - VAT category code (parent): '<xsl:text/>
+                  <xsl:value-of select="normalize-space(../cbc:ID)"/>
+                  <xsl:text/>'
+            - Exemption reason code value: '<xsl:text/>
                   <xsl:value-of select="normalize-space(.)"/>
                   <xsl:text/>'
 
-            Expected:
-            Code must be one of the following:
+            Expected (when VAT category code is 'E' - Exempt):
+            Code must be one of the Exemption codelist values:
+
+            - VATEX-OM-01
+            - VATEX-OM-02
+            - VATEX-OM-03
+            - VATEX-OM-04
+            - VATEX-OM-05
+            - VATEX-OM-06
+            - VATEX-OM-07
+            - VATEX-OM-08
+            - VATEX-OM-09
+            - VATEX-OM-10
+            - VATEX-OM-11
+            - VATEX-OM-12
+
+            Action:
+            Provide a valid VATEX-OM-* exemption reason code, or change the
+            VAT category code if the supply is not actually exempt.
+        </svrl:diagnostic-reference>
+            </svrl:failed-assert>
+         </xsl:otherwise>
+      </xsl:choose>
+      <!--ASSERT fatal-->
+      <xsl:choose>
+         <xsl:when test="not($catCode = 'Z')                       or (not(contains($reason, ' ')) and contains(' VATZR-OM-01 VATZR-OM-02 VATZR-OM-03 VATZR-OM-04 VATZR-OM-05 VATZR-OM-06 VATZR-OM-07 VATZR-OM-08 VATZR-OM-09 VATZR-OM-10 VATZR-OM-11 VATZR-OM-12 VATZR-OM-13 VATZR-OM-14 VATZR-OM-15 VATZR-OM-16 ', concat(' ', $reason, ' ')))"/>
+         <xsl:otherwise>
+            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
+                                test="not($catCode = 'Z') or (not(contains($reason, ' ')) and contains(' VATZR-OM-01 VATZR-OM-02 VATZR-OM-03 VATZR-OM-04 VATZR-OM-05 VATZR-OM-06 VATZR-OM-07 VATZR-OM-08 VATZR-OM-09 VATZR-OM-10 VATZR-OM-11 VATZR-OM-12 VATZR-OM-13 VATZR-OM-14 VATZR-OM-15 VATZR-OM-16 ', concat(' ', $reason, ' ')))">
+               <xsl:attribute name="id">CL-10-OM</xsl:attribute>
+               <xsl:attribute name="flag">fatal</xsl:attribute>
+               <xsl:attribute name="role">fatal</xsl:attribute>
+               <xsl:attribute name="location">
+                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
+               </xsl:attribute>
+               <svrl:text>[CL-10-OM] - When VAT category code (IBT-118 / IBT-151 / IBT-095 / IBT-102 / IBT-192) is 'Z' (Zero rated), the VAT exemption reason code (IBT-121 / IBT-186 / IBT-196 / IBT-198) MUST be coded using the Zero rating codelist (VATZR-OM-01..VATZR-OM-16).</svrl:text>
+               <svrl:diagnostic-reference diagnostic="d-CL-10-OM">
+
+            VAT zero-rating reason code (IBT-121 / IBT-186 / IBT-196 / IBT-198)
+
+            Found:
+            - VAT category code (parent): '<xsl:text/>
+                  <xsl:value-of select="normalize-space(../cbc:ID)"/>
+                  <xsl:text/>'
+            - Zero-rating reason code value: '<xsl:text/>
+                  <xsl:value-of select="normalize-space(.)"/>
+                  <xsl:text/>'
+
+            Expected (when VAT category code is 'Z' - Zero rated):
+            Code must be one of the Zero rating codelist values:
 
             - VATZR-OM-01
             - VATZR-OM-02
@@ -5401,30 +5273,19 @@
             - VATZR-OM-14
             - VATZR-OM-15
             - VATZR-OM-16
-            - VATEX-OM-01
-            - VATEX-OM-02
-            - VATEX-OM-03
-            - VATEX-OM-04
-            - VATEX-OM-05
-            - VATEX-OM-06
-            - VATEX-OM-07
-            - VATEX-OM-08
-            - VATEX-OM-09
-            - VATEX-OM-10
-            - VATEX-OM-11
-            - VATEX-OM-12
 
             Action:
-            Provide a valid exemption or zero-rating reason code.
+            Provide a valid VATZR-OM-* zero-rating reason code, or change the
+            VAT category code if the supply is not actually zero rated.
         </svrl:diagnostic-reference>
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M52"/>
+      <xsl:apply-templates select="*" mode="M52"/>
    </xsl:template>
    <!--RULE -->
    <xsl:template match="cac:AccountingSupplierParty/cac:Party/cac:PartyIdentification/cbc:ID[@schemeName] | cac:AccountingCustomerParty/cac:Party/cac:PartyIdentification/cbc:ID[@schemeName]"
-                 priority="1006"
+                 priority="1007"
                  mode="M52">
       <svrl:fired-rule xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
                        context="cac:AccountingSupplierParty/cac:Party/cac:PartyIdentification/cbc:ID[@schemeName] | cac:AccountingCustomerParty/cac:Party/cac:PartyIdentification/cbc:ID[@schemeName]"
@@ -5441,7 +5302,7 @@
                <xsl:attribute name="location">
                   <xsl:apply-templates select="." mode="schematron-select-full-path"/>
                </xsl:attribute>
-               <svrl:text>[CL-06-OM] - If provided, the value in the Buyer identifier (IBT-046) Scheme identifier (IBT-046-1) and Seller identifier (IBT-029) Scheme identifier (IBT-029-1) must be coded with Buyer/Seller Identifier codelist.</svrl:text>
+               <svrl:text>[CL-06-OM] - If Seller identifier (IBT-029) or Buyer identifier (IBT-046) is provided, then the Seller identifier Scheme identifier (BTOM-015) and Buyer identifier Scheme identifier (BTOM-018) must be coded with the Buyer/Seller Identifier code list.</svrl:text>
                <svrl:diagnostic-reference diagnostic="d-CL-06-OM">
 
             Buyer/Seller identifier scheme (IBT-029-1 / IBT-046-1)
@@ -5468,14 +5329,14 @@
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M52"/>
+      <xsl:apply-templates select="*" mode="M52"/>
    </xsl:template>
    <!--RULE -->
-   <xsl:template match="cac:Item/cac:CommodityClassification/cbc:NatureCode"
-                 priority="1005"
+   <xsl:template match="cac:Item/cac:ItemSpecificationDocumentReference[cbc:ID/@schemeName='MP']/cbc:DocumentTypeCode"
+                 priority="1006"
                  mode="M52">
       <svrl:fired-rule xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
-                       context="cac:Item/cac:CommodityClassification/cbc:NatureCode"
+                       context="cac:Item/cac:ItemSpecificationDocumentReference[cbc:ID/@schemeName='MP']/cbc:DocumentTypeCode"
                        role="fatal"/>
       <!--ASSERT fatal-->
       <xsl:choose>
@@ -5489,10 +5350,10 @@
                <xsl:attribute name="location">
                   <xsl:apply-templates select="." mode="schematron-select-full-path"/>
                </xsl:attribute>
-               <svrl:text>[CL-07-OM] - Item Type (BTOM-019) must be provided from the codelist for Item type.</svrl:text>
+               <svrl:text>[CL-07-OM] - Goods or Services identification (BTOM-019) must be provided from the codelist for Item type.</svrl:text>
                <svrl:diagnostic-reference diagnostic="d-CL-07-OM">
 
-            Item type (BTOM-019)
+            Goods or Services identification (BTOM-019)
 
             Found:
             - Value: '<xsl:text/>
@@ -5502,8 +5363,8 @@
             Expected:
             Code must be one of the following:
 
-            - GS
-            - SV
+            - G  (Goods)
+            - S  (Services)
 
             Action:
             Use a valid item type code.
@@ -5511,17 +5372,15 @@
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M52"/>
+      <xsl:apply-templates select="*" mode="M52"/>
    </xsl:template>
    <!--RULE -->
-   <xsl:template match="cac:Item/cac:CommodityClassification/cbc:ItemClassificationCode"
-                 priority="1004"
+   <xsl:template match="cac:Item/cac:CommodityClassification/cbc:ItemClassificationCode[@listID='HS']"
+                 priority="1005"
                  mode="M52">
       <svrl:fired-rule xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
-                       context="cac:Item/cac:CommodityClassification/cbc:ItemClassificationCode"/>
+                       context="cac:Item/cac:CommodityClassification/cbc:ItemClassificationCode[@listID='HS']"/>
       <xsl:variable name="hsCode" select="normalize-space(.)"/>
-      <xsl:variable name="codesUNGM"
-                    select="' 64000000 70000000 71000000 72000000 73000000 76000000 77000000 78000000 80000000 81000000 82000000 83000000 84000000 85000000 86000000 90000000 91000000 92000000 93000000 94000000 '"/>
       <xsl:variable name="codes01"
                     select="' 010121100001 010121100002 010121900001 010121900002 010129100001 010129100002 010129100003 010129100004 010129200001 010129200002 010129900001 010129900002 010129900003 010130000000 010190000000 010221000001 010221000002 010229000003 010229000004 010229009999 010231000001 010231000002 010239000001 010239000002 010239009999 010290110000 010290120000 010290190000 010290900000 010310000000 010391000000 010392000000 010410100001 010410100002 010410900001 010410900002 010410900003 010410909999 010420100001 010420100002 010420900001 010420900002 010420900003 010420909999 010511000000 010512000000 010513000000 010514000000 010515000000 010594100000 010594200000 010594300000 010594900000 010599100000 010599200000 010599900000 010611100001 010611100002 010611100003 010611100004 010611109999 010611900000 010612000001 010612000002 010612000003 010612000004 010612000005 010612000006 010612009999 010613100000 010613200001 010613200002 010613900000 010614000001 010614000002 010619300001 010619300002 010619300003 010619300004 010619300005 010619300006 010619300007 010619309999 010619400001 010619400002 010619409999 010619500001 010619500002 010619500003 010619500004 010619500005 010619500006 010619509999 010619600001 010619600002 010619600003 010619900002 010619900003 010619900004 010619900005 010619900006 010619900007 010619900008 010619900009 010619900011 010619900012 010619900013 010619900014 010619900015 010619900016 010619900017 010619900018 010619900019 010619909999 010620000001 010620000002 010620000003 010620000004 010620000005 010620000006 010620009999 010631000001 010631000002 010631009999 010632100000 010632200000 010632300000 010632400000 010632500000 010632600000 010632900000 010633000000 010639100001 010639100003 010639100005 010639100008 010639100009 010639100010 010639100011 010639100012 010639100013 010639100014 010639200000 010639900001 010639909999 010641000000 010649000001 010649000002 010649000004 010649009999 010690000000 020110000001 020110000002 020110000003 020110000004 020120000000 020130000000 020210000001 020210000002 020220000000 020230100000 020230900000 020311000000 020312000000 020319000000 020321000000 020322000000 020329000000 020410000001 020410000002 020410000003 020410000004 020421000001 020421000002 020421000003 020421000004 020422000000 020423000001 020423000002 020423000003 020423000004 020430000001 020430000002 020441000001 020441000002 020442000000 020443100001 020443100002 020443100003 020443900000 020450110001 020450110002 020450110003 020450110004 020450120001 020450120002 020450210001 020450210003 020450210004 020450210005 020450210006 020450210007 020450210009 020450210010 020450210012 020450220001 020450220003 020450220004 020450220006 020450220007 020450220008 020450310001 020450310002 020450320000 020500100000 020500900000 020610000000 020621000000 020622000000 020629000000 020630000000 020641000000 020649000000 020680100000 020680200000 020680900000 020690110000 020690120000 020690190000 020690910000 020690990000 020711000000 020712000002 020712000003 020712009999 020713000001 020713000002 020713000003 020713000004 020713000008 020713000009 020713000010 020713000011 020713009999 020714000015 020714000016 020714000017 020714000018 020714009999 020724000001 020724000003 020724000004 020724000005 020725000001 020725000002 020726000000 020727000000 020741000001 020741000002 020742000000 020743000001 020743000002 020744000000 020745000000 020751000001 020751000002 020752000000 020753000001 020753000002 020754000000 020755000000 020760100001 020760100002 020760200001 020760200002 020810100000 020810200000 020830000001 020830000002 020830000003 020840100000 020840200000 020840300000 020840400000 020850000000 020860100001 020860100002 020860100010 020860109999 020860200001 020860200002 020860200010 020860209999 020890210001 020890210002 020890220001 020890220002 020890310000 020890320000 020890910000 020890990000 020910000000 020990000000 021011000000 021012000000 021019000000 021020000000 021091000000 021092000000 021093000000 021099000000 030111000000 030119000000 030191000000 030192000000 030193000000 030194000000 030195000000 030199100000 030199900000 030211000000 030213000000 030214000000 030219000000 030221000000 030222000000 030223000000 030224000000 030229000000 030231000000 030232000000 030233000000 030234000000 030235000000 030236000000 030239100000 030239200000 030239910000 030239920000 030239930000 030239940000 030239990000 030241000000 030242000000 030243000000 030244100000 030244200000 030244900000 030245100000 030245200000 030245900000 030246000000 030247000000 030249100000 030249900000 030251000000 030252000000 030253000000 030254000000 030255000000 030256000000 030259000000 030271000000 030272000000 030273000000 030274000000 030279000000 030281000000 030282000000 030283000000 030284000000 030285100000 030285200000 030285300000 030285400000 030285500000 030285600000 030285900000 030289100000 030289200000 030289300000 030289400000 030289500000 030289600000 030289700000 030289800000 030289900000 030291000000 030292000000 030299000000 030311000000 030312000000 030313000000 030314000000 030319000000 030323000000 030324000000 030325000000 030326000000 030329000000 030331000000 030332000000 030333000000 030334000000 030339000000 030341000000 030342000000 030343000000 030344000000 030345000000 030346000000 030349100000 030349200000 030349300000 030349400000 030349500000 030349600000 030349900000 030351000000 030353000000 030354100000 030354200000 030354900000 030355100000 030355200000 030355900000 030356000000 030357000000 030359100000 030359900000 030363000000 030364000000 030365000000 030366000000 030367000000 030368000000 030369000000 030381000000 030382000000 030383000000 030384000000 030389100000 030389200000 030389300000 030389400000 030389510000 030389520000 030389600000 030389700000 030389800000 030389910001 030389910002 030389910003 030389910004 030389910005 030389910006 030389919999 030389990000 030391000000 030392000000 030399000000 030431000000 030432000000 030433000000 030439000000 030441000000 030442000000 030443000000 030444000000 030445000000 030446000000 030447000000 030448000000 030449000000 030451000000 030452000000 030453000000 030454000000 030455000000 030456000000 030457000000 030459100000 030459200000 030459900000 030461000000 030462000000 030463000000 030469000000 030471000000 030472000000 030473000000 030474000000 030475000000 030479000000 030481000000 030482000000 030483000000 030484000000 030485000000 030486000000 030487000000 030488000000 030489100000 030489200000 030489900000 030491000000 030492000000 030493000000 030494000000 030495000000 030496000000 030497000000 030499000000 030520000000 030531000000 030532000000 030539100000 030539900000 030541000000 030542000000 030543000000 030544000000 030549000000 030551000000 030552000000 030553000000 030554000000 030559300000 030559900000 030561000000 030562000000 030563000000 030564000000 030569000000 030571000000 030572000000 030579000000 030611000000 030612000000 030614000000 030615000000 030616000000 030617000000 030619000000 030631000003 030631000004 030632000003 030632000004 030633000003 030633000004 030634000003 030634000004 030635000003 030635000004 030636000003 030636000004 030639000000 030691000000 030692000000 030693000000 030694000000 030695000000 030699000000 030711000001 030711000002 030712000000 030719000000 030721000001 030721000002 030722000000 030729000000 030731000001 030731000002 030732000000 030739000000 030742000001 030742000002 030743000000 030749000000 030751000001 030751000002 030752000000 030759000000 030760000001 030760000002 030760000003 030760009999 030771000001 030771000014 030771000041 030771000053 030772000000 030779000000 030781000001 030781000002 030782000001 030782000002 030783000000 030784000000 030787000000 030788000000 030791000003 030791000004 030792000000 030799000000 030811000002 030811000003 030812000000 030819000000 030821000001 030821000002 030822000000 030829000000 030830000001 030830000002 030830000004 030830009999 030890000000 030910000000 030990100000 030990900000 040110310000 040110320000 040110910000 040110920000 040110930000 040110940000 040120300000 040120910000 040120920000 040140300000 040140910000 040140920000 040150300000 040150910000 040150920000 040150940000 040210110000 040210120002 040210120003 040210120004 040210120005 040210129999 040210190000 040210910000 040210920002 040210920003 040210920004 040210920005 040210929999 040210990000 040221100000 040221900001 040221900002 040221900003 040229110001 040229110002 040229120002 040229120003 040229120004 040229120005 040229129999 040229190000 040229910000 040229920002 040229920003 040229920004 040229920005 040229929999 040229990000 040291110000 040291120000 040291200000 040299110000 040299120001 040299120002 040299120003 040299120004 040299130000 040299140000 040299150000 040299160000 040299200000 040320100000 040320200000 040320300000 040320400000 040320500000 040320600000 040390110000 040390120000 040390130000 040390210000 040390220000 040390230000 040390910000 040390920000 040390930000 040390990000 040410000000 040490000000 040510110001 040510110002 040510120001 040510120002 040510130000 040510190000 040520000001 040520000002 040520000003 040520000004 040590100000 040590200000 040590900000 040610100000 040610200000 040610300000 040610400000 040610500000 040610600000 040610700000 040620000001 040620000004 040630000001 040630000002 040630000010 040630009999 040640100000 040640900000 040690100000 040690210000 040690220000 040690230000 040690240000 040690250000 040690260000 040690290000 040690300000 040690900000 040711000000 040719000000 040721000000 040729000000 040790100000 040790200000 040811000000 040819100000 040819200000 040819300000 040891000000 040899000000 040900110000 040900190000 040900210000 040900290000 041010000000 041090100000 041090200000 041090300000 041090900000 '"/>
       <xsl:variable name="codes02"
@@ -5535,7 +5394,7 @@
       <xsl:variable name="codes06"
                     select="' 290110100000 290110200000 290110300000 290110400000 290110500000 290110600000 290110900000 290121000000 290122000000 290123000000 290124000000 290129100000 290129200000 290129300000 290129400000 290129500000 290129600000 290129900001 290129900002 290129900003 290129900004 290129900005 290129900006 290129900007 290129900008 290129900009 290129900010 290129900011 290129900012 290129909999 290211000000 290219000000 290220000000 290230000000 290241000000 290242000000 290243000000 290244000000 290250000000 290260000000 290270000000 290290100000 290290200000 290290900000 290311000001 290311000002 290312000000 290313000000 290314000000 290315000000 290319100000 290319900001 290319900002 290319909999 290321000000 290322000000 290323000000 290329000000 290341000000 290342000000 290343000001 290343000002 290344000001 290344000002 290345000000 290346000001 290346000002 290347000000 290348000001 290348000002 290349000000 290351000001 290351000002 290359100000 290359900000 290361000000 290362000000 290369000000 290371000000 290372000000 290373000000 290374000000 290375000000 290376000001 290376000002 290376000003 290377100000 290377200000 290377300000 290377400000 290377500000 290377600000 290377700000 290377800000 290377910000 290377920000 290377930000 290377940000 290377950000 290377990003 290377990005 290377999999 290378000000 290379100000 290379200000 290379300000 290379400000 290379900001 290379909999 290381000000 290382000000 290383000000 290389100000 290389900001 290389900002 290389909999 290391000001 290391000002 290391000003 290392000001 290392000002 290393000000 290394000000 290399000001 290399000002 290399000003 290399000004 290399009999 290410000000 290420110000 290420120000 290420130000 290420140000 290420200001 290420200002 290420900001 290420900002 290420900003 290420900004 290420900005 290420900006 290420900007 290420900008 290420900009 290420900010 290420900011 290420900012 290420900013 290420909999 290431000000 290432000000 290433000000 290434000000 290435000000 290436000000 290491000000 290499000000 290511000000 290512000001 290512000002 290513000000 290514000000 290516000000 290517000000 290519100000 290519200000 290519900001 290519900002 290519900003 290519909999 290522000000 290529000001 290529000002 290529000003 290529009999 290531000000 290532000000 290539000001 290539000002 290539000003 290539009999 290541000000 290542000000 290543000000 290544000000 290545000000 290549100000 290549200000 290549300000 290549400000 290549900000 290551000000 290551000901 290559000001 290559009999 290611000000 290612000000 290613000000 290619000001 290619009999 290621000000 290629000001 290629000002 290629009999 290711100000 290711200000 290711900001 290711900002 290711900003 290711909999 290712000000 290713000000 290715000000 290719000000 290721000000 290722000000 290723000000 290729000001 290729000002 290729000003 290729000004 290729009999 290811000000 290819000001 290819000002 290819009999 290891000000 290892000000 290899100000 290899200000 290899900001 290899900002 290899909999 290911000000 290919100000 290919910000 290919920000 290919930000 290919940000 290919990000 290920000000 290930100000 290930900000 290941000000 290943000000 290944000000 290949000000 290950000000 290960100000 290960900000 291010000000 291020000000 291030000000 291040000000 291050000000 291090000001 291090009999 291100000001 291100000002 291100000003 291100009999 291211000000 291212000000 291219000001 291219000002 291219000003 291219000004 291219000005 291219000006 291219000007 291219000008 291219000009 291219000010 291219000011 291219009999 291221000000 291229000001 291229000002 291229000003 291229000004 291229009999 291241000000 291242000000 291249000001 291249000002 291249000003 291249000004 291249009999 291250000000 291260000000 291300000000 291411000000 291412000000 291413000000 291419000001 291419009999 291422000001 291422000002 291423000001 291423000002 291429000000 291431000000 291439000001 291439000002 291439000003 291439000004 291439000005 291439000006 291439000007 291439000008 291439009999 291440000001 291440000002 291450000000 291461000000 291462000000 291469000001 291469000002 291469000003 291469009999 291471000000 291479000001 291479009999 291511000000 291512000001 291512000002 291512000003 291512000004 291512009999 291513000001 291513000002 291513000003 291513000004 291513000005 291513009999 291521100000 291521200000 291524000000 291529000001 291529000002 291529000003 291529000004 291529000005 291529000006 291529000007 291529000008 291529000009 291529000010 291529000011 291529009999 291531000000 291532000000 291533000000 291536000000 291539000001 291539000002 291539000003 291539000004 291539000005 291539000006 291539000007 291539009999 291540000001 291540000002 291540000003 291550000000 291560000001 291560000002 291570110000 291570190000 291570900001 291570900002 291570900003 291570900004 291570900005 291570909999 291590000001 291590000002 291590000003 291590000004 291590000005 291590000006 291590009999 291611000000 291612000000 291613000000 291614000000 291615000001 291615000002 291615000003 291616000000 291619000001 291619000002 291619009999 291620000000 291631100000 291631200001 291631200002 291631200003 291631200004 291631209999 291632000001 291632000002 291634000000 291639000001 291639000002 291639000003 291639000004 291639000005 291639000006 291639000007 291639000008 291639000009 291639000010 291639000011 291639000012 291639000013 291639009999 291711000001 291711000002 291711000003 291711000004 291711000005 291711009999 291712000000 291713000001 291713000002 291714000000 291719000001 291719000002 291719000003 291719009999 291720000000 291732000000 291733000000 291734000000 291735000000 291736000000 291737000000 291739100000 291739900001 291739900002 291739909999 291811000001 291811000002 291811000003 291811000004 291811000005 291811000006 291811000007 291811000008 291811000009 291811000010 291811009999 291812000000 291813000001 291813000002 291813000003 291813000004 291813000005 291813000006 291813000007 291813000008 291813000009 291813000010 291813009999 291814000000 291815100000 291815200000 291815300000 291815900001 291815900002 291815900003 291815900004 291815900005 291815900006 291815909999 291816000001 291816000002 291816009999 291817000000 291818000000 291819000001 291819000002 291819000003 291819000004 291819009999 291821000001 291821000002 291821000003 291821009999 291822000000 291823000001 291823000002 291823000003 291823000004 291823000005 291823000006 291823000007 291823000008 291823009999 291829000001 291829000002 291829000003 291829000004 291829000005 291829000006 291829000007 291829000008 291829000009 291829000010 291829000011 291829000012 291829000013 291829009999 291830100000 291830200000 291830300000 291830400000 291830900000 291891000000 291899100000 291899900001 291899900002 291899900003 291899900004 291899900005 291899900006 291899900007 291899900008 291899900009 291899900010 291899900011 291899909999 291910000000 291990000001 291990000002 291990000003 291990000004 291990000005 291990009999 292011000000 292019000001 292019009999 292021000000 292022000000 292023000000 292024000000 292029000000 292030000000 292090500000 292090600000 292090700000 292090910000 292090990000 292111000001 292111000002 292111000003 292112000000 292113000000 292114000000 292119100000 292119200000 292119200901 292119300000 292119400000 292119520000 292119540000 292119590001 292119599999 292119910000 292119990000 292121000000 292122000000 292129000001 292129009999 292130000000 292141000000 292142000001 292142000901 292142000002 292142000003 292142000004 292142009999 292143000000 292144000000 292145000000 292146000001 292146000002 292146000003 292146000004 292146000005 292146000006 292146000007 292146000008 292146000009 292146000901 292146000902 292146000903 292146000904 292146000905 292146000906 292146000907 292146000908 292149000000 292149000901 292151000000 292159000001 292159000002 292159000003 292159000004 292159009999 292211000000 292212000000 292214000000 292214000901 292215000000 292216000000 292217100000 292217200000 292218000000 292219110000 292219120000 292219190000 292219500000 292219900000 292221000000 292229000001 292229000002 292229009999 292231000000 292231000901 292239000000 292241000000 292242000000 292243000000 292244000000 292244000901 292249000000 292250000001 292250000002 292250009999 292310000000 292320000000 292330000000 292340000000 292390000001 292390000002 292390000003 292390000004 292390009999 292411000000 292411000901 292412000000 292419000001 292419000002 292419000003 292419009999 292421000000 292423000000 292424000000 292424000901 292425000000 292429100000 292429200000 292429300000 292429400000 292429500000 292429900000 292511000000 292512000000 292512000901 292519000000 292521000000 292529110000 292529120000 292529130000 292529140000 292529190000 292529200000 292529300000 292529400000 292529900000 292610000000 292620000000 292630000000 292640000000 292690100000 292690900001 292690900002 292690900003 292690900004 292690900005 292690900006 292690900007 292690900008 292690900009 292690909999 292700000001 292700000002 292700000003 292700000004 292700000005 292700000006 292700000007 292700000008 292700000009 292700000010 292700000011 292700000012 292700000013 292700000014 292700000015 292700000016 292700000017 292700000018 292700000019 292700000020 292700000021 292700009999 292800000001 292800000002 292800000003 292800000004 292800000005 292800000006 292800000007 292800000008 292800000009 292800000010 292800000011 292800000012 292800000013 292800000014 292800000015 292800000016 292800000017 292800000018 292800000019 292800000020 292800000021 292800000022 292800000023 292800000024 292800000025 292800009999 292910000000 292990110000 292990190000 292990200000 292990300000 292990400000 292990900001 292990900002 292990909999 293010000000 293020000001 293020000002 293030000000 293040000000 293060000000 293070000000 293080000000 293090110000 293090120000 293090190001 293090199999 293090210000 293090220000 293090230000 293090240000 293090250000 293090260000 293090270000 293090290000 293090310000 293090320000 293090390000 293090410000 293090420000 293090430000 293090440000 293090490000 293090510000 293090590000 293090610000 293090620000 293090690000 293090720000 293090730000 293090790000 293090910000 293090920000 293090930000 293090940000 293090950000 293090960000 293090970000 293090990000 293110100000 293110200000 293120000000 293141000000 293142000000 293143000000 293144000000 293145000000 293146000000 293147000000 293148000000 293149100000 293149300000 293149400000 293149710000 293149720000 293149730000 293149740000 293149790000 293149910000 293149920000 293149990000 293151000000 293152000000 293153000000 293154000000 293159100001 293159100002 293159100003 293159100004 293159100005 293159100006 293159100007 293159100008 293159100009 293159109999 293159210000 293159220000 293159230000 293159240000 293159290000 293190510000 293190520000 293190530000 293190590000 293190900000 293211000000 293212000000 293213000001 293213000002 293214000000 293219000000 293220100000 293220200000 293220900000 293291000000 293292100000 293292900001 293292909999 293293000000 293294000000 293295000000 293295000901 293296000000 293299000001 293299000002 293299000003 293299000004 293299000005 293299000006 293299000007 293299000008 293299000009 293299000010 293299000011 293299000012 293299000013 293299000014 293299000015 293299009999 293311000000 293311000901 293319000000 293321000001 293321000002 293321000003 293321000004 293321009999 293329000000 293331000000 293332000000 293333000000 293333000901 293334000000 293334000901 293335000000 293336000000 293337000000 293339100000 293339200000 293339300000 293339900001 293339900002 293339900003 293339900004 293339909999 293341000000 293341000901 293349000000 293352000000 293353000001 293353000901 293353000002 293353000003 293353000004 293353000005 293353000006 293353000007 293353000008 293353000009 293353000010 293353000011 293353000012 293354000000 293354000901 293355000001 293355000901 293355000002 293355000003 293355000004 293359000000 293359000901 293361000000 293369000000 293371000000 293372000001 293372000901 293372000002 293379000000 293379000901 293391000001 293391000901 293391000002 293391000003 293391000004 293391000005 293391000006 293391000007 293391000008 293391000009 293391000010 293391000011 293391000012 293391000013 293391000014 293391000015 293391000016 293391000017 293391000018 293391000019 293391000020 293391000021 293391000022 293391000023 293391000024 293391000025 293391000026 293391000027 293391000028 293392000000 293392000901 293399100001 293399100002 293399100003 293399910000 293399920000 293399990000 293410000000 293410000901 293420000000 293420000901 293430000000 293430000901 293491000001 293491000901 293491000002 293491000003 293491000004 293491000005 293491000006 293491000007 293491000008 293491000009 293491000010 293491000011 293491000012 293491000013 293492000000 293492000901 293499100000 293499910000 293499100901 293499920000 293499920901 293499930000 293499930901 293499990000 293499990901 293510000000 293520000000 293530000000 293540000000 293550000000 293590000000 293621000901 293621000902 293622100901 293622100902 293622900901 293622900902 293623000901 293623000902 293624100901 293624100902 293624900901 293624900902 293625100901 293625100902 293625900901 293625900902 293626000901 293626000902 293627000901 293627000902 293628000901 293628000902 293629100901 293629100902 293629200901 293629200902 293629300901 293629300902 293629400901 293629400902 293629500901 293629500902 293629600901 293629600902 293629700901 293629700902 293629910000 293629990000 293629990901 293629990902 293690000000 293690000901 293690000902 293711000000 293712000000 293719000000 293721000001 293721000002 293721000003 293721000004 293722000000 293723000001 293723000002 293729000000 293750000001 293750000002 293790000000 293810000000 293810000901 293890000001 293890000901 293890009999 293911000001 293911000002 293911000003 293911009999 293919000001 293919000002 293919000003 293919000004 293919000005 293919000006 293919009999 293920000001 293920000002 293920009999 293930000000 293941000000 293942000000 293943000000 293944000000 293945000000 293945000901 293949000000 293951000000 293959000001 293959009999 293959009001 293961000000 293962000000 293963000000 293969000000 293972100000 293972200000 293972900000 293979000000 293980100000 293980100901 293980200000 293980200901 293980900000 293980900901 294000000001 294000000002 294000000003 294000000004 294000000005 294000000006 294000000007 294000000008 294000000009 294000000010 294000000011 294000009999 294110000001 294110000002 294110000003 294110000004 294110009999 294120000001 294120000901 294120000002 294120000902 294120000003 294120000903 294120009999 294130000001 294130000002 294130000003 294130009999 294140000001 294140000002 294140000003 294140009999 294150000001 294150000002 294150000003 294150000004 294150000005 294150009999 294190000001 294190000002 294190000003 294190000004 294190000005 294190000006 294190009999 294200000001 294200000002 294200000003 294200000004 294200009999 '"/>
       <xsl:variable name="codes07"
-                    select="' 300120100000 300120200000 300190110000 300190120000 300190130000 300190190000 300190210000 300190290000 300190310000 300190390000 300190900000 300212100000 300212200000 300212910000 300212990000 300213100000 300213200000 300214100000 300214200000 300215100000 300215900000 300241000000 300242000000 300249200001 300249200002 300249200003 300249200004 300249200005 300249200006 300249200007 300249200008 300249200009 300249200010 300249200011 300249200012 300249200013 300249200014 300249200015 300249200016 300249200017 300249200018 300249200019 300249200020 300249200021 300249200022 300249200023 300249200024 300249200025 300249200026 300249200027 300249200028 300249200029 300249200030 300249200031 300249200032 300249200033 300249200034 300249200035 300249200036 300249200037 300249200038 300249200039 300249300001 300249300002 300249300003 300249300004 300249400001 300249400002 300249400003 300249400004 300249400005 300249400006 300249400007 300249400008 300249400009 300249400010 300249400011 300249400012 300249400013 300249400014 300249400015 300249500001 300249500002 300249500003 300249500004 300249500005 300249500006 300249500007 300249500008 300249500009 300249500010 300249500011 300249500012 300249500013 300249600001 300249600002 300249900001 300249900002 300249909999 300251100000 300251200000 300259100000 300259200000 300290000001 300290000002 300290009999 300310000001 300310000002 300310000003 300310000004 300320000001 300320000002 300331100000 300331200000 300339000001 300339000002 300339000003 300339000004 300339000005 300339000006 300339000007 300339000008 300339000009 300339000010 300339000011 300339000012 300339009999 300341100000 300341200000 300342100000 300342200000 300343100000 300343200000 300349100000 300349200000 300360000000 300390000001 300390000002 300410000001 300410000002 300410000003 300410000004 300420000001 300420000002 300431110000 300431120000 300431210000 300431220000 300432100000 300432200000 300439000001 300439000002 300439000003 300439000004 300439000005 300439000006 300439000007 300439000008 300439000009 300439000010 300439000011 300439000012 300439009999 300441100000 300441200000 300442100000 300442200000 300443100000 300443200000 300449100000 300449200000 300450000001 300450000002 300460100000 300460200000 300490110001 300490119999 300490120000 300490910001 300490910002 300490919999 300490920000 300510000000 300590100000 300590210000 300590220001 300590229999 300590900000 300610100000 300610200000 300610300000 300610400000 300630000000 300640100000 300640900000 300650000000 300660100000 300660200000 300670100000 300670200000 300691100000 300691200000 300692000000 300693100000 300693210000 300693220000 '"/>
+                    select="' 300120100000 300120200000 300190110000 300190120000 300190130000 300190190000 300190210000 300190290000 300190310000 300190390000 300190900000 300212100000 300212200000 300212910000 300212990000 300213100000 300213200000 300214100000 300214200000 300215100000 300215900000 300241000000 300242000000 300249200001 300249200002 300249200003 300249200004 300249200005 300249200006 300249200007 300249200008 300249200009 300249200010 300249200011 300249200012 300249200013 300249200014 300249200015 300249200016 300249200017 300249200018 300249200019 300249200020 300249200021 300249200022 300249200023 300249200024 300249200025 300249200026 300249200027 300249200028 300249200029 300249200030 300249200031 300249200032 300249200033 300249200034 300249200035 300249200036 300249200037 300249200038 300249200039 300249300001 300249300002 300249300003 300249300004 300249400001 300249400002 300249400003 300249400004 300249400005 300249400006 300249400007 300249400008 300249400009 300249400010 300249400011 300249400012 300249400013 300249400014 300249400015 300249500001 300249500002 300249500003 300249500004 300249500005 300249500006 300249500007 300249500008 300249500009 300249500010 300249500011 300249500012 300249500013 300249600001 300249600002 300249900001 300249900002 300249909999 300251100000 300251200000 300259100000 300259200000 300290000001 300290000002 300290009999 300310000001 300310000002 300310000003 300310000004 300320000001 300320000002 300331100000 300331200000 300339000001 300339000002 300339000003 300339000004 300339000005 300339000006 300339000007 300339000008 300339000009 300339000010 300339000011 300339000012 300339009999 300341100000 300341200000 300342100000 300342200000 300343100000 300343200000 300349100000 300349200000 300360000000 300390000001 300390000002 300410000001 300410000002 300410000003 300410000004 300420000001 300420000002 300431110000 300431120000 300431210000 300431220000 300432100000 300432200000 300439000001 300439000002 300439000003 300439000004 300439000005 300439000006 300439000007 300439000008 300439000009 300439000010 300439000011 300439000012 300439009999 300441100000 300441200000 300442100000 300442200000 300443100000 300443200000 300449100000 300449200000 300450000001 300450000002 300460100000 300460200000 300490110001 300490119999 300490120000 300490910001 300490910002 300490919999 300490920000 300510000000 300590100000 300590210000 300590220001 300590229999 300590900000 300610100000 300610200000 300610300000 300610400000 300630000000 300640100000 300640900000 300650000000 300660100000 300660200000 300670100000 300670200000 300691100000 300691200000 300692000000 300693100000 300693210000 300693220000 000000000000 '"/>
       <xsl:variable name="codes08"
                     select="' 310100000001 310100000003 310100000005 310100000006 310100000009 310210100000 310210200000 310210300000 310221100000 310221200000 310221900000 310229100000 310229900000 310230100000 310230900000 310240100000 310240900000 310250100000 310250900000 310260100000 310260900000 310280100000 310280900000 310290000001 310290000002 310290000003 310290009999 310311000000 310319000000 310390100000 310390200000 310390300000 310390400000 310390900001 310390909999 310420000001 310420000002 310430000001 310430000002 310490110000 310490190000 310490310000 310490390000 310490410000 310490490000 310510000001 310510000002 310510000003 310510009999 310520000000 310530100000 310530200000 310540000001 310540000002 310551000000 310559000002 310559000003 310559000004 310560000000 310590000001 310590000002 310590000003 310590009999 320110000000 320120000000 320190000000 320210000000 320290000001 320290000002 320290000003 320290009999 320300110000 320300190001 320300190002 320300199999 320300200001 320300200002 320411000000 320412000000 320413000000 320414000000 320415000000 320416000000 320417000000 320418000000 320419000000 320420000000 320490100000 320490900001 320490909999 320500000001 320500000002 320500000003 320611000000 320619000001 320619009999 320620000000 320641000000 320642000000 320649000001 320649000002 320649009999 320650000000 320710000000 320720000000 320730000000 320740000000 320810100000 320810200000 320810900001 320810909999 320820100000 320820200000 320820900001 320820909999 320890100000 320890200000 320890900001 320890900002 320890909999 320910100000 320910200000 320910900001 320910909999 320990100000 320990200000 320990900001 320990900002 320990909999 321000100000 321000200000 321000910000 321000920000 321000930000 321000990000 321100000002 321100009999 321210000000 321290100000 321290900001 321290900002 321290900003 321290909999 321310100000 321310900000 321390000000 321410100000 321410200000 321410300000 321410400000 321410500000 321410600000 321410700000 321410800000 321410910000 321410920000 321410930000 321410940000 321410990001 321410999999 321490000001 321490000002 321490009999 321511000001 321511000002 321511000003 321511000004 321511000005 321511009999 321519000001 321519000002 321519000003 321519000004 321519000005 321519000006 321519009999 321590100000 321590200001 321590200002 321590300000 321590400000 321590500000 321590600000 321590700000 321590800000 321590910000 321590920000 321590990000 330112000000 330113000000 330119000000 330124000000 330125000000 330129000000 330129000901 330130100000 330130900000 330190110000 330190120000 330190130000 330190140000 330190160000 330190170000 330190180000 330190190000 330190190901 330190900000 330210000000 330290000000 330300100001 330300100002 330300100901 330300100902 330300200000 330300900001 330300900002 330300909999 330410000000 330420000000 330430100000 330430200000 330430900000 330491100000 330491900000 330499100000 330499200000 330499310001 330499310002 330499390000 330499390901 330499400000 330499910000 330499920000 330499930000 330499940000 330499950000 330499960000 330499970000 330499990000 330499990901 330510100000 330510200000 330510900000 330520000000 330530000000 330590100000 330590200000 330590300000 330590900000 330590900901 330610110000 330610120000 330610200000 330610910001 330610910002 330610920001 330610920002 330610990001 330610990002 330620000000 330690110000 330690120000 330690200000 330690900000 330710100000 330710900000 330720000000 330730000000 330741100000 330741200000 330741300000 330741900000 330749100000 330749200000 330749900000 330790100000 330790200001 330790200002 330790200003 330790400001 330790400002 330790500000 330790900019 330790909999 340111300000 340111400000 340111500000 340111700000 340111800000 340111800901 340111900000 340119200000 340119300000 340119400000 340119900000 340120100000 340120200000 340120300000 340120900000 340130000000 340130000901 340231000000 340239000000 340241000000 340242000000 340249000000 340250100000 340250210000 340250220000 340250290000 340290000004 340290009999 340311000000 340319100000 340319200000 340319300000 340319400000 340319500000 340319900002 340319909999 340391000000 340399000000 340420000000 340490100000 340490900000 340510000000 340520000000 340530000000 340540000000 340590100000 340590200000 340590900000 340600000000 340700100000 340700200000 340700300000 340700900001 340700900002 340700900003 340700909999 350110000000 350190100000 350190900000 350211000000 350219000000 350220000000 350290000000 350300100000 350300900000 350400100000 350400900000 350510100000 350510200000 350510300000 350510400000 350510900000 350520100000 350520200000 350520300000 350520900000 350610000000 350691000000 350699000005 350699009999 350710100000 350710900000 350790100000 350790200000 350790300000 350790400000 350790500000 350790600000 350790900008 350790909999 360100000002 360100000003 360100000006 360100009999 360200000003 360200000004 360200000005 360200000006 360200009999 360310000000 360320000001 360320009999 360330000000 360340000000 360350000001 360350000002 360350000003 360350009999 360360000000 360410100000 360410200000 360490000000 360500000000 360610000000 360690100000 360690900000 370110000000 370120000000 370130000000 370191000000 370199000000 370210000000 370231000000 370232000000 370239000000 370241000000 370242000000 370243000000 370244000000 370252000000 370253000000 370254000000 370255000000 370256000000 370296000000 370297000000 370298000000 370310000000 370320000000 370390000000 370400000001 370400000002 370400000003 370400000004 370400000005 370500000000 370610100000 370610900000 370690100000 370690900000 370710000000 370790100000 370790200000 370790300000 370790400000 370790500000 370790900000 380110100000 380110200000 380110900000 380120000000 380130000000 380190100000 380190900000 380210000000 380290000000 380300000001 380300000002 380400000000 380510000000 380590000000 380610000000 380620000000 380630000000 380690000000 380700000001 380700000002 380700000003 380700000004 380700000005 380700000006 380700009999 380852000000 380859000000 380861000000 380862000000 380869000000 380891100000 380891910000 380891990001 380891990002 380892100000 380892900000 380893100000 380893900000 380894110000 380894190000 380894200000 380894900000 380899100000 380899900001 380899909999 380910100000 380910900000 380991100000 380991900000 380992000000 380993000000 381010000001 381010000002 381090000001 381090009999 381111000000 381119000000 381121000000 381129000000 381190000004 381190009999 381210000000 381220000000 381231000000 381239000001 381239009999 381300100000 381300200000 381300300000 381300400000 381300900000 381400100000 381400200000 381400300000 381400900001 381400900002 381400900003 381400900004 381400909999 381511000000 381512000001 381512009999 381519000000 381590000001 381590009999 381600000001 381600000002 381600000003 381600000004 381600000005 381600000006 381600009999 381700000001 381700000002 381800000001 381800000002 381900000001 381900000002 382000000001 382000000002 382100100001 382100109999 382100200001 382100209999 382100310001 382100319999 382100390001 382100399999 382100400001 382100409999 382100900001 382100909999 382211000000 382212000000 382213000000 382219110000 382219200000 382219900000 382290000001 382290009999 382311000000 382312000000 382313000000 382319000001 382319009999 382370000000 382410000000 382430000000 382440000000 382450000000 382460000000 382481000000 382482000000 382483000000 382484000000 382485000000 382486000000 382487000000 382488000000 382489000000 382491000000 382492000000 382499100000 382499200000 382499300000 382499400000 382499500000 382499600000 382499700000 382499800000 382499910000 382499920000 382499930000 382499940000 382499950000 382499960000 382499970000 382499980000 382499990001 382499990002 382499990003 382499990004 382499990005 382499990006 382499990007 382499990008 382499990009 382499990010 382499990011 382499990012 382499990013 382499990014 382499990015 382499999999 382510000000 382520000000 382530000000 382541000000 382549000000 382550000000 382561000000 382569000000 382590000000 382600000000 382711000001 382711000002 382711009999 382712000000 382713000000 382714000000 382720000000 382731000000 382732000000 382739000001 382739000002 382739000003 382739000004 382739000005 382739000006 382739009999 382740000000 382751000000 382759000001 382759000002 382759000003 382759000004 382759000005 382759000006 382759000007 382759000008 382759000009 382759000010 382759000011 382759009999 382761000000 382762000000 382763000000 382764000000 382765000000 382768000000 382769000000 382790000000 '"/>
       <xsl:variable name="codes09"
@@ -5562,8 +5421,44 @@
                     select="' 880100000001 880100000002 880100000003 880100000004 880100000005 880100000006 880100000007 880100000008 880211000001 880211000002 880211000003 880211000004 880211000005 880211009999 880212000001 880212000002 880212000003 880212000004 880212000005 880212009999 880220000001 880220000002 880220000003 880220000004 880220000005 880220000006 880220000007 880220009999 880230000001 880230000002 880230000003 880230000004 880230000005 880230000006 880230000007 880230009999 880240000001 880240000002 880240000003 880240000004 880240000005 880240000006 880240000007 880240009999 880260000000 880400000001 880400000002 880400000003 880400000004 880510000001 880510000002 880510000003 880510000004 880521000001 880521000002 880529000001 880529000002 880529000003 880529000004 880610000000 880621100000 880621900000 880622100000 880622900000 880623100000 880623200000 880623900000 880624100000 880624200000 880624900000 880629100000 880629900000 880691100000 880691900000 880692100000 880692900000 880693100000 880693900000 880694100000 880694900000 880699100000 880699900000 880710000001 880710009999 880720000001 880720009999 880730000001 880730000002 880730000003 880730000004 880730000005 880730009999 880790000000 890110000001 890110000002 890110000003 890110000004 890110009999 890120000000 890130000000 890190000001 890190000002 890200000001 890200000002 890200000003 890311000000 890312000000 890319000000 890321000000 890322000000 890323000000 890331000000 890332000000 890333000000 890393000000 890399100000 890399200000 890399300000 890399900001 890399909999 890400000001 890400000002 890510000000 890520000000 890590100000 890590200000 890590900001 890590900002 890590909999 890610000000 890690100000 890690900001 890690900002 890690900003 890690900004 890690909999 890710000000 890790000001 890790000002 890790000003 890790000004 890790000005 890790000006 890790000007 890790009999 890800000000 900110000001 900110000002 900110000003 900120000000 900130000001 900130000002 900130000003 900130009999 900140000000 900150000000 900190000000 900211000001 900211000002 900211000003 900211000004 900219000001 900219009999 900220000000 900290000000 900311000001 900311000002 900319000001 900319000002 900319009999 900390000000 900410000000 900490100001 900490100002 900490109999 900490200001 900490200002 900490209999 900490900001 900490909999 900510000001 900510000002 900580000001 900580000002 900580000003 900580009999 900590000000 900630000001 900630000002 900630000003 900630000004 900630000005 900640000000 900653000000 900659000000 900661000000 900669000000 900691000001 900691000002 900691000003 900691009999 900699000000 900710000000 900720000000 900791000000 900792000000 900850000000 900890000000 901010000001 901010000002 901050000001 901050000002 901050000003 901060000000 901090000000 901110000000 901120000001 901120000002 901120000003 901180000001 901180009999 901190000000 901210000000 901290000000 901310000001 901310000002 901310000003 901320100001 901320100002 901320900001 901320900002 901320900003 901320900004 901320900005 901320900006 901320900007 901320900008 901320900009 901320900010 901320909999 901380100001 901380100002 901380200001 901380209999 901380300000 901380900000 901390100000 901390900001 901390909999 901410000001 901410000002 901410000003 901410009999 901420000000 901480000000 901490000000 901510000000 901520000001 901520000002 901530000000 901540000000 901580000001 901580000002 901580000003 901580009999 901590000000 901600000000 901710100000 901710900000 901720100001 901720109999 901720900000 901730000000 901780100000 901780200000 901780900000 901790100000 901790900000 901811000000 901812000000 901813000000 901814000000 901819100001 901819100002 901819200001 901819200002 901819200003 901819200004 901819200005 901819209999 901819900001 901819900002 901819900003 901819900004 901820000001 901820009999 901831100000 901831200001 901831200002 901831200003 901831300000 901831400000 901831900000 901832000001 901832000002 901839100001 901839109999 901839200001 901839200002 901839200003 901839200004 901839200005 901839200006 901839300000 901839900000 901841000001 901841000002 901849100000 901849200000 901849300000 901849400000 901849900000 901850100001 901850100002 901850100003 901850200001 901850200002 901850200003 901850910000 901850990000 901890100001 901890100002 901890100003 901890109999 901890200000 901890300000 901890400000 901890500001 901890500002 901890500003 901890600000 901890700000 901890800000 901890900001 901890900002 901890900003 901890909999 901910000001 901910000002 901910000003 901920000001 901920000002 901920000003 901920000004 901920009999 902000000001 902000000002 902000000003 902000000004 902110100001 902110100002 902110100003 902110100004 902110200000 902110300000 902110400001 902110400002 902110500001 902110500002 902110500003 902110600000 902110700000 902110900000 902121000000 902129000000 902131000000 902139100000 902139200001 902139200002 902139200003 902139200005 902139200006 902139200007 902139200008 902139900000 902140000000 902150000000 902190100000 902190200000 902190900001 902190909999 902212000000 902213000000 902214000001 902214000002 902214000003 902214000004 902214000005 902219100000 902219900001 902219900002 902219900003 902219900004 902219909999 902221000001 902221000002 902221000003 902221000004 902221000005 902221000006 902221000007 902221000008 902221000009 902229000000 902230000000 902290000001 902290000002 902290009999 902300000001 902300000002 902300009999 902410000000 902480000001 902480000002 902480000003 902480000004 902480009999 902490000000 902511000000 902511000901 902519000001 902519000901 902519009999 902580100000 902580200000 902580900000 902590000001 902590009999 902610000001 902610000002 902610000003 902610000004 902610000005 902610000006 902610000007 902610000008 902620000001 902620000002 902620000003 902620009999 902680000003 902680000004 902680009999 902690000000 902710000001 902710000002 902720000001 902720000002 902730000001 902730000002 902730000003 902750000000 902781000001 902781009999 902789100000 902789200000 902789900000 902790100001 902790109999 902790900001 902790909999 902810000000 902820100000 902820900000 902830000000 902890000000 902910100000 902910200000 902910900000 902920000001 902920000002 902920000003 902990000000 903010000001 903010000002 903010000003 903020000000 903031000000 903032000000 903033000000 903039000000 903040000001 903040000002 903040000003 903040000004 903040009999 903082000000 903084000000 903089000000 903090100000 903090900000 903110000001 903110000002 903110009999 903120000000 903141000000 903149100000 903149200000 903149300000 903149900000 903180100000 903180200000 903180300000 903180400000 903180900001 903180900002 903180900003 903180900004 903180909999 903190100000 903190200000 903190300000 903190400000 903190500000 903190600000 903190700000 903190800000 903190900000 903210000000 903220000000 903281000000 903289000000 903290000000 903300000000 '"/>
       <xsl:variable name="codes20"
                     select="' 910111000001 910111000002 910111000003 910111000004 910111000005 910111000006 910111009999 910119000001 910119000002 910119000003 910119000004 910119000005 910119000006 910119009999 910121000001 910121000002 910121000003 910121000004 910121000005 910121000006 910121000007 910129000001 910129000002 910129000003 910129000004 910129009999 910191000001 910191000002 910191000003 910191000004 910191009999 910199000000 910211000001 910211009999 910212000001 910212009999 910219000001 910219009999 910221000001 910221009999 910229000001 910229009999 910291000000 910299000001 910299009999 910310000000 910390000000 910400000001 910400000002 910400000003 910400000004 910400000005 910400000006 910400009999 910511000000 910519000000 910521000000 910529000000 910591000000 910599000000 910610000000 910690000000 910700000001 910700000002 910700000003 910700000004 910700009999 910811000000 910812000000 910819000000 910820000000 910890000000 910910000000 910990000000 911011000000 911012000000 911019000000 911090000000 911110000000 911120000000 911180000000 911190000000 911220000001 911220000002 911220000003 911220000004 911220009999 911290000000 911310000001 911310000002 911310000003 911310000004 911320000001 911320000002 911320000003 911320000004 911390100000 911390200001 911390200002 911390300000 911390400001 911390400002 911390400003 911390400004 911390900000 911430000000 911440000000 911490000000 920110000000 920120000000 920190000000 920210000001 920210000002 920210009999 920290100000 920290900001 920290909999 920510000001 920510000002 920510000003 920510009999 920590000001 920590000002 920590000003 920590000004 920590000005 920590009999 920600100000 920600200000 920600300000 920600400000 920600900000 920710000001 920710000002 920710009999 920790000000 920810000000 920890100000 920890200000 920890300000 920890400000 920890900000 920930000001 920930000002 920930000003 920930009999 920991000000 920992000000 920994000000 920999000000 930110100000 930110200000 930110900000 930120000001 930120000002 930120000003 930120000004 930190100000 930190900000 930200000001 930200000002 930200009999 930310000000 930320000000 930330000000 930390000001 930390000002 930390000003 930390009999 930400100000 930400900001 930400900002 930400900003 930400900004 930400909999 930510000901 930510000902 930520000901 930520000902 930591000901 930591000902 930599000901 930599000902 930621100000 930621900000 930629100000 930629900000 930630100000 930630900001 930630909999 930690000000 930700100001 930700100002 930700100003 930700100004 930700100005 930700109999 930700900001 930700900002 930700900003 930700900004 930700900005 930700900006 930700909999 940110000000 940120000000 940131000000 940139000000 940141000000 940149000000 940152000000 940153000000 940159000001 940159000002 940159000003 940161000001 940161000002 940161000004 940161000012 940161009999 940169000000 940171100000 940171200000 940171900000 940179100000 940179200000 940179900000 940180110000 940180120000 940180190000 940180200001 940180200002 940180200003 940180900000 940191000000 940199000000 940210100001 940210100002 940210100003 940210100004 940210100005 940210109999 940210200000 940210900001 940210900002 940210900003 940210900004 940210900005 940210909999 940290100001 940290100002 940290100003 940290100004 940290100005 940290100006 940290100007 940290100008 940290100009 940290100010 940290100011 940290100012 940290100013 940290100014 940290100015 940290100016 940290109999 940290900001 940290900002 940290900003 940290900004 940290900005 940290900006 940290900007 940290909999 940310100000 940310200000 940310300000 940310900000 940320100000 940320200000 940320300000 940320400000 940320500001 940320500002 940320500003 940320900001 940320900002 940320900003 940320900004 940320900005 940320900006 940320900007 940320900008 940320900019 940320900026 940320900027 940320900028 940320909999 940330100000 940330200000 940330300000 940330900000 940340100000 940340200000 940340900000 940350100000 940350200000 940350900001 940350900002 940350900003 940350900004 940350900005 940350909999 940360100000 940360200000 940360300000 940360400000 940360900001 940360900005 940360909999 940370000007 940370009999 940382000000 940383000000 940389000001 940389000002 940389000003 940389009999 940391000000 940399000000 940410000000 940421100000 940421900006 940421909999 940429100000 940429900000 940430000001 940430000002 940440000000 940490100000 940490200001 940490200002 940490300001 940490300002 940490400000 940490900000 940511000000 940519000000 940521000000 940529000000 940531000000 940539000000 940541000000 940542000000 940549100000 940549200000 940549900000 940550000000 940561100000 940561900000 940569000000 940591000000 940592000000 940599000001 940599000002 940599000003 940599000004 940599000005 940599000006 940599000008 940599000009 940599000010 940599000011 940599000012 940599000013 940599000014 940599000015 940599000016 940599000017 940599000018 940599000019 940599009999 940610100000 940610200000 940610300000 940610400000 940610900000 940620000000 940690110000 940690120000 940690130000 940690140000 940690190001 940690199999 940690210000 940690220000 940690230000 940690240000 940690290000 940690310000 940690320000 940690330000 940690340000 940690390000 940690410000 940690420000 940690430000 940690440000 940690490000 940690900000 950300100001 950300100002 950300100003 950300100004 950300109999 950300200000 950300300000 950300400000 950300900001 950300900002 950300909999 950420100001 950420100002 950420109999 950420900001 950420900002 950420909999 950430000000 950440000001 950440000002 950450000001 950450000002 950450000003 950490000001 950490000002 950490000003 950490000004 950490000005 950490000006 950490000007 950490009999 950510000000 950590000001 950590000002 950590000003 950590000004 950590009999 950611000000 950612000000 950619000000 950621000000 950629000000 950631000000 950632000000 950639000000 950640000001 950640000003 950640000004 950640000005 950640009999 950651000000 950659000000 950661000000 950662000001 950662000002 950662000003 950662009999 950669000000 950670000001 950670000002 950670000003 950670009999 950691000001 950691000002 950691000003 950691000004 950691000005 950691000006 950691000007 950691000008 950691000009 950691000010 950691000011 950691000012 950691000013 950691000014 950691000015 950691000016 950691009999 950699100000 950699900000 950710000000 950720000000 950730000000 950790000000 950810000000 950821000000 950822000000 950823000000 950824000000 950825000000 950826000000 950829000000 950830000000 950840000000 960110000000 960190000000 960200100000 960200200000 960200300001 960200309999 960200400000 960200500000 960200900000 960310000000 960321000000 960329100000 960329200000 960329900000 960330000000 960340000001 960340000002 960340000003 960340009999 960350000000 960390100000 960390200000 960390300000 960390400000 960390500000 960390900000 960400000002 960400000003 960400009999 960500000001 960500000002 960500000003 960500000004 960610000001 960610000002 960610000003 960610000004 960610000006 960610009999 960621000000 960622000000 960629000000 960630000000 960711000000 960719000000 960720000000 960810000000 960820000000 960830100000 960830900000 960840000000 960850000000 960860000000 960891000000 960899000001 960899000002 960899000003 960899000004 960899000005 960899000006 960899009999 960910000000 960920000000 960990100000 960990200000 960990300000 960990400000 960990500000 960990900000 961000100001 961000100002 961000100003 961000100004 961000900001 961000900002 961000900003 961000909999 961100000001 961100000002 961100000003 961210000001 961210000002 961210000003 961210000004 961210000005 961210000006 961210000007 961210000008 961210000009 961210000010 961210009999 961220000000 961310000000 961320000000 961380000002 961380000003 961380000005 961380009999 961390000000 961400100000 961400200001 961400200002 961400200003 961400200004 961400200005 961400200006 961400209999 961400900001 961400900002 961400900003 961400909999 961511000001 961511000002 961511000003 961511000004 961511000005 961511000006 961519000000 961590000001 961590000002 961590009999 961610000001 961610000002 961610000003 961620000001 961620000002 961700100000 961700900000 961800000001 961800000002 961800000003 961800000004 961800000005 961900100000 961900200000 961900300000 961900400000 961900500000 961900900000 962000100000 962000900000 970121000000 970122000000 970129000000 970191000000 970192000000 970199000000 970210000000 970290000000 970310000000 970390000000 970400000001 970400000002 970400000003 970400009999 970510000000 970521000000 970522000000 970529100000 970529900000 970531000000 970539000000 970610000000 970690100000 970690200000 970690300000 970690900000 980100000001 980100000002 980200100001 980200100002 980200109999 980200200000 980300000001 980300000002 980400000000 '"/>
+      <!--ASSERT fatal-->
+      <xsl:choose>
+         <xsl:when test="if (string-length($hsCode) = 0) then true()                         else if (string-length($hsCode) = 12 and substring($hsCode, 1, 2) &lt;= '04') then contains($codes01, concat(' ', $hsCode, ' '))                         else if (string-length($hsCode) = 12 and substring($hsCode, 1, 2) &lt;= '15') then contains($codes02, concat(' ', $hsCode, ' '))                         else if (string-length($hsCode) = 12 and substring($hsCode, 1, 2) &lt;= '21') then contains($codes03, concat(' ', $hsCode, ' '))                         else if (string-length($hsCode) = 12 and substring($hsCode, 1, 2) &lt;= '26') then contains($codes04, concat(' ', $hsCode, ' '))                         else if (string-length($hsCode) = 12 and substring($hsCode, 1, 2) &lt;= '28') then contains($codes05, concat(' ', $hsCode, ' '))                         else if (string-length($hsCode) = 12 and substring($hsCode, 1, 2) &lt;= '29') then contains($codes06, concat(' ', $hsCode, ' '))                         else if (string-length($hsCode) = 12 and substring($hsCode, 1, 2) &lt;= '30') then contains($codes07, concat(' ', $hsCode, ' '))                         else if (string-length($hsCode) = 12 and substring($hsCode, 1, 2) &lt;= '38') then contains($codes08, concat(' ', $hsCode, ' '))                         else if (string-length($hsCode) = 12 and substring($hsCode, 1, 2) &lt;= '41') then contains($codes09, concat(' ', $hsCode, ' '))                         else if (string-length($hsCode) = 12 and substring($hsCode, 1, 2) &lt;= '48') then contains($codes10, concat(' ', $hsCode, ' '))                         else if (string-length($hsCode) = 12 and substring($hsCode, 1, 2) &lt;= '55') then contains($codes11, concat(' ', $hsCode, ' '))                         else if (string-length($hsCode) = 12 and substring($hsCode, 1, 2) &lt;= '62') then contains($codes12, concat(' ', $hsCode, ' '))                         else if (string-length($hsCode) = 12 and substring($hsCode, 1, 2) &lt;= '70') then contains($codes13, concat(' ', $hsCode, ' '))                         else if (string-length($hsCode) = 12 and substring($hsCode, 1, 2) &lt;= '73') then contains($codes14, concat(' ', $hsCode, ' '))                         else if (string-length($hsCode) = 12 and substring($hsCode, 1, 2) &lt;= '83') then contains($codes15, concat(' ', $hsCode, ' '))                         else if (string-length($hsCode) = 12 and substring($hsCode, 1, 2) &lt;= '84') then contains($codes16, concat(' ', $hsCode, ' '))                         else if (string-length($hsCode) = 12 and substring($hsCode, 1, 2) &lt;= '85') then contains($codes17, concat(' ', $hsCode, ' '))                         else if (string-length($hsCode) = 12 and substring($hsCode, 1, 2) &lt;= '87') then contains($codes18, concat(' ', $hsCode, ' '))                         else if (string-length($hsCode) = 12 and substring($hsCode, 1, 2) &lt;= '90') then contains($codes19, concat(' ', $hsCode, ' '))                         else if (string-length($hsCode) = 12 and substring($hsCode, 1, 2) &lt;= '98') then contains($codes20, concat(' ', $hsCode, ' '))                         else false()"/>
+         <xsl:otherwise>
+            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
+                                test="if (string-length($hsCode) = 0) then true() else if (string-length($hsCode) = 12 and substring($hsCode, 1, 2) &lt;= '04') then contains($codes01, concat(' ', $hsCode, ' ')) else if (string-length($hsCode) = 12 and substring($hsCode, 1, 2) &lt;= '15') then contains($codes02, concat(' ', $hsCode, ' ')) else if (string-length($hsCode) = 12 and substring($hsCode, 1, 2) &lt;= '21') then contains($codes03, concat(' ', $hsCode, ' ')) else if (string-length($hsCode) = 12 and substring($hsCode, 1, 2) &lt;= '26') then contains($codes04, concat(' ', $hsCode, ' ')) else if (string-length($hsCode) = 12 and substring($hsCode, 1, 2) &lt;= '28') then contains($codes05, concat(' ', $hsCode, ' ')) else if (string-length($hsCode) = 12 and substring($hsCode, 1, 2) &lt;= '29') then contains($codes06, concat(' ', $hsCode, ' ')) else if (string-length($hsCode) = 12 and substring($hsCode, 1, 2) &lt;= '30') then contains($codes07, concat(' ', $hsCode, ' ')) else if (string-length($hsCode) = 12 and substring($hsCode, 1, 2) &lt;= '38') then contains($codes08, concat(' ', $hsCode, ' ')) else if (string-length($hsCode) = 12 and substring($hsCode, 1, 2) &lt;= '41') then contains($codes09, concat(' ', $hsCode, ' ')) else if (string-length($hsCode) = 12 and substring($hsCode, 1, 2) &lt;= '48') then contains($codes10, concat(' ', $hsCode, ' ')) else if (string-length($hsCode) = 12 and substring($hsCode, 1, 2) &lt;= '55') then contains($codes11, concat(' ', $hsCode, ' ')) else if (string-length($hsCode) = 12 and substring($hsCode, 1, 2) &lt;= '62') then contains($codes12, concat(' ', $hsCode, ' ')) else if (string-length($hsCode) = 12 and substring($hsCode, 1, 2) &lt;= '70') then contains($codes13, concat(' ', $hsCode, ' ')) else if (string-length($hsCode) = 12 and substring($hsCode, 1, 2) &lt;= '73') then contains($codes14, concat(' ', $hsCode, ' ')) else if (string-length($hsCode) = 12 and substring($hsCode, 1, 2) &lt;= '83') then contains($codes15, concat(' ', $hsCode, ' ')) else if (string-length($hsCode) = 12 and substring($hsCode, 1, 2) &lt;= '84') then contains($codes16, concat(' ', $hsCode, ' ')) else if (string-length($hsCode) = 12 and substring($hsCode, 1, 2) &lt;= '85') then contains($codes17, concat(' ', $hsCode, ' ')) else if (string-length($hsCode) = 12 and substring($hsCode, 1, 2) &lt;= '87') then contains($codes18, concat(' ', $hsCode, ' ')) else if (string-length($hsCode) = 12 and substring($hsCode, 1, 2) &lt;= '90') then contains($codes19, concat(' ', $hsCode, ' ')) else if (string-length($hsCode) = 12 and substring($hsCode, 1, 2) &lt;= '98') then contains($codes20, concat(' ', $hsCode, ' ')) else false()">
+               <xsl:attribute name="id">CL-08-OM-HS</xsl:attribute>
+               <xsl:attribute name="flag">fatal</xsl:attribute>
+               <xsl:attribute name="role">fatal</xsl:attribute>
+               <xsl:attribute name="location">
+                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
+               </xsl:attribute>
+               <svrl:text>[CL-08-OM-HS] - Value of 'cbc:ItemClassificationCode[@listID="HS"]' is not a valid 12-digit Oman HS code (CL-08-OM-HS).</svrl:text>
+               <svrl:diagnostic-reference diagnostic="d-CL-08-OM-HS">
+
+            The supplied value '<xsl:text/>
+                  <xsl:value-of select="$hsCode"/>
+                  <xsl:text/>' is not a valid item classification code under codelist CL-08-OM-HS.
+            Expected: a 12-digit Oman HS code from the official Oman HS Codes codelist (e.g. '010121100001').
+            Empty values are permitted; cardinality is enforced separately.
+            ISIC (6-digit) codes are no longer accepted on this path - move them to
+            cac:Item/cac:AdditionalItemIdentification/cbc:ID[@schemeName='CC']
+            (validated by CL-08-OM-ISIC).
+        </svrl:diagnostic-reference>
+            </svrl:failed-assert>
+         </xsl:otherwise>
+      </xsl:choose>
+      <xsl:apply-templates select="*" mode="M52"/>
+   </xsl:template>
+   <!--RULE -->
+   <xsl:template match="cac:Item/cac:AdditionalItemIdentification/cbc:ID[@schemeName='CC']"
+                 priority="1004"
+                 mode="M52">
+      <svrl:fired-rule xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
+                       context="cac:Item/cac:AdditionalItemIdentification/cbc:ID[@schemeName='CC']"/>
+      <xsl:variable name="isicCode" select="normalize-space(.)"/>
       <xsl:variable name="isic0"
-                    select="' 011101 011301 011302 011901 011902 012100 012201 012202 012203 012300 012400 012501 012503 012601 012602 012801 012802 012900 013001 014101 014102 014201 014202 014301 014302 014303 014401 014402 014601 014602 014603 014901 014902 016101 016102 016103 016105 016200 021000 023001 023002 024000 031101 031201 032101 032102 032103 032201 032202 032203 061000 062000 072901 072902 081001 081002 081003 081005 089101 089102 089103 089104 089301 089302 089303 089901 089902 091001 091002 091003 091004 099005 099006 099009 099010 '"/>
+                    select="' 011101 011301 011302 011901 011902 012100 012201 012202 012203 012300 012400 012501 012503 012601 012602 012801 012802 012900 013001 014101 014102 014201 014202 014301 014302 014303 014401 014402 014601 014602 014603 014901 014902 016101 016102 016103 016105 016200 021000 023001 023002 024000 031101 031201 032101 032102 032103 032201 032202 032203 061000 062000 072901 072902 081001 081002 081003 081005 089101 089102 089103 089104 089301 089302 089303 089901 089902 091001 091002 091003 091004 099005 099006 099009 099010 000000 '"/>
       <xsl:variable name="isic1"
                     select="' 101001 101002 101003 101004 101005 101006 101007 101008 101009 101010 101011 102001 102002 102003 102004 102005 102006 102007 103001 103002 103003 103004 103005 103006 103007 103008 103009 103010 103011 103012 104001 104002 104003 104004 104005 104006 104007 104008 104009 105001 105002 105003 105004 105005 105006 106101 106102 106103 106104 106105 106106 106201 106202 106203 106204 107101 107102 107103 107104 107105 107106 107107 107108 107109 107201 107202 107203 107301 107302 107303 107304 107305 107306 107401 107402 107403 107500 107901 107902 107903 107904 107905 107906 107907 107908 107909 108001 108002 108003 108004 110302 110401 110402 110403 110404 110405 110406 120000 131101 131102 131103 131104 131200 131301 131302 131303 131304 139101 139201 139202 139203 139204 139205 139206 139207 139208 139301 139302 139303 139401 139402 139403 139901 139902 139903 139904 139905 139906 139907 139908 141001 141002 141003 141004 141005 141006 141007 141008 141009 141010 141011 141012 141013 141014 142001 142002 143001 143002 143003 151101 151102 151103 151104 151105 151201 151202 151203 151204 151205 151206 151207 151208 152001 152002 152003 152004 161001 161002 161003 161004 162101 162102 162103 162201 162202 162203 162204 162205 162206 162207 162301 162302 162303 162901 162902 162903 162904 162905 162906 162907 162908 162909 162910 162911 170101 170102 170103 170104 170105 170106 170201 170202 170203 170204 170205 170206 170901 170902 170903 170904 170905 170906 170907 170908 170909 170910 170911 181101 181102 181103 181104 181105 181106 181107 181108 181109 181110 181201 181202 181203 182001 182002 182003 182004 182005 182006 191000 192001 192002 192003 192004 192005 192006 192007 192008 192009 192010 192011 '"/>
       <xsl:variable name="isic2"
@@ -5584,30 +5479,32 @@
                     select="' 900001 900002 900003 900005 900006 910201 910202 910203 910301 910303 910304 931101 931102 931201 931202 931203 931901 932100 932901 932902 932903 932904 932905 932906 932907 941201 941202 942000 949101 951100 951200 951201 952101 952102 952103 952201 952300 952401 952402 952901 952902 952903 952904 960101 960102 960103 960104 960201 960202 960203 960204 960301 960901 960902 960903 960904 '"/>
       <!--ASSERT fatal-->
       <xsl:choose>
-         <xsl:when test="if (string-length($hsCode) = 0) then true()                         else if (string-length($hsCode) = 8) then contains($codesUNGM, concat(' ', $hsCode, ' '))                         else if (string-length($hsCode) = 6 and substring($hsCode, 1, 1) = '0') then contains($isic0, concat(' ', $hsCode, ' '))                         else if (string-length($hsCode) = 6 and substring($hsCode, 1, 1) = '1') then contains($isic1, concat(' ', $hsCode, ' '))                         else if (string-length($hsCode) = 6 and substring($hsCode, 1, 1) = '2') then contains($isic2, concat(' ', $hsCode, ' '))                         else if (string-length($hsCode) = 6 and substring($hsCode, 1, 1) = '3') then contains($isic3, concat(' ', $hsCode, ' '))                         else if (string-length($hsCode) = 6 and substring($hsCode, 1, 1) = '4') then contains($isic4, concat(' ', $hsCode, ' '))                         else if (string-length($hsCode) = 6 and substring($hsCode, 1, 1) = '5') then contains($isic5, concat(' ', $hsCode, ' '))                         else if (string-length($hsCode) = 6 and substring($hsCode, 1, 1) = '6') then contains($isic6, concat(' ', $hsCode, ' '))                         else if (string-length($hsCode) = 6 and substring($hsCode, 1, 1) = '7') then contains($isic7, concat(' ', $hsCode, ' '))                         else if (string-length($hsCode) = 6 and substring($hsCode, 1, 1) = '8') then contains($isic8, concat(' ', $hsCode, ' '))                         else if (string-length($hsCode) = 6 and substring($hsCode, 1, 1) = '9') then contains($isic9, concat(' ', $hsCode, ' '))                         else if (string-length($hsCode) = 12 and substring($hsCode, 1, 2) &lt;= '04') then contains($codes01, concat(' ', $hsCode, ' '))                         else if (string-length($hsCode) = 12 and substring($hsCode, 1, 2) &lt;= '15') then contains($codes02, concat(' ', $hsCode, ' '))                         else if (string-length($hsCode) = 12 and substring($hsCode, 1, 2) &lt;= '21') then contains($codes03, concat(' ', $hsCode, ' '))                         else if (string-length($hsCode) = 12 and substring($hsCode, 1, 2) &lt;= '26') then contains($codes04, concat(' ', $hsCode, ' '))                         else if (string-length($hsCode) = 12 and substring($hsCode, 1, 2) &lt;= '28') then contains($codes05, concat(' ', $hsCode, ' '))                         else if (string-length($hsCode) = 12 and substring($hsCode, 1, 2) &lt;= '29') then contains($codes06, concat(' ', $hsCode, ' '))                         else if (string-length($hsCode) = 12 and substring($hsCode, 1, 2) &lt;= '30') then contains($codes07, concat(' ', $hsCode, ' '))                         else if (string-length($hsCode) = 12 and substring($hsCode, 1, 2) &lt;= '38') then contains($codes08, concat(' ', $hsCode, ' '))                         else if (string-length($hsCode) = 12 and substring($hsCode, 1, 2) &lt;= '41') then contains($codes09, concat(' ', $hsCode, ' '))                         else if (string-length($hsCode) = 12 and substring($hsCode, 1, 2) &lt;= '48') then contains($codes10, concat(' ', $hsCode, ' '))                         else if (string-length($hsCode) = 12 and substring($hsCode, 1, 2) &lt;= '55') then contains($codes11, concat(' ', $hsCode, ' '))                         else if (string-length($hsCode) = 12 and substring($hsCode, 1, 2) &lt;= '62') then contains($codes12, concat(' ', $hsCode, ' '))                         else if (string-length($hsCode) = 12 and substring($hsCode, 1, 2) &lt;= '70') then contains($codes13, concat(' ', $hsCode, ' '))                         else if (string-length($hsCode) = 12 and substring($hsCode, 1, 2) &lt;= '73') then contains($codes14, concat(' ', $hsCode, ' '))                         else if (string-length($hsCode) = 12 and substring($hsCode, 1, 2) &lt;= '83') then contains($codes15, concat(' ', $hsCode, ' '))                         else if (string-length($hsCode) = 12 and substring($hsCode, 1, 2) &lt;= '84') then contains($codes16, concat(' ', $hsCode, ' '))                         else if (string-length($hsCode) = 12 and substring($hsCode, 1, 2) &lt;= '85') then contains($codes17, concat(' ', $hsCode, ' '))                         else if (string-length($hsCode) = 12 and substring($hsCode, 1, 2) &lt;= '87') then contains($codes18, concat(' ', $hsCode, ' '))                         else if (string-length($hsCode) = 12 and substring($hsCode, 1, 2) &lt;= '90') then contains($codes19, concat(' ', $hsCode, ' '))                         else if (string-length($hsCode) = 12 and substring($hsCode, 1, 2) &lt;= '98') then contains($codes20, concat(' ', $hsCode, ' '))                         else false()"/>
+         <xsl:when test="if (string-length($isicCode) = 0) then true()                         else if (string-length($isicCode) = 6 and substring($isicCode, 1, 1) = '0') then contains($isic0, concat(' ', $isicCode, ' '))                         else if (string-length($isicCode) = 6 and substring($isicCode, 1, 1) = '1') then contains($isic1, concat(' ', $isicCode, ' '))                         else if (string-length($isicCode) = 6 and substring($isicCode, 1, 1) = '2') then contains($isic2, concat(' ', $isicCode, ' '))                         else if (string-length($isicCode) = 6 and substring($isicCode, 1, 1) = '3') then contains($isic3, concat(' ', $isicCode, ' '))                         else if (string-length($isicCode) = 6 and substring($isicCode, 1, 1) = '4') then contains($isic4, concat(' ', $isicCode, ' '))                         else if (string-length($isicCode) = 6 and substring($isicCode, 1, 1) = '5') then contains($isic5, concat(' ', $isicCode, ' '))                         else if (string-length($isicCode) = 6 and substring($isicCode, 1, 1) = '6') then contains($isic6, concat(' ', $isicCode, ' '))                         else if (string-length($isicCode) = 6 and substring($isicCode, 1, 1) = '7') then contains($isic7, concat(' ', $isicCode, ' '))                         else if (string-length($isicCode) = 6 and substring($isicCode, 1, 1) = '8') then contains($isic8, concat(' ', $isicCode, ' '))                         else if (string-length($isicCode) = 6 and substring($isicCode, 1, 1) = '9') then contains($isic9, concat(' ', $isicCode, ' '))                         else false()"/>
          <xsl:otherwise>
             <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
-                                test="if (string-length($hsCode) = 0) then true() else if (string-length($hsCode) = 8) then contains($codesUNGM, concat(' ', $hsCode, ' ')) else if (string-length($hsCode) = 6 and substring($hsCode, 1, 1) = '0') then contains($isic0, concat(' ', $hsCode, ' ')) else if (string-length($hsCode) = 6 and substring($hsCode, 1, 1) = '1') then contains($isic1, concat(' ', $hsCode, ' ')) else if (string-length($hsCode) = 6 and substring($hsCode, 1, 1) = '2') then contains($isic2, concat(' ', $hsCode, ' ')) else if (string-length($hsCode) = 6 and substring($hsCode, 1, 1) = '3') then contains($isic3, concat(' ', $hsCode, ' ')) else if (string-length($hsCode) = 6 and substring($hsCode, 1, 1) = '4') then contains($isic4, concat(' ', $hsCode, ' ')) else if (string-length($hsCode) = 6 and substring($hsCode, 1, 1) = '5') then contains($isic5, concat(' ', $hsCode, ' ')) else if (string-length($hsCode) = 6 and substring($hsCode, 1, 1) = '6') then contains($isic6, concat(' ', $hsCode, ' ')) else if (string-length($hsCode) = 6 and substring($hsCode, 1, 1) = '7') then contains($isic7, concat(' ', $hsCode, ' ')) else if (string-length($hsCode) = 6 and substring($hsCode, 1, 1) = '8') then contains($isic8, concat(' ', $hsCode, ' ')) else if (string-length($hsCode) = 6 and substring($hsCode, 1, 1) = '9') then contains($isic9, concat(' ', $hsCode, ' ')) else if (string-length($hsCode) = 12 and substring($hsCode, 1, 2) &lt;= '04') then contains($codes01, concat(' ', $hsCode, ' ')) else if (string-length($hsCode) = 12 and substring($hsCode, 1, 2) &lt;= '15') then contains($codes02, concat(' ', $hsCode, ' ')) else if (string-length($hsCode) = 12 and substring($hsCode, 1, 2) &lt;= '21') then contains($codes03, concat(' ', $hsCode, ' ')) else if (string-length($hsCode) = 12 and substring($hsCode, 1, 2) &lt;= '26') then contains($codes04, concat(' ', $hsCode, ' ')) else if (string-length($hsCode) = 12 and substring($hsCode, 1, 2) &lt;= '28') then contains($codes05, concat(' ', $hsCode, ' ')) else if (string-length($hsCode) = 12 and substring($hsCode, 1, 2) &lt;= '29') then contains($codes06, concat(' ', $hsCode, ' ')) else if (string-length($hsCode) = 12 and substring($hsCode, 1, 2) &lt;= '30') then contains($codes07, concat(' ', $hsCode, ' ')) else if (string-length($hsCode) = 12 and substring($hsCode, 1, 2) &lt;= '38') then contains($codes08, concat(' ', $hsCode, ' ')) else if (string-length($hsCode) = 12 and substring($hsCode, 1, 2) &lt;= '41') then contains($codes09, concat(' ', $hsCode, ' ')) else if (string-length($hsCode) = 12 and substring($hsCode, 1, 2) &lt;= '48') then contains($codes10, concat(' ', $hsCode, ' ')) else if (string-length($hsCode) = 12 and substring($hsCode, 1, 2) &lt;= '55') then contains($codes11, concat(' ', $hsCode, ' ')) else if (string-length($hsCode) = 12 and substring($hsCode, 1, 2) &lt;= '62') then contains($codes12, concat(' ', $hsCode, ' ')) else if (string-length($hsCode) = 12 and substring($hsCode, 1, 2) &lt;= '70') then contains($codes13, concat(' ', $hsCode, ' ')) else if (string-length($hsCode) = 12 and substring($hsCode, 1, 2) &lt;= '73') then contains($codes14, concat(' ', $hsCode, ' ')) else if (string-length($hsCode) = 12 and substring($hsCode, 1, 2) &lt;= '83') then contains($codes15, concat(' ', $hsCode, ' ')) else if (string-length($hsCode) = 12 and substring($hsCode, 1, 2) &lt;= '84') then contains($codes16, concat(' ', $hsCode, ' ')) else if (string-length($hsCode) = 12 and substring($hsCode, 1, 2) &lt;= '85') then contains($codes17, concat(' ', $hsCode, ' ')) else if (string-length($hsCode) = 12 and substring($hsCode, 1, 2) &lt;= '87') then contains($codes18, concat(' ', $hsCode, ' ')) else if (string-length($hsCode) = 12 and substring($hsCode, 1, 2) &lt;= '90') then contains($codes19, concat(' ', $hsCode, ' ')) else if (string-length($hsCode) = 12 and substring($hsCode, 1, 2) &lt;= '98') then contains($codes20, concat(' ', $hsCode, ' ')) else false()">
-               <xsl:attribute name="id">CL-08And12-OM</xsl:attribute>
+                                test="if (string-length($isicCode) = 0) then true() else if (string-length($isicCode) = 6 and substring($isicCode, 1, 1) = '0') then contains($isic0, concat(' ', $isicCode, ' ')) else if (string-length($isicCode) = 6 and substring($isicCode, 1, 1) = '1') then contains($isic1, concat(' ', $isicCode, ' ')) else if (string-length($isicCode) = 6 and substring($isicCode, 1, 1) = '2') then contains($isic2, concat(' ', $isicCode, ' ')) else if (string-length($isicCode) = 6 and substring($isicCode, 1, 1) = '3') then contains($isic3, concat(' ', $isicCode, ' ')) else if (string-length($isicCode) = 6 and substring($isicCode, 1, 1) = '4') then contains($isic4, concat(' ', $isicCode, ' ')) else if (string-length($isicCode) = 6 and substring($isicCode, 1, 1) = '5') then contains($isic5, concat(' ', $isicCode, ' ')) else if (string-length($isicCode) = 6 and substring($isicCode, 1, 1) = '6') then contains($isic6, concat(' ', $isicCode, ' ')) else if (string-length($isicCode) = 6 and substring($isicCode, 1, 1) = '7') then contains($isic7, concat(' ', $isicCode, ' ')) else if (string-length($isicCode) = 6 and substring($isicCode, 1, 1) = '8') then contains($isic8, concat(' ', $isicCode, ' ')) else if (string-length($isicCode) = 6 and substring($isicCode, 1, 1) = '9') then contains($isic9, concat(' ', $isicCode, ' ')) else false()">
+               <xsl:attribute name="id">CL-08-OM-ISIC</xsl:attribute>
                <xsl:attribute name="flag">fatal</xsl:attribute>
                <xsl:attribute name="role">fatal</xsl:attribute>
                <xsl:attribute name="location">
                   <xsl:apply-templates select="." mode="schematron-select-full-path"/>
                </xsl:attribute>
-               <svrl:text>Value of 'cbc:ItemClassificationCode (HS Code/ISIC Code/ Service Type Code)' is not a valid Oman HS code (CL-08-OM) or ISIC code.</svrl:text>
-               <svrl:diagnostic-reference diagnostic="d-CL-08-OM">
+               <svrl:text>[CL-08-OM-ISIC] - Industrial Classification Code (BTOM-033) must be provided from the International Standard Industrial Classification of All Economic Activities list published by the Omani Ministry of Commerce, Industry and Investment Promotion.</svrl:text>
+               <svrl:diagnostic-reference diagnostic="d-CL-08-OM-ISIC">
 
             The supplied value '<xsl:text/>
-                  <xsl:value-of select="$hsCode"/>
-                  <xsl:text/>' is not a valid item classification code under codelist CL-08-OM. The value must be one of:
-            a 12-digit Oman HS code from the official Oman HS Codes codelist (e.g. '010121100001'), or
-            a 6-digit ISIC code from the ISIC business activity codelist (e.g. '011101').
-            Empty values are permitted; cardinality is enforced separately.
+                  <xsl:value-of select="$isicCode"/>
+                  <xsl:text/>' is not a valid item classification code under codelist CL-08-OM-ISIC.
+            Expected: a 6-digit ISIC code from the ISIC business activity codelist (e.g. '011101').
+            Empty values are permitted; cardinality is enforced separately by IBR-081-OM.
+            HS codes belong at
+            cac:Item/cac:CommodityClassification/cbc:ItemClassificationCode[@listID='HS']
+            (validated by CL-08-OM).
         </svrl:diagnostic-reference>
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M52"/>
+      <xsl:apply-templates select="*" mode="M52"/>
    </xsl:template>
    <!--RULE -->
    <xsl:template match="cac:Delivery/cac:DeliveryTerms/cbc:ID"
@@ -5659,7 +5556,7 @@
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M52"/>
+      <xsl:apply-templates select="*" mode="M52"/>
    </xsl:template>
    <!--RULE -->
    <xsl:template match="cac:AdditionalItemProperty/cbc:NameCode"
@@ -5704,28 +5601,28 @@
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M52"/>
+      <xsl:apply-templates select="*" mode="M52"/>
    </xsl:template>
    <!--RULE -->
-   <xsl:template match="cac:Item/cac:CommodityClassification/cbc:ItemClassificationCode[@listID='MP']"
+   <xsl:template match="cac:Item/cac:ItemSpecificationDocumentReference/cbc:ID[@schemeName='MP']"
                  priority="1001"
                  mode="M52">
       <svrl:fired-rule xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
-                       context="cac:Item/cac:CommodityClassification/cbc:ItemClassificationCode[@listID='MP']"
+                       context="cac:Item/cac:ItemSpecificationDocumentReference/cbc:ID[@schemeName='MP']"
                        role="fatal"/>
       <!--ASSERT fatal-->
       <xsl:choose>
-         <xsl:when test="((not(contains(normalize-space(.), ' ')) and contains(' 64000000 70000000 71000000 72000000 73000000 76000000 77000000 78000000 80000000 81000000 82000000 83000000 84000000 85000000 86000000 90000000 91000000 92000000 93000000 94000000 ', concat(' ', normalize-space(.), ' '))))"/>
+         <xsl:when test="((not(contains(normalize-space(.), ' ')) and contains(' 64000000 70000000 71000000 72000000 73000000 76000000 77000000 78000000 80000000 81000000 82000000 83000000 84000000 85000000 86000000 90000000 91000000 92000000 93000000 94000000 00000000 ', concat(' ', normalize-space(.), ' '))))"/>
          <xsl:otherwise>
             <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
-                                test="((not(contains(normalize-space(.), ' ')) and contains(' 64000000 70000000 71000000 72000000 73000000 76000000 77000000 78000000 80000000 81000000 82000000 83000000 84000000 85000000 86000000 90000000 91000000 92000000 93000000 94000000 ', concat(' ', normalize-space(.), ' '))))">
+                                test="((not(contains(normalize-space(.), ' ')) and contains(' 64000000 70000000 71000000 72000000 73000000 76000000 77000000 78000000 80000000 81000000 82000000 83000000 84000000 85000000 86000000 90000000 91000000 92000000 93000000 94000000 00000000 ', concat(' ', normalize-space(.), ' '))))">
                <xsl:attribute name="id">CL-12-OM</xsl:attribute>
                <xsl:attribute name="flag">fatal</xsl:attribute>
                <xsl:attribute name="role">fatal</xsl:attribute>
                <xsl:attribute name="location">
                   <xsl:apply-templates select="." mode="schematron-select-full-path"/>
                </xsl:attribute>
-               <svrl:text>[CL-12-OM] - Service Type classification code must coded with the service type codelist.</svrl:text>
+               <svrl:text>[CL-12-OM] - Service Type classification code must be coded with the service type codelist.</svrl:text>
                <svrl:diagnostic-reference diagnostic="d-CL-12-OM">
 
             Service classification code
@@ -5758,6 +5655,7 @@
             - 92000000
             - 93000000
             - 94000000
+            - 00000000
 
             Action:
             Use a valid service classification code.
@@ -5765,7 +5663,7 @@
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M52"/>
+      <xsl:apply-templates select="*" mode="M52"/>
    </xsl:template>
    <!--RULE -->
    <xsl:template match="cac:AccountingSupplierParty/cac:Party/cac:PostalAddress/cbc:CountrySubentityCode | cac:AccountingCustomerParty/cac:Party/cac:PostalAddress/cbc:CountrySubentityCode"
@@ -5776,10 +5674,10 @@
                        role="fatal"/>
       <!--ASSERT fatal-->
       <xsl:choose>
-         <xsl:when test="((not(contains(normalize-space(.), ' ')) and contains(' SHRFZ SEZAD SLLFZ AFZ MO ', concat(' ', normalize-space(.), ' '))))"/>
+         <xsl:when test="((not(contains(normalize-space(.), ' ')) and contains(' SHRFZ SEZAD SLLFZ AFZ MO OTH ', concat(' ', normalize-space(.), ' '))))"/>
          <xsl:otherwise>
             <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
-                                test="((not(contains(normalize-space(.), ' ')) and contains(' SHRFZ SEZAD SLLFZ AFZ MO ', concat(' ', normalize-space(.), ' '))))">
+                                test="((not(contains(normalize-space(.), ' ')) and contains(' SHRFZ SEZAD SLLFZ AFZ MO OTH ', concat(' ', normalize-space(.), ' '))))">
                <xsl:attribute name="id">CL-13-OM</xsl:attribute>
                <xsl:attribute name="flag">fatal</xsl:attribute>
                <xsl:attribute name="role">fatal</xsl:attribute>
@@ -5804,6 +5702,7 @@
             - SLLFZ
             - AFZ
             - MO
+            - OTH
 
             Action:
             Use a valid subdivision code.
@@ -5811,95 +5710,10 @@
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M52"/>
+      <xsl:apply-templates select="*" mode="M52"/>
    </xsl:template>
    <xsl:template match="text()" priority="-1" mode="M52"/>
    <xsl:template match="@*|node()" priority="-2" mode="M52">
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M52"/>
-   </xsl:template>
-   <!--PATTERN HsBucketSelfTestHS bucket boundary self-test (debug only)-->
-   <svrl:text xmlns:svrl="http://purl.oclc.org/dsdl/svrl">HS bucket boundary self-test (debug only)</svrl:text>
-   <!--RULE -->
-   <xsl:template match="/" priority="1000" mode="M53">
-      <svrl:fired-rule xmlns:svrl="http://purl.oclc.org/dsdl/svrl" context="/"/>
-      <xsl:variable name="boundaries"
-                    select="('04','15','21','26','28','29','30','38','41','48','55','62','70','73','83','84','85','87','90','98')"/>
-      <!--ASSERT fatal-->
-      <xsl:choose>
-         <xsl:when test="not($debugMode)                     or (every $i in 1 to (count($boundaries) - 1)                         satisfies $boundaries[$i] &lt;= $boundaries[$i + 1])"/>
-         <xsl:otherwise>
-            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
-                                test="not($debugMode) or (every $i in 1 to (count($boundaries) - 1) satisfies $boundaries[$i] &lt;= $boundaries[$i + 1])">
-               <xsl:attribute name="id">HS-SELFTEST-MONO</xsl:attribute>
-               <xsl:attribute name="flag">fatal</xsl:attribute>
-               <xsl:attribute name="role">fatal</xsl:attribute>
-               <xsl:attribute name="location">
-                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
-               </xsl:attribute>
-               <svrl:text>[HS-SELFTEST-MONO] - HS bucket boundaries must be in non-decreasing lexicographic order. Drift here breaks the CL-08 And 12-OM dispatcher.</svrl:text>
-               <svrl:diagnostic-reference diagnostic="d-HS-SELFTEST-MONO">
-
-            HS-bucket monotonicity self-test failed.
-            The boundary list driving the CL-08And12-OM dispatcher must
-            be in non-decreasing lexicographic order. Re-sort the
-            $boundaries variable in HsBucketSelfTest and the
-            corresponding if/then/else cascade in CL-08And12-OM.
-        </svrl:diagnostic-reference>
-            </svrl:failed-assert>
-         </xsl:otherwise>
-      </xsl:choose>
-      <!--ASSERT fatal-->
-      <xsl:choose>
-         <xsl:when test="not($debugMode)                     or $boundaries[count($boundaries)] &gt;= '98'"/>
-         <xsl:otherwise>
-            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
-                                test="not($debugMode) or $boundaries[count($boundaries)] &gt;= '98'">
-               <xsl:attribute name="id">HS-SELFTEST-COVERS</xsl:attribute>
-               <xsl:attribute name="flag">fatal</xsl:attribute>
-               <xsl:attribute name="role">fatal</xsl:attribute>
-               <xsl:attribute name="location">
-                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
-               </xsl:attribute>
-               <svrl:text>[HS-SELFTEST-COVERS] - The last HS bucket boundary must be '98' or higher. Otherwise chapters at the high end fall through to false() in CL-08 And 12-OM.</svrl:text>
-               <svrl:diagnostic-reference diagnostic="d-HS-SELFTEST-COVERS">
-
-            HS-bucket coverage self-test failed.
-            The final boundary in the dispatcher must be '98' (or
-            higher). HS chapters above the last boundary fall through
-            to false() and would mis-validate. Add a trailing bucket
-            covering the highest chapter in use.
-        </svrl:diagnostic-reference>
-            </svrl:failed-assert>
-         </xsl:otherwise>
-      </xsl:choose>
-      <!--ASSERT fatal-->
-      <xsl:choose>
-         <xsl:when test="not($debugMode)                     or (every $ch in (                             for $n in 1 to 99                             return concat(                                 if ($n &lt; 10) then '0' else '',                                 string($n)))                         satisfies (                             some $b in $boundaries                             satisfies $ch &lt;= $b))"/>
-         <xsl:otherwise>
-            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
-                                test="not($debugMode) or (every $ch in ( for $n in 1 to 99 return concat( if ($n &lt; 10) then '0' else '', string($n))) satisfies ( some $b in $boundaries satisfies $ch &lt;= $b))">
-               <xsl:attribute name="id">HS-SELFTEST-EXHAUSTIVE</xsl:attribute>
-               <xsl:attribute name="flag">fatal</xsl:attribute>
-               <xsl:attribute name="role">fatal</xsl:attribute>
-               <xsl:attribute name="location">
-                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
-               </xsl:attribute>
-               <svrl:text>[HS-SELFTEST-EXHAUSTIVE] - Every HS chapter '01'..'99' must map to at least one bucket boundary. A chapter that falls through indicates a missing or misordered boundary in CL-08 And 12-OM.</svrl:text>
-               <svrl:diagnostic-reference diagnostic="d-HS-SELFTEST-EXHAUSTIVE">
-
-            HS-bucket exhaustiveness self-test failed.
-            At least one chapter in '01'..'99' has no bucket whose
-            boundary is &gt;= that chapter. Inspect the $boundaries
-            list in HsBucketSelfTest and reconcile it with the
-            if/then/else cascade in CL-08And12-OM.
-        </svrl:diagnostic-reference>
-            </svrl:failed-assert>
-         </xsl:otherwise>
-      </xsl:choose>
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M53"/>
-   </xsl:template>
-   <xsl:template match="text()" priority="-1" mode="M53"/>
-   <xsl:template match="@*|node()" priority="-2" mode="M53">
-      <xsl:apply-templates select="*|comment()|processing-instruction()" mode="M53"/>
+      <xsl:apply-templates select="*" mode="M52"/>
    </xsl:template>
 </xsl:stylesheet>

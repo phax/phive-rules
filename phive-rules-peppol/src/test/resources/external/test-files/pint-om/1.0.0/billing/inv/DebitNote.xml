@@ -32,6 +32,9 @@
 	<cac:DespatchDocumentReference>
 		<cbc:ID>Memo-1000</cbc:ID>
 	</cac:DespatchDocumentReference>
+	<cac:OriginatorDocumentReference>
+		<cbc:ID>PO-OM-220</cbc:ID>
+	</cac:OriginatorDocumentReference>
 	<cac:AdditionalDocumentReference>
 		<cbc:ID>PO-OM-220</cbc:ID>
 		<cac:Attachment>
@@ -39,9 +42,7 @@
 				QmFzZTY0IGNvbnRlbnQgZXhhbXBfZQ==</cbc:EmbeddedDocumentBinaryObject>
 		</cac:Attachment>
 	</cac:AdditionalDocumentReference>
-	<cac:OriginatorDocumentReference>
-		<cbc:ID>PO-OM-220</cbc:ID>
-	</cac:OriginatorDocumentReference>
+	
 	<cac:AccountingSupplierParty>
 		<cac:Party>
 			<cbc:EndpointID schemeID="0248">1987654321</cbc:EndpointID>
@@ -220,11 +221,17 @@
 			<cac:SellersItemIdentification>
 				<cbc:ID>Seller Item Identification</cbc:ID>
 			</cac:SellersItemIdentification>
+			<cac:AdditionalItemIdentification>
+				<cbc:ID schemeName="CC">000000</cbc:ID>
+			</cac:AdditionalItemIdentification>
+			<cac:ItemSpecificationDocumentReference>
+				<cbc:ID schemeName="MP">00000000</cbc:ID>
+				<cbc:DocumentTypeCode>G</cbc:DocumentTypeCode>
+			</cac:ItemSpecificationDocumentReference>
 			<cac:OriginCountry>
 				<cbc:IdentificationCode>OM</cbc:IdentificationCode>
 			</cac:OriginCountry>
 			<cac:CommodityClassification>
-				<cbc:NatureCode>G</cbc:NatureCode>
 				<cbc:ItemClassificationCode listID="HS">010121100001</cbc:ItemClassificationCode>
 			</cac:CommodityClassification>
 			<cac:ClassifiedTaxCategory>

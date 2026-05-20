@@ -158,8 +158,15 @@
 		</cac:InvoicePeriod>
 		<cac:Item>
 			<cbc:Name>Milestone M3 - earthworks complete</cbc:Name>
+			<cac:AdditionalItemIdentification>
+				<cbc:ID schemeName="CC">000000</cbc:ID>
+			</cac:AdditionalItemIdentification>
+			<cac:ItemSpecificationDocumentReference>
+				<cbc:ID schemeName="MP">00000000</cbc:ID>
+				<cbc:DocumentTypeCode>G</cbc:DocumentTypeCode>
+			</cac:ItemSpecificationDocumentReference>
 			<cac:CommodityClassification>
-				<cbc:NatureCode>S</cbc:NatureCode>
+				
 				<cbc:ItemClassificationCode listID="HS">840110000000</cbc:ItemClassificationCode>
 			</cac:CommodityClassification>
 			<cac:ClassifiedTaxCategory>
@@ -192,8 +199,15 @@
 		</cac:InvoicePeriod>
 		<cac:Item>
 			<cbc:Name>Milestone M4 - foundations complete</cbc:Name>
+			<cac:AdditionalItemIdentification>
+				<cbc:ID schemeName="CC">000000</cbc:ID>
+			</cac:AdditionalItemIdentification>
+			<cac:ItemSpecificationDocumentReference>
+				<cbc:ID schemeName="MP">00000000</cbc:ID>
+				<cbc:DocumentTypeCode>G</cbc:DocumentTypeCode>
+			</cac:ItemSpecificationDocumentReference>
 			<cac:CommodityClassification>
-				<cbc:NatureCode>S</cbc:NatureCode>
+				
 				<cbc:ItemClassificationCode listID="HS">840110000000</cbc:ItemClassificationCode>
 			</cac:CommodityClassification>
 			<cac:ClassifiedTaxCategory>
@@ -226,8 +240,14 @@
 		</cac:InvoicePeriod>
 		<cac:Item>
 			<cbc:Name>Milestone M5 - frame to floor 3</cbc:Name>
+			<cac:AdditionalItemIdentification>
+				<cbc:ID schemeName="CC">000000</cbc:ID>
+			</cac:AdditionalItemIdentification>
+			<cac:ItemSpecificationDocumentReference>
+				<cbc:ID schemeName="MP">00000000</cbc:ID>
+				<cbc:DocumentTypeCode>G</cbc:DocumentTypeCode>
+			</cac:ItemSpecificationDocumentReference>
 			<cac:CommodityClassification>
-				<cbc:NatureCode>S</cbc:NatureCode>
 				<cbc:ItemClassificationCode listID="HS">840110000000</cbc:ItemClassificationCode>
 			</cac:CommodityClassification>
 			<cac:ClassifiedTaxCategory>

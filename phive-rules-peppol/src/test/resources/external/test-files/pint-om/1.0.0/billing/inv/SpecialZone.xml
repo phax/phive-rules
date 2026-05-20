@@ -17,7 +17,7 @@
 		<cac:Party>
 			<cbc:EndpointID schemeID="0248">1987654321</cbc:EndpointID>
 			<cac:PartyIdentification>
-				<cbc:ID schemeName="OTHID">12345678</cbc:ID>
+				<cbc:ID schemeName="SZLN">12345678</cbc:ID>
 			</cac:PartyIdentification>
 			<cac:PostalAddress>
 				<cbc:StreetName>Way 2317, Building 192</cbc:StreetName>
@@ -50,7 +50,7 @@
 		<cac:Party>
 			<cbc:EndpointID schemeID="0248">1345678901</cbc:EndpointID>
 			<cac:PartyIdentification>
-				<cbc:ID schemeName="OTHID">12345678</cbc:ID>
+				<cbc:ID schemeName="SZLN">12345678</cbc:ID>
 			</cac:PartyIdentification>
 			<cac:PostalAddress>
 				<cbc:StreetName>Way 2317, Building 192</cbc:StreetName>
@@ -202,11 +202,18 @@
 		</cac:AllowanceCharge>
 		<cac:Item>
 			<cbc:Name>Industrial water pump (15 kW)</cbc:Name>
+			<cac:AdditionalItemIdentification>
+				<cbc:ID schemeName="CC">000000</cbc:ID>
+			</cac:AdditionalItemIdentification>
+			<cac:ItemSpecificationDocumentReference>
+				<cbc:ID schemeName="MP">00000000</cbc:ID>
+				<cbc:DocumentTypeCode>G</cbc:DocumentTypeCode>
+			</cac:ItemSpecificationDocumentReference>
 			<cac:OriginCountry>
 				<cbc:IdentificationCode>OM</cbc:IdentificationCode>
 			</cac:OriginCountry>
 			<cac:CommodityClassification>
-				<cbc:NatureCode>G</cbc:NatureCode>
+				
 				<cbc:ItemClassificationCode listID="HS">010121100001</cbc:ItemClassificationCode>
 			</cac:CommodityClassification>
 			<cac:ClassifiedTaxCategory>

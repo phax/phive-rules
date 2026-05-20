@@ -155,8 +155,14 @@
 		<cbc:LineExtensionAmount currencyID="OMR">37</cbc:LineExtensionAmount>
 		<cac:Item>
 			<cbc:Name>Cotton dishdasha, white size L</cbc:Name>
+			<cac:AdditionalItemIdentification>
+				<cbc:ID schemeName="CC">000000</cbc:ID>
+			</cac:AdditionalItemIdentification>
+			<cac:ItemSpecificationDocumentReference>
+				<cbc:ID schemeName="MP">00000000</cbc:ID>
+				<cbc:DocumentTypeCode>G</cbc:DocumentTypeCode>
+			</cac:ItemSpecificationDocumentReference>
 			<cac:CommodityClassification>
-				<cbc:NatureCode>G</cbc:NatureCode>
 				<cbc:ItemClassificationCode listID="HS">620120100000</cbc:ItemClassificationCode>
 			</cac:CommodityClassification>
 			<cac:ClassifiedTaxCategory>

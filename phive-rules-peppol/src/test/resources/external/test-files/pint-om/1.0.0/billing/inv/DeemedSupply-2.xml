@@ -147,8 +147,12 @@
 			<cbc:Description>Centrifugal water pump, 15 kW motor, ISO 9001 certified, including spare seal kit.</cbc:Description>
 			<cbc:Name>Industrial water pump (15 kW)</cbc:Name>
 			<cac:AdditionalItemIdentification>
-				<cbc:ID schemeID="SAC">Service</cbc:ID>
+				<cbc:ID schemeName="CC">000000</cbc:ID>
 			</cac:AdditionalItemIdentification>
+			<cac:ItemSpecificationDocumentReference>
+				<cbc:ID schemeName="MP">00000000</cbc:ID>
+				<cbc:DocumentTypeCode>G</cbc:DocumentTypeCode>
+			</cac:ItemSpecificationDocumentReference>
 			<cac:CommodityClassification>
 				<cbc:ItemClassificationCode listID="HS" listVersionID="1.X">010121100001</cbc:ItemClassificationCode>
 			</cac:CommodityClassification>

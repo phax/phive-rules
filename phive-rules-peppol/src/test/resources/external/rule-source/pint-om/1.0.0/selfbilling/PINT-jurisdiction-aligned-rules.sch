@@ -19,135 +19,8 @@
         ======*****************************************************************************======
     </p>
     <p>
-
-        Change log:
-
-        
-            - Bug-fix: IBR-017-OM predicate $isProfitMargin (bit 10)
-                       replaced by $isProfitMarginSelf (bit 11) to
-                       match the message bitmap. Same class of bug
-                       v1.0.0 fixed for IBR-086/087.
-            - Bug-fix: IBR-020-OM same fix - PMS instead of PM.
-            - Bug-fix: IBR-019-OM predicate now also includes
-                       $isProfitMarginSelf so PMS invoices no longer
-                       bypass the buyer-address check.
-            - Bug-fix: d-CL-06-OM diagnostic now displays @schemeName
-                       (was incorrectly @schemeID); error reports now
-                       show the actual offending value.
-            - Cleanup : duplicate $cat let in the TaxSubtotal rule
-                       removed (only $vatCategory remains).
-            - Cleanup : dead let $vatTaxTotals removed.
-            - Cleanup : IBR-068-OM merged into IBR-038-OM (textually
-                       identical predicate).
-            - Cleanup : orphan diagnostics removed: d-028,
-                       d-BTOM-CUR-001, d-IBR-068, d-IBR-101,
-                       d-IBR-102, d-IBR-104.
-            - Bug-fix: ALIGNED-IBRP-Z-01-OM and ALIGNED-IBRP-SR-12 moved
-                       from the TaxSubtotal rule (where they fired once
-                       per breakdown) to the document-level rule.
-            - Bug-fix: IBR-080-OM scoped to listID='HS' so 6-digit ISIC
-                       and 8-digit UNGM service-type codes no longer
-                       fail the 12-digit minimum length check that was
-                       intended for HS codes only.
-            - Bug-fix: IBR-091-OM scoped to listID='HS'. Previously
-                       6-digit ISIC codes starting with '01' or '06'
-                       were incorrectly rejected on Profit Margin
-                       invoices.
-            - Bug-fix: ALIGNED-IBRP-E-05-OM and O-05-OM now use a
-                       cardinality test on cbc:Percent instead of a
-                       defaulted-to-zero `not($vatRate)` test that
-                       silently accepted a present 0% rate.
-            - Bug-fix: IBR-058-OM predicate aligned with its message;
-                       the rule now also fires when cbc:PrepaidAmount
-                       is present on a non-prepayment invoice.
-            - Bug-fix: u:slack returns false() when either operand is
-                       empty (was: silently coerced to 0.0). Forces
-                       calculation rules to fail loudly on missing
-                       inputs.
-            - Hardening: IBR-137-OM rewritten to use a named-element
-                       descendant union instead of //*[self::a or ...]
-                       (the latter visits every descendant element).
-            - Hardening: cbc:IssueDate now has its own format guard
-                       (IBR-171-A-OM); IBR-171-OM was silently passing
-                       on malformed dates.
-            - Cleanup : CL-* diagnostic IDs renamed to d-CL-* so they
-                       no longer collide with the assert IDs of the
-                       same name. Stricter ISO-Schematron processors
-                       no longer flag duplicate IDs.
-            - Cleanup : flag="fatal" / flag="warning" attributes now
-                       carry a matching role= for ISO-Schematron
-                       strict-mode compatibility.
-            - Cleanup : IBR-104-OM merged into IBR-053-OM (identical
-                       predicate); IBR-101-OM merged into IBR-095-OM;
-                       IBR-102-OM merged into IBR-096-OM. Combined
-                       asserts cite both IDs in the message.
-            - Cleanup : dead helper functions u:fmtCmp and u:roundTo2
-                       removed; the three call sites of u:roundTo2
-                       (E-08/O-08/Z-08) now inline the same expression
-                       used everywhere else.
-            - Cleanup : invalidTxnCombo / invalidTxnReason lets removed.
-                       Combination checks are solely enforced by
-                       IBR-138-OM..IBR-148-OM.
-            - DX     : phase id="debug" now overrides $debug=true(),
-                       and the [DOC-SUMMARY] info report is gated on
-                       $debug. Production phases no longer emit it.
-            - DX     : new pattern HsBucketSelfTest (debug phase only)
-                       asserts monotonicity, coverage, and exhaustive-
-                       ness of the HS-bucket boundary table feeding
-                       CL-08And12-OM, so future drift is caught
-                       immediately.
-            - DX     : CL-01-OM stub comment added so the gap in
-                       numbering is documented rather than silent.
-            - DX     : added v1.0.0 design note above the TaxSubtotal
-                       rule explaining why a currency-track split into
-                       separate rules is deferred to v2 (ISO-Schematron
-                       rule-ordering semantics).
-
-       
-            - Bug-fix: IBR-097-OM predicate corrected from $cat='O' to $cat='Z'
-                       so the rule (rate must be 0 in tax-currency) actually
-                       fires for Zero-rated breakdowns, as the message states.
-                       Previously contradicted IBR-096-OM for cat 'O'.
-            - Bug-fix: IBR-086-OM predicate switched from $isProfitMargin (bit 10)
-                       to $isProfitMarginSelf (bit 11) to match the message's
-                       "Profit Margin Self-Invoice" target. Ensures cat 'O'
-                       is enforced on PMS lines (private-seller acquisitions),
-                       not on regular profit-margin invoices.
-            - Bug-fix: IBR-087-OM predicate switched from $isProfitMargin (bit 10)
-                       to $isProfitMarginSelf (bit 11) - same reasoning as
-                       IBR-086. Seller country = OM applies to PMS only.
-            - Wording : IBR-176-OM message bitmap corrected from
-                       'XXXXXXXXXXXXXXX1XXXX' to 'XXXXXXXXXXXXXX1XXXXX' so it
-                       matches the actual prepayment bit position 15.
-            - Wording : IBR-175-OM message reference corrected from (BTOM-003)
-                       to (BTOM-001). BTOM-003 is the exchange rate; the rule
-                       is about transaction type.
-            - Hardening: IBR-104-OM now adds the $isTaxCurrency guard so it
-                       only fires on the tax-accounting-currency breakdown,
-                       matching the message text. Previously double-fired on
-                       dual-currency invoices.
-            - Hardening: IBR-082-OM widened to fire for both Profit Margin
-                       (bit 10) AND Profit Margin Self-Invoice (bit 11).
-                       PMS invoices also carry PM_TOTAL and need the
-                       integrity check.
-
-        
-            - Bug-fix: IBR-066-OM XPath corrected (cac:TaxTotal/cac:TaxSubtotal).
-            - Bug-fix: diagnostic IDs corrected for ALIGNED-IBRP-E-08-OM, ALIGNED-IBRP-Z-08-OM, IBR-057-OM.
-            - Bug-fix: IBR-068-OM now allows simplified tax invoice exception (alignment with IBR-038-OM).
-            - Bug-fix: IBR-039 / IBR-054 / IBR-077 protected against missing line VAT amount node.
-            - Bug-fix: IBR-002-OM enforces canonical UUID v4 (version + variant nibbles).
-            - Bug-fix: IBR-056-OM now permits @listID in ('HS','MP') to align with CL-12-OM.
-            - Bug-fix: IBR-016-OM message wording corrected (or instead of "and").
-            - Hardening: ALIGNED-IBRP-S-08/S-09/E-08/O-08/Z-08 now scoped to invoice currency.
-            - Hardening: structural root pre-check added (BTOM-PRE-001).
-            - DX:        $standardVatRate, $amountTolerance and $sevenDecimalScale promoted to top-level lets.
-            - DX:        new "full" phase activates both patterns; pattern titles added.
-            - DX:        version metadata emitted as information report.
-
-        
-            - Initial release.
-
+        Change log: see the project history (git log / VERSION.md) for previous
+        revisions. This file always documents the current ruleset only.
     </p>
    <xsl:function name="u:vatBase" as="xs:decimal">
     <xsl:param name="cat" as="xs:string"/>
@@ -157,23 +30,11 @@
     <xsl:sequence select="           sum($lines [cac:Item/cac:ClassifiedTaxCategory/cbc:ID = $cat]                 /cbc:LineExtensionAmount/xs:decimal(.))         - sum($allow [cac:TaxCategory/cbc:ID = $cat]/cbc:Amount/xs:decimal(.))         + sum($charge[cac:TaxCategory/cbc:ID = $cat]/cbc:Amount/xs:decimal(.))"/>
 </xsl:function>
 
-
-
    <xsl:function name="u:to-decimal" as="xs:decimal">
         <xsl:param name="val"/>
         <xsl:sequence select="if (normalize-space(string($val)) castable as xs:decimal)                              then xs:decimal(normalize-space(string($val)))                              else 0.0"/>
     </xsl:function>
 
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     <xsl:function name="u:slack" as="xs:boolean">
         <xsl:param name="exp" as="xs:decimal?"/>
@@ -183,23 +44,11 @@
     </xsl:function>
 
     
-    
-    
-    
-    
-    
-    
     <xsl:function name="u:isZeroOrEmpty" as="xs:boolean">
         <xsl:param name="n" as="node()*"/>
         <xsl:sequence select="             empty($n)             or normalize-space(string($n[1])) = ''             or (normalize-space(string($n[1])) castable as xs:decimal                 and xs:decimal(normalize-space(string($n[1]))) = 0)"/>
     </xsl:function>
 
-    
-    
-    
-    
-    
-    
     
     <xsl:function name="u:hasValidDecimal" as="xs:boolean">
         <xsl:param name="n" as="node()*"/>
@@ -299,7 +148,6 @@
     <phase id="debug">
         <active pattern="Aligned-om-rules"/>
         <active pattern="AlignedCodelists"/>
-        <active pattern="HsBucketSelfTest"/>
     </phase>
     <pattern id="Aligned-om-rules">
         <title>PINT Oman - business rules and calculation consistency</title>
@@ -361,7 +209,7 @@
             <let name="customizationID" value="normalize-space(cbc:CustomizationID)"/>
             <let name="profileID" value="normalize-space(cbc:ProfileID)"/>
             
-            <assert id="ALIGNED-IBRP-000-OM" test="$txnType != '' and $isValidBitString and contains($txnType, '1') and contains($txnType, 'X')" diagnostics="d-000">[ALIGNED-IBRP-000-OM] - Transaction type (BTOM-001) must be present and must be one of the 20 defined transaction type codes (a 20-character string with exactly one '1' marking the type and 'X' in all other positions).</assert>
+            <assert id="ALIGNED-IBRP-000-OM" flag="fatal" role="fatal" test="$txnType != '' and $isValidBitString and contains($txnType, '1')" diagnostics="d-000">[ALIGNED-IBRP-000-OM] - Transaction type (BTOM-001) must be present and must be a 20-character bitmap of '1' and '0' with at least one '1' marking an active transaction type.</assert>
 
             
             
@@ -406,7 +254,7 @@
             
             <assert id="ALIGNED-IBRP-S-05-OM" flag="fatal" role="fatal" test="not($lines[cac:Item/cac:ClassifiedTaxCategory/cbc:ID = 'S']) or                         (every $line in $lines[cac:Item/cac:ClassifiedTaxCategory/cbc:ID = 'S'] satisfies                         ($line/cac:Item/cac:ClassifiedTaxCategory/cbc:Percent/normalize-space(.) castable as xs:decimal and                         xs:decimal($line/cac:Item/cac:ClassifiedTaxCategory/cbc:Percent) = $standardVatRate))" diagnostics="d-S-05">[ALIGNED-IBRP-S-05-OM] - In an Invoice line (IBG-25) where the Invoiced item VAT category code (IBT-151) is "S" the Invoiced item VAT rate (IBT-152) MUST be 5.</assert>
             
-            <assert id="IBR-001-OM" flag="fatal" role="fatal" test="string-length($txnType) = 20 and matches($txnType, '^[X1]{20}$')" diagnostics="d-IBR-001">[IBR-001-OM] - Invoice transaction type (BTOM-001) must be a 20-character string consisting only of '1' and 'X'.</assert>
+            <assert id="IBR-001-OM" flag="fatal" role="fatal" test="string-length($txnType) = 20 and matches($txnType, '^[X1]{20}$')" diagnostics="d-IBR-001">[IBR-001-OM] - Invoice transaction type (BTOM-001) must be a 20-character string consisting only of '1' and '0'.</assert>
                     
             
             <assert id="IBR-002-OM" flag="fatal" role="fatal" test="matches(normalize-space(cbc:UUID),                   '^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-4[0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$')" diagnostics="d-IBR-002">[IBR-002-OM] - The unique identifier (“UUID”) (BTOM-002) must be provided on the invoice and must contain only letters, digits, and dashes.</assert>
@@ -423,11 +271,11 @@
             
             <assert id="IBR-011-OM" flag="fatal" role="fatal" test="cac:AccountingSupplierParty/cac:Party/cac:Contact/cbc:Telephone" diagnostics="d-IBR-011">[IBR-011-OM] - In Seller Contact (IBG-06), Seller contact telephone number (IBT-042) must be provided.</assert>
             
-            <assert id="IBR-012-OM" flag="fatal" role="fatal" test="not($isExport and $lines//cbc:TaxExemptionReasonCode = 'VATZR-OM-09')                   or cac:Delivery/cac:DeliveryLocation/cac:Address/cac:Country/cbc:IdentificationCode != 'OM'" diagnostics="d-IBR-012">[IBR-012-OM] - Deliver to country code (IBT-080) must not be 'OM' if invoice transaction type (BTOM-001) is export invoice (XXXXXX1XXXXXXXXXXXXX) and atleast one VAT exemption reason code (IBT-121) is 'Export of service (VATZR-OM-09)'.</assert>
+            <assert id="IBR-012-OM" flag="fatal" role="fatal" test="not($isExport and $lines//cbc:TaxExemptionReasonCode = 'VATZR-OM-09')                   or cac:Delivery/cac:DeliveryLocation/cac:Address/cac:Country/cbc:IdentificationCode != 'OM'" diagnostics="d-IBR-012">[IBR-012-OM] - Deliver to country code (IBT-080) must not be 'OM' if invoice transaction type (BTOM-001) is export invoice (XXXXXX1XXXXXXXXXXXXX) and at least one VAT exemption reason code (IBT-121) is 'Export of service (VATZR-OM-09)'.</assert>
             
-            <assert id="IBR-013-OM" flag="fatal" role="fatal" test="not($isExport and $lines//cbc:TaxExemptionReasonCode ='VATZR-OM-12')                          or (exists($doc/cac:AdditionalDocumentReference                             [not(cbc:DocumentTypeCode='130')]                             [cbc:ID and cbc:UUID]))" diagnostics="d-IBR-013">[IBR-013-OM] - Supporting document reference (IBT-122) and Supporting document UUID (BTOM-023) must be provided if invoice transaction type (BTOM-001) is export invoice (XXXXXX1XXXXXXXXXXXXX) and atleast one VAT exemption reason code (IBT-121) is 'Re-export of goods (VATZR-OM-12)'.</assert>
+            <assert id="IBR-013-OM" flag="fatal" role="fatal" test="not($isExport and $lines//cbc:TaxExemptionReasonCode ='VATZR-OM-12')                          or (exists($doc/cac:AdditionalDocumentReference                             [not(cbc:DocumentTypeCode='130')]                             [cbc:ID and cbc:UUID]))" diagnostics="d-IBR-013">[IBR-013-OM] - Supporting document reference (IBT-122) and Supporting document UUID (BTOM-023) must be provided if invoice transaction type (BTOM-001) is export invoice (XXXXXX1XXXXXXXXXXXXX) and at least one VAT exemption reason code (IBT-121) is 'Re-export of goods (VATZR-OM-12)'.</assert>
             
-            <assert id="IBR-014-OM" flag="fatal" role="fatal" test="not($isExport)                   or cac:Delivery/cac:DeliveryLocation/cac:Address/cac:Country/cbc:IdentificationCode" diagnostics="d-IBR-014">[IBR-014-OM] - Deliver to country code (ibt-080) must be provided if invoice transaction type (BTOM-001) is export invoice (XXXXXX1XXXXXXXXXXXXX).</assert>
+            <assert id="IBR-014-OM" flag="fatal" role="fatal" test="not($isExport)                   or cac:Delivery/cac:DeliveryLocation/cac:Address/cac:Country/cbc:IdentificationCode" diagnostics="d-IBR-014">[IBR-014-OM] - Deliver to country code (IBT-080) must be provided if invoice transaction type (BTOM-001) is export invoice (XXXXXX1XXXXXXXXXXXXX).</assert>
             
             <assert id="IBR-015-OM" flag="fatal" role="fatal" test="                 not($isThirdParty)                 or (                     count(cac:AccountingSupplierParty/cac:Party/cac:AgentParty) = 1                     and                     cac:AccountingSupplierParty/cac:Party/cac:AgentParty/cac:PartyName/cbc:Name                     and                     cac:AccountingSupplierParty/cac:Party/cac:AgentParty/cac:PartyTaxScheme[cac:TaxScheme/cbc:ID='VAT']/cbc:CompanyID                     and                     cac:AccountingSupplierParty/cac:Party/cac:AgentParty/cac:PartyTaxScheme/cac:TaxScheme/cbc:ID                     and                     cac:AccountingSupplierParty/cac:Party/cac:AgentParty/cac:PostalAddress/cbc:StreetName                     and                     cac:AccountingSupplierParty/cac:Party/cac:AgentParty/cac:PostalAddress/cbc:AdditionalStreetName                     and                     cac:AccountingSupplierParty/cac:Party/cac:AgentParty/cac:PostalAddress/cac:AddressLine/cbc:Line                     and                     cac:AccountingSupplierParty/cac:Party/cac:AgentParty/cac:PostalAddress/cbc:CityName                     and                     cac:AccountingSupplierParty/cac:Party/cac:AgentParty/cac:PostalAddress/cbc:PostalZone                     and                     cac:AccountingSupplierParty/cac:Party/cac:AgentParty/cac:PostalAddress/cac:Country/cbc:IdentificationCode)" diagnostics="d-IBR-015">[IBR-015-OM] - Third Party Name (BTOM-005), Third Party VATIN (BTOM-006), VAT Scheme Code (BTOM-06-1), Third Party Address Line 1 (BTOM-007), Third Party Address Line 2 (BTOM-008), Third Party Address Line 3 (BTOM-009), Third party city (BTOM-010), Third party postal code (BTOM-011) and Third Party Country Code (BTOM-13) must be provided when Invoice transaction type (BTOM-001) is Third-party Invoice (XXX1XXXXXXXXXXXXXXXX) and MUST occur only once.</assert>
             
@@ -449,25 +297,25 @@
             
             <assert id="IBR-037-OM" flag="fatal" role="fatal" test="not($isSummary or $isContinuous)                   or (cac:InvoicePeriod/cbc:StartDate and cac:InvoicePeriod/cbc:EndDate)" diagnostics="d-IBR-037">[IBR-037-OM] - Invoicing period start date (IBT-073) and the Invoicing period end date (IBT-074) must be provided where Invoice transaction type code (BTOM-001) is a summary invoice (XXXX1XXXXXXXXXXXXXXX) or Continuous supply (XXXXX1XXXXXXXXXXXXXX).</assert>
             
-            <assert id="IBR-040-OM" flag="fatal" role="fatal" test="not($isEcommerce)                   or (cac:Delivery/cac:DeliveryLocation/cac:Address/cbc:StreetName                       and cac:Delivery/cac:DeliveryLocation/cac:Address/cbc:AdditionalStreetName                       and cac:Delivery/cac:DeliveryLocation/cac:Address/cbc:CityName                       and cac:Delivery/cac:DeliveryLocation/cac:Address/cbc:PostalZone                       and cac:Delivery/cac:DeliveryLocation/cac:Address/cac:Country/cbc:IdentificationCode                        and cac:Delivery/cac:DeliveryLocation/cac:Address/cac:AddressLine/cbc:Line)" diagnostics="d-IBR-040">[IBR-040-OM] - Deliver to address line 1 - Postal code (IBT-075), Deliver to address line 2 - Postal code area (ibt-076), Deliver to address line 3 - Area (IBT-165), Deliver to city (IBT-077), Deliver to post code - PO Box(IBT-078), Deliver to country code (IBT-080) MUST be present when the Invoice transaction type (BTOM-001) is E-commerce supplies (XXXXXXXXXXX1XXXXXXXX).</assert>
+            <assert id="IBR-040-OM" flag="fatal" role="fatal" test="not($isEcommerce)                   or (cac:Delivery/cac:DeliveryLocation/cac:Address/cbc:StreetName                       and cac:Delivery/cac:DeliveryLocation/cac:Address/cbc:AdditionalStreetName                       and cac:Delivery/cac:DeliveryLocation/cac:Address/cbc:CityName                       and cac:Delivery/cac:DeliveryLocation/cac:Address/cbc:PostalZone                       and cac:Delivery/cac:DeliveryLocation/cac:Address/cac:Country/cbc:IdentificationCode                        and cac:Delivery/cac:DeliveryLocation/cac:Address/cac:AddressLine/cbc:Line)" diagnostics="d-IBR-040">[IBR-040-OM] - Deliver to address line 1 - Postal code (IBT-075), Deliver to address line 2 - Postal code area (IBT-076), Deliver to address line 3 - Area (IBT-165), Deliver to city (IBT-077), Deliver to post code - PO Box(IBT-078), Deliver to country code (IBT-080) MUST be present when the Invoice transaction type (BTOM-001) is E-commerce supplies (XXXXXXXXXXX1XXXXXXXX).</assert>
 
             
             
             <assert id="IBR-043-OM" flag="fatal" role="fatal" test="substring($txnType,1,1)='1' or substring($txnType,2,1)='1'" diagnostics="d-IBR-043">[IBR-043-OM] - Either the first or second position of Invoice Transaction type (BTOM-001) must always be 1.</assert>
             
-            <assert id="IBR-058-OM" flag="fatal" role="fatal" test="not($isPrepayment or exists(cac:LegalMonetaryTotal/cbc:PrepaidAmount))                         or (exists(cac:LegalMonetaryTotal/cbc:PrepaidAmount)                             and exists(cac:OriginatorDocumentReference/cbc:ID)                             and exists(cac:OriginatorDocumentReference/cbc:UUID))" diagnostics="d-IBR-058">[IBR-058-OM] - Prepayment invoice number (BTOM-027) and Prepayment invoice UUID (BTOM-014) must be provided if Paid amount (IBT-180) is present (or the invoice transaction type is Prepayment Invoice).</assert>
+            <assert id="IBR-058-OM" flag="fatal" role="fatal" test="not(exists(cac:LegalMonetaryTotal/cbc:PrepaidAmount))                         or (exists(cac:OriginatorDocumentReference/cbc:ID)                             and exists(cac:OriginatorDocumentReference/cbc:UUID))" diagnostics="d-IBR-058">[IBR-058-OM] - Prepayment invoice number (BTOM-027) and Prepayment invoice UUID (BTOM-014) must be provided if Paid amount (IBT-180) is present.</assert>
             
             <assert id="IBR-059-OM" flag="fatal" role="fatal" test="not($exchangeRate)                   or (cac:TaxExchangeRate/cbc:SourceCurrencyCode=$invoiceCurrency                       and cac:TaxExchangeRate/cbc:TargetCurrencyCode=$taxCurrency)" diagnostics="d-IBR-059">[IBR-059-OM] - The source currency must be designated as the invoice currency code (IBT-005), and the target currency must be specified as the tax accounting currency (IBT-006), provided that the currency exchange rate (BTOM-003) is available.</assert>
             
             <assert id="IBR-065-OM" flag="fatal" role="fatal" test="not($invoiceCurrency != 'OMR' and $taxCurrency = 'OMR')                         or (                             $exchangeRate castable as xs:decimal and                             u:slack(                                 xs:decimal((cac:TaxTotal[cbc:TaxAmount/@currencyID = $taxCurrency]/cbc:TaxAmount)[1]),                                 xs:decimal($exchangeRate * (cac:TaxTotal[cbc:TaxAmount/@currencyID = $invoiceCurrency]/cbc:TaxAmount)[1]),                                 0.01                             )                         )" diagnostics="d-IBR-065">[IBR-065-OM] - When Invoice currency code (IBT-005) is not equal to 'OMR' and Tax accounting currency [IBT-006] is 'OMR', then the value in Invoice total VAT amount in tax accounting currency [IBT-111] MUST be provided and must be Exchange rate (BTOM-003) multiplied by Invoice total tax amount (IBT-110).</assert>
 
             
-            <assert id="IBR-066-OM" flag="fatal" role="fatal" test="                 not($invoiceCurrency != 'OMR'                     and $doc//cac:TaxCategory/cbc:ID = 'S')                 or                 exists(                     $doc/cac:TaxTotal/cac:TaxSubtotal[                         cac:TaxCategory/cbc:ID = 'S'                         and cbc:TaxAmount                         and cac:TaxCategory/cbc:Percent                     ]                 )                 " diagnostics="d-IBR-066">[IBR-066-OM] - TAX category tax amount in accounting currency (IBT-190), TAX category code for tax category tax amount in accounting currency (IBT-192) and TAX category rate for tax category tax amount in accounting currency (IBT-193) must be provided when Invoice currency code [IBT-005] is not equal to 'OMR' and atleast one TAX category code (IBT-118) is equal to 'S'.</assert>
+            <assert id="IBR-066-OM" flag="fatal" role="fatal" test="                 not($invoiceCurrency != 'OMR'                     and $doc//cac:TaxCategory/cbc:ID = 'S')                 or                 exists(                     $doc/cac:TaxTotal[cbc:TaxAmount/@currencyID = $taxCurrency]                         /cac:TaxSubtotal[                             cbc:TaxAmount/@currencyID = $taxCurrency                             and cac:TaxCategory/cbc:ID = 'S'                             and cbc:TaxAmount                             and cac:TaxCategory/cbc:Percent                         ]                 )                 " diagnostics="d-IBR-066">[IBR-066-OM] - TAX category tax amount in accounting currency (IBT-190), TAX category code for tax category tax amount in accounting currency (IBT-192) and TAX category rate for tax category tax amount in accounting currency (IBT-193) must be provided when Invoice currency code (IBT-005) is not equal to 'OMR' and at least one TAX category code (IBT-118) is equal to 'S'.</assert>
             
             
-            <assert id="IBR-082-OM" flag="fatal" role="fatal" test="not($isProfitMargin or $isProfitMarginSelf)                         or (                             cac:AdditionalDocumentReference[cbc:DocumentTypeCode='PM_TOTAL']/cbc:DocumentDescription castable as xs:decimal                             and u:slack(                                 xs:decimal(cac:AdditionalDocumentReference[cbc:DocumentTypeCode='PM_TOTAL']/cbc:DocumentDescription),                                 xs:decimal(sum($lines/cac:ItemPriceExtension/cbc:Amount/xs:decimal(.))),                                 0.01                             )                         )" diagnostics="d-IBR-082">[IBR-082-OM] - When Invoice transaction type (BTOM-001) is Profit margin invoice (XXXXXXXXX1XXXXXXXXXX) or Profit Margin Self-Invoice (XXXXXXXXXX1XXXXXXXXX), then Total Amount Due (BTOM-030), should be provided and is mandatory and must be the sum of Total amount including VAT (BTOM-017).</assert>
+            <assert id="IBR-082-OM" flag="fatal" role="fatal" test="not($isProfitMargin or $isProfitMarginSelf)                         or (                             cac:AdditionalDocumentReference[cbc:DocumentTypeCode='PM_TOTAL']/cbc:DocumentDescription castable as xs:decimal                             and u:slack(                                 xs:decimal(cac:AdditionalDocumentReference[cbc:DocumentTypeCode='PM_TOTAL']/cbc:DocumentDescription),                                 xs:decimal(sum($lines/cac:ItemPriceExtension/cbc:Amount/xs:decimal(.))),                                 0.01                             )                         )" diagnostics="d-IBR-082">[IBR-082-OM] - When Invoice transaction type (BTOM-001) is Profit margin invoice (XXXXXXXXX1XXXXXXXXXX) or Profit Margin Self-Invoice (XXXXXXXXXX1XXXXXXXXX), then Total Amount Due (BTOM-020), should be provided and is mandatory and must be the sum of Total amount including VAT (BTOM-017).</assert>
             
-            <assert id="IBR-085-OM" flag="fatal" role="fatal" test="                 not($isImportGoods)                 or                 (                     cac:Delivery/cac:Shipment/cac:Delivery/cbc:ActualDeliveryDate                     and cac:Delivery/cac:Shipment/cbc:ID                     and cac:Delivery/cac:DeliveryTerms/cbc:ID                 )                 " diagnostics="d-IBR-085">[IBR-085-OM] - If invoice transaction type (BTOM-001) is 'Import of Goods' (XXXXXXXXXXXX1XXXXXXX), import details (IBG-33-OM) MUST be present and must contain, Import date (BTOM-020), Custom Declaration number (BTOM-021) and Incoterms (BTOM-022).</assert>
+            <assert id="IBR-085-OM" flag="fatal" role="fatal" test="                 not($isImportGoods)                 or                 (                     cac:Delivery/cac:Shipment/cac:Delivery/cbc:ActualDeliveryDate                     and cac:Delivery/cac:Shipment/cbc:ID                     and cac:Delivery/cac:DeliveryTerms/cbc:ID                 )                 " diagnostics="d-IBR-085">[IBR-085-OM] - If invoice transaction type (BTOM-001) is 'Import of Goods' (XXXXXXXXXXXX1XXXXXXX), then Import date (BTOM-030), Custom Declaration number (BTOM-021) and Incoterms (BTOM-022).MUST be present.</assert>
             
             
             <assert id="IBR-087-OM" flag="fatal" role="fatal" test="not($isProfitMarginSelf)                 or cac:AccountingSupplierParty/cac:Party/cac:PostalAddress/cac:Country/cbc:IdentificationCode='OM'" diagnostics="d-IBR-087">[IBR-087-OM] - In case Invoice transaction type (BTOM-001) is 'Profit Margin Self-Invoice' (XXXXXXXXXX1XXXXXXXXX), Seller Country Code (IBT-040) MUST be 'OM'.</assert>
@@ -510,19 +358,20 @@
                 
             <assert id="IBR-150-OM" flag="fatal" role="fatal" test="not($isSpecialZone)                   or (cac:AccountingCustomerParty/cac:Party/cac:PostalAddress/cbc:CountrySubentityCode and cac:AccountingSupplierParty/cac:Party/cac:PostalAddress/cbc:CountrySubentityCode)" diagnostics="d-IBR-150">[IBR-150-OM] - If Invoice transaction type (BTOM-001) is Special Zone Supplies (XXXXXXXXXXXXX1XXXXXX) , buyer country subdivision code (BTOM-026) and Seller country subdivision code (BTOM-024) MUST be provided using the codelist for Country Subdivision (CL-13-OM).</assert>
             
-            <assert id="IBR-151-OM" flag="fatal" role="fatal" test="                     not($isSpecialZone and cac:AccountingSupplierParty/cac:Party/cac:PostalAddress/cbc:CountrySubentityCode!='MO')                     or                     cac:AccountingSupplierParty/cac:Party/cac:PartyIdentification/cbc:ID                     " diagnostics="d-IBR-151">[IBR-151-OM] - Seller identifier (IBT-029) is mandatory with Scheme identifier (IBT-029-1) 'Special Zone License Number' if Invoice transaction type (BTOM-001) is Special zone supplies (XXXXXXXXXXXXX1XXXXXX) and Seller country subdivision code (BTOM-024) is not equal to 'MO'.</assert>
+            <assert id="IBR-151-OM" flag="fatal" role="fatal" test="                     not($isSpecialZone and cac:AccountingSupplierParty/cac:Party/cac:PostalAddress/cbc:CountrySubentityCode!='MO')                     or                     cac:AccountingSupplierParty/cac:Party/cac:PartyIdentification/cbc:ID[@schemeName='SZLN']                     " diagnostics="d-IBR-151">[IBR-151-OM] - Seller identifier (IBT-029) is mandatory with Scheme identifier (IBT-029-1) 'SZLN' (Special Zone License Number) if Invoice transaction type (BTOM-001) is Special zone supplies (XXXXXXXXXXXXX1XXXXXX) and Seller country subdivision code (BTOM-024) is not equal to 'MO'.</assert>
             
-            <assert id="IBR-152-OM" flag="fatal" role="fatal" test="                     not($isSpecialZone and cac:AccountingCustomerParty/cac:Party/cac:PostalAddress/cbc:CountrySubentityCode!='MO')                     or                     cac:AccountingCustomerParty/cac:Party/cac:PartyIdentification/cbc:ID                     " diagnostics="d-IBR-152">[IBR-152-OM] - Buyer identifier (IBT-046) is mandatory with Scheme identifier (IBT-046-1) 'Special Zone License Number' if Invoice transaction type (BTOM-001) is Special zone supplies (XXXXXXXXXXXXX1XXXXXX) and Buyer country subdivision code (BTOM-026) is not equal to 'MO' except when Buyer electronic address (IBT-049) is '997770000099'.</assert>
+            <assert id="IBR-152-OM" flag="fatal" role="fatal" test="                     not($isSpecialZone                         and cac:AccountingCustomerParty/cac:Party/cac:PostalAddress/cbc:CountrySubentityCode!='MO'                         and normalize-space(cac:AccountingCustomerParty/cac:Party/cbc:EndpointID) != '997770000099')                     or                     cac:AccountingCustomerParty/cac:Party/cac:PartyIdentification/cbc:ID[@schemeName='SZLN']                     " diagnostics="d-IBR-152">[IBR-152-OM] - Buyer identifier (IBT-046) is mandatory with Scheme identifier (IBT-046-1) 'SZLN' (Special Zone License Number) if Invoice transaction type (BTOM-001) is Special zone supplies (XXXXXXXXXXXXX1XXXXXX) and Buyer country subdivision code (BTOM-026) is not equal to 'MO' except when Buyer electronic address (IBT-049) is '997770000099'.</assert>
             
-            <assert id="IBR-153-OM" flag="fatal" role="fatal" test="                     not($isImportGoods)                     or                     cac:AccountingCustomerParty/cac:Party/cac:PartyIdentification/cbc:ID                     " diagnostics="d-IBR-153">[IBR-153-OM] - Buyer identifier (IBT-046) is mandatory with Scheme identifier (IBT-046-1) 'Importer Customs ID' if Invoice transaction type (BTOM-001) is Import of Goods (XXXXXXXXXXXX1XXXXXXX).</assert>
+            <assert id="IBR-153-OM" flag="fatal" role="fatal" test="                     not($isImportGoods)                     or                     cac:AccountingCustomerParty/cac:Party/cac:PartyIdentification/cbc:ID[@schemeName='ICID']                     " diagnostics="d-IBR-153">[IBR-153-OM] - Buyer identifier (IBT-046) is mandatory with Scheme identifier (IBT-046-1) 'ICID' (Importer Customs ID) if Invoice transaction type (BTOM-001) is Import of Goods (XXXXXXXXXXXX1XXXXXXX).</assert>
             
-            <assert id="IBR-155-OM" flag="fatal" role="fatal" test="not($isExport and $lines[cac:Item/cac:ClassifiedTaxCategory/cbc:TaxExemptionReasonCode ='VATZR-OM-09'])                   or $lines[cac:Item/cac:CommodityClassification/cbc:ItemClassificationCode]" diagnostics="d-IBR-155">[IBR-155-OM] - If invoice transaction type (BTOM-001) is export invoice (XXXXXX1XXXXXXXXXXXXX) and atleast one VAT exemption reason code (IBT-121) is 'Export of service' then Service Type (BTOM-015) must be provided from the codelist for Type of Services (CL-12-OM).</assert>
+            <assert id="IBR-155-OM" flag="fatal" role="fatal" test="not($isExport and $lines[cac:Item/cac:ClassifiedTaxCategory/cbc:TaxExemptionReasonCode ='VATZR-OM-09'])                   or $lines[cac:Item/cac:ItemSpecificationDocumentReference/cbc:ID[@schemeName='MP']]" diagnostics="d-IBR-155">[IBR-155-OM] - If invoice transaction type (BTOM-001) is export invoice (XXXXXX1XXXXXXXXXXXXX) and at least one VAT exemption reason code (IBT-121) is 'Export of service' then Service Type (BTOM-034) must be provided from the code list for Type of Services (CL-12-OM).</assert>
             
+                
             <assert id="IBR-156-OM" flag="fatal" role="fatal" test="not(cac:Delivery/cac:Shipment/cac:Delivery/cbc:ActualDeliveryDate)                         or (matches(cac:Delivery/cac:Shipment/cac:Delivery/cbc:ActualDeliveryDate,                                     '^\d{4}-\d{2}-\d{2}$')                             and cac:Delivery/cac:Shipment/cac:Delivery/cbc:ActualDeliveryDate                                 castable as xs:date)" diagnostics="d-IBR-156">[IBR-156-OM] - Import date (BTOM-020) MUST be formatted YYYY-MM-DD and be a valid date.</assert>
             
             <assert id="IBR-160-OM" flag="fatal" role="fatal" test="not($isImportRCM)                   or cac:AccountingSupplierParty/cac:Party/cac:PostalAddress/cac:Country/cbc:IdentificationCode != 'OM'" diagnostics="d-IBR-160">[IBR-160-OM] - Seller country code (IBT-040) MUST not be'OM' if Invoice transaction type (BTOM-001) is Import of services for RCM (XXXXXXXX1XXXXXXXXXXX).</assert>
                 
-                <assert id="IBR-169-OM" flag="fatal" role="fatal" test="not(cac:AdditionalDocumentReference[cbc:DocumentTypeCode='PM_TOTAL']/cbc:DocumentDescription)                               or cac:AdditionalDocumentReference[cbc:DocumentTypeCode='PM_TOTAL']/cbc:ID = 'OMR'" diagnostics="d-IBR-169">[IBR-169-OM] - Currency of Total amount due (profit margin) (BTOM-030) MUST be 'OMR'.</assert>
+                <assert id="IBR-169-OM" flag="fatal" role="fatal" test="not(cac:AdditionalDocumentReference[cbc:DocumentTypeCode='PM_TOTAL']/cbc:DocumentDescription)                               or cac:AdditionalDocumentReference[cbc:DocumentTypeCode='PM_TOTAL']/cbc:ID = 'OMR'" diagnostics="d-IBR-169">[IBR-169-OM] - Currency of Total amount due (profit margin) (BTOM-020) MUST be 'OMR'.</assert>
 
             
             
@@ -533,7 +382,7 @@
             
             <assert id="IBR-172-OM" flag="fatal" role="fatal" test="not($invoiceCurrency='OMR') or not(cac:TaxExchangeRate/cbc:CalculationRate)" diagnostics="d-IBR-172">[IBR-172-OM] - If Invoice currency code (IBT-005) is "OMR" then Exchange Rate (BTOM-003) MUST NOT be present.</assert>
             
-            <assert id="IBR-173-OM" flag="fatal" role="fatal" test="                     not(normalize-space(cac:AccountingCustomerParty/cac:Party/cbc:EndpointID) = '997770000099')                     or                     (                         normalize-space(cac:AccountingSupplierParty/cbc:AdditionalAccountID) != ''                         and                         matches(normalize-space(cac:AccountingSupplierParty/cbc:AdditionalAccountID), '^[A-Za-z0-9-]+$')                     )                     " diagnostics="d-IBR-173">[IBR-173-OM] - If Buyer electronic address (IBT-049) is '997770000099' OR 'to be provided by OpenPeppol', Seller UUID (BTOM-004) MUST be present.</assert>
+            <assert id="IBR-173-OM" flag="fatal" role="fatal" test="                     not(normalize-space(cac:AccountingCustomerParty/cac:Party/cbc:EndpointID) = '997770000099')                     or                     (                         normalize-space(cac:AccountingSupplierParty/cbc:AdditionalAccountID) != ''                         and                         matches(normalize-space(cac:AccountingSupplierParty/cbc:AdditionalAccountID), '^[A-Za-z0-9-]+$')                     )                     " diagnostics="d-IBR-173">[IBR-173-OM] - If Buyer electronic address (IBT-049) is '997770000099', Seller UUID (BTOM-004) MUST be present.</assert>
                  
                  <assert id="IBR-175-OM" flag="fatal" role="fatal" test="                     not($isProfitMargin)                     or                     exists(                         cac:BillingReference/cac:InvoiceDocumentReference[                             normalize-space(cbc:ID) != ''                             and normalize-space(cbc:UUID) != ''                         ]                     )                     " diagnostics="d-IBR-175">[IBR-175-OM] - If Invoice transaction type (BTOM-001) is Profit margin invoice 'XXXXXXXXX1XXXXXXXXXX', Preceding Invoice reference (IBT-025),  and Preceding invoice UUID (BTOM-031) MUST be present.</assert>
             
@@ -542,15 +391,21 @@
             <assert id="IBR-177-OM" flag="fatal" role="fatal" test="not($invoiceType=('261','389'))                   or ($isSelfBilled or $isImportRCM or $isProfitMarginSelf or $isImportGoods)" diagnostics="d-IBR-177">[IBR-177-OM] - If Invoice Type code (IBT-003) is Self billed credit note '261' or Self billed invoice '389' then Invoice transaction type (BTOM-001) MUST be either Self-billed Invoice/credit note (XX1XXXXXXXXXXXXXXXXX) OR Invoice for import of services for RCM (XXXXXXXX1XXXXXXXXXXX) OR Profit Margin Self-Invoice (XXXXXXXXXX1XXXXXXXXX) OR Import of Goods (XXXXXXXXXXXX1XXXXXXX). </assert>
         </rule>
          <rule context="cbc:ReceivedDate | cbc:InstallmentDueDate">
-            <assert id="IBR-171-A-OM" diagnostics="d-IBR-171" flag="fatal" test="string-length(text()) = 10 and (string(.) castable as xs:date)">[ibr-073]-A date MUST be formatted YYYY-MM-DD in (ibt-177), (ibt-181), (ibt-009).</assert>
+            <assert id="IBR-171-A-OM" diagnostics="d-IBR-171-A" flag="fatal" role="fatal" test="string-length(text()) = 10 and (string(.) castable as xs:date)">[IBR-171-A-OM] - A date MUST be formatted YYYY-MM-DD in (IBT-177), (IBT-181), (IBT-009).</assert>
         </rule>
+       
         
-        <rule context="cbc:Amount              | cbc:BaseAmount              | cbc:PriceAmount              | cbc:LineExtensionAmount              | cbc:TaxExclusiveAmount              | cbc:TaxInclusiveAmount              | cbc:AllowanceTotalAmount              | cbc:ChargeTotalAmount              | cbc:PrepaidAmount              | cbc:PayableRoundingAmount              | cbc:PayableAmount              | cac:TaxTotal/cbc:TaxAmount              | cac:TaxTotal/cbc:TaxableAmount              | cac:TaxTotal/cac:TaxSubtotal/cbc:TaxAmount              | cac:TaxTotal/cac:TaxSubtotal/cbc:TaxableAmount              | cac:AdditionalDocumentReference[cbc:DocumentTypeCode='PM_TOTAL']/cbc:DocumentDescription">
+        <rule context="cac:TaxExchangeRate/cbc:CalculationRate              | cac:PricingExchangeRate/cbc:CalculationRate              | cac:PaymentExchangeRate/cbc:CalculationRate">
+            <assert id="IBR-DEC-07-OM" flag="fatal" role="fatal" test=". castable as xs:decimal and xs:decimal(.) = round(xs:decimal(.) * 10000000) div 10000000" diagnostics="d-IBR-DEC-07-OM">
+                [IBR-DEC-07-OM] - Currency Exchange Rate (BTOM-003) MUST NOT contain more than 7 decimal places.
+            </assert>
+        </rule>
+
+        <rule context="cbc:Amount              | cbc:BaseAmount              | cbc:PriceAmount              | cbc:LineExtensionAmount[not(parent::cac:LegalMonetaryTotal)]              | cbc:TaxExclusiveAmount[not(parent::cac:LegalMonetaryTotal)]              | cbc:TaxInclusiveAmount[not(parent::cac:LegalMonetaryTotal)]              | cbc:AllowanceTotalAmount[not(parent::cac:LegalMonetaryTotal)]              | cbc:ChargeTotalAmount[not(parent::cac:LegalMonetaryTotal)]              | cbc:PrepaidAmount[not(parent::cac:LegalMonetaryTotal)]              | cbc:PayableRoundingAmount[not(parent::cac:LegalMonetaryTotal)]              | cbc:PayableAmount[not(parent::cac:LegalMonetaryTotal)]              | cac:TaxTotal/cbc:TaxAmount[not(parent::cac:TaxTotal[parent::*[local-name()='Invoice' or local-name()='CreditNote']])]              | cac:TaxTotal/cbc:TaxableAmount              | cac:TaxTotal/cac:TaxSubtotal/cbc:TaxAmount              | cac:TaxTotal/cac:TaxSubtotal/cbc:TaxableAmount              | cac:AdditionalDocumentReference[cbc:DocumentTypeCode='PM_TOTAL']/cbc:DocumentDescription">
 
             
-            
-            <assert id="ibr-decimals-om" flag="fatal" role="fatal" test=". castable as xs:decimal and xs:decimal(.) = round(xs:decimal(.) * 1000) div 1000" diagnostics="d-CL-DEC-03-OM">
-                [IBR-088-OM, IBR-109-OM..IBR-135-OM] - All amount values (including BTOM-030 Total amount due in Profit Margin) must not contain more than 3 decimal places.
+            <assert id="IBR-DEC-03-OM" flag="fatal" role="fatal" test=". castable as xs:decimal and xs:decimal(.) = round(xs:decimal(.) * 1000) div 1000" diagnostics="d-IBR-DEC-03-OM">
+                [IBR-DEC-03-OM] (covering IBR-088-OM, IBR-109-OM..IBR-135-OM) - All amount values (including BTOM-020 Total amount due in Profit Margin) MUST NOT contain more than 3 decimal places and the exchange rate by IBR-DEC-07-OM (7 decimals).
             </assert>
 
 </rule>
@@ -587,7 +442,7 @@
             
             <assert id="ALIGNED-IBRP-047" flag="fatal" role="fatal" test="not($isInvoiceCurrency) or cac:TaxCategory/cbc:ID" diagnostics="d-047">[ALIGNED-IBRP-047] - Each VAT breakdown (IBG-23) MUST be defined through a VAT category code (IBT-118).</assert>
             
-            <assert id="ALIGNED-IBRP-048" flag="fatal" role="fatal" test="not($isInvoiceCurrency)                          or ($vatCategory = ('E', 'O'))                          or exists(cac:TaxCategory/cbc:Percent)" diagnostics="d-048">[ALIGNED-IBRP-048] - Each VAT breakdown (ibg-23) MUST have a VAT category rate (ibt-119), except if the Invoice is not subject to VAT.</assert>
+            <assert id="ALIGNED-IBRP-048" flag="fatal" role="fatal" test="not($isInvoiceCurrency)                          or ($vatCategory = ('E', 'O'))                          or exists(cac:TaxCategory/cbc:Percent)" diagnostics="d-048">[ALIGNED-IBRP-048] - Each VAT breakdown (IBG-23) MUST have a VAT category rate (IBT-119), except if the Invoice is not subject to VAT.</assert>
 
             
             
@@ -599,7 +454,7 @@
             
             
             
-            <assert id="ALIGNED-IBRP-E-09-OM" flag="fatal" role="fatal" test="$isSimplified                     or not($vatCategory='E')                     or (                             cbc:TaxAmount castable as xs:decimal                             and xs:decimal(cbc:TaxAmount) = 0                         )" diagnostics="d-E-09">[ALIGNED-IBRP-E-09-OM] - The VAT category tax amount (ibt-117) In a VAT breakdown (ibg-23) where the VAT category code (ibt-118) equals "E" MUST equal 0 (zero) unless invoice transaction type is a simplified tax invoice (X1XXXXXXXXXXXXXXXXXX), where a VAT category tax amount (ibt-117) I is not required if VAT category code (ibt-118) equal to "E".</assert>
+            <assert id="ALIGNED-IBRP-E-09-OM" flag="fatal" role="fatal" test="$isSimplified                     or not($vatCategory='E')                     or (                             cbc:TaxAmount castable as xs:decimal                             and xs:decimal(cbc:TaxAmount) = 0                         )" diagnostics="d-E-09">[ALIGNED-IBRP-E-09-OM] - The VAT category tax amount (IBT-117) In a VAT breakdown (IBG-23) where the VAT category code (IBT-118) equals "E" MUST equal 0 (zero) unless invoice transaction type is a simplified tax invoice (X1XXXXXXXXXXXXXXXXXX), where a VAT category tax amount (IBT-117) I is not required if VAT category code (IBT-118) equal to "E".</assert>
 
             
             
@@ -651,9 +506,9 @@
             
             <assert id="IBR-067-OM" flag="fatal" role="fatal" test="not($vatCategory='E') or not(cac:TaxCategory/cbc:Percent)" diagnostics="d-IBR-067">[IBR-067-OM] - In a VAT breakdown (IBG-23) where VAT category code (IBT-118) is 'Exempt from VAT', VAT category VAT Rate (IBT-119) shall not be provided.</assert>
             
-            <assert id="IBR-069-OM" flag="fatal" role="fatal" test="not($vatCategory='E' or $vatCategory='Z')                     or cac:TaxCategory/cbc:TaxExemptionReasonCode" diagnostics="d-IBR-069">[IBR-069-OM] - A VAT breakdown (ibg-23) with VAT Category code (ibt-118) "E"  and/or "Z" must have a VAT exemption reason code (IBT-121).</assert>
+            <assert id="IBR-069-OM" flag="fatal" role="fatal" test="not($vatCategory='E' or $vatCategory='Z')                     or cac:TaxCategory/cbc:TaxExemptionReasonCode" diagnostics="d-IBR-069">[IBR-069-OM] - A VAT breakdown (IBG-23) with VAT Category code (IBT-118) "E"  and/or "Z" must have a VAT exemption reason code (IBT-121).</assert>
             
-            <assert id="IBR-070-OM" flag="fatal" role="fatal" test="not($vatCategory='O')                     or not(cac:TaxCategory/cbc:TaxExemptionReasonCode)" diagnostics="d-IBR-070">[IBR-070-OM] - A VAT breakdown (ibg-23) with VAT Category code (ibt-118) "O" MUST not have a VAT exemption reason code (IBT-121).</assert>
+            <assert id="IBR-070-OM" flag="fatal" role="fatal" test="not($vatCategory='O')                     or not(cac:TaxCategory/cbc:TaxExemptionReasonCode)" diagnostics="d-IBR-070">[IBR-070-OM] - A VAT breakdown (IBG-23) with VAT Category code (IBT-118) "O" MUST not have a VAT exemption reason code (IBT-121).</assert>
             
 
             
@@ -663,20 +518,13 @@
             
             <assert id="IBR-096-OM" flag="fatal" role="fatal" test="not($taxCurrency != '' and $isTaxCurrency and $vatCategory='O')                     or not(cac:TaxCategory/cbc:Percent)" diagnostics="d-IBR-096">[IBR-096-OM, IBR-102-OM] - If the TAX category code for tax category tax amount in accounting currency (IBT-192) is 'O', then the TAX category rate (IBT-193) MUST NOT be present.</assert>
             
-            
-            <assert id="IBR-097-OM" flag="fatal" role="fatal" test="not($taxCurrency != '' and $isTaxCurrency and $vatCategory='Z')                     or (cac:TaxCategory/cbc:Percent castable as xs:decimal and xs:decimal(cac:TaxCategory/cbc:Percent) = 0)" diagnostics="d-IBR-097">[IBR-097-OM] - If TAX category code for tax category tax amount in accounting currency (IBT-192) is 'Z', TAX category rate for tax category tax amount in accounting currency (IBT-193) MUST be 0.</assert>
-        
-            
+            <assert id="IBR-097-OM" flag="fatal" role="fatal" test="not($taxCurrency != '' and $isTaxCurrency and $vatCategory='Z')                     or (cac:TaxCategory/cbc:Percent castable as xs:decimal                         and xs:decimal(cac:TaxCategory/cbc:Percent) = 0)" diagnostics="d-IBR-097">[IBR-097-OM, IBR-103-OM] - If TAX category code for tax category tax amount in accounting currency (IBT-192) is 'Z', TAX category rate for tax category tax amount in accounting currency (IBT-193) MUST be 0.</assert>
 
-            
-            <assert id="IBR-103-OM" flag="fatal" role="fatal" test="not($taxCurrency != '' and $isTaxCurrency and $vatCategory='Z')                     or (cac:TaxCategory/cbc:Percent castable as xs:decimal                         and xs:decimal(cac:TaxCategory/cbc:Percent) = 0)" diagnostics="d-IBR-103">[IBR-103-OM] - If TAX category code for tax category tax amount in accounting currency (IBT-192) is 'Z', TAX category rate for tax category tax amount in accounting currency (IBT-193) MUST be 0.</assert>
-       
         </rule>
 
          
         
         
-
 
         
         <rule context="ubl:Invoice/cac:AllowanceCharge[cbc:ChargeIndicator = 'true'] | cn:CreditNote/cac:AllowanceCharge[cbc:ChargeIndicator = 'true']">
@@ -688,7 +536,7 @@
             
             <assert id="IBR-045-OM" flag="fatal" role="fatal" test="not($cat='S') or (cac:TaxCategory/cbc:Percent castable as xs:decimal and xs:decimal(cac:TaxCategory/cbc:Percent) = $standardVatRate)" diagnostics="d-IBR-045">[IBR-045-OM] - If Document level charge TAX category code (IBT-102) is 'S', Document level charge TAX rate (IBT-103) MUST be 5.</assert>
             
-            <assert id="IBR-064-OM" flag="fatal" role="fatal" test="not($cat=('E','Z')) or cac:TaxCategory/cbc:TaxExemptionReasonCode" diagnostics="d-IBR-064">[IBR-064-OM] - Document level charge (IBG-21) with Document level charge VAT category code (IBT-102) as 'E' or 'Z' MUST have a Document level charge VAT exemption reason code (IBT-198).</assert>
+            <assert id="IBR-064-OM" flag="fatal" role="fatal" test="not($cat=('E','Z')) or cac:TaxCategory/cbc:TaxExemptionReasonCode" diagnostics="d-IBR-064">[IBR-064-OM, IBR-106-OM] - Document level charge (IBG-21) with Document level charge VAT category code (IBT-102) as 'E' (Exempt) or 'Z' (Zero rated) MUST have a Document level charge VAT exemption reason code (IBT-198).</assert>
 
             
             
@@ -698,9 +546,6 @@
             
             <assert id="IBR-100-OM" flag="fatal" role="fatal" test="not($cat='Z') or (cac:TaxCategory/cbc:Percent castable as xs:decimal and xs:decimal(cac:TaxCategory/cbc:Percent) = 0)" diagnostics="d-IBR-100">[IBR-100-OM] - If Document level charge TAX category code (IBT-102) is 'Z', Document level charge TAX rate (IBT-103) MUST be 0.</assert>
            
-            
-            <assert id="IBR-106-OM" flag="fatal" role="fatal" test="not($cat='E') or cac:TaxCategory/cbc:TaxExemptionReasonCode" diagnostics="d-IBR-106">[IBR-106-OM] - If Document level charge TAX category code (IBT-102) is 'E' (Exempt), Document level charge TAX exemption reason code (IBT-198) MUST be present.</assert>
-
         </rule>
 
         
@@ -713,7 +558,7 @@
             
             <assert id="IBR-047-OM" flag="fatal" role="fatal" test="not($cat='S') or (cac:TaxCategory/cbc:Percent castable as xs:decimal and xs:decimal(cac:TaxCategory/cbc:Percent) = $standardVatRate)" diagnostics="d-IBR-047">[IBR-047-OM] - If Document level allowance TAX category code (IBT-095) is 'S', Document level allowance TAX rate (IBT-096) MUST be 5.</assert>
             
-            <assert id="IBR-062-OM" flag="fatal" role="fatal" test="not($cat=('E','Z')) or cac:TaxCategory/cbc:TaxExemptionReasonCode" diagnostics="d-IBR-062">[IBR-062-OM] - Document level allowances (IBG-20) with Document level allowance VAT category code (IBT-095) as 'E' or 'Z' MUST have a Document level allowance VAT exemption reason code (IBT-196)</assert>
+            <assert id="IBR-062-OM" flag="fatal" role="fatal" test="not($cat=('E','Z')) or cac:TaxCategory/cbc:TaxExemptionReasonCode" diagnostics="d-IBR-062">[IBR-062-OM, IBR-105-OM] - Document level allowances (IBG-20) with Document level allowance VAT category code (IBT-095) as 'E' (Exempt) or 'Z' (Zero rated) MUST have a Document level allowance VAT exemption reason code (IBT-196).</assert>
 
             
             
@@ -722,9 +567,6 @@
             <assert id="IBR-093-OM" flag="fatal" role="fatal" test="not($cat='O') or not(cac:TaxCategory/cbc:Percent)" diagnostics="d-IBR-093">[IBR-093-OM] - If Document level allowance TAX category code (IBT-095) is 'O', Document level allowance TAX rate (IBT-096) MUST not be present.</assert>
             
             <assert id="IBR-094-OM" flag="fatal" role="fatal" test="not($cat='Z') or (cac:TaxCategory/cbc:Percent castable as xs:decimal and xs:decimal(cac:TaxCategory/cbc:Percent) = 0)" diagnostics="d-IBR-094">[IBR-094-OM] - If Document level allowance TAX category code (IBT-095) is 'Z', Document level allowance TAX rate (IBT-096) MUST be 0.</assert>
-            
-            <assert id="IBR-105-OM" flag="fatal" role="fatal" test="not($cat='E') or cac:TaxCategory/cbc:TaxExemptionReasonCode" diagnostics="d-IBR-105">[IBR-105-OM] - If Document level allowance TAX category code (IBT-095) is 'E' (Exempt), Document level allowance TAX exemption reason code (IBT-196) MUST be present.</assert>
-
         </rule>
 
         
@@ -763,7 +605,7 @@
         <rule context="             cac:AccountingSupplierParty/cac:Party/cac:PartyTaxScheme[cac:TaxScheme/cbc:ID='VAT']/cbc:CompanyID             | cac:AccountingCustomerParty/cac:Party/cac:PartyTaxScheme[cac:TaxScheme/cbc:ID='VAT']/cbc:CompanyID             | cac:AccountingSupplierParty/cac:Party/cac:AgentParty/cac:PartyTaxScheme[cac:TaxScheme/cbc:ID='VAT']/cbc:CompanyID             ">
             <let name="cleanID" value="replace(normalize-space(.), '\s+', '')"/>
             
-            <assert id="IBR-003-OM" flag="fatal" role="fatal" test="matches($cleanID, '^OM[0-9]{10}$')" diagnostics="d-IBR-003">[IBR-003-OM] - Seller VATIN (IBT-031), Buyer VATIN (IBT-048) and Third party VATIN (BTOM-006) MUST 10 alphanumeric digits, starting with OM.</assert>
+            <assert id="IBR-003-OM" flag="fatal" role="fatal" test="matches($cleanID, '^OM[0-9]{10}$')" diagnostics="d-IBR-003">[IBR-003-OM] - Seller VATIN (IBT-031), Buyer VATIN (IBT-048) and Third party VATIN (BTOM-006) MUST be 12 characters: 'OM' followed by exactly 10 digits.</assert>
 
         </rule>
 
@@ -777,7 +619,7 @@
             <let name="isBuyer" value="exists(ancestor::cac:AccountingCustomerParty)"/>
             <let name="fullXPath" value="string-join(for $node in ancestor-or-self::* return local-name($node), '/')"/>
             
-            <assert id="IBR-009-OM" flag="fatal" role="fatal" test="if (local-name() = 'TaxCategory')                              then (cac:TaxScheme/cbc:ID = 'VAT')                         else if ($isBuyer)                             then (count(../cac:PartyTaxScheme) = 1 and cac:TaxScheme/cbc:ID = 'VAT')                         else if ($isSupplier)                             then (                                 (cac:TaxScheme/cbc:ID = 'VAT' or ../cac:PartyTaxScheme/cac:TaxScheme/cbc:ID = 'VAT') and                                 (if (cac:TaxScheme/cbc:ID = 'VAT') then count(../cac:PartyTaxScheme[cac:TaxScheme/cbc:ID = 'VAT']) = 1 else true())                             )                         else (cac:TaxScheme/cbc:ID = 'VAT')" diagnostics="d-IBR-009">[IBR-009-OM] - Tax scheme code, must provided in IBT-031-1 or BTOM-006-1 or IBT-048-1 or IBT-095-1 or IBT-102-1 or IBT-118-1 or IBT-167 and shall be 'VAT'.</assert>
+            <assert id="IBR-009-OM" flag="fatal" role="fatal" test="if (local-name() = 'TaxCategory')                              then (cac:TaxScheme/cbc:ID = 'VAT')                         else if ($isBuyer)                             then (count(../cac:PartyTaxScheme) = 1 and cac:TaxScheme/cbc:ID = 'VAT')                         else if ($isSupplier)                             then (                                 (cac:TaxScheme/cbc:ID = 'VAT' or ../cac:PartyTaxScheme/cac:TaxScheme/cbc:ID = 'VAT') and                                 (if (cac:TaxScheme/cbc:ID = 'VAT') then count(../cac:PartyTaxScheme[cac:TaxScheme/cbc:ID = 'VAT']) = 1 else true())                             )                         else (cac:TaxScheme/cbc:ID = 'VAT')" diagnostics="d-IBR-009">[IBR-009-OM] - Tax scheme code, must be provided in IBT-031-1 or BTOM-006-1 or IBT-048-1 or IBT-095-1 or IBT-102-1 or IBT-118-1 or IBT-167 and shall be 'VAT'.</assert>
 
         </rule>
 
@@ -847,14 +689,16 @@
             
             <assert id="IBR-077-OM" flag="fatal" role="fatal" test="not($vatCategory='Z')                   or u:isZeroOrEmpty($lineTaxAmount)" diagnostics="d-IBR-077">[IBR-077-OM] - In Line VAT information (IBG-30) where Invoiced item VAT category code (IBT-151) is 'Zero Rated', Line Item VAT Amount (BTOM-016) shall be zero.</assert>
             
-            <assert id="IBR-078-OM" flag="fatal" role="fatal" test="                 $isSimplified                 or                 cac:Item/cac:CommodityClassification/cbc:NatureCode                 " diagnostics="d-IBR-078">[IBR-078-OM] - Item Type (BTOM-019) must be provided for each item name (IBT-153) except when Invoice transaction type (BTOM-001) is 'Simplified Tax Invoice' (X1XXXXXXXXXXXXXXXXXX).</assert>
+            <assert id="IBR-078-OM" flag="fatal" role="fatal" test="                 $isSimplified                 or                 cac:Item/cac:ItemSpecificationDocumentReference[cbc:ID/@schemeName='MP']/cbc:DocumentTypeCode                 " diagnostics="d-IBR-078">[IBR-078-OM] - Goods or Services identification (BTOM-019) must be provided for each item name (IBT-153) except when Invoice transaction type (BTOM-001) is 'Simplified Tax Invoice' (X1XXXXXXXXXXXXXXXXXX).</assert>
             
-            <assert id="IBR-079-OM" flag="fatal" role="fatal" test="$isSimplified                   or not(cac:Item/cac:CommodityClassification/cbc:NatureCode='G')                   or cac:Item/cac:CommodityClassification/cbc:ItemClassificationCode" diagnostics="d-IBR-079">[IBR-079-OM] - When Item type (BTOM-019) is 'Goods' then Item classification identifier (ibt-158) must be provided except when Invoice transaction type (BTOM-001) is 'Simplified Tax Invoice' (X1XXXXXXXXXXXXXXXXXX)</assert>
+            <assert id="IBR-079-OM" flag="fatal" role="fatal" test="$isSimplified                   or not(cac:Item/cac:ItemSpecificationDocumentReference[cbc:ID/@schemeName='MP']/cbc:DocumentTypeCode='G')                   or cac:Item/cac:CommodityClassification/cbc:ItemClassificationCode[@listID='HS']" diagnostics="d-IBR-079">[IBR-079-OM] - When Goods or Services identification (BTOM-019) is 'Goods' then Item classification identifier (IBT-158, HS code) must be provided except when Invoice transaction type (BTOM-001) is 'Simplified Tax Invoice' (X1XXXXXXXXXXXXXXXXXX)</assert>
             
-            <assert id="IBR-080-OM" flag="fatal" role="fatal" test="not(cac:Item/cac:CommodityClassification/cbc:ItemClassificationCode[@listID='HS'])                   or string-length(normalize-space(cac:Item/cac:CommodityClassification/cbc:ItemClassificationCode[@listID='HS'])) = 12" diagnostics="d-IBR-080">[IBR-080-OM] - When Item classification identifier (IBT-158) is provided with @listID='HS', it must be exactly 12 digits (Oman HS code). 6-digit ISIC and 8-digit service-type codes are validated separately under CL-08And12-OM.</assert>
+            <assert id="IBR-080-OM" flag="fatal" role="fatal" test="not(cac:Item/cac:CommodityClassification/cbc:ItemClassificationCode[@listID='HS'])                   or string-length(normalize-space(cac:Item/cac:CommodityClassification/cbc:ItemClassificationCode[@listID='HS'])) = 12" diagnostics="d-IBR-080">[IBR-080-OM] - When Item classification identifier (IBT-158) is provided with @listID='HS', it must be exactly 12 digits (Oman HS code). 6-digit ISIC codes are validated separately under CL-08-OM-ISIC and 8-digit service-type codes under CL-12-OM.</assert>
             
-            <assert id="IBR-081-OM" flag="fatal" role="fatal" test="$isSimplified or $isImportGoods or $isImportRCM or $isProfitMargin                   or cac:Item/cac:CommodityClassification/cbc:ItemClassificationCode" diagnostics="d-IBR-081">[IBR-081-OM] - Industrial Classification Code (BTOM-018) must be provided for each ITEM INFORMATION (IBG-31) except when Invoice transaction type (BTOM-001) is a simplified tax invoice (X1XXXXXXXXXXXXXXXXXX) and/or import of goods (XXXXXXXXXXXX1XXXXXXX) or import of service RCM (XXXXXXXX1XXXXXXXXXXX) or profit margin self invoice (XXXXXXXXXX1XXXXXXXXX).</assert>
             
+                 <assert id="IBR-081-OM" flag="fatal" role="fatal" test="$isSimplified or $isImportGoods or $isImportRCM or $isProfitMarginSelf                   or cac:Item/cac:AdditionalItemIdentification/cbc:ID[@schemeName='CC']" diagnostics="d-IBR-081">[IBR-081-OM] - Industrial Classification Code (BTOM-033) must be provided for each ITEM INFORMATION (IBG-31) except when Invoice transaction type (BTOM-001) is a simplified tax invoice (X1XXXXXXXXXXXXXXXXXX) and/or import of goods (XXXXXXXXXXXX1XXXXXXX) or import of service RCM (XXXXXXXX1XXXXXXXXXXX) or profit margin self-invoice (XXXXXXXXXX1XXXXXXXXX).</assert>
+           
+                
             <assert id="IBR-084-OM" flag="fatal" role="fatal" test="not($isImportGoods)                   or cac:Item/cac:OriginCountry/cbc:IdentificationCode" diagnostics="d-IBR-084">[IBR-084-OM] - If invoice transaction type (BTOM-001) is 'Import of Goods' (XXXXXXXXXXXX1XXXXXXX) then Item country of origin (IBT-159) is mandatory.</assert>
             
             
@@ -863,11 +707,11 @@
             <assert id="IBR-091-OM" flag="fatal" role="fatal" test="not($isProfitMargin)                   or (every $code in cac:Item/cac:CommodityClassification/cbc:ItemClassificationCode[@listID='HS']                       satisfies not(                            starts-with(normalize-space($code),'7101')                         or starts-with(normalize-space($code),'7102')                         or starts-with(normalize-space($code),'7103')                         or starts-with(normalize-space($code),'7104')                         or starts-with(normalize-space($code),'01')                         or starts-with(normalize-space($code),'06')))" diagnostics="d-IBR-091">[IBR-091-OM] - When Invoice transaction type (BTOM-001) is Profit margin invoice (XXXXXXXXX1XXXXXXXXXX), Item classification identifier (IBT-158, listID='HS') MUST NOT start with '7101', '7102', '7103', '7104', '01' or '06'.</assert>
 
             
-            <assert id="IBR-057-OM" flag="fatal" role="fatal" test="not($isSummary)                   or (substring(cac:InvoicePeriod/cbc:StartDate,1,7)                       = substring(cac:InvoicePeriod/cbc:EndDate,1,7))" diagnostics="d-IBR-057">[IBR-057-OM] - Invoice line period start date (ibt-134) and Invoice line period end date (ibt-135) when provided must belong to the same calendar month.</assert>
+            <assert id="IBR-057-OM" flag="fatal" role="fatal" test="not($isSummary)                   or (substring(cac:InvoicePeriod/cbc:StartDate,1,7)                       = substring(cac:InvoicePeriod/cbc:EndDate,1,7))" diagnostics="d-IBR-057">[IBR-057-OM] - Invoice line period start date (IBT-134) and Invoice line period end date (IBT-135) when provided must belong to the same calendar month.</assert>
             
             <assert id="IBR-038-OM" flag="fatal" role="fatal" test="$isSimplified or $lineTaxAmount" diagnostics="d-IBR-038">[IBR-038-OM, IBR-068-OM] - An Invoice must contain line Item VAT Amount (BTOM-016) except where invoice transaction type (BTOM-001) is a simplified tax invoice (X1XXXXXXXXXXXXXXXXXX).</assert>
             
-            <assert id="IBR-072-OM" flag="fatal" role="fatal" test="not($isFullTax and $isSummary)                   or cac:InvoicePeriod/cbc:StartDate                      and cac:InvoicePeriod/cbc:EndDate" diagnostics="d-IBR-072">[IBR-072-OM] - Invoice line period start date (IBT-134) and Invoice line period end date (IBT-135) must be provided if where Invoice transaction type (BTOM-001) is a Full Tax Invoice AND summary invoice (XXXX1XXXXXXXXXXXXXXX).</assert>
+            <assert id="IBR-072-OM" flag="fatal" role="fatal" test="not($isFullTax and $isSummary)                   or cac:InvoicePeriod/cbc:StartDate                      and cac:InvoicePeriod/cbc:EndDate" diagnostics="d-IBR-072">[IBR-072-OM] - Invoice line period start date (IBT-134) and Invoice line period end date (IBT-135) must be provided when Invoice transaction type (BTOM-001) is a Full Tax Invoice AND Summary invoice (1XXX1XXXXXXXXXXXXXXX - both bit 1 and bit 5 set).</assert>
             
             <assert id="IBR-157-OM" flag="fatal" role="fatal" test="not(cac:Price/cac:AllowanceCharge/cbc:BaseAmount)                     or (                         cac:Price/cbc:PriceAmount castable as xs:decimal and                          cac:Price/cac:AllowanceCharge/cbc:BaseAmount castable as xs:decimal and                         u:slack(                             xs:decimal(cac:Price/cbc:PriceAmount),                             xs:decimal(                                 round(                                     (                                         xs:decimal(cac:Price/cac:AllowanceCharge/cbc:BaseAmount) -                                         sum(cac:Price/cac:AllowanceCharge/cbc:Amount/xs:decimal(.))                                     ) * 100                                 ) div 100                             ),                             0.01                         )                     )" diagnostics="d-IBR-157">
                 [IBR-157-OM] - Item net price (IBT-146) must be equal to (Item gross price (IBT-148) minus (-) Item price discount (IBT-147)) when item gross price is provided.</assert>
@@ -876,7 +720,7 @@
             
             <assert id="IBR-158-OM" flag="fatal" role="fatal" test="$isProfitMargin                         or (                             cac:ItemPriceExtension/cbc:Amount castable as xs:decimal                             and u:slack(                                 xs:decimal(cac:ItemPriceExtension/cbc:Amount),                                 xs:decimal(xs:decimal(cbc:LineExtensionAmount) + xs:decimal($lineTaxAmount)),                                 0.01                             )                         )" diagnostics="d-IBR-158">[IBR-158-OM] - Total amount including VAT (BTOM-017) must be the sum of Invoice line net amount (IBT-131) and Line Item VAT amount (BTOM-016) unless if Invoice transaction type (BTOM-001) is Profit margin invoice (XXXXXXXXX1XXXXXXXXXX) in which case Total amount including VAT (BTOM-017) must be the total sale value of the item.</assert>
             
-            <assert id="IBR-174-OM" flag="warning" role="warning" test="not(cac:Item/cbc:ItemClassificationCode)" diagnostics="d-IBR-174">[IBR-174-OM] - Item classification identifier (HS Code) (IBT-158) must be provided from the Harmonized System (HS) Code list published by the Royal Oman Police (Directorate General of Customs).</assert>
+            <assert id="IBR-174-OM" flag="fatal" role="fatal" test="not(cac:Item/cac:ItemSpecificationDocumentReference[cbc:ID/@schemeName='MP']/cbc:DocumentTypeCode='G')                       or cac:Item/cac:CommodityClassification/cbc:ItemClassificationCode[@listID='HS']" diagnostics="d-IBR-174">[IBR-174-OM] - Item classification identifier (HS Code) (IBT-158) should be provided from the Harmonized System (HS) Code list published by the Royal Oman Police (Directorate General of Customs) when Goods or Services identification (BTOM-019) is 'G' (Goods).</assert>
         </rule>
         
             
@@ -910,27 +754,27 @@
         </rule>
         
         <rule flag="fatal" role="fatal" context="cac:TaxCategory/cbc:TaxExemptionReasonCode | cac:ClassifiedTaxCategory/cbc:TaxExemptionReasonCode">
+            <let name="catCode" value="normalize-space(../cbc:ID)"/>
+            <let name="reason" value="normalize-space(.)"/>
             
-            <assert diagnostics="d-CL-05-10-OM" id="CL-05-10-OM" flag="fatal" role="fatal" test="((not(contains(normalize-space(.), ' ')) and contains(' VATZR-OM-01 VATZR-OM-02 VATZR-OM-03 VATZR-OM-04 VATZR-OM-05 VATZR-OM-06 VATZR-OM-07 VATZR-OM-08 VATZR-OM-09 VATZR-OM-10 VATZR-OM-11 VATZR-OM-12 VATZR-OM-13 VATZR-OM-14 VATZR-OM-15 VATZR-OM-16 VATEX-OM-01 VATEX-OM-02 VATEX-OM-03 VATEX-OM-04 VATEX-OM-05 VATEX-OM-06 VATEX-OM-07 VATEX-OM-08 VATEX-OM-09 VATEX-OM-10 VATEX-OM-11 VATEX-OM-12 ', concat(' ', normalize-space(.), ' '))))">[CL-05-OM, CL-10-OM, CL-70-OM, CL-75-OM, CL-80-OM, CL-85-OM, CL-90-OM, CL-95-OM] - VAT/TAX exemption reason code (IBT-121, IBT-186, IBT-196, IBT-198) - whether on a document-level allowance/charge, an invoice line, or a VAT breakdown - when category code is 'E' (Exempt) or 'Z' (Zero rated), MUST be coded using the Zero rating (VATZR-OM-*) or Exemption reason (VATEX-OM-*) codelists.</assert>
+            <assert diagnostics="d-CL-05-OM" id="CL-05-OM" flag="fatal" role="fatal" test="not($catCode = 'E')                       or (not(contains($reason, ' ')) and contains(' VATEX-OM-01 VATEX-OM-02 VATEX-OM-03 VATEX-OM-04 VATEX-OM-05 VATEX-OM-06 VATEX-OM-07 VATEX-OM-08 VATEX-OM-09 VATEX-OM-10 VATEX-OM-11 VATEX-OM-12 ', concat(' ', $reason, ' ')))">[CL-05-OM] - When VAT category code (IBT-118 / IBT-151 / IBT-095 / IBT-102 / IBT-192) is 'E' (Exempt), the VAT exemption reason code (IBT-121 / IBT-186 / IBT-196 / IBT-198) MUST be coded using the Exemption reason codelist (VATEX-OM-01..VATEX-OM-12).</assert>
+            
+            <assert diagnostics="d-CL-10-OM" id="CL-10-OM" flag="fatal" role="fatal" test="not($catCode = 'Z')                       or (not(contains($reason, ' ')) and contains(' VATZR-OM-01 VATZR-OM-02 VATZR-OM-03 VATZR-OM-04 VATZR-OM-05 VATZR-OM-06 VATZR-OM-07 VATZR-OM-08 VATZR-OM-09 VATZR-OM-10 VATZR-OM-11 VATZR-OM-12 VATZR-OM-13 VATZR-OM-14 VATZR-OM-15 VATZR-OM-16 ', concat(' ', $reason, ' ')))">[CL-10-OM] - When VAT category code (IBT-118 / IBT-151 / IBT-095 / IBT-102 / IBT-192) is 'Z' (Zero rated), the VAT exemption reason code (IBT-121 / IBT-186 / IBT-196 / IBT-198) MUST be coded using the Zero rating codelist (VATZR-OM-01..VATZR-OM-16).</assert>
         </rule>
         
         <rule flag="fatal" role="fatal" context="cac:AccountingSupplierParty/cac:Party/cac:PartyIdentification/cbc:ID[@schemeName] | cac:AccountingCustomerParty/cac:Party/cac:PartyIdentification/cbc:ID[@schemeName]">
             
-            <assert diagnostics="d-CL-06-OM" id="CL-06-OM" flag="fatal" role="fatal" test="((not(contains(normalize-space(@schemeName), ' ')) and contains(' CR TIN CID PASNUM OTHID ICID SZLN ', concat(' ', normalize-space(@schemeName), ' '))))">[CL-06-OM] - If provided, the value in the Buyer identifier (IBT-046) Scheme identifier (IBT-046-1) and Seller identifier (IBT-029) Scheme identifier (IBT-029-1) must be coded with Buyer/Seller Identifier codelist.</assert>
+            <assert diagnostics="d-CL-06-OM" id="CL-06-OM" flag="fatal" role="fatal" test="((not(contains(normalize-space(@schemeName), ' ')) and contains(' CR TIN CID PASNUM OTHID ICID SZLN ', concat(' ', normalize-space(@schemeName), ' '))))">[CL-06-OM] - If Seller identifier (IBT-029) or Buyer identifier (IBT-046) is provided, then the Seller identifier Scheme identifier (BTOM-015) and Buyer identifier Scheme identifier (BTOM-018) must be coded with the Buyer/Seller Identifier code list.</assert>
         </rule>
         
-        <rule flag="fatal" role="fatal" context="cac:Item/cac:CommodityClassification/cbc:NatureCode">
+        
+        <rule flag="fatal" role="fatal" context="cac:Item/cac:ItemSpecificationDocumentReference[cbc:ID/@schemeName='MP']/cbc:DocumentTypeCode">
             
-            <assert diagnostics="d-CL-07-OM" id="CL-07-OM" flag="fatal" role="fatal" test="((not(contains(normalize-space(.), ' ')) and contains(' G S ', concat(' ', normalize-space(.), ' '))))">[CL-07-OM] - Item Type (BTOM-019) must be provided from the codelist for Item type.</assert>
+            <assert diagnostics="d-CL-07-OM" id="CL-07-OM" flag="fatal" role="fatal" test="((not(contains(normalize-space(.), ' ')) and contains(' G S ', concat(' ', normalize-space(.), ' '))))">[CL-07-OM] - Goods or Services identification (BTOM-019) must be provided from the codelist for Item type.</assert>
         </rule>
         
-        <rule context="cac:Item/cac:CommodityClassification/cbc:ItemClassificationCode">
+        <rule context="cac:Item/cac:CommodityClassification/cbc:ItemClassificationCode[@listID='HS']">
             <let name="hsCode" value="normalize-space(.)"/>
-            
-            
-            
-            <let name="codesUNGM" value="' 64000000 70000000 71000000 72000000 73000000 76000000 77000000 78000000 80000000 81000000 82000000 83000000 84000000 85000000 86000000 90000000 91000000 92000000 93000000 94000000 '"/>
-
             
             
             
@@ -940,7 +784,7 @@
             <let name="codes04" value="' 220110100001 220110100002 220110109999 220110200001 220110200002 220110209999 220110300001 220110300002 220110309999 220190100002 220190100003 220190100004 220190109999 220190900001 220190900002 220190909999 220210120000 220210130001 220210130002 220210130003 220210130004 220210140001 220210140002 220210140003 220210140004 220210180001 220210180002 220210180003 220210180004 220210210001 220210210002 220210210003 220210210004 220210220001 220210220002 220210220003 220210220004 220210230001 220210230002 220210230003 220210230004 220210240000 220210250000 220210290001 220210290002 220210290003 220210290004 220210920001 220210920002 220210920003 220210920004 220210990000 220291000004 220291000005 220291000006 220291000007 220291000008 220291000009 220291000010 220291000011 220299130001 220299130002 220299130003 220299130004 220299190000 220299190901 220299230001 220299230002 220299230003 220299230004 220299290000 220299300001 220299300002 220299300003 220299300004 220299930001 220299930002 220299930003 220299930004 220299990000 220300000000 220410000000 220421000000 220422000000 220429000000 220430000000 220510000000 220590000000 220600100000 220600200000 220600900000 220710100000 220710900000 220720110000 220720190000 220720900000 220820000000 220830000000 220840000000 220850000000 220860000000 220870000000 220890110000 220890190001 220890199999 220890900000 220900110000 220900120000 220900130000 220900140000 220900190000 220900200000 230110000000 230120000000 230210100000 230210900000 230230100000 230230200000 230230900000 230240000000 230250100000 230250900000 230310100000 230310900000 230320100000 230320200000 230320900000 230330000000 230400100000 230400200000 230400300000 230400400000 230400900000 230500000000 230610000000 230620000000 230630000000 230641000000 230649000000 230650000000 230660000000 230690100000 230690900000 230700100000 230700200000 230800100000 230800200000 230800300000 230800400000 230800500000 230800900000 230910000000 230990110000 230990120000 230990200000 230990310000 230990390001 230990399999 230990400000 230990500000 230990910000 230990920000 230990930000 230990940001 230990949999 230990990000 240110100000 240110200000 240110300000 240110400000 240110900000 240120100000 240120200000 240120300000 240120400000 240120500000 240120900000 240130100000 240130910000 240130920000 240130990000 240210100000 240210200000 240220000000 240290100000 240290200000 240311000000 240319100000 240319200000 240319300000 240319400000 240319900000 240391000000 240399100000 240399210000 240399220000 240399290000 240399300000 240399400000 240399500000 240399900000 240411100000 240411900000 240412110000 240412120000 240412210000 240412220000 240412310000 240412320000 240419000000 240491100000 240491200000 240491300000 240491910000 240491990000 240492100000 240492910000 240492990000 240499100000 240499200000 240499300000 240499900000 250100100001 250100100002 250100100003 250100100004 250100100007 250100100008 250100100009 250100100010 250100100011 250100100012 250100100013 250100100014 250100100015 250100100016 250100210000 250100220000 250100290000 250100310000 250100320000 250100390000 250100410000 250100490000 250100900001 250100900002 250100900003 250100900004 250100900005 250100909999 250200000001 250200000002 250300000001 250300000002 250300000003 250300000004 250300000005 250300000006 250300000007 250300000008 250300000009 250300000010 250410000001 250410000002 250490000001 250490000002 250490000003 250510000001 250510000002 250510000003 250510000004 250590000001 250590000002 250590000003 250590000004 250590000005 250590009999 250610100000 250610900001 250610900002 250610900003 250610900004 250610909999 250620000001 250620000002 250620000003 250620000004 250700100001 250700100002 250700900001 250700900002 250700900003 250700900004 250700900005 250700909999 250810000001 250810000002 250810000003 250810009999 250830000001 250830000002 250840000001 250840000002 250840000003 250840000004 250850000001 250850000002 250850000003 250850000004 250850000005 250850000006 250860000001 250860000002 250870000001 250870000002 250870000003 250900100001 250900100002 250900900001 250900909999 251010000001 251010000002 251010000003 251020000001 251020000002 251020000003 251110000001 251110000002 251120000001 251120000002 251200000001 251200000002 251200000003 251200000004 251200000005 251200000006 251200009999 251310000001 251310000002 251320100001 251320100002 251320200001 251320200002 251320300001 251320300002 251320400001 251320400002 251320900001 251320909999 251400100000 251400900001 251400900002 251400900003 251400900004 251400909999 251511000001 251511000002 251511000003 251511000004 251512000001 251512000002 251512000003 251512000004 251520100001 251520100002 251520100003 251520100004 251520200001 251520200002 251520200003 251520200004 251611000001 251611000002 251611000003 251611000004 251612000001 251612000002 251612000003 251612000004 251620000001 251620000002 251620000003 251690100001 251690100002 251690100003 251690100004 251690100005 251690100006 251690100007 251690100008 251690100009 251690100010 251690100011 251690100012 251690200000 251710000001 251710000002 251710000003 251710000004 251710000005 251710000006 251710000007 251710000008 251710000009 251710000010 251710009999 251720000001 251720000002 251730000001 251730000002 251741000001 251741000002 251749000001 251749000002 251749000003 251749000004 251749000005 251749000006 251749000007 251749000008 251749000009 251810100001 251810100002 251810100003 251810100004 251810200001 251810200002 251810200003 251810200004 251820100001 251820100002 251820100003 251820100004 251820200001 251820200002 251820200003 251820200004 251910000000 251990100001 251990100002 251990900001 251990900002 251990900003 251990909999 252010100001 252010100002 252010200001 252010200002 252020100000 252020900001 252020900002 252020900003 252020909999 252100000001 252100000002 252100000003 252100000004 252100000005 252100000901 252100000902 252100000904 252100000905 252100000906 252100000907 252100000908 252100000910 252100000911 252100000913 252100000914 252100000915 252210000001 252210000002 252210000901 252210000902 252210000903 252210000904 252220000001 252220000002 252220000901 252220000902 252220000903 252220000904 252230000001 252230000002 252310000001 252310000002 252310000003 252310000004 252321000001 252321000002 252321000003 252321000004 252329100001 252329100002 252329200001 252329200002 252329900000 252330000001 252330000002 252390000001 252390000002 252390000003 252390000004 252410000000 252490100000 252490200000 252490300000 252490400000 252490900000 252510000001 252510000002 252520000000 252530000000 252610100001 252610100002 252610100003 252610200001 252610200002 252620100001 252620100002 252620100003 252620200001 252620200002 252800000001 252800000002 252800000003 252910000000 252921000000 252922000000 252930000001 252930000002 253010000001 253010000002 253010000003 253010000004 253020000001 253020000002 253090110000 253090190001 253090190002 253090199999 253090200000 253090300000 253090400001 253090400002 253090400003 253090400004 253090409999 253090500000 253090900001 253090900002 253090900003 253090900004 253090900005 253090900006 253090900007 253090900008 253090900009 253090900010 253090900011 253090900012 253090900013 253090900014 253090900015 253090900016 253090900017 253090900018 253090900019 253090900020 253090900021 253090909999 260111000001 260111000002 260111000003 260111000004 260111000005 260111000006 260111000007 260111000008 260111000009 260111000010 260111000011 260111000012 260111009999 260112000001 260112000002 260112000003 260112000004 260112000005 260112000006 260112000007 260112000008 260112000009 260112000010 260112000011 260112000012 260112009999 260120000001 260120000002 260120000003 260120000004 260200000001 260200000002 260200000003 260200000004 260200000005 260200000006 260200000007 260200000008 260200000009 260200000010 260200000011 260200000012 260200000013 260200000014 260300000001 260300000002 260300000003 260300000004 260300000005 260300000006 260300000007 260300000008 260300000009 260300000010 260300000011 260300000012 260300000013 260300000014 260300000015 260300000016 260300000017 260300000018 260300000019 260300000020 260300000021 260300000022 260300000023 260300000024 260300000025 260300000026 260300000027 260300000028 260400000001 260400000002 260400000003 260400000004 260400000005 260400000006 260400000007 260400000008 260500000001 260500000002 260500000003 260500000004 260500000005 260500000006 260500000007 260500000008 260600000001 260600000002 260600000003 260600000004 260700000001 260700000002 260700000003 260700000004 260700000005 260700000006 260700000007 260700000008 260800000001 260800000002 260800000003 260800000004 260800000005 260800000006 260800000007 260800000008 260900000001 260900000002 260900000003 260900000004 261000000001 261000000002 261100000001 261100000002 261100000003 261100000004 261100000005 261100000006 261100000007 261100000008 261210000001 261210000002 261210000003 261210000004 261210000005 261210000006 261210000008 261210000009 261210000010 261210000011 261210000012 261210000013 261210000014 261210000015 261210000016 261210000017 261210000018 261210000019 261210000020 261210000021 261210000022 261210009999 261220000001 261220000002 261220000003 261220000004 261220009999 261310000001 261310000002 261310000003 261310000004 261310000005 261390000001 261390000002 261390000003 261390000004 261390009999 261400000001 261400000002 261400000003 261400000004 261510000001 261510000002 261510000003 261510000004 261590000001 261590000002 261590000003 261590000004 261590000005 261590000006 261590000007 261590000008 261590000009 261590000010 261590000011 261590000012 261590009999 261610000001 261610000002 261610000003 261610000004 261610000005 261610000006 261610000007 261610000008 261610000009 261610000010 261610000011 261610000012 261610000013 261610000014 261690000001 261690000002 261690000003 261690000004 261690000005 261690000006 261690000007 261690000008 261690000009 261690000010 261710000001 261710000002 261710000003 261710000004 261710000005 261710000006 261710000007 261710000008 261710000009 261710000010 261790000001 261790000002 261790000003 261790000004 261790000005 261790000006 261790000007 261790000008 261790000009 261790000010 261790000011 261790000012 261790000013 261790000014 261790009999 261800000001 261800000002 261800000003 261900000001 261900000002 261900000003 261900000004 261900000005 261900000006 261900000007 261900000008 261900000009 262011000000 262019000001 262019000002 262019000003 262019000004 262019000005 262019000006 262019009999 262021000001 262021000002 262029000001 262029000002 262029009999 262030000000 262040000000 262060000001 262060000002 262060000003 262091000001 262091000002 262091000003 262091000004 262091000005 262099000001 262099000002 262099000003 262099000004 262099009999 262110000000 262190000001 262190000002 262190000003 262190000004 262190000005 262190000006 262190009999 '"/>
             <let name="codes05" value="' 270111000001 270111000002 270111000003 270111000004 270112000001 270112000002 270119000001 270119000002 270119000003 270119000004 270119000005 270119000006 270119000007 270119000008 270120000001 270120000002 270120000003 270120000004 270120000005 270120000006 270120000007 270120000008 270120000009 270210000001 270210000003 270210000004 270220000001 270220000002 270220000003 270220000004 270300100001 270300100002 270300100003 270300100004 270300900001 270300900002 270300900003 270300900004 270300900005 270300900006 270300900007 270300900008 270300909999 270400100001 270400100002 270400100003 270400100004 270400100005 270400100006 270400100007 270400100008 270400100009 270400100010 270400100011 270400100012 270400200001 270400200002 270400200003 270400200004 270500000001 270500000002 270500000003 270500000004 270500009999 270600000001 270600000002 270600000003 270600000004 270600000005 270600000006 270600000007 270600000008 270600000009 270600000010 270600000011 270600000012 270600000013 270600000014 270600000015 270600000016 270600000017 270600000018 270600000019 270600000020 270600000021 270600000022 270600000023 270600009999 270710000001 270710000002 270710000003 270710000004 270720000000 270730000000 270740000001 270740000002 270740000003 270740000004 270750000000 270791000000 270799000001 270799009999 270810000001 270810000002 270810000003 270820000001 270820000002 270820000003 270900000001 270900000002 270900000003 270900009999 271012110000 271012120000 271012130000 271012140000 271012190002 271012190003 271012190004 271012190005 271012190006 271012190007 271012199999 271012210001 271012210002 271012210003 271012219999 271012220000 271012230000 271012290001 271012290002 271012290004 271012290005 271012299999 271012310000 271012320000 271012330000 271012390002 271012399999 271012410001 271012410002 271012419999 271012420001 271012420002 271012429999 271012490001 271012490002 271012499999 271019110001 271019110002 271019110003 271019110004 271019110005 271019110006 271019110007 271019110008 271019110009 271019110010 271019110011 271019110012 271019110013 271019110014 271019110015 271019119999 271019120001 271019120002 271019120003 271019120004 271019120005 271019120006 271019120007 271019120008 271019120009 271019129999 271019130001 271019130002 271019130003 271019130004 271019130005 271019130006 271019130007 271019130008 271019130009 271019130010 271019130011 271019130012 271019130013 271019130014 271019130015 271019130016 271019130017 271019130018 271019139999 271019140001 271019140002 271019149999 271019150001 271019150002 271019190001 271019190002 271019199999 271019910001 271019910002 271019920001 271019920002 271019920003 271019920004 271019920005 271019920006 271019920007 271019930001 271019930002 271019940000 271019950001 271019950002 271019950003 271019950004 271019950005 271019950006 271019950007 271019950008 271019950009 271019950010 271019950011 271019950012 271019960001 271019960002 271019960003 271019970001 271019970002 271019970003 271019979999 271019980001 271019980002 271019980003 271019980004 271019980005 271019989999 271019990001 271019990002 271019990003 271019990004 271019999999 271020000000 271091100000 271091200000 271091900000 271099000001 271099009999 271111000000 271112000000 271113000000 271114000001 271114000002 271114000003 271114000004 271119000001 271119000002 271119000003 271119000004 271119009999 271121000000 271129000000 271210000000 271220100000 271220200000 271220900001 271220909999 271290000001 271290000002 271290000003 271290000004 271290009999 271311000000 271312000001 271312000002 271312000003 271312000004 271312000005 271312000006 271320000000 271390000001 271390000002 271390000003 271390000004 271390000005 271390009999 271410000001 271410000002 271410000003 271490100001 271490100002 271490900001 271490900002 271490900003 271490900004 271490900005 271490909999 271500000001 271500000002 271500000003 271500000004 271500000005 271500000007 271500000008 271500009999 271600000000 280110000000 280120000000 280130100000 280130200000 280200100000 280200200000 280300000000 280410000000 280410000901 280421000000 280429100000 280429100901 280429200000 280429900001 280429900002 280429909999 280430000000 280440000001 280440009999 280450000001 280450000002 280461000000 280469000000 280470000000 280480000000 280490000000 280511000000 280512000001 280512009999 280519100000 280519200000 280519900001 280519900002 280519900003 280519909999 280530000001 280530000002 280530000003 280530009999 280540000000 280610000000 280620000000 280700100000 280700200000 280800100000 280800200000 280910000000 280920100000 280920200000 281000100000 281000200000 281111000000 281112000000 281119200000 281119900001 281119900002 281119900003 281119900004 281119900005 281119900006 281119900007 281119900008 281119909999 281121000000 281121000901 281122000000 281129100001 281129100002 281129900001 281129900002 281129900003 281129900901 281129909999 281211000000 281212000000 281213000000 281214000000 281215000000 281216000000 281217000000 281219100000 281219900001 281219900002 281219909999 281290000001 281290000002 281290000003 281290000004 281290000005 281290000006 281290009999 281310000000 281390000001 281390000002 281390009999 281410000000 281420000000 281511000000 281512000000 281520000000 281530000001 281530000002 281610000001 281610000002 281640000001 281640000002 281640000003 281640000004 281640000005 281640000006 281700100000 281700200000 281810000000 281820000000 281830000000 281910000000 281990000001 281990009999 282010000000 282090000001 282090000002 282090009999 282110100000 282110900000 282120000000 282200000001 282200000002 282200000003 282200000004 282200009999 282300000001 282300000002 282300009999 282410000000 282490900001 282490909999 282510000001 282510000002 282510000003 282510000004 282520000001 282520000002 282530000001 282530000002 282540000001 282540000002 282550100000 282550200000 282560000001 282560000002 282570000001 282570000002 282580000000 282590100000 282590900001 282590900002 282590900003 282590909999 282612000000 282619000001 282619000002 282619000003 282619000004 282619009999 282630000000 282690000001 282690000002 282690000003 282690000004 282690009999 282710000000 282720000000 282731000000 282732000000 282735000000 282739900001 282739900002 282739900003 282739900004 282739900005 282739909999 282741000001 282741000002 282741000004 282741000006 282741000008 282749000001 282749000002 282749000003 282749009999 282751000001 282751000002 282759000000 282760000001 282760000002 282760000003 282760000004 282760009999 282810000001 282810000002 282890100000 282890200000 282890300001 282890300002 282890400000 282890900001 282890909999 282911000000 282919100000 282919200000 282919300000 282919400000 282919500000 282919600000 282919700000 282919800000 282919900000 282990110000 282990120000 282990130000 282990190001 282990190002 282990199999 282990210000 282990290001 282990290002 282990290003 282990290004 282990290005 282990299999 282990300001 282990300002 282990300003 282990309999 283010000000 283090000001 283090000002 283090000003 283090000004 283090000005 283090000006 283090000007 283090000008 283090000009 283090000010 283090000011 283090000012 283090000013 283090000014 283090000015 283090000016 283090009999 283110000000 283190000001 283190000002 283190000003 283190009999 283210000000 283220000001 283220000002 283220000003 283220000004 283220009999 283230100000 283230200000 283230900001 283230900002 283230900003 283230909999 283311000000 283319000000 283321000000 283322000000 283324000000 283325000000 283327000000 283329900001 283329900002 283329909999 283330000001 283330000002 283330000003 283330009999 283340000001 283340000002 283340000003 283340009999 283410900001 283410909999 283421000000 283429900001 283429900002 283429900003 283429900004 283429900005 283429900006 283429900007 283429900008 283429909999 283510000001 283510000002 283522000001 283522000002 283524000000 283525000000 283526000000 283529900001 283529900002 283529900003 283529909999 283531000000 283539900001 283539909999 283620000000 283630000000 283640000001 283640000002 283650000000 283660000000 283691000000 283692000000 283699200000 283699300000 283699400000 283699910000 283699990000 283711000000 283719000001 283719000002 283719000003 283719000004 283719009999 283720100000 283720200000 283720300000 283720400000 283720900000 283911000000 283919000001 283919000002 283919000003 283919000004 283919000005 283919009999 283990000001 283990000002 283990009999 284011000000 284019000001 284019009999 284020000001 284020000002 284020000003 284020000004 284020009999 284030000001 284030000002 284030000003 284030000004 284030009999 284130000000 284150200000 284150300000 284150400000 284150500000 284161000000 284169000001 284169009999 284170900001 284170909999 284180000001 284180000002 284180000003 284190900001 284190900002 284190900003 284190909999 284210000000 284290000001 284290000002 284290000003 284290009999 284310000001 284310000002 284310000003 284321000000 284329900001 284329900002 284329900003 284329909999 284330000001 284330000002 284330000003 284330000004 284390000001 284390000002 284390000003 284390000004 284390000005 284390000006 284390000007 284390009999 284410110000 284410120000 284410190000 284410900000 284420110000 284420190000 284420900000 284430110000 284430190000 284430900000 284441110000 284441190000 284441900000 284442110000 284442190000 284442900000 284443110001 284443119999 284443190001 284443199999 284443900001 284443900002 284443909999 284444110000 284444190000 284444900001 284444909999 284450000000 284510000000 284520000000 284530000000 284540000000 284590000001 284590009999 284610000001 284610000002 284610000003 284690000001 284690000002 284690009999 284700000000 284910000000 284920000000 284990100001 284990109999 284990900001 284990900002 284990900003 284990900004 284990909999 285000110000 285000120000 285000190000 285000200000 285000300001 285000300002 285000300003 285000300004 285000300005 285000300006 285000300007 285000300008 285000300009 285000300010 285000300011 285000300013 285000300014 285000309999 285000400001 285000400002 285000400003 285000400004 285000400005 285000409999 285000500001 285000500002 285000500003 285000500004 285000500005 285000500006 285000509999 285290100000 285290200000 285290300000 285290900000 '"/>
             <let name="codes06" value="' 290110100000 290110200000 290110300000 290110400000 290110500000 290110600000 290110900000 290121000000 290122000000 290123000000 290124000000 290129100000 290129200000 290129300000 290129400000 290129500000 290129600000 290129900001 290129900002 290129900003 290129900004 290129900005 290129900006 290129900007 290129900008 290129900009 290129900010 290129900011 290129900012 290129909999 290211000000 290219000000 290220000000 290230000000 290241000000 290242000000 290243000000 290244000000 290250000000 290260000000 290270000000 290290100000 290290200000 290290900000 290311000001 290311000002 290312000000 290313000000 290314000000 290315000000 290319100000 290319900001 290319900002 290319909999 290321000000 290322000000 290323000000 290329000000 290341000000 290342000000 290343000001 290343000002 290344000001 290344000002 290345000000 290346000001 290346000002 290347000000 290348000001 290348000002 290349000000 290351000001 290351000002 290359100000 290359900000 290361000000 290362000000 290369000000 290371000000 290372000000 290373000000 290374000000 290375000000 290376000001 290376000002 290376000003 290377100000 290377200000 290377300000 290377400000 290377500000 290377600000 290377700000 290377800000 290377910000 290377920000 290377930000 290377940000 290377950000 290377990003 290377990005 290377999999 290378000000 290379100000 290379200000 290379300000 290379400000 290379900001 290379909999 290381000000 290382000000 290383000000 290389100000 290389900001 290389900002 290389909999 290391000001 290391000002 290391000003 290392000001 290392000002 290393000000 290394000000 290399000001 290399000002 290399000003 290399000004 290399009999 290410000000 290420110000 290420120000 290420130000 290420140000 290420200001 290420200002 290420900001 290420900002 290420900003 290420900004 290420900005 290420900006 290420900007 290420900008 290420900009 290420900010 290420900011 290420900012 290420900013 290420909999 290431000000 290432000000 290433000000 290434000000 290435000000 290436000000 290491000000 290499000000 290511000000 290512000001 290512000002 290513000000 290514000000 290516000000 290517000000 290519100000 290519200000 290519900001 290519900002 290519900003 290519909999 290522000000 290529000001 290529000002 290529000003 290529009999 290531000000 290532000000 290539000001 290539000002 290539000003 290539009999 290541000000 290542000000 290543000000 290544000000 290545000000 290549100000 290549200000 290549300000 290549400000 290549900000 290551000000 290551000901 290559000001 290559009999 290611000000 290612000000 290613000000 290619000001 290619009999 290621000000 290629000001 290629000002 290629009999 290711100000 290711200000 290711900001 290711900002 290711900003 290711909999 290712000000 290713000000 290715000000 290719000000 290721000000 290722000000 290723000000 290729000001 290729000002 290729000003 290729000004 290729009999 290811000000 290819000001 290819000002 290819009999 290891000000 290892000000 290899100000 290899200000 290899900001 290899900002 290899909999 290911000000 290919100000 290919910000 290919920000 290919930000 290919940000 290919990000 290920000000 290930100000 290930900000 290941000000 290943000000 290944000000 290949000000 290950000000 290960100000 290960900000 291010000000 291020000000 291030000000 291040000000 291050000000 291090000001 291090009999 291100000001 291100000002 291100000003 291100009999 291211000000 291212000000 291219000001 291219000002 291219000003 291219000004 291219000005 291219000006 291219000007 291219000008 291219000009 291219000010 291219000011 291219009999 291221000000 291229000001 291229000002 291229000003 291229000004 291229009999 291241000000 291242000000 291249000001 291249000002 291249000003 291249000004 291249009999 291250000000 291260000000 291300000000 291411000000 291412000000 291413000000 291419000001 291419009999 291422000001 291422000002 291423000001 291423000002 291429000000 291431000000 291439000001 291439000002 291439000003 291439000004 291439000005 291439000006 291439000007 291439000008 291439009999 291440000001 291440000002 291450000000 291461000000 291462000000 291469000001 291469000002 291469000003 291469009999 291471000000 291479000001 291479009999 291511000000 291512000001 291512000002 291512000003 291512000004 291512009999 291513000001 291513000002 291513000003 291513000004 291513000005 291513009999 291521100000 291521200000 291524000000 291529000001 291529000002 291529000003 291529000004 291529000005 291529000006 291529000007 291529000008 291529000009 291529000010 291529000011 291529009999 291531000000 291532000000 291533000000 291536000000 291539000001 291539000002 291539000003 291539000004 291539000005 291539000006 291539000007 291539009999 291540000001 291540000002 291540000003 291550000000 291560000001 291560000002 291570110000 291570190000 291570900001 291570900002 291570900003 291570900004 291570900005 291570909999 291590000001 291590000002 291590000003 291590000004 291590000005 291590000006 291590009999 291611000000 291612000000 291613000000 291614000000 291615000001 291615000002 291615000003 291616000000 291619000001 291619000002 291619009999 291620000000 291631100000 291631200001 291631200002 291631200003 291631200004 291631209999 291632000001 291632000002 291634000000 291639000001 291639000002 291639000003 291639000004 291639000005 291639000006 291639000007 291639000008 291639000009 291639000010 291639000011 291639000012 291639000013 291639009999 291711000001 291711000002 291711000003 291711000004 291711000005 291711009999 291712000000 291713000001 291713000002 291714000000 291719000001 291719000002 291719000003 291719009999 291720000000 291732000000 291733000000 291734000000 291735000000 291736000000 291737000000 291739100000 291739900001 291739900002 291739909999 291811000001 291811000002 291811000003 291811000004 291811000005 291811000006 291811000007 291811000008 291811000009 291811000010 291811009999 291812000000 291813000001 291813000002 291813000003 291813000004 291813000005 291813000006 291813000007 291813000008 291813000009 291813000010 291813009999 291814000000 291815100000 291815200000 291815300000 291815900001 291815900002 291815900003 291815900004 291815900005 291815900006 291815909999 291816000001 291816000002 291816009999 291817000000 291818000000 291819000001 291819000002 291819000003 291819000004 291819009999 291821000001 291821000002 291821000003 291821009999 291822000000 291823000001 291823000002 291823000003 291823000004 291823000005 291823000006 291823000007 291823000008 291823009999 291829000001 291829000002 291829000003 291829000004 291829000005 291829000006 291829000007 291829000008 291829000009 291829000010 291829000011 291829000012 291829000013 291829009999 291830100000 291830200000 291830300000 291830400000 291830900000 291891000000 291899100000 291899900001 291899900002 291899900003 291899900004 291899900005 291899900006 291899900007 291899900008 291899900009 291899900010 291899900011 291899909999 291910000000 291990000001 291990000002 291990000003 291990000004 291990000005 291990009999 292011000000 292019000001 292019009999 292021000000 292022000000 292023000000 292024000000 292029000000 292030000000 292090500000 292090600000 292090700000 292090910000 292090990000 292111000001 292111000002 292111000003 292112000000 292113000000 292114000000 292119100000 292119200000 292119200901 292119300000 292119400000 292119520000 292119540000 292119590001 292119599999 292119910000 292119990000 292121000000 292122000000 292129000001 292129009999 292130000000 292141000000 292142000001 292142000901 292142000002 292142000003 292142000004 292142009999 292143000000 292144000000 292145000000 292146000001 292146000002 292146000003 292146000004 292146000005 292146000006 292146000007 292146000008 292146000009 292146000901 292146000902 292146000903 292146000904 292146000905 292146000906 292146000907 292146000908 292149000000 292149000901 292151000000 292159000001 292159000002 292159000003 292159000004 292159009999 292211000000 292212000000 292214000000 292214000901 292215000000 292216000000 292217100000 292217200000 292218000000 292219110000 292219120000 292219190000 292219500000 292219900000 292221000000 292229000001 292229000002 292229009999 292231000000 292231000901 292239000000 292241000000 292242000000 292243000000 292244000000 292244000901 292249000000 292250000001 292250000002 292250009999 292310000000 292320000000 292330000000 292340000000 292390000001 292390000002 292390000003 292390000004 292390009999 292411000000 292411000901 292412000000 292419000001 292419000002 292419000003 292419009999 292421000000 292423000000 292424000000 292424000901 292425000000 292429100000 292429200000 292429300000 292429400000 292429500000 292429900000 292511000000 292512000000 292512000901 292519000000 292521000000 292529110000 292529120000 292529130000 292529140000 292529190000 292529200000 292529300000 292529400000 292529900000 292610000000 292620000000 292630000000 292640000000 292690100000 292690900001 292690900002 292690900003 292690900004 292690900005 292690900006 292690900007 292690900008 292690900009 292690909999 292700000001 292700000002 292700000003 292700000004 292700000005 292700000006 292700000007 292700000008 292700000009 292700000010 292700000011 292700000012 292700000013 292700000014 292700000015 292700000016 292700000017 292700000018 292700000019 292700000020 292700000021 292700009999 292800000001 292800000002 292800000003 292800000004 292800000005 292800000006 292800000007 292800000008 292800000009 292800000010 292800000011 292800000012 292800000013 292800000014 292800000015 292800000016 292800000017 292800000018 292800000019 292800000020 292800000021 292800000022 292800000023 292800000024 292800000025 292800009999 292910000000 292990110000 292990190000 292990200000 292990300000 292990400000 292990900001 292990900002 292990909999 293010000000 293020000001 293020000002 293030000000 293040000000 293060000000 293070000000 293080000000 293090110000 293090120000 293090190001 293090199999 293090210000 293090220000 293090230000 293090240000 293090250000 293090260000 293090270000 293090290000 293090310000 293090320000 293090390000 293090410000 293090420000 293090430000 293090440000 293090490000 293090510000 293090590000 293090610000 293090620000 293090690000 293090720000 293090730000 293090790000 293090910000 293090920000 293090930000 293090940000 293090950000 293090960000 293090970000 293090990000 293110100000 293110200000 293120000000 293141000000 293142000000 293143000000 293144000000 293145000000 293146000000 293147000000 293148000000 293149100000 293149300000 293149400000 293149710000 293149720000 293149730000 293149740000 293149790000 293149910000 293149920000 293149990000 293151000000 293152000000 293153000000 293154000000 293159100001 293159100002 293159100003 293159100004 293159100005 293159100006 293159100007 293159100008 293159100009 293159109999 293159210000 293159220000 293159230000 293159240000 293159290000 293190510000 293190520000 293190530000 293190590000 293190900000 293211000000 293212000000 293213000001 293213000002 293214000000 293219000000 293220100000 293220200000 293220900000 293291000000 293292100000 293292900001 293292909999 293293000000 293294000000 293295000000 293295000901 293296000000 293299000001 293299000002 293299000003 293299000004 293299000005 293299000006 293299000007 293299000008 293299000009 293299000010 293299000011 293299000012 293299000013 293299000014 293299000015 293299009999 293311000000 293311000901 293319000000 293321000001 293321000002 293321000003 293321000004 293321009999 293329000000 293331000000 293332000000 293333000000 293333000901 293334000000 293334000901 293335000000 293336000000 293337000000 293339100000 293339200000 293339300000 293339900001 293339900002 293339900003 293339900004 293339909999 293341000000 293341000901 293349000000 293352000000 293353000001 293353000901 293353000002 293353000003 293353000004 293353000005 293353000006 293353000007 293353000008 293353000009 293353000010 293353000011 293353000012 293354000000 293354000901 293355000001 293355000901 293355000002 293355000003 293355000004 293359000000 293359000901 293361000000 293369000000 293371000000 293372000001 293372000901 293372000002 293379000000 293379000901 293391000001 293391000901 293391000002 293391000003 293391000004 293391000005 293391000006 293391000007 293391000008 293391000009 293391000010 293391000011 293391000012 293391000013 293391000014 293391000015 293391000016 293391000017 293391000018 293391000019 293391000020 293391000021 293391000022 293391000023 293391000024 293391000025 293391000026 293391000027 293391000028 293392000000 293392000901 293399100001 293399100002 293399100003 293399910000 293399920000 293399990000 293410000000 293410000901 293420000000 293420000901 293430000000 293430000901 293491000001 293491000901 293491000002 293491000003 293491000004 293491000005 293491000006 293491000007 293491000008 293491000009 293491000010 293491000011 293491000012 293491000013 293492000000 293492000901 293499100000 293499910000 293499100901 293499920000 293499920901 293499930000 293499930901 293499990000 293499990901 293510000000 293520000000 293530000000 293540000000 293550000000 293590000000 293621000901 293621000902 293622100901 293622100902 293622900901 293622900902 293623000901 293623000902 293624100901 293624100902 293624900901 293624900902 293625100901 293625100902 293625900901 293625900902 293626000901 293626000902 293627000901 293627000902 293628000901 293628000902 293629100901 293629100902 293629200901 293629200902 293629300901 293629300902 293629400901 293629400902 293629500901 293629500902 293629600901 293629600902 293629700901 293629700902 293629910000 293629990000 293629990901 293629990902 293690000000 293690000901 293690000902 293711000000 293712000000 293719000000 293721000001 293721000002 293721000003 293721000004 293722000000 293723000001 293723000002 293729000000 293750000001 293750000002 293790000000 293810000000 293810000901 293890000001 293890000901 293890009999 293911000001 293911000002 293911000003 293911009999 293919000001 293919000002 293919000003 293919000004 293919000005 293919000006 293919009999 293920000001 293920000002 293920009999 293930000000 293941000000 293942000000 293943000000 293944000000 293945000000 293945000901 293949000000 293951000000 293959000001 293959009999 293959009001 293961000000 293962000000 293963000000 293969000000 293972100000 293972200000 293972900000 293979000000 293980100000 293980100901 293980200000 293980200901 293980900000 293980900901 294000000001 294000000002 294000000003 294000000004 294000000005 294000000006 294000000007 294000000008 294000000009 294000000010 294000000011 294000009999 294110000001 294110000002 294110000003 294110000004 294110009999 294120000001 294120000901 294120000002 294120000902 294120000003 294120000903 294120009999 294130000001 294130000002 294130000003 294130009999 294140000001 294140000002 294140000003 294140009999 294150000001 294150000002 294150000003 294150000004 294150000005 294150009999 294190000001 294190000002 294190000003 294190000004 294190000005 294190000006 294190009999 294200000001 294200000002 294200000003 294200000004 294200009999 '"/>
-            <let name="codes07" value="' 300120100000 300120200000 300190110000 300190120000 300190130000 300190190000 300190210000 300190290000 300190310000 300190390000 300190900000 300212100000 300212200000 300212910000 300212990000 300213100000 300213200000 300214100000 300214200000 300215100000 300215900000 300241000000 300242000000 300249200001 300249200002 300249200003 300249200004 300249200005 300249200006 300249200007 300249200008 300249200009 300249200010 300249200011 300249200012 300249200013 300249200014 300249200015 300249200016 300249200017 300249200018 300249200019 300249200020 300249200021 300249200022 300249200023 300249200024 300249200025 300249200026 300249200027 300249200028 300249200029 300249200030 300249200031 300249200032 300249200033 300249200034 300249200035 300249200036 300249200037 300249200038 300249200039 300249300001 300249300002 300249300003 300249300004 300249400001 300249400002 300249400003 300249400004 300249400005 300249400006 300249400007 300249400008 300249400009 300249400010 300249400011 300249400012 300249400013 300249400014 300249400015 300249500001 300249500002 300249500003 300249500004 300249500005 300249500006 300249500007 300249500008 300249500009 300249500010 300249500011 300249500012 300249500013 300249600001 300249600002 300249900001 300249900002 300249909999 300251100000 300251200000 300259100000 300259200000 300290000001 300290000002 300290009999 300310000001 300310000002 300310000003 300310000004 300320000001 300320000002 300331100000 300331200000 300339000001 300339000002 300339000003 300339000004 300339000005 300339000006 300339000007 300339000008 300339000009 300339000010 300339000011 300339000012 300339009999 300341100000 300341200000 300342100000 300342200000 300343100000 300343200000 300349100000 300349200000 300360000000 300390000001 300390000002 300410000001 300410000002 300410000003 300410000004 300420000001 300420000002 300431110000 300431120000 300431210000 300431220000 300432100000 300432200000 300439000001 300439000002 300439000003 300439000004 300439000005 300439000006 300439000007 300439000008 300439000009 300439000010 300439000011 300439000012 300439009999 300441100000 300441200000 300442100000 300442200000 300443100000 300443200000 300449100000 300449200000 300450000001 300450000002 300460100000 300460200000 300490110001 300490119999 300490120000 300490910001 300490910002 300490919999 300490920000 300510000000 300590100000 300590210000 300590220001 300590229999 300590900000 300610100000 300610200000 300610300000 300610400000 300630000000 300640100000 300640900000 300650000000 300660100000 300660200000 300670100000 300670200000 300691100000 300691200000 300692000000 300693100000 300693210000 300693220000 '"/>
+            <let name="codes07" value="' 300120100000 300120200000 300190110000 300190120000 300190130000 300190190000 300190210000 300190290000 300190310000 300190390000 300190900000 300212100000 300212200000 300212910000 300212990000 300213100000 300213200000 300214100000 300214200000 300215100000 300215900000 300241000000 300242000000 300249200001 300249200002 300249200003 300249200004 300249200005 300249200006 300249200007 300249200008 300249200009 300249200010 300249200011 300249200012 300249200013 300249200014 300249200015 300249200016 300249200017 300249200018 300249200019 300249200020 300249200021 300249200022 300249200023 300249200024 300249200025 300249200026 300249200027 300249200028 300249200029 300249200030 300249200031 300249200032 300249200033 300249200034 300249200035 300249200036 300249200037 300249200038 300249200039 300249300001 300249300002 300249300003 300249300004 300249400001 300249400002 300249400003 300249400004 300249400005 300249400006 300249400007 300249400008 300249400009 300249400010 300249400011 300249400012 300249400013 300249400014 300249400015 300249500001 300249500002 300249500003 300249500004 300249500005 300249500006 300249500007 300249500008 300249500009 300249500010 300249500011 300249500012 300249500013 300249600001 300249600002 300249900001 300249900002 300249909999 300251100000 300251200000 300259100000 300259200000 300290000001 300290000002 300290009999 300310000001 300310000002 300310000003 300310000004 300320000001 300320000002 300331100000 300331200000 300339000001 300339000002 300339000003 300339000004 300339000005 300339000006 300339000007 300339000008 300339000009 300339000010 300339000011 300339000012 300339009999 300341100000 300341200000 300342100000 300342200000 300343100000 300343200000 300349100000 300349200000 300360000000 300390000001 300390000002 300410000001 300410000002 300410000003 300410000004 300420000001 300420000002 300431110000 300431120000 300431210000 300431220000 300432100000 300432200000 300439000001 300439000002 300439000003 300439000004 300439000005 300439000006 300439000007 300439000008 300439000009 300439000010 300439000011 300439000012 300439009999 300441100000 300441200000 300442100000 300442200000 300443100000 300443200000 300449100000 300449200000 300450000001 300450000002 300460100000 300460200000 300490110001 300490119999 300490120000 300490910001 300490910002 300490919999 300490920000 300510000000 300590100000 300590210000 300590220001 300590229999 300590900000 300610100000 300610200000 300610300000 300610400000 300630000000 300640100000 300640900000 300650000000 300660100000 300660200000 300670100000 300670200000 300691100000 300691200000 300692000000 300693100000 300693210000 300693220000 000000000000 '"/>
             <let name="codes08" value="' 310100000001 310100000003 310100000005 310100000006 310100000009 310210100000 310210200000 310210300000 310221100000 310221200000 310221900000 310229100000 310229900000 310230100000 310230900000 310240100000 310240900000 310250100000 310250900000 310260100000 310260900000 310280100000 310280900000 310290000001 310290000002 310290000003 310290009999 310311000000 310319000000 310390100000 310390200000 310390300000 310390400000 310390900001 310390909999 310420000001 310420000002 310430000001 310430000002 310490110000 310490190000 310490310000 310490390000 310490410000 310490490000 310510000001 310510000002 310510000003 310510009999 310520000000 310530100000 310530200000 310540000001 310540000002 310551000000 310559000002 310559000003 310559000004 310560000000 310590000001 310590000002 310590000003 310590009999 320110000000 320120000000 320190000000 320210000000 320290000001 320290000002 320290000003 320290009999 320300110000 320300190001 320300190002 320300199999 320300200001 320300200002 320411000000 320412000000 320413000000 320414000000 320415000000 320416000000 320417000000 320418000000 320419000000 320420000000 320490100000 320490900001 320490909999 320500000001 320500000002 320500000003 320611000000 320619000001 320619009999 320620000000 320641000000 320642000000 320649000001 320649000002 320649009999 320650000000 320710000000 320720000000 320730000000 320740000000 320810100000 320810200000 320810900001 320810909999 320820100000 320820200000 320820900001 320820909999 320890100000 320890200000 320890900001 320890900002 320890909999 320910100000 320910200000 320910900001 320910909999 320990100000 320990200000 320990900001 320990900002 320990909999 321000100000 321000200000 321000910000 321000920000 321000930000 321000990000 321100000002 321100009999 321210000000 321290100000 321290900001 321290900002 321290900003 321290909999 321310100000 321310900000 321390000000 321410100000 321410200000 321410300000 321410400000 321410500000 321410600000 321410700000 321410800000 321410910000 321410920000 321410930000 321410940000 321410990001 321410999999 321490000001 321490000002 321490009999 321511000001 321511000002 321511000003 321511000004 321511000005 321511009999 321519000001 321519000002 321519000003 321519000004 321519000005 321519000006 321519009999 321590100000 321590200001 321590200002 321590300000 321590400000 321590500000 321590600000 321590700000 321590800000 321590910000 321590920000 321590990000 330112000000 330113000000 330119000000 330124000000 330125000000 330129000000 330129000901 330130100000 330130900000 330190110000 330190120000 330190130000 330190140000 330190160000 330190170000 330190180000 330190190000 330190190901 330190900000 330210000000 330290000000 330300100001 330300100002 330300100901 330300100902 330300200000 330300900001 330300900002 330300909999 330410000000 330420000000 330430100000 330430200000 330430900000 330491100000 330491900000 330499100000 330499200000 330499310001 330499310002 330499390000 330499390901 330499400000 330499910000 330499920000 330499930000 330499940000 330499950000 330499960000 330499970000 330499990000 330499990901 330510100000 330510200000 330510900000 330520000000 330530000000 330590100000 330590200000 330590300000 330590900000 330590900901 330610110000 330610120000 330610200000 330610910001 330610910002 330610920001 330610920002 330610990001 330610990002 330620000000 330690110000 330690120000 330690200000 330690900000 330710100000 330710900000 330720000000 330730000000 330741100000 330741200000 330741300000 330741900000 330749100000 330749200000 330749900000 330790100000 330790200001 330790200002 330790200003 330790400001 330790400002 330790500000 330790900019 330790909999 340111300000 340111400000 340111500000 340111700000 340111800000 340111800901 340111900000 340119200000 340119300000 340119400000 340119900000 340120100000 340120200000 340120300000 340120900000 340130000000 340130000901 340231000000 340239000000 340241000000 340242000000 340249000000 340250100000 340250210000 340250220000 340250290000 340290000004 340290009999 340311000000 340319100000 340319200000 340319300000 340319400000 340319500000 340319900002 340319909999 340391000000 340399000000 340420000000 340490100000 340490900000 340510000000 340520000000 340530000000 340540000000 340590100000 340590200000 340590900000 340600000000 340700100000 340700200000 340700300000 340700900001 340700900002 340700900003 340700909999 350110000000 350190100000 350190900000 350211000000 350219000000 350220000000 350290000000 350300100000 350300900000 350400100000 350400900000 350510100000 350510200000 350510300000 350510400000 350510900000 350520100000 350520200000 350520300000 350520900000 350610000000 350691000000 350699000005 350699009999 350710100000 350710900000 350790100000 350790200000 350790300000 350790400000 350790500000 350790600000 350790900008 350790909999 360100000002 360100000003 360100000006 360100009999 360200000003 360200000004 360200000005 360200000006 360200009999 360310000000 360320000001 360320009999 360330000000 360340000000 360350000001 360350000002 360350000003 360350009999 360360000000 360410100000 360410200000 360490000000 360500000000 360610000000 360690100000 360690900000 370110000000 370120000000 370130000000 370191000000 370199000000 370210000000 370231000000 370232000000 370239000000 370241000000 370242000000 370243000000 370244000000 370252000000 370253000000 370254000000 370255000000 370256000000 370296000000 370297000000 370298000000 370310000000 370320000000 370390000000 370400000001 370400000002 370400000003 370400000004 370400000005 370500000000 370610100000 370610900000 370690100000 370690900000 370710000000 370790100000 370790200000 370790300000 370790400000 370790500000 370790900000 380110100000 380110200000 380110900000 380120000000 380130000000 380190100000 380190900000 380210000000 380290000000 380300000001 380300000002 380400000000 380510000000 380590000000 380610000000 380620000000 380630000000 380690000000 380700000001 380700000002 380700000003 380700000004 380700000005 380700000006 380700009999 380852000000 380859000000 380861000000 380862000000 380869000000 380891100000 380891910000 380891990001 380891990002 380892100000 380892900000 380893100000 380893900000 380894110000 380894190000 380894200000 380894900000 380899100000 380899900001 380899909999 380910100000 380910900000 380991100000 380991900000 380992000000 380993000000 381010000001 381010000002 381090000001 381090009999 381111000000 381119000000 381121000000 381129000000 381190000004 381190009999 381210000000 381220000000 381231000000 381239000001 381239009999 381300100000 381300200000 381300300000 381300400000 381300900000 381400100000 381400200000 381400300000 381400900001 381400900002 381400900003 381400900004 381400909999 381511000000 381512000001 381512009999 381519000000 381590000001 381590009999 381600000001 381600000002 381600000003 381600000004 381600000005 381600000006 381600009999 381700000001 381700000002 381800000001 381800000002 381900000001 381900000002 382000000001 382000000002 382100100001 382100109999 382100200001 382100209999 382100310001 382100319999 382100390001 382100399999 382100400001 382100409999 382100900001 382100909999 382211000000 382212000000 382213000000 382219110000 382219200000 382219900000 382290000001 382290009999 382311000000 382312000000 382313000000 382319000001 382319009999 382370000000 382410000000 382430000000 382440000000 382450000000 382460000000 382481000000 382482000000 382483000000 382484000000 382485000000 382486000000 382487000000 382488000000 382489000000 382491000000 382492000000 382499100000 382499200000 382499300000 382499400000 382499500000 382499600000 382499700000 382499800000 382499910000 382499920000 382499930000 382499940000 382499950000 382499960000 382499970000 382499980000 382499990001 382499990002 382499990003 382499990004 382499990005 382499990006 382499990007 382499990008 382499990009 382499990010 382499990011 382499990012 382499990013 382499990014 382499990015 382499999999 382510000000 382520000000 382530000000 382541000000 382549000000 382550000000 382561000000 382569000000 382590000000 382600000000 382711000001 382711000002 382711009999 382712000000 382713000000 382714000000 382720000000 382731000000 382732000000 382739000001 382739000002 382739000003 382739000004 382739000005 382739000006 382739009999 382740000000 382751000000 382759000001 382759000002 382759000003 382759000004 382759000005 382759000006 382759000007 382759000008 382759000009 382759000010 382759000011 382759009999 382761000000 382762000000 382763000000 382764000000 382765000000 382768000000 382769000000 382790000000 '"/>
             <let name="codes09" value="' 390110000000 390120000000 390130000000 390140000000 390190000000 390210000000 390220000000 390230000000 390290000001 390290009999 390311000000 390319000000 390320000000 390330000000 390390000001 390390009999 390410000000 390421000000 390422000000 390430000000 390440000000 390450000000 390461000000 390469000000 390490000000 390512000000 390519000000 390521000000 390529000000 390530000000 390591000000 390599000001 390599009999 390610000000 390690100000 390690900000 390710000000 390721000000 390729000000 390730000000 390740000000 390750000000 390761000000 390769000000 390770000000 390791000000 390799000000 390810000000 390890000000 390910000000 390920000000 390931000000 390939000000 390940000001 390940000002 390950000000 391000000001 391000000002 391000009999 391110000000 391120000000 391190000000 391211000000 391212000000 391220000000 391231000000 391239000001 391239000002 391239000003 391239009999 391290000000 391310000000 391390000001 391390000002 391390000003 391390009999 391400100000 391400200000 391400900000 391510000000 391520000000 391530000000 391590000000 391610100000 391610200000 391620100000 391620200000 391690100000 391690200000 391710000001 391710000002 391721000001 391721000002 391721000003 391721009999 391722000001 391722000002 391722000003 391723000001 391723000002 391723000003 391729000001 391729000002 391729000003 391731000001 391731000002 391731000003 391732100000 391732900000 391733000000 391739000000 391740000000 391810000001 391810000002 391890000001 391890000002 391910000000 391990000001 391990009999 392010000000 392020000000 392030000000 392043000000 392049100010 392049100020 392049900000 392051000000 392059000000 392061000000 392062000000 392063000000 392069000000 392071000000 392073000000 392079000000 392091000000 392092000000 392093000000 392094000000 392099000000 392111000000 392112000000 392113000000 392114000000 392119100000 392119900000 392190100000 392190900000 392210000001 392210000002 392210000003 392210000004 392220000000 392290000001 392290000002 392290009999 392310100000 392310200000 392310900001 392310900002 392310909999 392321100901 392321100902 392321100903 392321100904 392321100905 392321100906 392321100907 392321900901 392321900902 392321900903 392321900904 392321900905 392321900906 392321900907 392321900999 392329100901 392329100902 392329100903 392329100904 392329100905 392329100906 392329100907 392329900901 392329900902 392329900903 392329900904 392329900905 392329900906 392329900907 392330000001 392330000002 392330000003 392330009999 392340000000 392350000000 392390000001 392390000002 392390009999 392410100001 392410100002 392410200001 392410200002 392410200003 392410310001 392410310002 392410310003 392410390001 392410390002 392410390003 392410390004 392410400000 392410900001 392410900002 392410900003 392410909999 392490100000 392490300000 392490400000 392490900001 392490900002 392490900003 392490900004 392490900005 392490909999 392510000000 392520110000 392520190000 392520210000 392520290000 392520310000 392520390000 392530000000 392590000001 392590000002 392590000003 392590000004 392590000005 392590000006 392590009999 392610000000 392620100000 392620900001 392620900002 392620909999 392630000001 392630000002 392630009999 392640000000 392690310000 392690320000 392690390001 392690390002 392690390003 392690390004 392690390005 392690399999 392690400000 392690500000 392690610000 392690690001 392690690002 392690690003 392690690004 392690699999 392690700001 392690700002 392690800000 392690910000 392690920000 392690930000 392690990003 392690990004 392690990005 392690990006 392690990007 392690990008 392690990009 392690990010 392690990011 392690990012 392690999999 400110000000 400121000000 400122000000 400129000001 400129000002 400130000000 400211000000 400219000000 400220000001 400220000002 400220000003 400220000004 400220009999 400231000000 400239000000 400241000000 400249000000 400251000000 400259000000 400260000000 400270000000 400280000000 400291000000 400299000000 400300000000 400400000000 400400000901 400400000902 400400000903 400400000904 400400000905 400400000906 400400000907 400400000908 400510000000 400520000000 400591000001 400591000002 400591000003 400599000000 400610000000 400690100000 400690200000 400690300000 400690400001 400690400002 400690400003 400690900001 400690909999 400700000000 400811000001 400811000002 400811000003 400811000004 400819000000 400821000001 400821000002 400821000003 400821000004 400829000000 400911100000 400911900000 400912100000 400912900000 400921110000 400921190000 400921910000 400921990000 400922110000 400922190000 400922910000 400922920000 400922990000 400931110000 400931120000 400931130000 400931140000 400931190000 400931910000 400931920000 400931990000 400932110000 400932120000 400932130000 400932140000 400932190000 400932910000 400932920000 400932990000 400941110000 400941120000 400941130000 400941140000 400941190000 400941910000 400941920000 400941990000 400942110000 400942120000 400942130000 400942140000 400942190000 400942910000 400942920000 400942990000 401011000000 401012000000 401019000000 401031000000 401032000000 401033000000 401034000000 401035000000 401036000000 401039000000 401110100000 401110200000 401120100000 401120200000 401120900000 401130000000 401140000000 401150000000 401170000000 401180000000 401190000000 401211000000 401212000000 401213000000 401219000000 401220000001 401220000002 401220000003 401290000000 401310000000 401320000000 401390000002 401390009999 401410000000 401490100001 401490100002 401490100003 401490100004 401490100005 401490100006 401490100007 401490100008 401490200000 401490900001 401490909999 401512110000 401512120000 401512200000 401519100000 401519900000 401590100001 401590100002 401590200000 401590300000 401590400001 401590400002 401590400003 401590400004 401590400005 401590400006 401590900000 401610000001 401610000002 401610000003 401610009999 401691000000 401692000001 401692000002 401693000001 401693000002 401694000000 401695100000 401695900000 401699100000 401699200000 401699300000 401699400000 401699500000 401699900000 401700100000 401700210000 401700220000 401700300000 401700400000 401700500000 401700600000 401700900001 401700900002 401700900003 401700900004 401700900005 401700909999 410120000000 410150000000 410190000000 410210000000 410221000000 410229000000 410320000000 410330000000 410390000000 410411000000 410419000000 410441000000 410449000000 410510000000 410530000000 410621000000 410622000000 410631000000 410632000000 410640000000 410691000000 410692000000 410711000000 410712000000 410719000000 410791000000 410792000000 410799000000 411200000000 411310000000 411320000000 411330000000 411390000000 411410000000 411420000000 411510000000 411520000000 '"/>
             <let name="codes10" value="' 420100000161 420100000162 420100000163 420211100000 420211200000 420211300000 420211910000 420211990000 420212100001 420212100002 420212100003 420212100004 420212100005 420212100006 420212100007 420212100008 420212109999 420212200001 420212200002 420212200003 420212200004 420212200005 420212200006 420212209999 420212300000 420212900000 420219100000 420219200000 420219900000 420221000000 420222000000 420229000000 420231000000 420232000000 420239000000 420291000000 420292000000 420299000000 420310000000 420321000000 420329000001 420329000002 420330000000 420340000000 420500100000 420500200000 420500300000 420500400001 420500400002 420500500000 420500600001 420500600002 420500600003 420500600004 420500900000 420600000000 430110000000 430130000000 430160000000 430180000000 430190000000 430211000000 430219000000 430220000000 430230000000 430310100000 430310900000 430390000000 430400100000 430400200000 430400900001 430400909999 440111000001 440111000002 440111000003 440111000004 440111009999 440112000001 440112000002 440112000003 440112000004 440112009999 440121000001 440121000002 440121009999 440122000001 440122000002 440122009999 440131000000 440132000000 440139000000 440141000000 440149000000 440210000001 440210000002 440210000003 440210000004 440210000005 440210000006 440210009999 440220000000 440290000001 440290000002 440290009999 440311100000 440311900000 440312100000 440312900001 440312900002 440312900003 440312909999 440321100000 440321900001 440321900002 440321900003 440321909999 440322100000 440322900001 440322900002 440322900003 440322909999 440323100000 440323900001 440323900002 440323900003 440323909999 440324100000 440324900001 440324900002 440324900003 440324909999 440325100000 440325900001 440325900002 440325900003 440325909999 440326100000 440326900001 440326900002 440326900003 440326909999 440341200000 440341900000 440342000000 440349200000 440349900000 440391200000 440391900001 440391900002 440391900005 440391909999 440393000000 440394000000 440395000000 440396000000 440397000000 440398000000 440399200000 440399900001 440399900002 440399900005 440399909999 440410100001 440410100002 440410200001 440410200002 440410200003 440410300000 440410400000 440410500001 440410500002 440410500003 440410500004 440410500005 440410500006 440410500007 440410500008 440410500009 440410509999 440410900000 440420100001 440420100002 440420200001 440420200002 440420200003 440420300000 440420400000 440420500000 440420900000 440500100000 440500200000 440611000000 440612000000 440691000000 440692000000 440711100000 440711200000 440711900000 440712100000 440712200000 440712900000 440713000000 440714000000 440719100000 440719200000 440719900000 440721000000 440722000000 440723000000 440725100000 440725200000 440725900000 440726100000 440726200000 440726900000 440727000000 440728000000 440729000000 440791100000 440791200000 440791900000 440792100000 440792200000 440792900000 440793000000 440794000000 440795000000 440796000000 440797000000 440799100001 440799100002 440799100003 440799100004 440799109999 440799200001 440799200002 440799200003 440799200004 440799209999 440799900001 440799900002 440799900003 440799900004 440799900005 440799900006 440799900007 440799900008 440799909999 440810100000 440810200000 440810900000 440831100000 440831200000 440831900000 440839100000 440839200000 440839900000 440890100000 440890200000 440890900000 440910100000 440910200000 440910300000 440910400001 440910400002 440910500001 440910500002 440910600000 440910700001 440910700002 440910700003 440910709999 440910900000 440921100000 440921900000 440922000000 440929100000 440929900000 441011000001 441011000002 441011000003 441011009999 441012000001 441012000002 441012000003 441012009999 441019000001 441019000002 441019000003 441019009999 441090000001 441090000002 441090000003 441090000004 441090000005 441090000006 441090000007 441090000008 441090000009 441090009999 441112000000 441113000000 441114000000 441192000000 441193000000 441194000000 441210000001 441210000002 441210000003 441231000000 441233000000 441234000000 441239000000 441241000000 441242000000 441249000000 441251000000 441252000000 441259000000 441291000000 441292000000 441299000000 441300000001 441300000002 441300000003 441300000004 441300000005 441410000000 441490000000 441510100001 441510100002 441510100003 441510100004 441510200001 441510200002 441510400001 441510400002 441510900000 441520000001 441520000002 441520000003 441520000004 441600000000 441700100000 441700200000 441700300000 441700400001 441700400002 441700500001 441700500002 441700600000 441700900001 441700900002 441700909999 441811100000 441811200000 441819100000 441819200000 441821100000 441821200000 441829100000 441829200000 441830000000 441840000000 441850000001 441850000002 441873000000 441874000000 441875000000 441879000000 441881000000 441882000000 441883000000 441889000000 441891000000 441892000000 441899100000 441899200000 441899900001 441899909999 441911000000 441912000000 441919000000 441920000000 441990000001 441990000002 441990000003 441990000004 441990000005 441990000006 441990000007 441990000008 441990000009 441990000010 441990000011 441990000012 441990000013 441990000014 441990000015 441990000016 441990009999 442011000000 442019000000 442090100001 442090100002 442090100003 442090109999 442090200000 442090300000 442090400000 442090900001 442090900002 442090900003 442090900004 442090909999 442110000000 442120000000 442191000000 442199100001 442199100002 442199100003 442199200001 442199200002 442199200003 442199200004 442199209999 442199300000 442199400000 442199500000 442199600000 442199700000 442199800000 442199910000 442199920000 442199930000 442199940000 442199950000 442199960000 442199990001 442199999999 450110000001 450110000002 450190000001 450190000002 450190000003 450190000004 450200100001 450200100002 450200100003 450200100004 450200100005 450200100006 450200100007 450200109999 450200200001 450200200002 450200200003 450200200004 450200200005 450200200006 450200200007 450200900000 450310000000 450390100000 450390210000 450390220000 450390300001 450390300002 450390410000 450390420000 450390490000 450390900000 450410100000 450410900000 450490100000 450490210000 450490220000 450490300001 450490300002 450490400001 450490400002 450490900000 460121000001 460121000002 460121000003 460121009999 460122000001 460122000002 460122000003 460122009999 460129000000 460192000000 460193000000 460194000000 460199000000 460211000000 460212000000 460219100000 460219900000 460290110000 460290120001 460290120002 460290130000 460290140001 460290140002 460290140003 460290149999 460290150000 460290160001 460290160002 460290169999 460290170000 460290180001 460290180002 460290189999 460290190000 460290900000 470100000000 470200000000 470311000000 470319000000 470321000000 470329000000 470411000000 470419000000 470421000000 470429000000 470500000000 470610000000 470620000000 470630000000 470691000000 470692000000 470693000000 470710000005 470710000006 470720000000 470730000000 470790100000 470790900000 480100000000 480210000000 480220000000 480240000000 480254000000 480255000000 480256000000 480257000000 480258000000 480261000000 480262000000 480269000000 480300100001 480300100002 480300100003 480300100004 480300100005 480300100006 480300100007 480300900001 480300900002 480300909999 480411000000 480419000000 480421000000 480429000000 480431000000 480439000000 480441000000 480442000000 480449000000 480451000000 480452000000 480459000000 480511000000 480512000000 480519100004 480519100005 480519200000 480519900000 480524000000 480525000000 480530000000 480540000000 480550000000 480591000000 480592000000 480593000000 480610000000 480620000000 480630000000 480640000001 480640000002 480640000003 480640000004 480640000005 480640000006 480700000001 480700000002 480700000003 480700000004 480810000001 480810000002 480840000001 480840000002 480840000003 480840000004 480890000000 480920000001 480920000002 480990000000 481013000000 481014000000 481019000001 481019000002 481022000001 481022000002 481022000003 481022000004 481029000001 481029000002 481029000003 481031000000 481032000000 481039000000 481092000000 481099000000 481110000001 481110000002 481110000003 481141100000 481141900000 481149000000 481151000000 481159000001 481159000901 481159000002 481159000003 481160000000 481190000001 481190000002 481190000003 481190000004 481190000005 481190009999 481200000000 481310000000 481320000000 481390000000 481420000001 481420000002 481420000003 481420000004 481420000005 481420000006 481420000007 481420000008 481420000009 481420000010 481490000001 481490000002 481620000000 481690000001 481690000002 481710000000 481720000001 481720000002 481720000003 481730000001 481730000002 481730000003 481730000004 481730000005 481730000006 481810000000 481820000001 481820000002 481820000003 481830100000 481830900000 481850000000 481890000001 481890000002 481890009999 481910100001 481910100002 481910100003 481910900013 481910900014 481910900015 481910909999 481920100001 481920100002 481920100003 481920900000 481930000000 481940000000 481950000000 481960000001 481960000002 481960000003 481960000004 482010000001 482010000002 482010000003 482010000004 482010000005 482010000006 482010000007 482010000008 482020000001 482020000002 482020000003 482020000004 482020000005 482020000006 482020000007 482020000008 482030100001 482030100002 482030100003 482030900001 482030900002 482030900003 482040000000 482050000000 482090000001 482090000002 482090000003 482090000004 482110000000 482190000000 482210000001 482210000002 482210000003 482210000004 482290000000 482320000000 482340000001 482340000002 482340000003 482361000001 482361000002 482361000003 482361000004 482369000001 482369000002 482369000003 482369000004 482370100000 482370900000 482390100001 482390100002 482390100003 482390100004 482390100005 482390200001 482390200002 482390200003 482390300001 482390300002 482390400001 482390400002 482390400003 482390400004 482390500000 482390600000 482390700001 482390700002 482390700003 482390700004 482390800000 482390910001 482390910002 482390920000 482390930001 482390930002 482390940000 482390990001 482390990002 482390990004 482390990005 482390999999 '"/>
@@ -956,10 +800,16 @@
             <let name="codes20" value="' 910111000001 910111000002 910111000003 910111000004 910111000005 910111000006 910111009999 910119000001 910119000002 910119000003 910119000004 910119000005 910119000006 910119009999 910121000001 910121000002 910121000003 910121000004 910121000005 910121000006 910121000007 910129000001 910129000002 910129000003 910129000004 910129009999 910191000001 910191000002 910191000003 910191000004 910191009999 910199000000 910211000001 910211009999 910212000001 910212009999 910219000001 910219009999 910221000001 910221009999 910229000001 910229009999 910291000000 910299000001 910299009999 910310000000 910390000000 910400000001 910400000002 910400000003 910400000004 910400000005 910400000006 910400009999 910511000000 910519000000 910521000000 910529000000 910591000000 910599000000 910610000000 910690000000 910700000001 910700000002 910700000003 910700000004 910700009999 910811000000 910812000000 910819000000 910820000000 910890000000 910910000000 910990000000 911011000000 911012000000 911019000000 911090000000 911110000000 911120000000 911180000000 911190000000 911220000001 911220000002 911220000003 911220000004 911220009999 911290000000 911310000001 911310000002 911310000003 911310000004 911320000001 911320000002 911320000003 911320000004 911390100000 911390200001 911390200002 911390300000 911390400001 911390400002 911390400003 911390400004 911390900000 911430000000 911440000000 911490000000 920110000000 920120000000 920190000000 920210000001 920210000002 920210009999 920290100000 920290900001 920290909999 920510000001 920510000002 920510000003 920510009999 920590000001 920590000002 920590000003 920590000004 920590000005 920590009999 920600100000 920600200000 920600300000 920600400000 920600900000 920710000001 920710000002 920710009999 920790000000 920810000000 920890100000 920890200000 920890300000 920890400000 920890900000 920930000001 920930000002 920930000003 920930009999 920991000000 920992000000 920994000000 920999000000 930110100000 930110200000 930110900000 930120000001 930120000002 930120000003 930120000004 930190100000 930190900000 930200000001 930200000002 930200009999 930310000000 930320000000 930330000000 930390000001 930390000002 930390000003 930390009999 930400100000 930400900001 930400900002 930400900003 930400900004 930400909999 930510000901 930510000902 930520000901 930520000902 930591000901 930591000902 930599000901 930599000902 930621100000 930621900000 930629100000 930629900000 930630100000 930630900001 930630909999 930690000000 930700100001 930700100002 930700100003 930700100004 930700100005 930700109999 930700900001 930700900002 930700900003 930700900004 930700900005 930700900006 930700909999 940110000000 940120000000 940131000000 940139000000 940141000000 940149000000 940152000000 940153000000 940159000001 940159000002 940159000003 940161000001 940161000002 940161000004 940161000012 940161009999 940169000000 940171100000 940171200000 940171900000 940179100000 940179200000 940179900000 940180110000 940180120000 940180190000 940180200001 940180200002 940180200003 940180900000 940191000000 940199000000 940210100001 940210100002 940210100003 940210100004 940210100005 940210109999 940210200000 940210900001 940210900002 940210900003 940210900004 940210900005 940210909999 940290100001 940290100002 940290100003 940290100004 940290100005 940290100006 940290100007 940290100008 940290100009 940290100010 940290100011 940290100012 940290100013 940290100014 940290100015 940290100016 940290109999 940290900001 940290900002 940290900003 940290900004 940290900005 940290900006 940290900007 940290909999 940310100000 940310200000 940310300000 940310900000 940320100000 940320200000 940320300000 940320400000 940320500001 940320500002 940320500003 940320900001 940320900002 940320900003 940320900004 940320900005 940320900006 940320900007 940320900008 940320900019 940320900026 940320900027 940320900028 940320909999 940330100000 940330200000 940330300000 940330900000 940340100000 940340200000 940340900000 940350100000 940350200000 940350900001 940350900002 940350900003 940350900004 940350900005 940350909999 940360100000 940360200000 940360300000 940360400000 940360900001 940360900005 940360909999 940370000007 940370009999 940382000000 940383000000 940389000001 940389000002 940389000003 940389009999 940391000000 940399000000 940410000000 940421100000 940421900006 940421909999 940429100000 940429900000 940430000001 940430000002 940440000000 940490100000 940490200001 940490200002 940490300001 940490300002 940490400000 940490900000 940511000000 940519000000 940521000000 940529000000 940531000000 940539000000 940541000000 940542000000 940549100000 940549200000 940549900000 940550000000 940561100000 940561900000 940569000000 940591000000 940592000000 940599000001 940599000002 940599000003 940599000004 940599000005 940599000006 940599000008 940599000009 940599000010 940599000011 940599000012 940599000013 940599000014 940599000015 940599000016 940599000017 940599000018 940599000019 940599009999 940610100000 940610200000 940610300000 940610400000 940610900000 940620000000 940690110000 940690120000 940690130000 940690140000 940690190001 940690199999 940690210000 940690220000 940690230000 940690240000 940690290000 940690310000 940690320000 940690330000 940690340000 940690390000 940690410000 940690420000 940690430000 940690440000 940690490000 940690900000 950300100001 950300100002 950300100003 950300100004 950300109999 950300200000 950300300000 950300400000 950300900001 950300900002 950300909999 950420100001 950420100002 950420109999 950420900001 950420900002 950420909999 950430000000 950440000001 950440000002 950450000001 950450000002 950450000003 950490000001 950490000002 950490000003 950490000004 950490000005 950490000006 950490000007 950490009999 950510000000 950590000001 950590000002 950590000003 950590000004 950590009999 950611000000 950612000000 950619000000 950621000000 950629000000 950631000000 950632000000 950639000000 950640000001 950640000003 950640000004 950640000005 950640009999 950651000000 950659000000 950661000000 950662000001 950662000002 950662000003 950662009999 950669000000 950670000001 950670000002 950670000003 950670009999 950691000001 950691000002 950691000003 950691000004 950691000005 950691000006 950691000007 950691000008 950691000009 950691000010 950691000011 950691000012 950691000013 950691000014 950691000015 950691000016 950691009999 950699100000 950699900000 950710000000 950720000000 950730000000 950790000000 950810000000 950821000000 950822000000 950823000000 950824000000 950825000000 950826000000 950829000000 950830000000 950840000000 960110000000 960190000000 960200100000 960200200000 960200300001 960200309999 960200400000 960200500000 960200900000 960310000000 960321000000 960329100000 960329200000 960329900000 960330000000 960340000001 960340000002 960340000003 960340009999 960350000000 960390100000 960390200000 960390300000 960390400000 960390500000 960390900000 960400000002 960400000003 960400009999 960500000001 960500000002 960500000003 960500000004 960610000001 960610000002 960610000003 960610000004 960610000006 960610009999 960621000000 960622000000 960629000000 960630000000 960711000000 960719000000 960720000000 960810000000 960820000000 960830100000 960830900000 960840000000 960850000000 960860000000 960891000000 960899000001 960899000002 960899000003 960899000004 960899000005 960899000006 960899009999 960910000000 960920000000 960990100000 960990200000 960990300000 960990400000 960990500000 960990900000 961000100001 961000100002 961000100003 961000100004 961000900001 961000900002 961000900003 961000909999 961100000001 961100000002 961100000003 961210000001 961210000002 961210000003 961210000004 961210000005 961210000006 961210000007 961210000008 961210000009 961210000010 961210009999 961220000000 961310000000 961320000000 961380000002 961380000003 961380000005 961380009999 961390000000 961400100000 961400200001 961400200002 961400200003 961400200004 961400200005 961400200006 961400209999 961400900001 961400900002 961400900003 961400909999 961511000001 961511000002 961511000003 961511000004 961511000005 961511000006 961519000000 961590000001 961590000002 961590009999 961610000001 961610000002 961610000003 961620000001 961620000002 961700100000 961700900000 961800000001 961800000002 961800000003 961800000004 961800000005 961900100000 961900200000 961900300000 961900400000 961900500000 961900900000 962000100000 962000900000 970121000000 970122000000 970129000000 970191000000 970192000000 970199000000 970210000000 970290000000 970310000000 970390000000 970400000001 970400000002 970400000003 970400009999 970510000000 970521000000 970522000000 970529100000 970529900000 970531000000 970539000000 970610000000 970690100000 970690200000 970690300000 970690900000 980100000001 980100000002 980200100001 980200100002 980200109999 980200200000 980300000001 980300000002 980400000000 '"/>
             
             
-            
-            
+            <assert diagnostics="d-CL-08-OM-HS" id="CL-08-OM-HS" flag="fatal" role="fatal" test="if (string-length($hsCode) = 0) then true()                         else if (string-length($hsCode) = 12 and substring($hsCode, 1, 2) &lt;= '04') then contains($codes01, concat(' ', $hsCode, ' '))                         else if (string-length($hsCode) = 12 and substring($hsCode, 1, 2) &lt;= '15') then contains($codes02, concat(' ', $hsCode, ' '))                         else if (string-length($hsCode) = 12 and substring($hsCode, 1, 2) &lt;= '21') then contains($codes03, concat(' ', $hsCode, ' '))                         else if (string-length($hsCode) = 12 and substring($hsCode, 1, 2) &lt;= '26') then contains($codes04, concat(' ', $hsCode, ' '))                         else if (string-length($hsCode) = 12 and substring($hsCode, 1, 2) &lt;= '28') then contains($codes05, concat(' ', $hsCode, ' '))                         else if (string-length($hsCode) = 12 and substring($hsCode, 1, 2) &lt;= '29') then contains($codes06, concat(' ', $hsCode, ' '))                         else if (string-length($hsCode) = 12 and substring($hsCode, 1, 2) &lt;= '30') then contains($codes07, concat(' ', $hsCode, ' '))                         else if (string-length($hsCode) = 12 and substring($hsCode, 1, 2) &lt;= '38') then contains($codes08, concat(' ', $hsCode, ' '))                         else if (string-length($hsCode) = 12 and substring($hsCode, 1, 2) &lt;= '41') then contains($codes09, concat(' ', $hsCode, ' '))                         else if (string-length($hsCode) = 12 and substring($hsCode, 1, 2) &lt;= '48') then contains($codes10, concat(' ', $hsCode, ' '))                         else if (string-length($hsCode) = 12 and substring($hsCode, 1, 2) &lt;= '55') then contains($codes11, concat(' ', $hsCode, ' '))                         else if (string-length($hsCode) = 12 and substring($hsCode, 1, 2) &lt;= '62') then contains($codes12, concat(' ', $hsCode, ' '))                         else if (string-length($hsCode) = 12 and substring($hsCode, 1, 2) &lt;= '70') then contains($codes13, concat(' ', $hsCode, ' '))                         else if (string-length($hsCode) = 12 and substring($hsCode, 1, 2) &lt;= '73') then contains($codes14, concat(' ', $hsCode, ' '))                         else if (string-length($hsCode) = 12 and substring($hsCode, 1, 2) &lt;= '83') then contains($codes15, concat(' ', $hsCode, ' '))                         else if (string-length($hsCode) = 12 and substring($hsCode, 1, 2) &lt;= '84') then contains($codes16, concat(' ', $hsCode, ' '))                         else if (string-length($hsCode) = 12 and substring($hsCode, 1, 2) &lt;= '85') then contains($codes17, concat(' ', $hsCode, ' '))                         else if (string-length($hsCode) = 12 and substring($hsCode, 1, 2) &lt;= '87') then contains($codes18, concat(' ', $hsCode, ' '))                         else if (string-length($hsCode) = 12 and substring($hsCode, 1, 2) &lt;= '90') then contains($codes19, concat(' ', $hsCode, ' '))                         else if (string-length($hsCode) = 12 and substring($hsCode, 1, 2) &lt;= '98') then contains($codes20, concat(' ', $hsCode, ' '))                         else false()">[CL-08-OM-HS] - Value of 'cbc:ItemClassificationCode[@listID="HS"]' is not a valid 12-digit Oman HS code (CL-08-OM-HS).</assert>
+        </rule>
 
-            <let name="isic0" value="' 011101 011301 011302 011901 011902 012100 012201 012202 012203 012300 012400 012501 012503 012601 012602 012801 012802 012900 013001 014101 014102 014201 014202 014301 014302 014303 014401 014402 014601 014602 014603 014901 014902 016101 016102 016103 016105 016200 021000 023001 023002 024000 031101 031201 032101 032102 032103 032201 032202 032203 061000 062000 072901 072902 081001 081002 081003 081005 089101 089102 089103 089104 089301 089302 089303 089901 089902 091001 091002 091003 091004 099005 099006 099009 099010 '"/>
+        
+        <rule context="cac:Item/cac:AdditionalItemIdentification/cbc:ID[@schemeName='CC']">
+            <let name="isicCode" value="normalize-space(.)"/>
+            
+            
+            
+            <let name="isic0" value="' 011101 011301 011302 011901 011902 012100 012201 012202 012203 012300 012400 012501 012503 012601 012602 012801 012802 012900 013001 014101 014102 014201 014202 014301 014302 014303 014401 014402 014601 014602 014603 014901 014902 016101 016102 016103 016105 016200 021000 023001 023002 024000 031101 031201 032101 032102 032103 032201 032202 032203 061000 062000 072901 072902 081001 081002 081003 081005 089101 089102 089103 089104 089301 089302 089303 089901 089902 091001 091002 091003 091004 099005 099006 099009 099010 000000 '"/>
             <let name="isic1" value="' 101001 101002 101003 101004 101005 101006 101007 101008 101009 101010 101011 102001 102002 102003 102004 102005 102006 102007 103001 103002 103003 103004 103005 103006 103007 103008 103009 103010 103011 103012 104001 104002 104003 104004 104005 104006 104007 104008 104009 105001 105002 105003 105004 105005 105006 106101 106102 106103 106104 106105 106106 106201 106202 106203 106204 107101 107102 107103 107104 107105 107106 107107 107108 107109 107201 107202 107203 107301 107302 107303 107304 107305 107306 107401 107402 107403 107500 107901 107902 107903 107904 107905 107906 107907 107908 107909 108001 108002 108003 108004 110302 110401 110402 110403 110404 110405 110406 120000 131101 131102 131103 131104 131200 131301 131302 131303 131304 139101 139201 139202 139203 139204 139205 139206 139207 139208 139301 139302 139303 139401 139402 139403 139901 139902 139903 139904 139905 139906 139907 139908 141001 141002 141003 141004 141005 141006 141007 141008 141009 141010 141011 141012 141013 141014 142001 142002 143001 143002 143003 151101 151102 151103 151104 151105 151201 151202 151203 151204 151205 151206 151207 151208 152001 152002 152003 152004 161001 161002 161003 161004 162101 162102 162103 162201 162202 162203 162204 162205 162206 162207 162301 162302 162303 162901 162902 162903 162904 162905 162906 162907 162908 162909 162910 162911 170101 170102 170103 170104 170105 170106 170201 170202 170203 170204 170205 170206 170901 170902 170903 170904 170905 170906 170907 170908 170909 170910 170911 181101 181102 181103 181104 181105 181106 181107 181108 181109 181110 181201 181202 181203 182001 182002 182003 182004 182005 182006 191000 192001 192002 192003 192004 192005 192006 192007 192008 192009 192010 192011 '"/>
             <let name="isic2" value="' 201101 201102 201103 201104 201105 201106 201107 201108 201109 201110 201111 201201 201202 201203 201204 201205 201206 201301 201302 201303 201304 201305 201306 202101 202102 202103 202104 202201 202202 202203 202204 202205 202206 202207 202208 202301 202302 202303 202304 202305 202306 202307 202308 202309 202310 202901 202902 202903 202904 202905 202906 202907 202908 202909 202910 202911 202912 202913 202914 203001 203002 210001 210002 210003 210004 210005 210006 210007 210008 210009 221101 221102 221103 221104 221105 221901 221902 221903 221904 221905 221906 221907 221908 221909 222001 222002 222003 222004 222005 222006 222007 222008 222009 222010 222011 222013 222014 222015 222016 222017 231001 231002 231003 231004 231005 231006 231007 231008 231009 239101 239102 239103 239104 239105 239201 239202 239203 239204 239205 239206 239207 239208 239301 239302 239303 239304 239305 239306 239401 239402 239403 239404 239405 239501 239502 239503 239504 239505 239506 239507 239508 239509 239601 239602 239603 239604 239605 239901 239902 239903 239904 239905 239906 241001 241002 241003 241004 241005 241006 242001 242002 242003 242004 242005 242006 242007 243101 243102 243201 251101 251102 251103 251104 251105 251106 251201 251202 251203 251301 251302 252000 259101 259102 259201 259202 259203 259301 259302 259303 259304 259305 259306 259307 259308 259309 259310 259311 259312 259313 259901 259902 259903 259904 259905 259906 259907 259908 259910 259911 259912 259913 259914 259915 259916 259917 261001 261002 261003 261004 261005 261006 261007 261009 261010 261011 262000 263001 263002 263003 263004 263005 263006 263007 264001 264002 264003 264004 264005 264006 265101 265102 265103 265104 265105 265106 265107 265108 265109 265110 265111 265201 265202 266001 266002 266003 266004 267001 267002 267003 267004 268000 271001 271002 271003 271004 272001 272002 272003 272004 273101 273102 273200 273301 273302 273303 274001 274002 274003 274004 274005 275001 275002 275003 275004 275005 275006 279001 279002 279003 279004 279006 279007 279008 279009 279010 281101 281102 281103 281104 281105 281106 281107 281108 281109 281110 281111 281201 281202 281203 281301 281302 281303 281401 281402 281403 281501 281502 281503 281504 281505 281506 281601 281602 281603 281604 281605 281606 281607 281701 281702 281703 281704 281705 281706 281707 281708 281800 281901 281902 281903 281904 281905 281906 281907 281908 281909 281910 281911 281912 282101 282102 282103 282104 282105 282106 282201 282202 282203 282204 282205 282206 282207 282208 282301 282302 282401 282402 282403 282404 282405 282406 282407 282501 282502 282503 282504 282505 282506 282507 282601 282602 282603 282604 282605 282606 282607 282608 282609 282901 282902 282903 282904 282905 282906 282907 282908 282909 282910 282911 282912 291001 291002 291003 292001 292002 292003 292004 292005 292006 293001 293002 293003 293004 293005 '"/>
             <let name="isic3" value="' 301101 301102 301103 301104 301105 301106 301201 301202 302001 302002 303001 304000 309100 309201 309202 309203 309204 309901 309902 310001 310002 310003 310004 310005 310006 321101 321102 321103 321104 321105 321201 321202 322001 322002 322003 323001 323002 323003 323004 324001 324002 324003 324004 324005 324006 324007 325001 325002 325003 325004 325005 325006 325007 325008 325009 325010 325011 325012 329001 329002 329003 329004 329005 329006 329007 329008 329009 329010 329011 329012 329013 329014 329015 329016 329017 329018 331101 331102 331103 331104 331105 331106 331107 331108 331201 331202 331203 331204 331205 331206 331207 331208 331209 331210 331211 331212 331213 331214 331215 331216 331217 331218 331219 331220 331221 331301 331302 331303 331304 331305 331306 331307 331308 331401 331402 331403 331404 331405 331406 331407 331408 331409 331410 331411 331412 331413 331501 331502 331503 331504 331505 331506 331507 331508 331509 331510 331511 331901 331902 331903 331904 331905 331906 331907 331909 331910 331911 331912 331913 331914 331915 331916 332001 332002 332003 332004 332005 332006 332007 332008 332009 332010 332011 332012 332013 332014 332015 332016 332017 332018 332019 332020 351001 351002 352001 352002 352003 353001 353002 353003 360001 360002 360003 360004 360005 370001 370002 381101 381102 381103 381201 381202 382101 382102 382103 382201 382202 383001 383002 383003 383004 383005 383006 383007 383008 390001 390002 390003 390004 '"/>
@@ -970,7 +820,7 @@
             <let name="isic8" value="' 802001 802002 811000 812100 812901 812902 812903 812904 813001 821101 821102 821901 821902 822000 823001 823002 823003 829101 829102 829201 829202 829203 829204 829205 829901 829902 829903 829904 829905 829906 829907 829908 841101 841102 841200 841301 841302 841303 841304 841305 841306 841307 841308 842300 842301 851001 851002 851003 851004 851005 852100 852201 852202 853001 853002 853003 853004 854101 854102 854103 854104 854201 854203 854901 854902 854903 854904 854905 854907 854909 854910 854911 855001 855002 855003 855004 855006 861001 861002 862001 862002 862003 862004 869001 869002 869003 869004 869005 869006 869007 869008 871000 872001 872002 873002 889002 889003 889004 '"/>
             <let name="isic9" value="' 900001 900002 900003 900005 900006 910201 910202 910203 910301 910303 910304 931101 931102 931201 931202 931203 931901 932100 932901 932902 932903 932904 932905 932906 932907 941201 941202 942000 949101 951100 951200 951201 952101 952102 952103 952201 952300 952401 952402 952901 952902 952903 952904 960101 960102 960103 960104 960201 960202 960203 960204 960301 960901 960902 960903 960904 '"/>
             
-            <assert diagnostics="d-CL-08-OM" id="CL-08And12-OM" flag="fatal" role="fatal" test="if (string-length($hsCode) = 0) then true()                         else if (string-length($hsCode) = 8) then contains($codesUNGM, concat(' ', $hsCode, ' '))                         else if (string-length($hsCode) = 6 and substring($hsCode, 1, 1) = '0') then contains($isic0, concat(' ', $hsCode, ' '))                         else if (string-length($hsCode) = 6 and substring($hsCode, 1, 1) = '1') then contains($isic1, concat(' ', $hsCode, ' '))                         else if (string-length($hsCode) = 6 and substring($hsCode, 1, 1) = '2') then contains($isic2, concat(' ', $hsCode, ' '))                         else if (string-length($hsCode) = 6 and substring($hsCode, 1, 1) = '3') then contains($isic3, concat(' ', $hsCode, ' '))                         else if (string-length($hsCode) = 6 and substring($hsCode, 1, 1) = '4') then contains($isic4, concat(' ', $hsCode, ' '))                         else if (string-length($hsCode) = 6 and substring($hsCode, 1, 1) = '5') then contains($isic5, concat(' ', $hsCode, ' '))                         else if (string-length($hsCode) = 6 and substring($hsCode, 1, 1) = '6') then contains($isic6, concat(' ', $hsCode, ' '))                         else if (string-length($hsCode) = 6 and substring($hsCode, 1, 1) = '7') then contains($isic7, concat(' ', $hsCode, ' '))                         else if (string-length($hsCode) = 6 and substring($hsCode, 1, 1) = '8') then contains($isic8, concat(' ', $hsCode, ' '))                         else if (string-length($hsCode) = 6 and substring($hsCode, 1, 1) = '9') then contains($isic9, concat(' ', $hsCode, ' '))                         else if (string-length($hsCode) = 12 and substring($hsCode, 1, 2) &lt;= '04') then contains($codes01, concat(' ', $hsCode, ' '))                         else if (string-length($hsCode) = 12 and substring($hsCode, 1, 2) &lt;= '15') then contains($codes02, concat(' ', $hsCode, ' '))                         else if (string-length($hsCode) = 12 and substring($hsCode, 1, 2) &lt;= '21') then contains($codes03, concat(' ', $hsCode, ' '))                         else if (string-length($hsCode) = 12 and substring($hsCode, 1, 2) &lt;= '26') then contains($codes04, concat(' ', $hsCode, ' '))                         else if (string-length($hsCode) = 12 and substring($hsCode, 1, 2) &lt;= '28') then contains($codes05, concat(' ', $hsCode, ' '))                         else if (string-length($hsCode) = 12 and substring($hsCode, 1, 2) &lt;= '29') then contains($codes06, concat(' ', $hsCode, ' '))                         else if (string-length($hsCode) = 12 and substring($hsCode, 1, 2) &lt;= '30') then contains($codes07, concat(' ', $hsCode, ' '))                         else if (string-length($hsCode) = 12 and substring($hsCode, 1, 2) &lt;= '38') then contains($codes08, concat(' ', $hsCode, ' '))                         else if (string-length($hsCode) = 12 and substring($hsCode, 1, 2) &lt;= '41') then contains($codes09, concat(' ', $hsCode, ' '))                         else if (string-length($hsCode) = 12 and substring($hsCode, 1, 2) &lt;= '48') then contains($codes10, concat(' ', $hsCode, ' '))                         else if (string-length($hsCode) = 12 and substring($hsCode, 1, 2) &lt;= '55') then contains($codes11, concat(' ', $hsCode, ' '))                         else if (string-length($hsCode) = 12 and substring($hsCode, 1, 2) &lt;= '62') then contains($codes12, concat(' ', $hsCode, ' '))                         else if (string-length($hsCode) = 12 and substring($hsCode, 1, 2) &lt;= '70') then contains($codes13, concat(' ', $hsCode, ' '))                         else if (string-length($hsCode) = 12 and substring($hsCode, 1, 2) &lt;= '73') then contains($codes14, concat(' ', $hsCode, ' '))                         else if (string-length($hsCode) = 12 and substring($hsCode, 1, 2) &lt;= '83') then contains($codes15, concat(' ', $hsCode, ' '))                         else if (string-length($hsCode) = 12 and substring($hsCode, 1, 2) &lt;= '84') then contains($codes16, concat(' ', $hsCode, ' '))                         else if (string-length($hsCode) = 12 and substring($hsCode, 1, 2) &lt;= '85') then contains($codes17, concat(' ', $hsCode, ' '))                         else if (string-length($hsCode) = 12 and substring($hsCode, 1, 2) &lt;= '87') then contains($codes18, concat(' ', $hsCode, ' '))                         else if (string-length($hsCode) = 12 and substring($hsCode, 1, 2) &lt;= '90') then contains($codes19, concat(' ', $hsCode, ' '))                         else if (string-length($hsCode) = 12 and substring($hsCode, 1, 2) &lt;= '98') then contains($codes20, concat(' ', $hsCode, ' '))                         else false()">Value of 'cbc:ItemClassificationCode (HS Code/ISIC Code/ Service Type Code)' is not a valid Oman HS code (CL-08-OM) or ISIC code.</assert>
+            <assert diagnostics="d-CL-08-OM-ISIC" id="CL-08-OM-ISIC" flag="fatal" role="fatal" test="if (string-length($isicCode) = 0) then true()                         else if (string-length($isicCode) = 6 and substring($isicCode, 1, 1) = '0') then contains($isic0, concat(' ', $isicCode, ' '))                         else if (string-length($isicCode) = 6 and substring($isicCode, 1, 1) = '1') then contains($isic1, concat(' ', $isicCode, ' '))                         else if (string-length($isicCode) = 6 and substring($isicCode, 1, 1) = '2') then contains($isic2, concat(' ', $isicCode, ' '))                         else if (string-length($isicCode) = 6 and substring($isicCode, 1, 1) = '3') then contains($isic3, concat(' ', $isicCode, ' '))                         else if (string-length($isicCode) = 6 and substring($isicCode, 1, 1) = '4') then contains($isic4, concat(' ', $isicCode, ' '))                         else if (string-length($isicCode) = 6 and substring($isicCode, 1, 1) = '5') then contains($isic5, concat(' ', $isicCode, ' '))                         else if (string-length($isicCode) = 6 and substring($isicCode, 1, 1) = '6') then contains($isic6, concat(' ', $isicCode, ' '))                         else if (string-length($isicCode) = 6 and substring($isicCode, 1, 1) = '7') then contains($isic7, concat(' ', $isicCode, ' '))                         else if (string-length($isicCode) = 6 and substring($isicCode, 1, 1) = '8') then contains($isic8, concat(' ', $isicCode, ' '))                         else if (string-length($isicCode) = 6 and substring($isicCode, 1, 1) = '9') then contains($isic9, concat(' ', $isicCode, ' '))                         else false()">[CL-08-OM-ISIC] - Industrial Classification Code (BTOM-033) must be provided from the International Standard Industrial Classification of All Economic Activities list published by the Omani Ministry of Commerce, Industry and Investment Promotion.</assert>
         </rule>
         
         <rule flag="fatal" role="fatal" context="cac:Delivery/cac:DeliveryTerms/cbc:ID">
@@ -983,44 +833,71 @@
             <assert diagnostics="d-CL-11-OM" id="CL-11-OM" flag="fatal" role="fatal" test="                 (not($isProfitMargin or $isProfitMarginSelf))                 or                 (                     normalize-space(.) != ''                     and not(contains(normalize-space(.), ' '))                     and contains(                         ' VATPM-OM-01 VATPM-OM-02 VATPM-OM-03 VATPM-OM-04 VATPM-OM-05 ',                         concat(' ', normalize-space(.), ' ')                     )                 )                 ">[CL-11-OM] - If invoice transaction type (BTOM-001) is 'Profit Margin Self-Invoice' (XXXXXXXXXX1XXXXXXXXX) or Profit margin invoice (XXXXXXXXX1XXXXXXXXXX), Profit margin item reason code (BTOM-025) MUST be present and coded using Profit Margin Items Codelist (CL-11-OM).</assert>
         </rule>
         
-        <rule flag="fatal" role="fatal" context="cac:Item/cac:CommodityClassification/cbc:ItemClassificationCode[@listID='MP']">
+        <rule flag="fatal" role="fatal" context="cac:Item/cac:ItemSpecificationDocumentReference/cbc:ID[@schemeName='MP']">
             
-            <assert diagnostics="d-CL-12-OM" id="CL-12-OM" flag="fatal" role="fatal" test="((not(contains(normalize-space(.), ' ')) and contains(' 64000000 70000000 71000000 72000000 73000000 76000000 77000000 78000000 80000000 81000000 82000000 83000000 84000000 85000000 86000000 90000000 91000000 92000000 93000000 94000000 ', concat(' ', normalize-space(.), ' '))))">[CL-12-OM] - Service Type classification code must coded with the service type codelist.</assert>
+            <assert diagnostics="d-CL-12-OM" id="CL-12-OM" flag="fatal" role="fatal" test="((not(contains(normalize-space(.), ' ')) and contains(' 64000000 70000000 71000000 72000000 73000000 76000000 77000000 78000000 80000000 81000000 82000000 83000000 84000000 85000000 86000000 90000000 91000000 92000000 93000000 94000000 00000000 ', concat(' ', normalize-space(.), ' '))))">[CL-12-OM] - Service Type classification code must be coded with the service type codelist.</assert>
         </rule>
         
         <rule flag="fatal" role="fatal" context="cac:AccountingSupplierParty/cac:Party/cac:PostalAddress/cbc:CountrySubentityCode | cac:AccountingCustomerParty/cac:Party/cac:PostalAddress/cbc:CountrySubentityCode">
             
-            <assert diagnostics="d-CL-13-OM" id="CL-13-OM" flag="fatal" role="fatal" test="((not(contains(normalize-space(.), ' ')) and contains(' SHRFZ SEZAD SLLFZ AFZ MO ', concat(' ', normalize-space(.), ' '))))">[CL-13-OM] - Buyer/Supplier country subentity code must be coded using the subdivision code list.</assert>
+            <assert diagnostics="d-CL-13-OM" id="CL-13-OM" flag="fatal" role="fatal" test="((not(contains(normalize-space(.), ' ')) and contains(' SHRFZ SEZAD SLLFZ AFZ MO OTH ', concat(' ', normalize-space(.), ' '))))">[CL-13-OM] - Buyer/Supplier country subentity code must be coded using the subdivision code list.</assert>
         </rule>
   </pattern>
 
     
-    <pattern id="HsBucketSelfTest">
-        <title>HS bucket boundary self-test (debug only)</title>
-        <rule context="/">
-            <let name="boundaries" value="('04','15','21','26','28','29','30','38','41','48','55','62','70','73','83','84','85','87','90','98')"/>
-            
-            <assert id="HS-SELFTEST-MONO" flag="fatal" role="fatal" test="not($debugMode)                     or (every $i in 1 to (count($boundaries) - 1)                         satisfies $boundaries[$i] &lt;= $boundaries[$i + 1])" diagnostics="d-HS-SELFTEST-MONO">[HS-SELFTEST-MONO] - HS bucket boundaries must be in non-decreasing lexicographic order. Drift here breaks the CL-08 And 12-OM dispatcher.</assert>
-            
-            <assert id="HS-SELFTEST-COVERS" flag="fatal" role="fatal" test="not($debugMode)                     or $boundaries[count($boundaries)] &gt;= '98'" diagnostics="d-HS-SELFTEST-COVERS">[HS-SELFTEST-COVERS] - The last HS bucket boundary must be '98' or higher. Otherwise chapters at the high end fall through to false() in CL-08 And 12-OM.</assert>
-            
-            <assert id="HS-SELFTEST-EXHAUSTIVE" flag="fatal" role="fatal" test="not($debugMode)                     or (every $ch in (                             for $n in 1 to 99                             return concat(                                 if ($n &lt; 10) then '0' else '',                                 string($n)))                         satisfies (                             some $b in $boundaries                             satisfies $ch &lt;= $b))" diagnostics="d-HS-SELFTEST-EXHAUSTIVE">[HS-SELFTEST-EXHAUSTIVE] - Every HS chapter '01'..'99' must map to at least one bucket boundary. A chapter that falls through indicates a missing or misordered boundary in CL-08 And 12-OM.</assert>
-        </rule>
-    </pattern>
+    
     
     
     
 
     <diagnostics>
 
-        <diagnostic id="d-CL-08-OM">
-            The supplied value '<value-of select="$hsCode"/>' is not a valid item classification code under codelist CL-08-OM. The value must be one of:
-            a 12-digit Oman HS code from the official Oman HS Codes codelist (e.g. '010121100001'), or
-            a 6-digit ISIC code from the ISIC business activity codelist (e.g. '011101').
+        <diagnostic id="d-CL-08-OM-HS">
+            The supplied value '<value-of select="$hsCode"/>' is not a valid item classification code under codelist CL-08-OM-HS.
+            Expected: a 12-digit Oman HS code from the official Oman HS Codes codelist (e.g. '010121100001').
             Empty values are permitted; cardinality is enforced separately.
+            ISIC (6-digit) codes are no longer accepted on this path - move them to
+            cac:Item/cac:AdditionalItemIdentification/cbc:ID[@schemeName='CC']
+            (validated by CL-08-OM-ISIC).
         </diagnostic>
 
-        <diagnostic id="d-CL-DEC-03-OM">
+        <diagnostic id="d-CL-08-OM-ISIC">
+            The supplied value '<value-of select="$isicCode"/>' is not a valid item classification code under codelist CL-08-OM-ISIC.
+            Expected: a 6-digit ISIC code from the ISIC business activity codelist (e.g. '011101').
+            Empty values are permitted; cardinality is enforced separately by IBR-081-OM.
+            HS codes belong at
+            cac:Item/cac:CommodityClassification/cbc:ItemClassificationCode[@listID='HS']
+            (validated by CL-08-OM).
+        </diagnostic>
+
+        <diagnostic id="d-IBR-DEC-02-OM">
+            Shared document totals decimal precision validation (BG-22)
+
+            Found:
+            - Element: '<value-of select="name()"/>'
+            - Value: '<value-of select="normalize-space(.)"/>'
+
+            Expected:
+            Shared section document totals MUST NOT contain more than 2 decimal places.
+            Covered fields: IBT-106 Sum of Invoice line net amount, IBT-109 Invoice total
+            amount without VAT, IBT-110 Invoice total TAX amount, IBT-112 Invoice total
+            amount with VAT, IBT-113 Paid amount, IBT-114 Rounding amount, IBT-115 Amount
+            due for payment.
+
+            Examples of valid values:
+            - 100
+            - 100.1
+            - 100.12
+
+            Invalid examples:
+            - 100.123
+            - 100.1234
+
+            Action:
+            Round the value to a maximum of 2 fractional digits.
+        </diagnostic>
+
+        <diagnostic id="d-IBR-DEC-03-OM">
             Amount decimal precision validation (BTAE-Amount)
 
             Found:
@@ -1028,7 +905,8 @@
             - Value: '<value-of select="normalize-space(.)"/>'
 
             Expected:
-            Amount must contain no more than 3 decimal places.
+            Amount (except Shared) must contain no more than 3 decimal places.
+            the Exchange rate is validated by IBR-DEC-07-OM at 7 decimals.)
 
             Examples of valid values:
             - 100
@@ -1042,6 +920,30 @@
 
             Action:
             Reduce the number of fractional digits to a maximum of 3.
+        </diagnostic>
+
+        <diagnostic id="d-IBR-DEC-07-OM">
+            Currency Exchange Rate decimal precision validation (BTOM-003)
+
+            Found:
+            - Element: '<value-of select="name()"/>'
+            - Value: '<value-of select="normalize-space(.)"/>'
+
+            Expected:
+            The currency exchange rate MUST NOT contain more than 7 decimal places.
+
+            Examples of valid values:
+            - 1
+            - 0.385
+            - 0.3850000
+            - 1.2345678
+
+            Invalid examples:
+            - 1.23456789
+            - 0.38500001234
+
+            Action:
+            Round the exchange rate to a maximum of 7 fractional digits.
         </diagnostic>
         <diagnostic id="d-CL-02-OM">
             Credit/Debit Note reason code (BTOM-032)
@@ -1091,14 +993,43 @@
             Use a valid VAT category code from the Invoice VAT Categories codelist.
         </diagnostic>
 
-        <diagnostic id="d-CL-05-10-OM">
-            VAT exemption / zero rating reason code (IBT-196)
+        <diagnostic id="d-CL-05-OM">
+            VAT exemption reason code (IBT-121 / IBT-186 / IBT-196 / IBT-198)
 
             Found:
-            - Value: '<value-of select="normalize-space(.)"/>'
+            - VAT category code (parent): '<value-of select="normalize-space(../cbc:ID)"/>'
+            - Exemption reason code value: '<value-of select="normalize-space(.)"/>'
 
-            Expected:
-            Code must be one of the following:
+            Expected (when VAT category code is 'E' - Exempt):
+            Code must be one of the Exemption codelist values:
+
+            - VATEX-OM-01
+            - VATEX-OM-02
+            - VATEX-OM-03
+            - VATEX-OM-04
+            - VATEX-OM-05
+            - VATEX-OM-06
+            - VATEX-OM-07
+            - VATEX-OM-08
+            - VATEX-OM-09
+            - VATEX-OM-10
+            - VATEX-OM-11
+            - VATEX-OM-12
+
+            Action:
+            Provide a valid VATEX-OM-* exemption reason code, or change the
+            VAT category code if the supply is not actually exempt.
+        </diagnostic>
+
+        <diagnostic id="d-CL-10-OM">
+            VAT zero-rating reason code (IBT-121 / IBT-186 / IBT-196 / IBT-198)
+
+            Found:
+            - VAT category code (parent): '<value-of select="normalize-space(../cbc:ID)"/>'
+            - Zero-rating reason code value: '<value-of select="normalize-space(.)"/>'
+
+            Expected (when VAT category code is 'Z' - Zero rated):
+            Code must be one of the Zero rating codelist values:
 
             - VATZR-OM-01
             - VATZR-OM-02
@@ -1116,21 +1047,10 @@
             - VATZR-OM-14
             - VATZR-OM-15
             - VATZR-OM-16
-            - VATEX-OM-01
-            - VATEX-OM-02
-            - VATEX-OM-03
-            - VATEX-OM-04
-            - VATEX-OM-05
-            - VATEX-OM-06
-            - VATEX-OM-07
-            - VATEX-OM-08
-            - VATEX-OM-09
-            - VATEX-OM-10
-            - VATEX-OM-11
-            - VATEX-OM-12
 
             Action:
-            Provide a valid exemption or zero-rating reason code.
+            Provide a valid VATZR-OM-* zero-rating reason code, or change the
+            VAT category code if the supply is not actually zero rated.
         </diagnostic>
 
         <diagnostic id="d-CL-06-OM">
@@ -1155,7 +1075,7 @@
         </diagnostic>
 
         <diagnostic id="d-CL-07-OM">
-            Item type (BTOM-019)
+            Goods or Services identification (BTOM-019)
 
             Found:
             - Value: '<value-of select="normalize-space(.)"/>'
@@ -1163,8 +1083,8 @@
             Expected:
             Code must be one of the following:
 
-            - GS
-            - SV
+            - G  (Goods)
+            - S  (Services)
 
             Action:
             Use a valid item type code.
@@ -1243,6 +1163,7 @@
             - 92000000
             - 93000000
             - 94000000
+            - 00000000
 
             Action:
             Use a valid service classification code.
@@ -1262,6 +1183,7 @@
             - SLLFZ
             - AFZ
             - MO
+            - OTH
 
             Action:
             Use a valid subdivision code.
@@ -1273,9 +1195,10 @@
             '<value-of select="$txnType"/>'
 
             Expected:
-            A 20-character string of '1' and 'X', with at least one '1'
-            indicating an active transaction type. Multiple '1's are allowed
-            when more than one transaction type applies.
+            A 20-character bitmap of '1' and '0' with at least one '1'
+            marking an active transaction type. More than one '1' is allowed
+            when several transaction types apply concurrently (subject to
+            the mutual-exclusion rules IBR-138..149, IBR-176).
 
             Action:
             Provide a valid transaction type code.
@@ -1659,7 +1582,6 @@
             Remove the VAT exemption reason for VAT category 'S'.
         </diagnostic>
 
-
         <diagnostic id="d-IBR-001">
             Invoice transaction type (BTOM-001)
 
@@ -1667,10 +1589,10 @@
             '<value-of select="cbc:InvoiceTypeCode/@name | cbc:CreditNoteTypeCode/@name"/>'
 
             Expected:
-            A 20-character string containing only '1' and 'X'.
+            A 20-character string containing only '1' and '0'.
 
             Action:
-            Provide a valid 20-character transaction type using '1' and 'X' only.
+            Provide a valid 20-character transaction type using '1' and '0' only.
         </diagnostic>
 
         <diagnostic id="d-IBR-002">
@@ -1687,16 +1609,16 @@
         </diagnostic>
 
         <diagnostic id="d-IBR-003">
-            VAT identifier (IBT-031)
+            VAT identifier (IBT-031 / IBT-048 / BTOM-006)
 
             Found:
             '<value-of select="."/>'
 
             Expected:
-            12 alphanumeric characters starting with 'OM'.
+            12 characters: 'OM' followed by exactly 10 digits (regex ^OM[0-9]{10}$).
 
             Action:
-            Provide a valid VAT identifier (e.g., OMXXXXXXXXXX).
+            Provide a valid VAT identifier (e.g., OM1234567890).
         </diagnostic>
 
         <diagnostic id="d-IBR-004">
@@ -2126,11 +2048,11 @@
         <diagnostic id="d-IBR-056">
             Context: Item classification scheme must conform to the required product classification standard.
 
-            Found: Item classification scheme = '<value-of select="cbc:ItemClassificationCode/@listID"/>'.
+            Found: Item classification scheme(s) = '<value-of select="string-join(cac:Item/cac:CommodityClassification/cbc:ItemClassificationCode/@listID, ', ')"/>'.
 
-            Expected: Item classification scheme identifier must be 'HS' (Harmonized System classification).
+            Expected: Item classification scheme identifier (IBT-158-1) must be 'HS' (Harmonized System / goods, CL-08-OM) or 'MP' (Service Type, CL-12-OM).
 
-            Action: Update the item classification scheme to 'HS' or ensure correct mapping from product master data.
+            Action: Update the item classification scheme to 'HS' or 'MP', or ensure correct mapping from product master data. Note: ISIC codes (BTOM-018) now live under cac:AdditionalItemIdentification/cbc:ID[@schemeName='CC'] - they do NOT use cbc:ItemClassificationCode any more.
         </diagnostic>
 
         <diagnostic id="d-IBR-057">
@@ -2143,8 +2065,6 @@
         </diagnostic>
 
         <diagnostic id="d-IBR-058">
-            Prepayment flag: '<value-of select="$isPrepayment"/>'
-
             Prepaid amount present: '<value-of select="exists(cac:LegalMonetaryTotal/cbc:PrepaidAmount)"/>'
             Value: '<value-of select="cac:LegalMonetaryTotal/cbc:PrepaidAmount"/>'
 
@@ -2284,7 +2204,7 @@
             - Allowances total (IBT-136): '<value-of select="$allowancesTotal"/>'
 
             Expected: Line net amount must equal
-            (Quantity * (Price + Base quantity)) + Charges - Allowances,
+            (Quantity * (Price / Base quantity)) + Charges - Allowances,
             within an allowed tolerance of 0.01.
 
             Fix: Recalculate the line net amount (IBT-131) using the above components and ensure it matches the expected value.
@@ -2353,59 +2273,67 @@
         <diagnostic id="d-IBR-078">
             Context: Item type classification is required for proper invoice line-level product identification.
 
-            Found: Item type is missing or not provided at invoice line level (cac:Item/cac:CommodityClassification/cbc:NatureCode).
+            Found: Item type is missing or not provided at invoice line level
+                (cac:Item/cac:ItemSpecificationDocumentReference[cbc:ID/@schemeName='MP']/cbc:DocumentTypeCode).
 
             Transaction type (BTOM-001): '<value-of select="cbc:InvoiceTypeCode/@name | cbc:CreditNoteTypeCode/@name"/>'
 
-            Expected: Item type must be provided for standard invoice types unless the document is explicitly classified as a simplified invoice under applicable billing rules.
+            Expected: Item type ('G' = Goods, 'S' = Service) must be provided for standard invoice types unless the document is explicitly classified as a simplified invoice under applicable billing rules.
 
-            Action: Populate the item type (commodity classification nature code) or verify that the invoice qualifies as a simplified invoice where item-level classification is not required.
+            Action: Populate the item type at
+                cac:Item/cac:ItemSpecificationDocumentReference[cbc:ID/@schemeName='MP']/cbc:DocumentTypeCode
+            or verify that the invoice qualifies as a simplified invoice where item-level classification is not required.
         </diagnostic>
 
         <diagnostic id="d-IBR-079">
-            Missing classification code for goods.
+            Missing HS classification code for goods.
 
             Found:
-            - Item type: '<value-of select="cac:Item/cac:CommodityClassification/cbc:NatureCode"/>'.
-            - ClassificationCode: '<value-of select="cac:Item/cac:CommodityClassification/cbc:ItemClassificationCode"/>'.
+            - Goods or Services identification: '<value-of select="cac:Item/cac:ItemSpecificationDocumentReference[cbc:ID/@schemeName='MP']/cbc:DocumentTypeCode"/>'.
+            - HS ClassificationCode: '<value-of select="cac:Item/cac:CommodityClassification/cbc:ItemClassificationCode[@listID='HS']"/>'.
 
-            Expected: Goods items must include a valid classification code.
+            Expected: Goods items (Goods or Services identification 'G') must include a valid HS classification code (IBT-158, @listID='HS').
 
-            Fix: Provide the appropriate classification code for the goods item.
+            Fix: Provide the appropriate HS classification code for the goods item at
+                cac:Item/cac:CommodityClassification/cbc:ItemClassificationCode[@listID='HS'].
         </diagnostic>
 
         <diagnostic id="d-IBR-080">
-            Context: Commodity classification code must comply with minimum structural requirements.
+            Context: HS classification code must comply with the Oman HS code structural requirement.
 
-            Found: Classification code length = '<value-of select="string-length(cac:Item/cac:CommodityClassification/cbc:ItemClassificationCode)"/>'
+            Found: HS code length = '<value-of select="string-length(normalize-space(cac:Item/cac:CommodityClassification/cbc:ItemClassificationCode[@listID='HS']))"/>'
+            Value: '<value-of select="cac:Item/cac:CommodityClassification/cbc:ItemClassificationCode[@listID='HS']"/>'
 
-            Expected: Classification code must be at least 12 digits in length and conform to the required industrial classification standard.
+            Expected: Classification code with @listID='HS' must be exactly 12 digits (the Oman HS code length). 6-digit ISIC codes go under cac:AdditionalItemIdentification/cbc:ID[@schemeName='CC'] (CL-08-OM-ISIC); 8-digit service-type codes use @listID='MP' (CL-12-OM).
 
-            Action: Provide a valid classification code with a minimum length of 12 digits or correct the mapping from the product master data source.
+            Action: Provide a 12-digit Oman HS code or correct the mapping from the product master data source.
         </diagnostic>
 
         <diagnostic id="d-IBR-081">
-            Context: Industrial classification code is required for item-level product classification.
+            Context: Industrial classification code (ISIC) is required for item-level product classification.
 
-            Found: Missing industrial classification code (cac:Item/cac:CommodityClassification/cbc:ItemClassificationCode).
+            Found: Missing industrial classification code at
+                cac:Item/cac:AdditionalItemIdentification/cbc:ID[@schemeName='CC'].
+            Existing CC entries (if any): '<value-of select="string-join(cac:Item/cac:AdditionalItemIdentification/cbc:ID[@schemeName='CC'], ', ')"/>'
 
             Expected: Industrial classification code must be provided where applicable according to product classification rules.
 
-            Action: Populate the industrial classification code or verify whether the item is exempt from classification requirements.
+            Action: Populate the ISIC code at
+                cac:Item/cac:AdditionalItemIdentification/cbc:ID[@schemeName='CC']
+            or verify whether the item is exempt from classification requirements (simplified, import of goods, import of services RCM, or Profit-Margin Self-Invoice).
         </diagnostic>
 
         <diagnostic id="d-IBR-082">
-            Context: Invoice total consistency validation across all monetary components.
+            Context: Profit-margin Total Amount Due (BTOM-020) integrity check.
 
-            Found: Total amount due does not match expected calculation.
+            Found:
+            - Reported Total Amount Due (BTOM-020):  '<value-of select="cac:AdditionalDocumentReference[cbc:DocumentTypeCode='PM_TOTAL']/cbc:DocumentDescription"/>'
+            - Calculated Σ line totals including VAT (BTOM-017): '<value-of select="sum((cac:InvoiceLine | cac:CreditNoteLine)/cac:ItemPriceExtension/cbc:Amount/xs:decimal(.))"/>'
+            - Difference (Calculated - Reported):    '<value-of select="xs:decimal(sum((cac:InvoiceLine | cac:CreditNoteLine)/cac:ItemPriceExtension/cbc:Amount/xs:decimal(.)) - xs:decimal(cac:AdditionalDocumentReference[cbc:DocumentTypeCode='PM_TOTAL']/cbc:DocumentDescription))"/>'
 
-            Value observed: '<value-of select="cac:AdditionalDocumentReference[cbc:DocumentTypeCode='PM_TOTAL']/cbc:DocumentDescription"/>'
-            Our Calculation: '<value-of select="sum((cac:InvoiceLine | cac:CreditNoteLine)/cac:ItemPriceExtension/cbc:Amount)"/>'
-            Difference: '<value-of select="xs:decimal(sum((cac:InvoiceLine | cac:CreditNoteLine)/cac:ItemPriceExtension/cbc:Amount) - cac:AdditionalDocumentReference[cbc:DocumentTypeCode='PM_TOTAL']/cbc:DocumentDescription)"/>'
+            Expected: Total Amount Due (BTOM-020) must equal the sum of Total amount including VAT (BTOM-017) over all invoice lines, within ±0.01.
 
-            Expected: Total amount due (BTOM-020) must equal Total amount including VAT (BTOM-017) adjusted for all applicable charges, allowances, and rounding rules.
-
-            Action: Recalculate the total payable amount ensuring consistency across VAT, charges, allowances, and rounding rules.
+            Action: Recalculate the Profit-Margin Total Amount Due value or correct the line totals so the two agree.
         </diagnostic>
 
         <diagnostic id="d-IBR-084">
@@ -2460,15 +2388,15 @@
         </diagnostic>
 
         <diagnostic id="d-IBR-091">
-            Invalid item classification code for profit margin invoice.
+            Invalid HS item classification code for profit margin invoice.
 
             Transaction type (BTOM-001): '<value-of select="cbc:InvoiceTypeCode/@name | cbc:CreditNoteTypeCode/@name"/>'
-            Classification code (IBT-158): '<value-of select="cac:Item/cac:CommodityClassification/cbc:ItemClassificationCode"/>'
+            HS classification codes (IBT-158, @listID='HS'): '<value-of select="string-join(cac:Item/cac:CommodityClassification/cbc:ItemClassificationCode[@listID='HS'], ', ')"/>'
 
-            Expected: For profit margin transactions, the classification code must NOT start with any of the following prefixes:
+            Expected: For profit margin transactions, the HS classification code must NOT start with any of the following prefixes:
             '7101', '7102', '7103', '7104', '01', '06'.
 
-            Fix: Update the classification code so that it does not begin with a prohibited prefix for profit margin invoices.
+            Fix: Update the HS classification code so that it does not begin with a prohibited prefix for profit margin invoices.
         </diagnostic>
 
         <diagnostic id="d-IBR-092">
@@ -2800,11 +2728,16 @@
         <diagnostic id="d-IBR-155">
             Context: Export of services requires mandatory service type classification for regulatory reporting.
 
-            Found: Service type is missing or not provided (cac:Item/cac:CommodityClassification/cbc:ItemClassificationCode = '<value-of select="cac:Item/cac:CommodityClassification/cbc:ItemClassificationCode"/>').
+            Found: Service type (MP) is missing or not provided at
+                cac:Item/cac:ItemSpecificationDocumentReference/cbc:ID[@schemeName='MP']
+            on any invoice line. Existing service-type entries detected on this document:
+            '<value-of select="string-join($lines/cac:Item/cac:ItemSpecificationDocumentReference/cbc:ID[@schemeName='MP'], ', ')"/>'
 
-            Expected: Service type must be provided for export of services using a valid code from code list CL-12-OM.
+            Expected: Service type must be provided for export of services using a valid code from code list CL-12-OM (@schemeName='MP').
 
-            Action: Populate a valid service type code from CL-12-OM or verify correct classification of the exported service.
+            Action: Populate a valid service type code from CL-12-OM at
+                cac:Item/cac:ItemSpecificationDocumentReference/cbc:ID[@schemeName='MP']
+            or verify correct classification of the exported service.
         </diagnostic>
 
         <diagnostic id="d-IBR-156">
@@ -2902,6 +2835,22 @@
             Ensure the invoice issue date is not set in the future.
         </diagnostic>
 
+        <diagnostic id="d-IBR-171-A">
+            Date format error on a payment / installment date.
+
+            Found:
+            - Element: '<value-of select="name()"/>'
+            - Value:   '<value-of select="."/>'
+
+            Expected:
+            Dates carried in cbc:ReceivedDate (IBT-177), cbc:InstallmentDueDate
+            (IBT-181) and the payment-due-date family (IBT-009) MUST be
+            formatted YYYY-MM-DD and represent a valid calendar date.
+
+            Fix:
+            Reformat the value to a 10-character ISO-8601 date.
+        </diagnostic>
+
         <diagnostic id="d-IBR-172">
             Invalid exchange rate usage.
             Found:
@@ -2929,18 +2878,20 @@
         <diagnostic id="d-IBR-174">
             Context: Item classification must comply with customs tariff classification requirements for import/export declarations.
 
-            Found: Item classification code = '<value-of select="cac:Item/cbc:ItemClassificationCode"/>'
+            Found:
+            - Goods or Services identification (BTOM-019): '<value-of select="cac:Item/cac:ItemSpecificationDocumentReference[cbc:ID/@schemeName='MP']/cbc:DocumentTypeCode"/>'
+            - HS code (IBT-158, @listID='HS'): '<value-of select="cac:Item/cac:CommodityClassification/cbc:ItemClassificationCode[@listID='HS']"/>'
 
-            Expected: Item classification identifier must be a valid Harmonized System (HS) code as required under Royal Oman Police customs classification rules.
+            Expected: When Goods or Services identification is 'G' (Goods), the item classification identifier must be a valid Harmonized System (HS) code as required under Royal Oman Police customs classification rules.
 
-            Action: Provide a valid HS classification code compliant with Royal Oman Police customs tariff structure or correct the product mapping in the item master data.
+            Action: Provide a valid HS classification code (at cac:Item/cac:CommodityClassification/cbc:ItemClassificationCode[@listID='HS']) compliant with the Royal Oman Police customs tariff structure or correct the product mapping in the item master data.
         </diagnostic>
 
         <diagnostic id="d-IBR-175">
             Missing or incomplete preceding invoice reference for profit margin invoice.
 
             Found:
-            - Transaction type (BTOM-003): '<value-of select="cbc:InvoiceTypeCode/@name | cbc:CreditNoteTypeCode/@name"/>'
+            - Transaction type (BTOM-001): '<value-of select="cbc:InvoiceTypeCode/@name | cbc:CreditNoteTypeCode/@name"/>'
             - Preceding invoice reference (IBT-025): '<value-of select="string-join(cac:BillingReference/cac:InvoiceDocumentReference/cbc:ID, ', ')"/>'
             - Preceding invoice UUID (BTOM-031): '<value-of select="string-join(cac:BillingReference/cac:InvoiceDocumentReference/cbc:UUID, ', ')"/>'
 
@@ -3002,93 +2953,5 @@
         </diagnostic>
 
         
-
-        
-        
-        
-        
-        
-        
-        
-
-        <diagnostic id="d-IBR-103">
-            Why this rule exists:
-            Zero-rated supplies must explicitly carry a 0% VAT rate when
-            reporting in the tax accounting currency, so consumers of the
-            invoice can distinguish 'zero' from 'absent'.
-
-            Found:
-            - VAT category (IBT-192): '<value-of select="cac:TaxCategory/cbc:ID"/>'
-            - VAT rate     (IBT-193): '<value-of select="cac:TaxCategory/cbc:Percent"/>'
-            - Currency:                '<value-of select="cbc:TaxAmount/@currencyID"/>'
-
-            Expected:
-            cbc:Percent = 0 when cbc:ID = 'Z'.
-
-            Action:
-            Set the VAT category rate (IBT-193) to 0 for the zero-rated VAT
-            subtotal in the tax accounting currency.
-        </diagnostic>
-
-        <diagnostic id="d-IBR-105">
-            Why this rule exists:
-            Document-level allowances classified as 'Exempt' must declare the
-            legal basis for the exemption so the Tax Authority can verify it.
-
-            Found:
-            - Allowance VAT category (IBT-095): '<value-of select="cac:TaxCategory/cbc:ID"/>'
-            - Allowance amount       (IBT-092): '<value-of select="cbc:Amount"/>'
-            - Exemption reason code  (IBT-196): '<value-of select="cac:TaxCategory/cbc:TaxExemptionReasonCode"/>'
-
-            Expected:
-            A VAT exemption reason code (IBT-196) selected from the
-            Zero-Rating / Exemption codelist (CL-05-10-OM).
-
-            Action:
-            Add &lt;cac:TaxCategory&gt;&lt;cbc:TaxExemptionReasonCode&gt;…&lt;/cbc:TaxExemptionReasonCode&gt;
-            inside the document-level allowance.
-        </diagnostic>
-
-        <diagnostic id="d-IBR-106">
-            Why this rule exists:
-            Document-level charges classified as 'Exempt' must declare the
-            legal basis for the exemption so the Tax Authority can verify it.
-
-            Found:
-            - Charge VAT category (IBT-102): '<value-of select="cac:TaxCategory/cbc:ID"/>'
-            - Charge amount       (IBT-099): '<value-of select="cbc:Amount"/>'
-            - Exemption reason    (IBT-198): '<value-of select="cac:TaxCategory/cbc:TaxExemptionReasonCode"/>'
-
-            Expected:
-            A VAT exemption reason code (IBT-198) selected from the
-            Zero-Rating / Exemption codelist (CL-05-10-OM).
-
-            Action:
-            Add &lt;cac:TaxCategory&gt;&lt;cbc:TaxExemptionReasonCode&gt;…&lt;/cbc:TaxExemptionReasonCode&gt;
-            inside the document-level charge.
-        </diagnostic>
-
-        
-        <diagnostic id="d-HS-SELFTEST-MONO">
-            HS-bucket monotonicity self-test failed.
-            The boundary list driving the CL-08And12-OM dispatcher must
-            be in non-decreasing lexicographic order. Re-sort the
-            $boundaries variable in HsBucketSelfTest and the
-            corresponding if/then/else cascade in CL-08And12-OM.
-        </diagnostic>
-        <diagnostic id="d-HS-SELFTEST-COVERS">
-            HS-bucket coverage self-test failed.
-            The final boundary in the dispatcher must be '98' (or
-            higher). HS chapters above the last boundary fall through
-            to false() and would mis-validate. Add a trailing bucket
-            covering the highest chapter in use.
-        </diagnostic>
-        <diagnostic id="d-HS-SELFTEST-EXHAUSTIVE">
-            HS-bucket exhaustiveness self-test failed.
-            At least one chapter in '01'..'99' has no bucket whose
-            boundary is &gt;= that chapter. Inspect the $boundaries
-            list in HsBucketSelfTest and reconcile it with the
-            if/then/else cascade in CL-08And12-OM.
-        </diagnostic>
     </diagnostics>
 </schema>

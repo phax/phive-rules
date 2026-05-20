@@ -224,6 +224,16 @@
 		<cac:Item>
 			<cbc:Description>Recessed LED ceiling panel 600x600 mm, 40 W, 4000 K, IP40, dimmable.</cbc:Description>
 			<cbc:Name>LED ceiling panel 600x600 40W</cbc:Name>
+			<cac:AdditionalItemIdentification>
+				<cbc:ID schemeName="CC">000000</cbc:ID>
+			</cac:AdditionalItemIdentification>
+			<cac:ItemSpecificationDocumentReference>
+				<cbc:ID schemeName="MP">00000000</cbc:ID>
+				<cbc:DocumentTypeCode>G</cbc:DocumentTypeCode>
+			</cac:ItemSpecificationDocumentReference>
+			<cac:CommodityClassification>
+				<cbc:ItemClassificationCode listID="HS">010121100001</cbc:ItemClassificationCode>
+			</cac:CommodityClassification>
 			<cac:ClassifiedTaxCategory>
 				<cbc:ID>E</cbc:ID>
 				<cbc:TaxExemptionReasonCode>VATEX-OM-04</cbc:TaxExemptionReasonCode>

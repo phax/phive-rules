@@ -37,6 +37,11 @@
 		<cbc:EndDate>2026-06-22</cbc:EndDate>
 		<cbc:DescriptionCode>3</cbc:DescriptionCode>
 	</cac:InvoicePeriod>
+	<!-- IBR-058: prepayment originator document reference -->
+	<cac:OriginatorDocumentReference>
+		<cbc:ID>PRE-ORIG-001</cbc:ID>
+		<cbc:UUID>4f8a1c20-6b8f-4321-8abc-1234567890ab</cbc:UUID>
+	</cac:OriginatorDocumentReference>
 	<!-- =================  Supplier (seller)  ================= -->
 	<cac:AccountingSupplierParty>
 		<cac:Party>
@@ -107,11 +112,7 @@
 			</cac:Address>
 		</cac:DeliveryLocation>
 	</cac:Delivery>
-	<!-- IBR-058: prepayment originator document reference -->
-	<cac:OriginatorDocumentReference>
-		<cbc:ID>PRE-ORIG-001</cbc:ID>
-		<cbc:UUID>4f8a1c20-6b8f-4321-8abc-1234567890ab</cbc:UUID>
-	</cac:OriginatorDocumentReference>
+
 	<!-- =================  Payment means     ================= -->
 	<cac:PaymentMeans>
 		<cbc:PaymentMeansCode name="Credit Card">55</cbc:PaymentMeansCode>
@@ -160,8 +161,14 @@
 		<cbc:LineExtensionAmount currencyID="OMR">180</cbc:LineExtensionAmount>
 		<cac:Item>
 			<cbc:Name>Reservation deposit - 7-night package</cbc:Name>
+			<cac:AdditionalItemIdentification>
+				<cbc:ID schemeName="CC">000000</cbc:ID>
+			</cac:AdditionalItemIdentification>
+			<cac:ItemSpecificationDocumentReference>
+				<cbc:ID schemeName="MP">00000000</cbc:ID>
+				<cbc:DocumentTypeCode>G</cbc:DocumentTypeCode>
+			</cac:ItemSpecificationDocumentReference>
 			<cac:CommodityClassification>
-				<cbc:NatureCode>S</cbc:NatureCode>
 				<cbc:ItemClassificationCode listID="HS">840110000000</cbc:ItemClassificationCode>
 			</cac:CommodityClassification>
 			<cac:ClassifiedTaxCategory>
