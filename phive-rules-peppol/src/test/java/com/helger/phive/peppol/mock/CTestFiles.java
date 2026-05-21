@@ -36,6 +36,7 @@ import com.helger.phive.peppol.PeppolValidation2025_03;
 import com.helger.phive.peppol.PeppolValidation2025_05;
 import com.helger.phive.peppol.PeppolValidation2025_11;
 import com.helger.phive.peppol.PeppolValidation2026_03;
+import com.helger.phive.peppol.PeppolValidation2026_05;
 import com.helger.phive.peppol.PeppolValidationBisAUNZ;
 import com.helger.phive.peppol.PeppolValidationBisSG;
 import com.helger.phive.peppol.PeppolValidationDirectory;
@@ -133,6 +134,23 @@ public final class CTestFiles
 
                                                              PeppolValidation2026_03.VID_OPENPEPPOL_INVOICE_SELF_BILLING_UBL_V3,
                                                              PeppolValidation2026_03.VID_OPENPEPPOL_CREDIT_NOTE_SELF_BILLING_UBL_V3,
+
+                                                             PeppolValidation2026_05.VID_OPENPEPPOL_INVOICE_UBL_V3,
+                                                             PeppolValidation2026_05.VID_OPENPEPPOL_CREDIT_NOTE_UBL_V3,
+                                                             PeppolValidation2026_05.VID_OPENPEPPOL_INVOICE_SELF_BILLING_UBL_V3,
+                                                             PeppolValidation2026_05.VID_OPENPEPPOL_CREDIT_NOTE_SELF_BILLING_UBL_V3,
+                                                             PeppolValidation2026_05.VID_OPENPEPPOL_ORDER_V3,
+                                                             PeppolValidation2026_05.VID_OPENPEPPOL_DESPATCH_ADVICE_V3,
+                                                             PeppolValidation2026_05.VID_OPENPEPPOL_CATALOGUE_V3,
+                                                             PeppolValidation2026_05.VID_OPENPEPPOL_CATALOGUE_RESPONSE_V3,
+                                                             PeppolValidation2026_05.VID_OPENPEPPOL_MLR_V3,
+                                                             PeppolValidation2026_05.VID_OPENPEPPOL_ORDER_RESPONSE_V3,
+                                                             PeppolValidation2026_05.VID_OPENPEPPOL_PUNCH_OUT_V3,
+                                                             PeppolValidation2026_05.VID_OPENPEPPOL_ORDER_AGREEMENT_V3,
+                                                             PeppolValidation2026_05.VID_OPENPEPPOL_INVOICE_MESSAGE_RESPONSE_V3,
+                                                             PeppolValidation2026_05.VID_OPENPEPPOL_ORDER_CHANGE_V3,
+                                                             PeppolValidation2026_05.VID_OPENPEPPOL_ORDER_CANCELLATION_V3,
+                                                             PeppolValidation2026_05.VID_OPENPEPPOL_ORDER_RESPONSE_ADVANCED_V3,
 
                                                              /*
                                                               * OpenPeppol Directory
@@ -648,6 +666,99 @@ public final class CTestFiles
                         "SB-vat-category-Z.xml");
       if (aVESID.equals (PeppolValidation2026_03.VID_OPENPEPPOL_CREDIT_NOTE_SELF_BILLING_UBL_V3))
         return _getAll ("openpeppol/2026.3/", "SB-base-creditnote-correction.xml");
+    }
+
+    // 2026-05
+    {
+      // https://github.com/OpenPEPPOL/peppol-bis-invoice-3/tree/master/rules/examples
+      if (aVESID.equals (PeppolValidation2026_05.VID_OPENPEPPOL_INVOICE_UBL_V3))
+        return _getAll ("openpeppol/2026.5/",
+                        "billing/Allowance-example.xml",
+                        "billing/base-example.xml",
+                        "billing/base-example_profile02.xml",
+                        "billing/base-negative-inv-correction.xml",
+                        "billing/vat-category-E.xml",
+                        "billing/vat-category-O.xml",
+                        "billing/Vat-category-S.xml",
+                        "billing/vat-category-Z.xml");
+      if (aVESID.equals (PeppolValidation2026_05.VID_OPENPEPPOL_CREDIT_NOTE_UBL_V3))
+        return _getAll ("openpeppol/2026.5/", "billing/base-creditnote-correction.xml");
+      if (aVESID.equals (PeppolValidation2026_05.VID_OPENPEPPOL_INVOICE_SELF_BILLING_UBL_V3))
+        return _getAll ("openpeppol/2026.5/",
+                        "SB-Allowance-example.xml",
+                        "SB-base-example.xml",
+                        "SB-base-negative-inv-correction.xml",
+                        "SB-sales-order-example.xml",
+                        "SB-vat-category-E.xml",
+                        "SB-vat-category-O.xml",
+                        "SB-Vat-category-S.xml",
+                        "SB-vat-category-Z.xml");
+      if (aVESID.equals (PeppolValidation2026_05.VID_OPENPEPPOL_CREDIT_NOTE_SELF_BILLING_UBL_V3))
+        return _getAll ("openpeppol/2026.5/", "SB-base-creditnote-correction.xml");
+      if (aVESID.equals (PeppolValidation2026_05.VID_OPENPEPPOL_ORDER_V3))
+        return _getAll ("openpeppol/2026.5/",
+                        "Order_Example.xml",
+                        "Order use cases/UC1_Order.xml",
+                        "Order use cases/UC2_Order.xml",
+                        "Order use cases/UC3_Order.xml",
+                        "Order use cases/UC4_Order.xml",
+                        "Order use cases/UC5_Order.xml",
+                        "Order use cases/UC6_Order.xml");
+      if (aVESID.equals (PeppolValidation2026_05.VID_OPENPEPPOL_DESPATCH_ADVICE_V3))
+        return _getAll ("openpeppol/2026.5/",
+                        "DespatchAdvice_Example.xml",
+                        "Despatch Advice use cases/DespatchAdvice-BIS3_UseCase1.xml",
+                        "Despatch Advice use cases/DespatchAdvice-BIS3_UseCase2.xml",
+                        "Despatch Advice use cases/DespatchAdvice-BIS3_UseCase3.xml",
+                        "Despatch Advice use cases/DespatchAdvice-BIS3_UseCase4.xml",
+                        "Despatch Advice use cases/DespatchAdvice-BIS3_UseCase5.xml");
+      if (aVESID.equals (PeppolValidation2026_05.VID_OPENPEPPOL_CATALOGUE_V3))
+        return _getAll ("openpeppol/2026.5/",
+                        "Catalogue_Example.xml",
+                        "Cataloge wo response use cases/catalogue-wo-response-use-case-1.xml",
+                        "Cataloge wo response use cases/catalogue-wo-response-use-case-2.xml",
+                        "Cataloge wo response use cases/catalogue-wo-response-use-case-3.xml",
+                        "Cataloge wo response use cases/catalogue-wo-response-use-case-4.xml",
+                        "Cataloge wo response use cases/catalogue-wo-response-use-case-5.xml",
+                        "Cataloge wo response use cases/catalogue-wo-response-use-case-6.xml");
+      if (aVESID.equals (PeppolValidation2026_05.VID_OPENPEPPOL_CATALOGUE_RESPONSE_V3))
+        return _getAll ("openpeppol/2026.5/", "CatalogueResponse_Example.xml");
+      if (aVESID.equals (PeppolValidation2026_05.VID_OPENPEPPOL_MLR_V3))
+        return _getAll ("openpeppol/2026.5/", "MessageLevelResponse_Example.xml");
+      if (aVESID.equals (PeppolValidation2026_05.VID_OPENPEPPOL_ORDER_RESPONSE_V3))
+        return _getAll ("openpeppol/2026.5/",
+                        "OrderResponse_Example.xml",
+                        "Order-response use cases/UC1_Order_response.xml",
+                        "Order-response use cases/UC2_Order_response.xml",
+                        "Order-response use cases/UC3_Order_response.xml",
+                        "Order-response use cases/UC4_Order_response.xml",
+                        "Order-response use cases/UC5_Order_response.xml");
+      if (aVESID.equals (PeppolValidation2026_05.VID_OPENPEPPOL_PUNCH_OUT_V3))
+        return _getAll ("openpeppol/2026.5/", "PunchOut_Example.xml");
+      if (aVESID.equals (PeppolValidation2026_05.VID_OPENPEPPOL_ORDER_AGREEMENT_V3))
+        return _getAll ("openpeppol/2026.5/", "OrderAgreement_Example.xml");
+      if (aVESID.equals (PeppolValidation2026_05.VID_OPENPEPPOL_INVOICE_MESSAGE_RESPONSE_V3))
+        return _getAll ("openpeppol/2026.5/",
+                        "InvoiceResponse_Example.xml",
+                        "Invoice reponse use cases/T111-uc001-Invoice in process.xml",
+                        "Invoice reponse use cases/T111-uc002a-Additional reference data.xml",
+                        "Invoice reponse use cases/T111-uc002b-In process but postponed.xml",
+                        "Invoice reponse use cases/T111-uc003-Invoice is accepted.xml",
+                        "Invoice reponse use cases/T111-uc004a-Invoice is rejected.xml",
+                        "Invoice reponse use cases/T111-uc004b-Rejected requesting reissue.xml",
+                        "Invoice reponse use cases/T111-uc004c-Rejected requesting replacement.xml",
+                        "Invoice reponse use cases/T111-uc005-Invoice is conditionally accepted.xml",
+                        "Invoice reponse use cases/T111-uc006a-Under query missing information.xml",
+                        "Invoice reponse use cases/T111-uc006b-Missing PO.xml",
+                        "Invoice reponse use cases/T111-uc006c-Wrong detail partial credit.xml",
+                        "Invoice reponse use cases/T111-uc007-Payment has been initiated.xml",
+                        "Invoice reponse use cases/T111-uc008-Invoice is accepted by third party.xml");
+      if (aVESID.equals (PeppolValidation2026_05.VID_OPENPEPPOL_ORDER_CHANGE_V3))
+        return _getAll ("openpeppol/2026.5/", "OrderChange_Example.xml");
+      if (aVESID.equals (PeppolValidation2026_05.VID_OPENPEPPOL_ORDER_CANCELLATION_V3))
+        return _getAll ("openpeppol/2026.5/", "OrderCancellation_Example.xml");
+      if (aVESID.equals (PeppolValidation2026_05.VID_OPENPEPPOL_ORDER_RESPONSE_ADVANCED_V3))
+        return _getAll ("openpeppol/2026.5/", "OrderResponseAdvanced_Example.xml");
     }
 
     /* Peppol Directory BusinessCard */

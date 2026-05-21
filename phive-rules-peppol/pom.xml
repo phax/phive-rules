@@ -126,16 +126,16 @@
         <groupId>com.helger.maven</groupId>
         <artifactId>ph-schematron-maven-plugin</artifactId>
         <executions>
-          <!-- 
+          <!--
           <execution>
             <id>openpeppol</id>
             <goals>
               <goal>convert</goal>
             </goals>
             <configuration>
-              <schematronDirectory>src/test/resources/external/rule-source/openpeppol/2026.03</schematronDirectory>
+              <schematronDirectory>src/test/resources/external/rule-source/openpeppol/2026.5</schematronDirectory>
               <schematronPattern>*.sch</schematronPattern>
-              <xsltDirectory>src/main/resources/external/schematron/openpeppol/2026.03/xslt</xsltDirectory>
+              <xsltDirectory>src/main/resources/external/schematron/openpeppol/2026.5/xslt</xsltDirectory>
             </configuration>
           </execution>
           -->

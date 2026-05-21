@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OrderResponse
+   xmlns="urn:oasis:names:specification:ubl:schema:xsd:OrderResponse-2"
+   xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+   xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+   xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <cbc:CustomizationID>urn:fdc:peppol.eu:poacc:trns:order_response_advanced:3</cbc:CustomizationID>
+  <cbc:ProfileID>urn:fdc:peppol.eu:poacc:bis:advanced_ordering:3</cbc:ProfileID>
+  <cbc:ID>Response-3</cbc:ID>
+  <cbc:IssueDate>2022-02-10</cbc:IssueDate>
+  <cbc:OrderResponseCode>CA</cbc:OrderResponseCode>
+  <cbc:Note>Response message with new delivery period for one item</cbc:Note>
+  <cbc:DocumentCurrencyCode>EUR</cbc:DocumentCurrencyCode>
+  <cac:OrderReference>
+    <cbc:ID>Order-1</cbc:ID>
+  </cac:OrderReference>
+  <cac:SellerSupplierParty>
+    <cac:Party>
+      <cbc:EndpointID schemeID="0088">7302347231110</cbc:EndpointID>
+      <cac:PartyIdentification>
+        <cbc:ID schemeID="0007">5546577791</cbc:ID>
+      </cac:PartyIdentification>
+      <cac:PartyLegalEntity>
+        <cbc:RegistrationName>The Supplier AB</cbc:RegistrationName>
+      </cac:PartyLegalEntity>
+    </cac:Party>
+  </cac:SellerSupplierParty>
+  <cac:BuyerCustomerParty>
+    <cac:Party>
+      <cbc:EndpointID schemeID="0088">7300010000001</cbc:EndpointID>
+      <cac:PartyIdentification>
+        <cbc:ID schemeID="0007">5541277710</cbc:ID>
+      </cac:PartyIdentification>
+      <cac:PartyLegalEntity>
+        <cbc:RegistrationName>City Hospital</cbc:RegistrationName>
+      </cac:PartyLegalEntity>
+    </cac:Party>
+  </cac:BuyerCustomerParty>
+  <cac:OrderLine>
+     <cac:LineItem>
+      <cbc:ID>1</cbc:ID>
+      <cbc:Note>New delivery period</cbc:Note>
+      <cbc:LineStatusCode>3</cbc:LineStatusCode>
+      <cac:Delivery>
+        <cac:PromisedDeliveryPeriod>
+          <cbc:StartDate>2022-03-01</cbc:StartDate>
+          <cbc:EndDate>2022-04-01</cbc:EndDate>
+        </cac:PromisedDeliveryPeriod>
+      </cac:Delivery>
+      <cac:Item>
+        <cbc:Name>Item 1</cbc:Name>
+        <cac:SellersItemIdentification>
+          <cbc:ID>SN-1</cbc:ID>
+        </cac:SellersItemIdentification>
+      </cac:Item>
+    </cac:LineItem>
+    <cac:OrderLineReference>
+      <cbc:LineID>1</cbc:LineID>
+    </cac:OrderLineReference>
+  </cac:OrderLine>
+  <cac:OrderLine>
+    <cac:LineItem>
+      <cbc:ID>2</cbc:ID>
+      <cbc:Note>No changes</cbc:Note>
+      <cbc:LineStatusCode>5</cbc:LineStatusCode>
+      <cac:Item>
+        <cbc:Name>Item 2</cbc:Name>
+        <cac:SellersItemIdentification>
+          <cbc:ID>SN-2</cbc:ID>
+        </cac:SellersItemIdentification>
+      </cac:Item>
+    </cac:LineItem>
+    <cac:OrderLineReference>
+      <cbc:LineID>2</cbc:LineID>
+    </cac:OrderLineReference>
+  </cac:OrderLine>
+</OrderResponse>
