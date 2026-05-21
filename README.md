@@ -245,7 +245,7 @@ I hope that with the introduction of PINT, the versioning problem will be solved
 
 # News and noteworthy
 
-v4.3.3 - work in progress
+v4.3.3 - 2026-05-21
 * Updated Peppol PINT Oman (OM) 1.0.0 rules (2026-Q2-FIN snapshot)
 * Added Peppol BIS 2026-05 release
 * Moved Peppol BIS Self-Billing 3.0.0 to the Legacy project
