@@ -249,6 +249,8 @@ v4.3.3 - work in progress
 * Updated Peppol PINT Oman (OM) 1.0.0 rules (2026-Q2-FIN snapshot)
 * Added Peppol BIS 2026-05 release
 * Moved Peppol BIS Self-Billing 3.0.0 to the Legacy project
+* Deprecated Simplerinvoicing Invoice 2.0.3.11, Simplerinvoicing 2.0 G-Account extension 1.0.11 and NLCIUS-CII 1.0.3.11
+* Added Simplerinvoicing Invoice 2.0.3.13, Simplerinvoicing 2.0 G-Account extension 1.0.13 and NLCIUS-CII 1.0.3.13.
 
 v4.3.2 - 2026-05-13
 * Added new submodule `phive-rules-osa` for Hungarian NAV Online Számla (OSA) v2.0 and v3.0 XSD validation. See [#64](https://github.com/phax/phive-rules/issues/64) - thx @krisraich
