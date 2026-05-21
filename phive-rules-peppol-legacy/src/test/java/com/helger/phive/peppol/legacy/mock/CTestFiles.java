@@ -30,6 +30,7 @@ import com.helger.io.resource.FileSystemResource;
 import com.helger.io.resource.IReadableResource;
 import com.helger.phive.api.executorset.ValidationExecutorSetRegistry;
 import com.helger.phive.api.mock.PhiveTestFile;
+import com.helger.phive.en16931.EN16931Validation;
 import com.helger.phive.peppol.legacy.PeppolLegacyValidationBisAUNZ;
 import com.helger.phive.peppol.legacy.PeppolLegacyValidationBisEurope;
 import com.helger.phive.peppol.legacy.PeppolLegacyValidationReporting;
@@ -38,6 +39,7 @@ import com.helger.phive.peppol.legacy.PeppolValidation2023_05;
 import com.helger.phive.peppol.legacy.PeppolValidation2023_11;
 import com.helger.phive.peppol.legacy.PeppolValidation2024_05;
 import com.helger.phive.peppol.legacy.PeppolValidation2024_11;
+import com.helger.phive.peppol.legacy.PeppolValidation2025_03;
 import com.helger.phive.peppol.legacy.PeppolValidation3_10_0;
 import com.helger.phive.peppol.legacy.PeppolValidation3_10_1;
 import com.helger.phive.peppol.legacy.PeppolValidation3_11_0;
@@ -55,6 +57,7 @@ public final class CTestFiles
   public static final ValidationExecutorSetRegistry <IValidationSourceXML> VES_REGISTRY = new ValidationExecutorSetRegistry <> ();
   static
   {
+    EN16931Validation.initEN16931 (VES_REGISTRY);
     PeppolLegacyValidationBisEurope.init (VES_REGISTRY);
     PeppolLegacyValidationBisAUNZ.init (VES_REGISTRY);
     PeppolLegacyValidationSG.init (VES_REGISTRY);
@@ -297,6 +300,9 @@ public final class CTestFiles
                                                             PeppolValidation2024_11.VID_OPENPEPPOL_ORDER_CHANGE_V3,
                                                             PeppolValidation2024_11.VID_OPENPEPPOL_ORDER_CANCELLATION_V3,
                                                             PeppolValidation2024_11.VID_OPENPEPPOL_ORDER_RESPONSE_ADVANCED_V3,
+
+                                                            PeppolValidation2025_03.VID_OPENPEPPOL_INVOICE_SELF_BILLING_UBL_V3,
+                                                            PeppolValidation2025_03.VID_OPENPEPPOL_CREDIT_NOTE_SELF_BILLING_UBL_V3,
 
                                                             /* Reporting */
                                                             PeppolLegacyValidationReporting.VID_OPENPEPPOL_EUSR_V100RC2,
@@ -1488,6 +1494,22 @@ public final class CTestFiles
         return new CommonsArrayList <> (new FileSystemResource (sPrefix + "OrderCancellation_Example.xml"));
       if (aVESID.equals (PeppolValidation2024_11.VID_OPENPEPPOL_ORDER_RESPONSE_ADVANCED_V3))
         return new CommonsArrayList <> (new FileSystemResource (sPrefix + "OrderResponseAdvanced_Example.xml"));
+    }
+
+    // 2025-03
+    {
+      final String sPrefix = sPrefix0 + "openpeppol/2025.3/";
+      if (aVESID.equals (PeppolValidation2025_03.VID_OPENPEPPOL_INVOICE_SELF_BILLING_UBL_V3))
+        return new CommonsArrayList <> (new FileSystemResource (sPrefix + "SB-Allowance-example.xml"),
+                                        new FileSystemResource (sPrefix + "SB-base-example.xml"),
+                                        new FileSystemResource (sPrefix + "SB-base-negative-inv-correction.xml"),
+                                        new FileSystemResource (sPrefix + "SB-sales-order-example.xml"),
+                                        new FileSystemResource (sPrefix + "SB-vat-category-E.xml"),
+                                        new FileSystemResource (sPrefix + "SB-vat-category-O.xml"),
+                                        new FileSystemResource (sPrefix + "SB-Vat-category-S.xml"),
+                                        new FileSystemResource (sPrefix + "SB-vat-category-Z.xml"));
+      if (aVESID.equals (PeppolValidation2025_03.VID_OPENPEPPOL_CREDIT_NOTE_SELF_BILLING_UBL_V3))
+        return new CommonsArrayList <> (new FileSystemResource (sPrefix + "SB-base-creditnote-correction.xml"));
     }
 
     /* Peppol Reporting */

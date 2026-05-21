@@ -32,7 +32,6 @@ import com.helger.phive.api.executorset.ValidationExecutorSetRegistry;
 import com.helger.phive.api.mock.PhiveTestFile;
 import com.helger.phive.en16931.EN16931Validation;
 import com.helger.phive.peppol.PeppolValidation;
-import com.helger.phive.peppol.PeppolValidation2025_03;
 import com.helger.phive.peppol.PeppolValidation2025_05;
 import com.helger.phive.peppol.PeppolValidation2025_11;
 import com.helger.phive.peppol.PeppolValidation2026_03;
@@ -97,9 +96,6 @@ public final class CTestFiles
                                                              PeppolValidationBisSG.VID_PEPPOL_SG_ORDER_BALANCE_1_0,
 
                                                              /* OpenPeppol BIS */
-                                                             PeppolValidation2025_03.VID_OPENPEPPOL_INVOICE_SELF_BILLING_UBL_V3,
-                                                             PeppolValidation2025_03.VID_OPENPEPPOL_CREDIT_NOTE_SELF_BILLING_UBL_V3,
-
                                                              PeppolValidation2025_05.VID_OPENPEPPOL_INVOICE_UBL_V3,
                                                              PeppolValidation2025_05.VID_OPENPEPPOL_CREDIT_NOTE_UBL_V3,
                                                              // PeppolValidation2025_05.VID_OPENPEPPOL_INVOICE_CII_V3,
@@ -487,22 +483,6 @@ public final class CTestFiles
     if (aVESID.equals (PeppolValidationBisSG.VID_PEPPOL_SG_ORDER_BALANCE_1_0))
     {
       return _getAll ("sg-peppol/ob-1.0/", "Order_balance_finalized.xml", "Order_balance_MAX.xml", "Order_balance.xml");
-    }
-
-    // 2025-03
-    {
-      if (aVESID.equals (PeppolValidation2025_03.VID_OPENPEPPOL_INVOICE_SELF_BILLING_UBL_V3))
-        return _getAll ("openpeppol/2025.3/",
-                        "SB-Allowance-example.xml",
-                        "SB-base-example.xml",
-                        "SB-base-negative-inv-correction.xml",
-                        "SB-sales-order-example.xml",
-                        "SB-vat-category-E.xml",
-                        "SB-vat-category-O.xml",
-                        "SB-Vat-category-S.xml",
-                        "SB-vat-category-Z.xml");
-      if (aVESID.equals (PeppolValidation2025_03.VID_OPENPEPPOL_CREDIT_NOTE_SELF_BILLING_UBL_V3))
-        return _getAll ("openpeppol/2025.3/", "SB-base-creditnote-correction.xml");
     }
 
     // 2025-05

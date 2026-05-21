@@ -248,6 +248,7 @@ I hope that with the introduction of PINT, the versioning problem will be solved
 v4.3.3 - work in progress
 * Updated Peppol PINT Oman (OM) 1.0.0 rules (2026-Q2-FIN snapshot)
 * Added Peppol BIS 2026-05 release
+* Moved Peppol BIS Self-Billing 3.0.0 to the Legacy project
 
 v4.3.2 - 2026-05-13
 * Added new submodule `phive-rules-osa` for Hungarian NAV Online Számla (OSA) v2.0 and v3.0 XSD validation. See [#64](https://github.com/phax/phive-rules/issues/64) - thx @krisraich
