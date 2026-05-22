@@ -245,6 +245,9 @@ I hope that with the introduction of PINT, the versioning problem will be solved
 
 # News and noteworthy
 
+v4.3.4 - 2026-05-22
+* Updated Peppol PINT Oman (OM) 1.0.0 rules (2026-Q2-FIN snapshot)
+
 v4.3.3 - 2026-05-21
 * Updated Peppol PINT Oman (OM) 1.0.0 rules (2026-Q2-FIN snapshot)
 * Added Peppol BIS 2026-05 release

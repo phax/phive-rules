@@ -45,8 +45,8 @@ public final class PeppolValidationPintOM
 {
   public static final String GROUP_ID = "org.peppol.pint.om";
 
-  // 1.0.0 from 2026-05-20 (2026-Q2-FIN snapshot)
-  public static final LocalDate OM_PINT_1_0_0_VALID_PER = PDTFactory.createLocalDate (2026, Month.MAY, 20);
+  // 1.0.0 from 2026-05-22 (2026-Q2-FIN snapshot)
+  public static final LocalDate OM_PINT_1_0_0_VALID_PER = PDTFactory.createLocalDate (2026, Month.MAY, 22);
   public static final OffsetDateTime OM_PINT_1_0_0_VALID_PER_UTC = PDTFactory.createOffsetDateTimeUTC (OM_PINT_1_0_0_VALID_PER);
   public static final DVRCoordinate VID_OPENPEPPOL_OM_PINT_INVOICE_1_0_0 = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                                               "invoice",

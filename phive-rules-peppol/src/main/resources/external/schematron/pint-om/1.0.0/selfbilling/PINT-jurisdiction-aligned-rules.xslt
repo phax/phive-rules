@@ -492,17 +492,17 @@
       </xsl:choose>
       <!--ASSERT fatal-->
       <xsl:choose>
-         <xsl:when test="starts-with($profileID, 'urn:peppol:pint:selfbilling')"/>
+         <xsl:when test="starts-with($profileID, 'urn:peppol:bis:selfbilling')"/>
          <xsl:otherwise>
             <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
-                                test="starts-with($profileID, 'urn:peppol:pint:selfbilling')">
+                                test="starts-with($profileID, 'urn:peppol:bis:selfbilling')">
                <xsl:attribute name="id">ALIGNED-IBRP-002-OM</xsl:attribute>
                <xsl:attribute name="flag">fatal</xsl:attribute>
                <xsl:attribute name="role">fatal</xsl:attribute>
                <xsl:attribute name="location">
                   <xsl:apply-templates select="." mode="schematron-select-full-path"/>
                </xsl:attribute>
-               <svrl:text>[ALIGNED-IBRP-002-OM] - Business process (IBT-023) must follow the expected format 'urn:peppol:pint:selfbilling'.</svrl:text>
+               <svrl:text>[ALIGNED-IBRP-002-OM] - Business process (IBT-023) must follow the expected format 'urn:peppol:bis:selfbilling'.</svrl:text>
                <svrl:diagnostic-reference diagnostic="d-002">
 
             Profile ID (cbc:ProfileID)
@@ -513,7 +513,7 @@
                   <xsl:text/>'
 
             Expected:
-            'urn:peppol:pint:billing'
+            'urn:peppol:bis:billing'
 
             Action:
             Set ProfileID to the expected value.
@@ -2689,11 +2689,11 @@
       <xsl:apply-templates select="*" mode="M51"/>
    </xsl:template>
    <!--RULE -->
-   <xsl:template match="cac:TaxExchangeRate/cbc:CalculationRate              | cac:PricingExchangeRate/cbc:CalculationRate              | cac:PaymentExchangeRate/cbc:CalculationRate"
+   <xsl:template match="cac:TaxExchangeRate/cbc:CalculationRate"
                  priority="1010"
                  mode="M51">
       <svrl:fired-rule xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
-                       context="cac:TaxExchangeRate/cbc:CalculationRate              | cac:PricingExchangeRate/cbc:CalculationRate              | cac:PaymentExchangeRate/cbc:CalculationRate"/>
+                       context="cac:TaxExchangeRate/cbc:CalculationRate"/>
       <!--ASSERT fatal-->
       <xsl:choose>
          <xsl:when test=". castable as xs:decimal and xs:decimal(.) = round(xs:decimal(.) * 10000000) div 10000000"/>
@@ -2765,7 +2765,7 @@
             </svrl:text>
                <svrl:diagnostic-reference diagnostic="d-IBR-DEC-03-OM">
 
-            Amount decimal precision validation (BTAE-Amount)
+            Amount decimal precision validation (BTOM-Amount)
 
             Found:
             - Element: '<xsl:text/>
@@ -3513,10 +3513,7 @@
                   <xsl:value-of select="cbc:MultiplierFactorNumeric"/>
                   <xsl:text/>.
             Expected: Both Charge base amount (IBT-100) AND percentage (IBT-101) must be present, OR neither.
-            Where:    <xsl:text/>
-                  <xsl:value-of select="path(.)"/>
-                  <xsl:text/>
-               </svrl:diagnostic-reference>
+        </svrl:diagnostic-reference>
             </svrl:failed-assert>
          </xsl:otherwise>
       </xsl:choose>
@@ -4789,9 +4786,6 @@
                   <xsl:text/>,
                     End=<xsl:text/>
                   <xsl:value-of select="cac:InvoicePeriod/cbc:EndDate"/>
-                  <xsl:text/>
-            Where:    <xsl:text/>
-                  <xsl:value-of select="path(.)"/>
                   <xsl:text/>
             Action:   Adjust the line-level invoicing period so start and end share the same YYYY-MM.
         </svrl:diagnostic-reference>

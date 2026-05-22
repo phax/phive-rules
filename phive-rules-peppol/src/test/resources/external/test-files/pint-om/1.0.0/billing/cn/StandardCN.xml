@@ -3,7 +3,7 @@
 	xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
 	xmlns="urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2">
 	<cbc:CustomizationID>urn:peppol:pint:billing-1@om-1</cbc:CustomizationID>
-	<cbc:ProfileID>urn:peppol:pint:billing</cbc:ProfileID>
+	<cbc:ProfileID>urn:peppol:bis:billing</cbc:ProfileID>
 	<cbc:ID>OM001-CN-TEST</cbc:ID>
 	<cbc:UUID>f1c9d83d-e31f-43fc-919f-10b961f599e7</cbc:UUID>
 	<cbc:IssueDate>2025-02-07</cbc:IssueDate>

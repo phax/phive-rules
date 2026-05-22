@@ -217,7 +217,7 @@
 
             
             
-            <assert id="ALIGNED-IBRP-002-OM" flag="fatal" role="fatal" test="starts-with($profileID, 'urn:peppol:pint:billing')" diagnostics="d-002">[ALIGNED-IBRP-002-OM] - Business process (IBT-023) must follow the expected format 'urn:peppol:pint:billing'.</assert>
+            <assert id="ALIGNED-IBRP-002-OM" flag="fatal" role="fatal" test="starts-with($profileID, 'urn:peppol:bis:billing')" diagnostics="d-002">[ALIGNED-IBRP-002-OM] - Business process (IBT-023) must follow the expected format 'urn:peppol:bis:billing'.</assert>
 
             
             
@@ -395,7 +395,7 @@
         </rule>
        
         
-        <rule context="cac:TaxExchangeRate/cbc:CalculationRate              | cac:PricingExchangeRate/cbc:CalculationRate              | cac:PaymentExchangeRate/cbc:CalculationRate">
+        <rule context="cac:TaxExchangeRate/cbc:CalculationRate">
             <assert id="IBR-DEC-07-OM" flag="fatal" role="fatal" test=". castable as xs:decimal and xs:decimal(.) = round(xs:decimal(.) * 10000000) div 10000000" diagnostics="d-IBR-DEC-07-OM">
                 [IBR-DEC-07-OM] - Currency Exchange Rate (BTOM-003) MUST NOT contain more than 7 decimal places.
             </assert>
@@ -898,7 +898,7 @@
         </diagnostic>
 
         <diagnostic id="d-IBR-DEC-03-OM">
-            Amount decimal precision validation (BTAE-Amount)
+            Amount decimal precision validation (BTOM-Amount)
 
             Found:
             - Element: '<value-of select="name()"/>'
@@ -1225,7 +1225,7 @@
             '<value-of select="cbc:ProfileID"/>'
 
             Expected:
-            'urn:peppol:pint:billing'
+            'urn:peppol:bis:billing'
 
             Action:
             Set ProfileID to the expected value.
@@ -1322,7 +1322,6 @@
             Found:    BaseAmount=<value-of select="cbc:BaseAmount"/>,
                     Multiplier=<value-of select="cbc:MultiplierFactorNumeric"/>.
             Expected: Both Charge base amount (IBT-100) AND percentage (IBT-101) must be present, OR neither.
-            Where:    <value-of select="path(.)"/>
         </diagnostic>
 
         
@@ -2060,7 +2059,6 @@
             Context: line-level invoicing period must fall within a single calendar month.
             Found:    Start=<value-of select="cac:InvoicePeriod/cbc:StartDate"/>,
                     End=<value-of select="cac:InvoicePeriod/cbc:EndDate"/>
-            Where:    <value-of select="path(.)"/>
             Action:   Adjust the line-level invoicing period so start and end share the same YYYY-MM.
         </diagnostic>
 

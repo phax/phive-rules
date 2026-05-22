@@ -5,7 +5,7 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2 http://docs.oasis-open.org/ubl/os-UBL-2.1/xsd/maindoc/UBL-Invoice-2.1.xsd">
 	<cbc:CustomizationID>urn:peppol:pint:selfbilling-1@om-1</cbc:CustomizationID> <!--  IBT-024 -->
-	<cbc:ProfileID>urn:peppol:pint:selfbilling</cbc:ProfileID> <!--  IBT-023 -->
+	<cbc:ProfileID>urn:peppol:bis:selfbilling</cbc:ProfileID> <!--  IBT-023 -->
 	<cbc:ID>OM-01TEST</cbc:ID>
 	<cbc:UUID>f12f329f-6430-4399-b661-7c5cd9c3a9e6</cbc:UUID>
 	<cbc:IssueDate>2025-02-06</cbc:IssueDate>

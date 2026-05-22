@@ -3,7 +3,7 @@
             xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
             xmlns="urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2">
 	<cbc:CustomizationID>urn:peppol:pint:selfbilling-1@om-1</cbc:CustomizationID> <!--  IBT-024 -->
-	<cbc:ProfileID>urn:peppol:pint:selfbilling</cbc:ProfileID> <!--  IBT-023 -->
+	<cbc:ProfileID>urn:peppol:bis:selfbilling</cbc:ProfileID> <!--  IBT-023 -->
 	
 	<cbc:ID>OM-CN-SB-TEST</cbc:ID>
 	<cbc:UUID>68205910-ac6b-4e35-9fe7-d1f0a3e3ae72</cbc:UUID>
