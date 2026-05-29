@@ -55,9 +55,13 @@ public final class PeppolValidationTaxData
   public static final DVRCoordinate VID_OPENPEPPOL_TDD_AE_1_0_1 = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                                      "ae",
                                                                                                      "1.0.1");
+  @Deprecated (forRemoval = false)
   public static final DVRCoordinate VID_OPENPEPPOL_TDD_AE_1_0_2 = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                                      "ae",
                                                                                                      "1.0.2");
+  public static final DVRCoordinate VID_OPENPEPPOL_TDD_AE_1_0_3 = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                     "ae",
+                                                                                                     "1.0.3");
 
   // OM
   public static final DVRCoordinate VID_OPENPEPPOL_TDD_OM_1_0_0 = PhiveRulesHelper.createCoordinate (GROUP_ID,
@@ -123,10 +127,21 @@ public final class PeppolValidationTaxData
       VesXmlBuilder.builder ()
                    .vesID (VID_OPENPEPPOL_TDD_AE_1_0_2)
                    .displayName ("AE Tax Data Document 1.0.2")
-                   .notDeprecated ()
+                   .deprecated ()
                    .addXSD (aXsds100)
                    .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (BASE_PATH_SCH +
                                                                                        "ae/xslt/peppol-ae-tdd-1.0.2.xslt",
+                                                                                       _getCL ()), aNsCtx))
+                   .registerInto (aRegistry);
+
+      // TDD AE 1.0.3
+      VesXmlBuilder.builder ()
+                   .vesID (VID_OPENPEPPOL_TDD_AE_1_0_3)
+                   .displayName ("AE Tax Data Document 1.0.3")
+                   .notDeprecated ()
+                   .addXSD (aXsds100)
+                   .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (BASE_PATH_SCH +
+                                                                                       "ae/xslt/peppol-ae-tdd-1.0.3.xslt",
                                                                                        _getCL ()), aNsCtx))
                    .registerInto (aRegistry);
     }

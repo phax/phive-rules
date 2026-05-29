@@ -171,6 +171,7 @@ public final class CTestFiles
                                                              PeppolValidationTaxData.VID_OPENPEPPOL_TDD_AE_1_0_0,
                                                              PeppolValidationTaxData.VID_OPENPEPPOL_TDD_AE_1_0_1,
                                                              PeppolValidationTaxData.VID_OPENPEPPOL_TDD_AE_1_0_2,
+                                                             PeppolValidationTaxData.VID_OPENPEPPOL_TDD_AE_1_0_3,
 
                                                              PeppolValidationTaxData.VID_OPENPEPPOL_TDD_OM_1_0_0,
 
@@ -857,6 +858,17 @@ public final class CTestFiles
     if (aVESID.equals (PeppolValidationTaxData.VID_OPENPEPPOL_TDD_AE_1_0_2))
     {
       return _getAll ("tdd/ae/1.0.2/",
+                      "commercial-invoice-tdd.xml",
+                      "example-tds-no-repdoc.xml",
+                      "example-tds-with-repdoc.xml",
+                      "simple.xml",
+                      "standard-invoice-tdd.xml",
+                      "tax-currency.xml");
+    }
+    // AE TDD 1.0.3
+    if (aVESID.equals (PeppolValidationTaxData.VID_OPENPEPPOL_TDD_AE_1_0_3))
+    {
+      return _getAll ("tdd/ae/1.0.3/",
                       "commercial-invoice-tdd.xml",
                       "example-tds-no-repdoc.xml",
                       "example-tds-with-repdoc.xml",

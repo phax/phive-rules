@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pxs:TaxData xmlns:pxs="urn:peppol:schema:taxdata:1.0"
+             xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+             xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+             xmlns:cec="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2">
+
+  <!-- TDD Header -->
+  <cbc:CustomizationID>urn:peppol:taxdata:ae-1</cbc:CustomizationID>
+  <cbc:ProfileID>urn:peppol:taxreporting</cbc:ProfileID>
+  <cbc:IssueDate>2025-02-06</cbc:IssueDate>
+  <cbc:IssueTime>08:00:00Z</cbc:IssueTime>
+
+  <pxs:DocumentTypeCode>S</pxs:DocumentTypeCode>
+  <pxs:DocumentScope>D</pxs:DocumentScope>
+  <pxs:ReporterRole>01</pxs:ReporterRole>
+
+  <pxs:ReportingParty>
+    <cbc:EndpointID schemeID="0235">1987654321</cbc:EndpointID>
+  </pxs:ReportingParty>
+
+  <pxs:ReceivingParty>
+    <cbc:EndpointID schemeID="0242">000773</cbc:EndpointID>
+  </pxs:ReceivingParty>
+
+  <pxs:ReportersRepresentative>
+    <cac:PartyIdentification>
+      <cbc:ID schemeID="0242">000000</cbc:ID>
+    </cac:PartyIdentification>
+  </pxs:ReportersRepresentative>
+
+  <pxs:ReportedTransaction>
+    <pxs:TransportHeaderID>22222222-3333-4444-5555-666666666666</pxs:TransportHeaderID>
+
+    <!-- Reported standard tax invoice -->
+    <pxs:ReportedDocument>
+      <cbc:CustomizationID>urn:peppol:pint:billing-1@ae-1</cbc:CustomizationID>
+      <cbc:ProfileID>urn:peppol:bis:billing</cbc:ProfileID>
+
+      <cbc:ID>AE-01TEST</cbc:ID>
+      <cbc:UUID>f12f329f-6430-4399-b661-7c5cd9c3a9e6</cbc:UUID>
+      <cbc:IssueDate>2025-02-06</cbc:IssueDate>
+      <cbc:IssueTime>07:54:00</cbc:IssueTime>
+
+      <pxs:DocumentTypeCode>380</pxs:DocumentTypeCode>
+      <cbc:DocumentCurrencyCode>AED</cbc:DocumentCurrencyCode>
+
+      <!-- Seller tax ID -->
+      <cac:AccountingSupplierParty>
+        <cac:Party>
+          <cac:PartyTaxScheme>
+            <cbc:CompanyID>198765432102003</cbc:CompanyID>
+            <cac:TaxScheme>
+              <cbc:ID>VAT</cbc:ID>
+            </cac:TaxScheme>
+          </cac:PartyTaxScheme>
+        </cac:Party>
+      </cac:AccountingSupplierParty>
+
+      <!-- Buyer tax ID -->
+      <cac:AccountingCustomerParty>
+        <cac:Party>
+          <cac:PartyTaxScheme>
+            <cbc:CompanyID>134567890123003</cbc:CompanyID>
+            <cac:TaxScheme>
+              <cbc:ID>VAT</cbc:ID>
+            </cac:TaxScheme>
+          </cac:PartyTaxScheme>
+        </cac:Party>
+      </cac:AccountingCustomerParty>
+
+      <!-- Tax total -->
+      <cac:TaxTotal>
+        <cbc:TaxAmount currencyID="AED">532.16</cbc:TaxAmount>
+
+      </cac:TaxTotal>
+
+      <!-- Monetary total -->
+      <pxs:MonetaryTotal>
+        <cbc:TaxExclusiveAmount currencyID="AED">10643.29</cbc:TaxExclusiveAmount>
+      </pxs:MonetaryTotal>
+    </pxs:ReportedDocument>
+
+    <pxs:SourceDocument>
+      <cec:ExtensionContent>                                                                              
+        <ubl:Invoice xmlns:ubl="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2">                   
+        <!-- Source invoice AE-01TEST (InvoiceTypeCode 380) omitted by design -->
+        </ubl:Invoice>
+      </cec:ExtensionContent>
+    </pxs:SourceDocument>
+
+  </pxs:ReportedTransaction>
+</pxs:TaxData>
