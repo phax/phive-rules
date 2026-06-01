@@ -77,7 +77,7 @@
     <ph-ebinterface.version>8.1.0</ph-ebinterface.version>
     <ph-fatturapa.version>3.1.0</ph-fatturapa.version>
     <ph-sbdh.version>6.1.0</ph-sbdh.version>
-    <ph-schematron.version>9.1.1</ph-schematron.version>
+    <ph-schematron.version>9.2.0</ph-schematron.version>
     <ph-ubl.version>10.2.0</ph-ubl.version>
   </properties>
   
