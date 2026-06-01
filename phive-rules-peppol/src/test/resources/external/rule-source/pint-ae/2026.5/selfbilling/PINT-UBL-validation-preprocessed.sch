@@ -1,96 +1,79 @@
-<!--
-
-            Copyright (C) 2020-2023 OpenPEPPOL AISBL
-
-            Licensed under the Apache License, Version 2.0 (the "License");
-            you may not use this file except in compliance with the License.
-            You may obtain a copy of the License at
-
-                    http://www.apache.org/licenses/LICENSE-2.0
-
-            Unless required by applicable law or agreed to in writing, software
-            distributed under the License is distributed on an "AS IS" BASIS,
-            WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-            See the License for the specific language governing permissions and
-            limitations under the License.
-
--->
-<schema xmlns="http://purl.oclc.org/dsdl/schematron" queryBinding="xslt2">
+<?xml version="1.0" encoding="UTF-8"?><schema xmlns="http://purl.oclc.org/dsdl/schematron" queryBinding="xslt2">
   <xsl:function xmlns:xsl="http://www.w3.org/1999/XSL/Transform" name="u:gln" as="xs:boolean">
-    <xsl:param name="val" />
-    <xsl:variable name="length" select="string-length($val) - 1" />
-    <xsl:variable name="digits" select="reverse(for $i in string-to-codepoints(substring($val, 0, $length + 1)) return $i - 48)" />
-    <xsl:variable name="weightedSum" select="sum(for $i in (0 to $length - 1) return $digits[$i + 1] * (1 + ((($i + 1) mod 2) * 2)))" />
-    <xsl:value-of select="(10 - ($weightedSum mod 10)) mod 10 = number(substring($val, $length + 1, 1))" />
+    <xsl:param name="val"/>
+    <xsl:variable name="length" select="string-length($val) - 1"/>
+    <xsl:variable name="digits" select="reverse(for $i in string-to-codepoints(substring($val, 0, $length + 1)) return $i - 48)"/>
+    <xsl:variable name="weightedSum" select="sum(for $i in (0 to $length - 1) return $digits[$i + 1] * (1 + ((($i + 1) mod 2) * 2)))"/>
+    <xsl:value-of select="(10 - ($weightedSum mod 10)) mod 10 = number(substring($val, $length + 1, 1))"/>
   </xsl:function>
   <xsl:function xmlns:xsl="http://www.w3.org/1999/XSL/Transform" name="u:mod11" as="xs:boolean">
-    <xsl:param name="val" />
-    <xsl:variable name="length" select="string-length($val) - 1" />
-    <xsl:variable name="digits" select="reverse(for $i in string-to-codepoints(substring($val, 0, $length + 1)) return $i - 48)" />
-    <xsl:variable name="weightedSum" select="sum(for $i in (0 to $length - 1) return $digits[$i + 1] * (($i mod 6) + 2))" />
-    <xsl:value-of select="number($val) > 0 and (11 - ($weightedSum mod 11)) mod 11 = number(substring($val, $length + 1, 1))" />
+    <xsl:param name="val"/>
+    <xsl:variable name="length" select="string-length($val) - 1"/>
+    <xsl:variable name="digits" select="reverse(for $i in string-to-codepoints(substring($val, 0, $length + 1)) return $i - 48)"/>
+    <xsl:variable name="weightedSum" select="sum(for $i in (0 to $length - 1) return $digits[$i + 1] * (($i mod 6) + 2))"/>
+    <xsl:value-of select="number($val) &gt; 0 and (11 - ($weightedSum mod 11)) mod 11 = number(substring($val, $length + 1, 1))"/>
   </xsl:function>
   <xsl:function xmlns:xsl="http://www.w3.org/1999/XSL/Transform" name="u:slack" as="xs:boolean">
-    <xsl:param name="exp" as="xs:decimal" />
-    <xsl:param name="val" as="xs:decimal" />
-    <xsl:param name="slack" as="xs:decimal" />
-    <xsl:value-of select="xs:decimal($exp + $slack) >= $val and xs:decimal($exp - $slack) &lt;= $val" />
+    <xsl:param name="exp" as="xs:decimal"/>
+    <xsl:param name="val" as="xs:decimal"/>
+    <xsl:param name="slack" as="xs:decimal"/>
+    <xsl:value-of select="xs:decimal($exp + $slack) &gt;= $val and xs:decimal($exp - $slack) &lt;= $val"/>
   </xsl:function>
   <xsl:function xmlns:xsl="http://www.w3.org/1999/XSL/Transform" name="u:mod97-0208" as="xs:boolean">
-    <xsl:param name="val" />
-    <xsl:variable name="checkdigits" select="substring($val,9,2)" />
-    <xsl:variable name="calculated_digits" select="xs:string(97 - (xs:integer(substring($val,1,8)) mod 97))" />
-    <xsl:value-of select="number($checkdigits) = number($calculated_digits)" />
+    <xsl:param name="val"/>
+    <xsl:variable name="checkdigits" select="substring($val,9,2)"/>
+    <xsl:variable name="calculated_digits" select="xs:string(97 - (xs:integer(substring($val,1,8)) mod 97))"/>
+    <xsl:value-of select="number($checkdigits) = number($calculated_digits)"/>
   </xsl:function>
   <xsl:function xmlns:xsl="http://www.w3.org/1999/XSL/Transform" name="u:checkCodiceIPA" as="xs:boolean">
-    <xsl:param name="arg" as="xs:string?" />
+    <xsl:param name="arg" as="xs:string?"/>
     <xsl:variable name="allowed-characters">ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789</xsl:variable>
-    <xsl:sequence select="if ( (string-length(translate($arg, $allowed-characters, '')) = 0) and (string-length($arg) = 6) ) then true() else false()" />
+    <xsl:sequence select="if ( (string-length(translate($arg, $allowed-characters, '')) = 0) and (string-length($arg) = 6) ) then true() else false()"/>
   </xsl:function>
   <xsl:function xmlns:xsl="http://www.w3.org/1999/XSL/Transform" name="u:checkCF" as="xs:boolean">
-    <xsl:param name="arg" as="xs:string?" />
-    <xsl:sequence select="       if ( (string-length($arg) = 16) or (string-length($arg) = 11) )          then        (       if ((string-length($arg) = 16))        then       (       if (u:checkCF16($arg))        then       (       true()       )       else       (       false()       )       )       else       (       if(($arg castable as xs:integer)) then true() else false()              )       )       else       (       false()       )       " />
+    <xsl:param name="arg" as="xs:string?"/>
+    <xsl:sequence select="       if ( (string-length($arg) = 16) or (string-length($arg) = 11) )          then        (       if ((string-length($arg) = 16))        then       (       if (u:checkCF16($arg))        then       (       true()       )       else       (       false()       )       )       else       (       if(($arg castable as xs:integer)) then true() else false()              )       )       else       (       false()       )       "/>
   </xsl:function>
   <xsl:function xmlns:xsl="http://www.w3.org/1999/XSL/Transform" name="u:checkCF16" as="xs:boolean">
-    <xsl:param name="arg" as="xs:string?" />
+    <xsl:param name="arg" as="xs:string?"/>
     <xsl:variable name="allowed-characters">ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz</xsl:variable>
-    <xsl:sequence select="       if (  (string-length(translate(substring($arg,1,6), $allowed-characters, '')) = 0) and         (substring($arg,7,2) castable as xs:integer) and        (string-length(translate(substring($arg,9,1), $allowed-characters, '')) = 0) and        (substring($arg,10,2) castable as xs:integer) and         (substring($arg,12,3) castable as xsd:string) and        (substring($arg,15,1) castable as xs:integer) and         (string-length(translate(substring($arg,16,1), $allowed-characters, '')) = 0)       )        then true()       else false()       " />
+    <xsl:sequence select="       if (  (string-length(translate(substring($arg,1,6), $allowed-characters, '')) = 0) and         (substring($arg,7,2) castable as xs:integer) and        (string-length(translate(substring($arg,9,1), $allowed-characters, '')) = 0) and        (substring($arg,10,2) castable as xs:integer) and         (substring($arg,12,3) castable as xsd:string) and        (substring($arg,15,1) castable as xs:integer) and         (string-length(translate(substring($arg,16,1), $allowed-characters, '')) = 0)       )        then true()       else false()       "/>
   </xsl:function>
   <xsl:function xmlns:xsl="http://www.w3.org/1999/XSL/Transform" name="u:checkPIVAseIT" as="xs:boolean">
-    <xsl:param name="arg" as="xs:string" />
-    <xsl:variable name="paese" select="substring($arg,1,2)" />
-    <xsl:variable name="codice" select="substring($arg,3)" />
-    <xsl:sequence select="              if ( $paese = 'IT' or $paese = 'it' )       then       (       if ( ( string-length($codice) = 11 ) and ( if (u:checkPIVA($codice)!=0) then false() else true() ))       then        (       true()       )       else       (       false()       )       )       else       (       true()       )              " />
+    <xsl:param name="arg" as="xs:string"/>
+    <xsl:variable name="paese" select="substring($arg,1,2)"/>
+    <xsl:variable name="codice" select="substring($arg,3)"/>
+    <xsl:sequence select="              if ( $paese = 'IT' or $paese = 'it' )       then       (       if ( ( string-length($codice) = 11 ) and ( if (u:checkPIVA($codice)!=0) then false() else true() ))       then        (       true()       )       else       (       false()       )       )       else       (       true()       )              "/>
   </xsl:function>
   <xsl:function xmlns:xsl="http://www.w3.org/1999/XSL/Transform" name="u:checkPIVA" as="xs:integer">
-    <xsl:param name="arg" as="xs:string?" />
-    <xsl:sequence select="       if (not($arg castable as xs:integer))        then 1       else ( u:addPIVA($arg,xs:integer(0)) mod 10 )" />
+    <xsl:param name="arg" as="xs:string?"/>
+    <xsl:sequence select="       if (not($arg castable as xs:integer))        then 1       else ( u:addPIVA($arg,xs:integer(0)) mod 10 )"/>
   </xsl:function>
   <xsl:function xmlns:xsl="http://www.w3.org/1999/XSL/Transform" name="u:addPIVA" as="xs:integer">
-    <xsl:param name="arg" as="xs:string" />
-    <xsl:param name="pari" as="xs:integer" />
-    <xsl:variable name="tappo" select="if (not($arg castable as xs:integer)) then 0 else 1" />
-    <xsl:variable name="mapper" select="if ($tappo = 0) then 0 else        ( if ($pari = 1)        then ( xs:integer(substring('0246813579', ( xs:integer(substring($arg,1,1)) +1 ) ,1)) )        else ( xs:integer(substring($arg,1,1) ) )       )" />
-    <xsl:sequence select="if ($tappo = 0) then $mapper else ( xs:integer($mapper) + u:addPIVA(substring(xs:string($arg),2), (if($pari=0) then 1 else 0) ) )" />
+    <xsl:param name="arg" as="xs:string"/>
+    <xsl:param name="pari" as="xs:integer"/>
+    <xsl:variable name="tappo" select="if (not($arg castable as xs:integer)) then 0 else 1"/>
+    <xsl:variable name="mapper" select="if ($tappo = 0) then 0 else        ( if ($pari = 1)        then ( xs:integer(substring('0246813579', ( xs:integer(substring($arg,1,1)) +1 ) ,1)) )        else ( xs:integer(substring($arg,1,1) ) )       )"/>
+    <xsl:sequence select="if ($tappo = 0) then $mapper else ( xs:integer($mapper) + u:addPIVA(substring(xs:string($arg),2), (if($pari=0) then 1 else 0) ) )"/>
   </xsl:function>
   <xsl:function xmlns:xsl="http://www.w3.org/1999/XSL/Transform" name="u:abn" as="xs:boolean">
-    <xsl:param name="val" />
-    <xsl:value-of select="(       ((string-to-codepoints(substring($val,1,1)) - 49) * 10) +       ((string-to-codepoints(substring($val,2,1)) - 48) * 1) +       ((string-to-codepoints(substring($val,3,1)) - 48) * 3) +       ((string-to-codepoints(substring($val,4,1)) - 48) * 5) +       ((string-to-codepoints(substring($val,5,1)) - 48) * 7) +       ((string-to-codepoints(substring($val,6,1)) - 48) * 9) +       ((string-to-codepoints(substring($val,7,1)) - 48) * 11) +       ((string-to-codepoints(substring($val,8,1)) - 48) * 13) +       ((string-to-codepoints(substring($val,9,1)) - 48) * 15) +       ((string-to-codepoints(substring($val,10,1)) - 48) * 17) +       ((string-to-codepoints(substring($val,11,1)) - 48) * 19)) mod 89 = 0       " />
+    <xsl:param name="val"/>
+    <xsl:value-of select="(       ((string-to-codepoints(substring($val,1,1)) - 49) * 10) +       ((string-to-codepoints(substring($val,2,1)) - 48) * 1) +       ((string-to-codepoints(substring($val,3,1)) - 48) * 3) +       ((string-to-codepoints(substring($val,4,1)) - 48) * 5) +       ((string-to-codepoints(substring($val,5,1)) - 48) * 7) +       ((string-to-codepoints(substring($val,6,1)) - 48) * 9) +       ((string-to-codepoints(substring($val,7,1)) - 48) * 11) +       ((string-to-codepoints(substring($val,8,1)) - 48) * 13) +       ((string-to-codepoints(substring($val,9,1)) - 48) * 15) +       ((string-to-codepoints(substring($val,10,1)) - 48) * 17) +       ((string-to-codepoints(substring($val,11,1)) - 48) * 19)) mod 89 = 0       "/>
   </xsl:function>
-  <ns prefix="ext" uri="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2" />
-  <ns prefix="cbc" uri="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" />
-  <ns prefix="cac" uri="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" />
-  <ns prefix="qdt" uri="urn:oasis:names:specification:ubl:schema:xsd:QualifiedDataTypes-2" />
-  <ns prefix="udt" uri="urn:oasis:names:specification:ubl:schema:xsd:UnqualifiedDataTypes-2" />
-  <ns prefix="cn" uri="urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2" />
-  <ns prefix="ubl" uri="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2" />
-  <ns prefix="u" uri="utils" />
-  <ns prefix="xs" uri="http://www.w3.org/2001/XMLSchema" />
+  <ns prefix="ext" uri="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2"/>
+  <ns prefix="cbc" uri="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"/>
+  <ns prefix="cac" uri="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"/>
+  <ns prefix="qdt" uri="urn:oasis:names:specification:ubl:schema:xsd:QualifiedDataTypes-2"/>
+  <ns prefix="udt" uri="urn:oasis:names:specification:ubl:schema:xsd:UnqualifiedDataTypes-2"/>
+  <ns prefix="cn" uri="urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2"/>
+  <ns prefix="ubl" uri="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2"/>
+  <ns prefix="u" uri="utils"/>
+  <ns prefix="xs" uri="http://www.w3.org/2001/XMLSchema"/>
   <phase id="PINTmodel_phase">
-    <active pattern="UBL-model" />
+    <active pattern="UBL-model"/>
   </phase>
   <phase id="codelist_phase">
-    <active pattern="Codesmodel" />
+    <active pattern="Codesmodel"/>
   </phase>
   <pattern id="UBL-model">
     <rule context="cbc:EndpointID[@schemeID = '0088'] | cac:PartyIdentification/cbc:ID[@schemeID = '0088'] | cbc:CompanyID[@schemeID = '0088']">
@@ -179,16 +162,12 @@
     </rule>
     <rule context="/ubl:Invoice | /cn:CreditNote">
       <assert id="ibr-001" flag="fatal" test="normalize-space(cbc:CustomizationID) != ''">[ibr-001]-An Invoice MUST have a Specification identifier (ibt-024).</assert>
-      <!-- 
-      https://openpeppol.atlassian.net/browse/PINT-112
-      New rule to block using wildcard character in customizationID
-      ibr-sr-63 - Fatal error rule is introduced
-      -->
+      
       <assert id="ibr-sr-63" flag="fatal" test="not(contains(normalize-space(cbc:CustomizationID), '*'))">[ibr-sr-63] - A Specification identifier must not contain a wildcard character such as '*'. (ibt-024)</assert>
       <assert id="ibr-002" flag="fatal" test="normalize-space(cbc:ID) !=''">[ibr-002]-An Invoice MUST have an Invoice number (ibt-001).</assert>
       <assert id="ibr-003" flag="fatal" test="normalize-space(cbc:IssueDate) !=''">[ibr-003]-An Invoice MUST have an Invoice issue date (ibt-002).</assert>
-      <!-- https://openpeppol.atlassian.net/browse/PINT-202 -->
-       <!--[Update the assert text of IBR-004 to distinguish between Invoice and Credit note]-->
+      
+       
       <assert id="ibr-004" flag="fatal" test="normalize-space(cbc:InvoiceTypeCode) !='' or normalize-space(cbc:CreditNoteTypeCode) !=''">[ibr-004]-An Invoice MUST have an Invoice type code (ibt-003) / A Credit note MUST have a Credit note Type code (ibt-003).</assert>
       <assert id="ibr-005" flag="fatal" test="normalize-space(cbc:DocumentCurrencyCode) !=''">[ibr-005]-An Invoice MUST have an Invoice currency code (ibt-005).</assert>
       <assert id="ibr-006" flag="fatal" test="normalize-space(cac:AccountingSupplierParty/cac:Party/cac:PartyLegalEntity/cbc:RegistrationName) !=''">[ibr-006]-An Invoice MUST contain the Seller name (ibt-027).</assert>
@@ -203,7 +182,7 @@
       <assert id="ibr-072" flag="fatal" test="not(//cac:AdditionalDocumentReference[cbc:DocumentTypeCode = '130']/cbc:DocumentDescription)">[ibr-072]-An invoice MUST not include an AdditionalDocumentReference (ibg-24) simultaneously referring an Invoice Object Identifier (ibt-018) and an Document Description (ibt-123).</assert>
       <assert id="ibr-076" flag="fatal" test="exists(cbc:ProfileID)">[ibr-076]-Business process (ibt-023) MUST be provided.</assert>
       <assert id="ibr-078" flag="fatal" test="(count(cac:AdditionalDocumentReference[cbc:DocumentTypeCode='130']) &lt;= 1)">[ibr-078]-Only one invoiced object (ibt-018) is allowed on document level.</assert>
-      <assert id="ibr-084" flag="fatal" test="not(cbc:TaxCurrencyCode) or (cac:TaxTotal/cbc:TaxAmount[@currencyID=normalize-space(../../cbc:TaxCurrencyCode)] &lt;= 0 and cac:TaxTotal/cbc:TaxAmount[@currencyID=normalize-space(../../cbc:DocumentCurrencyCode)] &lt;= 0) or (cac:TaxTotal/cbc:TaxAmount[@currencyID=normalize-space(../../cbc:TaxCurrencyCode)] >= 0 and cac:TaxTotal/cbc:TaxAmount[@currencyID=normalize-space(../../cbc:DocumentCurrencyCode)] >= 0)">[ibr-084]-Invoice total tax amount (ibt-110) and Invoice total tax amount in accounting currency (ibt-111) MUST have the same operational sign.</assert>
+      <assert id="ibr-084" flag="fatal" test="not(cbc:TaxCurrencyCode) or (cac:TaxTotal/cbc:TaxAmount[@currencyID=normalize-space(../../cbc:TaxCurrencyCode)] &lt;= 0 and cac:TaxTotal/cbc:TaxAmount[@currencyID=normalize-space(../../cbc:DocumentCurrencyCode)] &lt;= 0) or (cac:TaxTotal/cbc:TaxAmount[@currencyID=normalize-space(../../cbc:TaxCurrencyCode)] &gt;= 0 and cac:TaxTotal/cbc:TaxAmount[@currencyID=normalize-space(../../cbc:DocumentCurrencyCode)] &gt;= 0)">[ibr-084]-Invoice total tax amount (ibt-110) and Invoice total tax amount in accounting currency (ibt-111) MUST have the same operational sign.</assert>
       <assert id="ibr-090" flag="fatal" test="(count(cac:ProjectReference) &lt;= 1) and (count(cac:AdditionalDocumentReference[cbc:DocumentTypeCode='50']) &lt;= 1)">[ibr-090]-Only one project reference (ibt-011) is allowed on document level.</assert>
       <assert id="ibr-094" flag="fatal" test="(count(cac:ContractDocumentReference/cbc:ID) &lt;= 1)">[ibr-094]-Contract reference (ibt-012) MUST occur maximum once.</assert>
       <assert id="ibr-095" flag="fatal" test="(count(cac:ReceiptDocumentReference/cbc:ID) &lt;= 1)">[ibr-095]-Receiving advice reference (ibt-015) MUST occur maximum once.</assert>
@@ -232,9 +211,9 @@
       <assert id="ibr-024" flag="fatal" test="exists(cbc:LineExtensionAmount)">[ibr-024]-Each Invoice line (ibg-25) MUST have an Invoice line net amount (ibt-131).</assert>
       <assert id="ibr-025" flag="fatal" test="normalize-space(cac:Item/cbc:Name) != ''">[ibr-025]-Each Invoice line (ibg-25) MUST contain the Item name (ibt-153).</assert>
       <assert id="ibr-026" flag="fatal" test="exists(cac:Price/cbc:PriceAmount)">[ibr-026]-Each Invoice line (ibg-25) MUST contain the Item net price (ibt-146).</assert>
-      <assert id="ibr-027" flag="fatal" test="(cac:Price/cbc:PriceAmount) >= 0">[ibr-027]-The Item net price (ibt-146) MUST NOT be negative.</assert>
-      <assert id="ibr-028" flag="fatal" test="(cac:Price/cac:AllowanceCharge/cbc:BaseAmount) >= 0 or not(exists(cac:Price/cac:AllowanceCharge/cbc:BaseAmount))">[ibr-028]-The Item gross price (ibt-148) MUST NOT be negative.</assert>
-      <assert id="ibr-087" flag="fatal" test="not(cac:Price/cbc:BaseQuantity) or xs:decimal(cac:Price/cbc:BaseQuantity) > 0">[ibr-087]-Base quantity (ibt-149) MUST be a positive number above zero.</assert>
+      <assert id="ibr-027" flag="fatal" test="(cac:Price/cbc:PriceAmount) &gt;= 0">[ibr-027]-The Item net price (ibt-146) MUST NOT be negative.</assert>
+      <assert id="ibr-028" flag="fatal" test="(cac:Price/cac:AllowanceCharge/cbc:BaseAmount) &gt;= 0 or not(exists(cac:Price/cac:AllowanceCharge/cbc:BaseAmount))">[ibr-028]-The Item gross price (ibt-148) MUST NOT be negative.</assert>
+      <assert id="ibr-087" flag="fatal" test="not(cac:Price/cbc:BaseQuantity) or xs:decimal(cac:Price/cbc:BaseQuantity) &gt; 0">[ibr-087]-Base quantity (ibt-149) MUST be a positive number above zero.</assert>
       <assert id="ibr-089" flag="fatal" test="(count(cac:DocumentReference[cbc:DocumentTypeCode = 130]) &lt;= 1)">[ibr-089]-Only one invoiced object (ibt-128) is allowed per line (ibg-25).</assert>
       <assert id="ibr-109" flag="fatal" test="(count(cac:OrderLineReference/cbc:LineID) &lt;= 1)">[ibr-109]-Referenced purchase order line identifier (ibt-132) MUST occur maximum once.</assert>
       <assert id="ibr-110" flag="fatal" test="(count(cac:InvoicePeriod) &lt;= 1)">[ibr-110]-Invoice line period (ibg-26) MUST occur maximum once.</assert>
@@ -244,13 +223,13 @@
       <assert id="ibr-sr-50" flag="fatal" test="(count(cac:Item/cbc:Description) &lt;= 1)">[ibr-sr-50]-Item description (ibt-154) MUST occur maximum once</assert>
     </rule>
     <rule context="cac:InvoiceLine/cac:InvoicePeriod | cac:CreditNoteLine/cac:InvoicePeriod">
-      <assert id="ibr-085" flag="fatal" test="(cbc:StartDate >= xs:date(../../cac:InvoicePeriod/cbc:StartDate)) or not(cbc:StartDate) or not(../../cac:InvoicePeriod/cbc:StartDate)">[ibr-085]-Start date of line period (ibt-134) MUST be within invoice period (ibg-14).</assert>
+      <assert id="ibr-085" flag="fatal" test="(cbc:StartDate &gt;= xs:date(../../cac:InvoicePeriod/cbc:StartDate)) or not(cbc:StartDate) or not(../../cac:InvoicePeriod/cbc:StartDate)">[ibr-085]-Start date of line period (ibt-134) MUST be within invoice period (ibg-14).</assert>
       <assert id="ibr-086" flag="fatal" test="(cbc:EndDate &lt;= xs:date(../../cac:InvoicePeriod/cbc:EndDate)) or not(cbc:EndDate) or not(../../cac:InvoicePeriod/cbc:EndDate)">[ibr-086]-End date of line period (ibt-135) MUST be within invoice period (ibg-14).</assert>
-      <assert id="ibr-030" flag="fatal" test="(exists(cbc:EndDate) and exists(cbc:StartDate) and xs:date(cbc:EndDate) >= xs:date(cbc:StartDate)) or not(exists(cbc:StartDate)) or not(exists(cbc:EndDate))">[ibr-030]-If both Invoice line period start date (ibt-134) and Invoice line period end date (ibt-135) are given then the Invoice line period end date (ibt-135) MUST be later or equal to the Invoice line period start date (ibt-134).</assert>
+      <assert id="ibr-030" flag="fatal" test="(exists(cbc:EndDate) and exists(cbc:StartDate) and xs:date(cbc:EndDate) &gt;= xs:date(cbc:StartDate)) or not(exists(cbc:StartDate)) or not(exists(cbc:EndDate))">[ibr-030]-If both Invoice line period start date (ibt-134) and Invoice line period end date (ibt-135) are given then the Invoice line period end date (ibt-135) MUST be later or equal to the Invoice line period start date (ibt-134).</assert>
       <assert id="ibr-co-20" flag="fatal" test="exists(cbc:StartDate) or exists(cbc:EndDate)">[ibr-co-20]-If Invoice line period (ibg-26) is used, the Invoice line period start date (ibt-134) or the Invoice line period end date (ibt-135) MUST be filled, or both.</assert>
     </rule>
     <rule context="cac:InvoicePeriod">
-      <assert id="ibr-029" flag="fatal" test="(exists(cbc:EndDate) and exists(cbc:StartDate) and xs:date(cbc:EndDate) >= xs:date(cbc:StartDate)) or not(exists(cbc:StartDate)) or not(exists(cbc:EndDate))">[ibr-029]-If both Invoicing period start date (ibt-073) and Invoicing period end date (ibt-074) are given then the Invoicing period end date (ibt-074) MUST be later or equal to the Invoicing period start date (ibt-073).</assert>
+      <assert id="ibr-029" flag="fatal" test="(exists(cbc:EndDate) and exists(cbc:StartDate) and xs:date(cbc:EndDate) &gt;= xs:date(cbc:StartDate)) or not(exists(cbc:StartDate)) or not(exists(cbc:EndDate))">[ibr-029]-If both Invoicing period start date (ibt-073) and Invoicing period end date (ibt-074) are given then the Invoicing period end date (ibt-074) MUST be later or equal to the Invoicing period start date (ibt-073).</assert>
       <assert id="ibr-co-19" flag="fatal" test="exists(cbc:StartDate) or exists(cbc:EndDate) or (exists(cbc:DescriptionCode) and not(exists(cbc:StartDate)) and not(exists(cbc:EndDate)))">[ibr-co-19]-If Invoicing period (ibg-14) is used, the Invoicing period start date (ibt-073) or the Invoicing period end date (ibt-074) MUST be filled, or both.</assert>
     </rule>
     <rule context="//cac:AdditionalItemProperty">
@@ -278,15 +257,13 @@
       <assert id="ibr-049" flag="fatal" test="exists(cbc:PaymentMeansCode)">[ibr-049]-A Payment instruction (ibg-16) MUST specify the Payment means type code (ibt-081).</assert>
       <assert id="ibr-sr-27" flag="fatal" test="(count(cbc:PaymentMeansCode) &lt;= 1)">[ibr-sr-27]-Payment means text (ibt-081) MUST occur maximum once</assert>
       <assert id="ibr-sr-28" flag="fatal" test="(count(cac:PaymentMandate/cbc:ID) &lt;= 1)">[ibr-sr-28]-Mandate reference identifier (ibt-089) MUST occur maximum once</assert>
-      <!-- https://openpeppol.atlassian.net/browse/PINT-150 -->
-      <!--<assert id="ibr-sr-45" flag="fatal" test="(count(cbc:PaymentDueDate) &lt;=1)">[ibr-sr-45]-Due Date (ibt-009) MUST occur maximum once</assert>--> 
+      
+       
       <assert id="ibr-sr-46" flag="fatal" test="(count(cbc:PaymentMeansCode/@name) &lt;=1)">[ibr-sr-46]-Payment means text (ibt-082) MUST occur maximum once</assert>
     </rule>
     <rule context="cbc:Amount | cbc:BaseAmount | cbc:PriceAmount | cbc:LineExtensionAmount | cbc:TaxExclusiveAmount | cbc:TaxInclusiveAmount | cbc:AllowanceTotalAmount | cbc:ChargeTotalAmount | cbc:PrepaidAmount | cbc:PayableRoundingAmount | cbc:PayableAmount | cac:TaxTotal[cbc:TaxAmount/@currencyID=/*/cbc:DocumentCurrencyCode]/cbc:TaxAmount | cac:TaxTotal[cbc:TaxAmount/@currencyID=/*/cbc:DocumentCurrencyCode]/cac:TaxSubtotal/cbc:TaxableAmount | cac:TaxTotal[cbc:TaxAmount/@currencyID=/*/cbc:DocumentCurrencyCode]/cac:TaxSubtotal/cbc:TaxAmount">
-      <!-- https://openpeppol.atlassian.net/browse/PINT-198 -->
-       <!-- Document Currency - Invoice line Amount payable Validation (BTAE-10) Error 
-            Exclude cac:ItemPriceExtension amounts from ibr-126 check to comply with UAE.
-        -->
+      
+       
       <assert id="ibr-126" flag="fatal" test="ancestor::cac:ItemPriceExtension or @currencyID = //cbc:DocumentCurrencyCode">[ibr-126]- All currencyID attributes must have the same value as the Invoice currency code (ibt-005), except for amounts expected to be in Tax accounting currency (ibt-006).</assert>
     </rule>
     <rule context="cac:PaymentTerms">

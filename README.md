@@ -245,7 +245,7 @@ I hope that with the introduction of PINT, the versioning problem will be solved
 
 # News and noteworthy
 
-v4.3.6 - work in progress
+v4.3.6 - 2026-06-01
 * Added Peppol TDD AE 1.0.3 rules and deprecated 1.0.2
 
 v4.3.5 - 2026-05-28
