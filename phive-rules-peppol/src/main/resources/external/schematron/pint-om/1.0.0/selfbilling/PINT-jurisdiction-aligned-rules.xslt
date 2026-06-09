@@ -302,7 +302,7 @@
    <!--PATTERN Aligned-om-rulesPINT Oman - business rules and calculation consistency-->
    <svrl:text xmlns:svrl="http://purl.oclc.org/dsdl/svrl">PINT Oman - business rules and calculation consistency</svrl:text>
    <!--RULE -->
-   <xsl:template match="/" priority="1013" mode="M51">
+   <xsl:template match="/" priority="1012" mode="M51">
       <svrl:fired-rule xmlns:svrl="http://purl.oclc.org/dsdl/svrl" context="/"/>
       <!--ASSERT fatal-->
       <xsl:choose>
@@ -352,7 +352,7 @@
       <xsl:apply-templates select="*" mode="M51"/>
    </xsl:template>
    <!--RULE -->
-   <xsl:template match="ubl:Invoice | cn:CreditNote" priority="1012" mode="M51">
+   <xsl:template match="ubl:Invoice | cn:CreditNote" priority="1011" mode="M51">
       <svrl:fired-rule xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
                        context="ubl:Invoice | cn:CreditNote"/>
       <!--REPORT information-->
@@ -2646,7 +2646,7 @@
    </xsl:template>
    <!--RULE -->
    <xsl:template match="cbc:ReceivedDate | cbc:InstallmentDueDate"
-                 priority="1011"
+                 priority="1010"
                  mode="M51">
       <svrl:fired-rule xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
                        context="cbc:ReceivedDate | cbc:InstallmentDueDate"/>
@@ -2689,60 +2689,6 @@
       <xsl:apply-templates select="*" mode="M51"/>
    </xsl:template>
    <!--RULE -->
-   <xsl:template match="cac:TaxExchangeRate/cbc:CalculationRate"
-                 priority="1010"
-                 mode="M51">
-      <svrl:fired-rule xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
-                       context="cac:TaxExchangeRate/cbc:CalculationRate"/>
-      <!--ASSERT fatal-->
-      <xsl:choose>
-         <xsl:when test=". castable as xs:decimal and xs:decimal(.) = round(xs:decimal(.) * 10000000) div 10000000"/>
-         <xsl:otherwise>
-            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
-                                test=". castable as xs:decimal and xs:decimal(.) = round(xs:decimal(.) * 10000000) div 10000000">
-               <xsl:attribute name="id">IBR-DEC-07-OM</xsl:attribute>
-               <xsl:attribute name="flag">fatal</xsl:attribute>
-               <xsl:attribute name="role">fatal</xsl:attribute>
-               <xsl:attribute name="location">
-                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
-               </xsl:attribute>
-               <svrl:text>
-                [IBR-DEC-07-OM] - Currency Exchange Rate (BTOM-003) MUST NOT contain more than 7 decimal places.
-            </svrl:text>
-               <svrl:diagnostic-reference diagnostic="d-IBR-DEC-07-OM">
-
-            Currency Exchange Rate decimal precision validation (BTOM-003)
-
-            Found:
-            - Element: '<xsl:text/>
-                  <xsl:value-of select="name()"/>
-                  <xsl:text/>'
-            - Value: '<xsl:text/>
-                  <xsl:value-of select="normalize-space(.)"/>
-                  <xsl:text/>'
-
-            Expected:
-            The currency exchange rate MUST NOT contain more than 7 decimal places.
-
-            Examples of valid values:
-            - 1
-            - 0.385
-            - 0.3850000
-            - 1.2345678
-
-            Invalid examples:
-            - 1.23456789
-            - 0.38500001234
-
-            Action:
-            Round the exchange rate to a maximum of 7 fractional digits.
-        </svrl:diagnostic-reference>
-            </svrl:failed-assert>
-         </xsl:otherwise>
-      </xsl:choose>
-      <xsl:apply-templates select="*" mode="M51"/>
-   </xsl:template>
-   <!--RULE -->
    <xsl:template match="cbc:Amount              | cbc:BaseAmount              | cbc:PriceAmount              | cbc:LineExtensionAmount[not(parent::cac:LegalMonetaryTotal)]              | cbc:TaxExclusiveAmount[not(parent::cac:LegalMonetaryTotal)]              | cbc:TaxInclusiveAmount[not(parent::cac:LegalMonetaryTotal)]              | cbc:AllowanceTotalAmount[not(parent::cac:LegalMonetaryTotal)]              | cbc:ChargeTotalAmount[not(parent::cac:LegalMonetaryTotal)]              | cbc:PrepaidAmount[not(parent::cac:LegalMonetaryTotal)]              | cbc:PayableRoundingAmount[not(parent::cac:LegalMonetaryTotal)]              | cbc:PayableAmount[not(parent::cac:LegalMonetaryTotal)]              | cac:TaxTotal/cbc:TaxAmount[not(parent::cac:TaxTotal[parent::*[local-name()='Invoice' or local-name()='CreditNote']])]              | cac:TaxTotal/cbc:TaxableAmount              | cac:TaxTotal/cac:TaxSubtotal/cbc:TaxAmount              | cac:TaxTotal/cac:TaxSubtotal/cbc:TaxableAmount              | cac:AdditionalDocumentReference[cbc:DocumentTypeCode='PM_TOTAL']/cbc:DocumentDescription"
                  priority="1009"
                  mode="M51">
@@ -2761,7 +2707,7 @@
                   <xsl:apply-templates select="." mode="schematron-select-full-path"/>
                </xsl:attribute>
                <svrl:text>
-                [IBR-DEC-03-OM] (covering IBR-088-OM, IBR-109-OM..IBR-135-OM) - All amount values (including BTOM-020 Total amount due in Profit Margin) MUST NOT contain more than 3 decimal places and the exchange rate by IBR-DEC-07-OM (7 decimals).
+                [IBR-DEC-03-OM] (covering IBR-088-OM, IBR-109-OM..IBR-135-OM) - All amount values (including BTOM-020 Total amount due in Profit Margin) MUST NOT contain more than 3 decimal places and the exchange rate by IBR-005-OM (7 decimals).
             </svrl:text>
                <svrl:diagnostic-reference diagnostic="d-IBR-DEC-03-OM">
 
@@ -2777,7 +2723,7 @@
 
             Expected:
             Amount (except Shared) must contain no more than 3 decimal places.
-            the Exchange rate is validated by IBR-DEC-07-OM at 7 decimals.)
+            the Exchange rate is validated by IBR-005-OM at 7 decimals.)
 
             Examples of valid values:
             - 100

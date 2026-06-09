@@ -247,6 +247,9 @@ I hope that with the introduction of PINT, the versioning problem will be solved
 
 # News and noteworthy
 
+v4.3.7 - 2026-06-09
+* Updated Peppol PINT Oman (OM) 1.0.0 rules (2026-Q2-FIN snapshot)
+
 v4.3.6 - 2026-06-01
 * Added Peppol TDD AE 1.0.3 rules and deprecated 1.0.2
 

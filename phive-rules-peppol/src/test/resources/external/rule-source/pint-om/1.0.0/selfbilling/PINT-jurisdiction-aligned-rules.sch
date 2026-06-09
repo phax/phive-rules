@@ -393,19 +393,12 @@
          <rule context="cbc:ReceivedDate | cbc:InstallmentDueDate">
             <assert id="IBR-171-A-OM" diagnostics="d-IBR-171-A" flag="fatal" role="fatal" test="string-length(text()) = 10 and (string(.) castable as xs:date)">[IBR-171-A-OM] - A date MUST be formatted YYYY-MM-DD in (IBT-177), (IBT-181), (IBT-009).</assert>
         </rule>
-       
-        
-        <rule context="cac:TaxExchangeRate/cbc:CalculationRate">
-            <assert id="IBR-DEC-07-OM" flag="fatal" role="fatal" test=". castable as xs:decimal and xs:decimal(.) = round(xs:decimal(.) * 10000000) div 10000000" diagnostics="d-IBR-DEC-07-OM">
-                [IBR-DEC-07-OM] - Currency Exchange Rate (BTOM-003) MUST NOT contain more than 7 decimal places.
-            </assert>
-        </rule>
 
         <rule context="cbc:Amount              | cbc:BaseAmount              | cbc:PriceAmount              | cbc:LineExtensionAmount[not(parent::cac:LegalMonetaryTotal)]              | cbc:TaxExclusiveAmount[not(parent::cac:LegalMonetaryTotal)]              | cbc:TaxInclusiveAmount[not(parent::cac:LegalMonetaryTotal)]              | cbc:AllowanceTotalAmount[not(parent::cac:LegalMonetaryTotal)]              | cbc:ChargeTotalAmount[not(parent::cac:LegalMonetaryTotal)]              | cbc:PrepaidAmount[not(parent::cac:LegalMonetaryTotal)]              | cbc:PayableRoundingAmount[not(parent::cac:LegalMonetaryTotal)]              | cbc:PayableAmount[not(parent::cac:LegalMonetaryTotal)]              | cac:TaxTotal/cbc:TaxAmount[not(parent::cac:TaxTotal[parent::*[local-name()='Invoice' or local-name()='CreditNote']])]              | cac:TaxTotal/cbc:TaxableAmount              | cac:TaxTotal/cac:TaxSubtotal/cbc:TaxAmount              | cac:TaxTotal/cac:TaxSubtotal/cbc:TaxableAmount              | cac:AdditionalDocumentReference[cbc:DocumentTypeCode='PM_TOTAL']/cbc:DocumentDescription">
 
             
             <assert id="IBR-DEC-03-OM" flag="fatal" role="fatal" test=". castable as xs:decimal and xs:decimal(.) = round(xs:decimal(.) * 1000) div 1000" diagnostics="d-IBR-DEC-03-OM">
-                [IBR-DEC-03-OM] (covering IBR-088-OM, IBR-109-OM..IBR-135-OM) - All amount values (including BTOM-020 Total amount due in Profit Margin) MUST NOT contain more than 3 decimal places and the exchange rate by IBR-DEC-07-OM (7 decimals).
+                [IBR-DEC-03-OM] (covering IBR-088-OM, IBR-109-OM..IBR-135-OM) - All amount values (including BTOM-020 Total amount due in Profit Margin) MUST NOT contain more than 3 decimal places and the exchange rate by IBR-005-OM (7 decimals).
             </assert>
 
 </rule>
@@ -906,7 +899,7 @@
 
             Expected:
             Amount (except Shared) must contain no more than 3 decimal places.
-            the Exchange rate is validated by IBR-DEC-07-OM at 7 decimals.)
+            the Exchange rate is validated by IBR-005-OM at 7 decimals.)
 
             Examples of valid values:
             - 100
@@ -921,30 +914,7 @@
             Action:
             Reduce the number of fractional digits to a maximum of 3.
         </diagnostic>
-
-        <diagnostic id="d-IBR-DEC-07-OM">
-            Currency Exchange Rate decimal precision validation (BTOM-003)
-
-            Found:
-            - Element: '<value-of select="name()"/>'
-            - Value: '<value-of select="normalize-space(.)"/>'
-
-            Expected:
-            The currency exchange rate MUST NOT contain more than 7 decimal places.
-
-            Examples of valid values:
-            - 1
-            - 0.385
-            - 0.3850000
-            - 1.2345678
-
-            Invalid examples:
-            - 1.23456789
-            - 0.38500001234
-
-            Action:
-            Round the exchange rate to a maximum of 7 fractional digits.
-        </diagnostic>
+        
         <diagnostic id="d-CL-02-OM">
             Credit/Debit Note reason code (BTOM-032)
             
