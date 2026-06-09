@@ -25,14 +25,12 @@ import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.io.resource.ClassPathResource;
 import com.helger.peppol.om.tdd.jaxb.PeppolOMTDD10Marshaller;
 import com.helger.peppol.sk.tdd.jaxb.PeppolSKTDD100Marshaller;
-import com.helger.peppol.uae.tdd.jaxb.CPeppolUAETDD;
 import com.helger.peppol.uae.tdd.jaxb.PeppolUAETDD10Marshaller;
 import com.helger.peppol.vida.tdd.jaxb.PeppolViDATDD100Marshaller;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
 import com.helger.phive.rules.api.PhiveRulesHelper;
 import com.helger.phive.xml.executorset.VesXmlBuilder;
 import com.helger.phive.xml.source.IValidationSourceXML;
-import com.helger.ubl21.UBL21Marshaller;
 import com.helger.xml.namespace.MapBasedNamespaceContext;
 
 /**
@@ -95,10 +93,7 @@ public final class PeppolValidationTaxData
 
     // AE
     {
-      // TODO peppol-uae >= 0.9.3: use PeppolUAETDD10Marshaller.getAllXSDs
-      final ICommonsList <ClassPathResource> aXsds100 = UBL21Marshaller.getAllBaseXSDs ();
-      aXsds100.add (CPeppolUAETDD.TDD_XSD_1_0);
-
+      final ICommonsList <ClassPathResource> aXsds100 = PeppolUAETDD10Marshaller.getAllXSDs ();
       final MapBasedNamespaceContext aNsCtx = PeppolUAETDD10Marshaller.createNamespaceContext ();
 
       // TDD AE 1.0.0
