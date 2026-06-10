@@ -247,6 +247,9 @@ I hope that with the introduction of PINT, the versioning problem will be solved
 
 # News and noteworthy
 
+v4.3.8 - work in progress
+* Added support for ZuGFERD 2.5 - all profiles (XML only)
+
 v4.3.7 - 2026-06-09
 * Updated Peppol PINT Oman (OM) 1.0.0 rules (2026-Q2-FIN snapshot)
 
