@@ -82,12 +82,24 @@ public final class PeppolValidationPintSG
   // 1.4.0 - 09.03.2026
   public static final LocalDate V1_4_0_VALID_PER = PDTFactory.createLocalDate (2026, Month.MARCH, 9);
   public static final OffsetDateTime V1_4_0_VALID_PER_UTC = PDTFactory.createOffsetDateTimeUTC (V1_4_0_VALID_PER);
+  @Deprecated (forRemoval = false)
   public static final DVRCoordinate VID_OPENPEPPOL_SG_PINT_UBL_INVOICE_1_4_0 = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                                                   "invoice",
                                                                                                                   "1.4.0");
+  @Deprecated (forRemoval = false)
   public static final DVRCoordinate VID_OPENPEPPOL_SG_PINT_UBL_CREDIT_NOTE_1_4_0 = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                                                       "creditnote",
                                                                                                                       "1.4.0");
+
+  // 1.4.1 - 25.05.2026
+  public static final LocalDate V1_4_1_VALID_PER = PDTFactory.createLocalDate (2026, Month.MAY, 25);
+  public static final OffsetDateTime V1_4_1_VALID_PER_UTC = PDTFactory.createOffsetDateTimeUTC (V1_4_1_VALID_PER);
+  public static final DVRCoordinate VID_OPENPEPPOL_SG_PINT_UBL_INVOICE_1_4_1 = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                                  "invoice",
+                                                                                                                  "1.4.1");
+  public static final DVRCoordinate VID_OPENPEPPOL_SG_PINT_UBL_CREDIT_NOTE_1_4_1 = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                                      "creditnote",
+                                                                                                                      "1.4.1");
 
   private PeppolValidationPintSG ()
   {}
@@ -212,7 +224,7 @@ public final class PeppolValidationPintSG
       VesXmlBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_SG_PINT_UBL_INVOICE_1_4_0)
                        .displayName ("Peppol PINT Singapore Invoice (UBL) 1.4.0")
-                       .notDeprecated ()
+                       .deprecated ()
                        .validFrom (V1_4_0_VALID_PER_UTC)
                        .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
                        .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (sBaseBilling +
@@ -225,8 +237,41 @@ public final class PeppolValidationPintSG
       VesXmlBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_SG_PINT_UBL_CREDIT_NOTE_1_4_0)
                        .displayName ("Peppol PINT Singapore Credit Note (UBL) 1.4.0")
-                       .notDeprecated ()
+                       .deprecated ()
                        .validFrom (V1_4_0_VALID_PER_UTC)
+                       .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
+                       .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (sBaseBilling +
+                                                                                           "PINT-UBL-validation-preprocessed.xslt",
+                                                                                           _getCL ()),
+                                                                    aNSCtxCreditNote))
+                       .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (sBaseBilling +
+                                                                                           "PINT-jurisdiction-aligned-rules.xslt",
+                                                                                           _getCL ()),
+                                                                    aNSCtxCreditNote))
+                       .registerInto (aRegistry);
+    }
+
+    // 1.4.1
+    {
+      final String sBaseBilling = BASE_PATH + "1.4.1/xslt/";
+      VesXmlBuilder.builder ()
+                       .vesID (VID_OPENPEPPOL_SG_PINT_UBL_INVOICE_1_4_1)
+                       .displayName ("Peppol PINT Singapore Invoice (UBL) 1.4.1")
+                       .notDeprecated ()
+                       .validFrom (V1_4_1_VALID_PER_UTC)
+                       .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
+                       .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (sBaseBilling +
+                                                                                           "PINT-UBL-validation-preprocessed.xslt",
+                                                                                           _getCL ()), aNSCtxInvoice))
+                       .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (sBaseBilling +
+                                                                                           "PINT-jurisdiction-aligned-rules.xslt",
+                                                                                           _getCL ()), aNSCtxInvoice))
+                       .registerInto (aRegistry);
+      VesXmlBuilder.builder ()
+                       .vesID (VID_OPENPEPPOL_SG_PINT_UBL_CREDIT_NOTE_1_4_1)
+                       .displayName ("Peppol PINT Singapore Credit Note (UBL) 1.4.1")
+                       .notDeprecated ()
+                       .validFrom (V1_4_1_VALID_PER_UTC)
                        .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
                        .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (sBaseBilling +
                                                                                            "PINT-UBL-validation-preprocessed.xslt",

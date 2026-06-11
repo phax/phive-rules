@@ -327,6 +327,9 @@ public final class CTestFiles
                                                              PeppolValidationPintSG.VID_OPENPEPPOL_SG_PINT_UBL_INVOICE_1_4_0,
                                                              PeppolValidationPintSG.VID_OPENPEPPOL_SG_PINT_UBL_CREDIT_NOTE_1_4_0,
 
+                                                             PeppolValidationPintSG.VID_OPENPEPPOL_SG_PINT_UBL_INVOICE_1_4_1,
+                                                             PeppolValidationPintSG.VID_OPENPEPPOL_SG_PINT_UBL_CREDIT_NOTE_1_4_1,
+
     })
       for (final IReadableResource aRes : getAllMatchingTestFiles (aVESID))
       {
@@ -1972,6 +1975,31 @@ public final class CTestFiles
     if (aVESID.equals (PeppolValidationPintSG.VID_OPENPEPPOL_SG_PINT_UBL_CREDIT_NOTE_1_4_0))
     {
       return _getAll ("pint-sg/1.4.0/", "PINT-SG CN example 01 - Credit Note.xml");
+    }
+
+    // 1.4.1
+    if (aVESID.equals (PeppolValidationPintSG.VID_OPENPEPPOL_SG_PINT_UBL_INVOICE_1_4_1))
+    {
+      return _getAll ("pint-sg/1.4.1/",
+                      "PINT-SG INV example 02 - full valid invoice 1.xml",
+                      "PINT-SG INV example 03 - Allowances and Charges.xml",
+                      "PINT-SG INV example 04 - none GST registered.xml",
+                      "PINT-SG INV example 05 - AGD compliant with II and PO reference.xml",
+                      "PINT-SG INV example 06 - Foreign currency.xml",
+                      "PINT-SG INV example 07 - Foreign buyer.xml",
+                      "PINT-SG INV example 08 - Factored invoice.xml",
+                      "PINT-SG INV example 09 - Zero rated GST.xml",
+                      "PINT-SG INV example 10 - Prepayment.xml",
+                      "PINT-SG INV example 11 - Decimals.xml",
+                      "PINT-SG INV example 12 - SG bank transfer.xml",
+                      "PINT-SG INV example 13 - SG GIRO.xml",
+                      "PINT-SG INV example 14 - PayNow.xml",
+                      "PINT-SG INV example 15 - Credit card.xml",
+                      "PINT-SG INV example 16 - GST in SGD.xml");
+    }
+    if (aVESID.equals (PeppolValidationPintSG.VID_OPENPEPPOL_SG_PINT_UBL_CREDIT_NOTE_1_4_1))
+    {
+      return _getAll ("pint-sg/1.4.1/", "PINT-SG CN example 01 - Credit Note.xml");
     }
 
     throw new IllegalArgumentException ("Invalid VESID: " + aVESID);
