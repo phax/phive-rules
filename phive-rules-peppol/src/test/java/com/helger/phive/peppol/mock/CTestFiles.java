@@ -255,6 +255,8 @@ public final class CTestFiles
                                                              PeppolValidationPintJP.VID_OPENPEPPOL_JP_PINT_CREDIT_NOTE_1_1_1,
                                                              PeppolValidationPintJP.VID_OPENPEPPOL_JP_PINT_INVOICE_1_1_2,
                                                              PeppolValidationPintJP.VID_OPENPEPPOL_JP_PINT_CREDIT_NOTE_1_1_2,
+                                                             PeppolValidationPintJP.VID_OPENPEPPOL_JP_PINT_INVOICE_1_1_3,
+                                                             PeppolValidationPintJP.VID_OPENPEPPOL_JP_PINT_CREDIT_NOTE_1_1_3,
 
                                                              /* PINT Japan NTR */
                                                              PeppolValidationPintJP_NTR.VID_OPENPEPPOL_JP_PINT_NTR_INVOICE_1_0_1,
@@ -265,6 +267,8 @@ public final class CTestFiles
                                                              PeppolValidationPintJP_NTR.VID_OPENPEPPOL_JP_PINT_NTR_CREDIT_NOTE_1_1_1,
                                                              PeppolValidationPintJP_NTR.VID_OPENPEPPOL_JP_PINT_NTR_INVOICE_1_1_2,
                                                              PeppolValidationPintJP_NTR.VID_OPENPEPPOL_JP_PINT_NTR_CREDIT_NOTE_1_1_2,
+                                                             PeppolValidationPintJP_NTR.VID_OPENPEPPOL_JP_PINT_NTR_INVOICE_1_1_3,
+                                                             PeppolValidationPintJP_NTR.VID_OPENPEPPOL_JP_PINT_NTR_CREDIT_NOTE_1_1_3,
 
                                                              /* PINT Japan Self Billing */
                                                              PeppolValidationPintJP_SB.VID_OPENPEPPOL_JP_PINT_SB_INVOICE_1_0_1,
@@ -275,6 +279,8 @@ public final class CTestFiles
                                                              PeppolValidationPintJP_SB.VID_OPENPEPPOL_JP_PINT_SB_CREDIT_NOTE_1_1_1,
                                                              PeppolValidationPintJP_SB.VID_OPENPEPPOL_JP_PINT_SB_INVOICE_1_1_2,
                                                              PeppolValidationPintJP_SB.VID_OPENPEPPOL_JP_PINT_SB_CREDIT_NOTE_1_1_2,
+                                                             PeppolValidationPintJP_SB.VID_OPENPEPPOL_JP_PINT_SB_INVOICE_1_1_3,
+                                                             PeppolValidationPintJP_SB.VID_OPENPEPPOL_JP_PINT_SB_CREDIT_NOTE_1_1_3,
 
                                                              /* PINT Malaysia */
                                                              PeppolValidationPintMY.VID_OPENPEPPOL_MY_PINT_UBL_INVOICE_1_0_0,
@@ -1512,6 +1518,26 @@ public final class CTestFiles
       return new CommonsArrayList <> ();
     }
 
+    // 1.1.3
+    if (aVESID.equals (PeppolValidationPintJP.VID_OPENPEPPOL_JP_PINT_INVOICE_1_1_3))
+    {
+      return _getAll ("pint-jp/1.1.3/",
+                      "Japan PINT Invoice UBL Example.xml",
+                      "Japan PINT Invoice UBL Example1-minimum.xml",
+                      "Japan PINT Invoice UBL Example2-TaxAcctCur.xml",
+                      "Japan PINT Invoice UBL Example3-SumInv1.xml",
+                      "Japan PINT Invoice UBL Example4-SumInv2.xml",
+                      "Japan PINT Invoice UBL Example5-AllowanceCharge.xml",
+                      "Japan PINT Invoice UBL Example6-CorrInv.xml",
+                      "Japan PINT Invoice UBL Example7-Return.Quan.ItPr.xml",
+                      "Japan PINT Invoice UBL Example9-SumInv1 and O.xml");
+    }
+    if (aVESID.equals (PeppolValidationPintJP.VID_OPENPEPPOL_JP_PINT_CREDIT_NOTE_1_1_3))
+    {
+      // empty
+      return new CommonsArrayList <> ();
+    }
+
     /* PINT Japan for non-tax registered Businesses */
     // 1.0.1
     if (aVESID.equals (PeppolValidationPintJP_NTR.VID_OPENPEPPOL_JP_PINT_NTR_INVOICE_1_0_1))
@@ -1585,6 +1611,24 @@ public final class CTestFiles
       return new CommonsArrayList <> ();
     }
 
+    // 1.1.3
+    if (aVESID.equals (PeppolValidationPintJP_NTR.VID_OPENPEPPOL_JP_PINT_NTR_INVOICE_1_1_3))
+    {
+      return _getAll ("pint-jp-ntr/1.1.3/",
+                      "JP BIS Invoice for Non-tax Registered Businesses UBL Example.xml",
+                      "JP BIS Invoice for Non-tax Registered Businesses UBL Example1-minimum.xml",
+                      "JP BIS Invoice for Non-tax Registered Businesses UBL Example2-SumInv1.xml",
+                      "JP BIS Invoice for Non-tax Registered Businesses UBL Example3-SumInv2.xml",
+                      "JP BIS Invoice for Non-tax Registered Businesses UBL Example4-AllowanceCharge.xml",
+                      "JP BIS Invoice for Non-tax Registered Businesses UBL Example5-CorrInv.xml",
+                      "JP BIS Invoice for Non-tax Registered Businesses UBL Example-Return.Quan.ItPr.xml");
+    }
+    if (aVESID.equals (PeppolValidationPintJP_NTR.VID_OPENPEPPOL_JP_PINT_NTR_CREDIT_NOTE_1_1_3))
+    {
+      // empty
+      return new CommonsArrayList <> ();
+    }
+
     /* PINT Japan Self Billing */
     // 1.0.1
     if (aVESID.equals (PeppolValidationPintJP_SB.VID_OPENPEPPOL_JP_PINT_SB_INVOICE_1_0_1) ||
@@ -1613,6 +1657,14 @@ public final class CTestFiles
     // 1.1.2
     if (aVESID.equals (PeppolValidationPintJP_SB.VID_OPENPEPPOL_JP_PINT_SB_INVOICE_1_1_2) ||
         aVESID.equals (PeppolValidationPintJP_SB.VID_OPENPEPPOL_JP_PINT_SB_CREDIT_NOTE_1_1_2))
+    {
+      // empty
+      return new CommonsArrayList <> ();
+    }
+
+    // 1.1.3
+    if (aVESID.equals (PeppolValidationPintJP_SB.VID_OPENPEPPOL_JP_PINT_SB_INVOICE_1_1_3) ||
+        aVESID.equals (PeppolValidationPintJP_SB.VID_OPENPEPPOL_JP_PINT_SB_CREDIT_NOTE_1_1_3))
     {
       // empty
       return new CommonsArrayList <> ();
