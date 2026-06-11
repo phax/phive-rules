@@ -303,6 +303,11 @@ public final class CTestFiles
                                                              PeppolValidationPintMY.VID_OPENPEPPOL_MY_PINT_UBL_INVOICE_SELF_BILLING_1_3_0,
                                                              PeppolValidationPintMY.VID_OPENPEPPOL_MY_PINT_UBL_CREDIT_NOTE_SELF_BILLING_1_3_0,
 
+                                                             PeppolValidationPintMY.VID_OPENPEPPOL_MY_PINT_UBL_INVOICE_1_3_1,
+                                                             PeppolValidationPintMY.VID_OPENPEPPOL_MY_PINT_UBL_CREDIT_NOTE_1_3_1,
+                                                             PeppolValidationPintMY.VID_OPENPEPPOL_MY_PINT_UBL_INVOICE_SELF_BILLING_1_3_1,
+                                                             PeppolValidationPintMY.VID_OPENPEPPOL_MY_PINT_UBL_CREDIT_NOTE_SELF_BILLING_1_3_1,
+
                                                              /* PINT Oman */
                                                              PeppolValidationPintOM.VID_OPENPEPPOL_OM_PINT_INVOICE_1_0_0,
                                                              PeppolValidationPintOM.VID_OPENPEPPOL_OM_PINT_CREDIT_NOTE_1_0_0,
@@ -1760,6 +1765,48 @@ public final class CTestFiles
     if (aVESID.equals (PeppolValidationPintMY.VID_OPENPEPPOL_MY_PINT_UBL_CREDIT_NOTE_SELF_BILLING_1_3_0))
     {
       return _getAll ("pint-my/1.3.0/selfbilling/",
+                      "SB_CreditNote-Sample-HVG_1.3.0.xml",
+                      "SB_CreditNote-Sample-LVG_1.3.0.xml",
+                      "SB_CreditNote-Sample-SA_1.3.0.xml",
+                      "SB_CreditNote-Sample-SE_1.3.0.xml",
+                      "SB_CreditNote-Sample-TTX_1.3.0.xml",
+                      "SB-CompleteSample_LHDN-CreditNote.xml");
+    }
+
+    // 1.3.1
+    if (aVESID.equals (PeppolValidationPintMY.VID_OPENPEPPOL_MY_PINT_UBL_INVOICE_1_3_1))
+    {
+      return _getAll ("pint-my/1.3.1/billing/",
+                      "CompleteSample_LHDN.xml",
+                      "Invoice-Sample-HVG_1.3.0.xml",
+                      "Invoice-Sample-LVG_1.3.0.xml",
+                      "Invoice-Sample-SA_1.3.0.xml",
+                      "Invoice-Sample-SE_1.3.0.xml",
+                      "Invoice-Sample-TTX_1.3.0.xml");
+    }
+    if (aVESID.equals (PeppolValidationPintMY.VID_OPENPEPPOL_MY_PINT_UBL_CREDIT_NOTE_1_3_1))
+    {
+      return _getAll ("pint-my/1.3.1/billing/",
+                      "CompleteSample_LHDN-CreditNote.xml",
+                      "CreditNote-Sample-HVG_1.3.0.xml",
+                      "CreditNote-Sample-LVG_1.3.0.xml",
+                      "CreditNote-Sample-SA_1.3.0.xml",
+                      "CreditNote-Sample-SE_1.3.0.xml",
+                      "CreditNote-Sample-TTX_1.3.0.xml");
+    }
+    if (aVESID.equals (PeppolValidationPintMY.VID_OPENPEPPOL_MY_PINT_UBL_INVOICE_SELF_BILLING_1_3_1))
+    {
+      return _getAll ("pint-my/1.3.1/selfbilling/",
+                      "SB_Invoice-Sample-HVG_1.3.0.xml",
+                      "SB_Invoice-Sample-LVG_1.3.0.xml",
+                      "SB_Invoice-Sample-SA_1.3.0.xml",
+                      "SB_Invoice-Sample-SE_1.3.0.xml",
+                      "SB_Invoice-Sample-TTX_1.3.0.xml",
+                      "SB-CompleteSample_LHDN.xml");
+    }
+    if (aVESID.equals (PeppolValidationPintMY.VID_OPENPEPPOL_MY_PINT_UBL_CREDIT_NOTE_SELF_BILLING_1_3_1))
+    {
+      return _getAll ("pint-my/1.3.1/selfbilling/",
                       "SB_CreditNote-Sample-HVG_1.3.0.xml",
                       "SB_CreditNote-Sample-LVG_1.3.0.xml",
                       "SB_CreditNote-Sample-SA_1.3.0.xml",

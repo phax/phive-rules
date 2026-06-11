@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Invoice xmlns="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2"
+	xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+	xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+	xmlns:ccts="urn:oasis:names:specification:ubl:schema:xsd:CoreComponentParameters-2"
+	xmlns:qdt="urn:oasis:names:specification:ubl:schema:xsd:QualifiedDatatypes-2"
+	xmlns:stat="urn:oasis:names:specification:ubl:schema:xsd:DocumentStatusCode-1.0"
+	xmlns:udt="urn:un:unece:uncefact:data:draft:UnqualifiedDataTypesSchemaModule:2"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<cbc:CustomizationID>urn:peppol:pint:selfbilling-1@my-1</cbc:CustomizationID>
+	<cbc:ProfileID>urn:peppol:bis:selfbilling</cbc:ProfileID>
+	<cbc:ID>1776238759</cbc:ID>
+	<cbc:IssueDate>2026-04-15</cbc:IssueDate>
+	<cbc:IssueTime>02:39:19Z</cbc:IssueTime>
+	<cbc:InvoiceTypeCode listVersionID="1.1">389</cbc:InvoiceTypeCode>
+	<cbc:DocumentCurrencyCode>USD</cbc:DocumentCurrencyCode>
+	<cac:AccountingSupplierParty>
+		<cac:Party>
+			<cbc:EndpointID schemeID="0230">06SG3131312</cbc:EndpointID>
+			<cbc:IndustryClassificationCode name="NA">00000</cbc:IndustryClassificationCode>
+			<cac:PartyIdentification>
+				<cbc:ID schemeID="0230">IG58869197060</cbc:ID>
+			</cac:PartyIdentification>
+			<cac:PartyName>
+				<cbc:Name>DBNA_ELR</cbc:Name>
+			</cac:PartyName>
+			<cac:PostalAddress>
+				<cbc:StreetName>27 Jalan Mengkudu</cbc:StreetName>
+				<cbc:AdditionalStreetName>27 Jalan Mengkudu</cbc:AdditionalStreetName>
+				<cbc:CityName>Batu Pahat</cbc:CityName>
+				<cbc:PostalZone>83000</cbc:PostalZone>
+				<cbc:CountrySubentityCode>01</cbc:CountrySubentityCode>
+				<cac:AddressLine>
+					<cbc:Line>27 Jalan Mengkudu</cbc:Line>
+				</cac:AddressLine>
+				<cac:Country>
+					<cbc:IdentificationCode listAgencyID="6"
+						listID="ISO3166-1">MY</cbc:IdentificationCode>
+				</cac:Country>
+			</cac:PostalAddress>
+			<cac:PartyTaxScheme>
+				<cbc:CompanyID>06SG3131312</cbc:CompanyID>
+				<cac:TaxScheme>
+					<cbc:ID>SST</cbc:ID>
+				</cac:TaxScheme>
+			</cac:PartyTaxScheme>
+			<cac:PartyLegalEntity>
+				<cbc:RegistrationName>DBNA_ELR</cbc:RegistrationName>
+				<cbc:CompanyID>06SG3131312</cbc:CompanyID>
+			</cac:PartyLegalEntity>
+			<cac:Contact>
+				<cbc:Telephone>9819009200</cbc:Telephone>
+				<cbc:ElectronicMail>test@malaysia.com</cbc:ElectronicMail>
+			</cac:Contact>
+		</cac:Party>
+	</cac:AccountingSupplierParty>
+	<cac:AccountingCustomerParty>
+		<cac:Party>
+			<cbc:EndpointID schemeID="0230">06SG3131312</cbc:EndpointID>
+			<cac:PartyIdentification>
+				<cbc:ID schemeID="0230">IG58869197060</cbc:ID>
+			</cac:PartyIdentification>
+			<cac:PartyName>
+				<cbc:Name>TestDBNAmapping</cbc:Name>
+			</cac:PartyName>
+			<cac:PostalAddress>
+				<cbc:StreetName>900 WINSLOW WAY E</cbc:StreetName>
+				<cbc:CityName>BAINBRIDGE ISLAND</cbc:CityName>
+				<cbc:PostalZone>98110-2450</cbc:PostalZone>
+				<cbc:CountrySubentityCode>17</cbc:CountrySubentityCode>
+				<cac:AddressLine>
+					<cbc:Line>900 WINSLOW WAY E</cbc:Line>
+				</cac:AddressLine>
+				<cac:Country>
+					<cbc:IdentificationCode listAgencyID="6"
+						listID="ISO3166-1">US</cbc:IdentificationCode>
+				</cac:Country>
+			</cac:PostalAddress>
+			<cac:PartyLegalEntity>
+				<cbc:RegistrationName>TestDBNAmapping</cbc:RegistrationName>
+				<cbc:CompanyID>06SG3131312</cbc:CompanyID>
+			</cac:PartyLegalEntity>
+			<cac:Contact>
+				<cbc:Telephone>9839090390</cbc:Telephone>
+				<cbc:ElectronicMail>shyam.jadhav@avalara.com</cbc:ElectronicMail>
+			</cac:Contact>
+		</cac:Party>
+	</cac:AccountingCustomerParty>
+	<cac:TaxExchangeRate>
+		<cbc:SourceCurrencyCode>USD</cbc:SourceCurrencyCode>
+		<cbc:TargetCurrencyCode>MYR</cbc:TargetCurrencyCode>
+		<cbc:CalculationRate>0.254795</cbc:CalculationRate>
+	</cac:TaxExchangeRate>
+	<cac:TaxTotal>
+		<cbc:TaxAmount currencyID="USD">0</cbc:TaxAmount>
+		<cac:TaxSubtotal>
+			<cbc:TaxableAmount currencyID="USD">10</cbc:TaxableAmount>
+			<cbc:TaxAmount currencyID="USD">0</cbc:TaxAmount>
+			<cac:TaxCategory>
+				<cbc:ID>E</cbc:ID>
+				<cbc:Percent>0</cbc:Percent>
+				<cbc:TaxExemptionReason>Goods acquired with SST exemption under Sales Tax Act 2018.
+					Reference No: ABC.TAX(S)012-3/4/56(7)</cbc:TaxExemptionReason>
+				<cac:TaxScheme>
+					<cbc:ID>VAT</cbc:ID>
+				</cac:TaxScheme>
+			</cac:TaxCategory>
+		</cac:TaxSubtotal>
+	</cac:TaxTotal>
+	<cac:LegalMonetaryTotal>
+		<cbc:LineExtensionAmount currencyID="USD">10</cbc:LineExtensionAmount>
+		<cbc:TaxExclusiveAmount currencyID="USD">10</cbc:TaxExclusiveAmount>
+		<cbc:TaxInclusiveAmount currencyID="USD">10</cbc:TaxInclusiveAmount>
+		<cbc:AllowanceTotalAmount currencyID="USD">0</cbc:AllowanceTotalAmount>
+		<cbc:ChargeTotalAmount currencyID="USD">0</cbc:ChargeTotalAmount>
+		<cbc:PrepaidAmount currencyID="USD">0</cbc:PrepaidAmount>
+		<cbc:PayableRoundingAmount currencyID="USD">0</cbc:PayableRoundingAmount>
+		<cbc:PayableAmount currencyID="USD">10</cbc:PayableAmount>
+	</cac:LegalMonetaryTotal>
+	<cac:InvoiceLine>
+		<cbc:ID>ii_1SZsC2Eoy1L9z02ASZW4BEiv</cbc:ID>
+		<cbc:InvoicedQuantity unitCode="H87">1</cbc:InvoicedQuantity>
+		<cbc:LineExtensionAmount currencyID="USD">10</cbc:LineExtensionAmount>
+		<cac:TaxTotal>
+			<cbc:TaxAmount currencyID="USD">0</cbc:TaxAmount>
+			<cac:TaxSubtotal>
+				<cbc:TaxableAmount currencyID="USD">10</cbc:TaxableAmount>
+				<cbc:TaxAmount currencyID="USD">0</cbc:TaxAmount>
+				<cac:TaxCategory>
+					<cbc:ID>E</cbc:ID>
+					<cbc:Percent>0</cbc:Percent>
+					<cbc:TaxExemptionReason>Goods acquired with SST exemption under Sales Tax Act
+						2018. Reference No: ABC.TAX(S)012-3/4/56(7)</cbc:TaxExemptionReason>
+					<cac:TaxScheme>
+						<cbc:ID>VAT</cbc:ID>
+					</cac:TaxScheme>
+				</cac:TaxCategory>
+			</cac:TaxSubtotal>
+		</cac:TaxTotal>
+		<cac:Item>
+			<cbc:Description>Test</cbc:Description>
+			<cbc:Name>Test</cbc:Name>
+			<cac:CommodityClassification>
+				<cbc:ItemClassificationCode listID="CG">022</cbc:ItemClassificationCode>
+			</cac:CommodityClassification>
+			<cac:ClassifiedTaxCategory>
+				<cbc:ID>E</cbc:ID>
+				<cbc:Percent>0</cbc:Percent>
+				<cac:TaxScheme>
+					<cbc:ID>VAT</cbc:ID>
+				</cac:TaxScheme>
+			</cac:ClassifiedTaxCategory>
+		</cac:Item>
+		<cac:Price>
+			<cbc:PriceAmount currencyID="USD">10</cbc:PriceAmount>
+		</cac:Price>
+		<cac:ItemPriceExtension>
+			<cbc:Amount currencyID="USD">10</cbc:Amount>
+		</cac:ItemPriceExtension>
+	</cac:InvoiceLine>
+</Invoice>

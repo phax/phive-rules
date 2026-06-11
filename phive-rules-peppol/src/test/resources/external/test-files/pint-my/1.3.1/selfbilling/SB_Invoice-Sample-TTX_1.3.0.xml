@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ubl:Invoice xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+             xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+             xmlns:ubl="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2">
+	<cbc:CustomizationID>urn:peppol:pint:selfbilling-1@my-1</cbc:CustomizationID>
+	<!-- IBT-024 - Specification identifier -->
+		<cbc:ProfileID>urn:peppol:bis:selfbilling</cbc:ProfileID>
+		<cbc:ID>RANDOMISE</cbc:ID>
+		<cbc:IssueDate>2024-05-07</cbc:IssueDate>
+		<cbc:IssueTime>15:30:00Z</cbc:IssueTime>
+		<cbc:DueDate>2024-06-06</cbc:DueDate>
+		<cbc:InvoiceTypeCode>389</cbc:InvoiceTypeCode>
+		<cbc:TaxPointDate>2023-11-30</cbc:TaxPointDate>
+		<cbc:DocumentCurrencyCode>MYR</cbc:DocumentCurrencyCode>
+		<cbc:AccountingCost>Standard</cbc:AccountingCost>
+		<cbc:BuyerReference>Cik Maria</cbc:BuyerReference>
+		<cac:InvoicePeriod>
+			<cbc:StartDate>2024-05-01</cbc:StartDate>
+			<cbc:EndDate>2024-05-06</cbc:EndDate>
+			<cbc:Description>Monthly</cbc:Description>
+		</cac:InvoicePeriod>
+		<cac:BillingReference>
+			<cac:InvoiceDocumentReference>
+				<cbc:ID>53798679</cbc:ID>
+				<cbc:IssueDate>2024-08-05</cbc:IssueDate>
+			</cac:InvoiceDocumentReference>
+		</cac:BillingReference>
+		<cac:DespatchDocumentReference>
+			<cbc:ID>2100409</cbc:ID>
+		</cac:DespatchDocumentReference>
+		<cac:ReceiptDocumentReference>
+			<cbc:ID>11</cbc:ID>
+		</cac:ReceiptDocumentReference>
+		<cac:OriginatorDocumentReference>
+			<cbc:ID>0965566776</cbc:ID>
+		</cac:OriginatorDocumentReference>
+		<cac:ContractDocumentReference>
+			<cbc:ID>11</cbc:ID>
+		</cac:ContractDocumentReference>
+		<!-- This is how you can send FTA, CertEx, and K2 information-->
+			<cac:AdditionalDocumentReference>
+				<cbc:ID>ASEAN-Australia-New Zealand FTA (AANZFTA)</cbc:ID>
+				<cbc:DocumentType>FreeTradeAgreement</cbc:DocumentType>
+				<cbc:DocumentDescription>More description</cbc:DocumentDescription>
+			</cac:AdditionalDocumentReference>
+			<cac:AdditionalDocumentReference>
+				<cbc:ID>CPT-CCN-W-211111-KL-000002</cbc:ID>
+				<cbc:DocumentType>CertEx</cbc:DocumentType>
+			</cac:AdditionalDocumentReference>
+			<cac:AdditionalDocumentReference>
+				<cbc:ID>E12345678912</cbc:ID>
+				<cbc:DocumentType>K2</cbc:DocumentType>
+			</cac:AdditionalDocumentReference>
+			<cac:AdditionalDocumentReference>
+				<cbc:ID>REF-123</cbc:ID>
+				<cbc:DocumentTypeCode>938</cbc:DocumentTypeCode>
+				<cac:Attachment>
+					<cac:ExternalReference>
+						<cbc:URI>https://thelink</cbc:URI>
+					</cac:ExternalReference>
+				</cac:Attachment>
+				<cac:ResultOfVerification>
+					<cbc:ValidationDate>2024-10-02</cbc:ValidationDate>
+					<cbc:ValidationTime>12:00:00</cbc:ValidationTime>
+				</cac:ResultOfVerification>
+			</cac:AdditionalDocumentReference>
+			<cac:AdditionalDocumentReference>
+				<cbc:ID>Customs Form No. 1, 9, etc.</cbc:ID>
+				<cbc:DocumentTypeCode>914</cbc:DocumentTypeCode>
+			</cac:AdditionalDocumentReference>
+			<cac:AdditionalDocumentReference>
+				<cbc:ID>Atch56890</cbc:ID>
+				<cbc:DocumentDescription>Link to PDF Attchment</cbc:DocumentDescription>
+				<cac:Attachment>
+					<cac:ExternalReference>
+						<cbc:URI>https://thelink</cbc:URI>
+					</cac:ExternalReference>
+				</cac:Attachment>
+			</cac:AdditionalDocumentReference>
+			<cac:ProjectReference>
+				<cbc:ID>11</cbc:ID>
+			</cac:ProjectReference>
+			<cac:AccountingSupplierParty>
+				<cac:Party>
+					<cbc:EndpointID schemeID="0230">050987654321</cbc:EndpointID>
+					<cbc:IndustryClassificationCode name="Growing of maize">01111</cbc:IndustryClassificationCode>
+					<cac:PartyIdentification>
+						<cbc:ID schemeID="0230">050987654321</cbc:ID>
+					</cac:PartyIdentification>
+					<!-- When using TTX and SST together, Place TIN number in cac:PartyIdentification/cbc:ID without the schemeID attribute -->
+						<!-- For all other cases, the situation is same as before-->
+							<cac:PartyIdentification>
+								<cbc:ID>TIN20211100090911</cbc:ID>
+							</cac:PartyIdentification>
+							<cac:PostalAddress>
+								<cbc:StreetName>18, Jalan Excellent</cbc:StreetName>
+								<cbc:AdditionalStreetName>Bandar Sunway</cbc:AdditionalStreetName>
+								<cbc:CityName>Petaling Jaya</cbc:CityName>
+								<cbc:PostalZone>52000</cbc:PostalZone>
+								<cbc:CountrySubentity>14</cbc:CountrySubentity>
+								<cac:AddressLine>
+									<cbc:Line>No 18</cbc:Line>
+								</cac:AddressLine>
+								<cac:Country>
+									<cbc:IdentificationCode>MY</cbc:IdentificationCode>
+								</cac:Country>
+							</cac:PostalAddress>
+							<cac:PartyTaxScheme>
+								<cbc:CompanyID>20211100090911</cbc:CompanyID>
+								<!-- IBT-032 - Seller tax registration (ibt-032) MUST occur maximum once -->
+									<cac:TaxScheme>
+										<cbc:ID>AAL</cbc:ID>
+									</cac:TaxScheme>
+								</cac:PartyTaxScheme>
+								<cac:PartyTaxScheme>
+									<cbc:CompanyID>X88-1907-12345678</cbc:CompanyID>
+									<!-- IBT-031 - An Invoice shall have the Supplier’s SST Registration Number -->
+										<cac:TaxScheme>
+											<cbc:ID>VAT</cbc:ID>
+										</cac:TaxScheme>
+									</cac:PartyTaxScheme>
+									<cac:PartyLegalEntity>
+										<cbc:RegistrationName>Monitor ERP Sdn Bhd</cbc:RegistrationName>
+										<cbc:CompanyID>050987654321</cbc:CompanyID>
+									</cac:PartyLegalEntity>
+									<cac:Contact>
+										<cbc:Telephone>+60-123456789</cbc:Telephone>
+										<cbc:ElectronicMail>general.ams@supplier.com</cbc:ElectronicMail>
+									</cac:Contact>
+								</cac:Party>
+							</cac:AccountingSupplierParty>
+							<cac:AccountingCustomerParty>
+								<cac:Party>
+									<cbc:EndpointID schemeID="0230">050987654321</cbc:EndpointID>
+									<cac:PartyIdentification>
+										<cbc:ID schemeID="0230">050987654321</cbc:ID>
+									</cac:PartyIdentification>
+									<cac:PostalAddress>
+										<cbc:StreetName>Menara Amazing</cbc:StreetName>
+										<cbc:AdditionalStreetName>Jalan Jalan</cbc:AdditionalStreetName>
+										<cbc:CityName>Petaling Jaya</cbc:CityName>
+										<cbc:PostalZone>47500</cbc:PostalZone>
+										<cbc:CountrySubentity>14</cbc:CountrySubentity>
+										<cac:AddressLine>
+											<cbc:Line>20</cbc:Line>
+										</cac:AddressLine>
+										<cac:Country>
+											<cbc:IdentificationCode>MY</cbc:IdentificationCode>
+										</cac:Country>
+									</cac:PostalAddress>
+									<cac:PartyTaxScheme>
+										<cbc:CompanyID>C26628753000</cbc:CompanyID>
+										<cac:TaxScheme>
+											<cbc:ID>GST</cbc:ID>
+										</cac:TaxScheme>
+									</cac:PartyTaxScheme>
+									<cac:PartyLegalEntity>
+										<cbc:RegistrationName>OZEDI</cbc:RegistrationName>
+										<cbc:CompanyID>050987654321</cbc:CompanyID>
+									</cac:PartyLegalEntity>
+									<cac:Contact>
+										<cbc:Telephone>+60-123456789</cbc:Telephone>
+										<cbc:ElectronicMail>name@buyer.com</cbc:ElectronicMail>
+									</cac:Contact>
+								</cac:Party>
+							</cac:AccountingCustomerParty>
+							<cac:PaymentMeans>
+								<cbc:PaymentMeansCode>10</cbc:PaymentMeansCode>
+								<cac:PayeeFinancialAccount>
+									<cbc:ID>1234567890123</cbc:ID>
+								</cac:PayeeFinancialAccount>
+							</cac:PaymentMeans>
+							<cac:PaymentTerms>
+								<cbc:Note>60 DAYS</cbc:Note>
+							</cac:PaymentTerms>
+							<cac:TaxTotal>
+								<cbc:TaxAmount currencyID="MYR">32.00</cbc:TaxAmount>
+								<cac:TaxSubtotal>
+									<cbc:TaxableAmount currencyID="MYR">200.00</cbc:TaxableAmount>
+									<cbc:TaxAmount currencyID="MYR">12.00</cbc:TaxAmount>
+									<cac:TaxCategory>
+										<cbc:ID>HVG</cbc:ID>
+										<cbc:Percent>6</cbc:Percent>
+										<cac:TaxScheme>
+											<cbc:ID>VAT</cbc:ID>
+										</cac:TaxScheme>
+									</cac:TaxCategory>
+								</cac:TaxSubtotal>
+								<cac:TaxSubtotal>
+									<cbc:TaxableAmount currencyID="MYR">200.00</cbc:TaxableAmount>
+									<cbc:TaxAmount currencyID="MYR">20</cbc:TaxAmount>
+									<cac:TaxCategory>
+										<cbc:ID>TTX</cbc:ID>
+										<!-- No percentage is applicable on tourism tax. It is a flat nightly cost.
+            							<cbc:Percent>
+											10
+										</cbc:Percent>
+										-->
+										<cac:TaxScheme>
+											<cbc:ID>AAL</cbc:ID>
+										</cac:TaxScheme>
+									</cac:TaxCategory>
+								</cac:TaxSubtotal>
+							</cac:TaxTotal>
+							<cac:LegalMonetaryTotal>
+								<cbc:LineExtensionAmount currencyID="MYR">200.00</cbc:LineExtensionAmount>
+								<cbc:TaxExclusiveAmount currencyID="MYR">200.00</cbc:TaxExclusiveAmount>
+								<cbc:TaxInclusiveAmount currencyID="MYR">232.00</cbc:TaxInclusiveAmount>
+								<cbc:PayableAmount currencyID="MYR">232.00</cbc:PayableAmount>
+							</cac:LegalMonetaryTotal>
+							<cac:InvoiceLine>
+								<!-- 
+          This item attracts Tourism Tax.
+          
+          Figures for this example:
+          - GST is 6% - 26.40
+          - Tourism Tax is 10 per night - 2 nights - 20
+          - Per night: 100 excluding tax. - 2 nights - 200
+          - including tax - 246.40 
+
+          MyInvois wants this field when tourism tax is applicable: 
+          / ubl:Invoice / cac:InvoiceLine / cac:TaxTotal / cac:TaxSubtotal / cbc:BaseUnitMeasure @unitCode 
+          [Note: If tax code = 03 percent should get converted to cbc:BaseUnitMeasure @unitCode not to percent]
+      -->
+									<cbc:ID>1</cbc:ID>
+									<cbc:InvoicedQuantity unitCode="C62">1</cbc:InvoicedQuantity>
+									<cbc:LineExtensionAmount currencyID="MYR">200.00</cbc:LineExtensionAmount>
+									<cac:TaxTotal>
+										<cbc:TaxAmount currencyID="MYR">20.00</cbc:TaxAmount>
+										<cac:TaxSubtotal>
+											<cbc:TaxableAmount currencyID="MYR">200.00</cbc:TaxableAmount>
+											<cbc:TaxAmount currencyID="MYR">12.00</cbc:TaxAmount>
+											<cac:TaxCategory>
+												<cbc:ID>HVG</cbc:ID>
+												<cbc:Percent>6</cbc:Percent>
+												<cac:TaxScheme>
+													<cbc:ID>VAT</cbc:ID>
+												</cac:TaxScheme>
+											</cac:TaxCategory>
+										</cac:TaxSubtotal>
+										<cac:TaxSubtotal>
+											<cbc:TaxableAmount currencyID="MYR">200.00</cbc:TaxableAmount>
+											<cbc:TaxAmount currencyID="MYR">20.00</cbc:TaxAmount>
+											<cbc:PerUnitAmount currencyID="MYR">10.00</cbc:PerUnitAmount>
+											<cac:TaxCategory>
+												<cbc:ID>TTX</cbc:ID>
+												<cac:TaxScheme>
+													<cbc:ID>AAL</cbc:ID>
+												</cac:TaxScheme>
+											</cac:TaxCategory>
+										</cac:TaxSubtotal>
+									</cac:TaxTotal>
+									<cac:Item>
+										<cbc:Name>Holiday at Hotel California</cbc:Name>
+										<cac:CommodityClassification>
+											<cbc:ItemClassificationCode listID="ZZZ">022</cbc:ItemClassificationCode>
+										</cac:CommodityClassification>
+										<cac:ClassifiedTaxCategory>
+											<cbc:ID>HVG</cbc:ID>
+											<cbc:Percent>6</cbc:Percent>
+											<cac:TaxScheme>
+												<cbc:ID>VAT</cbc:ID>
+											</cac:TaxScheme>
+										</cac:ClassifiedTaxCategory>
+										<cac:ClassifiedTaxCategory>
+											<cbc:ID>TTX</cbc:ID>
+											<!-- Not actually a %, but a nightly rate of 10 per night. 
+            							<cbc:Percent>
+												10
+											</cbc:Percent>
+											-->
+											<cac:TaxScheme>
+												<cbc:ID>AAL</cbc:ID>
+											</cac:TaxScheme>
+										</cac:ClassifiedTaxCategory>
+									</cac:Item>
+									<cac:Price>
+										<cbc:PriceAmount currencyID="MYR">200.00</cbc:PriceAmount>
+									</cac:Price>
+									<cac:ItemPriceExtension>
+										<cbc:Amount currencyID="MYR">0.00</cbc:Amount>
+									</cac:ItemPriceExtension>
+								</cac:InvoiceLine>
+							</ubl:Invoice>

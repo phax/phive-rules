@@ -104,18 +104,38 @@ public final class PeppolValidationPintMY
   // 1.3.0
   public static final LocalDate V1_3_0_VALID_PER = PDTFactory.createLocalDate (2026, Month.MARCH, 9);
   public static final OffsetDateTime V1_3_0_VALID_PER_UTC = PDTFactory.createOffsetDateTimeUTC (V1_3_0_VALID_PER);
+  @Deprecated (forRemoval = false)
   public static final DVRCoordinate VID_OPENPEPPOL_MY_PINT_UBL_INVOICE_1_3_0 = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                                                   "invoice",
                                                                                                                   "1.3.0");
+  @Deprecated (forRemoval = false)
   public static final DVRCoordinate VID_OPENPEPPOL_MY_PINT_UBL_CREDIT_NOTE_1_3_0 = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                                                       "creditnote",
                                                                                                                       "1.3.0");
+  @Deprecated (forRemoval = false)
   public static final DVRCoordinate VID_OPENPEPPOL_MY_PINT_UBL_INVOICE_SELF_BILLING_1_3_0 = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                                                                "invoice-self-billing",
                                                                                                                                "1.3.0");
+  @Deprecated (forRemoval = false)
   public static final DVRCoordinate VID_OPENPEPPOL_MY_PINT_UBL_CREDIT_NOTE_SELF_BILLING_1_3_0 = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                                                                    "creditnote-self-billing",
                                                                                                                                    "1.3.0");
+
+  // 1.3.1
+  public static final LocalDate V1_3_1_VALID_PER = PDTFactory.createLocalDate (2026, Month.JUNE, 5);
+  public static final OffsetDateTime V1_3_1_VALID_PER_UTC = PDTFactory.createOffsetDateTimeUTC (V1_3_1_VALID_PER);
+  public static final DVRCoordinate VID_OPENPEPPOL_MY_PINT_UBL_INVOICE_1_3_1 = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                                  "invoice",
+                                                                                                                  "1.3.1");
+  public static final DVRCoordinate VID_OPENPEPPOL_MY_PINT_UBL_CREDIT_NOTE_1_3_1 = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                                      "creditnote",
+                                                                                                                      "1.3.1");
+  public static final DVRCoordinate VID_OPENPEPPOL_MY_PINT_UBL_INVOICE_SELF_BILLING_1_3_1 = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                                               "invoice-self-billing",
+                                                                                                                               "1.3.1");
+  public static final DVRCoordinate VID_OPENPEPPOL_MY_PINT_UBL_CREDIT_NOTE_SELF_BILLING_1_3_1 = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                                                   "creditnote-self-billing",
+                                                                                                                                   "1.3.1");
 
   private PeppolValidationPintMY ()
   {}
@@ -303,7 +323,7 @@ public final class PeppolValidationPintMY
       VesXmlBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_MY_PINT_UBL_INVOICE_1_3_0)
                        .displayName ("Peppol PINT Malaysia Invoice (UBL) 1.3.0")
-                       .notDeprecated ()
+                       .deprecated ()
                        .validFrom (V1_3_0_VALID_PER_UTC)
                        .addSchematron (PhiveRulesHelper.createXSLT (aCPRBillingBase, aNSCtxInvoice))
                        .addSchematron (PhiveRulesHelper.createXSLT (aCPRBilling, aNSCtxInvoice))
@@ -311,7 +331,7 @@ public final class PeppolValidationPintMY
       VesXmlBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_MY_PINT_UBL_CREDIT_NOTE_1_3_0)
                        .displayName ("Peppol PINT Malaysia Credit Note (UBL) 1.3.0")
-                       .notDeprecated ()
+                       .deprecated ()
                        .validFrom (V1_3_0_VALID_PER_UTC)
                        .addSchematron (PhiveRulesHelper.createXSLT (aCPRBillingBase, aNSCtxCreditNote))
                        .addSchematron (PhiveRulesHelper.createXSLT (aCPRBilling, aNSCtxCreditNote))
@@ -320,7 +340,7 @@ public final class PeppolValidationPintMY
       VesXmlBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_MY_PINT_UBL_INVOICE_SELF_BILLING_1_3_0)
                        .displayName ("Peppol PINT Malaysia Invoice Self-Billing (UBL) 1.3.0")
-                       .notDeprecated ()
+                       .deprecated ()
                        .validFrom (V1_3_0_VALID_PER_UTC)
                        .addSchematron (PhiveRulesHelper.createXSLT (aCPRSelfBillingBase, aNSCtxInvoice))
                        .addSchematron (PhiveRulesHelper.createXSLT (aCPRSelfBilling, aNSCtxInvoice))
@@ -328,8 +348,59 @@ public final class PeppolValidationPintMY
       VesXmlBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_MY_PINT_UBL_CREDIT_NOTE_SELF_BILLING_1_3_0)
                        .displayName ("Peppol PINT Malaysia Credit Note Self-Billing (UBL) 1.3.0")
-                       .notDeprecated ()
+                       .deprecated ()
                        .validFrom (V1_3_0_VALID_PER_UTC)
+                       .addSchematron (PhiveRulesHelper.createXSLT (aCPRSelfBillingBase, aNSCtxCreditNote))
+                       .addSchematron (PhiveRulesHelper.createXSLT (aCPRSelfBilling, aNSCtxCreditNote))
+                       .registerInto (aRegistry);
+    }
+
+    // 1.3.1
+    {
+      final ClassPathResource aCPRBillingBase = new ClassPathResource (BASE_PATH +
+                                                                       "1.3.1/xslt/billing/PINT-UBL-validation-preprocessed.xslt",
+                                                                       _getCL ());
+      final ClassPathResource aCPRBilling = new ClassPathResource (BASE_PATH +
+                                                                   "1.3.1/xslt/billing/PINT-jurisdiction-aligned-rules.xslt",
+                                                                   _getCL ());
+
+      final ClassPathResource aCPRSelfBillingBase = new ClassPathResource (BASE_PATH +
+                                                                           "1.3.1/xslt/selfbilling/PINT-UBL-validation-preprocessed.xslt",
+                                                                           _getCL ());
+      final ClassPathResource aCPRSelfBilling = new ClassPathResource (BASE_PATH +
+                                                                       "1.3.1/xslt/selfbilling/PINT-jurisdiction-aligned-rules.xslt",
+                                                                       _getCL ());
+
+      VesXmlBuilder.builder ()
+                       .vesID (VID_OPENPEPPOL_MY_PINT_UBL_INVOICE_1_3_1)
+                       .displayName ("Peppol PINT Malaysia Invoice (UBL) 1.3.1")
+                       .notDeprecated ()
+                       .validFrom (V1_3_1_VALID_PER_UTC)
+                       .addSchematron (PhiveRulesHelper.createXSLT (aCPRBillingBase, aNSCtxInvoice))
+                       .addSchematron (PhiveRulesHelper.createXSLT (aCPRBilling, aNSCtxInvoice))
+                       .registerInto (aRegistry);
+      VesXmlBuilder.builder ()
+                       .vesID (VID_OPENPEPPOL_MY_PINT_UBL_CREDIT_NOTE_1_3_1)
+                       .displayName ("Peppol PINT Malaysia Credit Note (UBL) 1.3.1")
+                       .notDeprecated ()
+                       .validFrom (V1_3_1_VALID_PER_UTC)
+                       .addSchematron (PhiveRulesHelper.createXSLT (aCPRBillingBase, aNSCtxCreditNote))
+                       .addSchematron (PhiveRulesHelper.createXSLT (aCPRBilling, aNSCtxCreditNote))
+                       .registerInto (aRegistry);
+
+      VesXmlBuilder.builder ()
+                       .vesID (VID_OPENPEPPOL_MY_PINT_UBL_INVOICE_SELF_BILLING_1_3_1)
+                       .displayName ("Peppol PINT Malaysia Invoice Self-Billing (UBL) 1.3.1")
+                       .notDeprecated ()
+                       .validFrom (V1_3_1_VALID_PER_UTC)
+                       .addSchematron (PhiveRulesHelper.createXSLT (aCPRSelfBillingBase, aNSCtxInvoice))
+                       .addSchematron (PhiveRulesHelper.createXSLT (aCPRSelfBilling, aNSCtxInvoice))
+                       .registerInto (aRegistry);
+      VesXmlBuilder.builder ()
+                       .vesID (VID_OPENPEPPOL_MY_PINT_UBL_CREDIT_NOTE_SELF_BILLING_1_3_1)
+                       .displayName ("Peppol PINT Malaysia Credit Note Self-Billing (UBL) 1.3.1")
+                       .notDeprecated ()
+                       .validFrom (V1_3_1_VALID_PER_UTC)
                        .addSchematron (PhiveRulesHelper.createXSLT (aCPRSelfBillingBase, aNSCtxCreditNote))
                        .addSchematron (PhiveRulesHelper.createXSLT (aCPRSelfBilling, aNSCtxCreditNote))
                        .registerInto (aRegistry);
