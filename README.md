@@ -254,6 +254,7 @@ v4.3.8 - work in progress
 * Added support for Peppol PINT Japan 1.1.3 (Standard, Non-tax Registered Businesses, Self Billing — release 2026-05-18) and deprecated 1.1.2
 * Added support for Peppol PINT Malaysia 1.3.1 (Billing and Self-Billing, release 2026-06-05) and deprecated 1.3.0
 * Added support for Peppol PINT Singapore 1.4.1 (Billing, release 2026-05-25) and deprecated 1.4.0
+* Added support for Peppol PINT EU 1.1.1 (release 2026-06-09) — version coordinate `2026.6`; deprecated 1.0.0 (1.0.1 remains active)
 
 v4.3.7 - 2026-06-09
 * Updated Peppol PINT Oman (OM) 1.0.0 rules (2026-Q2-FIN snapshot)

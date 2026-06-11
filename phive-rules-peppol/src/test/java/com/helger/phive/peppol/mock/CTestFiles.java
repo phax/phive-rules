@@ -241,6 +241,8 @@ public final class CTestFiles
                                                              PeppolValidationPintEU.VID_OPENPEPPOL_EU_PINT_CREDIT_NOTE_2025_10,
                                                              PeppolValidationPintEU.VID_OPENPEPPOL_EU_PINT_INVOICE_2025_11,
                                                              PeppolValidationPintEU.VID_OPENPEPPOL_EU_PINT_CREDIT_NOTE_2025_11,
+                                                             PeppolValidationPintEU.VID_OPENPEPPOL_EU_PINT_INVOICE_2026_6,
+                                                             PeppolValidationPintEU.VID_OPENPEPPOL_EU_PINT_CREDIT_NOTE_2026_6,
 
                                                              /* PINT Japan */
                                                              PeppolValidationPintJP.VID_OPENPEPPOL_JP_PINT_INVOICE_012,
@@ -1403,6 +1405,24 @@ public final class CTestFiles
     if (aVESID.equals (PeppolValidationPintEU.VID_OPENPEPPOL_EU_PINT_CREDIT_NOTE_2025_11))
     {
       return _getAll ("pint-eu/1.0.1/", "base-creditnote-correction.xml");
+    }
+
+    // 2026.6 (aka 1.1.1)
+    if (aVESID.equals (PeppolValidationPintEU.VID_OPENPEPPOL_EU_PINT_INVOICE_2026_6))
+    {
+      return _getAll ("pint-eu/1.1.1/",
+                      "Allowance-example.xml",
+                      "base-example.xml",
+                      "base-negative-inv-correction.xml",
+                      "sales-order-example.xml",
+                      "vat-category-E.xml",
+                      "vat-category-O.xml",
+                      "Vat-category-S.xml",
+                      "vat-category-Z.xml");
+    }
+    if (aVESID.equals (PeppolValidationPintEU.VID_OPENPEPPOL_EU_PINT_CREDIT_NOTE_2026_6))
+    {
+      return _getAll ("pint-eu/1.1.1/", "base-creditnote-correction.xml");
     }
 
     /* Peppol JP */
