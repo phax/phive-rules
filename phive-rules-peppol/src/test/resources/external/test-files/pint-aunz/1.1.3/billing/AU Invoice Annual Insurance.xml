@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This example demonstrates an Australian simple annual insurance -->
+<Invoice xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+    xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+    xmlns="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2">
+	
+	<cbc:CustomizationID>urn:peppol:pint:billing-1@aunz-1</cbc:CustomizationID>
+	<!-- PINT Identifier -->
+    <cbc:ProfileID>urn:peppol:bis:billing</cbc:ProfileID>
+	<!-- PINT Profile ID -->
+	<cbc:ID>Invoice01</cbc:ID>
+	<!-- ID -->
+	<cbc:IssueDate>2024-03-26</cbc:IssueDate>
+	<!-- Issue date -->
+	<cbc:DueDate>2024-04-25</cbc:DueDate>
+	<!-- Due date -->
+	<cbc:InvoiceTypeCode>380</cbc:InvoiceTypeCode>
+	<!-- Invoice type code -->
+	<cbc:Note>Tax invoice</cbc:Note>
+	<!-- Note -->
+	<cbc:DocumentCurrencyCode>AUD</cbc:DocumentCurrencyCode>
+	<!-- Currency -->
+	<cbc:BuyerReference>CRN-57245A01</cbc:BuyerReference>
+	<!-- Customer Reference Number -->
+    <cac:InvoicePeriod>
+        <cbc:StartDate>2024-06-01</cbc:StartDate>
+		<!-- Annual policy start date -->
+        <cbc:EndDate>2025-05-31</cbc:EndDate>
+		<!-- Annual policy finish date -->
+    </cac:InvoicePeriod>
+    <cac:ContractDocumentReference>
+                <cbc:ID>98123478</cbc:ID>
+    </cac:ContractDocumentReference>
+ 
+    <cac:AccountingSupplierParty>
+        <cac:Party>
+            <cbc:EndpointID schemeID="0151">47555222000</cbc:EndpointID>
+			<!-- Supplier End point ID -->					 
+           <cac:PartyIdentification>
+                <cbc:ID schemeID="0151">47555222000</cbc:ID>
+				<!-- 11 digit ABN -->
+            </cac:PartyIdentification>
+            <cac:PostalAddress>
+                <cbc:StreetName>605 Elizabeth Street</cbc:StreetName>
+				<!-- Supplier postal address street -->
+                <cbc:CityName>Brisbane</cbc:CityName>
+				<!-- Supplier postal address city -->
+                <cbc:PostalZone>4000</cbc:PostalZone>
+				<!-- Supplier postal address postcode -->
+                <cbc:CountrySubentity>QLD</cbc:CountrySubentity>
+				<!-- Supplier postal address state -->
+                <cac:Country>
+                    <cbc:IdentificationCode>AU</cbc:IdentificationCode>
+					<!-- Supplier postal address country -->
+                </cac:Country>
+            </cac:PostalAddress>
+            <cac:PartyLegalEntity>
+                <cbc:RegistrationName>Elite Insurance</cbc:RegistrationName>
+				<!-- Supplier name -->
+                <cbc:CompanyID schemeID="0151">47555222000</cbc:CompanyID>
+				 <!-- 11 digit ABN -->
+            </cac:PartyLegalEntity>
+            <cac:Contact>
+                <cbc:Name>Kenny Jackson</cbc:Name>
+				<!-- Supplier contact name -->
+                <cbc:Telephone>Mobile 0450000001</cbc:Telephone>
+				<!-- Suplier contact telephone -->
+                <cbc:ElectronicMail>kenny.jackson@eliteinsure.com.au</cbc:ElectronicMail>
+				<!-- Supplier contact email -->
+            </cac:Contact>
+        </cac:Party>
+    </cac:AccountingSupplierParty>
+ 
+     <cac:AccountingCustomerParty>
+        <cac:Party>
+            <cbc:EndpointID schemeID="0151">91888222000</cbc:EndpointID>
+			<!-- Customer End point ID -->
+            <cac:PartyIdentification>
+                <cbc:ID schemeID="0151">91888222000</cbc:ID>
+				<!-- Customer 11 digit ABN -->
+            </cac:PartyIdentification>
+            <cac:PostalAddress>
+                <cbc:StreetName>100 Queen Street</cbc:StreetName>
+                <!-- Customer postal address street -->   				
+                <cbc:CityName>Brisbane</cbc:CityName>
+				<!-- Customer postal address city -->
+                <cbc:PostalZone>4000</cbc:PostalZone>
+				<!-- Customer postal address postcode -->
+                <cbc:CountrySubentity>QLD</cbc:CountrySubentity>
+				<!-- Customer postal address state -->
+                <cac:Country>
+                    <cbc:IdentificationCode>AU</cbc:IdentificationCode>
+					<!-- Customer postal address country -->
+                </cac:Country>
+            </cac:PostalAddress>
+            <cac:PartyLegalEntity>
+                <cbc:RegistrationName>Black House Trading</cbc:RegistrationName>
+				<!-- Customer entity name -->
+                <cbc:CompanyID schemeID="0151">91888222000</cbc:CompanyID>
+				<!-- Customer ID -->
+            </cac:PartyLegalEntity>
+            <cac:Contact>
+                <cbc:Name>Malakai King</cbc:Name>
+				<!-- Customer Name -->
+                <cbc:Telephone>0761234567</cbc:Telephone>
+				<!-- Customer telephone -->
+                <cbc:ElectronicMail>MalakaiKing@blackhouse.com</cbc:ElectronicMail>
+				<!-- Customer email -->
+            </cac:Contact>
+        </cac:Party>
+    </cac:AccountingCustomerParty>
+ 
+    <cac:PaymentMeans>
+        <cbc:PaymentMeansCode name="Credit transfer">30</cbc:PaymentMeansCode>
+		<!-- Payment code -->
+        <cbc:PaymentID>98123478</cbc:PaymentID>
+		<!-- Payment reference text -->
+        <cac:PayeeFinancialAccount>
+            <cbc:ID>56477787743</cbc:ID>
+			<!-- Account number -->
+            <cbc:Name>EliteInsureCo</cbc:Name>
+			<!-- Account name -->
+            <cac:FinancialInstitutionBranch>
+                <cbc:ID>123-456</cbc:ID>
+				<!-- BSB number -->
+            </cac:FinancialInstitutionBranch>
+        </cac:PayeeFinancialAccount>
+    </cac:PaymentMeans>
+ 
+     <cac:PaymentMeans>
+        <cbc:PaymentMeansCode name="Direct Debit">49</cbc:PaymentMeansCode>
+		<!-- Payment code -->
+        <cbc:PaymentID>9875436</cbc:PaymentID>
+		<!-- Payment reference text -->
+        <cac:PayeeFinancialAccount>
+            <cbc:ID>56477787743</cbc:ID>
+			<!-- Account number -->
+            <cbc:Name>EliteInsureCo</cbc:Name>
+			<!-- Account name -->
+            <cac:FinancialInstitutionBranch>
+                <cbc:ID>123-456</cbc:ID>
+				<!-- BSB number -->
+            </cac:FinancialInstitutionBranch>
+        </cac:PayeeFinancialAccount>
+    </cac:PaymentMeans>
+ 
+    <cac:PaymentTerms>
+        <cbc:Note>Policy start date: 2024-06-01, Policy end date: 2025-05-31. Payment due within 30 days for insurance to take effect</cbc:Note>
+		<!-- Payment terms -->
+    </cac:PaymentTerms>
+ 
+    <cac:TaxTotal>
+        <cbc:TaxAmount currencyID="AUD">82.15</cbc:TaxAmount>
+		<!-- Tax amount -->
+        <cac:TaxSubtotal>
+            <cbc:TaxableAmount currencyID="AUD">821.52</cbc:TaxableAmount>
+			<!-- Taxable amount -->
+            <cbc:TaxAmount currencyID="AUD">82.15</cbc:TaxAmount>
+			<!-- Subtotal tax amount -->
+            <cac:TaxCategory>
+                <cbc:ID>S</cbc:ID>
+				<!-- Tax category ID -->
+                <cbc:Percent>10</cbc:Percent>
+				<!-- Tax percentage -->
+                <cac:TaxScheme>
+                    <cbc:ID>GST</cbc:ID>
+					<!-- Tax scheme ID -->
+                </cac:TaxScheme>
+            </cac:TaxCategory>
+        </cac:TaxSubtotal>
+    </cac:TaxTotal>
+ 
+    <cac:LegalMonetaryTotal>
+        <cbc:LineExtensionAmount currencyID="AUD">821.52</cbc:LineExtensionAmount>
+		<!-- Line extension amount -->
+        <cbc:TaxExclusiveAmount currencyID="AUD">821.52</cbc:TaxExclusiveAmount>
+		<!-- Tax exclusive amount -->
+        <cbc:TaxInclusiveAmount currencyID="AUD">903.67</cbc:TaxInclusiveAmount>
+		<!-- Tax inclusive amount -->
+		<cbc:ChargeTotalAmount currencyID="AUD">0.00</cbc:ChargeTotalAmount>
+        <cbc:PrepaidAmount currencyID="AUD">0.00</cbc:PrepaidAmount>
+        <cbc:PayableAmount currencyID="AUD">903.67</cbc:PayableAmount>
+		<!-- Payable amount -->
+    </cac:LegalMonetaryTotal>
+ 
+     <cac:InvoiceLine>
+        <cbc:ID>1</cbc:ID>
+		<!-- Invoice line ID -->				  
+        <cbc:InvoicedQuantity unitCode="ANN">1</cbc:InvoicedQuantity>
+        <cbc:LineExtensionAmount currencyID= "AUD">821.52</cbc:LineExtensionAmount>
+        <cac:Item>
+            <cbc:Description>Home Insurance Policy</cbc:Description>
+			  <!-- Invoice line description -->							 
+            <cbc:Name>Home Insurance #98123478</cbc:Name>			
+			  <!-- Invoice line name -->						  
+			<cbc:AdditionalInformation>This policy provides coverage for house, building, and contents at 100 Queen Street, Brisbane, QLD 4000. Policy inclusions: fire, theft, storm damage. Exclusions: flooding, intentional damage. Conditions: $500 excess per claim. </cbc:AdditionalInformation>
+			
+			<cac:ClassifiedTaxCategory>
+                <cbc:ID>S</cbc:ID>
+                <cbc:Percent>10</cbc:Percent>
+                <cac:TaxScheme>
+                    <cbc:ID>GST</cbc:ID>
+                </cac:TaxScheme>
+            </cac:ClassifiedTaxCategory>
+        </cac:Item>
+        <cac:Price>
+            <cbc:PriceAmount currencyID="AUD">821.52</cbc:PriceAmount>
+       </cac:Price>
+
+    </cac:InvoiceLine>
+</Invoice>

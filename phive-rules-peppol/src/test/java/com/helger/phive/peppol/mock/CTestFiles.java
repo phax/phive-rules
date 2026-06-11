@@ -231,6 +231,11 @@ public final class CTestFiles
                                                              PeppolValidationPintAUNZ.VID_OPENPEPPOL_AUNZ_PINT_UBL_INVOICE_SELF_BILLING_1_1_2,
                                                              PeppolValidationPintAUNZ.VID_OPENPEPPOL_AUNZ_PINT_UBL_CREDIT_NOTE_SELF_BILLING_1_1_2,
 
+                                                             PeppolValidationPintAUNZ.VID_OPENPEPPOL_AUNZ_PINT_UBL_INVOICE_1_1_3,
+                                                             PeppolValidationPintAUNZ.VID_OPENPEPPOL_AUNZ_PINT_UBL_CREDIT_NOTE_1_1_3,
+                                                             PeppolValidationPintAUNZ.VID_OPENPEPPOL_AUNZ_PINT_UBL_INVOICE_SELF_BILLING_1_1_3,
+                                                             PeppolValidationPintAUNZ.VID_OPENPEPPOL_AUNZ_PINT_UBL_CREDIT_NOTE_SELF_BILLING_1_1_3,
+
                                                              /* PINT EU */
                                                              PeppolValidationPintEU.VID_OPENPEPPOL_EU_PINT_INVOICE_2025_10,
                                                              PeppolValidationPintEU.VID_OPENPEPPOL_EU_PINT_CREDIT_NOTE_2025_10,
@@ -1305,6 +1310,46 @@ public final class CTestFiles
     if (aVESID.equals (PeppolValidationPintAUNZ.VID_OPENPEPPOL_AUNZ_PINT_UBL_CREDIT_NOTE_SELF_BILLING_1_1_2))
     {
       return _getAll ("pint-aunz/1.1.2/selfbilling/",
+                      "AU Self Billed Credit Note.xml",
+                      "NZ Self Billed Credit note.xml");
+    }
+
+    // 1.1.3
+    if (aVESID.equals (PeppolValidationPintAUNZ.VID_OPENPEPPOL_AUNZ_PINT_UBL_INVOICE_1_1_3))
+    {
+      return _getAll ("pint-aunz/1.1.3/billing/",
+                      "AU Freight - Document Level.xml",
+                      "AU Freight - Line Item.xml",
+                      "AU Freight Only - Line Item.xml",
+                      "AU GST Only.xml",
+                      "AU GST Only - Prepaid.xml",
+                      "AU Invoice.xml",
+                      "AU Invoice Annual Insurance.xml",
+                      "AU Invoice Energy Bill Example_1.xml",
+                      "AU Invoice Energy Bill Example_2.xml",
+                      "AU Invoice Energy Bill Example_3_negative_inv.xml",
+                      "NZ Allowance On Invoice Line.xml",
+                      "NZ Invoice Level Allowance.xml",
+                      "NZ Invoice Level Charge.xml",
+                      "NZ No Allowances.xml",
+                      "NZ Prepaid Amount.xml",
+                      "PINT_AUNZ_invoice.xml",
+                      "PINT_AUNZ_negative_invoice.xml");
+    }
+    if (aVESID.equals (PeppolValidationPintAUNZ.VID_OPENPEPPOL_AUNZ_PINT_UBL_CREDIT_NOTE_1_1_3))
+    {
+      return _getAll ("pint-aunz/1.1.3/billing/", "AU Credit note.xml", "NZ Credit note.xml");
+    }
+    if (aVESID.equals (PeppolValidationPintAUNZ.VID_OPENPEPPOL_AUNZ_PINT_UBL_INVOICE_SELF_BILLING_1_1_3))
+    {
+      return _getAll ("pint-aunz/1.1.3/selfbilling/",
+                      "AUNZ Self Billing.xml",
+                      "AU Self Billing - Negative Invoice.xml",
+                      "NZ Self Billing.xml");
+    }
+    if (aVESID.equals (PeppolValidationPintAUNZ.VID_OPENPEPPOL_AUNZ_PINT_UBL_CREDIT_NOTE_SELF_BILLING_1_1_3))
+    {
+      return _getAll ("pint-aunz/1.1.3/selfbilling/",
                       "AU Self Billed Credit Note.xml",
                       "NZ Self Billed Credit note.xml");
     }
