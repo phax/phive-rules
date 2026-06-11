@@ -76,6 +76,14 @@ public final class PeppolValidationPint
                                                                                                                "credit-note",
                                                                                                                "1.1.2");
 
+  // 1.1.3 - from 2026-06-05
+  public static final DVRCoordinate VID_OPENPEPPOL_PINT_INVOICE_1_1_3 = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                           "invoice",
+                                                                                                           "1.1.3");
+  public static final DVRCoordinate VID_OPENPEPPOL_PINT_CREDIT_NOTE_1_1_3 = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                               "credit-note",
+                                                                                                               "1.1.3");
+
   private PeppolValidationPint ()
   {}
 
@@ -177,6 +185,27 @@ public final class PeppolValidationPint
                        .registerInto (aRegistry);
       VesXmlBuilder.builder ()
                        .vesID (VID_OPENPEPPOL_PINT_CREDIT_NOTE_1_1_2)
+                       .displayNamePrefix ("OpenPeppol PINT Credit Note (UBL) ")
+                       .notDeprecated ()
+                       .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
+                       .addSchematron (PhiveRulesHelper.createXSLT (aRes, aNSCtxCreditNote))
+                       .registerInto (aRegistry);
+    }
+
+    // 1.1.3 - June 2026
+    {
+      final ClassPathResource aRes = new ClassPathResource (BASE_PATH +
+                                                            "1.1.3/xslt/PINT-UBL-validation-preprocessed.xslt",
+                                                            _getCL ());
+      VesXmlBuilder.builder ()
+                       .vesID (VID_OPENPEPPOL_PINT_INVOICE_1_1_3)
+                       .displayNamePrefix ("OpenPeppol PINT Invoice (UBL) ")
+                       .notDeprecated ()
+                       .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
+                       .addSchematron (PhiveRulesHelper.createXSLT (aRes, aNSCtxInvoice))
+                       .registerInto (aRegistry);
+      VesXmlBuilder.builder ()
+                       .vesID (VID_OPENPEPPOL_PINT_CREDIT_NOTE_1_1_3)
                        .displayNamePrefix ("OpenPeppol PINT Credit Note (UBL) ")
                        .notDeprecated ()
                        .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())

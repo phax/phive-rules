@@ -249,6 +249,8 @@ I hope that with the introduction of PINT, the versioning problem will be solved
 
 v4.3.8 - work in progress
 * Added support for ZuGFERD 2.5 - all profiles (XML only)
+* Applied ZuGFeRD 2.5 Corrigendum 1 (rule `BR-FXEXT-S08b` in the EXTENDED profile now excludes sub-invoice-line entries)
+* Added support for Peppol PINT BIS Billing 1.1.3 (release 2026-06-05)
 
 v4.3.7 - 2026-06-09
 * Updated Peppol PINT Oman (OM) 1.0.0 rules (2026-Q2-FIN snapshot)
