@@ -94,13 +94,13 @@ costs, losses or damages could normally have been foreseen.
     </ram:GuidelineSpecifiedDocumentContextParameter>
   </rsm:ExchangedDocumentContext>
   <rsm:ExchangedDocument>
-    <ram:ID>99877</ram:ID>
+    <ram:ID>50099877</ram:ID>
     <ram:TypeCode>380</ram:TypeCode>
     <ram:IssueDateTime>
       <udt:DateTimeString format="102">20260530</udt:DateTimeString>
     </ram:IssueDateTime>
     <ram:IncludedNote>
-      <ram:Content>Geschäftsführer: Herr Geschäftsführer , Muster Bau GmbH etc.</ram:Content>
+      <ram:Content>Geschäftsführer: Herr Geschäftsführer , Muster GmbH etc.</ram:Content>
       <ram:SubjectCode>REG</ram:SubjectCode>
     </ram:IncludedNote>
     <ram:IncludedNote>
@@ -112,164 +112,161 @@ costs, losses or damages could normally have been foreseen.
       <ram:SubjectCode>ACB</ram:SubjectCode>
     </ram:IncludedNote>
     <ram:IncludedNote>
-      <ram:Content>Dies ist eine Beispiel-Rechnung zur empfohlenen Darstellung von Unterpositionen</ram:Content>
+      <ram:Content>Dies ist eine Beispiel-Rechnung zur empfohlenen Darstellung von Unterpositionen im Bundle mit verschiedenen Steuersätzen</ram:Content>
       <ram:SubjectCode>ACB</ram:SubjectCode>
     </ram:IncludedNote>
   </rsm:ExchangedDocument>
   <rsm:SupplyChainTradeTransaction>
     <ram:IncludedSupplyChainTradeLineItem>
       <ram:AssociatedDocumentLineDocument>
-        <ram:LineID>0101</ram:LineID>
-        <ram:ParentLineID>01</ram:ParentLineID>
-        <ram:LineStatusReasonCode>DETAIL</ram:LineStatusReasonCode>
+        <ram:LineID>1</ram:LineID>
+        <ram:LineStatusReasonCode>GROUP</ram:LineStatusReasonCode>
+        <ram:IncludedNote>
+          <ram:Content>Positionswert nicht Rechnungs- bzw. Steuerrelevant - Zusammenfassung der steuerrelevanten Unterpositionen</ram:Content>
+        </ram:IncludedNote>
       </ram:AssociatedDocumentLineDocument>
       <ram:SpecifiedTradeProduct>
         <ram:GlobalID schemeID="0160">88888886349852</ram:GlobalID>
         <ram:SellerAssignedID>123456789</ram:SellerAssignedID>
         <ram:BuyerAssignedID>987654321</ram:BuyerAssignedID>
-        <ram:Name>Laser printer B/W</ram:Name>
-        <ram:Description>Schwarzweiß Laserdrucker</ram:Description>
+        <ram:Name>Kaffee-Display "Delicous"</ram:Name>
+        <ram:Description>Kaffee-Display / Bundle/Set bestehend aus folgenden Positionen</ram:Description>
       </ram:SpecifiedTradeProduct>
       <ram:SpecifiedLineTradeAgreement>
         <ram:NetPriceProductTradePrice>
-          <ram:ChargeAmount>300.00</ram:ChargeAmount>
+          <ram:ChargeAmount>108.00</ram:ChargeAmount>
         </ram:NetPriceProductTradePrice>
       </ram:SpecifiedLineTradeAgreement>
       <ram:SpecifiedLineTradeDelivery>
         <ram:BilledQuantity unitCode="H87">2.00</ram:BilledQuantity>
+        <ram:PackageQuantity unitCode="H87">1.00</ram:PackageQuantity>
       </ram:SpecifiedLineTradeDelivery>
       <ram:SpecifiedLineTradeSettlement>
-        <ram:ApplicableTradeTax>
-          <ram:TypeCode>VAT</ram:TypeCode>
-          <ram:CategoryCode>S</ram:CategoryCode>
-          <ram:RateApplicablePercent>19.00</ram:RateApplicablePercent>
-        </ram:ApplicableTradeTax>
         <ram:SpecifiedTradeSettlementLineMonetarySummation>
-          <ram:LineTotalAmount>600.00</ram:LineTotalAmount>
+          <ram:LineTotalAmount>216.00</ram:LineTotalAmount>
         </ram:SpecifiedTradeSettlementLineMonetarySummation>
       </ram:SpecifiedLineTradeSettlement>
     </ram:IncludedSupplyChainTradeLineItem>
     <ram:IncludedSupplyChainTradeLineItem>
       <ram:AssociatedDocumentLineDocument>
-        <ram:LineID>0102</ram:LineID>
-        <ram:ParentLineID>01</ram:ParentLineID>
+        <ram:LineID>1.1</ram:LineID>
+        <ram:ParentLineID>1</ram:ParentLineID>
         <ram:LineStatusReasonCode>DETAIL</ram:LineStatusReasonCode>
       </ram:AssociatedDocumentLineDocument>
       <ram:SpecifiedTradeProduct>
         <ram:GlobalID schemeID="0160">77777776349852</ram:GlobalID>
         <ram:SellerAssignedID>2345678910</ram:SellerAssignedID>
         <ram:BuyerAssignedID>876543219</ram:BuyerAssignedID>
-        <ram:Name>Ink printer color</ram:Name>
-        <ram:Description>Farbdrucker</ram:Description>
+        <ram:Name>Kenia Röstung</ram:Name>
+        <ram:Description>feinste Röstung</ram:Description>
       </ram:SpecifiedTradeProduct>
       <ram:SpecifiedLineTradeAgreement>
         <ram:NetPriceProductTradePrice>
-          <ram:ChargeAmount>150.00</ram:ChargeAmount>
+          <ram:ChargeAmount>5.00</ram:ChargeAmount>
         </ram:NetPriceProductTradePrice>
       </ram:SpecifiedLineTradeAgreement>
       <ram:SpecifiedLineTradeDelivery>
-        <ram:BilledQuantity unitCode="H87">3.00</ram:BilledQuantity>
+        <ram:BilledQuantity unitCode="H87">6.00</ram:BilledQuantity>
       </ram:SpecifiedLineTradeDelivery>
       <ram:SpecifiedLineTradeSettlement>
         <ram:ApplicableTradeTax>
           <ram:TypeCode>VAT</ram:TypeCode>
           <ram:CategoryCode>S</ram:CategoryCode>
-          <ram:RateApplicablePercent>19.00</ram:RateApplicablePercent>
+          <ram:RateApplicablePercent>7.00</ram:RateApplicablePercent>
         </ram:ApplicableTradeTax>
         <ram:SpecifiedTradeSettlementLineMonetarySummation>
-          <ram:LineTotalAmount>450.00</ram:LineTotalAmount>
+          <ram:LineTotalAmount>30.00</ram:LineTotalAmount>
         </ram:SpecifiedTradeSettlementLineMonetarySummation>
       </ram:SpecifiedLineTradeSettlement>
     </ram:IncludedSupplyChainTradeLineItem>
     <ram:IncludedSupplyChainTradeLineItem>
       <ram:AssociatedDocumentLineDocument>
-        <ram:LineID>01</ram:LineID>
+        <ram:LineID>1.2</ram:LineID>
+        <ram:ParentLineID>1</ram:ParentLineID>
+        <ram:LineStatusReasonCode>DETAIL</ram:LineStatusReasonCode>
+      </ram:AssociatedDocumentLineDocument>
+      <ram:SpecifiedTradeProduct>
+        <ram:GlobalID schemeID="0160">0000006349852</ram:GlobalID>
+        <ram:SellerAssignedID>99992345678910</ram:SellerAssignedID>
+        <ram:BuyerAssignedID>88888876543219</ram:BuyerAssignedID>
+        <ram:Name>Dunkle Röstung</ram:Name>
+        <ram:Description>feinste Röstung dunkel</ram:Description>
+      </ram:SpecifiedTradeProduct>
+      <ram:SpecifiedLineTradeAgreement>
+        <ram:NetPriceProductTradePrice>
+          <ram:ChargeAmount>5.00</ram:ChargeAmount>
+        </ram:NetPriceProductTradePrice>
+      </ram:SpecifiedLineTradeAgreement>
+      <ram:SpecifiedLineTradeDelivery>
+        <ram:BilledQuantity unitCode="H87">12.00</ram:BilledQuantity>
+      </ram:SpecifiedLineTradeDelivery>
+      <ram:SpecifiedLineTradeSettlement>
+        <ram:ApplicableTradeTax>
+          <ram:TypeCode>VAT</ram:TypeCode>
+          <ram:CategoryCode>S</ram:CategoryCode>
+          <ram:RateApplicablePercent>7.00</ram:RateApplicablePercent>
+        </ram:ApplicableTradeTax>
+        <ram:SpecifiedTradeSettlementLineMonetarySummation>
+          <ram:LineTotalAmount>60.00</ram:LineTotalAmount>
+        </ram:SpecifiedTradeSettlementLineMonetarySummation>
+      </ram:SpecifiedLineTradeSettlement>
+    </ram:IncludedSupplyChainTradeLineItem>
+    <ram:IncludedSupplyChainTradeLineItem>
+      <ram:AssociatedDocumentLineDocument>
+        <ram:LineID>1.3</ram:LineID>
+        <ram:ParentLineID>1</ram:ParentLineID>
         <ram:LineStatusReasonCode>GROUP</ram:LineStatusReasonCode>
+        <ram:IncludedNote>
+          <ram:Content>Positionswert nicht Rechnungs- bzw. Steuerrelevant - Zusammenfassung der steuerrelevanten Unterpositionen</ram:Content>
+        </ram:IncludedNote>
       </ram:AssociatedDocumentLineDocument>
       <ram:SpecifiedTradeProduct>
         <ram:GlobalID schemeID="0160">6666656349852</ram:GlobalID>
         <ram:SellerAssignedID>345678912</ram:SellerAssignedID>
         <ram:BuyerAssignedID>765432198</ram:BuyerAssignedID>
-        <ram:Name>Subtotal hardware</ram:Name>
-        <ram:Description>Hardware Gesamt</ram:Description>
+        <ram:Name>Colombia Bundle</ram:Name>
+        <ram:Description>Bundle/Set kolumbianische Röstung</ram:Description>
       </ram:SpecifiedTradeProduct>
       <ram:SpecifiedLineTradeAgreement>
         <ram:NetPriceProductTradePrice>
-          <ram:ChargeAmount>1050.00</ram:ChargeAmount>
+          <ram:ChargeAmount>21.00</ram:ChargeAmount>
         </ram:NetPriceProductTradePrice>
       </ram:SpecifiedLineTradeAgreement>
       <ram:SpecifiedLineTradeDelivery>
-        <ram:BilledQuantity unitCode="H87">1.00</ram:BilledQuantity>
+        <ram:BilledQuantity unitCode="H87">6.00</ram:BilledQuantity>
       </ram:SpecifiedLineTradeDelivery>
       <ram:SpecifiedLineTradeSettlement>
-        <ram:ApplicableTradeTax>
-          <ram:TypeCode>VAT</ram:TypeCode>
-          <ram:CategoryCode>S</ram:CategoryCode>
-          <ram:RateApplicablePercent>19.00</ram:RateApplicablePercent>
-        </ram:ApplicableTradeTax>
         <ram:SpecifiedTradeSettlementLineMonetarySummation>
-          <ram:LineTotalAmount>1050.00</ram:LineTotalAmount>
+          <ram:LineTotalAmount>126.00</ram:LineTotalAmount>
         </ram:SpecifiedTradeSettlementLineMonetarySummation>
       </ram:SpecifiedLineTradeSettlement>
     </ram:IncludedSupplyChainTradeLineItem>
     <ram:IncludedSupplyChainTradeLineItem>
       <ram:AssociatedDocumentLineDocument>
-        <ram:LineID>0201</ram:LineID>
-        <ram:ParentLineID>02</ram:ParentLineID>
+        <ram:LineID>1.3.1</ram:LineID>
+        <ram:ParentLineID>1.3</ram:ParentLineID>
         <ram:LineStatusReasonCode>DETAIL</ram:LineStatusReasonCode>
       </ram:AssociatedDocumentLineDocument>
       <ram:SpecifiedTradeProduct>
         <ram:GlobalID schemeID="0160">55555556349852</ram:GlobalID>
         <ram:SellerAssignedID>456789123</ram:SellerAssignedID>
         <ram:BuyerAssignedID>654321987</ram:BuyerAssignedID>
-        <ram:Name>Toner</ram:Name>
-        <ram:Description>Toner</ram:Description>
+        <ram:Name>Colombia Roast</ram:Name>
+        <ram:Description>kolumbianische Röstung</ram:Description>
       </ram:SpecifiedTradeProduct>
       <ram:SpecifiedLineTradeAgreement>
         <ram:NetPriceProductTradePrice>
-          <ram:ChargeAmount>120.00</ram:ChargeAmount>
+          <ram:ChargeAmount>5.00</ram:ChargeAmount>
         </ram:NetPriceProductTradePrice>
       </ram:SpecifiedLineTradeAgreement>
       <ram:SpecifiedLineTradeDelivery>
-        <ram:BilledQuantity unitCode="H87">3.00</ram:BilledQuantity>
+        <ram:BilledQuantity unitCode="H87">18.00</ram:BilledQuantity>
       </ram:SpecifiedLineTradeDelivery>
       <ram:SpecifiedLineTradeSettlement>
         <ram:ApplicableTradeTax>
           <ram:TypeCode>VAT</ram:TypeCode>
           <ram:CategoryCode>S</ram:CategoryCode>
-          <ram:RateApplicablePercent>19.00</ram:RateApplicablePercent>
-        </ram:ApplicableTradeTax>
-        <ram:SpecifiedTradeSettlementLineMonetarySummation>
-          <ram:LineTotalAmount>360.00</ram:LineTotalAmount>
-        </ram:SpecifiedTradeSettlementLineMonetarySummation>
-      </ram:SpecifiedLineTradeSettlement>
-    </ram:IncludedSupplyChainTradeLineItem>
-    <ram:IncludedSupplyChainTradeLineItem>
-      <ram:AssociatedDocumentLineDocument>
-        <ram:LineID>0202</ram:LineID>
-        <ram:ParentLineID>02</ram:ParentLineID>
-        <ram:LineStatusReasonCode>DETAIL</ram:LineStatusReasonCode>
-      </ram:AssociatedDocumentLineDocument>
-      <ram:SpecifiedTradeProduct>
-        <ram:GlobalID schemeID="0160">5555556349852</ram:GlobalID>
-        <ram:SellerAssignedID>567891234</ram:SellerAssignedID>
-        <ram:BuyerAssignedID>543219876</ram:BuyerAssignedID>
-        <ram:Name>PAPER</ram:Name>
-        <ram:Description>Kopierpapier</ram:Description>
-      </ram:SpecifiedTradeProduct>
-      <ram:SpecifiedLineTradeAgreement>
-        <ram:NetPriceProductTradePrice>
-          <ram:ChargeAmount>9.00</ram:ChargeAmount>
-        </ram:NetPriceProductTradePrice>
-      </ram:SpecifiedLineTradeAgreement>
-      <ram:SpecifiedLineTradeDelivery>
-        <ram:BilledQuantity unitCode="H87">10.00</ram:BilledQuantity>
-      </ram:SpecifiedLineTradeDelivery>
-      <ram:SpecifiedLineTradeSettlement>
-        <ram:ApplicableTradeTax>
-          <ram:TypeCode>VAT</ram:TypeCode>
-          <ram:CategoryCode>S</ram:CategoryCode>
-          <ram:RateApplicablePercent>19.00</ram:RateApplicablePercent>
+          <ram:RateApplicablePercent>7.00</ram:RateApplicablePercent>
         </ram:ApplicableTradeTax>
         <ram:SpecifiedTradeSettlementLineMonetarySummation>
           <ram:LineTotalAmount>90.00</ram:LineTotalAmount>
@@ -278,23 +275,24 @@ costs, losses or damages could normally have been foreseen.
     </ram:IncludedSupplyChainTradeLineItem>
     <ram:IncludedSupplyChainTradeLineItem>
       <ram:AssociatedDocumentLineDocument>
-        <ram:LineID>02</ram:LineID>
-        <ram:LineStatusReasonCode>GROUP</ram:LineStatusReasonCode>
+        <ram:LineID>1.3.2</ram:LineID>
+        <ram:ParentLineID>1.3</ram:ParentLineID>
+        <ram:LineStatusReasonCode>DETAIL</ram:LineStatusReasonCode>
       </ram:AssociatedDocumentLineDocument>
       <ram:SpecifiedTradeProduct>
-        <ram:GlobalID schemeID="0160">2222256349852</ram:GlobalID>
-        <ram:SellerAssignedID>9345678912</ram:SellerAssignedID>
-        <ram:BuyerAssignedID>9765432198</ram:BuyerAssignedID>
-        <ram:Name>Subtotal Accessories</ram:Name>
-        <ram:Description>Zubehör Gesamt</ram:Description>
+        <ram:GlobalID schemeID="0160">5555556349852</ram:GlobalID>
+        <ram:SellerAssignedID>567891234</ram:SellerAssignedID>
+        <ram:BuyerAssignedID>543219876</ram:BuyerAssignedID>
+        <ram:Name>Becher</ram:Name>
+        <ram:Description>Kaffeebecher Sonderanfertigung</ram:Description>
       </ram:SpecifiedTradeProduct>
       <ram:SpecifiedLineTradeAgreement>
         <ram:NetPriceProductTradePrice>
-          <ram:ChargeAmount>450.00</ram:ChargeAmount>
+          <ram:ChargeAmount>2.00</ram:ChargeAmount>
         </ram:NetPriceProductTradePrice>
       </ram:SpecifiedLineTradeAgreement>
       <ram:SpecifiedLineTradeDelivery>
-        <ram:BilledQuantity unitCode="H87">1.00</ram:BilledQuantity>
+        <ram:BilledQuantity unitCode="H87">18.00</ram:BilledQuantity>
       </ram:SpecifiedLineTradeDelivery>
       <ram:SpecifiedLineTradeSettlement>
         <ram:ApplicableTradeTax>
@@ -303,7 +301,7 @@ costs, losses or damages could normally have been foreseen.
           <ram:RateApplicablePercent>19.00</ram:RateApplicablePercent>
         </ram:ApplicableTradeTax>
         <ram:SpecifiedTradeSettlementLineMonetarySummation>
-          <ram:LineTotalAmount>450.00</ram:LineTotalAmount>
+          <ram:LineTotalAmount>36.00</ram:LineTotalAmount>
         </ram:SpecifiedTradeSettlementLineMonetarySummation>
       </ram:SpecifiedLineTradeSettlement>
     </ram:IncludedSupplyChainTradeLineItem>
@@ -311,7 +309,7 @@ costs, losses or damages could normally have been foreseen.
       <ram:BuyerReference>Kundenref. BT-10</ram:BuyerReference>
       <ram:SellerTradeParty>
         <ram:ID>998877</ram:ID>
-        <ram:Name>Musterbetrieb Systemhaus AG </ram:Name>
+        <ram:Name>Musterbetrieb Kaffee AG </ram:Name>
         <ram:SpecifiedLegalOrganization>
           <ram:ID>HRA 45678</ram:ID>
         </ram:SpecifiedLegalOrganization>
@@ -331,12 +329,12 @@ costs, losses or damages could normally have been foreseen.
           <ram:CountryID>DE</ram:CountryID>
         </ram:PostalTradeAddress>
         <ram:SpecifiedTaxRegistration>
-          <ram:ID schemeID="VA">DE727081482</ram:ID>
+          <ram:ID schemeID="VA">DE106008386</ram:ID>
         </ram:SpecifiedTaxRegistration>
       </ram:SellerTradeParty>
       <ram:BuyerTradeParty>
         <ram:ID>330145</ram:ID>
-        <ram:Name>Auftraggeber Firmenkunde GmbH</ram:Name>
+        <ram:Name>Auftraggeber Kaffeehaus GmbH</ram:Name>
         <ram:DefinedTradeContact>
           <ram:PersonName>Herr Thomas Auftraggeber</ram:PersonName>
           <ram:TelephoneUniversalCommunication>
@@ -353,7 +351,7 @@ costs, losses or damages could normally have been foreseen.
           <ram:CountryID>DE</ram:CountryID>
         </ram:PostalTradeAddress>
         <ram:SpecifiedTaxRegistration>
-          <ram:ID schemeID="VA">DE106008386</ram:ID>
+          <ram:ID schemeID="VA">DE727081482</ram:ID>
         </ram:SpecifiedTaxRegistration>
       </ram:BuyerTradeParty>
       <ram:SellerOrderReferencedDocument>
@@ -376,7 +374,7 @@ costs, losses or damages could normally have been foreseen.
     </ram:ApplicableHeaderTradeAgreement>
     <ram:ApplicableHeaderTradeDelivery>
       <ram:ShipToTradeParty>
-        <ram:Name>Auftraggeber Firmenkunde GmbH</ram:Name>
+        <ram:Name>Auftraggeber Kaffeehaus GmbH</ram:Name>
         <ram:PostalTradeAddress>
           <ram:PostcodeCode>37073</ram:PostcodeCode>
           <ram:LineOne>Musterstraße 1212</ram:LineOne>
@@ -403,19 +401,26 @@ costs, losses or damages could normally have been foreseen.
         </ram:PayeeSpecifiedCreditorFinancialInstitution>
       </ram:SpecifiedTradeSettlementPaymentMeans>
       <ram:ApplicableTradeTax>
-        <ram:CalculatedAmount>285.00</ram:CalculatedAmount>
+        <ram:CalculatedAmount>12.60</ram:CalculatedAmount>
         <ram:TypeCode>VAT</ram:TypeCode>
-        <ram:BasisAmount>1500.00</ram:BasisAmount>
+        <ram:BasisAmount>180.00</ram:BasisAmount>
+        <ram:CategoryCode>S</ram:CategoryCode>
+        <ram:RateApplicablePercent>7.00</ram:RateApplicablePercent>
+      </ram:ApplicableTradeTax>
+      <ram:ApplicableTradeTax>
+        <ram:CalculatedAmount>6.84</ram:CalculatedAmount>
+        <ram:TypeCode>VAT</ram:TypeCode>
+        <ram:BasisAmount>36.00</ram:BasisAmount>
         <ram:CategoryCode>S</ram:CategoryCode>
         <ram:RateApplicablePercent>19.00</ram:RateApplicablePercent>
       </ram:ApplicableTradeTax>
       <ram:SpecifiedTradePaymentTerms>
-        <ram:Description>Bei Zahlung bis zum 06.06.2026 zahlen Sie mit 2,00 % Skonto € 1749,30 €</ram:Description>
+        <ram:Description>Bei Zahlung bis zum 06.06.2026 zahlen Sie mit 2,00 % Skonto € 230,73 €</ram:Description>
         <ram:DueDateDateTime>
           <udt:DateTimeString format="102">20260606</udt:DateTimeString>
         </ram:DueDateDateTime>
         <ram:ApplicableTradePaymentDiscountTerms>
-          <ram:BasisAmount>1785.00</ram:BasisAmount>
+          <ram:BasisAmount>235.44</ram:BasisAmount>
           <ram:CalculationPercent>2.00</ram:CalculationPercent>
         </ram:ApplicableTradePaymentDiscountTerms>
       </ram:SpecifiedTradePaymentTerms>
@@ -426,14 +431,14 @@ costs, losses or damages could normally have been foreseen.
         </ram:DueDateDateTime>
       </ram:SpecifiedTradePaymentTerms>
       <ram:SpecifiedTradeSettlementHeaderMonetarySummation>
-        <ram:LineTotalAmount>1500.00</ram:LineTotalAmount>
+        <ram:LineTotalAmount>216.00</ram:LineTotalAmount>
         <ram:ChargeTotalAmount>0.00</ram:ChargeTotalAmount>
         <ram:AllowanceTotalAmount>0.00</ram:AllowanceTotalAmount>
-        <ram:TaxBasisTotalAmount>1500.00</ram:TaxBasisTotalAmount>
-        <ram:TaxTotalAmount currencyID="EUR">285.00</ram:TaxTotalAmount>
-        <ram:GrandTotalAmount>1785.00</ram:GrandTotalAmount>
+        <ram:TaxBasisTotalAmount>216.00</ram:TaxBasisTotalAmount>
+        <ram:TaxTotalAmount currencyID="EUR">19.44</ram:TaxTotalAmount>
+        <ram:GrandTotalAmount>235.44</ram:GrandTotalAmount>
         <ram:TotalPrepaidAmount>0.00</ram:TotalPrepaidAmount>
-        <ram:DuePayableAmount>1785.00</ram:DuePayableAmount>
+        <ram:DuePayableAmount>235.44</ram:DuePayableAmount>
       </ram:SpecifiedTradeSettlementHeaderMonetarySummation>
       <ram:ReceivableSpecifiedTradeAccountingAccount>
         <ram:ID>Kostenstelle BT-19</ram:ID>

@@ -94,17 +94,17 @@ costs, losses or damages could normally have been foreseen.
     </ram:GuidelineSpecifiedDocumentContextParameter>
   </rsm:ExchangedDocumentContext>
   <rsm:ExchangedDocument>
-    <ram:ID>210112</ram:ID>
+    <ram:ID>210111</ram:ID>
     <ram:TypeCode>875</ram:TypeCode>
     <ram:IssueDateTime>
-      <udt:DateTimeString format="102">20250606</udt:DateTimeString>
+      <udt:DateTimeString format="102">20250530</udt:DateTimeString>
     </ram:IssueDateTime>
     <ram:IncludedNote>
-      <ram:Content>2. Abschlagsrechnung</ram:Content>
+      <ram:Content>1. Abschlagsrechnung</ram:Content>
       <ram:SubjectCode>ACB</ram:SubjectCode>
     </ram:IncludedNote>
     <ram:IncludedNote>
-      <ram:Content>Geschäftsführer: Herr Geschäftsführer , Muster Bau GmbH etc. </ram:Content>
+      <ram:Content>Geschäftsführer: Herr Geschäftsführer , Muster Bau GmbH etc.</ram:Content>
       <ram:SubjectCode>REG</ram:SubjectCode>
     </ram:IncludedNote>
     <ram:IncludedNote>
@@ -116,7 +116,7 @@ costs, losses or damages could normally have been foreseen.
       <ram:SubjectCode>ACB</ram:SubjectCode>
     </ram:IncludedNote>
     <ram:IncludedNote>
-      <ram:Content>Dies ist eine einfache  Darstellung von Buchungsreferenzen und dem Bezug auf vorangegangener Rechnungen. Dieser Beleg ist Teil einer Belegkette</ram:Content>
+      <ram:Content>Dies ist eine Beispiel-Rechnung zur empfohlenen Darstellung einer einfachen Bau-Abschlags-Rechnung</ram:Content>
       <ram:SubjectCode>ACB</ram:SubjectCode>
     </ram:IncludedNote>
     <ram:IncludedNote>
@@ -128,12 +128,11 @@ costs, losses or damages could normally have been foreseen.
       <ram:SubjectCode>ACB</ram:SubjectCode>
     </ram:IncludedNote>
     <ram:IncludedNote>
-      <ram:Content>
-Zusammenstellung: nur zur Information
-01 Bauabschnitt 1 - Vorarbeiten 3.600,00 €
-02 Bauabschnitt 2 - Pflasterarbeiten 9.250,00 €
-		
-			</ram:Content>
+      <ram:Content>ergänzneder Fußtext für die Rechnung mit zusätzlichen Angaben. Z.B: Ist kein gesondertes Lieferdatum angegeben, entspricht das Rechnungsdatum dem Datum der Lieferung und Leistung</ram:Content>
+      <ram:SubjectCode>ACB</ram:SubjectCode>
+    </ram:IncludedNote>
+    <ram:IncludedNote>
+      <ram:Content>freier Text zur Rechnung BT-22</ram:Content>
       <ram:SubjectCode>ACB</ram:SubjectCode>
     </ram:IncludedNote>
   </rsm:ExchangedDocument>
@@ -143,8 +142,7 @@ Zusammenstellung: nur zur Information
         <ram:LineID>01.01</ram:LineID>
       </ram:AssociatedDocumentLineDocument>
       <ram:SpecifiedTradeProduct>
-        <ram:Name>Baugelände abräumen
-Anfallender Schutt, Pflanzenreste und Müll entsorgen</ram:Name>
+        <ram:Name>Baugelände abräumen Anfallender Schutt, Pflanzenreste und Müll entsorgen</ram:Name>
       </ram:SpecifiedTradeProduct>
       <ram:SpecifiedLineTradeAgreement>
         <ram:NetPriceProductTradePrice>
@@ -191,87 +189,6 @@ Anfallender Schutt, Pflanzenreste und Müll entsorgen</ram:Name>
         </ram:SpecifiedTradeSettlementLineMonetarySummation>
       </ram:SpecifiedLineTradeSettlement>
     </ram:IncludedSupplyChainTradeLineItem>
-    <ram:IncludedSupplyChainTradeLineItem>
-      <ram:AssociatedDocumentLineDocument>
-        <ram:LineID>02.01</ram:LineID>
-      </ram:AssociatedDocumentLineDocument>
-      <ram:SpecifiedTradeProduct>
-        <ram:Name>Frostschutzschicht aus Mineralgemisch 0/45
-15 cm , Verdichtung mind. DPr 1</ram:Name>
-      </ram:SpecifiedTradeProduct>
-      <ram:SpecifiedLineTradeAgreement>
-        <ram:NetPriceProductTradePrice>
-          <ram:ChargeAmount>8.00</ram:ChargeAmount>
-        </ram:NetPriceProductTradePrice>
-      </ram:SpecifiedLineTradeAgreement>
-      <ram:SpecifiedLineTradeDelivery>
-        <ram:BilledQuantity unitCode="MTK">250.00</ram:BilledQuantity>
-      </ram:SpecifiedLineTradeDelivery>
-      <ram:SpecifiedLineTradeSettlement>
-        <ram:ApplicableTradeTax>
-          <ram:TypeCode>VAT</ram:TypeCode>
-          <ram:CategoryCode>S</ram:CategoryCode>
-          <ram:RateApplicablePercent>19.00</ram:RateApplicablePercent>
-        </ram:ApplicableTradeTax>
-        <ram:SpecifiedTradeSettlementLineMonetarySummation>
-          <ram:LineTotalAmount>2000.00</ram:LineTotalAmount>
-        </ram:SpecifiedTradeSettlementLineMonetarySummation>
-      </ram:SpecifiedLineTradeSettlement>
-    </ram:IncludedSupplyChainTradeLineItem>
-    <ram:IncludedSupplyChainTradeLineItem>
-      <ram:AssociatedDocumentLineDocument>
-        <ram:LineID>02.02</ram:LineID>
-      </ram:AssociatedDocumentLineDocument>
-      <ram:SpecifiedTradeProduct>
-        <ram:Name>Kiestragschicht für Betonpflaster
-Mineralgemisch 0/32, Schichtstärke 15 cm</ram:Name>
-      </ram:SpecifiedTradeProduct>
-      <ram:SpecifiedLineTradeAgreement>
-        <ram:NetPriceProductTradePrice>
-          <ram:ChargeAmount>9.00</ram:ChargeAmount>
-        </ram:NetPriceProductTradePrice>
-      </ram:SpecifiedLineTradeAgreement>
-      <ram:SpecifiedLineTradeDelivery>
-        <ram:BilledQuantity unitCode="MTK">250.00</ram:BilledQuantity>
-      </ram:SpecifiedLineTradeDelivery>
-      <ram:SpecifiedLineTradeSettlement>
-        <ram:ApplicableTradeTax>
-          <ram:TypeCode>VAT</ram:TypeCode>
-          <ram:CategoryCode>S</ram:CategoryCode>
-          <ram:RateApplicablePercent>19.00</ram:RateApplicablePercent>
-        </ram:ApplicableTradeTax>
-        <ram:SpecifiedTradeSettlementLineMonetarySummation>
-          <ram:LineTotalAmount>2250.00</ram:LineTotalAmount>
-        </ram:SpecifiedTradeSettlementLineMonetarySummation>
-      </ram:SpecifiedLineTradeSettlement>
-    </ram:IncludedSupplyChainTradeLineItem>
-    <ram:IncludedSupplyChainTradeLineItem>
-      <ram:AssociatedDocumentLineDocument>
-        <ram:LineID>02.03</ram:LineID>
-      </ram:AssociatedDocumentLineDocument>
-      <ram:SpecifiedTradeProduct>
-        <ram:Name>Pflasterdecke, aus Pflastersteinen aus Beton, DIN EN 1338, ungebundene Bauweise, Maße L/B 200/100 mm, Dicke 80 mm, max. Differenzen K, Witterungswiderstand B, Abriebwiderstand H, Kante abgeschrägt, Bettung aus Baustoffgemisch Körnung 0/5 aus natürlichen gebrochenen Gesteinskörnungen (Brechsand-Splitt-Gemisch), Dicke 5 +/- 1,5 cm, Baustoffgemisch für Fugen, Körnung 0/2 aus natürlichen ungebrochenen Gesteinskörnungen (Sand) einkehren und einschlämmen.
-</ram:Name>
-      </ram:SpecifiedTradeProduct>
-      <ram:SpecifiedLineTradeAgreement>
-        <ram:NetPriceProductTradePrice>
-          <ram:ChargeAmount>20.00</ram:ChargeAmount>
-        </ram:NetPriceProductTradePrice>
-      </ram:SpecifiedLineTradeAgreement>
-      <ram:SpecifiedLineTradeDelivery>
-        <ram:BilledQuantity unitCode="MTK">250.00</ram:BilledQuantity>
-      </ram:SpecifiedLineTradeDelivery>
-      <ram:SpecifiedLineTradeSettlement>
-        <ram:ApplicableTradeTax>
-          <ram:TypeCode>VAT</ram:TypeCode>
-          <ram:CategoryCode>S</ram:CategoryCode>
-          <ram:RateApplicablePercent>19.00</ram:RateApplicablePercent>
-        </ram:ApplicableTradeTax>
-        <ram:SpecifiedTradeSettlementLineMonetarySummation>
-          <ram:LineTotalAmount>5000.00</ram:LineTotalAmount>
-        </ram:SpecifiedTradeSettlementLineMonetarySummation>
-      </ram:SpecifiedLineTradeSettlement>
-    </ram:IncludedSupplyChainTradeLineItem>
     <ram:ApplicableHeaderTradeAgreement>
       <ram:BuyerReference>Kundenref. BT-10</ram:BuyerReference>
       <ram:SellerTradeParty>
@@ -291,7 +208,7 @@ Mineralgemisch 0/32, Schichtstärke 15 cm</ram:Name>
         </ram:DefinedTradeContact>
         <ram:PostalTradeAddress>
           <ram:PostcodeCode>37079</ram:PostcodeCode>
-          <ram:LineOne>August-Spindler-Strasse 222</ram:LineOne>
+          <ram:LineOne>August-Spindler-Strasse 20 </ram:LineOne>
           <ram:CityName>Göttingen</ram:CityName>
           <ram:CountryID>DE</ram:CountryID>
         </ram:PostalTradeAddress>
@@ -305,7 +222,7 @@ Mineralgemisch 0/32, Schichtstärke 15 cm</ram:Name>
         <ram:DefinedTradeContact>
           <ram:PersonName>Herr Thomas Auftraggeber</ram:PersonName>
           <ram:TelephoneUniversalCommunication>
-            <ram:CompleteNumber>+49 321 456789</ram:CompleteNumber>
+            <ram:CompleteNumber>03332 218915</ram:CompleteNumber>
           </ram:TelephoneUniversalCommunication>
           <ram:EmailURIUniversalCommunication>
             <ram:URIID>thomas.auftraggeber@Firmenkunde.de</ram:URIID>
@@ -313,7 +230,7 @@ Mineralgemisch 0/32, Schichtstärke 15 cm</ram:Name>
         </ram:DefinedTradeContact>
         <ram:PostalTradeAddress>
           <ram:PostcodeCode>37073</ram:PostcodeCode>
-          <ram:LineOne>Gartenstraße 1212</ram:LineOne>
+          <ram:LineOne>Gartenstraße 1112</ram:LineOne>
           <ram:CityName>Göttingen</ram:CityName>
           <ram:CountryID>DE</ram:CountryID>
         </ram:PostalTradeAddress>
@@ -344,14 +261,14 @@ Mineralgemisch 0/32, Schichtstärke 15 cm</ram:Name>
         <ram:Name>Auftraggeber Firmenkunde GmbH</ram:Name>
         <ram:PostalTradeAddress>
           <ram:PostcodeCode>37073</ram:PostcodeCode>
-          <ram:LineOne>Gartenstraße 1212</ram:LineOne>
+          <ram:LineOne>Gartenstraße 1112</ram:LineOne>
           <ram:CityName>Göttingen</ram:CityName>
           <ram:CountryID>DE</ram:CountryID>
         </ram:PostalTradeAddress>
       </ram:ShipToTradeParty>
       <ram:ActualDeliverySupplyChainEvent>
         <ram:OccurrenceDateTime>
-          <udt:DateTimeString format="102">20250619</udt:DateTimeString>
+          <udt:DateTimeString format="102">20250530</udt:DateTimeString>
         </ram:OccurrenceDateTime>
       </ram:ActualDeliverySupplyChainEvent>
     </ram:ApplicableHeaderTradeDelivery>
@@ -361,59 +278,53 @@ Mineralgemisch 0/32, Schichtstärke 15 cm</ram:Name>
         <ram:TypeCode>58</ram:TypeCode>
         <ram:PayeePartyCreditorFinancialAccount>
           <ram:IBANID>DE75512108001245126199</ram:IBANID>
-          <ram:AccountName>Musterbetrieb Kontoname</ram:AccountName>
+          <ram:AccountName>Rechnungsempfänger AG</ram:AccountName>
         </ram:PayeePartyCreditorFinancialAccount>
         <ram:PayeeSpecifiedCreditorFinancialInstitution>
           <ram:BICID>PBNKDEFF</ram:BICID>
         </ram:PayeeSpecifiedCreditorFinancialInstitution>
       </ram:SpecifiedTradeSettlementPaymentMeans>
       <ram:ApplicableTradeTax>
-        <ram:CalculatedAmount>2441.50</ram:CalculatedAmount>
+        <ram:CalculatedAmount>684.00</ram:CalculatedAmount>
         <ram:TypeCode>VAT</ram:TypeCode>
-        <ram:BasisAmount>12850.00</ram:BasisAmount>
+        <ram:BasisAmount>3600.00</ram:BasisAmount>
         <ram:CategoryCode>S</ram:CategoryCode>
         <ram:RateApplicablePercent>19.00</ram:RateApplicablePercent>
       </ram:ApplicableTradeTax>
       <ram:BillingSpecifiedPeriod>
         <ram:StartDateTime>
-          <udt:DateTimeString format="102">20250519</udt:DateTimeString>
+          <udt:DateTimeString format="102">20250513</udt:DateTimeString>
         </ram:StartDateTime>
         <ram:EndDateTime>
-          <udt:DateTimeString format="102">20250606</udt:DateTimeString>
+          <udt:DateTimeString format="102">20250530</udt:DateTimeString>
         </ram:EndDateTime>
       </ram:BillingSpecifiedPeriod>
       <ram:SpecifiedTradePaymentTerms>
-        <ram:Description>Bei Zahlung bis zum 13.06.2025 zahlen Sie mit 2,50  % Skonto € 15.016,31</ram:Description>
+        <ram:Description>Bei Zahlung bis zum 06.06.2025 zahlen Sie mit 2,50 % Skonto € 4.176,90</ram:Description>
         <ram:DueDateDateTime>
-          <udt:DateTimeString format="102">20250613</udt:DateTimeString>
+          <udt:DateTimeString format="102">20250606</udt:DateTimeString>
         </ram:DueDateDateTime>
         <ram:ApplicableTradePaymentDiscountTerms>
-          <ram:BasisAmount>15291.50</ram:BasisAmount>
+          <ram:BasisAmount>4284.00</ram:BasisAmount>
           <ram:CalculationPercent>2.5</ram:CalculationPercent>
         </ram:ApplicableTradePaymentDiscountTerms>
       </ram:SpecifiedTradePaymentTerms>
       <ram:SpecifiedTradePaymentTerms>
-        <ram:Description>Bis zum zum 20.06.2025 ohne Abzug</ram:Description>
+        <ram:Description>Bis zum zum 13.06.2025 ohne Abzug</ram:Description>
         <ram:DueDateDateTime>
-          <udt:DateTimeString format="102">20250620</udt:DateTimeString>
+          <udt:DateTimeString format="102">20250613</udt:DateTimeString>
         </ram:DueDateDateTime>
       </ram:SpecifiedTradePaymentTerms>
       <ram:SpecifiedTradeSettlementHeaderMonetarySummation>
-        <ram:LineTotalAmount>12850.00</ram:LineTotalAmount>
+        <ram:LineTotalAmount>3600.00</ram:LineTotalAmount>
         <ram:ChargeTotalAmount>0.00</ram:ChargeTotalAmount>
         <ram:AllowanceTotalAmount>0.00</ram:AllowanceTotalAmount>
-        <ram:TaxBasisTotalAmount>12850.00</ram:TaxBasisTotalAmount>
-        <ram:TaxTotalAmount currencyID="EUR">2441.50</ram:TaxTotalAmount>
-        <ram:GrandTotalAmount>15291.50</ram:GrandTotalAmount>
+        <ram:TaxBasisTotalAmount>3600.00</ram:TaxBasisTotalAmount>
+        <ram:TaxTotalAmount currencyID="EUR">684.00</ram:TaxTotalAmount>
+        <ram:GrandTotalAmount>4284.00</ram:GrandTotalAmount>
         <ram:TotalPrepaidAmount>0.00</ram:TotalPrepaidAmount>
-        <ram:DuePayableAmount>15291.50</ram:DuePayableAmount>
+        <ram:DuePayableAmount>4284.00</ram:DuePayableAmount>
       </ram:SpecifiedTradeSettlementHeaderMonetarySummation>
-      <ram:InvoiceReferencedDocument>
-        <ram:IssuerAssignedID>AR 210111</ram:IssuerAssignedID>
-        <ram:FormattedIssueDateTime>
-          <qdt:DateTimeString format="102">20250530</qdt:DateTimeString>
-        </ram:FormattedIssueDateTime>
-      </ram:InvoiceReferencedDocument>
       <ram:ReceivableSpecifiedTradeAccountingAccount>
         <ram:ID>Kostenstelle BT-19</ram:ID>
       </ram:ReceivableSpecifiedTradeAccountingAccount>

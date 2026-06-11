@@ -71,15 +71,6 @@ public final class MainExtractTestFiles25
             // Skip generated report files
             continue;
           }
-          if (eProfile == EZugferdProfile.EXTENDED &&
-              (sName.equals ("X02_01_SubInvoiceLines_Buero_Material_Bsp3__.xml") ||
-               sName.equals ("X17_01_SubInvoiceLines_Hardware_Bsp2.xml") ||
-               sName.equals ("X20_01_SubInvoiceLines_Buero_Material_Bsp3__.xml")))
-          {
-            // Skip - SubInvoiceLines samples trigger an ERROR on BR-FXEXT-S-08b
-            // because the 2.5 rule does not exclude sub-invoice-line (GROUP) entries
-            continue;
-          }
 
           // copy file
           final File fTarget = new File (fTargetPath,

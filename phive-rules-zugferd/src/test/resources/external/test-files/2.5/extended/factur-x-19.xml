@@ -87,25 +87,21 @@ damages, losses or liabilities in connection with an interruption of business, n
 incidental, indirect, punitive or consequential damages, even if the possibility of 
 costs, losses or damages could normally have been foreseen.
 -->
-<rsm:CrossIndustryInvoice xmlns:qdt="urn:un:unece:uncefact:data:standard:QualifiedDataType:100" xmlns:ram="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100" xmlns:rsm="urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100" xmlns:udt="urn:un:unece:uncefact:data:standard:UnqualifiedDataType:100" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<rsm:CrossIndustryInvoice xmlns:rsm="urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100" xmlns:qdt="urn:un:unece:uncefact:data:standard:QualifiedDataType:100" xmlns:ram="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:udt="urn:un:unece:uncefact:data:standard:UnqualifiedDataType:100">
   <rsm:ExchangedDocumentContext>
     <ram:GuidelineSpecifiedDocumentContextParameter>
       <ram:ID>urn:cen.eu:en16931:2017#conformant#urn:factur-x.eu:1p0:extended</ram:ID>
     </ram:GuidelineSpecifiedDocumentContextParameter>
   </rsm:ExchangedDocumentContext>
   <rsm:ExchangedDocument>
-    <ram:ID>GU987654321</ram:ID>
-    <ram:Name>GUTSCHRIFT</ram:Name>
-    <ram:TypeCode>384</ram:TypeCode>
+    <ram:ID>6039999999</ram:ID>
+    <ram:Name>RECHNUNG</ram:Name>
+    <ram:TypeCode>380</ram:TypeCode>
     <ram:IssueDateTime>
-      <udt:DateTimeString format="102">20260202</udt:DateTimeString>
+      <udt:DateTimeString format="102">20260831</udt:DateTimeString>
     </ram:IssueDateTime>
     <ram:IncludedNote>
-      <ram:Content>STORNOGUTSCHRIFT</ram:Content>
-      <ram:SubjectCode>AAI</ram:SubjectCode>
-    </ram:IncludedNote>
-    <ram:IncludedNote>
-      <ram:Content>Geschäftsführer(in): Herr/Frau Geschäftsführer(in) , Muster Lieferant GmbH etc. </ram:Content>
+      <ram:Content>Geschäftsführer: Herr Geschäftsführer , Musterlieferant GmbH etc. </ram:Content>
       <ram:SubjectCode>REG</ram:SubjectCode>
     </ram:IncludedNote>
     <ram:IncludedNote>
@@ -113,11 +109,11 @@ costs, losses or damages could normally have been foreseen.
       <ram:SubjectCode>AAI</ram:SubjectCode>
     </ram:IncludedNote>
     <ram:IncludedNote>
-      <ram:Content>Wenn nicht anders angegeben entspricht das Leistungsdatum dem Rechnungsdatum.</ram:Content>
+      <ram:Content>Steuerfreie innergemeinschaftliche Lieferung</ram:Content>
       <ram:SubjectCode>AAI</ram:SubjectCode>
     </ram:IncludedNote>
     <ram:IncludedNote>
-      <ram:Content>ZUGFeRD vers 2.5.0 (Extended)</ram:Content>
+      <ram:Content>ZUGFeRD vers 2.5.0 Extended</ram:Content>
       <ram:SubjectCode>ACB</ram:SubjectCode>
     </ram:IncludedNote>
   </rsm:ExchangedDocument>
@@ -127,54 +123,55 @@ costs, losses or damages could normally have been foreseen.
         <ram:LineID>000001</ram:LineID>
       </ram:AssociatedDocumentLineDocument>
       <ram:SpecifiedTradeProduct>
-        <ram:GlobalID schemeID="0160">4000000000001</ram:GlobalID>
-        <ram:SellerAssignedID>SE_ID123456</ram:SellerAssignedID>
-        <ram:Name>ARTIKEL XYZ</ram:Name>
-        <ram:Description>Artikel xyz mit besonderen Eigenschaften</ram:Description>
+        <ram:GlobalID schemeID="0160">4009999999999</ram:GlobalID>
+        <ram:SellerAssignedID>S123456789</ram:SellerAssignedID>
+        <ram:Name>Spezial-Artikel A</ram:Name>
+        <ram:Description>Artikel für XYZ</ram:Description>
       </ram:SpecifiedTradeProduct>
       <ram:SpecifiedLineTradeAgreement>
         <ram:BuyerOrderReferencedDocument>
-          <ram:IssuerAssignedID>BE987654</ram:IssuerAssignedID>
+          <ram:IssuerAssignedID>4444444444</ram:IssuerAssignedID>
+          <ram:LineID>000030</ram:LineID>
           <ram:FormattedIssueDateTime>
-            <qdt:DateTimeString format="102">20260202</qdt:DateTimeString>
+            <qdt:DateTimeString format="102">20260707</qdt:DateTimeString>
           </ram:FormattedIssueDateTime>
         </ram:BuyerOrderReferencedDocument>
+        <ram:QuotationReferencedDocument>
+          <ram:IssuerAssignedID>ANG987654</ram:IssuerAssignedID>
+          <ram:LineID>000020</ram:LineID>
+        </ram:QuotationReferencedDocument>
         <ram:GrossPriceProductTradePrice>
-          <ram:ChargeAmount>60.76</ram:ChargeAmount>
-          <ram:BasisQuantity unitCode="H87">100.0000</ram:BasisQuantity>
+          <ram:ChargeAmount>16.80</ram:ChargeAmount>
+          <ram:BasisQuantity unitCode="H87">1.0000</ram:BasisQuantity>
         </ram:GrossPriceProductTradePrice>
         <ram:NetPriceProductTradePrice>
-          <ram:ChargeAmount>60.76</ram:ChargeAmount>
-          <ram:BasisQuantity unitCode="H87">100.0000</ram:BasisQuantity>
+          <ram:ChargeAmount>16.80</ram:ChargeAmount>
+          <ram:BasisQuantity unitCode="H87">1.0000</ram:BasisQuantity>
         </ram:NetPriceProductTradePrice>
       </ram:SpecifiedLineTradeAgreement>
       <ram:SpecifiedLineTradeDelivery>
-        <ram:BilledQuantity unitCode="H87">-150.00</ram:BilledQuantity>
-        <ram:DeliveryNoteReferencedDocument>
-          <ram:IssuerAssignedID>8133430695</ram:IssuerAssignedID>
-          <ram:LineID>000010</ram:LineID>
-          <ram:FormattedIssueDateTime>
-            <qdt:DateTimeString format="102">20260202</qdt:DateTimeString>
-          </ram:FormattedIssueDateTime>
-        </ram:DeliveryNoteReferencedDocument>
+        <ram:BilledQuantity unitCode="H87">1.00</ram:BilledQuantity>
       </ram:SpecifiedLineTradeDelivery>
       <ram:SpecifiedLineTradeSettlement>
         <ram:ApplicableTradeTax>
           <ram:TypeCode>VAT</ram:TypeCode>
-          <ram:CategoryCode>S</ram:CategoryCode>
-          <ram:RateApplicablePercent>19.00</ram:RateApplicablePercent>
+          <ram:CategoryCode>E</ram:CategoryCode>
+          <ram:RateApplicablePercent>0.00</ram:RateApplicablePercent>
         </ram:ApplicableTradeTax>
         <ram:BillingSpecifiedPeriod>
+          <ram:StartDateTime>
+            <udt:DateTimeString format="102">20260707</udt:DateTimeString>
+          </ram:StartDateTime>
           <ram:EndDateTime>
-            <udt:DateTimeString format="102">20260202</udt:DateTimeString>
+            <udt:DateTimeString format="102">20260831</udt:DateTimeString>
           </ram:EndDateTime>
         </ram:BillingSpecifiedPeriod>
         <ram:SpecifiedTradeSettlementLineMonetarySummation>
-          <ram:LineTotalAmount>-91.14</ram:LineTotalAmount>
+          <ram:LineTotalAmount>16.80</ram:LineTotalAmount>
           <ram:TotalAllowanceChargeAmount>0.00</ram:TotalAllowanceChargeAmount>
         </ram:SpecifiedTradeSettlementLineMonetarySummation>
         <ram:AdditionalReferencedDocument>
-          <ram:IssuerAssignedID>2251401884</ram:IssuerAssignedID>
+          <ram:IssuerAssignedID>BE12345678</ram:IssuerAssignedID>
           <ram:TypeCode>130</ram:TypeCode>
           <ram:ReferenceTypeCode>VN</ram:ReferenceTypeCode>
         </ram:AdditionalReferencedDocument>
@@ -185,54 +182,106 @@ costs, losses or damages could normally have been foreseen.
         <ram:LineID>000002</ram:LineID>
       </ram:AssociatedDocumentLineDocument>
       <ram:SpecifiedTradeProduct>
-        <ram:GlobalID schemeID="0160">4000000000002</ram:GlobalID>
-        <ram:SellerAssignedID>SE_ID345678</ram:SellerAssignedID>
-        <ram:Name>ARTIKEL ABC</ram:Name>
-        <ram:Description>Artikel abc für sonstige Arbeiten</ram:Description>
+        <ram:GlobalID schemeID="0160">4008888888888</ram:GlobalID>
+        <ram:SellerAssignedID>S23456789</ram:SellerAssignedID>
+        <ram:Name>Schiene BEF</ram:Name>
+        <ram:Description>Schiene Befestigung A4</ram:Description>
       </ram:SpecifiedTradeProduct>
       <ram:SpecifiedLineTradeAgreement>
         <ram:BuyerOrderReferencedDocument>
-          <ram:IssuerAssignedID>BE987654</ram:IssuerAssignedID>
+          <ram:IssuerAssignedID>4444444444</ram:IssuerAssignedID>
+          <ram:LineID>000040</ram:LineID>
           <ram:FormattedIssueDateTime>
-            <qdt:DateTimeString format="102">20260202</qdt:DateTimeString>
+            <qdt:DateTimeString format="102">20260707</qdt:DateTimeString>
           </ram:FormattedIssueDateTime>
         </ram:BuyerOrderReferencedDocument>
         <ram:GrossPriceProductTradePrice>
-          <ram:ChargeAmount>4.47</ram:ChargeAmount>
-          <ram:BasisQuantity unitCode="H87">100.0000</ram:BasisQuantity>
+          <ram:ChargeAmount>198.54</ram:ChargeAmount>
+          <ram:BasisQuantity unitCode="H87">1.0000</ram:BasisQuantity>
         </ram:GrossPriceProductTradePrice>
         <ram:NetPriceProductTradePrice>
-          <ram:ChargeAmount>4.47</ram:ChargeAmount>
-          <ram:BasisQuantity unitCode="H87">100.0000</ram:BasisQuantity>
+          <ram:ChargeAmount>198.54</ram:ChargeAmount>
+          <ram:BasisQuantity unitCode="H87">1.0000</ram:BasisQuantity>
         </ram:NetPriceProductTradePrice>
       </ram:SpecifiedLineTradeAgreement>
       <ram:SpecifiedLineTradeDelivery>
-        <ram:BilledQuantity unitCode="H87">-500.00</ram:BilledQuantity>
-        <ram:DeliveryNoteReferencedDocument>
-          <ram:IssuerAssignedID>8133430695</ram:IssuerAssignedID>
-          <ram:LineID>000020</ram:LineID>
-          <ram:FormattedIssueDateTime>
-            <qdt:DateTimeString format="102">20260202</qdt:DateTimeString>
-          </ram:FormattedIssueDateTime>
-        </ram:DeliveryNoteReferencedDocument>
+        <ram:BilledQuantity unitCode="H87">2.00</ram:BilledQuantity>
       </ram:SpecifiedLineTradeDelivery>
       <ram:SpecifiedLineTradeSettlement>
         <ram:ApplicableTradeTax>
           <ram:TypeCode>VAT</ram:TypeCode>
-          <ram:CategoryCode>S</ram:CategoryCode>
-          <ram:RateApplicablePercent>19.00</ram:RateApplicablePercent>
+          <ram:CategoryCode>E</ram:CategoryCode>
+          <ram:RateApplicablePercent>0.00</ram:RateApplicablePercent>
         </ram:ApplicableTradeTax>
         <ram:BillingSpecifiedPeriod>
+          <ram:StartDateTime>
+            <udt:DateTimeString format="102">20260707</udt:DateTimeString>
+          </ram:StartDateTime>
           <ram:EndDateTime>
-            <udt:DateTimeString format="102">20260202</udt:DateTimeString>
+            <udt:DateTimeString format="102">20260831</udt:DateTimeString>
           </ram:EndDateTime>
         </ram:BillingSpecifiedPeriod>
         <ram:SpecifiedTradeSettlementLineMonetarySummation>
-          <ram:LineTotalAmount>-22.35</ram:LineTotalAmount>
+          <ram:LineTotalAmount>397.08</ram:LineTotalAmount>
           <ram:TotalAllowanceChargeAmount>0.00</ram:TotalAllowanceChargeAmount>
         </ram:SpecifiedTradeSettlementLineMonetarySummation>
         <ram:AdditionalReferencedDocument>
-          <ram:IssuerAssignedID>2251401884</ram:IssuerAssignedID>
+          <ram:IssuerAssignedID>BE12345678</ram:IssuerAssignedID>
+          <ram:TypeCode>130</ram:TypeCode>
+          <ram:ReferenceTypeCode>VN</ram:ReferenceTypeCode>
+        </ram:AdditionalReferencedDocument>
+      </ram:SpecifiedLineTradeSettlement>
+    </ram:IncludedSupplyChainTradeLineItem>
+    <ram:IncludedSupplyChainTradeLineItem>
+      <ram:AssociatedDocumentLineDocument>
+        <ram:LineID>000003</ram:LineID>
+      </ram:AssociatedDocumentLineDocument>
+      <ram:SpecifiedTradeProduct>
+        <ram:GlobalID schemeID="0160">4007777777777</ram:GlobalID>
+        <ram:SellerAssignedID>S87654321</ram:SellerAssignedID>
+        <ram:Name>FESTPKT-TYPXY 987654</ram:Name>
+        <ram:Description>Festpunkt</ram:Description>
+      </ram:SpecifiedTradeProduct>
+      <ram:SpecifiedLineTradeAgreement>
+        <ram:BuyerOrderReferencedDocument>
+          <ram:IssuerAssignedID>4444444444</ram:IssuerAssignedID>
+          <ram:LineID>000050</ram:LineID>
+          <ram:FormattedIssueDateTime>
+            <qdt:DateTimeString format="102">20260707</qdt:DateTimeString>
+          </ram:FormattedIssueDateTime>
+        </ram:BuyerOrderReferencedDocument>
+        <ram:GrossPriceProductTradePrice>
+          <ram:ChargeAmount>102.75</ram:ChargeAmount>
+          <ram:BasisQuantity unitCode="H87">1.0000</ram:BasisQuantity>
+        </ram:GrossPriceProductTradePrice>
+        <ram:NetPriceProductTradePrice>
+          <ram:ChargeAmount>102.75</ram:ChargeAmount>
+          <ram:BasisQuantity unitCode="H87">1.0000</ram:BasisQuantity>
+        </ram:NetPriceProductTradePrice>
+      </ram:SpecifiedLineTradeAgreement>
+      <ram:SpecifiedLineTradeDelivery>
+        <ram:BilledQuantity unitCode="H87">4.00</ram:BilledQuantity>
+      </ram:SpecifiedLineTradeDelivery>
+      <ram:SpecifiedLineTradeSettlement>
+        <ram:ApplicableTradeTax>
+          <ram:TypeCode>VAT</ram:TypeCode>
+          <ram:CategoryCode>E</ram:CategoryCode>
+          <ram:RateApplicablePercent>0.00</ram:RateApplicablePercent>
+        </ram:ApplicableTradeTax>
+        <ram:BillingSpecifiedPeriod>
+          <ram:StartDateTime>
+            <udt:DateTimeString format="102">20260707</udt:DateTimeString>
+          </ram:StartDateTime>
+          <ram:EndDateTime>
+            <udt:DateTimeString format="102">20260831</udt:DateTimeString>
+          </ram:EndDateTime>
+        </ram:BillingSpecifiedPeriod>
+        <ram:SpecifiedTradeSettlementLineMonetarySummation>
+          <ram:LineTotalAmount>411.00</ram:LineTotalAmount>
+          <ram:TotalAllowanceChargeAmount>0.00</ram:TotalAllowanceChargeAmount>
+        </ram:SpecifiedTradeSettlementLineMonetarySummation>
+        <ram:AdditionalReferencedDocument>
+          <ram:IssuerAssignedID>BE12345678</ram:IssuerAssignedID>
           <ram:TypeCode>130</ram:TypeCode>
           <ram:ReferenceTypeCode>VN</ram:ReferenceTypeCode>
         </ram:AdditionalReferencedDocument>
@@ -258,7 +307,7 @@ costs, losses or damages could normally have been foreseen.
           <ram:CountryID>DE</ram:CountryID>
         </ram:PostalTradeAddress>
         <ram:URIUniversalCommunication>
-          <ram:URIID schemeID="0088">info@lieferant.de</ram:URIID>
+          <ram:URIID schemeID="EM">info@lieferant.de</ram:URIID>
         </ram:URIUniversalCommunication>
         <ram:SpecifiedTaxRegistration>
           <ram:ID schemeID="FC">78910/12345</ram:ID>
@@ -268,85 +317,100 @@ costs, losses or damages could normally have been foreseen.
         </ram:SpecifiedTaxRegistration>
       </ram:SellerTradeParty>
       <ram:BuyerTradeParty>
-        <ram:ID>21212121</ram:ID>
-        <ram:Name>Muster Maschinenbau GmbH</ram:Name>
+        <ram:ID>0008888888</ram:ID>
+        <ram:Name>Unternehmen XYZ GmbH</ram:Name>
+        <ram:DefinedTradeContact>
+          <ram:PersonName>Herr Marcus Einkauf</ram:PersonName>
+          <ram:TelephoneUniversalCommunication>
+            <ram:CompleteNumber>0043 22222233333</ram:CompleteNumber>
+          </ram:TelephoneUniversalCommunication>
+          <ram:EmailURIUniversalCommunication>
+            <ram:URIID>Marcus.Einkauf@firma.at</ram:URIID>
+          </ram:EmailURIUniversalCommunication>
+        </ram:DefinedTradeContact>
         <ram:PostalTradeAddress>
-          <ram:PostcodeCode>87654</ram:PostcodeCode>
-          <ram:LineOne>Käufer-Str. 12</ram:LineOne>
-          <ram:CityName>Käuferstadt</ram:CityName>
-          <ram:CountryID>DE</ram:CountryID>
+          <ram:PostcodeCode>1234</ram:PostcodeCode>
+          <ram:LineOne>Bahnhof Strasse 1</ram:LineOne>
+          <ram:CityName>Muster Ort</ram:CityName>
+          <ram:CountryID>AT</ram:CountryID>
         </ram:PostalTradeAddress>
         <ram:SpecifiedTaxRegistration>
-          <ram:ID schemeID="VA">DE106008386</ram:ID>
+          <ram:ID schemeID="VA">ATU12345675</ram:ID>
         </ram:SpecifiedTaxRegistration>
       </ram:BuyerTradeParty>
       <ram:SellerOrderReferencedDocument>
-        <ram:IssuerAssignedID>0717975543</ram:IssuerAssignedID>
+        <ram:IssuerAssignedID>BE12345678</ram:IssuerAssignedID>
         <ram:FormattedIssueDateTime>
-          <qdt:DateTimeString format="102">20260202</qdt:DateTimeString>
+          <qdt:DateTimeString format="102">20260707</qdt:DateTimeString>
         </ram:FormattedIssueDateTime>
       </ram:SellerOrderReferencedDocument>
       <ram:BuyerOrderReferencedDocument>
-        <ram:IssuerAssignedID>BE987654</ram:IssuerAssignedID>
+        <ram:IssuerAssignedID>4444444444</ram:IssuerAssignedID>
         <ram:FormattedIssueDateTime>
-          <qdt:DateTimeString format="102">20260202</qdt:DateTimeString>
+          <qdt:DateTimeString format="102">20260707</qdt:DateTimeString>
         </ram:FormattedIssueDateTime>
       </ram:BuyerOrderReferencedDocument>
     </ram:ApplicableHeaderTradeAgreement>
     <ram:ApplicableHeaderTradeDelivery>
       <ram:ShipToTradeParty>
-        <ram:Name>Baustelle</ram:Name>
+        <ram:Name>Unternehmen XYZ GmbH</ram:Name>
         <ram:PostalTradeAddress>
-          <ram:PostcodeCode>98765</ram:PostcodeCode>
-          <ram:LineOne>Eichenpromenade 37</ram:LineOne>
-          <ram:LineTwo>Tor 1</ram:LineTwo>
-          <ram:CityName>Metallstadt</ram:CityName>
-          <ram:CountryID>DE</ram:CountryID>
+          <ram:PostcodeCode>1234</ram:PostcodeCode>
+          <ram:LineOne>Bahnhof Strasse 1</ram:LineOne>
+          <ram:CityName>Muster Ort</ram:CityName>
+          <ram:CountryID>AT</ram:CountryID>
         </ram:PostalTradeAddress>
+        <ram:SpecifiedTaxRegistration>
+          <ram:ID schemeID="VA">ATU12345675</ram:ID>
+        </ram:SpecifiedTaxRegistration>
       </ram:ShipToTradeParty>
       <ram:ActualDeliverySupplyChainEvent>
         <ram:OccurrenceDateTime>
-          <udt:DateTimeString format="102">20260202</udt:DateTimeString>
+          <udt:DateTimeString format="102">20260831</udt:DateTimeString>
         </ram:OccurrenceDateTime>
       </ram:ActualDeliverySupplyChainEvent>
+      <ram:DeliveryNoteReferencedDocument>
+        <ram:IssuerAssignedID>27010181</ram:IssuerAssignedID>
+        <ram:FormattedIssueDateTime>
+          <qdt:DateTimeString format="102">20260831</qdt:DateTimeString>
+        </ram:FormattedIssueDateTime>
+      </ram:DeliveryNoteReferencedDocument>
     </ram:ApplicableHeaderTradeDelivery>
     <ram:ApplicableHeaderTradeSettlement>
-      <ram:PaymentReference>Kundennummer:. 21212121 Rechnungsnummer:. GU987654321</ram:PaymentReference>
+      <ram:PaymentReference>Kundennummer:. 0008888888 Rechnungsnummer:. 6039999999</ram:PaymentReference>
       <ram:InvoiceCurrencyCode>EUR</ram:InvoiceCurrencyCode>
       <ram:SpecifiedTradeSettlementPaymentMeans>
         <ram:TypeCode>58</ram:TypeCode>
         <ram:Information>Bezahlung per SEPA Überweisung</ram:Information>
         <ram:PayeePartyCreditorFinancialAccount>
-          <ram:IBANID>DE89370400440532013000</ram:IBANID>
+          <ram:IBANID>DE75512108001245126199</ram:IBANID>
         </ram:PayeePartyCreditorFinancialAccount>
         <ram:PayeeSpecifiedCreditorFinancialInstitution>
-          <ram:BICID>COBADEFFXXX</ram:BICID>
+          <ram:BICID>SOLADESTXYZ</ram:BICID>
         </ram:PayeeSpecifiedCreditorFinancialInstitution>
       </ram:SpecifiedTradeSettlementPaymentMeans>
       <ram:ApplicableTradeTax>
-        <ram:CalculatedAmount>-21.56</ram:CalculatedAmount>
+        <ram:CalculatedAmount>0.00</ram:CalculatedAmount>
         <ram:TypeCode>VAT</ram:TypeCode>
-        <ram:BasisAmount>-113.49</ram:BasisAmount>
-        <ram:CategoryCode>S</ram:CategoryCode>
-        <ram:RateApplicablePercent>19.00</ram:RateApplicablePercent>
+        <ram:ExemptionReason>Steuerfreie innergemeinschaftliche Lieferung</ram:ExemptionReason>
+        <ram:BasisAmount>824.88</ram:BasisAmount>
+        <ram:CategoryCode>E</ram:CategoryCode>
+        <ram:RateApplicablePercent>0.00</ram:RateApplicablePercent>
       </ram:ApplicableTradeTax>
       <ram:SpecifiedTradePaymentTerms>
-        <ram:Description>Bis zum 22.02.2026 ohne Abzug</ram:Description>
+        <ram:Description>Bis zum 29.10.2026 ohne Abzug</ram:Description>
         <ram:DueDateDateTime>
-          <udt:DateTimeString format="102">20260222</udt:DateTimeString>
+          <udt:DateTimeString format="102">20261029</udt:DateTimeString>
         </ram:DueDateDateTime>
       </ram:SpecifiedTradePaymentTerms>
       <ram:SpecifiedTradeSettlementHeaderMonetarySummation>
-        <ram:LineTotalAmount>-113.49</ram:LineTotalAmount>
+        <ram:LineTotalAmount>824.88</ram:LineTotalAmount>
         <ram:AllowanceTotalAmount>0.00</ram:AllowanceTotalAmount>
-        <ram:TaxBasisTotalAmount>-113.49</ram:TaxBasisTotalAmount>
-        <ram:TaxTotalAmount currencyID="EUR">-21.56</ram:TaxTotalAmount>
-        <ram:GrandTotalAmount>-135.05</ram:GrandTotalAmount>
-        <ram:DuePayableAmount>-135.05</ram:DuePayableAmount>
+        <ram:TaxBasisTotalAmount>824.88</ram:TaxBasisTotalAmount>
+        <ram:TaxTotalAmount currencyID="EUR">0.00</ram:TaxTotalAmount>
+        <ram:GrandTotalAmount>824.88</ram:GrandTotalAmount>
+        <ram:DuePayableAmount>824.88</ram:DuePayableAmount>
       </ram:SpecifiedTradeSettlementHeaderMonetarySummation>
-      <ram:InvoiceReferencedDocument>
-        <ram:IssuerAssignedID>RE1234567890</ram:IssuerAssignedID>
-      </ram:InvoiceReferencedDocument>
     </ram:ApplicableHeaderTradeSettlement>
   </rsm:SupplyChainTradeTransaction>
 </rsm:CrossIndustryInvoice>

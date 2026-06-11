@@ -245,7 +245,7 @@ public final class CTestFiles
       if (aVESID.equals (ZugferdValidation.VID_ZUGFERD_2_5_EN16931))
         return _createListFacturX (sVersion, 23, EZugferdProfile.EN16931);
       if (aVESID.equals (ZugferdValidation.VID_ZUGFERD_2_5_EXTENDED))
-        return _createListFacturX (sVersion, 22, EZugferdProfile.EXTENDED);
+        return _createListFacturX (sVersion, 25, EZugferdProfile.EXTENDED);
     }
 
     throw new IllegalArgumentException ("Invalid VESID: " + aVESID);

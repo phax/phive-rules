@@ -94,12 +94,16 @@ costs, losses or damages could normally have been foreseen.
     </ram:GuidelineSpecifiedDocumentContextParameter>
   </rsm:ExchangedDocumentContext>
   <rsm:ExchangedDocument>
-    <ram:ID>RE1234567890</ram:ID>
-    <ram:Name>RECHNUNG</ram:Name>
-    <ram:TypeCode>380</ram:TypeCode>
+    <ram:ID>GU987654321</ram:ID>
+    <ram:Name>GUTSCHRIFT</ram:Name>
+    <ram:TypeCode>384</ram:TypeCode>
     <ram:IssueDateTime>
       <udt:DateTimeString format="102">20260202</udt:DateTimeString>
     </ram:IssueDateTime>
+    <ram:IncludedNote>
+      <ram:Content>STORNOGUTSCHRIFT</ram:Content>
+      <ram:SubjectCode>AAI</ram:SubjectCode>
+    </ram:IncludedNote>
     <ram:IncludedNote>
       <ram:Content>Geschäftsführer(in): Herr/Frau Geschäftsführer(in) , Muster Lieferant GmbH etc. </ram:Content>
       <ram:SubjectCode>REG</ram:SubjectCode>
@@ -145,17 +149,7 @@ costs, losses or damages could normally have been foreseen.
         </ram:NetPriceProductTradePrice>
       </ram:SpecifiedLineTradeAgreement>
       <ram:SpecifiedLineTradeDelivery>
-        <ram:BilledQuantity unitCode="H87">150.00</ram:BilledQuantity>
-        <ram:ShipToTradeParty>
-          <ram:Name>Baustelle</ram:Name>
-          <ram:PostalTradeAddress>
-            <ram:PostcodeCode>98765</ram:PostcodeCode>
-            <ram:LineOne>Eichenpromenade 37</ram:LineOne>
-            <ram:LineTwo>Tor 1</ram:LineTwo>
-            <ram:CityName>Metallstadt</ram:CityName>
-            <ram:CountryID>DE</ram:CountryID>
-          </ram:PostalTradeAddress>
-        </ram:ShipToTradeParty>
+        <ram:BilledQuantity unitCode="H87">-150.00</ram:BilledQuantity>
         <ram:DeliveryNoteReferencedDocument>
           <ram:IssuerAssignedID>8133430695</ram:IssuerAssignedID>
           <ram:LineID>000010</ram:LineID>
@@ -176,7 +170,7 @@ costs, losses or damages could normally have been foreseen.
           </ram:EndDateTime>
         </ram:BillingSpecifiedPeriod>
         <ram:SpecifiedTradeSettlementLineMonetarySummation>
-          <ram:LineTotalAmount>91.14</ram:LineTotalAmount>
+          <ram:LineTotalAmount>-91.14</ram:LineTotalAmount>
           <ram:TotalAllowanceChargeAmount>0.00</ram:TotalAllowanceChargeAmount>
         </ram:SpecifiedTradeSettlementLineMonetarySummation>
         <ram:AdditionalReferencedDocument>
@@ -213,7 +207,7 @@ costs, losses or damages could normally have been foreseen.
         </ram:NetPriceProductTradePrice>
       </ram:SpecifiedLineTradeAgreement>
       <ram:SpecifiedLineTradeDelivery>
-        <ram:BilledQuantity unitCode="H87">500.00</ram:BilledQuantity>
+        <ram:BilledQuantity unitCode="H87">-500.00</ram:BilledQuantity>
         <ram:DeliveryNoteReferencedDocument>
           <ram:IssuerAssignedID>8133430695</ram:IssuerAssignedID>
           <ram:LineID>000020</ram:LineID>
@@ -234,7 +228,7 @@ costs, losses or damages could normally have been foreseen.
           </ram:EndDateTime>
         </ram:BillingSpecifiedPeriod>
         <ram:SpecifiedTradeSettlementLineMonetarySummation>
-          <ram:LineTotalAmount>22.35</ram:LineTotalAmount>
+          <ram:LineTotalAmount>-22.35</ram:LineTotalAmount>
           <ram:TotalAllowanceChargeAmount>0.00</ram:TotalAllowanceChargeAmount>
         </ram:SpecifiedTradeSettlementLineMonetarySummation>
         <ram:AdditionalReferencedDocument>
@@ -287,7 +281,7 @@ costs, losses or damages could normally have been foreseen.
         </ram:SpecifiedTaxRegistration>
       </ram:BuyerTradeParty>
       <ram:SellerOrderReferencedDocument>
-        <ram:IssuerAssignedID>2251401884</ram:IssuerAssignedID>
+        <ram:IssuerAssignedID>0717975543</ram:IssuerAssignedID>
         <ram:FormattedIssueDateTime>
           <qdt:DateTimeString format="102">20260202</qdt:DateTimeString>
         </ram:FormattedIssueDateTime>
@@ -315,15 +309,9 @@ costs, losses or damages could normally have been foreseen.
           <udt:DateTimeString format="102">20260202</udt:DateTimeString>
         </ram:OccurrenceDateTime>
       </ram:ActualDeliverySupplyChainEvent>
-      <ram:DeliveryNoteReferencedDocument>
-        <ram:IssuerAssignedID>8133430695</ram:IssuerAssignedID>
-        <ram:FormattedIssueDateTime>
-          <qdt:DateTimeString format="102">20260202</qdt:DateTimeString>
-        </ram:FormattedIssueDateTime>
-      </ram:DeliveryNoteReferencedDocument>
     </ram:ApplicableHeaderTradeDelivery>
     <ram:ApplicableHeaderTradeSettlement>
-      <ram:PaymentReference>Kundennummer:. 21212121 Rechnungsnummer:. RE1234567890</ram:PaymentReference>
+      <ram:PaymentReference>Kundennummer:. 21212121 Rechnungsnummer:. GU987654321</ram:PaymentReference>
       <ram:InvoiceCurrencyCode>EUR</ram:InvoiceCurrencyCode>
       <ram:SpecifiedTradeSettlementPaymentMeans>
         <ram:TypeCode>58</ram:TypeCode>
@@ -336,9 +324,9 @@ costs, losses or damages could normally have been foreseen.
         </ram:PayeeSpecifiedCreditorFinancialInstitution>
       </ram:SpecifiedTradeSettlementPaymentMeans>
       <ram:ApplicableTradeTax>
-        <ram:CalculatedAmount>21.56</ram:CalculatedAmount>
+        <ram:CalculatedAmount>-21.56</ram:CalculatedAmount>
         <ram:TypeCode>VAT</ram:TypeCode>
-        <ram:BasisAmount>113.49</ram:BasisAmount>
+        <ram:BasisAmount>-113.49</ram:BasisAmount>
         <ram:CategoryCode>S</ram:CategoryCode>
         <ram:RateApplicablePercent>19.00</ram:RateApplicablePercent>
       </ram:ApplicableTradeTax>
@@ -349,13 +337,16 @@ costs, losses or damages could normally have been foreseen.
         </ram:DueDateDateTime>
       </ram:SpecifiedTradePaymentTerms>
       <ram:SpecifiedTradeSettlementHeaderMonetarySummation>
-        <ram:LineTotalAmount>113.49</ram:LineTotalAmount>
+        <ram:LineTotalAmount>-113.49</ram:LineTotalAmount>
         <ram:AllowanceTotalAmount>0.00</ram:AllowanceTotalAmount>
-        <ram:TaxBasisTotalAmount>113.49</ram:TaxBasisTotalAmount>
-        <ram:TaxTotalAmount currencyID="EUR">21.56</ram:TaxTotalAmount>
-        <ram:GrandTotalAmount>135.05</ram:GrandTotalAmount>
-        <ram:DuePayableAmount>135.05</ram:DuePayableAmount>
+        <ram:TaxBasisTotalAmount>-113.49</ram:TaxBasisTotalAmount>
+        <ram:TaxTotalAmount currencyID="EUR">-21.56</ram:TaxTotalAmount>
+        <ram:GrandTotalAmount>-135.05</ram:GrandTotalAmount>
+        <ram:DuePayableAmount>-135.05</ram:DuePayableAmount>
       </ram:SpecifiedTradeSettlementHeaderMonetarySummation>
+      <ram:InvoiceReferencedDocument>
+        <ram:IssuerAssignedID>RE1234567890</ram:IssuerAssignedID>
+      </ram:InvoiceReferencedDocument>
     </ram:ApplicableHeaderTradeSettlement>
   </rsm:SupplyChainTradeTransaction>
 </rsm:CrossIndustryInvoice>

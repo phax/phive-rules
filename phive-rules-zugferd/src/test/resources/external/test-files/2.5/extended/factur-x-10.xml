@@ -89,266 +89,319 @@ costs, losses or damages could normally have been foreseen.
 -->
 <rsm:CrossIndustryInvoice xmlns:rsm="urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100" xmlns:qdt="urn:un:unece:uncefact:data:standard:QualifiedDataType:100" xmlns:ram="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:udt="urn:un:unece:uncefact:data:standard:UnqualifiedDataType:100">
   <rsm:ExchangedDocumentContext>
-    <ram:BusinessProcessSpecifiedDocumentContextParameter>
-      <ram:ID>Beispielgeschäftsprozess</ram:ID>
-    </ram:BusinessProcessSpecifiedDocumentContextParameter>
     <ram:GuidelineSpecifiedDocumentContextParameter>
       <ram:ID>urn:cen.eu:en16931:2017#conformant#urn:factur-x.eu:1p0:extended</ram:ID>
     </ram:GuidelineSpecifiedDocumentContextParameter>
   </rsm:ExchangedDocumentContext>
   <rsm:ExchangedDocument>
-    <ram:ID>47110815</ram:ID>
+    <ram:ID>9099999999</ram:ID>
     <ram:Name>RECHNUNG</ram:Name>
     <ram:TypeCode>380</ram:TypeCode>
     <ram:IssueDateTime>
-      <udt:DateTimeString format="102">20251201</udt:DateTimeString>
+      <udt:DateTimeString format="102">20261031</udt:DateTimeString>
     </ram:IssueDateTime>
     <ram:IncludedNote>
-      <ram:Content>Mitglieder der Geschäftsleitung
-				H. Meier Geschäftsführer
-				T. Müller Prokurist
-				HRB Braunschweig 12345</ram:Content>
+      <ram:Content>Geschäftsführer: Herr Geschäftsführer , Muster Maschinenbau GmbH etc. </ram:Content>
       <ram:SubjectCode>REG</ram:SubjectCode>
     </ram:IncludedNote>
     <ram:IncludedNote>
-      <ram:Content>Vom 17. Dezember 2025 bis 6. Januar 2026 haben wir Betriebsferien.</ram:Content>
+      <ram:Content>Es bestehen Vereinbarungen, aus denen sich Minderungen des Entgelts ergeben können.</ram:Content>
       <ram:SubjectCode>AAI</ram:SubjectCode>
-    </ram:IncludedNote>
-    <ram:IncludedNote>
-      <ram:Content>Aus konzern-internen Gründen wird der Steuerbetrag sowohl in der Rechungswährung (EUR) als auch in der Buchwährung (GBP) ausgegeben.</ram:Content>
-      <ram:SubjectCode>TXD</ram:SubjectCode>
     </ram:IncludedNote>
     <ram:IncludedNote>
       <ram:Content>ZUGFeRD vers 2.5.0 (Extended)</ram:Content>
       <ram:SubjectCode>ACB</ram:SubjectCode>
     </ram:IncludedNote>
     <ram:IncludedNote>
-      <ram:Content>Dies ist ein Beispiel zur empfohlenen Darstellung von Fremdwährungsrechnungen</ram:Content>
+      <ram:Content>Dies ist eine Beispiel-Rechnung zur empfohlenen Darstellung von Unterpositionen für ein Verkaufsset</ram:Content>
       <ram:SubjectCode>ACB</ram:SubjectCode>
     </ram:IncludedNote>
   </rsm:ExchangedDocument>
   <rsm:SupplyChainTradeTransaction>
     <ram:IncludedSupplyChainTradeLineItem>
       <ram:AssociatedDocumentLineDocument>
-        <ram:LineID>1</ram:LineID>
-        <ram:IncludedNote>
-          <ram:Content>Materialzertifikat X-234 gem ISO XYZ.
-						Ware bleibt bis zur vollständigen Bezahlung unser Eigentum.
-					</ram:Content>
-        </ram:IncludedNote>
+        <ram:LineID>01</ram:LineID>
+        <ram:LineStatusReasonCode>DETAIL</ram:LineStatusReasonCode>
       </ram:AssociatedDocumentLineDocument>
       <ram:SpecifiedTradeProduct>
-        <ram:SellerAssignedID>CO-123/V2A</ram:SellerAssignedID>
-        <ram:BuyerAssignedID>Toolbox 0815</ram:BuyerAssignedID>
-        <ram:Name>Stahlcoil</ram:Name>
-        <ram:OriginTradeCountry>
-          <ram:ID>DE</ram:ID>
-        </ram:OriginTradeCountry>
+        <ram:GlobalID schemeID="0160">99999999999</ram:GlobalID>
+        <ram:SellerAssignedID>99999000000090 1</ram:SellerAssignedID>
+        <ram:Name>INDIVIDUELLES Fallschutzset</ram:Name>
+        <ram:Description>Kundenindividuelles Sortiment Fallschutz</ram:Description>
       </ram:SpecifiedTradeProduct>
       <ram:SpecifiedLineTradeAgreement>
-        <ram:BuyerOrderReferencedDocument>
-          <ram:IssuerAssignedID>ORDER84359</ram:IssuerAssignedID>
-          <ram:LineID>1</ram:LineID>
-        </ram:BuyerOrderReferencedDocument>
         <ram:GrossPriceProductTradePrice>
-          <ram:ChargeAmount>100.00</ram:ChargeAmount>
-          <ram:BasisQuantity unitCode="H87">1</ram:BasisQuantity>
+          <ram:ChargeAmount>4500.00</ram:ChargeAmount>
+          <ram:BasisQuantity unitCode="H87">1.0000</ram:BasisQuantity>
         </ram:GrossPriceProductTradePrice>
         <ram:NetPriceProductTradePrice>
-          <ram:ChargeAmount>100</ram:ChargeAmount>
-          <ram:BasisQuantity unitCode="H87">1</ram:BasisQuantity>
+          <ram:ChargeAmount>4500.00</ram:ChargeAmount>
+          <ram:BasisQuantity unitCode="H87">1.0000</ram:BasisQuantity>
         </ram:NetPriceProductTradePrice>
       </ram:SpecifiedLineTradeAgreement>
       <ram:SpecifiedLineTradeDelivery>
-        <ram:BilledQuantity unitCode="H87">10</ram:BilledQuantity>
+        <ram:BilledQuantity unitCode="H87">10.00</ram:BilledQuantity>
+        <ram:ShipToTradeParty>
+          <ram:ID>0009999999</ram:ID>
+          <ram:Name>Muster Bau und Fassaden GmbH</ram:Name>
+          <ram:PostalTradeAddress>
+            <ram:PostcodeCode>76543</ram:PostcodeCode>
+            <ram:LineOne>Muster Str. 19</ram:LineOne>
+            <ram:CityName>Musterhausen</ram:CityName>
+            <ram:CountryID>DE</ram:CountryID>
+          </ram:PostalTradeAddress>
+        </ram:ShipToTradeParty>
       </ram:SpecifiedLineTradeDelivery>
       <ram:SpecifiedLineTradeSettlement>
         <ram:ApplicableTradeTax>
           <ram:TypeCode>VAT</ram:TypeCode>
           <ram:CategoryCode>S</ram:CategoryCode>
-          <ram:RateApplicablePercent>19</ram:RateApplicablePercent>
+          <ram:RateApplicablePercent>19.00</ram:RateApplicablePercent>
         </ram:ApplicableTradeTax>
-        <ram:SpecifiedTradeAllowanceCharge>
-          <ram:ChargeIndicator>
-            <udt:Indicator>false</udt:Indicator>
-          </ram:ChargeIndicator>
-          <ram:CalculationPercent>10</ram:CalculationPercent>
-          <ram:BasisAmount>1000</ram:BasisAmount>
-          <ram:ActualAmount>100</ram:ActualAmount>
-          <ram:ReasonCode>64</ram:ReasonCode>
-          <ram:Reason>Lagerware</ram:Reason>
-        </ram:SpecifiedTradeAllowanceCharge>
-        <ram:SpecifiedTradeAllowanceCharge>
-          <ram:ChargeIndicator>
-            <udt:Indicator>false</udt:Indicator>
-          </ram:ChargeIndicator>
-          <ram:BasisAmount>1000</ram:BasisAmount>
-          <ram:ActualAmount>50</ram:ActualAmount>
-          <ram:ReasonCode>70</ram:ReasonCode>
-          <ram:Reason>Direktbelieferung</ram:Reason>
-        </ram:SpecifiedTradeAllowanceCharge>
+        <ram:BillingSpecifiedPeriod>
+          <ram:StartDateTime>
+            <udt:DateTimeString format="102">20261006</udt:DateTimeString>
+          </ram:StartDateTime>
+          <ram:EndDateTime>
+            <udt:DateTimeString format="102">20261021</udt:DateTimeString>
+          </ram:EndDateTime>
+        </ram:BillingSpecifiedPeriod>
         <ram:SpecifiedTradeSettlementLineMonetarySummation>
-          <ram:LineTotalAmount>850</ram:LineTotalAmount>
+          <ram:LineTotalAmount>45000.00</ram:LineTotalAmount>
+          <ram:TotalAllowanceChargeAmount>0.00</ram:TotalAllowanceChargeAmount>
+        </ram:SpecifiedTradeSettlementLineMonetarySummation>
+        <ram:AdditionalReferencedDocument>
+          <ram:IssuerAssignedID>2133367983</ram:IssuerAssignedID>
+          <ram:TypeCode>130</ram:TypeCode>
+          <ram:ReferenceTypeCode>VN</ram:ReferenceTypeCode>
+        </ram:AdditionalReferencedDocument>
+      </ram:SpecifiedLineTradeSettlement>
+    </ram:IncludedSupplyChainTradeLineItem>
+    <ram:IncludedSupplyChainTradeLineItem>
+      <ram:AssociatedDocumentLineDocument>
+        <ram:LineID>01.01</ram:LineID>
+        <ram:ParentLineID>01</ram:ParentLineID>
+        <ram:LineStatusReasonCode>INFORMATION</ram:LineStatusReasonCode>
+      </ram:AssociatedDocumentLineDocument>
+      <ram:SpecifiedTradeProduct>
+        <ram:GlobalID schemeID="0160">9947376819504</ram:GlobalID>
+        <ram:SellerAssignedID>1239932943961 1</ram:SellerAssignedID>
+        <ram:Name>RUCKSACK-Fallschutz</ram:Name>
+      </ram:SpecifiedTradeProduct>
+      <ram:SpecifiedLineTradeAgreement>
+        <ram:NetPriceProductTradePrice>
+          <ram:ChargeAmount>0.00</ram:ChargeAmount>
+        </ram:NetPriceProductTradePrice>
+      </ram:SpecifiedLineTradeAgreement>
+      <ram:SpecifiedLineTradeDelivery>
+        <ram:BilledQuantity unitCode="H87">10.00</ram:BilledQuantity>
+      </ram:SpecifiedLineTradeDelivery>
+      <ram:SpecifiedLineTradeSettlement>
+        <ram:ApplicableTradeTax>
+          <ram:TypeCode>VAT</ram:TypeCode>
+          <ram:CategoryCode>S</ram:CategoryCode>
+          <ram:RateApplicablePercent>19.00</ram:RateApplicablePercent>
+        </ram:ApplicableTradeTax>
+        <ram:SpecifiedTradeSettlementLineMonetarySummation>
+          <ram:LineTotalAmount>0.00</ram:LineTotalAmount>
+        </ram:SpecifiedTradeSettlementLineMonetarySummation>
+      </ram:SpecifiedLineTradeSettlement>
+    </ram:IncludedSupplyChainTradeLineItem>
+    <ram:IncludedSupplyChainTradeLineItem>
+      <ram:AssociatedDocumentLineDocument>
+        <ram:LineID>01.02</ram:LineID>
+        <ram:ParentLineID>01</ram:ParentLineID>
+        <ram:LineStatusReasonCode>INFORMATION</ram:LineStatusReasonCode>
+      </ram:AssociatedDocumentLineDocument>
+      <ram:SpecifiedTradeProduct>
+        <ram:GlobalID schemeID="0160">9961975355683</ram:GlobalID>
+        <ram:SellerAssignedID>1234300430961 1</ram:SellerAssignedID>
+        <ram:Name>Gehörschutz</ram:Name>
+      </ram:SpecifiedTradeProduct>
+      <ram:SpecifiedLineTradeAgreement>
+        <ram:NetPriceProductTradePrice>
+          <ram:ChargeAmount>0.00</ram:ChargeAmount>
+        </ram:NetPriceProductTradePrice>
+      </ram:SpecifiedLineTradeAgreement>
+      <ram:SpecifiedLineTradeDelivery>
+        <ram:BilledQuantity unitCode="H87">10.00</ram:BilledQuantity>
+      </ram:SpecifiedLineTradeDelivery>
+      <ram:SpecifiedLineTradeSettlement>
+        <ram:ApplicableTradeTax>
+          <ram:TypeCode>VAT</ram:TypeCode>
+          <ram:CategoryCode>S</ram:CategoryCode>
+          <ram:RateApplicablePercent>19.00</ram:RateApplicablePercent>
+        </ram:ApplicableTradeTax>
+        <ram:SpecifiedTradeSettlementLineMonetarySummation>
+          <ram:LineTotalAmount>0.00</ram:LineTotalAmount>
+        </ram:SpecifiedTradeSettlementLineMonetarySummation>
+      </ram:SpecifiedLineTradeSettlement>
+    </ram:IncludedSupplyChainTradeLineItem>
+    <ram:IncludedSupplyChainTradeLineItem>
+      <ram:AssociatedDocumentLineDocument>
+        <ram:LineID>01.03</ram:LineID>
+        <ram:ParentLineID>01</ram:ParentLineID>
+        <ram:LineStatusReasonCode>INFORMATION</ram:LineStatusReasonCode>
+      </ram:AssociatedDocumentLineDocument>
+      <ram:SpecifiedTradeProduct>
+        <ram:GlobalID schemeID="0160">9945727365021</ram:GlobalID>
+        <ram:SellerAssignedID>1234102250061 1</ram:SellerAssignedID>
+        <ram:Name>Schutzbrille-KLAR</ram:Name>
+      </ram:SpecifiedTradeProduct>
+      <ram:SpecifiedLineTradeAgreement>
+        <ram:NetPriceProductTradePrice>
+          <ram:ChargeAmount>0.00</ram:ChargeAmount>
+        </ram:NetPriceProductTradePrice>
+      </ram:SpecifiedLineTradeAgreement>
+      <ram:SpecifiedLineTradeDelivery>
+        <ram:BilledQuantity unitCode="H87">10.00</ram:BilledQuantity>
+      </ram:SpecifiedLineTradeDelivery>
+      <ram:SpecifiedLineTradeSettlement>
+        <ram:ApplicableTradeTax>
+          <ram:TypeCode>VAT</ram:TypeCode>
+          <ram:CategoryCode>S</ram:CategoryCode>
+          <ram:RateApplicablePercent>19.00</ram:RateApplicablePercent>
+        </ram:ApplicableTradeTax>
+        <ram:SpecifiedTradeSettlementLineMonetarySummation>
+          <ram:LineTotalAmount>0.00</ram:LineTotalAmount>
+        </ram:SpecifiedTradeSettlementLineMonetarySummation>
+      </ram:SpecifiedLineTradeSettlement>
+    </ram:IncludedSupplyChainTradeLineItem>
+    <ram:IncludedSupplyChainTradeLineItem>
+      <ram:AssociatedDocumentLineDocument>
+        <ram:LineID>01.04</ram:LineID>
+        <ram:ParentLineID>01</ram:ParentLineID>
+        <ram:LineStatusReasonCode>INFORMATION</ram:LineStatusReasonCode>
+      </ram:AssociatedDocumentLineDocument>
+      <ram:SpecifiedTradeProduct>
+        <ram:GlobalID schemeID="0160">9953479245027</ram:GlobalID>
+        <ram:SellerAssignedID>1234200243961 1</ram:SellerAssignedID>
+        <ram:Name>Schutzhelm-6PUNKT-WEISS</ram:Name>
+      </ram:SpecifiedTradeProduct>
+      <ram:SpecifiedLineTradeAgreement>
+        <ram:NetPriceProductTradePrice>
+          <ram:ChargeAmount>0.00</ram:ChargeAmount>
+        </ram:NetPriceProductTradePrice>
+      </ram:SpecifiedLineTradeAgreement>
+      <ram:SpecifiedLineTradeDelivery>
+        <ram:BilledQuantity unitCode="H87">10.00</ram:BilledQuantity>
+      </ram:SpecifiedLineTradeDelivery>
+      <ram:SpecifiedLineTradeSettlement>
+        <ram:ApplicableTradeTax>
+          <ram:TypeCode>VAT</ram:TypeCode>
+          <ram:CategoryCode>S</ram:CategoryCode>
+          <ram:RateApplicablePercent>19.00</ram:RateApplicablePercent>
+        </ram:ApplicableTradeTax>
+        <ram:SpecifiedTradeSettlementLineMonetarySummation>
+          <ram:LineTotalAmount>0.00</ram:LineTotalAmount>
         </ram:SpecifiedTradeSettlementLineMonetarySummation>
       </ram:SpecifiedLineTradeSettlement>
     </ram:IncludedSupplyChainTradeLineItem>
     <ram:ApplicableHeaderTradeAgreement>
       <ram:SellerTradeParty>
-        <ram:ID>12345676</ram:ID>
-        <ram:Name>Rohstoff AG Salzgitter</ram:Name>
+        <ram:GlobalID schemeID="0088">GLN4000000000</ram:GlobalID>
+        <ram:Name>Lieferant GmbH &amp; Co. KG</ram:Name>
+        <ram:DefinedTradeContact>
+          <ram:PersonName>Georg Verkäufer</ram:PersonName>
+          <ram:TelephoneUniversalCommunication>
+            <ram:CompleteNumber>0160 123456789</ram:CompleteNumber>
+          </ram:TelephoneUniversalCommunication>
+          <ram:EmailURIUniversalCommunication>
+            <ram:URIID>georg.Verkäufer@lieferant.de</ram:URIID>
+          </ram:EmailURIUniversalCommunication>
+        </ram:DefinedTradeContact>
         <ram:PostalTradeAddress>
-          <ram:PostcodeCode>38226</ram:PostcodeCode>
-          <ram:LineOne>Marktstr. 153</ram:LineOne>
-          <ram:CityName>Salzgitter</ram:CityName>
+          <ram:PostcodeCode>98765</ram:PostcodeCode>
+          <ram:LineOne>Lieferanten-Str.12-17</ram:LineOne>
+          <ram:CityName>Lieferstadt</ram:CityName>
           <ram:CountryID>DE</ram:CountryID>
         </ram:PostalTradeAddress>
+        <ram:URIUniversalCommunication>
+          <ram:URIID schemeID="EM">info@lieferant.de</ram:URIID>
+        </ram:URIUniversalCommunication>
         <ram:SpecifiedTaxRegistration>
-          <ram:ID schemeID="VA">DE123456788</ram:ID>
+          <ram:ID schemeID="FC">78910/12345</ram:ID>
+        </ram:SpecifiedTaxRegistration>
+        <ram:SpecifiedTaxRegistration>
+          <ram:ID schemeID="VA">DE727081482</ram:ID>
         </ram:SpecifiedTaxRegistration>
       </ram:SellerTradeParty>
       <ram:BuyerTradeParty>
-        <ram:ID>75969813</ram:ID>
-        <ram:Name>Metallbau Leipzig GmbH &amp; Co. KG</ram:Name>
+        <ram:ID>21212121</ram:ID>
+        <ram:Name>Muster Maschinenbau GmbH</ram:Name>
         <ram:PostalTradeAddress>
-          <ram:PostcodeCode>12345</ram:PostcodeCode>
-          <ram:LineOne>Pappelallee 15</ram:LineOne>
-          <ram:LineTwo>Hof 3</ram:LineTwo>
-          <ram:CityName>Leipzig</ram:CityName>
+          <ram:PostcodeCode>87654</ram:PostcodeCode>
+          <ram:LineOne>Käufer-Str. 12</ram:LineOne>
+          <ram:CityName>Käuferstadt</ram:CityName>
           <ram:CountryID>DE</ram:CountryID>
         </ram:PostalTradeAddress>
-        <ram:URIUniversalCommunication>
-          <ram:URIID schemeID="0204">04011000-1234512345-35</ram:URIID>
-        </ram:URIUniversalCommunication>
       </ram:BuyerTradeParty>
-      <ram:SellerTaxRepresentativeTradeParty>
-        <ram:Name>Global Supplies Financial Services</ram:Name>
-        <ram:PostalTradeAddress>
-          <ram:PostcodeCode>12345</ram:PostcodeCode>
-          <ram:LineOne>Friedrichstraße 165</ram:LineOne>
-          <ram:CityName>Berlin</ram:CityName>
-          <ram:CountryID>DE</ram:CountryID>
-        </ram:PostalTradeAddress>
-        <ram:SpecifiedTaxRegistration>
-          <ram:ID schemeID="VA">DE136695976</ram:ID>
-        </ram:SpecifiedTaxRegistration>
-      </ram:SellerTaxRepresentativeTradeParty>
+      <ram:SellerOrderReferencedDocument>
+        <ram:IssuerAssignedID>555555555</ram:IssuerAssignedID>
+        <ram:FormattedIssueDateTime>
+          <qdt:DateTimeString format="102">20261031</qdt:DateTimeString>
+        </ram:FormattedIssueDateTime>
+      </ram:SellerOrderReferencedDocument>
+      <ram:BuyerOrderReferencedDocument>
+        <ram:IssuerAssignedID>456789123</ram:IssuerAssignedID>
+      </ram:BuyerOrderReferencedDocument>
     </ram:ApplicableHeaderTradeAgreement>
     <ram:ApplicableHeaderTradeDelivery>
       <ram:ShipToTradeParty>
-        <ram:ID>75969815</ram:ID>
-        <ram:Name>Metallbau Leipzig GmbH &amp; Co. KG</ram:Name>
+        <ram:ID>0009999999</ram:ID>
+        <ram:Name>Muster Bau und Fassaden GmbH</ram:Name>
         <ram:PostalTradeAddress>
-          <ram:PostcodeCode>12347</ram:PostcodeCode>
-          <ram:LineOne>Eichenpromenade 37</ram:LineOne>
-          <ram:LineTwo>Tor 1</ram:LineTwo>
-          <ram:CityName>Metallstadt</ram:CityName>
+          <ram:PostcodeCode>76543</ram:PostcodeCode>
+          <ram:LineOne>Muster Str. 19</ram:LineOne>
+          <ram:CityName>Musterhausen</ram:CityName>
           <ram:CountryID>DE</ram:CountryID>
         </ram:PostalTradeAddress>
-        <ram:URIUniversalCommunication>
-          <ram:URIID schemeID="0060">999999999</ram:URIID>
-        </ram:URIUniversalCommunication>
       </ram:ShipToTradeParty>
       <ram:ActualDeliverySupplyChainEvent>
         <ram:OccurrenceDateTime>
-          <udt:DateTimeString format="102">20251125</udt:DateTimeString>
+          <udt:DateTimeString format="102">20261031</udt:DateTimeString>
         </ram:OccurrenceDateTime>
       </ram:ActualDeliverySupplyChainEvent>
+      <ram:DeliveryNoteReferencedDocument>
+        <ram:IssuerAssignedID>8876543219</ram:IssuerAssignedID>
+        <ram:FormattedIssueDateTime>
+          <qdt:DateTimeString format="102">20261031</qdt:DateTimeString>
+        </ram:FormattedIssueDateTime>
+      </ram:DeliveryNoteReferencedDocument>
     </ram:ApplicableHeaderTradeDelivery>
     <ram:ApplicableHeaderTradeSettlement>
-      <ram:TaxCurrencyCode>EUR</ram:TaxCurrencyCode>
-      <ram:InvoiceCurrencyCode>GBP</ram:InvoiceCurrencyCode>
-      <ram:PayeeTradeParty>
-        <ram:GlobalID schemeID="0060">432156789</ram:GlobalID>
-        <ram:Name>Global Supplies Financial Services</ram:Name>
-        <ram:PostalTradeAddress>
-          <ram:PostcodeCode>12345</ram:PostcodeCode>
-          <ram:LineOne>Friedrichstraße 165</ram:LineOne>
-          <ram:CityName>Berlin</ram:CityName>
-          <ram:CountryID>DE</ram:CountryID>
-        </ram:PostalTradeAddress>
-      </ram:PayeeTradeParty>
-      <ram:TaxApplicableTradeCurrencyExchange>
-        <ram:SourceCurrencyCode>GBP</ram:SourceCurrencyCode>
-        <ram:TargetCurrencyCode>EUR</ram:TargetCurrencyCode>
-        <ram:ConversionRate>1.12244</ram:ConversionRate>
-        <ram:ConversionRateDateTime>
-          <udt:DateTimeString format="102">20251125</udt:DateTimeString>
-        </ram:ConversionRateDateTime>
-      </ram:TaxApplicableTradeCurrencyExchange>
+      <ram:PaymentReference>Kundennummer:. 8888855555 Rechnungsnummer:. 6069999999</ram:PaymentReference>
+      <ram:InvoiceCurrencyCode>EUR</ram:InvoiceCurrencyCode>
       <ram:SpecifiedTradeSettlementPaymentMeans>
         <ram:TypeCode>58</ram:TypeCode>
+        <ram:Information>Bezahlung per SEPA Überweisung</ram:Information>
         <ram:PayeePartyCreditorFinancialAccount>
-          <ram:IBANID>DE77 3707 0060 0321 9870 00</ram:IBANID>
-          <ram:AccountName>Global Supplies Financial Services</ram:AccountName>
+          <ram:IBANID>DE75512108001245126199</ram:IBANID>
         </ram:PayeePartyCreditorFinancialAccount>
+        <ram:PayeeSpecifiedCreditorFinancialInstitution>
+          <ram:BICID>SOLADESTXYZ</ram:BICID>
+        </ram:PayeeSpecifiedCreditorFinancialInstitution>
       </ram:SpecifiedTradeSettlementPaymentMeans>
       <ram:ApplicableTradeTax>
-        <ram:CalculatedAmount>163.16</ram:CalculatedAmount>
+        <ram:CalculatedAmount>8550.00</ram:CalculatedAmount>
         <ram:TypeCode>VAT</ram:TypeCode>
-        <ram:BasisAmount>858.75</ram:BasisAmount>
-        <ram:LineTotalBasisAmount>850</ram:LineTotalBasisAmount>
-        <ram:AllowanceChargeBasisAmount>8.75</ram:AllowanceChargeBasisAmount>
+        <ram:BasisAmount>45000.00</ram:BasisAmount>
         <ram:CategoryCode>S</ram:CategoryCode>
-        <ram:RateApplicablePercent>19</ram:RateApplicablePercent>
+        <ram:RateApplicablePercent>19.00</ram:RateApplicablePercent>
       </ram:ApplicableTradeTax>
-      <ram:BillingSpecifiedPeriod>
-        <ram:StartDateTime>
-          <udt:DateTimeString format="102">20251101</udt:DateTimeString>
-        </ram:StartDateTime>
-        <ram:EndDateTime>
-          <udt:DateTimeString format="102">20251130</udt:DateTimeString>
-        </ram:EndDateTime>
-      </ram:BillingSpecifiedPeriod>
-      <ram:SpecifiedTradeAllowanceCharge>
-        <ram:ChargeIndicator>
-          <udt:Indicator>true</udt:Indicator>
-        </ram:ChargeIndicator>
-        <ram:ActualAmount>30</ram:ActualAmount>
-        <ram:ReasonCode>ABK</ram:ReasonCode>
-        <ram:Reason>Einwegverpackung</ram:Reason>
-        <ram:CategoryTradeTax>
-          <ram:TypeCode>VAT</ram:TypeCode>
-          <ram:CategoryCode>S</ram:CategoryCode>
-          <ram:RateApplicablePercent>19</ram:RateApplicablePercent>
-        </ram:CategoryTradeTax>
-      </ram:SpecifiedTradeAllowanceCharge>
-      <ram:SpecifiedTradeAllowanceCharge>
-        <ram:ChargeIndicator>
-          <udt:Indicator>false</udt:Indicator>
-        </ram:ChargeIndicator>
-        <ram:CalculationPercent>2.5</ram:CalculationPercent>
-        <ram:BasisAmount>850</ram:BasisAmount>
-        <ram:ActualAmount>21.25</ram:ActualAmount>
-        <ram:ReasonCode>102</ram:ReasonCode>
-        <ram:Reason>Stammkundenrabatt</ram:Reason>
-        <ram:CategoryTradeTax>
-          <ram:TypeCode>VAT</ram:TypeCode>
-          <ram:CategoryCode>S</ram:CategoryCode>
-          <ram:RateApplicablePercent>19</ram:RateApplicablePercent>
-        </ram:CategoryTradeTax>
-      </ram:SpecifiedTradeAllowanceCharge>
       <ram:SpecifiedTradePaymentTerms>
-        <ram:Description>Zahlbar ohne Abschlag bis </ram:Description>
+        <ram:Description>Bis zum 29.11.2026 ohne Abzug</ram:Description>
         <ram:DueDateDateTime>
-          <udt:DateTimeString format="102">20251231</udt:DateTimeString>
-        </ram:DueDateDateTime>
-      </ram:SpecifiedTradePaymentTerms>
-      <ram:SpecifiedTradePaymentTerms>
-        <ram:Description>Zahlbar mit 2% Skonto bis</ram:Description>
-        <ram:DueDateDateTime>
-          <udt:DateTimeString format="102">20251214</udt:DateTimeString>
+          <udt:DateTimeString format="102">20261129</udt:DateTimeString>
         </ram:DueDateDateTime>
       </ram:SpecifiedTradePaymentTerms>
       <ram:SpecifiedTradeSettlementHeaderMonetarySummation>
-        <ram:LineTotalAmount>850</ram:LineTotalAmount>
-        <ram:ChargeTotalAmount>30</ram:ChargeTotalAmount>
-        <ram:AllowanceTotalAmount>21.25</ram:AllowanceTotalAmount>
-        <ram:TaxBasisTotalAmount>858.75</ram:TaxBasisTotalAmount>
-        <ram:TaxTotalAmount currencyID="GBP">163.16</ram:TaxTotalAmount>
-        <ram:TaxTotalAmount currencyID="EUR">183.14</ram:TaxTotalAmount>
-        <ram:GrandTotalAmount>1021.91</ram:GrandTotalAmount>
-        <ram:TotalPrepaidAmount>500</ram:TotalPrepaidAmount>
-        <ram:DuePayableAmount>521.91</ram:DuePayableAmount>
+        <ram:LineTotalAmount>45000.00</ram:LineTotalAmount>
+        <ram:AllowanceTotalAmount>0.00</ram:AllowanceTotalAmount>
+        <ram:TaxBasisTotalAmount>45000.00</ram:TaxBasisTotalAmount>
+        <ram:TaxTotalAmount currencyID="EUR">8550.00</ram:TaxTotalAmount>
+        <ram:GrandTotalAmount>53550.00</ram:GrandTotalAmount>
+        <ram:DuePayableAmount>53550.00</ram:DuePayableAmount>
       </ram:SpecifiedTradeSettlementHeaderMonetarySummation>
     </ram:ApplicableHeaderTradeSettlement>
   </rsm:SupplyChainTradeTransaction>

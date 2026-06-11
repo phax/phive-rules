@@ -89,30 +89,18 @@ costs, losses or damages could normally have been foreseen.
 -->
 <rsm:CrossIndustryInvoice xmlns:rsm="urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100" xmlns:qdt="urn:un:unece:uncefact:data:standard:QualifiedDataType:100" xmlns:ram="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:udt="urn:un:unece:uncefact:data:standard:UnqualifiedDataType:100">
   <rsm:ExchangedDocumentContext>
-    <ram:TestIndicator>
-      <udt:Indicator>true</udt:Indicator>
-    </ram:TestIndicator>
-    <ram:BusinessProcessSpecifiedDocumentContextParameter>
-      <ram:ID>Beispielgeschäftsprozess</ram:ID>
-    </ram:BusinessProcessSpecifiedDocumentContextParameter>
     <ram:GuidelineSpecifiedDocumentContextParameter>
       <ram:ID>urn:cen.eu:en16931:2017#conformant#urn:factur-x.eu:1p0:extended</ram:ID>
     </ram:GuidelineSpecifiedDocumentContextParameter>
   </rsm:ExchangedDocumentContext>
   <rsm:ExchangedDocument>
-    <ram:ID>RK21012345</ram:ID>
-    <ram:Name>RECHNUNGS-KORREKTUR</ram:Name>
-    <ram:TypeCode>384</ram:TypeCode>
+    <ram:ID>47110819</ram:ID>
+    <ram:TypeCode>380</ram:TypeCode>
     <ram:IssueDateTime>
-      <udt:DateTimeString format="102">20251001</udt:DateTimeString>
+      <udt:DateTimeString format="102">20251105</udt:DateTimeString>
     </ram:IssueDateTime>
     <ram:IncludedNote>
-      <ram:ContentCode>ST3</ram:ContentCode>
-      <ram:Content>Es bestehen Rabatt- oder Bonusvereinbarungen.</ram:Content>
-      <ram:SubjectCode>AAK</ram:SubjectCode>
-    </ram:IncludedNote>
-    <ram:IncludedNote>
-      <ram:Content>Geschäftsführer: Herr Geschäftsführer , Muster Maschinenbau GmbH etc. </ram:Content>
+      <ram:Content>Geschäftsführer(in): Herr/Frau Geschäftsführer(in) , Muster Lieferant GmbH etc. </ram:Content>
       <ram:SubjectCode>REG</ram:SubjectCode>
     </ram:IncludedNote>
     <ram:IncludedNote>
@@ -124,7 +112,7 @@ costs, losses or damages could normally have been foreseen.
       <ram:SubjectCode>ACB</ram:SubjectCode>
     </ram:IncludedNote>
     <ram:IncludedNote>
-      <ram:Content>Dies ist eine Beispiel-für eine Korrektur einer Rechnung (Type 384)</ram:Content>
+      <ram:Content>Dies ist eine Beispiel-Rechnung einer Projektabschluss-Rechnung</ram:Content>
       <ram:SubjectCode>ACB</ram:SubjectCode>
     </ram:IncludedNote>
   </rsm:ExchangedDocument>
@@ -134,243 +122,197 @@ costs, losses or damages could normally have been foreseen.
         <ram:LineID>1</ram:LineID>
       </ram:AssociatedDocumentLineDocument>
       <ram:SpecifiedTradeProduct>
-        <ram:GlobalID schemeID="0160">4123456000014</ram:GlobalID>
-        <ram:SellerAssignedID>ZS997</ram:SellerAssignedID>
-        <ram:Name>Zitronensäure 100ml</ram:Name>
+        <ram:Name>Lieferung und Montage Bauträger</ram:Name>
       </ram:SpecifiedTradeProduct>
       <ram:SpecifiedLineTradeAgreement>
-        <ram:GrossPriceProductTradePrice>
-          <ram:ChargeAmount>1.0000</ram:ChargeAmount>
-        </ram:GrossPriceProductTradePrice>
         <ram:NetPriceProductTradePrice>
-          <ram:ChargeAmount>1.0000</ram:ChargeAmount>
+          <ram:ChargeAmount>20000.00</ram:ChargeAmount>
+          <ram:BasisQuantity unitCode="H87">1</ram:BasisQuantity>
         </ram:NetPriceProductTradePrice>
       </ram:SpecifiedLineTradeAgreement>
       <ram:SpecifiedLineTradeDelivery>
-        <ram:BilledQuantity unitCode="H87">-5.0000</ram:BilledQuantity>
-        <ram:PackageQuantity unitCode="XBO">1.0000</ram:PackageQuantity>
+        <ram:BilledQuantity unitCode="H87">1</ram:BilledQuantity>
       </ram:SpecifiedLineTradeDelivery>
       <ram:SpecifiedLineTradeSettlement>
         <ram:ApplicableTradeTax>
           <ram:TypeCode>VAT</ram:TypeCode>
           <ram:CategoryCode>S</ram:CategoryCode>
-          <ram:RateApplicablePercent>19.00</ram:RateApplicablePercent>
+          <ram:RateApplicablePercent>19</ram:RateApplicablePercent>
         </ram:ApplicableTradeTax>
+        <ram:BillingSpecifiedPeriod>
+          <ram:StartDateTime>
+            <udt:DateTimeString format="102">20250601</udt:DateTimeString>
+          </ram:StartDateTime>
+          <ram:EndDateTime>
+            <udt:DateTimeString format="102">20251031</udt:DateTimeString>
+          </ram:EndDateTime>
+        </ram:BillingSpecifiedPeriod>
         <ram:SpecifiedTradeSettlementLineMonetarySummation>
-          <ram:LineTotalAmount>-5.00</ram:LineTotalAmount>
-        </ram:SpecifiedTradeSettlementLineMonetarySummation>
-      </ram:SpecifiedLineTradeSettlement>
-    </ram:IncludedSupplyChainTradeLineItem>
-    <ram:IncludedSupplyChainTradeLineItem>
-      <ram:AssociatedDocumentLineDocument>
-        <ram:LineID>2</ram:LineID>
-      </ram:AssociatedDocumentLineDocument>
-      <ram:SpecifiedTradeProduct>
-        <ram:GlobalID schemeID="0160">4123456000021</ram:GlobalID>
-        <ram:SellerAssignedID>GZ250</ram:SellerAssignedID>
-        <ram:Name>Gelierzucker Extra 250g</ram:Name>
-      </ram:SpecifiedTradeProduct>
-      <ram:SpecifiedLineTradeAgreement>
-        <ram:GrossPriceProductTradePrice>
-          <ram:ChargeAmount>1.5000</ram:ChargeAmount>
-          <ram:AppliedTradeAllowanceCharge>
-            <ram:ChargeIndicator>
-              <udt:Indicator>false</udt:Indicator>
-            </ram:ChargeIndicator>
-            <ram:ActualAmount>0.0300</ram:ActualAmount>
-            <ram:Reason>Artikelrabatt 1</ram:Reason>
-          </ram:AppliedTradeAllowanceCharge>
-          <ram:AppliedTradeAllowanceCharge>
-            <ram:ChargeIndicator>
-              <udt:Indicator>false</udt:Indicator>
-            </ram:ChargeIndicator>
-            <ram:ActualAmount>0.0200</ram:ActualAmount>
-            <ram:Reason>Artikelrabatt 2</ram:Reason>
-          </ram:AppliedTradeAllowanceCharge>
-        </ram:GrossPriceProductTradePrice>
-        <ram:NetPriceProductTradePrice>
-          <ram:ChargeAmount>1.4500</ram:ChargeAmount>
-        </ram:NetPriceProductTradePrice>
-      </ram:SpecifiedLineTradeAgreement>
-      <ram:SpecifiedLineTradeDelivery>
-        <ram:BilledQuantity unitCode="H87">-2.0000</ram:BilledQuantity>
-        <ram:PackageQuantity unitCode="XCT">1.0000</ram:PackageQuantity>
-      </ram:SpecifiedLineTradeDelivery>
-      <ram:SpecifiedLineTradeSettlement>
-        <ram:ApplicableTradeTax>
-          <ram:TypeCode>VAT</ram:TypeCode>
-          <ram:CategoryCode>S</ram:CategoryCode>
-          <ram:RateApplicablePercent>7.00</ram:RateApplicablePercent>
-        </ram:ApplicableTradeTax>
-        <ram:SpecifiedTradeSettlementLineMonetarySummation>
-          <ram:LineTotalAmount>-2.90</ram:LineTotalAmount>
+          <ram:LineTotalAmount>20000</ram:LineTotalAmount>
         </ram:SpecifiedTradeSettlementLineMonetarySummation>
       </ram:SpecifiedLineTradeSettlement>
     </ram:IncludedSupplyChainTradeLineItem>
     <ram:ApplicableHeaderTradeAgreement>
       <ram:SellerTradeParty>
-        <ram:ID>549910</ram:ID>
-        <ram:GlobalID schemeID="0088">4333741000005</ram:GlobalID>
-        <ram:Name>MUSTERLIEFERANT GMBH</ram:Name>
+        <ram:GlobalID schemeID="0088">GLN4000000000</ram:GlobalID>
+        <ram:Name>Lieferant GmbH &amp; Co. KG</ram:Name>
         <ram:DefinedTradeContact>
+          <ram:PersonName>Georg Verkäufer</ram:PersonName>
           <ram:TelephoneUniversalCommunication>
-            <ram:CompleteNumber>+49 932 431 500</ram:CompleteNumber>
+            <ram:CompleteNumber>0160 123456789</ram:CompleteNumber>
           </ram:TelephoneUniversalCommunication>
           <ram:EmailURIUniversalCommunication>
-            <ram:URIID>max.mustermann@musterlieferant.de</ram:URIID>
+            <ram:URIID>georg.Verkäufer@lieferant.de</ram:URIID>
           </ram:EmailURIUniversalCommunication>
         </ram:DefinedTradeContact>
         <ram:PostalTradeAddress>
           <ram:PostcodeCode>98765</ram:PostcodeCode>
-          <ram:LineOne>BAHNHOFSTRASSE 99</ram:LineOne>
-          <ram:CityName>MUSTERHAUSEN</ram:CityName>
+          <ram:LineOne>Lieferanten-Str.12-17</ram:LineOne>
+          <ram:CityName>Lieferstadt</ram:CityName>
           <ram:CountryID>DE</ram:CountryID>
         </ram:PostalTradeAddress>
+        <ram:URIUniversalCommunication>
+          <ram:URIID schemeID="0088">info@lieferant.de</ram:URIID>
+        </ram:URIUniversalCommunication>
+        <ram:SpecifiedTaxRegistration>
+          <ram:ID schemeID="FC">78910/12345</ram:ID>
+        </ram:SpecifiedTaxRegistration>
         <ram:SpecifiedTaxRegistration>
           <ram:ID schemeID="VA">DE123456788</ram:ID>
         </ram:SpecifiedTaxRegistration>
       </ram:SellerTradeParty>
       <ram:BuyerTradeParty>
-        <ram:ID>009420</ram:ID>
-        <ram:GlobalID schemeID="0088">4304171000002</ram:GlobalID>
-        <ram:Name>MUSTER-KUNDE GMBH</ram:Name>
+        <ram:ID>21212121</ram:ID>
+        <ram:Name>Muster Maschinenbau GmbH</ram:Name>
         <ram:PostalTradeAddress>
-          <ram:PostcodeCode>12345</ram:PostcodeCode>
-          <ram:LineOne>KUNDENWEG 88</ram:LineOne>
-          <ram:CityName>KUNDENDORF</ram:CityName>
+          <ram:PostcodeCode>87654</ram:PostcodeCode>
+          <ram:LineOne>Käufer-Str. 12</ram:LineOne>
+          <ram:CityName>Käuferstadt</ram:CityName>
           <ram:CountryID>DE</ram:CountryID>
         </ram:PostalTradeAddress>
+        <ram:SpecifiedTaxRegistration>
+          <ram:ID schemeID="VA">DE136695976</ram:ID>
+        </ram:SpecifiedTaxRegistration>
       </ram:BuyerTradeParty>
-      <ram:BuyerOrderReferencedDocument>
-        <ram:IssuerAssignedID>B123456789</ram:IssuerAssignedID>
-      </ram:BuyerOrderReferencedDocument>
-      <ram:AdditionalReferencedDocument>
-        <ram:IssuerAssignedID>REKLA-2018-235</ram:IssuerAssignedID>
-        <ram:TypeCode>130</ram:TypeCode>
-      </ram:AdditionalReferencedDocument>
-      <ram:AdditionalReferencedDocument>
-        <ram:IssuerAssignedID>R87654321012345</ram:IssuerAssignedID>
-        <ram:TypeCode>130</ram:TypeCode>
-      </ram:AdditionalReferencedDocument>
     </ram:ApplicableHeaderTradeAgreement>
     <ram:ApplicableHeaderTradeDelivery>
       <ram:ShipToTradeParty>
-        <ram:GlobalID schemeID="0088">4304171088093</ram:GlobalID>
-        <ram:Name>MUSTER-MARKT</ram:Name>
-        <ram:DefinedTradeContact>
-          <ram:DepartmentName>8211</ram:DepartmentName>
-        </ram:DefinedTradeContact>
+        <ram:Name>Baustelle</ram:Name>
         <ram:PostalTradeAddress>
-          <ram:PostcodeCode>54321</ram:PostcodeCode>
-          <ram:LineOne>HAUPTSTRASSE 44</ram:LineOne>
-          <ram:CityName>LIEFERSTADT</ram:CityName>
+          <ram:PostcodeCode>98765</ram:PostcodeCode>
+          <ram:LineOne>Eichenpromenade 37</ram:LineOne>
+          <ram:LineTwo>Tor 1</ram:LineTwo>
+          <ram:CityName>Metallstadt</ram:CityName>
           <ram:CountryID>DE</ram:CountryID>
         </ram:PostalTradeAddress>
       </ram:ShipToTradeParty>
       <ram:ActualDeliverySupplyChainEvent>
         <ram:OccurrenceDateTime>
-          <udt:DateTimeString format="102">20251001</udt:DateTimeString>
+          <udt:DateTimeString format="102">20251031</udt:DateTimeString>
         </ram:OccurrenceDateTime>
       </ram:ActualDeliverySupplyChainEvent>
-      <ram:DeliveryNoteReferencedDocument>
-        <ram:IssuerAssignedID>L87654321012345</ram:IssuerAssignedID>
-      </ram:DeliveryNoteReferencedDocument>
     </ram:ApplicableHeaderTradeDelivery>
     <ram:ApplicableHeaderTradeSettlement>
       <ram:InvoiceCurrencyCode>EUR</ram:InvoiceCurrencyCode>
-      <ram:InvoiceeTradeParty>
-        <ram:ID>009420</ram:ID>
-        <ram:GlobalID schemeID="0088">4304171000002</ram:GlobalID>
-        <ram:Name>MUSTER-KUNDE GMBH</ram:Name>
-        <ram:PostalTradeAddress>
-          <ram:PostcodeCode>123456</ram:PostcodeCode>
-          <ram:LineOne>KUNDENWEG 88</ram:LineOne>
-          <ram:CityName>KUNDENDORF</ram:CityName>
-          <ram:CountryID>DE</ram:CountryID>
-        </ram:PostalTradeAddress>
-      </ram:InvoiceeTradeParty>
+      <ram:SpecifiedTradeSettlementPaymentMeans>
+        <ram:TypeCode>58</ram:TypeCode>
+        <ram:PayeePartyCreditorFinancialAccount>
+          <ram:IBANID>DE77 3707 0060 0321 9870 00</ram:IBANID>
+          <ram:AccountName>Lieferant GmbH &amp; Co. KG</ram:AccountName>
+        </ram:PayeePartyCreditorFinancialAccount>
+      </ram:SpecifiedTradeSettlementPaymentMeans>
       <ram:ApplicableTradeTax>
-        <ram:CalculatedAmount>-0.92</ram:CalculatedAmount>
+        <ram:CalculatedAmount>3800</ram:CalculatedAmount>
         <ram:TypeCode>VAT</ram:TypeCode>
-        <ram:BasisAmount>-4.85</ram:BasisAmount>
-        <ram:LineTotalBasisAmount>-5.00</ram:LineTotalBasisAmount>
-        <ram:AllowanceChargeBasisAmount>0.15</ram:AllowanceChargeBasisAmount>
+        <ram:BasisAmount>20000</ram:BasisAmount>
         <ram:CategoryCode>S</ram:CategoryCode>
-        <ram:RateApplicablePercent>19.00</ram:RateApplicablePercent>
+        <ram:RateApplicablePercent>19</ram:RateApplicablePercent>
       </ram:ApplicableTradeTax>
-      <ram:ApplicableTradeTax>
-        <ram:CalculatedAmount>-0.20</ram:CalculatedAmount>
-        <ram:TypeCode>VAT</ram:TypeCode>
-        <ram:BasisAmount>-2.82</ram:BasisAmount>
-        <ram:LineTotalBasisAmount>-2.90</ram:LineTotalBasisAmount>
-        <ram:AllowanceChargeBasisAmount>0.08</ram:AllowanceChargeBasisAmount>
-        <ram:CategoryCode>S</ram:CategoryCode>
-        <ram:RateApplicablePercent>7.00</ram:RateApplicablePercent>
-      </ram:ApplicableTradeTax>
-      <ram:SpecifiedTradeAllowanceCharge>
-        <ram:ChargeIndicator>
-          <udt:Indicator>false</udt:Indicator>
-        </ram:ChargeIndicator>
-        <ram:CalculationPercent>2.00</ram:CalculationPercent>
-        <ram:BasisAmount>-5.00</ram:BasisAmount>
-        <ram:ActualAmount>-0.10</ram:ActualAmount>
-        <ram:Reason>Rechnungsrabatt 1</ram:Reason>
-        <ram:CategoryTradeTax>
-          <ram:TypeCode>VAT</ram:TypeCode>
-          <ram:CategoryCode>S</ram:CategoryCode>
-          <ram:RateApplicablePercent>19.00</ram:RateApplicablePercent>
-        </ram:CategoryTradeTax>
-      </ram:SpecifiedTradeAllowanceCharge>
-      <ram:SpecifiedTradeAllowanceCharge>
-        <ram:ChargeIndicator>
-          <udt:Indicator>false</udt:Indicator>
-        </ram:ChargeIndicator>
-        <ram:CalculationPercent>2.00</ram:CalculationPercent>
-        <ram:BasisAmount>-2.90</ram:BasisAmount>
-        <ram:ActualAmount>-0.06</ram:ActualAmount>
-        <ram:Reason>Rechnungsrabatt 1</ram:Reason>
-        <ram:CategoryTradeTax>
-          <ram:TypeCode>VAT</ram:TypeCode>
-          <ram:CategoryCode>S</ram:CategoryCode>
-          <ram:RateApplicablePercent>7.00</ram:RateApplicablePercent>
-        </ram:CategoryTradeTax>
-      </ram:SpecifiedTradeAllowanceCharge>
-      <ram:SpecifiedTradeAllowanceCharge>
-        <ram:ChargeIndicator>
-          <udt:Indicator>false</udt:Indicator>
-        </ram:ChargeIndicator>
-        <ram:BasisAmount>-5.00</ram:BasisAmount>
-        <ram:ActualAmount>-0.05</ram:ActualAmount>
-        <ram:Reason>Rechnungsrabatt 2</ram:Reason>
-        <ram:CategoryTradeTax>
-          <ram:TypeCode>VAT</ram:TypeCode>
-          <ram:CategoryCode>S</ram:CategoryCode>
-          <ram:RateApplicablePercent>19.00</ram:RateApplicablePercent>
-        </ram:CategoryTradeTax>
-      </ram:SpecifiedTradeAllowanceCharge>
-      <ram:SpecifiedTradeAllowanceCharge>
-        <ram:ChargeIndicator>
-          <udt:Indicator>false</udt:Indicator>
-        </ram:ChargeIndicator>
-        <ram:BasisAmount>-2.90</ram:BasisAmount>
-        <ram:ActualAmount>-0.02</ram:ActualAmount>
-        <ram:Reason>Rechnungsrabatt 2</ram:Reason>
-        <ram:CategoryTradeTax>
-          <ram:TypeCode>VAT</ram:TypeCode>
-          <ram:CategoryCode>S</ram:CategoryCode>
-          <ram:RateApplicablePercent>7.00</ram:RateApplicablePercent>
-        </ram:CategoryTradeTax>
-      </ram:SpecifiedTradeAllowanceCharge>
+      <ram:SpecifiedTradePaymentTerms>
+        <ram:DueDateDateTime>
+          <udt:DateTimeString format="102">20251119</udt:DateTimeString>
+        </ram:DueDateDateTime>
+      </ram:SpecifiedTradePaymentTerms>
       <ram:SpecifiedTradeSettlementHeaderMonetarySummation>
-        <ram:LineTotalAmount>-7.90</ram:LineTotalAmount>
-        <ram:ChargeTotalAmount>0.00</ram:ChargeTotalAmount>
-        <ram:AllowanceTotalAmount>-0.23</ram:AllowanceTotalAmount>
-        <ram:TaxBasisTotalAmount>-7.67</ram:TaxBasisTotalAmount>
-        <ram:TaxTotalAmount currencyID="EUR">-1.12</ram:TaxTotalAmount>
-        <ram:GrandTotalAmount>-8.79</ram:GrandTotalAmount>
-        <ram:TotalPrepaidAmount>0.00</ram:TotalPrepaidAmount>
-        <ram:DuePayableAmount>-8.79</ram:DuePayableAmount>
+        <ram:LineTotalAmount>20000.00</ram:LineTotalAmount>
+        <ram:TaxBasisTotalAmount>20000.00</ram:TaxBasisTotalAmount>
+        <ram:TaxTotalAmount currencyID="EUR">3800.00</ram:TaxTotalAmount>
+        <ram:GrandTotalAmount>23800.00</ram:GrandTotalAmount>
+        <ram:TotalPrepaidAmount>11900.00</ram:TotalPrepaidAmount>
+        <ram:DuePayableAmount>11900.00</ram:DuePayableAmount>
       </ram:SpecifiedTradeSettlementHeaderMonetarySummation>
+      <ram:SpecifiedAdvancePayment>
+        <ram:PaidAmount>2975.00</ram:PaidAmount>
+        <ram:FormattedReceivedDateTime>
+          <qdt:DateTimeString format="102">20250607</qdt:DateTimeString>
+        </ram:FormattedReceivedDateTime>
+        <ram:IncludedTradeTax>
+          <ram:CalculatedAmount>1900</ram:CalculatedAmount>
+          <ram:TypeCode>VAT</ram:TypeCode>
+          <ram:CategoryCode>S</ram:CategoryCode>
+          <ram:RateApplicablePercent>19</ram:RateApplicablePercent>
+        </ram:IncludedTradeTax>
+        <ram:InvoiceSpecifiedReferencedDocument>
+          <ram:IssuerAssignedID>R202506-01</ram:IssuerAssignedID>
+          <ram:FormattedIssueDateTime>
+            <qdt:DateTimeString format="102">20250601</qdt:DateTimeString>
+          </ram:FormattedIssueDateTime>
+        </ram:InvoiceSpecifiedReferencedDocument>
+      </ram:SpecifiedAdvancePayment>
+      <ram:SpecifiedAdvancePayment>
+        <ram:PaidAmount>2975.00</ram:PaidAmount>
+        <ram:FormattedReceivedDateTime>
+          <qdt:DateTimeString format="102">20250615</qdt:DateTimeString>
+        </ram:FormattedReceivedDateTime>
+        <ram:IncludedTradeTax>
+          <ram:CalculatedAmount>1900</ram:CalculatedAmount>
+          <ram:TypeCode>VAT</ram:TypeCode>
+          <ram:CategoryCode>S</ram:CategoryCode>
+          <ram:RateApplicablePercent>19</ram:RateApplicablePercent>
+        </ram:IncludedTradeTax>
+        <ram:InvoiceSpecifiedReferencedDocument>
+          <ram:IssuerAssignedID>R202507-01</ram:IssuerAssignedID>
+          <ram:FormattedIssueDateTime>
+            <qdt:DateTimeString format="102">20250701</qdt:DateTimeString>
+          </ram:FormattedIssueDateTime>
+        </ram:InvoiceSpecifiedReferencedDocument>
+      </ram:SpecifiedAdvancePayment>
+      <ram:SpecifiedAdvancePayment>
+        <ram:PaidAmount>2975.00</ram:PaidAmount>
+        <ram:FormattedReceivedDateTime>
+          <qdt:DateTimeString format="102">20250812</qdt:DateTimeString>
+        </ram:FormattedReceivedDateTime>
+        <ram:IncludedTradeTax>
+          <ram:CalculatedAmount>1900</ram:CalculatedAmount>
+          <ram:TypeCode>VAT</ram:TypeCode>
+          <ram:CategoryCode>S</ram:CategoryCode>
+          <ram:RateApplicablePercent>19</ram:RateApplicablePercent>
+        </ram:IncludedTradeTax>
+        <ram:InvoiceSpecifiedReferencedDocument>
+          <ram:IssuerAssignedID>R202508-01</ram:IssuerAssignedID>
+          <ram:FormattedIssueDateTime>
+            <qdt:DateTimeString format="102">20250801</qdt:DateTimeString>
+          </ram:FormattedIssueDateTime>
+        </ram:InvoiceSpecifiedReferencedDocument>
+      </ram:SpecifiedAdvancePayment>
+      <ram:SpecifiedAdvancePayment>
+        <ram:PaidAmount>2975.00</ram:PaidAmount>
+        <ram:FormattedReceivedDateTime>
+          <qdt:DateTimeString format="102">20250916</qdt:DateTimeString>
+        </ram:FormattedReceivedDateTime>
+        <ram:IncludedTradeTax>
+          <ram:CalculatedAmount>1900</ram:CalculatedAmount>
+          <ram:TypeCode>VAT</ram:TypeCode>
+          <ram:CategoryCode>S</ram:CategoryCode>
+          <ram:RateApplicablePercent>19</ram:RateApplicablePercent>
+        </ram:IncludedTradeTax>
+        <ram:InvoiceSpecifiedReferencedDocument>
+          <ram:IssuerAssignedID>R202509-01</ram:IssuerAssignedID>
+          <ram:FormattedIssueDateTime>
+            <qdt:DateTimeString format="102">20250902</qdt:DateTimeString>
+          </ram:FormattedIssueDateTime>
+        </ram:InvoiceSpecifiedReferencedDocument>
+      </ram:SpecifiedAdvancePayment>
     </ram:ApplicableHeaderTradeSettlement>
   </rsm:SupplyChainTradeTransaction>
 </rsm:CrossIndustryInvoice>
