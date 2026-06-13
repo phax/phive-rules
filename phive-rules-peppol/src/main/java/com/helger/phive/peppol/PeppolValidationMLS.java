@@ -62,14 +62,14 @@ public final class PeppolValidationMLS
     // v1.0.0
     {
       VesXmlBuilder.builder ()
-                       .vesID (VID_OPENPEPPOL_MLS_V100)
-                       .displayNamePrefix ("Peppol Message Level Status ")
-                       .notDeprecated ()
-                       .addXSD (UBL21Marshaller.getAllApplicationResponseXSDs ())
-                       .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (BASE_PATH_SCH +
-                                                                                                    "1.0.0/xslt/peppol-mls-1.0.0.xslt",
-                                                                                                    _getCL ())))
-                       .registerInto (aRegistry);
+                   .vesID (VID_OPENPEPPOL_MLS_V100)
+                   .displayNamePrefix ("Peppol Message Level Status ")
+                   .notDeprecated ()
+                   .addXSD (UBL21Marshaller.getAllApplicationResponseXSDs ())
+                   .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (BASE_PATH_SCH +
+                                                                                                "1.0.0/xslt/peppol-mls-1.0.0.xslt",
+                                                                                                _getCL ())))
+                   .registerInto (aRegistry);
     }
   }
 }

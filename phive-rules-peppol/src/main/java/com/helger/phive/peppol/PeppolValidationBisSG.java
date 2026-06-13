@@ -118,23 +118,23 @@ public final class PeppolValidationBisSG
       final String sAkaVersionBilling = " (aka BIS 3.0.11)";
 
       VesXmlBuilder.builder ()
-                       .vesID (VID_OPENPEPPOL_BIS3_SG_UBL_INVOICE_2023_7)
-                       .displayName ("SG Peppol BIS3 Invoice (UBL) 2023.7" + sAkaVersionBilling)
-                       .deprecated ()
-                       .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
-                       .addSchematron (PhiveRulesHelper.createXSLT (BIS3_BILLING_SG_CEN_2023_07, aNSCtxInvoice))
-                       .addSchematron (PhiveRulesHelper.createXSLT (BIS3_BILLING_SG_PEPPOL_2023_07, aNSCtxInvoice))
-                       .addSchematron (PhiveRulesHelper.createXSLT (BIS3_BILLING_SG_2023_07, aNSCtxInvoice))
-                       .registerInto (aRegistry);
+                   .vesID (VID_OPENPEPPOL_BIS3_SG_UBL_INVOICE_2023_7)
+                   .displayName ("SG Peppol BIS3 Invoice (UBL) 2023.7" + sAkaVersionBilling)
+                   .deprecated ()
+                   .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
+                   .addSchematron (PhiveRulesHelper.createXSLT (BIS3_BILLING_SG_CEN_2023_07, aNSCtxInvoice))
+                   .addSchematron (PhiveRulesHelper.createXSLT (BIS3_BILLING_SG_PEPPOL_2023_07, aNSCtxInvoice))
+                   .addSchematron (PhiveRulesHelper.createXSLT (BIS3_BILLING_SG_2023_07, aNSCtxInvoice))
+                   .registerInto (aRegistry);
       VesXmlBuilder.builder ()
-                       .vesID (VID_OPENPEPPOL_BIS3_SG_UBL_CREDIT_NOTE_2023_7)
-                       .displayName ("SG Peppol BIS3 Credit Note (UBL) 2023.7" + sAkaVersionBilling)
-                       .deprecated ()
-                       .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
-                       .addSchematron (PhiveRulesHelper.createXSLT (BIS3_BILLING_SG_CEN_2023_07, aNSCtxCreditNote))
-                       .addSchematron (PhiveRulesHelper.createXSLT (BIS3_BILLING_SG_PEPPOL_2023_07, aNSCtxCreditNote))
-                       .addSchematron (PhiveRulesHelper.createXSLT (BIS3_BILLING_SG_2023_07, aNSCtxCreditNote))
-                       .registerInto (aRegistry);
+                   .vesID (VID_OPENPEPPOL_BIS3_SG_UBL_CREDIT_NOTE_2023_7)
+                   .displayName ("SG Peppol BIS3 Credit Note (UBL) 2023.7" + sAkaVersionBilling)
+                   .deprecated ()
+                   .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
+                   .addSchematron (PhiveRulesHelper.createXSLT (BIS3_BILLING_SG_CEN_2023_07, aNSCtxCreditNote))
+                   .addSchematron (PhiveRulesHelper.createXSLT (BIS3_BILLING_SG_PEPPOL_2023_07, aNSCtxCreditNote))
+                   .addSchematron (PhiveRulesHelper.createXSLT (BIS3_BILLING_SG_2023_07, aNSCtxCreditNote))
+                   .registerInto (aRegistry);
     }
 
     // 2023.12
@@ -151,23 +151,23 @@ public final class PeppolValidationBisSG
       final String sAkaVersionBilling = " (aka BIS 3.0.12)";
 
       VesXmlBuilder.builder ()
-                       .vesID (VID_OPENPEPPOL_BIS3_SG_UBL_INVOICE_2023_12)
-                       .displayName ("SG Peppol BIS3 Invoice (UBL) 2023.12" + sAkaVersionBilling)
-                       .deprecated ()
-                       .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
-                       .addSchematron (PhiveRulesHelper.createXSLT (BIS3_BILLING_SG_CEN_2023_12, aNSCtxInvoice))
-                       .addSchematron (PhiveRulesHelper.createXSLT (BIS3_BILLING_SG_PEPPOL_2023_12, aNSCtxInvoice))
-                       .addSchematron (PhiveRulesHelper.createXSLT (BIS3_BILLING_SG_2023_12, aNSCtxInvoice))
-                       .registerInto (aRegistry);
+                   .vesID (VID_OPENPEPPOL_BIS3_SG_UBL_INVOICE_2023_12)
+                   .displayName ("SG Peppol BIS3 Invoice (UBL) 2023.12" + sAkaVersionBilling)
+                   .deprecated ()
+                   .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
+                   .addSchematron (PhiveRulesHelper.createXSLT (BIS3_BILLING_SG_CEN_2023_12, aNSCtxInvoice))
+                   .addSchematron (PhiveRulesHelper.createXSLT (BIS3_BILLING_SG_PEPPOL_2023_12, aNSCtxInvoice))
+                   .addSchematron (PhiveRulesHelper.createXSLT (BIS3_BILLING_SG_2023_12, aNSCtxInvoice))
+                   .registerInto (aRegistry);
       VesXmlBuilder.builder ()
-                       .vesID (VID_OPENPEPPOL_BIS3_SG_UBL_CREDIT_NOTE_2023_12)
-                       .displayName ("SG Peppol BIS3 Credit Note (UBL) 2023.12" + sAkaVersionBilling)
-                       .deprecated ()
-                       .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
-                       .addSchematron (PhiveRulesHelper.createXSLT (BIS3_BILLING_SG_CEN_2023_12, aNSCtxCreditNote))
-                       .addSchematron (PhiveRulesHelper.createXSLT (BIS3_BILLING_SG_PEPPOL_2023_12, aNSCtxCreditNote))
-                       .addSchematron (PhiveRulesHelper.createXSLT (BIS3_BILLING_SG_2023_12, aNSCtxCreditNote))
-                       .registerInto (aRegistry);
+                   .vesID (VID_OPENPEPPOL_BIS3_SG_UBL_CREDIT_NOTE_2023_12)
+                   .displayName ("SG Peppol BIS3 Credit Note (UBL) 2023.12" + sAkaVersionBilling)
+                   .deprecated ()
+                   .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
+                   .addSchematron (PhiveRulesHelper.createXSLT (BIS3_BILLING_SG_CEN_2023_12, aNSCtxCreditNote))
+                   .addSchematron (PhiveRulesHelper.createXSLT (BIS3_BILLING_SG_PEPPOL_2023_12, aNSCtxCreditNote))
+                   .addSchematron (PhiveRulesHelper.createXSLT (BIS3_BILLING_SG_2023_12, aNSCtxCreditNote))
+                   .registerInto (aRegistry);
     }
 
     // 2024.12
@@ -184,38 +184,38 @@ public final class PeppolValidationBisSG
       final String sAkaVersionBilling = " (aka BIS 3.0.14)";
 
       VesXmlBuilder.builder ()
-                       .vesID (VID_OPENPEPPOL_BIS3_SG_UBL_INVOICE_2024_12)
-                       .displayName ("SG Peppol BIS3 Invoice (UBL) 2024.12" + sAkaVersionBilling)
-                       .notDeprecated ()
-                       .validFrom (VALID_PER_UTC_2014_12)
-                       .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
-                       .addSchematron (PhiveRulesHelper.createXSLT (BIS3_BILLING_SG_CEN_2024_12, aNSCtxInvoice))
-                       .addSchematron (PhiveRulesHelper.createXSLT (BIS3_BILLING_SG_PEPPOL_2024_12, aNSCtxInvoice))
-                       .addSchematron (PhiveRulesHelper.createXSLT (BIS3_BILLING_SG_2024_12, aNSCtxInvoice))
-                       .registerInto (aRegistry);
+                   .vesID (VID_OPENPEPPOL_BIS3_SG_UBL_INVOICE_2024_12)
+                   .displayName ("SG Peppol BIS3 Invoice (UBL) 2024.12" + sAkaVersionBilling)
+                   .notDeprecated ()
+                   .validFrom (VALID_PER_UTC_2014_12)
+                   .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
+                   .addSchematron (PhiveRulesHelper.createXSLT (BIS3_BILLING_SG_CEN_2024_12, aNSCtxInvoice))
+                   .addSchematron (PhiveRulesHelper.createXSLT (BIS3_BILLING_SG_PEPPOL_2024_12, aNSCtxInvoice))
+                   .addSchematron (PhiveRulesHelper.createXSLT (BIS3_BILLING_SG_2024_12, aNSCtxInvoice))
+                   .registerInto (aRegistry);
       VesXmlBuilder.builder ()
-                       .vesID (VID_OPENPEPPOL_BIS3_SG_UBL_CREDIT_NOTE_2024_12)
-                       .displayName ("SG Peppol BIS3 Credit Note (UBL) 2024.12" + sAkaVersionBilling)
-                       .notDeprecated ()
-                       .validFrom (VALID_PER_UTC_2014_12)
-                       .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
-                       .addSchematron (PhiveRulesHelper.createXSLT (BIS3_BILLING_SG_CEN_2024_12, aNSCtxCreditNote))
-                       .addSchematron (PhiveRulesHelper.createXSLT (BIS3_BILLING_SG_PEPPOL_2024_12, aNSCtxCreditNote))
-                       .addSchematron (PhiveRulesHelper.createXSLT (BIS3_BILLING_SG_2024_12, aNSCtxCreditNote))
-                       .registerInto (aRegistry);
+                   .vesID (VID_OPENPEPPOL_BIS3_SG_UBL_CREDIT_NOTE_2024_12)
+                   .displayName ("SG Peppol BIS3 Credit Note (UBL) 2024.12" + sAkaVersionBilling)
+                   .notDeprecated ()
+                   .validFrom (VALID_PER_UTC_2014_12)
+                   .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
+                   .addSchematron (PhiveRulesHelper.createXSLT (BIS3_BILLING_SG_CEN_2024_12, aNSCtxCreditNote))
+                   .addSchematron (PhiveRulesHelper.createXSLT (BIS3_BILLING_SG_PEPPOL_2024_12, aNSCtxCreditNote))
+                   .addSchematron (PhiveRulesHelper.createXSLT (BIS3_BILLING_SG_2024_12, aNSCtxCreditNote))
+                   .registerInto (aRegistry);
     }
 
     // Order Balance 1.0
     {
       VesXmlBuilder.builder ()
-                       .vesID (VID_PEPPOL_SG_ORDER_BALANCE_1_0)
-                       .displayName ("SG Peppol Order Balance 1.0")
-                       .notDeprecated ()
-                       .addXSD (UBL21Marshaller.getAllOrderXSDs ())
-                       .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (BASE_PATH +
-                                                                                           "ob-1.0/xslt/SGBIS-TOB.xslt",
-                                                                                           _getCL ()), aNSCtxOrder))
-                       .registerInto (aRegistry);
+                   .vesID (VID_PEPPOL_SG_ORDER_BALANCE_1_0)
+                   .displayName ("SG Peppol Order Balance 1.0")
+                   .notDeprecated ()
+                   .addXSD (UBL21Marshaller.getAllOrderXSDs ())
+                   .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (BASE_PATH +
+                                                                                       "ob-1.0/xslt/SGBIS-TOB.xslt",
+                                                                                       _getCL ()), aNSCtxOrder))
+                   .registerInto (aRegistry);
     }
   }
 }

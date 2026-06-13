@@ -72,11 +72,11 @@ public final class PeppolValidationDirectory
                                                                     "peppol-directory-business-card-20160112.xsd",
                                                                     _getCL ());
       VesXmlBuilder.builder ()
-                       .vesID (VID_OPENPEPPOL_BUSINESS_CARD_V1)
-                       .displayName ("Peppol Directory BusinessCard v1")
-                       .deprecated ()
-                       .addXSD (DIRECTORY_V1)
-                       .registerInto (aRegistry);
+                   .vesID (VID_OPENPEPPOL_BUSINESS_CARD_V1)
+                   .displayName ("Peppol Directory BusinessCard v1")
+                   .deprecated ()
+                   .addXSD (DIRECTORY_V1)
+                   .registerInto (aRegistry);
     }
 
     // v2
@@ -85,11 +85,11 @@ public final class PeppolValidationDirectory
                                                                     "peppol-directory-business-card-20161123.xsd",
                                                                     _getCL ());
       VesXmlBuilder.builder ()
-                       .vesID (VID_OPENPEPPOL_BUSINESS_CARD_V2)
-                       .displayName ("Peppol Directory BusinessCard v2")
-                       .deprecated ()
-                       .addXSD (DIRECTORY_V2)
-                       .registerInto (aRegistry);
+                   .vesID (VID_OPENPEPPOL_BUSINESS_CARD_V2)
+                   .displayName ("Peppol Directory BusinessCard v2")
+                   .deprecated ()
+                   .addXSD (DIRECTORY_V2)
+                   .registerInto (aRegistry);
     }
 
     // v3
@@ -98,11 +98,11 @@ public final class PeppolValidationDirectory
                                                                     "peppol-directory-business-card-20180621.xsd",
                                                                     _getCL ());
       VesXmlBuilder.builder ()
-                       .vesID (VID_OPENPEPPOL_BUSINESS_CARD_V3)
-                       .displayName ("Peppol Directory BusinessCard v3")
-                       .notDeprecated ()
-                       .addXSD (DIRECTORY_V3)
-                       .registerInto (aRegistry);
+                   .vesID (VID_OPENPEPPOL_BUSINESS_CARD_V3)
+                   .displayName ("Peppol Directory BusinessCard v3")
+                   .notDeprecated ()
+                   .addXSD (DIRECTORY_V3)
+                   .registerInto (aRegistry);
     }
   }
 }

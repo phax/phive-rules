@@ -60,11 +60,11 @@ public final class PeppolValidationPintEU
 
   // 1.1.1 from 2026-06-09
   public static final DVRCoordinate VID_OPENPEPPOL_EU_PINT_INVOICE_2026_6 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                                "invoice",
-                                                                                                                "2026.6");
+                                                                                                               "invoice",
+                                                                                                               "2026.6");
   public static final DVRCoordinate VID_OPENPEPPOL_EU_PINT_CREDIT_NOTE_2026_6 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                                    "creditnote",
-                                                                                                                    "2026.6");
+                                                                                                                   "creditnote",
+                                                                                                                   "2026.6");
 
   private PeppolValidationPintEU ()
   {}
@@ -75,7 +75,6 @@ public final class PeppolValidationPintEU
     return PeppolValidationPintEU.class.getClassLoader ();
   }
 
-  @SuppressWarnings ("deprecation")
   public static void init (@NonNull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
   {
     ValueEnforcer.notNull (aRegistry, "Registry");
@@ -93,38 +92,35 @@ public final class PeppolValidationPintEU
       final String sBaseBilling = sBase + "";
       final String sAkaVersion = " (aka 1.0.0)";
       VesXmlBuilder.builder ()
-                       .vesID (VID_OPENPEPPOL_EU_PINT_INVOICE_2025_10)
-                       .displayName ("Peppol PINT EU Invoice (UBL) 2025-10" + sAkaVersion)
-                       .deprecated ()
-                       .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
-                       .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (sBaseBilling +
-                                                                                           "PINT-UBL-validation-preprocessed.xslt",
-                                                                                           _getCL ()), aNSCtxInvoice))
-                       .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (sBaseBilling +
-                                                                                           "PINT-EN16931-aligned-rules.xslt",
-                                                                                           _getCL ()), aNSCtxInvoice))
-                       .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (sBaseBilling +
-                                                                                           "PINT-jurisdiction-aligned-rules.xslt",
-                                                                                           _getCL ()), aNSCtxInvoice))
-                       .registerInto (aRegistry);
+                   .vesID (VID_OPENPEPPOL_EU_PINT_INVOICE_2025_10)
+                   .displayName ("Peppol PINT EU Invoice (UBL) 2025-10" + sAkaVersion)
+                   .deprecated ()
+                   .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
+                   .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (sBaseBilling +
+                                                                                       "PINT-UBL-validation-preprocessed.xslt",
+                                                                                       _getCL ()), aNSCtxInvoice))
+                   .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (sBaseBilling +
+                                                                                       "PINT-EN16931-aligned-rules.xslt",
+                                                                                       _getCL ()), aNSCtxInvoice))
+                   .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (sBaseBilling +
+                                                                                       "PINT-jurisdiction-aligned-rules.xslt",
+                                                                                       _getCL ()), aNSCtxInvoice))
+                   .registerInto (aRegistry);
       VesXmlBuilder.builder ()
-                       .vesID (VID_OPENPEPPOL_EU_PINT_CREDIT_NOTE_2025_10)
-                       .displayName ("Peppol PINT EU Credit Note (UBL) 2025-10" + sAkaVersion)
-                       .deprecated ()
-                       .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
-                       .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (sBaseBilling +
-                                                                                           "PINT-UBL-validation-preprocessed.xslt",
-                                                                                           _getCL ()),
-                                                                    aNSCtxCreditNote))
-                       .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (sBaseBilling +
-                                                                                           "PINT-EN16931-aligned-rules.xslt",
-                                                                                           _getCL ()),
-                                                                    aNSCtxCreditNote))
-                       .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (sBaseBilling +
-                                                                                           "PINT-jurisdiction-aligned-rules.xslt",
-                                                                                           _getCL ()),
-                                                                    aNSCtxCreditNote))
-                       .registerInto (aRegistry);
+                   .vesID (VID_OPENPEPPOL_EU_PINT_CREDIT_NOTE_2025_10)
+                   .displayName ("Peppol PINT EU Credit Note (UBL) 2025-10" + sAkaVersion)
+                   .deprecated ()
+                   .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
+                   .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (sBaseBilling +
+                                                                                       "PINT-UBL-validation-preprocessed.xslt",
+                                                                                       _getCL ()), aNSCtxCreditNote))
+                   .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (sBaseBilling +
+                                                                                       "PINT-EN16931-aligned-rules.xslt",
+                                                                                       _getCL ()), aNSCtxCreditNote))
+                   .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (sBaseBilling +
+                                                                                       "PINT-jurisdiction-aligned-rules.xslt",
+                                                                                       _getCL ()), aNSCtxCreditNote))
+                   .registerInto (aRegistry);
     }
 
     // 2025.11 (aka 1.0.1)
@@ -133,38 +129,35 @@ public final class PeppolValidationPintEU
       final String sBaseBilling = sBase + "";
       final String sAkaVersion = " (aka 1.0.1)";
       VesXmlBuilder.builder ()
-                       .vesID (VID_OPENPEPPOL_EU_PINT_INVOICE_2025_11)
-                       .displayName ("Peppol PINT EU Invoice (UBL) 2025-11" + sAkaVersion)
-                       .notDeprecated ()
-                       .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
-                       .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (sBaseBilling +
-                                                                                           "PINT-UBL-validation-preprocessed.xslt",
-                                                                                           _getCL ()), aNSCtxInvoice))
-                       .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (sBaseBilling +
-                                                                                           "PINT-EN16931-aligned-rules.xslt",
-                                                                                           _getCL ()), aNSCtxInvoice))
-                       .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (sBaseBilling +
-                                                                                           "PINT-jurisdiction-aligned-rules.xslt",
-                                                                                           _getCL ()), aNSCtxInvoice))
-                       .registerInto (aRegistry);
+                   .vesID (VID_OPENPEPPOL_EU_PINT_INVOICE_2025_11)
+                   .displayName ("Peppol PINT EU Invoice (UBL) 2025-11" + sAkaVersion)
+                   .notDeprecated ()
+                   .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
+                   .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (sBaseBilling +
+                                                                                       "PINT-UBL-validation-preprocessed.xslt",
+                                                                                       _getCL ()), aNSCtxInvoice))
+                   .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (sBaseBilling +
+                                                                                       "PINT-EN16931-aligned-rules.xslt",
+                                                                                       _getCL ()), aNSCtxInvoice))
+                   .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (sBaseBilling +
+                                                                                       "PINT-jurisdiction-aligned-rules.xslt",
+                                                                                       _getCL ()), aNSCtxInvoice))
+                   .registerInto (aRegistry);
       VesXmlBuilder.builder ()
-                       .vesID (VID_OPENPEPPOL_EU_PINT_CREDIT_NOTE_2025_11)
-                       .displayName ("Peppol PINT EU Credit Note (UBL) 2025-11" + sAkaVersion)
-                       .notDeprecated ()
-                       .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
-                       .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (sBaseBilling +
-                                                                                           "PINT-UBL-validation-preprocessed.xslt",
-                                                                                           _getCL ()),
-                                                                    aNSCtxCreditNote))
-                       .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (sBaseBilling +
-                                                                                           "PINT-EN16931-aligned-rules.xslt",
-                                                                                           _getCL ()),
-                                                                    aNSCtxCreditNote))
-                       .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (sBaseBilling +
-                                                                                           "PINT-jurisdiction-aligned-rules.xslt",
-                                                                                           _getCL ()),
-                                                                    aNSCtxCreditNote))
-                       .registerInto (aRegistry);
+                   .vesID (VID_OPENPEPPOL_EU_PINT_CREDIT_NOTE_2025_11)
+                   .displayName ("Peppol PINT EU Credit Note (UBL) 2025-11" + sAkaVersion)
+                   .notDeprecated ()
+                   .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
+                   .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (sBaseBilling +
+                                                                                       "PINT-UBL-validation-preprocessed.xslt",
+                                                                                       _getCL ()), aNSCtxCreditNote))
+                   .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (sBaseBilling +
+                                                                                       "PINT-EN16931-aligned-rules.xslt",
+                                                                                       _getCL ()), aNSCtxCreditNote))
+                   .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (sBaseBilling +
+                                                                                       "PINT-jurisdiction-aligned-rules.xslt",
+                                                                                       _getCL ()), aNSCtxCreditNote))
+                   .registerInto (aRegistry);
     }
 
     // 2026.6 (aka 1.1.1)
@@ -173,38 +166,35 @@ public final class PeppolValidationPintEU
       final String sBaseBilling = sBase + "";
       final String sAkaVersion = " (aka 1.1.1)";
       VesXmlBuilder.builder ()
-                       .vesID (VID_OPENPEPPOL_EU_PINT_INVOICE_2026_6)
-                       .displayName ("Peppol PINT EU Invoice (UBL) 2026-6" + sAkaVersion)
-                       .notDeprecated ()
-                       .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
-                       .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (sBaseBilling +
-                                                                                           "PINT-UBL-validation-preprocessed.xslt",
-                                                                                           _getCL ()), aNSCtxInvoice))
-                       .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (sBaseBilling +
-                                                                                           "PINT-EN16931-aligned-rules.xslt",
-                                                                                           _getCL ()), aNSCtxInvoice))
-                       .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (sBaseBilling +
-                                                                                           "PINT-jurisdiction-aligned-rules.xslt",
-                                                                                           _getCL ()), aNSCtxInvoice))
-                       .registerInto (aRegistry);
+                   .vesID (VID_OPENPEPPOL_EU_PINT_INVOICE_2026_6)
+                   .displayName ("Peppol PINT EU Invoice (UBL) 2026-6" + sAkaVersion)
+                   .notDeprecated ()
+                   .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
+                   .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (sBaseBilling +
+                                                                                       "PINT-UBL-validation-preprocessed.xslt",
+                                                                                       _getCL ()), aNSCtxInvoice))
+                   .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (sBaseBilling +
+                                                                                       "PINT-EN16931-aligned-rules.xslt",
+                                                                                       _getCL ()), aNSCtxInvoice))
+                   .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (sBaseBilling +
+                                                                                       "PINT-jurisdiction-aligned-rules.xslt",
+                                                                                       _getCL ()), aNSCtxInvoice))
+                   .registerInto (aRegistry);
       VesXmlBuilder.builder ()
-                       .vesID (VID_OPENPEPPOL_EU_PINT_CREDIT_NOTE_2026_6)
-                       .displayName ("Peppol PINT EU Credit Note (UBL) 2026-6" + sAkaVersion)
-                       .notDeprecated ()
-                       .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
-                       .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (sBaseBilling +
-                                                                                           "PINT-UBL-validation-preprocessed.xslt",
-                                                                                           _getCL ()),
-                                                                    aNSCtxCreditNote))
-                       .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (sBaseBilling +
-                                                                                           "PINT-EN16931-aligned-rules.xslt",
-                                                                                           _getCL ()),
-                                                                    aNSCtxCreditNote))
-                       .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (sBaseBilling +
-                                                                                           "PINT-jurisdiction-aligned-rules.xslt",
-                                                                                           _getCL ()),
-                                                                    aNSCtxCreditNote))
-                       .registerInto (aRegistry);
+                   .vesID (VID_OPENPEPPOL_EU_PINT_CREDIT_NOTE_2026_6)
+                   .displayName ("Peppol PINT EU Credit Note (UBL) 2026-6" + sAkaVersion)
+                   .notDeprecated ()
+                   .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
+                   .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (sBaseBilling +
+                                                                                       "PINT-UBL-validation-preprocessed.xslt",
+                                                                                       _getCL ()), aNSCtxCreditNote))
+                   .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (sBaseBilling +
+                                                                                       "PINT-EN16931-aligned-rules.xslt",
+                                                                                       _getCL ()), aNSCtxCreditNote))
+                   .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (sBaseBilling +
+                                                                                       "PINT-jurisdiction-aligned-rules.xslt",
+                                                                                       _getCL ()), aNSCtxCreditNote))
+                   .registerInto (aRegistry);
     }
   }
 }

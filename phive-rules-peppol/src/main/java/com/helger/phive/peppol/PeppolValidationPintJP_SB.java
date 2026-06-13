@@ -130,19 +130,19 @@ public final class PeppolValidationPintJP_SB
                                                              "1.0.1/xslt/PINT-jurisdiction-aligned-rules.xslt",
                                                              _getCL ());
       VesXmlBuilder.builder ()
-                       .vesID (VID_OPENPEPPOL_JP_PINT_SB_INVOICE_1_0_1)
-                       .displayName ("Peppol PINT Japan Self Billing Invoice (UBL) 1.0.1")
-                       .deprecated ()
-                       .addSchematron (PhiveRulesHelper.createXSLT (aCPR1, aNSCtxInvoice))
-                       .addSchematron (PhiveRulesHelper.createXSLT (aCPR2, aNSCtxInvoice))
-                       .registerInto (aRegistry);
+                   .vesID (VID_OPENPEPPOL_JP_PINT_SB_INVOICE_1_0_1)
+                   .displayName ("Peppol PINT Japan Self Billing Invoice (UBL) 1.0.1")
+                   .deprecated ()
+                   .addSchematron (PhiveRulesHelper.createXSLT (aCPR1, aNSCtxInvoice))
+                   .addSchematron (PhiveRulesHelper.createXSLT (aCPR2, aNSCtxInvoice))
+                   .registerInto (aRegistry);
       VesXmlBuilder.builder ()
-                       .vesID (VID_OPENPEPPOL_JP_PINT_SB_CREDIT_NOTE_1_0_1)
-                       .displayName ("Peppol PINT Japan Self Billing Credit Note (UBL) 1.0.1")
-                       .deprecated ()
-                       .addSchematron (PhiveRulesHelper.createXSLT (aCPR1, aNSCtxCreditNote))
-                       .addSchematron (PhiveRulesHelper.createXSLT (aCPR2, aNSCtxCreditNote))
-                       .registerInto (aRegistry);
+                   .vesID (VID_OPENPEPPOL_JP_PINT_SB_CREDIT_NOTE_1_0_1)
+                   .displayName ("Peppol PINT Japan Self Billing Credit Note (UBL) 1.0.1")
+                   .deprecated ()
+                   .addSchematron (PhiveRulesHelper.createXSLT (aCPR1, aNSCtxCreditNote))
+                   .addSchematron (PhiveRulesHelper.createXSLT (aCPR2, aNSCtxCreditNote))
+                   .registerInto (aRegistry);
     }
 
     // 1.1.0
@@ -154,21 +154,21 @@ public final class PeppolValidationPintJP_SB
                                                              "1.1.0/xslt/PINT-jurisdiction-aligned-rules.xslt",
                                                              _getCL ());
       VesXmlBuilder.builder ()
-                       .vesID (VID_OPENPEPPOL_JP_PINT_SB_INVOICE_1_1_0)
-                       .displayName ("Peppol PINT Japan Self Billing Invoice (UBL) 1.1.0")
-                       .deprecated ()
-                       .validFrom (V1_1_0_VALID_PER_UTC)
-                       .addSchematron (PhiveRulesHelper.createXSLT (aCPR1, aNSCtxInvoice))
-                       .addSchematron (PhiveRulesHelper.createXSLT (aCPR2, aNSCtxInvoice))
-                       .registerInto (aRegistry);
+                   .vesID (VID_OPENPEPPOL_JP_PINT_SB_INVOICE_1_1_0)
+                   .displayName ("Peppol PINT Japan Self Billing Invoice (UBL) 1.1.0")
+                   .deprecated ()
+                   .validFrom (V1_1_0_VALID_PER_UTC)
+                   .addSchematron (PhiveRulesHelper.createXSLT (aCPR1, aNSCtxInvoice))
+                   .addSchematron (PhiveRulesHelper.createXSLT (aCPR2, aNSCtxInvoice))
+                   .registerInto (aRegistry);
       VesXmlBuilder.builder ()
-                       .vesID (VID_OPENPEPPOL_JP_PINT_SB_CREDIT_NOTE_1_1_0)
-                       .displayName ("Peppol PINT Japan Self Billing Credit Note (UBL) 1.1.0")
-                       .deprecated ()
-                       .validFrom (V1_1_0_VALID_PER_UTC)
-                       .addSchematron (PhiveRulesHelper.createXSLT (aCPR1, aNSCtxCreditNote))
-                       .addSchematron (PhiveRulesHelper.createXSLT (aCPR2, aNSCtxCreditNote))
-                       .registerInto (aRegistry);
+                   .vesID (VID_OPENPEPPOL_JP_PINT_SB_CREDIT_NOTE_1_1_0)
+                   .displayName ("Peppol PINT Japan Self Billing Credit Note (UBL) 1.1.0")
+                   .deprecated ()
+                   .validFrom (V1_1_0_VALID_PER_UTC)
+                   .addSchematron (PhiveRulesHelper.createXSLT (aCPR1, aNSCtxCreditNote))
+                   .addSchematron (PhiveRulesHelper.createXSLT (aCPR2, aNSCtxCreditNote))
+                   .registerInto (aRegistry);
     }
 
     // 1.1.1
@@ -180,21 +180,21 @@ public final class PeppolValidationPintJP_SB
                                                              "1.1.1/xslt/PINT-jurisdiction-aligned-rules.xslt",
                                                              _getCL ());
       VesXmlBuilder.builder ()
-                       .vesID (VID_OPENPEPPOL_JP_PINT_SB_INVOICE_1_1_1)
-                       .displayName ("Peppol PINT Japan Self Billing Invoice (UBL) 1.1.1")
-                       .deprecated ()
-                       .validFrom (V1_1_1_VALID_PER_UTC)
-                       .addSchematron (PhiveRulesHelper.createXSLT (aCPR1, aNSCtxInvoice))
-                       .addSchematron (PhiveRulesHelper.createXSLT (aCPR2, aNSCtxInvoice))
-                       .registerInto (aRegistry);
+                   .vesID (VID_OPENPEPPOL_JP_PINT_SB_INVOICE_1_1_1)
+                   .displayName ("Peppol PINT Japan Self Billing Invoice (UBL) 1.1.1")
+                   .deprecated ()
+                   .validFrom (V1_1_1_VALID_PER_UTC)
+                   .addSchematron (PhiveRulesHelper.createXSLT (aCPR1, aNSCtxInvoice))
+                   .addSchematron (PhiveRulesHelper.createXSLT (aCPR2, aNSCtxInvoice))
+                   .registerInto (aRegistry);
       VesXmlBuilder.builder ()
-                       .vesID (VID_OPENPEPPOL_JP_PINT_SB_CREDIT_NOTE_1_1_1)
-                       .displayName ("Peppol PINT Japan Self Billing Credit Note (UBL) 1.1.1")
-                       .deprecated ()
-                       .validFrom (V1_1_1_VALID_PER_UTC)
-                       .addSchematron (PhiveRulesHelper.createXSLT (aCPR1, aNSCtxCreditNote))
-                       .addSchematron (PhiveRulesHelper.createXSLT (aCPR2, aNSCtxCreditNote))
-                       .registerInto (aRegistry);
+                   .vesID (VID_OPENPEPPOL_JP_PINT_SB_CREDIT_NOTE_1_1_1)
+                   .displayName ("Peppol PINT Japan Self Billing Credit Note (UBL) 1.1.1")
+                   .deprecated ()
+                   .validFrom (V1_1_1_VALID_PER_UTC)
+                   .addSchematron (PhiveRulesHelper.createXSLT (aCPR1, aNSCtxCreditNote))
+                   .addSchematron (PhiveRulesHelper.createXSLT (aCPR2, aNSCtxCreditNote))
+                   .registerInto (aRegistry);
     }
 
     // 1.1.2
@@ -206,21 +206,21 @@ public final class PeppolValidationPintJP_SB
                                                              "1.1.2/xslt/PINT-jurisdiction-aligned-rules.xslt",
                                                              _getCL ());
       VesXmlBuilder.builder ()
-                       .vesID (VID_OPENPEPPOL_JP_PINT_SB_INVOICE_1_1_2)
-                       .displayName ("Peppol PINT Japan Self Billing Invoice (UBL) 1.1.2")
-                       .deprecated ()
-                       .validFrom (V1_1_2_VALID_PER_UTC)
-                       .addSchematron (PhiveRulesHelper.createXSLT (aCPR1, aNSCtxInvoice))
-                       .addSchematron (PhiveRulesHelper.createXSLT (aCPR2, aNSCtxInvoice))
-                       .registerInto (aRegistry);
+                   .vesID (VID_OPENPEPPOL_JP_PINT_SB_INVOICE_1_1_2)
+                   .displayName ("Peppol PINT Japan Self Billing Invoice (UBL) 1.1.2")
+                   .deprecated ()
+                   .validFrom (V1_1_2_VALID_PER_UTC)
+                   .addSchematron (PhiveRulesHelper.createXSLT (aCPR1, aNSCtxInvoice))
+                   .addSchematron (PhiveRulesHelper.createXSLT (aCPR2, aNSCtxInvoice))
+                   .registerInto (aRegistry);
       VesXmlBuilder.builder ()
-                       .vesID (VID_OPENPEPPOL_JP_PINT_SB_CREDIT_NOTE_1_1_2)
-                       .displayName ("Peppol PINT Japan Self Billing Credit Note (UBL) 1.1.2")
-                       .deprecated ()
-                       .validFrom (V1_1_2_VALID_PER_UTC)
-                       .addSchematron (PhiveRulesHelper.createXSLT (aCPR1, aNSCtxCreditNote))
-                       .addSchematron (PhiveRulesHelper.createXSLT (aCPR2, aNSCtxCreditNote))
-                       .registerInto (aRegistry);
+                   .vesID (VID_OPENPEPPOL_JP_PINT_SB_CREDIT_NOTE_1_1_2)
+                   .displayName ("Peppol PINT Japan Self Billing Credit Note (UBL) 1.1.2")
+                   .deprecated ()
+                   .validFrom (V1_1_2_VALID_PER_UTC)
+                   .addSchematron (PhiveRulesHelper.createXSLT (aCPR1, aNSCtxCreditNote))
+                   .addSchematron (PhiveRulesHelper.createXSLT (aCPR2, aNSCtxCreditNote))
+                   .registerInto (aRegistry);
     }
 
     // 1.1.3
@@ -232,21 +232,21 @@ public final class PeppolValidationPintJP_SB
                                                              "1.1.3/xslt/PINT-jurisdiction-aligned-rules.xslt",
                                                              _getCL ());
       VesXmlBuilder.builder ()
-                       .vesID (VID_OPENPEPPOL_JP_PINT_SB_INVOICE_1_1_3)
-                       .displayName ("Peppol PINT Japan Self Billing Invoice (UBL) 1.1.3")
-                       .notDeprecated ()
-                       .validFrom (V1_1_3_VALID_PER_UTC)
-                       .addSchematron (PhiveRulesHelper.createXSLT (aCPR1, aNSCtxInvoice))
-                       .addSchematron (PhiveRulesHelper.createXSLT (aCPR2, aNSCtxInvoice))
-                       .registerInto (aRegistry);
+                   .vesID (VID_OPENPEPPOL_JP_PINT_SB_INVOICE_1_1_3)
+                   .displayName ("Peppol PINT Japan Self Billing Invoice (UBL) 1.1.3")
+                   .notDeprecated ()
+                   .validFrom (V1_1_3_VALID_PER_UTC)
+                   .addSchematron (PhiveRulesHelper.createXSLT (aCPR1, aNSCtxInvoice))
+                   .addSchematron (PhiveRulesHelper.createXSLT (aCPR2, aNSCtxInvoice))
+                   .registerInto (aRegistry);
       VesXmlBuilder.builder ()
-                       .vesID (VID_OPENPEPPOL_JP_PINT_SB_CREDIT_NOTE_1_1_3)
-                       .displayName ("Peppol PINT Japan Self Billing Credit Note (UBL) 1.1.3")
-                       .notDeprecated ()
-                       .validFrom (V1_1_3_VALID_PER_UTC)
-                       .addSchematron (PhiveRulesHelper.createXSLT (aCPR1, aNSCtxCreditNote))
-                       .addSchematron (PhiveRulesHelper.createXSLT (aCPR2, aNSCtxCreditNote))
-                       .registerInto (aRegistry);
+                   .vesID (VID_OPENPEPPOL_JP_PINT_SB_CREDIT_NOTE_1_1_3)
+                   .displayName ("Peppol PINT Japan Self Billing Credit Note (UBL) 1.1.3")
+                   .notDeprecated ()
+                   .validFrom (V1_1_3_VALID_PER_UTC)
+                   .addSchematron (PhiveRulesHelper.createXSLT (aCPR1, aNSCtxCreditNote))
+                   .addSchematron (PhiveRulesHelper.createXSLT (aCPR2, aNSCtxCreditNote))
+                   .registerInto (aRegistry);
     }
   }
 }

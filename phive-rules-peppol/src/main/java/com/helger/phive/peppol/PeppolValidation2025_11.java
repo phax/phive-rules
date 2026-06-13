@@ -140,21 +140,23 @@ public final class PeppolValidation2025_11
                                                                              _getCL ());
 
     VesXmlBuilder.builder ()
-                     .vesID (VID_OPENPEPPOL_INVOICE_UBL_V3)
-                     .displayName ("OpenPeppol UBL Invoice" + sVersion + sAkaVersionBilling)
-                     .notDeprecated ().validFrom (VALID_PER_UTC)
-                     .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
-                     .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (INVOICE_UBL_CEN))
-                     .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (INVOICE_UBL_PEPPOL))
-                     .registerInto (aRegistry);
+                 .vesID (VID_OPENPEPPOL_INVOICE_UBL_V3)
+                 .displayName ("OpenPeppol UBL Invoice" + sVersion + sAkaVersionBilling)
+                 .notDeprecated ()
+                 .validFrom (VALID_PER_UTC)
+                 .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
+                 .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (INVOICE_UBL_CEN))
+                 .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (INVOICE_UBL_PEPPOL))
+                 .registerInto (aRegistry);
     VesXmlBuilder.builder ()
-                     .vesID (VID_OPENPEPPOL_CREDIT_NOTE_UBL_V3)
-                     .displayName ("OpenPeppol UBL Credit Note" + sVersion + sAkaVersionBilling)
-                     .notDeprecated ().validFrom (VALID_PER_UTC)
-                     .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
-                     .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (INVOICE_UBL_CEN))
-                     .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (INVOICE_UBL_PEPPOL))
-                     .registerInto (aRegistry);
+                 .vesID (VID_OPENPEPPOL_CREDIT_NOTE_UBL_V3)
+                 .displayName ("OpenPeppol UBL Credit Note" + sVersion + sAkaVersionBilling)
+                 .notDeprecated ()
+                 .validFrom (VALID_PER_UTC)
+                 .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
+                 .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (INVOICE_UBL_CEN))
+                 .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (INVOICE_UBL_PEPPOL))
+                 .registerInto (aRegistry);
     // aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create
     // (VID_OPENPEPPOL_INVOICE_CII_V3,
     // "OpenPeppol CII Invoice" +
@@ -165,91 +167,103 @@ public final class PeppolValidation2025_11
     // _createXsltCII (INVOICE_CII_CEN),
     // _createXsltCII (INVOICE_CII_PEPPOL)));
     VesXmlBuilder.builder ()
-                     .vesID (VID_OPENPEPPOL_ORDER_V3)
-                     .displayName ("OpenPeppol Order" + sVersion + sAkaVersionBIS)
-                     .notDeprecated ().validFrom (VALID_PER_UTC)
-                     .addXSD (UBL21Marshaller.getAllOrderXSDs ())
-                     .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (ORDER))
-                     .registerInto (aRegistry);
+                 .vesID (VID_OPENPEPPOL_ORDER_V3)
+                 .displayName ("OpenPeppol Order" + sVersion + sAkaVersionBIS)
+                 .notDeprecated ()
+                 .validFrom (VALID_PER_UTC)
+                 .addXSD (UBL21Marshaller.getAllOrderXSDs ())
+                 .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (ORDER))
+                 .registerInto (aRegistry);
     VesXmlBuilder.builder ()
-                     .vesID (VID_OPENPEPPOL_DESPATCH_ADVICE_V3)
-                     .displayName ("OpenPeppol Despatch Advice" + sVersion + sAkaVersionBIS)
-                     .notDeprecated ().validFrom (VALID_PER_UTC)
-                     .addXSD (UBL21Marshaller.getAllDespatchAdviceXSDs ())
-                     .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (DESPATCH_ADVICE))
-                     .registerInto (aRegistry);
+                 .vesID (VID_OPENPEPPOL_DESPATCH_ADVICE_V3)
+                 .displayName ("OpenPeppol Despatch Advice" + sVersion + sAkaVersionBIS)
+                 .notDeprecated ()
+                 .validFrom (VALID_PER_UTC)
+                 .addXSD (UBL21Marshaller.getAllDespatchAdviceXSDs ())
+                 .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (DESPATCH_ADVICE))
+                 .registerInto (aRegistry);
     VesXmlBuilder.builder ()
-                     .vesID (VID_OPENPEPPOL_CATALOGUE_V3)
-                     .displayName ("OpenPeppol Catalogue" + sVersion + sAkaVersionBIS)
-                     .notDeprecated ().validFrom (VALID_PER_UTC)
-                     .addXSD (UBL21Marshaller.getAllCatalogueXSDs ())
-                     .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (CATALOGUE))
-                     .registerInto (aRegistry);
+                 .vesID (VID_OPENPEPPOL_CATALOGUE_V3)
+                 .displayName ("OpenPeppol Catalogue" + sVersion + sAkaVersionBIS)
+                 .notDeprecated ()
+                 .validFrom (VALID_PER_UTC)
+                 .addXSD (UBL21Marshaller.getAllCatalogueXSDs ())
+                 .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (CATALOGUE))
+                 .registerInto (aRegistry);
     VesXmlBuilder.builder ()
-                     .vesID (VID_OPENPEPPOL_CATALOGUE_RESPONSE_V3)
-                     .displayName ("OpenPeppol Catalogue Response" + sVersion + sAkaVersionBIS)
-                     .notDeprecated ().validFrom (VALID_PER_UTC)
-                     .addXSD (UBL21Marshaller.getAllApplicationResponseXSDs ())
-                     .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (CATALOGUE_RESPONSE))
-                     .registerInto (aRegistry);
+                 .vesID (VID_OPENPEPPOL_CATALOGUE_RESPONSE_V3)
+                 .displayName ("OpenPeppol Catalogue Response" + sVersion + sAkaVersionBIS)
+                 .notDeprecated ()
+                 .validFrom (VALID_PER_UTC)
+                 .addXSD (UBL21Marshaller.getAllApplicationResponseXSDs ())
+                 .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (CATALOGUE_RESPONSE))
+                 .registerInto (aRegistry);
     VesXmlBuilder.builder ()
-                     .vesID (VID_OPENPEPPOL_MLR_V3)
-                     .displayName ("OpenPeppol MLR" + sVersion + sAkaVersionBIS)
-                     .notDeprecated ().validFrom (VALID_PER_UTC)
-                     .addXSD (UBL21Marshaller.getAllApplicationResponseXSDs ())
-                     .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (MLR))
-                     .registerInto (aRegistry);
+                 .vesID (VID_OPENPEPPOL_MLR_V3)
+                 .displayName ("OpenPeppol MLR" + sVersion + sAkaVersionBIS)
+                 .notDeprecated ()
+                 .validFrom (VALID_PER_UTC)
+                 .addXSD (UBL21Marshaller.getAllApplicationResponseXSDs ())
+                 .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (MLR))
+                 .registerInto (aRegistry);
     VesXmlBuilder.builder ()
-                     .vesID (VID_OPENPEPPOL_ORDER_RESPONSE_V3)
-                     .displayName ("OpenPeppol Order Response" + sVersion + sAkaVersionBIS)
-                     .notDeprecated ().validFrom (VALID_PER_UTC)
-                     .addXSD (UBL21Marshaller.getAllOrderResponseXSDs ())
-                     .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (ORDER_RESPONSE))
-                     .registerInto (aRegistry);
+                 .vesID (VID_OPENPEPPOL_ORDER_RESPONSE_V3)
+                 .displayName ("OpenPeppol Order Response" + sVersion + sAkaVersionBIS)
+                 .notDeprecated ()
+                 .validFrom (VALID_PER_UTC)
+                 .addXSD (UBL21Marshaller.getAllOrderResponseXSDs ())
+                 .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (ORDER_RESPONSE))
+                 .registerInto (aRegistry);
     VesXmlBuilder.builder ()
-                     .vesID (VID_OPENPEPPOL_PUNCH_OUT_V3)
-                     .displayName ("OpenPeppol Punch Out" + sVersion + sAkaVersionBIS)
-                     .notDeprecated ().validFrom (VALID_PER_UTC)
-                     .addXSD (UBL21Marshaller.getAllCatalogueXSDs ())
-                     .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (PUNCH_OUT))
-                     .registerInto (aRegistry);
+                 .vesID (VID_OPENPEPPOL_PUNCH_OUT_V3)
+                 .displayName ("OpenPeppol Punch Out" + sVersion + sAkaVersionBIS)
+                 .notDeprecated ()
+                 .validFrom (VALID_PER_UTC)
+                 .addXSD (UBL21Marshaller.getAllCatalogueXSDs ())
+                 .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (PUNCH_OUT))
+                 .registerInto (aRegistry);
     VesXmlBuilder.builder ()
-                     .vesID (VID_OPENPEPPOL_ORDER_AGREEMENT_V3)
-                     .displayName ("OpenPeppol Order Agreement" + sVersion + sAkaVersionBIS)
-                     .notDeprecated ().validFrom (VALID_PER_UTC)
-                     .addXSD (UBL21Marshaller.getAllOrderResponseXSDs ())
-                     .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (ORDER_AGREEMENT))
-                     .registerInto (aRegistry);
+                 .vesID (VID_OPENPEPPOL_ORDER_AGREEMENT_V3)
+                 .displayName ("OpenPeppol Order Agreement" + sVersion + sAkaVersionBIS)
+                 .notDeprecated ()
+                 .validFrom (VALID_PER_UTC)
+                 .addXSD (UBL21Marshaller.getAllOrderResponseXSDs ())
+                 .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (ORDER_AGREEMENT))
+                 .registerInto (aRegistry);
     VesXmlBuilder.builder ()
-                     .vesID (VID_OPENPEPPOL_INVOICE_MESSAGE_RESPONSE_V3)
-                     .displayName ("OpenPeppol Invoice Message Response" + sVersion + sAkaVersionBIS)
-                     .notDeprecated ().validFrom (VALID_PER_UTC)
-                     .addXSD (UBL21Marshaller.getAllApplicationResponseXSDs ())
-                     .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (INVOICE_MESSAGE_RESPONSE))
-                     .registerInto (aRegistry);
+                 .vesID (VID_OPENPEPPOL_INVOICE_MESSAGE_RESPONSE_V3)
+                 .displayName ("OpenPeppol Invoice Message Response" + sVersion + sAkaVersionBIS)
+                 .notDeprecated ()
+                 .validFrom (VALID_PER_UTC)
+                 .addXSD (UBL21Marshaller.getAllApplicationResponseXSDs ())
+                 .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (INVOICE_MESSAGE_RESPONSE))
+                 .registerInto (aRegistry);
     // UBL 2.3!
     VesXmlBuilder.builder ()
-                     .vesID (VID_OPENPEPPOL_ORDER_CHANGE_V3)
-                     .displayName ("OpenPeppol Order Change" + sVersion + sAkaVersionBIS)
-                     .notDeprecated ().validFrom (VALID_PER_UTC)
-                     .addXSD (UBL23Marshaller.getAllOrderChangeXSDs ())
-                     .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL23 (ORDER_CHANGE))
-                     .registerInto (aRegistry);
+                 .vesID (VID_OPENPEPPOL_ORDER_CHANGE_V3)
+                 .displayName ("OpenPeppol Order Change" + sVersion + sAkaVersionBIS)
+                 .notDeprecated ()
+                 .validFrom (VALID_PER_UTC)
+                 .addXSD (UBL23Marshaller.getAllOrderChangeXSDs ())
+                 .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL23 (ORDER_CHANGE))
+                 .registerInto (aRegistry);
     // UBL 2.3!
     VesXmlBuilder.builder ()
-                     .vesID (VID_OPENPEPPOL_ORDER_CANCELLATION_V3)
-                     .displayName ("OpenPeppol Order Cancellation" + sVersion + sAkaVersionBIS)
-                     .notDeprecated ().validFrom (VALID_PER_UTC)
-                     .addXSD (UBL23Marshaller.getAllOrderCancellationXSDs ())
-                     .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL23 (ORDER_CANCELLATION))
-                     .registerInto (aRegistry);
+                 .vesID (VID_OPENPEPPOL_ORDER_CANCELLATION_V3)
+                 .displayName ("OpenPeppol Order Cancellation" + sVersion + sAkaVersionBIS)
+                 .notDeprecated ()
+                 .validFrom (VALID_PER_UTC)
+                 .addXSD (UBL23Marshaller.getAllOrderCancellationXSDs ())
+                 .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL23 (ORDER_CANCELLATION))
+                 .registerInto (aRegistry);
     // UBL 2.3!
     VesXmlBuilder.builder ()
-                     .vesID (VID_OPENPEPPOL_ORDER_RESPONSE_ADVANCED_V3)
-                     .displayName ("OpenPeppol Order Response Advanced" + sVersion + sAkaVersionBIS)
-                     .notDeprecated ().validFrom (VALID_PER_UTC)
-                     .addXSD (UBL23Marshaller.getAllOrderResponseXSDs ())
-                     .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL23 (ORDER_RESPONSE_ADVANCED))
-                     .registerInto (aRegistry);
+                 .vesID (VID_OPENPEPPOL_ORDER_RESPONSE_ADVANCED_V3)
+                 .displayName ("OpenPeppol Order Response Advanced" + sVersion + sAkaVersionBIS)
+                 .notDeprecated ()
+                 .validFrom (VALID_PER_UTC)
+                 .addXSD (UBL23Marshaller.getAllOrderResponseXSDs ())
+                 .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL23 (ORDER_RESPONSE_ADVANCED))
+                 .registerInto (aRegistry);
   }
 }
