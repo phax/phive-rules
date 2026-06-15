@@ -247,7 +247,7 @@ I hope that with the introduction of PINT, the versioning problem will be solved
 
 # News and noteworthy
 
-v4.3.8 - work in progress
+v4.3.8 - 2026-06-15
 * Added support for ZuGFERD 2.5 (incl. Corrigendum 1) - all profiles (XML only)
 * Added support for Peppol PINT BIS Billing 1.1.3 (release 2026-06-05)
 * Added support for Peppol PINT A-NZ 1.1.3 (Billing and Self-Billing, release 2026-05-21) and deprecated 1.1.2
