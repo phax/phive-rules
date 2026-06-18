@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+
+    Licensed under European Union Public Licence (EUPL) version 1.2.
+
+-->
+<Invoice xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2">
+  <cbc:CustomizationID>urn:cen.eu:en16931:2017#compliant#urn:mfin.gov.rs:srbdt:2022</cbc:CustomizationID>
+  <cbc:ID>Jedinstveni broj fakture</cbc:ID>
+  <cbc:IssueDate>2022-02-28</cbc:IssueDate>
+  <cbc:DueDate>2022-03-07</cbc:DueDate>
+  <cbc:InvoiceTypeCode>380</cbc:InvoiceTypeCode>
+  <cbc:Note />
+  <cbc:DocumentCurrencyCode>RSD</cbc:DocumentCurrencyCode>
+  <cac:InvoicePeriod>
+    <cbc:DescriptionCode>3</cbc:DescriptionCode>
+  </cac:InvoicePeriod>
+  <cac:ContractDocumentReference>
+    <cbc:ID>Broj ugovora</cbc:ID>
+  </cac:ContractDocumentReference>
+  <cac:AccountingSupplierParty>
+    <cac:Party>
+      <cbc:EndpointID schemeID="9948">PIB Kompanije A</cbc:EndpointID>
+      <cac:PartyName>
+        <cbc:Name>Naziv Kompanije A</cbc:Name>
+      </cac:PartyName>
+      <cac:PostalAddress>
+        <cbc:CityName>Beograd</cbc:CityName>
+        <cac:Country>
+          <cbc:IdentificationCode>RS</cbc:IdentificationCode>
+        </cac:Country>
+      </cac:PostalAddress>
+      <cac:PartyTaxScheme>
+        <cbc:CompanyID>RSPIB Kompanije A</cbc:CompanyID>
+        <cac:TaxScheme>
+          <cbc:ID>VAT</cbc:ID>
+        </cac:TaxScheme>
+      </cac:PartyTaxScheme>
+      <cac:PartyLegalEntity>
+        <cbc:RegistrationName>Naziv Kompanije A</cbc:RegistrationName>
+        <cbc:CompanyID>Matični broj Kompanije A</cbc:CompanyID>
+      </cac:PartyLegalEntity>
+    </cac:Party>
+  </cac:AccountingSupplierParty>
+  <cac:AccountingCustomerParty>
+    <cac:Party>
+      <cbc:EndpointID schemeID="9948">PIB Kompanije B budžetskog korisnika</cbc:EndpointID>
+      <cac:PartyIdentification>
+        <cbc:ID>JBKJS:Broj JBKJS Kompanije B budžetskog korisnika</cbc:ID> <!-- Ukoliko nije buđetsko korisnika tada se briše "JBKJS:" iz polja i piše se Matični broj pravnog lica -->
+      </cac:PartyIdentification>
+      <cac:PartyName>
+        <cbc:Name>Naziv Kompanije B budžetskog korisnika</cbc:Name>
+      </cac:PartyName>
+      <cac:PostalAddress>
+        <cbc:StreetName>Adresa</cbc:StreetName>
+        <cbc:CityName>БЕОГРАД</cbc:CityName>
+        <cbc:PostalZone>40200</cbc:PostalZone>
+        <cac:Country>
+          <cbc:IdentificationCode>RS</cbc:IdentificationCode>
+        </cac:Country>
+      </cac:PostalAddress>
+      <cac:PartyTaxScheme>
+        <cbc:CompanyID>RSPIB Kompanije B budžetskog korisnika</cbc:CompanyID>
+        <cac:TaxScheme>
+          <cbc:ID>VAT</cbc:ID>
+        </cac:TaxScheme>
+      </cac:PartyTaxScheme>
+      <cac:PartyLegalEntity>
+        <cbc:RegistrationName>Naziv Kompanije B budžetskog korisnika</cbc:RegistrationName>
+        <cbc:CompanyID>Broj JBKJS Kompanije B budžetskog korisnika</cbc:CompanyID>
+      </cac:PartyLegalEntity>
+    </cac:Party>
+  </cac:AccountingCustomerParty>
+  <cac:Delivery>
+    <cbc:ActualDeliveryDate>2022-02-28</cbc:ActualDeliveryDate>
+  </cac:Delivery>
+  <cac:PaymentMeans>
+    <cbc:PaymentMeansCode>30</cbc:PaymentMeansCode>
+    <cbc:PaymentID />
+    <cac:PayeeFinancialAccount>
+      <cbc:ID>Tekući račun pošiljaoca - Kompanije A </cbc:ID>
+    </cac:PayeeFinancialAccount>
+  </cac:PaymentMeans>
+  <cac:TaxTotal>
+    <cbc:TaxAmount currencyID="RSD">312</cbc:TaxAmount>
+    <cac:TaxSubtotal>
+      <cbc:TaxableAmount currencyID="RSD">200</cbc:TaxableAmount>
+      <cbc:TaxAmount currencyID="RSD">0</cbc:TaxAmount>
+      <cac:TaxCategory>
+        <cbc:ID>E</cbc:ID>
+        <cbc:Percent>0</cbc:Percent>
+        <cbc:TaxExemptionReasonCode>reasonKey_2</cbc:TaxExemptionReasonCode>
+        <cbc:TaxExemptionReason>Broj resenja o oslobodjenju placanja PDV</cbc:TaxExemptionReason>
+        <cac:TaxScheme>
+          <cbc:ID>VAT</cbc:ID>
+        </cac:TaxScheme>
+      </cac:TaxCategory>
+    </cac:TaxSubtotal>
+    <cac:TaxSubtotal>
+      <cbc:TaxableAmount currencyID="RSD">1560</cbc:TaxableAmount>
+      <cbc:TaxAmount currencyID="RSD">312</cbc:TaxAmount>
+      <cac:TaxCategory>
+        <cbc:ID>S</cbc:ID>
+        <cbc:Percent>20</cbc:Percent>
+        <cac:TaxScheme>
+          <cbc:ID>VAT</cbc:ID>
+        </cac:TaxScheme>
+      </cac:TaxCategory>
+    </cac:TaxSubtotal>
+  </cac:TaxTotal>
+  <cac:LegalMonetaryTotal>
+    <cbc:LineExtensionAmount currencyID="RSD">1760</cbc:LineExtensionAmount>
+    <cbc:TaxExclusiveAmount currencyID="RSD">1760</cbc:TaxExclusiveAmount>
+    <cbc:TaxInclusiveAmount currencyID="RSD">2072</cbc:TaxInclusiveAmount>
+    <cbc:AllowanceTotalAmount currencyID="RSD">0</cbc:AllowanceTotalAmount>
+    <cbc:PrepaidAmount currencyID="RSD">0</cbc:PrepaidAmount>
+    <cbc:PayableAmount currencyID="RSD">2072</cbc:PayableAmount>
+  </cac:LegalMonetaryTotal>
+  <cac:InvoiceLine>
+    <cbc:ID>2</cbc:ID>
+    <cbc:InvoicedQuantity unitCode="KGM">1</cbc:InvoicedQuantity>
+    <cbc:LineExtensionAmount currencyID="RSD">200</cbc:LineExtensionAmount>
+    <cac:Item>
+      <cbc:Name>TestProizvod003</cbc:Name>
+      <cac:SellersItemIdentification>
+        <cbc:ID>003</cbc:ID>
+      </cac:SellersItemIdentification>
+      <cac:ClassifiedTaxCategory>
+        <cbc:ID>E</cbc:ID>
+        <cbc:Percent>0</cbc:Percent>
+        <cac:TaxScheme>
+          <cbc:ID>VAT</cbc:ID>
+        </cac:TaxScheme>
+      </cac:ClassifiedTaxCategory>
+    </cac:Item>
+    <cac:Price>
+      <cbc:PriceAmount currencyID="RSD">200</cbc:PriceAmount>
+    </cac:Price>
+  </cac:InvoiceLine>
+  <cac:InvoiceLine>
+    <cbc:ID>1</cbc:ID>
+    <cbc:InvoicedQuantity unitCode="KGM">1</cbc:InvoicedQuantity>
+    <cbc:LineExtensionAmount currencyID="RSD">1560</cbc:LineExtensionAmount>
+    <cac:Item>
+      <cbc:Name>TestProizvod001</cbc:Name>
+      <cac:SellersItemIdentification>
+        <cbc:ID>001</cbc:ID>
+      </cac:SellersItemIdentification>
+      <cac:ClassifiedTaxCategory>
+        <cbc:ID>S</cbc:ID>
+        <cbc:Percent>20</cbc:Percent>
+        <cac:TaxScheme>
+          <cbc:ID>VAT</cbc:ID>
+        </cac:TaxScheme>
+      </cac:ClassifiedTaxCategory>
+    </cac:Item>
+    <cac:Price>
+      <cbc:PriceAmount currencyID="RSD">1560</cbc:PriceAmount>
+    </cac:Price>
+  </cac:InvoiceLine>
+</Invoice>

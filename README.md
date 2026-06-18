@@ -33,6 +33,7 @@ This project is divided into sub-projects each keeping tracking of one document 
 * phive-rules-peppol - the Peppol specific rules - always the latest two rule sets
 * phive-rules-peppol-legacy - older Peppol specific rules that are out of date (since v2.0.5)
 * phive-rules-peppol-italy - Peppol Italy specific rules (since v2.1.1)
+* phive-rules-serbia - Validation rules for the Serbian SEF (SRBDT) EN 16931 CIUS (since v4.3.9)
 * phive-rules-setu - Dutch SETU selected standards (since v3.0.4)
 * phive-rules-simplerinvoicing - Dutch Simplerinvoicing support from https://github.com/Simplerinvoicing/validation
 * phive-rules-svefaktura - Validation rules for Swedish Svefaktura (since v1.0.6)
@@ -246,6 +247,11 @@ As OpenPeppol is only changing the "micro" version part (3.0.x), whereas I start
 I hope that with the introduction of PINT, the versioning problem will be solved.
 
 # News and noteworthy
+
+v4.3.9 - work in progress
+* Added new submodule `phive-rules-serbia` for the Serbian SEF (SRBDT) EN 16931 CIUS and Extension validation rules. See [#67](https://github.com/phax/phive-rules/issues/67)
+    * UBL VES coordinates `rs.gov.mfin.srbdt:ubl-invoice:1.0.0` and `rs.gov.mfin.srbdt:ubl-creditnote:1.0.0`, building on the EN 16931 UBL rules 1.3.8
+    * Rules taken from https://github.com/vasiljevic/en16931-srbdt-va (licensed under EUPL v1.2)
 
 v4.3.8 - 2026-06-15
 * Added support for ZuGFERD 2.5 (incl. Corrigendum 1) - all profiles (XML only)
