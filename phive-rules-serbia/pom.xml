@@ -27,7 +27,7 @@
   <artifactId>phive-rules-serbia</artifactId>
   <packaging>jar</packaging>
   <name>phive-rules-serbia</name>
-  <description>Serbian SEF (SRBDT) EN 16931 CIUS validation rules</description>
+  <description>Serbian SEF (SRBDT) EN 16931 CIUS and SEO logistics validation rules</description>
   <url>https://github.com/phax/phive-rules/phive-rules-serbia</url>
   <inceptionYear>2026</inceptionYear>
   <licenses>

@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DespatchAdvice xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xmlns="urn:oasis:names:specification:ubl:schema:xsd:DespatchAdvice-2"
+ xmlns:cec="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2"
+ xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+ xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+ xmlns:sbt="http://mfin.gov.rs/srbdt/srbdtext">
+	
+	<cec:UBLExtensions>
+        <cec:UBLExtension>
+          <cec:ExtensionContent>
+            <sbt:SrbDtExt>
+              <sbt:ShipmentMethod>
+				<cbc:ShipmentMethodType>1</cbc:ShipmentMethodType> <!-- Način otpreme 
+				1: Sopstveni prevoz; 
+				2: Prevoznik; 
+				3: Prevoz primaoca; 
+				4: Lično preuzimanje; 
+				5: Lična dostava;  -->
+              </sbt:ShipmentMethod>
+			  
+			  <sbt:ThirdPartyGoods>
+                <cbc:ID>3f2504e0-4f89-11d3-9a0c-0305e82c3301</cbc:ID>
+              </sbt:ThirdPartyGoods>
+			  
+			  	  
+            </sbt:SrbDtExt>
+          </cec:ExtensionContent>
+        </cec:UBLExtension>
+      </cec:UBLExtensions>
+	
+	
+	<cbc:CustomizationID>urn:fdc:mfin.gov.rs:logistics:trns:despatch_advice:1:2025.12</cbc:CustomizationID>
+	<cbc:ProfileID>urn:fdc:peppol.eu:logistics:bis:despatch_advice_only:1</cbc:ProfileID>
+	
+	
+	<cbc:ID>ТАМ2025011TAM</cbc:ID> <!-- Broj otpremnice (interni, tj jedinstveni za jedno pravno lice) -->
+	<cbc:IssueDate>2025-02-13</cbc:IssueDate> <!-- Datum izdavanja dokumenta -->
+	<cbc:DespatchAdviceTypeCode>Int</cbc:DespatchAdviceTypeCode> <!-- Tip otpremnice Int: Interna; Ext: Eksterna;-->
+
+	<cbc:Note>Isporuka robe</cbc:Note> 
+	
+	
+	
+	<cac:OrderReference>
+		<cbc:ID>2025001</cbc:ID> <!-- Broj narudžbenice/ponude  -->
+	</cac:OrderReference>
+
+
+	<cac:DespatchSupplierParty> <!-- Pošiljalac -->
+		<cac:Party>
+			<cbc:EndpointID schemeID="9948">107775252</cbc:EndpointID>
+			<!-- cac:PartyIdentification  ovaj podatak nije potreban za korisnike koji nisu korisnici javnih sredstava -->
+			<cac:PartyName>
+				<cbc:Name>DOO TAMIŠ 1926 PANČEVO</cbc:Name>
+			</cac:PartyName>
+			<cac:PostalAddress>
+				<cbc:StreetName>OBALA TAMIŠA бб</cbc:StreetName>
+				<cbc:AdditionalStreetName>Bočni ulaz</cbc:AdditionalStreetName>
+				<cbc:CityName>Pančevo</cbc:CityName>
+				<cbc:PostalZone>26000</cbc:PostalZone>
+				<cbc:CountrySubentity>Pančevo</cbc:CountrySubentity>
+				<cac:AddressLine>
+					<cbc:Line>10</cbc:Line>
+				</cac:AddressLine>
+				<cac:Country>
+					<cbc:IdentificationCode>RS</cbc:IdentificationCode>
+				</cac:Country>
+			</cac:PostalAddress>
+			<cac:PartyTaxScheme>
+				<cbc:CompanyID>RS107775252</cbc:CompanyID>
+				<cac:TaxScheme>
+					<cbc:ID>VAT</cbc:ID>
+				</cac:TaxScheme>
+			</cac:PartyTaxScheme>
+			<cac:PartyLegalEntity>
+				<cbc:RegistrationName>DOO TAMIŠ 1926 PANČEVO</cbc:RegistrationName>
+				<cbc:CompanyID>20869500</cbc:CompanyID>
+				<cbc:CompanyLegalForm>Pravno lice</cbc:CompanyLegalForm> 
+			</cac:PartyLegalEntity>
+			<cac:Contact>
+				<cbc:Name>Marko Marković</cbc:Name>
+				<cbc:Telephone>010-98 765</cbc:Telephone>
+				<cbc:ElectronicMail>marko@yopmail.com</cbc:ElectronicMail>
+			</cac:Contact>
+		</cac:Party>
+	</cac:DespatchSupplierParty>
+	
+	<cac:DeliveryCustomerParty> <!-- Primalac -->
+		<cac:Party>
+			<cbc:EndpointID schemeID="9948">107775252</cbc:EndpointID>
+			<!-- cac:PartyIdentification  ovaj podatak nije potreban za korisnike koji nisu korisnici javnih sredstava -->
+			<cac:PartyName>
+				<cbc:Name>DOO TAMIŠ 1926 PANČEVO</cbc:Name>
+			</cac:PartyName>
+			<cac:PostalAddress>
+				<cbc:StreetName>OBALA TAMIŠA бб</cbc:StreetName>
+				<cbc:AdditionalStreetName>Bočni ulaz</cbc:AdditionalStreetName>
+				<cbc:CityName>Pančevo</cbc:CityName>
+				<cbc:PostalZone>26000</cbc:PostalZone>
+				<cbc:CountrySubentity>Pančevo</cbc:CountrySubentity>
+				<cac:AddressLine>
+					<cbc:Line>10</cbc:Line>
+				</cac:AddressLine>
+				<cac:Country>
+					<cbc:IdentificationCode>RS</cbc:IdentificationCode>
+				</cac:Country>
+			</cac:PostalAddress>
+			<cac:PartyTaxScheme>
+				<cbc:CompanyID>RS107775252</cbc:CompanyID>
+				<cac:TaxScheme>
+					<cbc:ID>VAT</cbc:ID>
+				</cac:TaxScheme>
+			</cac:PartyTaxScheme>
+			<cac:PartyLegalEntity>
+				<cbc:RegistrationName>DOO TAMIŠ 1926 PANČEVO</cbc:RegistrationName>
+				<cbc:CompanyID>20869500</cbc:CompanyID>
+				<cbc:CompanyLegalForm>Pravno lice</cbc:CompanyLegalForm> 
+			</cac:PartyLegalEntity>
+			<cac:Contact>
+				<cbc:Name>Marko Marković</cbc:Name>
+				<cbc:Telephone>010-98 765</cbc:Telephone>
+				<cbc:ElectronicMail>marko@yopmail.com</cbc:ElectronicMail>
+			</cac:Contact>
+		</cac:Party>
+	</cac:DeliveryCustomerParty>
+	
+	<cac:Shipment>
+		<cbc:ID>123456789</cbc:ID> <!-- Broj pošiljke na prijemnici mora biti isti. -->
+		<cbc:GrossWeightMeasure unitCode="KGM">2100</cbc:GrossWeightMeasure> <!-- težina isporuke -->
+		<cbc:GrossVolumeMeasure unitCode="MTQ">3.50</cbc:GrossVolumeMeasure> <!-- zapremina isporuke -->
+		<cbc:TotalTransportHandlingUnitQuantity>1</cbc:TotalTransportHandlingUnitQuantity> <!-- ukupan broj paketa -->
+		<cbc:DeliveryInstructions>Pozvoniti na interfon na ulazu</cbc:DeliveryInstructions> <!-- Napomena isporuke -->
+		
+		
+		<cac:ShipmentStage> <!-- Faza voznje. Moze ih biti vise, svaka ima svog Prevoznika, vozaca i rutu -->
+		    <cbc:ID>1</cbc:ID>
+			<cac:CarrierParty> <!-- Prevoznik -->
+					<cbc:EndpointID schemeID="9948">107775252</cbc:EndpointID>
+			<!-- cac:PartyIdentification  ovaj podatak nije potreban za korisnike koji nisu korisnici javnih sredstava -->
+			<cac:PartyName>
+				<cbc:Name>DOO TAMIŠ 1926 PANČEVO</cbc:Name>
+			</cac:PartyName>
+			<cac:PostalAddress>
+				<cbc:StreetName>OBALA TAMIŠA бб</cbc:StreetName>
+				<cbc:AdditionalStreetName>Bočni ulaz</cbc:AdditionalStreetName>
+				<cbc:CityName>Pančevo</cbc:CityName>
+				<cbc:PostalZone>26000</cbc:PostalZone>
+				<cbc:CountrySubentity>Pančevo</cbc:CountrySubentity>
+				<cac:AddressLine>
+					<cbc:Line>10</cbc:Line>
+				</cac:AddressLine>
+				<cac:Country>
+					<cbc:IdentificationCode>RS</cbc:IdentificationCode>
+				</cac:Country>
+			</cac:PostalAddress>
+			<cac:PartyTaxScheme>
+				<cbc:CompanyID>RS107775252</cbc:CompanyID>
+				<cac:TaxScheme>
+					<cbc:ID>VAT</cbc:ID>
+				</cac:TaxScheme>
+			</cac:PartyTaxScheme>
+			<cac:PartyLegalEntity>
+				<cbc:RegistrationName>DOO TAMIŠ 1926 PANČEVO</cbc:RegistrationName>
+				<cbc:CompanyID>20869500</cbc:CompanyID>
+				<cbc:CompanyLegalForm>Pravno lice</cbc:CompanyLegalForm> 
+			</cac:PartyLegalEntity>
+			<cac:Contact>
+				<cbc:Name>Marko Marković</cbc:Name>
+				<cbc:Telephone>010-98 765</cbc:Telephone>
+				<cbc:ElectronicMail>marko@yopmail.com</cbc:ElectronicMail>
+			</cac:Contact>
+				
+			</cac:CarrierParty>
+			
+			<cac:TransportMeans> <!-- Struktura koja sadrži registarski broj vozila -->
+				<cac:RoadTransport>
+					<cbc:LicensePlateID>BG 1237 AB</cbc:LicensePlateID> <!-- Registarski broj vozila -->
+				</cac:RoadTransport>
+			</cac:TransportMeans>
+				
+			<cac:DriverPerson> <!-- vozac -->
+				<cbc:ID>nikola.nikolic@gmail.com</cbc:ID> <!-- email adresa je identifikator i neophodan je kako bi 
+						vozač imao eOtpremnicu na mobilnoj aplikaciju (sa koje može potvrditi preuzimanje robe i početak vožnje -->
+				<cbc:FirstName>Nikola</cbc:FirstName>
+				<cbc:FamilyName>Nikolic</cbc:FamilyName>
+				<cac:Contact>
+					<cbc:Telephone>011222333</cbc:Telephone>
+				</cac:Contact>
+				<cac:IdentityDocumentReference>
+					<cbc:ID>16099007111234</cbc:ID>
+					<cbc:DocumentType>Vozačka dozvola</cbc:DocumentType>
+				</cac:IdentityDocumentReference>
+			</cac:DriverPerson>
+			
+		</cac:ShipmentStage>
+		
+		
+
+
+		<cac:Delivery>
+			<cac:DeliveryAddress> <!-- Odredišna adresa. Ukoliko se ne navede, onda se adresa primaoca smatra za adresu otpreme -->
+				<cbc:ID>PK01JUG</cbc:ID> <!-- Šifra objekta -->
+				<cbc:StreetName>Vojvođanska</cbc:StreetName>
+				<cbc:AdditionalStreetName>Ulaz 3</cbc:AdditionalStreetName>
+				<cbc:CityName>Inđija</cbc:CityName>
+				<cbc:PostalZone>22320</cbc:PostalZone>
+				<cbc:CountrySubentity>Inđija</cbc:CountrySubentity>
+				<cac:AddressLine>
+					<cbc:Line>123</cbc:Line>
+				</cac:AddressLine>
+				<cac:Country>
+					<cbc:IdentificationCode>RS</cbc:IdentificationCode>
+				</cac:Country>
+			</cac:DeliveryAddress>
+			
+			<cac:EstimatedDeliveryPeriod> <!-- Planirani datum i vreme završetka otpreme -->
+				<cbc:EndDate>2025-02-15</cbc:EndDate>
+				<cbc:EndTime>15:30:04+01:00</cbc:EndTime>
+			</cac:EstimatedDeliveryPeriod>
+
+			<cac:Despatch>
+			
+				<cbc:EstimatedDespatchDate>2025-02-13</cbc:EstimatedDespatchDate> <!-- Planirani datum i vreme otpreme -->
+				<cbc:EstimatedDespatchTime>10:36:46+01:00</cbc:EstimatedDespatchTime>
+				
+				<cbc:ActualDespatchDate>2025-02-13</cbc:ActualDespatchDate> <!-- Stvarni datum i vreme otpreme -->
+				<cbc:ActualDespatchTime>18:36:46+01:00</cbc:ActualDespatchTime>
+
+				<cac:DespatchAddress> <!-- adresa otpremanja. Ukoliko se ne navede, onda se adresa pošiljaoca smatra za adresu otpreme -->
+					<cbc:ID>DP01SEVER</cbc:ID> <!-- Šifra objekta -->
+					<cbc:StreetName>OBALA TAMIŠA бб</cbc:StreetName>
+					<cbc:AdditionalStreetName>Bočni ulaz</cbc:AdditionalStreetName>
+					<cbc:CityName>Pančevo</cbc:CityName>
+					<cbc:PostalZone>26000</cbc:PostalZone>
+					<cbc:CountrySubentity>Pančevo</cbc:CountrySubentity>
+					<cac:AddressLine>
+						<cbc:Line>Prvi sprat</cbc:Line>
+					</cac:AddressLine>
+					<cac:Country>
+						<cbc:IdentificationCode>RS</cbc:IdentificationCode>
+					</cac:Country>
+				</cac:DespatchAddress>
+			</cac:Despatch>
+			
+		</cac:Delivery>
+		
+	</cac:Shipment>
+	
+	<cac:DespatchLine> <!-- Stavka otpremnice bez akciza -->
+		<cbc:ID>1</cbc:ID>
+		<cbc:DeliveredQuantity unitCode="H87">100</cbc:DeliveredQuantity>
+		
+		<cac:OrderLineReference>
+			<cbc:LineID>1</cbc:LineID>
+		</cac:OrderLineReference>
+		
+		<cac:Item>
+		<cbc:Description>Metalna bočica</cbc:Description>
+			<cbc:Name>Thermal bottles</cbc:Name>
+			<cac:SellersItemIdentification>
+				<cbc:ID>800400300</cbc:ID>
+			</cac:SellersItemIdentification>
+			
+			<cac:StandardItemIdentification> <!-- GTIN - opciona oznaka  -->
+				<cbc:ID>8601234567890</cbc:ID>
+			</cac:StandardItemIdentification>
+			
+
+			<cac:AdditionalItemProperty> <!-- Može imati proizvoljan broj dodatnih atributa za opis svojstava proizvoda -->
+				<cbc:Name>Tolerable</cbc:Name>
+				<cbc:Value>Up to 50 degrees Celsius</cbc:Value>
+			</cac:AdditionalItemProperty>
+			
+		</cac:Item>
+	</cac:DespatchLine>
+		
+</DespatchAdvice>

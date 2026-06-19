@@ -31,6 +31,7 @@ import com.helger.io.resource.IReadableResource;
 import com.helger.phive.api.executorset.ValidationExecutorSetRegistry;
 import com.helger.phive.api.mock.PhiveTestFile;
 import com.helger.phive.en16931.EN16931Validation;
+import com.helger.phive.serbia.SEOValidation;
 import com.helger.phive.serbia.SRBDTValidation;
 import com.helger.phive.xml.source.IValidationSourceXML;
 
@@ -42,6 +43,7 @@ public final class CTestFiles
   {
     EN16931Validation.initEN16931 (VES_REGISTRY);
     SRBDTValidation.initSRBDT (VES_REGISTRY);
+    SEOValidation.initSEO (VES_REGISTRY);
   }
 
   private CTestFiles ()
@@ -53,7 +55,9 @@ public final class CTestFiles
   {
     final ICommonsList <PhiveTestFile> ret = new CommonsArrayList <> ();
     for (final DVRCoordinate aESID : new DVRCoordinate [] { SRBDTValidation.VID_SRBDT_UBL_CREDITNOTE_100,
-                                                            SRBDTValidation.VID_SRBDT_UBL_INVOICE_100 })
+                                                            SRBDTValidation.VID_SRBDT_UBL_INVOICE_100,
+                                                            SEOValidation.VID_SEO_UBL_DESPATCH_ADVICE_110,
+                                                            SEOValidation.VID_SEO_UBL_RECEIPT_ADVICE_110 })
       for (final IReadableResource aRes : getAllMatchingTestFiles (aESID))
       {
         assertTrue ("Not existing test file: " + aRes.getPath (), aRes.exists ());
@@ -83,6 +87,22 @@ public final class CTestFiles
                                                       "faktura-jn.xml",
                                                       "faktura-kat-e.xml" },
                                       x -> new ClassPathResource (sPrefix + "1.0.0/" + x));
+    }
+
+    // 1.1.0 - Serbia SEO logistics documents (XSD-only)
+    if (aVESID.equals (SEOValidation.VID_SEO_UBL_DESPATCH_ADVICE_110))
+    {
+      return new CommonsArrayList <> (new String [] { "eotpremnica-001.xml",
+                                                      "eotpremnica-002.xml",
+                                                      "eotpremnica-003.xml",
+                                                      "eotpremnica-004.xml" },
+                                      x -> new ClassPathResource (sPrefix + "1.1.0/" + x));
+    }
+    if (aVESID.equals (SEOValidation.VID_SEO_UBL_RECEIPT_ADVICE_110))
+    {
+      return new CommonsArrayList <> (new String [] { "eprijemnica-001.xml",
+                                                      "eprijemnica-002.xml" },
+                                      x -> new ClassPathResource (sPrefix + "1.1.0/" + x));
     }
 
     throw new IllegalArgumentException ("Invalid VESID: " + aVESID);
