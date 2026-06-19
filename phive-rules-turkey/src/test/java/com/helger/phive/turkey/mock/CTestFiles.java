@@ -81,6 +81,10 @@ public final class CTestFiles
   /**
    * Test files that are expected to validate cleanly (no error) for the given VES coordinate. Add
    * new positive samples here.
+   *
+   * @param aVESID
+   *        VESID
+   * @return List of all matching test files. Never <code>null</code>.
    */
   @NonNull
   @ReturnsMutableCopy
@@ -137,6 +141,10 @@ public final class CTestFiles
    * coordinate. These are legacy GİB samples that no longer satisfy the current ruleset; they are
    * kept so the test verifies the rule pipeline flags the divergences. Add new negative samples
    * here.
+   *
+   * @param aVESID
+   *        VESID to get files
+   * @return The list of all matching test files. Never <code>null</code>.
    */
   @NonNull
   @ReturnsMutableCopy

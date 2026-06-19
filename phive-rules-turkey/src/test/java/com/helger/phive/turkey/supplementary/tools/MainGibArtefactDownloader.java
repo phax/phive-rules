@@ -56,8 +56,8 @@ import com.helger.datetime.helper.PDTFactory;
  * is the <code>phive-rules-turkey</code> module (so the relative path <code>docs/</code>
  * resolves).</li>
  * <li>Via Maven (opt-in): <code>mvn -pl phive-rules-turkey test -Dtest=GibArtefactDownloader
- * -Dgib.download=true -DfailIfNoTests=false</code>. The {@link #runIfRequested()} test is skipped
- * unless the system property <code>gib.download=true</code> is set.</li>
+ * -Dgib.download=true -DfailIfNoTests=false</code>. Some test is skipped unless the system property
+ * <code>gib.download=true</code> is set.</li>
  * </ul>
  * The tool is intentionally test-scoped so it does not ship in the artefact JAR and does not
  * require network access during normal test runs.
@@ -66,6 +66,15 @@ import com.helger.datetime.helper.PDTFactory;
  */
 public final class MainGibArtefactDownloader
 {
+  /** Per-artefact download outcome recorded for the summary. */
+  private static final record Result (String filename,
+                                      String url,
+                                      int statusCode,
+                                      long sizeBytes,
+                                      String lastModified,
+                                      String action)
+  {}
+
   private static final Logger LOGGER = LoggerFactory.getLogger (MainGibArtefactDownloader.class);
   private static final String PAGE_URL = "https://ebelge.gib.gov.tr/efaturamevzuat.html";
 
@@ -240,7 +249,7 @@ public final class MainGibArtefactDownloader
     int nGone = 0;
     for (final Result r : aResults)
     {
-      switch (r.m_sAction)
+      switch (r.action)
       {
         case "NEW":
           nNew++;
@@ -273,45 +282,19 @@ public final class MainGibArtefactDownloader
     aSB.append ("|---|---|---|---:|---|\n");
     for (final Result r : aResults)
       aSB.append ("| ")
-         .append (r.m_sAction)
+         .append (r.action)
          .append (" | [")
-         .append (r.m_sFilename)
+         .append (r.filename)
          .append ("](")
-         .append (r.m_sUrl)
+         .append (r.url)
          .append (") | ")
-         .append (Integer.toString (r.m_nStatusCode))
+         .append (Integer.toString (r.statusCode))
          .append (" | ")
-         .append (r.m_nSizeBytes < 0 ? "?" : Long.toString (r.m_nSizeBytes))
+         .append (r.sizeBytes < 0 ? "?" : Long.toString (r.sizeBytes))
          .append (" | ")
-         .append (r.m_sLastModified.isEmpty () ? "—" : r.m_sLastModified)
+         .append (r.lastModified.isEmpty () ? "—" : r.lastModified)
          .append (" |\n");
 
     Files.writeString (aTarget, aSB.toString (), StandardCharsets.UTF_8);
-  }
-
-  /** Per-artefact download outcome recorded for the summary. */
-  private static final class Result
-  {
-    final String m_sFilename;
-    final String m_sUrl;
-    final int m_nStatusCode;
-    final long m_nSizeBytes;
-    final String m_sLastModified;
-    final String m_sAction;
-
-    Result (final String filename,
-            final String url,
-            final int statusCode,
-            final long sizeBytes,
-            final String lastModified,
-            final String action)
-    {
-      this.m_sFilename = filename;
-      this.m_sUrl = url;
-      this.m_nStatusCode = statusCode;
-      this.m_nSizeBytes = sizeBytes;
-      this.m_sLastModified = lastModified;
-      this.m_sAction = action;
-    }
   }
 }
