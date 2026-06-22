@@ -47,3 +47,9 @@ The good-case test files under `src/test/resources/external/test-files/1.1.0/` a
 official UBL 2.1 example documents (version 1.1.0) downloaded from the SEO portal:
 * `eotpremnica-001.xml` to `eotpremnica-004.xml` - Despatch Advice examples
 * `eprijemnica-001.xml`, `eprijemnica-002.xml` - Receipt Advice examples
+
+The English-language extraction of the SEO technical rules (Despatch Advice, Receipt
+Advice and Application Response) - the basis for writing Schematron business rules -
+is in [`seo-business-rules.md`](seo-business-rules.md). It is derived from the MFIN
+*Tehničko uputstvo* (Technical Instruction) v1.5.0, section 1, pages 4-37. See
+https://github.com/phax/phive-rules/issues/68
