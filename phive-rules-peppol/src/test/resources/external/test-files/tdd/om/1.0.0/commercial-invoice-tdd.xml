@@ -16,7 +16,7 @@
   <pxs:ReporterRole>01</pxs:ReporterRole>
 
   <pxs:ReportingParty>
-    <cbc:EndpointID schemeID="0235">1987654321</cbc:EndpointID>
+    <cbc:EndpointID schemeID="0248">1987654321</cbc:EndpointID>
   </pxs:ReportingParty>
 
   <pxs:ReceivingParty>
@@ -30,11 +30,12 @@
   </pxs:ReportersRepresentative>
 
   <pxs:ReportedTransaction>
-
+    <cbc:IssueDate>2025-02-07</cbc:IssueDate>
+    <cbc:IssueTime>18:00:00Z</cbc:IssueTime>
     <!-- Reported commercial invoice -->
     <pxs:ReportedDocument>
       <cbc:CustomizationID>urn:peppol:pint:billing-1@om-1</cbc:CustomizationID>
-      <cbc:ProfileID>urn:peppol:pint:billing</cbc:ProfileID>
+      <cbc:ProfileID>urn:peppol:bis:billing</cbc:ProfileID>
 
       <cbc:ID>OM-CI-001Test</cbc:ID>
       <cbc:UUID>19e2c9a3-b000-4fb0-9bd5-a9c4ebda2358</cbc:UUID>

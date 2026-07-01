@@ -12,7 +12,7 @@
   <pxs:DocumentScope>D</pxs:DocumentScope>
   <pxs:ReporterRole>01</pxs:ReporterRole>
   <pxs:ReportingParty>
-    <cbc:EndpointID schemeID="0235">dummy-sender</cbc:EndpointID>
+    <cbc:EndpointID schemeID="0248">dummy-sender</cbc:EndpointID>
   </pxs:ReportingParty>
   <pxs:ReceivingParty>
     <cbc:EndpointID schemeID="0242">dummy-receiver</cbc:EndpointID>
@@ -24,9 +24,11 @@
   </pxs:ReportersRepresentative>
 
   <pxs:ReportedTransaction>
+    <cbc:IssueDate>2025-04-14</cbc:IssueDate>
+    <cbc:IssueTime>12:00:00Z</cbc:IssueTime>
     <pxs:ReportedDocument>
       <cbc:CustomizationID>urn:peppol:pint:billing-1@om-1</cbc:CustomizationID>
-      <cbc:ProfileID>urn:peppol:pint:billing</cbc:ProfileID>
+      <cbc:ProfileID>urn:peppol:bis:billing</cbc:ProfileID>
       <cbc:ID>inv1</cbc:ID>
       <cbc:UUID>eca87285-6b30-4691-b4b7-f97da43c1760</cbc:UUID>
       <cbc:IssueDate>2025-04-13</cbc:IssueDate>
@@ -71,8 +73,8 @@
     </pxs:ReportedDocument>
 
     <pxs:CustomContent>
-      <cbc:ID>btom-20</cbc:ID>
-      <cbc:Value>1700</cbc:Value>
+      <cbc:ID>btom-020</cbc:ID>
+      <cbc:Value>1700.000</cbc:Value>
     </pxs:CustomContent>
 
     <pxs:SourceDocument>

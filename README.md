@@ -255,6 +255,7 @@ v4.3.9 - work in progress
     * Added the Serbian SEO (Sistem Elektronskih Otpremnica) logistics documents Despatch Advice (eOtpremnica) and Receipt Advice (ePrijemnica). See [#68](https://github.com/phax/phive-rules/issues/68)
         * UBL VES coordinates `rs.gov.mfin.logistics:ubl-despatch-advice:1.1.0` and `rs.gov.mfin.logistics:ubl-receipt-advice:1.1.0`
         * The Ministry of Finance only publishes UBL 2.1 example documents for SEO, so these perform UBL 2.1 XSD validation only (no Serbia-specific or Peppol Logistics BIS business rules)
+* Updated Peppol OM Tax Data Document (TDD) 1.0.0 rules to the final release (2026-06-23) from https://docs.peppol.eu/poac/om/om-tdd/
 
 v4.3.8 - 2026-06-15
 * Added support for ZuGFERD 2.5 (incl. Corrigendum 1) - all profiles (XML only)

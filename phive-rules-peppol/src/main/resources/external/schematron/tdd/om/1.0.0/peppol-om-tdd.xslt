@@ -206,7 +206,7 @@
    <xsl:variable name="cl_ds" select="' D IP INP '"/>
    <xsl:variable name="cl_rr" select="' 01 02 '"/>
    <xsl:variable name="cl_currency"
-                 select="' OMR AFN ALL AMD ANG AOA ARS AUD AWG AZN BAM BBD BDT BGN BHD BIF BMD BND BOB BOV BRL BSD BTN BWP BYN BZD CAD CDF CHE CHF CHW CLF CLP CNH CNY COP COU CRC CUP CVE CZK DJF DKK DOP DZD EGP ERN ETB EUR FJD FKP GBP GEL GHS GIP GMD GNF GTQ GYD HKD HNL HTG HUF IDR ILS INR IQD IRR ISK JMD JOD JPY KES KGS KHR KMF KPW KRW KWD KYD KZT LAK LBP LKR LRD LSL LYD MAD MDL MGA MKD MMK MNT MOP MRU MUR MVR MWK MXN MXV MYR MZN NAD NGN NIO NOK NPR NZD OMR PAB PEN PGK PHP PKR PLN PYG QAR RON RSD RUB RWF SAR SBD SCR SDG SEK SGD SHP SLE SOS SRD SSP STD SVC SYP SZL THB TJS TMT TND TOP TRY TTD TWD TZS UAH UGX USD USN UYI UYU UYW UZS VES VED VND VUV WST XAF XAG XAU XBA XBB XBC XBD XCD XDR XOF XPD XPF XPT XSU XTS XUA XXX YER ZAR ZMW ZWG '"/>
+                 select="' OMR AFN ALL AMD AOA ARS AUD AWG AZN BAM BBD BDT BHD BIF BMD BND BOB BOV BRL BSD BTN BWP BYN BZD CAD CDF CHE CHF CHW CLF CLP CNH CNY COP COU CRC CUP CVE CZK DJF DKK DOP DZD EGP ERN ETB EUR FJD FKP GBP GEL GHS GIP GMD GNF GTQ GYD HKD HNL HTG HUF IDR ILS INR IQD IRR ISK JMD JOD JPY KES KGS KHR KMF KPW KRW KWD KYD KZT LAK LBP LKR LRD LSL LYD MAD MDL MGA MKD MMK MNT MOP MRU MUR MVR MWK MXN MXV MYR MZN NAD NGN NIO NOK NPR NZD OMR PAB PEN PGK PHP PKR PLN PYG QAR RON RSD RUB RWF SAR SBD SCR SDG SEK SGD SHP SLE SOS SRD SSP STD SVC SYP SZL THB TJS TMT TND TOP TRY TTD TWD TZS UAH UGX USD USN UYI UYU UYW UZS VES VED VND VUV WST XAF XAG XAU XBA XBB XBC XBD XCD XCG XDR XOF XPD XPF XPT XSU XTS XUA XXX YER ZAR ZMW ZWG '"/>
    <xsl:variable name="regex_pidscheme" select="'^[0-9]{4}$'"/>
    <!--RULE -->
    <xsl:template match="/pxs:TaxData" priority="1018" mode="M10">
@@ -586,6 +586,35 @@
       <svrl:fired-rule xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
                        context="/pxs:TaxData/pxs:ReportedTransaction"/>
       <xsl:variable name="ccCount" select="count(pxs:CustomContent)"/>
+      <!--ASSERT -->
+      <xsl:choose>
+         <xsl:when test="exists(cbc:IssueDate)"/>
+         <xsl:otherwise>
+            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl" test="exists(cbc:IssueDate)">
+               <xsl:attribute name="id">ibr-tdd-59</xsl:attribute>
+               <xsl:attribute name="flag">fatal</xsl:attribute>
+               <xsl:attribute name="location">
+                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
+               </xsl:attribute>
+               <svrl:text>[ibr-tdd-59] The date when the invoice or invoice data was received by C2 from C1, or by C3 from C2 (tdom-04) MUST be present</svrl:text>
+            </svrl:failed-assert>
+         </xsl:otherwise>
+      </xsl:choose>
+      <!--ASSERT -->
+      <xsl:choose>
+         <xsl:when test="matches(normalize-space(cbc:IssueTime), '^(([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]|24:00:00)(\.[0-9]+)?(Z|[+-][0-9]{2}:[0-9]{2})?$')"/>
+         <xsl:otherwise>
+            <svrl:failed-assert xmlns:svrl="http://purl.oclc.org/dsdl/svrl"
+                                test="matches(normalize-space(cbc:IssueTime), '^(([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]|24:00:00)(\.[0-9]+)?(Z|[+-][0-9]{2}:[0-9]{2})?$')">
+               <xsl:attribute name="id">ibr-tdd-60</xsl:attribute>
+               <xsl:attribute name="flag">fatal</xsl:attribute>
+               <xsl:attribute name="location">
+                  <xsl:apply-templates select="." mode="schematron-select-full-path"/>
+               </xsl:attribute>
+               <svrl:text>[ibr-tdd-60] The time when the invoice or invoice data was received by C2 from C1, or by C3 from C2 (tdom-05) MUST be present</svrl:text>
+            </svrl:failed-assert>
+         </xsl:otherwise>
+      </xsl:choose>
       <!--ASSERT -->
       <xsl:choose>
          <xsl:when test="exists(pxs:ReportedDocument)"/>
