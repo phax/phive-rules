@@ -256,6 +256,8 @@ v4.3.9 - work in progress
         * UBL VES coordinates `rs.gov.mfin.logistics:ubl-despatch-advice:1.1.0` and `rs.gov.mfin.logistics:ubl-receipt-advice:1.1.0`
         * The Ministry of Finance only publishes UBL 2.1 example documents for SEO, so these perform UBL 2.1 XSD validation only (no Serbia-specific or Peppol Logistics BIS business rules)
 * Updated Peppol OM Tax Data Document (TDD) 1.0.0 rules to the final release (2026-06-23) from https://docs.peppol.eu/poac/om/om-tdd/
+* Added support for France CTC 1.4.0 validation rules, building on EN 16931 1.3.16, effective 2026-09-01. See [#69](https://github.com/phax/phive-rules/issues/69)
+    * VES coordinates `fr.ctc:ubl-invoice:1.4.0`, `fr.ctc:ubl-creditnote:1.4.0`, `fr.ctc:cii:1.4.0`, `fr.ctc:cdar:1.4.0`, `fr.ctc:extended-ubl-invoice:1.4.0`, `fr.ctc:extended-ubl-creditnote:1.4.0` and `fr.ctc:extended-cii:1.4.0`
 
 v4.3.8 - 2026-06-15
 * Added support for ZuGFERD 2.5 (incl. Corrigendum 1) - all profiles (XML only)
