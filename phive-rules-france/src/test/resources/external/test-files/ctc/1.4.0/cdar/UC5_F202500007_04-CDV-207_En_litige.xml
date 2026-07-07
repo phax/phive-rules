@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<rsm:CrossDomainAcknowledgementAndResponse
+xmlns:qdt="urn:un:unece:uncefact:data:standard:QualifiedDataType:100"
+ xmlns:udt="urn:un:unece:uncefact:data:standard:UnqualifiedDataType:100"
+ xmlns:ram="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100"
+ xmlns:rsm="urn:un:unece:uncefact:data:standard:CrossDomainAcknowledgementAndResponse:100"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+     <rsm:ExchangedDocumentContext>
+          <ram:BusinessProcessSpecifiedDocumentContextParameter>
+               <ram:ID>REGULATED</ram:ID>  <!-- MDT-2 (Type de processus métier (cadre de facturation)) : REGULATED -->
+          </ram:BusinessProcessSpecifiedDocumentContextParameter>
+          <ram:GuidelineSpecifiedDocumentContextParameter>
+               <ram:ID>urn.cpro.gouv.fr:1p0:CDV:invoice</ram:ID>  <!-- MDT-3 (Type de profil (e-invoicing, e-reporting, facture etc..)) : urn.cpro.gouv.fr:1p0:CDV:invoice -->
+          </ram:GuidelineSpecifiedDocumentContextParameter>
+     </rsm:ExchangedDocumentContext>
+     <rsm:ExchangedDocument>
+          <ram:ID>F202500007_207_20250702171000#380_20250702</ram:ID>  <!-- MDT-4 (Id document) : F202500007_207_20250702171000#380_20250702 -->
+          <ram:Name>UC5_F202500007_04-CDV-207_En_litige</ram:Name>  <!-- MDT-5 (Nom document) : UC5_F202500007_04-CDV-207_En_litige -->
+          <ram:IssueDateTime>
+               <udt:DateTimeString format="204">20250702181500</udt:DateTimeString>  <!-- MDT-8 (Date-heure de création du CDV) : 20250702181500 -->
+          </ram:IssueDateTime>
+          <ram:SenderTradeParty>
+               <ram:RoleCode>WK</ram:RoleCode>  <!-- MDT-21 (Code rôle) : WK -->
+          </ram:SenderTradeParty>
+          <ram:IssuerTradeParty>
+               <ram:GlobalID schemeID="0002">200000008</ram:GlobalID>  <!-- MDT-38 (ID émetteur document (global)) : 200000008 -->
+               <ram:Name>ACHETEUR</ram:Name>  <!-- MDT-39 (Raison sociale) : ACHETEUR -->
+               <ram:RoleCode>BY</ram:RoleCode>  <!-- MDT-40 (Code rôle) : BY -->
+          </ram:IssuerTradeParty>
+          <ram:RecipientTradeParty>
+               <ram:GlobalID schemeID="0002">100000009</ram:GlobalID>  <!-- MDT-57 (ID destinataire (global)) : 100000009 -->
+               <ram:Name>VENDEUR</ram:Name>  <!-- MDT-58 (Raison sociale) : VENDEUR -->
+               <ram:RoleCode>SE</ram:RoleCode>  <!-- MDT-59 (Code rôle) : SE -->
+               <ram:URIUniversalCommunication>
+                    <ram:URIID schemeID="0225">100000009_STATUTS</ram:URIID>  <!-- MDT-73 (Adresse électronique (réseau CEF)) : 100000009_STATUTS -->
+               </ram:URIUniversalCommunication>
+          </ram:RecipientTradeParty>
+     </rsm:ExchangedDocument>
+     <rsm:AcknowledgementDocument>
+          <ram:MultipleReferencesIndicator>
+               <udt:Indicator>false</udt:Indicator>  <!-- MDT-74 (Indicateur CDV MONO (false) ou MULTI (true) Document) : false -->
+          </ram:MultipleReferencesIndicator>
+          <ram:TypeCode>23</ram:TypeCode>  <!-- MDT-77 (Code type document) : 23 -->
+          <ram:IssueDateTime>
+               <udt:DateTimeString format="204">20250702180000</udt:DateTimeString>  <!-- MDT-78 (Date-heure de dépôt du statut CDV) : 20250702180000 -->
+          </ram:IssueDateTime>
+          <ram:ReferenceReferencedDocument>
+               <ram:IssuerAssignedID>F202500007</ram:IssuerAssignedID>  <!-- MDT-87 (ID objet (BT-1 d'une facture)) : F202500007 -->
+               <ram:StatusCode>46</ram:StatusCode>  <!-- MDT-88 (Code statut) : 46 -->
+               <ram:TypeCode>380</ram:TypeCode>  <!-- MDT-91 (Code type de l'objet (BT-3 de la facture)) : 380 -->
+               <ram:ReceiptDateTime>
+                    <udt:DateTimeString format="204">20250702171000</udt:DateTimeString>  <!-- MDT-95 (Date-heure de réception de l'objet (pour une facture : date statut Déposée / Rejetée pour l'Emetteur ; date statut Reçue / Rejetée pour le Destinataire)) : 20250702171000 -->
+               </ram:ReceiptDateTime>
+               <ram:FormattedIssueDateTime>
+                    <qdt:DateTimeString format="102">20250702</qdt:DateTimeString>  <!-- MDT-100 (Date-heure (Date de facture BT-2)) : 20250702 -->
+               </ram:FormattedIssueDateTime>
+               <ram:ProcessConditionCode>207</ram:ProcessConditionCode>  <!-- MDT-105 (Code statut traitement) : 207 -->
+               <ram:ProcessCondition>En_litige</ram:ProcessCondition>  <!-- MDT-106 (Libellé statut traitement) : En_litige -->
+               <ram:IssuerTradeParty>
+                    <ram:GlobalID schemeID="0002">100000009</ram:GlobalID>  <!-- MDT-129 ( Id émetteur document référencé (global)) : 100000009 -->
+               </ram:IssuerTradeParty>
+               <ram:SpecifiedDocumentStatus>
+                    <ram:ReasonCode>TX_TVA_ERR</ram:ReasonCode>  <!-- MDT-113 (Code motif rejet) : TX_TVA_ERR -->
+                    <ram:Reason> Taux de TVA erroné</ram:Reason>  <!-- MDT-114 (Libellé motif rejet) :  Taux de TVA erroné -->
+                    <ram:RequestedActionCode>CNF</ram:RequestedActionCode>  <!-- MDT-121 (Code action attendue) : CNF -->
+                    <ram:RequestedAction>Créer un Avoir total</ram:RequestedAction>  <!-- MDT-122 (Action attendue) : Créer un Avoir total -->
+                    <ram:SequenceNumeric>1</ram:SequenceNumeric>  <!-- MDT-124-2 (Numéro incremental) : 1 -->
+                    <ram:SpecifiedDocumentCharacteristic>
+                         <ram:ID>BT-152</ram:ID>  <!-- MDT-206 ( ID de la donnée du document) : BT-152 -->
+                         <ram:TypeCode>DIV</ram:TypeCode>  <!-- MDT-207 ( Code du type de donnée) : DIV -->
+                         <ram:ValueChangedIndicator>
+                              <udt:IndicatorString>true</udt:IndicatorString>  <!-- MDT-209 ( Indicateur) : true -->
+                         </ram:ValueChangedIndicator>
+                         <ram:Name>Taux TVA</ram:Name>  <!-- MDT-211 ( Nom de la Donnée) : Taux TVA -->
+                         <ram:Location>/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeSettlement/ram:ApplicableTradeTax/ram:RateApplicablePercent</ram:Location>  <!-- MDT-213 ( Localisation de la donnée dans l'XML) : /rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeSettlement/ram:ApplicableTradeTax/ram:RateApplicablePercent -->
+                         <ram:ValuePercent>10.00</ram:ValuePercent>  <!-- MDT-224 ( Pourcentage (par exemple TVA pour un Encaissée)) : 10.00 -->
+                    </ram:SpecifiedDocumentCharacteristic>
+                    <ram:SpecifiedDocumentCharacteristic>
+                         <ram:ID>BT-152</ram:ID>  <!-- MDT-206b ( ID de la donnée du document) : BT-152 -->
+                         <ram:TypeCode>DVA</ram:TypeCode>  <!-- MDT-207b ( Code du type de donnée) : DVA -->
+                         <ram:ValueChangedIndicator>
+                              <udt:IndicatorString>true</udt:IndicatorString>  <!-- MDT-209b ( Indicateur) : true -->
+                         </ram:ValueChangedIndicator>
+                         <ram:Name>Taux TVA</ram:Name>  <!-- MDT-211b ( Nom de la Donnée) : Taux TVA -->
+                         <ram:Location>/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeSettlement/ram:ApplicableTradeTax/ram:RateApplicablePercent</ram:Location>  <!-- MDT-213b ( Localisation de la donnée dans l'XML) : /rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeSettlement/ram:ApplicableTradeTax/ram:RateApplicablePercent -->
+                         <ram:ValuePercent>20.00</ram:ValuePercent>  <!-- MDT-224b ( Pourcentage (par exemple TVA pour un Encaissée)) : 20.00 -->
+                    </ram:SpecifiedDocumentCharacteristic>
+               </ram:SpecifiedDocumentStatus>
+          </ram:ReferenceReferencedDocument>
+     </rsm:AcknowledgementDocument>
+</rsm:CrossDomainAcknowledgementAndResponse>

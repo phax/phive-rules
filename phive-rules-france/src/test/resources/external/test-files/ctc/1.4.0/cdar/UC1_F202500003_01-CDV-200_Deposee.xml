@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<rsm:CrossDomainAcknowledgementAndResponse
+xmlns:qdt="urn:un:unece:uncefact:data:standard:QualifiedDataType:100"
+ xmlns:udt="urn:un:unece:uncefact:data:standard:UnqualifiedDataType:100"
+ xmlns:ram="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100"
+ xmlns:rsm="urn:un:unece:uncefact:data:standard:CrossDomainAcknowledgementAndResponse:100"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+     <rsm:ExchangedDocumentContext>
+          <ram:BusinessProcessSpecifiedDocumentContextParameter>
+               <ram:ID>REGULATED</ram:ID>  <!-- MDT-2 (Type de processus métier (cadre de facturation)) : REGULATED -->
+          </ram:BusinessProcessSpecifiedDocumentContextParameter>
+          <ram:GuidelineSpecifiedDocumentContextParameter>
+               <ram:ID>urn.cpro.gouv.fr:1p0:CDV:invoice</ram:ID>  <!-- MDT-3 (Type de profil (e-invoicing, e-reporting, facture etc..)) : urn.cpro.gouv.fr:1p0:CDV:invoice -->
+          </ram:GuidelineSpecifiedDocumentContextParameter>
+     </rsm:ExchangedDocumentContext>
+     <rsm:ExchangedDocument>
+          <ram:ID>F202500003_200_20250701151000#380_20250701</ram:ID>  <!-- MDT-4 (Id document) : F202500003_200_20250701151000#380_20250701 -->
+          <ram:Name>UC1_F202500003_01-CDV-200_Deposee</ram:Name>  <!-- MDT-5 (Nom document) : UC1_F202500003_01-CDV-200_Deposee -->
+          <ram:IssueDateTime>
+               <udt:DateTimeString format="204">20250701151500</udt:DateTimeString>  <!-- MDT-8 (Date-heure de création du CDV) : 20250701151500 -->
+          </ram:IssueDateTime>
+          <ram:SenderTradeParty>
+               <ram:RoleCode>WK</ram:RoleCode>  <!-- MDT-21 (Code rôle) : WK -->
+          </ram:SenderTradeParty>
+          <ram:IssuerTradeParty>
+               <ram:RoleCode>WK</ram:RoleCode>  <!-- MDT-40 (Code rôle) : WK -->
+          </ram:IssuerTradeParty>
+          <ram:RecipientTradeParty>
+               <ram:GlobalID schemeID="0002">100000009</ram:GlobalID>  <!-- MDT-57 (ID destinataire (global)) : 100000009 -->
+               <ram:Name>VENDEUR</ram:Name>  <!-- MDT-58 (Raison sociale) : VENDEUR -->
+               <ram:RoleCode>SE</ram:RoleCode>  <!-- MDT-59 (Code rôle) : SE -->
+               <ram:URIUniversalCommunication>
+                    <ram:URIID schemeID="0225">100000009_STATUTS</ram:URIID>  <!-- MDT-73 (Adresse électronique (réseau CEF)) : 100000009_STATUTS -->
+               </ram:URIUniversalCommunication>
+          </ram:RecipientTradeParty>
+          <ram:RecipientTradeParty>
+               <ram:GlobalID schemeID="0238">9998</ram:GlobalID>  <!-- MDT-57t (ID destinataire (global)) : 9998 -->
+               <ram:Name>PPF</ram:Name>  <!-- MDT-58t (Raison sociale) : PPF -->
+               <ram:RoleCode>DFH</ram:RoleCode>  <!-- MDT-59t (Code rôle) : DFH -->
+          </ram:RecipientTradeParty>
+     </rsm:ExchangedDocument>
+     <rsm:AcknowledgementDocument>
+          <ram:MultipleReferencesIndicator>
+               <udt:Indicator>false</udt:Indicator>  <!-- MDT-74 (Indicateur CDV MONO (false) ou MULTI (true) Document) : false -->
+          </ram:MultipleReferencesIndicator>
+          <ram:TypeCode>305</ram:TypeCode>  <!-- MDT-77 (Code type document) : 305 -->
+          <ram:IssueDateTime>
+               <udt:DateTimeString format="204">20250701151000</udt:DateTimeString>  <!-- MDT-78 (Date-heure de dépôt du statut CDV) : 20250701151000 -->
+          </ram:IssueDateTime>
+          <ram:ReferenceReferencedDocument>
+               <ram:IssuerAssignedID>F202500003</ram:IssuerAssignedID>  <!-- MDT-87 (ID objet (BT-1 d'une facture)) : F202500003 -->
+               <ram:StatusCode>10</ram:StatusCode>  <!-- MDT-88 (Code statut) : 10 -->
+               <ram:TypeCode>380</ram:TypeCode>  <!-- MDT-91 (Code type de l'objet (BT-3 de la facture)) : 380 -->
+               <ram:ReceiptDateTime>
+                    <udt:DateTimeString format="204">20250701151000</udt:DateTimeString>  <!-- MDT-95 (Date-heure de réception de l'objet (pour une facture : date statut Déposée / Rejetée pour l'Emetteur ; date statut Reçue / Rejetée pour le Destinataire)) : 20250701151000 -->
+               </ram:ReceiptDateTime>
+               <ram:FormattedIssueDateTime>
+                    <qdt:DateTimeString format="102">20250701</qdt:DateTimeString>  <!-- MDT-100 (Date-heure (Date de facture BT-2)) : 20250701 -->
+               </ram:FormattedIssueDateTime>
+               <ram:ProcessConditionCode>200</ram:ProcessConditionCode>  <!-- MDT-105 (Code statut traitement) : 200 -->
+               <ram:ProcessCondition>Déposée</ram:ProcessCondition>  <!-- MDT-106 (Libellé statut traitement) : Déposée -->
+               <ram:IssuerTradeParty>
+                    <ram:GlobalID schemeID="0002">100000009</ram:GlobalID>  <!-- MDT-129 ( Id émetteur document référencé (global)) : 100000009 -->
+               </ram:IssuerTradeParty>
+          </ram:ReferenceReferencedDocument>
+     </rsm:AcknowledgementDocument>
+</rsm:CrossDomainAcknowledgementAndResponse>
