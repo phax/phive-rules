@@ -248,7 +248,7 @@ I hope that with the introduction of PINT, the versioning problem will be solved
 
 # News and noteworthy
 
-v4.3.9 - work in progress
+v4.3.9 - 2026-07-08
 * Added new submodule `phive-rules-serbia` for the Serbian SEF (SRBDT) EN 16931 CIUS and Extension validation rules. See [#67](https://github.com/phax/phive-rules/issues/67)
     * UBL VES coordinates `rs.gov.mfin.srbdt:ubl-invoice:1.0.0` and `rs.gov.mfin.srbdt:ubl-creditnote:1.0.0`, building on the EN 16931 UBL rules 1.3.8
     * Rules taken from https://github.com/vasiljevic/en16931-srbdt-va (licensed under EUPL v1.2)
