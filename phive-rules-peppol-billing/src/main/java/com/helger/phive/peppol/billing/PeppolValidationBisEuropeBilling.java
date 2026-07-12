@@ -1,0 +1,62 @@
+/*
+ * Copyright (C) 2026 Philip Helger (www.helger.com)
+ * philip[at]helger[dot]com
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *         http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+package com.helger.phive.peppol.billing;
+
+import java.time.LocalDate;
+
+import org.jspecify.annotations.NonNull;
+
+import com.helger.annotation.Nonempty;
+import com.helger.annotation.concurrent.Immutable;
+import com.helger.base.enforce.ValueEnforcer;
+import com.helger.datetime.helper.PDTFactory;
+import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
+import com.helger.phive.xml.source.IValidationSourceXML;
+
+/**
+ * Peppol BIS Europe Billing validation configuration.
+ *
+ * @author Philip Helger
+ */
+@Immutable
+public final class PeppolValidationBisEuropeBilling
+{
+  private PeppolValidationBisEuropeBilling ()
+  {}
+
+  /**
+   * @return The currently active version number, dependent on the current date. Never
+   *         <code>null</code>.
+   */
+  @NonNull
+  @Nonempty
+  public static String getVersionToUse ()
+  {
+    final LocalDate aNow = PDTFactory.getCurrentLocalDate ();
+    if (aNow.isBefore (PeppolValidation2026_05.VALID_PER))
+      return PeppolValidation2025_11.VERSION_STR;
+    return PeppolValidation2026_05.VERSION_STR;
+  }
+
+  public static void init (@NonNull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
+  {
+    ValueEnforcer.notNull (aRegistry, "Registry");
+
+    PeppolValidation2025_11.init (aRegistry);
+    PeppolValidation2026_05.init (aRegistry);
+  }
+}
