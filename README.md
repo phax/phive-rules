@@ -31,6 +31,7 @@ This project is divided into sub-projects each keeping tracking of one document 
 * phive-rules-oioubl - Validation rules for Danish OIOUBL
 * phive-rules-osa - Validation rules for Hungarian NAV Online Számla (OSA) v2.0 and v3.0 (since v4.3.2)
 * phive-rules-peppol - the Peppol specific rules - always the latest two rule sets
+* phive-rules-peppol-billing - lightweight Peppol BIS Billing rules for UBL Invoice and Credit Note only
 * phive-rules-peppol-legacy - older Peppol specific rules that are out of date (since v2.0.5)
 * phive-rules-peppol-italy - Peppol Italy specific rules (since v2.1.1)
 * phive-rules-serbia - Validation rules for the Serbian SEF (SRBDT) EN 16931 CIUS and SEO logistics documents (since v4.3.9)
@@ -152,6 +153,12 @@ Add the following to your `pom.xml` to use this artifact, replacing `x.y.z` with
 <dependency>
   <groupId>com.helger.phive.rules</groupId>
   <artifactId>phive-rules-peppol</artifactId>
+  <version>x.y.z</version>
+</dependency>
+
+<dependency>
+  <groupId>com.helger.phive.rules</groupId>
+  <artifactId>phive-rules-peppol-billing</artifactId>
   <version>x.y.z</version>
 </dependency>
 
