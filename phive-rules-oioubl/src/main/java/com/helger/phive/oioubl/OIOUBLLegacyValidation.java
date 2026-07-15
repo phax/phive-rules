@@ -162,138 +162,133 @@ public final class OIOUBLLegacyValidation
     {
       final String sPath202 = "/external/schematron/oioubl/2.0.2/";
       VesXmlBuilder.builder ()
-                       .vesID (VID_OIOUBL_APPLICATION_RESPONSE)
-                       .displayNamePrefix ("OIOUBL Application Response ")
-                       .deprecated ()
-                       .addXSD (UBL20Marshaller.getAllApplicationResponseXSDs ())
-                       .addSchematron (_createOIOUBL (new ClassPathResource (sPath202 +
-                                                                             "OIOUBL_ApplicationResponse_Schematron.xsl",
-                                                                             _getCL ())))
-                       .registerInto (aRegistry);
+                   .vesID (VID_OIOUBL_APPLICATION_RESPONSE)
+                   .displayNamePrefix ("OIOUBL Application Response ")
+                   .deprecated ()
+                   .addXSD (UBL20Marshaller.getAllApplicationResponseXSDs ())
+                   .addSchematron (_createOIOUBL (new ClassPathResource (sPath202 +
+                                                                         "OIOUBL_ApplicationResponse_Schematron.xsl",
+                                                                         _getCL ())))
+                   .registerInto (aRegistry);
       VesXmlBuilder.builder ()
-                       .vesID (VID_OIOUBL_CATALOGUE)
-                       .displayNamePrefix ("OIOUBL Catalogue ")
-                       .deprecated ()
-                       .addXSD (UBL20Marshaller.getAllCatalogueXSDs ())
-                       .addSchematron (_createOIOUBL (new ClassPathResource (sPath202 +
-                                                                             "OIOUBL_Catalogue_Schematron.xsl",
-                                                                             _getCL ())))
-                       .registerInto (aRegistry);
+                   .vesID (VID_OIOUBL_CATALOGUE)
+                   .displayNamePrefix ("OIOUBL Catalogue ")
+                   .deprecated ()
+                   .addXSD (UBL20Marshaller.getAllCatalogueXSDs ())
+                   .addSchematron (_createOIOUBL (new ClassPathResource (sPath202 + "OIOUBL_Catalogue_Schematron.xsl",
+                                                                         _getCL ())))
+                   .registerInto (aRegistry);
       VesXmlBuilder.builder ()
-                       .vesID (VID_OIOUBL_CATALOGUE_DELETION)
-                       .displayNamePrefix ("OIOUBL Catalogue Deletion ")
-                       .deprecated ()
-                       .addXSD (UBL20Marshaller.getAllCatalogueDeletionXSDs ())
-                       .addSchematron (_createOIOUBL (new ClassPathResource (sPath202 +
-                                                                             "OIOUBL_CatalogueDeletion_Schematron.xsl",
-                                                                             _getCL ())))
-                       .registerInto (aRegistry);
+                   .vesID (VID_OIOUBL_CATALOGUE_DELETION)
+                   .displayNamePrefix ("OIOUBL Catalogue Deletion ")
+                   .deprecated ()
+                   .addXSD (UBL20Marshaller.getAllCatalogueDeletionXSDs ())
+                   .addSchematron (_createOIOUBL (new ClassPathResource (sPath202 +
+                                                                         "OIOUBL_CatalogueDeletion_Schematron.xsl",
+                                                                         _getCL ())))
+                   .registerInto (aRegistry);
       VesXmlBuilder.builder ()
-                       .vesID (VID_OIOUBL_CATALOGUE_ITEM_SPECIFICATION_UPDATE)
-                       .displayNamePrefix ("OIOUBL Catalogue Item Specification Update ")
-                       .deprecated ()
-                       .addXSD (UBL20Marshaller.getAllCatalogueItemSpecificationUpdateXSDs ())
-                       .addSchematron (_createOIOUBL (new ClassPathResource (sPath202 +
-                                                                             "OIOUBL_CatalogueItemSpecificationUpdate_Schematron.xsl",
-                                                                             _getCL ())))
-                       .registerInto (aRegistry);
+                   .vesID (VID_OIOUBL_CATALOGUE_ITEM_SPECIFICATION_UPDATE)
+                   .displayNamePrefix ("OIOUBL Catalogue Item Specification Update ")
+                   .deprecated ()
+                   .addXSD (UBL20Marshaller.getAllCatalogueItemSpecificationUpdateXSDs ())
+                   .addSchematron (_createOIOUBL (new ClassPathResource (sPath202 +
+                                                                         "OIOUBL_CatalogueItemSpecificationUpdate_Schematron.xsl",
+                                                                         _getCL ())))
+                   .registerInto (aRegistry);
       VesXmlBuilder.builder ()
-                       .vesID (VID_OIOUBL_CATALOGUE_PRICING_UPDATE)
-                       .displayNamePrefix ("OIOUBL Catalogue Pricing Update ")
-                       .deprecated ()
-                       .addXSD (UBL20Marshaller.getAllCataloguePricingUpdateXSDs ())
-                       .addSchematron (_createOIOUBL (new ClassPathResource (sPath202 +
-                                                                             "OIOUBL_CataloguePricingUpdate_Schematron.xsl",
-                                                                             _getCL ())))
-                       .registerInto (aRegistry);
+                   .vesID (VID_OIOUBL_CATALOGUE_PRICING_UPDATE)
+                   .displayNamePrefix ("OIOUBL Catalogue Pricing Update ")
+                   .deprecated ()
+                   .addXSD (UBL20Marshaller.getAllCataloguePricingUpdateXSDs ())
+                   .addSchematron (_createOIOUBL (new ClassPathResource (sPath202 +
+                                                                         "OIOUBL_CataloguePricingUpdate_Schematron.xsl",
+                                                                         _getCL ())))
+                   .registerInto (aRegistry);
       VesXmlBuilder.builder ()
-                       .vesID (VID_OIOUBL_CATALOGUE_REQUEST)
-                       .displayNamePrefix ("OIOUBL Catalogue Request ")
-                       .deprecated ()
-                       .addXSD (UBL20Marshaller.getAllCatalogueRequestXSDs ())
-                       .addSchematron (_createOIOUBL (new ClassPathResource (sPath202 +
-                                                                             "OIOUBL_CatalogueRequest_Schematron.xsl",
-                                                                             _getCL ())))
-                       .registerInto (aRegistry);
+                   .vesID (VID_OIOUBL_CATALOGUE_REQUEST)
+                   .displayNamePrefix ("OIOUBL Catalogue Request ")
+                   .deprecated ()
+                   .addXSD (UBL20Marshaller.getAllCatalogueRequestXSDs ())
+                   .addSchematron (_createOIOUBL (new ClassPathResource (sPath202 +
+                                                                         "OIOUBL_CatalogueRequest_Schematron.xsl",
+                                                                         _getCL ())))
+                   .registerInto (aRegistry);
       VesXmlBuilder.builder ()
-                       .vesID (VID_OIOUBL_CREDIT_NOTE)
-                       .displayNamePrefix ("OIOUBL Credit Note ")
-                       .deprecated ()
-                       .addXSD (UBL20Marshaller.getAllCreditNoteXSDs ())
-                       .addSchematron (_createOIOUBL (new ClassPathResource (sPath202 +
-                                                                             "OIOUBL_CreditNote_Schematron.xsl",
-                                                                             _getCL ())))
-                       .registerInto (aRegistry);
+                   .vesID (VID_OIOUBL_CREDIT_NOTE)
+                   .displayNamePrefix ("OIOUBL Credit Note ")
+                   .deprecated ()
+                   .addXSD (UBL20Marshaller.getAllCreditNoteXSDs ())
+                   .addSchematron (_createOIOUBL (new ClassPathResource (sPath202 + "OIOUBL_CreditNote_Schematron.xsl",
+                                                                         _getCL ())))
+                   .registerInto (aRegistry);
       VesXmlBuilder.builder ()
-                       .vesID (VID_OIOUBL_INVOICE)
-                       .displayNamePrefix ("OIOUBL Invoice ")
-                       .deprecated ()
-                       .addXSD (UBL20Marshaller.getAllInvoiceXSDs ())
-                       .addSchematron (_createOIOUBL (new ClassPathResource (sPath202 + "OIOUBL_Invoice_Schematron.xsl",
-                                                                             _getCL ())))
-                       .registerInto (aRegistry);
+                   .vesID (VID_OIOUBL_INVOICE)
+                   .displayNamePrefix ("OIOUBL Invoice ")
+                   .deprecated ()
+                   .addXSD (UBL20Marshaller.getAllInvoiceXSDs ())
+                   .addSchematron (_createOIOUBL (new ClassPathResource (sPath202 + "OIOUBL_Invoice_Schematron.xsl",
+                                                                         _getCL ())))
+                   .registerInto (aRegistry);
       VesXmlBuilder.builder ()
-                       .vesID (VID_OIOUBL_ORDER)
-                       .displayNamePrefix ("OIOUBL Order ")
-                       .deprecated ()
-                       .addXSD (UBL20Marshaller.getAllOrderXSDs ())
-                       .addSchematron (_createOIOUBL (new ClassPathResource (sPath202 + "OIOUBL_Order_Schematron.xsl",
-                                                                             _getCL ())))
-                       .registerInto (aRegistry);
+                   .vesID (VID_OIOUBL_ORDER)
+                   .displayNamePrefix ("OIOUBL Order ")
+                   .deprecated ()
+                   .addXSD (UBL20Marshaller.getAllOrderXSDs ())
+                   .addSchematron (_createOIOUBL (new ClassPathResource (sPath202 + "OIOUBL_Order_Schematron.xsl",
+                                                                         _getCL ())))
+                   .registerInto (aRegistry);
       VesXmlBuilder.builder ()
-                       .vesID (VID_OIOUBL_ORDER_CANCELLATION)
-                       .displayNamePrefix ("OIOUBL Order Cancellation ")
-                       .deprecated ()
-                       .addXSD (UBL20Marshaller.getAllOrderCancellationXSDs ())
-                       .addSchematron (_createOIOUBL (new ClassPathResource (sPath202 +
-                                                                             "OIOUBL_OrderCancellation_Schematron.xsl",
-                                                                             _getCL ())))
-                       .registerInto (aRegistry);
+                   .vesID (VID_OIOUBL_ORDER_CANCELLATION)
+                   .displayNamePrefix ("OIOUBL Order Cancellation ")
+                   .deprecated ()
+                   .addXSD (UBL20Marshaller.getAllOrderCancellationXSDs ())
+                   .addSchematron (_createOIOUBL (new ClassPathResource (sPath202 +
+                                                                         "OIOUBL_OrderCancellation_Schematron.xsl",
+                                                                         _getCL ())))
+                   .registerInto (aRegistry);
       VesXmlBuilder.builder ()
-                       .vesID (VID_OIOUBL_ORDER_CHANGE)
-                       .displayNamePrefix ("OIOUBL Order Change ")
-                       .deprecated ()
-                       .addXSD (UBL20Marshaller.getAllOrderChangeXSDs ())
-                       .addSchematron (_createOIOUBL (new ClassPathResource (sPath202 +
-                                                                             "OIOUBL_OrderChange_Schematron.xsl",
-                                                                             _getCL ())))
-                       .registerInto (aRegistry);
+                   .vesID (VID_OIOUBL_ORDER_CHANGE)
+                   .displayNamePrefix ("OIOUBL Order Change ")
+                   .deprecated ()
+                   .addXSD (UBL20Marshaller.getAllOrderChangeXSDs ())
+                   .addSchematron (_createOIOUBL (new ClassPathResource (sPath202 + "OIOUBL_OrderChange_Schematron.xsl",
+                                                                         _getCL ())))
+                   .registerInto (aRegistry);
       VesXmlBuilder.builder ()
-                       .vesID (VID_OIOUBL_ORDER_RESPONSE)
-                       .displayNamePrefix ("OIOUBL Order Response ")
-                       .deprecated ()
-                       .addXSD (UBL20Marshaller.getAllOrderResponseXSDs ())
-                       .addSchematron (_createOIOUBL (new ClassPathResource (sPath202 +
-                                                                             "OIOUBL_OrderResponse_Schematron.xsl",
-                                                                             _getCL ())))
-                       .registerInto (aRegistry);
+                   .vesID (VID_OIOUBL_ORDER_RESPONSE)
+                   .displayNamePrefix ("OIOUBL Order Response ")
+                   .deprecated ()
+                   .addXSD (UBL20Marshaller.getAllOrderResponseXSDs ())
+                   .addSchematron (_createOIOUBL (new ClassPathResource (sPath202 +
+                                                                         "OIOUBL_OrderResponse_Schematron.xsl",
+                                                                         _getCL ())))
+                   .registerInto (aRegistry);
       VesXmlBuilder.builder ()
-                       .vesID (VID_OIOUBL_ORDER_RESPONSE_SIMPLE)
-                       .displayNamePrefix ("OIOUBL Order Response Simple ")
-                       .deprecated ()
-                       .addXSD (UBL20Marshaller.getAllOrderResponseSimpleXSDs ())
-                       .addSchematron (_createOIOUBL (new ClassPathResource (sPath202 +
-                                                                             "OIOUBL_OrderResponseSimple_Schematron.xsl",
-                                                                             _getCL ())))
-                       .registerInto (aRegistry);
+                   .vesID (VID_OIOUBL_ORDER_RESPONSE_SIMPLE)
+                   .displayNamePrefix ("OIOUBL Order Response Simple ")
+                   .deprecated ()
+                   .addXSD (UBL20Marshaller.getAllOrderResponseSimpleXSDs ())
+                   .addSchematron (_createOIOUBL (new ClassPathResource (sPath202 +
+                                                                         "OIOUBL_OrderResponseSimple_Schematron.xsl",
+                                                                         _getCL ())))
+                   .registerInto (aRegistry);
       VesXmlBuilder.builder ()
-                       .vesID (VID_OIOUBL_REMINDER)
-                       .displayNamePrefix ("OIOUBL Reminder ")
-                       .deprecated ()
-                       .addXSD (UBL20Marshaller.getAllReminderXSDs ())
-                       .addSchematron (_createOIOUBL (new ClassPathResource (sPath202 +
-                                                                             "OIOUBL_Reminder_Schematron.xsl",
-                                                                             _getCL ())))
-                       .registerInto (aRegistry);
+                   .vesID (VID_OIOUBL_REMINDER)
+                   .displayNamePrefix ("OIOUBL Reminder ")
+                   .deprecated ()
+                   .addXSD (UBL20Marshaller.getAllReminderXSDs ())
+                   .addSchematron (_createOIOUBL (new ClassPathResource (sPath202 + "OIOUBL_Reminder_Schematron.xsl",
+                                                                         _getCL ())))
+                   .registerInto (aRegistry);
       VesXmlBuilder.builder ()
-                       .vesID (VID_OIOUBL_STATEMENT)
-                       .displayNamePrefix ("OIOUBL Statement ")
-                       .deprecated ()
-                       .addXSD (UBL20Marshaller.getAllStatementXSDs ())
-                       .addSchematron (_createOIOUBL (new ClassPathResource (sPath202 +
-                                                                             "OIOUBL_Statement_Schematron.xsl",
-                                                                             _getCL ())))
-                       .registerInto (aRegistry);
+                   .vesID (VID_OIOUBL_STATEMENT)
+                   .displayNamePrefix ("OIOUBL Statement ")
+                   .deprecated ()
+                   .addXSD (UBL20Marshaller.getAllStatementXSDs ())
+                   .addSchematron (_createOIOUBL (new ClassPathResource (sPath202 + "OIOUBL_Statement_Schematron.xsl",
+                                                                         _getCL ())))
+                   .registerInto (aRegistry);
     }
 
     // 3.0.1 (Deprecated)
@@ -305,47 +300,47 @@ public final class OIOUBLLegacyValidation
 
       final String sPath = "/external/schematron/oioubl/3.0.1/xslt/";
       VesXmlBuilder.builder ()
-                       .vesID (VID_OIOUBL_CREDIT_NOTE_3_0_1)
-                       .displayNamePrefix ("OIOUBL Credit Note ")
-                       .deprecated ()
-                       .basedOn (aVESUBLCreditNote_1_3_13)
-                       .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
-                                                                                                    "OIOUBL-Creditnote.xslt",
-                                                                                                    _getCL ())))
-                       .registerInto (aRegistry);
+                   .vesID (VID_OIOUBL_CREDIT_NOTE_3_0_1)
+                   .displayNamePrefix ("OIOUBL Credit Note ")
+                   .deprecated ()
+                   .basedOn (aVESUBLCreditNote_1_3_13)
+                   .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
+                                                                                                "OIOUBL-Creditnote.xslt",
+                                                                                                _getCL ())))
+                   .registerInto (aRegistry);
       VesXmlBuilder.builder ()
-                       .vesID (VID_OIOUBL_INVOICE_3_0_1)
-                       .displayNamePrefix ("OIOUBL Invoice ")
-                       .deprecated ()
-                       .basedOn (aVESUBLInvoice_1_3_13)
-                       .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
-                                                                                                    "OIOUBL-Invoice.xslt",
-                                                                                                    _getCL ())))
-                       .registerInto (aRegistry);
+                   .vesID (VID_OIOUBL_INVOICE_3_0_1)
+                   .displayNamePrefix ("OIOUBL Invoice ")
+                   .deprecated ()
+                   .basedOn (aVESUBLInvoice_1_3_13)
+                   .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
+                                                                                                "OIOUBL-Invoice.xslt",
+                                                                                                _getCL ())))
+                   .registerInto (aRegistry);
       VesXmlBuilder.builder ()
-                       .vesID (VID_OIOUBL_INVOICE_RESPONSE_3_0_1)
-                       .displayNamePrefix ("OIOUBL Invoice Response ")
-                       .deprecated ()
-                       .addXSD (UBL21Marshaller.getAllApplicationResponseXSDs ())
-                       .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
-                                                                                                    "DK-PEPPOLBIS-T111.xslt",
-                                                                                                    _getCL ())))
-                       .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
-                                                                                                    "OIOUBL-Invoice-Response.xslt",
-                                                                                                    _getCL ())))
-                       .registerInto (aRegistry);
+                   .vesID (VID_OIOUBL_INVOICE_RESPONSE_3_0_1)
+                   .displayNamePrefix ("OIOUBL Invoice Response ")
+                   .deprecated ()
+                   .addXSD (UBL21Marshaller.getAllApplicationResponseXSDs ())
+                   .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
+                                                                                                "DK-PEPPOLBIS-T111.xslt",
+                                                                                                _getCL ())))
+                   .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
+                                                                                                "OIOUBL-Invoice-Response.xslt",
+                                                                                                _getCL ())))
+                   .registerInto (aRegistry);
       VesXmlBuilder.builder ()
-                       .vesID (VID_OIOUBL_MLR_3_0_1)
-                       .displayNamePrefix ("OIOUBL Message Level Response ")
-                       .deprecated ()
-                       .addXSD (UBL21Marshaller.getAllApplicationResponseXSDs ())
-                       .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
-                                                                                                    "DK-PEPPOLBIS-T71.xslt",
-                                                                                                    _getCL ())))
-                       .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
-                                                                                                    "OIOUBL-Message-Level-Response.xslt",
-                                                                                                    _getCL ())))
-                       .registerInto (aRegistry);
+                   .vesID (VID_OIOUBL_MLR_3_0_1)
+                   .displayNamePrefix ("OIOUBL Message Level Response ")
+                   .deprecated ()
+                   .addXSD (UBL21Marshaller.getAllApplicationResponseXSDs ())
+                   .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
+                                                                                                "DK-PEPPOLBIS-T71.xslt",
+                                                                                                _getCL ())))
+                   .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
+                                                                                                "OIOUBL-Message-Level-Response.xslt",
+                                                                                                _getCL ())))
+                   .registerInto (aRegistry);
     }
   }
 }
