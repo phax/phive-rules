@@ -25,7 +25,7 @@ import com.helger.phive.api.EValidationType;
 import com.helger.phive.api.artefact.IValidationArtefact;
 import com.helger.phive.api.executor.IValidationExecutor;
 import com.helger.phive.xml.source.IValidationSourceXML;
-import com.helger.schematron.pure.SchematronResourcePure;
+import com.helger.schematron.pure.SchematronResourcePureXPath;
 import com.helger.schematron.sch.SchematronResourceSCH;
 import com.helger.schematron.schxslt.xslt2.SchematronResourceSchXslt_XSLT2;
 import com.helger.schematron.schxslt2.xslt.SchematronResourceSchXslt2;
@@ -58,17 +58,21 @@ public final class PhiveRulesTestHelper
 
     // Check that the passed Schematron is valid
     if (aVA.getValidationType () == EValidationType.SCHEMATRON_PURE)
-      return new SchematronResourcePure (aRes).isValidSchematron ();
+      return SchematronResourcePureXPath.builder (aRes).build ().isValidSchematron ();
+
     if (aVA.getValidationType () == EValidationType.SCHEMATRON_SCH_ISO_XSLT2)
-      return new SchematronResourceSCH (aRes).isValidSchematron ();
+      return SchematronResourceSCH.builder (aRes).build ().isValidSchematron ();
+
     if (aVA.getValidationType () == EValidationType.SCHEMATRON_XSLT1 ||
         aVA.getValidationType () == EValidationType.SCHEMATRON_XSLT2 ||
         aVA.getValidationType () == EValidationType.SCHEMATRON_XSLT3)
-      return new SchematronResourceXSLT (aRes).isValidSchematron ();
+      return SchematronResourceXSLT.builder (aRes).build ().isValidSchematron ();
+
     if (aVA.getValidationType () == EValidationType.SCHEMATRON_SCHXSLT1_XSLT2)
-      return new SchematronResourceSchXslt_XSLT2 (aRes).isValidSchematron ();
+      return SchematronResourceSchXslt_XSLT2.builder (aRes).build ().isValidSchematron ();
+
     if (aVA.getValidationType () == EValidationType.SCHEMATRON_SCHXSLT2_XSLT3)
-      return new SchematronResourceSchXslt2 (aRes).isValidSchematron ();
+      return SchematronResourceSchXslt2.builder (aRes).build ().isValidSchematron ();
 
     // Assume success
     LOGGER.warn ("Unexpected validation type: " + aVA.getValidationType () + " - assuming it is okay");
