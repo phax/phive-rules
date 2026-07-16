@@ -73,7 +73,7 @@
     <peppol-sk.version>0.1.3</peppol-sk.version>
     <peppol-uae.version>1.0.0</peppol-uae.version>
     <peppol-vida.version>0.9.0</peppol-vida.version>
-    <ph-cii.version>4.1.1</ph-cii.version>
+    <ph-cii.version>4.1.2</ph-cii.version>
     <ph-ebinterface.version>8.1.0</ph-ebinterface.version>
     <ph-fatturapa.version>3.1.0</ph-fatturapa.version>
     <ph-sbdh.version>6.1.0</ph-sbdh.version>
@@ -100,7 +100,7 @@
       <dependency>
         <groupId>com.helger.diver</groupId>
         <artifactId>ph-diver-parent-pom</artifactId>
-        <version>4.2.0</version>
+        <version>4.2.1</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
