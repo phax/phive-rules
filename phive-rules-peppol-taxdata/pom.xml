@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (C) 2014-2026 Philip Helger (www.helger.com)
+    philip[at]helger[dot]com
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+            http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.helger.phive.rules</groupId>
+    <artifactId>phive-rules-parent-pom</artifactId>
+    <version>4.3.10-SNAPSHOT</version>
+  </parent>
+  <artifactId>phive-rules-peppol-taxdata</artifactId>
+  <packaging>jar</packaging>
+  <name>phive-rules-peppol-taxdata</name>
+  <description>OpenPeppol Tax Data Document (TDD) validation rules for phive</description>
+  <url>https://github.com/phax/phive-rules/phive-rules-peppol-taxdata</url>
+  <inceptionYear>2025</inceptionYear>
+  <licenses>
+    <license>
+      <name>Apache 2</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+  <organization>
+    <name>Philip Helger</name>
+    <url>http://www.helger.com</url>
+  </organization>
+  <developers>
+    <developer>
+      <id>philip</id>
+      <name>Philip Helger</name>
+      <email>ph(at)helger.com</email>
+      <url>http://www.helger.com</url>
+    </developer>
+  </developers>
+  <dependencies>
+    <dependency>
+      <groupId>com.helger.commons</groupId>
+      <artifactId>ph-xml</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.helger.phive.rules</groupId>
+      <artifactId>phive-rules-api</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.helger.peppol</groupId>
+      <artifactId>peppol-om-tdd-datatypes</artifactId>
+      <version>${peppol-om.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.helger.peppol</groupId>
+      <artifactId>peppol-sk-tdd-datatypes</artifactId>
+      <version>${peppol-sk.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.helger.peppol</groupId>
+      <artifactId>peppol-uae-tdd-datatypes</artifactId>
+      <version>${peppol-uae.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.helger.peppol</groupId>
+      <artifactId>peppol-vida-tdd-datatypes</artifactId>
+      <version>${peppol-vida.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-simple</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.sun.xml.bind</groupId>
+      <artifactId>jaxb-impl</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.helger.commons</groupId>
+      <artifactId>ph-unittest-support-ext</artifactId>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>com.helger.maven</groupId>
+        <artifactId>ph-schematron-maven-plugin</artifactId>
+        <executions>
+          <!--
+          <execution>
+            <id>tdd-sk</id>
+            <goals>
+              <goal>convert</goal>
+            </goals>
+            <configuration>
+              <schematronDirectory>src/test/resources/external/rule-source/tdd/sk/1.0.0</schematronDirectory>
+              <xsltDirectory>src/main/resources/external/schematron/tdd/sk/1.0.0</xsltDirectory>
+            </configuration>
+          </execution>
+          -->
+          <!--
+          <execution>
+            <id>tdd-ae</id>
+            <goals>
+              <goal>convert</goal>
+            </goals>
+            <configuration>
+              <schematronDirectory>src/test/resources/external/rule-source/tdd/ae</schematronDirectory>
+              <xsltDirectory>src/main/resources/external/schematron/tdd/ae/xslt</xsltDirectory>
+            </configuration>
+          </execution>
+          -->
+          <!--
+          <execution>
+            <id>tdd-om</id>
+            <goals>
+              <goal>convert</goal>
+            </goals>
+            <configuration>
+              <schematronDirectory>src/test/resources/external/rule-source/tdd/om/1.0.0</schematronDirectory>
+              <xsltDirectory>src/main/resources/external/schematron/tdd/om/1.0.0</xsltDirectory>
+            </configuration>
+          </execution>
+          -->
+          <!--
+          <execution>
+            <id>tdd-vida</id>
+            <goals>
+              <goal>convert</goal>
+            </goals>
+            <configuration>
+              <schematronDirectory>src/test/resources/external/rule-source/tdd/vida/1.0.0</schematronDirectory>
+              <xsltDirectory>src/main/resources/external/schematron/tdd/vida/1.0.0</xsltDirectory>
+            </configuration>
+          </execution>
+          -->
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+</project>

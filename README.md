@@ -33,6 +33,7 @@ This project is divided into sub-projects each keeping tracking of one document 
 * phive-rules-peppol - the Peppol specific rules - always the latest two rule sets
 * phive-rules-peppol-legacy - older Peppol specific rules that are out of date (since v2.0.5)
 * phive-rules-peppol-italy - Peppol Italy specific rules (since v2.1.1)
+* phive-rules-peppol-taxdata - Peppol Tax Data Document (TDD) rules, extracted from phive-rules-peppol (since v4.4.0)
 * phive-rules-serbia - Validation rules for the Serbian SEF (SRBDT) EN 16931 CIUS and SEO logistics documents (since v4.3.9)
 * phive-rules-setu - Dutch SETU selected standards (since v3.0.4)
 * phive-rules-simplerinvoicing - Dutch Simplerinvoicing support from https://github.com/Simplerinvoicing/validation
@@ -247,6 +248,14 @@ As OpenPeppol is only changing the "micro" version part (3.0.x), whereas I start
 I hope that with the introduction of PINT, the versioning problem will be solved.
 
 # News and noteworthy
+
+v4.4.0 - work in progress
+* Updated to ph-schematron v10.x
+* Extracted all Peppol Tax Data Document (TDD) validation rules from `phive-rules-peppol` into the new submodule `phive-rules-peppol-taxdata` to reduce the footprint of `phive-rules-peppol`. See [#72](https://github.com/phax/phive-rules/issues/72)
+    * The VES coordinates are unchanged (Group ID `org.peppol.taxdata`, Artefact IDs `ae`, `om`, `sk` and `vida`)
+    * **Incompatible change**: the class `PeppolValidationTaxData` moved from package `com.helger.phive.peppol` to `com.helger.phive.peppol.taxdata`
+    * **Incompatible change**: `PeppolValidation.initStandard` no longer registers the TDD validation sets. To keep using them, add a dependency on `phive-rules-peppol-taxdata` and call `PeppolValidationTaxData.init` explicitly
+    * As a result `phive-rules-peppol` no longer depends on the `peppol-om-tdd-datatypes`, `peppol-sk-tdd-datatypes`, `peppol-uae-tdd-datatypes` and `peppol-vida-tdd-datatypes` artifacts
 
 v4.3.9 - 2026-07-08
 * Added new submodule `phive-rules-serbia` for the Serbian SEF (SRBDT) EN 16931 CIUS and Extension validation rules. See [#67](https://github.com/phax/phive-rules/issues/67)

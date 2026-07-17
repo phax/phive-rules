@@ -57,7 +57,7 @@ public final class PhiveRulesTestHelper
     }
 
     // Check that the passed Schematron is valid
-    if (aVA.getValidationType () == EValidationType.SCHEMATRON_PURE)
+    if (aVA.getValidationType () == EValidationType.SCHEMATRON_PURE_XPATH2)
       return SchematronResourcePureXPath.builder (aRes).build ().isValidSchematron ();
 
     if (aVA.getValidationType () == EValidationType.SCHEMATRON_SCH_ISO_XSLT2)
