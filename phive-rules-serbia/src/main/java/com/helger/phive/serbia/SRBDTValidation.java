@@ -19,7 +19,10 @@ package com.helger.phive.serbia;
 import org.jspecify.annotations.NonNull;
 
 import com.helger.annotation.concurrent.Immutable;
+import com.helger.annotation.style.ReturnsMutableCopy;
 import com.helger.base.enforce.ValueEnforcer;
+import com.helger.collection.commons.CommonsArrayList;
+import com.helger.collection.commons.ICommonsList;
 import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.io.resource.ClassPathResource;
 import com.helger.phive.api.executorset.IValidationExecutorSet;
@@ -62,6 +65,19 @@ public final class SRBDTValidation
   private static ClassLoader _getCL ()
   {
     return SRBDTValidation.class.getClassLoader ();
+  }
+
+  /**
+   * @return A list of all prerequisite validation execution set coordinates that must already be
+   *         registered before {@link #initSRBDT(IValidationExecutorSetRegistry)} is called. Shares
+   *         the same data basis as the initialization method. Never <code>null</code>.
+   */
+  @SuppressWarnings ("deprecation")
+  @NonNull
+  @ReturnsMutableCopy
+  public static ICommonsList <DVRCoordinate> getAllPrerequisites ()
+  {
+    return new CommonsArrayList <> (EN16931Validation.VID_UBL_CREDIT_NOTE_138, EN16931Validation.VID_UBL_INVOICE_138);
   }
 
   /**

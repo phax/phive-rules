@@ -19,7 +19,11 @@ package com.helger.phive.rules.api;
 import org.jspecify.annotations.NonNull;
 
 import com.helger.annotation.style.IsSPIInterface;
+import com.helger.annotation.style.ReturnsMutableCopy;
 import com.helger.base.state.ESuccess;
+import com.helger.collection.commons.CommonsArrayList;
+import com.helger.collection.commons.ICommonsList;
+import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
 import com.helger.phive.xml.source.IValidationSourceXML;
 
@@ -29,14 +33,12 @@ import com.helger.phive.xml.source.IValidationSourceXML;
  * {@link java.util.ServiceLoader} mechanism and invoked by
  * {@link ValidationRulesRegistrar#registerAllValidationRules(IValidationExecutorSetRegistry)}.
  * <p>
- * Because the SPI load order is not deterministic, an implementation that requires validation
- * execution sets of another module to be present first (e.g. because it is based on the EN 16931
- * rules) must not fail hard. Instead it must check whether its prerequisites are already registered
- * and return {@link ESuccess#FAILURE} if they are not yet available. The registrar will then retry
- * that implementation in a later round, after other implementations had the chance to register
- * their prerequisites. An implementation returning {@link ESuccess#FAILURE} must not have
- * registered any of its own validation execution sets yet, so that a later retry cannot cause
- * duplicate registrations.
+ * Because the SPI load order is not deterministic, an implementation that is based on the
+ * validation execution sets of another module (e.g. the EN 16931 rules) must declare those as
+ * prerequisites via {@link #getAllPrerequisites()}. The registrar only invokes
+ * {@link #registerValidationRules(IValidationExecutorSetRegistry)} once all declared prerequisites
+ * are present in the registry; otherwise it retries the implementation in a later round, after
+ * other implementations had the chance to register those prerequisites.
  *
  * @author Philip Helger
  * @since 4.4.0
@@ -45,14 +47,31 @@ import com.helger.phive.xml.source.IValidationSourceXML;
 public interface IValidationRulesRegistrarSPI
 {
   /**
-   * Register all validation execution sets of this module into the provided registry.
+   * @return The list of validation execution set coordinates that must already be registered before
+   *         {@link #registerValidationRules(IValidationExecutorSetRegistry)} of this implementation
+   *         may be called. By default an empty list is returned, meaning this module has no
+   *         prerequisites. Implementations with prerequisites should return the very same
+   *         coordinates that their static <code>init…</code> methods require, so that both share
+   *         the same data basis.
+   */
+  @NonNull
+  @ReturnsMutableCopy
+  default ICommonsList <DVRCoordinate> getAllPrerequisites ()
+  {
+    return new CommonsArrayList <> ();
+  }
+
+  /**
+   * Register all validation execution sets of this module into the provided registry. This is only
+   * called by the registrar once all coordinates from {@link #getAllPrerequisites()} are present in
+   * the registry.
    *
    * @param aRegistry
    *        The registry to add the artefacts to. May not be <code>null</code>.
    * @return {@link ESuccess#SUCCESS} if all validation execution sets were registered.
-   *         {@link ESuccess#FAILURE} if a prerequisite of this module is not yet registered and
-   *         this module should be retried in a later round. In case of {@link ESuccess#FAILURE} no
-   *         validation execution set of this module may have been registered.
+   *         {@link ESuccess#FAILURE} if this module should be retried in a later round. In case of
+   *         {@link ESuccess#FAILURE} no validation execution set of this module may have been
+   *         registered.
    */
   @NonNull
   ESuccess registerValidationRules (@NonNull IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry);

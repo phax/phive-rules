@@ -19,9 +19,11 @@ package com.helger.phive.serbia;
 import org.jspecify.annotations.NonNull;
 
 import com.helger.annotation.style.IsSPIImplementation;
+import com.helger.annotation.style.ReturnsMutableCopy;
 import com.helger.base.state.ESuccess;
+import com.helger.collection.commons.ICommonsList;
+import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
-import com.helger.phive.en16931.EN16931Validation;
 import com.helger.phive.rules.api.IValidationRulesRegistrarSPI;
 import com.helger.phive.xml.source.IValidationSourceXML;
 
@@ -33,14 +35,17 @@ import com.helger.phive.xml.source.IValidationSourceXML;
 @IsSPIImplementation
 public final class SerbiaValidationSPI implements IValidationRulesRegistrarSPI
 {
-  @SuppressWarnings ("deprecation")
+  @Override
+  @NonNull
+  @ReturnsMutableCopy
+  public ICommonsList <DVRCoordinate> getAllPrerequisites ()
+  {
+    return SRBDTValidation.getAllPrerequisites ();
+  }
+
   @NonNull
   public ESuccess registerValidationRules (@NonNull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
   {
-    // The Serbia SRBDT rules are based on EN 16931 - ensure the EN 16931 rules are registered first
-    if (aRegistry.getOfID (EN16931Validation.VID_UBL_INVOICE_138) == null)
-      return ESuccess.FAILURE;
-
     SEOValidation.initSEO (aRegistry);
     SRBDTValidation.initSRBDT (aRegistry);
     return ESuccess.SUCCESS;

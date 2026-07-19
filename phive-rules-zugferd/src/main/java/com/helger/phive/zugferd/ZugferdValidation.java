@@ -20,8 +20,11 @@ import org.jspecify.annotations.NonNull;
 import org.jspecify.annotations.Nullable;
 
 import com.helger.annotation.concurrent.Immutable;
+import com.helger.annotation.style.ReturnsMutableCopy;
 import com.helger.base.enforce.ValueEnforcer;
+import com.helger.collection.commons.CommonsArrayList;
 import com.helger.collection.commons.CommonsHashMap;
+import com.helger.collection.commons.ICommonsList;
 import com.helger.collection.commons.ICommonsMap;
 import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.diver.api.version.DVRVersion;
@@ -227,6 +230,19 @@ public final class ZugferdValidation
                                                    " (" +
                                                    eProfile.getDisplayName () +
                                                    ")");
+  }
+
+  /**
+   * @return A list of all prerequisite validation execution set coordinates that must already be
+   *         registered before {@link #initZugferd(IValidationExecutorSetRegistry)} is called.
+   *         Shares the same data basis as the initialization method. Never <code>null</code>.
+   */
+  @SuppressWarnings ("deprecation")
+  @NonNull
+  @ReturnsMutableCopy
+  public static ICommonsList <DVRCoordinate> getAllPrerequisites ()
+  {
+    return new CommonsArrayList <> (EN16931Validation.VID_CII_131, EN16931Validation.VID_CII_137);
   }
 
   /**

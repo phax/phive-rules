@@ -23,8 +23,11 @@ import java.time.OffsetDateTime;
 import org.jspecify.annotations.NonNull;
 
 import com.helger.annotation.concurrent.Immutable;
+import com.helger.annotation.style.ReturnsMutableCopy;
 import com.helger.base.enforce.ValueEnforcer;
 import com.helger.cii.d22b.CCIID22B;
+import com.helger.collection.commons.CommonsArrayList;
+import com.helger.collection.commons.ICommonsList;
 import com.helger.datetime.helper.PDTFactory;
 import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.io.resource.ClassPathResource;
@@ -149,6 +152,24 @@ public final class FranceCTCValidation
   private static ClassLoader _getCL ()
   {
     return FranceCTCValidation.class.getClassLoader ();
+  }
+
+  /**
+   * @return A list of all prerequisite validation execution set coordinates that must already be
+   *         registered before {@link #initFranceCTC(IValidationExecutorSetRegistry)} is called.
+   *         Shares the same data basis as the initialization method. Never <code>null</code>.
+   */
+  @NonNull
+  @ReturnsMutableCopy
+  @SuppressWarnings ("deprecation")
+  public static ICommonsList <DVRCoordinate> getAllPrerequisites ()
+  {
+    return new CommonsArrayList <> (EN16931Validation.VID_UBL_INVOICE_1315,
+                                    EN16931Validation.VID_UBL_CREDIT_NOTE_1315,
+                                    EN16931Validation.VID_CII_1315,
+                                    EN16931Validation.VID_UBL_INVOICE_1316,
+                                    EN16931Validation.VID_UBL_CREDIT_NOTE_1316,
+                                    EN16931Validation.VID_CII_1316);
   }
 
   /**

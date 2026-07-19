@@ -27,6 +27,7 @@ import com.helger.base.enforce.ValueEnforcer;
 import com.helger.base.spi.ServiceLoaderHelper;
 import com.helger.collection.commons.CommonsArrayList;
 import com.helger.collection.commons.ICommonsList;
+import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
 import com.helger.phive.xml.source.IValidationSourceXML;
 
@@ -35,12 +36,13 @@ import com.helger.phive.xml.source.IValidationSourceXML;
  * {@link java.util.ServiceLoader} mechanism and registers their validation execution sets into a
  * provided registry.
  * <p>
- * As the SPI load order is not deterministic, an implementation whose prerequisites are not yet
- * present returns {@link com.helger.base.state.ESuccess#FAILURE}. Such an implementation is pushed
- * to the end of the work list and retried in a later round, after other implementations had the
- * chance to register their prerequisites. If a full round passes without any progress (i.e. all
- * remaining implementations return {@link com.helger.base.state.ESuccess#FAILURE}), the remaining
- * prerequisites are considered unresolvable and an {@link IllegalStateException} is thrown.
+ * As the SPI load order is not deterministic, an implementation is only invoked once all coordinates
+ * from its {@link IValidationRulesRegistrarSPI#getAllPrerequisites()} are present in the registry.
+ * An implementation whose prerequisites are not yet present is pushed to the end of the work list and
+ * retried in a later round, after other implementations had the chance to register those
+ * prerequisites. If a full round passes without any progress (i.e. every remaining implementation is
+ * still missing a prerequisite), the remaining prerequisites are considered unresolvable and an
+ * {@link IllegalStateException} is thrown.
  *
  * @author Philip Helger
  */
@@ -79,15 +81,26 @@ public final class ValidationRulesRegistrar
       // Implementations that failed this round because a prerequisite is not yet registered
       final ICommonsList <IValidationRulesRegistrarSPI> aFailed = new CommonsArrayList <> ();
       for (final IValidationRulesRegistrarSPI aSPI : aPending)
-        if (aSPI.registerValidationRules (aRegistry).isFailure ())
+      {
+        // Check whether all declared prerequisites of this implementation are already present
+        boolean bAllPrerequisitesPresent = true;
+        for (final DVRCoordinate aPrerequisite : aSPI.getAllPrerequisites ())
+          if (aRegistry.getOfID (aPrerequisite) == null)
+          {
+            bAllPrerequisitesPresent = false;
+            break;
+          }
+
+        // Defer if a prerequisite is missing, or if the registration itself signals a retry
+        if (!bAllPrerequisitesPresent || aSPI.registerValidationRules (aRegistry).isFailure ())
         {
-          // A prerequisite is not yet present - retry this implementation in a later round
           if (LOGGER.isDebugEnabled ())
             LOGGER.debug ("Deferring validation rules registration of '" +
                           aSPI.getClass ().getName () +
                           "' to a later round because a prerequisite is missing");
           aFailed.add (aSPI);
         }
+      }
 
       if (aFailed.isEmpty ())
       {

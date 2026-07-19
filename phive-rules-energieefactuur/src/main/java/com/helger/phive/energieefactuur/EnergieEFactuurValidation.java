@@ -23,6 +23,7 @@ import javax.xml.xpath.XPathFactory;
 import org.jspecify.annotations.NonNull;
 
 import com.helger.annotation.concurrent.Immutable;
+import com.helger.annotation.style.ReturnsMutableCopy;
 import com.helger.base.enforce.ValueEnforcer;
 import com.helger.collection.commons.CommonsArrayList;
 import com.helger.collection.commons.ICommonsList;
@@ -86,6 +87,23 @@ public final class EnergieEFactuurValidation
 
   private EnergieEFactuurValidation ()
   {}
+
+  /**
+   * @return A list of all prerequisite validation execution set coordinates that must already be
+   *         registered before {@link #initEnergieEFactuur(IValidationExecutorSetRegistry)} is
+   *         called. Shares the same data basis as the initialization method. Never
+   *         <code>null</code>.
+   */
+  @SuppressWarnings ("deprecation")
+  @NonNull
+  @ReturnsMutableCopy
+  public static ICommonsList <DVRCoordinate> getAllPrerequisites ()
+  {
+    return new CommonsArrayList <> (SimplerInvoicingValidation.VID_SI_INVOICE_V11,
+                                    SimplerInvoicingValidation.VID_SI_INVOICE_V12,
+                                    SimplerInvoicingValidation.VID_SI_INVOICE_V20,
+                                    SimplerInvoicingValidation.VID_SI_INVOICE_V2035);
+  }
 
   /**
    * Register all standard Energie eFactuur validation execution sets to the provided registry.

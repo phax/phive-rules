@@ -19,7 +19,10 @@ package com.helger.phive.oioubl;
 import org.jspecify.annotations.NonNull;
 
 import com.helger.annotation.style.IsSPIImplementation;
+import com.helger.annotation.style.ReturnsMutableCopy;
 import com.helger.base.state.ESuccess;
+import com.helger.collection.commons.ICommonsList;
+import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
 import com.helger.phive.rules.api.IValidationRulesRegistrarSPI;
 import com.helger.phive.xml.source.IValidationSourceXML;
@@ -33,9 +36,18 @@ import com.helger.phive.xml.source.IValidationSourceXML;
 public final class OIOUBLValidationSPI implements IValidationRulesRegistrarSPI
 {
   @NonNull
+  @ReturnsMutableCopy
+  public ICommonsList <DVRCoordinate> getAllPrerequisites ()
+  {
+    // Only the legacy OIOUBL rules have prerequisites (the current OIOUBL rules have none)
+    return OIOUBLLegacyValidation.getAllPrerequisites ();
+  }
+
+  @NonNull
   public ESuccess registerValidationRules (@NonNull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
   {
     OIOUBLValidation.initOIOUBL (aRegistry);
+    OIOUBLLegacyValidation.initLegacyOIOUBL (aRegistry);
     return ESuccess.SUCCESS;
   }
 }

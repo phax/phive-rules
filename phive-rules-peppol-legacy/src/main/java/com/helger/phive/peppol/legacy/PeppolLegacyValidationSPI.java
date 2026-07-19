@@ -19,9 +19,11 @@ package com.helger.phive.peppol.legacy;
 import org.jspecify.annotations.NonNull;
 
 import com.helger.annotation.style.IsSPIImplementation;
+import com.helger.annotation.style.ReturnsMutableCopy;
 import com.helger.base.state.ESuccess;
+import com.helger.collection.commons.ICommonsList;
+import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
-import com.helger.phive.en16931.EN16931Validation;
 import com.helger.phive.rules.api.IValidationRulesRegistrarSPI;
 import com.helger.phive.xml.source.IValidationSourceXML;
 
@@ -31,15 +33,20 @@ import com.helger.phive.xml.source.IValidationSourceXML;
  * @author Philip Helger
  */
 @IsSPIImplementation
+@SuppressWarnings ("deprecation")
 public final class PeppolLegacyValidationSPI implements IValidationRulesRegistrarSPI
 {
   @NonNull
+  @ReturnsMutableCopy
+  public ICommonsList <DVRCoordinate> getAllPrerequisites ()
+  {
+    // Only the legacy Peppol 2025-03 rules have prerequisites (the other legacy rules have none)
+    return PeppolValidation2025_03.getAllPrerequisites ();
+  }
+
+  @NonNull
   public ESuccess registerValidationRules (@NonNull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
   {
-    // The legacy Peppol rules are based on EN 16931 - ensure the EN 16931 rules are registered first
-    if (aRegistry.getOfID (EN16931Validation.VID_UBL_INVOICE_1313) == null)
-      return ESuccess.FAILURE;
-
     PeppolLegacyValidationBisEurope.init (aRegistry);
     PeppolLegacyValidationBisAUNZ.init (aRegistry);
     PeppolLegacyValidationSG.init (aRegistry);

@@ -19,10 +19,12 @@ package com.helger.phive.eracun;
 import org.jspecify.annotations.NonNull;
 
 import com.helger.annotation.style.IsSPIImplementation;
+import com.helger.annotation.style.ReturnsMutableCopy;
 import com.helger.base.state.ESuccess;
+import com.helger.collection.commons.ICommonsList;
+import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
 import com.helger.phive.rules.api.IValidationRulesRegistrarSPI;
-import com.helger.phive.rules.api.PhiveRulesInitializationException;
 import com.helger.phive.xml.source.IValidationSourceXML;
 
 /**
@@ -33,18 +35,18 @@ import com.helger.phive.xml.source.IValidationSourceXML;
 @IsSPIImplementation
 public final class HReRacunValidationSPI implements IValidationRulesRegistrarSPI
 {
+  @Override
+  @NonNull
+  @ReturnsMutableCopy
+  public ICommonsList <DVRCoordinate> getAllPrerequisites ()
+  {
+    return HReRacunValidation.getAllPrerequisites ();
+  }
+
   @NonNull
   public ESuccess registerValidationRules (@NonNull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
   {
-    // HR eRacun is based on EN 16931 - ensure the EN 16931 rules are registered first
-    try
-    {
-      HReRacunValidation.init (aRegistry);
-      return ESuccess.SUCCESS;
-    }
-    catch (final PhiveRulesInitializationException ex)
-    {
-      return ESuccess.FAILURE;
-    }
+    HReRacunValidation.init (aRegistry);
+    return ESuccess.SUCCESS;
   }
 }

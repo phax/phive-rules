@@ -32,7 +32,7 @@ import com.helger.phive.xml.source.IValidationSourceXML;
 /**
  * Convenience class to register the validation execution sets of all legacy phive rules modules in
  * a single call. This is the legacy counterpart to
- * {@link com.helger.phive.rules.all.PhiveRulesValidation#initPhiveRules}.
+ * <code>PhiveRulesValidation.initPhiveRules</code>.
  * <p>
  * The legacy sets are based on the EN 16931 validation execution sets. Therefore EN 16931 is
  * registered as a prerequisite, but only if not already present in the registry. This allows this

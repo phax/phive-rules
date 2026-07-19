@@ -19,8 +19,11 @@ package com.helger.phive.xrechnung;
 import org.jspecify.annotations.NonNull;
 
 import com.helger.annotation.concurrent.Immutable;
+import com.helger.annotation.style.ReturnsMutableCopy;
 import com.helger.base.enforce.ValueEnforcer;
+import com.helger.collection.commons.CommonsArrayList;
 import com.helger.collection.commons.CommonsHashMap;
+import com.helger.collection.commons.ICommonsList;
 import com.helger.collection.commons.ICommonsMap;
 import com.helger.diagnostics.error.level.EErrorLevel;
 import com.helger.diver.api.coord.DVRCoordinate;
@@ -240,6 +243,51 @@ public final class XRechnungValidation
   private static ClassLoader _getCL ()
   {
     return XRechnungValidation.class.getClassLoader ();
+  }
+
+  /**
+   * @return A list of all prerequisite validation execution set coordinates that must already be
+   *         registered before {@link #initXRechnung(IValidationExecutorSetRegistry)} is called.
+   *         Shares the same data basis as the initialization method. Never <code>null</code>.
+   */
+  @SuppressWarnings ("deprecation")
+  @NonNull
+  @ReturnsMutableCopy
+  public static ICommonsList <DVRCoordinate> getAllPrerequisites ()
+  {
+    return new CommonsArrayList <> (EN16931Validation.VID_CII_110,
+                                    EN16931Validation.VID_UBL_CREDIT_NOTE_110,
+                                    EN16931Validation.VID_UBL_INVOICE_110,
+                                    EN16931Validation.VID_CII_121,
+                                    EN16931Validation.VID_UBL_CREDIT_NOTE_121,
+                                    EN16931Validation.VID_UBL_INVOICE_121,
+                                    EN16931Validation.VID_CII_130,
+                                    EN16931Validation.VID_UBL_CREDIT_NOTE_130,
+                                    EN16931Validation.VID_UBL_INVOICE_130,
+                                    EN16931Validation.VID_CII_132,
+                                    EN16931Validation.VID_UBL_CREDIT_NOTE_132,
+                                    EN16931Validation.VID_UBL_INVOICE_132,
+                                    EN16931Validation.VID_CII_133,
+                                    EN16931Validation.VID_UBL_CREDIT_NOTE_133,
+                                    EN16931Validation.VID_UBL_INVOICE_133,
+                                    EN16931Validation.VID_CII_136A,
+                                    EN16931Validation.VID_UBL_CREDIT_NOTE_136A,
+                                    EN16931Validation.VID_UBL_INVOICE_136A,
+                                    EN16931Validation.VID_CII_137,
+                                    EN16931Validation.VID_UBL_CREDIT_NOTE_137,
+                                    EN16931Validation.VID_UBL_INVOICE_137,
+                                    EN16931Validation.VID_CII_139,
+                                    EN16931Validation.VID_UBL_CREDIT_NOTE_139,
+                                    EN16931Validation.VID_UBL_INVOICE_139,
+                                    EN16931Validation.VID_CII_1310,
+                                    EN16931Validation.VID_UBL_CREDIT_NOTE_1310,
+                                    EN16931Validation.VID_UBL_INVOICE_1310,
+                                    EN16931Validation.VID_CII_1311,
+                                    EN16931Validation.VID_UBL_CREDIT_NOTE_1311,
+                                    EN16931Validation.VID_UBL_INVOICE_1311,
+                                    EN16931Validation.VID_CII_1315,
+                                    EN16931Validation.VID_UBL_CREDIT_NOTE_1315,
+                                    EN16931Validation.VID_UBL_INVOICE_1315);
   }
 
   /**

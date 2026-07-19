@@ -19,10 +19,12 @@ package com.helger.phive.ciusro;
 import org.jspecify.annotations.NonNull;
 
 import com.helger.annotation.style.IsSPIImplementation;
+import com.helger.annotation.style.ReturnsMutableCopy;
 import com.helger.base.state.ESuccess;
+import com.helger.collection.commons.ICommonsList;
+import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
 import com.helger.phive.rules.api.IValidationRulesRegistrarSPI;
-import com.helger.phive.rules.api.PhiveRulesInitializationException;
 import com.helger.phive.xml.source.IValidationSourceXML;
 
 /**
@@ -34,16 +36,16 @@ import com.helger.phive.xml.source.IValidationSourceXML;
 public final class CIUS_ROValidationSPI implements IValidationRulesRegistrarSPI
 {
   @NonNull
+  @ReturnsMutableCopy
+  public ICommonsList <DVRCoordinate> getAllPrerequisites ()
+  {
+    return CIUS_ROValidation.getAllPrerequisites ();
+  }
+
+  @NonNull
   public ESuccess registerValidationRules (@NonNull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
   {
-    try
-    {
-      CIUS_ROValidation.initCIUS_RO (aRegistry);
-      return ESuccess.SUCCESS;
-    }
-    catch (final PhiveRulesInitializationException ex)
-    {
-      return ESuccess.FAILURE;
-    }
+    CIUS_ROValidation.initCIUS_RO (aRegistry);
+    return ESuccess.SUCCESS;
   }
 }
