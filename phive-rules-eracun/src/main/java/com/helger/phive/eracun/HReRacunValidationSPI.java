@@ -20,7 +20,6 @@ import org.jspecify.annotations.NonNull;
 
 import com.helger.annotation.style.IsSPIImplementation;
 import com.helger.annotation.style.ReturnsMutableCopy;
-import com.helger.base.state.ESuccess;
 import com.helger.collection.commons.ICommonsList;
 import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
@@ -43,10 +42,8 @@ public final class HReRacunValidationSPI implements IValidationRulesRegistrarSPI
     return HReRacunValidation.getAllPrerequisites ();
   }
 
-  @NonNull
-  public ESuccess registerValidationRules (@NonNull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
+  public void registerValidationRules (@NonNull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
   {
     HReRacunValidation.init (aRegistry);
-    return ESuccess.SUCCESS;
   }
 }

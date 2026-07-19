@@ -20,7 +20,6 @@ import org.jspecify.annotations.NonNull;
 
 import com.helger.annotation.style.IsSPIInterface;
 import com.helger.annotation.style.ReturnsMutableCopy;
-import com.helger.base.state.ESuccess;
 import com.helger.collection.commons.CommonsArrayList;
 import com.helger.collection.commons.ICommonsList;
 import com.helger.diver.api.coord.DVRCoordinate;
@@ -64,15 +63,10 @@ public interface IValidationRulesRegistrarSPI
   /**
    * Register all validation execution sets of this module into the provided registry. This is only
    * called by the registrar once all coordinates from {@link #getAllPrerequisites()} are present in
-   * the registry.
+   * the registry, so an implementation may assume its prerequisites are available.
    *
    * @param aRegistry
    *        The registry to add the artefacts to. May not be <code>null</code>.
-   * @return {@link ESuccess#SUCCESS} if all validation execution sets were registered.
-   *         {@link ESuccess#FAILURE} if this module should be retried in a later round. In case of
-   *         {@link ESuccess#FAILURE} no validation execution set of this module may have been
-   *         registered.
    */
-  @NonNull
-  ESuccess registerValidationRules (@NonNull IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry);
+  void registerValidationRules (@NonNull IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry);
 }

@@ -39,7 +39,7 @@ import com.helger.phive.oioubl.OIOUBLValidation;
 import com.helger.phive.osa.OSAValidation;
 import com.helger.phive.peppol.PeppolValidation;
 import com.helger.phive.peppol.italy.PeppolItalyValidation;
-import com.helger.phive.peppol.pint.PeppolPintValidation;
+import com.helger.phive.peppol.pint.PeppolValidationPint;
 import com.helger.phive.peppol.taxdata.PeppolValidationTaxData;
 import com.helger.phive.serbia.SEOValidation;
 import com.helger.phive.serbia.SRBDTValidation;
@@ -100,7 +100,7 @@ public final class PhiveRulesValidation
     PeppolItalyValidation.init (aRegistry);
     PeppolValidation.initStandard (aRegistry);
     PeppolValidationTaxData.init (aRegistry);
-    PeppolPintValidation.initPeppolPint (aRegistry);
+    PeppolValidationPint.initPeppolPint (aRegistry);
     SEOValidation.initSEO (aRegistry);
     SRBDTValidation.initSRBDT (aRegistry);
     SETUValidation.initSETU (aRegistry);

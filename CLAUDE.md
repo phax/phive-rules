@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-**phive-rules** is a Maven multi-module project providing preconfigured validation rules for [PHIVE](https://github.com/phax/phive) (Philip Helger Integrative Validation Engine). It contains 34 sub-modules, each covering a specific e-invoicing document format (EN 16931, Peppol, XRechnung, UBL.BE, etc.).
+**phive-rules** is a Maven multi-module project providing preconfigured validation rules for [PHIVE](https://github.com/phax/phive) (Philip Helger Integrative Validation Engine). It contains 35 sub-modules: `phive-rules-api` (the shared base), the two aggregators `phive-rules-all` / `phive-rules-all-legacy`, and one module per e-invoicing document format (EN 16931, Peppol, XRechnung, UBL.BE, etc.).
 
 Part of the Peppol solution stack: https://github.com/phax/peppol
 
@@ -28,8 +28,11 @@ Every format module follows the same pattern:
 ```
 phive-rules-{format}/
 ├── src/main/java/.../
-│   └── {Format}Validation.java              # Registers validation rule sets
-├── src/main/resources/external/schematron/  # Pre-compiled XSLT rules
+│   ├── {Format}Validation.java              # Registers validation rule sets (init… methods)
+│   └── {Format}ValidationSPI.java           # SPI impl (IValidationRulesRegistrarSPI)
+├── src/main/resources/
+│   ├── META-INF/services/…IValidationRulesRegistrarSPI  # SPI registration
+│   └── external/schematron/                 # Pre-compiled XSLT rules
 ├── src/test/java/.../
 │   ├── {Format}ValidationTest.java
 │   ├── ValidationExecutionManagerFuncTest.java
@@ -43,9 +46,10 @@ phive-rules-{format}/
 ### Core Module: `phive-rules-api`
 
 Provides shared helpers used by all format modules:
-- `PhiveRulesHelper` — creates `DVRCoordinate` instances with version parsing
+- `PhiveRulesHelper` — creates `DVRCoordinate` instances with version parsing; `requireVESID (registry, coord)` looks up a prerequisite VES and throws `PhiveRulesInitializationException` if it is not yet registered
 - `PhiveRulesUBLHelper` / `PhiveRulesCIIHelper` — format-specific XSD + Schematron rule registration
 - `PhiveRulesTestHelper` — test utilities
+- `IValidationRulesRegistrarSPI` — the SPI every rule module implements; `ValidationRulesRegistrar.registerAllValidationRules (registry)` discovers and registers all of them from the classpath
 
 ### Validation Registration Pattern
 
@@ -61,7 +65,16 @@ Each `{Format}Validation.java` class:
                 .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aXslt))
                 .registerInto (aRegistry);
    ```
-   Mark superseded VES with `.deprecated ()`. SPI registration is wired through `…ValidationSPI` classes that delegate to these `init…` methods.
+   Mark superseded VES with `.deprecated ()`. Cross-module prerequisites (e.g. an EN 16931 VES that a CIUS builds on) are fetched with `PhiveRulesHelper.requireVESID (aRegistry, coord)`, which throws `PhiveRulesInitializationException` if the prerequisite is not yet registered.
+
+### SPI Auto-Registration & Aggregators
+
+Every rule module also ships a `{Format}ValidationSPI` implementing `com.helger.phive.rules.api.IValidationRulesRegistrarSPI` (annotated `@IsSPIImplementation`, listed in `src/main/resources/META-INF/services/com.helger.phive.rules.api.IValidationRulesRegistrarSPI`). Its `registerValidationRules` delegates to the module's `init…` method(s).
+
+- **Prerequisites & ordering:** a module that depends on another module's VES overrides `getAllPrerequisites()` to return those `DVRCoordinate`s, sharing the same constants its `init…` method requires (declared as a static `getAllPrerequisites()` on the `{Format}Validation` class). `ValidationRulesRegistrar.registerAllValidationRules (registry)` discovers all SPIs via `ServiceLoader` and, because load order is non-deterministic, only registers a module once all its prerequisites are present — deferring and retrying the others in later rounds, and throwing `IllegalStateException` if a full round makes no progress.
+- **Aggregators:** `phive-rules-all` (`PhiveRulesValidation.initPhiveRules`) imperatively registers all current modules in the correct order; `phive-rules-all-legacy` (`PhiveRulesLegacyValidation.initPhiveRulesLegacy`) adds the legacy sets. These two modules do NOT ship an SPI themselves.
+
+When adding a module, wire all three: the `init…` method, the `{Format}ValidationSPI` + its `META-INF/services` file, and — if it has cross-module prerequisites — a static `getAllPrerequisites()`. Also register it in `phive-rules-all` (pom dependency + a call in `initPhiveRules`).
 
 ### Naming new VES Coordinates
 

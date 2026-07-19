@@ -30,7 +30,7 @@ import com.helger.io.resource.FileSystemResource;
 import com.helger.io.resource.IReadableResource;
 import com.helger.phive.api.executorset.ValidationExecutorSetRegistry;
 import com.helger.phive.api.mock.PhiveTestFile;
-import com.helger.phive.peppol.pint.PeppolPintValidation;
+import com.helger.phive.peppol.pint.PeppolValidationPint;
 import com.helger.phive.peppol.pint.PeppolValidationPintAE;
 import com.helger.phive.peppol.pint.PeppolValidationPintAUNZ;
 import com.helger.phive.peppol.pint.PeppolValidationPintEU;
@@ -55,7 +55,7 @@ public final class CTestFiles
   public static final ValidationExecutorSetRegistry <IValidationSourceXML> VES_REGISTRY = new ValidationExecutorSetRegistry <> ();
   static
   {
-    PeppolPintValidation.initPeppolPint (VES_REGISTRY);
+    PeppolValidationPint.initPeppolPint (VES_REGISTRY);
   }
 
   private CTestFiles ()

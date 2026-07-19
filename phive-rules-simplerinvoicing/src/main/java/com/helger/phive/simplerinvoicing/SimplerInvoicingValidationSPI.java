@@ -19,7 +19,6 @@ package com.helger.phive.simplerinvoicing;
 import org.jspecify.annotations.NonNull;
 
 import com.helger.annotation.style.IsSPIImplementation;
-import com.helger.base.state.ESuccess;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
 import com.helger.phive.rules.api.IValidationRulesRegistrarSPI;
 import com.helger.phive.xml.source.IValidationSourceXML;
@@ -32,10 +31,8 @@ import com.helger.phive.xml.source.IValidationSourceXML;
 @IsSPIImplementation
 public final class SimplerInvoicingValidationSPI implements IValidationRulesRegistrarSPI
 {
-  @NonNull
-  public ESuccess registerValidationRules (@NonNull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
+  public void registerValidationRules (@NonNull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
   {
     SimplerInvoicingValidation.initSimplerInvoicing (aRegistry);
-    return ESuccess.SUCCESS;
   }
 }

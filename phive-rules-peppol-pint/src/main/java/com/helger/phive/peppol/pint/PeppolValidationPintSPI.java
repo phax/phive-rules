@@ -19,7 +19,6 @@ package com.helger.phive.peppol.pint;
 import org.jspecify.annotations.NonNull;
 
 import com.helger.annotation.style.IsSPIImplementation;
-import com.helger.base.state.ESuccess;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
 import com.helger.phive.rules.api.IValidationRulesRegistrarSPI;
 import com.helger.phive.xml.source.IValidationSourceXML;
@@ -30,12 +29,10 @@ import com.helger.phive.xml.source.IValidationSourceXML;
  * @author Philip Helger
  */
 @IsSPIImplementation
-public final class PeppolPintValidationSPI implements IValidationRulesRegistrarSPI
+public final class PeppolValidationPintSPI implements IValidationRulesRegistrarSPI
 {
-  @NonNull
-  public ESuccess registerValidationRules (@NonNull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
+  public void registerValidationRules (@NonNull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
   {
-    PeppolPintValidation.initPeppolPint (aRegistry);
-    return ESuccess.SUCCESS;
+    PeppolValidationPint.initPeppolPint (aRegistry);
   }
 }

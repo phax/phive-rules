@@ -14,6 +14,7 @@ This project is part of my Peppol solution stack. See https://github.com/phax/pe
 All projects found in here rely on the PHIVE validation engine provided by https://github.com/phax/phive
 
 This project is divided into sub-projects each keeping tracking of one document type set:
+* phive-rules-api - Shared API, helper classes and the validation rules registration SPI used by all other modules
 * phive-rules-cii - Validation rules for pure UN CII (without any Schematron)
 * phive-rules-cius-pt - Validation rules for the Portuguese EN 16931 CIUS (since v1.0.11)
 * phive-rules-cius-ro - Validation rules for the Romanian EN 16931 CIUS (since v2.1.14)
@@ -31,6 +32,7 @@ This project is divided into sub-projects each keeping tracking of one document 
 * phive-rules-oioubl - Validation rules for Danish OIOUBL
 * phive-rules-osa - Validation rules for Hungarian NAV Online Számla (OSA) v2.0 and v3.0 (since v4.3.2)
 * phive-rules-peppol - the Peppol specific rules - always the latest two rule sets
+* phive-rules-peppol-pint - the Peppol PINT specific rules (since v4.4.0 as separate module - previously in `phive-rules-peppol`)
 * phive-rules-peppol-legacy - older Peppol specific rules that are out of date (since v2.0.5)
 * phive-rules-peppol-italy - Peppol Italy specific rules (since v2.1.1)
 * phive-rules-peppol-taxdata - Peppol Tax Data Document (TDD) rules, extracted from phive-rules-peppol (since v4.4.0)
@@ -45,6 +47,8 @@ This project is divided into sub-projects each keeping tracking of one document 
 * phive-rules-xrechnung - Validation rules for German XRechnung
 * phive-rules-zatca - Validation rules for Saudi Arabian ZATCA/FATOORA format (since v3.2.7)
 * phive-rules-zugferd - Validation rules for German ZuGFERD and French Factur-X (XML part only) (since v3.2.2)
+
+Aggregator modules:
 * phive-rules-all - Aggregator depending on all current (non-legacy) modules with `PhiveRulesValidation.initPhiveRules` to register them all at once (since v4.4.0)
 * phive-rules-all-legacy - Aggregator depending on all legacy modules with `PhiveRulesLegacyValidation.initPhiveRulesLegacy` to register them all at once (since v4.4.0)
 
@@ -160,6 +164,18 @@ Add the following to your `pom.xml` to use this artifact, replacing `x.y.z` with
 
 <dependency>
   <groupId>com.helger.phive.rules</groupId>
+  <artifactId>phive-rules-peppol-pint</artifactId>
+  <version>x.y.z</version>
+</dependency>
+
+<dependency>
+  <groupId>com.helger.phive.rules</groupId>
+  <artifactId>phive-rules-peppol-taxdata</artifactId>
+  <version>x.y.z</version>
+</dependency>
+
+<dependency>
+  <groupId>com.helger.phive.rules</groupId>
   <artifactId>phive-rules-peppol-legacy</artifactId>
   <version>x.y.z</version>
 </dependency>
@@ -167,6 +183,12 @@ Add the following to your `pom.xml` to use this artifact, replacing `x.y.z` with
 <dependency>
   <groupId>com.helger.phive.rules</groupId>
   <artifactId>phive-rules-peppol-italy</artifactId>
+  <version>x.y.z</version>
+</dependency>
+
+<dependency>
+  <groupId>com.helger.phive.rules</groupId>
+  <artifactId>phive-rules-serbia</artifactId>
   <version>x.y.z</version>
 </dependency>
 
@@ -243,6 +265,50 @@ Alternate usage as a Maven BOM:
 </dependency>
 ```
 
+## Aggregator module usage
+
+Instead of depending on the individual modules, you can use one of the aggregator modules to register many rule sets at once.
+
+Use `phive-rules-all` to get all current (non-legacy) validation rules:
+
+```xml
+<dependency>
+  <groupId>com.helger.phive.rules</groupId>
+  <artifactId>phive-rules-all</artifactId>
+  <version>x.y.z</version>
+</dependency>
+```
+
+and register them all in a single call, in the proper order:
+
+```java
+final ValidationExecutorSetRegistry <IValidationSourceXML> aRegistry = new ValidationExecutorSetRegistry <> ();
+PhiveRulesValidation.initPhiveRules (aRegistry);
+```
+
+To additionally register the legacy rule sets, depend on `phive-rules-all-legacy` and call `PhiveRulesLegacyValidation.initPhiveRulesLegacy` afterwards (the current rules must be registered first):
+
+```xml
+<dependency>
+  <groupId>com.helger.phive.rules</groupId>
+  <artifactId>phive-rules-all-legacy</artifactId>
+  <version>x.y.z</version>
+</dependency>
+```
+
+```java
+final ValidationExecutorSetRegistry <IValidationSourceXML> aRegistry = new ValidationExecutorSetRegistry <> ();
+PhiveRulesValidation.initPhiveRules (aRegistry);
+PhiveRulesLegacyValidation.initPhiveRulesLegacy (aRegistry);
+```
+
+Alternatively, every module on the classpath that ships an `IValidationRulesRegistrarSPI` implementation (that is, all rule modules) can be discovered and registered automatically - including the correct ordering of modules that depend on each other - via a single call (since v4.4.0):
+
+```java
+final ValidationExecutorSetRegistry <IValidationSourceXML> aRegistry = new ValidationExecutorSetRegistry <> ();
+ValidationRulesRegistrar.registerAllValidationRules (aRegistry);
+```
+
 ## Peppol Validation Artefact Versioning
 
 If you wonder why the Peppol version differs from the original version numbers - this is because I started versioning the Peppol artefacts before OpenPeppol did.
@@ -251,8 +317,10 @@ I hope that with the introduction of PINT, the versioning problem will be solved
 
 # News and noteworthy
 
-v4.4.0 - work in progress
-* Added new SPI interface `IValidationRulesRegistrarSPI` (in `phive-rules-api`) that every rule module implements to register its validation execution sets into a provided registry. Use `ValidationRulesRegistrar.registerAllValidationRules` to discover and register all rules found on the classpath in a single call. The registration order between dependent modules (e.g. modules based on EN 16931) is resolved automatically via the coordinates each implementation declares in `getAllPrerequisites()` (sharing the same data basis as the module's static `init…` methods): an implementation whose prerequisites are not yet registered is retried in a later round; if a full round makes no progress the unresolvable prerequisites cause an `IllegalStateException`
+v4.4.0 - 2026-07-19
+* Added new SPI interface `IValidationRulesRegistrarSPI` (in `phive-rules-api`) that every rule module implements to register its validation execution sets into a provided registry. Use `ValidationRulesRegistrar.registerAllValidationRules` to discover and register all rules found on the classpath in a single call.
+  The registration order between dependent modules (e.g. modules based on EN 16931) is resolved automatically via the coordinates each implementation declares in `getAllPrerequisites()` (sharing the same data basis as the module's static `init...` methods): an implementation whose prerequisites are not yet registered is retried in a later round;
+  if a full round makes no progress the unresolvable prerequisites cause an `IllegalStateException`
 * Updated to ph-schematron v10.x
 * Added support for CII D25A in `phive-rules-cii` (via ph-cii 4.1.2), VES coordinate `un.unece.uncefact:crossindustryinvoice:D25A` (XSD only)
 * Added new submodule `phive-rules-all` that depends on all current (non-legacy) validation modules and offers `PhiveRulesValidation.initPhiveRules` to register them all in the proper order in a single call
@@ -266,6 +334,7 @@ v4.4.0 - work in progress
     * The VES coordinates are unchanged (Group IDs `org.peppol.pint` and `org.peppol.pint.ae`/`aunz`/`eu`/`jp`/`my`/`om`/`sg`)
     * **Incompatible change**: the classes `PeppolValidationPint`, `PeppolValidationPintAE`, `PeppolValidationPintAUNZ`, `PeppolValidationPintEU`, `PeppolValidationPintJP`, `PeppolValidationPintJP_NTR`, `PeppolValidationPintJP_SB`, `PeppolValidationPintMY`, `PeppolValidationPintOM` and `PeppolValidationPintSG` moved from package `com.helger.phive.peppol` to `com.helger.phive.peppol.pint`
     * **Incompatible change**: `PeppolValidation.initStandard` no longer registers the PINT validation sets. To keep using them, add a dependency on `phive-rules-peppol-pint` and call `PeppolPintValidation.initPeppolPint` explicitly (or rely on the `IValidationRulesRegistrarSPI` auto-discovery)
+    * **Incompatible change**: renamed `PeppolValidationPint` to `PeppolValidationPintBase`
 
 v4.3.9 - 2026-07-08
 * Added new submodule `phive-rules-serbia` for the Serbian SEF (SRBDT) EN 16931 CIUS and Extension validation rules. See [#67](https://github.com/phax/phive-rules/issues/67)

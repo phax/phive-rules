@@ -136,9 +136,9 @@ public final class PeppolValidationPintJP
     ValueEnforcer.notNull (aRegistry, "Registry");
 
     final IValidationExecutorSet <IValidationSourceXML> aVESInv_1_0_1 = PhiveRulesHelper.requireVESID (aRegistry,
-                                                                                                       PeppolValidationPint.VID_OPENPEPPOL_PINT_INVOICE_1_0_1);
+                                                                                                       PeppolValidationPintBase.VID_OPENPEPPOL_PINT_INVOICE_1_0_1);
     final IValidationExecutorSet <IValidationSourceXML> aVESCN_1_0_1 = PhiveRulesHelper.requireVESID (aRegistry,
-                                                                                                      PeppolValidationPint.VID_OPENPEPPOL_PINT_CREDIT_NOTE_1_0_1);
+                                                                                                      PeppolValidationPintBase.VID_OPENPEPPOL_PINT_CREDIT_NOTE_1_0_1);
 
     final MapBasedNamespaceContext aNSCtxInvoice = PhiveRulesUBLHelper.createUBL21NSContext (UBL21Marshaller.invoice ()
                                                                                                             .getRootElementNamespaceURI ());

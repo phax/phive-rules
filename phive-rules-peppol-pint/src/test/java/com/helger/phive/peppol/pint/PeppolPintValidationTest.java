@@ -28,7 +28,7 @@ import com.helger.phive.rules.api.PhiveRulesTestHelper;
 import com.helger.phive.xml.source.IValidationSourceXML;
 
 /**
- * Test class for class {@link PeppolPintValidation}.
+ * Test class for class {@link PeppolValidationPint}.
  *
  * @author Philip Helger
  */

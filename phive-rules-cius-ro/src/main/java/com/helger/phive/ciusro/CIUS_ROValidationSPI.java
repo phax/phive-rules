@@ -20,7 +20,6 @@ import org.jspecify.annotations.NonNull;
 
 import com.helger.annotation.style.IsSPIImplementation;
 import com.helger.annotation.style.ReturnsMutableCopy;
-import com.helger.base.state.ESuccess;
 import com.helger.collection.commons.ICommonsList;
 import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
@@ -42,10 +41,8 @@ public final class CIUS_ROValidationSPI implements IValidationRulesRegistrarSPI
     return CIUS_ROValidation.getAllPrerequisites ();
   }
 
-  @NonNull
-  public ESuccess registerValidationRules (@NonNull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
+  public void registerValidationRules (@NonNull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
   {
     CIUS_ROValidation.initCIUS_RO (aRegistry);
-    return ESuccess.SUCCESS;
   }
 }

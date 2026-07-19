@@ -91,9 +91,11 @@ public final class ValidationRulesRegistrar
             break;
           }
 
-        // Defer if a prerequisite is missing, or if the registration itself signals a retry
-        if (!bAllPrerequisitesPresent || aSPI.registerValidationRules (aRegistry).isFailure ())
+        if (bAllPrerequisitesPresent)
+          aSPI.registerValidationRules (aRegistry);
+        else
         {
+          // A prerequisite is not yet present - retry this implementation in a later round
           if (LOGGER.isDebugEnabled ())
             LOGGER.debug ("Deferring validation rules registration of '" +
                           aSPI.getClass ().getName () +
@@ -110,12 +112,19 @@ public final class ValidationRulesRegistrar
 
       if (aFailed.size () == aPending.size ())
       {
-        // A full round without any progress - the remaining prerequisites are unresolvable
-        final ICommonsList <String> aFailedNames = new CommonsArrayList <> ();
+        // A full round without any progress - the remaining prerequisites are unresolvable.
+        // Report each remaining implementation together with the coordinates it is still missing.
+        final ICommonsList <String> aFailedDetails = new CommonsArrayList <> ();
         for (final IValidationRulesRegistrarSPI aSPI : aFailed)
-          aFailedNames.add (aSPI.getClass ().getName ());
+        {
+          final ICommonsList <String> aMissing = new CommonsArrayList <> ();
+          for (final DVRCoordinate aPrerequisite : aSPI.getAllPrerequisites ())
+            if (aRegistry.getOfID (aPrerequisite) == null)
+              aMissing.add (aPrerequisite.getAsSingleID ());
+          aFailedDetails.add (aSPI.getClass ().getName () + " (missing prerequisites: " + aMissing + ")");
+        }
         throw new IllegalStateException ("Unable to register the validation rules of the following SPI implementations, because their prerequisites are unresolvable (circular or missing dependency): " +
-                                         aFailedNames);
+                                         aFailedDetails);
       }
 
       // At least one implementation succeeded this round - retry only the failed ones
