@@ -61,15 +61,7 @@ public final class PeppolValidation
     PeppolValidationDirectory.init (aRegistry);
     PeppolValidationMLS.init (aRegistry);
     PeppolValidationReporting.init (aRegistry);
-    PeppolValidationPint.init (aRegistry);
-    PeppolValidationPintAE.init (aRegistry);
-    PeppolValidationPintAUNZ.init (aRegistry);
-    PeppolValidationPintEU.init (aRegistry);
-    PeppolValidationPintJP.init (aRegistry);
-    PeppolValidationPintJP_NTR.init (aRegistry);
-    PeppolValidationPintJP_SB.init (aRegistry);
-    PeppolValidationPintMY.init (aRegistry);
-    PeppolValidationPintOM.init (aRegistry);
-    PeppolValidationPintSG.init (aRegistry);
+    // The PINT (Peppol International) rules were extracted into the separate module
+    // phive-rules-peppol-pint. Use PeppolPintValidation.initPeppolPint to register them.
   }
 }

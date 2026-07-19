@@ -262,6 +262,10 @@ v4.4.0 - work in progress
     * **Incompatible change**: the class `PeppolValidationTaxData` moved from package `com.helger.phive.peppol` to `com.helger.phive.peppol.taxdata`
     * **Incompatible change**: `PeppolValidation.initStandard` no longer registers the TDD validation sets. To keep using them, add a dependency on `phive-rules-peppol-taxdata` and call `PeppolValidationTaxData.init` explicitly
     * As a result `phive-rules-peppol` no longer depends on the `peppol-om-tdd-datatypes`, `peppol-sk-tdd-datatypes`, `peppol-uae-tdd-datatypes` and `peppol-vida-tdd-datatypes` artifacts
+* Extracted all Peppol PINT (Peppol International) validation rules from `phive-rules-peppol` into the new submodule `phive-rules-peppol-pint` to reduce the footprint of `phive-rules-peppol` (roughly halving its resource size). See [#72](https://github.com/phax/phive-rules/issues/72)
+    * The VES coordinates are unchanged (Group IDs `org.peppol.pint` and `org.peppol.pint.ae`/`aunz`/`eu`/`jp`/`my`/`om`/`sg`)
+    * **Incompatible change**: the classes `PeppolValidationPint`, `PeppolValidationPintAE`, `PeppolValidationPintAUNZ`, `PeppolValidationPintEU`, `PeppolValidationPintJP`, `PeppolValidationPintJP_NTR`, `PeppolValidationPintJP_SB`, `PeppolValidationPintMY`, `PeppolValidationPintOM` and `PeppolValidationPintSG` moved from package `com.helger.phive.peppol` to `com.helger.phive.peppol.pint`
+    * **Incompatible change**: `PeppolValidation.initStandard` no longer registers the PINT validation sets. To keep using them, add a dependency on `phive-rules-peppol-pint` and call `PeppolPintValidation.initPeppolPint` explicitly (or rely on the `IValidationRulesRegistrarSPI` auto-discovery)
 
 v4.3.9 - 2026-07-08
 * Added new submodule `phive-rules-serbia` for the Serbian SEF (SRBDT) EN 16931 CIUS and Extension validation rules. See [#67](https://github.com/phax/phive-rules/issues/67)
