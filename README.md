@@ -45,6 +45,8 @@ This project is divided into sub-projects each keeping tracking of one document 
 * phive-rules-xrechnung - Validation rules for German XRechnung
 * phive-rules-zatca - Validation rules for Saudi Arabian ZATCA/FATOORA format (since v3.2.7)
 * phive-rules-zugferd - Validation rules for German ZuGFERD and French Factur-X (XML part only) (since v3.2.2)
+* phive-rules-all - Aggregator depending on all current (non-legacy) modules with `PhiveRulesValidation.initPhiveRules` to register them all at once (since v4.4.0)
+* phive-rules-all-legacy - Aggregator depending on all legacy modules with `PhiveRulesLegacyValidation.initPhiveRulesLegacy` to register them all at once (since v4.4.0)
 
 The Java code in this project is licensed under the Apache 2 license.
 The code of the validation artefacts used may use a different license. 
@@ -251,6 +253,9 @@ I hope that with the introduction of PINT, the versioning problem will be solved
 
 v4.4.0 - work in progress
 * Updated to ph-schematron v10.x
+* Added support for CII D25A in `phive-rules-cii` (via ph-cii 4.1.2), VES coordinate `un.unece.uncefact:crossindustryinvoice:D25A` (XSD only)
+* Added new submodule `phive-rules-all` that depends on all current (non-legacy) validation modules and offers `PhiveRulesValidation.initPhiveRules` to register them all in the proper order in a single call
+* Added new submodule `phive-rules-all-legacy` that depends on the legacy validation modules (OIOUBL 2.0.2/3.0.1 and legacy Peppol) and offers `PhiveRulesLegacyValidation.initPhiveRulesLegacy` to register them all in the proper order in a single call
 * Extracted all Peppol Tax Data Document (TDD) validation rules from `phive-rules-peppol` into the new submodule `phive-rules-peppol-taxdata` to reduce the footprint of `phive-rules-peppol`. See [#72](https://github.com/phax/phive-rules/issues/72)
     * The VES coordinates are unchanged (Group ID `org.peppol.taxdata`, Artefact IDs `ae`, `om`, `sk` and `vida`)
     * **Incompatible change**: the class `PeppolValidationTaxData` moved from package `com.helger.phive.peppol` to `com.helger.phive.peppol.taxdata`

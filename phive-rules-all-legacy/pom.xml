@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 
-    Copyright (C) 2024-2026 Philip Helger (www.helger.com)
+    Copyright (C) 2026 Philip Helger (www.helger.com)
     philip[at]helger[dot]com
 
     Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,12 +24,12 @@
     <artifactId>phive-rules-parent-pom</artifactId>
     <version>4.3.10-SNAPSHOT</version>
   </parent>
-  <artifactId>phive-rules-api</artifactId>
+  <artifactId>phive-rules-all-legacy</artifactId>
   <packaging>jar</packaging>
-  <name>phive-rules-api</name>
-  <description>phive-rules API</description>
-  <url>https://github.com/phax/phive-rules/phive-rules-api</url>
-  <inceptionYear>2024</inceptionYear>
+  <name>phive-rules-all-legacy</name>
+  <description>Aggregator of all legacy phive validation rules modules</description>
+  <url>https://github.com/phax/phive-rules/phive-rules-all-legacy</url>
+  <inceptionYear>2026</inceptionYear>
   
   <licenses>
     <license>
@@ -54,52 +54,28 @@
   </developers>
   
   <dependencies>
+    <!-- Prerequisite for the legacy validation execution sets -->
     <dependency>
-      <groupId>org.slf4j</groupId>
-      <artifactId>slf4j-api</artifactId>
+      <groupId>com.helger.phive.rules</groupId>
+      <artifactId>phive-rules-en16931</artifactId>
     </dependency>
+    <!-- Legacy OIOUBL 2.0.2 + 3.0.1 -->
     <dependency>
-      <groupId>com.helger.phive</groupId>
-      <artifactId>phive-xml</artifactId>
+      <groupId>com.helger.phive.rules</groupId>
+      <artifactId>phive-rules-oioubl</artifactId>
     </dependency>
-    
+    <!-- Legacy Peppol (BIS Europe, BIS AU-NZ, BIS SG, Reporting) -->
     <dependency>
-      <groupId>com.helger.cii</groupId>
-      <artifactId>ph-cii-d16b</artifactId>
-      <version>${ph-cii.version}</version>
-      <optional>true</optional>
-    </dependency>
-    <dependency>
-      <groupId>com.helger.cii</groupId>
-      <artifactId>ph-cii-d22b</artifactId>
-      <version>${ph-cii.version}</version>
-      <optional>true</optional>
-    </dependency>
-    <dependency>
-      <groupId>com.helger.ubl</groupId>
-      <artifactId>ph-ubl20</artifactId>
-      <version>${ph-ubl.version}</version>
-      <optional>true</optional>
-    </dependency>
-    <dependency>
-      <groupId>com.helger.ubl</groupId>
-      <artifactId>ph-ubl21</artifactId>
-      <version>${ph-ubl.version}</version>
-      <optional>true</optional>
-    </dependency>
-    <dependency>
-      <groupId>com.helger.ubl</groupId>
-      <artifactId>ph-ubl22</artifactId>
-      <version>${ph-ubl.version}</version>
-      <optional>true</optional>
-    </dependency>
-    <dependency>
-      <groupId>com.helger.ubl</groupId>
-      <artifactId>ph-ubl23</artifactId>
-      <version>${ph-ubl.version}</version>
-      <optional>true</optional>
+      <groupId>com.helger.phive.rules</groupId>
+      <artifactId>phive-rules-peppol-legacy</artifactId>
     </dependency>
     
+    <!-- Test scope: verify that the current and the legacy aggregator can coexist in one registry -->
+    <dependency>
+      <groupId>com.helger.phive.rules</groupId>
+      <artifactId>phive-rules-all</artifactId>
+      <scope>test</scope>
+    </dependency>
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>

@@ -209,6 +209,11 @@
       </dependency>
       <dependency>
         <groupId>com.helger.phive.rules</groupId>
+        <artifactId>phive-rules-peppol-taxdata</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.helger.phive.rules</groupId>
         <artifactId>phive-rules-peppol-italy</artifactId>
         <version>${project.version}</version>
       </dependency>
@@ -267,6 +272,16 @@
         <artifactId>phive-rules-zugferd</artifactId>
         <version>${project.version}</version>
       </dependency>
+      <dependency>
+        <groupId>com.helger.phive.rules</groupId>
+        <artifactId>phive-rules-all</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.helger.phive.rules</groupId>
+        <artifactId>phive-rules-all-legacy</artifactId>
+        <version>${project.version}</version>
+      </dependency>
     </dependencies>
   </dependencyManagement>
   
@@ -308,6 +323,9 @@
     <module>phive-rules-xrechnung</module>
     <module>phive-rules-zatca</module>
     <module>phive-rules-zugferd</module>
+    <!-- Aggregators with all modules; must be last -->
+    <module>phive-rules-all</module>
+    <module>phive-rules-all-legacy</module>
   </modules>
   
   <build>
