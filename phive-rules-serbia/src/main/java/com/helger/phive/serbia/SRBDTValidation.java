@@ -20,7 +20,6 @@ import org.jspecify.annotations.NonNull;
 
 import com.helger.annotation.concurrent.Immutable;
 import com.helger.base.enforce.ValueEnforcer;
-import com.helger.base.exception.InitializationException;
 import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.io.resource.ClassPathResource;
 import com.helger.phive.api.executorset.IValidationExecutorSet;
@@ -71,16 +70,15 @@ public final class SRBDTValidation
    * @param aRegistry
    *        The registry to add the artefacts. May not be <code>null</code>.
    */
+  @SuppressWarnings ("deprecation")
   public static void initSRBDT (@NonNull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
   {
     ValueEnforcer.notNull (aRegistry, "Registry");
 
-    @SuppressWarnings ("deprecation")
-    final IValidationExecutorSet <IValidationSourceXML> aVESUBLCreditNote_1_3_8 = aRegistry.getOfID (EN16931Validation.VID_UBL_CREDIT_NOTE_138);
-    @SuppressWarnings ("deprecation")
-    final IValidationExecutorSet <IValidationSourceXML> aVESUBLInvoice_1_3_8 = aRegistry.getOfID (EN16931Validation.VID_UBL_INVOICE_138);
-    if (aVESUBLCreditNote_1_3_8 == null || aVESUBLInvoice_1_3_8 == null)
-      throw new InitializationException ("The EN 16931 VES are missing. Make sure to call EN16931Validation.initEN16931 first.");
+    final IValidationExecutorSet <IValidationSourceXML> aVESUBLCreditNote_1_3_8 = PhiveRulesHelper.requireVESID (aRegistry,
+                                                                                                                 EN16931Validation.VID_UBL_CREDIT_NOTE_138);
+    final IValidationExecutorSet <IValidationSourceXML> aVESUBLInvoice_1_3_8 = PhiveRulesHelper.requireVESID (aRegistry,
+                                                                                                              EN16931Validation.VID_UBL_INVOICE_138);
 
     // V1.0.0 referencing v1.3.8 of the EN rules
     {

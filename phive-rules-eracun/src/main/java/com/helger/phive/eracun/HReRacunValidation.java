@@ -20,7 +20,6 @@ import org.jspecify.annotations.NonNull;
 
 import com.helger.annotation.concurrent.Immutable;
 import com.helger.base.enforce.ValueEnforcer;
-import com.helger.base.exception.InitializationException;
 import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.io.resource.ClassPathResource;
 import com.helger.phive.api.executorset.IValidationExecutorSet;
@@ -98,10 +97,10 @@ public final class HReRacunValidation
   {
     ValueEnforcer.notNull (aRegistry, "Registry");
 
-    final IValidationExecutorSet <IValidationSourceXML> aVESUBLCreditNote_1_3_15 = aRegistry.getOfID (EN16931Validation.VID_UBL_CREDIT_NOTE_1315);
-    final IValidationExecutorSet <IValidationSourceXML> aVESUBLInvoice_1_3_15 = aRegistry.getOfID (EN16931Validation.VID_UBL_INVOICE_1315);
-    if (aVESUBLCreditNote_1_3_15 == null || aVESUBLInvoice_1_3_15 == null)
-      throw new InitializationException ("The EN 16931 VES are missing. Make sure to call EN16931Validation.initEN16931 first.");
+    final IValidationExecutorSet <IValidationSourceXML> aVESCN_1_3_15 = PhiveRulesHelper.requireVESID (aRegistry,
+                                                                                                       EN16931Validation.VID_UBL_CREDIT_NOTE_1315);
+    final IValidationExecutorSet <IValidationSourceXML> aVESInv_1_3_15 = PhiveRulesHelper.requireVESID (aRegistry,
+                                                                                                        EN16931Validation.VID_UBL_INVOICE_1315);
 
     // V1.0.0 referencing v1.3.15 of the EN rules
     {
@@ -111,14 +110,14 @@ public final class HReRacunValidation
                    .vesID (VID_HR_ERACUN_UBL_CREDITNOTE_100)
                    .displayNamePrefix ("HR eRacun Credit Note ")
                    .deprecated ()
-                   .basedOn (aVESUBLCreditNote_1_3_15)
+                   .basedOn (aVESCN_1_3_15)
                    .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aXslt))
                    .registerInto (aRegistry);
       VesXmlBuilder.builder ()
                    .vesID (VID_HR_ERACUN_UBL_INVOICE_100)
                    .displayNamePrefix ("HR eRacun Invoice ")
                    .deprecated ()
-                   .basedOn (aVESUBLInvoice_1_3_15)
+                   .basedOn (aVESInv_1_3_15)
                    .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aXslt))
                    .registerInto (aRegistry);
     }
@@ -131,14 +130,14 @@ public final class HReRacunValidation
                    .vesID (VID_HR_ERACUN_UBL_CREDITNOTE_101)
                    .displayNamePrefix ("HR eRacun Credit Note ")
                    .deprecated ()
-                   .basedOn (aVESUBLCreditNote_1_3_15)
+                   .basedOn (aVESCN_1_3_15)
                    .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aXslt))
                    .registerInto (aRegistry);
       VesXmlBuilder.builder ()
                    .vesID (VID_HR_ERACUN_UBL_INVOICE_101)
                    .displayNamePrefix ("HR eRacun Invoice ")
                    .deprecated ()
-                   .basedOn (aVESUBLInvoice_1_3_15)
+                   .basedOn (aVESInv_1_3_15)
                    .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aXslt))
                    .registerInto (aRegistry);
     }
@@ -151,14 +150,14 @@ public final class HReRacunValidation
                    .vesID (VID_HR_ERACUN_UBL_CREDITNOTE_102)
                    .displayNamePrefix ("HR eRacun Credit Note ")
                    .notDeprecated ()
-                   .basedOn (aVESUBLCreditNote_1_3_15)
+                   .basedOn (aVESCN_1_3_15)
                    .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aXslt))
                    .registerInto (aRegistry);
       VesXmlBuilder.builder ()
                    .vesID (VID_HR_ERACUN_UBL_INVOICE_102)
                    .displayNamePrefix ("HR eRacun Invoice ")
                    .notDeprecated ()
-                   .basedOn (aVESUBLInvoice_1_3_15)
+                   .basedOn (aVESInv_1_3_15)
                    .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aXslt))
                    .registerInto (aRegistry);
     }
@@ -171,14 +170,14 @@ public final class HReRacunValidation
                    .vesID (VID_HR_ERACUN_UBL_CREDITNOTE_103)
                    .displayNamePrefix ("HR eRacun Credit Note ")
                    .notDeprecated ()
-                   .basedOn (aVESUBLCreditNote_1_3_15)
+                   .basedOn (aVESCN_1_3_15)
                    .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aXslt))
                    .registerInto (aRegistry);
       VesXmlBuilder.builder ()
                    .vesID (VID_HR_ERACUN_UBL_INVOICE_103)
                    .displayNamePrefix ("HR eRacun Invoice ")
                    .notDeprecated ()
-                   .basedOn (aVESUBLInvoice_1_3_15)
+                   .basedOn (aVESInv_1_3_15)
                    .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aXslt))
                    .registerInto (aRegistry);
     }

@@ -20,7 +20,6 @@ import org.jspecify.annotations.NonNull;
 
 import com.helger.annotation.concurrent.Immutable;
 import com.helger.base.enforce.ValueEnforcer;
-import com.helger.base.exception.InitializationException;
 import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.io.resource.ClassPathResource;
 import com.helger.io.resource.IReadableResource;
@@ -158,6 +157,11 @@ public final class OIOUBLLegacyValidation
   {
     ValueEnforcer.notNull (aRegistry, "Registry");
 
+    final IValidationExecutorSet <IValidationSourceXML> aVESCN_1_3_13 = PhiveRulesHelper.requireVESID (aRegistry,
+                                                                                                       EN16931Validation.VID_UBL_CREDIT_NOTE_1313);
+    final IValidationExecutorSet <IValidationSourceXML> aVESInv_1_3_13 = PhiveRulesHelper.requireVESID (aRegistry,
+                                                                                                        EN16931Validation.VID_UBL_INVOICE_1313);
+
     // 2.0.2 - ancient old version
     {
       final String sPath202 = "/external/schematron/oioubl/2.0.2/";
@@ -293,17 +297,12 @@ public final class OIOUBLLegacyValidation
 
     // 3.0.1 (Deprecated)
     {
-      final IValidationExecutorSet <IValidationSourceXML> aVESUBLCreditNote_1_3_13 = aRegistry.getOfID (EN16931Validation.VID_UBL_CREDIT_NOTE_1313);
-      final IValidationExecutorSet <IValidationSourceXML> aVESUBLInvoice_1_3_13 = aRegistry.getOfID (EN16931Validation.VID_UBL_INVOICE_1313);
-      if (aVESUBLCreditNote_1_3_13 == null || aVESUBLInvoice_1_3_13 == null)
-        throw new InitializationException ("The EN 16931 VES are missing. Make sure to call EN16931Validation.initEN16931 first.");
-
       final String sPath = "/external/schematron/oioubl/3.0.1/xslt/";
       VesXmlBuilder.builder ()
                    .vesID (VID_OIOUBL_CREDIT_NOTE_3_0_1)
                    .displayNamePrefix ("OIOUBL Credit Note ")
                    .deprecated ()
-                   .basedOn (aVESUBLCreditNote_1_3_13)
+                   .basedOn (aVESCN_1_3_13)
                    .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                 "OIOUBL-Creditnote.xslt",
                                                                                                 _getCL ())))
@@ -312,7 +311,7 @@ public final class OIOUBLLegacyValidation
                    .vesID (VID_OIOUBL_INVOICE_3_0_1)
                    .displayNamePrefix ("OIOUBL Invoice ")
                    .deprecated ()
-                   .basedOn (aVESUBLInvoice_1_3_13)
+                   .basedOn (aVESInv_1_3_13)
                    .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
                                                                                                 "OIOUBL-Invoice.xslt",
                                                                                                 _getCL ())))

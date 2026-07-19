@@ -21,7 +21,6 @@ import org.jspecify.annotations.Nullable;
 
 import com.helger.annotation.concurrent.Immutable;
 import com.helger.base.enforce.ValueEnforcer;
-import com.helger.base.exception.InitializationException;
 import com.helger.collection.commons.CommonsHashMap;
 import com.helger.collection.commons.ICommonsMap;
 import com.helger.diver.api.coord.DVRCoordinate;
@@ -241,6 +240,11 @@ public final class ZugferdValidation
   {
     ValueEnforcer.notNull (aRegistry, "Registry");
 
+    final IValidationExecutorSet <IValidationSourceXML> aVESCII_1_3_1 = PhiveRulesHelper.requireVESID (aRegistry,
+                                                                                                       EN16931Validation.VID_CII_131);
+    final IValidationExecutorSet <IValidationSourceXML> aVESCII_1_3_7 = PhiveRulesHelper.requireVESID (aRegistry,
+                                                                                                       EN16931Validation.VID_CII_137);
+
     // Zugferd 2.0.1 / Factur-X 1.0.3
     for (final EZugferdProfile eProfile : EZugferdProfile.values ())
     {
@@ -302,10 +306,6 @@ public final class ZugferdValidation
       if (eProfile == EZugferdProfile.EN16931)
       {
         // Based on 1.3.1
-        final IValidationExecutorSet <IValidationSourceXML> aVESCII_1_3_1 = aRegistry.getOfID (EN16931Validation.VID_CII_131);
-        if (aVESCII_1_3_1 == null)
-          throw new InitializationException ("The EN 16931 VES are missing. Make sure to call EN16931Validation.initEN16931 first.");
-
         VesXmlBuilder.builder ()
                      .vesID (aVESID)
                      .displayName (sDisplayName)
@@ -360,7 +360,7 @@ public final class ZugferdValidation
                      .vesID (aVESID)
                      .displayName (sDisplayName)
                      .deprecated ()
-                     .basedOn (aRegistry.getOfID (EN16931Validation.VID_CII_137))
+                     .basedOn (aVESCII_1_3_7)
                      .addSchematron (aVESchematron)
                      .addAlias (_createFacturXAlias (aVESID, eProfile))
                      .registerInto (aRegistry);

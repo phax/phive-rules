@@ -20,7 +20,6 @@ import org.jspecify.annotations.NonNull;
 
 import com.helger.annotation.concurrent.Immutable;
 import com.helger.base.enforce.ValueEnforcer;
-import com.helger.base.exception.InitializationException;
 import com.helger.base.version.Version;
 import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.io.resource.ClassPathResource;
@@ -80,24 +79,24 @@ public final class PeppolValidation2025_03
     final String PREFIX_XSLT = "external/schematron/openpeppol/" + VERSION_STR + "/xslt/";
     final IReadableResource aPeppolSB = new ClassPathResource (PREFIX_XSLT + "PEPPOL-EN16931-UBL-SB.xslt", _getCL ());
 
-    final IValidationExecutorSet <IValidationSourceXML> aVESUBLInvoice_1_3_13 = aRegistry.getOfID (EN16931Validation.VID_UBL_INVOICE_1313);
-    final IValidationExecutorSet <IValidationSourceXML> aVESUBLCreditNote_1_3_13 = aRegistry.getOfID (EN16931Validation.VID_UBL_CREDIT_NOTE_1313);
-    if (aVESUBLCreditNote_1_3_13 == null || aVESUBLInvoice_1_3_13 == null)
-      throw new InitializationException ("The EN 16931 VES are missing. Make sure to call EN16931Validation.initEN16931 first.");
+    final IValidationExecutorSet <IValidationSourceXML> aVESInv_1_3_13 = PhiveRulesHelper.requireVESID (aRegistry,
+                                                                                                        EN16931Validation.VID_UBL_INVOICE_1313);
+    final IValidationExecutorSet <IValidationSourceXML> aVESCN_1_3_13 = PhiveRulesHelper.requireVESID (aRegistry,
+                                                                                                       EN16931Validation.VID_UBL_CREDIT_NOTE_1313);
 
     VesXmlBuilder.builder ()
-                     .vesID (VID_OPENPEPPOL_INVOICE_SELF_BILLING_UBL_V3)
-                     .displayName ("OpenPeppol UBL Invoice Self-Billing" + sVersion + sAkaVersionBilling)
-                     .deprecated ()
-                     .basedOn (aVESUBLInvoice_1_3_13)
-                     .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aPeppolSB))
-                     .registerInto (aRegistry);
+                 .vesID (VID_OPENPEPPOL_INVOICE_SELF_BILLING_UBL_V3)
+                 .displayName ("OpenPeppol UBL Invoice Self-Billing" + sVersion + sAkaVersionBilling)
+                 .deprecated ()
+                 .basedOn (aVESInv_1_3_13)
+                 .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aPeppolSB))
+                 .registerInto (aRegistry);
     VesXmlBuilder.builder ()
-                     .vesID (VID_OPENPEPPOL_CREDIT_NOTE_SELF_BILLING_UBL_V3)
-                     .displayName ("OpenPeppol UBL Credit Note Self-Billing" + sVersion + sAkaVersionBilling)
-                     .deprecated ()
-                     .basedOn (aVESUBLCreditNote_1_3_13)
-                     .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aPeppolSB))
-                     .registerInto (aRegistry);
+                 .vesID (VID_OPENPEPPOL_CREDIT_NOTE_SELF_BILLING_UBL_V3)
+                 .displayName ("OpenPeppol UBL Credit Note Self-Billing" + sVersion + sAkaVersionBilling)
+                 .deprecated ()
+                 .basedOn (aVESCN_1_3_13)
+                 .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aPeppolSB))
+                 .registerInto (aRegistry);
   }
 }

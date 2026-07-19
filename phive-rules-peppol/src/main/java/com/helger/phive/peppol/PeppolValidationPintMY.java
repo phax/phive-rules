@@ -24,7 +24,6 @@ import org.jspecify.annotations.NonNull;
 
 import com.helger.annotation.concurrent.Immutable;
 import com.helger.base.enforce.ValueEnforcer;
-import com.helger.base.exception.InitializationException;
 import com.helger.datetime.helper.PDTFactory;
 import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.io.resource.ClassPathResource;
@@ -151,6 +150,11 @@ public final class PeppolValidationPintMY
   {
     ValueEnforcer.notNull (aRegistry, "Registry");
 
+    final IValidationExecutorSet <IValidationSourceXML> aVESInv_1_0_1 = PhiveRulesHelper.requireVESID (aRegistry,
+                                                                                                       PeppolValidationPint.VID_OPENPEPPOL_PINT_INVOICE_1_0_1);
+    final IValidationExecutorSet <IValidationSourceXML> aVESCN_1_0_1 = PhiveRulesHelper.requireVESID (aRegistry,
+                                                                                                      PeppolValidationPint.VID_OPENPEPPOL_PINT_CREDIT_NOTE_1_0_1);
+
     final MapBasedNamespaceContext aNSCtxInvoice = PhiveRulesUBLHelper.createUBL21NSContext (UBL21Marshaller.invoice ()
                                                                                                             .getRootElementNamespaceURI ());
     final MapBasedNamespaceContext aNSCtxCreditNote = PhiveRulesUBLHelper.createUBL21NSContext (UBL21Marshaller.creditNote ()
@@ -160,11 +164,6 @@ public final class PeppolValidationPintMY
 
     // 1.0.0
     {
-      final IValidationExecutorSet <IValidationSourceXML> aVESIDInv = aRegistry.getOfID (PeppolValidationPint.VID_OPENPEPPOL_PINT_INVOICE_1_0_1);
-      final IValidationExecutorSet <IValidationSourceXML> aVESIDCN = aRegistry.getOfID (PeppolValidationPint.VID_OPENPEPPOL_PINT_CREDIT_NOTE_1_0_1);
-      if (aVESIDInv == null || aVESIDCN == null)
-        throw new InitializationException ("The Generic PINT VES are missing. Make sure to call PeppolValidationPint.init first.");
-
       final ClassPathResource aCPRBilling = new ClassPathResource (BASE_PATH +
                                                                    "1.0.0/xslt/billing/PINT-jurisdiction-aligned-rules.xslt",
                                                                    _getCL ());
@@ -175,14 +174,14 @@ public final class PeppolValidationPintMY
                    .vesID (VID_OPENPEPPOL_MY_PINT_UBL_INVOICE_1_0_0)
                    .displayName ("Peppol PINT Malaysia Invoice (UBL) 1.0.0")
                    .deprecated ()
-                   .basedOn (aVESIDInv)
+                   .basedOn (aVESInv_1_0_1)
                    .addSchematron (PhiveRulesHelper.createXSLT (aCPRBilling, aNSCtxInvoice))
                    .registerInto (aRegistry);
       VesXmlBuilder.builder ()
                    .vesID (VID_OPENPEPPOL_MY_PINT_UBL_CREDIT_NOTE_1_0_0)
                    .displayName ("Peppol PINT Malaysia Credit Note (UBL) 1.0.0")
                    .deprecated ()
-                   .basedOn (aVESIDCN)
+                   .basedOn (aVESCN_1_0_1)
                    .addSchematron (PhiveRulesHelper.createXSLT (aCPRBilling, aNSCtxCreditNote))
                    .registerInto (aRegistry);
 
@@ -190,14 +189,14 @@ public final class PeppolValidationPintMY
                    .vesID (VID_OPENPEPPOL_MY_PINT_UBL_INVOICE_SELF_BILLING_1_0_0)
                    .displayName ("Peppol PINT Malaysia Invoice Self-Billing (UBL) 1.0.0")
                    .deprecated ()
-                   .basedOn (aVESIDInv)
+                   .basedOn (aVESInv_1_0_1)
                    .addSchematron (PhiveRulesHelper.createXSLT (aCPRSelfBilling, aNSCtxInvoice))
                    .registerInto (aRegistry);
       VesXmlBuilder.builder ()
                    .vesID (VID_OPENPEPPOL_MY_PINT_UBL_CREDIT_NOTE_SELF_BILLING_1_0_0)
                    .displayName ("Peppol PINT Malaysia Credit Note Self-Billing (UBL) 1.0.0")
                    .deprecated ()
-                   .basedOn (aVESIDCN)
+                   .basedOn (aVESCN_1_0_1)
                    .addSchematron (PhiveRulesHelper.createXSLT (aCPRSelfBilling, aNSCtxCreditNote))
                    .registerInto (aRegistry);
     }

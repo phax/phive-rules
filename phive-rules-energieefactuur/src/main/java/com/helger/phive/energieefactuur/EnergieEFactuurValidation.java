@@ -24,7 +24,6 @@ import org.jspecify.annotations.NonNull;
 
 import com.helger.annotation.concurrent.Immutable;
 import com.helger.base.enforce.ValueEnforcer;
-import com.helger.base.exception.InitializationException;
 import com.helger.collection.commons.CommonsArrayList;
 import com.helger.collection.commons.ICommonsList;
 import com.helger.diver.api.coord.DVRCoordinate;
@@ -101,10 +100,21 @@ public final class EnergieEFactuurValidation
 
     final String sUBL21InvoiceNamespaceURI = UBL21Marshaller.invoice ().getRootElementNamespaceURI ();
 
-    final IValidationExecutorSet <IValidationSourceXML> aSI11 = aRegistry.getOfID (SimplerInvoicingValidation.VID_SI_INVOICE_V11);
-    if (aSI11 == null)
-      throw new InitializationException ("The SimplerInvoicing VES are missing. Make sure to call SimplerInvoicingValidation.initSimplerInvoicing first.");
+    final IValidationExecutorSet <IValidationSourceXML> aSI11 = PhiveRulesHelper.requireVESID (aRegistry,
+                                                                                               SimplerInvoicingValidation.VID_SI_INVOICE_V11);
     assert 2 == aSI11.executors ().size ();
+
+    final IValidationExecutorSet <IValidationSourceXML> aSI12 = PhiveRulesHelper.requireVESID (aRegistry,
+                                                                                               SimplerInvoicingValidation.VID_SI_INVOICE_V12);
+    assert 2 == aSI12.executors ().size ();
+
+    final IValidationExecutorSet <IValidationSourceXML> aSI20 = PhiveRulesHelper.requireVESID (aRegistry,
+                                                                                               SimplerInvoicingValidation.VID_SI_INVOICE_V20);
+    assert 2 == aSI20.executors ().size ();
+
+    final IValidationExecutorSet <IValidationSourceXML> aSI2035 = PhiveRulesHelper.requireVESID (aRegistry,
+                                                                                                 SimplerInvoicingValidation.VID_SI_INVOICE_V2035);
+    assert 2 == aSI2035.executors ().size ();
 
     {
       // Create XPathExpression for extension validation
@@ -129,11 +139,11 @@ public final class EnergieEFactuurValidation
       aNewList.add (1, ValidationExecutorXSDPartial.create (aPartialXSDs, XSDPartialContext.createMandatory (aXE100)));
 
       VesXmlBuilder.builder ()
-                       .vesID (VID_ENERGIE_EFACTUUR_1_0_0)
-                       .displayNamePrefix ("Energie eFactuur ")
-                       .notDeprecated ()
-                       .addExecutorsManually (aNewList)
-                       .registerInto (aRegistry);
+                   .vesID (VID_ENERGIE_EFACTUUR_1_0_0)
+                   .displayNamePrefix ("Energie eFactuur ")
+                   .notDeprecated ()
+                   .addExecutorsManually (aNewList)
+                   .registerInto (aRegistry);
     }
 
     {
@@ -160,16 +170,14 @@ public final class EnergieEFactuurValidation
 
       // Same Schematrons as SimplerInvoicing - and same classloader!
       VesXmlBuilder.builder ()
-                       .vesID (VID_ENERGIE_EFACTUUR_1_0_1)
-                       .displayNamePrefix ("Energie eFactuur ")
-                       .notDeprecated ()
-                       .addExecutorsManually (aNewList)
-                       .registerInto (aRegistry);
+                   .vesID (VID_ENERGIE_EFACTUUR_1_0_1)
+                   .displayNamePrefix ("Energie eFactuur ")
+                   .notDeprecated ()
+                   .addExecutorsManually (aNewList)
+                   .registerInto (aRegistry);
     }
 
     {
-      final IValidationExecutorSet <IValidationSourceXML> aSI12 = aRegistry.getOfID (SimplerInvoicingValidation.VID_SI_INVOICE_V12);
-      assert 2 == aSI12.executors ().size ();
 
       // Create XPathExpression for extension validation
       final XPathFactory aXF = XPathHelper.createXPathFactorySaxonFirst ();
@@ -194,16 +202,14 @@ public final class EnergieEFactuurValidation
 
       // Same Schematrons as SimplerInvoicing - and same classloader!
       VesXmlBuilder.builder ()
-                       .vesID (VID_ENERGIE_EFACTUUR_2_0_0)
-                       .displayNamePrefix ("Energie eFactuur ")
-                       .notDeprecated ()
-                       .addExecutorsManually (aNewList)
-                       .registerInto (aRegistry);
+                   .vesID (VID_ENERGIE_EFACTUUR_2_0_0)
+                   .displayNamePrefix ("Energie eFactuur ")
+                   .notDeprecated ()
+                   .addExecutorsManually (aNewList)
+                   .registerInto (aRegistry);
     }
 
     {
-      final IValidationExecutorSet <IValidationSourceXML> aSI20 = aRegistry.getOfID (SimplerInvoicingValidation.VID_SI_INVOICE_V20);
-      assert 2 == aSI20.executors ().size ();
 
       // Create XPathExpression for extension validation
       final XPathFactory aXF = XPathHelper.createXPathFactorySaxonFirst ();
@@ -228,17 +234,14 @@ public final class EnergieEFactuurValidation
 
       // Same Schematrons as SimplerInvoicing - and same classloader!
       VesXmlBuilder.builder ()
-                       .vesID (VID_ENERGIE_EFACTUUR_3_0_0)
-                       .displayNamePrefix ("Energie eFactuur ")
-                       .notDeprecated ()
-                       .addExecutorsManually (aNewList)
-                       .registerInto (aRegistry);
+                   .vesID (VID_ENERGIE_EFACTUUR_3_0_0)
+                   .displayNamePrefix ("Energie eFactuur ")
+                   .notDeprecated ()
+                   .addExecutorsManually (aNewList)
+                   .registerInto (aRegistry);
     }
 
     {
-      final IValidationExecutorSet <IValidationSourceXML> aSI2035 = aRegistry.getOfID (SimplerInvoicingValidation.VID_SI_INVOICE_V2035);
-      assert 2 == aSI2035.executors ().size ();
-
       // Create XPathExpression for extension validation
       final XPathFactory aXF = XPathHelper.createXPathFactorySaxonFirst ();
       final XPath aXP = aXF.newXPath ();
@@ -262,11 +265,11 @@ public final class EnergieEFactuurValidation
 
       // Same Schematrons as SimplerInvoicing - and same classloader!
       VesXmlBuilder.builder ()
-                       .vesID (VID_ENERGIE_EFACTUUR_3_1_0)
-                       .displayNamePrefix ("Energie eFactuur ")
-                       .notDeprecated ()
-                       .addExecutorsManually (aNewList)
-                       .registerInto (aRegistry);
+                   .vesID (VID_ENERGIE_EFACTUUR_3_1_0)
+                   .displayNamePrefix ("Energie eFactuur ")
+                   .notDeprecated ()
+                   .addExecutorsManually (aNewList)
+                   .registerInto (aRegistry);
     }
   }
 }

@@ -28,10 +28,13 @@ import com.helger.datetime.helper.PDTFactory;
 import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.diver.api.version.DVRVersionException;
 import com.helger.io.resource.IReadableResource;
+import com.helger.phive.api.executorset.IValidationExecutorSet;
+import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
 import com.helger.phive.api.executorset.status.EValidationExecutorStatusType;
 import com.helger.phive.api.executorset.status.IValidationExecutorSetStatus;
 import com.helger.phive.api.executorset.status.ValidationExecutorSetStatus;
 import com.helger.phive.api.executorset.status.ValidationExecutorSetStatusHistoryItem;
+import com.helger.phive.api.source.IValidationSource;
 import com.helger.phive.xml.schematron.SchematronNamespaceBeautifier;
 import com.helger.phive.xml.schematron.ValidationExecutorSchematron;
 import com.helger.xml.namespace.IIterableNamespaceContext;
@@ -101,6 +104,16 @@ public final class PhiveRulesHelper
   {
     SchematronNamespaceBeautifier.addMappings (aNsCtx);
     return ValidationExecutorSchematron.createXSLT (aRes, null, aNsCtx);
+  }
+
+  @NonNull
+  public static <T extends IValidationSource> IValidationExecutorSet <T> requireVESID (@NonNull final IValidationExecutorSetRegistry <T> aRegistry,
+                                                                                       @NonNull final DVRCoordinate aCoord) throws PhiveRulesInitializationException
+  {
+    final var ret = aRegistry.getOfID (aCoord);
+    if (ret == null)
+      throw new PhiveRulesInitializationException (aCoord);
+    return ret;
   }
 
   @NonNull

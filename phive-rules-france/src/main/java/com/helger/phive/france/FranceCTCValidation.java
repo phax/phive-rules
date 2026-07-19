@@ -24,7 +24,6 @@ import org.jspecify.annotations.NonNull;
 
 import com.helger.annotation.concurrent.Immutable;
 import com.helger.base.enforce.ValueEnforcer;
-import com.helger.base.exception.InitializationException;
 import com.helger.cii.d22b.CCIID22B;
 import com.helger.datetime.helper.PDTFactory;
 import com.helger.diver.api.coord.DVRCoordinate;
@@ -163,11 +162,26 @@ public final class FranceCTCValidation
   {
     ValueEnforcer.notNull (aRegistry, "Registry");
 
+    final IValidationExecutorSet <IValidationSourceXML> aVESCII_1_3_15 = PhiveRulesHelper.requireVESID (aRegistry,
+                                                                                                        EN16931Validation.VID_CII_1315);
+    final IValidationExecutorSet <IValidationSourceXML> aVESCN_1_3_15 = PhiveRulesHelper.requireVESID (aRegistry,
+                                                                                                       EN16931Validation.VID_UBL_CREDIT_NOTE_1315);
+    final IValidationExecutorSet <IValidationSourceXML> aVESInv_1_3_15 = PhiveRulesHelper.requireVESID (aRegistry,
+                                                                                                        EN16931Validation.VID_UBL_INVOICE_1315);
+
+    final IValidationExecutorSet <IValidationSourceXML> aVESCII_1_3_16 = PhiveRulesHelper.requireVESID (aRegistry,
+                                                                                                        EN16931Validation.VID_CII_1316);
+    final IValidationExecutorSet <IValidationSourceXML> aVESCN_1_3_16 = PhiveRulesHelper.requireVESID (aRegistry,
+                                                                                                       EN16931Validation.VID_UBL_CREDIT_NOTE_1316);
+    final IValidationExecutorSet <IValidationSourceXML> aVESInv_1_3_16 = PhiveRulesHelper.requireVESID (aRegistry,
+                                                                                                        EN16931Validation.VID_UBL_INVOICE_1316);
+
     final String sPrefix = "/external/schematron/ctc/";
 
     // CTC 0.1
     {
-      // No "valid from" date - the date this version comes into force is not provided in the FNFE documentation
+      // No "valid from" date - the date this version comes into force is not provided in the FNFE
+      // documentation
       final String sPrefix0 = sPrefix + "0.1/xslt/";
       VesXmlBuilder.builder ()
                    .vesID (VID_FR_CTC_UBL_INV_0_1)
@@ -200,7 +214,8 @@ public final class FranceCTCValidation
 
     // CTC 1.2.0
     {
-      // No "valid from" date - the date this version comes into force is not provided in the FNFE documentation
+      // No "valid from" date - the date this version comes into force is not provided in the FNFE
+      // documentation
       final String sPrefix0 = sPrefix + "1.2.0/xslt/";
       VesXmlBuilder.builder ()
                    .vesID (VID_FR_CTC_UBL_INV_1_2_0)
@@ -242,13 +257,8 @@ public final class FranceCTCValidation
 
     // CTC 1.3.0
     {
-      final IValidationExecutorSet <IValidationSourceXML> aVESCII = aRegistry.getOfID (EN16931Validation.VID_CII_1315);
-      final IValidationExecutorSet <IValidationSourceXML> aVESUBLCreditNote = aRegistry.getOfID (EN16931Validation.VID_UBL_CREDIT_NOTE_1315);
-      final IValidationExecutorSet <IValidationSourceXML> aVESUBLInvoice = aRegistry.getOfID (EN16931Validation.VID_UBL_INVOICE_1315);
-      if (aVESCII == null || aVESUBLCreditNote == null || aVESUBLInvoice == null)
-        throw new InitializationException ("The EN 16931 VES are missing. Make sure to call EN16931Validation.initEN16931 first.");
-
-      // No "valid from" date - the date this version comes into force is not provided in the FNFE documentation
+      // No "valid from" date - the date this version comes into force is not provided in the FNFE
+      // documentation
       final String sPrefix0 = sPrefix + "1.3.0/xslt/";
 
       // Base Invoice based on EN16931
@@ -256,7 +266,7 @@ public final class FranceCTCValidation
                    .vesID (VID_FR_CTC_UBL_INV_1_3_0)
                    .displayNamePrefix ("France CTC UBL Invoice ")
                    .deprecated ()
-                   .basedOn (aVESUBLInvoice)
+                   .basedOn (aVESInv_1_3_15)
                    .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix0 +
                                                                                                 "20260216_BR-FR-Flux2-Schematron-UBL_V1.3.0.xslt",
                                                                                                 _getCL ())))
@@ -265,7 +275,7 @@ public final class FranceCTCValidation
                    .vesID (VID_FR_CTC_UBL_CN_1_3_0)
                    .displayNamePrefix ("France CTC UBL Credit Note ")
                    .deprecated ()
-                   .basedOn (aVESUBLCreditNote)
+                   .basedOn (aVESCN_1_3_15)
                    .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix0 +
                                                                                                 "20260216_BR-FR-Flux2-Schematron-UBL_V1.3.0.xslt",
                                                                                                 _getCL ())))
@@ -274,7 +284,7 @@ public final class FranceCTCValidation
                    .vesID (VID_FR_CTC_CII_1_3_0)
                    .displayNamePrefix ("France CTC CII ")
                    .deprecated ()
-                   .basedOn (aVESCII)
+                   .basedOn (aVESCII_1_3_15)
                    .addSchematron (PhiveRulesCIIHelper.createXSLT_CII_D22B (new ClassPathResource (sPrefix0 +
                                                                                                    "20260216_BR-FR-Flux2-Schematron-CII_V1.3.0.xslt",
                                                                                                    _getCL ())))
@@ -332,12 +342,6 @@ public final class FranceCTCValidation
 
     // CTC 1.3.1
     {
-      final IValidationExecutorSet <IValidationSourceXML> aVESCII = aRegistry.getOfID (EN16931Validation.VID_CII_1315);
-      final IValidationExecutorSet <IValidationSourceXML> aVESUBLCreditNote = aRegistry.getOfID (EN16931Validation.VID_UBL_CREDIT_NOTE_1315);
-      final IValidationExecutorSet <IValidationSourceXML> aVESUBLInvoice = aRegistry.getOfID (EN16931Validation.VID_UBL_INVOICE_1315);
-      if (aVESCII == null || aVESUBLCreditNote == null || aVESUBLInvoice == null)
-        throw new InitializationException ("The EN 16931 VES are missing. Make sure to call EN16931Validation.initEN16931 first.");
-
       final String sPrefix0 = sPrefix + "1.3.1/xslt/";
       final OffsetDateTime aValidFrom = PDTFactory.createOffsetDate (2026, Month.JULY, 1).atTime (LocalTime.MIDNIGHT);
 
@@ -346,7 +350,7 @@ public final class FranceCTCValidation
                    .vesID (VID_FR_CTC_UBL_INV_1_3_1)
                    .displayNamePrefix ("France CTC UBL Invoice ")
                    .notDeprecated ()
-                   .basedOn (aVESUBLInvoice)
+                   .basedOn (aVESInv_1_3_15)
                    .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix0 +
                                                                                                 "20260430_BR-FR-Flux2-Schematron-UBL_V1.3.1.xslt",
                                                                                                 _getCL ())))
@@ -356,7 +360,7 @@ public final class FranceCTCValidation
                    .vesID (VID_FR_CTC_UBL_CN_1_3_1)
                    .displayNamePrefix ("France CTC UBL Credit Note ")
                    .notDeprecated ()
-                   .basedOn (aVESUBLCreditNote)
+                   .basedOn (aVESCN_1_3_15)
                    .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix0 +
                                                                                                 "20260430_BR-FR-Flux2-Schematron-UBL_V1.3.1.xslt",
                                                                                                 _getCL ())))
@@ -365,7 +369,7 @@ public final class FranceCTCValidation
                    .vesID (VID_FR_CTC_CII_1_3_1)
                    .displayNamePrefix ("France CTC CII ")
                    .notDeprecated ()
-                   .basedOn (aVESCII)
+                   .basedOn (aVESCII_1_3_15)
                    .addSchematron (PhiveRulesCIIHelper.createXSLT_CII_D22B (new ClassPathResource (sPrefix0 +
                                                                                                    "20260430_BR-FR-Flux2-Schematron-CII_V1.3.1.xslt",
                                                                                                    _getCL ())))
@@ -428,12 +432,6 @@ public final class FranceCTCValidation
 
     // CTC 1.4.0
     {
-      final IValidationExecutorSet <IValidationSourceXML> aVESCII = aRegistry.getOfID (EN16931Validation.VID_CII_1316);
-      final IValidationExecutorSet <IValidationSourceXML> aVESUBLCreditNote = aRegistry.getOfID (EN16931Validation.VID_UBL_CREDIT_NOTE_1316);
-      final IValidationExecutorSet <IValidationSourceXML> aVESUBLInvoice = aRegistry.getOfID (EN16931Validation.VID_UBL_INVOICE_1316);
-      if (aVESCII == null || aVESUBLCreditNote == null || aVESUBLInvoice == null)
-        throw new InitializationException ("The EN 16931 VES are missing. Make sure to call EN16931Validation.initEN16931 first.");
-
       final String sPrefix0 = sPrefix + "1.4.0/xslt/";
       final OffsetDateTime aValidFrom = PDTFactory.createOffsetDate (2026, Month.SEPTEMBER, 1)
                                                   .atTime (LocalTime.MIDNIGHT);
@@ -443,7 +441,7 @@ public final class FranceCTCValidation
                    .vesID (VID_FR_CTC_UBL_INV_1_4_0)
                    .displayNamePrefix ("France CTC UBL Invoice ")
                    .notDeprecated ()
-                   .basedOn (aVESUBLInvoice)
+                   .basedOn (aVESInv_1_3_16)
                    .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix0 +
                                                                                                 "20260630_BR-FR-Flux2-Schematron-UBL_V1.4.0.xslt",
                                                                                                 _getCL ())))
@@ -453,7 +451,7 @@ public final class FranceCTCValidation
                    .vesID (VID_FR_CTC_UBL_CN_1_4_0)
                    .displayNamePrefix ("France CTC UBL Credit Note ")
                    .notDeprecated ()
-                   .basedOn (aVESUBLCreditNote)
+                   .basedOn (aVESCN_1_3_16)
                    .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix0 +
                                                                                                 "20260630_BR-FR-Flux2-Schematron-UBL_V1.4.0.xslt",
                                                                                                 _getCL ())))
@@ -463,7 +461,7 @@ public final class FranceCTCValidation
                    .vesID (VID_FR_CTC_CII_1_4_0)
                    .displayNamePrefix ("France CTC CII ")
                    .notDeprecated ()
-                   .basedOn (aVESCII)
+                   .basedOn (aVESCII_1_3_16)
                    .addSchematron (PhiveRulesCIIHelper.createXSLT_CII_D22B (new ClassPathResource (sPrefix0 +
                                                                                                    "20260630_BR-FR-Flux2-Schematron-CII_V1.4.0.xslt",
                                                                                                    _getCL ())))

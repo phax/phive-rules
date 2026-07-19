@@ -24,7 +24,6 @@ import org.jspecify.annotations.NonNull;
 
 import com.helger.annotation.concurrent.Immutable;
 import com.helger.base.enforce.ValueEnforcer;
-import com.helger.base.exception.InitializationException;
 import com.helger.datetime.helper.PDTFactory;
 import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.io.resource.ClassPathResource;
@@ -136,6 +135,11 @@ public final class PeppolValidationPintJP
   {
     ValueEnforcer.notNull (aRegistry, "Registry");
 
+    final IValidationExecutorSet <IValidationSourceXML> aVESInv_1_0_1 = PhiveRulesHelper.requireVESID (aRegistry,
+                                                                                                       PeppolValidationPint.VID_OPENPEPPOL_PINT_INVOICE_1_0_1);
+    final IValidationExecutorSet <IValidationSourceXML> aVESCN_1_0_1 = PhiveRulesHelper.requireVESID (aRegistry,
+                                                                                                      PeppolValidationPint.VID_OPENPEPPOL_PINT_CREDIT_NOTE_1_0_1);
+
     final MapBasedNamespaceContext aNSCtxInvoice = PhiveRulesUBLHelper.createUBL21NSContext (UBL21Marshaller.invoice ()
                                                                                                             .getRootElementNamespaceURI ());
     final MapBasedNamespaceContext aNSCtxCreditNote = PhiveRulesUBLHelper.createUBL21NSContext (UBL21Marshaller.creditNote ()
@@ -171,11 +175,6 @@ public final class PeppolValidationPintJP
 
     // 1.0.2
     {
-      final IValidationExecutorSet <IValidationSourceXML> aVESIDInv = aRegistry.getOfID (PeppolValidationPint.VID_OPENPEPPOL_PINT_INVOICE_1_0_1);
-      final IValidationExecutorSet <IValidationSourceXML> aVESIDCN = aRegistry.getOfID (PeppolValidationPint.VID_OPENPEPPOL_PINT_CREDIT_NOTE_1_0_1);
-      if (aVESIDInv == null || aVESIDCN == null)
-        throw new InitializationException ("The Generic PINT VES are missing. Make sure to call PeppolValidationPint.init first.");
-
       final ClassPathResource aCPR2 = new ClassPathResource (BASE_PATH +
                                                              "1.0.2/xslt/PINT-jurisdiction-aligned-rules.xslt",
                                                              _getCL ());
@@ -183,14 +182,14 @@ public final class PeppolValidationPintJP
                    .vesID (VID_OPENPEPPOL_JP_PINT_INVOICE_1_0_2)
                    .displayNamePrefix ("Peppol PINT Japan Invoice (UBL) ")
                    .deprecated ()
-                   .basedOn (aVESIDInv)
+                   .basedOn (aVESInv_1_0_1)
                    .addSchematron (PhiveRulesHelper.createXSLT (aCPR2, aNSCtxInvoice))
                    .registerInto (aRegistry);
       VesXmlBuilder.builder ()
                    .vesID (VID_OPENPEPPOL_JP_PINT_CREDIT_NOTE_1_0_2)
                    .displayNamePrefix ("Peppol PINT Japan Credit Note (UBL) ")
                    .deprecated ()
-                   .basedOn (aVESIDCN)
+                   .basedOn (aVESCN_1_0_1)
                    .addSchematron (PhiveRulesHelper.createXSLT (aCPR2, aNSCtxCreditNote))
                    .registerInto (aRegistry);
     }
