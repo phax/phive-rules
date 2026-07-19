@@ -54,7 +54,8 @@ public final class CTestFiles
     final ICommonsList <PhiveTestFile> ret = new CommonsArrayList <> ();
     for (final DVRCoordinate aESID : new DVRCoordinate [] { CIIValidation.VID_CII_D16B_CROSSINDUSTRYINVOICE,
                                                             CIIValidation.VID_CII_D22B_CROSSINDUSTRYINVOICE,
-                                                            CIIValidation.VID_CII_D22B_CDAR })
+                                                            CIIValidation.VID_CII_D22B_CDAR,
+                                                            CIIValidation.VID_CII_D25A_CROSSINDUSTRYINVOICE })
       for (final IReadableResource aRes : getAllMatchingTestFiles (aESID))
       {
         assertTrue ("Not existing test file: " + aRes.getPath (), aRes.exists ());
@@ -80,6 +81,10 @@ public final class CTestFiles
     if (aVESID.equals (CIIValidation.VID_CII_D22B_CDAR))
     {
       return new CommonsArrayList <> (CDARTestFiles.D22B_FILES, ClassPathResource::new);
+    }
+    if (aVESID.equals (CIIValidation.VID_CII_D25A_CROSSINDUSTRYINVOICE))
+    {
+      return new CommonsArrayList <> (CIITestFiles.D25A_FILES, ClassPathResource::new);
     }
 
     throw new IllegalArgumentException ("Invalid VESID: " + aVESID);

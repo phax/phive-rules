@@ -61,6 +61,11 @@
       <version>${ph-cii.version}</version>
     </dependency>
     <dependency>
+      <groupId>com.helger.cii</groupId>
+      <artifactId>ph-cii-d25a</artifactId>
+      <version>${ph-cii.version}</version>
+    </dependency>
+    <dependency>
       <groupId>com.helger.phive.rules</groupId>
       <artifactId>phive-rules-api</artifactId>
     </dependency>

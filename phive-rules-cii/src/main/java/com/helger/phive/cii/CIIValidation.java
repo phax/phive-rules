@@ -22,6 +22,7 @@ import com.helger.annotation.concurrent.Immutable;
 import com.helger.base.enforce.ValueEnforcer;
 import com.helger.cii.d16b.CCIID16B;
 import com.helger.cii.d22b.CCIID22B;
+import com.helger.cii.d25a.CCIID25A;
 import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
 import com.helger.phive.rules.api.PhiveRulesHelper;
@@ -39,6 +40,7 @@ public final class CIIValidation
   public static final String GROUP_ID = "un.unece.uncefact";
   public static final String VERSION_D16B = "D16B";
   public static final String VERSION_D22B = "D22B";
+  public static final String VERSION_D25A = "D25A";
 
   public static final DVRCoordinate VID_CII_D16B_CROSSINDUSTRYINVOICE = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                                            "crossindustryinvoice",
@@ -49,6 +51,9 @@ public final class CIIValidation
   public static final DVRCoordinate VID_CII_D22B_CDAR = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                            "cdar",
                                                                                            VERSION_D22B);
+  public static final DVRCoordinate VID_CII_D25A_CROSSINDUSTRYINVOICE = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                           "crossindustryinvoice",
+                                                                                                           VERSION_D25A);
 
   private CIIValidation ()
   {}
@@ -64,6 +69,7 @@ public final class CIIValidation
   {
     initCIID16B (aRegistry);
     initCIID22B (aRegistry);
+    initCIID25A (aRegistry);
   }
 
   /**
@@ -109,6 +115,26 @@ public final class CIIValidation
                  .displayName ("CDAR " + VERSION_D22B)
                  .notDeprecated ()
                  .addXSD (CCIID22B.getXSDResourceCDAR ())
+                 .registerInto (aRegistry);
+  }
+
+  /**
+   * Register all standard CII D25A validation execution sets to the provided registry.
+   *
+   * @param aRegistry
+   *        The registry to add the artefacts to. May not be <code>null</code>.
+   * @since 4.4.0
+   */
+  public static void initCIID25A (@NonNull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
+  {
+    ValueEnforcer.notNull (aRegistry, "Registry");
+
+    // No Schematrons here
+    VesXmlBuilder.builder ()
+                 .vesID (VID_CII_D25A_CROSSINDUSTRYINVOICE)
+                 .displayName ("CII CrossIndustryInvoice " + VERSION_D25A)
+                 .notDeprecated ()
+                 .addXSD (CCIID25A.getXSDResourceCII ())
                  .registerInto (aRegistry);
   }
 }
