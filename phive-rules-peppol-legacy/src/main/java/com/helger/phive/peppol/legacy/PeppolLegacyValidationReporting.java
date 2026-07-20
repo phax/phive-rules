@@ -34,7 +34,6 @@ import com.helger.phive.xml.source.IValidationSourceXML;
  * @since 3.1.8
  */
 @Immutable
-@Deprecated (forRemoval = false)
 public final class PeppolLegacyValidationReporting
 {
   @NonNull
@@ -101,7 +100,6 @@ public final class PeppolLegacyValidationReporting
   private PeppolLegacyValidationReporting ()
   {}
 
-  @Deprecated
   public static void init (@NonNull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
   {
     ValueEnforcer.notNull (aRegistry, "Registry");
@@ -109,123 +107,121 @@ public final class PeppolLegacyValidationReporting
     // EUSR
     {
       VesXmlBuilder.builder ()
-                       .vesID (VID_OPENPEPPOL_EUSR_V100RC2)
-                       .displayName ("Peppol End User Statistics Report v1.0.0-RC2")
-                       .deprecated ()
-                       .addXSD (new ClassPathResource (BASE_PATH_XSD +
-                                                       "peppol-end-user-statistics-reporting-1.0.0-RC2.xsd",
-                                                       _getCL ()))
-                       .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (BASE_PATH_SCH +
-                                                                                           "eusr/1.0.0-RC2/xslt/peppol-end-user-statistics-reporting-1.0.0-RC2.xslt",
-                                                                                           _getCL ()), null))
-                       .registerInto (aRegistry);
+                   .vesID (VID_OPENPEPPOL_EUSR_V100RC2)
+                   .displayName ("Peppol End User Statistics Report v1.0.0-RC2")
+                   .deprecated ()
+                   .addXSD (new ClassPathResource (BASE_PATH_XSD + "peppol-end-user-statistics-reporting-1.0.0-RC2.xsd",
+                                                   _getCL ()))
+                   .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (BASE_PATH_SCH +
+                                                                                       "eusr/1.0.0-RC2/xslt/peppol-end-user-statistics-reporting-1.0.0-RC2.xslt",
+                                                                                       _getCL ()), null))
+                   .registerInto (aRegistry);
       final ClassPathResource aXSD100 = new ClassPathResource (BASE_PATH_XSD +
                                                                "peppol-end-user-statistics-reporting-1.0.0.xsd",
                                                                _getCL ());
       VesXmlBuilder.builder ()
-                       .vesID (VID_OPENPEPPOL_EUSR_V100)
-                       .displayName ("Peppol End User Statistics Report v1.0.0")
-                       .deprecated ()
-                       .addXSD (aXSD100)
-                       .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (BASE_PATH_SCH +
-                                                                                           "eusr/1.0.0/xslt/peppol-end-user-statistics-reporting-1.0.0.xslt",
-                                                                                           _getCL ()), null))
-                       .registerInto (aRegistry);
+                   .vesID (VID_OPENPEPPOL_EUSR_V100)
+                   .displayName ("Peppol End User Statistics Report v1.0.0")
+                   .deprecated ()
+                   .addXSD (aXSD100)
+                   .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (BASE_PATH_SCH +
+                                                                                       "eusr/1.0.0/xslt/peppol-end-user-statistics-reporting-1.0.0.xslt",
+                                                                                       _getCL ()), null))
+                   .registerInto (aRegistry);
       VesXmlBuilder.builder ()
-                       .vesID (VID_OPENPEPPOL_EUSR_V101)
-                       .displayName ("Peppol End User Statistics Report v1.0.1")
-                       .deprecated ()
-                       .addXSD (aXSD100)
-                       .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (BASE_PATH_SCH +
-                                                                                           "eusr/1.0.1/xslt/peppol-end-user-statistics-reporting-1.0.1.xslt",
-                                                                                           _getCL ()), null))
-                       .registerInto (aRegistry);
+                   .vesID (VID_OPENPEPPOL_EUSR_V101)
+                   .displayName ("Peppol End User Statistics Report v1.0.1")
+                   .deprecated ()
+                   .addXSD (aXSD100)
+                   .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (BASE_PATH_SCH +
+                                                                                       "eusr/1.0.1/xslt/peppol-end-user-statistics-reporting-1.0.1.xslt",
+                                                                                       _getCL ()), null))
+                   .registerInto (aRegistry);
 
       final ClassPathResource aXSD11 = new ClassPathResource (BASE_PATH_XSD +
                                                               "peppol-end-user-statistics-reporting-1.1.xsd",
                                                               _getCL ());
       VesXmlBuilder.builder ()
-                       .vesID (VID_OPENPEPPOL_EUSR_V110)
-                       .displayName ("Peppol End User Statistics Report v1.1.0")
-                       .deprecated ()
-                       .addXSD (aXSD11)
-                       .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (BASE_PATH_SCH +
-                                                                                           "eusr/1.1.0/xslt/peppol-end-user-statistics-reporting-1.1.0.xslt",
-                                                                                           _getCL ()), null))
-                       .registerInto (aRegistry);
+                   .vesID (VID_OPENPEPPOL_EUSR_V110)
+                   .displayName ("Peppol End User Statistics Report v1.1.0")
+                   .deprecated ()
+                   .addXSD (aXSD11)
+                   .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (BASE_PATH_SCH +
+                                                                                       "eusr/1.1.0/xslt/peppol-end-user-statistics-reporting-1.1.0.xslt",
+                                                                                       _getCL ()), null))
+                   .registerInto (aRegistry);
       VesXmlBuilder.builder ()
-                       .vesID (VID_OPENPEPPOL_EUSR_V111)
-                       .displayName ("Peppol End User Statistics Report v1.1.1")
-                       .deprecated ()
-                       .addXSD (aXSD11)
-                       .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (BASE_PATH_SCH +
-                                                                                           "eusr/1.1.1/xslt/peppol-end-user-statistics-reporting-1.1.1.xslt",
-                                                                                           _getCL ()), null))
-                       .registerInto (aRegistry);
+                   .vesID (VID_OPENPEPPOL_EUSR_V111)
+                   .displayName ("Peppol End User Statistics Report v1.1.1")
+                   .deprecated ()
+                   .addXSD (aXSD11)
+                   .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (BASE_PATH_SCH +
+                                                                                       "eusr/1.1.1/xslt/peppol-end-user-statistics-reporting-1.1.1.xslt",
+                                                                                       _getCL ()), null))
+                   .registerInto (aRegistry);
       VesXmlBuilder.builder ()
-                       .vesID (VID_OPENPEPPOL_EUSR_V112)
-                       .displayName ("Peppol End User Statistics Report v1.1.2")
-                       .deprecated ()
-                       .addXSD (aXSD11)
-                       .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (BASE_PATH_SCH +
-                                                                                           "eusr/1.1.2/xslt/peppol-end-user-statistics-reporting-1.1.2.xslt",
-                                                                                           _getCL ()), null))
-                       .registerInto (aRegistry);
+                   .vesID (VID_OPENPEPPOL_EUSR_V112)
+                   .displayName ("Peppol End User Statistics Report v1.1.2")
+                   .deprecated ()
+                   .addXSD (aXSD11)
+                   .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (BASE_PATH_SCH +
+                                                                                       "eusr/1.1.2/xslt/peppol-end-user-statistics-reporting-1.1.2.xslt",
+                                                                                       _getCL ()), null))
+                   .registerInto (aRegistry);
       VesXmlBuilder.builder ()
-                       .vesID (VID_OPENPEPPOL_EUSR_V113)
-                       .displayName ("Peppol End User Statistics Report v1.1.3")
-                       .deprecated ()
-                       .addXSD (aXSD11)
-                       .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (BASE_PATH_SCH +
-                                                                                           "eusr/1.1.3/xslt/peppol-end-user-statistics-reporting-1.1.3.xslt",
-                                                                                           _getCL ()), null))
-                       .registerInto (aRegistry);
+                   .vesID (VID_OPENPEPPOL_EUSR_V113)
+                   .displayName ("Peppol End User Statistics Report v1.1.3")
+                   .deprecated ()
+                   .addXSD (aXSD11)
+                   .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (BASE_PATH_SCH +
+                                                                                       "eusr/1.1.3/xslt/peppol-end-user-statistics-reporting-1.1.3.xslt",
+                                                                                       _getCL ()), null))
+                   .registerInto (aRegistry);
     }
 
     // TSR
     {
       VesXmlBuilder.builder ()
-                       .vesID (VID_OPENPEPPOL_TSR_V100)
-                       .displayName ("Peppol Transaction Statistics Report v1.0.0")
-                       .deprecated ()
-                       .addXSD (new ClassPathResource (BASE_PATH_XSD +
-                                                       "peppol-transaction-statistics-reporting-1.0.0.xsd",
-                                                       _getCL ()))
-                       .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (BASE_PATH_SCH +
-                                                                                           "tsr/1.0.0/xslt/peppol-transaction-statistics-reporting-1.0.0.xslt",
-                                                                                           _getCL ()), null))
-                       .registerInto (aRegistry);
+                   .vesID (VID_OPENPEPPOL_TSR_V100)
+                   .displayName ("Peppol Transaction Statistics Report v1.0.0")
+                   .deprecated ()
+                   .addXSD (new ClassPathResource (BASE_PATH_XSD + "peppol-transaction-statistics-reporting-1.0.0.xsd",
+                                                   _getCL ()))
+                   .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (BASE_PATH_SCH +
+                                                                                       "tsr/1.0.0/xslt/peppol-transaction-statistics-reporting-1.0.0.xslt",
+                                                                                       _getCL ()), null))
+                   .registerInto (aRegistry);
 
       final ClassPathResource aXSD101 = new ClassPathResource (BASE_PATH_XSD +
                                                                "peppol-transaction-statistics-reporting-1.0.1.xsd",
                                                                _getCL ());
       VesXmlBuilder.builder ()
-                       .vesID (VID_OPENPEPPOL_TSR_V101)
-                       .displayName ("Peppol Transaction Statistics Report v1.0.1")
-                       .deprecated ()
-                       .addXSD (aXSD101)
-                       .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (BASE_PATH_SCH +
-                                                                                           "tsr/1.0.1/xslt/peppol-transaction-statistics-reporting-1.0.1.xslt",
-                                                                                           _getCL ()), null))
-                       .registerInto (aRegistry);
+                   .vesID (VID_OPENPEPPOL_TSR_V101)
+                   .displayName ("Peppol Transaction Statistics Report v1.0.1")
+                   .deprecated ()
+                   .addXSD (aXSD101)
+                   .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (BASE_PATH_SCH +
+                                                                                       "tsr/1.0.1/xslt/peppol-transaction-statistics-reporting-1.0.1.xslt",
+                                                                                       _getCL ()), null))
+                   .registerInto (aRegistry);
       VesXmlBuilder.builder ()
-                       .vesID (VID_OPENPEPPOL_TSR_V102)
-                       .displayName ("Peppol Transaction Statistics Report v1.0.2")
-                       .deprecated ()
-                       .addXSD (aXSD101)
-                       .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (BASE_PATH_SCH +
-                                                                                           "tsr/1.0.2/xslt/peppol-transaction-statistics-reporting-1.0.2.xslt",
-                                                                                           _getCL ()), null))
-                       .registerInto (aRegistry);
+                   .vesID (VID_OPENPEPPOL_TSR_V102)
+                   .displayName ("Peppol Transaction Statistics Report v1.0.2")
+                   .deprecated ()
+                   .addXSD (aXSD101)
+                   .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (BASE_PATH_SCH +
+                                                                                       "tsr/1.0.2/xslt/peppol-transaction-statistics-reporting-1.0.2.xslt",
+                                                                                       _getCL ()), null))
+                   .registerInto (aRegistry);
       VesXmlBuilder.builder ()
-                       .vesID (VID_OPENPEPPOL_TSR_V103)
-                       .displayName ("Peppol Transaction Statistics Report v1.0.3")
-                       .deprecated ()
-                       .addXSD (aXSD101)
-                       .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (BASE_PATH_SCH +
-                                                                                           "tsr/1.0.3/xslt/peppol-transaction-statistics-reporting-1.0.3.xslt",
-                                                                                           _getCL ()), null))
-                       .registerInto (aRegistry);
+                   .vesID (VID_OPENPEPPOL_TSR_V103)
+                   .displayName ("Peppol Transaction Statistics Report v1.0.3")
+                   .deprecated ()
+                   .addXSD (aXSD101)
+                   .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (BASE_PATH_SCH +
+                                                                                       "tsr/1.0.3/xslt/peppol-transaction-statistics-reporting-1.0.3.xslt",
+                                                                                       _getCL ()), null))
+                   .registerInto (aRegistry);
     }
   }
 }
