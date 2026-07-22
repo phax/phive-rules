@@ -84,12 +84,12 @@ When adding a new module or a new VES coordinate, follow the **DVR Coordinate na
 
 | Dependency | Purpose |
 |---|---|
-| `phive-parent-pom` (12.0.1) | PHIVE validation engine |
-| `ph-schematron` (9.1.1) | Schematron processing |
-| `ph-ubl` (10.1.0) | OASIS UBL bindings |
-| `ph-cii` (4.1.1) | UN/CEFACT CII bindings |
-| `peppol-commons` (12.4.0) | Peppol utilities |
-| `ph-commons` (12.1.5) | Core utilities (collections, IO, etc.) |
+| `phive-parent-pom` (12.1.0) | PHIVE validation engine |
+| `ph-schematron` (10.0.0) | Schematron processing |
+| `ph-ubl` (10.2.0) | OASIS UBL bindings |
+| `ph-cii` (4.1.2) | UN/CEFACT CII bindings |
+| `peppol-commons` (12.6.0) | Peppol utilities |
+| `ph-commons` (12.3.3) | Core utilities (collections, IO, etc.) |
 
 ### Module Dependencies
 
@@ -98,6 +98,13 @@ When adding a new module or a new VES coordinate, follow the **DVR Coordinate na
 - `phive-rules-peppol` depends on `en16931`
 - `phive-rules-ublbe` depends on `peppol`
 - `phive-rules-energieefactuur` depends on `simplerinvoicing`
+
+## Imports & Annotations
+
+This codebase uses **ph-commons 12.x** (restructured packages) and **JSpecify** nullness annotations. When writing or editing Java:
+- Nullness: `org.jspecify.annotations.{NonNull,Nullable}` — never `javax.annotation.*` or `jakarta.annotation.*`.
+- Core utilities live under `com.helger.base.*` and `com.helger.annotation.*` (e.g. `com.helger.annotation.Nonempty`, `com.helger.annotation.concurrent.Immutable`, `com.helger.base.enforce.ValueEnforcer`) — not the old monolithic `com.helger.commons.*`.
+- Match the imports of a neighbouring `{Format}Validation.java` when in doubt.
 
 ## Schematron Rules
 
