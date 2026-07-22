@@ -317,6 +317,12 @@ I hope that with the introduction of PINT, the versioning problem will be solved
 
 # News and noteworthy
 
+v4.4.1 - work in progress
+* Added Peppol OM (Oman) 1.0.1 validation rules from the `2026-Q2-v1.0.1` release (2026-07-17)
+    * PINT OM Billing and Self-Billing 1.0.1 in `phive-rules-peppol-pint`, VES coordinates `org.peppol.pint.om:invoice:1.0.1`, `org.peppol.pint.om:creditnote:1.0.1`, `org.peppol.pint.om:invoice-self-billing:1.0.1` and `org.peppol.pint.om:creditnote-self-billing:1.0.1`
+    * OM Tax Data Document (TDD) 1.0.1 in `phive-rules-peppol-taxdata`, VES coordinate `org.peppol.taxdata:om:1.0.1` (via `peppol-om` 1.2.0)
+    * The respective 1.0.0 rule sets are now deprecated
+
 v4.4.0 - 2026-07-19
 * Added new SPI interface `IValidationRulesRegistrarSPI` (in `phive-rules-api`) that every rule module implements to register its validation execution sets into a provided registry. Use `ValidationRulesRegistrar.registerAllValidationRules` to discover and register all rules found on the classpath in a single call.
   The registration order between dependent modules (e.g. modules based on EN 16931) is resolved automatically via the coordinates each implementation declares in `getAllPrerequisites()` (sharing the same data basis as the module's static `init...` methods): an implementation whose prerequisites are not yet registered is retried in a later round;

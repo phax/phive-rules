@@ -204,6 +204,11 @@ public final class CTestFiles
                                                              PeppolValidationPintOM.VID_OPENPEPPOL_OM_PINT_SB_INVOICE_1_0_0,
                                                              PeppolValidationPintOM.VID_OPENPEPPOL_OM_PINT_SB_CREDIT_NOTE_1_0_0,
 
+                                                             PeppolValidationPintOM.VID_OPENPEPPOL_OM_PINT_INVOICE_1_0_1,
+                                                             PeppolValidationPintOM.VID_OPENPEPPOL_OM_PINT_CREDIT_NOTE_1_0_1,
+                                                             PeppolValidationPintOM.VID_OPENPEPPOL_OM_PINT_SB_INVOICE_1_0_1,
+                                                             PeppolValidationPintOM.VID_OPENPEPPOL_OM_PINT_SB_CREDIT_NOTE_1_0_1,
+
                                                              /* PINT Singapore */
                                                              PeppolValidationPintSG.VID_OPENPEPPOL_SG_PINT_UBL_INVOICE_1_1_0,
                                                              PeppolValidationPintSG.VID_OPENPEPPOL_SG_PINT_UBL_CREDIT_NOTE_1_1_0,
@@ -1191,6 +1196,74 @@ public final class CTestFiles
     if (aVESID.equals (PeppolValidationPintOM.VID_OPENPEPPOL_OM_PINT_SB_CREDIT_NOTE_1_0_0))
     {
       return _getAll ("pint-om/1.0.0/selfbilling/cn/", "Self-BillingCN.xml");
+    }
+
+    // 1.0.1
+    if (aVESID.equals (PeppolValidationPintOM.VID_OPENPEPPOL_OM_PINT_INVOICE_1_0_1))
+    {
+      return _getAll ("pint-om/1.0.1/billing/inv/",
+                      "CommercialInvoice.xml",
+                      "ContinuousSupplies-2.xml",
+                      "ContinuousSupply.xml",
+                      "DebitNote.xml",
+                      "DeemedSupply-2.xml",
+                      "DeemedSupply.xml",
+                      "E-Commerce-Apparel.xml",
+                      "E-Commerce-DigitalSubscription.xml",
+                      "E-Commerce.xml",
+                      "Export.xml",
+                      "Exports-2.xml",
+                      "FullInvoice-Mixed-Categories.xml",
+                      "FullInvoice.xml",
+                      "FullInvoiceCategory-E.xml",
+                      // "GoodsImport-PharmaMixed.xml" — sample has invalid UBL 2.1 element order
+                      // (cac:DeliveryTerms after cac:Shipment)
+                      "GoodsImport-Vehicle.xml",
+                      "GoodsImport.xml",
+                      "ImportRCM-Royalties.xml",
+                      "ImportRCM-Software.xml",
+                      "ImportRCM.xml",
+                      "MarginScheme.xml",
+                      "P1-no-gap-exact-calculation.xml",
+                      "P2-multi-line-baisa-gap.xml",
+                      "P3-multi-line-accumulated-gap.xml",
+                      "P4-strict-no-ibt114-element.xml",
+                      "Prepayment-Final-Net.xml",
+                      "Prepayment-Hotel.xml",
+                      "Prepayment.xml",
+                      "ProfitMargin.xml",
+                      "SimplifiedTaxInvoice.xml",
+                      "SpecialZone-SEZAD.xml",
+                      "SpecialZone-SHRFZ.xml",
+                      "SpecialZone.xml",
+                      "Summary-Construction.xml",
+                      "Summary-Utilities.xml",
+                      "Summary.xml",
+                      "ThirdParty-Marketplace.xml",
+                      "ThirdParty-Recovery.xml",
+                      "ThirdParty.xml");
+    }
+    if (aVESID.equals (PeppolValidationPintOM.VID_OPENPEPPOL_OM_PINT_CREDIT_NOTE_1_0_1))
+    {
+      return _getAll ("pint-om/1.0.1/billing/cn/", "StandardCN.xml");
+    }
+    if (aVESID.equals (PeppolValidationPintOM.VID_OPENPEPPOL_OM_PINT_SB_INVOICE_1_0_1))
+    {
+      return _getAll ("pint-om/1.0.1/selfbilling/inv/",
+                      "ProfitMarginSelfInvoice-Antiques.xml",
+                      "ProfitMarginSelfInvoice.xml",
+                      "SB-INV-01-no-gap-exact-calculation.xml",
+                      "SB-INV-02-multi-line-baisa-gap.xml",
+                      "Self-Billing.xml",
+                      "SelfBilledInvoice.xml");
+    }
+    if (aVESID.equals (PeppolValidationPintOM.VID_OPENPEPPOL_OM_PINT_SB_CREDIT_NOTE_1_0_1))
+    {
+      return _getAll ("pint-om/1.0.1/selfbilling/cn/",
+                      // "SB-CN-01-multi-line-baisa-gap.xml" and
+                      // "SB-CN-02-strict-no-ibt114-element.xml" — samples contain cbc:TaxPointDate
+                      // which is not a valid UBL 2.1 CreditNote element
+                      "Self-BillingCN.xml");
     }
 
     /* Peppol Singapore */

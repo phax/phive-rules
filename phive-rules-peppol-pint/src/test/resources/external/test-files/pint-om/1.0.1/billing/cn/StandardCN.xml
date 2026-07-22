@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CreditNote xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+	xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+	xmlns="urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2">
+	<cbc:CustomizationID>urn:peppol:pint:billing-1@om-1</cbc:CustomizationID>
+	<cbc:ProfileID>urn:peppol:bis:billing</cbc:ProfileID>
+	<cbc:ID>OM001-CN-TEST</cbc:ID>
+	<cbc:UUID>09f6d2c3-9432-5133-80fb-1cb251a6a089</cbc:UUID>
+	<cbc:IssueDate>2025-02-07</cbc:IssueDate>
+	<cbc:IssueTime>15:55:00</cbc:IssueTime>
+	<cbc:CreditNoteTypeCode name="10000000000000000000">381</cbc:CreditNoteTypeCode>
+	<cbc:Note>Tax Credit invoice</cbc:Note>
+	<cbc:DocumentCurrencyCode>OMR</cbc:DocumentCurrencyCode>
+	<cbc:AccountingCost>Regular sales</cbc:AccountingCost>
+	<cbc:BuyerReference>PO-OM-220</cbc:BuyerReference>
+	<cac:InvoicePeriod>
+		<cbc:StartDate>2025-01-31</cbc:StartDate>
+		<cbc:EndDate>2025-02-07</cbc:EndDate>
+	</cac:InvoicePeriod>
+	<cac:OrderReference>
+		<cbc:ID>PO-OM-220</cbc:ID>
+		<cbc:SalesOrderID>Salesorder-2122</cbc:SalesOrderID>
+	</cac:OrderReference>
+	<cac:BillingReference>
+		<cac:InvoiceDocumentReference>
+			<cbc:ID>Sample-02</cbc:ID>
+			<cbc:UUID>97dce5ad-63eb-56db-a4e9-4c49ba06916c</cbc:UUID>
+			<cbc:IssueDate>2025-02-07</cbc:IssueDate>
+			<cbc:DocumentStatusCode>CAN</cbc:DocumentStatusCode>
+		</cac:InvoiceDocumentReference>
+	</cac:BillingReference>
+	<cac:DespatchDocumentReference>
+		<cbc:ID>Memo-1000</cbc:ID>
+	</cac:DespatchDocumentReference>
+	<cac:AdditionalDocumentReference>
+		<cbc:ID>PO-OM-220</cbc:ID>
+		<cac:Attachment>
+			<cbc:EmbeddedDocumentBinaryObject mimeCode="application/pdf" filename="PO-OM-220.pdf">
+				QmFzZTY0IGNvbnRlbnQgZXhhbXBfZQ==</cbc:EmbeddedDocumentBinaryObject>
+		</cac:Attachment>
+	</cac:AdditionalDocumentReference>
+	<cac:OriginatorDocumentReference>
+		<cbc:ID>PO-OM-220</cbc:ID>
+	</cac:OriginatorDocumentReference>
+	<cac:AccountingSupplierParty>
+		<cac:Party>
+			<cbc:EndpointID schemeID="0248">1987654321</cbc:EndpointID>
+			<cac:PartyName>
+				<cbc:Name>Salalah Logistics LLC</cbc:Name>
+			</cac:PartyName>
+			<cac:PostalAddress>
+				<cbc:StreetName>Al Khuwair Plaza, Office 12</cbc:StreetName>
+				<cbc:AdditionalStreetName>Al Khuwair Plaza, Office 12</cbc:AdditionalStreetName>
+				<cbc:CityName>Sohar</cbc:CityName>
+				<cbc:PostalZone>1111</cbc:PostalZone>
+				<cbc:CountrySubentity>MO</cbc:CountrySubentity>
+				<cac:AddressLine>
+					<cbc:Line>P.O. Box 1500</cbc:Line>
+				</cac:AddressLine>
+				<cac:Country>
+					<cbc:IdentificationCode>OM</cbc:IdentificationCode>
+				</cac:Country>
+			</cac:PostalAddress>
+			<cac:PartyTaxScheme>
+				<cbc:CompanyID>OM1234567890</cbc:CompanyID> <!--  IBT-031 -->
+				<cac:TaxScheme>
+					<cbc:ID>VAT</cbc:ID>
+				</cac:TaxScheme>
+			</cac:PartyTaxScheme>
+			<cac:PartyLegalEntity>
+				<cbc:RegistrationName>Salalah Logistics LLC</cbc:RegistrationName>
+				<cbc:CompanyID>112345678900003</cbc:CompanyID>
+				<cbc:CompanyLegalForm>Sole Proprietorship</cbc:CompanyLegalForm>
+			</cac:PartyLegalEntity>
+			<cac:Contact>
+				<cbc:Name>Mohammed Al-Harthy</cbc:Name>
+				<cbc:Telephone>+96826112233</cbc:Telephone>
+				<cbc:ElectronicMail>Email address</cbc:ElectronicMail>
+			</cac:Contact>
+		</cac:Party>
+	</cac:AccountingSupplierParty>
+	<cac:AccountingCustomerParty>
+		<cac:Party>
+			<cbc:EndpointID schemeID="0248">1345678901</cbc:EndpointID>
+			<cac:PartyName>
+				<cbc:Name>Buyer Trade Name</cbc:Name>
+			</cac:PartyName>
+			<cac:PostalAddress>
+				<cbc:StreetName>Al Khuwair Plaza, Office 12</cbc:StreetName>
+				<cbc:AdditionalStreetName>Al Khuwair Plaza, Office 12</cbc:AdditionalStreetName>
+				<cbc:CityName>Sohar</cbc:CityName>
+				<cbc:PostalZone>2222</cbc:PostalZone>
+				<cbc:CountrySubentity>MO</cbc:CountrySubentity>
+				<cac:AddressLine>
+					<cbc:Line>P.O. Box 1500</cbc:Line>
+				</cac:AddressLine>
+				<cac:Country>
+					<cbc:IdentificationCode>OM</cbc:IdentificationCode>
+				</cac:Country>
+			</cac:PostalAddress>
+			<cac:PartyTaxScheme>
+				<cbc:CompanyID>OM1234567890</cbc:CompanyID> <!--  IBT-048 -->
+				<cac:TaxScheme>
+					<cbc:ID>VAT</cbc:ID>
+				</cac:TaxScheme>
+			</cac:PartyTaxScheme>
+			<cac:PartyLegalEntity>
+				<cbc:RegistrationName>Mazoon Holdings SAOC</cbc:RegistrationName>
+				<cbc:CompanyID>112345679000001</cbc:CompanyID>
+			</cac:PartyLegalEntity>
+			<cac:Contact>
+				<cbc:Name>Mohammed Al-Harthy</cbc:Name>
+				<cbc:Telephone>+96826112233</cbc:Telephone>
+				<cbc:ElectronicMail>Email address</cbc:ElectronicMail>
+			</cac:Contact>
+		</cac:Party>
+	</cac:AccountingCustomerParty>
+	<cac:PayeeParty>
+		<cac:PartyName>
+			<cbc:Name>Payee Party Name</cbc:Name>
+		</cac:PartyName>
+		<cac:PartyLegalEntity>
+			<cbc:CompanyID>1122334455</cbc:CompanyID>
+		</cac:PartyLegalEntity>
+	</cac:PayeeParty>
+	<cac:PaymentTerms>
+		<cbc:Note>Will be adjusted against next invoice</cbc:Note>
+	</cac:PaymentTerms>
+	<cac:AllowanceCharge>
+		<cbc:ChargeIndicator>false</cbc:ChargeIndicator>
+		<cbc:AllowanceChargeReasonCode>100</cbc:AllowanceChargeReasonCode>
+		<cbc:AllowanceChargeReason>Special Rebate</cbc:AllowanceChargeReason>
+		<cbc:MultiplierFactorNumeric>2.5</cbc:MultiplierFactorNumeric>
+		<cbc:Amount currencyID="OMR">262.15</cbc:Amount>
+		<cbc:BaseAmount currencyID="OMR">10486</cbc:BaseAmount>
+		<cac:TaxCategory>
+			<cbc:ID>S</cbc:ID>
+			<cbc:Percent>5</cbc:Percent>
+			<cac:TaxScheme>
+				<cbc:ID>VAT</cbc:ID>
+			</cac:TaxScheme>
+		</cac:TaxCategory>
+	</cac:AllowanceCharge>
+	<cac:AllowanceCharge>
+		<cbc:ChargeIndicator>true</cbc:ChargeIndicator>
+		<cbc:AllowanceChargeReasonCode>AAT</cbc:AllowanceChargeReasonCode>
+		<cbc:AllowanceChargeReason>Rush Delivery</cbc:AllowanceChargeReason>
+		<cbc:MultiplierFactorNumeric>4</cbc:MultiplierFactorNumeric>
+		<cbc:Amount currencyID="OMR">419.44</cbc:Amount>
+		<cbc:BaseAmount currencyID="OMR">10486</cbc:BaseAmount>
+		<cac:TaxCategory>
+			<cbc:ID>S</cbc:ID>
+			<cbc:Percent>5</cbc:Percent>
+			<cac:TaxScheme>
+				<cbc:ID>VAT</cbc:ID>
+			</cac:TaxScheme>
+		</cac:TaxCategory>
+	</cac:AllowanceCharge>
+	<cac:TaxTotal>
+		<cbc:TaxAmount currencyID="OMR">532.16</cbc:TaxAmount>
+		<cbc:TaxIncludedIndicator>false</cbc:TaxIncludedIndicator>
+		<cac:TaxSubtotal>
+			<cbc:TaxableAmount currencyID="OMR">10643.29</cbc:TaxableAmount>
+			<cbc:TaxAmount currencyID="OMR">532.16</cbc:TaxAmount>
+			<cac:TaxCategory>
+				<cbc:ID>S</cbc:ID>
+				<cbc:Percent>5</cbc:Percent>
+				<cac:TaxScheme>
+					<cbc:ID>VAT</cbc:ID>
+				</cac:TaxScheme>
+			</cac:TaxCategory>
+		</cac:TaxSubtotal>
+	</cac:TaxTotal>
+	<cac:LegalMonetaryTotal>
+		<cbc:LineExtensionAmount currencyID="OMR">10486</cbc:LineExtensionAmount>
+		<cbc:TaxExclusiveAmount currencyID="OMR">10643.29</cbc:TaxExclusiveAmount>
+		<cbc:TaxInclusiveAmount currencyID="OMR">11175.45</cbc:TaxInclusiveAmount>
+		<cbc:AllowanceTotalAmount currencyID="OMR">262.15</cbc:AllowanceTotalAmount>
+		<cbc:ChargeTotalAmount currencyID="OMR">419.44</cbc:ChargeTotalAmount>
+		<cbc:PayableRoundingAmount currencyID="OMR">0.000</cbc:PayableRoundingAmount>
+		<cbc:PayableAmount currencyID="OMR">11175.45</cbc:PayableAmount>
+	</cac:LegalMonetaryTotal>
+	<cac:CreditNoteLine>
+		<cbc:ID>1</cbc:ID>
+		<cbc:Note>All items</cbc:Note>
+		<cbc:CreditedQuantity unitCode="H87">2000</cbc:CreditedQuantity>
+		<cbc:LineExtensionAmount currencyID="OMR">10486</cbc:LineExtensionAmount>
+		<cac:InvoicePeriod>
+			<cbc:StartDate>2025-01-31</cbc:StartDate>
+			<cbc:EndDate>2025-01-31</cbc:EndDate>
+		</cac:InvoicePeriod>
+		<cac:OrderLineReference>
+			<cbc:LineID>1</cbc:LineID>
+			<cac:OrderReference>
+				<cbc:ID>PO-OM-220</cbc:ID>
+			</cac:OrderReference>
+		</cac:OrderLineReference>
+		<cac:AllowanceCharge>
+			<cbc:ChargeIndicator>false</cbc:ChargeIndicator>
+			<cbc:AllowanceChargeReasonCode>95</cbc:AllowanceChargeReasonCode>
+			<cbc:AllowanceChargeReason>Discount</cbc:AllowanceChargeReason>
+			<cbc:MultiplierFactorNumeric>3</cbc:MultiplierFactorNumeric>
+			<cbc:Amount currencyID="OMR">294</cbc:Amount>
+			<cbc:BaseAmount currencyID="OMR">9800</cbc:BaseAmount>
+		</cac:AllowanceCharge>
+		<cac:AllowanceCharge>
+			<cbc:ChargeIndicator>true</cbc:ChargeIndicator>
+			<cbc:AllowanceChargeReasonCode>AAC</cbc:AllowanceChargeReasonCode>
+			<cbc:AllowanceChargeReason>Technical Modification</cbc:AllowanceChargeReason>
+			<cbc:MultiplierFactorNumeric>10</cbc:MultiplierFactorNumeric>
+			<cbc:Amount currencyID="OMR">980</cbc:Amount>
+			<cbc:BaseAmount currencyID="OMR">9800</cbc:BaseAmount>
+		</cac:AllowanceCharge>
+		<cac:Item>
+			<cbc:Description>Hot-rolled deformed steel reinforcement bar, 12 mm dia, 12 m length, grade B500B.</cbc:Description>
+			<cbc:Name>Construction steel rebar 12 mm</cbc:Name>
+			<cac:BuyersItemIdentification>
+				<cbc:ID>Buyer Item Identification</cbc:ID>
+			</cac:BuyersItemIdentification>
+			<cac:SellersItemIdentification>
+				<cbc:ID>Seller Item Identification</cbc:ID>
+			</cac:SellersItemIdentification>
+			<cac:AdditionalItemIdentification>
+				<cbc:ID schemeName="CC">000000</cbc:ID>
+			</cac:AdditionalItemIdentification>
+			<cac:ItemSpecificationDocumentReference>
+				<cbc:ID schemeName="MP">00000000</cbc:ID>
+				<cbc:DocumentTypeCode>G</cbc:DocumentTypeCode>
+			</cac:ItemSpecificationDocumentReference>
+			<cac:OriginCountry>
+				<cbc:IdentificationCode>OM</cbc:IdentificationCode>
+			</cac:OriginCountry>
+			<cac:CommodityClassification>
+				
+				<cbc:ItemClassificationCode listID="HS">010121100001</cbc:ItemClassificationCode>
+			</cac:CommodityClassification>
+			<cac:ClassifiedTaxCategory>
+				<cbc:ID>S</cbc:ID>
+				<cbc:Percent>5</cbc:Percent>
+				<cac:TaxScheme>
+					<cbc:ID>VAT</cbc:ID>
+				</cac:TaxScheme>
+			</cac:ClassifiedTaxCategory>
+			<cac:AdditionalItemProperty>
+				<cbc:Name>Additional Item Property Name</cbc:Name>
+				<cbc:Value>Additional Item Property Value</cbc:Value>
+			</cac:AdditionalItemProperty>
+		</cac:Item>
+		<cac:Price>
+			<cbc:PriceAmount currencyID="OMR">4.9</cbc:PriceAmount>
+			<cbc:BaseQuantity unitCode="H87">1</cbc:BaseQuantity>
+			<cac:AllowanceCharge>
+				<cbc:ChargeIndicator>false</cbc:ChargeIndicator>
+				<cbc:Amount currencyID="OMR">0.1</cbc:Amount>
+				<cbc:BaseAmount currencyID="OMR">5</cbc:BaseAmount>
+			</cac:AllowanceCharge>
+		</cac:Price>
+		<cac:ItemPriceExtension>
+			<cbc:Amount currencyID="OMR">11010.3</cbc:Amount>
+			<cac:TaxTotal>
+				<cbc:TaxAmount currencyID="OMR">524.3</cbc:TaxAmount>
+			</cac:TaxTotal>
+		</cac:ItemPriceExtension>
+	</cac:CreditNoteLine>
+</CreditNote>

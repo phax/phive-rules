@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    ============================================================
+    PINT-OM Sample : ProfitMarginSelfInvoice-Antiques.xml
+    Scenario       : Profit-Margin Self-Invoice - Antiques Buyer
+    Bitmap         : 1XXXXXXXXX1XXXXXXXXX
+    Decoded        : FullTax, ProfitMarginSelf
+    Doc type code  : 389  (Self-billed invoice)
+    Description    :
+      An antiques dealer self-invoices a private seller under the
+      profit-margin scheme. Per the corrected IBR-086-OM, PMS lines must be
+      cat 'O' (out-of-scope).
+    Notes          : Inline comments below mark each business-
+                     rule-relevant section.  All schemeID, listID
+                     and unitCode attribute values are preserved.
+    See            : docs/SCENARIOS.md for the master scope table.
+    ============================================================
+-->
+<Invoice xmlns="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2"
+	xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+	xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<!-- =================  Document metadata  ================= -->
+	<cbc:CustomizationID>urn:peppol:pint:selfbilling-1@om-1</cbc:CustomizationID>
+	<cbc:ProfileID>urn:peppol:bis:selfbilling</cbc:ProfileID>
+	<cbc:ID>OM-PMS-ANT-2026-108</cbc:ID>
+	<cbc:UUID>d9f4507c-9d61-542e-87df-f0f64635005e</cbc:UUID>
+	<cbc:IssueDate>2026-02-06</cbc:IssueDate>
+	<cbc:IssueTime>07:54:00</cbc:IssueTime>
+	<cbc:DueDate>2026-02-13</cbc:DueDate>
+	<!-- InvoiceTypeCode @name encodes the transaction-type bitmap (BTOM-001). -->
+	<cbc:InvoiceTypeCode name="10000000001000000000">389</cbc:InvoiceTypeCode>
+	<cbc:Note>Self-invoice for private antique acquisition (margin scheme)</cbc:Note>
+	<cbc:DocumentCurrencyCode>OMR</cbc:DocumentCurrencyCode>
+	<!-- BTOM-030 Total Amount Due (Profit Margin) - validated by IBR-082-OM. -->
+	<cac:AdditionalDocumentReference>
+		<cbc:ID>OMR</cbc:ID>
+		<cbc:DocumentTypeCode>PM_TOTAL</cbc:DocumentTypeCode>
+		<cbc:DocumentDescription>800</cbc:DocumentDescription>
+	</cac:AdditionalDocumentReference>
+	<!-- =================  Supplier (seller)  ================= -->
+	<cac:AccountingSupplierParty>
+		<cac:Party>
+			<cbc:EndpointID schemeID="0248">OM0000000002</cbc:EndpointID>
+			<cac:PartyIdentification>
+				<cbc:ID schemeName="TIN">TIN-001</cbc:ID>
+			</cac:PartyIdentification>
+			<cac:PostalAddress>
+				<cbc:StreetName>Nizwa Old Quarter</cbc:StreetName>
+				<cbc:AdditionalStreetName>Nizwa Old Quarter</cbc:AdditionalStreetName>
+				<cbc:CityName>Nizwa</cbc:CityName>
+				<cbc:PostalZone>0611</cbc:PostalZone>
+				<cac:AddressLine>
+					<cbc:Line>P.O. Box 14</cbc:Line>
+				</cac:AddressLine>
+				<cac:Country>
+					<cbc:IdentificationCode>OM</cbc:IdentificationCode>
+				</cac:Country>
+			</cac:PostalAddress>
+			<cac:PartyTaxScheme>
+				<cbc:CompanyID>OM0000000002</cbc:CompanyID>
+				<cac:TaxScheme>
+					<cbc:ID>VAT</cbc:ID>
+				</cac:TaxScheme>
+			</cac:PartyTaxScheme>
+			<cac:PartyLegalEntity>
+				<cbc:RegistrationName>Mr. Saif Al-Hosni (private seller)</cbc:RegistrationName>
+			</cac:PartyLegalEntity>
+			<cac:Contact>
+				<cbc:Telephone>+968 24000000</cbc:Telephone>
+			</cac:Contact>
+		</cac:Party>
+	</cac:AccountingSupplierParty>
+	<!-- =================  Customer (buyer)   ================= -->
+	<cac:AccountingCustomerParty>
+		<cac:Party>
+			<cbc:EndpointID schemeID="0248">OM9988776655</cbc:EndpointID>
+			<cac:PostalAddress>
+				<cbc:StreetName>Al Khuwair, Block 14</cbc:StreetName>
+				<cbc:AdditionalStreetName>Al Khuwair, Block 14</cbc:AdditionalStreetName>
+				<cbc:CityName>Muscat</cbc:CityName>
+				<cbc:PostalZone>0133</cbc:PostalZone>
+				<cac:AddressLine>
+					<cbc:Line>P.O. Box 445</cbc:Line>
+				</cac:AddressLine>
+				<cac:Country>
+					<cbc:IdentificationCode>OM</cbc:IdentificationCode>
+				</cac:Country>
+			</cac:PostalAddress>
+			<cac:PartyTaxScheme>
+				<cbc:CompanyID>OM9988776655</cbc:CompanyID>
+				<cac:TaxScheme>
+					<cbc:ID>VAT</cbc:ID>
+				</cac:TaxScheme>
+			</cac:PartyTaxScheme>
+			<cac:PartyLegalEntity>
+				<cbc:RegistrationName>Heritage Antiques LLC</cbc:RegistrationName>
+			</cac:PartyLegalEntity>
+			<cac:Contact>
+				<cbc:Telephone>+968 24000000</cbc:Telephone>
+			</cac:Contact>
+		</cac:Party>
+	</cac:AccountingCustomerParty>
+	<!-- =================  Delivery            ================= -->
+	<cac:Delivery>
+		<cac:DeliveryLocation>
+			<cac:Address>
+				<cac:Country>
+					<cbc:IdentificationCode>OM</cbc:IdentificationCode>
+				</cac:Country>
+			</cac:Address>
+		</cac:DeliveryLocation>
+	</cac:Delivery>
+	<!-- =================  Payment means     ================= -->
+	<cac:PaymentMeans>
+		<cbc:PaymentMeansCode name="Credit Transfer">30</cbc:PaymentMeansCode>
+		<cbc:PaymentID>PMT-001</cbc:PaymentID>
+		<cac:PayeeFinancialAccount>
+			<cbc:ID schemeID="IBAN">OM810010000000123456</cbc:ID>
+			<cbc:Name>Bank Muscat</cbc:Name>
+			<cac:FinancialInstitutionBranch>
+				<cbc:ID>BMUSOMRX</cbc:ID>
+			</cac:FinancialInstitutionBranch>
+		</cac:PayeeFinancialAccount>
+	</cac:PaymentMeans>
+	<!-- =================  Payment terms     ================= -->
+	<cac:PaymentTerms>
+		<cbc:Note>Cash on collection</cbc:Note>
+	</cac:PaymentTerms>
+	<!-- =================  Tax total          ================= -->
+	<cac:TaxTotal>
+		<cbc:TaxAmount currencyID="OMR">0</cbc:TaxAmount>
+		<cbc:TaxIncludedIndicator>false</cbc:TaxIncludedIndicator>
+		<cac:TaxSubtotal>
+			<cbc:TaxableAmount currencyID="OMR">800</cbc:TaxableAmount>
+			<cbc:TaxAmount currencyID="OMR">0</cbc:TaxAmount>
+			<cac:TaxCategory>
+				<cbc:ID>O</cbc:ID>
+				<cac:TaxScheme>
+					<cbc:ID>VAT</cbc:ID>
+				</cac:TaxScheme>
+			</cac:TaxCategory>
+		</cac:TaxSubtotal>
+	</cac:TaxTotal>
+	<!-- =================  Legal monetary total ================= -->
+	<cac:LegalMonetaryTotal>
+		<cbc:LineExtensionAmount currencyID="OMR">800</cbc:LineExtensionAmount>
+		<cbc:TaxExclusiveAmount currencyID="OMR">800</cbc:TaxExclusiveAmount>
+		<cbc:TaxInclusiveAmount currencyID="OMR">800</cbc:TaxInclusiveAmount>
+		<cbc:PayableAmount currencyID="OMR">800</cbc:PayableAmount>
+	</cac:LegalMonetaryTotal>
+	<!-- =================  Invoice lines      ================= -->
+	<!-- Line 1: PMS line carries cat 'O' per IBR-086-OM (corrected in v1.1.1). -->
+	<cac:InvoiceLine>
+		<cbc:ID>1</cbc:ID>
+		<cbc:InvoicedQuantity unitCode="EA">1</cbc:InvoicedQuantity>
+		<cbc:LineExtensionAmount currencyID="OMR">800</cbc:LineExtensionAmount>
+		<cac:Item>
+			<cbc:Name>Antique silver khanjar - margin base</cbc:Name>
+			<cac:AdditionalItemIdentification>
+				<cbc:ID schemeName="CC">000000</cbc:ID>
+			</cac:AdditionalItemIdentification>
+			<cac:ItemSpecificationDocumentReference>
+				<cbc:ID schemeName="MP">00000000</cbc:ID>
+				<cbc:DocumentTypeCode>G</cbc:DocumentTypeCode>
+			</cac:ItemSpecificationDocumentReference>
+			<cac:CommodityClassification>
+				
+				<cbc:ItemClassificationCode listID="HS">940110000000</cbc:ItemClassificationCode>
+			</cac:CommodityClassification>
+			<cac:ClassifiedTaxCategory>
+				<cbc:ID>O</cbc:ID>
+				<cac:TaxScheme>
+					<cbc:ID>VAT</cbc:ID>
+				</cac:TaxScheme>
+			</cac:ClassifiedTaxCategory>
+		</cac:Item>
+		<cac:Price>
+			<cbc:PriceAmount currencyID="OMR">800</cbc:PriceAmount>
+			<cbc:BaseQuantity unitCode="EA">1</cbc:BaseQuantity>
+		</cac:Price>
+		<cac:ItemPriceExtension>
+			<cbc:Amount currencyID="OMR">800</cbc:Amount>
+			<cac:TaxTotal>
+				<cbc:TaxAmount currencyID="OMR">0</cbc:TaxAmount>
+			</cac:TaxTotal>
+		</cac:ItemPriceExtension>
+	</cac:InvoiceLine>
+</Invoice>

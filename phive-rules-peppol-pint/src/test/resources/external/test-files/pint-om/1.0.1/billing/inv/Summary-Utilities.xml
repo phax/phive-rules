@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    ============================================================
+    PINT-OM Sample : Summary-Utilities.xml
+    Scenario       : Summary - Multi-Meter Utility Billing
+    Bitmap         : 1XXX1XXXXXXXXXXXXXXX
+    Decoded        : FullTax, Summary
+    Doc type code  : 380  (Commercial / Tax invoice)
+    Description    :
+      Utility provider summarises all meter consumption across an apartment
+      block in one invoice.
+    Notes          : Inline comments below mark each business-
+                     rule-relevant section.  All schemeID, listID
+                     and unitCode attribute values are preserved.
+    See            : docs/SCENARIOS.md for the master scope table.
+    ============================================================
+-->
+<Invoice xmlns="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2"
+	xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+	xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<!-- =================  Document metadata  ================= -->
+	<cbc:CustomizationID>urn:peppol:pint:billing-1@om-1</cbc:CustomizationID>
+	<cbc:ProfileID>urn:peppol:bis:billing</cbc:ProfileID>
+	<cbc:ID>OM-SUM-UTIL-2026-104</cbc:ID>
+	<cbc:UUID>bbfca050-3645-53f0-b45e-983a4f67ec03</cbc:UUID>
+	<cbc:IssueDate>2026-02-06</cbc:IssueDate>
+	<cbc:IssueTime>07:54:00</cbc:IssueTime>
+	<cbc:DueDate>2026-02-13</cbc:DueDate>
+	<!-- InvoiceTypeCode @name encodes the transaction-type bitmap (BTOM-001). -->
+	<cbc:InvoiceTypeCode name="10001000000000000000">380</cbc:InvoiceTypeCode>
+	<cbc:Note>Utility summary - April 2026</cbc:Note>
+	<cbc:DocumentCurrencyCode>OMR</cbc:DocumentCurrencyCode>
+	<!-- InvoicePeriod: applicable for continuous / summary / prepayment scenarios. -->
+	<cac:InvoicePeriod>
+		<cbc:StartDate>2026-04-01</cbc:StartDate>
+		<cbc:EndDate>2026-04-30</cbc:EndDate>
+		<cbc:DescriptionCode>35</cbc:DescriptionCode>
+	</cac:InvoicePeriod>
+	<!-- =================  Supplier (seller)  ================= -->
+	<cac:AccountingSupplierParty>
+		<cac:Party>
+			<cbc:EndpointID schemeID="0248">OM1100229988</cbc:EndpointID>
+			<cac:PostalAddress>
+				<cbc:StreetName>Al Athaiba</cbc:StreetName>
+				<cbc:AdditionalStreetName>Al Athaiba</cbc:AdditionalStreetName>
+				<cbc:CityName>Muscat</cbc:CityName>
+				<cbc:PostalZone>0130</cbc:PostalZone>
+				<cac:AddressLine>
+					<cbc:Line>P.O. Box 2333</cbc:Line>
+				</cac:AddressLine>
+				<cac:Country>
+					<cbc:IdentificationCode>OM</cbc:IdentificationCode>
+				</cac:Country>
+			</cac:PostalAddress>
+			<cac:PartyTaxScheme>
+				<cbc:CompanyID>OM1100229988</cbc:CompanyID>
+				<cac:TaxScheme>
+					<cbc:ID>VAT</cbc:ID>
+				</cac:TaxScheme>
+			</cac:PartyTaxScheme>
+			<cac:PartyLegalEntity>
+				<cbc:RegistrationName>Nama Electricity Distribution</cbc:RegistrationName>
+			</cac:PartyLegalEntity>
+			<cac:Contact>
+				<cbc:Telephone>+968 24000000</cbc:Telephone>
+			</cac:Contact>
+		</cac:Party>
+	</cac:AccountingSupplierParty>
+	<!-- =================  Customer (buyer)   ================= -->
+	<cac:AccountingCustomerParty>
+		<cac:Party>
+			<cbc:EndpointID schemeID="0248">OM9988776655</cbc:EndpointID>
+			<cac:PostalAddress>
+				<cbc:StreetName>Al Khuwair, Block 14</cbc:StreetName>
+				<cbc:AdditionalStreetName>Al Khuwair, Block 14</cbc:AdditionalStreetName>
+				<cbc:CityName>Muscat</cbc:CityName>
+				<cbc:PostalZone>0133</cbc:PostalZone>
+				<cac:AddressLine>
+					<cbc:Line>P.O. Box 445</cbc:Line>
+				</cac:AddressLine>
+				<cac:Country>
+					<cbc:IdentificationCode>OM</cbc:IdentificationCode>
+				</cac:Country>
+			</cac:PostalAddress>
+			<cac:PartyTaxScheme>
+				<cbc:CompanyID>OM9988776655</cbc:CompanyID>
+				<cac:TaxScheme>
+					<cbc:ID>VAT</cbc:ID>
+				</cac:TaxScheme>
+			</cac:PartyTaxScheme>
+			<cac:PartyLegalEntity>
+				<cbc:RegistrationName>Al Bandar Towers Owners' Assoc.</cbc:RegistrationName>
+			</cac:PartyLegalEntity>
+			<cac:Contact>
+				<cbc:Telephone>+968 24000000</cbc:Telephone>
+			</cac:Contact>
+		</cac:Party>
+	</cac:AccountingCustomerParty>
+	<!-- =================  Delivery            ================= -->
+	<cac:Delivery>
+		<cac:DeliveryLocation>
+			<cac:Address>
+				<cac:Country>
+					<cbc:IdentificationCode>OM</cbc:IdentificationCode>
+				</cac:Country>
+			</cac:Address>
+		</cac:DeliveryLocation>
+	</cac:Delivery>
+	<!-- =================  Payment means     ================= -->
+	<cac:PaymentMeans>
+		<cbc:PaymentMeansCode name="Credit Transfer">30</cbc:PaymentMeansCode>
+		<cbc:PaymentID>PMT-001</cbc:PaymentID>
+		<cac:PayeeFinancialAccount>
+			<cbc:ID schemeID="IBAN">OM810010000000123456</cbc:ID>
+			<cbc:Name>Bank Muscat</cbc:Name>
+			<cac:FinancialInstitutionBranch>
+				<cbc:ID>BMUSOMRX</cbc:ID>
+			</cac:FinancialInstitutionBranch>
+		</cac:PayeeFinancialAccount>
+	</cac:PaymentMeans>
+	<!-- =================  Payment terms     ================= -->
+	<cac:PaymentTerms>
+		<cbc:Note>Net 21 days from issue</cbc:Note>
+	</cac:PaymentTerms>
+	<!-- =================  Tax total          ================= -->
+	<cac:TaxTotal>
+		<cbc:TaxAmount currencyID="OMR">56.43</cbc:TaxAmount>
+		<cbc:TaxIncludedIndicator>false</cbc:TaxIncludedIndicator>
+		<cac:TaxSubtotal>
+			<cbc:TaxableAmount currencyID="OMR">1128.6</cbc:TaxableAmount>
+			<cbc:TaxAmount currencyID="OMR">56.43</cbc:TaxAmount>
+			<cac:TaxCategory>
+				<cbc:ID>S</cbc:ID>
+				<cbc:Percent>5</cbc:Percent>
+				<cac:TaxScheme>
+					<cbc:ID>VAT</cbc:ID>
+				</cac:TaxScheme>
+			</cac:TaxCategory>
+		</cac:TaxSubtotal>
+	</cac:TaxTotal>
+	<!-- =================  Legal monetary total ================= -->
+	<cac:LegalMonetaryTotal>
+		<cbc:LineExtensionAmount currencyID="OMR">1128.6</cbc:LineExtensionAmount>
+		<cbc:TaxExclusiveAmount currencyID="OMR">1128.6</cbc:TaxExclusiveAmount>
+		<cbc:TaxInclusiveAmount currencyID="OMR">1185.03</cbc:TaxInclusiveAmount>
+		<cbc:PayableAmount currencyID="OMR">1185.03</cbc:PayableAmount>
+	</cac:LegalMonetaryTotal>
+	<!-- =================  Invoice lines      ================= -->
+	<!-- Line 1: Aggregated kWh for Block A meters. -->
+	<cac:InvoiceLine>
+		<cbc:ID>1</cbc:ID>
+		<cbc:InvoicedQuantity unitCode="KWH">12450</cbc:InvoicedQuantity>
+		<cbc:LineExtensionAmount currencyID="OMR">373.5</cbc:LineExtensionAmount>
+		<cac:InvoicePeriod>
+			<cbc:StartDate>2026-04-01</cbc:StartDate>
+			<cbc:EndDate>2026-04-30</cbc:EndDate>
+		</cac:InvoicePeriod>
+		<cac:Item>
+			<cbc:Name>Block A consumption</cbc:Name>
+			<cac:AdditionalItemIdentification>
+				<cbc:ID schemeName="CC">000000</cbc:ID>
+			</cac:AdditionalItemIdentification>
+			<cac:ItemSpecificationDocumentReference>
+				<cbc:ID schemeName="MP">00000000</cbc:ID>
+				<cbc:DocumentTypeCode>G</cbc:DocumentTypeCode>
+			</cac:ItemSpecificationDocumentReference>
+			<cac:CommodityClassification>
+				
+				<cbc:ItemClassificationCode listID="HS">840110000000</cbc:ItemClassificationCode>
+			</cac:CommodityClassification>
+			<cac:ClassifiedTaxCategory>
+				<cbc:ID>S</cbc:ID>
+				<cbc:Percent>5</cbc:Percent>
+				<cac:TaxScheme>
+					<cbc:ID>VAT</cbc:ID>
+				</cac:TaxScheme>
+			</cac:ClassifiedTaxCategory>
+		</cac:Item>
+		<cac:Price>
+			<cbc:PriceAmount currencyID="OMR">0.03</cbc:PriceAmount>
+			<cbc:BaseQuantity unitCode="KWH">1</cbc:BaseQuantity>
+		</cac:Price>
+		<cac:ItemPriceExtension>
+			<cbc:Amount currencyID="OMR">392.18</cbc:Amount>
+			<cac:TaxTotal>
+				<cbc:TaxAmount currencyID="OMR">18.675</cbc:TaxAmount>
+			</cac:TaxTotal>
+		</cac:ItemPriceExtension>
+	</cac:InvoiceLine>
+	<!-- Line 2: Aggregated kWh for Block B meters. -->
+	<cac:InvoiceLine>
+		<cbc:ID>2</cbc:ID>
+		<cbc:InvoicedQuantity unitCode="KWH">9870</cbc:InvoicedQuantity>
+		<cbc:LineExtensionAmount currencyID="OMR">296.1</cbc:LineExtensionAmount>
+		<cac:InvoicePeriod>
+			<cbc:StartDate>2026-04-01</cbc:StartDate>
+			<cbc:EndDate>2026-04-30</cbc:EndDate>
+		</cac:InvoicePeriod>
+		<cac:Item>
+			<cbc:Name>Block B consumption</cbc:Name>
+			<cac:AdditionalItemIdentification>
+				<cbc:ID schemeName="CC">000000</cbc:ID>
+			</cac:AdditionalItemIdentification>
+			<cac:ItemSpecificationDocumentReference>
+				<cbc:ID schemeName="MP">00000000</cbc:ID>
+				<cbc:DocumentTypeCode>G</cbc:DocumentTypeCode>
+			</cac:ItemSpecificationDocumentReference>
+			<cac:CommodityClassification>
+				
+				<cbc:ItemClassificationCode listID="HS">840110000000</cbc:ItemClassificationCode>
+			</cac:CommodityClassification>
+			<cac:ClassifiedTaxCategory>
+				<cbc:ID>S</cbc:ID>
+				<cbc:Percent>5</cbc:Percent>
+				<cac:TaxScheme>
+					<cbc:ID>VAT</cbc:ID>
+				</cac:TaxScheme>
+			</cac:ClassifiedTaxCategory>
+		</cac:Item>
+		<cac:Price>
+			<cbc:PriceAmount currencyID="OMR">0.03</cbc:PriceAmount>
+			<cbc:BaseQuantity unitCode="KWH">1</cbc:BaseQuantity>
+		</cac:Price>
+		<cac:ItemPriceExtension>
+			<cbc:Amount currencyID="OMR">310.91</cbc:Amount>
+			<cac:TaxTotal>
+				<cbc:TaxAmount currencyID="OMR">14.805</cbc:TaxAmount>
+			</cac:TaxTotal>
+		</cac:ItemPriceExtension>
+	</cac:InvoiceLine>
+	<!-- Line 3: Aggregated kWh for Block C meters. -->
+	<cac:InvoiceLine>
+		<cbc:ID>3</cbc:ID>
+		<cbc:InvoicedQuantity unitCode="KWH">15300</cbc:InvoicedQuantity>
+		<cbc:LineExtensionAmount currencyID="OMR">459</cbc:LineExtensionAmount>
+		<cac:InvoicePeriod>
+			<cbc:StartDate>2026-04-01</cbc:StartDate>
+			<cbc:EndDate>2026-04-30</cbc:EndDate>
+		</cac:InvoicePeriod>
+		<cac:Item>
+			<cbc:Name>Block C consumption</cbc:Name>
+			<cac:AdditionalItemIdentification>
+				<cbc:ID schemeName="CC">000000</cbc:ID>
+			</cac:AdditionalItemIdentification>
+			<cac:ItemSpecificationDocumentReference>
+				<cbc:ID schemeName="MP">00000000</cbc:ID>
+				<cbc:DocumentTypeCode>G</cbc:DocumentTypeCode>
+			</cac:ItemSpecificationDocumentReference>
+			<cac:CommodityClassification>
+				
+				<cbc:ItemClassificationCode listID="HS">840110000000</cbc:ItemClassificationCode>
+			</cac:CommodityClassification>
+			<cac:ClassifiedTaxCategory>
+				<cbc:ID>S</cbc:ID>
+				<cbc:Percent>5</cbc:Percent>
+				<cac:TaxScheme>
+					<cbc:ID>VAT</cbc:ID>
+				</cac:TaxScheme>
+			</cac:ClassifiedTaxCategory>
+		</cac:Item>
+		<cac:Price>
+			<cbc:PriceAmount currencyID="OMR">0.03</cbc:PriceAmount>
+			<cbc:BaseQuantity unitCode="KWH">1</cbc:BaseQuantity>
+		</cac:Price>
+		<cac:ItemPriceExtension>
+			<cbc:Amount currencyID="OMR">481.95</cbc:Amount>
+			<cac:TaxTotal>
+				<cbc:TaxAmount currencyID="OMR">22.95</cbc:TaxAmount>
+			</cac:TaxTotal>
+		</cac:ItemPriceExtension>
+	</cac:InvoiceLine>
+</Invoice>

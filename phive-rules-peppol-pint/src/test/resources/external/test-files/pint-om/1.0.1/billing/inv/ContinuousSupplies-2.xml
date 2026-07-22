@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Invoice xmlns="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2"
+	xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+	xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2 http://docs.oasis-open.org/ubl/os-UBL-2.1/xsd/maindoc/UBL-Invoice-2.1.xsd">
+	<cbc:CustomizationID>urn:peppol:pint:billing-1@om-1</cbc:CustomizationID>
+	<cbc:ProfileID>urn:peppol:bis:billing</cbc:ProfileID>
+	<cbc:ID>OM-001CS-TEST</cbc:ID>
+	<cbc:UUID>a6e8090a-529e-54a4-9aac-3404ad7b060d</cbc:UUID>
+	<cbc:IssueDate>2025-02-07</cbc:IssueDate>
+	<cbc:IssueTime>07:54:00</cbc:IssueTime>
+	<cbc:DueDate>2025-03-07</cbc:DueDate>
+	<cbc:InvoiceTypeCode name="01000100000000000000">380</cbc:InvoiceTypeCode>
+	<cbc:Note>Tax invoice</cbc:Note>
+	<cbc:TaxPointDate>2025-01-30</cbc:TaxPointDate>
+	<cbc:DocumentCurrencyCode>OMR</cbc:DocumentCurrencyCode>
+	<cac:InvoicePeriod>
+		<cbc:StartDate>2025-01-31</cbc:StartDate>
+		<cbc:EndDate>2025-02-07</cbc:EndDate>
+	</cac:InvoicePeriod>
+	<cac:ContractDocumentReference>
+		<cbc:ID>ZXC-CS-03</cbc:ID>
+		<cbc:DocumentDescription>OMR 1000000</cbc:DocumentDescription>
+	</cac:ContractDocumentReference>
+	<cac:AdditionalDocumentReference>
+		<cbc:ID>Cabbills</cbc:ID>
+		<cac:Attachment>
+			<cac:ExternalReference>
+				<cbc:URI>https://www.site.om/cabbills.pdf</cbc:URI>
+			</cac:ExternalReference>
+		</cac:Attachment>
+	</cac:AdditionalDocumentReference>
+	<cac:AdditionalDocumentReference>
+		<cbc:ID>All signed cab bills</cbc:ID>
+		<cac:Attachment>
+			<cbc:EmbeddedDocumentBinaryObject mimeCode="application/pdf" filename="Cabbills.pdf">
+				LmJzZTY0IGNvbnRlbnQgZXhhbXBsZQ==</cbc:EmbeddedDocumentBinaryObject>
+		</cac:Attachment>
+	</cac:AdditionalDocumentReference>
+	<cac:AccountingSupplierParty>
+		<cac:Party>
+			<cbc:EndpointID schemeID="0248">1987654321</cbc:EndpointID>
+			<cac:PartyName>
+				<cbc:Name>Supplier Trade Name</cbc:Name>
+			</cac:PartyName>
+			<cac:PostalAddress>
+				<cbc:StreetName>Al Mawalih Commercial Tower</cbc:StreetName>
+				<cbc:AdditionalStreetName>Al Mawalih Commercial Tower</cbc:AdditionalStreetName>
+				<cbc:CityName>Sur</cbc:CityName>
+				<cbc:PostalZone>1111</cbc:PostalZone>
+				<cbc:CountrySubentity>MO</cbc:CountrySubentity>
+				<cac:AddressLine>
+					<cbc:Line>P.O. Box 707</cbc:Line>
+				</cac:AddressLine>
+				<cac:Country>
+					<cbc:IdentificationCode>OM</cbc:IdentificationCode>
+				</cac:Country>
+			</cac:PostalAddress>
+			<cac:PartyTaxScheme>
+				<cbc:CompanyID>OM1234567890</cbc:CompanyID>
+				<cac:TaxScheme>
+					<cbc:ID>VAT</cbc:ID>
+				</cac:TaxScheme>
+			</cac:PartyTaxScheme>
+			<cac:PartyLegalEntity>
+				<cbc:RegistrationName>Al Hadhramy Trading LLC</cbc:RegistrationName>
+				<cbc:CompanyID>112345678900003</cbc:CompanyID>
+				<cbc:CompanyLegalForm>Limited Liability Company</cbc:CompanyLegalForm>
+			</cac:PartyLegalEntity>
+			<cac:Contact>
+				<cbc:Name>Mariam Al-Rawahi</cbc:Name>
+				<cbc:Telephone>+96825443322</cbc:Telephone>
+				<cbc:ElectronicMail>mariam.rawahi@example.om</cbc:ElectronicMail>
+			</cac:Contact>
+		</cac:Party>
+	</cac:AccountingSupplierParty>
+	<cac:AccountingCustomerParty>
+		<cac:Party>
+			<cbc:EndpointID schemeID="0248">1456789456</cbc:EndpointID>
+			<cac:PartyName>
+				<cbc:Name>Buyer Trade Name</cbc:Name>
+			</cac:PartyName>
+			<cac:PostalAddress>
+				<cbc:StreetName>Al Mawalih Commercial Tower</cbc:StreetName>
+				<cbc:AdditionalStreetName>Al Mawalih Commercial Tower</cbc:AdditionalStreetName>
+				<cbc:CityName>Sur</cbc:CityName>
+				<cbc:PostalZone>2222</cbc:PostalZone>
+				<cbc:CountrySubentity>MO</cbc:CountrySubentity>
+				<cac:AddressLine>
+					<cbc:Line>P.O. Box 707</cbc:Line>
+				</cac:AddressLine>
+				<cac:Country>
+					<cbc:IdentificationCode>OM</cbc:IdentificationCode>
+				</cac:Country>
+			</cac:PostalAddress>
+			<cac:PartyTaxScheme>
+				<cbc:CompanyID>OM1234567890</cbc:CompanyID>
+				<cac:TaxScheme>
+					<cbc:ID>VAT</cbc:ID>
+				</cac:TaxScheme>
+			</cac:PartyTaxScheme>
+			<cac:PartyLegalEntity>
+				<cbc:RegistrationName>Sohar Petroleum Services LLC</cbc:RegistrationName>
+				<cbc:CompanyID>112345679000001</cbc:CompanyID>
+			</cac:PartyLegalEntity>
+			<cac:Contact>
+				<cbc:Name>Mariam Al-Rawahi</cbc:Name>
+				<cbc:Telephone>+96825443322</cbc:Telephone>
+				<cbc:ElectronicMail>mariam.rawahi@example.om</cbc:ElectronicMail>
+			</cac:Contact>
+		</cac:Party>
+	</cac:AccountingCustomerParty>
+	<cac:PaymentMeans>
+		<cbc:PaymentMeansCode name="Credit transfer">30</cbc:PaymentMeansCode>
+		<cac:PayeeFinancialAccount>
+			<cbc:ID schemeID="IBAN">OM0000000001</cbc:ID>
+			<cbc:Name>current account</cbc:Name>
+			<cac:FinancialInstitutionBranch>
+				<cbc:ID>236000</cbc:ID>
+			</cac:FinancialInstitutionBranch>
+		</cac:PayeeFinancialAccount>
+	</cac:PaymentMeans>
+	<cac:PaymentTerms>
+		<cbc:Note>1 month</cbc:Note>
+	</cac:PaymentTerms>
+	<cac:AllowanceCharge>
+		<cbc:ChargeIndicator>true</cbc:ChargeIndicator>
+		<cbc:AllowanceChargeReasonCode>ABU</cbc:AllowanceChargeReasonCode>
+		<cbc:AllowanceChargeReason>Polyethylene wrap packing</cbc:AllowanceChargeReason>
+		<cbc:MultiplierFactorNumeric>1.5</cbc:MultiplierFactorNumeric>
+		<cbc:Amount currencyID="OMR">75</cbc:Amount>
+		<cbc:BaseAmount currencyID="OMR">5000</cbc:BaseAmount>
+		<cac:TaxCategory>
+			<cbc:ID>S</cbc:ID>
+			<cbc:Percent>5</cbc:Percent>
+			<cac:TaxScheme>
+				<cbc:ID>VAT</cbc:ID>
+			</cac:TaxScheme>
+		</cac:TaxCategory>
+	</cac:AllowanceCharge>
+	<cac:TaxTotal>
+		<cbc:TaxAmount currencyID="OMR">253.75</cbc:TaxAmount>
+		<cbc:TaxIncludedIndicator>false</cbc:TaxIncludedIndicator>
+		<cac:TaxSubtotal>
+			<cbc:TaxableAmount currencyID="OMR">5075</cbc:TaxableAmount>
+			<cbc:TaxAmount currencyID="OMR">253.75</cbc:TaxAmount>
+			<cac:TaxCategory>
+				<cbc:ID>S</cbc:ID>
+				<cbc:Percent>5</cbc:Percent>
+				<cac:TaxScheme>
+					<cbc:ID>VAT</cbc:ID>
+				</cac:TaxScheme>
+			</cac:TaxCategory>
+		</cac:TaxSubtotal>
+		<cac:TaxSubtotal>
+			<cbc:TaxableAmount currencyID="OMR">727.5</cbc:TaxableAmount>
+			<cbc:TaxAmount currencyID="OMR">0</cbc:TaxAmount>
+			<cac:TaxCategory>
+				<cbc:ID>E</cbc:ID>
+				<cbc:TaxExemptionReasonCode>VATEX-OM-04</cbc:TaxExemptionReasonCode>
+				<cbc:TaxExemptionReason>Rental of properties for residential purposes</cbc:TaxExemptionReason>
+				<cac:TaxScheme>
+					<cbc:ID>VAT</cbc:ID>
+				</cac:TaxScheme>
+			</cac:TaxCategory>
+		</cac:TaxSubtotal>
+	</cac:TaxTotal>
+	<cac:LegalMonetaryTotal>
+		<cbc:LineExtensionAmount currencyID="OMR">5727.50</cbc:LineExtensionAmount>
+		<cbc:TaxExclusiveAmount currencyID="OMR">5802.5</cbc:TaxExclusiveAmount>
+		<cbc:TaxInclusiveAmount currencyID="OMR">6056.25</cbc:TaxInclusiveAmount>
+		<cbc:ChargeTotalAmount currencyID="OMR">75</cbc:ChargeTotalAmount>
+		<cbc:PayableRoundingAmount currencyID="OMR">0.000</cbc:PayableRoundingAmount>
+		<cbc:PayableAmount currencyID="OMR">6056.25</cbc:PayableAmount>
+	</cac:LegalMonetaryTotal>
+	<cac:InvoiceLine>
+		<cbc:ID>1</cbc:ID>
+		<cbc:InvoicedQuantity unitCode="TIP">10</cbc:InvoicedQuantity>
+		<cbc:LineExtensionAmount currencyID="OMR">5000</cbc:LineExtensionAmount>
+		<cac:InvoicePeriod>
+			<cbc:StartDate>2025-01-31</cbc:StartDate>
+			<cbc:EndDate>2025-02-07</cbc:EndDate>
+		</cac:InvoicePeriod>
+		<cac:Item>
+			<cbc:Description>Recessed LED ceiling panel 600x600 mm, 40 W, 4000 K, IP40, dimmable.</cbc:Description>
+			<cbc:Name>LED ceiling panel 600x600 40W</cbc:Name>
+			<cac:CommodityClassification>
+				<cbc:NatureCode>G</cbc:NatureCode>
+				<cbc:ItemClassificationCode listID="HS">010121100001</cbc:ItemClassificationCode>
+			</cac:CommodityClassification>
+			<cac:ClassifiedTaxCategory>
+				<cbc:ID>S</cbc:ID>
+				<cbc:Percent>5</cbc:Percent>
+				<cac:TaxScheme>
+					<cbc:ID>VAT</cbc:ID>
+				</cac:TaxScheme>
+			</cac:ClassifiedTaxCategory>
+		</cac:Item>
+		<cac:Price>
+			<cbc:PriceAmount currencyID="OMR">500</cbc:PriceAmount>
+			<cbc:BaseQuantity unitCode="TIP">1</cbc:BaseQuantity>
+			<cac:AllowanceCharge>
+				<cbc:ChargeIndicator>false</cbc:ChargeIndicator>
+				<cbc:Amount currencyID="OMR">0</cbc:Amount>
+				<cbc:BaseAmount currencyID="OMR">500</cbc:BaseAmount>
+			</cac:AllowanceCharge>
+		</cac:Price>
+		<cac:ItemPriceExtension>
+			<cbc:Amount currencyID="OMR">5250</cbc:Amount>
+			<cac:TaxTotal>
+				<cbc:TaxAmount currencyID="OMR">250</cbc:TaxAmount>
+			</cac:TaxTotal>
+		</cac:ItemPriceExtension>
+	</cac:InvoiceLine>
+	<cac:InvoiceLine>
+		<cbc:ID>2</cbc:ID>
+		<cbc:InvoicedQuantity unitCode="LN">1455</cbc:InvoicedQuantity>
+		<cbc:LineExtensionAmount currencyID="OMR">727.5</cbc:LineExtensionAmount>
+		<cac:InvoicePeriod>
+			<cbc:StartDate>2025-01-31</cbc:StartDate>
+			<cbc:EndDate>2025-02-07</cbc:EndDate>
+		</cac:InvoicePeriod>
+		<cac:Item>
+			<cbc:Description>Recessed LED ceiling panel 600x600 mm, 40 W, 4000 K, IP40, dimmable.</cbc:Description>
+			<cbc:Name>LED ceiling panel 600x600 40W</cbc:Name>
+			<cac:AdditionalItemIdentification>
+				<cbc:ID schemeName="CC">000000</cbc:ID>
+			</cac:AdditionalItemIdentification>
+			<cac:ItemSpecificationDocumentReference>
+				<cbc:ID schemeName="MP">00000000</cbc:ID>
+				<cbc:DocumentTypeCode>G</cbc:DocumentTypeCode>
+			</cac:ItemSpecificationDocumentReference>
+			<cac:CommodityClassification>
+				<cbc:ItemClassificationCode listID="HS">010121100001</cbc:ItemClassificationCode>
+			</cac:CommodityClassification>
+			<cac:ClassifiedTaxCategory>
+				<cbc:ID>E</cbc:ID>
+				<cbc:TaxExemptionReasonCode>VATEX-OM-04</cbc:TaxExemptionReasonCode>
+				<cbc:TaxExemptionReason>Rental of properties for residential purposes</cbc:TaxExemptionReason>
+				<cac:TaxScheme>
+					<cbc:ID>VAT</cbc:ID>
+				</cac:TaxScheme>
+			</cac:ClassifiedTaxCategory>
+		</cac:Item>
+		<cac:Price>
+			<cbc:PriceAmount currencyID="OMR">0.5</cbc:PriceAmount>
+			<cbc:BaseQuantity unitCode="LN">1</cbc:BaseQuantity>
+			<cac:AllowanceCharge>
+				<cbc:ChargeIndicator>false</cbc:ChargeIndicator>
+				<cbc:Amount currencyID="OMR">0</cbc:Amount>
+				<cbc:BaseAmount currencyID="OMR">0.5</cbc:BaseAmount>
+			</cac:AllowanceCharge>
+		</cac:Price>
+		<cac:ItemPriceExtension>
+			<cbc:Amount currencyID="OMR">727.5</cbc:Amount>
+			<cac:TaxTotal>
+				<cbc:TaxAmount currencyID="OMR">0</cbc:TaxAmount>
+			</cac:TaxTotal>
+		</cac:ItemPriceExtension>
+	</cac:InvoiceLine>
+</Invoice>

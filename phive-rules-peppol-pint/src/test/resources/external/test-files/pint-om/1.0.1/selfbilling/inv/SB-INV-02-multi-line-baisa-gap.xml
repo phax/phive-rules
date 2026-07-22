@@ -1,0 +1,822 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Invoice xmlns="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2"
+  xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+  xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
+  <cbc:CustomizationID>urn:peppol:pint:selfbilling-1@om-1</cbc:CustomizationID>
+  <cbc:ProfileID>urn:peppol:bis:selfbilling</cbc:ProfileID>
+  <cbc:ID>OM-SB-INV-P2</cbc:ID>
+  <cbc:UUID>00000000-0000-5000-8000-0000000000A2</cbc:UUID>
+  <cbc:IssueDate>2025-04-01</cbc:IssueDate>
+  <cbc:IssueTime>09:00:00</cbc:IssueTime>
+  <cbc:DueDate>2025-04-08</cbc:DueDate>
+  <cbc:InvoiceTypeCode name="10100000000000000000">389</cbc:InvoiceTypeCode>
+  <cbc:Note>Self-billed invoice (389) - 20-line Baisa Gap at cap boundary, IBT-114=0.020</cbc:Note>
+  <cbc:TaxPointDate>2025-04-01</cbc:TaxPointDate>
+  <cbc:DocumentCurrencyCode>OMR</cbc:DocumentCurrencyCode>
+  <cbc:BuyerReference>SELF-BILLING-AGREEMENT-OM-2025</cbc:BuyerReference>
+
+  <cac:AccountingSupplierParty>
+    <cbc:AdditionalAccountID>15fb7ca3-1cf4-525f-b7f1-29141c7ac86d</cbc:AdditionalAccountID>
+    <cac:Party>
+      <cbc:EndpointID schemeID="0235">1987654321</cbc:EndpointID>
+      <cac:PartyIdentification>
+        <cbc:ID schemeName="CR">12345678</cbc:ID>
+      </cac:PartyIdentification>
+      <cac:PartyName>
+        <cbc:Name>Baisa Verification Supplier LLC</cbc:Name>
+      </cac:PartyName>
+      <cac:PostalAddress>
+        <cbc:StreetName>Way 2317 Building 192</cbc:StreetName>
+        <cbc:AdditionalStreetName>Block 1</cbc:AdditionalStreetName>
+        <cbc:CityName>Muscat</cbc:CityName>
+        <cbc:PostalZone>100</cbc:PostalZone>
+        <cac:AddressLine>
+          <cbc:Line>Office 1</cbc:Line>
+        </cac:AddressLine>
+        <cac:Country>
+          <cbc:IdentificationCode>OM</cbc:IdentificationCode>
+        </cac:Country>
+      </cac:PostalAddress>
+      <cac:PartyTaxScheme>
+        <cbc:CompanyID>OM1234567890</cbc:CompanyID>
+        <cac:TaxScheme>
+          <cbc:ID>VAT</cbc:ID>
+        </cac:TaxScheme>
+      </cac:PartyTaxScheme>
+      <cac:PartyLegalEntity>
+        <cbc:RegistrationName>Baisa Verification Supplier LLC</cbc:RegistrationName>
+        <cbc:CompanyID>112345678900003</cbc:CompanyID>
+      </cac:PartyLegalEntity>
+      <cac:Contact>
+        <cbc:Name>Supplier Accounts</cbc:Name>
+        <cbc:Telephone>+96824000001</cbc:Telephone>
+        <cbc:ElectronicMail>supplier@test.om</cbc:ElectronicMail>
+      </cac:Contact>
+    </cac:Party>
+  </cac:AccountingSupplierParty>
+
+  <cac:AccountingCustomerParty>
+    <cac:Party>
+      <cbc:EndpointID schemeID="0235">1345678901</cbc:EndpointID>
+      <cac:PartyIdentification>
+        <cbc:ID schemeName="CR">87654321</cbc:ID>
+      </cac:PartyIdentification>
+      <cac:PartyName>
+        <cbc:Name>Baisa Verification Buyer (Self-Bill Issuer)</cbc:Name>
+      </cac:PartyName>
+      <cac:PostalAddress>
+        <cbc:StreetName>Way 1000 Building 1</cbc:StreetName>
+        <cbc:AdditionalStreetName>Block 2</cbc:AdditionalStreetName>
+        <cbc:CityName>Muscat</cbc:CityName>
+        <cbc:PostalZone>200</cbc:PostalZone>
+        <cac:AddressLine>
+          <cbc:Line>Office 2</cbc:Line>
+        </cac:AddressLine>
+        <cac:Country>
+          <cbc:IdentificationCode>OM</cbc:IdentificationCode>
+        </cac:Country>
+      </cac:PostalAddress>
+      <cac:PartyTaxScheme>
+        <cbc:CompanyID>OM9876543210</cbc:CompanyID>
+        <cac:TaxScheme>
+          <cbc:ID>VAT</cbc:ID>
+        </cac:TaxScheme>
+      </cac:PartyTaxScheme>
+      <cac:PartyLegalEntity>
+        <cbc:RegistrationName>Baisa Verification Buyer (Self-Bill Issuer)</cbc:RegistrationName>
+        <cbc:CompanyID>119876543200004</cbc:CompanyID>
+      </cac:PartyLegalEntity>
+      <cac:Contact>
+        <cbc:Name>Buyer Self-Billing Unit</cbc:Name>
+        <cbc:Telephone>+96824000099</cbc:Telephone>
+        <cbc:ElectronicMail>selfbilling@buyer.om</cbc:ElectronicMail>
+      </cac:Contact>
+    </cac:Party>
+  </cac:AccountingCustomerParty>
+
+  <cac:TaxTotal>
+    <cbc:TaxAmount currencyID="OMR">0.04</cbc:TaxAmount>
+    <cac:TaxSubtotal>
+      <cbc:TaxableAmount currencyID="OMR">0.94</cbc:TaxableAmount>
+      <cbc:TaxAmount currencyID="OMR">0.04</cbc:TaxAmount>
+      <cac:TaxCategory>
+        <cbc:ID>S</cbc:ID>
+        <cbc:Percent>5</cbc:Percent>
+        <cac:TaxScheme>
+          <cbc:ID>VAT</cbc:ID>
+        </cac:TaxScheme>
+      </cac:TaxCategory>
+    </cac:TaxSubtotal>
+  </cac:TaxTotal>
+  <cac:LegalMonetaryTotal>
+    <cbc:LineExtensionAmount currencyID="OMR">0.94</cbc:LineExtensionAmount>
+    <cbc:TaxExclusiveAmount currencyID="OMR">0.94</cbc:TaxExclusiveAmount>
+    <cbc:TaxInclusiveAmount currencyID="OMR">0.98</cbc:TaxInclusiveAmount>
+    <cbc:AllowanceTotalAmount currencyID="OMR">0.00</cbc:AllowanceTotalAmount>
+    <cbc:ChargeTotalAmount currencyID="OMR">0.00</cbc:ChargeTotalAmount>
+    <cbc:PayableRoundingAmount currencyID="OMR">0.020</cbc:PayableRoundingAmount>
+    <cbc:PayableAmount currencyID="OMR">1.00</cbc:PayableAmount>
+  </cac:LegalMonetaryTotal>
+
+  <cac:InvoiceLine>
+    <cbc:ID>1</cbc:ID>
+    <cbc:InvoicedQuantity unitCode="H87">1</cbc:InvoicedQuantity>
+    <cbc:LineExtensionAmount currencyID="OMR">0.047</cbc:LineExtensionAmount>
+    <cac:Item>
+      <cbc:Name>Verification Item</cbc:Name>
+      <cac:AdditionalItemIdentification>
+        <cbc:ID schemeName="CC">000000</cbc:ID>
+      </cac:AdditionalItemIdentification>
+      <cac:ItemSpecificationDocumentReference>
+        <cbc:ID schemeName="MP">00000000</cbc:ID>
+        <cbc:DocumentTypeCode>G</cbc:DocumentTypeCode>
+      </cac:ItemSpecificationDocumentReference>
+      <cac:CommodityClassification>
+				<cbc:ItemClassificationCode listID="HS">010121100001</cbc:ItemClassificationCode>
+			</cac:CommodityClassification>
+      <cac:ClassifiedTaxCategory>
+        <cbc:ID>S</cbc:ID>
+        <cbc:Percent>5</cbc:Percent>
+        <cac:TaxScheme>
+          <cbc:ID>VAT</cbc:ID>
+        </cac:TaxScheme>
+      </cac:ClassifiedTaxCategory>
+    </cac:Item>
+    <cac:Price>
+      <cbc:PriceAmount currencyID="OMR">0.047</cbc:PriceAmount>
+      <cbc:BaseQuantity unitCode="H87">1</cbc:BaseQuantity>
+    </cac:Price>
+    <cac:ItemPriceExtension>
+      <cbc:Amount currencyID="OMR">0.049</cbc:Amount>
+      <cac:TaxTotal>
+        <cbc:TaxAmount currencyID="OMR">0.002</cbc:TaxAmount>
+      </cac:TaxTotal>
+    </cac:ItemPriceExtension>
+  </cac:InvoiceLine>
+  <cac:InvoiceLine>
+    <cbc:ID>2</cbc:ID>
+    <cbc:InvoicedQuantity unitCode="H87">1</cbc:InvoicedQuantity>
+    <cbc:LineExtensionAmount currencyID="OMR">0.047</cbc:LineExtensionAmount>
+    <cac:Item>
+      <cbc:Name>Verification Item</cbc:Name>
+      <cac:AdditionalItemIdentification>
+        <cbc:ID schemeName="CC">000000</cbc:ID>
+      </cac:AdditionalItemIdentification>
+      <cac:ItemSpecificationDocumentReference>
+        <cbc:ID schemeName="MP">00000000</cbc:ID>
+        <cbc:DocumentTypeCode>G</cbc:DocumentTypeCode>
+      </cac:ItemSpecificationDocumentReference>
+      <cac:CommodityClassification>
+				<cbc:ItemClassificationCode listID="HS">010121100001</cbc:ItemClassificationCode>
+			</cac:CommodityClassification>
+      <cac:ClassifiedTaxCategory>
+        <cbc:ID>S</cbc:ID>
+        <cbc:Percent>5</cbc:Percent>
+        <cac:TaxScheme>
+          <cbc:ID>VAT</cbc:ID>
+        </cac:TaxScheme>
+      </cac:ClassifiedTaxCategory>
+    </cac:Item>
+    <cac:Price>
+      <cbc:PriceAmount currencyID="OMR">0.047</cbc:PriceAmount>
+      <cbc:BaseQuantity unitCode="H87">1</cbc:BaseQuantity>
+    </cac:Price>
+    <cac:ItemPriceExtension>
+      <cbc:Amount currencyID="OMR">0.049</cbc:Amount>
+      <cac:TaxTotal>
+        <cbc:TaxAmount currencyID="OMR">0.002</cbc:TaxAmount>
+      </cac:TaxTotal>
+    </cac:ItemPriceExtension>
+  </cac:InvoiceLine>
+  <cac:InvoiceLine>
+    <cbc:ID>3</cbc:ID>
+    <cbc:InvoicedQuantity unitCode="H87">1</cbc:InvoicedQuantity>
+    <cbc:LineExtensionAmount currencyID="OMR">0.047</cbc:LineExtensionAmount>
+    <cac:Item>
+      <cbc:Name>Verification Item</cbc:Name>
+      <cac:AdditionalItemIdentification>
+        <cbc:ID schemeName="CC">000000</cbc:ID>
+      </cac:AdditionalItemIdentification>
+      <cac:ItemSpecificationDocumentReference>
+        <cbc:ID schemeName="MP">00000000</cbc:ID>
+        <cbc:DocumentTypeCode>G</cbc:DocumentTypeCode>
+      </cac:ItemSpecificationDocumentReference>
+      <cac:CommodityClassification>
+				<cbc:ItemClassificationCode listID="HS">010121100001</cbc:ItemClassificationCode>
+			</cac:CommodityClassification>
+      <cac:ClassifiedTaxCategory>
+        <cbc:ID>S</cbc:ID>
+        <cbc:Percent>5</cbc:Percent>
+        <cac:TaxScheme>
+          <cbc:ID>VAT</cbc:ID>
+        </cac:TaxScheme>
+      </cac:ClassifiedTaxCategory>
+    </cac:Item>
+    <cac:Price>
+      <cbc:PriceAmount currencyID="OMR">0.047</cbc:PriceAmount>
+      <cbc:BaseQuantity unitCode="H87">1</cbc:BaseQuantity>
+    </cac:Price>
+    <cac:ItemPriceExtension>
+      <cbc:Amount currencyID="OMR">0.049</cbc:Amount>
+      <cac:TaxTotal>
+        <cbc:TaxAmount currencyID="OMR">0.002</cbc:TaxAmount>
+      </cac:TaxTotal>
+    </cac:ItemPriceExtension>
+  </cac:InvoiceLine>
+  <cac:InvoiceLine>
+    <cbc:ID>4</cbc:ID>
+    <cbc:InvoicedQuantity unitCode="H87">1</cbc:InvoicedQuantity>
+    <cbc:LineExtensionAmount currencyID="OMR">0.047</cbc:LineExtensionAmount>
+    <cac:Item>
+      <cbc:Name>Verification Item</cbc:Name>
+      <cac:AdditionalItemIdentification>
+        <cbc:ID schemeName="CC">000000</cbc:ID>
+      </cac:AdditionalItemIdentification>
+      <cac:ItemSpecificationDocumentReference>
+        <cbc:ID schemeName="MP">00000000</cbc:ID>
+        <cbc:DocumentTypeCode>G</cbc:DocumentTypeCode>
+      </cac:ItemSpecificationDocumentReference>
+      <cac:CommodityClassification>
+				<cbc:ItemClassificationCode listID="HS">010121100001</cbc:ItemClassificationCode>
+			</cac:CommodityClassification>
+      <cac:ClassifiedTaxCategory>
+        <cbc:ID>S</cbc:ID>
+        <cbc:Percent>5</cbc:Percent>
+        <cac:TaxScheme>
+          <cbc:ID>VAT</cbc:ID>
+        </cac:TaxScheme>
+      </cac:ClassifiedTaxCategory>
+    </cac:Item>
+    <cac:Price>
+      <cbc:PriceAmount currencyID="OMR">0.047</cbc:PriceAmount>
+      <cbc:BaseQuantity unitCode="H87">1</cbc:BaseQuantity>
+    </cac:Price>
+    <cac:ItemPriceExtension>
+      <cbc:Amount currencyID="OMR">0.049</cbc:Amount>
+      <cac:TaxTotal>
+        <cbc:TaxAmount currencyID="OMR">0.002</cbc:TaxAmount>
+      </cac:TaxTotal>
+    </cac:ItemPriceExtension>
+  </cac:InvoiceLine>
+  <cac:InvoiceLine>
+    <cbc:ID>5</cbc:ID>
+    <cbc:InvoicedQuantity unitCode="H87">1</cbc:InvoicedQuantity>
+    <cbc:LineExtensionAmount currencyID="OMR">0.047</cbc:LineExtensionAmount>
+    <cac:Item>
+      <cbc:Name>Verification Item</cbc:Name>
+      <cac:AdditionalItemIdentification>
+        <cbc:ID schemeName="CC">000000</cbc:ID>
+      </cac:AdditionalItemIdentification>
+      <cac:ItemSpecificationDocumentReference>
+        <cbc:ID schemeName="MP">00000000</cbc:ID>
+        <cbc:DocumentTypeCode>G</cbc:DocumentTypeCode>
+      </cac:ItemSpecificationDocumentReference>
+      <cac:CommodityClassification>
+				<cbc:ItemClassificationCode listID="HS">010121100001</cbc:ItemClassificationCode>
+			</cac:CommodityClassification>
+      <cac:ClassifiedTaxCategory>
+        <cbc:ID>S</cbc:ID>
+        <cbc:Percent>5</cbc:Percent>
+        <cac:TaxScheme>
+          <cbc:ID>VAT</cbc:ID>
+        </cac:TaxScheme>
+      </cac:ClassifiedTaxCategory>
+    </cac:Item>
+    <cac:Price>
+      <cbc:PriceAmount currencyID="OMR">0.047</cbc:PriceAmount>
+      <cbc:BaseQuantity unitCode="H87">1</cbc:BaseQuantity>
+    </cac:Price>
+    <cac:ItemPriceExtension>
+      <cbc:Amount currencyID="OMR">0.049</cbc:Amount>
+      <cac:TaxTotal>
+        <cbc:TaxAmount currencyID="OMR">0.002</cbc:TaxAmount>
+      </cac:TaxTotal>
+    </cac:ItemPriceExtension>
+  </cac:InvoiceLine>
+  <cac:InvoiceLine>
+    <cbc:ID>6</cbc:ID>
+    <cbc:InvoicedQuantity unitCode="H87">1</cbc:InvoicedQuantity>
+    <cbc:LineExtensionAmount currencyID="OMR">0.047</cbc:LineExtensionAmount>
+    <cac:Item>
+      <cbc:Name>Verification Item</cbc:Name>
+      <cac:AdditionalItemIdentification>
+        <cbc:ID schemeName="CC">000000</cbc:ID>
+      </cac:AdditionalItemIdentification>
+      <cac:ItemSpecificationDocumentReference>
+        <cbc:ID schemeName="MP">00000000</cbc:ID>
+        <cbc:DocumentTypeCode>G</cbc:DocumentTypeCode>
+      </cac:ItemSpecificationDocumentReference>
+      <cac:CommodityClassification>
+				<cbc:ItemClassificationCode listID="HS">010121100001</cbc:ItemClassificationCode>
+			</cac:CommodityClassification>
+      <cac:ClassifiedTaxCategory>
+        <cbc:ID>S</cbc:ID>
+        <cbc:Percent>5</cbc:Percent>
+        <cac:TaxScheme>
+          <cbc:ID>VAT</cbc:ID>
+        </cac:TaxScheme>
+      </cac:ClassifiedTaxCategory>
+    </cac:Item>
+    <cac:Price>
+      <cbc:PriceAmount currencyID="OMR">0.047</cbc:PriceAmount>
+      <cbc:BaseQuantity unitCode="H87">1</cbc:BaseQuantity>
+    </cac:Price>
+    <cac:ItemPriceExtension>
+      <cbc:Amount currencyID="OMR">0.049</cbc:Amount>
+      <cac:TaxTotal>
+        <cbc:TaxAmount currencyID="OMR">0.002</cbc:TaxAmount>
+      </cac:TaxTotal>
+    </cac:ItemPriceExtension>
+  </cac:InvoiceLine>
+  <cac:InvoiceLine>
+    <cbc:ID>7</cbc:ID>
+    <cbc:InvoicedQuantity unitCode="H87">1</cbc:InvoicedQuantity>
+    <cbc:LineExtensionAmount currencyID="OMR">0.047</cbc:LineExtensionAmount>
+    <cac:Item>
+      <cbc:Name>Verification Item</cbc:Name>
+      <cac:AdditionalItemIdentification>
+        <cbc:ID schemeName="CC">000000</cbc:ID>
+      </cac:AdditionalItemIdentification>
+      <cac:ItemSpecificationDocumentReference>
+        <cbc:ID schemeName="MP">00000000</cbc:ID>
+        <cbc:DocumentTypeCode>G</cbc:DocumentTypeCode>
+      </cac:ItemSpecificationDocumentReference>
+      <cac:CommodityClassification>
+				<cbc:ItemClassificationCode listID="HS">010121100001</cbc:ItemClassificationCode>
+			</cac:CommodityClassification>
+      <cac:ClassifiedTaxCategory>
+        <cbc:ID>S</cbc:ID>
+        <cbc:Percent>5</cbc:Percent>
+        <cac:TaxScheme>
+          <cbc:ID>VAT</cbc:ID>
+        </cac:TaxScheme>
+      </cac:ClassifiedTaxCategory>
+    </cac:Item>
+    <cac:Price>
+      <cbc:PriceAmount currencyID="OMR">0.047</cbc:PriceAmount>
+      <cbc:BaseQuantity unitCode="H87">1</cbc:BaseQuantity>
+    </cac:Price>
+    <cac:ItemPriceExtension>
+      <cbc:Amount currencyID="OMR">0.049</cbc:Amount>
+      <cac:TaxTotal>
+        <cbc:TaxAmount currencyID="OMR">0.002</cbc:TaxAmount>
+      </cac:TaxTotal>
+    </cac:ItemPriceExtension>
+  </cac:InvoiceLine>
+  <cac:InvoiceLine>
+    <cbc:ID>8</cbc:ID>
+    <cbc:InvoicedQuantity unitCode="H87">1</cbc:InvoicedQuantity>
+    <cbc:LineExtensionAmount currencyID="OMR">0.047</cbc:LineExtensionAmount>
+    <cac:Item>
+      <cbc:Name>Verification Item</cbc:Name>
+      <cac:AdditionalItemIdentification>
+        <cbc:ID schemeName="CC">000000</cbc:ID>
+      </cac:AdditionalItemIdentification>
+      <cac:ItemSpecificationDocumentReference>
+        <cbc:ID schemeName="MP">00000000</cbc:ID>
+        <cbc:DocumentTypeCode>G</cbc:DocumentTypeCode>
+      </cac:ItemSpecificationDocumentReference>
+      <cac:CommodityClassification>
+				<cbc:ItemClassificationCode listID="HS">010121100001</cbc:ItemClassificationCode>
+			</cac:CommodityClassification>
+      <cac:ClassifiedTaxCategory>
+        <cbc:ID>S</cbc:ID>
+        <cbc:Percent>5</cbc:Percent>
+        <cac:TaxScheme>
+          <cbc:ID>VAT</cbc:ID>
+        </cac:TaxScheme>
+      </cac:ClassifiedTaxCategory>
+    </cac:Item>
+    <cac:Price>
+      <cbc:PriceAmount currencyID="OMR">0.047</cbc:PriceAmount>
+      <cbc:BaseQuantity unitCode="H87">1</cbc:BaseQuantity>
+    </cac:Price>
+    <cac:ItemPriceExtension>
+      <cbc:Amount currencyID="OMR">0.049</cbc:Amount>
+      <cac:TaxTotal>
+        <cbc:TaxAmount currencyID="OMR">0.002</cbc:TaxAmount>
+      </cac:TaxTotal>
+    </cac:ItemPriceExtension>
+  </cac:InvoiceLine>
+  <cac:InvoiceLine>
+    <cbc:ID>9</cbc:ID>
+    <cbc:InvoicedQuantity unitCode="H87">1</cbc:InvoicedQuantity>
+    <cbc:LineExtensionAmount currencyID="OMR">0.047</cbc:LineExtensionAmount>
+    <cac:Item>
+      <cbc:Name>Verification Item</cbc:Name>
+      <cac:AdditionalItemIdentification>
+        <cbc:ID schemeName="CC">000000</cbc:ID>
+      </cac:AdditionalItemIdentification>
+      <cac:ItemSpecificationDocumentReference>
+        <cbc:ID schemeName="MP">00000000</cbc:ID>
+        <cbc:DocumentTypeCode>G</cbc:DocumentTypeCode>
+      </cac:ItemSpecificationDocumentReference>
+      <cac:CommodityClassification>
+				<cbc:ItemClassificationCode listID="HS">010121100001</cbc:ItemClassificationCode>
+			</cac:CommodityClassification>
+      <cac:ClassifiedTaxCategory>
+        <cbc:ID>S</cbc:ID>
+        <cbc:Percent>5</cbc:Percent>
+        <cac:TaxScheme>
+          <cbc:ID>VAT</cbc:ID>
+        </cac:TaxScheme>
+      </cac:ClassifiedTaxCategory>
+    </cac:Item>
+    <cac:Price>
+      <cbc:PriceAmount currencyID="OMR">0.047</cbc:PriceAmount>
+      <cbc:BaseQuantity unitCode="H87">1</cbc:BaseQuantity>
+    </cac:Price>
+    <cac:ItemPriceExtension>
+      <cbc:Amount currencyID="OMR">0.049</cbc:Amount>
+      <cac:TaxTotal>
+        <cbc:TaxAmount currencyID="OMR">0.002</cbc:TaxAmount>
+      </cac:TaxTotal>
+    </cac:ItemPriceExtension>
+  </cac:InvoiceLine>
+  <cac:InvoiceLine>
+    <cbc:ID>10</cbc:ID>
+    <cbc:InvoicedQuantity unitCode="H87">1</cbc:InvoicedQuantity>
+    <cbc:LineExtensionAmount currencyID="OMR">0.047</cbc:LineExtensionAmount>
+    <cac:Item>
+      <cbc:Name>Verification Item</cbc:Name>
+      <cac:AdditionalItemIdentification>
+        <cbc:ID schemeName="CC">000000</cbc:ID>
+      </cac:AdditionalItemIdentification>
+      <cac:ItemSpecificationDocumentReference>
+        <cbc:ID schemeName="MP">00000000</cbc:ID>
+        <cbc:DocumentTypeCode>G</cbc:DocumentTypeCode>
+      </cac:ItemSpecificationDocumentReference>
+      <cac:CommodityClassification>
+				<cbc:ItemClassificationCode listID="HS">010121100001</cbc:ItemClassificationCode>
+			</cac:CommodityClassification>
+      <cac:ClassifiedTaxCategory>
+        <cbc:ID>S</cbc:ID>
+        <cbc:Percent>5</cbc:Percent>
+        <cac:TaxScheme>
+          <cbc:ID>VAT</cbc:ID>
+        </cac:TaxScheme>
+      </cac:ClassifiedTaxCategory>
+    </cac:Item>
+    <cac:Price>
+      <cbc:PriceAmount currencyID="OMR">0.047</cbc:PriceAmount>
+      <cbc:BaseQuantity unitCode="H87">1</cbc:BaseQuantity>
+    </cac:Price>
+    <cac:ItemPriceExtension>
+      <cbc:Amount currencyID="OMR">0.049</cbc:Amount>
+      <cac:TaxTotal>
+        <cbc:TaxAmount currencyID="OMR">0.002</cbc:TaxAmount>
+      </cac:TaxTotal>
+    </cac:ItemPriceExtension>
+  </cac:InvoiceLine>
+  <cac:InvoiceLine>
+    <cbc:ID>11</cbc:ID>
+    <cbc:InvoicedQuantity unitCode="H87">1</cbc:InvoicedQuantity>
+    <cbc:LineExtensionAmount currencyID="OMR">0.047</cbc:LineExtensionAmount>
+    <cac:Item>
+      <cbc:Name>Verification Item</cbc:Name>
+      <cac:AdditionalItemIdentification>
+        <cbc:ID schemeName="CC">000000</cbc:ID>
+      </cac:AdditionalItemIdentification>
+      <cac:ItemSpecificationDocumentReference>
+        <cbc:ID schemeName="MP">00000000</cbc:ID>
+        <cbc:DocumentTypeCode>G</cbc:DocumentTypeCode>
+      </cac:ItemSpecificationDocumentReference>
+      <cac:CommodityClassification>
+				<cbc:ItemClassificationCode listID="HS">010121100001</cbc:ItemClassificationCode>
+			</cac:CommodityClassification>
+      <cac:ClassifiedTaxCategory>
+        <cbc:ID>S</cbc:ID>
+        <cbc:Percent>5</cbc:Percent>
+        <cac:TaxScheme>
+          <cbc:ID>VAT</cbc:ID>
+        </cac:TaxScheme>
+      </cac:ClassifiedTaxCategory>
+    </cac:Item>
+    <cac:Price>
+      <cbc:PriceAmount currencyID="OMR">0.047</cbc:PriceAmount>
+      <cbc:BaseQuantity unitCode="H87">1</cbc:BaseQuantity>
+    </cac:Price>
+    <cac:ItemPriceExtension>
+      <cbc:Amount currencyID="OMR">0.049</cbc:Amount>
+      <cac:TaxTotal>
+        <cbc:TaxAmount currencyID="OMR">0.002</cbc:TaxAmount>
+      </cac:TaxTotal>
+    </cac:ItemPriceExtension>
+  </cac:InvoiceLine>
+  <cac:InvoiceLine>
+    <cbc:ID>12</cbc:ID>
+    <cbc:InvoicedQuantity unitCode="H87">1</cbc:InvoicedQuantity>
+    <cbc:LineExtensionAmount currencyID="OMR">0.047</cbc:LineExtensionAmount>
+    <cac:Item>
+      <cbc:Name>Verification Item</cbc:Name>
+      <cac:AdditionalItemIdentification>
+        <cbc:ID schemeName="CC">000000</cbc:ID>
+      </cac:AdditionalItemIdentification>
+      <cac:ItemSpecificationDocumentReference>
+        <cbc:ID schemeName="MP">00000000</cbc:ID>
+        <cbc:DocumentTypeCode>G</cbc:DocumentTypeCode>
+      </cac:ItemSpecificationDocumentReference>
+      <cac:CommodityClassification>
+				<cbc:ItemClassificationCode listID="HS">010121100001</cbc:ItemClassificationCode>
+			</cac:CommodityClassification>
+      <cac:ClassifiedTaxCategory>
+        <cbc:ID>S</cbc:ID>
+        <cbc:Percent>5</cbc:Percent>
+        <cac:TaxScheme>
+          <cbc:ID>VAT</cbc:ID>
+        </cac:TaxScheme>
+      </cac:ClassifiedTaxCategory>
+    </cac:Item>
+    <cac:Price>
+      <cbc:PriceAmount currencyID="OMR">0.047</cbc:PriceAmount>
+      <cbc:BaseQuantity unitCode="H87">1</cbc:BaseQuantity>
+    </cac:Price>
+    <cac:ItemPriceExtension>
+      <cbc:Amount currencyID="OMR">0.049</cbc:Amount>
+      <cac:TaxTotal>
+        <cbc:TaxAmount currencyID="OMR">0.002</cbc:TaxAmount>
+      </cac:TaxTotal>
+    </cac:ItemPriceExtension>
+  </cac:InvoiceLine>
+  <cac:InvoiceLine>
+    <cbc:ID>13</cbc:ID>
+    <cbc:InvoicedQuantity unitCode="H87">1</cbc:InvoicedQuantity>
+    <cbc:LineExtensionAmount currencyID="OMR">0.047</cbc:LineExtensionAmount>
+    <cac:Item>
+      <cbc:Name>Verification Item</cbc:Name>
+      <cac:AdditionalItemIdentification>
+        <cbc:ID schemeName="CC">000000</cbc:ID>
+      </cac:AdditionalItemIdentification>
+      <cac:ItemSpecificationDocumentReference>
+        <cbc:ID schemeName="MP">00000000</cbc:ID>
+        <cbc:DocumentTypeCode>G</cbc:DocumentTypeCode>
+      </cac:ItemSpecificationDocumentReference>
+      <cac:CommodityClassification>
+				<cbc:ItemClassificationCode listID="HS">010121100001</cbc:ItemClassificationCode>
+			</cac:CommodityClassification>
+      <cac:ClassifiedTaxCategory>
+        <cbc:ID>S</cbc:ID>
+        <cbc:Percent>5</cbc:Percent>
+        <cac:TaxScheme>
+          <cbc:ID>VAT</cbc:ID>
+        </cac:TaxScheme>
+      </cac:ClassifiedTaxCategory>
+    </cac:Item>
+    <cac:Price>
+      <cbc:PriceAmount currencyID="OMR">0.047</cbc:PriceAmount>
+      <cbc:BaseQuantity unitCode="H87">1</cbc:BaseQuantity>
+    </cac:Price>
+    <cac:ItemPriceExtension>
+      <cbc:Amount currencyID="OMR">0.049</cbc:Amount>
+      <cac:TaxTotal>
+        <cbc:TaxAmount currencyID="OMR">0.002</cbc:TaxAmount>
+      </cac:TaxTotal>
+    </cac:ItemPriceExtension>
+  </cac:InvoiceLine>
+  <cac:InvoiceLine>
+    <cbc:ID>14</cbc:ID>
+    <cbc:InvoicedQuantity unitCode="H87">1</cbc:InvoicedQuantity>
+    <cbc:LineExtensionAmount currencyID="OMR">0.047</cbc:LineExtensionAmount>
+    <cac:Item>
+      <cbc:Name>Verification Item</cbc:Name>
+      <cac:AdditionalItemIdentification>
+        <cbc:ID schemeName="CC">000000</cbc:ID>
+      </cac:AdditionalItemIdentification>
+      <cac:ItemSpecificationDocumentReference>
+        <cbc:ID schemeName="MP">00000000</cbc:ID>
+        <cbc:DocumentTypeCode>G</cbc:DocumentTypeCode>
+      </cac:ItemSpecificationDocumentReference>
+      <cac:CommodityClassification>
+				<cbc:ItemClassificationCode listID="HS">010121100001</cbc:ItemClassificationCode>
+			</cac:CommodityClassification>
+      <cac:ClassifiedTaxCategory>
+        <cbc:ID>S</cbc:ID>
+        <cbc:Percent>5</cbc:Percent>
+        <cac:TaxScheme>
+          <cbc:ID>VAT</cbc:ID>
+        </cac:TaxScheme>
+      </cac:ClassifiedTaxCategory>
+    </cac:Item>
+    <cac:Price>
+      <cbc:PriceAmount currencyID="OMR">0.047</cbc:PriceAmount>
+      <cbc:BaseQuantity unitCode="H87">1</cbc:BaseQuantity>
+    </cac:Price>
+    <cac:ItemPriceExtension>
+      <cbc:Amount currencyID="OMR">0.049</cbc:Amount>
+      <cac:TaxTotal>
+        <cbc:TaxAmount currencyID="OMR">0.002</cbc:TaxAmount>
+      </cac:TaxTotal>
+    </cac:ItemPriceExtension>
+  </cac:InvoiceLine>
+  <cac:InvoiceLine>
+    <cbc:ID>15</cbc:ID>
+    <cbc:InvoicedQuantity unitCode="H87">1</cbc:InvoicedQuantity>
+    <cbc:LineExtensionAmount currencyID="OMR">0.047</cbc:LineExtensionAmount>
+    <cac:Item>
+      <cbc:Name>Verification Item</cbc:Name>
+      <cac:AdditionalItemIdentification>
+        <cbc:ID schemeName="CC">000000</cbc:ID>
+      </cac:AdditionalItemIdentification>
+      <cac:ItemSpecificationDocumentReference>
+        <cbc:ID schemeName="MP">00000000</cbc:ID>
+        <cbc:DocumentTypeCode>G</cbc:DocumentTypeCode>
+      </cac:ItemSpecificationDocumentReference>
+      <cac:CommodityClassification>
+				<cbc:ItemClassificationCode listID="HS">010121100001</cbc:ItemClassificationCode>
+			</cac:CommodityClassification>
+      <cac:ClassifiedTaxCategory>
+        <cbc:ID>S</cbc:ID>
+        <cbc:Percent>5</cbc:Percent>
+        <cac:TaxScheme>
+          <cbc:ID>VAT</cbc:ID>
+        </cac:TaxScheme>
+      </cac:ClassifiedTaxCategory>
+    </cac:Item>
+    <cac:Price>
+      <cbc:PriceAmount currencyID="OMR">0.047</cbc:PriceAmount>
+      <cbc:BaseQuantity unitCode="H87">1</cbc:BaseQuantity>
+    </cac:Price>
+    <cac:ItemPriceExtension>
+      <cbc:Amount currencyID="OMR">0.049</cbc:Amount>
+      <cac:TaxTotal>
+        <cbc:TaxAmount currencyID="OMR">0.002</cbc:TaxAmount>
+      </cac:TaxTotal>
+    </cac:ItemPriceExtension>
+  </cac:InvoiceLine>
+  <cac:InvoiceLine>
+    <cbc:ID>16</cbc:ID>
+    <cbc:InvoicedQuantity unitCode="H87">1</cbc:InvoicedQuantity>
+    <cbc:LineExtensionAmount currencyID="OMR">0.047</cbc:LineExtensionAmount>
+    <cac:Item>
+      <cbc:Name>Verification Item</cbc:Name>
+      <cac:AdditionalItemIdentification>
+        <cbc:ID schemeName="CC">000000</cbc:ID>
+      </cac:AdditionalItemIdentification>
+      <cac:ItemSpecificationDocumentReference>
+        <cbc:ID schemeName="MP">00000000</cbc:ID>
+        <cbc:DocumentTypeCode>G</cbc:DocumentTypeCode>
+      </cac:ItemSpecificationDocumentReference>
+      <cac:CommodityClassification>
+				<cbc:ItemClassificationCode listID="HS">010121100001</cbc:ItemClassificationCode>
+			</cac:CommodityClassification>
+      <cac:ClassifiedTaxCategory>
+        <cbc:ID>S</cbc:ID>
+        <cbc:Percent>5</cbc:Percent>
+        <cac:TaxScheme>
+          <cbc:ID>VAT</cbc:ID>
+        </cac:TaxScheme>
+      </cac:ClassifiedTaxCategory>
+    </cac:Item>
+    <cac:Price>
+      <cbc:PriceAmount currencyID="OMR">0.047</cbc:PriceAmount>
+      <cbc:BaseQuantity unitCode="H87">1</cbc:BaseQuantity>
+    </cac:Price>
+    <cac:ItemPriceExtension>
+      <cbc:Amount currencyID="OMR">0.049</cbc:Amount>
+      <cac:TaxTotal>
+        <cbc:TaxAmount currencyID="OMR">0.002</cbc:TaxAmount>
+      </cac:TaxTotal>
+    </cac:ItemPriceExtension>
+  </cac:InvoiceLine>
+  <cac:InvoiceLine>
+    <cbc:ID>17</cbc:ID>
+    <cbc:InvoicedQuantity unitCode="H87">1</cbc:InvoicedQuantity>
+    <cbc:LineExtensionAmount currencyID="OMR">0.047</cbc:LineExtensionAmount>
+    <cac:Item>
+      <cbc:Name>Verification Item</cbc:Name>
+      <cac:AdditionalItemIdentification>
+        <cbc:ID schemeName="CC">000000</cbc:ID>
+      </cac:AdditionalItemIdentification>
+      <cac:ItemSpecificationDocumentReference>
+        <cbc:ID schemeName="MP">00000000</cbc:ID>
+        <cbc:DocumentTypeCode>G</cbc:DocumentTypeCode>
+      </cac:ItemSpecificationDocumentReference>
+      <cac:CommodityClassification>
+				<cbc:ItemClassificationCode listID="HS">010121100001</cbc:ItemClassificationCode>
+			</cac:CommodityClassification>
+      <cac:ClassifiedTaxCategory>
+        <cbc:ID>S</cbc:ID>
+        <cbc:Percent>5</cbc:Percent>
+        <cac:TaxScheme>
+          <cbc:ID>VAT</cbc:ID>
+        </cac:TaxScheme>
+      </cac:ClassifiedTaxCategory>
+    </cac:Item>
+    <cac:Price>
+      <cbc:PriceAmount currencyID="OMR">0.047</cbc:PriceAmount>
+      <cbc:BaseQuantity unitCode="H87">1</cbc:BaseQuantity>
+    </cac:Price>
+    <cac:ItemPriceExtension>
+      <cbc:Amount currencyID="OMR">0.049</cbc:Amount>
+      <cac:TaxTotal>
+        <cbc:TaxAmount currencyID="OMR">0.002</cbc:TaxAmount>
+      </cac:TaxTotal>
+    </cac:ItemPriceExtension>
+  </cac:InvoiceLine>
+  <cac:InvoiceLine>
+    <cbc:ID>18</cbc:ID>
+    <cbc:InvoicedQuantity unitCode="H87">1</cbc:InvoicedQuantity>
+    <cbc:LineExtensionAmount currencyID="OMR">0.047</cbc:LineExtensionAmount>
+    <cac:Item>
+      <cbc:Name>Verification Item</cbc:Name>
+      <cac:AdditionalItemIdentification>
+        <cbc:ID schemeName="CC">000000</cbc:ID>
+      </cac:AdditionalItemIdentification>
+      <cac:ItemSpecificationDocumentReference>
+        <cbc:ID schemeName="MP">00000000</cbc:ID>
+        <cbc:DocumentTypeCode>G</cbc:DocumentTypeCode>
+      </cac:ItemSpecificationDocumentReference>
+      <cac:CommodityClassification>
+				<cbc:ItemClassificationCode listID="HS">010121100001</cbc:ItemClassificationCode>
+			</cac:CommodityClassification>
+      <cac:ClassifiedTaxCategory>
+        <cbc:ID>S</cbc:ID>
+        <cbc:Percent>5</cbc:Percent>
+        <cac:TaxScheme>
+          <cbc:ID>VAT</cbc:ID>
+        </cac:TaxScheme>
+      </cac:ClassifiedTaxCategory>
+    </cac:Item>
+    <cac:Price>
+      <cbc:PriceAmount currencyID="OMR">0.047</cbc:PriceAmount>
+      <cbc:BaseQuantity unitCode="H87">1</cbc:BaseQuantity>
+    </cac:Price>
+    <cac:ItemPriceExtension>
+      <cbc:Amount currencyID="OMR">0.049</cbc:Amount>
+      <cac:TaxTotal>
+        <cbc:TaxAmount currencyID="OMR">0.002</cbc:TaxAmount>
+      </cac:TaxTotal>
+    </cac:ItemPriceExtension>
+  </cac:InvoiceLine>
+  <cac:InvoiceLine>
+    <cbc:ID>19</cbc:ID>
+    <cbc:InvoicedQuantity unitCode="H87">1</cbc:InvoicedQuantity>
+    <cbc:LineExtensionAmount currencyID="OMR">0.047</cbc:LineExtensionAmount>
+    <cac:Item>
+      <cbc:Name>Verification Item</cbc:Name>
+      <cac:AdditionalItemIdentification>
+        <cbc:ID schemeName="CC">000000</cbc:ID>
+      </cac:AdditionalItemIdentification>
+      <cac:ItemSpecificationDocumentReference>
+        <cbc:ID schemeName="MP">00000000</cbc:ID>
+        <cbc:DocumentTypeCode>G</cbc:DocumentTypeCode>
+      </cac:ItemSpecificationDocumentReference>
+      <cac:CommodityClassification>
+				<cbc:ItemClassificationCode listID="HS">010121100001</cbc:ItemClassificationCode>
+			</cac:CommodityClassification>
+      <cac:ClassifiedTaxCategory>
+        <cbc:ID>S</cbc:ID>
+        <cbc:Percent>5</cbc:Percent>
+        <cac:TaxScheme>
+          <cbc:ID>VAT</cbc:ID>
+        </cac:TaxScheme>
+      </cac:ClassifiedTaxCategory>
+    </cac:Item>
+    <cac:Price>
+      <cbc:PriceAmount currencyID="OMR">0.047</cbc:PriceAmount>
+      <cbc:BaseQuantity unitCode="H87">1</cbc:BaseQuantity>
+    </cac:Price>
+    <cac:ItemPriceExtension>
+      <cbc:Amount currencyID="OMR">0.049</cbc:Amount>
+      <cac:TaxTotal>
+        <cbc:TaxAmount currencyID="OMR">0.002</cbc:TaxAmount>
+      </cac:TaxTotal>
+    </cac:ItemPriceExtension>
+  </cac:InvoiceLine>
+  <cac:InvoiceLine>
+    <cbc:ID>20</cbc:ID>
+    <cbc:InvoicedQuantity unitCode="H87">1</cbc:InvoicedQuantity>
+    <cbc:LineExtensionAmount currencyID="OMR">0.047</cbc:LineExtensionAmount>
+    <cac:Item>
+      <cbc:Name>Verification Item</cbc:Name>
+      <cac:AdditionalItemIdentification>
+        <cbc:ID schemeName="CC">000000</cbc:ID>
+      </cac:AdditionalItemIdentification>
+      <cac:ItemSpecificationDocumentReference>
+        <cbc:ID schemeName="MP">00000000</cbc:ID>
+        <cbc:DocumentTypeCode>G</cbc:DocumentTypeCode>
+      </cac:ItemSpecificationDocumentReference>
+      <cac:CommodityClassification>
+				<cbc:ItemClassificationCode listID="HS">010121100001</cbc:ItemClassificationCode>
+			</cac:CommodityClassification>
+      <cac:ClassifiedTaxCategory>
+        <cbc:ID>S</cbc:ID>
+        <cbc:Percent>5</cbc:Percent>
+        <cac:TaxScheme>
+          <cbc:ID>VAT</cbc:ID>
+        </cac:TaxScheme>
+      </cac:ClassifiedTaxCategory>
+    </cac:Item>
+    <cac:Price>
+      <cbc:PriceAmount currencyID="OMR">0.047</cbc:PriceAmount>
+      <cbc:BaseQuantity unitCode="H87">1</cbc:BaseQuantity>
+    </cac:Price>
+    <cac:ItemPriceExtension>
+      <cbc:Amount currencyID="OMR">0.049</cbc:Amount>
+      <cac:TaxTotal>
+        <cbc:TaxAmount currencyID="OMR">0.002</cbc:TaxAmount>
+      </cac:TaxTotal>
+    </cac:ItemPriceExtension>
+  </cac:InvoiceLine>
+
+</Invoice>

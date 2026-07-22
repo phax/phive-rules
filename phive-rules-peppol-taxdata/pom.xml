@@ -142,8 +142,8 @@
               <goal>convert</goal>
             </goals>
             <configuration>
-              <schematronDirectory>src/test/resources/external/rule-source/tdd/om/1.0.0</schematronDirectory>
-              <xsltDirectory>src/main/resources/external/schematron/tdd/om/1.0.0</xsltDirectory>
+              <schematronDirectory>src/test/resources/external/rule-source/tdd/om/1.0.1</schematronDirectory>
+              <xsltDirectory>src/main/resources/external/schematron/tdd/om/1.0.1</xsltDirectory>
             </configuration>
           </execution>
           -->

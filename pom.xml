@@ -69,7 +69,7 @@
     <ph-jaxb-plugin.version>5.1.2</ph-jaxb-plugin.version>
 
     <peppol-commons.version>12.6.0</peppol-commons.version>
-    <peppol-om.version>1.1.0</peppol-om.version>
+    <peppol-om.version>1.2.0</peppol-om.version>
     <peppol-sk.version>0.2.0</peppol-sk.version>
     <peppol-uae.version>1.1.0</peppol-uae.version>
     <peppol-vida.version>0.10.0</peppol-vida.version>
