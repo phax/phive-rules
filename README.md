@@ -317,9 +317,9 @@ I hope that with the introduction of PINT, the versioning problem will be solved
 
 # News and noteworthy
 
-v4.4.1 - work in progress
+v4.4.1 - 2026-07-23
 * Added Peppol TDD AE (United Arab Emirates) 1.0.4 validation rules from the `2026-TDD-1.0.4` release (2026-07-22) in `phive-rules-peppol-taxdata`, VES coordinate `org.peppol.taxdata:ae:1.0.4`, and deprecated 1.0.3
-* Added Peppol OM (Oman) 1.0.1 validation rules from the `2026-Q2-v1.0.1` release (2026-07-17)
+* Added Peppol OM (Oman) 1.0.1 validation rules from the `2026-Q2-v1.0.1` release (2026-07-23)
     * PINT OM Billing and Self-Billing 1.0.1 in `phive-rules-peppol-pint`, VES coordinates `org.peppol.pint.om:invoice:1.0.1`, `org.peppol.pint.om:creditnote:1.0.1`, `org.peppol.pint.om:invoice-self-billing:1.0.1` and `org.peppol.pint.om:creditnote-self-billing:1.0.1`
     * OM Tax Data Document (TDD) 1.0.1 in `phive-rules-peppol-taxdata`, VES coordinate `org.peppol.taxdata:om:1.0.1` (via `peppol-om` 1.2.0)
     * The respective 1.0.0 rule sets are now deprecated
