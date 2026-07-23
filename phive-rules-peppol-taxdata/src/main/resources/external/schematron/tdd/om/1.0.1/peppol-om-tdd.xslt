@@ -698,15 +698,15 @@
 
 		<!--ASSERT -->
 <xsl:choose>
-      <xsl:when test="exists(cbc:UUID)" />
+      <xsl:when test="matches(normalize-space(cbc:UUID),'^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-5[0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$')" />
       <xsl:otherwise>
-        <svrl:failed-assert test="exists(cbc:UUID)">
+        <svrl:failed-assert test="matches(normalize-space(cbc:UUID),'^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-5[0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$')">
           <xsl:attribute name="id">ibr-tdd-27</xsl:attribute>
           <xsl:attribute name="flag">fatal</xsl:attribute>
           <xsl:attribute name="location">
             <xsl:apply-templates mode="schematron-select-full-path" select="." />
           </xsl:attribute>
-          <svrl:text>[ibr-tdd-27] The UUID (btom-07) MUST be present</svrl:text>
+          <svrl:text>[ibr-tdd-27] The unique identifier (tdt-003) (btom-07) must be provided on the invoice and MUST be a valid UUID version 5.</svrl:text>
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>

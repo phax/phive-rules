@@ -38,7 +38,7 @@
       <cbc:ProfileID>urn:peppol:bis:billing</cbc:ProfileID>
 
       <cbc:ID>OM-01TEST</cbc:ID>
-      <cbc:UUID>f12f329f-6430-4399-b661-7c5cd9c3a9e6</cbc:UUID>
+      <cbc:UUID>02de16f6-2395-59ba-81c4-6de86caf661a</cbc:UUID>
       <cbc:IssueDate>2025-02-06</cbc:IssueDate>
       <cbc:IssueTime>07:54:00</cbc:IssueTime>
 
@@ -47,7 +47,7 @@
 
       <!-- Seller tax ID -->
       <cac:AccountingSupplierParty>
-        <cbc:AdditionalAccountID>19e2c9a3-b000-4fb0-9bd5-a9c4ebda2358</cbc:AdditionalAccountID>
+        <cbc:AdditionalAccountID>02de16f6-2395-59ba-82c4-6de86caf661a</cbc:AdditionalAccountID>
         <cac:Party>
           <cac:PartyTaxScheme>
             <cbc:CompanyID>198765432102003</cbc:CompanyID>

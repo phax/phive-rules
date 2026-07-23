@@ -30,7 +30,7 @@
       <cbc:CustomizationID>urn:peppol:pint:billing-1@om-1</cbc:CustomizationID>
       <cbc:ProfileID>urn:peppol:bis:billing</cbc:ProfileID>
       <cbc:ID>inv1</cbc:ID>
-      <cbc:UUID>eca87285-6b30-4691-b4b7-f97da43c1760</cbc:UUID>
+      <cbc:UUID>02de16f6-2395-59ba-94c4-6de86caf661a</cbc:UUID>
       <cbc:IssueDate>2025-04-13</cbc:IssueDate>
       <cbc:IssueTime>12:34:56</cbc:IssueTime>
       <pxs:DocumentTypeCode>380</pxs:DocumentTypeCode>
@@ -38,7 +38,7 @@
       <cbc:TaxCurrencyCode>OMR</cbc:TaxCurrencyCode>
 
       <cac:AccountingSupplierParty>
-        <cbc:AdditionalAccountID>19e2c9a3-b000-4fb0-9bd5-a9c4ebda2358</cbc:AdditionalAccountID>
+        <cbc:AdditionalAccountID>02de16f6-2395-59ba-96c4-6de86caf661a</cbc:AdditionalAccountID>
         <cac:Party>
           <cac:PartyTaxScheme>
             <cbc:CompanyID>123456789</cbc:CompanyID>

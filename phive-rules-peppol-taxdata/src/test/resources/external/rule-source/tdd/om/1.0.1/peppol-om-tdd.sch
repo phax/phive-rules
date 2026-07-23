@@ -157,7 +157,7 @@
       <assert id="ibr-tdd-26" flag="fatal" test="exists(cbc:ID)">[ibr-tdd-26] The Invoice number (ibt-001) MUST be present</assert>
       
       
-      <assert id="ibr-tdd-27" flag="fatal" test="exists(cbc:UUID)">[ibr-tdd-27] The UUID (btom-07) MUST be present</assert>
+      <assert id="ibr-tdd-27" flag="fatal" test="matches(normalize-space(cbc:UUID),'^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-5[0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$')">[ibr-tdd-27] The unique identifier (tdt-003) (btom-07) must be provided on the invoice and MUST be a valid UUID version 5.</assert>
       
       
       <assert id="ibr-tdd-28" flag="fatal" test="exists(cbc:IssueDate)">[ibr-tdd-28] The Invoice issue date (ibt-002) MUST be present</assert>
