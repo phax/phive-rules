@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<xsl:stylesheet xmlns:svrl="http://purl.oclc.org/dsdl/svrl" xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" xmlns:cec="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2" xmlns:cn="urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2" xmlns:inv="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2" xmlns:iso="http://purl.oclc.org/dsdl/schematron" xmlns:pxc="urn:peppol:xslt:custom-function" xmlns:pxs="urn:peppol:schema:taxdata:1.0" xmlns:saxon="http://saxon.sf.net/" xmlns:schold="http://www.ascc.net/xml/schematron" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="2.0">
+<xsl:stylesheet xmlns:svrl="http://purl.oclc.org/dsdl/svrl" xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" xmlns:cec="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2" xmlns:cn="urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2" xmlns:iso="http://purl.oclc.org/dsdl/schematron" xmlns:pxc="urn:peppol:xslt:custom-function" xmlns:pxs="urn:peppol:schema:taxdata:1.0" xmlns:saxon="http://saxon.sf.net/" xmlns:schold="http://www.ascc.net/xml/schematron" xmlns:ubl="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="2.0">
   <!--Implementers: please note that overriding process-prolog or process-root is 
     the preferred method for meta-stylesheets to use where possible. -->
 <xsl:param name="archiveDirParameter" />
@@ -170,6 +170,19 @@
       Philip Helger
 
     History
+      v1.0.4
+        2026-07-18, UAE Peppol Authority
+        * ibr-tdd-17: schemeID attribute is now required to be present AND equal to '0242' (SPIS)
+        * ibr-tdd-21: message clarified for the optional schemeID attribute ("if present")
+        * ibr-tdd-22: renamed variable $checkForReportedDocument to $isFailedTransmission; message now states the 'F' (Failed transmission) exemption
+        * ibr-tdd-33: added export exclusion aligned with PINT AE rule ibr-135-ae (BTAE-02 = XXXXXXX1)
+        * ibr-tdd-40 / ibr-tdd-47: messages now name the business group and the concrete element path
+        * ibr-tdd-44 / ibr-tdd-45: messages now open with a complete static sentence naming both candidate business terms and the element path
+        * ibr-tdd-55: message now names the element and the supplied business term identifier and states that cec:ExtensionContent is not allowed
+      v1.0.3
+        2026-05-20, Georg Birgisson
+        * Removed rule ibr-tdd-50, redundant
+        * Corrected double negative in ibr-tdd-22
       v1.0.2
         2026-01-26, Philip Helger
         * Fixed the time regular expression check
@@ -195,7 +208,7 @@
       <svrl:ns-prefix-in-attribute-values prefix="cbc" uri="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" />
       <svrl:ns-prefix-in-attribute-values prefix="cec" uri="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2" />
       <svrl:ns-prefix-in-attribute-values prefix="pxs" uri="urn:peppol:schema:taxdata:1.0" />
-      <svrl:ns-prefix-in-attribute-values prefix="inv" uri="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2" />
+      <svrl:ns-prefix-in-attribute-values prefix="ubl" uri="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2" />
       <svrl:ns-prefix-in-attribute-values prefix="cn" uri="urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2" />
       <svrl:ns-prefix-in-attribute-values prefix="pxc" uri="urn:peppol:xslt:custom-function" />
       <svrl:active-pattern>
@@ -218,7 +231,7 @@
   <xsl:variable name="cl_rr" select="' 01 02 '" />
   <xsl:variable name="cl_currency" select="' AED AFN ALL AMD ANG AOA ARS AUD AWG AZN BAM BBD BDT BGN BHD BIF BMD BND BOB BOV BRL BSD BTN BWP BYN BZD CAD CDF CHE CHF CHW CLF CLP CNH CNY COP COU CRC CUP CVE CZK DJF DKK DOP DZD EGP ERN ETB EUR FJD FKP GBP GEL GHS GIP GMD GNF GTQ GYD HKD HNL HTG HUF IDR ILS INR IQD IRR ISK JMD JOD JPY KES KGS KHR KMF KPW KRW KWD KYD KZT LAK LBP LKR LRD LSL LYD MAD MDL MGA MKD MMK MNT MOP MRU MUR MVR MWK MXN MXV MYR MZN NAD NGN NIO NOK NPR NZD OMR PAB PEN PGK PHP PKR PLN PYG QAR RON RSD RUB RWF SAR SBD SCR SDG SEK SGD SHP SLE SOS SRD SSP STD SVC SYP SZL THB TJS TMT TND TOP TRY TTD TWD TZS UAH UGX USD USN UYI UYU UYW UZS VES VED VND VUV WST XAF XAG XAU XBA XBB XBC XBD XCD XDR XOF XPD XPF XPT XSU XTS XUA XXX YER ZAR ZMW ZWG '" />
   <xsl:variable name="regex_pidscheme" select="'^[0-9]{4}$'" />
-  <xsl:variable name="checkForReportedDocument" select="normalize-space(/pxs:TaxData/pxs:DocumentTypeCode) != 'F'" />
+  <xsl:variable name="isFailedTransmission" select="normalize-space(/pxs:TaxData/pxs:DocumentTypeCode) = 'F'" />
 
 	<!--RULE -->
 <xsl:template match="/pxs:TaxData" mode="M10" priority="1018">
@@ -490,15 +503,15 @@
 
 		<!--ASSERT -->
 <xsl:choose>
-      <xsl:when test="not(exists(cbc:EndpointID/@schemeID)) or (cbc:EndpointID/@schemeID = '0242')" />
+      <xsl:when test="exists(cbc:EndpointID/@schemeID) and normalize-space(cbc:EndpointID/@schemeID) = '0242'" />
       <xsl:otherwise>
-        <svrl:failed-assert test="not(exists(cbc:EndpointID/@schemeID)) or (cbc:EndpointID/@schemeID = '0242')">
+        <svrl:failed-assert test="exists(cbc:EndpointID/@schemeID) and normalize-space(cbc:EndpointID/@schemeID) = '0242'">
           <xsl:attribute name="id">ibr-tdd-17</xsl:attribute>
           <xsl:attribute name="flag">fatal</xsl:attribute>
           <xsl:attribute name="location">
             <xsl:apply-templates mode="schematron-select-full-path" select="." />
           </xsl:attribute>
-          <svrl:text>[ibr-tdd-17] Receivers Endpoint Scheme identifier (tdt-008-1) MUST refer to an SPID</svrl:text>
+          <svrl:text>[ibr-tdd-17] Receivers Endpoint Scheme identifier (tdt-008-1) MUST be present and MUST refer to an SPIS (0242)</svrl:text>
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
@@ -565,7 +578,7 @@
 
 		<!--ASSERT -->
 <xsl:choose>
-      <xsl:when test="not(exists(cbc:ID/@schemeID)) or                                                   (cbc:ID/@schemeID = '0242')" />
+      <xsl:when test="not(exists(cbc:ID/@schemeID)) or                                                  (cbc:ID/@schemeID = '0242')" />
       <xsl:otherwise>
         <svrl:failed-assert test="not(exists(cbc:ID/@schemeID)) or (cbc:ID/@schemeID = '0242')">
           <xsl:attribute name="id">ibr-tdd-21</xsl:attribute>
@@ -573,7 +586,7 @@
           <xsl:attribute name="location">
             <xsl:apply-templates mode="schematron-select-full-path" select="." />
           </xsl:attribute>
-          <svrl:text>[ibr-tdd-21] Reporters Representative ID Scheme identifier (tdt-009-1) MUST refer to an SPID</svrl:text>
+          <svrl:text>[ibr-tdd-21] Reporters Representative ID Scheme identifier (tdt-009-1), if present, MUST refer to an SPIS (0242)</svrl:text>
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
@@ -587,15 +600,15 @@
 
 		<!--ASSERT -->
 <xsl:choose>
-      <xsl:when test="exists(pxs:ReportedDocument) or not($checkForReportedDocument)" />
+      <xsl:when test="exists(pxs:ReportedDocument) or $isFailedTransmission" />
       <xsl:otherwise>
-        <svrl:failed-assert test="exists(pxs:ReportedDocument) or not($checkForReportedDocument)">
+        <svrl:failed-assert test="exists(pxs:ReportedDocument) or $isFailedTransmission">
           <xsl:attribute name="id">ibr-tdd-22</xsl:attribute>
           <xsl:attribute name="flag">fatal</xsl:attribute>
           <xsl:attribute name="location">
             <xsl:apply-templates mode="schematron-select-full-path" select="." />
           </xsl:attribute>
-          <svrl:text>[ibr-tdd-22] The REPORTED DOCUMENT (tdg-02) MUST be present</svrl:text>
+          <svrl:text>[ibr-tdd-22] The REPORTED DOCUMENT (tdg-02) MUST be present, except when the Tax Data Document type code (tdt-006) is 'F' (Failed transmission)</svrl:text>
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
@@ -744,7 +757,7 @@
           <xsl:attribute name="location">
             <xsl:apply-templates mode="schematron-select-full-path" select="." />
           </xsl:attribute>
-          <svrl:text>[ibr-tdd-30-1] The Document currency code (idt-005) (<xsl:text />
+          <svrl:text>[ibr-tdd-30-1] The Document currency code (ibt-005) (<xsl:text />
             <xsl:value-of select="$dcc" />
             <xsl:text />) MUST be coded according to the code list</svrl:text>
         </svrl:failed-assert>
@@ -780,7 +793,7 @@
           <xsl:attribute name="location">
             <xsl:apply-templates mode="schematron-select-full-path" select="." />
           </xsl:attribute>
-          <svrl:text>[ibr-tdd-31-1] The Accounting currency code (idt-006) (<xsl:text />
+          <svrl:text>[ibr-tdd-31-1] The Accounting currency code (ibt-006) (<xsl:text />
             <xsl:value-of select="$tcc" />
             <xsl:text />) MUST be coded according to the code list</svrl:text>
         </svrl:failed-assert>
@@ -804,15 +817,15 @@
 
 		<!--ASSERT -->
 <xsl:choose>
-      <xsl:when test="exists(cac:AccountingCustomerParty)" />
+      <xsl:when test="exists(cac:AccountingCustomerParty) or matches(normalize-space(../pxs:SourceDocument/cec:ExtensionContent/*/cbc:ProfileExecutionID), '^[01]{7}1$')" />
       <xsl:otherwise>
-        <svrl:failed-assert test="exists(cac:AccountingCustomerParty)">
+        <svrl:failed-assert test="exists(cac:AccountingCustomerParty) or matches(normalize-space(../pxs:SourceDocument/cec:ExtensionContent/*/cbc:ProfileExecutionID), '^[01]{7}1$')">
           <xsl:attribute name="id">ibr-tdd-33</xsl:attribute>
           <xsl:attribute name="flag">fatal</xsl:attribute>
           <xsl:attribute name="location">
             <xsl:apply-templates mode="schematron-select-full-path" select="." />
           </xsl:attribute>
-          <svrl:text>[ibr-tdd-33] The BUYER (ibg-07) MUST be present</svrl:text>
+          <svrl:text>[ibr-tdd-33] The BUYER (ibg-07) MUST be present when the Invoice transaction type code (BTAE-02) is other than XXXXXXX1 (Exports)</svrl:text>
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
@@ -909,7 +922,6 @@
 	<!--RULE -->
 <xsl:template match="/pxs:TaxData/pxs:ReportedTransaction/pxs:ReportedDocument/cac:AccountingSupplierParty" mode="M10" priority="1011">
     <svrl:fired-rule context="/pxs:TaxData/pxs:ReportedTransaction/pxs:ReportedDocument/cac:AccountingSupplierParty" />
-    <xsl:variable name="currentPath" select="pxc:genPath(.)" />
 
 		<!--ASSERT -->
 <xsl:choose>
@@ -936,9 +948,7 @@
           <xsl:attribute name="location">
             <xsl:apply-templates mode="schematron-select-full-path" select="." />
           </xsl:attribute>
-          <svrl:text>[ibr-tdd-40] The <xsl:text />
-            <xsl:value-of select="$currentPath" />
-            <xsl:text />/cac:Party element MUST be present</svrl:text>
+          <svrl:text>[ibr-tdd-40] The SELLER (ibg-04) PARTY DETAILS element (cac:AccountingSupplierParty/cac:Party) MUST be present</svrl:text>
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
@@ -1019,11 +1029,11 @@
           <xsl:attribute name="location">
             <xsl:apply-templates mode="schematron-select-full-path" select="." />
           </xsl:attribute>
-          <svrl:text>[ibr-tdd-44] The <xsl:text />
+          <svrl:text>[ibr-tdd-44] The Seller VAT identifier (ibt-031) or the Seller tax registration identifier (ibt-032) MUST be present in cac:AccountingSupplierParty/cac:Party/cac:PartyTaxScheme/cbc:CompanyID. Expected business term for the supplied Tax scheme code: <xsl:text />
             <xsl:value-of select="$btName" />
             <xsl:text /> (<xsl:text />
             <xsl:value-of select="$btID" />
-            <xsl:text />) MUST be present</svrl:text>
+            <xsl:text />)</svrl:text>
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
@@ -1038,11 +1048,11 @@
           <xsl:attribute name="location">
             <xsl:apply-templates mode="schematron-select-full-path" select="." />
           </xsl:attribute>
-          <svrl:text>[ibr-tdd-45] The <xsl:text />
+          <svrl:text>[ibr-tdd-45] The Tax scheme code of the Seller VAT identifier (ibt-031-1) or of the Seller tax registration identifier (ibt-032-1) MUST be present in cac:AccountingSupplierParty/cac:Party/cac:PartyTaxScheme/cac:TaxScheme/cbc:ID. Expected business term for the supplied Tax scheme code: <xsl:text />
             <xsl:value-of select="$btName" />
-            <xsl:text /> Tax scheme code (<xsl:text />
+            <xsl:text /> (<xsl:text />
             <xsl:value-of select="$btID" />
-            <xsl:text />-1) MUST be present</svrl:text>
+            <xsl:text />-1)</svrl:text>
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
@@ -1052,7 +1062,6 @@
 	<!--RULE -->
 <xsl:template match="/pxs:TaxData/pxs:ReportedTransaction/pxs:ReportedDocument/cac:AccountingCustomerParty" mode="M10" priority="1008">
     <svrl:fired-rule context="/pxs:TaxData/pxs:ReportedTransaction/pxs:ReportedDocument/cac:AccountingCustomerParty" />
-    <xsl:variable name="currentPath" select="pxc:genPath(.)" />
 
 		<!--ASSERT -->
 <xsl:choose>
@@ -1079,9 +1088,7 @@
           <xsl:attribute name="location">
             <xsl:apply-templates mode="schematron-select-full-path" select="." />
           </xsl:attribute>
-          <svrl:text>[ibr-tdd-47] The <xsl:text />
-            <xsl:value-of select="$currentPath" />
-            <xsl:text />/cac:Party element MUST be present</svrl:text>
+          <svrl:text>[ibr-tdd-47] The BUYER (ibg-07) PARTY DETAILS element (cac:AccountingCustomerParty/cac:Party) MUST be present</svrl:text>
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
@@ -1130,21 +1137,6 @@
             <xsl:apply-templates mode="schematron-select-full-path" select="." />
           </xsl:attribute>
           <svrl:text>[ibr-tdd-49] Only XML elements defined in this specification are allowed to be used</svrl:text>
-        </svrl:failed-assert>
-      </xsl:otherwise>
-    </xsl:choose>
-
-		<!--ASSERT -->
-<xsl:choose>
-      <xsl:when test="exists(cbc:CompanyID)" />
-      <xsl:otherwise>
-        <svrl:failed-assert test="exists(cbc:CompanyID)">
-          <xsl:attribute name="id">ibr-tdd-50</xsl:attribute>
-          <xsl:attribute name="flag">fatal</xsl:attribute>
-          <xsl:attribute name="location">
-            <xsl:apply-templates mode="schematron-select-full-path" select="." />
-          </xsl:attribute>
-          <svrl:text>[ibr-tdd-50] The Buyer VAT identifier (ibt-048) MUST be present</svrl:text>
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
@@ -1229,7 +1221,6 @@
 	<!--RULE -->
 <xsl:template match="/pxs:TaxData/pxs:ReportedTransaction/pxs:CustomContent" mode="M10" priority="1002">
     <svrl:fired-rule context="/pxs:TaxData/pxs:ReportedTransaction/pxs:CustomContent" />
-    <xsl:variable name="currentPath" select="pxc:genPath(.)" />
 
 		<!--ASSERT -->
 <xsl:choose>
@@ -1241,9 +1232,9 @@
           <xsl:attribute name="location">
             <xsl:apply-templates mode="schematron-select-full-path" select="." />
           </xsl:attribute>
-          <svrl:text>[ibr-tdd-55] The <xsl:text />
-            <xsl:value-of select="$currentPath" />
-            <xsl:text /> MUST use the simple cbc:Value element</svrl:text>
+          <svrl:text>[ibr-tdd-55] The CUSTOM CONTENT (pxs:CustomContent) with Business term identifier '<xsl:text />
+            <xsl:value-of select="normalize-space(cbc:ID)" />
+            <xsl:text />' MUST use the simple cbc:Value element. The complex cec:ExtensionContent element is not allowed in the UAE</svrl:text>
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
@@ -1278,9 +1269,9 @@
 
 		<!--ASSERT -->
 <xsl:choose>
-      <xsl:when test="exists(inv:Invoice) or exists(cn:CreditNote)" />
+      <xsl:when test="exists(ubl:Invoice) or exists(cn:CreditNote)" />
       <xsl:otherwise>
-        <svrl:failed-assert test="exists(inv:Invoice) or exists(cn:CreditNote)">
+        <svrl:failed-assert test="exists(ubl:Invoice) or exists(cn:CreditNote)">
           <xsl:attribute name="id">ibr-tdd-57</xsl:attribute>
           <xsl:attribute name="flag">fatal</xsl:attribute>
           <xsl:attribute name="location">
