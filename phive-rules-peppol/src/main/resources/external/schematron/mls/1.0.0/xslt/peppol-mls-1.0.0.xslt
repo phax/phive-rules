@@ -322,9 +322,9 @@
 
 		<!--ASSERT -->
 <xsl:choose>
-      <xsl:when test="matches(normalize-space(cac:SenderParty/cbc:EndpointID), $regex_spis)" />
+      <xsl:when test="matches(normalize-space(upper-case(cac:SenderParty/cbc:EndpointID)), $regex_spis)" />
       <xsl:otherwise>
-        <svrl:failed-assert test="matches(normalize-space(cac:SenderParty/cbc:EndpointID), $regex_spis)">
+        <svrl:failed-assert test="matches(normalize-space(upper-case(cac:SenderParty/cbc:EndpointID)), $regex_spis)">
           <xsl:attribute name="id">SCH-MLS-09</xsl:attribute>
           <xsl:attribute name="flag">fatal</xsl:attribute>
           <xsl:attribute name="location">
@@ -399,9 +399,9 @@
 
 		<!--ASSERT -->
 <xsl:choose>
-      <xsl:when test="matches(normalize-space(cac:ReceiverParty/cbc:EndpointID), $regex_spis)" />
+      <xsl:when test="matches(normalize-space(upper-case(cac:ReceiverParty/cbc:EndpointID)), $regex_spis)" />
       <xsl:otherwise>
-        <svrl:failed-assert test="matches(normalize-space(cac:ReceiverParty/cbc:EndpointID), $regex_spis)">
+        <svrl:failed-assert test="matches(normalize-space(upper-case(cac:ReceiverParty/cbc:EndpointID)), $regex_spis)">
           <xsl:attribute name="id">SCH-MLS-14</xsl:attribute>
           <xsl:attribute name="flag">fatal</xsl:attribute>
           <xsl:attribute name="location">
