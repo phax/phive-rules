@@ -147,6 +147,7 @@ public final class CTestFiles
 
                                                              // OpenPeppol MLS
                                                              PeppolValidationMLS.VID_OPENPEPPOL_MLS_V100,
+                                                             PeppolValidationMLS.VID_OPENPEPPOL_MLS_V101,
 
                                                              /*
                                                               * OpenPeppol Reporting
@@ -628,6 +629,18 @@ public final class CTestFiles
     if (aVESID.equals (PeppolValidationMLS.VID_OPENPEPPOL_MLS_V100))
     {
       return _getAll ("mls/1.0.0/",
+                      "MessageLevelStatus_Example_AB.xml",
+                      "MessageLevelStatus_Example_AB2.xml",
+                      "MessageLevelStatus_Example_AB3.xml",
+                      "MessageLevelStatus_Example_AP.xml",
+                      "MessageLevelStatus_Example_RE.xml",
+                      "MessageLevelStatus_Example_RE2.xml",
+                      "MessageLevelStatus_Example_RE3.xml",
+                      "MessageLevelStatus_Example_RE4.xml");
+    }
+    if (aVESID.equals (PeppolValidationMLS.VID_OPENPEPPOL_MLS_V101))
+    {
+      return _getAll ("mls/1.0.1/",
                       "MessageLevelStatus_Example_AB.xml",
                       "MessageLevelStatus_Example_AB2.xml",
                       "MessageLevelStatus_Example_AB3.xml",

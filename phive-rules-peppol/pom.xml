@@ -156,8 +156,8 @@
               <goal>convert</goal>
             </goals>
             <configuration>
-              <schematronDirectory>src/test/resources/external/rule-source/mls/1.0.0</schematronDirectory>
-              <xsltDirectory>src/main/resources/external/schematron/mls/1.0.0/xslt</xsltDirectory>
+              <schematronDirectory>src/test/resources/external/rule-source/mls/1.0.1</schematronDirectory>
+              <xsltDirectory>src/main/resources/external/schematron/mls/1.0.1/xslt</xsltDirectory>
             </configuration>
           </execution>
           -->

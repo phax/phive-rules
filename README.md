@@ -317,6 +317,10 @@ I hope that with the introduction of PINT, the versioning problem will be solved
 
 # News and noteworthy
 
+v4.4.2 - 2026-07-28
+* Added Peppol Message Level Status (MLS) 1.0.1 validation rules from the `v1.1.0` release (2026-07-07) in `phive-rules-peppol`, VES coordinate `org.peppol:mls:1.0.1`, and deprecated 1.0.0
+    * The updated Schematron (`peppol-mls-1.0.1`, 2025-12-15) applies the SPIS regex case-insensitively and requires the Sender/Receiver Party Endpoint ID scheme ID to be the SPIS Participant Identifier Scheme (`0242`)
+
 v4.4.1 - 2026-07-23
 * Added Peppol TDD AE (United Arab Emirates) 1.0.4 validation rules from the `2026-TDD-1.0.4` release (2026-07-22) in `phive-rules-peppol-taxdata`, VES coordinate `org.peppol.taxdata:ae:1.0.4`, and deprecated 1.0.3
 * Added Peppol OM (Oman) 1.0.1 validation rules from the `2026-Q2-v1.0.1` release (2026-07-23)

@@ -43,6 +43,12 @@ public final class PeppolValidationMLS
   public static final DVRCoordinate VID_OPENPEPPOL_MLS_V100 = PhiveRulesHelper.createCoordinate (GROUP_ID,
                                                                                                  "mls",
                                                                                                  "1.0.0");
+  /**
+   * @since 4.4.2
+   */
+  public static final DVRCoordinate VID_OPENPEPPOL_MLS_V101 = PhiveRulesHelper.createCoordinate (GROUP_ID,
+                                                                                                 "mls",
+                                                                                                 "1.0.1");
 
   private PeppolValidationMLS ()
   {}
@@ -64,10 +70,23 @@ public final class PeppolValidationMLS
       VesXmlBuilder.builder ()
                    .vesID (VID_OPENPEPPOL_MLS_V100)
                    .displayNamePrefix ("Peppol Message Level Status ")
-                   .notDeprecated ()
+                   .deprecated ()
                    .addXSD (UBL21Marshaller.getAllApplicationResponseXSDs ())
                    .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (BASE_PATH_SCH +
                                                                                                 "1.0.0/xslt/peppol-mls-1.0.0.xslt",
+                                                                                                _getCL ())))
+                   .registerInto (aRegistry);
+    }
+
+    // v1.0.1
+    {
+      VesXmlBuilder.builder ()
+                   .vesID (VID_OPENPEPPOL_MLS_V101)
+                   .displayNamePrefix ("Peppol Message Level Status ")
+                   .notDeprecated ()
+                   .addXSD (UBL21Marshaller.getAllApplicationResponseXSDs ())
+                   .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (BASE_PATH_SCH +
+                                                                                                "1.0.1/xslt/peppol-mls-1.0.1.xslt",
                                                                                                 _getCL ())))
                    .registerInto (aRegistry);
     }
