@@ -317,9 +317,15 @@ I hope that with the introduction of PINT, the versioning problem will be solved
 
 # News and noteworthy
 
-v4.4.2 - 2026-07-28
+v4.4.2 - work in progress
 * Added Peppol Message Level Status (MLS) 1.0.1 validation rules from the `v1.1.0` release (2026-07-07) in `phive-rules-peppol`, VES coordinate `org.peppol:mls:1.0.1`, and deprecated 1.0.0
     * The updated Schematron (`peppol-mls-1.0.1`, 2025-12-15) applies the SPIS regex case-insensitively and requires the Sender/Receiver Party Endpoint ID scheme ID to be the SPIS Participant Identifier Scheme (`0242`)
+* Updated Peppol OM (Oman) Tax Data Document (TDD) 1.0.1 in `phive-rules-peppol-taxdata` to the final released Schematron (2026-07-29), VES coordinate `org.peppol.taxdata:om:1.0.1`
+    * The updated rule `ibr-tdd-42` makes the Seller tax identifier (IBT-031) optional for the import of goods, import of service RCM and profit margin self invoice transaction types
+    * Added the three new example files `import-goods-tdd.xml`, `import-service-rcm-tdd.xml` and `profit-margin-self-invoice-tdd.xml`
+* Updated Peppol PINT OM (Oman) Billing and Self-Billing 1.0.1 in `phive-rules-peppol-pint` to the final released Schematron (2026-07-29), VES coordinates `org.peppol.pint.om:invoice:1.0.1`, `org.peppol.pint.om:creditnote:1.0.1`, `org.peppol.pint.om:invoice-self-billing:1.0.1` and `org.peppol.pint.om:creditnote-self-billing:1.0.1`
+    * The updated jurisdiction rule `IBR-173-OM` now requires the Seller UUID (BTOM-004) to be a valid UUID version 5 (previously version 4 or 5)
+* Moved the legacy OIOUBL artefacts (`OIOUBLLegacyValidation`, versions 2.0.2 and 3.0.1) from Group ID `dk.oioubl` to `dk.oioubl.legacy`, so that they no longer overlap with the active `dk.oioubl` rules and pseudo-version resolution (`latest`, `latest-release`) no longer picks the deprecated legacy artefacts. See [#76](https://github.com/phax/phive-rules/issues/76)
 
 v4.4.1 - 2026-07-23
 * Added Peppol TDD AE (United Arab Emirates) 1.0.4 validation rules from the `2026-TDD-1.0.4` release (2026-07-22) in `phive-rules-peppol-taxdata`, VES coordinate `org.peppol.taxdata:ae:1.0.4`, and deprecated 1.0.3
