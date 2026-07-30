@@ -48,7 +48,7 @@ import com.helger.xml.namespace.IIterableNamespaceContext;
 @Immutable
 public final class OIOUBLLegacyValidation
 {
-  public static final String GROUPID = "dk.oioubl";
+  public static final String GROUPID = "dk.oioubl.legacy";
 
   @NonNull
   private static ClassLoader _getCL ()
