@@ -109,15 +109,16 @@
 				</cac:Country>
 			</cac:Address>
 		</cac:DeliveryLocation>
+		<cac:DeliveryTerms>
+			<cbc:ID>CIF</cbc:ID>
+		</cac:DeliveryTerms>
 		<cac:Shipment>
 			<cbc:ID>BL-12345</cbc:ID>
 			<cac:Delivery>
 				<cbc:ActualDeliveryDate>2026-02-06</cbc:ActualDeliveryDate>
 			</cac:Delivery>
 		</cac:Shipment>
-		<cac:DeliveryTerms>
-			<cbc:ID>CIF</cbc:ID>
-		</cac:DeliveryTerms>
+		
 	</cac:Delivery>
 	<!-- =================  Payment means     ================= -->
 	<cac:PaymentMeans>

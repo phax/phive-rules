@@ -8,9 +8,10 @@
   <cbc:UUID>00000000-0000-5000-8000-0000000000A4</cbc:UUID>
   <cbc:IssueDate>2025-04-15</cbc:IssueDate>
   <cbc:IssueTime>09:00:00</cbc:IssueTime>
+  <cbc:TaxPointDate>2025-04-15</cbc:TaxPointDate>
   <cbc:CreditNoteTypeCode name="10100000000000000000">261</cbc:CreditNoteTypeCode>
   <cbc:Note>Self-billed credit note (261) - strict math exact, IBT-114 element absent</cbc:Note>
-  <cbc:TaxPointDate>2025-04-15</cbc:TaxPointDate>
+  
   <cbc:DocumentCurrencyCode>OMR</cbc:DocumentCurrencyCode>
   <cbc:BuyerReference>SELF-BILLING-AGREEMENT-OM-2025</cbc:BuyerReference>
 

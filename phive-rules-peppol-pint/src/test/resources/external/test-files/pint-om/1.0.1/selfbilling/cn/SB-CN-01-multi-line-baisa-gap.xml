@@ -8,9 +8,10 @@
   <cbc:UUID>00000000-0000-5000-8000-0000000000A3</cbc:UUID>
   <cbc:IssueDate>2025-04-15</cbc:IssueDate>
   <cbc:IssueTime>09:00:00</cbc:IssueTime>
+   <cbc:TaxPointDate>2025-04-15</cbc:TaxPointDate>
   <cbc:CreditNoteTypeCode name="10100000000000000000">261</cbc:CreditNoteTypeCode>
   <cbc:Note>Self-billed credit note (261) - 10-line Baisa Gap at cap boundary, IBT-114=0.010</cbc:Note>
-  <cbc:TaxPointDate>2025-04-15</cbc:TaxPointDate>
+ 
   <cbc:DocumentCurrencyCode>OMR</cbc:DocumentCurrencyCode>
   <cbc:BuyerReference>SELF-BILLING-AGREEMENT-OM-2025</cbc:BuyerReference>
 

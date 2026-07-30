@@ -2426,9 +2426,9 @@
 
 		<!--ASSERT fatal-->
 <xsl:choose>
-      <xsl:when test="                     not(normalize-space(cac:AccountingCustomerParty/cac:Party/cbc:EndpointID) = '997770000099')                     or                     (                         normalize-space(cac:AccountingSupplierParty/cbc:AdditionalAccountID) != ''                         and                         matches(normalize-space(cac:AccountingSupplierParty/cbc:AdditionalAccountID), '^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[45][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$')                     )                     " />
+      <xsl:when test="                     not(normalize-space(cac:AccountingCustomerParty/cac:Party/cbc:EndpointID) = '997770000099')                     or                     (                         normalize-space(cac:AccountingSupplierParty/cbc:AdditionalAccountID) != ''                         and                         matches(normalize-space(cac:AccountingSupplierParty/cbc:AdditionalAccountID), '^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-5[0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$')                     )                     " />
       <xsl:otherwise>
-        <svrl:failed-assert test="not(normalize-space(cac:AccountingCustomerParty/cac:Party/cbc:EndpointID) = '997770000099') or ( normalize-space(cac:AccountingSupplierParty/cbc:AdditionalAccountID) != '' and matches(normalize-space(cac:AccountingSupplierParty/cbc:AdditionalAccountID), '^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[45][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$') )">
+        <svrl:failed-assert test="not(normalize-space(cac:AccountingCustomerParty/cac:Party/cbc:EndpointID) = '997770000099') or ( normalize-space(cac:AccountingSupplierParty/cbc:AdditionalAccountID) != '' and matches(normalize-space(cac:AccountingSupplierParty/cbc:AdditionalAccountID), '^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-5[0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$') )">
           <xsl:attribute name="id">IBR-173-OM</xsl:attribute>
           <xsl:attribute name="flag">fatal</xsl:attribute>
           <xsl:attribute name="role">fatal</xsl:attribute>
@@ -2453,7 +2453,7 @@
             Populate Seller UUID (BTOM-004) under cac:AccountingSupplierParty/cbc:AdditionalAccountID.
         </svrl:text>
 </svrl:diagnostic-reference>
-          <svrl:text>[IBR-173-OM] - If Buyer electronic address (IBT-049) is '997770000099', Seller UUID (BTOM-004) MUST be present and MUST be a valid UUID version 4 or version 5.</svrl:text>
+          <svrl:text>[IBR-173-OM] - If Buyer electronic address (IBT-049) is '997770000099', Seller UUID (BTOM-004) MUST be present and MUST be a valid UUID version 5.</svrl:text>
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
