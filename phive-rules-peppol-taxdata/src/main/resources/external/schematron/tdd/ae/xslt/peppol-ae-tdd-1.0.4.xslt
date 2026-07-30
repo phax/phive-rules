@@ -1029,11 +1029,7 @@
           <xsl:attribute name="location">
             <xsl:apply-templates mode="schematron-select-full-path" select="." />
           </xsl:attribute>
-          <svrl:text>[ibr-tdd-44] The Seller VAT identifier (ibt-031) or the Seller tax registration identifier (ibt-032) MUST be present in cac:AccountingSupplierParty/cac:Party/cac:PartyTaxScheme/cbc:CompanyID. Expected business term for the supplied Tax scheme code: <xsl:text />
-            <xsl:value-of select="$btName" />
-            <xsl:text /> (<xsl:text />
-            <xsl:value-of select="$btID" />
-            <xsl:text />)</svrl:text>
+          <svrl:text>[IBR-TDD-44] The cbc:CompanyID element MUST be present in cac:AccountingSupplierParty/cac:Party/cac:PartyTaxScheme. Depending on the value of cac:TaxScheme/cbc:ID, this element represents either the Seller VAT identifier (IBT-031) when the tax scheme code is VAT, or the Seller tax registration identifier (IBT-032) for any other tax scheme code</svrl:text>
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
@@ -1048,11 +1044,7 @@
           <xsl:attribute name="location">
             <xsl:apply-templates mode="schematron-select-full-path" select="." />
           </xsl:attribute>
-          <svrl:text>[ibr-tdd-45] The Tax scheme code of the Seller VAT identifier (ibt-031-1) or of the Seller tax registration identifier (ibt-032-1) MUST be present in cac:AccountingSupplierParty/cac:Party/cac:PartyTaxScheme/cac:TaxScheme/cbc:ID. Expected business term for the supplied Tax scheme code: <xsl:text />
-            <xsl:value-of select="$btName" />
-            <xsl:text /> (<xsl:text />
-            <xsl:value-of select="$btID" />
-            <xsl:text />-1)</svrl:text>
+          <svrl:text>[IBR-TDD-45] The cac:TaxScheme/cbc:ID element MUST be present in cac:AccountingSupplierParty/cac:Party/cac:PartyTaxScheme. A value of VAT identifies the associated cbc:CompanyID as IBT-031 (Seller VAT identifier); any other value identifies it as IBT-032 (Seller tax registration identifier)</svrl:text>
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
@@ -1232,9 +1224,7 @@
           <xsl:attribute name="location">
             <xsl:apply-templates mode="schematron-select-full-path" select="." />
           </xsl:attribute>
-          <svrl:text>[ibr-tdd-55] The CUSTOM CONTENT (pxs:CustomContent) with Business term identifier '<xsl:text />
-            <xsl:value-of select="normalize-space(cbc:ID)" />
-            <xsl:text />' MUST use the simple cbc:Value element. The complex cec:ExtensionContent element is not allowed in the UAE</svrl:text>
+          <svrl:text>[ibr-tdd-55] The CUSTOM CONTENT (pxs:CustomContent) for the Invoice (or CreditNote) total amount with VAT in AED (BTAE-20) MUST contain the cbc:Value element (pxs:CustomContent/cbc:Value)</svrl:text>
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>

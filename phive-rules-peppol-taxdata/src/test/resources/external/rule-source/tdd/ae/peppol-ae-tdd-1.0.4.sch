@@ -265,12 +265,12 @@
       <assert id="ibr-tdd-43" flag="fatal" test="every $child in ('RegistrationName', 'TaxLevelCode', 'ExemptionReasonCode', 'ExemptionReason', 'RegistrationAddress')                                                    satisfies count (*[local-name(.) = $child]) = 0">[ibr-tdd-43] Only XML elements defined in this specification are allowed to be used</assert>
 
       
-      <assert id="ibr-tdd-44" flag="fatal" test="exists(cbc:CompanyID)">[ibr-tdd-44] The Seller VAT identifier (ibt-031) or the Seller tax registration identifier (ibt-032) MUST be present in cac:AccountingSupplierParty/cac:Party/cac:PartyTaxScheme/cbc:CompanyID. Expected business term for the supplied Tax scheme code: <value-of select="$btName"/> (<value-of select="$btID"/>)</assert>
+      <assert id="ibr-tdd-44" flag="fatal" test="exists(cbc:CompanyID)">[IBR-TDD-44] The cbc:CompanyID element MUST be present in cac:AccountingSupplierParty/cac:Party/cac:PartyTaxScheme. Depending on the value of cac:TaxScheme/cbc:ID, this element represents either the Seller VAT identifier (IBT-031) when the tax scheme code is VAT, or the Seller tax registration identifier (IBT-032) for any other tax scheme code</assert>
 
       
       
       
-      <assert id="ibr-tdd-45" flag="fatal" test="exists(cac:TaxScheme/cbc:ID)">[ibr-tdd-45] The Tax scheme code of the Seller VAT identifier (ibt-031-1) or of the Seller tax registration identifier (ibt-032-1) MUST be present in cac:AccountingSupplierParty/cac:Party/cac:PartyTaxScheme/cac:TaxScheme/cbc:ID. Expected business term for the supplied Tax scheme code: <value-of select="$btName"/> (<value-of select="$btID"/>-1)</assert>
+      <assert id="ibr-tdd-45" flag="fatal" test="exists(cac:TaxScheme/cbc:ID)">[IBR-TDD-45] The cac:TaxScheme/cbc:ID element MUST be present in cac:AccountingSupplierParty/cac:Party/cac:PartyTaxScheme. A value of VAT identifies the associated cbc:CompanyID as IBT-031 (Seller VAT identifier); any other value identifies it as IBT-032 (Seller tax registration identifier)</assert>
     </rule>
 
     <rule context="/pxs:TaxData/pxs:ReportedTransaction/pxs:ReportedDocument/cac:AccountingCustomerParty">
@@ -330,7 +330,7 @@
       
 
       
-      <assert id="ibr-tdd-55" flag="fatal" test="exists(cbc:Value)">[ibr-tdd-55] The CUSTOM CONTENT (pxs:CustomContent) with Business term identifier '<value-of select="normalize-space(cbc:ID)"/>' MUST use the simple cbc:Value element. The complex cec:ExtensionContent element is not allowed in the UAE</assert>
+      <assert id="ibr-tdd-55" flag="fatal" test="exists(cbc:Value)">[ibr-tdd-55] The CUSTOM CONTENT (pxs:CustomContent) for the Invoice (or CreditNote) total amount with VAT in AED (BTAE-20) MUST contain the cbc:Value element (pxs:CustomContent/cbc:Value)</assert>
     </rule>
     
     <rule context="/pxs:TaxData/pxs:ReportedTransaction/pxs:SourceDocument">
