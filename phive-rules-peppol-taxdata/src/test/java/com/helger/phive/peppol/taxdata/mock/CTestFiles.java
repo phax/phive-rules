@@ -161,6 +161,9 @@ public final class CTestFiles
     {
       return _getAll ("tdd/om/1.0.1/",
                       "commercial-invoice-tdd.xml",
+                      "import-goods-tdd.xml",
+                      "import-service-rcm-tdd.xml",
+                      "profit-margin-self-invoice-tdd.xml",
                       "simple.xml",
                       "standard-invoice-tdd.xml",
                       "tax-currency.xml");

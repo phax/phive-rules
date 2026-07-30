@@ -31,6 +31,35 @@
     <let name="regex_pidscheme" value="'^[0-9]{4}$'"/>
 
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <let name="srcDoc" value="/pxs:TaxData/pxs:ReportedTransaction/pxs:SourceDocument/cec:ExtensionContent/inv:Invoice                             | /pxs:TaxData/pxs:ReportedTransaction/pxs:SourceDocument/cec:ExtensionContent/cn:CreditNote"/>
+    <let name="txnType" value="normalize-space(($srcDoc/cbc:InvoiceTypeCode/@name | $srcDoc/cbc:CreditNoteTypeCode/@name)[1])"/>
+    <let name="isValidBitString" value="matches($txnType, '^[01]{20}$')"/>
+    <let name="txnSafe" value="if ($isValidBitString) then $txnType else 'XXXXXXXXXXXXXXXXXXXX'"/>
+    <let name="isImportRCM" value="substring($txnSafe,9,1) = '1'"/>
+    <let name="isProfitMarginSelf" value="substring($txnSafe,11,1) = '1'"/>
+    <let name="isImportGoods" value="substring($txnSafe,13,1) = '1'"/>
+    
+    <let name="sellerTaxIdExempt" value="$isImportGoods or $isImportRCM or $isProfitMarginSelf"/>
+
+    
     <rule context="/pxs:TaxData">
       <let name="dtc" value="normalize-space(pxs:DocumentTypeCode)"/>
       <let name="ds" value="normalize-space(pxs:DocumentScope)"/>
@@ -222,7 +251,7 @@
       <assert id="ibr-tdd-41" flag="fatal" test="every $child in ('MarkCareIndicator', 'MarkAttentionIndicator', 'WebsiteURI', 'LogoReferenceID', 'EndpointID',                                                                   'IndustryClassificationCode', 'PartyIdentification', 'PartyName', 'Language', 'PostalAddress', 'PhysicalLocation', 'Contact', 'Person', 'AgentParty', 'ServiceProviderParty', 'PowerOfAttorney', 'FinancialAccount')                                                    satisfies count (*[local-name(.) = $child]) = 0">[ibr-tdd-41] Only XML elements defined in this specification are allowed to be used</assert>
 
       
-      <assert id="ibr-tdd-42" flag="fatal" test="$ptsCount = 1">[ibr-tdd-42] Exactly 1 <value-of select="$currentPath"/>/cac:PartyTaxScheme element MUST be present but found <value-of select="$ptsCount"/> elements</assert>
+      <assert id="ibr-tdd-42" flag="fatal" test="if ($sellerTaxIdExempt) then ($ptsCount &lt;= 1) else ($ptsCount = 1)">[ibr-tdd-42] Seller tax identifier (IBT-031) MUST be mandatory in all cases except when Invoice transaction type (BTOM-001) is an invoice for import of goods (00000000000010000000), import of service RCM (00000000100000000000) or profit margin self invoice (00000000001000000000)</assert>
     </rule>
 
     <rule context="/pxs:TaxData/pxs:ReportedTransaction/pxs:ReportedDocument/cac:AccountingSupplierParty/cac:Party/cac:PartyTaxScheme">

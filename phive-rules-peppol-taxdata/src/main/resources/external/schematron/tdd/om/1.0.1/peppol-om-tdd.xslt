@@ -196,6 +196,14 @@
   <xsl:variable name="cl_rr" select="' 01 02 '" />
   <xsl:variable name="cl_currency" select="' OMR AFN ALL AMD AOA ARS AUD AWG AZN BAM BBD BDT BHD BIF BMD BND BOB BOV BRL BSD BTN BWP BYN BZD CAD CDF CHE CHF CHW CLF CLP CNH CNY COP COU CRC CUP CVE CZK DJF DKK DOP DZD EGP ERN ETB EUR FJD FKP GBP GEL GHS GIP GMD GNF GTQ GYD HKD HNL HTG HUF IDR ILS INR IQD IRR ISK JMD JOD JPY KES KGS KHR KMF KPW KRW KWD KYD KZT LAK LBP LKR LRD LSL LYD MAD MDL MGA MKD MMK MNT MOP MRU MUR MVR MWK MXN MXV MYR MZN NAD NGN NIO NOK NPR NZD OMR PAB PEN PGK PHP PKR PLN PYG QAR RON RSD RUB RWF SAR SBD SCR SDG SEK SGD SHP SLE SOS SRD SSP STD SVC SYP SZL THB TJS TMT TND TOP TRY TTD TWD TZS UAH UGX USD USN UYI UYU UYW UZS VES VED VND VUV WST XAF XAG XAU XBA XBB XBC XBD XCD XCG XDR XOF XPD XPF XPT XSU XTS XUA XXX YER ZAR ZMW ZWG '" />
   <xsl:variable name="regex_pidscheme" select="'^[0-9]{4}$'" />
+  <xsl:variable name="srcDoc" select="/pxs:TaxData/pxs:ReportedTransaction/pxs:SourceDocument/cec:ExtensionContent/inv:Invoice                             | /pxs:TaxData/pxs:ReportedTransaction/pxs:SourceDocument/cec:ExtensionContent/cn:CreditNote" />
+  <xsl:variable name="txnType" select="normalize-space(($srcDoc/cbc:InvoiceTypeCode/@name | $srcDoc/cbc:CreditNoteTypeCode/@name)[1])" />
+  <xsl:variable name="isValidBitString" select="matches($txnType, '^[01]{20}$')" />
+  <xsl:variable name="txnSafe" select="if ($isValidBitString) then $txnType else 'XXXXXXXXXXXXXXXXXXXX'" />
+  <xsl:variable name="isImportRCM" select="substring($txnSafe,9,1) = '1'" />
+  <xsl:variable name="isProfitMarginSelf" select="substring($txnSafe,11,1) = '1'" />
+  <xsl:variable name="isImportGoods" select="substring($txnSafe,13,1) = '1'" />
+  <xsl:variable name="sellerTaxIdExempt" select="$isImportGoods or $isImportRCM or $isProfitMarginSelf" />
 
 	<!--RULE -->
 <xsl:template match="/pxs:TaxData" mode="M10" priority="1020">
@@ -990,19 +998,15 @@
 
 		<!--ASSERT -->
 <xsl:choose>
-      <xsl:when test="$ptsCount = 1" />
+      <xsl:when test="if ($sellerTaxIdExempt) then ($ptsCount &lt;= 1) else ($ptsCount = 1)" />
       <xsl:otherwise>
-        <svrl:failed-assert test="$ptsCount = 1">
+        <svrl:failed-assert test="if ($sellerTaxIdExempt) then ($ptsCount &lt;= 1) else ($ptsCount = 1)">
           <xsl:attribute name="id">ibr-tdd-42</xsl:attribute>
           <xsl:attribute name="flag">fatal</xsl:attribute>
           <xsl:attribute name="location">
             <xsl:apply-templates mode="schematron-select-full-path" select="." />
           </xsl:attribute>
-          <svrl:text>[ibr-tdd-42] Exactly 1 <xsl:text />
-            <xsl:value-of select="$currentPath" />
-            <xsl:text />/cac:PartyTaxScheme element MUST be present but found <xsl:text />
-            <xsl:value-of select="$ptsCount" />
-            <xsl:text /> elements</svrl:text>
+          <svrl:text>[ibr-tdd-42] Seller tax identifier (IBT-031) MUST be mandatory in all cases except when Invoice transaction type (BTOM-001) is an invoice for import of goods (00000000000010000000), import of service RCM (00000000100000000000) or profit margin self invoice (00000000001000000000)</svrl:text>
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
