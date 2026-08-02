@@ -16,6 +16,7 @@
  */
 package com.helger.phive.rules.api;
 
+import org.jspecify.annotations.NonNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -40,7 +41,7 @@ public final class PhiveRulesTestHelper
   private PhiveRulesTestHelper ()
   {}
 
-  public static boolean isContentCorrect (final IValidationExecutor <IValidationSourceXML> aVE)
+  public static boolean isContentCorrect (@NonNull final IValidationExecutor <IValidationSourceXML> aVE)
   {
     final IValidationArtefact aVA = aVE.getValidationArtefact ();
     final IReadableResource aRes = aVA.getRuleResource ();
@@ -49,6 +50,7 @@ public final class PhiveRulesTestHelper
     {
       // Don't check XSD, because the dependency list will is not correctly
       // available
+      // TODO try to parse as XML at least?
       if (false)
       {
         return XMLSchemaCache.getInstance ().getSchema (aRes) != null;
