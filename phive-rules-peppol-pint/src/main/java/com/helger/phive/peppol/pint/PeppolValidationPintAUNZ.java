@@ -30,6 +30,7 @@ import com.helger.io.resource.ClassPathResource;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
 import com.helger.phive.rules.api.PhiveRulesHelper;
 import com.helger.phive.rules.api.PhiveRulesUBLHelper;
+import com.helger.phive.rules.foundation.DVRHelper;
 import com.helger.phive.xml.executorset.VesXmlBuilder;
 import com.helger.phive.xml.source.IValidationSourceXML;
 import com.helger.ubl21.UBL21Marshaller;
@@ -47,96 +48,56 @@ public final class PeppolValidationPintAUNZ
 
   // 1.0.1
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OPENPEPPOL_AUNZ_PINT_UBL_INVOICE_1_0_1 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                                    "invoice",
-                                                                                                                    "1.0.1");
+  public static final DVRCoordinate VID_OPENPEPPOL_AUNZ_PINT_UBL_INVOICE_1_0_1 = DVRHelper.createCoordinate (GROUP_ID, "invoice", "1.0.1");
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OPENPEPPOL_AUNZ_PINT_UBL_CREDIT_NOTE_1_0_1 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                                        "creditnote",
-                                                                                                                        "1.0.1");
+  public static final DVRCoordinate VID_OPENPEPPOL_AUNZ_PINT_UBL_CREDIT_NOTE_1_0_1 = DVRHelper.createCoordinate (GROUP_ID, "creditnote", "1.0.1");
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OPENPEPPOL_AUNZ_PINT_UBL_INVOICE_SELF_BILLING_1_0_1 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                                                 "invoice-self-billing",
-                                                                                                                                 "1.0.1");
+  public static final DVRCoordinate VID_OPENPEPPOL_AUNZ_PINT_UBL_INVOICE_SELF_BILLING_1_0_1 = DVRHelper.createCoordinate (GROUP_ID, "invoice-self-billing", "1.0.1");
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OPENPEPPOL_AUNZ_PINT_UBL_CREDIT_NOTE_SELF_BILLING_1_0_1 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                                                     "creditnote-self-billing",
-                                                                                                                                     "1.0.1");
+  public static final DVRCoordinate VID_OPENPEPPOL_AUNZ_PINT_UBL_CREDIT_NOTE_SELF_BILLING_1_0_1 = DVRHelper.createCoordinate (GROUP_ID, "creditnote-self-billing", "1.0.1");
 
   // 1.1.0
   public static final LocalDate V1_1_0_VALID_PER = PDTFactory.createLocalDate (2025, Month.MARCH, 10);
   public static final OffsetDateTime V1_1_0_VALID_PER_UTC = PDTFactory.createOffsetDateTimeUTC (V1_1_0_VALID_PER);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OPENPEPPOL_AUNZ_PINT_UBL_INVOICE_1_1_0 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                                    "invoice",
-                                                                                                                    "1.1.0");
+  public static final DVRCoordinate VID_OPENPEPPOL_AUNZ_PINT_UBL_INVOICE_1_1_0 = DVRHelper.createCoordinate (GROUP_ID, "invoice", "1.1.0");
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OPENPEPPOL_AUNZ_PINT_UBL_CREDIT_NOTE_1_1_0 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                                        "creditnote",
-                                                                                                                        "1.1.0");
+  public static final DVRCoordinate VID_OPENPEPPOL_AUNZ_PINT_UBL_CREDIT_NOTE_1_1_0 = DVRHelper.createCoordinate (GROUP_ID, "creditnote", "1.1.0");
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OPENPEPPOL_AUNZ_PINT_UBL_INVOICE_SELF_BILLING_1_1_0 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                                                 "invoice-self-billing",
-                                                                                                                                 "1.1.0");
+  public static final DVRCoordinate VID_OPENPEPPOL_AUNZ_PINT_UBL_INVOICE_SELF_BILLING_1_1_0 = DVRHelper.createCoordinate (GROUP_ID, "invoice-self-billing", "1.1.0");
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OPENPEPPOL_AUNZ_PINT_UBL_CREDIT_NOTE_SELF_BILLING_1_1_0 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                                                     "creditnote-self-billing",
-                                                                                                                                     "1.1.0");
+  public static final DVRCoordinate VID_OPENPEPPOL_AUNZ_PINT_UBL_CREDIT_NOTE_SELF_BILLING_1_1_0 = DVRHelper.createCoordinate (GROUP_ID, "creditnote-self-billing", "1.1.0");
 
   // 1.1.1
   public static final LocalDate V1_1_1_VALID_PER = PDTFactory.createLocalDate (2025, Month.SEPTEMBER, 15);
   public static final OffsetDateTime V1_1_1_VALID_PER_UTC = PDTFactory.createOffsetDateTimeUTC (V1_1_1_VALID_PER);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OPENPEPPOL_AUNZ_PINT_UBL_INVOICE_1_1_1 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                                    "invoice",
-                                                                                                                    "1.1.1");
+  public static final DVRCoordinate VID_OPENPEPPOL_AUNZ_PINT_UBL_INVOICE_1_1_1 = DVRHelper.createCoordinate (GROUP_ID, "invoice", "1.1.1");
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OPENPEPPOL_AUNZ_PINT_UBL_CREDIT_NOTE_1_1_1 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                                        "creditnote",
-                                                                                                                        "1.1.1");
+  public static final DVRCoordinate VID_OPENPEPPOL_AUNZ_PINT_UBL_CREDIT_NOTE_1_1_1 = DVRHelper.createCoordinate (GROUP_ID, "creditnote", "1.1.1");
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OPENPEPPOL_AUNZ_PINT_UBL_INVOICE_SELF_BILLING_1_1_1 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                                                 "invoice-self-billing",
-                                                                                                                                 "1.1.1");
+  public static final DVRCoordinate VID_OPENPEPPOL_AUNZ_PINT_UBL_INVOICE_SELF_BILLING_1_1_1 = DVRHelper.createCoordinate (GROUP_ID, "invoice-self-billing", "1.1.1");
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OPENPEPPOL_AUNZ_PINT_UBL_CREDIT_NOTE_SELF_BILLING_1_1_1 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                                                     "creditnote-self-billing",
-                                                                                                                                     "1.1.1");
+  public static final DVRCoordinate VID_OPENPEPPOL_AUNZ_PINT_UBL_CREDIT_NOTE_SELF_BILLING_1_1_1 = DVRHelper.createCoordinate (GROUP_ID, "creditnote-self-billing", "1.1.1");
   // 1.1.2 - per 2026-03-09
   public static final LocalDate V1_1_2_VALID_PER = PDTFactory.createLocalDate (2026, Month.MARCH, 9);
   public static final OffsetDateTime V1_1_2_VALID_PER_UTC = PDTFactory.createOffsetDateTimeUTC (V1_1_2_VALID_PER);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OPENPEPPOL_AUNZ_PINT_UBL_INVOICE_1_1_2 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                                    "invoice",
-                                                                                                                    "1.1.2");
+  public static final DVRCoordinate VID_OPENPEPPOL_AUNZ_PINT_UBL_INVOICE_1_1_2 = DVRHelper.createCoordinate (GROUP_ID, "invoice", "1.1.2");
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OPENPEPPOL_AUNZ_PINT_UBL_CREDIT_NOTE_1_1_2 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                                        "creditnote",
-                                                                                                                        "1.1.2");
+  public static final DVRCoordinate VID_OPENPEPPOL_AUNZ_PINT_UBL_CREDIT_NOTE_1_1_2 = DVRHelper.createCoordinate (GROUP_ID, "creditnote", "1.1.2");
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OPENPEPPOL_AUNZ_PINT_UBL_INVOICE_SELF_BILLING_1_1_2 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                                                 "invoice-self-billing",
-                                                                                                                                 "1.1.2");
+  public static final DVRCoordinate VID_OPENPEPPOL_AUNZ_PINT_UBL_INVOICE_SELF_BILLING_1_1_2 = DVRHelper.createCoordinate (GROUP_ID, "invoice-self-billing", "1.1.2");
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OPENPEPPOL_AUNZ_PINT_UBL_CREDIT_NOTE_SELF_BILLING_1_1_2 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                                                     "creditnote-self-billing",
-                                                                                                                                     "1.1.2");
+  public static final DVRCoordinate VID_OPENPEPPOL_AUNZ_PINT_UBL_CREDIT_NOTE_SELF_BILLING_1_1_2 = DVRHelper.createCoordinate (GROUP_ID, "creditnote-self-billing", "1.1.2");
 
   // 1.1.3 - per 2026-05-21
   public static final LocalDate V1_1_3_VALID_PER = PDTFactory.createLocalDate (2026, Month.MAY, 21);
   public static final OffsetDateTime V1_1_3_VALID_PER_UTC = PDTFactory.createOffsetDateTimeUTC (V1_1_3_VALID_PER);
-  public static final DVRCoordinate VID_OPENPEPPOL_AUNZ_PINT_UBL_INVOICE_1_1_3 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                                    "invoice",
-                                                                                                                    "1.1.3");
-  public static final DVRCoordinate VID_OPENPEPPOL_AUNZ_PINT_UBL_CREDIT_NOTE_1_1_3 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                                        "creditnote",
-                                                                                                                        "1.1.3");
-  public static final DVRCoordinate VID_OPENPEPPOL_AUNZ_PINT_UBL_INVOICE_SELF_BILLING_1_1_3 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                                                 "invoice-self-billing",
-                                                                                                                                 "1.1.3");
-  public static final DVRCoordinate VID_OPENPEPPOL_AUNZ_PINT_UBL_CREDIT_NOTE_SELF_BILLING_1_1_3 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                                                     "creditnote-self-billing",
-                                                                                                                                     "1.1.3");
+  public static final DVRCoordinate VID_OPENPEPPOL_AUNZ_PINT_UBL_INVOICE_1_1_3 = DVRHelper.createCoordinate (GROUP_ID, "invoice", "1.1.3");
+  public static final DVRCoordinate VID_OPENPEPPOL_AUNZ_PINT_UBL_CREDIT_NOTE_1_1_3 = DVRHelper.createCoordinate (GROUP_ID, "creditnote", "1.1.3");
+  public static final DVRCoordinate VID_OPENPEPPOL_AUNZ_PINT_UBL_INVOICE_SELF_BILLING_1_1_3 = DVRHelper.createCoordinate (GROUP_ID, "invoice-self-billing", "1.1.3");
+  public static final DVRCoordinate VID_OPENPEPPOL_AUNZ_PINT_UBL_CREDIT_NOTE_SELF_BILLING_1_1_3 = DVRHelper.createCoordinate (GROUP_ID, "creditnote-self-billing", "1.1.3");
 
   private PeppolValidationPintAUNZ ()
   {}

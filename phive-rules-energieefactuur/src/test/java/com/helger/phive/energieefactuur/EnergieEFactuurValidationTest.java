@@ -24,7 +24,6 @@ import com.helger.io.resource.IReadableResource;
 import com.helger.phive.api.executor.IValidationExecutor;
 import com.helger.phive.api.executorset.IValidationExecutorSet;
 import com.helger.phive.energieefactuur.mock.CTestFiles;
-import com.helger.phive.rules.api.PhiveRulesTestHelper;
 import com.helger.phive.xml.source.IValidationSourceXML;
 
 /**
@@ -50,6 +49,6 @@ public final class EnergieEFactuurValidationTest
   {
     for (final IValidationExecutorSet <IValidationSourceXML> aVES : CTestFiles.VES_REGISTRY.getAll ())
       for (final IValidationExecutor <IValidationSourceXML> aVE : aVES)
-        assertTrue (PhiveRulesTestHelper.isContentCorrect (aVE));
+        assertTrue (com.helger.phive.rules.foundation.PhiveRulesTestHelper.isContentCorrect (aVE));
   }
 }

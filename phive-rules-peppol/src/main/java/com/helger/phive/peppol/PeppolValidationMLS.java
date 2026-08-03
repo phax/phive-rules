@@ -23,8 +23,8 @@ import com.helger.base.enforce.ValueEnforcer;
 import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.io.resource.ClassPathResource;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
-import com.helger.phive.rules.api.PhiveRulesHelper;
 import com.helger.phive.rules.api.PhiveRulesUBLHelper;
+import com.helger.phive.rules.foundation.DVRHelper;
 import com.helger.phive.xml.executorset.VesXmlBuilder;
 import com.helger.phive.xml.source.IValidationSourceXML;
 import com.helger.ubl21.UBL21Marshaller;
@@ -40,15 +40,11 @@ public final class PeppolValidationMLS
 {
   public static final String GROUP_ID = "org.peppol";
 
-  public static final DVRCoordinate VID_OPENPEPPOL_MLS_V100 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                 "mls",
-                                                                                                 "1.0.0");
+  public static final DVRCoordinate VID_OPENPEPPOL_MLS_V100 = DVRHelper.createCoordinate (GROUP_ID, "mls", "1.0.0");
   /**
    * @since 4.4.2
    */
-  public static final DVRCoordinate VID_OPENPEPPOL_MLS_V101 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                 "mls",
-                                                                                                 "1.0.1");
+  public static final DVRCoordinate VID_OPENPEPPOL_MLS_V101 = DVRHelper.createCoordinate (GROUP_ID, "mls", "1.0.1");
 
   private PeppolValidationMLS ()
   {}

@@ -23,8 +23,8 @@ import com.helger.base.enforce.ValueEnforcer;
 import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.io.resource.ClassPathResource;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
-import com.helger.phive.rules.api.PhiveRulesHelper;
 import com.helger.phive.rules.api.PhiveRulesUBLHelper;
+import com.helger.phive.rules.foundation.DVRHelper;
 import com.helger.phive.xml.executorset.VesXmlBuilder;
 import com.helger.phive.xml.source.IValidationSourceXML;
 import com.helger.ubl21.UBL21Marshaller;
@@ -41,13 +41,9 @@ public final class CIUS_PTValidation
 
   // Version 2.0.0
   @Deprecated
-  public static final DVRCoordinate VID_CIUS_PT_UBL_CREDITNOTE_200 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                        "ubl-creditnote",
-                                                                                                        "2.0.0");
+  public static final DVRCoordinate VID_CIUS_PT_UBL_CREDITNOTE_200 = DVRHelper.createCoordinate (GROUP_ID, "ubl-creditnote", "2.0.0");
   @Deprecated
-  public static final DVRCoordinate VID_CIUS_PT_UBL_INVOICE_200 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                     "ubl-invoice",
-                                                                                                     "2.0.0");
+  public static final DVRCoordinate VID_CIUS_PT_UBL_INVOICE_200 = DVRHelper.createCoordinate (GROUP_ID, "ubl-invoice", "2.0.0");
   /**
    * @deprecated Use {@link #VID_CIUS_PT_UBL_CREDITNOTE_200} instead
    */
@@ -60,12 +56,8 @@ public final class CIUS_PTValidation
   public static final DVRCoordinate VID_TEAPPS_UBL_INVOICE_200 = VID_CIUS_PT_UBL_INVOICE_200;
 
   // Version 2.1.1
-  public static final DVRCoordinate VID_CIUS_PT_UBL_CREDITNOTE_211 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                        "ubl-creditnote",
-                                                                                                        "2.1.1");
-  public static final DVRCoordinate VID_CIUS_PT_UBL_INVOICE_211 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                     "ubl-invoice",
-                                                                                                     "2.1.1");
+  public static final DVRCoordinate VID_CIUS_PT_UBL_CREDITNOTE_211 = DVRHelper.createCoordinate (GROUP_ID, "ubl-creditnote", "2.1.1");
+  public static final DVRCoordinate VID_CIUS_PT_UBL_INVOICE_211 = DVRHelper.createCoordinate (GROUP_ID, "ubl-invoice", "2.1.1");
 
   private CIUS_PTValidation ()
   {}

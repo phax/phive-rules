@@ -26,6 +26,7 @@ import com.helger.io.resource.IReadableResource;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
 import com.helger.phive.rules.api.PhiveRulesHelper;
 import com.helger.phive.rules.api.PhiveRulesUBLHelper;
+import com.helger.phive.rules.foundation.DVRHelper;
 import com.helger.phive.xml.executorset.VesXmlBuilder;
 import com.helger.phive.xml.source.IValidationSourceXML;
 import com.helger.ubl21.UBL21Marshaller;
@@ -49,33 +50,21 @@ public final class PeppolLegacyValidationSG
 
   // 1.0.0 aka 1
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OPENPEPPOL_BIS3_SG_UBL_INVOICE_100 = PhiveRulesHelper.createCoordinate ("eu.peppol.bis3.sg.ubl",
-                                                                                                                "invoice",
-                                                                                                                "1");
+  public static final DVRCoordinate VID_OPENPEPPOL_BIS3_SG_UBL_INVOICE_100 = DVRHelper.createCoordinate ("eu.peppol.bis3.sg.ubl", "invoice", "1");
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OPENPEPPOL_BIS3_SG_UBL_CREDIT_NOTE_100 = PhiveRulesHelper.createCoordinate ("eu.peppol.bis3.sg.ubl",
-                                                                                                                    "creditnote",
-                                                                                                                    "1");
+  public static final DVRCoordinate VID_OPENPEPPOL_BIS3_SG_UBL_CREDIT_NOTE_100 = DVRHelper.createCoordinate ("eu.peppol.bis3.sg.ubl", "creditnote", "1");
 
   // 1.0.2
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OPENPEPPOL_BIS3_SG_UBL_INVOICE_102 = PhiveRulesHelper.createCoordinate ("eu.peppol.bis3.sg.ubl",
-                                                                                                                "invoice",
-                                                                                                                "1.0.2");
+  public static final DVRCoordinate VID_OPENPEPPOL_BIS3_SG_UBL_INVOICE_102 = DVRHelper.createCoordinate ("eu.peppol.bis3.sg.ubl", "invoice", "1.0.2");
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OPENPEPPOL_BIS3_SG_UBL_CREDIT_NOTE_102 = PhiveRulesHelper.createCoordinate ("eu.peppol.bis3.sg.ubl",
-                                                                                                                    "creditnote",
-                                                                                                                    "1.0.2");
+  public static final DVRCoordinate VID_OPENPEPPOL_BIS3_SG_UBL_CREDIT_NOTE_102 = DVRHelper.createCoordinate ("eu.peppol.bis3.sg.ubl", "creditnote", "1.0.2");
 
   // 1.0.3
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OPENPEPPOL_BIS3_SG_UBL_INVOICE_103 = PhiveRulesHelper.createCoordinate ("eu.peppol.bis3.sg.ubl",
-                                                                                                                "invoice",
-                                                                                                                "1.0.3");
+  public static final DVRCoordinate VID_OPENPEPPOL_BIS3_SG_UBL_INVOICE_103 = DVRHelper.createCoordinate ("eu.peppol.bis3.sg.ubl", "invoice", "1.0.3");
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OPENPEPPOL_BIS3_SG_UBL_CREDIT_NOTE_103 = PhiveRulesHelper.createCoordinate ("eu.peppol.bis3.sg.ubl",
-                                                                                                                    "creditnote",
-                                                                                                                    "1.0.3");
+  public static final DVRCoordinate VID_OPENPEPPOL_BIS3_SG_UBL_CREDIT_NOTE_103 = DVRHelper.createCoordinate ("eu.peppol.bis3.sg.ubl", "creditnote", "1.0.3");
 
   private PeppolLegacyValidationSG ()
   {}

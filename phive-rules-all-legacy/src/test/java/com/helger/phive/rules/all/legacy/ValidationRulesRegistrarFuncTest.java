@@ -27,12 +27,12 @@ import org.junit.Test;
 import com.helger.phive.api.executorset.IValidationExecutorSet;
 import com.helger.phive.api.executorset.ValidationExecutorSetRegistry;
 import com.helger.phive.rules.all.PhiveRulesValidation;
-import com.helger.phive.rules.api.ValidationRulesRegistrar;
+import com.helger.phive.rules.foundation.ValidationRulesRegistrar;
 import com.helger.phive.xml.source.IValidationSourceXML;
 
 /**
- * Test class for class {@link ValidationRulesRegistrar}. Verifies that the SPI based registration of
- * all validation rules yields the same set of validation execution sets as the imperative
+ * Test class for class {@link ValidationRulesRegistrar}. Verifies that the SPI based registration
+ * of all validation rules yields the same set of validation execution sets as the imperative
  * aggregators, and that the automatic dependency ordering (retry) resolves correctly.
  *
  * @author Philip Helger

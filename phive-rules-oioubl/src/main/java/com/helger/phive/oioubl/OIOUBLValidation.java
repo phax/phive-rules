@@ -30,8 +30,8 @@ import com.helger.datetime.helper.PDTFactory;
 import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.io.resource.ClassPathResource;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
-import com.helger.phive.rules.api.PhiveRulesHelper;
 import com.helger.phive.rules.api.PhiveRulesUBLHelper;
+import com.helger.phive.rules.foundation.DVRHelper;
 import com.helger.phive.xml.executorset.VesXmlBuilder;
 import com.helger.phive.xml.source.IValidationSourceXML;
 import com.helger.ubl20.CUBL20;
@@ -56,735 +56,383 @@ public final class OIOUBLValidation
   // 1.12.3
   private static final String VERSION_1_12_3 = "1.12.3";
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_APPLICATION_RESPONSE_1_12_3 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                                "application-response",
-                                                                                                                VERSION_1_12_3);
+  public static final DVRCoordinate VID_OIOUBL_APPLICATION_RESPONSE_1_12_3 = DVRHelper.createCoordinate (GROUPID, "application-response", VERSION_1_12_3);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_CATALOGUE_1_12_3 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                     "catalogue",
-                                                                                                     VERSION_1_12_3);
+  public static final DVRCoordinate VID_OIOUBL_CATALOGUE_1_12_3 = DVRHelper.createCoordinate (GROUPID, "catalogue", VERSION_1_12_3);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_CATALOGUE_DELETION_1_12_3 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                              "catalogue-deletion",
-                                                                                                              VERSION_1_12_3);
+  public static final DVRCoordinate VID_OIOUBL_CATALOGUE_DELETION_1_12_3 = DVRHelper.createCoordinate (GROUPID, "catalogue-deletion", VERSION_1_12_3);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_CATALOGUE_ITEM_SPECIFICATION_UPDATE_1_12_3 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                                               "catalogue-item-specification-update",
-                                                                                                                               VERSION_1_12_3);
+  public static final DVRCoordinate VID_OIOUBL_CATALOGUE_ITEM_SPECIFICATION_UPDATE_1_12_3 = DVRHelper.createCoordinate (GROUPID, "catalogue-item-specification-update", VERSION_1_12_3);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_CATALOGUE_PRICING_UPDATE_1_12_3 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                                    "catalogue-pricing-update",
-                                                                                                                    VERSION_1_12_3);
+  public static final DVRCoordinate VID_OIOUBL_CATALOGUE_PRICING_UPDATE_1_12_3 = DVRHelper.createCoordinate (GROUPID, "catalogue-pricing-update", VERSION_1_12_3);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_CATALOGUE_REQUEST_1_12_3 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                             "catalogue-request",
-                                                                                                             VERSION_1_12_3);
+  public static final DVRCoordinate VID_OIOUBL_CATALOGUE_REQUEST_1_12_3 = DVRHelper.createCoordinate (GROUPID, "catalogue-request", VERSION_1_12_3);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_CREDIT_NOTE_1_12_3 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                       "credit-note",
-                                                                                                       VERSION_1_12_3);
+  public static final DVRCoordinate VID_OIOUBL_CREDIT_NOTE_1_12_3 = DVRHelper.createCoordinate (GROUPID, "credit-note", VERSION_1_12_3);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_INVOICE_1_12_3 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                   "invoice",
-                                                                                                   VERSION_1_12_3);
+  public static final DVRCoordinate VID_OIOUBL_INVOICE_1_12_3 = DVRHelper.createCoordinate (GROUPID, "invoice", VERSION_1_12_3);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_ORDER_1_12_3 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                 "order",
-                                                                                                 VERSION_1_12_3);
+  public static final DVRCoordinate VID_OIOUBL_ORDER_1_12_3 = DVRHelper.createCoordinate (GROUPID, "order", VERSION_1_12_3);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_ORDER_CANCELLATION_1_12_3 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                              "order-cancellation",
-                                                                                                              VERSION_1_12_3);
+  public static final DVRCoordinate VID_OIOUBL_ORDER_CANCELLATION_1_12_3 = DVRHelper.createCoordinate (GROUPID, "order-cancellation", VERSION_1_12_3);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_ORDER_CHANGE_1_12_3 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                        "order-change",
-                                                                                                        VERSION_1_12_3);
+  public static final DVRCoordinate VID_OIOUBL_ORDER_CHANGE_1_12_3 = DVRHelper.createCoordinate (GROUPID, "order-change", VERSION_1_12_3);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_ORDER_RESPONSE_1_12_3 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                          "order-response",
-                                                                                                          VERSION_1_12_3);
+  public static final DVRCoordinate VID_OIOUBL_ORDER_RESPONSE_1_12_3 = DVRHelper.createCoordinate (GROUPID, "order-response", VERSION_1_12_3);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_ORDER_RESPONSE_SIMPLE_1_12_3 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                                 "order-response-simple",
-                                                                                                                 VERSION_1_12_3);
+  public static final DVRCoordinate VID_OIOUBL_ORDER_RESPONSE_SIMPLE_1_12_3 = DVRHelper.createCoordinate (GROUPID, "order-response-simple", VERSION_1_12_3);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_REMINDER_1_12_3 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                    "reminder",
-                                                                                                    VERSION_1_12_3);
+  public static final DVRCoordinate VID_OIOUBL_REMINDER_1_12_3 = DVRHelper.createCoordinate (GROUPID, "reminder", VERSION_1_12_3);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_STATEMENT_1_12_3 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                     "statement",
-                                                                                                     VERSION_1_12_3);
+  public static final DVRCoordinate VID_OIOUBL_STATEMENT_1_12_3 = DVRHelper.createCoordinate (GROUPID, "statement", VERSION_1_12_3);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_UTILITY_STATEMENT_1_12_3 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                             "utility-statement",
-                                                                                                             VERSION_1_12_3);
+  public static final DVRCoordinate VID_OIOUBL_UTILITY_STATEMENT_1_12_3 = DVRHelper.createCoordinate (GROUPID, "utility-statement", VERSION_1_12_3);
 
   // 1.13.0
   private static final String VERSION_1_13_0 = "1.13.0";
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_APPLICATION_RESPONSE_1_13_0 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                                "application-response",
-                                                                                                                VERSION_1_13_0);
+  public static final DVRCoordinate VID_OIOUBL_APPLICATION_RESPONSE_1_13_0 = DVRHelper.createCoordinate (GROUPID, "application-response", VERSION_1_13_0);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_CATALOGUE_1_13_0 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                     "catalogue",
-                                                                                                     VERSION_1_13_0);
+  public static final DVRCoordinate VID_OIOUBL_CATALOGUE_1_13_0 = DVRHelper.createCoordinate (GROUPID, "catalogue", VERSION_1_13_0);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_CATALOGUE_DELETION_1_13_0 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                              "catalogue-deletion",
-                                                                                                              VERSION_1_13_0);
+  public static final DVRCoordinate VID_OIOUBL_CATALOGUE_DELETION_1_13_0 = DVRHelper.createCoordinate (GROUPID, "catalogue-deletion", VERSION_1_13_0);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_CATALOGUE_ITEM_SPECIFICATION_UPDATE_1_13_0 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                                               "catalogue-item-specification-update",
-                                                                                                                               VERSION_1_13_0);
+  public static final DVRCoordinate VID_OIOUBL_CATALOGUE_ITEM_SPECIFICATION_UPDATE_1_13_0 = DVRHelper.createCoordinate (GROUPID, "catalogue-item-specification-update", VERSION_1_13_0);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_CATALOGUE_PRICING_UPDATE_1_13_0 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                                    "catalogue-pricing-update",
-                                                                                                                    VERSION_1_13_0);
+  public static final DVRCoordinate VID_OIOUBL_CATALOGUE_PRICING_UPDATE_1_13_0 = DVRHelper.createCoordinate (GROUPID, "catalogue-pricing-update", VERSION_1_13_0);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_CATALOGUE_REQUEST_1_13_0 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                             "catalogue-request",
-                                                                                                             VERSION_1_13_0);
+  public static final DVRCoordinate VID_OIOUBL_CATALOGUE_REQUEST_1_13_0 = DVRHelper.createCoordinate (GROUPID, "catalogue-request", VERSION_1_13_0);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_CREDIT_NOTE_1_13_0 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                       "credit-note",
-                                                                                                       VERSION_1_13_0);
+  public static final DVRCoordinate VID_OIOUBL_CREDIT_NOTE_1_13_0 = DVRHelper.createCoordinate (GROUPID, "credit-note", VERSION_1_13_0);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_INVOICE_1_13_0 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                   "invoice",
-                                                                                                   VERSION_1_13_0);
+  public static final DVRCoordinate VID_OIOUBL_INVOICE_1_13_0 = DVRHelper.createCoordinate (GROUPID, "invoice", VERSION_1_13_0);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_ORDER_1_13_0 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                 "order",
-                                                                                                 VERSION_1_13_0);
+  public static final DVRCoordinate VID_OIOUBL_ORDER_1_13_0 = DVRHelper.createCoordinate (GROUPID, "order", VERSION_1_13_0);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_ORDER_CANCELLATION_1_13_0 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                              "order-cancellation",
-                                                                                                              VERSION_1_13_0);
+  public static final DVRCoordinate VID_OIOUBL_ORDER_CANCELLATION_1_13_0 = DVRHelper.createCoordinate (GROUPID, "order-cancellation", VERSION_1_13_0);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_ORDER_CHANGE_1_13_0 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                        "order-change",
-                                                                                                        VERSION_1_13_0);
+  public static final DVRCoordinate VID_OIOUBL_ORDER_CHANGE_1_13_0 = DVRHelper.createCoordinate (GROUPID, "order-change", VERSION_1_13_0);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_ORDER_RESPONSE_1_13_0 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                          "order-response",
-                                                                                                          VERSION_1_13_0);
+  public static final DVRCoordinate VID_OIOUBL_ORDER_RESPONSE_1_13_0 = DVRHelper.createCoordinate (GROUPID, "order-response", VERSION_1_13_0);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_ORDER_RESPONSE_SIMPLE_1_13_0 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                                 "order-response-simple",
-                                                                                                                 VERSION_1_13_0);
+  public static final DVRCoordinate VID_OIOUBL_ORDER_RESPONSE_SIMPLE_1_13_0 = DVRHelper.createCoordinate (GROUPID, "order-response-simple", VERSION_1_13_0);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_REMINDER_1_13_0 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                    "reminder",
-                                                                                                    VERSION_1_13_0);
+  public static final DVRCoordinate VID_OIOUBL_REMINDER_1_13_0 = DVRHelper.createCoordinate (GROUPID, "reminder", VERSION_1_13_0);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_STATEMENT_1_13_0 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                     "statement",
-                                                                                                     VERSION_1_13_0);
+  public static final DVRCoordinate VID_OIOUBL_STATEMENT_1_13_0 = DVRHelper.createCoordinate (GROUPID, "statement", VERSION_1_13_0);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_UTILITY_STATEMENT_1_13_0 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                             "utility-statement",
-                                                                                                             VERSION_1_13_0);
+  public static final DVRCoordinate VID_OIOUBL_UTILITY_STATEMENT_1_13_0 = DVRHelper.createCoordinate (GROUPID, "utility-statement", VERSION_1_13_0);
 
   // 1.13.2
   private static final String VERSION_1_13_2 = "1.13.2";
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_APPLICATION_RESPONSE_1_13_2 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                                "application-response",
-                                                                                                                VERSION_1_13_2);
+  public static final DVRCoordinate VID_OIOUBL_APPLICATION_RESPONSE_1_13_2 = DVRHelper.createCoordinate (GROUPID, "application-response", VERSION_1_13_2);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_CATALOGUE_1_13_2 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                     "catalogue",
-                                                                                                     VERSION_1_13_2);
+  public static final DVRCoordinate VID_OIOUBL_CATALOGUE_1_13_2 = DVRHelper.createCoordinate (GROUPID, "catalogue", VERSION_1_13_2);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_CATALOGUE_DELETION_1_13_2 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                              "catalogue-deletion",
-                                                                                                              VERSION_1_13_2);
+  public static final DVRCoordinate VID_OIOUBL_CATALOGUE_DELETION_1_13_2 = DVRHelper.createCoordinate (GROUPID, "catalogue-deletion", VERSION_1_13_2);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_CATALOGUE_ITEM_SPECIFICATION_UPDATE_1_13_2 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                                               "catalogue-item-specification-update",
-                                                                                                                               VERSION_1_13_2);
+  public static final DVRCoordinate VID_OIOUBL_CATALOGUE_ITEM_SPECIFICATION_UPDATE_1_13_2 = DVRHelper.createCoordinate (GROUPID, "catalogue-item-specification-update", VERSION_1_13_2);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_CATALOGUE_PRICING_UPDATE_1_13_2 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                                    "catalogue-pricing-update",
-                                                                                                                    VERSION_1_13_2);
+  public static final DVRCoordinate VID_OIOUBL_CATALOGUE_PRICING_UPDATE_1_13_2 = DVRHelper.createCoordinate (GROUPID, "catalogue-pricing-update", VERSION_1_13_2);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_CATALOGUE_REQUEST_1_13_2 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                             "catalogue-request",
-                                                                                                             VERSION_1_13_2);
+  public static final DVRCoordinate VID_OIOUBL_CATALOGUE_REQUEST_1_13_2 = DVRHelper.createCoordinate (GROUPID, "catalogue-request", VERSION_1_13_2);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_CREDIT_NOTE_1_13_2 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                       "credit-note",
-                                                                                                       VERSION_1_13_2);
+  public static final DVRCoordinate VID_OIOUBL_CREDIT_NOTE_1_13_2 = DVRHelper.createCoordinate (GROUPID, "credit-note", VERSION_1_13_2);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_INVOICE_1_13_2 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                   "invoice",
-                                                                                                   VERSION_1_13_2);
+  public static final DVRCoordinate VID_OIOUBL_INVOICE_1_13_2 = DVRHelper.createCoordinate (GROUPID, "invoice", VERSION_1_13_2);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_ORDER_1_13_2 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                 "order",
-                                                                                                 VERSION_1_13_2);
+  public static final DVRCoordinate VID_OIOUBL_ORDER_1_13_2 = DVRHelper.createCoordinate (GROUPID, "order", VERSION_1_13_2);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_ORDER_CANCELLATION_1_13_2 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                              "order-cancellation",
-                                                                                                              VERSION_1_13_2);
+  public static final DVRCoordinate VID_OIOUBL_ORDER_CANCELLATION_1_13_2 = DVRHelper.createCoordinate (GROUPID, "order-cancellation", VERSION_1_13_2);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_ORDER_CHANGE_1_13_2 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                        "order-change",
-                                                                                                        VERSION_1_13_2);
+  public static final DVRCoordinate VID_OIOUBL_ORDER_CHANGE_1_13_2 = DVRHelper.createCoordinate (GROUPID, "order-change", VERSION_1_13_2);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_ORDER_RESPONSE_1_13_2 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                          "order-response",
-                                                                                                          VERSION_1_13_2);
+  public static final DVRCoordinate VID_OIOUBL_ORDER_RESPONSE_1_13_2 = DVRHelper.createCoordinate (GROUPID, "order-response", VERSION_1_13_2);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_ORDER_RESPONSE_SIMPLE_1_13_2 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                                 "order-response-simple",
-                                                                                                                 VERSION_1_13_2);
+  public static final DVRCoordinate VID_OIOUBL_ORDER_RESPONSE_SIMPLE_1_13_2 = DVRHelper.createCoordinate (GROUPID, "order-response-simple", VERSION_1_13_2);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_REMINDER_1_13_2 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                    "reminder",
-                                                                                                    VERSION_1_13_2);
+  public static final DVRCoordinate VID_OIOUBL_REMINDER_1_13_2 = DVRHelper.createCoordinate (GROUPID, "reminder", VERSION_1_13_2);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_STATEMENT_1_13_2 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                     "statement",
-                                                                                                     VERSION_1_13_2);
+  public static final DVRCoordinate VID_OIOUBL_STATEMENT_1_13_2 = DVRHelper.createCoordinate (GROUPID, "statement", VERSION_1_13_2);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_UTILITY_STATEMENT_1_13_2 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                             "utility-statement",
-                                                                                                             VERSION_1_13_2);
+  public static final DVRCoordinate VID_OIOUBL_UTILITY_STATEMENT_1_13_2 = DVRHelper.createCoordinate (GROUPID, "utility-statement", VERSION_1_13_2);
 
   // 1.14.2
   private static final String VERSION_1_14_2 = "1.14.2";
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_APPLICATION_RESPONSE_1_14_2 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                                "application-response",
-                                                                                                                VERSION_1_14_2);
+  public static final DVRCoordinate VID_OIOUBL_APPLICATION_RESPONSE_1_14_2 = DVRHelper.createCoordinate (GROUPID, "application-response", VERSION_1_14_2);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_CATALOGUE_1_14_2 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                     "catalogue",
-                                                                                                     VERSION_1_14_2);
+  public static final DVRCoordinate VID_OIOUBL_CATALOGUE_1_14_2 = DVRHelper.createCoordinate (GROUPID, "catalogue", VERSION_1_14_2);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_CATALOGUE_DELETION_1_14_2 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                              "catalogue-deletion",
-                                                                                                              VERSION_1_14_2);
+  public static final DVRCoordinate VID_OIOUBL_CATALOGUE_DELETION_1_14_2 = DVRHelper.createCoordinate (GROUPID, "catalogue-deletion", VERSION_1_14_2);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_CATALOGUE_ITEM_SPECIFICATION_UPDATE_1_14_2 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                                               "catalogue-item-specification-update",
-                                                                                                                               VERSION_1_14_2);
+  public static final DVRCoordinate VID_OIOUBL_CATALOGUE_ITEM_SPECIFICATION_UPDATE_1_14_2 = DVRHelper.createCoordinate (GROUPID, "catalogue-item-specification-update", VERSION_1_14_2);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_CATALOGUE_PRICING_UPDATE_1_14_2 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                                    "catalogue-pricing-update",
-                                                                                                                    VERSION_1_14_2);
+  public static final DVRCoordinate VID_OIOUBL_CATALOGUE_PRICING_UPDATE_1_14_2 = DVRHelper.createCoordinate (GROUPID, "catalogue-pricing-update", VERSION_1_14_2);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_CATALOGUE_REQUEST_1_14_2 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                             "catalogue-request",
-                                                                                                             VERSION_1_14_2);
+  public static final DVRCoordinate VID_OIOUBL_CATALOGUE_REQUEST_1_14_2 = DVRHelper.createCoordinate (GROUPID, "catalogue-request", VERSION_1_14_2);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_CREDIT_NOTE_1_14_2 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                       "credit-note",
-                                                                                                       VERSION_1_14_2);
+  public static final DVRCoordinate VID_OIOUBL_CREDIT_NOTE_1_14_2 = DVRHelper.createCoordinate (GROUPID, "credit-note", VERSION_1_14_2);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_INVOICE_1_14_2 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                   "invoice",
-                                                                                                   VERSION_1_14_2);
+  public static final DVRCoordinate VID_OIOUBL_INVOICE_1_14_2 = DVRHelper.createCoordinate (GROUPID, "invoice", VERSION_1_14_2);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_ORDER_1_14_2 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                 "order",
-                                                                                                 VERSION_1_14_2);
+  public static final DVRCoordinate VID_OIOUBL_ORDER_1_14_2 = DVRHelper.createCoordinate (GROUPID, "order", VERSION_1_14_2);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_ORDER_CANCELLATION_1_14_2 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                              "order-cancellation",
-                                                                                                              VERSION_1_14_2);
+  public static final DVRCoordinate VID_OIOUBL_ORDER_CANCELLATION_1_14_2 = DVRHelper.createCoordinate (GROUPID, "order-cancellation", VERSION_1_14_2);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_ORDER_CHANGE_1_14_2 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                        "order-change",
-                                                                                                        VERSION_1_14_2);
+  public static final DVRCoordinate VID_OIOUBL_ORDER_CHANGE_1_14_2 = DVRHelper.createCoordinate (GROUPID, "order-change", VERSION_1_14_2);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_ORDER_RESPONSE_1_14_2 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                          "order-response",
-                                                                                                          VERSION_1_14_2);
+  public static final DVRCoordinate VID_OIOUBL_ORDER_RESPONSE_1_14_2 = DVRHelper.createCoordinate (GROUPID, "order-response", VERSION_1_14_2);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_ORDER_RESPONSE_SIMPLE_1_14_2 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                                 "order-response-simple",
-                                                                                                                 VERSION_1_14_2);
+  public static final DVRCoordinate VID_OIOUBL_ORDER_RESPONSE_SIMPLE_1_14_2 = DVRHelper.createCoordinate (GROUPID, "order-response-simple", VERSION_1_14_2);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_REMINDER_1_14_2 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                    "reminder",
-                                                                                                    VERSION_1_14_2);
+  public static final DVRCoordinate VID_OIOUBL_REMINDER_1_14_2 = DVRHelper.createCoordinate (GROUPID, "reminder", VERSION_1_14_2);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_STATEMENT_1_14_2 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                     "statement",
-                                                                                                     VERSION_1_14_2);
+  public static final DVRCoordinate VID_OIOUBL_STATEMENT_1_14_2 = DVRHelper.createCoordinate (GROUPID, "statement", VERSION_1_14_2);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_UTILITY_STATEMENT_1_14_2 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                             "utility-statement",
-                                                                                                             VERSION_1_14_2);
+  public static final DVRCoordinate VID_OIOUBL_UTILITY_STATEMENT_1_14_2 = DVRHelper.createCoordinate (GROUPID, "utility-statement", VERSION_1_14_2);
 
   // 1.15.0-rc
   private static final String VERSION_1_15_0_RC = "1.15.0-rc";
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_APPLICATION_RESPONSE_1_15_0_RC = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                                   "application-response",
-                                                                                                                   VERSION_1_15_0_RC);
+  public static final DVRCoordinate VID_OIOUBL_APPLICATION_RESPONSE_1_15_0_RC = DVRHelper.createCoordinate (GROUPID, "application-response", VERSION_1_15_0_RC);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_CATALOGUE_1_15_0_RC = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                        "catalogue",
-                                                                                                        VERSION_1_15_0_RC);
+  public static final DVRCoordinate VID_OIOUBL_CATALOGUE_1_15_0_RC = DVRHelper.createCoordinate (GROUPID, "catalogue", VERSION_1_15_0_RC);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_CATALOGUE_DELETION_1_15_0_RC = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                                 "catalogue-deletion",
-                                                                                                                 VERSION_1_15_0_RC);
+  public static final DVRCoordinate VID_OIOUBL_CATALOGUE_DELETION_1_15_0_RC = DVRHelper.createCoordinate (GROUPID, "catalogue-deletion", VERSION_1_15_0_RC);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_CATALOGUE_ITEM_SPECIFICATION_UPDATE_1_15_0_RC = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                                                  "catalogue-item-specification-update",
-                                                                                                                                  VERSION_1_15_0_RC);
+  public static final DVRCoordinate VID_OIOUBL_CATALOGUE_ITEM_SPECIFICATION_UPDATE_1_15_0_RC = DVRHelper.createCoordinate (GROUPID, "catalogue-item-specification-update", VERSION_1_15_0_RC);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_CATALOGUE_PRICING_UPDATE_1_15_0_RC = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                                       "catalogue-pricing-update",
-                                                                                                                       VERSION_1_15_0_RC);
+  public static final DVRCoordinate VID_OIOUBL_CATALOGUE_PRICING_UPDATE_1_15_0_RC = DVRHelper.createCoordinate (GROUPID, "catalogue-pricing-update", VERSION_1_15_0_RC);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_CATALOGUE_REQUEST_1_15_0_RC = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                                "catalogue-request",
-                                                                                                                VERSION_1_15_0_RC);
+  public static final DVRCoordinate VID_OIOUBL_CATALOGUE_REQUEST_1_15_0_RC = DVRHelper.createCoordinate (GROUPID, "catalogue-request", VERSION_1_15_0_RC);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_CREDIT_NOTE_1_15_0_RC = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                          "credit-note",
-                                                                                                          VERSION_1_15_0_RC);
+  public static final DVRCoordinate VID_OIOUBL_CREDIT_NOTE_1_15_0_RC = DVRHelper.createCoordinate (GROUPID, "credit-note", VERSION_1_15_0_RC);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_INVOICE_1_15_0_RC = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                      "invoice",
-                                                                                                      VERSION_1_15_0_RC);
+  public static final DVRCoordinate VID_OIOUBL_INVOICE_1_15_0_RC = DVRHelper.createCoordinate (GROUPID, "invoice", VERSION_1_15_0_RC);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_ORDER_1_15_0_RC = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                    "order",
-                                                                                                    VERSION_1_15_0_RC);
+  public static final DVRCoordinate VID_OIOUBL_ORDER_1_15_0_RC = DVRHelper.createCoordinate (GROUPID, "order", VERSION_1_15_0_RC);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_ORDER_CANCELLATION_1_15_0_RC = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                                 "order-cancellation",
-                                                                                                                 VERSION_1_15_0_RC);
+  public static final DVRCoordinate VID_OIOUBL_ORDER_CANCELLATION_1_15_0_RC = DVRHelper.createCoordinate (GROUPID, "order-cancellation", VERSION_1_15_0_RC);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_ORDER_CHANGE_1_15_0_RC = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                           "order-change",
-                                                                                                           VERSION_1_15_0_RC);
+  public static final DVRCoordinate VID_OIOUBL_ORDER_CHANGE_1_15_0_RC = DVRHelper.createCoordinate (GROUPID, "order-change", VERSION_1_15_0_RC);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_ORDER_RESPONSE_1_15_0_RC = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                             "order-response",
-                                                                                                             VERSION_1_15_0_RC);
+  public static final DVRCoordinate VID_OIOUBL_ORDER_RESPONSE_1_15_0_RC = DVRHelper.createCoordinate (GROUPID, "order-response", VERSION_1_15_0_RC);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_ORDER_RESPONSE_SIMPLE_1_15_0_RC = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                                    "order-response-simple",
-                                                                                                                    VERSION_1_15_0_RC);
+  public static final DVRCoordinate VID_OIOUBL_ORDER_RESPONSE_SIMPLE_1_15_0_RC = DVRHelper.createCoordinate (GROUPID, "order-response-simple", VERSION_1_15_0_RC);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_REMINDER_1_15_0_RC = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                       "reminder",
-                                                                                                       VERSION_1_15_0_RC);
+  public static final DVRCoordinate VID_OIOUBL_REMINDER_1_15_0_RC = DVRHelper.createCoordinate (GROUPID, "reminder", VERSION_1_15_0_RC);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_STATEMENT_1_15_0_RC = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                        "statement",
-                                                                                                        VERSION_1_15_0_RC);
+  public static final DVRCoordinate VID_OIOUBL_STATEMENT_1_15_0_RC = DVRHelper.createCoordinate (GROUPID, "statement", VERSION_1_15_0_RC);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_UTILITY_STATEMENT_1_15_0_RC = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                                "utility-statement",
-                                                                                                                VERSION_1_15_0_RC);
+  public static final DVRCoordinate VID_OIOUBL_UTILITY_STATEMENT_1_15_0_RC = DVRHelper.createCoordinate (GROUPID, "utility-statement", VERSION_1_15_0_RC);
 
   // 1.15.1
   private static final String VERSION_1_15_1 = "1.15.1";
   public static final LocalDate VERSION_1_15_1_VALID_PER = PDTFactory.createLocalDate (2025, Month.MAY, 15);
   public static final OffsetDateTime VERSION_1_15_1_VALID_PER_UTC = PDTFactory.createOffsetDateTimeUTC (VERSION_1_15_1_VALID_PER);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_APPLICATION_RESPONSE_1_15_1 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                                "application-response",
-                                                                                                                VERSION_1_15_1);
+  public static final DVRCoordinate VID_OIOUBL_APPLICATION_RESPONSE_1_15_1 = DVRHelper.createCoordinate (GROUPID, "application-response", VERSION_1_15_1);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_CATALOGUE_1_15_1 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                     "catalogue",
-                                                                                                     VERSION_1_15_1);
+  public static final DVRCoordinate VID_OIOUBL_CATALOGUE_1_15_1 = DVRHelper.createCoordinate (GROUPID, "catalogue", VERSION_1_15_1);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_CATALOGUE_DELETION_1_15_1 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                              "catalogue-deletion",
-                                                                                                              VERSION_1_15_1);
+  public static final DVRCoordinate VID_OIOUBL_CATALOGUE_DELETION_1_15_1 = DVRHelper.createCoordinate (GROUPID, "catalogue-deletion", VERSION_1_15_1);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_CATALOGUE_ITEM_SPECIFICATION_UPDATE_1_15_1 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                                               "catalogue-item-specification-update",
-                                                                                                                               VERSION_1_15_1);
+  public static final DVRCoordinate VID_OIOUBL_CATALOGUE_ITEM_SPECIFICATION_UPDATE_1_15_1 = DVRHelper.createCoordinate (GROUPID, "catalogue-item-specification-update", VERSION_1_15_1);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_CATALOGUE_PRICING_UPDATE_1_15_1 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                                    "catalogue-pricing-update",
-                                                                                                                    VERSION_1_15_1);
+  public static final DVRCoordinate VID_OIOUBL_CATALOGUE_PRICING_UPDATE_1_15_1 = DVRHelper.createCoordinate (GROUPID, "catalogue-pricing-update", VERSION_1_15_1);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_CATALOGUE_REQUEST_1_15_1 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                             "catalogue-request",
-                                                                                                             VERSION_1_15_1);
+  public static final DVRCoordinate VID_OIOUBL_CATALOGUE_REQUEST_1_15_1 = DVRHelper.createCoordinate (GROUPID, "catalogue-request", VERSION_1_15_1);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_CREDIT_NOTE_1_15_1 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                       "credit-note",
-                                                                                                       VERSION_1_15_1);
+  public static final DVRCoordinate VID_OIOUBL_CREDIT_NOTE_1_15_1 = DVRHelper.createCoordinate (GROUPID, "credit-note", VERSION_1_15_1);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_INVOICE_1_15_1 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                   "invoice",
-                                                                                                   VERSION_1_15_1);
+  public static final DVRCoordinate VID_OIOUBL_INVOICE_1_15_1 = DVRHelper.createCoordinate (GROUPID, "invoice", VERSION_1_15_1);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_ORDER_1_15_1 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                 "order",
-                                                                                                 VERSION_1_15_1);
+  public static final DVRCoordinate VID_OIOUBL_ORDER_1_15_1 = DVRHelper.createCoordinate (GROUPID, "order", VERSION_1_15_1);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_ORDER_CANCELLATION_1_15_1 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                              "order-cancellation",
-                                                                                                              VERSION_1_15_1);
+  public static final DVRCoordinate VID_OIOUBL_ORDER_CANCELLATION_1_15_1 = DVRHelper.createCoordinate (GROUPID, "order-cancellation", VERSION_1_15_1);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_ORDER_CHANGE_1_15_1 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                        "order-change",
-                                                                                                        VERSION_1_15_1);
+  public static final DVRCoordinate VID_OIOUBL_ORDER_CHANGE_1_15_1 = DVRHelper.createCoordinate (GROUPID, "order-change", VERSION_1_15_1);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_ORDER_RESPONSE_1_15_1 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                          "order-response",
-                                                                                                          VERSION_1_15_1);
+  public static final DVRCoordinate VID_OIOUBL_ORDER_RESPONSE_1_15_1 = DVRHelper.createCoordinate (GROUPID, "order-response", VERSION_1_15_1);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_ORDER_RESPONSE_SIMPLE_1_15_1 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                                 "order-response-simple",
-                                                                                                                 VERSION_1_15_1);
+  public static final DVRCoordinate VID_OIOUBL_ORDER_RESPONSE_SIMPLE_1_15_1 = DVRHelper.createCoordinate (GROUPID, "order-response-simple", VERSION_1_15_1);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_REMINDER_1_15_1 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                    "reminder",
-                                                                                                    VERSION_1_15_1);
+  public static final DVRCoordinate VID_OIOUBL_REMINDER_1_15_1 = DVRHelper.createCoordinate (GROUPID, "reminder", VERSION_1_15_1);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_STATEMENT_1_15_1 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                     "statement",
-                                                                                                     VERSION_1_15_1);
+  public static final DVRCoordinate VID_OIOUBL_STATEMENT_1_15_1 = DVRHelper.createCoordinate (GROUPID, "statement", VERSION_1_15_1);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_UTILITY_STATEMENT_1_15_1 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                             "utility-statement",
-                                                                                                             VERSION_1_15_1);
+  public static final DVRCoordinate VID_OIOUBL_UTILITY_STATEMENT_1_15_1 = DVRHelper.createCoordinate (GROUPID, "utility-statement", VERSION_1_15_1);
 
   // 1.15.2
   private static final String VERSION_1_15_2 = "1.15.2";
   public static final LocalDate VERSION_1_15_2_VALID_PER = PDTFactory.createLocalDate (2025, Month.MAY, 15);
   public static final OffsetDateTime VERSION_1_15_2_VALID_PER_UTC = PDTFactory.createOffsetDateTimeUTC (VERSION_1_15_2_VALID_PER);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_APPLICATION_RESPONSE_1_15_2 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                                "application-response",
-                                                                                                                VERSION_1_15_2);
+  public static final DVRCoordinate VID_OIOUBL_APPLICATION_RESPONSE_1_15_2 = DVRHelper.createCoordinate (GROUPID, "application-response", VERSION_1_15_2);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_CATALOGUE_1_15_2 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                     "catalogue",
-                                                                                                     VERSION_1_15_2);
+  public static final DVRCoordinate VID_OIOUBL_CATALOGUE_1_15_2 = DVRHelper.createCoordinate (GROUPID, "catalogue", VERSION_1_15_2);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_CATALOGUE_DELETION_1_15_2 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                              "catalogue-deletion",
-                                                                                                              VERSION_1_15_2);
+  public static final DVRCoordinate VID_OIOUBL_CATALOGUE_DELETION_1_15_2 = DVRHelper.createCoordinate (GROUPID, "catalogue-deletion", VERSION_1_15_2);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_CATALOGUE_ITEM_SPECIFICATION_UPDATE_1_15_2 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                                               "catalogue-item-specification-update",
-                                                                                                                               VERSION_1_15_2);
+  public static final DVRCoordinate VID_OIOUBL_CATALOGUE_ITEM_SPECIFICATION_UPDATE_1_15_2 = DVRHelper.createCoordinate (GROUPID, "catalogue-item-specification-update", VERSION_1_15_2);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_CATALOGUE_PRICING_UPDATE_1_15_2 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                                    "catalogue-pricing-update",
-                                                                                                                    VERSION_1_15_2);
+  public static final DVRCoordinate VID_OIOUBL_CATALOGUE_PRICING_UPDATE_1_15_2 = DVRHelper.createCoordinate (GROUPID, "catalogue-pricing-update", VERSION_1_15_2);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_CATALOGUE_REQUEST_1_15_2 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                             "catalogue-request",
-                                                                                                             VERSION_1_15_2);
+  public static final DVRCoordinate VID_OIOUBL_CATALOGUE_REQUEST_1_15_2 = DVRHelper.createCoordinate (GROUPID, "catalogue-request", VERSION_1_15_2);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_CREDIT_NOTE_1_15_2 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                       "credit-note",
-                                                                                                       VERSION_1_15_2);
+  public static final DVRCoordinate VID_OIOUBL_CREDIT_NOTE_1_15_2 = DVRHelper.createCoordinate (GROUPID, "credit-note", VERSION_1_15_2);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_INVOICE_1_15_2 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                   "invoice",
-                                                                                                   VERSION_1_15_2);
+  public static final DVRCoordinate VID_OIOUBL_INVOICE_1_15_2 = DVRHelper.createCoordinate (GROUPID, "invoice", VERSION_1_15_2);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_ORDER_1_15_2 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                 "order",
-                                                                                                 VERSION_1_15_2);
+  public static final DVRCoordinate VID_OIOUBL_ORDER_1_15_2 = DVRHelper.createCoordinate (GROUPID, "order", VERSION_1_15_2);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_ORDER_CANCELLATION_1_15_2 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                              "order-cancellation",
-                                                                                                              VERSION_1_15_2);
+  public static final DVRCoordinate VID_OIOUBL_ORDER_CANCELLATION_1_15_2 = DVRHelper.createCoordinate (GROUPID, "order-cancellation", VERSION_1_15_2);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_ORDER_CHANGE_1_15_2 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                        "order-change",
-                                                                                                        VERSION_1_15_2);
+  public static final DVRCoordinate VID_OIOUBL_ORDER_CHANGE_1_15_2 = DVRHelper.createCoordinate (GROUPID, "order-change", VERSION_1_15_2);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_ORDER_RESPONSE_1_15_2 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                          "order-response",
-                                                                                                          VERSION_1_15_2);
+  public static final DVRCoordinate VID_OIOUBL_ORDER_RESPONSE_1_15_2 = DVRHelper.createCoordinate (GROUPID, "order-response", VERSION_1_15_2);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_ORDER_RESPONSE_SIMPLE_1_15_2 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                                 "order-response-simple",
-                                                                                                                 VERSION_1_15_2);
+  public static final DVRCoordinate VID_OIOUBL_ORDER_RESPONSE_SIMPLE_1_15_2 = DVRHelper.createCoordinate (GROUPID, "order-response-simple", VERSION_1_15_2);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_REMINDER_1_15_2 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                    "reminder",
-                                                                                                    VERSION_1_15_2);
+  public static final DVRCoordinate VID_OIOUBL_REMINDER_1_15_2 = DVRHelper.createCoordinate (GROUPID, "reminder", VERSION_1_15_2);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_STATEMENT_1_15_2 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                     "statement",
-                                                                                                     VERSION_1_15_2);
+  public static final DVRCoordinate VID_OIOUBL_STATEMENT_1_15_2 = DVRHelper.createCoordinate (GROUPID, "statement", VERSION_1_15_2);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_UTILITY_STATEMENT_1_15_2 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                             "utility-statement",
-                                                                                                             VERSION_1_15_2);
+  public static final DVRCoordinate VID_OIOUBL_UTILITY_STATEMENT_1_15_2 = DVRHelper.createCoordinate (GROUPID, "utility-statement", VERSION_1_15_2);
 
   // 1.16.1
   private static final String VERSION_1_16_1 = "1.16.1";
   public static final LocalDate VERSION_1_16_1_VALID_PER = PDTFactory.createLocalDate (2025, Month.NOVEMBER, 27);
   public static final OffsetDateTime VERSION_1_16_1_VALID_PER_UTC = PDTFactory.createOffsetDateTimeUTC (VERSION_1_16_1_VALID_PER);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_APPLICATION_RESPONSE_1_16_1 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                                "application-response",
-                                                                                                                VERSION_1_16_1);
+  public static final DVRCoordinate VID_OIOUBL_APPLICATION_RESPONSE_1_16_1 = DVRHelper.createCoordinate (GROUPID, "application-response", VERSION_1_16_1);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_CATALOGUE_1_16_1 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                     "catalogue",
-                                                                                                     VERSION_1_16_1);
+  public static final DVRCoordinate VID_OIOUBL_CATALOGUE_1_16_1 = DVRHelper.createCoordinate (GROUPID, "catalogue", VERSION_1_16_1);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_CATALOGUE_DELETION_1_16_1 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                              "catalogue-deletion",
-                                                                                                              VERSION_1_16_1);
+  public static final DVRCoordinate VID_OIOUBL_CATALOGUE_DELETION_1_16_1 = DVRHelper.createCoordinate (GROUPID, "catalogue-deletion", VERSION_1_16_1);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_CATALOGUE_ITEM_SPECIFICATION_UPDATE_1_16_1 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                                               "catalogue-item-specification-update",
-                                                                                                                               VERSION_1_16_1);
+  public static final DVRCoordinate VID_OIOUBL_CATALOGUE_ITEM_SPECIFICATION_UPDATE_1_16_1 = DVRHelper.createCoordinate (GROUPID, "catalogue-item-specification-update", VERSION_1_16_1);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_CATALOGUE_PRICING_UPDATE_1_16_1 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                                    "catalogue-pricing-update",
-                                                                                                                    VERSION_1_16_1);
+  public static final DVRCoordinate VID_OIOUBL_CATALOGUE_PRICING_UPDATE_1_16_1 = DVRHelper.createCoordinate (GROUPID, "catalogue-pricing-update", VERSION_1_16_1);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_CATALOGUE_REQUEST_1_16_1 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                             "catalogue-request",
-                                                                                                             VERSION_1_16_1);
+  public static final DVRCoordinate VID_OIOUBL_CATALOGUE_REQUEST_1_16_1 = DVRHelper.createCoordinate (GROUPID, "catalogue-request", VERSION_1_16_1);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_CREDIT_NOTE_1_16_1 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                       "credit-note",
-                                                                                                       VERSION_1_16_1);
+  public static final DVRCoordinate VID_OIOUBL_CREDIT_NOTE_1_16_1 = DVRHelper.createCoordinate (GROUPID, "credit-note", VERSION_1_16_1);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_INVOICE_1_16_1 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                   "invoice",
-                                                                                                   VERSION_1_16_1);
+  public static final DVRCoordinate VID_OIOUBL_INVOICE_1_16_1 = DVRHelper.createCoordinate (GROUPID, "invoice", VERSION_1_16_1);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_ORDER_1_16_1 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                 "order",
-                                                                                                 VERSION_1_16_1);
+  public static final DVRCoordinate VID_OIOUBL_ORDER_1_16_1 = DVRHelper.createCoordinate (GROUPID, "order", VERSION_1_16_1);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_ORDER_CANCELLATION_1_16_1 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                              "order-cancellation",
-                                                                                                              VERSION_1_16_1);
+  public static final DVRCoordinate VID_OIOUBL_ORDER_CANCELLATION_1_16_1 = DVRHelper.createCoordinate (GROUPID, "order-cancellation", VERSION_1_16_1);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_ORDER_CHANGE_1_16_1 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                        "order-change",
-                                                                                                        VERSION_1_16_1);
+  public static final DVRCoordinate VID_OIOUBL_ORDER_CHANGE_1_16_1 = DVRHelper.createCoordinate (GROUPID, "order-change", VERSION_1_16_1);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_ORDER_RESPONSE_1_16_1 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                          "order-response",
-                                                                                                          VERSION_1_16_1);
+  public static final DVRCoordinate VID_OIOUBL_ORDER_RESPONSE_1_16_1 = DVRHelper.createCoordinate (GROUPID, "order-response", VERSION_1_16_1);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_ORDER_RESPONSE_SIMPLE_1_16_1 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                                 "order-response-simple",
-                                                                                                                 VERSION_1_16_1);
+  public static final DVRCoordinate VID_OIOUBL_ORDER_RESPONSE_SIMPLE_1_16_1 = DVRHelper.createCoordinate (GROUPID, "order-response-simple", VERSION_1_16_1);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_REMINDER_1_16_1 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                    "reminder",
-                                                                                                    VERSION_1_16_1);
+  public static final DVRCoordinate VID_OIOUBL_REMINDER_1_16_1 = DVRHelper.createCoordinate (GROUPID, "reminder", VERSION_1_16_1);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_STATEMENT_1_16_1 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                     "statement",
-                                                                                                     VERSION_1_16_1);
+  public static final DVRCoordinate VID_OIOUBL_STATEMENT_1_16_1 = DVRHelper.createCoordinate (GROUPID, "statement", VERSION_1_16_1);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_UTILITY_STATEMENT_1_16_1 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                             "utility-statement",
-                                                                                                             VERSION_1_16_1);
+  public static final DVRCoordinate VID_OIOUBL_UTILITY_STATEMENT_1_16_1 = DVRHelper.createCoordinate (GROUPID, "utility-statement", VERSION_1_16_1);
 
   // 1.17.0-rc
   private static final String VERSION_1_17_0_RC = "1.17.0-rc";
   public static final LocalDate VERSION_1_17_0_RC_VALID_PER = PDTFactory.createLocalDate (2026, Month.MAY, 15);
   public static final OffsetDateTime VERSION_1_17_0_RC_VALID_PER_UTC = PDTFactory.createOffsetDateTimeUTC (VERSION_1_17_0_RC_VALID_PER);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_APPLICATION_RESPONSE_1_17_0_RC = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                                   "application-response",
-                                                                                                                   VERSION_1_17_0_RC);
+  public static final DVRCoordinate VID_OIOUBL_APPLICATION_RESPONSE_1_17_0_RC = DVRHelper.createCoordinate (GROUPID, "application-response", VERSION_1_17_0_RC);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_CATALOGUE_1_17_0_RC = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                        "catalogue",
-                                                                                                        VERSION_1_17_0_RC);
+  public static final DVRCoordinate VID_OIOUBL_CATALOGUE_1_17_0_RC = DVRHelper.createCoordinate (GROUPID, "catalogue", VERSION_1_17_0_RC);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_CATALOGUE_DELETION_1_17_0_RC = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                                 "catalogue-deletion",
-                                                                                                                 VERSION_1_17_0_RC);
+  public static final DVRCoordinate VID_OIOUBL_CATALOGUE_DELETION_1_17_0_RC = DVRHelper.createCoordinate (GROUPID, "catalogue-deletion", VERSION_1_17_0_RC);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_CATALOGUE_ITEM_SPECIFICATION_UPDATE_1_17_0_RC = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                                                  "catalogue-item-specification-update",
-                                                                                                                                  VERSION_1_17_0_RC);
+  public static final DVRCoordinate VID_OIOUBL_CATALOGUE_ITEM_SPECIFICATION_UPDATE_1_17_0_RC = DVRHelper.createCoordinate (GROUPID, "catalogue-item-specification-update", VERSION_1_17_0_RC);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_CATALOGUE_PRICING_UPDATE_1_17_0_RC = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                                       "catalogue-pricing-update",
-                                                                                                                       VERSION_1_17_0_RC);
+  public static final DVRCoordinate VID_OIOUBL_CATALOGUE_PRICING_UPDATE_1_17_0_RC = DVRHelper.createCoordinate (GROUPID, "catalogue-pricing-update", VERSION_1_17_0_RC);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_CATALOGUE_REQUEST_1_17_0_RC = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                                "catalogue-request",
-                                                                                                                VERSION_1_17_0_RC);
+  public static final DVRCoordinate VID_OIOUBL_CATALOGUE_REQUEST_1_17_0_RC = DVRHelper.createCoordinate (GROUPID, "catalogue-request", VERSION_1_17_0_RC);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_CREDIT_NOTE_1_17_0_RC = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                          "credit-note",
-                                                                                                          VERSION_1_17_0_RC);
+  public static final DVRCoordinate VID_OIOUBL_CREDIT_NOTE_1_17_0_RC = DVRHelper.createCoordinate (GROUPID, "credit-note", VERSION_1_17_0_RC);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_INVOICE_1_17_0_RC = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                      "invoice",
-                                                                                                      VERSION_1_17_0_RC);
+  public static final DVRCoordinate VID_OIOUBL_INVOICE_1_17_0_RC = DVRHelper.createCoordinate (GROUPID, "invoice", VERSION_1_17_0_RC);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_ORDER_1_17_0_RC = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                    "order",
-                                                                                                    VERSION_1_17_0_RC);
+  public static final DVRCoordinate VID_OIOUBL_ORDER_1_17_0_RC = DVRHelper.createCoordinate (GROUPID, "order", VERSION_1_17_0_RC);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_ORDER_CANCELLATION_1_17_0_RC = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                                 "order-cancellation",
-                                                                                                                 VERSION_1_17_0_RC);
+  public static final DVRCoordinate VID_OIOUBL_ORDER_CANCELLATION_1_17_0_RC = DVRHelper.createCoordinate (GROUPID, "order-cancellation", VERSION_1_17_0_RC);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_ORDER_CHANGE_1_17_0_RC = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                           "order-change",
-                                                                                                           VERSION_1_17_0_RC);
+  public static final DVRCoordinate VID_OIOUBL_ORDER_CHANGE_1_17_0_RC = DVRHelper.createCoordinate (GROUPID, "order-change", VERSION_1_17_0_RC);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_ORDER_RESPONSE_1_17_0_RC = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                             "order-response",
-                                                                                                             VERSION_1_17_0_RC);
+  public static final DVRCoordinate VID_OIOUBL_ORDER_RESPONSE_1_17_0_RC = DVRHelper.createCoordinate (GROUPID, "order-response", VERSION_1_17_0_RC);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_ORDER_RESPONSE_SIMPLE_1_17_0_RC = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                                    "order-response-simple",
-                                                                                                                    VERSION_1_17_0_RC);
+  public static final DVRCoordinate VID_OIOUBL_ORDER_RESPONSE_SIMPLE_1_17_0_RC = DVRHelper.createCoordinate (GROUPID, "order-response-simple", VERSION_1_17_0_RC);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_REMINDER_1_17_0_RC = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                       "reminder",
-                                                                                                       VERSION_1_17_0_RC);
+  public static final DVRCoordinate VID_OIOUBL_REMINDER_1_17_0_RC = DVRHelper.createCoordinate (GROUPID, "reminder", VERSION_1_17_0_RC);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_STATEMENT_1_17_0_RC = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                        "statement",
-                                                                                                        VERSION_1_17_0_RC);
+  public static final DVRCoordinate VID_OIOUBL_STATEMENT_1_17_0_RC = DVRHelper.createCoordinate (GROUPID, "statement", VERSION_1_17_0_RC);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_UTILITY_STATEMENT_1_17_0_RC = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                                "utility-statement",
-                                                                                                                VERSION_1_17_0_RC);
+  public static final DVRCoordinate VID_OIOUBL_UTILITY_STATEMENT_1_17_0_RC = DVRHelper.createCoordinate (GROUPID, "utility-statement", VERSION_1_17_0_RC);
 
   // 1.17.1
   private static final String VERSION_1_17_1 = "1.17.1";
   public static final LocalDate VERSION_1_17_1_VALID_PER = PDTFactory.createLocalDate (2026, Month.MAY, 15);
   public static final OffsetDateTime VERSION_1_17_1_VALID_PER_UTC = PDTFactory.createOffsetDateTimeUTC (VERSION_1_17_1_VALID_PER);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_APPLICATION_RESPONSE_1_17_1 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                                "application-response",
-                                                                                                                VERSION_1_17_1);
+  public static final DVRCoordinate VID_OIOUBL_APPLICATION_RESPONSE_1_17_1 = DVRHelper.createCoordinate (GROUPID, "application-response", VERSION_1_17_1);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_CATALOGUE_1_17_1 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                     "catalogue",
-                                                                                                     VERSION_1_17_1);
+  public static final DVRCoordinate VID_OIOUBL_CATALOGUE_1_17_1 = DVRHelper.createCoordinate (GROUPID, "catalogue", VERSION_1_17_1);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_CATALOGUE_DELETION_1_17_1 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                              "catalogue-deletion",
-                                                                                                              VERSION_1_17_1);
+  public static final DVRCoordinate VID_OIOUBL_CATALOGUE_DELETION_1_17_1 = DVRHelper.createCoordinate (GROUPID, "catalogue-deletion", VERSION_1_17_1);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_CATALOGUE_ITEM_SPECIFICATION_UPDATE_1_17_1 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                                               "catalogue-item-specification-update",
-                                                                                                                               VERSION_1_17_1);
+  public static final DVRCoordinate VID_OIOUBL_CATALOGUE_ITEM_SPECIFICATION_UPDATE_1_17_1 = DVRHelper.createCoordinate (GROUPID, "catalogue-item-specification-update", VERSION_1_17_1);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_CATALOGUE_PRICING_UPDATE_1_17_1 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                                    "catalogue-pricing-update",
-                                                                                                                    VERSION_1_17_1);
+  public static final DVRCoordinate VID_OIOUBL_CATALOGUE_PRICING_UPDATE_1_17_1 = DVRHelper.createCoordinate (GROUPID, "catalogue-pricing-update", VERSION_1_17_1);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_CATALOGUE_REQUEST_1_17_1 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                             "catalogue-request",
-                                                                                                             VERSION_1_17_1);
+  public static final DVRCoordinate VID_OIOUBL_CATALOGUE_REQUEST_1_17_1 = DVRHelper.createCoordinate (GROUPID, "catalogue-request", VERSION_1_17_1);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_CREDIT_NOTE_1_17_1 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                       "credit-note",
-                                                                                                       VERSION_1_17_1);
+  public static final DVRCoordinate VID_OIOUBL_CREDIT_NOTE_1_17_1 = DVRHelper.createCoordinate (GROUPID, "credit-note", VERSION_1_17_1);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_INVOICE_1_17_1 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                   "invoice",
-                                                                                                   VERSION_1_17_1);
+  public static final DVRCoordinate VID_OIOUBL_INVOICE_1_17_1 = DVRHelper.createCoordinate (GROUPID, "invoice", VERSION_1_17_1);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_ORDER_1_17_1 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                 "order",
-                                                                                                 VERSION_1_17_1);
+  public static final DVRCoordinate VID_OIOUBL_ORDER_1_17_1 = DVRHelper.createCoordinate (GROUPID, "order", VERSION_1_17_1);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_ORDER_CANCELLATION_1_17_1 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                              "order-cancellation",
-                                                                                                              VERSION_1_17_1);
+  public static final DVRCoordinate VID_OIOUBL_ORDER_CANCELLATION_1_17_1 = DVRHelper.createCoordinate (GROUPID, "order-cancellation", VERSION_1_17_1);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_ORDER_CHANGE_1_17_1 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                        "order-change",
-                                                                                                        VERSION_1_17_1);
+  public static final DVRCoordinate VID_OIOUBL_ORDER_CHANGE_1_17_1 = DVRHelper.createCoordinate (GROUPID, "order-change", VERSION_1_17_1);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_ORDER_RESPONSE_1_17_1 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                          "order-response",
-                                                                                                          VERSION_1_17_1);
+  public static final DVRCoordinate VID_OIOUBL_ORDER_RESPONSE_1_17_1 = DVRHelper.createCoordinate (GROUPID, "order-response", VERSION_1_17_1);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_ORDER_RESPONSE_SIMPLE_1_17_1 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                                 "order-response-simple",
-                                                                                                                 VERSION_1_17_1);
+  public static final DVRCoordinate VID_OIOUBL_ORDER_RESPONSE_SIMPLE_1_17_1 = DVRHelper.createCoordinate (GROUPID, "order-response-simple", VERSION_1_17_1);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_REMINDER_1_17_1 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                    "reminder",
-                                                                                                    VERSION_1_17_1);
+  public static final DVRCoordinate VID_OIOUBL_REMINDER_1_17_1 = DVRHelper.createCoordinate (GROUPID, "reminder", VERSION_1_17_1);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_STATEMENT_1_17_1 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                     "statement",
-                                                                                                     VERSION_1_17_1);
+  public static final DVRCoordinate VID_OIOUBL_STATEMENT_1_17_1 = DVRHelper.createCoordinate (GROUPID, "statement", VERSION_1_17_1);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_UTILITY_STATEMENT_1_17_1 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                             "utility-statement",
-                                                                                                             VERSION_1_17_1);
+  public static final DVRCoordinate VID_OIOUBL_UTILITY_STATEMENT_1_17_1 = DVRHelper.createCoordinate (GROUPID, "utility-statement", VERSION_1_17_1);
 
   // 1.17.2
   private static final String VERSION_1_17_2 = "1.17.2";
   public static final LocalDate VERSION_1_17_2_VALID_PER = PDTFactory.createLocalDate (2026, Month.MAY, 1);
   public static final OffsetDateTime VERSION_1_17_2_VALID_PER_UTC = PDTFactory.createOffsetDateTimeUTC (VERSION_1_17_2_VALID_PER);
-  public static final DVRCoordinate VID_OIOUBL_APPLICATION_RESPONSE_1_17_2 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                                "application-response",
-                                                                                                                VERSION_1_17_2);
-  public static final DVRCoordinate VID_OIOUBL_CATALOGUE_1_17_2 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                     "catalogue",
-                                                                                                     VERSION_1_17_2);
-  public static final DVRCoordinate VID_OIOUBL_CATALOGUE_DELETION_1_17_2 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                              "catalogue-deletion",
-                                                                                                              VERSION_1_17_2);
-  public static final DVRCoordinate VID_OIOUBL_CATALOGUE_ITEM_SPECIFICATION_UPDATE_1_17_2 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                                               "catalogue-item-specification-update",
-                                                                                                                               VERSION_1_17_2);
-  public static final DVRCoordinate VID_OIOUBL_CATALOGUE_PRICING_UPDATE_1_17_2 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                                    "catalogue-pricing-update",
-                                                                                                                    VERSION_1_17_2);
-  public static final DVRCoordinate VID_OIOUBL_CATALOGUE_REQUEST_1_17_2 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                             "catalogue-request",
-                                                                                                             VERSION_1_17_2);
-  public static final DVRCoordinate VID_OIOUBL_CREDIT_NOTE_1_17_2 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                       "credit-note",
-                                                                                                       VERSION_1_17_2);
-  public static final DVRCoordinate VID_OIOUBL_INVOICE_1_17_2 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                   "invoice",
-                                                                                                   VERSION_1_17_2);
-  public static final DVRCoordinate VID_OIOUBL_ORDER_1_17_2 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                 "order",
-                                                                                                 VERSION_1_17_2);
-  public static final DVRCoordinate VID_OIOUBL_ORDER_CANCELLATION_1_17_2 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                              "order-cancellation",
-                                                                                                              VERSION_1_17_2);
-  public static final DVRCoordinate VID_OIOUBL_ORDER_CHANGE_1_17_2 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                        "order-change",
-                                                                                                        VERSION_1_17_2);
-  public static final DVRCoordinate VID_OIOUBL_ORDER_RESPONSE_1_17_2 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                          "order-response",
-                                                                                                          VERSION_1_17_2);
-  public static final DVRCoordinate VID_OIOUBL_ORDER_RESPONSE_SIMPLE_1_17_2 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                                 "order-response-simple",
-                                                                                                                 VERSION_1_17_2);
-  public static final DVRCoordinate VID_OIOUBL_REMINDER_1_17_2 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                    "reminder",
-                                                                                                    VERSION_1_17_2);
-  public static final DVRCoordinate VID_OIOUBL_STATEMENT_1_17_2 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                     "statement",
-                                                                                                     VERSION_1_17_2);
-  public static final DVRCoordinate VID_OIOUBL_UTILITY_STATEMENT_1_17_2 = PhiveRulesHelper.createCoordinate (GROUPID,
-                                                                                                             "utility-statement",
-                                                                                                             VERSION_1_17_2);
+  public static final DVRCoordinate VID_OIOUBL_APPLICATION_RESPONSE_1_17_2 = DVRHelper.createCoordinate (GROUPID, "application-response", VERSION_1_17_2);
+  public static final DVRCoordinate VID_OIOUBL_CATALOGUE_1_17_2 = DVRHelper.createCoordinate (GROUPID, "catalogue", VERSION_1_17_2);
+  public static final DVRCoordinate VID_OIOUBL_CATALOGUE_DELETION_1_17_2 = DVRHelper.createCoordinate (GROUPID, "catalogue-deletion", VERSION_1_17_2);
+  public static final DVRCoordinate VID_OIOUBL_CATALOGUE_ITEM_SPECIFICATION_UPDATE_1_17_2 = DVRHelper.createCoordinate (GROUPID, "catalogue-item-specification-update", VERSION_1_17_2);
+  public static final DVRCoordinate VID_OIOUBL_CATALOGUE_PRICING_UPDATE_1_17_2 = DVRHelper.createCoordinate (GROUPID, "catalogue-pricing-update", VERSION_1_17_2);
+  public static final DVRCoordinate VID_OIOUBL_CATALOGUE_REQUEST_1_17_2 = DVRHelper.createCoordinate (GROUPID, "catalogue-request", VERSION_1_17_2);
+  public static final DVRCoordinate VID_OIOUBL_CREDIT_NOTE_1_17_2 = DVRHelper.createCoordinate (GROUPID, "credit-note", VERSION_1_17_2);
+  public static final DVRCoordinate VID_OIOUBL_INVOICE_1_17_2 = DVRHelper.createCoordinate (GROUPID, "invoice", VERSION_1_17_2);
+  public static final DVRCoordinate VID_OIOUBL_ORDER_1_17_2 = DVRHelper.createCoordinate (GROUPID, "order", VERSION_1_17_2);
+  public static final DVRCoordinate VID_OIOUBL_ORDER_CANCELLATION_1_17_2 = DVRHelper.createCoordinate (GROUPID, "order-cancellation", VERSION_1_17_2);
+  public static final DVRCoordinate VID_OIOUBL_ORDER_CHANGE_1_17_2 = DVRHelper.createCoordinate (GROUPID, "order-change", VERSION_1_17_2);
+  public static final DVRCoordinate VID_OIOUBL_ORDER_RESPONSE_1_17_2 = DVRHelper.createCoordinate (GROUPID, "order-response", VERSION_1_17_2);
+  public static final DVRCoordinate VID_OIOUBL_ORDER_RESPONSE_SIMPLE_1_17_2 = DVRHelper.createCoordinate (GROUPID, "order-response-simple", VERSION_1_17_2);
+  public static final DVRCoordinate VID_OIOUBL_REMINDER_1_17_2 = DVRHelper.createCoordinate (GROUPID, "reminder", VERSION_1_17_2);
+  public static final DVRCoordinate VID_OIOUBL_STATEMENT_1_17_2 = DVRHelper.createCoordinate (GROUPID, "statement", VERSION_1_17_2);
+  public static final DVRCoordinate VID_OIOUBL_UTILITY_STATEMENT_1_17_2 = DVRHelper.createCoordinate (GROUPID, "utility-statement", VERSION_1_17_2);
 
   private OIOUBLValidation ()
   {}

@@ -24,6 +24,7 @@ import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.io.resource.ClassPathResource;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
 import com.helger.phive.rules.api.PhiveRulesHelper;
+import com.helger.phive.rules.foundation.DVRHelper;
 import com.helger.phive.xml.executorset.VesXmlBuilder;
 import com.helger.phive.xml.source.IValidationSourceXML;
 import com.helger.xml.namespace.IIterableNamespaceContext;
@@ -39,12 +40,8 @@ public final class SvefakturaValidation
 {
   public static final String GROUP_ID = "se.sfti";
 
-  public static final DVRCoordinate VID_SVEFAKTURA_10 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                           "svefaktura",
-                                                                                           "1.0");
-  public static final DVRCoordinate VID_OBJECT_ENVELOPE_10 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                "object-envelope",
-                                                                                                "1.0");
+  public static final DVRCoordinate VID_SVEFAKTURA_10 = DVRHelper.createCoordinate (GROUP_ID, "svefaktura", "1.0");
+  public static final DVRCoordinate VID_OBJECT_ENVELOPE_10 = DVRHelper.createCoordinate (GROUP_ID, "object-envelope", "1.0");
 
   private SvefakturaValidation ()
   {}

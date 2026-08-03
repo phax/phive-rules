@@ -26,6 +26,7 @@ import com.helger.io.resource.IReadableResource;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
 import com.helger.phive.rules.api.PhiveRulesHelper;
 import com.helger.phive.rules.api.PhiveRulesUBLHelper;
+import com.helger.phive.rules.foundation.DVRHelper;
 import com.helger.phive.xml.executorset.VesXmlBuilder;
 import com.helger.phive.xml.source.IValidationSourceXML;
 import com.helger.ubl21.UBL21Marshaller;
@@ -44,20 +45,12 @@ public final class PeppolItalyValidation3_1_0
   // Standard
   public static final String GROUP_ID = "it.peppol";
 
-  public static final DVRCoordinate VID_CREDIT_NOTE = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                         "creditnote",
-                                                                                         VERSION_STR);
-  public static final DVRCoordinate VID_DESPATCH_ADVICE = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                             "despatch-advice",
-                                                                                             VERSION_STR);
-  public static final DVRCoordinate VID_INVOICE = PhiveRulesHelper.createCoordinate (GROUP_ID, "invoice", VERSION_STR);
-  public static final DVRCoordinate VID_ORDER = PhiveRulesHelper.createCoordinate (GROUP_ID, "order", VERSION_STR);
-  public static final DVRCoordinate VID_ORDER_AGREEMENT = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                             "order-agreement",
-                                                                                             VERSION_STR);
-  public static final DVRCoordinate VID_ORDER_RESPONSE = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                            "order-response",
-                                                                                            VERSION_STR);
+  public static final DVRCoordinate VID_CREDIT_NOTE = DVRHelper.createCoordinate (GROUP_ID, "creditnote", VERSION_STR);
+  public static final DVRCoordinate VID_DESPATCH_ADVICE = DVRHelper.createCoordinate (GROUP_ID, "despatch-advice", VERSION_STR);
+  public static final DVRCoordinate VID_INVOICE = DVRHelper.createCoordinate (GROUP_ID, "invoice", VERSION_STR);
+  public static final DVRCoordinate VID_ORDER = DVRHelper.createCoordinate (GROUP_ID, "order", VERSION_STR);
+  public static final DVRCoordinate VID_ORDER_AGREEMENT = DVRHelper.createCoordinate (GROUP_ID, "order-agreement", VERSION_STR);
+  public static final DVRCoordinate VID_ORDER_RESPONSE = DVRHelper.createCoordinate (GROUP_ID, "order-response", VERSION_STR);
 
   @NonNull
   private static ClassLoader _getCL ()

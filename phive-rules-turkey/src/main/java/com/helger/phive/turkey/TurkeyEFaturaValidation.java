@@ -26,8 +26,8 @@ import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.io.resource.ClassPathResource;
 import com.helger.io.resource.IReadableResource;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
-import com.helger.phive.rules.api.PhiveRulesHelper;
 import com.helger.phive.rules.api.PhiveRulesUBLHelper;
+import com.helger.phive.rules.foundation.DVRHelper;
 import com.helger.phive.xml.executorset.VesXmlBuilder;
 import com.helger.phive.xml.source.IValidationSourceXML;
 import com.helger.sbdh.CSBDH;
@@ -49,18 +49,10 @@ public final class TurkeyEFaturaValidation
   public static final String GROUP_ID = "tr.efatura";
 
   // UBL-TR 1.2.1
-  public static final DVRCoordinate VID_TR_EFATURA_INVOICE_1_2_1 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                      "invoice",
-                                                                                                      "1.2.1");
-  public static final DVRCoordinate VID_TR_EFATURA_APPRESP_1_2_1 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                      "application-response",
-                                                                                                      "1.2.1");
-  public static final DVRCoordinate VID_TR_EFATURA_DESPATCH_1_2_1 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                       "despatch-advice",
-                                                                                                       "1.2.1");
-  public static final DVRCoordinate VID_TR_EFATURA_RECEIPT_1_2_1 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                      "receipt-advice",
-                                                                                                      "1.2.1");
+  public static final DVRCoordinate VID_TR_EFATURA_INVOICE_1_2_1 = DVRHelper.createCoordinate (GROUP_ID, "invoice", "1.2.1");
+  public static final DVRCoordinate VID_TR_EFATURA_APPRESP_1_2_1 = DVRHelper.createCoordinate (GROUP_ID, "application-response", "1.2.1");
+  public static final DVRCoordinate VID_TR_EFATURA_DESPATCH_1_2_1 = DVRHelper.createCoordinate (GROUP_ID, "despatch-advice", "1.2.1");
+  public static final DVRCoordinate VID_TR_EFATURA_RECEIPT_1_2_1 = DVRHelper.createCoordinate (GROUP_ID, "receipt-advice", "1.2.1");
   /**
    * SBDH-wrapped Zarf (envelope) — the on-the-wire transport unit. Validates the GS1/UN-CEFACT
    * Standard Business Document wrapper, the GİB <code>ef:Package</code> payload and the inner UBL
@@ -68,9 +60,7 @@ public final class TurkeyEFaturaValidation
    * document use the bare <code>VID_TR_EFATURA_INVOICE_1_2_1</code> / -APPRESP / -DESPATCH /
    * -RECEIPT instead.
    */
-  public static final DVRCoordinate VID_TR_EFATURA_ZARF_1_2_1 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                   "zarf",
-                                                                                                   "1.2.1");
+  public static final DVRCoordinate VID_TR_EFATURA_ZARF_1_2_1 = DVRHelper.createCoordinate (GROUP_ID, "zarf", "1.2.1");
 
   private TurkeyEFaturaValidation ()
   {}

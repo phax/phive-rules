@@ -33,6 +33,7 @@ import com.helger.phive.api.executor.IValidationExecutor;
 import com.helger.phive.api.executorset.IValidationExecutorSet;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
 import com.helger.phive.rules.api.PhiveRulesHelper;
+import com.helger.phive.rules.foundation.DVRHelper;
 import com.helger.phive.simplerinvoicing.SimplerInvoicingValidation;
 import com.helger.phive.xml.executorset.VesXmlBuilder;
 import com.helger.phive.xml.source.IValidationSourceXML;
@@ -52,21 +53,11 @@ import com.helger.xml.xpath.XPathHelper;
 public final class EnergieEFactuurValidation
 {
   public static final String GROUP_ID = "nl.energie-efactuur";
-  public static final DVRCoordinate VID_ENERGIE_EFACTUUR_1_0_0 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                    "energie-efactuur",
-                                                                                                    "1.0.0");
-  public static final DVRCoordinate VID_ENERGIE_EFACTUUR_1_0_1 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                    "energie-efactuur",
-                                                                                                    "1.0.1");
-  public static final DVRCoordinate VID_ENERGIE_EFACTUUR_2_0_0 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                    "energie-efactuur",
-                                                                                                    "2.0.0");
-  public static final DVRCoordinate VID_ENERGIE_EFACTUUR_3_0_0 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                    "energie-efactuur",
-                                                                                                    "3.0.0");
-  public static final DVRCoordinate VID_ENERGIE_EFACTUUR_3_1_0 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                    "energie-efactuur",
-                                                                                                    "3.1.0");
+  public static final DVRCoordinate VID_ENERGIE_EFACTUUR_1_0_0 = DVRHelper.createCoordinate (GROUP_ID, "energie-efactuur", "1.0.0");
+  public static final DVRCoordinate VID_ENERGIE_EFACTUUR_1_0_1 = DVRHelper.createCoordinate (GROUP_ID, "energie-efactuur", "1.0.1");
+  public static final DVRCoordinate VID_ENERGIE_EFACTUUR_2_0_0 = DVRHelper.createCoordinate (GROUP_ID, "energie-efactuur", "2.0.0");
+  public static final DVRCoordinate VID_ENERGIE_EFACTUUR_3_0_0 = DVRHelper.createCoordinate (GROUP_ID, "energie-efactuur", "3.0.0");
+  public static final DVRCoordinate VID_ENERGIE_EFACTUUR_3_1_0 = DVRHelper.createCoordinate (GROUP_ID, "energie-efactuur", "3.1.0");
 
   /** Namespace URL for Energie e-Factuur 1.0.0 */
   public static final String EEF_EXT_NS_1_0_0 = "urn:www.energie-efactuur.nl:profile:invoice:ver1.0.0";

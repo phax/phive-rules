@@ -30,6 +30,7 @@ import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
 import com.helger.phive.en16931.EN16931Validation;
 import com.helger.phive.rules.api.PhiveRulesHelper;
 import com.helger.phive.rules.api.PhiveRulesUBLHelper;
+import com.helger.phive.rules.foundation.DVRHelper;
 import com.helger.phive.xml.executorset.VesXmlBuilder;
 import com.helger.phive.xml.source.IValidationSourceXML;
 
@@ -46,39 +47,23 @@ public final class HReRacunValidation
 
   // Version 1.0.0
   @Deprecated
-  public static final DVRCoordinate VID_HR_ERACUN_UBL_CREDITNOTE_100 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                          "ubl-creditnote",
-                                                                                                          "1.0.0");
+  public static final DVRCoordinate VID_HR_ERACUN_UBL_CREDITNOTE_100 = DVRHelper.createCoordinate (GROUP_ID, "ubl-creditnote", "1.0.0");
   @Deprecated
-  public static final DVRCoordinate VID_HR_ERACUN_UBL_INVOICE_100 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                       "ubl-invoice",
-                                                                                                       "1.0.0");
+  public static final DVRCoordinate VID_HR_ERACUN_UBL_INVOICE_100 = DVRHelper.createCoordinate (GROUP_ID, "ubl-invoice", "1.0.0");
 
   // Version 1.0.1
   @Deprecated
-  public static final DVRCoordinate VID_HR_ERACUN_UBL_CREDITNOTE_101 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                          "ubl-creditnote",
-                                                                                                          "1.0.1");
+  public static final DVRCoordinate VID_HR_ERACUN_UBL_CREDITNOTE_101 = DVRHelper.createCoordinate (GROUP_ID, "ubl-creditnote", "1.0.1");
   @Deprecated
-  public static final DVRCoordinate VID_HR_ERACUN_UBL_INVOICE_101 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                       "ubl-invoice",
-                                                                                                       "1.0.1");
+  public static final DVRCoordinate VID_HR_ERACUN_UBL_INVOICE_101 = DVRHelper.createCoordinate (GROUP_ID, "ubl-invoice", "1.0.1");
 
   // Version 1.0.2
-  public static final DVRCoordinate VID_HR_ERACUN_UBL_CREDITNOTE_102 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                          "ubl-creditnote",
-                                                                                                          "1.0.2");
-  public static final DVRCoordinate VID_HR_ERACUN_UBL_INVOICE_102 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                       "ubl-invoice",
-                                                                                                       "1.0.2");
+  public static final DVRCoordinate VID_HR_ERACUN_UBL_CREDITNOTE_102 = DVRHelper.createCoordinate (GROUP_ID, "ubl-creditnote", "1.0.2");
+  public static final DVRCoordinate VID_HR_ERACUN_UBL_INVOICE_102 = DVRHelper.createCoordinate (GROUP_ID, "ubl-invoice", "1.0.2");
 
   // Version 1.0.3
-  public static final DVRCoordinate VID_HR_ERACUN_UBL_CREDITNOTE_103 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                          "ubl-creditnote",
-                                                                                                          "1.0.3");
-  public static final DVRCoordinate VID_HR_ERACUN_UBL_INVOICE_103 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                       "ubl-invoice",
-                                                                                                       "1.0.3");
+  public static final DVRCoordinate VID_HR_ERACUN_UBL_CREDITNOTE_103 = DVRHelper.createCoordinate (GROUP_ID, "ubl-creditnote", "1.0.3");
+  public static final DVRCoordinate VID_HR_ERACUN_UBL_INVOICE_103 = DVRHelper.createCoordinate (GROUP_ID, "ubl-invoice", "1.0.3");
 
   private HReRacunValidation ()
   {}

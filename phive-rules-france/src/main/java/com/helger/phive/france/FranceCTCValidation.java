@@ -37,6 +37,7 @@ import com.helger.phive.en16931.EN16931Validation;
 import com.helger.phive.rules.api.PhiveRulesCIIHelper;
 import com.helger.phive.rules.api.PhiveRulesHelper;
 import com.helger.phive.rules.api.PhiveRulesUBLHelper;
+import com.helger.phive.rules.foundation.DVRHelper;
 import com.helger.phive.xml.executorset.VesXmlBuilder;
 import com.helger.phive.xml.source.IValidationSourceXML;
 import com.helger.ubl21.UBL21Marshaller;
@@ -53,97 +54,51 @@ public final class FranceCTCValidation
 
   // v0.1
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_FR_CTC_UBL_INV_0_1 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                "ubl-invoice",
-                                                                                                "0.1");
+  public static final DVRCoordinate VID_FR_CTC_UBL_INV_0_1 = DVRHelper.createCoordinate (GROUP_ID, "ubl-invoice", "0.1");
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_FR_CTC_UBL_CN_0_1 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                               "ubl-creditnote",
-                                                                                               "0.1");
+  public static final DVRCoordinate VID_FR_CTC_UBL_CN_0_1 = DVRHelper.createCoordinate (GROUP_ID, "ubl-creditnote", "0.1");
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_FR_CTC_CII_0_1 = PhiveRulesHelper.createCoordinate (GROUP_ID, "cii", "0.1");
+  public static final DVRCoordinate VID_FR_CTC_CII_0_1 = DVRHelper.createCoordinate (GROUP_ID, "cii", "0.1");
 
   // v1.2.0
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_FR_CTC_UBL_INV_1_2_0 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                  "ubl-invoice",
-                                                                                                  "1.2.0");
+  public static final DVRCoordinate VID_FR_CTC_UBL_INV_1_2_0 = DVRHelper.createCoordinate (GROUP_ID, "ubl-invoice", "1.2.0");
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_FR_CTC_UBL_CN_1_2_0 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                 "ubl-creditnote",
-                                                                                                 "1.2.0");
+  public static final DVRCoordinate VID_FR_CTC_UBL_CN_1_2_0 = DVRHelper.createCoordinate (GROUP_ID, "ubl-creditnote", "1.2.0");
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_FR_CTC_CII_1_2_0 = PhiveRulesHelper.createCoordinate (GROUP_ID, "cii", "1.2.0");
+  public static final DVRCoordinate VID_FR_CTC_CII_1_2_0 = DVRHelper.createCoordinate (GROUP_ID, "cii", "1.2.0");
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_FR_CTC_CDAR_1_2_0 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                               "cdar",
-                                                                                               "1.2.0");
+  public static final DVRCoordinate VID_FR_CTC_CDAR_1_2_0 = DVRHelper.createCoordinate (GROUP_ID, "cdar", "1.2.0");
 
   // v1.3.0
-  public static final DVRCoordinate VID_FR_CTC_UBL_INV_1_3_0 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                  "ubl-invoice",
-                                                                                                  "1.3.0");
-  public static final DVRCoordinate VID_FR_CTC_UBL_CN_1_3_0 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                 "ubl-creditnote",
-                                                                                                 "1.3.0");
-  public static final DVRCoordinate VID_FR_CTC_CII_1_3_0 = PhiveRulesHelper.createCoordinate (GROUP_ID, "cii", "1.3.0");
-  public static final DVRCoordinate VID_FR_CTC_CDAR_1_3_0 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                               "cdar",
-                                                                                               "1.3.0");
+  public static final DVRCoordinate VID_FR_CTC_UBL_INV_1_3_0 = DVRHelper.createCoordinate (GROUP_ID, "ubl-invoice", "1.3.0");
+  public static final DVRCoordinate VID_FR_CTC_UBL_CN_1_3_0 = DVRHelper.createCoordinate (GROUP_ID, "ubl-creditnote", "1.3.0");
+  public static final DVRCoordinate VID_FR_CTC_CII_1_3_0 = DVRHelper.createCoordinate (GROUP_ID, "cii", "1.3.0");
+  public static final DVRCoordinate VID_FR_CTC_CDAR_1_3_0 = DVRHelper.createCoordinate (GROUP_ID, "cdar", "1.3.0");
 
-  public static final DVRCoordinate VID_FR_EXTENDED_CTC_UBL_INV_1_3_0 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                           "extended-ubl-invoice",
-                                                                                                           "1.3.0");
-  public static final DVRCoordinate VID_FR_EXTENDED_CTC_UBL_CN_1_3_0 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                          "extended-ubl-creditnote",
-                                                                                                          "1.3.0");
-  public static final DVRCoordinate VID_FR_EXTENDED_CTC_CII_1_3_0 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                       "extended-cii",
-                                                                                                       "1.3.0");
+  public static final DVRCoordinate VID_FR_EXTENDED_CTC_UBL_INV_1_3_0 = DVRHelper.createCoordinate (GROUP_ID, "extended-ubl-invoice", "1.3.0");
+  public static final DVRCoordinate VID_FR_EXTENDED_CTC_UBL_CN_1_3_0 = DVRHelper.createCoordinate (GROUP_ID, "extended-ubl-creditnote", "1.3.0");
+  public static final DVRCoordinate VID_FR_EXTENDED_CTC_CII_1_3_0 = DVRHelper.createCoordinate (GROUP_ID, "extended-cii", "1.3.0");
 
   // v1.3.1
-  public static final DVRCoordinate VID_FR_CTC_UBL_INV_1_3_1 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                  "ubl-invoice",
-                                                                                                  "1.3.1");
-  public static final DVRCoordinate VID_FR_CTC_UBL_CN_1_3_1 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                 "ubl-creditnote",
-                                                                                                 "1.3.1");
-  public static final DVRCoordinate VID_FR_CTC_CII_1_3_1 = PhiveRulesHelper.createCoordinate (GROUP_ID, "cii", "1.3.1");
-  public static final DVRCoordinate VID_FR_CTC_CDAR_1_3_1 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                               "cdar",
-                                                                                               "1.3.1");
+  public static final DVRCoordinate VID_FR_CTC_UBL_INV_1_3_1 = DVRHelper.createCoordinate (GROUP_ID, "ubl-invoice", "1.3.1");
+  public static final DVRCoordinate VID_FR_CTC_UBL_CN_1_3_1 = DVRHelper.createCoordinate (GROUP_ID, "ubl-creditnote", "1.3.1");
+  public static final DVRCoordinate VID_FR_CTC_CII_1_3_1 = DVRHelper.createCoordinate (GROUP_ID, "cii", "1.3.1");
+  public static final DVRCoordinate VID_FR_CTC_CDAR_1_3_1 = DVRHelper.createCoordinate (GROUP_ID, "cdar", "1.3.1");
 
-  public static final DVRCoordinate VID_FR_EXTENDED_CTC_UBL_INV_1_3_1 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                           "extended-ubl-invoice",
-                                                                                                           "1.3.1");
-  public static final DVRCoordinate VID_FR_EXTENDED_CTC_UBL_CN_1_3_1 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                          "extended-ubl-creditnote",
-                                                                                                          "1.3.1");
-  public static final DVRCoordinate VID_FR_EXTENDED_CTC_CII_1_3_1 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                       "extended-cii",
-                                                                                                       "1.3.1");
+  public static final DVRCoordinate VID_FR_EXTENDED_CTC_UBL_INV_1_3_1 = DVRHelper.createCoordinate (GROUP_ID, "extended-ubl-invoice", "1.3.1");
+  public static final DVRCoordinate VID_FR_EXTENDED_CTC_UBL_CN_1_3_1 = DVRHelper.createCoordinate (GROUP_ID, "extended-ubl-creditnote", "1.3.1");
+  public static final DVRCoordinate VID_FR_EXTENDED_CTC_CII_1_3_1 = DVRHelper.createCoordinate (GROUP_ID, "extended-cii", "1.3.1");
 
   // v1.4.0
-  public static final DVRCoordinate VID_FR_CTC_UBL_INV_1_4_0 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                  "ubl-invoice",
-                                                                                                  "1.4.0");
-  public static final DVRCoordinate VID_FR_CTC_UBL_CN_1_4_0 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                 "ubl-creditnote",
-                                                                                                 "1.4.0");
-  public static final DVRCoordinate VID_FR_CTC_CII_1_4_0 = PhiveRulesHelper.createCoordinate (GROUP_ID, "cii", "1.4.0");
-  public static final DVRCoordinate VID_FR_CTC_CDAR_1_4_0 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                               "cdar",
-                                                                                               "1.4.0");
+  public static final DVRCoordinate VID_FR_CTC_UBL_INV_1_4_0 = DVRHelper.createCoordinate (GROUP_ID, "ubl-invoice", "1.4.0");
+  public static final DVRCoordinate VID_FR_CTC_UBL_CN_1_4_0 = DVRHelper.createCoordinate (GROUP_ID, "ubl-creditnote", "1.4.0");
+  public static final DVRCoordinate VID_FR_CTC_CII_1_4_0 = DVRHelper.createCoordinate (GROUP_ID, "cii", "1.4.0");
+  public static final DVRCoordinate VID_FR_CTC_CDAR_1_4_0 = DVRHelper.createCoordinate (GROUP_ID, "cdar", "1.4.0");
 
-  public static final DVRCoordinate VID_FR_EXTENDED_CTC_UBL_INV_1_4_0 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                           "extended-ubl-invoice",
-                                                                                                           "1.4.0");
-  public static final DVRCoordinate VID_FR_EXTENDED_CTC_UBL_CN_1_4_0 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                          "extended-ubl-creditnote",
-                                                                                                          "1.4.0");
-  public static final DVRCoordinate VID_FR_EXTENDED_CTC_CII_1_4_0 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                       "extended-cii",
-                                                                                                       "1.4.0");
+  public static final DVRCoordinate VID_FR_EXTENDED_CTC_UBL_INV_1_4_0 = DVRHelper.createCoordinate (GROUP_ID, "extended-ubl-invoice", "1.4.0");
+  public static final DVRCoordinate VID_FR_EXTENDED_CTC_UBL_CN_1_4_0 = DVRHelper.createCoordinate (GROUP_ID, "extended-ubl-creditnote", "1.4.0");
+  public static final DVRCoordinate VID_FR_EXTENDED_CTC_CII_1_4_0 = DVRHelper.createCoordinate (GROUP_ID, "extended-cii", "1.4.0");
 
   private FranceCTCValidation ()
   {}

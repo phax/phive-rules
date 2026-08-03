@@ -26,7 +26,7 @@
   </parent>
   <groupId>com.helger.phive.rules</groupId>
   <artifactId>phive-rules-parent-pom</artifactId>
-  <version>4.4.3-SNAPSHOT</version>
+  <version>4.5.0-SNAPSHOT</version>
   <packaging>pom</packaging>
   <name>phive-rules-parent-pom</name>
   <description>Base POM to build the phive rules projects</description>
@@ -67,6 +67,8 @@
     <jaxb-plugin.artifact>jaxb-maven-plugin</jaxb-plugin.artifact>
     <jaxb-plugin.version>4.0.16</jaxb-plugin.version>
     <ph-jaxb-plugin.version>5.1.2</ph-jaxb-plugin.version>
+
+    <phive-rules-foundations.version>5.0.0-SNAPSHOT</phive-rules-foundations.version>
 
     <peppol-commons.version>12.6.0</peppol-commons.version>
     <peppol-om.version>1.2.2</peppol-om.version>
@@ -111,15 +113,17 @@
         <type>pom</type>
         <scope>import</scope>
       </dependency>
+      <dependency>
+        <groupId>com.helger.phive.rules</groupId>
+        <artifactId>phive-rules-foundations-parent-pom</artifactId>
+        <version>${phive-rules-foundations.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
 
       <dependency>
         <groupId>com.helger.phive.rules</groupId>
         <artifactId>phive-rules-api</artifactId>
-        <version>${project.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.helger.phive.rules</groupId>
-        <artifactId>phive-rules-cii</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
@@ -130,11 +134,6 @@
       <dependency>
         <groupId>com.helger.phive.rules</groupId>
         <artifactId>phive-rules-cius-ro</artifactId>
-        <version>${project.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.helger.phive.rules</groupId>
-        <artifactId>phive-rules-ebinterface</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
@@ -159,21 +158,6 @@
       </dependency>
       <dependency>
         <groupId>com.helger.phive.rules</groupId>
-        <artifactId>phive-rules-facturae</artifactId>
-        <version>${project.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.helger.phive.rules</groupId>
-        <artifactId>phive-rules-fatturapa</artifactId>
-        <version>${project.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.helger.phive.rules</groupId>
-        <artifactId>phive-rules-finvoice</artifactId>
-        <version>${project.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.helger.phive.rules</groupId>
         <artifactId>phive-rules-france</artifactId>
         <version>${project.version}</version>
       </dependency>
@@ -184,17 +168,7 @@
       </dependency>
       <dependency>
         <groupId>com.helger.phive.rules</groupId>
-        <artifactId>phive-rules-ksef</artifactId>
-        <version>${project.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.helger.phive.rules</groupId>
         <artifactId>phive-rules-oioubl</artifactId>
-        <version>${project.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.helger.phive.rules</groupId>
-        <artifactId>phive-rules-osa</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
@@ -244,17 +218,7 @@
       </dependency>
       <dependency>
         <groupId>com.helger.phive.rules</groupId>
-        <artifactId>phive-rules-teapps</artifactId>
-        <version>${project.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.helger.phive.rules</groupId>
         <artifactId>phive-rules-turkey</artifactId>
-        <version>${project.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.helger.phive.rules</groupId>
-        <artifactId>phive-rules-ubl</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
@@ -296,20 +260,13 @@
     <!-- Prerequisite for a lot of things -->
     <module>phive-rules-en16931</module>
     <!-- Remaining formats -->
-    <module>phive-rules-cii</module>
     <module>phive-rules-cius-pt</module>
     <module>phive-rules-cius-ro</module>
-    <module>phive-rules-ebinterface</module>
     <module>phive-rules-ehf</module>
     <module>phive-rules-eracun</module>
-    <module>phive-rules-facturae</module>
-    <module>phive-rules-fatturapa</module>
-    <module>phive-rules-finvoice</module>
     <module>phive-rules-france</module>
     <module>phive-rules-isdoc</module>
-    <module>phive-rules-ksef</module>
     <module>phive-rules-oioubl</module>
-    <module>phive-rules-osa</module>
     <module>phive-rules-peppol-legacy</module>
     <module>phive-rules-peppol</module>
     <module>phive-rules-peppol-taxdata</module>
@@ -321,9 +278,7 @@
     <!-- depends on SimplerInvoicing -->
     <module>phive-rules-energieefactuur</module>
     <module>phive-rules-svefaktura</module>
-    <module>phive-rules-teapps</module>
     <module>phive-rules-turkey</module>
-    <module>phive-rules-ubl</module>
     <!-- depends on peppol -->
     <module>phive-rules-ublbe</module>
     <module>phive-rules-xrechnung</module>

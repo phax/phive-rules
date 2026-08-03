@@ -25,8 +25,8 @@ import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.io.resource.ClassPathResource;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
 import com.helger.phive.rules.api.PhiveRulesCIIHelper;
-import com.helger.phive.rules.api.PhiveRulesHelper;
 import com.helger.phive.rules.api.PhiveRulesUBLHelper;
+import com.helger.phive.rules.foundation.DVRHelper;
 import com.helger.phive.xml.executorset.VesXmlBuilder;
 import com.helger.phive.xml.source.IValidationSourceXML;
 import com.helger.ubl21.UBL21Marshaller;
@@ -43,287 +43,163 @@ public final class SimplerInvoicingValidation
   public static final String GROUP_ID = "org.simplerinvoicing";
 
   @Deprecated
-  public static final DVRCoordinate VID_SI_INVOICE_V10 = PhiveRulesHelper.createCoordinate (GROUP_ID, "invoice", "1.0");
+  public static final DVRCoordinate VID_SI_INVOICE_V10 = DVRHelper.createCoordinate (GROUP_ID, "invoice", "1.0");
 
   @Deprecated
-  public static final DVRCoordinate VID_SI_INVOICE_V11 = PhiveRulesHelper.createCoordinate (GROUP_ID, "invoice", "1.1");
+  public static final DVRCoordinate VID_SI_INVOICE_V11 = DVRHelper.createCoordinate (GROUP_ID, "invoice", "1.1");
 
   @Deprecated
-  public static final DVRCoordinate VID_SI_INVOICE_V12 = PhiveRulesHelper.createCoordinate (GROUP_ID, "invoice", "1.2");
+  public static final DVRCoordinate VID_SI_INVOICE_V12 = DVRHelper.createCoordinate (GROUP_ID, "invoice", "1.2");
   @Deprecated
-  public static final DVRCoordinate VID_SI_ORDER_V12 = PhiveRulesHelper.createCoordinate (GROUP_ID, "order", "1.2");
+  public static final DVRCoordinate VID_SI_ORDER_V12 = DVRHelper.createCoordinate (GROUP_ID, "order", "1.2");
 
   @Deprecated
-  public static final DVRCoordinate VID_SI_INVOICE_V123 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                             "invoice",
-                                                                                             "1.2.3");
+  public static final DVRCoordinate VID_SI_INVOICE_V123 = DVRHelper.createCoordinate (GROUP_ID, "invoice", "1.2.3");
   @Deprecated
-  public static final DVRCoordinate VID_SI_ORDER_V123 = PhiveRulesHelper.createCoordinate (GROUP_ID, "order", "1.2.3");
+  public static final DVRCoordinate VID_SI_ORDER_V123 = DVRHelper.createCoordinate (GROUP_ID, "order", "1.2.3");
 
   @Deprecated
-  public static final DVRCoordinate VID_SI_INVOICE_V124 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                             "invoice",
-                                                                                             "1.2.4");
+  public static final DVRCoordinate VID_SI_INVOICE_V124 = DVRHelper.createCoordinate (GROUP_ID, "invoice", "1.2.4");
   @Deprecated
-  public static final DVRCoordinate VID_SI_ORDER_V124 = PhiveRulesHelper.createCoordinate (GROUP_ID, "order", "1.2.4");
+  public static final DVRCoordinate VID_SI_ORDER_V124 = DVRHelper.createCoordinate (GROUP_ID, "order", "1.2.4");
 
   @Deprecated
-  public static final DVRCoordinate VID_SI_INVOICE_V20 = PhiveRulesHelper.createCoordinate (GROUP_ID, "invoice", "2.0");
+  public static final DVRCoordinate VID_SI_INVOICE_V20 = DVRHelper.createCoordinate (GROUP_ID, "invoice", "2.0");
   @Deprecated
-  public static final DVRCoordinate VID_SI_CREDIT_NOTE_V20 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                "creditnote",
-                                                                                                "2.0");
+  public static final DVRCoordinate VID_SI_CREDIT_NOTE_V20 = DVRHelper.createCoordinate (GROUP_ID, "creditnote", "2.0");
 
   @Deprecated
-  public static final DVRCoordinate VID_SI_INVOICE_V201 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                             "invoice",
-                                                                                             "2.0.1");
+  public static final DVRCoordinate VID_SI_INVOICE_V201 = DVRHelper.createCoordinate (GROUP_ID, "invoice", "2.0.1");
   @Deprecated
-  public static final DVRCoordinate VID_SI_CREDIT_NOTE_V201 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                 "creditnote",
-                                                                                                 "2.0.1");
+  public static final DVRCoordinate VID_SI_CREDIT_NOTE_V201 = DVRHelper.createCoordinate (GROUP_ID, "creditnote", "2.0.1");
 
   @Deprecated
-  public static final DVRCoordinate VID_SI_INVOICE_V202 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                             "invoice",
-                                                                                             "2.0.2");
+  public static final DVRCoordinate VID_SI_INVOICE_V202 = DVRHelper.createCoordinate (GROUP_ID, "invoice", "2.0.2");
   @Deprecated
-  public static final DVRCoordinate VID_SI_CREDIT_NOTE_V202 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                 "creditnote",
-                                                                                                 "2.0.2");
+  public static final DVRCoordinate VID_SI_CREDIT_NOTE_V202 = DVRHelper.createCoordinate (GROUP_ID, "creditnote", "2.0.2");
 
   @Deprecated
-  public static final DVRCoordinate VID_SI_INVOICE_V203 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                             "invoice",
-                                                                                             "2.0.3");
+  public static final DVRCoordinate VID_SI_INVOICE_V203 = DVRHelper.createCoordinate (GROUP_ID, "invoice", "2.0.3");
   @Deprecated
-  public static final DVRCoordinate VID_SI_CREDIT_NOTE_V203 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                 "creditnote",
-                                                                                                 "2.0.3");
+  public static final DVRCoordinate VID_SI_CREDIT_NOTE_V203 = DVRHelper.createCoordinate (GROUP_ID, "creditnote", "2.0.3");
 
   @Deprecated
-  public static final DVRCoordinate VID_SI_INVOICE_V2031 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                              "invoice",
-                                                                                              "2.0.3.1");
+  public static final DVRCoordinate VID_SI_INVOICE_V2031 = DVRHelper.createCoordinate (GROUP_ID, "invoice", "2.0.3.1");
   @Deprecated
-  public static final DVRCoordinate VID_SI_CREDIT_NOTE_V2031 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                  "creditnote",
-                                                                                                  "2.0.3.1");
+  public static final DVRCoordinate VID_SI_CREDIT_NOTE_V2031 = DVRHelper.createCoordinate (GROUP_ID, "creditnote", "2.0.3.1");
 
   @Deprecated
-  public static final DVRCoordinate VID_SI_INVOICE_V2032 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                              "invoice",
-                                                                                              "2.0.3.2");
+  public static final DVRCoordinate VID_SI_INVOICE_V2032 = DVRHelper.createCoordinate (GROUP_ID, "invoice", "2.0.3.2");
   @Deprecated
-  public static final DVRCoordinate VID_SI_CREDIT_NOTE_V2032 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                  "creditnote",
-                                                                                                  "2.0.3.2");
+  public static final DVRCoordinate VID_SI_CREDIT_NOTE_V2032 = DVRHelper.createCoordinate (GROUP_ID, "creditnote", "2.0.3.2");
 
   @Deprecated
-  public static final DVRCoordinate VID_SI_INVOICE_V2033 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                              "invoice",
-                                                                                              "2.0.3.3");
+  public static final DVRCoordinate VID_SI_INVOICE_V2033 = DVRHelper.createCoordinate (GROUP_ID, "invoice", "2.0.3.3");
   @Deprecated
-  public static final DVRCoordinate VID_SI_CREDIT_NOTE_V2033 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                  "creditnote",
-                                                                                                  "2.0.3.3");
+  public static final DVRCoordinate VID_SI_CREDIT_NOTE_V2033 = DVRHelper.createCoordinate (GROUP_ID, "creditnote", "2.0.3.3");
 
   @Deprecated
-  public static final DVRCoordinate VID_SI_INVOICE_V2034 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                              "invoice",
-                                                                                              "2.0.3.4");
+  public static final DVRCoordinate VID_SI_INVOICE_V2034 = DVRHelper.createCoordinate (GROUP_ID, "invoice", "2.0.3.4");
   @Deprecated
-  public static final DVRCoordinate VID_SI_CREDIT_NOTE_V2034 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                  "creditnote",
-                                                                                                  "2.0.3.4");
+  public static final DVRCoordinate VID_SI_CREDIT_NOTE_V2034 = DVRHelper.createCoordinate (GROUP_ID, "creditnote", "2.0.3.4");
 
   @Deprecated
-  public static final DVRCoordinate VID_SI_INVOICE_V2035 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                              "invoice",
-                                                                                              "2.0.3.5");
+  public static final DVRCoordinate VID_SI_INVOICE_V2035 = DVRHelper.createCoordinate (GROUP_ID, "invoice", "2.0.3.5");
   @Deprecated
-  public static final DVRCoordinate VID_SI_CREDIT_NOTE_V2035 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                  "creditnote",
-                                                                                                  "2.0.3.5");
+  public static final DVRCoordinate VID_SI_CREDIT_NOTE_V2035 = DVRHelper.createCoordinate (GROUP_ID, "creditnote", "2.0.3.5");
 
   @Deprecated
-  public static final DVRCoordinate VID_SI_INVOICE_V2036 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                              "invoice",
-                                                                                              "2.0.3.6");
+  public static final DVRCoordinate VID_SI_INVOICE_V2036 = DVRHelper.createCoordinate (GROUP_ID, "invoice", "2.0.3.6");
   @Deprecated
-  public static final DVRCoordinate VID_SI_CREDIT_NOTE_V2036 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                  "creditnote",
-                                                                                                  "2.0.3.6");
+  public static final DVRCoordinate VID_SI_CREDIT_NOTE_V2036 = DVRHelper.createCoordinate (GROUP_ID, "creditnote", "2.0.3.6");
 
   @Deprecated
-  public static final DVRCoordinate VID_SI_INVOICE_V2037 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                              "invoice",
-                                                                                              "2.0.3.7");
+  public static final DVRCoordinate VID_SI_INVOICE_V2037 = DVRHelper.createCoordinate (GROUP_ID, "invoice", "2.0.3.7");
   @Deprecated
-  public static final DVRCoordinate VID_SI_CREDIT_NOTE_V2037 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                  "creditnote",
-                                                                                                  "2.0.3.7");
+  public static final DVRCoordinate VID_SI_CREDIT_NOTE_V2037 = DVRHelper.createCoordinate (GROUP_ID, "creditnote", "2.0.3.7");
 
   @Deprecated
-  public static final DVRCoordinate VID_SI_INVOICE_V2038 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                              "invoice",
-                                                                                              "2.0.3.8");
+  public static final DVRCoordinate VID_SI_INVOICE_V2038 = DVRHelper.createCoordinate (GROUP_ID, "invoice", "2.0.3.8");
   @Deprecated
-  public static final DVRCoordinate VID_SI_CREDIT_NOTE_V2038 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                  "creditnote",
-                                                                                                  "2.0.3.8");
+  public static final DVRCoordinate VID_SI_CREDIT_NOTE_V2038 = DVRHelper.createCoordinate (GROUP_ID, "creditnote", "2.0.3.8");
 
   // In effect from August 27, 2024
   @Deprecated
-  public static final DVRCoordinate VID_SI_INVOICE_V2039 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                              "invoice",
-                                                                                              "2.0.3.9");
+  public static final DVRCoordinate VID_SI_INVOICE_V2039 = DVRHelper.createCoordinate (GROUP_ID, "invoice", "2.0.3.9");
   @Deprecated
-  public static final DVRCoordinate VID_SI_CREDIT_NOTE_V2039 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                  "creditnote",
-                                                                                                  "2.0.3.9");
+  public static final DVRCoordinate VID_SI_CREDIT_NOTE_V2039 = DVRHelper.createCoordinate (GROUP_ID, "creditnote", "2.0.3.9");
 
   // In effect from February 17, 2025
   @Deprecated
-  public static final DVRCoordinate VID_SI_INVOICE_V2_0_3_10 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                  "invoice",
-                                                                                                  "2.0.3.10");
+  public static final DVRCoordinate VID_SI_INVOICE_V2_0_3_10 = DVRHelper.createCoordinate (GROUP_ID, "invoice", "2.0.3.10");
   @Deprecated
-  public static final DVRCoordinate VID_SI_CREDIT_NOTE_V2_0_3_10 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                      "creditnote",
-                                                                                                      "2.0.3.10");
+  public static final DVRCoordinate VID_SI_CREDIT_NOTE_V2_0_3_10 = DVRHelper.createCoordinate (GROUP_ID, "creditnote", "2.0.3.10");
 
   // In effect from August 25, 2025
   @Deprecated
-  public static final DVRCoordinate VID_SI_INVOICE_V2_0_3_11 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                  "invoice",
-                                                                                                  "2.0.3.11");
+  public static final DVRCoordinate VID_SI_INVOICE_V2_0_3_11 = DVRHelper.createCoordinate (GROUP_ID, "invoice", "2.0.3.11");
   @Deprecated
-  public static final DVRCoordinate VID_SI_CREDIT_NOTE_V2_0_3_11 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                      "creditnote",
-                                                                                                      "2.0.3.11");
+  public static final DVRCoordinate VID_SI_CREDIT_NOTE_V2_0_3_11 = DVRHelper.createCoordinate (GROUP_ID, "creditnote", "2.0.3.11");
 
   // In effect as of February 23, 2026
-  public static final DVRCoordinate VID_SI_INVOICE_V2_0_3_12 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                  "invoice",
-                                                                                                  "2.0.3.12");
-  public static final DVRCoordinate VID_SI_CREDIT_NOTE_V2_0_3_12 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                      "creditnote",
-                                                                                                      "2.0.3.12");
+  public static final DVRCoordinate VID_SI_INVOICE_V2_0_3_12 = DVRHelper.createCoordinate (GROUP_ID, "invoice", "2.0.3.12");
+  public static final DVRCoordinate VID_SI_CREDIT_NOTE_V2_0_3_12 = DVRHelper.createCoordinate (GROUP_ID, "creditnote", "2.0.3.12");
 
   // In effect as of 2026-08-17
-  public static final DVRCoordinate VID_SI_INVOICE_V2_0_3_13 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                  "invoice",
-                                                                                                  "2.0.3.13");
-  public static final DVRCoordinate VID_SI_CREDIT_NOTE_V2_0_3_13 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                      "creditnote",
-                                                                                                      "2.0.3.13");
+  public static final DVRCoordinate VID_SI_INVOICE_V2_0_3_13 = DVRHelper.createCoordinate (GROUP_ID, "invoice", "2.0.3.13");
+  public static final DVRCoordinate VID_SI_CREDIT_NOTE_V2_0_3_13 = DVRHelper.createCoordinate (GROUP_ID, "creditnote", "2.0.3.13");
 
   @Deprecated
-  public static final DVRCoordinate VID_SI_INVOICE_20_GACCOUNT_V10 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                        "invoice20.g-account",
-                                                                                                        "1.0");
+  public static final DVRCoordinate VID_SI_INVOICE_20_GACCOUNT_V10 = DVRHelper.createCoordinate (GROUP_ID, "invoice20.g-account", "1.0");
   @Deprecated
-  public static final DVRCoordinate VID_SI_INVOICE_20_GACCOUNT_V101 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                         "invoice20.g-account",
-                                                                                                         "1.0.1");
+  public static final DVRCoordinate VID_SI_INVOICE_20_GACCOUNT_V101 = DVRHelper.createCoordinate (GROUP_ID, "invoice20.g-account", "1.0.1");
   @Deprecated
-  public static final DVRCoordinate VID_SI_INVOICE_20_GACCOUNT_V102 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                         "invoice20.g-account",
-                                                                                                         "1.0.2");
+  public static final DVRCoordinate VID_SI_INVOICE_20_GACCOUNT_V102 = DVRHelper.createCoordinate (GROUP_ID, "invoice20.g-account", "1.0.2");
   @Deprecated
-  public static final DVRCoordinate VID_SI_INVOICE_20_GACCOUNT_V103 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                         "invoice20.g-account",
-                                                                                                         "1.0.3");
+  public static final DVRCoordinate VID_SI_INVOICE_20_GACCOUNT_V103 = DVRHelper.createCoordinate (GROUP_ID, "invoice20.g-account", "1.0.3");
   @Deprecated
-  public static final DVRCoordinate VID_SI_INVOICE_20_GACCOUNT_V104 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                         "invoice20.g-account",
-                                                                                                         "1.0.4");
+  public static final DVRCoordinate VID_SI_INVOICE_20_GACCOUNT_V104 = DVRHelper.createCoordinate (GROUP_ID, "invoice20.g-account", "1.0.4");
   @Deprecated
-  public static final DVRCoordinate VID_SI_INVOICE_20_GACCOUNT_V105 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                         "invoice20.g-account",
-                                                                                                         "1.0.5");
+  public static final DVRCoordinate VID_SI_INVOICE_20_GACCOUNT_V105 = DVRHelper.createCoordinate (GROUP_ID, "invoice20.g-account", "1.0.5");
   @Deprecated
-  public static final DVRCoordinate VID_SI_INVOICE_20_GACCOUNT_V106 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                         "invoice20.g-account",
-                                                                                                         "1.0.6");
+  public static final DVRCoordinate VID_SI_INVOICE_20_GACCOUNT_V106 = DVRHelper.createCoordinate (GROUP_ID, "invoice20.g-account", "1.0.6");
   @Deprecated
-  public static final DVRCoordinate VID_SI_INVOICE_20_GACCOUNT_V107 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                         "invoice20.g-account",
-                                                                                                         "1.0.7");
+  public static final DVRCoordinate VID_SI_INVOICE_20_GACCOUNT_V107 = DVRHelper.createCoordinate (GROUP_ID, "invoice20.g-account", "1.0.7");
   @Deprecated
-  public static final DVRCoordinate VID_SI_INVOICE_20_GACCOUNT_V108 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                         "invoice20.g-account",
-                                                                                                         "1.0.8");
+  public static final DVRCoordinate VID_SI_INVOICE_20_GACCOUNT_V108 = DVRHelper.createCoordinate (GROUP_ID, "invoice20.g-account", "1.0.8");
   @Deprecated
-  public static final DVRCoordinate VID_SI_INVOICE_20_GACCOUNT_V109 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                         "invoice20.g-account",
-                                                                                                         "1.0.9");
+  public static final DVRCoordinate VID_SI_INVOICE_20_GACCOUNT_V109 = DVRHelper.createCoordinate (GROUP_ID, "invoice20.g-account", "1.0.9");
   @Deprecated
-  public static final DVRCoordinate VID_SI_INVOICE_20_GACCOUNT_V1_0_10 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                            "invoice20.g-account",
-                                                                                                            "1.0.10");
+  public static final DVRCoordinate VID_SI_INVOICE_20_GACCOUNT_V1_0_10 = DVRHelper.createCoordinate (GROUP_ID, "invoice20.g-account", "1.0.10");
   @Deprecated
-  public static final DVRCoordinate VID_SI_INVOICE_20_GACCOUNT_V1_0_11 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                            "invoice20.g-account",
-                                                                                                            "1.0.11");
-  public static final DVRCoordinate VID_SI_INVOICE_20_GACCOUNT_V1_0_12 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                            "invoice20.g-account",
-                                                                                                            "1.0.12");
-  public static final DVRCoordinate VID_SI_INVOICE_20_GACCOUNT_V1_0_13 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                            "invoice20.g-account",
-                                                                                                            "1.0.13");
+  public static final DVRCoordinate VID_SI_INVOICE_20_GACCOUNT_V1_0_11 = DVRHelper.createCoordinate (GROUP_ID, "invoice20.g-account", "1.0.11");
+  public static final DVRCoordinate VID_SI_INVOICE_20_GACCOUNT_V1_0_12 = DVRHelper.createCoordinate (GROUP_ID, "invoice20.g-account", "1.0.12");
+  public static final DVRCoordinate VID_SI_INVOICE_20_GACCOUNT_V1_0_13 = DVRHelper.createCoordinate (GROUP_ID, "invoice20.g-account", "1.0.13");
 
   @Deprecated
-  public static final DVRCoordinate VID_SI_NLCIUS_CII_V103 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                "nlcius-cii",
-                                                                                                "1.0.3");
+  public static final DVRCoordinate VID_SI_NLCIUS_CII_V103 = DVRHelper.createCoordinate (GROUP_ID, "nlcius-cii", "1.0.3");
   @Deprecated
-  public static final DVRCoordinate VID_SI_NLCIUS_CII_V1031 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                 "nlcius-cii",
-                                                                                                 "1.0.3.1");
+  public static final DVRCoordinate VID_SI_NLCIUS_CII_V1031 = DVRHelper.createCoordinate (GROUP_ID, "nlcius-cii", "1.0.3.1");
   @Deprecated
-  public static final DVRCoordinate VID_SI_NLCIUS_CII_V1032 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                 "nlcius-cii",
-                                                                                                 "1.0.3.2");
+  public static final DVRCoordinate VID_SI_NLCIUS_CII_V1032 = DVRHelper.createCoordinate (GROUP_ID, "nlcius-cii", "1.0.3.2");
   @Deprecated
-  public static final DVRCoordinate VID_SI_NLCIUS_CII_V1033 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                 "nlcius-cii",
-                                                                                                 "1.0.3.3");
+  public static final DVRCoordinate VID_SI_NLCIUS_CII_V1033 = DVRHelper.createCoordinate (GROUP_ID, "nlcius-cii", "1.0.3.3");
   @Deprecated
-  public static final DVRCoordinate VID_SI_NLCIUS_CII_V1034 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                 "nlcius-cii",
-                                                                                                 "1.0.3.4");
+  public static final DVRCoordinate VID_SI_NLCIUS_CII_V1034 = DVRHelper.createCoordinate (GROUP_ID, "nlcius-cii", "1.0.3.4");
   @Deprecated
-  public static final DVRCoordinate VID_SI_NLCIUS_CII_V1035 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                 "nlcius-cii",
-                                                                                                 "1.0.3.5");
+  public static final DVRCoordinate VID_SI_NLCIUS_CII_V1035 = DVRHelper.createCoordinate (GROUP_ID, "nlcius-cii", "1.0.3.5");
   @Deprecated
-  public static final DVRCoordinate VID_SI_NLCIUS_CII_V1036 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                 "nlcius-cii",
-                                                                                                 "1.0.3.6");
+  public static final DVRCoordinate VID_SI_NLCIUS_CII_V1036 = DVRHelper.createCoordinate (GROUP_ID, "nlcius-cii", "1.0.3.6");
   @Deprecated
-  public static final DVRCoordinate VID_SI_NLCIUS_CII_V1037 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                 "nlcius-cii",
-                                                                                                 "1.0.3.7");
+  public static final DVRCoordinate VID_SI_NLCIUS_CII_V1037 = DVRHelper.createCoordinate (GROUP_ID, "nlcius-cii", "1.0.3.7");
   @Deprecated
-  public static final DVRCoordinate VID_SI_NLCIUS_CII_V1038 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                 "nlcius-cii",
-                                                                                                 "1.0.3.8");
+  public static final DVRCoordinate VID_SI_NLCIUS_CII_V1038 = DVRHelper.createCoordinate (GROUP_ID, "nlcius-cii", "1.0.3.8");
   @Deprecated
-  public static final DVRCoordinate VID_SI_NLCIUS_CII_V1039 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                 "nlcius-cii",
-                                                                                                 "1.0.3.9");
+  public static final DVRCoordinate VID_SI_NLCIUS_CII_V1039 = DVRHelper.createCoordinate (GROUP_ID, "nlcius-cii", "1.0.3.9");
   @Deprecated
-  public static final DVRCoordinate VID_SI_NLCIUS_CII_V1_0_3_11 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                     "nlcius-cii",
-                                                                                                     "1.0.3.11");
-  public static final DVRCoordinate VID_SI_NLCIUS_CII_V1_0_3_12 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                     "nlcius-cii",
-                                                                                                     "1.0.3.12");
-  public static final DVRCoordinate VID_SI_NLCIUS_CII_V1_0_3_13 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                     "nlcius-cii",
-                                                                                                     "1.0.3.13");
+  public static final DVRCoordinate VID_SI_NLCIUS_CII_V1_0_3_11 = DVRHelper.createCoordinate (GROUP_ID, "nlcius-cii", "1.0.3.11");
+  public static final DVRCoordinate VID_SI_NLCIUS_CII_V1_0_3_12 = DVRHelper.createCoordinate (GROUP_ID, "nlcius-cii", "1.0.3.12");
+  public static final DVRCoordinate VID_SI_NLCIUS_CII_V1_0_3_13 = DVRHelper.createCoordinate (GROUP_ID, "nlcius-cii", "1.0.3.13");
 
   @NonNull
   private static ClassLoader _getCL ()

@@ -25,11 +25,16 @@ import com.helger.diver.api.coord.DVRCoordinate;
  *
  * @author Philip Helger
  * @since 4.4.0
+ * @deprecated Since 4.5.0 - moved to the <code>phive-rules-foundation-api</code> artifact. Use
+ *             {@link com.helger.phive.rules.foundation.PhiveRulesInitializationException} instead.
  */
-public class PhiveRulesInitializationException extends RuntimeException
+@Deprecated (forRemoval = true, since = "4.5.0")
+public class PhiveRulesInitializationException extends
+                                               com.helger.phive.rules.foundation.PhiveRulesInitializationException
 {
+  @Deprecated (forRemoval = true, since = "4.5.0")
   public PhiveRulesInitializationException (@NonNull final DVRCoordinate aCoord)
   {
-    super ("The VES with coordinate '" + aCoord.getAsSingleID () + "' must be registered before this one");
+    super (aCoord);
   }
 }

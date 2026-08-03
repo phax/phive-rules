@@ -34,6 +34,7 @@ import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
 import com.helger.phive.en16931.EN16931Validation;
 import com.helger.phive.rules.api.PhiveRulesCIIHelper;
 import com.helger.phive.rules.api.PhiveRulesHelper;
+import com.helger.phive.rules.foundation.DVRHelper;
 import com.helger.phive.xml.executorset.VesXmlBuilder;
 import com.helger.phive.xml.source.IValidationSourceXML;
 
@@ -50,142 +51,72 @@ public final class ZugferdValidation
 
   // v2.0.1
   @Deprecated
-  public static final DVRCoordinate VID_ZUGFERD_2_0_1_MINIMUM = PhiveRulesHelper.createCoordinate (GROUP_ID_ZUGFERD,
-                                                                                                   EZugferdProfile.MINIMUM.getArtifactID (),
-                                                                                                   "2.0.1");
+  public static final DVRCoordinate VID_ZUGFERD_2_0_1_MINIMUM = DVRHelper.createCoordinate (GROUP_ID_ZUGFERD, EZugferdProfile.MINIMUM.getArtifactID (), "2.0.1");
   @Deprecated
-  public static final DVRCoordinate VID_ZUGFERD_2_0_1_BASIC_WL = PhiveRulesHelper.createCoordinate (GROUP_ID_ZUGFERD,
-                                                                                                    EZugferdProfile.BASIC_WL.getArtifactID (),
-                                                                                                    "2.0.1");
+  public static final DVRCoordinate VID_ZUGFERD_2_0_1_BASIC_WL = DVRHelper.createCoordinate (GROUP_ID_ZUGFERD, EZugferdProfile.BASIC_WL.getArtifactID (), "2.0.1");
   @Deprecated
-  public static final DVRCoordinate VID_ZUGFERD_2_0_1_BASIC = PhiveRulesHelper.createCoordinate (GROUP_ID_ZUGFERD,
-                                                                                                 EZugferdProfile.BASIC.getArtifactID (),
-                                                                                                 "2.0.1");
+  public static final DVRCoordinate VID_ZUGFERD_2_0_1_BASIC = DVRHelper.createCoordinate (GROUP_ID_ZUGFERD, EZugferdProfile.BASIC.getArtifactID (), "2.0.1");
   @Deprecated
-  public static final DVRCoordinate VID_ZUGFERD_2_0_1_EN16931 = PhiveRulesHelper.createCoordinate (GROUP_ID_ZUGFERD,
-                                                                                                   EZugferdProfile.EN16931.getArtifactID (),
-                                                                                                   "2.0.1");
+  public static final DVRCoordinate VID_ZUGFERD_2_0_1_EN16931 = DVRHelper.createCoordinate (GROUP_ID_ZUGFERD, EZugferdProfile.EN16931.getArtifactID (), "2.0.1");
   @Deprecated
-  public static final DVRCoordinate VID_ZUGFERD_2_0_1_EXTENDED = PhiveRulesHelper.createCoordinate (GROUP_ID_ZUGFERD,
-                                                                                                    EZugferdProfile.EXTENDED.getArtifactID (),
-                                                                                                    "2.0.1");
+  public static final DVRCoordinate VID_ZUGFERD_2_0_1_EXTENDED = DVRHelper.createCoordinate (GROUP_ID_ZUGFERD, EZugferdProfile.EXTENDED.getArtifactID (), "2.0.1");
 
   // v2.1
   @Deprecated
-  public static final DVRCoordinate VID_ZUGFERD_2_1_MINIMUM = PhiveRulesHelper.createCoordinate (GROUP_ID_ZUGFERD,
-                                                                                                 EZugferdProfile.MINIMUM.getArtifactID (),
-                                                                                                 "2.1");
+  public static final DVRCoordinate VID_ZUGFERD_2_1_MINIMUM = DVRHelper.createCoordinate (GROUP_ID_ZUGFERD, EZugferdProfile.MINIMUM.getArtifactID (), "2.1");
   @Deprecated
-  public static final DVRCoordinate VID_ZUGFERD_2_1_BASIC_WL = PhiveRulesHelper.createCoordinate (GROUP_ID_ZUGFERD,
-                                                                                                  EZugferdProfile.BASIC_WL.getArtifactID (),
-                                                                                                  "2.1");
+  public static final DVRCoordinate VID_ZUGFERD_2_1_BASIC_WL = DVRHelper.createCoordinate (GROUP_ID_ZUGFERD, EZugferdProfile.BASIC_WL.getArtifactID (), "2.1");
   @Deprecated
-  public static final DVRCoordinate VID_ZUGFERD_2_1_BASIC = PhiveRulesHelper.createCoordinate (GROUP_ID_ZUGFERD,
-                                                                                               EZugferdProfile.BASIC.getArtifactID (),
-                                                                                               "2.1");
+  public static final DVRCoordinate VID_ZUGFERD_2_1_BASIC = DVRHelper.createCoordinate (GROUP_ID_ZUGFERD, EZugferdProfile.BASIC.getArtifactID (), "2.1");
   @Deprecated
-  public static final DVRCoordinate VID_ZUGFERD_2_1_EN16931 = PhiveRulesHelper.createCoordinate (GROUP_ID_ZUGFERD,
-                                                                                                 EZugferdProfile.EN16931.getArtifactID (),
-                                                                                                 "2.1");
+  public static final DVRCoordinate VID_ZUGFERD_2_1_EN16931 = DVRHelper.createCoordinate (GROUP_ID_ZUGFERD, EZugferdProfile.EN16931.getArtifactID (), "2.1");
   @Deprecated
-  public static final DVRCoordinate VID_ZUGFERD_2_1_EXTENDED = PhiveRulesHelper.createCoordinate (GROUP_ID_ZUGFERD,
-                                                                                                  EZugferdProfile.EXTENDED.getArtifactID (),
-                                                                                                  "2.1");
+  public static final DVRCoordinate VID_ZUGFERD_2_1_EXTENDED = DVRHelper.createCoordinate (GROUP_ID_ZUGFERD, EZugferdProfile.EXTENDED.getArtifactID (), "2.1");
 
   // v2.2
   @Deprecated
-  public static final DVRCoordinate VID_ZUGFERD_2_2_MINIMUM = PhiveRulesHelper.createCoordinate (GROUP_ID_ZUGFERD,
-                                                                                                 EZugferdProfile.MINIMUM.getArtifactID (),
-                                                                                                 "2.2");
+  public static final DVRCoordinate VID_ZUGFERD_2_2_MINIMUM = DVRHelper.createCoordinate (GROUP_ID_ZUGFERD, EZugferdProfile.MINIMUM.getArtifactID (), "2.2");
   @Deprecated
-  public static final DVRCoordinate VID_ZUGFERD_2_2_BASIC_WL = PhiveRulesHelper.createCoordinate (GROUP_ID_ZUGFERD,
-                                                                                                  EZugferdProfile.BASIC_WL.getArtifactID (),
-                                                                                                  "2.2");
+  public static final DVRCoordinate VID_ZUGFERD_2_2_BASIC_WL = DVRHelper.createCoordinate (GROUP_ID_ZUGFERD, EZugferdProfile.BASIC_WL.getArtifactID (), "2.2");
   @Deprecated
-  public static final DVRCoordinate VID_ZUGFERD_2_2_BASIC = PhiveRulesHelper.createCoordinate (GROUP_ID_ZUGFERD,
-                                                                                               EZugferdProfile.BASIC.getArtifactID (),
-                                                                                               "2.2");
+  public static final DVRCoordinate VID_ZUGFERD_2_2_BASIC = DVRHelper.createCoordinate (GROUP_ID_ZUGFERD, EZugferdProfile.BASIC.getArtifactID (), "2.2");
   @Deprecated
-  public static final DVRCoordinate VID_ZUGFERD_2_2_EN16931 = PhiveRulesHelper.createCoordinate (GROUP_ID_ZUGFERD,
-                                                                                                 EZugferdProfile.EN16931.getArtifactID (),
-                                                                                                 "2.2");
+  public static final DVRCoordinate VID_ZUGFERD_2_2_EN16931 = DVRHelper.createCoordinate (GROUP_ID_ZUGFERD, EZugferdProfile.EN16931.getArtifactID (), "2.2");
   @Deprecated
-  public static final DVRCoordinate VID_ZUGFERD_2_2_EXTENDED = PhiveRulesHelper.createCoordinate (GROUP_ID_ZUGFERD,
-                                                                                                  EZugferdProfile.EXTENDED.getArtifactID (),
-                                                                                                  "2.2");
+  public static final DVRCoordinate VID_ZUGFERD_2_2_EXTENDED = DVRHelper.createCoordinate (GROUP_ID_ZUGFERD, EZugferdProfile.EXTENDED.getArtifactID (), "2.2");
 
   // v2.3.2
   @Deprecated
-  public static final DVRCoordinate VID_ZUGFERD_2_3_2_MINIMUM = PhiveRulesHelper.createCoordinate (GROUP_ID_ZUGFERD,
-                                                                                                   EZugferdProfile.MINIMUM.getArtifactID (),
-                                                                                                   "2.3.2");
+  public static final DVRCoordinate VID_ZUGFERD_2_3_2_MINIMUM = DVRHelper.createCoordinate (GROUP_ID_ZUGFERD, EZugferdProfile.MINIMUM.getArtifactID (), "2.3.2");
   @Deprecated
-  public static final DVRCoordinate VID_ZUGFERD_2_3_2_BASIC_WL = PhiveRulesHelper.createCoordinate (GROUP_ID_ZUGFERD,
-                                                                                                    EZugferdProfile.BASIC_WL.getArtifactID (),
-                                                                                                    "2.3.2");
+  public static final DVRCoordinate VID_ZUGFERD_2_3_2_BASIC_WL = DVRHelper.createCoordinate (GROUP_ID_ZUGFERD, EZugferdProfile.BASIC_WL.getArtifactID (), "2.3.2");
   @Deprecated
-  public static final DVRCoordinate VID_ZUGFERD_2_3_2_BASIC = PhiveRulesHelper.createCoordinate (GROUP_ID_ZUGFERD,
-                                                                                                 EZugferdProfile.BASIC.getArtifactID (),
-                                                                                                 "2.3.2");
+  public static final DVRCoordinate VID_ZUGFERD_2_3_2_BASIC = DVRHelper.createCoordinate (GROUP_ID_ZUGFERD, EZugferdProfile.BASIC.getArtifactID (), "2.3.2");
   @Deprecated
-  public static final DVRCoordinate VID_ZUGFERD_2_3_2_EN16931 = PhiveRulesHelper.createCoordinate (GROUP_ID_ZUGFERD,
-                                                                                                   EZugferdProfile.EN16931.getArtifactID (),
-                                                                                                   "2.3.2");
+  public static final DVRCoordinate VID_ZUGFERD_2_3_2_EN16931 = DVRHelper.createCoordinate (GROUP_ID_ZUGFERD, EZugferdProfile.EN16931.getArtifactID (), "2.3.2");
   @Deprecated
-  public static final DVRCoordinate VID_ZUGFERD_2_3_2_EXTENDED = PhiveRulesHelper.createCoordinate (GROUP_ID_ZUGFERD,
-                                                                                                    EZugferdProfile.EXTENDED.getArtifactID (),
-                                                                                                    "2.3.2");
+  public static final DVRCoordinate VID_ZUGFERD_2_3_2_EXTENDED = DVRHelper.createCoordinate (GROUP_ID_ZUGFERD, EZugferdProfile.EXTENDED.getArtifactID (), "2.3.2");
 
   // v2.3.3
-  public static final DVRCoordinate VID_ZUGFERD_2_3_3_MINIMUM = PhiveRulesHelper.createCoordinate (GROUP_ID_ZUGFERD,
-                                                                                                   EZugferdProfile.MINIMUM.getArtifactID (),
-                                                                                                   "2.3.3");
-  public static final DVRCoordinate VID_ZUGFERD_2_3_3_BASIC_WL = PhiveRulesHelper.createCoordinate (GROUP_ID_ZUGFERD,
-                                                                                                    EZugferdProfile.BASIC_WL.getArtifactID (),
-                                                                                                    "2.3.3");
-  public static final DVRCoordinate VID_ZUGFERD_2_3_3_BASIC = PhiveRulesHelper.createCoordinate (GROUP_ID_ZUGFERD,
-                                                                                                 EZugferdProfile.BASIC.getArtifactID (),
-                                                                                                 "2.3.3");
-  public static final DVRCoordinate VID_ZUGFERD_2_3_3_EN16931 = PhiveRulesHelper.createCoordinate (GROUP_ID_ZUGFERD,
-                                                                                                   EZugferdProfile.EN16931.getArtifactID (),
-                                                                                                   "2.3.3");
-  public static final DVRCoordinate VID_ZUGFERD_2_3_3_EXTENDED = PhiveRulesHelper.createCoordinate (GROUP_ID_ZUGFERD,
-                                                                                                    EZugferdProfile.EXTENDED.getArtifactID (),
-                                                                                                    "2.3.3");
+  public static final DVRCoordinate VID_ZUGFERD_2_3_3_MINIMUM = DVRHelper.createCoordinate (GROUP_ID_ZUGFERD, EZugferdProfile.MINIMUM.getArtifactID (), "2.3.3");
+  public static final DVRCoordinate VID_ZUGFERD_2_3_3_BASIC_WL = DVRHelper.createCoordinate (GROUP_ID_ZUGFERD, EZugferdProfile.BASIC_WL.getArtifactID (), "2.3.3");
+  public static final DVRCoordinate VID_ZUGFERD_2_3_3_BASIC = DVRHelper.createCoordinate (GROUP_ID_ZUGFERD, EZugferdProfile.BASIC.getArtifactID (), "2.3.3");
+  public static final DVRCoordinate VID_ZUGFERD_2_3_3_EN16931 = DVRHelper.createCoordinate (GROUP_ID_ZUGFERD, EZugferdProfile.EN16931.getArtifactID (), "2.3.3");
+  public static final DVRCoordinate VID_ZUGFERD_2_3_3_EXTENDED = DVRHelper.createCoordinate (GROUP_ID_ZUGFERD, EZugferdProfile.EXTENDED.getArtifactID (), "2.3.3");
 
   // v2.4
-  public static final DVRCoordinate VID_ZUGFERD_2_4_MINIMUM = PhiveRulesHelper.createCoordinate (GROUP_ID_ZUGFERD,
-                                                                                                 EZugferdProfile.MINIMUM.getArtifactID (),
-                                                                                                 "2.4");
-  public static final DVRCoordinate VID_ZUGFERD_2_4_BASIC_WL = PhiveRulesHelper.createCoordinate (GROUP_ID_ZUGFERD,
-                                                                                                  EZugferdProfile.BASIC_WL.getArtifactID (),
-                                                                                                  "2.4");
-  public static final DVRCoordinate VID_ZUGFERD_2_4_BASIC = PhiveRulesHelper.createCoordinate (GROUP_ID_ZUGFERD,
-                                                                                               EZugferdProfile.BASIC.getArtifactID (),
-                                                                                               "2.4");
-  public static final DVRCoordinate VID_ZUGFERD_2_4_EN16931 = PhiveRulesHelper.createCoordinate (GROUP_ID_ZUGFERD,
-                                                                                                 EZugferdProfile.EN16931.getArtifactID (),
-                                                                                                 "2.4");
-  public static final DVRCoordinate VID_ZUGFERD_2_4_EXTENDED = PhiveRulesHelper.createCoordinate (GROUP_ID_ZUGFERD,
-                                                                                                  EZugferdProfile.EXTENDED.getArtifactID (),
-                                                                                                  "2.4");
+  public static final DVRCoordinate VID_ZUGFERD_2_4_MINIMUM = DVRHelper.createCoordinate (GROUP_ID_ZUGFERD, EZugferdProfile.MINIMUM.getArtifactID (), "2.4");
+  public static final DVRCoordinate VID_ZUGFERD_2_4_BASIC_WL = DVRHelper.createCoordinate (GROUP_ID_ZUGFERD, EZugferdProfile.BASIC_WL.getArtifactID (), "2.4");
+  public static final DVRCoordinate VID_ZUGFERD_2_4_BASIC = DVRHelper.createCoordinate (GROUP_ID_ZUGFERD, EZugferdProfile.BASIC.getArtifactID (), "2.4");
+  public static final DVRCoordinate VID_ZUGFERD_2_4_EN16931 = DVRHelper.createCoordinate (GROUP_ID_ZUGFERD, EZugferdProfile.EN16931.getArtifactID (), "2.4");
+  public static final DVRCoordinate VID_ZUGFERD_2_4_EXTENDED = DVRHelper.createCoordinate (GROUP_ID_ZUGFERD, EZugferdProfile.EXTENDED.getArtifactID (), "2.4");
 
   // v2.5
-  public static final DVRCoordinate VID_ZUGFERD_2_5_MINIMUM = PhiveRulesHelper.createCoordinate (GROUP_ID_ZUGFERD,
-                                                                                                 EZugferdProfile.MINIMUM.getArtifactID (),
-                                                                                                 "2.5");
-  public static final DVRCoordinate VID_ZUGFERD_2_5_BASIC_WL = PhiveRulesHelper.createCoordinate (GROUP_ID_ZUGFERD,
-                                                                                                  EZugferdProfile.BASIC_WL.getArtifactID (),
-                                                                                                  "2.5");
-  public static final DVRCoordinate VID_ZUGFERD_2_5_BASIC = PhiveRulesHelper.createCoordinate (GROUP_ID_ZUGFERD,
-                                                                                               EZugferdProfile.BASIC.getArtifactID (),
-                                                                                               "2.5");
-  public static final DVRCoordinate VID_ZUGFERD_2_5_EN16931 = PhiveRulesHelper.createCoordinate (GROUP_ID_ZUGFERD,
-                                                                                                 EZugferdProfile.EN16931.getArtifactID (),
-                                                                                                 "2.5");
-  public static final DVRCoordinate VID_ZUGFERD_2_5_EXTENDED = PhiveRulesHelper.createCoordinate (GROUP_ID_ZUGFERD,
-                                                                                                  EZugferdProfile.EXTENDED.getArtifactID (),
-                                                                                                  "2.5");
+  public static final DVRCoordinate VID_ZUGFERD_2_5_MINIMUM = DVRHelper.createCoordinate (GROUP_ID_ZUGFERD, EZugferdProfile.MINIMUM.getArtifactID (), "2.5");
+  public static final DVRCoordinate VID_ZUGFERD_2_5_BASIC_WL = DVRHelper.createCoordinate (GROUP_ID_ZUGFERD, EZugferdProfile.BASIC_WL.getArtifactID (), "2.5");
+  public static final DVRCoordinate VID_ZUGFERD_2_5_BASIC = DVRHelper.createCoordinate (GROUP_ID_ZUGFERD, EZugferdProfile.BASIC.getArtifactID (), "2.5");
+  public static final DVRCoordinate VID_ZUGFERD_2_5_EN16931 = DVRHelper.createCoordinate (GROUP_ID_ZUGFERD, EZugferdProfile.EN16931.getArtifactID (), "2.5");
+  public static final DVRCoordinate VID_ZUGFERD_2_5_EXTENDED = DVRHelper.createCoordinate (GROUP_ID_ZUGFERD, EZugferdProfile.EXTENDED.getArtifactID (), "2.5");
 
   // Global version map
   private static final ICommonsMap <DVRVersion, DVRVersion> ZUGFERD_TO_FACTURX_MAP = new CommonsHashMap <> ();
@@ -280,9 +211,7 @@ public final class ZugferdValidation
                                                                                                 _getCL ()));
 
       // Register as Zugferd
-      final DVRCoordinate aVESID = PhiveRulesHelper.createCoordinate (GROUP_ID_ZUGFERD,
-                                                                      eProfile.getArtifactID (),
-                                                                      sZugferdVersion);
+      final DVRCoordinate aVESID = DVRHelper.createCoordinate (GROUP_ID_ZUGFERD, eProfile.getArtifactID (), sZugferdVersion);
       final String sDisplayName = "ZUGFeRD " + sZugferdVersion + " (" + eProfile.getDisplayName () + ")";
       VesXmlBuilder.builder ()
                    .vesID (aVESID)
@@ -315,9 +244,7 @@ public final class ZugferdValidation
                                                                                                 _getCL ()));
 
       // Register as Zugferd
-      final DVRCoordinate aVESID = PhiveRulesHelper.createCoordinate (GROUP_ID_ZUGFERD,
-                                                                      eProfile.getArtifactID (),
-                                                                      sZugferdVersion);
+      final DVRCoordinate aVESID = DVRHelper.createCoordinate (GROUP_ID_ZUGFERD, eProfile.getArtifactID (), sZugferdVersion);
       final String sDisplayName = "ZUGFeRD " + sZugferdVersion + " (" + eProfile.getDisplayName () + ")";
       if (eProfile == EZugferdProfile.EN16931)
       {
@@ -365,9 +292,7 @@ public final class ZugferdValidation
                                                                                                 _getCL ()));
 
       // Register as Zugferd
-      final DVRCoordinate aVESID = PhiveRulesHelper.createCoordinate (GROUP_ID_ZUGFERD,
-                                                                      eProfile.getArtifactID (),
-                                                                      sZugferdVersion);
+      final DVRCoordinate aVESID = DVRHelper.createCoordinate (GROUP_ID_ZUGFERD, eProfile.getArtifactID (), sZugferdVersion);
       final String sDisplayName = "ZUGFeRD " + sZugferdVersion + " (" + eProfile.getDisplayName () + ")";
       if (eProfile == EZugferdProfile.EN16931)
       {
@@ -405,9 +330,7 @@ public final class ZugferdValidation
     for (final EZugferdProfile eProfile : EZugferdProfile.values ())
     {
       final String sZugferdVersion = "2.3.2";
-      final DVRCoordinate aVESID = PhiveRulesHelper.createCoordinate (GROUP_ID_ZUGFERD,
-                                                                      eProfile.getArtifactID (),
-                                                                      sZugferdVersion);
+      final DVRCoordinate aVESID = DVRHelper.createCoordinate (GROUP_ID_ZUGFERD, eProfile.getArtifactID (), sZugferdVersion);
 
       VesXmlBuilder.builder ()
                    .vesID (aVESID)
@@ -435,9 +358,7 @@ public final class ZugferdValidation
     for (final EZugferdProfile eProfile : EZugferdProfile.values ())
     {
       final String sZugferdVersion = "2.3.3";
-      final DVRCoordinate aVESID = PhiveRulesHelper.createCoordinate (GROUP_ID_ZUGFERD,
-                                                                      eProfile.getArtifactID (),
-                                                                      sZugferdVersion);
+      final DVRCoordinate aVESID = DVRHelper.createCoordinate (GROUP_ID_ZUGFERD, eProfile.getArtifactID (), sZugferdVersion);
 
       VesXmlBuilder.builder ()
                    .vesID (aVESID)
@@ -465,9 +386,7 @@ public final class ZugferdValidation
     for (final EZugferdProfile eProfile : EZugferdProfile.values ())
     {
       final String sZugferdVersion = "2.4";
-      final DVRCoordinate aVESID = PhiveRulesHelper.createCoordinate (GROUP_ID_ZUGFERD,
-                                                                      eProfile.getArtifactID (),
-                                                                      sZugferdVersion);
+      final DVRCoordinate aVESID = DVRHelper.createCoordinate (GROUP_ID_ZUGFERD, eProfile.getArtifactID (), sZugferdVersion);
 
       VesXmlBuilder.builder ()
                    .vesID (aVESID)
@@ -495,9 +414,7 @@ public final class ZugferdValidation
     for (final EZugferdProfile eProfile : EZugferdProfile.values ())
     {
       final String sZugferdVersion = "2.5";
-      final DVRCoordinate aVESID = PhiveRulesHelper.createCoordinate (GROUP_ID_ZUGFERD,
-                                                                      eProfile.getArtifactID (),
-                                                                      sZugferdVersion);
+      final DVRCoordinate aVESID = DVRHelper.createCoordinate (GROUP_ID_ZUGFERD, eProfile.getArtifactID (), sZugferdVersion);
 
       VesXmlBuilder.builder ()
                    .vesID (aVESID)

@@ -32,6 +32,7 @@ import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
 import com.helger.phive.en16931.EN16931Validation;
 import com.helger.phive.rules.api.PhiveRulesHelper;
 import com.helger.phive.rules.api.PhiveRulesUBLHelper;
+import com.helger.phive.rules.foundation.DVRHelper;
 import com.helger.phive.xml.executorset.VesXmlBuilder;
 import com.helger.phive.xml.source.IValidationSourceXML;
 
@@ -54,13 +55,9 @@ public final class PeppolValidation2025_03
   @Deprecated (forRemoval = false)
   public static final String GROUP_ID = "eu.peppol.bis3";
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OPENPEPPOL_INVOICE_SELF_BILLING_UBL_V3 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                                    "invoice-self-billing",
-                                                                                                                    VERSION_STR);
+  public static final DVRCoordinate VID_OPENPEPPOL_INVOICE_SELF_BILLING_UBL_V3 = DVRHelper.createCoordinate (GROUP_ID, "invoice-self-billing", VERSION_STR);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OPENPEPPOL_CREDIT_NOTE_SELF_BILLING_UBL_V3 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                                        "creditnote-self-billing",
-                                                                                                                        VERSION_STR);
+  public static final DVRCoordinate VID_OPENPEPPOL_CREDIT_NOTE_SELF_BILLING_UBL_V3 = DVRHelper.createCoordinate (GROUP_ID, "creditnote-self-billing", VERSION_STR);
 
   private PeppolValidation2025_03 ()
   {}

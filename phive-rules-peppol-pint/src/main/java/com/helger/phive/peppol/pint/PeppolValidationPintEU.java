@@ -25,6 +25,7 @@ import com.helger.io.resource.ClassPathResource;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
 import com.helger.phive.rules.api.PhiveRulesHelper;
 import com.helger.phive.rules.api.PhiveRulesUBLHelper;
+import com.helger.phive.rules.foundation.DVRHelper;
 import com.helger.phive.xml.executorset.VesXmlBuilder;
 import com.helger.phive.xml.source.IValidationSourceXML;
 import com.helger.ubl21.UBL21Marshaller;
@@ -42,29 +43,17 @@ public final class PeppolValidationPintEU
 
   // 1.0.0 from 2025-10-01
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OPENPEPPOL_EU_PINT_INVOICE_2025_10 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                                "invoice",
-                                                                                                                "2025.10");
+  public static final DVRCoordinate VID_OPENPEPPOL_EU_PINT_INVOICE_2025_10 = DVRHelper.createCoordinate (GROUP_ID, "invoice", "2025.10");
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OPENPEPPOL_EU_PINT_CREDIT_NOTE_2025_10 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                                    "creditnote",
-                                                                                                                    "2025.10");
+  public static final DVRCoordinate VID_OPENPEPPOL_EU_PINT_CREDIT_NOTE_2025_10 = DVRHelper.createCoordinate (GROUP_ID, "creditnote", "2025.10");
 
   // 1.0.1 from 2026-03-09
-  public static final DVRCoordinate VID_OPENPEPPOL_EU_PINT_INVOICE_2025_11 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                                "invoice",
-                                                                                                                "2025.11");
-  public static final DVRCoordinate VID_OPENPEPPOL_EU_PINT_CREDIT_NOTE_2025_11 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                                    "creditnote",
-                                                                                                                    "2025.11");
+  public static final DVRCoordinate VID_OPENPEPPOL_EU_PINT_INVOICE_2025_11 = DVRHelper.createCoordinate (GROUP_ID, "invoice", "2025.11");
+  public static final DVRCoordinate VID_OPENPEPPOL_EU_PINT_CREDIT_NOTE_2025_11 = DVRHelper.createCoordinate (GROUP_ID, "creditnote", "2025.11");
 
   // 1.1.1 from 2026-06-09
-  public static final DVRCoordinate VID_OPENPEPPOL_EU_PINT_INVOICE_2026_6 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                               "invoice",
-                                                                                                               "2026.6");
-  public static final DVRCoordinate VID_OPENPEPPOL_EU_PINT_CREDIT_NOTE_2026_6 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                                   "creditnote",
-                                                                                                                   "2026.6");
+  public static final DVRCoordinate VID_OPENPEPPOL_EU_PINT_INVOICE_2026_6 = DVRHelper.createCoordinate (GROUP_ID, "invoice", "2026.6");
+  public static final DVRCoordinate VID_OPENPEPPOL_EU_PINT_CREDIT_NOTE_2026_6 = DVRHelper.createCoordinate (GROUP_ID, "creditnote", "2026.6");
 
   private PeppolValidationPintEU ()
   {}

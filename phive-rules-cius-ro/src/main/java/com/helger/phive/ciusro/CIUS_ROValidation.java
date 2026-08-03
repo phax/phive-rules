@@ -29,8 +29,9 @@ import com.helger.phive.api.executorset.IValidationExecutorSet;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
 import com.helger.phive.en16931.EN16931Validation;
 import com.helger.phive.rules.api.PhiveRulesHelper;
-import com.helger.phive.rules.api.PhiveRulesInitializationException;
 import com.helger.phive.rules.api.PhiveRulesUBLHelper;
+import com.helger.phive.rules.foundation.DVRHelper;
+import com.helger.phive.rules.foundation.PhiveRulesInitializationException;
 import com.helger.phive.xml.executorset.VesXmlBuilder;
 import com.helger.phive.xml.source.IValidationSourceXML;
 
@@ -46,41 +47,41 @@ public final class CIUS_ROValidation
 
   // Version 1.0.3
   @Deprecated
-  public static final DVRCoordinate VID_CIUS_RO_UBL_CREDITNOTE_103 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                        "ubl-creditnote",
-                                                                                                        "1.0.3");
+  public static final DVRCoordinate VID_CIUS_RO_UBL_CREDITNOTE_103 = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                                 "ubl-creditnote",
+                                                                                                 "1.0.3");
   @Deprecated
-  public static final DVRCoordinate VID_CIUS_RO_UBL_INVOICE_103 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                     "ubl-invoice",
-                                                                                                     "1.0.3");
+  public static final DVRCoordinate VID_CIUS_RO_UBL_INVOICE_103 = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                              "ubl-invoice",
+                                                                                              "1.0.3");
 
   // Version 1.0.4
   @Deprecated
-  public static final DVRCoordinate VID_CIUS_RO_UBL_CREDITNOTE_104 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                        "ubl-creditnote",
-                                                                                                        "1.0.4");
+  public static final DVRCoordinate VID_CIUS_RO_UBL_CREDITNOTE_104 = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                                 "ubl-creditnote",
+                                                                                                 "1.0.4");
   @Deprecated
-  public static final DVRCoordinate VID_CIUS_RO_UBL_INVOICE_104 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                     "ubl-invoice",
-                                                                                                     "1.0.4");
+  public static final DVRCoordinate VID_CIUS_RO_UBL_INVOICE_104 = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                              "ubl-invoice",
+                                                                                              "1.0.4");
 
   // Version 1.0.8
   @Deprecated
-  public static final DVRCoordinate VID_CIUS_RO_UBL_CREDITNOTE_108 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                        "ubl-creditnote",
-                                                                                                        "1.0.8");
+  public static final DVRCoordinate VID_CIUS_RO_UBL_CREDITNOTE_108 = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                                 "ubl-creditnote",
+                                                                                                 "1.0.8");
   @Deprecated
-  public static final DVRCoordinate VID_CIUS_RO_UBL_INVOICE_108 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                     "ubl-invoice",
-                                                                                                     "1.0.8");
+  public static final DVRCoordinate VID_CIUS_RO_UBL_INVOICE_108 = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                              "ubl-invoice",
+                                                                                              "1.0.8");
 
   // Version 1.0.9
-  public static final DVRCoordinate VID_CIUS_RO_UBL_CREDITNOTE_109 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                        "ubl-creditnote",
-                                                                                                        "1.0.9");
-  public static final DVRCoordinate VID_CIUS_RO_UBL_INVOICE_109 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                     "ubl-invoice",
-                                                                                                     "1.0.9");
+  public static final DVRCoordinate VID_CIUS_RO_UBL_CREDITNOTE_109 = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                                 "ubl-creditnote",
+                                                                                                 "1.0.9");
+  public static final DVRCoordinate VID_CIUS_RO_UBL_INVOICE_109 = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                              "ubl-invoice",
+                                                                                              "1.0.9");
 
   private CIUS_ROValidation ()
   {}

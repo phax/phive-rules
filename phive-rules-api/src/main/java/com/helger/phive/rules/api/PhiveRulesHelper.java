@@ -26,7 +26,6 @@ import com.helger.annotation.concurrent.Immutable;
 import com.helger.collection.commons.ICommonsList;
 import com.helger.datetime.helper.PDTFactory;
 import com.helger.diver.api.coord.DVRCoordinate;
-import com.helger.diver.api.version.DVRVersionException;
 import com.helger.io.resource.IReadableResource;
 import com.helger.phive.api.executorset.IValidationExecutorSet;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
@@ -35,6 +34,8 @@ import com.helger.phive.api.executorset.status.IValidationExecutorSetStatus;
 import com.helger.phive.api.executorset.status.ValidationExecutorSetStatus;
 import com.helger.phive.api.executorset.status.ValidationExecutorSetStatusHistoryItem;
 import com.helger.phive.api.source.IValidationSource;
+import com.helger.phive.rules.foundation.DVRHelper;
+import com.helger.phive.rules.foundation.PhiveRulesInitializationException;
 import com.helger.phive.xml.schematron.SchematronNamespaceBeautifier;
 import com.helger.phive.xml.schematron.ValidationExecutorSchematron;
 import com.helger.xml.namespace.IIterableNamespaceContext;
@@ -50,52 +51,23 @@ public final class PhiveRulesHelper
   private PhiveRulesHelper ()
   {}
 
-  /**
-   * Create coordinates, capturing version parsing exceptions
-   *
-   * @param sGroupID
-   *        Coordinate group ID
-   * @param sArtifactID
-   *        Coordinate artifact ID
-   * @param sVersion
-   *        Coordinate version
-   * @return The created {@link DVRCoordinate} and never <code>null</code>.
-   */
+  @Deprecated (forRemoval = true, since = "4.5.0")
   @NonNull
   public static DVRCoordinate createCoordinate (@NonNull @Nonempty final String sGroupID,
                                                 @NonNull @Nonempty final String sArtifactID,
                                                 @NonNull @Nonempty final String sVersion)
   {
-    return createCoordinate (sGroupID, sArtifactID, sVersion, null);
+    return DVRHelper.createCoordinate (sGroupID, sArtifactID, sVersion);
   }
 
-  /**
-   * Create coordinates, capturing version parsing exceptions
-   *
-   * @param sGroupID
-   *        Coordinate group ID
-   * @param sArtifactID
-   *        Coordinate artifact ID
-   * @param sVersion
-   *        Coordinate version
-   * @param sClassifier
-   *        Optional coordinate classifier
-   * @return The created {@link DVRCoordinate} and never <code>null</code>.
-   */
+  @Deprecated (forRemoval = true, since = "4.5.0")
   @NonNull
   public static DVRCoordinate createCoordinate (@NonNull @Nonempty final String sGroupID,
                                                 @NonNull @Nonempty final String sArtifactID,
                                                 @NonNull @Nonempty final String sVersion,
                                                 @Nullable final String sClassifier)
   {
-    try
-    {
-      return DVRCoordinate.create (sGroupID, sArtifactID, sVersion, sClassifier);
-    }
-    catch (final DVRVersionException ex)
-    {
-      throw new IllegalArgumentException (ex);
-    }
+    return DVRHelper.createCoordinate (sGroupID, sArtifactID, sVersion, sClassifier);
   }
 
   @NonNull
@@ -108,7 +80,7 @@ public final class PhiveRulesHelper
 
   @NonNull
   public static <T extends IValidationSource> IValidationExecutorSet <T> requireVESID (@NonNull final IValidationExecutorSetRegistry <T> aRegistry,
-                                                                                       @NonNull final DVRCoordinate aCoord) throws PhiveRulesInitializationException
+                                                                                       @NonNull final DVRCoordinate aCoord)
   {
     final var ret = aRegistry.getOfID (aCoord);
     if (ret == null)

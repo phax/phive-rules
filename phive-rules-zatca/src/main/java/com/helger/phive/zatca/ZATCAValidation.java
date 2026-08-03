@@ -23,8 +23,8 @@ import com.helger.base.enforce.ValueEnforcer;
 import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.io.resource.ClassPathResource;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
-import com.helger.phive.rules.api.PhiveRulesHelper;
 import com.helger.phive.rules.api.PhiveRulesUBLHelper;
+import com.helger.phive.rules.foundation.DVRHelper;
 import com.helger.phive.xml.executorset.VesXmlBuilder;
 import com.helger.phive.xml.source.IValidationSourceXML;
 import com.helger.ubl21.UBL21Marshaller;
@@ -42,20 +42,20 @@ public final class ZATCAValidation
 
   // v2.0.3
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_INVOICE_UBL_2_0_3 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                               "ubl-invoice",
-                                                                                               "2.0.3");
+  public static final DVRCoordinate VID_INVOICE_UBL_2_0_3 = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                        "ubl-invoice",
+                                                                                        "2.0.3");
 
   // v2.3.8
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_INVOICE_UBL_2_3_8 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                               "ubl-invoice",
-                                                                                               "2.3.8");
+  public static final DVRCoordinate VID_INVOICE_UBL_2_3_8 = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                        "ubl-invoice",
+                                                                                        "2.3.8");
 
   // v3.4.6
-  public static final DVRCoordinate VID_INVOICE_UBL_3_4_6 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                               "ubl-invoice",
-                                                                                               "3.4.6");
+  public static final DVRCoordinate VID_INVOICE_UBL_3_4_6 = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                        "ubl-invoice",
+                                                                                        "3.4.6");
 
   private ZATCAValidation ()
   {}

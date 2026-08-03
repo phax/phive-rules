@@ -16,48 +16,30 @@
  */
 package com.helger.phive.rules.api;
 
-import java.util.List;
-
 import org.jspecify.annotations.NonNull;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import com.helger.annotation.concurrent.Immutable;
-import com.helger.base.enforce.ValueEnforcer;
-import com.helger.base.spi.ServiceLoaderHelper;
-import com.helger.collection.commons.CommonsArrayList;
-import com.helger.collection.commons.ICommonsList;
-import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
 import com.helger.phive.xml.source.IValidationSourceXML;
 
 /**
- * Discovers all {@link IValidationRulesRegistrarSPI} implementations on the classpath via the JDK
- * {@link java.util.ServiceLoader} mechanism and registers their validation execution sets into a
- * provided registry.
- * <p>
- * As the SPI load order is not deterministic, an implementation is only invoked once all coordinates
- * from its {@link IValidationRulesRegistrarSPI#getAllPrerequisites()} are present in the registry.
- * An implementation whose prerequisites are not yet present is pushed to the end of the work list and
- * retried in a later round, after other implementations had the chance to register those
- * prerequisites. If a full round passes without any progress (i.e. every remaining implementation is
- * still missing a prerequisite), the remaining prerequisites are considered unresolvable and an
- * {@link IllegalStateException} is thrown.
+ * Discovers all validation rules registrar SPI implementations on the classpath and registers their
+ * validation execution sets into a provided registry.
  *
  * @author Philip Helger
+ * @deprecated Since 4.5.0 - moved to the <code>phive-rules-foundation-api</code> artifact. Use
+ *             {@link com.helger.phive.rules.foundation.ValidationRulesRegistrar} instead.
  */
+@Deprecated (forRemoval = true, since = "4.5.0")
 @Immutable
 public final class ValidationRulesRegistrar
 {
-  private static final Logger LOGGER = LoggerFactory.getLogger (ValidationRulesRegistrar.class);
-
   private ValidationRulesRegistrar ()
   {}
 
   /**
-   * Register the validation execution sets of all {@link IValidationRulesRegistrarSPI}
-   * implementations found on the classpath into the provided registry, resolving the ordering
-   * between modules with dependencies automatically.
+   * Register the validation execution sets of all validation rules registrar SPI implementations
+   * found on the classpath into the provided registry.
    *
    * @param aRegistry
    *        The registry to add the artefacts to. May not be <code>null</code>.
@@ -65,70 +47,9 @@ public final class ValidationRulesRegistrar
    *         If the prerequisites of one or more modules cannot be resolved (circular or missing
    *         dependency).
    */
+  @Deprecated (forRemoval = true, since = "4.5.0")
   public static void registerAllValidationRules (@NonNull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
   {
-    ValueEnforcer.notNull (aRegistry, "Registry");
-
-    // Discover all SPI implementations - the order is not deterministic
-    final List <IValidationRulesRegistrarSPI> aAllSPIs = ServiceLoaderHelper.getAllSPIImplementations (IValidationRulesRegistrarSPI.class);
-    if (LOGGER.isDebugEnabled ())
-      LOGGER.debug ("Found " + aAllSPIs.size () + " IValidationRulesRegistrarSPI implementations to register");
-
-    // Work list of implementations that still need to be registered
-    ICommonsList <IValidationRulesRegistrarSPI> aPending = new CommonsArrayList <> (aAllSPIs);
-    while (aPending.isNotEmpty ())
-    {
-      // Implementations that failed this round because a prerequisite is not yet registered
-      final ICommonsList <IValidationRulesRegistrarSPI> aFailed = new CommonsArrayList <> ();
-      for (final IValidationRulesRegistrarSPI aSPI : aPending)
-      {
-        // Check whether all declared prerequisites of this implementation are already present
-        boolean bAllPrerequisitesPresent = true;
-        for (final DVRCoordinate aPrerequisite : aSPI.getAllPrerequisites ())
-          if (aRegistry.getOfID (aPrerequisite) == null)
-          {
-            bAllPrerequisitesPresent = false;
-            break;
-          }
-
-        if (bAllPrerequisitesPresent)
-          aSPI.registerValidationRules (aRegistry);
-        else
-        {
-          // A prerequisite is not yet present - retry this implementation in a later round
-          if (LOGGER.isDebugEnabled ())
-            LOGGER.debug ("Deferring validation rules registration of '" +
-                          aSPI.getClass ().getName () +
-                          "' to a later round because a prerequisite is missing");
-          aFailed.add (aSPI);
-        }
-      }
-
-      if (aFailed.isEmpty ())
-      {
-        // All remaining implementations were registered successfully
-        break;
-      }
-
-      if (aFailed.size () == aPending.size ())
-      {
-        // A full round without any progress - the remaining prerequisites are unresolvable.
-        // Report each remaining implementation together with the coordinates it is still missing.
-        final ICommonsList <String> aFailedDetails = new CommonsArrayList <> ();
-        for (final IValidationRulesRegistrarSPI aSPI : aFailed)
-        {
-          final ICommonsList <String> aMissing = new CommonsArrayList <> ();
-          for (final DVRCoordinate aPrerequisite : aSPI.getAllPrerequisites ())
-            if (aRegistry.getOfID (aPrerequisite) == null)
-              aMissing.add (aPrerequisite.getAsSingleID ());
-          aFailedDetails.add (aSPI.getClass ().getName () + " (missing prerequisites: " + aMissing + ")");
-        }
-        throw new IllegalStateException ("Unable to register the validation rules of the following SPI implementations, because their prerequisites are unresolvable (circular or missing dependency): " +
-                                         aFailedDetails);
-      }
-
-      // At least one implementation succeeded this round - retry only the failed ones
-      aPending = aFailed;
-    }
+    com.helger.phive.rules.foundation.ValidationRulesRegistrar.registerAllValidationRules (aRegistry);
   }
 }

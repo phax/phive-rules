@@ -24,6 +24,7 @@ import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.io.resource.ClassPathResource;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
 import com.helger.phive.rules.api.PhiveRulesHelper;
+import com.helger.phive.rules.foundation.DVRHelper;
 import com.helger.phive.xml.executorset.VesXmlBuilder;
 import com.helger.phive.xml.source.IValidationSourceXML;
 import com.helger.xml.namespace.MapBasedNamespaceContext;
@@ -42,22 +43,14 @@ public final class PeppolValidationReporting
   // EUSR
 
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OPENPEPPOL_EUSR_V114 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                  "eusr",
-                                                                                                  "1.1.4");
-  public static final DVRCoordinate VID_OPENPEPPOL_EUSR_V115 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                  "eusr",
-                                                                                                  "1.1.5");
+  public static final DVRCoordinate VID_OPENPEPPOL_EUSR_V114 = DVRHelper.createCoordinate (GROUP_ID, "eusr", "1.1.4");
+  public static final DVRCoordinate VID_OPENPEPPOL_EUSR_V115 = DVRHelper.createCoordinate (GROUP_ID, "eusr", "1.1.5");
 
   // TSR
 
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OPENPEPPOL_TSR_V104 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                 "tsr",
-                                                                                                 "1.0.4");
-  public static final DVRCoordinate VID_OPENPEPPOL_TSR_V105 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                 "tsr",
-                                                                                                 "1.0.5");
+  public static final DVRCoordinate VID_OPENPEPPOL_TSR_V104 = DVRHelper.createCoordinate (GROUP_ID, "tsr", "1.0.4");
+  public static final DVRCoordinate VID_OPENPEPPOL_TSR_V105 = DVRHelper.createCoordinate (GROUP_ID, "tsr", "1.0.5");
 
   private PeppolValidationReporting ()
   {}

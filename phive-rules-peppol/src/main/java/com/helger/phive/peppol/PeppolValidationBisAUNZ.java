@@ -26,6 +26,7 @@ import com.helger.io.resource.IReadableResource;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
 import com.helger.phive.rules.api.PhiveRulesHelper;
 import com.helger.phive.rules.api.PhiveRulesUBLHelper;
+import com.helger.phive.rules.foundation.DVRHelper;
 import com.helger.phive.xml.executorset.VesXmlBuilder;
 import com.helger.phive.xml.source.IValidationSourceXML;
 import com.helger.ubl21.UBL21Marshaller;
@@ -42,32 +43,16 @@ public final class PeppolValidationBisAUNZ
   public static final String GROUP_ID = "eu.peppol.bis3.aunz.ubl";
 
   // 1.0.11
-  public static final DVRCoordinate VID_OPENPEPPOL_BIS3_AUNZ_UBL_INVOICE_1_0_11 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                                     "invoice",
-                                                                                                                     "1.0.11");
-  public static final DVRCoordinate VID_OPENPEPPOL_BIS3_AUNZ_UBL_INVOICE_SELF_BILLING_1_0_11 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                                                  "invoice-self-billing",
-                                                                                                                                  "1.0.11");
-  public static final DVRCoordinate VID_OPENPEPPOL_BIS3_AUNZ_UBL_CREDIT_NOTE_1_0_11 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                                         "creditnote",
-                                                                                                                         "1.0.11");
-  public static final DVRCoordinate VID_OPENPEPPOL_BIS3_AUNZ_UBL_CREDIT_NOTE_SELF_BILLING_1_0_11 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                                                      "creditnote-self-billing",
-                                                                                                                                      "1.0.11");
+  public static final DVRCoordinate VID_OPENPEPPOL_BIS3_AUNZ_UBL_INVOICE_1_0_11 = DVRHelper.createCoordinate (GROUP_ID, "invoice", "1.0.11");
+  public static final DVRCoordinate VID_OPENPEPPOL_BIS3_AUNZ_UBL_INVOICE_SELF_BILLING_1_0_11 = DVRHelper.createCoordinate (GROUP_ID, "invoice-self-billing", "1.0.11");
+  public static final DVRCoordinate VID_OPENPEPPOL_BIS3_AUNZ_UBL_CREDIT_NOTE_1_0_11 = DVRHelper.createCoordinate (GROUP_ID, "creditnote", "1.0.11");
+  public static final DVRCoordinate VID_OPENPEPPOL_BIS3_AUNZ_UBL_CREDIT_NOTE_SELF_BILLING_1_0_11 = DVRHelper.createCoordinate (GROUP_ID, "creditnote-self-billing", "1.0.11");
 
   // 1.0.12
-  public static final DVRCoordinate VID_OPENPEPPOL_BIS3_AUNZ_UBL_INVOICE_1_0_12 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                                     "invoice",
-                                                                                                                     "1.0.12");
-  public static final DVRCoordinate VID_OPENPEPPOL_BIS3_AUNZ_UBL_INVOICE_SELF_BILLING_1_0_12 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                                                  "invoice-self-billing",
-                                                                                                                                  "1.0.12");
-  public static final DVRCoordinate VID_OPENPEPPOL_BIS3_AUNZ_UBL_CREDIT_NOTE_1_0_12 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                                         "creditnote",
-                                                                                                                         "1.0.12");
-  public static final DVRCoordinate VID_OPENPEPPOL_BIS3_AUNZ_UBL_CREDIT_NOTE_SELF_BILLING_1_0_12 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                                                      "creditnote-self-billing",
-                                                                                                                                      "1.0.12");
+  public static final DVRCoordinate VID_OPENPEPPOL_BIS3_AUNZ_UBL_INVOICE_1_0_12 = DVRHelper.createCoordinate (GROUP_ID, "invoice", "1.0.12");
+  public static final DVRCoordinate VID_OPENPEPPOL_BIS3_AUNZ_UBL_INVOICE_SELF_BILLING_1_0_12 = DVRHelper.createCoordinate (GROUP_ID, "invoice-self-billing", "1.0.12");
+  public static final DVRCoordinate VID_OPENPEPPOL_BIS3_AUNZ_UBL_CREDIT_NOTE_1_0_12 = DVRHelper.createCoordinate (GROUP_ID, "creditnote", "1.0.12");
+  public static final DVRCoordinate VID_OPENPEPPOL_BIS3_AUNZ_UBL_CREDIT_NOTE_SELF_BILLING_1_0_12 = DVRHelper.createCoordinate (GROUP_ID, "creditnote-self-billing", "1.0.12");
 
   private PeppolValidationBisAUNZ ()
   {}

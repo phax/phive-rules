@@ -23,8 +23,8 @@ import com.helger.base.enforce.ValueEnforcer;
 import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.io.resource.ClassPathResource;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
-import com.helger.phive.rules.api.PhiveRulesHelper;
 import com.helger.phive.rules.api.PhiveRulesUBLHelper;
+import com.helger.phive.rules.foundation.DVRHelper;
 import com.helger.phive.xml.executorset.VesXmlBuilder;
 import com.helger.phive.xml.source.IValidationSourceXML;
 import com.helger.ubl22.UBL22Marshaller;
@@ -41,56 +41,28 @@ public final class EHFValidationG3_2023_02
   private static final String GROUP_ID = "no.ehf.g3";
 
   // 2023-02-16
-  public static final DVRCoordinate VID_EHF_ADVANCED_ORDER_CANCELLATION_303 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                                 "advanced-order-cancellation",
-                                                                                                                 "3.0.3");
-  public static final DVRCoordinate VID_EHF_ADVANCED_ORDER_CHANGE_303 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                           "advanced-order-change",
-                                                                                                           "3.0.3");
-  public static final DVRCoordinate VID_EHF_ADVANCED_ORDER_INITIATION_303 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                               "advanced-order-initiation",
-                                                                                                               "3.0.3");
-  public static final DVRCoordinate VID_EHF_ADVANCED_ORDER_RESPONSE_303 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                             "advanced-order-response",
-                                                                                                             "3.0.3");
+  public static final DVRCoordinate VID_EHF_ADVANCED_ORDER_CANCELLATION_303 = DVRHelper.createCoordinate (GROUP_ID, "advanced-order-cancellation", "3.0.3");
+  public static final DVRCoordinate VID_EHF_ADVANCED_ORDER_CHANGE_303 = DVRHelper.createCoordinate (GROUP_ID, "advanced-order-change", "3.0.3");
+  public static final DVRCoordinate VID_EHF_ADVANCED_ORDER_INITIATION_303 = DVRHelper.createCoordinate (GROUP_ID, "advanced-order-initiation", "3.0.3");
+  public static final DVRCoordinate VID_EHF_ADVANCED_ORDER_RESPONSE_303 = DVRHelper.createCoordinate (GROUP_ID, "advanced-order-response", "3.0.3");
 
-  public static final DVRCoordinate VID_EHF_CATALOGUE_303 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                               "catalogue",
-                                                                                               "3.0.3");
-  public static final DVRCoordinate VID_EHF_CATALOGUE_RESPONSE_303 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                        "catalogue-response",
-                                                                                                        "3.0.3");
+  public static final DVRCoordinate VID_EHF_CATALOGUE_303 = DVRHelper.createCoordinate (GROUP_ID, "catalogue", "3.0.3");
+  public static final DVRCoordinate VID_EHF_CATALOGUE_RESPONSE_303 = DVRHelper.createCoordinate (GROUP_ID, "catalogue-response", "3.0.3");
 
-  public static final DVRCoordinate VID_EHF_DESPATCH_ADVICE_302 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                     "despatch-advice",
-                                                                                                     "3.0.2");
-  public static final DVRCoordinate VID_EHF_FORWARD_BILLING_INVOICE_303 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                             "forward-billing-invoice",
-                                                                                                             "3.0.3");
-  public static final DVRCoordinate VID_EHF_FORWARD_BILLING_CREDIT_NOTE_303 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                                 "forward-billing-creditnote",
-                                                                                                                 "3.0.3");
+  public static final DVRCoordinate VID_EHF_DESPATCH_ADVICE_302 = DVRHelper.createCoordinate (GROUP_ID, "despatch-advice", "3.0.2");
+  public static final DVRCoordinate VID_EHF_FORWARD_BILLING_INVOICE_303 = DVRHelper.createCoordinate (GROUP_ID, "forward-billing-invoice", "3.0.3");
+  public static final DVRCoordinate VID_EHF_FORWARD_BILLING_CREDIT_NOTE_303 = DVRHelper.createCoordinate (GROUP_ID, "forward-billing-creditnote", "3.0.3");
 
-  public static final DVRCoordinate VID_EHF_ORDER_AGREEMENT_303 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                     "order-agreement",
-                                                                                                     "3.0.3");
+  public static final DVRCoordinate VID_EHF_ORDER_AGREEMENT_303 = DVRHelper.createCoordinate (GROUP_ID, "order-agreement", "3.0.3");
 
-  public static final DVRCoordinate VID_EHF_ORDER_303 = PhiveRulesHelper.createCoordinate (GROUP_ID, "order", "3.0.3");
-  public static final DVRCoordinate VID_EHF_ORDER_RESPONSE_303 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                    "order-response",
-                                                                                                    "3.0.3");
+  public static final DVRCoordinate VID_EHF_ORDER_303 = DVRHelper.createCoordinate (GROUP_ID, "order", "3.0.3");
+  public static final DVRCoordinate VID_EHF_ORDER_RESPONSE_303 = DVRHelper.createCoordinate (GROUP_ID, "order-response", "3.0.3");
 
-  public static final DVRCoordinate VID_EHF_PAYMENT_REQUEST_302 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                     "payment-request",
-                                                                                                     "3.0.2");
+  public static final DVRCoordinate VID_EHF_PAYMENT_REQUEST_302 = DVRHelper.createCoordinate (GROUP_ID, "payment-request", "3.0.2");
 
-  public static final DVRCoordinate VID_EHF_PUNCH_OUT_303 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                               "punch-out",
-                                                                                               "3.0.3");
+  public static final DVRCoordinate VID_EHF_PUNCH_OUT_303 = DVRHelper.createCoordinate (GROUP_ID, "punch-out", "3.0.3");
 
-  public static final DVRCoordinate VID_EHF_REMINDER_303 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                              "reminder",
-                                                                                              "3.0.3");
+  public static final DVRCoordinate VID_EHF_REMINDER_303 = DVRHelper.createCoordinate (GROUP_ID, "reminder", "3.0.3");
 
   private EHFValidationG3_2023_02 ()
   {}

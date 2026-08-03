@@ -16,57 +16,20 @@
  */
 package com.helger.phive.rules.api;
 
-import org.jspecify.annotations.NonNull;
-
 import com.helger.annotation.style.IsSPIInterface;
-import com.helger.annotation.style.ReturnsMutableCopy;
-import com.helger.collection.commons.CommonsArrayList;
-import com.helger.collection.commons.ICommonsList;
-import com.helger.diver.api.coord.DVRCoordinate;
-import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
-import com.helger.phive.xml.source.IValidationSourceXML;
 
 /**
  * SPI interface to register the validation execution sets of a single phive rules module into a
- * provided registry. All implementations of this interface are discovered via the JDK
- * {@link java.util.ServiceLoader} mechanism and invoked by
- * {@link ValidationRulesRegistrar#registerAllValidationRules(IValidationExecutorSetRegistry)}.
- * <p>
- * Because the SPI load order is not deterministic, an implementation that is based on the
- * validation execution sets of another module (e.g. the EN 16931 rules) must declare those as
- * prerequisites via {@link #getAllPrerequisites()}. The registrar only invokes
- * {@link #registerValidationRules(IValidationExecutorSetRegistry)} once all declared prerequisites
- * are present in the registry; otherwise it retries the implementation in a later round, after
- * other implementations had the chance to register those prerequisites.
+ * provided registry.
  *
  * @author Philip Helger
  * @since 4.4.0
+ * @deprecated Since 4.5.0 - moved to the <code>phive-rules-foundation-api</code> artifact. Use
+ *             {@link com.helger.phive.rules.foundation.IValidationRulesRegistrarSPI} instead.
  */
+@Deprecated (forRemoval = true, since = "4.5.0")
 @IsSPIInterface
-public interface IValidationRulesRegistrarSPI
+public interface IValidationRulesRegistrarSPI extends com.helger.phive.rules.foundation.IValidationRulesRegistrarSPI
 {
-  /**
-   * @return The list of validation execution set coordinates that must already be registered before
-   *         {@link #registerValidationRules(IValidationExecutorSetRegistry)} of this implementation
-   *         may be called. By default an empty list is returned, meaning this module has no
-   *         prerequisites. Implementations with prerequisites should return the very same
-   *         coordinates that their static <code>init…</code> methods require, so that both share
-   *         the same data basis.
-   */
-  @NonNull
-  @ReturnsMutableCopy
-  default ICommonsList <DVRCoordinate> getAllPrerequisites ()
-  {
-    return new CommonsArrayList <> ();
-  }
-
-  /**
-   * Register all validation execution sets of this module into the provided registry. This is only
-   * called by the registrar once all coordinates from {@link #getAllPrerequisites()} are present in
-   * the registry, so an implementation may assume its prerequisites are available.
-   *
-   * @param aRegistry
-   *        The registry to add the artefacts to. May not be <code>null</code>.
-   */
-  void registerValidationRules (@NonNull IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry);
+  /* All members are inherited from the foundation SPI interface. */
 }

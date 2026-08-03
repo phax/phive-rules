@@ -13,24 +13,19 @@ This project is part of my Peppol solution stack. See https://github.com/phax/pe
 
 All projects found in here rely on the PHIVE validation engine provided by https://github.com/phax/phive
 
+The foundational, XSD-only document formats (pure UN/CEFACT CII, OASIS UBL, ebInterface, Facturae, FatturaPA, Finvoice, KSeF, OSA and TEAPPS) as well as the shared registration SPI live in the separate repository [phive-rules-foundations](https://github.com/phax/phive-rules-foundations) since v4.5.0. Their Maven and VES coordinates are unchanged.
+
 This project is divided into sub-projects each keeping tracking of one document type set:
-* phive-rules-api - Shared API, helper classes and the validation rules registration SPI used by all other modules
-* phive-rules-cii - Validation rules for pure UN CII (without any Schematron)
+* phive-rules-api - Shared UBL/CII helper classes; depends on `phive-rules-foundation-api` (from [phive-rules-foundations](https://github.com/phax/phive-rules-foundations)) which provides the validation rules registration SPI and the core helpers
 * phive-rules-cius-pt - Validation rules for the Portuguese EN 16931 CIUS (since v1.0.11)
 * phive-rules-cius-ro - Validation rules for the Romanian EN 16931 CIUS (since v2.1.14)
-* phive-rules-ebinterface - Validation rules for Austrian ebInterface
 * phive-rules-ehf - Validation rules for Norwegian EHF (Norwegian public procurement)
 * phive-rules-en16931 - Validation rules for the EN 16931 (European e-Invoicing norm based on CEN TC 434)
 * phive-rules-energieefactuur - Validation rules for Dutch Energie eFactuur
 * phive-rules-eracun - Validation rules for Croatian eRacun (since v4.1.11)
-* phive-rules-facturae - Validation rules for the Spanish Facturae (since v1.0.11)
-* phive-rules-fatturapa - Validation rules for Italian fattura PA (since v1.0.4)
-* phive-rules-finvoice - Validation rules for Finvoice (since v1.0.6)
 * phive-rules-france - Validation rules for France (since v4.0.1)
 * phive-rules-isdoc - Validation rules for ISDOC (since v2.0.2)
-* phive-rules-ksef - Validation rules for Polish KSeF (since v4.0.2)
 * phive-rules-oioubl - Validation rules for Danish OIOUBL
-* phive-rules-osa - Validation rules for Hungarian NAV Online Számla (OSA) v2.0 and v3.0 (since v4.3.2)
 * phive-rules-peppol - the Peppol specific rules - always the latest two rule sets
 * phive-rules-peppol-pint - the Peppol PINT specific rules (since v4.4.0 as separate module - previously in `phive-rules-peppol`)
 * phive-rules-peppol-legacy - older Peppol specific rules that are out of date (since v2.0.5)
@@ -40,9 +35,7 @@ This project is divided into sub-projects each keeping tracking of one document 
 * phive-rules-setu - Dutch SETU selected standards (since v3.0.4)
 * phive-rules-simplerinvoicing - Dutch Simplerinvoicing support from https://github.com/Simplerinvoicing/validation
 * phive-rules-svefaktura - Validation rules for Swedish Svefaktura (since v1.0.6)
-* phive-rules-teapps - Validation rules for Finnish Tieto TEAPPSXML
 * phive-rules-turkey - Validation rules for Turkey UBL-TR / e-Fatura (since v4.3.1)
-* phive-rules-ubl - Validation rules for pure OASIS UBL (without any Schematron)
 * phive-rules-ublbe - Validation rules for Belgium e-FFF/UBL.BE
 * phive-rules-xrechnung - Validation rules for German XRechnung
 * phive-rules-zatca - Validation rules for Saudi Arabian ZATCA/FATOORA format (since v3.2.7)
@@ -62,12 +55,6 @@ Add the following to your `pom.xml` to use this artifact, replacing `x.y.z` with
 ```xml
 <dependency>
   <groupId>com.helger.phive.rules</groupId>
-  <artifactId>phive-rules-cii</artifactId>
-  <version>x.y.z</version>
-</dependency>
-
-<dependency>
-  <groupId>com.helger.phive.rules</groupId>
   <artifactId>phive-rules-cius-pt</artifactId>
   <version>x.y.z</version>
 </dependency>
@@ -75,12 +62,6 @@ Add the following to your `pom.xml` to use this artifact, replacing `x.y.z` with
 <dependency>
   <groupId>com.helger.phive.rules</groupId>
   <artifactId>phive-rules-cius-ro</artifactId>
-  <version>x.y.z</version>
-</dependency>
-
-<dependency>
-  <groupId>com.helger.phive.rules</groupId>
-  <artifactId>phive-rules-ebinterface</artifactId>
   <version>x.y.z</version>
 </dependency>
 
@@ -110,24 +91,6 @@ Add the following to your `pom.xml` to use this artifact, replacing `x.y.z` with
 
 <dependency>
   <groupId>com.helger.phive.rules</groupId>
-  <artifactId>phive-rules-facturae</artifactId>
-  <version>x.y.z</version>
-</dependency>
-
-<dependency>
-  <groupId>com.helger.phive.rules</groupId>
-  <artifactId>phive-rules-fatturapa</artifactId>
-  <version>x.y.z</version>
-</dependency>
-
-<dependency>
-  <groupId>com.helger.phive.rules</groupId>
-  <artifactId>phive-rules-finvoice</artifactId>
-  <version>x.y.z</version>
-</dependency>
-
-<dependency>
-  <groupId>com.helger.phive.rules</groupId>
   <artifactId>phive-rules-france</artifactId>
   <version>x.y.z</version>
 </dependency>
@@ -140,19 +103,7 @@ Add the following to your `pom.xml` to use this artifact, replacing `x.y.z` with
 
 <dependency>
   <groupId>com.helger.phive.rules</groupId>
-  <artifactId>phive-rules-ksef</artifactId>
-  <version>x.y.z</version>
-</dependency>
-
-<dependency>
-  <groupId>com.helger.phive.rules</groupId>
   <artifactId>phive-rules-oioubl</artifactId>
-  <version>x.y.z</version>
-</dependency>
-
-<dependency>
-  <groupId>com.helger.phive.rules</groupId>
-  <artifactId>phive-rules-osa</artifactId>
   <version>x.y.z</version>
 </dependency>
 
@@ -212,19 +163,7 @@ Add the following to your `pom.xml` to use this artifact, replacing `x.y.z` with
 
 <dependency>
   <groupId>com.helger.phive.rules</groupId>
-  <artifactId>phive-rules-teapps</artifactId>
-  <version>x.y.z</version>
-</dependency>
-
-<dependency>
-  <groupId>com.helger.phive.rules</groupId>
   <artifactId>phive-rules-turkey</artifactId>
-  <version>x.y.z</version>
-</dependency>
-
-<dependency>
-  <groupId>com.helger.phive.rules</groupId>
-  <artifactId>phive-rules-ubl</artifactId>
   <version>x.y.z</version>
 </dependency>
 
@@ -316,6 +255,13 @@ As OpenPeppol is only changing the "micro" version part (3.0.x), whereas I start
 I hope that with the introduction of PINT, the versioning problem will be solved.
 
 # News and noteworthy
+
+v4.5.0 - work in progress
+* Extracted the foundational, XSD-only document format modules into the separate repository [phive-rules-foundations](https://github.com/phax/phive-rules-foundations) (versioned independently starting at `5.0.0`): `phive-rules-cii`, `phive-rules-ubl`, `phive-rules-ebinterface`, `phive-rules-facturae`, `phive-rules-fatturapa`, `phive-rules-finvoice`, `phive-rules-ksef`, `phive-rules-osa` and `phive-rules-teapps`.
+  The Maven coordinates (`com.helger.phive.rules:phive-rules-<format>`) and VES coordinates are unchanged
+* Moved the shared registration SPI and helpers (`IValidationRulesRegistrarSPI`, `PhiveRulesHelper`, `PhiveRulesInitializationException`, `PhiveRulesTestHelper`, `ValidationRulesRegistrar`) to the new `phive-rules-foundation-api` artifact (package `com.helger.phive.rules.foundation`).
+  The previous classes in `com.helger.phive.rules.api` remain as `@Deprecated` delegates for backwards compatibility
+* `phive-rules-api` now depends on `phive-rules-foundation-api` and retains only the UBL/CII specific helpers
 
 v4.4.2 - 2026-07-30
 * Added Peppol Message Level Status (MLS) 1.0.1 validation rules from the `v1.1.0` release (2026-07-07) in `phive-rules-peppol`, VES coordinate `org.peppol:mls:1.0.1`, and deprecated 1.0.0

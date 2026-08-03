@@ -29,6 +29,7 @@ import com.helger.peppol.uae.tdd.jaxb.PeppolUAETDD10Marshaller;
 import com.helger.peppol.vida.tdd.jaxb.PeppolViDATDD100Marshaller;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
 import com.helger.phive.rules.api.PhiveRulesHelper;
+import com.helger.phive.rules.foundation.DVRHelper;
 import com.helger.phive.xml.executorset.VesXmlBuilder;
 import com.helger.phive.xml.source.IValidationSourceXML;
 import com.helger.xml.namespace.MapBasedNamespaceContext;
@@ -46,43 +47,25 @@ public final class PeppolValidationTaxData
 
   // AE
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OPENPEPPOL_TDD_AE_1_0_0 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                     "ae",
-                                                                                                     "1.0.0");
+  public static final DVRCoordinate VID_OPENPEPPOL_TDD_AE_1_0_0 = DVRHelper.createCoordinate (GROUP_ID, "ae", "1.0.0");
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OPENPEPPOL_TDD_AE_1_0_1 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                     "ae",
-                                                                                                     "1.0.1");
+  public static final DVRCoordinate VID_OPENPEPPOL_TDD_AE_1_0_1 = DVRHelper.createCoordinate (GROUP_ID, "ae", "1.0.1");
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OPENPEPPOL_TDD_AE_1_0_2 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                     "ae",
-                                                                                                     "1.0.2");
+  public static final DVRCoordinate VID_OPENPEPPOL_TDD_AE_1_0_2 = DVRHelper.createCoordinate (GROUP_ID, "ae", "1.0.2");
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OPENPEPPOL_TDD_AE_1_0_3 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                     "ae",
-                                                                                                     "1.0.3");
-  public static final DVRCoordinate VID_OPENPEPPOL_TDD_AE_1_0_4 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                     "ae",
-                                                                                                     "1.0.4");
+  public static final DVRCoordinate VID_OPENPEPPOL_TDD_AE_1_0_3 = DVRHelper.createCoordinate (GROUP_ID, "ae", "1.0.3");
+  public static final DVRCoordinate VID_OPENPEPPOL_TDD_AE_1_0_4 = DVRHelper.createCoordinate (GROUP_ID, "ae", "1.0.4");
 
   // OM
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OPENPEPPOL_TDD_OM_1_0_0 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                     "om",
-                                                                                                     "1.0.0");
-  public static final DVRCoordinate VID_OPENPEPPOL_TDD_OM_1_0_1 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                     "om",
-                                                                                                     "1.0.1");
+  public static final DVRCoordinate VID_OPENPEPPOL_TDD_OM_1_0_0 = DVRHelper.createCoordinate (GROUP_ID, "om", "1.0.0");
+  public static final DVRCoordinate VID_OPENPEPPOL_TDD_OM_1_0_1 = DVRHelper.createCoordinate (GROUP_ID, "om", "1.0.1");
 
   // SK
-  public static final DVRCoordinate VID_OPENPEPPOL_TDD_SK_1_0_0 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                     "sk",
-                                                                                                     "1.0.0");
+  public static final DVRCoordinate VID_OPENPEPPOL_TDD_SK_1_0_0 = DVRHelper.createCoordinate (GROUP_ID, "sk", "1.0.0");
 
   // ViDA Pilot
-  public static final DVRCoordinate VID_OPENPEPPOL_TDD_VIDA_1_0_0 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                       "vida",
-                                                                                                       "1.0.0");
+  public static final DVRCoordinate VID_OPENPEPPOL_TDD_VIDA_1_0_0 = DVRHelper.createCoordinate (GROUP_ID, "vida", "1.0.0");
 
   private PeppolValidationTaxData ()
   {}

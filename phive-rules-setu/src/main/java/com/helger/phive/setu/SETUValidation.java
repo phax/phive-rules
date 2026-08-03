@@ -25,6 +25,7 @@ import com.helger.io.resource.ClassPathResource;
 import com.helger.io.resource.IReadableResource;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
 import com.helger.phive.rules.api.PhiveRulesHelper;
+import com.helger.phive.rules.foundation.DVRHelper;
 import com.helger.phive.xml.executorset.VesXmlBuilder;
 import com.helger.phive.xml.schematron.ValidationExecutorSchematron;
 import com.helger.phive.xml.source.IValidationSourceXML;
@@ -42,18 +43,10 @@ public final class SETUValidation
   public static final String GROUP_ID = "nl.setu";
 
   // V1.4
-  public static final DVRCoordinate VID_SETU_ASSIGNMENT_14 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                "assignment",
-                                                                                                "1.4");
-  public static final DVRCoordinate VID_SETU_HUMAN_RESOURCE_14 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                    "human-resource",
-                                                                                                    "1.4");
-  public static final DVRCoordinate VID_SETU_STAFFING_ORDER_14 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                    "staffing-order",
-                                                                                                    "1.4");
-  public static final DVRCoordinate VID_SETU_TIMECARD_14 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                              "timecard",
-                                                                                              "1.4");
+  public static final DVRCoordinate VID_SETU_ASSIGNMENT_14 = DVRHelper.createCoordinate (GROUP_ID, "assignment", "1.4");
+  public static final DVRCoordinate VID_SETU_HUMAN_RESOURCE_14 = DVRHelper.createCoordinate (GROUP_ID, "human-resource", "1.4");
+  public static final DVRCoordinate VID_SETU_STAFFING_ORDER_14 = DVRHelper.createCoordinate (GROUP_ID, "staffing-order", "1.4");
+  public static final DVRCoordinate VID_SETU_TIMECARD_14 = DVRHelper.createCoordinate (GROUP_ID, "timecard", "1.4");
 
   /**
    * @deprecated Use {@link #VID_SETU_TIMECARD_14} instead

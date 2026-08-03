@@ -22,7 +22,7 @@ import com.helger.annotation.concurrent.Immutable;
 import com.helger.base.enforce.ValueEnforcer;
 import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
-import com.helger.phive.rules.api.PhiveRulesHelper;
+import com.helger.phive.rules.foundation.DVRHelper;
 import com.helger.phive.xml.executorset.VesXmlBuilder;
 import com.helger.phive.xml.source.IValidationSourceXML;
 import com.helger.ubl21.UBL21Marshaller;
@@ -52,12 +52,8 @@ public final class SEOValidation
   public static final String GROUP_ID = "rs.gov.mfin.logistics";
 
   // Version 1.1.0 according to the published SEO UBL examples (2025.12)
-  public static final DVRCoordinate VID_SEO_UBL_DESPATCH_ADVICE_110 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                        "ubl-despatch-advice",
-                                                                                                        "1.1.0");
-  public static final DVRCoordinate VID_SEO_UBL_RECEIPT_ADVICE_110 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                       "ubl-receipt-advice",
-                                                                                                       "1.1.0");
+  public static final DVRCoordinate VID_SEO_UBL_DESPATCH_ADVICE_110 = DVRHelper.createCoordinate (GROUP_ID, "ubl-despatch-advice", "1.1.0");
+  public static final DVRCoordinate VID_SEO_UBL_RECEIPT_ADVICE_110 = DVRHelper.createCoordinate (GROUP_ID, "ubl-receipt-advice", "1.1.0");
 
   private SEOValidation ()
   {}

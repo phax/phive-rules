@@ -31,6 +31,7 @@ import com.helger.io.resource.IReadableResource;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
 import com.helger.phive.rules.api.PhiveRulesHelper;
 import com.helger.phive.rules.api.PhiveRulesUBLHelper;
+import com.helger.phive.rules.foundation.DVRHelper;
 import com.helger.phive.xml.executorset.VesXmlBuilder;
 import com.helger.phive.xml.source.IValidationSourceXML;
 import com.helger.ubl21.UBL21Marshaller;
@@ -49,38 +50,24 @@ public final class PeppolValidationBisSG
 
   // 2023.7
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OPENPEPPOL_BIS3_SG_UBL_INVOICE_2023_7 = PhiveRulesHelper.createCoordinate (GROUP_ID_BIS_BILLING,
-                                                                                                                   "invoice",
-                                                                                                                   "2023.7");
+  public static final DVRCoordinate VID_OPENPEPPOL_BIS3_SG_UBL_INVOICE_2023_7 = DVRHelper.createCoordinate (GROUP_ID_BIS_BILLING, "invoice", "2023.7");
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OPENPEPPOL_BIS3_SG_UBL_CREDIT_NOTE_2023_7 = PhiveRulesHelper.createCoordinate (GROUP_ID_BIS_BILLING,
-                                                                                                                       "creditnote",
-                                                                                                                       "2023.7");
+  public static final DVRCoordinate VID_OPENPEPPOL_BIS3_SG_UBL_CREDIT_NOTE_2023_7 = DVRHelper.createCoordinate (GROUP_ID_BIS_BILLING, "creditnote", "2023.7");
 
   // 2023.12
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OPENPEPPOL_BIS3_SG_UBL_INVOICE_2023_12 = PhiveRulesHelper.createCoordinate (GROUP_ID_BIS_BILLING,
-                                                                                                                    "invoice",
-                                                                                                                    "2023.12");
+  public static final DVRCoordinate VID_OPENPEPPOL_BIS3_SG_UBL_INVOICE_2023_12 = DVRHelper.createCoordinate (GROUP_ID_BIS_BILLING, "invoice", "2023.12");
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OPENPEPPOL_BIS3_SG_UBL_CREDIT_NOTE_2023_12 = PhiveRulesHelper.createCoordinate (GROUP_ID_BIS_BILLING,
-                                                                                                                        "creditnote",
-                                                                                                                        "2023.12");
+  public static final DVRCoordinate VID_OPENPEPPOL_BIS3_SG_UBL_CREDIT_NOTE_2023_12 = DVRHelper.createCoordinate (GROUP_ID_BIS_BILLING, "creditnote", "2023.12");
 
   // 2024.12
   public static final LocalDate VALID_PER_2024_12 = PDTFactory.createLocalDate (2025, Month.MARCH, 3);
   public static final OffsetDateTime VALID_PER_UTC_2014_12 = PDTFactory.createOffsetDateTimeUTC (VALID_PER_2024_12);
-  public static final DVRCoordinate VID_OPENPEPPOL_BIS3_SG_UBL_INVOICE_2024_12 = PhiveRulesHelper.createCoordinate (GROUP_ID_BIS_BILLING,
-                                                                                                                    "invoice",
-                                                                                                                    "2024.12");
-  public static final DVRCoordinate VID_OPENPEPPOL_BIS3_SG_UBL_CREDIT_NOTE_2024_12 = PhiveRulesHelper.createCoordinate (GROUP_ID_BIS_BILLING,
-                                                                                                                        "creditnote",
-                                                                                                                        "2024.12");
+  public static final DVRCoordinate VID_OPENPEPPOL_BIS3_SG_UBL_INVOICE_2024_12 = DVRHelper.createCoordinate (GROUP_ID_BIS_BILLING, "invoice", "2024.12");
+  public static final DVRCoordinate VID_OPENPEPPOL_BIS3_SG_UBL_CREDIT_NOTE_2024_12 = DVRHelper.createCoordinate (GROUP_ID_BIS_BILLING, "creditnote", "2024.12");
 
   // Order Balance
-  public static final DVRCoordinate VID_PEPPOL_SG_ORDER_BALANCE_1_0 = PhiveRulesHelper.createCoordinate (GROUP_ID_ORDER_BALANCE,
-                                                                                                         "order-balance",
-                                                                                                         "1.0");
+  public static final DVRCoordinate VID_PEPPOL_SG_ORDER_BALANCE_1_0 = DVRHelper.createCoordinate (GROUP_ID_ORDER_BALANCE, "order-balance", "1.0");
 
   private PeppolValidationBisSG ()
   {}

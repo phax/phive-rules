@@ -24,7 +24,7 @@ import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.io.resource.ClassPathResource;
 import com.helger.io.resource.IReadableResource;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
-import com.helger.phive.rules.api.PhiveRulesHelper;
+import com.helger.phive.rules.foundation.DVRHelper;
 import com.helger.phive.xml.executorset.VesXmlBuilder;
 import com.helger.phive.xml.source.IValidationSourceXML;
 
@@ -40,16 +40,10 @@ public final class PeppolValidationDirectory
   public static final String GROUP_ID = "eu.peppol.directory";
 
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OPENPEPPOL_BUSINESS_CARD_V1 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                         "businesscard",
-                                                                                                         "1.0.0");
+  public static final DVRCoordinate VID_OPENPEPPOL_BUSINESS_CARD_V1 = DVRHelper.createCoordinate (GROUP_ID, "businesscard", "1.0.0");
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OPENPEPPOL_BUSINESS_CARD_V2 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                         "businesscard",
-                                                                                                         "2.0.0");
-  public static final DVRCoordinate VID_OPENPEPPOL_BUSINESS_CARD_V3 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                         "businesscard",
-                                                                                                         "3.0.0");
+  public static final DVRCoordinate VID_OPENPEPPOL_BUSINESS_CARD_V2 = DVRHelper.createCoordinate (GROUP_ID, "businesscard", "2.0.0");
+  public static final DVRCoordinate VID_OPENPEPPOL_BUSINESS_CARD_V3 = DVRHelper.createCoordinate (GROUP_ID, "businesscard", "3.0.0");
 
   private PeppolValidationDirectory ()
   {}

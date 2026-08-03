@@ -30,8 +30,8 @@ import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.io.resource.ClassPathResource;
 import com.helger.io.resource.IReadableResource;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
-import com.helger.phive.rules.api.PhiveRulesHelper;
 import com.helger.phive.rules.api.PhiveRulesUBLHelper;
+import com.helger.phive.rules.foundation.DVRHelper;
 import com.helger.phive.xml.executorset.VesXmlBuilder;
 import com.helger.phive.xml.source.IValidationSourceXML;
 import com.helger.ubl21.UBL21Marshaller;
@@ -62,64 +62,36 @@ public final class PeppolValidation2024_05
   @Deprecated (forRemoval = false)
   public static final String GROUP_ID = "eu.peppol.bis3";
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OPENPEPPOL_INVOICE_UBL_V3 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                       "invoice",
-                                                                                                       VERSION_STR);
+  public static final DVRCoordinate VID_OPENPEPPOL_INVOICE_UBL_V3 = DVRHelper.createCoordinate (GROUP_ID, "invoice", VERSION_STR);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OPENPEPPOL_CREDIT_NOTE_UBL_V3 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                           "creditnote",
-                                                                                                           VERSION_STR);
+  public static final DVRCoordinate VID_OPENPEPPOL_CREDIT_NOTE_UBL_V3 = DVRHelper.createCoordinate (GROUP_ID, "creditnote", VERSION_STR);
   // public static final DVRCoordinate VID_OPENPEPPOL_INVOICE_CII_V3 =
   // PhiveRulesHelper.createCoordinate
   // (GROUP_ID, "invoice-cii", VERSION_STR);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OPENPEPPOL_ORDER_V3 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                 "order",
-                                                                                                 VERSION_STR);
+  public static final DVRCoordinate VID_OPENPEPPOL_ORDER_V3 = DVRHelper.createCoordinate (GROUP_ID, "order", VERSION_STR);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OPENPEPPOL_DESPATCH_ADVICE_V3 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                           "despatch-advice",
-                                                                                                           VERSION_STR);
+  public static final DVRCoordinate VID_OPENPEPPOL_DESPATCH_ADVICE_V3 = DVRHelper.createCoordinate (GROUP_ID, "despatch-advice", VERSION_STR);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OPENPEPPOL_CATALOGUE_V3 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                     "catalogue",
-                                                                                                     VERSION_STR);
+  public static final DVRCoordinate VID_OPENPEPPOL_CATALOGUE_V3 = DVRHelper.createCoordinate (GROUP_ID, "catalogue", VERSION_STR);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OPENPEPPOL_CATALOGUE_RESPONSE_V3 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                              "catalogue-response",
-                                                                                                              VERSION_STR);
+  public static final DVRCoordinate VID_OPENPEPPOL_CATALOGUE_RESPONSE_V3 = DVRHelper.createCoordinate (GROUP_ID, "catalogue-response", VERSION_STR);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OPENPEPPOL_MLR_V3 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                               "mlr",
-                                                                                               VERSION_STR);
+  public static final DVRCoordinate VID_OPENPEPPOL_MLR_V3 = DVRHelper.createCoordinate (GROUP_ID, "mlr", VERSION_STR);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OPENPEPPOL_ORDER_RESPONSE_V3 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                          "order-response",
-                                                                                                          VERSION_STR);
+  public static final DVRCoordinate VID_OPENPEPPOL_ORDER_RESPONSE_V3 = DVRHelper.createCoordinate (GROUP_ID, "order-response", VERSION_STR);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OPENPEPPOL_PUNCH_OUT_V3 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                     "punch-out",
-                                                                                                     VERSION_STR);
+  public static final DVRCoordinate VID_OPENPEPPOL_PUNCH_OUT_V3 = DVRHelper.createCoordinate (GROUP_ID, "punch-out", VERSION_STR);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OPENPEPPOL_ORDER_AGREEMENT_V3 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                           "order-agreement",
-                                                                                                           VERSION_STR);
+  public static final DVRCoordinate VID_OPENPEPPOL_ORDER_AGREEMENT_V3 = DVRHelper.createCoordinate (GROUP_ID, "order-agreement", VERSION_STR);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OPENPEPPOL_INVOICE_MESSAGE_RESPONSE_V3 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                                    "invoice-message-response",
-                                                                                                                    VERSION_STR);
+  public static final DVRCoordinate VID_OPENPEPPOL_INVOICE_MESSAGE_RESPONSE_V3 = DVRHelper.createCoordinate (GROUP_ID, "invoice-message-response", VERSION_STR);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OPENPEPPOL_ORDER_CHANGE_V3 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                        "order-change",
-                                                                                                        VERSION_STR);
+  public static final DVRCoordinate VID_OPENPEPPOL_ORDER_CHANGE_V3 = DVRHelper.createCoordinate (GROUP_ID, "order-change", VERSION_STR);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OPENPEPPOL_ORDER_CANCELLATION_V3 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                              "order-cancellation",
-                                                                                                              VERSION_STR);
+  public static final DVRCoordinate VID_OPENPEPPOL_ORDER_CANCELLATION_V3 = DVRHelper.createCoordinate (GROUP_ID, "order-cancellation", VERSION_STR);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OPENPEPPOL_ORDER_RESPONSE_ADVANCED_V3 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                                   "order-response-advanced",
-                                                                                                                   VERSION_STR);
+  public static final DVRCoordinate VID_OPENPEPPOL_ORDER_RESPONSE_ADVANCED_V3 = DVRHelper.createCoordinate (GROUP_ID, "order-response-advanced", VERSION_STR);
 
   private PeppolValidation2024_05 ()
   {}

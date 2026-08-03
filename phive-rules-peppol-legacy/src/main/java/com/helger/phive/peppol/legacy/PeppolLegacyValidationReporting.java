@@ -24,6 +24,7 @@ import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.io.resource.ClassPathResource;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
 import com.helger.phive.rules.api.PhiveRulesHelper;
+import com.helger.phive.rules.foundation.DVRHelper;
 import com.helger.phive.xml.executorset.VesXmlBuilder;
 import com.helger.phive.xml.source.IValidationSourceXML;
 
@@ -50,52 +51,30 @@ public final class PeppolLegacyValidationReporting
   // EUSR
 
   @Deprecated
-  public static final DVRCoordinate VID_OPENPEPPOL_EUSR_V100RC2 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                     "eusr",
-                                                                                                     "1.0.0-RC2");
+  public static final DVRCoordinate VID_OPENPEPPOL_EUSR_V100RC2 = DVRHelper.createCoordinate (GROUP_ID, "eusr", "1.0.0-RC2");
   @Deprecated
-  public static final DVRCoordinate VID_OPENPEPPOL_EUSR_V100 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                  "eusr",
-                                                                                                  "1.0.0");
+  public static final DVRCoordinate VID_OPENPEPPOL_EUSR_V100 = DVRHelper.createCoordinate (GROUP_ID, "eusr", "1.0.0");
   @Deprecated
-  public static final DVRCoordinate VID_OPENPEPPOL_EUSR_V101 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                  "eusr",
-                                                                                                  "1.0.1");
+  public static final DVRCoordinate VID_OPENPEPPOL_EUSR_V101 = DVRHelper.createCoordinate (GROUP_ID, "eusr", "1.0.1");
   @Deprecated
-  public static final DVRCoordinate VID_OPENPEPPOL_EUSR_V110 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                  "eusr",
-                                                                                                  "1.1.0");
+  public static final DVRCoordinate VID_OPENPEPPOL_EUSR_V110 = DVRHelper.createCoordinate (GROUP_ID, "eusr", "1.1.0");
   @Deprecated
-  public static final DVRCoordinate VID_OPENPEPPOL_EUSR_V111 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                  "eusr",
-                                                                                                  "1.1.1");
+  public static final DVRCoordinate VID_OPENPEPPOL_EUSR_V111 = DVRHelper.createCoordinate (GROUP_ID, "eusr", "1.1.1");
   @Deprecated
-  public static final DVRCoordinate VID_OPENPEPPOL_EUSR_V112 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                  "eusr",
-                                                                                                  "1.1.2");
+  public static final DVRCoordinate VID_OPENPEPPOL_EUSR_V112 = DVRHelper.createCoordinate (GROUP_ID, "eusr", "1.1.2");
   @Deprecated
-  public static final DVRCoordinate VID_OPENPEPPOL_EUSR_V113 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                  "eusr",
-                                                                                                  "1.1.3");
+  public static final DVRCoordinate VID_OPENPEPPOL_EUSR_V113 = DVRHelper.createCoordinate (GROUP_ID, "eusr", "1.1.3");
 
   // TSR
 
   @Deprecated
-  public static final DVRCoordinate VID_OPENPEPPOL_TSR_V100 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                 "tsr",
-                                                                                                 "1.0.0");
+  public static final DVRCoordinate VID_OPENPEPPOL_TSR_V100 = DVRHelper.createCoordinate (GROUP_ID, "tsr", "1.0.0");
   @Deprecated
-  public static final DVRCoordinate VID_OPENPEPPOL_TSR_V101 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                 "tsr",
-                                                                                                 "1.0.1");
+  public static final DVRCoordinate VID_OPENPEPPOL_TSR_V101 = DVRHelper.createCoordinate (GROUP_ID, "tsr", "1.0.1");
   @Deprecated
-  public static final DVRCoordinate VID_OPENPEPPOL_TSR_V102 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                 "tsr",
-                                                                                                 "1.0.2");
+  public static final DVRCoordinate VID_OPENPEPPOL_TSR_V102 = DVRHelper.createCoordinate (GROUP_ID, "tsr", "1.0.2");
   @Deprecated
-  public static final DVRCoordinate VID_OPENPEPPOL_TSR_V103 = PhiveRulesHelper.createCoordinate (GROUP_ID,
-                                                                                                 "tsr",
-                                                                                                 "1.0.3");
+  public static final DVRCoordinate VID_OPENPEPPOL_TSR_V103 = DVRHelper.createCoordinate (GROUP_ID, "tsr", "1.0.3");
 
   private PeppolLegacyValidationReporting ()
   {}

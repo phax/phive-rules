@@ -22,7 +22,7 @@
   <parent>
     <groupId>com.helger.phive.rules</groupId>
     <artifactId>phive-rules-parent-pom</artifactId>
-    <version>4.4.3-SNAPSHOT</version>
+    <version>4.5.0-SNAPSHOT</version>
   </parent>
   <artifactId>phive-rules-api</artifactId>
   <packaging>jar</packaging>
@@ -62,7 +62,11 @@
       <groupId>com.helger.phive</groupId>
       <artifactId>phive-xml</artifactId>
     </dependency>
-    
+    <dependency>
+      <groupId>com.helger.phive.rules</groupId>
+      <artifactId>phive-rules-foundation-api</artifactId>
+    </dependency>
+
     <dependency>
       <groupId>com.helger.cii</groupId>
       <artifactId>ph-cii-d16b</artifactId>
