@@ -32,7 +32,7 @@ import com.helger.phive.eracun.HReRacunValidation;
 import com.helger.phive.facturae.FacturaeValidation;
 import com.helger.phive.fatturapa.FatturaPAValidation;
 import com.helger.phive.finvoice.FinvoiceValidation;
-import com.helger.phive.france.FranceCTCValidation;
+import com.helger.phive.france.FranceValidation;
 import com.helger.phive.isdoc.ISDOCValidation;
 import com.helger.phive.ksef.KSeFValidation;
 import com.helger.phive.oioubl.OIOUBLValidation;
@@ -91,7 +91,7 @@ public final class PhiveRulesValidation
     FacturaeValidation.initFacturae (aRegistry);
     FatturaPAValidation.initFatturaPA (aRegistry);
     FinvoiceValidation.initFinvoice (aRegistry);
-    FranceCTCValidation.initFranceCTC (aRegistry);
+    FranceValidation.initFrance (aRegistry);
     HReRacunValidation.init (aRegistry);
     KSeFValidation.initKSeF (aRegistry);
     ISDOCValidation.initISDOC (aRegistry);

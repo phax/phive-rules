@@ -33,6 +33,7 @@ import com.helger.phive.api.executorset.ValidationExecutorSetRegistry;
 import com.helger.phive.api.mock.PhiveTestFile;
 import com.helger.phive.en16931.EN16931Validation;
 import com.helger.phive.france.FranceCTCValidation;
+import com.helger.phive.france.FranceValidation;
 import com.helger.phive.xml.source.IValidationSourceXML;
 
 @Immutable
@@ -42,7 +43,7 @@ public final class CTestFiles
   static
   {
     EN16931Validation.initEN16931 (VES_REGISTRY);
-    FranceCTCValidation.initFranceCTC (VES_REGISTRY);
+    FranceValidation.initFrance (VES_REGISTRY);
   }
 
   private CTestFiles ()

@@ -113,6 +113,28 @@
               <xsltDirectory>${basedir}/src/main/resources/external/schematron/ctc/1.4.0/xslt</xsltDirectory>
             </configuration>
           </execution>
+          <execution>
+            <goals>
+              <goal>convert</goal>
+            </goals>
+            <id>flux1</id>
+            <configuration>
+              <schematronDirectory>${basedir}/src/test/resources/external/rule-source/flux1/0.2</schematronDirectory>
+              <schematronPattern>*.sch</schematronPattern>
+              <xsltDirectory>${basedir}/src/main/resources/external/schematron/flux1/0.2/xslt</xsltDirectory>
+            </configuration>
+          </execution>
+          <execution>
+            <goals>
+              <goal>convert</goal>
+            </goals>
+            <id>flux10</id>
+            <configuration>
+              <schematronDirectory>${basedir}/src/test/resources/external/rule-source/flux10/1.0</schematronDirectory>
+              <schematronPattern>*.sch</schematronPattern>
+              <xsltDirectory>${basedir}/src/main/resources/external/schematron/flux10/1.0/xslt</xsltDirectory>
+            </configuration>
+          </execution>
        -->
         </executions>
       </plugin>

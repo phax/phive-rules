@@ -27,23 +27,23 @@ import com.helger.phive.rules.shared.IValidationRulesRegistrarSPI;
 import com.helger.phive.xml.source.IValidationSourceXML;
 
 /**
- * SPI implementation that registers the France CTC validation rules.
+ * SPI implementation that registers all France validation rules (CTC / Flux 2, Flux 1 and Flux 10).
  *
  * @author Philip Helger
  */
 @IsSPIImplementation
-public final class FranceCTCValidationSPI implements IValidationRulesRegistrarSPI
+public final class FranceValidationSPI implements IValidationRulesRegistrarSPI
 {
   @Override
   @NonNull
   @ReturnsMutableCopy
   public ICommonsList <DVRCoordinate> getAllPrerequisites ()
   {
-    return FranceCTCValidation.getAllPrerequisites ();
+    return FranceValidation.getAllPrerequisites ();
   }
 
   public void registerValidationRules (@NonNull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
   {
-    FranceCTCValidation.initFranceCTC (aRegistry);
+    FranceValidation.initFrance (aRegistry);
   }
 }

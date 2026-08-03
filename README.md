@@ -271,6 +271,8 @@ v4.5.0 - work in progress
 * Moved the shared registration SPI and helpers (`IValidationRulesRegistrarSPI`, `PhiveRulesHelper`, `PhiveRulesInitializationException`, `PhiveRulesTestHelper`, `ValidationRulesRegistrar`) to the new `phive-rules-foundation-api` artifact (package `com.helger.phive.rules.foundation`).
   The previous classes in `com.helger.phive.rules.api` remain as `@Deprecated` delegates for backwards compatibility
 * `phive-rules-api` now depends on `phive-rules-foundation-api` and retains only the UBL/CII specific helpers
+* Added France PPF Flux 1 (e-invoicing &amp; e-reporting) validation rules v0.2 for UBL and CII, in the "Démarrage" and "Cible" trajectories
+* Added France PPF Flux 10 (e-reporting) validation rules v1.0
 
 v4.4.2 - 2026-07-30
 * Added Peppol Message Level Status (MLS) 1.0.1 validation rules from the `v1.1.0` release (2026-07-07) in `phive-rules-peppol`, VES coordinate `org.peppol:mls:1.0.1`, and deprecated 1.0.0
