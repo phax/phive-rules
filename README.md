@@ -13,7 +13,16 @@ This project is part of my Peppol solution stack. See https://github.com/phax/pe
 
 All projects found in here rely on the PHIVE validation engine provided by https://github.com/phax/phive
 
-The foundational, XSD-only document formats (pure UN/CEFACT CII, OASIS UBL, ebInterface, Facturae, FatturaPA, Finvoice, KSeF, OSA and TEAPPS) as well as the shared registration SPI live in the separate repository [phive-rules-foundations](https://github.com/phax/phive-rules-foundations) since v4.5.0. Their Maven and VES coordinates are unchanged.
+The foundational, XSD-only document formats live in the separate repository [phive-rules-foundations](https://github.com/phax/phive-rules-foundations) since v4.5.0. Their Maven and VES coordinates are unchanged.
+* pure UN/CEFACT CII
+* pure OASIS UBL
+* ebInterface (AT)
+* Facturae (ES)
+* FatturaPA (IT)
+* Finvoice (FI)
+* KSeF (PL)
+* OSA (HU)
+* TEAPPS (FI) 
 
 This project is divided into sub-projects each keeping tracking of one document type set:
 * phive-rules-api - Shared UBL/CII helper classes; depends on `phive-rules-foundation-api` (from [phive-rules-foundations](https://github.com/phax/phive-rules-foundations)) which provides the validation rules registration SPI and the core helpers
