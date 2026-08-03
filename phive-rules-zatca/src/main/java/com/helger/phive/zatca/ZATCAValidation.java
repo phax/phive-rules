@@ -23,8 +23,8 @@ import com.helger.base.enforce.ValueEnforcer;
 import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.io.resource.ClassPathResource;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
-import com.helger.phive.rules.api.PhiveRulesUBLHelper;
-import com.helger.phive.rules.foundation.DVRHelper;
+import com.helger.phive.rules.shared.PhiveRulesUBLHelper;
+import com.helger.phive.rules.shared.DVRHelper;
 import com.helger.phive.xml.executorset.VesXmlBuilder;
 import com.helger.phive.xml.source.IValidationSourceXML;
 import com.helger.ubl21.UBL21Marshaller;
@@ -87,11 +87,11 @@ public final class ZATCAValidation
                    .deprecated ()
                    .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
                    .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
-                                                                                                "CEN-EN16931-UBL.xsl",
-                                                                                                _getCL ())))
+                  "CEN-EN16931-UBL.xsl",
+                  _getCL ())))
                    .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
-                                                                                                "20210819_ZATCA_E-invoice_Validation_Rules.xsl",
-                                                                                                _getCL ())))
+                  "20210819_ZATCA_E-invoice_Validation_Rules.xsl",
+                  _getCL ())))
                    .registerInto (aRegistry);
     }
 
@@ -104,11 +104,11 @@ public final class ZATCAValidation
                    .deprecated ()
                    .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
                    .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
-                                                                                                "CEN-EN16931-UBL.xsl",
-                                                                                                _getCL ())))
+                  "CEN-EN16931-UBL.xsl",
+                  _getCL ())))
                    .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
-                                                                                                "20210819_ZATCA_E-invoice_Validation_Rules.xsl",
-                                                                                                _getCL ())))
+                  "20210819_ZATCA_E-invoice_Validation_Rules.xsl",
+                  _getCL ())))
                    .registerInto (aRegistry);
     }
 
@@ -121,11 +121,11 @@ public final class ZATCAValidation
                    .notDeprecated ()
                    .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
                    .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
-                                                                                                "CEN-EN16931-UBL.xsl",
-                                                                                                _getCL ())))
+                  "CEN-EN16931-UBL.xsl",
+                  _getCL ())))
                    .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
-                                                                                                "20210819_ZATCA_E-invoice_Validation_Rules.xsl",
-                                                                                                _getCL ())))
+                  "20210819_ZATCA_E-invoice_Validation_Rules.xsl",
+                  _getCL ())))
                    .registerInto (aRegistry);
     }
   }

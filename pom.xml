@@ -68,7 +68,8 @@
     <jaxb-plugin.version>4.0.16</jaxb-plugin.version>
     <ph-jaxb-plugin.version>5.1.2</ph-jaxb-plugin.version>
 
-    <phive-rules-foundations.version>5.0.0</phive-rules-foundations.version>
+    <phive-rules-shared.version>1.0.0-SNAPSHOT</phive-rules-shared.version>
+    <phive-rules-foundations.version>5.0.1-SNAPSHOT</phive-rules-foundations.version>
 
     <peppol-commons.version>12.6.0</peppol-commons.version>
     <peppol-om.version>1.2.2</peppol-om.version>
@@ -110,6 +111,11 @@
         <version>12.1.0</version>
         <type>pom</type>
         <scope>import</scope>
+      </dependency>
+      <dependency>
+        <groupId>com.helger.phive.rules</groupId>
+        <artifactId>phive-rules-shared</artifactId>
+        <version>${phive-rules-shared.version}</version>
       </dependency>
       <dependency>
         <groupId>com.helger.phive.rules</groupId>

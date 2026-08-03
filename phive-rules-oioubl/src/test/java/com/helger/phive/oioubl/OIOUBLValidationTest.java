@@ -54,7 +54,7 @@ public final class OIOUBLValidationTest
     for (final IValidationExecutorSet <IValidationSourceXML> aVES : CTestFiles.VES_REGISTRY.getAll ())
       for (final IValidationExecutor <IValidationSourceXML> aVE : aVES)
       {
-        assertTrue (com.helger.phive.rules.foundation.PhiveRulesTestHelper.isContentCorrect (aVE));
+        assertTrue (com.helger.phive.rules.shared.PhiveRulesTestHelper.isContentCorrect (aVE));
       }
   }
 }

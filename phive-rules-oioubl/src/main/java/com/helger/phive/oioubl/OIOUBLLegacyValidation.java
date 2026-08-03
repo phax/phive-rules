@@ -29,9 +29,9 @@ import com.helger.io.resource.IReadableResource;
 import com.helger.phive.api.executorset.IValidationExecutorSet;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
 import com.helger.phive.en16931.EN16931Validation;
-import com.helger.phive.rules.api.PhiveRulesHelper;
-import com.helger.phive.rules.api.PhiveRulesUBLHelper;
-import com.helger.phive.rules.foundation.DVRHelper;
+import com.helger.phive.rules.shared.PhiveRulesHelper;
+import com.helger.phive.rules.shared.PhiveRulesUBLHelper;
+import com.helger.phive.rules.shared.DVRHelper;
 import com.helger.phive.xml.executorset.VesXmlBuilder;
 import com.helger.phive.xml.schematron.SchematronNamespaceBeautifier;
 import com.helger.phive.xml.schematron.ValidationExecutorSchematron;
@@ -283,8 +283,8 @@ public final class OIOUBLLegacyValidation
                    .deprecated ()
                    .basedOn (aVESCN_1_3_13)
                    .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
-                                                                                                "OIOUBL-Creditnote.xslt",
-                                                                                                _getCL ())))
+                  "OIOUBL-Creditnote.xslt",
+                  _getCL ())))
                    .registerInto (aRegistry);
       VesXmlBuilder.builder ()
                    .vesID (VID_OIOUBL_INVOICE_3_0_1)
@@ -292,8 +292,8 @@ public final class OIOUBLLegacyValidation
                    .deprecated ()
                    .basedOn (aVESInv_1_3_13)
                    .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
-                                                                                                "OIOUBL-Invoice.xslt",
-                                                                                                _getCL ())))
+                  "OIOUBL-Invoice.xslt",
+                  _getCL ())))
                    .registerInto (aRegistry);
       VesXmlBuilder.builder ()
                    .vesID (VID_OIOUBL_INVOICE_RESPONSE_3_0_1)
@@ -301,11 +301,11 @@ public final class OIOUBLLegacyValidation
                    .deprecated ()
                    .addXSD (UBL21Marshaller.getAllApplicationResponseXSDs ())
                    .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
-                                                                                                "DK-PEPPOLBIS-T111.xslt",
-                                                                                                _getCL ())))
+                  "DK-PEPPOLBIS-T111.xslt",
+                  _getCL ())))
                    .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
-                                                                                                "OIOUBL-Invoice-Response.xslt",
-                                                                                                _getCL ())))
+                  "OIOUBL-Invoice-Response.xslt",
+                  _getCL ())))
                    .registerInto (aRegistry);
       VesXmlBuilder.builder ()
                    .vesID (VID_OIOUBL_MLR_3_0_1)
@@ -313,11 +313,11 @@ public final class OIOUBLLegacyValidation
                    .deprecated ()
                    .addXSD (UBL21Marshaller.getAllApplicationResponseXSDs ())
                    .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
-                                                                                                "DK-PEPPOLBIS-T71.xslt",
-                                                                                                _getCL ())))
+                  "DK-PEPPOLBIS-T71.xslt",
+                  _getCL ())))
                    .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
-                                                                                                "OIOUBL-Message-Level-Response.xslt",
-                                                                                                _getCL ())))
+                  "OIOUBL-Message-Level-Response.xslt",
+                  _getCL ())))
                    .registerInto (aRegistry);
     }
   }

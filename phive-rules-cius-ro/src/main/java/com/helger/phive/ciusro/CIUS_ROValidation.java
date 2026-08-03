@@ -28,10 +28,10 @@ import com.helger.io.resource.ClassPathResource;
 import com.helger.phive.api.executorset.IValidationExecutorSet;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
 import com.helger.phive.en16931.EN16931Validation;
-import com.helger.phive.rules.api.PhiveRulesHelper;
-import com.helger.phive.rules.api.PhiveRulesUBLHelper;
-import com.helger.phive.rules.foundation.DVRHelper;
-import com.helger.phive.rules.foundation.PhiveRulesInitializationException;
+import com.helger.phive.rules.shared.PhiveRulesHelper;
+import com.helger.phive.rules.shared.PhiveRulesUBLHelper;
+import com.helger.phive.rules.shared.DVRHelper;
+import com.helger.phive.rules.shared.PhiveRulesInitializationException;
 import com.helger.phive.xml.executorset.VesXmlBuilder;
 import com.helger.phive.xml.source.IValidationSourceXML;
 

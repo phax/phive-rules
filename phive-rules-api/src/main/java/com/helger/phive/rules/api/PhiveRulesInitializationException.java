@@ -26,11 +26,11 @@ import com.helger.diver.api.coord.DVRCoordinate;
  * @author Philip Helger
  * @since 4.4.0
  * @deprecated Since 4.5.0 - moved to the <code>phive-rules-foundation-api</code> artifact. Use
- *             {@link com.helger.phive.rules.foundation.PhiveRulesInitializationException} instead.
+ *             {@link com.helger.phive.rules.shared.PhiveRulesInitializationException} instead.
  */
 @Deprecated (forRemoval = true, since = "4.5.0")
 public class PhiveRulesInitializationException extends
-                                               com.helger.phive.rules.foundation.PhiveRulesInitializationException
+                                               com.helger.phive.rules.shared.PhiveRulesInitializationException
 {
   @Deprecated (forRemoval = true, since = "4.5.0")
   public PhiveRulesInitializationException (@NonNull final DVRCoordinate aCoord)

@@ -19,8 +19,6 @@ package com.helger.phive.rules.api;
 import org.jspecify.annotations.NonNull;
 
 import com.helger.annotation.concurrent.Immutable;
-import com.helger.cii.d16b.CIID16BNamespaceContext;
-import com.helger.cii.d22b.CIID22BNamespaceContext;
 import com.helger.io.resource.IReadableResource;
 import com.helger.phive.xml.schematron.ValidationExecutorSchematron;
 
@@ -28,22 +26,27 @@ import com.helger.phive.xml.schematron.ValidationExecutorSchematron;
  * Utility class around CII for phive-rules libs.
  *
  * @author Philip Helger
+ * @deprecated Since 4.5.0 - moved to the <code>phive-rules-shared</code> artifact. Use
+ *             {@link com.helger.phive.rules.shared.PhiveRulesCIIHelper} instead.
  */
+@Deprecated (forRemoval = true, since = "4.5.0")
 @Immutable
 public final class PhiveRulesCIIHelper
 {
   private PhiveRulesCIIHelper ()
   {}
 
+  @Deprecated (forRemoval = true, since = "4.5.0")
   @NonNull
   public static ValidationExecutorSchematron createXSLT_CII_D16B (@NonNull final IReadableResource aRes)
   {
-    return PhiveRulesHelper.createXSLT (aRes, CIID16BNamespaceContext.getInstance ());
+    return com.helger.phive.rules.shared.PhiveRulesCIIHelper.createXSLT_CII_D16B (aRes);
   }
 
+  @Deprecated (forRemoval = true, since = "4.5.0")
   @NonNull
   public static ValidationExecutorSchematron createXSLT_CII_D22B (@NonNull final IReadableResource aRes)
   {
-    return PhiveRulesHelper.createXSLT (aRes, CIID22BNamespaceContext.getInstance ());
+    return com.helger.phive.rules.shared.PhiveRulesCIIHelper.createXSLT_CII_D22B (aRes);
   }
 }

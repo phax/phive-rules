@@ -24,7 +24,7 @@ import com.helger.io.resource.IReadableResource;
 import com.helger.phive.api.executor.IValidationExecutor;
 import com.helger.phive.api.executorset.IValidationExecutorSet;
 import com.helger.phive.ciuspt.mock.CTestFiles;
-import com.helger.phive.rules.foundation.PhiveRulesTestHelper;
+import com.helger.phive.rules.shared.PhiveRulesTestHelper;
 import com.helger.phive.xml.source.IValidationSourceXML;
 
 /**

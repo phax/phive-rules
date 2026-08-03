@@ -27,7 +27,7 @@ import org.junit.Test;
 import com.helger.phive.api.executorset.IValidationExecutorSet;
 import com.helger.phive.api.executorset.ValidationExecutorSetRegistry;
 import com.helger.phive.rules.all.PhiveRulesValidation;
-import com.helger.phive.rules.foundation.ValidationRulesRegistrar;
+import com.helger.phive.rules.shared.ValidationRulesRegistrar;
 import com.helger.phive.xml.source.IValidationSourceXML;
 
 /**

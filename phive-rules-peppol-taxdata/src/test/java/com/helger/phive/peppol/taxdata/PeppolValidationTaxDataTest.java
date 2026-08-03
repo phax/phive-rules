@@ -50,6 +50,6 @@ public final class PeppolValidationTaxDataTest
     for (final IValidationExecutorSet <IValidationSourceXML> aVES : CTestFiles.VES_REGISTRY.getAll ())
       for (final IValidationExecutor <IValidationSourceXML> aVE : aVES)
         assertTrue (aVE.getValidationArtefact ().getRuleResourcePath () + " is not valid",
-                    com.helger.phive.rules.foundation.PhiveRulesTestHelper.isContentCorrect (aVE));
+                    com.helger.phive.rules.shared.PhiveRulesTestHelper.isContentCorrect (aVE));
   }
 }

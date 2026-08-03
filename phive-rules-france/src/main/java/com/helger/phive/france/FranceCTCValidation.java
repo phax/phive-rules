@@ -34,10 +34,10 @@ import com.helger.io.resource.ClassPathResource;
 import com.helger.phive.api.executorset.IValidationExecutorSet;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
 import com.helger.phive.en16931.EN16931Validation;
-import com.helger.phive.rules.api.PhiveRulesCIIHelper;
-import com.helger.phive.rules.api.PhiveRulesHelper;
-import com.helger.phive.rules.api.PhiveRulesUBLHelper;
-import com.helger.phive.rules.foundation.DVRHelper;
+import com.helger.phive.rules.shared.PhiveRulesCIIHelper;
+import com.helger.phive.rules.shared.PhiveRulesHelper;
+import com.helger.phive.rules.shared.PhiveRulesUBLHelper;
+import com.helger.phive.rules.shared.DVRHelper;
 import com.helger.phive.xml.executorset.VesXmlBuilder;
 import com.helger.phive.xml.source.IValidationSourceXML;
 import com.helger.ubl21.UBL21Marshaller;
@@ -165,8 +165,8 @@ public final class FranceCTCValidation
                    .deprecated ()
                    .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
                    .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix0 +
-                                                                                                "20250731_BR-FR-Flux2-Schematron-UBL_V0.1.xslt",
-                                                                                                _getCL ())))
+                  "20250731_BR-FR-Flux2-Schematron-UBL_V0.1.xslt",
+                  _getCL ())))
                    .registerInto (aRegistry);
       VesXmlBuilder.builder ()
                    .vesID (VID_FR_CTC_UBL_CN_0_1)
@@ -174,8 +174,8 @@ public final class FranceCTCValidation
                    .deprecated ()
                    .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
                    .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix0 +
-                                                                                                "20250731_BR-FR-Flux2-Schematron-UBL_V0.1.xslt",
-                                                                                                _getCL ())))
+                  "20250731_BR-FR-Flux2-Schematron-UBL_V0.1.xslt",
+                  _getCL ())))
                    .registerInto (aRegistry);
       VesXmlBuilder.builder ()
                    .vesID (VID_FR_CTC_CII_0_1)
@@ -199,8 +199,8 @@ public final class FranceCTCValidation
                    .deprecated ()
                    .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
                    .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix0 +
-                                                                                                "20251114_BR-FR-Flux2-Schematron-UBL_V1.2.0.xslt",
-                                                                                                _getCL ())))
+                  "20251114_BR-FR-Flux2-Schematron-UBL_V1.2.0.xslt",
+                  _getCL ())))
                    .registerInto (aRegistry);
       VesXmlBuilder.builder ()
                    .vesID (VID_FR_CTC_UBL_CN_1_2_0)
@@ -208,8 +208,8 @@ public final class FranceCTCValidation
                    .deprecated ()
                    .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
                    .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix0 +
-                                                                                                "20251114_BR-FR-Flux2-Schematron-UBL_V1.2.0.xslt",
-                                                                                                _getCL ())))
+                  "20251114_BR-FR-Flux2-Schematron-UBL_V1.2.0.xslt",
+                  _getCL ())))
                    .registerInto (aRegistry);
       VesXmlBuilder.builder ()
                    .vesID (VID_FR_CTC_CII_1_2_0)
@@ -244,8 +244,8 @@ public final class FranceCTCValidation
                    .deprecated ()
                    .basedOn (aVESInv_1_3_15)
                    .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix0 +
-                                                                                                "20260216_BR-FR-Flux2-Schematron-UBL_V1.3.0.xslt",
-                                                                                                _getCL ())))
+                  "20260216_BR-FR-Flux2-Schematron-UBL_V1.3.0.xslt",
+                  _getCL ())))
                    .registerInto (aRegistry);
       VesXmlBuilder.builder ()
                    .vesID (VID_FR_CTC_UBL_CN_1_3_0)
@@ -253,8 +253,8 @@ public final class FranceCTCValidation
                    .deprecated ()
                    .basedOn (aVESCN_1_3_15)
                    .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix0 +
-                                                                                                "20260216_BR-FR-Flux2-Schematron-UBL_V1.3.0.xslt",
-                                                                                                _getCL ())))
+                  "20260216_BR-FR-Flux2-Schematron-UBL_V1.3.0.xslt",
+                  _getCL ())))
                    .registerInto (aRegistry);
       VesXmlBuilder.builder ()
                    .vesID (VID_FR_CTC_CII_1_3_0)
@@ -273,11 +273,11 @@ public final class FranceCTCValidation
                    .deprecated ()
                    .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
                    .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix0 +
-                                                                                                "20260216_EXTENDED-CTC-FR-UBL-V1.3.0.xslt",
-                                                                                                _getCL ())))
+                  "20260216_EXTENDED-CTC-FR-UBL-V1.3.0.xslt",
+                  _getCL ())))
                    .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix0 +
-                                                                                                "20260216_BR-FR-Flux2-Schematron-UBL_V1.3.0.xslt",
-                                                                                                _getCL ())))
+                  "20260216_BR-FR-Flux2-Schematron-UBL_V1.3.0.xslt",
+                  _getCL ())))
                    .registerInto (aRegistry);
       VesXmlBuilder.builder ()
                    .vesID (VID_FR_EXTENDED_CTC_UBL_CN_1_3_0)
@@ -285,11 +285,11 @@ public final class FranceCTCValidation
                    .deprecated ()
                    .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
                    .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix0 +
-                                                                                                "20260216_EXTENDED-CTC-FR-UBL-V1.3.0.xslt",
-                                                                                                _getCL ())))
+                  "20260216_EXTENDED-CTC-FR-UBL-V1.3.0.xslt",
+                  _getCL ())))
                    .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix0 +
-                                                                                                "20260216_BR-FR-Flux2-Schematron-UBL_V1.3.0.xslt",
-                                                                                                _getCL ())))
+                  "20260216_BR-FR-Flux2-Schematron-UBL_V1.3.0.xslt",
+                  _getCL ())))
                    .registerInto (aRegistry);
       VesXmlBuilder.builder ()
                    .vesID (VID_FR_EXTENDED_CTC_CII_1_3_0)
@@ -328,8 +328,8 @@ public final class FranceCTCValidation
                    .notDeprecated ()
                    .basedOn (aVESInv_1_3_15)
                    .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix0 +
-                                                                                                "20260430_BR-FR-Flux2-Schematron-UBL_V1.3.1.xslt",
-                                                                                                _getCL ())))
+                  "20260430_BR-FR-Flux2-Schematron-UBL_V1.3.1.xslt",
+                  _getCL ())))
                    .validFrom (aValidFrom)
                    .registerInto (aRegistry);
       VesXmlBuilder.builder ()
@@ -338,8 +338,8 @@ public final class FranceCTCValidation
                    .notDeprecated ()
                    .basedOn (aVESCN_1_3_15)
                    .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix0 +
-                                                                                                "20260430_BR-FR-Flux2-Schematron-UBL_V1.3.1.xslt",
-                                                                                                _getCL ())))
+                  "20260430_BR-FR-Flux2-Schematron-UBL_V1.3.1.xslt",
+                  _getCL ())))
                    .registerInto (aRegistry);
       VesXmlBuilder.builder ()
                    .vesID (VID_FR_CTC_CII_1_3_1)
@@ -359,11 +359,11 @@ public final class FranceCTCValidation
                    .notDeprecated ()
                    .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
                    .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix0 +
-                                                                                                "20260430_EXTENDED-CTC-FR-UBL-V1.3.1.xslt",
-                                                                                                _getCL ())))
+                  "20260430_EXTENDED-CTC-FR-UBL-V1.3.1.xslt",
+                  _getCL ())))
                    .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix0 +
-                                                                                                "20260430_BR-FR-Flux2-Schematron-UBL_V1.3.1.xslt",
-                                                                                                _getCL ())))
+                  "20260430_BR-FR-Flux2-Schematron-UBL_V1.3.1.xslt",
+                  _getCL ())))
                    .validFrom (aValidFrom)
                    .registerInto (aRegistry);
       VesXmlBuilder.builder ()
@@ -372,11 +372,11 @@ public final class FranceCTCValidation
                    .notDeprecated ()
                    .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
                    .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix0 +
-                                                                                                "20260430_EXTENDED-CTC-FR-UBL-V1.3.1.xslt",
-                                                                                                _getCL ())))
+                  "20260430_EXTENDED-CTC-FR-UBL-V1.3.1.xslt",
+                  _getCL ())))
                    .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix0 +
-                                                                                                "20260430_BR-FR-Flux2-Schematron-UBL_V1.3.1.xslt",
-                                                                                                _getCL ())))
+                  "20260430_BR-FR-Flux2-Schematron-UBL_V1.3.1.xslt",
+                  _getCL ())))
                    .validFrom (aValidFrom)
                    .registerInto (aRegistry);
       VesXmlBuilder.builder ()
@@ -419,8 +419,8 @@ public final class FranceCTCValidation
                    .notDeprecated ()
                    .basedOn (aVESInv_1_3_16)
                    .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix0 +
-                                                                                                "20260630_BR-FR-Flux2-Schematron-UBL_V1.4.0.xslt",
-                                                                                                _getCL ())))
+                  "20260630_BR-FR-Flux2-Schematron-UBL_V1.4.0.xslt",
+                  _getCL ())))
                    .validFrom (aValidFrom)
                    .registerInto (aRegistry);
       VesXmlBuilder.builder ()
@@ -429,8 +429,8 @@ public final class FranceCTCValidation
                    .notDeprecated ()
                    .basedOn (aVESCN_1_3_16)
                    .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix0 +
-                                                                                                "20260630_BR-FR-Flux2-Schematron-UBL_V1.4.0.xslt",
-                                                                                                _getCL ())))
+                  "20260630_BR-FR-Flux2-Schematron-UBL_V1.4.0.xslt",
+                  _getCL ())))
                    .validFrom (aValidFrom)
                    .registerInto (aRegistry);
       VesXmlBuilder.builder ()
@@ -451,11 +451,11 @@ public final class FranceCTCValidation
                    .notDeprecated ()
                    .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
                    .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix0 +
-                                                                                                "20260630_EXTENDED-CTC-FR-UBL-V1.4.0.xslt",
-                                                                                                _getCL ())))
+                  "20260630_EXTENDED-CTC-FR-UBL-V1.4.0.xslt",
+                  _getCL ())))
                    .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix0 +
-                                                                                                "20260630_BR-FR-Flux2-Schematron-UBL_V1.4.0.xslt",
-                                                                                                _getCL ())))
+                  "20260630_BR-FR-Flux2-Schematron-UBL_V1.4.0.xslt",
+                  _getCL ())))
                    .validFrom (aValidFrom)
                    .registerInto (aRegistry);
       VesXmlBuilder.builder ()
@@ -464,11 +464,11 @@ public final class FranceCTCValidation
                    .notDeprecated ()
                    .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
                    .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix0 +
-                                                                                                "20260630_EXTENDED-CTC-FR-UBL-V1.4.0.xslt",
-                                                                                                _getCL ())))
+                  "20260630_EXTENDED-CTC-FR-UBL-V1.4.0.xslt",
+                  _getCL ())))
                    .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix0 +
-                                                                                                "20260630_BR-FR-Flux2-Schematron-UBL_V1.4.0.xslt",
-                                                                                                _getCL ())))
+                  "20260630_BR-FR-Flux2-Schematron-UBL_V1.4.0.xslt",
+                  _getCL ())))
                    .validFrom (aValidFrom)
                    .registerInto (aRegistry);
       VesXmlBuilder.builder ()

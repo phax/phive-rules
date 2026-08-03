@@ -24,9 +24,9 @@ import com.helger.cii.d16b.CCIID16B;
 import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.io.resource.ClassPathResource;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
-import com.helger.phive.rules.api.PhiveRulesCIIHelper;
-import com.helger.phive.rules.api.PhiveRulesUBLHelper;
-import com.helger.phive.rules.foundation.DVRHelper;
+import com.helger.phive.rules.shared.PhiveRulesCIIHelper;
+import com.helger.phive.rules.shared.PhiveRulesUBLHelper;
+import com.helger.phive.rules.shared.DVRHelper;
 import com.helger.phive.xml.executorset.VesXmlBuilder;
 import com.helger.phive.xml.source.IValidationSourceXML;
 import com.helger.ubl21.UBL21Marshaller;
@@ -639,8 +639,8 @@ public final class SimplerInvoicingValidation
                  .deprecated ()
                  .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
                  .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (PATH_SI +
-                                                                                              "si-ubl-2.0-ext-gaccount-1.0.xslt",
-                                                                                              _getCL ())))
+                "si-ubl-2.0-ext-gaccount-1.0.xslt",
+                _getCL ())))
                  .registerInto (aRegistry);
 
     // 2.0 G-Account 1.0.1
@@ -650,8 +650,8 @@ public final class SimplerInvoicingValidation
                  .deprecated ()
                  .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
                  .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (PATH_SI +
-                                                                                              "si-ubl-2.0-ext-gaccount-1.0.1.xslt",
-                                                                                              _getCL ())))
+                "si-ubl-2.0-ext-gaccount-1.0.1.xslt",
+                _getCL ())))
                  .registerInto (aRegistry);
 
     // 2.0 G-Account 1.0.2
@@ -661,8 +661,8 @@ public final class SimplerInvoicingValidation
                  .deprecated ()
                  .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
                  .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (PATH_SI +
-                                                                                              "si-ubl-2.0-ext-gaccount-1.0.2.xslt",
-                                                                                              _getCL ())))
+                "si-ubl-2.0-ext-gaccount-1.0.2.xslt",
+                _getCL ())))
                  .registerInto (aRegistry);
 
     // 2.0 G-Account 1.0.3
@@ -672,8 +672,8 @@ public final class SimplerInvoicingValidation
                  .deprecated ()
                  .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
                  .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (PATH_SI +
-                                                                                              "si-ubl-2.0-ext-gaccount-1.0.3.xslt",
-                                                                                              _getCL ())))
+                "si-ubl-2.0-ext-gaccount-1.0.3.xslt",
+                _getCL ())))
                  .registerInto (aRegistry);
 
     // 2.0 G-Account 1.0.4
@@ -683,8 +683,8 @@ public final class SimplerInvoicingValidation
                  .deprecated ()
                  .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
                  .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (PATH_SI +
-                                                                                              "si-ubl-2.0-ext-gaccount-1.0.4.xslt",
-                                                                                              _getCL ())))
+                "si-ubl-2.0-ext-gaccount-1.0.4.xslt",
+                _getCL ())))
                  .registerInto (aRegistry);
 
     // 2.0 G-Account 1.0.5
@@ -694,8 +694,8 @@ public final class SimplerInvoicingValidation
                  .deprecated ()
                  .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
                  .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (PATH_SI +
-                                                                                              "si-ubl-2.0-ext-gaccount-1.0.5.xslt",
-                                                                                              _getCL ())))
+                "si-ubl-2.0-ext-gaccount-1.0.5.xslt",
+                _getCL ())))
                  .registerInto (aRegistry);
 
     // 2.0 G-Account 1.0.6
@@ -705,8 +705,8 @@ public final class SimplerInvoicingValidation
                  .deprecated ()
                  .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
                  .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (PATH_SI +
-                                                                                              "si-ubl-2.0-ext-gaccount-1.0.6.xslt",
-                                                                                              _getCL ())))
+                "si-ubl-2.0-ext-gaccount-1.0.6.xslt",
+                _getCL ())))
                  .registerInto (aRegistry);
 
     // 2.0 G-Account 1.0.7
@@ -716,8 +716,8 @@ public final class SimplerInvoicingValidation
                  .deprecated ()
                  .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
                  .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (PATH_SI +
-                                                                                              "si-ubl-2.0-ext-gaccount-1.0.7.xslt",
-                                                                                              _getCL ())))
+                "si-ubl-2.0-ext-gaccount-1.0.7.xslt",
+                _getCL ())))
                  .registerInto (aRegistry);
 
     // 2.0 G-Account 1.0.8
@@ -727,8 +727,8 @@ public final class SimplerInvoicingValidation
                  .deprecated ()
                  .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
                  .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (PATH_SI +
-                                                                                              "si-ubl-2.0-ext-gaccount-1.0.8.xslt",
-                                                                                              _getCL ())))
+                "si-ubl-2.0-ext-gaccount-1.0.8.xslt",
+                _getCL ())))
                  .registerInto (aRegistry);
 
     // 2.0 G-Account 1.0.9
@@ -738,8 +738,8 @@ public final class SimplerInvoicingValidation
                  .deprecated ()
                  .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
                  .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (PATH_SI +
-                                                                                              "si-ubl-2.0-ext-gaccount-1.0.9.xslt",
-                                                                                              _getCL ())))
+                "si-ubl-2.0-ext-gaccount-1.0.9.xslt",
+                _getCL ())))
                  .registerInto (aRegistry);
 
     // 2.0 G-Account 1.0.10
@@ -749,8 +749,8 @@ public final class SimplerInvoicingValidation
                  .deprecated ()
                  .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
                  .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (PATH_SI +
-                                                                                              "si-ubl-2.0-ext-gaccount-1.0.10.xslt",
-                                                                                              _getCL ())))
+                "si-ubl-2.0-ext-gaccount-1.0.10.xslt",
+                _getCL ())))
                  .registerInto (aRegistry);
 
     // 2.0 G-Account 1.0.11
@@ -760,8 +760,8 @@ public final class SimplerInvoicingValidation
                  .deprecated ()
                  .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
                  .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (PATH_SI +
-                                                                                              "si-ubl-2.0-ext-gaccount-1.0.11.xslt",
-                                                                                              _getCL ())))
+                "si-ubl-2.0-ext-gaccount-1.0.11.xslt",
+                _getCL ())))
                  .registerInto (aRegistry);
 
     // 2.0 G-Account 1.0.12
@@ -771,8 +771,8 @@ public final class SimplerInvoicingValidation
                  .notDeprecated ()
                  .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
                  .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (PATH_SI +
-                                                                                              "si-ubl-2.0-ext-gaccount-1.0.12.xslt",
-                                                                                              _getCL ())))
+                "si-ubl-2.0-ext-gaccount-1.0.12.xslt",
+                _getCL ())))
                  .registerInto (aRegistry);
 
     // 2.0 G-Account 1.0.13 - release 2026-05-21
@@ -782,8 +782,8 @@ public final class SimplerInvoicingValidation
                  .notDeprecated ()
                  .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
                  .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (PATH_SI +
-                                                                                              "si-ubl-2.0-ext-gaccount-1.0.13.xslt",
-                                                                                              _getCL ())))
+                "si-ubl-2.0-ext-gaccount-1.0.13.xslt",
+                _getCL ())))
                  .registerInto (aRegistry);
 
     final String PATH_NL_CIUS = "/external/schematron/nlcius/";

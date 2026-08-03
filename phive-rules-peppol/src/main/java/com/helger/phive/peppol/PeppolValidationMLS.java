@@ -23,8 +23,8 @@ import com.helger.base.enforce.ValueEnforcer;
 import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.io.resource.ClassPathResource;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
-import com.helger.phive.rules.api.PhiveRulesUBLHelper;
-import com.helger.phive.rules.foundation.DVRHelper;
+import com.helger.phive.rules.shared.PhiveRulesUBLHelper;
+import com.helger.phive.rules.shared.DVRHelper;
 import com.helger.phive.xml.executorset.VesXmlBuilder;
 import com.helger.phive.xml.source.IValidationSourceXML;
 import com.helger.ubl21.UBL21Marshaller;
@@ -69,8 +69,8 @@ public final class PeppolValidationMLS
                    .deprecated ()
                    .addXSD (UBL21Marshaller.getAllApplicationResponseXSDs ())
                    .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (BASE_PATH_SCH +
-                                                                                                "1.0.0/xslt/peppol-mls-1.0.0.xslt",
-                                                                                                _getCL ())))
+                  "1.0.0/xslt/peppol-mls-1.0.0.xslt",
+                  _getCL ())))
                    .registerInto (aRegistry);
     }
 
@@ -82,8 +82,8 @@ public final class PeppolValidationMLS
                    .notDeprecated ()
                    .addXSD (UBL21Marshaller.getAllApplicationResponseXSDs ())
                    .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (BASE_PATH_SCH +
-                                                                                                "1.0.1/xslt/peppol-mls-1.0.1.xslt",
-                                                                                                _getCL ())))
+                  "1.0.1/xslt/peppol-mls-1.0.1.xslt",
+                  _getCL ())))
                    .registerInto (aRegistry);
     }
   }

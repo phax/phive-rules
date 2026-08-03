@@ -28,7 +28,7 @@ import com.helger.phive.xml.source.IValidationSourceXML;
  *
  * @author Philip Helger
  * @deprecated Since 4.5.0 - moved to the <code>phive-rules-foundation-api</code> artifact. Use
- *             {@link com.helger.phive.rules.foundation.ValidationRulesRegistrar} instead.
+ *             {@link com.helger.phive.rules.shared.ValidationRulesRegistrar} instead.
  */
 @Deprecated (forRemoval = true, since = "4.5.0")
 @Immutable
@@ -50,6 +50,6 @@ public final class ValidationRulesRegistrar
   @Deprecated (forRemoval = true, since = "4.5.0")
   public static void registerAllValidationRules (@NonNull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
   {
-    com.helger.phive.rules.foundation.ValidationRulesRegistrar.registerAllValidationRules (aRegistry);
+    com.helger.phive.rules.shared.ValidationRulesRegistrar.registerAllValidationRules (aRegistry);
   }
 }

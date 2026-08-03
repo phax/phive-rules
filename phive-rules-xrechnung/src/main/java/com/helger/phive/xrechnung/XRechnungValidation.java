@@ -31,10 +31,10 @@ import com.helger.io.resource.ClassPathResource;
 import com.helger.phive.api.executorset.IValidationExecutorSet;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
 import com.helger.phive.en16931.EN16931Validation;
-import com.helger.phive.rules.api.PhiveRulesCIIHelper;
-import com.helger.phive.rules.api.PhiveRulesHelper;
-import com.helger.phive.rules.api.PhiveRulesUBLHelper;
-import com.helger.phive.rules.foundation.DVRHelper;
+import com.helger.phive.rules.shared.PhiveRulesCIIHelper;
+import com.helger.phive.rules.shared.PhiveRulesHelper;
+import com.helger.phive.rules.shared.PhiveRulesUBLHelper;
+import com.helger.phive.rules.shared.DVRHelper;
 import com.helger.phive.xml.executorset.VesXmlBuilder;
 import com.helger.phive.xml.schematron.CustomErrorDetails;
 import com.helger.phive.xml.source.IValidationSourceXML;
@@ -310,8 +310,8 @@ public final class XRechnungValidation
                    .deprecated ()
                    .basedOn (aVESCN_1_1_0)
                    .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix +
-                                                                                                "1.2.0/XRechnung-UBL-validation-CreditNote.xslt",
-                                                                                                _getCL ())))
+                  "1.2.0/XRechnung-UBL-validation-CreditNote.xslt",
+                  _getCL ())))
                    .registerInto (aRegistry);
       VesXmlBuilder.builder ()
                    .vesID (VID_XRECHNUNG_UBL_INVOICE_120)
@@ -319,8 +319,8 @@ public final class XRechnungValidation
                    .deprecated ()
                    .basedOn (aVESInv_1_1_0)
                    .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix +
-                                                                                                "1.2.0/XRechnung-UBL-validation-Invoice.xslt",
-                                                                                                _getCL ())))
+                  "1.2.0/XRechnung-UBL-validation-Invoice.xslt",
+                  _getCL ())))
                    .registerInto (aRegistry);
     }
 
@@ -341,8 +341,8 @@ public final class XRechnungValidation
                    .deprecated ()
                    .basedOn (aVESCN_1_2_1)
                    .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix +
-                                                                                                "1.2.1/XRechnung-UBL-validation-CreditNote.xslt",
-                                                                                                _getCL ())))
+                  "1.2.1/XRechnung-UBL-validation-CreditNote.xslt",
+                  _getCL ())))
                    .registerInto (aRegistry);
       VesXmlBuilder.builder ()
                    .vesID (VID_XRECHNUNG_UBL_INVOICE_121)
@@ -350,8 +350,8 @@ public final class XRechnungValidation
                    .deprecated ()
                    .basedOn (aVESInv_1_2_1)
                    .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix +
-                                                                                                "1.2.1/XRechnung-UBL-validation-Invoice.xslt",
-                                                                                                _getCL ())))
+                  "1.2.1/XRechnung-UBL-validation-Invoice.xslt",
+                  _getCL ())))
                    .registerInto (aRegistry);
     }
 
@@ -372,8 +372,8 @@ public final class XRechnungValidation
                    .deprecated ()
                    .basedOn (aVESCN_1_3_0)
                    .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix +
-                                                                                                "1.2.2/XRechnung-UBL-validation-CreditNote.xslt",
-                                                                                                _getCL ())))
+                  "1.2.2/XRechnung-UBL-validation-CreditNote.xslt",
+                  _getCL ())))
                    .registerInto (aRegistry);
       VesXmlBuilder.builder ()
                    .vesID (VID_XRECHNUNG_UBL_INVOICE_122)
@@ -381,8 +381,8 @@ public final class XRechnungValidation
                    .deprecated ()
                    .basedOn (aVESInv_1_3_0)
                    .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix +
-                                                                                                "1.2.2/XRechnung-UBL-validation-Invoice.xslt",
-                                                                                                _getCL ())))
+                  "1.2.2/XRechnung-UBL-validation-Invoice.xslt",
+                  _getCL ())))
                    .registerInto (aRegistry);
     }
 
@@ -410,8 +410,8 @@ public final class XRechnungValidation
                    .deprecated ()
                    .basedOn (aVESCN_1_3_2, aCustomErrorLevels)
                    .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix +
-                                                                                                "2.0.0/XRechnung-UBL-validation-CreditNote.xslt",
-                                                                                                _getCL ())))
+                  "2.0.0/XRechnung-UBL-validation-CreditNote.xslt",
+                  _getCL ())))
                    .registerInto (aRegistry);
 
       VesXmlBuilder.builder ()
@@ -420,8 +420,8 @@ public final class XRechnungValidation
                    .deprecated ()
                    .basedOn (aVESInv_1_3_2, aCustomErrorLevels)
                    .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix +
-                                                                                                "2.0.0/XRechnung-UBL-validation-Invoice.xslt",
-                                                                                                _getCL ())))
+                  "2.0.0/XRechnung-UBL-validation-Invoice.xslt",
+                  _getCL ())))
                    .registerInto (aRegistry);
     }
 
@@ -456,8 +456,8 @@ public final class XRechnungValidation
                      .deprecated ()
                      .basedOn (aVESCN_1_3_3, aCustomErrorLevels)
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix +
-                                                                                                  "2.0.1/XRechnung-UBL-validation-CreditNote.xslt",
-                                                                                                  _getCL ())))
+                    "2.0.1/XRechnung-UBL-validation-CreditNote.xslt",
+                    _getCL ())))
                      .registerInto (aRegistry);
       }
 
@@ -473,8 +473,8 @@ public final class XRechnungValidation
                      .deprecated ()
                      .basedOn (aVESInv_1_3_3, aCustomErrorLevels)
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix +
-                                                                                                  "2.0.1/XRechnung-UBL-validation-Invoice.xslt",
-                                                                                                  _getCL ())))
+                    "2.0.1/XRechnung-UBL-validation-Invoice.xslt",
+                    _getCL ())))
                      .registerInto (aRegistry);
       }
       {
@@ -493,8 +493,8 @@ public final class XRechnungValidation
                      .deprecated ()
                      .basedOn (aVESInv_1_3_3, aCustomErrorLevels)
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix +
-                                                                                                  "2.0.1/XRechnung-UBL-validation-Invoice.xslt",
-                                                                                                  _getCL ())))
+                    "2.0.1/XRechnung-UBL-validation-Invoice.xslt",
+                    _getCL ())))
                      .registerInto (aRegistry);
       }
     }
@@ -532,8 +532,8 @@ public final class XRechnungValidation
                      .deprecated ()
                      .basedOn (aVESCN_1_3_6a, aCustomErrorLevels)
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix +
-                                                                                                  "2.1.1/XRechnung-UBL-validation-CreditNote.xslt",
-                                                                                                  _getCL ())))
+                    "2.1.1/XRechnung-UBL-validation-CreditNote.xslt",
+                    _getCL ())))
                      .registerInto (aRegistry);
       }
 
@@ -549,8 +549,8 @@ public final class XRechnungValidation
                      .deprecated ()
                      .basedOn (aVESInv_1_3_6a, aCustomErrorLevels)
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix +
-                                                                                                  "2.1.1/XRechnung-UBL-validation-Invoice.xslt",
-                                                                                                  _getCL ())))
+                    "2.1.1/XRechnung-UBL-validation-Invoice.xslt",
+                    _getCL ())))
                      .registerInto (aRegistry);
       }
       {
@@ -568,8 +568,8 @@ public final class XRechnungValidation
                      .deprecated ()
                      .basedOn (aVESInv_1_3_6a, aCustomErrorLevels)
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix +
-                                                                                                  "2.1.1/XRechnung-UBL-validation-Invoice.xslt",
-                                                                                                  _getCL ())))
+                    "2.1.1/XRechnung-UBL-validation-Invoice.xslt",
+                    _getCL ())))
                      .registerInto (aRegistry);
       }
     }
@@ -628,8 +628,8 @@ public final class XRechnungValidation
                      .deprecated ()
                      .basedOn (aVESCN_1_3_7, aCustomErrorLevels)
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix +
-                                                                                                  "2.2.0/XRechnung-UBL-validation-CreditNote.xslt",
-                                                                                                  _getCL ())))
+                    "2.2.0/XRechnung-UBL-validation-CreditNote.xslt",
+                    _getCL ())))
                      .registerInto (aRegistry);
       }
 
@@ -645,8 +645,8 @@ public final class XRechnungValidation
                      .deprecated ()
                      .basedOn (aVESInv_1_3_7, aCustomErrorLevels)
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix +
-                                                                                                  "2.2.0/XRechnung-UBL-validation-Invoice.xslt",
-                                                                                                  _getCL ())))
+                    "2.2.0/XRechnung-UBL-validation-Invoice.xslt",
+                    _getCL ())))
                      .registerInto (aRegistry);
       }
       {
@@ -668,8 +668,8 @@ public final class XRechnungValidation
                      .deprecated ()
                      .basedOn (aVESInv_1_3_7, aCustomErrorLevels)
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix +
-                                                                                                  "2.2.0/XRechnung-UBL-validation-Invoice.xslt",
-                                                                                                  _getCL ())))
+                    "2.2.0/XRechnung-UBL-validation-Invoice.xslt",
+                    _getCL ())))
                      .registerInto (aRegistry);
       }
     }
@@ -723,8 +723,8 @@ public final class XRechnungValidation
                      .deprecated ()
                      .basedOn (aVESCN_1_3_9, aCustomErrorLevels)
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix +
-                                                                                                  "2.3.1/XRechnung-UBL-validation.xslt",
-                                                                                                  _getCL ())))
+                    "2.3.1/XRechnung-UBL-validation.xslt",
+                    _getCL ())))
                      .registerInto (aRegistry);
       }
 
@@ -739,8 +739,8 @@ public final class XRechnungValidation
                      .deprecated ()
                      .basedOn (aVESInv_1_3_9, aCustomErrorLevels)
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix +
-                                                                                                  "2.3.1/XRechnung-UBL-validation.xslt",
-                                                                                                  _getCL ())))
+                    "2.3.1/XRechnung-UBL-validation.xslt",
+                    _getCL ())))
                      .registerInto (aRegistry);
       }
       {
@@ -763,8 +763,8 @@ public final class XRechnungValidation
                      .deprecated ()
                      .basedOn (aVESInv_1_3_9, aCustomErrorLevels)
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix +
-                                                                                                  "2.3.1/XRechnung-UBL-validation.xslt",
-                                                                                                  _getCL ())))
+                    "2.3.1/XRechnung-UBL-validation.xslt",
+                    _getCL ())))
                      .registerInto (aRegistry);
       }
     }
@@ -821,8 +821,8 @@ public final class XRechnungValidation
                      .notDeprecated ()
                      .basedOn (aVESCN_1_3_10, aCustomErrorLevels)
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix +
-                                                                                                  "3.0.0/XRechnung-UBL-validation.xslt",
-                                                                                                  _getCL ())))
+                    "3.0.0/XRechnung-UBL-validation.xslt",
+                    _getCL ())))
                      .registerInto (aRegistry);
       }
 
@@ -837,8 +837,8 @@ public final class XRechnungValidation
                      .notDeprecated ()
                      .basedOn (aVESInv_1_3_10, aCustomErrorLevels)
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix +
-                                                                                                  "3.0.0/XRechnung-UBL-validation.xslt",
-                                                                                                  _getCL ())))
+                    "3.0.0/XRechnung-UBL-validation.xslt",
+                    _getCL ())))
                      .registerInto (aRegistry);
       }
       {
@@ -861,8 +861,8 @@ public final class XRechnungValidation
                      .notDeprecated ()
                      .basedOn (aVESInv_1_3_10, aCustomErrorLevels)
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix +
-                                                                                                  "3.0.0/XRechnung-UBL-validation.xslt",
-                                                                                                  _getCL ())))
+                    "3.0.0/XRechnung-UBL-validation.xslt",
+                    _getCL ())))
                      .registerInto (aRegistry);
       }
     }
@@ -925,8 +925,8 @@ public final class XRechnungValidation
                      .notDeprecated ()
                      .basedOn (aVESCN_1_3_11, aCustomErrorLevels)
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix +
-                                                                                                  "3.0.1/XRechnung-UBL-validation.xslt",
-                                                                                                  _getCL ())))
+                    "3.0.1/XRechnung-UBL-validation.xslt",
+                    _getCL ())))
                      .registerInto (aRegistry);
       }
 
@@ -941,8 +941,8 @@ public final class XRechnungValidation
                      .notDeprecated ()
                      .basedOn (aVESInv_1_3_11, aCustomErrorLevels)
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix +
-                                                                                                  "3.0.1/XRechnung-UBL-validation.xslt",
-                                                                                                  _getCL ())))
+                    "3.0.1/XRechnung-UBL-validation.xslt",
+                    _getCL ())))
                      .registerInto (aRegistry);
       }
       {
@@ -965,8 +965,8 @@ public final class XRechnungValidation
                      .notDeprecated ()
                      .basedOn (aVESInv_1_3_11, aCustomErrorLevels)
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix +
-                                                                                                  "3.0.1/XRechnung-UBL-validation.xslt",
-                                                                                                  _getCL ())))
+                    "3.0.1/XRechnung-UBL-validation.xslt",
+                    _getCL ())))
                      .registerInto (aRegistry);
       }
     }
@@ -1034,8 +1034,8 @@ public final class XRechnungValidation
                      .notDeprecated ()
                      .basedOn (aVESCN_1_3_15, aCustomErrorLevels)
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix +
-                                                                                                  "3.0.2/XRechnung-UBL-validation.xslt",
-                                                                                                  _getCL ())))
+                    "3.0.2/XRechnung-UBL-validation.xslt",
+                    _getCL ())))
                      .registerInto (aRegistry);
       }
 
@@ -1052,8 +1052,8 @@ public final class XRechnungValidation
                      .notDeprecated ()
                      .basedOn (aVESInv_1_3_15, aCustomErrorLevels)
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix +
-                                                                                                  "3.0.2/XRechnung-UBL-validation.xslt",
-                                                                                                  _getCL ())))
+                    "3.0.2/XRechnung-UBL-validation.xslt",
+                    _getCL ())))
                      .registerInto (aRegistry);
       }
       {
@@ -1077,8 +1077,8 @@ public final class XRechnungValidation
                      .notDeprecated ()
                      .basedOn (aVESInv_1_3_15, aCustomErrorLevels)
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix +
-                                                                                                  "3.0.2/XRechnung-UBL-validation.xslt",
-                                                                                                  _getCL ())))
+                    "3.0.2/XRechnung-UBL-validation.xslt",
+                    _getCL ())))
                      .registerInto (aRegistry);
       }
     }

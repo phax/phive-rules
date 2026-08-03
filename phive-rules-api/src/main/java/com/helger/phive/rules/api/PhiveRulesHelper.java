@@ -34,9 +34,7 @@ import com.helger.phive.api.executorset.status.IValidationExecutorSetStatus;
 import com.helger.phive.api.executorset.status.ValidationExecutorSetStatus;
 import com.helger.phive.api.executorset.status.ValidationExecutorSetStatusHistoryItem;
 import com.helger.phive.api.source.IValidationSource;
-import com.helger.phive.rules.foundation.DVRHelper;
-import com.helger.phive.rules.foundation.PhiveRulesInitializationException;
-import com.helger.phive.xml.schematron.SchematronNamespaceBeautifier;
+import com.helger.phive.rules.shared.DVRHelper;
 import com.helger.phive.xml.schematron.ValidationExecutorSchematron;
 import com.helger.xml.namespace.IIterableNamespaceContext;
 
@@ -44,7 +42,11 @@ import com.helger.xml.namespace.IIterableNamespaceContext;
  * Utility class for phive-rules libs.
  *
  * @author Philip Helger
+ * @deprecated Since 4.5.0 - moved to the <code>phive-rules-shared</code> artifact. Use
+ *             {@link com.helger.phive.rules.shared.PhiveRulesHelper} (and
+ *             {@link com.helger.phive.rules.shared.DVRHelper} for coordinates) instead.
  */
+@Deprecated (forRemoval = true, since = "4.5.0")
 @Immutable
 public final class PhiveRulesHelper
 {
@@ -70,33 +72,31 @@ public final class PhiveRulesHelper
     return DVRHelper.createCoordinate (sGroupID, sArtifactID, sVersion, sClassifier);
   }
 
+  @Deprecated (forRemoval = true, since = "4.5.0")
   @NonNull
   public static ValidationExecutorSchematron createXSLT (@NonNull final IReadableResource aRes,
                                                          @Nullable final IIterableNamespaceContext aNsCtx)
   {
-    SchematronNamespaceBeautifier.addMappings (aNsCtx);
-    return ValidationExecutorSchematron.createXSLT (aRes, null, aNsCtx);
+    return com.helger.phive.rules.shared.PhiveRulesHelper.createXSLT (aRes, aNsCtx);
   }
 
+  @Deprecated (forRemoval = true, since = "4.5.0")
   @NonNull
   public static <T extends IValidationSource> IValidationExecutorSet <T> requireVESID (@NonNull final IValidationExecutorSetRegistry <T> aRegistry,
                                                                                        @NonNull final DVRCoordinate aCoord)
   {
-    final var ret = aRegistry.getOfID (aCoord);
-    if (ret == null)
-      throw new PhiveRulesInitializationException (aCoord);
-    return ret;
+    return com.helger.phive.rules.shared.PhiveRulesHelper.requireVESID (aRegistry, aCoord);
   }
 
+  @Deprecated (forRemoval = true, since = "4.5.0")
   @NonNull
-  @Deprecated (forRemoval = true, since = "4.3.0")
   public static IValidationExecutorSetStatus createSimpleStatus (final boolean bIsDeprecated)
   {
     return ValidationExecutorSetStatus.createDeprecatedNow (bIsDeprecated);
   }
 
+  @Deprecated (forRemoval = true, since = "4.5.0")
   @NonNull
-  @Deprecated (forRemoval = true, since = "4.3.0")
   public static IValidationExecutorSetStatus createSimpleStatus (final boolean bIsDeprecated,
                                                                  @NonNull final OffsetDateTime aValidPer)
   {

@@ -25,11 +25,11 @@ import com.helger.annotation.style.IsSPIInterface;
  * @author Philip Helger
  * @since 4.4.0
  * @deprecated Since 4.5.0 - moved to the <code>phive-rules-foundation-api</code> artifact. Use
- *             {@link com.helger.phive.rules.foundation.IValidationRulesRegistrarSPI} instead.
+ *             {@link com.helger.phive.rules.shared.IValidationRulesRegistrarSPI} instead.
  */
 @Deprecated (forRemoval = true, since = "4.5.0")
 @IsSPIInterface
-public interface IValidationRulesRegistrarSPI extends com.helger.phive.rules.foundation.IValidationRulesRegistrarSPI
+public interface IValidationRulesRegistrarSPI extends com.helger.phive.rules.shared.IValidationRulesRegistrarSPI
 {
   /* All members are inherited from the foundation SPI interface. */
 }

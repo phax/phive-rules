@@ -24,7 +24,7 @@ import com.helger.phive.xml.source.IValidationSourceXML;
 
 /**
  * @deprecated Since 4.5.0 - moved to the <code>phive-rules-foundation-api</code> artifact. Use
- *             {@link com.helger.phive.rules.foundation.PhiveRulesTestHelper} instead.
+ *             {@link com.helger.phive.rules.shared.PhiveRulesTestHelper} instead.
  */
 @Deprecated (forRemoval = true, since = "4.5.0")
 @Immutable
@@ -36,6 +36,6 @@ public final class PhiveRulesTestHelper
   @Deprecated (forRemoval = true, since = "4.5.0")
   public static boolean isContentCorrect (@NonNull final IValidationExecutor <IValidationSourceXML> aVE)
   {
-    return com.helger.phive.rules.foundation.PhiveRulesTestHelper.isContentCorrect (aVE);
+    return com.helger.phive.rules.shared.PhiveRulesTestHelper.isContentCorrect (aVE);
   }
 }
