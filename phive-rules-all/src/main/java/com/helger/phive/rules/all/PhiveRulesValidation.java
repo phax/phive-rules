@@ -80,23 +80,27 @@ public final class PhiveRulesValidation
   {
     ValueEnforcer.notNull (aRegistry, "Registry");
 
-    // Must be first
-    EN16931Validation.initEN16931 (aRegistry);
-    // The rest in alphabetical order, except where explicitly stated
+    // Foundations
     CIIValidation.initCII (aRegistry);
-    CIUS_PTValidation.initCIUS_PT (aRegistry);
-    CIUS_ROValidation.initCIUS_RO (aRegistry);
     EbInterfaceValidation.initEbInterface (aRegistry);
-    EHFValidation.initEHF (aRegistry);
     FacturaeValidation.initFacturae (aRegistry);
     FatturaPAValidation.initFatturaPA (aRegistry);
     FinvoiceValidation.initFinvoice (aRegistry);
+    KSeFValidation.initKSeF (aRegistry);
+    OSAValidation.initOSA (aRegistry);
+    TEAPPSValidation.initTEAPPS (aRegistry);
+    UBLValidation.initUBLAllVersions (aRegistry);
+
+    // Must be first
+    EN16931Validation.initEN16931 (aRegistry);
+    // The rest in alphabetical order, except where explicitly stated
+    CIUS_PTValidation.initCIUS_PT (aRegistry);
+    CIUS_ROValidation.initCIUS_RO (aRegistry);
+    EHFValidation.initEHF (aRegistry);
     FranceValidation.initFrance (aRegistry);
     HReRacunValidation.init (aRegistry);
-    KSeFValidation.initKSeF (aRegistry);
     ISDOCValidation.initISDOC (aRegistry);
     OIOUBLValidation.initOIOUBL (aRegistry);
-    OSAValidation.initOSA (aRegistry);
     PeppolItalyValidation.init (aRegistry);
     PeppolValidation.initStandard (aRegistry);
     PeppolValidationTaxData.init (aRegistry);
@@ -108,9 +112,7 @@ public final class PhiveRulesValidation
     // Must be after SimplerInvoicing
     EnergieEFactuurValidation.initEnergieEFactuur (aRegistry);
     SvefakturaValidation.initSvefaktura (aRegistry);
-    TEAPPSValidation.initTEAPPS (aRegistry);
     TurkeyEFaturaValidation.initTurkeyEFatura (aRegistry);
-    UBLValidation.initUBLAllVersions (aRegistry);
     UBLBEValidation.initUBLBE (aRegistry);
     XRechnungValidation.initXRechnung (aRegistry);
     ZATCAValidation.initZATCA (aRegistry);
