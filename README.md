@@ -265,7 +265,7 @@ I hope that with the introduction of PINT, the versioning problem will be solved
 
 # News and noteworthy
 
-v4.5.0 - work in progress
+v4.5.0 - 2026-08-03
 * Extracted the foundational, XSD-only document format modules into the separate repository [phive-rules-foundations](https://github.com/phax/phive-rules-foundations) (versioned independently starting at `5.0.0`): `phive-rules-cii`, `phive-rules-ubl`, `phive-rules-ebinterface`, `phive-rules-facturae`, `phive-rules-fatturapa`, `phive-rules-finvoice`, `phive-rules-ksef`, `phive-rules-osa` and `phive-rules-teapps`.
   The Maven coordinates (`com.helger.phive.rules:phive-rules-<format>`) and VES coordinates are unchanged
 * Moved the shared registration SPI and helpers (`IValidationRulesRegistrarSPI`, `PhiveRulesHelper`, `PhiveRulesInitializationException`, `PhiveRulesTestHelper`, `ValidationRulesRegistrar`) to the new `phive-rules-foundation-api` artifact (package `com.helger.phive.rules.foundation`).
