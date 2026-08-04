@@ -16,6 +16,10 @@
  */
 package com.helger.phive.zugferd;
 
+import java.time.LocalDate;
+import java.time.Month;
+import java.time.OffsetDateTime;
+
 import org.jspecify.annotations.NonNull;
 import org.jspecify.annotations.Nullable;
 
@@ -26,6 +30,7 @@ import com.helger.collection.commons.CommonsArrayList;
 import com.helger.collection.commons.CommonsHashMap;
 import com.helger.collection.commons.ICommonsList;
 import com.helger.collection.commons.ICommonsMap;
+import com.helger.datetime.helper.PDTFactory;
 import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.diver.api.version.DVRVersion;
 import com.helger.io.resource.ClassPathResource;
@@ -98,17 +103,27 @@ public final class ZugferdValidation
   public static final DVRCoordinate VID_ZUGFERD_2_3_2_EXTENDED = DVRHelper.createCoordinate (GROUP_ID_ZUGFERD, EZugferdProfile.EXTENDED.getArtifactID (), "2.3.2");
 
   // v2.3.3
+  @Deprecated
   public static final DVRCoordinate VID_ZUGFERD_2_3_3_MINIMUM = DVRHelper.createCoordinate (GROUP_ID_ZUGFERD, EZugferdProfile.MINIMUM.getArtifactID (), "2.3.3");
+  @Deprecated
   public static final DVRCoordinate VID_ZUGFERD_2_3_3_BASIC_WL = DVRHelper.createCoordinate (GROUP_ID_ZUGFERD, EZugferdProfile.BASIC_WL.getArtifactID (), "2.3.3");
+  @Deprecated
   public static final DVRCoordinate VID_ZUGFERD_2_3_3_BASIC = DVRHelper.createCoordinate (GROUP_ID_ZUGFERD, EZugferdProfile.BASIC.getArtifactID (), "2.3.3");
+  @Deprecated
   public static final DVRCoordinate VID_ZUGFERD_2_3_3_EN16931 = DVRHelper.createCoordinate (GROUP_ID_ZUGFERD, EZugferdProfile.EN16931.getArtifactID (), "2.3.3");
+  @Deprecated
   public static final DVRCoordinate VID_ZUGFERD_2_3_3_EXTENDED = DVRHelper.createCoordinate (GROUP_ID_ZUGFERD, EZugferdProfile.EXTENDED.getArtifactID (), "2.3.3");
 
   // v2.4
+  @Deprecated
   public static final DVRCoordinate VID_ZUGFERD_2_4_MINIMUM = DVRHelper.createCoordinate (GROUP_ID_ZUGFERD, EZugferdProfile.MINIMUM.getArtifactID (), "2.4");
+  @Deprecated
   public static final DVRCoordinate VID_ZUGFERD_2_4_BASIC_WL = DVRHelper.createCoordinate (GROUP_ID_ZUGFERD, EZugferdProfile.BASIC_WL.getArtifactID (), "2.4");
+  @Deprecated
   public static final DVRCoordinate VID_ZUGFERD_2_4_BASIC = DVRHelper.createCoordinate (GROUP_ID_ZUGFERD, EZugferdProfile.BASIC.getArtifactID (), "2.4");
+  @Deprecated
   public static final DVRCoordinate VID_ZUGFERD_2_4_EN16931 = DVRHelper.createCoordinate (GROUP_ID_ZUGFERD, EZugferdProfile.EN16931.getArtifactID (), "2.4");
+  @Deprecated
   public static final DVRCoordinate VID_ZUGFERD_2_4_EXTENDED = DVRHelper.createCoordinate (GROUP_ID_ZUGFERD, EZugferdProfile.EXTENDED.getArtifactID (), "2.4");
 
   // v2.5
@@ -117,6 +132,16 @@ public final class ZugferdValidation
   public static final DVRCoordinate VID_ZUGFERD_2_5_BASIC = DVRHelper.createCoordinate (GROUP_ID_ZUGFERD, EZugferdProfile.BASIC.getArtifactID (), "2.5");
   public static final DVRCoordinate VID_ZUGFERD_2_5_EN16931 = DVRHelper.createCoordinate (GROUP_ID_ZUGFERD, EZugferdProfile.EN16931.getArtifactID (), "2.5");
   public static final DVRCoordinate VID_ZUGFERD_2_5_EXTENDED = DVRHelper.createCoordinate (GROUP_ID_ZUGFERD, EZugferdProfile.EXTENDED.getArtifactID (), "2.5");
+
+  // v2.5.2 - effective date according to the Factur-X 1.09.2 release metadata
+  public static final LocalDate VALID_FROM_2_5_2 = PDTFactory.createLocalDate (2026, Month.SEPTEMBER, 1);
+  public static final OffsetDateTime VALID_FROM_2_5_2_UTC = PDTFactory.createOffsetDateTimeUTC (VALID_FROM_2_5_2);
+
+  public static final DVRCoordinate VID_ZUGFERD_2_5_2_MINIMUM = DVRHelper.createCoordinate (GROUP_ID_ZUGFERD, EZugferdProfile.MINIMUM.getArtifactID (), "2.5.2");
+  public static final DVRCoordinate VID_ZUGFERD_2_5_2_BASIC_WL = DVRHelper.createCoordinate (GROUP_ID_ZUGFERD, EZugferdProfile.BASIC_WL.getArtifactID (), "2.5.2");
+  public static final DVRCoordinate VID_ZUGFERD_2_5_2_BASIC = DVRHelper.createCoordinate (GROUP_ID_ZUGFERD, EZugferdProfile.BASIC.getArtifactID (), "2.5.2");
+  public static final DVRCoordinate VID_ZUGFERD_2_5_2_EN16931 = DVRHelper.createCoordinate (GROUP_ID_ZUGFERD, EZugferdProfile.EN16931.getArtifactID (), "2.5.2");
+  public static final DVRCoordinate VID_ZUGFERD_2_5_2_EXTENDED = DVRHelper.createCoordinate (GROUP_ID_ZUGFERD, EZugferdProfile.EXTENDED.getArtifactID (), "2.5.2");
 
   // Global version map
   private static final ICommonsMap <DVRVersion, DVRVersion> ZUGFERD_TO_FACTURX_MAP = new CommonsHashMap <> ();
@@ -129,6 +154,7 @@ public final class ZugferdValidation
     ZUGFERD_TO_FACTURX_MAP.put (DVRVersion.parseOrNull ("2.3.3"), DVRVersion.parseOrNull ("1.0.7-3"));
     ZUGFERD_TO_FACTURX_MAP.put (DVRVersion.parseOrNull ("2.4"), DVRVersion.parseOrNull ("1.0.8"));
     ZUGFERD_TO_FACTURX_MAP.put (DVRVersion.parseOrNull ("2.5"), DVRVersion.parseOrNull ("1.0.9"));
+    ZUGFERD_TO_FACTURX_MAP.put (DVRVersion.parseOrNull ("2.5.2"), DVRVersion.parseOrNull ("1.0.9-2"));
   }
 
   private ZugferdValidation ()
@@ -363,7 +389,7 @@ public final class ZugferdValidation
       VesXmlBuilder.builder ()
                    .vesID (aVESID)
                    .displayName ("ZUGFeRD " + sZugferdVersion + " (" + eProfile.getDisplayName () + ")")
-                   .notDeprecated ()
+                   .deprecated ()
                    .addXSD (new ClassPathResource ("/external/schemas/" +
                                                    sZugferdVersion +
                                                    "/" +
@@ -391,7 +417,7 @@ public final class ZugferdValidation
       VesXmlBuilder.builder ()
                    .vesID (aVESID)
                    .displayName ("ZUGFeRD " + sZugferdVersion + " (" + eProfile.getDisplayName () + ")")
-                   .notDeprecated ()
+                   .deprecated ()
                    .addXSD (new ClassPathResource ("/external/schemas/" +
                                                    sZugferdVersion +
                                                    "/" +
@@ -420,6 +446,35 @@ public final class ZugferdValidation
                    .vesID (aVESID)
                    .displayName ("ZUGFeRD " + sZugferdVersion + " (" + eProfile.getDisplayName () + ")")
                    .notDeprecated ()
+                   .addXSD (new ClassPathResource ("/external/schemas/" +
+                                                   sZugferdVersion +
+                                                   "/" +
+                                                   eProfile.getFolderName () +
+                                                   "/FACTUR-X_" +
+                                                   eProfile.getFilenameSuffix24onwards () +
+                                                   ".xsd",
+                                                   _getCL ()))
+                   .addSchematron (PhiveRulesCIIHelper.createXSLT_CII_D22B (new ClassPathResource ("/external/schematron/" +
+                                                                                                   sZugferdVersion +
+                                                                                                   "/FACTUR-X_" +
+                                                                                                   eProfile.getFilenameSuffix24onwards () +
+                                                                                                   ".xslt",
+                                                                                                   _getCL ())))
+                   .addAlias (_createFacturXAlias (aVESID, eProfile))
+                   .registerInto (aRegistry);
+    }
+
+    // Zugferd 2.5.2 / Factur-X 1.0.9-2
+    for (final EZugferdProfile eProfile : EZugferdProfile.values ())
+    {
+      final String sZugferdVersion = "2.5.2";
+      final DVRCoordinate aVESID = DVRHelper.createCoordinate (GROUP_ID_ZUGFERD, eProfile.getArtifactID (), sZugferdVersion);
+
+      VesXmlBuilder.builder ()
+                   .vesID (aVESID)
+                   .displayName ("ZUGFeRD " + sZugferdVersion + " (" + eProfile.getDisplayName () + ")")
+                   .notDeprecated ()
+                   .validFrom (VALID_FROM_2_5_2_UTC)
                    .addXSD (new ClassPathResource ("/external/schemas/" +
                                                    sZugferdVersion +
                                                    "/" +

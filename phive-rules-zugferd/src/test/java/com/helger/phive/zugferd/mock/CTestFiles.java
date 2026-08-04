@@ -103,7 +103,14 @@ public final class CTestFiles
                                                              ZugferdValidation.VID_ZUGFERD_2_5_BASIC_WL,
                                                              ZugferdValidation.VID_ZUGFERD_2_5_BASIC,
                                                              ZugferdValidation.VID_ZUGFERD_2_5_EN16931,
-                                                             ZugferdValidation.VID_ZUGFERD_2_5_EXTENDED })
+                                                             ZugferdValidation.VID_ZUGFERD_2_5_EXTENDED,
+
+                                                             // 2.5.2
+                                                             ZugferdValidation.VID_ZUGFERD_2_5_2_MINIMUM,
+                                                             ZugferdValidation.VID_ZUGFERD_2_5_2_BASIC_WL,
+                                                             ZugferdValidation.VID_ZUGFERD_2_5_2_BASIC,
+                                                             ZugferdValidation.VID_ZUGFERD_2_5_2_EN16931,
+                                                             ZugferdValidation.VID_ZUGFERD_2_5_2_EXTENDED })
       for (final IReadableResource aRes : getAllMatchingTestFiles (aVESID))
       {
         assertTrue ("Not existing test file: " + aRes.getPath (), aRes.exists ());
@@ -245,6 +252,20 @@ public final class CTestFiles
       if (aVESID.equals (ZugferdValidation.VID_ZUGFERD_2_5_EN16931))
         return _createListFacturX (sVersion, 23, EZugferdProfile.EN16931);
       if (aVESID.equals (ZugferdValidation.VID_ZUGFERD_2_5_EXTENDED))
+        return _createListFacturX (sVersion, 25, EZugferdProfile.EXTENDED);
+    }
+
+    {
+      final String sVersion = "2.5.2";
+      if (aVESID.equals (ZugferdValidation.VID_ZUGFERD_2_5_2_MINIMUM))
+        return _createListFacturX (sVersion, 2, EZugferdProfile.MINIMUM);
+      if (aVESID.equals (ZugferdValidation.VID_ZUGFERD_2_5_2_BASIC_WL))
+        return _createListFacturX (sVersion, 2, EZugferdProfile.BASIC_WL);
+      if (aVESID.equals (ZugferdValidation.VID_ZUGFERD_2_5_2_BASIC))
+        return _createListFacturX (sVersion, 3, EZugferdProfile.BASIC);
+      if (aVESID.equals (ZugferdValidation.VID_ZUGFERD_2_5_2_EN16931))
+        return _createListFacturX (sVersion, 25, EZugferdProfile.EN16931);
+      if (aVESID.equals (ZugferdValidation.VID_ZUGFERD_2_5_2_EXTENDED))
         return _createListFacturX (sVersion, 25, EZugferdProfile.EXTENDED);
     }
 

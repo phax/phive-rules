@@ -265,6 +265,11 @@ I hope that with the introduction of PINT, the versioning problem will be solved
 
 # News and noteworthy
 
+v4.5.1 - work in progress
+* Added support for ZuGFERD 2.5.2 / Factur-X 1.09.2 - all profiles (XML only), based on the English rule set.
+  The rule set is marked as valid from 2026-09-01, the effective date stated in the Factur-X 1.09.2 release metadata
+* Deprecated the ZuGFERD 2.3.3 and 2.4 validation rules, so that only 2.5 and 2.5.2 are non-deprecated
+
 v4.5.0 - 2026-08-03
 * Extracted the foundational, XSD-only document format modules into the separate repository [phive-rules-foundations](https://github.com/phax/phive-rules-foundations) (versioned independently starting at `5.0.0`): `phive-rules-cii`, `phive-rules-ubl`, `phive-rules-ebinterface`, `phive-rules-facturae`, `phive-rules-fatturapa`, `phive-rules-finvoice`, `phive-rules-ksef`, `phive-rules-osa` and `phive-rules-teapps`.
   The Maven coordinates (`com.helger.phive.rules:phive-rules-<format>`) and VES coordinates are unchanged
@@ -282,7 +287,8 @@ v4.4.2 - 2026-07-30
     * Added the three new example files `import-goods-tdd.xml`, `import-service-rcm-tdd.xml` and `profit-margin-self-invoice-tdd.xml`
 * Updated Peppol PINT OM (Oman) Billing and Self-Billing 1.0.1 in `phive-rules-peppol-pint` to the final released Schematron (2026-07-29), VES coordinates `org.peppol.pint.om:invoice:1.0.1`, `org.peppol.pint.om:creditnote:1.0.1`, `org.peppol.pint.om:invoice-self-billing:1.0.1` and `org.peppol.pint.om:creditnote-self-billing:1.0.1`
     * The updated jurisdiction rule `IBR-173-OM` now requires the Seller UUID (BTOM-004) to be a valid UUID version 5 (previously version 4 or 5)
-* Moved the legacy OIOUBL artefacts (`OIOUBLLegacyValidation`, versions 2.0.2 and 3.0.1) from Group ID `dk.oioubl` to `dk.oioubl.legacy`, so that they no longer overlap with the active `dk.oioubl` rules and pseudo-version resolution (`latest`, `latest-release`) no longer picks the deprecated legacy artefacts. See [#76](https://github.com/phax/phive-rules/issues/76)
+* Moved the legacy OIOUBL artefacts (`OIOUBLLegacyValidation`, versions 2.0.2 and 3.0.1) from Group ID `dk.oioubl` to `dk.oioubl.legacy`, so that they no longer overlap with the active `dk.oioubl` rules and pseudo-version resolution (`latest`, `latest-release`) no longer picks the deprecated legacy artefacts.
+  See [#76](https://github.com/phax/phive-rules/issues/76)
 
 v4.4.1 - 2026-07-23
 * Added Peppol TDD AE (United Arab Emirates) 1.0.4 validation rules from the `2026-TDD-1.0.4` release (2026-07-22) in `phive-rules-peppol-taxdata`, VES coordinate `org.peppol.taxdata:ae:1.0.4`, and deprecated 1.0.3
