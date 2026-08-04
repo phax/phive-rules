@@ -265,7 +265,7 @@ I hope that with the introduction of PINT, the versioning problem will be solved
 
 # News and noteworthy
 
-v4.5.1 - work in progress
+v4.5.1 - 2026-08-04
 * Added support for ZuGFERD 2.5.2 / Factur-X 1.09.2 - all profiles (XML only), based on the English rule set.
   The rule set is marked as valid from 2026-09-01, the effective date stated in the Factur-X 1.09.2 release metadata
 * Deprecated the ZuGFERD 2.3.3 and 2.4 validation rules, so that only 2.5 and 2.5.2 are non-deprecated
