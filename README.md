@@ -269,6 +269,8 @@ v4.5.1 - work in progress
 * Added support for ZuGFERD 2.5.2 / Factur-X 1.09.2 - all profiles (XML only), based on the English rule set.
   The rule set is marked as valid from 2026-09-01, the effective date stated in the Factur-X 1.09.2 release metadata
 * Deprecated the ZuGFERD 2.3.3 and 2.4 validation rules, so that only 2.5 and 2.5.2 are non-deprecated
+* The France PPF Flux 1 validation rules now use the AIFE provided Flux 1 XSDs instead of the generic UBL 2.1 and CII D22B schemas.
+  These XSDs are restricted subsets of OASIS UBL 2.1 and UN/CEFACT CII D22B, so documents that were previously accepted by the XSD layer may now be rejected
 
 v4.5.0 - 2026-08-03
 * Extracted the foundational, XSD-only document format modules into the separate repository [phive-rules-foundations](https://github.com/phax/phive-rules-foundations) (versioned independently starting at `5.0.0`): `phive-rules-cii`, `phive-rules-ubl`, `phive-rules-ebinterface`, `phive-rules-facturae`, `phive-rules-fatturapa`, `phive-rules-finvoice`, `phive-rules-ksef`, `phive-rules-osa` and `phive-rules-teapps`.
