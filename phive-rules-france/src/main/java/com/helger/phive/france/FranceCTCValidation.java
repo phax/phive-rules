@@ -148,24 +148,24 @@ public final class FranceCTCValidation
   // v1.4.0.03
   public static final DVRCoordinate VID_FR_CTC_UBL_INV_1_4_0_03 = DVRHelper.createCoordinate (GROUP_ID,
                                                                                               "ubl-invoice",
-                                                                                              "1.4.0.03");
+                                                                                              "1.4.0-03");
   public static final DVRCoordinate VID_FR_CTC_UBL_CN_1_4_0_03 = DVRHelper.createCoordinate (GROUP_ID,
                                                                                              "ubl-creditnote",
-                                                                                             "1.4.0.03");
-  public static final DVRCoordinate VID_FR_CTC_CII_1_4_0_03 = DVRHelper.createCoordinate (GROUP_ID, "cii", "1.4.0.03");
+                                                                                             "1.4.0-03");
+  public static final DVRCoordinate VID_FR_CTC_CII_1_4_0_03 = DVRHelper.createCoordinate (GROUP_ID, "cii", "1.4.0-03");
   public static final DVRCoordinate VID_FR_CTC_CDAR_1_4_0_03 = DVRHelper.createCoordinate (GROUP_ID,
                                                                                            "cdar",
-                                                                                           "1.4.0.03");
+                                                                                           "1.4.0-03");
 
   public static final DVRCoordinate VID_FR_EXTENDED_CTC_UBL_INV_1_4_0_03 = DVRHelper.createCoordinate (GROUP_ID,
                                                                                                        "extended-ubl-invoice",
-                                                                                                       "1.4.0.03");
+                                                                                                       "1.4.0-03");
   public static final DVRCoordinate VID_FR_EXTENDED_CTC_UBL_CN_1_4_0_03 = DVRHelper.createCoordinate (GROUP_ID,
                                                                                                       "extended-ubl-creditnote",
-                                                                                                      "1.4.0.03");
+                                                                                                      "1.4.0-03");
   public static final DVRCoordinate VID_FR_EXTENDED_CTC_CII_1_4_0_03 = DVRHelper.createCoordinate (GROUP_ID,
                                                                                                    "extended-cii",
-                                                                                                   "1.4.0.03");
+                                                                                                   "1.4.0-03");
 
   private FranceCTCValidation ()
   {}
