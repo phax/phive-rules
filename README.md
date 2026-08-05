@@ -265,6 +265,15 @@ I hope that with the introduction of PINT, the versioning problem will be solved
 
 # News and noteworthy
 
+v4.5.2 - work in progress
+* Added the France CTC validation rules `1.4.0.03` (2026-08-04), VES coordinates `fr.ctc:ubl-invoice:1.4.0.03`, `fr.ctc:ubl-creditnote:1.4.0.03`, `fr.ctc:cii:1.4.0.03`, `fr.ctc:cdar:1.4.0.03`, `fr.ctc:extended-ubl-invoice:1.4.0.03`, `fr.ctc:extended-ubl-creditnote:1.4.0.03` and `fr.ctc:extended-cii:1.4.0.03`, and deprecated the 1.4.0 rules.
+  The rules are now taken from the new FNFE GitHub repository [fnfempe/France_RFE](https://github.com/fnfempe/France_RFE/releases/tag/v1.4.0.03) instead of the fnfe-mpe.org download page.
+  This is a cumulative hotfix release on top of 1.4.0; per the FNFE change list it contains:
+    * 1.4.0.01 - corrected `BR-FREXT-CO-12` in the UBL EXTENDED-CTC-FR profile, which rejected invoices having document level charges but no document level allowances
+    * 1.4.0.02 - added the `SE` and `BY` roles to `BR-CL-10` in the UBL EXTENDED-CTC-FR rules, and corrected the message of CII `FR-FR-28` which quoted the UBL XPath
+    * 1.4.0.03 - corrected the XPath of `BR-FR-01`, `BR-FR-02` and `BR-FR-03` in UBL, added `SE`/`BY` to `BR-CL-10` in UBL, plus further corrections in UBL and CII, and updated Factur-X to the published 1.09.2 version (instead of the beta)
+* Note: the DVR version `1.4.0.03` is rendered as `1.4-03` in its short form (e.g. `fr.ctc:cdar:1.4-03`), because ph-diver normalizes the 4th version part to a qualifier. The full form `fr.ctc:cdar:1.4.0.03` is the one to use - the short form is currently not parseable again
+
 v4.5.1 - 2026-08-04
 * Added support for ZuGFERD 2.5.2 / Factur-X 1.09.2 - all profiles (XML only), based on the English rule set.
   The rule set is marked as valid from 2026-09-01, the effective date stated in the Factur-X 1.09.2 release metadata

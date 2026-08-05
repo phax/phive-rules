@@ -91,14 +91,31 @@ public final class FranceCTCValidation
   public static final DVRCoordinate VID_FR_EXTENDED_CTC_CII_1_3_1 = DVRHelper.createCoordinate (GROUP_ID, "extended-cii", "1.3.1");
 
   // v1.4.0
+  @Deprecated (forRemoval = false)
   public static final DVRCoordinate VID_FR_CTC_UBL_INV_1_4_0 = DVRHelper.createCoordinate (GROUP_ID, "ubl-invoice", "1.4.0");
+  @Deprecated (forRemoval = false)
   public static final DVRCoordinate VID_FR_CTC_UBL_CN_1_4_0 = DVRHelper.createCoordinate (GROUP_ID, "ubl-creditnote", "1.4.0");
+  @Deprecated (forRemoval = false)
   public static final DVRCoordinate VID_FR_CTC_CII_1_4_0 = DVRHelper.createCoordinate (GROUP_ID, "cii", "1.4.0");
+  @Deprecated (forRemoval = false)
   public static final DVRCoordinate VID_FR_CTC_CDAR_1_4_0 = DVRHelper.createCoordinate (GROUP_ID, "cdar", "1.4.0");
 
+  @Deprecated (forRemoval = false)
   public static final DVRCoordinate VID_FR_EXTENDED_CTC_UBL_INV_1_4_0 = DVRHelper.createCoordinate (GROUP_ID, "extended-ubl-invoice", "1.4.0");
+  @Deprecated (forRemoval = false)
   public static final DVRCoordinate VID_FR_EXTENDED_CTC_UBL_CN_1_4_0 = DVRHelper.createCoordinate (GROUP_ID, "extended-ubl-creditnote", "1.4.0");
+  @Deprecated (forRemoval = false)
   public static final DVRCoordinate VID_FR_EXTENDED_CTC_CII_1_4_0 = DVRHelper.createCoordinate (GROUP_ID, "extended-cii", "1.4.0");
+
+  // v1.4.0.03
+  public static final DVRCoordinate VID_FR_CTC_UBL_INV_1_4_0_03 = DVRHelper.createCoordinate (GROUP_ID, "ubl-invoice", "1.4.0.03");
+  public static final DVRCoordinate VID_FR_CTC_UBL_CN_1_4_0_03 = DVRHelper.createCoordinate (GROUP_ID, "ubl-creditnote", "1.4.0.03");
+  public static final DVRCoordinate VID_FR_CTC_CII_1_4_0_03 = DVRHelper.createCoordinate (GROUP_ID, "cii", "1.4.0.03");
+  public static final DVRCoordinate VID_FR_CTC_CDAR_1_4_0_03 = DVRHelper.createCoordinate (GROUP_ID, "cdar", "1.4.0.03");
+
+  public static final DVRCoordinate VID_FR_EXTENDED_CTC_UBL_INV_1_4_0_03 = DVRHelper.createCoordinate (GROUP_ID, "extended-ubl-invoice", "1.4.0.03");
+  public static final DVRCoordinate VID_FR_EXTENDED_CTC_UBL_CN_1_4_0_03 = DVRHelper.createCoordinate (GROUP_ID, "extended-ubl-creditnote", "1.4.0.03");
+  public static final DVRCoordinate VID_FR_EXTENDED_CTC_CII_1_4_0_03 = DVRHelper.createCoordinate (GROUP_ID, "extended-cii", "1.4.0.03");
 
   private FranceCTCValidation ()
   {}
@@ -416,7 +433,7 @@ public final class FranceCTCValidation
       VesXmlBuilder.builder ()
                    .vesID (VID_FR_CTC_UBL_INV_1_4_0)
                    .displayNamePrefix ("France CTC UBL Invoice ")
-                   .notDeprecated ()
+                   .deprecated ()
                    .basedOn (aVESInv_1_3_16)
                    .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix0 +
                   "20260630_BR-FR-Flux2-Schematron-UBL_V1.4.0.xslt",
@@ -426,7 +443,7 @@ public final class FranceCTCValidation
       VesXmlBuilder.builder ()
                    .vesID (VID_FR_CTC_UBL_CN_1_4_0)
                    .displayNamePrefix ("France CTC UBL Credit Note ")
-                   .notDeprecated ()
+                   .deprecated ()
                    .basedOn (aVESCN_1_3_16)
                    .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix0 +
                   "20260630_BR-FR-Flux2-Schematron-UBL_V1.4.0.xslt",
@@ -436,7 +453,7 @@ public final class FranceCTCValidation
       VesXmlBuilder.builder ()
                    .vesID (VID_FR_CTC_CII_1_4_0)
                    .displayNamePrefix ("France CTC CII ")
-                   .notDeprecated ()
+                   .deprecated ()
                    .basedOn (aVESCII_1_3_16)
                    .addSchematron (PhiveRulesCIIHelper.createXSLT_CII_D22B (new ClassPathResource (sPrefix0 +
                                                                                                    "20260630_BR-FR-Flux2-Schematron-CII_V1.4.0.xslt",
@@ -448,7 +465,7 @@ public final class FranceCTCValidation
       VesXmlBuilder.builder ()
                    .vesID (VID_FR_EXTENDED_CTC_UBL_INV_1_4_0)
                    .displayNamePrefix ("France Extended CTC UBL Invoice ")
-                   .notDeprecated ()
+                   .deprecated ()
                    .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
                    .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix0 +
                   "20260630_EXTENDED-CTC-FR-UBL-V1.4.0.xslt",
@@ -461,7 +478,7 @@ public final class FranceCTCValidation
       VesXmlBuilder.builder ()
                    .vesID (VID_FR_EXTENDED_CTC_UBL_CN_1_4_0)
                    .displayNamePrefix ("France Extended CTC UBL Credit Note ")
-                   .notDeprecated ()
+                   .deprecated ()
                    .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
                    .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix0 +
                   "20260630_EXTENDED-CTC-FR-UBL-V1.4.0.xslt",
@@ -474,7 +491,7 @@ public final class FranceCTCValidation
       VesXmlBuilder.builder ()
                    .vesID (VID_FR_EXTENDED_CTC_CII_1_4_0)
                    .displayNamePrefix ("France Extended CTC CII ")
-                   .notDeprecated ()
+                   .deprecated ()
                    .addXSD (CCIID22B.getXSDResourceCII ())
                    .addSchematron (PhiveRulesCIIHelper.createXSLT_CII_D22B (new ClassPathResource (sPrefix0 +
                                                                                                    "20260630_EXTENDED-CTC-FR-CII-V1.4.0.xslt",
@@ -489,10 +506,102 @@ public final class FranceCTCValidation
       VesXmlBuilder.builder ()
                    .vesID (VID_FR_CTC_CDAR_1_4_0)
                    .displayNamePrefix ("France CTC CDAR ")
-                   .notDeprecated ()
+                   .deprecated ()
                    .addXSD (CCIID22B.getXSDResourceCDAR ())
                    .addSchematron (PhiveRulesCIIHelper.createXSLT_CII_D22B (new ClassPathResource (sPrefix0 +
                                                                                                    "20260630_BR-FR-CDV-Schematron-CDAR_V1.4.0.xslt",
+                                                                                                   _getCL ())))
+                   .validFrom (aValidFrom)
+                   .registerInto (aRegistry);
+    }
+
+    // CTC 1.4.0.03
+    {
+      final String sPrefix0 = sPrefix + "1.4.0.03/xslt/";
+      final OffsetDateTime aValidFrom = PDTFactory.createOffsetDate (2026, Month.SEPTEMBER, 1)
+                                                  .atTime (LocalTime.MIDNIGHT);
+
+      // Base Invoice based on EN16931
+      VesXmlBuilder.builder ()
+                   .vesID (VID_FR_CTC_UBL_INV_1_4_0_03)
+                   .displayNamePrefix ("France CTC UBL Invoice ")
+                   .notDeprecated ()
+                   .basedOn (aVESInv_1_3_16)
+                   .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix0 +
+                  "20260804_BR-FR-Flux2-Schematron-UBL_V1.4.0.03.xslt",
+                  _getCL ())))
+                   .validFrom (aValidFrom)
+                   .registerInto (aRegistry);
+      VesXmlBuilder.builder ()
+                   .vesID (VID_FR_CTC_UBL_CN_1_4_0_03)
+                   .displayNamePrefix ("France CTC UBL Credit Note ")
+                   .notDeprecated ()
+                   .basedOn (aVESCN_1_3_16)
+                   .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix0 +
+                  "20260804_BR-FR-Flux2-Schematron-UBL_V1.4.0.03.xslt",
+                  _getCL ())))
+                   .validFrom (aValidFrom)
+                   .registerInto (aRegistry);
+      VesXmlBuilder.builder ()
+                   .vesID (VID_FR_CTC_CII_1_4_0_03)
+                   .displayNamePrefix ("France CTC CII ")
+                   .notDeprecated ()
+                   .basedOn (aVESCII_1_3_16)
+                   .addSchematron (PhiveRulesCIIHelper.createXSLT_CII_D22B (new ClassPathResource (sPrefix0 +
+                                                                                                   "20260804_BR-FR-Flux2-Schematron-CII_V1.4.0.03.xslt",
+                                                                                                   _getCL ())))
+                   .validFrom (aValidFrom)
+                   .registerInto (aRegistry);
+
+      // Extended invoice based on special EN subset
+      VesXmlBuilder.builder ()
+                   .vesID (VID_FR_EXTENDED_CTC_UBL_INV_1_4_0_03)
+                   .displayNamePrefix ("France Extended CTC UBL Invoice ")
+                   .notDeprecated ()
+                   .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
+                   .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix0 +
+                  "20260804_EXTENDED-CTC-FR-UBL-V1.4.0.03.xslt",
+                  _getCL ())))
+                   .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix0 +
+                  "20260804_BR-FR-Flux2-Schematron-UBL_V1.4.0.03.xslt",
+                  _getCL ())))
+                   .validFrom (aValidFrom)
+                   .registerInto (aRegistry);
+      VesXmlBuilder.builder ()
+                   .vesID (VID_FR_EXTENDED_CTC_UBL_CN_1_4_0_03)
+                   .displayNamePrefix ("France Extended CTC UBL Credit Note ")
+                   .notDeprecated ()
+                   .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
+                   .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix0 +
+                  "20260804_EXTENDED-CTC-FR-UBL-V1.4.0.03.xslt",
+                  _getCL ())))
+                   .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix0 +
+                  "20260804_BR-FR-Flux2-Schematron-UBL_V1.4.0.03.xslt",
+                  _getCL ())))
+                   .validFrom (aValidFrom)
+                   .registerInto (aRegistry);
+      VesXmlBuilder.builder ()
+                   .vesID (VID_FR_EXTENDED_CTC_CII_1_4_0_03)
+                   .displayNamePrefix ("France Extended CTC CII ")
+                   .notDeprecated ()
+                   .addXSD (CCIID22B.getXSDResourceCII ())
+                   .addSchematron (PhiveRulesCIIHelper.createXSLT_CII_D22B (new ClassPathResource (sPrefix0 +
+                                                                                                   "20260804_EXTENDED-CTC-FR-CII-V1.4.0.03.xslt",
+                                                                                                   _getCL ())))
+                   .addSchematron (PhiveRulesCIIHelper.createXSLT_CII_D22B (new ClassPathResource (sPrefix0 +
+                                                                                                   "20260804_BR-FR-Flux2-Schematron-CII_V1.4.0.03.xslt",
+                                                                                                   _getCL ())))
+                   .validFrom (aValidFrom)
+                   .registerInto (aRegistry);
+
+      // CDAR
+      VesXmlBuilder.builder ()
+                   .vesID (VID_FR_CTC_CDAR_1_4_0_03)
+                   .displayNamePrefix ("France CTC CDAR ")
+                   .notDeprecated ()
+                   .addXSD (CCIID22B.getXSDResourceCDAR ())
+                   .addSchematron (PhiveRulesCIIHelper.createXSLT_CII_D22B (new ClassPathResource (sPrefix0 +
+                                                                                                   "20260804_BR-FR-CDV-Schematron-CDAR_V1.4.0.03.xslt",
                                                                                                    _getCL ())))
                    .validFrom (aValidFrom)
                    .registerInto (aRegistry);

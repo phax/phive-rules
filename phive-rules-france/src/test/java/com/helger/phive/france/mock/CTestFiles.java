@@ -86,7 +86,15 @@ public final class CTestFiles
                                                              FranceCTCValidation.VID_FR_CTC_CDAR_1_4_0,
                                                              FranceCTCValidation.VID_FR_EXTENDED_CTC_UBL_INV_1_4_0,
                                                              FranceCTCValidation.VID_FR_EXTENDED_CTC_UBL_CN_1_4_0,
-                                                             FranceCTCValidation.VID_FR_EXTENDED_CTC_CII_1_4_0 })
+                                                             FranceCTCValidation.VID_FR_EXTENDED_CTC_CII_1_4_0,
+
+                                                             FranceCTCValidation.VID_FR_CTC_UBL_INV_1_4_0_03,
+                                                             FranceCTCValidation.VID_FR_CTC_UBL_CN_1_4_0_03,
+                                                             FranceCTCValidation.VID_FR_CTC_CII_1_4_0_03,
+                                                             FranceCTCValidation.VID_FR_CTC_CDAR_1_4_0_03,
+                                                             FranceCTCValidation.VID_FR_EXTENDED_CTC_UBL_INV_1_4_0_03,
+                                                             FranceCTCValidation.VID_FR_EXTENDED_CTC_UBL_CN_1_4_0_03,
+                                                             FranceCTCValidation.VID_FR_EXTENDED_CTC_CII_1_4_0_03 })
       for (final IReadableResource aRes : getAllMatchingTestFiles (aVESID))
       {
         assertTrue ("Not existing test file: " + aRes.getPath (), aRes.exists ());
@@ -169,6 +177,34 @@ public final class CTestFiles
     if (aVESID.equals (FranceCTCValidation.VID_FR_CTC_CDAR_1_4_0))
     {
       final String sDir = sPrefix + "ctc/1.4.0/cdar/";
+      return new CommonsArrayList <> (new String [] { "UC1_F202500003_01-CDV-200_Deposee.xml",
+                                                      "UC1_F202500003_01-CDV-200_Deposee_POUR_PPF.xml",
+                                                      "UC1_F202500003_02-CDV-202_Recue.xml",
+                                                      "UC1_F202500003_03-CDV-203_Mise_a_disposition.xml",
+                                                      "UC1_F202500003_04-CDV-204_Prise_en_charge.xml",
+                                                      "UC1_F202500003_05-CDV-205_Approuvee.xml",
+                                                      "UC1_F202500003_06-CDV-211_Paiement_transmis.xml",
+                                                      "UC1_F202500003_07-CDV-212_Encaissee.xml",
+                                                      "UC1_F202500003_07-CDV-212_Encaissee_POUR_PPF.xml",
+                                                      "UC4_F202500006_04-CDV-207_En_litige.xml",
+                                                      "UC5_F202500007_04-CDV-207_En_litige.xml" },
+                                      s -> new ClassPathResource (sDir + s));
+    }
+
+    // 1.4.0.03
+    if (aVESID.equals (FranceCTCValidation.VID_FR_CTC_UBL_INV_1_4_0_03) ||
+        aVESID.equals (FranceCTCValidation.VID_FR_CTC_UBL_CN_1_4_0_03) ||
+        aVESID.equals (FranceCTCValidation.VID_FR_CTC_CII_1_4_0_03) ||
+        aVESID.equals (FranceCTCValidation.VID_FR_EXTENDED_CTC_UBL_INV_1_4_0_03) ||
+        aVESID.equals (FranceCTCValidation.VID_FR_EXTENDED_CTC_UBL_CN_1_4_0_03) ||
+        aVESID.equals (FranceCTCValidation.VID_FR_EXTENDED_CTC_CII_1_4_0_03))
+    {
+      // No test files available
+      return new CommonsArrayList <> ();
+    }
+    if (aVESID.equals (FranceCTCValidation.VID_FR_CTC_CDAR_1_4_0_03))
+    {
+      final String sDir = sPrefix + "ctc/1.4.0.03/cdar/";
       return new CommonsArrayList <> (new String [] { "UC1_F202500003_01-CDV-200_Deposee.xml",
                                                       "UC1_F202500003_01-CDV-200_Deposee_POUR_PPF.xml",
                                                       "UC1_F202500003_02-CDV-202_Recue.xml",
