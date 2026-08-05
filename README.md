@@ -273,7 +273,7 @@ v4.5.2 - 2026-08-05
     * 1.4.0.01 - corrected `BR-FREXT-CO-12` in the UBL EXTENDED-CTC-FR profile, which rejected invoices having document level charges but no document level allowances
     * 1.4.0.02 - added the `SE` and `BY` roles to `BR-CL-10` in the UBL EXTENDED-CTC-FR rules, and corrected the message of CII `FR-FR-28` which quoted the UBL XPath
     * 1.4.0.03 - corrected the XPath of `BR-FR-01`, `BR-FR-02` and `BR-FR-03` in UBL, added `SE`/`BY` to `BR-CL-10` in UBL, plus further corrections in UBL and CII, and updated Factur-X to the published 1.09.2 version (instead of the beta)
-* Note: the DVR version `1.4.0-03` is rendered as `1.4-03` in its short form (e.g. `fr.ctc:cdar:1.4-03`), because the trailing zero micro version is omitted. Since the version classifier `03` is purely numeric, that short form can currently not be parsed back - always use the long form `fr.ctc:cdar:1.4.0-03`
+* Note: the DVR version `1.4.0-03` is rendered as `1.4-03` in its short form (e.g. `fr.ctc:cdar:1.4-03`), because the trailing zero micro version is omitted. Reading that short form back requires ph-diver 4.2.2+ - with the ph-diver 4.2.1 used here, only the long form `fr.ctc:cdar:1.4.0-03` can be parsed
 
 v4.5.1 - 2026-08-04
 * Added support for ZuGFERD 2.5.2 / Factur-X 1.09.2 - all profiles (XML only), based on the English rule set.
