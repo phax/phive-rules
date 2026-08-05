@@ -34,10 +34,10 @@ import com.helger.io.resource.ClassPathResource;
 import com.helger.phive.api.executorset.IValidationExecutorSet;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
 import com.helger.phive.en16931.EN16931Validation;
+import com.helger.phive.rules.shared.DVRHelper;
 import com.helger.phive.rules.shared.PhiveRulesCIIHelper;
 import com.helger.phive.rules.shared.PhiveRulesHelper;
 import com.helger.phive.rules.shared.PhiveRulesUBLHelper;
-import com.helger.phive.rules.shared.DVRHelper;
 import com.helger.phive.xml.executorset.VesXmlBuilder;
 import com.helger.phive.xml.source.IValidationSourceXML;
 import com.helger.ubl21.UBL21Marshaller;
@@ -54,68 +54,118 @@ public final class FranceCTCValidation
 
   // v0.1
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_FR_CTC_UBL_INV_0_1 = DVRHelper.createCoordinate (GROUP_ID, "ubl-invoice", "0.1");
+  public static final DVRCoordinate VID_FR_CTC_UBL_INV_0_1 = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                         "ubl-invoice",
+                                                                                         "0.1");
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_FR_CTC_UBL_CN_0_1 = DVRHelper.createCoordinate (GROUP_ID, "ubl-creditnote", "0.1");
+  public static final DVRCoordinate VID_FR_CTC_UBL_CN_0_1 = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                        "ubl-creditnote",
+                                                                                        "0.1");
   @Deprecated (forRemoval = false)
   public static final DVRCoordinate VID_FR_CTC_CII_0_1 = DVRHelper.createCoordinate (GROUP_ID, "cii", "0.1");
 
   // v1.2.0
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_FR_CTC_UBL_INV_1_2_0 = DVRHelper.createCoordinate (GROUP_ID, "ubl-invoice", "1.2.0");
+  public static final DVRCoordinate VID_FR_CTC_UBL_INV_1_2_0 = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                           "ubl-invoice",
+                                                                                           "1.2.0");
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_FR_CTC_UBL_CN_1_2_0 = DVRHelper.createCoordinate (GROUP_ID, "ubl-creditnote", "1.2.0");
+  public static final DVRCoordinate VID_FR_CTC_UBL_CN_1_2_0 = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                          "ubl-creditnote",
+                                                                                          "1.2.0");
   @Deprecated (forRemoval = false)
   public static final DVRCoordinate VID_FR_CTC_CII_1_2_0 = DVRHelper.createCoordinate (GROUP_ID, "cii", "1.2.0");
   @Deprecated (forRemoval = false)
   public static final DVRCoordinate VID_FR_CTC_CDAR_1_2_0 = DVRHelper.createCoordinate (GROUP_ID, "cdar", "1.2.0");
 
   // v1.3.0
-  public static final DVRCoordinate VID_FR_CTC_UBL_INV_1_3_0 = DVRHelper.createCoordinate (GROUP_ID, "ubl-invoice", "1.3.0");
-  public static final DVRCoordinate VID_FR_CTC_UBL_CN_1_3_0 = DVRHelper.createCoordinate (GROUP_ID, "ubl-creditnote", "1.3.0");
+  public static final DVRCoordinate VID_FR_CTC_UBL_INV_1_3_0 = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                           "ubl-invoice",
+                                                                                           "1.3.0");
+  public static final DVRCoordinate VID_FR_CTC_UBL_CN_1_3_0 = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                          "ubl-creditnote",
+                                                                                          "1.3.0");
   public static final DVRCoordinate VID_FR_CTC_CII_1_3_0 = DVRHelper.createCoordinate (GROUP_ID, "cii", "1.3.0");
   public static final DVRCoordinate VID_FR_CTC_CDAR_1_3_0 = DVRHelper.createCoordinate (GROUP_ID, "cdar", "1.3.0");
 
-  public static final DVRCoordinate VID_FR_EXTENDED_CTC_UBL_INV_1_3_0 = DVRHelper.createCoordinate (GROUP_ID, "extended-ubl-invoice", "1.3.0");
-  public static final DVRCoordinate VID_FR_EXTENDED_CTC_UBL_CN_1_3_0 = DVRHelper.createCoordinate (GROUP_ID, "extended-ubl-creditnote", "1.3.0");
-  public static final DVRCoordinate VID_FR_EXTENDED_CTC_CII_1_3_0 = DVRHelper.createCoordinate (GROUP_ID, "extended-cii", "1.3.0");
+  public static final DVRCoordinate VID_FR_EXTENDED_CTC_UBL_INV_1_3_0 = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                                    "extended-ubl-invoice",
+                                                                                                    "1.3.0");
+  public static final DVRCoordinate VID_FR_EXTENDED_CTC_UBL_CN_1_3_0 = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                                   "extended-ubl-creditnote",
+                                                                                                   "1.3.0");
+  public static final DVRCoordinate VID_FR_EXTENDED_CTC_CII_1_3_0 = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                                "extended-cii",
+                                                                                                "1.3.0");
 
   // v1.3.1
-  public static final DVRCoordinate VID_FR_CTC_UBL_INV_1_3_1 = DVRHelper.createCoordinate (GROUP_ID, "ubl-invoice", "1.3.1");
-  public static final DVRCoordinate VID_FR_CTC_UBL_CN_1_3_1 = DVRHelper.createCoordinate (GROUP_ID, "ubl-creditnote", "1.3.1");
+  public static final DVRCoordinate VID_FR_CTC_UBL_INV_1_3_1 = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                           "ubl-invoice",
+                                                                                           "1.3.1");
+  public static final DVRCoordinate VID_FR_CTC_UBL_CN_1_3_1 = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                          "ubl-creditnote",
+                                                                                          "1.3.1");
   public static final DVRCoordinate VID_FR_CTC_CII_1_3_1 = DVRHelper.createCoordinate (GROUP_ID, "cii", "1.3.1");
   public static final DVRCoordinate VID_FR_CTC_CDAR_1_3_1 = DVRHelper.createCoordinate (GROUP_ID, "cdar", "1.3.1");
 
-  public static final DVRCoordinate VID_FR_EXTENDED_CTC_UBL_INV_1_3_1 = DVRHelper.createCoordinate (GROUP_ID, "extended-ubl-invoice", "1.3.1");
-  public static final DVRCoordinate VID_FR_EXTENDED_CTC_UBL_CN_1_3_1 = DVRHelper.createCoordinate (GROUP_ID, "extended-ubl-creditnote", "1.3.1");
-  public static final DVRCoordinate VID_FR_EXTENDED_CTC_CII_1_3_1 = DVRHelper.createCoordinate (GROUP_ID, "extended-cii", "1.3.1");
+  public static final DVRCoordinate VID_FR_EXTENDED_CTC_UBL_INV_1_3_1 = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                                    "extended-ubl-invoice",
+                                                                                                    "1.3.1");
+  public static final DVRCoordinate VID_FR_EXTENDED_CTC_UBL_CN_1_3_1 = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                                   "extended-ubl-creditnote",
+                                                                                                   "1.3.1");
+  public static final DVRCoordinate VID_FR_EXTENDED_CTC_CII_1_3_1 = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                                "extended-cii",
+                                                                                                "1.3.1");
 
   // v1.4.0
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_FR_CTC_UBL_INV_1_4_0 = DVRHelper.createCoordinate (GROUP_ID, "ubl-invoice", "1.4.0");
+  public static final DVRCoordinate VID_FR_CTC_UBL_INV_1_4_0 = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                           "ubl-invoice",
+                                                                                           "1.4.0");
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_FR_CTC_UBL_CN_1_4_0 = DVRHelper.createCoordinate (GROUP_ID, "ubl-creditnote", "1.4.0");
+  public static final DVRCoordinate VID_FR_CTC_UBL_CN_1_4_0 = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                          "ubl-creditnote",
+                                                                                          "1.4.0");
   @Deprecated (forRemoval = false)
   public static final DVRCoordinate VID_FR_CTC_CII_1_4_0 = DVRHelper.createCoordinate (GROUP_ID, "cii", "1.4.0");
   @Deprecated (forRemoval = false)
   public static final DVRCoordinate VID_FR_CTC_CDAR_1_4_0 = DVRHelper.createCoordinate (GROUP_ID, "cdar", "1.4.0");
 
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_FR_EXTENDED_CTC_UBL_INV_1_4_0 = DVRHelper.createCoordinate (GROUP_ID, "extended-ubl-invoice", "1.4.0");
+  public static final DVRCoordinate VID_FR_EXTENDED_CTC_UBL_INV_1_4_0 = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                                    "extended-ubl-invoice",
+                                                                                                    "1.4.0");
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_FR_EXTENDED_CTC_UBL_CN_1_4_0 = DVRHelper.createCoordinate (GROUP_ID, "extended-ubl-creditnote", "1.4.0");
+  public static final DVRCoordinate VID_FR_EXTENDED_CTC_UBL_CN_1_4_0 = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                                   "extended-ubl-creditnote",
+                                                                                                   "1.4.0");
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_FR_EXTENDED_CTC_CII_1_4_0 = DVRHelper.createCoordinate (GROUP_ID, "extended-cii", "1.4.0");
+  public static final DVRCoordinate VID_FR_EXTENDED_CTC_CII_1_4_0 = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                                "extended-cii",
+                                                                                                "1.4.0");
 
   // v1.4.0.03
-  public static final DVRCoordinate VID_FR_CTC_UBL_INV_1_4_0_03 = DVRHelper.createCoordinate (GROUP_ID, "ubl-invoice", "1.4.0.03");
-  public static final DVRCoordinate VID_FR_CTC_UBL_CN_1_4_0_03 = DVRHelper.createCoordinate (GROUP_ID, "ubl-creditnote", "1.4.0.03");
+  public static final DVRCoordinate VID_FR_CTC_UBL_INV_1_4_0_03 = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                              "ubl-invoice",
+                                                                                              "1.4.0.03");
+  public static final DVRCoordinate VID_FR_CTC_UBL_CN_1_4_0_03 = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                             "ubl-creditnote",
+                                                                                             "1.4.0.03");
   public static final DVRCoordinate VID_FR_CTC_CII_1_4_0_03 = DVRHelper.createCoordinate (GROUP_ID, "cii", "1.4.0.03");
-  public static final DVRCoordinate VID_FR_CTC_CDAR_1_4_0_03 = DVRHelper.createCoordinate (GROUP_ID, "cdar", "1.4.0.03");
+  public static final DVRCoordinate VID_FR_CTC_CDAR_1_4_0_03 = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                           "cdar",
+                                                                                           "1.4.0.03");
 
-  public static final DVRCoordinate VID_FR_EXTENDED_CTC_UBL_INV_1_4_0_03 = DVRHelper.createCoordinate (GROUP_ID, "extended-ubl-invoice", "1.4.0.03");
-  public static final DVRCoordinate VID_FR_EXTENDED_CTC_UBL_CN_1_4_0_03 = DVRHelper.createCoordinate (GROUP_ID, "extended-ubl-creditnote", "1.4.0.03");
-  public static final DVRCoordinate VID_FR_EXTENDED_CTC_CII_1_4_0_03 = DVRHelper.createCoordinate (GROUP_ID, "extended-cii", "1.4.0.03");
+  public static final DVRCoordinate VID_FR_EXTENDED_CTC_UBL_INV_1_4_0_03 = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                                       "extended-ubl-invoice",
+                                                                                                       "1.4.0.03");
+  public static final DVRCoordinate VID_FR_EXTENDED_CTC_UBL_CN_1_4_0_03 = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                                      "extended-ubl-creditnote",
+                                                                                                      "1.4.0.03");
+  public static final DVRCoordinate VID_FR_EXTENDED_CTC_CII_1_4_0_03 = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                                   "extended-cii",
+                                                                                                   "1.4.0.03");
 
   private FranceCTCValidation ()
   {}
@@ -182,8 +232,8 @@ public final class FranceCTCValidation
                    .deprecated ()
                    .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
                    .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix0 +
-                  "20250731_BR-FR-Flux2-Schematron-UBL_V0.1.xslt",
-                  _getCL ())))
+                                                                                                "20250731_BR-FR-Flux2-Schematron-UBL_V0.1.xslt",
+                                                                                                _getCL ())))
                    .registerInto (aRegistry);
       VesXmlBuilder.builder ()
                    .vesID (VID_FR_CTC_UBL_CN_0_1)
@@ -191,8 +241,8 @@ public final class FranceCTCValidation
                    .deprecated ()
                    .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
                    .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix0 +
-                  "20250731_BR-FR-Flux2-Schematron-UBL_V0.1.xslt",
-                  _getCL ())))
+                                                                                                "20250731_BR-FR-Flux2-Schematron-UBL_V0.1.xslt",
+                                                                                                _getCL ())))
                    .registerInto (aRegistry);
       VesXmlBuilder.builder ()
                    .vesID (VID_FR_CTC_CII_0_1)
@@ -216,8 +266,8 @@ public final class FranceCTCValidation
                    .deprecated ()
                    .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
                    .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix0 +
-                  "20251114_BR-FR-Flux2-Schematron-UBL_V1.2.0.xslt",
-                  _getCL ())))
+                                                                                                "20251114_BR-FR-Flux2-Schematron-UBL_V1.2.0.xslt",
+                                                                                                _getCL ())))
                    .registerInto (aRegistry);
       VesXmlBuilder.builder ()
                    .vesID (VID_FR_CTC_UBL_CN_1_2_0)
@@ -225,8 +275,8 @@ public final class FranceCTCValidation
                    .deprecated ()
                    .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
                    .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix0 +
-                  "20251114_BR-FR-Flux2-Schematron-UBL_V1.2.0.xslt",
-                  _getCL ())))
+                                                                                                "20251114_BR-FR-Flux2-Schematron-UBL_V1.2.0.xslt",
+                                                                                                _getCL ())))
                    .registerInto (aRegistry);
       VesXmlBuilder.builder ()
                    .vesID (VID_FR_CTC_CII_1_2_0)
@@ -261,8 +311,8 @@ public final class FranceCTCValidation
                    .deprecated ()
                    .basedOn (aVESInv_1_3_15)
                    .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix0 +
-                  "20260216_BR-FR-Flux2-Schematron-UBL_V1.3.0.xslt",
-                  _getCL ())))
+                                                                                                "20260216_BR-FR-Flux2-Schematron-UBL_V1.3.0.xslt",
+                                                                                                _getCL ())))
                    .registerInto (aRegistry);
       VesXmlBuilder.builder ()
                    .vesID (VID_FR_CTC_UBL_CN_1_3_0)
@@ -270,8 +320,8 @@ public final class FranceCTCValidation
                    .deprecated ()
                    .basedOn (aVESCN_1_3_15)
                    .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix0 +
-                  "20260216_BR-FR-Flux2-Schematron-UBL_V1.3.0.xslt",
-                  _getCL ())))
+                                                                                                "20260216_BR-FR-Flux2-Schematron-UBL_V1.3.0.xslt",
+                                                                                                _getCL ())))
                    .registerInto (aRegistry);
       VesXmlBuilder.builder ()
                    .vesID (VID_FR_CTC_CII_1_3_0)
@@ -290,11 +340,11 @@ public final class FranceCTCValidation
                    .deprecated ()
                    .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
                    .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix0 +
-                  "20260216_EXTENDED-CTC-FR-UBL-V1.3.0.xslt",
-                  _getCL ())))
+                                                                                                "20260216_EXTENDED-CTC-FR-UBL-V1.3.0.xslt",
+                                                                                                _getCL ())))
                    .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix0 +
-                  "20260216_BR-FR-Flux2-Schematron-UBL_V1.3.0.xslt",
-                  _getCL ())))
+                                                                                                "20260216_BR-FR-Flux2-Schematron-UBL_V1.3.0.xslt",
+                                                                                                _getCL ())))
                    .registerInto (aRegistry);
       VesXmlBuilder.builder ()
                    .vesID (VID_FR_EXTENDED_CTC_UBL_CN_1_3_0)
@@ -302,11 +352,11 @@ public final class FranceCTCValidation
                    .deprecated ()
                    .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
                    .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix0 +
-                  "20260216_EXTENDED-CTC-FR-UBL-V1.3.0.xslt",
-                  _getCL ())))
+                                                                                                "20260216_EXTENDED-CTC-FR-UBL-V1.3.0.xslt",
+                                                                                                _getCL ())))
                    .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix0 +
-                  "20260216_BR-FR-Flux2-Schematron-UBL_V1.3.0.xslt",
-                  _getCL ())))
+                                                                                                "20260216_BR-FR-Flux2-Schematron-UBL_V1.3.0.xslt",
+                                                                                                _getCL ())))
                    .registerInto (aRegistry);
       VesXmlBuilder.builder ()
                    .vesID (VID_FR_EXTENDED_CTC_CII_1_3_0)
@@ -345,8 +395,8 @@ public final class FranceCTCValidation
                    .notDeprecated ()
                    .basedOn (aVESInv_1_3_15)
                    .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix0 +
-                  "20260430_BR-FR-Flux2-Schematron-UBL_V1.3.1.xslt",
-                  _getCL ())))
+                                                                                                "20260430_BR-FR-Flux2-Schematron-UBL_V1.3.1.xslt",
+                                                                                                _getCL ())))
                    .validFrom (aValidFrom)
                    .registerInto (aRegistry);
       VesXmlBuilder.builder ()
@@ -355,8 +405,8 @@ public final class FranceCTCValidation
                    .notDeprecated ()
                    .basedOn (aVESCN_1_3_15)
                    .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix0 +
-                  "20260430_BR-FR-Flux2-Schematron-UBL_V1.3.1.xslt",
-                  _getCL ())))
+                                                                                                "20260430_BR-FR-Flux2-Schematron-UBL_V1.3.1.xslt",
+                                                                                                _getCL ())))
                    .registerInto (aRegistry);
       VesXmlBuilder.builder ()
                    .vesID (VID_FR_CTC_CII_1_3_1)
@@ -376,11 +426,11 @@ public final class FranceCTCValidation
                    .notDeprecated ()
                    .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
                    .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix0 +
-                  "20260430_EXTENDED-CTC-FR-UBL-V1.3.1.xslt",
-                  _getCL ())))
+                                                                                                "20260430_EXTENDED-CTC-FR-UBL-V1.3.1.xslt",
+                                                                                                _getCL ())))
                    .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix0 +
-                  "20260430_BR-FR-Flux2-Schematron-UBL_V1.3.1.xslt",
-                  _getCL ())))
+                                                                                                "20260430_BR-FR-Flux2-Schematron-UBL_V1.3.1.xslt",
+                                                                                                _getCL ())))
                    .validFrom (aValidFrom)
                    .registerInto (aRegistry);
       VesXmlBuilder.builder ()
@@ -389,11 +439,11 @@ public final class FranceCTCValidation
                    .notDeprecated ()
                    .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
                    .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix0 +
-                  "20260430_EXTENDED-CTC-FR-UBL-V1.3.1.xslt",
-                  _getCL ())))
+                                                                                                "20260430_EXTENDED-CTC-FR-UBL-V1.3.1.xslt",
+                                                                                                _getCL ())))
                    .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix0 +
-                  "20260430_BR-FR-Flux2-Schematron-UBL_V1.3.1.xslt",
-                  _getCL ())))
+                                                                                                "20260430_BR-FR-Flux2-Schematron-UBL_V1.3.1.xslt",
+                                                                                                _getCL ())))
                    .validFrom (aValidFrom)
                    .registerInto (aRegistry);
       VesXmlBuilder.builder ()
@@ -436,8 +486,8 @@ public final class FranceCTCValidation
                    .deprecated ()
                    .basedOn (aVESInv_1_3_16)
                    .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix0 +
-                  "20260630_BR-FR-Flux2-Schematron-UBL_V1.4.0.xslt",
-                  _getCL ())))
+                                                                                                "20260630_BR-FR-Flux2-Schematron-UBL_V1.4.0.xslt",
+                                                                                                _getCL ())))
                    .validFrom (aValidFrom)
                    .registerInto (aRegistry);
       VesXmlBuilder.builder ()
@@ -446,8 +496,8 @@ public final class FranceCTCValidation
                    .deprecated ()
                    .basedOn (aVESCN_1_3_16)
                    .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix0 +
-                  "20260630_BR-FR-Flux2-Schematron-UBL_V1.4.0.xslt",
-                  _getCL ())))
+                                                                                                "20260630_BR-FR-Flux2-Schematron-UBL_V1.4.0.xslt",
+                                                                                                _getCL ())))
                    .validFrom (aValidFrom)
                    .registerInto (aRegistry);
       VesXmlBuilder.builder ()
@@ -468,11 +518,11 @@ public final class FranceCTCValidation
                    .deprecated ()
                    .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
                    .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix0 +
-                  "20260630_EXTENDED-CTC-FR-UBL-V1.4.0.xslt",
-                  _getCL ())))
+                                                                                                "20260630_EXTENDED-CTC-FR-UBL-V1.4.0.xslt",
+                                                                                                _getCL ())))
                    .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix0 +
-                  "20260630_BR-FR-Flux2-Schematron-UBL_V1.4.0.xslt",
-                  _getCL ())))
+                                                                                                "20260630_BR-FR-Flux2-Schematron-UBL_V1.4.0.xslt",
+                                                                                                _getCL ())))
                    .validFrom (aValidFrom)
                    .registerInto (aRegistry);
       VesXmlBuilder.builder ()
@@ -481,11 +531,11 @@ public final class FranceCTCValidation
                    .deprecated ()
                    .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
                    .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix0 +
-                  "20260630_EXTENDED-CTC-FR-UBL-V1.4.0.xslt",
-                  _getCL ())))
+                                                                                                "20260630_EXTENDED-CTC-FR-UBL-V1.4.0.xslt",
+                                                                                                _getCL ())))
                    .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix0 +
-                  "20260630_BR-FR-Flux2-Schematron-UBL_V1.4.0.xslt",
-                  _getCL ())))
+                                                                                                "20260630_BR-FR-Flux2-Schematron-UBL_V1.4.0.xslt",
+                                                                                                _getCL ())))
                    .validFrom (aValidFrom)
                    .registerInto (aRegistry);
       VesXmlBuilder.builder ()
@@ -528,8 +578,8 @@ public final class FranceCTCValidation
                    .notDeprecated ()
                    .basedOn (aVESInv_1_3_16)
                    .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix0 +
-                  "20260804_BR-FR-Flux2-Schematron-UBL_V1.4.0.03.xslt",
-                  _getCL ())))
+                                                                                                "20260804_BR-FR-Flux2-Schematron-UBL_V1.4.0.03.xslt",
+                                                                                                _getCL ())))
                    .validFrom (aValidFrom)
                    .registerInto (aRegistry);
       VesXmlBuilder.builder ()
@@ -538,8 +588,8 @@ public final class FranceCTCValidation
                    .notDeprecated ()
                    .basedOn (aVESCN_1_3_16)
                    .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix0 +
-                  "20260804_BR-FR-Flux2-Schematron-UBL_V1.4.0.03.xslt",
-                  _getCL ())))
+                                                                                                "20260804_BR-FR-Flux2-Schematron-UBL_V1.4.0.03.xslt",
+                                                                                                _getCL ())))
                    .validFrom (aValidFrom)
                    .registerInto (aRegistry);
       VesXmlBuilder.builder ()
@@ -560,11 +610,11 @@ public final class FranceCTCValidation
                    .notDeprecated ()
                    .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
                    .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix0 +
-                  "20260804_EXTENDED-CTC-FR-UBL-V1.4.0.03.xslt",
-                  _getCL ())))
+                                                                                                "20260804_EXTENDED-CTC-FR-UBL-V1.4.0.03.xslt",
+                                                                                                _getCL ())))
                    .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix0 +
-                  "20260804_BR-FR-Flux2-Schematron-UBL_V1.4.0.03.xslt",
-                  _getCL ())))
+                                                                                                "20260804_BR-FR-Flux2-Schematron-UBL_V1.4.0.03.xslt",
+                                                                                                _getCL ())))
                    .validFrom (aValidFrom)
                    .registerInto (aRegistry);
       VesXmlBuilder.builder ()
@@ -573,11 +623,11 @@ public final class FranceCTCValidation
                    .notDeprecated ()
                    .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
                    .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix0 +
-                  "20260804_EXTENDED-CTC-FR-UBL-V1.4.0.03.xslt",
-                  _getCL ())))
+                                                                                                "20260804_EXTENDED-CTC-FR-UBL-V1.4.0.03.xslt",
+                                                                                                _getCL ())))
                    .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix0 +
-                  "20260804_BR-FR-Flux2-Schematron-UBL_V1.4.0.03.xslt",
-                  _getCL ())))
+                                                                                                "20260804_BR-FR-Flux2-Schematron-UBL_V1.4.0.03.xslt",
+                                                                                                _getCL ())))
                    .validFrom (aValidFrom)
                    .registerInto (aRegistry);
       VesXmlBuilder.builder ()

@@ -265,7 +265,7 @@ I hope that with the introduction of PINT, the versioning problem will be solved
 
 # News and noteworthy
 
-v4.5.2 - work in progress
+v4.5.2 - 2026-08-05
 * Added the France CTC validation rules `1.4.0.03` (2026-08-04), VES coordinates `fr.ctc:ubl-invoice:1.4.0.03`, `fr.ctc:ubl-creditnote:1.4.0.03`, `fr.ctc:cii:1.4.0.03`, `fr.ctc:cdar:1.4.0.03`, `fr.ctc:extended-ubl-invoice:1.4.0.03`, `fr.ctc:extended-ubl-creditnote:1.4.0.03` and `fr.ctc:extended-cii:1.4.0.03`, and deprecated the 1.4.0 rules.
   The rules are now taken from the new FNFE GitHub repository [fnfempe/France_RFE](https://github.com/fnfempe/France_RFE/releases/tag/v1.4.0.03) instead of the fnfe-mpe.org download page.
   This is a cumulative hotfix release on top of 1.4.0; per the FNFE change list it contains:
