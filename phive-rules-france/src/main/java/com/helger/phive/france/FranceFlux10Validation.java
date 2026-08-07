@@ -30,8 +30,8 @@ import com.helger.phive.xml.source.IValidationSourceXML;
 
 /**
  * France PPF Flux 10 (e-reporting) validation configuration. Flux 10 uses a dedicated
- * <code>Report</code> XML format that is neither UBL nor CII and has no XML namespace, so only a
- * Schematron artefact is registered.
+ * <code>Report</code> XML format that is neither UBL nor CII and whose root element has no XML
+ * namespace.
  *
  * @author Philip Helger
  * @since 4.5.0
@@ -63,12 +63,14 @@ public final class FranceFlux10Validation
   {
     ValueEnforcer.notNull (aRegistry, "Registry");
 
+    final String sXsdPrefix = "/external/schemas/flux10/1.0/";
     final String sPrefix = "/external/schematron/flux10/1.0/xslt/";
 
     VesXmlBuilder.builder ()
                  .vesID (VID_FR_FLUX10_REPORT_1_0)
                  .displayNamePrefix ("France PPF Flux 10 e-reporting ")
                  .notDeprecated ()
+                 .addXSD (new ClassPathResource (sXsdPrefix + "ereporting.xsd", _getCL ()))
                  .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (sPrefix + "PPF_Flux10_v1_0.xslt",
                                                                                      _getCL ()), null))
                  .registerInto (aRegistry);

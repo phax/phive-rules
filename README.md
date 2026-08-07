@@ -265,6 +265,10 @@ I hope that with the introduction of PINT, the versioning problem will be solved
 
 # News and noteworthy
 
+v4.5.3 - work in progress
+* The France PPF Flux 10 validation rules now use the AIFE provided Flux 10 XSDs in addition to the Schematron rules.
+  Documents that were previously only checked by Schematron are now first validated against the `Report` XML Schema
+
 v4.5.2 - 2026-08-05
 * Added the France CTC validation rules `1.4.0.03` (2026-08-04), VES coordinates `fr.ctc:ubl-invoice:1.4.0-03`, `fr.ctc:ubl-creditnote:1.4.0-03`, `fr.ctc:cii:1.4.0-03`, `fr.ctc:cdar:1.4.0-03`, `fr.ctc:extended-ubl-invoice:1.4.0-03`, `fr.ctc:extended-ubl-creditnote:1.4.0-03` and `fr.ctc:extended-cii:1.4.0-03`, and deprecated the 1.4.0 rules.
   The FNFE hotfix number `03` is expressed as a DVR version classifier, hence the version `1.4.0-03`.
