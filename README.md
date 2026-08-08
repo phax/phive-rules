@@ -265,7 +265,7 @@ I hope that with the introduction of PINT, the versioning problem will be solved
 
 # News and noteworthy
 
-v4.5.3 - work in progress
+v4.5.3 - 2026-08-08
 * The France PPF Flux 10 validation rules now use the AIFE provided Flux 10 XSDs in addition to the Schematron rules.
   Documents that were previously only checked by Schematron are now first validated against the `Report` XML Schema
 * The France Extended CTC CII rules now use the Factur-X EXTENDED XSD instead of the generic CII D22B schema - `fr.ctc:extended-cii:1.4.0` uses Factur-X 1.0.9 (ZUGFeRD 2.5) and `fr.ctc:extended-cii:1.4.0-03` uses Factur-X 1.0.9-2 (ZUGFeRD 2.5.2).
