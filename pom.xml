@@ -263,11 +263,14 @@
     <!-- formats: -->
     <!-- Prerequisite for a lot of things -->
     <module>phive-rules-en16931</module>
+    <!-- Prerequisite for France -->
+    <module>phive-rules-zugferd</module>
     <!-- Remaining formats -->
     <module>phive-rules-cius-pt</module>
     <module>phive-rules-cius-ro</module>
     <module>phive-rules-ehf</module>
     <module>phive-rules-eracun</module>
+    <!-- depends on zugferd -->
     <module>phive-rules-france</module>
     <module>phive-rules-isdoc</module>
     <module>phive-rules-oioubl</module>
@@ -287,7 +290,6 @@
     <module>phive-rules-ublbe</module>
     <module>phive-rules-xrechnung</module>
     <module>phive-rules-zatca</module>
-    <module>phive-rules-zugferd</module>
     <!-- Aggregators with all modules; must be last -->
     <module>phive-rules-all</module>
     <module>phive-rules-all-legacy</module>

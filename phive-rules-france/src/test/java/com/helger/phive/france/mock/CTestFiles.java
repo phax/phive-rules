@@ -35,6 +35,7 @@ import com.helger.phive.en16931.EN16931Validation;
 import com.helger.phive.france.FranceCTCValidation;
 import com.helger.phive.france.FranceValidation;
 import com.helger.phive.xml.source.IValidationSourceXML;
+import com.helger.phive.zugferd.ZugferdValidation;
 
 @Immutable
 public final class CTestFiles
@@ -43,6 +44,8 @@ public final class CTestFiles
   static
   {
     EN16931Validation.initEN16931 (VES_REGISTRY);
+    // Must be before France, because the France Extended CTC CII rules use the Factur-X XSDs
+    ZugferdValidation.initZugferd (VES_REGISTRY);
     FranceValidation.initFrance (VES_REGISTRY);
   }
 

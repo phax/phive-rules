@@ -40,6 +40,8 @@ import com.helger.phive.rules.shared.PhiveRulesHelper;
 import com.helger.phive.rules.shared.PhiveRulesUBLHelper;
 import com.helger.phive.xml.executorset.VesXmlBuilder;
 import com.helger.phive.xml.source.IValidationSourceXML;
+import com.helger.phive.zugferd.EZugferdProfile;
+import com.helger.phive.zugferd.ZugferdValidation;
 import com.helger.ubl21.UBL21Marshaller;
 
 /**
@@ -191,7 +193,11 @@ public final class FranceCTCValidation
                                     EN16931Validation.VID_CII_1315,
                                     EN16931Validation.VID_UBL_INVOICE_1316,
                                     EN16931Validation.VID_UBL_CREDIT_NOTE_1316,
-                                    EN16931Validation.VID_CII_1316);
+                                    EN16931Validation.VID_CII_1316,
+                                    // The Extended CTC CII rules use the Factur-X Extended XSDs -
+                                    // Factur-X 1.0.9 and 1.0.9-2 respectively
+                                    ZugferdValidation.VID_ZUGFERD_2_5_EXTENDED,
+                                    ZugferdValidation.VID_ZUGFERD_2_5_2_EXTENDED);
   }
 
   /**
@@ -218,6 +224,11 @@ public final class FranceCTCValidation
                                                                                                        EN16931Validation.VID_UBL_CREDIT_NOTE_1316);
     final IValidationExecutorSet <IValidationSourceXML> aVESInv_1_3_16 = PhiveRulesHelper.requireVESID (aRegistry,
                                                                                                         EN16931Validation.VID_UBL_INVOICE_1316);
+
+    // The Extended CTC CII rules use the XSDs of these VES - only ensure they are registered, as
+    // solely the XML Schema resources are reused and not the whole VES
+    PhiveRulesHelper.requireVESID (aRegistry, ZugferdValidation.VID_ZUGFERD_2_5_EXTENDED);
+    PhiveRulesHelper.requireVESID (aRegistry, ZugferdValidation.VID_ZUGFERD_2_5_2_EXTENDED);
 
     final String sPrefix = "/external/schematron/ctc/";
 
@@ -542,7 +553,8 @@ public final class FranceCTCValidation
                    .vesID (VID_FR_EXTENDED_CTC_CII_1_4_0)
                    .displayNamePrefix ("France Extended CTC CII ")
                    .deprecated ()
-                   .addXSD (CCIID22B.getXSDResourceCII ())
+                   // ZUGFeRD 2.5 == Factur-X 1.0.9
+                   .addXSD (ZugferdValidation.getXSDResource24onwards ("2.5", EZugferdProfile.EXTENDED))
                    .addSchematron (PhiveRulesCIIHelper.createXSLT_CII_D22B (new ClassPathResource (sPrefix0 +
                                                                                                    "20260630_EXTENDED-CTC-FR-CII-V1.4.0.xslt",
                                                                                                    _getCL ())))
@@ -608,6 +620,7 @@ public final class FranceCTCValidation
                    .vesID (VID_FR_EXTENDED_CTC_UBL_INV_1_4_0_03)
                    .displayNamePrefix ("France Extended CTC UBL Invoice ")
                    .notDeprecated ()
+                   // No Factur-X UBL XSD available
                    .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
                    .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix0 +
                                                                                                 "20260804_EXTENDED-CTC-FR-UBL-V1.4.0.03.xslt",
@@ -621,6 +634,7 @@ public final class FranceCTCValidation
                    .vesID (VID_FR_EXTENDED_CTC_UBL_CN_1_4_0_03)
                    .displayNamePrefix ("France Extended CTC UBL Credit Note ")
                    .notDeprecated ()
+                   // No Factur-X UBL XSD available
                    .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
                    .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix0 +
                                                                                                 "20260804_EXTENDED-CTC-FR-UBL-V1.4.0.03.xslt",
@@ -634,7 +648,8 @@ public final class FranceCTCValidation
                    .vesID (VID_FR_EXTENDED_CTC_CII_1_4_0_03)
                    .displayNamePrefix ("France Extended CTC CII ")
                    .notDeprecated ()
-                   .addXSD (CCIID22B.getXSDResourceCII ())
+                   // ZUGFeRD 2.5.2 == Factur-X 1.0.9-2
+                   .addXSD (ZugferdValidation.getXSDResource24onwards ("2.5.2", EZugferdProfile.EXTENDED))
                    .addSchematron (PhiveRulesCIIHelper.createXSLT_CII_D22B (new ClassPathResource (sPrefix0 +
                                                                                                    "20260804_EXTENDED-CTC-FR-CII-V1.4.0.03.xslt",
                                                                                                    _getCL ())))

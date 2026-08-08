@@ -23,6 +23,7 @@ import java.time.OffsetDateTime;
 import org.jspecify.annotations.NonNull;
 import org.jspecify.annotations.Nullable;
 
+import com.helger.annotation.Nonempty;
 import com.helger.annotation.concurrent.Immutable;
 import com.helger.annotation.style.ReturnsMutableCopy;
 import com.helger.base.enforce.ValueEnforcer;
@@ -175,6 +176,34 @@ public final class ZugferdValidation
       return null;
 
     return new DVRCoordinate (GROUP_ID_FACTUR_X, aZugferdVESID.getArtifactID (), aFacturXVersion);
+  }
+
+  /**
+   * Get the XML Schema resource of a specific ZUGFeRD profile. This method is only applicable for
+   * ZUGFeRD 2.4 and later, because the previous versions use a different file naming scheme.
+   *
+   * @param sZugferdVersion
+   *        The ZUGFeRD version to use. May neither be <code>null</code> nor empty.
+   * @param eProfile
+   *        The ZUGFeRD profile to use. May not be <code>null</code>.
+   * @return The XML Schema resource of that profile. Never <code>null</code>.
+   * @since 4.5.3
+   */
+  @NonNull
+  public static ClassPathResource getXSDResource24onwards (@NonNull @Nonempty final String sZugferdVersion,
+                                                           @NonNull final EZugferdProfile eProfile)
+  {
+    ValueEnforcer.notEmpty (sZugferdVersion, "ZugferdVersion");
+    ValueEnforcer.notNull (eProfile, "Profile");
+
+    return new ClassPathResource ("/external/schemas/" +
+                                  sZugferdVersion +
+                                  "/" +
+                                  eProfile.getFolderName () +
+                                  "/FACTUR-X_" +
+                                  eProfile.getFilenameSuffix24onwards () +
+                                  ".xsd",
+                                  _getCL ());
   }
 
   private static VesXmlBuilder.@NonNull Alias _createFacturXAlias (@NonNull final DVRCoordinate aVESID,
@@ -418,14 +447,7 @@ public final class ZugferdValidation
                    .vesID (aVESID)
                    .displayName ("ZUGFeRD " + sZugferdVersion + " (" + eProfile.getDisplayName () + ")")
                    .deprecated ()
-                   .addXSD (new ClassPathResource ("/external/schemas/" +
-                                                   sZugferdVersion +
-                                                   "/" +
-                                                   eProfile.getFolderName () +
-                                                   "/FACTUR-X_" +
-                                                   eProfile.getFilenameSuffix24onwards () +
-                                                   ".xsd",
-                                                   _getCL ()))
+                   .addXSD (getXSDResource24onwards (sZugferdVersion, eProfile))
                    .addSchematron (PhiveRulesCIIHelper.createXSLT_CII_D22B (new ClassPathResource ("/external/schematron/" +
                                                                                                    sZugferdVersion +
                                                                                                    "/FACTUR-X_" +
@@ -446,14 +468,7 @@ public final class ZugferdValidation
                    .vesID (aVESID)
                    .displayName ("ZUGFeRD " + sZugferdVersion + " (" + eProfile.getDisplayName () + ")")
                    .notDeprecated ()
-                   .addXSD (new ClassPathResource ("/external/schemas/" +
-                                                   sZugferdVersion +
-                                                   "/" +
-                                                   eProfile.getFolderName () +
-                                                   "/FACTUR-X_" +
-                                                   eProfile.getFilenameSuffix24onwards () +
-                                                   ".xsd",
-                                                   _getCL ()))
+                   .addXSD (getXSDResource24onwards (sZugferdVersion, eProfile))
                    .addSchematron (PhiveRulesCIIHelper.createXSLT_CII_D22B (new ClassPathResource ("/external/schematron/" +
                                                                                                    sZugferdVersion +
                                                                                                    "/FACTUR-X_" +
@@ -475,14 +490,7 @@ public final class ZugferdValidation
                    .displayName ("ZUGFeRD " + sZugferdVersion + " (" + eProfile.getDisplayName () + ")")
                    .notDeprecated ()
                    .validFrom (VALID_FROM_2_5_2_UTC)
-                   .addXSD (new ClassPathResource ("/external/schemas/" +
-                                                   sZugferdVersion +
-                                                   "/" +
-                                                   eProfile.getFolderName () +
-                                                   "/FACTUR-X_" +
-                                                   eProfile.getFilenameSuffix24onwards () +
-                                                   ".xsd",
-                                                   _getCL ()))
+                   .addXSD (getXSDResource24onwards (sZugferdVersion, eProfile))
                    .addSchematron (PhiveRulesCIIHelper.createXSLT_CII_D22B (new ClassPathResource ("/external/schematron/" +
                                                                                                    sZugferdVersion +
                                                                                                    "/FACTUR-X_" +

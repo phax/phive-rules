@@ -93,6 +93,8 @@ public final class PhiveRulesValidation
 
     // Must be first
     EN16931Validation.initEN16931 (aRegistry);
+    // Must be before France, because the France Extended CTC CII rules use the Factur-X XSDs
+    ZugferdValidation.initZugferd (aRegistry);
     // The rest in alphabetical order, except where explicitly stated
     CIUS_PTValidation.initCIUS_PT (aRegistry);
     CIUS_ROValidation.initCIUS_RO (aRegistry);
@@ -116,6 +118,5 @@ public final class PhiveRulesValidation
     UBLBEValidation.initUBLBE (aRegistry);
     XRechnungValidation.initXRechnung (aRegistry);
     ZATCAValidation.initZATCA (aRegistry);
-    ZugferdValidation.initZugferd (aRegistry);
   }
 }

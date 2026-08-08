@@ -268,6 +268,13 @@ I hope that with the introduction of PINT, the versioning problem will be solved
 v4.5.3 - work in progress
 * The France PPF Flux 10 validation rules now use the AIFE provided Flux 10 XSDs in addition to the Schematron rules.
   Documents that were previously only checked by Schematron are now first validated against the `Report` XML Schema
+* The France Extended CTC CII rules now use the Factur-X EXTENDED XSD instead of the generic CII D22B schema - `fr.ctc:extended-cii:1.4.0` uses Factur-X 1.0.9 (ZUGFeRD 2.5) and `fr.ctc:extended-cii:1.4.0-03` uses Factur-X 1.0.9-2 (ZUGFeRD 2.5.2).
+  Documents that were previously accepted by the XSD layer may now be rejected
+* Because of that, `phive-rules-france` now depends on `phive-rules-zugferd` and requires the ZUGFeRD rules to be registered first.
+  `PhiveRulesValidation.initPhiveRules` was changed accordingly; users calling the `init...` methods manually must register ZUGFeRD before France
+* Added new method `ZugferdValidation.getXSDResource24onwards (String, EZugferdProfile)` to access the XML Schema resource of a specific ZUGFeRD 2.4+ profile
+* Fixed the `xs:import` references of the ZUGFeRD 2.5 and 2.5.2 XSDs - all 5 profiles referenced the `QualifiedDataType` and `UnqualifiedDataType` schemas under their upstream file names, which are not the names used in this repository.
+  As a result the `qdt:` and `udt:` types were not resolved and the affected elements were effectively not validated by the XSD layer
 
 v4.5.2 - 2026-08-05
 * Added the France CTC validation rules `1.4.0.03` (2026-08-04), VES coordinates `fr.ctc:ubl-invoice:1.4.0-03`, `fr.ctc:ubl-creditnote:1.4.0-03`, `fr.ctc:cii:1.4.0-03`, `fr.ctc:cdar:1.4.0-03`, `fr.ctc:extended-ubl-invoice:1.4.0-03`, `fr.ctc:extended-ubl-creditnote:1.4.0-03` and `fr.ctc:extended-cii:1.4.0-03`, and deprecated the 1.4.0 rules.
