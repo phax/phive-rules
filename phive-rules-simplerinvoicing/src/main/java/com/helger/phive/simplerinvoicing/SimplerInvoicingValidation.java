@@ -84,50 +84,50 @@ public final class SimplerInvoicingValidation
   public static final DVRCoordinate VID_SI_CREDIT_NOTE_V203 = DVRHelper.createCoordinate (GROUP_ID, "creditnote", "2.0.3");
 
   @Deprecated
-  public static final DVRCoordinate VID_SI_INVOICE_V2031 = DVRHelper.createCoordinate (GROUP_ID, "invoice", "2.0.3.1");
+  public static final DVRCoordinate VID_SI_INVOICE_V2031 = DVRHelper.createCoordinate (GROUP_ID, "invoice", "2.0.3.01");
   @Deprecated
-  public static final DVRCoordinate VID_SI_CREDIT_NOTE_V2031 = DVRHelper.createCoordinate (GROUP_ID, "creditnote", "2.0.3.1");
+  public static final DVRCoordinate VID_SI_CREDIT_NOTE_V2031 = DVRHelper.createCoordinate (GROUP_ID, "creditnote", "2.0.3.01");
 
   @Deprecated
-  public static final DVRCoordinate VID_SI_INVOICE_V2032 = DVRHelper.createCoordinate (GROUP_ID, "invoice", "2.0.3.2");
+  public static final DVRCoordinate VID_SI_INVOICE_V2032 = DVRHelper.createCoordinate (GROUP_ID, "invoice", "2.0.3.02");
   @Deprecated
-  public static final DVRCoordinate VID_SI_CREDIT_NOTE_V2032 = DVRHelper.createCoordinate (GROUP_ID, "creditnote", "2.0.3.2");
+  public static final DVRCoordinate VID_SI_CREDIT_NOTE_V2032 = DVRHelper.createCoordinate (GROUP_ID, "creditnote", "2.0.3.02");
 
   @Deprecated
-  public static final DVRCoordinate VID_SI_INVOICE_V2033 = DVRHelper.createCoordinate (GROUP_ID, "invoice", "2.0.3.3");
+  public static final DVRCoordinate VID_SI_INVOICE_V2033 = DVRHelper.createCoordinate (GROUP_ID, "invoice", "2.0.3.03");
   @Deprecated
-  public static final DVRCoordinate VID_SI_CREDIT_NOTE_V2033 = DVRHelper.createCoordinate (GROUP_ID, "creditnote", "2.0.3.3");
+  public static final DVRCoordinate VID_SI_CREDIT_NOTE_V2033 = DVRHelper.createCoordinate (GROUP_ID, "creditnote", "2.0.3.03");
 
   @Deprecated
-  public static final DVRCoordinate VID_SI_INVOICE_V2034 = DVRHelper.createCoordinate (GROUP_ID, "invoice", "2.0.3.4");
+  public static final DVRCoordinate VID_SI_INVOICE_V2034 = DVRHelper.createCoordinate (GROUP_ID, "invoice", "2.0.3.04");
   @Deprecated
-  public static final DVRCoordinate VID_SI_CREDIT_NOTE_V2034 = DVRHelper.createCoordinate (GROUP_ID, "creditnote", "2.0.3.4");
+  public static final DVRCoordinate VID_SI_CREDIT_NOTE_V2034 = DVRHelper.createCoordinate (GROUP_ID, "creditnote", "2.0.3.04");
 
   @Deprecated
-  public static final DVRCoordinate VID_SI_INVOICE_V2035 = DVRHelper.createCoordinate (GROUP_ID, "invoice", "2.0.3.5");
+  public static final DVRCoordinate VID_SI_INVOICE_V2035 = DVRHelper.createCoordinate (GROUP_ID, "invoice", "2.0.3.05");
   @Deprecated
-  public static final DVRCoordinate VID_SI_CREDIT_NOTE_V2035 = DVRHelper.createCoordinate (GROUP_ID, "creditnote", "2.0.3.5");
+  public static final DVRCoordinate VID_SI_CREDIT_NOTE_V2035 = DVRHelper.createCoordinate (GROUP_ID, "creditnote", "2.0.3.05");
 
   @Deprecated
-  public static final DVRCoordinate VID_SI_INVOICE_V2036 = DVRHelper.createCoordinate (GROUP_ID, "invoice", "2.0.3.6");
+  public static final DVRCoordinate VID_SI_INVOICE_V2036 = DVRHelper.createCoordinate (GROUP_ID, "invoice", "2.0.3.06");
   @Deprecated
-  public static final DVRCoordinate VID_SI_CREDIT_NOTE_V2036 = DVRHelper.createCoordinate (GROUP_ID, "creditnote", "2.0.3.6");
+  public static final DVRCoordinate VID_SI_CREDIT_NOTE_V2036 = DVRHelper.createCoordinate (GROUP_ID, "creditnote", "2.0.3.06");
 
   @Deprecated
-  public static final DVRCoordinate VID_SI_INVOICE_V2037 = DVRHelper.createCoordinate (GROUP_ID, "invoice", "2.0.3.7");
+  public static final DVRCoordinate VID_SI_INVOICE_V2037 = DVRHelper.createCoordinate (GROUP_ID, "invoice", "2.0.3.07");
   @Deprecated
-  public static final DVRCoordinate VID_SI_CREDIT_NOTE_V2037 = DVRHelper.createCoordinate (GROUP_ID, "creditnote", "2.0.3.7");
+  public static final DVRCoordinate VID_SI_CREDIT_NOTE_V2037 = DVRHelper.createCoordinate (GROUP_ID, "creditnote", "2.0.3.07");
 
   @Deprecated
-  public static final DVRCoordinate VID_SI_INVOICE_V2038 = DVRHelper.createCoordinate (GROUP_ID, "invoice", "2.0.3.8");
+  public static final DVRCoordinate VID_SI_INVOICE_V2038 = DVRHelper.createCoordinate (GROUP_ID, "invoice", "2.0.3.08");
   @Deprecated
-  public static final DVRCoordinate VID_SI_CREDIT_NOTE_V2038 = DVRHelper.createCoordinate (GROUP_ID, "creditnote", "2.0.3.8");
+  public static final DVRCoordinate VID_SI_CREDIT_NOTE_V2038 = DVRHelper.createCoordinate (GROUP_ID, "creditnote", "2.0.3.08");
 
   // In effect from August 27, 2024
   @Deprecated
-  public static final DVRCoordinate VID_SI_INVOICE_V2039 = DVRHelper.createCoordinate (GROUP_ID, "invoice", "2.0.3.9");
+  public static final DVRCoordinate VID_SI_INVOICE_V2039 = DVRHelper.createCoordinate (GROUP_ID, "invoice", "2.0.3.09");
   @Deprecated
-  public static final DVRCoordinate VID_SI_CREDIT_NOTE_V2039 = DVRHelper.createCoordinate (GROUP_ID, "creditnote", "2.0.3.9");
+  public static final DVRCoordinate VID_SI_CREDIT_NOTE_V2039 = DVRHelper.createCoordinate (GROUP_ID, "creditnote", "2.0.3.09");
 
   // In effect from February 17, 2025
   @Deprecated
@@ -179,23 +179,23 @@ public final class SimplerInvoicingValidation
   @Deprecated
   public static final DVRCoordinate VID_SI_NLCIUS_CII_V103 = DVRHelper.createCoordinate (GROUP_ID, "nlcius-cii", "1.0.3");
   @Deprecated
-  public static final DVRCoordinate VID_SI_NLCIUS_CII_V1031 = DVRHelper.createCoordinate (GROUP_ID, "nlcius-cii", "1.0.3.1");
+  public static final DVRCoordinate VID_SI_NLCIUS_CII_V1031 = DVRHelper.createCoordinate (GROUP_ID, "nlcius-cii", "1.0.3.01");
   @Deprecated
-  public static final DVRCoordinate VID_SI_NLCIUS_CII_V1032 = DVRHelper.createCoordinate (GROUP_ID, "nlcius-cii", "1.0.3.2");
+  public static final DVRCoordinate VID_SI_NLCIUS_CII_V1032 = DVRHelper.createCoordinate (GROUP_ID, "nlcius-cii", "1.0.3.02");
   @Deprecated
-  public static final DVRCoordinate VID_SI_NLCIUS_CII_V1033 = DVRHelper.createCoordinate (GROUP_ID, "nlcius-cii", "1.0.3.3");
+  public static final DVRCoordinate VID_SI_NLCIUS_CII_V1033 = DVRHelper.createCoordinate (GROUP_ID, "nlcius-cii", "1.0.3.03");
   @Deprecated
-  public static final DVRCoordinate VID_SI_NLCIUS_CII_V1034 = DVRHelper.createCoordinate (GROUP_ID, "nlcius-cii", "1.0.3.4");
+  public static final DVRCoordinate VID_SI_NLCIUS_CII_V1034 = DVRHelper.createCoordinate (GROUP_ID, "nlcius-cii", "1.0.3.04");
   @Deprecated
-  public static final DVRCoordinate VID_SI_NLCIUS_CII_V1035 = DVRHelper.createCoordinate (GROUP_ID, "nlcius-cii", "1.0.3.5");
+  public static final DVRCoordinate VID_SI_NLCIUS_CII_V1035 = DVRHelper.createCoordinate (GROUP_ID, "nlcius-cii", "1.0.3.05");
   @Deprecated
-  public static final DVRCoordinate VID_SI_NLCIUS_CII_V1036 = DVRHelper.createCoordinate (GROUP_ID, "nlcius-cii", "1.0.3.6");
+  public static final DVRCoordinate VID_SI_NLCIUS_CII_V1036 = DVRHelper.createCoordinate (GROUP_ID, "nlcius-cii", "1.0.3.06");
   @Deprecated
-  public static final DVRCoordinate VID_SI_NLCIUS_CII_V1037 = DVRHelper.createCoordinate (GROUP_ID, "nlcius-cii", "1.0.3.7");
+  public static final DVRCoordinate VID_SI_NLCIUS_CII_V1037 = DVRHelper.createCoordinate (GROUP_ID, "nlcius-cii", "1.0.3.07");
   @Deprecated
-  public static final DVRCoordinate VID_SI_NLCIUS_CII_V1038 = DVRHelper.createCoordinate (GROUP_ID, "nlcius-cii", "1.0.3.8");
+  public static final DVRCoordinate VID_SI_NLCIUS_CII_V1038 = DVRHelper.createCoordinate (GROUP_ID, "nlcius-cii", "1.0.3.08");
   @Deprecated
-  public static final DVRCoordinate VID_SI_NLCIUS_CII_V1039 = DVRHelper.createCoordinate (GROUP_ID, "nlcius-cii", "1.0.3.9");
+  public static final DVRCoordinate VID_SI_NLCIUS_CII_V1039 = DVRHelper.createCoordinate (GROUP_ID, "nlcius-cii", "1.0.3.09");
   @Deprecated
   public static final DVRCoordinate VID_SI_NLCIUS_CII_V1_0_3_11 = DVRHelper.createCoordinate (GROUP_ID, "nlcius-cii", "1.0.3.11");
   public static final DVRCoordinate VID_SI_NLCIUS_CII_V1_0_3_12 = DVRHelper.createCoordinate (GROUP_ID, "nlcius-cii", "1.0.3.12");

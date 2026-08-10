@@ -265,6 +265,12 @@ I hope that with the introduction of PINT, the versioning problem will be solved
 
 # News and noteworthy
 
+v4.5.4 - work in progress
+* **Breaking change**: the numeric SimplerInvoicing version classifiers are now zero padded to two digits, because DVR compares version classifiers as Strings.
+  Affected are the VES coordinates `org.simplerinvoicing:invoice:2.0.3-1` up to `...:2.0.3-9`, `org.simplerinvoicing:creditnote:2.0.3-1` up to `...:2.0.3-9` and `org.simplerinvoicing:nlcius-cii:1.0.3-1` up to `...:1.0.3-9`.
+  They are now called `2.0.3-01` .. `2.0.3-09` and `1.0.3-01` .. `1.0.3-09` respectively - the Java constants and the display names are unchanged.
+  Previously `2.0.3-9` was sorted after `2.0.3-13`, so the pseudo versions `latest`, `latest-release` etc. resolved to the deprecated version `2.0.3-9` instead of `2.0.3-13` (see [issue #80](https://github.com/phax/phive-rules/issues/80))
+
 v4.5.3 - 2026-08-08
 * The France PPF Flux 10 validation rules now use the AIFE provided Flux 10 XSDs in addition to the Schematron rules.
   Documents that were previously only checked by Schematron are now first validated against the `Report` XML Schema

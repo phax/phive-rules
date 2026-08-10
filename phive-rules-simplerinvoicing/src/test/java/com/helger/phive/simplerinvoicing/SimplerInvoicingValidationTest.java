@@ -16,13 +16,18 @@
  */
 package com.helger.phive.simplerinvoicing;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
+import org.jspecify.annotations.NonNull;
 import org.junit.Test;
 
+import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.io.resource.IReadableResource;
 import com.helger.phive.api.executor.IValidationExecutor;
 import com.helger.phive.api.executorset.IValidationExecutorSet;
+import com.helger.phive.rules.shared.DVRHelper;
 import com.helger.phive.simplerinvoicing.mock.CTestFiles;
 import com.helger.phive.xml.source.IValidationSourceXML;
 
@@ -50,5 +55,30 @@ public final class SimplerInvoicingValidationTest
     for (final IValidationExecutorSet <IValidationSourceXML> aVES : CTestFiles.VES_REGISTRY.getAll ())
       for (final IValidationExecutor <IValidationSourceXML> aVE : aVES)
         assertTrue (com.helger.phive.rules.shared.PhiveRulesTestHelper.isContentCorrect (aVE));
+  }
+
+  private static void _testLatest (@NonNull final String sArtifactID, @NonNull final String sExpectedVersion)
+  {
+    for (final String sPseudoVersion : new String [] { "latest", "latest-release" })
+    {
+      final DVRCoordinate aVESID = DVRHelper.createCoordinate (SimplerInvoicingValidation.GROUP_ID,
+                                                               sArtifactID,
+                                                               sPseudoVersion);
+      final IValidationExecutorSet <IValidationSourceXML> aVES = CTestFiles.VES_REGISTRY.getOfID (aVESID);
+      assertNotNull (aVESID.getAsSingleID (), aVES);
+      assertEquals (aVESID.getAsSingleID (), sExpectedVersion, aVES.getID ().getVersionString ());
+    }
+  }
+
+  @Test
+  public void testLatestVersionResolution ()
+  {
+    // The numeric version classifiers are compared as Strings, hence they must
+    // be zero padded to be comparable - see
+    // https://github.com/phax/phive-rules/issues/80
+    _testLatest ("invoice", "2.0.3-13");
+    _testLatest ("creditnote", "2.0.3-13");
+    _testLatest ("nlcius-cii", "1.0.3-13");
+    _testLatest ("invoice20.g-account", "1.0.13");
   }
 }
