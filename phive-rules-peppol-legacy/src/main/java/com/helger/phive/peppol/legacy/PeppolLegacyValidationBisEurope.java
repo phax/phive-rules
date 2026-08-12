@@ -55,5 +55,6 @@ public final class PeppolLegacyValidationBisEurope
     PeppolValidation2024_05.init (aRegistry);
     PeppolValidation2024_11.init (aRegistry);
     PeppolValidation2025_03.init (aRegistry);
+    PeppolValidation2025_05.init (aRegistry);
   }
 }

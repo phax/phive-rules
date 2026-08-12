@@ -32,7 +32,6 @@ import com.helger.phive.api.executorset.ValidationExecutorSetRegistry;
 import com.helger.phive.api.mock.PhiveTestFile;
 import com.helger.phive.en16931.EN16931Validation;
 import com.helger.phive.peppol.PeppolValidation;
-import com.helger.phive.peppol.PeppolValidation2025_05;
 import com.helger.phive.peppol.PeppolValidation2025_11;
 import com.helger.phive.peppol.PeppolValidation2026_03;
 import com.helger.phive.peppol.PeppolValidation2026_05;
@@ -86,22 +85,6 @@ public final class CTestFiles
                                                              PeppolValidationBisSG.VID_PEPPOL_SG_ORDER_BALANCE_1_0,
 
                                                              /* OpenPeppol BIS */
-                                                             PeppolValidation2025_05.VID_OPENPEPPOL_INVOICE_UBL_V3,
-                                                             PeppolValidation2025_05.VID_OPENPEPPOL_CREDIT_NOTE_UBL_V3,
-                                                             // PeppolValidation2025_05.VID_OPENPEPPOL_INVOICE_CII_V3,
-                                                             PeppolValidation2025_05.VID_OPENPEPPOL_ORDER_V3,
-                                                             PeppolValidation2025_05.VID_OPENPEPPOL_DESPATCH_ADVICE_V3,
-                                                             PeppolValidation2025_05.VID_OPENPEPPOL_CATALOGUE_V3,
-                                                             PeppolValidation2025_05.VID_OPENPEPPOL_CATALOGUE_RESPONSE_V3,
-                                                             PeppolValidation2025_05.VID_OPENPEPPOL_MLR_V3,
-                                                             PeppolValidation2025_05.VID_OPENPEPPOL_ORDER_RESPONSE_V3,
-                                                             PeppolValidation2025_05.VID_OPENPEPPOL_PUNCH_OUT_V3,
-                                                             PeppolValidation2025_05.VID_OPENPEPPOL_ORDER_AGREEMENT_V3,
-                                                             PeppolValidation2025_05.VID_OPENPEPPOL_INVOICE_MESSAGE_RESPONSE_V3,
-                                                             PeppolValidation2025_05.VID_OPENPEPPOL_ORDER_CHANGE_V3,
-                                                             PeppolValidation2025_05.VID_OPENPEPPOL_ORDER_CANCELLATION_V3,
-                                                             PeppolValidation2025_05.VID_OPENPEPPOL_ORDER_RESPONSE_ADVANCED_V3,
-
                                                              PeppolValidation2025_11.VID_OPENPEPPOL_INVOICE_UBL_V3,
                                                              PeppolValidation2025_11.VID_OPENPEPPOL_CREDIT_NOTE_UBL_V3,
                                                              // PeppolValidation2025_11.VID_OPENPEPPOL_INVOICE_CII_V3,
@@ -336,80 +319,6 @@ public final class CTestFiles
     if (aVESID.equals (PeppolValidationBisSG.VID_PEPPOL_SG_ORDER_BALANCE_1_0))
     {
       return _getAll ("sg-peppol/ob-1.0/", "Order_balance_finalized.xml", "Order_balance_MAX.xml", "Order_balance.xml");
-    }
-
-    // 2025-05
-    {
-
-      // https://github.com/OpenPEPPOL/peppol-bis-invoice-3/tree/master/rules/examples
-      if (aVESID.equals (PeppolValidation2025_05.VID_OPENPEPPOL_INVOICE_UBL_V3))
-        return _getAll ("openpeppol/2025.5/",
-                        "billing/Allowance-example.xml",
-                        "billing/base-example.xml",
-                        "billing/base-example-de.xml",
-                        "billing/base-negative-inv-correction.xml",
-                        "billing/vat-category-E.xml",
-                        "billing/vat-category-O.xml",
-                        "billing/Vat-category-S.xml",
-                        "billing/vat-category-Z.xml");
-      if (aVESID.equals (PeppolValidation2025_05.VID_OPENPEPPOL_CREDIT_NOTE_UBL_V3))
-        return _getAll ("openpeppol/2025.5/", "billing/base-creditnote-correction.xml");
-      if (aVESID.equals (PeppolValidation2025_05.VID_OPENPEPPOL_ORDER_V3))
-        return _getAll ("openpeppol/2025.5/",
-                        "Order_Example.xml",
-                        "Order use cases/UC1_Order.xml",
-                        "Order use cases/UC2_Order.xml",
-                        "Order use cases/UC3_Order.xml",
-                        "Order use cases/UC4_Order.xml",
-                        "Order use cases/UC5_Order.xml");
-      if (aVESID.equals (PeppolValidation2025_05.VID_OPENPEPPOL_DESPATCH_ADVICE_V3))
-        return _getAll ("openpeppol/2025.5/",
-                        "DespatchAdvice_Example.xml",
-                        "Despatch Advice use cases/DespatchAdvice-BIS3_UseCase1.xml",
-                        "Despatch Advice use cases/DespatchAdvice-BIS3_UseCase2.xml",
-                        "Despatch Advice use cases/DespatchAdvice-BIS3_UseCase3.xml",
-                        "Despatch Advice use cases/DespatchAdvice-BIS3_UseCase4.xml",
-                        "Despatch Advice use cases/DespatchAdvice-BIS3_UseCase5.xml");
-      if (aVESID.equals (PeppolValidation2025_05.VID_OPENPEPPOL_CATALOGUE_V3))
-        return _getAll ("openpeppol/2025.5/", "Catalogue_Example.xml");
-      if (aVESID.equals (PeppolValidation2025_05.VID_OPENPEPPOL_CATALOGUE_RESPONSE_V3))
-        return _getAll ("openpeppol/2025.5/", "CatalogueResponse_Example.xml");
-      if (aVESID.equals (PeppolValidation2025_05.VID_OPENPEPPOL_MLR_V3))
-        return _getAll ("openpeppol/2025.5/", "MessageLevelResponse_Example.xml");
-      if (aVESID.equals (PeppolValidation2025_05.VID_OPENPEPPOL_ORDER_RESPONSE_V3))
-        return _getAll ("openpeppol/2025.5/",
-                        "OrderResponse_Example.xml",
-                        "Order-response use cases/UC1_Order_response.xml",
-                        "Order-response use cases/UC2_Order_response.xml",
-                        "Order-response use cases/UC3_Order_response.xml",
-                        "Order-response use cases/UC4_Order_response.xml",
-                        "Order-response use cases/UC5_Order_response.xml");
-      if (aVESID.equals (PeppolValidation2025_05.VID_OPENPEPPOL_PUNCH_OUT_V3))
-        return _getAll ("openpeppol/2025.5/", "PunchOut_Example.xml");
-      if (aVESID.equals (PeppolValidation2025_05.VID_OPENPEPPOL_ORDER_AGREEMENT_V3))
-        return _getAll ("openpeppol/2025.5/", "OrderAgreement_Example.xml");
-      if (aVESID.equals (PeppolValidation2025_05.VID_OPENPEPPOL_INVOICE_MESSAGE_RESPONSE_V3))
-        return _getAll ("openpeppol/2025.5/",
-                        "InvoiceResponse_Example.xml",
-                        "Invoice reponse use cases/T111-uc001-Invoice in process.xml",
-                        "Invoice reponse use cases/T111-uc002a-Additional reference data.xml",
-                        "Invoice reponse use cases/T111-uc002b-In process but postponed.xml",
-                        "Invoice reponse use cases/T111-uc003-Invoice is accepted.xml",
-                        "Invoice reponse use cases/T111-uc004a-Invoice is rejected.xml",
-                        "Invoice reponse use cases/T111-uc004b-Rejected requesting reissue.xml",
-                        "Invoice reponse use cases/T111-uc004c-Rejected requesting replacement.xml",
-                        "Invoice reponse use cases/T111-uc005-Invoice is conditionally accepted.xml",
-                        "Invoice reponse use cases/T111-uc006a-Under query missing information.xml",
-                        "Invoice reponse use cases/T111-uc006b-Missing PO.xml",
-                        "Invoice reponse use cases/T111-uc006c-Wrong detail partial credit.xml",
-                        "Invoice reponse use cases/T111-uc007-Payment has been initiated.xml",
-                        "Invoice reponse use cases/T111-uc008-Invoice is accepted by third party.xml");
-      if (aVESID.equals (PeppolValidation2025_05.VID_OPENPEPPOL_ORDER_CHANGE_V3))
-        return _getAll ("openpeppol/2025.5/", "OrderChange_Example.xml");
-      if (aVESID.equals (PeppolValidation2025_05.VID_OPENPEPPOL_ORDER_CANCELLATION_V3))
-        return _getAll ("openpeppol/2025.5/", "OrderCancellation_Example.xml");
-      if (aVESID.equals (PeppolValidation2025_05.VID_OPENPEPPOL_ORDER_RESPONSE_ADVANCED_V3))
-        return _getAll ("openpeppol/2025.5/", "OrderResponseAdvanced_Example.xml");
     }
 
     // 2025-11

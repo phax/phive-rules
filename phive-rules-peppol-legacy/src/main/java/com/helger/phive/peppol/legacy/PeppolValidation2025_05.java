@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.helger.phive.peppol;
+package com.helger.phive.peppol.legacy;
 
 import java.time.LocalDate;
 import java.time.Month;
@@ -45,32 +45,52 @@ import com.helger.ubl23.UBL23Marshaller;
  * @author Philip Helger
  */
 @Immutable
+@Deprecated (forRemoval = false)
 public final class PeppolValidation2025_05
 {
   // Standard resources
+  @Deprecated (forRemoval = false)
   public static final Version PEPPOL_VALIDATION_ARTEFACT_VERSION = new Version (2025, 5, 0);
+  @Deprecated (forRemoval = false)
   public static final String VERSION_STR = PEPPOL_VALIDATION_ARTEFACT_VERSION.getAsString (false);
+  @Deprecated (forRemoval = false)
   public static final LocalDate VALID_PER = PDTFactory.createLocalDate (2025, Month.AUGUST, 25);
+  @Deprecated (forRemoval = false)
   public static final OffsetDateTime VALID_PER_UTC = PDTFactory.createOffsetDateTimeUTC (VALID_PER);
 
   // Standard
+  @Deprecated (forRemoval = false)
   public static final String GROUP_ID = "eu.peppol.bis3";
+  @Deprecated (forRemoval = false)
   public static final DVRCoordinate VID_OPENPEPPOL_INVOICE_UBL_V3 = DVRHelper.createCoordinate (GROUP_ID, "invoice", VERSION_STR);
+  @Deprecated (forRemoval = false)
   public static final DVRCoordinate VID_OPENPEPPOL_CREDIT_NOTE_UBL_V3 = DVRHelper.createCoordinate (GROUP_ID, "creditnote", VERSION_STR);
   // public static final DVRCoordinate VID_OPENPEPPOL_INVOICE_CII_V3 =
   // PhiveRulesHelper.createCoordinate
   // (GROUP_ID, "invoice-cii", VERSION_STR);
+  @Deprecated (forRemoval = false)
   public static final DVRCoordinate VID_OPENPEPPOL_ORDER_V3 = DVRHelper.createCoordinate (GROUP_ID, "order", VERSION_STR);
+  @Deprecated (forRemoval = false)
   public static final DVRCoordinate VID_OPENPEPPOL_DESPATCH_ADVICE_V3 = DVRHelper.createCoordinate (GROUP_ID, "despatch-advice", VERSION_STR);
+  @Deprecated (forRemoval = false)
   public static final DVRCoordinate VID_OPENPEPPOL_CATALOGUE_V3 = DVRHelper.createCoordinate (GROUP_ID, "catalogue", VERSION_STR);
+  @Deprecated (forRemoval = false)
   public static final DVRCoordinate VID_OPENPEPPOL_CATALOGUE_RESPONSE_V3 = DVRHelper.createCoordinate (GROUP_ID, "catalogue-response", VERSION_STR);
+  @Deprecated (forRemoval = false)
   public static final DVRCoordinate VID_OPENPEPPOL_MLR_V3 = DVRHelper.createCoordinate (GROUP_ID, "mlr", VERSION_STR);
+  @Deprecated (forRemoval = false)
   public static final DVRCoordinate VID_OPENPEPPOL_ORDER_RESPONSE_V3 = DVRHelper.createCoordinate (GROUP_ID, "order-response", VERSION_STR);
+  @Deprecated (forRemoval = false)
   public static final DVRCoordinate VID_OPENPEPPOL_PUNCH_OUT_V3 = DVRHelper.createCoordinate (GROUP_ID, "punch-out", VERSION_STR);
+  @Deprecated (forRemoval = false)
   public static final DVRCoordinate VID_OPENPEPPOL_ORDER_AGREEMENT_V3 = DVRHelper.createCoordinate (GROUP_ID, "order-agreement", VERSION_STR);
+  @Deprecated (forRemoval = false)
   public static final DVRCoordinate VID_OPENPEPPOL_INVOICE_MESSAGE_RESPONSE_V3 = DVRHelper.createCoordinate (GROUP_ID, "invoice-message-response", VERSION_STR);
+  @Deprecated (forRemoval = false)
   public static final DVRCoordinate VID_OPENPEPPOL_ORDER_CHANGE_V3 = DVRHelper.createCoordinate (GROUP_ID, "order-change", VERSION_STR);
+  @Deprecated (forRemoval = false)
   public static final DVRCoordinate VID_OPENPEPPOL_ORDER_CANCELLATION_V3 = DVRHelper.createCoordinate (GROUP_ID, "order-cancellation", VERSION_STR);
+  @Deprecated (forRemoval = false)
   public static final DVRCoordinate VID_OPENPEPPOL_ORDER_RESPONSE_ADVANCED_V3 = DVRHelper.createCoordinate (GROUP_ID, "order-response-advanced", VERSION_STR);
 
   // Shared between all init methods
@@ -92,6 +112,7 @@ public final class PeppolValidation2025_05
    * @param aRegistry
    *        The registry to add the artefacts. May not be <code>null</code>.
    */
+  @Deprecated (forRemoval = false)
   public static void initBilling (@NonNull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
   {
     ValueEnforcer.notNull (aRegistry, "Registry");
@@ -106,7 +127,7 @@ public final class PeppolValidation2025_05
     VesXmlBuilder.builder ()
                  .vesID (VID_OPENPEPPOL_INVOICE_UBL_V3)
                  .displayName ("OpenPeppol UBL Invoice" + SUFFIX_VERSION + sAkaVersionBilling)
-                 .notDeprecated ()
+                 .deprecated ()
                  .validFrom (VALID_PER_UTC)
                  .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
                  .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (INVOICE_UBL_CEN))
@@ -115,7 +136,7 @@ public final class PeppolValidation2025_05
     VesXmlBuilder.builder ()
                  .vesID (VID_OPENPEPPOL_CREDIT_NOTE_UBL_V3)
                  .displayName ("OpenPeppol UBL Credit Note" + SUFFIX_VERSION + sAkaVersionBilling)
-                 .notDeprecated ()
+                 .deprecated ()
                  .validFrom (VALID_PER_UTC)
                  .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
                  .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (INVOICE_UBL_CEN))
@@ -133,6 +154,7 @@ public final class PeppolValidation2025_05
     // _createXsltCII (INVOICE_CII_PEPPOL)));
   }
 
+  @Deprecated (forRemoval = false)
   public static void init (@NonNull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
   {
     ValueEnforcer.notNull (aRegistry, "Registry");
@@ -159,7 +181,7 @@ public final class PeppolValidation2025_05
     VesXmlBuilder.builder ()
                  .vesID (VID_OPENPEPPOL_ORDER_V3)
                  .displayName ("OpenPeppol Order" + SUFFIX_VERSION + sAkaVersionBIS)
-                 .notDeprecated ()
+                 .deprecated ()
                  .validFrom (VALID_PER_UTC)
                  .addXSD (UBL21Marshaller.getAllOrderXSDs ())
                  .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (ORDER))
@@ -167,7 +189,7 @@ public final class PeppolValidation2025_05
     VesXmlBuilder.builder ()
                  .vesID (VID_OPENPEPPOL_DESPATCH_ADVICE_V3)
                  .displayName ("OpenPeppol Despatch Advice" + SUFFIX_VERSION + sAkaVersionBIS)
-                 .notDeprecated ()
+                 .deprecated ()
                  .validFrom (VALID_PER_UTC)
                  .addXSD (UBL21Marshaller.getAllDespatchAdviceXSDs ())
                  .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (DESPATCH_ADVICE))
@@ -175,7 +197,7 @@ public final class PeppolValidation2025_05
     VesXmlBuilder.builder ()
                  .vesID (VID_OPENPEPPOL_CATALOGUE_V3)
                  .displayName ("OpenPeppol Catalogue" + SUFFIX_VERSION + sAkaVersionBIS)
-                 .notDeprecated ()
+                 .deprecated ()
                  .validFrom (VALID_PER_UTC)
                  .addXSD (UBL21Marshaller.getAllCatalogueXSDs ())
                  .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (CATALOGUE))
@@ -183,7 +205,7 @@ public final class PeppolValidation2025_05
     VesXmlBuilder.builder ()
                  .vesID (VID_OPENPEPPOL_CATALOGUE_RESPONSE_V3)
                  .displayName ("OpenPeppol Catalogue Response" + SUFFIX_VERSION + sAkaVersionBIS)
-                 .notDeprecated ()
+                 .deprecated ()
                  .validFrom (VALID_PER_UTC)
                  .addXSD (UBL21Marshaller.getAllApplicationResponseXSDs ())
                  .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (CATALOGUE_RESPONSE))
@@ -191,7 +213,7 @@ public final class PeppolValidation2025_05
     VesXmlBuilder.builder ()
                  .vesID (VID_OPENPEPPOL_MLR_V3)
                  .displayName ("OpenPeppol MLR" + SUFFIX_VERSION + sAkaVersionBIS)
-                 .notDeprecated ()
+                 .deprecated ()
                  .validFrom (VALID_PER_UTC)
                  .addXSD (UBL21Marshaller.getAllApplicationResponseXSDs ())
                  .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (MLR))
@@ -199,7 +221,7 @@ public final class PeppolValidation2025_05
     VesXmlBuilder.builder ()
                  .vesID (VID_OPENPEPPOL_ORDER_RESPONSE_V3)
                  .displayName ("OpenPeppol Order Response" + SUFFIX_VERSION + sAkaVersionBIS)
-                 .notDeprecated ()
+                 .deprecated ()
                  .validFrom (VALID_PER_UTC)
                  .addXSD (UBL21Marshaller.getAllOrderResponseXSDs ())
                  .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (ORDER_RESPONSE))
@@ -207,7 +229,7 @@ public final class PeppolValidation2025_05
     VesXmlBuilder.builder ()
                  .vesID (VID_OPENPEPPOL_PUNCH_OUT_V3)
                  .displayName ("OpenPeppol Punch Out" + SUFFIX_VERSION + sAkaVersionBIS)
-                 .notDeprecated ()
+                 .deprecated ()
                  .validFrom (VALID_PER_UTC)
                  .addXSD (UBL21Marshaller.getAllCatalogueXSDs ())
                  .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (PUNCH_OUT))
@@ -215,7 +237,7 @@ public final class PeppolValidation2025_05
     VesXmlBuilder.builder ()
                  .vesID (VID_OPENPEPPOL_ORDER_AGREEMENT_V3)
                  .displayName ("OpenPeppol Order Agreement" + SUFFIX_VERSION + sAkaVersionBIS)
-                 .notDeprecated ()
+                 .deprecated ()
                  .validFrom (VALID_PER_UTC)
                  .addXSD (UBL21Marshaller.getAllOrderResponseXSDs ())
                  .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (ORDER_AGREEMENT))
@@ -223,7 +245,7 @@ public final class PeppolValidation2025_05
     VesXmlBuilder.builder ()
                  .vesID (VID_OPENPEPPOL_INVOICE_MESSAGE_RESPONSE_V3)
                  .displayName ("OpenPeppol Invoice Message Response" + SUFFIX_VERSION + sAkaVersionBIS)
-                 .notDeprecated ()
+                 .deprecated ()
                  .validFrom (VALID_PER_UTC)
                  .addXSD (UBL21Marshaller.getAllApplicationResponseXSDs ())
                  .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (INVOICE_MESSAGE_RESPONSE))
@@ -232,7 +254,7 @@ public final class PeppolValidation2025_05
     VesXmlBuilder.builder ()
                  .vesID (VID_OPENPEPPOL_ORDER_CHANGE_V3)
                  .displayName ("OpenPeppol Order Change" + SUFFIX_VERSION + sAkaVersionBIS)
-                 .notDeprecated ()
+                 .deprecated ()
                  .validFrom (VALID_PER_UTC)
                  .addXSD (UBL23Marshaller.getAllOrderChangeXSDs ())
                  .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL23 (ORDER_CHANGE))
@@ -241,7 +263,7 @@ public final class PeppolValidation2025_05
     VesXmlBuilder.builder ()
                  .vesID (VID_OPENPEPPOL_ORDER_CANCELLATION_V3)
                  .displayName ("OpenPeppol Order Cancellation" + SUFFIX_VERSION + sAkaVersionBIS)
-                 .notDeprecated ()
+                 .deprecated ()
                  .validFrom (VALID_PER_UTC)
                  .addXSD (UBL23Marshaller.getAllOrderCancellationXSDs ())
                  .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL23 (ORDER_CANCELLATION))
@@ -250,7 +272,7 @@ public final class PeppolValidation2025_05
     VesXmlBuilder.builder ()
                  .vesID (VID_OPENPEPPOL_ORDER_RESPONSE_ADVANCED_V3)
                  .displayName ("OpenPeppol Order Response Advanced" + SUFFIX_VERSION + sAkaVersionBIS)
-                 .notDeprecated ()
+                 .deprecated ()
                  .validFrom (VALID_PER_UTC)
                  .addXSD (UBL23Marshaller.getAllOrderResponseXSDs ())
                  .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL23 (ORDER_RESPONSE_ADVANCED))
