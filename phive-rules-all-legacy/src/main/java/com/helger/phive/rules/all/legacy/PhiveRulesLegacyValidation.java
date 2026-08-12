@@ -25,6 +25,7 @@ import com.helger.phive.en16931.EN16931Validation;
 import com.helger.phive.oioubl.OIOUBLLegacyValidation;
 import com.helger.phive.peppol.legacy.PeppolLegacyValidationBisAUNZ;
 import com.helger.phive.peppol.legacy.PeppolLegacyValidationBisEurope;
+import com.helger.phive.peppol.legacy.PeppolLegacyValidationPintAE;
 import com.helger.phive.peppol.legacy.PeppolLegacyValidationReporting;
 import com.helger.phive.peppol.legacy.PeppolLegacyValidationSG;
 import com.helger.phive.xml.source.IValidationSourceXML;
@@ -70,6 +71,7 @@ public final class PhiveRulesLegacyValidation
     PeppolLegacyValidationBisEurope.init (aRegistry);
     PeppolLegacyValidationBisAUNZ.init (aRegistry);
     PeppolLegacyValidationSG.init (aRegistry);
+    PeppolLegacyValidationPintAE.init (aRegistry);
     PeppolLegacyValidationReporting.init (aRegistry);
 
     // Legacy OIOUBL

@@ -268,6 +268,9 @@ I hope that with the introduction of PINT, the versioning problem will be solved
 v4.5.4 - work in progress
 * Moved Peppol BIS 2025.5 from `phive-rules-peppol` to `phive-rules-peppol-legacy`.
   The class `com.helger.phive.peppol.PeppolValidation2025_05` is now called `com.helger.phive.peppol.legacy.PeppolValidation2025_05` and all its VES coordinates (`eu.peppol.bis3:*:2025.5`) are marked as deprecated
+* Moved the Peppol PINT AE releases 0.9.0, 2025.6, 2025.7 and 2025.11 from `phive-rules-peppol-pint` to `phive-rules-peppol-legacy` - only the latest two releases (2026.3 and 2026.5) remain in the main module.
+  The respective constants moved from `com.helger.phive.peppol.pint.PeppolValidationPintAE` to the new class `com.helger.phive.peppol.legacy.PeppolLegacyValidationPintAE`.
+  The VES coordinates `org.peppol.pint.ae:*:2025.7` and `org.peppol.pint.ae:*:2025.11` are now marked as deprecated
 * Added the methods `initBilling` to `PeppolValidation2025_11`, `PeppolValidation2026_03`, `PeppolValidation2026_05` and `PeppolValidationBisEurope` to register only the Peppol BIS Billing and Self-Billing rules, without the Post-Award (Upgrade-3) rules - thx @gregjotau (see [PR #84](https://github.com/phax/phive-rules/pull/84))
 * **Breaking change**: the numeric SimplerInvoicing version classifiers are now zero padded to two digits, because DVR compares version classifiers as Strings.
   Affected are the VES coordinates `org.simplerinvoicing:invoice:2.0.3-1` up to `...:2.0.3-9`, `org.simplerinvoicing:creditnote:2.0.3-1` up to `...:2.0.3-9` and `org.simplerinvoicing:nlcius-cii:1.0.3-1` up to `...:1.0.3-9`.
