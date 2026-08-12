@@ -49,6 +49,7 @@ public final class PeppolLegacyValidationSPI implements IValidationRulesRegistra
     PeppolLegacyValidationBisAUNZ.init (aRegistry);
     PeppolLegacyValidationSG.init (aRegistry);
     PeppolLegacyValidationPintAE.init (aRegistry);
+    PeppolLegacyValidationPintAUNZ.init (aRegistry);
     PeppolLegacyValidationReporting.init (aRegistry);
   }
 }
