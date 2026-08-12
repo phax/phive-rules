@@ -57,7 +57,13 @@ public final class PeppolValidation2026_03
     return PeppolValidation2026_03.class.getClassLoader ();
   }
 
-  public static void init (@NonNull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
+  /**
+   * Register the Peppol BIS Self-Billing validation execution sets.
+   *
+   * @param aRegistry
+   *        The registry to add the artefacts. May not be <code>null</code>.
+   */
+  public static void initBilling (@NonNull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
   {
     ValueEnforcer.notNull (aRegistry, "Registry");
 
@@ -84,5 +90,10 @@ public final class PeppolValidation2026_03
                  .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aCENSB))
                  .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aPeppolSB))
                  .registerInto (aRegistry);
+  }
+
+  public static void init (@NonNull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
+  {
+    initBilling (aRegistry);
   }
 }

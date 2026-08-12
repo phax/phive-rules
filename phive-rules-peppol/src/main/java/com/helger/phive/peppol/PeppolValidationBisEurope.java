@@ -67,4 +67,20 @@ public final class PeppolValidationBisEurope
     PeppolValidation2026_03.init (aRegistry);
     PeppolValidation2026_05.init (aRegistry);
   }
+
+  /**
+   * Register only the supported Peppol BIS Billing and Self-Billing validation execution sets.
+   *
+   * @param aRegistry
+   *        The registry to add the artefacts. May not be <code>null</code>.
+   */
+  public static void initBilling (@NonNull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
+  {
+    ValueEnforcer.notNull (aRegistry, "Registry");
+
+    PeppolValidation2025_05.initBilling (aRegistry);
+    PeppolValidation2025_11.initBilling (aRegistry);
+    PeppolValidation2026_03.initBilling (aRegistry);
+    PeppolValidation2026_05.initBilling (aRegistry);
+  }
 }
