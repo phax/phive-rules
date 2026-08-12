@@ -62,6 +62,7 @@ public final class PeppolValidationBisEurope
   {
     ValueEnforcer.notNull (aRegistry, "Registry");
 
+    // init includes Billing
     PeppolValidation2025_05.init (aRegistry);
     PeppolValidation2025_11.init (aRegistry);
     PeppolValidation2026_03.init (aRegistry);
