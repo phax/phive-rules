@@ -82,34 +82,24 @@ public final class PeppolValidation2025_11
     return PeppolValidation2025_11.class.getClassLoader ();
   }
 
-  public static void init (@NonNull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
+  /**
+   * Register only the Peppol BIS Billing validation execution sets.
+   *
+   * @param aRegistry
+   *        The registry to add the artefacts. May not be <code>null</code>.
+   */
+  public static void initBilling (@NonNull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
   {
     ValueEnforcer.notNull (aRegistry, "Registry");
 
     final String sVersion = " (" + VERSION_STR + ")";
     // See https://docs.peppol.eu/poacc/billing/3.0/release-notes/
     final String sAkaVersionBilling = " (aka BIS Billing 3.0.20)";
-    // See https://docs.peppol.eu/poacc/upgrade-3/release-notes/
-    final String sAkaVersionBIS = " (aka BIS 3.0.16)";
 
     final String PREFIX_XSLT = "external/schematron/openpeppol/" + VERSION_STR + "/xslt/";
     final IReadableResource INVOICE_UBL_CEN = new ClassPathResource (PREFIX_XSLT + "CEN-EN16931-UBL.xslt", _getCL ());
     final IReadableResource INVOICE_UBL_PEPPOL = new ClassPathResource (PREFIX_XSLT + "PEPPOL-EN16931-UBL.xslt",
                                                                         _getCL ());
-    final IReadableResource ORDER = new ClassPathResource (PREFIX_XSLT + "PEPPOLBIS-T01.xslt", _getCL ());
-    final IReadableResource DESPATCH_ADVICE = new ClassPathResource (PREFIX_XSLT + "PEPPOLBIS-T16.xslt", _getCL ());
-    final IReadableResource CATALOGUE = new ClassPathResource (PREFIX_XSLT + "PEPPOLBIS-T19.xslt", _getCL ());
-    final IReadableResource CATALOGUE_RESPONSE = new ClassPathResource (PREFIX_XSLT + "PEPPOLBIS-T58.xslt", _getCL ());
-    final IReadableResource MLR = new ClassPathResource (PREFIX_XSLT + "PEPPOLBIS-T71.xslt", _getCL ());
-    final IReadableResource ORDER_RESPONSE = new ClassPathResource (PREFIX_XSLT + "PEPPOLBIS-T76.xslt", _getCL ());
-    final IReadableResource PUNCH_OUT = new ClassPathResource (PREFIX_XSLT + "PEPPOLBIS-T77.xslt", _getCL ());
-    final IReadableResource ORDER_AGREEMENT = new ClassPathResource (PREFIX_XSLT + "PEPPOLBIS-T110.xslt", _getCL ());
-    final IReadableResource INVOICE_MESSAGE_RESPONSE = new ClassPathResource (PREFIX_XSLT + "PEPPOLBIS-T111.xslt",
-                                                                              _getCL ());
-    final IReadableResource ORDER_CHANGE = new ClassPathResource (PREFIX_XSLT + "PEPPOLBIS-T114.xslt", _getCL ());
-    final IReadableResource ORDER_CANCELLATION = new ClassPathResource (PREFIX_XSLT + "PEPPOLBIS-T115.xslt", _getCL ());
-    final IReadableResource ORDER_RESPONSE_ADVANCED = new ClassPathResource (PREFIX_XSLT + "PEPPOLBIS-T116.xslt",
-                                                                             _getCL ());
 
     VesXmlBuilder.builder ()
                  .vesID (VID_OPENPEPPOL_INVOICE_UBL_V3)
@@ -129,11 +119,38 @@ public final class PeppolValidation2025_11
                  .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (INVOICE_UBL_CEN))
                  .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (INVOICE_UBL_PEPPOL))
                  .registerInto (aRegistry);
+  }
+
+  public static void init (@NonNull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
+  {
+    ValueEnforcer.notNull (aRegistry, "Registry");
+    initBilling (aRegistry);
+
+    final String sVersion = " (" + VERSION_STR + ")";
+    // See https://docs.peppol.eu/poacc/upgrade-3/release-notes/
+    final String sAkaVersionBIS = " (aka BIS 3.0.16)";
+
+    final String PREFIX_XSLT = "external/schematron/openpeppol/" + VERSION_STR + "/xslt/";
+    final IReadableResource ORDER = new ClassPathResource (PREFIX_XSLT + "PEPPOLBIS-T01.xslt", _getCL ());
+    final IReadableResource DESPATCH_ADVICE = new ClassPathResource (PREFIX_XSLT + "PEPPOLBIS-T16.xslt", _getCL ());
+    final IReadableResource CATALOGUE = new ClassPathResource (PREFIX_XSLT + "PEPPOLBIS-T19.xslt", _getCL ());
+    final IReadableResource CATALOGUE_RESPONSE = new ClassPathResource (PREFIX_XSLT + "PEPPOLBIS-T58.xslt", _getCL ());
+    final IReadableResource MLR = new ClassPathResource (PREFIX_XSLT + "PEPPOLBIS-T71.xslt", _getCL ());
+    final IReadableResource ORDER_RESPONSE = new ClassPathResource (PREFIX_XSLT + "PEPPOLBIS-T76.xslt", _getCL ());
+    final IReadableResource PUNCH_OUT = new ClassPathResource (PREFIX_XSLT + "PEPPOLBIS-T77.xslt", _getCL ());
+    final IReadableResource ORDER_AGREEMENT = new ClassPathResource (PREFIX_XSLT + "PEPPOLBIS-T110.xslt", _getCL ());
+    final IReadableResource INVOICE_MESSAGE_RESPONSE = new ClassPathResource (PREFIX_XSLT + "PEPPOLBIS-T111.xslt",
+                                                                              _getCL ());
+    final IReadableResource ORDER_CHANGE = new ClassPathResource (PREFIX_XSLT + "PEPPOLBIS-T114.xslt", _getCL ());
+    final IReadableResource ORDER_CANCELLATION = new ClassPathResource (PREFIX_XSLT + "PEPPOLBIS-T115.xslt", _getCL ());
+    final IReadableResource ORDER_RESPONSE_ADVANCED = new ClassPathResource (PREFIX_XSLT + "PEPPOLBIS-T116.xslt",
+                                                                             _getCL ());
+
     // aRegistry.registerValidationExecutorSet (ValidationExecutorSet.create
     // (VID_OPENPEPPOL_INVOICE_CII_V3,
     // "OpenPeppol CII Invoice" +
     // sVersion +
-    // sAkaVersionBilling,
+    // " (aka BIS Billing 3.0.20)",
     // _createStatus (bNotDeprecated),
     // ValidationExecutorXSD.create (CCIID16B.getXSDResource ()),
     // _createXsltCII (INVOICE_CII_CEN),
