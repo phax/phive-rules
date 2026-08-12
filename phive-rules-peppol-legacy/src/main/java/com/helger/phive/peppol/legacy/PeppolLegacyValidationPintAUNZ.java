@@ -43,7 +43,6 @@ import com.helger.xml.namespace.MapBasedNamespaceContext;
  * @author Philip Helger
  */
 @Immutable
-@Deprecated (forRemoval = false)
 public final class PeppolLegacyValidationPintAUNZ
 {
   @Deprecated (forRemoval = false)
@@ -51,13 +50,21 @@ public final class PeppolLegacyValidationPintAUNZ
 
   // 1.0.1
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OPENPEPPOL_AUNZ_PINT_UBL_INVOICE_1_0_1 = DVRHelper.createCoordinate (GROUP_ID, "invoice", "1.0.1");
+  public static final DVRCoordinate VID_OPENPEPPOL_AUNZ_PINT_UBL_INVOICE_1_0_1 = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                                             "invoice",
+                                                                                                             "1.0.1");
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OPENPEPPOL_AUNZ_PINT_UBL_CREDIT_NOTE_1_0_1 = DVRHelper.createCoordinate (GROUP_ID, "creditnote", "1.0.1");
+  public static final DVRCoordinate VID_OPENPEPPOL_AUNZ_PINT_UBL_CREDIT_NOTE_1_0_1 = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                                                 "creditnote",
+                                                                                                                 "1.0.1");
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OPENPEPPOL_AUNZ_PINT_UBL_INVOICE_SELF_BILLING_1_0_1 = DVRHelper.createCoordinate (GROUP_ID, "invoice-self-billing", "1.0.1");
+  public static final DVRCoordinate VID_OPENPEPPOL_AUNZ_PINT_UBL_INVOICE_SELF_BILLING_1_0_1 = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                                                          "invoice-self-billing",
+                                                                                                                          "1.0.1");
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OPENPEPPOL_AUNZ_PINT_UBL_CREDIT_NOTE_SELF_BILLING_1_0_1 = DVRHelper.createCoordinate (GROUP_ID, "creditnote-self-billing", "1.0.1");
+  public static final DVRCoordinate VID_OPENPEPPOL_AUNZ_PINT_UBL_CREDIT_NOTE_SELF_BILLING_1_0_1 = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                                                              "creditnote-self-billing",
+                                                                                                                              "1.0.1");
 
   // 1.1.0
   @Deprecated (forRemoval = false)
@@ -65,13 +72,21 @@ public final class PeppolLegacyValidationPintAUNZ
   @Deprecated (forRemoval = false)
   public static final OffsetDateTime V1_1_0_VALID_PER_UTC = PDTFactory.createOffsetDateTimeUTC (V1_1_0_VALID_PER);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OPENPEPPOL_AUNZ_PINT_UBL_INVOICE_1_1_0 = DVRHelper.createCoordinate (GROUP_ID, "invoice", "1.1.0");
+  public static final DVRCoordinate VID_OPENPEPPOL_AUNZ_PINT_UBL_INVOICE_1_1_0 = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                                             "invoice",
+                                                                                                             "1.1.0");
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OPENPEPPOL_AUNZ_PINT_UBL_CREDIT_NOTE_1_1_0 = DVRHelper.createCoordinate (GROUP_ID, "creditnote", "1.1.0");
+  public static final DVRCoordinate VID_OPENPEPPOL_AUNZ_PINT_UBL_CREDIT_NOTE_1_1_0 = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                                                 "creditnote",
+                                                                                                                 "1.1.0");
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OPENPEPPOL_AUNZ_PINT_UBL_INVOICE_SELF_BILLING_1_1_0 = DVRHelper.createCoordinate (GROUP_ID, "invoice-self-billing", "1.1.0");
+  public static final DVRCoordinate VID_OPENPEPPOL_AUNZ_PINT_UBL_INVOICE_SELF_BILLING_1_1_0 = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                                                          "invoice-self-billing",
+                                                                                                                          "1.1.0");
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OPENPEPPOL_AUNZ_PINT_UBL_CREDIT_NOTE_SELF_BILLING_1_1_0 = DVRHelper.createCoordinate (GROUP_ID, "creditnote-self-billing", "1.1.0");
+  public static final DVRCoordinate VID_OPENPEPPOL_AUNZ_PINT_UBL_CREDIT_NOTE_SELF_BILLING_1_1_0 = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                                                              "creditnote-self-billing",
+                                                                                                                              "1.1.0");
 
   // 1.1.1
   @Deprecated (forRemoval = false)
@@ -79,13 +94,22 @@ public final class PeppolLegacyValidationPintAUNZ
   @Deprecated (forRemoval = false)
   public static final OffsetDateTime V1_1_1_VALID_PER_UTC = PDTFactory.createOffsetDateTimeUTC (V1_1_1_VALID_PER);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OPENPEPPOL_AUNZ_PINT_UBL_INVOICE_1_1_1 = DVRHelper.createCoordinate (GROUP_ID, "invoice", "1.1.1");
+  public static final DVRCoordinate VID_OPENPEPPOL_AUNZ_PINT_UBL_INVOICE_1_1_1 = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                                             "invoice",
+                                                                                                             "1.1.1");
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OPENPEPPOL_AUNZ_PINT_UBL_CREDIT_NOTE_1_1_1 = DVRHelper.createCoordinate (GROUP_ID, "creditnote", "1.1.1");
+  public static final DVRCoordinate VID_OPENPEPPOL_AUNZ_PINT_UBL_CREDIT_NOTE_1_1_1 = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                                                 "creditnote",
+                                                                                                                 "1.1.1");
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OPENPEPPOL_AUNZ_PINT_UBL_INVOICE_SELF_BILLING_1_1_1 = DVRHelper.createCoordinate (GROUP_ID, "invoice-self-billing", "1.1.1");
+  public static final DVRCoordinate VID_OPENPEPPOL_AUNZ_PINT_UBL_INVOICE_SELF_BILLING_1_1_1 = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                                                          "invoice-self-billing",
+                                                                                                                          "1.1.1");
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OPENPEPPOL_AUNZ_PINT_UBL_CREDIT_NOTE_SELF_BILLING_1_1_1 = DVRHelper.createCoordinate (GROUP_ID, "creditnote-self-billing", "1.1.1");
+  public static final DVRCoordinate VID_OPENPEPPOL_AUNZ_PINT_UBL_CREDIT_NOTE_SELF_BILLING_1_1_1 = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                                                              "creditnote-self-billing",
+                                                                                                                              "1.1.1");
+
   private PeppolLegacyValidationPintAUNZ ()
   {}
 

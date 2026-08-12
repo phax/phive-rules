@@ -38,7 +38,6 @@ import com.helger.xml.namespace.MapBasedNamespaceContext;
  * @author Philip Helger
  */
 @Immutable
-@Deprecated (forRemoval = false)
 public final class PeppolLegacyValidationPintAE
 {
   @Deprecated (forRemoval = false)
@@ -46,43 +45,75 @@ public final class PeppolLegacyValidationPintAE
 
   // 0.9.0 Preview 2025-03
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OPENPEPPOL_AE_PINT_INVOICE_0_9_0 = DVRHelper.createCoordinate (GROUP_ID, "invoice", "0.9.0");
+  public static final DVRCoordinate VID_OPENPEPPOL_AE_PINT_INVOICE_0_9_0 = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                                       "invoice",
+                                                                                                       "0.9.0");
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OPENPEPPOL_AE_PINT_CREDIT_NOTE_0_9_0 = DVRHelper.createCoordinate (GROUP_ID, "creditnote", "0.9.0");
+  public static final DVRCoordinate VID_OPENPEPPOL_AE_PINT_CREDIT_NOTE_0_9_0 = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                                           "creditnote",
+                                                                                                           "0.9.0");
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OPENPEPPOL_AE_PINT_SB_INVOICE_0_9_0 = DVRHelper.createCoordinate (GROUP_ID, "invoice-self-billing", "0.9.0");
+  public static final DVRCoordinate VID_OPENPEPPOL_AE_PINT_SB_INVOICE_0_9_0 = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                                          "invoice-self-billing",
+                                                                                                          "0.9.0");
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OPENPEPPOL_AE_PINT_SB_CREDIT_NOTE_0_9_0 = DVRHelper.createCoordinate (GROUP_ID, "creditnote-self-billing", "0.9.0");
+  public static final DVRCoordinate VID_OPENPEPPOL_AE_PINT_SB_CREDIT_NOTE_0_9_0 = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                                              "creditnote-self-billing",
+                                                                                                              "0.9.0");
 
   // 2025-Q2 from 2025-06-10
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OPENPEPPOL_AE_PINT_INVOICE_2025_06 = DVRHelper.createCoordinate (GROUP_ID, "invoice", "2025.6");
+  public static final DVRCoordinate VID_OPENPEPPOL_AE_PINT_INVOICE_2025_06 = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                                         "invoice",
+                                                                                                         "2025.6");
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OPENPEPPOL_AE_PINT_CREDIT_NOTE_2025_06 = DVRHelper.createCoordinate (GROUP_ID, "creditnote", "2025.6");
+  public static final DVRCoordinate VID_OPENPEPPOL_AE_PINT_CREDIT_NOTE_2025_06 = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                                             "creditnote",
+                                                                                                             "2025.6");
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OPENPEPPOL_AE_PINT_SB_INVOICE_2025_06 = DVRHelper.createCoordinate (GROUP_ID, "invoice-self-billing", "2025.6");
+  public static final DVRCoordinate VID_OPENPEPPOL_AE_PINT_SB_INVOICE_2025_06 = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                                            "invoice-self-billing",
+                                                                                                            "2025.6");
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OPENPEPPOL_AE_PINT_SB_CREDIT_NOTE_2025_06 = DVRHelper.createCoordinate (GROUP_ID, "creditnote-self-billing", "2025.6");
+  public static final DVRCoordinate VID_OPENPEPPOL_AE_PINT_SB_CREDIT_NOTE_2025_06 = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                                                "creditnote-self-billing",
+                                                                                                                "2025.6");
 
   // 1.0.1 from 2025-07-30
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OPENPEPPOL_AE_PINT_INVOICE_2025_07 = DVRHelper.createCoordinate (GROUP_ID, "invoice", "2025.7");
+  public static final DVRCoordinate VID_OPENPEPPOL_AE_PINT_INVOICE_2025_07 = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                                         "invoice",
+                                                                                                         "2025.7");
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OPENPEPPOL_AE_PINT_CREDIT_NOTE_2025_07 = DVRHelper.createCoordinate (GROUP_ID, "creditnote", "2025.7");
+  public static final DVRCoordinate VID_OPENPEPPOL_AE_PINT_CREDIT_NOTE_2025_07 = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                                             "creditnote",
+                                                                                                             "2025.7");
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OPENPEPPOL_AE_PINT_SB_INVOICE_2025_07 = DVRHelper.createCoordinate (GROUP_ID, "invoice-self-billing", "2025.7");
+  public static final DVRCoordinate VID_OPENPEPPOL_AE_PINT_SB_INVOICE_2025_07 = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                                            "invoice-self-billing",
+                                                                                                            "2025.7");
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OPENPEPPOL_AE_PINT_SB_CREDIT_NOTE_2025_07 = DVRHelper.createCoordinate (GROUP_ID, "creditnote-self-billing", "2025.7");
+  public static final DVRCoordinate VID_OPENPEPPOL_AE_PINT_SB_CREDIT_NOTE_2025_07 = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                                                "creditnote-self-billing",
+                                                                                                                "2025.7");
 
   // 1.0.2 from 2026-01-21 (was originally 2026-03-09 - corrected in mail from 12.1.2026, 14:37 CET)
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OPENPEPPOL_AE_PINT_INVOICE_2025_11 = DVRHelper.createCoordinate (GROUP_ID, "invoice", "2025.11");
+  public static final DVRCoordinate VID_OPENPEPPOL_AE_PINT_INVOICE_2025_11 = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                                         "invoice",
+                                                                                                         "2025.11");
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OPENPEPPOL_AE_PINT_CREDIT_NOTE_2025_11 = DVRHelper.createCoordinate (GROUP_ID, "creditnote", "2025.11");
+  public static final DVRCoordinate VID_OPENPEPPOL_AE_PINT_CREDIT_NOTE_2025_11 = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                                             "creditnote",
+                                                                                                             "2025.11");
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OPENPEPPOL_AE_PINT_SB_INVOICE_2025_11 = DVRHelper.createCoordinate (GROUP_ID, "invoice-self-billing", "2025.11");
+  public static final DVRCoordinate VID_OPENPEPPOL_AE_PINT_SB_INVOICE_2025_11 = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                                            "invoice-self-billing",
+                                                                                                            "2025.11");
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OPENPEPPOL_AE_PINT_SB_CREDIT_NOTE_2025_11 = DVRHelper.createCoordinate (GROUP_ID, "creditnote-self-billing", "2025.11");
+  public static final DVRCoordinate VID_OPENPEPPOL_AE_PINT_SB_CREDIT_NOTE_2025_11 = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                                                "creditnote-self-billing",
+                                                                                                                "2025.11");
 
   private PeppolLegacyValidationPintAE ()
   {}
