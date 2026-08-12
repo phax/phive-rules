@@ -125,7 +125,6 @@ public final class PeppolLegacyValidationPintAUNZ
    * @param aRegistry
    *        The registry to add the artefacts. May not be <code>null</code>.
    */
-  @Deprecated (forRemoval = false)
   public static void init (@NonNull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
   {
     ValueEnforcer.notNull (aRegistry, "Registry");
