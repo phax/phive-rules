@@ -265,7 +265,7 @@ I hope that with the introduction of PINT, the versioning problem will be solved
 
 # News and noteworthy
 
-v4.5.4 - work in progress
+v4.5.4 - 2026-08-23
 * Moved Peppol BIS 2025.5 from `phive-rules-peppol` to `phive-rules-peppol-legacy`.
   The class `com.helger.phive.peppol.PeppolValidation2025_05` is now called `com.helger.phive.peppol.legacy.PeppolValidation2025_05` and all its VES coordinates (`eu.peppol.bis3:*:2025.5`) are marked as deprecated
 * Moved the Peppol PINT AE releases 0.9.0, 2025.6, 2025.7 and 2025.11 from `phive-rules-peppol-pint` to `phive-rules-peppol-legacy` - only the latest two releases (2026.3 and 2026.5) remain in the main module.
