@@ -265,6 +265,19 @@ I hope that with the introduction of PINT, the versioning problem will be solved
 
 # News and noteworthy
 
+v4.5.5 - work in progress
+* Updated the Turkey e-Fatura Schematron rules in `phive-rules-turkey` to the GİB `e-FaturaPaketi` published on 2026-08-24, containing the Schematron release `20260701` (see [issue #85](https://github.com/phax/phive-rules/issues/85)).
+  The VES coordinates `tr.efatura:invoice:1.2.1`, `tr.efatura:application-response:1.2.1`, `tr.efatura:despatch-advice:1.2.1`, `tr.efatura:receipt-advice:1.2.1` and `tr.efatura:zarf:1.2.1` are unchanged - GİB does not version the Schematron package separately from UBL-TR 1.2.1
+    * New rules for the electricity charging (`SARJ` / `SARJANLIK`) invoice types: `EnerjiInvoicePeriodCheck` requires a complete `cac:InvoicePeriod`, `EnerjiESURaporIDCheck` requires an `ESURaporID` document reference, `EnerjiPartyIdentificationPlakaCheck` requires a `PLAKA` party identification and `EnerjiItemInstanceSerialIDCheck` requires a line level `cac:ItemInstance/cbc:SerialID`
+    * Trailer plates moved from `cbc:LicensePlateID` to `cac:TransportHandlingUnit/cac:TransportEquipment/cbc:ID`, checked by the new rule `TransportEquipmentIDSchemeIDCheck` against the new code list `TransportEquipmentIDSchemeIDType` (`DORSE`, `DORSEPLAKA`, `YABANCIDORSE`, `YABANCIDORSEPLAKA`); `LicensePlateIDSchemeIDType` now only allows `PLAKA` and `YABANCIPLAKA`
+    * The new rule `LicensePlateIDCheck` requires a Despatch Advice that names a driver to also carry a license plate
+    * The IDIS shipment number (`SEVKIYATNO`) may now also start with `ES-` instead of only `SE-`, in Invoice and Despatch Advice
+    * Invoice type `IADE` is now also allowed with profile `KAMU`
+    * The tax exemption reason codes `308` and `339` were moved out of `TaxExemptionReasonCodeType` into the new code list `YatirimTesvikTaxExemptionReasonCodeType`, so `TaxExemptionReasonCodeCheck` only accepts them for the `YATIRIMTESVIK` profile and the investment incentive e-Arşiv invoice types; code `233` was added to `TaxExemptionReasonCodeType` and `istisnaTaxExemptionReasonCodeType`
+    * Added the reserved user alias `erreceipt` (e-Gider Pusulası) to `ReservedAliases` and `UserEnvelopeAliases`, plus two `UserAccountCheck` assertions for it: no `hr:AuthorizedWorkScope` may be present and `hr:UserOptionCode` must be `171`, `172`, `173` or `174`
+* Updated `UBLTR_1.2.1_Kilavuzlar.zip` in `phive-rules-turkey/docs` - the UBL-TR code list guide went from V1.42 to V1.43 (documentation only, no rule change)
+* The `MainGibArtefactDownloader` tool now stores artefacts that GİB re-uploaded under a browser style duplicate name (e.g. `e-FaturaPaketi (29).zip`) under their stable name, so `docs/` does not accumulate one copy per re-upload
+
 v4.5.4 - 2026-08-23
 * Moved Peppol BIS 2025.5 from `phive-rules-peppol` to `phive-rules-peppol-legacy`.
   The class `com.helger.phive.peppol.PeppolValidation2025_05` is now called `com.helger.phive.peppol.legacy.PeppolValidation2025_05` and all its VES coordinates (`eu.peppol.bis3:*:2025.5`) are marked as deprecated

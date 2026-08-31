@@ -164,6 +164,8 @@
 			<sch:extends rule="YatirimTesvikInvoiceTypeCodeCheck"/>	
 			<sch:extends rule="YatirimTesvikContractDocumentReferenceIDCheck"/>			
 			<sch:extends rule="IdisInvoiceTypeCodeCheck"/>	
+			<sch:extends rule="EnerjiInvoicePeriodCheck"/>	
+			<sch:extends rule="EnerjiESURaporIDCheck"/>	
 		</sch:rule>
 		<sch:rule context="inv:Invoice/cbc:UUID">
 			<sch:extends rule="UUIDCheck"/>
@@ -200,6 +202,7 @@
 		</sch:rule>		
 		<sch:rule context="inv:Invoice/cac:AccountingCustomerParty/cac:Party">
 			<sch:extends rule="PartyIdentificationPartyNamePersonCheck"/>
+			<sch:extends rule="EnerjiPartyIdentificationPlakaCheck"/>
 		</sch:rule>
 				
 		<sch:rule context="inv:Invoice/cac:TaxTotal/cac:TaxSubtotal/cac:TaxCategory/cac:TaxScheme/cbc:TaxTypeCode">
@@ -245,6 +248,7 @@
 			<sch:extends rule="YatirimTesvikItemInstanceCheck"/>		
 			<sch:extends rule="YatirimTesvikLineKDVCheck"/>
 			<sch:extends rule="IdisEtiketNoCheck"/>
+			<sch:extends rule="EnerjiItemInstanceSerialIDCheck"/>
 		</sch:rule>
 		
 		<!--<sch:rule context="inv:Invoice/cac:InvoiceLine/cac:TaxTotal/cac:TaxSubtotal/cac:TaxCategory">
@@ -512,7 +516,10 @@
 		</sch:rule>
 		<sch:rule context="desp:DespatchAdvice/cac:Shipment/cac:ShipmentStage/cac:TransportMeans/cac:RoadTransport/cbc:LicensePlateID">
 			<sch:extends rule="LicensePlateIDSchemeIDCheck"/>
-		</sch:rule>		
+		</sch:rule>
+		<sch:rule context="desp:DespatchAdvice/cac:Shipment/cac:TransportHandlingUnit/cac:TransportEquipment/cbc:ID">
+			<sch:extends rule="TransportEquipmentIDSchemeIDCheck"/>
+		</sch:rule>			
 		<sch:rule context="desp:DespatchAdvice/cac:DespatchSupplierParty/cac:Party/cac:PartyIdentification/cbc:ID">
 			<sch:extends rule="PartyIdentificationSchemeIDCheck"/>
 		</sch:rule>		
@@ -525,6 +532,9 @@
 		</sch:rule>		
 		<sch:rule context="desp:DespatchAdvice/cac:DeliveryCustomerParty/cac:Party">
 			<sch:extends rule="PartyIdentificationPartyNamePersonCheck"/>
+		</sch:rule>
+		<sch:rule context="desp:DespatchAdvice/cac:Shipment">
+			<sch:extends rule="LicensePlateIDCheck"/>
 		</sch:rule>
 	</sch:pattern>
 	

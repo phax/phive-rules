@@ -3,12 +3,12 @@
 Generated automatically by `GibArtefactDownloader` (test-scoped tool in phive-rules-turkey).
 
 - Source page: <https://ebelge.gib.gov.tr/efaturamevzuat.html>
-- Snapshot taken: 2026-05-07T20:06:08.710554+02:00
-- Latest Schematron release (from `e-FaturaPaketi/schematron/History.txt`): **20260312**
+- Snapshot taken: 2026-08-31T13:43:32.693403+02:00
+- Latest Schematron release (from `e-FaturaPaketi/schematron/History.txt`): **20260701**
 
-Summary: 0 new, 0 updated, 16 up-to-date, 0 gone (404 on server).
+Summary: 1 new, 1 updated, 15 up-to-date, 0 gone (404 on server).
 
-## Artefacts (16)
+## Artefacts (17)
 
 | Status | Filename | Status code | Size (bytes) | Last-Modified |
 |---|---|---|---:|---|
@@ -21,8 +21,9 @@ Summary: 0 new, 0 updated, 16 up-to-date, 0 gone (404 on server).
 | UP-TO-DATE | [Karekod_Standardi_Kilavuzu_V.1.2.pdf](https://ebelge.gib.gov.tr/dosyalar/kilavuzlar/Karekod_Standardi_Kilavuzu_V.1.2.pdf) | 200 | 733557 | Tue, 07 Nov 2023 07:10:11 GMT |
 | UP-TO-DATE | [UserList_(Kullanici_Listeleri)_Kilavuzu_V.1.0.pdf](https://ebelge.gib.gov.tr/dosyalar/kilavuzlar/UserList_(Kullanici_Listeleri)_Kilavuzu_V.1.0.pdf) | 200 | 639334 | Thu, 02 Apr 2026 14:23:49 GMT |
 | UP-TO-DATE | [Yatirim_Tesvik_Kapsaminda_Yapilan_Teslimlere_Iliskin_Fatura_Teknik_Kilavuzu_V1.1.pdf](https://ebelge.gib.gov.tr/dosyalar/kilavuzlar/Yatirim_Tesvik_Kapsaminda_Yapilan_Teslimlere_Iliskin_Fatura_Teknik_Kilavuzu_V1.1.pdf) | 200 | 972196 | Tue, 09 Dec 2025 14:23:34 GMT |
-| UP-TO-DATE | [e-FaturaPaketi.zip](https://ebelge.gib.gov.tr/dosyalar/kilavuzlar/e-FaturaPaketi.zip) | 200 | 677311 | Mon, 16 Mar 2026 13:12:15 GMT |
+| UPDATED | [e-FaturaPaketi.zip](https://ebelge.gib.gov.tr/dosyalar/kilavuzlar/e-FaturaPaketi%20(29).zip) | 200 | 678655 | Mon, 24 Aug 2026 14:05:42 GMT |
 | UP-TO-DATE | [e-Fatura_Iptal_Ihtar_Itiraz_Bildirim_Kilavuzu_V_1.2.pdf](https://ebelge.gib.gov.tr/dosyalar/kilavuzlar/e-Fatura_Iptal_Ihtar_Itiraz_Bildirim_Kilavuzu_V_1.2.pdf) | 200 | 1898770 | Fri, 03 Jan 2025 17:30:45 GMT |
+| NEW | [e-Gider_Pusulasi_Paketi.rar](https://ebelge.gib.gov.tr/dosyalar/kilavuzlar/e-Gider_Pusulasi_Paketi.rar) | 200 | 1006860 | Fri, 22 May 2026 08:33:09 GMT |
 | UP-TO-DATE | [e-Sigorta_Komisyon_Gider_Belgesi_V1.2.rar](https://ebelge.gib.gov.tr/dosyalar/kilavuzlar/e-Sigorta_Komisyon_Gider_Belgesi_V1.2.rar) | 200 | 574420 | Mon, 06 Nov 2023 16:12:14 GMT |
 | UP-TO-DATE | [e-Sigorta_Policesi_Teknik_Kilavuzu_Paketi.rar](https://ebelge.gib.gov.tr/dosyalar/kilavuzlar/e-Sigorta_Policesi_Teknik_Kilavuzu_Paketi.rar) | 200 | 926815 | Fri, 22 Sep 2023 14:34:55 GMT |
 | UP-TO-DATE | [GELIR_IDARESI_BASKANLIGI_VERGI_USUL_KANUNU_GENEL_TEBLIGI_(SIRA_NO-509)_NDE_DEGISIKLIK_YAPILMASINA_DAIR_TEBLIG_(SIRA_NO-515)-2020-01-10.pdf](https://ebelge.gib.gov.tr/dosyalar/tebligler/GELIR_IDARESI_BASKANLIGI_VERGI_USUL_KANUNU_GENEL_TEBLIGI_(SIRA_NO-509)_NDE_DEGISIKLIK_YAPILMASINA_DAIR_TEBLIG_(SIRA_NO-515)-2020-01-10.pdf) | 200 | 49034 | Tue, 09 Mar 2021 18:10:53 GMT |

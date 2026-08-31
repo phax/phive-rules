@@ -85,6 +85,13 @@ public final class MainGibArtefactDownloader
   /** Matches a YYYYMMDD line in <code>schematron/History.txt</code>. */
   private static final Pattern HISTORY_DATE_RE = Pattern.compile ("^(20\\d{6})\\s*$", Pattern.MULTILINE);
 
+  /**
+   * Matches the browser style duplicate suffix GİB adds when re-uploading an artefact, e.g.
+   * <code>e-FaturaPaketi (29).zip</code>. The number changes with every re-upload, so it is
+   * stripped and the artefact is always stored under its stable name.
+   */
+  private static final Pattern DUPLICATE_SUFFIX_RE = Pattern.compile ("^(.+?) \\(\\d+\\)(\\.[^.]+)$");
+
   // Public no-arg constructor required for JUnit. Use main() or runIfRequested() — there is no
   // useful instance state.
   public MainGibArtefactDownloader ()
@@ -149,7 +156,11 @@ public final class MainGibArtefactDownloader
     // URI(scheme, host, path, fragment) percent-encodes spaces and other illegal chars in the path
     // — necessary because a few links in the GİB page contain literal spaces and parens.
     final URI aURI = new URI ("https", "ebelge.gib.gov.tr", sPath, null);
-    final String sFilename = sPath.substring (sPath.lastIndexOf ('/') + 1);
+    final String sRemoteFilename = sPath.substring (sPath.lastIndexOf ('/') + 1);
+    // Store re-uploaded artefacts under their stable name, so docs/ does not accumulate one copy
+    // per re-upload and _readLatestReleaseDate still finds "e-FaturaPaketi.zip".
+    final Matcher mDuplicate = DUPLICATE_SUFFIX_RE.matcher (sRemoteFilename);
+    final String sFilename = mDuplicate.matches () ? mDuplicate.group (1) + mDuplicate.group (2) : sRemoteFilename;
     final Path aTarget = aDocs.resolve (sFilename);
 
     // HEAD first — gets size and Last-Modified without pulling the body. Cheap detection of stale

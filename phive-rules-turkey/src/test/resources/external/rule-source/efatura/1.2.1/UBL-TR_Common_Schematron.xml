@@ -173,7 +173,7 @@
 		<!-- Rule to validate InvoiceTypeCode -->
 		<sch:rule abstract="true" id="InvoiceTypeCodeCheck">
 			<sch:assert test="contains($InvoiceTypeCodeList, concat(',',cbc:InvoiceTypeCode,','))">Geçersiz cbc:InvoiceTypeCode elemanı değeri : '<sch:value-of select="cbc:InvoiceTypeCode"/>'. Geçerli cbc:InvoiceTypeCode değerleri için kod listesine bakınız.</sch:assert>
-			<sch:assert test="not(cbc:InvoiceTypeCode='IADE') or cbc:ProfileID='TEMELFATURA' or cbc:ProfileID='EARSIVFATURA' or cbc:ProfileID='ILAC_TIBBICIHAZ' or cbc:ProfileID='YATIRIMTESVIK' or cbc:ProfileID='IDIS'">Fatura tipi IADE iken fatura profili sadece TEMELFATURA , EARSIVFATURA, ILAC_TIBBICIHAZ, YATIRIMTESVIK veya IDIS olabilir</sch:assert>
+			<sch:assert test="not(cbc:InvoiceTypeCode='IADE') or cbc:ProfileID='TEMELFATURA' or cbc:ProfileID='EARSIVFATURA' or cbc:ProfileID='ILAC_TIBBICIHAZ' or cbc:ProfileID='YATIRIMTESVIK' or cbc:ProfileID='IDIS' or cbc:ProfileID='KAMU'">Fatura tipi IADE iken fatura profili sadece TEMELFATURA , EARSIVFATURA, ILAC_TIBBICIHAZ, YATIRIMTESVIK, IDIS veya KAMU olabilir</sch:assert>
 			<sch:assert test="(not($type = 'efatura' or $type = '' or not($type)) or (cbc:ProfileID = 'ENERJI' and (cbc:InvoiceTypeCode = 'SARJ' or cbc:InvoiceTypeCode = 'SARJANLIK'))) or (not($type = 'efatura' or $type = '' or not($type)) or (not(cbc:ProfileID = 'ENERJI') and not(cbc:InvoiceTypeCode = 'SARJ' or cbc:InvoiceTypeCode = 'SARJANLIK')))">Geçersiz cbc:ProfileID ve cbc:InvoiceTypeCode elemanı değeri : '<sch:value-of select="cbc:ProfileID"/> ve <sch:value-of select="cbc:InvoiceTypeCode"/>'. cbc:ProfileID değeri ENERJI olduğu durumda cbc:InvoiceTypeCode değeri SARJ veya SARJANLIK olmalıdır.</sch:assert>
 			<sch:assert test="cbc:ProfileID = 'EARSIVFATURA' or not(cbc:InvoiceTypeCode = 'TEKNOLOJIDESTEK')">Geçersiz cbc:ProfileID ve cbc:InvoiceTypeCode elemanı değeri : '<sch:value-of select="cbc:ProfileID"/> ve <sch:value-of select="cbc:InvoiceTypeCode"/>'. cbc:InvoiceTypeCode değeri <sch:value-of select="cbc:InvoiceTypeCode"/> olduğu durumda cbc:ProfileID değeri EARSIVFATURA olmalıdır.<sch:value-of select="string('&#xA;')"/></sch:assert>
 		</sch:rule>
@@ -283,7 +283,11 @@
 			<sch:assert test="not(cac:PartyIdentification/cbc:ID/@schemeID='VKN') or not(cac:PartyName) or string-length(normalize-space(string(cac:PartyName/cbc:Name))) != 0">cac:PartyName elemanı geçerli ve boş değer içermeyen cbc:Name elemanı içermelidir.</sch:assert>
 			<sch:assert test="not(cac:PartyIdentification/cbc:ID/@schemeID='TCKN') or cac:Person">schemeID niteliği değeri 'TCKN' olması durumunda cac:Person elemanı bulunmalıdır.</sch:assert>
 			<sch:assert test="not(cac:PartyIdentification/cbc:ID/@schemeID='TCKN') or not(cac:Person) or (string-length(normalize-space(string(cac:Person/cbc:FirstName))) != 0   and string-length(normalize-space(string(cac:Person/cbc:FamilyName))) != 0)">cac:Person elemanı geçerli ve boş değer içermeyen cbc:FirstName ve cbc:FamilyName elemanlarına sahip olmalıdır.</sch:assert>
-		</sch:rule>			
+		</sch:rule>				
+		
+		<sch:rule abstract="true" id="EnerjiPartyIdentificationPlakaCheck">
+			<sch:assert test="not(../../cbc:InvoiceTypeCode = 'SARJ' or ../../cbc:InvoiceTypeCode = 'SARJANLIK') or (count(cac:PartyIdentification/cbc:ID[@schemeID = 'PLAKA']) = 1 and cac:PartyIdentification[cbc:ID[@schemeID = 'PLAKA' and normalize-space(.) != '' and string-length(normalize-space(.)) &lt;= 50 and matches(normalize-space(.), '^[A-Z0-9_-]+$')]])">SARJ veya SARJANLIK faturalarında inv:Invoice/cac:AccountingCustomerParty/cac:Party altında schemeID değeri PLAKA olan geçerli bir plaka değeri içeren 1 adet cac:PartyIdentification/cbc:ID bulunmalıdır.</sch:assert>
+		</sch:rule>		
 		
 		<sch:rule abstract="true" id="GeneralWithholdingTaxTotalCheck">
 			<sch:assert test="not(cbc:UBLVersionID ='2.1') or not(exists(cac:WithholdingTaxTotal)) or cbc:InvoiceTypeCode = 'TEVKIFAT' or cbc:InvoiceTypeCode = 'YTBTEVKIFAT' or cbc:InvoiceTypeCode = 'IADE' or cbc:InvoiceTypeCode = 'YTBIADE' or cbc:InvoiceTypeCode = 'SGK' or cbc:InvoiceTypeCode = 'SARJ' or cbc:InvoiceTypeCode = 'SARJANLIK'">Uyumsuz fatura tipi: '<sch:value-of select="cbc:InvoiceTypeCode"/>'. cac:WithholdingTaxTotal elamanı varken fatura tipi TEVKIFAT,YTBTEVKIFAT,IADE,YTBIADE,SGK,SARJ ve SARJANLIK olabilir.</sch:assert>
@@ -311,7 +315,7 @@
 		<sch:rule abstract="true" id="TaxExemptionReasonCodeCheck">
 			<sch:assert test="not(cbc:TaxExemptionReason) or not(../../../cbc:UBLVersionID ='2.1') or (string-length(normalize-space(string(cbc:TaxExemptionReason)))) > 0">cbc:TaxExemptionReason(vergi istisna muhafiyet sebebi) elemanı boş değer içermemelidir.</sch:assert>
 			
-			<sch:assert test="not(cbc:TaxExemptionReason) or not(../../../cbc:UBLVersionID ='2.1') or (string-length(normalize-space(string(cbc:TaxExemptionReasonCode)))) != 0 and contains($TaxExemptionReasonCodeType, concat(',',cbc:TaxExemptionReasonCode,','))">Geçersiz cbc:TaxExemptionReasonCode niteliği : '<sch:value-of select="cbc:TaxExemptionReasonCode"/>' cbc:TaxExemptionReason(vergi istisna muhafiyet sebebi) elemanı varken cbc:TaxExemptionReasonCode elamanı dolu ve geçerli bir değer olmalıdır. Geçerli değerler için kod listesine bakınız.</sch:assert>
+			<sch:assert test="not(cbc:TaxExemptionReason) or not(../../../cbc:UBLVersionID ='2.1') or (string-length(normalize-space(string(cbc:TaxExemptionReasonCode)))) != 0 and (contains($TaxExemptionReasonCodeType, concat(',',cbc:TaxExemptionReasonCode,',')) or (contains($YatirimTesvikTaxExemptionReasonCodeType, concat(',',cbc:TaxExemptionReasonCode,',')) and (../../../cbc:ProfileID = 'YATIRIMTESVIK' or contains($YatirimTesvikEArsivInvoiceTypeCodeList, concat(',',../../../cbc:InvoiceTypeCode,',')))))">Geçersiz cbc:TaxExemptionReasonCode niteliği : '<sch:value-of select="cbc:TaxExemptionReasonCode"/>' cbc:TaxExemptionReason(vergi istisna muhafiyet sebebi) elemanı varken cbc:TaxExemptionReasonCode elamanı dolu ve geçerli bir değer olmalıdır. Geçerli değerler için kod listesine bakınız.</sch:assert>
 			
 			<sch:assert test="not(../../../cbc:UBLVersionID ='2.1') or not(cbc:TaxExemptionReasonCode != 555 and contains($istisnaTaxExemptionReasonCodeType, concat(',',cbc:TaxExemptionReasonCode,','))) or ../../../cbc:InvoiceTypeCode = 'ISTISNA' or ../../../cbc:InvoiceTypeCode = 'IADE' or ../../../cbc:InvoiceTypeCode = 'IHRACKAYITLI' or ../../../cbc:InvoiceTypeCode = 'SGK' or ../../../cbc:InvoiceTypeCode = 'YTBISTISNA' or ../../../cbc:InvoiceTypeCode = 'YTBIADE'">Uyumsuz fatura tipi: '<sch:value-of select="../../../cbc:InvoiceTypeCode"/>'. Vergi istisna muhafiyet kodu : '<sch:value-of select="cbc:TaxExemptionReasonCode"/>' için fatura tipi ISTISNA,IADE,IHRACKAYITLI,SGK,YTBIADE veya YTBISTISNA olabilir.</sch:assert>
 			
@@ -374,6 +378,14 @@
 			<sch:assert test="not(cbc:ProfileID='YATIRIMTESVIK' or (cbc:ProfileID='EARSIVFATURA' and contains($YatirimTesvikEArsivInvoiceTypeCodeList,  concat(',',cbc:InvoiceTypeCode,',')))) or (count(cac:ContractDocumentReference) = 1 and count(cac:ContractDocumentReference/cbc:ID[@schemeID = 'YTBNO']) &gt; 0 and string-length(cac:ContractDocumentReference/cbc:ID[@schemeID = 'YTBNO']) = 6 and translate(cac:ContractDocumentReference/cbc:ID[@schemeID = 'YTBNO'], '0123456789', '') = '')">Yatırım Teşvik Faturasında 6 Haneli Yatırım Teşvik Numarası olmalıdır.</sch:assert>
 		</sch:rule>
 		
+		<sch:rule abstract="true" id="EnerjiInvoicePeriodCheck">
+			<sch:assert test="not(cbc:InvoiceTypeCode = 'SARJ' or cbc:InvoiceTypeCode = 'SARJANLIK') or (count(cac:InvoicePeriod) &gt; 0 and count(cac:InvoicePeriod[normalize-space(cbc:StartDate) = '' or normalize-space(cbc:StartTime) = '' or normalize-space(cbc:EndDate) = '' or normalize-space(cbc:EndTime) = '' or not(normalize-space(cbc:StartDate) castable as xs:date and xs:date('2005-01-01+04:00') le xs:date(normalize-space(cbc:StartDate))) or not(normalize-space(cbc:EndDate) castable as xs:date and xs:date('2005-01-01+04:00') le xs:date(normalize-space(cbc:EndDate))) or not(normalize-space(cbc:StartTime) castable as xs:time) or not(normalize-space(cbc:EndTime) castable as xs:time)]) = 0)">Geçersiz cac:InvoicePeriod değeri: SARJ veya SARJANLIK faturalarında en az bir cac:InvoicePeriod elementi bulunmalı; altında cbc:StartDate, cbc:StartTime, cbc:EndDate ve cbc:EndTime alanları dolu olmalıdır. Tarih alanları yyyy-MM-dd,saat alanları HH:mm:ss formatında girilmelidir.</sch:assert>
+		</sch:rule>
+		
+		<sch:rule abstract="true" id="EnerjiESURaporIDCheck">
+			<sch:assert test="not(cbc:InvoiceTypeCode = 'SARJ') or (count(cac:AdditionalDocumentReference[cbc:ID[@schemeID = 'ESURaporID'] and normalize-space(cbc:ID[@schemeID = 'ESURaporID']) != '' and matches(normalize-space(cbc:ID[@schemeID = 'ESURaporID']), '^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{12}$') and normalize-space(cbc:IssueDate) != '' and matches(normalize-space(cbc:IssueDate), '^20\d{2}-\d{2}-\d{2}$') and normalize-space(cbc:IssueDate) castable as xs:date]) &gt; 0)">Geçersiz cac:AdditionalDocumentReference değeri: SARJ faturalarında en az bir cac:AdditionalDocumentReference elementi bulunmalı; bu element altında schemeID değeri ESURaporID olan geçerli GUID formatında bir cbc:ID ve geçerli yyyy-MM-dd formatında cbc:IssueDate bulunmalıdır.</sch:assert>
+		</sch:rule>
+		
 		<sch:rule abstract="true" id="TaxFreeNationalityIDCheck">
 			<sch:assert test="not(cac:Party/cac:PartyIdentification/cbc:ID = 'TAXFREE') or not(cac:Party/cac:PartyIdentification/cbc:ID/@schemeID='PARTYTYPE') or contains($CountryCodeList, concat(',',cac:Party/cac:Person/cbc:NationalityID,','))">Invoice/BuyerCustomerParty/Party/PartyIdentification/cbc:ID elemanının değeri TAXFREE ve schemeID özelliği PARTYTYPE iken cac:Party/cac:Person/cbc:NationalityID elamanı dolu ve geçerli bir değer olmalıdır. Geçerli değerler için kod listesine bakınız.</sch:assert>		
 		</sch:rule>		
@@ -429,7 +441,7 @@
 		</sch:rule>
 		
 		<sch:rule abstract="true" id="IdisSevkiyatNoCheck">
-			<sch:assert test="not(//inv:Invoice/cbc:ProfileID = 'IDIS') or count(cac:PartyIdentification/cbc:ID[@schemeID='SEVKIYATNO' and starts-with(., 'SE-') and string-length(.) = 10 and translate(substring(., 4), '0123456789', '') = '']) > 0">Sevkiyat Numarası değeri SE-0000000 formatında girilmelidir.</sch:assert>
+			<sch:assert test="not(//inv:Invoice/cbc:ProfileID = 'IDIS') or count(cac:PartyIdentification/cbc:ID[@schemeID='SEVKIYATNO' and (starts-with(., 'SE-') or starts-with(., 'ES-')) and string-length(.) = 10 and translate(substring(., 4), '0123456789', '') = '']) > 0">Sevkiyat Numarası değeri SE-0000000 veya ES-0000000 formatında girilmelidir.</sch:assert>
 		</sch:rule>
 		
 		<sch:rule abstract="true" id="PackageCheck">
@@ -491,6 +503,10 @@
 		
 		<sch:rule abstract="true" id="IdisEtiketNoCheck">
 			<sch:assert test="not(../cbc:ProfileID = 'IDIS') or count(cac:Item/cac:AdditionalItemIdentification/cbc:ID[@schemeID='ETIKETNO' and string-length(.) = 9 and translate(substring(., 1, 2), 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz', '') = '' and translate(substring(., 3), '0123456789', '') = '']) &gt; 0">İlk iki hanesi karakter ve sonraki 7 hanesi rakam olan 9 karakterli en az bir Etiket Numarası bulunmalıdır.</sch:assert>
+		</sch:rule>
+		
+		<sch:rule abstract="true" id="EnerjiItemInstanceSerialIDCheck">
+			<sch:assert test="not(../cbc:InvoiceTypeCode = 'SARJANLIK') or count(cac:Item/cac:ItemInstance[normalize-space(cbc:SerialID) != '']) &gt; 0">Geçersiz kalem seri numarası bilgisi: SARJANLIK faturalarında kalem altında cac:Item/cac:ItemInstance/cbc:SerialID bulunmalı ve boş olmamalıdır.</sch:assert>
 		</sch:rule>
 		
 		<sch:rule abstract="true" id="DemirbasKDVTaxExemptionCheck">
@@ -642,6 +658,7 @@
 			<sch:assert test="not($senderAlias = 'ebreceipt') or count(hr:AuthorizedWorkScope) = 0">E-Dekont hizmeti verecekler için hr:UserAccount elemanı içersinde hr:AuthorizedWorkScope elemanı girilmemelidir.</sch:assert>
 			<sch:assert test="not($senderAlias = 'eexchangecert') or count(hr:AuthorizedWorkScope) = 0">E-Döviz hizmeti verecekler için hr:UserAccount elemanı içersinde hr:AuthorizedWorkScope elemanı girilmemelidir.</sch:assert>
 			<sch:assert test="not($senderAlias = 'echeck') or count(hr:AuthorizedWorkScope) = 0">E-Adisyon hizmeti verecekler için hr:UserAccount elemanı içersinde hr:AuthorizedWorkScope elemanı girilmemelidir.</sch:assert>
+			<sch:assert test="not($senderAlias = 'erreceipt') or count(hr:AuthorizedWorkScope) = 0">Gider Pusulası hizmeti verecekler için hr:UserAccount elemanı içersinde hr:AuthorizedWorkScope elemanı girilmemelidir.</sch:assert>
 
 			<sch:assert test="count(hr:AccountConfiguration) = 1">hr:UserAccount elemanı içersinde hr:AccountConfiguration zorunlu bir elemandır.</sch:assert>
 			
@@ -683,6 +700,8 @@
 
 			<sch:assert test="not($senderAlias = 'echeck') or not(count(hr:AccountConfiguration) = 1) or contains(',151,152,', concat(',',hr:AccountConfiguration/hr:UserOptionCode,',')) ">hr:UserOptionCode zorunlu bir elemandır ve değeri 151 veya 152 olabilir.</sch:assert>
 			
+			<sch:assert test="not($senderAlias = 'erreceipt') or not(count(hr:AccountConfiguration) = 1) or contains(',171,172,173,174,', concat(',',hr:AccountConfiguration/hr:UserOptionCode,','))">hr:UserOptionCode zorunlu bir elemandır ve değeri 171, 172, 173 veya 174 olabilir.</sch:assert>
+			
 			<sch:assert test="not($senderAlias = 'einsurancecomm') or not(count(hr:AccountConfiguration) = 1) or contains(',161,162,', concat(',',hr:AccountConfiguration/hr:UserOptionCode,',')) ">hr:UserOptionCode zorunlu bir elemandır ve değeri 161 veya 162 olabilir.</sch:assert>
 
 			<sch:assert test="not(hr:UserID) or not(following-sibling::hr:UserAccount) or  normalize-space(hr:UserID) = following-sibling::node()/normalize-space(hr:UserID)">ProcessUserAccount ve CancelUserAccount belgesinde aynı hr:UserID'ye ait işlem yapılmalıdır. Farklı iki hr:UserID(<sch:value-of select="hr:UserID"/>, <sch:value-of select="following::node()/hr:UserID"/>) bulundu. </sch:assert>
@@ -723,7 +742,7 @@
 		</sch:rule>
 		
 		<sch:rule abstract="true" id="DespatchIdisSevkiyatNoCheck">
-			<sch:assert test="not(//desp:DespatchAdvice/cbc:ProfileID = 'IDISIRSALIYE') or count(cac:PartyIdentification/cbc:ID[@schemeID='SEVKIYATNO' and starts-with(., 'SE-') and string-length(.) = 10 and translate(substring(., 4), '0123456789', '') = '']) > 0">Sevkiyat Numarası değeri SE-0000000 formatında girilmelidir.</sch:assert>
+			<sch:assert test="not(//desp:DespatchAdvice/cbc:ProfileID = 'IDISIRSALIYE') or count(cac:PartyIdentification/cbc:ID[@schemeID='SEVKIYATNO' and (starts-with(., 'SE-') or starts-with(., 'ES-')) and string-length(.) = 10 and translate(substring(., 4), '0123456789', '') = '']) > 0">Sevkiyat Numarası değeri SE-0000000 veya ES-0000000 formatında girilmelidir.</sch:assert>
 		</sch:rule>
 		
 		<!-- Validate DespatchDate -->
@@ -759,9 +778,21 @@
 		</sch:rule>
 		
 		<sch:rule abstract="true" id="LicensePlateIDSchemeIDCheck">
-			<sch:assert test="contains($LicensePlateIDSchemeIDType, concat(',',@schemeID,','))">Geçersiz schemeID niteliği : '<sch:value-of select="@schemeID"/>'. Geçerli değerler için kod listesine bakınız.</sch:assert>
+			<sch:assert test="contains($LicensePlateIDSchemeIDType, concat(',',@schemeID,','))">Geçersiz cbc:LicensePlateID schemeID niteliği : '<sch:value-of select="@schemeID"/>'. Geçerli değerler için kod listesine bakınız.</sch:assert>
+			<sch:assert test="not(@schemeID = 'PLAKA') or (normalize-space(.) != '' and matches(normalize-space(.), '^(0[1-9]|[1-7][0-9]|8[01])[A-Z]+[0-9]+$'))">Geçersiz plaka değeri : '<sch:value-of select="."/>'</sch:assert>
+			<sch:assert test="not(@schemeID = 'YABANCIPLAKA') or (normalize-space(.) != '' and matches(normalize-space(.), '^[A-Z0-9_-]+$'))">Geçersiz yabancı plaka değeri : '<sch:value-of select="."/>'</sch:assert>
+		</sch:rule>
+		
+		<sch:rule abstract="true" id="TransportEquipmentIDSchemeIDCheck">
+			<sch:assert test="contains($TransportEquipmentIDSchemeIDType, concat(',',@schemeID,','))">Geçersiz TransportEquipment ID schemeID niteliği : '<sch:value-of select="@schemeID"/>'. Geçerli değerler için kod listesine bakınız.</sch:assert>
+			<sch:assert test="not(@schemeID = 'DORSE' or @schemeID = 'DORSEPLAKA') or (normalize-space(.) != '' and matches(normalize-space(.), '^(0[1-9]|[1-7][0-9]|8[01])[A-Z]+[0-9]+$'))">Geçersiz dorse plaka değeri : '<sch:value-of select="."/>'</sch:assert>
+			<sch:assert test="not(@schemeID = 'YABANCIDORSE' or @schemeID = 'YABANCIDORSEPLAKA') or (normalize-space(.) != '' and matches(normalize-space(.), '^[A-Z0-9_-]+$'))">Geçersiz yabancı dorse plaka değeri : '<sch:value-of select="."/>'</sch:assert>
 		</sch:rule>
 
+		<sch:rule abstract="true" id="LicensePlateIDCheck">
+			<sch:assert test="count(cac:ShipmentStage/cac:DriverPerson) = 0 or count(cac:ShipmentStage/cac:TransportMeans/cac:RoadTransport/cbc:LicensePlateID[contains($LicensePlateIDSchemeIDType, concat(',',@schemeID,',')) and normalize-space(.) != '']) &gt; 0">İrsaliyede şoför bilgisi olduğu durumda  plaka bilgisi içeren cac:Shipment/cac:ShipmentStage/cac:TransportMeans/cac:RoadTransport/cbc:LicensePlateID elementi bulunmalıdır.</sch:assert>
+		</sch:rule>
+		
 		<!-- ReceiptAdvice -->	
 		<sch:rule abstract="true" id="ReceiptAdviceTypeCodeCheck">
 			<sch:assert test="contains($ReceiptAdviceTypeCodeList, concat(',',cbc:ReceiptAdviceTypeCode,','))">Geçersiz cbc:ReceiptAdviceTypeCode elemanı değeri : '<sch:value-of select="cbc:ReceiptAdviceTypeCode"/>'. Geçerli cbc:ReceiptAdviceTypeCode değerleri için kod listesine bakınız.</sch:assert>
