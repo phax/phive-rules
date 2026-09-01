@@ -265,7 +265,7 @@ I hope that with the introduction of PINT, the versioning problem will be solved
 
 # News and noteworthy
 
-v4.5.5 - work in progress
+v4.5.5 - 2026-09-01
 * Updated the Turkey e-Fatura Schematron rules in `phive-rules-turkey` to the GİB `e-FaturaPaketi` published on 2026-08-24, containing the Schematron release `20260701` (see [issue #85](https://github.com/phax/phive-rules/issues/85)).
   The VES coordinates `tr.efatura:invoice:1.2.1`, `tr.efatura:application-response:1.2.1`, `tr.efatura:despatch-advice:1.2.1`, `tr.efatura:receipt-advice:1.2.1` and `tr.efatura:zarf:1.2.1` are unchanged - GİB does not version the Schematron package separately from UBL-TR 1.2.1
     * New rules for the electricity charging (`SARJ` / `SARJANLIK`) invoice types: `EnerjiInvoicePeriodCheck` requires a complete `cac:InvoicePeriod`, `EnerjiESURaporIDCheck` requires an `ESURaporID` document reference, `EnerjiPartyIdentificationPlakaCheck` requires a `PLAKA` party identification and `EnerjiItemInstanceSerialIDCheck` requires a line level `cac:ItemInstance/cbc:SerialID`
