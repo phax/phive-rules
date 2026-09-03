@@ -265,6 +265,20 @@ I hope that with the introduction of PINT, the versioning problem will be solved
 
 # News and noteworthy
 
+v4.5.6 - work in progress
+* Added the France CTC validation rules `1.4.0.04` (2026-09-03), VES coordinates `fr.ctc:ubl-invoice:1.4.0-04`, `fr.ctc:ubl-creditnote:1.4.0-04`, `fr.ctc:cii:1.4.0-04`, `fr.ctc:cdar:1.4.0-04`, `fr.ctc:extended-ubl-invoice:1.4.0-04`, `fr.ctc:extended-ubl-creditnote:1.4.0-04` and `fr.ctc:extended-cii:1.4.0-04`, and deprecated the 1.4.0.03 rules.
+  The FNFE hotfix number `04` is expressed as a DVR version classifier, hence the version `1.4.0-04`.
+  The rules are taken from [fnfempe/France_RFE v1.4.0.04](https://github.com/fnfempe/France_RFE/releases/tag/v1.4.0.04).
+  The EN 16931 base (1.3.16) and the Factur-X EXTENDED XSD (1.0.9-2 / ZUGFeRD 2.5.2) are unchanged compared to 1.4.0.03.
+  Per the FNFE release notes it contains:
+    * All Schematrons: `number()` was replaced by `xs:decimal()` to avoid rounding differences caused by the number representation
+    * CII `BR-FR-MV-10` - corrected the line count (issue #28) and `BR-FR-CO-07`/BT-9 - now handles multiple Payment Terms groups (issue #40)
+    * UBL `BR-FR-CO-07` - corrected the Due Date XPath for Credit Notes (issue #29), `BR-FR-11`, `BR-FR-20`, `BR-FR-21` and `BR-FR-CO-14` - now handle notes without a subject code (issue #42), `BR-FR-22` - corrected the `BAR = 'B2B'` test (issue #43) and `BR-FR-08`/BT-23 - corrected the error message (issue #48)
+    * EXTENDED-CTC-FR CII: `BR-CO-27` removed, because it is `CII-SR-470` which does not apply to EXTENDED-CTC-FR (issue #44); `CII-SR-069` and `CII-SR-072` were replaced by `CII-FREXT-SR-069` and `CII-FREXT-SR-072` with cardinality 0..1 for BT-160 and BT-161 (issues #46 and #47); further alignment with EN 16931 for `CII-SR-467` to `CII-SR-469`, `CII-SR-471` to `CII-SR-473` and `CII-SR-475` to `CII-SR-494`
+    * CDAR `BR-FR-CDV-CL-09_MDT-113_210B2G` - corrected the empty XPath in the B2G refusal reason check (issue #34), `BR-FR-CDV-13` - added the new WARNING assertion `BR-FR-CDV-13/MDT-129-2` requiring an MDT-129 with `schemeID` `0002` (SIREN), and `BR-FR-CDV-15/MDT-113` - corrected the rejected status code in the message from 123 to 213
+* The France CTC 1.4.0.04 rules are marked as valid from 2026-10-01, the date stated in the Schematron headers - the 1.4.0.03 rules kept their 2026-09-01 date.
+  Until 2026-10-01 the France CTC 1.4.x rules are therefore only "valid per now" in their deprecated 1.4.0.03 form
+
 v4.5.5 - 2026-09-01
 * Updated the Turkey e-Fatura Schematron rules in `phive-rules-turkey` to the GİB `e-FaturaPaketi` published on 2026-08-24, containing the Schematron release `20260701` (see [issue #85](https://github.com/phax/phive-rules/issues/85)).
   The VES coordinates `tr.efatura:invoice:1.2.1`, `tr.efatura:application-response:1.2.1`, `tr.efatura:despatch-advice:1.2.1`, `tr.efatura:receipt-advice:1.2.1` and `tr.efatura:zarf:1.2.1` are unchanged - GİB does not version the Schematron package separately from UBL-TR 1.2.1
