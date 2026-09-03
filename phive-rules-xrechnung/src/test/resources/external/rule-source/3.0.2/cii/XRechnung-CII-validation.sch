@@ -6,9 +6,10 @@
         xmlns:rsm="urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100"
         xmlns:u="utils"
         xmlns:udt="urn:un:unece:uncefact:data:standard:UnqualifiedDataType:100"
+        xmlns:xr="xrechnung"
         xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
         queryBinding="xslt2">
-   <title>Schematron Version 2.5.0 - XRechnung 3.0.2 compatible - CII</title>
+   <title>Schematron Version 2.6.0 - XRechnung 3.0.2 compatible - CII</title>
    <ns prefix="rsm"
        uri="urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100"/>
    <ns prefix="ccts"
@@ -19,10 +20,11 @@
        uri="urn:un:unece:uncefact:data:standard:QualifiedDataType:100"/>
    <ns prefix="ram"
        uri="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100"/>
+   <ns prefix="xr" uri="xrechnung"/>
    <ns uri="utils" prefix="u"/>
    <!--BEGIN Parameters from PEPPOL-->
    <let name="profile"
-        value="             if (/rsm:CrossIndustryInvoice/rsm:ExchangedDocumentContext/ram:BusinessProcessSpecifiedDocumentContextParameter and matches(normalize-space(/rsm:CrossIndustryInvoice/rsm:ExchangedDocumentContext/ram:BusinessProcessSpecifiedDocumentContextParameter/ram:ID), 'urn:fdc:peppol.eu:2017:poacc:billing:([0-9]{2}):1.0')) then                 tokenize(normalize-space(/rsm:CrossIndustryInvoice/rsm:ExchangedDocumentContext/ram:BusinessProcessSpecifiedDocumentContextParameter/ram:ID), ':')[7]             else                 'Unknown'"/>
+        value="        if (normalize-space(/rsm:CrossIndustryInvoice/rsm:ExchangedDocumentContext/ram:BusinessProcessSpecifiedDocumentContextParameter/ram:ID) = 'urn:fdc:peppol.eu:2017:poacc:billing:01:1.0')        then '01'        else if (normalize-space(/rsm:CrossIndustryInvoice/rsm:ExchangedDocumentContext/ram:BusinessProcessSpecifiedDocumentContextParameter/ram:ID) = 'urn:peppol:bis:billing_with_response')        then '02'        else 'Unknown'      "/>
    <let name="supplierCountry"
         value="             if (/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction[1]/ram:ApplicableHeaderTradeAgreement[1]/ram:SellerTradeParty[1]/ram:SpecifiedTaxRegistration[ram:ID/@schemeID = 'VAT']/substring(ram:ID, 1, 2)) then                 upper-case(normalize-space(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction[1]/ram:ApplicableHeaderTradeAgreement[1]/ram:SellerTradeParty[1]/ram:SpecifiedTaxRegistration[ram:ID/@schemeID = 'VAT']/substring(ram:ID, 1, 2)))             else                 if (/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SellerTaxRepresentativeTradeParty/ram:SpecifiedTaxRegistration[ram:ID/@schemeID = 'VAT']/substring(ram:ID, 1, 2)) then                     upper-case(normalize-space(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SellerTaxRepresentativeTradeParty/ram:SpecifiedTaxRegistration[ram:ID/@schemeID = 'VAT']/substring(ram:ID, 1, 2)))                 else                     if (/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SellerTradeParty/ram:PostalTradeAddress/ram:CountryID) then                         upper-case(normalize-space(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:SellerTradeParty/ram:PostalTradeAddress/ram:CountryID))                     else                         'XX'"/>
    <let name="documentCurrencyCode"
@@ -35,6 +37,12 @@
    <xsl:function as="xs:decimal" name="u:decimalOrZero">
       <xsl:param name="element"/>
       <xsl:sequence select="if (boolean($element)) then xs:decimal($element) else 0"/>
+   </xsl:function>
+   <xsl:function name="xr:checkIBAN" as="xs:boolean">
+      <xsl:param name="iban" as="xs:string"/>
+      <xsl:variable name="normalizedIban"
+                    select="normalize-space(replace($iban, '([\s])', ''))"/>
+      <xsl:sequence select="matches($normalizedIban, $XR-IBAN-REGEX) and                           xs:integer(string-join(for $cp in string-to-codepoints(concat(substring($normalizedIban,5),upper-case(substring($normalizedIban,1,2)),substring($normalizedIban,3,2))) return (if($cp &gt; 64) then string($cp - 55) else string($cp - 48)),'')) mod 97 = 1"/>
    </xsl:function>
    <phase id="xrechnung-model">
       <active pattern="variable-pattern"/>
@@ -150,7 +158,7 @@
             <variable name="mainPart" select="substring($number, 1, 9)"/>
             <variable name="checkDigit" select="substring($number, 10, 1)"/>
             <variable name="sum" as="xs:integer">
-               <sequence select="xs:integer(sum(       for $pos in 1 to string-length($mainPart) return         if ($pos mod 2 = 1)         then (number(substring($mainPart, string-length($mainPart) - $pos + 1, 1)) * 2) mod 10 +           (number(substring($mainPart, string-length($mainPart) - $pos + 1, 1)) * 2) idiv 10         else number(substring($mainPart, string-length($mainPart) - $pos + 1, 1))      ))"/>
+               <sequence select="xs:integer(sum(       for $pos in 1 to string-length($mainPart) return        if ($pos mod 2 = 1)        then (number(substring($mainPart, string-length($mainPart) - $pos + 1, 1)) * 2) mod 10 +          (number(substring($mainPart, string-length($mainPart) - $pos + 1, 1)) * 2) idiv 10        else number(substring($mainPart, string-length($mainPart) - $pos + 1, 1))      ))"/>
             </variable>
             <variable name="calculatedCheckDigit" select="(10 - $sum mod 10) mod 10"/>
             <sequence select="$calculatedCheckDigit = number($checkDigit)"/>
@@ -164,7 +172,7 @@
       <rule context="rsm:ExchangedDocumentContext">
          <assert id="PEPPOL-EN16931-R001"
                  test="ram:BusinessProcessSpecifiedDocumentContextParameter/ram:ID"
-                 flag="fatal">Business process MUST be provided.</assert>
+                 flag="fatal">[PEPPOL-EN16931-R001]-Business process MUST be provided.</assert>
       
       
       </rule>
@@ -172,64 +180,64 @@
       <rule context="ram:ApplicableHeaderTradeSettlement">
          <assert id="PEPPOL-EN16931-R005"
                  test="not(ram:TaxCurrencyCode) or normalize-space(ram:TaxCurrencyCode/text()) != normalize-space(ram:InvoiceCurrencyCode/text())"
-                 flag="fatal">VAT accounting currency code MUST be different from invoice currency code when provided.</assert>
+                 flag="fatal">[PEPPOL-EN16931-R005]-VAT accounting currency code MUST be different from invoice currency code when provided.</assert>
          <assert id="PEPPOL-EN16931-R053"
                  test="count(ram:SpecifiedTradeSettlementHeaderMonetarySummation/ram:TaxTotalAmount[@currencyID = $documentCurrencyCode]) &lt;=1"
-                 flag="fatal">No more than one tax total amount must be provided where currency id equals document currency code.</assert>
+                 flag="fatal">[PEPPOL-EN16931-R053]-No more than one tax total amount must be provided where currency id equals document currency code.</assert>
          <assert id="PEPPOL-EN16931-R054"
                  test="                     count(ram:SpecifiedTradeSettlementHeaderMonetarySummation/ram:TaxTotalAmount[@currencyID != $documentCurrencyCode]) = (if (ram:TaxCurrencyCode) then                         1                     else                         0)"
-                 flag="fatal">Only one tax total amount must be provided where currency id equals tax currency code, if tax currency code (BT-6) is provided.</assert>
+                 flag="fatal">[PEPPOL-EN16931-R054]-Only one tax total amount must be provided where currency id equals tax currency code, if tax currency code (BT-6) is provided.</assert>
          <assert id="PEPPOL-EN16931-R055"
                  test="not(/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:TaxCurrencyCode and ram:SpecifiedTradeSettlementHeaderMonetarySummation/ram:TaxTotalAmount[@currencyID = $documentCurrencyCode]) or (ram:SpecifiedTradeSettlementHeaderMonetarySummation/ram:TaxTotalAmount[@currencyID = $taxCurrencyCode] &lt; 0 and ram:SpecifiedTradeSettlementHeaderMonetarySummation/ram:TaxTotalAmount[@currencyID = $documentCurrencyCode] &lt; 0) or (ram:SpecifiedTradeSettlementHeaderMonetarySummation/ram:TaxTotalAmount[@currencyID = $taxCurrencyCode] &gt;= 0 and ram:SpecifiedTradeSettlementHeaderMonetarySummation/ram:TaxTotalAmount[@currencyID = $documentCurrencyCode] &gt;= 0)"
-                 flag="fatal">Invoice total VAT amount and Invoice total VAT amount in accounting currency MUST have the same operational sign</assert>
+                 flag="fatal">[PEPPOL-EN16931-R055]-Invoice total VAT amount and Invoice total VAT amount in accounting currency MUST have the same operational sign</assert>
       </rule>
     
     
       <rule context="ram:BuyerTradeParty">
          <assert id="PEPPOL-EN16931-R010"
                  test="ram:URIUniversalCommunication/ram:URIID"
-                 flag="fatal">Buyer electronic address MUST be provided</assert>
+                 flag="fatal">[PEPPOL-EN16931-R010]-Buyer electronic address MUST be provided</assert>
       </rule>
       <rule context="ram:SellerTradeParty">
          <assert id="PEPPOL-EN16931-R020"
                  test="ram:URIUniversalCommunication/ram:URIID"
-                 flag="fatal">Seller electronic address MUST be provided</assert>
+                 flag="fatal">[PEPPOL-EN16931-R020]-Seller electronic address MUST be provided</assert>
       </rule>
       <rule context="ram:SpecifiedTradeAllowanceCharge[ram:CalculationPercent and not(ram:BasisAmount)]">
-         <assert id="PEPPOL-EN16931-R041" test="false()" flag="fatal">Allowance/charge base
+         <assert id="PEPPOL-EN16931-R041" test="false()" flag="fatal">[PEPPOL-EN16931-R041]-Allowance/charge base
                 amount MUST be provided when allowance/charge percentage is provided.</assert>
       </rule>
       <rule context="ram:SpecifiedTradeAllowanceCharge[not(ram:CalculationPercent) and ram:BasisAmount]">
-         <assert id="PEPPOL-EN16931-R042" test="false()" flag="fatal">Allowance/charge percentage
+         <assert id="PEPPOL-EN16931-R042" test="false()" flag="fatal">[PEPPOL-EN16931-R042]-Allowance/charge percentage
                 MUST be provided when allowance/charge base amount is provided.</assert>
       </rule>
       <rule context="ram:SpecifiedTradeAllowanceCharge">
          <assert id="PEPPOL-EN16931-R040"
                  test="not(ram:CalculationPercent and ram:BasisAmount) or u:slack(if (ram:ActualAmount) then ram:ActualAmount else 0, (xs:decimal(ram:BasisAmount) * xs:decimal(ram:CalculationPercent)) div 100, $slackValue)"
-                 flag="fatal">Allowance/charge amount must equal base amount * percentage/100 if base amount and percentage exists</assert>
+                 flag="fatal">[PEPPOL-EN16931-R040]-Allowance/charge amount must equal base amount * percentage/100 if base amount and percentage exists</assert>
          <assert id="PEPPOL-EN16931-R043-1"
                  test="normalize-space(ram:ChargeIndicator/udt:Indicator/text()) = 'true' or normalize-space(ram:ChargeIndicator/udt:Indicator/text()) = 'false'"
-                 flag="fatal">Allowance/charge ChargeIndicator value MUST equal 'true' or 'false'</assert>
+                 flag="fatal">[PEPPOL-EN16931-R043]-Allowance/charge ChargeIndicator value MUST equal 'true' or 'false'</assert>
       </rule>
       <rule context="ram:AppliedTradeAllowanceCharge">
          <assert id="PEPPOL-EN16931-R043-2"
                  test="normalize-space(ram:ChargeIndicator/udt:Indicator/text()) = 'true' or normalize-space(ram:ChargeIndicator/udt:Indicator/text()) = 'false'"
-                 flag="fatal">Allowance/charge ChargeIndicator value MUST equal 'true' or 'false'</assert>
+                 flag="fatal">[PEPPOL-EN16931-R043]-Allowance/charge ChargeIndicator value MUST equal 'true' or 'false'</assert>
       </rule>
       <rule context="                 ram:SpecifiedTradeSettlementPaymentMeans[some $code in tokenize('49 59', '\s')                     satisfies normalize-space(ram:TypeCode) = $code]">
          <assert id="PEPPOL-EN16931-R061"
                  test="../ram:SpecifiedTradePaymentTerms/ram:DirectDebitMandateID"
-                 flag="fatal">Mandate reference MUST be provided for direct debit.</assert>
+                 flag="fatal">[PEPPOL-EN16931-R061]-Mandate reference MUST be provided for direct debit.</assert>
       </rule>
       <rule context="rsm:SupplyChainTradeTransaction[ram:ApplicableHeaderTradeSettlement/ram:BillingSpecifiedPeriod/ram:StartDateTime]/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeSettlement/ram:BillingSpecifiedPeriod/ram:StartDateTime">
          <assert id="PEPPOL-EN16931-R110"
                  test="udt:DateTimeString &gt;= ../../../../ram:ApplicableHeaderTradeSettlement/ram:BillingSpecifiedPeriod/ram:StartDateTime/udt:DateTimeString"
-                 flag="fatal">Start date of line period MUST be within invoice period.</assert>
+                 flag="fatal">[PEPPOL-EN16931-R110]-Start date of line period MUST be within invoice period.</assert>
       </rule>
       <rule context="rsm:SupplyChainTradeTransaction[ram:ApplicableHeaderTradeSettlement/ram:BillingSpecifiedPeriod/ram:EndDateTime]/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeSettlement/ram:BillingSpecifiedPeriod/ram:EndDateTime">
          <assert id="PEPPOL-EN16931-R111"
                  test="udt:DateTimeString &lt;= ../../../../ram:ApplicableHeaderTradeSettlement/ram:BillingSpecifiedPeriod/ram:EndDateTime/udt:DateTimeString"
-                 flag="fatal">End date of line period MUST be within invoice period.</assert>
+                 flag="fatal">[PEPPOL-EN16931-R111]-End date of line period MUST be within invoice period.</assert>
       </rule>
       <rule context="ram:IncludedSupplyChainTradeLineItem">
          <let name="lineExtensionAmount"
@@ -246,23 +254,23 @@
               value="                     if (ram:SpecifiedLineTradeSettlement/ram:SpecifiedTradeAllowanceCharge[normalize-space(ram:ChargeIndicator/udt:Indicator) = 'true']) then                         round(sum(ram:SpecifiedLineTradeSettlement/ram:SpecifiedTradeAllowanceCharge[normalize-space(ram:ChargeIndicator/udt:Indicator) = 'true']/ram:ActualAmount/xs:decimal(.)) * 10 * 10) div 100                     else                         0"/>
          <assert id="PEPPOL-EN16931-R120"
                  test="u:slack($lineExtensionAmount, ($quantity * ($priceAmount div $baseQuantity)) + $chargesTotal - $allowancesTotal, $slackValue)"
-                 flag="warning">Invoice line net amount MUST equal (Invoiced quantity * (Item net price/item price base quantity) + Sum of invoice line charge amount - sum of invoice line allowance amount</assert>
+                 flag="warning">[PEPPOL-EN16931-R120]-Invoice line net amount MUST equal (Invoiced quantity * (Item net price/item price base quantity) + Sum of invoice line charge amount - sum of invoice line allowance amount</assert>
       
          <assert id="PEPPOL-EN16931-R101"
                  test="(not(ram:SpecifiedLineTradeSettlement/ram:AdditionalReferencedDocument) or (ram:SpecifiedLineTradeSettlement/ram:AdditionalReferencedDocument/ram:TypeCode='130'))"
-                 flag="fatal">Element Additional referenced document can only be used for Invoice line object.</assert>
+                 flag="fatal">[PEPPOL-EN16931-R101]-Element Additional referenced document can only be used for Invoice line object.</assert>
       </rule>
       <rule context="ram:NetPriceProductTradePrice | ram:GrossPriceProductTradePrice">
          <assert id="PEPPOL-EN16931-R121"
                  test="not(ram:BasisQuantity) or xs:decimal(ram:BasisQuantity) &gt; 0"
-                 flag="fatal">Base quantity MUST be a positive number above zero.</assert>
+                 flag="fatal">[PEPPOL-EN16931-R121]-Base quantity MUST be a positive number above zero.</assert>
       </rule>
     
     
       <rule context="ram:NetPriceProductTradePrice/ram:BasisQuantity[@unitCode] | ram:GrossPriceProductTradePrice/ram:BasisQuantity[@unitCode]">
          <assert id="PEPPOL-EN16931-R130"
                  test="@unitCode = ../../../ram:SpecifiedLineTradeDelivery/ram:BilledQuantity/@unitCode"
-                 flag="fatal">Unit code of price base quantity MUST be same as invoiced quantity.</assert>
+                 flag="fatal">[PEPPOL-EN16931-R130]-Unit code of price base quantity MUST be same as invoiced quantity.</assert>
       </rule>
     
     
@@ -278,21 +286,27 @@
 
     
 	
+	
+	
+	
+    
+	
+
    </pattern>
    <pattern id="peppol-cii-pattern-0-a">
       <rule context="//*[not(name() = 'ram:ApplicableHeaderTradeDelivery') and not(*) and not(normalize-space())]">
-         <assert id="PEPPOL-EN16931-R008" test="false()" flag="fatal">Document MUST not contain empty elements.</assert>
+         <assert id="PEPPOL-EN16931-R008" test="false()" flag="fatal">[PEPPOL-EN16931-R008]-Document MUST not contain empty elements.</assert>
       </rule>
    </pattern>
    <pattern id="peppol-cii-pattern-0-b">
       <rule context="rsm:SupplyChainTradeTransaction/ram:IncludedSupplyChainTradeLineItem/ram:SpecifiedLineTradeAgreement/ram:GrossPriceProductTradePrice">
          <assert id="PEPPOL-EN16931-R044"
                  test="not(ram:AppliedTradeAllowanceCharge/ram:ActualAmount) or ram:AppliedTradeAllowanceCharge/ram:ChargeIndicator/udt:Indicator = 'false'"
-                 flag="fatal">Charge on price level is NOT allowed. Only value 'false' allowed.</assert>
+                 flag="fatal">[PEPPOL-EN16931-R044]-Charge on price level is NOT allowed. Only value 'false' allowed.</assert>
          <!--select only first occurrence of BT-147 for more robustness in case of violation of [CII-SR-440] - ActualAmount should exist maximum once-->
          <assert id="PEPPOL-EN16931-R046"
                  test="not(ram:ChargeAmount) or xs:decimal(../ram:NetPriceProductTradePrice/ram:ChargeAmount) = xs:decimal(ram:ChargeAmount) - u:decimalOrZero(ram:AppliedTradeAllowanceCharge/ram:ActualAmount[1])"
-                 flag="fatal">Item net price MUST equal (Gross price - Allowance amount) when gross price is provided.</assert>
+                 flag="fatal">[PEPPOL-EN16931-R046]-Item net price MUST equal (Gross price - Allowance amount) when gross price is provided.</assert>
       </rule>
    </pattern>
    <!--END Pattern from PEPPOL-->
@@ -383,8 +397,20 @@
       </rule>
       <rule context="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeAgreement/ram:AdditionalReferencedDocument[ram:TypeCode = '916']">
          <assert test="not(exists(ram:URIID)) or (matches(ram:URIID, $XR-URL-REGEX))"
-                 flag="warning"
+                 flag="fatal"
                  id="BR-TMP-2">[BR-TMP-2] BT-124 "External document location" muss eine absolute URL mit gültigem Schema enthalten.</assert>
+         <!-- temporary rule to replace CEN Schematron rule CII-SR-475 until fixed, see https://github.com/ConnectingEurope/eInvoicing-EN16931/issues/508 -->
+         <assert test="count(ram:Name) &lt;= 1" flag="warning" id="BR-TMP-4">[BR-TMP-4] BT-123 "Supporting document description" (ram:Name) darf innerhalb von "Additional supporting documents" (BG-24) höchstens einmal vorkommen.</assert>
+         <!-- temporary rule to replace CEN Schematron rule CII-SR-476 until fixed, see https://github.com/ConnectingEurope/eInvoicing-EN16931/issues/508 -->
+         <assert test="count(ram:AttachmentBinaryObject) &lt;= 1"
+                 flag="warning"
+                 id="BR-TMP-5">[BR-TMP-5] BT-125 "Attached document" (ram:AttachmentBinaryObject) darf innerhalb von "Additional Supporting documents" (BG-24) höchstens einmal vorkommen.</assert>
+      </rule>
+      <!-- temporary rule to enforce format="102" and YYYYMMDD for all DateTimeString elements in CII until fixed upstream, see https://github.com/ConnectingEurope/eInvoicing-EN16931/issues/429 -->
+      <rule context="udt:DateTimeString | qdt:DateTimeString | udt:DateString">
+         <assert test="normalize-space(@format) = '102' and matches(normalize-space(text()), '^\d{8}$')"
+                 flag="warning"
+                 id="BR-TMP-7">[BR-TMP-7] Datumsangaben in UNCEFACT/CII müssen das Attribut format="102" tragen und im Format JJJJMMTT (YYYYMMDD) übermittelt werden.</assert>
       </rule>
       <rule context="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeDelivery/ram:ShipToTradeParty/ram:PostalTradeAddress">
          <assert test="ram:CityName[boolean(normalize-space(.))]"
@@ -395,7 +421,7 @@
                  id="BR-DE-11">[BR-DE-11] Das Element "Deliver to post code" (BT-78) muss übermittelt werden, wenn die Gruppe "DELIVER TO ADDRESS" (BG-15) übermittelt wird.</assert>
       </rule>
       <rule context="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeSettlementPaymentMeans[normalize-space(ram:TypeCode) = ('30','58')]">
-         <assert test="not(normalize-space(ram:TypeCode) = '58') or                     matches(normalize-space(replace(ram:PayeePartyCreditorFinancialAccount/ram:IBANID, '([ \n\r\t\s])', '')), '^[A-Z]{2}[0-9]{2}[a-zA-Z0-9]{0,30}$') and                     xs:integer(string-join(for $cp in string-to-codepoints(concat(substring(normalize-space(replace(ram:PayeePartyCreditorFinancialAccount/ram:IBANID, '([ \n\r\t\s])', '')),5),upper-case(substring(normalize-space(replace(ram:PayeePartyCreditorFinancialAccount/ram:IBANID, '([ \n\r\t\s])', '')),1,2)),substring(normalize-space(replace(ram:PayeePartyCreditorFinancialAccount/ram:IBANID, '([ \n\r\t\s])', '')),3,2))) return  (if($cp &gt; 64) then string($cp - 55) else  string($cp - 48)),'')) mod 97 = 1"
+         <assert test="not(normalize-space(ram:TypeCode) = '58') or                     xr:checkIBAN(string(ram:PayeePartyCreditorFinancialAccount/ram:IBANID))"
                  flag="warning"
                  id="BR-DE-19">[BR-DE-19] "Payment account identifier" (BT-84) soll eine korrekte IBAN enthalten, wenn in "Payment means type code" (BT-81) mit dem Code 58 SEPA als Zahlungsmittel gefordert wird.</assert>
          <assert test="ram:PayeePartyCreditorFinancialAccount"
@@ -414,7 +440,7 @@
                  id="BR-DE-24-b">[BR-DE-24-b] Wenn BT-81 "Payment means type code" einen Schlüssel für Kartenzahlungen enthält (48, 54, 55), dürfen BG-17 und BG-19 nicht übermittelt werden.</assert>
       </rule>
       <rule context="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeSettlementPaymentMeans[normalize-space(ram:TypeCode) = '59']">
-         <assert test="not(normalize-space(ram:TypeCode) = '59') or                     matches(normalize-space(replace(ram:PayerPartyDebtorFinancialAccount/ram:IBANID, '([ \n\r\t\s])', '')), '^[A-Z]{2}[0-9]{2}[a-zA-Z0-9]{0,30}$') and                     xs:decimal(string-join(for $cp in string-to-codepoints(concat(substring(normalize-space(replace(ram:PayerPartyDebtorFinancialAccount/ram:IBANID, '([ \n\r\t\s])', '')),5),upper-case(substring(normalize-space(replace(ram:PayerPartyDebtorFinancialAccount/ram:IBANID, '([ \n\r\t\s])', '')),1,2)),substring(normalize-space(replace(ram:PayerPartyDebtorFinancialAccount/ram:IBANID, '([ \n\r\t\s])', '')),3,2))) return  (if($cp &gt; 64) then string($cp - 55) else  string($cp - 48)),'')) mod 97 = 1"
+         <assert test="not(normalize-space(ram:TypeCode) = '59') or                     xr:checkIBAN(string(ram:PayerPartyDebtorFinancialAccount/ram:IBANID))"
                  flag="warning"
                  id="BR-DE-20">[BR-DE-20] "Debited account identifier" (BT-91) soll eine korrekte IBAN enthalten, wenn in "Payment means type code" (BT-81) mit dem Code 59 SEPA als Zahlungsmittel gefordert wird.</assert>
          <assert test="/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradePaymentTerms/ram:DirectDebitMandateID or                     /rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:CreditorReferenceID or                     ram:PayerPartyDebtorFinancialAccount/ram:IBANID"

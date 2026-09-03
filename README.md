@@ -278,6 +278,16 @@ v4.5.6 - work in progress
     * CDAR `BR-FR-CDV-CL-09_MDT-113_210B2G` - corrected the empty XPath in the B2G refusal reason check (issue #34), `BR-FR-CDV-13` - added the new WARNING assertion `BR-FR-CDV-13/MDT-129-2` requiring an MDT-129 with `schemeID` `0002` (SIREN), and `BR-FR-CDV-15/MDT-113` - corrected the rejected status code in the message from 123 to 213
 * The France CTC 1.4.0.04 rules are marked as valid from 2026-10-01, the date stated in the Schematron headers - the 1.4.0.03 rules kept their 2026-09-01 date.
   Until 2026-10-01 the France CTC 1.4.x rules are therefore only "valid per now" in their deprecated 1.4.0.03 form
+* Updated to XRechnung 3.0.2 Schematron Rules 2.6.0 (2026-08-31).
+  The VES coordinates `de.xrechnung:*:3.0.2` are unchanged - KoSIT versions the Schematron rules separately from the XRechnung specification.
+  The rules now build on the CEN EN 16931 rules 1.3.16 instead of 1.3.15, so `XRechnungValidation.getAllPrerequisites` requires `eu.cen.en16931:*:1.3.16` instead of `...:1.3.15`.
+  Per the KoSIT change log it contains:
+    * **The error level of `BR-TMP-2` was raised to "fatal"** - this may break existing validation workflows, please evaluate the impact
+    * New temporary rules `BR-TMP-4` and `BR-TMP-5` (CII) replacing `CII-SR-475` and `CII-SR-476` with a corrected rule context, until the bug is fixed upstream (see [eInvoicing-EN16931 issue #508](https://github.com/ConnectingEurope/eInvoicing-EN16931/issues/508))
+    * New temporary rule `BR-TMP-6` (UBL) enforcing the `YYYY-MM-DD` date format and `BR-TMP-7` (CII) enforcing the `format="102"` attribute plus the `YYYYMMDD` format on BT-2, BT-7, BT-9, BT-26, BT-72, BT-73, BT-74, BT-134 and BT-135.
+      `BR-TMP-4` to `BR-TMP-7` are currently "warning" only and will be raised to "fatal" in a future release
+    * Global code list variables adapted to the CEN 1.3.16 code list updates and the IBAN regular expression was extracted to `common.sch`
+    * `PEPPOL-EN16931-R008` in UBL no longer rejects an empty BT-13 "Purchase order reference" (`cac:OrderReference/cbc:ID`), which the UBL schema requires whenever BT-14 "Sales order reference" is present
 
 v4.5.5 - 2026-09-01
 * Updated the Turkey e-Fatura Schematron rules in `phive-rules-turkey` to the GİB `e-FaturaPaketi` published on 2026-08-24, containing the Schematron release `20260701` (see [issue #85](https://github.com/phax/phive-rules/issues/85)).

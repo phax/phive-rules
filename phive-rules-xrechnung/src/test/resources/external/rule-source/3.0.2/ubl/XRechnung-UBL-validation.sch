@@ -3,8 +3,9 @@
         xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
         xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
         xmlns:u="utils"
+        xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
         queryBinding="xslt2">
-   <title>Schematron Version 2.5.0 - XRechnung 3.0.2 compatible - UBL - Invoice / Creditnote</title>
+   <title>Schematron Version 2.6.0 - XRechnung 3.0.2 compatible - UBL - Invoice / Creditnote</title>
    <ns prefix="cbc"
        uri="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"/>
    <ns prefix="cac"
@@ -20,10 +21,11 @@
    <ns prefix="ubl-creditnote"
        uri="urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2"/>
    <ns prefix="xs" uri="http://www.w3.org/2001/XMLSchema"/>
+   <ns prefix="xr" uri="xrechnung"/>
    <ns uri="utils" prefix="u"/>
    <!--BEGIN Parameters from PEPPOL-->
    <let name="profile"
-        value="       if (/*/cbc:ProfileID and matches(normalize-space(/*/cbc:ProfileID), 'urn:fdc:peppol.eu:2017:poacc:billing:([0-9]{2}):1.0')) then         tokenize(normalize-space(/*/cbc:ProfileID), ':')[7]       else         'Unknown'"/>
+        value="        if (normalize-space(/*/cbc:ProfileID) = (         'urn:fdc:peppol.eu:2017:poacc:billing:01:1.0',         'urn:peppol:france:billing:regulated',         'urn:peppol:france:billing:non-regulated'        ))        then '01'        else if (normalize-space(/*/cbc:ProfileID) = 'urn:peppol:bis:billing_with_response')        then '02'        else 'Unknown'      "/>
    <let name="supplierCountry"
         value="       if (/*/cac:AccountingSupplierParty/cac:Party/cac:PartyTaxScheme[cac:TaxScheme/cbc:ID = 'VAT']/substring(cbc:CompanyID, 1, 2)) then         upper-case(normalize-space(/*/cac:AccountingSupplierParty/cac:Party/cac:PartyTaxScheme[cac:TaxScheme/cbc:ID = 'VAT']/substring(cbc:CompanyID, 1, 2)))       else         if (/*/cac:TaxRepresentativeParty/cac:PartyTaxScheme[cac:TaxScheme/cbc:ID = 'VAT']/substring(cbc:CompanyID, 1, 2)) then           upper-case(normalize-space(/*/cac:TaxRepresentativeParty/cac:PartyTaxScheme[cac:TaxScheme/cbc:ID = 'VAT']/substring(cbc:CompanyID, 1, 2)))         else           if (/*/cac:AccountingSupplierParty/cac:Party/cac:PostalAddress/cac:Country/cbc:IdentificationCode) then             upper-case(normalize-space(/*/cac:AccountingSupplierParty/cac:Party/cac:PostalAddress/cac:Country/cbc:IdentificationCode))           else             'XX'"/>
    <let name="customerCountry"
@@ -44,6 +46,12 @@
    <let name="accountingSupplierCountry"
         value="     if (/*/cac:AccountingSupplierParty/cac:Party/cac:PartyTaxScheme[cac:TaxScheme/cbc:ID = 'VAT']/substring(cbc:CompanyID, 1, 2)) then     upper-case(normalize-space(/*/cac:AccountingSupplierParty/cac:Party/cac:PartyTaxScheme[cac:TaxScheme/cbc:ID = 'VAT']/substring(cbc:CompanyID, 1, 2)))     else     if (/*/cac:AccountingSupplierParty/cac:Party/cac:PostalAddress/cac:Country/cbc:IdentificationCode) then     upper-case(normalize-space(/*/cac:AccountingSupplierParty/cac:Party/cac:PostalAddress/cac:Country/cbc:IdentificationCode))     else     'XX'"/>
    <!--END Parameters from PEPPOL-->
+   <xsl:function name="xr:checkIBAN" as="xs:boolean">
+      <xsl:param name="iban" as="xs:string"/>
+      <xsl:variable name="normalizedIban"
+                    select="normalize-space(replace($iban, '([\s])', ''))"/>
+      <xsl:sequence select="matches($normalizedIban, $XR-IBAN-REGEX) and                           xs:integer(string-join(for $cp in string-to-codepoints(concat(substring($normalizedIban,5),upper-case(substring($normalizedIban,1,2)),substring($normalizedIban,3,2))) return (if($cp &gt; 64) then string($cp - 55) else string($cp - 48)),'')) mod 97 = 1"/>
+   </xsl:function>
    <phase id="xrechnung-model">
       <active pattern="variable-pattern"/>
       <active pattern="ubl-pattern"/>
@@ -103,14 +111,14 @@
              name="u:checkCF"
              as="xs:boolean">
       <param name="arg" as="xs:string?"/>
-      <sequence select="   if ( (string-length($arg) = 16) or (string-length($arg) = 11) )      then    (    if ((string-length($arg) = 16))     then    (     if (u:checkCF16($arg))      then     (      true()     )     else     (      false()     )    )    else    (     if(($arg castable as xs:integer)) then true() else false()       )   )   else   (    false()   )   "/>
+      <sequence select="   if ( (string-length($arg) = 16) or (string-length($arg) = 11) )   then   (    if ((string-length($arg) = 16))    then    (     if (u:checkCF16($arg))     then     (      true()     )     else     (      false()     )    )    else    (     if(($arg castable as xs:integer)) then true() else false()     )   )   else   (    false()   )   "/>
    </function>
    <function xmlns="http://www.w3.org/1999/XSL/Transform"
              name="u:checkCF16"
              as="xs:boolean">
       <param name="arg" as="xs:string?"/>
       <variable name="allowed-characters">ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz</variable>
-      <sequence select="     if (  (string-length(translate(substring($arg,1,6), $allowed-characters, '')) = 0) and         (substring($arg,7,2) castable as xs:integer) and        (string-length(translate(substring($arg,9,1), $allowed-characters, '')) = 0) and        (substring($arg,10,2) castable as xs:integer) and         (substring($arg,12,3) castable as xs:string) and        (substring($arg,15,1) castable as xs:integer) and         (string-length(translate(substring($arg,16,1), $allowed-characters, '')) = 0)      )      then true()     else false()     "/>
+      <sequence select="     if (  (string-length(translate(substring($arg,1,6), $allowed-characters, '')) = 0) and       (substring($arg,7,2) castable as xs:integer) and       (string-length(translate(substring($arg,9,1), $allowed-characters, '')) = 0) and       (substring($arg,10,2) castable as xs:integer) and       (substring($arg,12,3) castable as xs:string) and       (substring($arg,15,1) castable as xs:integer) and       (string-length(translate(substring($arg,16,1), $allowed-characters, '')) = 0)      )     then true()     else false()     "/>
    </function>
    <function xmlns="http://www.w3.org/1999/XSL/Transform"
              name="u:checkPIVAseIT"
@@ -118,13 +126,13 @@
       <param name="arg" as="xs:string"/>
       <variable name="paese" select="substring($arg,1,2)"/>
       <variable name="codice" select="substring($arg,3)"/>
-      <sequence select="     if ( $paese = 'IT' or $paese = 'it' )    then    (     if ( ( string-length($codice) = 11 ) and ( if (u:checkPIVA($codice)!=0) then false() else true() ))     then     (      true()     )     else     (      false()     )    )    else    (     true()    )      "/>
+      <sequence select="     if ( $paese = 'IT' or $paese = 'it' )    then    (     if ( ( string-length($codice) = 11 ) and ( if (u:checkPIVA($codice)!=0) then false() else true() ))     then     (      true()     )     else     (      false()     )    )    else    (     true()    )    "/>
    </function>
    <function xmlns="http://www.w3.org/1999/XSL/Transform"
              name="u:checkPIVA"
              as="xs:integer">
       <param name="arg" as="xs:string?"/>
-      <sequence select="     if (not($arg castable as xs:integer))       then 1      else ( u:addPIVA($arg,xs:integer(0)) mod 10 )"/>
+      <sequence select="     if (not($arg castable as xs:integer))      then 1      else ( u:addPIVA($arg,xs:integer(0)) mod 10 )"/>
    </function>
    <function xmlns="http://www.w3.org/1999/XSL/Transform"
              name="u:addPIVA"
@@ -134,7 +142,7 @@
       <variable name="tappo"
                 select="if (not($arg castable as xs:integer)) then 0 else 1"/>
       <variable name="mapper"
-                select="if ($tappo = 0) then 0 else                    ( if ($pari = 1)                     then ( xs:integer(substring('0246813579', ( xs:integer(substring($arg,1,1)) +1 ) ,1)) )                     else ( xs:integer(substring($arg,1,1) ) )                   )"/>
+                select="if ($tappo = 0) then 0 else                   ( if ($pari = 1)                    then ( xs:integer(substring('0246813579', ( xs:integer(substring($arg,1,1)) +1 ) ,1)) )                    else ( xs:integer(substring($arg,1,1) ) )                   )"/>
       <sequence select="if ($tappo = 0) then $mapper else ( xs:integer($mapper) + u:addPIVA(substring(xs:string($arg),2), (if($pari=0) then 1 else 0) ) )"/>
    </function>
    <function xmlns="http://www.w3.org/1999/XSL/Transform"
@@ -167,7 +175,7 @@
             <variable name="mainPart" select="substring($number, 1, 9)"/>
             <variable name="checkDigit" select="substring($number, 10, 1)"/>
             <variable name="sum" as="xs:integer">
-               <sequence select="xs:integer(sum(       for $pos in 1 to string-length($mainPart) return         if ($pos mod 2 = 1)         then (number(substring($mainPart, string-length($mainPart) - $pos + 1, 1)) * 2) mod 10 +           (number(substring($mainPart, string-length($mainPart) - $pos + 1, 1)) * 2) idiv 10         else number(substring($mainPart, string-length($mainPart) - $pos + 1, 1))      ))"/>
+               <sequence select="xs:integer(sum(       for $pos in 1 to string-length($mainPart) return        if ($pos mod 2 = 1)        then (number(substring($mainPart, string-length($mainPart) - $pos + 1, 1)) * 2) mod 10 +          (number(substring($mainPart, string-length($mainPart) - $pos + 1, 1)) * 2) idiv 10        else number(substring($mainPart, string-length($mainPart) - $pos + 1, 1))      ))"/>
             </variable>
             <variable name="calculatedCheckDigit" select="(10 - $sum mod 10) mod 10"/>
             <sequence select="$calculatedCheckDigit = number($checkDigit)"/>
@@ -179,60 +187,62 @@
    <!--BEGIN Pattern from PEPPOL-->
    <pattern id="peppol-ubl-pattern-1">
       <rule context="//*[not(*) and not(normalize-space())]">
-         <assert id="PEPPOL-EN16931-R008" test="false()" flag="fatal">Document MUST not contain empty elements.</assert>
+         <assert id="PEPPOL-EN16931-R008"
+                 test="self::cbc:ID[parent::cac:OrderReference]"
+                 flag="fatal">[PEPPOL-EN16931-R008]-Document MUST not contain empty elements.</assert>
       </rule>
    </pattern>
    <pattern id="peppol-ubl-pattern-2">
     
       <rule context="ubl-creditnote:CreditNote | ubl-invoice:Invoice">
-         <assert id="PEPPOL-EN16931-R001" test="cbc:ProfileID" flag="fatal">Business process MUST be provided.</assert>
+         <assert id="PEPPOL-EN16931-R001" test="cbc:ProfileID" flag="fatal">[PEPPOL-EN16931-R001]-Business process MUST be provided.</assert>
       
       
       
       
          <assert id="PEPPOL-EN16931-R053"
                  test="count(cac:TaxTotal[cac:TaxSubtotal]) = 1"
-                 flag="fatal">Only one tax total with tax subtotals MUST be provided.</assert>
+                 flag="fatal">[PEPPOL-EN16931-R053]-Only one tax total with tax subtotals MUST be provided.</assert>
          <assert id="PEPPOL-EN16931-R054"
                  test="count(cac:TaxTotal[not(cac:TaxSubtotal)]) = (if (cbc:TaxCurrencyCode) then 1 else 0)"
-                 flag="fatal">Only one tax total without tax subtotals MUST be provided when tax currency code is provided.</assert>
+                 flag="fatal">[PEPPOL-EN16931-R054]-Only one tax total without tax subtotals MUST be provided when tax currency code is provided.</assert>
          <assert id="PEPPOL-EN16931-R055"
                  test="not(cbc:TaxCurrencyCode) or (cac:TaxTotal/cbc:TaxAmount[@currencyID=normalize-space(../../cbc:TaxCurrencyCode)] &lt;= 0 and cac:TaxTotal/cbc:TaxAmount[@currencyID=normalize-space(../../cbc:DocumentCurrencyCode)] &lt;= 0) or (cac:TaxTotal/cbc:TaxAmount[@currencyID=normalize-space(../../cbc:TaxCurrencyCode)] &gt;= 0 and cac:TaxTotal/cbc:TaxAmount[@currencyID=normalize-space(../../cbc:DocumentCurrencyCode)] &gt;= 0) "
-                 flag="fatal">Invoice total VAT amount and Invoice total VAT amount in accounting currency MUST have the same operational sign</assert>
+                 flag="fatal">[PEPPOL-EN16931-R055]-Invoice total VAT amount and Invoice total VAT amount in accounting currency MUST have the same operational sign</assert>
       </rule>
       <rule context="cbc:TaxCurrencyCode">
          <assert id="PEPPOL-EN16931-R005"
                  test="not(normalize-space(text()) = normalize-space(../cbc:DocumentCurrencyCode/text()))"
-                 flag="fatal">VAT accounting currency code MUST be different from invoice currency code when provided.</assert>
+                 flag="fatal">[PEPPOL-EN16931-R005]-VAT accounting currency code MUST be different from invoice currency code when provided.</assert>
       </rule>
     
       <rule context="cac:AccountingCustomerParty/cac:Party">
-         <assert id="PEPPOL-EN16931-R010" test="cbc:EndpointID" flag="fatal">Buyer electronic address MUST be provided</assert>
+         <assert id="PEPPOL-EN16931-R010" test="cbc:EndpointID" flag="fatal">[PEPPOL-EN16931-R010]-Buyer electronic address MUST be provided</assert>
       </rule>
     
       <rule context="cac:AccountingSupplierParty/cac:Party">
-         <assert id="PEPPOL-EN16931-R020" test="cbc:EndpointID" flag="fatal">Seller electronic address MUST be provided</assert>
+         <assert id="PEPPOL-EN16931-R020" test="cbc:EndpointID" flag="fatal">[PEPPOL-EN16931-R020]-Seller electronic address MUST be provided</assert>
       </rule>
     
       <rule context="ubl-invoice:Invoice/cac:AllowanceCharge[cbc:MultiplierFactorNumeric and not(cbc:BaseAmount)] | ubl-invoice:Invoice/cac:InvoiceLine/cac:AllowanceCharge[cbc:MultiplierFactorNumeric and not(cbc:BaseAmount)] | ubl-creditnote:CreditNote/cac:AllowanceCharge[cbc:MultiplierFactorNumeric and not(cbc:BaseAmount)] | ubl-creditnote:CreditNote/cac:CreditNoteLine/cac:AllowanceCharge[cbc:MultiplierFactorNumeric and not(cbc:BaseAmount)]">
-         <assert id="PEPPOL-EN16931-R041" test="false()" flag="fatal">Allowance/charge base amount MUST be provided when allowance/charge percentage is provided.</assert>
+         <assert id="PEPPOL-EN16931-R041" test="false()" flag="fatal">[PEPPOL-EN16931-R041]-Allowance/charge base amount MUST be provided when allowance/charge percentage is provided.</assert>
       </rule>
       <rule context="ubl-invoice:Invoice/cac:AllowanceCharge[not(cbc:MultiplierFactorNumeric) and cbc:BaseAmount] | ubl-invoice:Invoice/cac:InvoiceLine/cac:AllowanceCharge[not(cbc:MultiplierFactorNumeric) and cbc:BaseAmount] | ubl-creditnote:CreditNote/cac:AllowanceCharge[not(cbc:MultiplierFactorNumeric) and cbc:BaseAmount] | ubl-creditnote:CreditNote/cac:CreditNoteLine/cac:AllowanceCharge[not(cbc:MultiplierFactorNumeric) and cbc:BaseAmount]">
-         <assert id="PEPPOL-EN16931-R042" test="false()" flag="fatal">Allowance/charge percentage MUST be provided when allowance/charge base amount is provided.</assert>
+         <assert id="PEPPOL-EN16931-R042" test="false()" flag="fatal">[PEPPOL-EN16931-R042]-Allowance/charge percentage MUST be provided when allowance/charge base amount is provided.</assert>
       </rule>
       <rule context="ubl-invoice:Invoice/cac:AllowanceCharge | ubl-invoice:Invoice/cac:InvoiceLine/cac:AllowanceCharge | ubl-creditnote:CreditNote/cac:AllowanceCharge | ubl-creditnote:CreditNote/cac:CreditNoteLine/cac:AllowanceCharge">
          <assert id="PEPPOL-EN16931-R040"
                  test="not(cbc:MultiplierFactorNumeric and cbc:BaseAmount) or u:slack(if (cbc:Amount) then cbc:Amount else 0, (xs:decimal(cbc:BaseAmount) * xs:decimal(cbc:MultiplierFactorNumeric)) div 100, $slackValue)"
-                 flag="fatal">Allowance/charge amount must equal base amount * percentage/100 if base amount and percentage exists</assert>
+                 flag="fatal">[PEPPOL-EN16931-R040]-Allowance/charge amount must equal base amount * percentage/100 if base amount and percentage exists</assert>
          <assert id="PEPPOL-EN16931-R043"
                  test="normalize-space(cbc:ChargeIndicator/text()) = 'true' or normalize-space(cbc:ChargeIndicator/text()) = 'false'"
-                 flag="fatal">Allowance/charge ChargeIndicator value MUST equal 'true' or 'false'</assert>
+                 flag="fatal">[PEPPOL-EN16931-R043]-Allowance/charge ChargeIndicator value MUST equal 'true' or 'false'</assert>
       </rule>
     
       <rule context="         cac:PaymentMeans[some $code in tokenize('49 59', '\s')           satisfies normalize-space(cbc:PaymentMeansCode) = $code]">
          <assert id="PEPPOL-EN16931-R061"
                  test="cac:PaymentMandate/cbc:ID"
-                 flag="fatal">Mandate reference MUST be provided for direct debit.</assert>
+                 flag="fatal">[PEPPOL-EN16931-R061]-Mandate reference MUST be provided for direct debit.</assert>
       </rule>
     
     
@@ -240,12 +250,12 @@
       <rule context="ubl-invoice:Invoice[cac:InvoicePeriod/cbc:StartDate]/cac:InvoiceLine/cac:InvoicePeriod/cbc:StartDate | ubl-creditnote:CreditNote[cac:InvoicePeriod/cbc:StartDate]/cac:CreditNoteLine/cac:InvoicePeriod/cbc:StartDate">
          <assert id="PEPPOL-EN16931-R110"
                  test="xs:date(text()) &gt;= xs:date(../../../cac:InvoicePeriod/cbc:StartDate)"
-                 flag="fatal">Start date of line period MUST be within invoice period.</assert>
+                 flag="fatal">[PEPPOL-EN16931-R110]-Start date of line period MUST be within invoice period.</assert>
       </rule>
       <rule context="ubl-invoice:Invoice[cac:InvoicePeriod/cbc:EndDate]/cac:InvoiceLine/cac:InvoicePeriod/cbc:EndDate | ubl-creditnote:CreditNote[cac:InvoicePeriod/cbc:EndDate]/cac:CreditNoteLine/cac:InvoicePeriod/cbc:EndDate">
          <assert id="PEPPOL-EN16931-R111"
                  test="xs:date(text()) &lt;= xs:date(../../../cac:InvoicePeriod/cbc:EndDate)"
-                 flag="fatal">End date of line period MUST be within invoice period.</assert>
+                 flag="fatal">[PEPPOL-EN16931-R111]-End date of line period MUST be within invoice period.</assert>
       </rule>
     
       <rule context="cac:InvoiceLine | cac:CreditNoteLine">
@@ -263,23 +273,23 @@
               value="           if (cac:AllowanceCharge[normalize-space(cbc:ChargeIndicator) = 'true']) then             round(sum(cac:AllowanceCharge[normalize-space(cbc:ChargeIndicator) = 'true']/cbc:Amount/xs:decimal(.)) * 10 * 10) div 100           else             0"/>
          <assert id="PEPPOL-EN16931-R120"
                  test="u:slack($lineExtensionAmount, ($quantity * ($priceAmount div $baseQuantity)) + $chargesTotal - $allowancesTotal, $slackValue)"
-                 flag="warning">Invoice line net amount MUST equal (Invoiced quantity * (Item net price/item price base quantity) + Sum of invoice line charge amount - sum of invoice line allowance amount</assert>
+                 flag="warning">[PEPPOL-EN16931-R120]-Invoice line net amount MUST equal (Invoiced quantity * (Item net price/item price base quantity) + Sum of invoice line charge amount - sum of invoice line allowance amount</assert>
          <assert id="PEPPOL-EN16931-R121"
                  test="not(cac:Price/cbc:BaseQuantity) or xs:decimal(cac:Price/cbc:BaseQuantity) &gt; 0"
-                 flag="fatal">Base quantity MUST be a positive number above zero.</assert>
+                 flag="fatal">[PEPPOL-EN16931-R121]-Base quantity MUST be a positive number above zero.</assert>
       
          <assert id="PEPPOL-EN16931-R101"
                  test="(not(cac:DocumentReference) or (cac:DocumentReference/cbc:DocumentTypeCode='130'))"
-                 flag="fatal">Element Document reference can only be used for Invoice line object</assert>
+                 flag="fatal">[PEPPOL-EN16931-R101]-Element Document reference can only be used for Invoice line object</assert>
       </rule>
     
       <rule context="cac:Price/cac:AllowanceCharge">
          <assert id="PEPPOL-EN16931-R044"
                  test="normalize-space(cbc:ChargeIndicator) = 'false'"
-                 flag="fatal">Charge on price level is NOT allowed. Only value 'false' allowed.</assert>
+                 flag="fatal">[PEPPOL-EN16931-R044]-Charge on price level is NOT allowed. Only value 'false' allowed.</assert>
          <assert id="PEPPOL-EN16931-R046"
                  test="not(cbc:BaseAmount) or xs:decimal(../cbc:PriceAmount) = xs:decimal(cbc:BaseAmount) - xs:decimal(cbc:Amount)"
-                 flag="fatal">Item net price MUST equal (Gross price - Allowance amount) when gross price is provided.</assert>
+                 flag="fatal">[PEPPOL-EN16931-R046]-Item net price MUST equal (Gross price - Allowance amount) when gross price is provided.</assert>
       </rule>
     
       <rule context="cac:Price/cbc:BaseQuantity[@unitCode]">
@@ -289,8 +299,14 @@
               value="           if (/ubl-invoice:Invoice) then             ../../cbc:InvoicedQuantity           else             ../../cbc:CreditedQuantity"/>
          <assert id="PEPPOL-EN16931-R130"
                  test="not($hasQuantity) or @unitCode = $quantity/@unitCode"
-                 flag="fatal">Unit code of price base quantity MUST be same as invoiced quantity.</assert>
+                 flag="fatal">[PEPPOL-EN16931-R130]-Unit code of price base quantity MUST be same as invoiced quantity.</assert>
       </rule>
+    
+    
+    
+    
+    
+    
     
     
     
@@ -360,7 +376,13 @@
       </assert>
       </rule>
       <rule context="/ubl:Invoice/cac:AdditionalDocumentReference/cac:Attachment/cac:ExternalReference | /cn:CreditNote/cac:AdditionalDocumentReference/cac:Attachment/cac:ExternalReference">
-         <assert test="matches(cbc:URI, $XR-URL-REGEX)" flag="warning" id="BR-TMP-2">[BR-TMP-2] BT-124 "External document location" muss eine absolute URL mit gültigem Schema enthalten.</assert>
+         <assert test="matches(cbc:URI, $XR-URL-REGEX)" flag="fatal" id="BR-TMP-2">[BR-TMP-2] BT-124 "External document location" muss eine absolute URL mit gültigem Schema enthalten.</assert>
+      </rule>
+      <!-- temporary rule to enforce YYYY-MM-DD date format for all date BTs in UBL until PEPPOL-EN16931-F001 is fixed upstream in CEN/Peppol schematron, see https://github.com/ConnectingEurope/eInvoicing-EN16931/issues/451 -->
+      <rule context="cbc:IssueDate | cbc:DueDate | cbc:StartDate | cbc:EndDate | cbc:ActualDeliveryDate |        cbc:IssueDate | cbc:TaxPointDate | cbc:PaymentDueDate">
+         <assert test="matches(normalize-space(text()), '^\d{4}-\d{2}-\d{2}$')"
+                 flag="warning"
+                 id="BR-TMP-6">[BR-TMP-6] Datumsangaben in UBL müssen im Format JJJJ-MM-TT (YYYY-MM-DD) übermittelt werden.</assert>
       </rule>
       <rule context="/ubl:Invoice/cac:AccountingSupplierParty | /cn:CreditNote/cac:AccountingSupplierParty">
          <assert test="cac:Party/cac:Contact" flag="fatal" id="BR-DE-2">[BR-DE-2] Die Gruppe "SELLER CONTACT" (BG-6) muss übermittelt werden.</assert>
@@ -408,7 +430,7 @@
       </rule>
       <rule context="/ubl:Invoice/cac:PaymentMeans[normalize-space(cbc:PaymentMeansCode) = ('30','58')] | /cn:CreditNote/cac:PaymentMeans[normalize-space(cbc:PaymentMeansCode) = ('30','58')]">
       <!-- check for PaymentMeansCode 30 was not added by purpose in 2.1.1. -->
-         <assert test="not(normalize-space(cbc:PaymentMeansCode) = '58') or                     matches(normalize-space(replace(cac:PayeeFinancialAccount/cbc:ID, '([ \n\r\t\s])', '')), '^[A-Z]{2}[0-9]{2}[a-zA-Z0-9]{0,30}$') and                     xs:integer(string-join(for $cp in string-to-codepoints(concat(substring(normalize-space(replace(cac:PayeeFinancialAccount/cbc:ID, '([ \n\r\t\s])', '')),5),upper-case(substring(normalize-space(replace(cac:PayeeFinancialAccount/cbc:ID, '([ \n\r\t\s])', '')),1,2)),substring(normalize-space(replace(cac:PayeeFinancialAccount/cbc:ID, '([ \n\r\t\s])', '')),3,2))) return  (if($cp &gt; 64) then string($cp - 55) else  string($cp - 48)),'')) mod 97 = 1"
+         <assert test="not(normalize-space(cbc:PaymentMeansCode) = '58') or                     xr:checkIBAN(string(cac:PayeeFinancialAccount/cbc:ID))"
                  flag="warning"
                  id="BR-DE-19">[BR-DE-19] "Payment account identifier" (BT-84) soll eine korrekte IBAN enthalten, wenn in "Payment means type code" (BT-81) mit dem Code 58 SEPA als Zahlungsmittel gefordert wird.</assert>
          <assert test="cac:PayeeFinancialAccount" flag="fatal" id="BR-DE-23-a">[BR-DE-23-a] Wenn BT-81 "Payment means type code" einen Schlüssel für Überweisungen enthält (30, 58), muss BG-17 "CREDIT TRANSFER" übermittelt werden.</assert>
@@ -423,7 +445,7 @@
                  id="BR-DE-24-b">[BR-DE-24-b] Wenn BT-81 "Payment means type code" einen Schlüssel für Kartenzahlungen enthält (48, 54, 55), dürfen BG-17 und BG-19 nicht übermittelt werden.</assert>
       </rule>
       <rule context="/ubl:Invoice/cac:PaymentMeans[normalize-space(cbc:PaymentMeansCode) = '59'] | /cn:CreditNote/cac:PaymentMeans[normalize-space(cbc:PaymentMeansCode) = '59']">
-         <assert test="not(normalize-space(cbc:PaymentMeansCode) = '59') or                     matches(normalize-space(replace(cac:PaymentMandate/cac:PayerFinancialAccount/cbc:ID, '([ \n\r\t\s])', '')), '^[A-Z]{2}[0-9]{2}[a-zA-Z0-9]{0,30}$') and                     xs:decimal(string-join(for $cp in string-to-codepoints(concat(substring(normalize-space(replace(cac:PaymentMandate/cac:PayerFinancialAccount/cbc:ID, '([ \n\r\t\s])', '')),5),upper-case(substring(normalize-space(replace(cac:PaymentMandate/cac:PayerFinancialAccount/cbc:ID, '([ \n\r\t\s])', '')),1,2)),substring(normalize-space(replace(cac:PaymentMandate/cac:PayerFinancialAccount/cbc:ID, '([ \n\r\t\s])', '')),3,2))) return  (if($cp &gt; 64) then string($cp - 55) else  string($cp - 48)),'')) mod 97 = 1"
+         <assert test="not(normalize-space(cbc:PaymentMeansCode) = '59') or                     xr:checkIBAN(string(cac:PaymentMandate/cac:PayerFinancialAccount/cbc:ID))"
                  flag="warning"
                  id="BR-DE-20">[BR-DE-20] "Debited account identifier" (BT-91) soll eine korrekte IBAN enthalten, wenn in "Payment means type code" (BT-81) mit dem Code 59 SEPA als Zahlungsmittel gefordert wird.</assert>
          <assert test="cac:PaymentMandate" flag="fatal" id="BR-DE-25-a">[BR-DE-25-a] Wenn BT-81 "Payment means type code" einen Schlüssel für Lastschriften enthält (59), muss genau BG-19 "DIRECT DEBIT" übermittelt werden.</assert>

@@ -196,9 +196,9 @@ public final class XRechnungValidation
                                     EN16931Validation.VID_CII_1311,
                                     EN16931Validation.VID_UBL_CREDIT_NOTE_1311,
                                     EN16931Validation.VID_UBL_INVOICE_1311,
-                                    EN16931Validation.VID_CII_1315,
-                                    EN16931Validation.VID_UBL_CREDIT_NOTE_1315,
-                                    EN16931Validation.VID_UBL_INVOICE_1315);
+                                    EN16931Validation.VID_CII_1316,
+                                    EN16931Validation.VID_UBL_CREDIT_NOTE_1316,
+                                    EN16931Validation.VID_UBL_INVOICE_1316);
   }
 
   /**
@@ -283,12 +283,12 @@ public final class XRechnungValidation
     final IValidationExecutorSet <IValidationSourceXML> aVESInv_1_3_11 = PhiveRulesHelper.requireVESID (aRegistry,
                                                                                                         EN16931Validation.VID_UBL_INVOICE_1311);
 
-    final IValidationExecutorSet <IValidationSourceXML> aVESCII_1_3_15 = PhiveRulesHelper.requireVESID (aRegistry,
-                                                                                                        EN16931Validation.VID_CII_1315);
-    final IValidationExecutorSet <IValidationSourceXML> aVESCN_1_3_15 = PhiveRulesHelper.requireVESID (aRegistry,
-                                                                                                       EN16931Validation.VID_UBL_CREDIT_NOTE_1315);
-    final IValidationExecutorSet <IValidationSourceXML> aVESInv_1_3_15 = PhiveRulesHelper.requireVESID (aRegistry,
-                                                                                                        EN16931Validation.VID_UBL_INVOICE_1315);
+    final IValidationExecutorSet <IValidationSourceXML> aVESCII_1_3_16 = PhiveRulesHelper.requireVESID (aRegistry,
+                                                                                                        EN16931Validation.VID_CII_1316);
+    final IValidationExecutorSet <IValidationSourceXML> aVESCN_1_3_16 = PhiveRulesHelper.requireVESID (aRegistry,
+                                                                                                       EN16931Validation.VID_UBL_CREDIT_NOTE_1316);
+    final IValidationExecutorSet <IValidationSourceXML> aVESInv_1_3_16 = PhiveRulesHelper.requireVESID (aRegistry,
+                                                                                                        EN16931Validation.VID_UBL_INVOICE_1316);
 
     final String sPrefix = "/external/schematron/";
 
@@ -971,10 +971,10 @@ public final class XRechnungValidation
       }
     }
 
-    // v3.0.2 (based on rule release 2.5.0)
-    // Uses CEN rules 1.3.15
+    // v3.0.2 (based on rule release 2.6.0)
+    // Uses CEN rules 1.3.16
     {
-      final String sAkaVersion = " (rules v2.5.0)";
+      final String sAkaVersion = " (rules v2.6.0)";
 
       {
         final ICommonsMap <String, CustomErrorDetails> aCustomErrorLevels = new CommonsHashMap <> ();
@@ -988,7 +988,7 @@ public final class XRechnungValidation
                      .vesID (VID_XRECHNUNG_CII_302)
                      .displayName ("XRechnung CII " + VID_XRECHNUNG_CII_302.getVersionString () + sAkaVersion)
                      .notDeprecated ()
-                     .basedOn (aVESCII_1_3_15, aCustomErrorLevels)
+                     .basedOn (aVESCII_1_3_16, aCustomErrorLevels)
                      .addSchematron (PhiveRulesCIIHelper.createXSLT_CII_D16B (new ClassPathResource (sPrefix +
                                                                                                      "3.0.2/XRechnung-CII-validation.xslt",
                                                                                                      _getCL ())))
@@ -1014,7 +1014,7 @@ public final class XRechnungValidation
                                    " Extension" +
                                    sAkaVersion)
                      .notDeprecated ()
-                     .basedOn (aVESCII_1_3_15, aCustomErrorLevels)
+                     .basedOn (aVESCII_1_3_16, aCustomErrorLevels)
                      .addSchematron (PhiveRulesCIIHelper.createXSLT_CII_D16B (new ClassPathResource (sPrefix +
                                                                                                      "3.0.2/XRechnung-CII-validation.xslt",
                                                                                                      _getCL ())))
@@ -1032,7 +1032,7 @@ public final class XRechnungValidation
                                    VID_XRECHNUNG_UBL_CREDITNOTE_302.getVersionString () +
                                    sAkaVersion)
                      .notDeprecated ()
-                     .basedOn (aVESCN_1_3_15, aCustomErrorLevels)
+                     .basedOn (aVESCN_1_3_16, aCustomErrorLevels)
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix +
                     "3.0.2/XRechnung-UBL-validation.xslt",
                     _getCL ())))
@@ -1050,7 +1050,7 @@ public final class XRechnungValidation
                                    VID_XRECHNUNG_UBL_INVOICE_302.getVersionString () +
                                    sAkaVersion)
                      .notDeprecated ()
-                     .basedOn (aVESInv_1_3_15, aCustomErrorLevels)
+                     .basedOn (aVESInv_1_3_16, aCustomErrorLevels)
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix +
                     "3.0.2/XRechnung-UBL-validation.xslt",
                     _getCL ())))
@@ -1075,7 +1075,7 @@ public final class XRechnungValidation
                                    " Extension" +
                                    sAkaVersion)
                      .notDeprecated ()
-                     .basedOn (aVESInv_1_3_15, aCustomErrorLevels)
+                     .basedOn (aVESInv_1_3_16, aCustomErrorLevels)
                      .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix +
                     "3.0.2/XRechnung-UBL-validation.xslt",
                     _getCL ())))
