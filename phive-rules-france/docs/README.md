@@ -20,3 +20,11 @@ The GitHub layout differs slightly from the fnfe-mpe.org ZIPs:
 the root folder is "FNFE_RFE_INVOICE", "Factur-X_1.09" is named "Factur-X",
 "BASIC WL" is named "BASICWL" and the Factur-X Schematron file names are
 fully upper case. The CDAR, CII and UBL folders are unchanged.
+
+The v1.4.0.04 release was re-published on 2026-09-04 (the tag was moved from
+commit 5f76380b to 97ba0f3d). This has no effect on the rules stored here: the
+only non-example change is the rename of
+"Factur-X/EXTENDED/2xslt/Factur-X_EXTENDED.xslt" to "FACTUR-X_EXTENDED.xslt"
+with identical content - everything else added is example material below
+"Z.example". All CDAR, CII and UBL Schematron files are byte identical to the
+ones already stored, so no regeneration is needed.
