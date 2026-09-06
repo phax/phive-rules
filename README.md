@@ -265,7 +265,7 @@ I hope that with the introduction of PINT, the versioning problem will be solved
 
 # News and noteworthy
 
-v4.5.6 - work in progress
+v4.5.6 - 2026-09-06
 * Added the France CTC validation rules `1.4.0.04` (2026-09-03), VES coordinates `fr.ctc:ubl-invoice:1.4.0-04`, `fr.ctc:ubl-creditnote:1.4.0-04`, `fr.ctc:cii:1.4.0-04`, `fr.ctc:cdar:1.4.0-04`, `fr.ctc:extended-ubl-invoice:1.4.0-04`, `fr.ctc:extended-ubl-creditnote:1.4.0-04` and `fr.ctc:extended-cii:1.4.0-04`, and deprecated the 1.4.0.03 rules.
   The FNFE hotfix number `04` is expressed as a DVR version classifier, hence the version `1.4.0-04`.
   The rules are taken from [fnfempe/France_RFE v1.4.0.04](https://github.com/fnfempe/France_RFE/releases/tag/v1.4.0.04).
