@@ -63,8 +63,7 @@ public final class CTestFiles
 
                                                              PeppolValidationTaxData.VID_OPENPEPPOL_TDD_SK_1_0_0,
 
-                                                             PeppolValidationTaxData.VID_OPENPEPPOL_TDD_VIDA_1_0_0,
-    })
+                                                             PeppolValidationTaxData.VID_OPENPEPPOL_TDD_VIDA_1_0_0, })
       for (final IReadableResource aRes : getAllMatchingTestFiles (aVESID))
       {
         assertTrue ("Not existing test file: " + aRes.getPath (), aRes.exists ());

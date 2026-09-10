@@ -100,8 +100,7 @@ public final class CTestFiles
     }
     if (aVESID.equals (SEOValidation.VID_SEO_UBL_RECEIPT_ADVICE_110))
     {
-      return new CommonsArrayList <> (new String [] { "eprijemnica-001.xml",
-                                                      "eprijemnica-002.xml" },
+      return new CommonsArrayList <> (new String [] { "eprijemnica-001.xml", "eprijemnica-002.xml" },
                                       x -> new ClassPathResource (sPrefix + "1.1.0/" + x));
     }
 

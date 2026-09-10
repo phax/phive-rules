@@ -41,9 +41,13 @@ public final class CIUS_PTValidation
 
   // Version 2.0.0
   @Deprecated
-  public static final DVRCoordinate VID_CIUS_PT_UBL_CREDITNOTE_200 = DVRHelper.createCoordinate (GROUP_ID, "ubl-creditnote", "2.0.0");
+  public static final DVRCoordinate VID_CIUS_PT_UBL_CREDITNOTE_200 = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                                 "ubl-creditnote",
+                                                                                                 "2.0.0");
   @Deprecated
-  public static final DVRCoordinate VID_CIUS_PT_UBL_INVOICE_200 = DVRHelper.createCoordinate (GROUP_ID, "ubl-invoice", "2.0.0");
+  public static final DVRCoordinate VID_CIUS_PT_UBL_INVOICE_200 = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                              "ubl-invoice",
+                                                                                              "2.0.0");
   /**
    * @deprecated Use {@link #VID_CIUS_PT_UBL_CREDITNOTE_200} instead
    */
@@ -56,8 +60,12 @@ public final class CIUS_PTValidation
   public static final DVRCoordinate VID_TEAPPS_UBL_INVOICE_200 = VID_CIUS_PT_UBL_INVOICE_200;
 
   // Version 2.1.1
-  public static final DVRCoordinate VID_CIUS_PT_UBL_CREDITNOTE_211 = DVRHelper.createCoordinate (GROUP_ID, "ubl-creditnote", "2.1.1");
-  public static final DVRCoordinate VID_CIUS_PT_UBL_INVOICE_211 = DVRHelper.createCoordinate (GROUP_ID, "ubl-invoice", "2.1.1");
+  public static final DVRCoordinate VID_CIUS_PT_UBL_CREDITNOTE_211 = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                                 "ubl-creditnote",
+                                                                                                 "2.1.1");
+  public static final DVRCoordinate VID_CIUS_PT_UBL_INVOICE_211 = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                              "ubl-invoice",
+                                                                                              "2.1.1");
 
   private CIUS_PTValidation ()
   {}
@@ -83,19 +91,19 @@ public final class CIUS_PTValidation
       final ClassPathResource RES_200 = new ClassPathResource ("/external/schematron/2.0.0/urn_feap.gov.pt_CIUS-PT_2.0.0.xslt",
                                                                _getCL ());
       VesXmlBuilder.builder ()
-                       .vesID (VID_CIUS_PT_UBL_CREDITNOTE_200)
-                       .displayNamePrefix ("CIUS-PT UBL Credit Note ")
-                       .deprecated ()
-                       .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
-                       .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (RES_200))
-                       .registerInto (aRegistry);
+                   .vesID (VID_CIUS_PT_UBL_CREDITNOTE_200)
+                   .displayNamePrefix ("CIUS-PT UBL Credit Note ")
+                   .deprecated ()
+                   .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
+                   .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (RES_200))
+                   .registerInto (aRegistry);
       VesXmlBuilder.builder ()
-                       .vesID (VID_CIUS_PT_UBL_INVOICE_200)
-                       .displayNamePrefix ("CIUS-PT UBL Invoice ")
-                       .deprecated ()
-                       .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
-                       .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (RES_200))
-                       .registerInto (aRegistry);
+                   .vesID (VID_CIUS_PT_UBL_INVOICE_200)
+                   .displayNamePrefix ("CIUS-PT UBL Invoice ")
+                   .deprecated ()
+                   .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
+                   .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (RES_200))
+                   .registerInto (aRegistry);
     }
 
     // V2.1.1 containing the underlying EN rules
@@ -103,19 +111,19 @@ public final class CIUS_PTValidation
       final ClassPathResource RES_211 = new ClassPathResource ("/external/schematron/2.1.1/urn_feap.gov.pt_CIUS-PT_2.1.1.xslt",
                                                                _getCL ());
       VesXmlBuilder.builder ()
-                       .vesID (VID_CIUS_PT_UBL_CREDITNOTE_211)
-                       .displayNamePrefix ("CIUS-PT UBL Credit Note ")
-                       .notDeprecated ()
-                       .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
-                       .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (RES_211))
-                       .registerInto (aRegistry);
+                   .vesID (VID_CIUS_PT_UBL_CREDITNOTE_211)
+                   .displayNamePrefix ("CIUS-PT UBL Credit Note ")
+                   .notDeprecated ()
+                   .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
+                   .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (RES_211))
+                   .registerInto (aRegistry);
       VesXmlBuilder.builder ()
-                       .vesID (VID_CIUS_PT_UBL_INVOICE_211)
-                       .displayNamePrefix ("CIUS-PT UBL Invoice ")
-                       .notDeprecated ()
-                       .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
-                       .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (RES_211))
-                       .registerInto (aRegistry);
+                   .vesID (VID_CIUS_PT_UBL_INVOICE_211)
+                   .displayNamePrefix ("CIUS-PT UBL Invoice ")
+                   .notDeprecated ()
+                   .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
+                   .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (RES_211))
+                   .registerInto (aRegistry);
     }
   }
 }

@@ -47,7 +47,7 @@ public final class MainExtractTestFiles252
       // Find the example folder based on the profile index :-/
       final String sFolderNameStart = nProfileIndex + ". ";
       final File fExamplesFolder = new CommonsArrayList <> (new FileSystemIterator (fBasePath).withFilter (IFileFilter.directoryPublic ())).findFirst (f -> f.getName ()
-                                                                                                                                                            .startsWith (sFolderNameStart));
+                                                                                                                                                             .startsWith (sFolderNameStart));
       if (!fExamplesFolder.isDirectory ())
         throw new IllegalStateException ("Failed to find example folder for profile " + eProfile);
 

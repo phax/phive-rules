@@ -65,7 +65,9 @@ public final class PeppolValidationTaxData
   public static final DVRCoordinate VID_OPENPEPPOL_TDD_SK_1_0_0 = DVRHelper.createCoordinate (GROUP_ID, "sk", "1.0.0");
 
   // ViDA Pilot
-  public static final DVRCoordinate VID_OPENPEPPOL_TDD_VIDA_1_0_0 = DVRHelper.createCoordinate (GROUP_ID, "vida", "1.0.0");
+  public static final DVRCoordinate VID_OPENPEPPOL_TDD_VIDA_1_0_0 = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                                "vida",
+                                                                                                "1.0.0");
 
   private PeppolValidationTaxData ()
   {}

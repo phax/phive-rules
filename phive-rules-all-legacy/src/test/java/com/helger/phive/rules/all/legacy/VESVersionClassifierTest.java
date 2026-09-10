@@ -46,9 +46,9 @@ public final class VESVersionClassifierTest
   /**
    * <code>com.helger.base.version.Version.compareTo</code> compares the version classifier (the
    * part after the major/minor/micro numbers) as a String. Therefore all numeric classifiers of a
-   * single group ID + artifact ID + numeric version combination must have the same number of
-   * digits - otherwise e.g. "9" would be sorted after "13" and the "latest" pseudo version would
-   * resolve to the wrong VES.
+   * single group ID + artifact ID + numeric version combination must have the same number of digits
+   * - otherwise e.g. "9" would be sorted after "13" and the "latest" pseudo version would resolve
+   * to the wrong VES.
    */
   @Test
   public void testAllNumericVersionClassifiersAreStringComparable ()

@@ -44,8 +44,12 @@ public final class SETUValidation
 
   // V1.4
   public static final DVRCoordinate VID_SETU_ASSIGNMENT_14 = DVRHelper.createCoordinate (GROUP_ID, "assignment", "1.4");
-  public static final DVRCoordinate VID_SETU_HUMAN_RESOURCE_14 = DVRHelper.createCoordinate (GROUP_ID, "human-resource", "1.4");
-  public static final DVRCoordinate VID_SETU_STAFFING_ORDER_14 = DVRHelper.createCoordinate (GROUP_ID, "staffing-order", "1.4");
+  public static final DVRCoordinate VID_SETU_HUMAN_RESOURCE_14 = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                             "human-resource",
+                                                                                             "1.4");
+  public static final DVRCoordinate VID_SETU_STAFFING_ORDER_14 = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                             "staffing-order",
+                                                                                             "1.4");
   public static final DVRCoordinate VID_SETU_TIMECARD_14 = DVRHelper.createCoordinate (GROUP_ID, "timecard", "1.4");
 
   /**
@@ -90,50 +94,50 @@ public final class SETUValidation
 
     // V1.4
     VesXmlBuilder.builder ()
-                     .vesID (VID_SETU_ASSIGNMENT_14)
-                     .displayNamePrefix ("SETU Assignment ")
-                     .notDeprecated ()
-                     .addXSD (CXML_XSD.getXSDResource (),
-                              new ClassPathResource (sPrefixXSD + "setu/schemas/2020-01/AssignmentAdditionalNL.xsd",
-                                                     _getCL ()),
-                              new ClassPathResource (sPrefixXSD + "hr-xml/SIDES/Assignment.xsd", _getCL ()))
-                     .addSchematron (_createXSLT (new ClassPathResource (sPrefixSCH +
-                                                                         "1.4/xslt/Assignment-v1.4-Assignment.xslt",
-                                                                         _getCL ())))
-                     .registerInto (aRegistry);
+                 .vesID (VID_SETU_ASSIGNMENT_14)
+                 .displayNamePrefix ("SETU Assignment ")
+                 .notDeprecated ()
+                 .addXSD (CXML_XSD.getXSDResource (),
+                          new ClassPathResource (sPrefixXSD + "setu/schemas/2020-01/AssignmentAdditionalNL.xsd",
+                                                 _getCL ()),
+                          new ClassPathResource (sPrefixXSD + "hr-xml/SIDES/Assignment.xsd", _getCL ()))
+                 .addSchematron (_createXSLT (new ClassPathResource (sPrefixSCH +
+                                                                     "1.4/xslt/Assignment-v1.4-Assignment.xslt",
+                                                                     _getCL ())))
+                 .registerInto (aRegistry);
     VesXmlBuilder.builder ()
-                     .vesID (VID_SETU_HUMAN_RESOURCE_14)
-                     .displayNamePrefix ("SETU Human Resource ")
-                     .notDeprecated ()
-                     .addXSD (CXML_XSD.getXSDResource (),
-                              new ClassPathResource (sPrefixXSD + "setu/schemas/2020-01/HumanResourceAdditionalNL.xsd",
-                                                     _getCL ()),
-                              new ClassPathResource (sPrefixXSD + "hr-xml/SIDES/HumanResource.xsd", _getCL ()))
-                     .addSchematron (_createXSLT (new ClassPathResource (sPrefixSCH +
-                                                                         "1.4/xslt/OrderingAndSelection-v1.4-HumanResource.xslt",
-                                                                         _getCL ())))
-                     .registerInto (aRegistry);
+                 .vesID (VID_SETU_HUMAN_RESOURCE_14)
+                 .displayNamePrefix ("SETU Human Resource ")
+                 .notDeprecated ()
+                 .addXSD (CXML_XSD.getXSDResource (),
+                          new ClassPathResource (sPrefixXSD + "setu/schemas/2020-01/HumanResourceAdditionalNL.xsd",
+                                                 _getCL ()),
+                          new ClassPathResource (sPrefixXSD + "hr-xml/SIDES/HumanResource.xsd", _getCL ()))
+                 .addSchematron (_createXSLT (new ClassPathResource (sPrefixSCH +
+                                                                     "1.4/xslt/OrderingAndSelection-v1.4-HumanResource.xslt",
+                                                                     _getCL ())))
+                 .registerInto (aRegistry);
     VesXmlBuilder.builder ()
-                     .vesID (VID_SETU_STAFFING_ORDER_14)
-                     .displayNamePrefix ("SETU Staffing Order ")
-                     .notDeprecated ()
-                     .addXSD (CXML_XSD.getXSDResource (),
-                              new ClassPathResource (sPrefixXSD + "setu/schemas/2020-01/StaffingOrderAdditionalNL.xsd",
-                                                     _getCL ()),
-                              new ClassPathResource (sPrefixXSD + "hr-xml/SIDES/StaffingOrder.xsd", _getCL ()))
-                     .addSchematron (_createXSLT (new ClassPathResource (sPrefixSCH +
-                                                                         "1.4/xslt/OrderingAndSelection-v1.4-StaffingOrder.xslt",
-                                                                         _getCL ())))
-                     .registerInto (aRegistry);
+                 .vesID (VID_SETU_STAFFING_ORDER_14)
+                 .displayNamePrefix ("SETU Staffing Order ")
+                 .notDeprecated ()
+                 .addXSD (CXML_XSD.getXSDResource (),
+                          new ClassPathResource (sPrefixXSD + "setu/schemas/2020-01/StaffingOrderAdditionalNL.xsd",
+                                                 _getCL ()),
+                          new ClassPathResource (sPrefixXSD + "hr-xml/SIDES/StaffingOrder.xsd", _getCL ()))
+                 .addSchematron (_createXSLT (new ClassPathResource (sPrefixSCH +
+                                                                     "1.4/xslt/OrderingAndSelection-v1.4-StaffingOrder.xslt",
+                                                                     _getCL ())))
+                 .registerInto (aRegistry);
     VesXmlBuilder.builder ()
-                     .vesID (VID_SETU_TIMECARD_14)
-                     .displayNamePrefix ("SETU Timcard ")
-                     .notDeprecated ()
-                     .addXSD (CXML_XSD.getXSDResource (),
-                              new ClassPathResource (sPrefixXSD + "hr-xml/SIDES/TimeCardAdditionalData.xsd", _getCL ()),
-                              new ClassPathResource (sPrefixXSD + "hr-xml/TimeCard/TimeCard.xsd", _getCL ()))
-                     .addSchematron (_createXSLT (new ClassPathResource (sPrefixSCH + "1.4/xslt/RTE-v1.4-TimeCard.xslt",
-                                                                         _getCL ())))
-                     .registerInto (aRegistry);
+                 .vesID (VID_SETU_TIMECARD_14)
+                 .displayNamePrefix ("SETU Timcard ")
+                 .notDeprecated ()
+                 .addXSD (CXML_XSD.getXSDResource (),
+                          new ClassPathResource (sPrefixXSD + "hr-xml/SIDES/TimeCardAdditionalData.xsd", _getCL ()),
+                          new ClassPathResource (sPrefixXSD + "hr-xml/TimeCard/TimeCard.xsd", _getCL ()))
+                 .addSchematron (_createXSLT (new ClassPathResource (sPrefixSCH + "1.4/xslt/RTE-v1.4-TimeCard.xslt",
+                                                                     _getCL ())))
+                 .registerInto (aRegistry);
   }
 }

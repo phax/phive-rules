@@ -49,15 +49,21 @@ public final class PeppolItalyValidation2_3_0
   public static final String GROUP_ID = "it.peppol";
 
   @Deprecated
-  public static final DVRCoordinate VID_DESPATCH_ADVICE = DVRHelper.createCoordinate (GROUP_ID, "despatch-advice", VERSION_STR);
+  public static final DVRCoordinate VID_DESPATCH_ADVICE = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                      "despatch-advice",
+                                                                                      VERSION_STR);
   @Deprecated
   public static final DVRCoordinate VID_INVOICE = DVRHelper.createCoordinate (GROUP_ID, "invoice", VERSION_STR);
   @Deprecated
   public static final DVRCoordinate VID_ORDER = DVRHelper.createCoordinate (GROUP_ID, "order", VERSION_STR);
   @Deprecated
-  public static final DVRCoordinate VID_ORDER_AGREEMENT = DVRHelper.createCoordinate (GROUP_ID, "order-agreement", VERSION_STR);
+  public static final DVRCoordinate VID_ORDER_AGREEMENT = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                      "order-agreement",
+                                                                                      VERSION_STR);
   @Deprecated
-  public static final DVRCoordinate VID_ORDER_RESPONSE = DVRHelper.createCoordinate (GROUP_ID, "order-response", VERSION_STR);
+  public static final DVRCoordinate VID_ORDER_RESPONSE = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                     "order-response",
+                                                                                     VERSION_STR);
 
   @NonNull
   private static ClassLoader _getCL ()
@@ -89,49 +95,49 @@ public final class PeppolItalyValidation2_3_0
                                                                     _getCL ());
 
     VesXmlBuilder.builder ()
-                     .vesID (VID_DESPATCH_ADVICE)
-                     .displayName ("AGID Peppol Despatch Advice" + sVersion + sAkaVersionBIS)
-                     .deprecated ()
-                     .addXSD (UBL21Marshaller.getAllDespatchAdviceXSDs ())
-                     .addSchematron (PhiveRulesHelper.createXSLT (DESPATCH_ADVICE,
-                                                                  PhiveRulesUBLHelper.createUBL21NSContext (UBL21Marshaller.despatchAdvice ()
-                                                                                                                           .getRootElementNamespaceURI ())))
-                     .registerInto (aRegistry);
+                 .vesID (VID_DESPATCH_ADVICE)
+                 .displayName ("AGID Peppol Despatch Advice" + sVersion + sAkaVersionBIS)
+                 .deprecated ()
+                 .addXSD (UBL21Marshaller.getAllDespatchAdviceXSDs ())
+                 .addSchematron (PhiveRulesHelper.createXSLT (DESPATCH_ADVICE,
+                                                              PhiveRulesUBLHelper.createUBL21NSContext (UBL21Marshaller.despatchAdvice ()
+                                                                                                                       .getRootElementNamespaceURI ())))
+                 .registerInto (aRegistry);
     VesXmlBuilder.builder ()
-                     .vesID (VID_INVOICE)
-                     .displayName ("AGID Peppol Invoice" + sVersion + sAkaVersionBIS)
-                     .deprecated ()
-                     .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
-                     .addSchematron (PhiveRulesHelper.createXSLT (INVOICE,
-                                                                  PhiveRulesUBLHelper.createUBL21NSContext (UBL21Marshaller.invoice ()
-                                                                                                                           .getRootElementNamespaceURI ())))
-                     .registerInto (aRegistry);
+                 .vesID (VID_INVOICE)
+                 .displayName ("AGID Peppol Invoice" + sVersion + sAkaVersionBIS)
+                 .deprecated ()
+                 .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
+                 .addSchematron (PhiveRulesHelper.createXSLT (INVOICE,
+                                                              PhiveRulesUBLHelper.createUBL21NSContext (UBL21Marshaller.invoice ()
+                                                                                                                       .getRootElementNamespaceURI ())))
+                 .registerInto (aRegistry);
     VesXmlBuilder.builder ()
-                     .vesID (VID_ORDER)
-                     .displayName ("AGID Peppol Order" + sVersion + sAkaVersionBIS)
-                     .deprecated ()
-                     .addXSD (UBL21Marshaller.getAllOrderXSDs ())
-                     .addSchematron (PhiveRulesHelper.createXSLT (ORDER,
-                                                                  PhiveRulesUBLHelper.createUBL21NSContext (UBL21Marshaller.order ()
-                                                                                                                           .getRootElementNamespaceURI ())))
-                     .registerInto (aRegistry);
+                 .vesID (VID_ORDER)
+                 .displayName ("AGID Peppol Order" + sVersion + sAkaVersionBIS)
+                 .deprecated ()
+                 .addXSD (UBL21Marshaller.getAllOrderXSDs ())
+                 .addSchematron (PhiveRulesHelper.createXSLT (ORDER,
+                                                              PhiveRulesUBLHelper.createUBL21NSContext (UBL21Marshaller.order ()
+                                                                                                                       .getRootElementNamespaceURI ())))
+                 .registerInto (aRegistry);
     VesXmlBuilder.builder ()
-                     .vesID (VID_ORDER_AGREEMENT)
-                     .displayName ("AGID Peppol Order Agreement" + sVersion + sAkaVersionBIS)
-                     .deprecated ()
-                     .addXSD (UBL21Marshaller.getAllOrderResponseXSDs ())
-                     .addSchematron (PhiveRulesHelper.createXSLT (ORDER_AGREEMENT,
-                                                                  PhiveRulesUBLHelper.createUBL21NSContext (UBL21Marshaller.orderResponse ()
-                                                                                                                           .getRootElementNamespaceURI ())))
-                     .registerInto (aRegistry);
+                 .vesID (VID_ORDER_AGREEMENT)
+                 .displayName ("AGID Peppol Order Agreement" + sVersion + sAkaVersionBIS)
+                 .deprecated ()
+                 .addXSD (UBL21Marshaller.getAllOrderResponseXSDs ())
+                 .addSchematron (PhiveRulesHelper.createXSLT (ORDER_AGREEMENT,
+                                                              PhiveRulesUBLHelper.createUBL21NSContext (UBL21Marshaller.orderResponse ()
+                                                                                                                       .getRootElementNamespaceURI ())))
+                 .registerInto (aRegistry);
     VesXmlBuilder.builder ()
-                     .vesID (VID_ORDER_RESPONSE)
-                     .displayName ("AGID Peppol Order Response" + sVersion + sAkaVersionBIS)
-                     .deprecated ()
-                     .addXSD (UBL21Marshaller.getAllOrderResponseXSDs ())
-                     .addSchematron (PhiveRulesHelper.createXSLT (ORDER_RESPONSE,
-                                                                  PhiveRulesUBLHelper.createUBL21NSContext (UBL21Marshaller.orderResponse ()
-                                                                                                                           .getRootElementNamespaceURI ())))
-                     .registerInto (aRegistry);
+                 .vesID (VID_ORDER_RESPONSE)
+                 .displayName ("AGID Peppol Order Response" + sVersion + sAkaVersionBIS)
+                 .deprecated ()
+                 .addXSD (UBL21Marshaller.getAllOrderResponseXSDs ())
+                 .addSchematron (PhiveRulesHelper.createXSLT (ORDER_RESPONSE,
+                                                              PhiveRulesUBLHelper.createUBL21NSContext (UBL21Marshaller.orderResponse ()
+                                                                                                                       .getRootElementNamespaceURI ())))
+                 .registerInto (aRegistry);
   }
 }

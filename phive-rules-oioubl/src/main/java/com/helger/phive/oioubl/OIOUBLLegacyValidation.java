@@ -60,44 +60,74 @@ public final class OIOUBLLegacyValidation
   // Ancient old 2.0.2
   private static final String VERSION_202 = "2.0.2";
   @Deprecated
-  public static final DVRCoordinate VID_OIOUBL_APPLICATION_RESPONSE = DVRHelper.createCoordinate (GROUPID, "application-response", VERSION_202);
+  public static final DVRCoordinate VID_OIOUBL_APPLICATION_RESPONSE = DVRHelper.createCoordinate (GROUPID,
+                                                                                                  "application-response",
+                                                                                                  VERSION_202);
   @Deprecated
-  public static final DVRCoordinate VID_OIOUBL_CATALOGUE = DVRHelper.createCoordinate (GROUPID, "catalogue", VERSION_202);
+  public static final DVRCoordinate VID_OIOUBL_CATALOGUE = DVRHelper.createCoordinate (GROUPID,
+                                                                                       "catalogue",
+                                                                                       VERSION_202);
   @Deprecated
-  public static final DVRCoordinate VID_OIOUBL_CATALOGUE_DELETION = DVRHelper.createCoordinate (GROUPID, "catalogue-deletion", VERSION_202);
+  public static final DVRCoordinate VID_OIOUBL_CATALOGUE_DELETION = DVRHelper.createCoordinate (GROUPID,
+                                                                                                "catalogue-deletion",
+                                                                                                VERSION_202);
   @Deprecated
-  public static final DVRCoordinate VID_OIOUBL_CATALOGUE_ITEM_SPECIFICATION_UPDATE = DVRHelper.createCoordinate (GROUPID, "catalogue-item-specification-update", VERSION_202);
+  public static final DVRCoordinate VID_OIOUBL_CATALOGUE_ITEM_SPECIFICATION_UPDATE = DVRHelper.createCoordinate (GROUPID,
+                                                                                                                 "catalogue-item-specification-update",
+                                                                                                                 VERSION_202);
   @Deprecated
-  public static final DVRCoordinate VID_OIOUBL_CATALOGUE_PRICING_UPDATE = DVRHelper.createCoordinate (GROUPID, "catalogue-pricing-update", VERSION_202);
+  public static final DVRCoordinate VID_OIOUBL_CATALOGUE_PRICING_UPDATE = DVRHelper.createCoordinate (GROUPID,
+                                                                                                      "catalogue-pricing-update",
+                                                                                                      VERSION_202);
   @Deprecated
-  public static final DVRCoordinate VID_OIOUBL_CATALOGUE_REQUEST = DVRHelper.createCoordinate (GROUPID, "catalogue-request", VERSION_202);
+  public static final DVRCoordinate VID_OIOUBL_CATALOGUE_REQUEST = DVRHelper.createCoordinate (GROUPID,
+                                                                                               "catalogue-request",
+                                                                                               VERSION_202);
   @Deprecated
-  public static final DVRCoordinate VID_OIOUBL_CREDIT_NOTE = DVRHelper.createCoordinate (GROUPID, "credit-note", VERSION_202);
+  public static final DVRCoordinate VID_OIOUBL_CREDIT_NOTE = DVRHelper.createCoordinate (GROUPID,
+                                                                                         "credit-note",
+                                                                                         VERSION_202);
   @Deprecated
   public static final DVRCoordinate VID_OIOUBL_INVOICE = DVRHelper.createCoordinate (GROUPID, "invoice", VERSION_202);
   @Deprecated
   public static final DVRCoordinate VID_OIOUBL_ORDER = DVRHelper.createCoordinate (GROUPID, "order", VERSION_202);
   @Deprecated
-  public static final DVRCoordinate VID_OIOUBL_ORDER_CANCELLATION = DVRHelper.createCoordinate (GROUPID, "order-cancellation", VERSION_202);
+  public static final DVRCoordinate VID_OIOUBL_ORDER_CANCELLATION = DVRHelper.createCoordinate (GROUPID,
+                                                                                                "order-cancellation",
+                                                                                                VERSION_202);
   @Deprecated
-  public static final DVRCoordinate VID_OIOUBL_ORDER_CHANGE = DVRHelper.createCoordinate (GROUPID, "order-change", VERSION_202);
+  public static final DVRCoordinate VID_OIOUBL_ORDER_CHANGE = DVRHelper.createCoordinate (GROUPID,
+                                                                                          "order-change",
+                                                                                          VERSION_202);
   @Deprecated
-  public static final DVRCoordinate VID_OIOUBL_ORDER_RESPONSE = DVRHelper.createCoordinate (GROUPID, "order-response", VERSION_202);
+  public static final DVRCoordinate VID_OIOUBL_ORDER_RESPONSE = DVRHelper.createCoordinate (GROUPID,
+                                                                                            "order-response",
+                                                                                            VERSION_202);
   @Deprecated
-  public static final DVRCoordinate VID_OIOUBL_ORDER_RESPONSE_SIMPLE = DVRHelper.createCoordinate (GROUPID, "order-response-simple", VERSION_202);
+  public static final DVRCoordinate VID_OIOUBL_ORDER_RESPONSE_SIMPLE = DVRHelper.createCoordinate (GROUPID,
+                                                                                                   "order-response-simple",
+                                                                                                   VERSION_202);
   @Deprecated
   public static final DVRCoordinate VID_OIOUBL_REMINDER = DVRHelper.createCoordinate (GROUPID, "reminder", VERSION_202);
   @Deprecated
-  public static final DVRCoordinate VID_OIOUBL_STATEMENT = DVRHelper.createCoordinate (GROUPID, "statement", VERSION_202);
+  public static final DVRCoordinate VID_OIOUBL_STATEMENT = DVRHelper.createCoordinate (GROUPID,
+                                                                                       "statement",
+                                                                                       VERSION_202);
 
   // 3.0.1 - deprecated by the government
   private static final String VERSION_3_0_1 = "3.0.1";
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_CREDIT_NOTE_3_0_1 = DVRHelper.createCoordinate (GROUPID, "credit-note", VERSION_3_0_1);
+  public static final DVRCoordinate VID_OIOUBL_CREDIT_NOTE_3_0_1 = DVRHelper.createCoordinate (GROUPID,
+                                                                                               "credit-note",
+                                                                                               VERSION_3_0_1);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_INVOICE_3_0_1 = DVRHelper.createCoordinate (GROUPID, "invoice", VERSION_3_0_1);
+  public static final DVRCoordinate VID_OIOUBL_INVOICE_3_0_1 = DVRHelper.createCoordinate (GROUPID,
+                                                                                           "invoice",
+                                                                                           VERSION_3_0_1);
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OIOUBL_INVOICE_RESPONSE_3_0_1 = DVRHelper.createCoordinate (GROUPID, "invoice-response", VERSION_3_0_1);
+  public static final DVRCoordinate VID_OIOUBL_INVOICE_RESPONSE_3_0_1 = DVRHelper.createCoordinate (GROUPID,
+                                                                                                    "invoice-response",
+                                                                                                    VERSION_3_0_1);
   @Deprecated (forRemoval = false)
   public static final DVRCoordinate VID_OIOUBL_MLR_3_0_1 = DVRHelper.createCoordinate (GROUPID, "mlr", VERSION_3_0_1);
 
@@ -283,8 +313,8 @@ public final class OIOUBLLegacyValidation
                    .deprecated ()
                    .basedOn (aVESCN_1_3_13)
                    .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
-                  "OIOUBL-Creditnote.xslt",
-                  _getCL ())))
+                                                                                                "OIOUBL-Creditnote.xslt",
+                                                                                                _getCL ())))
                    .registerInto (aRegistry);
       VesXmlBuilder.builder ()
                    .vesID (VID_OIOUBL_INVOICE_3_0_1)
@@ -292,8 +322,8 @@ public final class OIOUBLLegacyValidation
                    .deprecated ()
                    .basedOn (aVESInv_1_3_13)
                    .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
-                  "OIOUBL-Invoice.xslt",
-                  _getCL ())))
+                                                                                                "OIOUBL-Invoice.xslt",
+                                                                                                _getCL ())))
                    .registerInto (aRegistry);
       VesXmlBuilder.builder ()
                    .vesID (VID_OIOUBL_INVOICE_RESPONSE_3_0_1)
@@ -301,11 +331,11 @@ public final class OIOUBLLegacyValidation
                    .deprecated ()
                    .addXSD (UBL21Marshaller.getAllApplicationResponseXSDs ())
                    .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
-                  "DK-PEPPOLBIS-T111.xslt",
-                  _getCL ())))
+                                                                                                "DK-PEPPOLBIS-T111.xslt",
+                                                                                                _getCL ())))
                    .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
-                  "OIOUBL-Invoice-Response.xslt",
-                  _getCL ())))
+                                                                                                "OIOUBL-Invoice-Response.xslt",
+                                                                                                _getCL ())))
                    .registerInto (aRegistry);
       VesXmlBuilder.builder ()
                    .vesID (VID_OIOUBL_MLR_3_0_1)
@@ -313,11 +343,11 @@ public final class OIOUBLLegacyValidation
                    .deprecated ()
                    .addXSD (UBL21Marshaller.getAllApplicationResponseXSDs ())
                    .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
-                  "DK-PEPPOLBIS-T71.xslt",
-                  _getCL ())))
+                                                                                                "DK-PEPPOLBIS-T71.xslt",
+                                                                                                _getCL ())))
                    .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPath +
-                  "OIOUBL-Message-Level-Response.xslt",
-                  _getCL ())))
+                                                                                                "OIOUBL-Message-Level-Response.xslt",
+                                                                                                _getCL ())))
                    .registerInto (aRegistry);
     }
   }

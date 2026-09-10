@@ -52,8 +52,12 @@ public final class SEOValidation
   public static final String GROUP_ID = "rs.gov.mfin.logistics";
 
   // Version 1.1.0 according to the published SEO UBL examples (2025.12)
-  public static final DVRCoordinate VID_SEO_UBL_DESPATCH_ADVICE_110 = DVRHelper.createCoordinate (GROUP_ID, "ubl-despatch-advice", "1.1.0");
-  public static final DVRCoordinate VID_SEO_UBL_RECEIPT_ADVICE_110 = DVRHelper.createCoordinate (GROUP_ID, "ubl-receipt-advice", "1.1.0");
+  public static final DVRCoordinate VID_SEO_UBL_DESPATCH_ADVICE_110 = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                                  "ubl-despatch-advice",
+                                                                                                  "1.1.0");
+  public static final DVRCoordinate VID_SEO_UBL_RECEIPT_ADVICE_110 = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                                 "ubl-receipt-advice",
+                                                                                                 "1.1.0");
 
   private SEOValidation ()
   {}

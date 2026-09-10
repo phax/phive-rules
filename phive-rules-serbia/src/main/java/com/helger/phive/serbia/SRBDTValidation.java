@@ -52,8 +52,12 @@ public final class SRBDTValidation
   public static final String GROUP_ID = "rs.gov.mfin.srbdt";
 
   // Version 1.0.0 referencing v1.3.8 of the EN rules
-  public static final DVRCoordinate VID_SRBDT_UBL_CREDITNOTE_100 = DVRHelper.createCoordinate (GROUP_ID, "ubl-creditnote", "1.0.0");
-  public static final DVRCoordinate VID_SRBDT_UBL_INVOICE_100 = DVRHelper.createCoordinate (GROUP_ID, "ubl-invoice", "1.0.0");
+  public static final DVRCoordinate VID_SRBDT_UBL_CREDITNOTE_100 = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                               "ubl-creditnote",
+                                                                                               "1.0.0");
+  public static final DVRCoordinate VID_SRBDT_UBL_INVOICE_100 = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                            "ubl-invoice",
+                                                                                            "1.0.0");
 
   private SRBDTValidation ()
   {}

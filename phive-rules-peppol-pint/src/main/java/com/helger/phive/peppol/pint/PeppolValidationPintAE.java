@@ -49,18 +49,34 @@ public final class PeppolValidationPintAE
   // 1.0.3 from 2026-03-25
   public static final LocalDate AE_PINT_2026_03_VALID_PER = PDTFactory.createLocalDate (2026, Month.JANUARY, 21);
   public static final OffsetDateTime AE_PINT_2026_03_VALID_PER_UTC = PDTFactory.createOffsetDateTimeUTC (AE_PINT_2026_03_VALID_PER);
-  public static final DVRCoordinate VID_OPENPEPPOL_AE_PINT_INVOICE_2026_03 = DVRHelper.createCoordinate (GROUP_ID, "invoice", "2026.3");
-  public static final DVRCoordinate VID_OPENPEPPOL_AE_PINT_CREDIT_NOTE_2026_03 = DVRHelper.createCoordinate (GROUP_ID, "creditnote", "2026.3");
-  public static final DVRCoordinate VID_OPENPEPPOL_AE_PINT_SB_INVOICE_2026_03 = DVRHelper.createCoordinate (GROUP_ID, "invoice-self-billing", "2026.3");
-  public static final DVRCoordinate VID_OPENPEPPOL_AE_PINT_SB_CREDIT_NOTE_2026_03 = DVRHelper.createCoordinate (GROUP_ID, "creditnote-self-billing", "2026.3");
+  public static final DVRCoordinate VID_OPENPEPPOL_AE_PINT_INVOICE_2026_03 = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                                         "invoice",
+                                                                                                         "2026.3");
+  public static final DVRCoordinate VID_OPENPEPPOL_AE_PINT_CREDIT_NOTE_2026_03 = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                                             "creditnote",
+                                                                                                             "2026.3");
+  public static final DVRCoordinate VID_OPENPEPPOL_AE_PINT_SB_INVOICE_2026_03 = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                                            "invoice-self-billing",
+                                                                                                            "2026.3");
+  public static final DVRCoordinate VID_OPENPEPPOL_AE_PINT_SB_CREDIT_NOTE_2026_03 = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                                                "creditnote-self-billing",
+                                                                                                                "2026.3");
 
   // 1.0.4 from 2026-05-28
   public static final LocalDate AE_PINT_2026_05_VALID_PER = PDTFactory.createLocalDate (2026, Month.MAY, 28);
   public static final OffsetDateTime AE_PINT_2026_05_VALID_PER_UTC = PDTFactory.createOffsetDateTimeUTC (AE_PINT_2026_05_VALID_PER);
-  public static final DVRCoordinate VID_OPENPEPPOL_AE_PINT_INVOICE_2026_05 = DVRHelper.createCoordinate (GROUP_ID, "invoice", "2026.5");
-  public static final DVRCoordinate VID_OPENPEPPOL_AE_PINT_CREDIT_NOTE_2026_05 = DVRHelper.createCoordinate (GROUP_ID, "creditnote", "2026.5");
-  public static final DVRCoordinate VID_OPENPEPPOL_AE_PINT_SB_INVOICE_2026_05 = DVRHelper.createCoordinate (GROUP_ID, "invoice-self-billing", "2026.5");
-  public static final DVRCoordinate VID_OPENPEPPOL_AE_PINT_SB_CREDIT_NOTE_2026_05 = DVRHelper.createCoordinate (GROUP_ID, "creditnote-self-billing", "2026.5");
+  public static final DVRCoordinate VID_OPENPEPPOL_AE_PINT_INVOICE_2026_05 = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                                         "invoice",
+                                                                                                         "2026.5");
+  public static final DVRCoordinate VID_OPENPEPPOL_AE_PINT_CREDIT_NOTE_2026_05 = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                                             "creditnote",
+                                                                                                             "2026.5");
+  public static final DVRCoordinate VID_OPENPEPPOL_AE_PINT_SB_INVOICE_2026_05 = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                                            "invoice-self-billing",
+                                                                                                            "2026.5");
+  public static final DVRCoordinate VID_OPENPEPPOL_AE_PINT_SB_CREDIT_NOTE_2026_05 = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                                                "creditnote-self-billing",
+                                                                                                                "2026.5");
 
   private PeppolValidationPintAE ()
   {}

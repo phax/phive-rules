@@ -160,60 +160,112 @@ public final class EN16931Validation
   @Deprecated
   public static final DVRCoordinate VID_UBL_INVOICE_1313 = DVRHelper.createCoordinate (GROUP_ID, "ubl", VERSION_1313);
   @Deprecated
-  public static final DVRCoordinate VID_UBL_INVOICE_1314_1 = DVRHelper.createCoordinate (GROUP_ID, "ubl", VERSION_1314_1);
+  public static final DVRCoordinate VID_UBL_INVOICE_1314_1 = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                         "ubl",
+                                                                                         VERSION_1314_1);
   @Deprecated
-  public static final DVRCoordinate VID_UBL_INVOICE_1314_2 = DVRHelper.createCoordinate (GROUP_ID, "ubl", VERSION_1314_2);
+  public static final DVRCoordinate VID_UBL_INVOICE_1314_2 = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                         "ubl",
+                                                                                         VERSION_1314_2);
   @Deprecated
   public static final DVRCoordinate VID_UBL_INVOICE_1315 = DVRHelper.createCoordinate (GROUP_ID, "ubl", VERSION_1315);
   public static final DVRCoordinate VID_UBL_INVOICE_1316 = DVRHelper.createCoordinate (GROUP_ID, "ubl", VERSION_1316);
 
   @Deprecated
-  public static final DVRCoordinate VID_UBL_CREDIT_NOTE_100 = DVRHelper.createCoordinate (GROUP_ID, "ubl-creditnote", VERSION_100);
+  public static final DVRCoordinate VID_UBL_CREDIT_NOTE_100 = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                          "ubl-creditnote",
+                                                                                          VERSION_100);
   @Deprecated
-  public static final DVRCoordinate VID_UBL_CREDIT_NOTE_110 = DVRHelper.createCoordinate (GROUP_ID, "ubl-creditnote", VERSION_110);
+  public static final DVRCoordinate VID_UBL_CREDIT_NOTE_110 = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                          "ubl-creditnote",
+                                                                                          VERSION_110);
   @Deprecated
-  public static final DVRCoordinate VID_UBL_CREDIT_NOTE_120 = DVRHelper.createCoordinate (GROUP_ID, "ubl-creditnote", VERSION_120);
+  public static final DVRCoordinate VID_UBL_CREDIT_NOTE_120 = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                          "ubl-creditnote",
+                                                                                          VERSION_120);
   @Deprecated
-  public static final DVRCoordinate VID_UBL_CREDIT_NOTE_121 = DVRHelper.createCoordinate (GROUP_ID, "ubl-creditnote", VERSION_121);
+  public static final DVRCoordinate VID_UBL_CREDIT_NOTE_121 = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                          "ubl-creditnote",
+                                                                                          VERSION_121);
   @Deprecated
-  public static final DVRCoordinate VID_UBL_CREDIT_NOTE_123 = DVRHelper.createCoordinate (GROUP_ID, "ubl-creditnote", VERSION_123);
+  public static final DVRCoordinate VID_UBL_CREDIT_NOTE_123 = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                          "ubl-creditnote",
+                                                                                          VERSION_123);
   @Deprecated
-  public static final DVRCoordinate VID_UBL_CREDIT_NOTE_130 = DVRHelper.createCoordinate (GROUP_ID, "ubl-creditnote", VERSION_130);
+  public static final DVRCoordinate VID_UBL_CREDIT_NOTE_130 = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                          "ubl-creditnote",
+                                                                                          VERSION_130);
   @Deprecated
-  public static final DVRCoordinate VID_UBL_CREDIT_NOTE_131 = DVRHelper.createCoordinate (GROUP_ID, "ubl-creditnote", VERSION_131);
+  public static final DVRCoordinate VID_UBL_CREDIT_NOTE_131 = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                          "ubl-creditnote",
+                                                                                          VERSION_131);
   @Deprecated
-  public static final DVRCoordinate VID_UBL_CREDIT_NOTE_132 = DVRHelper.createCoordinate (GROUP_ID, "ubl-creditnote", VERSION_132);
+  public static final DVRCoordinate VID_UBL_CREDIT_NOTE_132 = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                          "ubl-creditnote",
+                                                                                          VERSION_132);
   @Deprecated
-  public static final DVRCoordinate VID_UBL_CREDIT_NOTE_133 = DVRHelper.createCoordinate (GROUP_ID, "ubl-creditnote", VERSION_133);
+  public static final DVRCoordinate VID_UBL_CREDIT_NOTE_133 = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                          "ubl-creditnote",
+                                                                                          VERSION_133);
   @Deprecated
-  public static final DVRCoordinate VID_UBL_CREDIT_NOTE_134 = DVRHelper.createCoordinate (GROUP_ID, "ubl-creditnote", VERSION_134);
+  public static final DVRCoordinate VID_UBL_CREDIT_NOTE_134 = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                          "ubl-creditnote",
+                                                                                          VERSION_134);
   @Deprecated
-  public static final DVRCoordinate VID_UBL_CREDIT_NOTE_135 = DVRHelper.createCoordinate (GROUP_ID, "ubl-creditnote", VERSION_135);
+  public static final DVRCoordinate VID_UBL_CREDIT_NOTE_135 = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                          "ubl-creditnote",
+                                                                                          VERSION_135);
   @Deprecated
-  public static final DVRCoordinate VID_UBL_CREDIT_NOTE_136 = DVRHelper.createCoordinate (GROUP_ID, "ubl-creditnote", VERSION_136);
+  public static final DVRCoordinate VID_UBL_CREDIT_NOTE_136 = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                          "ubl-creditnote",
+                                                                                          VERSION_136);
   @Deprecated
-  public static final DVRCoordinate VID_UBL_CREDIT_NOTE_136A = DVRHelper.createCoordinate (GROUP_ID, "ubl-creditnote", VERSION_136A);
+  public static final DVRCoordinate VID_UBL_CREDIT_NOTE_136A = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                           "ubl-creditnote",
+                                                                                           VERSION_136A);
   @Deprecated
-  public static final DVRCoordinate VID_UBL_CREDIT_NOTE_137 = DVRHelper.createCoordinate (GROUP_ID, "ubl-creditnote", VERSION_137);
+  public static final DVRCoordinate VID_UBL_CREDIT_NOTE_137 = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                          "ubl-creditnote",
+                                                                                          VERSION_137);
   @Deprecated
-  public static final DVRCoordinate VID_UBL_CREDIT_NOTE_138 = DVRHelper.createCoordinate (GROUP_ID, "ubl-creditnote", VERSION_138);
+  public static final DVRCoordinate VID_UBL_CREDIT_NOTE_138 = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                          "ubl-creditnote",
+                                                                                          VERSION_138);
   @Deprecated
-  public static final DVRCoordinate VID_UBL_CREDIT_NOTE_139 = DVRHelper.createCoordinate (GROUP_ID, "ubl-creditnote", VERSION_139);
+  public static final DVRCoordinate VID_UBL_CREDIT_NOTE_139 = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                          "ubl-creditnote",
+                                                                                          VERSION_139);
   @Deprecated
-  public static final DVRCoordinate VID_UBL_CREDIT_NOTE_1310 = DVRHelper.createCoordinate (GROUP_ID, "ubl-creditnote", VERSION_1310);
+  public static final DVRCoordinate VID_UBL_CREDIT_NOTE_1310 = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                           "ubl-creditnote",
+                                                                                           VERSION_1310);
   @Deprecated
-  public static final DVRCoordinate VID_UBL_CREDIT_NOTE_1311 = DVRHelper.createCoordinate (GROUP_ID, "ubl-creditnote", VERSION_1311);
+  public static final DVRCoordinate VID_UBL_CREDIT_NOTE_1311 = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                           "ubl-creditnote",
+                                                                                           VERSION_1311);
   @Deprecated
-  public static final DVRCoordinate VID_UBL_CREDIT_NOTE_1312 = DVRHelper.createCoordinate (GROUP_ID, "ubl-creditnote", VERSION_1312);
+  public static final DVRCoordinate VID_UBL_CREDIT_NOTE_1312 = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                           "ubl-creditnote",
+                                                                                           VERSION_1312);
   @Deprecated
-  public static final DVRCoordinate VID_UBL_CREDIT_NOTE_1313 = DVRHelper.createCoordinate (GROUP_ID, "ubl-creditnote", VERSION_1313);
+  public static final DVRCoordinate VID_UBL_CREDIT_NOTE_1313 = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                           "ubl-creditnote",
+                                                                                           VERSION_1313);
   @Deprecated
-  public static final DVRCoordinate VID_UBL_CREDIT_NOTE_1314_1 = DVRHelper.createCoordinate (GROUP_ID, "ubl-creditnote", VERSION_1314_1);
+  public static final DVRCoordinate VID_UBL_CREDIT_NOTE_1314_1 = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                             "ubl-creditnote",
+                                                                                             VERSION_1314_1);
   @Deprecated
-  public static final DVRCoordinate VID_UBL_CREDIT_NOTE_1314_2 = DVRHelper.createCoordinate (GROUP_ID, "ubl-creditnote", VERSION_1314_2);
+  public static final DVRCoordinate VID_UBL_CREDIT_NOTE_1314_2 = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                             "ubl-creditnote",
+                                                                                             VERSION_1314_2);
   @Deprecated
-  public static final DVRCoordinate VID_UBL_CREDIT_NOTE_1315 = DVRHelper.createCoordinate (GROUP_ID, "ubl-creditnote", VERSION_1315);
-  public static final DVRCoordinate VID_UBL_CREDIT_NOTE_1316 = DVRHelper.createCoordinate (GROUP_ID, "ubl-creditnote", VERSION_1316);
+  public static final DVRCoordinate VID_UBL_CREDIT_NOTE_1315 = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                           "ubl-creditnote",
+                                                                                           VERSION_1315);
+  public static final DVRCoordinate VID_UBL_CREDIT_NOTE_1316 = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                           "ubl-creditnote",
+                                                                                           VERSION_1316);
 
   @NonNull
   private static ClassLoader _getCL ()

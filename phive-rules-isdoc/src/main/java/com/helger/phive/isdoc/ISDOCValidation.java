@@ -79,24 +79,24 @@ public final class ISDOCValidation
     ValueEnforcer.notNull (aRegistry, "Registry");
 
     VesXmlBuilder.builder ()
-                     .vesID (VID_ISDOC_601)
-                     .displayNamePrefix ("ISDOC ")
-                     .deprecated ()
-                     .addXSD (CXMLDSig.getXSDResource (),
-                              new ClassPathResource ("/external/schemas/isdoc/6.0.1/isdoc-invoice-dsig-6.0.1.xsd",
-                                                     _getCL ()))
-                     .addSchematron (_createXSLT (new ClassPathResource ("/external/schematron/isdoc/6.0.1/isdoc-6.0.1.xslt",
-                                                                         _getCL ())))
-                     .registerInto (aRegistry);
+                 .vesID (VID_ISDOC_601)
+                 .displayNamePrefix ("ISDOC ")
+                 .deprecated ()
+                 .addXSD (CXMLDSig.getXSDResource (),
+                          new ClassPathResource ("/external/schemas/isdoc/6.0.1/isdoc-invoice-dsig-6.0.1.xsd",
+                                                 _getCL ()))
+                 .addSchematron (_createXSLT (new ClassPathResource ("/external/schematron/isdoc/6.0.1/isdoc-6.0.1.xslt",
+                                                                     _getCL ())))
+                 .registerInto (aRegistry);
     VesXmlBuilder.builder ()
-                     .vesID (VID_ISDOC_602)
-                     .displayNamePrefix ("ISDOC ")
-                     .notDeprecated ()
-                     .addXSD (CXMLDSig.getXSDResource (),
-                              new ClassPathResource ("/external/schemas/isdoc/6.0.2/isdoc-invoice-dsig-6.0.2.xsd",
-                                                     _getCL ()))
-                     .addSchematron (_createXSLT (new ClassPathResource ("/external/schematron/isdoc/6.0.2/isdoc-6.0.2.xslt",
-                                                                         _getCL ())))
-                     .registerInto (aRegistry);
+                 .vesID (VID_ISDOC_602)
+                 .displayNamePrefix ("ISDOC ")
+                 .notDeprecated ()
+                 .addXSD (CXMLDSig.getXSDResource (),
+                          new ClassPathResource ("/external/schemas/isdoc/6.0.2/isdoc-invoice-dsig-6.0.2.xsd",
+                                                 _getCL ()))
+                 .addSchematron (_createXSLT (new ClassPathResource ("/external/schematron/isdoc/6.0.2/isdoc-6.0.2.xslt",
+                                                                     _getCL ())))
+                 .registerInto (aRegistry);
   }
 }

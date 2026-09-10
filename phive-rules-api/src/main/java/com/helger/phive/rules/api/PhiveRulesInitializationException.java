@@ -29,8 +29,7 @@ import com.helger.diver.api.coord.DVRCoordinate;
  *             {@link com.helger.phive.rules.shared.PhiveRulesInitializationException} instead.
  */
 @Deprecated (forRemoval = true, since = "4.5.0")
-public class PhiveRulesInitializationException extends
-                                               com.helger.phive.rules.shared.PhiveRulesInitializationException
+public class PhiveRulesInitializationException extends com.helger.phive.rules.shared.PhiveRulesInitializationException
 {
   @Deprecated (forRemoval = true, since = "4.5.0")
   public PhiveRulesInitializationException (@NonNull final DVRCoordinate aCoord)

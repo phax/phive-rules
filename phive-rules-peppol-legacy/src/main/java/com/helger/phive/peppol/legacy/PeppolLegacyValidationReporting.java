@@ -51,7 +51,9 @@ public final class PeppolLegacyValidationReporting
   // EUSR
 
   @Deprecated
-  public static final DVRCoordinate VID_OPENPEPPOL_EUSR_V100RC2 = DVRHelper.createCoordinate (GROUP_ID, "eusr", "1.0.0-RC2");
+  public static final DVRCoordinate VID_OPENPEPPOL_EUSR_V100RC2 = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                              "eusr",
+                                                                                              "1.0.0-RC2");
   @Deprecated
   public static final DVRCoordinate VID_OPENPEPPOL_EUSR_V100 = DVRHelper.createCoordinate (GROUP_ID, "eusr", "1.0.0");
   @Deprecated

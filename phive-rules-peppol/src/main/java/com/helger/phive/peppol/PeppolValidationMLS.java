@@ -69,8 +69,8 @@ public final class PeppolValidationMLS
                    .deprecated ()
                    .addXSD (UBL21Marshaller.getAllApplicationResponseXSDs ())
                    .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (BASE_PATH_SCH +
-                  "1.0.0/xslt/peppol-mls-1.0.0.xslt",
-                  _getCL ())))
+                                                                                                "1.0.0/xslt/peppol-mls-1.0.0.xslt",
+                                                                                                _getCL ())))
                    .registerInto (aRegistry);
     }
 
@@ -82,8 +82,8 @@ public final class PeppolValidationMLS
                    .notDeprecated ()
                    .addXSD (UBL21Marshaller.getAllApplicationResponseXSDs ())
                    .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (BASE_PATH_SCH +
-                  "1.0.1/xslt/peppol-mls-1.0.1.xslt",
-                  _getCL ())))
+                                                                                                "1.0.1/xslt/peppol-mls-1.0.1.xslt",
+                                                                                                _getCL ())))
                    .registerInto (aRegistry);
     }
   }

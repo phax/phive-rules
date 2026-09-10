@@ -1668,21 +1668,27 @@ public final class CTestFiles
                                         new FileSystemResource (sPrefix + "billing/inv/Exports.xml"),
                                         new FileSystemResource (sPrefix + "billing/inv/Margin scheme.xml"),
                                         new FileSystemResource (sPrefix + "billing/inv/Standard invoice.xml"),
-                                        new FileSystemResource (sPrefix + "billing/inv/Standard invoice - Extensive.xml"),
-                                        new FileSystemResource (sPrefix + "billing/inv/Standard invoice Mandatory fields.xml"),
+                                        new FileSystemResource (sPrefix +
+                                                                "billing/inv/Standard invoice - Extensive.xml"),
+                                        new FileSystemResource (sPrefix +
+                                                                "billing/inv/Standard invoice Mandatory fields.xml"),
                                         new FileSystemResource (sPrefix + "billing/inv/Standard tax invoice.xml"),
                                         new FileSystemResource (sPrefix + "billing/inv/Summary tax invoice.xml"),
-                                        new FileSystemResource (sPrefix + "billing/inv/Supply involving free trade zone.xml"),
+                                        new FileSystemResource (sPrefix +
+                                                                "billing/inv/Supply involving free trade zone.xml"),
                                         new FileSystemResource (sPrefix + "billing/inv/Supply through e-commerce.xml"),
-                                        new FileSystemResource (sPrefix + "billing/inv/Supply under Reverse charge mechanism.xml"),
+                                        new FileSystemResource (sPrefix +
+                                                                "billing/inv/Supply under Reverse charge mechanism.xml"),
                                         new FileSystemResource (sPrefix + "billing/inv/Zero rated supplies.xml"));
       if (aVESID.equals (PeppolLegacyValidationPintAE.VID_OPENPEPPOL_AE_PINT_CREDIT_NOTE_0_9_0))
-        return new CommonsArrayList <> (new FileSystemResource (sPrefix + "billing/cn/Disclosed agent billing tax credit note.xml"),
+        return new CommonsArrayList <> (new FileSystemResource (sPrefix +
+                                                                "billing/cn/Disclosed agent billing tax credit note.xml"),
                                         new FileSystemResource (sPrefix + "billing/cn/Standard tax credit Note.xml"));
       if (aVESID.equals (PeppolLegacyValidationPintAE.VID_OPENPEPPOL_AE_PINT_SB_INVOICE_0_9_0))
         return new CommonsArrayList <> (new FileSystemResource (sPrefix + "selfbilling/inv/Self Billing.xml"));
       if (aVESID.equals (PeppolLegacyValidationPintAE.VID_OPENPEPPOL_AE_PINT_SB_CREDIT_NOTE_0_9_0))
-        return new CommonsArrayList <> (new FileSystemResource (sPrefix + "selfbilling/cn/Self billing tax credit note.xml"));
+        return new CommonsArrayList <> (new FileSystemResource (sPrefix +
+                                                                "selfbilling/cn/Self billing tax credit note.xml"));
     }
 
     // PINT AE 2025.6
@@ -1691,27 +1697,36 @@ public final class CTestFiles
       if (aVESID.equals (PeppolLegacyValidationPintAE.VID_OPENPEPPOL_AE_PINT_INVOICE_2025_06))
         return new CommonsArrayList <> (new FileSystemResource (sPrefix + "billing/inv/Commercial invoice.xml"),
                                         new FileSystemResource (sPrefix + "billing/inv/Continuous supplies.xml"),
-                                        new FileSystemResource (sPrefix + "billing/inv/Deemed supply - predefined endpoint.xml"),
+                                        new FileSystemResource (sPrefix +
+                                                                "billing/inv/Deemed supply - predefined endpoint.xml"),
                                         new FileSystemResource (sPrefix + "billing/inv/Disclosed agent billing.xml"),
                                         new FileSystemResource (sPrefix + "billing/inv/Exports.xml"),
-                                        new FileSystemResource (sPrefix + "billing/inv/Exports - predefined endpoint.xml"),
+                                        new FileSystemResource (sPrefix +
+                                                                "billing/inv/Exports - predefined endpoint.xml"),
                                         new FileSystemResource (sPrefix + "billing/inv/Margin scheme.xml"),
-                                        new FileSystemResource (sPrefix + "billing/inv/Standard invoice - Extensive.xml"),
-                                        new FileSystemResource (sPrefix + "billing/inv/Standard invoice Mandatory fields.xml"),
+                                        new FileSystemResource (sPrefix +
+                                                                "billing/inv/Standard invoice - Extensive.xml"),
+                                        new FileSystemResource (sPrefix +
+                                                                "billing/inv/Standard invoice Mandatory fields.xml"),
                                         new FileSystemResource (sPrefix + "billing/inv/Standard tax invoice.xml"),
-                                        new FileSystemResource (sPrefix + "billing/inv/Standard tax invoice - predefined endpoint.xml"),
+                                        new FileSystemResource (sPrefix +
+                                                                "billing/inv/Standard tax invoice - predefined endpoint.xml"),
                                         new FileSystemResource (sPrefix + "billing/inv/Summary tax invoice.xml"),
-                                        new FileSystemResource (sPrefix + "billing/inv/Supply involving free trade zone.xml"),
+                                        new FileSystemResource (sPrefix +
+                                                                "billing/inv/Supply involving free trade zone.xml"),
                                         new FileSystemResource (sPrefix + "billing/inv/Supply through e-commerce.xml"),
-                                        new FileSystemResource (sPrefix + "billing/inv/Supply under Reverse charge mechanism.xml"),
+                                        new FileSystemResource (sPrefix +
+                                                                "billing/inv/Supply under Reverse charge mechanism.xml"),
                                         new FileSystemResource (sPrefix + "billing/inv/Zero rated supplies.xml"));
       if (aVESID.equals (PeppolLegacyValidationPintAE.VID_OPENPEPPOL_AE_PINT_CREDIT_NOTE_2025_06))
-        return new CommonsArrayList <> (new FileSystemResource (sPrefix + "billing/cn/Disclosed agent billing tax credit note.xml"),
+        return new CommonsArrayList <> (new FileSystemResource (sPrefix +
+                                                                "billing/cn/Disclosed agent billing tax credit note.xml"),
                                         new FileSystemResource (sPrefix + "billing/cn/Standard tax credit Note.xml"));
       if (aVESID.equals (PeppolLegacyValidationPintAE.VID_OPENPEPPOL_AE_PINT_SB_INVOICE_2025_06))
         return new CommonsArrayList <> (new FileSystemResource (sPrefix + "selfbilling/inv/Self Billing.xml"));
       if (aVESID.equals (PeppolLegacyValidationPintAE.VID_OPENPEPPOL_AE_PINT_SB_CREDIT_NOTE_2025_06))
-        return new CommonsArrayList <> (new FileSystemResource (sPrefix + "selfbilling/cn/Self billing tax credit note.xml"));
+        return new CommonsArrayList <> (new FileSystemResource (sPrefix +
+                                                                "selfbilling/cn/Self billing tax credit note.xml"));
     }
 
     // PINT AE 2025.7
@@ -1720,27 +1735,36 @@ public final class CTestFiles
       if (aVESID.equals (PeppolLegacyValidationPintAE.VID_OPENPEPPOL_AE_PINT_INVOICE_2025_07))
         return new CommonsArrayList <> (new FileSystemResource (sPrefix + "billing/inv/Commercial invoice.xml"),
                                         new FileSystemResource (sPrefix + "billing/inv/Continuous supplies.xml"),
-                                        new FileSystemResource (sPrefix + "billing/inv/Deemed supply - predefined endpoint.xml"),
+                                        new FileSystemResource (sPrefix +
+                                                                "billing/inv/Deemed supply - predefined endpoint.xml"),
                                         new FileSystemResource (sPrefix + "billing/inv/Disclosed agent billing.xml"),
                                         new FileSystemResource (sPrefix + "billing/inv/Exports.xml"),
-                                        new FileSystemResource (sPrefix + "billing/inv/Exports - predefined endpoint.xml"),
+                                        new FileSystemResource (sPrefix +
+                                                                "billing/inv/Exports - predefined endpoint.xml"),
                                         new FileSystemResource (sPrefix + "billing/inv/Margin scheme.xml"),
-                                        new FileSystemResource (sPrefix + "billing/inv/Standard invoice - Extensive.xml"),
-                                        new FileSystemResource (sPrefix + "billing/inv/Standard invoice Mandatory fields.xml"),
+                                        new FileSystemResource (sPrefix +
+                                                                "billing/inv/Standard invoice - Extensive.xml"),
+                                        new FileSystemResource (sPrefix +
+                                                                "billing/inv/Standard invoice Mandatory fields.xml"),
                                         new FileSystemResource (sPrefix + "billing/inv/Standard tax invoice.xml"),
-                                        new FileSystemResource (sPrefix + "billing/inv/Standard tax invoice - predefined endpoint.xml"),
+                                        new FileSystemResource (sPrefix +
+                                                                "billing/inv/Standard tax invoice - predefined endpoint.xml"),
                                         new FileSystemResource (sPrefix + "billing/inv/Summary tax invoice.xml"),
-                                        new FileSystemResource (sPrefix + "billing/inv/Supply involving free trade zone.xml"),
+                                        new FileSystemResource (sPrefix +
+                                                                "billing/inv/Supply involving free trade zone.xml"),
                                         new FileSystemResource (sPrefix + "billing/inv/Supply through e-commerce.xml"),
-                                        new FileSystemResource (sPrefix + "billing/inv/Supply under Reverse charge mechanism.xml"),
+                                        new FileSystemResource (sPrefix +
+                                                                "billing/inv/Supply under Reverse charge mechanism.xml"),
                                         new FileSystemResource (sPrefix + "billing/inv/Zero rated supplies.xml"));
       if (aVESID.equals (PeppolLegacyValidationPintAE.VID_OPENPEPPOL_AE_PINT_CREDIT_NOTE_2025_07))
-        return new CommonsArrayList <> (new FileSystemResource (sPrefix + "billing/cn/Disclosed agent billing tax credit note.xml"),
+        return new CommonsArrayList <> (new FileSystemResource (sPrefix +
+                                                                "billing/cn/Disclosed agent billing tax credit note.xml"),
                                         new FileSystemResource (sPrefix + "billing/cn/Standard tax credit Note.xml"));
       if (aVESID.equals (PeppolLegacyValidationPintAE.VID_OPENPEPPOL_AE_PINT_SB_INVOICE_2025_07))
         return new CommonsArrayList <> (new FileSystemResource (sPrefix + "selfbilling/inv/Self Billing.xml"));
       if (aVESID.equals (PeppolLegacyValidationPintAE.VID_OPENPEPPOL_AE_PINT_SB_CREDIT_NOTE_2025_07))
-        return new CommonsArrayList <> (new FileSystemResource (sPrefix + "selfbilling/cn/Self billing tax credit note.xml"));
+        return new CommonsArrayList <> (new FileSystemResource (sPrefix +
+                                                                "selfbilling/cn/Self billing tax credit note.xml"));
     }
 
     // PINT AE 2025.11
@@ -1749,27 +1773,36 @@ public final class CTestFiles
       if (aVESID.equals (PeppolLegacyValidationPintAE.VID_OPENPEPPOL_AE_PINT_INVOICE_2025_11))
         return new CommonsArrayList <> (new FileSystemResource (sPrefix + "billing/inv/Commercial invoice.xml"),
                                         new FileSystemResource (sPrefix + "billing/inv/Continuous supplies.xml"),
-                                        new FileSystemResource (sPrefix + "billing/inv/Deemed supply - predefined endpoint.xml"),
+                                        new FileSystemResource (sPrefix +
+                                                                "billing/inv/Deemed supply - predefined endpoint.xml"),
                                         new FileSystemResource (sPrefix + "billing/inv/Disclosed agent billing.xml"),
                                         new FileSystemResource (sPrefix + "billing/inv/Exports.xml"),
-                                        new FileSystemResource (sPrefix + "billing/inv/Exports - predefined endpoint.xml"),
+                                        new FileSystemResource (sPrefix +
+                                                                "billing/inv/Exports - predefined endpoint.xml"),
                                         new FileSystemResource (sPrefix + "billing/inv/Margin scheme.xml"),
-                                        new FileSystemResource (sPrefix + "billing/inv/Standard invoice - Extensive.xml"),
-                                        new FileSystemResource (sPrefix + "billing/inv/Standard invoice Mandatory fields.xml"),
+                                        new FileSystemResource (sPrefix +
+                                                                "billing/inv/Standard invoice - Extensive.xml"),
+                                        new FileSystemResource (sPrefix +
+                                                                "billing/inv/Standard invoice Mandatory fields.xml"),
                                         new FileSystemResource (sPrefix + "billing/inv/Standard tax invoice.xml"),
-                                        new FileSystemResource (sPrefix + "billing/inv/Standard tax invoice - predefined endpoint.xml"),
+                                        new FileSystemResource (sPrefix +
+                                                                "billing/inv/Standard tax invoice - predefined endpoint.xml"),
                                         new FileSystemResource (sPrefix + "billing/inv/Summary tax invoice.xml"),
-                                        new FileSystemResource (sPrefix + "billing/inv/Supply involving free trade zone.xml"),
+                                        new FileSystemResource (sPrefix +
+                                                                "billing/inv/Supply involving free trade zone.xml"),
                                         new FileSystemResource (sPrefix + "billing/inv/Supply through e-commerce.xml"),
-                                        new FileSystemResource (sPrefix + "billing/inv/Supply under Reverse charge mechanism.xml"),
+                                        new FileSystemResource (sPrefix +
+                                                                "billing/inv/Supply under Reverse charge mechanism.xml"),
                                         new FileSystemResource (sPrefix + "billing/inv/Zero rated supplies.xml"));
       if (aVESID.equals (PeppolLegacyValidationPintAE.VID_OPENPEPPOL_AE_PINT_CREDIT_NOTE_2025_11))
-        return new CommonsArrayList <> (new FileSystemResource (sPrefix + "billing/cn/Disclosed agent billing tax credit note.xml"),
+        return new CommonsArrayList <> (new FileSystemResource (sPrefix +
+                                                                "billing/cn/Disclosed agent billing tax credit note.xml"),
                                         new FileSystemResource (sPrefix + "billing/cn/Standard tax credit Note.xml"));
       if (aVESID.equals (PeppolLegacyValidationPintAE.VID_OPENPEPPOL_AE_PINT_SB_INVOICE_2025_11))
         return new CommonsArrayList <> (new FileSystemResource (sPrefix + "selfbilling/inv/Self Billing.xml"));
       if (aVESID.equals (PeppolLegacyValidationPintAE.VID_OPENPEPPOL_AE_PINT_SB_CREDIT_NOTE_2025_11))
-        return new CommonsArrayList <> (new FileSystemResource (sPrefix + "selfbilling/cn/Self billing tax credit note.xml"));
+        return new CommonsArrayList <> (new FileSystemResource (sPrefix +
+                                                                "selfbilling/cn/Self billing tax credit note.xml"));
     }
 
     // PINT AUNZ 1.0.1
@@ -1782,9 +1815,12 @@ public final class CTestFiles
                                         new FileSystemResource (sPrefix + "billing/AU GST Only.xml"),
                                         new FileSystemResource (sPrefix + "billing/AU GST Only - Prepaid.xml"),
                                         new FileSystemResource (sPrefix + "billing/AU Invoice.xml"),
-                                        new FileSystemResource (sPrefix + "billing/AU Invoice Energy Bill Example_1.xml"),
-                                        new FileSystemResource (sPrefix + "billing/AU Invoice Energy Bill Example_2.xml"),
-                                        new FileSystemResource (sPrefix + "billing/AU Invoice Energy Bill Example_3_negative_inv.xml"),
+                                        new FileSystemResource (sPrefix +
+                                                                "billing/AU Invoice Energy Bill Example_1.xml"),
+                                        new FileSystemResource (sPrefix +
+                                                                "billing/AU Invoice Energy Bill Example_2.xml"),
+                                        new FileSystemResource (sPrefix +
+                                                                "billing/AU Invoice Energy Bill Example_3_negative_inv.xml"),
                                         new FileSystemResource (sPrefix + "billing/NZ Allowance On Invoice Line.xml"),
                                         new FileSystemResource (sPrefix + "billing/NZ Invoice Level Allowance.xml"),
                                         new FileSystemResource (sPrefix + "billing/NZ Invoice Level Charge.xml"),
@@ -1797,11 +1833,13 @@ public final class CTestFiles
                                         new FileSystemResource (sPrefix + "billing/NZ Credit note.xml"));
       if (aVESID.equals (PeppolLegacyValidationPintAUNZ.VID_OPENPEPPOL_AUNZ_PINT_UBL_INVOICE_SELF_BILLING_1_0_1))
         return new CommonsArrayList <> (new FileSystemResource (sPrefix + "selfbilling/AUNZ Self Billing.xml"),
-                                        new FileSystemResource (sPrefix + "selfbilling/AU Self Billing - Negative Invoice.xml"),
+                                        new FileSystemResource (sPrefix +
+                                                                "selfbilling/AU Self Billing - Negative Invoice.xml"),
                                         new FileSystemResource (sPrefix + "selfbilling/NZ Self Billing.xml"));
       if (aVESID.equals (PeppolLegacyValidationPintAUNZ.VID_OPENPEPPOL_AUNZ_PINT_UBL_CREDIT_NOTE_SELF_BILLING_1_0_1))
         return new CommonsArrayList <> (new FileSystemResource (sPrefix + "selfbilling/AU Self Billed Credit Note.xml"),
-                                        new FileSystemResource (sPrefix + "selfbilling/NZ Self Billed Credit note.xml"));
+                                        new FileSystemResource (sPrefix +
+                                                                "selfbilling/NZ Self Billed Credit note.xml"));
     }
 
     // PINT AUNZ 1.1.0
@@ -1814,9 +1852,12 @@ public final class CTestFiles
                                         new FileSystemResource (sPrefix + "billing/AU GST Only.xml"),
                                         new FileSystemResource (sPrefix + "billing/AU GST Only - Prepaid.xml"),
                                         new FileSystemResource (sPrefix + "billing/AU Invoice.xml"),
-                                        new FileSystemResource (sPrefix + "billing/AU Invoice Energy Bill Example_1.xml"),
-                                        new FileSystemResource (sPrefix + "billing/AU Invoice Energy Bill Example_2.xml"),
-                                        new FileSystemResource (sPrefix + "billing/AU Invoice Energy Bill Example_3_negative_inv.xml"),
+                                        new FileSystemResource (sPrefix +
+                                                                "billing/AU Invoice Energy Bill Example_1.xml"),
+                                        new FileSystemResource (sPrefix +
+                                                                "billing/AU Invoice Energy Bill Example_2.xml"),
+                                        new FileSystemResource (sPrefix +
+                                                                "billing/AU Invoice Energy Bill Example_3_negative_inv.xml"),
                                         new FileSystemResource (sPrefix + "billing/NZ Allowance On Invoice Line.xml"),
                                         new FileSystemResource (sPrefix + "billing/NZ Invoice Level Allowance.xml"),
                                         new FileSystemResource (sPrefix + "billing/NZ Invoice Level Charge.xml"),
@@ -1829,11 +1870,13 @@ public final class CTestFiles
                                         new FileSystemResource (sPrefix + "billing/NZ Credit note.xml"));
       if (aVESID.equals (PeppolLegacyValidationPintAUNZ.VID_OPENPEPPOL_AUNZ_PINT_UBL_INVOICE_SELF_BILLING_1_1_0))
         return new CommonsArrayList <> (new FileSystemResource (sPrefix + "selfbilling/AUNZ Self Billing.xml"),
-                                        new FileSystemResource (sPrefix + "selfbilling/AU Self Billing - Negative Invoice.xml"),
+                                        new FileSystemResource (sPrefix +
+                                                                "selfbilling/AU Self Billing - Negative Invoice.xml"),
                                         new FileSystemResource (sPrefix + "selfbilling/NZ Self Billing.xml"));
       if (aVESID.equals (PeppolLegacyValidationPintAUNZ.VID_OPENPEPPOL_AUNZ_PINT_UBL_CREDIT_NOTE_SELF_BILLING_1_1_0))
         return new CommonsArrayList <> (new FileSystemResource (sPrefix + "selfbilling/AU Self Billed Credit Note.xml"),
-                                        new FileSystemResource (sPrefix + "selfbilling/NZ Self Billed Credit note.xml"));
+                                        new FileSystemResource (sPrefix +
+                                                                "selfbilling/NZ Self Billed Credit note.xml"));
     }
 
     // PINT AUNZ 1.1.1
@@ -1847,9 +1890,12 @@ public final class CTestFiles
                                         new FileSystemResource (sPrefix + "billing/AU GST Only - Prepaid.xml"),
                                         new FileSystemResource (sPrefix + "billing/AU Invoice.xml"),
                                         new FileSystemResource (sPrefix + "billing/AU Invoice Annual Insurance.xml"),
-                                        new FileSystemResource (sPrefix + "billing/AU Invoice Energy Bill Example_1.xml"),
-                                        new FileSystemResource (sPrefix + "billing/AU Invoice Energy Bill Example_2.xml"),
-                                        new FileSystemResource (sPrefix + "billing/AU Invoice Energy Bill Example_3_negative_inv.xml"),
+                                        new FileSystemResource (sPrefix +
+                                                                "billing/AU Invoice Energy Bill Example_1.xml"),
+                                        new FileSystemResource (sPrefix +
+                                                                "billing/AU Invoice Energy Bill Example_2.xml"),
+                                        new FileSystemResource (sPrefix +
+                                                                "billing/AU Invoice Energy Bill Example_3_negative_inv.xml"),
                                         new FileSystemResource (sPrefix + "billing/NZ Allowance On Invoice Line.xml"),
                                         new FileSystemResource (sPrefix + "billing/NZ Invoice Level Allowance.xml"),
                                         new FileSystemResource (sPrefix + "billing/NZ Invoice Level Charge.xml"),
@@ -1862,11 +1908,13 @@ public final class CTestFiles
                                         new FileSystemResource (sPrefix + "billing/NZ Credit note.xml"));
       if (aVESID.equals (PeppolLegacyValidationPintAUNZ.VID_OPENPEPPOL_AUNZ_PINT_UBL_INVOICE_SELF_BILLING_1_1_1))
         return new CommonsArrayList <> (new FileSystemResource (sPrefix + "selfbilling/AUNZ Self Billing.xml"),
-                                        new FileSystemResource (sPrefix + "selfbilling/AU Self Billing - Negative Invoice.xml"),
+                                        new FileSystemResource (sPrefix +
+                                                                "selfbilling/AU Self Billing - Negative Invoice.xml"),
                                         new FileSystemResource (sPrefix + "selfbilling/NZ Self Billing.xml"));
       if (aVESID.equals (PeppolLegacyValidationPintAUNZ.VID_OPENPEPPOL_AUNZ_PINT_UBL_CREDIT_NOTE_SELF_BILLING_1_1_1))
         return new CommonsArrayList <> (new FileSystemResource (sPrefix + "selfbilling/AU Self Billed Credit Note.xml"),
-                                        new FileSystemResource (sPrefix + "selfbilling/NZ Self Billed Credit note.xml"));
+                                        new FileSystemResource (sPrefix +
+                                                                "selfbilling/NZ Self Billed Credit note.xml"));
     }
 
     /* Peppol Reporting */

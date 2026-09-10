@@ -24,8 +24,8 @@ import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
 import com.helger.phive.xml.source.IValidationSourceXML;
 
 /**
- * Convenience class to register all OpenPeppol PINT (Peppol International) validation execution sets
- * in a single call.
+ * Convenience class to register all OpenPeppol PINT (Peppol International) validation execution
+ * sets in a single call.
  *
  * @author Philip Helger
  * @since 4.4.0

@@ -40,10 +40,16 @@ public final class PeppolValidationDirectory
   public static final String GROUP_ID = "eu.peppol.directory";
 
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OPENPEPPOL_BUSINESS_CARD_V1 = DVRHelper.createCoordinate (GROUP_ID, "businesscard", "1.0.0");
+  public static final DVRCoordinate VID_OPENPEPPOL_BUSINESS_CARD_V1 = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                                  "businesscard",
+                                                                                                  "1.0.0");
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OPENPEPPOL_BUSINESS_CARD_V2 = DVRHelper.createCoordinate (GROUP_ID, "businesscard", "2.0.0");
-  public static final DVRCoordinate VID_OPENPEPPOL_BUSINESS_CARD_V3 = DVRHelper.createCoordinate (GROUP_ID, "businesscard", "3.0.0");
+  public static final DVRCoordinate VID_OPENPEPPOL_BUSINESS_CARD_V2 = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                                  "businesscard",
+                                                                                                  "2.0.0");
+  public static final DVRCoordinate VID_OPENPEPPOL_BUSINESS_CARD_V3 = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                                  "businesscard",
+                                                                                                  "3.0.0");
 
   private PeppolValidationDirectory ()
   {}

@@ -242,8 +242,9 @@ public final class MainGibArtefactDownloader
     }
   }
 
-  private static void _writeReleaseSummary (final Path aTarget, final String sLatestDate, final List <Result> aResults)
-                                                                                                                        throws IOException
+  private static void _writeReleaseSummary (final Path aTarget,
+                                            final String sLatestDate,
+                                            final List <Result> aResults) throws IOException
   {
     final StringBuilder aSB = new StringBuilder ();
     aSB.append ("# GİB e-Fatura — latest release snapshot\n\n");

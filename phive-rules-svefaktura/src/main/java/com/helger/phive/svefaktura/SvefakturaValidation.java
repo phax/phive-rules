@@ -41,7 +41,9 @@ public final class SvefakturaValidation
   public static final String GROUP_ID = "se.sfti";
 
   public static final DVRCoordinate VID_SVEFAKTURA_10 = DVRHelper.createCoordinate (GROUP_ID, "svefaktura", "1.0");
-  public static final DVRCoordinate VID_OBJECT_ENVELOPE_10 = DVRHelper.createCoordinate (GROUP_ID, "object-envelope", "1.0");
+  public static final DVRCoordinate VID_OBJECT_ENVELOPE_10 = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                         "object-envelope",
+                                                                                         "1.0");
 
   private SvefakturaValidation ()
   {}

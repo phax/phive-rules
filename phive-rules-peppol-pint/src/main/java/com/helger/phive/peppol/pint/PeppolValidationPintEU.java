@@ -43,17 +43,29 @@ public final class PeppolValidationPintEU
 
   // 1.0.0 from 2025-10-01
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OPENPEPPOL_EU_PINT_INVOICE_2025_10 = DVRHelper.createCoordinate (GROUP_ID, "invoice", "2025.10");
+  public static final DVRCoordinate VID_OPENPEPPOL_EU_PINT_INVOICE_2025_10 = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                                         "invoice",
+                                                                                                         "2025.10");
   @Deprecated (forRemoval = false)
-  public static final DVRCoordinate VID_OPENPEPPOL_EU_PINT_CREDIT_NOTE_2025_10 = DVRHelper.createCoordinate (GROUP_ID, "creditnote", "2025.10");
+  public static final DVRCoordinate VID_OPENPEPPOL_EU_PINT_CREDIT_NOTE_2025_10 = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                                             "creditnote",
+                                                                                                             "2025.10");
 
   // 1.0.1 from 2026-03-09
-  public static final DVRCoordinate VID_OPENPEPPOL_EU_PINT_INVOICE_2025_11 = DVRHelper.createCoordinate (GROUP_ID, "invoice", "2025.11");
-  public static final DVRCoordinate VID_OPENPEPPOL_EU_PINT_CREDIT_NOTE_2025_11 = DVRHelper.createCoordinate (GROUP_ID, "creditnote", "2025.11");
+  public static final DVRCoordinate VID_OPENPEPPOL_EU_PINT_INVOICE_2025_11 = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                                         "invoice",
+                                                                                                         "2025.11");
+  public static final DVRCoordinate VID_OPENPEPPOL_EU_PINT_CREDIT_NOTE_2025_11 = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                                             "creditnote",
+                                                                                                             "2025.11");
 
   // 1.1.1 from 2026-06-09
-  public static final DVRCoordinate VID_OPENPEPPOL_EU_PINT_INVOICE_2026_6 = DVRHelper.createCoordinate (GROUP_ID, "invoice", "2026.6");
-  public static final DVRCoordinate VID_OPENPEPPOL_EU_PINT_CREDIT_NOTE_2026_6 = DVRHelper.createCoordinate (GROUP_ID, "creditnote", "2026.6");
+  public static final DVRCoordinate VID_OPENPEPPOL_EU_PINT_INVOICE_2026_6 = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                                        "invoice",
+                                                                                                        "2026.6");
+  public static final DVRCoordinate VID_OPENPEPPOL_EU_PINT_CREDIT_NOTE_2026_6 = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                                            "creditnote",
+                                                                                                            "2026.6");
 
   private PeppolValidationPintEU ()
   {}
