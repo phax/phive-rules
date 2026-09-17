@@ -27,9 +27,10 @@ import com.helger.peppol.om.tdd.jaxb.PeppolOMTDD10Marshaller;
 import com.helger.peppol.sk.tdd.jaxb.PeppolSKTDD100Marshaller;
 import com.helger.peppol.uae.tdd.jaxb.PeppolUAETDD10Marshaller;
 import com.helger.peppol.vida.tdd.jaxb.PeppolViDATDD100Marshaller;
+import com.helger.peppol.vida.tdd.jaxb.PeppolViDATDD110Marshaller;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
-import com.helger.phive.rules.shared.PhiveRulesHelper;
 import com.helger.phive.rules.shared.DVRHelper;
+import com.helger.phive.rules.shared.PhiveRulesHelper;
 import com.helger.phive.xml.executorset.VesXmlBuilder;
 import com.helger.phive.xml.source.IValidationSourceXML;
 import com.helger.xml.namespace.MapBasedNamespaceContext;
@@ -65,9 +66,13 @@ public final class PeppolValidationTaxData
   public static final DVRCoordinate VID_OPENPEPPOL_TDD_SK_1_0_0 = DVRHelper.createCoordinate (GROUP_ID, "sk", "1.0.0");
 
   // ViDA Pilot
+  @Deprecated (forRemoval = false)
   public static final DVRCoordinate VID_OPENPEPPOL_TDD_VIDA_1_0_0 = DVRHelper.createCoordinate (GROUP_ID,
                                                                                                 "vida",
                                                                                                 "1.0.0");
+  public static final DVRCoordinate VID_OPENPEPPOL_TDD_VIDA_1_1_0 = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                                "vida",
+                                                                                                "1.1.0");
 
   private PeppolValidationTaxData ()
   {}
@@ -78,6 +83,7 @@ public final class PeppolValidationTaxData
     return PeppolValidationTaxData.class.getClassLoader ();
   }
 
+  @SuppressWarnings ("removal")
   public static void init (@NonNull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
   {
     ValueEnforcer.notNull (aRegistry, "Registry");
@@ -196,13 +202,14 @@ public final class PeppolValidationTaxData
 
     // ViDA Pilot
     {
-      final MapBasedNamespaceContext aNsCtx = PeppolViDATDD100Marshaller.createNamespaceContext ();
+      // The XML namespace is identical in 1.0.0 and 1.1.0
+      final MapBasedNamespaceContext aNsCtx = PeppolViDATDD110Marshaller.createNamespaceContext ();
 
       // 1.0.0
       VesXmlBuilder.builder ()
                    .vesID (VID_OPENPEPPOL_TDD_VIDA_1_0_0)
                    .displayName ("Peppol ViDA Pilot Tax Data Document 1.0.0")
-                   .notDeprecated ()
+                   .deprecated ()
                    .addXSD (PeppolViDATDD100Marshaller.getAllXSDs ())
                    .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (BASE_PATH_SCH +
                                                                                        "vida/1.0.0/CEN-EN16931-UBL.xslt",
@@ -212,6 +219,23 @@ public final class PeppolValidationTaxData
                                                                                        _getCL ()), aNsCtx))
                    .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (BASE_PATH_SCH +
                                                                                        "vida/1.0.0/Peppol-ViDA-TDD.xslt",
+                                                                                       _getCL ()), aNsCtx))
+                   .registerInto (aRegistry);
+
+      // 1.1.0
+      VesXmlBuilder.builder ()
+                   .vesID (VID_OPENPEPPOL_TDD_VIDA_1_1_0)
+                   .displayName ("Peppol ViDA Pilot Tax Data Document 1.1.0")
+                   .notDeprecated ()
+                   .addXSD (PeppolViDATDD110Marshaller.getAllXSDs ())
+                   .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (BASE_PATH_SCH +
+                                                                                       "vida/1.1.0/CEN-EN16931-UBL.xslt",
+                                                                                       _getCL ()), aNsCtx))
+                   .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (BASE_PATH_SCH +
+                                                                                       "vida/1.1.0/PEPPOL-EN16931-UBL.xslt",
+                                                                                       _getCL ()), aNsCtx))
+                   .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (BASE_PATH_SCH +
+                                                                                       "vida/1.1.0/Peppol-ViDA-TDD.xslt",
                                                                                        _getCL ()), aNsCtx))
                    .registerInto (aRegistry);
     }
