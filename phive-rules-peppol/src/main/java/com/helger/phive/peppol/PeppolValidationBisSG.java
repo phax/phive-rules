@@ -71,12 +71,24 @@ public final class PeppolValidationBisSG
   // 2024.12
   public static final LocalDate VALID_PER_2024_12 = PDTFactory.createLocalDate (2025, Month.MARCH, 3);
   public static final OffsetDateTime VALID_PER_UTC_2014_12 = PDTFactory.createOffsetDateTimeUTC (VALID_PER_2024_12);
+  @Deprecated (forRemoval = false)
   public static final DVRCoordinate VID_OPENPEPPOL_BIS3_SG_UBL_INVOICE_2024_12 = DVRHelper.createCoordinate (GROUP_ID_BIS_BILLING,
                                                                                                              "invoice",
                                                                                                              "2024.12");
+  @Deprecated (forRemoval = false)
   public static final DVRCoordinate VID_OPENPEPPOL_BIS3_SG_UBL_CREDIT_NOTE_2024_12 = DVRHelper.createCoordinate (GROUP_ID_BIS_BILLING,
                                                                                                                  "creditnote",
                                                                                                                  "2024.12");
+
+  // 2026.6
+  public static final LocalDate VALID_PER_2026_6 = PDTFactory.createLocalDate (2026, Month.SEPTEMBER, 8);
+  public static final OffsetDateTime VALID_PER_UTC_2026_6 = PDTFactory.createOffsetDateTimeUTC (VALID_PER_2026_6);
+  public static final DVRCoordinate VID_OPENPEPPOL_BIS3_SG_UBL_INVOICE_2026_6 = DVRHelper.createCoordinate (GROUP_ID_BIS_BILLING,
+                                                                                                            "invoice",
+                                                                                                            "2026.6");
+  public static final DVRCoordinate VID_OPENPEPPOL_BIS3_SG_UBL_CREDIT_NOTE_2026_6 = DVRHelper.createCoordinate (GROUP_ID_BIS_BILLING,
+                                                                                                                "creditnote",
+                                                                                                                "2026.6");
 
   // Order Balance
   public static final DVRCoordinate VID_PEPPOL_SG_ORDER_BALANCE_1_0 = DVRHelper.createCoordinate (GROUP_ID_ORDER_BALANCE,
@@ -187,7 +199,7 @@ public final class PeppolValidationBisSG
       VesXmlBuilder.builder ()
                    .vesID (VID_OPENPEPPOL_BIS3_SG_UBL_INVOICE_2024_12)
                    .displayName ("SG Peppol BIS3 Invoice (UBL) 2024.12" + sAkaVersionBilling)
-                   .notDeprecated ()
+                   .deprecated ()
                    .validFrom (VALID_PER_UTC_2014_12)
                    .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
                    .addSchematron (PhiveRulesHelper.createXSLT (BIS3_BILLING_SG_CEN_2024_12, aNSCtxInvoice))
@@ -197,12 +209,47 @@ public final class PeppolValidationBisSG
       VesXmlBuilder.builder ()
                    .vesID (VID_OPENPEPPOL_BIS3_SG_UBL_CREDIT_NOTE_2024_12)
                    .displayName ("SG Peppol BIS3 Credit Note (UBL) 2024.12" + sAkaVersionBilling)
-                   .notDeprecated ()
+                   .deprecated ()
                    .validFrom (VALID_PER_UTC_2014_12)
                    .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
                    .addSchematron (PhiveRulesHelper.createXSLT (BIS3_BILLING_SG_CEN_2024_12, aNSCtxCreditNote))
                    .addSchematron (PhiveRulesHelper.createXSLT (BIS3_BILLING_SG_PEPPOL_2024_12, aNSCtxCreditNote))
                    .addSchematron (PhiveRulesHelper.createXSLT (BIS3_BILLING_SG_2024_12, aNSCtxCreditNote))
+                   .registerInto (aRegistry);
+    }
+
+    // 2026.6
+    {
+      final IReadableResource BIS3_BILLING_SG_CEN_2026_06 = new ClassPathResource (BASE_PATH +
+                                                                                   "2026.6/xslt/SG-Subset-CEN-EN16931-UBL.xslt",
+                                                                                   _getCL ());
+      final IReadableResource BIS3_BILLING_SG_PEPPOL_2026_06 = new ClassPathResource (BASE_PATH +
+                                                                                      "2026.6/xslt/SG-Subset-PEPPOL-EN16931-UBL.xslt",
+                                                                                      _getCL ());
+      final IReadableResource BIS3_BILLING_SG_2026_06 = new ClassPathResource (BASE_PATH +
+                                                                               "2026.6/xslt/SG-Billing3-UBL.xslt",
+                                                                               _getCL ());
+      final String sAkaVersionBilling = " (aka BIS 3.0.17)";
+
+      VesXmlBuilder.builder ()
+                   .vesID (VID_OPENPEPPOL_BIS3_SG_UBL_INVOICE_2026_6)
+                   .displayName ("SG Peppol BIS3 Invoice (UBL) 2026.6" + sAkaVersionBilling)
+                   .notDeprecated ()
+                   .validFrom (VALID_PER_UTC_2026_6)
+                   .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
+                   .addSchematron (PhiveRulesHelper.createXSLT (BIS3_BILLING_SG_CEN_2026_06, aNSCtxInvoice))
+                   .addSchematron (PhiveRulesHelper.createXSLT (BIS3_BILLING_SG_PEPPOL_2026_06, aNSCtxInvoice))
+                   .addSchematron (PhiveRulesHelper.createXSLT (BIS3_BILLING_SG_2026_06, aNSCtxInvoice))
+                   .registerInto (aRegistry);
+      VesXmlBuilder.builder ()
+                   .vesID (VID_OPENPEPPOL_BIS3_SG_UBL_CREDIT_NOTE_2026_6)
+                   .displayName ("SG Peppol BIS3 Credit Note (UBL) 2026.6" + sAkaVersionBilling)
+                   .notDeprecated ()
+                   .validFrom (VALID_PER_UTC_2026_6)
+                   .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
+                   .addSchematron (PhiveRulesHelper.createXSLT (BIS3_BILLING_SG_CEN_2026_06, aNSCtxCreditNote))
+                   .addSchematron (PhiveRulesHelper.createXSLT (BIS3_BILLING_SG_PEPPOL_2026_06, aNSCtxCreditNote))
+                   .addSchematron (PhiveRulesHelper.createXSLT (BIS3_BILLING_SG_2026_06, aNSCtxCreditNote))
                    .registerInto (aRegistry);
     }
 

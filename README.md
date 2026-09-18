@@ -266,6 +266,17 @@ I hope that with the introduction of PINT, the versioning problem will be solved
 # News and noteworthy
 
 v4.5.7 - work in progress
+* Added the Peppol BIS Billing Singapore 2026.6 rules (aka BIS 3.0.17, released 2026-06-08), VES coordinates `eu.peppol.bis3.sg.ubl:invoice:2026.6` and `eu.peppol.bis3.sg.ubl:creditnote:2026.6`, and deprecated the 2024.12 (aka BIS 3.0.14) rules. See [issue #88](https://github.com/phax/phive-rules/issues/88).
+  The rules are taken from [SG-BIS-Billing3-Schematron.zip](https://www.peppolguide.sg/billing/files/SG-BIS-Billing3-Schematron.zip) and are marked as valid from 2026-09-08, the mandatory use date stated in the [SG release notes](https://www.peppolguide.sg/billing/release-notes/).
+  It contains the accumulated changes of BIS 3.0.15 (2025-05-21), 3.0.16 (2025-12-11) and 3.0.17:
+    * The eight Singapore GST rules `BR-106-GST-SG`, `BR-107-GST-SG`, `BR-108-GST-SG`, `BR-109-GST-SG`, `BR-111-GST-SG`, `BR-112-GST-SG`, `BR-113-GST-SG` and `UBL-SR-53-SG` were raised from "warning" to "fatal" - this may break existing validation workflows, please evaluate the impact
+    * The rules `BR-CO-25`, `BR-66`, `BR-67` and `UBL-CR-631` were removed to align with Peppol BIS Billing 3
+    * `UBL-CR-674` now tests `cbc:PrimaryAccountNumberID` instead of the non-existing `cbc:PrimaryAccountNumber`, so the rule is effective at all
+    * `UBL-SR-22` now uses the context relative path `cac:PartyName/cbc:Name` instead of `cac:Party/cac:PartyName/cbc:Name`, so the rule is effective at all
+    * `PEPPOL-EN16931-R051` also takes `cac:TaxSubtotal/cbc:TaxAmount` into account
+    * All assertion messages of `SG-Subset-PEPPOL-EN16931-UBL.sch` are now prefixed with the rule identifier in brackets (e.g. `[PEPPOL-EN16931-R001]-`), matching the CEN ruleset convention
+    * Code lists updated: document type codes (`BR-CL-01`), currency codes (`BR-CL-03`, `BR-CL-04`, `BR-CL-05`), ICD (`BR-CL-10`, `BR-CL-11`, `BR-CL-21`, `BR-CL-26`), item classification identifiers (`BR-CL-13`) and the electronic address schemes (`BR-CL-25` and `PEPPOL-EN16931-CL008`)
+* The test file "SG INV example 07 - Foreign buyer.xml" of the Singapore 2026.6 examples is not part of the test files, because it uses the Buyer electronic address scheme `0193` that was removed from the `PEPPOL-EN16931-CL008` code list in BIS 3.0.17
 * Added the Peppol ViDA Pilot Tax Data Document (TDD) 1.1.0 validation rules (2026-09-14) in `phive-rules-peppol-taxdata`, VES coordinate `org.peppol.taxdata:vida:1.1.0`, and deprecated the 1.0.0 rules.
   The rules are taken from [ViDA TDD v1.1.0](https://test-docs.peppol.eu/vida/2026-v1.1.0/Vida-tdd/).
   Requires `peppol-vida` 0.11.0, because the TDD 1.1.0 XSD is bound by the new `PeppolViDATDD110Marshaller`.
@@ -274,7 +285,7 @@ v4.5.7 - work in progress
     * The Invoice UUID (TDT-017) is now calculated from the Seller VAT identifier (BT-31), the invoice type code (BT-03), the invoice number (BT-01) and the invoice issue date (BT-02) - previously the Seller identifier (BT-29) was used instead of BT-31. The new rule `ibr-tdd-87` only checks that it is a version 5 UUID
     * New buy side rules `ibr-tdd-90` to `ibr-tdd-93`: when the Reporter role (TDT-012) is `C3`, BT-110, BT-112, BT-117, BT-118, BT-119 and - if BT-006 is present - BT-111 are mandatory
     * `ibr-tdd-05` now really enforces the time zone on the Tax Data Document issue time (TDT-005); the previous regular expression made the offset optional
-    * A set of inherited CEN EN 16931 and Peppol rules never matched, because their contexts still pointed at the invoice root instead of `pxs:TaxData/pxs:ReportedTransaction/pxs:ReportedDocument`. This affects the VAT category breakdown rules `BR-{AE,E,G,K,Z,S,O,AF,AG}-08/09/10`, `UBL-CR-674`, `PEPPOL-EN16931-R051`, the German rules `DE-R-001`, `DE-R-016`, `DE-R-017`, `DE-R-026`, `DE-R-031` and `NL-R-007` - they are now evaluated
+    * Several inherited CEN EN 16931 and Peppol rules were repaired, because they could not match a TDD: the VAT breakdown rules `BR-{AE,E,G,K,Z,S,O,AF,AG}-08/09/10` and `PEPPOL-EN16931-R051` were anchored at the document root (`/*/cac:TaxTotal/...`), which is `pxs:TaxData` in a TDD; the German rules `DE-R-001`, `DE-R-016`, `DE-R-017`, `DE-R-026` and `DE-R-031` had a duplicated path segment (`.../pxs:ReportedDocument/pxs:ReportedDocument`); `UBL-CR-674` tested for the non-existing element `cbc:PrimaryAccountNumber` instead of `cbc:PrimaryAccountNumberID`; and `NL-R-007` accepted a `cac:PaymentMeans` anywhere in the document instead of only in the reported document
 * The three "WithoutTaxes" example documents of the ViDA TDD 1.1.0 specification are not part of the test files, because they are not XSD valid: they contain a `cac:TaxTotal` without `cbc:TaxAmount` and a `cac:TaxSubtotal` without `cbc:TaxAmount`, but both are mandatory in UBL 2.1
 
 v4.5.6 - 2026-09-06

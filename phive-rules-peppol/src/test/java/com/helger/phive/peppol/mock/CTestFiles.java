@@ -82,6 +82,9 @@ public final class CTestFiles
                                                              PeppolValidationBisSG.VID_OPENPEPPOL_BIS3_SG_UBL_INVOICE_2024_12,
                                                              PeppolValidationBisSG.VID_OPENPEPPOL_BIS3_SG_UBL_CREDIT_NOTE_2024_12,
 
+                                                             PeppolValidationBisSG.VID_OPENPEPPOL_BIS3_SG_UBL_INVOICE_2026_6,
+                                                             PeppolValidationBisSG.VID_OPENPEPPOL_BIS3_SG_UBL_CREDIT_NOTE_2026_6,
+
                                                              PeppolValidationBisSG.VID_PEPPOL_SG_ORDER_BALANCE_1_0,
 
                                                              /* OpenPeppol BIS */
@@ -313,6 +316,36 @@ public final class CTestFiles
     if (aVESID.equals (PeppolValidationBisSG.VID_OPENPEPPOL_BIS3_SG_UBL_CREDIT_NOTE_2024_12))
     {
       return _getAll ("sg-peppol/2024.12/", "SG CN example 01 - Credit Note.xml");
+    }
+
+    // SG 2026.6
+    if (aVESID.equals (PeppolValidationBisSG.VID_OPENPEPPOL_BIS3_SG_UBL_INVOICE_2026_6))
+    {
+      return _getAll ("sg-peppol/2026.6/",
+                      "SG INV example 02 - full valid invoice 1.xml",
+                      "SG INV example 03 - Allowances and Charges.xml",
+                      "SG INV example 04 - none GST registered.xml",
+                      "SG INV example 05 - AGD compliant with II and PO reference.xml",
+                      "SG INV example 06 - Foreign currency.xml",
+                      // "SG INV example 07 - Foreign buyer.xml" uses the Buyer
+                      // electronic address scheme 0193 that was removed from
+                      // the PEPPOL-EN16931-CL008 code list in BIS 3.0.17
+                      "SG INV example 08 - Factored invoice.xml",
+                      "SG INV example 09 - Zero rated GST.xml",
+                      "SG INV example 10 - Prepayment.xml",
+                      "SG INV example 11 - Decimals.xml",
+                      "SG INV example 12 - SG bank transfer.xml",
+                      "SG INV example 13 - SG GIRO.xml",
+                      "SG INV example 14 - PayNow.xml",
+                      "SG INV example 15 - Credit card.xml",
+                      "SG INV example 16 - GST in SGD.xml"
+      /*
+       * , "SG INV example 16b - GST in SGD With Several Errors.xml")
+       */);
+    }
+    if (aVESID.equals (PeppolValidationBisSG.VID_OPENPEPPOL_BIS3_SG_UBL_CREDIT_NOTE_2026_6))
+    {
+      return _getAll ("sg-peppol/2026.6/", "SG CN example 01 - Credit Note.xml");
     }
 
     // SG OB 1.0
