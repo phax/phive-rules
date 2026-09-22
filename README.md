@@ -287,6 +287,16 @@ v4.5.7 - work in progress
     * `ibr-tdd-05` now really enforces the time zone on the Tax Data Document issue time (TDT-005); the previous regular expression made the offset optional
     * Several inherited CEN EN 16931 and Peppol rules were repaired, because they could not match a TDD: the VAT breakdown rules `BR-{AE,E,G,K,Z,S,O,AF,AG}-08/09/10` and `PEPPOL-EN16931-R051` were anchored at the document root (`/*/cac:TaxTotal/...`), which is `pxs:TaxData` in a TDD; the German rules `DE-R-001`, `DE-R-016`, `DE-R-017`, `DE-R-026` and `DE-R-031` had a duplicated path segment (`.../pxs:ReportedDocument/pxs:ReportedDocument`); `UBL-CR-674` tested for the non-existing element `cbc:PrimaryAccountNumber` instead of `cbc:PrimaryAccountNumberID`; and `NL-R-007` accepted a `cac:PaymentMeans` anywhere in the document instead of only in the reported document
 * The three "WithoutTaxes" example documents of the ViDA TDD 1.1.0 specification are not part of the test files, because they are not XSD valid: they contain a `cac:TaxTotal` without `cbc:TaxAmount` and a `cac:TaxSubtotal` without `cbc:TaxAmount`, but both are mandatory in UBL 2.1
+* The France CTC CII rules `fr.ctc:cii:1.4.0`, `fr.ctc:cii:1.4.0-03` and `fr.ctc:cii:1.4.0-04` no longer build on the EN 16931 CII VES `eu.cen.en16931:cii:1.3.16`, but reference the CII D22B XML Schema and the EN 16931 CII 1.3.16 Schematron directly.
+  The XML Schema validation therefore uses CII D22B instead of the CII D16B inherited from the EN 16931 VES - the applied Schematron rules are unchanged.
+  See [issue #87](https://github.com/phax/phive-rules/issues/87).
+* The France Extended CTC CII rules `fr.ctc:extended-cii:1.4.0`, `fr.ctc:extended-cii:1.4.0-03` and `fr.ctc:extended-cii:1.4.0-04` now use the CII D22B XML Schema instead of the Factur-X EXTENDED XML Schema (1.0.9 / ZUGFeRD 2.5 resp. 1.0.9-2 / ZUGFeRD 2.5.2).
+  See [issue #87](https://github.com/phax/phive-rules/issues/87).
+* Updated to ph-cii 4.1.3, so that the CII D22B XML Schema is now the UN/CEFACT "uncoupled" variant instead of the "coupled" one.
+  It affects all `fr.ctc:cii:*` and `fr.ctc:extended-cii:*` rules, because `phive-rules-france` is the only module using CII D22B.
+  The uncoupled variant does not enforce the UN/CEFACT code list enumerations of the qualified data types, leaving the code list checks to the Schematron rules.
+  This is what step 1 of the FNFE explanatory note demands, because EN 16931 deviates from the UN/CEFACT code lists for the allowance and charge reason codes.
+  The CDAR D22B XML Schema used by `fr.ctc:cdar:*` was already uncoupled and is unchanged
 
 v4.5.6 - 2026-09-06
 * Added the France CTC validation rules `1.4.0.04` (2026-09-03), VES coordinates `fr.ctc:ubl-invoice:1.4.0-04`, `fr.ctc:ubl-creditnote:1.4.0-04`, `fr.ctc:cii:1.4.0-04`, `fr.ctc:cdar:1.4.0-04`, `fr.ctc:extended-ubl-invoice:1.4.0-04`, `fr.ctc:extended-ubl-creditnote:1.4.0-04` and `fr.ctc:extended-cii:1.4.0-04`, and deprecated the 1.4.0.03 rules.
