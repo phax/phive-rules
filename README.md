@@ -26,6 +26,7 @@ The foundational, XSD-only document formats live in the separate repository [phi
 
 This project is divided into sub-projects each keeping tracking of one document type set:
 * phive-rules-api - Shared UBL/CII helper classes; depends on `phive-rules-foundation-api` (from [phive-rules-foundations](https://github.com/phax/phive-rules-foundations)) which provides the validation rules registration SPI and the core helpers
+* phive-rules-cius-dk - Validation rules for the Danish Peppol CIUS (since v4.5.7)
 * phive-rules-cius-pt - Validation rules for the Portuguese EN 16931 CIUS (since v1.0.11)
 * phive-rules-cius-ro - Validation rules for the Romanian EN 16931 CIUS (since v2.1.14)
 * phive-rules-ehf - Validation rules for Norwegian EHF (Norwegian public procurement)
@@ -308,6 +309,12 @@ v4.5.7 - work in progress
     * `G1.12` was rewritten: if BT-5 is EUR, exactly one total VAT amount (BT-110) in EUR is expected; if BT-5 is not EUR, exactly two are required - one in BT-5 and one in EUR. Previously only the presence of an EUR amount was checked
     * `G2.32` was rewritten and now rejects an invoice whose VAT category codes are all `O`, or are all `E` together with a CGI 261 exemption reason code, or are a mixture of `O` and `E`
 * The France PPF Flux 1 XSD resources were moved from `/external/schemas/flux1/0.2/` to `/external/schemas/flux1/1.0/`, because they are versioned by the AIFE XSD package (v1.0) and not by the Schematron rules version. Both the 0.2 and the 1.1 rules reference them
+* Added the new submodule `phive-rules-cius-dk` with the Danish Peppol CIUS validation rules 1.17.0 (2026-08-03), VES coordinates `dk.gov.erst.cius-dk:ubl-invoice:1.17.0` and `dk.gov.erst.cius-dk:ubl-creditnote:1.17.0`.
+  The rules are taken from the [`PEPPOL_DK_CIUS_2026-08-03_v1.17.0`](https://rep.erst.dk/git/openebusiness/common/-/tree/master/released/peppol) package of Nemhandel / Erhvervsstyrelsen and are marked as valid from 2026-08-17 12:00 CET, the mandatory use date stated in the [release announcement](https://nemhandel.dk/release-af-peppol-schematron-pakker-1170-og-1214).
+  The rules build on `eu.peppol.bis3:invoice:2026.5` resp. `eu.peppol.bis3:creditnote:2026.5` (Peppol BIS Billing 3.0.21), so `phive-rules-peppol` is a prerequisite of the new module.
+  The CEN EN 16931 and Peppol Schematrons shipped in the Danish ZIP are not used - only `DK-EN16931-UBL.sch` is taken from it.
+  Note that this Danish Schematron currently contains **no active rule** - `DK-R-008` and `DK-R-009` are commented out upstream, so the CIUS-DK rules presently validate exactly like the underlying Peppol BIS Billing rules. The VES exist so that Danish senders and receivers have a stable coordinate to reference
+* The Danish `PEPPOL_BIS3-Other` package (version 1.2.14) is intentionally not included: it only redistributes the Peppol BIS3 Schematrons for the non-Billing documents, which `phive-rules-peppol` already provides as `eu.peppol.bis3:*:2026.5` (Peppol BIS 3.0.17)
 
 v4.5.6 - 2026-09-06
 * Added the France CTC validation rules `1.4.0.04` (2026-09-03), VES coordinates `fr.ctc:ubl-invoice:1.4.0-04`, `fr.ctc:ubl-creditnote:1.4.0-04`, `fr.ctc:cii:1.4.0-04`, `fr.ctc:cdar:1.4.0-04`, `fr.ctc:extended-ubl-invoice:1.4.0-04`, `fr.ctc:extended-ubl-creditnote:1.4.0-04` and `fr.ctc:extended-cii:1.4.0-04`, and deprecated the 1.4.0.03 rules.

@@ -22,6 +22,7 @@ import com.helger.annotation.concurrent.Immutable;
 import com.helger.base.enforce.ValueEnforcer;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
 import com.helger.phive.cii.CIIValidation;
+import com.helger.phive.ciusdk.CIUS_DKValidation;
 import com.helger.phive.ciuspt.CIUS_PTValidation;
 import com.helger.phive.ciusro.CIUS_ROValidation;
 import com.helger.phive.ebinterface.EbInterfaceValidation;
@@ -105,6 +106,8 @@ public final class PhiveRulesValidation
     OIOUBLValidation.initOIOUBL (aRegistry);
     PeppolItalyValidation.init (aRegistry);
     PeppolValidation.initStandard (aRegistry);
+    // Must be after Peppol, because the CIUS-DK rules build on the Peppol BIS Billing rules
+    CIUS_DKValidation.init (aRegistry);
     PeppolValidationTaxData.init (aRegistry);
     PeppolValidationPint.initPeppolPint (aRegistry);
     SEOValidation.initSEO (aRegistry);

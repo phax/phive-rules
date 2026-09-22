@@ -63,6 +63,10 @@
     </dependency>
     <dependency>
       <groupId>com.helger.phive.rules</groupId>
+      <artifactId>phive-rules-cius-dk</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.helger.phive.rules</groupId>
       <artifactId>phive-rules-cius-pt</artifactId>
     </dependency>
     <dependency>

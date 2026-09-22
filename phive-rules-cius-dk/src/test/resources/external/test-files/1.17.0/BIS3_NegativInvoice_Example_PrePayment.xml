@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+*********************************************************************
+Title: BIS3_NegativeInvoiceExample.xml
+Created:20171221
+Changed:20180309: updated after comments and BIS Billing Invoice Publication
+		20190204: validated against latest BIS schematron
+		20190308: Updated with NO rule on PartyTaxScheme
+		20190516: checked against latest BIS Billing schematron 3.0.3 - valid GLN numbers added
+		20191105: checked against latest BIS Billing schematron 3.0.5 - UNSPSC code changed to "TST"
+		20250507: This example file can't be used as test of conversion from Peppol BIB Billing to OIOUBL 3.0, as conversion does not support negative invoices.
+
+		PEPPOL BIS Billing example file - Negativ invoice due to Pre payment
+*********************************************************************
+-->
+<Invoice xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" xmlns="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2">
+	<cbc:CustomizationID>urn:cen.eu:en16931:2017#compliant#urn:fdc:peppol.eu:2017:poacc:billing:3.0</cbc:CustomizationID>
+	<cbc:ProfileID>urn:fdc:peppol.eu:2017:poacc:billing:01:1.0</cbc:ProfileID>
+	<cbc:ID>20150483</cbc:ID>
+	<cbc:IssueDate>2017-10-01</cbc:IssueDate>
+	<cbc:DueDate>2017-11-14</cbc:DueDate>
+	<cbc:InvoiceTypeCode>380</cbc:InvoiceTypeCode>
+	<cbc:Note>Header note</cbc:Note>
+	<cbc:DocumentCurrencyCode>NOK</cbc:DocumentCurrencyCode>
+	<cbc:TaxCurrencyCode>EUR</cbc:TaxCurrencyCode>
+	<cbc:AccountingCost>12345678</cbc:AccountingCost>
+	<cbc:BuyerReference>9000001234</cbc:BuyerReference>
+	<cac:InvoicePeriod>
+		<cbc:StartDate>2017-10-01</cbc:StartDate>
+		<cbc:EndDate>2017-12-31</cbc:EndDate>
+	</cac:InvoicePeriod>
+	<cac:OrderReference>
+		<cbc:ID>Order-123456</cbc:ID>
+		<cbc:SalesOrderID>SalesOrder-123456</cbc:SalesOrderID>
+	</cac:OrderReference>
+	<cac:BillingReference>
+		<cac:InvoiceDocumentReference>
+			<cbc:ID>Inv-123456</cbc:ID>
+			<cbc:IssueDate>2017-10-12</cbc:IssueDate>
+		</cac:InvoiceDocumentReference>
+	</cac:BillingReference>
+	<cac:AccountingSupplierParty>
+		<cac:Party>
+			<cbc:EndpointID schemeID="0088">5798009811639</cbc:EndpointID>
+			<cac:PartyIdentification>
+				<cbc:ID schemeID="0088">5798009811578</cbc:ID>
+			</cac:PartyIdentification>
+			<cac:PartyName>
+				<cbc:Name>Supplier A/S</cbc:Name>
+			</cac:PartyName>
+			<cac:PostalAddress>
+				<cbc:StreetName>Supplier street 6</cbc:StreetName>
+				<cbc:AdditionalStreetName>Additional info</cbc:AdditionalStreetName>
+				<cbc:CityName>Oslo</cbc:CityName>
+				<cbc:PostalZone>1234</cbc:PostalZone>
+				<cac:Country>
+					<cbc:IdentificationCode>NO</cbc:IdentificationCode>
+				</cac:Country>
+			</cac:PostalAddress>
+			<cac:PartyTaxScheme>
+                <cbc:CompanyID schemeID="ZZZ">NO990399123MVA</cbc:CompanyID>
+                <cac:TaxScheme>
+                    <cbc:ID>VAT</cbc:ID>
+                </cac:TaxScheme>
+            </cac:PartyTaxScheme>
+			<cac:PartyTaxScheme>
+                <cbc:CompanyID schemeID="ZZZ">Foretaksregisteret</cbc:CompanyID>
+                <cac:TaxScheme>
+                    <cbc:ID>TAX</cbc:ID>
+                </cac:TaxScheme>
+            </cac:PartyTaxScheme>
+			<cac:PartyLegalEntity>
+				<cbc:RegistrationName>Supplier A A/S</cbc:RegistrationName>
+				<cbc:CompanyID schemeID="0192">987654325</cbc:CompanyID>
+			</cac:PartyLegalEntity>
+			<cac:Contact>
+				<cbc:Name>Hans Hansen</cbc:Name>
+				<cbc:Telephone>033-4549055</cbc:Telephone>
+				<cbc:ElectronicMail>info@supp.no</cbc:ElectronicMail>
+			</cac:Contact>
+		</cac:Party>
+	</cac:AccountingSupplierParty>
+	<cac:AccountingCustomerParty>
+		<cac:Party>
+			<cbc:EndpointID schemeID="0088">5798009811578</cbc:EndpointID>
+			<cac:PartyIdentification>
+				<cbc:ID schemeID="0184">12345678</cbc:ID>
+			</cac:PartyIdentification>
+			<cac:PartyName>
+				<cbc:Name>Customer A/S</cbc:Name>
+			</cac:PartyName>
+			<cac:PostalAddress>
+				<cbc:StreetName>Customer vej 7</cbc:StreetName>
+				<cbc:AdditionalStreetName>Additional</cbc:AdditionalStreetName>
+				<cbc:CityName>København K</cbc:CityName>
+				<cbc:PostalZone>1057</cbc:PostalZone>
+				<cac:Country>
+					<cbc:IdentificationCode>DK</cbc:IdentificationCode>
+				</cac:Country>
+			</cac:PostalAddress>
+			<cac:PartyTaxScheme>
+				<cbc:CompanyID schemeID="0198">DK12345679</cbc:CompanyID>
+				<cac:TaxScheme>
+					<cbc:ID>VAT</cbc:ID>
+				</cac:TaxScheme>
+			</cac:PartyTaxScheme>
+			<cac:PartyLegalEntity>
+				<cbc:RegistrationName>Customer A A/S</cbc:RegistrationName>
+				<cbc:CompanyID schemeID="0184">12345678</cbc:CompanyID>
+			</cac:PartyLegalEntity>
+			<cac:Contact>
+				<cbc:Name>Jens Jensen</cbc:Name>
+				<cbc:Telephone>11223344</cbc:Telephone>
+				<cbc:ElectronicMail>jj@cust.dk</cbc:ElectronicMail>
+			</cac:Contact>
+		</cac:Party>
+	</cac:AccountingCustomerParty>
+	<cac:PaymentMeans>
+		<cbc:PaymentMeansCode name="National Bank Transfer">42</cbc:PaymentMeansCode>
+		<cbc:PaymentID>2015 0483 0000 0000</cbc:PaymentID>
+		<cac:PayeeFinancialAccount>
+			<cbc:ID>1234567890</cbc:ID>
+			<cbc:Name>Peter Petersen</cbc:Name>
+			<cac:FinancialInstitutionBranch>
+				<cbc:ID>1234</cbc:ID>
+			</cac:FinancialInstitutionBranch>
+		</cac:PayeeFinancialAccount>
+	</cac:PaymentMeans>
+	<cac:PaymentTerms>
+		<cbc:Note>payment terms note</cbc:Note>
+	</cac:PaymentTerms>
+	<cac:TaxTotal>
+		<cbc:TaxAmount currencyID="NOK">50.00</cbc:TaxAmount>
+		<cac:TaxSubtotal>
+			<cbc:TaxableAmount currencyID="NOK">200.00</cbc:TaxableAmount>
+			<cbc:TaxAmount currencyID="NOK">50.00</cbc:TaxAmount>
+			<cac:TaxCategory>
+				<cbc:ID>S</cbc:ID>
+				<cbc:Percent>25</cbc:Percent>
+				<cac:TaxScheme>
+					<cbc:ID>VAT</cbc:ID>
+				</cac:TaxScheme>
+			</cac:TaxCategory>
+		</cac:TaxSubtotal>
+		<cac:TaxSubtotal>
+			<cbc:TaxableAmount currencyID="NOK">1400.00</cbc:TaxableAmount>
+			<cbc:TaxAmount currencyID="NOK">0.00</cbc:TaxAmount>
+			<cac:TaxCategory>
+				<cbc:ID>Z</cbc:ID>
+				<cbc:Percent>0</cbc:Percent>
+				<cac:TaxScheme>
+					<cbc:ID>VAT</cbc:ID>
+				</cac:TaxScheme>
+			</cac:TaxCategory>
+		</cac:TaxSubtotal>
+	</cac:TaxTotal>
+	<cac:TaxTotal>
+		<cbc:TaxAmount currencyID="EUR">5.02</cbc:TaxAmount>
+	</cac:TaxTotal>
+	<cac:LegalMonetaryTotal>
+		<cbc:LineExtensionAmount currencyID="NOK">1600.00</cbc:LineExtensionAmount>
+		<cbc:TaxExclusiveAmount currencyID="NOK">1600.00</cbc:TaxExclusiveAmount>
+		<cbc:TaxInclusiveAmount currencyID="NOK">1650.00</cbc:TaxInclusiveAmount>
+		<cbc:PrepaidAmount currencyID="NOK">1700.00</cbc:PrepaidAmount>
+		<cbc:PayableAmount currencyID="NOK">-50.00</cbc:PayableAmount>
+	</cac:LegalMonetaryTotal>
+	<cac:InvoiceLine>
+		<cbc:ID>1</cbc:ID>
+		<cbc:Note>line note</cbc:Note>
+		<cbc:InvoicedQuantity unitCode="C62">3</cbc:InvoicedQuantity>
+		<cbc:LineExtensionAmount currencyID="NOK">300.00</cbc:LineExtensionAmount>
+		<cac:OrderLineReference>
+			<cbc:LineID>1</cbc:LineID>
+		</cac:OrderLineReference>
+		<cac:Item>
+			<cbc:Name>Product 1</cbc:Name>
+			<cac:SellersItemIdentification>
+				<cbc:ID>54321</cbc:ID>
+			</cac:SellersItemIdentification>
+			<cac:StandardItemIdentification>
+				<cbc:ID schemeID="0160">5790000000123</cbc:ID>
+			</cac:StandardItemIdentification>
+			<cac:CommodityClassification>
+				<cbc:ItemClassificationCode listID="TST" listVersionID="19.05.01">22334455</cbc:ItemClassificationCode>
+			</cac:CommodityClassification>
+			<cac:ClassifiedTaxCategory>
+				<cbc:ID>S</cbc:ID>
+				<cbc:Percent>25</cbc:Percent>
+				<cac:TaxScheme>
+					<cbc:ID>VAT</cbc:ID>
+				</cac:TaxScheme>
+			</cac:ClassifiedTaxCategory>
+		</cac:Item>
+		<cac:Price>
+			<cbc:PriceAmount currencyID="NOK">100.00</cbc:PriceAmount>
+			<cbc:BaseQuantity unitCode="C62">1</cbc:BaseQuantity>
+		</cac:Price>
+	</cac:InvoiceLine>
+	<cac:InvoiceLine>
+		<cbc:ID>2</cbc:ID>
+		<cbc:Note>line note</cbc:Note>
+		<cbc:InvoicedQuantity unitCode="C62">7</cbc:InvoicedQuantity>
+		<cbc:LineExtensionAmount currencyID="NOK">1400.00</cbc:LineExtensionAmount>
+		<cac:OrderLineReference>
+			<cbc:LineID>2</cbc:LineID>
+		</cac:OrderLineReference>
+		<cac:Item>
+			<cbc:Name>Product 2</cbc:Name>
+			<cac:SellersItemIdentification>
+				<cbc:ID>65432</cbc:ID>
+			</cac:SellersItemIdentification>
+			<cac:StandardItemIdentification>
+				<cbc:ID schemeID="0160">5790000000124</cbc:ID>
+			</cac:StandardItemIdentification>
+			<cac:CommodityClassification>
+				<cbc:ItemClassificationCode listID="TST" listVersionID="19.05.01">22334455</cbc:ItemClassificationCode>
+			</cac:CommodityClassification>
+			<cac:ClassifiedTaxCategory>
+				<cbc:ID>Z</cbc:ID>
+				<cbc:Percent>0</cbc:Percent>
+				<cac:TaxScheme>
+					<cbc:ID>VAT</cbc:ID>
+				</cac:TaxScheme>
+			</cac:ClassifiedTaxCategory>
+		</cac:Item>
+		<cac:Price>
+			<cbc:PriceAmount currencyID="NOK">200.00</cbc:PriceAmount>
+			<cbc:BaseQuantity unitCode="C62">1</cbc:BaseQuantity>
+		</cac:Price>
+	</cac:InvoiceLine>
+	<cac:InvoiceLine>
+		<cbc:ID>3</cbc:ID>
+		<cbc:Note>line note</cbc:Note>
+		<cbc:InvoicedQuantity unitCode="C62">-1</cbc:InvoicedQuantity>
+		<cbc:LineExtensionAmount currencyID="NOK">-100.00</cbc:LineExtensionAmount>
+		<cac:OrderLineReference>
+			<cbc:LineID>3</cbc:LineID>
+		</cac:OrderLineReference>
+		<cac:Item>
+			<cbc:Name>Product 3</cbc:Name>
+			<cac:SellersItemIdentification>
+				<cbc:ID>65432</cbc:ID>
+			</cac:SellersItemIdentification>
+			<cac:StandardItemIdentification>
+				<cbc:ID schemeID="0160">5790000000124</cbc:ID>
+			</cac:StandardItemIdentification>
+			<cac:CommodityClassification>
+				<cbc:ItemClassificationCode listID="TST" listVersionID="19.04.01">22334455</cbc:ItemClassificationCode>
+			</cac:CommodityClassification>
+			<cac:ClassifiedTaxCategory>
+				<cbc:ID>S</cbc:ID>
+				<cbc:Percent>25</cbc:Percent>
+				<cac:TaxScheme>
+					<cbc:ID>VAT</cbc:ID>
+				</cac:TaxScheme>
+			</cac:ClassifiedTaxCategory>
+		</cac:Item>
+		<cac:Price>
+			<cbc:PriceAmount currencyID="NOK">100.00</cbc:PriceAmount>
+			<cbc:BaseQuantity unitCode="C62">1</cbc:BaseQuantity>
+		</cac:Price>
+	</cac:InvoiceLine>
+</Invoice>

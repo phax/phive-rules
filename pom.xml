@@ -132,6 +132,11 @@
       </dependency>
       <dependency>
         <groupId>com.helger.phive.rules</groupId>
+        <artifactId>phive-rules-cius-dk</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.helger.phive.rules</groupId>
         <artifactId>phive-rules-cius-pt</artifactId>
         <version>${project.version}</version>
       </dependency>
@@ -266,6 +271,8 @@
     <!-- Prerequisite for France -->
     <module>phive-rules-zugferd</module>
     <!-- Remaining formats -->
+    <!-- depends on peppol -->
+    <module>phive-rules-cius-dk</module>
     <module>phive-rules-cius-pt</module>
     <module>phive-rules-cius-ro</module>
     <module>phive-rules-ehf</module>
