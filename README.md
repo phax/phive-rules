@@ -266,7 +266,7 @@ I hope that with the introduction of PINT, the versioning problem will be solved
 
 # News and noteworthy
 
-v4.5.7 - work in progress
+v4.5.7 - 2026-09-22
 * Added the Peppol BIS Billing Singapore 2026.6 rules (aka BIS 3.0.17, released 2026-06-08), VES coordinates `eu.peppol.bis3.sg.ubl:invoice:2026.6` and `eu.peppol.bis3.sg.ubl:creditnote:2026.6`, and deprecated the 2024.12 (aka BIS 3.0.14) rules. See [issue #88](https://github.com/phax/phive-rules/issues/88).
   The rules are taken from [SG-BIS-Billing3-Schematron.zip](https://www.peppolguide.sg/billing/files/SG-BIS-Billing3-Schematron.zip) and are marked as valid from 2026-09-08, the mandatory use date stated in the [SG release notes](https://www.peppolguide.sg/billing/release-notes/).
   It contains the accumulated changes of BIS 3.0.15 (2025-05-21), 3.0.16 (2025-12-11) and 3.0.17:
