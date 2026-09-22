@@ -297,6 +297,17 @@ v4.5.7 - work in progress
   The uncoupled variant does not enforce the UN/CEFACT code list enumerations of the qualified data types, leaving the code list checks to the Schematron rules.
   This is what step 1 of the FNFE explanatory note demands, because EN 16931 deviates from the UN/CEFACT code lists for the allowance and charge reason codes.
   The CDAR D22B XML Schema used by `fr.ctc:cdar:*` was already uncoupled and is unchanged
+* Added the France PPF Flux 1 validation rules v1.1 (2026-09-17), VES coordinates `fr.ctc.flux1:ubl-invoice-demarrage:1.1`, `fr.ctc.flux1:ubl-creditnote-demarrage:1.1`, `fr.ctc.flux1:cii-demarrage:1.1`, `fr.ctc.flux1:ubl-invoice-cible:1.1`, `fr.ctc.flux1:ubl-creditnote-cible:1.1` and `fr.ctc.flux1:cii-cible:1.1`, and deprecated the 0.2 rules.
+  The rules are taken from the AIFE package "AIFE - PPF_Flux1_v1.1". The previous VES version `0.2` was named after the Schematron files of the "v1.0" package, which carried the internal version `v0_2` - from this release on the AIFE file version matches the package version.
+  The AIFE XSDs are unchanged - they are still the ones published with the Flux 1 v1.0 package.
+  All four Schematrons (UBL and CII, each Démarrage and Cible) received the identical set of changes:
+    * The rules `F1-START-VENDEUR-TVA-G2.33` and `F1-START-ACHETEUR-TVA-G2.33` were removed - the seller resp. buyer VAT identifier is no longer mandatory when their legal identifier uses the scheme `0002` (SIREN) or `0223` (UE_HORS_FRANCE)
+    * `G2.01` on the seller country code no longer rejects `EL`, and its message now names `EL` as the code required for Greece. Note that the buyer and the delivery country code checks of the same rule still reject `EL` and still name `GR`, so the rule set contradicts itself in that regard
+    * `G1.53` now uses `xs:decimal()` instead of `number()` for the total comparisons, to avoid rounding differences caused by the number representation.
+      It also takes the total VAT amount in the invoice currency (BT-5) - CII previously hard coded EUR and UBL took every `cac:TaxTotal/cbc:TaxAmount`
+    * `G1.12` was rewritten: if BT-5 is EUR, exactly one total VAT amount (BT-110) in EUR is expected; if BT-5 is not EUR, exactly two are required - one in BT-5 and one in EUR. Previously only the presence of an EUR amount was checked
+    * `G2.32` was rewritten and now rejects an invoice whose VAT category codes are all `O`, or are all `E` together with a CGI 261 exemption reason code, or are a mixture of `O` and `E`
+* The France PPF Flux 1 XSD resources were moved from `/external/schemas/flux1/0.2/` to `/external/schemas/flux1/1.0/`, because they are versioned by the AIFE XSD package (v1.0) and not by the Schematron rules version. Both the 0.2 and the 1.1 rules reference them
 
 v4.5.6 - 2026-09-06
 * Added the France CTC validation rules `1.4.0.04` (2026-09-03), VES coordinates `fr.ctc:ubl-invoice:1.4.0-04`, `fr.ctc:ubl-creditnote:1.4.0-04`, `fr.ctc:cii:1.4.0-04`, `fr.ctc:cdar:1.4.0-04`, `fr.ctc:extended-ubl-invoice:1.4.0-04`, `fr.ctc:extended-ubl-creditnote:1.4.0-04` and `fr.ctc:extended-cii:1.4.0-04`, and deprecated the 1.4.0.03 rules.

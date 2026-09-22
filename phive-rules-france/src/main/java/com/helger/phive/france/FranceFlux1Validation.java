@@ -43,24 +43,50 @@ public final class FranceFlux1Validation
   public static final String GROUP_ID = "fr.ctc.flux1";
 
   // v0.2
+  @Deprecated (forRemoval = false)
   public static final DVRCoordinate VID_FR_FLUX1_UBL_INV_DEMARRAGE_0_2 = DVRHelper.createCoordinate (GROUP_ID,
                                                                                                      "ubl-invoice-demarrage",
                                                                                                      "0.2");
+  @Deprecated (forRemoval = false)
   public static final DVRCoordinate VID_FR_FLUX1_UBL_INV_CIBLE_0_2 = DVRHelper.createCoordinate (GROUP_ID,
                                                                                                  "ubl-invoice-cible",
                                                                                                  "0.2");
+  @Deprecated (forRemoval = false)
   public static final DVRCoordinate VID_FR_FLUX1_UBL_CN_DEMARRAGE_0_2 = DVRHelper.createCoordinate (GROUP_ID,
                                                                                                     "ubl-creditnote-demarrage",
                                                                                                     "0.2");
+  @Deprecated (forRemoval = false)
   public static final DVRCoordinate VID_FR_FLUX1_UBL_CN_CIBLE_0_2 = DVRHelper.createCoordinate (GROUP_ID,
                                                                                                 "ubl-creditnote-cible",
                                                                                                 "0.2");
+  @Deprecated (forRemoval = false)
   public static final DVRCoordinate VID_FR_FLUX1_CII_DEMARRAGE_0_2 = DVRHelper.createCoordinate (GROUP_ID,
                                                                                                  "cii-demarrage",
                                                                                                  "0.2");
+  @Deprecated (forRemoval = false)
   public static final DVRCoordinate VID_FR_FLUX1_CII_CIBLE_0_2 = DVRHelper.createCoordinate (GROUP_ID,
                                                                                              "cii-cible",
                                                                                              "0.2");
+
+  // v1.1
+  public static final DVRCoordinate VID_FR_FLUX1_UBL_INV_DEMARRAGE_1_1 = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                                     "ubl-invoice-demarrage",
+                                                                                                     "1.1");
+  public static final DVRCoordinate VID_FR_FLUX1_UBL_INV_CIBLE_1_1 = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                                 "ubl-invoice-cible",
+                                                                                                 "1.1");
+  public static final DVRCoordinate VID_FR_FLUX1_UBL_CN_DEMARRAGE_1_1 = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                                    "ubl-creditnote-demarrage",
+                                                                                                    "1.1");
+  public static final DVRCoordinate VID_FR_FLUX1_UBL_CN_CIBLE_1_1 = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                                "ubl-creditnote-cible",
+                                                                                                "1.1");
+  public static final DVRCoordinate VID_FR_FLUX1_CII_DEMARRAGE_1_1 = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                                 "cii-demarrage",
+                                                                                                 "1.1");
+  public static final DVRCoordinate VID_FR_FLUX1_CII_CIBLE_1_1 = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                             "cii-cible",
+                                                                                             "1.1");
 
   private FranceFlux1Validation ()
   {}
@@ -81,39 +107,43 @@ public final class FranceFlux1Validation
   {
     ValueEnforcer.notNull (aRegistry, "Registry");
 
-    final String sPrefix = "/external/schematron/flux1/0.2/xslt/";
-    final String sXsdPrefix = "/external/schemas/flux1/0.2/";
+    final String sPrefix = "/external/schematron/flux1/";
+    // The AIFE XSDs are versioned separately from the Schematron rules - they were published with
+    // the Flux 1 v1.0 package and are unchanged since
+    final String sXsdPrefix = "/external/schemas/flux1/1.0/";
 
     // v0.2
     {
+      final String sPrefix0 = sPrefix + "0.2/xslt/";
+
       // Démarrage (base trajectory)
       VesXmlBuilder.builder ()
                    .vesID (VID_FR_FLUX1_UBL_INV_DEMARRAGE_0_2)
                    .displayNamePrefix ("France PPF Flux 1 UBL Invoice Démarrage ")
-                   .notDeprecated ()
+                   .deprecated ()
                    .addXSD (new ClassPathResource (sXsdPrefix + "ubl-demarrage/F1BASE_UBL-invoice-2.1.xsd", _getCL ()))
-                   .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix +
+                   .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix0 +
                                                                                                 "PPF_Flux1_UBL_1_8_DEMARRAGE_v0_2.xslt",
                                                                                                 _getCL ())))
                    .registerInto (aRegistry);
       VesXmlBuilder.builder ()
                    .vesID (VID_FR_FLUX1_UBL_CN_DEMARRAGE_0_2)
                    .displayNamePrefix ("France PPF Flux 1 UBL Credit Note Démarrage ")
-                   .notDeprecated ()
+                   .deprecated ()
                    .addXSD (new ClassPathResource (sXsdPrefix + "ubl-demarrage/F1BASE_UBL-CreditNote-2.1.xsd",
                                                    _getCL ()))
-                   .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix +
+                   .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix0 +
                                                                                                 "PPF_Flux1_UBL_1_8_DEMARRAGE_v0_2.xslt",
                                                                                                 _getCL ())))
                    .registerInto (aRegistry);
       VesXmlBuilder.builder ()
                    .vesID (VID_FR_FLUX1_CII_DEMARRAGE_0_2)
                    .displayNamePrefix ("France PPF Flux 1 CII Démarrage ")
-                   .notDeprecated ()
+                   .deprecated ()
                    .addXSD (new ClassPathResource (sXsdPrefix +
                                                    "cii-demarrage/uncefact/data/standard/F1BASE_CrossIndustryInvoice_100pD22B.xsd",
                                                    _getCL ()))
-                   .addSchematron (PhiveRulesCIIHelper.createXSLT_CII_D22B (new ClassPathResource (sPrefix +
+                   .addSchematron (PhiveRulesCIIHelper.createXSLT_CII_D22B (new ClassPathResource (sPrefix0 +
                                                                                                    "PPF_Flux1_CII_1_8_DEMARRAGE_v0_2.xslt",
                                                                                                    _getCL ())))
                    .registerInto (aRegistry);
@@ -122,30 +152,98 @@ public final class FranceFlux1Validation
       VesXmlBuilder.builder ()
                    .vesID (VID_FR_FLUX1_UBL_INV_CIBLE_0_2)
                    .displayNamePrefix ("France PPF Flux 1 UBL Invoice Cible ")
-                   .notDeprecated ()
+                   .deprecated ()
                    .addXSD (new ClassPathResource (sXsdPrefix + "ubl-cible/F1FULL_UBL_invoice-2.1.xsd", _getCL ()))
-                   .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix +
+                   .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix0 +
                                                                                                 "PPF_Flux1_UBL_1_8_CIBLE_v0_2.xslt",
                                                                                                 _getCL ())))
                    .registerInto (aRegistry);
       VesXmlBuilder.builder ()
                    .vesID (VID_FR_FLUX1_UBL_CN_CIBLE_0_2)
                    .displayNamePrefix ("France PPF Flux 1 UBL Credit Note Cible ")
-                   .notDeprecated ()
+                   .deprecated ()
                    .addXSD (new ClassPathResource (sXsdPrefix + "ubl-cible/F1FULL_UBL_CreditNote-2.1.xsd", _getCL ()))
-                   .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix +
+                   .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix0 +
                                                                                                 "PPF_Flux1_UBL_1_8_CIBLE_v0_2.xslt",
                                                                                                 _getCL ())))
                    .registerInto (aRegistry);
       VesXmlBuilder.builder ()
                    .vesID (VID_FR_FLUX1_CII_CIBLE_0_2)
                    .displayNamePrefix ("France PPF Flux 1 CII Cible ")
+                   .deprecated ()
+                   .addXSD (new ClassPathResource (sXsdPrefix +
+                                                   "cii-cible/uncefact/data/standard/F1FULL_CrossIndustryInvoice_100pD22B.xsd",
+                                                   _getCL ()))
+                   .addSchematron (PhiveRulesCIIHelper.createXSLT_CII_D22B (new ClassPathResource (sPrefix0 +
+                                                                                                   "PPF_Flux1_CII_1_8_CIBLE_v0_2.xslt",
+                                                                                                   _getCL ())))
+                   .registerInto (aRegistry);
+    }
+
+    // v1.1
+    {
+      final String sPrefix0 = sPrefix + "1.1/xslt/";
+
+      // Démarrage (base trajectory)
+      VesXmlBuilder.builder ()
+                   .vesID (VID_FR_FLUX1_UBL_INV_DEMARRAGE_1_1)
+                   .displayNamePrefix ("France PPF Flux 1 UBL Invoice Démarrage ")
+                   .notDeprecated ()
+                   .addXSD (new ClassPathResource (sXsdPrefix + "ubl-demarrage/F1BASE_UBL-invoice-2.1.xsd", _getCL ()))
+                   .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix0 +
+                                                                                                "PPF_Flux1_UBL_1_8_DEMARRAGE_v1_1.xslt",
+                                                                                                _getCL ())))
+                   .registerInto (aRegistry);
+      VesXmlBuilder.builder ()
+                   .vesID (VID_FR_FLUX1_UBL_CN_DEMARRAGE_1_1)
+                   .displayNamePrefix ("France PPF Flux 1 UBL Credit Note Démarrage ")
+                   .notDeprecated ()
+                   .addXSD (new ClassPathResource (sXsdPrefix + "ubl-demarrage/F1BASE_UBL-CreditNote-2.1.xsd",
+                                                   _getCL ()))
+                   .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix0 +
+                                                                                                "PPF_Flux1_UBL_1_8_DEMARRAGE_v1_1.xslt",
+                                                                                                _getCL ())))
+                   .registerInto (aRegistry);
+      VesXmlBuilder.builder ()
+                   .vesID (VID_FR_FLUX1_CII_DEMARRAGE_1_1)
+                   .displayNamePrefix ("France PPF Flux 1 CII Démarrage ")
+                   .notDeprecated ()
+                   .addXSD (new ClassPathResource (sXsdPrefix +
+                                                   "cii-demarrage/uncefact/data/standard/F1BASE_CrossIndustryInvoice_100pD22B.xsd",
+                                                   _getCL ()))
+                   .addSchematron (PhiveRulesCIIHelper.createXSLT_CII_D22B (new ClassPathResource (sPrefix0 +
+                                                                                                   "PPF_Flux1_CII_1_8_DEMARRAGE_v1_1.xslt",
+                                                                                                   _getCL ())))
+                   .registerInto (aRegistry);
+
+      // Cible (full trajectory) - a strict superset of the Démarrage rules
+      VesXmlBuilder.builder ()
+                   .vesID (VID_FR_FLUX1_UBL_INV_CIBLE_1_1)
+                   .displayNamePrefix ("France PPF Flux 1 UBL Invoice Cible ")
+                   .notDeprecated ()
+                   .addXSD (new ClassPathResource (sXsdPrefix + "ubl-cible/F1FULL_UBL_invoice-2.1.xsd", _getCL ()))
+                   .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix0 +
+                                                                                                "PPF_Flux1_UBL_1_8_CIBLE_v1_1.xslt",
+                                                                                                _getCL ())))
+                   .registerInto (aRegistry);
+      VesXmlBuilder.builder ()
+                   .vesID (VID_FR_FLUX1_UBL_CN_CIBLE_1_1)
+                   .displayNamePrefix ("France PPF Flux 1 UBL Credit Note Cible ")
+                   .notDeprecated ()
+                   .addXSD (new ClassPathResource (sXsdPrefix + "ubl-cible/F1FULL_UBL_CreditNote-2.1.xsd", _getCL ()))
+                   .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (new ClassPathResource (sPrefix0 +
+                                                                                                "PPF_Flux1_UBL_1_8_CIBLE_v1_1.xslt",
+                                                                                                _getCL ())))
+                   .registerInto (aRegistry);
+      VesXmlBuilder.builder ()
+                   .vesID (VID_FR_FLUX1_CII_CIBLE_1_1)
+                   .displayNamePrefix ("France PPF Flux 1 CII Cible ")
                    .notDeprecated ()
                    .addXSD (new ClassPathResource (sXsdPrefix +
                                                    "cii-cible/uncefact/data/standard/F1FULL_CrossIndustryInvoice_100pD22B.xsd",
                                                    _getCL ()))
-                   .addSchematron (PhiveRulesCIIHelper.createXSLT_CII_D22B (new ClassPathResource (sPrefix +
-                                                                                                   "PPF_Flux1_CII_1_8_CIBLE_v0_2.xslt",
+                   .addSchematron (PhiveRulesCIIHelper.createXSLT_CII_D22B (new ClassPathResource (sPrefix0 +
+                                                                                                   "PPF_Flux1_CII_1_8_CIBLE_v1_1.xslt",
                                                                                                    _getCL ())))
                    .registerInto (aRegistry);
     }

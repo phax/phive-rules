@@ -130,9 +130,9 @@
             </goals>
             <id>flux1</id>
             <configuration>
-              <schematronDirectory>${basedir}/src/test/resources/external/rule-source/flux1/0.2</schematronDirectory>
+              <schematronDirectory>${basedir}/src/test/resources/external/rule-source/flux1/1.1</schematronDirectory>
               <schematronPattern>*.sch</schematronPattern>
-              <xsltDirectory>${basedir}/src/main/resources/external/schematron/flux1/0.2/xslt</xsltDirectory>
+              <xsltDirectory>${basedir}/src/main/resources/external/schematron/flux1/1.1/xslt</xsltDirectory>
             </configuration>
           </execution>
           <execution>
