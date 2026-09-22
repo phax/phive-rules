@@ -105,7 +105,10 @@ public final class CTestFiles
                                                              FranceCTCValidation.VID_FR_CTC_CDAR_1_4_0_04,
                                                              FranceCTCValidation.VID_FR_EXTENDED_CTC_UBL_INV_1_4_0_04,
                                                              FranceCTCValidation.VID_FR_EXTENDED_CTC_UBL_CN_1_4_0_04,
-                                                             FranceCTCValidation.VID_FR_EXTENDED_CTC_CII_1_4_0_04 })
+                                                             FranceCTCValidation.VID_FR_EXTENDED_CTC_CII_1_4_0_04,
+                                                             FranceCTCValidation.VID_FR_CTC_FACTURX_BASICWL_1_4_0_04,
+                                                             FranceCTCValidation.VID_FR_CTC_FACTURX_EN16931_1_4_0_04,
+                                                             FranceCTCValidation.VID_FR_CTC_FACTURX_EXTENDED_1_4_0_04 })
       for (final IReadableResource aRes : getAllMatchingTestFiles (aVESID))
       {
         assertTrue ("Not existing test file: " + aRes.getPath (), aRes.exists ());
@@ -236,7 +239,10 @@ public final class CTestFiles
         aVESID.equals (FranceCTCValidation.VID_FR_CTC_CII_1_4_0_04) ||
         aVESID.equals (FranceCTCValidation.VID_FR_EXTENDED_CTC_UBL_INV_1_4_0_04) ||
         aVESID.equals (FranceCTCValidation.VID_FR_EXTENDED_CTC_UBL_CN_1_4_0_04) ||
-        aVESID.equals (FranceCTCValidation.VID_FR_EXTENDED_CTC_CII_1_4_0_04))
+        aVESID.equals (FranceCTCValidation.VID_FR_EXTENDED_CTC_CII_1_4_0_04) ||
+        aVESID.equals (FranceCTCValidation.VID_FR_CTC_FACTURX_BASICWL_1_4_0_04) ||
+        aVESID.equals (FranceCTCValidation.VID_FR_CTC_FACTURX_EN16931_1_4_0_04) ||
+        aVESID.equals (FranceCTCValidation.VID_FR_CTC_FACTURX_EXTENDED_1_4_0_04))
     {
       // No test files available
       return new CommonsArrayList <> ();

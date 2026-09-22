@@ -315,6 +315,15 @@ v4.5.7 - work in progress
   The CEN EN 16931 and Peppol Schematrons shipped in the Danish ZIP are not used - only `DK-EN16931-UBL.sch` is taken from it.
   Note that this Danish Schematron currently contains **no active rule** - `DK-R-008` and `DK-R-009` are commented out upstream, so the CIUS-DK rules presently validate exactly like the underlying Peppol BIS Billing rules. The VES exist so that Danish senders and receivers have a stable coordinate to reference
 * The Danish `PEPPOL_BIS3-Other` package (version 1.2.14) is intentionally not included: it only redistributes the Peppol BIS3 Schematrons for the non-Billing documents, which `phive-rules-peppol` already provides as `eu.peppol.bis3:*:2026.5` (Peppol BIS 3.0.17)
+* Added Factur-X validation rules for the France CTC 1.4.0.04 rule set, VES coordinates `fr.ctc:facturx-basicwl:1.4.0-04`, `fr.ctc:facturx-en16931:1.4.0-04` and `fr.ctc:facturx-extended:1.4.0-04`.
+  They are built like the plain CII rules: the Factur-X profile XML Schema, then the Factur-X profile Schematron, then the `BR-FR-Flux2-Schematron-CII` rules of 1.4.0.04. They are marked as valid from 2026-10-01, like the other 1.4.0.04 rules.
+  Only these 3 profiles exist, because the FNFE package only ships Schematrons for BASIC WL, EN 16931 and EXTENDED - there are none for MINIMUM and BASIC.
+  The XML Schemas are the Factur-X 1.0.9-2 (ZUGFeRD 2.5.2) ones from `phive-rules-zugferd`.
+  The BASIC WL and EN 16931 Schematrons of the FNFE package are byte identical to the Factur-X 1.0.9-2 ones, so they are referenced from `phive-rules-zugferd` instead of being duplicated.
+  The EXTENDED Schematron is **not** identical: the FNFE ships a France specific "fix-FR04" variant, applicable in France from 2026-10-01, so it is stored in `phive-rules-france`:
+    * `BR-FXEXT-S-01`, `BR-FXEXT-Z-01`, `BR-FXEXT-E-01`, `BR-FXEXT-AE-01`, `BR-FXEXT-IC-01`, `BR-FXEXT-G-01`, `BR-FXEXT-O-01`, `BR-FXEXT-AF-01` and `BR-FXEXT-AG-01` - corrected the XPath, which tested `ram:AssociatedDocumentLineDocument` relative to `ram:SpecifiedLineTradeSettlement` instead of relative to its parent line
+    * `BR-FXEXT-CO-10`, `BR-FXEXT-CO-12` and `BR-FXEXT-CO-13` - added `/xs:decimal(.)` inside the `sum()` functions to avoid rounding differences caused by the number representation
+* `FranceCTCValidation.getAllPrerequisites` now requires `de.zugferd:{basicwl,en16931,extended}:2.5.2` instead of `de.zugferd:extended:2.5` and `de.zugferd:extended:2.5.2`, because the Factur-X rules use the XML Schemas and Schematrons of all three profiles, while the ZUGFeRD 2.5 artefacts are no longer referenced at all
 
 v4.5.6 - 2026-09-06
 * Added the France CTC validation rules `1.4.0.04` (2026-09-03), VES coordinates `fr.ctc:ubl-invoice:1.4.0-04`, `fr.ctc:ubl-creditnote:1.4.0-04`, `fr.ctc:cii:1.4.0-04`, `fr.ctc:cdar:1.4.0-04`, `fr.ctc:extended-ubl-invoice:1.4.0-04`, `fr.ctc:extended-ubl-creditnote:1.4.0-04` and `fr.ctc:extended-cii:1.4.0-04`, and deprecated the 1.4.0.03 rules.

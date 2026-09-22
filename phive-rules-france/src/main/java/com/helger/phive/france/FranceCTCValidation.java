@@ -23,6 +23,7 @@ import java.time.OffsetDateTime;
 import org.jspecify.annotations.NonNull;
 
 import com.helger.annotation.concurrent.Immutable;
+import com.helger.annotation.misc.ChangeNextMajorRelease;
 import com.helger.annotation.style.ReturnsMutableCopy;
 import com.helger.base.enforce.ValueEnforcer;
 import com.helger.cii.d22b.CCIID22B;
@@ -44,11 +45,12 @@ import com.helger.phive.zugferd.ZugferdValidation;
 import com.helger.ubl21.UBL21Marshaller;
 
 /**
- * France CTC validation configuration
+ * France CTC (Flux2) validation configuration
  *
  * @author Philip Helger
  */
 @Immutable
+@ChangeNextMajorRelease ("Rename from CTC to Flux2")
 public final class FranceCTCValidation
 {
   public static final String GROUP_ID = "fr.ctc";
@@ -197,6 +199,17 @@ public final class FranceCTCValidation
                                                                                                    "extended-cii",
                                                                                                    "1.4.0-04");
 
+  // The FNFE ships Factur-X rules for these 3 profiles only
+  public static final DVRCoordinate VID_FR_CTC_FACTURX_BASICWL_1_4_0_04 = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                                      "facturx-basicwl",
+                                                                                                      "1.4.0-04");
+  public static final DVRCoordinate VID_FR_CTC_FACTURX_EN16931_1_4_0_04 = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                                      "facturx-en16931",
+                                                                                                      "1.4.0-04");
+  public static final DVRCoordinate VID_FR_CTC_FACTURX_EXTENDED_1_4_0_04 = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                                       "facturx-extended",
+                                                                                                       "1.4.0-04");
+
   private FranceCTCValidation ()
   {}
 
@@ -224,9 +237,10 @@ public final class FranceCTCValidation
                                     EN16931Validation.VID_UBL_CREDIT_NOTE_1316,
                                     EN16931Validation.VID_CII_1316,
 
-                                    // The Extended CTC CII rules use the Factur-X Extended XSDs -
-                                    // Factur-X 1.0.9 and 1.0.9-2 respectively
-                                    ZugferdValidation.VID_ZUGFERD_2_5_EXTENDED,
+                                    // The Factur-X CTC rules use the XSDs and the Schematrons of
+                                    // Factur-X 1.0.9-2 (ZUGFeRD 2.5.2)
+                                    ZugferdValidation.VID_ZUGFERD_2_5_2_BASIC_WL,
+                                    ZugferdValidation.VID_ZUGFERD_2_5_2_EN16931,
                                     ZugferdValidation.VID_ZUGFERD_2_5_2_EXTENDED);
   }
 
@@ -255,9 +269,10 @@ public final class FranceCTCValidation
     final var aInvoiceCII1316Xslt = new ClassPathResource ("/external/schematron/1.3.16/cii/EN16931-CII-validation.xslt",
                                                            EN16931Validation.class.getClassLoader ());
 
-    // The Extended CTC CII rules use the XSDs of these VES - only ensure they are registered, as
-    // solely the XML Schema resources are reused and not the whole VES
-    PhiveRulesHelper.requireVESID (aRegistry, ZugferdValidation.VID_ZUGFERD_2_5_EXTENDED);
+    // The Factur-X CTC rules use the XSDs and the Schematrons of these VES - only ensure they are
+    // registered, as solely the resources are reused and not the whole VES
+    PhiveRulesHelper.requireVESID (aRegistry, ZugferdValidation.VID_ZUGFERD_2_5_2_BASIC_WL);
+    PhiveRulesHelper.requireVESID (aRegistry, ZugferdValidation.VID_ZUGFERD_2_5_2_EN16931);
     PhiveRulesHelper.requireVESID (aRegistry, ZugferdValidation.VID_ZUGFERD_2_5_2_EXTENDED);
 
     final String sPrefix = "/external/schematron/ctc/";
@@ -794,6 +809,50 @@ public final class FranceCTCValidation
                    .addXSD (CCIID22B.getXSDResourceCDAR ())
                    .addSchematron (PhiveRulesCIIHelper.createXSLT_CII_D22B (new ClassPathResource (sPrefix0 +
                                                                                                    "20260903_BR-FR-CDV-Schematron-CDAR_V1.4.0.04.xslt",
+                                                                                                   _getCL ())))
+                   .validFrom (aValidFrom)
+                   .registerInto (aRegistry);
+
+      // Factur-X - the profile XSD and the profile Schematron, followed by the Flux 2 CII rules.
+      // The BASIC WL and EN 16931 Schematrons of the FNFE package are identical to the ones of
+      // Factur-X 1.0.9-2 (ZUGFeRD 2.5.2), so they are reused from there. The EXTENDED Schematron
+      // carries the France specific "fix-FR04" corrections and is therefore stored here
+      final ClassPathResource aFacturXBasicWLXslt = new ClassPathResource ("/external/schematron/2.5.2/FACTUR-X_BASIC-WL.xslt",
+                                                                           ZugferdValidation.class.getClassLoader ());
+      final ClassPathResource aFacturXEN16931Xslt = new ClassPathResource ("/external/schematron/2.5.2/FACTUR-X_EN16931.xslt",
+                                                                           ZugferdValidation.class.getClassLoader ());
+      VesXmlBuilder.builder ()
+                   .vesID (VID_FR_CTC_FACTURX_BASICWL_1_4_0_04)
+                   .displayNamePrefix ("France CTC Factur-X BASIC WL ")
+                   .notDeprecated ()
+                   .addXSD (CCIID22B.getXSDResourceCII ())
+                   .addSchematron (PhiveRulesCIIHelper.createXSLT_CII_D22B (aFacturXBasicWLXslt))
+                   .addSchematron (PhiveRulesCIIHelper.createXSLT_CII_D22B (new ClassPathResource (sPrefix0 +
+                                                                                                   "20260903_BR-FR-Flux2-Schematron-CII_V1.4.0.04.xslt",
+                                                                                                   _getCL ())))
+                   .validFrom (aValidFrom)
+                   .registerInto (aRegistry);
+      VesXmlBuilder.builder ()
+                   .vesID (VID_FR_CTC_FACTURX_EN16931_1_4_0_04)
+                   .displayNamePrefix ("France CTC Factur-X EN 16931 ")
+                   .notDeprecated ()
+                   .addXSD (CCIID22B.getXSDResourceCII ())
+                   .addSchematron (PhiveRulesCIIHelper.createXSLT_CII_D22B (aFacturXEN16931Xslt))
+                   .addSchematron (PhiveRulesCIIHelper.createXSLT_CII_D22B (new ClassPathResource (sPrefix0 +
+                                                                                                   "20260903_BR-FR-Flux2-Schematron-CII_V1.4.0.04.xslt",
+                                                                                                   _getCL ())))
+                   .validFrom (aValidFrom)
+                   .registerInto (aRegistry);
+      VesXmlBuilder.builder ()
+                   .vesID (VID_FR_CTC_FACTURX_EXTENDED_1_4_0_04)
+                   .displayNamePrefix ("France CTC Factur-X EXTENDED ")
+                   .notDeprecated ()
+                   .addXSD (CCIID22B.getXSDResourceCII ())
+                   .addSchematron (PhiveRulesCIIHelper.createXSLT_CII_D22B (new ClassPathResource (sPrefix0 +
+                                                                                                   "20260903_FACTUR-X_EXTENDED_V1.4.0.04.xslt",
+                                                                                                   _getCL ())))
+                   .addSchematron (PhiveRulesCIIHelper.createXSLT_CII_D22B (new ClassPathResource (sPrefix0 +
+                                                                                                   "20260903_BR-FR-Flux2-Schematron-CII_V1.4.0.04.xslt",
                                                                                                    _getCL ())))
                    .validFrom (aValidFrom)
                    .registerInto (aRegistry);
