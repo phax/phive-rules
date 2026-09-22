@@ -220,9 +220,11 @@ public final class FranceCTCValidation
     return new CommonsArrayList <> (EN16931Validation.VID_UBL_INVOICE_1315,
                                     EN16931Validation.VID_UBL_CREDIT_NOTE_1315,
                                     EN16931Validation.VID_CII_1315,
+
                                     EN16931Validation.VID_UBL_INVOICE_1316,
                                     EN16931Validation.VID_UBL_CREDIT_NOTE_1316,
                                     EN16931Validation.VID_CII_1316,
+
                                     // The Extended CTC CII rules use the Factur-X Extended XSDs -
                                     // Factur-X 1.0.9 and 1.0.9-2 respectively
                                     ZugferdValidation.VID_ZUGFERD_2_5_EXTENDED,

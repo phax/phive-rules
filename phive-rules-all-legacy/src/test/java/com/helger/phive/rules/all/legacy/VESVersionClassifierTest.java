@@ -19,8 +19,6 @@ package com.helger.phive.rules.all.legacy;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-import java.util.Map;
-
 import org.junit.Test;
 
 import com.helger.base.string.StringParser;
@@ -92,10 +90,10 @@ public final class VESVersionClassifierTest
     // Safety net, so that this test cannot silently pass on an empty registry
     assertTrue (aNumericClassifiers.isNotEmpty ());
 
-    for (final Map.Entry <String, ICommonsSortedSet <String>> aEntry : aNumericClassifiers.entrySet ())
+    for (final var aEntry : aNumericClassifiers.entrySet ())
     {
       final ICommonsSortedSet <String> aClassifiers = aEntry.getValue ();
-      final int nExpectedLength = aClassifiers.getFirst ().length ();
+      final int nExpectedLength = aClassifiers.getFirstOrNull ().length ();
       for (final String sClassifier : aClassifiers)
         assertEquals ("The numeric version classifiers of '" +
                       aEntry.getKey () +
