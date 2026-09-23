@@ -24,6 +24,11 @@ The foundational, XSD-only document formats live in the separate repository [phi
 * OSA (HU)
 * TEAPPS (FI) 
 
+The outdated rule sets live in the separate repository [phive-rules-legacy](https://github.com/phax/phive-rules-legacy) since v4.6.0. Their Maven and VES coordinates are unchanged.
+* older Peppol rule sets (`phive-rules-peppol-legacy`)
+* legacy Danish OIOUBL rule sets - 1.12.3 up to 1.17.1, 2.0.2 and 3.0.1 (`phive-rules-oioubl-legacy`)
+* the legacy aggregator `phive-rules-all-legacy`
+
 This project is divided into sub-projects each keeping tracking of one document type set:
 * phive-rules-api - Shared UBL/CII helper classes; depends on `phive-rules-foundation-api` (from [phive-rules-foundations](https://github.com/phax/phive-rules-foundations)) which provides the validation rules registration SPI and the core helpers
 * phive-rules-cius-dk - Validation rules for the Danish Peppol CIUS (since v4.5.7)
@@ -35,10 +40,9 @@ This project is divided into sub-projects each keeping tracking of one document 
 * phive-rules-eracun - Validation rules for Croatian eRacun (since v4.1.11)
 * phive-rules-france - Validation rules for France (since v4.0.1)
 * phive-rules-isdoc - Validation rules for ISDOC (since v2.0.2)
-* phive-rules-oioubl - Validation rules for Danish OIOUBL
+* phive-rules-oioubl - Validation rules for Danish OIOUBL - the current rule set only; the older ones are in [phive-rules-legacy](https://github.com/phax/phive-rules-legacy) since v4.6.0
 * phive-rules-peppol - the Peppol specific rules - always the latest two rule sets
 * phive-rules-peppol-pint - the Peppol PINT specific rules (since v4.4.0 as separate module - previously in `phive-rules-peppol`)
-* phive-rules-peppol-legacy - older Peppol specific rules that are out of date (since v2.0.5)
 * phive-rules-peppol-italy - Peppol Italy specific rules (since v2.1.1)
 * phive-rules-peppol-taxdata - Peppol Tax Data Document (TDD) rules, extracted from phive-rules-peppol (since v4.4.0)
 * phive-rules-serbia - Validation rules for the Serbian SEF (SRBDT) EN 16931 CIUS and SEO logistics documents (since v4.3.9)
@@ -51,9 +55,10 @@ This project is divided into sub-projects each keeping tracking of one document 
 * phive-rules-zatca - Validation rules for Saudi Arabian ZATCA/FATOORA format (since v3.2.7)
 * phive-rules-zugferd - Validation rules for German ZuGFERD and French Factur-X (XML part only) (since v3.2.2)
 
-Aggregator modules:
+Aggregator module:
 * phive-rules-all - Aggregator depending on all current (non-legacy) modules with `PhiveRulesValidation.initPhiveRules` to register them all at once (since v4.4.0)
-* phive-rules-all-legacy - Aggregator depending on all legacy modules with `PhiveRulesLegacyValidation.initPhiveRulesLegacy` to register them all at once (since v4.4.0)
+
+The legacy aggregator `phive-rules-all-legacy` moved to [phive-rules-legacy](https://github.com/phax/phive-rules-legacy) in v4.6.0.
 
 The Java code in this project is licensed under the Apache 2 license.
 The code of the validation artefacts used may use a different license. 
@@ -132,12 +137,6 @@ Add the following to your `pom.xml` to use this artifact, replacing `x.y.z` with
 <dependency>
   <groupId>com.helger.phive.rules</groupId>
   <artifactId>phive-rules-peppol-taxdata</artifactId>
-  <version>x.y.z</version>
-</dependency>
-
-<dependency>
-  <groupId>com.helger.phive.rules</groupId>
-  <artifactId>phive-rules-peppol-legacy</artifactId>
   <version>x.y.z</version>
 </dependency>
 
@@ -235,7 +234,7 @@ final ValidationExecutorSetRegistry <IValidationSourceXML> aRegistry = new Valid
 PhiveRulesValidation.initPhiveRules (aRegistry);
 ```
 
-To additionally register the legacy rule sets, depend on `phive-rules-all-legacy` and call `PhiveRulesLegacyValidation.initPhiveRulesLegacy` afterwards (the current rules must be registered first):
+To additionally register the legacy rule sets, depend on `phive-rules-all-legacy` from [phive-rules-legacy](https://github.com/phax/phive-rules-legacy) and call `PhiveRulesLegacyValidation.initPhiveRulesLegacy` afterwards (the current rules must be registered first):
 
 ```xml
 <dependency>
@@ -265,6 +264,16 @@ As OpenPeppol is only changing the "micro" version part (3.0.x), whereas I start
 I hope that with the introduction of PINT, the versioning problem will be solved.
 
 # News and noteworthy
+
+v4.6.0 - work in progress
+* Moved the legacy validation rules out into the separate repository [phive-rules-legacy](https://github.com/phax/phive-rules-legacy), so that the current rules can be built and released without the accumulated weight of all historic rule sets. All Maven and VES coordinates are unchanged.
+    * `phive-rules-peppol-legacy` and `phive-rules-all-legacy` moved there unchanged
+    * The legacy Danish OIOUBL rule sets moved into the new module `phive-rules-oioubl-legacy` there. `phive-rules-oioubl` retains only the current 1.17.2 rule set; the deprecated 1.12.3, 1.13.0, 1.13.2, 1.14.2, 1.15.0-rc, 1.15.1, 1.15.2, 1.16.1, 1.17.0-rc and 1.17.1 rule sets (VES group `dk.oioubl`) are now registered by `OIOUBLValidationOlder` in package `com.helger.phive.oioubl.legacy`
+    * `OIOUBLLegacyValidation` (VES group `dk.oioubl.legacy`, versions 2.0.2 and 3.0.1) moved from package `com.helger.phive.oioubl` to `com.helger.phive.oioubl.legacy` in `phive-rules-oioubl-legacy`
+    * `OIOUBLValidationSPI` no longer declares any prerequisite and no longer registers the legacy OIOUBL rules, so `phive-rules-oioubl` no longer depends on `phive-rules-en16931`
+    * The Peppol `openpeppol` 2024.5 and 2024.11 Schematron XSLTs moved from `phive-rules-peppol` to `phive-rules-peppol-legacy` - they were only referenced by the legacy rule sets, but had been left behind when those rule sets were moved in v4.1.2
+    * This reduces the `phive-rules-oioubl` JAR from 15.0 MB to 2.3 MB and the total size of all deployed JARs from 34.6 MB to roughly 17 MB
+* `phive-rules-peppol-legacy` now declares `ph-ubl21` and `ph-ubl23` explicitly instead of inheriting them from `phive-rules-peppol`
 
 v4.5.7 - 2026-09-22
 * Added the Peppol BIS Billing Singapore 2026.6 rules (aka BIS 3.0.17, released 2026-06-08), VES coordinates `eu.peppol.bis3.sg.ubl:invoice:2026.6` and `eu.peppol.bis3.sg.ubl:creditnote:2026.6`, and deprecated the 2024.12 (aka BIS 3.0.14) rules. See [issue #88](https://github.com/phax/phive-rules/issues/88).

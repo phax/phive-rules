@@ -26,7 +26,7 @@
   </parent>
   <groupId>com.helger.phive.rules</groupId>
   <artifactId>phive-rules-parent-pom</artifactId>
-  <version>4.5.7-SNAPSHOT</version>
+  <version>4.6.0-SNAPSHOT</version>
   <packaging>pom</packaging>
   <name>phive-rules-parent-pom</name>
   <description>Base POM to build the phive rules projects</description>
@@ -182,11 +182,6 @@
       </dependency>
       <dependency>
         <groupId>com.helger.phive.rules</groupId>
-        <artifactId>phive-rules-peppol-legacy</artifactId>
-        <version>${project.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.helger.phive.rules</groupId>
         <artifactId>phive-rules-peppol</artifactId>
         <version>${project.version}</version>
       </dependency>
@@ -255,11 +250,6 @@
         <artifactId>phive-rules-all</artifactId>
         <version>${project.version}</version>
       </dependency>
-      <dependency>
-        <groupId>com.helger.phive.rules</groupId>
-        <artifactId>phive-rules-all-legacy</artifactId>
-        <version>${project.version}</version>
-      </dependency>
     </dependencies>
   </dependencyManagement>
   
@@ -281,7 +271,6 @@
     <module>phive-rules-france</module>
     <module>phive-rules-isdoc</module>
     <module>phive-rules-oioubl</module>
-    <module>phive-rules-peppol-legacy</module>
     <module>phive-rules-peppol</module>
     <module>phive-rules-peppol-taxdata</module>
     <module>phive-rules-peppol-pint</module>
@@ -297,9 +286,8 @@
     <module>phive-rules-ublbe</module>
     <module>phive-rules-xrechnung</module>
     <module>phive-rules-zatca</module>
-    <!-- Aggregators with all modules; must be last -->
+    <!-- Aggregator with all modules; must be last -->
     <module>phive-rules-all</module>
-    <module>phive-rules-all-legacy</module>
   </modules>
   
   <build>

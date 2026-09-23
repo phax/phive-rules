@@ -71,7 +71,8 @@ public final class PhiveRulesValidation
   /**
    * Register all supported validation execution sets of all current (non-legacy) phive rules
    * modules to the provided registry, in the proper order. The legacy validation execution sets are
-   * available separately via
+   * available separately from the <code>phive-rules-legacy</code> project
+   * (https://github.com/phax/phive-rules-legacy) via
    * {@code com.helger.phive.rules.all.legacy.PhiveRulesLegacyValidation#initPhiveRulesLegacy}.
    *
    * @param aRegistry

@@ -4,7 +4,15 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-**phive-rules** is a Maven multi-module project providing preconfigured validation rules for [PHIVE](https://github.com/phax/phive) (Philip Helger Integrative Validation Engine). It contains 35 sub-modules: `phive-rules-api` (the shared base), the two aggregators `phive-rules-all` / `phive-rules-all-legacy`, and one module per e-invoicing document format (EN 16931, Peppol, XRechnung, UBL.BE, etc.).
+**phive-rules** is a Maven multi-module project providing preconfigured validation rules for [PHIVE](https://github.com/phax/phive) (Philip Helger Integrative Validation Engine). It contains `phive-rules-api` (a deprecated shim over `phive-rules-shared`), the aggregator `phive-rules-all`, and one module per e-invoicing document format (EN 16931, Peppol, XRechnung, UBL.BE, etc.).
+
+Two sibling repositories hold parts of the same ecosystem, with the same Maven group `com.helger.phive.rules` and unchanged VES coordinates:
+- [phive-rules-foundations](https://github.com/phax/phive-rules-foundations) (`../phive-rules-foundations`, version line 5.x) — the XSD-only foundational formats. **`phive-rules` depends on it**, so it must be installed/released first.
+- [phive-rules-legacy](https://github.com/phax/phive-rules-legacy) (`../phive-rules-legacy`, version line in lockstep, since 4.6.0) — the outdated rule sets: `phive-rules-peppol-legacy`, `phive-rules-oioubl-legacy` and `phive-rules-all-legacy`. **It depends on `phive-rules`**, so it is built/released last.
+
+Full release order: `phive-rules-shared` → `phive-rules-foundations` → `phive-rules` → `phive-rules-legacy`.
+
+When retiring a rule set to `phive-rules-legacy`, move the registration code **and** every classpath resource it loads. Leaving XSLTs behind compiles fine and only fails at test/runtime — see `{Format}ValidationTest.testFilesExist`.
 
 Part of the Peppol solution stack: https://github.com/phax/peppol
 
@@ -31,7 +39,7 @@ phive-rules-{format}/
 │   ├── {Format}Validation.java              # Registers validation rule sets (init… methods)
 │   └── {Format}ValidationSPI.java           # SPI impl (IValidationRulesRegistrarSPI)
 ├── src/main/resources/
-│   ├── META-INF/services/…IValidationRulesRegistrarSPI  # SPI registration
+│   ├── META-INF/services/com.helger.phive.rules.shared.IValidationRulesRegistrarSPI  # SPI registration
 │   └── external/schematron/                 # Pre-compiled XSLT rules
 ├── src/test/java/.../
 │   ├── {Format}ValidationTest.java
@@ -69,10 +77,10 @@ Each `{Format}Validation.java` class:
 
 ### SPI Auto-Registration & Aggregators
 
-Every rule module also ships a `{Format}ValidationSPI` implementing `com.helger.phive.rules.api.IValidationRulesRegistrarSPI` (annotated `@IsSPIImplementation`, listed in `src/main/resources/META-INF/services/com.helger.phive.rules.api.IValidationRulesRegistrarSPI`). Its `registerValidationRules` delegates to the module's `init…` method(s).
+Every rule module also ships a `{Format}ValidationSPI` implementing `com.helger.phive.rules.shared.IValidationRulesRegistrarSPI` (annotated `@IsSPIImplementation`, listed in `src/main/resources/META-INF/services/com.helger.phive.rules.shared.IValidationRulesRegistrarSPI`). Its `registerValidationRules` delegates to the module's `init…` method(s).
 
 - **Prerequisites & ordering:** a module that depends on another module's VES overrides `getAllPrerequisites()` to return those `DVRCoordinate`s, sharing the same constants its `init…` method requires (declared as a static `getAllPrerequisites()` on the `{Format}Validation` class). `ValidationRulesRegistrar.registerAllValidationRules (registry)` discovers all SPIs via `ServiceLoader` and, because load order is non-deterministic, only registers a module once all its prerequisites are present — deferring and retrying the others in later rounds, and throwing `IllegalStateException` if a full round makes no progress.
-- **Aggregators:** `phive-rules-all` (`PhiveRulesValidation.initPhiveRules`) imperatively registers all current modules in the correct order; `phive-rules-all-legacy` (`PhiveRulesLegacyValidation.initPhiveRulesLegacy`) adds the legacy sets. These two modules do NOT ship an SPI themselves.
+- **Aggregators:** `phive-rules-all` (`PhiveRulesValidation.initPhiveRules`) imperatively registers all current modules in the correct order. The legacy counterpart `phive-rules-all-legacy` (`PhiveRulesLegacyValidation.initPhiveRulesLegacy`) lives in `../phive-rules-legacy` since v4.6.0. Aggregator modules do NOT ship an SPI themselves.
 
 When adding a module, wire all three: the `init…` method, the `{Format}ValidationSPI` + its `META-INF/services` file, and — if it has cross-module prerequisites — a static `getAllPrerequisites()`. Also register it in `phive-rules-all` (pom dependency + a call in `initPhiveRules`).
 
@@ -93,11 +101,11 @@ When adding a new module or a new VES coordinate, follow the **DVR Coordinate na
 
 ### Module Dependencies
 
-- `phive-rules-api` — base for all modules
+- `phive-rules-shared` (external, from the standalone `phive-rules-shared` project) — base for all modules; `phive-rules-api` is only a deprecated shim over it and is used by nothing
 - `phive-rules-en16931` — prerequisite for many country-specific modules
 - `phive-rules-peppol` depends on `en16931`
-- `phive-rules-ublbe` depends on `peppol`
 - `phive-rules-energieefactuur` depends on `simplerinvoicing`
+- `phive-rules-oioubl` is consumed by `phive-rules-oioubl-legacy` (other repo) for its OIOUBL UtilityStatement XSDs
 
 ## Imports & Annotations
 
