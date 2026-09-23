@@ -300,5 +300,20 @@
         </plugin>
       </plugins>
     </pluginManagement>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-source-plugin</artifactId>
+        <executions>
+          <!-- Do not deploy the test sources. They contain all the sample documents and
+               Schematron rule sources, which made up ~77% of the Maven Central bundle
+               (135 of 175 MB) without being usable by anyone. -->
+          <execution>
+            <id>attach-test-sources</id>
+            <phase>none</phase>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
   </build>
 </project>

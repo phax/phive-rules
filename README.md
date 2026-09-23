@@ -274,6 +274,7 @@ v4.6.0 - 2026-09-23
     * The Peppol `openpeppol` 2024.5 and 2024.11 Schematron XSLTs moved from `phive-rules-peppol` to `phive-rules-peppol-legacy` - they were only referenced by the legacy rule sets, but had been left behind when those rule sets were moved in v4.1.2
     * This reduces the `phive-rules-oioubl` JAR from 15.0 MB to 2.3 MB and the total size of all deployed JARs from 34.6 MB to roughly 17 MB
 * `phive-rules-peppol-legacy` now declares `ph-ubl21` and `ph-ubl23` explicitly instead of inheriting them from `phive-rules-peppol`
+* The test sources are no longer deployed to Maven Central. The `-test-sources.jar` artefacts contained all the sample documents and Schematron rule sources and made up 135 of the 175 MB of the Central bundle (`phive-rules-ublbe` alone shipped a 0.67 MB JAR next to a 53.67 MB test sources JAR), without being usable by anyone. The bundle is now roughly 40 MB.
 
 v4.5.7 - 2026-09-22
 * Added the Peppol BIS Billing Singapore 2026.6 rules (aka BIS 3.0.17, released 2026-06-08), VES coordinates `eu.peppol.bis3.sg.ubl:invoice:2026.6` and `eu.peppol.bis3.sg.ubl:creditnote:2026.6`, and deprecated the 2024.12 (aka BIS 3.0.14) rules. See [issue #88](https://github.com/phax/phive-rules/issues/88).
