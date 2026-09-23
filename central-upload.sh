@@ -20,10 +20,13 @@
 #                    or AUTOMATIC (publishes right away after validation)
 #
 # Usage: ./central-upload.sh [path-to-bundle.zip]
+#        (may be called from another project folder, e.g. ../phive-rules/central-upload.sh)
 
 set -euo pipefail
 
-BASE_DIR="$(cd "$(dirname "$0")" && pwd)"
+# The default bundle is resolved relative to the current directory - so the script
+# can be called from any project folder (e.g. "../phive-rules/central-upload.sh")
+BASE_DIR="$PWD"
 BUNDLE="${1:-${BUNDLE:-$BASE_DIR/target/checkout/target/central-publishing/central-bundle.zip}}"
 PUBLISHING_TYPE="${PUBLISHING_TYPE:-USER_MANAGED}"
 
@@ -34,6 +37,7 @@ if [ ! -s "$BUNDLE" ]; then
   echo "ERROR: bundle not found or empty: $BUNDLE" >&2
   exit 1
 fi
+echo "Using Bundle $BUNDLE"
 
 if [ -z "${DEPLOYMENT_NAME:-}" ]; then
   # Entries look like "com/helger/phive/rules/phive-rules-all/4.6.0/phive-rules-all-4.6.0.pom"
