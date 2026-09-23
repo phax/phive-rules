@@ -265,7 +265,7 @@ I hope that with the introduction of PINT, the versioning problem will be solved
 
 # News and noteworthy
 
-v4.6.0 - work in progress
+v4.6.0 - 2026-09-23
 * Moved the legacy validation rules out into the separate repository [phive-rules-legacy](https://github.com/phax/phive-rules-legacy), so that the current rules can be built and released without the accumulated weight of all historic rule sets. All Maven and VES coordinates are unchanged.
     * `phive-rules-peppol-legacy` and `phive-rules-all-legacy` moved there unchanged
     * The legacy Danish OIOUBL rule sets moved into the new module `phive-rules-oioubl-legacy` there. `phive-rules-oioubl` retains only the current 1.17.2 rule set; the deprecated 1.12.3, 1.13.0, 1.13.2, 1.14.2, 1.15.0-rc, 1.15.1, 1.15.2, 1.16.1, 1.17.0-rc and 1.17.1 rule sets (VES group `dk.oioubl`) are now registered by `OIOUBLValidationOlder` in package `com.helger.phive.oioubl.legacy`
