@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <xsl:stylesheet xmlns:svrl="http://purl.oclc.org/dsdl/svrl" xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" xmlns:iso="http://purl.oclc.org/dsdl/schematron" xmlns:saxon="http://saxon.sf.net/" xmlns:schold="http://www.ascc.net/xml/schematron" xmlns:u="utils" xmlns:ubl="urn:oasis:names:specification:ubl:schema:xsd:OrderResponse-2" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="2.0">
-<!--Implementers: please note that overriding process-prolog or process-root is 
+  <!-- Created with ph-schematron version of ISO Schematron XSLTs. -->
+<!-- Implementers: please note that overriding process-prolog or process-root is 
     the preferred method for meta-stylesheets to use where possible. -->
-
 <xsl:param name="archiveDirParameter" />
   <xsl:param name="archiveNameParameter" />
   <xsl:param name="fileNameParameter" />
@@ -134,9 +134,9 @@
         <xsl:text>']</xsl:text>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:variable name="preceding" select="count(preceding-sibling::*[local-name()=local-name(current())                                   and namespace-uri() = namespace-uri(current())])" />
+    <xsl:variable name="preceding" select="count(preceding-sibling::*[local-name()=local-name(current())                                       and namespace-uri() = namespace-uri(current())])" />
     <xsl:text>[</xsl:text>
-    <xsl:value-of select="1+ $preceding" />
+    <xsl:value-of select="1 + $preceding" />
     <xsl:text>]</xsl:text>
   </xsl:template>
   <xsl:template match="@*" mode="schematron-get-full-path">
@@ -171,10 +171,9 @@
       <xsl:text />/@<xsl:value-of select="name(.)" />
     </xsl:if>
   </xsl:template>
-<!--MODE: SCHEMATRON-FULL-PATH-3-->
+  <!--MODE: SCHEMATRON-FULL-PATH-3-->
 <!--This mode can be used to generate prefixed XPath for humans 
 	(Top-level element has index)-->
-
 <xsl:template match="node() | @*" mode="schematron-get-full-path-3">
     <xsl:for-each select="ancestor-or-self::*">
       <xsl:text>/</xsl:text>
@@ -234,7 +233,8 @@
     <xsl:text>_</xsl:text>
     <xsl:value-of select="translate(name(),':','.')" />
   </xsl:template>
-<!--Strip characters-->  <xsl:template match="text()" priority="-1" />
+  <!--Strip characters-->
+  <xsl:template match="text()" priority="-1" />
 
 <!--SCHEMA SETUP-->
 <xsl:template match="/">
@@ -251,103 +251,91 @@
       <svrl:ns-prefix-in-attribute-values prefix="xs" uri="http://www.w3.org/2001/XMLSchema" />
       <svrl:ns-prefix-in-attribute-values prefix="u" uri="utils" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
+        <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M17" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
+        <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M18" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
+        <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M19" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
+        <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M20" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
+        <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
         <xsl:attribute name="id">Abstract</xsl:attribute>
         <xsl:attribute name="name">Abstract</xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M26" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
+        <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
         <xsl:attribute name="id">verificaOrderReferenceID</xsl:attribute>
         <xsl:attribute name="name">verificaOrderReferenceID</xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M27" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
+        <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
         <xsl:attribute name="id">verificaPIVA</xsl:attribute>
         <xsl:attribute name="name">verificaPIVA</xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M28" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
+        <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
         <xsl:attribute name="id">verificaLinee</xsl:attribute>
         <xsl:attribute name="name">verificaLinee</xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M29" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
+        <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
         <xsl:attribute name="id">verificaCodiceIPA</xsl:attribute>
         <xsl:attribute name="name">verificaCodiceIPA</xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M30" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
+        <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
         <xsl:attribute name="id">verificaBuyer</xsl:attribute>
         <xsl:attribute name="name">verificaBuyer</xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M31" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
+        <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
         <xsl:attribute name="id">verificaCF</xsl:attribute>
         <xsl:attribute name="name">verificaCF</xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M32" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
+        <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
         <xsl:attribute name="id">IT-UBL-T76</xsl:attribute>
         <xsl:attribute name="name">IT-UBL-T76</xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M33" select="/" />
     </svrl:schematron-output>

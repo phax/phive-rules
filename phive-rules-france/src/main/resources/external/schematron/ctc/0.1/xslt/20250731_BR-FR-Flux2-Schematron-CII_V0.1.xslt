@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <xsl:stylesheet xmlns:svrl="http://purl.oclc.org/dsdl/svrl" xmlns:custom="http://www.example.org/custom" xmlns:iso="http://purl.oclc.org/dsdl/schematron" xmlns:qdt="urn:un:unece:uncefact:data:standard:QualifiedDataType:100" xmlns:ram="urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100" xmlns:rsm="urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100" xmlns:saxon="http://saxon.sf.net/" xmlns:schold="http://www.ascc.net/xml/schematron" xmlns:udt="urn:un:unece:uncefact:data:standard:UnqualifiedDataType:100" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="2.0">
-<!--Implementers: please note that overriding process-prolog or process-root is 
+  <!-- Created with ph-schematron version of ISO Schematron XSLTs. -->
+<!-- Implementers: please note that overriding process-prolog or process-root is 
     the preferred method for meta-stylesheets to use where possible. -->
-
 <xsl:param name="archiveDirParameter" />
   <xsl:param name="archiveNameParameter" />
   <xsl:param name="fileNameParameter" />
@@ -132,9 +132,9 @@
         <xsl:text>']</xsl:text>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:variable name="preceding" select="count(preceding-sibling::*[local-name()=local-name(current())                                   and namespace-uri() = namespace-uri(current())])" />
+    <xsl:variable name="preceding" select="count(preceding-sibling::*[local-name()=local-name(current())                                       and namespace-uri() = namespace-uri(current())])" />
     <xsl:text>[</xsl:text>
-    <xsl:value-of select="1+ $preceding" />
+    <xsl:value-of select="1 + $preceding" />
     <xsl:text>]</xsl:text>
   </xsl:template>
   <xsl:template match="@*" mode="schematron-get-full-path">
@@ -169,10 +169,9 @@
       <xsl:text />/@<xsl:value-of select="name(.)" />
     </xsl:if>
   </xsl:template>
-<!--MODE: SCHEMATRON-FULL-PATH-3-->
+  <!--MODE: SCHEMATRON-FULL-PATH-3-->
 <!--This mode can be used to generate prefixed XPath for humans 
 	(Top-level element has index)-->
-
 <xsl:template match="node() | @*" mode="schematron-get-full-path-3">
     <xsl:for-each select="ancestor-or-self::*">
       <xsl:text>/</xsl:text>
@@ -232,7 +231,8 @@
     <xsl:text>_</xsl:text>
     <xsl:value-of select="translate(name(),':','.')" />
   </xsl:template>
-<!--Strip characters-->  <xsl:template match="text()" priority="-1" />
+  <!--Strip characters-->
+  <xsl:template match="text()" priority="-1" />
 
 <!--SCHEMA SETUP-->
 <xsl:template match="/">
@@ -249,435 +249,291 @@
       <svrl:ns-prefix-in-attribute-values prefix="qdt" uri="urn:un:unece:uncefact:data:standard:QualifiedDataType:100" />
       <svrl:ns-prefix-in-attribute-values prefix="udt" uri="urn:un:unece:uncefact:data:standard:UnqualifiedDataType:100" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
         <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
         <xsl:attribute name="id">BR-FR-01_BR-FR-02</xsl:attribute>
         <xsl:attribute name="name">BR-FR-01 — Validation de la longueur et du format des identifiants de facture</xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M20" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
         <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
         <xsl:attribute name="id">BR-FR-03</xsl:attribute>
         <xsl:attribute name="name">BR-FR-03 — Validation de l'année dans les dates (2000–2099)</xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M21" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
         <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
         <xsl:attribute name="id">BR-FR-04</xsl:attribute>
         <xsl:attribute name="name">BR-FR-04 — Validation du code type de document</xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M22" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
         <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
         <xsl:attribute name="id">BR-FR-05</xsl:attribute>
         <xsl:attribute name="name">BR-FR-05 — Présence obligatoire des mentions légales dans les notes (BG-3)</xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M23" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
         <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
         <xsl:attribute name="id">BR-FR-06</xsl:attribute>
         <xsl:attribute name="name">BR-FR-06 — Unicité des codes sujets dans les notes (BG-3)</xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M24" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
         <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
         <xsl:attribute name="id">BR-FR-08</xsl:attribute>
         <xsl:attribute name="name">BR-FR-08 — Validation du mode de facturation (BT-23)</xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M25" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
         <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
         <xsl:attribute name="id">BR-FR-09</xsl:attribute>
         <xsl:attribute name="name">BR-FR-09 — Cohérence entre SIRET (GlobalID) et SIREN (ID)</xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M26" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
         <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
         <xsl:attribute name="id">BR-FR-10</xsl:attribute>
         <xsl:attribute name="name">BR-FR-10 — SIREN du vendeur obligatoire et valide (BT-30)</xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M27" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
         <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
         <xsl:attribute name="id">BR-FR-11</xsl:attribute>
         <xsl:attribute name="name">BR-FR-11 — SIREN obligatoire et valide si traitement BAR/B2B (BT-47)</xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M28" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
         <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
         <xsl:attribute name="id">BR-FR-12</xsl:attribute>
         <xsl:attribute name="name">BR-FR-12 — Vérification de la présence du BT-49</xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M29" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
         <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
         <xsl:attribute name="id">BR-FR-13</xsl:attribute>
         <xsl:attribute name="name">BR-FR-13 — Vérification de la présence du BT-34</xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M30" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
         <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
         <xsl:attribute name="id">BR-FR-15</xsl:attribute>
         <xsl:attribute name="name">BR-FR-15 — Vérification des codes de catégorie de TVA (BT-95, BT-102, BT-118, BT-151)</xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M31" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
         <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
         <xsl:attribute name="id">BR-FR-16</xsl:attribute>
         <xsl:attribute name="name">BR-FR-16 — Vérification des taux de TVA autorisés (BT-96, BT-103, BT-119, BT-152)</xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M32" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
         <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
         <xsl:attribute name="id">BR-FR-17</xsl:attribute>
         <xsl:attribute name="name">BR-FR-17 — Codes autorisés pour qualifier les pièces jointes (BT-123)</xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M33" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
         <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
         <xsl:attribute name="id">BR-FR-18</xsl:attribute>
         <xsl:attribute name="name">BR-FR-18 — Un seul document additionnel avec la description 'LISIBLE' (BT-123)</xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M34" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
         <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
         <xsl:attribute name="id">BR-FR-20</xsl:attribute>
         <xsl:attribute name="name">BR-FR-20 — Vérification du traitement associé à une note avec code sujet 'BAR' (BT-21)</xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M35" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
         <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
         <xsl:attribute name="id">BR-FR-21</xsl:attribute>
         <xsl:attribute name="name">BR-FR-21 — Vérification du BT-49 en cas de traitement BAR/B2B et hors cas autofacture</xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M36" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
         <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
         <xsl:attribute name="id">BR-FR-22</xsl:attribute>
         <xsl:attribute name="name">BR-FR-22 — Vérification du BT-34 en cas de traitement BAR/B2B et en autofacture</xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M37" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
         <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
         <xsl:attribute name="id">BR-FR-23</xsl:attribute>
         <xsl:attribute name="name">BR-FR-23 — Validation du format des adresses électroniques avec schemeID = 0225 (CII)</xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M38" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
         <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
         <xsl:attribute name="id">BR-FR-24</xsl:attribute>
         <xsl:attribute name="name">BR-FR-24 — Validation du format des identifiants privés avec schemeID = 0224 (CII)</xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M39" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
         <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
         <xsl:attribute name="id">BR-FR-25</xsl:attribute>
         <xsl:attribute name="name">BR-FR-25 — Longueur maximale des adresses électroniques (CII)</xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M40" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
         <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
         <xsl:attribute name="id">BR-FR-26</xsl:attribute>
         <xsl:attribute name="name">BR-FR-26 — Longueur maximale des identifiants privés avec schemeID = 0224</xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M41" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
         <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
         <xsl:attribute name="id">BR-FR-CO-03</xsl:attribute>
         <xsl:attribute name="name">BR-FR-CO-03 — Présence obligatoire du contrat et de la période de facturation si type de facture = 262 (Avoir Remise Globale)</xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M42" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
         <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
         <xsl:attribute name="id">BR-FR-CO-04</xsl:attribute>
         <xsl:attribute name="name">BR-FR-CO-04 — Une seule référence à une facture antérieure obligatoire pour les factures rectificatives (BT-3)</xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M43" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
         <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
         <xsl:attribute name="id">BR-FR-CO-05</xsl:attribute>
         <xsl:attribute name="name">BR-FR-CO-05 — Référence obligatoire à une facture antérieure pour les avoirs (BT-3)</xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M44" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
         <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
         <xsl:attribute name="id">BR-FR-CO-07</xsl:attribute>
         <xsl:attribute name="name">BR-FR-CO-07 — La date d’échéance (BT-9) doit être postérieure ou égale à la date de facture (BT-2), sauf cas particuliers</xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M45" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
         <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
         <xsl:attribute name="id">BR-FR-CO-08</xsl:attribute>
         <xsl:attribute name="name">BR-FR-CO-08 — Incompatibilité entre cadre de facturation (BT-23) et type de facture (BT-3)</xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M46" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
         <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
         <xsl:attribute name="id">BR-FR-CO-09</xsl:attribute>
         <xsl:attribute name="name">BR-FR-CO-09 — Contrôle des montants et de la date d’échéance pour les factures déjà payées (BT-23)</xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M47" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
         <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
         <xsl:attribute name="id">BR-FR-CO-10</xsl:attribute>
         <xsl:attribute name="name">BR-FR-CO-10 — Vérification de la présence du schéma d’identifiant global (BT-29 et équivalents)</xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M48" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
         <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
         <xsl:attribute name="id">BR-FR-CO-12</xsl:attribute>
         <xsl:attribute name="name">BR-FR-CO-12 — Contrôle des devises et du montant de TVA en comptabilité si la facture n’est pas en EUR</xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M49" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
         <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
         <xsl:attribute name="id">BR-FR-CO-14</xsl:attribute>
         <xsl:attribute name="name">BR-FR-CO-14 — Vérification de la note TXD pour les vendeurs membres d’un assujetti unique</xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M50" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
         <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
         <xsl:attribute name="id">BR-FR-CO-15</xsl:attribute>
         <xsl:attribute name="name">BR-FR-CO-15 — Présence du représentant fiscal si le vendeur est membre d’un assujetti unique (BT-29-1 = 0231)</xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M51" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
         <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
         <xsl:attribute name="id">BR-FR-DEC-01</xsl:attribute>
         <xsl:attribute name="name">BR-FR-DEC-01 — Format des montants numériques (max 19 caractères, 2 décimales, séparateur « . »)</xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M52" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
         <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
         <xsl:attribute name="id">BR-FR-DEC-02</xsl:attribute>
         <xsl:attribute name="name">BR-FR-DEC-02 — Format des quantités numériques (max 19 caractères, 4 décimales, séparateur « . »)</xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M53" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
         <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
         <xsl:attribute name="id">BR-FR-DEC-03</xsl:attribute>
         <xsl:attribute name="name">BR-FR-DEC-03 — Format des montants positifs (max 19 caractères, 6 décimales, séparateur « . »)</xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M54" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
         <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
         <xsl:attribute name="id">BR-FR-DEC-04</xsl:attribute>
         <xsl:attribute name="name">BR-FR-DEC-04 — Format des taux de TVA (max 4 caractères, 2 décimales, séparateur « . »)</xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M55" select="/" />
     </svrl:schematron-output>

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <xsl:stylesheet xmlns:svrl="http://purl.oclc.org/dsdl/svrl" xmlns:iso="http://purl.oclc.org/dsdl/schematron" xmlns:nl="http://ns.setu.nl/2020-01" xmlns:schold="http://www.ascc.net/xml/schematron" xmlns:setu="http://ns.hr-xml.org/2007-04-15" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="2.0">
-<!--Implementers: please note that overriding process-prolog or process-root is 
+  <!-- Created with ph-schematron version of ISO Schematron XSLTs. -->
+<!-- Implementers: please note that overriding process-prolog or process-root is 
     the preferred method for meta-stylesheets to use where possible. -->
-
 <xsl:param name="archiveDirParameter" />
   <xsl:param name="archiveNameParameter" />
   <xsl:param name="fileNameParameter" />
@@ -40,15 +40,15 @@
     <xsl:choose>
       <xsl:when test="namespace-uri()=''">
         <xsl:value-of select="name()" />
-        <xsl:variable name="p_1" select="1+    count(preceding-sibling::*[name()=name(current())])" />
-        <xsl:if test="$p_1>1 or following-sibling::*[name()=name(current())]">[<xsl:value-of select="$p_1" />]</xsl:if>
+        <xsl:variable name="p_1" select="1 + count(preceding-sibling::*[name()=name(current())])" />
+        <xsl:if test="$p_1 > 1 or following-sibling::*[name()=name(current())]">[<xsl:value-of select="$p_1" />]</xsl:if>
       </xsl:when>
       <xsl:otherwise>
         <xsl:text>*[local-name()='</xsl:text>
         <xsl:value-of select="local-name()" />
         <xsl:text>']</xsl:text>
-        <xsl:variable name="p_2" select="1+   count(preceding-sibling::*[local-name()=local-name(current())])" />
-        <xsl:if test="$p_2>1 or following-sibling::*[local-name()=local-name(current())]">[<xsl:value-of select="$p_2" />]</xsl:if>
+        <xsl:variable name="p_2" select="1 + count(preceding-sibling::*[local-name()=local-name(current())])" />
+        <xsl:if test="$p_2 > 1 or following-sibling::*[local-name()=local-name(current())]">[<xsl:value-of select="$p_2" />]</xsl:if>
       </xsl:otherwise>
     </xsl:choose>
   </xsl:template>
@@ -83,10 +83,9 @@
       <xsl:text />/@<xsl:value-of select="name(.)" />
     </xsl:if>
   </xsl:template>
-<!--MODE: SCHEMATRON-FULL-PATH-3-->
+  <!--MODE: SCHEMATRON-FULL-PATH-3-->
 <!--This mode can be used to generate prefixed XPath for humans 
 	(Top-level element has index)-->
-
 <xsl:template match="node() | @*" mode="schematron-get-full-path-3">
     <xsl:for-each select="ancestor-or-self::*">
       <xsl:text>/</xsl:text>
@@ -146,7 +145,8 @@
     <xsl:text>_</xsl:text>
     <xsl:value-of select="translate(name(),':','.')" />
   </xsl:template>
-<!--Strip characters-->  <xsl:template match="text()" priority="-1" />
+  <!--Strip characters-->
+  <xsl:template match="text()" priority="-1" />
 
 <!--SCHEMA SETUP-->
 <xsl:template match="/">
@@ -160,903 +160,543 @@
       <svrl:ns-prefix-in-attribute-values prefix="setu" uri="http://ns.hr-xml.org/2007-04-15" />
       <svrl:ns-prefix-in-attribute-values prefix="nl" uri="http://ns.setu.nl/2020-01" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
         <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M18" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
         <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M19" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
         <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M20" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
         <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M21" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
         <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M22" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
         <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M23" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
         <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M24" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
         <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M25" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
         <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M26" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
         <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M27" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
         <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M28" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
         <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M29" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
         <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M30" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
         <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M31" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
         <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M32" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
         <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M33" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
         <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M34" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
         <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M35" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
         <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M36" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
         <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M37" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
         <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M38" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
         <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M39" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
         <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M40" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
         <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M41" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
         <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M42" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
         <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M43" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
         <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M44" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
         <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M45" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
         <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M46" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
         <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M47" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
         <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M48" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
         <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M49" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
         <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M50" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
         <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M51" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
         <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M52" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
         <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M53" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
         <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M54" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
         <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M55" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
         <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M56" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
         <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M57" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
         <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M58" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
         <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M59" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
         <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M60" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
         <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M61" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
         <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M62" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
         <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M63" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
         <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M64" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
         <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M65" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
         <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M66" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
         <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M67" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
         <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M68" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
         <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M69" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
         <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M70" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
         <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M71" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
         <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M72" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
         <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M73" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
         <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M74" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
         <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M75" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
         <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M76" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
         <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M77" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
         <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M78" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
         <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M79" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
         <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M80" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
         <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M81" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
         <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M82" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
         <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M83" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
         <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M84" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
         <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M85" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
         <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M86" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
         <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M87" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
         <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M88" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
         <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M89" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
         <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M90" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
         <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M91" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
         <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M92" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
         <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M93" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
         <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M94" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
         <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M95" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
         <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M96" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
         <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M97" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
         <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M98" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
         <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M99" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
         <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M100" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
         <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M101" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
         <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M102" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
         <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M103" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
         <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M104" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
         <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M105" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
         <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M106" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
         <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M107" select="/" />
     </svrl:schematron-output>

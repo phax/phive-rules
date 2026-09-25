@@ -265,6 +265,25 @@ I hope that with the introduction of PINT, the versioning problem will be solved
 
 # News and noteworthy
 
+v4.6.1 - 2026-09-25
+* Recreated 521 of the 580 pre-compiled Schematron XSLTs with ph-schematron 10.1.0 - every version of every rule set that has its Schematron source in this repository.
+  Most of the committed files were still the output of much older ph-schematron versions.
+  This changes the emitted SVRL:
+    * `svrl:active-pattern` is now empty, as the SVRL grammar requires.
+      It no longer carries the non-standard attribute `@document` - only the ISO conformant `@documents` is emitted - and the pattern title is no longer emitted as an `svrl:text` child of it.
+      Code that read the pattern title from the SVRL report has to use the `@id` or `@name` attribute of `svrl:active-pattern` instead.
+    * The stray `xsl:apply-templates` call inside `svrl:active-pattern` is gone, so no further child elements can end up in it.
+    * The text of a `svrl:diagnostic-reference` is now wrapped in an `svrl:text` element instead of being a direct text child.
+    * The generated pattern traversal now selects `@*|*` instead of `*`, so Schematron rules with an attribute `context` are evaluated at all.
+      See ph-schematron [#123](https://github.com/phax/ph-schematron/issues/123) - that fix is in ph-schematron since v6.2.6, but the affected XSLTs were older than that.
+  Except where noted below, no rule text and no XPath expression of any rule set changed.
+  This was verified by comparing the canonical XML of every regenerated file against its predecessor, so that attribute order, indentation and XML escaping are ignored.
+* The Peppol Tax Data Document Oman 1.0.0 XSLT now matches its own Schematron source again.
+  The committed XSLT had been built from a different revision than the committed `.sch`, so it still contained the rule `ibr-tdd-59` and was missing the currency codes `ANG` and `BGN`.
+* The ZUGFeRD 2.5 XSLTs are intentionally left as they are.
+  They are the prebuilt XSLTs from the ZUGFeRD distribution, and that distribution's own `.sch` files describe four patterns fewer and reference differently named code database files, so regenerating them would silently drop validation rules.
+* Not regenerated because they have no Schematron source in this repository - they are taken from their respective upstream distributions: all XSLTs of `phive-rules-en16931` and `phive-rules-svefaktura`, the XSLs of `phive-rules-zatca`, and ZUGFeRD 2.1.
+
 v4.6.0 - 2026-09-23
 * Moved the legacy validation rules out into the separate repository [phive-rules-legacy](https://github.com/phax/phive-rules-legacy), so that the current rules can be built and released without the accumulated weight of all historic rule sets. All Maven and VES coordinates are unchanged.
     * `phive-rules-peppol-legacy` and `phive-rules-all-legacy` moved there unchanged

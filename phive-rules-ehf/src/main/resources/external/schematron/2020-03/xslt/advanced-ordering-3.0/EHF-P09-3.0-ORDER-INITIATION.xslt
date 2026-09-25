@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <xsl:stylesheet xmlns:svrl="http://purl.oclc.org/dsdl/svrl" xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" xmlns:iso="http://purl.oclc.org/dsdl/schematron" xmlns:saxon="http://saxon.sf.net/" xmlns:schold="http://www.ascc.net/xml/schematron" xmlns:u="utils" xmlns:ubl="urn:oasis:names:specification:ubl:schema:xsd:Order-2" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="2.0">
-<!--Implementers: please note that overriding process-prolog or process-root is 
+  <!-- Created with ph-schematron version of ISO Schematron XSLTs. -->
+<!-- Implementers: please note that overriding process-prolog or process-root is 
     the preferred method for meta-stylesheets to use where possible. -->
-
 <xsl:param name="archiveDirParameter" />
   <xsl:param name="archiveNameParameter" />
   <xsl:param name="fileNameParameter" />
@@ -69,9 +69,9 @@
         <xsl:text>']</xsl:text>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:variable name="preceding" select="count(preceding-sibling::*[local-name()=local-name(current())                                   and namespace-uri() = namespace-uri(current())])" />
+    <xsl:variable name="preceding" select="count(preceding-sibling::*[local-name()=local-name(current())                                       and namespace-uri() = namespace-uri(current())])" />
     <xsl:text>[</xsl:text>
-    <xsl:value-of select="1+ $preceding" />
+    <xsl:value-of select="1 + $preceding" />
     <xsl:text>]</xsl:text>
   </xsl:template>
   <xsl:template match="@*" mode="schematron-get-full-path">
@@ -106,10 +106,9 @@
       <xsl:text />/@<xsl:value-of select="name(.)" />
     </xsl:if>
   </xsl:template>
-<!--MODE: SCHEMATRON-FULL-PATH-3-->
+  <!--MODE: SCHEMATRON-FULL-PATH-3-->
 <!--This mode can be used to generate prefixed XPath for humans 
 	(Top-level element has index)-->
-
 <xsl:template match="node() | @*" mode="schematron-get-full-path-3">
     <xsl:for-each select="ancestor-or-self::*">
       <xsl:text>/</xsl:text>
@@ -169,7 +168,8 @@
     <xsl:text>_</xsl:text>
     <xsl:value-of select="translate(name(),':','.')" />
   </xsl:template>
-<!--Strip characters-->  <xsl:template match="text()" priority="-1" />
+  <!--Strip characters-->
+  <xsl:template match="text()" priority="-1" />
 
 <!--SCHEMA SETUP-->
 <xsl:template match="/">
@@ -186,31 +186,27 @@
       <svrl:ns-prefix-in-attribute-values prefix="xs" uri="http://www.w3.org/2001/XMLSchema" />
       <svrl:ns-prefix-in-attribute-values prefix="u" uri="utils" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
+        <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M10" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
+        <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M11" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
+        <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M12" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
+        <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M13" select="/" />
     </svrl:schematron-output>
@@ -240,7 +236,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M10" select="*" />
+    <xsl:apply-templates mode="M10" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -261,11 +257,11 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M10" select="*" />
+    <xsl:apply-templates mode="M10" select="@*|*" />
   </xsl:template>
   <xsl:template match="text()" mode="M10" priority="-1" />
   <xsl:template match="@*|node()" mode="M10" priority="-2">
-    <xsl:apply-templates mode="M10" select="*" />
+    <xsl:apply-templates mode="M10" select="@*|*" />
   </xsl:template>
 
 <!--PATTERN -->
@@ -420,7 +416,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -441,7 +437,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -462,7 +458,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -483,7 +479,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -504,13 +500,13 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
 <xsl:template match="/ubl:Order/cbc:ID" mode="M11" priority="1486">
     <svrl:fired-rule context="/ubl:Order/cbc:ID" />
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -531,13 +527,13 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
 <xsl:template match="/ubl:Order/cbc:UUID" mode="M11" priority="1484">
     <svrl:fired-rule context="/ubl:Order/cbc:UUID" />
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -558,13 +554,13 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
 <xsl:template match="/ubl:Order/cbc:SalesOrderID" mode="M11" priority="1482">
     <svrl:fired-rule context="/ubl:Order/cbc:SalesOrderID" />
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -585,13 +581,13 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
 <xsl:template match="/ubl:Order/cbc:IssueDate" mode="M11" priority="1480">
     <svrl:fired-rule context="/ubl:Order/cbc:IssueDate" />
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -612,13 +608,13 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
 <xsl:template match="/ubl:Order/cbc:IssueTime" mode="M11" priority="1478">
     <svrl:fired-rule context="/ubl:Order/cbc:IssueTime" />
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -639,7 +635,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -660,7 +656,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -681,13 +677,13 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
 <xsl:template match="/ubl:Order/cbc:Note" mode="M11" priority="1474">
     <svrl:fired-rule context="/ubl:Order/cbc:Note" />
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -708,7 +704,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -729,7 +725,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -750,13 +746,13 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
 <xsl:template match="/ubl:Order/cbc:CustomerReference" mode="M11" priority="1470">
     <svrl:fired-rule context="/ubl:Order/cbc:CustomerReference" />
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -777,13 +773,13 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
 <xsl:template match="/ubl:Order/cbc:AccountingCost" mode="M11" priority="1468">
     <svrl:fired-rule context="/ubl:Order/cbc:AccountingCost" />
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -804,7 +800,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -825,13 +821,13 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
 <xsl:template match="/ubl:Order/cac:ValidityPeriod/cbc:EndDate" mode="M11" priority="1465">
     <svrl:fired-rule context="/ubl:Order/cac:ValidityPeriod/cbc:EndDate" />
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -852,7 +848,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -873,7 +869,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -894,13 +890,13 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
 <xsl:template match="/ubl:Order/cac:QuotationDocumentReference/cbc:ID" mode="M11" priority="1461">
     <svrl:fired-rule context="/ubl:Order/cac:QuotationDocumentReference/cbc:ID" />
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -921,7 +917,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -942,7 +938,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -963,13 +959,13 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
 <xsl:template match="/ubl:Order/cac:OrderDocumentReference/cbc:ID" mode="M11" priority="1457">
     <svrl:fired-rule context="/ubl:Order/cac:OrderDocumentReference/cbc:ID" />
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -990,7 +986,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -1011,7 +1007,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -1032,13 +1028,13 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
 <xsl:template match="/ubl:Order/cac:OriginatorDocumentReference/cbc:ID" mode="M11" priority="1453">
     <svrl:fired-rule context="/ubl:Order/cac:OriginatorDocumentReference/cbc:ID" />
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -1059,7 +1055,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -1080,7 +1076,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -1101,13 +1097,13 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
 <xsl:template match="/ubl:Order/cac:AdditionalDocumentReference/cbc:ID" mode="M11" priority="1449">
     <svrl:fired-rule context="/ubl:Order/cac:AdditionalDocumentReference/cbc:ID" />
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -1128,13 +1124,13 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
 <xsl:template match="/ubl:Order/cac:AdditionalDocumentReference/cbc:DocumentType" mode="M11" priority="1447">
     <svrl:fired-rule context="/ubl:Order/cac:AdditionalDocumentReference/cbc:DocumentType" />
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -1155,13 +1151,13 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
 <xsl:template match="/ubl:Order/cac:AdditionalDocumentReference/cac:Attachment" mode="M11" priority="1445">
     <svrl:fired-rule context="/ubl:Order/cac:AdditionalDocumentReference/cac:Attachment" />
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -1212,7 +1208,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -1233,7 +1229,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -1254,13 +1250,13 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
 <xsl:template match="/ubl:Order/cac:AdditionalDocumentReference/cac:Attachment/cac:ExternalReference/cbc:URI" mode="M11" priority="1441">
     <svrl:fired-rule context="/ubl:Order/cac:AdditionalDocumentReference/cac:Attachment/cac:ExternalReference/cbc:URI" />
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -1281,7 +1277,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -1302,7 +1298,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -1323,7 +1319,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -1344,7 +1340,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -1365,13 +1361,13 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
 <xsl:template match="/ubl:Order/cac:Contract/cbc:ID" mode="M11" priority="1435">
     <svrl:fired-rule context="/ubl:Order/cac:Contract/cbc:ID" />
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -1392,7 +1388,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -1413,7 +1409,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -1434,7 +1430,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -1470,7 +1466,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -1506,7 +1502,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -1527,7 +1523,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -1548,7 +1544,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -1569,7 +1565,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -1590,7 +1586,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -1611,7 +1607,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -1632,13 +1628,13 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
 <xsl:template match="/ubl:Order/cac:BuyerCustomerParty/cac:Party/cac:PartyName/cbc:Name" mode="M11" priority="1423">
     <svrl:fired-rule context="/ubl:Order/cac:BuyerCustomerParty/cac:Party/cac:PartyName/cbc:Name" />
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -1659,7 +1655,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -1680,7 +1676,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -1701,13 +1697,13 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
 <xsl:template match="/ubl:Order/cac:BuyerCustomerParty/cac:Party/cac:PostalAddress/cbc:StreetName" mode="M11" priority="1419">
     <svrl:fired-rule context="/ubl:Order/cac:BuyerCustomerParty/cac:Party/cac:PostalAddress/cbc:StreetName" />
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -1728,13 +1724,13 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
 <xsl:template match="/ubl:Order/cac:BuyerCustomerParty/cac:Party/cac:PostalAddress/cbc:AdditionalStreetName" mode="M11" priority="1417">
     <svrl:fired-rule context="/ubl:Order/cac:BuyerCustomerParty/cac:Party/cac:PostalAddress/cbc:AdditionalStreetName" />
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -1755,13 +1751,13 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
 <xsl:template match="/ubl:Order/cac:BuyerCustomerParty/cac:Party/cac:PostalAddress/cbc:CityName" mode="M11" priority="1415">
     <svrl:fired-rule context="/ubl:Order/cac:BuyerCustomerParty/cac:Party/cac:PostalAddress/cbc:CityName" />
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -1782,13 +1778,13 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
 <xsl:template match="/ubl:Order/cac:BuyerCustomerParty/cac:Party/cac:PostalAddress/cbc:PostalZone" mode="M11" priority="1413">
     <svrl:fired-rule context="/ubl:Order/cac:BuyerCustomerParty/cac:Party/cac:PostalAddress/cbc:PostalZone" />
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -1809,13 +1805,13 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
 <xsl:template match="/ubl:Order/cac:BuyerCustomerParty/cac:Party/cac:PostalAddress/cbc:CountrySubentity" mode="M11" priority="1411">
     <svrl:fired-rule context="/ubl:Order/cac:BuyerCustomerParty/cac:Party/cac:PostalAddress/cbc:CountrySubentity" />
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -1836,19 +1832,19 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
 <xsl:template match="/ubl:Order/cac:BuyerCustomerParty/cac:Party/cac:PostalAddress/cac:AddressLine" mode="M11" priority="1409">
     <svrl:fired-rule context="/ubl:Order/cac:BuyerCustomerParty/cac:Party/cac:PostalAddress/cac:AddressLine" />
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
 <xsl:template match="/ubl:Order/cac:BuyerCustomerParty/cac:Party/cac:PostalAddress/cac:AddressLine/cbc:Line" mode="M11" priority="1408">
     <svrl:fired-rule context="/ubl:Order/cac:BuyerCustomerParty/cac:Party/cac:PostalAddress/cac:AddressLine/cbc:Line" />
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -1869,7 +1865,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -1890,7 +1886,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -1911,7 +1907,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -1932,7 +1928,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -1953,7 +1949,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -1974,7 +1970,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -1995,7 +1991,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -2031,13 +2027,13 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
 <xsl:template match="/ubl:Order/cac:BuyerCustomerParty/cac:Party/cac:PartyTaxScheme/cbc:CompanyID" mode="M11" priority="1399">
     <svrl:fired-rule context="/ubl:Order/cac:BuyerCustomerParty/cac:Party/cac:PartyTaxScheme/cbc:CompanyID" />
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -2058,7 +2054,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -2079,7 +2075,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -2100,7 +2096,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -2121,7 +2117,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -2142,7 +2138,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -2163,7 +2159,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -2184,13 +2180,13 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
 <xsl:template match="/ubl:Order/cac:BuyerCustomerParty/cac:Party/cac:PartyLegalEntity/cbc:RegistrationName" mode="M11" priority="1391">
     <svrl:fired-rule context="/ubl:Order/cac:BuyerCustomerParty/cac:Party/cac:PartyLegalEntity/cbc:RegistrationName" />
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -2211,7 +2207,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -2232,7 +2228,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -2253,7 +2249,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -2274,13 +2270,13 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
 <xsl:template match="/ubl:Order/cac:BuyerCustomerParty/cac:Party/cac:PartyLegalEntity/cac:RegistrationAddress/cbc:CityName" mode="M11" priority="1386">
     <svrl:fired-rule context="/ubl:Order/cac:BuyerCustomerParty/cac:Party/cac:PartyLegalEntity/cac:RegistrationAddress/cbc:CityName" />
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -2301,7 +2297,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -2322,7 +2318,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -2343,7 +2339,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -2364,7 +2360,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -2385,7 +2381,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -2406,7 +2402,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -2427,19 +2423,19 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
 <xsl:template match="/ubl:Order/cac:BuyerCustomerParty/cac:Party/cac:Contact" mode="M11" priority="1378">
     <svrl:fired-rule context="/ubl:Order/cac:BuyerCustomerParty/cac:Party/cac:Contact" />
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
 <xsl:template match="/ubl:Order/cac:BuyerCustomerParty/cac:Party/cac:Contact/cbc:Name" mode="M11" priority="1377">
     <svrl:fired-rule context="/ubl:Order/cac:BuyerCustomerParty/cac:Party/cac:Contact/cbc:Name" />
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -2460,13 +2456,13 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
 <xsl:template match="/ubl:Order/cac:BuyerCustomerParty/cac:Party/cac:Contact/cbc:Telephone" mode="M11" priority="1375">
     <svrl:fired-rule context="/ubl:Order/cac:BuyerCustomerParty/cac:Party/cac:Contact/cbc:Telephone" />
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -2487,13 +2483,13 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
 <xsl:template match="/ubl:Order/cac:BuyerCustomerParty/cac:Party/cac:Contact/cbc:ElectronicMail" mode="M11" priority="1373">
     <svrl:fired-rule context="/ubl:Order/cac:BuyerCustomerParty/cac:Party/cac:Contact/cbc:ElectronicMail" />
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -2514,7 +2510,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -2535,7 +2531,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -2556,7 +2552,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -2577,7 +2573,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -2598,7 +2594,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -2649,7 +2645,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -2685,7 +2681,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -2706,7 +2702,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -2727,7 +2723,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -2748,7 +2744,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -2769,7 +2765,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -2790,7 +2786,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -2811,13 +2807,13 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
 <xsl:template match="/ubl:Order/cac:SellerSupplierParty/cac:Party/cac:PartyName/cbc:Name" mode="M11" priority="1359">
     <svrl:fired-rule context="/ubl:Order/cac:SellerSupplierParty/cac:Party/cac:PartyName/cbc:Name" />
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -2838,7 +2834,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -2859,7 +2855,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -2880,13 +2876,13 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
 <xsl:template match="/ubl:Order/cac:SellerSupplierParty/cac:Party/cac:PostalAddress/cbc:StreetName" mode="M11" priority="1355">
     <svrl:fired-rule context="/ubl:Order/cac:SellerSupplierParty/cac:Party/cac:PostalAddress/cbc:StreetName" />
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -2907,13 +2903,13 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
 <xsl:template match="/ubl:Order/cac:SellerSupplierParty/cac:Party/cac:PostalAddress/cbc:AdditionalStreetName" mode="M11" priority="1353">
     <svrl:fired-rule context="/ubl:Order/cac:SellerSupplierParty/cac:Party/cac:PostalAddress/cbc:AdditionalStreetName" />
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -2934,13 +2930,13 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
 <xsl:template match="/ubl:Order/cac:SellerSupplierParty/cac:Party/cac:PostalAddress/cbc:CityName" mode="M11" priority="1351">
     <svrl:fired-rule context="/ubl:Order/cac:SellerSupplierParty/cac:Party/cac:PostalAddress/cbc:CityName" />
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -2961,13 +2957,13 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
 <xsl:template match="/ubl:Order/cac:SellerSupplierParty/cac:Party/cac:PostalAddress/cbc:PostalZone" mode="M11" priority="1349">
     <svrl:fired-rule context="/ubl:Order/cac:SellerSupplierParty/cac:Party/cac:PostalAddress/cbc:PostalZone" />
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -2988,13 +2984,13 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
 <xsl:template match="/ubl:Order/cac:SellerSupplierParty/cac:Party/cac:PostalAddress/cbc:CountrySubentity" mode="M11" priority="1347">
     <svrl:fired-rule context="/ubl:Order/cac:SellerSupplierParty/cac:Party/cac:PostalAddress/cbc:CountrySubentity" />
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -3015,19 +3011,19 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
 <xsl:template match="/ubl:Order/cac:SellerSupplierParty/cac:Party/cac:PostalAddress/cac:AddressLine" mode="M11" priority="1345">
     <svrl:fired-rule context="/ubl:Order/cac:SellerSupplierParty/cac:Party/cac:PostalAddress/cac:AddressLine" />
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
 <xsl:template match="/ubl:Order/cac:SellerSupplierParty/cac:Party/cac:PostalAddress/cac:AddressLine/cbc:Line" mode="M11" priority="1344">
     <svrl:fired-rule context="/ubl:Order/cac:SellerSupplierParty/cac:Party/cac:PostalAddress/cac:AddressLine/cbc:Line" />
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -3048,7 +3044,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -3069,7 +3065,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -3090,7 +3086,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -3111,7 +3107,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -3132,7 +3128,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -3153,7 +3149,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -3174,7 +3170,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -3195,13 +3191,13 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
 <xsl:template match="/ubl:Order/cac:SellerSupplierParty/cac:Party/cac:PartyLegalEntity/cbc:RegistrationName" mode="M11" priority="1335">
     <svrl:fired-rule context="/ubl:Order/cac:SellerSupplierParty/cac:Party/cac:PartyLegalEntity/cbc:RegistrationName" />
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -3222,7 +3218,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -3243,7 +3239,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -3264,7 +3260,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -3285,13 +3281,13 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
 <xsl:template match="/ubl:Order/cac:SellerSupplierParty/cac:Party/cac:PartyLegalEntity/cac:RegistrationAddress/cbc:CityName" mode="M11" priority="1330">
     <svrl:fired-rule context="/ubl:Order/cac:SellerSupplierParty/cac:Party/cac:PartyLegalEntity/cac:RegistrationAddress/cbc:CityName" />
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -3312,7 +3308,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -3333,7 +3329,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -3354,7 +3350,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -3375,7 +3371,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -3396,7 +3392,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -3417,7 +3413,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -3438,19 +3434,19 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
 <xsl:template match="/ubl:Order/cac:SellerSupplierParty/cac:Party/cac:Contact" mode="M11" priority="1322">
     <svrl:fired-rule context="/ubl:Order/cac:SellerSupplierParty/cac:Party/cac:Contact" />
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
 <xsl:template match="/ubl:Order/cac:SellerSupplierParty/cac:Party/cac:Contact/cbc:Name" mode="M11" priority="1321">
     <svrl:fired-rule context="/ubl:Order/cac:SellerSupplierParty/cac:Party/cac:Contact/cbc:Name" />
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -3471,13 +3467,13 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
 <xsl:template match="/ubl:Order/cac:SellerSupplierParty/cac:Party/cac:Contact/cbc:Telephone" mode="M11" priority="1319">
     <svrl:fired-rule context="/ubl:Order/cac:SellerSupplierParty/cac:Party/cac:Contact/cbc:Telephone" />
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -3498,13 +3494,13 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
 <xsl:template match="/ubl:Order/cac:SellerSupplierParty/cac:Party/cac:Contact/cbc:ElectronicMail" mode="M11" priority="1317">
     <svrl:fired-rule context="/ubl:Order/cac:SellerSupplierParty/cac:Party/cac:Contact/cbc:ElectronicMail" />
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -3525,7 +3521,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -3546,7 +3542,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -3567,7 +3563,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -3588,7 +3584,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -3609,13 +3605,13 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
 <xsl:template match="/ubl:Order/cac:OriginatorCustomerParty/cac:Party" mode="M11" priority="1311">
     <svrl:fired-rule context="/ubl:Order/cac:OriginatorCustomerParty/cac:Party" />
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -3636,7 +3632,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -3657,7 +3653,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -3678,7 +3674,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -3699,7 +3695,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -3720,13 +3716,13 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
 <xsl:template match="/ubl:Order/cac:OriginatorCustomerParty/cac:Party/cac:PartyName/cbc:Name" mode="M11" priority="1305">
     <svrl:fired-rule context="/ubl:Order/cac:OriginatorCustomerParty/cac:Party/cac:PartyName/cbc:Name" />
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -3747,7 +3743,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -3768,19 +3764,19 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
 <xsl:template match="/ubl:Order/cac:OriginatorCustomerParty/cac:Party/cac:Contact" mode="M11" priority="1302">
     <svrl:fired-rule context="/ubl:Order/cac:OriginatorCustomerParty/cac:Party/cac:Contact" />
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
 <xsl:template match="/ubl:Order/cac:OriginatorCustomerParty/cac:Party/cac:Contact/cbc:Name" mode="M11" priority="1301">
     <svrl:fired-rule context="/ubl:Order/cac:OriginatorCustomerParty/cac:Party/cac:Contact/cbc:Name" />
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -3801,13 +3797,13 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
 <xsl:template match="/ubl:Order/cac:OriginatorCustomerParty/cac:Party/cac:Contact/cbc:Telephone" mode="M11" priority="1299">
     <svrl:fired-rule context="/ubl:Order/cac:OriginatorCustomerParty/cac:Party/cac:Contact/cbc:Telephone" />
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -3828,13 +3824,13 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
 <xsl:template match="/ubl:Order/cac:OriginatorCustomerParty/cac:Party/cac:Contact/cbc:ElectronicMail" mode="M11" priority="1297">
     <svrl:fired-rule context="/ubl:Order/cac:OriginatorCustomerParty/cac:Party/cac:Contact/cbc:ElectronicMail" />
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -3855,7 +3851,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -3876,7 +3872,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -3897,7 +3893,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -3918,7 +3914,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -3939,7 +3935,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -3975,7 +3971,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -4011,7 +4007,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -4032,7 +4028,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -4053,7 +4049,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -4074,7 +4070,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -4095,7 +4091,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -4116,7 +4112,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -4137,13 +4133,13 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
 <xsl:template match="/ubl:Order/cac:AccountingCustomerParty/cac:Party/cac:PartyName/cbc:Name" mode="M11" priority="1283">
     <svrl:fired-rule context="/ubl:Order/cac:AccountingCustomerParty/cac:Party/cac:PartyName/cbc:Name" />
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -4164,7 +4160,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -4185,7 +4181,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -4206,13 +4202,13 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
 <xsl:template match="/ubl:Order/cac:AccountingCustomerParty/cac:Party/cac:PostalAddress/cbc:StreetName" mode="M11" priority="1279">
     <svrl:fired-rule context="/ubl:Order/cac:AccountingCustomerParty/cac:Party/cac:PostalAddress/cbc:StreetName" />
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -4233,13 +4229,13 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
 <xsl:template match="/ubl:Order/cac:AccountingCustomerParty/cac:Party/cac:PostalAddress/cbc:AdditionalStreetName" mode="M11" priority="1277">
     <svrl:fired-rule context="/ubl:Order/cac:AccountingCustomerParty/cac:Party/cac:PostalAddress/cbc:AdditionalStreetName" />
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -4260,13 +4256,13 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
 <xsl:template match="/ubl:Order/cac:AccountingCustomerParty/cac:Party/cac:PostalAddress/cbc:CityName" mode="M11" priority="1275">
     <svrl:fired-rule context="/ubl:Order/cac:AccountingCustomerParty/cac:Party/cac:PostalAddress/cbc:CityName" />
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -4287,13 +4283,13 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
 <xsl:template match="/ubl:Order/cac:AccountingCustomerParty/cac:Party/cac:PostalAddress/cbc:PostalZone" mode="M11" priority="1273">
     <svrl:fired-rule context="/ubl:Order/cac:AccountingCustomerParty/cac:Party/cac:PostalAddress/cbc:PostalZone" />
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -4314,13 +4310,13 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
 <xsl:template match="/ubl:Order/cac:AccountingCustomerParty/cac:Party/cac:PostalAddress/cbc:CountrySubentity" mode="M11" priority="1271">
     <svrl:fired-rule context="/ubl:Order/cac:AccountingCustomerParty/cac:Party/cac:PostalAddress/cbc:CountrySubentity" />
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -4341,19 +4337,19 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
 <xsl:template match="/ubl:Order/cac:AccountingCustomerParty/cac:Party/cac:PostalAddress/cac:AddressLine" mode="M11" priority="1269">
     <svrl:fired-rule context="/ubl:Order/cac:AccountingCustomerParty/cac:Party/cac:PostalAddress/cac:AddressLine" />
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
 <xsl:template match="/ubl:Order/cac:AccountingCustomerParty/cac:Party/cac:PostalAddress/cac:AddressLine/cbc:Line" mode="M11" priority="1268">
     <svrl:fired-rule context="/ubl:Order/cac:AccountingCustomerParty/cac:Party/cac:PostalAddress/cac:AddressLine/cbc:Line" />
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -4374,7 +4370,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -4395,7 +4391,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -4416,7 +4412,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -4437,7 +4433,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -4458,7 +4454,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -4479,7 +4475,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -4500,7 +4496,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -4536,13 +4532,13 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
 <xsl:template match="/ubl:Order/cac:AccountingCustomerParty/cac:Party/cac:PartyTaxScheme/cbc:CompanyID" mode="M11" priority="1259">
     <svrl:fired-rule context="/ubl:Order/cac:AccountingCustomerParty/cac:Party/cac:PartyTaxScheme/cbc:CompanyID" />
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -4563,7 +4559,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -4584,7 +4580,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -4605,7 +4601,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -4626,7 +4622,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -4647,7 +4643,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -4668,7 +4664,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -4689,13 +4685,13 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
 <xsl:template match="/ubl:Order/cac:AccountingCustomerParty/cac:Party/cac:PartyLegalEntity/cbc:RegistrationName" mode="M11" priority="1251">
     <svrl:fired-rule context="/ubl:Order/cac:AccountingCustomerParty/cac:Party/cac:PartyLegalEntity/cbc:RegistrationName" />
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -4716,7 +4712,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -4737,7 +4733,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -4758,7 +4754,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -4779,13 +4775,13 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
 <xsl:template match="/ubl:Order/cac:AccountingCustomerParty/cac:Party/cac:PartyLegalEntity/cac:RegistrationAddress/cbc:CityName" mode="M11" priority="1246">
     <svrl:fired-rule context="/ubl:Order/cac:AccountingCustomerParty/cac:Party/cac:PartyLegalEntity/cac:RegistrationAddress/cbc:CityName" />
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -4806,7 +4802,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -4827,7 +4823,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -4848,7 +4844,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -4869,7 +4865,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -4890,7 +4886,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -4911,7 +4907,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -4932,19 +4928,19 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
 <xsl:template match="/ubl:Order/cac:AccountingCustomerParty/cac:Party/cac:Contact" mode="M11" priority="1238">
     <svrl:fired-rule context="/ubl:Order/cac:AccountingCustomerParty/cac:Party/cac:Contact" />
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
 <xsl:template match="/ubl:Order/cac:AccountingCustomerParty/cac:Party/cac:Contact/cbc:Name" mode="M11" priority="1237">
     <svrl:fired-rule context="/ubl:Order/cac:AccountingCustomerParty/cac:Party/cac:Contact/cbc:Name" />
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -4965,13 +4961,13 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
 <xsl:template match="/ubl:Order/cac:AccountingCustomerParty/cac:Party/cac:Contact/cbc:Telephone" mode="M11" priority="1235">
     <svrl:fired-rule context="/ubl:Order/cac:AccountingCustomerParty/cac:Party/cac:Contact/cbc:Telephone" />
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -4992,13 +4988,13 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
 <xsl:template match="/ubl:Order/cac:AccountingCustomerParty/cac:Party/cac:Contact/cbc:ElectronicMail" mode="M11" priority="1233">
     <svrl:fired-rule context="/ubl:Order/cac:AccountingCustomerParty/cac:Party/cac:Contact/cbc:ElectronicMail" />
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -5019,7 +5015,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -5040,7 +5036,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -5061,7 +5057,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -5082,13 +5078,13 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
 <xsl:template match="/ubl:Order/cac:Delivery" mode="M11" priority="1228">
     <svrl:fired-rule context="/ubl:Order/cac:Delivery" />
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -5109,7 +5105,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -5130,7 +5126,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -5151,7 +5147,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -5172,13 +5168,13 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
 <xsl:template match="/ubl:Order/cac:Delivery/cac:DeliveryLocation/cac:Address/cbc:StreetName" mode="M11" priority="1223">
     <svrl:fired-rule context="/ubl:Order/cac:Delivery/cac:DeliveryLocation/cac:Address/cbc:StreetName" />
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -5199,13 +5195,13 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
 <xsl:template match="/ubl:Order/cac:Delivery/cac:DeliveryLocation/cac:Address/cbc:AdditionalStreetName" mode="M11" priority="1221">
     <svrl:fired-rule context="/ubl:Order/cac:Delivery/cac:DeliveryLocation/cac:Address/cbc:AdditionalStreetName" />
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -5226,13 +5222,13 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
 <xsl:template match="/ubl:Order/cac:Delivery/cac:DeliveryLocation/cac:Address/cbc:CityName" mode="M11" priority="1219">
     <svrl:fired-rule context="/ubl:Order/cac:Delivery/cac:DeliveryLocation/cac:Address/cbc:CityName" />
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -5253,13 +5249,13 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
 <xsl:template match="/ubl:Order/cac:Delivery/cac:DeliveryLocation/cac:Address/cbc:PostalZone" mode="M11" priority="1217">
     <svrl:fired-rule context="/ubl:Order/cac:Delivery/cac:DeliveryLocation/cac:Address/cbc:PostalZone" />
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -5280,13 +5276,13 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
 <xsl:template match="/ubl:Order/cac:Delivery/cac:DeliveryLocation/cac:Address/cbc:CountrySubentity" mode="M11" priority="1215">
     <svrl:fired-rule context="/ubl:Order/cac:Delivery/cac:DeliveryLocation/cac:Address/cbc:CountrySubentity" />
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -5307,7 +5303,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -5328,13 +5324,13 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
 <xsl:template match="/ubl:Order/cac:Delivery/cac:DeliveryLocation/cac:Address/cac:AddressLine/cbc:Line" mode="M11" priority="1212">
     <svrl:fired-rule context="/ubl:Order/cac:Delivery/cac:DeliveryLocation/cac:Address/cac:AddressLine/cbc:Line" />
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -5355,7 +5351,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -5376,7 +5372,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -5397,7 +5393,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -5418,7 +5414,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -5439,7 +5435,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -5460,7 +5456,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -5481,7 +5477,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -5502,19 +5498,19 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
 <xsl:template match="/ubl:Order/cac:Delivery/cac:RequestedDeliveryPeriod" mode="M11" priority="1203">
     <svrl:fired-rule context="/ubl:Order/cac:Delivery/cac:RequestedDeliveryPeriod" />
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
 <xsl:template match="/ubl:Order/cac:Delivery/cac:RequestedDeliveryPeriod/cbc:StartDate" mode="M11" priority="1202">
     <svrl:fired-rule context="/ubl:Order/cac:Delivery/cac:RequestedDeliveryPeriod/cbc:StartDate" />
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -5535,13 +5531,13 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
 <xsl:template match="/ubl:Order/cac:Delivery/cac:RequestedDeliveryPeriod/cbc:EndDate" mode="M11" priority="1200">
     <svrl:fired-rule context="/ubl:Order/cac:Delivery/cac:RequestedDeliveryPeriod/cbc:EndDate" />
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -5562,7 +5558,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -5583,7 +5579,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -5604,7 +5600,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -5625,7 +5621,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -5646,7 +5642,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -5667,7 +5663,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -5688,7 +5684,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -5709,13 +5705,13 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
 <xsl:template match="/ubl:Order/cac:Delivery/cac:DeliveryParty/cac:PartyName/cbc:Name" mode="M11" priority="1191">
     <svrl:fired-rule context="/ubl:Order/cac:Delivery/cac:DeliveryParty/cac:PartyName/cbc:Name" />
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -5736,7 +5732,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -5757,19 +5753,19 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
 <xsl:template match="/ubl:Order/cac:Delivery/cac:DeliveryParty/cac:Contact" mode="M11" priority="1188">
     <svrl:fired-rule context="/ubl:Order/cac:Delivery/cac:DeliveryParty/cac:Contact" />
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
 <xsl:template match="/ubl:Order/cac:Delivery/cac:DeliveryParty/cac:Contact/cbc:Name" mode="M11" priority="1187">
     <svrl:fired-rule context="/ubl:Order/cac:Delivery/cac:DeliveryParty/cac:Contact/cbc:Name" />
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -5790,13 +5786,13 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
 <xsl:template match="/ubl:Order/cac:Delivery/cac:DeliveryParty/cac:Contact/cbc:Telephone" mode="M11" priority="1185">
     <svrl:fired-rule context="/ubl:Order/cac:Delivery/cac:DeliveryParty/cac:Contact/cbc:Telephone" />
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -5817,13 +5813,13 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
 <xsl:template match="/ubl:Order/cac:Delivery/cac:DeliveryParty/cac:Contact/cbc:ElectronicMail" mode="M11" priority="1183">
     <svrl:fired-rule context="/ubl:Order/cac:Delivery/cac:DeliveryParty/cac:Contact/cbc:ElectronicMail" />
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -5844,7 +5840,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -5865,7 +5861,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -5886,7 +5882,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -5907,19 +5903,19 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
 <xsl:template match="/ubl:Order/cac:DeliveryTerms" mode="M11" priority="1178">
     <svrl:fired-rule context="/ubl:Order/cac:DeliveryTerms" />
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
 <xsl:template match="/ubl:Order/cac:DeliveryTerms/cbc:ID" mode="M11" priority="1177">
     <svrl:fired-rule context="/ubl:Order/cac:DeliveryTerms/cbc:ID" />
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -5940,13 +5936,13 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
 <xsl:template match="/ubl:Order/cac:DeliveryTerms/cbc:SpecialTerms" mode="M11" priority="1175">
     <svrl:fired-rule context="/ubl:Order/cac:DeliveryTerms/cbc:SpecialTerms" />
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -5967,7 +5963,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -5988,13 +5984,13 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
 <xsl:template match="/ubl:Order/cac:DeliveryTerms/cac:DeliveryLocation/cbc:ID" mode="M11" priority="1172">
     <svrl:fired-rule context="/ubl:Order/cac:DeliveryTerms/cac:DeliveryLocation/cbc:ID" />
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -6015,7 +6011,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -6036,7 +6032,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -6057,7 +6053,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -6078,13 +6074,13 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
 <xsl:template match="/ubl:Order/cac:PaymentTerms/cbc:Note" mode="M11" priority="1167">
     <svrl:fired-rule context="/ubl:Order/cac:PaymentTerms/cbc:Note" />
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -6105,7 +6101,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -6126,7 +6122,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -6177,7 +6173,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -6198,7 +6194,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -6219,7 +6215,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -6240,7 +6236,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -6261,13 +6257,13 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
 <xsl:template match="/ubl:Order/cac:AllowanceCharge/cbc:AllowanceChargeReason" mode="M11" priority="1159">
     <svrl:fired-rule context="/ubl:Order/cac:AllowanceCharge/cbc:AllowanceChargeReason" />
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -6288,13 +6284,13 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
 <xsl:template match="/ubl:Order/cac:AllowanceCharge/cbc:MultiplierFactorNumeric" mode="M11" priority="1157">
     <svrl:fired-rule context="/ubl:Order/cac:AllowanceCharge/cbc:MultiplierFactorNumeric" />
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -6315,7 +6311,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -6351,7 +6347,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -6372,7 +6368,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -6408,7 +6404,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -6429,7 +6425,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -6465,7 +6461,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -6486,7 +6482,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -6507,13 +6503,13 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
 <xsl:template match="/ubl:Order/cac:AllowanceCharge/cac:TaxCategory/cbc:Percent" mode="M11" priority="1148">
     <svrl:fired-rule context="/ubl:Order/cac:AllowanceCharge/cac:TaxCategory/cbc:Percent" />
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -6534,7 +6530,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -6555,7 +6551,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -6576,7 +6572,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -6597,7 +6593,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -6618,7 +6614,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -6639,7 +6635,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -6660,7 +6656,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -6681,7 +6677,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -6717,7 +6713,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -6738,7 +6734,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -6759,7 +6755,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -6795,7 +6791,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -6831,7 +6827,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -6852,7 +6848,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -6888,7 +6884,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -6909,7 +6905,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -6945,7 +6941,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -6966,7 +6962,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -7002,7 +6998,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -7023,7 +7019,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -7059,7 +7055,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -7080,7 +7076,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -7116,7 +7112,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -7137,7 +7133,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -7173,7 +7169,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -7194,7 +7190,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -7230,7 +7226,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -7251,7 +7247,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -7272,7 +7268,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -7293,13 +7289,13 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
 <xsl:template match="/ubl:Order/cac:OrderLine/cbc:Note" mode="M11" priority="1117">
     <svrl:fired-rule context="/ubl:Order/cac:OrderLine/cbc:Note" />
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -7320,7 +7316,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -7371,13 +7367,13 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
 <xsl:template match="/ubl:Order/cac:OrderLine/cac:LineItem/cbc:ID" mode="M11" priority="1114">
     <svrl:fired-rule context="/ubl:Order/cac:OrderLine/cac:LineItem/cbc:ID" />
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -7398,7 +7394,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -7434,7 +7430,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -7455,7 +7451,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -7491,7 +7487,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -7512,7 +7508,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -7533,7 +7529,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -7554,13 +7550,13 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
 <xsl:template match="/ubl:Order/cac:OrderLine/cac:LineItem/cbc:AccountingCost" mode="M11" priority="1106">
     <svrl:fired-rule context="/ubl:Order/cac:OrderLine/cac:LineItem/cbc:AccountingCost" />
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -7581,7 +7577,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -7602,19 +7598,19 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
 <xsl:template match="/ubl:Order/cac:OrderLine/cac:LineItem/cac:Delivery/cac:RequestedDeliveryPeriod" mode="M11" priority="1103">
     <svrl:fired-rule context="/ubl:Order/cac:OrderLine/cac:LineItem/cac:Delivery/cac:RequestedDeliveryPeriod" />
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
 <xsl:template match="/ubl:Order/cac:OrderLine/cac:LineItem/cac:Delivery/cac:RequestedDeliveryPeriod/cbc:StartDate" mode="M11" priority="1102">
     <svrl:fired-rule context="/ubl:Order/cac:OrderLine/cac:LineItem/cac:Delivery/cac:RequestedDeliveryPeriod/cbc:StartDate" />
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -7635,13 +7631,13 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
 <xsl:template match="/ubl:Order/cac:OrderLine/cac:LineItem/cac:Delivery/cac:RequestedDeliveryPeriod/cbc:EndDate" mode="M11" priority="1100">
     <svrl:fired-rule context="/ubl:Order/cac:OrderLine/cac:LineItem/cac:Delivery/cac:RequestedDeliveryPeriod/cbc:EndDate" />
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -7662,7 +7658,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -7683,7 +7679,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -7704,13 +7700,13 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
 <xsl:template match="/ubl:Order/cac:OrderLine/cac:LineItem/cac:OriginatorParty" mode="M11" priority="1096">
     <svrl:fired-rule context="/ubl:Order/cac:OrderLine/cac:LineItem/cac:OriginatorParty" />
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -7731,7 +7727,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -7752,7 +7748,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -7773,7 +7769,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -7794,7 +7790,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -7815,13 +7811,13 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
 <xsl:template match="/ubl:Order/cac:OrderLine/cac:LineItem/cac:OriginatorParty/cac:PartyName/cbc:Name" mode="M11" priority="1090">
     <svrl:fired-rule context="/ubl:Order/cac:OrderLine/cac:LineItem/cac:OriginatorParty/cac:PartyName/cbc:Name" />
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -7842,7 +7838,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -7863,7 +7859,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -7884,7 +7880,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -7920,13 +7916,13 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
 <xsl:template match="/ubl:Order/cac:OrderLine/cac:LineItem/cac:AllowanceCharge/cbc:ChargeIndicator" mode="M11" priority="1085">
     <svrl:fired-rule context="/ubl:Order/cac:OrderLine/cac:LineItem/cac:AllowanceCharge/cbc:ChargeIndicator" />
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -7947,7 +7943,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -7968,7 +7964,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -7989,13 +7985,13 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
 <xsl:template match="/ubl:Order/cac:OrderLine/cac:LineItem/cac:AllowanceCharge/cbc:AllowanceChargeReason" mode="M11" priority="1081">
     <svrl:fired-rule context="/ubl:Order/cac:OrderLine/cac:LineItem/cac:AllowanceCharge/cbc:AllowanceChargeReason" />
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -8016,13 +8012,13 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
 <xsl:template match="/ubl:Order/cac:OrderLine/cac:LineItem/cac:AllowanceCharge/cbc:MultiplierFactorNumeric" mode="M11" priority="1079">
     <svrl:fired-rule context="/ubl:Order/cac:OrderLine/cac:LineItem/cac:AllowanceCharge/cbc:MultiplierFactorNumeric" />
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -8043,7 +8039,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -8079,7 +8075,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -8100,7 +8096,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -8136,7 +8132,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -8157,7 +8153,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -8178,7 +8174,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -8199,7 +8195,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -8235,7 +8231,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -8256,7 +8252,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -8277,7 +8273,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -8298,7 +8294,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -8334,7 +8330,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -8355,7 +8351,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -8376,7 +8372,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -8412,7 +8408,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -8433,7 +8429,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -8469,7 +8465,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -8490,7 +8486,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -8511,7 +8507,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -8532,7 +8528,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -8553,13 +8549,13 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
 <xsl:template match="/ubl:Order/cac:OrderLine/cac:LineItem/cac:Item/cbc:Description" mode="M11" priority="1057">
     <svrl:fired-rule context="/ubl:Order/cac:OrderLine/cac:LineItem/cac:Item/cbc:Description" />
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -8580,13 +8576,13 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
 <xsl:template match="/ubl:Order/cac:OrderLine/cac:LineItem/cac:Item/cbc:Name" mode="M11" priority="1055">
     <svrl:fired-rule context="/ubl:Order/cac:OrderLine/cac:LineItem/cac:Item/cbc:Name" />
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -8607,7 +8603,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -8628,13 +8624,13 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
 <xsl:template match="/ubl:Order/cac:OrderLine/cac:LineItem/cac:Item/cac:BuyersItemIdentification/cbc:ID" mode="M11" priority="1052">
     <svrl:fired-rule context="/ubl:Order/cac:OrderLine/cac:LineItem/cac:Item/cac:BuyersItemIdentification/cbc:ID" />
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -8655,7 +8651,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -8676,7 +8672,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -8697,13 +8693,13 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
 <xsl:template match="/ubl:Order/cac:OrderLine/cac:LineItem/cac:Item/cac:SellersItemIdentification/cbc:ID" mode="M11" priority="1048">
     <svrl:fired-rule context="/ubl:Order/cac:OrderLine/cac:LineItem/cac:Item/cac:SellersItemIdentification/cbc:ID" />
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -8724,7 +8720,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -8745,7 +8741,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -8766,7 +8762,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -8802,7 +8798,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -8823,7 +8819,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -8844,7 +8840,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -8865,13 +8861,13 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
 <xsl:template match="/ubl:Order/cac:OrderLine/cac:LineItem/cac:Item/cac:ItemSpecificationDocumentReference/cbc:ID" mode="M11" priority="1040">
     <svrl:fired-rule context="/ubl:Order/cac:OrderLine/cac:LineItem/cac:Item/cac:ItemSpecificationDocumentReference/cbc:ID" />
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -8892,7 +8888,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -8913,13 +8909,13 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
 <xsl:template match="/ubl:Order/cac:OrderLine/cac:LineItem/cac:Item/cac:CommodityClassification" mode="M11" priority="1037">
     <svrl:fired-rule context="/ubl:Order/cac:OrderLine/cac:LineItem/cac:Item/cac:CommodityClassification" />
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -8955,7 +8951,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -8976,7 +8972,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -8997,7 +8993,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -9033,7 +9029,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -9054,7 +9050,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -9075,13 +9071,13 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
 <xsl:template match="/ubl:Order/cac:OrderLine/cac:LineItem/cac:Item/cac:ClassifiedTaxCategory/cbc:Percent" mode="M11" priority="1030">
     <svrl:fired-rule context="/ubl:Order/cac:OrderLine/cac:LineItem/cac:Item/cac:ClassifiedTaxCategory/cbc:Percent" />
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -9102,7 +9098,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -9123,7 +9119,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -9144,7 +9140,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -9165,7 +9161,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -9186,7 +9182,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -9207,7 +9203,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -9243,13 +9239,13 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
 <xsl:template match="/ubl:Order/cac:OrderLine/cac:LineItem/cac:Item/cac:AdditionalItemProperty/cbc:Name" mode="M11" priority="1022">
     <svrl:fired-rule context="/ubl:Order/cac:OrderLine/cac:LineItem/cac:Item/cac:AdditionalItemProperty/cbc:Name" />
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -9270,7 +9266,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -9291,7 +9287,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -9312,13 +9308,13 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
 <xsl:template match="/ubl:Order/cac:OrderLine/cac:LineItem/cac:Item/cac:AdditionalItemProperty/cbc:Value" mode="M11" priority="1018">
     <svrl:fired-rule context="/ubl:Order/cac:OrderLine/cac:LineItem/cac:Item/cac:AdditionalItemProperty/cbc:Value" />
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -9339,7 +9335,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -9375,7 +9371,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -9396,13 +9392,13 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
 <xsl:template match="/ubl:Order/cac:OrderLine/cac:LineItem/cac:Item/cac:AdditionalItemProperty/cbc:ValueQualifier" mode="M11" priority="1014">
     <svrl:fired-rule context="/ubl:Order/cac:OrderLine/cac:LineItem/cac:Item/cac:AdditionalItemProperty/cbc:ValueQualifier" />
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -9423,7 +9419,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -9444,19 +9440,19 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
 <xsl:template match="/ubl:Order/cac:OrderLine/cac:LineItem/cac:Item/cac:ItemInstance" mode="M11" priority="1011">
     <svrl:fired-rule context="/ubl:Order/cac:OrderLine/cac:LineItem/cac:Item/cac:ItemInstance" />
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
 <xsl:template match="/ubl:Order/cac:OrderLine/cac:LineItem/cac:Item/cac:ItemInstance/cbc:SerialID" mode="M11" priority="1010">
     <svrl:fired-rule context="/ubl:Order/cac:OrderLine/cac:LineItem/cac:Item/cac:ItemInstance/cbc:SerialID" />
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -9477,19 +9473,19 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
 <xsl:template match="/ubl:Order/cac:OrderLine/cac:LineItem/cac:Item/cac:ItemInstance/cac:LotIdentification" mode="M11" priority="1008">
     <svrl:fired-rule context="/ubl:Order/cac:OrderLine/cac:LineItem/cac:Item/cac:ItemInstance/cac:LotIdentification" />
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
 <xsl:template match="/ubl:Order/cac:OrderLine/cac:LineItem/cac:Item/cac:ItemInstance/cac:LotIdentification/cbc:LotNumberID" mode="M11" priority="1007">
     <svrl:fired-rule context="/ubl:Order/cac:OrderLine/cac:LineItem/cac:Item/cac:ItemInstance/cac:LotIdentification/cbc:LotNumberID" />
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -9510,7 +9506,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -9531,7 +9527,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -9552,7 +9548,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -9573,7 +9569,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -9594,7 +9590,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -9615,7 +9611,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -9636,11 +9632,11 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
   <xsl:template match="text()" mode="M11" priority="-1" />
   <xsl:template match="@*|node()" mode="M11" priority="-2">
-    <xsl:apply-templates mode="M11" select="*" />
+    <xsl:apply-templates mode="M11" select="@*|*" />
   </xsl:template>
 
 <!--PATTERN -->
@@ -9664,11 +9660,11 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M12" select="*" />
+    <xsl:apply-templates mode="M12" select="@*|*" />
   </xsl:template>
   <xsl:template match="text()" mode="M12" priority="-1" />
   <xsl:template match="@*|node()" mode="M12" priority="-2">
-    <xsl:apply-templates mode="M12" select="*" />
+    <xsl:apply-templates mode="M12" select="@*|*" />
   </xsl:template>
 
 <!--PATTERN -->
@@ -9711,7 +9707,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M13" select="*" />
+    <xsl:apply-templates mode="M13" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -9732,7 +9728,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M13" select="*" />
+    <xsl:apply-templates mode="M13" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -9753,7 +9749,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M13" select="*" />
+    <xsl:apply-templates mode="M13" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -9774,7 +9770,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M13" select="*" />
+    <xsl:apply-templates mode="M13" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -9908,7 +9904,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M13" select="*" />
+    <xsl:apply-templates mode="M13" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -9929,7 +9925,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M13" select="*" />
+    <xsl:apply-templates mode="M13" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -9950,7 +9946,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M13" select="*" />
+    <xsl:apply-templates mode="M13" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -10001,7 +9997,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M13" select="*" />
+    <xsl:apply-templates mode="M13" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -10037,7 +10033,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M13" select="*" />
+    <xsl:apply-templates mode="M13" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -10124,7 +10120,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M13" select="*" />
+    <xsl:apply-templates mode="M13" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -10145,7 +10141,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M13" select="*" />
+    <xsl:apply-templates mode="M13" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -10197,7 +10193,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M13" select="*" />
+    <xsl:apply-templates mode="M13" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -10218,7 +10214,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M13" select="*" />
+    <xsl:apply-templates mode="M13" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -10239,10 +10235,10 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M13" select="*" />
+    <xsl:apply-templates mode="M13" select="@*|*" />
   </xsl:template>
   <xsl:template match="text()" mode="M13" priority="-1" />
   <xsl:template match="@*|node()" mode="M13" priority="-2">
-    <xsl:apply-templates mode="M13" select="*" />
+    <xsl:apply-templates mode="M13" select="@*|*" />
   </xsl:template>
 </xsl:stylesheet>

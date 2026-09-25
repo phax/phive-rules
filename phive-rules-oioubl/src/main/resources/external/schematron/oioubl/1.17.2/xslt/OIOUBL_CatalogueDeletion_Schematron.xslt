@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <xsl:stylesheet xmlns:svrl="http://purl.oclc.org/dsdl/svrl" xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" xmlns:ccts="urn:oasis:names:specification:ubl:schema:xsd:CoreComponentParameters-2" xmlns:doc="urn:oasis:names:specification:ubl:schema:xsd:CatalogueDeletion-2" xmlns:ext="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2" xmlns:iso="http://purl.oclc.org/dsdl/schematron" xmlns:schold="http://www.ascc.net/xml/schematron" xmlns:sdt="urn:oasis:names:specification:ubl:schema:xsd:SpecializedDatatypes-2" xmlns:udt="urn:un:unece:uncefact:data:specification:UnqualifiedDataTypesSchemaModule:2" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="2.0">
-<!--Implementers: please note that overriding process-prolog or process-root is 
+  <!-- Created with ph-schematron version of ISO Schematron XSLTs. -->
+<!-- Implementers: please note that overriding process-prolog or process-root is 
     the preferred method for meta-stylesheets to use where possible. -->
-
 <xsl:param name="archiveDirParameter" />
   <xsl:param name="archiveNameParameter" />
   <xsl:param name="fileNameParameter" />
@@ -40,15 +40,15 @@
     <xsl:choose>
       <xsl:when test="namespace-uri()=''">
         <xsl:value-of select="name()" />
-        <xsl:variable name="p_1" select="1+    count(preceding-sibling::*[name()=name(current())])" />
-        <xsl:if test="$p_1>1 or following-sibling::*[name()=name(current())]">[<xsl:value-of select="$p_1" />]</xsl:if>
+        <xsl:variable name="p_1" select="1 + count(preceding-sibling::*[name()=name(current())])" />
+        <xsl:if test="$p_1 > 1 or following-sibling::*[name()=name(current())]">[<xsl:value-of select="$p_1" />]</xsl:if>
       </xsl:when>
       <xsl:otherwise>
         <xsl:text>*[local-name()='</xsl:text>
         <xsl:value-of select="local-name()" />
         <xsl:text>']</xsl:text>
-        <xsl:variable name="p_2" select="1+   count(preceding-sibling::*[local-name()=local-name(current())])" />
-        <xsl:if test="$p_2>1 or following-sibling::*[local-name()=local-name(current())]">[<xsl:value-of select="$p_2" />]</xsl:if>
+        <xsl:variable name="p_2" select="1 + count(preceding-sibling::*[local-name()=local-name(current())])" />
+        <xsl:if test="$p_2 > 1 or following-sibling::*[local-name()=local-name(current())]">[<xsl:value-of select="$p_2" />]</xsl:if>
       </xsl:otherwise>
     </xsl:choose>
   </xsl:template>
@@ -83,10 +83,9 @@
       <xsl:text />/@<xsl:value-of select="name(.)" />
     </xsl:if>
   </xsl:template>
-<!--MODE: SCHEMATRON-FULL-PATH-3-->
+  <!--MODE: SCHEMATRON-FULL-PATH-3-->
 <!--This mode can be used to generate prefixed XPath for humans 
 	(Top-level element has index)-->
-
 <xsl:template match="node() | @*" mode="schematron-get-full-path-3">
     <xsl:for-each select="ancestor-or-self::*">
       <xsl:text>/</xsl:text>
@@ -146,7 +145,8 @@
     <xsl:text>_</xsl:text>
     <xsl:value-of select="translate(name(),':','.')" />
   </xsl:template>
-<!--Strip characters-->  <xsl:template match="text()" priority="-1" />
+  <!--Strip characters-->
+  <xsl:template match="text()" priority="-1" />
 
 <!--SCHEMA SETUP-->
 <xsl:template match="/">
@@ -167,171 +167,107 @@
       <svrl:ns-prefix-in-attribute-values prefix="ext" uri="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2" />
       <svrl:ns-prefix-in-attribute-values prefix="xs" uri="http://www.w3.org/2001/XMLSchema" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
         <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
         <xsl:attribute name="id">abstracts2</xsl:attribute>
         <xsl:attribute name="name">abstracts2</xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M10" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
         <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
         <xsl:attribute name="id">abstracts</xsl:attribute>
         <xsl:attribute name="name">abstracts</xsl:attribute>
-        <svrl:text>Pattern for storing abstract rules</svrl:text>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M12" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
         <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
         <xsl:attribute name="id">ublextensions</xsl:attribute>
         <xsl:attribute name="name">ublextensions</xsl:attribute>
-        <svrl:text>Pattern for validating the UBLExtensions class</svrl:text>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M13" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
         <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
         <xsl:attribute name="id">profile</xsl:attribute>
         <xsl:attribute name="name">profile</xsl:attribute>
-        <svrl:text>Pattern for validating root element, Profile and UBL version</svrl:text>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M14" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
         <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
         <xsl:attribute name="id">cataloguedeletion</xsl:attribute>
         <xsl:attribute name="name">cataloguedeletion</xsl:attribute>
-        <svrl:text>Pattern for validating the CatalogueDeletion structure</svrl:text>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M15" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
         <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
         <xsl:attribute name="id">validityperiod</xsl:attribute>
         <xsl:attribute name="name">validityperiod</xsl:attribute>
-        <svrl:text>Pattern for validating the ValidityPeriod class</svrl:text>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M16" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
         <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
         <xsl:attribute name="id">deletedcataloguereference</xsl:attribute>
         <xsl:attribute name="name">deletedcataloguereference</xsl:attribute>
-        <svrl:text>Pattern for validating the DeletedCatalogueReference class</svrl:text>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M17" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
         <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
         <xsl:attribute name="id">referencedcontract</xsl:attribute>
         <xsl:attribute name="name">referencedcontract</xsl:attribute>
-        <svrl:text>Pattern for validating the ReferencedContract class</svrl:text>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M18" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
         <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
         <xsl:attribute name="id">signature</xsl:attribute>
         <xsl:attribute name="name">signature</xsl:attribute>
-        <svrl:text>Pattern for validating the Signature class</svrl:text>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M19" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
         <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
         <xsl:attribute name="id">receiverparty</xsl:attribute>
         <xsl:attribute name="name">receiverparty</xsl:attribute>
-        <svrl:text>Pattern for validating the ReceiverParty class</svrl:text>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M20" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
         <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
         <xsl:attribute name="id">providerparty</xsl:attribute>
         <xsl:attribute name="name">providerparty</xsl:attribute>
-        <svrl:text>Pattern for validating the ProviderParty class</svrl:text>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M21" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
         <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
         <xsl:attribute name="id">sellersupplierparty</xsl:attribute>
         <xsl:attribute name="name">sellersupplierparty</xsl:attribute>
-        <svrl:text>Pattern for validating the SellerSupplierParty class</svrl:text>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M22" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
-          <xsl:value-of select="document-uri(/)" />
-        </xsl:attribute>
         <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
         <xsl:attribute name="id">ContractorCustomerParty</xsl:attribute>
         <xsl:attribute name="name">ContractorCustomerParty</xsl:attribute>
-        <svrl:text>Pattern for validating the ContractorCustomerParty class</svrl:text>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M23" select="/" />
     </svrl:schematron-output>

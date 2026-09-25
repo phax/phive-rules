@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <xsl:stylesheet xmlns:svrl="http://purl.oclc.org/dsdl/svrl" xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" xmlns:iso="http://purl.oclc.org/dsdl/schematron" xmlns:saxon="http://saxon.sf.net/" xmlns:schold="http://www.ascc.net/xml/schematron" xmlns:ubl="urn:oasis:names:specification:ubl:schema:xsd:DespatchAdvice-2" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="2.0">
-<!--Implementers: please note that overriding process-prolog or process-root is 
+  <!-- Created with ph-schematron version of ISO Schematron XSLTs. -->
+<!-- Implementers: please note that overriding process-prolog or process-root is 
     the preferred method for meta-stylesheets to use where possible. -->
-
 <xsl:param name="archiveDirParameter" />
   <xsl:param name="archiveNameParameter" />
   <xsl:param name="fileNameParameter" />
@@ -49,9 +49,9 @@
         <xsl:text>']</xsl:text>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:variable name="preceding" select="count(preceding-sibling::*[local-name()=local-name(current())                                   and namespace-uri() = namespace-uri(current())])" />
+    <xsl:variable name="preceding" select="count(preceding-sibling::*[local-name()=local-name(current())                                       and namespace-uri() = namespace-uri(current())])" />
     <xsl:text>[</xsl:text>
-    <xsl:value-of select="1+ $preceding" />
+    <xsl:value-of select="1 + $preceding" />
     <xsl:text>]</xsl:text>
   </xsl:template>
   <xsl:template match="@*" mode="schematron-get-full-path">
@@ -86,10 +86,9 @@
       <xsl:text />/@<xsl:value-of select="name(.)" />
     </xsl:if>
   </xsl:template>
-<!--MODE: SCHEMATRON-FULL-PATH-3-->
+  <!--MODE: SCHEMATRON-FULL-PATH-3-->
 <!--This mode can be used to generate prefixed XPath for humans 
 	(Top-level element has index)-->
-
 <xsl:template match="node() | @*" mode="schematron-get-full-path-3">
     <xsl:for-each select="ancestor-or-self::*">
       <xsl:text>/</xsl:text>
@@ -149,7 +148,8 @@
     <xsl:text>_</xsl:text>
     <xsl:value-of select="translate(name(),':','.')" />
   </xsl:template>
-<!--Strip characters-->  <xsl:template match="text()" priority="-1" />
+  <!--Strip characters-->
+  <xsl:template match="text()" priority="-1" />
 
 <!--SCHEMA SETUP-->
 <xsl:template match="/">
@@ -165,21 +165,19 @@
       <svrl:ns-prefix-in-attribute-values prefix="ubl" uri="urn:oasis:names:specification:ubl:schema:xsd:DespatchAdvice-2" />
       <svrl:ns-prefix-in-attribute-values prefix="xs" uri="http://www.w3.org/2001/XMLSchema" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
+        <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
         <xsl:attribute name="id">UBL-T16</xsl:attribute>
         <xsl:attribute name="name">UBL-T16</xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M7" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
+        <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
         <xsl:attribute name="id">CodesT16</xsl:attribute>
         <xsl:attribute name="name">CodesT16</xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M8" select="/" />
     </svrl:schematron-output>
@@ -209,7 +207,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M7" select="*" />
+    <xsl:apply-templates mode="M7" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -230,7 +228,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M7" select="*" />
+    <xsl:apply-templates mode="M7" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -251,7 +249,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M7" select="*" />
+    <xsl:apply-templates mode="M7" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -272,7 +270,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M7" select="*" />
+    <xsl:apply-templates mode="M7" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -293,7 +291,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M7" select="*" />
+    <xsl:apply-templates mode="M7" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -314,7 +312,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M7" select="*" />
+    <xsl:apply-templates mode="M7" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -335,7 +333,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M7" select="*" />
+    <xsl:apply-templates mode="M7" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -356,11 +354,11 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M7" select="*" />
+    <xsl:apply-templates mode="M7" select="@*|*" />
   </xsl:template>
   <xsl:template match="text()" mode="M7" priority="-1" />
   <xsl:template match="@*|node()" mode="M7" priority="-2">
-    <xsl:apply-templates mode="M7" select="*" />
+    <xsl:apply-templates mode="M7" select="@*|*" />
   </xsl:template>
 
 <!--PATTERN CodesT16-->
@@ -384,7 +382,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M8" select="*" />
+    <xsl:apply-templates mode="M8" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -435,7 +433,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M8" select="*" />
+    <xsl:apply-templates mode="M8" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -456,7 +454,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M8" select="*" />
+    <xsl:apply-templates mode="M8" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -477,7 +475,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M8" select="*" />
+    <xsl:apply-templates mode="M8" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -498,7 +496,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M8" select="*" />
+    <xsl:apply-templates mode="M8" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -519,7 +517,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M8" select="*" />
+    <xsl:apply-templates mode="M8" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -540,10 +538,10 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M8" select="*" />
+    <xsl:apply-templates mode="M8" select="@*|*" />
   </xsl:template>
   <xsl:template match="text()" mode="M8" priority="-1" />
   <xsl:template match="@*|node()" mode="M8" priority="-2">
-    <xsl:apply-templates mode="M8" select="*" />
+    <xsl:apply-templates mode="M8" select="@*|*" />
   </xsl:template>
 </xsl:stylesheet>

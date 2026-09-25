@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <xsl:stylesheet xmlns:svrl="http://purl.oclc.org/dsdl/svrl" xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" xmlns:cn="urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2" xmlns:ext="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2" xmlns:iso="http://purl.oclc.org/dsdl/schematron" xmlns:qdt="urn:oasis:names:specification:ubl:schema:xsd:QualifiedDataTypes-2" xmlns:saxon="http://saxon.sf.net/" xmlns:schold="http://www.ascc.net/xml/schematron" xmlns:u="utils" xmlns:ubl="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2" xmlns:udt="urn:oasis:names:specification:ubl:schema:xsd:UnqualifiedDataTypes-2" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="2.0">
-<!--Implementers: please note that overriding process-prolog or process-root is 
+  <!-- Created with ph-schematron version of ISO Schematron XSLTs. -->
+<!-- Implementers: please note that overriding process-prolog or process-root is 
     the preferred method for meta-stylesheets to use where possible. -->
-
 <xsl:param name="archiveDirParameter" />
   <xsl:param name="archiveNameParameter" />
   <xsl:param name="fileNameParameter" />
@@ -68,9 +68,9 @@
         <xsl:text>']</xsl:text>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:variable name="preceding" select="count(preceding-sibling::*[local-name()=local-name(current())                                   and namespace-uri() = namespace-uri(current())])" />
+    <xsl:variable name="preceding" select="count(preceding-sibling::*[local-name()=local-name(current())                                       and namespace-uri() = namespace-uri(current())])" />
     <xsl:text>[</xsl:text>
-    <xsl:value-of select="1+ $preceding" />
+    <xsl:value-of select="1 + $preceding" />
     <xsl:text>]</xsl:text>
   </xsl:template>
   <xsl:template match="@*" mode="schematron-get-full-path">
@@ -105,10 +105,9 @@
       <xsl:text />/@<xsl:value-of select="name(.)" />
     </xsl:if>
   </xsl:template>
-<!--MODE: SCHEMATRON-FULL-PATH-3-->
+  <!--MODE: SCHEMATRON-FULL-PATH-3-->
 <!--This mode can be used to generate prefixed XPath for humans 
 	(Top-level element has index)-->
-
 <xsl:template match="node() | @*" mode="schematron-get-full-path-3">
     <xsl:for-each select="ancestor-or-self::*">
       <xsl:text>/</xsl:text>
@@ -168,7 +167,8 @@
     <xsl:text>_</xsl:text>
     <xsl:value-of select="translate(name(),':','.')" />
   </xsl:template>
-<!--Strip characters-->  <xsl:template match="text()" priority="-1" />
+  <!--Strip characters-->
+  <xsl:template match="text()" priority="-1" />
 
 <!--SCHEMA SETUP-->
 <xsl:template match="/">
@@ -189,88 +189,77 @@
       <svrl:ns-prefix-in-attribute-values prefix="u" uri="utils" />
       <svrl:ns-prefix-in-attribute-values prefix="xs" uri="http://www.w3.org/2001/XMLSchema" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
+        <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
         <xsl:attribute name="id">ubl-model</xsl:attribute>
         <xsl:attribute name="name">ubl-model</xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M12" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
+        <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
         <xsl:attribute name="id">ubl-syntax</xsl:attribute>
         <xsl:attribute name="name">ubl-syntax</xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M13" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
+        <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
         <xsl:attribute name="id">Codesmodel</xsl:attribute>
         <xsl:attribute name="name">Codesmodel</xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M14" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
+        <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M21" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
+        <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M22" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
+        <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M23" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
+        <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M24" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
+        <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M25" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
+        <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M26" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
+        <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M27" select="/" />
       <svrl:active-pattern>
-        <xsl:attribute name="document">
+        <xsl:attribute name="documents">
           <xsl:value-of select="document-uri(/)" />
         </xsl:attribute>
         <xsl:attribute name="id">ubl-model-BE</xsl:attribute>
         <xsl:attribute name="name">ubl-model-BE</xsl:attribute>
-        <xsl:apply-templates />
       </svrl:active-pattern>
       <xsl:apply-templates mode="M28" select="/" />
     </svrl:schematron-output>
@@ -300,7 +289,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M12" select="*" />
+    <xsl:apply-templates mode="M12" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -321,7 +310,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M12" select="*" />
+    <xsl:apply-templates mode="M12" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -342,7 +331,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M12" select="*" />
+    <xsl:apply-templates mode="M12" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -363,7 +352,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M12" select="*" />
+    <xsl:apply-templates mode="M12" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -384,7 +373,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M12" select="*" />
+    <xsl:apply-templates mode="M12" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -405,7 +394,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M12" select="*" />
+    <xsl:apply-templates mode="M12" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -516,7 +505,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M12" select="*" />
+    <xsl:apply-templates mode="M12" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -627,7 +616,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M12" select="*" />
+    <xsl:apply-templates mode="M12" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -873,7 +862,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M12" select="*" />
+    <xsl:apply-templates mode="M12" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -1749,7 +1738,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M12" select="*" />
+    <xsl:apply-templates mode="M12" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -1890,7 +1879,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M12" select="*" />
+    <xsl:apply-templates mode="M12" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -1986,7 +1975,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M12" select="*" />
+    <xsl:apply-templates mode="M12" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -2082,7 +2071,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M12" select="*" />
+    <xsl:apply-templates mode="M12" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -2118,7 +2107,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M12" select="*" />
+    <xsl:apply-templates mode="M12" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -2154,7 +2143,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M12" select="*" />
+    <xsl:apply-templates mode="M12" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -2175,7 +2164,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M12" select="*" />
+    <xsl:apply-templates mode="M12" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -2196,7 +2185,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M12" select="*" />
+    <xsl:apply-templates mode="M12" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -2217,7 +2206,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M12" select="*" />
+    <xsl:apply-templates mode="M12" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -2238,7 +2227,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M12" select="*" />
+    <xsl:apply-templates mode="M12" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -2259,7 +2248,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M12" select="*" />
+    <xsl:apply-templates mode="M12" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -2280,7 +2269,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M12" select="*" />
+    <xsl:apply-templates mode="M12" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -2316,7 +2305,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M12" select="*" />
+    <xsl:apply-templates mode="M12" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -2337,7 +2326,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M12" select="*" />
+    <xsl:apply-templates mode="M12" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -2358,7 +2347,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M12" select="*" />
+    <xsl:apply-templates mode="M12" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -2379,7 +2368,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M12" select="*" />
+    <xsl:apply-templates mode="M12" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -2400,7 +2389,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M12" select="*" />
+    <xsl:apply-templates mode="M12" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -2451,7 +2440,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M12" select="*" />
+    <xsl:apply-templates mode="M12" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -2472,7 +2461,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M12" select="*" />
+    <xsl:apply-templates mode="M12" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -2493,7 +2482,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M12" select="*" />
+    <xsl:apply-templates mode="M12" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -2589,7 +2578,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M12" select="*" />
+    <xsl:apply-templates mode="M12" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -2610,7 +2599,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M12" select="*" />
+    <xsl:apply-templates mode="M12" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -2661,7 +2650,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M12" select="*" />
+    <xsl:apply-templates mode="M12" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -2682,7 +2671,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M12" select="*" />
+    <xsl:apply-templates mode="M12" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -2703,7 +2692,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M12" select="*" />
+    <xsl:apply-templates mode="M12" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -2724,7 +2713,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M12" select="*" />
+    <xsl:apply-templates mode="M12" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -2760,7 +2749,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M12" select="*" />
+    <xsl:apply-templates mode="M12" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -2781,7 +2770,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M12" select="*" />
+    <xsl:apply-templates mode="M12" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -2802,7 +2791,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M12" select="*" />
+    <xsl:apply-templates mode="M12" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -2823,7 +2812,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M12" select="*" />
+    <xsl:apply-templates mode="M12" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -2874,7 +2863,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M12" select="*" />
+    <xsl:apply-templates mode="M12" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -2895,7 +2884,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M12" select="*" />
+    <xsl:apply-templates mode="M12" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -2916,7 +2905,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M12" select="*" />
+    <xsl:apply-templates mode="M12" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -2937,7 +2926,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M12" select="*" />
+    <xsl:apply-templates mode="M12" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -2988,7 +2977,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M12" select="*" />
+    <xsl:apply-templates mode="M12" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -3009,7 +2998,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M12" select="*" />
+    <xsl:apply-templates mode="M12" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -3030,7 +3019,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M12" select="*" />
+    <xsl:apply-templates mode="M12" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -3051,7 +3040,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M12" select="*" />
+    <xsl:apply-templates mode="M12" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -3102,7 +3091,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M12" select="*" />
+    <xsl:apply-templates mode="M12" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -3123,7 +3112,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M12" select="*" />
+    <xsl:apply-templates mode="M12" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -3144,7 +3133,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M12" select="*" />
+    <xsl:apply-templates mode="M12" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -3165,7 +3154,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M12" select="*" />
+    <xsl:apply-templates mode="M12" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -3216,7 +3205,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M12" select="*" />
+    <xsl:apply-templates mode="M12" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -3237,7 +3226,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M12" select="*" />
+    <xsl:apply-templates mode="M12" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -3258,7 +3247,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M12" select="*" />
+    <xsl:apply-templates mode="M12" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -3279,7 +3268,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M12" select="*" />
+    <xsl:apply-templates mode="M12" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -3330,7 +3319,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M12" select="*" />
+    <xsl:apply-templates mode="M12" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -3351,7 +3340,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M12" select="*" />
+    <xsl:apply-templates mode="M12" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -3372,7 +3361,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M12" select="*" />
+    <xsl:apply-templates mode="M12" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -3393,7 +3382,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M12" select="*" />
+    <xsl:apply-templates mode="M12" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -3414,7 +3403,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M12" select="*" />
+    <xsl:apply-templates mode="M12" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -3435,7 +3424,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M12" select="*" />
+    <xsl:apply-templates mode="M12" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -3456,7 +3445,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M12" select="*" />
+    <xsl:apply-templates mode="M12" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -3477,7 +3466,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M12" select="*" />
+    <xsl:apply-templates mode="M12" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -3528,7 +3517,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M12" select="*" />
+    <xsl:apply-templates mode="M12" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -3549,7 +3538,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M12" select="*" />
+    <xsl:apply-templates mode="M12" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -3570,7 +3559,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M12" select="*" />
+    <xsl:apply-templates mode="M12" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -3591,11 +3580,11 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M12" select="*" />
+    <xsl:apply-templates mode="M12" select="@*|*" />
   </xsl:template>
   <xsl:template match="text()" mode="M12" priority="-1" />
   <xsl:template match="@*|node()" mode="M12" priority="-2">
-    <xsl:apply-templates mode="M12" select="*" />
+    <xsl:apply-templates mode="M12" select="@*|*" />
   </xsl:template>
 
 <!--PATTERN ubl-syntax-->
@@ -3619,7 +3608,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M13" select="*" />
+    <xsl:apply-templates mode="M13" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -3655,7 +3644,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M13" select="*" />
+    <xsl:apply-templates mode="M13" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -3691,7 +3680,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M13" select="*" />
+    <xsl:apply-templates mode="M13" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -3712,7 +3701,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M13" select="*" />
+    <xsl:apply-templates mode="M13" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -3733,7 +3722,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M13" select="*" />
+    <xsl:apply-templates mode="M13" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -3754,7 +3743,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M13" select="*" />
+    <xsl:apply-templates mode="M13" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -14395,7 +14384,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M13" select="*" />
+    <xsl:apply-templates mode="M13" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -14506,7 +14495,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M13" select="*" />
+    <xsl:apply-templates mode="M13" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -14557,7 +14546,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M13" select="*" />
+    <xsl:apply-templates mode="M13" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -14608,7 +14597,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M13" select="*" />
+    <xsl:apply-templates mode="M13" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -14629,7 +14618,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M13" select="*" />
+    <xsl:apply-templates mode="M13" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -14665,7 +14654,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M13" select="*" />
+    <xsl:apply-templates mode="M13" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -14686,11 +14675,11 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M13" select="*" />
+    <xsl:apply-templates mode="M13" select="@*|*" />
   </xsl:template>
   <xsl:template match="text()" mode="M13" priority="-1" />
   <xsl:template match="@*|node()" mode="M13" priority="-2">
-    <xsl:apply-templates mode="M13" select="*" />
+    <xsl:apply-templates mode="M13" select="@*|*" />
   </xsl:template>
 
 <!--PATTERN Codesmodel-->
@@ -14714,7 +14703,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M14" select="*" />
+    <xsl:apply-templates mode="M14" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -14735,7 +14724,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M14" select="*" />
+    <xsl:apply-templates mode="M14" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -14756,7 +14745,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M14" select="*" />
+    <xsl:apply-templates mode="M14" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -14777,7 +14766,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M14" select="*" />
+    <xsl:apply-templates mode="M14" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -14798,7 +14787,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M14" select="*" />
+    <xsl:apply-templates mode="M14" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -14819,7 +14808,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M14" select="*" />
+    <xsl:apply-templates mode="M14" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -14840,7 +14829,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M14" select="*" />
+    <xsl:apply-templates mode="M14" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -14861,7 +14850,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M14" select="*" />
+    <xsl:apply-templates mode="M14" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -14883,7 +14872,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M14" select="*" />
+    <xsl:apply-templates mode="M14" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -14904,7 +14893,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M14" select="*" />
+    <xsl:apply-templates mode="M14" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -14925,7 +14914,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M14" select="*" />
+    <xsl:apply-templates mode="M14" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -14946,7 +14935,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M14" select="*" />
+    <xsl:apply-templates mode="M14" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -14967,7 +14956,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M14" select="*" />
+    <xsl:apply-templates mode="M14" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -14988,7 +14977,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M14" select="*" />
+    <xsl:apply-templates mode="M14" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -15009,7 +14998,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M14" select="*" />
+    <xsl:apply-templates mode="M14" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -15030,7 +15019,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M14" select="*" />
+    <xsl:apply-templates mode="M14" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -15051,7 +15040,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M14" select="*" />
+    <xsl:apply-templates mode="M14" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -15073,7 +15062,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M14" select="*" />
+    <xsl:apply-templates mode="M14" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -15094,7 +15083,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M14" select="*" />
+    <xsl:apply-templates mode="M14" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -15115,11 +15104,11 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M14" select="*" />
+    <xsl:apply-templates mode="M14" select="@*|*" />
   </xsl:template>
   <xsl:template match="text()" mode="M14" priority="-1" />
   <xsl:template match="@*|node()" mode="M14" priority="-2">
-    <xsl:apply-templates mode="M14" select="*" />
+    <xsl:apply-templates mode="M14" select="@*|*" />
   </xsl:template>
   <xsl:param name="profile" select="       if (/*/cbc:ProfileID and matches(normalize-space(/*/cbc:ProfileID), 'urn:fdc:peppol.eu:2017:poacc:billing:([0-9]{2}):1.0')) then         tokenize(normalize-space(/*/cbc:ProfileID), ':')[7]       else         'Unknown'" />
   <xsl:param name="supplierCountry" select="       if (/*/cac:AccountingSupplierParty/cac:Party/cac:PartyTaxScheme[cac:TaxScheme/cbc:ID = 'VAT']/substring(cbc:CompanyID, 1, 2)) then         upper-case(normalize-space(/*/cac:AccountingSupplierParty/cac:Party/cac:PartyTaxScheme[cac:TaxScheme/cbc:ID = 'VAT']/substring(cbc:CompanyID, 1, 2)))       else         if (/*/cac:TaxRepresentativeParty/cac:PartyTaxScheme[cac:TaxScheme/cbc:ID = 'VAT']/substring(cbc:CompanyID, 1, 2)) then           upper-case(normalize-space(/*/cac:TaxRepresentativeParty/cac:PartyTaxScheme[cac:TaxScheme/cbc:ID = 'VAT']/substring(cbc:CompanyID, 1, 2)))         else           if (/*/cac:AccountingSupplierParty/cac:Party/cac:PostalAddress/cac:Country/cbc:IdentificationCode) then             upper-case(normalize-space(/*/cac:AccountingSupplierParty/cac:Party/cac:PostalAddress/cac:Country/cbc:IdentificationCode))           else             'XX'" />
@@ -15146,11 +15135,11 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M21" select="*" />
+    <xsl:apply-templates mode="M21" select="@*|*" />
   </xsl:template>
   <xsl:template match="text()" mode="M21" priority="-1" />
   <xsl:template match="@*|node()" mode="M21" priority="-2">
-    <xsl:apply-templates mode="M21" select="*" />
+    <xsl:apply-templates mode="M21" select="@*|*" />
   </xsl:template>
 
 <!--PATTERN -->
@@ -15309,7 +15298,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M22" select="*" />
+    <xsl:apply-templates mode="M22" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -15330,7 +15319,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M22" select="*" />
+    <xsl:apply-templates mode="M22" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -15351,7 +15340,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M22" select="*" />
+    <xsl:apply-templates mode="M22" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -15372,7 +15361,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M22" select="*" />
+    <xsl:apply-templates mode="M22" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -15393,7 +15382,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M22" select="*" />
+    <xsl:apply-templates mode="M22" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -15414,7 +15403,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M22" select="*" />
+    <xsl:apply-templates mode="M22" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -15450,7 +15439,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M22" select="*" />
+    <xsl:apply-templates mode="M22" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -15471,7 +15460,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M22" select="*" />
+    <xsl:apply-templates mode="M22" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -15492,7 +15481,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M22" select="*" />
+    <xsl:apply-templates mode="M22" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -15513,7 +15502,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M22" select="*" />
+    <xsl:apply-templates mode="M22" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -15534,7 +15523,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M22" select="*" />
+    <xsl:apply-templates mode="M22" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -15591,7 +15580,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M22" select="*" />
+    <xsl:apply-templates mode="M22" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -15627,7 +15616,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M22" select="*" />
+    <xsl:apply-templates mode="M22" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -15650,7 +15639,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M22" select="*" />
+    <xsl:apply-templates mode="M22" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -15671,7 +15660,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M22" select="*" />
+    <xsl:apply-templates mode="M22" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -15692,7 +15681,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M22" select="*" />
+    <xsl:apply-templates mode="M22" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -15713,11 +15702,11 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M22" select="*" />
+    <xsl:apply-templates mode="M22" select="@*|*" />
   </xsl:template>
   <xsl:template match="text()" mode="M22" priority="-1" />
   <xsl:template match="@*|node()" mode="M22" priority="-2">
-    <xsl:apply-templates mode="M22" select="*" />
+    <xsl:apply-templates mode="M22" select="@*|*" />
   </xsl:template>
 
 <!--PATTERN -->
@@ -15759,11 +15748,11 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M23" select="*" />
+    <xsl:apply-templates mode="M23" select="@*|*" />
   </xsl:template>
   <xsl:template match="text()" mode="M23" priority="-1" />
   <xsl:template match="@*|node()" mode="M23" priority="-2">
-    <xsl:apply-templates mode="M23" select="*" />
+    <xsl:apply-templates mode="M23" select="@*|*" />
   </xsl:template>
 
 <!--PATTERN -->
@@ -15833,7 +15822,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M24" select="*" />
+    <xsl:apply-templates mode="M24" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -15854,7 +15843,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M24" select="*" />
+    <xsl:apply-templates mode="M24" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -15965,7 +15954,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M24" select="*" />
+    <xsl:apply-templates mode="M24" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -15986,7 +15975,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M24" select="*" />
+    <xsl:apply-templates mode="M24" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -16007,11 +15996,11 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M24" select="*" />
+    <xsl:apply-templates mode="M24" select="@*|*" />
   </xsl:template>
   <xsl:template match="text()" mode="M24" priority="-1" />
   <xsl:template match="@*|node()" mode="M24" priority="-2">
-    <xsl:apply-templates mode="M24" select="*" />
+    <xsl:apply-templates mode="M24" select="@*|*" />
   </xsl:template>
 
 <!--PATTERN -->
@@ -16035,7 +16024,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M25" select="*" />
+    <xsl:apply-templates mode="M25" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -16086,11 +16075,11 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M25" select="*" />
+    <xsl:apply-templates mode="M25" select="@*|*" />
   </xsl:template>
   <xsl:template match="text()" mode="M25" priority="-1" />
   <xsl:template match="@*|node()" mode="M25" priority="-2">
-    <xsl:apply-templates mode="M25" select="*" />
+    <xsl:apply-templates mode="M25" select="@*|*" />
   </xsl:template>
 
 <!--PATTERN -->
@@ -16129,7 +16118,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M26" select="*" />
+    <xsl:apply-templates mode="M26" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -16165,7 +16154,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M26" select="*" />
+    <xsl:apply-templates mode="M26" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -16186,7 +16175,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M26" select="*" />
+    <xsl:apply-templates mode="M26" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -16207,7 +16196,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M26" select="*" />
+    <xsl:apply-templates mode="M26" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -16243,7 +16232,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M26" select="*" />
+    <xsl:apply-templates mode="M26" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -16279,7 +16268,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M26" select="*" />
+    <xsl:apply-templates mode="M26" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -16300,11 +16289,11 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M26" select="*" />
+    <xsl:apply-templates mode="M26" select="@*|*" />
   </xsl:template>
   <xsl:template match="text()" mode="M26" priority="-1" />
   <xsl:template match="@*|node()" mode="M26" priority="-2">
-    <xsl:apply-templates mode="M26" select="*" />
+    <xsl:apply-templates mode="M26" select="@*|*" />
   </xsl:template>
 
 <!--PATTERN -->
@@ -16335,7 +16324,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M27" select="*" />
+    <xsl:apply-templates mode="M27" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -16356,7 +16345,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M27" select="*" />
+    <xsl:apply-templates mode="M27" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -16377,7 +16366,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M27" select="*" />
+    <xsl:apply-templates mode="M27" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -16398,7 +16387,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M27" select="*" />
+    <xsl:apply-templates mode="M27" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -16419,7 +16408,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M27" select="*" />
+    <xsl:apply-templates mode="M27" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -16440,7 +16429,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M27" select="*" />
+    <xsl:apply-templates mode="M27" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -16461,7 +16450,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M27" select="*" />
+    <xsl:apply-templates mode="M27" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -16483,7 +16472,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M27" select="*" />
+    <xsl:apply-templates mode="M27" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -16504,7 +16493,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M27" select="*" />
+    <xsl:apply-templates mode="M27" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -16525,7 +16514,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M27" select="*" />
+    <xsl:apply-templates mode="M27" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -16546,7 +16535,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M27" select="*" />
+    <xsl:apply-templates mode="M27" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -16567,7 +16556,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M27" select="*" />
+    <xsl:apply-templates mode="M27" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -16588,7 +16577,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M27" select="*" />
+    <xsl:apply-templates mode="M27" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -16609,7 +16598,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M27" select="*" />
+    <xsl:apply-templates mode="M27" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -16630,7 +16619,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M27" select="*" />
+    <xsl:apply-templates mode="M27" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -16651,7 +16640,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M27" select="*" />
+    <xsl:apply-templates mode="M27" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -16672,11 +16661,11 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M27" select="*" />
+    <xsl:apply-templates mode="M27" select="@*|*" />
   </xsl:template>
   <xsl:template match="text()" mode="M27" priority="-1" />
   <xsl:template match="@*|node()" mode="M27" priority="-2">
-    <xsl:apply-templates mode="M27" select="*" />
+    <xsl:apply-templates mode="M27" select="@*|*" />
   </xsl:template>
 
 <!--PATTERN ubl-model-BE-->
@@ -16705,7 +16694,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M28" select="*" />
+    <xsl:apply-templates mode="M28" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -16743,7 +16732,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M28" select="*" />
+    <xsl:apply-templates mode="M28" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -16765,7 +16754,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M28" select="*" />
+    <xsl:apply-templates mode="M28" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -16807,7 +16796,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M28" select="*" />
+    <xsl:apply-templates mode="M28" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -16862,7 +16851,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M28" select="*" />
+    <xsl:apply-templates mode="M28" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -16884,7 +16873,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M28" select="*" />
+    <xsl:apply-templates mode="M28" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -16944,7 +16933,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M28" select="*" />
+    <xsl:apply-templates mode="M28" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -16969,7 +16958,7 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M28" select="*" />
+    <xsl:apply-templates mode="M28" select="@*|*" />
   </xsl:template>
 
 	<!--RULE -->
@@ -16991,10 +16980,10 @@
         </svrl:failed-assert>
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:apply-templates mode="M28" select="*" />
+    <xsl:apply-templates mode="M28" select="@*|*" />
   </xsl:template>
   <xsl:template match="text()" mode="M28" priority="-1" />
   <xsl:template match="@*|node()" mode="M28" priority="-2">
-    <xsl:apply-templates mode="M28" select="*" />
+    <xsl:apply-templates mode="M28" select="@*|*" />
   </xsl:template>
 </xsl:stylesheet>
