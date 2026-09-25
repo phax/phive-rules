@@ -46,6 +46,7 @@ import com.helger.phive.serbia.SEOValidation;
 import com.helger.phive.serbia.SRBDTValidation;
 import com.helger.phive.setu.SETUValidation;
 import com.helger.phive.simplerinvoicing.SimplerInvoicingValidation;
+import com.helger.phive.singapore.SingaporeIRASValidation;
 import com.helger.phive.svefaktura.SvefakturaValidation;
 import com.helger.phive.teapps.TEAPPSValidation;
 import com.helger.phive.turkey.TurkeyEFaturaValidation;
@@ -117,6 +118,7 @@ public final class PhiveRulesValidation
     SimplerInvoicingValidation.initSimplerInvoicing (aRegistry);
     // Must be after SimplerInvoicing
     EnergieEFactuurValidation.initEnergieEFactuur (aRegistry);
+    SingaporeIRASValidation.initSingaporeIRAS (aRegistry);
     SvefakturaValidation.initSvefaktura (aRegistry);
     TurkeyEFaturaValidation.initTurkeyEFatura (aRegistry);
     UBLBEValidation.initUBLBE (aRegistry);

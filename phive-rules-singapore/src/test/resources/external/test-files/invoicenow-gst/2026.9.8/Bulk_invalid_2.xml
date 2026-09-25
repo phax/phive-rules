@@ -1,0 +1,286 @@
+<?xml version='1.0' encoding='utf-8'?>
+<StandardBusinessDocument xmlns="http://www.unece.org/cefact/namespaces/StandardBusinessDocumentHeader">
+  <StandardBusinessDocumentHeader>
+    <HeaderVersion>1.0</HeaderVersion>
+    <Sender>
+      <Identifier Authority="iso6523-actorid-upis">REPLACE_WITH_YOUR_TESTING_PEPPOL_ID</Identifier>
+    </Sender>
+    <Receiver>
+      <Identifier Authority="iso6523-actorid-upis">IRAS</Identifier>
+    </Receiver>
+    <DocumentIdentification>
+      <Standard>urn:oasis:names:specification:ubl:schema:xsd:Invoice-2</Standard>
+      <TypeVersion>2.1</TypeVersion>
+      <InstanceIdentifier>REPLACE_WITH_YOUR_TRANSMISSION_UUID</InstanceIdentifier>
+      <Type>Invoice</Type>
+      <CreationDateAndTime>2025-01-27T17:30:34.744Z</CreationDateAndTime>
+    </DocumentIdentification>
+	<BusinessScope>
+		<Scope>
+			<Type>DOCUMENT_UUID</Type>
+			<InstanceIdentifier>REPLACE_WITH_YOUR_DOC_UUID1,REPLACE_WITH_YOUR_DOC_UUID2</InstanceIdentifier>
+        </Scope>
+	</BusinessScope>
+  </StandardBusinessDocumentHeader>
+  <Invoice xmlns="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2" xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
+    <cbc:CustomizationID>urn:peppol:pint:billing-1@sg-1:LocalTaxInvoice:sg:1.0</cbc:CustomizationID>
+    <cbc:ProfileID>urn:peppol:bis:billing</cbc:ProfileID>
+    <cbc:ID>ID1</cbc:ID>
+    <cbc:UUID>REPLACE_WITH_YOUR_DOC_UUID1</cbc:UUID>
+    <cbc:IssueDate>2025-01-27</cbc:IssueDate>
+    <cbc:DueDate>2025-02-27</cbc:DueDate>
+    <cbc:InvoiceTypeCode>380</cbc:InvoiceTypeCode>
+    <cbc:Note>additionalInfo</cbc:Note>
+    <cbc:DocumentCurrencyCode>SGD</cbc:DocumentCurrencyCode>
+    <cac:AccountingSupplierParty>
+      <cac:Party>
+        <cbc:EndpointID schemeID="0195">0REPLACE_WITH_TESTING_PEPPOL_ID</cbc:EndpointID>
+        <cac:PostalAddress>
+          <cbc:StreetName>123 Main Street, #09-15</cbc:StreetName>
+          <cbc:AdditionalStreetName>Building 3</cbc:AdditionalStreetName>
+          <cbc:CityName>Singapore</cbc:CityName>
+          <cbc:PostalZone>100025</cbc:PostalZone>
+          <cbc:CountrySubentity>SG</cbc:CountrySubentity>
+          <cac:Country>
+            <cbc:IdentificationCode>SG</cbc:IdentificationCode>
+          </cac:Country>
+        </cac:PostalAddress>
+        <cac:PartyTaxScheme>
+          <cbc:CompanyID>REPLACE_WITH_TESTING_GSTN</cbc:CompanyID>
+          <cac:TaxScheme>
+            <cbc:ID>GST</cbc:ID>
+          </cac:TaxScheme>
+        </cac:PartyTaxScheme>
+        <cac:PartyLegalEntity>
+          <cbc:RegistrationName>Libero Done Pte Ltd</cbc:RegistrationName>
+          <cbc:CompanyID>REPLACE_WITH_TESTING_UEN</cbc:CompanyID>
+        </cac:PartyLegalEntity>
+      </cac:Party>
+    </cac:AccountingSupplierParty>
+    <cac:AccountingCustomerParty>
+      <cac:Party>
+        <cbc:EndpointID schemeID="0195">C5UID202100003B</cbc:EndpointID>
+        <cac:PostalAddress>
+          <cbc:StreetName>Central Road 56</cbc:StreetName>
+          <cbc:AdditionalStreetName>Second Floor</cbc:AdditionalStreetName>
+          <cbc:CityName>Singapore</cbc:CityName>
+          <cbc:PostalZone>101</cbc:PostalZone>
+          <cbc:CountrySubentity>Singapore</cbc:CountrySubentity>
+          <cac:AddressLine>
+            <cbc:Line />
+          </cac:AddressLine>
+          <cac:Country>
+            <cbc:IdentificationCode>SG</cbc:IdentificationCode>
+          </cac:Country>
+        </cac:PostalAddress>
+        <cac:PartyLegalEntity>
+          <cbc:RegistrationName>Customer Name 3</cbc:RegistrationName>
+          <cbc:CompanyID>202100003B</cbc:CompanyID>
+        </cac:PartyLegalEntity>
+      </cac:Party>
+    </cac:AccountingCustomerParty>
+    <cac:AllowanceCharge>
+      <cbc:ChargeIndicator>false</cbc:ChargeIndicator>
+      <cbc:AllowanceChargeReasonCode>95</cbc:AllowanceChargeReasonCode>
+      <cbc:AllowanceChargeReason>Discount</cbc:AllowanceChargeReason>
+      <cbc:MultiplierFactorNumeric>0</cbc:MultiplierFactorNumeric>
+      <cbc:Amount currencyID="SGD">0.00</cbc:Amount>
+      <cbc:BaseAmount currencyID="SGD">1000.00</cbc:BaseAmount>
+      <cac:TaxCategory>
+        <cbc:ID>SR</cbc:ID>
+        <cbc:Percent>9</cbc:Percent>
+        <cac:TaxScheme>
+          <cbc:ID>GST</cbc:ID>
+        </cac:TaxScheme>
+      </cac:TaxCategory>
+    </cac:AllowanceCharge>
+    <cac:TaxTotal>
+      <cbc:TaxAmount currencyID="SGD">90</cbc:TaxAmount>
+      <cac:TaxSubtotal>
+        <cbc:TaxableAmount currencyID="SGD">1000</cbc:TaxableAmount>
+        <cbc:TaxAmount currencyID="SGD">90</cbc:TaxAmount>
+        <cac:TaxCategory>
+          <cbc:ID>SR</cbc:ID>
+          <cbc:Percent>9</cbc:Percent>
+          <cac:TaxScheme>
+            <cbc:ID>GST</cbc:ID>
+          </cac:TaxScheme>
+        </cac:TaxCategory>
+      </cac:TaxSubtotal>
+	  <cac:TaxSubtotal>
+        <cbc:TaxableAmount currencyID="SGD">1000</cbc:TaxableAmount>
+        <cbc:TaxAmount currencyID="SGD">0</cbc:TaxAmount>
+        <cac:TaxCategory>
+          <cbc:ID>ZR</cbc:ID>
+          <cbc:Percent>0</cbc:Percent>
+          <cac:TaxScheme>
+            <cbc:ID>GST</cbc:ID>
+          </cac:TaxScheme>
+        </cac:TaxCategory>
+      </cac:TaxSubtotal>
+    </cac:TaxTotal>
+    <cac:LegalMonetaryTotal>
+      <cbc:LineExtensionAmount currencyID="SGD">1500</cbc:LineExtensionAmount>
+      <cbc:TaxExclusiveAmount currencyID="SGD">1500</cbc:TaxExclusiveAmount>
+      <cbc:TaxInclusiveAmount currencyID="SGD">1590</cbc:TaxInclusiveAmount>
+      <cbc:AllowanceTotalAmount currencyID="SGD">0</cbc:AllowanceTotalAmount>
+      <cbc:ChargeTotalAmount currencyID="SGD">0</cbc:ChargeTotalAmount>
+      <cbc:PrepaidAmount currencyID="SGD">0</cbc:PrepaidAmount>
+      <cbc:PayableRoundingAmount currencyID="SGD">0</cbc:PayableRoundingAmount>
+      <cbc:PayableAmount currencyID="SGD">1590</cbc:PayableAmount>
+    </cac:LegalMonetaryTotal>
+    <cac:InvoiceLine>
+      <cbc:ID>1</cbc:ID>
+      <cbc:InvoicedQuantity unitCode="EA">1</cbc:InvoicedQuantity>
+      <cbc:LineExtensionAmount currencyID="SGD">500</cbc:LineExtensionAmount>
+      <cac:Item>
+        <cbc:Name>Apple</cbc:Name>
+        <cac:ClassifiedTaxCategory>
+          <cbc:ID>SR</cbc:ID>
+          <cbc:Percent>9</cbc:Percent>
+          <cac:TaxScheme>
+            <cbc:ID>GST</cbc:ID>
+          </cac:TaxScheme>
+        </cac:ClassifiedTaxCategory>
+      </cac:Item>
+      <cac:Price>
+        <cbc:PriceAmount currencyID="SGD">500</cbc:PriceAmount>
+        <cbc:BaseQuantity>1</cbc:BaseQuantity>
+      </cac:Price>
+    </cac:InvoiceLine>
+	<cac:InvoiceLine>
+      <cbc:ID>2</cbc:ID>
+      <cbc:InvoicedQuantity unitCode="EA">1</cbc:InvoicedQuantity>
+      <cbc:LineExtensionAmount currencyID="SGD">500</cbc:LineExtensionAmount>
+      <cac:Item>
+        <cbc:Name>Pear</cbc:Name>
+        <cac:ClassifiedTaxCategory>
+          <cbc:ID>ZR</cbc:ID>
+          <cbc:Percent>0</cbc:Percent>
+          <cac:TaxScheme>
+            <cbc:ID>GST</cbc:ID>
+          </cac:TaxScheme>
+        </cac:ClassifiedTaxCategory>
+      </cac:Item>
+      <cac:Price>
+        <cbc:PriceAmount currencyID="SGD">500</cbc:PriceAmount>
+        <cbc:BaseQuantity>1</cbc:BaseQuantity>
+      </cac:Price>
+    </cac:InvoiceLine>
+  </Invoice>
+  <Invoice xmlns="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2" xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
+    <cbc:CustomizationID>urn:peppol:pint:billing-1@sg-1:LocalTaxInvoice:sg:1.0</cbc:CustomizationID>
+    <cbc:ProfileID>urn:peppol:bis:billing</cbc:ProfileID>
+    <cbc:ID>ID2</cbc:ID>
+    <cbc:UUID>REPLACE_WITH_YOUR_DOC_UUID2</cbc:UUID>
+    <cbc:IssueDate>2025-01-27</cbc:IssueDate>
+    <cbc:DueDate>2025-02-27</cbc:DueDate>
+    <cbc:InvoiceTypeCode>380</cbc:InvoiceTypeCode>
+    <cbc:Note>additionalInfo</cbc:Note>
+    <cbc:DocumentCurrencyCode>SGD</cbc:DocumentCurrencyCode>
+    <cac:AccountingSupplierParty>
+      <cac:Party>
+        <cbc:EndpointID schemeID="0195">REPLACE_WITH_TESTING_PEPPOL_ID</cbc:EndpointID>
+        <cac:PostalAddress>
+          <cbc:StreetName>123 Main Street, #09-15</cbc:StreetName>
+          <cbc:AdditionalStreetName>Building 3</cbc:AdditionalStreetName>
+          <cbc:CityName>Singapore</cbc:CityName>
+          <cbc:PostalZone>100025</cbc:PostalZone>
+          <cbc:CountrySubentity>SG</cbc:CountrySubentity>
+          <cac:Country>
+            <cbc:IdentificationCode>SG</cbc:IdentificationCode>
+          </cac:Country>
+        </cac:PostalAddress>
+        <cac:PartyTaxScheme>
+          <cac:TaxScheme>
+            <cbc:ID>GST</cbc:ID>
+          </cac:TaxScheme>
+        </cac:PartyTaxScheme>
+        <cac:PartyLegalEntity>
+          <cbc:RegistrationName>Libero Done Pte Ltd</cbc:RegistrationName>
+          <cbc:CompanyID>REPLACE_WITH_TESTING_UEN</cbc:CompanyID>
+        </cac:PartyLegalEntity>
+      </cac:Party>
+    </cac:AccountingSupplierParty>
+    <cac:AccountingCustomerParty>
+      <cac:Party>
+        <cbc:EndpointID schemeID="0195">C5UID202100003B</cbc:EndpointID>
+        <cac:PostalAddress>
+          <cbc:StreetName>Central Road 56</cbc:StreetName>
+          <cbc:AdditionalStreetName>Second Floor</cbc:AdditionalStreetName>
+          <cbc:CityName>Singapore</cbc:CityName>
+          <cbc:PostalZone>101</cbc:PostalZone>
+          <cbc:CountrySubentity>Singapore</cbc:CountrySubentity>
+          <cac:AddressLine>
+            <cbc:Line />
+          </cac:AddressLine>
+          <cac:Country>
+            <cbc:IdentificationCode>SG</cbc:IdentificationCode>
+          </cac:Country>
+        </cac:PostalAddress>
+        <cac:PartyLegalEntity>
+          <cbc:RegistrationName>Customer Name 3</cbc:RegistrationName>
+          <cbc:CompanyID>202100003B</cbc:CompanyID>
+        </cac:PartyLegalEntity>
+      </cac:Party>
+    </cac:AccountingCustomerParty>
+    <cac:AllowanceCharge>
+      <cbc:ChargeIndicator>false</cbc:ChargeIndicator>
+      <cbc:AllowanceChargeReasonCode>95</cbc:AllowanceChargeReasonCode>
+      <cbc:AllowanceChargeReason>Discount</cbc:AllowanceChargeReason>
+      <cbc:MultiplierFactorNumeric>0</cbc:MultiplierFactorNumeric>
+      <cbc:Amount currencyID="SGD">0.00</cbc:Amount>
+      <cbc:BaseAmount currencyID="SGD">1000.00</cbc:BaseAmount>
+      <cac:TaxCategory>
+        <cbc:ID>SR</cbc:ID>
+        <cbc:Percent>9</cbc:Percent>
+        <cac:TaxScheme>
+          <cbc:ID>GST</cbc:ID>
+        </cac:TaxScheme>
+      </cac:TaxCategory>
+    </cac:AllowanceCharge>
+    <cac:TaxTotal>
+      <cbc:TaxAmount currencyID="SGD">90</cbc:TaxAmount>
+      <cac:TaxSubtotal>
+        <cbc:TaxableAmount currencyID="SGD">1000</cbc:TaxableAmount>
+        <cbc:TaxAmount currencyID="SGD">90</cbc:TaxAmount>
+        <cac:TaxCategory>
+          <cbc:ID>SR</cbc:ID>
+          <cbc:Percent>9</cbc:Percent>
+          <cac:TaxScheme>
+            <cbc:ID>GST</cbc:ID>
+          </cac:TaxScheme>
+        </cac:TaxCategory>
+      </cac:TaxSubtotal>
+    </cac:TaxTotal>
+    <cac:LegalMonetaryTotal>
+      <cbc:LineExtensionAmount currencyID="SGD">1500</cbc:LineExtensionAmount>
+      <cbc:TaxExclusiveAmount currencyID="SGD">1500</cbc:TaxExclusiveAmount>
+      <cbc:TaxInclusiveAmount currencyID="SGD">1590</cbc:TaxInclusiveAmount>
+      <cbc:AllowanceTotalAmount currencyID="SGD">0</cbc:AllowanceTotalAmount>
+      <cbc:ChargeTotalAmount currencyID="SGD">0</cbc:ChargeTotalAmount>
+      <cbc:PrepaidAmount currencyID="SGD">0</cbc:PrepaidAmount>
+      <cbc:PayableRoundingAmount currencyID="SGD">0</cbc:PayableRoundingAmount>
+      <cbc:PayableAmount currencyID="SGD">1590</cbc:PayableAmount>
+    </cac:LegalMonetaryTotal>
+    <cac:InvoiceLine>
+      <cbc:ID>1</cbc:ID>
+      <cbc:InvoicedQuantity unitCode="EA">1</cbc:InvoicedQuantity>
+      <cbc:LineExtensionAmount currencyID="SGD">500</cbc:LineExtensionAmount>
+      <cac:Item>
+        <cbc:Name>Apple</cbc:Name>
+        <cac:ClassifiedTaxCategory>
+          <cbc:ID>SR</cbc:ID>
+          <cbc:Percent>9</cbc:Percent>
+          <cac:TaxScheme>
+            <cbc:ID>GST</cbc:ID>
+          </cac:TaxScheme>
+        </cac:ClassifiedTaxCategory>
+      </cac:Item>
+      <cac:Price>
+        <cbc:PriceAmount currencyID="SGD">500</cbc:PriceAmount>
+        <cbc:BaseQuantity>1</cbc:BaseQuantity>
+      </cac:Price>
+    </cac:InvoiceLine>
+  </Invoice>
+</StandardBusinessDocument>

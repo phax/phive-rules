@@ -48,6 +48,7 @@ This project is divided into sub-projects each keeping tracking of one document 
 * phive-rules-serbia - Validation rules for the Serbian SEF (SRBDT) EN 16931 CIUS and SEO logistics documents (since v4.3.9)
 * phive-rules-setu - Dutch SETU selected standards (since v3.0.4)
 * phive-rules-simplerinvoicing - Dutch Simplerinvoicing support from https://github.com/Simplerinvoicing/validation
+* phive-rules-singapore - Validation rules for the Singapore IRAS GST InvoiceNow data submission (since v4.6.1)
 * phive-rules-svefaktura - Validation rules for Swedish Svefaktura (since v1.0.6)
 * phive-rules-turkey - Validation rules for Turkey UBL-TR / e-Fatura (since v4.3.1)
 * phive-rules-ublbe - Validation rules for Belgium e-FFF/UBL.BE
@@ -161,6 +162,12 @@ Add the following to your `pom.xml` to use this artifact, replacing `x.y.z` with
 <dependency>
   <groupId>com.helger.phive.rules</groupId>
   <artifactId>phive-rules-simplerinvoicing</artifactId>
+  <version>x.y.z</version>
+</dependency>
+
+<dependency>
+  <groupId>com.helger.phive.rules</groupId>
+  <artifactId>phive-rules-singapore</artifactId>
   <version>x.y.z</version>
 </dependency>
 
@@ -283,6 +290,12 @@ v4.6.1 - 2026-09-25
 * The ZUGFeRD 2.5 XSLTs are intentionally left as they are.
   They are the prebuilt XSLTs from the ZUGFeRD distribution, and that distribution's own `.sch` files describe four patterns fewer and reference differently named code database files, so regenerating them would silently drop validation rules.
 * Not regenerated because they have no Schematron source in this repository - they are taken from their respective upstream distributions: all XSLTs of `phive-rules-en16931` and `phive-rules-svefaktura`, the XSLs of `phive-rules-zatca`, and ZUGFeRD 2.1.
+* Added the Singapore IRAS GST InvoiceNow data submission validation rules in the new module `phive-rules-singapore`, VES coordinate `sg.gov.iras:invoicenow-gst:2026.9.8`.
+  See [issue #57](https://github.com/phax/phive-rules/issues/57).
+  The rules are taken from the [GST InvoiceNow requirement resources](https://go.gov.sg/gstinvoicenowreq-resources) of the IRAS C5 accreditation package, state of 2026-09-08.
+  IRAS does not maintain a version number in the Schematron - its title has been claiming "v0.3.4" since January 2025 - so the date of the last entry of the accompanying changelog is used as the version.
+  The validated document is the complete SBDH envelope and not the contained UBL Invoice or Credit Note, because the rules `IRASC5-001` to `IRASC5-004` have the SBDH header as their context.
+  There is no XML Schema validation layer, because a single submission may contain more than one UBL document ("bulk" submission), whereas the SBDH 1.3 XML Schema permits exactly one payload element.
 
 v4.6.0 - 2026-09-23
 * Moved the legacy validation rules out into the separate repository [phive-rules-legacy](https://github.com/phax/phive-rules-legacy), so that the current rules can be built and released without the accumulated weight of all historic rule sets. All Maven and VES coordinates are unchanged.

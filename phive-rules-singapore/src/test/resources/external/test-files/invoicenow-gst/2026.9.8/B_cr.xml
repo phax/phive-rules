@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<StandardBusinessDocument
+	xmlns="http://www.unece.org/cefact/namespaces/StandardBusinessDocumentHeader">
+	<StandardBusinessDocumentHeader>
+		<HeaderVersion>1.0</HeaderVersion>
+		<Sender>
+			<Identifier Authority="iso6523-actorid-upis">REPLACE_WITH_TESTING_PEPPOL_ID</Identifier>
+		</Sender>			
+		<Receiver>			
+			<Identifier Authority="iso6523-actorid-upis">IRAS</Identifier>
+		</Receiver>
+		<DocumentIdentification>
+			<Standard>urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2</Standard>
+			<TypeVersion>2.1</TypeVersion>
+			<InstanceIdentifier>REPLACE_WITH_YOUR_TRANSMISSION_UUID</InstanceIdentifier>
+			<Type>CreditNote</Type>
+			<CreationDateAndTime>2025-01-27T07:28:58.975Z</CreationDateAndTime>
+		</DocumentIdentification>
+		<BusinessScope>
+			<Scope>
+				<Type>DOCUMENTID</Type>
+				<InstanceIdentifier>urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2::CreditNote##urn:peppol:pint:billing-1@sg-1:LocalTaxInvoice:sg:1.0::2.1</InstanceIdentifier>
+			</Scope>
+			<Scope>
+				<Type>PROCESSID</Type>
+				<InstanceIdentifier>urn:peppol:bis:billing</InstanceIdentifier>
+			</Scope>
+			<Scope>
+				<Type>Document_UUID</Type>
+				<InstanceIdentifier>REPLACE_WITH_YOUR_DOC_UUID</InstanceIdentifier>
+			</Scope>
+		</BusinessScope>
+	</StandardBusinessDocumentHeader>
+	<CreditNote
+		xmlns="urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2"
+		xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+		xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+		xmlns:ccts="urn:un:unece:uncefact:documentation:2"
+		xmlns:ext="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2"
+		xmlns:qdt="urn:oasis:names:specification:ubl:schema:xsd:QualifiedDatatypes-2"
+		xmlns:udt="urn:un:unece:uncefact:data:specification:UnqualifiedDataTypesSchemaModule:2"
+		xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+		<cbc:CustomizationID>urn:peppol:pint:billing-1@sg-1:LocalTaxInvoice:sg:1.0</cbc:CustomizationID> <!-- BT-24 -->
+		<cbc:ProfileID>urn:peppol:bis:billing</cbc:ProfileID> <!-- BT-23 -->
+		<cbc:ID>42105</cbc:ID> <!-- BT-1 -->	
+		<cbc:UUID>REPLACE_WITH_YOUR_DOC_UUID</cbc:UUID>			
+		<cbc:IssueDate>2025-01-27</cbc:IssueDate> <!-- BT-2 -->				
+		<cbc:CreditNoteTypeCode>381</cbc:CreditNoteTypeCode> <!-- BT-3 -->				
+		<cbc:Note>test note</cbc:Note> <!-- BT-22 -->				
+		<cbc:DocumentCurrencyCode>SGD</cbc:DocumentCurrencyCode> <!-- BT-5 -->			
+		<cac:OrderReference>
+			<cbc:ID>450235963</cbc:ID> <!-- BT-13 -->	
+		</cac:OrderReference>
+		<cac:BillingReference>
+			<cac:InvoiceDocumentReference>
+				<cbc:ID>INV0001</cbc:ID>
+				<cbc:IssueDate>2024-12-01</cbc:IssueDate>
+			</cac:InvoiceDocumentReference>
+		</cac:BillingReference>
+		<cac:AccountingSupplierParty>
+			<cac:Party>
+				<cbc:EndpointID schemeID="0195">REPLACE_WITH_TESTING_PEPPOL_ID</cbc:EndpointID>
+				<cac:PostalAddress>
+					<cbc:StreetName>123 Digital Architect Road, #09-15</cbc:StreetName>
+					<!-- BT-35 -->
+					<cbc:AdditionalStreetName>Building 3</cbc:AdditionalStreetName>
+					<!-- BT-36 -->
+					<cbc:CityName>Singapore</cbc:CityName>
+					<!-- BT-37 -->
+					<cbc:PostalZone>100025</cbc:PostalZone>
+					<!-- BT-38 -->
+					<cbc:CountrySubentity>Singapore</cbc:CountrySubentity>
+					<!-- BT-39 -->
+					<cac:Country>
+						<cbc:IdentificationCode>SG</cbc:IdentificationCode>
+						<!-- BT-40 -->
+					</cac:Country>
+				</cac:PostalAddress>
+				<cac:PartyTaxScheme>
+					<cbc:CompanyID>REPLACE_WITH_TESTING_GSTN</cbc:CompanyID>
+					<cac:TaxScheme>
+						<cbc:ID>GST</cbc:ID>
+					</cac:TaxScheme>
+				</cac:PartyTaxScheme>
+				<cac:PartyLegalEntity>
+					<cbc:RegistrationName>Libero Done Pte Ltd</cbc:RegistrationName>
+					<cbc:CompanyID schemeID="0195">REPLACE_WITH_TESTING_UEN</cbc:CompanyID>
+				</cac:PartyLegalEntity>
+			</cac:Party>
+		</cac:AccountingSupplierParty>
+		<cac:AccountingCustomerParty>
+			<cac:Party>
+				<cbc:EndpointID schemeID="0195">C5UID201312345A</cbc:EndpointID>
+				<cac:PostalAddress>
+					<cbc:StreetName>Central road 56</cbc:StreetName>
+					<!-- BT-50 -->
+					<cbc:CityName>Singapore</cbc:CityName>
+					<!-- BT-52 -->
+					<cbc:PostalZone>054321</cbc:PostalZone>
+					<!-- BT-53 -->
+					<cbc:CountrySubentity>Singapore</cbc:CountrySubentity>
+					<!-- BT-54 -->
+					<cac:Country>
+						<cbc:IdentificationCode>SG</cbc:IdentificationCode>
+						<!-- BT-55 -->
+					</cac:Country>
+				</cac:PostalAddress>
+				<cac:PartyLegalEntity>
+					<cbc:RegistrationName>Nulla Dignissim Pte Ltd</cbc:RegistrationName>
+					<cbc:CompanyID>201312345A</cbc:CompanyID>
+				</cac:PartyLegalEntity>
+			</cac:Party>
+		</cac:AccountingCustomerParty>
+		<cac:PaymentMeans>
+			<cbc:PaymentMeansCode name="GIRO">Z01</cbc:PaymentMeansCode>
+			<cac:PayeeFinancialAccount>
+				<cbc:ID>f375c-db174</cbc:ID>
+				<cbc:Name>Libero Done Pte Ltd</cbc:Name>
+			</cac:PayeeFinancialAccount>
+		</cac:PaymentMeans>
+		<cac:AllowanceCharge>
+			<cbc:ChargeIndicator>false</cbc:ChargeIndicator>
+			<cbc:AllowanceChargeReasonCode>95</cbc:AllowanceChargeReasonCode>
+			<cbc:AllowanceChargeReason>Discount</cbc:AllowanceChargeReason>
+			<cbc:MultiplierFactorNumeric>0.00</cbc:MultiplierFactorNumeric>
+			<cbc:Amount currencyID="SGD">0.00</cbc:Amount>
+			<cbc:BaseAmount currencyID="SGD">0.00</cbc:BaseAmount>
+			<cac:TaxCategory>
+				<cbc:ID>SR</cbc:ID>
+				<cbc:Percent>9</cbc:Percent>
+				<cac:TaxScheme>
+					<cbc:ID>GST</cbc:ID>
+				</cac:TaxScheme>
+			</cac:TaxCategory>
+		</cac:AllowanceCharge>
+		<cac:TaxTotal>
+			<cbc:TaxAmount currencyID="SGD">135.00</cbc:TaxAmount>
+			<cac:TaxSubtotal>
+				<cbc:TaxableAmount currencyID="SGD">1500.00</cbc:TaxableAmount>
+				<cbc:TaxAmount currencyID="SGD">135.00</cbc:TaxAmount>
+				<cac:TaxCategory>
+					<cbc:ID>SR</cbc:ID>
+					<cbc:Percent>9</cbc:Percent>
+					<cac:TaxScheme>
+						<cbc:ID>GST</cbc:ID>
+					</cac:TaxScheme>
+				</cac:TaxCategory>
+			</cac:TaxSubtotal>
+		</cac:TaxTotal>
+		<cac:LegalMonetaryTotal>
+			<cbc:LineExtensionAmount currencyID="SGD">1500.00</cbc:LineExtensionAmount>
+			<cbc:TaxExclusiveAmount currencyID="SGD">1500.00</cbc:TaxExclusiveAmount>
+			<cbc:TaxInclusiveAmount currencyID="SGD">1635.00</cbc:TaxInclusiveAmount>
+			<cbc:AllowanceTotalAmount currencyID="SGD">0.00</cbc:AllowanceTotalAmount>
+			<cbc:ChargeTotalAmount currencyID="SGD">0</cbc:ChargeTotalAmount>
+			<cbc:PrepaidAmount currencyID="SGD">0</cbc:PrepaidAmount>
+			<cbc:PayableRoundingAmount currencyID="SGD">0</cbc:PayableRoundingAmount>
+			<cbc:PayableAmount currencyID="SGD">1635.00</cbc:PayableAmount>
+		</cac:LegalMonetaryTotal>
+		<cac:CreditNoteLine>
+			<cbc:ID>1</cbc:ID>
+			<cbc:CreditedQuantity unitCode='KGM'>10</cbc:CreditedQuantity>
+			<cbc:LineExtensionAmount currencyID="SGD">900.00</cbc:LineExtensionAmount>
+			<cac:Item>
+				<cbc:Name>Apples</cbc:Name>
+				<cac:ClassifiedTaxCategory>
+					<cbc:ID>SR</cbc:ID>
+					<cbc:Percent>9</cbc:Percent>
+					<cac:TaxScheme>
+						<cbc:ID>GST</cbc:ID>
+					</cac:TaxScheme>
+				</cac:ClassifiedTaxCategory>
+			</cac:Item>
+			<cac:Price>
+				<cbc:PriceAmount currencyID="SGD">90.00</cbc:PriceAmount>
+				<cbc:BaseQuantity>1</cbc:BaseQuantity>
+			</cac:Price>
+		</cac:CreditNoteLine>
+		<cac:CreditNoteLine>
+			<cbc:ID>2</cbc:ID>
+			<cbc:CreditedQuantity unitCode='H87'>6</cbc:CreditedQuantity>
+			<cbc:LineExtensionAmount currencyID="SGD">600.00</cbc:LineExtensionAmount>
+			<cac:Item>
+				<cbc:Name>Bananas</cbc:Name>
+				<cac:ClassifiedTaxCategory>
+					<cbc:ID>SR</cbc:ID>
+					<cbc:Percent>9</cbc:Percent>
+					<cac:TaxScheme>
+						<cbc:ID>GST</cbc:ID>
+					</cac:TaxScheme>
+				</cac:ClassifiedTaxCategory>
+			</cac:Item>
+			<cac:Price>
+				<cbc:PriceAmount currencyID="SGD">100.00</cbc:PriceAmount>
+				<cbc:BaseQuantity>1</cbc:BaseQuantity>
+			</cac:Price>
+		</cac:CreditNoteLine>
+	</CreditNote>
+</StandardBusinessDocument>

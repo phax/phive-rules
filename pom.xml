@@ -217,6 +217,11 @@
       </dependency>
       <dependency>
         <groupId>com.helger.phive.rules</groupId>
+        <artifactId>phive-rules-singapore</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.helger.phive.rules</groupId>
         <artifactId>phive-rules-svefaktura</artifactId>
         <version>${project.version}</version>
       </dependency>
@@ -280,6 +285,7 @@
     <module>phive-rules-simplerinvoicing</module>
     <!-- depends on SimplerInvoicing -->
     <module>phive-rules-energieefactuur</module>
+    <module>phive-rules-singapore</module>
     <module>phive-rules-svefaktura</module>
     <module>phive-rules-turkey</module>
     <!-- depends on peppol -->
