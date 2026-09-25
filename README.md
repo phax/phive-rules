@@ -13,7 +13,8 @@ This project is part of my Peppol solution stack. See https://github.com/phax/pe
 
 All projects found in here rely on the PHIVE validation engine provided by https://github.com/phax/phive
 
-The foundational, XSD-only document formats live in the separate repository [phive-rules-foundations](https://github.com/phax/phive-rules-foundations) since v4.5.0. Their Maven and VES coordinates are unchanged.
+The foundational, XSD-only document formats live in the separate repository [phive-rules-foundations](https://github.com/phax/phive-rules-foundations) since v4.5.0.
+Their Maven and VES coordinates are unchanged.
 * pure UN/CEFACT CII
 * pure OASIS UBL
 * ebInterface (AT)
@@ -21,10 +22,12 @@ The foundational, XSD-only document formats live in the separate repository [phi
 * FatturaPA (IT)
 * Finvoice (FI)
 * KSeF (PL)
+* OECD Common Reporting Standard (CRS)
 * OSA (HU)
 * TEAPPS (FI) 
 
-The outdated rule sets live in the separate repository [phive-rules-legacy](https://github.com/phax/phive-rules-legacy) since v4.6.0. Their Maven and VES coordinates are unchanged.
+The outdated rule sets live in the separate repository [phive-rules-legacy](https://github.com/phax/phive-rules-legacy) since v4.6.0.
+Their Maven and VES coordinates are unchanged.
 * older Peppol rule sets (`phive-rules-peppol-legacy`)
 * legacy Danish OIOUBL rule sets - 1.12.3 up to 1.17.1, 2.0.2 and 3.0.1 (`phive-rules-oioubl-legacy`)
 * the legacy aggregator `phive-rules-all-legacy`
@@ -290,12 +293,17 @@ v4.6.1 - 2026-09-25
 * The ZUGFeRD 2.5 XSLTs are intentionally left as they are.
   They are the prebuilt XSLTs from the ZUGFeRD distribution, and that distribution's own `.sch` files describe four patterns fewer and reference differently named code database files, so regenerating them would silently drop validation rules.
 * Not regenerated because they have no Schematron source in this repository - they are taken from their respective upstream distributions: all XSLTs of `phive-rules-en16931` and `phive-rules-svefaktura`, the XSLs of `phive-rules-zatca`, and ZUGFeRD 2.1.
+* Updated to phive-rules-foundations 5.0.4, which adds the new module `phive-rules-crs` with the OECD Common Reporting Standard (CRS) XML Schema, VES coordinates `org.oecd.ties:crs:2.0` and `org.oecd.ties:crs:3.0`.
+  It is registered by `PhiveRulesValidation.initPhiveRules` like all other foundational modules.
+  See [issue #57](https://github.com/phax/phive-rules/issues/57).
 * Added the Singapore IRAS GST InvoiceNow data submission validation rules in the new module `phive-rules-singapore`, VES coordinate `sg.gov.iras:invoicenow-gst:2026.9.8`.
   See [issue #57](https://github.com/phax/phive-rules/issues/57).
   The rules are taken from the [GST InvoiceNow requirement resources](https://go.gov.sg/gstinvoicenowreq-resources) of the IRAS C5 accreditation package, state of 2026-09-08.
   IRAS does not maintain a version number in the Schematron - its title has been claiming "v0.3.4" since January 2025 - so the date of the last entry of the accompanying changelog is used as the version.
   The validated document is the complete SBDH envelope and not the contained UBL Invoice or Credit Note, because the rules `IRASC5-001` to `IRASC5-004` have the SBDH header as their context.
-  There is no XML Schema validation layer, because a single submission may contain more than one UBL document ("bulk" submission), whereas the SBDH 1.3 XML Schema permits exactly one payload element.
+  The XML Schema layer is applied to the parts of the envelope rather than to the envelope as a whole: the SBDH header and every contained Invoice and Credit Note is validated separately with `ValidationExecutorXSDPartial`.
+  That is necessary because a single submission may carry more than one UBL document ("bulk" submission), whereas the `StandardBusinessDocument` of the SBDH 1.3 XML Schema declares a single `xs:any`.
+  As a side effect the SBDH envelope is now mandatory - an unwrapped UBL Invoice is rejected, whereas the Schematron alone reports nothing at all for it, because its envelope rules simply do not match.
 
 v4.6.0 - 2026-09-23
 * Moved the legacy validation rules out into the separate repository [phive-rules-legacy](https://github.com/phax/phive-rules-legacy), so that the current rules can be built and released without the accumulated weight of all historic rule sets. All Maven and VES coordinates are unchanged.

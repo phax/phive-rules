@@ -71,7 +71,9 @@ public final class CTestFiles
   }
 
   /**
-   * The Schematron rules each of the negative IRAS samples is expected to trip.
+   * What each of the negative samples is expected to trip. <code>XSD</code> means the document is
+   * already structurally invalid, so the XML Schema layer stops the validation before the
+   * Schematron layer is reached.
    *
    * @param aRes
    *        The bad test file resource
@@ -81,16 +83,26 @@ public final class CTestFiles
   private static ICommonsSet <String> _getExpectedErrorIDs (@NonNull final IReadableResource aRes)
   {
     final String sFilename = aRes.getPath ();
+    // Misses the Invoice note (IRASC5-072) and the Preceding Invoice number - the latter is a
+    // mandatory UBL element, so the XSD layer already fails
     if (sFilename.endsWith ("B_cr_invalid.xml"))
-      return new CommonsHashSet <> ("IRASC5-072");
+      return new CommonsHashSet <> ("XSD");
     if (sFilename.endsWith ("Bulk_invalid_2.xml"))
       return new CommonsHashSet <> ("IRASC5-023");
+    // Misses the SBDH Receiver (IRASC5-002), which is mandatory in the SBDH 1.3 XML Schema too
     if (sFilename.endsWith ("C_sti_invalid.xml"))
-      return new CommonsHashSet <> ("IRASC5-002");
+      return new CommonsHashSet <> ("XSD");
+    // Misses the Invoice number (IRASC5-007), which is mandatory in UBL too
     if (sFilename.endsWith ("D_invoice_purchase_invalid.xml"))
-      return new CommonsHashSet <> ("IRASC5-007", "IRASC5-023", "IRASC5-024");
+      return new CommonsHashSet <> ("XSD");
     if (sFilename.endsWith ("E_cr_purchas_invalid.xml"))
       return new CommonsHashSet <> ("IRASC5-008");
+    // Not an SBDH envelope at all
+    if (sFilename.endsWith ("bare-ubl-invoice.xml"))
+      return new CommonsHashSet <> ("XSD");
+    // The second of the two contained Invoices misses the Invoice number
+    if (sFilename.endsWith ("bulk-second-invoice-no-id.xml"))
+      return new CommonsHashSet <> ("XSD");
 
     throw new IllegalArgumentException ("Unknown bad test file: " + sFilename);
   }
@@ -141,8 +153,8 @@ public final class CTestFiles
 
   /**
    * Test files that are expected to fail validation (at least one error) for the given VES
-   * coordinate. These are the negative samples of the IRAS accreditation test script. Add new
-   * negative samples here.
+   * coordinate. These are the negative samples of the IRAS accreditation test script plus two
+   * derived ones. Add new negative samples here.
    *
    * @param aVESID
    *        VESID to get files
@@ -156,12 +168,19 @@ public final class CTestFiles
 
     if (aVESID.equals (SingaporeIRASValidation.VID_SG_IRAS_INVOICENOW_GST_2026_9_8))
     {
-      return new CommonsArrayList <> (new String [] { "B_cr_invalid.xml",
-                                                      "Bulk_invalid_2.xml",
-                                                      "C_sti_invalid.xml",
-                                                      "D_invoice_purchase_invalid.xml",
-                                                      "E_cr_purchas_invalid.xml" },
-                                      s -> new ClassPathResource (PREFIX + s));
+      final ICommonsList <IReadableResource> ret = new CommonsArrayList <> (new String [] { "B_cr_invalid.xml",
+                                                                                            "Bulk_invalid_2.xml",
+                                                                                            "C_sti_invalid.xml",
+                                                                                            "D_invoice_purchase_invalid.xml",
+                                                                                            "E_cr_purchas_invalid.xml" },
+                                                                            s -> new ClassPathResource (PREFIX + s));
+      // Not from IRAS - derived from the samples above to pin down the two things the partial XML
+      // Schema layer adds: the SBDH envelope is mandatory, and every payload of a bulk submission
+      // is validated, not just the first one
+      ret.addAll (new CommonsArrayList <> (new String [] { "bare-ubl-invoice.xml",
+                                                           "bulk-second-invoice-no-id.xml" },
+                                           s -> new ClassPathResource (PREFIX + "derived/" + s)));
+      return ret;
     }
 
     throw new IllegalArgumentException ("Invalid DVRCoordinate: " + aVESID);

@@ -16,21 +16,29 @@
  */
 package com.helger.phive.singapore;
 
+import javax.xml.xpath.XPath;
+
 import org.jspecify.annotations.NonNull;
 
 import com.helger.annotation.concurrent.Immutable;
 import com.helger.base.enforce.ValueEnforcer;
+import com.helger.collection.commons.CommonsArrayList;
+import com.helger.collection.commons.ICommonsList;
 import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.io.resource.ClassPathResource;
+import com.helger.phive.api.executor.IValidationExecutor;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
 import com.helger.phive.rules.shared.DVRHelper;
 import com.helger.phive.rules.shared.PhiveRulesHelper;
 import com.helger.phive.xml.executorset.VesXmlBuilder;
 import com.helger.phive.xml.source.IValidationSourceXML;
+import com.helger.phive.xml.xsd.ValidationExecutorXSDPartial;
+import com.helger.phive.xml.xsd.XSDPartialContext;
 import com.helger.sbdh.CSBDH;
 import com.helger.ubl21.UBL21Marshaller;
 import com.helger.ubl21.UBL21NamespaceContext;
 import com.helger.xml.namespace.MapBasedNamespaceContext;
+import com.helger.xml.xpath.XPathHelper;
 
 /**
  * Singapore IRAS GST InvoiceNow validation configuration.
@@ -41,10 +49,16 @@ import com.helger.xml.namespace.MapBasedNamespaceContext;
  * accreditation resources contains the rules that such a data submission must satisfy.
  * <p>
  * The validated document is the complete SBDH envelope (<code>StandardBusinessDocument</code>) and
- * not the contained UBL Invoice or Credit Note, because four of the rules
- * (<code>IRASC5-001</code> to <code>IRASC5-004</code>) have the SBDH header as their context. A
- * single submission may contain more than one UBL document ("bulk" submission), which is why no XSD
- * layer is present - the SBDH 1.3 XML Schema permits exactly one payload element.
+ * not the contained UBL document, because four of the rules (<code>IRASC5-001</code> to
+ * <code>IRASC5-004</code>) have the SBDH header as their context. The payload is always a UBL 2.1
+ * Invoice or Credit Note, but a single submission may carry more than one of them ("bulk"
+ * submission) - and that is what the SBDH 1.3 XML Schema does not allow, because its
+ * <code>StandardBusinessDocument</code> declares a single <code>xs:any</code>. The XML Schema layer
+ * is therefore not applied to the envelope as a whole, but to its parts: the SBDH header and every
+ * contained Invoice and Credit Note is validated separately via
+ * {@link ValidationExecutorXSDPartial}. That covers bulk submissions, needs no modified schema, and
+ * additionally rejects an unwrapped UBL document, on which the Schematron alone would report
+ * nothing at all.
  *
  * @author Philip Helger
  */
@@ -88,16 +102,34 @@ public final class SingaporeIRASValidation
     aNSCtx.addMapping ("ubl", UBL21Marshaller.invoice ().getRootElementNamespaceURI ());
     aNSCtx.addMapping ("cn", UBL21Marshaller.creditNote ().getRootElementNamespaceURI ());
 
+    final XPath aXP = XPathHelper.createXPathFactorySaxonFirst ().newXPath ();
+    aXP.setNamespaceContext (aNSCtx);
+
     // 2026.9.8
     {
       final String sPrefix = "/external/schematron/invoicenow-gst/2026.9.8/xslt/";
+
+      final ICommonsList <IValidationExecutor <IValidationSourceXML>> aExecutors = new CommonsArrayList <> ();
+      // The envelope must be present - this is what makes an unwrapped UBL document fail
+      aExecutors.add (ValidationExecutorXSDPartial.create (new CommonsArrayList <> (CSBDH.SBDH_XSDS),
+                                                           XSDPartialContext.createMandatory (XPathHelper.createNewXPathExpression (aXP,
+                                                                                                                                    "/sh:StandardBusinessDocument/sh:StandardBusinessDocumentHeader"))));
+      // Every contained payload is validated on its own, so a bulk submission works
+      aExecutors.add (ValidationExecutorXSDPartial.create (UBL21Marshaller.getAllInvoiceXSDs (),
+                                                           XSDPartialContext.create (XPathHelper.createNewXPathExpression (aXP,
+                                                                                                                           "/sh:StandardBusinessDocument/ubl:Invoice"))));
+      aExecutors.add (ValidationExecutorXSDPartial.create (UBL21Marshaller.getAllCreditNoteXSDs (),
+                                                           XSDPartialContext.create (XPathHelper.createNewXPathExpression (aXP,
+                                                                                                                           "/sh:StandardBusinessDocument/cn:CreditNote"))));
+      aExecutors.add (PhiveRulesHelper.createXSLT (new ClassPathResource (sPrefix +
+                                                                          "non_peppol_doc_validation.xslt",
+                                                                          _getCL ()), aNSCtx));
+
       VesXmlBuilder.builder ()
                    .vesID (VID_SG_IRAS_INVOICENOW_GST_2026_9_8)
                    .displayNamePrefix ("Singapore IRAS GST InvoiceNow data submission ")
                    .notDeprecated ()
-                   .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (sPrefix +
-                                                                                       "non_peppol_doc_validation.xslt",
-                                                                                       _getCL ()), aNSCtx))
+                   .addExecutorsManually (aExecutors)
                    .registerInto (aRegistry);
     }
   }

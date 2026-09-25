@@ -25,6 +25,7 @@ import com.helger.phive.cii.CIIValidation;
 import com.helger.phive.ciusdk.CIUS_DKValidation;
 import com.helger.phive.ciuspt.CIUS_PTValidation;
 import com.helger.phive.ciusro.CIUS_ROValidation;
+import com.helger.phive.crs.CRSValidation;
 import com.helger.phive.ebinterface.EbInterfaceValidation;
 import com.helger.phive.ehf.EHFValidation;
 import com.helger.phive.en16931.EN16931Validation;
@@ -85,6 +86,7 @@ public final class PhiveRulesValidation
 
     // Foundations
     CIIValidation.initCII (aRegistry);
+    CRSValidation.initCRS (aRegistry);
     EbInterfaceValidation.initEbInterface (aRegistry);
     FacturaeValidation.initFacturae (aRegistry);
     FatturaPAValidation.initFatturaPA (aRegistry);
