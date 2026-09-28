@@ -275,7 +275,7 @@ I hope that with the introduction of PINT, the versioning problem will be solved
 
 # News and noteworthy
 
-v4.6.2 - work in progress
+v4.6.2 - 2026-09-28
 * Added the Croatian eIzvjestavanje (e-reporting) XML Schema validation rules to `phive-rules-eracun`, VES coordinate `hr.gov.porezna.eracun:eizvjestavanje:1.0`.
   See [issue #89](https://github.com/phax/phive-rules/issues/89).
   This is an addition and not a change of the existing `hr.gov.porezna.eracun:ubl-invoice` and `hr.gov.porezna.eracun:ubl-creditnote` rule sets - the eIzvjestavanje messages are not UBL documents and have no EN 16931 base.
