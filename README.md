@@ -40,7 +40,7 @@ This project is divided into sub-projects each keeping tracking of one document 
 * phive-rules-ehf - Validation rules for Norwegian EHF (Norwegian public procurement)
 * phive-rules-en16931 - Validation rules for the EN 16931 (European e-Invoicing norm based on CEN TC 434)
 * phive-rules-energieefactuur - Validation rules for Dutch Energie eFactuur
-* phive-rules-eracun - Validation rules for Croatian eRacun (since v4.1.11)
+* phive-rules-eracun - Validation rules for Croatian eRacun (since v4.1.11) and Croatian eIzvjestavanje (e-reporting; since v4.6.2)
 * phive-rules-france - Validation rules for France (since v4.0.1)
 * phive-rules-isdoc - Validation rules for ISDOC (since v2.0.2)
 * phive-rules-oioubl - Validation rules for Danish OIOUBL - the current rule set only; the older ones are in [phive-rules-legacy](https://github.com/phax/phive-rules-legacy) since v4.6.0
@@ -274,6 +274,18 @@ As OpenPeppol is only changing the "micro" version part (3.0.x), whereas I start
 I hope that with the introduction of PINT, the versioning problem will be solved.
 
 # News and noteworthy
+
+v4.6.2 - work in progress
+* Added the Croatian eIzvjestavanje (e-reporting) XML Schema validation rules to `phive-rules-eracun`, VES coordinate `hr.gov.porezna.eracun:eizvjestavanje:1.0`.
+  See [issue #89](https://github.com/phax/phive-rules/issues/89).
+  This is an addition and not a change of the existing `hr.gov.porezna.eracun:ubl-invoice` and `hr.gov.porezna.eracun:ubl-creditnote` rule sets - the eIzvjestavanje messages are not UBL documents and have no EN 16931 base.
+  The XML Schema is taken unmodified from the `eIzvjestavanjeSchema.zip` attached to that issue - the packaged state of 2026-02-09, with 2026-01-30 as the last entry of the change log inside the schema.
+  The VES version `1.0` is the `version` attribute of that schema.
+  It covers all four message pairs of the service: `EvidentirajNaplatu` (payments), `EvidentirajOdbijanje` (rejections), `EvidentirajIsporukuZaKojuNijeIzdanERacun` and `OvlastenjaFiskalizacije`.
+  There is no Schematron for these messages, so the XML Schema is the only validation layer.
+  A single VES covers all of them, because the XML Schema validation layer accepts every global element declared in the schema and cannot be restricted to a single root element.
+  Among other things this validates the payment method code `nacinPlacanja` against its allowed values `T`, `O` and `Z`, which was the reported gap.
+  `phive-rules-eracun` now depends on `ph-xsds-xmldsig`, because the schema requires a `ds:Signature` in every message.
 
 v4.6.1 - 2026-09-25
 * Recreated 521 of the 580 pre-compiled Schematron XSLTs with ph-schematron 10.1.0 - every version of every rule set that has its Schematron source in this repository.

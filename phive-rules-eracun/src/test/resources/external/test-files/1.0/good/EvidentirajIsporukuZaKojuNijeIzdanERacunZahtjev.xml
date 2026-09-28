@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Hand crafted example, based on eIzvjestavanjeSchema.xsd v1.0 - the signature is syntactically valid only -->
+<tns:EvidentirajIsporukuZaKojuNijeIzdanERacunZahtjev xmlns:tns="http://www.porezna-uprava.gov.hr/fin/2024/types/eIzvjestavanje"
+                                                     xmlns:ds="http://www.w3.org/2000/09/xmldsig#"
+                                                     tns:id="EvidentirajIsporukuZahtjev1">
+  <tns:Zaglavlje>
+    <tns:datumVrijemeSlanja>2026-02-10T08:34:12.9876</tns:datumVrijemeSlanja>
+    <tns:vrstaRacuna>IR</tns:vrstaRacuna>
+  </tns:Zaglavlje>
+  <tns:Racun>
+    <tns:brojDokumenta>IR-2026-000001</tns:brojDokumenta>
+    <tns:datumIzdavanja>2026-02-01</tns:datumIzdavanja>
+    <tns:vrstaDokumenta>380</tns:vrstaDokumenta>
+    <tns:valutaRacuna>EUR</tns:valutaRacuna>
+    <tns:datumDospijecaPlacanja>2026-03-01</tns:datumDospijecaPlacanja>
+    <tns:vrstaPoslovnogProcesa>P1</tns:vrstaPoslovnogProcesa>
+    <tns:referencaNaUgovor>UG-2026-0007</tns:referencaNaUgovor>
+    <tns:datumIsporuke>2026-01-31</tns:datumIsporuke>
+    <tns:PrethodniRacun>
+      <tns:brojDokumenta>IR-2025-000999</tns:brojDokumenta>
+      <tns:datumIzdavanja>2025-12-20</tns:datumIzdavanja>
+    </tns:PrethodniRacun>
+    <tns:Izdavatelj>
+      <tns:ime>Izdavatelj d.o.o.</tns:ime>
+      <tns:oibPorezniBroj>12345678901</tns:oibPorezniBroj>
+      <tns:oibOperatera>11122233344</tns:oibOperatera>
+    </tns:Izdavatelj>
+    <tns:Primatelj>
+      <tns:ime>Primatelj d.d.</tns:ime>
+      <tns:oibPorezniBroj>98765432109</tns:oibPorezniBroj>
+    </tns:Primatelj>
+    <tns:PrijenosSredstava>
+      <tns:identifikatorRacunaZaPlacanje>HR1210010051863000160</tns:identifikatorRacunaZaPlacanje>
+      <tns:nazivRacunaZaPlacanje>Izdavatelj d.o.o.</tns:nazivRacunaZaPlacanje>
+      <tns:identifikatorPruzateljaPlatnihUsluga>HRVAHR2X</tns:identifikatorPruzateljaPlatnihUsluga>
+    </tns:PrijenosSredstava>
+    <tns:DokumentUkupanIznos>
+      <tns:neto>100.00</tns:neto>
+      <tns:iznosBezPdv>100.00</tns:iznosBezPdv>
+      <tns:pdv>25.00</tns:pdv>
+      <tns:iznosSPdv>125.00</tns:iznosSPdv>
+      <tns:iznosKojiDospijevaZaPlacanje>125.00</tns:iznosKojiDospijevaZaPlacanje>
+    </tns:DokumentUkupanIznos>
+    <tns:RaspodjelaPdv>
+      <tns:kategorijaPdv>S</tns:kategorijaPdv>
+      <tns:oporeziviIznos>100.00</tns:oporeziviIznos>
+      <tns:iznosPoreza>25.00</tns:iznosPoreza>
+      <tns:stopa>25</tns:stopa>
+      <tns:hrOznakaKategorijaPdv>HR:PDV25</tns:hrOznakaKategorijaPdv>
+    </tns:RaspodjelaPdv>
+    <tns:StavkaRacuna>
+      <tns:kolicina>2</tns:kolicina>
+      <tns:jedinicaMjere>H87</tns:jedinicaMjere>
+      <tns:neto>100.00</tns:neto>
+      <tns:artiklNetoCijena>50.00</tns:artiklNetoCijena>
+      <tns:artiklKategorijaPdv>S</tns:artiklKategorijaPdv>
+      <tns:artiklStopaPdv>25</tns:artiklStopaPdv>
+      <tns:artiklNaziv>Usluga savjetovanja</tns:artiklNaziv>
+      <tns:artiklOpis>Savjetovanje za sijecanj 2026</tns:artiklOpis>
+      <tns:artiklHrOznakaKategorijaPdv>HR:PDV25</tns:artiklHrOznakaKategorijaPdv>
+      <tns:ArtiklIdentifikatorKlasifikacija>
+        <tns:identifikatorKlasifikacije>79411000</tns:identifikatorKlasifikacije>
+        <tns:identifikatorSheme>CG</tns:identifikatorSheme>
+      </tns:ArtiklIdentifikatorKlasifikacija>
+    </tns:StavkaRacuna>
+    <tns:indikatorKopije>false</tns:indikatorKopije>
+  </tns:Racun>
+  <ds:Signature>
+    <ds:SignedInfo>
+      <ds:CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+      <ds:SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256"/>
+      <ds:Reference URI="#EvidentirajIsporukuZahtjev1">
+        <ds:Transforms>
+          <ds:Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
+          <ds:Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+        </ds:Transforms>
+        <ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
+        <ds:DigestValue>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</ds:DigestValue>
+      </ds:Reference>
+    </ds:SignedInfo>
+    <ds:SignatureValue>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</ds:SignatureValue>
+  </ds:Signature>
+</tns:EvidentirajIsporukuZaKojuNijeIzdanERacunZahtjev>

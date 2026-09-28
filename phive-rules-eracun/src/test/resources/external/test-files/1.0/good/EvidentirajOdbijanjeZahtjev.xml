@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Hand crafted example, based on eIzvjestavanjeSchema.xsd v1.0 - the signature is syntactically valid only -->
+<tns:EvidentirajOdbijanjeZahtjev xmlns:tns="http://www.porezna-uprava.gov.hr/fin/2024/types/eIzvjestavanje"
+                                 xmlns:ds="http://www.w3.org/2000/09/xmldsig#"
+                                 tns:id="EvidentirajOdbijanjeZahtjev1">
+  <tns:Zaglavlje>
+    <tns:datumVrijemeSlanja>2026-02-10T08:14:22.4321</tns:datumVrijemeSlanja>
+  </tns:Zaglavlje>
+  <tns:Odbijanje>
+    <tns:brojDokumenta>R-2026-000004</tns:brojDokumenta>
+    <tns:datumIzdavanja>2026-02-04</tns:datumIzdavanja>
+    <tns:oibPorezniBrojIzdavatelja>12345678901</tns:oibPorezniBrojIzdavatelja>
+    <tns:oibPorezniBrojPrimatelja>98765432109</tns:oibPorezniBrojPrimatelja>
+    <tns:datumOdbijanja>2026-02-08</tns:datumOdbijanja>
+    <tns:vrstaRazlogaOdbijanja>N</tns:vrstaRazlogaOdbijanja>
+    <tns:razlogOdbijanja>Pogresan naziv primatelja</tns:razlogOdbijanja>
+  </tns:Odbijanje>
+  <tns:Odbijanje>
+    <tns:brojDokumenta>R-2026-000005</tns:brojDokumenta>
+    <tns:datumIzdavanja>2026-02-05</tns:datumIzdavanja>
+    <tns:oibPorezniBrojIzdavatelja>12345678901</tns:oibPorezniBrojIzdavatelja>
+    <tns:oibPorezniBrojPrimatelja>98765432109</tns:oibPorezniBrojPrimatelja>
+    <tns:datumOdbijanja>2026-02-09</tns:datumOdbijanja>
+    <tns:vrstaRazlogaOdbijanja>U</tns:vrstaRazlogaOdbijanja>
+    <tns:razlogOdbijanja>Pogresna stopa PDV-a</tns:razlogOdbijanja>
+  </tns:Odbijanje>
+  <tns:Odbijanje>
+    <tns:brojDokumenta>R-2026-000006</tns:brojDokumenta>
+    <tns:datumIzdavanja>2026-02-06</tns:datumIzdavanja>
+    <tns:oibPorezniBrojIzdavatelja>12345678901</tns:oibPorezniBrojIzdavatelja>
+    <tns:oibPorezniBrojPrimatelja>98765432109</tns:oibPorezniBrojPrimatelja>
+    <tns:datumOdbijanja>2026-02-10</tns:datumOdbijanja>
+    <tns:vrstaRazlogaOdbijanja>O</tns:vrstaRazlogaOdbijanja>
+    <tns:razlogOdbijanja>Racun nije naruceni</tns:razlogOdbijanja>
+  </tns:Odbijanje>
+  <ds:Signature>
+    <ds:SignedInfo>
+      <ds:CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+      <ds:SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256"/>
+      <ds:Reference URI="#EvidentirajOdbijanjeZahtjev1">
+        <ds:Transforms>
+          <ds:Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
+          <ds:Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+        </ds:Transforms>
+        <ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
+        <ds:DigestValue>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</ds:DigestValue>
+      </ds:Reference>
+    </ds:SignedInfo>
+    <ds:SignatureValue>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</ds:SignatureValue>
+  </ds:Signature>
+</tns:EvidentirajOdbijanjeZahtjev>

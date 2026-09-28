@@ -24,6 +24,7 @@ import com.helger.annotation.concurrent.Immutable;
 import com.helger.annotation.style.ReturnsMutableCopy;
 import com.helger.base.enforce.ValueEnforcer;
 import com.helger.collection.commons.CommonsArrayList;
+import com.helger.collection.commons.CommonsHashSet;
 import com.helger.collection.commons.ICommonsList;
 import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.io.resource.ClassPathResource;
@@ -63,12 +64,17 @@ public final class CTestFiles
                                                             HReRacunValidation.VID_HR_ERACUN_UBL_INVOICE_102,
 
                                                             HReRacunValidation.VID_HR_ERACUN_UBL_CREDITNOTE_103,
-                                                            HReRacunValidation.VID_HR_ERACUN_UBL_INVOICE_103 })
+                                                            HReRacunValidation.VID_HR_ERACUN_UBL_INVOICE_103,
+
+                                                            HReRacunValidation.VID_HR_ERACUN_EIZVJESTAVANJE_10 })
+    {
       for (final IReadableResource aRes : getAllMatchingTestFiles (aESID))
       {
         assertTrue ("Not existing test file: " + aRes.getPath (), aRes.exists ());
         ret.add (PhiveTestFile.createGoodCase (aRes, aESID));
       }
+      ret.addAll (getAllBadTestFiles (aESID));
+    }
     return ret;
   }
 
@@ -128,6 +134,35 @@ public final class CTestFiles
       return new CommonsArrayList <> (new String [] {}, x -> new ClassPathResource (sPrefix + "1.0.3/" + x));
     }
 
+    // eIzvjestavanje 1.0
+    if (aVESID.equals (HReRacunValidation.VID_HR_ERACUN_EIZVJESTAVANJE_10))
+    {
+      return new CommonsArrayList <> (new String [] { "EvidentirajNaplatuZahtjev.xml",
+                                                      "EvidentirajOdbijanjeZahtjev.xml",
+                                                      "EvidentirajIsporukuZaKojuNijeIzdanERacunZahtjev.xml",
+                                                      "OvlastenjaFiskalizacijeZahtjev.xml" },
+                                      x -> new ClassPathResource (sPrefix + "1.0/good/" + x));
+    }
+
     throw new IllegalArgumentException ("Invalid VESID: " + aVESID);
+  }
+
+  @NonNull
+  @ReturnsMutableCopy
+  public static ICommonsList <PhiveTestFile> getAllBadTestFiles (@NonNull final DVRCoordinate aVESID)
+  {
+    ValueEnforcer.notNull (aVESID, "VESID");
+
+    final String sPrefix = "/external/test-files/";
+
+    final ICommonsList <PhiveTestFile> ret = new CommonsArrayList <> ();
+    if (aVESID.equals (HReRacunValidation.VID_HR_ERACUN_EIZVJESTAVANJE_10))
+    {
+      // Invalid "nacinPlacanja" code - see issue #89
+      ret.add (new PhiveTestFile (new ClassPathResource (sPrefix + "1.0/bad/bad-nacinPlacanja.xml"),
+                                  aVESID,
+                                  new CommonsHashSet <> ("")));
+    }
+    return ret;
   }
 }

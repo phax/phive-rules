@@ -33,6 +33,7 @@ import com.helger.phive.rules.shared.PhiveRulesUBLHelper;
 import com.helger.phive.rules.shared.DVRHelper;
 import com.helger.phive.xml.executorset.VesXmlBuilder;
 import com.helger.phive.xml.source.IValidationSourceXML;
+import com.helger.xsds.xmldsig.CXMLDSig;
 
 /**
  * HR eRacun validation configuration
@@ -80,6 +81,11 @@ public final class HReRacunValidation
   public static final DVRCoordinate VID_HR_ERACUN_UBL_INVOICE_103 = DVRHelper.createCoordinate (GROUP_ID,
                                                                                                 "ubl-invoice",
                                                                                                 "1.0.3");
+
+  // eIzvjestavanje (e-reporting) XML Schema version 1.0
+  public static final DVRCoordinate VID_HR_ERACUN_EIZVJESTAVANJE_10 = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                                  "eizvjestavanje",
+                                                                                                  "1.0");
 
   private HReRacunValidation ()
   {}
@@ -196,6 +202,17 @@ public final class HReRacunValidation
                    .notDeprecated ()
                    .basedOn (aVESInv_1_3_15)
                    .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aXslt))
+                   .registerInto (aRegistry);
+    }
+
+    // eIzvjestavanje V1.0 - XML Schema only, no Schematron and no EN 16931 base
+    {
+      VesXmlBuilder.builder ()
+                   .vesID (VID_HR_ERACUN_EIZVJESTAVANJE_10)
+                   .displayNamePrefix ("HR eIzvjestavanje ")
+                   .notDeprecated ()
+                   .addXSD (CXMLDSig.getXSDResource (),
+                            new ClassPathResource ("/external/schemas/1.0/eIzvjestavanjeSchema.xsd", _getCL ()))
                    .registerInto (aRegistry);
     }
   }
