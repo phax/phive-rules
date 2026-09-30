@@ -1,0 +1,897 @@
+{
+  "$comment": "Upstream sources of the phive-rules validation artefacts: where each rule set family is published and how a new version can be detected. Update 'current' in the same commit that adds a new version.",
+  "inventory-date": "2026-09-30",
+  "$comment-fields": {
+    "id": "stable key of the entry",
+    "module": "Maven module",
+    "coordinates": "DVR group ID and artefact IDs covered by this entry",
+    "publisher": "upstream organisation",
+    "check": "how to detect updates: web-page (fetch url, compare version/date shown) | github-release | github-commits (commits on a path, no releases/tags) | gitlab-tree (GitLab tree API listing of release files) | file-hash (download a fixed URL, compare hash/content) | manual (email, issue attachment, ...) | none (frozen upstream)",
+    "url": "where the current version is published",
+    "url-status": "verified (fetched on last-checked) | in-repo (found in repo, not verified) | broken (not reachable/404/403) | unknown",
+    "current": "newest non-deprecated version in this repo (DVR version)",
+    "current-upstream": "upstream name of that version, if it differs from current",
+    "upstream-latest": "latest version seen upstream on last-checked",
+    "status": "up-to-date | update-pending | check-needed | frozen | unknown",
+    "last-checked": "date of the last upstream check",
+    "detect": "what exactly to compare (only if non-obvious)",
+    "notes": "anything the checker or maintainer needs to know; open questions start with QUESTION:"
+  },
+  "sources": [
+    {
+      "id": "en16931",
+      "module": "phive-rules-en16931",
+      "coordinates": [
+        "eu.cen.en16931:cii",
+        "eu.cen.en16931:ubl",
+        "eu.cen.en16931:ubl-creditnote"
+      ],
+      "publisher": "CEN/TC 434 (ConnectingEurope)",
+      "check": "github-release",
+      "url": "https://github.com/ConnectingEurope/eInvoicing-EN16931/releases",
+      "url-status": "verified",
+      "current": "1.3.16",
+      "upstream-latest": "validation-1.3.16 (2026-04-13)",
+      "status": "up-to-date",
+      "last-checked": "2026-09-30",
+      "detect": "release tags \"validation-X.Y.Z\"; assets en16931-{cii,ubl}-<v>.zip",
+      "notes": "A new CEN release usually triggers follow-up releases of XRechnung, SimplerInvoicing, France CTC and Peppol. Version 1.3.6.a is a phax fork and not checked."
+    },
+    {
+      "id": "peppol-bis-billing",
+      "module": "phive-rules-peppol",
+      "coordinates": [
+        "eu.peppol.bis3:invoice",
+        "eu.peppol.bis3:creditnote"
+      ],
+      "publisher": "OpenPeppol",
+      "check": "web-page",
+      "url": "https://docs.peppol.eu/poacc/billing/3.0/release-notes/",
+      "url-status": "verified",
+      "current": "2026.5",
+      "current-upstream": "3.0.21",
+      "upstream-latest": "3.0.21 (May 2026, published 2026-05-20, mandatory 2026-08-17)",
+      "status": "up-to-date",
+      "last-checked": "2026-09-30",
+      "detect": "top version on the release notes page; also watch for \"-hotfix\" suffixes",
+      "notes": "Repo versions are YYYY.M release months (see README \"Peppol Validation Artefact Versioning\"). Mapping: '2025.11 = 3.0.20 (-hotfix swapped in place), 2026.5 = 3.0.21.' Billing, Self-Billing and Post-Award share one YYYY.M coordinate per release. QUESTION: 'code says published 2026-05-18, release notes say 2026-05-20.'"
+    },
+    {
+      "id": "peppol-bis-self-billing",
+      "module": "phive-rules-peppol",
+      "coordinates": [
+        "eu.peppol.bis3:invoice-self-billing",
+        "eu.peppol.bis3:creditnote-self-billing"
+      ],
+      "publisher": "OpenPeppol",
+      "check": "web-page",
+      "url": "https://docs.peppol.eu/poacc/self-billing/3.0/release-notes/",
+      "url-status": "verified",
+      "current": "2026.5",
+      "current-upstream": "3.0.2",
+      "upstream-latest": "3.0.2 (published 2026-05-20, mandatory 2026-08-17)",
+      "status": "up-to-date",
+      "last-checked": "2026-09-30",
+      "notes": "Mapping 2026.3 = 3.0.1, 2026.5 = 3.0.2. Both still not deprecated."
+    },
+    {
+      "id": "peppol-bis-post-award",
+      "module": "phive-rules-peppol",
+      "coordinates": [
+        "eu.peppol.bis3:order",
+        "despatch-advice",
+        "catalogue",
+        "catalogue-response",
+        "mlr",
+        "order-response",
+        "punch-out",
+        "order-agreement",
+        "invoice-message-response",
+        "order-change",
+        "order-cancellation",
+        "order-response-advanced"
+      ],
+      "publisher": "OpenPeppol",
+      "check": "web-page",
+      "url": "https://docs.peppol.eu/poacc/upgrade-3/release-notes/",
+      "url-status": "verified",
+      "current": "2026.5",
+      "current-upstream": "3.0.17",
+      "upstream-latest": "3.0.17 (published 2026-05-20, mandatory 2026-08-17)",
+      "status": "up-to-date",
+      "last-checked": "2026-09-30",
+      "notes": "Mapping 2025.11 = 3.0.16, 2026.5 = 3.0.17."
+    },
+    {
+      "id": "peppol-bis-aunz",
+      "module": "phive-rules-peppol",
+      "coordinates": [
+        "eu.peppol.bis3.aunz.ubl:invoice",
+        "creditnote",
+        "invoice-self-billing",
+        "creditnote-self-billing"
+      ],
+      "publisher": "A-NZ Peppol Authorities",
+      "check": "none",
+      "url": "https://github.com/A-NZ-PEPPOL/A-NZ-PEPPOL-BIS-3.0/releases",
+      "url-status": "verified",
+      "current": "1.0.12",
+      "status": "frozen",
+      "last-checked": "2026-09-30",
+      "notes": "Frozen - superseded by PINT A-NZ (see pint-aunz, https://docs.peppol.eu/poac/aunz/). Last version 1.0.12; 1.0.11 is still not deprecated."
+    },
+    {
+      "id": "peppol-bis-sg",
+      "module": "phive-rules-peppol",
+      "coordinates": [
+        "eu.peppol.bis3.sg.ubl:invoice",
+        "eu.peppol.bis3.sg.ubl:creditnote"
+      ],
+      "publisher": "IMDA (Singapore)",
+      "check": "web-page",
+      "url": "https://www.peppolguide.sg/billing/release-notes/",
+      "url-status": "verified",
+      "current": "2026.6",
+      "current-upstream": "3.0.17",
+      "upstream-latest": "3.0.17 (released 2026-06-08, mandatory 2026-09-08)",
+      "status": "up-to-date",
+      "last-checked": "2026-09-30",
+      "notes": "The Schematron ZIP URL (peppolguide.sg/billing/files/SG-BIS-Billing3-Schematron.zip) is constant - watch the release notes."
+    },
+    {
+      "id": "peppol-sg-order-balance",
+      "module": "phive-rules-peppol",
+      "coordinates": [
+        "org.peppol.sg:order-balance"
+      ],
+      "publisher": "IMDA (Singapore)",
+      "check": "web-page",
+      "url": "https://www.peppolguide.sg/po-balance/release-notes/",
+      "url-status": "verified",
+      "current": "1.0.2",
+      "status": "up-to-date",
+      "last-checked": "2026-09-30",
+      "notes": "1.0.1 and 1.0.2 only update the code lists to the latest Peppol BIS Billing 3 release (currency codes, units of measure, ICD, EAS) - verified by diffing SGBIS-TOB.sch. The repo coordinate is \"1.0\" while upstream uses 1.0.x - decide the DVR version for 1.0.2 (e.g. 1.0.2). Spec page: https://www.peppolguide.sg/po-balance/",
+      "upstream-latest": "1.0.2 (released 2026-06-08, mandatory 2026-09-08); 1.0.1 (2025-12-11, mandatory 2026-03-11) was skipped",
+      "detect": "top version on the release notes page; the Schematron ZIP URL https://www.peppolguide.sg/po-balance/files/SG-BIS-TOB-Schematron.zip is constant (Last-Modified 2026-06-11) - compare its hash",
+      "issue": "https://github.com/phax/phive-rules/issues/91"
+    },
+    {
+      "id": "peppol-mls",
+      "module": "phive-rules-peppol",
+      "coordinates": [
+        "org.peppol:mls"
+      ],
+      "publisher": "OpenPeppol (eDEC)",
+      "check": "manual",
+      "url": "https://docs.peppol.eu/edelivery/",
+      "url-status": "verified",
+      "current": "1.0.1",
+      "current-upstream": "MLS spec/package 1.1.0",
+      "upstream-latest": "MLS specification v1.1.0 (valid from 2026-07-02)",
+      "status": "up-to-date",
+      "last-checked": "2026-09-30",
+      "notes": "Schematrons are co-authored by the maintainer - updates are known first hand. The repo versions by Schematron version, docs.peppol.eu/edelivery/ only shows the spec version."
+    },
+    {
+      "id": "peppol-reporting",
+      "module": "phive-rules-peppol",
+      "coordinates": [
+        "eu.peppol.reporting:eusr",
+        "eu.peppol.reporting:tsr"
+      ],
+      "publisher": "OpenPeppol (eDEC)",
+      "check": "manual",
+      "url": "https://docs.peppol.eu/edelivery/",
+      "url-status": "verified",
+      "current": "eusr 1.1.5, tsr 1.0.5",
+      "current-upstream": "EUSR spec 1.1.1, TSR spec 1.0.2",
+      "upstream-latest": "EUSR spec v1.1.1, TSR spec v1.0.2",
+      "status": "up-to-date",
+      "last-checked": "2026-09-30",
+      "notes": "Schematrons are co-authored by the maintainer - updates are known first hand. The repo versions by Schematron version, docs.peppol.eu/edelivery/ only shows the spec version."
+    },
+    {
+      "id": "peppol-directory-businesscard",
+      "module": "phive-rules-peppol",
+      "coordinates": [
+        "eu.peppol.directory:businesscard"
+      ],
+      "publisher": "OpenPeppol",
+      "check": "web-page",
+      "url": "https://docs.peppol.eu/edelivery/",
+      "url-status": "verified",
+      "current": "3.0.0",
+      "upstream-latest": "peppol-directory-business-card-20180621.xsd (v3.0)",
+      "status": "up-to-date",
+      "last-checked": "2026-09-30",
+      "notes": "XSD only, very stable."
+    },
+    {
+      "id": "peppol-italy",
+      "module": "phive-rules-peppol-italy",
+      "coordinates": [
+        "it.peppol:invoice",
+        "creditnote",
+        "despatch-advice",
+        "order",
+        "order-agreement",
+        "order-response"
+      ],
+      "publisher": "AGID",
+      "check": "file-hash",
+      "url": "https://peppol-docs.agid.gov.it/docs/attachments/",
+      "url-status": "verified",
+      "current": "3.2.1 (content of the 2026-08-17 re-publication, BIS 3.0.21)",
+      "upstream-latest": "3.2.1 re-published in place 2026-08-17 (Last-Modified), now based on Peppol BIS Billing 3.0.21",
+      "status": "up-to-date",
+      "last-checked": "2026-09-30",
+      "detect": "The directory itself is not listable (HTTP 404) - request the known files directly and compare Last-Modified / SHA-256: AGID-PEPPOL-Schematron-Billing-3.2.1.zip, AGID-PEPPOL-Validator-Billing-3.2.1.zip, AGID-PEPPOL-Schematron-Others-3.2.1.zip, AGID-Peppol-Esempi-Fattura-3.zip (the old names Esempi-*-3.2.1.zip return 404). Also probe the next version numbers. The TLS certificate chain fails curl's validation ('permitted subtree violation'), so the checker needs to tolerate that.",
+      "notes": "AGID updates 3.2.1 in place without a version bump; the VES coordinates are kept (decision in #92). The ITA invoice folder lacks the wrapper AGID-EN16931-UBL.sch since 2026-08-17 - the previous one is kept (see phive-rules-peppol-italy/docs/README.md). Secondary: https://peppol-docs.agid.gov.it/docs/my_index_fatt-ENG.jsp shows \"Peppol BIS Billing 3.0.21.1(IT)\".",
+      "issue": "https://github.com/phax/phive-rules/issues/92"
+    },
+    {
+      "id": "pint-base",
+      "module": "phive-rules-peppol-pint",
+      "coordinates": [
+        "org.peppol.pint:invoice",
+        "org.peppol.pint:credit-note"
+      ],
+      "publisher": "OpenPeppol",
+      "check": "web-page",
+      "url": "https://docs.peppol.eu/poac/pint/pint/",
+      "url-status": "verified",
+      "current": "1.1.3",
+      "upstream-latest": "1.1.3 (2026-06-05)",
+      "status": "up-to-date",
+      "last-checked": "2026-09-30"
+    },
+    {
+      "id": "pint-ae",
+      "module": "phive-rules-peppol-pint",
+      "coordinates": [
+        "org.peppol.pint.ae:invoice",
+        "creditnote",
+        "invoice-self-billing",
+        "creditnote-self-billing"
+      ],
+      "publisher": "OpenPeppol / UAE Peppol Authority",
+      "check": "web-page",
+      "url": "https://docs.peppol.eu/poac/ae/",
+      "url-status": "verified",
+      "current": "2026.5",
+      "current-upstream": "1.0.4",
+      "upstream-latest": "1.0.4 (PDK 1.4.4, 2026-07-29)",
+      "status": "up-to-date",
+      "last-checked": "2026-09-30",
+      "detect": "version AND the PDK release date in the page footer - hotfixes replace Schematrons in place under the same version",
+      "notes": "Mapping 2026.3 = 1.0.3, 2026.5 = 1.0.4. QUESTION: '2026.3 VALID_PER is 2026-01-21 but its comment says \"from 2026-03-25\".'"
+    },
+    {
+      "id": "pint-aunz",
+      "module": "phive-rules-peppol-pint",
+      "coordinates": [
+        "org.peppol.pint.aunz:invoice",
+        "creditnote",
+        "invoice-self-billing",
+        "creditnote-self-billing"
+      ],
+      "publisher": "OpenPeppol / A-NZ Peppol Authorities",
+      "check": "web-page",
+      "url": "https://docs.peppol.eu/poac/aunz/",
+      "url-status": "verified",
+      "current": "1.1.3",
+      "upstream-latest": "1.1.3 (2026-05-21)",
+      "status": "up-to-date",
+      "last-checked": "2026-09-30"
+    },
+    {
+      "id": "pint-eu",
+      "module": "phive-rules-peppol-pint",
+      "coordinates": [
+        "org.peppol.pint.eu:invoice",
+        "org.peppol.pint.eu:creditnote"
+      ],
+      "publisher": "OpenPeppol",
+      "check": "web-page",
+      "url": "https://docs.peppol.eu/poac/eu/",
+      "url-status": "verified",
+      "current": "2026.6",
+      "current-upstream": "1.1.1",
+      "upstream-latest": "1.1.1 (2026-06-09)",
+      "status": "up-to-date",
+      "last-checked": "2026-09-30",
+      "notes": "Mapping 2025.10 = 1.0.0, 2025.11 = 1.0.1, 2026.6 = 1.1.1."
+    },
+    {
+      "id": "pint-jp",
+      "module": "phive-rules-peppol-pint",
+      "coordinates": [
+        "org.peppol.pint.jp",
+        "org.peppol.pint.jp.ntr",
+        "org.peppol.pint.jp.sb - invoice",
+        "credit-note"
+      ],
+      "publisher": "OpenPeppol / Japan Digital Agency",
+      "check": "web-page",
+      "url": "https://docs.peppol.eu/poac/jp/",
+      "url-status": "verified",
+      "current": "1.1.3",
+      "upstream-latest": "1.1.3 for all three (2026-05-18)",
+      "status": "up-to-date",
+      "last-checked": "2026-09-30",
+      "notes": "Standard, NTR and SB are released together."
+    },
+    {
+      "id": "pint-my",
+      "module": "phive-rules-peppol-pint",
+      "coordinates": [
+        "org.peppol.pint.my:invoice",
+        "creditnote",
+        "invoice-self-billing",
+        "creditnote-self-billing"
+      ],
+      "publisher": "OpenPeppol / MDEC (Malaysia)",
+      "check": "web-page",
+      "url": "https://docs.peppol.eu/poac/my/",
+      "url-status": "verified",
+      "current": "1.3.1",
+      "upstream-latest": "1.3.1 (2026-06-05)",
+      "status": "up-to-date",
+      "last-checked": "2026-09-30",
+      "notes": "QUESTION: 1.2.1 is not deprecated, but the newer 1.3.0 is - intended?"
+    },
+    {
+      "id": "pint-om",
+      "module": "phive-rules-peppol-pint",
+      "coordinates": [
+        "org.peppol.pint.om:invoice",
+        "creditnote",
+        "invoice-self-billing",
+        "creditnote-self-billing"
+      ],
+      "publisher": "OpenPeppol / Oman Tax Authority",
+      "check": "web-page",
+      "url": "https://docs.peppol.eu/poac/om/",
+      "url-status": "verified",
+      "current": "1.0.1",
+      "upstream-latest": "1.0.1 (PDK 1.4.4, 2026-07-29)",
+      "status": "up-to-date",
+      "last-checked": "2026-09-30",
+      "detect": "version AND PDK release date - Schematrons were refreshed several times under the same version"
+    },
+    {
+      "id": "pint-sg",
+      "module": "phive-rules-peppol-pint",
+      "coordinates": [
+        "org.peppol.pint.sg:invoice",
+        "org.peppol.pint.sg:creditnote"
+      ],
+      "publisher": "OpenPeppol / IMDA",
+      "check": "web-page",
+      "url": "https://docs.peppol.eu/poac/sg/",
+      "url-status": "verified",
+      "current": "1.4.1",
+      "upstream-latest": "1.4.1 (2026-05-25)",
+      "status": "up-to-date",
+      "last-checked": "2026-09-30"
+    },
+    {
+      "id": "tdd-ae",
+      "module": "phive-rules-peppol-taxdata",
+      "coordinates": [
+        "org.peppol.taxdata:ae"
+      ],
+      "publisher": "OpenPeppol / UAE Peppol Authority",
+      "check": "web-page",
+      "url": "https://docs.peppol.eu/poac/ae/ae-tdd/",
+      "url-status": "verified",
+      "current": "1.0.4",
+      "upstream-latest": "1.0.4 (2026-07-29)",
+      "status": "up-to-date",
+      "last-checked": "2026-09-30"
+    },
+    {
+      "id": "tdd-om",
+      "module": "phive-rules-peppol-taxdata",
+      "coordinates": [
+        "org.peppol.taxdata:om"
+      ],
+      "publisher": "OpenPeppol / Oman Tax Authority",
+      "check": "web-page",
+      "url": "https://docs.peppol.eu/poac/om/om-tdd/",
+      "url-status": "verified",
+      "current": "1.0.1",
+      "upstream-latest": "1.0.1 (PDK 1.4.4, 2026-07-29)",
+      "status": "up-to-date",
+      "last-checked": "2026-09-30",
+      "detect": "version AND PDK release date (in-place refreshes happened for 1.0.0)"
+    },
+    {
+      "id": "tdd-sk",
+      "module": "phive-rules-peppol-taxdata",
+      "coordinates": [
+        "org.peppol.taxdata:sk"
+      ],
+      "publisher": "OpenPeppol / Slovak Republic",
+      "check": "web-page",
+      "url": "https://docs.peppol.eu/tdd/sk/tdd-sk/",
+      "url-status": "verified",
+      "current": "1.0.0",
+      "status": "up-to-date",
+      "last-checked": "2026-09-30",
+      "notes": "Note the path /tdd/sk/, not /poac/sk/. The three Schematrons in resources.zip (Last-Modified 2026-04-14) are byte-identical to rule-source/tdd/sk/1.0.0, although the repo added them on 2026-04-02.",
+      "upstream-latest": "1.0.0 (2026-04-14)",
+      "detect": "version and release date on the page (release notes: https://docs.peppol.eu/tdd/sk/tdd-sk/release-notes/); resources package https://docs.peppol.eu/tdd/sk/tdd-sk/resources.zip for hash comparison"
+    },
+    {
+      "id": "tdd-vida",
+      "module": "phive-rules-peppol-taxdata",
+      "coordinates": [
+        "org.peppol.taxdata:vida"
+      ],
+      "publisher": "OpenPeppol (ViDA Pilot)",
+      "check": "web-page",
+      "url": "https://test-docs.peppol.eu/vida/2026-v1.1.0/Vida-tdd/",
+      "url-status": "verified",
+      "current": "1.1.0",
+      "upstream-latest": "1.1.0 (2026-09-14)",
+      "status": "up-to-date",
+      "last-checked": "2026-09-30",
+      "notes": "QUESTION: the URL contains the version, so it cannot show a newer one. Is there a stable ViDA URL?"
+    },
+    {
+      "id": "sg-iras-invoicenow-gst",
+      "module": "phive-rules-singapore",
+      "coordinates": [
+        "sg.gov.iras:invoicenow-gst"
+      ],
+      "publisher": "IRAS",
+      "check": "file-hash",
+      "url": "https://go.gov.sg/gstinvoicenowreq-resources",
+      "url-status": "verified",
+      "current": "2026.9.8",
+      "upstream-latest": "package with last changelog entry 2026-09-08",
+      "status": "up-to-date",
+      "last-checked": "2026-09-30",
+      "detect": "redirects to a ZIP; compare ZIP hash and the date of the last changelog entry inside",
+      "notes": "The Schematron carries no version (title \"v0.3.4\" since 2025-01); the repo version is the changelog date."
+    },
+    {
+      "id": "xrechnung",
+      "module": "phive-rules-xrechnung",
+      "coordinates": [
+        "de.xrechnung:cii",
+        "ubl-invoice",
+        "ubl-creditnote",
+        "de.xrechnung.extension:cii",
+        "ubl-invoice"
+      ],
+      "publisher": "KoSIT",
+      "check": "github-release",
+      "url": "https://github.com/itplr-kosit/xrechnung-schematron/releases",
+      "url-status": "verified",
+      "current": "3.0.2",
+      "current-upstream": "Schematron 2.6.0",
+      "upstream-latest": "v2.6.0 (2026-09-02)",
+      "status": "up-to-date",
+      "last-checked": "2026-09-30",
+      "detect": "compare the Schematron release version (2.x), not the XRechnung version - the coordinate may stay 3.0.2",
+      "notes": "Tag names changed from \"release-2.4.0\" to \"v2.5.0\". validator-configuration-xrechnung (v2026-08-31) is reference material only. QUESTION: 3.0.0 and 3.0.1 are still not deprecated - intended?"
+    },
+    {
+      "id": "zugferd",
+      "module": "phive-rules-zugferd",
+      "coordinates": [
+        "de.zugferd:minimum",
+        "basicwl",
+        "basic",
+        "en16931",
+        "extended"
+      ],
+      "publisher": "FeRD (with FNFE-MPE for Factur-X)",
+      "check": "manual",
+      "url": "https://www.ferd-net.de/",
+      "url-status": "verified",
+      "current": "2.5.2",
+      "current-upstream": "Factur-X 1.0.9-2",
+      "upstream-latest": "2.5.2 (homepage \"ZUGFeRD 2.5.2 veröffentlicht\")",
+      "status": "up-to-date",
+      "last-checked": "2026-09-30",
+      "notes": "No public download link - the packages have to be obtained manually. The homepage only announces new versions (currently \"ZUGFeRD 2.5.2 veröffentlicht\"). New versions must also be added to ZUGFERD_TO_FACTURX_MAP."
+    },
+    {
+      "id": "cius-dk",
+      "module": "phive-rules-cius-dk",
+      "coordinates": [
+        "dk.gov.erst.cius-dk:ubl-invoice",
+        "dk.gov.erst.cius-dk:ubl-creditnote"
+      ],
+      "publisher": "Nemhandel / Erhvervsstyrelsen",
+      "check": "gitlab-tree",
+      "url": "https://git.erst.dk/api/v4/projects/openebusiness%2Fcommon/repository/tree?path=released/peppol",
+      "url-status": "verified",
+      "current": "1.17.0",
+      "upstream-latest": "PEPPOL_DK_CIUS_2026-08-03_v1.17.0.ff275f9.zip",
+      "status": "up-to-date",
+      "last-checked": "2026-09-30",
+      "detect": "file names PEPPOL_DK_CIUS_<date>_v<ver>.<sha>.zip",
+      "notes": "Secondary signal is the Nemhandel RSS feed https://nemhandel.dk/nyheder_releases.xml"
+    },
+    {
+      "id": "oioubl",
+      "module": "phive-rules-oioubl",
+      "coordinates": [
+        "dk.oioubl:* (16 document types)"
+      ],
+      "publisher": "Nemhandel / Erhvervsstyrelsen",
+      "check": "gitlab-tree",
+      "url": "https://git.erst.dk/api/v4/projects/openebusiness%2Fcommon/repository/tree?path=released/oioubl",
+      "url-status": "verified",
+      "current": "1.17.2",
+      "upstream-latest": "OIOUBL_Schematron_2026-05-01_v1.17.2.ec0bcd89.zip",
+      "status": "up-to-date",
+      "last-checked": "2026-09-30",
+      "detect": "file names OIOUBL_Schematron_<date>_v<ver>.<sha>.zip; ignore \"RC\" files (or report as early warning)",
+      "notes": "QUESTION: should RC packages trigger a notification?"
+    },
+    {
+      "id": "ehf-g3",
+      "module": "phive-rules-ehf",
+      "coordinates": [
+        "no.ehf.g3:* (15 post-award document types)"
+      ],
+      "publisher": "DFØ (anskaffelser.dev)",
+      "check": "github-release",
+      "url": "https://github.com/anskaffelser/ehf-postaward-g3/releases",
+      "url-status": "verified",
+      "current": "release 2026-09 (no.ehf.g3:*:3.0.4, despatch-advice/payment-request 3.0.3, invoice-self-billing/creditnote-self-billing 3.0.0)",
+      "upstream-latest": "2026-09-29",
+      "status": "up-to-date",
+      "last-checked": "2026-09-30",
+      "notes": "Many upstream releases contain no rule changes (text only) - compare the asserts of the Schematron packages, not the release dates. Each release ships ehf-postaward-g3-schematron-<date>.zip. Self-Billing is based on the EN 16931 1.3.16 VES (the package only contains the SB rules).",
+      "issue": "https://github.com/phax/phive-rules/issues/95"
+    },
+    {
+      "id": "ehf-legacy",
+      "module": "phive-rules-ehf",
+      "coordinates": [
+        "no.ehf:* (G2)",
+        "no.ehf.g3:* 3.0.0/3.0.1"
+      ],
+      "publisher": "DFØ",
+      "check": "none",
+      "status": "frozen",
+      "notes": "All deprecated."
+    },
+    {
+      "id": "svefaktura",
+      "module": "phive-rules-svefaktura",
+      "coordinates": [
+        "se.sfti:svefaktura",
+        "se.sfti:objectenvelope"
+      ],
+      "publisher": "SFTI",
+      "check": "none",
+      "url": "https://sfti.se/sfti/standarder/peppolbisehandel.44455.html",
+      "url-status": "verified",
+      "current": "1.0",
+      "status": "frozen",
+      "last-checked": "2026-09-30",
+      "notes": "Legacy format replaced by Peppol BIS; the page no longer mentions Svefaktura 1.0."
+    },
+    {
+      "id": "simplerinvoicing",
+      "module": "phive-rules-simplerinvoicing",
+      "coordinates": [
+        "org.simplerinvoicing:invoice",
+        "creditnote",
+        "invoice20.g-account",
+        "nlcius-cii"
+      ],
+      "publisher": "SimplerInvoicing (Peppol Autoriteit NL)",
+      "check": "github-release",
+      "url": "https://github.com/peppolautoriteit-nl/validation/releases",
+      "url-status": "verified",
+      "current": "2.0.3.13 (g-account 1.0.13, nlcius-cii 1.0.3.13)",
+      "upstream-latest": "release 2026-05-21 (in effect 2026-08-17)",
+      "status": "up-to-date",
+      "last-checked": "2026-09-30",
+      "detect": "release tags are dates YYYY-MM-DD; old v2.0.x git tags are irrelevant",
+      "notes": "Repo moved from Simplerinvoicing/validation (README.md:53 still has the old URL, which redirects). Upstream calls the G-Account version \"1.0.2.13\", the repo \"1.0.13\"."
+    },
+    {
+      "id": "energie-efactuur",
+      "module": "phive-rules-energieefactuur",
+      "coordinates": [
+        "nl.energie-efactuur:energie-efactuur"
+      ],
+      "publisher": "Stichting Energie eFactuur",
+      "check": "web-page",
+      "url": "https://energie-efactuur.nl/changelog/",
+      "url-status": "verified",
+      "current": "3.1.0",
+      "upstream-latest": "v3.1.0 (2022-12-20)",
+      "status": "up-to-date",
+      "last-checked": "2026-09-30",
+      "notes": "Inactive since 2022. QUESTION: keep checking (low frequency) or treat as frozen?"
+    },
+    {
+      "id": "setu",
+      "module": "phive-rules-setu",
+      "coordinates": [
+        "nl.setu:assignment",
+        "human-resource",
+        "staffing-order",
+        "timecard"
+      ],
+      "publisher": "SETU",
+      "check": "github-commits",
+      "url": "https://github.com/setu-standards/xml-specifications/tree/main/setu/validator",
+      "url-status": "verified",
+      "current": "1.4 (timecard 1.4.2)",
+      "upstream-latest": "TimeCard v1.4.2 (2024-10-07, adds hour type \"Break\"); other three unchanged",
+      "status": "up-to-date",
+      "last-checked": "2026-09-30",
+      "detect": "gh api repos/setu-standards/xml-specifications/commits?path=setu/validator, or hash of the 4 source files",
+      "notes": "Upstream sub-versions (1.4.1, 1.4.2) only appear in in-file changelog comments. QUESTION: 'adopt TimeCard 1.4.2, and as which DVR version?'",
+      "issue": "https://github.com/phax/phive-rules/issues/94"
+    },
+    {
+      "id": "fr-ctc",
+      "module": "phive-rules-france",
+      "coordinates": [
+        "fr.ctc:ubl-invoice",
+        "ubl-creditnote",
+        "cii",
+        "cdar",
+        "extended-ubl-invoice",
+        "extended-ubl-creditnote",
+        "extended-cii",
+        "facturx-basicwl",
+        "facturx-en16931",
+        "facturx-extended"
+      ],
+      "publisher": "FNFE-MPE",
+      "check": "github-release",
+      "url": "https://github.com/fnfempe/France_RFE/releases",
+      "url-status": "verified",
+      "current": "1.4.0-04",
+      "current-upstream": "1.4.0.04",
+      "upstream-latest": "v1.4.0.04 (2026-09-04)",
+      "status": "up-to-date",
+      "last-checked": "2026-09-30",
+      "detect": "tag name AND the commit SHA - tags were moved (v1.4.0.04 moved 5f76380b -> 97ba0f3d)",
+      "notes": "Secondary: 'https://fnfe-mpe.org/ressources/ . Releases have no assets.' QUESTION: 'upstream 1.4.0.01 and 1.4.0.02 were never added - intended (checker only flags the latest)?' QUESTION: 'should 1.3.1 stay not deprecated next to 1.4.0-04?'"
+    },
+    {
+      "id": "fr-flux1",
+      "module": "phive-rules-france",
+      "coordinates": [
+        "fr.ctc.flux1:ubl-invoice-demarrage",
+        "ubl-creditnote-demarrage",
+        "cii-demarrage",
+        "ubl-invoice-cible",
+        "ubl-creditnote-cible",
+        "cii-cible"
+      ],
+      "publisher": "AIFE (PPF)",
+      "check": "manual",
+      "url": "",
+      "url-status": "unknown",
+      "current": "1.1",
+      "upstream-latest": "1.1 (2026-09-17)",
+      "status": "up-to-date",
+      "last-checked": "2026-09-30",
+      "notes": "AIFE publishes the rules only to French service providers (restricted access) - information has to be provided manually. Schematron and XSD packages are versioned separately (XSDs still from the v1.0 package)."
+    },
+    {
+      "id": "fr-flux10",
+      "module": "phive-rules-france",
+      "coordinates": [
+        "fr.ctc.flux10:report"
+      ],
+      "publisher": "AIFE (PPF)",
+      "check": "manual",
+      "url": "https://github.com/phax/phive-rules/issues/90",
+      "url-status": "verified",
+      "current": "1.1",
+      "upstream-latest": "1.1 (Schematron file PPF_Flux10_1_8_v0_3.sch)",
+      "status": "up-to-date",
+      "last-checked": "2026-09-30",
+      "notes": "AIFE publishes the rules only to French service providers (restricted access) - information has to be provided manually. v1.1 was delivered as attachment of issue #90. Package version (1.1) differs from the file version (v0_3). XSDs from XSD_Flux10.zip."
+    },
+    {
+      "id": "cius-pt",
+      "module": "phive-rules-cius-pt",
+      "coordinates": [
+        "pt.gov.espap.cius-pt:ubl-invoice",
+        "pt.gov.espap.cius-pt:ubl-creditnote"
+      ],
+      "publisher": "eSPap",
+      "check": "web-page",
+      "url": "https://www.espap.gov.pt/FrontEnd/Paginas/Areas/SP_Fin/SP_Fin_NormasFEAP_tpl_1.aspx?AspxAutoDetectCookieSupport=1",
+      "url-status": "verified",
+      "current": "2.1.1",
+      "status": "up-to-date",
+      "last-checked": "2026-09-30",
+      "notes": "No upstream change since 2.1.1 (2021-02-26). The page also offers CIUS-PT for CEFACT (CII), which is not registered here.",
+      "upstream-latest": "CIUS-PT para UBL2.1 (versão 2.1.1) de 26/02/2021",
+      "detect": "compare the \"(versão x.y.z) de dd/mm/yyyy\" strings. The page redirects to set a cookie - the fetcher needs a cookie jar (curl -c/-b), otherwise it loops."
+    },
+    {
+      "id": "cius-ro",
+      "module": "phive-rules-cius-ro",
+      "coordinates": [
+        "ro.gov.mfinante.cius-ro:ubl-invoice",
+        "ro.gov.mfinante.cius-ro:ubl-creditnote"
+      ],
+      "publisher": "ANAF / Ministerul Finanțelor",
+      "check": "web-page",
+      "url": "https://mfinante.gov.ro/web/efactura/informatii-tehnice",
+      "url-status": "verified",
+      "current": "1.0.9",
+      "status": "up-to-date",
+      "last-checked": "2026-09-30",
+      "detect": "newest ro16931-ubl-<version>.zip link and Informatii_ver.<version>.txt on the page; the 1.0.9 ZIP (/static/10/eFactura/ro16931-ubl-1.0.9.zip) is byte-identical to docs/1.0.9. The server resets connections from non-browser clients - send a browser User-Agent, keep cookies from the page request and set the page as Referer.",
+      "notes": "The page also offers a combined validator (roefacturavalidator_12122024.zip, UBL + CII) and CII examples; only UBL is registered here.",
+      "upstream-latest": "ro16931-ubl-1.0.9 (Informatii_ver.1.0.9.txt; ZIP Last-Modified 2024-06-06)"
+    },
+    {
+      "id": "hr-eracun",
+      "module": "phive-rules-eracun",
+      "coordinates": [
+        "hr.gov.porezna.eracun:ubl-invoice",
+        "hr.gov.porezna.eracun:ubl-creditnote"
+      ],
+      "publisher": "Porezna uprava",
+      "check": "web-page",
+      "url": "https://porezna.gov.hr/fiskalizacija/bezgotovinski-racuni/eracun",
+      "url-status": "verified",
+      "current": "1.0.4",
+      "current-upstream": "validator 13.03.2026 (HRUBLSchematron_13032026-2.zip)",
+      "upstream-latest": "\"Validator - dorađena verzija - u primjeni od 15.3.2026.\" 13.03.2026 (HRUBLSchematron_13032026-2.zip)",
+      "status": "up-to-date",
+      "last-checked": "2026-09-30",
+      "detect": "date/label of the \"Validator\" document on the page; download https://porezna.gov.hr/fiskalizacija/api/dokumenti/197 and compare the hash (no version numbers upstream, the repo assigns 1.0.x itself)",
+      "notes": "HRUBLSchematron_13032026-2.zip differs from all rule sources in the repo (1.0.0-1.0.3): OIB check rewritten, HR-BR-53/HR-BR-54 split per party, HR-BR-56 moved, PaymentMeans due date rule changed, EN 16931 permission comment removed. It also contains HR-UBL-Schematron-Uputa.pdf. docs/UBL2.1 eRačun 2026-04-15.zip is stored but not used.",
+      "issue": "https://github.com/phax/phive-rules/issues/93"
+    },
+    {
+      "id": "hr-eizvjestavanje",
+      "module": "phive-rules-eracun",
+      "coordinates": [
+        "hr.gov.porezna.eracun:eizvjestavanje"
+      ],
+      "publisher": "Porezna uprava",
+      "check": "web-page",
+      "url": "https://porezna.gov.hr/fiskalizacija/bezgotovinski-racuni/fiskalizacija-bezgotovinskih-racuna",
+      "url-status": "verified",
+      "current": "1.0",
+      "upstream-latest": "\"eIzvještavanje Schema\" 12.02.2026",
+      "status": "up-to-date",
+      "last-checked": "2026-09-30",
+      "notes": "The download is byte-identical to docs/eIzvjestavanjeSchema-2026-02-09.zip (SHA-256 a559b9ef...). The same page has \"eFiskalizacija Schema\" (/api/dokumenti/175) and \"Tehnička specifikacija Fiskalizacija eRačuna i eIzvještavanje\" (/api/dokumenti/186), both 12.02.2026.",
+      "detect": "date of the document \"eIzvještavanje Schema\" on the page; download https://porezna.gov.hr/fiskalizacija/api/dokumenti/187 and compare the hash"
+    },
+    {
+      "id": "isdoc",
+      "module": "phive-rules-isdoc",
+      "coordinates": [
+        "cz.isdoc:isdoc"
+      ],
+      "publisher": "ISDOC / ICT Unie",
+      "check": "web-page",
+      "url": "https://archiv.mv.gov.cz/isdoc/clanek/aktualni-verze.aspx",
+      "url-status": "verified",
+      "current": "6.0.2",
+      "upstream-latest": "6.0.2 (2022-03-23)",
+      "status": "up-to-date",
+      "last-checked": "2026-09-30",
+      "notes": "The URL in docs/readme.md (mvcr.cz) now redirects to an \"archiv\" host - the source may be moving. The repo patched two upstream Schematron errors (docs/readme.md); re-check them on a new release. QUESTION: 'is there a new canonical ISDOC home (e.g. isdoc.cz)?'"
+    },
+    {
+      "id": "serbia-srbdt",
+      "module": "phive-rules-serbia",
+      "coordinates": [
+        "rs.gov.mfin.srbdt:ubl-invoice",
+        "rs.gov.mfin.srbdt:ubl-creditnote"
+      ],
+      "publisher": "vasiljevic/en16931-srbdt-va (third party, implements the SEF spec)",
+      "check": "github-commits",
+      "url": "https://github.com/vasiljevic/en16931-srbdt-va",
+      "url-status": "verified",
+      "current": "1.0.0",
+      "upstream-latest": "last commit 2022-06-16",
+      "status": "up-to-date",
+      "last-checked": "2026-09-30",
+      "notes": "Upstream looks abandoned; the official SEF spec was updated 2024-08-22 without a Schematron. Secondary: 'https://www.efaktura.gov.rs/'"
+    },
+    {
+      "id": "serbia-seo",
+      "module": "phive-rules-serbia",
+      "coordinates": [
+        "rs.gov.mfin.logistics:ubl-despatch-advice",
+        "rs.gov.mfin.logistics:ubl-receipt-advice"
+      ],
+      "publisher": "Serbian Ministry of Finance (SEO)",
+      "check": "web-page",
+      "url": "https://eotpremnica.efaktura.gov.rs/tekst/5370/tehnicko-uputstvo-api-dokumentacija.php",
+      "url-status": "verified",
+      "current": "1.1.0",
+      "status": "up-to-date",
+      "last-checked": "2026-09-30",
+      "detect": "Technical Instruction version in the PDF file name on the page (currently \"Техничко упутство  1.6.0.pdf\"); UBL example versions on /tekst/5379/eotpremnica-ubl-primeri.php and /tekst/5427/eprijemnica-ubl-primeri.php; CustomizationID date suffix; official Schematron publication. System release notes: /tekst/6088/seo-azuriranja-i-verzije.php (currently 1.6.3). The portal returns HTTP 403 without a browser User-Agent and Accept header.",
+      "notes": "XSD-only validation; the business rules for future Schematron are extracted from section 1 (pages 4-37) of the Technical Instruction into docs/seo-business-rules.md. Section 1 is textually identical in 1.5.0 and 1.6.0 - the 1.6.0 changes are in the API part - so docs/seo-business-rules.md is still valid. docs/ holds 1.5.0 and 1.6.0. No official Schematron exists (issue #68).",
+      "current-upstream": "Техничко упутство (Technical Instruction) 1.6.0 (docs/, section 1 identical to 1.5.0); UBL examples 1.1.0; CustomizationID suffix 2025.12",
+      "upstream-latest": "Техничко упутство 1.6.0 (PDF created 2026-07-02, Last-Modified 2026-07-15); UBL examples still 1.1.0; CustomizationIDs unchanged (…:1:2025.12)"
+    },
+    {
+      "id": "turkey-efatura",
+      "module": "phive-rules-turkey",
+      "coordinates": [
+        "tr.efatura:invoice",
+        "application-response",
+        "despatch-advice",
+        "receipt-advice",
+        "zarf"
+      ],
+      "publisher": "GİB",
+      "check": "web-page",
+      "url": "https://ebelge.gib.gov.tr/efaturamevzuat.html",
+      "url-status": "verified",
+      "current": "1.2.1",
+      "current-upstream": "Schematron release 20260701 (e-FaturaPaketi Last-Modified 2026-08-24)",
+      "upstream-latest": "e-FaturaPaketi (29).zip - same as docs/latest-release.md",
+      "status": "up-to-date",
+      "last-checked": "2026-09-30",
+      "detect": "Reuse MainGibArtefactDownloader (src/test/.../supplementary/tools): compares Last-Modified and the latest date in schematron/History.txt. Do not match the exact file name - GİB uses browser-style \"(NN)\" suffixes.",
+      "notes": "Rule updates keep the VES coordinate 1.2.1 (updated in place)."
+    },
+    {
+      "id": "ublbe",
+      "module": "phive-rules-ublbe",
+      "coordinates": [
+        "be.ubl:invoice",
+        "be.ubl:credit-note"
+      ],
+      "publisher": "BOSA / e-invoicing.be",
+      "check": "web-page",
+      "url": "https://www.ubl.be/version-information/",
+      "url-status": "verified",
+      "current": "1.31",
+      "upstream-latest": "GLOBALUBL.BE V1.31 (July 2024)",
+      "status": "up-to-date",
+      "last-checked": "2026-09-30",
+      "detect": "numbering jumped from 1.2.9 to 1.30 - compare as \"1.<int>\""
+    },
+    {
+      "id": "zatca",
+      "module": "phive-rules-zatca",
+      "coordinates": [
+        "sa.zatca:ubl-invoice"
+      ],
+      "publisher": "ZATCA",
+      "check": "web-page",
+      "url": "https://zatify-sa.com/zatca-sdk-releases-and-updates/",
+      "url-status": "verified",
+      "current": "3.4.6",
+      "upstream-latest": "SDK 3.4.6 (stable), SDK 4.0.0 Beta",
+      "status": "up-to-date",
+      "last-checked": "2026-09-30",
+      "detect": "SDK version on the page; do NOT compare the \"R\" number in the zip names",
+      "notes": "Official download: https://sandbox.zatca.gov.sa/downloadSDK (Arabic version more up to date). New XSLs need the manual \"[PH]\" patches. SDK 4.0.0 is in beta."
+    },
+    {
+      "id": "estonian",
+      "module": "phive-rules-estonian",
+      "coordinates": [],
+      "publisher": "ITL (Estonian ICT Cluster)",
+      "check": "none",
+      "url": "https://itl.ee/en/estonian-ict-cluster/real-time-economy/e-invoice-specification/",
+      "url-status": "in-repo",
+      "status": "frozen",
+      "notes": "Documentation only, no VES, not part of the reactor."
+    }
+  ]
+}

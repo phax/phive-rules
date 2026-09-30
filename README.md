@@ -275,7 +275,7 @@ I hope that with the introduction of PINT, the versioning problem will be solved
 
 # News and noteworthy
 
-v4.6.3 - work in progress
+v4.6.3 - 2026-09-30
 * Added the France PPF Flux 10 validation rules v1.1, VES coordinate `fr.ctc.flux10:report:1.1`, and deprecated the 1.0 rules.
   See [issue #90](https://github.com/phax/phive-rules/issues/90).
   The rules are taken from the AIFE package "AIFE - PPF_Flux10_v1.1", which contains the Schematron file `PPF_Flux10_1_8_v0_3.sch` only.
@@ -283,6 +283,38 @@ v4.6.3 - work in progress
   The only change is to rule `G1.53`, both for invoices (`Invoice`) and for aggregated transactions (`Transactions`):
     * The check that the total amount without VAT equals the sum of the VAT taxable amounts is now applied for every currency - previously it was only applied if the currency was `EUR`
     * The check that the total VAT amount equals the sum of the VAT subtotal amounts is still only applied if the currency is `EUR`
+* Added the Croatian eRacun validation rules v1.0.4, VES coordinates `hr.gov.porezna.eracun:ubl-invoice:1.0.4` and `hr.gov.porezna.eracun:ubl-creditnote:1.0.4`, and deprecated the 1.0.2 rules.
+  See [issue #93](https://github.com/phax/phive-rules/issues/93).
+  The rules are taken from the Porezna uprava package `HRUBLSchematron_13032026-2.zip` ("Validator - dorađena verzija - u primjeni od 15.3.2026.", 2026-03-13).
+  Changes compared to 1.0.3:
+    * The OIB check function also validates the 11 digit format itself
+    * The OIB checks of the supplier, customer and tax representative VAT identifiers use `cac:PartyTaxScheme` rule contexts; the supplier rule now has the correct ID `HR-BR-53` (previously `HR-BR-54`)
+    * `HR-BR-56` moved to a different rule context
+    * The payment due date rule has its own `cac:PaymentMeans` context and no longer applies if no `cbc:PaymentDueDate` is present (previously: if the payable amount is not positive)
+    * The number format helper (at most 30 digits and 10 decimals) was rewritten
+* Added the SG BIS Order Balance validation rules v1.0.2 (released 2026-06-08, mandatory from 2026-09-08), VES coordinate `org.peppol.sg:order-balance:1.0.2`, and deprecated the 1.0 rules.
+  See [issue #91](https://github.com/phax/phive-rules/issues/91).
+  The previous VES version `1.0` corresponds to the upstream version 1.0.0; the upstream version 1.0.1 was not added separately.
+  The only changes are updated code lists (currency codes, units of measure, ISO 6523 ICD and EAS), aligned with the latest Peppol BIS Billing 3 release
+* Added the SETU TimeCard validation rules v1.4.2, VES coordinate `nl.setu:timecard:1.4.2`, and deprecated `nl.setu:timecard:1.4`.
+  See [issue #94](https://github.com/phax/phive-rules/issues/94).
+  The only change is the new value `Break` in the code list `SETU_CL_HourTypes` (upstream change log "07/10/2024 v1.4.2").
+  The Assignment, HumanResource and StaffingOrder rules are unchanged and stay at version 1.4
+* Updated the Peppol Italy (AGID) validation rules `it.peppol:*:3.2.1` in place to the AGID packages re-published on 2026-08-17, which are based on Peppol BIS Billing 3.0.21.
+  See [issue #92](https://github.com/phax/phive-rules/issues/92).
+  AGID changed the content without changing the version number, so the VES coordinates are unchanged.
+  The AGID specific invoice and credit note rules are unchanged.
+  The Order, Despatch Advice, Order Response and Order Agreement rules were updated to the latest Peppol BIS Post-Award rules (e.g. new `PEPPOL-COMMON-R042`, `PEPPOL-COMMON-R052` and `PEPPOL-COMMON-R053`, removed `PEPPOL-COMMON-R048`, updated code lists)
+* Added the EHF Post-Award G3 validation rules of release 2026-09-29 in the new class `EHFValidationG3_2026_09`, and deprecated `EHFValidationG3_2023_02`.
+  See [issue #95](https://github.com/phax/phive-rules/issues/95).
+  All VES versions were increased by one: `no.ehf.g3:*:3.0.4`, and `no.ehf.g3:despatch-advice:3.0.3` and `no.ehf.g3:payment-request:3.0.3`.
+  Relevant upstream rule changes since release 2023-02:
+    * Release 2024-09-18 added about 4130 `EHF-QII-G1-*` rules (Qualified Item Information) to Catalogue, Punch Out, Order Agreement, Order Response and Advanced Order Response
+    * Release 2026-08-13 updated the CEN and Peppol BIS Billing rules used by Forward Billing and Reminder, and added EHF Self-Billing 3.0
+    * The releases 2026-01-14, 2026-01-22 and 2026-09-29 contain no rule changes
+* Added the EHF Self-Billing 3.0 validation rules, VES coordinates `no.ehf.g3:invoice-self-billing:3.0.0` and `no.ehf.g3:creditnote-self-billing:3.0.0`.
+  They are based on the EN 16931 1.3.16 UBL rules, because the EHF package only contains the Self-Billing specific rules.
+  Therefore `phive-rules-ehf` now depends on `phive-rules-en16931`, and `EHFValidationSPI` declares the EN 16931 1.3.16 VES as prerequisites
 
 v4.6.2 - 2026-09-28
 * Added the Croatian eIzvjestavanje (e-reporting) XML Schema validation rules to `phive-rules-eracun`, VES coordinate `hr.gov.porezna.eracun:eizvjestavanje:1.0`.

@@ -105,6 +105,7 @@ When adding a new module or a new VES coordinate, follow the **DVR Coordinate na
 - `phive-rules-en16931` — prerequisite for many country-specific modules
 - `phive-rules-peppol` depends on `en16931`
 - `phive-rules-energieefactuur` depends on `simplerinvoicing`
+- `phive-rules-ehf` depends on `en16931` (EHF Self-Billing is based on the EN 16931 UBL VES)
 - `phive-rules-oioubl` is consumed by `phive-rules-oioubl-legacy` (other repo) for its OIOUBL UtilityStatement XSDs
 
 ## Imports & Annotations
