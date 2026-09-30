@@ -68,9 +68,9 @@ public final class ZugferdValidationTest
 
   @NonNull
   private static IValidationExecutorSet <IValidationSourceXML> _resolve (@NonNull final String sGroupID,
-                                                                        @NonNull final EZugferdProfile eProfile,
-                                                                        @NonNull final String sVersion,
-                                                                        @Nullable final OffsetDateTime aCheckDT) throws DVRVersionException
+                                                                         @NonNull final EZugferdProfile eProfile,
+                                                                         @NonNull final String sVersion,
+                                                                         @Nullable final OffsetDateTime aCheckDT) throws DVRVersionException
   {
     final DVRCoordinate aCoord = DVRCoordinate.create (sGroupID, eProfile.getArtifactID (), sVersion);
     final IValidationExecutorSet <IValidationSourceXML> ret = CTestFiles.VES_REGISTRY.getOfID (aCoord, aCheckDT);
@@ -97,9 +97,9 @@ public final class ZugferdValidationTest
                                                                                     @Nullable final OffsetDateTime aCheckDT) throws DVRVersionException
   {
     final IValidationExecutorSet <IValidationSourceXML> aVES = _resolve (ZugferdValidation.GROUP_ID_FACTUR_X,
-                                                                        eProfile,
-                                                                        sVersion,
-                                                                        aCheckDT);
+                                                                         eProfile,
+                                                                         sVersion,
+                                                                         aCheckDT);
     assertTrue (aVES instanceof ValidationExecutorSetAlias);
     return (ValidationExecutorSetAlias <IValidationSourceXML>) aVES;
   }
@@ -147,9 +147,9 @@ public final class ZugferdValidationTest
 
       // Must be the same as resolving the ZUGFeRD side
       final IValidationExecutorSet <IValidationSourceXML> aZugferd = _resolve (ZugferdValidation.GROUP_ID_ZUGFERD,
-                                                                              eProfile,
-                                                                              "latest",
-                                                                              null);
+                                                                               eProfile,
+                                                                               "latest",
+                                                                               null);
       assertEquals ("2.5.2", aZugferd.getID ().getVersionString ());
       assertEquals (aZugferd, aAlias.getSourceVES ());
     }
@@ -169,8 +169,7 @@ public final class ZugferdValidationTest
     for (final EZugferdProfile eProfile : EZugferdProfile.values ())
     {
       // Factur-X 1.0.9-2 (ZUGFeRD 2.5.2) is valid from 2026-09-01 onwards only
-      assertEquals ("1.0.9", _resolveFacturX (eProfile, "latest-active", DT_BEFORE_2_5_2).getID ()
-                                                                                        .getVersionString ());
+      assertEquals ("1.0.9", _resolveFacturX (eProfile, "latest-active", DT_BEFORE_2_5_2).getID ().getVersionString ());
       assertEquals ("1.0.9-2",
                     _resolveFacturX (eProfile, "latest-active", DT_AFTER_2_5_2).getID ().getVersionString ());
 
@@ -190,11 +189,9 @@ public final class ZugferdValidationTest
     for (final EZugferdProfile eProfile : EZugferdProfile.values ())
     {
       assertEquals ("1.0.9",
-                    _resolveFacturX (eProfile, "latest-release-active", DT_BEFORE_2_5_2).getID ()
-                                                                                        .getVersionString ());
+                    _resolveFacturX (eProfile, "latest-release-active", DT_BEFORE_2_5_2).getID ().getVersionString ());
       assertEquals ("1.0.9-2",
-                    _resolveFacturX (eProfile, "latest-release-active", DT_AFTER_2_5_2).getID ()
-                                                                                       .getVersionString ());
+                    _resolveFacturX (eProfile, "latest-release-active", DT_AFTER_2_5_2).getID ().getVersionString ());
     }
   }
 
@@ -205,9 +202,9 @@ public final class ZugferdValidationTest
     {
       final ValidationExecutorSetAlias <IValidationSourceXML> aAlias = _resolveFacturX (eProfile, "latest", null);
       final IValidationExecutorSet <IValidationSourceXML> aZugferd = _resolve (ZugferdValidation.GROUP_ID_ZUGFERD,
-                                                                              eProfile,
-                                                                              "latest",
-                                                                              null);
+                                                                               eProfile,
+                                                                               "latest",
+                                                                               null);
       assertEquals (aZugferd.getAllExecutors (), aAlias.getAllExecutors ());
       assertEquals (aZugferd.getStatus (), aAlias.getStatus ());
     }

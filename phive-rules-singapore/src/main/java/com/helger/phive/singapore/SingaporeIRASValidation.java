@@ -121,8 +121,7 @@ public final class SingaporeIRASValidation
       aExecutors.add (ValidationExecutorXSDPartial.create (UBL21Marshaller.getAllCreditNoteXSDs (),
                                                            XSDPartialContext.create (XPathHelper.createNewXPathExpression (aXP,
                                                                                                                            "/sh:StandardBusinessDocument/cn:CreditNote"))));
-      aExecutors.add (PhiveRulesHelper.createXSLT (new ClassPathResource (sPrefix +
-                                                                          "non_peppol_doc_validation.xslt",
+      aExecutors.add (PhiveRulesHelper.createXSLT (new ClassPathResource (sPrefix + "non_peppol_doc_validation.xslt",
                                                                           _getCL ()), aNSCtx));
 
       VesXmlBuilder.builder ()

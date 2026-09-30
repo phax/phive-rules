@@ -144,8 +144,7 @@ public final class CTestFiles
                                                       "D_invoice_purchase.xml",
                                                       "E_cr_purchase.xml",
                                                       "E_invoice_purchase.xml",
-                                                      "F_pcp.xml" },
-                                      s -> new ClassPathResource (PREFIX + s));
+                                                      "F_pcp.xml" }, s -> new ClassPathResource (PREFIX + s));
     }
 
     throw new IllegalArgumentException ("Invalid DVRCoordinate: " + aVESID);
@@ -177,8 +176,7 @@ public final class CTestFiles
       // Not from IRAS - derived from the samples above to pin down the two things the partial XML
       // Schema layer adds: the SBDH envelope is mandatory, and every payload of a bulk submission
       // is validated, not just the first one
-      ret.addAll (new CommonsArrayList <> (new String [] { "bare-ubl-invoice.xml",
-                                                           "bulk-second-invoice-no-id.xml" },
+      ret.addAll (new CommonsArrayList <> (new String [] { "bare-ubl-invoice.xml", "bulk-second-invoice-no-id.xml" },
                                            s -> new ClassPathResource (PREFIX + "derived/" + s)));
       return ret;
     }

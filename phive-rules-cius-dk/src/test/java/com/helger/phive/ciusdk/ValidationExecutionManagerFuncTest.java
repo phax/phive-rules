@@ -61,9 +61,9 @@ public final class ValidationExecutionManagerFuncTest
       // Read as desired type
       final IValidationSourceXML aSource = ValidationSourceXML.create (aTestFile.getResource ());
       final ValidationResultList aErrors = ValidationExecutionManager.executeValidation (IValidityDeterminator.createDefault (),
-                                                                                        aExecutors,
-                                                                                        aSource,
-                                                                                        Locale.US);
+                                                                                         aExecutors,
+                                                                                         aSource,
+                                                                                         Locale.US);
       if (aTestFile.isGoodCase ())
         assertTrue (aErrors.getAllErrors ().toString (), aErrors.containsNoError ());
       else
