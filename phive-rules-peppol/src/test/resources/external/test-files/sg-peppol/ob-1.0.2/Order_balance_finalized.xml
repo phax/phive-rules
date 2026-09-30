@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Order xmlns="urn:oasis:names:specification:ubl:schema:xsd:Order-2" xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
+	<cbc:CustomizationID>urn:fdc:imda.gov.sg:trns:order_balance:1</cbc:CustomizationID>
+	<cbc:ProfileID>urn:fdc:imda.gov.sg:bis:order_balance:1</cbc:ProfileID>
+	<cbc:ID>34</cbc:ID>
+	<cbc:IssueDate>2025-03-28</cbc:IssueDate>
+	<cbc:IssueTime>12:30:00</cbc:IssueTime>
+	<cbc:OrderTypeCode>348</cbc:OrderTypeCode>
+	<cbc:Note>Information text for the whole order balance</cbc:Note>
+	<cbc:DocumentCurrencyCode>SGD</cbc:DocumentCurrencyCode>
+	<cbc:CustomerReference>9000012345</cbc:CustomerReference>
+	<cac:OrderDocumentReference>
+		<cbc:ID>OrderID321</cbc:ID>
+		<cbc:IssueDate>2025-01-02</cbc:IssueDate>
+	</cac:OrderDocumentReference>
+	<cac:BuyerCustomerParty>
+		<cac:Party>
+			<cbc:EndpointID schemeID="0195">SGUEN200254321Z</cbc:EndpointID>
+			<cac:PartyLegalEntity>
+				<cbc:RegistrationName>IMDA</cbc:RegistrationName>
+				<cbc:CompanyID>200254321Z</cbc:CompanyID>
+			</cac:PartyLegalEntity>
+			<cac:Contact>
+				<cbc:Name>Bill</cbc:Name>
+				<cbc:Telephone>5121230</cbc:Telephone>
+				<cbc:ElectronicMail>bill@imda.sg</cbc:ElectronicMail>
+			</cac:Contact>
+		</cac:Party>
+	</cac:BuyerCustomerParty>
+	<cac:SellerSupplierParty>
+		<cac:Party>
+			<cbc:EndpointID schemeID="0195">SGUEN200212345Z</cbc:EndpointID>
+			<cac:PartyIdentification>
+				<cbc:ID>VendorID</cbc:ID>
+			</cac:PartyIdentification>
+			<cac:PartyLegalEntity>
+				<cbc:RegistrationName>Gallery Photo Supplier</cbc:RegistrationName>
+				<cbc:CompanyID>200212345Z</cbc:CompanyID>
+			</cac:PartyLegalEntity>
+			<cac:Contact>
+				<cbc:Name>Avery Lee</cbc:Name>
+				<cbc:Telephone>4621230</cbc:Telephone>
+				<cbc:ElectronicMail>avery@salescompany.sg</cbc:ElectronicMail>
+			</cac:Contact>
+		</cac:Party>
+	</cac:SellerSupplierParty>
+	<cac:PaymentTerms>
+		<cbc:Note>8D</cbc:Note>
+	</cac:PaymentTerms>
+	<cac:AnticipatedMonetaryTotal>
+		<cbc:LineExtensionAmount currencyID="SGD">0</cbc:LineExtensionAmount>
+		<cbc:PayableAmount currencyID="SGD">0</cbc:PayableAmount>
+	</cac:AnticipatedMonetaryTotal>
+	<cac:OrderLine>
+		<cbc:Note>Freetext note on line 1</cbc:Note>
+		<cac:LineItem>
+			<cbc:ID>1</cbc:ID>
+			<cbc:Quantity unitCode="EA">0</cbc:Quantity>
+			<cbc:LineExtensionAmount currencyID="SGD">0</cbc:LineExtensionAmount>
+			<cac:Price>
+				<cbc:PriceAmount currencyID="SGD">50.000</cbc:PriceAmount>
+			</cac:Price>
+			<cac:Item>
+				<cbc:Name>Stapler</cbc:Name>
+			</cac:Item>
+		</cac:LineItem>
+	</cac:OrderLine>
+
+</Order>

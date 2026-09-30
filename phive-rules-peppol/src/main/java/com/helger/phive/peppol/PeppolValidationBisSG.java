@@ -91,9 +91,13 @@ public final class PeppolValidationBisSG
                                                                                                                 "2026.6");
 
   // Order Balance
+  @Deprecated (forRemoval = false)
   public static final DVRCoordinate VID_PEPPOL_SG_ORDER_BALANCE_1_0 = DVRHelper.createCoordinate (GROUP_ID_ORDER_BALANCE,
                                                                                                   "order-balance",
                                                                                                   "1.0");
+  public static final DVRCoordinate VID_PEPPOL_SG_ORDER_BALANCE_1_0_2 = DVRHelper.createCoordinate (GROUP_ID_ORDER_BALANCE,
+                                                                                                    "order-balance",
+                                                                                                    "1.0.2");
 
   private PeppolValidationBisSG ()
   {}
@@ -258,10 +262,23 @@ public final class PeppolValidationBisSG
       VesXmlBuilder.builder ()
                    .vesID (VID_PEPPOL_SG_ORDER_BALANCE_1_0)
                    .displayName ("SG Peppol Order Balance 1.0")
-                   .notDeprecated ()
+                   .deprecated ()
                    .addXSD (UBL21Marshaller.getAllOrderXSDs ())
                    .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (BASE_PATH +
                                                                                        "ob-1.0/xslt/SGBIS-TOB.xslt",
+                                                                                       _getCL ()), aNSCtxOrder))
+                   .registerInto (aRegistry);
+    }
+
+    // Order Balance 1.0.2
+    {
+      VesXmlBuilder.builder ()
+                   .vesID (VID_PEPPOL_SG_ORDER_BALANCE_1_0_2)
+                   .displayName ("SG Peppol Order Balance 1.0.2")
+                   .notDeprecated ()
+                   .addXSD (UBL21Marshaller.getAllOrderXSDs ())
+                   .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (BASE_PATH +
+                                                                                       "ob-1.0.2/xslt/SGBIS-TOB.xslt",
                                                                                        _getCL ()), aNSCtxOrder))
                    .registerInto (aRegistry);
     }

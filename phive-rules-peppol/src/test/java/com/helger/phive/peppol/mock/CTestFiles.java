@@ -86,6 +86,7 @@ public final class CTestFiles
                                                              PeppolValidationBisSG.VID_OPENPEPPOL_BIS3_SG_UBL_CREDIT_NOTE_2026_6,
 
                                                              PeppolValidationBisSG.VID_PEPPOL_SG_ORDER_BALANCE_1_0,
+                                                             PeppolValidationBisSG.VID_PEPPOL_SG_ORDER_BALANCE_1_0_2,
 
                                                              /* OpenPeppol BIS */
                                                              PeppolValidation2025_11.VID_OPENPEPPOL_INVOICE_UBL_V3,
@@ -352,6 +353,11 @@ public final class CTestFiles
     if (aVESID.equals (PeppolValidationBisSG.VID_PEPPOL_SG_ORDER_BALANCE_1_0))
     {
       return _getAll ("sg-peppol/ob-1.0/", "Order_balance_finalized.xml", "Order_balance_MAX.xml", "Order_balance.xml");
+    }
+    if (aVESID.equals (PeppolValidationBisSG.VID_PEPPOL_SG_ORDER_BALANCE_1_0_2))
+    {
+      // The upstream Order_balance_MAX.xml is wrapped in an SBDH - the unwrapped payload is used
+      return _getAll ("sg-peppol/ob-1.0.2/", "Order_balance_finalized.xml", "Order_balance_MAX.xml", "Order_balance.xml");
     }
 
     // 2025-11
