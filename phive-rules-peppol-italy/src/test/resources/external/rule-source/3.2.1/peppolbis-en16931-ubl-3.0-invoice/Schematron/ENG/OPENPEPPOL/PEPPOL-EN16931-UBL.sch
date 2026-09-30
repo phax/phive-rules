@@ -2,7 +2,7 @@
 <!--
 This schematron uses business terms defined the CEN/EN16931-1 and is reproduced with permission from CEN. CEN bears no liability from the use of the content and implementation of this schematron and gives no warranties expressed or implied for any purpose.
 
-Last update: 2023 May release 3.0.15.
+Last update: 2026 May release 3.0.21.
  -->
 <schema xmlns="http://purl.oclc.org/dsdl/schematron" xmlns:u="utils" schemaVersion="iso" queryBinding="xslt2">
 	<title>Rules for Peppol BIS 3.0 Billing</title>
@@ -14,10 +14,15 @@ Last update: 2023 May release 3.0.15.
 	<ns uri="utils" prefix="u"/>
 	<!-- Parameters -->
 	<let name="profile" value="
-      if (/*/cbc:ProfileID and matches(normalize-space(/*/cbc:ProfileID), 'urn:fdc:peppol.eu:2017:poacc:billing:([0-9]{2}):1.0')) then
-        tokenize(normalize-space(/*/cbc:ProfileID), ':')[7]
-      else
-        'Unknown'"/>
+      if (normalize-space(/*/cbc:ProfileID) = (
+        'urn:fdc:peppol.eu:2017:poacc:billing:01:1.0',
+        'urn:peppol:france:billing:regulated',
+        'urn:peppol:france:billing:non-regulated'
+       ))
+       then '01'
+       else if (normalize-space(/*/cbc:ProfileID) = 'urn:peppol:bis:billing_with_response')
+       then '02'
+       else 'Unknown'"/>
 	<let name="supplierCountry" value="
       if (/*/cac:AccountingSupplierParty/cac:Party/cac:PartyTaxScheme[cac:TaxScheme/cbc:ID = 'VAT']/substring(cbc:CompanyID, 1, 2)) then
         upper-case(normalize-space(/*/cac:AccountingSupplierParty/cac:Party/cac:PartyTaxScheme[cac:TaxScheme/cbc:ID = 'VAT']/substring(cbc:CompanyID, 1, 2)))
@@ -179,7 +184,6 @@ Last update: 2023 May release 3.0.15.
 "/>
 	</function>
 	<!-- Empty elements -->
-	
 	<!--
     Transaction rules
 
@@ -192,9 +196,8 @@ Last update: 2023 May release 3.0.15.
     R08X - Additonal document reference
     R1XX - Line level
     R11X - Invoice period
-  -->		
-  
-  <!-- GREECE -->
+  -->
+	<!-- GREECE -->
 	<!-- General functions and variable for Greek Rules -->
 	<function xmlns="http://www.w3.org/1999/XSL/Transform" name="u:TinVerification" as="xs:boolean">
 		<param name="val" as="xs:string"/>
@@ -212,7 +215,6 @@ Last update: 2023 May release 3.0.15.
 			(number($digits[1])*256) "/>
 		<value-of select="($checksum  mod 11) mod 10 = number($digits[9])"/>
 	</function>
-
 	<let name="isGreekSender" value="($supplierCountry ='GR') or ($supplierCountry ='EL')"/>
 	<let name="isGreekReceiver" value="($customerCountry ='GR') or ($customerCountry ='EL')"/>
 	<let name="isGreekSenderandReceiver" value="$isGreekSender and $isGreekReceiver"/>
@@ -225,37 +227,30 @@ Last update: 2023 May release 3.0.15.
     upper-case(normalize-space(/*/cac:AccountingSupplierParty/cac:Party/cac:PostalAddress/cac:Country/cbc:IdentificationCode))
     else
     'XX'"/>
-  
+	<let name="supplierCountryIsDE" value="(upper-case(normalize-space(/*/cac:AccountingSupplierParty/cac:Party/cac:PostalAddress/cac:Country/cbc:IdentificationCode)) = 'DE')"/>
+	<let name="customerCountryIsDE" value="(upper-case(normalize-space(/*/cac:AccountingCustomerParty/cac:Party/cac:PostalAddress/cac:Country/cbc:IdentificationCode)) = 'DE')"/>
+	<let name="documentCurrencyCode" value="/*/cbc:DocumentCurrencyCode"/>
 	<include href="./1-PEPPOL-EN16931-UBL-emptyElements.inc"/>
 	<include href="./2-PEPPOL-EN16931-UBL-creditNote.inc"/>
 	<include href="./3-PEPPOL-EN16931-UBL-general.inc"/>
-	
 	<!-- National rules -->
 	<include href="./4-PEPPOL-EN16931-UBL-norway.inc"/>
-	
 	<!-- DENMARK -->
 	<include href="./5-PEPPOL-EN16931-UBL-denmark.inc"/>
-	
 	<!-- ITALY -->
 	<include href="./6-PEPPOL-EN16931-UBL-italy.inc"/>
-	
 	<!-- SWEDEN -->
 	<include href="./7-PEPPOL-EN16931-UBL-sweden.inc"/>
-
 	<!-- Sender Rules -->
 	<include href="./8-PEPPOL-EN16931-UBL-greece-sender.inc"/>
-	
-
 	<!-- Greek Sender and Greek Receiver rules -->
 	<include href="./9-PEPPOL-EN16931-UBL-greece-senderreceiver.inc"/>
-	
 	<!-- ICELAND -->
 	<include href="./10-PEPPOL-EN16931-UBL-iceland.inc"/>
-	
 	<!-- NETHERLANDS -->
 	<include href="./11-PEPPOL-EN16931-UBL-netherlands.inc"/>
-	
+	<!-- GERMANY -->
+	<include href="./12-PEPPOL-EN16931-UBL-germany.inc"/>
 	<!-- Restricted code lists and formatting -->
-	<include href="./12-PEPPOL-EN16931-UBL-codelists.inc"/>
-	
+	<include href="./13-PEPPOL-EN16931-UBL-codelists.inc"/>
 </schema>

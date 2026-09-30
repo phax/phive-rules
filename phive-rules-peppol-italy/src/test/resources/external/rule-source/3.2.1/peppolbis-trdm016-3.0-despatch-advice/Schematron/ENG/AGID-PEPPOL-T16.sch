@@ -9,7 +9,7 @@
         schemaVersion="iso"
         queryBinding="xslt2">
 
-    <title>Regole per la transazione del Documento di Trasporto (DDT) PEPPOL, versione 3.3.0.1</title>
+    <title>Business Rules for Peppol Despatch Advice transaction 3.5.0.1</title>
 
     <ns uri="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
        prefix="cbc"/>
@@ -103,7 +103,26 @@
              as="xs:boolean">
       <param name="val"/>
       <value-of select="( ((string-to-codepoints(substring($val,1,1)) - 49) * 10) + ((string-to-codepoints(substring($val,2,1)) - 48) * 1) + ((string-to-codepoints(substring($val,3,1)) - 48) * 3) + ((string-to-codepoints(substring($val,4,1)) - 48) * 5) + ((string-to-codepoints(substring($val,5,1)) - 48) * 7) + ((string-to-codepoints(substring($val,6,1)) - 48) * 9) + ((string-to-codepoints(substring($val,7,1)) - 48) * 11) + ((string-to-codepoints(substring($val,8,1)) - 48) * 13) + ((string-to-codepoints(substring($val,9,1)) - 48) * 15) + ((string-to-codepoints(substring($val,10,1)) - 48) * 17) + ((string-to-codepoints(substring($val,11,1)) - 48) * 19)) mod 89 = 0 "/>
-   </function>		
+   </function>
+    <function xmlns="http://www.w3.org/1999/XSL/Transform"
+             name="u:checkSEOrgnr"
+             as="xs:boolean">
+      <param name="number" as="xs:string"/>
+      <choose>
+         <when test="not(matches($number, '^\d+$'))">
+            <sequence select="false()"/>
+         </when>
+         <otherwise>
+            <variable name="mainPart" select="substring($number, 1, 9)"/>
+            <variable name="checkDigit" select="substring($number, 10, 1)"/>
+            <variable name="sum" as="xs:integer">
+               <value-of select="sum(       for $pos in 1 to string-length($mainPart) return         if ($pos mod 2 = 1)         then (number(substring($mainPart, string-length($mainPart) - $pos + 1, 1)) * 2) mod 10 +           (number(substring($mainPart, string-length($mainPart) - $pos + 1, 1)) * 2) idiv 10         else number(substring($mainPart, string-length($mainPart) - $pos + 1, 1))      )"/>
+            </variable>
+            <variable name="calculatedCheckDigit" select="(10 - $sum mod 10) mod 10"/>
+            <sequence select="$calculatedCheckDigit = number($checkDigit)"/>
+         </otherwise>
+      </choose>
+  </function>		
     
 
     <pattern>
@@ -139,8 +158,23 @@
                  test="matches(normalize-space(), '^[0-9]{9}$') and u:mod11(normalize-space())"
                  flag="fatal">Norwegian organization number MUST be stated in the correct format.</assert>
       </rule>
+      <rule context="cbc:EndpointID[@schemeID = '0184'] | cac:PartyIdentification/cbc:ID[@schemeID = '0184'] | cbc:CompanyID[@schemeID = '0184']">
+        <assert id="PEPPOL-COMMON-R042"
+                 test="(string-length(string()) = 10 and substring(string(), 1, 2) = 'DK' and string-length(translate(substring(string(), 3, 8), '1234567890', '')) = 0) or (string-length(string()) = 8) and (string-length(translate(substring(string(), 1, 8),'1234567890', '')) = 0)"
+                 flag="warning">Danish organization number (CVR) MUST be stated in the correct format.</assert>
+      </rule>
+      <rule context="cbc:EndpointID[@schemeID = '0096'] | cac:PartyIdentification/cbc:ID[@schemeID = '0096'] | cbc:CompanyID[@schemeID = '0096']">
+        <assert id="PEPPOL-COMMON-R052"
+                 test="(string-length(string()) = 10) and (string-length(translate(substring(string(), 1, 10),'1234567890', '')) = 0)"
+                 flag="warning">Danish chamber of commerce number (P) MUST be stated in the correct format.</assert>
+      </rule>
+      <rule context="cbc:EndpointID[@schemeID = '0198'] | cac:PartyIdentification/cbc:ID[@schemeID = '0198'] | cbc:CompanyID[@schemeID = '0198']">
+        <assert id="PEPPOL-COMMON-R053"
+                 test="(string-length(string()) = 10 and substring(string(), 1, 2) = 'DK' and string-length(translate(substring(string(), 3, 8), '1234567890', '')) = 0)"
+                 flag="warning">Danish ERSTORG number (SE) MUST be stated in the correct format.</assert>
+      </rule>
       <rule context="cbc:EndpointID[@schemeID = '0208'] | cac:PartyIdentification/cbc:ID[@schemeID = '0208'] | cbc:CompanyID[@schemeID = '0208']">
-         <assert id="PEPPOL-COMMON-R043"
+        <assert id="PEPPOL-COMMON-R043"
                  test="matches(normalize-space(), '^[0-9]{10}$') and u:mod97-0208(normalize-space())"
                  flag="fatal">Belgian enterprise number MUST be stated in the correct format.</assert>
       </rule>	
@@ -171,13 +205,13 @@
       </rule>
       <rule context="cbc:EndpointID[@schemeID = '0007'] | cac:PartyIdentification/cbc:ID[@schemeID = '0007'] | cbc:CompanyID[@schemeID = '0007']">
          <assert id="PEPPOL-COMMON-R049"
-                 test="string-length(normalize-space()) = 10 and string(number(normalize-space())) != 'NaN'"
+                 test="string-length(normalize-space()) = 10 and string(number(normalize-space())) != 'NaN' and u:checkSEOrgnr(normalize-space())"
                  flag="fatal">Swedish organization number MUST be stated in the correct format.</assert>     
       </rule> 
       <rule context="cbc:EndpointID[@schemeID = '0151'] | cac:PartyIdentification/cbc:ID[@schemeID = '0151'] | cbc:CompanyID[@schemeID = '0151']">
          <assert id="PEPPOL-COMMON-R050"
                  test="matches(normalize-space(), '^[0-9]{11}$') and u:abn(normalize-space())"
-                 flag="warning">Australian Business Number (ABN) MUST be stated in the correct format.</assert>
+                 flag="fatal">Australian Business Number (ABN) MUST be stated in the correct format.</assert>
       </rule> 
    </pattern>
     <pattern xmlns:ns2="http://www.schematron-quickfix.com/validator/process">

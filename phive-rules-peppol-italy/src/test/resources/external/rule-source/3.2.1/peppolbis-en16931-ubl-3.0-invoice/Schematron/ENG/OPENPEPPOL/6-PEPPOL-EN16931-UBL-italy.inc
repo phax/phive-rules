@@ -1,4 +1,4 @@
-<pattern id="UBL-italy" xmlns="http://purl.oclc.org/dsdl/schematron">
+<pattern id="OP-Italy-rules" xmlns="http://purl.oclc.org/dsdl/schematron">
 		<rule context="cac:AccountingSupplierParty/cac:Party[$supplierCountry = 'IT']/cac:PartyTaxScheme[normalize-space(cac:TaxScheme/cbc:ID) != 'VAT']">
 			<assert id="IT-R-001" test="matches(normalize-space(cbc:CompanyID),'^[A-Z0-9]{11,16}$')" flag="fatal">[IT-R-001] BT-32 (Seller tax registration identifier) - For Italian suppliers BT-32 minimum length 11 and maximum length shall be 16.  Per i fornitori italiani il BT-32 deve avere una lunghezza tra 11 e 16 caratteri</assert>
 		</rule>

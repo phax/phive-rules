@@ -1,4 +1,4 @@
-<pattern id="UBL-norway" xmlns="http://purl.oclc.org/dsdl/schematron">
+<pattern id="OP-Norway-rules" xmlns="http://purl.oclc.org/dsdl/schematron">
 	<!-- NORWAY -->
 	<rule context="cac:AccountingSupplierParty/cac:Party[$supplierCountry = 'NO']">
 		<assert id="NO-R-002" test="normalize-space(cac:PartyTaxScheme[normalize-space(cac:TaxScheme/cbc:ID) = 'TAX']/cbc:CompanyID) = 'Foretaksregisteret'" flag="warning">For Norwegian suppliers, most invoice issuers are required to append "Foretaksregisteret" to their

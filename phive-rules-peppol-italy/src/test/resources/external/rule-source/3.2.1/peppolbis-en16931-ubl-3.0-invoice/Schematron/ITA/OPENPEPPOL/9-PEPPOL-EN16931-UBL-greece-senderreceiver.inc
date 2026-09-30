@@ -1,4 +1,4 @@
-<pattern id="greece-senderreceiver" xmlns="http://purl.oclc.org/dsdl/schematron">
+<pattern id="OP-Greece-sender-receiver-rules" xmlns="http://purl.oclc.org/dsdl/schematron">
 	<!-- VAT Number Rules -->
 	<rule context="cac:AccountingCustomerParty[$isGreekSenderandReceiver]/cac:Party">
 		<assert id="GR-R-006-NA" test="count(cac:PartyTaxScheme[normalize-space(cac:TaxScheme/cbc:ID) = 'VAT']/cbc:CompanyID)=1 and

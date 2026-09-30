@@ -22,5 +22,22 @@ Differences of the 2026-08-03 Schematron-Billing snapshot vs. the earlier commit
 * `UBL-CR-631` removed from one rule file
 * Numerous other `.sch`/`.inc` files changed (ENG and ITA)
 
-The integrated XSLT has NOT yet been regenerated from this snapshot - it still reflects the
-earlier 3.2.1 content.
+This snapshot was never integrated.
+
+# Note on the 3.2.1 package (2026-08-17 re-publication)
+
+AGID re-published the 3.2.1 packages again on 2026-08-17 (HTTP Last-Modified), now based on Peppol
+BIS Billing 3.0.21 (the AGID page shows "Peppol BIS Billing 3.0.21.1(IT)"). These are stored as
+`*-3.2.1-2026-08-17.zip`, and the rule sources under `src/test/resources/external/rule-source/3.2.1/`
+(invoice from `AGID-PEPPOL-Schematron-Billing`, the other document types from
+`AGID-PEPPOL-Schematron-Others`) were replaced with them; the VES coordinates stay at 3.2.1 (see
+https://github.com/phax/phive-rules/issues/92).
+
+* The ITA invoice folder of the package no longer contains the wrapper `AGID-EN16931-UBL.sch`
+  (the ENG folder still has it). The previous ITA wrapper is kept, as it only includes
+  `AGID/AGID-EN16931-CIUS-UBL.inc` and `AGID/AGID-EN16931-EXT-UBL.inc`, which are part of the package.
+  The ITA AGID invoice rules are content-identical to the previous 3.2.1 (line endings only).
+* The `<phase>` elements of the invoice Schematrons activate the pattern IDs `OP-transaction-rules`,
+  `OP-Germany-rules` and `OP-cl-formatting-rules`, which are not declared in the included files
+  (they are called `UBL-general`, `german-rules` and `codelists`). As no `defaultPhase` is set, all
+  patterns are evaluated and this has no effect on the validation result.

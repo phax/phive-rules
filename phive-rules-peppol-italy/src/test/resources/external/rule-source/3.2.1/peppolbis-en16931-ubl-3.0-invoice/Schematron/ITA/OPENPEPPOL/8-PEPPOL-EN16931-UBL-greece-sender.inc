@@ -1,4 +1,4 @@
-<pattern id="greece-sender" xmlns="http://purl.oclc.org/dsdl/schematron">
+<pattern id="OP-Greece-sender-rules" xmlns="http://purl.oclc.org/dsdl/schematron">
 	<let name="dateRegExp" value="'^(0?[1-9]|[12][0-9]|3[01])[-\\/ ]?(0?[1-9]|1[0-2])[-\\/ ]?(19|20)[0-9]{2}'"/>
 	<let name="greekDocumentType" value="tokenize('1.1 1.6 2.1 2.4 5.1 5.2 ','\s')"/>
 	<let name="tokenizedUblIssueDate" value="tokenize(/*/cbc:IssueDate,'-')"/>

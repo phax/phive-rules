@@ -5,7 +5,7 @@
         schemaVersion="iso"
         queryBinding="xslt2">
 
-    <title>Rules for PEPPOL Despatch Advice transaction 3.2</title>
+    <title>Rules for Peppol Despatch Advice transaction 3.5</title>
     
     <ns uri="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
        prefix="cbc"/>

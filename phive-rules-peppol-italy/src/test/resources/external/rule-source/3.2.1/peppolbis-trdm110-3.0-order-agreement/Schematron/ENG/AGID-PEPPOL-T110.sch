@@ -12,7 +12,7 @@
         schemaVersion="iso"
         queryBinding="xslt2">
 
-    <title>Regole per la transazione dell'Ordine Pre-concordato PEPPOL, versione 3.2.0.1</title>
+    <title>Business Rules for Peppol Order Agreement transaction 3.2.0.2</title>
 
     <ns uri="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
        prefix="cbc"/>
@@ -113,16 +113,34 @@
                 select="xs:string(97 - (xs:integer(substring($val,1,8)) mod 97))"/>
       <value-of select="number($checkdigits) = number($calculated_digits)"/>
   </function>
-    <function xmlns="http://www.w3.org/1999/XSL/Transform"
+   <function xmlns="http://www.w3.org/1999/XSL/Transform"
              name="u:abn"
              as="xs:boolean">
       <param name="val"/>
       <value-of select="( ((string-to-codepoints(substring($val,1,1)) - 49) * 10) + ((string-to-codepoints(substring($val,2,1)) - 48) * 1) + ((string-to-codepoints(substring($val,3,1)) - 48) * 3) + ((string-to-codepoints(substring($val,4,1)) - 48) * 5) + ((string-to-codepoints(substring($val,5,1)) - 48) * 7) + ((string-to-codepoints(substring($val,6,1)) - 48) * 9) + ((string-to-codepoints(substring($val,7,1)) - 48) * 11) + ((string-to-codepoints(substring($val,8,1)) - 48) * 13) + ((string-to-codepoints(substring($val,9,1)) - 48) * 15) + ((string-to-codepoints(substring($val,10,1)) - 48) * 17) + ((string-to-codepoints(substring($val,11,1)) - 48) * 19)) mod 89 = 0 "/>
    </function>	
 	
+   <function xmlns="http://www.w3.org/1999/XSL/Transform" name="u:checkSEOrgnr" as="xs:boolean">
+      <param name="number" as="xs:string"/>
+      <choose>
+         <when test="not(matches($number, '^\d+$'))">
+            <sequence select="false()"/>
+         </when>
+         <otherwise>
+            <variable name="mainPart" select="substring($number, 1, 9)"/>
+            <variable name="checkDigit" select="substring($number, 10, 1)"/>
+            <variable name="sum" as="xs:integer">
+               <sequence select="xs:integer(sum(       for $pos in 1 to string-length($mainPart) return         if ($pos mod 2 = 1)         then (number(substring($mainPart, string-length($mainPart) - $pos + 1, 1)) * 2) mod 10 +           (number(substring($mainPart, string-length($mainPart) - $pos + 1, 1)) * 2) idiv 10         else number(substring($mainPart, string-length($mainPart) - $pos + 1, 1))      ))"/>
+            </variable>
+            <variable name="calculatedCheckDigit" select="(10 - $sum mod 10) mod 10"/>
+            <sequence select="$calculatedCheckDigit = number($checkDigit)"/>
+         </otherwise>
+      </choose>
+   </function>
+
     
 
-    <pattern>
+   <pattern>
  
 		    <rule context="//*[not(*) and not(normalize-space())]">
 			      <assert id="PEPPOL-COMMON-R001" test="false()" flag="fatal">Document MUST not contain empty elements.</assert>
@@ -1181,7 +1199,7 @@
     <function name="u:tipoOrdine" as="xs:string"
               xmlns="http://www.w3.org/1999/XSL/Transform">		
 		<param name="arg" as="xs:string?"/>
-		<variable name="tipo" select="if (u:countDelitited($arg) != 3) then 'NSO2' else u:getPartTokenizeID($arg,4)"/>
+		<variable name="tipo" select="if (u:countDelitited($arg) != 4) then 'NSO2' else u:getPartTokenizeID($arg,4)"/>
 		<sequence select="if ($tipo eq 'Cancelled') then 'CANC' else
 							(if ($tipo eq 'Revised') then 'SOST' else 
 								(if ($tipo eq 'Connected') then 'CONN' else 
@@ -1209,7 +1227,7 @@
       <param name="reference" as="xs:string"/>
 	  <variable name="stringList" select="tokenize($reference, '#')"/>
 	  
-	  <sequence select="count($stringList) - 1"/>
+	  <sequence select="count($stringList)"/>
 		
 	</function>
 
@@ -1228,6 +1246,21 @@
 
 		<sequence select="string(normalize-space($arg)) castable as xs:date"/>
 
+	</function>
+
+	<function name="u:controlliUlterioriCodici" as="xs:boolean" xmlns="http://www.w3.org/1999/XSL/Transform">
+		<param name="arg" as="xs:string?"/>
+		<variable name="codici" select="tokenize($arg,':')"/>
+		<variable name="tipoDocumento" select="upper-case($codici[1])"/>
+		<sequence select=" if (($tipoDocumento ='CUP')
+								or ($tipoDocumento ='DDT')
+								or ($tipoDocumento ='IMPEGNO')
+								or ($tipoDocumento ='DELIBERA')
+								or ($tipoDocumento ='CONVENZIONE')
+								or ($tipoDocumento ='CONTRATTO')
+								or ($tipoDocumento ='CATALOGO'))
+							then ($codici[2]!='')
+							else false() "/>
 	</function>
 
 	<function name="u:checkEndpoint" as="xs:integer" 
@@ -1268,6 +1301,153 @@
 		"/>
 			
 	</function>
+
+	<function name="u:valueOfDigit" as="xs:integer" xmlns="http://www.w3.org/1999/XSL/Transform">
+		<param name="digitCaseSensitive" as="xs:string"/>
+		<param name="posit" as="xs:integer"/>
+		<variable name="digit" select="upper-case($digitCaseSensitive)"/>
+		<sequence select="
+					if ( ($digit = '0') or ($digit = 'A'))
+					then (
+						if(($posit mod 2) = 0) then 0 else 1
+					)
+					else if ( ($digit = '1') or ($digit = 'B'))
+					then (
+						if(($posit mod 2) = 0) then 1 else 0
+					)
+					else if ( ($digit = '2') or ($digit = 'C'))
+					then (
+						if(($posit mod 2) = 0) then 2 else 5
+					)
+					else if ( ($digit = '3') or ($digit = 'D'))
+					then (
+						if(($posit mod 2) = 0) then 3 else 7
+					)
+					else if ( ($digit = '4') or ($digit = 'E'))
+					then (
+						if(($posit mod 2) = 0) then 4 else 9
+					)
+					else if ( ($digit = '5') or ($digit = 'F'))
+					then (
+						if(($posit mod 2) = 0) then 5 else 13
+					)
+					else if ( ($digit = '6') or ($digit = 'G'))
+					then (
+						if(($posit mod 2) = 0) then 6 else 15
+					)
+					else if ( ($digit = '7') or ($digit = 'H'))
+					then (
+						if(($posit mod 2) = 0) then 7 else 17
+					)
+					else if ( ($digit = '8') or ($digit = 'I'))
+					then (
+						if(($posit mod 2) = 0) then 8 else 19
+					)
+					else if ( ($digit = '9') or ($digit = 'J'))
+					then (
+						if(($posit mod 2) = 0) then 9 else 21
+					)
+					else if ($digit = 'K')
+					then (
+						if(($posit mod 2) = 0) then 10 else 2
+					)
+					else if ($digit = 'L')
+					then (
+						if(($posit mod 2) = 0) then 11 else 4
+					)
+					else if ($digit = 'M')
+					then (
+						if(($posit mod 2) = 0) then 12 else 18
+					)
+					else if ($digit = 'N')
+					then (
+						if(($posit mod 2) = 0) then 13 else 20
+					)
+					else if ($digit = 'O')
+					then (
+						if(($posit mod 2) = 0) then 14 else 11
+					)
+					else if ($digit = 'P')
+					then (
+						if(($posit mod 2) = 0) then 15 else 3
+					)
+					else if ($digit = 'Q')
+					then (
+						if(($posit mod 2) = 0) then 16 else 6
+					)
+					else if ($digit = 'R')
+					then (
+						if(($posit mod 2) = 0) then 17 else 8
+					)
+					else if ($digit = 'S')
+					then (
+						if(($posit mod 2) = 0) then 18 else 12
+					)
+					else if ($digit = 'T')
+					then (
+						if(($posit mod 2) = 0) then 19 else 14
+					)
+					else if ($digit = 'U')
+					then (
+						if(($posit mod 2) = 0) then 20 else 16
+					)
+					else if ($digit = 'V')
+					then (
+						if(($posit mod 2) = 0) then 21 else 10
+					)
+					else if ($digit = 'W')
+					then (
+						if(($posit mod 2) = 0) then 22 else 22
+					)
+					else if ($digit = 'X')
+					then (
+						if(($posit mod 2) = 0) then 23 else 25
+					)
+					else if ($digit = 'Y')
+					then (
+						if(($posit mod 2) = 0) then 24 else 24
+					)
+					else if ($digit = 'Z')
+					then (
+						if(($posit mod 2) = 0) then 25 else 23
+					)
+					else 26
+					"/>
+	</function>
+
+	<function name="u:checkDigit" as="xs:string" xmlns="http://www.w3.org/1999/XSL/Transform">
+		<param name="digit" as="xs:integer"/>
+		<sequence select="
+					if ($digit = 0) then 'A'
+					else if ($digit = 1) then 'B'
+					else if ($digit = 2) then 'C'
+					else if ($digit = 3) then 'D'
+					else if ($digit = 4) then 'E'
+					else if ($digit = 5) then 'F'
+					else if ($digit = 6) then 'G'
+					else if ($digit = 7) then 'H'
+					else if ($digit = 8) then 'I'
+					else if ($digit = 9) then 'J'
+					else if ($digit = 10) then 'K'
+					else if ($digit = 11) then 'L'
+					else if ($digit = 12) then 'M'
+					else if ($digit = 13) then 'N'
+					else if ($digit = 14) then 'O'
+					else if ($digit = 15) then 'P'
+					else if ($digit = 16) then 'Q'
+					else if ($digit = 17) then 'R'
+					else if ($digit = 18) then 'S'
+					else if ($digit = 19) then 'T'
+					else if ($digit = 20) then 'U'
+					else if ($digit = 21) then 'V'
+					else if ($digit = 22) then 'W'
+					else if ($digit = 23) then 'X'
+					else if ($digit = 24) then 'Y'
+					else if ($digit = 25) then 'Z'
+					else '0'
+					"/>
+	</function>
+
 	
     <!--function name="u:checkCodiceIPA" as="xs:boolean"
 			  xmlns="http://www.w3.org/1999/XSL/Transform">
@@ -1625,7 +1805,7 @@
 				NSO_242 - Il formato della data presente nell’elemento non è corretto (esempio corretto: "2020-01-31"). The format of the date in the element is incorrect (correct format example: "2020-01-31").
 			</assert>
 			
-			<assert id="NSO_243" test="not( (u:is($SOST) or u:is($CANC) or u:is($CONN) or u:is($INVO)) and ( not ( u:checkPIVAseIT(u:getPartTokenizeID(.,3)) ) ) )" flag="fatal">
+			<assert id="NSO_243" test="not( (u:is($SOST) or u:is($CANC) or u:is($CONN) or u:is($INVO)) and ( not((u:getPartTokenizeID(.,3)!='') and( u:checkPIVAseIT(u:getPartTokenizeID(.,3)) or u:checkCodiceIPA(u:getPartTokenizeID(.,3))) ) ) )" flag="fatal">
 				NSO_243 - L'EndpointID indicato nell’elemento non è un valore valido (esempi di valori corretti: "IT01043931003", "QLHCFC"). The EndpointID specified in the element  is not a valid value (correct values examples: "IT01043931003", "QLHCFC").
 			</assert>
 			
@@ -1639,6 +1819,19 @@
 
 		</rule>
 		
+	</pattern>
+
+	<pattern id="controllo_lineitem_id">
+		<rule context="cac:LineItem">
+			<extends rule="define_tipologia_ordine"/>
+			<assert id="NSO_264" test="( (string-length(cbc:ID) lt 6) )" flag="warning">NSO_264 - E' consigliabile che la lunghezza dell’identificativo della linea d'ordine non sia maggiore di 6. - Element 'cbc:ID' SHOULD have a maximum length of 6 characters.
+			</assert>
+		</rule>
+	</pattern>
+	<pattern id="controlloConsegnaDomicilio">
+		<rule context="cac:DeliveryLocation">
+			<assert id="NSO_263" flag="warning" test="if( ((upper-case(cbc:ID)) eq 'CONSEGNA DOMICILIARE') ) then false() else true()">NSO_263 – Avviso che non invalida l’ordine trasmesso: se l’elemento 'cac:Delivery' contiene informazioni relative a una persona fisica, è necessario osservare le vigenti norme in materia di protezione dei dati personali. - This warning does not invalidate the order: if the element 'cac:DeliveryTerms' contains personal data, the current data protection regulations must be observed.</assert>
+		</rule>
 	</pattern>
 
     <!-- DEFINIZIONE PATTERN NELLA PHASE verificaLineeOrdine -->	
@@ -1810,7 +2003,7 @@
 			<extends rule="define_tipologia_ordine"/>
 
 			<assert id="NSO_260"
-                 test="not( (u:is($INIZ) or u:is($CONN) or u:is($SOST) or u:is($CANC) or u:is($INVO)) and ( u:verificaCIG(cbc:ID) ) )"
+                 test=" ( u:verificaCIG(cbc:ID) )"
                  flag="fatal">NSO_260 - Il Codice Identificativo di Gara (CIG o Smart CIG) o il Codice di esenzione indicato nell’elemento non è valido. - The Tender Identification Code (CIG or Smart CIG) or the Exemption Code specified in the element is invalid.
 			</assert>
 			
@@ -1820,7 +2013,7 @@
 			<extends rule="define_tipologia_ordine"/>
 		
 			<assert id="NSO_260"
-                 test="not( (u:is($INIZ) or u:is($CONN) or u:is($SOST) or u:is($CANC) or u:is($INVO)) and ( u:verificaCIG(cbc:ID) ) )"
+                 test="if (  u:verificaCIG(cbc:ID)  ) then true() else (u:controlliUlterioriCodici(cbc:ID))"
                  flag="fatal">NSO_260 - Il Codice Identificativo di Gara (CIG o Smart CIG) o il Codice di esenzione indicato nell’elemento non è valido. - The Tender Identification Code (CIG or Smart CIG) or the Exemption Code specified in the element is invalid.
 			</assert>
 			

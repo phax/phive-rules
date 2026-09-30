@@ -32,7 +32,7 @@ import com.helger.phive.xml.source.IValidationSourceXML;
 import com.helger.ubl21.UBL21Marshaller;
 
 /**
- * Italian Peppol validation artefacts based on BIS 3.0.17.
+ * Italian Peppol validation artefacts based on BIS 3.0.21.
  *
  * @author Philip Helger
  */
@@ -72,7 +72,7 @@ public final class PeppolItalyValidation3_2_1
     ValueEnforcer.notNull (aRegistry, "Registry");
 
     final String sVersion = " (" + VERSION_STR + ")";
-    final String sAkaVersionBIS = " (for BIS 3.0.18)";
+    final String sAkaVersionBIS = " (for BIS 3.0.21)";
 
     final String PREFIX_XSLT = "external/schematron/peppol-italy/" + VERSION_STR + "/";
     final IReadableResource DESPATCH_ADVICE = new ClassPathResource (PREFIX_XSLT +

@@ -4,7 +4,7 @@
     Licensed under European Union Public Licence (EUPL) version 1.2.
 	This schematron uses business terms defined the CEN/EN16931-1 and is reproduced with permission from CEN. CEN bears no liability from the use of the content and implementation of this schematron and gives no warranties expressed or implied for any purpose.
 	
-	Peppol BIS Billing 3.0.18
+	Peppol BIS Billing 3.0.20
 -->
 <schema xmlns="http://purl.oclc.org/dsdl/schematron" xmlns:u="utils" schemaVersion="iso" queryBinding="xslt2">
 	<title>EN16931 model bound to UBL</title>
@@ -337,7 +337,7 @@
 	<include href="OPENPEPPOL/7-PEPPOL-EN16931-UBL-sweden.inc"/>
 
 	<!-- Sender Rules -->
-	include href="OPENPEPPOL/8-PEPPOL-EN16931-UBL-greece-sender.inc"/>
+	<include href="OPENPEPPOL/8-PEPPOL-EN16931-UBL-greece-sender.inc"/>
 	
 
 	<!-- Greek Sender and Greek Receiver rules -->

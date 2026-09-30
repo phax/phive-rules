@@ -4,7 +4,7 @@
     Licensed under European Union Public Licence (EUPL) version 1.2.
 	This schematron uses business terms defined the CEN/EN16931-1 and is reproduced with permission from CEN. CEN bears no liability from the use of the content and implementation of this schematron and gives no warranties expressed or implied for any purpose.
 	
-	Peppol BIS Billing 3.0.17
+	Peppol BIS Billing 3.0.20
 -->
 <schema xmlns="http://purl.oclc.org/dsdl/schematron" xmlns:u="utils" schemaVersion="iso" queryBinding="xslt2">
 	<title>EN16931 model bound to UBL</title>
@@ -61,10 +61,7 @@
 	<phase id="OP_codelist_phase">
 		<active pattern="OP-cl-formatting-rules"/>
 	</phase>
-	
-	
 	<!-- OPENPEPPOL FUNCTIONS AND DEFINITIONS -->
-	
 	<!-- Parameters -->
 	<let name="profile" value="
       if (/*/cbc:ProfileID and matches(normalize-space(/*/cbc:ProfileID), 'urn:fdc:peppol.eu:2017:poacc:billing:([0-9]{2}):1.0')) then
@@ -91,7 +88,6 @@
 		else
 		'XX'"/>
 	<!-- -->
-
 	<!-- Functions -->
 	<function xmlns="http://www.w3.org/1999/XSL/Transform" name="u:gln" as="xs:boolean">
 		<param name="val"/>
@@ -231,8 +227,34 @@
 ((string-to-codepoints(substring($val,11,1)) - 48) * 19)) mod 89 = 0
 "/>
 	</function>
-	<!-- Empty elements -->
 	
+  <function xmlns="http://www.w3.org/1999/XSL/Transform" name="u:checkSEOrgnr" as="xs:boolean">
+    <param name="number" as="xs:string"/>
+	<choose>
+		<!-- Check if input is numeric -->
+		<when test="not(matches($number, '^\d+$'))">
+			<sequence select="false()"/>
+		</when>
+		<otherwise>
+			<!-- verify the check number of the provided identifier according to the Luhn algorithm-->
+			<variable name="mainPart" select="substring($number, 1, 9)"/>
+			<variable name="checkDigit" select="substring($number, 10, 1)"/>
+			<variable name="sum" as="xs:integer">
+			  <value-of select="sum(
+						for $pos in 1 to string-length($mainPart) return 
+							if ($pos mod 2 = 1) 
+							then (number(substring($mainPart, string-length($mainPart) - $pos + 1, 1)) * 2) mod 10 + 
+								 (number(substring($mainPart, string-length($mainPart) - $pos + 1, 1)) * 2) idiv 10 
+							else number(substring($mainPart, string-length($mainPart) - $pos + 1, 1))
+					)"/>
+			</variable>
+			<variable name="calculatedCheckDigit" select="(10 - $sum mod 10) mod 10"/>
+			<sequence select="$calculatedCheckDigit = number($checkDigit)"/>
+		</otherwise>
+	</choose>
+  </function>	
+
+	<!-- Empty elements -->
 	<!--
     Transaction rules
 
@@ -245,9 +267,8 @@
     R08X - Additonal document reference
     R1XX - Line level
     R11X - Invoice period
-  -->		
-  
-  <!-- GREECE -->
+  -->
+	<!-- GREECE -->
 	<!-- General functions and variable for Greek Rules -->
 	<function xmlns="http://www.w3.org/1999/XSL/Transform" name="u:TinVerification" as="xs:boolean">
 		<param name="val" as="xs:string"/>
@@ -265,7 +286,7 @@
 			(number($digits[1])*256) "/>
 		<value-of select="($checksum  mod 11) mod 10 = number($digits[9])"/>
 	</function>
-
+	
 	<let name="isGreekSender" value="($supplierCountry ='GR') or ($supplierCountry ='EL')"/>
 	<let name="isGreekReceiver" value="($customerCountry ='GR') or ($customerCountry ='EL')"/>
 	<let name="isGreekSenderandReceiver" value="$isGreekSender and $isGreekReceiver"/>
@@ -278,13 +299,9 @@
     upper-case(normalize-space(/*/cac:AccountingSupplierParty/cac:Party/cac:PostalAddress/cac:Country/cbc:IdentificationCode))
     else
     'XX'"/>
-	
 	<let name="supplierCountryIsDE" value="(upper-case(normalize-space(/*/cac:AccountingSupplierParty/cac:Party/cac:PostalAddress/cac:Country/cbc:IdentificationCode)) = 'DE')"/>
 	<let name="customerCountryIsDE" value="(upper-case(normalize-space(/*/cac:AccountingCustomerParty/cac:Party/cac:PostalAddress/cac:Country/cbc:IdentificationCode)) = 'DE')"/>
 	<let name="documentCurrencyCode" value="/*/cbc:DocumentCurrencyCode"/>
-	
-	
-	
 	<!-- EN16931 UBL Validation -->
 	<include href="CEN/CEN-EN16931-UBL-syntax.inc"/>
 	<include href="CEN/CEN-EN16931-UBL-model.inc"/>
@@ -293,36 +310,24 @@
 	<include href="OPENPEPPOL/1-PEPPOL-EN16931-UBL-emptyElements.inc"/>
 	<include href="OPENPEPPOL/2-PEPPOL-EN16931-UBL-creditNote.inc"/>
 	<include href="OPENPEPPOL/3-PEPPOL-EN16931-UBL-general.inc"/>
-	
 	<!-- National rules -->
 	<include href="OPENPEPPOL/4-PEPPOL-EN16931-UBL-norway.inc"/>
-	
 	<!-- DENMARK -->
 	<include href="OPENPEPPOL/5-PEPPOL-EN16931-UBL-denmark.inc"/>
-	
 	<!-- ITALY -->
 	<include href="OPENPEPPOL/6-PEPPOL-EN16931-UBL-italy.inc"/>
-	
 	<!-- SWEDEN -->
 	<include href="OPENPEPPOL/7-PEPPOL-EN16931-UBL-sweden.inc"/>
-
 	<!-- Sender Rules -->
 	<include href="OPENPEPPOL/8-PEPPOL-EN16931-UBL-greece-sender.inc"/>
-	
-
 	<!-- Greek Sender and Greek Receiver rules -->
 	<include href="OPENPEPPOL/9-PEPPOL-EN16931-UBL-greece-senderreceiver.inc"/>
-	
 	<!-- ICELAND -->
 	<include href="OPENPEPPOL/10-PEPPOL-EN16931-UBL-iceland.inc"/>
-	
 	<!-- NETHERLANDS -->
 	<include href="OPENPEPPOL/11-PEPPOL-EN16931-UBL-netherlands.inc"/>
-	
 	<!-- GERMANY -->
 	<include href="OPENPEPPOL/12-PEPPOL-EN16931-UBL-germany.inc"/>
-	
 	<!-- Restricted code lists and formatting -->
 	<include href="OPENPEPPOL/13-PEPPOL-EN16931-UBL-codelists.inc"/>
-	
 </schema>
