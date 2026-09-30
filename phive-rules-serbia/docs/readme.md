@@ -53,3 +53,8 @@ Advice and Application Response) - the basis for writing Schematron business rul
 is in [`seo-business-rules.md`](seo-business-rules.md). It is derived from the MFIN
 *Tehničko uputstvo* (Technical Instruction) v1.5.0, section 1, pages 4-37. See
 https://github.com/phax/phive-rules/issues/68
+
+`Техничко упутство1.6.0.pdf` (created 2026-07-02) is the current version from
+https://eotpremnica.efaktura.gov.rs/tekst/5370/tehnicko-uputstvo-api-dokumentacija.php.
+Its section 1 (pages 4-37) is textually identical to v1.5.0 - the changes are in the API part -
+so `seo-business-rules.md` applies unchanged.
