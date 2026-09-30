@@ -50,7 +50,11 @@ public final class SETUValidation
   public static final DVRCoordinate VID_SETU_STAFFING_ORDER_14 = DVRHelper.createCoordinate (GROUP_ID,
                                                                                              "staffing-order",
                                                                                              "1.4");
+  @Deprecated (forRemoval = false)
   public static final DVRCoordinate VID_SETU_TIMECARD_14 = DVRHelper.createCoordinate (GROUP_ID, "timecard", "1.4");
+
+  // V1.4.2
+  public static final DVRCoordinate VID_SETU_TIMECARD_142 = DVRHelper.createCoordinate (GROUP_ID, "timecard", "1.4.2");
 
   /**
    * @deprecated Use {@link #VID_SETU_TIMECARD_14} instead
@@ -85,6 +89,7 @@ public final class SETUValidation
    * @param aRegistry
    *        The registry to add the artefacts. May not be <code>null</code>.
    */
+  @SuppressWarnings ("deprecation")
   public static void initSETU (@NonNull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
   {
     ValueEnforcer.notNull (aRegistry, "Registry");
@@ -132,11 +137,23 @@ public final class SETUValidation
     VesXmlBuilder.builder ()
                  .vesID (VID_SETU_TIMECARD_14)
                  .displayNamePrefix ("SETU Timcard ")
-                 .notDeprecated ()
+                 .deprecated ()
                  .addXSD (CXML_XSD.getXSDResource (),
                           new ClassPathResource (sPrefixXSD + "hr-xml/SIDES/TimeCardAdditionalData.xsd", _getCL ()),
                           new ClassPathResource (sPrefixXSD + "hr-xml/TimeCard/TimeCard.xsd", _getCL ()))
                  .addSchematron (_createXSLT (new ClassPathResource (sPrefixSCH + "1.4/xslt/RTE-v1.4-TimeCard.xslt",
+                                                                     _getCL ())))
+                 .registerInto (aRegistry);
+
+    // V1.4.2
+    VesXmlBuilder.builder ()
+                 .vesID (VID_SETU_TIMECARD_142)
+                 .displayNamePrefix ("SETU Timecard ")
+                 .notDeprecated ()
+                 .addXSD (CXML_XSD.getXSDResource (),
+                          new ClassPathResource (sPrefixXSD + "hr-xml/SIDES/TimeCardAdditionalData.xsd", _getCL ()),
+                          new ClassPathResource (sPrefixXSD + "hr-xml/TimeCard/TimeCard.xsd", _getCL ()))
+                 .addSchematron (_createXSLT (new ClassPathResource (sPrefixSCH + "1.4.2/xslt/RTE-v1.4-TimeCard.xslt",
                                                                      _getCL ())))
                  .registerInto (aRegistry);
   }

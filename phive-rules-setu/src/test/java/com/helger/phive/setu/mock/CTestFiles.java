@@ -33,6 +33,7 @@ import com.helger.phive.api.mock.PhiveTestFile;
 import com.helger.phive.setu.SETUValidation;
 import com.helger.phive.xml.source.IValidationSourceXML;
 
+@SuppressWarnings ("deprecation")
 @Immutable
 public final class CTestFiles
 {
@@ -53,7 +54,8 @@ public final class CTestFiles
     for (final DVRCoordinate aESID : new DVRCoordinate [] { SETUValidation.VID_SETU_ASSIGNMENT_14,
                                                             SETUValidation.VID_SETU_HUMAN_RESOURCE_14,
                                                             SETUValidation.VID_SETU_STAFFING_ORDER_14,
-                                                            SETUValidation.VID_SETU_TIMECARD_14 })
+                                                            SETUValidation.VID_SETU_TIMECARD_14,
+                                                            SETUValidation.VID_SETU_TIMECARD_142 })
       for (final IReadableResource aRes : getAllMatchingTestFiles (aESID))
       {
         assertTrue ("Not existing test file: " + aRes.getPath (), aRes.exists ());
@@ -90,6 +92,14 @@ public final class CTestFiles
     }
     if (aVESID.equals (SETUValidation.VID_SETU_TIMECARD_14))
     {
+      return new CommonsArrayList <> (new String [] { "TimecardExample_v1.4.xml" },
+                                      x -> new FileSystemResource (sBasePath + "1.4/timecard/" + x));
+    }
+
+    // v1.4.2
+    if (aVESID.equals (SETUValidation.VID_SETU_TIMECARD_142))
+    {
+      // The TimeCard message format is unchanged - only the Schematron code list was extended
       return new CommonsArrayList <> (new String [] { "TimecardExample_v1.4.xml" },
                                       x -> new FileSystemResource (sBasePath + "1.4/timecard/" + x));
     }
