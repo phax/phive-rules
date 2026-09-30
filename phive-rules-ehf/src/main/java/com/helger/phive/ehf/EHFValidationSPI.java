@@ -19,6 +19,9 @@ package com.helger.phive.ehf;
 import org.jspecify.annotations.NonNull;
 
 import com.helger.annotation.style.IsSPIImplementation;
+import com.helger.annotation.style.ReturnsMutableCopy;
+import com.helger.collection.commons.ICommonsList;
+import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
 import com.helger.phive.rules.shared.IValidationRulesRegistrarSPI;
 import com.helger.phive.xml.source.IValidationSourceXML;
@@ -31,6 +34,14 @@ import com.helger.phive.xml.source.IValidationSourceXML;
 @IsSPIImplementation
 public final class EHFValidationSPI implements IValidationRulesRegistrarSPI
 {
+  @Override
+  @NonNull
+  @ReturnsMutableCopy
+  public ICommonsList <DVRCoordinate> getAllPrerequisites ()
+  {
+    return EHFValidation.getAllPrerequisites ();
+  }
+
   public void registerValidationRules (@NonNull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
   {
     EHFValidation.initEHF (aRegistry);

@@ -34,6 +34,8 @@ import com.helger.phive.ehf.EHFValidation;
 import com.helger.phive.ehf.EHFValidationG2;
 import com.helger.phive.ehf.EHFValidationG3_2020_03;
 import com.helger.phive.ehf.EHFValidationG3_2023_02;
+import com.helger.phive.ehf.EHFValidationG3_2026_09;
+import com.helger.phive.en16931.EN16931Validation;
 import com.helger.phive.xml.source.IValidationSourceXML;
 
 @Immutable
@@ -43,6 +45,7 @@ public final class CTestFiles
   public static final ValidationExecutorSetRegistry <IValidationSourceXML> VES_REGISTRY = new ValidationExecutorSetRegistry <> ();
   static
   {
+    EN16931Validation.initEN16931 (VES_REGISTRY);
     EHFValidation.initEHF (VES_REGISTRY);
   }
 
@@ -118,7 +121,25 @@ public final class CTestFiles
                                                             EHFValidationG3_2023_02.VID_EHF_ORDER_RESPONSE_303,
                                                             EHFValidationG3_2023_02.VID_EHF_PAYMENT_REQUEST_302,
                                                             EHFValidationG3_2023_02.VID_EHF_PUNCH_OUT_303,
-                                                            EHFValidationG3_2023_02.VID_EHF_REMINDER_303 })
+                                                            EHFValidationG3_2023_02.VID_EHF_REMINDER_303,
+                                                            /* 2026-09 */
+                                                            EHFValidationG3_2026_09.VID_EHF_ADVANCED_ORDER_CANCELLATION_304,
+                                                            EHFValidationG3_2026_09.VID_EHF_ADVANCED_ORDER_CHANGE_304,
+                                                            EHFValidationG3_2026_09.VID_EHF_ADVANCED_ORDER_INITIATION_304,
+                                                            EHFValidationG3_2026_09.VID_EHF_ADVANCED_ORDER_RESPONSE_304,
+                                                            EHFValidationG3_2026_09.VID_EHF_CATALOGUE_304,
+                                                            EHFValidationG3_2026_09.VID_EHF_CATALOGUE_RESPONSE_304,
+                                                            EHFValidationG3_2026_09.VID_EHF_DESPATCH_ADVICE_303,
+                                                            EHFValidationG3_2026_09.VID_EHF_FORWARD_BILLING_INVOICE_304,
+                                                            EHFValidationG3_2026_09.VID_EHF_FORWARD_BILLING_CREDIT_NOTE_304,
+                                                            EHFValidationG3_2026_09.VID_EHF_ORDER_AGREEMENT_304,
+                                                            EHFValidationG3_2026_09.VID_EHF_ORDER_304,
+                                                            EHFValidationG3_2026_09.VID_EHF_ORDER_RESPONSE_304,
+                                                            EHFValidationG3_2026_09.VID_EHF_PAYMENT_REQUEST_303,
+                                                            EHFValidationG3_2026_09.VID_EHF_PUNCH_OUT_304,
+                                                            EHFValidationG3_2026_09.VID_EHF_REMINDER_304,
+                                                            EHFValidationG3_2026_09.VID_EHF_SELF_BILLING_INVOICE_300,
+                                                            EHFValidationG3_2026_09.VID_EHF_SELF_BILLING_CREDIT_NOTE_300 })
       for (final IReadableResource aRes : getAllMatchingTestFiles (aESID))
       {
         assertTrue ("Not existing test file: " + aRes.getPath (), aRes.exists ());
@@ -422,6 +443,89 @@ public final class CTestFiles
     if (aVESID.equals (EHFValidationG3_2023_02.VID_EHF_REMINDER_303))
     {
       return new CommonsArrayList <> (new ClassPathResource (sPath + "reminder-3.0/Reminder-Example.xml"));
+    }
+
+    // 2026-09
+    sPath = "/external/test-files/2026-09/";
+    if (aVESID.equals (EHFValidationG3_2026_09.VID_EHF_ADVANCED_ORDER_CANCELLATION_304))
+    {
+      return new CommonsArrayList <> ();
+    }
+    if (aVESID.equals (EHFValidationG3_2026_09.VID_EHF_ADVANCED_ORDER_CHANGE_304))
+    {
+      return new CommonsArrayList <> ();
+    }
+    if (aVESID.equals (EHFValidationG3_2026_09.VID_EHF_ADVANCED_ORDER_INITIATION_304))
+    {
+      return new CommonsArrayList <> (new ClassPathResource (sPath +
+                                                             "advanced-ordering-3.0/Advanced_Order_Example.xml"));
+    }
+    if (aVESID.equals (EHFValidationG3_2026_09.VID_EHF_ADVANCED_ORDER_RESPONSE_304))
+    {
+      return new CommonsArrayList <> (new ClassPathResource (sPath +
+                                                             "advanced-ordering-3.0/Advanced_OrderResponse_Example.xml"));
+    }
+    if (aVESID.equals (EHFValidationG3_2026_09.VID_EHF_CATALOGUE_304))
+    {
+      return new CommonsArrayList <> (new ClassPathResource (sPath + "catalogue-3.0/Catalogue_Example.xml"));
+    }
+    if (aVESID.equals (EHFValidationG3_2026_09.VID_EHF_CATALOGUE_RESPONSE_304))
+    {
+      return new CommonsArrayList <> (new ClassPathResource (sPath + "catalogue-3.0/CatalogueResponse_Example.xml"));
+    }
+    if (aVESID.equals (EHFValidationG3_2026_09.VID_EHF_DESPATCH_ADVICE_303))
+    {
+      return new CommonsArrayList <> (new ClassPathResource (sPath + "despatch-advice-3.0/DespatchAdvice_Example.xml"));
+    }
+    if (aVESID.equals (EHFValidationG3_2026_09.VID_EHF_FORWARD_BILLING_INVOICE_304))
+    {
+      return new CommonsArrayList <> (new ClassPathResource (sPath +
+                                                             "forward-billing-3.0/forward-billing-nettleie-business.xml"),
+                                      new ClassPathResource (sPath +
+                                                             "forward-billing-3.0/forward-billing-nettleie-consumer.xml"));
+    }
+    if (aVESID.equals (EHFValidationG3_2026_09.VID_EHF_FORWARD_BILLING_CREDIT_NOTE_304))
+    {
+      return new CommonsArrayList <> ();
+    }
+    if (aVESID.equals (EHFValidationG3_2026_09.VID_EHF_ORDER_AGREEMENT_304))
+    {
+      return new CommonsArrayList <> (new ClassPathResource (sPath + "order-agreement-3.0/OrderAgreement_Example.xml"));
+    }
+    if (aVESID.equals (EHFValidationG3_2026_09.VID_EHF_ORDER_304))
+    {
+      return new CommonsArrayList <> (new ClassPathResource (sPath + "ordering-3.0/Order_Example.xml"));
+    }
+    if (aVESID.equals (EHFValidationG3_2026_09.VID_EHF_ORDER_RESPONSE_304))
+    {
+      return new CommonsArrayList <> (new ClassPathResource (sPath + "ordering-3.0/OrderResponse_Example.xml"));
+    }
+    if (aVESID.equals (EHFValidationG3_2026_09.VID_EHF_PAYMENT_REQUEST_303))
+    {
+      return new CommonsArrayList <> (new ClassPathResource (sPath +
+                                                             "payment-request-3.0/PaymentRequest-example-1.xml"),
+                                      new ClassPathResource (sPath +
+                                                             "payment-request-3.0/PaymentRequest-example-2.xml"));
+    }
+    if (aVESID.equals (EHFValidationG3_2026_09.VID_EHF_PUNCH_OUT_304))
+    {
+      return new CommonsArrayList <> (new ClassPathResource (sPath + "punch-out-3.0/PunchOut_Example.xml"));
+    }
+    if (aVESID.equals (EHFValidationG3_2026_09.VID_EHF_REMINDER_304))
+    {
+      return new CommonsArrayList <> (new ClassPathResource (sPath + "reminder-3.0/Reminder-Example.xml"));
+    }
+    if (aVESID.equals (EHFValidationG3_2026_09.VID_EHF_SELF_BILLING_INVOICE_300))
+    {
+      return new CommonsArrayList <> (new ClassPathResource (sPath + "self-billing-3.0/SB-base-example.xml"),
+                                      new ClassPathResource (sPath + "self-billing-3.0/SB-Allowance-example.xml"),
+                                      new ClassPathResource (sPath +
+                                                             "self-billing-3.0/SB-base-negative-inv-correction.xml"));
+    }
+    if (aVESID.equals (EHFValidationG3_2026_09.VID_EHF_SELF_BILLING_CREDIT_NOTE_300))
+    {
+      return new CommonsArrayList <> (new ClassPathResource (sPath +
+                                                             "self-billing-3.0/SB-base-creditnote-correction.xml"));
     }
 
     throw new IllegalArgumentException ("Invalid VESID: " + aVESID);

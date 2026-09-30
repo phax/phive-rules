@@ -19,6 +19,9 @@ package com.helger.phive.ehf;
 import org.jspecify.annotations.NonNull;
 
 import com.helger.annotation.concurrent.Immutable;
+import com.helger.annotation.style.ReturnsMutableCopy;
+import com.helger.collection.commons.ICommonsList;
+import com.helger.diver.api.coord.DVRCoordinate;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
 import com.helger.phive.xml.source.IValidationSourceXML;
 
@@ -34,6 +37,18 @@ public final class EHFValidation
   {}
 
   /**
+   * @return A list of all prerequisite validation execution set coordinates that must already be
+   *         registered before {@link #initEHF(IValidationExecutorSetRegistry)} is called. Never
+   *         <code>null</code>.
+   */
+  @NonNull
+  @ReturnsMutableCopy
+  public static ICommonsList <DVRCoordinate> getAllPrerequisites ()
+  {
+    return EHFValidationG3_2026_09.getAllPrerequisites ();
+  }
+
+  /**
    * Register G2 and G3 artefacts.
    *
    * @param aRegistry
@@ -45,5 +60,6 @@ public final class EHFValidation
     EHFValidationG2.initEHF (aRegistry);
     EHFValidationG3_2020_03.initEHF (aRegistry);
     EHFValidationG3_2023_02.initEHF (aRegistry);
+    EHFValidationG3_2026_09.initEHF (aRegistry);
   }
 }

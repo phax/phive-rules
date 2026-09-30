@@ -65,6 +65,10 @@
       <artifactId>phive-rules-api</artifactId>
     </dependency>
     <dependency>
+      <groupId>com.helger.phive.rules</groupId>
+      <artifactId>phive-rules-en16931</artifactId>
+    </dependency>
+    <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <scope>test</scope>
@@ -148,6 +152,18 @@
             <configuration>
               <schematronDirectory>${basedir}/src/test/resources/external/rule-source/2022-06</schematronDirectory>
               <xsltDirectory>${basedir}/src/main/resources/external/schematron/2022-06/xslt</xsltDirectory>
+            </configuration>
+          </execution>
+      -->
+          <!--
+          <execution>
+            <id>2026-09</id>
+            <goals>
+              <goal>convert</goal>
+            </goals>
+            <configuration>
+              <schematronDirectory>${basedir}/src/test/resources/external/rule-source/2026-09</schematronDirectory>
+              <xsltDirectory>${basedir}/src/main/resources/external/schematron/2026-09/xslt</xsltDirectory>
             </configuration>
           </execution>
       -->
