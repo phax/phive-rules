@@ -67,9 +67,11 @@ public final class HReRacunValidation
                                                                                                 "1.0.1");
 
   // Version 1.0.2
+  @Deprecated
   public static final DVRCoordinate VID_HR_ERACUN_UBL_CREDITNOTE_102 = DVRHelper.createCoordinate (GROUP_ID,
                                                                                                    "ubl-creditnote",
                                                                                                    "1.0.2");
+  @Deprecated
   public static final DVRCoordinate VID_HR_ERACUN_UBL_INVOICE_102 = DVRHelper.createCoordinate (GROUP_ID,
                                                                                                 "ubl-invoice",
                                                                                                 "1.0.2");
@@ -81,6 +83,14 @@ public final class HReRacunValidation
   public static final DVRCoordinate VID_HR_ERACUN_UBL_INVOICE_103 = DVRHelper.createCoordinate (GROUP_ID,
                                                                                                 "ubl-invoice",
                                                                                                 "1.0.3");
+
+  // Version 1.0.4
+  public static final DVRCoordinate VID_HR_ERACUN_UBL_CREDITNOTE_104 = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                                   "ubl-creditnote",
+                                                                                                   "1.0.4");
+  public static final DVRCoordinate VID_HR_ERACUN_UBL_INVOICE_104 = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                                "ubl-invoice",
+                                                                                                "1.0.4");
 
   // eIzvjestavanje (e-reporting) XML Schema version 1.0
   public static final DVRCoordinate VID_HR_ERACUN_EIZVJESTAVANJE_10 = DVRHelper.createCoordinate (GROUP_ID,
@@ -172,14 +182,14 @@ public final class HReRacunValidation
       VesXmlBuilder.builder ()
                    .vesID (VID_HR_ERACUN_UBL_CREDITNOTE_102)
                    .displayNamePrefix ("HR eRacun Credit Note ")
-                   .notDeprecated ()
+                   .deprecated ()
                    .basedOn (aVESCN_1_3_15)
                    .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aXslt))
                    .registerInto (aRegistry);
       VesXmlBuilder.builder ()
                    .vesID (VID_HR_ERACUN_UBL_INVOICE_102)
                    .displayNamePrefix ("HR eRacun Invoice ")
-                   .notDeprecated ()
+                   .deprecated ()
                    .basedOn (aVESInv_1_3_15)
                    .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aXslt))
                    .registerInto (aRegistry);
@@ -198,6 +208,26 @@ public final class HReRacunValidation
                    .registerInto (aRegistry);
       VesXmlBuilder.builder ()
                    .vesID (VID_HR_ERACUN_UBL_INVOICE_103)
+                   .displayNamePrefix ("HR eRacun Invoice ")
+                   .notDeprecated ()
+                   .basedOn (aVESInv_1_3_15)
+                   .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aXslt))
+                   .registerInto (aRegistry);
+    }
+
+    // V1.0.4 referencing v1.3.15 of the EN rules
+    {
+      final ClassPathResource aXslt = new ClassPathResource ("/external/schematron/1.0.4/HR-CIUS-EXT-EN16931-UBL.xslt",
+                                                             _getCL ());
+      VesXmlBuilder.builder ()
+                   .vesID (VID_HR_ERACUN_UBL_CREDITNOTE_104)
+                   .displayNamePrefix ("HR eRacun Credit Note ")
+                   .notDeprecated ()
+                   .basedOn (aVESCN_1_3_15)
+                   .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aXslt))
+                   .registerInto (aRegistry);
+      VesXmlBuilder.builder ()
+                   .vesID (VID_HR_ERACUN_UBL_INVOICE_104)
                    .displayNamePrefix ("HR eRacun Invoice ")
                    .notDeprecated ()
                    .basedOn (aVESInv_1_3_15)

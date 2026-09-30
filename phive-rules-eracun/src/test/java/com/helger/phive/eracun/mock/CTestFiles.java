@@ -66,6 +66,9 @@ public final class CTestFiles
                                                             HReRacunValidation.VID_HR_ERACUN_UBL_CREDITNOTE_103,
                                                             HReRacunValidation.VID_HR_ERACUN_UBL_INVOICE_103,
 
+                                                            HReRacunValidation.VID_HR_ERACUN_UBL_CREDITNOTE_104,
+                                                            HReRacunValidation.VID_HR_ERACUN_UBL_INVOICE_104,
+
                                                             HReRacunValidation.VID_HR_ERACUN_EIZVJESTAVANJE_10 })
     {
       for (final IReadableResource aRes : getAllMatchingTestFiles (aESID))
@@ -132,6 +135,18 @@ public final class CTestFiles
     {
       // No test files
       return new CommonsArrayList <> (new String [] {}, x -> new ClassPathResource (sPrefix + "1.0.3/" + x));
+    }
+
+    // 1.0.4
+    if (aVESID.equals (HReRacunValidation.VID_HR_ERACUN_UBL_CREDITNOTE_104))
+    {
+      // No test files
+      return new CommonsArrayList <> (new String [] {}, x -> new ClassPathResource (sPrefix + "1.0.4/" + x));
+    }
+    if (aVESID.equals (HReRacunValidation.VID_HR_ERACUN_UBL_INVOICE_104))
+    {
+      // No test files
+      return new CommonsArrayList <> (new String [] {}, x -> new ClassPathResource (sPrefix + "1.0.4/" + x));
     }
 
     // eIzvjestavanje 1.0
