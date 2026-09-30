@@ -275,6 +275,15 @@ I hope that with the introduction of PINT, the versioning problem will be solved
 
 # News and noteworthy
 
+v4.6.3 - work in progress
+* Added the France PPF Flux 10 validation rules v1.1, VES coordinate `fr.ctc.flux10:report:1.1`, and deprecated the 1.0 rules.
+  See [issue #90](https://github.com/phax/phive-rules/issues/90).
+  The rules are taken from the AIFE package "AIFE - PPF_Flux10_v1.1", which contains the Schematron file `PPF_Flux10_1_8_v0_3.sch` only.
+  The AIFE XSDs are unchanged - they are still the ones from `XSD_Flux10.zip`.
+  The only change is to rule `G1.53`, both for invoices (`Invoice`) and for aggregated transactions (`Transactions`):
+    * The check that the total amount without VAT equals the sum of the VAT taxable amounts is now applied for every currency - previously it was only applied if the currency was `EUR`
+    * The check that the total VAT amount equals the sum of the VAT subtotal amounts is still only applied if the currency is `EUR`
+
 v4.6.2 - 2026-09-28
 * Added the Croatian eIzvjestavanje (e-reporting) XML Schema validation rules to `phive-rules-eracun`, VES coordinate `hr.gov.porezna.eracun:eizvjestavanje:1.0`.
   See [issue #89](https://github.com/phax/phive-rules/issues/89).

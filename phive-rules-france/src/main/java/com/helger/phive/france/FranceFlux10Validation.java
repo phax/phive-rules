@@ -42,7 +42,11 @@ public final class FranceFlux10Validation
   public static final String GROUP_ID = "fr.ctc.flux10";
 
   // v1.0
+  @Deprecated (forRemoval = false)
   public static final DVRCoordinate VID_FR_FLUX10_REPORT_1_0 = DVRHelper.createCoordinate (GROUP_ID, "report", "1.0");
+
+  // v1.1
+  public static final DVRCoordinate VID_FR_FLUX10_REPORT_1_1 = DVRHelper.createCoordinate (GROUP_ID, "report", "1.1");
 
   private FranceFlux10Validation ()
   {}
@@ -63,15 +67,30 @@ public final class FranceFlux10Validation
   {
     ValueEnforcer.notNull (aRegistry, "Registry");
 
+    // The AIFE XSDs are published separately from the Schematron rules - the v1.1 Schematron
+    // package contains no XSDs, so the ones from XSD_Flux10.zip are still used
     final String sXsdPrefix = "/external/schemas/flux10/1.0/";
-    final String sPrefix = "/external/schematron/flux10/1.0/xslt/";
+    final String sPrefix = "/external/schematron/flux10/";
 
+    // v1.0
     VesXmlBuilder.builder ()
                  .vesID (VID_FR_FLUX10_REPORT_1_0)
                  .displayNamePrefix ("France PPF Flux 10 e-reporting ")
+                 .deprecated ()
+                 .addXSD (new ClassPathResource (sXsdPrefix + "ereporting.xsd", _getCL ()))
+                 .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (sPrefix +
+                                                                                     "1.0/xslt/PPF_Flux10_v1_0.xslt",
+                                                                                     _getCL ()), null))
+                 .registerInto (aRegistry);
+
+    // v1.1
+    VesXmlBuilder.builder ()
+                 .vesID (VID_FR_FLUX10_REPORT_1_1)
+                 .displayNamePrefix ("France PPF Flux 10 e-reporting ")
                  .notDeprecated ()
                  .addXSD (new ClassPathResource (sXsdPrefix + "ereporting.xsd", _getCL ()))
-                 .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (sPrefix + "PPF_Flux10_v1_0.xslt",
+                 .addSchematron (PhiveRulesHelper.createXSLT (new ClassPathResource (sPrefix +
+                                                                                     "1.1/xslt/PPF_Flux10_v1_1.xslt",
                                                                                      _getCL ()), null))
                  .registerInto (aRegistry);
   }
