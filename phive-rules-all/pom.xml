@@ -59,6 +59,10 @@
     </dependency>
     <dependency>
       <groupId>com.helger.phive.rules</groupId>
+      <artifactId>phive-rules-brazil</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.helger.phive.rules</groupId>
       <artifactId>phive-rules-cii</artifactId>
     </dependency>
     <dependency>

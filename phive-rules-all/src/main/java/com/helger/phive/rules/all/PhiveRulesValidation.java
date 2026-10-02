@@ -21,6 +21,7 @@ import org.jspecify.annotations.NonNull;
 import com.helger.annotation.concurrent.Immutable;
 import com.helger.base.enforce.ValueEnforcer;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
+import com.helger.phive.brazil.BrazilValidation;
 import com.helger.phive.cii.CIIValidation;
 import com.helger.phive.ciusdk.CIUS_DKValidation;
 import com.helger.phive.ciuspt.CIUS_PTValidation;
@@ -85,6 +86,7 @@ public final class PhiveRulesValidation
     ValueEnforcer.notNull (aRegistry, "Registry");
 
     // Foundations
+    BrazilValidation.initBrazil (aRegistry);
     CIIValidation.initCII (aRegistry);
     CRSValidation.initCRS (aRegistry);
     EbInterfaceValidation.initEbInterface (aRegistry);
