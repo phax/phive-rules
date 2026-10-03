@@ -72,7 +72,7 @@
     <phive-rules-foundations.version>5.0.6-SNAPSHOT</phive-rules-foundations.version>
 
     <peppol-commons.version>13.1.1</peppol-commons.version>
-    <peppol-om.version>1.2.2</peppol-om.version>
+    <peppol-om.version>1.2.3</peppol-om.version>
     <peppol-sk.version>0.2.2</peppol-sk.version>
     <peppol-uae.version>1.1.2</peppol-uae.version>
     <peppol-vida.version>0.11.0</peppol-vida.version>
