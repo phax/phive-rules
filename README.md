@@ -278,6 +278,7 @@ I hope that with the introduction of PINT, the versioning problem will be solved
 v4.6.4 - work in progress
 * Updated to phive-rules-foundations 5.0.6
 * `phive-rules-all` now also registers the new Brazilian validation rules of `phive-rules-brazil` from phive-rules-foundations (NF-e/NFC-e, CT-e, MDF-e, NFCom, NF3e, BP-e, NFAg, NFGas and NFS-e, Group ID `br.gov.nfe`)
+* Added support for EN 16931 validation rules 1.3.17 (UBL and CII) and deprecated 1.3.16
 
 v4.6.3 - 2026-09-30
 * Added the France PPF Flux 10 validation rules v1.1, VES coordinate `fr.ctc.flux10:report:1.1`, and deprecated the 1.0 rules.

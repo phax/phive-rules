@@ -68,6 +68,7 @@ public final class EN16931Validation
   private static final String VERSION_1314_2 = "1.3.14.2";
   private static final String VERSION_1315 = "1.3.15";
   private static final String VERSION_1316 = "1.3.16";
+  private static final String VERSION_1317 = "1.3.17";
 
   // CII
   @Deprecated
@@ -116,7 +117,9 @@ public final class EN16931Validation
   public static final DVRCoordinate VID_CII_1314_2 = DVRHelper.createCoordinate (GROUP_ID, "cii", VERSION_1314_2);
   @Deprecated
   public static final DVRCoordinate VID_CII_1315 = DVRHelper.createCoordinate (GROUP_ID, "cii", VERSION_1315);
+  @Deprecated
   public static final DVRCoordinate VID_CII_1316 = DVRHelper.createCoordinate (GROUP_ID, "cii", VERSION_1316);
+  public static final DVRCoordinate VID_CII_1317 = DVRHelper.createCoordinate (GROUP_ID, "cii", VERSION_1317);
 
   // UBL
   @Deprecated
@@ -169,7 +172,9 @@ public final class EN16931Validation
                                                                                          VERSION_1314_2);
   @Deprecated
   public static final DVRCoordinate VID_UBL_INVOICE_1315 = DVRHelper.createCoordinate (GROUP_ID, "ubl", VERSION_1315);
+  @Deprecated
   public static final DVRCoordinate VID_UBL_INVOICE_1316 = DVRHelper.createCoordinate (GROUP_ID, "ubl", VERSION_1316);
+  public static final DVRCoordinate VID_UBL_INVOICE_1317 = DVRHelper.createCoordinate (GROUP_ID, "ubl", VERSION_1317);
 
   @Deprecated
   public static final DVRCoordinate VID_UBL_CREDIT_NOTE_100 = DVRHelper.createCoordinate (GROUP_ID,
@@ -263,9 +268,13 @@ public final class EN16931Validation
   public static final DVRCoordinate VID_UBL_CREDIT_NOTE_1315 = DVRHelper.createCoordinate (GROUP_ID,
                                                                                            "ubl-creditnote",
                                                                                            VERSION_1315);
+  @Deprecated
   public static final DVRCoordinate VID_UBL_CREDIT_NOTE_1316 = DVRHelper.createCoordinate (GROUP_ID,
                                                                                            "ubl-creditnote",
                                                                                            VERSION_1316);
+  public static final DVRCoordinate VID_UBL_CREDIT_NOTE_1317 = DVRHelper.createCoordinate (GROUP_ID,
+                                                                                           "ubl-creditnote",
+                                                                                           VERSION_1317);
 
   @NonNull
   private static ClassLoader _getCL ()
@@ -573,9 +582,21 @@ public final class EN16931Validation
       VesXmlBuilder.builder ()
                    .vesID (VID_CII_1316)
                    .displayNamePrefix ("EN 16931 CII ")
-                   .notDeprecated ()
+                   .deprecated ()
                    .addXSD (CCIID16B.getXSDResource ())
                    .addSchematron (PhiveRulesCIIHelper.createXSLT_CII_D16B (aInvoiceCII1316Xslt))
+                   .registerInto (aRegistry);
+    }
+    {
+      final IReadableResource aInvoiceCII1317Xslt = new ClassPathResource (sPrefix +
+                                                                           "1.3.17/cii/EN16931-CII-validation.xslt",
+                                                                           _getCL ());
+      VesXmlBuilder.builder ()
+                   .vesID (VID_CII_1317)
+                   .displayNamePrefix ("EN 16931 CII ")
+                   .notDeprecated ()
+                   .addXSD (CCIID16B.getXSDResource ())
+                   .addSchematron (PhiveRulesCIIHelper.createXSLT_CII_D16B (aInvoiceCII1317Xslt))
                    .registerInto (aRegistry);
     }
 
@@ -1049,16 +1070,36 @@ public final class EN16931Validation
       VesXmlBuilder.builder ()
                    .vesID (VID_UBL_INVOICE_1316)
                    .displayNamePrefix ("EN 16931 UBL Invoice ")
-                   .notDeprecated ()
+                   .deprecated ()
                    .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
                    .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aInvoiceUBL1316Xslt))
                    .registerInto (aRegistry);
       VesXmlBuilder.builder ()
                    .vesID (VID_UBL_CREDIT_NOTE_1316)
                    .displayNamePrefix ("EN 16931 UBL Credit Note ")
-                   .notDeprecated ()
+                   .deprecated ()
                    .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
                    .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aInvoiceUBL1316Xslt))
+                   .registerInto (aRegistry);
+    }
+    {
+      // 1.3.17
+      final IReadableResource aInvoiceUBL1317Xslt = new ClassPathResource (sPrefix +
+                                                                           "1.3.17/ubl/EN16931-UBL-validation.xslt",
+                                                                           _getCL ());
+      VesXmlBuilder.builder ()
+                   .vesID (VID_UBL_INVOICE_1317)
+                   .displayNamePrefix ("EN 16931 UBL Invoice ")
+                   .notDeprecated ()
+                   .addXSD (UBL21Marshaller.getAllInvoiceXSDs ())
+                   .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aInvoiceUBL1317Xslt))
+                   .registerInto (aRegistry);
+      VesXmlBuilder.builder ()
+                   .vesID (VID_UBL_CREDIT_NOTE_1317)
+                   .displayNamePrefix ("EN 16931 UBL Credit Note ")
+                   .notDeprecated ()
+                   .addXSD (UBL21Marshaller.getAllCreditNoteXSDs ())
+                   .addSchematron (PhiveRulesUBLHelper.createXSLT_UBL21 (aInvoiceUBL1317Xslt))
                    .registerInto (aRegistry);
     }
   }
