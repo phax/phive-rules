@@ -28,9 +28,9 @@ import com.helger.io.resource.ClassPathResource;
 import com.helger.phive.api.executorset.IValidationExecutorSet;
 import com.helger.phive.api.executorset.IValidationExecutorSetRegistry;
 import com.helger.phive.en16931.EN16931Validation;
+import com.helger.phive.rules.shared.DVRHelper;
 import com.helger.phive.rules.shared.PhiveRulesHelper;
 import com.helger.phive.rules.shared.PhiveRulesUBLHelper;
-import com.helger.phive.rules.shared.DVRHelper;
 import com.helger.phive.xml.executorset.VesXmlBuilder;
 import com.helger.phive.xml.source.IValidationSourceXML;
 import com.helger.ubl22.UBL22Marshaller;
@@ -109,9 +109,10 @@ public final class EHFValidationG3_2026_09
 
   /**
    * @return A list of all prerequisite validation execution set coordinates that must already be
-   *         registered before {@link #initEHF(IValidationExecutorSetRegistry)} is called. Shares the
-   *         same data basis as the initialization method. Never <code>null</code>.
+   *         registered before {@link #initEHF(IValidationExecutorSetRegistry)} is called. Shares
+   *         the same data basis as the initialization method. Never <code>null</code>.
    */
+  @SuppressWarnings ("deprecation")
   @NonNull
   @ReturnsMutableCopy
   public static ICommonsList <DVRCoordinate> getAllPrerequisites ()
@@ -125,6 +126,7 @@ public final class EHFValidationG3_2026_09
    * @param aRegistry
    *        The registry to add the artefacts. May not be <code>null</code>.
    */
+  @SuppressWarnings ("deprecation")
   public static void initEHF (@NonNull final IValidationExecutorSetRegistry <IValidationSourceXML> aRegistry)
   {
     ValueEnforcer.notNull (aRegistry, "Registry");
